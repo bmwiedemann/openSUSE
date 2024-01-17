@@ -1,0 +1,14 @@
+Index: nginx-1.11.2/auto/install
+===================================================================
+--- nginx-1.11.2.orig/auto/install
++++ nginx-1.11.2/auto/install
+@@ -154,8 +154,7 @@ install:	build $NGX_INSTALL_PERL_MODULES
+ 	test -d '\$(DESTDIR)`dirname "$NGX_HTTP_LOG_PATH"`' \\
+ 		|| mkdir -p '\$(DESTDIR)`dirname "$NGX_HTTP_LOG_PATH"`'
+ 
+-	test -d '\$(DESTDIR)$NGX_PREFIX/html' \\
+-		|| cp -R $NGX_HTML '\$(DESTDIR)$NGX_PREFIX'
++	test -d '\$(DESTDIR)/srv/www/htdocs' || install -d '\$(DESTDIR)/srv/www/' && cp -r html '\$(DESTDIR)/srv/www/htdocs'
+ END
+ 
+ 

@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>206ecb2ce874542785bb0f130997fe94</srcmd5>
+    <version>3.4.0</version>
+    <time>1567849670</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for gmsh / FreeCAD</comment>
+    <requestid>720648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a1999d1c2340e117921b5257e13602ca</srcmd5>
+    <version>3.4.1</version>
+    <time>1585602471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789843</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0e27452b1f0888684248c321a6f483d</srcmd5>
+    <version>4.1.1</version>
+    <time>1585996041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791282</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>06ec2873d6ea742f5aeaaa997071d3ab</srcmd5>
+    <version>4.1.1</version>
+    <time>1586368519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792016</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4c623477023d44d0f251f16e238031d7</srcmd5>
+    <version>4.1.2</version>
+    <time>1613774574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863662</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d9ee063d2e6efae9779a24ccdd53d00d</srcmd5>
+    <version>4.3.0</version>
+    <time>1653907400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979624</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>caa9de3ed70fa867c0ce7e62acbed946</srcmd5>
+    <version>4.4.0</version>
+    <time>1702936617</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133861</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d55c8f2cbba54d62ea3b6c8231f1cbcc</srcmd5>
+    <version>4.4.0</version>
+    <time>1703801043</time>
+    <user>anag+factory</user>
+    <comment>- Fix library package name
+</comment>
+    <requestid>1135545</requestid>
+  </revision>
+</revisionlist>

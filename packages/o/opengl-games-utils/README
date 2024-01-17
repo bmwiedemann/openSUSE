@@ -1,0 +1,43 @@
+This package contains various shell scripts which are intented for use by
+3D games packages. These shell scripts can be used to check if direct rendering
+is available before launching an OpenGL game. This package is intended for use
+by other packages and is not intended for direct end user use!
+
+
+Currently this package contains one utility script:
+opengl-game-wrapper.sh
+
+To use this script create a link in /usr/bin gamename-wrapper[.sh] to
+opengl-game-wrapper.sh, and put gamename-wrapper[.sh] in your desktop file
+instead of gamename. The wrapper script will use $0 to determine gamename,
+if direct rendering is available the wrapper script will execute gamename
+with any parameters passed to the script, if direct rendering is not
+available a userfriendly error dialog will be shown explaining that gamename
+cannot run without hardware accelerated 3d, and that this is probably due to
+missing Free Software support for the users card.
+
+The utility script uses 2 functions defined in
+/usr/share/opengl-games-utils/opengl-game-functions.sh
+You can also use these 2 functions directly from your own scripts by
+including the above file from your own shell script.
+
+The 2 included functions are:
+
+hasDri:
+This function will return true if hardware accellerated OpenGL is available
+and false if it is not. This does not say anything about the OpenGL
+capabilities (nor the quality of the driver).
+
+checkDriOK:
+This functino calls hasDri, if hardware accellerated OpenGL is available
+it does nothing, if it is not available it will show an error dialog and
+then call exit. This is the function around which opengl-game-wrapper.sh is
+build. It is provided as a "library" function so that if your game needs a
+wrapper script anyways, you don't need to wrap the wrapper but instead can
+call it directly from the wrapper.
+
+
+Last but not least before I forget, to avoid any licensing issues I hereby
+declare that all files in this package are in the Public Domain.
+
+Hans de Goede 15 September 2011.

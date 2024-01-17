@@ -1,0 +1,26 @@
+From 89e66325b9dbad03554a649c42c46e752c4a7d5d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Diogo=20Magalh=C3=A3es=20Martins?=
+ <magalhaesmartins@icloud.com>
+Date: Fri, 14 Jun 2019 08:27:37 -0300
+Subject: [PATCH] #215 - fixing exception message (#216)
+
+---
+ aiohttp_cors/urldispatcher_router_adapter.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/aiohttp_cors/urldispatcher_router_adapter.py b/aiohttp_cors/urldispatcher_router_adapter.py
+index 1a65e99..f2b02ab 100644
+--- a/aiohttp_cors/urldispatcher_router_adapter.py
++++ b/aiohttp_cors/urldispatcher_router_adapter.py
+@@ -97,7 +97,7 @@ def _is_web_view(entity, strict=True):
+             if not issubclass(handler, CorsViewMixin):
+                 if strict:
+                     raise ValueError("web view should be derived from "
+-                                     "aiohttp_cors.WebViewMixig for working "
++                                     "aiohttp_cors.CorsViewMixin for working "
+                                      "with the library")
+                 else:
+                     return False
+-- 
+2.26.2
+

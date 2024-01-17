@@ -1,0 +1,15 @@
+<package name="ndpi" project="openSUSE:Factory">
+  <title>Extensible deep packet inspection library</title>
+  <description>nDPI is a ntop-maintained superset of the popular OpenDPI library. Released
+under the LGPL license, its goal is to extend the original library by adding
+new protocols that are otherwise available only on the paid version of OpenDPI.
+In addition to Unix platforms, we also support Windows, in order to provide
+you a cross-platform DPI experience. Furthermore, we have modified nDPI do be
+more suitable for traffic monitoring applications, by disabling specific
+features that slow down the DPI engine while being them un-necessary for
+network traffic monitoring.
+
+</description>
+  <devel project="server:monitoring" package="ndpi"/>
+  <url>https://github.com/ntop/nDPI</url>
+</package>

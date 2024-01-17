@@ -1,0 +1,14 @@
+<package name="glow" project="openSUSE:Factory">
+  <title>Render markdown on the CLI</title>
+  <description>Glow is a terminal based markdown reader designed from the ground up to bring
+out the beauty—and power—of the CLI.
+
+Use it to discover markdown files, read documentation directly on the command
+line and stash markdown files to your own private collection so you can read
+them anywhere. Glow will find local markdown files in subdirectories or a local
+Git repository.
+
+</description>
+  <devel project="utilities" package="glow"/>
+  <url>https://github.com/charmbracelet/glow</url>
+</package>

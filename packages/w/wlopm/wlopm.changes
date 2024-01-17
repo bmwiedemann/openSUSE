@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sun Jun  5 12:02:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add Makefile.patch:
+  * uses pkg-config to find headers for wayland-client properly
+
+-------------------------------------------------------------------
+Sun Jun  5 11:56:04 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- initial spec for wlopm (0.1.0)
+- add v0.1.0.tar.gz source tarball

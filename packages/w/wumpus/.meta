@@ -1,0 +1,9 @@
+<package name="wumpus" project="openSUSE:Factory">
+  <title>Faithful transcription of the 1974 Atari Wumpus game</title>
+  <description>WUMPUS is a bit of retrocomputing nostalgia. It is an *exact* clone,
+even down to the godawful user interface, of an ancient classic game.
+This version fixes two minor bugs in my original 1992 USENET posting
+of the source. Superhack is a structurally similar game with a
+different premise.</description>
+  <devel project="games" package="wumpus"/>
+</package>

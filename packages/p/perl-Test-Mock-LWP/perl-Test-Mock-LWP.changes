@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:21:35 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Tue Mar 18 07:47:22 UTC 2014 - coolo@suse.com
+
+- updated to 0.08
+   Update Makefile.PL and META.yml for RT #69466
+
+-------------------------------------------------------------------
+Tue Apr  5 08:42:01 UTC 2011 - coolo@novell.com
+
+- fix another provide
+
+-------------------------------------------------------------------
+Thu Mar 31 10:21:45 UTC 2011 - coolo@novell.com
+
+- filter out HTTP::Request provide
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:35 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:12 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Jul 15 16:24:38 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.05)
+

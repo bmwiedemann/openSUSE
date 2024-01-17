@@ -1,0 +1,201 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74e2199318f9ec3ba8940bd0ab4be56b</srcmd5>
+    <version>1.20.0</version>
+    <time>1575464125</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of the package.</comment>
+    <requestid>753899</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5bf650a3874332144d18cc576e884dab</srcmd5>
+    <version>2.2.0</version>
+    <time>1584643747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786163</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3445937923008507b9a15cdeeb4a963</srcmd5>
+    <version>2.3.0</version>
+    <time>1588610427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799932</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>150fd7fdddb8a9337c73617a8dbf0b67</srcmd5>
+    <version>2.6.0</version>
+    <time>1595271605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821709</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec27682157930b862161c5967e30fe74</srcmd5>
+    <version>2.7.1</version>
+    <time>1598885434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830498</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9a8baead81d56b36c2bf95af3737f4ca</srcmd5>
+    <version>2.7.1</version>
+    <time>1613677226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872837</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>225b4c947f3ec2b9bea725fa8b9b2849</srcmd5>
+    <version>2.16.0</version>
+    <time>1641932393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.16.0:
+  * add warning for regexes containing [\/] or [/\\].
+  * move hook template back to bash resolving shebang-portability issues.
+  * add support for fail_fast at the individual hook level.
+  * allow passthrough of GIT_CONFIG_KEY_*, GIT_CONFIG_VALUE_*, and GIT_CONFIG_COUNT.
+  * fix temporary file stashing with for submodule.recurse=1.
+  * ban broken importlib-resources versions.
+  * replace exit(...) with raise SystemExit(...) for portability.
+  * add support for hooks written in dart.
+  * add support for post-rewrite hooks.
+  * fix check-useless-excludes with exclude matching broken symlink.
+  * eliminate duplicate mutable sha warning messages for pre-commit autoupdate.
+  * fix force-push of disparate histories using git&gt;=2.28.
+  * fix check-useless-excludes and check-hooks-apply matching non-root .pre-commit-config.yaml.
+  * pre-commit-ci/issues#84 issue by @billsioros.
+  * During pre-push hooks, expose local branch as PRE_COMMIT_LOCAL_BRANCH.
+  * Improve container id detection for docker-beside-docker with custom hostname.
+  * Read legacy hooks in an encoding-agnostic way.
+  * Fix execution of docker hooks for docker-in-docker.
+  * Attempt to mount from host with docker-in-docker.
+  * Enable repo: local for r hooks.
+  * Avoid warnings with mismatched renv versions.
+  * Fix race condition when stashing files in multiple parallel invocations
+  * pre-commit/mirrors-prettier#7 issue by @DeltaXWizard.
+  * Fix permissions of root folder in ruby archives.
+  * Fix r hooks when hook repo is a package
+  * Add support for post-merge hook.
+  * Add r as a supported hook language.
+  * Fix installation of local golang repositories for go 1.16.
+  * Fix language: golang repositories containing recursive submodules</comment>
+    <requestid>945468</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8063780f66b9e8eea0b1abcce0547218</srcmd5>
+    <version>2.17.0</version>
+    <time>1648330334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.17.0:
+  - add warnings for regexes containing `[\\/]`.
+  - upgrade supported ruby versions.
+  - allow `language: conda` to use `mamba` or `micromamba` via
+    `PRE_COMMIT_USE_MAMBA=1` or `PRE_COMMIT_USE_MICROMAMBA=1` respectively.
+  - display `git --version` in error report.
+  - add `language: lua` as a supported language.
+  - temporarily add `setuptools` to the zipapp.
+  - use `go install` instead of `go get` for go 1.18+ support.
+  - fix `language: r` with a local renv and `RENV_PROJECT` set.
+  - forbid overriding `entry` in `language: meta` hooks which breaks them.
+  - always use `#!/bin/sh` on windows for hook script.</comment>
+    <requestid>965080</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>33f17a535f0bb1a5457b74f4e4456842</srcmd5>
+    <version>2.18.1</version>
+    <time>1649370506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967528</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f0f0679ede4bf9d6bb25fee142f2b0d9</srcmd5>
+    <version>2.19.0</version>
+    <time>1654004863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980049</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b244d826d2ec0fd3a86fc9ddc314e116</srcmd5>
+    <version>2.20.0</version>
+    <time>1657617148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988454</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c6cf376cc60557c5917bbe83690bf133</srcmd5>
+    <version>2.20.0</version>
+    <time>1669630042</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix &quot;/usr/bin/env bash&quot; shebang in hook-tmpl file
+- Remove python_module macro definition
+- Allow file protocol always for git submodule to fix tests
+</comment>
+    <requestid>1038582</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9d6381beb09ce35da1bb24a60b0bce73</srcmd5>
+    <version>2.21.0</version>
+    <time>1672754730</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.21.0:
+  * Require new-enough virtualenv to prevent 3.10 breakage
+  * Respect aliases with `SKIP` for environment install.
+  * Allow `pre-commit run --files` against unmerged paths.
+  * Also apply regex warnings to `repo: local` hooks.
+  * `rust` is now a &quot;first class&quot; language -- supporting `language_version`
+  * `r` now uses more-reliable binary installation.
+  * `GIT_ALLOW_PROTOCOL` is now passed through for git operations.
+  * `GIT_ASKPASS` is now passed through for git operations.
+  * Remove `toml` dependency by using `cargo add` directly.
+  * Support `dotnet` hooks which have dotted prefixes.
+  * ### Fixes
+  * Properly adjust `--commit-msg-filename` if run from a sub directory.
+  * Simplify `--intent-to-add` detection by using `git diff`.
+  * Fix `R.exe` selection on windows.
+  * Skip default `nuget` source when installing `dotnet` packages.</comment>
+    <requestid>1046303</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cb380f5d68bf61cff4dbeae62a42ad98</srcmd5>
+    <version>3.5.0</version>
+    <time>1698873053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121650</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c9726fd5dedbe0fe8ac7d821bca5012a</srcmd5>
+    <version>3.5.0</version>
+    <time>1701206390</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129479</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3c96baa1d4738ee92cebbe15b8910639</srcmd5>
+    <version>3.6.0</version>
+    <time>1702673307</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.6.0
+  * Features
+    + Check minimum_pre_commit_version first when parsing configs.
+  * Fixes
+    + Fix deprecation warnings for importlib.resources.
+    + Fix deprecation warnings for rmtree. (forwarded request 1132881 from theMarix)</comment>
+    <requestid>1133197</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3cc1255058131747ab401fe149d917ae</srcmd5>
+    <version>3.6.0</version>
+    <time>1704380328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136657</requestid>
+  </revision>
+</revisionlist>

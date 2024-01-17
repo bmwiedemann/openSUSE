@@ -1,0 +1,24 @@
+Index: elfutils-0.185/config/debuginfod.service
+===================================================================
+--- elfutils-0.185.orig/config/debuginfod.service
++++ elfutils-0.185/config/debuginfod.service
+@@ -12,6 +12,19 @@ ExecStart=/usr/bin/debuginfod -d /var/ca
+ # Stopping can take a long time if scanning of large archives is in progress
+ TimeoutStopSec=60
+ PrivateTmp=yes
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ 
+ [Install]
+ WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+Index: FreeFileSync-13.1/FreeFileSync/Source/ffs_paths.cpp
+===================================================================
+--- FreeFileSync-13.1.orig/FreeFileSync/Source/ffs_paths.cpp
++++ FreeFileSync-13.1/FreeFileSync/Source/ffs_paths.cpp
+@@ -54,7 +54,8 @@ Zstring fff::getInstallDirPath()
+ 
+ Zstring fff::getResourceDirPath()
+ {
+-    return appendPath(getProcessParentFolderPath(), Zstr("Resources"));
++    // for opensuse install to /usr/share/FreeFileSync specificly
++    return Zstr("/usr/share/FreeFileSync/");
+ }
+ 
+ 

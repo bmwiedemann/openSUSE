@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f47c26a412b6cb19a90798b3fe1bd10e</srcmd5>
+    <version>1.14.2</version>
+    <time>1526041693</time>
+    <user>dimstar_suse</user>
+    <comment>curses interface</comment>
+    <requestid>605524</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5eaca6b1a2db8b9de61fcc1d5b74f841</srcmd5>
+    <version>1.14.2</version>
+    <time>1532033721</time>
+    <user>dimstar_suse</user>
+    <comment>- Tox is not used when building so no need to depend on it</comment>
+    <requestid>623454</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>73d4392d06d5949941e5edb164c7c612</srcmd5>
+    <version>1.14.2</version>
+    <time>1544726390</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653948</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dad79e558e8c1bb121b2b5142c8d2cd8</srcmd5>
+    <version>1.15.0</version>
+    <time>1553263247</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.0:
+  * no upstream changelog
+- Make sure tests are run</comment>
+    <requestid>682178</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f4dae02890005d61313b7f77e8139150</srcmd5>
+    <version>1.15.0</version>
+    <time>1567849848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728515</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>27d5063424f7519a0ccff8b3eb6288bb</srcmd5>
+    <version>1.17.0</version>
+    <time>1579729601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766376</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>79e4fea035b1222f0c2d55f63d2eff80</srcmd5>
+    <version>1.17.4</version>
+    <time>1585262252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788601</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>077c01f0ac967f8b823a3a0e60a6bc8c</srcmd5>
+    <version>1.17.5</version>
+    <time>1588755891</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.5:
+  * minor fixes
+- Do not pull extra pytest deps and use even latest pytest</comment>
+    <requestid>800586</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ca88ccebafb3cbe3ddf7066638067911</srcmd5>
+    <version>1.17.10</version>
+    <time>1598726069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.10:
+  * bugfix: Now imports on 3.10+
+  * bugfix: Fix detection of shift+arrow keys when using tmux. :ghissue:`178`.</comment>
+    <requestid>829688</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c3f8e0d6cbba6b9f8becf2d587014031</srcmd5>
+    <version>1.19.1</version>
+    <time>1647532889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962273</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>355adf26567861eda8be304e44f484f9</srcmd5>
+    <version>1.19.1</version>
+    <time>1667499284</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-python2-support.patch to remove python-six dependency
+  gh#jquast/blessed#245
+- Remove python_module macro definition
+- Remove skip_python2 define
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1033027</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8c5cbff54b334b0789749074f4ed8ca7</srcmd5>
+    <version>1.19.1</version>
+    <time>1687796197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095393</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>111673fd2c68b44feae33f15f1881bb4</srcmd5>
+    <version>1.20.0</version>
+    <time>1702673417</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133413</requestid>
+  </revision>
+</revisionlist>

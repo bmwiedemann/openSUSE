@@ -1,0 +1,8 @@
+## Path:	System/Cron/Man
+## Description: cron configuration for man utility
+## Type:	yesno
+## Default:	yes
+#
+# Should mandb and whatis be recreated by cron.daily ("yes" or "no")
+#
+REINIT_MANDB=yes

@@ -1,0 +1,2 @@
+# Please refer https://en.opensuse.org/openSUSE:Packaging_Go
+addFilter("devel-file-in-non-devel-package")

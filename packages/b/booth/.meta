@@ -1,0 +1,6 @@
+<package name="booth" project="openSUSE:Factory">
+  <title>The Booth Cluster Ticket Manager</title>
+  <description>Booth manages the ticket which authorizes one of the cluster sites located in geographical dispersed distances to run certain resources. It is designed to be an add-on of Pacemaker, which extends Pacemaker to support geographical dispersed clustering. 
+  </description>
+  <devel project="network:ha-clustering:Factory" package="booth"/>
+</package>

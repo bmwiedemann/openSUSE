@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Mon Sep  4 08:03:24 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.0
+  * Adding new outputs for cisco asa show license all command.
+  * Adding Aruba CX template and tests for show system.
+  * Fix ubiquiti show interfaces template.
+  * Added new values for destination port lt/gt/range, IPv6,
+    time-range.
+  * Feat ubiquiti nat rule template.
+- Update to version 3.4.0
+  * Updated support for Cisco NXOS devices.
+  * Fix cisco_nxos_show_interface_brief.textfsm.
+  * fixs_1060_cisco_ios_show_access-list.
+  * Support lowercase interfaces on Cisco IOS (XR).
+  * Update cisco_ios_show_lldp_neighbors_detail parser to gather
+    more information.
+  * sort development_script.py yaml output, make changes more
+    predictable.
+  * Fix Cisco show interfaces speed and duplex.
+  * Feat(cisco): add vrf template detail.
+  * Fix arista eos show interfaces - description quotes.
+  * Fix cisco xr admin show inventory.
+  * Fix1198 cisco nxos show access lists.
+  * Template and tests for cisco_nxos_show_ip_msdp_summary_vrf_all.
+- Update to version 3.3.0
+  * Add support for Ericsson IPOS router.
+  * Add display_arp_all and display_isis_peer
+  * Add support DLink DS Show ARP.
+  * Add support DLink DS Show ARP.
+  * Zyxel fix sys atsh parsing.
+  * Fix Cisco NXOS 5K: show forwarding ipv4 route.
+  * Hp comware displ vpn inst det.
+  * Update hp_comware_display_device_manuinfo.textfsm.
+  * fix: huawei_vrf_display_version.
+  * Fix Mikrotik interface ethernet monitor name once when no link
+    partner.
+  * Hpe templates.
+  * Fix HP Comware displ inteface.
+  * recon tabs on hp comware.
+  * Fix cisco_xr_show_version.template.
+  * Added input and output pps for cisco_ios_show_interfaces.
+  * added cisco_ios_show_ip_http_server_status.textfsm.
+  * Added FPM to the Start and XCVR States.
+  * Update Existing Template/ Added RUNTS, GIANTS, FRAME, and
+    OVERRUN.
+  * feat(ubiquiti): add show ipv6 route template.
+  * Feature/cisco ios ping fail.
+  * feat(ubiquiti): add show ip route template.
+  * Fix for ASA timezones that have / in them.
+  * Cisco ASA fixed timezones and support for IPsecOverNatT.
+  * Improvement: cisco_ios_show_ip_ospf_interface_brief.
+  * Added nxos show ip bgp summary address family to parsed data.
+  * Multiple fixes for Cisco ASA show interface.
+  * cisco ios show_version capture software and release.
+  * Corrected nexthop_ip regex in ubiquiti ipv6 route template.
+  * Improvement: cisco_ios_show_ip_route added support for VRFs.
+  * Add nxos show ip ospf intf br and fixed process on
+    show ip ospf nbr.
+  * Update Cisco AireOS WLC show inventory.
+  * feat(ubiquiti): Add template ubiquiti edgerouter show
+    interfaces.
+  * Add new cisco asa templates.
+  * Add: cisco wlc templates for show flexconnect and interface
+    group summary.
+  * Fix HP Comware display interface and ip interface.
+  * NXOS show ip int fails without WCCP.
+  * XR show ipv4 int fails on Int prot proc disabled.
+  * Cisco add template ipv6 access-lists.
+  * Corrected Huawei display_interface template to add Tunnel and
+    Virtuel interface.
+  * Added support for IKEv2 parameters.
+  * added IOS show nve vni and nve peers templates.
+  * added NXOS show nve vni and nve peers templates.
+  * Mikrotik routeros - firewall filter - Add src mac address,
+    correct ipv6 path and empty log prefix.
+  * Added new template: show interface link on cisco ios.
+  * Hp comware new displ vlan lldp.
+  * Mikrotik routeros add hw offload management in ip firewall
+    template.
+  * Fixed missing OK in header of show int ip brief.
+  * Fixed by adding support for ext comm in asa show bgp summary.
+  * Fix Cisco: change the ip nat translations template to make
+    ports non-optional.
+- Update to version 3.2.0
+  https://ntc-templates.readthedocs.io/en/latest/admin/release_notes/version_3.2/
+
+-------------------------------------------------------------------
+Sat Oct  1 17:48:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * New template: cisco_ios_show_ip_eigrp_interfaces_detail.textfsm
+  * New template: cisco_ios_show_snmp_group.textfsm
+  * New templates & updates: Updated support for Arista EOS devices
+  * New template: cisco_xr_show_ipv4_interface.textfsm
+  * New templates: Add multiple zyxel templates
+  * Bug fix: Change huawei_vrf shortest command
+  * Bug fix: Path separator error on windows
+  * New templates: Adding multiple mikrotik routeros templates
+  * New template: aruba_os_show_ap_database_long.textfsm
+  * New template: aruba_os_show_ap_radio-database.textfsm
+  * Bug fix: EOS 4.28.XF updated output of codes in `show ip route`
+  * New template: juniper_junos_show_vlans.textfsm
+  * Bug fix: cisco_ios show ip bgp neighbors advertised-routes output where
+    metric is wider than 6 chars
+  * Bug fix: cisco_ios show ip bgp output where metric is wider than 6 chars
+  * Bug fix: cisco_nxos_show_int_breief do not match mgmt and vlan
+  * Bug fix: cisco_ios_show_module updated output for c9200
+  * Changed: add vlan_id to cisco_ios_show_interfaces
+  * Bug fix: fix not advertised vlan in cisco_nxos_show_lldp_neighbors_detail
+  * Added: Additional fields for cisco_ios_show_ip_access-lists.textfsm
+  * Bug fix: Multiple line parsing using lists with textfsm extracting wrong details
+  * Bug fix: Cisco IOS show boot missing parameter
+  * New template: arista_eos_show_processes_top_once.textfsm
+  * Bug fix: Adding a record without the vlan field for very old HP Procurve switches
+  * New template: cisco_xr_show_install_active.textfsm
+  * Changed: Clarifies docs about length order
+  * New template: ubiquiti_edgerouter_show_dhcp_leases.textfsm
+  * Bug fix: hanges the CRLF to LF to pass tests
+  * Changed: Additional fields for cisco_nxos_show_ip_route.textfsm
+  * Changed: Additional fields for cisco_nxos_show_ip_interface.textfsm
+  * Changed: Additional fields for cisco_ios_show_standby.textfsm
+  * Changed: Additional fields for cisco_ios_show_module_status.textfsm
+  * Changed: Additional fields for cisco_ios_show_ip_interface.textfsm
+  * Changed: Additional fields for cisco_ios_show_interfaces_switchport.textfsm
+  * Changed: Additional fields for cisco_ios_show_etherchannel_summary.textfsm
+  * Changed: Additional fields for cisco_ios_show_lldp_neighbors_detail.textfsm
+  * Changed: Additional fields for cisco_asa_show_interface.textfsm
+  * Bug fix: show platform diag does not return the rommon version of the line cards
+  * New template: zyxel_os_cfg_nat_get.textfsm
+  * New template: zyxel_os_cfg_ipalias_get.textfsm
+  * New template: ubiquiti_edgerouter_show_version.textfsm
+  * New template: ubiquiti_edgerouter_show_interfaces_ethernet_physical.textfsm
+  * New template: ubiquiti_edgerouter_show_arp.textfsm
+  * Bug fix: aruba_os_show_ap_database model parsing error
+  * Bug fix: cisco_nxos_show_ip_interface parsing error
+  * Bug fix: Update choices for Protocol to include 'notpresent' option on
+    arista_eos_show_interfaces_description
+  * New template: aruba_os_show_ap_database.textfsm
+  * Bug fix: cisco_nxos_show_cdp_neighbors_detail update for supporting multiple versions
+  * Changed: Updated show boot template to include new formatting for Cisco IOS
+    Gibraltar output
+  * Bug fix: cisco_nxos_show_ip_bgp.textfsm not parsing correctly
+  * Added: FTD output example from Cisco support site
+  * New template: cisco_ios_show_ip_nat_translations.textfsm
+  * Bug fix: cisco_ios_show_interfaces_status.textfsm State Error
+  * Bug fix: IOS show mac address Type3 and Type4. Additional test files
+  * New template: cisco_asa_show_cpu_usage_detailed.textfsm
+  * Bug fix: cisco_ios_show_ip_eigrp_topology not parsing correctly
+  
+-------------------------------------------------------------------
+Wed Nov  3 19:58:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 3.0.0
+  Breaking Changes
+  * Template cisco_ios_show_mac-address-table has DESTINATION_PORT
+    as a list of ports now instead of a single string entry.
+  What's Changed
+  * cisco_ios_show_access-session: Adding Identity to MAC column.
+  * [New Template] Ciena - traffic-profile standard-profile.
+  * New template: cisco_nxos_show_ip_interface_vrf_all.textfsm.
+  * New template: juniper_junos_show_system_uptime.textfsm.
+  * Template Change: cisco_ios, show archive.
+  * Bugfix: change date format in hp_comware_display_clock.textfsm.
+  * update arista interface template + raw.
+  * New Template: cisco_ios_show_dhcp_lease.
+  * Fix ios_mac-addr type2.
+  * fix parsing with int addresses = 0.
+  * New template for huawei VRP + fix.
+  * added VLAN value and search pattern.
+  * Ciso IOS show mac and show module fix.
+  * Junos show chassis.
+
+-------------------------------------------------------------------
+Wed Oct 13 10:27:21 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.3.2
+  * Bugfixes
+    - cisco_ios_show_ip_bgp_summary Account for dotted ASN notation
+      #987
+    - cisco_nxos_show_interface_status Account for blank type #980
+    - cisco_ios_show_interfaces Account for App Interface #968
+- Fix some rpmlint errors.
+- Mock is actually not needed.
+
+-------------------------------------------------------------------
+Tue Aug 31 06:34:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1
+  Closed issues:
+  * cisco_ios_show_ip_access-lists Account for singluar match #972
+
+-------------------------------------------------------------------
+Sat Aug 28 17:10:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * Add Aruba AOS-CX command support
+  * Enhancement: cisco_ios_show_ip_access-lists - Adds parsing of
+    log tags)
+
+-------------------------------------------------------------------
+Fri Aug 20 09:04:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.2
+  * cisco ios show ip access-lists template includes additional
+    ICMP_TYPE options
+  * cisco ios show version template support for StackWise Virtual
+    Domains
+- Update to version 2.2.1
+  * Missing ICMP Type mask
+- Update to version 2.2.0
+  Closed issues:
+  * cisco_ios_show_ip_access-lists template needs updated to
+    include precedence and tos in *_PORT_MATCH
+  * cisco_nxos_show_interface_transceiver transceiver template
+    failure
+  Merged pull requests:
+  * cisco_ios_show_version: Cisco IOS uptime parsing more granular
+    (days, hours, etc.).
+  * New Template: cisco_ios_show_crypto_session_details.
+  * cisco_ios_show_vrf.texfsm: Parse a vrf with no interfaces.
+  * cisco_ios_show_interfaces_switchport: Modified Trunk state to
+    handle multiline trunking lists.
+  * Fix nxos_show_interface_transceiver failure.
+  * Updated cisco_ios_show_ip_access-lists.textfsm to include the
+    SRC_PORT_MATCH and DST_PORT_MATCH values for precedence and
+    tos.
+- Update to version 2.1.0
+  Closed issues:
+  * cisco_nxos_show_cdp_neighbors_detail 'str' object has no
+    attribute 'seek'.
+  * show int status returns error (seems template error) for
+    particular switch for other switches it does work (iOS).
+  * IPinfusuion OCNOS support request.
+  * cisco_ios_show_interfaces_status.textfsm (no interface in
+    monitoring state).
+  * Arista_eos: show ip bgp summary Error.
+  * arista_eos_show_ip_route parse exception.
+  * cisco nxos show interface status issue when FC ports are
+    present.
+  * cisco_asa_show_running_cryprom_map does not parse crypto maps
+    without "set security association lifetime".
+  * Cisco ASA show vpn-sessiondb invalid and not returning data
+    after ASA SW update.
+  * cannot import name 'clitable' from 'textfsm'.
+  * Adding Restarted to show version template for cisco ios.
+  * cisco_nxos add f-path vlan type.
+  * New Template: Alcatel, sh router ospf int.
+  * New Template: SROS "show system cpu".
+  * Adds monitoring port for show interfaces status.
+  * New Template: All BGP VPNv4 Neighbors.
+  * Added Known Issues section to document Micah's finding/issue.
+  * Added deploy option to auto deploy on tags.
+  * sros, new template - sh router interface, -vrf.
+  * Add end of line for matching empty lines.
+  * New Template: ruckus_fastiron, show mac-address.
+  * New Template: ruckus_fastiron, show version.
+  * New Template: alcatel_sros, sh router mpls lsp.
+  * New Template: alcatel_sros, sap-using.
+  * New Template: alcatel_sros, sdp-using.
+  * add new template show port-security interface.
+  * Bugfix: Type for cisco_nxos_show_interface_status.
+- Update to version 2.0.0
+  * Migrate to Poetry for packaging and distribution.
+  * The templates directory has moved to ntc_templates/templates
+- Update to version 1.7.0
+  Changes to existing template fields:
+  * arista_eos_show_ip_route: NEXT_HOP and INTERFACE are now lists
+  * cisco_asa_show_vpn-sessiondb: VPN_SESSION_NAME,
+    VPN_SESSION_ACTIVE, VPN_SESSION_CUMULATIVE,
+    VPN_SESSION_PEAK_CONCURRENT, VPN_SESSION_INACTIVE,
+    TUNNELS_SUMMARY_NAME, TUNNELS_SUMMARY_ACTIVE,
+    TUNNELS_SUMMARY_CUMULATIVE,
+    TUNNELS_SUMMARY_PEAK_CONCURRENT are now lists
+- Reeanbled test "show_arp"
+
+-------------------------------------------------------------------
+Tue Dec  8 10:13:14 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.6.0
+  [Full Changelog](https://github.com/networktocode/ntc-templates/compare/v1.5.0...v1.6.0)
+  **Implemented enhancements:**
+    - Creation of a Faq [\#716]
+  **Closed issues:**
+    - This is not a data modeling project. So is there any data modeling project can work with this? [\#802]
+    - Black 20.b0 breaks tox test [\#794]
+    - Unable to Parse show version on IOSv Device [\#780]
+    - TXTFSM will not process template even though Regex checker  says line is acceptable for ciena SAOS [\#779]
+    - cisco\_nxos\_show\_ip\_bgp\_summary.textfsm doesn't account for dual line bgp when output is too wide [\#766]
+    - arista eos show mac address-table is choking on case sensitivity on line Total Mac Addresses for this criterion: 0 [\#764]
+    - Cisco IOS - textfsm.parser.TextFSMError: State Error raised. Rule Line: 17. [\#718]
+  **Merged pull requests:**
+    - changes tests to import from lib [\#806]
+    - modify for show inventory all. [\#804]
+    - Change TextFSM Windows failure to a runtime failure \(instead of an import failure\) [\#803]
+    - Added juniper\_junos\_show\_lldp\_neighbors [\#797]
+    - Bugfix: Re-formatted development\_scripts.py and tests/test\_testcases\_… [\#795]
+    - Fix typos in README.md [\#792]
+    - Detect hostname on NX-OS platforms [\#789]
+    - Cisco ASA show access-list command templates update. [\#783]
+    - Updates to include capture on single word, no number model number [\#781]
+    - Bugfix: Account for powered-up value in the output of nxos show module [\#774]
+    - Dual line support for Cisco NX-OS 'ip bgp summary' command [\#772]
+    - Arista eos show mac address table [\#765]
+    - New Template: cisco\_nxos\_show\_ip\_interface [\#761]
+    - New Template: cisco\_nxos\_show\_hsrp\_all [\#760]
+    - New Template: cisco\_nxos\_show\_license\_usage [\#759]
+    - New Template: cisco\_nxos\_show\_interface\_description [\#758]
+    - Fixes \#716 [\#753](https://github.com/networktocode/ntc-templates/pull/753)
+- Changes from 1.5.0
+  [Full Changelog](https://github.com/networktocode/ntc-templates/compare/v1.4.2...v1.5.0)
+- Fix build errors.
+
+-------------------------------------------------------------------
+Thu Jun  4 10:52:21 UTC 2020 - pgajdos@suse.com
+
+- initial version 1.4.2, required by python-junos-eznc

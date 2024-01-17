@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c52a38c8be0f17062483fae872e9f75e</srcmd5>
+    <version>0.8.1</version>
+    <time>1568065574</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>729329</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8813eaf515f8095323d9f87938559d5c</srcmd5>
+    <version>0.8.1</version>
+    <time>1568190816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729675</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d4cc2ab34425216c8fccbc8622851927</srcmd5>
+    <version>0.8.2</version>
+    <time>1587071209</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_cli_main as it fails for some reason on OBS
+
+- Fix all files having executable bit
+
+- update to 0.8.2
+  * Added warning about Python 2 compatibility being dropped in 1.0.0
+  * Officially support Python 3.8
+  * Documented a known issue with looking up IP of a local interface on Linux/WSL (See the &quot;Known Issues&quot; section in the README)
+  * Added remote host lookup using `arping` as last resort</comment>
+    <requestid>794606</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4dcae196af155932e9cdf9419ea71aac</srcmd5>
+    <version>0.8.2</version>
+    <time>1590650217</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809371</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>dc65ba16866adcf4b9be2071108293e0</srcmd5>
+    <version>0.8.2</version>
+    <time>1618694699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886231</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2431e39ad5d3c445ec89dcc85e91795d</srcmd5>
+    <version>0.8.3</version>
+    <time>1664468056</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006897</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bed151cfaec524c291ab583160c5f6ec</srcmd5>
+    <version>0.6.6</version>
+    <time>1522062111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587955</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b91fdc1c5197dfcf6f206caf4a804462</srcmd5>
+    <version>0.6.7</version>
+    <time>1526372076</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606796</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5bfe964eb652ff9c935d9bb1f9c965cf</srcmd5>
+    <version>0.6.8</version>
+    <time>1546535214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.8.</comment>
+    <requestid>662125</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>25944c96ab58100aeb0b7e345b8ec3f9</srcmd5>
+    <version>0.6.8</version>
+    <time>1568720361</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix compatibility issues with Dino.</comment>
+    <requestid>731340</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d6946e2275b2996ef3492c2e640e032f</srcmd5>
+    <version>0.6.8</version>
+    <time>1606726445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851695</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8491f44336289bdd17a5eb94cef28078</srcmd5>
+    <version>0.7.0</version>
+    <time>1617131175</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.7.0ю</comment>
+    <requestid>874027</requestid>
+  </revision>
+</revisionlist>

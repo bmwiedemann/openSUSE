@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Nov  7 17:50:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update bsb-http-chunked to version 0.0.0.4 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Fri Sep 25 02:00:35 UTC 2020 - psimons@suse.com
+
+- Update bsb-http-chunked to version 0.0.0.4 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Aug 31 09:34:39 UTC 2020 - psimons@suse.com
+
+- Update bsb-http-chunked to version 0.0.0.4 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:12 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:17 UTC 2020 - psimons@suse.com
+
+- Add bsb-http-chunked at version 0.0.0.4.
+

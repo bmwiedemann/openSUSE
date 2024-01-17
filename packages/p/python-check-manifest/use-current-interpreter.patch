@@ -1,0 +1,13 @@
+Index: check-manifest-0.49/tests.py
+===================================================================
+--- check-manifest-0.49.orig/tests.py
++++ check-manifest-0.49/tests.py
+@@ -1666,7 +1666,7 @@ class TestCheckManifest(unittest.TestCas
+         # We need a Python interpeter to be in PATH.
+         python = 'python'
+         if hasattr(shutil, 'which'):
+-            for python in 'python', 'python3', os.path.basename(sys.executable):
++            for python in os.path.basename(sys.executable), 'python', 'python3':
+                 if shutil.which(python):
+                     break
+         subdir = self._create_repo_with_code_in_subdir()

@@ -1,0 +1,19 @@
+<package name="monitoring-plugins-zypper" project="openSUSE:Factory">
+  <title>Nagios plugin for checking software updates</title>
+  <description>This plugin checks for software updates on systems that use package
+management systems based on the zypper command found in openSUSE.
+
+It checks for security, recommended and optional patches and also for
+optional package updates.
+
+You can define the status by patch category. Use a commata to list more
+than one category to a state.
+
+If you like to know the names of available patches and packages, use
+the &quot;-v&quot; option.
+
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-zypper"/>
+  <url>http://en.opensuse.org/Nagios-plugins-zypper</url>
+</package>

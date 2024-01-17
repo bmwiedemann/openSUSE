@@ -1,0 +1,14 @@
+Index: jogl-v2.0.2/make/build-common.xml
+===================================================================
+--- jogl-v2.0.2.orig/make/build-common.xml
++++ jogl-v2.0.2/make/build-common.xml
+@@ -22,7 +22,7 @@
+     <!-- Add JOAL (optional) -->
+     <property name="joal.root" value="../../joal" />
+ 
+-    <property name="ant-contrib.jar"  value="${gluegen.root}/make/lib/ant-contrib-1.0b3.jar" />
++    <property name="ant-contrib.jar"  value="/usr/share/java/ant-contrib.jar" />
+ 
+     <condition property="rootrel.build" value="build">
+       <not>
+

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed Jan  6 10:34:55 UTC 2016 - coolo@suse.com
+
+- updated to 0.014
+   see /usr/share/doc/packages/perl-Test-HasVersion/Changes
+
+  0.014 Sat Jan 2 2016
+          - add LICENSE file to the distribution (#1)
+          - fix all_pm_version_ok() failure reporting (CPAN #78758)
+          - rewrite t/04_all_ok.t using Test::Builder::Tester (CPAN #78758)
+  
+  0.013 Sat Jan 2 2016
+          - fix spelling error in manpage (CPAN #110709)
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:57 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Thu Aug 25 22:28:23 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  + Test::More
+  + Test::Builder::Tester >= 1.04
+
+-------------------------------------------------------------------
+Sat Jan 22 19:54:41 UTC 2011 - coolo@novell.com
+
+- initial package 0.012
+  * created by cpanspec 1.78.03
+

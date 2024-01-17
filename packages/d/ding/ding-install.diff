@@ -1,0 +1,23 @@
+---
+ install.sh |   10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+--- ding-1.5.orig/install.sh
++++ ding-1.5/install.sh
+@@ -81,14 +81,8 @@ echo ""
+ $ECHO "Ready to install to $BINDIR and $LIBDIR? [y]/n: $END"
+ read yn
+ if [ "x$yn" != "xn" -a "x$yn" != "xN" ]; then
+-    sed -e "s#/usr/share/dict/de-en.txt#$LIBDIR/de-en.txt#" ding > /tmp/ding.$$
+- 
+-    echo /bin/cp ding "$BINDIR/ding"
+-    /bin/mv /tmp/ding.$$ "$BINDIR/ding"
+-    chmod 755 "$BINDIR/ding"
+-    echo /bin/cp de-en.txt "$LIBDIR/de-en.txt"
+-    /bin/cp de-en.txt "$LIBDIR/de-en.txt"
+-    chmod 644 "$LIBDIR/de-en.txt"
++    install -m 755 ding "$BINDIR/ding"
++    install -m 644 de-en.txt "$LIBDIR/de-en.txt"
+ else
+     echo "Install aborted."
+     exit 1

@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a46729c909a3c23985bf2ee90d02b71b</srcmd5>
+    <version>unknown</version>
+    <time>1619298496</time>
+    <user>dimstar_suse</user>
+    <comment>Submit cdi-uploadserver-container to Factory</comment>
+    <requestid>886471</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec563d20ac640d6c9a07b87ca79da897</srcmd5>
+    <version>unknown</version>
+    <time>1619552082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888560</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>155535303ff04c62ac04bae4d0271ba1</srcmd5>
+    <version>unknown</version>
+    <time>1620239990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890451</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b859f6d4b06d589c043cf76f4632a77c</srcmd5>
+    <version>unknown</version>
+    <time>1623268361</time>
+    <user>dimstar_suse</user>
+    <comment>- Include the registry in org.opensuse.reference</comment>
+    <requestid>898433</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>081fa4e6c65493310e34ccb3c41a0e52</srcmd5>
+    <version>unknown</version>
+    <time>1642198418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946486</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>318dc51847d2eed02b036ba05c3f1dc6</srcmd5>
+    <version>unknown</version>
+    <time>1659721884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993194</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>7ba5436f32711cee47cc8ae689761ec5</srcmd5>
+    <version>unknown</version>
+    <time>1665754930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010517</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3f51c28d49c57a3e9de46702362fc233</srcmd5>
+    <version>unknown</version>
+    <time>1688399026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096477</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>757f8f09ed1b13f7038b22400265df3b</srcmd5>
+    <version>unknown</version>
+    <time>1698170907</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119850</requestid>
+  </revision>
+</revisionlist>

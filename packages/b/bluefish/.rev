@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01934a327731b977f4584496738ccb20</srcmd5>
+    <version>2.2.3</version>
+    <time>1359038096</time>
+    <user>coolo</user>
+    <comment>time to get it into Factory again</comment>
+    <requestid>149655</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>01934a327731b977f4584496738ccb20</srcmd5>
+    <version>2.2.3</version>
+    <time>1359108705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d89b36ec594665c10a87c9226eebaa9</srcmd5>
+    <version>2.2.4</version>
+    <time>1360682691</time>
+    <user>coolo</user>
+    <comment>- update to 2.2.4:
+  + minor bugfix release
+  + various fixes for the tab-width on gtk 3.6
+  + improved auto-completion popup speed
+  + more simple search options
+  + paste improvements (to paste for example images from Libreoffice)
+  + pylint, cssmin, jsmin, csstidy and php_beautifier integration
+  + various language syntax definition files have also been improved</comment>
+    <requestid>155204</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3d89b36ec594665c10a87c9226eebaa9</srcmd5>
+    <version>2.2.4</version>
+    <time>1379662043</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>540badbd7833e416fad7e53552cd7bd5</srcmd5>
+    <version>2.2.5</version>
+    <time>1392962085</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223272</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6fd85ad7bd092072818f24c7611ac4c8</srcmd5>
+    <version>2.2.6</version>
+    <time>1404973016</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>239316</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6fd85ad7bd092072818f24c7611ac4c8</srcmd5>
+    <version>2.2.6</version>
+    <time>1409300570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cdb670442133f3086a5870fc1aa7fd1f</srcmd5>
+    <version>2.2.7</version>
+    <time>1432158941</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308065</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dd7514c0fb84c945d06c7bf45804ed11</srcmd5>
+    <version>2.2.7</version>
+    <time>1489345477</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477952</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f3199811c44b7355aa507853622d7b2e</srcmd5>
+    <version>2.2.10</version>
+    <time>1491896206</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483787</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c0ec6c4e3eeab6014bc8e53c9f1e0e59</srcmd5>
+    <version>2.2.10</version>
+    <time>1498485229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505865</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>fea7df725947a449ebb81c35a1e9a8a6</srcmd5>
+    <version>2.2.10</version>
+    <time>1512292417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547533</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d2f54a09e2fd40f716c1e812110ba1d7</srcmd5>
+    <version>2.2.11</version>
+    <time>1600347009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835048</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8d2557b7545343dbba37a379620cd353</srcmd5>
+    <version>2.2.12</version>
+    <time>1611770290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867055</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0fa97cb5584c8c1fd0fd54e92f68f3a1</srcmd5>
+    <version>2.2.12</version>
+    <time>1615363042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877912</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9f2a2cadbbd1a048ae2198d31a8544b4</srcmd5>
+    <version>2.2.12</version>
+    <time>1623868496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900230</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d464b3561858c740ac78166e5b223a15</srcmd5>
+    <version>2.2.13</version>
+    <time>1685212717</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.2.13</comment>
+    <requestid>1089293</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4a7c8c861d5e8a08b9b2360c21a1a20f</srcmd5>
+    <version>2.2.14</version>
+    <time>1687379997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094299</requestid>
+  </revision>
+</revisionlist>

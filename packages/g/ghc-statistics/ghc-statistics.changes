@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Wed Oct  4 08:35:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete code to remove +x permission from data files.
+
+-------------------------------------------------------------------
+Thu Sep 21 18:43:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.2.1.
+  ## Changes in 0.16.2.1
+
+   * Unnecessary constraint dropped from `tStatisticsPaired`.
+
+   * Compatibility with QuickCheck-2.14. Test suite doesn't fail every time.
+
+-------------------------------------------------------------------
+Fri Apr  7 17:07:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.2.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/statistics-0.16.2.0/src/changelog.md
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Dec  8 20:11:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.1.2.
+  ## Changes in 0.16.1.2
+
+   * Fixed bug in `fromSample` for exponential distribudion (#190)
+
+-------------------------------------------------------------------
+Thu May 12 18:58:41 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/statistics-0.16.1.0/src/changelog.md
+
+-------------------------------------------------------------------
+Fri Mar 18 18:26:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.0.2.
+  ## Changes in 0.16.0.2
+
+   * Bug in constructor of binomial distribution is fixed (#181). It accepted
+     out-of range probability before.
+
+-------------------------------------------------------------------
+Sat Jan  8 15:39:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.0.1.
+  ## Changes in 0.16.0.0
+
+   * Random number generation switched to API introduced in random-1.2
+
+   * Support of GHC<7.10 is dropped
+
+   * Fix for chi-squared test (#167) which was completely wrong
+
+   * Computation of CDF and quantiles of Cauchy distribution is now numerically
+     stable.
+
+   * Fix loss of precision in computing of CDF of gamma distribution
+
+   * Log-normal and Weibull distributions added.
+
+   * `DiscreteGen` instance added for `DiscreteUniform`
+
+-------------------------------------------------------------------
+Tue Sep  7 18:54:29 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- make rpmlint happy 
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sat Nov  7 15:34:30 UTC 2020 - psimons@suse.com
+
+- Add statistics at version 0.15.2.0.
+

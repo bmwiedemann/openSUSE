@@ -1,0 +1,10 @@
+<package name="python-isc_dhcp_leases" project="openSUSE:Factory">
+  <title>Python module for reading dhcpd.leases from ISC dhcp-server</title>
+  <description>Python module for reading dhcpd.leases from ISC dhcp-server.
+This module also supports reading lease files from the ISC dhcp daemon
+running in IPv6 mode.
+
+</description>
+  <devel project="devel:languages:python" package="python-isc_dhcp_leases"/>
+  <url>https://github.com/MartijnBraam/python-isc-dhcp-leases</url>
+</package>

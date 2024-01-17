@@ -1,0 +1,11 @@
+--- KbdWidget.c
++++ KbdWidget.c
+@@ -84,7 +84,7 @@
+ 		SimulateKeyRelease(highlighted, unlessMod) \
+ 		UnhighlightKey(highlighted, unlessMod)	\n\
+ \
+-<Btn3Down>:	XawPositionSimpleMenu(keyMenu)		\
++Any<Btn3Down>:	XawPositionSimpleMenu(keyMenu)		\
+ 		MenuPopup(keyMenu)			\n\
+ ";
+ 

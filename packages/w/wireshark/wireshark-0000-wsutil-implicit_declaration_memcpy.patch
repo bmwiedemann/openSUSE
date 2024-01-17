@@ -1,0 +1,14 @@
+Index: wireshark-4.2.0rc2/wsutil/glib-compat.h
+===================================================================
+--- wireshark-4.2.0rc2.orig/wsutil/glib-compat.h
++++ wireshark-4.2.0rc2/wsutil/glib-compat.h
+@@ -23,6 +23,9 @@ extern "C" {
+ #endif /* __cplusplus */
+ 
+ #if !GLIB_CHECK_VERSION(2, 68, 0)
++
++#include <string.h>
++
+ static inline void *
+ g_memdup2(gconstpointer mem, size_t byte_size)
+ {

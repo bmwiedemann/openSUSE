@@ -1,0 +1,8 @@
+<package name="dumb" project="openSUSE:Factory">
+  <title>Synamic Universal Music Bibliotheque</title>
+  <description>DUMB is a module audio renderer library. It reads module files and outputs audio that can be dumped to the actual audio playback library.
+
+This is a fork of the original dumb (http://dumb.sf.net/) by Ben Davis.</description>
+  <devel project="games" package="dumb"/>
+  <url>https://github.com/kode54/dumb</url>
+</package>

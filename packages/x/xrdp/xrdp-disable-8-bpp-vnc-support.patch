@@ -1,0 +1,34 @@
+From: Fuminobu TAKEYAMA <ftake@geeko.jp>
+Date: Mon, 01 May 2017 08:13:41 +0000
+Subject: [PATCH] disable 8 bpp vnc support
+
+Refresh the patch from Felix Zhang
+
+Xvnc drops support for 8 bpp since 1.4.0. Trying to launch Xvnc in
+8 bpp will cause it to dump core (bsc#991059).
+---
+ vnc/vnc.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+Index: xrdp-0.9.23.1/vnc/vnc.c
+===================================================================
+--- xrdp-0.9.23.1.orig/vnc/vnc.c	2023-11-30 21:35:40.981861400 +0100
++++ xrdp-0.9.23.1/vnc/vnc.c	2023-11-30 21:35:40.977861398 +0100
+@@ -1656,13 +1656,16 @@
+     switch (v->server_bpp)
+     {
+         case 8:
++            v->server_msg(v, "VNC error - 8 bpp support is dropped "
++                          "since Xvnc 1.4.0", 0);
++            return 1;
+         case 15:
+         case 16:
+         case 24:
+         case 32:
+             break;
+         default:
+-            v->server_msg(v, "VNC error - only supporting 8, 15, 16, 24 and 32 "
++            v->server_msg(v, "VNC error - only supporting 15, 16, 24 and 32 "
+                           "bpp rdp connections", 0);
+             return 1;
+     }

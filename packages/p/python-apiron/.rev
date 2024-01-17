@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0cb9370d5c52ab6ea1b4459f520374bc</srcmd5>
+    <version>5.0.0</version>
+    <time>1575463936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753121</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>735309d9e48ad53dad9f99236dfb7b98</srcmd5>
+    <version>5.1.0</version>
+    <time>1598885446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * Ability to specify proxies for a Service definition so all calls to the
+    service use the defined proxies
+  * Ability to specify auth for a Service definition so all calls to the
+    service use the defined authentication
+  * Ability to specify return_raw_response_object at the endpoint level,
+    overridden by any value specified at call time</comment>
+    <requestid>830623</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>97d69fcce817085c6ae54fb541ace4d1</srcmd5>
+    <version>6.0.0.post1</version>
+    <time>1630324510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914903</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a12081dddc7f2aa897703608e6eebc9</srcmd5>
+    <version>6.1.0</version>
+    <time>1641203402</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943491</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b346a74f0a3f7ece5dc5ab0b49012833</srcmd5>
+    <version>7.0.0</version>
+    <time>1671564068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043910</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1986a3a0aaae5a145a121aa61bf6ff4e</srcmd5>
+    <version>7.1.0.post3</version>
+    <time>1689710044</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.0-post.3:
+  * Update permissions in publishing workflow to allow publishing
+    of files to GitHub releases
+  * Use `package` and `wheel_build_env` to speed up tests as this
+    is a pure Python package. See the tox docs for more detail.
+  * Use PyPI trusted publishing instead of manual token
+    authentication
+  * You can now configure `retry_spec` and `timeout_spec` at the
+    endpoint level. Calls to endpoints may override the endpoint-
+    level configuration when necessary.</comment>
+    <requestid>1098925</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7aa4e3b113f686b35e23083b7ae8624</srcmd5>
+    <version>9.2.0</version>
+    <time>1578502493</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>761769</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c3172c2f607036df08f063049fd0329a</srcmd5>
+    <version>9.2.0</version>
+    <time>1599088598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831343</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3853791cc1d98ff158513fa80d5c0119</srcmd5>
+    <version>9.2.0</version>
+    <time>1599771204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833437</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>93191f63ebee407bd5d653193ca4f10a</srcmd5>
+    <version>9.2.0</version>
+    <time>1615905901</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add some -Wno-error because gcc appears to fall over MSVCRT
+  printf specifiers</comment>
+    <requestid>879114</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a22f7182cf3304fdf63d2b091556f84a</srcmd5>
+    <version>9.2.0</version>
+    <time>1617034905</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc</comment>
+    <requestid>881630</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b5aa286d47ea8712b31d2006dffb93bc</srcmd5>
+    <version>9.2.0</version>
+    <time>1633644378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923746</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e248e05b68f61fb0a6de884fc06fe4e8</srcmd5>
+    <version>10.3.0</version>
+    <time>1647367486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961818</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2fd09c520ba921a802afc18ce27cf6ac</srcmd5>
+    <version>12.1.0</version>
+    <time>1657281699</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987277</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a5ed6539816769e5c343ff7e0e5a83d1</srcmd5>
+    <version>12.1.0</version>
+    <time>1661593801</time>
+    <user>dimstar_suse</user>
+    <comment>- Add package mingw64-libstdc++-gdb-printer which provides pretty
+  printer for gdb that can be added to debug packages from installer
+  and portable packages
+  To use this pretty printer with gdb, the automatic load path
+  'safe path' must be turned off either with the gdb command 
+  'set auto-load safe path /' or by adding the command option
+  '-ex &quot;set auto-load safe-path /&quot;'.
+- Add gcc-12.1.0-fix-install-gdb-support-files.patch
+</comment>
+    <requestid>999460</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a73516a9e2f46e33f5f33924bb0fba39</srcmd5>
+    <version>12.2.0</version>
+    <time>1661863825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000168</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>94c0e9d4cf55e8ab78d5ff43c5b9746f</srcmd5>
+    <version>12.2.0</version>
+    <time>1683295073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084841</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a36b585c29772de27d8a4749438fe213</srcmd5>
+    <version>12.2.0</version>
+    <time>1687379917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093536</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>64ba4cb786495de47a462236ecf883b1</srcmd5>
+    <version>13.2.0</version>
+    <time>1699615994</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124754</requestid>
+  </revision>
+</revisionlist>

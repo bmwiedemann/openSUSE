@@ -1,0 +1,1248 @@
+-------------------------------------------------------------------
+Tue Nov 28 07:00:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.2:
+  * Prevent files from being moved to versioning recursively
+  * Return first FTP parsing error when trying multiple variants
+  * Allow file times from the future for Linux-style FTP listing
+
+-------------------------------------------------------------------
+Mon Nov  6 07:08:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.1:
+  * Keep comparison results when only changing cloud connection settings
+  * Sync button: indicate if database will be used
+  * Remove leading/trailing space during manual file rename
+  * Set environment variable "DISPLAY=:0" if missing (Linux)
+  * Support dropping ffs_gui/ffs_real config on RealTimeSync directory input field
+- Add FreeFileSync-remove_ifdef_exceptions.patch
+
+-------------------------------------------------------------------
+Thu Sep 21 08:01:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 13.0:
+  * Rename (multiple) files manually (F2 key)
+  * Configure individual directions for DB-based sync
+  * Detect moved files with "Update" sync variant (requires sync.ffs_db files)
+  * Update variant: Do not restore files that were deleted on target
+  * Distinguish file renames from file moves and simplify grid display
+  * Fixed ERROR_NOT_SUPPORTED when copying files with NTFS extended attributes
+  * Fixed error during process initialization while connecting with quick launch
+  * Avoid redundant file reopen when setting file times during copy
+  * Set working directory to match FFS configuration file when double-clicking (Linux)
+
+-------------------------------------------------------------------
+Wed Aug  2 12:20:05 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.5:
+  * Merge logs of individual steps (comparison, manual operation, sync)
+  * Show total percentage in progress dialog header
+  * Log and report errors during cleanup or exception handling
+  * Skip folder traversal if existence check fails for other side of the pair
+  * Automatically adapt batch options to prevent hanging a non-interactive process (Windows)
+  * Support path lists for external applications: %item_paths%, %local_paths%, %item_names%, %parent_paths%
+  * Create directory lock files with hidden attribute
+  * Don't clear other side when right-clicking file selection
+  * Fixed passive FTP when using different IP than control connection
+  * Work around FTP servers silently renaming unsupported characters of temporary file
+
+-------------------------------------------------------------------
+Wed Jun 28 06:51:57 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.4:
+  * Show dynamic error and warning count in progress dialogs
+  * Show process elevation status in title bar (Administrator, root)
+  * Fixed libcurl bug CURLE_URL_MALFORMAT for numerical host name
+  * Don't discard config panel last log after no changes found
+  * Set taskbar relaunch command to launcher executable (Windows)
+  * Fixed Btrfs compression not being applied during copy (Linux)
+  * Run on file systems with buggy GetFinalPathNameByHandle() implementation, e.g. Dokany-based
+  * Save selected view mode (F11) in batch config file
+- Rebase FreeFileSync-disable-in-app-updates.patch
+- Rebase FreeFileSync-resources.patch
+
+-------------------------------------------------------------------
+Sat May 20 13:03:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.3:
+  * Add custom notes to sync configurations
+  * Highlight comparison and sync buttons
+  * Show sync stats in config panel tool tip
+  * Update config panel sync info even if cancelled
+  * Support FTP listing format missing owner/group
+  * Fixed "Class not registered" error during installation
+  * Propagate process priority of launcher executable
+  * Fixed config panel metadata being reset after renaming
+  * Fixed config panel keyboard cursor after deletion/rename
+  * Improved small icon resolution for high-DPI monitors
+- Update icons to be 128x128
+- Add missing Animals.dat file
+- Drop FreeFileSync-fix-error.patch
+
+-------------------------------------------------------------------
+Tue May  9 14:32:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.2:
+  * Fixed temporary access error when creating multiple folders in parallel
+  * Log failure to copy folder attributes as warning only
+  * Enable UTF-8, even if FTP server does not advertize in FEAT (vsftpd)
+  * Fixed drag and drop for non-ASCII folders (macOS)
+  * Explicitly detect MTP path without existence check
+  * Fixed crash when parsing SFTP package from stream
+  * Fixed missing COM initialization for MTP path parsing
+- Add FreeFileSync-fix-error.patch to fix build with gcc13.
+
+-------------------------------------------------------------------
+Fri Feb 17 08:10:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.0:
+  * Don't save password and show prompt instead for (S)FTP
+  * Fast path check failure on access errors
+  * Support PuTTY private key file version 3
+  * Respect timeout during SFTP connect
+  * Removed 20-sec timeout while checking directory existence
+  * Avoid hitting (S)FTP connection limit for non-uniform configs
+  * Fixed middle grid tooltip icon not always showing (Linux)
+  * Optimized file accesses when checking file path existence
+  * Fixed overview navigation marker not always showing on main grid
+  * Clear all grid selections after view filter toggle
+  * Fixed mouse selection starting on folder group
+  * Don't require sudo during non-root installation (Linux)
+  * Stricter type checking when deleting file/folder/symlinks
+  * Succinct error messages when path component is not existing
+
+-------------------------------------------------------------------
+Sat Feb 11 14:48:04 UTC 2023 - Jannik Seiler <seil0@mosad.xyz>
+
+- Drop FreeFileSync-openssl-1.1.1.patch as it is no longer needed
+
+-------------------------------------------------------------------
+Sun Dec 25 20:20:12 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.29
+  - Fixed crash after 1-byte file copy from MTP device
+  - Fixed incorrect installer z-order during auto-update (macOS)
+  - Compress copied file only if target folder is marked as NTFS-compressed (Windows)
+  - Show install errors without requiring access to "System Events" (macOS)
+  - Fall back to creation time if modification time is missing on MTP device
+  - Copy/paste filter config via operating system clipboard
+  - Show FreeFileSync startup error message when called from RealTimeSync
+  - Avoid server round trip when preparing summary email
+  - Show path conflict warning aggregated into groups
+  - Don't assume path conflict if single write and multiple ignored items
+  - Fixed CTRL + Insert clipboard copy for some text controls (Windows, Linux)
+- Changes from 11.28
+  - Recover from corrupted database file
+  - Save database files pair-wise as a transaction
+  - Fixed FTP access for Xiaomi "File Manager"
+  - Fixed filter full path detection for root directory (Linux/macOS)
+  - Fixed recycle bin double initialization bug (Windows)
+  - Fixed incorrect case-insensitive string comparison for i and ı
+  - Round progress percentage numbers down
+- Changes from 11.27
+  - Fixed "Some files will be synchronized as part of multiple base folders" false-negative
+  - Fixed "Unexpected size of data stream" for Google Drive
+  - Fixed crash when downloading empty file from Google Drive
+  - RealTimeSync: fixed ffs_batch not accepted as valid configuration
+  - Fixed top buttons vertical GUI layout
+  - Fixed progress dialog font on Ubuntu MATE
+  - Support cut/copy/paste for filter settings
+  - Fixed free disk space calculation if target folder not yet created
+- Changes from 11.26
+  - Faster file copy for SSD-based hard drives (Linux, macOS)
+  - Don't fill the OS file cache during file copy (macOS)
+  - Removed redundant memory buffering during file copy
+  - Fixed ERROR_FILE_EXISTS on Samba share when copying files with NTFS extended attributes
+  - Show warning when recycle bin is not available (macOS, Linux)
+  - Customize config item background colors
+  - Fixed macOS menu bar not showing after app start
+  - Fixed normalizing strings with broken UTF encoding
+  - Fixed sound playback not working (Linux)
+  - Don't allow creating file names ending with dot character (Windows)
+- Changes from 11.25
+  - Fixed crash when normalizing Unicode non-characters
+  - Fixed crash when accesssing Google Drive
+  - Fixed regession for decomposed Unicode comparison
+  - Fixed "exit code 106: --sign is required" error on macOS
+  - Reset icon cache after each comparison
+- Changes from 11.24
+  - Enhanced filter syntax to match files only (append ':')
+  - Fixed "Some files will be synchronized as part of multiple base folders": no more false-positives
+  - Detect full path filter items and convert to relative path
+  - Auto-detect FTP server character encoding (UTF8 or ANSI)
+  - Cancel grid selection via Escape key or second mouse button
+  - Apply conflict preview limit accross all folder pairs
+  - Require config type and file extension to match
+  - Fixed view filter panel vertical layout
+  - Strict validation of UTF encoding
+-------------------------------------------------------------------
+Sat Aug 26 15:03:02 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.23
+  - Format local file times with no limits on time span
+  - Deferred child item failure when traversing MTP folder
+  - Fixed occasional wrong thumbnail orientation for MTP
+  - Support additional image formats for MTP preview (e.g. CR2)
+  - Fixed folder pair window being squashed after text size increase
+  - Fixed wrong folder pair order when loading config (Linux)
+  - Fixed some images being stretched on high-DPI monitors
+  - Fixed config panel tab text being mirrored in RTL layout
+  - Fixed parsing file times one second before Unix epoch (Gdrive, FTP)
+- Changes from 11.22
+  - Allow to change default log folder in global settings
+  - Fixed sort order when items existing on one side only
+  - Consider HOME environment variable for home path (Linux)
+  - Fixed config selection using shift and arrow keys
+  - Start comparison, then sync by only pressing Enter after startup
+  - Fall back to default path when failing to save log file
+  - Improved relative config path handling in portable mode
+- Changes from 11.21
+  - Support volume GUID as path: \\?\Volume{01234567-89ab-cdef-0123-456789abcdef} (Windows)
+  - Avoid Two-Way conflict when changing folder name upper/lower-case
+  - List hidden warning messages in options dialog
+  - Fixed buffer overflow while receiving SFTP server banner
+  - Create crash dumps even if FFS-internal crash handling doesn't kick in
+  - Log time when error occured, not when it is reported
+  - Swap sides: Require confirmation only after comparison
+  - Updated translation files
+- Changes from 11.20
+  - Fixed broken icon scaling on high-DPI displays
+  - Fixed user language set to English after update
+- Drop obsolete FreeFileSync-build-with-gcc12.patch
+- Drop obsolete FreeFileSync-build-with-wx3.1.5.patch
+- Update FreeFileSync-disable-in-app-updates.patch for version 11.23
+- Update FreeFileSync-icon-loader.patch for version 11.23
+- Update FreeFileSync-resources.patch for version 11.23
+-------------------------------------------------------------------
+Sat Jun 11 15:06:02 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.19
+  - Improved performance for huge exclusion filter lists: linear to constant(!) time
+  - Support sync with Google Drive starred folders
+  -   - Access "My Computers" (as created by Google Backup and Sync) if starred
+  - Western Digital Mycloud NAS: fixed ERROR_ALREADY_EXISTS when changing case
+  - Added per-file progress for "copy to" function
+  - Have filter wildcard ? not match path separator
+  - Work around WBEM_E_INVALID_NAMESPACE error during installation
+  - Fixed login user incorrectly displayed as root (macOS)
+  - Save Google Drive buffer before system shutdown
+- Changes from 11.18
+  - Add comparison time to sync log when using GUI
+  - Added user-configurable timeout for Google Drive
+  - Consider port when comparing (S)FTP paths for equality
+  - Fixed SFTP key file login error on OpenSSH_8.8p1
+  - Add error details for NSFileReadUnknownError (macOS)
+  - Disable new config button when already at default
+  - Use user language instead of region locale during installation
+- Changes from 11.17
+  - Show per-file progress in percent when copying large files
+  - Log app initialization errors
+  - Fixed uncaught exception after installation
+  - Defer testing for third-party buggy DLLs until after crashing
+  - Consider ReFS 128-bit file ID failure states (Windows)
+  - Refer to volume by name: support names including brackets
+  - Support local installation with non-standard home (Linux)
+- Add FreeFileSync-build-with-gcc12.patch to fix build with gcc12
+- Add FreeFileSync-build-with-wx3.1.5.patch to fix build with wxWidgets 3.1.5
+- Update FreeFileSync-build.patch for version 11.19
+-------------------------------------------------------------------
+Sun Jan 16 17:42:44 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.16
+  - Allow to select and remove invalid config file
+  - Migrated all HTTPS requests to use libcurl (Linux, macOS)
+  - Set keyboard focus on config panel after startup
+  - Added computer name to log file trailer
+  - Context menu instead of confirmation dialog for swap sides
+  - Fixed config selection lost after auto-cleaning obsolete rows
+  - Install app files with owner set to root (Linux)
+  - Don't override keyboard shortcut "CTRL + W" (macOS)
+  - Migrated key conversion routines deprecated in OpenSSL 3.0
+  - Boxed app icon to fit OS theme (macOS)
+  - Fixed manual retry after automatic update check error
+  - Fixed missing ampersands in middle grid tooltip
+- Changes from 11.15
+  - Play sound reminder when waiting for user confirmation
+  - Enhanced crash diagnostics with known triggers
+  - Defer reporting third-party incompatibilities until after crashing
+  - Fixed Server 2019 not being detected for log file
+  - Use native representation for modified config (macOS)
+  - Improved WinMerge detection for external app integration
+- Changes from 11.14
+  - Authenticate (S)FTP connections using OpenSSL 3.0
+  - Fixed E_NOINTERFACE error after synchronization
+  - Preempt crashes due to Nahimic Sonic Studio 3
+  - Hide main window when minimizing progress window (macOS)
+  - Avoid second dock icon when minimizing progress window (macOS)
+- Add FreeFileSync-openssl-1.1.1.patch to fix build with openssl 1.1.1
+- Update FreeFileSync-disable-in-app-updates.patch for version 11.16
+- Rename FreeFileSync-Build.patch to FreeFileSync-build.patch
+- Rename FreeFileSync-icon_loader.patch to FreeFileSync-icon-loader.patch
+- Rename FreeFileSync-Resources.patch to FreeFileSync-resources.patch
+-------------------------------------------------------------------
+Sun Jan 16 17:01:17 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Add FreeFileSync-disable-in-app-updates.patch to disable the in app 
+  standalone updater for the packaged version of FreeFileSync.
+
+-------------------------------------------------------------------
+Tue Aug 24 01:51:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from descriptions.
+
+-------------------------------------------------------------------
+Sun Aug 22 11:37:57 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.13
+  - Manage default filter settings via GUI
+  - Support arbitrary location for local app installation (macOS)
+  - Fixed ERROR_FILE_NOT_FOUND masking real file access error (Windows)
+  - Copy full file paths to clipboard (CTRL + C)
+  - Preserve clipboard contents until after program exit
+  - Always enable external command if independent of file items
+  - Support installation without Rosetta2 on ARM64 (macOS)
+- Changes from 11.12
+  - Native ARM64 build to support Apple silicon M1 (macOS)
+  - Non-intrusive mouse highlight on file grid
+  - Fixed /lib/i386-linux-gnu/libgcc_s.so.1: version `GCC_7.0.0' not found
+  - Parse file times with no limits on time span (e.g. year 0, year 3000)
+  - Show folder icon during drag and drop (Windows)
+  - Show user name for (S)FTP display paths
+  - Fixed FTP connection lost error with TLS 1.3
+  - Present file sizes in powers of 1000 bytes (Linux, macOS)
+
+-------------------------------------------------------------------
+Wed Jun 16 18:54:18 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.11
+  - Fixed Shared Drive synchronization with Google Drive
+  - Directly open exported file list (.CSV) as temporary file
+  - Avoid EIO error for F_PREALLOCATE (macOS)
+  - Watch socket using "poll" instead of "select" (Linux, macOS)
+  - Fixed user-specific time/date format (Windows)
+  - Fixed system_profiler not found error (macOS)
+- Changes from 11.10
+  - Fixed comparison results cleared after mouse-scrolling the first folder pair
+  - Stricter base folder existence checks before synchronization
+  - Disable all file pairs when base folder status cannot be determined
+  - Fixed sync statistics if base folder existence test failed
+  - Work around glitch in grid scrollbar size calculation
+  - Fixed folder drag and drop failing after locale conflict (macOS)
+  - Fixed incorrect MIME permissions after installation (Linux)
+  - Stricter server response validation during update check
+  - Fixed incomplete item path in log if source item is missing
+  - Fixed installation error when running ConEmu
+  - Support starting FreeFileSync as root login user (Linux)
+
+-------------------------------------------------------------------
+Fri May 21 19:40:09 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.9
+  - Save different layouts depending on screen resolution
+  - Fixed large file icon scaling quality (Windows)
+  - Fixed broken default filter excluding DocumentRevisions (macOS)
+  - Don't immediately exit terminal when installer error is showing (Linux)
+  - Explicitly set file permissions when installing missing directories (Linux)
+  - Support installation using noexec temp directory (Linux)
+  - Don't fail installation if root is the only user (Linux)
+  - Added automatic socket close on execv (Linux, macOS)
+  - Fixed Google Drive login hanging after authentication (Linux)
+  - Correctly generate and parse Windows epoch time (Windows, macOS)
+- Changes from 11.8
+  - Fixed unexpected file size error when copying to (S)FTP, and Google Drive
+- add FreeFileSync-icon_loader.patch to fix build error
+  
+-------------------------------------------------------------------
+Tue Mar  2 22:17:33 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.7
+  - Detect moved files on FTP (if server supports MLSD)
+  - Allow installation only for current or all user(s) (Linux)
+  - Added application uninstaller: uninstall.sh (Linux)
+  - Use login user config path when running as root (macOS, Linux)
+  - Fixed detection of moved files with unstable device IDs (macOS, Linux)
+  - Strict checking for duplicate file IDs
+  - Avoid EINVAL invalid argument error when using F_PREALLOCATE (macOS)
+  - Restore input focus after closing log panel
+  - Double-click on file to open Google Drive web interface
+  - Fixed alpha channel image scaling glitch
+  - Fixed recycle bin folders being created recursively
+  - Fixed thread count status message fluctuation
+  - Don't quit FreeFileSync when parent terminal is closed (SIGHUP)
+  - Fixed "Operation not supported" error when setting directory locks
+  - Show folder picker despite SHCreateItemFromParsingName() error
+  - Work around "OLE received a packet with an invalid header" error
+- Changes from 11.6
+  - New FreeFileSync installer (Linux)
+  - New auto-updater for the Donation Edition (macOS, Linux)
+  - Support reading FTP file symlinks
+  - Added context menu option "Edit with FreeFileSync" (Linux, KDE)
+  - Support starting via symlink (macOS)
+  - Command line support with "freefilesync" symlink 
+    in /usr/local/bin (macOS)
+  - Fixed starting via symlink found by PATH (Linux)
+  - Preserve keyboard focus when starting sync via F9
+  - Don't show relative parent path if folder does not exist
+  - Added high-resolution application icons (Linux, macOS)
+  - Work around "500 'HELP' command unrecognized" FTP error
+  - Fixed menu bar icon not being removed immediately (macOS Big Sur)
+  - Don't allow folder names ending with dot character (Windows)
+  - Mitigate ERROR_ALREADY_ASSIGNED: Local Device Name Already 
+    in Use [Wnetaddconnection2]
+  - Fixed startup failure when app folder contains back quote char (macOS)
+  - Fixed network card not found error on virtual machine (KVM Linux)
+  - Fixed RTL layout direction in popup dialogs
+- Changes from 11.5
+  - New configuration context menu option to delete from disk
+  - Start auto retry delay at time of error instead of reporting
+  - Added error details to status message before retry
+  - Improved color scheme to better integrate with system colors
+  - Keep partial SFTP results after network failure
+  - Fixed incorrect panel font (macOS Big Sur)
+  - Fixed SFTP retry not working after network drop
+  - Fixed crash on exit with floating panels (macOS Big Sur)
+  - Fixed auto-close option not being remembered
+  - Fixed installer high-DPI scaling issues
+  - Fixed mouse hover issues with grid column header
+  - Fixed menu bar icons not showing (Linux)
+  - Removed redundant GUI layout recalculations
+  - Keep correct panel sizes after log panel maximize
+  - Support modern folder picker in installer
+  - Don't raise progress dialog after sync when resuming from systray
+
+-------------------------------------------------------------------
+Fri Dec 11 07:53:28 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.4
+  - New progress graph "this one sparks joy"
+  - Remember progress dialog size
+  - New config file context menu option: Show in file manager
+  - Work around libcurl performance bug during FTP upload
+  - Only log modification time errors after comparing by size or content
+  - Smaller icon size for efficient screen layout (Linux)
+  - Use system-native recycle bin icon
+  - Fixed DeviceIoControl(IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS): ERROR_MORE_DATA
+  - Support MTP devices lacking a friendly name
+  - Fix grid scrolling with small mouse rotations (macOS)
+  - Faster mouse scrolling on high-DPI resolution displays
+  - Keep previous windows size when maximized during auto-exit
+- use %autosetup instead of %setup and %patch
+- replace %desktop_database_postun with %filetrigger{in,postun}
+
+-------------------------------------------------------------------
+Tue Nov  3 11:33:35 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.3
+  - Enhanced main grid color scheme
+  - Mouse-highlight for file selection
+  - Added file create/delete indicators
+  - Show file list tooltip for missing items
+  - Click folder name and scroll to group start
+  - Log failure to create application default config folder
+  - Added tooltips and fixed help link context menu
+  - Fixed tooltip not updated when scrolling (macOS, Linux)
+  - Move error dialogs to foreground during batch sync
+  - Align context menu popup positions
+  - Updated translation files
+    
+-------------------------------------------------------------------
+Sat Oct  3 08:47:24 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.2
+  - Improved grid layout with file icons hidden
+  - Improved rendering of inactive and disabled grid items
+  - Remember last user-selected paths for file and folder pickers
+  - Fixed folder name hidden in "item name" view type
+  - Fixed determination of unsupported trash folder (Linux)
+  - Fixed copying broken symlinks (macOS)
+  - Fixed default action when pressing Enter in popup dialogs
+  - Fixed default popup dialog size (macOS)
+  - Use localized start of week for %WeekDay% (Linux, macOS)
+  - Swap sides using CTRL+W instead of F10
+  - Show confirmation dialog before swapping sides
+
+-------------------------------------------------------------------
+Wed Sep  2 11:06:48 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.1
+  - New file group layout on main grid (reloaded)
+  - Alternate colors for main grid folder groups
+  - Added file group context menu
+  - Quick selection of items in folder group
+  - Fixed FTP access errors with Explicit SSL/TLS
+  - Fixed Google Drive error when double quotes in file name
+  - Fixed RTL layout bug with number input control
+  - Fixed grid column default sizes
+  - Fixed grid rendering performance during mouse scrolling
+  - Update all config files transactionally
+  - Respect user-preferred number/time format (Linux)
+  - Fixed floating panels not being resizable (Linux)
+  - Instantly open selection context menu on right mouse button down
+  - Further improved high DPI support
+  - Updated deprecated system API calls (requires macOS 10.10 or later)
+  - Fixed crash when accessing Nexis storage (macOS)
+  - Avoid buffer flush when aborting native file output
+  - Clear preview after folder history selection
+  - Pre-allocate target file without setting size
+  - Unified system error message formatting 
+
+-------------------------------------------------------------------
+Wed Aug  5 10:00:02 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 11.0
+  - Revised file layout on main grid
+  - Skip download/upload when copying Google Drive files inside account
+  - Support moving Google Drive files between shared drives and My Drive
+  - Support copying Google Drive shortcuts between accounts
+  - Support copying Google Docs, Sheets, Slides, etc. within account
+  - Fixed parsing uninitialized Google Drive modification time
+  - Fixed Google Drive file already existing check running too late
+  - Ignore slash/backslash differences during manual search
+  - Avoid creating orphan database entry if one DB file fails to load
+  - Limit modification time error count for log file warning message
+  - Support copying WSL symlinks
+  - Avoid duplicate MTP/Google Drive item creation from multiple threads
+  - Fixed TMPDIR not found during startup (macOS)
+  - Added sync variant icons
+  - Avoid redundant icon format conversions
+  - Buffer high-DPI image scaling results
+  - Improved MTP thumbnail scaling performance
+  - Avoid race condition during parallel file icon rendering (Linux)
+  - Allow creating folder name with leading/trailing spaces
+  - Start supporting GTK3 (Linux) 
+
+-------------------------------------------------------------------
+Mon Dec 31 14:15:04 UTC 2018 - thomasglatt@gmx.de
+
+- make it compile! 
+
+-------------------------------------------------------------------
+Wed Dec 19 19:27:52 UTC 2018 - thomasglatt@gmx.de
+
+- Update to 10.7
+  - Resolve ambiguous paths in (S)FTP folder picker
+  - Fixed path alias check to not rely on volume serial
+  - Check already existing move target by ID instead of path
+  - Use native image conversion routines in installer
+  - Added base folder info for unresolved conflicts message
+  - Avoid silent failure when setting epoch modTime
+  - Fixed parsing locale with unexpected format
+  - Fixed RealTimeSync failing to start FreeFileSync batch
+  - Exclude failed item paths containing backslash in names
+  - Fixed RealTimeSync GUI distortion after drag & drop
+  - Support command arguments and exit code with launcher
+  - Consider UTF encoding when trimming long temp name during file copy
+
+-------------------------------------------------------------------
+Mon Sep 24 15:24:38 UTC 2018 - ecsos@opensuse.org
+
+- Update to 10.4
+  - Allow overriding log folder path for gui and batch runs
+  - Fixed RTS not triggering for volume path by name
+  - Fixed reading FTP folders including wildcard chars
+  - Fixed image overlay graphics glitch (Linux)
+  - Don't show error if versioning folder is not yet existing
+  - Fixed crash removing folder pair before comparison (F5)
+  - Fixed crash when parent of newly-moved file is missing
+  - Fixed statistics when folder containing moved files is found 
+    missing
+
+-------------------------------------------------------------------
+Mon Sep 24 15:18:52 UTC 2018 - ecsos@opensuse.org
+
+- Update to 10.3
+  - New log panel showing details about the last operation
+  - Show status of last syncs in configuration panel
+  - Access log files via the configuration panel
+  - Allow auto-retry and ignore errors during comparison
+  - Show folder RealTimeSync is waiting on
+  - New %logfile_path% macro for "on completion" command
+  - Show errors and warnings count in log file header
+  - Fixed crash when resizing panel during comparison
+  - Fixed folders created hidden when source is a volume root path
+  - Use steady clock while waiting in RealTimeSync
+  - Fixed folder access error with Google Drive File Stream
+  - Open global log folder path via options dialog
+  - Limit global logs by age instead of size
+  - Deprecated batch-level log files and LastSyncs.log 
+
+-------------------------------------------------------------------
+Wed Jul 25 15:40:01 UTC 2018 - thomasglatt@gmx.de
+
+- Update to 10.2
+  - Limit number of file versions by age and count
+  - Report not yet existing folders as warning instead of error
+  - Improved comparison speed for high-latency traversals
+  - Set up parallel file operations for versioning folder
+  - Early clean up to avoid hitting (S)FTP connection limits
+  - Support FTP servers with ANSI encoding
+  - Fixed folder drag and drop for modal dialogs
+  - Fixed progress graph glitch due to unsteady system clock
+  - Unbuffered folder lock file existence checking
+  - Fixed macOS Donation Ed. not recognized after rename
+  - Updated translation files
+
+-------------------------------------------------------------------
+Tue Jun 19 22:42:35 UTC 2018 - ecsos@opensuse.org
+
+- update to 10.1
+  - Binary-compare multiple files in parallel
+  - Copy file permissions when creating base folders
+  - Fixed hang when scrolling file list (Windows)
+  - Fixed file list mismatch when cancelling sync
+  - Fixed delay when cancelling folder existence check
+  - Fixed sync processing order to honor FIFO
+  - Fixed startup delay when internet is offline (Linux, macOS)
+  - Fixed crash when closing via the macOS Dock
+  - Support installation without admin rights (macOS)
+  - Fixed bcrypt.dll not found on startup (Windows XP)
+  - Respect Content-Length header for HTTP requests
+  - Support parallel folder traversal on Ubuntu 16.4
+  - Fixed missing shared library dependencies (Linux)
+  - Unified precompiled Linux binary packages
+
+- changes from 10.0
+  - The installer is now ad-free!
+  - Sync multiple files in parallel (Donation Edition)
+  - Compare multiple files in parallel within a single folder tree
+  - Aggregate worker threads per device during folder traversal
+  - Reset GUI layout configuration for high DPI displays
+  - Keep GUI responsive during synchronization
+  - Remember maximum number of visible folder pairs
+  - Fixed high DPI issues in installer
+  - Don't delay errors by callback interval during comparison
+  - Handle concurrent intermediate folder creation for versioning
+  - Sync all folder level items before recursion (avoid CWDs)
+  - Updated translation files
+
+- changes from 9.9
+  - High DPI display support
+  - Allow automatic retry at configuration level
+  - Show error handling settings during sync
+  - Avoid libpng.so dependency (Linux)
+  - Fixed undefined behavior closing paused progress dialog
+  - Check if buggy DLLs are loaded into address space (Windows)
+  - Fixed FTP parsing error for Windows CE device
+  - Workaround VSS provider implementation bug
+  - Respect macOS user settings for date and thousands separator
+  - Updated translation files
+
+-------------------------------------------------------------------
+Mon Feb 26 16:33:59 UTC 2018 - thomasglatt@gmx.de
+
+- update to 9.8
+  - New option to auto-close progress dialog
+  - Update last sync time if no differences found
+  - Added 5 seconds countdown before shutdown/sleep
+  - Preserve XML attribute creation order
+  - Support HTTPS web accesses without redirect
+  - Connect network share upon logon type not granted
+  - Fixed invalid pointer error when reading MTP
+  - Fixed temporary db file triggering RealTimeSync
+  - Fixed runtime error during uninstallation
+  - Continue status updates during sync cancellation
+  - Log number of items found during comparison
+  - Warn about outdated nviewH64.dll instead of crashing
+  - Show default log file path when saving a batch job
+  - Consider only full days for time since last sync
+- rebase patch freefilesync-build.patch
+
+-------------------------------------------------------------------
+Mon Jan 22 14:33:23 UTC 2018 - ecsos@opensuse.org
+
+- fix build for openSUSE_Leap_15.0
+
+-------------------------------------------------------------------
+Sat Oct  7 09:31:05 UTC 2017 - ecsos@opensuse.org
+
+- update to 9.4
+  - Fixed copying files with locked byte ranges using VSS
+  - Fixed wrong FTP working directory reuse in libcurl
+  - Allow retry upon failure during online update check
+  - Repackaged Donation Edition to reduce AV false positives
+  - Apply correct directory path encoding during FTP traversal
+  - Fixed strict weak ordering for SFTP session ID sorting
+  - Clean up read-only temporaries during failed sparse file copy
+  - Fixed access denied file copy error for ADS
+  - Workaround broken SMB servers reporting sparse support
+  - Support hash characters in FTP directory listing
+  - Prepared auto-updater to support new installer format
+  - Refined installer error reporting
+  - Streamlined sync config dialogs
+  - Resized installer window dimensions
+
+-------------------------------------------------------------------
+Sun Aug 27 09:45:23 UTC 2017 - ecsos@opensuse.org
+
+- update to 9.3
+  - Support multiple connections per FTP folder traversal
+  - 35% faster folder traversal for FTP servers supporting MLSD
+  - Use single CWD when changing FTP working directory
+  - Fixed EOPNOTSUPP error on gvfs-mounted FTP (Linux)
+  - Maximize FTP I/O speed using prefetch/output buffers
+  - Prevent input focus stealing after manual comparison
+  - Use larger socket buffer for FTP upload speed increase
+  - Fixed out of memory error when copying large files via FTP
+  - New popup dialog option to ignore all errors
+  - Reduced memory peaks by enforcing streaming buffer size limits
+  - Removed custom sync directions from config XML if not needed
+  - Flash task bar after comparison if other app has input focus
+
+-------------------------------------------------------------------
+Mon Jul 17 19:44:49 UTC 2017 - ecsos@opensuse.org
+
+- update to 9.2
+  - Use direct copy instead of transaction to speed up versioning
+  - Replaced file existing handling with use of unique temporary 
+    names
+  - Support SFTP authentication via Pageant/SSH agent
+  - New menu option to restore hidden panels individually
+  - Fixed GTK button icon being truncated (Linux)
+  - Fixed error dialog hiding behind progress dialog (macOS)
+  - Round out FTP symlink deletion handling
+  - Support four-digit year format on IIS FTP
+  - Fixed FTP parsing error for epoch time on Windows server
+  - Narrow contract for file system abstraction regarding existing 
+    files
+  - Treat failure to load database as error rather than warning
+  - Save root folder access for certain FTP path checks
+
+-------------------------------------------------------------------
+Thu Jun  8 10:32:00 UTC 2017 - ecsos@opensuse.org
+
+- update to 9.1
+  - Fixed crash when getting invalid data after item type check
+  - Fixed copying symlinks pointing to network folders
+  - Support resolving network paths in the NT namespace
+  - Support FTP servers with broken MLST command (Pure-FTPd)
+  - Fixed FTP access error on file names containing special chars
+  - Include raw FTP server response in error message
+  - Quickly check server connection using a single FEAT
+  - Don't change working directory when sending a single FTP 
+    command
+  - Support FTP Unix listings missing group name
+  - Support RFC-2640-non-compliant FTP servers having UTF8 disabled
+  - Support FTP servers returning non-routable IP in PASV response
+  - Support IPv6 when establishing FTP connections
+  - Start external application keyboard shortcuts with zero
+
+- changes from 9.0
+  - Support synchronization via FTP (File Transfer Protocol) 
+    and FTPS (SSL/TLS)
+  - Notify failure to set modification time as a warning instead 
+    of an error
+  - Allow intermediate non-folder components when checking path 
+    status
+  - Prevent file drop events from propagating to parent windows
+  - Create Downloads folder if not yet existing when running 
+    auto-updater
+  - Get all MTP input stream attributes as a single device access
+  - Improved SFTP input stream copying time by 20%
+  - Buffer (S)FTP sessions based on all login information
+  - Finalize all installation steps before showing finished page
+  - Updated translation files
+
+- changes from 8.10
+  - Fully preserve case-sensitive file paths (Windows, macOS)
+  - Support SFTP connections to local hosts
+  - Warn if versioning folder is contained in a base folder
+  - Use natural string sorting algorithm for item lists
+  - Consider exclude filter settings for folder dependency checks
+  - Fixed file not found error on case-sensitive SFTP volume
+  - Fixed failure when creating MTP sub directories
+  - Fixed crash when loading database file during comparison
+  - Refactored UTF conversion routines
+  - Use pipe symbol as filter separator instead of semicolon
+  - Iterate over all matching SFTP connections available on 
+    a server (macOS)
+  - Reduced folder matching time by 12%, average memory use by 11%
+  - Added experimental FTP support
+
+- changes from 8.9
+  - Detect when database file was copied and avoid "second part 
+    missing" error
+  - Further reduced size of database files by 20%
+  - Reduced amortized number of file operations during versioning
+  - Added database file consistency checks to catch unexpected 
+    number of stream associations
+  - Improved file I/O by detecting cross-device moves via path
+  - Fixed path parsing failure when creating MTP directories
+  - Implemented buffered stream I/O abstraction to prepare for FTP
+  - Generalized file path handling for abstract file system 
+    implementations
+  - Warn about outdated AvmSnd.dll before crashing during sound 
+    playback
+  - Avoid libunity9 dependency for Ubuntu builds
+  - Refactored OpenSSL and libssh2 initialization/shutdown
+  - Case-insensitive grid sorting on Linux
+  - Added 32-bit precompiled Debian/Ubuntu release
+
+- changes from 8.8
+  - Distinguish file access failure from not existing during sync
+  - Further optimized number of file I/O operations via file 
+    system abstraction
+  - Report unexpected prompts for keyboard-interactive SFTP 
+    authentication
+  - Mark followed directory symlinks on grid
+  - Fixed parent path determination for UNC
+  - Don't skip source files that cannot be accessed
+  - Don't consider a symlink type for SFTP when comparing 
+    by content
+  - Fixed invalid parameter error when setting file times on 
+    exFAT file system
+  - Don't allow overwriting folder with equally named file when 
+    copying from main dialog
+  - Fixed failure to create intermediate directories for 
+    Cryptomator/Webdav
+  - Refactored file system abstraction layer for future FTP support
+  - Fixed failure to change file name case on MTP devices
+  - Fixed late failure for batch recycling when parsing of single 
+    item fails
+
+- changes from 8.7
+  - New auto-updater feature for FreeFileSync Donation Edition
+  - Download zip archive of portable FreeFileSync Donation Edition
+  - New command line options to define parameters for silent 
+    installation
+  - Support offline activation for portable Donation Edition
+  - Use automatic keyboard-interactive SFTP authentication as 
+    fallback
+  - Check for available SFTP authentication methods before login
+  - Support cloud sync of portable edition installation files
+  - Access donation transaction details from about dialog
+  - Use width from flexible grid column when showing/hiding extra 
+    columns
+  - Show item short names in middle column tooltip
+  - Enhanced file category descriptions with modification times
+  - Don't warn about missing recycle bin when only moving or 
+    updating attributes
+  - Fixed crash when switching to main dialog during batch sync
+
+- changes from 8.6
+  - Added SFTP support for OS X
+  - Support SFTP authentication via public/private key
+  - Remember configuration history scroll position
+  - SFTP folder picker supports browsing hidden folders
+  - Fixed failure to copy files with corrupted ADS
+  - Signed application installer (OS X)
+  - Increase config history default size to 100 items
+  - Auto-close FreeFileSync processes before uninstallation
+  - Simplified SFTP configuration syntax
+  - Fixed update check sending incomplete keep-alive header
+  - Detailed error reporting after failed web access
+  - Suggest folder path macro substitutions also at inner positions
+  - Transfer folder creation times (OS X)
+
+- fix build error for tumbleweed
+
+-------------------------------------------------------------------
+Sat Sep 17 08:51:09 UTC 2016 - ecsos@opensuse.org
+
+- update to 8.5
+  - Support multiple SSH connections per SFTP folder traversal: 
+    N times speed up
+  - Support multiple SFTP channels per SSH connection: additional 
+    N times speed up
+  - Fixed installer crashes by using correct DEP-compatibility
+  - Fixed notification area icon being generated too often
+  - Thread-safe SFTP deinitialization on shutdown
+  - Thread-safe mini-dump creation during shutdown
+  - Fixed case-insensitive migration of new csidl macro names
+  - Reduced SFTP access serialization overhead
+  - Buffer SFTP sessions independently from usage context
+  - Detect and discard timed-out SSH sessions
+  - Pre-empt SFTP session disconnect via dedicated SFTP cleanup
+    thread
+  - Run SFTP tasks directly on worker threads without helper thread 
+    overhead
+
+-------------------------------------------------------------------
+Fri Aug 19 08:56:48 UTC 2016 - ecsos@opensuse.org
+
+- update to 8.4
+  - Mark temporary copies created by %local_path% read-only
+  - Fixed crash when accessing Bitvise SFTP Servers
+  - Support nanosecond-precision file time copying (Linux)
+  - Start maximized instead of in full screen mode (OS X)
+  - Fixed crash while setting privileges during shutdown
+  - Fixed crash when failing to clean up log files
+  - Fixed EOPNOTSUPP error when copying file to gvfs Samba share 
+    (Linux)
+  - Fixed default external applications command line (Linux)
+  - Thread-safe translation change even during app shutdown
+  - Don't consider port and password when comparing SFTP paths
+  - Updated translation files
+
+-------------------------------------------------------------------
+Sat Jul  9 07:56:00 UTC 2016 - ecsos@opensuse.org
+
+- update to 8.3 (2016-07-08)
+  - Make temporary local copy for non-native file paths: 
+    %local_path%
+  - Support selections from both grid sides at a time for external 
+    applications
+  - New external application macros: %item_path%, %folder_path%,
+    %item_path2%, %folder_path2%
+  - Migrate external application commands to new macro syntax
+  - Support reverse grid search (Shift + F3)
+  - Don't condense empty sub folders on overview panel
+  - Show changelog delta in update notification
+  - Center modal dialogs after layout redetermination
+  - Warn about portable installation into programs folder
+  - Calculate default message dialog height depending on screen 
+    size
+  - Don't substitute external applications path for empty base
+    folder
+  - Fixed prolonged tooltip time not being evaluated
+ 
+-------------------------------------------------------------------
+Tue May 31 17:56:20 UTC 2016 - ecsos@opensuse.org
+
+- update to 8.2 (2016-05-30)
+  - Unified item path representation on main grid
+  - New progress indicator control for binary comparison
+  - Fixed crash on exit when accessing already destructed constant
+  - Fixed crash when FreeFileSync is still running during OS 
+    shutdown
+  - Fixed crash on startup due to missing root certificates
+  - Work around start up crash on Windows installations missing 
+    certain patches
+  - Fixed in-place progress panel height being trimmed
+  - Support drawing arbitrary polyons with graph control
+  - Apply Posix file name normalization (OS X)
+  - Normalize keyboard input encoding for all text fields (OS X)
+  - Report errors when cleaning up old log files
+  - Integrate external app WinMerge if installation is found
+
+-------------------------------------------------------------------
+Fri Apr 22 17:29:02 UTC 2016 - ecsos@opensuse.org
+
+- update to 8.1 [2016-04-21]
+  - Follow shell links during drag and drop on main dialog 
+    (Windows)
+  - Significantly improved main grid rendering performance
+  - Log info about non-default global settings
+  - Establish new network connections only when needed (Windows)
+  - Show only a single login dialog per network share
+  - Show login dialogs for the same network address one after 
+    another
+  - Fixed endless recursion for paths containing certain unicode 
+    characters (OS X)
+  - Support using portable version without direct installation
+  - Fixed access denied error when verifying read-only target file 
+    (Windows)
+  - New global option for sound cue after comparison
+  - Updated help file
+
+-------------------------------------------------------------------
+Thu Mar 17 21:16:18 UTC 2016 - ecsos@opensuse.org
+
+- update to 8.0 [2016-03-17]
+  - Fine-tuned buffer sizes for 70% improved SFTP stream I/O speed 
+  - Support incomplete read/write operations while maximizing 
+    buffer saturation
+  - Automatically check consistency of FreeFileSync installation
+  - Fixed crash when using SFTP on CPUs without SSE2 support
+  - Improved GUI responsiveness during SFTP I/O
+  - Disabled automatic quote substitution for file filter (OS X)
+  - Work around invalid parameter error on FAT drives for broken 
+    create times
+  - Avoid filter mismatches by using precomposed UTF (OS X)
+  - Fixed main dialog close button not being disabled during sync 
+    (OS X)
+  - Don't create AppleDouble files if extended attributes are
+    unsupported (OS X)
+  - Set content format metadata when copying to an MTP device
+  - Fixed F-keys not working in sync config dialog (Linux)
+  - Revert to default button margin values (Linux)
+  - Fixed crash when thumbnail loading fails on MTP device
+  - Fixed main grids not scrolling in parallel during mouse 
+    selection
+  - Revert to default scaling for non-dpi-aware apps
+  - Integrate FreeFileSync online manual
+  - Added Slovak translation
+
+-------------------------------------------------------------------
+Sat Feb 13 11:52:39 UTC 2016 - ecsos@opensuse.org
+
+- update to 7.9 [2016-02-13]
+  - New comparison variant: compare by file size
+  - Buffer SFTP read/write accesses for optimal packet sizes
+  - Configure folder access time out via GlobalSettings.xml
+  - Drag and drop config files anywhere on main dialog
+  - Work around "argument list too long" file copy error (OS X)
+  - Work around "invalid argument" file copy error (OS X)
+  - Support case-change when syncing to case-sensitive SFTP 
+    (Windows)
+  - Select between sync completion sounds gong/harp.wav
+  - Set up sync completion sound file in GlobalSettings.xml
+  - Validate monitoring data to avoid RealTimeSync crash
+  - Updated help file
+  - Updated translation files 
+
+-------------------------------------------------------------------
+Sun Jan 24 12:07:53 UTC 2016 - ecsos@opensuse.org
+
+- update to 7.8 [2016-01-01]
+  - Correctly resolve environment variables containing MTP paths
+  - Support at and colon characters in SFTP user name
+  - New context buttons for quick sync config changes
+  - Report specific error during folder existence check when 
+    starting sync
+  - Fail lately when traversing available MTP devices
+  - Correctly handle SFTP time-out error when checking folder 
+    existence
+  - Updated on completion command lines for log off/standby/shut 
+    down (Linux)
+  - Support HTML POST redirection for update checks
+  - Calculate UTC file times like Windows Explorer for MTP devices
+  - Don't reuse timed-out SFTP sessions with thread affinity
+  - Workaround SFTP session hang after unsupported statvfs command
+  - Updated OpenSSL to 1.0.2e 
+
+- changes from 7.7 [2015-12-1]
+  - Support variable drive letters for config history when using 
+    FreeFileSync portable
+  - Skip non-storage functional objects at MTP device level
+  - Log and show error messages without hanging when running as 
+    a service
+  - Navigate between sync settings panels with arrow keys
+  - Fixed volume shadow copy file path generation
+  - Handle integer overflows when comparing file times
+  - Ignore more than one file time shift
+  - Reworked grid to support mouse highlight areas
+  - Allow minute precision for file time shifts
+  - Warn about unsupported MTP and SFTP paths in RealTimeSync
+  - Strip superfluous mode parameters when creating a directory 
+    (Linux, OS X)
+  - Correctly detect system language for English UK
+  - Store program language by name to handle changing ids
+  - Fixed crash during application exit after using SFTP
+
+- changes from 7.6 [2015-11-01]
+  - Create missing synchronization base folders only on demand
+  - Improved main grid text search performance by 40%
+  - Restore correct main dialog height after restart (Linux)
+  - Default to standard main dialog size after unmaximize (Linux)
+  - Prevent creation of irregular folder names (Windows)
+  - Support MTP devices over WiFi with null modification times
+  - Do not apply invalid vertical main dialog positions (OS X)
+  - Support Yosemite full screen window mode (OS X)
+  - Use buffered lock file I/O (Windows)
+  - Correctly setup OpenSSL for multithreaded use
+  - Added COM initialization for worker threads (Windows)
+  - Forward focus to sync button after comparison
+  - Streamlined file system abstraction layer interfaces
+
+- changes from 7.5 [2015-10-01]
+  - Detect moved files on source even for targets with no (SFTP) or
+    unstable (FAT) file id support
+  - Improved performance for detection of moved files by over 50%
+  - Added folder picker to select SFTP paths
+  - Support additional SFTP ciphers by building upon OpenSSL 
+    backend
+  - Added 10-seconds time out when SFTP command is hanging
+    indefinitely
+  - Work around unexpected SFTP session termination on Synology 
+    servers
+  - Fixed various libssh2 and OpenSSL memory leaks
+  - Fixed FreeFileSync taskbar link reuse (Windows 7)
+  - Avoid last error code being overwritten by certain C runtimes 
+    before evaluation
+  - Run online update check asynchronously (Windows)
+  - Check source item existence before cleaning target during 
+    versioning (Linux, OS X)
+  - Check folder recursion limit to catch stack overflows
+  - Doubled potential folder traversal recursion depth (Windows)
+  - Consider child elements of excluded folders during database 
+    clean up
+- from version 7.5 FreeFileSync need gcc5 to compile, 
+  so openSUSE_13.2 is no longer supported, because of missing gcc5
+  
+-------------------------------------------------------------------
+Tue Sep  1 18:08:32 UTC 2015 - ecsos@opensuse.org
+
+- update to 7.4 [2015-09-01]
+  - Switch between all folder pair configurations directly in the 
+    sync config dialog
+  - Support macros, path by volume name for config files on 
+    command line
+  - Support slash as path separator on command line (Windows)
+  - Allow slash as path separator in filter dialog (Windows)
+  - Discard SFTP connection after 20 seconds of idle time
+  - Fixed file already existing error when changing file name case
+    (OS X)
+  - New keyboard shortcuts to open external applications
+  - Fixed clipboard being cleared when opening sync config dialog 
+    (OS X)
+  - Workaround wxWidgets bug breaking copy/paste shortcuts (OS X)
+  - Fixed disabled button icons not being updated in the 
+    config dialog
+  - Fixed launcher error messages not being shown (Windows XP)
+  - Fixed launcher showing incorrect error about missing 
+    service pack (Windows XP)
+  - Revised help file and consolidated into online help 
+
+-------------------------------------------------------------------
+Sat Aug  1 15:36:51 UTC 2015 - ecsos@opensuse.org
+
+- update to 7.3 [2015-08-01]
+  - New context menu option to copy selected files to alternate 
+    folder (create diffs)
+  - Fill a folder pair by dropping two folders at a time from 
+    Explorer
+  - Added option to set non-standard SFTP port
+  - Prevent recursive creation of temporary Recycle Bin directories
+   (Windows)
+  - Retrieve grid column label colors from the system
+  - Fixed detection of already existing files when moving (Linux)
+  - Follow os convention for preferences (OS X)
+  - Prevent progress dialog from hiding behind main dialog (OS X)
+  - Fixed config saved status not updating when changing certain 
+    settings
+  - Support for high dpi display settings
+  - Fixed crash when help viewer is open during exit (Windows)
+  - Show manual deletion progress within comparison status panel
+  - Further reduced number of file accesses during versioning
+  - Fixed folder picker failing to select Desktop folder (Windows)
+
+-------------------------------------------------------------------
+Fri Jul  3 14:50:51 UTC 2015 - ecsos@opensuse.org
+
+- update to 7.2 [2015-07-01]
+  - Support synchronization with SFTP (SSH File Transfer Protocol)
+  - Detailed error reporting when checking folder existence
+  - Synchronize MTP devices with no modification time support
+  - Set focus to comparison button on startup
+  - Fixed transactional stream clean up error if target file 
+    already existing
+  - Fixed incomplete input stream clean up on fadvise failure 
+    (Linux)
+  - Consider non-native paths for direct comparison after startup
+  - Revised algorithm generating folder pair display name
+  - Reduced number of file accesses during versioning
+  - Stricter language file consistency checking
+  - Resolved crash when running Windows 7 on CPUs without SSE2
+  - Improved Minidump creation handling stack overflows
+  - Revised path formatting to always match native representation
+  - Fixed about dialog layout for large font sizes
+  - Support Minidump creation for Windows XP
+  - Updated translation files
+
+-------------------------------------------------------------------
+Sun Jun 21 17:01:55 UTC 2015 - ecsos@opensuse.org
+
+- update to 7.1 [2015-06-06]
+  - Avoid various access denied errors when synchronizing with 
+    admin rights (Windows)
+  - Accept Explorer drag and drop from MTP devices
+  - Support showing MTP files with Explorer
+  - Support opening MTP files with default application
+  - Preselect active MTP folder in folder picker dialog
+  - Work around file not found error when copying alternate data 
+    streams
+  - Fixed access denied error when copying file times (Linux)
+  - Work around boost bug causing RealtimeSync to wake PC (Windows)
+  - Fixed naming convention "replace" for versioning
+  - Skip space pre-allocation if not supported (OS X)
+  - Use faster space pre-allocation method (Linux)
+  - Transactional error handling when closing file streams
+  - Fully initialize system image list for medium and large icons 
+    (Windows)
+  - Handle XP backwards-compatibility with 32-bit build 
+    (Windows 64-bit)
+  - Work around hang due to unsupported AVX2 instructions 
+    (Vista 64-bit)
+  - Fixed invalid argument exception during app launch (OS X)
+  - Fixed binary comparison checking for wrong buffer size
+  - Fixed GetLogicalProcessorInformation not found startup error 
+    (Windows XP SP2)
+  - Support IP-based UNC paths with folder selector (Windows)
+  - Use standard file permissions for application bundle (OS X)
+  - Updated help file and added tips and tricks chapter
+
+-------------------------------------------------------------------
+Tue May 12 19:58:35 UTC 2015 - ecsos@opensuse.org
+
+- update to 7.0 [2015-05-11]
+  - Support synchronization with MTP devices (Android, iPhone, 
+    tablet, digital camera)
+  - Implemented file system abstraction layer
+  - New database format supporting generic file ids
+  - Pre-allocate disk space when writing file output stream
+  - Late failure when moving multiple items to recycle bin
+  - Keep UI responsive while loading/saving database file
+  - Improved error reporting indicating failed item when moving to 
+    recycle bin
+  - Transactional error handling when closing file streams
+  - Pass correct thread id when creating Minidump (Windows)
+  - Fixed directory icon loading resource leak (Linux)
+  - Fixed RealtimeSync message provider exception safety issue 
+    (Windows)
+  - Avoid locking issues by creating the log file after batch 
+    synchronization
+  - Fixed RealtimeSync monitoring for items beyond subfolders 
+    (Linux)
+  - Fall back to file extension during file icon load error
+  - Show file icon by extension as temporary placeholder
+  - Work around silent failure to copy file times to external 
+    drives (Linux)
+
+-------------------------------------------------------------------
+Sat Apr 11 22:00:38 UTC 2015 - ecsos@opensuse.org
+
+- update to 6.15 [2015-04-07]
+  - Revert to log file naming convention without colon character
+  - Prevent endless recursion when traversing into folder on 
+    corrupt file system
+  - Fixed view filter button rendering issue for RTL languages
+  - Fixed grid losing far scroll positions when increasing 
+    icon sizes
+  - Flush file buffers before verifying file copy
+  - Update existing items when retrying failed folder traversal
+  - Harmonized bitmap file loading by removing format variance
+  - Fixed invalid argument error when setting file times (Linux)
+  - Fixed application hang when loading icon for named pipe (Linux)
+  - Improved file copy read-ahead performance (Linux)
+  - Use native file I/O for stream operations (Linux, OS X)
+  - Fixed file copy creating zero-sized files (OS X)
+  - Automatically create Minidump files during an 
+    application crash (Windows)
+  - Check for missing service pack to help 
+    diagnose crash (Windows 7)
+  - New menu item with download link after a version update
+  - Work around C-function memory race condition when 
+    formatting time
+  - Added Hindi language
+
+- changes from 6.14 [2015-02-10]
+  - New buttons allow changing the order of folder pairs
+  - New keyboard shortcuts for rearranging folder pairs
+  - Preserve comparison results when deleting a specific 
+    folder pair
+  - Allow inserting new folder pairs into the middle of the list
+  - Append status to log file names when warnings occur
+  - Don't interrupt immediate comparison when starting a .ffs_gui 
+    file for slow devices
+  - Work around wxWidgets bug eating up command keys in 
+    text boxes (Linux)
+  - Fixed incorrect parameter error when checking recycle bin on 
+    drive mounted with Paragon ExtFS (Windows)
+  - Use colon as time stamp seperator in log file names
+  - Refactored basic low-level file traversal routine
+  - Optimized file icon startup procedure
+  - Fixed occasional failure to set modification times on 
+    Samba shares (OS X)
+  - Transfer creation times during file copy (OS X)
+  - Support copying file times with nano-second precision (OS X)
+
+-------------------------------------------------------------------
+Mon Feb  9 11:53:18 UTC 2015 - ecsos@opensuse.org
+
+- add build RealtimeSync
+
+-------------------------------------------------------------------
+Sat Jan 24 14:11:30 UTC 2015 - ecsos@opensuse.org
+
+- initial version 6.13
+

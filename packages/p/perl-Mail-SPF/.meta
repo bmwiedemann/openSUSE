@@ -1,0 +1,10 @@
+<package name="perl-Mail-SPF" project="openSUSE:Factory">
+  <title>An object-oriented implementation of Sender Policy Framework</title>
+  <description>Mail::SPF is an object-oriented implementation of Sender Policy Framework
+(SPF). See http://www.openspf.org for more information about SPF.
+
+This class collection aims to fully conform to the SPF specification (RFC 4408)
+so as to serve both as a production quality SPF implementation and as a
+reference for other developers of SPF implementations.</description>
+  <devel project="devel:languages:perl" package="perl-Mail-SPF"/>
+</package>

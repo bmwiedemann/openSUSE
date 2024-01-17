@@ -1,0 +1,18 @@
+map is NULL if the disk contains no valid mac label
+
+ pdisk.c |    2 +-
+ 1 files changed, 1 insertion(+), 1 deletion(-)
+
+Index: pdisk/pdisk.c
+===================================================================
+--- pdisk.orig/pdisk.c
++++ pdisk/pdisk.c
+@@ -560,7 +560,7 @@ edit(char *name, int ask_logical_size)
+ 	    break;
+ 	case 'Q':
+ 	case 'q':
+-	    if (map->changed) {
++	    if (map && map->changed) {
+ 		if (get_okay("Discard changes? [n/y]: ", 0) != 1) {
+ 		    break;
+ 		}

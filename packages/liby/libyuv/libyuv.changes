@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Mon May 22 13:35:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundancies and compact descriptions.
+
+-------------------------------------------------------------------
+Sun May 21 13:13:13 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to snapshot 20230517+a377993:
+  * ARGBToI420Alpha function to convert ARGB to I420 with Alpha
+  * Enable I{422,444}AlphaToARGBRow_RVV & ARGBAttentuateRow_RVV
+  * Bump version and apply clang format
+  * Enable ARGBToYMatrixRow_RVV/RGBAToYMatrixRow_RVV/RGBToYMatrixRow_RVV
+  * Enable RVV if qemu is detected
+  * Add ARGBToRAWRow_RVV, ARGBToRGB24Row_RVV, RGB24ToARGBRow_RVV
+  * YUY2ToNV12 using YUY2ToY and YUY2ToNVUV
+  * Remove old cipd clobber gclient hook.
+  * Roll chromium_revision 004bde16df..28dca358ed (1051775:1052960)
+  * Roll chromium_revision 7d683aeda8..004bde16df (1050091:1051775)
+  * [code-health] Migrate presubmit to python3
+  * Enable unlimited data for YUV to RGB
+  * Roll chromium_revision 829c6df33d..7d683aeda8 (945687:1050098th 
+- Add libyuv-tools package
+- Run test suite in %check
+- drop Don-t-install-conversion-tool.patch
+- add Install-missing-yuvconstants-binary.patch
+- add cmake-minimum-required.patch
+- drop Link-main-library-against-libjpeg.patch applied upstream
+- add convert_test-little-endian.patch
+
+-------------------------------------------------------------------
+Thu Oct 27 14:35:19 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 20220920+f9fda6e:
+  * Fix shift amount for SSSE3 assembly for I012 format conversions
+  * 10/12 bit YUV replicate upper bits to low bits before converting to RGB
+  * Fix immediate offsets for row_neon build on gcc
+
+-------------------------------------------------------------------
+Thu Oct 20 11:29:30 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 20220920+248172e:
+  * I422ToRGB24, I422ToRAW, I422ToRGB24MatrixFilter conversion functions added.
+  * Remove include resource.h for Fuchsia build
+  * I420ToRGB24MatrixFilter function added
+  * SSE2 MM21->YUY2 conversion
+  * MM21ToYUY2 and  ABGRToJ420 conversion
+  * AB64ToARGB fix for inplace conversion
+  * Bump up version to 1838
+  * Add I422ToRGB565Matrix
+  * RAWToJ400 require multiple of 16 pixels for NEON
+  * row_neon*: Explicitly initialize pad in RgbConstants
+  * Fix MSVC warnings by adding casts
+  * Define _CRT_SECURE_NO_WARNINGS if MSVC CRT is used
+  * Reduce cmake verbosity and update min version
+  * Set IMPORT_PREFIX to "lib" on Windows
+  * Android.bp: Remove reference to LICENSE_THIRD_PARTY
+  * Fix SSE2 version of ScalePlaneUp2_16_Bilinear
+  * Disable bilinear 16 bit scale up for SSE2
+  * Add .vpython3 to libyuv.
+  * Switch from python to python3.
+
+-------------------------------------------------------------------
+Sat Oct  1 13:03:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use YUV_VERSION for library VERSION and YUV_VER_MAJOR for
+  SOVERSION
+
+-------------------------------------------------------------------
+Sun Sep 25 12:22:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix quoting in pkgconfig file
+
+-------------------------------------------------------------------
+Wed Aug  3 11:30:20 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add baselibs.conf for libyuv0
+
+-------------------------------------------------------------------
+Fri Jul 29 16:35:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial packaging version 20220713+d248929c
+- Add required patches:
+  * Use-a-proper-so-version.patch
+  * Link-against-shared-library.patch
+  * Disable-static-library.patch
+  * Don-t-install-conversion-tool.patch
+  * Use-library-suffix-during-installation.patch
+  * Link-main-library-against-libjpeg.patch
+

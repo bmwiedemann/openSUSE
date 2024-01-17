@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>184279aca025ee9d93912bdd7f00c063</srcmd5>
+    <version>0.3.1</version>
+    <time>1332239471</time>
+    <user>coolo</user>
+    <comment>supersede #109786 (change timidity from requires to recommends, bnc#752669)</comment>
+    <requestid>110068</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>184279aca025ee9d93912bdd7f00c063</srcmd5>
+    <version>0.3.1</version>
+    <time>1340183764</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>184279aca025ee9d93912bdd7f00c063</srcmd5>
+    <version>0.3.1</version>
+    <time>1359109553</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>184279aca025ee9d93912bdd7f00c063</srcmd5>
+    <version>0.3.1</version>
+    <time>1379663446</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>184279aca025ee9d93912bdd7f00c063</srcmd5>
+    <version>0.3.1</version>
+    <time>1409302070</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a2f314975a22d3b32e64528a59339790</srcmd5>
+    <version>0.4.0</version>
+    <time>1619298501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887838</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>85ad3fae4b0bc1a19a8751d98fe86755</srcmd5>
+    <version>0.4.2</version>
+    <time>1634943082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926923</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d83315fda9e9e3db5ce64ba0acc1c411</srcmd5>
+    <version>0.4.2</version>
+    <time>1638310555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934603</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>f05bdb6cc0441d93a1c9bf1920cf126d</srcmd5>
+    <version>0.4.2</version>
+    <time>1668702295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036432</requestid>
+  </revision>
+</revisionlist>

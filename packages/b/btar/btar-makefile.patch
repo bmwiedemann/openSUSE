@@ -1,0 +1,26 @@
+Index: btar-1.1.1/Makefile
+===================================================================
+--- btar-1.1.1.orig/Makefile
++++ btar-1.1.1/Makefile
+@@ -1,5 +1,7 @@
+ VERSION=1.1.1 [$(shell if test -f manifest.uuid; then cat manifest.uuid | cut -c -10 ; else echo undefined; fi)]
+-CFLAGS+=-DVERSION="$(VERSION)" -D_FILE_OFFSET_BITS=64 -g -Wall -Wextra
++DESTDIR=
++OPTFLAGS=-g -Wall -Wextra
++CFLAGS+=-DVERSION="$(VERSION)" -D_FILE_OFFSET_BITS=64 $(OPTFLAGS)
+ 
+ PREFIX?=/usr/local
+ 
+@@ -20,10 +22,8 @@ btar: $(OBJECTS)
+ 	$(CC)  -o $@ $^ $(LDFLAGS)
+ 
+ install: btar
+-	mkdir -p $(PREFIX)/bin
+-	cp btar $(PREFIX)/bin
+-	mkdir -p $(PREFIX)/share/man/man1
+-	cp btar.1 $(PREFIX)/share/man/man1
++	install -D -m0755 btar "$(DESTDIR)$(PREFIX)/bin/btar"
++	install -D -m0644 btar.1 "$(DESTDIR)$(PREFIX)/share/man/man1/btar.1"
+ 
+ all: btar fnmatchtest rsynctest loadindextest
+ 

@@ -1,0 +1,5 @@
+<package name="libkscreen2" project="openSUSE:Factory">
+  <title>libkscreen2</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="libkscreen2"/>
+</package>

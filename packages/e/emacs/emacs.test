@@ -1,0 +1,29 @@
+                        Testform für  emacs
+                        ===================
+
+22.05.2007: Version 22.0.99
+Maintainer: werner
+
+Vorraussetzungen:
+=================
+
+X sollte installiert sein.
+
+Starten:
+========
+
+   emacs
+   emacs -nw
+   emacs -q --no-site
+   emacs -nw -q --no-site
+   als Editor von mailx/elm/pine ...
+
+
+   Testen mit verschiedensten File-Typen (*.tex, man-pages.
+   *.html, info-mode, gnus, rmail, ...)
+
+
+Ergebnisse:
+===========
+
+Hängt von der gewählten mode ab.

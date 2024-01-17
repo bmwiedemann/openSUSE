@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Mon Sep  9 21:15:09 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rename package to gtksourceviewmm3_0, compat package now that
+  gtksourceviewmm have moved to gtksourceview4.
+
+-------------------------------------------------------------------
+Mon Mar  5 15:27:29 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:32:56 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 22 13:03:28 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.21.3:
+  + Add SearchContext ad SearchSettings.
+  + Add StyleSchemeChooser, StyleSchemeChooserWidget and
+    StyleSchemeChooserButton.
+  + Buffer: Add implicit-trailing-newline property.
+  + CompletionWords: Add activation property.
+  + Language: Add get_style_fallback().
+  + Style: Add style and scale-set properties.
+  + View: Add get/set_background-pattern().
+
+-------------------------------------------------------------------
+Tue Jun 28 08:46:56 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.21.2:
+  + C++11: Markup: Deprecated operator const void*(), adding
+    explicit operator bool().
+  + Include only gtksource.h where possible. This is demanded by
+    newer versions of gtksourceview.
+- Drop gtksourceviewmm-C++11-fix-deprecated.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jun 20 22:56:09 UTC 2016 - zaitor@opensuse.org
+
+- Add gtksourceviewmm-C++11-fix-deprecated.patch: C++11: Markup:
+  Deprecated operator const void*(), adding explicit operator
+  bool(). Patch from upstream git.
+
+-------------------------------------------------------------------
+Wed Sep 30 13:16:18 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.0:
+  + Regenerate with the latest glibmm.
+
+-------------------------------------------------------------------
+Sat Jul 18 10:39:22 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.1:
+  + Require (and use) C++11.
+
+-------------------------------------------------------------------
+Wed Apr 29 20:41:06 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.12.0:
+  + Deprecated some API because some of the C API was deprecated.
+  + Fix the examples build with recent gtkmm versions.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:22 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Wed Sep 28 15:03:15 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.0:
+  + Wrapped gtk_source_gutter_get_renderer_at_pos() as
+    Gsv::Gutter::get_renderer_at_pos().
+  + Search test does not use deprecated methods.
+
+-------------------------------------------------------------------
+Thu Apr 28 10:13:06 CEST 2011 - vuntz@opensuse.org
+
+- New package, loosely based on libgtksourceviewmm that it will
+  replace: libgtksourceviewmm is a very old version of the code.
+- Initial version: 3.0.0.
+

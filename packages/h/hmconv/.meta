@@ -1,0 +1,5 @@
+<package name="hmconv" project="openSUSE:Factory">
+  <title>HangulCode Conversion Program</title>
+  <description>HangulCode conversion program.</description>
+  <devel project="M17N" package="hmconv"/>
+</package>

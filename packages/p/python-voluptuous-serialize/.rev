@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a07ec92e8954eb87bba5c0e4baec15e8</srcmd5>
+    <version>2.2.0</version>
+    <time>1567010200</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>726608</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b026396260b0b4ea4440f1c4849bba70</srcmd5>
+    <version>2.2.0</version>
+    <time>1568190809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729673</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e56ab4588f4daee6c14714e61490bef0</srcmd5>
+    <version>2.3.0</version>
+    <time>1581087306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770678</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7dd22842ac7e0310d53503ee0f7e3623</srcmd5>
+    <version>2.4.0</version>
+    <time>1595577670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822240</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>629c6efd4531b6f684faecc5c4938022</srcmd5>
+    <version>2.5.0</version>
+    <time>1665591874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009890</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9d07c2971fc403c36531982b7719649b</srcmd5>
+    <version>2.6.0</version>
+    <time>1702158810</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Serialize vol.Maybe (#67) @eifinger
+- use the packaged LICENSE file
+
+- Update to version 2.5.0</comment>
+    <requestid>1132137</requestid>
+  </revision>
+</revisionlist>

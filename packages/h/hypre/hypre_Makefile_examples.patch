@@ -1,0 +1,11 @@
+--- src/examples/Makefile.orig
++++ src/examples/Makefile
+@@ -32,7 +32,7 @@ F90FLAGS = $(FFLAGS) $(IF90FLAGS)
+ 
+ 
+ LINKOPTS  = $(COPTS)
+-LIBS      = -L$(HYPRE_DIR)/lib -lHYPRE -lm
++LIBS      = -L$(HYPRE_LIB) -L$(SUPERLU_LIB) -lHYPRE -lm -lblas -llapack -lsuperlu
+ LFLAGS    = $(LINKOPTS) $(LIBS) -lstdc++
+ LFLAGS_B =\
+  -L${HYPRE_DIR}/lib\

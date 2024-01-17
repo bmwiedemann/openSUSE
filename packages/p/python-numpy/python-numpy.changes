@@ -1,0 +1,3158 @@
+-------------------------------------------------------------------
+Wed Dec 27 12:57:32 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap. Need gcc >= 8.5
+
+-------------------------------------------------------------------
+Wed Dec 13 06:53:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not attempt to ship numpy.distutils C code in the Python 3.12 -devel
+  package, it is not installed.
+
+-------------------------------------------------------------------
+Mon Nov 20 05:09:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.26.2:
+  * TYP: Trim down the ``_NestedSequence.__getitem__`` signature
+  * BUG: fix choose refcount leak
+  * TST: fix running the test suite in builds without BLAS/LAPACK
+  * BUG: random: Fix generation of nan by dirichlet.
+  * TST: fix distutils tests for deprecations in recent setuptools...
+  * MAINT: Remove versioneer
+  * MAINT: Pin upper version of sphinx.
+  * ENH: Add prefix to _ALIGN Macro
+  * BUG: cleanup warnings [skip azp][skip circle][skip travis][skip...
+  * BUG: ``asv dev`` has been removed, use ``asv run``.
+  * BUG: Fix meson build failure due to unchanged inplace auto-generated...
+  * BUG: fix issue with git-version script, needs a shebang to run
+  * BUG: Use a default assignment for git_hash [skip ci]
+  * BUG: fix NPY_cast_info error handling in choose
+  * BUG: Fix common block handling in f2py
+  * BUG: Fix assumed length f2py regression
+  * MAINT: Harmonize fortranobject
+  * TYP: add kind argument to numpy.isin type specification
+  * BUG: fix comparisons between masked and unmasked structured arrays
+  * ENH: Adopt new macOS Accelerate BLAS/LAPACK Interfaces, including...
+  * TYP: Add the missing ``casting`` keyword to ``np.clip``
+  * TST: convert cython test from setup.py to meson
+  * MAINT: Fixup ``fromnumeric.pyi``
+  * BUG, ENH: Fix ``iso_c_binding`` type maps
+  * TYP: Allow ``binary_repr`` to accept any object
+  * TYP: Explicitly declare ``dtype`` and ``generic`` hashable
+  * ENH: Refactor the typing "reveal" tests using `typing.assert_type`
+  * ENH: ``meson`` backend for ``f2py``
+  * MAINT: Refactor partial load Workaround for Clang
+  * BUG: Fix data stmt handling for complex values in f2py
+  * TYP: Add annotations for the py3.12 buffer protocol
+  * DOC: Updated the f2py docs to remove a note on -fimplicit-none
+  * BUG: Fix SIMD f32 trunc test on s390x when baseline is none
+  * BUG: Fix DATA statements for f2py
+  * API: Add ``NumpyUnpickler`` for backporting
+  * MAINT: Xfail test failing on PyPy.
+  * ENH: meson: implement BLAS/LAPACK auto-detection
+  * DOC: add a 1.26.1 release notes section for BLAS/LAPACK build
+  * MAINT: Backport ``numpy._core`` stubs. Remove ``NumpyUnpickler``
+  * BUG: loongarch doesn't use REAL(10)
+  * MAINT: align test_dispatcher s390x targets with _umath_tests_mtargets
+  * ENH: Add Cython enumeration for NPY_FR_GENERIC
+  * MAINT: Remove unhelpful error replacements from ``import_array()``
+  * BUG: Avoid intp conversion regression in Cython 3
+  * MAINT: Add missing ``noexcept`` to shuffle helpers
+  * DOC: Fix license identifier for OpenBLAS
+  * BLD: improve detection of Netlib libblas/libcblas/liblapack
+  * MAINT: Make bitfield integers unsigned
+  * BUG: Make n a long int for np.random.multinomial
+  * BUG: ensure passing ``np.dtype`` to itself doesn't crash
+- Update BuildRequires as appropiate, build system changed from setuptools
+  to meson.
+- Drop patch ignore-pkg_resources-deprecation.patch, no longer required
+- f2py3 no longer shipped
+
+-------------------------------------------------------------------
+Wed Aug 16 11:31:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use %pyproject_wheel and %pyproject_install macros
+- Disable broken tests in armv7l (bsc#1212710)
+
+-------------------------------------------------------------------
+Mon Aug 14 11:41:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- limit to Cython < 3
+
+-------------------------------------------------------------------
+Mon Aug 14 07:07:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.25.2:
+  * Upgrade various build dependencies.
+  * use ``-ftrapping-math`` with Clang on macOS
+  * properly handle negative indexes in ufunc_at fast path
+  * PyObject_IsTrue and PyObject_Not error handling in setflags
+  * histogram small range robust
+  * Update meson.build files from main branch
+  * exclude min, max and round from ``np.__all__``
+  * Dependabot updates
+  * Fix the signature for np.array_api.take
+  * update OpenBLAS to an intermeidate commit
+  * Fix reference count leak in str(scalar).
+  * fix invalid function pointer conversion error
+  * Factor out slow ``getenv`` call used for memory policy warning
+  * correct URL in cirrus.star [skip cirrus]
+  * Fix C types in scalartypes
+  * do not modify the input to ufunc_at
+  * Further fixes to indexing loop and added tests
+
+-------------------------------------------------------------------
+Thu Jul 20 13:21:25 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.25.1:
+  * NumPy 1.25.1 is a maintenance release that fixes bugs and regressions
+    discovered after the 1.25.0 release. The Python versions supported by
+    this release are 3.9-3.11.
+  * #23968: MAINT: prepare 1.25.x for further development
+  * #24036: BLD: Port long double identification to C for meson
+  * #24037: BUG: Fix reduction return NULL to be goto fail
+  * #24038: BUG: Avoid undefined behavior in array.astype()
+  * #24039: BUG: Ensure __array_ufunc__ works without any kwargs passed
+  * #24117: MAINT: Pin urllib3 to avoid anaconda-client bug.
+  * #24118: TST: Pin pydantic<2 in Pyodide workflow
+  * #24119: MAINT: Bump pypa/cibuildwheel from 2.13.0 to 2.13.1
+  * #24120: MAINT: Bump actions/checkout from 3.5.2 to 3.5.3
+  * #24122: BUG: Multiply or Divides using SIMD without a full vector can...
+  * #24127: MAINT: testing for IS_MUSL closes #24074
+  * #24128: BUG: Only replace dtype temporarily if dimensions changed
+  * #24129: MAINT: Bump actions/setup-node from 3.6.0 to 3.7.0
+  * #24134: BUG: Fix private procedures in f2py modules
+- Skipped 1.25.0:
+  * The NumPy 1.25.0 release continues the ongoing work to improve the
+    handling and promotion of dtypes, increase the execution speed, and
+    clarify the documentation. There has also been work to prepare for the
+    future NumPy 2.0.0 release, resulting in a large number of new and
+    expired deprecation. Highlights are:
+    - Support for MUSL, there are now MUSL wheels.
+    - Support the Fujitsu C/C++ compiler.
+    - Object arrays are now supported in einsum
+    - Support for inplace matrix multiplication (@=).
+  * Full changelog: https://github.com/numpy/numpy/releases/tag/v1.25.0
+The Python versions supported in this release are 3.9-3.11.
+- Remove upstream patch:
+  * remove-deprecated-hypothesis-funcs.patch
+
+-------------------------------------------------------------------
+Fri Jun 23 12:23:14 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Adapt test exceptions for PPC64 etc., TestFReturnCharacter
+  instead of TestF77ReturnCharacter, TestF90ReturnCharacter
+
+-------------------------------------------------------------------
+Fri May 12 04:22:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-deprecated-hypothesis-funcs.patch:
+  * Change to a non-deprecated function from hypothesis.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:28:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Fri Mar 24 07:02:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch ignore-pkg_resources-deprecation.patch:
+  * Ignore DeprecationWarning from pkg_resources.
+
+-------------------------------------------------------------------
+Wed Mar 22 13:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.2:
+  just bugfixes, see
+  https://github.com/numpy/numpy/releases/tag/v1.24.2
+  for details
+
+-------------------------------------------------------------------
+Fri Mar 10 08:50:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_ppc64_ibm_double_double128 test on ppc64*
+  architectures (gh#numpy/numpy#21094, bsc#1208865).
+
+-------------------------------------------------------------------
+Wed Feb  1 21:44:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build-conditionalize cblas dependency, it is missing on SLE <= 15
+  related to bsc#1177260 not being fixable for SLE15 (jsc#PED-3257)
+
+-------------------------------------------------------------------
+Sun Jan 22 19:55:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Slightly reformat the specfile condition blocks: The
+  %python_subpackages generator misses " %if" lines with a
+  preceding whitespace. Relevant for d:l:p:backports not having
+  libalternatives.
+
+-------------------------------------------------------------------
+Mon Jan  2 19:31:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.24.1
+  * NumPy 1.24.1 is a maintenance release that fixes bugs and
+    regressions discovered after the 1.24.0 release. The Python
+    versions supported by this release are 3.8-3.11.
+  * #22820: BLD: add workaround in setup.py for newer setuptools
+  * #22830: BLD: CIRRUS_TAG redux
+  * #22831: DOC: fix a couple typos in 1.23 notes
+  * #22832: BUG: Fix refcounting errors found using pytest-leaks
+  * #22834: BUG, SIMD: Fix invalid value encountered in several
+    ufuncs
+  * #22837: TST: ignore more np.distutils.log imports
+  * #22839: BUG: Do not use getdata() in np.ma.masked_invalid
+  * #22847: BUG: Ensure correct behavior for rows ending in
+    delimiter in...
+  * #22848: BUG, SIMD: Fix the bitmask of the boolean comparison
+  * #22857: BLD: Help raspian arm + clang 13 about
+    __builtin_mul_overflow
+  * #22858: API: Ensure a full mask is returned for masked_invalid
+  * #22866: BUG: Polynomials now copy properly (#22669)
+  * #22867: BUG, SIMD: Fix memory overlap in ufunc comparison loops
+  * #22868: BUG: Fortify string casts against floating point
+    warnings
+  * #22875: TST: Ignore nan-warnings in randomized out tests
+  * #22883: MAINT: restore npymath implementations needed for
+    freebsd
+  * #22884: BUG: Fix integer overflow in in1d for mixed integer
+    dtypes #22877
+  * #22887: BUG: Use whole file for encoding checks with
+    charset_normalizer.
+- Drop numpy-distutils-ignore.patch fixed upstream
+
+-------------------------------------------------------------------
+Mon Dec 19 13:36:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.24.0
+  * The NumPy 1.24.0 release continues the ongoing work to improve
+    the handling and promotion of dtypes, increase the execution
+    speed, and clarify the documentation. There are also a large
+    number of new and expired deprecations due to changes in
+    promotion and cleanups. This might be called a deprecation
+    release. Highlights are:
+    - Many new deprecations, check them out.
+    - Many expired deprecations,
+    - New F2PY features and fixes.
+    - New “dtype” and “casting” keywords for stacking functions.
+  * For a detailed description see
+    https://numpy.org/doc/stable/release/1.24.0-notes.html
+- Add numpy-distutils-ignore.patch gh#numpy/numpy#22828
+- Fix running the tests: Actually fail on errors
+
+-------------------------------------------------------------------
+Wed Dec 14 20:59:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Support builds without any primary python3 package (:backports)
+
+-------------------------------------------------------------------
+Thu Oct 20 13:48:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.23.4
+  * NumPy 1.23.4 is a maintenance release that fixes bugs
+    discovered after the 1.23.3 release and keeps the build
+    infrastructure current. The main improvements are fixes for
+    some annotation corner cases, a fix for a long time
+    nested_iters memory leak, and a fix of complex vector dot for
+    very large arrays. The Python versions supported for this
+    release are 3.8-3.11.
+
+-------------------------------------------------------------------
+Tue Oct 11 08:27:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert some spec-cleaner "Verschlimmbesserungen"
+- Remove old unused directives for Python <=3.6 from specfile
+
+-------------------------------------------------------------------
+Fri Sep 30 23:43:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove patch numpy-fix-cpu_asimdfhm.patch, included upstream
+  * update line numbers for other patches
+  * require c++ compiler
+
+- update to version 1.23.3:
+  * #22136: BLD: Add Python 3.11 wheels to aarch64 build
+  * #22148: MAINT: Update setup.py for Python 3.11.
+  * #22155: CI: Test NumPy build against old versions of GCC(6, 7, 8)
+  * #22156: MAINT: support IBM i system
+  * #22195: BUG: Fix circleci build
+  * #22214: BUG: Expose heapsort algorithms in a shared header
+  * #22215: BUG: Support using libunwind for backtrack
+  * #22216: MAINT: fix an incorrect pointer type usage in f2py
+  * #22220: BUG: change overloads to play nice with pyright.
+  * #22221: TST,BUG: Use fork context to fix MacOS savez test
+  * #22222: TYP,BUG: Reduce argument validation in C-based
+     __class_getitem__
+  * #22223: TST: ensure np.equal.reduce raises a TypeError
+  * #22224: BUG: Fix the implementation of numpy.array_api.vecdot
+  * #22230: BUG: Better report integer division overflow (backport)
+
+- changes from version 1.23.2:
+  * #22030: ENH: Add __array_ufunc__ typing support to the nin=1
+     ufuncs
+  * #22031: MAINT, TYP: Fix np.angle dtype-overloads
+  * #22032: MAINT: Do not let _GenericAlias wrap the underlying
+     classes'...
+  * #22033: TYP,MAINT: Allow einsum subscripts to be passed via
+     integer...
+  * #22034: MAINT,TYP: Add object-overloads for the np.generic rich
+     comparisons
+  * #22035: MAINT,TYP: Allow the squeeze and transpose method to...
+  * #22036: BUG: Fix subarray to object cast ownership details
+  * #22037: BUG: Use Popen to silently invoke f77 -v
+  * #22038: BUG: Avoid errors on NULL during deepcopy
+  * #22039: DOC: Add versionchanged for converter callable behavior.
+  * #22057: MAINT: Quiet the anaconda uploads.
+  * #22078: ENH: reorder includes for testing on top of system
+     installations...
+  * #22106: TST: fix test_linear_interpolation_formula_symmetric
+  * #22107: BUG: Fix skip condition for
+     test_loss_of_precision[complex256]
+  * #22115: BLD: Build python3.11.0rc1 wheels.
+
+- changes from version 1.23.1:
+  * #21866: BUG: Fix discovered MachAr (still used within valgrind)
+  * #21867: BUG: Handle NaNs correctly for float16 during sorting
+  * #21868: BUG: Use keepdims during normalization in np.average
+     and...
+  * #21869: DOC: mention changes to max_rows behaviour in np.loadtxt
+  * #21870: BUG: Reject non integer array-likes with size 1 in delete
+  * #21949: BLD: Make can_link_svml return False for 32bit builds on
+     x86_64
+  * #21951: BUG: Reorder extern "C" to only apply to function
+     declarations...
+  * #21952: BUG: Fix KeyError in crackfortran operator support
+
+- changes from version 1.23.0:
+  * long changelog
+    https://github.com/numpy/numpy/blob/main/doc/changelog/1.23.0-changelog.rst
+
+- changes from version 1.22.4:
+  * #21191: TYP, BUG: Fix np.lib.stride_tricks re-exported under
+     the...
+  * #21192: TST: Bump mypy from 0.931 to 0.940
+  * #21243: MAINT: Explicitly re-export the types in numpy._typing
+  * #21245: MAINT: Specify sphinx, numpydoc versions for CI doc builds
+  * #21275: BUG: Fix typos
+  * #21277: ENH, BLD: Fix math feature detection for wasm
+  * #21350: MAINT: Fix failing simd and cygwin tests.
+  * #21438: MAINT: Fix failing Python 3.8 32-bit Windows test.
+  * #21444: BUG: add linux guard per #21386
+  * #21445: BUG: Allow legacy dtypes to cast to datetime again
+  * #21446: BUG: Make mmap handling safer in frombuffer
+  * #21447: BUG: Stop using PyBytesObject.ob_shash deprecated in
+     Python 3.11.
+  * #21448: ENH: Introduce numpy.core.setup_common.NPY_CXX_FLAGS
+  * #21472: BUG: Ensure compile errors are raised correclty
+  * #21473: BUG: Fix segmentation fault
+  * #21474: MAINT: Update doc requirements
+  * #21475: MAINT: Mark npy_memchr with no_sanitize("alignment") on
+     clang
+  * #21512: DOC: Proposal - make the doc landing page cards more
+     similar...
+  * #21525: MAINT: Update Cython version to 0.29.30.
+  * #21536: BUG: Fix GCC error during build configuration
+  * #21541: REL: Prepare for the NumPy 1.22.4 release.
+  * #21547: MAINT: Skip tests that fail on PyPy.
+
+- changes from version 1.22.3:
+  * #21048: MAINT: Use "3.10" instead of "3.10-dev" on travis.
+  * #21106: TYP,MAINT: Explicitly allow sequences of array-likes in
+     np.concatenate
+  * #21137: BLD,DOC: skip broken ipython 8.1.0
+  * #21138: BUG, ENH: np._from_dlpack: export correct device
+     information
+  * #21139: BUG: Fix numba DUFuncs added loops getting picked up
+  * #21140: BUG: Fix unpickling an empty ndarray with a non-zero
+     dimension...
+  * #21141: BUG: use ThreadPoolExecutor instead of ThreadPool
+  * #21142: API: Disallow strings in logical ufuncs
+  * #21143: MAINT, DOC: Fix SciPy intersphinx link
+  * #21148: BUG,ENH: np._from_dlpack: export arrays with any strided
+     size-1...
+
+- changes from version 1.22.2 (CVE-2021-41495, bsc#1193911):
+  * #20842: BLD: Add NPY_DISABLE_SVML env var to opt out of SVML
+  * #20843: BUG: Fix build of third party extensions with
+     Py_LIMITED_API
+  * #20844: TYP: Fix pyright being unable to infer the real and
+     imag...
+  * #20845: BUG: Fix comparator function signatures
+  * #20906: BUG: Avoid importing numpy.distutils on import
+     numpy.testing
+  * #20907: MAINT: remove outdated mingw32 fseek support
+  * #20908: TYP: Relax the return type of np.vectorize
+  * #20909: BUG: fix f2py's define for threading when building with
+     Mingw
+  * #20910: BUG: distutils: fix building mixed C/Fortran extensions
+  * #20912: DOC,TST: Fix Pandas code example as per new release
+  * #20935: TYP, MAINT: Add annotations for flatiter.__setitem__
+  * #20936: MAINT, TYP: Added missing where typehints in
+     fromnumeric.pyi
+  * #20937: BUG: Fix build_ext interaction with non numpy extensions
+  * #20938: BUG: Fix missing intrinsics for windows/arm64 target
+  * #20945: REL: Prepare for the NumPy 1.22.2 release.
+  * #20982: MAINT: f2py: don't generate code that triggers
+     -Wsometimes-uninitialized.
+  * #20983: BUG: Fix incorrect return type in reduce without initial
+     value
+  * #20984: ENH: review return values for PyArray_DescrNew
+  * #20985: MAINT: be more tolerant of setuptools >= 60
+  * #20986: BUG: Fix misplaced return.
+  * #20992: MAINT: Further small return value validation fixes
+
+- changes from version 1.22.1:
+  * #20702: MAINT, DOC: Post 1.22.0 release fixes.
+  * #20703: DOC, BUG: Use pngs instead of svgs.
+  * #20704: DOC:Fixed the link on user-guide landing page
+  * #20714: BUG: Restore vc141 support
+  * #20724: BUG: Fix array dimensions solver for multidimensional
+     arguments...
+  * #20725: TYP: change type annotation for __array_namespace__ to
+     ModuleType
+  * #20726: TYP, MAINT: Allow ndindex to accept integer tuples
+  * #20757: BUG: Relax dtype identity check in reductions
+  * #20763: TYP: Allow time manipulation functions to accept date and
+     timedelta...
+  * #20768: TYP: Relax the type of ndarray.__array_finalize__
+  * #20795: MAINT: Raise RuntimeError if setuptools version is too
+     recent.
+  * #20796: BUG, DOC: Fixes SciPy docs build warnings
+  * #20797: DOC: fix OpenBLAS version in release note
+  * #20798: PERF: Optimize array check for bounded 0,1 values
+  * #20805: BUG: Fix that reduce-likes honor out always (and live in
+     the...
+  * #20806: BUG: array_api.argsort(descending=True) respects
+     relative...
+  * #20807: BUG: Allow integer inputs for pow-related functions in
+     array_api
+  * #20814: DOC: Refer to NumPy, not pandas, in main page
+  * #20815: DOC: Update Copyright to 2022 [License]
+  * #20819: BUG: Return correctly shaped inverse indices in array_api
+     set...
+
+- changes from version 1.22.0:
+  * long list of changes
+    https://github.com/numpy/numpy/blob/main/doc/changelog/1.22.0-changelog.rst
+
+-------------------------------------------------------------------
+Sun May 29 18:15:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.21.6:
+  * Do not forward `__(deep)copy__` calls of `_GenericAlias`...
+  * Fix float16 einsum fastpaths using wrong tempvar
+  * Print os error message when the executable not exist
+  * Force ``npymath` ` to respect ``npy_longdouble``
+  * Fix failure to create aligned, empty structured dtype
+  * provide a convenience function to replace npy_load_module
+  * update wheel to version that supports python3.10
+  * Clear errors correctly in F2PY conversions
+  * add a warningfilter to fix pytest workflow.
+  * Help boost::python libraries at least not crash
+- drop bpo-45167-fixes.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Dec  9 14:43:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Ignore Python 3.10 deprecation warnings
+
+-------------------------------------------------------------------
+Sun Dec  5 07:26:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix abbreviated references
+
+-------------------------------------------------------------------
+Fri Dec  3 10:54:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.21.4:
+  * #20278: BUG: Fix shadowed reference of dtype in type stub
+  * #20293: BUG: Fix headers for universal2 builds
+  * #20294: BUG: VOID_nonzero could sometimes mutate alignment flag
+  * #20295: BUG: Do not use nonzero fastpath on unaligned arrays
+  * #20296: BUG: Distutils patch to allow for 2 as a minor version (!)
+  * #20297: BUG, SIMD: Fix 64-bit/8-bit integer division by a scalar
+  * #20298: BUG, SIMD: Workaround broadcasting SIMD 64-bit integers on MSVC...
+  * #20300: REL: Prepare for the NumPy 1.21.4 release.
+  * #20302: TST: Fix a Arrayterator typing test failure
+- Release to 1.21.3:
+  * #19745: ENH: Add dtype-support to 3 `generic/ndarray methods
+  * #19955: BUG: Resolve Divide by Zero on Apple silicon + test failures...
+  * #19958: MAINT: Mark type-check-only ufunc subclasses as ufunc aliases...
+  * #19994: BUG: np.tan(np.inf) test failure
+  * #20080: BUG: Correct incorrect advance in PCG with emulated int128
+  * #20081: BUG: Fix NaT handling in the PyArray_CompareFunc for datetime...
+  * #20082: DOC: Ensure that we add documentation also as to the dict for...
+  * #20106: BUG: core: result_type(0, np.timedelta64(4)) would seg. fault.
+- Add patch to fix aarch64 support:
+  * numpy-fix-cpu_asimdfhm.patch
+
+-------------------------------------------------------------------
+Fri Nov 19 00:33:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch bpo-45167-fixes.patch:
+  * Support Python >= 3.9.8 changes.
+
+-------------------------------------------------------------------
+Tue Nov  9 15:27:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Expect failure of test_fpclass and test_float on riscv64
+- Bump disk space constraint
+
+-------------------------------------------------------------------
+Wed Oct  6 19:16:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- The update- and libalternatives logic is required in the standard
+  build, not the hpc flavor
+
+-------------------------------------------------------------------
+Thu Sep 30 10:05:18 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
+Mon Sep 20 16:51:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.21.2
+  * #19497: MAINT: set Python version for 1.21.x to <3.11
+  * #19533: BUG: Fix an issue wherein importing numpy.typing could raise
+  * #19646: MAINT: Update Cython version for Python 3.10.
+  * #19648: TST: Bump the python 3.10 test version from beta4 to rc1
+  * #19651: TST: avoid distutils.sysconfig in runtests.py
+  * #19652: MAINT: add missing dunder method to nditer type hints
+  * #19656: BLD, SIMD: Fix testing extra checks when -Werror isn't applicable...
+  * #19657: BUG: Remove logical object ufuncs with bool output
+  * #19658: MAINT: Include .coveragerc in source distributions to support...
+  * #19659: BUG: Fix bad write in masked iterator output copy paths
+  * #19660: ENH: Add support for windows on arm targets
+  * #19661: BUG: add base to templated arguments for platlib
+  * #19662: BUG,DEP: Non-default UFunc signature/dtype usage should be deprecated
+  * #19666: MAINT: Add Python 3.10 to supported versions.
+  * #19668: TST,BUG: Sanitize path-separators when running runtest.py
+  * #19671: BLD: load extra flags when checking for libflame
+  * #19676: BLD: update circleCI docker image
+  * #19677: REL: Prepare for 1.21.2 release.
+- Release 1.21.1
+  * #19311: REV,BUG: Replace NotImplemented with typing.Any
+  * #19324: MAINT: Fixed the return-dtype of ndarray.real and imag
+  * #19330: MAINT: Replace "dtype[Any]" with dtype in the definiton of...
+  * #19342: DOC: Fix some docstrings that crash pdf generation.
+  * #19343: MAINT: bump scipy-mathjax
+  * #19347: BUG: Fix arr.flat.index for large arrays and big-endian machines
+  * #19348: ENH: add numpy.f2py.get_include function
+  * #19349: BUG: Fix reference count leak in ufunc dtype handling
+  * #19350: MAINT: Annotate missing attributes of np.number subclasses
+  * #19351: BUG: Fix cast safety and comparisons for zero sized voids
+  * #19352: BUG: Correct Cython declaration in random
+  * #19353: BUG: protect against accessing base attribute of a NULL subarray
+  * #19365: BUG, SIMD: Fix detecting AVX512 features on Darwin
+  * #19366: MAINT: remove print()'s in distutils template handling
+  * #19390: ENH: SIMD architectures to show_config
+  * #19391: BUG: Do not raise deprecation warning for all nans in unique...
+  * #19392: BUG: Fix NULL special case in object-to-any cast code
+  * #19430: MAINT: Use arm64-graviton2 for testing on travis
+  * #19495: BUILD: update OpenBLAS to v0.3.17
+  * #19496: MAINT: Avoid unicode characters in division SIMD code comments
+  * #19499: BUG, SIMD: Fix infinite loop during count non-zero on GCC-11
+  * #19500: BUG: fix a numpy.npiter leak in npyiter_multi_index_set
+  * #19501: TST: Fix a GenericAlias test failure for python 3.9.0
+  * #19502: MAINT: Start testing with Python 3.10.0b3.
+  * #19503: MAINT: Add missing dtype overloads for object- and ctypes-based...
+  * #19510: REL: Prepare for NumPy 1.21.1 release.
+- Drop 0001-BUG-Fix-infinite-loop-on-gcc11.patch fixed upstream
+  (by gcc 11.2)
+- Drop numpy-pr19326-fix-subarray-segfault.patch merged upstream
+  (backported)
+
+-------------------------------------------------------------------
+Fri Jul 16 15:14:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix segfault with subarray access
+  * Add numpy-pr19326-fix-subarray-segfault.patch
+  * Fixes python-zarr segfault
+  * gh#numpy/numpy#19326
+
+-------------------------------------------------------------------
+Wed Jul  7 08:24:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 1.21.0 (bsc#1193913, CVE-2021-33430, bsc#1193907,
+  CVE-2021-41496):
+  * DEP: Deprecate data_type.dtype if attribute is not already...
+  * ENH: Implement faster keyword argument parsing capable of METH_FASTCALL
+  * ENH: Optimize and cleanup ufunc calls and ufunc CheckOverrides
+  * BUG: Remove temporary change of descr/flags in VOID functions
+  * DOC: Add more information about poly1d -> polynomial to reference...
+  * ENH: Warn when reloading numpy or using numpy in sub-interpreter
+  * DOC: Fix for building with sphinx 3
+  * DOC: unify the docs for np.transpose and ndarray.transpose
+  * DOC: added examples section for rfft2 and irfft2 docstring
+  * DOC: Fix Typo (Wrong argument name)
+  * ENH: Phase unwrapping generalized to arbitrary interval size
+  * SIMD: Optimize the performance of np.packbits in AVX2/AVX512F/VSX.
+  * MAINT: Use numpy version for f2py version.
+  * DEP: Shift correlate mode parsing to C and deprecate inexact...
+  * DEP: Formally deprecate np.typeDict
+  * SIMD: Replace raw SIMD of sin/cos with NPYV(universal intrinsics)
+  * MAINT: Bump pydata-sphinx-theme and set logo link to index
+  * DOC: Add module template
+  * ENH: Make ndarray generic w.r.t. its shape and dtype
+  * ENH: Added libdivide for floor divide
+  * BUG, Benchmark: fix passing optimization build options to asv
+  * MAINT, Benchmark: print the supported CPU features during the...
+  * ENH: Add annotations for comparison operations
+  * SIMD: Optimize the performance of einsum's submodule multiply...
+  * ENH, SIMD: Add new NPYV intrinsics pack(0)
+  * ENH, SIMD: Add new NPYV intrinsics pack(1)
+  * BLD: Enable Werror=undef in travis
+  * ENH: add support for fujitsu compiler to numpy.
+  * ENH: Add two new _<X>Like unions
+  * BUG: Ignore fewer errors during array-coercion
+  * MAINT: Add git rules to ignore all SIMD generated files
+  * ENH: Add a mypy plugin for inferring platform-specific np.number...
+  * TST: use latest pypy37 not pypy36
+  * DOC: Doc for deprecate_with_doc
+  * DOC: Clarify docs of np.resize().
+  * MAINT: Update master after 1.20.x branch.
+  * Make it clearer that np.interp input must be monotonically increasing
+  * MAINT: Implement new casting loops based on NEP 42 and 43
+  * DOC: fix typo in glossary.rst
+  * BUG, TST: use python-version not PYTHON_VERSION
+  * DOC: update the release howto for oldest-supported-numpy
+  * MAINT: clean up a spurious warning in numpy/typing/setup.py
+  * DOC: Prepare for 1.20.0 release
+  * DOC: fixed typo in np-indexing.png explaining [-2:] slice in...
+  * BUG: Fix buffer readflag errors and small leaks
+  * BUG: np.arange: Allow stop not start as sole kwargs.
+  * MAINT: Bump hypothesis from 5.41.3 to 5.41.4
+  * MAINT: Remove duplicate dictionary entry
+  * BUG: numpy.putmask not respecting writeable flag
+  * ENH: Timestamp development versions.
+  * DOC: Update arraycreation
+  * DOC: Correct sentence/statement composition
+  * DOC: Rename basics to fundamentals + added description
+  * MAINT: Remove remaining uses of Python 3.6.
+  * ENH: Speed up default where in the reduce-like method
+  * BUG: merging PR to use -Werror=undef broke another PR
+  * DEP: Finalize unravel_index dims alias for shape keyword
+  * BUG: Fix a MacOS build failure
+  * BUG: 'bool' object has no attribute 'ndim'
+  * BUG: remove stray '+' from f-string upgrade in numba/extending.py
+  * DOC: Update release notes to mention type(dtype) is not np.dtype
+  * NEP: Update NEP 42 and 43 according to the current implementation
+  * BUG: Enforce high >= low on uniform number generators
+  * MAINT: Replace contextlib_nullcontext with contextlib.nullcontext
+  * DOC: Add information about leak checking and valgrind
+  * TST: Fixed an issue where the typing tests would fail for comparison...
+  * DOC: Clarify savez documentation of naming arrays in output file
+  * [DOC]: Wrong length for underline in docstring.
+  * MAINT: Bump hypothesis from 5.41.4 to 5.41.5
+  * BUG: Removed empty String from Nag Compiler's Flags
+  * NEP: Accept NEP 42 -- New and extensible DTypes
+  * DOC: Replace {var} in docstrings type annotation with `scalar...
+  * ENH: Use versioneer to manage numpy versions.
+  * TST: Fix crosstalk issues with polynomial str tests.
+  * MAINT: Optimize the performance of count_nonzero by using universal...
+  * TST, BUILD: Add a native x86 baseline build running on ubuntu-20.04
+  * TST: Ensure tests are not sensitive to execution order
+  * BUG: Add missing decref to arange
+  * ENH: Use more typevars in np.dtype
+  * BUG, SIMD: Fix direactive check for AVX512BW of intrinsics npyv_tobits_*
+  * DEP: Futurewarn on requiring __len__ on array-likes
+  * BLD: Fixes for versioneer and setup.py sdist.
+  * DOC: Add/remove spaces in snippets and re-format here and there
+  * MAINT: Update test_requirements and release_requirements.
+  * ENH: Add proper dtype-support to np.flatiter
+  * ENH, SIMD: Ditching the old CPU dispatcher(Arithmetic)
+  * DOC: Replace verbatim with reference to local parameter
+  * [DOC] np.kron use double backticks for non-references
+  * SIMD: Optimize the performance of einsum's submodule dot .
+  * MAINT: Bump pytest from 6.0.2 to 6.2.0
+  * MAINT: Update wheel requirement from <=0.35.1 to <0.36.3
+  * MAINT: Bump hypothesis from 5.41.5 to 5.43.3
+  * TST: ignore pytest warning
+  * Replace Numpy with NumPy
+  * BLD, BUG: Fix detecting aarch64 on macOS
+  * DOC: Fix and extend the docstring for np.inner
+  * DOC: Add a brief explanation of float printing
+  * DOC: fix for doctests
+  * BLD: update to OpenBLAS 0.3.13
+  * SIMD: Optimize the performance of einsum's submodule sum.
+  * DOC: random: add some examples for SeedSequence
+  * DOC, MAINT: Minor fixes to refguide_check.py documentation.
+  * BUG: make a variable volatile to work around clang compiler bug
+  * DOC: Parameter name typo axes -> axis in numpy.fft._pocketfft.
+  * ENH: Add annotations for np.core.arrayprint
+  * DOC: Fix a couple of reference to verbatim and vice versa
+  * MAINT: Add dist_info to "other" setup.py commands.
+  * MAINT: Bump pytest from 6.2.0 to 6.2.1
+  * TST: add back sdist test run
+  * BLD,DOC: pin sphinx to 3.3.1
+  * DOC: Update TESTS.rst.txt
+  * MAINT: Add aliases for commonly used ArrayLike objects
+  * DEP: deprecate np.testing.dec
+  * BUG: Fix concatenation when the output is "S" or "U"
+  * DOC: Update stack docstrings
+  * BLD: ensure we give the right error message for old Python versions
+  * DOC: add missing details to linalg.lstsq docstring
+  * MAINT: CPUs that support unaligned access.
+  * TST: Allow mypy output types to be specified via aliases
+  * MAINT: Remove obsolete workaround to set ndarray.__hash__ = None
+  * BUG: Fix unique handling of nan entries.
+  * MAINT: crackfortran regex simplify
+  * MAINT: exprtype regex simplify
+  * ENH, SIMD: Dispatch for unsigned floor division
+  * NEP: mark NEP 28 on website redesign as final
+  * Fix build warnings in NEPs
+  * MAINT: Bump sphinx from 3.3.1 to 3.4.1
+  * MAINT: Bump pytz from 2020.4 to 2020.5
+  * MAINT: Bump hypothesis from 5.43.3 to 5.43.4
+  * DOC: roadmap update
+  * MAINT: regex char class improve
+  * NEP: NumPy sponsorship guidelines (NEP 46)
+  * DOC: replace 'this platform' with the actual platform in the...
+  * BUG, SIMD: Fix _simd module build for 64bit Arm/neon clang
+  * DOC: Update reference to verbatim in a few location.
+  * MAINT: multiline regex class simplify
+  * DOC: Avoid using "set of" when talking about an ordered list.
+  * NEP: update backwards compatibility and deprecation policy NEP
+  * BUG, BLD: Generate the main dispatcher config header into the...
+  * ENH: move exp, log, frexp, ldexp to SIMD dispatching
+  * TST: Avoid changing odd tempfile names in tests' site.cfg
+  * TST: Turn some tests with loops into parametrized tests.
+  * MAINT: Fix exception cause in mingw32ccompiler.py
+  * API: make piecewise subclass safe using use zeros_like.
+  * MAINT: Bump hypothesis from 5.43.4 to 5.46.0
+  * BUG: Fix promotion of half and string
+  * DEP: Deprecate promotion of numbers and bool to string
+  * BUG, MAINT: improve avx512 mask logical operations
+  * REL: Update master after 1.19.5 release.
+  * ENH: Add dtype support to the array comparison ops
+  * ENH: Adding keyboard interrupt support for array creation
+  * BLD: add found Cython version to check in cythonize.py
+  * MAINT: Bump sphinx from 3.4.1 to 3.4.3
+  * MAINT: Bump hypothesis from 5.46.0 to 6.0.0
+  * BUG: Ensure too many advanced indices raises an exception
+  * BUG: Promotion between strings and objects was assymetric
+  * MAINT: Remove redundant null check before free
+  * BUG: Initialize value of no_castable_output used in ufunc_loop_matches
+  * MAINT: Make keyword arrays static
+  * TST: add a pypy37 windows 64-bit build
+  * Use sinus based formula for chebpts1
+  * ENH: cpu features detection implementation on FreeBSD ARM
+  * TST: Clear the mypy cache before running any typing tests
+  * MAINT: Changed the NBitBase variancy in number from co- to...
+  * ENH: Improve performance of tril_indices and triu_indices
+  * SIMD: add fast integer division intrinsics for all supported...
+  * BUG: threads.h existence test requires GLIBC > 2.12.
+  * ENH: [f2py] Add external attribute support.
+  * MAINT: Bump hypothesis from 6.0.0 to 6.0.2
+  * MAINT: Optimize numpy.count_nonzero for int types using SIMD...
+  * BUG: Fix f2py bugs when wrapping F90 subroutines.
+  * MAINT: Give the _<X>Like and _ArrayLike<X> type aliases a...
+  * STY: unify imports in __init__.py
+  * STY: Use explicit reexports for numpy.typing objects
+  * MAINT: Fix typo in docstring example
+  * MAINT: einsum: Optimize the sub function two-operands by using...
+  * BLD: update OpenBLAS to af2b0d02
+  * BUG: Keep ignoring most errors during array-protocol lookup
+  * ENH: Add new intrinsics sum_u8/u16/u64.
+  * TST: Speed up the typing tests
+  * MAINT: Update pavement.py to work with versioneer.
+  * TST: raise memory limit for test
+  * DOC: typo in post-loop return
+  * MAINT: random shuffle: warn on unrecognized objects, fix empty...
+  * DOC: Formatting consistency.
+  * DOC: Double backticks for inline code example.
+  * MAINT: Ignore ComplexWarning in test_iter_copy_casts.
+  * DOC: Misc single to double backticks fixes.
+  * DOC: Improve doc for numpy.random.Generator.choice
+  * MAINT: Bump pydata-sphinx-theme from 0.4.1 to 0.4.2
+  * MAINT: Bump mypy from 0.790 to 0.800
+  * MAINT: Bump hypothesis from 6.0.2 to 6.0.3
+  * MAINT: Bump pytest-cov from 2.10.1 to 2.11.1
+  * ENH: Add dtype-support to the ufunc-based ndarray magic methods...
+  * MAINT: Clean up all module-level dunders
+  * DOC: Clarify the type alias deprecation message
+  * DOC: lib/shape_base numpydoc formatting.
+  * NEP: accept NEP 23 (backwards compatibility policy)
+  * NEP: accept NEP 46 (sponsorship guidelines)
+  * DOC: Fix command in "Writing custom array containers" guide
+  * ENH: Add aliases for commonly used dtype-like objects
+  * DOC: __array__ accepts a dtype argument
+  * BLD: fix issue with bdist_egg, which made make dist in doc/...
+  * DOC: Misc numpydoc format fixes
+  * DOC: See also -> See Also (casing)
+  * DOC: more misc fixes of syntax
+  * DOC: cleanup of numpy/polynomial.
+  * DOC: improve description of _NoValue
+  * MAINT: add an 'apt update'
+  * REL: Update master after 1.20.0 release.
+  * ENH: Added sanity check to printoptions
+  * BUG: Use C linkage for random distributions
+  * DOC: Numpydoc format space before : in Parameters
+  * DOC: Numpydoc warning incorrect underline length.
+  * MAINT: Chain exceptions in linalg
+  * MAINT: Bump hypothesis from 6.0.3 to 6.1.1
+  * MAINT: Bump pytest from 6.2.1 to 6.2.2
+  * MAINT: Bump pydata-sphinx-theme from 0.4.2 to 0.4.3
+  * MAINT: defer the import of shutil
+  * MAINT: gracefully shuffle memoryviews
+  * ENH: Add annotations for the remaining np.generic aliases
+  * TST: Pin typing_extensions to the latest version
+  * MAINT: Move transferdata into buffer-wise struct
+  * BUG: Fix typo in numpy.__init__.py
+  * BUG: don't mutate list of fake libraries while iterating over...
+  * MAINT: avoid chaining exceptions in conv_template.py
+  * MAINT: Add missing placeholder annotations
+  * MAINT: Fix typo in PyArray_RegisterDataType error
+  * DOC: Corrected numpy.power example.
+  * Numpy logo fix on README
+  * CI: rearrange Azure build jobs
+  * MAINT: Fixed chain exception for array_split func
+  * DOC: add links to polynomial function/class listing
+  * ENH: Add a mypy plugin for exposing platform-specific extended-precision...
+  * ENH: Add dtype-support to the ufunc-based ndarray magic methods...
+  * MAINT: Avoid moveaxis overhead in median.
+  * BUG: Allow unmodified use of isclose, allclose, etc. with timedelta
+  * MAINT: Update openblas_support for macosx-arm64
+  * BUG: Allow pickling all relevant DType types/classes
+  * CI: fix when GitHub Actions builds trigger, and allow ci skips
+  * TST: use setup-python action for pypy, disable win64 pypy
+  * DOC: Fix whitespace before "last updated" on overview page
+  * DOC: Discussion on the @ operator and the matrix class
+  * DOC: remove pygments_style from conf.py
+  * DOC: Specified all possible return types for trapz function #18140
+  * DOC: Added sentence to docstring of histogram_bin_edges to explain...
+  * DOC: Change license date 2020 -> 2021
+  * MAINT: Delete unused "dst" clearing functions
+  * DEP: doc-deprecate BLAS_SRC/LAPACK_SRC
+  * CI: CircleCI seems to occasionally time out, increase the limit
+  * BUG: Fix missing signed_char dependency.
+  * ENH: Share memory of read-only intent(in) arrays.
+  * REL: Update master after 1.20.1 release.
+  * DOC: Update landing page to match table of contents
+  * MAINT: Disable TravisCI git clone depth.
+  * MAINT: Bump pytz from 2020.5 to 2021.1
+  * BUG: np.in1d bug on the object array (issue 17923)
+  * DOC: improve standard_t example in numpy.random.
+  * TST: Add a test for nditer write masked with references
+  * BUG: fix regression in a hidden callback use case in f2py.
+  * ENH: Add annotations for np.lib.ufunclike
+  * DOC: Fix docstring of _median_nancheck.
+  * BUG: improve the interface of tofile method
+  * MAINT: Fix version of wheel to support Python 3.10
+  * ENH: Add annotations for np.core.einsumfunc
+  * BUG: Remove check in shuffle for non-ndarrays
+  * MAINT: Added Chain exceptions where appropriate
+  * ENH: Initial typing of random
+  * MAINT: Threading and Unicode strings
+  * ENH: Add annotations for np.lib.index_tricks
+  * MAINT: Fix casting signatures to align with NEP 43 signature
+  * MAINT: Added Chain exceptions where appropriate
+  * BUG: Fix typo in char_codes
+  * BUG: Fix iterator shape in advanced index assignment broadcast...
+  * DOC: Mention scipy.signal.correlate and FFT method in `np.correlate`closes...
+  * MAINT: Bump sphinx from 3.4.3 to 3.5.0
+  * MAINT: Bump hypothesis from 6.1.1 to 6.2.0
+  * MAINT: Update END statements parsing for recent Fortran standards.
+  * BUG: Fix f2py parsing continued lines that follow comment lines.
+  * ENH: Add dtype-support to the ufunc-based ndarray magic methods...
+  * DOC: remove layout overrides for headers
+  * BUG: Fix tiny memory leaks when like= overrides are used
+  * ENH: Lint checks for PR diffs
+  * DOC: remove explanations.rst
+  * DOC: point intersphinx to matplotlib/stable...
+  * MAINT: Correct code producing warnings
+  * ENH: Add typing for RandomState
+  * BUG: Fix refcount leak in f2py complex_double_from_pyobj
+  * TST: Fix some uninitialized memory in the tests
+  * BUG: Correct shuffling of objects in 1-d array likes
+  * MAINT: random: Use 'from exc' when raising a ValueError in choice.
+  * BUG: fix stacklevel in warning within random.shuffle
+  * DOC: Remove unfinished Linear Algebra section from Quickstart...
+  * BUG: Segfault in nditer buffer dealloc for Object arrays
+  * NEP: add Spending NumPy Project Funds (NEP 48)
+  * BUG: diagflat could overflow on windows or 32-bit platforms
+  * NEP: array API standard adoption (NEP 47)
+  * DOC: update NEP status for accepted/finished NEPs
+  * MAINT: Bump mypy from 0.800 to 0.812
+  * MAINT: Bump sphinx from 3.5.0 to 3.5.1
+  * MAINT: Bump cython from 0.29.21 to 0.29.22
+  * MAINT: Bump hypothesis from 6.2.0 to 6.3.0
+  * ENH: Added type annotations to eye() function
+  * BUG: Remove suspicious type casting
+  * BUG: remove nonsensical comparison of pointer < 0
+  * BUG: verify pointer against NULL before using it
+  * BUG: check if PyArray_malloc succeeded
+  * DOC: Generator and RandomState doc improvements
+  * ENH: Improve error message in multinomial
+  * DOC: Rename "Ones and zeros" section in array-creation documentation.
+  * BUG: Fix non-versioneer uses of numpy.distutils
+  * TST: Remove the einsum typing tests reliance on issuing a ComplexWarning
+  * BUG: Fixed Von Mises distribution for big values of kappa
+  * TST: Branch coverage improvement for np.polynomial
+  * DOC: Fix links to landing page
+  * DOC: add guide for downstream package authors
+  * DOC: trunc, floor, ceil, rint, fix should all link to each other
+  * BLD: add _2_24 to valid manylinux names
+  * MAINT: Improve error message when common type not found.
+  * MAINT: Bump hypothesis from 6.3.0 to 6.3.4
+  * DOC Improve formatting in the depending_on_numpy documentation
+  * BUG: remove extraneous ARGOUTVIEWM dim. 4 typemaps
+  * MAINT: Specify color in RGB in the docs about the new NumPy logo
+  * BUG: incorrect error fallthrough in nditer
+  * CI: Use Ubuntu 18.04 to run "full" test.
+  * [BLD] use the new openblas lib
+  * Fix the numpy Apple M1 build
+  * BUG: NameError in numpy.distutils.fcompiler.compaq
+  * MAINT: Update master to main after branch rename
+  * ENH: Add annotations for np.lib.arrayterator
+  * CI: Pin docker image for Linux_Python_38_32bit_full_with_asserts...
+  * BUG: Fixed where keyword for np.mean & np.var methods
+  * CI: another master -> main fix
+  * CI: skip lint check on merges with main
+  * CI: Ensure that doc-build uses "main" as branch name
+  * CI: Use git branch -m instead of --initial-branch=main
+  * BUG: Fix overflow warning on apple silicon
+  * CI: Set git default branch to "main" in CircleCI.
+  * MAINT: Update the Call for Contributions section
+  * MAINT: Bump sphinx from 3.5.1 to 3.5.2
+  * MAINT: Bump hypothesis from 6.3.4 to 6.6.0
+  * MAINT: Bump pycodestyle from 2.5.0 to 2.6.0
+  * MAINT: OrderedDict is no longer necessary from Python 3.7
+  * BLD, TST: use pypy nightly to work around bug
+  * DOC: Clarify docs for fliplr() / flipud()
+  * DOC: Added documentation for linter (#18423)
+  * MAINT: Do not claim input to binops is self (array object)
+  * MAINT: Remove strange op == NULL check
+  * MAINT: Chain exceptions in index_tricks.py and mrecords.py
+  * MAINT: Add annotations for dtype.__getitem__, __mul__ and...
+  * CI: Do not fail CI on lint error
+  * BUG: Fix ma coercion list-of-ma-arrays if they do not cast to...
+  * MAINT: Bump pycodestyle from 2.6.0 to 2.7.0
+  * MAINT: Bump hypothesis from 6.6.0 to 6.8.1
+  * CI: Update apt package list before Python install
+  * MAINT: Ensure that re-exported sub-modules are properly annotated
+  * DOC: Consistently use rng as variable name for random generators
+  * BUG, ENH: fix array2string rounding bug by adding min_digits...
+  * DOC: add note to numpy.rint() docstrings
+  * BUG: Use npy_log1p where appropriate in random generation
+  * ENH: Improve the exception for default low in Generator.integers
+  * MAINT: Remove useless declarations in bad_commands
+  * ENH: Use new argument parsing for array creation functions
+  * DOC: Remove mention of nose from README
+  * DOC: Minor fix in inline code example of ufunc reference
+  * MAINT: use super() as described by PEP 3135
+  * MAINT: Add missing type to cdef statement
+  * BUG: Fix small valgrind-found issues
+  * DOC: Update some plotting code to current Matplotlib idioms
+  * ENH: Improve performance of np.save for small arrays
+  * BLD: remove /usr/include from default include dirs
+  * DEV: add a conda environment.yml with all development dependencies
+  * DOC: add release note for removal of /usr/include from include...
+  * MAINT: Bump sphinx from 3.5.2 to 3.5.3
+  * ENH: Use exponentials in place of inversion in Rayleigh and geometric
+  * BUG: Fix small issues found with pytest-leaks
+  * MAINT: Implement new style promotion for np.result_type, etc.
+  * BUG: Changed METH_VARARGS to METH_NOARGS
+  * Docs: simd-optimizations.rst: fix typo (basline ~> baseline)
+  * REL: Update main after 1.20.2 release.
+  * BUG: Fix test_ccompiler_opt when path contains dots
+  * DOC: Change matrix size in absolute beginners doc.
+  * BUG: Correct datetime64 missing type overload for datetime.date...
+  * BUG: fix segfault in object/longdouble operations
+  * MAINT: Bump pydata-sphinx-theme from 0.5.0 to 0.5.2
+  * MAINT: Bump hypothesis from 6.8.1 to 6.8.3
+  * TST: pin pypy version to 7.3.4rc1
+  * ENH: Support parsing Fortran abstract interface blocks.
+  * DEP: Disable PyUFunc_GenericFunction and PyUFunc_SetUsesArraysAsData
+  * MAINT: Specify the color space in all new NumPy logo files
+  * BLD: Strip extra newline when dumping gfortran version on MacOS
+  * DOC: update Steering Council membership and people on governance...
+  * DOC: Add release notes to upcoming_changes
+  * TST: add tests for using np.meshgrid for higher dimensional grids.
+  * DOC: Simplifies Mandelbrot set plot in Quickstart guide
+  * API, DEP: Move ufunc signature parsing to the start
+  * DOC: deduplicate dtype basic types (2)
+  * MAINT: Bump pytest from 6.2.2 to 6.2.3
+  * MAINT: Bump hypothesis from 6.8.3 to 6.8.4
+  * MAINT: Add exception chaining where appropriate
+  * BUG: Check out requirements and raise when not satisfied
+  * DEV: Adds gitpod to numpy
+  * BLD: introduce use of BLAS_LIBS and LAPACK_LIBS in distutils/system_info
+  * MAINT: Add exception chaining where appropriate
+  * DOC: Emphasize distinctions between np.copy and ndarray.copy
+  * CI: remove shippable CI
+  * MAINT: Allow more recursion depth for scalar tests.
+  * BUG: Regression #18075 | Fixing Ufunc TD generation order
+  * BLD: Negative zero handling with ifort
+  * MAINT: Bump sphinx from 3.5.3 to 3.5.4
+  * MAINT: Bump hypothesis from 6.8.4 to 6.9.1
+  * DOC: Update howto-docs with link to NumPy tutorials.
+  * DOC: Small fixes (including formatting) for NEP 43
+  * ENH: Improve the placeholder annotations for the main numpy namespace
+  * ENH, SIMD: Replace libdivide functions of signed integer division...
+  * DOC: More concise "How to import NumPy" description
+  * DOC: Use: from numpy.testing import ...
+  * CI: Use informational mode for codecov
+  * CI: Fixing typo in Azure job run
+  * DOC: update random and asserts in test guidelines
+  * MAINT: Relax the integer-type-constraint of npt._ShapeLike
+  * DOC: fix spelling of "reccomended" ("recommended")
+  * ENH: Improve the placeholder annotations for the main numpy namespace...
+  * ENH: Add __all__ to a number of public modules
+  * DOC: change dec.parametrize to pytest.mark.parametrize
+  * DOC: add note for clip() special case a_min > a_max See #18782
+  * DOC: Document newer pytest conventions
+  * DEV: Pin pydata-sphinx-theme to 0.5.2.
+  * CI: Use towncrier build explicitly
+  * DOC: Fixes small things in the genfromtext docstring
+  * MAINT: Use recent towncrier releases on PyPI.
+  * SIMD, TEST: Workaround for misaligned stack GCC BUG ABI on WIN64
+  * DOC: Misc Numpydoc and formatting for proper parsing.
+  * DOC: Update random c-api documentation
+  * MAINT: Improve the placeholder annotations for the main numpy...
+  * MAINT: Relax miscellaneous integer-type constraints
+  * DOC: fix typo in frexp docstring
+  * DOC: Improve random.choice() documentation
+  * NEP: propose new nep for allocator policies
+  * MAINT: Bump hypothesis from 6.9.1 to 6.10.0
+  * MAINT: Bump cython from 0.29.22 to 0.29.23
+  * MAINT: runtests help text cleanup
+  * DOC: Document howto build documentation in a virtual environment
+  * BUG: Initialize the full nditer buffer in case of error
+  * ENH: Add annotations for 4 objects in np.core.numerictypes
+  * MAINT: Remove incorrect inline
+  * DEV: general Gitpod enhancements
+  * MAINT: Minor fix to add reference link to numpy.fill_diagonal...
+  * MAINT: Update README.md
+  * BUG: Prevent nan being used in percentile
+  * DOC: Fix typo in random docs
+  * MAINT: Generalize and shorten the ufunc "trivially iterable"...
+  * ENH, SIMD: Add support for dispatching C++ sources
+  * DOC: Add Gitpod development documentation
+  * DOC: Add favicon
+  * ENH: Improve the placeholder annotations within sub-modules
+  * DOC: Clarify isreal docstring
+  * DOC: Move Sphinx numpy target in reference index.
+  * MAINT: Disable pip version check for azure lint check.
+  * ENH: Improve the placeholder annotations within sub-modules (part...
+  * STY: change CRLF line terminators to Unix
+  * MAINT: Fix the typo "implment"
+  * TST: Skip f2py TestSharedMemory for LONGDOUBLE on macos/arm64
+  * ENH: Add max values comparison for floating point
+  * MAINT: Remove dead codepath in generalized ufuncs
+  * Upgrade to GitHub-native Dependabot
+  * MAINT: Fix azure linter problems with pip 21.1
+  * MAINT: Bump hypothesis from 6.10.0 to 6.10.1
+  * BLD, ENH: Enable Accelerate Framework
+  * MAINT: Update PyPy version used by CI
+  * API: Ensure that casting does not affect ufunc loop
+  * ENH: Add min values comparison for floating point
+  * MAINT: Remove unsafe unions and ABCs from return-annotations
+  * ENH: Add SIMD operations for min and max value comparision
+  * MAINT: ssize_t -> Py_ssize_t and other fixes for Python v3.10.0
+  * MAINT: Bump typing-extensions from 3.7.4.3 to 3.10.0.0
+  * DOC: Add a set of standard replies.
+  * DOC: Improve cumsum documentation
+  * MAINT: Explicitly mark text files in .gitattributes.
+  * MAINT: Add ".csv" some data file names.
+  * BLD, BUG: Fix compiler optimization log AttributeError
+  * BLD: remove unnecessary flag -faltivec on macOS
+  * MAINT, CI: treats _SIMD module build warnings as errors through...
+  * ENH: Add PCG64DXSM BitGenerator
+  * MAINT: Adjust NumPy float hashing to Python's slightly changed...
+  * ENH: Improve the placeholder annotations within sub-modules (part...
+  * BUG : for MINGW, threads.h existence test requires GLIBC > 2.12
+  * BLD, BUG: Fix bdist_wheel duplicate building
+  * CI: fix the GitHub Actions trigger in docker.yml
+  * DOC: fix documentation of cloning over ssh
+  * ENH: Add placeholder annotations for two missing np.testing...
+  * BUG: Report underflow condition in AVX implementation of np.exp
+  * NEP: add mailing list thread, fixes from review
+  * BUG: Make changelog recognize gh- as a PR number prefix.
+  * BUG: Fix refcounting in string-promotion deprecation code path
+  * BUG: Fix underflow error in AVX512 implementation of ufunc exp/f64
+  * DOC: Add a release note for the improved placeholder annotations
+  * API: Add npt.NDArray, a runtime-subscriptable alias for np.ndarray
+  * DOC: Update performance for new PRNG
+  * ENH: manually inline PCG64DXSM code for performance.
+  * TST: xfail TestCond.test_nan unconditionally
+  * ENH: Add annotations for np.lib.utils
+  * DOC: Update beginners docu for sum function with axis
+  * DOC: add an extra example in runtests.py help test
+  * DOC: change copyright SciPy to NumPy
+  * DOC: Improve datetime64 docs.
+  * MAINT: Do not use deprecated mktemp()
+  * DOC: improve numpy.histogram2d() documentation
+  * BUG: fixed ma.average ignoring masked weights
+  * DOC: add note and examples to isrealobj docstring
+  * DOC: Update a page title with proper case
+  * DEP: remove PolyBase from np.polynomial.polyutils
+  * DOC: Improve description of array scalar in glossary
+  * BUG: fix np.ma.masked_where(copy=False) when input has no mask
+  * MAINT, SIMD: Hardened the AVX compile-time tests
+  * ENH: Include co-authors in changelog.
+  * MAINT: Bump sphinx from 3.5.4 to 4.0.0
+  * MAINT: Bump hypothesis from 6.10.1 to 6.12.0
+  * MAINT: Bump pytest from 6.2.3 to 6.2.4
+  * DOC: Gitpod documentation enhancements
+  * MAINT: Cleanup tools/changelog.py
+  * REL: Update main after 1.20.3 release.
+  * MAINT: Remove usage of the PEP 604 pipe operator
+  * BUG: Update coordinates in PyArray_ITER_GOTO1D
+  * BUG: fix potential buffer overflow(#18939)
+  * ENH: Add annotations for np.lib.NumpyVersion
+  * MAINT: Remove warning when checking AVX512f on MSVC
+  * ENH: Improve annotations of the item, tolist, take and...
+  * DEP: Ensure the string promotion FutureWarning is raised
+  * DEP: Deprecate error clearing for special method in array-coercion
+  * ENH: Add annotations for np.broadcast and np.DataSource
+  * ENH: Add dtype-support to 11 ndarray / generic methods
+  * BUG: fix potential use of null pointer in nditer buffers
+  * BUG: fix variable misprint in multiarray test code
+  * BUG: fix variable misprint checking wrong variable in umath tests
+  * BUG: fix ValueError in PyArray_Std on win_amd64
+  * MAINT: Small cleanups in PyArray_NewFromDescr_int
+  * Revert "BUG: Update coordinates in PyArray_ITER_GOTO1D"
+  * DOC: "NumPy" <- "numpy" in NumPy Fundamentals - Indexing
+  * DOC: Add comment for ifdef macro guard
+  * MAINT: Bump pytest-cov from 2.11.1 to 2.12.0
+  * MAINT: Bump sphinx from 4.0.0 to 4.0.1
+  * DOC: Clarify minimum numpy version needed to use random c-api
+  * ENH: Improve the annotations of np.core._internal
+  * DEP: Deprecate 4 ndarray.ctypes methods
+  * MAINT: Python3 classes do not need to inherit from object
+  * BUG: do not use PyLong_FromLong for intp
+  * DOC: Improve trapz docstring
+  * DOC: Fix typo in release notes for v1.21
+  * BUG, SIMD: Fix unexpected result of uint8 division on X86
+  * BUG, SIMD: Fix NumPy build on ppc64le(IBM/Power) for old versions...
+  * BUG: Fix duplicate variable names in compiler check for AVX512_SKX
+  * BLD,API: (distutils) Force strict floating point error model...
+  * ENH: Improve the np.ufunc annotations
+  * DOC: Forward port missing 1.18.5 release note.
+  * ENH: Stubs for array_equal appear out of date.
+  * BUG: Fixed an issue wherein nanmedian could return an array...
+  * MAINT: Update mailmap
+  * REL: Prepare 1.21.0 release
+  * BUG: Fix compile-time test of POPCNT
+  * BUG: Fix test_numpy_version.
+  * BUG: Fixed an issue wherein _GenericAlias.__getitem__ would...
+  * BUG: Linter should only run on pull requests.
+  * BUG: Fix setup.py to work in maintenance branches.
+  * BUG: expose short_version as previously in version.py
+  * API: Delay string and number promotion deprecation/future warning
+  * BUG, SIMD: Fix detect host/native CPU features on ICC at compile-time
+  * BUG: Add -std=c99 to intel icc compiler flags on linux
+  * NEP: Accept NEP 35 as final
+  * MAINT, BUG: Adapt castingimpl.casting to denote a minimal level
+  * REL: Prepare for NumPy 1.20.0rc2 release.
+  * MAINT: Add annotations for the missing period parameter to...
+  * MAINT: Add complex as allowed type for the np.complexfloating...
+  * TST: Ignore exp FP exceptions test for glibc ver < 2.17
+  * MAINT: replace imgmath with mathjax for docs
+  * BUG: Fix out-of-bounds access in convert_datetime_divisor_to_multiple
+  * ENH: Support major version larger than 9 in NumpyVersion
+  * DOC: fix duplicate navbar in development documentation index
+  * BUG: Invalid dtypes comparison should not raise TypeError
+  * BUG: Add missing DECREF in new path
+  * REL: Prepare for 1.21.0 release
+
+- Add patch from upstream to fix an infinite loop on gcc 11:
+  * 0001-BUG-Fix-infinite-loop-on-gcc11.patch
+
+- Remove patch which is not needed anymore in 1.21.0:
+  * fix-asarray.patch
+
+-------------------------------------------------------------------
+Mon Jul  5 12:22:33 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix an invalid usage of the dtype argument. This
+  has already been fixed upstream but since Staging:F is so
+  crowded now with python packages, I think it's better to patch
+  it and update numpy once Staging:F is cleared:
+  * fix-asarray.patch
+
+-------------------------------------------------------------------
+Wed Jun  2 18:56:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.3:
+  * BUG: Correct datetime64 missing type overload for datetime.date...
+  * MAINT: Remove __all__ in favor of explicit re-exports
+  * BLD: Strip extra newline when dumping gfortran version on MacOS
+  * BUG: fix segfault in object/longdouble operations
+  * MAINT: Use towncrier build explicitly
+  * MAINT: Relax certain integer-type constraints
+  * MAINT: Remove unsafe unions and ABCs from return-annotations
+  * MAINT: Allow more recursion depth for scalar tests.
+  * BUG: Initialize the full nditer buffer in case of error
+  * BLD: remove unnecessary flag -faltivec on macOS
+  * MAINT, CI: treats _SIMD module build warnings as errors through...
+  * BUG: for MINGW, threads.h existence test requires GLIBC > 2.12
+  * BUG: Make changelog recognize gh- as a PR number prefix.
+  * REL, DOC: Prepare for the NumPy 1.20.3 release.
+  * BUG: Fix failing mypy test in 1.20.x.
+
+-------------------------------------------------------------------
+Fri May  7 20:39:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.2:
+  * MAINT: Update f2py from master.
+  * BUG: diagflat could overflow on windows or 32-bit platforms
+  * BUG: Fix refcount leak in f2py complex_double_from_pyobj.
+  * BUG: Fix tiny memory leaks when like= overrides are used
+  * BUG: Remove temporary change of descr/flags in VOID functions
+  * BUG: Segfault in nditer buffer dealloc for Object arrays
+  * BUG: Remove suspicious type casting
+  * BUG: remove nonsensical comparison of pointer < 0
+  * BUG: verify pointer against NULL before using it
+  * BUG: check if PyArray_malloc succeeded
+  * BUG: incorrect error fallthrough in nditer
+  * MAINT: Add annotations for dtype.__getitem__, __mul__ and…
+  * BUG: NameError in numpy.distutils.fcompiler.compaq
+  * BUG: Fixed where keyword for np.mean & np.var methods
+  * MAINT: Ensure that re-exported sub-modules are properly annotated
+  * BUG: Fix ma coercion list-of-ma-arrays if they do not cast to…
+  * BUG: Fix small valgrind-found issues
+  * BUG: Fix small issues found with pytest-leaks
+
+-------------------------------------------------------------------
+Wed Feb 10 12:19:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.20.1
+  * The distutils bug that caused problems with downstream projects
+    is fixed.
+  * The random.shuffle regression is fixed.
+- Higlights for 1.20.0:
+  * Annotations for NumPy functions. This work is ongoing and
+    improvements can be expected pending feedback from users.
+  * Wider use of SIMD to increase execution speed of ufuncs. Much
+    work has been done in introducing universal functions that
+    will ease use of modern features across different hardware
+    platforms. This work is ongoing.
+  * Preliminary work in changing the dtype and casting
+    implementations in order to provide an easier path to
+    extending dtypes. This work is ongoing but enough has been
+    done to allow experimentation and feedback.
+  * Extensive documentation improvements comprising some 185 PR
+    merges. This work is ongoing and part of the larger project to
+    improve NumPy’s online presence and usefulness to new users.
+  * Further cleanups related to removing Python 2.7. This improves
+    code readability and removes technical debt.
+  * Preliminary support for the upcoming Cython 3.0.
+- Full release notes at
+  https://numpy.org/doc/stable/release/1.20.0-notes.html
+- Now requires Python >= 3.7 (NEP 29)
+  * Drop fix-py34-tests.patch
+  * Skip python36 build
+- Drop s390x.patch -- The patch was applied for all big endian
+  architectures. Mark those tests appropriately in the check
+  section instead.  gh#numpy/numpy#11831
+- Skip two tests on ix86: gh#numpy/numpy#18387 gh#numpy/numpy#18388
+
+-------------------------------------------------------------------
+Sat Jan 16 21:39:13 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Move flaky tests to test_failok
+- Fix hpc for multiflavors (needs gh#openSUSE/hpc#3)
+
+-------------------------------------------------------------------
+Fri Jan  8 09:51:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.19.5
+  * Fix memory leak of buffer-info cache due to relaxed strides
+  * Set deprecated fields to null in PyArray_InitArrFuncs
+  * fix np.timedelta64('nat').__format__ throwing an exception
+  * more bugfixes
+- Rebase numpy-buildfix.patch
+
+-------------------------------------------------------------------
+Sat Nov 28 16:08:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python3 flavors gh#openSUSE/python-rpm-macros#66
+  * Fix pytest call expansion
+  * Fix f2py entry point
+
+-------------------------------------------------------------------
+Fri Oct  2 13:29:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add cblas build dependency, otherwise numpy uses naive internal
+  implementations for some blas operations, mitigates boo#1177260.
+- Add libopenblas recommends. To actually use openblas instead of
+  netlib BLAS/LAPACK, update-alternatives has to be used.
+- Remove .pytest_cache from the build_root
+
+-------------------------------------------------------------------
+Wed Sep 30 07:13:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase required memory to avoid test failures
+
+-------------------------------------------------------------------
+Tue Sep 22 16:40:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix upgrade from older distro versions which did not package
+  f2py using update-alternatives (catched by openQA, bsc#1166678, boo#1176832).
+
+-------------------------------------------------------------------
+Fri Sep 18 08:19:50 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Build only HPC version with OpenBLAS, use standard BLAS/LAPACK
+  for non-HPC instead.
+- Create a macro %ver for the package version number next to %_ver
+  to help keep both in sync.
+
+-------------------------------------------------------------------
+Sat Sep 12 19:55:00 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.19.2:
+  * #16959: TST: Change aarch64 to arm64 in travis.yml.
+  * #16998: MAINT: Configure hypothesis in np.test() for
+     determinism,...
+  * #17000: BLD: pin setuptools < 49.2.0
+  * #17015: ENH: Add NumPy declarations to be used by Cython 3.0+
+  * #17125: BUG: Remove non-threadsafe sigint handling from fft
+     calculation
+  * #17243: BUG: core: fix ilp64 blas dot/vdot/... for strides > int32
+     max
+  * #17244: DOC: Use SPDX license expressions with correct license
+  * #17245: DOC: Fix the link to the quick-start in the old API
+     functions
+  * #17272: BUG: fix pickling of arrays larger than 2GiB
+
+-------------------------------------------------------------------
+Sat Jul 25 15:35:20 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update cython version requirement
+  * updated line number in patches
+  * removed patch 0001-Re-raise-MemoryError-exception-in-test_large_zips-process, included upstream
+
+- update to version 1.19.1:
+  * #16649: MAINT, CI: disable Shippable cache
+  * #16652: MAINT: Replace PyUString_GET_SIZE with
+     PyUnicode_GetLength.
+  * #16654: REL: Fix outdated docs link
+  * #16656: BUG: raise IEEE exception on AIX
+  * #16672: BUG: Fix bug in AVX complex absolute while processing
+     array of...
+  * #16693: TST: Add extra debugging information to CPU features
+     detection
+  * #16703: BLD: Add CPU entry for Emscripten / WebAssembly
+  * #16705: TST: Disable Python 3.9-dev testing.
+  * #16714: MAINT: Disable use_hugepages in case of ValueError
+  * #16724: BUG: Fix PyArray_SearchSorted signature.
+  * #16768: MAINT: Fixes for deprecated functions in scalartypes.c.src
+  * #16772: MAINT: Remove unneeded call to PyUnicode_READY
+  * #16776: MAINT: Fix deprecated functions in scalarapi.c
+  * #16779: BLD, ENH: Add RPATH support for AIX
+  * #16780: BUG: Fix default fallback in genfromtxt
+  * #16784: BUG: Added missing return after raising error in methods.c
+  * #16795: BLD: update cython to 0.29.21
+  * #16832: MAINT: setuptools 49.2.0 emits a warning, avoid it
+  * #16872: BUG: Validate output size in bin- and multinomial
+  * #16875: BLD, MAINT: Pin setuptools
+  * #16904: DOC: Reconstruct Testing Guideline.
+  * #16905: TST, BUG: Re-raise MemoryError exception in
+     test_large_zip's...
+  * #16906: BUG,DOC: Fix bad MPL kwarg.
+  * #16916: BUG: Fix string/bytes to complex assignment
+  * #16922: REL: Prepare for NumPy 1.19.1 release
+
+-------------------------------------------------------------------
+Fri Jul 17 11:08:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix the test_large_zip test in i586, which fails
+  when run in a separate process (gh#numpy/numpy#16890):
+  * 0001-Re-raise-MemoryError-exception-in-test_large_zips-process.patch
+
+-------------------------------------------------------------------
+Thu Jul  2 16:55:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.19.0:
+  * #8255: ENH: add identity kwarg to frompyfunc
+  * #12646: TST: check exception details in refguide_check.py
+  * #13421: ENH: improve runtime detection of CPU features
+  * #14326: TST: Add assert_array_equal test for big integer arrays.
+  * #14376: MAINT: Remove unnecessary 'from __future__ import ...'
+    statements
+  * #14530: MAINT: Fix typos and copy edit NEP-0030.
+  * #14546: DOC: NumPy for absolute beginners tutorial
+  * #14715: NEP: Proposal for array creation dispatching with
+    __array_function__
+  * #14867: ENH: Use AVX-512F for np.maximum and np.minimum
+  * #14924: BUG: Fix numpy.random.dirichlet returns NaN for small
+    'alpha'...
+  * #14933: API: Use ResultType in PyArray_ConvertToCommonType
+  * #14942: MAINT,API: ignore and NULL fasttake/fastputmask ArrFuncs
+    slots
+  * #14981: BUG: Make ediff1d kwarg casting consistent
+  * #14988: DOC: linalg: Include information about scipy.linalg.
+  * #14995: BUG: Use __array__ during dimension discovery
+  * #15011: MAINT: cleanup compat.py3k.py
+  * #15022: ENH: f2py: improve error messages
+  * #15028: [DOC] LaTeX: fix preamble (closes #15026)
+  * #15035: BUG: add endfunction, endsubroutine to valid fortran
+    end words
+  * #15040: TST: Add test for object method (and general unary)
+    loops
+  * #15042: REL: Update master after 1.18.x branch.
+  * #15043: DOC: Update HOWTO_RELEASE.rst.txt
+  * #15046: API, DOC: change names to multivariate_hypergeometric,
+    improve...
+  * #15050: DOC: Fix statement about norms
+  * #15052: MAINT: follow-up cleanup for blas64 PR
+  * #15054: DOC: add docstrings to refguide-check
+  * #15066: Revert "DEP: issue deprecation warning when creating
+    ragged array...
+  * #15069: ENH: add support for ILP64 OpenBLAS (without symbol
+    suffix)
+  * #15070: DOC: correct version for NaT sort
+  * #15072: TST: Check requires_memory immediately before the test
+  * #15073: MAINT: core: Fix a very long line in the ufunc
+    docstrings.
+  * #15076: BUG: test, fix flexible dtype conversion on class with
+    __array__
+  * #15082: TST: add value to pytest.ini for pytest6 compatibility
+  * #15085: MAINT: Ragged cleanup
+  * #15097: DOC: bring the out parameter docstring into line with
+    ufuncs
+  * #15106: ENH: f2py: add --f2cmap option for specifying the name
+    of .f2py_f2cmap
+  * #15107: TST: add BLAS ILP64 run in Travis & Azure
+  * #15110: MAINT: Fix expm1 instability for small complex numbers.
+  * #15115: MAINT: random: Remove a few unused imports from test
+    files.
+  * #15116: MAINT: Bump pytest from 5.3.1 to 5.3.2
+  * #15118: API: remove undocumented use of __array__(dtype,
+    context)
+  * #15120: MAINT,CI: fix signed-unsigned comparison warning
+  * #15124: DOC: Update documentation of np.clip
+  * #15125: DOC: Remove reference to basic RNG
+  * #15126: MAINT: Fix randint 0d limits and other 0d cleanups
+  * #15129: DOC: Fix typos, via a Levenshtein-style corrector
+  * #15133: MAINT: CI: Clean up .travis.yml
+  * #15136: DOC: Correct choice signature
+  * #15138: DOC: Correct documentation in choice
+  * #15143: TST: shippable build efficiency
+  * #15144: BUG: ensure reduction output matches input along
+    non-reduction...
+  * #15149: REL: Update master after NumPy 1.18.0 release.
+  * #15150: MAINT: Update pavement.py for towncrier.
+  * #15153: DOC: update cholesky docstring regarding input checking
+  * #15154: DOC: update documentation on how to build NumPy
+  * #15156: DOC: add moved modules to 1.18 release note
+  * #15160: MAINT: Update required cython version to 0.29.14.
+  * #15164: BUG: searchsorted: passing the keys as a keyword
+    argument
+  * #15170: BUG: use tmp dir and check version for cython test
+  * #15178: TST: improve assert message of assert_array_max_ulp
+  * #15187: MAINT: unskip test on win32
+  * #15189: ENH: Add property-based tests using Hypothesis
+  * #15194: BUG: test, fix for c++ compilation
+  * #15196: DOC: Adding instructions for building documentation to
+    developer...
+  * #15197: DOC: NEP 37: A dispatch protocol for NumPy-like modules
+  * #15203: MAINT: Do not use private Python function in testing
+  * #15205: DOC: Improvements to Quickstart Tutorial.
+  * #15211: BUG: distutils: fix msvc+gfortran openblas handling
+    corner case
+  * #15212: BUG: lib: Fix handling of integer arrays by gradient.
+  * #15215: MAINT: lib: A little bit of clean up for the new year.
+  * #15216: REL: Update master after NumPy 1.16.6 and 1.17.5
+    releases.
+  * #15217: DEP: records: Deprecate treating shape=0 as shape=None
+  * #15218: ENH: build fallback lapack_lite with 64-bit integers on
+    64-bit...
+  * #15224: MAINT: linalg: use symbol suffix in fallback
+    lapack_lite
+  * #15227: DOC: typo in release.rst
+  * #15228: NEP: universal SIMD NEP 38
+  * #15229: MAINT: Remove unused int_asbuffer
+  * #15232: MAINT: Cleaning up PY_MAJOR_VERSION/PY_VERSION_HEX
+  * #15233: MAINT: Clean up more PY_VERSION_HEX
+  * #15236: MAINT: Remove implicit inheritance from object class
+  * #15238: MAINT: only add --std=c99 where needed
+  * #15239: MAINT: Remove Python2 newbuffer getbuffer
+  * #15240: MAINT: Py3K array_as_buffer and gentype_as_buffer
+  * #15241: MAINT: Remove references to non-existent sys.exc_clear()
+  * #15242: DOC: Update HOWTO_RELEASE.rst
+  * #15248: MAINT: cleanup use of sys.exc_info
+  * #15249: MAINT: Eliminate some calls to eval
+  * #15251: MAINT: Improve const-correctness of shapes and strides
+  * #15253: DOC: clarify the effect of None parameters passed to
+    ndarray.view
+  * #15254: MAINT: Improve const-correctness of string arguments
+  * #15255: MAINT: Delete numpy.distutils.compat
+  * #15256: MAINT: Implement keyword-only arguments as syntax
+  * #15260: MAINT: Remove FIXME comments introduced in the previous
+    commit
+  * #15261: MAINT: Work with unicode strings in dtype('i8,i8')
+  * #15262: BUG: Use PyDict_GetItemWithError() instead of
+    PyDict_GetItem()
+  * #15263: MAINT: Remove python2 array_{get,set}slice
+  * #15264: DOC: Add some missing functions in the list of
+    available ufuncs.
+  * #15265: MAINT: Tidy PyArray_DescrConverter
+  * #15266: MAINT: remove duplicated if statements between
+    DescrConverters
+  * #15267: BUG: Fix PyArray_DescrAlignConverter2 on tuples
+  * #15268: MAINT: Remove Python2 ndarray.__unicode__
+  * #15272: MAINT: Remove Python 2 divide
+  * #15273: MAINT: minor formatting fixups for NEP-37
+  * #15274: MAINT: Post NumPy 1.18.1 update.
+  * #15275: MAINT: travis-ci: Update CI scripts.
+  * #15278: BENCH: Add benchmark for small array coercions
+  * #15279: BUILD: use standard build of OpenBLAS for aarch64,
+    ppc64le, s390x
+  * #15280: BENCH: Add basic benchmarks for take and putmask
+  * #15281: MAINT: Cleanup most PY3K #ifdef guards
+  * #15282: DOC: BLD: add empty release notes for 1.19.0 to fix doc
+    build...
+  * #15284: MAINT: Use a simpler return convention for internal
+    functions
+  * #15285: MAINT: Simplify np.int_ inheritance
+  * #15286: DOC" Update np.full docstring.
+  * #15287: MAINT: Express PyArray_DescrAlignConverter in terms of
+    _convert_from_any
+  * #15288: MAINT: Push down declarations in _convert_from_*
+  * #15289: MAINT: C code simplifications
+  * #15291: BUG: Add missing error handling to _convert_from_list
+  * #15295: DOC: Added tutorial about linear algebra on
+    multidimensional...
+  * #15300: MAINT: Refactor dtype conversion functions to be more
+    similar
+  * #15303: DOC: Updating f2py docs to python 3 and fixing some
+    typos
+  * #15304: MAINT: Remove NPY_PY3K constant
+  * #15305: MAINT: Remove sys.version checks in tests
+  * #15307: MAINT: cleanup sys.version dependant code
+  * #15310: MAINT: Ensure _convert_from_* functions set errors
+  * #15312: MAINT: Avoid escaping unicode in error messages
+  * #15315: MAINT: Change file extension of ma README to rst.
+  * #15319: BUG: fix NameError in clip nan propagation tests
+  * #15323: NEP: document reimplementation of NEP 34
+  * #15324: MAINT: fix typos
+  * #15328: TST: move pypy CI to ubuntu 18.04
+  * #15329: TST: move _no_tracing to testing._private, remove
+    testing.support
+  * #15333: BUG: Add some missing C error handling
+  * #15335: MAINT: Remove sys.version checks
+  * #15336: DEP: Deprecate ->f->fastclip at registration time
+  * #15338: DOC: document site.cfg.example
+  * #15350: MAINT: Fix mistype in histogramdd docstring
+  * #15351: DOC, BLD: reword release note, upgrade sphinx version
+  * #15353: MAINT: Remove unnecessary calls to PyArray_DATA from
+    binomial...
+  * #15354: MAINT: Bump pytest from 5.3.2 to 5.3.3
+  * #15358: MAINT: Remove six
+  * #15361: MAINT: Revise imports from collections.abc module
+  * #15362: MAINT: remove internal functions required to handle
+    Python2/3...
+  * #15364: MAINT: Remove other uses of six module
+  * #15366: MAINT: resolve pyflake F403 'from module import *' used
+  * #15368: MAINT: Update tox for supported Python versions
+  * #15369: MAINT: simd: Avoid signed comparison warning
+  * #15370: DOC: Updating Chararry Buffer datatypes #15360
+  * #15374: TST: Simplify unicode test
+  * #15375: MAINT: Use with open when possible
+  * #15377: MAINT: Cleanup python2 references
+  * #15379: MAINT: Python2 Cleanups
+  * #15381: DEP: add PendingDeprecation to matlib.py funky
+    namespace
+  * #15385: BUG, MAINT: Stop using the error-prone deprecated
+    Py_UNICODE...
+  * #15386: MAINT: clean up some macros in scalarapi.c
+  * #15393: MAINT/BUG: Fixups to scalar base classes
+  * #15397: BUG: np.load does not handle empty array with an empty
+    descr
+  * #15398: MAINT: Revise imports from urllib modules
+  * #15399: MAINT: Remove Python3 DeprecationWarning from
+    pytest.ini
+  * #15400: MAINT: cleanup _pytesttester.py
+  * #15401: BUG: Flags should not contain spaces
+  * #15403: MAINT: Clean up, mostly unused imports.
+  * #15405: BUG/TEST: core: Fix an undefined name in a test.
+  * #15407: MAINT: Replace basestring with str.
+  * #15408: ENH: Use AVX-512F for complex number arithmetic,
+    absolute, square...
+  * #15414: MAINT: Remove Python2 workarounds
+  * #15417: MAINT: Cleanup references to python2
+  * #15418: MAINT, DOC: Remove use of old Python __builtin__, now
+    known as...
+  * #15421: ENH: Make use of ExitStack in npyio.py
+  * #15422: MAINT: Inline gentype_getreadbuf
+  * #15423: MAINT: Use f-strings for clarity.
+  * #15427: DEP: Schedule unused C-API functions for removal/disabling
+  * #15428: DOC: Improve ndarray.ctypes example
+  * #15429: DOC: distutils: Add a docstring to show_config().
+  * #15430: MAINT: Use contextmanager in _run_doctests
+  * #15434: MAINT: Updated polynomial to use fstrings
+  * #15435: DOC: Fix Incorrect document in Beginner Docs
+  * #15436: MAINT: Update core.py with fstrings (issue #15420)
+  * #15439: DOC: fix docstrings so `python tools/refguide-check --rst
+    <file>...
+  * #15441: MAINT: Tidy macros in scalar_new
+  * #15444: MAINT: use 'yield from <expr>' for simple cases
+  * #15445: MAINT: Bump pytest from 5.3.3 to 5.3.4
+  * #15446: BUG: Reject nonsense arguments to scalar constructors
+  * #15449: DOC: Update refguide_check note on how to skip code
+  * #15451: MAINT: Simplify np.object_.__new__
+  * #15452: STY,MAINT: avoid 'multiple imports on one line'
+  * #15464: MAINT: Cleanup duplicate line in refguide_check
+  * #15465: MAINT: cleanup unused imports; avoid redefinition of
+    imports
+  * #15468: BUG: Fix for SVD not always sorted with hermitian=True
+  * #15469: MAINT: Simplify scalar __new__ some more
+  * #15474: MAINT: Eliminate messy _WORK macro
+  * #15476: update result of rng.random(3) to current rng output
+  * #15480: DOC: Correct get_state doc
+  * #15482: MAINT: Use .identifier = val to fill type structs
+  * #15483: [DOC] Mention behaviour of np.squeeze with one element
+  * #15484: ENH: fixing generic error messages to be more specific in
+    multiarray/descriptor.c
+  * #15487: BUG: Fixing result of np quantile edge case
+  * #15491: TST: mark the top 3 slowest tests to save ~10 seconds
+  * #15493: MAINT: Bump pytest from 5.3.4 to 5.3.5
+  * #15500: MAINT: Use True/False instead of 1/0 in
+    np.dtype.__reduce__
+  * #15503: MAINT: Do not allow copyswap and friends to fail silently
+  * #15504: DOC: Remove duplicated code in true_divide docstring
+  * #15505: NEP 40: Informational NEP about current DTypes
+  * #15510: DOC: Update unique docstring example
+  * #15511: MAINT: Large overhead in some random functions
+  * #15516: TST: Fix missing output in refguide-check
+  * #15521: MAINT: Simplify arraydescr_richcompare
+  * #15522: MAINT: Fix internal misuses of NPY_TITLE_KEY
+  * #15524: DOC: Update instructions for building/archiving docs.
+  * #15526: BUG: Fix inline assembly that detects cpu features on
+    x86(32bit)
+  * #15532: update doctests, small bugs and changes of repr
+  * #15534: DEP: Do not allow "abstract" dtype conversion/creation
+  * #15536: DOC: Minor copyediting on NEP 37.
+  * #15538: MAINT: Extract repeated code to a helper function
+  * #15543: NEP: edit and move NEP 38 to accepted status
+  * #15547: MAINT: Refresh Doxyfile and modernize numpyfilter.py
+  * #15549: TST: Accuracy test float32 sin/cos/exp/log for AVX
+    platforms
+  * #15550: DOC: Improve the numpy.linalg.eig docstring.
+  * #15554: NEP 44 - Restructuring the NumPy Documentation
+  * #15556: TST: (Travis CI) Use full python3-dbg path for virtual
+    env creation
+  * #15560: BUG, DOC: restore missing import
+  * #15566: DOC: Removing bad practices from quick start + some PEP8
+  * #15574: TST: Do not create symbolic link named gfortran.
+  * #15575: DOC: Document caveat in random.uniform
+  * #15579: DOC: numpy.clip is equivalent to minimum(..., maximum(...))
+  * #15582: MAINT: Bump cython from 0.29.14 to 0.29.15
+  * #15583: MAINT: Bump hypothesis from 5.3.0 to 5.5.4
+  * #15585: BLD: manylinux2010 docker reports machine=i686
+  * #15598: BUG: Ignore differences in NAN for computing ULP differences
+  * #15600: TST: use manylinux2010 docker instead of ubuntu
+  * #15610: TST: mask DeprecationWarning in xfailed test
+  * #15612: BUG: Fix bug in AVX-512F np.maximum and np.minimum
+  * #15615: BUG: Remove check requiring natural alignment of
+    float/double...
+  * #15616: DOC: Add missing imports, definitions and dummy file
+  * #15619: DOC: Fix documentation for apply_along_axis
+  * #15624: DOC: fix printing, np., deprecation for refguide
+  * #15631: MAINT: Pull identical line out of conditional.
+  * #15633: DOC: remove broken link in f2py tutorial
+  * #15639: BLD: update openblas download to new location, use
+    manylinux2010-base
+  * #15648: MAINT: AVX512 implementation with intrinsic for float64
+    input...
+  * #15653: BLD: update OpenBLAS to pre-0.3.9 version
+  * #15662: DOC: Refactor np.polynomial docs using automodule
+  * #15665: BUG: fix doctest exception messages
+  * #15672: MAINT: Added comment pointing FIXME to relevant PR.
+  * #15673: DOC: Make extension module wording more clear
+  * #15678: DOC: Improve np.finfo docs
+  * #15680: DOC: Improve Benchmark README with environment setup and
+    more...
+  * #15682: MAINT: Bump hypothesis from 5.5.4 to 5.6.0
+  * #15683: NEP: move NEP 44 to accepted status
+  * #15694: DOC: Fix indexing docs to pass refguide
+  * #15695: MAINT: Test during import to detect bugs with
+    Accelerate(MacOS)...
+  * #15696: MAINT: Add a fast path to var for complex input
+  * #15701: MAINT: Convert shebang from python to python3 (#15687)
+  * #15702: MAINT: replace optparse with argparse for 'doc' and
+    'tools' scripts
+  * #15703: DOC: Fix quickstart doc to pass refguide
+  * #15706: MAINT: Fixing typos in f2py comments and code.
+  * #15710: DOC: fix SVD tutorial to pass refguide
+  * #15714: MAINT: use list-based APIs to call subprocesses
+  * #15715: ENH: update numpy.linalg.multi_dot to accept an out
+    argument
+  * #15716: TST: always use 'python -mpip' not 'pip'
+  * #15717: DOC: update datetime reference to pass refguide
+  * #15718: DOC: Fix coremath.rst to fix refguide_check
+  * #15720: DOC: fix remaining doc files for refguide_check
+  * #15723: BUG: fix logic error when nm fails on 32-bit
+  * #15724: TST: Remove nose from the test_requirements.txt file.
+  * #15733: DOC: Allow NEPs to link to python, numpy, scipy, and
+    matplotlib...
+  * #15736: BUG: Guarantee array is in valid state after memory error
+    occurs...
+  * #15738: MAINT: Remove non-native byte order from _var check.
+  * #15740: MAINT: Add better error handling in linalg.norm for
+    vectors and...
+  * #15745: MAINT: doc: Remove doc/summarize.py
+  * #15747: BUG: lib: Handle axes with length 0 in np.unique.
+  * #15749: DOC: document inconsistency between the shape of data and
+    mask...
+  * #15750: BUG, TST: fix f2py for PyPy, skip one test for PyPy
+  * #15752: MAINT: Fix swig tests issue #15743
+  * #15757: MAINT: CI: Add an explicit 'pr' section to
+    azure-pipelines.yml
+  * #15762: MAINT: Bump pytest from 5.3.5 to 5.4.1
+  * #15766: BUG,MAINT: Remove incorrect special case in string to
+    number...
+  * #15768: REL: Update master after 1.18.2 release.
+  * #15769: ENH: Allow toggling madvise hugepage and fix default
+  * #15771: DOC: Fix runtests example in developer docs
+  * #15773: DEP: Make issubdtype consistent for types and dtypes
+  * #15774: MAINT: remove useless global statements
+  * #15778: BLD: Add requirements.txt file for building docs
+  * #15781: BUG: don't add 'public' or 'private' if the other one
+    exists
+  * #15784: ENH: Use TypeError in np.array for python consistency
+  * #15794: BUG: Add basic __format__ for masked element to fix
+    incorrect...
+  * #15797: TST: Add unit test for out=None of np.einsum
+  * #15799: MAINT: Cleanups to np.insert and np.delete
+  * #15800: BUG: Add error-checking versions of strided casts.
+  * #15802: DEP: Make np.insert and np.delete on 0d arrays with an
+    axis...
+  * #15803: DOC: correct possible list lengths for extobj in ufunc
+    calls
+  * #15804: DEP: Make np.delete on out-of-bounds indices an error
+  * #15805: DEP: Forbid passing non-integral index arrays to insert
+    and...
+  * #15806: TST: Parametrize sort test
+  * #15809: TST: switch PyPy job with CPython
+  * #15812: TST: Remove code that is not supposed to warn out of
+    warning...
+  * #15815: DEP: Do not cast boolean indices to integers in np.delete
+  * #15816: MAINT: simplify code that assumes str/unicode and int/long
+    are...
+  * #15830: MAINT: pathlib and hashlib are in stdlib in Python 3.5+
+  * #15832: ENH: improved error message `IndexError: too many indices
+    for...
+  * #15836: BUG: Fix IndexError for illegal axis in np.mean
+  * #15839: DOC: Minor fix to _hist_bin_fd documentation
+  * #15840: BUG,DEP: Make scalar.__round__() behave like pythons round
+  * #15843: DOC: First steps towards docs restructuring (NEP 44)
+  * #15848: DOC, TST: enable refguide_check in circleci
+  * #15850: DOC: fix typo in C-API reference
+  * #15854: DOC: Fix docstring for _hist_bin_auto.
+  * #15866: MAINT: Bump cython from 0.29.15 to 0.29.16
+  * #15867: DEP: Deprecate ndarray.tostring()
+  * #15868: TST: use draft OpenBLAS build
+  * #15872: BUG: Fix eigh and cholesky methods of
+    numpy.random.multivariate_normal
+  * #15876: BUG: Check that pvals is 1D in _generator.multinomial.
+  * #15877: DOC: Add missing signature from nditer docstring
+  * #15881: BUG: Fix empty_like to respect shape=()
+  * #15882: BUG: Do not ignore empty tuple of strides in ndarray.__new__
+  * #15883: MAINT: Remove duplicated code in iotools.py
+  * #15884: BUG: Setting a 0d array's strides to themselves should be
+    legal
+  * #15885: BUG: Respect itershape=() in nditer
+  * #15887: MAINT: Clean-up 'next = __next__' used for Python 2
+    compatibility
+  * #15893: TST: Run test_large_zip in a child process
+  * #15894: DOC: Add missing doc of numpy.ma.apply_over_axes in API
+    list.
+  * #15899: DOC: Improve record module documentation
+  * #15901: DOC: Fixed order of items and link to mailing list in dev
+    docs...
+  * #15903: BLD: report clang version on macOS
+  * #15904: MAINT: records: Remove private format_parser._descr attribute
+  * #15914: BUG: random: Disallow p=0 in negative_binomial
+  * #15921: ENH: Use sysconfig instead of probing Makefile
+  * #15928: DOC: Update np.copy docstring to include ragged case
+  * #15931: DOC: Correct private function name to
+    PyArray_AdaptFlexibleDType
+  * #15936: MAINT: Fix capitalization in error message in mtrand.pyx
+  * #15939: DOC: Update np.rollaxis docstring
+  * #15949: BUG: fix AttributeError on accessing object in nested
+    MaskedArray.
+  * #15951: BUG: Alpha parameter must be 1D in generator.dirichlet
+  * #15953: NEP: minor maintenance, update filename and fix a
+    cross-reference
+  * #15964: MAINT: Bump hypothesis from 5.8.0 to 5.8.3
+  * #15967: TST: Add slow_pypy support
+  * #15968: DOC: Added note to angle function docstring about angle(0)
+    being...
+  * #15982: MAINT/BUG: Cleanup and minor fixes to conform_reduce_result
+  * #15985: BUG: Avoid duplication in stack trace of linspace(a, b,
+    num=1.5)
+  * #15988: BUG: Fix inf and NaN-warnings in half float nextafter
+  * #15989: MAINT: Remove 0d check for PyArray_ISONESEGMENT
+  * #15990: DEV: Pass additional runtests.py args to ASV
+  * #15993: DOC: Fix method documentation of function sort in
+    MaskedArray
+  * #16000: NEP: Improve Value Based Casting paragraph in NEP 40
+  * #16001: DOC: add note on flatten ordering in matlab page
+  * #16007: TST: Add tests for the conversion utilities
+  * #16008: BUG: Unify handling of string enum converters
+  * #16009: MAINT: Replace npyiter_order_converter with
+    PyArray_OrderConverter
+  * #16010: BUG: Fix lexsort axis check
+  * #16011: DOC: Clarify single-segment arrays in np reference
+  * #16014: DOC: Change import error "howto" to link to new
+    troubleshooting...
+  * #16015: DOC: update first section of NEP 37 (__array_function__
+    downsides)
+  * #16021: REL: Update master after 1.18.3 release.
+  * #16024: MAINT: Bump hypothesis from 5.8.3 to 5.10.1
+  * #16025: DOC: initialise random number generator before first
+    use in quickstart
+  * #16032: ENH: Fix exception causes in build_clib.py
+  * #16038: MAINT,TST: Move _repr_latex tests to test_printing.
+  * #16041: BUG: missing 'f' prefix for fstring
+  * #16042: ENH: Fix exception causes in build_ext.py
+  * #16053: DOC: Small typo fixes to NEP 40.
+  * #16054: DOC, BLD: update release howto and walkthrough for
+    ananconda.org...
+  * #16061: ENH: Chained exceptions in linalg.py and polyutils.py
+  * #16064: MAINT: Chain exceptions in several places.
+  * #16067: MAINT: Chain exceptions in memmap.py and core.py
+  * #16068: BUG: Fix string to bool cast regression
+  * #16069: DOC: Added page describing how to contribute to the
+    docs team
+  * #16075: DOC: add a note on sampling 2-D arrays to random.choice
+    docstring
+  * #16076: BUG: random: Generator.integers(2**32) always returned 0.
+  * #16077: BLD: fix path to libgfortran on macOS
+  * #16078: DOC: Add axis to random module "new or different" docs
+  * #16079: DOC,BLD: Limit timeit iterations in random docs.
+  * #16081: DOC: add note on type casting to numpy.left_shift().
+  * #16083: DOC: improve development debugging doc
+  * #16084: DOC: tweak neps/scope.rst
+  * #16085: MAINT: Bump cython from 0.29.16 to 0.29.17
+  * #16086: MAINT: Bump hypothesis from 5.10.1 to 5.10.4
+  * #16094: TST: use latest released PyPy instead of nightly builds
+  * #16097: MAINT, DOC: Improve grammar on a comment in the quickstart
+  * #16100: NEP 41: Accept NEP 41 and add DType<->scalar duplication
+    paragraph
+  * #16101: BLD: put openblas library in local directory on windows
+  * #16113: MAINT: Fix random.PCG64 signature
+  * #16119: DOC: Move misplaced news fragment for gh-13421
+  * #16122: DOC: Fix links for NEP 40 in NEP 41
+  * #16125: BUG: lib: Fix a problem with vectorize with default
+    parameters.
+  * #16129: ENH: Better error message when bins has float value in
+    histogramdd.
+  * #16133: MAINT: Unify casting error creation (outside the
+    iterator)
+  * #16141: BENCH: Default to building HEAD instead of master
+  * #16144: REL: Update master after NumPy 1.18.4 release
+  * #16145: DOC: Add VSCode help link to importerror troubleshooting
+  * #16147: CI: pin 32-bit manylinux2010 image tag
+  * #16151: MAINT: Bump pytz from 2019.3 to 2020.1
+  * #16153: BUG: Correct loop order in MT19937 jump
+  * #16155: CI: unpin 32-bit manylinux2010 image tag
+  * #16162: BUG: add missing numpy/__init__.pxd to the wheel
+  * #16168: BUG:Umath remove unnecessary include of simd.inc in
+    fast_loop_macro.h
+  * #16169: DOC,BLD: Add :doc: to whitelisted roles in refguide_check.
+  * #16170: ENH: resync numpy/__init__.pxd with upstream
+  * #16171: ENH: allow choosing which manylinux artifact to download
+  * #16173: MAINT: Mark tests as a subpackage rather than data.
+  * #16182: Update Docs : point users of np.outer to np.multiply.outer
+  * #16183: DOC: Fix link to numpy docs in README.
+  * #16185: ENH: Allow pickle with protocol 5 when higher is requested
+  * #16188: MAINT: cleanups to _iotools.StringConverter
+  * #16197: DOC: Unify cross-references between array joining methods
+  * #16199: DOC: Improve docstring of numpy.core.records
+  * #16201: DOC: update Code of Conduct committee
+  * #16203: MAINT: Bump hypothesis from 5.10.4 to 5.12.0
+  * #16204: MAINT: Bump pytest from 5.4.1 to 5.4.2
+  * #16210: DOC: warn about runtime of shares_memory
+  * #16213: ENH: backport scipy changes to openblas download script
+  * #16214: BUG: skip complex256 arcsinh precision test on glibc2.17
+  * #16215: MAINT: Chain exceptions and use NameError in np.bmat
+  * #16216: DOC,BLD: pin sphinx to <3.0 in doc_requirements.txt
+  * #16223: BUG: fix signature of PyArray_SearchSorted in __init__.pxd
+  * #16224: ENH: add manylinux1 openblas hashes
+  * #16226: DOC: Fix Generator.choice docstring
+  * #16227: DOC: Add PyDev instructions to troubleshooting doc
+  * #16228: DOC: Add Clang and MSVC to supported compilers list
+  * #16240: DOC: Warn about behavior of ptp with signed integers.
+  * #16258: DOC: Update the f2py section of the "Using Python as
+    Glue" page.
+  * #16263: BUG: Add missing decref in fromarray error path
+  * #16265: ENH: Add tool for downloading release wheels from
+    Anaconda.
+  * #16269: DOC: Fix typos and cosmetic issues
+  * #16280: REL: Prepare for the 1.19.0 release
+  * #16293: BUG: Fix tools/download-wheels.py.
+  * #16301: BUG: Require Python >= 3.6 in setup.py
+  * #16312: BUG: relpath fails for different drives on windows
+  * #16314: DOC: Fix documentation rendering,
+  * #16341: BUG: Don't segfault on bad __len__ when assigning.
+    (gh-16327)
+  * #16342: MAINT: Stop Using PyEval_Call* and simplify some uses
+  * #16343: BLD: Avoid "visibility attribute not supported" warning.
+  * #16344: BUG: Allow attaching documentation twice in
+    add_docstring
+  * #16355: MAINT: Remove f-strings in setup.py. (gh-16346)
+  * #16356: BUG: Indentation for docstrings
+  * #16358: BUG: Fix dtype leak in PyArray_FromAny error path
+  * #16383: ENH: Optimize Cpu feature detect in X86, fix for GCC on
+    macOS...
+  * #16398: MAINT: core: Use a raw string for the fromstring
+    docstring.
+  * #16399: MAINT: Make ctypes optional on Windows
+  * #16400: BUG: Fix small leaks in error path and empty_like with
+    shape
+  * #16402: TST, MAINT: Fix detecting and testing armhf features
+  * #16412: DOC,BLD: Update sphinx conf to use xelatex.
+  * #16413: DOC,BLD: Update make dist html target.
+  * #16414: MAINT, DOC: add index for user docs.
+  * #16437: MAINT: support python 3.10
+  * #16456: DOC: Fix troubleshooting code snippet when env vars
+    are empty
+  * #16457: REL: Prepare for the NumPy 1.19.0rc2 release.
+  * #16526: MAINT:ARMHF Fix detecting feature groups NEON_HALF and
+    NEON_VFPV4
+  * #16527: BUG:random: Error when size is smaller than broadcast
+    input...
+  * #16528: BUG: fix GCC 10 major version comparison
+  * #16563: BUG: Ensure SeedSequence 0-padding does not collide
+    with spawn...
+  * #16586: BUG: fix sin/cos bug when input is strided array
+  * #16602: MAINT: Move and improve test_ignore_nan_ulperror.
+  * #16645: REL: Update 1.19.0-changelog.rst for 1.19.0 release.
+
+- Rebase patches:
+  * fix-py34-tests.patch
+  * s390x.patch
+
+-------------------------------------------------------------------
+Tue Jun 30 12:53:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- still open: boo#1148173 gh#numpy/numpy#14438 skip two tests
+- clean %check section for updated %pytest_arch
+  gh#openSUSE/python-rpm-macros#50
+
+-------------------------------------------------------------------
+Wed May 13 09:13:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Reorganize check section to pass
+
+-------------------------------------------------------------------
+Sat May  9 16:16:28 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.18.4:
+  * #16055: BLD: add i686 for 1.18 builds
+  * #16090: BUG: random: Generator.integers(2**32) always returned 0.
+  * #16091: BLD: fix path to libgfortran on macOS
+  * #16109: REV: Reverts side-effect changes to casting
+  * #16114: BLD: put openblas library in local directory on windows
+  * #16132: DOC: Change import error "howto" to link to new
+     troubleshooting...
+
+-------------------------------------------------------------------
+Sun Apr 26 13:04:17 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Disable TestF{77,90}ReturnCharacter on big-endian architectures (#11831)
+
+-------------------------------------------------------------------
+Fri Apr 24 15:44:55 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.18.3:
+  * #15916: BUG: Fix eigh and cholesky methods of
+     numpy.random.multivariate_normal
+  * #15929: BUG,MAINT: Remove incorrect special case in string to
+     number...
+  * #15930: BUG: Guarantee array is in valid state after memory error
+     occurs...
+  * #15954: BUG: Check that pvals is 1D in _generator.multinomial.
+  * #16017: BUG: Alpha parameter must be 1D in generator.dirichlet
+
+-------------------------------------------------------------------
+Tue Apr  7 13:08:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use alternatives on HPC as it is pain to get it working
+
+-------------------------------------------------------------------
+Tue Apr  7 11:55:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Also still install f2py<PYTHON_MAJOR> that is used by many other
+  depending software
+
+-------------------------------------------------------------------
+Mon Apr  6 21:42:29 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Use update-alternatives for /usr/bin/f2py
+
+-------------------------------------------------------------------
+Sat Mar 28 16:39:11 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.18.2:
+  * #15675: TST: move _no_tracing to testing._private
+  * #15676: MAINT: Large overhead in some random functions
+  * #15677: TST: Do not create gfortran link in azure Mac testing.
+  * #15679: BUG: Added missing error check in ndarray.__contains__
+  * #15722: MAINT: use list-based APIs to call subprocesses
+  * #15734: BUG: fix logic error when nm fails on 32-bit
+
+-------------------------------------------------------------------
+Tue Jan  7 15:10:48 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.18.1
+  * The cython random extension test was not using a temporary
+    directory for building, resulting in a permission violation.
+  * Numpy distutils was appending -std=c99 to all C compiler runs,
+    leading to changed behavior and compile problems downstream.
+    That flag is now only applied when building numpy C code.
+
+-------------------------------------------------------------------
+Mon Jan  6 15:34:51 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.18.0:
+  + Highlights
+    * The C-API for ``numpy.random`` has been defined and documented.
+    * Basic infrastructure for linking with 64 bit BLAS and LAPACK libraries.
+    * Many documentation improvements.
+  + New functions
+    * Multivariate hypergeometric distribution added to ``numpy.random``
+  + Deprecations
+    * ``np.fromfile`` and ``np.fromstring`` will error on bad data
+    * Deprecate non-scalar arrays as fill values in ``ma.fill_value``
+    * Deprecate ``PyArray_As1D``, ``PyArray_As2D``
+    * Deprecate ``np.alen``
+    * Deprecate the financial functions
+    * The ``axis`` argument to ``numpy.ma.mask_cols`` and ``numpy.ma.mask_row`` is deprecated
+  + Expired deprecations
+    * ``PyArray_As1D`` and ``PyArray_As2D`` have been removed in favor of
+      ``PyArray_AsCArray``
+    * ``np.rank`` has been removed. This was deprecated in NumPy 1.10
+      and has been replaced by ``np.ndim``.
+    * The deprecation of ``expand_dims`` out-of-range axes in 1.13.0 has
+      expired.
+    * ``PyArray_FromDimsAndDataAndDescr`` and ``PyArray_FromDims`` have been
+      removed (they will always raise an error). Use ``PyArray_NewFromDescr``
+      and ``PyArray_SimpleNew`` instead.
+    * ``numeric.loads``, ``numeric.load``, ``np.ma.dump``,
+      ``np.ma.dumps``, ``np.ma.load``, ``np.ma.loads`` are removed,
+      use ``pickle`` methods instead
+    * ``arrayprint.FloatFormat``, ``arrayprint.LongFloatFormat`` has been removed,
+      use ``FloatingFormat`` instead
+    * ``arrayprint.ComplexFormat``, ``arrayprint.LongComplexFormat`` has been
+      removed, use ``ComplexFloatingFormat`` instead
+    * ``arrayprint.StructureFormat`` has been removed, use ``StructureVoidFormat``
+      instead
+    * ``np.testing.rand`` has been removed. This was deprecated in NumPy 1.11
+      and has been replaced by ``np.random.rand``.
+    * Class ``SafeEval`` in ``numpy/lib/utils.py`` has been removed.
+      This was deprecated in NumPy 1.10. Use ``np.safe_eval`` instead.
+    * Remove deprecated support for boolean and empty condition lists in
+      ``np.select``
+    * Array order only accepts 'C', 'F', 'A', and 'K'. More permissive options
+      were deprecated in NumPy 1.11.
+    * np.linspace parameter ``num`` must be an integer. Deprecated in NumPy 1.12.
+    * UFuncs with multiple outputs must use a tuple for the ``out`` kwarg. This
+      finishes a deprecation started in NumPy 1.10.
+    * The files ``numpy/testing/decorators.py``, ``numpy/testing/noseclasses.py``
+      and ``numpy/testing/nosetester.py`` have been removed.  They were never
+      meant to be public (all relevant objects are present in the
+      ``numpy.testing`` namespace), and importing them has given a deprecation
+      warning since NumPy 1.15.0
+  + Compatibility notes
+    * `numpy.lib.recfunctions.drop_fields` can no longer return None
+    * ``numpy.argmin/argmax/min/max`` returns ``NaT`` if it exists in array
+    * ``np.can_cast(np.uint64, np.timedelta64, casting='safe')`` is now ``False``
+    * Changed random variate stream from ``numpy.random.Generator.integers``
+    * Add more ufunc loops for ``datetime64``, ``timedelta64``
+    * Moved modules in ``numpy.random``
+  + C API changes
+    * ``PyDataType_ISUNSIZED(descr)`` now returns False for structured datatypes
+  + New Features
+    * Add our own ``*.pxd`` cython import file
+    * A tuple of axes can now be input to ``expand_dims``
+    * Support for 64-bit OpenBLAS
+    * Add ``--f2cmap`` option to F2PY
+  + Improvements
+    * Different C numeric types of the same size have unique names
+    * ``argwhere`` now produces a consistent result on 0d arrays
+    * Add ``axis`` argument for ``random.permutation`` and ``random.shuffle``
+    * ``method`` keyword argument for ``np.random.multivariate_normal``
+    * Add complex number support for ``numpy.fromstring``
+    * ``numpy.unique`` has consistent axes order when ``axis`` is not None
+    * ``numpy.matmul`` with boolean output now converts to boolean values
+    * ``numpy.random.randint`` produced incorrect value when the range was ``2**32``
+    * Add complex number support for ``numpy.fromfile``
+    * ``std=c99`` added if compiler is named ``gcc``
+  + Changes
+    * ``NaT`` now sorts to the end of arrays
+    * Incorrect ``threshold`` in ``np.set_printoptions`` raises ``TypeError`` or ``ValueError``
+    * Warn when saving a dtype with metadata
+    * ``numpy.distutils`` append behavior changed for LDFLAGS and similar
+    * Remove ``numpy.random.entropy`` without a deprecation
+    * Add options to quiet build configuration and build with ``-Werror``
+
+
+-------------------------------------------------------------------
+Sat Nov 16 17:51:25 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.17.4:
+  * #14758: BLD: declare support for python 3.8
+  * #14781: BUG: random: biased samples from integers() with 8 or 16
+     bit...
+  * #14851: BUG: Fix _ctypes class circular reference. (#13808)
+  * #14852: BLD: add 'apt update' to shippable
+  * #14855: BUG: Fix np.einsum errors on Power9 Linux and z/Linux
+  * #14857: BUG: lib: Fix histogram problem with signed integer
+     arrays.
+  * #14858: BLD: Prevent -flto from optimising long double
+     representation...
+  * #14866: MAINT: move buffer.h -> npy_buffer.h to avoid conflicts
+
+-------------------------------------------------------------------
+Tue Oct 29 09:57:08 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- riscv.patch: Remove obsolete patch
+
+-------------------------------------------------------------------
+Sat Oct 19 17:04:18 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.17.3 (bsc#1149203, jsc#SLE-8532):
+  * #14456: MAINT: clean up pocketfft modules inside numpy.fft
+     namespace.
+  * #14463: BUG: random.hypergeometic assumes npy_long is npy_int64,
+     hung...
+  * #14502: BUG: random: Revert gh-14458 and refix gh-14557.
+  * #14504: BUG: add a specialized loop for boolean matmul.
+  * #14506: MAINT: Update pytest version for Python 3.8
+  * #14512: DOC: random: fix doc linking, was referencing private
+     submodules.
+  * #14513: BUG,MAINT: Some fixes and minor cleanup based on clang
+     analysis
+  * #14515: BUG: Fix randint when range is 2**32
+  * #14519: MAINT: remove the entropy c-extension module
+  * #14563: DOC: remove note about Pocketfft license file
+     (non-existing here).
+  * #14578: BUG: random: Create a legacy implementation of
+     random.binomial.
+  * #14687: BUG: properly define PyArray_DescrCheck
+
+-------------------------------------------------------------------
+Thu Oct  3 13:53:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Force cythonization to ensure build under different versions of
+  python
+
+-------------------------------------------------------------------
+Thu Sep 26 11:52:40 UTC 2019 - Berthold Gunreben <azouhr@opensuse.org>
+
+- disable tests TestF77ReturnCharacter and TestF90ReturnCharacter for s390x
+  https://github.com/numpy/numpy/issues/11831
+  to make the package build.
+  * s390x.patch
+
+-------------------------------------------------------------------
+Thu Sep 26 08:03:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.17.2:
+  * #14418: BUG: Fix aradixsort indirect indexing.
+  * #14420: DOC: Fix a minor typo in dispatch documentation.
+  * #14421: BUG: test, fix regression in converting to ctypes
+  * #14430: BUG: Do not show Override module in private error classes.
+  * #14432: BUG: Fixed maximum relative error reporting in assert_allclose.
+  * #14433: BUG: Fix uint-overflow if padding with linear_ramp and negative...
+  * #14436: BUG: Update 1.17.x with 1.18.0-dev pocketfft.py.
+- Add dep on pytest-xdist and use threaded tests execution
+  shaving around 400s on local build
+
+-------------------------------------------------------------------
+Fri Sep  6 08:51:30 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- as bypass boo#1148173 ignore %check error for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Wed Aug 28 15:28:24 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.17.1
+  * TST: Allow fuss in testing strided/non-strided exp/log loops
+  * BUG: avx2_scalef_ps must be static
+  * BUG: Remove stray print that causes a SystemError on python 3.7.
+  * BUG: Fix DeprecationWarning in python 3.8.
+  * BLD: Add missing gcd/lcm definitions to npy_math.h
+  * DOC, BUILD: cleanups and fix (again) 'build dist'
+  * TST: Add 3.8-dev to travisCI testing.
+  * BUG: Remove the broken clip wrapper (Backport)
+  * DOC: Fix hermitian argument docs in svd.
+  * MAINT: Workaround for Intel compiler bug leading to failing test
+  * TST: Clean up of test_pocketfft.py
+  * BUG: Make advanced indexing result on read-only subclass writeable...
+  * BUG: Fixed default BitGenerator name
+  * ENH: add c-imported modules for freeze analysis in np.random
+  * TST: Pin pytest version to 5.0.1
+  * BUG: Fix leak in the f2py-generated module init and `PyMem_Del`...
+  * BUG: Fix formatting error in exception message
+  * MAINT: random: Match type of SeedSequence.pool_size to DEFAULT_POOL_SIZE.
+  * BUG: Fix numpy.random bug in platform detection
+  * ENH: Enable huge pages in all Linux builds
+  * BUG: Fix segfault in `random.permutation(x)` when x is a string.
+  * BUG: don't fail when lexsorting some empty arrays (#14228)
+  * BUG: Fix misuse of .names and .fields in various places (backport...
+  * BUG: fix behavior of structured_to_unstructured on non-trivial...
+  * REL: Prepare 1.17.1 release
+
+-------------------------------------------------------------------
+Fri Jul 26 20:30:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.17.0
+  Highlights
+  * A new extensible random module along with four selectable random number
+    generators and improved seeding designed for use in parallel processes has
+    been added. The currently available bit generators are MT19937, PCG64,
+    Philox, and SFC64.
+  * NumPy's FFT implementation was changed from fftpack to pocketfft, resulting
+    in faster, more accurate transforms and better handling of datasets of
+    prime length.
+  * New radix sort and timsort sorting methods. It is currently not possible to
+    choose which will be used, but they are hardwired to the datatype and used
+    when either ``stable`` or ``mergesort`` is passed as the method.
+  * Overriding numpy functions is now possible by default.
+- Python 2 support has been dropped
+- Rebase numpy-buildfix.patch
+
+-------------------------------------------------------------------
+Thu May 30 06:51:14 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO in order to address boo#1136831.
+
+-------------------------------------------------------------------
+Tue May 28 20:37:45 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- update to version 1.16.3
+  * The NumPy 1.16.4 release fixes bugs reported against the 1.16.3 release, and
+    also backports several enhancements from master that seem appropriate for a
+    release series that is the last to support Python 2.7.
+  + New deprecations
+    * Writeable flag of C-API wrapped arrays
+  + Compatibility notes
+    * Potential changes to the random stream
+
+-------------------------------------------------------------------
+Thu May 16 06:07:59 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 1.16.3
+  NumPy 1.16.3 Release Notes:
+  The NumPy 1.16.3 release fixes bugs reported against the 1.16.2 release, and
+  also backports several enhancements from master that seem appropriate for a
+  release series that is the last to support Python 2.7. The wheels on PyPI are
+  linked with OpenBLAS v0.3.4+, which should fix the known threading issues
+  found in previous OpenBLAS versions.
+
+  Downstream developers building this release should use Cython >= 0.29.2 and,
+  if using OpenBLAS, OpenBLAS > v0.3.4.
+
+  The most noticeable change in this release is that unpickling object arrays
+  when loading *.npy or *.npz files now requires an explicit opt-in.
+  This backwards incompatible change was made in response to
+  CVE-2019-6446 <https://nvd.nist.gov/vuln/detail/CVE-2019-6446>_.
+
+  Compatibility notes
+  Unpickling while loading requires explicit opt-in
+  The functions np.load, and np.lib.format.read_array take an
+  allow_pickle keyword which now defaults to False in response to
+  CVE-2019-6446 <https://nvd.nist.gov/vuln/detail/CVE-2019-6446>_.
+
+  Improvements
+  Covariance in random.mvnormal cast to double
+  This should make the tolerance used when checking the singular values of the
+  covariance matrix more meaningful.
+
+  Changes
+  __array_interface__ offset now works as documented
+  The interface may use an offset value that was previously mistakenly
+  ignored.
+
+-------------------------------------------------------------------
+Fri Mar 29 12:20:01 UTC 2019 - Colleen Murphy <comurphy@suse.com>
+
+- Fix python sitearch paths for SLE_12_SP3/4
+
+-------------------------------------------------------------------
+Mon Mar 25 10:20:50 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- add fix-py34-tests.patch to fix build with python3.4 from SLE12SP4
+
+-------------------------------------------------------------------
+Tue Mar 12 21:03:43 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.16.2:
+  - Primarily focused on fixing on Windows-related bugs
+  - regression fix correcting signed zeros produced by divmod
+
+-------------------------------------------------------------------
+Fri Mar  1 21:42:38 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Use direct number in Version: tag.
+
+-------------------------------------------------------------------
+Wed Feb 20 10:43:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not bother with standard flavor, just make it default
+- Execute the tests only on standard package for now not hpc variants
+
+-------------------------------------------------------------------
+Wed Feb 20 09:28:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add constraints for testsuite to not run out of mem/disk space
+- Use %license macro
+
+-------------------------------------------------------------------
+Tue Feb 19 12:52:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Enable testsuite
+
+-------------------------------------------------------------------
+Tue Feb  5 22:14:25 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.16.1 (jsc#SLE-8532, bsc#1149203):
+  * This Fixes CVE-2019-6446 and obsoletes
+  * CVE-2019-6446_numpy_load.patch in older dists (bsc#1122208)
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.16.1-notes.rst
+- Update to version 1.16.0
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.16.0-notes.rst
+
+-------------------------------------------------------------------
+Sat Dec 22 04:52:25 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.15.4
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.15.4-notes.rst
+
+-------------------------------------------------------------------
+Fri Oct 26 19:31:40 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.15.3
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.15.2-notes.rst
+
+-------------------------------------------------------------------
+Mon Sep 24 14:56:59 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.15.2
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.15.2-notes.rst
+- Update to version 1.15.1
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.15.1-notes.rst
+- Update to version 1.15.0
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.15.0-notes.rst
+- Update to version 1.14.6
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.14.6-notes.rst
+- Rebase numpy-1.9.0-remove-__declspec.patch
+- Rebase riscv.patch
+
+-------------------------------------------------------------------
+Wed Jun 13 18:14:49 UTC 2018 - toddrme2178@gmail.com
+
+- update to version 1.14.5
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.14.5-notes.rst
+- update to version 1.14.4
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.14.4-notes.rst
+
+-------------------------------------------------------------------
+Thu May 10 16:24:04 UTC 2018 - toddrme2178@gmail.com
+
+- Fix issues with some targets not having certain versions of
+  openblas
+
+-------------------------------------------------------------------
+Sat Apr 28 22:05:55 UTC 2018 - toddrme2178@gmail.com
+
+- update to version 1.14.3
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.14.3-notes.rst
+- update to version 1.14.2
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.14.2-notes.rst
+- update to version 1.14.1
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.14.1-notes.rst
+
+-------------------------------------------------------------------
+Tue Feb 13 10:09:18 UTC 2018 - schwab@suse.de
+
+- riscv.patch: Add support for RISC-V
+- Don't use openblas on m68k and riscv64
+- Avoid misparsing of indented conditionals
+
+-------------------------------------------------------------------
+Fri Feb  9 14:28:43 UTC 2018 - cgoll@suse.com
+
+- Fix summary in module files (bnc#1080259)
+
+-------------------------------------------------------------------
+Tue Feb  6 09:26:56 UTC 2018 - eich@suse.com
+
+- The HPC of python-numpy expects openBLAS. OpenBLAS is not availble
+  for sc390: disable buidling on s390 for HPC (bsc#1079513).
+
+-------------------------------------------------------------------
+Fri Jan 19 16:17:22 CET 2018 - ro@suse.de
+
+- add s390 to the ifarch conditional to build without openblas
+
+-------------------------------------------------------------------
+Wed Jan 10 09:04:47 UTC 2018 - adrian@suse.de
+
+- update to version 1.14.0
+  Changes documented in release notes:
+  https://github.com/numpy/numpy/blob/master/doc/release/1.14.0-notes.rst
+
+-------------------------------------------------------------------
+Fri Jan  5 19:17:07 UTC 2018 - eich@suse.com
+
+- Switch from gcc6 to gcc7 as additional compiler flavor for HPC on SLES.
+- Fix library package requires - use HPC macro (boo#1074890).
+
+-------------------------------------------------------------------
+Mon Nov 13 14:17:56 UTC 2017 - eich@suse.com
+
+- Add 'family "NumPy"' to modules file to avoid that different
+  versions of this get loaded.
+
+-------------------------------------------------------------------
+Sun Nov 12 12:49:48 UTC 2017 - eich@suse.com
+
+- Add Requires for libopenblas to base package.
+- Add Requires for lua-lmod
+- Fix '-' in environment variable mane of modulefile.
+
+-------------------------------------------------------------------
+Mon Oct 30 19:43:03 UTC 2017 - eich@suse.com
+
+- Fix Requires: of devel package for openblas.
+
+-------------------------------------------------------------------
+Tue Oct 17 14:27:47 UTC 2017 - eich@suse.com
+
+- Add magic to limit the number of flavors built in the OBS ring
+  to non-HPC builds.
+
+-------------------------------------------------------------------
+Tue Oct 3 18:44:35 UTC 2017 - eich@suse.com
+
+- Convert to multibuild: Add support for HPC environment modules
+  (FATE#321709).
+
+-------------------------------------------------------------------
+Sat Sep 30 16:20:39 UTC 2017 - arun@gmx.de
+
+- updated line numbers in patches
+
+- update to version 1.13.3:
+  * #9390 BUG: Return the poly1d coefficients array directly
+  * #9555 BUG: Fix regression in 1.13.x in distutils.mingw32ccompiler.
+  * #9556 BUG: Fix true_divide when dtype=np.float64 specified.
+  * #9557 DOC: Fix some rst markup in numpy/doc/basics.py.
+  * #9558 BLD: Remove -xhost flag from IntelFCompiler.
+  * #9559 DOC: Removes broken docstring example (source code, png,
+    pdf)...
+  * #9580 BUG: Add hypot and cabs functions to WIN32 blacklist.
+  * #9732 BUG: Make scalar function elision check if temp is
+    writeable.
+  * #9736 BUG: Various fixes to np.gradient
+  * #9742 BUG: Fix np.pad for CVE-2017-12852 (bsc#1053963)
+  * #9744 BUG: Check for exception in sort functions, add tests
+  * #9745 DOC: Add whitespace after "versionadded::" directive so it
+    actually...
+  * #9746 BUG: Memory leak in np.dot of size 0
+  * #9747 BUG: Adjust gfortran version search regex
+  * #9757 BUG: Cython 0.27 breaks NumPy on Python 3.
+  * #9764 BUG: Ensure _npy_scaled_cexp{,f,l} is defined when needed.
+  * #9765 BUG: PyArray_CountNonzero does not check for exceptions
+  * #9766 BUG: Fixes histogram monotonicity check for unsigned bin
+    values
+  * #9767 BUG: Ensure consistent result dtype of count_nonzero
+  * #9771 BUG: MAINT: Fix mtrand for Cython 0.27.
+  * #9772 DOC: Create the 1.13.2 release notes.
+  * #9794 DOC: Create 1.13.3 release notes.
+
+- changes from version 1.13.2:
+  * #9390 BUG: Return the poly1d coefficients array directly
+  * #9555 BUG: Fix regression in 1.13.x in distutils.mingw32ccompiler.
+  * #9556 BUG: Fix true_divide when dtype=np.float64 specified.
+  * #9557 DOC: Fix some rst markup in numpy/doc/basics.py.
+  * #9558 BLD: Remove -xhost flag from IntelFCompiler.
+  * #9559 DOC: Removes broken docstring example (source code, png,
+    pdf)...
+  * #9580 BUG: Add hypot and cabs functions to WIN32 blacklist.
+  * #9732 BUG: Make scalar function elision check if temp is
+    writeable.
+  * #9736 BUG: Various fixes to np.gradient
+  * #9742 BUG: Fix np.pad for CVE-2017-12852 (bsc#1053963)
+  * #9744 BUG: Check for exception in sort functions, add tests
+  * #9745 DOC: Add whitespace after "versionadded::" directive so it
+    actually...
+  * #9746 BUG: Memory leak in np.dot of size 0
+  * #9747 BUG: Adjust gfortran version search regex
+  * #9757 BUG: Cython 0.27 breaks NumPy on Python 3.
+  * #9764 BUG: Ensure _npy_scaled_cexp{,f,l} is defined when needed.
+  * #9765 BUG: PyArray_CountNonzero does not check for exceptions
+  * #9766 BUG: Fixes histogram monotonicity check for unsigned bin
+    values
+  * #9767 BUG: Ensure consistent result dtype of count_nonzero
+  * #9771 BUG, MAINT: Fix mtrand for Cython 0.27.
+
+-------------------------------------------------------------------
+Mon Sep 18 14:40:26 UTC 2017 - hsk17@mail.de
+
+- Update to version 1.13.1
+  * bugfix release for problems found in 1.13.0; major changes:
+    + fixes for the new memory overlap detection and temporary
+      elision
+    + reversion of the removal of the boolean binary - operator
+  * 1.13.0 Highlights:
+    + Operations like a + b + c will reuse temporaries on some
+      platforms
+    + Inplace operations check if inputs overlap outputs and
+      create temporaries
+    + New __array_ufunc__ attribute provides improved ability for
+      classes to override default ufunc behavior.
+    + New np.block function for creating blocked arrays.
+  * 1.13.0 New functions:
+    + New np.positive ufunc.
+    + New np.divmod ufunc provides more efficient divmod.
+    + New np.isnat ufunc tests for NaT special values.
+    + New np.heaviside ufunc computes the Heaviside function.
+    + New np.isin function, improves on in1d.
+    + New np.block function for creating blocked arrays.
+    + New PyArray_MapIterArrayCopyIfOverlap added to NumPy C-API.
+  * deprecations, compatibility notes, etc see full changelog at
+    https://github.com/numpy/numpy/blob/master/doc/changelog/1.13.0-changelog.rst
+- dropped xlocale.patch (now upstream)
+- do not apply 'sed 1d' command to exec_command.py
+
+-------------------------------------------------------------------
+Wed Jul  5 14:24:59 UTC 2017 - schwab@suse.de
+
+- Add xlocale.patch:
+  xlocale.h: don't use obsolete <xlocale.h>
+
+-------------------------------------------------------------------
+Tue Jun  6 08:15:54 UTC 2017 - manfred99@gmx.ch
+
+- allow building numpy on fedora by making fdupes dependency optional
+
+-------------------------------------------------------------------
+Thu Apr  6 16:44:43 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 1.12.1
+  * Fix wrong future nat warning and equiv type logic error...
+  * Fix wrong masked median for some special cases
+  * Place np.average in inline code
+  * Work around isfinite inconsistency on i386
+  * Guard against replacing constants without '_' spec in f2py.
+  * Fix mean for float 16 non-array inputs for 1.12
+  * Fix calling python api with error set and minor leaks for...
+  * Make iscomplexobj compatible with custom dtypes again
+  * Fix undefined behaviour induced by bad __array_wrap__
+  * Fix MaskedArray.__setitem__
+  * PPC64el machines are POWER for Fortran in f2py
+  * Look up methods on MaskedArray in `_frommethod`
+  * Remove extra digit in binary_repr at limit
+  * Fix deepcopy regression for empty arrays.
+  * Fix ma.median for empty ndarrays
+- Further updates to macro usage.
+
+-------------------------------------------------------------------
+Mon Feb 27 18:21:12 UTC 2017 - toddrme2178@gmail.com
+
+- Fix macro usage.
+
+-------------------------------------------------------------------
+Thu Feb 23 18:36:54 UTC 2017 - toddrme2178@gmail.com
+
+- Fix -devel package dependency
+
+-------------------------------------------------------------------
+Fri Feb 17 15:19:37 UTC 2017 - toddrme2178@gmail.com
+
+- Switch to single-spec version
+
+-------------------------------------------------------------------
+Tue Jan 17 17:24:28 UTC 2017 - toddrme2178@gmail.com
+
+- update to version 1.12.0:
+  * Highlights
+    + Order of operations in np.einsum can now be optimized for large
+      speed improvements.
+    + New signature argument to np.vectorize for vectorizing with core
+      dimensions.
+    + The keepdims argument was added to many functions.
+    + New context manager for testing warnings
+    + Support for BLIS in numpy.distutils
+    + Much improved support for PyPy (not yet finished)
+  * full changelog at:
+    https://github.com/numpy/numpy/blob/master/doc/release/1.12.0-notes.rst
+- changes from version 1.11.3:
+  * #8341: BUG: Fix ndarray.tofile large file corruption in append
+     mode.
+  * #8346: TST: Fix tests in PR #8341 for NumPy 1.11.x
+- update to version 1.11.2:
+  * #7736 BUG: Many functions silently drop 'keepdims' kwarg.
+  * #7738 ENH: Add extra kwargs and update doc of many MA methods.
+  * #7778 DOC: Update Numpy 1.11.1 release notes.
+  * #7793 BUG: MaskedArray.count treats negative axes incorrectly.
+  * #7816 BUG: Fix array too big error for wide dtypes.
+  * #7821 BUG: Make sure npy_mul_with_overflow_<type> detects
+    overflow.
+  * #7824 MAINT: Allocate fewer bytes for empty arrays.
+  * #7847 MAINT,DOC: Fix some imp module uses and update f2py.compile
+    docstring.
+  * #7849 MAINT: Fix remaining uses of deprecated Python imp module.
+  * #7851 BLD: Fix ATLAS version detection.
+  * #7896 BUG: Construct ma.array from np.array which contains
+    padding.
+  * #7904 BUG: Fix float16 type not being called due to wrong
+    ordering.
+  * #7917 BUG: Production install of numpy should not require nose.
+  * #7919 BLD: Fixed MKL detection for recent versions of this
+    library.
+  * #7920 BUG: Fix for issue #7835 (ma.median of 1d).
+  * #7932 BUG: Monkey-patch _msvccompile.gen_lib_option like other
+    compilers.
+  * #7939 BUG: Check for HAVE_LDOUBLE_DOUBLE_DOUBLE_LE in
+    npy_math_complex.
+  * #7953 BUG: Guard against buggy comparisons in generic quicksort.
+  * #7954 BUG: Use keyword arguments to initialize Extension base
+    class.
+  * #7955 BUG: Make sure numpy globals keep identity after reload.
+  * #7972 BUG: MSVCCompiler grows 'lib' & 'include' env strings
+    exponentially.
+  * #8005 BLD: Remove __NUMPY_SETUP__ from builtins at end of
+    setup.py.
+  * #8010 MAINT: Remove leftover imp module imports.
+  * #8020 BUG: Fix return of np.ma.count if keepdims is True and axis
+    is None.
+  * #8024 BUG: Fix numpy.ma.median.
+  * #8031 BUG: Fix np.ma.median with only one non-masked value.
+  * #8044 BUG: Fix bug in NpyIter buffering with discontinuous arrays.
+- update copyright year
+- changed from tar.gz to zip on pypi
+- Remove long-unused atlas support.
+- Use preferrered pypi.io download url.
+- Add openBLAS support.
+  This can improve performance in many situations.
+- Remove numpy-1.10.4-cblas.patch since openblas handles this.
+
+-------------------------------------------------------------------
+Tue Nov 22 15:56:51 UTC 2016 - toddrme2178@gmail.com
+
+- Fix cblas handling for SLES 12.
+
+-------------------------------------------------------------------
+Mon Sep 12 10:50:33 UTC 2016 - dmueller@suse.com
+
+- use pypi.io as Source URL
+
+-------------------------------------------------------------------
+Tue Sep  6 07:19:07 UTC 2016 - jweberhofer@weberhofer.at
+
+- Don't include cblas-devel on SLES 12
+
+-------------------------------------------------------------------
+Fri Jul  8 09:41:40 UTC 2016 - dmueller@suse.com
+
+- update to 1.11.1:
+  - #7506 BUG: Make sure numpy imports on python 2.6 when nose is unavailable.
+  - #7530 BUG: Floating exception with invalid axis in np.lexsort.
+  - #7535 BUG: Extend glibc complex trig functions blacklist to glibc < 2.18.
+  - #7551 BUG: Allow graceful recovery for no compiler.
+  - #7558 BUG: Constant padding expected wrong type in constant_values.
+  - #7578 BUG: Fix OverflowError in Python 3.x. in swig interface.
+  - #7590 BLD: Fix configparser.InterpolationSyntaxError.
+  - #7597 BUG: Make np.ma.take work on scalars.
+  - #7608 BUG: linalg.norm(): Don't convert object arrays to float.
+  - #7638 BLD: Correct C compiler customization in system_info.py.
+  - #7654 BUG: ma.median of 1d array should return a scalar.
+  - #7656 BLD: Remove hardcoded Intel compiler flag -xSSE4.2.
+  - #7660 BUG: Temporary fix for str(mvoid) for object field types.
+  - #7665 BUG: Fix incorrect printing of 1D masked arrays.
+  - #7670 BUG: Correct initial index estimate in histogram.
+  - #7671 BUG: Boolean assignment no GIL release when transfer needs API.
+  - #7676 BUG: Fix handling of right edge of final histogram bin.
+  - #7680 BUG: Fix np.clip bug NaN handling for Visual Studio 2015.
+  - #7724 BUG: Fix segfaults in np.random.shuffle.
+  - #7731 MAINT: Change mkl_info.dir_env_var from MKL to MKLROOT.
+
+
+-------------------------------------------------------------------
+Mon Apr  4 16:15:27 UTC 2016 - toddrme2178@gmail.com
+
+specfile:
+  * require setuptools
+
+- update to version 1.11.0:
+  * Highlights
+    + The datetime64 type is now timezone naive.
+    + A dtype parameter has been added to randint.
+    + Improved detection of two arrays possibly sharing memory.
+    + Automatic bin size estimation for np.histogram.
+    + Speed optimization of A @ A.T and dot(A, A.T).
+    + New function np.moveaxis for reordering array axes.
+  * full changelog at https://github.com/numpy/numpy/blob/master/doc/release/1.11.0-notes.rst
+
+-------------------------------------------------------------------
+Wed Mar 30 14:18:43 UTC 2016 - stecue@gmail.com
+
+- Add numpy-1.10.4-cblas.patch to build against system cblas.
+  Numpy assumes either libblas.so or libcblas.so to contain all CBLAS
+  and BLAS functions. However the cblas-devel in Leap and Tumbleweed
+  contains only the CBLAS interface and libblas.so is also needed.
+
+-------------------------------------------------------------------
+Fri Jan  8 09:37:38 UTC 2016 - toddrme2178@gmail.com
+
+- update to version 1.10.4:
+  * see https://github.com/numpy/numpy/blob/master/doc/release/1.10.4-notes.rst
+  * There is no 1.10.3 due to packaging issues.
+- update to version 1.10.2:
+  * see https://github.com/numpy/numpy/blob/master/doc/release/1.10.2-notes.rst
+
+-------------------------------------------------------------------
+Tue Oct 13 08:24:51 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 1.10.1
+  + Bugfix for build problems
+    * Compiling with msvc9 or msvc10 for 32 bit Windows now requires SSE2.
+      This was the easiest fix for what looked to be some miscompiled code when
+      SSE2 was not used. If you need to compile for 32 bit Windows systems
+      without SSE2 support, mingw32 should still work.
+    * Make compiling with VS2008 python2.7 SDK easier
+    * Change Intel compiler options so that code will also be generated to
+      support systems without SSE4.2.
+    * Some _config test functions needed an explicit integer return in
+      order to avoid the openSUSE rpmlinter erring out.
+    * We ran into a problem with pipy not allowing reuse of filenames and a
+      resulting proliferation of *.*.*.postN releases. Not only were the names
+      getting out of hand, some packages were unable to work with the postN
+      suffix.
+- Remove upstream-included numpy-1.10.0-remove_Wreturn_type_warnings.patch
+
+-------------------------------------------------------------------
+Tue Oct  6 09:30:18 UTC 2015 - toddrme2178@gmail.com
+
+- Update to version 1.10.0
+  + Highlights
+    * numpy.distutils now supports parallel compilation via the --parallel/-j
+      argument passed to setup.py build
+    * numpy.distutils now supports additional customization via site.cfg to
+      control compilation parameters, i.e. runtime libraries, extra
+      linking/compilation flags.
+    * Addition of *np.linalg.multi_dot*: compute the dot product of two or more
+      arrays in a single function call, while automatically selecting the
+      fastest evaluation order.
+    * The new function `np.stack` provides a general interface for joining a
+      sequence of arrays along a new axis, complementing `np.concatenate` for
+      joining along an existing axis.
+    * Addition of `nanprod` to the set of nanfunctions.
+    * Support for the '@' operator in Python 3.5.
+  + Dropped Support:
+    * The _dotblas module has been removed. CBLAS Support is now in
+      Multiarray.
+    * The testcalcs.py file has been removed.
+    * The polytemplate.py file has been removed.
+    * npy_PyFile_Dup and npy_PyFile_DupClose have been removed from
+      npy_3kcompat.h.
+    * splitcmdline has been removed from numpy/distutils/exec_command.py.
+    * try_run and get_output have been removed from
+      numpy/distutils/command/config.py
+    * The a._format attribute is no longer supported for array printing.
+    * Keywords ``skiprows`` and ``missing`` removed from np.genfromtxt.
+    * Keyword ``old_behavior`` removed from np.correlate.
+  + Future Changes:
+    * In array comparisons like ``arr1 == arr2``, many corner cases
+      involving strings or structured dtypes that used to return scalars
+      now issue ``FutureWarning`` or ``DeprecationWarning``, and in the
+      future will be change to either perform elementwise comparisons or
+      raise an error.
+    * The SafeEval class will be removed.
+    * The alterdot and restoredot functions will be removed.
+- Rebase numpy-1.9.0-remove-__declspec.patch
+- Add numpy-1.10.0-remove_Wreturn_type_warnings.patch
+  This patch is already merged upstream and should be present in
+  numpy-1.10.1
+
+-------------------------------------------------------------------
+Wed Sep 23 07:31:55 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 1.9.3:
+  * #5866: fix error finding Python headers when build_ext --include-dirs is set;
+  * #6016: fix np.loadtxt error on Python 3.5 when reading from gzip files;
+  * #5555: Replace deprecated options for ifort;
+  * #6096: remove /GL for VS2015 in check_long_double_representation;
+  * #6141: enable Visual Studio 2015 C99 features;
+  * #6171: revert C99 complex for MSVC14.
+
+-------------------------------------------------------------------
+Mon Mar  2 15:38:20 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 1.9.2: Bugfix release
+  * #5316: fix too large dtype alignment of strings and complex types
+  * #5424: fix ma.median when used on ndarrays
+  * #5481: Fix astype for structured array fields of different byte order
+  * #5354: fix segfault when clipping complex arrays
+  * #5524: allow np.argpartition on non ndarrays
+  * #5612: Fixes ndarray.fill to accept full range of uint64
+  * #5155: Fix loadtxt with comments=None and a string None data
+  * #4476: Masked array view fails if structured dtype has datetime component
+  * #5388: Make RandomState.set_state and RandomState.get_state threadsafe
+  * #5390: make seed, randint and shuffle threadsafe
+  * #5374: Fixed incorrect assert_array_almost_equal_nulp documentation
+  * #5393: Add support for ATLAS > 3.9.33.
+  * #5313: PyArray_AsCArray caused segfault for 3d arrays
+  * #5492: handle out of memory in rfftf
+  * #4181: fix a few bugs in the random.pareto docstring
+  * #5359: minor changes to linspace docstring
+  * #4723: fix a compile issues on AIX
+
+-------------------------------------------------------------------
+Thu Nov  6 11:38:20 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 1.9.1: Bugfix release
+  * gh-5184: restore linear edge behaviour of gradient to as it was in < 1.9.
+    The second order behaviour is available via the `edge_order` keyword
+  * gh-4007: workaround Accelerate sgemv crash on OSX 10.9
+  * gh-5100: restore object dtype inference from iterable objects without
+    `len()`
+  * gh-5163: avoid gcc-4.1.2 (red hat 5) miscompilation causing a crash
+  * gh-5138: fix nanmedian on arrays containing inf
+  * gh-5203: copy inherited masks in MaskedArray.__array_finalize__
+  * gh-2317: genfromtxt did not handle filling_values=0 correctly
+  * gh-5067: restore api of npy_PyFile_DupClose in python2
+  * gh-5063: cannot convert invalid sequence index to tuple
+  * gh-5082: Segmentation fault with argmin() on unicode arrays
+  * gh-5095: don't propagate subtypes from np.where
+  * gh-5104: np.inner segfaults with SciPy's sparse matrices
+  * gh-5136: Import dummy_threading if importing threading fails
+  * gh-5148: Make numpy import when run with Python flag '-OO'
+  * gh-5147: Einsum double contraction in particular order causes ValueError
+  * gh-479: Make f2py work with intent(in out)
+  * gh-5170: Make python2 .npy files readable in python3
+  * gh-5027: Use 'll' as the default length specifier for long long
+  * gh-4896: fix build error with MSVC 2013 caused by C99 complex support
+  * gh-4465: Make PyArray_PutTo respect writeable flag
+  * gh-5225: fix crash when using arange on datetime without dtype set
+  * gh-5231: fix build in c99 mode
+
+-------------------------------------------------------------------
+Mon Sep  8 10:01:09 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 1.9.0
+  Highlights
+  * Numerous performance improvements in various areas, most
+    notably indexing and operations on small arrays are
+    significantly faster. Indexing operations now also release the
+    GIL.
+  * Addition of nanmedian and nanpercentile rounds out the
+    nanfunction set.
+- Remove upstreamed numpy-double-double-le.patch
+- Add numpy-1.9.0-remove-__declspec.patch
+  Fixes spurious warnings during build.  These warnings are related
+  to a windows-specific function that is not built, so the patch
+  just removed the function.
+  See:
+  http://lists.opensuse.org/opensuse-packaging/2014-09/msg00004.html
+- Added patch tag for numpy-buildfix.patch
+
+-------------------------------------------------------------------
+Mon Aug 11 10:09:38 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 1.8.2: Bugfix release
+  * gh-4836: partition produces wrong results for multiple selections in equal ranges
+  * gh-4656: Make fftpack._raw_fft threadsafe
+  * gh-4628: incorrect argument order to _copyto in in np.nanmax, np.nanmin
+  * gh-4642: Hold GIL for converting dtypes types with fields
+  * gh-4733: fix np.linalg.svd(b, compute_uv=False)
+  * gh-4853: avoid unaligned simd load on reductions on i386
+  * gh-4722: Fix seg fault converting empty string to object
+  * gh-4613: Fix lack of NULL check in array_richcompare
+  * gh-4774: avoid unaligned access for strided byteswap
+  * gh-650: Prevent division by zero when creating arrays from some buffers
+  * gh-4602: ifort has issues with optimization flag O2, use O1
+- Switch to pypi download location
+- Changed Url to current home page
+- Minor spec file cleanups
+
+-------------------------------------------------------------------
+Mon Apr 14 05:23:39 UTC 2014 - arun@gmx.de
+
+- bugfix release 1.8.1
+
+-------------------------------------------------------------------
+Thu Dec  5 11:17:52 CET 2013 - mls@suse.de
+
+- add numpy-double-double-le.patch for ppc64le
+
+-------------------------------------------------------------------
+Thu Oct 31 10:17:25 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 1.8.0
+  Highlights:
+  * New, no 2to3, Python 2 and Python 3 are supported by a common code base.
+  * New, gufuncs for linear algebra, enabling operations on stacked arrays.
+  * New, inplace fancy indexing for ufuncs with the ``.at`` method.
+  * New, ``partition`` function, partial sorting via selection for fast median.
+  * New, ``nanmean``, ``nanvar``, and ``nanstd`` functions skipping NaNs.
+  * New, ``full`` and ``full_like`` functions to create value initialized arrays.
+  * New, ``PyUFunc_RegisterLoopForDescr``, better ufunc support for user dtypes.
+  * Numerous performance improvements in many areas.
+- Add a new flag to easily enable/disable atlas support for if it
+  ever gets fixed in the future
+- Rebase numpy-buildfix.patch
+
+-------------------------------------------------------------------
+Fri May  3 22:27:24 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 1.7.1
+  * Bugfixes
+
+-------------------------------------------------------------------
+Fri Apr  5 13:20:14 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Tue Mar 12 06:21:52 UTC 2013 - highwaystar.ru@gmail.com
+
+- update to 1.7.0
+ * This release includes several new features as well as numerous
+ bug fixes and refactorings
+  Highlights:
+  - ``where=`` parameter to ufuncs (allows the use of boolean
+  arrays to choose where a computation should be done)
+  - ``vectorize`` improvements (added 'excluded' and 'cache'
+  keyword, general cleanup and bug fixes)
+  - ``numpy.random.choice`` (random sample generating function)
+
+  New Features:
+  - Reduction UFuncs Generalize axis= Parameter
+  - Reduction UFuncs New keepdims= Parameter
+  - Datetime support
+  - Custom formatter for printing arrays
+  - New function numpy.random.choice
+  - New function isclose
+  - Preliminary multi-dimensional support in the polynomial package
+  - Ability to pad rank-n arrays
+  - New argument to searchsorted
+  - Added experimental support for the AArch64 architecture.
+ * For additional details check release notes at
+   http://sourceforge.net/projects/numpy/files/NumPy/1.7.0/
+- numpy-aarch64.diff: removed, now upstream
+
+-------------------------------------------------------------------
+Tue Mar  5 22:25:53 UTC 2013 - dmueller@suse.com
+
+- add numpy-aarch64.diff:
+  * Fix build for AArch64
+
+-------------------------------------------------------------------
+Fri Aug 17 08:20:36 UTC 2012 - toddrme2178@gmail.com
+
+- Disable atlas buildrequires until the problems with atlas are
+  worked out
+
+-------------------------------------------------------------------
+Mon Jun  4 15:30:34 UTC 2012 - toddrme2178@gmail.com
+
+- Add libatlas2 buildrequires
+
+-------------------------------------------------------------------
+Fri Jun  1 12:08:16 UTC 2012 - toddrme2178@gmail.com
+
+- Remove blas/lapack tests since these build successfully on all
+  targets now
+- Add documentation packages
+  These are separate packages because a lot of packages depend on
+  numpy, so building the documentation inside the base spec file
+  would slow down the build process for the entire project
+
+-------------------------------------------------------------------
+Fri Jun  1 11:46:41 CEST 2012 - kukuk@suse.de
+
+- Old products don't provide python(abi).
+
+-------------------------------------------------------------------
+Mon May 21 08:03:11 UTC 2012 - toddrme2178@gmail.com
+
+- Update to version 1.6.2:
+  * bugfixes
+
+-------------------------------------------------------------------
+Fri May 18 08:46:22 UTC 2012 - toddrme2178@gmail.com
+
+- Fix rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Apr 30 15:17:34 UTC 2012 - toddrme2178@gmail.com
+
+- Removed tests for unsupported openSUSE versions
+
+-------------------------------------------------------------------
+Mon Apr 23 16:25:57 UTC 2012 - toddrme2178@gmail.com
+
+- Add python 3 package
+- devel package BuildRequires -> Requires
+
+-------------------------------------------------------------------
+Sun Apr 15 19:23:41 UTC 2012 - idonmez@suse.com
+
+- Fix SLE_11 build
+
+-------------------------------------------------------------------
+Fri Apr 13 02:56:50 UTC 2012 - badshah400@gmail.com
+
+- Modify BuildRequires to match recent name changes of lapack and
+  blas in project.
+
+-------------------------------------------------------------------
+Sat Oct 01 13:49:14 UTC 2011 - behrisch@users.sf.net
+
+- Added static lib to devel package for scipy build
+
+-------------------------------------------------------------------
+Wed Sep 21 13:04:54 UTC 2011 - saschpe@suse.de
+
+- Update to version 1.6.1:
+  * Please see http://downloads.sourceforge.net/project/numpy/NumPy/1.6.1/Changelog
+- Spec file cleanup:
+  * Set license to BSD-3-Clause (SPDX style)
+  * Removed testsuite from packages
+  * Removed rpmlintrc file and actually fixed the issues
+
+-------------------------------------------------------------------
+Mon Jan 23 15:07:08 UTC 2011 - toddrme2178@gmail.com
+
+- update to 1.5.1
+
+ Numpy 1.5.1 is a bug-fix release with no new
+ features compared to 1.5.0.
+
+ Relevant bugs fixed:
+  * linalg: lstsq should always return real residual
+  * lib: fix negative indices in s_ and index_exp
+  * core: fix uint64 -> Python int cast
+  * core: richcompare should return Py_NotImplemented when undefined
+  * lib: close file handles after use in numpy.lib.npyio.*
+  * core: ensure PEP 3118 buffers can be released in exception handler
+  * core: fix clongdouble cast to Python complex()
+  * core: fix detection for ``isfinite`` routine
+
+-------------------------------------------------------------------
+Mon Sep  6 08:32:07 UTC 2010 - coolo@novell.com
+
+- update to 1.5.0 to fix build against python 2.7
+
+ highlights 1.3 -> 1.4:
+  * New datetime dtype support to deal with dates in arrays
+  * Faster import time
+  * Extended array wrapping mechanism for ufuncs
+  * New Neighborhood iterator (C-level only)
+  * C99-like complex functions in npymath
+
+ highlights 1.4 -> 1.5:
+  * support for python3 and python 2.7
+
+-------------------------------------------------------------------
+Mon May 31 07:14:03 UTC 2010 - bg@novell.com
+
+- fix build for hppa
+
+-------------------------------------------------------------------
+Fri Jan 15 12:00:00 CET 2010 - aeszter@gwdg.de
+
+- re-enable build on non-SUSE distros
+- do not provide python-numeric on Fedora, since a package by that
+  name exists
+
+-------------------------------------------------------------------
+Wed Jan 13 16:29:10 UTC 2010 - lars@linux-schulserver.de
+
+- use a more generic way to define py_sitedir on all targets
+
+-------------------------------------------------------------------
+Mon Jan 11 14:57:01 UTC 2010 - coolo@novell.com
+
+- remerge d:l:p version with O:F version
+  - split -devel package and add support for !suse targets
+
+-------------------------------------------------------------------
+Wed Apr  8 19:43:27 CEST 2009 - matejcik@suse.cz
+
+- update to 1.3.0
+  * official python 2.6 support (although it did (mostly)
+    work before)
+  * new multiarray APIs
+
+-------------------------------------------------------------------
+Wed Feb 11 01:31:36 CET 2009 - ro@suse.de
+
+- fix filelist by using "--record-rpm" instead of "--record"
+  (and do not quote lines starting with "%dir ")
+
+-------------------------------------------------------------------
+Wed Feb  4 17:10:04 CET 2009 - matejcik@suse.cz
+
+- package taken directly from devel:languages:python repository,
+  original changelog follows:
+
+-------------------------------------------------------------------
+* Tue Dec 02 2008 - James Oakley <jfunk@funktronics.ca> - 1.2.1-1
+- Update to 1.2.1
+
+-------------------------------------------------------------------
+* Mon Aug 11 2008 - James Oakley <jfunk@funktronics.ca> - 1.1.1-1
+- Update to 1.1.1:
+  - Python 2.3.x fixes
+    * Robert Kern -- remove development branch of f2py.
+    * Pierre GM -- masked array, fix dictionary update.
+    * Pierre GM -- masked array, fix itertools groupby dependency.
+    * Pierre GM -- masked array, fix use of iterators.
+    * Neil Muller -- fix test dependency on pretty print (#828).
+  - General improvements
+    * David Cournapeau -- scons build fixes/improvements.
+    * Stefan van der Walt -- Howto document updates.
+    * Fernando Perez -- cython updates.
+    * Robert Kern -- PyPI metadata fixes.
+  - Bug fixes
+    * #791 -- Travis Oliphant, std/var not properly calling array_finalize.
+    * #798 -- Stefan van der Walt, piecewise exposes raw memory.
+    * #810 -- David Huard, Verbose argument not effective for ndarrays in assert_equal.
+    * #828 -- Neil Muller, numpy file format format test failures on Solaris.
+    * #825 -- Neil Muller/Charles Harris, SIGBUS in UNICODE_getattr on Sparc Linux.
+    * #837 -- Pauli Virtanen, Infinite loop in fromfile & fromstring
+    * #841 -- Charles Harris, make numpy complex types print like Python.
+    * #843 -- Michael Abbott, reference count error in PyArray_CanCoerceScalar
+    * #844 -- David Cournapeau, failure with numpy inner.
+    * #848 -- Michael Abbott/Charles Harris/Travis Oliphant, reference leak.
+    * #849 -- Michael Abbott, reference to deallocated object.
+    * #850 -- Michael Abbott, memory leak.
+    * #854 -- Pauli Virtanen, Non-standard branch cuts (arccosh).
+    * #857 -- Pierre GM, dividing masked array with newaxis fails.
+    * ------- David Cournapeau, ctypes load_library fix.
+    * ------- Ryan May, Stefan van der Walt, fix loadtxt.
+    * ------- Robert Kern, make numeric.py functions return booleans.
+    * ------- Robert Kern, correct old numeric typecodes.
+    * ------- Robert Kern, fix raising exception in tests.
+    * ------- Robert Kern, make sure Zipf results are in allowable range.
+    * ------- Robert Kern, fix c++ style comment.

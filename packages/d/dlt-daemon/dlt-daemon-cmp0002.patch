@@ -1,0 +1,27 @@
+From 22d394f4a633c7f08e13fd926339b879cb6f64da Mon Sep 17 00:00:00 2001
+From: michael-methner <mmethner@de.adit-jv.com>
+Date: Mon, 21 Aug 2023 14:08:01 +0200
+Subject: [PATCH] cmake: Fix CMP0002 policy violation (#524)
+
+Remove duplicated cpp extension setup.
+
+
+Co-authored-by: LUU QUANG MINH <Minh.LuuQuang@vn.bosch.com>
+---
+ src/tests/CMakeLists.txt | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/tests/CMakeLists.txt b/src/tests/CMakeLists.txt
+index 4474103f..8ca178ac 100644
+--- a/src/tests/CMakeLists.txt
++++ b/src/tests/CMakeLists.txt
+@@ -34,9 +34,6 @@ endif()
+ #TODO: Enable again once dlt-test-non-verbose is adapted to non-macro usage
+ if (NOT WITH_DLT_DISABLE_MACRO)
+     set(TARGET_LIST ${TARGET_LIST} dlt-test-non-verbose)
+-    if(WITH_DLT_CXX11_EXT)
+-        set(TARGET_LIST ${TARGET_LIST} dlt-test-cpp-extension)
+-    endif()
+ endif()
+ 
+ if(WITH_DLT_QNX_SYSTEM)

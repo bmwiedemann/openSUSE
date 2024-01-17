@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>008abd97addb1da3aa35c4ff9b9cd98a</srcmd5>
+    <version>2.3.0+git20200220.a14bfd72</version>
+    <time>1582394875</time>
+    <user>dimstar_suse</user>
+    <comment>For nfs-client-provisioner container</comment>
+    <requestid>778088</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8ddbd2a5b85de160e3348410973465a</srcmd5>
+    <version>2.3.0+git20200220.a14bfd72</version>
+    <time>1583227121</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust yaml files
+  - use openSUSE container images
+  - add kustomization.yaml file</comment>
+    <requestid>781008</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b44d2f8543a9fa999baee3ee3863093</srcmd5>
+    <version>4.0.0+git20210204.23ecb30</version>
+    <time>1613043966</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to kubernetes-sigs/nfs-subdir-external-provisioner
+- Update to version 4.0.0+git20210204.23ecb30:
+  * Fix typo in CHANGELOG and change provisioner name to use the sigs namespace
+  * Change the helm chart kubeVersion semver to include pre-releases
+  * Update the README and deploy objects with better class names as examples</comment>
+    <requestid>870318</requestid>
+  </revision>
+</revisionlist>

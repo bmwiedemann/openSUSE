@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Thu May 24 07:48:34 UTC 2018 - guillaume@Arm.com
+
+- Update to 0.2~git20180504:
+  * imx_sdp: bugfixes, updates
+  * imx_usb: updates
+  * tests: updates
+
+-------------------------------------------------------------------
+Mon Apr 16 13:04:41 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 0.2~git20180412:
+  * Add i.MX8 support (mx8mq_usb_work.conf)
+  * imx_sdp: bugfixes, updates
+  * Add tests
+
+-------------------------------------------------------------------
+Thu Mar 22 14:34:02 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 0.0~git20180210:
+  * imx_sdp: move jump command out of main download function
+
+-------------------------------------------------------------------
+Fri Oct 13 09:01:26 UTC 2017 - guillaume@opensuse.org
+
+- Update to git20171009:
+  * Add support for U-Boot header (mx6_usb_sdp_spl.conf)
+  * Add support for i.MX6SLL device
+  * Add support for i.MX7ULP device (mx7ulp_usb_work.conf)
+  * Add '-b' and '-D' filter options
+
+-------------------------------------------------------------------
+Fri Apr 28 08:17:39 UTC 2017 - guillaume@opensuse.org
+
+- Update to git20171004:
+  * Fix possible overflow (upstreamed fix_strncat_overflow.patch)
+  * Add i.mx6ull id
+
+-------------------------------------------------------------------
+Thu Jan 12 13:10:53 UTC 2017 - guillaume@opensuse.org
+
+- Update to git20161227:
+  * Lots of code fixes
+  * Remove obsolete mx53_usbarmory_work.conf
+  * Fix mx53_usb_work.conf
+- Update fix_strncat_overflow.patch
+
+-------------------------------------------------------------------
+Wed Jan 20 13:38:49 UTC 2016 - guillaume@opensuse.org
+
+- Update to git20151126:
+  * add i.MX6UL id
+  * mx7_usb_work.conf initial addition
+  * mx53_usbarmory_work.conf addition
+  * mx50_usb_work.conf addition
+  * Add i.MX6 Solo X product id
+  * Various code fixes (uninitialized pointer, and others)
+
+-------------------------------------------------------------------
+Tue Aug 18 16:41:29 UTC 2015 - normand@linux.vnet.ibm.com
+
+- ExcludeArch:    ppc ppc64 ppc64le as no <sys/io.h>
+
+-------------------------------------------------------------------
+Thu Oct 16 11:47:19 UTC 2014 - guillaume@opensuse.org
+
+- Change version numbering to 0.0~gitYYYYMMDD
+- Remove set_version in _service
+
+-------------------------------------------------------------------
+Wed Oct  8 13:29:52 UTC 2014 - guillaume@opensuse.org
+
+- Use mode="localonly" for _service
+
+-------------------------------------------------------------------
+Fri Oct  3 13:26:19 UTC 2014 - guillaume@opensuse.org
+
+- Add set_version in _service
+
+-------------------------------------------------------------------
+Fri Oct  3 13:19:48 UTC 2014 - guillaume@opensuse.org
+
+- Fix SLE11 build (do not use %make_install)
+
+-------------------------------------------------------------------
+Fri Oct  3 12:56:59 UTC 2014 - guillaume@opensuse.org
+
+- Remove get_from_git.sh script and use a _service instead
+
+-------------------------------------------------------------------
+Wed Oct  1 15:55:32 UTC 2014 - guillaume@opensuse.org
+
+- fix_strncat_overflow.patch: Fix possible overflow 
+
+-------------------------------------------------------------------
+Wed Oct  1 15:26:44 UTC 2014 - guillaume@opensuse.org
+
+- Initial version: f96aee2 (2014-09-26)
+

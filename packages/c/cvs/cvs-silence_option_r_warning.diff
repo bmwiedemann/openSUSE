@@ -1,0 +1,11 @@
+--- src/main.c
++++ src/main.c
+@@ -671,7 +671,7 @@
+     if (argc < 1)
+ 	usage (usg);
+ 
+-    if (readonlyfs && !really_quiet) {
++    if (0 && readonlyfs && !really_quiet) {
+ 	error (0, 0,
+ 	       "WARNING: Read-only repository access mode selected via `cvs -R'.\n\
+ Using this option to access a repository which some users write to may\n\

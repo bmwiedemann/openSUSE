@@ -1,0 +1,76 @@
+From 804af98f430065166615ceb99365145f5846bfc3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Thu, 26 Sep 2019 11:43:46 +0200
+Subject: [PATCH 25/29] Generates certificates during service start
+
+sblim-sfcb generated a certificate during installation, which was a
+bad idea if you think about golden images like JeOS or public cloud images,
+where everybody would have the same certificate.
+
+Moved to ExecStartPre now. Improved log messages.
+
+bsc#1092281
+---
+ genSslCert.sh             | 11 ++++++-----
+ sblim-sfcb.service.pre.in |  1 +
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/genSslCert.sh b/genSslCert.sh
+index 17e26256f301..11d34b1320e1 100644
+--- a/genSslCert.sh
++++ b/genSslCert.sh
+@@ -7,12 +7,11 @@ DIR=`mktemp -d /var/tmp/sfcb.XXXXXX` || exit 1
+ 
+ trap "rm -rf $DIR" exit
+ 
+-echo "Generating SSL certificates in $TARGETDIR"
++echo "Checking SSL certificates in $TARGETDIR"
+ 
+ if [ -f $TARGETDIR/server.pem ]
+ then
+-    echo "WARNING: server.pem SSL Certificate file already exists."
+-    echo "         old file will be kept intact."
++    echo "server.pem SSL Certificate file already exists."
+     DO_SERVER=no
+ 
+     # On updates from older versions that did not use clist.pem, we
+@@ -25,13 +24,13 @@ fi
+ 
+ if [ -f $TARGETDIR/client.pem ]
+ then
+-    echo "WARNING: client.pem SSL Certificate trust store already exists."
+-    echo "         old file will be kept intact."
++    echo "client.pem SSL Certificate trust store already exists."
+     DO_CLIENT=no
+ fi
+ 
+ if [ $DO_SERVER = no -a $DO_CLIENT = no ]
+ then
++    echo "Leaving existing .pem files untouched."
+     exit 0
+ fi
+ 
+@@ -45,6 +44,8 @@ CN=$HOSTNAME
+ emailAddress=root@$HOSTNAME
+ EOF
+ 
++echo "Generating missing .pem files from sblim-sfcb."
++
+ openssl req -x509 -days 365 -newkey rsa:2048 \
+    -nodes -config $DIR/ssl.cnf   \
+    -keyout $DIR/key.pem -out $DIR/cert.pem
+diff --git a/sblim-sfcb.service.pre.in b/sblim-sfcb.service.pre.in
+index 11e77f1cd022..8ef40c62bece 100644
+--- a/sblim-sfcb.service.pre.in
++++ b/sblim-sfcb.service.pre.in
+@@ -3,6 +3,7 @@ Description=Small Footprint CIM Broker Service
+ After=syslog.target
+ 
+ [Service]
++ExecStartPre=${exec_prefix}/share/sfcb/gen_ssl_certs.sh
+ ExecStart=${exec_prefix}/sbin/sfcbd
+ 
+ [Install]
+-- 
+2.23.0
+

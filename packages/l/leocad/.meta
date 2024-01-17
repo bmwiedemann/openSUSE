@@ -1,0 +1,7 @@
+<package name="leocad" project="openSUSE:Factory">
+  <title>leocad</title>
+  <description>LeoCAD is a CAD program for creating virtual LEGO models. It's available
+for free under the GNU Public License v2 and works on the Windows, Linux
+and macOS Operating Systems.</description>
+  <devel project="Education" package="leocad"/>
+</package>

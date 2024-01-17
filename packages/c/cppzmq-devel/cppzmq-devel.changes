@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Mon May  9 15:16:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.8.1
+  * Fix fallback value for ZMQ_DEPRECATED
+  * Fix MSYS libzmq discovery
+  * Fix handshake event don't need DRAFT API in libzmq v4.3.0 and above
+  * Use chrono duration for poll default timeout
+  * context_t close no longer uses deprecated function
+  * Fix for potential memory leak in monitor_t::check_event
+  * Fix conversion warnings
+  * Deprecate confusing connected() function
+  * Add all draft socket types up to libzmq 4.3.4
+  * Add support for socket_ref to multipart_t ctor/send/recv
+  * Expose zmq::fd_t
+  * Add poller_t::size function
+
+-------------------------------------------------------------------
+Wed May 12 13:25:55 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Update to version 4.7.1
+  * Fixes syntax issues with MSVC
+  * Add shutdown() for context_t
+  * Typesafe context options
+  * Typesafe socket options
+  * Better C++ standard detection
+  * CMake fixes and improvements
+  * Multipart message encoding and decoding
+  * Fix (unlikely) UB in message_t constructor
+  * Improved poll() overloads
+  * Require non-null handlers to active_poller
+  * Fix socket move assignment bug
+  * Deprecate surprising message_t constructor from string literals
+
+
+-------------------------------------------------------------------
+Sat Apr 25 18:17:32 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.6.0
+  * New generic algorithms for sending and receiving multipart messages
+  * New to_string and to_string_view member functions in message_t
+  * Less surprising behaviour when move assigning socket_t and context_t
+  * Return types for send and recv moved into zmq namespace
+  * Checks for 32/64bit-ness in cppzmqConfigVersion.cmake removed
+  * fixed issues when compiling with C++11
+  * fixed and improved cmake build (in and out of source builds, libzmq discovery, fallback to pkg-config and more)
+  * updated README.md with clear design goals, supported platforms
+  * official CI support for Linux, MacOS and Windows
+  * unit tests infrastructure
+  * test code coverage brought to 77%
+  * updated code style (more details in .clang-format)
+  * socket_t:
+    + added support for draft ZMQ_SERVER and ZMQ_CLIENT sockets
+    + added support for draft ZMQ_RADIO and ZMQ_DISH sockets
+  * poller_t:
+    + poller_t became thin abstraction layer on zmq_poller_*
+    + functionality with std::function handlers split and moved to a new active_poller_t in zmq_addon.hpp
+    + simpler and safer implementation
+    + made non-copyable, but properly movable
+    + more consistent and robust error handling
+    + event type part of handler definition
+    + fixed a segfault issue when modifying poller_t from a handler
+    + added empty method indicating presence of registered sockets
+  * context_t:
+    + added methods for context options: setctxopt(int option_, int optval_) and int getctxopt(int option_)
+  * message_t:
+    + easier construction from iterable type e.g. std::string, std::array
+    + added != and == operators and equals method marked as deprecated
+  * multipart_t:
+    + added an operator<<(std::ostream) to easily print out multipart_t content
+  * monitor_t:
+    + build error in constructor #135
+    + blocked when used without threads #134
+    + move constructor was only partly initialized #130
+  * socket::send(): improper EHOSTUNREACH handling #125
+  * check for zmq_msg_gets did not properly exclude libzmq 4.0.X #114
+  * CMake:
+    + export targets to config (requires CMake 3.0+ now) #118 #121
+    + pkg-config fallback for libzmq installs via autotools #133
+  * peekstr & peektyp: peek into parts of messages #124
+  * allow empty handler parameter in zmq::poller_t::add() #119 #120
+  * poller_t class based on new libzmq poller API #111
+
+-------------------------------------------------------------------
+Thu Jan 12 08:26:42 UTC 2017 - adrian@suse.de
+
+- adapt for Factory
+
+-------------------------------------------------------------------
+Mon Jun 27 02:52:33 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git.20160406.0db7521:
+  * Class for multipart messaging
+
+-------------------------------------------------------------------
+Fri Feb 05 21:23:16 UTC 2016 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git.20160120.68a7b09:
+  + Fix backward compatibility
+  + Fixes assertion error, when destroing ctx while creating a socket 
+    from a different thread: ./src/mutex.hpp:123
+  + Extend C++11 guard to cover remaining use of std::vector data().
+  + fixed type mismatch warnings (size_t to int)
+  + Avoid using deprecated function zmq_recvmsg
+  + Fix usage of zmq_msg_recv and zmq_recvmsg
+  + Make getsockopt() functions const
+  + Fix two issues in message_t's range constructor
+  + Correction to pull request #56
+  + Fix warning 4996 in msvc debug build
+  + New fill constructor for message_t
+  + Updating zmq_ctx_shutdown to zmq_ctx_ctx which is imported in zmq.h
+
+-------------------------------------------------------------------
+Mon Sep 21 08:06:01 UTC 2015 - mardnh@gmx.de
+
+- Update to version 0.1.0.git1436168018.a88bf3e:
+  + Fixes backward compatibility with zmq 3.x
+  + Problem: zmq_event_t removed in libzmq v4.1
+  + Fix a misaligned load
+  + Add an rvalue overload for socket_t::send
+  + Fixed some const-correctness issues
+
+-------------------------------------------------------------------
+Tue Nov 26 03:45:11 UTC 2013 - nevion@gmail.com
+
+-initial creation 
+

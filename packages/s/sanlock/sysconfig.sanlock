@@ -1,0 +1,13 @@
+## Path: System/Virtualization/sanlock
+
+## Type: string
+## Default: "-U sanlock -G sanlock"
+# Options passed to sanlock daemon, see man sanlock(8).
+#
+# E.g. to use sanlock without the watchdog multiplexing
+# daemon set SANLOCKOPTS as follows
+#SANLOCKOPTS="-U sanlock -G sanlock -w 0"
+#
+# To disable use of watchdog via wdmd and disable high priority features
+#SANLOCKOPTS="-U sanlock -G sanlock -w 0 -h 0"
+SANLOCKOPTS="-U sanlock -G sanlock"

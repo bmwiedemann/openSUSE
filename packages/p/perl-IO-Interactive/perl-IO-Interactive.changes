@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Jul  6 03:07:27 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.025
+   see /usr/share/doc/packages/perl-IO-Interactive/Changes
+
+  1.025 2023-07-05T15:01:36Z
+  	* Remove unnecessary -T from pod tests now that v5.38 allows you to
+  	compile a perl without taint support. Those perls will refuse to run
+  	the programs using -T.
+
+-------------------------------------------------------------------
+Thu Feb  4 03:09:44 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.023
+   see /usr/share/doc/packages/perl-IO-Interactive/Changes
+
+  1.023 2021-02-03T22:37:57Z
+  	* Explain why ARGV is a problem (Github #9)
+  	* Freshen distro, remove Travis CI, add Github Actions
+
+-------------------------------------------------------------------
+Mon Sep  5 05:25:33 UTC 2016 - coolo@suse.com
+
+- updated to 1.022
+   see /usr/share/doc/packages/perl-IO-Interactive/Changes
+
+-------------------------------------------------------------------
+Sun Feb  7 10:07:36 UTC 2016 - coolo@suse.com
+
+- updated to 1.021
+   see /usr/share/doc/packages/perl-IO-Interactive/Changes
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:05 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Mon Jan 17 19:28:49 UTC 2011 - coolo@novell.com
+
+- initial package 0.0.6
+  * created by cpanspec 1.78.03
+

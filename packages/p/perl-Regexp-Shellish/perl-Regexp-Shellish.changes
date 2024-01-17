@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Dec  1 13:34:45 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:57 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Nov 28 11:37:58 UTC 2010 - coolo@novell.com
+
+- remove .packlist file
+
+-------------------------------------------------------------------
+Tue Oct 19 08:39:02 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 16 22:34:48 CET 2005 - schwab@suse.de
+
+- Don't remove BuildRoot in %install.
+
+-------------------------------------------------------------------
+Mon Feb 14 18:24:58 CET 2005 - lmuelle@suse.de
+
+- Initial SuSE package.

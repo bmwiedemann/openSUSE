@@ -1,0 +1,5 @@
+<package name="python-ntc-templates" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-ntc-templates"/>
+</package>

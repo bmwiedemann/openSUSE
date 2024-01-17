@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Sat Jan  6 11:39:48 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Fix build error in Leap.
+- Fix warning python-sitelib-glob-in-files.
+
+-------------------------------------------------------------------
+Wed Oct 11 10:53:56 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 23.5.26
+
+-------------------------------------------------------------------
+Thu May 12 12:02:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.6
+
+-------------------------------------------------------------------
+Wed May 12 03:08:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.0
+
+-------------------------------------------------------------------
+Thu Apr 30 07:30:35 UTC 2020 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- Update to 1.12.0
+  - An official Swift port! (including gRPC support).
+  - A Kotlin port!
+  - Object API and native JSON support for C#.
+  - Object API and gRPC support for Python.
+  - Object API for Go.
+  - FlexBuffers for Java.
+  - Many other fixes and smaller improvements, 247 commits since 1.11.0
+- Packaging: Use tarball from GitHub release page
+  https://github.com/google/flatbuffers/releases
+
+-------------------------------------------------------------------
+Tue Dec  3 14:39:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use same tarball as it is equal between python and C code
+
+-------------------------------------------------------------------
+Tue Oct  8 15:39:10 UTC 2019 - ecsos@opensuse.org
+
+- Update to 1.11.0
+
+-------------------------------------------------------------------
+Wed Jan 30 20:10:26 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Add python bindings.
+

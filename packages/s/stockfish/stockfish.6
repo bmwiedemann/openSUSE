@@ -1,0 +1,61 @@
+.\" Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.\" Please adjust this date whenever revising the manpage.
+.\" 
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.TH "STOCKFISH" "6" "October  10, 2009" "" ""
+.SH "NAME"
+stockfish \- free UCI chess engine, to calculate chess moves
+.SH "SYNOPSIS"
+.B stockfish
+.SH "DESCRIPTION"
+This manual page documents the
+.B stockfish
+command.
+.PP 
+\fBstockfish\fP is an UCI chess engine, to calculate chess moves
+
+Stockfish is a free UCI chess engine derived from Glaurung 2.1. It is
+not a complete chess program, but requires some UCI compatible GUI
+(like XBoard with PolyGlot, eboard, Jose, Arena, in order to be used 
+comfortably.  Read the documentation for your GUI of choice for information 
+about how to use Stockfish with your GUI.
+
+This version of Stockfish supports up to 8 CPUs, but has not been
+tested thoroughly with more than 2.  The program tries to detect the
+number of CPUs on your computer and set the number of search threads
+accordingly, but please be aware that the detection is not always
+correct.  It is therefore recommended to inspect the value of the
+"Threads" UCI parameter, and to make sure it equals the number of CPU
+cores on your computer. If you are using more than four threads, it
+is recommended to raise the value of "Minimum Split Depth" UCI parameter
+to 6.
+
+
+Opening book
+
+This version of stockfish has experimental support for PolyGlot opening
+books.  For information about how to create such books, consult the
+PolyGlot documentation.  
+
+.SH "OPTIONS"
+This program does NOT follow the usual GNU command line syntax, with long options starting with two dashes.
+.SH "SEE ALSO"
+Communication with UCI commands is documented by
+"The UCI Communication Protocol" in /usr/share/doc/stockfish/engine\-interface.txt.
+.SH "AUTHOR"
+stockfish was written by <Romstad Tord <tord@glaurungchess.com>> and Marco Costalba <mcostalba@gmail.com>.
+.PP 
+This manual page was written by Oliver Korff <ok@xynyx.de>,
+for the Debian project (but may be used by others).

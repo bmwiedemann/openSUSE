@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:06:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Aug  4 08:14:56 UTC 2021 - psimons@suse.com
+
+- Update distributive to version 0.6.2.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Dec 30 17:53:13 UTC 2020 - psimons@suse.com
+
+- Update distributive to version 0.6.2.1.
+  0.6.2.1 [2020.12.30]
+  --------------------
+  * The build-type has been changed from `Custom` to `Simple`.
+    To achieve this, the `doctests` test suite has been removed in favor of using
+    [`cabal-docspec`](https://github.com/phadej/cabal-extras/tree/master/cabal-docspec)
+    to run the doctests.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:32 UTC 2020 - psimons@suse.com
+
+- Update distributive to version 0.6.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:40 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:02 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May  6 06:54:11 UTC 2020 - psimons@suse.com
+
+- Update distributive to version 0.6.2.
+  0.6.2 [2020.04.10]
+  ------------------
+  * Make the `Distributive` instance for `Tagged` poly-kinded.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:37 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sat Sep  7 02:01:56 UTC 2019 - psimons@suse.com
+
+- Update distributive to version 0.6.1.
+  0.6.1 [2019.09.06]
+  ------------------
+  * Add a `Distributive` instance for `WrappedMonad m`.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:26 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:21 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:36 UTC 2018 - psimons@suse.com
+
+- Update distributive to version 0.6.
+  0.6 [2018.07.02]
+  ----------------
+  * Remove `fmapCollect`. (See
+    [here](https://github.com/ekmett/distributive/commit/1020655f15714514048d0dc842ffe4adcec89a7b)
+    for an explanation of why it was removed.)
+  * Avoid incurring some dependencies when using recent GHCs.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update distributive to version 0.5.3 revision 5.
+  * Support `doctest-0.12`
+  * Revamp `Setup.hs` to use `cabal-doctest`. This makes `distributive` build
+    with `Cabal-1.25`, and makes the `doctest`s work with `cabal new-build` and
+    sandboxes.
+  * Fix bugs in `Data.Distributive.Generic` that cause generic `Distributive`
+    instances not to work properly for datatypes with recursive types
+  * Add `genericCollect` to `Data.Distributive.Generic`, and switch the underlying
+    machinery in that module to work on a `collect`-like method instead of a
+    `distribute`-like one
+  * Add a test suite for regression-testing `Data.Distributive.Generic`
+
+-------------------------------------------------------------------
+Sun Feb  5 19:32:22 UTC 2017 - psimons@suse.com
+
+- Update to version 0.5.2 revision 2 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Jan  9 06:33:58 UTC 2017 - psimons@suse.com
+
+- Update to version 0.5.1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:34:08 UTC 2016 - psimons@suse.com
+
+- Update to version 0.5.0.2 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Tue Jan 26 08:40:30 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.5.0.2
+* Added flags for removing some dependencies.
+* upport doctests when building to non-standard locations (such as when using stack.)
+* Support base-orphans
+
+-------------------------------------------------------------------
+Thu May 21 06:41:23 UTC 2015 - mimi.vx@gmail.com
+
+- correct licence to BSD-2-Clause
+
+-------------------------------------------------------------------
+Sun Apr 26 16:43:29 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

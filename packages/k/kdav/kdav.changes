@@ -1,0 +1,1049 @@
+-------------------------------------------------------------------
+Sat Jan 13 11:21:27 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- No code change since 5.113.0
+
+-------------------------------------------------------------------
+Tue Dec  5 11:17:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- No code change since 5.112.0
+
+-------------------------------------------------------------------
+Mon Nov  6 09:13:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- No code change since 5.111.0
+
+-------------------------------------------------------------------
+Mon Oct  9 20:20:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- No code change since 5.110.0
+
+-------------------------------------------------------------------
+Wed Sep  6 12:23:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- No code change since 5.109.0
+
+-------------------------------------------------------------------
+Tue Aug  8 17:42:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * Add explicit moc includes to sources for moc-covered headers
+
+-------------------------------------------------------------------
+Mon Jul  3 07:01:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Remove qt6 CI builds
+
+-------------------------------------------------------------------
+Mon Jun  5 07:43:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- No code change since 5.106.0
+
+-------------------------------------------------------------------
+Sat May  6 14:01:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- No code change since 5.105.0
+
+-------------------------------------------------------------------
+Sat Apr  1 17:00:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- No code change since 5.104.0
+
+-------------------------------------------------------------------
+Mon Mar  6 09:07:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- No code change since 5.103.0
+
+-------------------------------------------------------------------
+Wed Feb  8 09:12:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- No code change since 5.102.0
+
+-------------------------------------------------------------------
+Thu Jan 12 08:18:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- No code change since 5.101.0
+
+-------------------------------------------------------------------
+Tue Dec  6 20:10:31 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- No code change since 5.100.0
+
+-------------------------------------------------------------------
+Tue Nov  8 08:35:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * Add Qt6 windows CI support
+
+-------------------------------------------------------------------
+Sat Oct  1 15:55:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Remove unused includes
+  * Show all headers in qtc6
+
+-------------------------------------------------------------------
+Tue Sep  6 07:16:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Add FreeBSD Qt6 CI support
+
+-------------------------------------------------------------------
+Sun Aug  7 22:27:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Stabilize multi-fetch test
+  * Use a struct instead of QPair
+
+-------------------------------------------------------------------
+Sun Jul  3 11:55:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- No code change since 5.95.0
+
+-------------------------------------------------------------------
+Fri Jun 10 14:12:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * port to standard C++ smart pointers where possible
+
+-------------------------------------------------------------------
+Tue May 10 08:17:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Add windows CI
+
+-------------------------------------------------------------------
+Sun Apr  3 10:47:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * autotests: fix \r\n problem on Windows
+
+-------------------------------------------------------------------
+Mon Mar  7 09:26:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Add Qt6 Android CI
+  * Fix the Qt6 Android build
+  * Add iCloud info to README
+  * Fix variable name typo
+  * Replace absolute URIs with relative ones in calendar-multiget request
+
+-------------------------------------------------------------------
+Sun Feb  6 10:16:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Add CI qt6 support
+  * Fix header installation path to include module prefix
+  * Use uppercase "KDAV" name as qmake identifier, to be match KF standards
+  * Fix pri file to also note KCoreAddons dependency
+  * Fix non-existing include path set in pri file
+
+-------------------------------------------------------------------
+Mon Jan  3 12:47:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * Adapt build system to allow building against Qt6
+  * Port away from QtXmlPatterns
+
+-------------------------------------------------------------------
+Sat Dec  4 22:56:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- No code change since 5.88.0
+
+-------------------------------------------------------------------
+Sun Nov  7 09:13:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Add FreeBSD CI
+  * Add Android CI
+
+-------------------------------------------------------------------
+Sun Oct  3 20:33:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+
+-------------------------------------------------------------------
+Mon Sep  6 06:21:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * Port away from recently deprecated KIO::DavJob API
+  * Minor optimisation
+  * Adapt to KIO DavJob factory methods removing QDomDocument from their API
+
+-------------------------------------------------------------------
+Fri Aug  6 12:11:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- No code change since 5.84.0
+
+-------------------------------------------------------------------
+Sun Jul  4 07:45:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- No code change since 5.83.0
+- Only install the license files once
+
+-------------------------------------------------------------------
+Sat Jun  5 11:58:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Bump required CMake version to 3.16
+  * Call ki18n_install() unconditionally
+
+-------------------------------------------------------------------
+Sat May  1 16:40:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- No code change since 5.81.0
+
+-------------------------------------------------------------------
+Mon Apr  5 07:12:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * Run clang-format
+  * Add clang-format pre-commit hook
+
+-------------------------------------------------------------------
+Sun Mar  7 09:26:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- No code change since 5.79.0
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- No code change since 5.78.0
+
+-------------------------------------------------------------------
+Wed Jan  6 10:47:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Remove ifdefs, we require Qt 5.14 now
+
+-------------------------------------------------------------------
+Sat Dec  5 18:56:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Remove it as it creates too many errors
+
+-------------------------------------------------------------------
+Sat Nov  7 21:34:29 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- No code change since 5.75.0
+
+-------------------------------------------------------------------
+Mon Oct  5 08:33:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- No code change since 5.74.0
+
+-------------------------------------------------------------------
+Sun Sep  6 12:49:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Changes since 5.73.0:
+  * Clean unused includes
+  * Use Q_DECLARE_OPERATORS_FOR_FLAGS in same namespace as flags definition
+  * metainfo.yaml: Add tier key and tweak description
+  * Remove obsolete COPYING files
+
+-------------------------------------------------------------------
+Sun Aug  2 07:26:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Use KF-standardized Qt logging categories
+  * inqlude expects an "## Introduction" section
+
+-------------------------------------------------------------------
+Sun Jul 19 11:25:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0. kdav is now a KDE Framework.
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 20.04.3:
+  * Add full namespace to external class references
+  * Option to build & install QCH file with the public API dox
+  * Make KDAV a KDE Framework
+
+-------------------------------------------------------------------
+Sat Jul 11 08:59:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- No code change since 20.04.2
+
+-------------------------------------------------------------------
+Tue Jun  9 12:14:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- No code change since 20.04.1
+
+-------------------------------------------------------------------
+Fri May 15 15:41:17 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- No code change since 20.04.0
+
+-------------------------------------------------------------------
+Thu Apr 23 12:22:13 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Port DavCollectionsMultiFetchJob to KCompositeJob
+  * autotests: add test for 404 error, make tests more robust
+  * Extend unittest to spy for DavCollectionsMultiFetchJob::collectionDiscovered()
+  * KDAV: use a different port in each test
+  * Add unittest for DavCollectionsMultiFetchJob
+  * Use enum rather than int as signal argument
+  * Return a QString rather than a QLatin1String
+  * Unexport protected methods only needed internally here
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- No code change since 20.03.80
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:50 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Changes since 19.12.3:
+  * KDAV: Convert license headers to SPDX identifiers
+  * Fix autogenerate categories file
+  * Move ecm_generate_pri_file below the definition of the target
+  * Rename library/target to KF5::DAV
+  * Port deprecated toSet() methods
+  * We depend against 5.64
+  * Master is open
+
+-------------------------------------------------------------------
+Thu Mar  5 20:35:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-03-apps-update
+- Changes since 19.12.2:
+  * Move ecm_generate_pri_file below the definition of the target
+  * Rename library/target to KF5::DAV
+
+-------------------------------------------------------------------
+Fri Feb  7 08:37:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:29:00 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-02-apps-update
+- No code change since 19.12.1
+
+-------------------------------------------------------------------
+Tue Jan  7 10:00:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- No code change since 19.12.0
+
+-------------------------------------------------------------------
+Tue Dec 10 06:38:23 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12
+- No code change since 19.11.90
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:44 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Seems we need to disable HTTP cache cleaning too for avoiding klauncher
+  * Run KIO-based tests without the need for klauncher
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:16 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Nov  7 23:12:49 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- No code change since 19.08.2
+
+-------------------------------------------------------------------
+Fri Oct 11 07:42:39 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- No code change since 19.08.1
+
+-------------------------------------------------------------------
+Thu Sep  5 14:00:20 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Include KDE* cmake macros before any others
+
+-------------------------------------------------------------------
+Fri Aug  9 08:30:38 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:48 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- No code changes since 19.07.80
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:58 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * When we use framework 5.59.0 we can use new logging file directory
+  * It was fixed in 5.13.0beta2
+  * metainfo.yaml: Fix cmakename, is own top-level entry
+  * Make it compile without foreach
+
+-------------------------------------------------------------------
+Fri Jul 19 08:30:31 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_kf5_debugdir for logging categories.
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:34 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:13 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * Fix kf5 lib with old CMake version
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:40 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Convert to camelcase include
+  * Workaround qt5.13 bug
+
+-------------------------------------------------------------------
+Wed Mar 27 06:40:59 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Remove QT_CHECK
+  * Fix minor EBN issues and typos
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:24:59 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:42:07 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:09:05 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:53 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * No code changes since 18.11.80
+
+-------------------------------------------------------------------
+Tue Nov 20 06:22:10 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:55 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * QT_NO_NARROWING_CONVERSIONS_IN_CONNECT is defined in kf5.51
+  * use new syntax
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:33 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * No code changes since 18.08.2
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:49 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:59 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * need for static_cast to fix the test.
+  * Fix noMatchingMime test.
+
+-------------------------------------------------------------------
+Thu Aug 16 22:03:04 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:37 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Use Q_REQUIRED_RESULT
+  * Assign colors correctly also when the alpha channel is set. (kde#395216)
+  * Cache value
+  * Fix signed/unsigned int
+  * Warning--
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:53 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:17:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 18 07:48:58 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:09:11 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Use QLAtin1String
+  * Use QLatin1String
+  * Use QLatin1String
+  * Use QLAtin1String
+  * Use QLatin1Char
+  * Use new connect api
+  * Fix string: MIME types
+  * Port to for(...:...)
+  * Unused file
+  * Use QVector
+  * Don't forget to include CMakeFindDependencyMacro.
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:24 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:44 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Jan 11 23:41:03 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:03 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:36 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * Revert "Use URLs in multiget requests as returned by the Server"
+  * compile when we use BUILD_TESTING
+  * Use URLs in multiget requests as returned by the Server
+
+-------------------------------------------------------------------
+Mon Nov 20 06:59:04 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Don't forget to include CMakeFindDependencyMacro.
+  * Port to new connect api
+  * Use directly CMakeFindDependencyMacro
+  * Fix warning found by cppcheck
+  * Add version here
+  * Clean up
+  * Add check
+  * Fix includes
+  * Rename namespace. Rename as override
+  * Allow to run test without install it
+
+-------------------------------------------------------------------
+Thu Nov 09 23:11:10 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:40 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 07 07:01:41 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Aug 11 22:45:16 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+  * increase version
+  * Don't use deprecated method
+  * Increase version for master
+
+-------------------------------------------------------------------
+Sat Aug  5 18:17:22 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:27 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Upgrade version number to 5.5.3 to fix kdepim-runtime compilation.
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:46 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Add missing include
+
+-------------------------------------------------------------------
+Wed May 17 20:36:02 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Use same variable name, so it's more easy to change version
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:53 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:27 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Add missing metainfo
+
+-------------------------------------------------------------------
+Fri Apr  7 19:41:29 UTC 2017 - lbeltrame@kde.org
+
+- Update descriptions
+
+-------------------------------------------------------------------
+Sun Mar 26 07:10:16 UTC 2017 - lbeltrame@kde.org
+
+- Initial package for KDE Applications 17.08.80
+  * Code split out from kdepim-runtime
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+

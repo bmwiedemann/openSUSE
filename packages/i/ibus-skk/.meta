@@ -1,0 +1,5 @@
+<package name="ibus-skk" project="openSUSE:Factory">
+  <title>Japanese SKK input method for ibus</title>
+  <description>A Japanese Simple Kana Kanji Input Method Engine for ibus.</description>
+  <devel project="M17N" package="ibus-skk"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="perl-Regexp-Trie" project="openSUSE:Factory">
+  <title>Builds trie-ized regexp</title>
+  <description>This module is a faster but simpler version of Regexp::Assemble or Regexp::Optimizer. It builds a trie-ized regexp as above.
+
+This module is faster than Regexp::Assemble but you can only add literals. 'a+b' is treated as 'a\+b', not &quot;more than one a's followed by b&quot;.</description>
+  <devel project="devel:languages:perl" package="perl-Regexp-Trie"/>
+  <url>https://metacpan.org/release/Regexp-Trie</url>
+</package>

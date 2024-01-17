@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Sun Oct  1 11:32:44 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 1.223:
+  * Updated translations
+
+-------------------------------------------------------------------
+Tue May 16 07:49:19 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 1.220:
+  * updated translations
+
+-------------------------------------------------------------------
+Sun Jan  1 10:13:39 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed buildrequires to kbd to resolve kbd/console-setup build
+  cycle
+
+-------------------------------------------------------------------
+Fri Dec 30 12:16:39 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.215:
+  * See https://salsa.debian.org/installer-team/console-setup/-/blob/debian/1.215/debian/changelog
+- Make a bdf2psf package like in Fedora.
+- Suggest xkeyboard-config.
+- Replace console-setup-1.76-paths.patch with
+  console-setup-paths.patch.
+- Move the fonts to /usr/share/kbd/ to be discoverable by vconsole.
+- Drop console-setup-1.134-perl526.patch,
+  console-setup-1.134-reproducible.patch, u_fix-iso-left-tab.patch,
+  0001-ckbcomp-Fix-check-for-non-ascii.patch: fixed upstream.
+- Fix the RPM Group.
+
+-------------------------------------------------------------------
+Mon Dec 12 09:54:28 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix Caps_Lock mapping for us.map and others (bsc#1202853):
+  * 0001-ckbcomp-Fix-check-for-non-ascii.patch
+
+-------------------------------------------------------------------
+Thu Jan 24 13:39:33 UTC 2019 - sndirsch@suse.com
+
+- u_fix-iso-left-tab.patch
+  * fix Shift-Tab mapping (bsc#1122361)
+
+-------------------------------------------------------------------
+Fri Jan  5 06:40:43 UTC 2018 - bwiedemann@suse.com
+
+- Add console-setup-1.134-reproducible.patch to make package build
+  reproducible (boo#1062303)
+
+-------------------------------------------------------------------
+Sun Sep 24 08:50:06 UTC 2017 - coolo@suse.com
+
+- add console-setup-1.134-perl526.patch to work with perl 5.26,
+  fixed upstream in 1.143
+
+-------------------------------------------------------------------
+Thu Jan 28 10:11:45 UTC 2016 - sndirsch@suse.com
+
+- removed unneeded requires to kbd in order to resolve build cycle
+  kbd <-> console-setup (bnc#963942)
+
+-------------------------------------------------------------------
+Thu Nov 26 00:45:25 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.134
+
+-------------------------------------------------------------------
+Fri Jul 17 10:49:37 UTC 2015 - sndirsch@suse.com
+
+- package created; it's required by kbd in order to convert xkb
+  layouts from xkeyboard-config to console keymaps (FATE#318426)

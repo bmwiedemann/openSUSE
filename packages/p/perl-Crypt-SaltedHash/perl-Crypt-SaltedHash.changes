@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sun Aug  4 15:24:30 UTC 2013 - coolo@suse.com
+
+- updated to 0.09
+    - add Test::Fatal test requires
+    - correct version in package
+    - switch to use Dist::Zilla
+    - fix bug with failed regex and localization of $1
+    - handle some uninitialized variables
+    - RT Bug #78505 for Crypt-SaltedHash: Noisy tests (Unescaped left brace in regex is deprecated)
+    - RT Bug #85627 for Crypt-SaltedHash: [PATCH] POD fix
+
+-------------------------------------------------------------------
+Fri Nov 18 12:02:59 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:20 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Oct  1 22:44:08 UTC 2010 - dbahi@novell.com
+
+- initial package 0.05
+  * created by cpanspec 1.78
+

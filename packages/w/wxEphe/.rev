@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac515231d187524da51be9637bd389d8</srcmd5>
+    <version>1.4</version>
+    <time>1505334762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>522805</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2bd3aa4afb910ba30de2a474c7bea561</srcmd5>
+    <version>1.6</version>
+    <time>1540988442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.6</comment>
+    <requestid>645543</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1247aeff31a2020cd52df8d6bff860df</srcmd5>
+    <version>1.7</version>
+    <time>1573045013</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7</comment>
+    <requestid>745178</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5621113a4cb303e83e17d2d1da4ee8ad</srcmd5>
+    <version>1.7</version>
+    <time>1609147837</time>
+    <user>dimstar_suse</user>
+    <comment>- Specfile modernizations.</comment>
+    <requestid>858493</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>43f62a1a84f9fb4efcee4d2c1f1df7ce</srcmd5>
+    <version>1.8</version>
+    <time>1682368294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8</comment>
+    <requestid>1082457</requestid>
+  </revision>
+</revisionlist>

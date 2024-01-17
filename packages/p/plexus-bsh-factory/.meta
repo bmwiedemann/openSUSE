@@ -1,0 +1,5 @@
+<package name="plexus-bsh-factory" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="plexus-bsh-factory"/>
+</package>

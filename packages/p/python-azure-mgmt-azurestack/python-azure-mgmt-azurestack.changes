@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed May  5 17:27:34 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Fri Dec 18 09:36:45 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Wed Jan 29 15:03:35 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.1.0

@@ -1,0 +1,9 @@
+<package name="librcd" project="openSUSE:Factory">
+  <title>Russian Charset Detection Library</title>
+  <description>Automatic encoding detection library for russian/ukrainian languages. Optimized
+for very small words and phrases.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="librcd"/>
+  <url>http://rusxmms.sourceforge.net</url>
+</package>

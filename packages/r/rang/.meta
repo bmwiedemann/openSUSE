@@ -1,0 +1,6 @@
+<package name="rang" project="openSUSE:Factory">
+  <title>rang</title>
+  <description>A Minimal, Header only Modern c++ library for colors in your terminal.</description>
+  <devel project="devel:libraries:c_c++" package="rang"/>
+  <url>https://agauniyal.github.io/rang</url>
+</package>

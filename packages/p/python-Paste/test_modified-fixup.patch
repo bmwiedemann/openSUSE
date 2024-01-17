@@ -1,0 +1,14 @@
+diff -ru Paste-3.0.8-orig/tests/test_fileapp.py Paste-3.0.8/tests/test_fileapp.py
+--- Paste-3.0.8-orig/tests/test_fileapp.py	2019-02-28 22:09:41.000000000 +0700
++++ Paste-3.0.8/tests/test_fileapp.py	2019-03-08 17:40:52.558943604 +0700
+@@ -96,7 +96,9 @@
+     res = harness.get("/",status=400,
+             headers={'if-modified-since':
+                 'Thu, 22 Dec 3030 01:01:01 GMT'})
+-    assert 400 == res.status and b"check your system clock" in res.body
++    assert 400 == res.status and (
++        b"check your system clock" in res.body or
++        b"ill-formed timestamp" in res.body)
+ 
+ def test_file():
+     tempfile = "test_fileapp.%s.txt" % (random.random())

@@ -1,0 +1,11 @@
+<package name="posixovl" project="openSUSE:Factory">
+  <title>POSIX overlay filesystem</title>
+  <description>A FUSE filesystem that provides POSIX functionality - UNIX-style
+permissions, ownership, special files - for filesystems that do not
+have such, e.g. vfat. It is a modern equivalent of the UMSDOS fs.
+
+Author:
+-------
+	Jan Engelhardt</description>
+  <devel project="filesystems" package="posixovl"/>
+</package>

@@ -1,0 +1,37 @@
+From 168204de6371f594c4f1ebac30ca3e181a851e39 Mon Sep 17 00:00:00 2001
+From: Donald Sharp <sharpd@nvidia.com>
+Date: Wed, 5 Apr 2023 14:57:05 -0400
+Subject: [PATCH] bgpd: Limit flowspec to no attribute means a implicit
+ withdrawal
+Upsteam: yes
+References: CVE-2023-41909,bsc#1215065,https://github.com/FRRouting/frr/pull/13222/commits/cfd04dcb3e689754a72507d086ba3b9709fc5ed8
+
+All other parsing functions done from bgp_nlri_parse() assume
+no attributes == an implicit withdrawal.  Let's move
+bgp_nlri_parse_flowspec() into the same alignment.
+
+Reported-by: Matteo Memelli <mmemelli@amazon.it>
+Signed-off-by: Donald Sharp <sharpd@nvidia.com>
+Signed-off-by: Marius Tomaschewski <mt@suse.com>
+
+diff --git a/bgpd/bgp_flowspec.c b/bgpd/bgp_flowspec.c
+index 39c0cfe514..fe1f0d50f8 100644
+--- a/bgpd/bgp_flowspec.c
++++ b/bgpd/bgp_flowspec.c
+@@ -112,6 +112,13 @@ int bgp_nlri_parse_flowspec(struct peer *peer, struct attr *attr,
+ 	afi = packet->afi;
+ 	safi = packet->safi;
+ 
++	/*
++	 * All other AFI/SAFI's treat no attribute as a implicit
++	 * withdraw.  Flowspec should as well.
++	 */
++	if (!attr)
++		withdraw = 1;
++
+ 	if (packet->length >= FLOWSPEC_NLRI_SIZELIMIT_EXTENDED) {
+ 		flog_err(EC_BGP_FLOWSPEC_PACKET,
+ 			 "BGP flowspec nlri length maximum reached (%u)",
+-- 
+2.35.3
+

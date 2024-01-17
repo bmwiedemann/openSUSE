@@ -1,0 +1,6 @@
+<package name="snapshot" project="openSUSE:Factory">
+  <title>Take pictures and videos</title>
+  <description>Webcam app built with rust, gtk4 and libadwaita.</description>
+  <devel project="GNOME:Factory" package="snapshot"/>
+  <url>https://gitlab.gnome.org/GNOME/snapshot</url>
+</package>

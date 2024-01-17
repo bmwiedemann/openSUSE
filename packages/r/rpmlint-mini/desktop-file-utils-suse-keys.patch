@@ -1,0 +1,17 @@
+diff -r -U 5 a/src/validate.c b/src/validate.c
+--- a/src/validate.c	2020-06-19
++++ b/src/validate.c	2020-06-29
+@@ -324,10 +324,13 @@
+   { DESKTOP_BOOLEAN_TYPE,           "DBusActivatable",   FALSE, FALSE, FALSE, handle_dbus_activatable_key },
+ 
+   /* Since 1.4 */
+   { DESKTOP_BOOLEAN_TYPE,           "PrefersNonDefaultGPU", FALSE, FALSE, FALSE, NULL },
+ 
++  /* SuSE specific */
++  { DESKTOP_BOOLEAN_TYPE,      "X-SuSE-translate",  FALSE, FALSE, FALSE, NULL },
++
+   /* Keys reserved for KDE */
+ 
+   /* since 0.9.4 */
+   { DESKTOP_STRING_TYPE,            "ServiceTypes",      FALSE, FALSE, TRUE,  NULL },
+   { DESKTOP_STRING_TYPE,            "DocPath",           FALSE, FALSE, TRUE,  NULL },

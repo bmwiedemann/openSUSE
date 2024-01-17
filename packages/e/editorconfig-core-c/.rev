@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c55afe70568bedab5b61aee9f111095</srcmd5>
+    <version>0.12.0</version>
+    <time>1454352929</time>
+    <user>dimstar_suse</user>
+    <comment>editorconfig core c library and command, for vim-plugin-editorconfig</comment>
+    <requestid>351721</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5efd5dd1a7eb0e4fda6921591c51fccd</srcmd5>
+    <version>0.12.1</version>
+    <time>1459238427</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>380334</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e060f69d87faf03ca3c6a44b9c44dad9</srcmd5>
+    <version>0.12.1</version>
+    <time>1489345492</time>
+    <user>dimstar_suse</user>
+    <comment>- Edited %files to clear unpackaged files builderror in
+  openSUSE:Factory (forwarded request 478017 from sfalken)</comment>
+    <requestid>478021</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d86fb66d4f3783913c77f8f1d77d01b2</srcmd5>
+    <version>0.12.1</version>
+    <time>1503591964</time>
+    <user>dimstar_suse</user>
+    <comment>Add baselibs.conf. Needed by ktexteditor (forwarded request 516934 from cgiboudeaux)</comment>
+    <requestid>516936</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>95262a5340cdd6e4a4f6f3957eabcf8b</srcmd5>
+    <version>0.12.2</version>
+    <time>1527001114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610278</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c84415e0be8583753af2a3e98d3a69f</srcmd5>
+    <version>0.12.3</version>
+    <time>1544441227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654387</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>805eea5abf8bfcbcce8b55ca18fefd87</srcmd5>
+    <version>0.12.3</version>
+    <time>1598983436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830690</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e47a623e29c4b9244fbc8af49f5c859a</srcmd5>
+    <version>0.12.4</version>
+    <time>1604926573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846825</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d82bd68a69843f916868d34c7572a91</srcmd5>
+    <version>0.12.5</version>
+    <time>1625225181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902701</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>15762d1dba3fa77d7a7dfa2a2ac9b56c</srcmd5>
+    <version>0.12.6</version>
+    <time>1683212966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084180</requestid>
+  </revision>
+</revisionlist>

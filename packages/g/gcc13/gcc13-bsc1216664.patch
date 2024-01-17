@@ -1,0 +1,58 @@
+From 7562f089a190953b8ef615b90b7b0520e812a930 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Mon, 6 Nov 2023 11:31:40 +0100
+Subject: [PATCH] libstdc++/112351 - deal with __gthread_once failure during
+ locale init
+To: gcc-patches@gcc.gnu.org
+
+The following makes the C++98 locale init path follow the way the
+C++11 performs initialization.  This way we deal with pthread_once
+failing, falling back to non-threadsafe initialization which, given we
+initialize from the library, should be serialized by the dynamic
+loader already.
+
+	PR libstdc++/112351
+libstdc++-v3/
+	* src/c++98/locale.cc (locale::facet::_S_initialize_once):
+	Check whether _S_c_locale is already initialized.
+	(locale::facet::_S_get_c_locale): Always perform non-threadsafe
+	init when threadsafe init failed.
+---
+ libstdc++-v3/src/c++98/locale.cc | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/libstdc++-v3/src/c++98/locale.cc b/libstdc++-v3/src/c++98/locale.cc
+index d308140bab7..1ef0c394cd7 100644
+--- a/libstdc++-v3/src/c++98/locale.cc
++++ b/libstdc++-v3/src/c++98/locale.cc
+@@ -206,6 +206,12 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+   void
+   locale::facet::_S_initialize_once()
+   {
++    // Need to check this because we could get called once from
++    // _S_get_c_locale() when the program is single-threaded, and then again
++    // (via __gthread_once) when it's multi-threaded.
++    if (_S_c_locale)
++      return;
++
+     // Initialize the underlying locale model.
+     _S_create_c_locale(_S_c_locale, _S_c_name);
+   }
+@@ -216,12 +222,9 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
+ #ifdef __GTHREADS
+     if (__gthread_active_p())
+       __gthread_once(&_S_once, _S_initialize_once);
+-    else
+ #endif
+-      {
+-	if (!_S_c_locale)
+-	  _S_initialize_once();
+-      }
++    if (__builtin_expect (!_S_c_locale, 0))
++      _S_initialize_once();
+     return _S_c_locale;
+   }
+ 
+-- 
+2.35.3
+

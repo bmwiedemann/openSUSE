@@ -1,0 +1,7 @@
+<package name="libmusicbrainz" project="openSUSE:Factory">
+  <title>Library That Provides Access to the MusicBrainz Server</title>
+  <description>MusicBrainz is the second generation incarnation of the CD Index. This
+server is designed to enable audio CD, MP3 and Vorbis players to
+download metadata about the music they are playing.</description>
+  <devel project="multimedia:libs" package="libmusicbrainz"/>
+</package>

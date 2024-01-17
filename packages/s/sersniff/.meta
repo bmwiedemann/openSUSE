@@ -1,0 +1,7 @@
+<package name="sersniff" project="openSUSE:Factory">
+  <title>sersniff is a simple program to tunnel/sniff between 2 serial ports</title>
+  <description>This program was written to aid with the decoding of the protocol used by serial communication. It has support for sniffing a TCP connection or between a serial port and a TCP port.
+</description>
+  <devel project="devel:tools" package="sersniff"/>
+  <url>http://www.earth.li/projectpurple/progs/sersniff.html</url>
+</package>

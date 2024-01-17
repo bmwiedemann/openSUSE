@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Tue Dec 12 18:51:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-server to version 0.1.0.4.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Aug 31 16:28:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-server to version 0.1.0.3.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Aug  7 02:11:28 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-server to version 0.1.0.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Jun 26 17:58:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-server to version 0.1.0.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Jan 18 21:22:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Add pandoc-server at version 0.1.
+

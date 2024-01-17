@@ -1,0 +1,5 @@
+<package name="jetty-toolchain" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jetty-toolchain"/>
+</package>

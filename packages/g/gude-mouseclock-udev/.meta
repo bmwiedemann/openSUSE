@@ -1,0 +1,19 @@
+<package name="gude-mouseclock-udev" project="openSUSE:Factory">
+  <title>Udev rules for GUDE DCF77 receivers</title>
+  <description>Udev rules for GUDE DCF77 receivers.
+
+* creates the symlink for /dev/refclock-0 to the TTY your DCF receiver
+  is connected to.
+* set group permission to &quot;ntp&quot; for your DCF receiver's TTY to give
+  ntpd access to your device.
+
+Supported devices
+ * GUDE Expert mouseCLOCK USB II
+
+NOTE: You still have to manually adjust ntpd's AppArmor profile to give ntpd
+access to your DCF receiver's serial port (%{_sysconfdir}/apparmor.d/tunables/ntpd)
+
+</description>
+  <devel project="hardware" package="gude-mouseclock-udev"/>
+  <url>http://wiki.gude.info</url>
+</package>

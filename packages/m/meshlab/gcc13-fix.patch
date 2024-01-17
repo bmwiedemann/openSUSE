@@ -1,0 +1,12 @@
+diff --git a/src/external/e57/include/E57Format.h b/src/external/e57/include/E57Format.h
+index 5c3195e..1aa849b 100644
+--- a/src/external/e57/include/E57Format.h
++++ b/src/external/e57/include/E57Format.h
+@@ -32,6 +32,7 @@
+ //! @file  E57Format.h header file for the E57 API
+ 
+ #include <cfloat>
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ 

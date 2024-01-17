@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
+Tue Oct 27 11:16:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v14.2.0
+  * Fix Django 3.1 warning in test app settings.
+- Kill dephell dependency by using PyPI published sdist but get
+  tests from Github gh#zostera/django-bootstrap3#492
+
+-------------------------------------------------------------------
+Thu Jul 23 08:23:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to v14.1.0
+
+-------------------------------------------------------------------
+Thu Jan 22 13:42:51 UTC 2015 - oliver.bengs@opensuse.org
+
+- include the templatetags 
+
+-------------------------------------------------------------------
+Thu Jan 22 13:27:03 UTC 2015 - oliver.bengs@opensuse.org
+
+- initial build 
+

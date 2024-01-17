@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d5af29ae6d561d09dba67cb1163505c</srcmd5>
+    <version>1.6</version>
+    <time>1507570955</time>
+    <user>dimstar_suse</user>
+    <comment>required for perl-Cache-Memcaced adi:16</comment>
+    <requestid>531211</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>64653efc977cbc850d576a252bd88e9d</srcmd5>
+    <version>1.7</version>
+    <time>1532774379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623044</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a9262a3f9b65fdf22b16d634d1a90aeb</srcmd5>
+    <version>1.8</version>
+    <time>1573045469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745271</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3d250795d94a13efb432f987e4c032f4</srcmd5>
+    <version>2</version>
+    <time>1605012411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847431</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d262c863bfeea0db9d9472fa358c969b</srcmd5>
+    <version>2.100</version>
+    <time>1612707721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869977</requestid>
+  </revision>
+</revisionlist>

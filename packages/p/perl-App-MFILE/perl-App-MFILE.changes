@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Thu Sep 28 05:03:05 UTC 2017 - coolo@suse.com
+
+- updated to 0.182
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+
+  
+  0.182 2017-09-27 14:43 CEST
+  - Build.PL: require recent App::CELL
+  - HTTP.pm: migrate is_authorized code from mfile-www and dochazka-www
+
+-------------------------------------------------------------------
+Sun Nov  6 06:02:30 UTC 2016 - coolo@suse.com
+
+- updated to 0.181
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+
+  
+  0.181 2016-11-05 22:32 CET
+  - build/ops: change OBS project back to Application:Dochazka
+  - HTTP.pm: Allow rest_req() to send DELETE requests
+
+-------------------------------------------------------------------
+Tue Sep 27 15:02:22 UTC 2016 - ncutler@suse.com
+
+- updated to 0.180
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+
+-------------------------------------------------------------------
+Sun Sep  4 19:53:59 UTC 2016 - ncutler@suse.com
+
+- Drop ignore.txt and fix README.rst filename in spec file 
+
+-------------------------------------------------------------------
+Sun Sep  4 19:50:04 UTC 2016 - ncutler@suse.com
+
+- updated to 0.178
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+
+-------------------------------------------------------------------
+Sun Sep  4 19:35:06 UTC 2016 - ncutler@suse.com
+
+- updated to 0.177
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+
+-------------------------------------------------------------------
+Sun Sep  4 09:19:52 UTC 2016 - ncutler@suse.com
+
+- updated to 0.176
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+
+-------------------------------------------------------------------
+Sun Sep  4 09:06:47 UTC 2016 - ncutler@suse.com
+
+- updated to 0.175
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+
+-------------------------------------------------------------------
+Sun Sep  4 08:59:50 UTC 2016 - ncutler@suse.com
+
+- updated to 0.174
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+- add _service to automate version update in spec file
+
+-------------------------------------------------------------------
+Fri Sep  2 11:21:48 UTC 2016 - tampakrap@opensuse.org
+
+- updated to 0.173
+   see /usr/share/doc/packages/perl-App-MFILE/Changes
+
+-------------------------------------------------------------------
+Thu Sep 11 07:37:09 UTC 2014 - ncutler@suse.com
+
+- fix dependencies
+
+-------------------------------------------------------------------
+Thu Sep 11 07:36:13 UTC 2014 - ncutler@suse.com
+
+- Update to 0.172
+
+-------------------------------------------------------------------
+Wed Sep 10 14:41:06 UTC 2014 - ncutler@suse.com
+
+- fix dependency
+
+-------------------------------------------------------------------
+Wed Sep 10 14:33:36 UTC 2014 - ncutler@suse.com
+
+- Update to 0.171
+
+-------------------------------------------------------------------
+Wed Sep 10 13:15:25 UTC 2014 - ncutler@suse.com
+
+- initial package 0.170
+    * created by cpanspec 1.78.08
+

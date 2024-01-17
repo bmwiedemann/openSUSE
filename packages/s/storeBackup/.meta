@@ -1,0 +1,24 @@
+<package name="storeBackup" project="openSUSE:Factory">
+  <title>storeBackup is a disk-to-disk backup tool for Linux</title>
+  <description>storeBackup is a disk-to-disk backup tool for Linux. It should run on
+other Unix like machines. You can directly browse through the backuped
+files (locally, via NFS, via SAMBA or whatever). This gives the users
+the possibility to restore files absolutely easily and fast. He/She
+only has to copy (and possibly uncompress) the file. The is also a
+tool for easily restoring (sub) trees for the administrator. Every
+single backup of a specific time can be deleted without affecting the
+other existing backups.
+
+Before you can start using storeBackup, please carefully read
+        /usr/share/doc/packages/storeBackup/README
+and create an appropriate configuration file
+        /etc/storebackup.d/storebackup.config
+using
+        /usr/share/doc/packages/storeBackup/storebackup.config.default
+as a template.
+
+Author:
+--------
+Dr. Heinz-Josef Claes (2001-2008) &lt;hjclaes@web.de&gt;</description>
+  <devel project="Archiving:Backup" package="storeBackup"/>
+</package>

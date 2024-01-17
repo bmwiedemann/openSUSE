@@ -1,0 +1,8 @@
+<package name="uhubctl" project="openSUSE:Factory">
+  <title>USB hub per-port power control</title>
+  <description>uhubctl is utility to control USB power per-port on smart USB hubs. Smart hub is defined as one that implements per-port power switching.
+
+</description>
+  <devel project="devel:tools" package="uhubctl"/>
+  <url>https://github.com/mvp/uhubctl</url>
+</package>

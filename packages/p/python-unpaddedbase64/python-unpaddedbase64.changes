@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Sun Jun 11 14:10:35 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Feb 16 16:15:17 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.1.0:
+  - Includes PEP 561 marker file so modules depending on this one
+    can take advantage of its inline type hints.
+  - Including the `py.typed` marker file required rearranging
+    files in this repository, but the exposed API is identical to
+    prior releases.
+  - Removal of py2k code.
+
+-------------------------------------------------------------------
+Thu Dec  6 14:27:26 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the fdupes call to match up documentation
+- Run tests
+
+-------------------------------------------------------------------
+Mon Feb 27 13:49:57 UTC 2017 - okurz@suse.com
+
+- Initial submission
+

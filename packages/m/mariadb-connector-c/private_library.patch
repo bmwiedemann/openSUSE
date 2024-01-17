@@ -1,0 +1,89 @@
+Author: Adam Majer <amajer@suse.de>
+Date: Thu Mar 23 11:54:11 CET 2017
+Summary: Build private symbols library
+
+Some of the private symbols have very generic names and are required
+by other connectors, like the ODBC connector. Instead of using
+static linking, create a private shared library that simply
+exports all symbols. With the exception of exported symbols, it is
+identical to the regular library.
+
+Index: mariadb-connector-c-3.2.6-src/libmariadb/CMakeLists.txt
+===================================================================
+--- mariadb-connector-c-3.2.6-src.orig/libmariadb/CMakeLists.txt
++++ mariadb-connector-c-3.2.6-src/libmariadb/CMakeLists.txt
+@@ -416,6 +416,12 @@ TARGET_LINK_LIBRARIES(libmariadb LINK_PR
+ 
+ SIGN_TARGET(libmariadb)
+ 
++ADD_LIBRARY(libmariadbprivate SHARED ${libmariadb_RC} $<TARGET_OBJECTS:mariadb_obj> ${EMPTY_FILE} ${EXPORT_LINK})
++TARGET_LINK_LIBRARIES(libmariadbprivate ${SYSTEM_LIBS})
++IF(UNIX)
++  SET_TARGET_PROPERTIES(libmariadbprivate PROPERTIES COMPILE_FLAGS "${CMAKE_SHARED_LIBRARY_C_FLAGS}")
++ENDIF()
++
+ IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
+    CMAKE_SYSTEM_NAME MATCHES "kFreeBSD" OR
+    CMAKE_SYSTEM_NAME MATCHES "GNU")
+@@ -423,11 +429,13 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
+     TARGET_LINK_LIBRARIES (libmariadb LINK_PRIVATE "-Wl,--no-undefined")
+   ENDIF()
+   SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINK_FLAGS "${CC_BINARY_DIR}/libmariadb/mariadbclient.def")
++  SET_TARGET_PROPERTIES(libmariadbprivate PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
+ ENDIF()
+ 
+ SET_TARGET_PROPERTIES(mariadbclient PROPERTIES IMPORTED_INTERFACE_LINK_LIBRARIES "${SYSTEM_LIBS}")
+ SET_TARGET_PROPERTIES(libmariadb PROPERTIES IMPORTED_INTERFACE_LINK_LIBRARIES "${SYSTEM_LIBS}")
+ 
++SET_TARGET_PROPERTIES(libmariadbprivate PROPERTIES PREFIX "")
+ SET_TARGET_PROPERTIES(libmariadb PROPERTIES PREFIX "")
+ 
+ #
+@@ -469,6 +477,9 @@ INSTALL(TARGETS libmariadb LIBRARY DESTI
+         COMPONENT SharedLibraries NAMELINK_SKIP)
+ INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
+         COMPONENT Development NAMELINK_ONLY)
++INSTALL(TARGETS libmariadbprivate
++        COMPONENT SharedLibraries
++        DESTINATION ${INSTALL_LIBDIR})
+ ENDIF()
+ 
+ IF(MSVC)
+Index: mariadb-connector-c-3.2.6-src/mariadb_config/mariadb_config.c.in
+===================================================================
+--- mariadb-connector-c-3.2.6-src.orig/mariadb_config/mariadb_config.c.in
++++ mariadb-connector-c-3.2.6-src/mariadb_config/mariadb_config.c.in
+@@ -33,6 +33,7 @@ static char *mariadb_progname;
+ #define INCLUDE "-I%s/@INSTALL_INCLUDEDIR@ -I%s/@INSTALL_INCLUDEDIR@/mysql"
+ #define LIBS    "-L%s/@INSTALL_LIBDIR@/ -lmariadb"
+ #define LIBS_SYS "@extra_dynamic_LDFLAGS@"
++#define PRIVATE_LIBS "-L%s/@INSTALL_LIBDIR@ -lmariadbprivate " LIBS_SYS
+ #define CFLAGS  INCLUDE
+ #define VERSION "@MARIADB_CLIENT_VERSION@"
+ #define CC_VERSION "@CPACK_PACKAGE_VERSION@"
+@@ -72,6 +73,7 @@ static struct option long_options[]=
+   {OPT_STRING_TYPE "plugindir", no_argument, 0, 'j'},
+   {OPT_STRING_TYPE "tlsinfo", no_argument, 0, 'k'},
+   {OPT_STRING_TYPE "variable", 2, 0, 'm'},
++  {OPT_STRING_TYPE "privatelibs", no_argument, 0, 'z'},
+ #ifdef HAVE_EMBEDDED
+   {OPT_STRING_TYPE "libmysqld-libs", no_argument, 0, 'n' },
+   {OPT_STRING_TYPE "embedded-libs", no_argument, 0, 'n' },
+@@ -104,6 +106,7 @@ static const char *values[]=
+   CC_VERSION,
+   SOCKET,
+   PORT,
++  PRIVATE_LIBS,
+   PLUGIN_DIR,
+   TLS_LIBRARY_VERSION,
+   "VAR  VAR is one of:"
+@@ -303,6 +306,9 @@ int main(int argc, char **argv)
+       }
+       break;
+     }
++    case 'z':
++      puts(PRIVATE_LIBS);
++      break;
+ #ifdef HAVE_EMBEDDED
+     case 'n':
+       puts(EMBEDDED_LIBS);

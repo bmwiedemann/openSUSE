@@ -1,0 +1,5 @@
+<package name="i3" project="openSUSE:Factory">
+  <title>i3 improved tilling window manager</title>
+  <description>i3 improved tilling window manager</description>
+  <devel project="X11:windowmanagers" package="i3"/>
+</package>

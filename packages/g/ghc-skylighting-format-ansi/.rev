@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c8d1f068e12adb26b1e22071492d044</srcmd5>
+    <version>0.1</version>
+    <time>1665668629</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission, please add to openSUSE:Factory:Staging:adi:31</comment>
+    <requestid>1009682</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0513199cbac162b0f6c1d04a055711a1</srcmd5>
+    <version>0.1</version>
+    <time>1680636196</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076044</requestid>
+  </revision>
+</revisionlist>

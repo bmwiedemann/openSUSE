@@ -1,0 +1,25 @@
+Index: hatch_jupyter_builder-0.8.2/tests/test_plugin.py
+===================================================================
+--- hatch_jupyter_builder-0.8.2.orig/tests/test_plugin.py
++++ hatch_jupyter_builder-0.8.2/tests/test_plugin.py
+@@ -100,7 +100,8 @@ dependencies = ["hatch-jupyter-builder@f
+ 
+ @pytest.mark.skipif(platform.python_implementation() == "PyPy", reason="Does not work on PyPy")
+ def test_hatch_build(tmp_path):
+-    venv.create(tmp_path, with_pip=True)
++    # openSUSE tests: use the system build dependencies
++    venv.create(tmp_path, with_pip=True, system_site_packages=True)
+     if os.name == "nt":
+         python = Path(tmp_path) / "Scripts/python.exe"
+     else:
+@@ -113,6 +114,7 @@ def test_hatch_build(tmp_path):
+     # Handle running min version test.
+     if "PIP_CONSTRAINT" in env:
+         del env["PIP_CONSTRAINT"]
+-    subprocess.check_call([python, "-m", "pip", "install", "build"], cwd=tmp_path, env=env)
+-
+-    subprocess.check_call([python, "-m", "build", "--sdist", "."], cwd=tmp_path, env=env)
++    subprocess.check_call([python, "-m", "build",
++                                   "--no-isolation", # openSUSE tests: use the system build dependencies
++                                   "--sdist", "."],
++                          cwd=tmp_path, env=env)

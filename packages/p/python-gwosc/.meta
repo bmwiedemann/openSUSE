@@ -1,0 +1,10 @@
+<package name="python-gwosc" project="openSUSE:Factory">
+  <title>Python interface to the Gravitational-Wave Open Data Center archive</title>
+  <description>The gwosc package provides an interface to querying the open data
+releases hosted on https://gw-openscience.org from the GEO, LIGO, and
+Virgo gravitational-wave observatories.
+
+</description>
+  <devel project="science" package="python-gwosc"/>
+  <url>https://gwosc.readthedocs.io/en/latest/</url>
+</package>

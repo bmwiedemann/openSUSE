@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="33">
+    <srcmd5>772e56e7d7d083b36c7f2029b8e1d51f</srcmd5>
+    <version>2.3</version>
+    <time>1168904084</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="58">
+    <srcmd5>01c9ea978b60bdef05baa59dfe89db5b</srcmd5>
+    <version>2.3</version>
+    <time>1176394535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="194">
+    <srcmd5>97cfb06ca7c4583f10a71464acbc4393</srcmd5>
+    <version>2.3</version>
+    <time>1220914397</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="198">
+    <srcmd5>57138cddbf241ef10e135d5183460c34</srcmd5>
+    <version>2.3</version>
+    <time>1252017323</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/qm based on submit request 19819 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="200">
+    <srcmd5>57138cddbf241ef10e135d5183460c34</srcmd5>
+    <version>2.3</version>
+    <time>1252017323</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools/qm based on submit request 19819 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="201">
+    <srcmd5>bd4c97548767a320af6bcd06ebc6dcdd</srcmd5>
+    <version>2.3</version>
+    <time>1268925919</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="203">
+    <srcmd5>bd4c97548767a320af6bcd06ebc6dcdd</srcmd5>
+    <version>2.3</version>
+    <time>1278667386</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="204">
+    <srcmd5>bd4c97548767a320af6bcd06ebc6dcdd</srcmd5>
+    <version>2.3</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="207">
+    <srcmd5>bd4c97548767a320af6bcd06ebc6dcdd</srcmd5>
+    <version>2.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="209">
+    <srcmd5>bd4c97548767a320af6bcd06ebc6dcdd</srcmd5>
+    <version>2.3</version>
+    <time>1319182415</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="210">
+    <srcmd5>38b585cc80a0c870c6e84875452e38c4</srcmd5>
+    <version>2.3</version>
+    <time>1323194321</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="211">
+    <srcmd5>333e242a455b523ded54eab28a95efe1</srcmd5>
+    <version>2.3</version>
+    <time>1324831230</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97729 from coolo)</comment>
+    <requestid>97921</requestid>
+  </revision>
+  <revision rev="13" vrev="213">
+    <srcmd5>333e242a455b523ded54eab28a95efe1</srcmd5>
+    <version>2.3</version>
+    <time>1340184126</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="215">
+    <srcmd5>333e242a455b523ded54eab28a95efe1</srcmd5>
+    <version>2.3</version>
+    <time>1359110260</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="217">
+    <srcmd5>333e242a455b523ded54eab28a95efe1</srcmd5>
+    <version>2.3</version>
+    <time>1379664412</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="219">
+    <srcmd5>333e242a455b523ded54eab28a95efe1</srcmd5>
+    <version>2.3</version>
+    <time>1409303132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="220">
+    <srcmd5>f537a84e695fdc7617a9ff61f590d288</srcmd5>
+    <version>2.3</version>
+    <time>1511817458</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Use current python packaging macros</comment>
+    <requestid>545696</requestid>
+  </revision>
+</revisionlist>

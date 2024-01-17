@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>021798d6c0def8d9c3fcddf2af290ef2</srcmd5>
+    <version>0.4.0</version>
+    <time>1670514740</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry, Dominique!
+
+2nd attempt:
+
+This package will be required by Blender 3.4.0, that was released yesterday, and I plan to submit today
+
+it's x86_64 exclusive for the time being</comment>
+    <requestid>1041355</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>478aea21c0885ddfa98df1655183fd23</srcmd5>
+    <version>0.4.0</version>
+    <time>1670703523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041966</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f032686febea6096367966cf9eb7a65d</srcmd5>
+    <version>0.4.1</version>
+    <time>1678283632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070114</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>142de1d7eba096467067d4f1a31281a9</srcmd5>
+    <version>0.5.0</version>
+    <time>1701121491</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129206</requestid>
+  </revision>
+</revisionlist>

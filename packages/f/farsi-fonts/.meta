@@ -1,0 +1,6 @@
+<package name="farsi-fonts" project="openSUSE:Factory">
+  <title>A Collection of Free Persian OpenType Fonts</title>
+  <description>A collection of free Persian OpenType fonts.
+</description>
+  <devel project="M17N:fonts" package="farsi-fonts"/>
+</package>

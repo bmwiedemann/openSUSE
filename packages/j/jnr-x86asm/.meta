@@ -1,0 +1,8 @@
+<package name="jnr-x86asm" project="openSUSE:Factory">
+  <title>Pure-java port of asmjit</title>
+  <description>Pure-java port of asmjit (http://code.google.com/p/asmjit/)
+
+</description>
+  <devel project="Java:packages" package="jnr-x86asm"/>
+  <url>https://github.com/jnr/%{name}/</url>
+</package>

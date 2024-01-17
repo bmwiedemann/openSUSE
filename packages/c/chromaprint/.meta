@@ -1,0 +1,10 @@
+<package name="chromaprint" project="openSUSE:Factory">
+  <title>Audio Fingerprinting Library</title>
+  <description>Chromaprint is the core component of the Acoustid project. It's a client-side
+library that implements a custom algorithm for extracting fingerprints from any
+audio source.
+
+</description>
+  <devel project="multimedia:libs" package="chromaprint"/>
+  <url>http://acoustid.org/chromaprint</url>
+</package>

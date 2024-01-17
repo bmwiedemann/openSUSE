@@ -1,0 +1,19 @@
+<package name="jpnevulator" project="openSUSE:Factory">
+  <title>Serial Sniffer</title>
+  <description>jpnevulator is a handy serial sniffer. You can use it to send data on a
+serial device too. You can read or write from/to one or more serial
+devices at the same time.
+
+In write mode data to be sent on the serial device(s) is read from a
+file or stdin in hexadecimal notation. Data is sent on the serial
+device(s) line by line.
+
+In read mode data to be read from the serial device(s) is written to a
+file or stdout in hexadecimal notation. It's even possible to pass the
+data in between the serial device(s). Several options enhance the
+way the data is displayed.
+
+</description>
+  <devel project="hardware" package="jpnevulator"/>
+  <url>http://jpnevulator.snarl.nl/</url>
+</package>

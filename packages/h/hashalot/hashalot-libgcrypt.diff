@@ -1,0 +1,156 @@
+add support for -C (itercountk) option of loop-AES if libgcrypt is available
+
+Signed-off-by: Ludwig Nussel <ludwig.nussel@suse.de>
+
+Index: hashalot-0.3/Makefile.am
+===================================================================
+--- hashalot-0.3/Makefile.am.orig
++++ hashalot-0.3/Makefile.am
+@@ -3,6 +3,9 @@ sbin_PROGRAMS = hashalot
+ 
+ man_MANS = hashalot.1
+ 
++hashalot_CFLAGS = $(LIBGCRYPT_CFLAGS)
++hashalot_LDFLAGS = $(LIBGCRYPT_LIBS)
++
+ hashalot_SOURCES = hashalot.c rmd160.c rmd160.h sha512.c sha512.h
+ 
+ install-exec-hook:
+Index: hashalot-0.3/configure.ac
+===================================================================
+--- hashalot-0.3/configure.ac.orig
++++ hashalot-0.3/configure.ac
+@@ -8,5 +8,6 @@ AC_PROG_LN_S
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS(libgen.h stdio.h stdlib.h string.h unistd.h assert.h sys/types.h sys/mman.h endian.h , , [ AC_MSG_ERROR(required header not found)])
+ AC_CHECK_FUNCS(getopt snprintf , , [ AC_MSG_ERROR(required function not found)])
++AM_PATH_LIBGCRYPT(,[AC_DEFINE([HAVE_LIBGCRYPT], 1)])
+ 
+ AC_OUTPUT(Makefile)
+Index: hashalot-0.3/hashalot.c
+===================================================================
+--- hashalot-0.3/hashalot.c.orig
++++ hashalot-0.3/hashalot.c
+@@ -25,6 +25,10 @@
+ #include <sys/types.h>
+ #include <sys/mman.h>
+ 
++#if HAVE_LIBGCRYPT
++#include <gcrypt.h>
++#endif
++
+ #include "rmd160.h"
+ #include "sha512.h"
+ 
+@@ -97,9 +101,9 @@ show_usage(const char argv0[])
+ 
+ 	fprintf (stdout,
+ 		 "usage:\n"
+-		 "    hashalot [ -x ] [ -s SALT ] [ -n _#bytes_ ] HASHTYPE\n"
++		 "    hashalot [ -x ] [ -s SALT ] [ -n _#bytes_ ] [ -C itercountk ] HASHTYPE\n"
+ 		 "  or\n"
+-		 "    HASHTYPE [ -x ] [ -s SALT ] [ -n _#bytes_ ]\n"
++		 "    HASHTYPE [ -x ] [ -s SALT ] [ -n _#bytes_ ] [ -C itercountk ]\n"
+ 		 "\n"
+ 		 "supported values for HASHTYPE: ");
+ 
+@@ -214,8 +218,9 @@ main(int argc, char *argv[]) 
+ 	size_t hashlen = 0;
+ 	phash_func_t func;
+ 	int hex_output = 0, c;
++	unsigned long itercountk = 0;
+ 
+-	while ((c = getopt(argc, argv, "n:s:x")) != -1) {
++	while ((c = getopt(argc, argv, "n:s:xC:")) != -1) {
+ 		switch (c) {
+ 		case 'n':
+ 			hashlen = strtoul(optarg, &p, 0);
+@@ -233,6 +238,9 @@ main(int argc, char *argv[]) 
+ 		case 'x':
+ 			hex_output++;
+ 			break;
++		case 'C':
++			itercountk = atoi(optarg);
++			break;
+                 default:
+                         show_usage(argv[0]);
+ 			exit(EXIT_FAILURE);
+@@ -257,6 +265,8 @@ main(int argc, char *argv[]) 
+ 	 * plus a newline, plus a null */
+ 	passhash = xmalloc(2*hashlen + 2);
+ 
++	memset(passhash, 0, 2*hashlen+2);
++
+ 	/* try to lock memory so it doesn't get swapped out for sure */
+ 	if (mlockall(MCL_CURRENT | MCL_FUTURE) == -1) {
+ 		perror("mlockall");
+@@ -268,6 +278,69 @@ main(int argc, char *argv[]) 
+ 	if (salt)
+ 		pass = salt_passphrase(pass, salt);
+ 	hashlen = func(passhash, hashlen, pass, strlen(pass));
++
++	if(itercountk) /* from loop-AES */
++	{
++#if HAVE_LIBGCRYPT
++		gcry_cipher_hd_t ctx; 
++		gcry_error_t err;
++		char tmp[32];
++		char out[32];
++
++		if(hashlen > 32) {
++			fprintf(stderr, "WARNING: hashlen truncated to 32\n");
++			hashlen = 32;
++		}
++
++		if(!gcry_check_version("1.1.0")) {
++			fprintf(stderr, "libgcrypt initialization failed\n");
++			exit(EXIT_FAILURE);
++		}
++
++		memset(out, 0, sizeof(out));
++		memcpy(out, passhash, hashlen);
++
++		err = gcry_cipher_open(&ctx, GCRY_CIPHER_AES, GCRY_CIPHER_MODE_CBC, 0);
++		if(err) 
++		{
++			fprintf(stderr, "can't initialize AES: %s\n", gcry_strerror (err));
++			exit(EXIT_FAILURE);
++		}
++
++		/*
++		 * Set up AES-256 encryption key using same password and hash function
++		 * as before but with password bit 0 flipped before hashing. That key
++		 * is then used to encrypt actual loop key 'itercountk' thousand times.
++		 */
++		pass[0] ^= 1;
++		func(&tmp[0], 32, pass, strlen(pass)); 
++		gcry_cipher_setkey(ctx, &tmp[0], 32);
++		itercountk *= 1000;
++		while(itercountk > 0) { 
++			gcry_cipher_reset(ctx);
++			gcry_cipher_setiv(ctx, NULL, 0);
++			/* encrypt both 128bit blocks with AES-256 */
++			gcry_cipher_encrypt(ctx, &out[ 0], 16, &out[ 0], 16); 
++			gcry_cipher_reset(ctx);
++			gcry_cipher_setiv(ctx, NULL, 0);
++			gcry_cipher_encrypt(ctx, &out[16], 16, &out[16], 16); 
++			/* exchange upper half of first block with lower half of second block */
++			memcpy(&tmp[0], &out[8], 8);
++			memcpy(&out[8], &out[16], 8);
++			memcpy(&out[16], &tmp[0], 8);
++			itercountk--;
++		}
++		memset(&tmp[0], 0, sizeof(tmp));
++
++		memcpy(passhash, out, hashlen);
++
++		gcry_cipher_close(ctx);
++#else
++		fprintf(stderr, "libgcrypt support is required for option -C\n");
++		exit(EXIT_FAILURE);
++#endif
++
++	}
+ 	memset (pass, 0, strlen (pass)); /* paranoia */
+ 	free(pass);
+ 

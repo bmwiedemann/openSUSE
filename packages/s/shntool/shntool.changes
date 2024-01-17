@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri May 18 16:03:06 UTC 2018 - jengelh@inai.de
+
+- Remove reference to unspecific external section.
+
+-------------------------------------------------------------------
+Mon Aug  7 02:56:04 UTC 2017 - wnereiz@eienteiland.org
+
+- Create the package
+- Add patch to fix ""shntool fails to determine correct size/length of very large files - possibly 64-bit related."

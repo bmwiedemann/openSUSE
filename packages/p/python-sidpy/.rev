@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>359a0e45790e1e0d6d4199bf105c8efb</srcmd5>
+    <version>0.0.1</version>
+    <time>1597756282</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>827216</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4497e8b1957f0f161fdbe67a918a414</srcmd5>
+    <version>0.0.2</version>
+    <time>1600702989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835576</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2f06dacc34566adc068fbb80e15473d8</srcmd5>
+    <version>0.0.4a</version>
+    <time>1608646474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857876</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1f70c5901c100e8fd8d55efa182b42cc</srcmd5>
+    <version>0.0.4a</version>
+    <time>1611068607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864287</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>786f375b03f016c63f70978b59a82d66</srcmd5>
+    <version>0.0.5</version>
+    <time>1618694714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886296</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>434ef2a101291ae46946c7ed49149958</srcmd5>
+    <version>0.0.5</version>
+    <time>1639616444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940668</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>03f56db5f4da6c8907219fdcd580ff53</srcmd5>
+    <version>0.0.8</version>
+    <time>1644273477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951932</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3cf9475b4e8451ec17b5c45f45ab7619</srcmd5>
+    <version>0.0.8</version>
+    <time>1650996932</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove skip for Python 3.10, dask is now available.</comment>
+    <requestid>972763</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>511278ebc1aa2fed148fdcfd3542c51d</srcmd5>
+    <version>0.0.8</version>
+    <time>1666362020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030402</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>21595a2af996afaa1944da65ca8c96ac</srcmd5>
+    <version>0.11.2</version>
+    <time>1675956142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.2
+  * compatibility to numpy &gt;1.24
+- 0.11.1
+  * Minor release. Small fixes to image windowing, four dimensional visualizer,
+    and adding of a structure attribute to the sidpy.dataset object.
+- 0.11
+  * Added CHANNEL dimension type for sidpy dimensions (for example of usage see
+    this link) . This is useful for multi-channel spectral datasets, which can
+    now be plotted using the intrinsic .plot() method
+  * Added updated capability on spectral visualizer to enable plotting of
+    multi-channel spectra
+  * Small changes with set_dimension() method to be more robust
+  * Minor bug fixes
+  * Updates to various tests
+- 0.10
+  * This release adds a few 'under the hood' changes to the sidpy dataset
+    object, with respect to chunking and folding/unfolding. Some minor edits to
+    some visualization functions were also made. A new method
+    visualize_fit_results() to the SidFitter class was added to aid in
+    visualization of functional fits.
+- 0.0.9
+  * Added fitter class and improved tests.
+</comment>
+    <requestid>1063818</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b54bd1346b4736bebd24f9561ae8d5de</srcmd5>
+    <version>0.11.2</version>
+    <time>1680018612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074793</requestid>
+  </revision>
+</revisionlist>

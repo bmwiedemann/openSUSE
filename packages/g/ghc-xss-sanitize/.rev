@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ff5fa7cbd2c54a48a6b99729d3b8521</srcmd5>
+    <version>0.3.6</version>
+    <time>1592579163</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814996</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>242049c07715aedaf2e5b110b3f2599e</srcmd5>
+    <version>0.3.6</version>
+    <time>1598643705</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829507</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>647ab9286bc3b5d1e0cf5310a7cfc562</srcmd5>
+    <version>0.3.6</version>
+    <time>1608634174</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857674</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>751a585a4c0401ea70b021a4d70764c2</srcmd5>
+    <version>0.3.7</version>
+    <time>1634068143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921711</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>309ec4084eb37d050e6eaf33896e5a6f</srcmd5>
+    <version>0.3.7</version>
+    <time>1659382143</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985832</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>255c104f1879dcf473f305cec9fff9b9</srcmd5>
+    <version>0.3.7.1</version>
+    <time>1674043862</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059130</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9f7ed3e413a4f5facbfd344dc62bb650</srcmd5>
+    <version>0.3.7.1</version>
+    <time>1680636305</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076139</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e2bca71f752afd7c19b59dfcf4626acf</srcmd5>
+    <version>0.3.7.2</version>
+    <time>1680884207</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1077771</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6d06ec36e686ecc9c6c73c03f7c4bbe6</srcmd5>
+    <version>0.3.7.2</version>
+    <time>1697657169</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118494</requestid>
+  </revision>
+</revisionlist>

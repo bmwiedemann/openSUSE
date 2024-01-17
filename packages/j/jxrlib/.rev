@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>474a3006a3088296dd9da303d5251805</srcmd5>
+    <version>1.1</version>
+    <time>1451674062</time>
+    <user>dimstar_suse</user>
+    <comment>Required for freeimage</comment>
+    <requestid>350868</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ada5ca05caa15d4248fe3e2cbfe57fc4</srcmd5>
+    <version>1.1</version>
+    <time>1592840517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814676</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f60ac415ca59eaaa0c04ecf6bef788c2</srcmd5>
+    <version>1.1</version>
+    <time>1613581775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871394</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>248f17473d89d9384b3ade3e35b4b644</srcmd5>
+    <version>1.1</version>
+    <time>1615552264</time>
+    <user>dimstar_suse</user>
+    <comment>- added correct requires for the 32bit libs (bsc#1183053), also 
+  build baselibs for libjxrglue0 (bsc#1183052)</comment>
+    <requestid>877692</requestid>
+  </revision>
+</revisionlist>

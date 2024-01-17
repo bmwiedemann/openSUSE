@@ -1,0 +1,5 @@
+<package name="openrct2" project="openSUSE:Factory">
+  <title>OpenRCT2</title>
+  <description>An open source re-implementation of Roller Coaster Tycoon 2.</description>
+  <devel project="games" package="openrct2"/>
+</package>

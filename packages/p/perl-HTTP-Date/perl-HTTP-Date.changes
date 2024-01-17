@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Fri Jul  7 03:07:18 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.06
+   see /usr/share/doc/packages/perl-HTTP-Date/Changes
+
+  6.06      2023-07-06 22:29:55Z
+      - Use copyright year rather than range (GH#18) (Olaf Alders)
+      - Replace "Test" with "Test::More" (GH#20) (James Raspass)
+      - Remove the executable bit from the test (GH#21) (James Raspass)
+      - Add support for Windows four-digit year format (GH#23) (Grant Street
+        Group)
+
+-------------------------------------------------------------------
+Wed Nov 20 09:19:33 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.05
+   see /usr/share/doc/packages/perl-HTTP-Date/Changes
+
+  6.05      2019-11-19 03:02:32Z
+      - Bump minimum version of Time::Local to 1.28 (GH#17) (Olaf Alders)
+
+-------------------------------------------------------------------
+Fri Nov 15 09:05:47 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.04
+   see /usr/share/doc/packages/perl-HTTP-Date/Changes
+
+  6.04      2019-11-14 22:22:50Z
+      - Replace vars with our (GH#15) (James Raspass)
+      - Tidy lib and t files (GH#16) (Olaf Alders)
+
+-------------------------------------------------------------------
+Thu Nov 14 09:30:53 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 6.03
+   see /usr/share/doc/packages/perl-HTTP-Date/Changes
+
+-------------------------------------------------------------------
+Wed May 23 13:37:18 UTC 2012 - coolo@suse.com
+
+- updated to 6.02
+ * Added support for parsing dates with (faulty) double TZ spec [RT#75150]
+ * Doc tweaks.
+
+-------------------------------------------------------------------
+Thu Feb 16 21:12:42 UTC 2012 - coolo@suse.com
+
+- updated to 6.01
+ * Restore perl-5.6 compatiblity.  Drop MacOS (classic) support.
+
+-------------------------------------------------------------------
+Wed Mar 16 23:08:48 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  o Req: perl(Time::Local)
+  o Recommends: perl(Time::Zone)
+
+-------------------------------------------------------------------
+Mon Mar 14 10:35:43 UTC 2011 - vcizek@novell.com
+
+- initial package 6.00
+  * created by cpanspec 1.78.03
+

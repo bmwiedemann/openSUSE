@@ -1,0 +1,34 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sun Oct 9 08:07:23 2022 +0200
+Subject: Make sure info block for external links has at least 3 bytes
+Patch-mainline: Not yet
+Git-repo: ssh://eich@192.168.122.1:/home/eich/sources/HPC/hdf5
+Git-commit: 082bfe392b04b1137da9eabd1ecac76c212ab385
+References: 
+
+According to the specification, the information block for external links
+contains 1 byte of version/flag information and two 0 terminated strings
+for the object linked to and the full path.
+Although not very useful, the minimum string length for each would be one
+byte.
+
+This fixes CVE-2018-16438.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5Olink.c | 2 ++
+ 1 file changed, 2 insertions(+)
+diff --git a/src/H5Olink.c b/src/H5Olink.c
+index 51c44a36b0..074744b022 100644
+--- a/src/H5Olink.c
++++ b/src/H5Olink.c
+@@ -241,6 +241,8 @@ H5O__link_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNUSE
+             /* A UD link.  Get the user-supplied data */
+             UINT16DECODE(p, len)
+             lnk->u.ud.size = len;
++            if (lnk->type == H5L_TYPE_EXTERNAL && len < 3)
++                HGOTO_ERROR(H5E_OHDR, H5E_OVERFLOW, NULL, "external link information lenght < 3")
+             if (len > 0) {
+                 /* Make sure that length doesn't exceed buffer size, which could
+                    occur when the file is corrupted */

@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Tue Mar 13 16:13:21 UTC 2018 - avindra@opensuse.org
+
+- switch download to mirror site so that "localrun downloadfiles"
+  can work
+
+-------------------------------------------------------------------
+Tue Mar 13 13:04:00 UTC 2018 - crrodriguez@opensuse.org
+
+- remove buildrequires on freetype2-devel, libjpeg-devel
+  libpng-devel, xorg-x11, xorg-x11-devel, only gd library
+  is ever used.
+
+-------------------------------------------------------------------
+Sat Oct  7 23:06:37 UTC 2017 - aavindraa@gmail.com
+
+- Update to 2.0.1
+  * Fly tested for compatibility with gd version 2.0.35.
+  * Makefile updated for correct/new reference to freetype library.
+  * Has been tested on Linux/x86.
+- Drop fly-2.0.0-libs.patch (freetype lib reference fixed upstream)
+- Lint spec file
+- Fix a few warnings:
+  * Incorrect file endings
+  * Drop duplicate example from source
+  * Drop gif examples as gifs are not supported
+
+-------------------------------------------------------------------
+Tue May 29 19:38:46 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-Permissive
+  SPDX format (or next best alternative from the spreadsheet linked at
+  license.opensuse.org)
+
+-------------------------------------------------------------------
+Wed Oct  5 13:57:50 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Tue Oct 31 17:15:41 CET 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 11 12:42:23 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Thu Oct 24 12:23:26 CEST 2002 - nadvornik@suse.cz
+
+- added BuildRoot
+
+-------------------------------------------------------------------
+Fri Aug 16 13:08:28 CEST 2002 - ro@suse.de
+
+- removed empty postinstall (#17837) 
+
+-------------------------------------------------------------------
+Tue Apr 23 16:00:03 CEST 2002 - nadvornik@suse.cz
+
+- fixed to compile on ppc
+- removed needless freetype from neededforbuild
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:14 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Mon Dec 17 15:24:51 CET 2001 - rvasice@suse.cz
+
+- update to version 2.0.0
+
+-------------------------------------------------------------------
+Mon Sep 24 11:16:33 CEST 2001 - rvasice@suse.cz
+
+- fix documentation GIF -> PNG
+
+-------------------------------------------------------------------
+Wed Aug 15 16:41:49 CEST 2001 - kukuk@suse.de
+
+- Fix path to perl interpreter in examples
+
+-------------------------------------------------------------------
+Wed Mar 21 16:31:33 CET 2001 - ro@suse.de
+
+- added freetype2 to neededforbuild 
+
+-------------------------------------------------------------------
+Thu Nov 16 09:15:25 CET 2000 - ro@suse.de
+
+- fixed to build with new shared gd-lib 
+
+-------------------------------------------------------------------
+Wed Nov 15 18:29:49 CET 2000 - ro@suse.de
+
+- fixed neededforbuild gdlib -> gd gd-devel
+
+-------------------------------------------------------------------
+Thu Aug 24 17:33:37 CEST 2000 - ro@suse.de
+
+- switched to current gdlib: produce PNG 
+
+-------------------------------------------------------------------
+Thu Aug 24 15:01:41 MEST 2000 - ray@suse.de
+
+- new package 1.6.5
+

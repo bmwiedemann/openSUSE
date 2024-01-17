@@ -1,0 +1,546 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b8a3336a9c7927979dc5c16077daad0</srcmd5>
+    <version>2.0.18</version>
+    <time>1510321885</time>
+    <user>dimstar_suse</user>
+    <comment>- Submit Azure CLI 2.0 to openSUSE Factory.</comment>
+    <requestid>534045</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16739a1e434175f758403f0cfd8c6c06</srcmd5>
+    <version>2.0.26</version>
+    <time>1518596945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574792</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b9919501dbe8fce7771200b7561c66c</srcmd5>
+    <version>2.0.31</version>
+    <time>1526220051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600028</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>81d1a92e44470247fc28316db4ae57af</srcmd5>
+    <version>2.0.45</version>
+    <time>1539593289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641233</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>45296efeee523556f09815f74313b50a</srcmd5>
+    <version>2.0.45</version>
+    <time>1542282073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649002</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d6a3833a3d3dbffde3a059db85cf8a1a</srcmd5>
+    <version>2.0.45</version>
+    <time>1543224600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651347</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce114c475fe143f41dce830fa2fa227f</srcmd5>
+    <version>2.0.58</version>
+    <time>1558515514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Azure CLI to latest version</comment>
+    <requestid>696809</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>36e21027c0bed3fd8bfbfb82f601c0ec</srcmd5>
+    <version>2.0.58</version>
+    <time>1559727653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707529</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>11f7107d4b9b27a5736e97350c050754</srcmd5>
+    <version>2.0.75</version>
+    <time>1572542091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Azure CLI to latest version (boo#1154393) (forwarded request 742541 from glaubitz)</comment>
+    <requestid>742666</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a1b4b5766c6fb5d8fb7e961f9e846ea3</srcmd5>
+    <version>2.0.77</version>
+    <time>1575282479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751659</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9297ab106ed3d23a6288d1a143328666</srcmd5>
+    <version>2.0.77</version>
+    <time>1575373414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753165</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>699a3d4e46d33b92aaf637eb9cd8f4b3</srcmd5>
+    <version>2.0.79</version>
+    <time>1578950422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764090</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f91603bc4178415a9958b16ef8ac057</srcmd5>
+    <version>2.0.80</version>
+    <time>1579273602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765087</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9281cc5132b9240c7a41394edf7736ce</srcmd5>
+    <version>2.1.0</version>
+    <time>1582899614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778820</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>021cfa8c4815c0019b4e5bea898538fc</srcmd5>
+    <version>2.2.0</version>
+    <time>1583949206</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.2.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update BuildRequires and Requires from setup.py</comment>
+    <requestid>783715</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8e9fb1e17ecf1b7338c73cae3ce0a009</srcmd5>
+    <version>2.3.1</version>
+    <time>1588538767</time>
+    <user>dimstar_suse</user>
+    <comment>- Please move into openSUSE:Factory:Staging:adi:27</comment>
+    <requestid>794576</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5648822b5b2f5b0ea6e9f32e615807ca</srcmd5>
+    <version>2.5.1</version>
+    <time>1588971989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801801</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b8a5597845c27bfff248e5b0d7279beb</srcmd5>
+    <version>2.7.0</version>
+    <time>1593292942</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.7.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 815569 from glaubitz)</comment>
+    <requestid>815591</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1a59757338ec2b31b138bc71e5525936</srcmd5>
+    <version>2.9.1</version>
+    <time>1595773068</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.9.1
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 821923 from glaubitz)</comment>
+    <requestid>821949</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>44ac3b1caf45e2df2b929db71a8dab8d</srcmd5>
+    <version>2.10.1</version>
+    <time>1597855984</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (boo#1175289)
+  + Version 2.10.1
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 827684 from glaubitz)</comment>
+    <requestid>827686</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a4de3bee4faaa51a812f0341870f23f2</srcmd5>
+    <version>2.12.1</version>
+    <time>1601652719</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.12.1
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 838782 from glaubitz)</comment>
+    <requestid>838783</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1fc7469e764b6acc95cd10c768a6b144</srcmd5>
+    <version>2.13.0</version>
+    <time>1602596676</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.13.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 841505 from glaubitz)</comment>
+    <requestid>841548</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>354501990c556d26e159eccfad82b811</srcmd5>
+    <version>2.13.0</version>
+    <time>1604412986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845519</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b63be798e59ec2c40cd7d7e11ad978c1</srcmd5>
+    <version>2.14.2</version>
+    <time>1605644746</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.14.2
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Remove bogus dependencies from BuildRequires
+- Update Requires from setup.py (forwarded request 848872 from glaubitz)</comment>
+    <requestid>848900</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>06f1d0b1cebbab4bea8fce5776474d3b</srcmd5>
+    <version>2.15.0</version>
+    <time>1607113708</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.15.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py (forwarded request 851140 from glaubitz)</comment>
+    <requestid>851832</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a4c41e875cf814cfadd414d358d88f25</srcmd5>
+    <version>2.18.0</version>
+    <time>1611348710</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.18.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py (forwarded request 865463 from glaubitz)</comment>
+    <requestid>865479</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d70715986420d3a3e574e018f1ba682e</srcmd5>
+    <version>2.21.0</version>
+    <time>1618235374</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.21.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py (forwarded request 882521 from glaubitz)</comment>
+    <requestid>882574</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f0e895e1e8688537eb64a9c687adcd75</srcmd5>
+    <version>2.23.0</version>
+    <time>1620840722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892376</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9b5010c3a549b4ec3882d674c66fc6b5</srcmd5>
+    <version>2.24.2</version>
+    <time>1623767857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899913</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>83bef54f4a3bd2e90cc12097a8399ca6</srcmd5>
+    <version>2.25.0</version>
+    <time>1626557794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903653</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8bdf5e444ff4a1a31a6f0e3c48cc776c</srcmd5>
+    <version>2.27.0</version>
+    <time>1629471456</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912004</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>15d4c0133b0ae4a74618ac683a6390d0</srcmd5>
+    <version>2.27.2</version>
+    <time>1631310037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916059</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6241c9c14bb716655b4d9c590cbc9f56</srcmd5>
+    <version>2.28.1</version>
+    <time>1631913942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918722</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>acd8eb6e3f987e319c2c1ac680936b30</srcmd5>
+    <version>2.29.0</version>
+    <time>1634417226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925517</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>97d9295c2b368300d03cbdc79ed022db</srcmd5>
+    <version>2.30.0</version>
+    <time>1637372314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930280</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e7eb21b08b86f26cd214b64c71d34fca</srcmd5>
+    <version>2.31.0</version>
+    <time>1638997736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936288</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7db2186d43a37748583dad205c229b2c</srcmd5>
+    <version>2.32.0</version>
+    <time>1642198407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946411</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e2a67982303ec1ac410d51d146bf2c3f</srcmd5>
+    <version>2.33.0</version>
+    <time>1644874575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954193</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5415ea349b218606310faea6d7b93b38</srcmd5>
+    <version>2.33.1</version>
+    <time>1645820719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957626</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0ccbcb718539d78e97c4f582411e303d</srcmd5>
+    <version>2.34.1</version>
+    <time>1646848058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960369</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6fd6330ac4fb852c9b54fc2a25ada887</srcmd5>
+    <version>2.35.0</version>
+    <time>1650232202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969868</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1ac6f3f4bfbd37721dd1ee4b568a2daf</srcmd5>
+    <version>2.36.0</version>
+    <time>1651180106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973761</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>aa9d7c8aa2585dbd392d39fd63046421</srcmd5>
+    <version>2.37.0</version>
+    <time>1654382738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979045</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>97fbec81b16a57b16d3882a102597111</srcmd5>
+    <version>2.38.0</version>
+    <time>1657191438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987267</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>36dd1585f2abf13ffeae1aee467c6d62</srcmd5>
+    <version>2.39.0</version>
+    <time>1659951778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993233</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>043f941ebb046ca3ad70e68f60247d7f</srcmd5>
+    <version>2.40.0</version>
+    <time>1663694609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004119</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>802a3d04d3ee6f844c52d15359dfcd78</srcmd5>
+    <version>2.41.0</version>
+    <time>1666178244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010600</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f2d4ff25cb3d5779193aff3610d41965</srcmd5>
+    <version>2.42.0</version>
+    <time>1668086598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034801</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6b3ac8e29cd54d4386db203824129a28</srcmd5>
+    <version>2.43.0</version>
+    <time>1670430889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040744</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6c7ea5e70a1ac4bf17caa46a62b07b2d</srcmd5>
+    <version>2.44.0</version>
+    <time>1673444083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057631</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b3a69c428014a7407cc4d5ab9e28c571</srcmd5>
+    <version>2.44.1</version>
+    <time>1674143049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059506</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>db1b1a00c2c6bdb3037496c09c08f574</srcmd5>
+    <version>2.45.0</version>
+    <time>1676149024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064304</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>967dd70a4b72e423a23b98a805725a8a</srcmd5>
+    <version>2.46.0</version>
+    <time>1678283573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070006</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>564a01492e0ba85f72aec65637cbee2d</srcmd5>
+    <version>2.47.0</version>
+    <time>1680722861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077441</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6d130cb918ed5a632e551950dd7f5f47</srcmd5>
+    <version>2.48.1</version>
+    <time>1683213001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084280</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>38dcfe8f39b25c098ad63642be884807</srcmd5>
+    <version>2.49.0</version>
+    <time>1685294617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089369</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b4d5d6a27ef8412c2988bf2bd3499a0d</srcmd5>
+    <version>2.50.0</version>
+    <time>1689521315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097126</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>8dc96205a1377fe412641302a2dc1fd3</srcmd5>
+    <version>2.51.0</version>
+    <time>1692294222</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104153</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>44a950bc32dbafa43f63be5d6209c7b9</srcmd5>
+    <version>2.52.0</version>
+    <time>1694460142</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110261</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>04989e83e41699b2e7c43d2e59cd513f</srcmd5>
+    <version>2.53.0</version>
+    <time>1697231640</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115747</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9889fdb3630a9ebe5566f724ebe3f848</srcmd5>
+    <version>2.53.1</version>
+    <time>1698873036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121588</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e52b2656034a840d579f2a24e221abf9</srcmd5>
+    <version>2.54.0</version>
+    <time>1700598757</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127851</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>044b355b049dae942c015403818c71d1</srcmd5>
+    <version>2.55.0</version>
+    <time>1704753982</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137556</requestid>
+  </revision>
+</revisionlist>

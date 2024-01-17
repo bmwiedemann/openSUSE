@@ -1,0 +1,69 @@
+--- xdg_menu	2008-12-06 01:13:21.000000000 +0100
++++ xdg_menu	2008-12-16 17:57:46.000000000 +0100
+@@ -1379,6 +1379,46 @@
+ 	return $output;
+ }
+ 
++sub output_pekwm_menu ($;$)
++{
++	my ($menu, $indent) = @_;
++	
++	my $output = '';
++	
++	$indent = 0 unless defined $indent;
++
++	my $menu_name = $menu->{'PrepName'};
++	
++	$output .= ' ' x $indent;
++	$output .= "Submenu = \"$menu_name\" {\n";
++	
++	foreach my $entry (@{$menu->{'entries'}}) {
++		if ($entry->{type} eq 'desktop') {
++			my $desktop = $entry->{desktop};
++			
++			my $name = $desktop->{'PrepName'};
++			my $exec = $desktop->{'PrepExec'};
++
++			$exec =~ s/\"/\\\"/g;
++			
++			$output .= ' ' x $indent;
++			$output .= " Entry = \"$name\" { Actions = \"Exec $exec & \" }\n";
++		} 
++		elsif ($entry->{type} eq 'menu') {
++			$output .= output_pekwm_menu ($entry->{'menu'}, $indent + 1);
++		}
++		else {
++			print STDERR "wrong menu entry type: $entry->{type}";
++		}
++		
++	}
++	$output .= ' ' x $indent;
++	$output .= "}\n";
++	
++	return $output;
++}
++
++
+ sub output_wmaker_menu ($;$)
+ {
+ 	my ($menu, $indent) = @_;
+@@ -2075,7 +2115,7 @@
+ 		         possible formats: WindowMaker, fvwm2, icewm,
+ 		                           blackbox, fluxbox, openbox, 
+ 					   xfce4, openbox3, openbox3-pipe,
+-					   readable
++					   pekwm, readable
+ 			 default: WindowMaker
+ 		
+ 	 	fullmenu  - output a full menu and not only a submenu
+@@ -2169,6 +2209,10 @@
+ 
+ 	$output = output_readable($menu) 
+ }
++elsif ($format eq 'pekwm') {
++
++        $output = output_pekwm_menu($menu)
++}
+ else
+ {
+ 	print STDERR "Unknown format $format\n";

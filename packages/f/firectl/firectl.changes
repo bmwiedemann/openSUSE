@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Dec 22 10:48:38 UTC 2022 - andrea.manzini@suse.com
+
+- Update to version 0.2.0:
+  * Upgraded to v1.0.0 of the firecracker-go-sdk
+  * Added initrd option
+  * Added read-only option for rootfs 
+  * Added jailer support 
+  * Added option to configure multiple NICs 
+
+- Note - Although still compatible, this release does not provide full feature parity with firecracker v1.0.0. 
+  Majors features that are not included in this release are:
+    Creating and loading snapshots
+    Setting drive IO engine type
+    Pause/Resume VM
+    MMDS version 2
+
+-------------------------------------------------------------------
+Fri Feb 18 19:01:30 UTC 2022 - Liang Yan <ly@xryan.net>
+
+- Update package version to v1.0.50 which is a temporary relase for db8c695
+- Using obs-service-go_modules for vendor packaging 
+- Change compression type from "xz" to "gz" 
+
+-------------------------------------------------------------------
+Thu May 28 01:03:11 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Initial package version 0.1.0

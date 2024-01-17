@@ -1,0 +1,9 @@
+<package name="libfsntfs" project="openSUSE:Factory">
+  <title>Library and tools to access the NTFS filesystem</title>
+  <description>Library and tools to access the New Technology File System (NTFS).
+
+Note that this project currently only focuses on the analysis of the format.
+
+</description>
+  <devel project="security:forensics" package="libfsntfs"/>
+</package>

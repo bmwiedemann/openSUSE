@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>379f10d8217ea593872308d0fd3519d0</srcmd5>
+    <version>unknown</version>
+    <time>1664112888</time>
+    <user>dimstar_suse</user>
+    <comment>webserver serving manpages as html</comment>
+    <requestid>1005604</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>754bdafc9deb643fc890c67fc3fec8c3</srcmd5>
+    <version>unknown</version>
+    <time>1665591944</time>
+    <user>dimstar_suse</user>
+    <comment>- Add same ExcludeArch as the used nginx base image
+- Add SPDX-License-Identifier</comment>
+    <requestid>1010124</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>af87e7d75cdb414bcafd2dfefd14b4dd</srcmd5>
+    <version>unknown</version>
+    <time>1666102013</time>
+    <user>dimstar_suse</user>
+    <comment>- Use local stored logo (forwarded request 1029709 from kukuk)</comment>
+    <requestid>1029710</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4d4269aea193aef13b805896e8d90b01</srcmd5>
+    <version>unknown</version>
+    <time>1666689577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030862</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1709ab4c4fae3064f2d4bb491d2a6330</srcmd5>
+    <version>unknown</version>
+    <time>1666787722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031333</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>aaa81bd1f629f1fc03876408517b27ce</srcmd5>
+    <version>unknown</version>
+    <time>1697061345</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116833</requestid>
+  </revision>
+</revisionlist>

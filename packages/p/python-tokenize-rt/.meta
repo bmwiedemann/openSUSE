@@ -1,0 +1,8 @@
+<package name="python-tokenize-rt" project="openSUSE:Factory">
+  <title>A wrapper around the stdlib `tokenize` which roundtrips</title>
+  <description>A wrapper around the stdlib `tokenize` which roundtrips.
+
+</description>
+  <devel project="devel:languages:python" package="python-tokenize-rt"/>
+  <url>https://github.com/asottile/tokenize-rt</url>
+</package>

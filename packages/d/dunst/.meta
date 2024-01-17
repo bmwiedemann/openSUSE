@@ -1,0 +1,6 @@
+<package name="dunst" project="openSUSE:Factory">
+  <title>dunst</title>
+  <description>A customizable and lightweight notification-daemon</description>
+  <devel project="X11:windowmanagers" package="dunst"/>
+  <url>http://www.knopwob.org/dunst/</url>
+</package>

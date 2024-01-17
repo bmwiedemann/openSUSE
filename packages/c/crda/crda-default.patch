@@ -1,0 +1,103 @@
+Provide an option to specify a reg code in /etc/default/crda
+and also try a distribution configuration /usr/etc/default/crda.
+This solves bug boo#1179308
+
+---
+ crda.8 |   17 ++++++++++++++++-
+ crda.c |   43 +++++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 57 insertions(+), 3 deletions(-)
+
+diff --git a/crda.8 b/crda.8
+--- a/crda.8
++++ b/crda.8
+@@ -68,7 +68,22 @@ An example udev rule which can be used (
+ .B /lib/udev/rules.d/85-regulatory.rules
+ ):
+ 
+-.I KERNEL=="regulatory*", ACTION=="change", SUBSYSTEM=="platform", RUN+="/sbin/crda"
++.I KERNEL=="regulatory*", ACTION=="change", SUBSYSTEM=="platform", RUN+="/usr/sbin/crda"
++
++.SS
++.SH Standard configuration
++in the file
++.I /usr/etc/default/crda
++the variable
++.B REGDOMAIN
++is set to the global WLAN default code
++.BR 00 .
++The local administrator might copy this file to
++.I /etc/default/crda
++and set the ISO / IEC 3166 alpha2 country code of the local area. Then
++any execution of
++.B crda
++will then send this as regulatory domain for that alpha2 to the kernel.
+ 
+ .SS
+ .SH Environment variable
+diff --git a/crda.c b/crda.c
+--- a/crda.c
++++ b/crda.c
+@@ -4,6 +4,7 @@
+  * Userspace helper which sends regulatory domains to Linux via nl80211
+  */
+ 
++#include <ctype.h>
+ #include <errno.h>
+ #include <stdio.h>
+ #include <fcntl.h>
+@@ -156,6 +157,11 @@ int main(int argc, char **argv)
+ 	struct nlattr *nl_reg_rules;
+ 	const struct ieee80211_regdomain *rd = NULL;
+ 
++	const char *default_paths[] = {
++		"/etc/default/crda", /* Users configuration if COUNTRY is not set */
++		"/usr/etc/default/crda", /* General configuration if COUNTRY is not set */
++		NULL
++	};
+ 	const char *regdb_paths[] = {
+ 		"/usr/local/lib/crda/regulatory.bin", /* Users/preloads can override */
+ 		"/usr/lib/crda/regulatory.bin", /* General distribution package usage */
+@@ -171,8 +177,41 @@ int main(int argc, char **argv)
+ 
+ 	env_country = getenv("COUNTRY");
+ 	if (!env_country) {
+-		fprintf(stderr, "COUNTRY environment variable not set.\n");
+-		return -EINVAL;
++		const char **conf  = default_paths;
++		while (*conf != NULL) {
++			fd = open(*conf, O_RDONLY);
++			if (fd >= 0)
++				break;
++			conf++;
++		}
++		if (fd >= 0) {
++			FILE *reg = fdopen(fd, "r");
++			if (reg) {
++				char *line = NULL;
++				ssize_t nread;
++				size_t len = 0;
++				while ((nread = getline(&line, &len, reg)) != -1) {
++					char *ptr = line;
++					if (*ptr == '#' || *ptr == '\n')
++						continue;
++					while (isspace(*ptr))
++						line++;
++					if (strncmp("REGDOMAIN=", ptr, 10) == 0) {
++						ptr += 10;
++						env_country = strndup(ptr, 2);
++						break;
++					}	
++				}
++				if (line)
++					free(line);
++				fclose(reg);
++			} else
++				close(fd);
++		}
++		if (!env_country) {
++			fprintf(stderr, "COUNTRY environment variable not set.\n");
++			return -EINVAL;
++		}
+ 	}
+ 
+ 	if (!reglib_is_valid_regdom(env_country)) {

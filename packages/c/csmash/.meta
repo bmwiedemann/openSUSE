@@ -1,0 +1,6 @@
+<package name="csmash" project="openSUSE:Factory">
+  <title>3D Table Tennis Game</title>
+  <description>CannonSmash is a 3D table tennis game. The goal of this project is to
+represent various table tennis strategies in a computer game.</description>
+  <devel project="games" package="csmash"/>
+</package>

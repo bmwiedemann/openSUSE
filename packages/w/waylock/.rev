@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce5d3a7f1e3d3b5dd29246fddab395cf</srcmd5>
+    <version>0.6.1</version>
+    <time>1675516543</time>
+    <user>dimstar_suse</user>
+    <comment>I want to add waylock to openSUSE:Factory.</comment>
+    <requestid>1063138</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05faa4ad5569ceabdef86b63b8cfb46f</srcmd5>
+    <version>0.6.2</version>
+    <time>1676389582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1065647</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e94d3a1e9511a9b6d252094f0a35cf5e</srcmd5>
+    <version>0.6.2</version>
+    <time>1698170896</time>
+    <user>anag+factory</user>
+    <comment>- update 0001-update-zig-version.patch
+  * update to support zig version 0.11.0
+- Add zig-wayland.tar.gz and zig-xkbcommon.tar.gz
+- Add 0001-update-zig-version.patch
+  * update to support zig version 0.11.0
+</comment>
+    <requestid>1119756</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a51913a0d8ae321517187e6c0e259ec1</srcmd5>
+    <version>0.6.4</version>
+    <time>1705255404</time>
+    <user>anag+factory</user>
+    <comment>- Add zig-xkbcommon.tar.gz
+- Add zig-wayland.tar.gz
+- Remove the following files:
+  * waylock-0.6.2.tar.gz
+  * waylock-0.6.2.tar.gz.sig
+  * 0001-update-zig-version.patch
+  * zig-wayland.tar.gz
+  * zig-xkbcommon.tar.gz
+- Update to version 0.6.4:
+  * Output: don't destroy surface before role object
+  * docs: migrate to codeberg
+</comment>
+    <requestid>1138481</requestid>
+  </revision>
+</revisionlist>

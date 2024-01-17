@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6e4a6275be3839ada4293e895e3553de</srcmd5>
+    <version>1.7.5</version>
+    <time>1527605492</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for udiskie-1.7.5
+</comment>
+    <requestid>612495</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d0e6ffa5387282559d39d174028868f5</srcmd5>
+    <version>1.7.5</version>
+    <time>1551024645</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670392</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8360d0ce7b7b4e8ec9b195727fb8229e</srcmd5>
+    <version>2.1.0</version>
+    <time>1580842576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769903</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a1d7ecfca87623aa341410c056b130a</srcmd5>
+    <version>2.1.1</version>
+    <time>1588698423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800394</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab0e25caea549ec59b25e2d34cdcdc5f</srcmd5>
+    <version>2.4.2</version>
+    <time>1646349464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958701</requestid>
+  </revision>
+</revisionlist>

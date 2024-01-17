@@ -1,0 +1,9 @@
+<package name="perl-Text-Kakasi" project="openSUSE:Factory">
+  <title>Perl binding for KAKASI, the kanji kana simple inverter</title>
+  <description>This module provides libkakasi interface for perl. libkakasi is a part
+of KAKASI.  KAKASI is the language processing filter to convert Kanji
+characters to Hiragana, Katakana or Romaji and may be helpful to read
+Japanese documents.  More information about KAKASI is available at
+&lt;http://kakasi.namazu.org/&gt;.</description>
+  <devel project="devel:languages:perl" package="perl-Text-Kakasi"/>
+</package>

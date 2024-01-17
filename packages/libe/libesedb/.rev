@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7cedfc3c40a08ebbcd44b53dbecf8a24</srcmd5>
+    <version>0~20140803</version>
+    <time>1408957502</time>
+    <user>coolo</user>
+    <comment>New package to parse Microsoft EDB files.  Used during computer forensic analysis.</comment>
+    <requestid>246116</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7cedfc3c40a08ebbcd44b53dbecf8a24</srcmd5>
+    <version>0~20140803</version>
+    <time>1409301548</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>133cdfb21ac83dea1b75793fa35b365f</srcmd5>
+    <version>0~20141110</version>
+    <time>1422626714</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282348</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>496e0fd68434e9813802a1541253c118</srcmd5>
+    <version>0~20151213</version>
+    <time>1455021149</time>
+    <user>dimstar_suse</user>
+    <comment>update to v0~20151213</comment>
+    <requestid>358270</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>273d49f7f8ffe5e814185b19874b1d71</srcmd5>
+    <version>0~20181229</version>
+    <time>1560337766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696085</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a91e50885a752e3b34c2cb14d9b24850</srcmd5>
+    <version>0~20191220</version>
+    <time>1586466904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792572</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>55768addb9c7487c01d8d7c21c01834d</srcmd5>
+    <version>0~20191220</version>
+    <time>1588755917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800520</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>bf24c926834d0c93e3d0849a861b6122</srcmd5>
+    <version>0~20191220</version>
+    <time>1603202837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842421</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b2effa3a57a1e019b1fd32f8661b6d1a</srcmd5>
+    <version>0~20200418</version>
+    <time>1609253585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859090</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>716caf3c04abc0de2c0325d5386298b9</srcmd5>
+    <version>20210513</version>
+    <time>1623363510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898779</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e379f0f213d79ed7e266f1da66ec413a</srcmd5>
+    <version>20210513</version>
+    <time>1624813150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902502</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>6b9643fc90a4ad22c31748143f29809b</srcmd5>
+    <version>20210513</version>
+    <time>1642835928</time>
+    <user>dimstar_suse</user>
+    <comment>- Edit specfile to do multipython builds.</comment>
+    <requestid>948040</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5071c838763bd8956bd111cf9bbc5c07</srcmd5>
+    <version>20220806</version>
+    <time>1660051704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to relase 20220806
+  * Unspecified changes for error tollerance</comment>
+    <requestid>993979</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2913427464e03f0b625c9b4d2b743b06</srcmd5>
+    <version>20220806</version>
+    <time>1661863762</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999946</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>70f9a6eb2ceb146f8a16409b1f317f3c</srcmd5>
+    <version>20220806</version>
+    <time>1669629968</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038453</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>0781e22c40b415dc7e7877ecb867a148</srcmd5>
+    <version>20220806</version>
+    <time>1672851081</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046574</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5c2ed2bc079fccd89fbed64349abc07c</srcmd5>
+    <version>20230318</version>
+    <time>1679766960</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230318</comment>
+    <requestid>1074306</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>47339f3c461b9b2408fec839266c4138</srcmd5>
+    <version>20230318</version>
+    <time>1691594707</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102987</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>18649a7c759daa5c2b0e9d4f2af3c5d8</srcmd5>
+    <version>20231120</version>
+    <time>1700511603</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231120</comment>
+    <requestid>1127655</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Feb 10 13:08:38 UTC 2023 - Thomas Renninger <trenn@suse.de>
+
+- Properly set _service modes and add obscpio and obsinfo files
+  instead of tar.gz archiv which will be built at builtime.
+
+-------------------------------------------------------------------
+Sun Feb 05 09:43:49 UTC 2023 - rombert@apache.org
+
+- Initial package, version 0.0.3
+

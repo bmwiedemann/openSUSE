@@ -1,0 +1,25 @@
+## Path: Network/Ident
+## Description: Settings for oidentd ident daemon
+## Type: yesno
+## Default: no
+## ServiceRestart: oidentd
+#
+# Shall the oidentd daemon support ident queries for masqueraded/NAT
+# connections?
+#
+# See man 5 oidentd_masq.conf for details.
+#
+OIDENTD_MASQ="no"
+
+## Type: string
+## Default: ""
+## ServiceRestart: oidentd
+#
+# Additional options when starting the oident daemon with the init script
+# /etc/init.d/oidentd or rcoidentd.
+#
+# See man 5 oidentd for all available commandline options.
+#
+# "--masq" is added in any case if OIDENTD_MASQ is set to yes.
+#
+OIDENTD_OPTIONS=""

@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Wed Oct  1 23:21:28 UTC 2014 - crrodriguez@opensuse.org
+
+- Do not use xorg-x11-devel 
+
+-------------------------------------------------------------------
+Thu Jan 25 17:34:14 CET 2007 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Wed Aug  2 15:16:46 CEST 2006 - werner@suse.de
+
+- Make it build with X11R7
+
+-------------------------------------------------------------------
+Wed Jan 25 21:43:27 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jan 11 21:13:56 CET 2004 - adrian@suse.de
+
+- added %defattr
+
+-------------------------------------------------------------------
+Fri Jun 13 12:12:14 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Thu Dec 14 17:36:57 CET 2000 - werner@suse.de
+
+- Group tag
+
+-------------------------------------------------------------------
+Wed May 31 02:14:22 CEST 2000 - ro@suse.de
+
+- specfile cleanup, doc relocation
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+----------------------------------------------------------------------------
+Sun Oct 26 19:57:12 MET 1997 - kfr@suse.de
+
+- creating dif for rpm
+
+----------------------------------------------------------------------------
+Sun Jun  1 23:27:58 CEST 1997 - bs@suse.de
+
+- moved var/X11R6/lib/app-defaults to usr/X11R6/lib/X11/app-defaults
+

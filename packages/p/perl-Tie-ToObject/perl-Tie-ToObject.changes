@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Jul 14 11:43:43 UTC 2011 - coolo@novell.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:46 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:23 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sat Jul 24 23:32:23 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.03)
+

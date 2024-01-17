@@ -1,0 +1,77 @@
+Index: system-config-printer-1.5.7/cupshelpers/openprinting.py
+===================================================================
+--- system-config-printer-1.5.7.orig/cupshelpers/openprinting.py
++++ system-config-printer-1.5.7/cupshelpers/openprinting.py
+@@ -396,72 +396,3 @@ class OpenPrinting:
+         _debugprint ("listDrivers: Querying OpenPrinting: %s" % repr(params))
+         return self.webQuery(params, parse_result, (callback, user_data))
+ 
+-def _simple_gui ():
+-    from gi.repository import Gdk
+-    from gi.repository import Gtk
+-    import pprint
+-    Gdk.threads_init ()
+-    class QueryApp:
+-        def __init__(self):
+-            self.openprinting = OpenPrinting()
+-            self.main = Gtk.Dialog (title="OpenPrinting query application",
+-                                    transient_for=None, modal=True)
+-            self.main.add_buttons (Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE,
+-                                   "Search", 10,
+-                                   "List", 20)
+-            self.main.set_border_width (6)
+-            self.main.vbox.set_spacing (2)
+-            vbox = Gtk.VBox.new (False, 6)
+-            self.main.vbox.pack_start (vbox, True, True, 0)
+-            vbox.set_border_width (6)
+-            self.entry = Gtk.Entry ()
+-            vbox.pack_start (self.entry, False, False, 6)
+-            sw = Gtk.ScrolledWindow ()
+-            self.tv = Gtk.TextView ()
+-            sw.add (self.tv)
+-            vbox.pack_start (sw, True, True, 6)
+-            self.main.connect ("response", self.response)
+-            self.main.show_all ()
+-
+-        def response (self, dialog, response):
+-            if (response == Gtk.ResponseType.CLOSE or
+-                response == Gtk.ResponseType.DELETE_EVENT):
+-                Gtk.main_quit ()
+-
+-            if response == 10:
+-                # Run a query.
+-                self.openprinting.searchPrinters (self.entry.get_text (),
+-                                                  self.search_printers_callback)
+-
+-            if response == 20:
+-                self.openprinting.listDrivers (self.entry.get_text (),
+-                                               self.list_drivers_callback)
+-
+-        def search_printers_callback (self, status, user_data, printers):
+-            if status != 0:
+-                raise printers[1]
+-
+-            text = ""
+-            for printer in printers.values ():
+-                text += printer + "\n"
+-            Gdk.threads_enter ()
+-            self.tv.get_buffer ().set_text (text)
+-            Gdk.threads_leave ()
+-
+-        def list_drivers_callback (self, status, user_data, drivers):
+-            if status != 0:
+-                raise drivers[1]
+-
+-            text = pprint.pformat (drivers)
+-            Gdk.threads_enter ()
+-            self.tv.get_buffer ().set_text (text)
+-            Gdk.threads_leave ()
+-
+-        def query_callback (self, status, user_data, result):
+-            Gdk.threads_enter ()
+-            self.tv.get_buffer ().set_text (str (result))
+-            open ("result.xml", "w").write (str (result))
+-            Gdk.threads_leave ()
+-
+-    q = QueryApp()
+-    Gtk.main ()

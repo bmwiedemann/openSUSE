@@ -1,0 +1,12 @@
+/var/log/kvm_stat.csv {
+    compress
+    delaycompress
+    dateext
+    maxage 365
+    rotate 14
+    daily
+    minsize 50M
+    notifempty
+    missingok
+    copytruncate
+}

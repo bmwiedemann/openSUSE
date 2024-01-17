@@ -1,0 +1,6 @@
+<package name="deepin-kwin" project="openSUSE:Factory">
+  <title>KWin configures/plugins on the DDE</title>
+  <description>KWin configures/plugins on the DDE
+Let kwin work well in the Deepin Desktop Environment.</description>
+  <devel project="X11:Deepin" package="deepin-kwin"/>
+</package>

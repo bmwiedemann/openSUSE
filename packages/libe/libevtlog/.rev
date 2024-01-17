@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9fe69a9a9272cd4fc8b8dd2efa44bfe0</srcmd5>
+    <version>0.2.7</version>
+    <time>1216176064</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3c66db06ff5484aa52cb3d7580075cd2</srcmd5>
+    <version>0.2.7</version>
+    <time>1217627695</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9e0c51e9a7b4b195ab83f304944ef3dc</srcmd5>
+    <version>0.2.7</version>
+    <time>1224717191</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4e872ea664212f69370c9c9623cd1b49</srcmd5>
+    <version>0.2.7</version>
+    <time>1233936795</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>4e872ea664212f69370c9c9623cd1b49</srcmd5>
+    <version>0.2.7</version>
+    <time>1233936795</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>a9a03d2f208101c426af3b90cd4aaa85</srcmd5>
+    <version>0.2.7</version>
+    <time>1268924557</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c316ee24fb8acab9ec3925e66af77b79</srcmd5>
+    <version>0.2.9</version>
+    <time>1271371933</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/libevtlog based on submit request 37854 from user mtomaschewski
+</comment>
+    <requestid>37854</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c316ee24fb8acab9ec3925e66af77b79</srcmd5>
+    <version>0.2.9</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c316ee24fb8acab9ec3925e66af77b79</srcmd5>
+    <version>0.2.9</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>ff277ae0295ec1822b8a24a164c75809</srcmd5>
+    <version>0.2.9</version>
+    <time>1288600147</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>51851</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>c316ee24fb8acab9ec3925e66af77b79</srcmd5>
+    <version>0.2.9</version>
+    <time>1288668853</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>c316ee24fb8acab9ec3925e66af77b79</srcmd5>
+    <version>0.2.9</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2bddf56f61e5ea95e53026b7b1cbf6d6</srcmd5>
+    <version>0.2.12</version>
+    <time>1309249843</time>
+    <user>saschpe</user>
+    <comment>update to 2.1.12 as recent syslog-ng versions need it</comment>
+    <requestid>74711</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>82cd2ca740a357c7c7cd47148cb60131</srcmd5>
+    <version>0.2.12</version>
+    <time>1309249853</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74711
+</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>82cd2ca740a357c7c7cd47148cb60131</srcmd5>
+    <version>0.2.12</version>
+    <time>1319182088</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>b0306687be621168a31f30c1e9f2ccbc</srcmd5>
+    <version>0.2.12</version>
+    <time>1323192202</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>4e9988205cd0fc92c9947a217ef5a37c</srcmd5>
+    <version>0.2.12</version>
+    <time>1324830941</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97707 from coolo)</comment>
+    <requestid>97879</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>4e9988205cd0fc92c9947a217ef5a37c</srcmd5>
+    <version>0.2.12</version>
+    <time>1340183581</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>b17a2e94f8507a995b755e004962d8d8</srcmd5>
+    <version>0.2.12</version>
+    <time>1352796826</time>
+    <user>coolo</user>
+    <comment>- Changed RPM group to Development/Libraries/C and C++, added
+  group tag to sub-packages as required to build on SLE-11. (forwarded request 140929 from mtomaschewski)</comment>
+    <requestid>140936</requestid>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>b17a2e94f8507a995b755e004962d8d8</srcmd5>
+    <version>0.2.12</version>
+    <time>1359109265</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>b17a2e94f8507a995b755e004962d8d8</srcmd5>
+    <version>0.2.12</version>
+    <time>1379662940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>b17a2e94f8507a995b755e004962d8d8</srcmd5>
+    <version>0.2.12</version>
+    <time>1409301551</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>aa39cdbc46dcca029bbdcdf8fa6b000a</srcmd5>
+    <version>0.2.13</version>
+    <time>1423596199</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284882</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>6f0c8805a10b47337cc6c4887511b63d</srcmd5>
+    <version>0.2.13</version>
+    <time>1472246262</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>421915</requestid>
+  </revision>
+</revisionlist>

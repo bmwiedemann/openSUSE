@@ -1,0 +1,200 @@
+---
+ config.h.in      |    3 +
+ configure.ac     |   52 ++++++++++++++++++++++++++++++
+ src/decompress.c |   70 ++++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 124 insertions(+), 1 deletion(-)
+
+--- config.h.in
++++ config.h.in	2023-08-15 08:21:20.473974597 +0000
+@@ -1015,6 +1015,9 @@
+ /* Define to 1 if you have the `z' library (-lz). */
+ #undef HAVE_LIBZ
+ 
++/* Define to 1 if you have libzio for opening compressed manuals */
++#undef HAVE_ZIO
++
+ /* Define to 1 if the bcrypt library is guaranteed to be present. */
+ #undef HAVE_LIB_BCRYPT
+ 
+--- configure.ac
++++ configure.ac	2023-08-15 08:21:20.473974597 +0000
+@@ -35,6 +35,18 @@ MAN_ARG_DEVICE
+ MAN_ARG_DB
+ MAN_ARG_CONFIG_FILE
+ MAN_ARG_SECTIONS
++AC_ARG_WITH([zio],
++[AS_HELP_STRING([--with-zio=LIBRARY], [use zlib/libbz2 wrapper library LIBRARY (libzio)])],
++	[if test -z "$withval" -o "$withval" = "yes"
++	 then
++		zio=libzio
++	 elif test "$withval" = "no"
++	 then
++		AC_MSG_ERROR(--with-zio requires an argument)
++	 else
++		zio=$withval
++	 fi],
++	[: ${zio=no}])
+ MAN_ARG_AUTOMATIC_CREATE
+ MAN_ARG_AUTOMATIC_UPDATE
+ MAN_ARG_CATS
+@@ -401,6 +413,46 @@ AC_DEFINE_UNQUOTED([PROG_UNXZ], ["$unxz"
+ AC_DEFINE_UNQUOTED([PROG_UNLZIP], ["$unlzip"], [Program to use as unlzip.])
+ AC_DEFINE_UNQUOTED([PROG_UNZSTD], ["$unzstd"], [Program to use as unzstd.])
+ MAN_COMPRESS_LIB([z], [gzopen])
++dnl Check for zlib and libbz2 libraries to use this together
++dnl with SUSE's libzio to open compressed info files.
++dnl
++if test "$zio" = "no" || test -n "$zio"
++then
++    AC_CHECK_HEADER(zio.h,[
++      for lib in ${zio#lib} zio
++      do
++	AC_CHECK_LIB($lib, fzopen,              [LIBS="-l$lib $LIBS"; am_cv_libzio=yes])
++      done
++    ])
++    if test "$am_cv_libzio" = yes; then
++      AC_DEFINE([COMP_SRC],[],[Define if you have compressors and want to support compressed cat files.])
++      AC_DEFINE([HAVE_ZIO],[],[Define to 1 if you have libzio for opening compressed manuals])
++      AC_CHECK_HEADER(zlib.h,[
++	for lib in z gz
++	do
++	  AC_CHECK_LIB($lib, gzopen,             [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	done
++      ])
++      AC_CHECK_HEADER(bzlib.h,[
++	for lib in bz2 bzip2
++	do
++	  AC_CHECK_LIB($lib, BZ2_bzopen,         [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	done
++      ])
++      AC_CHECK_HEADER(lzmadec.h, [
++	for lib in lzma lzmadec
++	do
++	  AC_CHECK_LIB($lib, lzmadec_open,       [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	done
++      ])
++      AC_CHECK_HEADER(lzma.h, [
++	for lib in lzma
++	do
++	  AC_CHECK_LIB($lib, lzma_easy_encoder,  [LIBS="$LIBS -Wl,--no-as-needed -l$lib"; break])
++	done
++      ])
++    fi
++fi
+ dnl To add more decompressors just follow the scheme above.
+ 
+ # Check for various header files and associated libraries.
+--- src/decompress.c
++++ src/decompress.c	2023-08-15 08:23:12.947968440 +0000
+@@ -40,12 +40,17 @@
+ 
+ #include "pipeline.h"
+ 
++#include "appendstr.h"
+ #include "attribute.h"
+ #include "minmax.h"
+ #include "xalloc.h"
+ #include "xstrndup.h"
+ #include "xvasprintf.h"
+ 
++#ifdef HAVE_ZIO
++#  include "zio.h"
++#endif /* HAVE_ZIO */
++
+ #include "manconfig.h"
+ 
+ #include "compression.h"
+@@ -189,6 +194,33 @@ static decompress *decompress_try_zlib (
+ #define OPEN_FLAGS_UNUSED MAYBE_UNUSED
+ #endif /* HAVE_LIBZ */
+ 
++#ifdef HAVE_ZIO
++
++static void decompress_zio (void *data)
++{
++	const char *what = (const char*)data;
++	FILE *file;
++
++	file = fdzopen(dup (fileno (stdin)), "r", what);
++	if (!file)
++		return;
++
++	for (;;) {
++		char buffer[4096];
++		int r = fread(buffer, sizeof(char), sizeof(buffer), file);
++		if (r <= 0)
++			break;
++		if (fwrite (buffer, 1, (size_t) r, stdout) < (size_t) r)
++			break;
++	}
++
++	fclose(file);
++	return;
++}
++
++#endif /* HAVE_ZIO */
++
++
+ extern man_sandbox *sandbox;
+ 
+ decompress *decompress_open (const char *filename, int flags OPEN_FLAGS_UNUSED)
+@@ -205,6 +237,38 @@ decompress *decompress_open (const char
+ 	if (stat (filename, &st) < 0 || S_ISDIR (st.st_mode))
+ 		return NULL;
+ 
++#ifdef HAVE_ZIO
++	ext = strrchr (filename, '.');
++	if (ext) {
++		const char *opt;
++		char *name = NULL;
++
++		if (STREQ (ext, ".gz"))
++			opt = "g";
++		else if (STREQ (ext, ".z"))
++			opt = "z";
++		else if (STREQ (ext, ".bz2"))
++			opt = "b";
++		else if (STREQ (ext, ".xz"))
++			opt = "x";
++		else if (STREQ (ext, ".lzma"))
++			opt = "l";
++		else if (STREQ (ext, ".Z"))
++			opt = "Z";
++		else
++			goto nozio;
++
++		/* informational only; no shell quoting concerns */
++		name = appendstr (NULL, "libzio < ", filename, (void *) 0);
++		cmd = pipecmd_new_function (name, &decompress_zio, NULL,
++					    (void *)opt);
++		pipecmd_pre_exec (cmd, sandbox_load, sandbox_free, sandbox);
++		p = pipeline_new_commands (cmd, (void *) 0);
++		free (name);
++		goto got_pipeline;
++	}
++#endif /* HAVE_ZIO */
++
+ #ifdef HAVE_LIBZ
+ 	filename_len = strlen (filename);
+ 	if (filename_len > 3 && STREQ (filename + filename_len - 3, ".gz")) {
+@@ -222,7 +286,11 @@ decompress *decompress_open (const char
+ 	}
+ #endif /* HAVE_LIBZ */
+ 
++#ifdef HAVE_ZIO
++nozio:
++#else
+ 	ext = strrchr (filename, '.');
++#endif /* HAVE_LIBZ */
+ 	if (ext) {
+ 		++ext;
+ 
+@@ -315,7 +383,7 @@ void decompress_inprocess_replace (decom
+ 
+ void decompress_start (decompress *d)
+ {
+-	if (d->tag == DECOMPRESS_PIPELINE)
++	if (d && d->tag == DECOMPRESS_PIPELINE)
+ 		pipeline_start (d->u.p);
+ }
+ 

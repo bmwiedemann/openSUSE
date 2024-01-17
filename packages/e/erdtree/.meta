@@ -1,0 +1,5 @@
+<package name="erdtree" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="erdtree"/>
+</package>

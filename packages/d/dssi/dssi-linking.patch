@@ -1,0 +1,39 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -3,10 +3,14 @@ dnl Process this file with autoconf to p
+ AC_INIT(DSSI, 1.1.1, dssi-devel@lists.sourceforge.net)
+ 
+ AC_CONFIG_SRCDIR(dssi/dssi.h)
+-AM_INIT_AUTOMAKE
++AM_INIT_AUTOMAKE(foreign)
++AC_CONFIG_MACRO_DIR([m4])
+ AM_CONFIG_HEADER(config.h)
+ 
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
++AM_PROG_CC_C_O
+ AC_PROG_CXX
+ AC_ENABLE_STATIC(no)
+ AC_ENABLE_SHARED(yes)
+@@ -27,6 +31,9 @@ fi
+ AC_SUBST(ALSA_CFLAGS)
+ AC_SUBST(ALSA_LIBS)
+ 
++AC_SEARCH_LIBS(sin, m)
++AC_SEARCH_LIBS(dlopen, dl)
++
+ dnl Check for liblo
+ PKG_CHECK_MODULES(LIBLO, liblo >= 0.12, with_liblo=yes, with_liblo=no)
+ AC_SUBST(LIBLO_CFLAGS)
+--- Makefile.am.orig
++++ Makefile.am
+@@ -1,5 +1,7 @@
+ ## Process this file with automake to produce Makefile.in
+ 
++ACLOCAL_AMFLAGS = -I m4
++
+ SUBDIRS = jack-dssi-host examples tests
+ 
+ EXTRA_DIST = \

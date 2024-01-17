@@ -1,0 +1,6 @@
+<package name="squashfuse" project="openSUSE:Factory">
+  <title>squashfuse</title>
+  <description>FUSE module to mount squashfs images</description>
+  <devel project="filesystems" package="squashfuse"/>
+  <url>https://github.com/vasi/squashfuse</url>
+</package>

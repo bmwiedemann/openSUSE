@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Wed Aug 14 08:48:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %license macro
+- Remove two BRs that are not directly used
+
+-------------------------------------------------------------------
+Fri Aug 25 13:30:51 UTC 2017 - jengelh@inai.de
+
+- RPM group fix.
+
+-------------------------------------------------------------------
+Mon Aug 14 11:33:56 UTC 2017 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner a bit
+
+-------------------------------------------------------------------
+Fri Mar 16 11:44:18 UTC 2012 - coolo@suse.com
+
+- fix license tag
+
+-------------------------------------------------------------------
+Wed Mar 14 20:46:37 UTC 2012 - dimstar@opensuse.org
+
+- Add libofa-0.9.3-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Sat Nov 19 20:45:11 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Aug  6 16:56:52 UTC 2011 - crrodriguez@opensuse.org
+
+- Ficx build with newer curl 
+
+-------------------------------------------------------------------
+Thu May 26 21:02:52 UTC 2011 - davejplater@gmail.com
+
+- Inserted the correct license field.
+
+-------------------------------------------------------------------
+Sat May 21 00:19:19 UTC 2011 - davejplater@gmail.com
+
+- Added baselibs.conf to sources and spec file cosmetic fix's.
+- Fixed license field.
+
+-------------------------------------------------------------------
+Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
+ 
+- Added 32bit compatibility libraries
+- Added BuildRequires: pkg-config (fix for RPMLINT warning)
+- Removed self-obsoletes (fix for RPMLINT warning)
+ 
+-------------------------------------------------------------------
+Sat Dec 12 16:50:17 UTC 2009 - aj@suse.de
+
+- Do not package example/Makefile* since they only work in the build directory.
+
+-------------------------------------------------------------------
+Wed May  6 14:08:16 CEST 2009 - coolo@suse.de
+
+- fix compilation with gcc 4.4
+
+-------------------------------------------------------------------
+Thu Nov  6 11:33:49 CET 2008 - sbrabec@suse.cz
+
+- Fixed devel dependencies.
+- Fixed README EOL encoding.
+
+-------------------------------------------------------------------
+Tue Nov  6 07:51:14 CET 2007 - crrodriguez@suse.de
+
+- libofa --> libofa0
+- fix build with gcc43
+- add missing ldconfig calls
+- fix some minor packaging errors
+- fix devel package, pkgconfig script wrongly added
+  unneeded libraries to the dependency chain.
+- remove static libraries and libtool "la" files
+
+-------------------------------------------------------------------
+Fri Apr 27 19:05:32 CEST 2007 - aj@suse.de
+
+- Add libexpat-devel to BuildRequies.
+
+-------------------------------------------------------------------
+Mon Nov 13 19:57:19 CET 2006 - aj@suse.de
+
+- Add c++ to BuildRequires.
+
+-------------------------------------------------------------------
+Mon Oct 23 16:23:29 CEST 2006 - sbrabec@suse.cz
+
+- New SuSE package, version 0.9.3.
+

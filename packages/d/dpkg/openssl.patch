@@ -1,0 +1,97 @@
+Index: dpkg-1.22.0/configure.ac
+===================================================================
+--- dpkg-1.22.0.orig/configure.ac
++++ dpkg-1.22.0/configure.ac
+@@ -97,6 +97,13 @@ AC_SYS_LARGEFILE
+ # Checks for libraries.
+ DPKG_LIB_RT
+ DPKG_LIB_MD
++AS_IF([test "x$have_libmd" = "xno"], [
++  DPKG_LIB_OPENSSL
++  AS_IF([test "x$have_libcrypto" = "xno"], [
++    AC_MSG_FAILURE([md5 digest functions not found in libmd or openssl])
++  ])
++])
++
+ DPKG_LIB_Z
+ DPKG_LIB_BZ2
+ DPKG_LIB_LZMA
+@@ -308,6 +315,7 @@ Configuration:
+     libkvm  . . . . . . . . . . . : ${have_libkvm:-no}
+     libselinux  . . . . . . . . . : $have_libselinux
+     libmd . . . . . . . . . . . . : $have_libmd
++    libcryto  . . . . . . . . . . : $have_libcrypto
+     libz  . . . . . . . . . . . . : $have_libz_impl
+     liblzma . . . . . . . . . . . : $have_liblzma
+     libzstd . . . . . . . . . . . : $have_libzstd
+Index: dpkg-1.22.0/lib/dpkg/Makefile.am
+===================================================================
+--- dpkg-1.22.0.orig/lib/dpkg/Makefile.am
++++ dpkg-1.22.0/lib/dpkg/Makefile.am
+@@ -50,7 +50,7 @@ EXTRA_libdpkg_la_DEPENDENCIES += \
+ 	libdpkg.sym \
+ 	# EOL
+ endif
+-libdpkg_la_LDFLAGS += $(MD_LIBS)
++libdpkg_la_LDFLAGS += $(MD_LIBS) $(OPENSSL_LIBS)
+ libdpkg_la_LIBADD = \
+ 	../compat/libcompat.la \
+ 	# EOL
+Index: dpkg-1.22.0/lib/dpkg/buffer.c
+===================================================================
+--- dpkg-1.22.0.orig/lib/dpkg/buffer.c
++++ dpkg-1.22.0/lib/dpkg/buffer.c
+@@ -23,10 +23,18 @@
+ #include <config.h>
+ #include <compat.h>
+ 
++#ifdef HAVE_MD5_H
++#include <md5.h>
++#elif HAVE_OPENSSL_MD5_H
++#include <openssl/md5.h>
++#define MD5Init MD5_Init
++#define MD5Update MD5_Update
++#define MD5Final MD5_Final
++#endif
++
+ #include <sys/types.h>
+ 
+ #include <errno.h>
+-#include <md5.h>
+ #include <string.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+Index: dpkg-1.22.0/m4/dpkg-libs.m4
+===================================================================
+--- dpkg-1.22.0.orig/m4/dpkg-libs.m4
++++ dpkg-1.22.0/m4/dpkg-libs.m4
+@@ -20,11 +20,26 @@ AC_DEFUN([DPKG_LIB_MD], [
+       MD_LIBS="$ac_cv_search_MD5Init"
+     ])
+   ])
+-  AS_IF([test "x$have_libmd" = "xno"], [
+-    AC_MSG_FAILURE([md5 digest functions not found])
+-  ])
+ ])# DPKG_LIB_MD
+ 
++# DPKG_LIB_OPENSSL
++# -----------
++# Check for the digests support in openssl library.
++AC_DEFUN([DPKG_LIB_OPENSSL], [
++  AC_ARG_VAR([OPENSSL_LIBS], [linker flags for openssl library])
++  have_libcryto="no"
++  AC_CHECK_HEADERS([openssl/md5.h], [
++    dpkg_save_libcrypto_LIBS=$LIBS
++    AC_SEARCH_LIBS([MD5_Init], [crypto])
++    LIBS=$dpkg_save_libcrypto_LIBS
++    AS_IF([test "x$ac_cv_search_MD5_Init" != "xno"], [
++      have_libcrypto="yes"
++      OPENSSL_LIBS="$ac_cv_search_MD5_Init"
++    ])
++  ])
++])# DPKG_LIB_OPENSSL
++
++
+ # DPKG_WITH_COMPRESS_LIB(NAME, HEADER, FUNC)
+ # -------------------------------------------------
+ # Check for availability of a compression library.

@@ -1,0 +1,5 @@
+<package name="string-template-maven-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="string-template-maven-plugin"/>
+</package>

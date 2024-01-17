@@ -1,0 +1,5 @@
+<package name="g810-led" project="openSUSE:Factory">
+  <title>g810-led</title>
+  <description>Linux led controller for Logitech G213, G410, G413, G513, G610, G810, G910 and GPRO Keyboards.</description>
+  <devel project="hardware" package="g810-led"/>
+</package>

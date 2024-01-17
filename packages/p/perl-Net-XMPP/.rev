@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>240ac1a463a051f0d76679d5e15f4394</srcmd5>
+    <version>1.0</version>
+    <time>1168903882</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c0cf8c4e1aef90dc8ccf3c5ba38d411</srcmd5>
+    <version>1.02</version>
+    <time>1175870035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="115">
+    <srcmd5>0c0cf8c4e1aef90dc8ccf3c5ba38d411</srcmd5>
+    <version>1.02</version>
+    <time>1175870035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="116">
+    <srcmd5>d64dc8fdca0ee6b6af9ce069d3e7bcc5</srcmd5>
+    <version>1.02</version>
+    <time>1245276929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="118">
+    <srcmd5>d64dc8fdca0ee6b6af9ce069d3e7bcc5</srcmd5>
+    <version>1.02</version>
+    <time>1245276929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="119">
+    <srcmd5>444eca2fd331ac959b01fba011702810</srcmd5>
+    <version>1.02</version>
+    <time>1263294883</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-XMPP based on submit request 29253 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="120">
+    <srcmd5>12c7d043453de7e2707f96e90ae9eea4</srcmd5>
+    <version>1.02</version>
+    <time>1268925550</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="122">
+    <srcmd5>12c7d043453de7e2707f96e90ae9eea4</srcmd5>
+    <version>1.02</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="123">
+    <srcmd5>12c7d043453de7e2707f96e90ae9eea4</srcmd5>
+    <version>1.02</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="124">
+    <srcmd5>6aa0ffc4c13ca8bb250b801bad074e8a</srcmd5>
+    <version>1.02</version>
+    <time>1280712971</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-XMPP based on submit request 44003 from user computersalat
+</comment>
+    <requestid>44003</requestid>
+  </revision>
+  <revision rev="11" vrev="125">
+    <srcmd5>ebb75f22d00e833c17d097e7fa73bdeb</srcmd5>
+    <version>1.02</version>
+    <time>1291583382</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54616 from user coolo
+</comment>
+    <requestid>54616</requestid>
+  </revision>
+  <revision rev="12" vrev="126">
+    <srcmd5>16046e44b492ffd270abecff806205d5</srcmd5>
+    <version>1.02</version>
+    <time>1291583391</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54616
+</comment>
+  </revision>
+  <revision rev="13" vrev="129">
+    <srcmd5>16046e44b492ffd270abecff806205d5</srcmd5>
+    <version>1.02</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="131">
+    <srcmd5>16046e44b492ffd270abecff806205d5</srcmd5>
+    <version>1.02</version>
+    <time>1319182294</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="132">
+    <srcmd5>31ad9ccd79bad8e1dab947c79f710fa0</srcmd5>
+    <version>1.02</version>
+    <time>1321875844</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92335</requestid>
+  </revision>
+  <revision rev="16" vrev="133">
+    <srcmd5>a86f30ff47f4c044fe50fe70b467bf8e</srcmd5>
+    <version>1.02</version>
+    <time>1323193531</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="135">
+    <srcmd5>a86f30ff47f4c044fe50fe70b467bf8e</srcmd5>
+    <version>1.02</version>
+    <time>1340183894</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="137">
+    <srcmd5>a86f30ff47f4c044fe50fe70b467bf8e</srcmd5>
+    <version>1.02</version>
+    <time>1359109766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="139">
+    <srcmd5>a86f30ff47f4c044fe50fe70b467bf8e</srcmd5>
+    <version>1.02</version>
+    <time>1379663797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="141">
+    <srcmd5>a86f30ff47f4c044fe50fe70b467bf8e</srcmd5>
+    <version>1.02</version>
+    <time>1409302434</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c92649b192ac746f2e60119e23d56224</srcmd5>
+    <version>1.05</version>
+    <time>1453416159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353920</requestid>
+  </revision>
+</revisionlist>

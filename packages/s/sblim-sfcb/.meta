@@ -1,0 +1,9 @@
+<package name="sblim-sfcb" project="openSUSE:Factory">
+  <title>Small Footprint CIM Broker</title>
+  <description>Small Footprint CIM Broker (sfcb) is a CIM server conforming to the CIM
+Operations over HTTP protocol. It is robust, with low resource
+consumption and therefore specifically suited for embedded and resource
+constrained environments. sfcb supports providers written against the
+Common Manageability Programming Interface (CMPI).</description>
+  <devel project="systemsmanagement:wbem" package="sblim-sfcb"/>
+</package>

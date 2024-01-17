@@ -1,0 +1,20 @@
+--- orig-bs1770gain-0.8.4.1/libbg/bgx.c	2022-04-01 11:38:39.000000000 +0200
++++ bs1770gain-0.8.4.1/libbg/bgx.c	2022-09-09 09:18:38.759946752 +0200
+@@ -40,17 +40,8 @@
+  * once meant as an example program on how to deal with "libbg.a" (and in
+  * turn with "libff.a") finally serving as bs1770gain's implementation.
+  */
+-#if 1 // [
+-#if 1 // [
+-#define BG_TEAM_WHITE \
+-    " #WLM"
+-#else // ] [
+ #define BG_TEAM_WHITE \
+     ""
+-#endif // ]
+-#define BG_NANOS_GIGANTUM_HUMERIS_INSIDENTES \
+-    "Nanos gigantum humeris insidentes." BG_TEAM_WHITE "\n"
+-#endif // ]
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+ static const ffchar_t *bg_version(const ffchar_t *path, FILE *f)

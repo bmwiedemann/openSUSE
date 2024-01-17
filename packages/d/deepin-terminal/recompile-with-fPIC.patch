@@ -1,0 +1,13 @@
+diff -Nur deepin-terminal-5.4.0.20/CMakeLists.txt deepin-terminal-5.4.0.20-new/CMakeLists.txt
+--- deepin-terminal-5.4.0.20/CMakeLists.txt	2021-03-15 11:37:34.000000000 +0800
++++ deepin-terminal-5.4.0.20-new/CMakeLists.txt	2021-04-17 22:43:54.644398637 +0800
+@@ -7,6 +7,9 @@
+ include (src/DtkSettingsToolsMacros)
+ option(TERM_RPATH "Do you want to use compiled libraries" ON)
+ 
++set(CMAKE_C_FLAGS "-fPIC")
++set(CMAKE_CXX_FLAGS "-fPIC")
++
+ if(TERM_RPATH)
+ set(CMAKE_SKIP_INSTALL_RPATH YES)
+ set(CMAKE_SKIP_RPATH YES)

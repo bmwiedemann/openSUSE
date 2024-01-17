@@ -1,0 +1,9 @@
+<package name="bottom" project="openSUSE:Factory">
+  <title>Yet another graphical process/system monitor</title>
+  <description>A cross-platform graphical process/system monitor with a
+customizable interface and a multitude of features.
+
+</description>
+  <devel project="utilities" package="bottom"/>
+  <url>https://github.com/ClementTsang/bottom</url>
+</package>

@@ -1,0 +1,6 @@
+<package name="protontricks" project="openSUSE:Factory">
+  <title>protontricks</title>
+  <description>A simple wrapper that does winetricks things for Proton enabled games.</description>
+  <devel project="games:tools" package="protontricks"/>
+  <url>https://github.com/Matoking/protontricks</url>
+</package>

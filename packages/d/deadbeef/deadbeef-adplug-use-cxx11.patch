@@ -1,0 +1,35 @@
+From ec70bec029c379ea17442c95b2ad346a0a68d9d0 Mon Sep 17 00:00:00 2001
+From: Oleksiy Yakovenko <wakeroid@gmail.com>
+Date: Sun, 7 May 2023 12:06:10 +0200
+Subject: [PATCH] adplug: added -std=c++11 for linux builds
+
+---
+ plugins/adplug/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: deadbeef-1.9.5/plugins/adplug/Makefile.am
+===================================================================
+--- deadbeef-1.9.5.orig/plugins/adplug/Makefile.am
++++ deadbeef-1.9.5/plugins/adplug/Makefile.am
+@@ -5,7 +5,7 @@ pkglib_LTLIBRARIES = adplug.la
+ 
+ adplug_la_CFLAGS = $(CFLAGS) -std=c99 -I$(adplugpath)/adplug -I$(adplugpath)/libbinio -fPIC
+ adplug_la_LDFLAGS = -module -avoid-version $(NOCPPLIB) -lm
+-adplug_la_CXXFLAGS = $(CXXFLAGS) -Dstricmp=strcasecmp -DVERSION=\"2.3.1\" -I$(adplugpath)/adplug -I$(adplugpath)/libbinio
++adplug_la_CXXFLAGS = $(CXXFLAGS) -std=c++11 -Dstricmp=strcasecmp -DVERSION=\"2.3.1\" -I$(adplugpath)/adplug -I$(adplugpath)/libbinio
+ 
+ adplug_la_SOURCES = plugin.c\
+                    adplug-db.cpp\
+Index: deadbeef-1.9.5/plugins/adplug/Makefile.in
+===================================================================
+--- deadbeef-1.9.5.orig/plugins/adplug/Makefile.in
++++ deadbeef-1.9.5/plugins/adplug/Makefile.in
+@@ -601,7 +601,7 @@ top_srcdir = @top_srcdir@
+ @HAVE_ADPLUG_TRUE@pkglib_LTLIBRARIES = adplug.la
+ @HAVE_ADPLUG_TRUE@adplug_la_CFLAGS = $(CFLAGS) -std=c99 -I$(adplugpath)/adplug -I$(adplugpath)/libbinio -fPIC
+ @HAVE_ADPLUG_TRUE@adplug_la_LDFLAGS = -module -avoid-version $(NOCPPLIB) -lm
+-@HAVE_ADPLUG_TRUE@adplug_la_CXXFLAGS = $(CXXFLAGS) -Dstricmp=strcasecmp -DVERSION=\"2.3.1\" -I$(adplugpath)/adplug -I$(adplugpath)/libbinio
++@HAVE_ADPLUG_TRUE@adplug_la_CXXFLAGS = $(CXXFLAGS) -std=c++11 -Dstricmp=strcasecmp -DVERSION=\"2.3.1\" -I$(adplugpath)/adplug -I$(adplugpath)/libbinio
+ @HAVE_ADPLUG_TRUE@adplug_la_SOURCES = plugin.c\
+ @HAVE_ADPLUG_TRUE@                   adplug-db.cpp\
+ @HAVE_ADPLUG_TRUE@				   libbinio/binfile.h\

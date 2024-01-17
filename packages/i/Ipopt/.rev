@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d813e0dcdacb3ae6d87826cbc81daee5</srcmd5>
+    <version>3.13.2</version>
+    <time>1594228208</time>
+    <user>dimstar_suse</user>
+    <comment>A package for large-scale non-linear optimisation.</comment>
+    <requestid>811328</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e266ab441597b7af76a20ba78ec3c32a</srcmd5>
+    <version>3.13.2</version>
+    <time>1594894635</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire graphviz-gd for dot -Tpng to work
+- Normalize jar timestamps with strip-nondeterminism
+- Create docs in a separate step for reproducible build results
+  (boo#1102408).
+</comment>
+    <requestid>821093</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>14503fe56806c42a54531f7016d387e7</srcmd5>
+    <version>3.13.3</version>
+    <time>1603545454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843299</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bcf596f766da91cae1ccfb848e603031</srcmd5>
+    <version>3.13.4</version>
+    <time>1619031541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876063</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>772900b77a435159ea4005b54a194600</srcmd5>
+    <version>3.13.4</version>
+    <time>1623098663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898083</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9cb6afd8ebd61fceef87de3fcc531a05</srcmd5>
+    <version>3.14.0</version>
+    <time>1624300535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901011</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f46218efba17cf36f186a4626e30495e</srcmd5>
+    <version>3.14.1</version>
+    <time>1625516568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903975</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66ade8283b1412f09c245fff4dbbf750</srcmd5>
+    <version>3.14.2</version>
+    <time>1627750283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909506</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>73c2f78f3a354b8f1d126be0ae1d46c4</srcmd5>
+    <version>3.14.3</version>
+    <time>1632173577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920070</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c64fb1cc18efa290437973ea484c5f3d</srcmd5>
+    <version>3.14.4</version>
+    <time>1635167848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927206</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>29dc1e4cb24bcc25dd554f913afa0297</srcmd5>
+    <version>3.14.5</version>
+    <time>1645294879</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.14.5</comment>
+    <requestid>956020</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>015464f1cc27ab4565541e701e4ef120</srcmd5>
+    <version>3.14.5</version>
+    <time>1645461982</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the incorrect Provides: libipopt0 on libipopt3.
+- Make so version inaccuracies harder to miss by making file list more explicit on the versioning.
+</comment>
+    <requestid>956098</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7d2b0d06d0123e664d4fef6387bdb41a</srcmd5>
+    <version>3.14.6</version>
+    <time>1652801094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977784</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>928fc9404f409fc93c657c8a77821222</srcmd5>
+    <version>3.14.7</version>
+    <time>1657114920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986901</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bb486c3b8fab964c9ccd099cbe0d993e</srcmd5>
+    <version>3.14.8</version>
+    <time>1658243955</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989510</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1049ec69c4289970f30b993541d785bc</srcmd5>
+    <version>3.14.9</version>
+    <time>1660313195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994638</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c37e5276446cbfc3160f511c61307f4c</srcmd5>
+    <version>3.14.10</version>
+    <time>1666871670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031426</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a5e53432a6e4b66416ec92c8cea0d561</srcmd5>
+    <version>3.14.12</version>
+    <time>1681399974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079215</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e02002c8dbcc22463b2bba3012275ef0</srcmd5>
+    <version>3.14.13</version>
+    <time>1701378024</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129759</requestid>
+  </revision>
+</revisionlist>

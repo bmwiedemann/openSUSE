@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e291912c18920f0d4f15d774f21fab25</srcmd5>
+    <version>1.0.1</version>
+    <time>1601200116</time>
+    <user>dimstar_suse</user>
+    <comment>Simplify build per 837218 rejection.</comment>
+    <requestid>837803</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb83f7166d991ba82e1e25a1468e334e</srcmd5>
+    <version>1.0.1</version>
+    <time>1636038584</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>929066</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ef5c54dacd91bcc425ed12e642f6bbc2</srcmd5>
+    <version>1.0.1</version>
+    <time>1686506061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091706</requestid>
+  </revision>
+</revisionlist>

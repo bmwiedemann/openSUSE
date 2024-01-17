@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>128accf9996c36961d5ad56a3e616754</srcmd5>
+    <version>7.30</version>
+    <time>1602857574</time>
+    <user>dimstar_suse</user>
+    <comment>Introduce Search::Elasticsearch</comment>
+    <requestid>840231</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05cdf99ad4474219d016fa45b5ad328d</srcmd5>
+    <version>7.711001</version>
+    <time>1614692607</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876204</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ca4544c4665247dfb56f176ac4625ff3</srcmd5>
+    <version>7.712</version>
+    <time>1617279443</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882147</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f822d6b6726c09854b0d91e51001049a</srcmd5>
+    <version>7.713</version>
+    <time>1623868480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900204</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ac3208b4d60e97ee1942e859391fbdb</srcmd5>
+    <version>7.714</version>
+    <time>1628675246</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911298</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc487c96066f0b03e79a83b6fb5f6ea4</srcmd5>
+    <version>7.715</version>
+    <time>1635167859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927291</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a4723bed4ef57df0448bc1362380277</srcmd5>
+    <version>7.717</version>
+    <time>1660313189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994628</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e43df0cd27a1f33136818a39e5dec59d</srcmd5>
+    <version>8.00</version>
+    <time>1672754734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046386</requestid>
+  </revision>
+</revisionlist>

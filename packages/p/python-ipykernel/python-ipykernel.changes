@@ -1,0 +1,975 @@
+-------------------------------------------------------------------
+Wed Dec 20 21:56:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.27.1:
+  * Fix edit magic payload type #1171 (@blink1073)
+
+-------------------------------------------------------------------
+Sun Nov 26 15:27:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.27.0
+  * Extend argument handling of do_execute with cell metadata #1169
+    (@jjvraw)
+- Release 6.26.0
+  * Maintenance and upkeep improvements
+
+-------------------------------------------------------------------
+Sat Sep 23 16:44:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.25.2
+  * Make iostream shutdown more robust #1143 (@blink1073)
+  * Don't call QApplication.setQuitOnLastWindowClosed(False). #1142
+    (@anntzer)
+  * Avoid starting IOPub background thread after it's been stopped
+    #1137 (@minrk)
+
+-------------------------------------------------------------------
+Wed Aug 23 08:18:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix spec-cleaner: The stupid sle15 python reset macro needs to
+  be before python_module calls
+
+-------------------------------------------------------------------
+Mon Aug  7 17:17:39 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.25.1:
+  * Bugs fixed
+    + Modifying debugger to return the same breakpoints in 'debugInfo'
+      response as 'setBreakpoints' #1140 (@vaishnavi17)
+
+-------------------------------------------------------------------
+Sat Aug  5 16:08:00 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.25.0:
+  * Enhancements made
+    - feat: let display hook handle clear_output #1135
+      (@maartenbreddels)
+  * Bugs fixed
+    - Merge connection info into existing connection file if it
+      already exists #1133 (@jasongrout)
+  * Maintenance and upkeep improvements
+    - Clean up lint #1134 (@blink1073)
+
+- change from version 6.24.0:
+  * New features added
+    - Let get_parent decide the channel to get parent header
+      #1128 (@dby-tmwctw)
+  * Bugs fixed
+    - Bugfix: binary stdout/stderr handling #1129 (@arieleiz)
+
+-------------------------------------------------------------------
+Sun Jul  2 06:34:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix test suite hangs
+- Don't assume only Tumbleweed can have more than one flavor
+
+-------------------------------------------------------------------
+Sat Jul  1 16:27:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.23.3
+  * Check existence of connection_file before writing #1127
+    (@fecet)
+- Release 6.23.2
+  * Avoid ResourceWarning on implicitly closed event pipe sockets
+    #1125 (@minrk)
+  * fix: protect stdout/stderr restoration in
+    InProcessKernel._redirected_io #1122 (@charles-cooper)
+
+-------------------------------------------------------------------
+Fri Jun  2 12:42:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.23.1
+  * Avoid echoing onto a captured FD #1111 (@minrk)
+- Release 6.23.0
+  * Support control<>iopub messages to e.g. unblock comm_msg from
+    command execution #1114 (@tkrabel-db)
+  * Add outstream hook similar to display publisher #1110
+    (@maartenbreddels)
+
+-------------------------------------------------------------------
+Tue Apr  4 14:58:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.22.0
+  * Deprecate Comm class + Fix incompatibility with ipywidgets
+    #1097 (@martinRenou)
+
+-------------------------------------------------------------------
+Sun Mar 19 16:23:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.21.3
+  * Fix interrupt reply #1101 (@garlandz-db)
+- Release 6.21.2
+  * Un-expose __file__ and expose __session__ instead. #1095
+    (@Carreau)
+  * Remove test_enter_eventloop #1084 (@davidbrochart)
+
+-------------------------------------------------------------------
+Sun Feb  5 15:09:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.21.1
+  * Restore nest-asyncio for tk loop #1086 (@blink1073)
+- Release 6.21.0
+  * Expose session start file in file. #1078 (@Carreau)
+  * Add copy_to_globals debug request handling #1055 (@brichet)
+
+-------------------------------------------------------------------
+Sun Jan 22 12:56:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.20.2
+  * Fix Exception in OutStream.close() #1076 (@ilyasher)
+
+-------------------------------------------------------------------
+Sat Jan 14 13:37:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.20.1
+  * Don't raise error when trying to create another Qt app for Qt
+    eventloop #1071 (@ccordoba12)
+  * Fix types and sync lint deps #1070 (@blink1073)
+- Release 6.20.0
+  * ENH: add %gui support for Qt6 #1054 (@shaperilio)
+
+-------------------------------------------------------------------
+Sun Dec 25 17:46:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.19.4
+  * Don't pass None kernels to logging configurable in Comm #1061
+    (@bollwyvl)
+- Release  6.19.3
+  * format dates as ISO8601 #1057 (@GRcharles)
+  * Fix comms and add qtconsole downstream test #1056 (@blink1073)
+  * Fix lint #1058 (@blink1073)
+  * Fix comms and add qtconsole downstream test #1056 (@blink1073)
+- Release  6.19.2
+  * Fix error in %edit magic #1053 (@ccordoba12)
+- Release  6.19.1
+  * fix: too many arguments dropped when passing to base comm
+    constructor #1051 (@maartenbreddels)
+- Release 6.19.0
+  * Fix: there can be only one comm_manager #1049
+    (@maartenbreddels)
+  * Adopt ruff and address lint #1046 (@blink1073)
+- Release 6.18.3
+  * Fix Comm interface for downstream users #1042
+    (@maartenbreddels)
+- Release 6.18.2
+  * Configurables needs to be configurable #1037 (@Carreau)
+- Release 6.18.1
+  * fix: use comm package in backwards compatible way #1028
+    (@maartenbreddels)
+  * Add more testing and deprecate the Gtk event loops #1036
+    (@blink1073)
+  * More coverage improvements #1035 (@blink1073)
+  * Add more tests #1034 (@blink1073)
+  * Add more kernel tests #1032 (@blink1073)
+  * Add more coverage and add Readme badges #1031 (@blink1073)
+  * Clean up testing and coverage #1030 (@blink1073)
+  * Use base setup dependency type #1029 (@blink1073)
+- Release 6.18.0
+  * Add terminal color support #1025 (@blink1073)
+  * Extract the Comm Python package #973 (@martinRenou)
+  * Add windows coverage and clean up workflows #1023 (@blink1073)
+  * Increase coverage #1021 (@blink1073)
+  * Allow releasing from repo #1020 (@blink1073)
+- Release 6.17.1
+  * Ignore the new Jupyter_core deprecation warning in CI #1019
+    (@jasongrout)
+  * Bump actions/checkout from 2 to 3 #1018 (@dependabot)
+  * Add dependabot #1017 (@blink1073)
+  * Add pyupgrade to pre-commit #1014 (@blink1073)
+
+-------------------------------------------------------------------
+Sat Nov  5 19:41:17 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python >= 3.8
+
+- update to version 6.17.0:
+  * Enhancements made
+    + Enable webagg in %matplotlib #1012 (@zhizheng1)
+  * Maintenance and upkeep improvements
+    + Update supported pythons to 3.8-3.11 #1013 (@blink1073)
+
+-------------------------------------------------------------------
+Wed Oct 26 08:13:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.16.2
+  * Fix failing test and update matrix #1010 (@blink1073)
+- Disable debugger tests
+
+-------------------------------------------------------------------
+Sat Oct 22 03:37:06 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.16.1:
+  * Bugs fixed
+    + PR: Destroy tk app to avoid memory leak #1008 (@impact27)
+  * Maintenance and upkeep improvements
+    + Maintenance cleanup #1006 (@blink1073)
+    + Ignore warnings in prereleases test #1002 (@blink1073)
+
+-------------------------------------------------------------------
+Tue Sep 27 16:56:23 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.16.0:
+  * Maintenance and upkeep improvements
+    + Use hatch for version #998 (@blink1073)
+    + Add client 8 support #996 (@blink1073)
+    + Remove unused manifest file #994 (@blink1073)
+
+-------------------------------------------------------------------
+Tue Sep 13 15:42:50 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.15.3:
+  * Bugs fixed
+    + PR: Close memory leak #990 (@impact27)
+    + Handle all possible exceptions when trying to import the
+      debugger #987 (@JohanMabille)
+  * Maintenance and upkeep improvements
+    + Add python logo in svg format #984 (@steff456)
+
+-------------------------------------------------------------------
+Thu Sep  8 14:36:10 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.15.2:
+  * Bugs fixed
+    + _abort_queues is no longer async #942 (@rhelmot)
+
+-------------------------------------------------------------------
+Sat Jul  9 13:30:40 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove patch support-hatchling-14.patch (included upstream)
+
+- update to version 6.15.1:
+  * Bugs fixed
+    + Fix inclusion of launcher file and check in CI #964 (@blink1073)
+  * Maintenance and upkeep improvements
+    + [pre-commit.ci] pre-commit autoupdate #962 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #961 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #960 (@pre-commit-ci)
+
+-------------------------------------------------------------------
+Fri Jul  8 10:57:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-hatchling-14.patch:
+  * Support hatchling >= 1.4
+
+-------------------------------------------------------------------
+Wed Jun 22 21:40:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update requirements and test suite setup
+
+-------------------------------------------------------------------
+Wed Jun 22 13:38:36 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update requirements
+  * switch to pyproject.toml build
+
+- update to version 6.15.0:
+  * Bugs fixed
+    + Fix compatibility with tornado 6.2 beta #956 (@minrk)
+  * Maintenance and upkeep improvements
+    + Back to top-level tornado IOLoop #958 (@minrk)
+    + Explicitly require pyzmq >= 17 #957 (@minrk)
+    + [pre-commit.ci] pre-commit autoupdate #954 (@pre-commit-ci)
+
+- changes from version 6.14.0:
+  * Enhancements made
+    + Add cpu_count to the usage_reply #952 (@echarles)
+  * Bugs fixed
+    + use pss memory info type if available for the resource usage
+      reply #948 (@echarles)
+    + Ensure psutil for the process is accurate #937 (@echarles)
+  * Maintenance and upkeep improvements
+    + Fix sphinx 5.0 support #951 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #950 (@pre-commit-ci)
+
+- changes from version 6.13.1:
+  * Bugs fixed
+    + Fix richInspectVariables #943 (@davidbrochart)
+    + Force debugger metadata in built wheel #941 (@blink1073)
+  * Maintenance and upkeep improvements
+    + [pre-commit.ci] pre-commit autoupdate #945 (@pre-commit-ci)
+    + Clean up typings #939 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #938 (@pre-commit-ci)
+    + Clean up types #933 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #932 (@pre-commit-ci)
+    + Switch to hatch backend #931 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #928 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #926 (@pre-commit-ci)
+    + Allow enforce PR label workflow to add labels #921 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #920 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #919 (@pre-commit-ci)
+    + [pre-commit.ci] pre-commit autoupdate #917 (@pre-commit-ci)
+
+- changes from version 6.13.0:
+  * Enhancements made
+    + Add the PID to the resource usage reply #908 (@echarles)
+  * Bugs fixed
+    + Fix qtconsole spawn #915 (@andia89)
+  * Maintenance and upkeep improvements
+    + Add basic mypy support #913 (@blink1073)
+    + Clean up pre-commit #911 (@blink1073)
+    + Update setup.py #909 (@tlinhart)
+    + [pre-commit.ci] pre-commit autoupdate #906 (@pre-commit-ci)
+
+- changes from version 6.12.1:
+  * Maintenance and upkeep improvements
+    + Clean up test deps and test setup #904 (@blink1073)
+
+- changes from version 6.12.0:
+  * Enhancements made
+    + use packaging instead of pkg_resources to parse versions #900
+      (@minrk)
+  * Bugs fixed
+    + Make cell_id optional #902 (@blink1073)
+    + Do not try to send on iostream if closed #899 (@blink1073)
+
+- changes from version 6.11.0:
+  * Enhancements made
+    + Include method signatures in experimental completion results
+      #895 (@MrBago)
+    + Try to pass cell id to executing kernel. #886 (@Carreau)
+  * Maintenance and upkeep improvements
+    + Handle warnings in tests #896 (@blink1073)
+    + Run flake and remove deprecated import #894 (@blink1073)
+    + Add ignore-revs file #893 (@blink1073)
+    + Autoformat with black and isort #892 (@blink1073)
+    + Add pytest opts and pre-commit #889 (@blink1073)
+
+- changes from version 6.10.0:
+  * Enhancements made
+    + Improve performance of stderr and stdout stream buffer #888
+      (@MrBago)
+  * Bugs fixed
+    + Check if the current thread is the io thread #884 (@jamadeo)
+  * Maintenance and upkeep improvements
+    + More CI cleanup #887 (@blink1073)
+    + CI cleanup #885 (@blink1073)
+  * Documentation improvements
+    + Add precision about subprocess stdout/stderr capturing #883
+      (@lesteve)
+
+-------------------------------------------------------------------
+Fri Mar 18 18:23:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip the new shutdown test: too flaky for obs
+
+-------------------------------------------------------------------
+Fri Mar 18 17:19:26 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require psutil
+
+- update to version 6.9.2:
+  * Bugs fixed
+    + Catch error when shutting down kernel from the control channel
+      #877 (@ccordoba12)
+    + Only kill children in process group at shutdown #874 (@minrk)
+    + BUG: Kill subprocesses on shutdown. #869 (@Carreau)
+  * Maintenance and upkeep improvements
+    + Clean up CI #871 (@blink1073)
+
+-------------------------------------------------------------------
+Thu Feb 17 16:33:02 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.9.1:
+  * Bugs fixed
+    + Add hostname to the usage reply #865 (@echarles)
+    + Enable standard library debugging via config #863 (@echarles)
+    + process_one only accepts coroutines for dispatch #861 (@minrk)
+
+-------------------------------------------------------------------
+Thu Feb 10 05:16:05 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.9.0:
+  * Bugs fixed
+    + Fixed event forwarding #855 (@JohanMabille)
+    + use message queue for abort_queues #853 (@minrk)
+
+- changes from version 6.8.0:
+  * Enhancements made
+    + Add support for the debug modules request #816 (@echarles)
+  * Bugs fixed
+    + Handle all threads stopped correctly #849 (@JohanMabille)
+    + Fix the debug modules model #848 (@echarles)
+    + Handled AllThreadsContinued and workaround for wrong threadId in
+      cont… #844 (@JohanMabille)
+  * Maintenance and upkeep improvements
+    + Cancel duplicate runs #850 (@blink1073)
+
+-------------------------------------------------------------------
+Sat Jan 15 14:59:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Cleanup specfile
+- Update dependency declarations
+
+-------------------------------------------------------------------
+Fri Jan 14 17:29:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.7.0:
+  - PR: do_one_iteration is a coroutine
+  - Clean python 2 artifacts. Fix
+  - Fix title position in changelog
+  - Set debugOptions for breakpoints in python standard library
+    source
+  - Send omit_sections to IPython to choose which sections of
+    documentation you do not want
+  - Added missing exceptionPaths field to debugInfo reply
+  - Test jupyter_kernel_test as downstream
+  - Remove nose dependency
+  - Add explicit encoding to open calls in debugger
+  - Fix the temp file name created by the debugger
+  - Enforce labels on PRs
+  - Unpin IPython, and remove some dependencies on it.
+  - Fix rich variables inspection
+  - Do not call setQuitOnLastWindowClosed() on a QCoreApplication
+  - Drop ipython_genutils requirement
+
+-------------------------------------------------------------------
+Sun Dec 19 19:59:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.4.2
+  * Enabled rich rendering of variables in the debugger #787
+    (@JohanMabille)
+  * Remove setting of the eventloop function in the InProcessKernel
+    #781 (@rayosborn)
+  * Add python version classifiers #783 (@emuccino)
+
+-------------------------------------------------------------------
+Wed Sep 22 15:23:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Deduplicate files in _jupyter_kernel_dir.
+
+-------------------------------------------------------------------
+Wed Sep 22 15:15:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Revert and clarify some specfile changes:
+  * fix kernelspec install for primary flavor
+  * BuildRequires debugpy is sufficiently declared once
+
+-------------------------------------------------------------------
+Wed Sep 15 05:29:16 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require debugpy for build
+
+- update to version 6.4.1:
+  * Merged PRs
+    + debugpy is now a build requirement #773 (@minrk)
+
+- changes from version 6.4.0:
+  * Enhancements made
+    + Make json_clean a no-op for jupyter-client >= 7 #708
+      (@martinRenou)
+  * Bugs fixed
+    + Do not assume kernels have loops #766 (@Carreau)
+    + Fix undefined variable #765 (@martinRenou)
+  * Maintenance and upkeep improvements
+    + Make ipykernel work without debugpy #767 (@frenzymadness)
+    + Stop using deprecated recv_multipart when using in-process
+      socket. #762 (@Carreau)
+    + Update some warnings with instructions and version number. #761
+      (@Carreau)
+
+-------------------------------------------------------------------
+Mon Sep  6 11:20:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.1
+  * Add dependency on IPython genutils gh#ipython/ipykernel#756
+
+-------------------------------------------------------------------
+Mon Aug 30 19:28:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.0
+  * Add deep variable inspection #753 (@JohanMabille)
+  * Add IPKernelApp.capture_fd_output config to disable FD-level
+    capture #752 (@minrk)
+  * Remove a lot of nose stuff
+- Release 6.2.0
+  * Add Support for Message Based Interrupt #741 (@afshin)
+- Release 6.1.0
+  * Implemented richInspectVariable request handler #734
+    (@JohanMabille)
+  * Fix exception raised by OutStream.write #726 (@SimonKrughoff)
+
+-------------------------------------------------------------------
+Wed Jul 28 12:08:06 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Skip pickle tests to get rid of ipyparallel dependency which we
+  don't want in Ring1 stagings
+
+-------------------------------------------------------------------
+Fri Jul 23 08:22:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.0.3
+  * KernelApp: rename ports variable to avoid override #731
+    (@amorenoz)
+- Release version 6.0.2
+  * Add watchfd keyword to InProcessKernel OutStream initialization
+    #727 (@rayosborn)
+  * Fix typo in eventloops.py #711 (@selasley)
+  * [bugfix] fix in setup.py (comma before appnope) #709
+    (@jstriebel)
+  * Add upper bound to dependency versions. #714 (@martinRenou)
+  * Replace non-existing function. #723 (@Carreau)
+  * Remove unused variables #722 (@Carreau)
+  * Do not use bare except #721 (@Carreau)
+  * misc whitespace and line too long #720 (@Carreau)
+  * Formatting: remove semicolon #719 (@Carreau)
+  * Clean most flake8 unused import warnings. #718 (@Carreau)
+  * Minimal flake8 config #717 (@Carreau)
+  * Remove CachingCompiler's filename_mapper #710 (@martinRenou)
+- Release version 6.0.1
+  * Fix Tk and asyncio event loops #704 (@ccordoba12)
+  * Stringify variables that are not json serializable in
+    inspectVariable #702 (@JohanMabille)
+- Install kernelspecs for each flavor. Remove common
+  jupyter-ipykernel package
+
+-------------------------------------------------------------------
+Thu Jul  1 17:17:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.0.0
+  IPykernel 6.0 is the first major release in about two years,
+  that brings a number of improvements, code cleanup, and new
+  features to IPython.
+  IPykernel 6 should contain all changes of the 5.x series, in
+  addition to the following non-exhaustive changes:
+  * Support for the debugger protocol, when using JupyterLab,
+    RetroLab or any frontend supporting the debugger protocol you
+    should have access to the debugger functionalities.
+  * The control channel on IPykernel 6.0 is run in a separate
+    thread, this max change the order in which messages are
+    processed, though this change was necessary to accommodate
+    the debugger.
+  * We now have a new dependency: matplotlib-inline, this helps
+    to separate the circular dependency between IPython/IPykernel
+    and matplotlib.
+  * All outputs to stdout/stderr should now be captured,
+    including subprocesses and output of compiled libraries
+    (blas, lapack....). In notebook server, some outputs that
+    would previously go to the notebooks logs will now
+    both head to notebook logs and in notebooks outputs. In
+    terminal frontend like Jupyter Console, Emacs or other, this
+    may ends up as duplicated outputs.
+  * coroutines are now native (async-def) , instead of using
+    tornado's @gen.coroutine
+  * OutStreams can now be configured to report istty() == True,
+    while this should make some output nicer (for example colored),
+    it is likely to break others. Use with care.
+  Deprecations in 6.0
+  * Kernels now support only a single shell stream, multiple
+    streams will now be ignored. The attribute
+  * Kernel.shell_streams (plural) is deprecated in ipykernel 6.0.
+    Use Kernel.shell_stream (singular)
+  * Kernel._parent_header is deprecated, even though it was
+    private. Use .get_parent() now.
+  Removal in 6.0
+  * ipykernel.codeutils was deprecated since 4.x series (2016) and
+    has been removed, please import similar functionalities from
+    ipyparallel
+  * remove find_connection_file and profile argument of
+    connect_qtconsole and get_connection_info, deprecated since
+    IPykernel 4.2.2 (2016).
+
+-------------------------------------------------------------------
+Fri Jun 25 12:08:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.5.5
+  * Keep preferring SelectorEventLoop on Windows. #669
+- Release 5.5.4
+  * Import configure_inline_support from matplotlib_inline if
+    available #654
+- Release 5.5.3
+  * Revert Backport of #605: Fix Handling of shell.should_run_async
+    #622
+- Release 5.5.2 and Release 5.5.1 were yanked from PyPI
+- Release 5.5.0
+  * kernelspec: ensure path is writable before writing kernel.json.
+    #593
+  * Add configure_inline_support and call it in the shell. #590
+  * Fix stop_on_error_timeout to now properly abort
+    execute_request's that fall within the timeout after an error.
+    #572
+
+-------------------------------------------------------------------
+Sat Feb 13 23:21:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.4.3
+  * Rework wait_for_ready logic.
+- Don't test with python36-numpy because it is no more (NEP 29)
+- Skip two completion tests due to newer jedi support in ipython
+  gh#ipython/ipykernel#578 gh#ipython/ipykernel#579
+
+-------------------------------------------------------------------
+Wed Feb  3 22:39:49 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- BuildRequire jupyter-jupyter_core-filesystem for the macro
+
+-------------------------------------------------------------------
+Mon Dec 14 22:47:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 5.4.2
+  * Revert "Fix stop_on_error_timeout blocking other messages in
+    queue"
+- changes in 5.4.1
+  * Invalid syntax in ipykernel/log.py.
+- changes in 5.4.0
+  5.4.0 is generally focused on code quality improvements and
+  tornado asyncio compatibility.
+  * Add github actions, bail on asyncio patch for tornado 6.1.
+  * Start testing on Python 3.9.
+  * Fix stack levels for ipykernel's deprecation warnings and stop
+    using some deprecated APIs.
+  * Add env parameter to kernel installation
+  * Fix stop_on_error_timeout blocking other messages in queue.
+  * Remove most of the python 2 compat code.
+  * Remove u-prefix from strings.
+
+-------------------------------------------------------------------
+Sat Jul 25 15:31:23 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.4:
+  * Only run Qt eventloop in the shell stream. (:ghpull:`531`)
+
+-------------------------------------------------------------------
+Sat Jul 18 18:10:45 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.3:
+  * Fix QSocketNotifier in the Qt event loop not being disabled for
+    the control channel. (:ghpull:`525`)
+
+-------------------------------------------------------------------
+Sat Jul 11 19:29:18 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.2:
+  * Restore timer based event loop as a Windows-compatible
+    fallback. (:ghpull:`523`)
+
+- changes from version 5.3.1:
+  * Fix #520: run post_execute and post_run_cell on async cells
+    (:ghpull:`521`)
+  * Fix exception causes in zmqshell.py (:ghpull:`516`)
+  * Make pdb on Windows interruptible (:ghpull:`490`)
+
+-------------------------------------------------------------------
+Sat May 30 23:53:01 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.0:
+  * Fix ipython display imports (:ghpull:`509`)
+  * Skip test_unc_paths if OS is not Windows (:ghpull:`507`)
+  * Allow interrupting input() on Windows, as part of effort to make
+    pdb interruptible (:ghpull:`498`)
+  * Add Trio Loop (:ghpull:`479`)
+  * Flush from process even without newline (:ghpull:`478`)
+
+-------------------------------------------------------------------
+Sat Apr 18 21:29:00 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.2.1:
+  * Handle system commands that use UNC paths on Windows
+    (:ghpull:`500`)
+  * Add offset argument to seek in io test (:ghpull:`496`)
+
+-------------------------------------------------------------------
+Sat Mar 28 16:35:30 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+  * removed patch fix_jupyter_client_6.patch, included upstream
+
+- update to version 5.2.0:
+  * Produce better traceback when kernel is interrupted
+    (:ghpull:`491`)
+  * Add InProcessKernelClient.control_channel for compatibility with
+    jupyter-client v6.0.0 (:ghpull:`489`)
+  * Drop support for Python 3.4 (:ghpull:`483`)
+  * Work around issue related to Tornado with python3.8 on Windows
+    (:ghpull:`480`, :ghpull:`481`)
+  * Prevent entering event loop if it is None (:ghpull:`464`)
+  * Use shell.input_transformer_manager when available (:ghpull:`411`)
+
+-------------------------------------------------------------------
+Wed Mar 11 13:31:10 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Add fix_jupyter_client_6.patch
+  Fixes issue with jupyter-client > 6
+  From: https://github.com/ipython/ipykernel/pull/489
+  See: https://github.com/jupyter/jupyter_client/issues/523
+
+-------------------------------------------------------------------
+Tue Jan 28 15:46:11 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.1.4
+  * Fix pickle issues when using inline matplotlib backend
+  * Fix an error during kernel shutdown
+  * Fix compatibility issues with Python 3.8
+  * Remove some dead code
+
+-------------------------------------------------------------------
+Tue Nov 12 17:03:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.1.3
+  * Fix comm shutdown behavior by adding a ``deleting`` option to ``close`` which can be set to prevent registering new comm channels during shutdown
+  * Fix ``Heartbeat._bind_socket`` to return on the first bind
+  * Moved ``InProcessKernelClient.flush`` to ``DummySocket``
+  * Don't redirect stdout if nose machinery is not present
+  * Rename `_asyncio.py` to `_asyncio_utils.py` to avoid name conflicts on Python 3.6+
+  * Only generate kernelspec when installing or building wheel
+  * Fix priority ordering of control-channel messages in some cases
+
+-------------------------------------------------------------------
+Fri Aug  9 05:20:15 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace HTML and PDF version of changelog with the single
+  changelog.rst they contained, obsoleting jupyter-ipykernel-doc
+- Activated test suite
+- Update to 5.1.2
+  * Fix socket-binding race conditions
+  * Add a no-op flush method to DummySocket and comply with stream API
+  * Update kernel version to indicate kernel v5.3 support
+  * Add testing for upcoming Python 3.8 and PEP 570 positional parameters
+
+-------------------------------------------------------------------
+Thu May 16 19:12:11 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.1.1
+  * 5.1.1 fixes a bug that caused cells to get stuck in a busy state.
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+
+-------------------------------------------------------------------
+Thu Oct 11 16:33:41 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Thu Oct 11 16:01:27 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update doc files
+
+-------------------------------------------------------------------
+Thu Oct 11 04:52:51 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.1.0:
+  * Fix message-ordering bug that could result in out-of-order
+    executions, especially on Windows (:ghpull:`356`)
+  * Fix classifiers to indicate dropped Python 2 support
+    (:ghpull:`354`)
+  * Remove some dead code (:ghpull:`355`)
+  * Support rich-media responses in inspect_requests (tooltips)
+    (:ghpull:`361`)
+
+-------------------------------------------------------------------
+Thu Sep 27 20:44:12 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 5.0.0
+  * Drop support for Python 2. ipykernel 5.0 requires Python >= 3.4
+  * Add support for IPython’s asynchronous code execution (PR #323)
+  * Update release process in CONTRIBUTING.md (PR #339)
+- Drop python 2 build since they are no longer supported.
+- Switch to wheels for more reliable installation.
+
+-------------------------------------------------------------------
+Fri Sep  7 15:19:52 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 4.9.0
+  * Python 3.3 is no longer supported (:ghpull:`336`)
+  * Flush stdout/stderr in KernelApp before replacing (:ghpull:`314`)
+  * Allow preserving stdout and stderr in KernelApp (:ghpull:`315`)
+  * Override writable method on OutStream (:ghpull:`316`)
+  * Add metadata to help display matplotlib figures legibly (:ghpull:`336`)
+
+-------------------------------------------------------------------
+Mon Feb 26 01:07:14 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 4.8.2
+  * Fix compatibility issue with qt eventloop and pyzmq 17 (:ghpull:`307`).
+- Update to version 4.8.1
+  * set zmq.ROUTER_HANDOVER socket option when available
+    to workaround libzmq reconnect bug (:ghpull:`300`).
+  * Fix sdists including absolute paths for kernelspec files,
+    which prevented installation from sdist on Windows
+    (:ghpull:`306`).
+
+-------------------------------------------------------------------
+Thu Feb 15 14:59:24 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 4.8.0
+  * set zmq.ROUTER_HANDOVER socket option when available
+    to workaround libzmq reconnect bug (:ghpull:`300`).
+  * Fix sdists including absolute paths for kernelspec files,
+    which prevented installation from sdist on Windows
+    (:ghpull:`306`).
+
+-------------------------------------------------------------------
+Thu Jan 18 06:50:10 UTC 2018 - toddrme2178@gmail.com
+
+- update to version 4.8.9
+  * Cleanly shutdown integrated event loops when shutting down the
+    kernel. (:ghpull:`290`)
+  * %gui qt now uses Qt 5 by default rather than Qt 4, following a
+    similar change in terminal IPython. (:ghpull:`293`)
+  * Fix event loop integration for :mod:`asyncio` when run with
+    Tornado 5, which uses asyncio where available. (:ghpull:`296`)
+
+-------------------------------------------------------------------
+Thu Dec 21 18:45:08 UTC 2017 - arun@gmx.de
+
+- update to version 4.7.0:
+  * Add event loop integration for :mod:`asyncio`.
+  * Use the new IPython completer API.
+  * Add support for displaying GIF images (mimetype image/gif).
+  * Allow the kernel to be interrupted without killing the Qt console.
+  * Fix is_complete response with cell magics.
+  * Clean up encoding of bytes objects.
+  * Clean up help links to use https and improve display titles.
+  * Clean up ioloop handling in preparation for tornado 5.
+
+-------------------------------------------------------------------
+Tue Sep 19 20:00:24 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.6.1
+  * Fix eventloop-integration bug preventing Qt windows/widgets
+    from displaying with ipykernel 4.6.0 and IPython ≥ 5.2.
+  * Avoid deprecation warnings about naive datetimes when working
+    with jupyter_client ≥ 5.0.
+
+-------------------------------------------------------------------
+Wed Apr 26 18:52:53 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Fri Apr  7 03:10:04 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.6.0
+  * Add to API `DisplayPublisher.publish` two new fully backward-compatible
+    keyword-args:
+      - `update: bool`
+      - `transient: dict`
+  * Support new `transient` key in `display_data` messages spec for `publish`.
+    For a display data message, `transient` contains data that shouldn't be
+    persisted to files or documents. Add a `display_id` to this `transient`
+    dict by `display(obj, display_id=...)`
+  * Add `ipykernel_launcher` module which removes the current working directory
+    from `sys.path` before launching the kernel. This helps to reduce the cases
+    where the kernel won't start because there's a `random.py` (or similar)
+    module in the current working directory.
+  * Add busy/idle messages on IOPub during processing of aborted requests
+  * Add active event loop setting to GUI, which enables the correct response
+    to IPython's `is_event_loop_running_xxx`
+  * Include IPython kernelspec in wheels to reduce reliance on "native kernel
+    spec" in jupyter_client
+  * Modify `OutStream` to inherit from `TextIOBase` instead of object to improve
+    API support and error reporting
+  * Fix IPython kernel death messages at start, such as "Kernel Restarting..."
+    and "Kernel appears to have died", when parent-poller handles PID 1
+  * Various bugfixes
+- Install icons
+
+-------------------------------------------------------------------
+Thu Mar 30 19:23:26 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.6.0
+  * Add to API `DisplayPublisher.publish` two new fully backward-compatible
+    keyword-args:
+      - `update: bool`
+      - `transient: dict`
+  * Support new `transient` key in `display_data` messages spec for `publish`.
+    For a display data message, `transient` contains data that shouldn't be
+    persisted to files or documents. Add a `display_id` to this `transient`
+    dict by `display(obj, display_id=...)`
+  * Add `ipykernel_launcher` module which removes the current working directory
+    from `sys.path` before launching the kernel. This helps to reduce the cases
+    where the kernel won't start because there's a `random.py` (or similar)
+    module in the current working directory.
+  * Add busy/idle messages on IOPub during processing of aborted requests
+  * Add active event loop setting to GUI, which enables the correct response
+    to IPython's `is_event_loop_running_xxx`
+  * Include IPython kernelspec in wheels to reduce reliance on "native kernel
+    spec" in jupyter_client
+  * Modify `OutStream` to inherit from `TextIOBase` instead of object to improve
+    API support and error reporting
+  * Fix IPython kernel death messages at start, such as "Kernel Restarting..."
+    and "Kernel appears to have died", when parent-poller handles PID 1
+  * Various bugfixes
+- Update to 4.5.2
+  * Fix bug when instantating Comms outside of the IPython kernel (introduced in 4.5.1).
+- Update to 4.5.1
+  * Add missing ``stream`` parameter to overridden :func:`getpass`
+  * Remove locks from iopub thread, which could cause deadlocks during debugging
+  * Fix regression where KeyboardInterrupt was treated as an aborted request, rather than an error
+  * Allow instantating Comms outside of the IPython kernel
+- Update to 4.5.0
+  * Use figure.dpi instead of savefig.dpi to set DPI for inline figures
+  * Support ipympl matplotlib backend (requires IPython update as well to fully work)
+  * Various bugfixes, including fixes for output coming from threads,
+    and :func:`input` when called with non-string prompts, which stdlib allows.
+- Update to 4.4.1
+  * Fix circular import of matplotlib on Python 2 caused by the inline backend changes in 4.4.0.
+- Update to 4.4.0
+  * Use `MPLBACKEND`_ environment variable to tell matplotlib >= 1.5 use use the inline backend by default.
+    This is only done if MPLBACKEND is not already set and no backend has been explicitly loaded,
+    so setting ``MPLBACKEND=Qt4Agg`` or calling ``%matplotlib notebook`` or ``matplotlib.use('Agg')``
+    will take precedence.
+  * Fixes for logging problems caused by 4.3,
+    where logging could go to the terminal instead of the notebook.
+  * Add ``--sys-prefix`` and ``--profile`` arguments to :command:`ipython kernel install`
+  * Allow Comm (Widget) messages to be sent from background threads.
+  * Select inline matplotlib backend by default if ``%matplotlib`` magic or
+    ``matplotlib.use()`` are not called explicitly (for matplotlib >= 1.5).
+  * Fix some longstanding minor deviations from the message protocol
+    (missing status: ok in a few replies, connect_reply format).
+  * Remove calls to NoOpContext from IPython, deprecated in 5.0.
+- Update to 4.3.2
+  * Use a nonempty dummy session key for inprocess kernels to avoid security
+    warnings.
+  * Fix Windows Python 3.5 incompatibility caused by faulthandler patch in 4.3
+- Update to 4.3.0
+  * Publish all IO in a thread, via :class:`IOPubThread`.
+    This solves the problem of requiring :meth:`sys.stdout.flush` to be called in the notebook to produce output promptly during long-running cells.
+  * Remove refrences to outdated IPython guiref in kernel banner.
+  * Patch faulthandler to use ``sys.__stderr__`` instead of forwarded ``sys.stderr``,
+    which has no fileno when forwarded.
+  * Deprecate some vestiges of the Big Split:
+  * :func:`ipykernel.find_connection_file` is deprecated. Use :func:`jupyter_client.find_connection_file` instead.
+  * Various pieces of code specific to IPython parallel are deprecated in ipykernel
+    and moved to ipyparallel.
+- Split documentation into own subpackage
+
+-------------------------------------------------------------------
+Wed Feb 17 13:35:39 UTC 2016 - toddrme2178@gmail.com
+
+- Update to version 4.2.2
+  * Don't show interactive debugging info when kernel crashes
+  * Fix handling of numerical types in json_clean
+  * Testing fixes for output capturing
+- update to version 4.2.1:
+  * Fix default display name back to "Python X" instead of "pythonX"
+- update to version 4.2.0:
+  * Support sending a full message in initial opening of comms
+    (metadata, buffers were not previously allowed)
+  * When using "ipython kernel install --name" to install the IPython
+    kernelspec, default display-name to the same value as "--name".
+- update to version 4.1.1:
+  * Fix missing "ipykernel.__version__" on Python 2.
+  * Fix missing "target_name" when opening comms from the frontend.
+
+-------------------------------------------------------------------
+Thu Oct  8 10:34:53 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 4.1.0
+  * add ipython kernel install entrypoint for installing the IPython kernelspec
+  * provisional implementation of comm_info request/reply for msgspec v5.1
+
+-------------------------------------------------------------------
+Tue Jul 21 15:14:54 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

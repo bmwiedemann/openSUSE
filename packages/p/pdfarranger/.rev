@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b710271358a976a3bf51e2b59abbea8c</srcmd5>
+    <version>1.7.0</version>
+    <time>1617279419</time>
+    <user>RBrownSUSE</user>
+    <comment>active fork of pdfshuffler</comment>
+    <requestid>881825</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84ee5fe7b6365d48f19f355f861431b6</srcmd5>
+    <version>1.7.1</version>
+    <time>1618235384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1
+  * Fix &quot;TypeError: only pages can be inserted&quot; with
+    libqpdf &gt;= 10.2.0 &amp; pikepdf &lt; 2.7.0
+  * Display imported files in alphabetical order
+  * Release memory after rendering and deleting pages
+  * Installation instructions for FreeBSD
+  * Fix a segfault on &quot;crop white borders&quot; while rendering thumbnails
+  * Allow PDF Arranger to be recognized as a handler for all image
+    MIME type that it can handle
+  * Fix min &amp; max zoom level limits
+  * Fix issue with pages copied with ctrl + dnd
+  * Fix displayed page range when using paste before</comment>
+    <requestid>884623</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4e99c9029e70ca8daeac2c414311e54</srcmd5>
+    <version>1.8.1</version>
+    <time>1639424679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1
+  * Fix transformation (rotation, crop, split, ...) of duplicated
+    pages
+  * Fix some UI glitches
+  * Update some translations
+  * Set minimum pikepdf version to 1.17.0
+  * Fix import of PDF with CropBox
+  * Fix clipboard on Wayland
+  * Remember window position on screen
+  * Fix error with annotations on duplicated pages</comment>
+    <requestid>940186</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a34114017155548bf42ef907747c1b33</srcmd5>
+    <version>1.8.2</version>
+    <time>1647806133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * Fix 2 bugs in scaled pages export</comment>
+    <requestid>963195</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a239ec2faa066d58bd127b481af4e5dd</srcmd5>
+    <version>1.8.2</version>
+    <time>1663155888</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing typelib-1_0-Gtk-3_0 requirement</comment>
+    <requestid>1003374</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a00087e1af06ebf9c23ff1a17e0e587e</srcmd5>
+    <version>1.9.1</version>
+    <time>1666361980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030239</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6c6c4af66c5f2847819759ebad1acab6</srcmd5>
+    <version>1.9.2</version>
+    <time>1669724608</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.9.2</comment>
+    <requestid>1038836</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8573164dfad7d5d4ad69dc526c7c9617</srcmd5>
+    <version>1.10.0</version>
+    <time>1694019396</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108960</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>015da7d9cdf1adb20be7b41283622fa2</srcmd5>
+    <version>1.10.1</version>
+    <time>1703527568</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135003</requestid>
+  </revision>
+</revisionlist>

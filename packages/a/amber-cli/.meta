@@ -1,0 +1,6 @@
+<package name="amber-cli" project="openSUSE:Factory">
+  <title>amber-cli </title>
+  <description>CLI tool for Tenants to use and access Amber services. Amber remotely verifies trustworthiness of Intel SGX and Intel TDX TEEs.</description>
+  <devel project="devel:languages:go" package="amber-cli"/>
+  <url>https://github.com/intel/amber-cli</url>
+</package>

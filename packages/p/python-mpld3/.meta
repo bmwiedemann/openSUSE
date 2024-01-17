@@ -1,0 +1,14 @@
+<package name="python-mpld3" project="openSUSE:Factory">
+  <title>D3 Viewer for Matplotlib</title>
+  <description>This is an interactive D3js-based viewer which brings matplotlib graphics to the browser.
+Please visit http://mpld3.github.io for documentation and examples.
+
+mpld3 provides a custom stand-alone javascript library built on D3, which
+parses JSON representations of plots.  The mpld3 python module provides a
+set of routines which parses matplotlib plots (using the mplexporter
+framework) and outputs the JSON description readable by mpld3.js.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-mpld3"/>
+  <url>https://mpld3.github.com</url>
+</package>

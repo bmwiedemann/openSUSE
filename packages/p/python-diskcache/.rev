@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b2bd43a9d7b0163042a64f8d1b04176</srcmd5>
+    <version>3.0.6</version>
+    <time>1530303789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616819</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50964fb39481fd5077d26872bd5cd23c</srcmd5>
+    <version>3.1.1</version>
+    <time>1552380826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Fix various timeouts
+  * Small fixes around</comment>
+    <requestid>682845</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9c28f29d9002f6e88b53b8299625ceab</srcmd5>
+    <version>4.0.0</version>
+    <time>1564137684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718529</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>28450fa8bfd7e434dd34394e01b4ad70</srcmd5>
+    <version>4.0.0</version>
+    <time>1573774417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to pull in full python due to the dependencies</comment>
+    <requestid>748706</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>644ea9078678b43a594d035245db991b</srcmd5>
+    <version>4.1.0</version>
+    <time>1582810725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * Move zero-expiration logic into memoize (rather than Cache.set)
+  * Provide JSONDisk with diskcache (#124)
+  * Add check for DEFAULT_TIMEOUT in DjangoCache.memoize</comment>
+    <requestid>779740</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c5d0eba817bca8b84fcb7faaf93885b</srcmd5>
+    <version>5.0.3</version>
+    <time>1600347954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.3:
+  * drop python 2.7 support
+  * python 3.8 fixes
+  * add documentation about cache volume caveats</comment>
+    <requestid>835168</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bca9771441f9b03dee96d396a7c75c72</srcmd5>
+    <version>5.1.0</version>
+    <time>1605644788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * Support transactions in FanoutCache (probably a bad idea)
+  * Prevent cache shard attribute access when unsafe</comment>
+    <requestid>849007</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>baec9c2430a63a87b92f7164bed3c721</srcmd5>
+    <version>5.3.0</version>
+    <time>1640876125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943001</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f221633a91fd0b01ff891cb3b55369b3</srcmd5>
+    <version>5.4.0</version>
+    <time>1642455232</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.0:
+  * test django 3.2
+  * Fix DjangoCache.delete to return True/False
+  * remove unused imports
+  * run isort</comment>
+    <requestid>946689</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8765d7c41de2140db0f3482abac9d43c</srcmd5>
+    <version>5.6.1</version>
+    <time>1682522706</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.1
+  * Close the cache explictly before deleting the reference
+  * pylint fixes
+  * Add maxlen parameter to diskcache.Deque
+  * update docs
+  * Support pathlib.Path as directory argument</comment>
+    <requestid>1082879</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b00ab54287cbc14238e83ba012906b5a</srcmd5>
+    <version>5.6.3</version>
+    <time>1693860845</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.6.3:
+  * Fix peek when value is so large that a file is used</comment>
+    <requestid>1108927</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3a8507ecf0fcc8550c54995c667ca049</srcmd5>
+    <version>5.6.3</version>
+    <time>1696188130</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114013</requestid>
+  </revision>
+</revisionlist>

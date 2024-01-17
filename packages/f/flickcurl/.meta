@@ -1,0 +1,13 @@
+<package name="flickcurl" project="openSUSE:Factory">
+  <title>Command-Line Tools for the Flickr Web Service</title>
+  <description>Flickcurl is a C library for calling the Flickr Web service API. It handles the
+API signing, token management, and parameter encoding and decoding, resulting
+in C functions for the Web services APIs. It... uses libcurl to call the REST
+Web service, and libxml2 to manipulate the XML responses. The library supports
+reading photo, tag, and comments information, the photo upload and searching
+APIs, and writing tags and comments. It provides utilities such as &quot;flickcurl&quot;
+to exercise the API and &quot;flickrdf&quot; to get RDF metadata descriptions out of
+photos, tags, and machine tags.</description>
+  <devel project="network:utilities" package="flickcurl"/>
+  <url>http://librdf.org/flickcurl/</url>
+</package>

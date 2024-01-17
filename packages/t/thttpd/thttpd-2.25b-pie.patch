@@ -1,0 +1,25 @@
+Index: extras/Makefile.in
+===================================================================
+--- extras/Makefile.in.orig	2012-01-31 14:03:08.735817916 +0100
++++ extras/Makefile.in	2012-01-31 14:05:10.222510744 +0100
+@@ -54,16 +54,16 @@
+ all:		makeweb htpasswd
+ 
+ makeweb:	makeweb.o
+-	$(CC) $(LDFLAGS) makeweb.o -o makeweb $(LIBS) $(NETLIBS)
++	$(CC) $(LDFLAGS) -pie makeweb.o -o makeweb $(LIBS) $(NETLIBS)
+ 
+ makeweb.o:	makeweb.c ../config.h
+-	$(CC) $(CFLAGS) -DWEBDIR=\"$(WEBDIR)\" -c makeweb.c
++	$(CC) $(CFLAGS) $(F_PIE) -DWEBDIR=\"$(WEBDIR)\" -c makeweb.c
+ 
+ htpasswd:	htpasswd.o
+-	$(CC) $(LDFLAGS) $(STATICFLAG) htpasswd.o -o htpasswd $(LIBS)
++	$(CC) $(LDFLAGS) $(STATICFLAG) -pie htpasswd.o -o htpasswd $(LIBS)
+ 
+ htpasswd.o:	htpasswd.c ../config.h
+-	$(CC) $(CFLAGS) -DWEBDIR=\"$(WEBDIR)\" -c htpasswd.c
++	$(CC) $(CFLAGS) $(F_PIE) -DWEBDIR=\"$(WEBDIR)\" -c htpasswd.c
+ 
+ 
+ install:	all

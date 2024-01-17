@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5096bdc0dec2c67358693c0b869ff25c</srcmd5>
+    <version>0.3.8</version>
+    <time>1285283577</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libkate based on submit request 48735 from user vuntz
+</comment>
+    <requestid>48735</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3fb1aba0ae34f18d19c286539449c12d</srcmd5>
+    <version>0.3.8</version>
+    <time>1285529926</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libkate based on submit request 49111 from user vuntz
+</comment>
+    <requestid>49111</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa9cac69a94348a90b8955d966a740cd</srcmd5>
+    <version>0.3.8</version>
+    <time>1286399601</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libkate based on submit request 49867 from user coolo
+</comment>
+    <requestid>49867</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>65562c96f74098beda5c96faf17d3e19</srcmd5>
+    <version>0.3.8</version>
+    <time>1291999152</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55388 from user elvigia
+</comment>
+    <requestid>55388</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7e3003a1e43016d997b2797bcc5f1da2</srcmd5>
+    <version>0.3.8</version>
+    <time>1291999157</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55388
+</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a00ed5483008334c9d0e4faff3a2881d</srcmd5>
+    <version>0.3.8</version>
+    <time>1295309375</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58571 from user plater
+</comment>
+    <requestid>58571</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a586dee39800ed6cff3925d0fac3b46c</srcmd5>
+    <version>0.3.8</version>
+    <time>1295309386</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58571
+</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>a586dee39800ed6cff3925d0fac3b46c</srcmd5>
+    <version>0.3.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>8d9cccab0a947b7cf271470410a4e300</srcmd5>
+    <version>0.3.8</version>
+    <time>1305896853</time>
+    <user>saschpe</user>
+    <comment>
+- Really removed &quot;Other uncritical OpenSource License&quot; from all the 
+  license fields and retained BSD3c. (forwarded request 68839 from jnweiger)</comment>
+    <requestid>68854</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>0914b02e23e88bac17f035ae549f6b56</srcmd5>
+    <version>0.3.8</version>
+    <time>1305896867</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68854
+</comment>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>cd20f1e60fadf133890449410a0b76a0</srcmd5>
+    <version>0.3.8</version>
+    <time>1316459550</time>
+    <user>lrupp</user>
+    <comment>- fix typos</comment>
+    <requestid>82438</requestid>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>faf862d50d1d9b7668e86b7d9248536a</srcmd5>
+    <version>0.4.1</version>
+    <time>1317026123</time>
+    <user>saschpe</user>
+    <comment>- fix rename of sub packages
+
+- Update to 0.4.1 and added download service.
+- Split liboggkate into it's own package and updated baselibs.conf.
+- Renamed katedj python-katedj in line with python naming policy.
+- Upstream changes since 0.3.8 :
+  *update bitstream and shared library versioning missed from 0.4.0
+  *timed and object metadata support
+  *fix various precision issues with large timestamps
+  *fix KateDJ editor with newer versions of wxPython
+  *katedec now tries to avoid escaping non ASCII glyphs
+  *misc error handling improvements/fixes
+  *misc build and documentation fixes</comment>
+    <requestid>84711</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>faf862d50d1d9b7668e86b7d9248536a</srcmd5>
+    <version>0.4.1</version>
+    <time>1319182105</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>8ecb4a250816b50023d3b8f0c9e8bcd2</srcmd5>
+    <version>0.4.1</version>
+    <time>1331037501</time>
+    <user>coolo</user>
+    <comment>Removed service, I see the supersede box</comment>
+    <requestid>108014</requestid>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>8ecb4a250816b50023d3b8f0c9e8bcd2</srcmd5>
+    <version>0.4.1</version>
+    <time>1340183599</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>8ecb4a250816b50023d3b8f0c9e8bcd2</srcmd5>
+    <version>0.4.1</version>
+    <time>1359109293</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>8ecb4a250816b50023d3b8f0c9e8bcd2</srcmd5>
+    <version>0.4.1</version>
+    <time>1379662985</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>a99f5d81c8bdd98253d017b3564d2f31</srcmd5>
+    <version>0.4.1</version>
+    <time>1401641900</time>
+    <user>coolo</user>
+    <comment>- Tell doxygen not to include timestamps to help build-compare (forwarded request 235611 from plater)</comment>
+    <requestid>235726</requestid>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>a99f5d81c8bdd98253d017b3564d2f31</srcmd5>
+    <version>0.4.1</version>
+    <time>1409301599</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>c08ebf72334363451f9d21630619de22</srcmd5>
+    <version>0.4.1</version>
+    <time>1518095390</time>
+    <user>dimstar_suse</user>
+    <comment>Allow Leap:42.3 to build again</comment>
+    <requestid>573703</requestid>
+  </revision>
+  <revision rev="21" vrev="25">
+    <srcmd5>3e35630ab80d9bcf765173d3b5a901f6</srcmd5>
+    <version>0.4.1</version>
+    <time>1560337399</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove a strange test that fails with LTO (boo#1136670):
+  * disable-namespace-test.patch</comment>
+    <requestid>706254</requestid>
+  </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>6d862a75134ad08b3ed473e86c0c062c</srcmd5>
+    <version>0.4.1</version>
+    <time>1585264900</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build wihtout python2 again, if any py interpreter is found
+  it tries to build with it (here it is pulled by doxygen)</comment>
+    <requestid>784191</requestid>
+  </revision>
+</revisionlist>

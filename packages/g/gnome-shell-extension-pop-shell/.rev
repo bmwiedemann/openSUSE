@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>674a6407a2f00f8aed955168291cf09c</srcmd5>
+    <version>1.2.0</version>
+    <time>1616168631</time>
+    <user>RBrownSUSE</user>
+    <comment>New gnome-shell extension, Pop_OS! shell</comment>
+    <requestid>880104</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f24e06a5b4c95abbf2793f000fa7d8de</srcmd5>
+    <version>1.2.0</version>
+    <time>1616271966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880165</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>886d0215d0c26689f28b9b2ec3e0a814</srcmd5>
+    <version>1.2.0</version>
+    <time>1627389121</time>
+    <user>dimstar_suse</user>
+    <comment>- backport 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch:
+  Fix prefs dialog crashing on Gnome 40
+- drop allow-gnome-40.patch:
+  included in 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch (forwarded request 908410 from darix)</comment>
+    <requestid>908413</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a2a428ecc26cdd7af9ab121b6889276d</srcmd5>
+    <version>1.2.0</version>
+    <time>1630093453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914633</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d2dbcfa31ab2e459ae5491ff6f046189</srcmd5>
+    <version>1.2.0</version>
+    <time>1654097703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980315</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>45ecc39b2e3cad3fef748309f53edeaa</srcmd5>
+    <version>1.2.0</version>
+    <time>1664112895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005627</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a316cb8b17d795c13bf30d5ded424bda</srcmd5>
+    <version>1.2.0</version>
+    <time>1693482373</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108200</requestid>
+  </revision>
+</revisionlist>

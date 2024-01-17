@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f25521953d99a3fd62bd23ad642e28e</srcmd5>
+    <version>0.0+git.1535343411.3adc93a</version>
+    <time>1574932558</time>
+    <user>dimstar_suse</user>
+    <comment>Use _service file to download source instead of manually downloading tarball. Generate .tar.xz file and disable services. Fix version prefix and version format in _service file. Replace revision master with github hash number. Fix spec file name.
+
+Cadson Demak fonts are inspired from an old Thai font design, which give old traditional vibes but works well on modern design.
+</comment>
+    <requestid>751441</requestid>
+  </revision>
+</revisionlist>

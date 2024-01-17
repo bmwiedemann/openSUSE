@@ -1,0 +1,24 @@
+--- scsirastools-1.6.4.orig/files/sgdisk
++++ scsirastools-1.6.4/files/sgdisk
+@@ -15,7 +15,7 @@
+ # Description: sgdisk is used to start/stop the sgdiskmon software raid1 daemon
+ ### END INIT INFO
+ 
+-if [ -f /etc/SuSE-release ]; then
++if [ -f /etc/SuSE-release ] || fgrep -siq suse /etc/os-release; then
+         osver=suse
+ elif [ -f /etc/redhat-release ]; then
+         osver=redhat
+Index: scsirastools-1.6.4/files/sgraid
+===================================================================
+--- scsirastools-1.6.4.orig/files/sgraid
++++ scsirastools-1.6.4/files/sgraid
+@@ -15,7 +15,7 @@
+ # Description: sgraid is used to start/stop the sgraidmon software raid1 daemon
+ ### END INIT INFO
+ 
+-if [ -f /etc/SuSE-release ]; then
++if [ -f /etc/SuSE-release ] || fgrep -siq suse /etc/os-release; then
+         osver=suse
+ elif [ -f /etc/redhat-release ]; then
+         osver=redhat

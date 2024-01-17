@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af2df832bdc30de4ec865aa7c8a0c9e4</srcmd5>
+    <version>0.12.1</version>
+    <time>1552985891</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openpyxl-usage-fix.patch to workaround incompatibility with
+  current releases of openpyxl
+- Add HISTORY.rst to %doc
+- Add minimum versions of dependencies from upstream
+- Use %license
+- Update to v0.12.1
+  - Add Pandas DataFrame support
+- update to 0.11.5:
+  - Use ``yaml.safe_load`` for importing yaml.
+  - Use built-in `json` package if available
+  - Support Python 3.5+ in classifiers
+  - Fixed textual representation for Dataset with no headers
+  - Handle decimal types
+  - Release fix.
+  - Fix export only formats.
+  - Fix for xlsx output.
+  - Fixed packaging error on Python 3.
+  - Added LaTeX table export format (``Dataset.latex``).
+  - Support for dBase (DBF) files (``Dataset.dbf``).
+  - New import/export interface (``Dataset.export()``, ``Dataset.load()``).
+  - CSV custom delimiter support (``Dataset.export('csv', delimiter='$')``).
+  - Adding ability to remove duplicates to all rows in a dataset (``Dataset.remove_duplicates()``).
+  - Added a mechanism to avoid ``datetime.datetime`` issues when serializing data.
+  - New ``detect_format()`` function (mostly for internal use).
+  - Update the vendored unicodecsv to fix ``None`` handling.
+  - Only freeze the headers row, not the headers columns (xls).
+  - ``detect()`` function removed.
+  - Fix XLSX import.
+  - Bugfix for ``Dataset.transpose().transpose()``.
+- convert to singlespec
+- fix RHEL build by ignoring bytecompile-errors
+- update to version 0.10.0:
+  * Unicode Column Headers
+  * ALL the bugfixes!
+- add fdupes as BuildRequires and call it after install
+- remove shebang in every python files
+- remove useless CFLAGS declaration
+- run the tests during build with test_tablib.py
+- Require python-setuptools instead of distribute (upstreams merged)
+- Initial version
+</comment>
+    <requestid>682389</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>95a4a11c8185a507050c70de343cd05b</srcmd5>
+    <version>0.13.0</version>
+    <time>1553636067</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.13.0
+  * no upstream changelog (HISTORY.rst outdated), see git log
+- deleted patches
+  - openpyxl-usage-fix.patch (upstreamed)</comment>
+    <requestid>688774</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2066933ce7fea159341d2de3500ecac6</srcmd5>
+    <version>0.13.0</version>
+    <time>1557141671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692222</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>473d3454763f3dbfe0248d5df0ca5ecf</srcmd5>
+    <version>0.14.0</version>
+    <time>1575464088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753797</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>31ce3ca021a4aac609f29ff79f922991</srcmd5>
+    <version>1.1.0</version>
+    <time>1582643169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Tablib is now able to import CSV content where not all rows have the same length. Missing columns on any line receive the empty string (#226).
+  * Dropped Python 2 support
+  * Formats can now be dynamically registered through the tablib.formats.registry.refister API (#256).
+  * Tablib methods expecting data input (detect_format, import_set, Dataset.load, Databook.load) now accepts file-like objects in addition to raw strings and bytestrings (#440).
+  * Fixed a crash when exporting an empty string with the ReST format (#368)
+  * Error cells from imported .xls files contain now the error string (#202)
+- Add BuildRequires on python-tabulate.</comment>
+    <requestid>778913</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4047dc9fa949d781f473f6216cf2cf3e</srcmd5>
+    <version>1.1.0</version>
+    <time>1587467235</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove py2 dependencies as the package is py3 only</comment>
+    <requestid>795718</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>017eab60bcb1a114d0632fcd5244eb72</srcmd5>
+    <version>2.0.0</version>
+    <time>1595773160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822670</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>62e3470f6dd2b9a19b63d03f68d2c1f7</srcmd5>
+    <version>3.0.0</version>
+    <time>1610558544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862653</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>80b37e4cb6b9f1dbe0a55c6062ba2e9c</srcmd5>
+    <version>3.0.0</version>
+    <time>1619447987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888437</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>65a808c85eedab2862faff8122430d2c</srcmd5>
+    <version>3.2.1</version>
+    <time>1665504202</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009732</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9626670296b09e082aefa85deb99917a</srcmd5>
+    <version>3.3.0</version>
+    <time>1671128687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042864</requestid>
+  </revision>
+</revisionlist>

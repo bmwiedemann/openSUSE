@@ -1,0 +1,165 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71521c64643cc52ccceb36172234794b</srcmd5>
+    <version>9.20120830</version>
+    <time>1349372096</time>
+    <user>coolo</user>
+    <comment>split the deb package. See http://lists.opensuse.org/opensuse-factory/2012-06/msg00963.html for context.
+Resubmit without Source URL</comment>
+    <requestid>136837</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>71521c64643cc52ccceb36172234794b</srcmd5>
+    <version>9.20120830</version>
+    <time>1359108804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>71521c64643cc52ccceb36172234794b</srcmd5>
+    <version>9.20120830</version>
+    <time>1379662214</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>5fefdc0023fa319c91ac732d24b5e136</srcmd5>
+    <version>9.20120830</version>
+    <time>1380895035</time>
+    <user>scarabeus_factory</user>
+    <comment>Mention patch name in .changes (forwarded request 202138 from flichtenheld)</comment>
+    <requestid>202139</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>5fefdc0023fa319c91ac732d24b5e136</srcmd5>
+    <version>9.20120830</version>
+    <time>1409300750</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e71c2c5ebc6b4d85561c86282fddb392</srcmd5>
+    <version>9.20150101</version>
+    <time>1421333922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.20150101
+- Adapt debhelper-no-localized-manpages.patch to upstream changes
+  * debhelper-9.20150101-no-localized-manpages.patch
+- Remove upstreamed debhelper-findutils.patch</comment>
+    <requestid>281090</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca3093b5bf14ed7924d5c4ec40210ec8</srcmd5>
+    <version>13.3.4</version>
+    <time>1616008575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.3.4
+- Adapt patches to new upstream version:
+  * remove debhelper-9.20150101-no-localized-manpages.patch
+  * add debhelper-no-localized-manpages.patch</comment>
+    <requestid>879491</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dd9e21b6d3d6e5a5a7e4a6a8877738cb</srcmd5>
+    <version>13.5.2</version>
+    <time>1634587192</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 13.5.2</comment>
+    <requestid>925997</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5173761926ef8c8b1d54ef9a6143b902</srcmd5>
+    <version>13.6</version>
+    <time>1641321456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943574</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b5274e5d995ef6035d93786eaaed19fe</srcmd5>
+    <version>13.7.1</version>
+    <time>1651605540</time>
+    <user>dimstar_suse</user>
+    <comment>Update debhelper to version 13.7.1</comment>
+    <requestid>974435</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>150c0466019947a0d45969a255ddf843</srcmd5>
+    <version>13.8</version>
+    <time>1659721861</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.8</comment>
+    <requestid>993111</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>735437940997d321180bae0808b73488</srcmd5>
+    <version>13.9</version>
+    <time>1660586316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.9
+   * d/control: Provide dh-sequence-installsysusers.
+   * debhelper.pod: Add missing word &quot;variables&quot;.
+   * Dh_Lib.pm: Fix in addsubstvar where a value was added when
+     it should not have been.  (Closes: #1015263)
+</comment>
+    <requestid>995135</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>72fb0fbd9f4002744f8d659cbfa554d3</srcmd5>
+    <version>13.11.1</version>
+    <time>1670863204</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 13.11.1</comment>
+    <requestid>1042328</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4de46b7d1887ef8b91f632a2bae35fc8</srcmd5>
+    <version>13.11.4</version>
+    <time>1672927292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056155</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>774eea76b2e1d3cf585697cc92d48353</srcmd5>
+    <version>13.11.5</version>
+    <time>1694114023</time>
+    <user>anag+factory</user>
+    <comment>Update to 13.11.5</comment>
+    <requestid>1109466</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>854ab0cb5731f609ee7dd28f31ff59ac</srcmd5>
+    <version>13.11.5</version>
+    <time>1694808330</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1111502</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>567f1a1f9e6c81aba6869961c51405ae</srcmd5>
+    <version>13.11.8</version>
+    <time>1701727334</time>
+    <user>anag+factory</user>
+    <comment>- update to 13.11.8:
+  * systemd helpers: install units to /usr.
+  * Trim NEWS when trimming changelog (Closes: #1021607)
+  * dh_makeshlibs: add compatibility Provides: for 64-bit time_t transition.
+  * add new helper and addon: movetousr
+  * systemd helpers: Support units below /usr (Closes: #1041159)
+</comment>
+    <requestid>1130758</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>725e4f27a5185af9ebf57bb324acd3fb</srcmd5>
+    <version>13.11.9</version>
+    <time>1704487566</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.11.9:
+  * dh_installudev: install into /usr (Closes: #1058791)
+  * dh_movetousr: also update links from canonical into aliased
+  * buildsystems: add qmake6 variant of the qmake buildsystem (Closes: #1057359)
+</comment>
+    <requestid>1137144</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Wed Dec 27 16:54:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10:
+  * Drop support for Python 3.7 (Jendrik Seipp, #323).
+  * Add support for Python 3.12 (Jendrik Seipp, #332).
+  * Use `end_lineno` AST attribute to obtain more accurate line
+    counts (Jendrik Seipp).
+  * Use exit code 0 for `--help` and `--version` again (Jendrik
+    Seipp, #321).
+  * Use exit code 3 when dead code is found (whosayn, #319).
+  * Treat non-supported decorator names as "@" instead of
+    crashing (Llandy3d and Jendrik Seipp, #284).
+  * Drop support for Python 3.6 (Jendrik Seipp).
+  * Add `UnicodeEncodeError` exception handling to `core.py`
+  * Add whitelist for `Enum` attributes `_name_` and `_value_`
+  * Run tests and add PyPI trove for Python 3.11 (Jendrik Seipp).
+  * Ignore `setup_module()`, `teardown_module()`, etc. in pytest
+    `test_*.py` files (Jendrik Seipp).
+  * Add whitelist for
+    `socketserver.TCPServer.allow_reuse_address` (Ben Elliston).
+  * Clarify that `--exclude` patterns are matched against
+    absolute paths (Jendrik Seipp, #260).
+  * Add basic `match` statement support (kreathon, #276, #291).
+  * Mark imports in `__all__` as used (kreathon, #172, #282).
+  * Add whitelist for `pint.UnitRegistry.default_formatter` (Ben
+    Elliston, #258).
+  * Print absolute filepaths as relative again (as in version 2.1
+    and before)
+  * if they are below the current directory (The-Compiler, #246).
+  * Run tests and add PyPI trove for Python 3.10 (chayim, #266).
+  * Allow using the `del` keyword to mark unused variables
+    (sshishov, #279).
+  * Only parse format strings when being used with `locals()`
+  * Don't override paths in pyproject.toml with empty CLI paths
+  * Run continuous integration tests for Python 3.9 (ju-sh,
+  * Use pathlib internally (ju-sh, #226).
+
+-------------------------------------------------------------------
+Tue Jun 13 09:08:08 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Aug 20 21:06:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.1
+  * Treat `getattr/hasattr(obj, "constant_string", ...)` as a reference
+    to `obj.constant_string`
+  * Fix false positives when assigning to `x.some_name` but reading via
+    `some_name`, at the cost of potential false negatives
+  * Allow reading options from `pyproject.toml`
+- from v2.0
+  * Parse `# type: ...` comments if on Python 3.8+
+  * Bump minimum Python version to 3.6. The last Vulture release that
+    supports Python 2.7 and Python 3.5 is version 1.6.
+  * Consider all files under `test` or `tests` directories test files
+  * Ignore `logging.Logger.propagate` attribute
+- from v1.6
+  * Differentiate between functions and methods
+  * Move from Travis to GitHub actions
+- from v1.5
+  * Support flake8 "noqa" error codes F401 (unused import) and F841
+    (unused local variable)
+  * Detect unreachable code in conditional expressions
+
+-------------------------------------------------------------------
+Thu Apr 16 07:49:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4:
+  * Ignore unused import statements in __init__.py (RJ722, #192).
+  * Report first decorator's line number for unused decorated objects on Python 3.8+ (RJ722, #200).
+  * Check code with black and pyupgrade.
+
+-------------------------------------------------------------------
+Thu Feb  6 17:35:31 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.3
+  * Detect redundant ‘if’ conditions without ‘else’ blocks.
+  * Add whitelist for string.Formatter
+  * Fix tests for Python 3.8
+  * Use new Constant AST node under Python 3.8+
+  * Add test for f-strings
+  * Add whitelist for logging module.
+  * Add sys.excepthook to sys whitelist.
+  * Add whitelist for ctypes module.
+  * Check that type annotations are parsed and type comments are ignored
+  * Support checking files with BOM under Python 2.7
+
+-------------------------------------------------------------------
+Mon Feb 11 05:11:25 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.0
+  * Add ``--ignore-decorators`
+  * Add whitelist for ``threading`` module
+- Add test dependency pytest > 3.2.3 due to use of CaptureResult.
+- Reduce hack to remove unsuitable hashbangs
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:52 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Aug 10 00:07:30 UTC 2018 - jsikes@suse.de
+
+- Update to 0.29
+  * Check that NEWS file is up-to-date before releasing
+  * Add --ignore-names flag (#139)
+  * Add --make-whitelist flag (#135)
+  * Single-source package version string (#134)
+  * Use absolute imports (#132)
+  * Fix PEP8 issues (#120)
+
+-------------------------------------------------------------------
+Sun Jul 29 12:14:29 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary. Trim filler wording from description.
+
+-------------------------------------------------------------------
+Thu May 24 18:11:16 UTC 2018 - toddrme2178@gmail.com
+
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Fri Oct 20 16:19:31 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

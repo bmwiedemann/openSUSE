@@ -1,0 +1,21 @@
+#!/bin/sh
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+MODULE_LIST="pkey zcrypt_pcixcc zcrypt_cex2a zcrypt_cex4 zcrypt rng_core"
+case "${1}" in
+	start) for module in ${MODULE_LIST}
+		do if ! grep -q ^{$module} /proc/modules ; then
+			modprobe ${module}
+	            fi
+		done
+		;;
+	stop) for module in ${MODULE_LIST}
+		do if grep -q ^${module} /proc/modules ; then
+			rmmod ${module}
+		    fi
+		done
+		;;
+esac

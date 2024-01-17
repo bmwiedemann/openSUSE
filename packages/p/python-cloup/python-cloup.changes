@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Thu Dec  7 17:25:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.3:
+  * Redefine click.pass_context and click.get_current_context to
+    use cloup.Context in place of click.Context
+
+-------------------------------------------------------------------
+Thu Oct 19 14:38:42 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.0.2
+ * Truncate help text to the first form feed, like click
+ * Fix: Constraint.__getattr__ was returning None instead of raising AttributeError
+
+-------------------------------------------------------------------
+Wed Jul 26 16:03:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * The breaking change should not affect anyone but I have to
+    increase the major version anyway.
+  * `HelpTheme` as `dataclass` rather than `NamedTuple`
+
+-------------------------------------------------------------------
+Thu Jul 20 11:04:09 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Integrate with git workflow
+
+-------------------------------------------------------------------
+Fri Jul 14 14:40:26 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 2.1.2
+  * Fix: default to Group.command_class and Group.group_class when creating subcommands by @janluke in #162
+  * Upgrade dev dependencies (no docs) by @janluke in #161
+
+Full changelog: https://github.com/janluke/cloup/compare/v2.1.1...v2.1.2
+
+-------------------------------------------------------------------
+Sun Jun 11 11:49:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fix usage styling: the `heading` style was mistakenly applied
+    to the space after "Usage:". This was a problem when using
+    underlined headings: the space got underlined too. (fixed
+  * Full Changelog
+    https://github.com/janluke/cloup/compare/v2.1.0...v2.1.1
+
+-------------------------------------------------------------------
+Mon May 15 10:05:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore summary noun phrase.
+
+-------------------------------------------------------------------
+Mon May 15 08:39:44 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Version 2.1.0
+	New features and enhancements
+
+    - Feature: theming support for list of subcommand aliases by @janluke in #152
+    - Use the same (Deprecated) label as in Click by @kdeldycke in #153
+    - Standardize formats of further error messages by @alexreg in #143
+
+	Other Changes
+
+    - Fix type of auto_envvar_prefix param to Context.settings method by @alexreg in #147
+    - Miscellaneous fixes/improvements to docs by @alexreg in #144
+
+-------------------------------------------------------------------
+Mon Jan 30 00:12:13 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Version 2.0.0

@@ -1,0 +1,8 @@
+<package name="abiword-docs" project="openSUSE:Factory">
+  <title>A Multiplatform Word Processor - Documentation</title>
+  <description>AbiWord is a multiplatform word processor with a GTK+ interface on the
+UNIX platform. For extended functionality and integration, this version
+is compiled with GNOME support. Abiword with the GNOME front-end is
+part of the GNOME Office Suite.</description>
+  <devel project="GNOME:Apps" package="abiword-docs"/>
+</package>

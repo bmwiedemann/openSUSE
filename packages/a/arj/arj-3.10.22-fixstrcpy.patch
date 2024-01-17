@@ -1,0 +1,74 @@
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Co-Author: Thorsten Otto <admin@tho-otto.de>
+Date:   2020-03-25 ; 2023-04-04
+
+reproducible builds showed differences in strings produced from msgbind
+depending on CPU-type
+
+valgrind --tool=memcheck
+helped to locate two relevant calls to strcpy on overlapping regions
+
+diff -rup arj-3.10.22.orig/arj.c arj-3.10.22/arj.c
+--- arj-3.10.22.orig/arj.c	2005-06-21 21:53:12.000000000 +0200
++++ arj-3.10.22/arj.c	2023-04-04 18:07:00.860946972 +0200
+@@ -1170,7 +1170,7 @@ int main(int argc, char *argv[])
+      if(strlen(tmp_ptr)<=121)
+       tmp_ptr[0]='\0';
+      else if(tmp_ptr[120]==' ')
+-      strcpy(tmp_ptr, tmp_ptr+121);
++      memmove(tmp_ptr, tmp_ptr+121, strlen(tmp_ptr+121)+1);
+     }
+     if(cmd==ARJ_CMD_ORDER&&strpbrk(tmp_ptr, wildcard_pattern)!=NULL)
+      error(M_ORDER_WILDCARD);
+Index: arj-3.10.22/arjdata.c
+===================================================================
+--- arj-3.10.22.orig/arjdata.c
++++ arj-3.10.22/arjdata.c
+@@ -232,7 +232,7 @@ char *expand_tags(char *str, int limit)
+   {
+    if(*(p+1)==TAG_CHAR)
+    {
+-    strcpy(p, p+1);
++    safe_strcpy(p, p+1);
+     p++;
+    }
+    else if(*(p+1)==TAG_SPECIAL_BEGIN&&(et=strchr(p+3, TAG_SPECIAL_END))!=NULL)
+
+Index: arj-3.10.22/msgbind.c
+===================================================================
+--- arj-3.10.22.orig/msgbind.c
++++ arj-3.10.22/msgbind.c
+@@ -21,6 +21,12 @@
+ #include <signal.h>
+ #include <time.h>
+ 
++static void safe_strcpy(char *dest, const char *src)
++{
++ memmove(dest, src, strlen(src) + 1);
++}
++
++
+ #define MSG_SIZE               32752    /* Constant msg buffer size */
+ #define POOL_SIZE              51200    /* Maximum size of variable-len buf */
+ #define POOL_R_INC              1024    /* Realloc incrementation */
+@@ -574,7 +574,7 @@ int main(int argc, char **argv)
+    }
+    strcat(pool[tpool].data, msgname);
+    strcat(pool[tpool].data, ", ");
+-   strcpy(msg_buffer, msg_buffer+1);
++   safe_strcpy(msg_buffer, msg_buffer+1);
+    buf_len=strlen(msg_buffer);
+    msg_buffer[--buf_len]='\0';
+    patch_string(msg_buffer);
+diff -rup arj-3.10.22.orig/packager.c arj-3.10.22/packager.c
+--- arj-3.10.22.orig/packager.c	2004-04-17 13:39:42.000000000 +0200
++++ arj-3.10.22/packager.c	2023-04-04 18:05:26.869081516 +0200
+@@ -347,7 +347,7 @@ int main(int argc, char **argv)
+  expand_tags(buf, sizeof(buf)-1);
+  if((p=strchr(buf, '.'))!=NULL)
+  {
+-  strcpy(p, p+1);
++  memmove(p, p+1, strlen(p+1) + 1);
+   if((p=strchr(buf, '.'))!=NULL)
+    *p='\0';
+  }

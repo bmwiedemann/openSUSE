@@ -1,0 +1,19 @@
+# How to update this project
+
+This project is updated using obs services.
+The obs services pull from git repositories, which are specified in the `_service` file.
+Please contribute all changes to the upstream git repositories listed there.
+
+To update this project to the upstream versions, please make sure you installed these obs services locally:
+```
+sudo zypper in obs-service-tar_scm obs-service-recompress obs-service-set_version obs-service-download_files
+```
+
+Then, generate new tarballs, changelog and version number for this repository by running this command:
+```
+sh update.sh
+```
+
+Afterwards, please check your local project state and remove old tarballs if necessary.
+Then proceed as usual with check-in and build.
+

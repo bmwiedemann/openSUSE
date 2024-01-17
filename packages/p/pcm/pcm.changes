@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Mon Dec 11 10:00:00 UTC 2023 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202311:
+  * Support for Sapphire Rapids accelerators in pcm-grafana dashboard.
+  * Added support of Sapphire Rapids MCC CPUs in pcm-iio tool.
+  * Added support for M3UPI PMU for Sapphire Rapids.
+  * Added new tool to access TPMI registers: pcm-tpmi
+  * Added support for mmio register reads in pcm-raw tool
+  * pcm-raw now supports ha pmu and added invert,anythread,nc,isoc,opc and state emon event modifiers
+  * New script for filtering data in CSV
+  * Added bit operations for pcm register tools: pcm-msr, pcm-pcicfg, pcm-mmio
+  * pcm-raw: Add PCU PMU declaration for BDX/SKX/CLX/CPX and document pcicfg register events
+  * pcm-raw: remove the max number of event restrictions for register events
+  * Fixed deadlock in processDVSEC
+  * Fixed race condition in isHWTMAL1Supported
+  * Fixed a clang scan warning
+  * Fixed the docker name for Grafana in start.sh
+  * Fixed an issue in getMaxNumOfCBoxes to allow the fall-back perf API method to be called
+  * Fixed an issue with pcicfg reg syntax documentation
+  * Fixed an issue in pcm-accel to avoid confusion when overflow happens
+  * Added exception handling in utils.cpp:get_cpu_bus()
+  * Fix pcm for PCU and MDF: IO read size is data size
+  * Added PCM_NO_MAIN_EXCEPTION_HANDLER variable
+
+-------------------------------------------------------------------
+Sun Jul 16 11:01:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 202307:
+  * pcm-memory and grafana dashboard: support CXL bandwidth
+    monitoring on Sapphire Rapids
+  * pcm-raw: support collection for MSR and PCICFG (CSR)
+    registers in csv format
+  * pcm-mmio: support dumps for memory regions
+  * pcm-raw: additional CPU model/steppings supported (CPX, SPR)
+  * pcm-pcicfg: support PCICFG register lookup/search by device
+    ID
+  * documentation updates (how to run under non-root user, CXL
+    monitoring, pcm-accel IAA, DSA, QAT, pcm-raw register
+    monitoring)
+  * bug fixes
+
+-------------------------------------------------------------------
+Thu Apr 20 10:22:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim R/TM signs as per
+  https://en.opensuse.org/openSUSE:Package_description_guidelines
+
+-------------------------------------------------------------------
+Tue Feb 21 10:00:00 UTC 2023 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202302:
+  * pcm-accel: support monitoring of Intel QuickAssist Technology (QAT) performance metrics
+  * grafana: support grafana dashboards with multiple hosts (with host selector) and fix UPI charts
+  * grafana: added dram pmem bandwidth and their ratio to grafana charts
+  * added python script to automate the generation of summary reports from pcm csv
+  * added backtrace info with signal SEGV for better debugability
+  * pcm-pcie: fix issues with delay parameter
+  * pcm-raw: validate counter event restrictions
+  * pcm-raw: initial support of hybrid cpus
+  * added LLCRDMISSLAT metric support for SPR
+  * added support for Gemini Lake
+  * added support memory bandwidth metrics for more ADL&TGL CPU models
+  * added systemd unit for Linux systems
+  * pcm-sensor-server: enhanced error handling in close, setSocket and sync calls
+  * avoid using errata events on older processors
+  * pcm-sensor-server: implement -force-rtm-abort-mode option
+
+-------------------------------------------------------------------
+Fri Dec 23 11:00:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202212:
+  * pcm-memory: add SPR HBM support
+  * support multiple hosts for Grafana dashboard with prometheus
+  * fixes for pcm-iio/pcm-accel
+
+-------------------------------------------------------------------
+Thu Nov 24 10:00:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
+
+updated to the new upstream repository location and the name
+
+- Update to version 202211:
+  * added Sapphire Rapids processor support
+  * added new pcm-accel utility to monitor Sapphire Rapids accelerator performance
+  * added --version option to all pcm tools
+  * pcm: new "enforce flush output" option
+  * pcm-raw: support ocr_msr_val and tid modifiers
+  * fixed default value for CHA filter1 on CLX and SKX
+  * pcm-sensor-server: allow build on FreeBSD
+  * pcm-raw: adopt new JSON event file format, new URLs for perfmon event lists
+
+-------------------------------------------------------------------
+Mon Oct 31 13:00:11 CST 2022 - Coly Li <colyli@suse.de>
+
+- Synchronize pcm package from openSUSE to SLES15-SP* supported
+  produces (jsc#PED-395, jsc#PED-1004)
+
+- Update to version 202210:
+  * Add simdjson submodule and move simdjson lib to version 2.0.4
+  * Add  SNR register definitions
+  * Fix some build related issues
+  * Improvement on printing error messages
+  * Fix sporadic crashes
+  * Fix top-down events on some Linux kernels
+  * Remove 32 bit code from DriverInterface
+  * Remove public header file and remove header files from installation
+  * Add IOUserClient class to CMake builds, and add fields in kernel
+    topology structure to match userland structure
+  * Remove of use of volatile and make memory allocation only for the
+    lifetime of a function that needs it
+  * Move DriverInterface code into MSRAccessor
+  * Expand custom counter memory for PCM-Service
+  * Removing of potentially existed files (symlinks) before writing
+  * pcm-memory: option to enforce output flush
+  * Implement RPL support
+  * Introduce Raptor Lake IDs
+
+-------------------------------------------------------------------
+Tue Jul 26 08:27:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to version 202207:
+  * pcm-raw: add json output to pcm-raw
+  * pcm-memory: fix csv output inconsistency for channels without traffic
+  * fix automatic version generation on checkout
+  * use GNUInstallDirs for install paths
+  * pcm-iio: optionally display root port pci device id
+  * automatically increase limit on open files on Linux
+  * pcm-daemon: add 'memory mode hit approximation' metric + client sample app fixes
+  * pcm-daemon: document all pcm-daemon metrics in the common.h header
+  * add CPU model number in processor information list
+  * correct hardcoded QPI strings and change to UPI when applicable
+  * pcm-iio: add missing header item
+  * pcm-raw: fix "EDP" format prints for offlined cores
+  * PCM_KEEP_NMI_WATCHDOG=1 env variable to keep NMI watchdog running
+  * support pcm-iio on ICX-D
+  * support additional Alderlake cpu model
+  * document -pid option in pcm-numa and pcm-tsx
+
+-------------------------------------------------------------------
+Wed May  4 09:23:50 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 202203:
+  * Add experimental pcm csv data plot and background collection scripts
+  * Print 4 digits for MPI metrics
+  * Uncore linux perf event robustness enhancements
+  * pcm-raw: additional overhead reduction for multi-group collection
+  * general overhead reduction (skip restoring thread affinity when not required)
+  * pcm-numa, pcm-tsx: add -pid option
+  * Fix compilation of examples on old gcc
+  * Fix: restore affinity for caller process
+  * Fixed race condition in resctrl (when not available)
+
+-------------------------------------------------------------------
+Fri Jan 28 12:25:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202201 upstream version:
+* use cmake to build the project
+* reduce pcm overhead
+* pcm-raw: add -r option (PMU reset)
+* pcm-raw: add a sample separator option
+* freeze/unfreeze all core PMU counters during the read operation
+* change ulimit recommendations
+* various performance and bug fixes
+
+-------------------------------------------------------------------
+Sun Dec 26 11:25:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202112:
+* pcm: expose DRAM_GT_REQUESTS and DRAM_IA_REQUESTS bandwdith metrics
+* pcm: added client IO and GT bandwidth metrics to CSV output
+* pcm-memory: added -u option (clear screen before stat update)
+* pcm-memory: added -s option (silent mode)
+* pcm-memory: add csv print support for DRAM rank monitoring
+* pcm-memory: disable pmem output when rank monitoring is enabled
+* pcm-power: support for <1 sec delay
+* pcm-raw: added -i option (limits the number of iterations/samples)
+* pcm-raw: add support of IRP events
+* pcm-raw: add thousand separator and tab separator options
+* pcm-pcie: support 8 socket platforms
+* pcm-power: add core power license statistics
+* various small fixes and enhancements
+
+-------------------------------------------------------------------
+Sat Oct 30 15:15:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202110:
+* support ADL (Alder Lake) in pcm tool
+* display average uncore frequency in pcm.x
+* allow verbose CPU topology printing with PCM_PRINT_TOPOLOGY environment variables
+* pcm-raw: support event group multiplexing
+* pcm-iio: support csv output
+* developed a workaround to make PCM work in VMware guest
+* various bug fixes
+
+-------------------------------------------------------------------
+Sun Jul 25 17:15:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202107:
+* support systems with > 1024 logical cores
+* support Rocket Lake
+* pcm-pcie: fix HIT metrics calculation on Broadwell/Haswell server platforms
+* pcm: add several additional columns to the socket and core sections in csv output
+* pcm-iio: fix multiplier value for outbound events on Snowridge and Icelake server platforms
+* implement workaround for Linux watchdog not clearing its event programming
+* move Icelake top-down events to a separate group to fix counting through Linux perf API
+* added pcm-mmio utility to rpm
+
+-------------------------------------------------------------------
+Tue May 25 10:04:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202105:
+* support Intel Atom Processor P5900 Series (previously codenamed SnowRidge)
+* address Linux warnings
+
+-------------------------------------------------------------------
+Tue May 04 09:51:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202104:
+* Add Icelake server support
+
+-------------------------------------------------------------------
+Sat Feb 20 10:49:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202101:
+* Add Comet Lake support
+* Add Tiger Lake support
+* Add support for additional Icelake cpu model
+* Support Linux resctrl driver for RDT Metrics (see ENVVAR_README.md)
+* Improve robustness in handling rare core event overflows
+* A few fixes for c_example
+* Support using Linux perf API for core PMU for systems with offlined cores
+* Add -i parameter to more tools
+* support select metrics in virtual machines with vPMU support (e.g. AWS virtualized instances with arch_perfmon flag). Screenshot of grafana dashboard with PCM data from a c5.9xlarge virtualized AWS instance
+* pcm-iio: fix VT-d events on SKX
+* pcm-memory: make -pmm/-pmem the default option on systems with PMM/PMem support
+* pcm-tsx: update events for ICL and SKL, allow collection of up to 8 events
+* pcm-raw: support fixed PMU counters
+* fix UBOX MSR addresses for Jaketown/Ivytown
+* support Icelake client CPUs
+* new pcm-raw utility: to program arbitrary core and uncore events by specifying raw register event ID encoding
+* pcm-memory: support -all option to show channels event if they do not have any traffic (inactive memory channels)
+* pcm-memory: csv output for Near Memory hit rate (in PMem Memory Mode)
+* pcm-memory: show memory channels with PMM but w/o DRAM DIMMs
+* unfreeze counters using global uncore counter control register during uncore PMU initialization (some other tools freeze using global control before exit)
+
+-------------------------------------------------------------------
+Thu Aug 27 12:12:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 202007:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Wed Apr 29 12:25:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build only for %ix86 x86_64 as it targets Intel CPU only
+
+-------------------------------------------------------------------
+Mon Apr 29 08:47:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove the TM/etc. blurbs
+
+-------------------------------------------------------------------
+Thu Apr 18 09:31:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, jsc#6867

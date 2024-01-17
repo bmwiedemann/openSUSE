@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d86cca48e01a99560ad990a8038638e</srcmd5>
+    <version>0.10.2</version>
+    <time>1417643475</time>
+    <user>dimstar_suse</user>
+    <comment>Simple integration of Flask and WTForms, including CSRF, file upload and Recaptcha integration.
+
+Required for python-puppetboard SR# 263316</comment>
+    <requestid>263326</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d1767e7c3b03e70f02c5494637c956bf</srcmd5>
+    <version>0.11</version>
+    <time>1427445667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293193</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>17bf1da69e3054fa553eb94b9dd5824a</srcmd5>
+    <version>0.14.2</version>
+    <time>1507628544</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521769</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e7f6bd251a1fbc8a09283297f0e8eec1</srcmd5>
+    <version>0.14.2</version>
+    <time>1516970358</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix whitespace and drop the subpkg wrt previous commit
+
+- Added python-itsdangerous requirements
+- disabled sphinx build html docs and doc packages because of build errors.</comment>
+    <requestid>569481</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>141d27c07de837ad8885e8e6a0602b15</srcmd5>
+    <version>0.14.3</version>
+    <time>1581368047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772539</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4fb698363ed7c0a9eae6740d7db28905</srcmd5>
+    <version>0.14.3</version>
+    <time>1591863220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813387</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>976a8fb5c520d9a03f22f738eea5e1b6</srcmd5>
+    <version>0.14.3</version>
+    <time>1611865771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867552</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>414cd629102b3c50330a3c6f3c56e724</srcmd5>
+    <version>0.14.3</version>
+    <time>1622536809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896579</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>053671eeea0c4e9d652f3c925fbc9dae</srcmd5>
+    <version>0.15.1</version>
+    <time>1629269750</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912377</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c5d505b656d9a40f66c0e9382153c350</srcmd5>
+    <version>1.0.0</version>
+    <time>1645461995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956242</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>df75922e3814dff250c5e08f3159b5c2</srcmd5>
+    <version>1.0.1</version>
+    <time>1649544124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967944</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a95b12224b3b716a6ac501738528545f</srcmd5>
+    <version>1.1.1</version>
+    <time>1688147988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Fixed `validate` `extra_validators` parameter. :pr:`548`
+  * Drop support for Python 3.6.
+  * ``validate_on_submit`` takes a ``extra_validators`` parameters :pr:`479`
+  * Stop supporting Flask-Babelex :pr:`540`
+  * Support for python 3.11 :pr:`542`
+  * Remove unused call to `JSONEncoder` :pr:`536`
+- Add patch flask-2.3-support.patch:
+  * Support Flask 2.3 changes.
+- Switch to pyproject macros.</comment>
+    <requestid>1096052</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>690e790ec53f101a4ed000340d086836</srcmd5>
+    <version>1.2.1</version>
+    <time>1701121464</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129137</requestid>
+  </revision>
+</revisionlist>

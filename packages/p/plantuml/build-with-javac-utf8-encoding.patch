@@ -1,0 +1,13 @@
+diff --git a/build.xml b/build.xml
+index 24b663c..73d388b 100644
+--- a/build.xml
++++ b/build.xml
+@@ -39,7 +39,7 @@
+ 		<mkdir dir="build" />
+ 		
+ 		<!-- Compile Java sources -->
+-		<javac target="1.8" source="1.8" srcdir="src" destdir="build" debug="on" />
++		<javac target="1.8" source="1.8" srcdir="src" destdir="build" debug="off" encoding="UTF-8" />
+ 		
+ 		<!-- Copy resources. Grouped by type and directory for better clarity -->
+         <copy todir="build/net/sourceforge/plantuml/version">

@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1577799570ab7f11535760b84f5fe49c</srcmd5>
+    <version>4.0.1</version>
+    <time>1530653640</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.0.1</comment>
+    <requestid>620261</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9cae791a91b50c6b312fee34718e1b3e</srcmd5>
+    <version>4.1.1</version>
+    <time>1546535195</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.1.1</comment>
+    <requestid>660230</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81c2157ab4d5f276543840e311a9d2fe</srcmd5>
+    <version>4.2.0</version>
+    <time>1564575456</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.2.0</comment>
+    <requestid>707248</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c7cd04497a7c0249b2dd69c3fd188d8</srcmd5>
+    <version>4.4.1</version>
+    <time>1620334367</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.1</comment>
+    <requestid>890914</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4c7775c73c4c9bdb4cf923ee330eb8b3</srcmd5>
+    <version>4.5.0</version>
+    <time>1649793045</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.0</comment>
+    <requestid>969413</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>78f20c1942b65a823c2572e94ae556ea</srcmd5>
+    <version>4.6.0</version>
+    <time>1677878930</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.6.0</comment>
+    <requestid>1069198</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bffbd13b724e03f6f76966a2e7aaeaa2</srcmd5>
+    <version>5.0.0</version>
+    <time>1697748653</time>
+    <user>anag+factory</user>
+    <comment>submit new version 5.0.0</comment>
+    <requestid>1119044</requestid>
+  </revision>
+</revisionlist>

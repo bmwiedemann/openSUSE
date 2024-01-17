@@ -1,0 +1,6 @@
+<package name="perl-Alien-Hunspell" project="openSUSE:Factory">
+  <title>Install hunspell</title>
+  <description>This module provides the spelling library Hunspell. It will either detect it as provided by the operating system, or download the source from the Internet and install it for you. It uses Alien::Base.
+</description>
+  <devel project="devel:languages:perl" package="perl-Alien-Hunspell"/>
+</package>

@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7cdb702da2aa5d501f951052de3de965</srcmd5>
+    <version>0.2.2</version>
+    <time>1552206911</time>
+    <user>coolo</user>
+    <comment>- Initial spec for v0.2.2
+</comment>
+    <requestid>682456</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>95aa459935290c9d8a2bf0305f1b6508</srcmd5>
+    <version>0.2.2</version>
+    <time>1552985933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685828</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85bafd9f893e6c0d774202036904c794</srcmd5>
+    <version>0.3.0</version>
+    <time>1587071088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794553</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>09dad3f91d8fb2dc5e187b468f6eb780</srcmd5>
+    <version>0.8.0</version>
+    <time>1636319355</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Add ``backtrack_causes`` to ``get_preference``, which contains information
+    about the requirements involved in the most recent backtrack. This allows
+    the provider to utilise this information to tweak the ordering as well as
+    for recording/reporting conflicts.
+  * When merging a candidate's dependencies, make sure the merge target is
+    up-to-date within the loop, so the merge does not lose information when a
+    candidate returns multiple dependency specifications under one identifier
+    (e.g. specifyiung two dependencies ``a&gt;1`` and ``a&lt;2``, instead of one single
+    ``a&gt;1,&lt;2`` dependency).  `#80 &lt;https://github.com/sarugaku/resolvelib/issues/80&gt;`_
+  * Redesign ``get_preference()`` to include resolution state on dependencies
+    other than the currently working one, to allow the provider to better take
+    account of the global resolver knowledge and determine the best strategy. The
+    provider now can, for example, correctly calculate how far a dependency is
+    from the root node in the graph.  `#74 &lt;https://github.com/sarugaku/resolvelib/issues/74&gt;`_
+  * A new argument ``incompatibilities`` is now passed to the ``find_matches()``
+    hook, which the provider must use to exclude matches from the return value.
+  * Redesign ``find_matches()`` to include resolution state on dependencies other
+    than the currently working one, to handle usages that need to return candidates
+    based on non-local states. One such example is PEP 508 direct URLs specified
+    on a package, which need to be available to the same package specified with
+    extras (which would have a different identifier).
+  * The resolver no longer relies on implicit candidate equality to detect
+    incompatibilities. This is done by an additional ``find_matches()`` argument;
+    see the *Features* section to learn more.
+  * Provide type stubs for most classes. 
+  * Fix a state management bug that causes the resolver to enter an infinite loop
+    in certain backtracking cases.
+  * Fix a performance regression if ``find_matches()`` returns a non-built-in sequence instance.
+  * ``find_matches()`` now may return a ``Callable[[], Iterator[Candidate]]`` to</comment>
+    <requestid>930003</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>abcf3ed263e4024122d15fd52f658387</srcmd5>
+    <version>0.8.1</version>
+    <time>1658243950</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.8.1:
+  * A new reporter hook ``resolving_conflicts`` is added. The resolver triggers
+  * this hook when it detects conflicts in the dependency tree, and before it
+  * attempts to fix them. The hook accepts one single argument ``causes``, which
+  * is a list of ``(requirement, parent)`` 2-tuples that represents all the
+  * edges that lead to the detected conflicts.</comment>
+    <requestid>989686</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ee6cdf0d73ea0d62a045c8170ca62064</srcmd5>
+    <version>0.9.0</version>
+    <time>1670162326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039901</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1b845892a48213e7db912d17957dfc21</srcmd5>
+    <version>0.8.1</version>
+    <time>1670167026</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-resolvelib revision:5, using expand</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b69239f71c47496425a0da45fb3bc2e7</srcmd5>
+    <version>0.8.1</version>
+    <time>1670167048</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:python-resolvelib revision:5, using expand</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>90c562e0569d7b64d86128ded05aa66d</srcmd5>
+    <version>0.9.0</version>
+    <time>1670430893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040739</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>75112e53bed408f0a38030e1904bc643</srcmd5>
+    <version>0.8.1</version>
+    <time>1670503706</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1206225</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>5e7de02d43c3369a83ed368fe81fc2db</srcmd5>
+    <version>0.8.1</version>
+    <time>1671209506</time>
+    <user>dimstar_suse</user>
+    <comment>- add comment on why we need to stay with &lt; 0.9.0 (bsc#1206225)</comment>
+    <requestid>1043226</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>487e9b8fb19df7593f2daca2cdadba3d</srcmd5>
+    <version>0.8.1</version>
+    <time>1674043955</time>
+    <user>dimstar_suse</user>
+    <comment>- ignore some faulty tests
+  Because of python-packaging version: gh#sarugaku/resolvelib#114
+</comment>
+    <requestid>1059315</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>93b11e200f5c4c539ba800214834c106</srcmd5>
+    <version>0.8.1</version>
+    <time>1683559474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085433</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>10d16933912d6af812d18afc36c007a7</srcmd5>
+    <version>1.0.1</version>
+    <time>1702071213</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.1:
+  * Fix calls to opaque objects and use provider interface calls
+    instead.  `#126
+  * Implement backjumping to significantly speed up the
+    resolution process by skipping over irrelevant parts of the
+    resolution search space.  `#113
+  * A new reporter hook ``rejecting_candidate`` is added,
+    replacing ``backtracking``.
+  * The hook is called every time the resolver rejects a
+    conflicting candidate before trying out the next one in line.
+  * Some valid states that were previously rejected are now
+    accepted. This affects states where multiple candidates for
+    the same dependency conflict with each other.
+    The ``information`` argument passed to
+    ``AbstractProvider.get_preference`` may now contain empty
+    iterators. This has always been allowed by the method
+    definition but it was previously not possible in practice.
+
+  * edges that lead to the detected conflicts.
+  * Provide type stubs for most classes.</comment>
+    <requestid>1132100</requestid>
+  </revision>
+</revisionlist>

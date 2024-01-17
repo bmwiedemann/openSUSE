@@ -1,0 +1,29 @@
+--- tdfiglet/Makefile	2021-06-04 17:52:49.577342558 +0200
++++ ../../../tdfiglet-1.0/Makefile	2021-06-04 13:51:23.029934384 +0200
+@@ -1,6 +1,6 @@
+ PROG := tdfiglet
+ SRC := tdfiglet.c
+-PREFIX ?= /usr/local
++PREFIX := /usr
+ FONTS := fonts/*
+ FONTDIR := $(PREFIX)/share/$(PROG)/fonts
+ CC ?= cc
+@@ -21,12 +21,12 @@
+ .PHONY: debug clean install
+ 
+ install:
+-	test -d $(PREFIX)/bin || mkdir -p $(PREFIX)/bin
+-	cp $(PROG) $(PREFIX)/bin
+-	test -d $(FONTDIR) || mkdir -p $(FONTDIR)
+-	rm -f $(FONTDIR)/*.tdf
+-	for i in $(FONTS) ; do cp -v $$i $(FONTDIR) ; done
+-	chmod ugo+r $(FONTDIR)/*.tdf
++	test -d $(DESTDIR)/$(PREFIX)/bin || mkdir -p $(DESTDIR)/$(PREFIX)/bin
++	cp $(PROG) $(DESTDIR)/$(PREFIX)/bin
++	test -d $(DESTDIR)/$(FONTDIR) || mkdir -p $(DESTDIR)/$(FONTDIR)
++	rm -f $(DESTDIR)/$(FONTDIR)/*.tdf
++	for i in $(FONTS) ; do cp -v $$i $(DESTDIR)/$(FONTDIR) ; done
++	chmod ugo+r $(DESTDIR)/$(FONTDIR)/*.tdf
+ 
+ debug: $(SRC)
+ 	$(CC) -DDEBUG $(CFLAGS) $(DFLAGS) $(LDFLAGS) $(SRC) -o $(PROG)

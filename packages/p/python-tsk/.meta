@@ -1,0 +1,5 @@
+<package name="python-tsk" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:forensics" package="python-tsk"/>
+</package>

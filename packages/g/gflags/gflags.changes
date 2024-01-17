@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Sun Aug 28 19:42:22 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix (uncritical) libdir error in pkgconfig file.
+- Use default RelWithDebInfo build type.
+- Use separate _multibuilds for static and dynamic libraries,
+  otherwise CMake config depends on the static library.
+
+-------------------------------------------------------------------
+Wed Apr 27 09:04:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Resolve rpmlint report "libgflags2.x86_64: E:
+  shlib-policy-name-error SONAME: libgflags.so.2.2, expected
+  package suffix: 2_2"
+
+-------------------------------------------------------------------
+Sun Aug  9 20:57:54 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.2.2
+  * Fixed 267: Support build with GCC option "-fvisibility=hidden".
+  * Fixed 262: Declare FALGS_no##name variables as static to avoid
+    "previous extern" warning.
+  * Fixed 261: Declare FlagRegisterer c’tor explicit template instanations as
+    extern in header
+  * Fixed 257: Build with _UNICODE support on Windows.
+  * Fixed 233/234/235: Move CMake defines that are unused by Bazel to
+    separate header; makes config.h private again
+  * Fixed 228: Build with recent MinGW versions that define setenv.
+  * Fixed 226: Remove obsolete and unused CleanFileName code
+  * Merged 266: Various PVS Studio and GCC warnings.
+  * Merged 258: Fix build with some Clang variants that define "restrict"
+    macro.
+  * Merged 252: Update documentation on how to use Bazel.
+  * Merged 249: Use "_debug" postfix for debug libraries. 
+  * Merged 247: CMake "project" VERSION; no enable_testing(); "gflags::"
+    import target prefix.
+  * Merged 246: Add Bazel-on-Windows support.
+  * Merged 239: Use GFLAGS_NAMESPACE instead of "gflags" in test executable.
+  * Merged 237: Removed unused functions; fixes compilation with -Werror
+    compiler option.
+  * Merged 232: Fix typo in Bazel's BUILD definition
+  * Merged 230: Remove using ::fLS::clstring.
+  * Merged 221: Add convenience 'uninstall' target
+- Run spec-cleaner
+  * Remove package groups
+  * Use make macros
+
+-------------------------------------------------------------------
+Tue Sep 10 20:23:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
+Tue Oct 30 10:29:06 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Add RPM groups. Fix wrong devel-static description.
+
+-------------------------------------------------------------------
+Tue Jul 11 17:41:43 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.2.1
+  * Link to online documentation in README
+  * Merged 194: Include utils by file instead of CMAKE_MODULE_PATH
+    search
+  * Merged 195: Remove unused program_name variable
+  * Merged 196: Enable language C for older CMake versions when
+    needed
+  * Merged 202: Changed include directory in bazel build
+  * Merged 207: Mark single argument constructors in mutex.h as
+    explicit
+  * Merged 215: Fix static initialization order fiasco caused by
+    global registry lock
+  * Merged 216: Fix use of ARGC in CMake macros
+  * Merged 222: Static code analyzer error regarding strncmp with
+    empty kRootDir
+
+- Renamed source file
+
+-------------------------------------------------------------------
+Tue Mar 21 06:15:05 UTC 2017 - miukumac@outlook.com
+
+- Initial 2.2.0 release

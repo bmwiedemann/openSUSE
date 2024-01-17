@@ -1,0 +1,234 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0598caf439b2f553ea4270bcbe188ad1</srcmd5>
+    <version>0.9.6</version>
+    <time>1520588230</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-holoviews, which is already in openSUSE:Factory.</comment>
+    <requestid>581994</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5f94fbc0032a76a1ff50c2a149813d7a</srcmd5>
+    <version>0.9.6</version>
+    <time>1548334981</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659304</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e4fbcb39b247c7dfe6d58e3884cd9412</srcmd5>
+    <version>0.9.6</version>
+    <time>1573223137</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746324</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>da9b32fa6e148a8b0e3b21e91fe49b5f</srcmd5>
+    <version>0.9.7</version>
+    <time>1585342849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788966</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>820a9521e665a32996980ac9464bb92e</srcmd5>
+    <version>0.9.7</version>
+    <time>1612901838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870420</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f3fb7633e5c16de560e66008e49a118a</srcmd5>
+    <version>0.9.8</version>
+    <time>1630324512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914904</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b912857112de5a1f2efc59167107aa37</srcmd5>
+    <version>0.9.11</version>
+    <time>1647889893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963464</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4ee552230c5cb212bda37b7ea6989c5f</srcmd5>
+    <version>0.9.13</version>
+    <time>1659382323</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.9.13:
+  - Updated to wrap new functions and constants in SDL_ttf
+    2.20.0.
+  - Updated to wrap new functions and constants in SDL_mixer
+    2.6.0.
+  - Updated to wrap new functions and constants in SDL_image
+    2.6.0.
+  - Added experimental bindings for the new functions and
+    constants in the SDL 2.23.1 pre-release.
+  - Added a new function :func:sdl2.ext.load_svg that allows
+    loading simple SVG images at arbitrary resolutions with
+    SDL_image 2.6.0 or later.
+  - Added bindings for new functions and constants introduced in
+    SDL2 2.0.22
+  - Added a stable API for accessing the raw ctypes function
+    objects for SDL2 functions
+  - Various bugfixes (see the project's news.rst for more info)
+- Add mixer_tests_fix.patch to switch off failing tests
+  (gh#py-sdl/py-sdl2#241).
+</comment>
+    <requestid>992068</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>59b09212145e85b8b2f238151b433c16</srcmd5>
+    <version>0.9.13</version>
+    <time>1659470999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.13:
+  - Updated to wrap new functions and constants in SDL_ttf
+    2.20.0.
+  - Updated to wrap new functions and constants in SDL_mixer
+    2.6.0.
+  - Updated to wrap new functions and constants in SDL_image
+    2.6.0.
+  - Added experimental bindings for the new functions and
+    constants in the SDL 2.23.1 pre-release.
+  - Added a new function :func:sdl2.ext.load_svg that allows
+    loading simple SVG images at arbitrary resolutions with
+    SDL_image 2.6.0 or later.
+  - Added bindings for new functions and constants introduced in
+    SDL2 2.0.22
+  - Added a stable API for accessing the raw ctypes function
+    objects for SDL2 functions
+  - Various bugfixes (see the project's news.rst for more info)
+- Add mixer_tests_fix.patch to switch off failing tests
+  (gh#py-sdl/py-sdl2#241).
+- Otherwise, we actually don’t need to explicitly skip ANY
+  tests! Wow!
+- Update to version 0.9.11
+  * Added bindings for new functions and constants introduced in
+    SDL2 2.0.20
+  * Added bindings and documentation for new functions and
+    constants introduced in SDL2_ttf 2.0.18
+- Changelog for Release 0.9.10
+  * Added bindings for new functions and constants introduced in
+    SDL2 2.0.18
+  * Added experimental support for SDL 2.0.3 and 2.0.4 for older
+    platforms (tested on an iMac G4 running 10.4.11)
+  * Major improvements to the ext.pixelaccess module
+  * Major rewrite of the ext.image module
+  * New object-oriented method of rendering with sdl2.ext.Renderers
+    using the new sdl2.ext.Texture class
+  * Major expansion and rewrite of the sdl2.ext.Renderer class
+  * New powerful sdl2.ext.FontTTF class for font rendering
+  * Redocumented most of the sdl2.ext modules for better clarity
+    and maintainability
+  * Added automatic detection of Homebrew SDL2 binaries on Apple
+    Silicon Macs as a fallback Deprecated a number of sdl2.ext
+    modules and functions
+- Changelog for Release 0.9.9
+  * Added bindings for new functions and constants introduced in
+    SDL2 2.0.16
+  * Reverted the fix for issue #139 which inadvertently caused
+    Window.show() to force the window to use SDL2's software
+    rendering, breaking the Renderer class and compatibility with
+    PyOpenGL.
+- Drop PySDL2-pr193-skipnumpy.patch
+- Clean out test suite
+- Update to version 0.9.8
+  * This release fixes a number of bugs, updates the bindings to
+    support new functions in SDL2 2.0.14, adds a wrapper for the
+    SDL2 MessageBox API, and more.
+  * Added bindings for new functions and constants introduced in
+    SDL2 2.0.12 and 2.0.14
+  * Added full support for SDL2 binaries in non-system locations
+    (e.g., with pysdl2-dll) when using PySDL2 with Python installed
+    from the Microsoft Store on Windows.
+  * Improved handling of SDL2 binaries that are too old to be used
+    with PySDL2.
+  * Added a new sdl2.ext API for displaying SDL2 MessageBox alerts
+    and dialog boxes.
+- Add PySDL2-pr193-skipnumpy.patch (gh#marcusva/py-sdl2#193) for
+  missing NumPy in python36
+- remove duplicate check section: Only the Xvfb version runs
+  without segfaults when loading the SDL libraries. (Except for
+  two flaky Window position and size tests) 
+- update to version 0.9.7
+  * The minimum required SDL version is 2.0.5
+  * The minimum required SDL_ttf version is 2.0.14
+  * The minimum required SDL_mixer version is 2.0.1
+  * The minimum required SDL_image version is 2.0.1
+  * Improved compatibility with older SDL2 releases by raising informative
+  exceptions whenever a function requiring a newer SDL2 binary is called
+  * fixed bug preventing use of background color with wrapped text using
+  :meth:`sdl2.ext.FontManager.render()` (PR #134)
+  * fixed issue #112: allow easy moving and resizing of :obj:`sdl2.ext.Window()`
+  objects through 'position' and 'size' attributes, added 'open' and 'close'
+  methods to Window objects
+  * fixed issue #130: SDL_RW* functions now accept pointers to RW objects
+  * fixed issue #135: :func:`sdl2.SDL_GetPrefPath()` and
+  :func:`sdl2.SDL_GetPrefPath()` now return bytestrings instead of pointers
+  to strings.
+  * fixed issue #148: added support for loading SDL2 .so binaries with numeric
+  suffixes on Unix-like OSes (e.g. 'libSDL2.so.2')
+  * fixed transparency issues with pallete indexed PNGs (PR #159)
+- Run through spec-cleaner
+- Remove superfluous devel dependency for noarch package
+- initial version
+</comment>
+    <requestid>992361</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>20013ad1ea4a4e9c05c806a4d587810e</srcmd5>
+    <version>0.9.14</version>
+    <time>1667395185</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove .DS_Store files from sources
+- Remove not needed python_module macro definition
+- Add fix-tests.patch to fix the test run in the rpmbuild container without
+  access to /dev/input.
+- Update to 0.9.14:
+  * Updated to wrap new functions and constants in SDL 2.24.0.
+  * Added a new module sdl2.ext.displays for retrieving and working
+    with connected displays and their supported resolutions/refresh
+    rates.
+  * Extended sdl2.ext.init to allow initializing all SDL subsystems
+    individually (previously just initialized the video subsystem).
+  * Improved the memory safety of the sdl2.ext.Window class.
+  * Added raise_sdl_err to the public ext API.
+  * Fixed sdl2.ext.line to work correctly on 1bpp surfaces.
+  * Various fixes/improvements to the unit test suite for Linux
+    package maintainers.
+- Remove mixer_tests_fix.patch (fixed upstream)
+</comment>
+    <requestid>1032869</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1ffde45bed1a178f74bc8b89b225ef2a</srcmd5>
+    <version>0.9.14</version>
+    <time>1669549981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038364</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cabdb39a08885c825db7695929e84b17</srcmd5>
+    <version>0.9.16</version>
+    <time>1689710113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099029</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5674de48c2e2db97037ec488d7b2657f</srcmd5>
+    <version>0.9.16</version>
+    <time>1692687376</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105034</requestid>
+  </revision>
+</revisionlist>

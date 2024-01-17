@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a7de80606c4774b0e0b10cc3324434c</srcmd5>
+    <version>0.11</version>
+    <time>1394806651</time>
+    <user>coolo</user>
+    <comment>Used by openQA thus wanted in Factory</comment>
+    <requestid>225835</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0a7de80606c4774b0e0b10cc3324434c</srcmd5>
+    <version>0.11</version>
+    <time>1409302250</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

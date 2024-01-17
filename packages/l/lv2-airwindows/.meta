@@ -1,0 +1,5 @@
+<package name="lv2-airwindows" project="openSUSE:Factory">
+  <title>lv2-airwindows</title>
+  <description>LV2 port of the Airwindows plugins</description>
+  <devel project="multimedia:proaudio" package="lv2-airwindows"/>
+</package>

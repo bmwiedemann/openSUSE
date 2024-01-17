@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14ee0ea08063dfb07d33df7feb81df2c</srcmd5>
+    <version>0.3.4</version>
+    <time>1590506433</time>
+    <user>maxlin_factory</user>
+    <comment>An XML output tool for C-family abstract syntax </comment>
+    <requestid>807973</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e5bb428cf6f712822d6663dd9fa0199</srcmd5>
+    <version>0.3.6</version>
+    <time>1598725991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829593</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e2c18bd11498637e9c42082db5629fa1</srcmd5>
+    <version>0.4.0</version>
+    <time>1610558702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862945</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e79b3a5e882dbefedb71a5a9d63c6be1</srcmd5>
+    <version>0.4.2</version>
+    <time>1610965727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863665</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2958bb8794c42238a86249fb1eb02c59</srcmd5>
+    <version>0.4.3</version>
+    <time>1614948530</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876920</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a500399014e164debb55e07e1e7ca038</srcmd5>
+    <version>0.4.4</version>
+    <time>1635366082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927810</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2fd9fd628afa88385e8c8b281b123f1f</srcmd5>
+    <version>0.4.5</version>
+    <time>1647367494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961862</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b6561f853569288da461974916a04799</srcmd5>
+    <version>0.4.6</version>
+    <time>1662063135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000639</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7501079f29f898698e72762111a697f4</srcmd5>
+    <version>0.4.7</version>
+    <time>1669040988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036971</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0bf982a91bbe02d28898b107025be53e</srcmd5>
+    <version>0.4.8</version>
+    <time>1669630016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038503</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f2ed9df76ab242a46e7f1213c8c9ea8b</srcmd5>
+    <version>0.5.1</version>
+    <time>1671128719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042987</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d5ff25d37580405c10af4cf1a35f581f</srcmd5>
+    <version>0.6.1</version>
+    <time>1680536773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076840</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fbeda3e425610c426e939d90dd49db34</srcmd5>
+    <version>0.6.2</version>
+    <time>1696451459</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114881</requestid>
+  </revision>
+</revisionlist>

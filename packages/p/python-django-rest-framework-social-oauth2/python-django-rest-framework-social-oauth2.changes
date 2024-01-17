@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sun Jan 14 17:31:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Add support for Django 4.0
+  * Drop support for python 2, enforce python >=3.5
+  * Reference the User model with get_user_model()
+  * Fix ACCESS_TOKEN_URL namespace
+  * Refactor README
+  * Bump dependencies
+  * Remove django-braces dependency
+  * Set Django request object through a server method call
+  * Added a new Django Rest Framework view to disconnect backend
+  * Update documentation with Google example
+  * Create manage.py command to create an application
+  * Remove harcoded oauthlibcore
+  * Fix NoRerverseMatch Error with custom namespace
+  * Updated invalidate_sessions to accept all POST content types
+  * Restore compatibility with Django<2.0
+  * Keep request.data mutable
+  * Added compatibility with Django 2.0
+
+-------------------------------------------------------------------
+Thu Feb 21 17:31:31 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.0 

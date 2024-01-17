@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Fri Oct 28 18:36:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.2.1 
+  Fix line length issue in comment
+
+-------------------------------------------------------------------
+Tue Oct  4 22:06:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.2.0 (2022-06-27)
+  * Allow long-str to fall back to bytes in case of UnicodeDecodeError (AMQP 1.0 interop) (#40 - dmaone)
+  * DOMAIN_REGEX enhanced to fulfill tag uri scheme for exchange and queue names. (#42 - deschmih)
+
+- Update to 3.1.0 (2022-01-10)
+  * Add implicit UTC timezone behavior to the AMQP Basic.Properties timestamp value. (#37 - RemiCardona)
+  * Add support for short-short-int and short-short-uint. (#33 - michal800106) 
+
+-------------------------------------------------------------------
+Tue Feb 23 14:52:28 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Disabled Python 2 builds
+- Update to v3.0.1
+  * See https://github.com/gmr/pamqp/blob/master/docs/changelog.rst
+
+-------------------------------------------------------------------
+Tue Jun  9 07:24:28 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
+Thu Apr 23 10:35:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Fri Apr 26 10:04:09 UTC 2019 - pgajdos@suse.com
+
+- do not require unittest2 for testing with python3
+
+-------------------------------------------------------------------
+Fri Apr 26 07:42:34 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.3.0
+  - Add :py:func:`pamqp.encode.support_deprecated_rabbitmq` function
+    to limit data types available when encoding field-tables for older
+    RabbitMQ versions.
+  - Change :py:meth:`pamqp.encode.timestamp` to allow for numeric/epoch
+    timestamps (#14 - `mosquito <https://github.com/mosquito>`_)
+  - Change :py:meth:`pamqp.frame.frame_parts` to a public method
+    (#15 - `mosquito <https://github.com/mosquito>`_)
+  - Cleanup of code to pass configured flake8 tests
+  - Add support for 8-bit unsigned integer values in
+    :py:meth:`pamqp.encode.table_integer`
+
+-------------------------------------------------------------------
+Fri Mar 29 07:27:03 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.1.0
+  * Change raising a DeprecationWarning exception to using
+    warnings.warn for deprecated AMQP methods
+
+-------------------------------------------------------------------
+Fri Sep 21 07:56:23 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 2.0.0:
+  * Small bugfixes only, support for py3.4+ and 2.7+ only
+- Drop upstream merged patch:
+  * 776d086553bd04630cb1d9e2f429c7bf05b1ca23.patch
+
+-------------------------------------------------------------------
+Wed Sep 12 10:59:50 CEST 2018 - mcepl@suse.com
+
+- Add 776d086553bd04630cb1d9e2f429c7bf05b1ca23.patch fixing tests
+  on 32bit archs. See https://github.com/gmr/pamqp/issues/11
+
+-------------------------------------------------------------------
+Wed Aug 29 13:54:56 UTC 2018 - tchvatal@suse.com
+
+- Switch to github tarball to get tests
+- Run tests
+
+-------------------------------------------------------------------
+Thu Dec  7 01:55:55 UTC 2017 - sean.marlow@suse.com
+
+- Initial release v1.6.1

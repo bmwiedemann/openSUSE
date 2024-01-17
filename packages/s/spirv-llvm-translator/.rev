@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f0d69101f1cb018211b0bbdefe10052</srcmd5>
+    <version>15.0.0</version>
+    <time>1674232658</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package for spirv-llvm-translator, version 15.0.0
+
+Needed by rusticl (Mesa)</comment>
+    <requestid>1059411</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13553d20b68cb835f2c96b4480389513</srcmd5>
+    <version>16.0.0</version>
+    <time>1680018526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073961</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c26c3f1d80e7283f85c9308576fad692</srcmd5>
+    <version>17.0.0</version>
+    <time>1695853461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112982</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eebd3dbc209085692a49de378f6f52da</srcmd5>
+    <version>17.0.0</version>
+    <time>1696529009</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1115814</requestid>
+  </revision>
+</revisionlist>

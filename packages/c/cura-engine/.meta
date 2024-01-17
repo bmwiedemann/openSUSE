@@ -1,0 +1,11 @@
+<package name="cura-engine" project="openSUSE:Factory">
+  <title>CuraEngine</title>
+  <description>
+    CuraEngine is the a powerful, fast and robust engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers. It is part of the larger open source project called &quot;Cura&quot;.
+    https://github.com/Ultimaker/CuraEngine
+    This is a package of CuraEngine for openSUSE
+
+enabled for aarch64 since it is likely to be used on arm hardware used together with octoprint.
+  </description>
+  <devel project="science" package="cura-engine"/>
+</package>

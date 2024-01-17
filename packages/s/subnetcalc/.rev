@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ae16cf7208dd121d778636fe468a17f</srcmd5>
+    <version>2.4.3</version>
+    <time>1500669908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>505759</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf55de3326ca334bd109e242f0941a10</srcmd5>
+    <version>2.4.3</version>
+    <time>1501406811</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>512963</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40f81feb1f8627328e8b503213548532</srcmd5>
+    <version>2.4.14</version>
+    <time>1574014990</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency on deprecated GeoIP-devel, fixes boo#1156201
+- update to version 2.4.14:
+...</comment>
+    <requestid>749061</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9cd4008e16999df79a5e6b72832572cf</srcmd5>
+    <version>2.4.16</version>
+    <time>1591558776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812212</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d1ed227b1dd8982baa40fdad1489328e</srcmd5>
+    <version>2.4.18</version>
+    <time>1636577188</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930553</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6a77b9d4f708c58e3447cc03f0f8dbe</srcmd5>
+    <version>2.4.19</version>
+    <time>1637618680</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>933158</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8e686459923210452985b28c686b2cbc</srcmd5>
+    <version>2.4.21</version>
+    <time>1676990210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067007</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>320e0dea7bb2bb2a9ad14682eb9076a4</srcmd5>
+    <version>2.4.22</version>
+    <time>1691414970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102666</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8ec16dfa239582108dccda2a0c5514f1</srcmd5>
+    <version>2.4.23</version>
+    <time>1704829897</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137752</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,31 @@
+From e3cc782c610729de7622a274e532817c18262a9d Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Thu, 18 May 2023 09:00:12 +0300
+Subject: Fix operation of --no-absolute-filenames --make-directories
+
+* src/copyin.c (symlink_placeholder): Try to create leading
+directories if unable to create placeholder.
+---
+ src/copyin.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/copyin.c b/src/copyin.c
+index 1e4921f..08df12c 100644
+--- a/src/copyin.c
++++ b/src/copyin.c
+@@ -668,6 +668,12 @@ symlink_placeholder (char *oldpath, char *newpath, struct cpio_file_stat *file_s
+   struct delayed_link *p;
+   size_t newlen = strlen (newpath);
+ 
++  if (fd < 0 && create_dir_flag)
++    {
++      create_all_directories (newpath);
++      fd = open (newpath, O_WRONLY | O_CREAT | O_EXCL, 0);
++    }
++
+   if (fd < 0)
+     {
+       open_error (newpath);
+-- 
+cgit v1.1
+

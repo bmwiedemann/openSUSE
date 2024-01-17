@@ -1,0 +1,87 @@
+From 2f92e3f6bec5eb0196651c402da507cb50eab959 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 28 Aug 2023 08:31:16 +0200
+Subject: [PATCH] Fixup for commit 1aaba11da9aa ("driver core: class: remove
+ module * from class_create()")
+
+Since Linux 6.4-rc1 the first argument to class_Create is removed.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ msr_allowlist.c | 6 +++++-
+ msr_batch.c     | 6 +++++-
+ msr_entry.c     | 6 +++++-
+ msr_version.c   | 6 +++++-
+ 4 files changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/msr_allowlist.c b/msr_allowlist.c
+index 77ed8c1..f815d05 100644
+--- a/msr_allowlist.c
++++ b/msr_allowlist.c
+@@ -414,7 +414,11 @@ int msr_allowlist_init(int *majordev)
+     }
+     cdev_registered = 1;
+ 
+-    cdev_class = class_create(THIS_MODULE, "msr_allowlist");
++    cdev_class = class_create(
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
++                    THIS_MODULE,
++#endif
++                    "msr_allowlist");
+     if (IS_ERR(cdev_class))
+     {
+         err = PTR_ERR(cdev_class);
+diff --git a/msr_batch.c b/msr_batch.c
+index ba1228b..56feb15 100644
+--- a/msr_batch.c
++++ b/msr_batch.c
+@@ -211,7 +211,11 @@ int msrbatch_init(int *majordev)
+     }
+     cdev_registered = 1;
+ 
+-    cdev_class = class_create(THIS_MODULE, "msr_batch");
++    cdev_class = class_create(
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
++                    THIS_MODULE,
++#endif
++                    "msr_batch");
+     if (IS_ERR(cdev_class))
+     {
+         err = PTR_ERR(cdev_class);
+diff --git a/msr_entry.c b/msr_entry.c
+index 0974aa8..9e16803 100644
+--- a/msr_entry.c
++++ b/msr_entry.c
+@@ -319,7 +319,11 @@ static int __init msr_init(void)
+     pr_debug("msr_allowlist major dev: %i\n", mdev_msr_allowlist);
+     pr_debug("msr_version major dev: %i\n", mdev_msr_version);
+ 
+-    msr_class = class_create(THIS_MODULE, "msr_safe");
++    msr_class = class_create(
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
++                    THIS_MODULE,
++#endif
++                    "msr_safe");
+     if (IS_ERR(msr_class))
+     {
+         err = PTR_ERR(msr_class);
+diff --git a/msr_version.c b/msr_version.c
+index 72fe8dd..5abe857 100644
+--- a/msr_version.c
++++ b/msr_version.c
+@@ -107,7 +107,11 @@ int msr_version_init(int *majordev)
+     }
+     cdev_registered = 1;
+ 
+-    cdev_class = class_create(THIS_MODULE, "msr_safe_version");
++    cdev_class = class_create(
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6,4,0)
++                    THIS_MODULE,
++#endif
++                    "msr_safe_version");
+     if (IS_ERR(cdev_class))
+     {
+         err = PTR_ERR(cdev_class);
+-- 
+2.41.0
+

@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/FozzTexx/tcpser.git</param>
+    <param name="scm">git</param>
+    <param name="revision">master</param>
+    <param name="package-meta">no</param>
+    <param name="filename">tcpser</param>
+    <param name="versionformat">1.0rc12+git.%cd</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>
+

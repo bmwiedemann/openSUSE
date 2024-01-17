@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06d939f69a704cb93d5f90a00e2c5002</srcmd5>
+    <version>0.4</version>
+    <time>1529402478</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616812</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2483c377448959fac2725b67ad94635</srcmd5>
+    <version>0.5.1</version>
+    <time>1552299353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683539</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cf4f2e26416ce92b071e389bf90e3de2</srcmd5>
+    <version>0.5.1</version>
+    <time>1558690306</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3-PyMuPDF as recommends
+</comment>
+    <requestid>704927</requestid>
+  </revision>
+</revisionlist>

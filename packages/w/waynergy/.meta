@@ -1,0 +1,6 @@
+<package name="waynergy" project="openSUSE:Factory">
+  <title>waynergy</title>
+  <description>An implementation of a synergy client for wayland compositors. Based on the upstream uSynergy library (heavily modified for more protocol support and a bit of paranoia).</description>
+  <devel project="X11:Wayland" package="waynergy"/>
+  <url>https://github.com/r-c-f/waynergy</url>
+</package>

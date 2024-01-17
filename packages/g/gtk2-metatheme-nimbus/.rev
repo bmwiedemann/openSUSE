@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b3307f1501ba752c314477a9f0e42a8</srcmd5>
+    <version>0.1.4</version>
+    <time>1272319519</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gtk2-metatheme-nimbus based on submit request 36696 from user vuntz
+</comment>
+    <requestid>36696</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b3307f1501ba752c314477a9f0e42a8</srcmd5>
+    <version>0.1.4</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1b3307f1501ba752c314477a9f0e42a8</srcmd5>
+    <version>0.1.4</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e90d4fc8cb8af7f607a6cbc2397c390d</srcmd5>
+    <version>0.1.4</version>
+    <time>1282945827</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gtk2-metatheme-nimbus based on submit request 46323 from user vuntz
+</comment>
+    <requestid>46323</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>92b9bffa3c1981bbd13e76518d0731ad</srcmd5>
+    <version>0.1.4</version>
+    <time>1287155508</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gtk2-metatheme-nimbus based on submit request 50624 from user vuntz
+</comment>
+    <requestid>50624</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>92b9bffa3c1981bbd13e76518d0731ad</srcmd5>
+    <version>0.1.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a0cadca6042fc4aee487201c40cf1471</srcmd5>
+    <version>0.1.7</version>
+    <time>1304507002</time>
+    <user>saschpe</user>
+    <comment>Update to 0.1.7 (forwarded request 69364 from vuntz)</comment>
+    <requestid>69453</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8d080021a65feb02f637e00bc54e0ad6</srcmd5>
+    <version>0.1.7</version>
+    <time>1304507012</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69453
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8d080021a65feb02f637e00bc54e0ad6</srcmd5>
+    <version>0.1.7</version>
+    <time>1319181952</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>b8564171c863db710e5ff76a3900be3b</srcmd5>
+    <version>0.1.7</version>
+    <time>1323191813</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>b8564171c863db710e5ff76a3900be3b</srcmd5>
+    <version>0.1.7</version>
+    <time>1340183421</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>b8564171c863db710e5ff76a3900be3b</srcmd5>
+    <version>0.1.7</version>
+    <time>1359109020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>b8564171c863db710e5ff76a3900be3b</srcmd5>
+    <version>0.1.7</version>
+    <time>1379662580</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>b8564171c863db710e5ff76a3900be3b</srcmd5>
+    <version>0.1.7</version>
+    <time>1409301127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Sat Jun 24 12:24:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.86
+  * Terminate phase1 of simplex method once a zero-cost solution
+    is found.
+  * Fix bug in XDR reads due to uninitialized variable.
+  * Add high-resolution clock; update FFT support.
+- Add 0001-Fix-without-lsp-issue-379.patch
+
+-------------------------------------------------------------------
+Sat Nov 19 22:16:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.83
+  * WebGL triangle groups were fixed.
+  * Context menus were added to Xasy objects to allow one to edit
+    the fill type, line type, color, line cap, and optionally add
+    arrowheads.
+  * Support for begingroup() and endgroup() was added to Xasy.
+  * Scaling in the vectorfield function was fixed.
+  * A quotient(x,y) bug when -1 < x/y < 0, introduced in version
+    2.42, was fixed.
+
+-------------------------------------------------------------------
+Wed Aug 10 10:52:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.82
+  * Support for Ghostscript 9.56 was added.
+  * The dvisvgmMultipleFiles option is now enabled by default.
+  * The mean color of multicoloured patches is output only for
+    PRC code.
+  * Subdivision crack adjustments were disabled for transparent
+    patches.
+  * The OpenGL transparency shader was further accelerated.
+
+-------------------------------------------------------------------
+Thu Jun 16 21:15:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.81
+  * Schur decompositions were implemented. A bug in uniform() was
+    fixed.
+  * The Xasy bounding box and a crash when opening Xasy files
+    were fixed.
+  * The transparency offset buffer is zeroed when GPU compression
+    is unavailable.
+  * The surface constructor for solids of revolution was
+    documented.
+  * Opaque rendering on platforms lacking
+    GL_ARB_fragment_shader_interlock was fixed.
+
+-------------------------------------------------------------------
+Thu Apr 21 09:55:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.80
+  * Compression of empty transparent pixel counts and other
+    optimizations were implemented in the transparency shader. A
+    weighted least-squares fit was added.
+  * LSP: Add basic Language Server Protocol. server code to
+    Asymptote.
+  * Add preliminary v3d standard.
+
+-------------------------------------------------------------------
+Fri May  7 13:24:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.70
+  * Fix segmentation fault in subpath3
+  * Make Gouraud image respect x and y picture scaling
+
+-------------------------------------------------------------------
+Thu Dec 24 11:53:55 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.68
+  * Floating point exceptions in OpenGL libraries are now masked.
+  * A normalization used to render tubes was fixed.
+  * A Label align(Label,dir) function was added for aligning
+    label normals.
+  * A new settings.compress=true option controls PDF image
+    compression.
+  * A bool isometry(transform) function was added.
+  * The transpose function ignores uninitialized elements.
+  * Null fields are treated as undefined values in cvs mode and
+    in line mode.
+  * Uninitialized rendering variables were fixed.
+  * Logarithmic graphs of surfaces are supported.
+  * Files are opened without assuming an asy suffix.
+  * Support for Ghostscript 9.53 was implemented.
+  * The end argument of Margin functions is now optional.
+  * A function cputime().change.clock that returns the
+    high-resolution elapsed wall clock time was added.
+  * The centering of slides was fixed.
+  * Null characters and null strings are supported in the replace
+    function.
+
+-------------------------------------------------------------------
+Sun Aug 30 10:58:46 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.67:
+  * Support was added for importing and inputting URLs.
+  * Compilation and 2D SVG to HTML conversion no longer requires
+    the GLM library; 2D html output is fit to the canvas unless
+    settings.absolute=true.
+  * Diagnostics for dvisvgm were enabled; SVG clipping was fixed.
+  * A -globalread setting (default true) was implemented.
+  * Files are opened using the search path, which now includes the
+    examples directory.
+  * An invalid array dimensions error was fixed.
+  * A WebGL resize event listener was added; the + and - keys now
+    zoom in and out, rather than expanding and shrinking the
+    viewport.
+  * Remeshing on export is forced; unnecessary remeshing on zoom
+    in AsyGL is avoided.
+  * The triple dir(path3, path3) function was normalized.
+  * The repositioning of OpenGL windows was fixed.
+  * The copy constructors for path and path3 were fixed.
+  * Asymptote errors no longer cause Xasy to hang.
+  * A numerical precision issue was fixed.
+  * A portable way of skipping whitespace was implemented; casts
+    from empty strings now yield uninitialized values.
+  * Interrupt handling under MacOS X was fixed.
+  * A devicepixelratio setting was implemented.
+  * The error location is displayed in the console.
+  * Segmentation faults were fixed.
+  * The documentation was updated and the code was reformatted.
+  * Obsolete encoding modules were removed.
+
+-------------------------------------------------------------------
+Thu Jun  4 16:31:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Conflicts towards texlive-asymptote.
+
+-------------------------------------------------------------------
+Wed Jun  3 19:28:40 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.65
+  * A bug in rendering 2D preview images of a 3D scene was fixed.
+    The 100-error TeX limit is gracefully detected, rather than
+    hanging. A more accurate Bezier approximation to the sphere
+    was implemented. An initial perpendicular direction can now
+    be specified for the rotation minimizing frame for a path3;
+    the previous direction is no longer cached between calls.
+
+-------------------------------------------------------------------
+Thu Mar  5 16:22:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 2.64) for build.opensuse.org

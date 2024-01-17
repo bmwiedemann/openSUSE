@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>affc464ea81da5a749f006d8be2e9a42</srcmd5>
+    <version>1.0.0b5</version>
+    <time>1583949157</time>
+    <user>dimstar_suse</user>
+    <comment>- New azure-sdk component</comment>
+    <requestid>768423</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e0ad5b598a59db59afeb51518d4783d1</srcmd5>
+    <version>1.0.0b6</version>
+    <time>1601652286</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.md to CHANGELOG.md in %files section (forwarded request 833085 from glaubitz)</comment>
+    <requestid>833108</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>259265f7346f30321efbc135cd70b406</srcmd5>
+    <version>1.0.0b6</version>
+    <time>1607548512</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853863</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>910cfd1a3416ab55b2cb10fad2226308</srcmd5>
+    <version>1.0.0b7</version>
+    <time>1620400504</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b7
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 890387 from glaubitz)</comment>
+    <requestid>890744</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2ab477d0ea04ccfe5e360b5cab986524</srcmd5>
+    <version>1.0.0b8</version>
+    <time>1629471468</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 1.0.0b8
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 907785 from glaubitz)</comment>
+    <requestid>907827</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0e0b3b00e1226930cfecd36752ad64ff</srcmd5>
+    <version>1.0.0b9</version>
+    <time>1683808924</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b9
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1086185 from glaubitz)</comment>
+    <requestid>1086499</requestid>
+  </revision>
+</revisionlist>

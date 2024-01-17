@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>529d00ce476454cbeb23a72861e0d878</srcmd5>
+    <version>1.0.0</version>
+    <time>1521052675</time>
+    <user>dimstar_suse</user>
+    <comment>dep of python-aiohttp</comment>
+    <requestid>585248</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>15619eb302f471e028253b833ad277e9</srcmd5>
+    <version>1.0.0</version>
+    <time>1545647898</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659434</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>54330e2f1a281b0bfdfa0b9e34e6bbfb</srcmd5>
+    <version>1.0.0</version>
+    <time>1547211883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664277</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5cc38eeee42e043ff1d85668bec6fbf1</srcmd5>
+    <version>1.1.0</version>
+    <time>1552464888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * No upstream changelog
+- Execute tests</comment>
+    <requestid>684409</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>71bc72cab2003604d7aefd0078e8a664</srcmd5>
+    <version>1.1.0</version>
+    <time>1574104147</time>
+    <user>dimstar_suse</user>
+    <comment>- Create multibuild in order to cope with the circular dependency
+  of this package with aiohttp
+- Disable failing test</comment>
+    <requestid>749177</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b6c0b94f08c7b0cedabfce6ff2917a5b</srcmd5>
+    <version>1.1.0</version>
+    <time>1584447127</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip also test test_aiohttp that fails on Leap due to http error
+  (it tries to resolve stuff that fails)</comment>
+    <requestid>785883</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>cea21bfb85ce6dab5e6b729c2dea53b9</srcmd5>
+    <version>1.1.0</version>
+    <time>1686927120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093091</requestid>
+  </revision>
+</revisionlist>

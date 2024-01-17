@@ -1,0 +1,36 @@
+commit a7c299dc11ffb0407e491b8aa743d7f9c60712e5
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Jun 4 09:21:13 2021 +0200
+
+    opae-libs: xfpga: fix strnlen argument
+    
+    Fixes GCC11 build error:
+    /home/abuild/rpmbuild/BUILD/opae-2.0.01.0.776b2b2718f7/opae-libs/plugins/xfpga/metrics/bmc/bmc.c: In function 'bmcGetLastPowerdownCause':
+    /home/abuild/rpmbuild/BUILD/opae-2.0.01.0.776b2b2718f7/opae-libs/plugins/xfpga/metrics/bmc/bmc.c:573:18: error: 'strnlen' specified bound 256 exceeds source size 40 [-Werror=stringop-overread]
+      573 |         *cause = strndup((const char *)tmp->message,
+          |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      574 |                 strnlen((const char *)tmp->message, SYSFS_PATH_MAX));
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git opae-libs/plugins/xfpga/metrics/bmc/bmc.c opae-libs/plugins/xfpga/metrics/bmc/bmc.c
+index 9951eb83ac0d..9d19e18a2f8d 100644
+--- opae-libs/plugins/xfpga/metrics/bmc/bmc.c
++++ opae-libs/plugins/xfpga/metrics/bmc/bmc.c
+@@ -45,6 +45,7 @@
+ 
+ #include <glob.h>
+ 
++
+ #define NULL_CHECK(x)                                                          \
+ 	do {                                                                   \
+ 		if (NULL == (x)) {                                             \
+@@ -571,7 +572,7 @@ fpga_result bmcGetLastPowerdownCause(fpga_token token, char **cause)
+ 	}
+ 
+ 	*cause = strndup((const char *)tmp->message,
+-		strnlen((const char *)tmp->message, SYSFS_PATH_MAX));
++					 strnlen((const char *)tmp->message, 40));
+ 
+ out:
+ 	if (tmp) {

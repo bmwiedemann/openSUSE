@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6411413e894b59997bc4dc9662e1e5ed</srcmd5>
+    <version>0~20130407</version>
+    <time>1375728460</time>
+    <user>coolo</user>
+    <comment>limbsmdev is part of the libyal library collection and used by a pending libewf update.
+This is part of the summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185841</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6411413e894b59997bc4dc9662e1e5ed</srcmd5>
+    <version>0~20130407</version>
+    <time>1379663092</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58363c49f615314fca85d97634ee263b</srcmd5>
+    <version>0~20140803</version>
+    <time>1408021091</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244603</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1f111c6ed336bef1f1b82354a8638a3d</srcmd5>
+    <version>0~20140803</version>
+    <time>1408634699</time>
+    <user>lnussel</user>
+    <comment>forwarding to F</comment>
+    <requestid>245514</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1f111c6ed336bef1f1b82354a8638a3d</srcmd5>
+    <version>0~20140803</version>
+    <time>1409301718</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2801fb5a4f6af18f1525a798ff56fc56</srcmd5>
+    <version>0~20150105</version>
+    <time>1422626308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280647</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8cd5a29c7f3eeeaa18ca5bba27e0beb5</srcmd5>
+    <version>0~20160320</version>
+    <time>1487681303</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458574</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e15d37da55af68be39d6250bd4e65d4e</srcmd5>
+    <version>0~20170225</version>
+    <time>1488479820</time>
+    <user>dimstar_suse</user>
+    <comment>2017 update, and add python 3 binding support</comment>
+    <requestid>460618</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1bd3eb1eeef2c697bb728c1bd49f46c6</srcmd5>
+    <version>0~20190315</version>
+    <time>1560337715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695361</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7b521b930935964bcc8551ede687b8a6</srcmd5>
+    <version>0~20190315</version>
+    <time>1588324317</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799059</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d2f5234d106957471a9a293f8f8033d9</srcmd5>
+    <version>0~20201204</version>
+    <time>1609344817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859351</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a0333cfda415681d8a1b79842a72d9a7</srcmd5>
+    <version>20210418</version>
+    <time>1623363500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898741</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>774d6e3b1811cd09a46a77c964b449f4</srcmd5>
+    <version>20210418</version>
+    <time>1643062206</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds. (This reenables Python2 on Leap 15.)</comment>
+    <requestid>948392</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ea2ec1a83f5acb8eed698b03a0e3cd47</srcmd5>
+    <version>20210418</version>
+    <time>1660051741</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994025</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fa5ca877cdb99130811b651b22c5e5f5</srcmd5>
+    <version>20221028</version>
+    <time>1666978316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221028</comment>
+    <requestid>1031945</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>24a884905af5781388c4932644a54f8a</srcmd5>
+    <version>20221028</version>
+    <time>1669630006</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038492</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>041fff8dbade8adf3bc6bfae4a8a7024</srcmd5>
+    <version>20221028</version>
+    <time>1691594739</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103024</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9403cca64e95153fd752dce4cd4d39cd</srcmd5>
+    <version>20231128</version>
+    <time>1701378026</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231128</comment>
+    <requestid>1129771</requestid>
+  </revision>
+</revisionlist>

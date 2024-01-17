@@ -1,0 +1,29 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 02:13:36 +0200
+Subject: [PATCH 17/20] Fix annoying warning about suspiciuos cast
+
+Comparison with 0 will deduce with R = int, which leads to GCC warning
+about a suspicious 32-bit integer to 64-bit pointer cast. Instead of
+casting inside the function, we should just let the caller do that.
+(Casting a literal 0 to pointer is fine, though NULL would be better.)
+---
+ Source/tmModel/tmPtrClasses/tmDpptr.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/Source/tmModel/tmPtrClasses/tmDpptr.h b/Source/tmModel/tmPtrClasses/tmDpptr.h
+index 04cb035..6bfa10f 100644
+--- a/Source/tmModel/tmPtrClasses/tmDpptr.h
++++ b/Source/tmModel/tmPtrClasses/tmDpptr.h
+@@ -61,10 +61,8 @@ public:
+   
+   // Comparison with raw types (typically ptr_t_const, const tmDpptr<T>&, or
+   // int (null ptr))
+-  template <class R>
+-    bool operator==(R r) const {return mTarget == (ptr_t_const)(r);};
+-  template <class R>
+-    bool operator!=(R r) const {return mTarget != (ptr_t_const)(r);};
++  bool operator==(T* r) const {return mTarget == r;}
++  bool operator!=(T* r) const {return mTarget != r;}
+   
+   // Dereferencing
+   T& operator *() const {return *mTarget;};

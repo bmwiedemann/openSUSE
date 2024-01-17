@@ -1,0 +1,12 @@
+<package name="gitlint" project="openSUSE:Factory">
+  <title>Git commit message linter checking</title>
+  <description>Great for use as a commit-msg git hook or as part of your gating script in
+a CI/CD pipeline (e.g. jenkins). Many of the gitlint validations are based
+on well-known community standards, others are based on checks that we've
+found useful throughout the years. Gitlint has sane defaults, but you can
+also easily customize it to your own liking.
+
+</description>
+  <devel project="devel:tools:scm" package="gitlint"/>
+  <url>https://github.com/jorisroovers/gitlint</url>
+</package>

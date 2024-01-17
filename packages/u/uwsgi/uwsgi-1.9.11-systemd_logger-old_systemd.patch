@@ -1,0 +1,9 @@
+--- a/plugins/systemd_logger/systemd_logger.c
++++ b/plugins/systemd_logger/systemd_logger.c
+@@ -1,5 +1,6 @@
+ #include "../../uwsgi.h"
+ 
++#include <syslog.h>
+ #include <systemd/sd-journal.h>
+ 
+ ssize_t uwsgi_systemd_logger(struct uwsgi_logger *ul, char *message, size_t len) {

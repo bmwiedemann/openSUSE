@@ -1,0 +1,5 @@
+<package name="weblug" project="openSUSE:Factory">
+  <title>Simple webhook receiver</title>
+  <description>weblug is is a configurable webhook receiver that allows users to define custom programs and script to be executed when a webhook is triggered.</description>
+  <devel project="devel:languages:go" package="weblug"/>
+</package>

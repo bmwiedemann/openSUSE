@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b98f199cbccb1a4956f3d42580bffdc</srcmd5>
+    <version>1.2.0</version>
+    <time>1582899604</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure SDK component package</comment>
+    <requestid>775209</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2f4ec380d1eadd4e5e3c0f9db8251ac</srcmd5>
+    <version>1.3.1</version>
+    <time>1588971863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801168</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3296773fd143acb7f83c29d798673c8c</srcmd5>
+    <version>1.4.0</version>
+    <time>1601651902</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 830747 from glaubitz)</comment>
+    <requestid>830864</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c73aa8e1fded3226f15645daa67ce134</srcmd5>
+    <version>1.5.0</version>
+    <time>1605290320</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 848162 from glaubitz)</comment>
+    <requestid>848196</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b2d129811bb0e0d2e5c46045f36e4293</srcmd5>
+    <version>1.5.0</version>
+    <time>1607548547</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853875</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9caacb5ec4462734d11d9066be2d2c36</srcmd5>
+    <version>1.6.0b2</version>
+    <time>1618235343</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.6.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 881859 from glaubitz)</comment>
+    <requestid>881923</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>db6d57f1555d8d2e2cd92d370520ab29</srcmd5>
+    <version>1.6.0b3</version>
+    <time>1620400505</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.6.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 890746 from glaubitz)</comment>
+    <requestid>890749</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3d6266f1afd470468cf5ec952127998e</srcmd5>
+    <version>1.6.0.0</version>
+    <time>1623767837</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.6.0.0 to ensure
+  proper upgrade from previous version 1.6.0b3 (forwarded request 898311 from glaubitz)</comment>
+    <requestid>898411</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f4179aee8a8e57f3f882a6f452f3c0d6</srcmd5>
+    <version>1.6.1</version>
+    <time>1631042506</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.6.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 917250 from glaubitz)</comment>
+    <requestid>917296</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>69c4e92429a48604bb0594094c86efb5</srcmd5>
+    <version>1.7.0</version>
+    <time>1634587199</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 926036 from glaubitz)</comment>
+    <requestid>926051</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>93a45532bdc057acc22255b39ca4f0ab</srcmd5>
+    <version>1.7.1</version>
+    <time>1636577180</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.7.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 930533 from glaubitz)</comment>
+    <requestid>930542</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf7d083217dbb7ea2c639481443c4a81</srcmd5>
+    <version>1.8.0</version>
+    <time>1646241753</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 958419 from glaubitz)</comment>
+    <requestid>958475</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>89655216df542db0f3112d5a95131645</srcmd5>
+    <version>1.9.0</version>
+    <time>1649274723</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 967247 from glaubitz)</comment>
+    <requestid>967281</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3551306bb565c195093e2c6678c95730</srcmd5>
+    <version>1.10.0b1</version>
+    <time>1651001517</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.10.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Add patch to relax Python dependencies in setup.py
+  + ai_relax-python-depends.patch
+- Update Requires from setup.py (forwarded request 972842 from glaubitz)</comment>
+    <requestid>972877</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e879f9b23ab73c971f080a6c41f3ccf1</srcmd5>
+    <version>1.10.0.0</version>
+    <time>1651272370</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Drop patches for issues fixed upstream
+  + ai_relax-python-depends.patch
+- Override upstream version with 1.10.0.0 to ensure
+  proper upgrade from previous version 1.10.0b1
+- Update Requires from setup.py (forwarded request 973883 from glaubitz)</comment>
+    <requestid>973916</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>38a748dd7f597d108e29111e98ef83a8</srcmd5>
+    <version>1.11.0</version>
+    <time>1664112924</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.11.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1004940 from glaubitz)</comment>
+    <requestid>1005730</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fe03cca5be710dd53710710144083247</srcmd5>
+    <version>1.12.0</version>
+    <time>1668087453</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.12.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1035003 from glaubitz)</comment>
+    <requestid>1035061</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ec2afd84b02c0364322ed9cfff619c8f</srcmd5>
+    <version>1.13.0</version>
+    <time>1684162487</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.13.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1087196 from glaubitz)</comment>
+    <requestid>1087227</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f775dc5f9f7830ef5beb959c8bad055b</srcmd5>
+    <version>1.14.0</version>
+    <time>1692045364</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.14.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1103836 from glaubitz)</comment>
+    <requestid>1103874</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>69fb1bedfdfa27d837f72a71b8d436c6</srcmd5>
+    <version>1.14.1</version>
+    <time>1697061397</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116973</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>01f87cd955f727278300aef8cc4c5edf</srcmd5>
+    <version>1.15.0</version>
+    <time>1698438547</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.15.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1120782 from glaubitz)</comment>
+    <requestid>1120783</requestid>
+  </revision>
+</revisionlist>

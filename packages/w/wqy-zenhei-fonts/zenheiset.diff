@@ -1,0 +1,50 @@
+--- zenheiset-orig	2013-01-21 09:24:13.000000000 +0800
++++ zenheiset	2013-01-21 21:01:25.000000000 +0800
+@@ -6,39 +6,30 @@
+ # Qianqian Fang <fangq at nmr.mgh.harvard.edu>
+ ###############################################
+ 
+-FAVAIL=/etc/fonts/conf.avail
++FAVAIL=/usr/share/wqy-zenhei-fonts/conf.avail
+ FCONF=/etc/fonts/conf.d
+-BMPCONF=43-wqy-zenhei-sharp.conf
+-BMPSTDCONF=66-wqy-zenhei-sharp-no13px.conf
+-AACONF=44-wqy-zenhei.conf
++BMPCONF=57-wqy-zenhei-sharp.conf
++AACONF=57-wqy-zenhei.conf
+ 
+ 
+ if [ $# -ne 1 ]; then
+-     echo 1>&2 Usage: $0 \[aa\|bitmap\|bitmapfull\]
++     echo 1>&2 Usage: $0 \[aa\|bitmap\|cancel\]
+      exit 2
+ fi
+ 
+-if [ $1 = "aa" -o $1 = "bitmap" -o $1 = "bitmapfull" ]; then
++if [ $1 = "aa" -o $1 = "bitmap" -o $1 = "cancel" ]; then
+      if [ -f "$FAVAIL/$AACONF" ]; then
+ 	 ln -sf $FAVAIL/$AACONF $FCONF/$AACONF
+ 	 rm -rf $FCONF/$BMPCONF
+-         rm -rf $FCONF/$BMPSTDCONF
+      else
+-         echo $FAVAIL/$BMPCONF does not exist!
++         echo $FAVAIL/$AACONF does not exist!
+ 	 exit 2
+      fi
+ 
+-     if [ $1 = "bitmap" -o $1 = "bitmapfull" ]; then
++     if [ $1 = "bitmap" -o $1 = "cancel" ]; then
+          if [ -f "$FAVAIL/$BMPCONF" ]; then
+              ln -sf $FAVAIL/$BMPCONF $FCONF/$BMPCONF
+-             #if [ $1 = "bitmap" ]; then
+-             #     if [ -f "$FAVAIL/$BMPSTDCONF" ]; then
+-             #         ln -sf $FAVAIL/$BMPSTDCONF $FCONF/$BMPSTDCONF
+-             #     else
+-             #         echo $FAVAIL/$BMPSTDCONF does not exist!
+-             #         exit 2
+-             #     fi
+-             #fi
++             rm -rf $FCONF/$AACONF
+          else
+              echo $FAVAIL/$BMPCONF does not exist!
+              exit 2

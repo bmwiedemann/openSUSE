@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>495d71f2a3c757e16f659474cd225036</srcmd5>
+    <version>1.9.2</version>
+    <time>1553635858</time>
+    <user>dimstar_suse</user>
+    <comment>Fix name space: openSUSE does not have emacs-common but emacs package</comment>
+    <requestid>686319</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01fc8f57014c635d52d78c939b8395ea</srcmd5>
+    <version>1.9.2</version>
+    <time>1568623857</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730728</requestid>
+  </revision>
+</revisionlist>

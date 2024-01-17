@@ -1,0 +1,6 @@
+<package name="bonnie++" project="openSUSE:Factory">
+  <title>A Bonnie-Like File System Benchmark</title>
+  <description>Bonnie++ is a benchmark suite aimed at performing a number of simple
+hard drive and file system performance tests.</description>
+  <devel project="benchmark" package="bonnie++"/>
+</package>

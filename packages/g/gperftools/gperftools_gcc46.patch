@@ -1,0 +1,12 @@
+Index: gperftools-2.13/src/base/elf_mem_image.h
+===================================================================
+--- gperftools-2.13.orig/src/base/elf_mem_image.h
++++ gperftools-2.13/src/base/elf_mem_image.h
+@@ -47,6 +47,7 @@
+ 
+ #define HAVE_ELF_MEM_IMAGE 1
+ 
++#include <cstddef>
+ #include <stdlib.h>
+ #include <link.h>  // for ElfW
+ 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <jobs>4</jobs>
+    <disk>
+      <size unit="G">26</size>
+    </disk>
+    <physicalmemory>
+      <size unit="G">16</size>
+    </physicalmemory>
+  </hardware>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">12</size>
+      </disk>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+        <flag>asimdrdm</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
+</constraints>

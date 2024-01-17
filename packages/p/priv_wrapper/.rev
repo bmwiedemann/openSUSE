@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db9e98295b3e45419cdd172b5cb38559</srcmd5>
+    <version>1.0.0</version>
+    <time>1669288963</time>
+    <user>dimstar_suse</user>
+    <comment>New package of the cwrap family for testing.</comment>
+    <requestid>1037292</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6d3a427258c0f104fc2d0944efd6fd59</srcmd5>
+    <version>1.0.1</version>
+    <time>1669378320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.1
+  * Fixed dclose() with RTLD_NEXT
+  * Fixed prctl() dlsym prototype
+</comment>
+    <requestid>1037930</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b50ec0387d35bc16139408828655985c</srcmd5>
+    <version>1.0.1</version>
+    <time>1677498968</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with cmocka &gt;= 1.1.6
+  * Added priv_wrapper-fix-cmocka-1.1.6+-support.patch
+</comment>
+    <requestid>1067963</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ab7a7f584b723baf9153ddfe1c3892b9</srcmd5>
+    <version>1.0.1</version>
+    <time>1678283561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069963</requestid>
+  </revision>
+</revisionlist>

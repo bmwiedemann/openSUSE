@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Wed Oct  4 11:24:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update uuid-types to version 1.0.5.1.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:53 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Mar 14 17:13:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update uuid-types to version 1.0.5 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug 10 20:40:22 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update uuid-types to version 1.0.5 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jan  1 01:00:31 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update uuid-types to version 1.0.5 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:27:06 UTC 2021 - psimons@suse.com
+
+- Update uuid-types to version 1.0.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon May  3 08:39:22 UTC 2021 - psimons@suse.com
+
+- Update uuid-types to version 1.0.5.
+  ## 1.0.5 (2021-05-03)
+
+  - Add (Template Haskell) `Lift UUID` instance
+
+-------------------------------------------------------------------
+Sat Feb 20 00:22:44 UTC 2021 - psimons@suse.com
+
+- Update uuid-types to version 1.0.4.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
+Sun Feb 14 14:46:20 UTC 2021 - psimons@suse.com
+
+- Update uuid-types to version 1.0.3 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:36 UTC 2020 - psimons@suse.com
+
+- Update uuid-types to version 1.0.3 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:31 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:48 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:15:09 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Tue Jun 11 14:29:22 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:32:13 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:47 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May 16 14:36:29 UTC 2018 - psimons@suse.com
+
+- Prefer the new %license attribute over %doc.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu Sep 15 07:04:34 UTC 2016 - psimons@suse.com
+
+- Update to version 1.0.3 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:15:52 UTC 2016 - psimons@suse.com
+
+- Update to version 1.0.3 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Apr  3 15:22:37 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.0.3
+
+-------------------------------------------------------------------
+Mon Dec  7 11:46:25 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

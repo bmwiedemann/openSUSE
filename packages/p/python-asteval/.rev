@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8038d02701813ee2909590016adf4ce4</srcmd5>
+    <version>0.9.12</version>
+    <time>1529066258</time>
+    <user>maxlin_factory</user>
+    <comment>numpy-aware, safe(ish) 'eval' function</comment>
+    <requestid>613718</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5e25356c65cabed59a288e1913b49a99</srcmd5>
+    <version>0.9.12</version>
+    <time>1535705117</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the test call to work on 42.3</comment>
+    <requestid>632120</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f5ccd2c9bc1cd0b8326bac9a5553f810</srcmd5>
+    <version>0.9.13</version>
+    <time>1551883949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.9.13:
+  * Various spelling fixes
+  * Error reporting tweaks</comment>
+    <requestid>682133</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c0f60531bb593e44d537ec32b253e99</srcmd5>
+    <version>0.9.14</version>
+    <time>1564137736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718567</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8bbc1cf65a7af78d0fc011de16433dc1</srcmd5>
+    <version>0.9.15</version>
+    <time>1568623848</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.9.15:
+  * some doc improvements</comment>
+    <requestid>730700</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e01b8e6e7dc36a886be20d8795db166e</srcmd5>
+    <version>0.9.16</version>
+    <time>1572443028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743739</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c48ca009a5ee8bbfddfa4b975baa55c5</srcmd5>
+    <version>0.9.17</version>
+    <time>1575923869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755349</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50714b4aab0bd5f9a9fee1b72cc5d87b</srcmd5>
+    <version>0.9.18</version>
+    <time>1579346265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765260</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f2639d68866c8a9c2f9cd7a9602f8d61</srcmd5>
+    <version>0.9.22</version>
+    <time>1613677232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873194</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>87ed94497e000bd8871bc1ed24054afb</srcmd5>
+    <version>0.9.25</version>
+    <time>1642273526</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.25:
+  * fixes import errors for Py3.6 and 3.7, setting version with
+    importlib_metadata.version if available.
+  * use setuptools_scm and importlib for version
+  * treat all __dunder__ attributes of all objects as inherently unsafe.</comment>
+    <requestid>946672</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>de76a985d2946afd090bf06633bf1675</srcmd5>
+    <version>0.9.26</version>
+    <time>1642959523</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.26:
+  * fix setup.py again</comment>
+    <requestid>948243</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>05f6ce9d33cde973fcca9fee730a463c</srcmd5>
+    <version>0.9.27</version>
+    <time>1662541596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001657</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7492acd3d5147ff8613bbb25858ac1e6</srcmd5>
+    <version>0.9.28</version>
+    <time>1669992446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039546</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ffb87a4f145b5e7316be0c53d401b335</srcmd5>
+    <version>0.9.29</version>
+    <time>1676648713</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.29:
+  * bug fixes</comment>
+    <requestid>1066270</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b3cf32bba2ca95454e0733b2ad21166f</srcmd5>
+    <version>0.9.31</version>
+    <time>1689786697</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099490</requestid>
+  </revision>
+</revisionlist>

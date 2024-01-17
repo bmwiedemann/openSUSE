@@ -1,0 +1,1303 @@
+-------------------------------------------------------------------
+Thu Dec 28 18:26:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20231221:
+  * A smallish release, this month.
+  * Plenty of bug-fixes, but the majority of the changes happened
+    behind the scenes.
+  * #4126 - add alias 'tags:'
+  * #4115 - create HelpBar after colours
+  * #4116 - Fix Batch Sending of Emails
+  * #4119 - Fix Header Cache Key Handling
+  * #4121 - mutt_oauth2.py: error out if ENCRYPTION_PIPE was not
+    supplied
+  * #4124 - config: fix flag overlaps
+  * #4125 - compose: restore view-text/pager/mailcap
+  * color: fix attr_color_copy()
+  * fix :color dump
+  * fix leak in completion
+  * force mail check on current mailbox after ``
+  * Allow sending an empty mail
+  * mutt_oauth2.py: Use readline to overcome macOS input()
+    restrictions
+
+-------------------------------------------------------------------
+Mon Nov 13 10:46:52 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20231103:
+  - Features
+    * info screen: enable <save-message>
+    * add :color command
+    * color: add ANSI RGB support
+    * color: Support ANSI 2x clear sequences
+  - Bug Fixes
+    * color: fix palette conversion
+    * fix logging on error
+    * log: vim-style
+    * fix file auto-completion
+    * improve logic for growing mailbox memory
+  - Translations
+    100% Czech
+    100% German
+    100% Lithuanian
+    100% Serbian
+    100% Slovak
+    100% Turkish
+  - Build
+    * fix CFLAGS/LDFLAGS for ncurses
+    * configure --with-iconv
+  - Code
+    * remove unused count of new mails from index private data
+    * smtp: Simplify the API of smtp_code()
+    * simplify CLAMP by expressing it with MIN/MAX
+    * color: introduce ColorElement
+    * color: log gui info on startup
+    * color: move business logic out of parsers
+    * color: tidy OptNoCurses cases
+    * log: add log_multiline()
+    * test: increase coverage
+- Update to version 20231023:
+  - Bug Fixes
+    * fix crash on exit
+    * fix header colour
+    * fix 32-bit date overflow
+    * fix new mail in limited view
+    * nntp: fix use-after-free
+    * color: fix ansi colours
+    * color: add +truecolor to version string
+- Update neomutt.keyring
+
+-------------------------------------------------------------------
+Tue Oct 10 16:42:29 UTC 2023 - Victorhck <victorhck@opensuse.org>
+
+- Update to version 20231006:
+  - Features
+    * color: allow ‘alert’, ‘bright’, ‘light’ prefix for colorNNN
+    * color: refactor parsing code
+    * imap: truncate large UIDVALIDITYs to support non-conforming IMAP servers
+    * hcache: shrink Email and Body caches
+    * prompt: treat complete-query as complete where it makes sense
+    * help: add message flags to help screen
+    * help: add alternating colors
+    * mailboxes: add -label, -notify and -poll options
+    * add help to questions
+    * color_directcolor: Also set the default/initial value on startup
+  - Bug Fixes
+    * maildir: fix sync when a deleted file disappears
+    * gnutls: fix “certificate saved” message
+    * imap: truncate large UIDVALIDITYs to support non-conforming servers
+    * maildir: fix fix error with <sync-mailbox> on mbsync
+    * address: parse comments after address
+    * bind: fix truncated binding strings
+    * fix ‘from’ address when real name isn’t set
+    * Fix crash on <next-thread> when the <limit>ed view is empty
+    * browser: fix autocompletion
+    * pager: fix search crash
+    * help: fix search highlight
+    * force mail check on current mailbox after <shell-escape>
+    * openssl: continue if a signal interrupts an SSL read/write
+ - Changed Config
+    * Rename $imap_keepalive to $imap_keep_alive
+    * Change defaults to use %<...> conditional syntax $attach_format, $index_format, $mailbox_folder_format, $status_format, $ts_icon_format, $ts_status_format
+    * Add browser_sort_dirs_first to always list directories first
+ - Code
+    * imap: factor out tagged emails
+    * address: use struct Buffer instead of plain char pointers
+    * drop notifications relay
+    * move $delete_untag out of the backend
+    * respect --[disable-]fmemopen in tests
+    * hcache: optimize storage requirements, reduce config
+    * logging: catch format string errors
+    * colour: refactor colour parsing
+    * refactoring, cleanup
+    * fixed coverity defects
+    * convert many functions to use a Buffer
+
+-------------------------------------------------------------------
+Mon May 29 15:18:29 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20230517:
+  - Features
+    * Support 24bit colors, aka truecolor
+    * Show complete MIME structure in attachments
+    * Allow percentages to be localized
+  - Bug Fixes
+    * Fix crash in op_browser_subscribe
+    * Select the first email when coming from an empty limit
+    * Fix counting new mails in maildir
+    * bind: fix incorrect conflict report
+    * index: only refresh the menu on non-focus window changes
+    * tunnel: fix reconnection with ssl_force=true
+    * maildir: stop parsing headers at the end of the headers section
+    * Fix handling of bright colours
+    * Fix sorting of labels
+  - Build
+    * Build with libidn2 by default, remove support for libidn1
+
+-------------------------------------------------------------------
+Wed Apr 12 15:32:03 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20230407:
+  - Features
+    * imap : support IMAP4 ID extension (RFC2971)
+    * parse: query all changed (set) / all (set all) config variables
+  - Bug Fixes
+    * lua: fix command registration
+    * postpone: use colours from the right mailbox
+    * smtp: ignore oauth if it isn't configured and not requested
+  - Changed Config
+    * New: imap_send_id - Send IMAP ID command when logging in
+
+-------------------------------------------------------------------
+Tue Mar 28 09:53:00 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20230322:
+  - Features
+    * Use DT_SLIST for charset variables
+    * Support viewing html with embedded images
+    * Account command, see the feature page
+    * Check that sendmail and inews don't contain shell meta characters
+    * Browser: add mailbox_folder_format config variable
+    * Enter: add function kill-whole-line
+    * Account command: add macOS keychain sample provider
+    * Account command: add GPG+JSON sample provider
+    * Expose italics attribute for colour scheme
+    * Allow source in hooks to point to relative paths
+    * Resolve alternates when subscribing/unsubscribing
+    * Notmuch: allow specifying configuration file
+    * Notmuch: allow usage of notmuch profiles
+    * Add GNU SASL support for authentication (--gsasl configure option)
+    * Extend colour objects to support patterns
+    * Detect and fixup maildirs with missing "new" and "tmp" directories
+    * Generate standard MIME types as application/pkcs7-* instead of legacy application/x-pkcs7-*
+    * Compose: add Smime: pseudo header
+    * Handle more X-Mutt pseudo-headers with edit_headers
+    * Use socket_timeout to time out read/write operations
+    * Allow %[fmt] in $folder_format
+    * Respect attribution_locale in indent_string and post_indent_string
+    * Pattern: add ~K to search Bcc, include Bcc in ~C, %C, ~L, and ~p
+    * Colour postponed emails list
+    * Allow querying user-defined variables ($my_var) with -Q
+    * Dump user-defined variables ($my_var) with -D
+    * Generate purely random Message-ID headers
+    * Allow an empty sidebar_divider_char
+    * Fix handling and display of group addresses
+  - Bug Fixes
+    * Fix status_on_top to work on complex windows, e.g., attach
+    * Imap: fix off-by-one error causing bogus "Progress message 10/9" message
+    * Attach: fix segfault when viewing HTML attachment in compose mode
+    * Allow for longer expansions in e.g., index_format
+    * Accept unpadded base64-encoded data, as some mailers produce
+    * Fix hangup when trying to add email address from help screens
+    * Handle corrupted header caches
+    * Fix slowdown when changing folders
+    * Improve error detection for invalid color regexes
+    * Distinguish between old/new with mark_old unset
+    * Parse mboxes with unconventional From lines
+    * Fix hostname detection for hostname ending with a "."
+    * Fix truncated SMTP lines in case of very long lines
+    * Use smime_sign_as instead of pgp_sign_as when signing S/MIME messages
+    * Set smime_sign_as instead of smime_default_key when signing
+    * Fix wrong message being marked as read with $pager_read_delay = 1
+    * Fix negative new-mail count on maildir
+    * Skip zero width non-joiner character in the pager
+    * Handle text/vcard as not being an attachment, same as for text/x-vcard
+    * Fix hdr_order not sorting last header correctly
+    * Make exiting via SIGINT more graceful
+    * Fix unhook index-format-hook
+    * Send: delete signature when sending fails
+    * SMTP: try all available methods even if SASL is not compiled in
+    * Fix decryption issue when postponing S/MIME encrypted mails
+    * Avoid unnecessary refreshes
+    * Fixed a number of memory leaks and crashes
+  - Changed Config
+    * New
+      * $account_command - Shell command to retrieve account credentials
+      * $mailbox_folder_format - printf-like format string for the browser's display of mailbox folders
+      * $nm_config_file - Configuration file for notmuch. Use 'auto' to detect configuration.
+      * $nm_config_profile - Configuration profile for notmuch.
+    * Renamed for consistency (old names still work)
+      * $ask_follow_up -> $ask_followup_to
+      * $attribution -> $attribution_intro
+      * $connect_timeout -> $socket_timeout
+      * $implicit_autoview -> $implicit_auto_view
+      * $message_cachedir -> $message_cache_dir
+      * $post_indent_string -> $attribution_trailer
+      * $tmpdir -> $tmp_dir
+      * sidebar_whitelist -> sidebar_pin
+      * unsidebar_whitelist -> sidebar_unpin
+    * Changed default
+      * attach_format = "%u%D%I %t%4n %T%d %> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
+      * More space for the attachment filename
+      * sidebar_divider_char = "|"
+      * Allow an empty divider char
+    * Deprecated
+      * $vfolder_format use $folder_format
+  - Translations
+    * 100% czech_republic Czech
+    * 100% de German
+    * 100% hungary Hungarian
+    * 100% lithuania Lithuanian
+    * 100% brazil Portuguese (Brazil)
+    * 100% serbia Serbian
+    * 100% slovakia Slovak
+    * 100% tr Turkish
+    * 99% es Spanish
+    * 99% ukraine Ukrainian
+    * 94% poland Polish
+    * 72% Catalan
+
+-------------------------------------------------------------------
+Tue Jun 14 13:41:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- fix build for older dists
+
+-------------------------------------------------------------------
+Wed May 25 10:15:40 UTC 2022 - Lars Marowsky-Bree <lmb@suse.com>
+
+- update to 20220429:
+  * Bug Fixes
+  * Do not crash on an invalid use_threads/sort combination
+  * Fix: stuck browser cursor
+  * Resolve (move) the cursor after <edit-label>
+  * Index: fix menu size on new mail
+  * Don't overlimit LMDB mmap size
+  * OpenBSD y/n translation fix
+  * Generic: split out OP_EXIT binding
+  * Fix parsing of sendmail cmd
+  * Fix: crash with menu_move_off=no
+  * Newsrc: bugfix; nntp_user and nntp_pass ignored
+  * Menu: ensure config changes cause a repaint
+  * Mbox: fix sync duplicates
+  * Make sure the index redraws all that's needed
+  * Translations
+  * 100% Chinese (Simplified)
+  * 100% Czech
+  * 100% German
+  * 100% Hungarian
+  * 100% Lithuanian
+  * 100% Serbian
+  * 100% Turkish
+  * Docs
+  * add missing pattern modifier ~I for external_search_command
+  * Code
+  * menu: eliminate custom_redraw()
+  * modernise mixmaster
+  * Kill global and Propagate display attach status through State-
+- update to 20220415:
+  * Security
+  * Fix uudecode buffer overflow (CVE-2022-1328)
+  * Features
+  * Colours, colours, colours
+  * Bug Fixes
+  * Pager: fix pager_stop
+  * Merge colours with normal
+  * Color: disable mono command
+  * Fix forwarding text attachments when honor_disposition is set
+  * Pager: drop the nntp change-group bindings
+  * Use mailbox_check flags coherently, add IMMEDIATE flag
+  * Fix: tagging in attachment list
+  * Fix: misalignment of mini-index
+  * Make sure to update the menu size after a resort
+  * Translations
+  * 100% Hungarian
+  * Build
+  * Update acutest
+  * Code
+  * Unify pipe functions
+  * Index: notify if navigation fails
+  * Gui: set colour to be merged with normal
+  * Fix: leak in tls_check_one_certificate()
+  * Upstream
+  * Flush iconv() in mutt_convert_string()
+  * Fix integer overflow in mutt_convert_string()
+  * Fix uudecode cleanup on unexpected eof
+
+-------------------------------------------------------------------
+Sun Apr 10 15:13:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220408:
+  * Compose multipart emails
+  * Fix screen mode after attempting decryption
+  * imap: increase max size of oauth2 token
+  * Fix autocrypt
+  * Unify Alias/Query workflow
+  * Fix colours
+  * Say which file exists when saving attachments
+  * Force SMTP authentication if `smtp_user` is set
+  * Fix selecting the right email after limiting
+  * Make sure we have enough memory for a new email
+  * Don't overwrite with zeroes after unlinking the file
+  * Fix crash when forwarding attachments
+  * Fix help reformatting on window resize
+  * Fix poll to use PollFdsCount and not PollFdsLen
+  * regex: range check arrays strictly
+  * Fix Coverity defects
+  * Fix out of bounds write with long log lines
+  * Apply `fast_reply` to 'to', 'cc', or 'bcc'
+  * Prevent warning on empty emails
+  * New default: `set rfc2047_parameters = yes`
+  * 100% German
+  * 100% Lithuanian
+  * 100% Serbian
+  * 100% Czech
+  * 100% Turkish
+  * 72% Hungarian
+  * Improve header cache explanation
+  * Improve description of some notmuch variables
+  * Explain how timezones and `!`s work inside `%{}`, `%[]` and `%()`
+  * Document config synonyms and deprecations
+  * Create lots of GitHub Actions
+  * Drop TravisCI
+  * Add automated Fuzzing tests
+  * Add automated ASAN tests
+  * Create Dockers for building Centos/Fedora
+  * Build fixes for Solaris 10
+  * New libraries: browser, enter, envelope
+  * New configure options: `--fuzzing` `--debug-color` `--debug-queue`
+  * Split Index/Pager GUIs/functions
+  * Add lots of function dispatchers
+  * Eliminate `menu_loop()`
+  * Refactor function opcodes
+  * Refactor cursor setting
+  * Unify Alias/Query functions
+  * Refactor Compose/Envelope functions
+  * Modernise the Colour handling
+  * Refactor the Attachment View
+  * Eliminate the global `Context`
+  * Upgrade `mutt_get_field()`
+  * Refactor the `color quoted` code
+  * Fix lots of memory leaks
+  * Refactor Index resolve code
+  * Refactor PatternList parsing
+  * Refactor Mailbox freeing
+  * Improve key mapping
+  * Factor out charset hooks
+  * Expose mutt_file_seek API
+  * Improve API of `strto*` wrappers
+  * imap QRESYNC fixes
+  * Allow an empty To: address prompt
+  * Fix argc==0 handling
+  * Don't queue IMAP close commands
+  * Fix IMAP UTF-7 for code points >= U+10000
+  * Don't include inactive messages in msgset generation
+
+-------------------------------------------------------------------
+Wed Jan  5 10:06:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20211029 (bsc#1185705, CVE-2021-32055):
+  * Notmuch: support separate database and mail roots without .notmuch
+  * fix notmuch crash on open failure
+  * fix crypto crash handling pgp keys
+  * fix ncrypt/pgp file_get_size return check
+  * fix restore case-insensitive header sort
+  * fix pager redrawing of long lines
+  * fix notmuch: check database dir for xapian dir
+  * fix notmuch: update index count after <entire-thread>
+  * fix protect hash table against empty keys
+  * fix prevent real_subj being set but empty
+  * fix leak when saving fcc
+  * fix leak after <edit-or-view-raw-message>
+  * fix leak after trash to hidden mailbox
+  * fix leak restoring postponed emails
+  * fix new mail notifications
+  * fix pattern compilation error for ( !>(~P) )
+  * fix menu display on window resize
+  * Stop batch mode emails with no argument or recipients
+  * Add sanitize call in print mailcap function
+  * fix hdr_order to use the longest match
+  * fix (un)setenv to not return an error with unset env vars
+  * fix Imap sync when closing a mailbox
+  * fix segfault on OpenBSD current
+  * sidebar: restore sidebar_spoolfile colour
+  * fix assert when displaying a file from the browser
+  * fix exec command in compose
+  * fix check_stats for Notmuch mailboxes
+  * Fallback: Open Notmuch database without config
+  * fix gui hook commands on startup
+  * threads: implement the $use_threads feature
+  * https://neomutt.org/feature/use-threads
+  * hooks: allow a -noregex param to folder and mbox hooks
+  * mailing lists: implement list-(un)subscribe using RFC2369 headers
+  * mailcap: implement x-neomutt-nowrap flag
+  * pager: add $local_date_header option
+  * imap, smtp: add support for authenticating using XOAUTH2
+  * Allow <sync-mailbox> to fail quietly
+  * imap: speed up server-side searches
+  * pager: improve skip-quoted and skip-headers
+  * notmuch: open database with user's configuration
+  * notmuch: implement <vfolder-window-reset>
+  * config: allow += modification of my_ variables
+  * notmuch: tolerate file renames behind neomutt's back
+  * pager: implement $pager_read_delay
+  * notmuch: validate nm_query_window_timebase
+  * notmuch: make $nm_record work in non-notmuch mailboxes
+  * compose: add $greeting - a welcome message on top of emails
+  * notmuch: show additional mail in query windows
+  * imap: fix crash on external IMAP events
+  * notmuch: handle missing libnotmuch version bumps
+  * imap: add sanity check for qresync
+  * notmuch: allow windows with 0 duration
+  * index: fix index selection on <collapse-all>
+  * imap: fix crash when sync'ing labels
+  * search: fix searching by Message-Id in <mark-message>
+  * threads: fix double sorting of threads
+  * stats: don't check mailbox stats unless told
+  * alias: fix crash on empty query
+  * pager: honor mid-message config changes
+  * mailbox: don't propagate read-only state across reopens
+  * hcache: fix caching new labels in the header cache
+  * crypto: set invalidity flags for gpgme/smime keys
+  * notmuch: fix parsing of multiple type=
+  * notmuch: validate $nm_default_url
+  * messages: avoid unnecessary opening of messages
+  * imap: fix seqset iterator when it ends in a comma
+  * build: refuse to build without pcre2 when pcre2 is linked in ncurses
+
+-------------------------------------------------------------------
+Sat Apr 24 18:01:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem (bsc#1184787)
+
+-------------------------------------------------------------------
+Thu Mar 25 12:53:16 UTC 2021 - lmb <lmb@suse.com>
+
+- build: Enable pcre2 for regex matching (bsc#1183989)
+- Add libprce2-devel as build dependency
+
+-------------------------------------------------------------------
+Mon Mar  8 09:16:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20210205:
+  * Features
+    - Add <skip-headers> to skip past message headers in pager
+    - Add <view-pager> function to attachment menu
+  * Bug Fixes
+    - Fix detection of mbox files with new mail
+    - Fix crash on collapsed thread
+    - Fix group-chat-reply
+    - Clear the message window on resize
+    - Do not crash on return from shell-exec if there's no open mailbox
+    - Abort IMAP open if condstore/qresync updates fetch fails
+    - Fix smtp crash on invalid $smtp_authenticators list
+    - Fix pager dropped input on screen resize
+    - Fix mime forwarding
+    - Check config after hooks
+    - Always recreate a mailbox after folder-hook
+  * Translations
+    - 88% Slovakian
+  * Docs
+    - Adjust doc to explicitly mention $count_alternative
+    - Restore correct "$sort_re" documentation
+    - Clarify pattern completion
+    - Man pages: Clear up "-H" and "-O"
+  * Build
+    - Update to latest acutest
+    - Update to latest autosetup
+    - Make the location of /tmp configurable
+
+-------------------------------------------------------------------
+Fri Nov 27 15:50:29 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to version 20201127:
+  * Bug Fixes
+    - Fix crash when saving an alias
+  * Translations
+    - 70% Russian
+  * Code
+    - Remove redundant function call
+
+-------------------------------------------------------------------
+Sat Nov 21 13:47:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
+Sat Nov 21 11:56:38 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to 20201120. Address boo#1179035, CVE-2020-28896.
+  * Security
+    - imap: close connection on all failures
+  * Features
+    - alias: add function to Alias/Query dialogs
+    - config: add validators for {imap,smtp,pop}_authenticators
+    - config: warn when signature file is missing or not readable
+    - smtp: support for native SMTP LOGIN auth mech
+    - notmuch: show originating folder in index
+  * Bug Fixes
+    - sidebar: prevent the divider colour bleeding out
+    - sidebar: fix <sidebar-{next,prev}-new>
+    - notmuch: fix query for current email
+    - restore shutdown-hook functionality
+    - crash in reply-to
+    - user-after-free in folder-hook
+    - fix some leaks
+    - fix application of limits to modified mailboxes
+    - write Date header when postponing
+  * Translations
+    - 100% Lithuanian
+    - 100% Czech
+    - 70% Turkish
+  * Docs
+    - Document that $sort_alias affects the query menu
+  * Build
+    - improve ASAN flags
+    - add SASL and S/MIME to --everything
+    - fix contrib (un)install
+  * Code
+    - my_hdr compose screen notifications
+    - add contracts to the MXAPI
+    - maildir refactoring
+    - further reduce the use of global variables
+  * Upstream
+    - Add $count_alternatives to count attachments inside alternatives
+
+- Changes from 20200925
+  * Features
+    - Compose: display user-defined headers
+    - Address Book / Query: live sorting
+    - Address Book / Query: patterns for searching
+    - Config: Add '+=' and '-=' operators for String Lists
+    - Config: Add '+=' operator for Strings
+    - Allow postfix query ':setenv NAME?' for env vars
+  * Bug Fixes
+    - Fix crash when searching with invalid regexes
+    - Compose: Prevent infinite loop of send2-hooks
+    - Fix sidebar on new/removed mailboxes
+    - Restore indentation for named mailboxes
+    - Prevent half-parsing an alias
+    - Remove folder creation prompt for POP path
+    - Show error if $message_cachedir doesn't point to a valid directory
+    - Fix tracking LastDir in case of IMAP paths with Unicode characters
+    - Make sure all mail gets applied the index limit
+    - Add warnings to -Q query CLI option
+    - Fix index tracking functionality
+  * Changed Config
+    - Add $compose_show_user_headers (yes)
+  * Translations
+    - 100% Czech
+    - 100% Lithuanian
+    - Split up usage strings
+  * Build
+    - Run shellcheck on hcachever.sh
+    - Add the Address Sanitizer
+    - Move compose files to lib under compose/
+    - Move address config into libaddress
+    - Update to latest acutest - fixes a memory leak in the unit tests
+  * Code
+    - Implement ARRAY API
+    - Deglobalised the Config Sort functions
+    - Refactor the Sidebar to be Event-Driven
+    - Refactor the Color Event
+    - Refactor the Commands list
+    - Make ctx_update_tables private
+    - Reduce the scope/deps of some Validator functions
+    - Use the Email's IMAP UID instead of an increasing number as index
+    - debug: log window focus
+
+- Removed neomutt-sidebar-abbreviate-shorten-what-user-sees.patch.
+  No longer needed.
+
+- Misc spec file cleanups.
+
+-------------------------------------------------------------------
+Sun Aug 23 01:35:21 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to 20200821:
+  * Bug Fixes
+    - fix maildir flag generation
+    - fix query notmuch if file is missing
+    - notmuch: don't abort sync on error
+    - fix type checking for send config variables
+  * Changed Config
+    - $sidebar_format - Use %D rather than %B for named mailboxes
+  * Translations
+    - 96% Lithuanian
+    - 90% Polish
+- add neomutt-sidebar-abbreviate-shorten-what-user-sees.patch
+  * fix(sidebar): abbreviate/shorten what user sees
+
+-------------------------------------------------------------------
+Tue Aug 18 08:23:36 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Fix sidebar mailbox name display problem. Patch from the yet to
+  be merge upstream commit:
+  https://github.com/neomutt/neomutt/commit/a6f91bc9c890581cff189e143d86e656cab6d2dc
+
+-------------------------------------------------------------------
+Mon Aug 17 02:04:11 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Enable --zlib configure option explicitely. In version 20200814 if
+  it's not enabled header cache compression will not be turned on,
+  unlike in previous versions which would turn it on when zlib is
+  detected.
+
+-------------------------------------------------------------------
+Sat Aug 15 01:06:30 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to 20200814:
+  * Notes
+    - Add one-liner docs to config items
+      See: neomutt -O -Q smart_wrap
+    - Remove the built-in editor
+      A large unused and unusable feature
+  * Security
+    - Add mitigation against DoS from thousands of parts
+      boo#1179113
+  * Features
+    - Allow index-style searching in postpone menu
+    - Open NeoMutt using a mailbox name
+    - Add cd command to change the current working directory
+    - Add tab-completion menu for patterns
+    - Allow renaming existing mailboxes
+    - Check for missing attachments in alternative parts
+    - Add one-liner docs to config items
+  * Bug Fixes
+    - Fix logic in checking an empty From address
+    - Fix Imap crash in cmd_parse_expunge()
+    - Fix setting attributes with S-Lang
+    - Fix: redrawing of $pager_index_lines
+    - Fix progress percentage for syncing large mboxes
+    - Fix sidebar drawing in presence of indentation + named mailboxes
+    - Fix retrieval of drafts when "postponed" is not in the mailboxes list
+    - Do not add comments to address group terminators
+    - Fix alias sorting for degenerate addresses
+    - Fix attaching emails
+    - Create directories for nonexistent file hcache case
+    - Avoid creating mailboxes for failed subscribes
+    - Fix crash if rejecting cert
+  * Changed Config
+    - Add $copy_decode_weed, $pipe_decode_weed, $print_decode_weed
+    - Change default of $crypt_protected_headers_subject to "..."
+    - Add default keybindings to history-up/down
+  * Translations
+    - 100% Czech
+    - 100% Spanish
+  * Build
+    - Allow building against Lua 5.4
+    - Fix when sqlite3.h is missing
+  * Docs
+    - Add a brief section on stty to the manual
+    - Update section "Terminal Keybindings" in the manual
+    - Clarify PGP Pseudo-header S<id> duration
+  * Code
+    - Clean up String API
+    - Make the Sidebar more independent
+    - De-centralise the Config Variables
+    - Refactor dialogs
+    - Refactor: Help Bar generation
+    - Make more APIs Context-free
+    - Adjust the edata use in Maildir and Notmuch
+    - Window refactoring
+    - Convert libsend to use Config functions
+    - Refactor notifications to reduce noise
+    - Convert Keymaps to use STAILQ
+    - Track currently selected email by msgid
+    - Config: no backing global variable
+    - Add events for key binding
+  * Upstream
+    - Fix imap postponed mailbox use-after-free error
+    - Speed up thread sort when many long threads exist
+    - Fix ~v tagging when switching to non-threaded sorting
+    - Add message/global to the list of known "message" types
+    - Print progress meter when copying/saving tagged messages
+    - Remove ansi formatting from autoview generated quoted replies
+    - Change postpone mode to write Date header too
+    - Unstuff format=flowed
+
+-------------------------------------------------------------------
+Sun Jul  5 04:14:47 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to 20200626:
+  * Bug Fixes
+    - Avoid opening the same hcache file twice
+    - Re-open Mailbox after folder-hook
+    - Fix the matching of the spoolfile Mailbox
+    - Fix link-thread to link all tagged emails
+  * Changed Config
+    - Add $tunnel_is_secure config, defaulting to true
+  * Upstream
+    - Don't check IMAP PREAUTH encryption if $tunnel is in use
+    - Add recommendation to use $ssl_force_tls
+
+- Changes from 20200501:
+  * Security
+    - Abort GnuTLS certificate check if a cert in the chain is rejected
+      CVE-2020-14154 bsc#1172906
+    - TLS: clear data after a starttls acknowledgement
+      CVE-2020-14954 bsc#1173197
+    - Prevent possible IMAP MITM via PREAUTH response
+      CVE-2020-14093 bsc#1172935
+  * Features
+    - add config operations +=/-= for number,long
+    - Address book has a comment field
+    - Query menu has a comment field
+  * Contrib
+     sample.neomuttrc-starter: Do not echo prompted password
+  * Bug Fixes
+    - make "news://" and "nntp://" schemes interchangeable
+    - Fix CRLF to LF conversion in base64 decoding
+    - Double comma in query
+    - compose: fix redraw after history
+    - Crash inside empty query menu
+    - mmdf: fix creating new mailbox
+    - mh: fix creating new mailbox
+    - mbox: error out when an mbox/mmdf is a pipe
+    - Fix list-reply by correct parsing of List-Post headers
+    - Decode references according to RFC2047
+    - fix tagged message count
+    - hcache: fix keylen not being considered when building the full key
+    - sidebar: fix path comparison
+    - Don't mess with the original pattern when running IMAP searches
+    - Handle IMAP "NO" resps by issuing a msg instead of failing badly
+    - imap: use the connection delimiter if provided
+    - Memory leaks
+  * Changed Config
+    - $alias_format default changed to include %c comment
+    - $query_format default changed to include %e extra info
+  * Translations
+    - 100% Lithuanian
+    - 84% French
+    - Log the translation in use
+  * Docs
+    - Add missing commands unbind, unmacro to man pages
+  * Build
+    - Check size of long using LONG_MAX instead of __WORDSIZE
+    - Allow ./configure to not record cflags
+    - fix out-of-tree build
+    - Avoid locating gdbm symbols in qdbm library
+  * Code
+    - Refactor unsafe TAILQ returns
+    - add window notifications
+    - flip negative ifs
+    - Update to latest acutest.h
+    - test: add store tests
+    - test: add compression tests
+    - graphviz: email
+    - make more opcode info available
+    - refactor: main_change_folder()
+    - refactor: mutt_mailbox_next()
+    - refactor: generate_body()
+    - compress: add {min,max}_level to ComprOps
+    - emphasise empty loops: "// do nothing"
+    - prex: convert is_from() to use regex
+    - Refactor IMAP's search routines
+
+-------------------------------------------------------------------
+Fri May 22 07:00:32 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to 20200501:
+  * Bug Fixes
+    - Make sure buffers are initialized on error
+    - fix(sidebar): use abbreviated path if possible
+  * Translations
+    - 100% Lithuanian
+  * Docs
+    - make header cache config more explicit
+
+- Changes from 20200424:
+  * Bug Fixes
+    - Fix history corruption
+    - Handle pretty much anything in a URL query part
+    - Correctly parse escaped characters in header phrases
+    - Fix crash reading received header
+    - Fix sidebar indentation
+    - Avoid crashing on failure to parse an IMAP mailbox
+    - Maildir: handle deleted emails correctly
+    - Ensure OP_NULL is always first
+  * Translations
+    - 100% Czech
+  * Build
+    - cirrus: enable pcre2, make pkgconf a special case
+    - Fix finding pcre2 w/o pkgconf
+    - build: tdb.h needs size_t, bring it in with stddef.h
+
+- Changes from 20200417:
+  * Features
+    - Fluid layout for Compose Screen, see: vimeo.com/407231157
+    - Trivial Database (TDB) header cache backend
+    - RocksDB header cache backend
+    - Add <sidebar-first> and <sidebar-last> functions
+  * Bug Fixes
+    - add error for CLI empty emails
+    - Allow spaces and square brackets in paths
+    - browser: fix hidden mailboxes
+    - fix initial email display
+    - notmuch: fix time window search.
+    - fix resize bugs
+    - notmuch: fix entire-thread: update current email pointer
+    - sidebar: support indenting and shortening of names
+    - Handle variables inside backticks in sidebar_whitelist
+    - browser: fix mask regex error reporting
+  * Translations
+    - 100% Lithuanian
+    - 99% Chinese (simplified)
+  * Build
+    - Use regexes for common parsing tasks: urls, dates
+    - Add configure option --pcre2 -- Enable PCRE2 regular expressions
+    - Add configure option --tdb -- Use TDB for the header cache
+    - Add configure option --rocksdb -- Use RocksDB for the header cache
+    - Create libstore (key/value backends)
+    - Update to latest autosetup
+    - Update to latest acutest.h
+    - Rename doc/ directory to docs/
+    - make: fix location of .Po dependency files
+    - Change libcompress to be more universal
+    - Fix test fails on х32
+    - fix uidvalidity to unsigned 32-bit int
+  * Code
+    - Increase test coverage
+    - Fix memory leaks
+    - Fix null checks
+  * Upstream
+    - Buffer refactoring
+    - Fix use-after-free in mutt_str_replace()
+    - Clarify PGP Pseudo-header S<id> duration
+    - Try to respect MUTT_QUIET for IMAP contexts too
+    - Limit recurse depth when parsing mime messages
+
+-------------------------------------------------------------------
+Fri Mar 20 13:56:02 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 20200320:
+  * Bug Fixes
+    - Fix COLUMNS env var
+    - Fix sync after delete
+    - Fix crash in notmuch
+    - Fix sidebar indent
+    - Fix emptying trash
+    - Fix command line sending
+    - Fix reading large address lists
+    - Resolve symlinks only when necessary
+  * Translations
+    - lithuania 100% Lithuanian
+    - es 96% Spanish
+  * Docs
+    - Include OpenSSL/LibreSSL/GnuTLS version in neomutt -v output
+    - Fix case of GPGME and SQLite
+  * Build
+    - Create libcompress (lz4, zlib, zstd)
+    - Create libhistory
+    - Create libbcache
+    - Move zstrm to libconn
+  * Code
+    - Add more test coverage
+    - Rename magic to type
+    - Use mutt_file_fopen() on config variables
+    - Change commands to use intptr_t for data
+
+-------------------------------------------------------------------
+Fri Mar 13 19:01:50 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 20200313:
+  * Window layout
+    - Sidebar is only visible when it's usable.
+  * Features
+    - UI: add number of old messages to sidebar_format
+    - UI: support ISO 8601 calendar date
+    - UI: fix commands that don’t need to have a non-empty mailbox
+      to be valid
+    - PGP: inform about successful decryption of inline PGP
+      messages
+    - PGP: try to infer the signing key from the From address
+    - PGP: enable GPGMe by default
+    - Notmuch: use query as name for vfolder-from-query
+    - IMAP: add network traffic compression
+      (COMPRESS=DEFLATE, RFC4978)
+    - Header cache: add support for generic header cache
+      compression
+  * Bug Fixes
+    - Fix uncollapse_jump
+    - Only try to perform entire-thread on maildir/mh mailboxes
+    - Fix crash in pager
+    - Avoid logging single new lines at the end of header fields
+    - Fix listing mailboxes
+    - Do not recurse a non-threaded message
+    - Fix initial window order
+    - Fix leaks on IMAP error paths
+    - Notmuch: compose(attach-message): support notmuch backend
+    - Fix IMAP flag comparison code
+    - Fix $move for IMAP mailboxes
+    - Maildir: maildir_mbox_check_stats should only update mailbox
+      stats if requested
+    - Fix unmailboxes for virtual mailboxes
+    - Maildir: sanitize filename before hashing
+    - OAuth: if 'login' name isn't available use 'user'
+    - Add error message on failed encryption
+    - Fix a bunch of crashes
+    - Force C locale for email date
+    - Abort if run without a terminal
+  * Changed Config
+    - $crypt_use_gpgme - Now defaults to 'yes' (enabled)
+    - $abort_backspace - Hitting backspace against an empty prompt
+      aborts the prompt
+    - $abort_key - String representation of key to abort prompts
+    - $arrow_string - Use an custom string for arrow_cursor
+    - $crypt_opportunistic_encrypt_strong_keys - Enable encryption
+      only when strong a key is available
+    - $header_cache_compress_dictionary - Filepath to dictionary
+      for zstd compression
+    - $header_cache_compress_level - Level of compression for
+      method
+    - $header_cache_compress_method - Enable generic hcache
+      database compression
+    - $imap_deflate - Compress network traffic
+    - $smtp_user - Username for the SMTP server
+  * Translations
+    - 100% Lithuanian
+    - 81% Spanish
+    - 78% Russian
+  * Build
+    - Add libdebug
+    - Rename public headers to lib.h
+    - Create libcompress for compressed folders code
+  * Code
+    - Refactor Windows and Dialogs
+    - Lots of code tidying
+    - Refactor: mutt_addrlist_{search,write}
+    - Lots of improvements to the Config code
+    - Use Buffers more pervasively
+    - Unify API function naming
+    - Rename library shared headers
+    - Refactor libconn gui dependencies
+    - Refactor: init.[ch]
+    - Refactor config to use subsets
+    - Config: add path type
+    - Remove backend deps from the connection code
+  * Upstream
+    - Allow ~b ~B ~h patterns in send2-hook
+    - Rename smime oppenc mode parameter to get_keys_by_addr()
+    - Add $crypt_opportunistic_encrypt_strong_keys config var
+    - Fix crash when polling a closed ssl connection
+    - Turn off auto-clear outside of autocrypt initialization
+    - Add protected-headers="v1" to Content-Type when protecting
+      headers
+    - Fix segv in IMAP postponed menu caused by reopen_allow
+    - Adding ISO 8601 calendar date
+    - Fix $fcc_attach to not prompt in batch mode
+    - Convert remaining mutt_encode_path() call to use struct
+      Buffer
+    - Fix rendering of replacement_char when Charset_is_utf8
+    - Update to latest acutest.h
+
+-------------------------------------------------------------------
+Fri Jan 31 09:43:31 UTC 2020 - Martin Rey <mrey@suse.com>
+
+- Update to 20191207:
+  * Features:
+    - compose: draw status bar with highlights
+  * Bug Fixes:
+    - crash opening notmuch mailbox
+    - crash in mutt_autocrypt_ui_recommendation
+    - Avoid negative allocation
+    - Mbox new mail
+    - Setting of DT_MAILBOX type variables from Lua
+    - imap: empty cmdbuf before connecting
+    - imap: select the mailbox on reconnect
+    - compose: fix attach message
+  * Build:
+    - make files conditional
+  * Code:
+    - enum-ify log levels
+    - fix function prototypes
+    - refactor virtual email lookups
+    - factor out global Context
+- Changes from 20191129:
+  * Features:
+    - Add raw mailsize expando (%cr)
+  * Bug Fixes:
+    - Avoid double question marks in bounce confirmation msg
+    - Fix bounce confirmation
+    - fix new-mail flags and behaviour
+    - fix: browser <descend-directory>
+    - fix ssl crash
+    - fix move to trash
+    - fix flickering
+    - Do not check hidden mailboxes for new mail
+    - Fix new_mail_command notifications
+    - fix crash in examine_mailboxes()
+    - fix crash in mutt_sort_threads()
+    - fix: crash after sending
+    - Fix crash in tunnel's conn_close
+    - fix fcc for deep dirs
+    - imap: fix crash when new mail arrives
+    - fix colour 'quoted9'
+    - quieten messages on exit
+    - fix: crash after failed mbox_check
+    - browser: default to a file/dir view when attaching a file
+  * Changed Config:
+    - Change $write_bcc to default off
+  * Docs:
+    - Add a bit more documentation about sending
+    - Clarify $write_bcc documentation.
+    - Update documentation for raw size expando
+    - docbook: set generate.consistent.ids to make generated html
+      reproducible
+  * Build:
+    - fix build/tests for 32-bit arches
+    - tests: fix test that would fail soon
+    - tests: fix context for failing idna tests
+
+-------------------------------------------------------------------
+Thu Nov 28 05:16:45 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20191111:
+  Bug fixes:
+  * browser: fix directory view
+  * fix crash in mutt_extract_token()
+  * force a screen refresh
+  * fix crash sending message from command line
+  * notmuch: use nm_default_uri if no mailbox data
+  * fix forward attachments
+  * fix: vfprintf undefined behaviour in body_handler
+  * Fix relative symlink resolution
+  * fix: trash to non-existent file/dir
+  * fix re-opening of mbox Mailboxes
+  * close logging as late as possible
+  * log unknown mailboxes
+  * fix crash in command line postpone
+  * fix memory leaks
+  * fix icommand parsing
+  * fix new mail interaction with mail_check_recent
+
+-------------------------------------------------------------------
+Tue Jul 17 09:26:21 UTC 2018 - kbabioch@suse.com
+
+- Updated to 20180716
+  * Feature: <check-stats> function
+  * Lots of bug fixes and vulnerability fixes:
+    - CVE-2018-14349: Fixed mishandling of NO response without message in
+      imap/command.c (bnc#1101589)
+    - CVE-2018-14350: Fixed stack-based buffer overflow for FETCH response with
+      long INTERNALDATE field in imap/message.c (bnc#1101588)
+    - CVE-2018-14351: Fixed mishandling of a long IMAP status mailbox literal
+      count size in imap/command.c (bnc#1101583)
+    - CVE-2018-14352: Fixed stack-based buffer overflow in imap_quote_string in
+      imap/util.c (bnc#1101582)
+    - CVE-2018-14353: Fixed integer underflow in imap_quote_string in
+      imap/util.c (bnc#1101581)
+    - CVE-2018-14354: Fixed arbitrary command execution via backquote
+      characters, related to the mailboxes command associated with manual
+      subscription or unsubscription (bnc#1101578)
+    - CVE-2018-14355: Fixed directory traversal in mailbox name in imap/util.c
+      (bnc#1101577)
+    - CVE-2018-14356: Fixed mishandling of zero-length UID in pop.c
+      (bnc#1101576)
+    - CVE-2018-14357: Fixed arbitrary command execution via backquote
+      characters, related to mailboxes command associated with automatic
+      subscription (bnc#1101573)
+    - CVE-2018-14358: Fixed stack-based buffer overflow for FETCH response with
+      long RFC822.SIZE field (bnc#1101571)
+    - CVE-2018-14359: Fixed buffer overflow via base64 data (bnc#1101570)
+    - CVE-2018-14360: Fixed stack-based buffer overflow because of incorrect
+      sscanf usage in nntp_add_group in newsrc.c (bnc#1101569)
+    - CVE-2018-14361: Fixed an code flow issue in nntp.c, which would proceed
+      even if memory allocation failed for messages data (bnc#1101568)
+    - CVE-2018-14362: Fixed unsafe interaction with message-cache pathnames in
+      pop.c (bnc#1101567)
+    - CVE-2018-14363: Fixed unsafe interaction with cache pathnames (containing
+      '/') in newsrc.c (bnc#1101566)
+
+-------------------------------------------------------------------
+Mon Jun 25 00:00:00 CEST 2018 - dsterba@suse.cz
+
+- spec: move license files to the main package
+- update to 20180622
+  * Features
+    - Expand variables inside backticks
+    - Honour SASL-IR IMAP capability in SASL PLAIN
+  * Bug Fixes
+    - Fix toggle-read
+    - Do not truncate shell commands on ; or #
+    - pager: index must be rebuilt on MUTT_REOPENED
+    - Handle a BAD response in AUTH PLAIN w/o initial response
+    - fcc_attach: Don't ask every time
+    - Enlarge path buffers PATH_MAX (4096)
+    - Move LSUB call from connection establishment to mailbox SELECTion
+  * Translations
+    - Update Chinese (Simplified): 100%
+    - Update Czech: 100%
+    - Update German: 100%
+    - Update Lithuanian: 100%
+    - Update Portuguese (Brazil): 100%
+    - Update Slovak: 59%
+    - Reduce duplication of messages
+  * Code
+    - Tidy up the mailbox API
+    - Tidy up the header cache API
+    - Tidy up the encryption API
+    - Add doxygen docs for more functions
+    - Refactor more structs to use STAILQ
+
+-------------------------------------------------------------------
+Mon May 14 00:00:00 CEST 2018 - dsterba@suse.cz
+
+- spec cleanup
+- update to 20180512
+  * Features
+    - echo command
+    - Add $browser_abbreviate_mailboxes
+    - Add ~M pattern to match mime Content-Types
+    - Add support for multipart/multilingual emails
+    - Jump to a collapsed email
+    - Add support for idn2 (IDNA2008)
+  * Bug Fixes
+    - Let mutt_ch_choose report conversion failure
+    - minor IMAP string handling fixes
+  * Translations
+    - Chinese (Simplified) (100%)
+    - Czech (100%)
+    - German (100%)
+    - Lithuanian (62%)
+    - Portuguese (Brazil) (100%)
+  * Coverity defects
+    - match prototypes to their functions
+    - make logic clearer
+    - reduce scope of variables
+    - fix coverity defects
+  * Docs
+    - development: analysis
+    - development: easy tasks
+    - development: roadmap
+  * Code
+    - start refactoring libconn
+    - split out progress functions
+    - split out window functions
+    - split out terminal setting
+    - convert MyVars to use TAILQ
+    - split mutt_file_{lock,unlock}
+    - Move IDN version string to mutt/idna.c
+    - refactor: init_locale()
+    - Eliminate static variable in mutt_file_dirname
+  * Tidy
+    - test int functions against 0
+    - rename lots of constants
+    - rename lots of functions
+    - sort lots of fields/definitions
+  * Upstream
+    - Increase account.user/login size to 128
+    - Fix comparison of flags with multiple bits set
+    - Change mutt_error call in mutt_gpgme_set_sender() to dprint
+    - Improve the error message when a signature is missing
+    - pager specific "show incoming mailboxes list" macro
+    - Improve gss debug printing of status_string
+    - Remove trailing null count from gss_buffer_desc.length field
+    - Add a comment in auth_gss about RFCs and null-termination
+    - Change prompt string for $crypt_verify_sig
+
+-------------------------------------------------------------------
+Fri Mar 23 00:00:00 CET 2018 - dsterba@suse.cz
+
+- update to 20180323
+  * Features
+    - unify logging/messaging
+    - add alert (blink) colors
+  * Contrib
+    - Vim syntax for NeoMutt log files
+  * Bug Fixes
+    - Fix progress bar range
+    - notmuch: stop if db open fails
+    - Improve index color cache flushing behavior
+    - lua: fix crash when setting a string
+  * Translations
+    - Update Czech translation (100%)
+    - Update German translation (100%)
+    - Update Polish translation (94%)
+    - Update Portuguese (BR) translation (100%)
+    - Update Spanish translation (64%)
+    - Update Turkish translation (75%)
+    - Merge simliar messages
+  * Docs
+    - Clarify precedence of settings in config files
+    - Fix subjectrx example in the manual
+  * Website
+    - Update Gentoo distro page
+    - Devel: Static analysis
+  * Build
+    - Support —with-sysroot configure arg
+    - Expose EXTRA_CFLAGS_FOR_BUILD and EXTRA_LDFLAGS_FOR_BUIlD
+    - Update to latest autosetup
+    - Make sure git_ver.h doesn't eat random 'g's out of tag names
+  * Code
+    - Refactor to reduce complexity
+    - Refactor to reduce variables' scope
+    - Sort functions/config to make docs more legible
+
+-------------------------------------------------------------------
+Wed Feb 28 00:00:00 CET 2018 - dsterba@suse.cz
+
+- spec cleanup
+- move manual.txt from neomutt-doc as it's bound to F1 key
+
+-------------------------------------------------------------------
+Fri Feb 23 00:00:00 CET 2018 - dsterba@suse.cz
+
+- update to 20180223
+  * Features
+    - browser: `<goto-parent>` function bound to "p"
+    - editor: `<history-search>` function bound to "Ctrl-r"
+    - Cygwin support: https://www.neomutt.org/distro/cygwin
+    - OpenSUSE support: https://www.neomutt.org/distro/suse
+    - Upstream Homebrew support: Very soon - https://www.neomutt.org/distro/homebrew
+  * Bug Fixes
+    - gmail server-size search
+    - nested-if: correctly handle "<" and ">" with %?
+    - display of special chars
+    - lua: enable myvars
+    - for pgpewrap in default gpg.rc
+    - reply_regexp which wasn't formatted correctly.
+    - parsing of urls containing '?'
+    - out-of-bounds read in mutt_str_lws_len
+  * Translations
+    - Review fuzzy lt translations
+    - Updated French translation
+  * Website
+    - Installation guide for Cygwin
+    - Installation guide for OpenSUSE
+    - Installation guide for CRUX
+  * Build
+    - check that DTDs are installed
+    - autosetup improvements
+    - option for which version of bdb to use
+    - drop test for resizeterm -- it's always present
+  * Code
+    - split if's containing assignments
+    - doxygen: add/improve comments
+    - rename functions / parameters for consistency
+    - add missing {}s for clarity
+    - move functions to library
+    - reduce scope of variables
+    - boolify more variables
+    - iwyu: remove unnecessary headers
+    - name unicode chars
+    - tailq: migrate parameter api
+    - md5: refactor and tidy
+    - rfc2047: refactor and tidy
+    - buffer: improvements
+    - create unit test framework
+    - fix several coverity defects
+  * Upstream
+    - Fix s/mime certificate deletion bug
+    - Disable message security if the backend is not available
+    - Fix improper signed int conversion of IMAP uid and msn values
+    - Change imap literal counts to parse and store unsigned ints
+    - Fix imap status count range check
+    - cmd_handle_fatal: make error message a bit more descriptive
+    - Create pgp and s/mime default and sign_as key vars
+    - Add missing setup calls when resuming encrypted drafts
+    - mutt_pretty_size: show real number for small files
+    - examine_directory: set directory/symlink size to zero
+    - Add history-search function, bound to ctrl-r
+    - Avoid a potential integer overflow if a Content-Length value is huge
+
+-------------------------------------------------------------------
+Fri Dec 29 00:00:00 CET 2017 - dsterba@suse.cz
+
+- update to 2017-12-15
+  - use autosetup instead of autotools
+  - regression fixes
+
+-------------------------------------------------------------------
+Tue Nov 28 00:00:00 CET 2017 - dsterba@suse.cz
+
+- neomutt 2017-12-08

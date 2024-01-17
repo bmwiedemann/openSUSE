@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Thu Oct 12 12:06:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.13.12
+  * 2.13 improves Scala in the following areas:
+    + Collections: Standard library collections have been overhauled
+      for simplicity, performance, and safety. This is the
+      centerpiece of the release.
+    + Standard library: Future is faster and more robust. Elsewhere,
+      useful classes and methods have been added.
+    + Language: Literal types, partial unification, by-name
+      implicits, more.
+    + Compiler: 5-10% faster, deterministic output, improved
+      optimizer.
+- Removed patches:
+  * scala-2.10-jline.patch
+  * scala-2.10.0-tooltemplate.patch
+  * scala-2.10.2-java7.patch
+  * scala-2.10.3-compiler-pom.patch
+  * scala-2.10.3-use_system_jline.patch
+  * scala-2.10.4-build_xml.patch
+  * scala-2.10.6-scaladoc-resources.patch
+  * scala-2.10.7-java8compat.patch
+  * scala-2.10.7-jdk15.patch
+  * scala-2.10.7-lines.patch
+  * scala-2.10.7-source8.patch
+    + not needed with this version
+- Added patches:
+  * scala-tooltemplate.patch
+    + use the javapackages way of finding the JVM to invoke
+  * scala-unbundle-fonts.patch
+    + unbundle fonts from scaladoc
+
+
+-------------------------------------------------------------------
+Fri Sep 29 06:45:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with jdk >= 9 too
+- Added patch:
+  * scala-2.10.7-jdk15.patch
+    + do not build pack200 ant task since Pack200 was removed in
+      jdk15
+    + implement a new method added in jdk15
+- Modified patches:
+  * scala-2.10.4-build_xml.patch
+    + do not try to instantiate the pack200 ant task
+  * scala-2.10.7-source6.patch -> scala-2.10.7-source8.patch
+    + build with source/target 8 levels
+
+-------------------------------------------------------------------
+Mon Sep 11 13:07:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: do not generate non-reproducible entries
+  by bnd tools
+
+-------------------------------------------------------------------
+Mon May 16 11:28:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix the scala build to find correctly the jansi.jar file
+- Make the package that links the jansi.jar file archfull
+
+-------------------------------------------------------------------
+Thu Jul 29 21:25:14 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Bootstrap the build with our own built jar instead of downloading
+  prebuilt binaries from www.scala-lang.org
+
+-------------------------------------------------------------------
+Fri Jun 26 12:30:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer package /usr/share/mime-info: this came from GNOME 1
+  times which are long gone (boo#1062631).
+  + Drop scala.keys and scala.mime source files.
+
+-------------------------------------------------------------------
+Tue Dec 17 06:34:27 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Stop overriding default fuzz in spec file
+- Changed patch:
+  * scala-2.10.7-source6.patch
+    + Refresh using source service
+
+-------------------------------------------------------------------
+Fri Dec 13 11:11:24 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid long builds because of swapping
+
+-------------------------------------------------------------------
+Wed Dec  4 09:21:06 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have scala-bootstrap-swing require scala*bootstrap and
+  scala-swing require scala. There is not guarantee that the
+  rebuild counters between scala and scala-bootstrap would be in
+  sync, making the Requires: scala = %{version}-%{release} for
+  scala-bootstrap unresolvable (let alone that it would not be
+  usable before scala is built)
+
+-------------------------------------------------------------------
+Fri Nov 29 10:53:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not package ant tasks in bootstrap build
+- Added patch:
+  * scala-2.10.7-java8compat.patch
+    + Build binaries compatible with java 8 even when building
+      with jdk >= 9
+
+-------------------------------------------------------------------
+Thu Nov 28 14:27:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.10.7
+  * Can be built and used with java 11
+- Get sources by a source service instead of a custom script
+- Clean a bit the spec file and remove unnecessary sources
+- Added patches:
+  * scala-2.10.7-source6.patch
+    + Build not only with target level 6, but also with source
+      level 6, in order to be able to build with jdk9+
+  * scala-2.10.7-lines.patch
+    + Fix type conflict with jdk11's java.lang.String.lines
+
+-------------------------------------------------------------------
+Tue Nov 26 10:56:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build api documentation in bootstrap flavour
+- Be extra verbose for the scalac build
+  * The build is long on non-JIT architectures and OBS needs some
+    compiler output in order to know that the job is not dead; 
+    otherwise it kills it.
+- Do not build apidocs to avoid intermittent internal scaladoc
+  errors after hours of build on s390x
+- Remove obsolete scriptlets
+
+-------------------------------------------------------------------
+Mon Mar 25 13:30:12 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Let the non-bootstrap packages obsolete their bootstrap
+  counterparts
+
+-------------------------------------------------------------------
+Sat Mar 23 08:27:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Make scriptlets POSIX sh compatible.
+- Trim filler wording from descriptions.
+
+-------------------------------------------------------------------
+Fri Mar  1 06:35:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of scala compiler 2.10.6

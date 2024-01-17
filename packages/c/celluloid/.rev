@@ -1,0 +1,164 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8957253085268354372c7c7f087c9c44</srcmd5>
+    <version>0.17</version>
+    <time>1565694981</time>
+    <user>dimstar_suse</user>
+    <comment>name change for gnome-mpv
+
+- Update to version 0.17
+  * Rename project to Celluloid
+  * Add Turkish translation by @TeknoMobil
+  * Add Esperanto translation by @F3nd0
+  * Migrate from opengl-cb to the new render API
+  * Handle numpad keybindings
+  * Handle unicode keybindings
+  * Forward media key events to mpv
+  * Add dconf key for controlling cursor speed threshold for
+    unhiding controls
+  * Add option for suppressing playback errors
+- Update to version 0.16
+  * Split up the General tab in the preferences dialog
+  * Improve behavior when toggling playlist under tiling window
+    managers
+  * Move app menu items to primary menu
+  * Use separate MPRIS DBus connection for each window
+  * Add support for MPRIS property LoopStatus
+  * Add option --mpv-options for setting arbitrary mpv options
+    from the command-line
+  Note: from the next release onwards GNOME MPV will be renamed
+  Celluloid.
+- Update to version 0.15
+  * Set default screenshot directory to XDG_PICTURES_DIR
+  * Improve handling of --window-scale, --autofit,
+    --autofit-larger, and --autofit-smaller
+  * Add command line option for setting WM_ROLE
+  * Add context menu item for removing playlist items
+  * Add context menu item for copying location of playlist items
+- Switch to meson build
+- Update to version 0.14
+  * Add option to make skip buttons change playlist entries rather
+    than chapters
+  * Make the file chooser accept non-local locations
+  * Add right-click menu entry for looping a single file
+  * Handle property change events for fullscreen and window-scale
+  * Add option to autohide mouse cursor in windowed mode
+- Update to version 0.13: no changelog available
+- Update to version 0.12: no changelog available
+- Update to version 0.11:
+  * No changelog available.
+- Update to version 0.10:
+  * No changelog available.
+- Update to version 0.9:
+  * No changelog available.
+- Update to version 0.8.
+- Initial package.
+</comment>
+    <requestid>721956</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b0585106fd3a5600644b0e9afbafa5ca</srcmd5>
+    <version>0.17</version>
+    <time>1570912637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737523</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>324d300a292a1e0c81c745999df8b2b8</srcmd5>
+    <version>0.18</version>
+    <time>1573047312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745483</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>335182b420bc223c2e8f75f448f22b87</srcmd5>
+    <version>0.19</version>
+    <time>1586466920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792509</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2cc7cd3729624d1f61a792bdddd2f958</srcmd5>
+    <version>0.20</version>
+    <time>1600702746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835556</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73631f8a64bff13b9a4ea23a063b5c08</srcmd5>
+    <version>0.21</version>
+    <time>1616598814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880570</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3c9976f22a324fb887acf07bf82bba82</srcmd5>
+    <version>0.22</version>
+    <time>1636219081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929776</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b108042927933dd3a629b36eacc5ff7c</srcmd5>
+    <version>0.23</version>
+    <time>1646671642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959851</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>48a2f0d79664ef4ad379aa16ff1ecc19</srcmd5>
+    <version>0.23</version>
+    <time>1647532900</time>
+    <user>dimstar_suse</user>
+    <comment>Updated build requirements (forwarded request 962344 from alois)</comment>
+    <requestid>962345</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>45d2810e7847251e18e1a18859a3b5df</srcmd5>
+    <version>0.24</version>
+    <time>1661346660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998846</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>98b977ace0f3083a6289bde96c9eb9c1</srcmd5>
+    <version>0.24</version>
+    <time>1663596173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004495</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d863f5bff72f7a1f74356158ae87bec8</srcmd5>
+    <version>0.25</version>
+    <time>1679933857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074640</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>00314d9945932afa2c3c531b2478dcdd</srcmd5>
+    <version>0.25</version>
+    <time>1693685267</time>
+    <user>dimstar_suse</user>
+    <comment>- Set version requirement for libadwaita-1
+</comment>
+    <requestid>1108552</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e7b0a6d76659afb6be4dafaabaa0faa5</srcmd5>
+    <version>0.26</version>
+    <time>1695209025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111666</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,617 @@
+-------------------------------------------------------------------
+Mon Nov 20 12:32:04 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add 1082.patch to make ipxe.sdsk build reproducible (boo#1062303)
+
+-------------------------------------------------------------------
+Mon Nov  6 16:16:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Wed Oct 18 16:08:11 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Add floppy disk image.
+  * use syslinux-mtools for building the image syslinux-mtools.patch
+
+-------------------------------------------------------------------
+Wed Oct 18 06:21:54 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.21.1+git20231006.ff0f8604:
+  * [libc] Use wall clock time as seed for the (non-cryptographic) RNG
+  * [eapol] Send EAPoL-Start packets to trigger EAP authentication
+  * [eap] Define a supplicant model for EAP and EAPoL
+  * [dhcp] Request NTP server option
+  * [ntp] Define NTP server setting
+  * [efi] Provide read-only access to EFI variables via settings mechanism
+  * [crypto] Add support for PKCS#8 private key format
+  * [efi] Add support for executing images via a shim
+  * [image] Generalise concept of selected image
+  * [tls] Handle fragmented handshake records (jsc#PED-5536)
+  * [params] Allow for arbitrary HTTP request headers to be specified
+  * [rng] Allow entropy source to be selected at runtime
+  * [efi] Support the initrd autodetection mechanism in newer Linux kernels
+  * [loong64] Add initial support for LoongArch64
+  * [efi] Enable NET_PROTO_LLDP by default
+  * [dhcp] Ignore DHCPNAK unless originating from the selected DHCP server
+  * [xen] Update to current Xen headers
+  * [efi] Allow autoexec script to be located alongside iPXE binary
+  * [efi] Accept a command line passed to an iPXE image via LoadOptions
+  * [efi] Update to current EDK2 headers
+  * [golan] Add new PCI ID for NVIDIA BlueField-3 network device
+  * [arm] Support building as a Linux userspace binary for AArch64
+
+-------------------------------------------------------------------
+Wed Aug 23 21:47:48 UTC 2023 - Héctor Orón Martínez <hector.oron@gmail.com>
+
+- enable HTTPS downloads (jsc#PED-5536)
+
+-------------------------------------------------------------------
+Mon Feb  6 17:47:32 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- cross-aarch64-gcc7 is not available for SLE-15 (i586).
+  Also, there is no Leap port for i586, so let's disable aarch64
+  cross-compile target on i586 (bsc#1207796).
+
+-------------------------------------------------------------------
+Mon Jan 23 14:43:38 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- enable compressed images
+
+-------------------------------------------------------------------
+Fri Jan 20 19:42:52 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.21.1+git20230120.a99e435c:
+  * [efi] Do not rely on ProcessorBind.h when building host binaries (bsc#1207310)
+  * multiple [ena] [efi] [tls] [intel] [intelxl] enhancements
+  * [image] Do not clear current working URI when executing embedded image
+  * [console] Fix definition of unreachability for remapped keys
+  * [console] Add Swedish "se" keymap
+  * [efi] Support keyboard remapping via the EFI console
+  * [usb] Support keyboard remapping via the native USB keyboard driver
+  * [ecm] Use ACPI-provided system-specific MAC address if present
+- Build on all architectures (jsc#PED-1148)
+
+-------------------------------------------------------------------
+Thu Jan 19 13:31:56 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make bootimgs subpackage architecture-specific
+
+-------------------------------------------------------------------
+Mon Jun 20 08:35:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use the default gcc version in Tumbleweed builds.
+
+-------------------------------------------------------------------
+Sun May 22 15:32:17 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.21.1+git20210908.02ec659b:
+  * [acpi] Generalise DSDT/SSDT data extraction logic
+  * [efi] Record cached ProxyDHCPOFFER and PXEBSACK, if present
+  * [efi] Use zero for PCI vendor/device IDs when no applicable ID exists
+  * [cloud] Retry DHCP aggressively in AWS EC2
+  * [efi] Match signtool expectations for file alignment
+  * [libc] Allow for externally-defined LITTLE_ENDIAN and BIG_ENDIAN constants
+  * [uri] Make URI schemes case-insensitive
+  * [rdc] Add driver for RDC R6040 embedded NIC
+  * [realtek] Work around hardware bug on RTL8211B
+  * [cloud] Show ifstat output after a failed boot attempt
+  * [peerdist] Assume that most recently discovered peer can be reused
+- Fixes build on Leap
+- Add workaround for building with GCC12 (Factory)
+
+-------------------------------------------------------------------
+Sun May 22 15:08:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fix version, base version, starting with 1.20.1+git20210604.065dce8d,
+  was 1.21.1 not 1.20.1 as 1.21.1 was released December 2020.
+  So current version is: 1.21.1+git20210614.bf4ccd42
+
+-------------------------------------------------------------------
+Thu Jun 17 09:12:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Since last update, syslinux is required to build the ISO but
+  it is available only on x86*, so disable ISO build for non-x86*
+
+-------------------------------------------------------------------
+Mon Jun 14 15:54:33 UTC 2021 - bwiedemann@suse.com
+
+- Update to version 1.20.1+git20210614.bf4ccd42:
+  * [build] Ensure build ID is deterministic (boo#1047218)
+  * [efi] Veto the Itautec Ip4ConfigDxe driver
+  * [libc] Match standard prototype for putchar()
+  * [base64] Include terminating NUL within base64 character array
+  * [rndis] Fix size of reserved fields
+
+-------------------------------------------------------------------
+Fri Jun 04 16:04:51 UTC 2021 - bwiedemann@suse.com
+
+- use xorrisofs for creating iso
+- Update to version 1.20.1+git20210604.065dce8d:
+  * [ath5k] Avoid returning uninitialised data on EEPROM read errors
+  * [crypto] Add memory output constraints for big-integer inline assembly
+  * [build] Use SOURCE_DATE_EPOCH for isohybrid MBR ID if it exists
+  * [build] Use SOURCE_DATE_EPOCH for .iso timestamps if it exists
+  * [cpio] Split out bzImage initrd CPIO header construction
+  * [x509] Use case-insensitive comparison for certificate names
+  * [libc] Add strncasecmp()
+  * [bnxt] Use hexadecimal values in PCI_ROM entries
+  * [intel] Add PCI ID for I219-V and -LM 10 to 15
+  * [image] Support archive image formats independently of "imgextract" command
+  * [image] Propagate trust flag to extracted archive images
+  * [image] Allow single-member archive images to be executed transparently
+  * [undi] Read TSC only when profiling
+  * [rng] Check for TSC support before using RTC entropy source
+  * [prefix] Specify i486 architecture for LZMA decompressor
+  * [gzip] Add support for gzip archive images
+  * [zlib] Add support for zlib archive images
+  * [image] Add "imgextract" command for extracting archive images
+  * [image] Provide image_set_len() utility function
+  * [cloud] Allow multiple images to be imported simultaneously
+  * [cloud] Attempt to include CPUID_SETTINGS only for x86 builds
+  * [cloud] Autodetect CPU architecture from AMI disk image
+  * [cloud] Use a sortable default AMI name
+  * [cloud] Add ability to generate Dokuwiki table of AMI images
+  * [settings] Add --timeout option to "read" command
+  * [readline] Add an optional timeout to readline_history()
+  * [build] Fix genfsimg to build ISO with long filenames
+  * [xen] Avoid infinite loop on allocation failure in xenstore_response()
+  * [xen] Support scatter-gather to allow for jumbo frames
+  * [int13] Do not report INT 13 extension support for emulated floppies
+  * [cloud] Enable "poweroff" command in cloud images
+  * [netdevice] Ensure driver transmit() and poll() will not be re-entered
+  * [pci] Avoid scanning nonexistent buses when using PCIAPI_DIRECT
+  * [intel] Add additional PCI device ID to table
+  * [dhcp] Handle DHCPNAK by returning to discovery state
+  * [linux] Do not assume that stat() works on sysfs files
+  * [linux] Validate length of ACPI table read from sysfs
+  * [linux] Place -lslirp at end of linker search list
+  * [linux] Use fstat() rather than statx()
+  * [linux] Use generic sysfs mechanism to read SMBIOS + ACPI tables
+  * [linux] Add a generic function for reading files from sysfs
+  * [linux] Free cached ACPI tables on shutdown
+  * [dns] Reduce debug verbosity for DNS server list
+  * [linux] Allow arbitrary settings to be applied to Linux devices
+  * [linux] Add missing pci_num_bus() stub
+  * [slirp] Add libslirp driver for Linux
+  * [linux] Provide ACPI settings via /sys/firmware/acpi/tables
+  * [acpi] Allow for platforms that provide ACPI tables individually
+  * [acpi] Eliminate redundant acpi_find_rsdt() in acpi_sx()
+  * [acpi] Use a fixed colour for debug messages
+  * [linux] Use host glibc system call wrappers
+  * [linux] Add a prefix to all symbols to avoid future name collisions
+  * [bitops] Provide an explicit operand size for bit test instructions
+  * [librm] Test for FXSAVE/FXRSTOR instruction support
+  * [librm] Add missing __asmcall on init_idt()
+  * [prefix] Add a generic raw image prefix
+  * [initrd] Allow for zero-length initrd files
+  * [cloud] Do not enable serial console on EFI platforms
+  * [pxe] Split out platform-independent portions of cachedhcp.c
+  * [ath5k] Add missing AR5K_EEPROM_READ in ath5k_eeprom_read_turbo_modes
+  * [cloud] Enable IPv6 and HTTPS in cloud boot images
+  * [cloud] Add utility for importing images to AWS EC2
+  * [cloud] Use PCIAPI_DIRECT for cloud images
+  * [ena] Switch to two-phase reset mechanism
+  * [ci] Disable redundant scheduled execution of Coverity Scan
+  * [ci] Disable Travis CI
+  * [ci] Add GitHub action for Coverity Scan
+  * [ci] Add GitHub action for build testing
+  * [contrib] Update bochsrc.txt to work with current versions
+  * [hermon] Add support for ConnectX-3 based cards
+  * [autoboot] Avoid closing and immediately reopening network device
+  * [hermon] Avoid parsing length field on completion errors
+  * [hermon] Make hermon_dump_xxx() functions no-ops on non-debug builds
+  * [hermon] Minimise reset time
+  * [hermon] Throttle debug output when sensing port type
+  * [hermon] Add a debug notice when initialization is complete
+  * [hermon] Add support for port management event
+  * [hermon] Adjust Ethernet work queue size
+  * [hermon] Use reset value suitable for ConnectX-3
+  * [hermon] Clean up whitespace in hermon.c
+  * [iscsi] Update link to iBFT reference manual
+  * [hermon] Limit link poll frequency in DOWN state
+  * [hermon] Perform clean MPT unmap on device shutdown
+  * [hermon] Use Ethernet MAC as eIPoIB local EMAC
+  * [hermon] Increase polling rate for command completions
+  * [hermon] Add event queue debug functions
+  * [hermon] Increase command timeout from 2 to 10 seconds
+  * [hermon] Add assorted debug error messages
+  * [hermon] Show "issuing command" messages only at DBGLVL_EXTRA
+  * [hermon] Reorganize PCI ROM list and document well-known product names
+  * [golan] Backport typo fix in nodnic_prm.h: s/HERMON/NODNIC/
+  * [arbel] Clean up whitespace in MT25218_PRM.h header
+  * [hermon] Clean up whitespace in MT25408_PRM.h header
+  * [image] Implicitly trust first embedded image
+  * [infiniband] Require drivers to specify the number of ports
+  * [ifmgmt] Make "ifstat" show the link-layer protocol for each netdev
+  * [cmdline] Expose "iflinkwait" as a command
+  * [image] Provide image_memory()
+  * [travis] Update to current default build environment
+  * [tftp] Allow for profiling of client and server turnaround times
+  * [image] Add the "imgmem" command
+  * [image] Provide image_set_data()
+  * [ipv6] Defer router discovery timeout while link is blocked
+  * [dhcp] Allow for links that remained blocked for up to three minutes
+  * [eap] Treat an EAP Request-Identity as indicating a blocked link
+  * [eapol] Replace EAPoL code
+  * [dhcp] Continue transmitting DHCPDISCOVER while link is blocked
+  * [isa] Add missing #include <config/isa.h>
+  * [xhci] Avoid false positive Coverity warning
+  * [xhci] Show meaningful error messages after command failures
+  * [xhci] Fail attempts to issue concurrent commands
+  * [smbios] Add support for the 64-bit SMBIOS3 entry point
+  * [sfc] Update email addresses
+  * [x509] Clarify debug message for an untrusted X.509 issuer
+  * [golan] Add new PCI IDs
+  * [iphone] Add iPhone tethering driver
+  * [crypto] Allow private key to be specified as a TLS connection parameter
+  * [tls] Include root of trust within definition of TLS session
+  * [x509] Make root of trust a reference-counted structure
+  * [x509] Record root of trust used when validating a certificate
+  * [ocsp] Remove dummy OCSP certificate root
+  * [http] Hide HTTP transport-layer filter implementation details
+  * [asn1] Define ASN1_SHORT() for constructing short tagged values
+  * [asn1] Rename ASN1_OID_CURSOR to ASN1_CURSOR
+  * [asn1] Add constant for UTF-8 string tag
+  * [tls] Allow provision of a client certificate chain
+  * [tls] Use intf_insert() to add TLS to an interface
+  * [interface] Provide intf_insert() to insert a filter interface
+  * [interface] Ignore any attempts to plug in the null interface
+  * [xhci] Update driver to use DMA API
+  * [dma] Provide dma_umalloc() for allocating large DMA-coherent buffers
+  * [netdevice] Fix misleading comment on netdev_rx()
+  * [netdevice] Do not attempt to unmap a null I/O buffer
+  * [dma] Move I/O buffer DMA operations to iobuf.h
+  * [dma] Record DMA device as part of DMA mapping if needed
+  * [dma] Modify DMA API to simplify calculation of medial addresses
+  * [intelxl] Configure DMA mask as 64-bit
+  * [intel] Configure DMA mask as 64-bit
+  * [intelxl] Update driver to use DMA API
+  * [intelxl] Read PCI bus:dev.fn number from PFFUNC_RID register
+  * [intelxl] Read MAC address from PRTPM_SA[HL] instead of PRTGL_SA[HL]
+  * [intel] Use physical addresses in debug messages
+  * [realtek] Use physical addresses in debug messages
+  * [intel] Update driver to use DMA API
+  * [realtek] Update driver to use DMA API
+  * [dma] Define a DMA API to allow for non-flat device address spaces
+  * [malloc] Rename malloc_dma() to malloc_phys()
+  * [realtek] Reset NIC when closing interface if using legacy mode
+  * [infiniband] Allow SRP device to be described using an EFI device path
+  * [fcp] Allow Fibre Channel device to be described using an EFI device path
+  * [iscsi] Allow iSCSI device to be described using an EFI device path
+  * [aoe] Allow AoE device to be described using an EFI device path
+  * [http] Allow HTTP connection to be described using an EFI device path
+  * [usbblk] Allow USB block device to be described using an EFI device path
+  * [interface] Allow for the definition of an unused interface operation
+  * [ipv6] Reduce time spent waiting for router discovery
+  * [lacp] Ignore (and do not echo) trailing padding on received packets
+  * [lacp] Detect and ignore erroneously looped back LACP packets
+  * [usbblk] Add support for USB mass storage devices
+  * [usb] Move usbio driver to end of USB driver list
+  * [usb] Allow endpoints to be refilled to a specified upper limit
+  * [usb] Allow device halt to be cleared independently of host controller
+  * [ncm] Treat a zero divisor as indicating no alignment requirements
+  * [usb] Avoid integer underflow on malformed string descriptors
+  * [usb] Show debug message on device removal
+  * [usb] Reset control endpoints immediately after failure
+  * [pci] Update drivers to use pci_ioremap()
+  * [pci] Define pci_ioremap() for mapping PCI bus addresses
+
+-------------------------------------------------------------------
+Tue Sep  1 09:55:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update url 
+
+-------------------------------------------------------------------
+Thu Aug 20 18:52:31 UTC 2020 - bwiedemann@suse.com
+
+- Update to version 1.20.1+git20200817.ef2c844d:
+  * [efi] Attempt NII initialisation both with and without cable detection
+  * [efi] Use device path to locate filesystem from which we were loaded
+  * [efi] Match EDK2 numbering for USB ports
+  * [comboot] Fix stack pointer retrieval after COM32 binary returns
+  * [efi] Check the status code from AllocatePool()
+  * [cmdline] Add "--timeout" parameter to "ifconf" command
+  * [intelx] Added PCI_ROM entry for Intel x553/x557-AT and x553 (SFP+) NICs
+  * [intel] Set INTEL_NO_PHY_RST on i218v
+  * [intel] Add INTEL_NO_PHY_RST for I218LM
+  * [deflate] Fix typo in comment describing length codes
+  * [build] Fix a GNUism that FreeBSD's sed(1) cannot deal with
+  * [wpa] Fix erroneous debug message in wpa_derive_ptk
+  * [libc] Fix memcmp() to return proper values
+  * [pcbios] Take alignment into account when checking for available space
+  * [pcbios] Fix "out of memory" detection when expanding bottom area
+  * [libgcc] Change __divmoddi4 from int64 [unknown] to int64_t
+  * [build] Fix default target in sdsk image
+  * [dns] Use all configured DNS servers
+  * [xfer] Remove address family from definition of a socket opener
+  * [sfc] Add PCI ID for Solarflare SFC9120 and Solarflare SFC9140
+  * [efi] Claim SNP devices early in efi_download_start()
+  * [efi] Ensure NUL byte is at lowest address within stack cookie
+  * [efi] Distribute available entropy within stack cookie
+  * [libc] Add bit-rotation functions for unsigned long values
+  * [efi] Avoid setting direction flag on EFI platforms
+  * [libc] Provide an unoptimised generic_memcpy_reverse()
+  * [crypto] Avoid temporarily setting direction flag in bigint_is_geq()
+  * [usb] Leave port enabled after a failed device registration
+  * [axge] Reapply USB device configuration when opening network device
+  * [xhci] Increase link state settling delay to 100ms
+  * [usb] Avoid unnecessary calls to usb_hub_set_drvdata()
+  * [xhci] Set link state to RxDetect after disabling USB3 root hub port
+  * [usb] Do not attempt to disable USB3 hub ports
+  * [usb] Add missing usb_recycle() for completed hub interrupt transfers
+  * [usb] Clear device endpoint halt before resetting host endpoint
+  * [axge] Handle non-gigabit link speeds
+  * [efi] Raise TPL during driver entry point
+  * [efi] Detect and disable seriously broken EFI_RNG_PROTOCOL implementations
+  * [build] Disable position-independent code for ARM64 EFI builds
+  * [golan] Add explicit type casts for nodnic_queue_pair_type
+  * [intel] Avoid spurious compiler warning on GCC 10
+  * [build] Be explicit about -fcommon compiler directive
+  * [ocsp] Accept SHA1 certID responses even if SHA1 is not enabled
+  * [efi] Enable stack protection where possible
+  * [parseopt] Treat empty integer strings in user input as invalid
+  * [util] Treat empty integer strings as invalid
+  * [snp] Retry initialisation if link is reported as down
+  * [crypto] Disable MD5 as an OID-identifiable algorithm by default
+  * [crypto] Ensure that test code drags in required ASN.1 object identifiers
+  * [crypto] Allow algorithms to be included without being OID-identifiable
+  * [tls] Default to supporting only TLSv1.1 or above
+  * [tls] Allow a minimum TLS protocol version to be specified
+  * [efi] Attempt to connect our driver directly if ConnectController fails
+  * [uri] Avoid appearing to access final byte of a potentially empty string
+  * [efi] Work around UEFI specification bug in LoadImage for SAN boot
+  * [efi] Work around UEFI specification bug in LoadImage
+  * [png] Fix potential integer overflow
+  * [bnxt] Add driver support for Broadcom NetXtreme-E Adapters
+  * [efi] Disambiguate errors returned by ConnectController
+  * [int13con] Create log partition only when CONSOLE_INT13 is enabled
+  * [bios] Define macros for constructing partition table entries
+  * [iscsi] Eliminate variable-length stack allocation in URI parsing
+  * [iscsi] Eliminate variable-length stack allocations in CHAP handlers
+  * [settings] Eliminate variable-length stack allocation
+  * [slam] Allow for the possibility of IPv6 multicast addresses
+  * [slam] Eliminate variable-length stack allocation
+  * [infiniband] Eliminate variable-length stack allocation
+  * [tftp] Eliminate unnecessary variable-length stack allocation
+  * [travis] Ensure that most recent tag is always available
+  * [build] Construct full version number automatically from git revision
+  * [snp] Set EFI_SIMPLE_NETWORK_RECEIVE_MULTICAST bit as per UEFI spec
+  * [snp] Try promiscuous multicast receive filter if the regular one fails
+  * [peerdist] Allow for the use of a hosted cache server
+  * [peerdist] Allow PeerDist to be globally enabled or disabled
+
+-------------------------------------------------------------------
+Tue Jul 21 13:19:27 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64
+
+-------------------------------------------------------------------
+Fri Oct 25 12:34:08 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update cross compiler to GCC 9
+- Change the git address from _service to use HTTPS
+- Replace %doc to %license
+
+-------------------------------------------------------------------
+Fri Oct 25 12:28:49 UTC 2019 - aplanas@suse.com
+
+- Update to version 1.0.0+git20190929.3fe683eb:
+  * [lan78xx] Always enable automatic speed and duplex detection
+  * [efi] Do not attempt EFI_USB_IO_PROTOCOL transfers during shutdown
+  * [efi] Report failed control transfers as expected by the USB core
+  * [golan] Fix address-of-pointer bug for multicast attach/detach
+  * [ethernet] Avoid false positive Coverity warning
+  * [coverity] Override assumptions about wcrtomb() and hmac_init()
+  * [crypto] Profile the various stages of modular multiplication
+  * [crypto] Drag in configured digestInfo prefixes for any use of RSA
+  * [tls] Add missing call to tls_tx_resume() when restarting negotiation
+  * [peerdist] Limit number of concurrent raw block downloads
+
+-------------------------------------------------------------------
+Thu Sep 12 11:59:33 UTC 2019 - bwiedemann@suse.com
+
+- Update to version 1.0.0+git20190817.0b3000bb:
+  * [golan] Fix address-of-pointer bug for multicast attach/detach
+  * [ethernet] Avoid false positive Coverity warning
+  * [coverity] Override assumptions about wcrtomb() and hmac_init()
+  * [crypto] Profile the various stages of modular multiplication
+  * [crypto] Drag in configured digestInfo prefixes for any use of RSA
+  * [tls] Add missing call to tls_tx_resume() when restarting negotiation
+  * [peerdist] Limit number of concurrent raw block downloads
+  * [peerdist] Start block download timers from within opener methods
+  * [process] Add PROC_INIT() for initialising static processes
+  * [build] Add predefined shortcut for Raspberry Pi builds
+  * [build] Workaround compilation error with gcc 9.1
+  * [build] Fix "'%s' directive argument is null" error
+- Drop obsolete/upstream patches:
+  * ipxe-aarch64-inline-asm-const-modifier.patch
+  * ipxe-efi-guard-strncpy-with-gcc-warning-ignore-pragma.patch
+  * ipxe-efi-recognize-plt32-relocation.patch
+
+-------------------------------------------------------------------
+Tue Nov 27 07:44:32 UTC 2018 - eich@suse.com
+
+- Make sure correct cross-gcc version is picked:
+  * For Leap15/SLE15: gcc7
+  * For oS Factory and TW: gcc8
+
+-------------------------------------------------------------------
+Fri Oct 12 15:16:39 UTC 2018 - jjolly@suse.com
+
+- Enable bin-arm64-efi/snp.efi cross-compile build
+  This allows to boot an arm box from an x86_64 system.
+- Add ipxe-aarch64-inline-asm-const-modifier.patch
+  * Fixes aarch64 build error with inline assembly output modifier
+
+-------------------------------------------------------------------
+Thu Aug 23 14:55:18 UTC 2018 - jjolly@suse.com
+
+- Add snp-i386.efi and snp-x86_64.efi to package for using EFI's
+  network drivers (e.g. used by warewulf)
+
+-------------------------------------------------------------------
+Tue Aug 21 13:29:25 UTC 2018 - jjolly@suse.com
+
+- Add ipxe-efi-recognize-plt32-relocation.patch (boo#1105510)
+
+-------------------------------------------------------------------
+Mon Jun 18 12:58:11 UTC 2018 - bwiedemann@suse.com
+
+- Add ipxe-efi-guard-strncpy-with-gcc-warning-ignore-pragma.patch (boo#1090355)
+
+-------------------------------------------------------------------
+Sun Feb 18 12:38:31 UTC 2018 - jengelh@inai.de
+
+- Trim redundancies. Do mention presence of EFI programs.
+
+-------------------------------------------------------------------
+Fri Feb 16 15:30:16 UTC 2018 - dmueller@suse.com
+
+- reduce build requires
+- update license
+
+-------------------------------------------------------------------
+Fri Feb 16 10:44:22 UTC 2018 - bwiedemann@suse.de
+
+- Drop upstream 0001-arch-i386-Check-for-no-pie-gcc-option-as-well.patch
+- Update to version 1.0.0+git20180203.546dd51d:
+  * [intel] Work around broken reset mechanism in i219 devices
+  * [xhci] Assume an invalid PSI table if any invalid PSI value is observed
+  * [ena] Fix spurious uninitialised variable warning on older versions of gcc
+  * [netdevice] Make netdev_irq_enabled() independent of netdev_irq_supported()
+  * [tg3] Add support for SerDes PHY initialization
+  * [skel] Remove MII interface
+  * [ena] Add driver for Amazon ENA virtual function NIC
+  * [build] Avoid use of "ld --oformat binary"
+  * [legal] Add missing FILE_LICENCE declarations
+  * [image] Omit URI query string and fragment from download progress messages
+  * [http] Report unsuccessful response status lines at DBGVL_LOG
+  * [http] Include error messages for 4xx and 5xx response codes
+  * [xen] Skip probing of any unsupported device types
+  * [intel] Add PCI device ID for X550-T2
+  * [http] Add support for NTLM authentication
+  * [http] Handle parsing of WWW-Authenticate header within authentication scheme
+  * [http] Gracefully handle offers of multiple authentication schemes
+  * [ntlm] Add support for NTLM authentication mechanism
+  * [crypto] Add MD4 message digest algorithm
+  * [crypto] Eliminate repetitions in MD5 round constant table
+  * [crypto] Fix endianness typo in comment
+  * [efi] Allow for building with older versions of elf.h system header
+  * [efi] Accept (and ignore) R_ARM_V4BX relocations
+  * [crypto] Fail fast if cross-certificate source is empty
+  * [efi] Inhibit our driver Start() method during disconnection attempts
+  * [build] Exclude selected directories from Secure Boot builds
+  * [efi] Continue to connect remaining handles after connection errors
+  * [exanic] Add PCI device ID for another X40 variant
+  * [exanic] Power up optical PHYs (if present)
+  * [dns] Ensure DNS names are NUL-terminated when used as diagnostic strings
+  * [efi] Match behaviour of SnpDxe for truncated received packets
+  * [efi] Check buffer length for packets retrieved via our SNP protocol
+  * [dns] Report current DNS query as job progress status message
+  * [resolv] Use pass-through interfaces for name resolution multiplexer
+  * [netdevice] Add "hwaddr" setting
+  * [peerdist] Gather and report peer statistics during download
+  * [monojob] Display job status message, if present
+  * [downloader] Allow underlying downloads to provide detailed job progress
+  * [job] Allow jobs to report an arbitrary status message
+  * [monojob] Check for job progress only once per timer tick
+  * [netdevice] Cancel all pending transmissions on any transmit error
+  * [efi] Raise TPL when calling UNDI entry point
+  * [linux] Impose receive quota on tap driver
+  * [malloc] Avoid false positive warnings from valgrind
+  * [romprefix] Avoid unaligned accesses within ROM headers
+  * [intel] Add various PCI device IDs
+  * [shell] Enable "shell" command even when BANNER_TIMEOUT is zero
+  * [hyperv] Do not steal ownership from the Gen 2 UEFI firmware
+  * [acpi] Fix spurious uninitialised-variable warning on some gcc versions
+  * [acpi] Compute and check checksum for ACPI tables
+  * [build] Fix ARM32 EFI builds with current EDK2 headers
+  * [build] Fix use of inline assembly on GCC 4.8 ARM64 builds
+  * [build] Conditionalise use of -mabi=lp64 for ARM64 builds
+  * [efi] Enumerate PCI BARs in same order as SnpDxe
+  * [lan78xx] Add driver for Microchip LAN78xx USB Ethernet NICs
+  * [smsc75xx] Expose functionality shared with LAN78xx devices
+  * [smscusb] Allow for alternative PHY register layouts
+  * [smscusb] Move non-inline register access functions to smscusb.c
+  * [virtio] Support VIRTIO_NET_F_IOMMU_PLATFORM
+  * [smscusb] Add ability to read MAC address from OTP
+  * [smsc75xx] Use common SMSC USB device functionality
+  * [smsc95xx] Use common SMSC USB device functionality
+  * [smscusb] Abstract out common SMSC USB device functionality
+  * [intel] Add support for I219-V in 7th Gen Intel NUC
+  * [tls] Support RFC5746 secure renegotiation
+  * [mucurses] Avoid potential division by zero
+  * [usb] Use non-zero language ID to retrieve strings
+  * [exanic] Add driver for Exablaze ExaNIC cards
+  * [crypto] Expose pem_asn1() for use with non-image data
+  * [crypto] Provide asn1_built() to construct a cursor from a builder
+  * [crypto] Expose asn1_grow()
+  * [crypto] Expose RSA_CTX_SIZE constant
+  * [cpuid] Allow input %ecx value to be specified
+  * [ecm] Display invalid MAC address strings in debug messages
+  * [build] Use -no-pie on newer versions of gcc
+  * [intel] Add INTEL_NO_PHY_RST for I219-V
+  * [usb] Allow for USB network devices with no interrupt endpoint
+  * [hdprefix] Avoid attempts to read beyond the end of the disk
+  * [syslog] Handle backspace characters
+
+-------------------------------------------------------------------
+Sun May 28 09:49:47 UTC 2017 - mchandras@suse.de
+
+- Update snapshot to ipxe-1.0.0+git20170523.356f6c1b. Some of the changes are:
+  * [acpi] Expose ACPI tables via settings mechanism
+  * [efi] Provide access to ACPI tables
+  * [acpi] Make acpi_find_rsdt() a per-platform method
+  * [efi] Prevent EFI code from being linked in to non-EFI builds
+  * [block] Provide abstraction to allow system to be quiesced
+  * [intel] Do not enable ASDE on i350 backplane NIC
+  * [block] Allow use of a non-default EFI SAN boot filename
+  * [thunderx] Use ThunderxConfigProtocol to obtain board configuration
+  * [linux] Fix building with kernel 4.11 headers
+  * [build] Avoid implicit-fallthrough warnings on GCC 7
+  * [http] Notify data transfer interface when underlying connection is ready
+  * [block] Describe all SAN devices via ACPI tables
+  * [block] Add basic multipath support
+  * [vxge] Fix use of stale I/O buffer on error path
+  * [pcnet32] Eliminate redundant register read
+  * [rtl818x] Fix resource leak on error path
+  * [sis190] Avoid NULL pointer dereference
+  * [w89c840] Avoid potential array overrun
+  * [tcp] Use correct length for memset()
+  * [usb] Use correct length for memcpy()
+  * [ath] Add missing break statements
+  * [infiniband] Return status code from ib_create_mi()
+  * [infiniband] Return status code from ib_create_cq() and ib_create_qp()
+  * [mucurses] Attempt to fix resource leaks
+  * [mucurses] Attempt to fix keypress processing logic
+  * [mucurses] Attempt to fix test for empty string
+  * [802.11] Remove redundant NULL pointer check after dereference
+  * [nfs] Fix double free bug on error path
+  * [xfer] Ensure va_end() is called on failure path
+  * [arbel] Avoid potential integer overflow when calculating memory mappings
+  * [hermon] Avoid potential integer overflow when calculating memory mappings
+  * [thunderx] Don't disable NIC when exiting from iPXE
+  * [thunderx] Fix hardware deinitialization
+  * [http] Cleanly shut down potentially looped interfaces
+  * [intel] Add INTEL_NO_PHY_RST for I219-LM (2)
+  * [int13] Test correct return status from INT 13 calls
+  * [int13] Avoid potential division by zero
+  * [pic8259] Fix definitions for "read IRR" and "read ISR" commands
+  * [cloud] Show CPU vendor and model in example cloud boot scripts
+  * [netdevice] Allow MTU to be changed at runtime
+  * [virtio] Use host-specified MTU when available
+  * [virtio] Use separate RX and TX empty header buffers
+  * [virtio] Remove queue size limit in legacy virtio
+  * [virtio] Simplify virtqueue shutdown
+  * [virtio] Cap queue size to MAX_QUEUE_NUM
+- Add patch to enable -no-pie when building i386 binaries. This was only
+  triggered recently since the gcc-7.1.1 started using -fpie by default
+  * 0001-arch-i386-Check-for-no-pie-gcc-option-as-well.patch
+
+-------------------------------------------------------------------
+Thu Sep  1 15:34:40 UTC 2016 - mchandras@suse.de
+
+- Initial commit. We only build and package the iPXE boot images for now
+

@@ -1,0 +1,34 @@
+From 82c59ffdd9d0636236d9974dfbeb0d620364f640 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Fri, 10 Feb 2017 12:45:06 +0100
+Subject: [PATCH] Port to current qdox
+
+---
+ .../com/thoughtworks/paranamer/generator/QdoxParanamerGenerator.java  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/paranamer-generator/src/java/com/thoughtworks/paranamer/generator/QdoxParanamerGenerator.java b/paranamer-generator/src/java/com/thoughtworks/paranamer/generator/QdoxParanamerGenerator.java
+index 62266fe..644aa9c 100644
+--- a/paranamer-generator/src/java/com/thoughtworks/paranamer/generator/QdoxParanamerGenerator.java
++++ b/paranamer-generator/src/java/com/thoughtworks/paranamer/generator/QdoxParanamerGenerator.java
+@@ -85,7 +85,7 @@ public class QdoxParanamerGenerator implements ParanamerGenerator {
+         	content.append(addConstructors(javaClass.getConstructors()));
+         	content.append(addMethods(javaClass.getMethods()));
+             // TODO problem with inner classes
+-            makeEnhancer().enhance(new File(outputPath, javaClass.getFullyQualifiedName().replace('.', File.separatorChar) + ".class"), content);
++            makeEnhancer().enhance(new File(outputPath, javaClass.getBinaryName().replace('.', File.separatorChar) + ".class"), content);
+ 
+         }
+     }
+@@ -171,7 +171,7 @@ public class QdoxParanamerGenerator implements ParanamerGenerator {
+         Iterator<JavaParameter> paramIter = parameters.iterator();
+         while(paramIter.hasNext()) {
+         	JavaParameter param = paramIter.next();
+-        	sb.append(param.getType().getCanonicalName());
++        	sb.append(param.getType().getCanonicalName().replaceAll("\\[\\]", ""));
+         	if(paramIter.hasNext())
+         	{
+         		sb.append(COMMA);
+-- 
+2.9.3
+

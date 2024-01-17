@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Sun Jul 16 10:53:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0-post.3:
+  * Update permissions in publishing workflow to allow publishing
+    of files to GitHub releases
+  * Use `package` and `wheel_build_env` to speed up tests as this
+    is a pure Python package. See the tox docs for more detail.
+  * Use PyPI trusted publishing instead of manual token
+    authentication
+  * You can now configure `retry_spec` and `timeout_spec` at the
+    endpoint level. Calls to endpoints may override the endpoint-
+    level configuration when necessary.
+
+-------------------------------------------------------------------
+Mon Dec 19 21:25:05 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 7.0.0
+  * Fixed: Ensure py.typed files end up in binary wheel distribution, which may break type checking for consumers
+  * Added:
+    Run tests against Python 3.11
+    Stop ignoring imports during type checking
+
+-------------------------------------------------------------------
+Sun Jan  2 10:35:31 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 6.1.0
+  * Add py.typed file so mypy can check against package types in downstream applications
+  * Use interpolation for logging messages to avoid wasted computation
+
+-------------------------------------------------------------------
+Sun Aug 29 08:36:10 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 6.0.0.post1
+  * Move from Travis CI to GitHub Actions for testing and publishing
+    Use PEP 517 builds
+  * Testing matrix and trove classifiers for Python 3.9
+    Type hints for all classes, methods, and functions
+  * Support for Python 3.6 has been removed due to its impending end of life and 
+    the desire to leverage features from 3.7
+  * Remove Python 3.10 testing and support for now, as Travis CI only has 
+    Python 3.10.0a5 which isn't compatible with recent pytest-randomly releases
+  * Indicate (by renaming) that all functions in the client module are private, except for call
+
+-------------------------------------------------------------------
+Mon Aug 31 04:37:49 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.1.0:
+  * Ability to specify proxies for a Service definition so all calls to the
+    service use the defined proxies
+  * Ability to specify auth for a Service definition so all calls to the
+    service use the defined authentication
+  * Ability to specify return_raw_response_object at the endpoint level,
+    overridden by any value specified at call time 
+
+-------------------------------------------------------------------
+Tue Dec  3 07:57:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop needless service, one can call the command directly:
+  osc service localrun download_files
+- Fix the test call to really execute the tests
+- Run the spec-cleaner
+
+-------------------------------------------------------------------
+Mon Dec  2 21:01:59 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.0.0
+  tests added
+
+-------------------------------------------------------------------
+Mon Aug 26 19:17:45 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.1.0
+  initial build on OBS

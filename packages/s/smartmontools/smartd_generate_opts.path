@@ -1,0 +1,11 @@
+[Unit]
+Description=Watch for changes in smartmontools sysconfig file
+After=local-fs.target
+
+[Path]
+Unit=smartd_generate_opts.service
+PathChanged=/etc/sysconfig/smartmontools
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>782b798b970c781ede51cf1c77b821d5</srcmd5>
+    <version>0.4.1</version>
+    <time>1168904257</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="30">
+    <srcmd5>4f695526b0eb41a79abb423e76e7a4fb</srcmd5>
+    <version>0.4.1</version>
+    <time>1170022120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="31">
+    <srcmd5>1b3d6c58fe67d798fbf967b29b68dc28</srcmd5>
+    <version>0.4.1</version>
+    <time>1170176604</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a03ad120a67fddcfd9af7006f0cf7ece</srcmd5>
+    <version>0.4.4</version>
+    <time>1207213104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="18">
+    <srcmd5>07ce5f3f74720107b24316a9ec9fcd4c</srcmd5>
+    <version>0.4.4</version>
+    <time>1210942575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef0c2db6bee52a162ebeebb39d82ac01</srcmd5>
+    <version>0.4.5</version>
+    <time>1221300930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ef0c2db6bee52a162ebeebb39d82ac01</srcmd5>
+    <version>0.4.5</version>
+    <time>1221300930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2b3330a9c76eb9a7a226955110999754</srcmd5>
+    <version>0.4.6</version>
+    <time>1260270883</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/sobby based on submit request 25905 from user vuntz
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1197694ff3a336e9b0958d01d7496a10</srcmd5>
+    <version>0.4.7</version>
+    <time>1262129408</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/sobby based on submit request 27795 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>00967d3ea939edea57c6f8b7a4ca82c3</srcmd5>
+    <version>0.4.7</version>
+    <time>1268926200</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>00967d3ea939edea57c6f8b7a4ca82c3</srcmd5>
+    <version>0.4.7</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>00967d3ea939edea57c6f8b7a4ca82c3</srcmd5>
+    <version>0.4.7</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>00967d3ea939edea57c6f8b7a4ca82c3</srcmd5>
+    <version>0.4.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>00967d3ea939edea57c6f8b7a4ca82c3</srcmd5>
+    <version>0.4.7</version>
+    <time>1319182478</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>6ba5ebf6d56370e7aaa42bf65e4d7b13</srcmd5>
+    <version>0.4.7</version>
+    <time>1323194703</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>f36f7487af13fcd8ddd4e89169278acc</srcmd5>
+    <version>0.4.7</version>
+    <time>1325787352</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98949</requestid>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>f4787ca798a6e3beee3abadfef7d1683</srcmd5>
+    <version>0.4.7</version>
+    <time>1327087537</time>
+    <user>coolo</user>
+    <comment>Fix build</comment>
+    <requestid>100852</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fe52385245933f5280645ec689d5d391</srcmd5>
+    <version>0.4.8</version>
+    <time>1329922521</time>
+    <user>coolo</user>
+    <comment>Update, minor buxfix. Patch dropped. (forwarded request 106373 from Zaitor)</comment>
+    <requestid>106377</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>fe52385245933f5280645ec689d5d391</srcmd5>
+    <version>0.4.8</version>
+    <time>1340184226</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>fe52385245933f5280645ec689d5d391</srcmd5>
+    <version>0.4.8</version>
+    <time>1359110420</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>fe52385245933f5280645ec689d5d391</srcmd5>
+    <version>0.4.8</version>
+    <time>1379664702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>fe52385245933f5280645ec689d5d391</srcmd5>
+    <version>0.4.8</version>
+    <time>1409303386</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>c9c56e40ec734ca80e986674e6121268</srcmd5>
+    <version>0.4.8</version>
+    <time>1455610727</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359012</requestid>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>843a10ee0d83b8ef91cec0a6454d5bd5</srcmd5>
+    <version>0.4.8</version>
+    <time>1568190861</time>
+    <user>dimstar_suse</user>
+    <comment>Use pkgconfig (forwarded request 729531 from iznogood)</comment>
+    <requestid>729718</requestid>
+  </revision>
+</revisionlist>

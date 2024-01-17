@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Fri Sep 29 18:39:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix single singlespec: Can't use python_subpackages rewriter
+
+-------------------------------------------------------------------
+Fri Sep 29 18:03:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove dependencies which are not used at runtime anywhere
+  * only CairoSVG is reqired for PNG charts since at least
+    pygal 1.7:
+    https://github.com/Kozea/pygal/blob/1.6.2/setup.py#L70
+  * remove-obsolete-deps.patch
+
+-------------------------------------------------------------------
+Fri Sep 29 16:31:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Back to singlespec for a single flavor in order to
+  use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Fri Sep 29 16:13:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix BuildRequirements
+- Fix doc package duplicate file warning
+- Remove stray singlespec
+
+-------------------------------------------------------------------
+Wed Sep 27 15:26:22 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- Version 2.0.0
+  * complete rewrite based on Kivy (instead Kirigami)
+  * For Details see CHANGELOG
+  * doc_path.diff removed
+  * shebang.diff removed
+  
+-------------------------------------------------------------------
+Fri Mar 11 11:44:11 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- License string corrected
+
+-------------------------------------------------------------------
+Tue Oct 19 07:13:10 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.0.5
+* switched source download to gnu.org, added signature
+* added documentation in DE, ES, FR
+* Minor adjustmends
+
+-------------------------------------------------------------------
+Mon Aug 23 16:25:06 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.0.4
+* fixes plotting issues when matplotlib uses unsorted records or dup
+  batch inputs.
+
+-------------------------------------------------------------------
+Sun Jul 25 13:42:31 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.0.3
+* update of Uniprot-database
+* some minor changes / updates in the documentation and credits
+
+-------------------------------------------------------------------
+Thu Jul 15 06:02:51 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.0.2
+* MyGNUHealth does not display global menu on MATE
+* Update link from GNU Savannah 
+
+-------------------------------------------------------------------
+Thu Jul  8 06:40:10 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.0.1
+* Fix the download path within GNU.org. Now it points to
+  https://ftp.gnu.org/gnu/health/mygnuhealth/
+* Include Changelog file
+* Include local / offline documentation (resides on
+  /usr/share/doc/packages/mygnuhealth) 
+* doc_path.diff added
+* Clean up __pycache__ from tarball 
+
+-------------------------------------------------------------------
+Thu Jun 24 15:30:33 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.0.0
+
+-------------------------------------------------------------------
+Sat Oct 31 15:55:45 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 0.7a6
+  initial OBS build

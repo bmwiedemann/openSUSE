@@ -1,0 +1,930 @@
+From af9c7ef93efca0efa4f0a2da153ae1ec4ca9db4c Mon Sep 17 00:00:00 2001
+From: "Ivan T. Ivanov" <iivanov@suse.de>
+Date: Thu, 4 Feb 2021 22:58:03 +0200
+Subject: [PATCH] armstub8: Add PSCI monitor support for BCM2711
+
+This monitor is used to workaround few issues in
+Cortex-A72 CPU used in BCM2711:
+
+* CVE-2017-5715 aka Spectre-v2. Invalidate the Branch Target
+  Buffer (BTB) on entry to EL3 by disabling and enabling the MMU.
+* CVE-2018-3639 aka Spectre-v4. Set or clean bit 55
+  (Disable load pass store) of CPUACTLR_EL1, when requested
+  by SMCCC_ARCH_WORKAROUND_2.
+* Prevent speculative execution past ERET.
+* Implement workaround for AT speculative behaviour
+
+This work is based on Oleksandr RPi3 psci-monitor [1] and
+Arm Trusted Firmware [2].
+
+Mitigation's are implemented according "ARM DEN 0070A" [3].
+
+CVE workarounds could be controlled via Linux command line
+options [4]: nospectre_v2 and ssbd=
+
+Validation was done using Ghostbusters [5] and Google's Safeside
+project [6].
+
+Supported functions include:
+ PSCI_VERSION
+ PSCI_CPU_OFF
+ PSCI_CPU_ON
+ PSCI_AFFINITY_INFO
+ PSCI_MIGRATE_INFO_TYPE
+ PSCI_MIGRATE_INFO_UP_CPU
+ PSCI_SYSTEM_OFF
+ PSCI_SYSTEM_RESET
+ PSCI_FEATURES
+ SMCCC_VERSION
+ SMCCC_ARCH_WORKAROUND_1
+ SMCCC_ARCH_WORKAROUND_2
+
+As side effect of this now Linux kexec is working.
+
+Performance degradation was evaluated using Phoronix hackbench
+and it is around 6% in combined case, I would say.
+
+"Hackbench - Count: 4 - Type: Process"
+
+00 = spectre_v2: Vulnerable, spec_store_bypass: Vulnerable
+01 = spectre_v2: Mitigated, spec_store_bypass: Vulnerable
+02 = spectre_v2: Vulnerable, spec_store_bypass: Mitigated
+03 = spectre_v2: Mitigated, spec_store_bypass: Mitigated
+04 = no PSCI monitor at all
+05 = no PSCI monitor at all
+
+     Run-1   | Run-2   | Run-3, seconds
+----------------------------------------
+00 | 100.689 | 100.215 | 100.749
+01 | 103.386 | 104.627 | 104.387
+02 | 104.519 | 105.383 | 104.611
+03 | 107.084 | 106.081 | 107.269
+04 | 101.301 | 101.894 | 102.564
+05 | 100.302 | 101.85  | 99.912
+
+[1] https://github.com/gonzoua/rpi3-psci-monitor
+[2] https://github.com/Arm-Software/arm-trusted-firmware
+[3] "Firmware interfaces for mitigating cache speculation vulnerabilities"
+[4] https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html
+[5] https://github.com/Sultanic/Ghostbusters.git
+[6] https://github.com/google/safeside.git
+
+Signed-off-by: Ivan T. Ivanov <iivanov@suse.de>
+---
+ armstubs/Makefile   |  33 +++-
+ armstubs/armstub8.S |   5 +
+ armstubs/fdtpatch.c | 279 +++++++++++++++++++++++++++
+ armstubs/pscimon8.S | 459 ++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 773 insertions(+), 3 deletions(-)
+ create mode 100644 armstubs/fdtpatch.c
+ create mode 100644 armstubs/pscimon8.S
+
+diff --git a/armstubs/Makefile b/armstubs/Makefile
+index e6035719..f9b087aa 100644
+--- a/armstubs/Makefile
++++ b/armstubs/Makefile
+@@ -1,4 +1,4 @@
+-BINS=armstub.bin armstub7.bin armstub8-32.bin armstub8-32-gic.bin armstub8.bin armstub8-gic.bin armstub8-gic-highperi.bin
++BINS+=armstub8-gic-highperi-psci.bin armstub8-gic-psci.bin
+
+ CC8?=aarch64-linux-gnu-gcc
+ LD8?=aarch64-linux-gnu-ld
+@@ -17,6 +17,9 @@ all : $(BINS)
+ clean :
+ 	rm -f *.o *.out *.tmp *.bin *.elf *.ds *.C armstubs.h bin2c *~
+
++fdtpatch.o: fdtpatch.c
++	$(CC8) -Os -fomit-frame-pointer -fno-builtin -c $< -o $@
++
+ %8.o: %8.S
+ 	$(CC8) -c $< -o $@
+
+@@ -26,6 +29,12 @@ clean :
+ %8-gic-highperi.o: %8.S
+ 	$(CC8) -DGIC=1 -DHIGH_PERI=1 -DBCM2711=1 -c $< -o $@
+
++%8-gic-psci.o: %8.S
++	$(CC8) -DGIC=1 -DBCM2711=1 -DPSCIMON8=1 -c $< -o $@
++
++%8-gic-highperi-psci.o: %8.S
++	$(CC8) -DGIC=1 -DBCM2711=1 -DPSCIMON8=1 -DHIGH_PERI=1 -c $< -o $@
++
+ %8-32.o: %7.S
+ 	$(CC7) -DBCM2710=1 -c $< -o $@
+
+@@ -41,6 +50,12 @@ clean :
+ %8-gic-highperi.elf: %8-gic-highperi.o
+ 	$(LD8) --section-start=.text=0 $< -o $@
+
++%8-gic-psci.elf: %8-gic-psci.o fdtpatch.o pscimon8.o
++	$(LD8) --section-start=.text=0 $^ -o $@
++
++%8-gic-highperi-psci.elf: %8-gic-highperi-psci.o fdtpatch.o pscimon8.o
++	$(LD8) --section-start=.text=0 $^ -o $@
++
+ %8.elf: %8.o
+ 	$(LD8) --section-start=.text=0 $< -o $@
+
+@@ -53,6 +68,12 @@ clean :
+ %8-gic-highperi.tmp: %8-gic-highperi.elf
+ 	$(OBJCOPY8) $< -O binary $@
+
++%8-gic-psci.tmp: %8-gic-psci.elf
++	$(OBJCOPY8) $< -O binary $@
++
++%8-gic-highperi-psci.tmp: %8-gic-highperi-psci.elf
++	$(OBJCOPY8) $< -O binary $@
++
+ %8.tmp: %8.elf
+ 	$(OBJCOPY8) $< -O binary $@
+
+@@ -75,7 +96,8 @@ clean :
+ $(BIN2C): bin2c.c
+ 	gcc $< -o $@
+
+-armstubs.h: armstub.C armstub7.C armstub8-32.C armstub8-32-gic.C armstub8.C armstub8-gic.C armstub8-gic-highperi.C
++armstubs.h: armstub.C armstub7.C armstub8-32.C armstub8-32-gic.C armstub8.C armstub8-gic.C armstub8-gic-highperi.C \
++	armstub8-gic-highperi-psci.C armstub8-gic-psci.C
+ 	echo 'static const unsigned armstub[] = {' > $@
+ 	cat armstub.C >> $@
+ 	echo '};' >> $@
+@@ -97,4 +119,9 @@ armstubs.h: armstub.C armstub7.C armstub8-32.C armstub8-32-gic.C armstub8.C arms
+ 	echo 'static const unsigned armstub8_gic_highperi[] = {' >> $@
+ 	cat armstub8-gic-highperi.C >> $@
+ 	echo '};' >> $@
+-
++	echo 'static const unsigned armstub8_gic_psci[] = {' >> $@
++	cat armstub8-gic-psci.C >> $@
++	echo '};' >> $@
++	echo 'static const unsigned armstub8_gic_highperi_psci[] = {' >> $@
++	cat armstub8-gic-highperi-psci.C >> $@
++	echo '};' >> $@
+diff --git a/armstubs/armstub8.S b/armstubs/armstub8.S
+index c675e3e9..af323398 100644
+--- a/armstubs/armstub8.S
++++ b/armstubs/armstub8.S
+@@ -133,6 +133,11 @@ _start:
+
+ #ifdef GIC
+         bl      setup_gic
++#endif
++#ifdef PSCIMON8
++.globl in_el3
++	bl setup_psci_monitor
++in_el3:
+ #endif
+ 	/*
+ 	 * Set up SCTLR_EL2
+diff --git a/armstubs/fdtpatch.c b/armstubs/fdtpatch.c
+new file mode 100644
+index 00000000..3a9e5fc2
+--- /dev/null
++++ b/armstubs/fdtpatch.c
+@@ -0,0 +1,279 @@
++/*-
++ * Copyright (c) 2016 Oleksandr Tymoshenko <gonzo@freebsd.org>
++ * Copyright (c) 2021 Ivan T. Ivanov <iivanov@suse.de>
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
++/* FDT bits */
++#define	FDT_MAGIC       0xd00dfeed      /* 4: version, 4: total size */
++#define	FDT_TAGSIZE     sizeof(uint32_t)
++
++#define	FDT_BEGIN_NODE	0x1             /* Start node: full name */
++#define	FDT_END_NODE	0x2             /* End node */
++#define	FDT_PROP	0x3             /* Property: name off,
++                                           size, content */
++#define	FDT_NOP		0x4             /* nop */
++#define	FDT_END		0x9
++
++/*
++ * Data below when applied to main blob produces following device tree node
++ *   psci {
++ *       compatible      = "arm,psci-1.0";
++ *       method          = "smc";
++ *   };
++ */
++
++#define	PSCI_NODE_LEN			0x3C
++#define	PSCI_NODE_COMAPTIBLE_OFF	0x14
++#define	PSCI_NODE_METHOD_OFF		0x30
++const unsigned char psci_node[] = {
++	/* FDT_BEGIN_NODE, "psci", FDT_PROP */
++	0, 0, 0, 1, 'p', 's', 'c', 'i', 0, 0, 0, 0, 0, 0, 0, 3,
++	/* len, @"compatible", "arm,psci-1.0 */
++	0, 0, 0, 13, 0, 0, 0, 0, 'a', 'r', 'm', ',', 'p', 's', 'c', 'i',
++	                                /* FDT_PROP, len */
++	'-', '1', '.', '0', 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 4,
++        /* @"method", "smc", FDT_END_NODE */
++        0, 0, 0, 0, 's', 'm', 'c', 0, 0, 0, 0, 2
++};
++
++#define	STRINGS_SIZE			0x12
++#define	STRINGS_COMPATIBLE_OFF		0
++#define	STRINGS_METHOD_OFF		11
++const unsigned char strings[] = {
++	'c', 'o', 'm', 'p', 'a', 't', 'i', 'b',
++	'l', 'e',   0, 'm', 'e', 't', 'h', 'o',
++	'd', 0
++};
++
++typedef	unsigned int uint32_t;
++typedef	unsigned long long uint64_t;
++
++struct fdt_reserve_entry {
++	uint64_t address;
++	uint64_t size;
++};
++
++__attribute__((always_inline))
++static inline uint32_t
++bswap32(uint32_t v)
++{
++	uint32_t ret;
++
++	__asm __volatile("rev32 %x0, %x1\n"
++                         : "=&r" (ret), "+r" (v));
++
++	return (ret);
++}
++
++__attribute__((always_inline))
++static inline uint64_t
++bswap64(uint64_t v)
++{
++	uint64_t ret;
++
++	__asm __volatile("rev %x0, %x1\n"
++                         : "=&r" (ret), "+r" (v));
++
++	return (ret);
++}
++
++/*
++ * We always assume that dst is la
++ */
++static void memmove(const void *src, void *dst, int len)
++{
++	const char *s;
++	char *d;
++
++	s = src;
++	d = dst;
++	for (int i = len - 1; i >= 0; i--)
++		d[i] = s[i];
++}
++
++static int is_enable_method(const char *s1)
++{
++	const char *s2 = "enable-method";
++	unsigned n = 13;
++
++	while(n--) {
++		if (*s1++ != *s2++)
++			return 0;
++	}
++
++	return 1;
++}
++
++void fixup_dt_blob(void *dtb)
++{
++	uint32_t magic;
++	uint32_t total_size;
++	uint32_t off_memrsrv;
++	uint32_t off_struct;
++	uint32_t off_strings;
++	uint32_t size_struct;
++	uint32_t size_strings;
++	uint32_t *dtb_hdr;
++	uint32_t *dtb_struct;
++	struct fdt_reserve_entry *reserve;
++	int tag_ptr, tag, done, len, level, node_ptr;
++	int psci_node_ptr;
++	int strings_end;
++	char *dtb_strings;
++	char *s;
++
++	dtb_hdr = dtb;
++
++	magic = bswap32(dtb_hdr[0]);
++	if (magic != FDT_MAGIC) {
++		return;
++	}
++	total_size = bswap32(dtb_hdr[1]);
++	off_struct = bswap32(dtb_hdr[2]);
++	off_strings = bswap32(dtb_hdr[3]);
++	off_memrsrv = bswap32(dtb_hdr[4]);
++	size_strings = bswap32(dtb_hdr[8]);
++	size_struct = bswap32(dtb_hdr[9]);
++
++	/* Get one more page */
++	reserve = (struct fdt_reserve_entry *)((char*)dtb + off_memrsrv);
++	reserve->size = bswap64(bswap64(reserve->size) + 0x1000);
++
++	dtb_struct = dtb_hdr + off_struct/sizeof(uint32_t);
++	dtb_strings = (char*)dtb + off_strings;
++
++	/*
++	 * Find end first non-root node
++	 */
++	done = 0;
++	tag_ptr = 0;
++	level = 0;
++	node_ptr = -1;
++	/* Find first sub-node of root node */
++	while (!done) {
++		tag = bswap32(dtb_struct[tag_ptr]);
++		switch (tag) {
++		case FDT_BEGIN_NODE:
++			level++;
++			if (level == 2) {
++				node_ptr = tag_ptr;
++				break;
++			}
++			tag_ptr++;
++			s = (char *)(dtb_struct + tag_ptr);
++			len = 0;
++			while (s[len] != 0)
++				len++;
++			len++; /* include zero byte */
++			len = (len + 3) & ~0x3;
++			tag_ptr += len/sizeof(uint32_t);
++			break;
++
++		case FDT_END_NODE:
++			tag_ptr++;
++			break;
++
++		case FDT_NOP:
++			tag_ptr++;
++			break;
++		case FDT_PROP:
++			tag_ptr++; /* skip tag */
++			len = bswap32(dtb_struct[tag_ptr]);
++			/* Goto 'nameoff'  */
++			tag_ptr += 1;
++			s = (char *)(dtb_strings + bswap32(dtb_struct[tag_ptr]));
++			/* Align up to the next 32 bit */
++			len = (len + 3) & ~0x3;
++			/* Goto property value  */
++			tag_ptr += 1;
++			if (is_enable_method(s)) {
++				s = (char *)&dtb_struct[tag_ptr];
++				memmove("psci\0", s, 5);
++			}
++			tag_ptr += len/sizeof(uint32_t);
++			break;
++		case FDT_END:
++			done = 1;
++			break;
++		default:
++			done = 1;
++			break;
++		}
++	}
++
++	tag_ptr = node_ptr;
++
++	/* Either invalid tag or reached end */
++	if (tag_ptr < 0)
++		return;
++
++	/*
++	 * Insert free space for psci node before
++	 * first non-root node
++	 */
++	psci_node_ptr = off_struct + tag_ptr * sizeof(uint32_t);
++	memmove((char *)dtb + psci_node_ptr,
++		(char *)dtb + psci_node_ptr + PSCI_NODE_LEN,
++		total_size - psci_node_ptr);
++	memmove(psci_node, (char *)dtb + psci_node_ptr, PSCI_NODE_LEN);
++
++	/* Fixup lengths/offsets */
++	total_size += PSCI_NODE_LEN;
++	size_struct += PSCI_NODE_LEN;
++	if (off_strings > psci_node_ptr)
++		off_strings += PSCI_NODE_LEN;
++	if (off_memrsrv > psci_node_ptr)
++		off_memrsrv += PSCI_NODE_LEN;
++
++	/*
++	 * Append some free space at the end of strings section
++	 */
++	strings_end = off_strings + size_strings;
++	memmove((char *)dtb + strings_end,
++		(char *)dtb + strings_end + STRINGS_SIZE,
++		total_size - strings_end);
++	memmove(strings, (char *)dtb + strings_end, STRINGS_SIZE);
++
++	/* set property names offsets in psci node */
++	dtb_struct[tag_ptr + PSCI_NODE_COMAPTIBLE_OFF/sizeof(uint32_t)] =
++		bswap32(size_strings + STRINGS_COMPATIBLE_OFF);
++	dtb_struct[tag_ptr + PSCI_NODE_METHOD_OFF/sizeof(uint32_t)] =
++		bswap32(size_strings + STRINGS_METHOD_OFF);
++
++	/* Fixup lengths/offsets */
++	total_size += STRINGS_SIZE;
++	size_strings += STRINGS_SIZE;
++	if (off_struct > strings_end)
++		off_struct += STRINGS_SIZE;
++	if (off_memrsrv > psci_node_ptr)
++		off_memrsrv += STRINGS_SIZE;
++
++	/* Update header */
++	dtb_hdr[1] = bswap32(total_size);
++	dtb_hdr[2] = bswap32(off_struct);
++	dtb_hdr[3] = bswap32(off_strings);
++	dtb_hdr[4] = bswap32(off_memrsrv);
++	dtb_hdr[8] = bswap32(size_strings);
++	dtb_hdr[9] = bswap32(size_struct);
++}
+diff --git a/armstubs/pscimon8.S b/armstubs/pscimon8.S
+new file mode 100644
+index 00000000..fcdabd26
+--- /dev/null
++++ b/armstubs/pscimon8.S
+@@ -0,0 +1,459 @@
++/*
++ * Copyright (c) 2016 Raspberry Pi (Trading) Ltd.
++ * Copyright (c) 2016 Stephen Warren <swarren@wwwdotorg.org>
++ * Copyright (c) 2016 Oleksandr Tymoshenko <gonzo@freebsd.org>
++ * Copyright (c) 2021 Ivan T. Ivanov <iivanov@suse.de>
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions are met:
++ * * Redistributions of source code must retain the above copyright notice,
++ *   this list of conditions and the following disclaimer.
++ * * Redistributions in binary form must reproduce the above copyright notice,
++ *   this list of conditions and the following disclaimer in the documentation
++ *   and/or other materials provided with the distribution.
++ * * Neither the name of the copyright holder nor the names of its contributors
++ *   may be used to endorse or promote products derived from this software
++ *   without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
++ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
++ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++ * POSSIBILITY OF SUCH DAMAGE.
++ */
++
++#define BIT(x) 					(1 << (x))
++
++/* Secure Configuration Register */
++#define SCR_SMD					BIT(7)
++
++/* CPU Auxiliary Control Register */
++#define CPUACTLR_EL1				S3_1_C15_C2_0
++#define CPUACTLR_EL1_DIS_LOAD_PASS_STORE	BIT(55)
++
++/* System Control Register */
++#define SCTLR_M_BIT				BIT(0)
++
++/* Translation Control Register */
++#define TCR_EPD0_BIT				BIT(7)
++#define TCR_EPD1_BIT				BIT(23)
++
++/* Function ID's */
++#define SMCCC_VERSION				0x80000000
++#define SMCCC_ARCH_FEATURES			0x80000001
++#define SMCCC_ARCH_WORKAROUND_1			0x80008000
++#define SMCCC_ARCH_WORKAROUND_2			0x80007fff
++
++#define PSCI_VERSION				0x84000000
++#define PSCI_CPU_OFF				0x84000002
++#define PSCI_CPU_ON				0xC4000003
++#define PSCI_AFFINITY_INFO			0xC4000004
++#define PSCI_MIGRATE_INFO_TYPE			0x84000006
++#define PSCI_MIGRATE_INFO_UP_CPU		0xC4000007
++#define PSCI_SYSTEM_OFF				0x84000008
++#define PSCI_SYSTEM_RESET			0x84000009
++#define PSCI_FEATURES				0x8400000a
++
++#define WDOG_ADDRESS				0xfe100000
++#define WDOG_RSTC				0x1c
++#define WDOG_RSTS				0x20
++#define WDOG_WDOG				0x24
++
++#define WDOG_PASSWORD				0x5a000000
++#define WDOG_WDOG_TIMEOUT			(WDOG_PASSWORD | 10)  /* ~150ms */
++#define WDOG_RSTC_CLR				0xffffffcf
++#define WDOG_RSTC_FULL_RESET			(WDOG_PASSWORD | 0x00000020)
++#define WDOG_RSTS_CLR				0xfffffaaa
++#define WDOG_RSTS_FULL_HALT			(WDOG_PASSWORD | 0x0000003f)
++
++#define CPU_COUNT				4
++#define CPU_STACK_SIZE				0x100
++
++.extern in_el3
++.globl setup_psci_monitor
++
++
++	.macro	save_registers
++	stp	x29, x30, [sp, -16]!
++	.endm
++
++	.macro	restore_registers
++	ldp	x29, x30, [sp], 16
++	.endm
++
++	/* Macro for mitigating against speculative execution beyond ERET */
++	.macro	exception_return
++	eret
++	dsb	nsh
++	isb
++	.endm
++
++	/*
++	 * Enables/disables page table walk as speculative AT instructions
++	 * using an out-of-context translation regime could cause subsequent
++	 * requests to generate an incorrect translation.
++	 */
++	.macro	wa_speculative_at
++	mrs	x30, tcr_el1
++	mrs	x29, sctlr_el1
++	stp	x29, x30, [sp, -16]!
++
++	/* ------------------------------------------------------------
++	 * Must follow below order in order to disable page table
++	 * walk for lower ELs (EL1 and EL0). First step ensures that
++	 * page table walk is disabled for stage1 and second step
++	 * ensures that page table walker should use TCR_EL1.EPDx
++	 * bits to perform address translation. ISB ensures that CPU
++	 * does these 2 steps in order.
++	 *
++	 * 1. Update TCR_EL1.EPDx bits to disable page table walk by
++	 *    stage1.
++	 * 2. Enable MMU bit to avoid identity mapping via stage2
++	 *    and force TCR_EL1.EPDx to be used by the page table
++	 *    walker.
++	 * ------------------------------------------------------------
++	 */
++	orr	x30, x30, TCR_EPD0_BIT
++	orr	x30, x30, TCR_EPD1_BIT
++	msr	tcr_el1, x30
++	isb
++	orr	x29, x29, SCTLR_M_BIT
++	msr	sctlr_el1, x29
++
++	/* -----------------------------------------------------------
++	 * Must follow below order to ensure that page table walk is
++	 * not enabled until restoration of all EL1 system registers.
++	 * TCR_EL1 register
++	 * should be updated at the end which restores previous page
++	 * table walk setting of stage1 i.e.(TCR_EL1.EPDx) bits. ISB
++	 * ensures that CPU does below steps in order.
++	 *
++	 * 1. Ensure all other system registers are written before
++	 *    updating SCTLR_EL1 using ISB.
++	 * 2. Restore SCTLR_EL1 register.
++	 * 3. Ensure SCTLR_EL1 written successfully using ISB.
++	 * 4. Restore TCR_EL1 register.
++	 * -----------------------------------------------------------
++	 */
++	isb
++	ldp	x29, x30, [sp], 16
++	msr	sctlr_el1, x29
++	isb
++	msr	tcr_el1, x30
++	.endm
++
++	/*
++	 * Mitigations for CVE-2017-5715 on Arm Cortex CPUs involves
++	 * invalidation of the branch predictor.
++	 */
++	.macro	wa_cve_2017_5715
++	mrs	x29, sctlr_el3
++	/* Disable MMU */
++	bic	x30, x29, SCTLR_M_BIT
++	msr	sctlr_el3, x30
++	isb
++
++	/* Restore MMU */
++	msr	sctlr_el3, x29
++	isb
++	.endm
++
++	.macro	harden_exception
++	save_registers
++	wa_cve_2017_5715
++	wa_speculative_at
++	restore_registers
++	exception_return
++	.endm
++
++.ltorg
++
++.align 11
++el3_vectors:
++	/* Sync, Current EL using SP0 */
++	exception_return
++	.align  7
++	/* IRQ, Current EL using SP0 */
++	exception_return
++	.align  7
++	 /* FIQ, Current EL using SP0 */
++	exception_return
++	.align  7
++	/* SError, Current EL using SP0 */
++	exception_return
++	.align  7
++	/* Sync, Current EL using SPx */
++	exception_return
++	.align  7
++	/* IRQ, Current EL using SPx */
++	exception_return
++	.align  7
++	/* FIQ, Current EL using SPx */
++	exception_return
++	.align  7
++	/* SError, Current EL using SPx */
++	exception_return
++	.align  7
++	/* Sync, Lower EL using AArch64 */
++	save_registers
++	wa_cve_2017_5715
++	wa_speculative_at
++	bl	handle_sync
++	restore_registers
++	exception_return
++	.align  7
++	/* IRQ, Lower EL using AArch64 */
++	harden_exception
++	.align  7
++	/* FIQ, Lower EL using AArch64 */
++	harden_exception
++	.align  7
++	/* SError, Lower EL using AArch64 */
++	harden_exception
++	.align  7
++	/* Sync, Lower EL using AArch32 */
++	harden_exception
++	.align  7
++	/* IRQ, Lower EL using AArch32 */
++	harden_exception
++	.align  7
++	/* FIQ, Lower EL using AArch32 */
++	harden_exception
++	.align  7
++	/* SError, Lower EL using AArch32 */
++	harden_exception
++
++handle_sync:
++	ldr	w29, =SMCCC_ARCH_WORKAROUND_1
++	cmp	w0, w29
++	b.eq	smccc_arch_wa_1_done
++	ldr	w29, =SMCCC_ARCH_WORKAROUND_2
++	cmp	w0, w29
++	b.eq	smccc_arch_wa_2_enable_disable
++	ldr	w29, =PSCI_VERSION
++	cmp	w0, w29
++	b.eq	psci_version
++	ldr	w29, =PSCI_CPU_ON
++	cmp	w0, w29
++	b.eq	psci_cpu_on
++	ldr	w29, =PSCI_FEATURES
++	cmp	w0, w29
++	b.eq	psci_features_query
++	ldr	w29, =SMCCC_ARCH_FEATURES
++	cmp	w0, w29
++	b.eq	smccc_arch_features_query
++	ldr	w29, =SMCCC_VERSION
++	cmp	w0, w29
++	b.eq	smccc_version
++	ldr	w29, =PSCI_MIGRATE_INFO_TYPE
++	cmp	w0, w29
++	b.eq	psci_migrate_info_type
++	ldr	w29, =PSCI_MIGRATE_INFO_UP_CPU
++	cmp	w0, w29
++	b.eq	psci_migrate_info_up_cpu
++	ldr	w29, =PSCI_CPU_OFF
++	cmp	w0, w29
++	b.eq	psci_cpu_off
++	ldr	w29, =PSCI_AFFINITY_INFO
++	cmp	w0, w29
++	b.eq	psci_affinity_info
++	ldr	w29, =PSCI_SYSTEM_OFF
++	cmp	w0, w29
++	b.eq	psci_system_off
++	ldr	w29, =PSCI_SYSTEM_RESET
++	cmp	w0, w29
++	b.eq	psci_system_reset
++	/* fall through to invalid ID case */
++	ldr	w0, =0xFFFFFFFF
++smccc_arch_wa_1_done:
++	ret
++
++smccc_arch_wa_2_enable_disable:
++	/*
++	 * Mitigations for CVE-2018-3639 on Arm Cortex CPUs involve disabling
++	 * the bypassing of writes by reads (including speculative reads).
++	 *
++	 * Cortex-A57, Cortex-A72 - Permanently set bit 55
++	 * (Disable load pass store) of CPUACTLR_EL1 (S3_1_C15_C2_0)
++	 */
++	mrs	x0, CPUACTLR_EL1
++	orr	x0, x0, CPUACTLR_EL1_DIS_LOAD_PASS_STORE
++	/*
++	 * A non-zero value indicates that the mitigation
++	 * for CVE-2018-3639 must be enabled.
++	 */
++	cbnz	w1, 1f
++	bic	x0, x0, CPUACTLR_EL1_DIS_LOAD_PASS_STORE
++1:
++	msr	CPUACTLR_EL1, x0
++	isb
++	dsb	sy
++	ret
++
++psci_migrate_info_type:
++	/*
++	 * The Trusted OS will only run one core.
++	 * The Trusted OS does not support the MIGRATE function
++	 */
++	mov	w0, 1
++	ret
++
++smccc_version:
++	/*
++	 * Version v1.1 is required for SMCCC_ARCH_WORKAROUND_1
++	 * and SMCCC_ARCH_WORKAROUND_2 support
++	 */
++	ldr	w0, =0x10001
++	ret
++
++psci_cpu_off:
++	mrs	x6, MPIDR_EL1
++	and	x6, x6, #0x3
++	adr 	x5, spin_cpu0
++	mov	x4, 0
++	str	x4, [x5, x6, lsl #3]
++	dmb	sy
++
++	/* Go to secondary CPUs WFE boot loop */
++	restore_registers
++	adr	x30, in_el3
++	ret
++
++psci_cpu_on:
++	/* x1 - target CPU, x2 - Entrypoint */
++	adr	x29, spin_cpu0
++	and	x1, x1, 3
++	str 	x2, [x29, x1, lsl 3]
++	dsb	sy
++	sev
++	mov	w0, 0
++	ret
++
++psci_migrate_info_up_cpu:
++	mov	w0, 0	/* Pretend that monitor is resiendt on CPU0 */
++	ret
++
++psci_version:
++	/* Return v1.0 */
++	mov	w0, 0x00010000
++	ret
++
++psci_system_off:
++	ldr	x0, =WDOG_ADDRESS
++	ldr	w1, [x0, WDOG_RSTS]
++	ldr	w2, =WDOG_RSTS_CLR
++	and	w1, w1, w2
++	ldr	w2, =WDOG_RSTS_FULL_HALT
++	orr 	w1, w1, w2
++	str	w1, [x0, WDOG_RSTS]
++	/* fall through */
++psci_system_reset:
++	ldr	x0, =WDOG_ADDRESS
++	ldr	w1, =WDOG_WDOG_TIMEOUT
++	str	w1, [x0, WDOG_WDOG]
++	ldr	w1, [x0, WDOG_RSTC]
++	ldr	w2, =WDOG_RSTC_CLR
++	and	w1, w1, w2
++	ldr	w2, =WDOG_RSTC_FULL_RESET
++	orr	w1, w1, w2
++	str	w1, [x0, WDOG_RSTC]
++loop:
++	wfe
++	b	loop
++
++psci_features_query:
++	ldr	w29, =SMCCC_VERSION
++	cmp	w1, w29
++	/* Version read is supported */
++	b.eq	return_success
++	ldr	w29, =SMCCC_ARCH_WORKAROUND_1
++	cmp	w1, w29
++	/* Check for workaround is supported */
++	b.eq	return_success
++	ldr	w29, =SMCCC_ARCH_WORKAROUND_2
++	cmp	w1, w29
++	/* Check for workaround is supported */
++	b.eq	return_success
++	ldr	w0, =0xFFFFFFFF /* not supported */
++	ret
++
++smccc_arch_features_query:
++	ldr	w29, =SMCCC_ARCH_WORKAROUND_1
++	cmp	w1, w29
++	/*
++	 * Return 0 - SMCCC_ARCH_WORKAROUND_1 can be invoked safely on all
++	 * PEs in the system. The PE on which SMCCC_ARCH_FEATURES is called
++	 * requires firmware mitigation for CVE-2017-5715.
++	 */
++	b.eq	return_success
++	ldr	w29, =SMCCC_ARCH_WORKAROUND_2
++	cmp	w1, w29
++	/*
++	 * Return 0 - SMCCC_ARCH_WORKAROUND_2 can be invoked safely on all
++	 * PEs in the system. The PE on which SMCCC_ARCH_FEATURES is called
++	 * requires dynamic firmware mitigation for CVE-2018- 3639 using
++	 * SMCCC_ARCH_WORKAROUND_2.
++	 */
++	b.eq	return_success
++	ldr	w0, =0xFFFFFFFF		/* not supported */
++	ret
++
++return_success:
++	mov	w0, 0
++	ret
++
++psci_affinity_info:
++	and	x1, x1, 3
++	adr	x29, spin_cpu0
++	dsb	sy
++	ldr	x0, [x29, x1, lsl 3]
++	/* If no address assume that CPU is in WFE loop */
++	cmp	w0, 0
++	cset	w0, eq		/* CPU is ON(0) or OFF(1) */
++	ret
++
++setup_psci_monitor:
++	adr	x0, el3_vectors
++	msr	vbar_el3, x0
++
++	/* Get CPU number */
++	mrs	x6, MPIDR_EL1
++	and	x6, x6, 0x3
++
++	/* Setup per CPU stack */
++	msr     SPsel, 1
++	adrp	x1, stack_top
++	add	x1, x1, :lo12: stack_top
++	mov	x3, CPU_STACK_SIZE
++	mul	x3, x6, x3
++	sub	x1, x1, x3
++	mov	sp, x1
++
++	cbnz	x6, 1f
++
++	stp	x29, x30, [sp, -16]!
++	ldr	w0, dtb_ptr32
++	/*
++	 * Insert psci device tree node and increase reserved
++	 * memory with one 4K page
++	 */
++	bl	fixup_dt_blob
++	ldp	x29, x30, [sp], 16
++1:
++	/* Enable SMC */
++	mrs	x0, SCR_EL3
++	bic	x0, x0, SCR_SMD
++	msr	SCR_EL3, x0
++	ret
++
++	.align 5
++stack_bottom:
++	.space (CPU_COUNT * CPU_STACK_SIZE), 0
++stack_top:
+--
+2.30.1
+

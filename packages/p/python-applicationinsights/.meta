@@ -1,0 +1,11 @@
+<package name="python-applicationinsights" project="openSUSE:Factory">
+  <title>Microsoft Application Insights for Python</title>
+  <description>This project extends the Application Insights API surface to support Python.
+
+Application Insights is a service that allows developers to keep their
+application available, performing and succeeding. This Python module will
+allow you to send telemetry of various kinds (event, trace, exception, etc.)
+to the Application Insights service where they can be visualized in the
+Azure Portal.</description>
+  <devel project="devel:languages:python:azure" package="python-applicationinsights"/>
+</package>

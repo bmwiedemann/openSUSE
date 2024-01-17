@@ -1,0 +1,21 @@
+Index: pip-run-8.8.1/pip_run/tests/test_scripts.py
+===================================================================
+--- pip-run-8.8.1.orig/pip_run/tests/test_scripts.py
++++ pip-run-8.8.1/pip_run/tests/test_scripts.py
+@@ -4,7 +4,6 @@ import sys
+ import subprocess
+ 
+ import pytest
+-import nbformat
+ 
+ from pip_run import scripts
+ 
+@@ -85,6 +84,8 @@ class TestSourceDepsReader:
+ class TestNotebookDepsReader:
+     @pytest.fixture
+     def notebook_factory(self, tmpdir, request):
++        nbformat = pytest.importorskip("nbformat")
++
+         class Factory:
+             def __init__(self):
+                 self.nb = nbformat.v4.new_notebook()

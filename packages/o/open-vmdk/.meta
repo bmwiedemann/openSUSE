@@ -1,0 +1,5 @@
+<package name="open-vmdk" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="open-vmdk"/>
+</package>

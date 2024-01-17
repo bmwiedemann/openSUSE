@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Mon Nov  6 16:17:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Fri Mar 24 10:08:22 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add ispc-add-cstdint-include.patch to fix compilation with GCC 13.
+
+-------------------------------------------------------------------
+Wed Nov 23 14:08:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.18.1:
+  + A minor ISPC update with security fix: zlib dependency was
+    removed.
+- Drop zlib-devel BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Wed Oct 19 23:59:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Enable aarch64 builds, disable (broken) aarch32
+- Fix CMake config, remove static library from exported targets
+- Enable tests
+
+-------------------------------------------------------------------
+Fri Oct  7 14:52:10 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.18.0
+  Check:
+  https://github.com/ispc/ispc/blob/main/docs/ReleaseNotes.txt
+- Package separate devel and library packages
+- Specify a certain llvm version (llvm15 is supported from the
+  next release only
+- Adopt {n}curses support
+- Make ispc depend on ispc-devel for backward compatibility
+
+-------------------------------------------------------------------
+Sun Apr 24 16:45:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.17.0
+  Check:
+  https://github.com/ispc/ispc/blob/main/docs/ReleaseNotes.txt
+- Switch to default clang/llvm build
+
+-------------------------------------------------------------------
+Tue Oct 12 16:30:56 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.16.1
+  Check:
+  https://github.com/ispc/ispc/blob/main/docs/ReleaseNotes.txt
+- Remove fix-llvm12-fallout.patch, upstreamed
+- Explicitly use clang12 to build
+
+-------------------------------------------------------------------
+Sun May  2 12:20:27 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add fix-llvm12-fallout.patch with some LLVM API changes backported
+  as a temporary measure to fix LLVM 12 builds
+
+-------------------------------------------------------------------
+Sun Apr 18 12:17:04 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to 1.15.0.
+  * New loop unroll pragmas: #pragma unroll and #pragma nounroll
+    directives provide loop unrolling optimization hints to the 
+    compiler. This pragma may be used immediately before a loop 
+    statement. Currently, this functionality is limited to uniform 
+    for and do-while.
+  * More efficient packed_[load|store]_active() stdlib functions 
+    implementation (up to 2.5x faster), which now supports 64 bit types.
+  * New cpus: icelake-server, tigerlake , alderlake, sapphirerapids.
+  * Several stability fixes related to SOA types, bool varying type
+    initialization, broken alignment information, type scoping.
+  * Compile time improvements.
+  * Initial support of ahead of time compilation to oneAPI Level Zero
+    binary format using --emit-zebin switch. You can use this binary 
+    from ISPC Runtime by setting
+  * ISPCRT_USE_ZEBIN env variable to 1. Please note that SPIR-V format
+    is still a recommended and default way.
+  * Initial function pointers implementation.
+  * Global atomics support.
+  * Double math functions support.
+  * Memory functions support.
+  * Reworked masking approach. We disabled genx hardware mask by 
+    default and use a software mask by default.
+  * Improved address spaces differentiation.
+  * Initial debug support.
+  * TGLLP (TigerLake mobile CPU) support (--cpu=TGLLP).
+
+-------------------------------------------------------------------
+Fri Nov  6 17:18:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+Note, we don't do any GPU builds yet, because
+ - API is not stable
+ - additional dependencies (that are not available, yet)
+
+- Update to version v1.14.1:
+  A minor ISPC update with a bug fix for AVX512 detection problem on macOS
+  (for more details see issue #1854) and update of GPU version to use Level0 v1.0.
+  CPU binaries are based on patched LLVM 10.0.1.
+
+- Update to version v1.14.0:
+  An ISPC release with several improvements for CPU and initial support of Intel
+  graphics hardware architectures. The binaries in this release include CPU versions
+  for Windows, Linux, and macOS, as previous releases, plus a GPU-enabled Linux binary,
+  which supports both CPU and GPU. CPU binaries are based on patched LLVM 10.0.1.
+
+  CPU changes include:
+  + new avx2-i8x32, avx2-i16x16, avx512skx-i8x64, avx512skx-i16x32 targets.
+    "generic" targets were removed.
+  + several stability fixes, including bugs discovered during fuzzing ISPC by YARPGen.
+  + integer division performance improvements.
+  + support for __vectorcall calling convention on Windows x64 (enabled by
+    '--vectorcall')
+
+-------------------------------------------------------------------
+Wed Jul  8 14:23:04 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- fix build with 15.2
+
+-------------------------------------------------------------------
+Sun Apr 26 17:36:00 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Use lto option "thin"
+
+-------------------------------------------------------------------
+Sun Apr 26 10:25:02 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Switch to full llvm compilation (remove gcc enforcement)
+
+-------------------------------------------------------------------
+Sat Apr 25 16:42:59 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix llvm version dependency tweaking
+- Exclude %{ix86} for now
+
+-------------------------------------------------------------------
+Sat Apr 25 15:43:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Clarify cmake dependency
+
+-------------------------------------------------------------------
+Fri Apr 24 15:40:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Version 1.13.0: initial release
+- Add patch 0001-Link-against-libclang-cpp.so.patch 
+- Add patch 0002-fix-compiler-flags.patch
+- Conditional to build with older clang as well

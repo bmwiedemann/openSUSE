@@ -1,0 +1,6 @@
+<package name="telepathy-farstream" project="openSUSE:Factory">
+  <title></title>
+  <description>
+  </description>
+  <devel project="GNOME:Factory" package="telepathy-farstream"/>
+</package>

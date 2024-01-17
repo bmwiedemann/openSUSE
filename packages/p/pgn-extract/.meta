@@ -1,0 +1,13 @@
+<package name="pgn-extract" project="openSUSE:Factory">
+  <title>A CLI program for manipulating PGN files</title>
+  <description>This is a command-line program for manipulating chess games recorded 
+in the Portable Game Notation (PGN).
+Extracted games may be written out either including or excluding 
+comments, NAGs, variations, move numbers, tags and/or results. 
+Games may be given ECO classifications derived from the accompanying 
+file eco.pgn, or a customised version provided by the user.
+
+</description>
+  <devel project="games" package="pgn-extract"/>
+  <url>https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/</url>
+</package>

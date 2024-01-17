@@ -1,0 +1,6 @@
+<package name="octave-forge-secs3d" project="openSUSE:Factory">
+  <title></title>
+  <description>A Drift-Diffusion simulator for 3d semiconductor devices.
+This is part of the Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-secs3d"/>
+</package>

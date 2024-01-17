@@ -1,0 +1,357 @@
+-------------------------------------------------------------------
+Fri Aug  4 10:15:33 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Added
+  * Dug up a new, commissioned, raccoon icon.
+  * Turned on new subtitles and subtitles-slash icons.
+  * Cast a spell on new, commissioned, person-fairy and person-dress-fairy icons.
+  * Swapped in new, commissioned, swap and swap-arrows icons.
+  * Shone a light on a new lighthouse icon.
+  * Trotted out a new globe-pointer icon.
+  * Pointed to a selection of new arrow-*-to-*-arc and arrow-*-from-*-arc icons.
+  * Got up to get down with a new angles-up-down icon.
+  * Added the Threads brand icon.
+  * Added the twitter X brand icon.
+  * Added the Debian brand icon.
+- Changed
+  * Updated the Ubuntu brand icon.
+  * Added "types" to the package.json exports for TypeScript defintions in JS packages.
+- Fixed
+  * Fixed an issue with the classic light style of the arrow-down-wide-short icon.
+  * Fixed issue with the regular styles of the clone and copy icons.
+  * Fixed an issue with the hand-spock icon.
+  * Fixed an issue where the "heart" in the hand-holding-heart and other "hand/heart" icons where too heavy in the Thin style.
+  * Fixed a warning in Edge browser using createElementNS for svg elements.
+
+-------------------------------------------------------------------
+Wed Apr 19 07:49:02 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+-Added
+  * Introducing Font Awesome Sharp Light!
+  * Unearthed a new dinosaur icon.
+  * Saved the planet with a new bin-recycle icon.
+  * Reduced, reused, and recycled a new jug-bottle icon.
+  * Added to our file collection with new file-doc and file-zip icons.
+  * Added a new gear-complex icon, along with a gear-code icon.
+  * Rounded up a new sponsored grid-round icon and variants.
+  * Exchanged a new sponsored chf-sign icon.
+  * Donned a new sponsored hat-beach icon.
+  * Batch of new sponsored icons, including arrow-progress, bag-seedling, bin-bottles-recycle, calendar-users, chart-line-up-down, chart-mixed-up-circle-currency, circles-overlap, cloud-binary, conveyor-belt-arm, display-chart-up-circle-currency, flask-gear, gear-complex-code, laptop-binary, lightbulb-gear, person-running-fast, right-left-large, and user-group-simple.
+-Changed
+  * Minor adjustments to all icons in the Classic Light, Classic Thin, and Duotone styles for consistency and clarity.
+  * Swapped the placement of the laptop and file in the laptop-file icon.
+  * Updated file-pdf and file-csv to be more legible.
+  * Adjusted all of our newspaper icons.
+  * Adjusted hands-asl-interpreting.
+  * Made our rugby-ball icon look more like a rugby ball.
+  * Updated teamspeak logo with new version.
+-Fixed
+  * Fixed a regression in 6.3.0 where a number of icons weren't centered properly in their viewboxes.
+  * Adjusted the copy icon to be consistent across all styles.
+  * Fixed image-landscape in the Sharp Solid style to make it, you know, actually sharp.
+  * Fixed an issue with the interior shape of our "virus" icons.
+  * Fixed fill state of the regular narwhal icon.
+  * Fixed duotone of our gear icon.
+  * Fixed misalignment of the thumbs-down icon in duotone and light.
+  * Fixed an issue where ligature in OTF files weren't working properly for the plus and ampersand icons.
+  * Fixed the light style of the wreath-laurel icon.
+  * Fixed box-archive in regular.
+
+-------------------------------------------------------------------
+Tue Feb 14 14:57:38 UTC 2023 - Dawid Respondek <nyslay@gmail.com>
+
+-Added
+  * Introducing Font Awesome Sharp Regular!
+  * 3,000+ icons in a new, modern style: Sharp Regular
+  * Sharp Solid is already done. Sharp Light, Thin, and Duotone are coming soon!
+  * Icons are all built on the same 16px grid as existing Font Awesome Classic icons.
+  * New sponsored pencil-mechanical icon.
+  * New sponsored billboard icon.
+  * New sponsored wreath-laurel icon.
+  * Calcified a new skeleton-ribs icon.
+  * Saved up for some new circle-euro, circle-sterling, and circle-yen icons.
+  * Added a new webhook icon.
+  * Swept up a new broom-wide icon.
+  * Shined the light on a new sparkle icon.
+  * New circle-quarters-stroke and circle-three-quarters-stroke icons to match the existing circle-half-stroke
+-Changed
+  * Every Classic Regular icon has been reviewed and redrawn where necessary to better compliment the new Sharp Regular style.
+  * Simplified our chess and chess piece icons for consistency.
+  * Updated the Algolia brand icon
+  * Brought back the search terms in the YAML and JSON metadata files
+-Fixed
+  * A number of fixes to Sharp Solid icons.
+
+-------------------------------------------------------------------
+Thu Nov 17 15:07:34 UTC 2022 - Dawid Respondek <nyslay@gmail.com>
+
+- Added to 6.2.1:
+  * Introducing the Icon Wizard! We have an exciting new beta feature for Pro folks to explore!
+  * New diamond-half and diamond-half-stroke icons
+  * Matched our existing mailbox icon with a new mailbox-flag-up icon
+  * Celebrated Panic's Playdate console with a new game-console-handheld-crank icon
+  * Smelled up a new commissioned nose icon
+  * Did not axe the new commissioned pickaxe icon
+  * Added a new snowflake-droplets icon
+  * Twirled a new commissioned mustache icon
+  * Added a new mailbox-flag-up icon variation
+  * Added new commissioned brands Stubber and Odysee
+  * Added a new prescription-bottle-pill icon
+  * Forwarded a new phone-arrow-right icon
+  * Can you believe we added an interrobang‽
+  * Added a new user-magnifying-glass icon
+  * Did some cardio and added a new tricycle icon and a new sponsored tricycle-adult icon
+  * Took to the seas and added new sponsored buoy and buoy-mooring icons
+  * Felt some love and added new message-heart and comment-heart icons
+- Changed to 6.2.1:
+  * Called in an update to the phone-volume and phone-slash icons
+  * Made the dot a little larger on the envelope-dot icon
+  * Adjusted all of the flag icons and variations to be better balanced within the icon grid
+  * Adjusted all of the cart icons for better consistency and balance
+  * Standardized the design of the note-sticky and note icons and variations for consistency
+  * Increased sizing of the boxes-stacked icon for better balance with other icons
+  * Slightly adjusted the pencil icon to differentiate it more from the pen icon
+  * Renamed the child-rifle icon to child-combatant. This icon was added as part of our collaboration with the United Nations.
+- Fixed to 6.2.1:
+  * Called in an update to the phone-volume and phone-slash icons
+  * Made the dot a little larger on the envelope-dot icon
+  * Adjusted all of the flag icons and variations to be better balanced within the icon grid
+  * Adjusted all of the cart icons for better consistency and balance
+  * Standardized the design of the note-sticky and note icons and variations for consistency
+  * Increased sizing of the boxes-stacked icon for better balance with other icons
+  * Slightly adjusted the pencil icon to differentiate it more from the pen icon
+  * Renamed the child-rifle icon to child-combatant. This icon was added as part of our collaboration with the United Nations.
+
+
+-------------------------------------------------------------------
+Tue Oct 04 16:37:54 UTC 2022 - Dawid Respondek <nyslay@gmail.com>
+
+- update to 6.2.0:
+  * 3,000+ icons in a new, modern style: Sharp Solid
+  * Sharp Regular, Light, Thin, and Duotone are in the works!
+  * Icons are all built on the same 16px grid as existing Font Awesome Classic icons.
+  * Every Classic Solid icon has been reviewed and redrawn where necessary to better compliment the new Sharp Solid style.
+  * Behind the scenes, we built new reusable modifier components for our icons, to ensure consistency between elements.
+  * Two new files are now available from the metadata directory: icon-families.json and icon-families.yml which are restructured to support Font Awesome Families.
+  * Using Pseudo Elements with Web Fonts now include CSS Custom Properties for setting font-family
+  * EcmaScript modules (ESM) have been renamed from .es.js to .mjs Font-Awesome#19041
+
+
+-------------------------------------------------------------------
+Mon Aug 15 20:59:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.2:
+  * Humanely captured a new sponsored mouse-field icon
+  * Made Milton proud with a new stapler icon
+  * Launched a new space-awesome logo
+  * Put our sights on a new crosshairs-simple icon
+  * Screwed in some new lightbulb-cfl and lightbulb-cfl-on icons
+  * Made a stink about the correct way to load your roll with new
+    toilet-paper-check and toilet-paper-xmark icons
+  * Fired up the bbq with our new grill, grill-hot, and grill-fire icons
+  * Switched on our new toggle-large-on and toggle-large-off icons
+  * Said yes to a new ring-diamond icon
+  * New square-gitlab brand icon 
+  * tons of changes and fixes (see https://fontawesome.com/docs/changelog/=
+- remove outdated LICENSE.txt copy and use the released license instead
+
+-------------------------------------------------------------------
+Tue May 17 10:30:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 6.1.1
+  * Added a plus-large variant of our plus icon 
+  * Added new child-dress icon 
+  * Added a TypeScript d.ts file for the import.macro.js module 
+  * Adjusted the children icon to be more consistent with the new
+    child and child-dress icons 
+  * Lowered the arms on the child icon and added a new child-reaching
+    variant to match v5 icon 
+  * Brought back a handful of version 4 compatibility unicode aliases
+  * Fixing light style of square-star, so it looks less like circle-star
+  * Made thin style of cubes-stacked actually thin 
+  * Fixed dial-max icon in the light and thin styles,
+    and standardized width on dial indicators in the solid and duotone styles 
+- Update to version 6.1.0
+  * Collaborated with the United Nations Office for the Coordination
+    of Humanitarian Affairs (OCHA) on a set of new icons that depict
+    themes of interest to the humanitarian community such as clusters,
+    disaster types, categories of affected people, and relief items.
+  * Crossed over with a new sponsored bridge-suspension icon 
+  * Cut the deck with a new cards-blank icon 
+  * Pointed to new sponsored icons
+  * New down-to-bracket and up-from-bracket icons 
+  * Merged in a new merge icon to match our existing split icon 
+  * New sponsored ScreenPal brand icon 
+  * Claimed our stake in new sponsored hexagon-vertical-nft and
+    hexagon-vertical-nft-slanted icons 
+  * Made an entirely fungible new sponsored hexagon-image icon 
+  * Nearly communicated some new sponsored NFC-related icons
+  * New shield-quartered icon 
+  * Zoomed in on our xmark icon, and made an xmark-large variant 
+
+-------------------------------------------------------------------
+Sun Feb 20 21:09:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * This is a major release that we've been carefully brewing for over a year, and it includes:
+  * Over 7,000 new icons
+  * Font Awesome now has 5 styles - Solid, Regular, Light, Duotone, and now, the all-new Thin style
+  * Removed penny-arcade and acquisitions-incorporated at the request of the
+    copyright holder
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.4
+  * Changed
+    - Removed the tripadvisor brand icon by request of Tripadvisor
+    - Update bug, bullseye, drone, icons #17800 #17106 #17730
+    - Update bootstrap, discord, figma, and font-awesome-* brand icons #17436
+  * Fixed
+    - Made font-family matching case-insensitive for SVG + JavaScript version of Font Awesome #17860
+    - Corrected missing version hospital-user #17435
+    - Removed useless .tgz file in @fortawesome/fontawesome-pro and all @fortawesome/pro-*-svg-icons
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.3
+  * Changed
+    - Updated air-freshener's design due to trademark violation notice
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.2
+  * Changed
+    - Support release to improve Font Awesome Kits performance
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.1
+  * Changed
+    - Update to the ravelry brand icon
+  * Fixed
+    - Removed fill attribute from the vest and vest-patches icon
+    - Moved attribution comment to correct location for sprites
+    - Fixed duotone icons not rendering in Kits
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.0
+  * Added
+    - Added guilded, hive, innosoft, instalod, ns8, octopus-deploy, perbyte,
+    - uncharted, watchman-monitoring, wodu sponsored brand icons
+    - Added commissioned vest and vest-patch icon
+    - Added cloudflare brand icon
+  * Changed
+    - Removed the adobe icon at the request of Adobe
+    - Update rocketchat brand icon
+  * Fixed
+    - Conflict detection now includes Kits when checking for conflicts
+
+-------------------------------------------------------------------
+Sun Aug 16 14:24:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.14.0:
+  * Corrected rendering issue with the tripadvisor brand icon in Windows 10 #16817
+  * Corrected unicode values that were outside the Unicode Private Use Area (PUA) #16804
+
+-------------------------------------------------------------------
+Tue Jul 14 13:14:47 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- fix webfont path (boo#1174093)
+
+-------------------------------------------------------------------
+Tue Mar 24 07:06:20 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.13.0:
+  * Added new icons related to COVID-19.
+  * Fixed font family name to be 'Font Awesome 5 Free' for free
+    kits when using pseudo-elements.
+  * Added the ability to specify mask ID and title ID for SVG with
+    JS which allows snapshot testing tools to get a predictable
+    result when executing tests.
+  * Corrected version 4 font face shim src attribute declaration
+    that was warning of incorrect font file format.
+  * Explicitly set font-display to block which supresses warnings
+    of font-display in tools like Lighthouse.
+
+-------------------------------------------------------------------
+Tue Mar 10 12:20:22 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Update to version 5.12.1:
+  * Added
+    + user-unlock icon #13280
+    + mixer brand icon #11242
+    + coffin-cross icon #15646
+    + instagram-square icon #9223
+    + shopify icon #3850
+    + dailymotion icon #3890
+
+  * Changed
+    + Do not separate web fonts files for Free Kits
+    + The .fab CSS class now has explicit weight of 400 instead of inheriting 'normal'
+    + Balance the plus symbol in file-plus and folder-plus #16004
+    + Removed cross from coffin (new coffin-cross still available) #15646
+    + Updated edge brand icon #15771
+    + Updated clock hands #15779
+- changed sources to github release
+- README-Trademarks.txt replaced with LICENSE.txt
+
+-------------------------------------------------------------------
+Wed Feb 12 10:38:01 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- default font path for the web fonts is "../fonts" so we need to install the
+  referenced files in /usr/share/font-awesome-web/fonts.
+
+-------------------------------------------------------------------
+Thu Nov 24 10:16:25 UTC 2016 - mpluskal@suse.com
+
+- Update to version 4.7.0:
+  * New icons:
+    + Add handshake-o icon (thanks, Linode!)
+    + Add envelope-open icon (thanks, Linode!)
+    + Add bath, shower icons (thanks, Linode!)
+    + Add id-card, address-book icons (thanks, Linode!)
+    + Add thermometer icon (thanks, Linode!)
+    + Add Linode logo
+    + Add Free Code Camp logo
+  * Updated icons:
+    + Update Mastercard logo
+    + Update QQ logo
+
+-------------------------------------------------------------------
+Fri Jul 29 12:39:11 UTC 2016 - petr@cervinka.net
+
+- Updated to version 4.6.3
+   * Fixed  fa-instagram 
+   * Updated google plus icon
+- Changes in version 4.6.2
+   * Updated pied-piper logo
+   * New icon fa-first-order
+- Changes in version 4.6.1
+   * Fixed aria-hidden attribute
+   * Fixed invalid US-ASCII character "\xC3"
+- Changes in major version 4.6.0
+   * 30 new icons
+   * New Icon Category: Accessibility
+   * Fixes in CSS, SCSS and Less
+   * Fixed icon "1px size taller" issue introduced in 4.5.0
+
+-------------------------------------------------------------------
+Wed Feb 10 20:41:02 UTC 2016 - mpluskal@suse.com
+
+- Update to 4.5.0
+- Use url for source
+
+-------------------------------------------------------------------
+Tue Sep  8 14:46:28 CEST 2015 - tiwai@suse.de
+
+- Add Group to fontawesome-fonts-web subpackage to fix the build
+  for older distros
+- Add missing defattr to filelist
+- Add missing buildroot tag to fix the build failures on old distros
+
+-------------------------------------------------------------------
+Mon Jun  1 14:40:00 UTC 2015 - hguo@suse.com
+
+- New package.
+

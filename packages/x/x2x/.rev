@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="18">
+    <srcmd5>a0b39a2aea98c12b039be5374756236a</srcmd5>
+    <version>1.30_beta</version>
+    <time>1168904503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="138">
+    <srcmd5>190c7093c704faf9dfdce4caff62a6ab</srcmd5>
+    <version>1.30_beta</version>
+    <time>1199670894</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="184">
+    <srcmd5>90efe5068de9cb3d317f5dc1adcfb78f</srcmd5>
+    <version>1.30_beta</version>
+    <time>1216053376</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="217">
+    <srcmd5>2a3259fd7d71d2104a0853df2b2c3f29</srcmd5>
+    <version>1.30_beta</version>
+    <time>1245363779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="219">
+    <srcmd5>2a3259fd7d71d2104a0853df2b2c3f29</srcmd5>
+    <version>1.30_beta</version>
+    <time>1245363779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="220">
+    <srcmd5>123bcb7984ac58af7950c8867631ec41</srcmd5>
+    <version>1.30_beta</version>
+    <time>1260198632</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/x2x based on submit request 25602 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="7" vrev="221">
+    <srcmd5>fc471878216847370d77463fba5a9172</srcmd5>
+    <version>1.30_beta</version>
+    <time>1268926524</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="223">
+    <srcmd5>fc471878216847370d77463fba5a9172</srcmd5>
+    <version>1.30_beta</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="224">
+    <srcmd5>fc471878216847370d77463fba5a9172</srcmd5>
+    <version>1.30_beta</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="225">
+    <srcmd5>b102324f1f48f84ff4026ab39d4c2ae0</srcmd5>
+    <version>1.30_beta</version>
+    <time>1289415657</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52454 from user prusnak
+</comment>
+    <requestid>52454</requestid>
+  </revision>
+  <revision rev="11" vrev="226">
+    <srcmd5>67225056cae29db755c982659f0c7a79</srcmd5>
+    <version>1.30_beta</version>
+    <time>1289415662</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52454
+</comment>
+  </revision>
+  <revision rev="12" vrev="229">
+    <srcmd5>67225056cae29db755c982659f0c7a79</srcmd5>
+    <version>1.30_beta</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="231">
+    <srcmd5>67225056cae29db755c982659f0c7a79</srcmd5>
+    <version>1.30_beta</version>
+    <time>1319182576</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="232">
+    <srcmd5>4fe3f41ba1654a6d3f71857a5e0a4482</srcmd5>
+    <version>1.30_beta</version>
+    <time>1328202056</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+
+keymap.c and x2x.c seem to make it necessary to license under GPL-2.0+ irrespective of the ifdef in lawyerese.c which would seem to make the GPL only applicable to windows systems (forwarded request 102354 from babelworx)</comment>
+    <requestid>102361</requestid>
+  </revision>
+  <revision rev="15" vrev="234">
+    <srcmd5>4fe3f41ba1654a6d3f71857a5e0a4482</srcmd5>
+    <version>1.30_beta</version>
+    <time>1340184331</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="236">
+    <srcmd5>4fe3f41ba1654a6d3f71857a5e0a4482</srcmd5>
+    <version>1.30_beta</version>
+    <time>1359110586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="238">
+    <srcmd5>4fe3f41ba1654a6d3f71857a5e0a4482</srcmd5>
+    <version>1.30_beta</version>
+    <time>1379664985</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="240">
+    <srcmd5>4fe3f41ba1654a6d3f71857a5e0a4482</srcmd5>
+    <version>1.30_beta</version>
+    <time>1409303663</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="241">
+    <srcmd5>b6cd9b565b5770b28f6b6725af4cd458</srcmd5>
+    <version>1.30_beta</version>
+    <time>1414219660</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258288</requestid>
+  </revision>
+  <revision rev="20" vrev="242">
+    <srcmd5>a8bedec560864024a2092e3606d2b961</srcmd5>
+    <version>1.30_beta</version>
+    <time>1415866634</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260723</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>854312e11a7c2a2b348e3cf47cc1e34b</srcmd5>
+    <version>1.30rc1+git.20180517</version>
+    <time>1532774396</time>
+    <user>dimstar_suse</user>
+    <comment>- update url
+- use latest git version
+- change build system from imake to autotools
+- drop: x2x-1.30-beta.dif
+        x2x-1.30-beta-keycodes.dif
+        x2x-1.30-beta-buttonmasks.dif
+</comment>
+    <requestid>623913</requestid>
+  </revision>
+</revisionlist>

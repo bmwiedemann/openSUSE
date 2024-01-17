@@ -1,0 +1,19 @@
+<package name="rubygem-rspec" project="openSUSE:Factory">
+  <title>RSpec is a Behaviour Driven Development framework for Ruby</title>
+  <description>RSpec is a behaviour driven development (BDD) framework for Ruby.  RSpec was
+created in response to Dave Astels' article _A New Look at Test Driven
+Development_  which can be read at: http://daveastels.com/index.php?p=5  RSpec
+is intended to provide the features discussed in Dave's article.
+
+
+Authors:
+---------
+    Steven Baker
+    Aslak Hellesoy
+    Dave Astels
+    David Chelimsky
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-rspec"/>
+  <url>http://rspec.rubyforge.org/</url>
+</package>

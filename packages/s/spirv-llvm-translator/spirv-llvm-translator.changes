@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Sep 28 11:18:25 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- back again to version 17.0.0, since meanwhile llvm17 is available ... 
+
+-------------------------------------------------------------------
+Mon Sep 25 11:48:15 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- back to version 16.0.0, since there is no llvm17 available yet ...
+
+-------------------------------------------------------------------
+Tue Sep 19 21:57:02 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 17.0.0.
+  * Compatibility with LLVM 17.
+- Drop Revert-Add-support-for-LLVM_LINK_LLVM_DYLIB.patch: the
+  problematic change was reverted upstream.
+- Drop Revert-added-translator-support-for-SPIRV_INTEL.patch: the
+  corresponding change to spirv-headers has landed in the meantime.
+
+-------------------------------------------------------------------
+Wed Mar 22 22:40:42 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 16.0.0.
+  * Compatibility with LLVM 16.
+- Add Revert-Add-support-for-LLVM_LINK_LLVM_DYLIB.patch: while
+  gh#KhronosGroup/SPIRV-LLVM-Translator#1543 claims to add support
+  for LLVM_LINK_LLVM_DYLIB, it actually seems to break it.
+- Add Revert-added-translator-support-for-SPIRV_INTEL.patch: while
+  gh#KhronosGroup/SPIRV-LLVM-Translator#1632 has made it into this
+  release, there is no release of spirv-headers containing the
+  pendant gh#KhronosGroup/SPIRV-Headers#291 yet.
+
+-------------------------------------------------------------------
+Sun Jan 15 13:28:45 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package for spirv-llvm-translator, version 15.0.0
+

@@ -1,0 +1,28 @@
+From 8c205231b591e954f763df794fc59a9f6a7e983b Mon Sep 17 00:00:00 2001
+From: Chris--A <chris@genx.biz>
+Date: Thu, 8 Oct 2015 22:38:26 +1000
+Subject: [PATCH 03/19] Treat 'typename' as an attribute.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Relates to #1﻿
+---
+ c.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/c.c b/c.c
+index af46dc4..ef81067 100644
+--- a/c.c
++++ b/c.c
+@@ -1733,6 +1733,7 @@ static void processToken (tokenInfo *const token, statementInfo *const st)
+ 		case KEYWORD_NONE:      processName (st);                       break;
+ 		case KEYWORD_ABSTRACT:  st->implementation = IMP_ABSTRACT;      break;
+ 		case KEYWORD_ATTRIBUTE:
++		case KEYWORD_TYPENAME:
+ 		case KEYWORD_INLINE:    skipParens (); initToken (token);       break;
+ 		case KEYWORD_BIND:      st->declaration = DECL_BASE;            break;
+ 		case KEYWORD_BIT:       st->declaration = DECL_BASE;            break;
+-- 
+2.11.0
+

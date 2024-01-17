@@ -1,0 +1,2261 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d1c5fc03a3bedac646637f6e9ede3eb</srcmd5>
+    <version>0.15.1</version>
+    <time>1368697102</time>
+    <user>coolo</user>
+    <comment>New package see http://lists.opensuse.org/opensuse-factory/2013-05/msg00163.html
+</comment>
+    <requestid>175205</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f9545fc0a130cba6f8a69cab5e2e70b3</srcmd5>
+    <version>0.15.1</version>
+    <time>1369744976</time>
+    <user>coolo</user>
+    <comment>updated salt-master with extra security:
+salt-master daemon running under priviliged user salt  (forwarded request 176793 from aboe76)</comment>
+    <requestid>176794</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a3d01736788b30ba4557ba7205965ad3</srcmd5>
+    <version>0.15.3</version>
+    <time>1370453699</time>
+    <user>coolo</user>
+    <comment>updated service release to 0.15.3,
+some showstopper bug fixed:
+salt-mine validity test
+salt pillar refresh fix (forwarded request 177161 from aboe76)</comment>
+    <requestid>177162</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4b6dea2450eed14517e5caa5c9436cd7</srcmd5>
+    <version>0.15.3</version>
+    <time>1370925528</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178252</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ae961076b5a3eeccb4e481d60e77d343</srcmd5>
+    <version>0.15.90</version>
+    <time>1372145745</time>
+    <user>coolo</user>
+    <comment>Updated to salt 0.16.0 release candidate
+Major improvements in salt-master features.
+Improved init and removed salt user in favor for root to be consistent with other distro packages. Init files are now cross distribution and based on upstream. (forwarded request 180523 from aboe76)</comment>
+    <requestid>180524</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d32e08f0395f8e2ff53fae36f8f87d6</srcmd5>
+    <version>0.16.0</version>
+    <time>1372760970</time>
+    <user>coolo</user>
+    <comment>salt 0.16.0 release (forwarded request 181722 from aboe76)</comment>
+    <requestid>181723</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>819bb4e55c3fb26abaf4b66b6888c1fd</srcmd5>
+    <version>0.16.0</version>
+    <time>1373130975</time>
+    <user>coolo</user>
+    <comment>- Updated init files, rc_status instead of rc status.</comment>
+    <requestid>182351</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>16ad16b1ceed280bfacbedce45e3f273</srcmd5>
+    <version>0.16.1</version>
+    <time>1375185878</time>
+    <user>coolo</user>
+    <comment>removed obsolete pre requirements (forwarded request 184881 from aboe76)</comment>
+    <requestid>184882</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6e0e2d393b5525a512c753fcd9155ea1</srcmd5>
+    <version>0.16.2</version>
+    <time>1375450864</time>
+    <user>coolo</user>
+    <comment>updated to 0.16.2 (forwarded request 185560 from aboe76)</comment>
+    <requestid>185561</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4e19641bf20d6250bbd0a812067a1a97</srcmd5>
+    <version>0.16.2</version>
+    <time>1375596266</time>
+    <user>coolo</user>
+    <comment>fix salt minion /var/cache/salt/minion/proc, bug not being made by salt process. (forwarded request 185707 from aboe76)</comment>
+    <requestid>185708</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8eea57ae04806ea34efd7b71a374031a</srcmd5>
+    <version>0.16.3</version>
+    <time>1376392192</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 0.16.3 (forwarded request 186624 from aboe76)</comment>
+    <requestid>186625</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e048a6adca92696b3f06640596776c77</srcmd5>
+    <version>0.16.4</version>
+    <time>1378646970</time>
+    <user>coolo</user>
+    <comment>salt 0.16.4 released
+salt-testing is needed in next release.
+ (forwarded request 197876 from aboe76)</comment>
+    <requestid>197877</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e048a6adca92696b3f06640596776c77</srcmd5>
+    <version>0.16.4</version>
+    <time>1379664604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d3cc8b03523bef5af38f7786304e2442</srcmd5>
+    <version>0.17.0</version>
+    <time>1380298838</time>
+    <user>coolo</user>
+    <comment>updated to salt-0.17.0 (forwarded request 201023 from aboe76)</comment>
+    <requestid>201024</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a7f61c30c75a91a809a5008d807a2d75</srcmd5>
+    <version>0.17.0</version>
+    <time>1380609303</time>
+    <user>coolo</user>
+    <comment>Upstream release a package guideline for salt,
+changed the package accordingly.
+</comment>
+    <requestid>201343</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>42b0c14f73bb9b431202548037bec379</srcmd5>
+    <version>0.17.1</version>
+    <time>1382088912</time>
+    <user>scarabeus_factory</user>
+    <comment>Salt Bugfix release 0.17.1 see changes for all the fixes (forwarded request 203676 from aboe76)</comment>
+    <requestid>203677</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>12628f7f56bac4f4c008f01d150cedb5</srcmd5>
+    <version>0.17.1</version>
+    <time>1382117013</time>
+    <user>scarabeus_factory</user>
+    <comment>Support systemd or sysvinit; not both (forwarded request 203725 from posophe)</comment>
+    <requestid>203728</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a0540ea7134bb3bd66e9685b3d0b4a1e</srcmd5>
+    <version>0.17.1</version>
+    <time>1382693852</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204705</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>822bda1a95d544ab1260816047e111e0</srcmd5>
+    <version>0.17.1</version>
+    <time>1383570170</time>
+    <user>coolo</user>
+    <comment>disabled unittesting until salt testing is fixed.</comment>
+    <requestid>205462</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5c59f7e842f01afee1c5f490a39d730d</srcmd5>
+    <version>0.17.2</version>
+    <time>1384768461</time>
+    <user>scarabeus_factory</user>
+    <comment>License file now in main package. (forwarded request 207337 from aboe76)</comment>
+    <requestid>207339</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c9e363090dd74121dd4d45892444bd79</srcmd5>
+    <version>0.17.2</version>
+    <time>1385101768</time>
+    <user>coolo</user>
+    <comment>- Add bugzilla for solved issues
+
+- Updated to salt 0.17.1 bugfix release (bnc#849205, bnc#849204, bnc#849184):</comment>
+    <requestid>207876</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5d5647690cc4e4041f9ffe89658c5238</srcmd5>
+    <version>0.17.4</version>
+    <time>1387271158</time>
+    <user>coolo</user>
+    <comment>Salt 0.17.4 bugfix release (forwarded request 210832 from aboe76)</comment>
+    <requestid>210833</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3242e74f6e8fecd1cc9583b5221ee42e</srcmd5>
+    <version>0.17.5</version>
+    <time>1391078264</time>
+    <user>coolo</user>
+    <comment>updated bugfix release 0.17.5 (forwarded request 215152 from aboe76)</comment>
+    <requestid>215154</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3830797c434cecff48e540babdf83563</srcmd5>
+    <version>2014.1.0</version>
+    <time>1393089445</time>
+    <user>coolo</user>
+    <comment>Major release, salt-cloud integration and cleaner build sources </comment>
+    <requestid>223329</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>447bb447db587187cc25cbd390e5ed86</srcmd5>
+    <version>2014.1.1</version>
+    <time>1395475917</time>
+    <user>coolo</user>
+    <comment>bugfix release 2014.1.1 (forwarded request 226898 from aboe76)</comment>
+    <requestid>226899</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1f67ca8d8814e24452d9b48f95f9c733</srcmd5>
+    <version>2014.1.3</version>
+    <time>1398863550</time>
+    <user>coolo</user>
+    <comment>Update to salt 2014.1.3 (forwarded request 230810 from aboe76)</comment>
+    <requestid>230811</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>658e546d3ab2f525770c19955122b31b</srcmd5>
+    <version>2014.1.4</version>
+    <time>1399377783</time>
+    <user>coolo</user>
+    <comment>updated bugfix release 2014.1.4 (forwarded request 232770 from aboe76)</comment>
+    <requestid>232771</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a76cf895f1687e0ee13c01a327040b93</srcmd5>
+    <version>2014.1.5</version>
+    <time>1402947224</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236935</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>859e9fcf8411e3b5bcc9186ef61fa53c</srcmd5>
+    <version>2014.1.6</version>
+    <time>1404973053</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239950</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>598cf49472f5da1b9adfeab9e8048007</srcmd5>
+    <version>2014.1.7</version>
+    <time>1405101944</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240244</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>9f916e7309199d79ed376053788eb1bd</srcmd5>
+    <version>2014.1.7</version>
+    <time>1405971637</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241788</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>ae1a2544c7cefa82b0a1653f0bf7c1bd</srcmd5>
+    <version>2014.1.7</version>
+    <time>1406284050</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242232</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7e3b7dd847ecdb2501fed441f0e5f210</srcmd5>
+    <version>2014.1.8</version>
+    <time>1406793861</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243082</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1cc0966a1ddb42873c48c5d353afa1ee</srcmd5>
+    <version>2014.1.10</version>
+    <time>1407227067</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243620</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>550192e8f6fe194f16af10a2b101ce4c</srcmd5>
+    <version>2014.1.10</version>
+    <time>1407744437</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>243968</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>cbc2ac8a3071198b64e4fc2335aa3004</srcmd5>
+    <version>2014.1.10</version>
+    <time>1408549904</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>245201</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>cbc2ac8a3071198b64e4fc2335aa3004</srcmd5>
+    <version>2014.1.10</version>
+    <time>1409303309</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fb52e4af529937b7d2e64ce0a42e88b8</srcmd5>
+    <version>2014.1.11</version>
+    <time>1412155403</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253237</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d9e7e8fd1185bf1df085fa3b6f3b085c</srcmd5>
+    <version>2014.1.13</version>
+    <time>1414066859</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258049</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>296c287139d73b44261b6e016df3d539</srcmd5>
+    <version>2014.7.0</version>
+    <time>1416824011</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262523</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1a0553755a78138675e179d4d947302b</srcmd5>
+    <version>2014.7.1</version>
+    <time>1422134458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282600</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>89405940192d8c6d701901da64454aff</srcmd5>
+    <version>2014.7.2</version>
+    <time>1425031807</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287917</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>739541515e7d30e5a791fa70aeccab8e</srcmd5>
+    <version>2014.7.4</version>
+    <time>1429346373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297257</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>1a38073c0edcb33c17d13379951d72b9</srcmd5>
+    <version>2014.7.5</version>
+    <time>1429948368</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298711</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f60b4b8d91a6711f95bd8a043febeb92</srcmd5>
+    <version>2015.5.0</version>
+    <time>1432723719</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308421</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e3fed44c5dcb4a01140396056117ba0f</srcmd5>
+    <version>2015.5.1</version>
+    <time>1432982046</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>309165</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>96c746b631a048298a76a29cbfd5b9cd</srcmd5>
+    <version>2015.5.2</version>
+    <time>1434133897</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311694</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>bf674277e25ad119f06156157d30e4f3</srcmd5>
+    <version>2015.5.3</version>
+    <time>1436888600</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315736</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>d28ee38092629224a5f36e0ab2250251</srcmd5>
+    <version>2015.5.3</version>
+    <time>1438750225</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317653</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>0391559e5d60315b19891a1aa7ec4824</srcmd5>
+    <version>2015.5.5</version>
+    <time>1441054745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>327739</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9b5658188cfc84161d04a6f24ba75725</srcmd5>
+    <version>2015.8.1</version>
+    <time>1445287960</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339485</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>30a00e815f2e2588da9be5f062dd5e6c</srcmd5>
+    <version>2015.8.3</version>
+    <time>1449687232</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347822</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>8d350f29523b03cca6e8209cdb94cb07</srcmd5>
+    <version>2015.8.3</version>
+    <time>1450856987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349516</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>dfddca979a63a6d200e64928b766dfd8</srcmd5>
+    <version>2015.8.3</version>
+    <time>1453799684</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354612</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>31bbcf07866ecd9eded2bdaa8f972902</srcmd5>
+    <version>2015.8.7</version>
+    <time>1456335786</time>
+    <user>dimstar_suse</user>
+    <comment>- fix argument handling of pkg.download
+  Add: 0022-fix-argument-handling-for-pkg.download.patch
+
+- unify behavior of zypper refresh in salt
+  Add: 0018-unify-behavior-of-refresh.patch
+       0019-add-refresh-option-to-more-functions.patch
+       0020-simplify-checking-the-refresh-paramater.patch
+       0021-do-not-change-kwargs-in-refresh-while-checking-a-val.patch
+
+- Fix crash with scheduler and runners
+  Add: 0017-Fix-crash-with-scheduler-and-runners-31106.patch
+
+- Call zypper always with --non-interactive
+  Add:
+  * 0015-call-zypper-with-option-non-interactive-everywhere.patch
+  * 0016-write-a-zypper-command-builder-function.patch
+
+- require rpm-python on SUSE for zypper support
+
+- fix state return code
+  Add: 0009-The-functions-in-the-state-module-that-return-a-retc.patch
+- add handling of OEM products to pkg.list_products
+  Add: 0010-add-handling-for-OEM-products.patch
+- improve doc for list_pkgs
+  Add: 0011-improve-doc-for-list_pkgs.patch
+- implement pkg.version_cmp in zypper.py
+  Add:
+  * 0012-implement-version_cmp-for-zypper.patch
+  * 0013-pylint-changes.patch
+  * 0014-Check-if-rpm-python-can-be-imported.patch
+
+- Update to 2015.8.7
+  this is a small update to fix some regressions
+  see https://docs.saltstack.com/en/latest/topics/releases/2015.8.7.html
+
+- Booleans should not be strings from XML, add Unix ticks time and
+  format result in a list of maps.
+  Add:
+  * 0008-Fix-types-in-the-output-data-and-return-just-a-list-.patch
+
+- Stop salt-api daemon faster (bsc#963322)
+  Add:
+  * 0007-Force-kill-websocket-s-child-processes-faster-than-d.patch
+
+- Do not crash on salt-key reject/delete consecutive calls.
+  Add:
+  * 0006-add_key-reject_key-do-not-crash-w-Permission-denied-.patch
+
+- Update to 2015.8.5
+  See https://docs.saltstack.com/en/latest/topics/releases/2015.8.5.html
+  Dropped patches (all upstream):
+  * 0003-List-products-consistently-across-all-SLES-systems.patch
+  * 0004-Add-missing-return-data-to-scheduled-jobs.patch
+  * 0005-Fix-RPM-issues-with-the-date-time-and-add-package-at.patch
+  * 0006-Bugfix-info_available-does-not-work-correctly-on-SLE.patch
+  Renamed patches:
+  * 0007-Check-if-byte-strings-are-properly-encoded-in-UTF-8.patch
+    -&gt; 0003-Check-if-byte-strings-are-properly-encoded-in-UTF-8.patch
+  * 0008-Fix-pkg.latest-prevent-crash-on-multiple-package-ins.patch
+    -&gt; 0004-Fix-pkg.latest-prevent-crash-on-multiple-package-ins.patch
+  * 0009-Fix-package-status-filtering-on-latest-version-and-i.patch
+    -&gt; 0005-Fix-package-status-filtering-on-latest-version-and-i.patch
+- Update to 2015.8.4
+  See https://docs.saltstack.com/en/latest/topics/releases/2015.8.4.html
+
+- Fix latest version available comparison and implement epoch
+  support in Zypper module.
+  Add:
+  * 0009-Fix-package-status-filtering-on-latest-version-and-i.patch
+
+- Update patch from opensuse to upstream version.
+  Update:
+  * 0008-Fix-pkg.latest-prevent-crash-on-multiple-package-ins.patch
+
+- Fix dependencies to Salt subpackages requiring release along the
+  version.
+
+- Fix pkg.latest crash.
+- Fix pkg.latest SLS ID bug, when pkgs empty list is passed,
+  but SLS ID still treated as a package name.
+  Add:
+  * 0008-Fix-pkg.latest-prevent-crash-on-multiple-package-ins.patch
+
+- Drop:
+  * -0004-zypper-check-package-header-content-for-valid-utf-8.patch
+- Rename:
+  * -0004-zypper-check-package-header-content-for-valid-utf-8.patch
+    +0004-Add-missing-return-data-to-scheduled-jobs.patch
+  * -0005-Add-missing-return-data-to-scheduled-jobs.patch
+    +0004-Add-missing-return-data-to-scheduled-jobs.patch
+  * -0006-Fix-RPM-issues-with-the-date-time-and-add-package-at.patch
+    +0005-Fix-RPM-issues-with-the-date-time-and-add-package-at.patch
+  * -0007-Bugfix-info_available-does-not-work-correctly-on-SLE.patch
+    +0006-Bugfix-info_available-does-not-work-correctly-on-SLE.patch
+- Add:
+  * 0007-Check-if-byte-strings-are-properly-encoded-in-UTF-8.patch
+
+- Rename use-forking-daemon.patch to
+  0001-tserong-suse.com-We-don-t-have-python-systemd-so-not.patch
+- Rename use-salt-user-for-master.patch to
+  0002-Run-salt-master-as-dedicated-salt-user.patch
+- Rename 1efe484309a5c776974e723f3da0f5181f4bdb86.patch to
+  0003-List-products-consistently-across-all-SLES-systems.patch
+- Rename zypper-utf-8.patch to
+  0004-zypper-check-package-header-content-for-valid-utf-8.patch
+- Rename salt-2015.8-schedule-ret.patch to
+  0005-Add-missing-return-data-to-scheduled-jobs.patch
+- Rename salt-2015.8-pkg-zypper-attr-filtering.patch to
+  0006-Fix-RPM-issues-with-the-date-time-and-add-package-at.patch
+- Rename salt-2015.8-zypper-info.patch to
+  0007-Bugfix-info_available-does-not-work-correctly-on-SLE.patch</comment>
+    <requestid>361294</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>36199f566bf88bbb5df072936a9d645d</srcmd5>
+    <version>2015.8.7</version>
+    <time>1457353658</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365937</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>fc4920b3a8798c33dc66ea507d84f210</srcmd5>
+    <version>2015.8.7</version>
+    <time>1458228893</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>373092</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>26c7efe7ebb06a1324d1155fd5ae3d5b</srcmd5>
+    <version>2015.8.7</version>
+    <time>1459002257</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>375690</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>404d317a76de50973215e9995bb26100</srcmd5>
+    <version>2015.8.8</version>
+    <time>1461855457</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391896</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>bacbf104f6fb65b790cdc4c3f47605df</srcmd5>
+    <version>2015.8.8</version>
+    <time>1463124254</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394962</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5de3694069b485677fbafdf086b6dab6</srcmd5>
+    <version>2016.3.2</version>
+    <time>1475242487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431193</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b27f1ebc39b4c4976d53d26060f9869e</srcmd5>
+    <version>2016.3.4</version>
+    <time>1478780344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2016.3.4
+  see https://docs.saltstack.com/en/latest/topics/releases/2016.3.4.html
+- Removed Patches, applied upstream
+  * 0008-checksum-validation-when-zypper-pkg.download.patch
+  * 0009-unit-tests-for-rpm.checksum-and-zypper.download.patch
+  * 0010-snapper-execution-module.patch
+  * 0011-fix-salt-summary-to-count-not-responding-minions-cor.patch
+  * 0012-Run-salt-api-as-user-salt-bsc-990029.patch
+  * 0013-Deprecate-status.uptime-one-version-later.patch
+  * 0014-Add-ignore_repo_failure-option-to-suppress-zypper-s-.patch
+  * 0015-Remove-zypper-s-raise-exception-if-mod_repo-has-no-a.patch
+  * 0016-Improve-Mock-to-be-flexible-and-able-to-mock-methods.patch
+  * 0017-Check-for-single-quote-before-splitting-on-single-qu.patch
+  * 0018-Unit-tests-fixes-for-2016.3.2.patch
+  * 0019-Fix-snapper_test-for-python26.patch
+  * 0020-Integration-tests-fixes-for-2016.3.2.patch
+  * 0021-Fix-pkg.upgrade-for-zypper.patch
+  * 0022-Setting-up-OS-grains-for-SLES-Expanded-Support-SUSE-.patch
+  * 0023-acl.delfacl-fix-position-of-X-option-to-setfacl.patch
+  * 0024-Change-travis-configuration-file-to-use-salt-toaster.patch
+  * 0025-Adding-dist-upgrade-support-to-zypper-module.patch
+  * 0026-Fix-pkg.latest_version-when-latest-already-installed.patch
+  * 0027-Including-resolver-params-for-Zypper-debug-solver.patch
+- Added patches
+  * 0008-snapper-execution-module.patch
+  * 0009-fix-salt-summary-to-count-not-responding-minions-cor.patch
+  * 0010-Run-salt-api-as-user-salt-bsc-990029.patch
+  * 0011-Fix-snapper_test-for-python26.patch
+  * 0012-Fix-pkg.upgrade-for-zypper.patch
+  * 0013-Setting-up-OS-grains-for-SLES-Expanded-Support-SUSE-.patch</comment>
+    <requestid>438929</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f3148269d3879373eafdb8a14fd2c99f</srcmd5>
+    <version>2016.11.3</version>
+    <time>1489345214</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476766</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>417b0e0efbbb859dcc3e6c51ca00adfa</srcmd5>
+    <version>2017.7.1</version>
+    <time>1503925848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517184</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>277fc5a6a670c26c2912d5eceb10ae9e</srcmd5>
+    <version>2017.7.2</version>
+    <time>1508197929</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533952</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>d51a5b92374bbcee9c429e5857846a88</srcmd5>
+    <version>2017.7.2</version>
+    <time>1511346087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542192</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>8d2973f5fc457f64b6918547a62a06dc</srcmd5>
+    <version>2017.7.2</version>
+    <time>1512042288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546091</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>de8623f9f8eaadfd753c0801ca3c58a5</srcmd5>
+    <version>2017.7.2</version>
+    <time>1512292421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547540</requestid>
+  </revision>
+  <revision rev="69" vrev="5">
+    <srcmd5>9e58e798265f24775824bf58819b5be9</srcmd5>
+    <version>2017.7.2</version>
+    <time>1512734477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555051</requestid>
+  </revision>
+  <revision rev="70" vrev="6">
+    <srcmd5>cdbaaf619235e3431eb5efb3e1e177d1</srcmd5>
+    <version>2017.7.2</version>
+    <time>1517167918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569877</requestid>
+  </revision>
+  <revision rev="71" vrev="7">
+    <srcmd5>e55018e3386039effaa6b042c292906c</srcmd5>
+    <version>2017.7.2</version>
+    <time>1518187696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574155</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>834a0315c1e6b121d3100281f178d8b8</srcmd5>
+    <version>2018.1.99</version>
+    <time>1520021426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581637</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>1121aa83f39a3f5902da184ca8cca91d</srcmd5>
+    <version>2018.1.99</version>
+    <time>1521499134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588455</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>76d01d3c7badb4136074a8a79e3cc9d7</srcmd5>
+    <version>2018.3.0</version>
+    <time>1523875687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595744</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>a467e0586ce7916a1a259686e44d84d3</srcmd5>
+    <version>2018.3.0</version>
+    <time>1525121897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602524</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>10c3d86c5b4079a031969c4330726f88</srcmd5>
+    <version>2018.3.0</version>
+    <time>1525960231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605690</requestid>
+  </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>7bd3b9bc95a0cf024f3f1402a64f7525</srcmd5>
+    <version>2018.3.0</version>
+    <time>1526489000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609095</requestid>
+  </revision>
+  <revision rev="78" vrev="5">
+    <srcmd5>a9032e1fa8f75cd7a02da364261757d7</srcmd5>
+    <version>2018.3.0</version>
+    <time>1526573226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610082</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>2c21bff0d84efeca2991c821345b8eb9</srcmd5>
+    <version>2018.3.2</version>
+    <time>1533214536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626474</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>71e9acfec9457e8989be491f62be790f</srcmd5>
+    <version>2018.3.2</version>
+    <time>1537966395</time>
+    <user>dimstar_suse</user>
+    <comment>- Decode file contents for python2 (bsc#1103530)
+- Check dmidecoder executable on each &quot;smbios&quot; call to avoid race condition (bsc#1101880)
+- Fix pkg.upgrade reports when dealing with multiversion packages (bsc#1102265)
+- Accounting for when files in an archive contain non-ascii characters (bsc#1099460)
+- Fix deprecation warning (bsc#1095507)
+- Fix (bsc#1065792)
+- Fix (bsc#108758)
+- Handle packages with multiple version properly with zypper (bsc#1096514)
+- Fix file.get_diff regression in 2018.3 (bsc#1098394)
+- Provide python version mismatch solutions (bsc#1072599)
+- Fix file.managed binary file utf8 error (bsc#1098394)
+- Prevent zypper from parsing repo configuration from not .repo files (bsc#1094055)
+- Add environment variable to know if yum is invoked from Salt (bsc#1057635)
+- Prevent deprecation warning with salt-ssh (bsc#1095507)
+- Align SUSE salt-master.service 'LimitNOFILES' limit with upstream Salt
+- Add 'other' attribute to GECOS fields to avoid inconsistencies with chfn
+- Collect all versions of installed packages on SUSE and RHEL systems (bsc#1089526)
+
+- Prepend current directory when path is just filename (bsc#1095942)
+- Integration of MSI authentication for azurearm
+- Adds fix for SUSE Expanded Support os grain detection
+- Fixes 509x remote signing
+- Fix for StringIO import in Python2
+- Use Adler32 algorithm to compute string checksums (bsc#1102819)
+- Only do reverse DNS lookup on IPs for salt-ssh (bsc#1104154)
+- Add support for Python 3.7
+- Fix license macro to build on SLE12SP2
+- Decode file contents for python2 (bsc#1102013)
+- Fix for sorting of multi-version packages (bsc#1097174 and bsc#1097413)
+- Fix mine.get not returning data - workaround for #48020 (bsc#1100142)</comment>
+    <requestid>636408</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>05170df3ebadfa88d44378540904b6f7</srcmd5>
+    <version>2018.3.2</version>
+    <time>1548704772</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict the Python version to &lt; 3.7
+
+- Fix integration tests in state compiler (U#2068)
+- Added:
+  * fix-issue-2068-test.patch
+
+- Fix &quot;pkg.list_pkgs&quot; output when using &quot;attr&quot; to take the arch into account (bsc#1114029)
+- Added:
+  * remove-arch-from-name-when-pkg.list_pkgs-is-called-w.patch
+
+- Fix powerpc null server_id_arch (bsc#1117995)
+- Added:
+  * return-the-expected-powerpc-os-arch-bsc-1117995.patch
+
+- Fix module 'azure.storage' has no attribute '__version__'
+  (bsc#1121091)
+- Added:
+  * azurefs-gracefully-handle-attributeerror.patch
+
+- Add supportconfig module and states for minions and SaltSSH
+- Added:
+  * add-supportconfig-module-for-remote-calls-and-saltss.patch
+
+- Fix FIPS enabled RES clients (bsc#1099887)
+- Added:
+  * retire-md5-checksum-for-pkg-mgmt-plugins.patch
+
+- Add hold/unhold functions. Fix Debian repo &quot;signed-by&quot;.
+- Added:
+  * decide-if-the-source-should-be-actually-skipped.patch</comment>
+    <requestid>666637</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>1e3dc27905e4e49cd03acd441f4939d4</srcmd5>
+    <version>2019.2.0</version>
+    <time>1555321912</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer limiting Python3 version to &lt;3.7
+
+- Async batch implementation
+- Added:
+  * async-batch-implementation.patch
+
+- Update to Salt 2019.2.0 release
+  For further information see:
+  https://docs.saltstack.com/en/latest/topics/releases/2019.2.0.html
+- Added:
+  * add-virt.all_capabilities.patch
+  * add-virt.volume_infos-and-virt.volume_delete.patch
+  * don-t-call-zypper-with-more-than-one-no-refresh.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * temporary-fix-extend-the-whitelist-of-allowed-comman.patch
+- Removed:
+  * accounting-for-when-files-in-an-archive-contain-non-.patch
+  * add-engine-relaying-libvirt-events.patch
+  * add-other-attribute-to-gecos-fields-to-avoid-inconsi.patch
+  * add-support-for-python-3.7.patch
+  * align-suse-salt-master.service-limitnofiles-limit-wi.patch
+  * avoid-incomprehensive-message-if-crashes.patch
+  * change-stringio-import-in-python2-to-import-the-clas.patch
+  * decode-file-contents-for-python2-bsc-1102013.patch
+  * do-not-override-jid-on-returners-only-sending-back-t.patch
+  * don-t-error-on-retcode-0-in-libcrypto.openssl_init_c.patch
+  * feat-add-grain-for-all-fqdns.patch
+  * fix-async-call-to-process-manager.patch
+  * fix-decrease-loglevel-when-unable-to-resolve-addr.patch
+  * fix-deprecation-warning-bsc-1095507.patch</comment>
+    <requestid>693686</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>1453abf722c6ead34c88d41959bbe3ad</srcmd5>
+    <version>2019.2.0</version>
+    <time>1556915875</time>
+    <user>dimstar_suse</user>
+    <comment>- Include aliases in FQDNS grain (bsc#1121439)
+
+- Fix issue preventing syndic to start
+- Update year on spec copyright notice
+- Added:
+  * fix-syndic-start-issue.patch
+
+- Use ThreadPool from multiprocessing.pool to avoid leakings
+  when calculating FQDNs
+- Do not report patches as installed on RHEL systems when not all
+  the related packages are installed (bsc#1128061)
+- Added:
+  * use-threadpool-from-multiprocessing.pool-to-avoid-le.patch
+  * do-not-report-patches-as-installed-when-not-all-the-.patch
+
+- Update to 2019.2.0 complete (FATE#327138, bsc#1133523)
+- Fix batch/batch-async related issues
+- Calculate FQDNs in parallel to avoid blockings (bsc#1129079)
+- Incorporate virt.volume_info fixes (PR#131)
+- Re-adds patch because of increased offset due to previous patch removal
+- Removing patch to add root parameter to zypper module
+- Fix for -t parameter in mount module
+- Added:
+  * mount-fix-extra-t-parameter.patch
+  * add-batch_presence_ping_timeout-and-batch_presence_p.patch
+  * fix-async-batch-race-conditions.patch
+  * calculate-fqdns-in-parallel-to-avoid-blockings-bsc-1.patch
+- Modified:
+  * don-t-call-zypper-with-more-than-one-no-refresh.patch
+  * add-virt.volume_infos-and-virt.volume_delete.patch</comment>
+    <requestid>700350</requestid>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>7cf7bf9ffcf07051500b59f484efe3b8</srcmd5>
+    <version>2019.2.0</version>
+    <time>1557404873</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix async-batch to fire a single done event
+- Added:
+  * fix-async-batch-multiple-done-events.patch
+
+- Do not make Salt CLI to crash when there are IPv6 established
+  connections (bsc#1130784)
+- Added:
+  * do-not-crash-when-there-are-ipv6-established-connect.patch</comment>
+    <requestid>701589</requestid>
+  </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>96ec6ada895a0363385075fe82dace56</srcmd5>
+    <version>2019.2.0</version>
+    <time>1558515292</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch firewalld state to use change_interface (bsc#1132076)
+- Added:
+  * switch-firewalld-state-to-use-change_interface.patch</comment>
+    <requestid>704238</requestid>
+  </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>ce9df7fb80597d859bfb9cf4f9bb8e4a</srcmd5>
+    <version>2019.2.0</version>
+    <time>1560337096</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix return status when installing or updating RPM packages
+  with &quot;ppc64le&quot; arch (bsc#1133647)
+- Added:
+  * add-ppc64le-as-a-valid-rpm-package-architecture.patch
+
+- Add new &quot;salt-standalone-formulas-configuration&quot; package
+- Added:
+  * add-standalone-configuration-file-for-enabling-packa.patch</comment>
+    <requestid>705867</requestid>
+  </revision>
+  <revision rev="87" vrev="6">
+    <srcmd5>31b7991975119e738c972ff25f2ac627</srcmd5>
+    <version>2019.2.0</version>
+    <time>1560862512</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix zypper pkg.list_pkgs test expectation and dpkg mocking
+- Added:
+  * fix-zypper-pkg.list_pkgs-expectation-and-dpkg-mockin.patch 
+
+- Set 'salt' group for files and directories created by
+  salt-standalone-formulas-configuration package
+- Various fixes for virt module
+- Fix virt.volume_infos raising an exception when there is only virtual machine on the minion.
+- Fix virt.purge() on all non-KVM hypervisors. For instance on Xen, virt.purge would simply throw an exception about unsupported flag
+- Building a libvirt pool starts it. When defining a new pool, we need to
+let build start it or we will get libvirt errors.
+- Fix handling of Virtual Machines with white space in their name.
+- Added:
+  * virt.pool_running-fix-pool-start.patch
+  * virt-handle-whitespaces-in-vm-names.patch
+  * virt.volume_infos-fix-for-single-vm.patch
+  * try-except-undefineflags-as-this-operation-is-not-su.patch
+
+- avoid batch.py exception when minion does not respond (bsc#1135507)
+- Added:
+  * batch.py-avoid-exception-when-minion-does-not-respon.patch
+
+- Preserve already defined DESTRUCTIVE_TESTS and EXPENSIVE_TESTS
+  env variables
+- Added:
+  * preserve-already-defined-destructive_tests-and-expen.patch
+
+- Do not break repo files with multiple line values on yumpkg (bsc#1135360)
+- Added:
+  * do-not-break-repo-files-with-multiple-line-values-on.patch</comment>
+    <requestid>709997</requestid>
+  </revision>
+  <revision rev="88" vrev="7">
+    <srcmd5>52856f828c76d55c5a49b497226251c8</srcmd5>
+    <version>2019.2.0</version>
+    <time>1561493834</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide the missing features required for Yomi (Yet one more installer)
+- Added:
+  * provide-the-missing-features-required-for-yomi-yet-o.patch</comment>
+    <requestid>711284</requestid>
+  </revision>
+  <revision rev="89" vrev="8">
+    <srcmd5>87f03edc8183e966beb369ecf17a3c7f</srcmd5>
+    <version>2019.2.0</version>
+    <time>1562590916</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow passing kwargs to pkg.list_downloaded for Zypper (bsc#1140193)
+- Added:
+  * allow-passing-kwargs-to-pkg.list_downloaded-bsc-1140.patch
+
+- Do not make &quot;ansiblegate&quot; module to crash on Python3 minions (bsc#1139761)
+- Added:
+  * do-not-make-ansiblegate-to-crash-on-python3-minions.patch</comment>
+    <requestid>713188</requestid>
+  </revision>
+  <revision rev="90" vrev="9">
+    <srcmd5>3c212864016a9476ee85e3a24c63f1ff</srcmd5>
+    <version>2019.2.0</version>
+    <time>1564136633</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>716016</requestid>
+  </revision>
+  <revision rev="91" vrev="10">
+    <srcmd5>8401246412877de0f59cc25dea650a52</srcmd5>
+    <version>2019.2.0</version>
+    <time>1564993768</time>
+    <user>dimstar_suse</user>
+    <comment>- Multiple fixes on cmdmod, chroot, freezer and zypperpkg needed for Yomi
+  cmdmod: fix runas and group in run_chroot
+  chroot: add missing sys directory
+  chroot: change variable name to root
+  chroot: fix bug in safe_kwargs iteration
+  freezer: do not fail in cache dir is present
+  freezer: clean freeze YAML profile on restore
+  zypperpkg: fix pkg.list_pkgs cache
+- Added:
+  * accumulated-changes-required-for-yomi-165.patch
+
+- Avoid traceback on http.query when there are errors with the requested URL (bsc#1128554)
+- Added:
+  * avoid-traceback-when-http.query-request-cannot-be-pe.patch
+
+- Salt python client get_full_returns seems return data from incorrect jid (bsc#1131114)
+- Added:
+  * checking-for-jid-before-returning-data.patch</comment>
+    <requestid>719814</requestid>
+  </revision>
+  <revision rev="92" vrev="11">
+    <srcmd5>614c5c12ee7cdf0505847afcc9727bce</srcmd5>
+    <version>2019.2.0</version>
+    <time>1568190209</time>
+    <user>dimstar_suse</user>
+    <comment>- Require shadow instead of old pwdutils (bsc#1130588)
+- Conflict with tornado &gt;= 5; for now we can only cope with Tornado 4.x (boo#1101780).
+- Fix virt.full_info (bsc#1146382)
+- virt.volume_infos: silence libvirt error message
+- virt.volume_infos needs to ignore inactive pools
+- Fix for various bugs in virt network and pool states
+- Implement network.fqdns module function (bsc#1134860)
+- Added:
+  * 2019.2.0-pr-54196-backport-173.patch
+  * virt.volume_infos-silence-libvirt-error-message-175.patch
+  * fix-virt.full_info-176.patch
+  * implement-network.fqdns-module-function-bsc-1134860-.patch
+  * virt.volume_infos-needs-to-ignore-inactive-pools-174.patch
+- Restore default behaviour of pkg list return (bsc#1148714)
+- Strip trailing &quot;/&quot; from repo.uri when comparing repos in apktpkg.mod_repo (bsc#1146192)
+- Added:
+  * strip-trailing-from-repo.uri-when-comparing-repos-in.patch
+  * restore-default-behaviour-of-pkg-list-return.patch
+- Use python3 to build package Salt for RHEL8
+- Make python3 default for RHEL8
+- Fix aptpkg systemd call (bsc#1143301)
+- Added:
+  * fix-aptpkg-systemd-call-bsc-1143301.patch
+- Move server_id deprecation warning to reduce log spamming (bsc#1135567) (bsc#1135732)</comment>
+    <requestid>728977</requestid>
+  </revision>
+  <revision rev="93" vrev="12">
+    <srcmd5>d7b430415e908ebff5c1ee5ca921259f</srcmd5>
+    <version>2019.2.0</version>
+    <time>1571049050</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve batch_async to release consumed memory (bsc#1140912)
+- Fix memory leak produced by batch async find_jobs mechanism (bsc#1140912)
+- Grant read and execute permission to others (bsc#1150447)
+- Added:
+  * improve-batch_async-to-release-consumed-memory-bsc-1.patch
+  * fix-memory-leak-produced-by-batch-async-find_jobs-me.patch</comment>
+    <requestid>733437</requestid>
+  </revision>
+  <revision rev="94" vrev="13">
+    <srcmd5>9b4910a0146a834061b6d8955405c652</srcmd5>
+    <version>2019.2.0</version>
+    <time>1573164753</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix for aptpkg test with older mock modules
+- Added:
+  * fix-for-older-mock-module.patch
+
+- Remove wrong tests for core grain and improve debug logging
+- Use rich RPM deps to get a compatible version of tornado into the
+  buildroot.
+- Added:
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+
+- core.py: ignore wrong product_name files
+- zypperpkg: understand product type
+- Added:
+  * accumulated-changes-from-yomi-167.patch
+
+- Enable usage of downloadonly parameter for apt module
+- Added:
+  * adds-the-possibility-to-also-use-downloadonly-in-kwa.patch
+
+- Add missing 'fun' on events coming from salt-ssh wfunc executions (bsc#1151947)
+- Added:
+  * add-missing-fun-for-returns-from-wfunc-executions.patch
+
+- Fix failing unit tests for batch async
+- Added:
+  * fix-failing-unit-tests-for-batch-async.patch
+
+- Fix memory consumption problem on BatchAsync (bsc#1137642)
+- Added:
+  * use-current-ioloop-for-the-localclient-instance-of-b.patch</comment>
+    <requestid>742964</requestid>
+  </revision>
+  <revision rev="95" vrev="14">
+    <srcmd5>09b404fcd20092c807fd0ad067dad92f</srcmd5>
+    <version>2019.2.0</version>
+    <time>1573420892</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove virt.pool_delete fast parameter (U#54474)
+- Added:
+  * remove-virt.pool_delete-fast-parameter-178.patch
+
+- Remove unnecessary yield causing BadYieldError (bsc#1154620)
+- Added:
+  * remove-unnecessary-yield-causing-badyielderror-bsc-1.patch
+
+- Prevent 'Already reading' continuous exception message (bsc#1137642)
+- Added:
+  * prevent-already-reading-continuous-exception-message.patch
+
+- Add new &quot;salt-standalone-formulas-configuration&quot; package (fate#327791)</comment>
+    <requestid>746516</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>2082f3ca392709bc4db32dd8e80aea87</srcmd5>
+    <version>2019.2.2</version>
+    <time>1575728175</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent test_mod_del_repo_multiline_values to fail
+- Read repo info without using interpolation (bsc#1135656)
+- Requires vs BuildRequires
+- Limiting M2Crypto to &gt;= SLE15
+- Replacing pycrypto with M2Crypto
+- Fix for log checking in x509 test
+- Update to 2019.2.2 release
+- Added:
+  * fix-for-log-checking-in-x509-test.patch
+  * prevent-test_mod_del_repo_multiline_values-to-fail.patch
+  * read-repo-info-without-using-interpolation-bsc-11356.patch
+- Modified:
+  * async-batch-implementation.patch
+  * add-hold-unhold-functions.patch
+  * adds-the-possibility-to-also-use-downloadonly-in-kwa.patch
+  * decide-if-the-source-should-be-actually-skipped.patch
+  * allow-passing-kwargs-to-pkg.list_downloaded-bsc-1140.patch
+  * add-batch_presence_ping_timeout-and-batch_presence_p.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * run-salt-api-as-user-salt-bsc-1064520.patch
+  * fix-unit-test-for-grains-core.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * fix-async-batch-multiple-done-events.patch
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * fix-for-older-mock-module.patch
+  * do-not-break-repo-files-with-multiple-line-values-on.patch
+  * fall-back-to-pymysql.patch
+  * add-missing-fun-for-returns-from-wfunc-executions.patch
+  * loosen-azure-sdk-dependencies-in-azurearm-cloud-driv.patch
+  * add-virt.volume_infos-and-virt.volume_delete.patch</comment>
+    <requestid>753172</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>863734d26740a8ddba159139a9cc8075</srcmd5>
+    <version>2019.2.2</version>
+    <time>1577136983</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing bugzilla references:
+  Properly handle colons in inline dicts with yamlloader (bsc#1095651)
+  Fix corrupt public key with m2crypto python3 (bsc#1099323)
+  Add missing dateutils import (bsc#1099945)
+  Fix UnicodeDecodeError using is_binary check (bsc#1100225)
+  Prevent payload crash on decoding binary data (bsc#1100697)
+  Fix file.blockreplace to avoid throwing IndexError (bsc#1101812)
+  Add API log rotation on SUSE package (bsc#1102218)
+  Fix wrong recurse behavior on for linux_acl.present (bsc#1106164)
+  Handle anycast IPv6 addresses on network.routes (bsc#1114474)
+  Crontab module fix: file attributes option missing (bsc#1114824)
+  Add metadata to accepted keyword arguments (bsc#1122680)
+  Bugfix: properly refresh pillars (bsc#1125015)
+
+- xfs: do not fail if type is not present (bsc#1153611)
+- Added:
+  * xfs-do-not-fails-if-type-is-not-present.patch
+
+- Don't use __python indirection macros on spec file
+  %__python is no longer defined in RPM 4.15 (python2 is going EOL in Jan 2020);
+  additionally, python/python3 are just binaries in the path.
+
+- Fix errors when running virt.get_hypervisor function
+- Added:
+  * fix-virt.get_hypervisor-188.patch
+
+- Align virt.full_info fixes with upstream Salt
+- Let salt-ssh use platform-python on RHEL8 (bsc#1158441)
+- Added:
+  * align-virt-full-info-fixes-with-upstream-192.patch</comment>
+    <requestid>756034</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>0d31aaadaf90d29d8cfe987e2c585951</srcmd5>
+    <version>2019.2.2</version>
+    <time>1579346190</time>
+    <user>dimstar_suse</user>
+    <comment>- Support for Btrfs and XFS in parted and mkfs added
+- Added:
+  * support-for-btrfs-and-xfs-in-parted-and-mkfs.patch
+
+- Adds list_downloaded for apt Module to enable pre-downloading support
+- Adds virt.(pool|network)_get_xml functions
+- Various libvirt updates
+  * Add virt.pool_capabilities function
+  * virt.pool_running improvements
+  * Add virt.pool_deleted state
+  * virt.network_define allow adding IP configuration
+- Added:
+  * virt.network_define-allow-adding-ip-configuration.patch
+  * list_downloaded-for-apt-module.patch
+  * add-virt.network_get_xml-function.patch
+
+- virt: adding kernel boot parameters to libvirt xml
+- Added:
+  * virt-adding-kernel-boot-parameters-to-libvirt-xml-55.patch
+
+- Fix virt states to not fail on VMs already stopped
+- Added:
+  * fix-virt-states-to-not-fail-on-vms-already-stopped.-.patch</comment>
+    <requestid>764712</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>974188e42ecd1e142e699491887392e7</srcmd5>
+    <version>2019.2.3</version>
+    <time>1583702544</time>
+    <user>dimstar_suse</user>
+    <comment>- Use full option name instead of undocumented abbreviation for zypper
+- Requiring python3-distro only for openSUSE/SLE &gt;= 15
+- Added:
+  * use-full-option-name-instead-of-undocumented-abbrevi.patch
+
+- python-distro is only needed for &gt; Python 3.7. Removing it for Python 2
+
+- Avoid possible user escalation upgrading salt-master (bsc#1157465) (CVE-2019-18897)
+
+- Fix unit tests failures in test_batch_async tests
+- Added:
+  * fix-unit-tests-for-batch-async-after-refactor.patch
+
+- Batch Async: Handle exceptions, properly unregister and close instances
+  after running async batching to avoid CPU starvation of the MWorkers (bsc#1162327)
+- RHEL/CentOS 8 uses platform-python instead of python3
+- Enable build for Python 3.8
+- Added:
+  * batch_async-avoid-using-fnmatch-to-match-event-217.patch
+  * apply-patch-from-upstream-to-support-python-3.8.patch
+  * batch-async-catch-exceptions-and-safety-unregister-a.patch
+
+- Fix 'os_family' grain for Astra Linux Common Edition
+- Added:
+  * add-astra-linux-common-edition-to-the-os-family-list.patch
+
+- Update to Salt version 2019.2.3 (CVE-2019-17361) (bsc#1163981) (bsc#1162504)
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/2019.2.3.html
+- Modified:
+  * use-adler32-algorithm-to-compute-string-checksums.patch</comment>
+    <requestid>781848</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>60be09a9e9c8302a9488dc4f8be13f8c</srcmd5>
+    <version>2019.2.3</version>
+    <time>1584643667</time>
+    <user>dimstar_suse</user>
+    <comment>- virt._get_domain: don't raise an exception if there is no VM
+- Added:
+  * virt._get_domain-don-t-raise-an-exception-if-there-i.patch
+
+- Adds test for zypper abbreviation fix
+- Improved storage pool or network handling
+- Better import cache handline
+- Added:
+  * loader-invalidate-the-import-cachefor-extra-modules.patch
+  * open-suse-2019.2.3-virt-defined-states-219.patch
+- Modified:
+  * use-full-option-name-instead-of-undocumented-abbrevi.patch</comment>
+    <requestid>786008</requestid>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>8a73d48cc77fd53b33c03133fc948468</srcmd5>
+    <version>2019.2.3</version>
+    <time>1586247831</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable building and installation for Fedora
+- Disable python2 build on Tumbleweed
+  We are removing the python2 interpreter from openSUSE (SLE16).
+  As such disable salt building for python2 there.
+
+- Sanitize grains loaded from roster_grains.json cache during &quot;state.pkg&quot;
+- Added:
+  * fix-load-cached-grain-osrelease_info.patch
+
+- Build: Buildequire pkgconfig(systemd) instead of systemd
+
+- Backport saltutil state module to 2019.2 codebase (bsc#1167556)
+- Add new custom SUSE capability for saltutil state module
+- Added:
+  * backport-saltutil-state-module-to-2019.2-codebase.patch
+  * add-new-custom-suse-capability-for-saltutil-state-mo.patch</comment>
+    <requestid>790920</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>209d1fc6c033c3317da20f2a58f14b0d</srcmd5>
+    <version>3000</version>
+    <time>1586555550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Salt version 3000 
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.html
+- Do not make file.recurse state to fail when msgpack 0.5.4 (bsc#1167437)
+- Fixes status attribute issue in aptpkg test
+- Make setup.py script not to require setuptools greater than 9.1
+  loop: fix variable names for until_no_eval
+- Drop conflictive module.run state patch (bsc#1167437)
+- Update patches after rebase with upstream v3000 tag (bsc#1167437)
+- Fix some requirements issues depending on Python3 versions
+- Removes obsolete patch
+- Fix for low rpm_lowpkg unit test
+- Add python-singledispatch as dependency for python2-salt
+- Fix for temp folder definition in loader unit test
+- Make &quot;salt.ext.tornado.gen&quot; to use &quot;salt.ext.backports_abc&quot; on Python 2
+- Fix regression in service states with reload argument
+- Fix integration test failure for test_mod_del_repo_multiline_values
+- Fix for unless requisite when pip is not installed
+- Fix errors from unit tests due NO_MOCK and NO_MOCK_REASON deprecation
+- Fix tornado imports and missing _utils after rebasing patches
+- Removes unresolved merge conflict in yumpkg module
+- Added:
+  * make-setup.py-script-to-not-require-setuptools-9.1.patch
+  * opensuse-3000-virt-defined-states-222.patch
+  * fix-for-unless-requisite-when-pip-is-not-installed.patch
+  * fix-typo-on-msgpack-version-when-sanitizing-msgpack-.patch
+  * fix-regression-in-service-states-with-reload-argumen.patch
+  * batch_async-avoid-using-fnmatch-to-match-event-217.patch
+  * make-salt.ext.tornado.gen-to-use-salt.ext.backports_.patch
+  * virt._get_domain-don-t-raise-an-exception-if-there-i.patch
+  * loop-fix-variable-names-for-until_no_eval.patch</comment>
+    <requestid>791976</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>2e0651f94226bdb32d1314fa1b4580ce</srcmd5>
+    <version>3000.2</version>
+    <time>1588324036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Salt release version 3000.2
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.2.html
+- Fix typo in 'minion_runner' for AESFuncs exposed methods
+- Added:
+  * fix-typo-in-minion_runner-for-aesfuncs-exposed-metho.patch
+- Removed:
+  * fix-cve-2020-11651-and-fix-cve-2020-11652.patch
+
+- Update to Salt release version 3000.1
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.1.html
+- Fix CVE-2020-11651 and CVE-2020-11652 (bsc#1170595)
+- Do not require vendored backports-abc (bsc#1170288)
+- Fix partition.mkpart to work without fstype (bsc#1169800)
+- Added:
+  * fixed-bug-lvm-has-no-parttion-type.-the-scipt-later-.patch
+  * remove-vendored-backports-abc-from-requirements.patch
+  * fix-cve-2020-11651-and-fix-cve-2020-11652.patch
+- Modified:
+  * fix-a-wrong-rebase-in-test_core.py-180.patch
+  * make-setup.py-script-to-not-require-setuptools-9.1.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+  * accumulated-changes-from-yomi-167.patch
+- Removed:
+  * fix-for-unless-requisite-when-pip-is-not-installed.patch
+  * fix-regression-in-service-states-with-reload-argumen.patch</comment>
+    <requestid>799271</requestid>
+  </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>c66489e3a490f80c93336b4895ce09ff</srcmd5>
+    <version>3000.2</version>
+    <time>1589046582</time>
+    <user>dimstar_suse</user>
+    <comment>- Python 3.8 compatibility changes
+- msgpack support for version &gt;= 1.0.0 (bsc#1171257)
+- Added:
+  * python3.8-compatibility-pr-s-235.patch
+  * msgpack-support-versions-1.0.0.patch
+
+- Prevent sporious &quot;salt-api&quot; stuck processes when managing SSH minions
+  because of logging deadlock (bsc#1159284)
+- Avoid segfault from &quot;salt-api&quot; under certain conditions of heavy load
+  managing SSH minions (bsc#1169604)
+- Added:
+  * prevent-logging-deadlock-on-salt-api-subprocesses-bs.patch
+  * make-lazyloader.__init__-call-to-_refresh_file_mappi.patch</comment>
+    <requestid>801830</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>2fd99626bd2eb26df4f99f66c7c6e0d3</srcmd5>
+    <version>3000.3</version>
+    <time>1591101225</time>
+    <user>dimstar_suse</user>
+    <comment>- Add publish_batch to ClearFuncs exposed methods
+- Added:
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+
+- Update to Salt release version 3000.3
+  See release notes: https://docs.saltstack.com/en/latest/topics/releases/3000.3.html
+- Removed:
+  * fix-typo-in-minion_runner-for-aesfuncs-exposed-metho.patch
+
+- zypperpkg: filter patterns that start with dot (bsc#1171906)
+- Added:
+  * zypperpkg-filter-patterns-that-start-with-dot-244.patch
+
+- Batch mode now also correctly provides return value (bsc#1168340)
+- Added:
+  * fix-for-return-value-ret-vs-return-in-batch-mode.patch
+
+- Add docker.logout to docker execution module (bsc#1165572)
+- Added:
+  * add-docker-logout-237.patch
+
+- Testsuite fix
+- Add option to enable/disable force refresh for zypper
+- Added:
+  * option-to-en-disable-force-refresh-in-zypper-215.patch
+  * fix-a-test-and-some-variable-names-229.patch</comment>
+    <requestid>810127</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>931092df73c0a8d23b4371a62a2f7d7f</srcmd5>
+    <version>3000.3</version>
+    <time>1594804364</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the registration of libvirt pool and nodedev events
+- Accept nested namespaces in spacewalk.api runner function. (bsc#1172211)
+- info_installed works without status attr now (bsc#1171461)
+- Added:
+  * info_installed-works-without-status-attr-now.patch
+  * opensuse-3000.3-spacewalk-runner-parse-command-250.patch
+  * opensuse-3000-libvirt-engine-fixes-251.patch
+
+- Avoid traceback on debug logging for swarm module (bsc#1172075)
+- Added:
+  * avoid-has_docker-true-if-import-messes-with-salt.uti.patch</comment>
+    <requestid>819714</requestid>
+  </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>7350550a722e01983e0f31aaf65978b7</srcmd5>
+    <version>3000.3</version>
+    <time>1597658421</time>
+    <user>dimstar_suse</user>
+    <comment>- Require /usr/bin/python instead of /bin/python for RHEL-family (bsc#1173936)
+
+- Don't install SuSEfirewall2 service files in Factory
+- Fix __mount_device wrapper to accept separate args and kwargs
+- Added:
+  * fix-__mount_device-wrapper-254.patch</comment>
+    <requestid>826691</requestid>
+  </revision>
+  <revision rev="108" vrev="4">
+    <srcmd5>d607fd8a21d7f006508722efa6de0c83</srcmd5>
+    <version>3000.3</version>
+    <time>1599770891</time>
+    <user>dimstar_suse</user>
+    <comment>- Reintroduces the patches from
+  opensuse-3000.2-virt-backports-236.patch coming from Salt 3001
+- Added:
+  * backport-virt-patches-from-3001-256.patch
+
+- Adding missing virt backports to 3000.3
+- Added:
+  * opensuse-3000.2-virt-backports-236-257.patch
+
+- Do not raise StreamClosedError traceback but only log it (bsc#1175549)
+- Added:
+  * do-not-raise-streamclosederror-traceback-but-only-lo.patch
+
+- Take care of failed, skipped and unreachable tasks and propagate &quot;retcode&quot; (bsc#1173911) (bsc#1173909)
+- Added:
+  * ansiblegate-take-care-of-failed-skipped-and-unreacha.patch</comment>
+    <requestid>832998</requestid>
+  </revision>
+  <revision rev="109" vrev="5">
+    <srcmd5>3be1b24254d3f642a0c59359ee091e1f</srcmd5>
+    <version>3000.3</version>
+    <time>1600432282</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent import errors when running test_btrfs unit tests
+- Added:
+  * prevent-import-errors-when-running-test_btrfs-unit-t.patch
+
+- Remove msgpack &lt; 1.0.0 from base requirements (bsc#1176293)
+- Added:
+  * remove-msgpack-1.0.0-requirement-in-the-installed-me.patch
+
+- Fix virt.update with CPU defined
+- Added:
+  * fix-virt.update-with-cpu-defined-263.patch
+
+- Fix virt issues and invalid input errors from 'salt.utils.data' (bsc#1176480)
+- Added:
+  * fix-the-removed-six.itermitems-and-six.-_type-262.patch</comment>
+    <requestid>834906</requestid>
+  </revision>
+  <revision rev="110" vrev="6">
+    <srcmd5>d9455c0b57c80c14eaf22d053e47c6f8</srcmd5>
+    <version>3000.3</version>
+    <time>1603031111</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure virt.update stop_on_reboot is updated with its default value
+- Added:
+  * ensure-virt.update-stop_on_reboot-is-updated-with-it.patch
+
+- Do not break package building for systemd OSes
+
+- Drop wrong mock from chroot unit test
+- Added:
+  * drop-wrong-mock-from-chroot-unit-test.patch
+
+- Support systemd versions with dot (bsc#1176294)
+
+- Fix for grains.test_core unit test
+- Fix file/directory user and group ownership containing UTF-8
+  characters (bsc#1176024)
+- Several changes to virtualization:
+-   - Fix virt update when cpu and memory are changed
+-   - Memory Tuning GSoC
+-   - Properly fix memory setting regression in virt.update
+-   - Expose libvirt on_reboot in virt states
+- Support transactional systems (MicroOS)
+- zypperpkg module ignores retcode 104 for search() (bsc#1159670)
+- Xen disk fixes. No longer generates volumes for Xen disks, but the
+  corresponding file or block disk (bsc#1175987)
+- Added:
+  * fix-grains.test_core-unit-test-277.patch
+  * support-transactional-systems-microos-271.patch
+  * backport-a-few-virt-prs-272.patch
+  * xen-disk-fixes-264.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch</comment>
+    <requestid>841799</requestid>
+  </revision>
+  <revision rev="111" vrev="7">
+    <srcmd5>3148a7682183c3e75b10709b94b98627</srcmd5>
+    <version>3000.3</version>
+    <time>1604702604</time>
+    <user>dimstar_suse</user>
+    <comment>- Set passphrase for salt-ssh keys to empty string (bsc#1178485)
+- Added:
+  * set-passphrase-for-salt-ssh-keys-to-empty-string-293.patch
+
+- Properly validate eauth credentials and tokens on SSH calls made by Salt API
+  (bsc#1178319) (bsc#1178362) (bsc#1178361)
+  (CVE-2020-25592) (CVE-2020-17490) (CVE-2020-16846)
+- Added:
+  * fix-cve-2020-25592-and-add-tests-bsc-1178319.patch
+
+- Fix novendorchange handling in zypperpkg module
+- Added:
+  * fix-novendorchange-option-284.patch
+
+- Fix disk.blkid to avoid unexpected keyword argument '__pub_user' (bsc#1177867)
+- Added:
+  * path-replace-functools.wraps-with-six.wraps-bsc-1177.patch</comment>
+    <requestid>846425</requestid>
+  </revision>
+  <revision rev="112" vrev="8">
+    <srcmd5>c955ead9f95d04bc4d9a946ad69d61a9</srcmd5>
+    <version>3000.3</version>
+    <time>1606328854</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix syntax error on pkgrepo state with Python 2.7
+- transactional_update: unify with chroot.call
+- Added:
+  * pkgrepo-support-python-2.7-function-call-295.patch
+  * transactional_update-unify-with-chroot.call.patch
+
+- Add &quot;migrated&quot; state and GPG key management functions
+- Added:
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+
+- Master can read grains
+- Added:
+  * grains-master-can-read-grains.patch
+
+- Fix for broken psutil (bsc#1102248)
+- Added:
+  * fix-for-bsc-1102248-psutil-is-broken-and-so-process-.patch</comment>
+    <requestid>850470</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>3fab80c32c60c0e1d2da34a6538151ff</srcmd5>
+    <version>3002.2</version>
+    <time>1610736308</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated warning that breaks minion execution when &quot;server_id_use_crc&quot; opts is missing
+- Added:
+  * remove-deprecated-warning-that-breaks-miniion-execut.patch
+
+- Revert wrong zypper patch to support vendorchanges flags on pkg.install
+- Added:
+  * revert-add-patch-support-for-allow-vendor-change-opt.patch
+
+- Force zyppnotify to prefer Packages.db than Packages if it exists
+- Allow vendor change option with zypper
+- Add pkg.services_need_restart
+- Fix for file.check_perms to work with numeric uid/gid
+- Added:
+  * force-zyppnotify-to-prefer-packages.db-than-packages.patch
+  * fix-salt.utils.stringutils.to_str-calls-to-make-it-w.patch
+  * add-patch-support-for-allow-vendor-change-option-wit.patch
+  * add-pkg.services_need_restart-302.patch
+
+- virt: more network support
+  Add more network and PCI/USB host devices passthrough support
+  to virt module and states
+- Added:
+  * open-suse-3002.2-virt-network-311.patch
+
+- Bigvm backports
+  virt consoles, CPU tuning and topology, and memory tuning.
+- Added:
+  * open-suse-3002.2-bigvm-310.patch
+
+- Fix pkg states when DEB package has &quot;all&quot; arch</comment>
+    <requestid>862930</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>d982b973923052f9715379da7e8c619a</srcmd5>
+    <version>3002.2</version>
+    <time>1613581770</time>
+    <user>dimstar_suse</user>
+    <comment>- virt: search for grub.xen path
+- Xen spicevmc, DNS SRV records backports:
+  Fix virtual network generated DNS XML for SRV records
+  Don't add spicevmc channel to xen VMs
+- virt UEFI fix: virt.update when efi=True
+- Added:
+  * virt-uefi-fix-backport-312.patch
+  * 3002.2-xen-spicevmc-dns-srv-records-backports-314.patch
+  * open-suse-3002.2-xen-grub-316.patch
+
+- Do not crash when unexpected cmd output at listing patches (bsc#1181290)
+- Added:
+  * do-not-crash-when-unexpected-cmd-output-at-listing-p.patch
+
+- Fix behavior for &quot;onlyif/unless&quot; when multiple conditions (bsc#1180818)
+- Added:
+  * fix-onlyif-unless-when-multiple-conditions-bsc-11808.patch</comment>
+    <requestid>871386</requestid>
+  </revision>
+  <revision rev="115" vrev="3">
+    <srcmd5>dc26b4c0275dd120198286c95169f1ef</srcmd5>
+    <version>3002.2</version>
+    <time>1615362532</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for multiple Salt CVEs</comment>
+    <requestid>876003</requestid>
+  </revision>
+  <revision rev="116" vrev="4">
+    <srcmd5>a2cec08d56315127876c77615186ed70</srcmd5>
+    <version>3002.2</version>
+    <time>1615552219</time>
+    <user>dimstar_suse</user>
+    <comment>- virt.network_update: handle missing ipv4 netmask attribute
+- Added:
+  * virt.network_update-handle-missing-ipv4-netmask-attr.patch
+
+- Set distro requirement to oldest supported version in requirements/base.txt
+- Added:
+  * 3002-set-distro-requirement-to-oldest-supported-vers.patch
+
+- Do not monkey patch yaml loaders: Prevent breaking Ansible filter modules (bsc#1177474)
+- Don't require python3-certifi
+- Added:
+  * do-not-monkey-patch-yaml-bsc-1177474.patch
+
+- Fix race conditions for corner cases when handling SIGTERM by minion (bsc#1172110)
+- Added:
+  * prevent-race-condition-on-sigterm-for-the-minion-bsc.patch
+
+- Master can read grains (bsc#1179696)</comment>
+    <requestid>878135</requestid>
+  </revision>
+  <revision rev="117" vrev="5">
+    <srcmd5>209f080f083ed5d4d700717c794c0fef</srcmd5>
+    <version>3002.2</version>
+    <time>1619107406</time>
+    <user>dimstar_suse</user>
+    <comment>- Improvements on &quot;ansiblegate&quot; module:
+  * New methods: ansible.targets / ansible.discover_playbooks
+  * General bugfixes
+- Added:
+  * improvements-on-ansiblegate-module-354.patch
+
+- Regression fix of salt-ssh on processing some targets
+- Added:
+  * regression-fix-of-salt-ssh-on-processing-targets-353.patch
+
+- Add support for Alibaba Cloud Linux 2 (Aliyun Linux)
+- Added:
+  * add-alibaba-cloud-linux-2-by-backporting-upstream-s-.patch
+
+- Update target fix for salt-ssh to process targets list (bsc#1179831)
+- Added:
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+
+- Add notify beacon for Debian/Ubuntu systems
+- Add core grains support for AlmaLinux and Alibaba Could Linux
+- Added:
+  * add-almalinux-and-alibaba-cloud-linux-to-the-os-fami.patch
+  * notify-beacon-for-debian-ubuntu-systems-347.patch
+
+- Allow vendor change option with zypper
+- Added:
+  * allow-vendor-change-option-with-zypper-313.patch</comment>
+    <requestid>887060</requestid>
+  </revision>
+  <revision rev="118" vrev="6">
+    <srcmd5>b546ad5e615ee688758c1cc5ed975d5b</srcmd5>
+    <version>3002.2</version>
+    <time>1632173534</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude the full path of a download URL to prevent injection of
+  malicious code (bsc#1190265) (CVE-2021-21996)
+- Added:
+  * exclude-the-full-path-of-a-download-url-to-prevent-i.patch
+
+- Fix wrong relative paths resolution with Jinja renderer when importing subdirectories
+- Added:
+  * templates-move-the-globals-up-to-the-environment-jin.patch
+
+- Don't pass shell=&quot;/sbin/nologin&quot; to onlyif/unless checks (bsc#1188259)
+- Add missing aarch64 to rpm package architectures
+- Backport of upstream PR#59492
+- Added:
+  * backport-of-upstream-pr59492-to-3002.2-404.patch
+  * don-t-use-shell-sbin-nologin-in-requisites.patch
+  * add-missing-aarch64-to-rpm-package-architectures-405.patch
+
+- Fix failing unit test for systemd
+- Fix error handling in openscap module (bsc#1188647)
+- Better handling of bad public keys from minions (bsc#1189040)
+- Added:
+  * better-handling-of-bad-public-keys-from-minions-bsc-.patch
+  * fix-error-handling-in-openscap-module-bsc-1188647-40.patch
+  * fix-failing-unit-tests-for-systemd.patch
+
+- Define license macro as doc in spec file if not existing
+- Add standalone formulas configuration for salt minion and remove salt-master requirement (bsc#1168327)
+
+- Do noop for services states when running systemd in offline mode (bsc#1187787)
+- transactional_updates: do not execute states in parallel but use a queue (bsc#1188170)</comment>
+    <requestid>919452</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>42118c9bfc1f1380685615c58e19930b</srcmd5>
+    <version>3003.3</version>
+    <time>1633038180</time>
+    <user>dimstar_suse</user>
+    <comment>- Support querying for JSON data in external sql pillar
+- Added:
+  * 3003.3-postgresql-json-support-in-pillar-423.patch
+
+- Update to Salt release version 3003.3
+- See release notes: https://docs.saltstack.com/en/latest/topics/releases/3003.3.html
+- Added:
+  * allow-vendor-change-option-with-zypper.patch
+  * support-transactional-systems-microos.patch
+  * virt-enhancements.patch
+- Modified:
+  * adds-explicit-type-cast-for-port.patch
+  * use-adler32-algorithm-to-compute-string-checksums.patch
+  * do-not-load-pip-state-if-there-is-no-3rd-party-depen.patch
+  * fixes-56144-to-enable-hotadd-profile-support.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * implementation-of-held-unheld-functions-for-state-pk.patch
+  * add-alibaba-cloud-linux-2-by-backporting-upstream-s-.patch
+  * debian-info_installed-compatibility-50453.patch
+  * fix-wrong-test_mod_del_repo_multiline_values-test-af.patch
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+  * x509-fixes-111.patch
+  * prevent-logging-deadlock-on-salt-api-subprocesses-bs.patch
+  * restore-default-behaviour-of-pkg-list-return.patch
+  * adding-preliminary-support-for-rocky.-59682-391.patch
+  * add-astra-linux-common-edition-to-the-os-family-list.patch
+  * templates-move-the-globals-up-to-the-environment-jin.patch
+  * fix-bsc-1065792.patch
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch</comment>
+    <requestid>921725</requestid>
+  </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>c6fd94d4d3707da88cc098bace625f6f</srcmd5>
+    <version>3003.3</version>
+    <time>1633365567</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not break master_tops for minion with version lower to 3003
+- Added:
+  * do-not-break-master_tops-for-minion-with-version-low.patch</comment>
+    <requestid>922525</requestid>
+  </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>eadd61df0e89b1f0d1dace74ad50af2e</srcmd5>
+    <version>3003.3</version>
+    <time>1634417221</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues with salt-ssh's extra-filerefs
+- Added:
+  * fix-issues-with-salt-ssh-s-extra-filerefs.patch
+
+- Fix crash when calling manage.not_alive runners
+- Added:
+  * fix-crash-when-calling-manage.not_alive-runners.patch
+
+- Do not consider skipped targets as failed for ansible.playbooks state (bsc#1190446)
+- Added:
+  * 3003.3-do-not-consider-skipped-targets-as-failed-for.patch</comment>
+    <requestid>925143</requestid>
+  </revision>
+  <revision rev="122" vrev="4">
+    <srcmd5>5b0171703c3da36236cc47eb2dad83cb</srcmd5>
+    <version>3003.3</version>
+    <time>1637227985</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify &quot;transactional_update&quot; module to not use SSH wrapper and allow more flexible execution
+- Add &quot;--no-return-event&quot; option to salt-call to prevent sending return event back to master.
+- Make &quot;state.highstate&quot; to acts on concurrent flag.
+- Fix print regression for yumnotify plugin
+- Added:
+  * refactor-and-improvements-for-transactional-updates-.patch
+  * fix-the-regression-for-yumnotify-plugin-456.patch
+
+- Use dnfnotify instead yumnotify for relevant distros
+- dnfnotify pkgset plugin implementation
+- Add rpm_vercmp python library support for version comparison
+- Prevent pkg plugins errors on missing cookie path (bsc#1186738)
+- Added:
+  * add-rpm_vercmp-python-library-for-version-comparison.patch
+  * mock-ip_addrs-in-utils-minions.py-unit-test-443.patch
+  * dnfnotify-pkgset-plugin-implementation-3002.2-450.patch
+  * fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+  * prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
+
+- Fix ip6_interface grain to not leak secondary IPv4 aliases (bsc#1191412)
+- Make &quot;salt-api&quot; package to require python3-cherrypy on RHEL systems
+- Make &quot;tar&quot; as required for &quot;salt-transactional-update&quot; package
+- Added:
+  * fix-ip6_interface-grain-to-not-leak-secondary-ipv4-a.patch</comment>
+    <requestid>931742</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>4f30854b1647debb872eaae4f050f077</srcmd5>
+    <version>3004</version>
+    <time>1643486475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3004, see release notes: https://docs.saltproject.io/en/master/topics/releases/3004.html
+- Don't check for cached pillar errors on state.apply (bsc#1190781)
+- Added:
+  * state.apply-don-t-check-for-cached-pillar-errors.patch
+- Modified:
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * switch-firewalld-state-to-use-change_interface.patch
+  * include-aliases-in-the-fqdns-grains.patch
+  * debian-info_installed-compatibility-50453.patch
+  * info_installed-works-without-status-attr-now.patch
+  * fix-traceback.print_exc-calls-for-test_pip_state-432.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * add-rpm_vercmp-python-library-for-version-comparison.patch
+  * 3003.3-do-not-consider-skipped-targets-as-failed-for.patch
+  * support-transactional-systems-microos.patch
+  * do-not-crash-when-unexpected-cmd-output-at-listing-p.patch
+  * enable-passing-a-unix_socket-for-mysql-returners-bsc.patch
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+  * fix-exception-in-yumpkg.remove-for-not-installed-pac.patch
+  * enhance-openscap-module-add-xccdf_eval-call-386.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
+  * run-salt-master-as-dedicated-salt-user.patch
+  * 3003.3-postgresql-json-support-in-pillar-423.patch
+  * prevent-pkg-plugins-errors-on-missing-cookie-path-bs.patch
+  * early-feature-support-config.patch
+  * implementation-of-held-unheld-functions-for-state-pk.patch
+  * x509-fixes-111.patch
+  * fix-issues-with-salt-ssh-s-extra-filerefs.patch
+  * mock-ip_addrs-in-utils-minions.py-unit-test-443.patch</comment>
+    <requestid>949489</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>36d1624fa20d3f7834b8a357c73ce62c</srcmd5>
+    <version>3004</version>
+    <time>1643931944</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix exception in batch_async caused by a bad function call
+- Added:
+  * drop-serial-from-event.unpack-in-cli.batch_async.patch
+
+- Fix inspector module export function (bsc#1097531)
+- Wipe NOTIFY_SOCKET from env in cmdmod (bsc#1193357)
+- Added:
+  * fix-inspector-module-export-function-bsc-1097531-481.patch
+  * wipe-notify_socket-from-env-in-cmdmod-bsc-1193357-30.patch</comment>
+    <requestid>950374</requestid>
+  </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>e5577b496b7af7dba55956e1734a32db</srcmd5>
+    <version>3004</version>
+    <time>1644617210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update generated documentation to 3004
+
+- Expose missing &quot;ansible&quot; module functions in Salt 3004 (bsc#1195625)
+- Added:
+  * add-missing-ansible-module-functions-to-whitelist-in.patch
+
+- Fix salt-call event.send with pillar or grains
+- Added:
+  * fix-salt-call-event.send-call-with-grains-and-pillar.patch</comment>
+    <requestid>952700</requestid>
+  </revision>
+  <revision rev="126" vrev="4">
+    <srcmd5>6df79b97d618e16ed9a768be1356e39a</srcmd5>
+    <version>3004</version>
+    <time>1646150592</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues found around pre_flight_script_args
+- Added:
+  * prevent-shell-injection-via-pre_flight_script_args-4.patch
+
+- Add salt-ssh with Salt Bundle support (venv-salt-minion)
+  (bsc#1182851, bsc#1196432)
+- Added:
+  * add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+
+- Restrict &quot;state.orchestrate_single&quot; to pass a pillar value if it exists (bsc#1194632)
+- Added:
+  * state.orchestrate_single-does-not-pass-pillar-none-4.patch</comment>
+    <requestid>958078</requestid>
+  </revision>
+  <revision rev="127" vrev="5">
+    <srcmd5>b88c23522f810106c2fb06622bbd1f5e</srcmd5>
+    <version>3004</version>
+    <time>1649093171</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix salt-ssh opts poisoning (bsc#1197637)
+- Added:
+  * fix-salt-ssh-opts-poisoning-bsc-1197637-3004-501.patch
+
+- Fix multiple security issues (bsc#1197417)
+- * Sign authentication replies to prevent MiTM (CVE-2022-22935)
+- * Sign pillar data to prevent MiTM attacks. (CVE-2022-22934)
+- * Prevent job and fileserver replays (CVE-2022-22936)
+- * Fixed targeting bug, especially visible when using syndic and user auth. (CVE-2022-22941)
+- Added:
+  * fix-multiple-security-issues-bsc-1197417.patch</comment>
+    <requestid>966247</requestid>
+  </revision>
+  <revision rev="128" vrev="6">
+    <srcmd5>345304787d76d6ce854a4d5cdda66174</srcmd5>
+    <version>3004</version>
+    <time>1649949903</time>
+    <user>dimstar_suse</user>
+    <comment>- Prevent data pollution between actions proceesed
+  at the same time (bsc#1197637)
+- Fix regression preventing bootstrapping new clients
+  caused by redundant dependency on psutil (bsc#1197533)
+- Added:
+  * fix-regression-with-depending-client.ssh-on-psutil-b.patch
+  * prevent-affection-of-ssh.opts-with-lazyloader-bsc-11.patch
+
+- Fixes for Python 3.10
+- Added:
+  * fixes-for-python-3.10-502.patch
+
+  * Sign authentication replies to prevent MiTM (CVE-2022-22935)
+  * Sign pillar data to prevent MiTM attacks. (CVE-2022-22934)
+  * Prevent job and fileserver replays (CVE-2022-22936)
+  * Fixed targeting bug, especially visible when using syndic and user auth. (CVE-2022-22941)</comment>
+    <requestid>969843</requestid>
+  </revision>
+  <revision rev="129" vrev="7">
+    <srcmd5>c21434ae5b37c6fef9d35d21e78bdd7b</srcmd5>
+    <version>3004</version>
+    <time>1656053104</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix PAM auth issue due missing check for PAM_ACCT_MGM return value (CVE-2022-22967) (bsc#1200566)
+- Added:
+  * fix-for-cve-2022-22967-bsc-1200566.patch
+
+- Make sure SaltCacheLoader use correct fileclient (bsc#1199149)
+- Added:
+  * make-sure-saltcacheloader-use-correct-fileclient-519.patch</comment>
+    <requestid>984677</requestid>
+  </revision>
+  <revision rev="130" vrev="8">
+    <srcmd5>d969d12df4f8767fbd3a5a22886a335c</srcmd5>
+    <version>3004</version>
+    <time>1657617133</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gpgautoimport in zypperpkg module
+- Update Salt to work with Jinja &gt;= and &lt;= 3.1.0 (bsc#1198744)
+- Fix salt.states.file.managed() for follow_symlinks=True and test=True (bsc#1199372)
+- Make Salt 3004 compatible with pyzmq &gt;= 23.0.0 (bsc#1201082)
+- Added:
+  * fix-jinja2-contextfuntion-base-on-version-bsc-119874.patch
+  * add-support-for-gpgautoimport-539.patch
+  * fix-62092-catch-zmq.error.zmqerror-to-set-hwm-for-zm.patch
+  * fix-salt.states.file.managed-for-follow_symlinks-tru.patch
+
+- Add support for name, pkgs and diff_attr parameters to upgrade
+  function for zypper and yum (bsc#1198489)
+- Added:
+  * add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
+
+- Fix ownership of salt thin directory when using the Salt Bundle
+- Set default target for pip from VENV_PIP_TARGET environment variable
+- Normalize package names once with pkg.installed/removed using yum (bsc#1195895)
+- Save log to logfile with docker.build
+- Use Salt Bundle in dockermod
+- Ignore erros on reading license files with dpkg_lowpkg (bsc#1197288)
+- Added:
+  * normalize-package-names-once-with-pkg.installed-remo.patch
+  * use-salt-bundle-in-dockermod.patch
+  * fix-ownership-of-salt-thin-directory-when-using-the-.patch
+  * ignore-erros-on-reading-license-files-with-dpkg_lowp.patch
+  * set-default-target-for-pip-from-venv_pip_target-envi.patch
+  * save-log-to-logfile-with-docker.build.patch</comment>
+    <requestid>988366</requestid>
+  </revision>
+  <revision rev="131" vrev="9">
+    <srcmd5>86896a2bf8311aba9eed46b74aa363f2</srcmd5>
+    <version>3004</version>
+    <time>1665420202</time>
+    <user>favogt_factory</user>
+    <comment>- Make pass renderer configurable and fix detected issues
+- Workaround fopen line buffering for binary mode (bsc#1203834)
+- Handle non-UTF-8 bytes in core grains generation (bsc#1202165)
+- Fix Syndic authentication errors (bsc#1199562)
+- Added:
+  * make-pass-renderer-configurable-other-fixes-532.patch
+  * ignore-non-utf8-characters-while-reading-files-with-.patch
+  * fopen-workaround-bad-buffering-for-binary-mode-563.patch
+  * backport-syndic-auth-fixes.patch
+
+- Add Amazon EC2 detection for virtual grains (bsc#1195624)
+- Fix the regression in schedule module releasded in 3004 (bsc#1202631)
+- Fix state.apply in test mode with file state module
+  on user/group checking (bsc#1202167)
+- Change the delimeters to prevent possible tracebacks
+  on some packages with dpkg_lowpkg
+- Make zypperpkg to retry if RPM lock is temporarily unavailable (bsc#1200596)
+- Added:
+  * fix-the-regression-in-schedule-module-releasded-in-3.patch
+  * retry-if-rpm-lock-is-temporarily-unavailable-547.patch
+  * change-the-delimeters-to-prevent-possible-tracebacks.patch
+  * add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+  * fix-state.apply-in-test-mode-with-file-state-module-.patch
+
+- Fix test_ipc unit test
+- Added:
+  * fix-test_ipc-unit-tests.patch</comment>
+    <requestid>1008560</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>e2a102905e70f2013ecc0185c5496bec</srcmd5>
+    <version>3005.1</version>
+    <time>1673444022</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing patch after rebase to fix collections Mapping issues
+- Added:
+  * fixes-for-python-3.10-502.patch
+
+- Prevent deadlocks in salt-ssh executions
+- Added:
+  * use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
+
+- Create new salt-tests subpackage containing Salt tests
+
+- Update to Salt release version 3005.1
+  * See release notes: https://docs.saltstack.com/en/latest/topics/releases/3005.1.html
+- Modified:
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+  * add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+  * add-sleep-on-exception-handling-on-minion-connection.patch
+  * add-standalone-configuration-file-for-enabling-packa.patch
+  * add-support-for-gpgautoimport-539.patch
+  * add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
+  * align-amazon-ec2-nitro-grains-with-upstream-pr-bsc-1.patch
+  * allow-vendor-change-option-with-zypper.patch
+  * async-batch-implementation.patch
+  * avoid-excessive-syslogging-by-watchdog-cronjob-58.patch
+  * bsc-1176024-fix-file-directory-user-and-group-owners.patch
+  * change-the-delimeters-to-prevent-possible-tracebacks.patch</comment>
+    <requestid>1057621</requestid>
+  </revision>
+  <revision rev="133" vrev="10">
+    <srcmd5>db108383d7523510f3ad951a7e7d4aa0</srcmd5>
+    <version>3004</version>
+    <time>1673534648</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1207071</comment>
+  </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>1c955e7ca361ad8d44be2e5eedc6ac33</srcmd5>
+    <version>3005.1</version>
+    <time>1673650947</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow entrypoint compatibility for &quot;importlib-metadata&gt;=5.0.0&quot; (bsc#1207071)
+- Added:
+  * allow-entrypoint-compatibility-for-importlib-metadat.patch
+
+- Add missing patch after rebase to fix collections Mapping issues
+- Added:
+  * fixes-for-python-3.10-502.patch
+
+- Prevent deadlocks in salt-ssh executions
+- Added:
+  * use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
+
+- Create new salt-tests subpackage containing Salt tests
+
+- Update to Salt release version 3005.1
+  * See release notes: https://docs.saltstack.com/en/latest/topics/releases/3005.1.html
+- Modified:
+  * activate-all-beacons-sources-config-pillar-grains.patch
+  * add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+  * add-custom-suse-capabilities-as-grains.patch
+  * add-environment-variable-to-know-if-yum-is-invoked-f.patch
+  * add-migrated-state-and-gpg-key-management-functions-.patch
+  * add-publish_batch-to-clearfuncs-exposed-methods.patch
+  * add-salt-ssh-support-with-venv-salt-minion-3004-493.patch
+  * add-sleep-on-exception-handling-on-minion-connection.patch
+  * add-standalone-configuration-file-for-enabling-packa.patch
+  * add-support-for-gpgautoimport-539.patch
+  * add-support-for-name-pkgs-and-diff_attr-parameters-t.patch
+  * align-amazon-ec2-nitro-grains-with-upstream-pr-bsc-1.patch
+  * allow-vendor-change-option-with-zypper.patch</comment>
+    <requestid>1058037</requestid>
+  </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>8e959f559e600b8ec96a86d95dc80b0d</srcmd5>
+    <version>3005.1</version>
+    <time>1674232689</time>
+    <user>dimstar_suse</user>
+    <comment>- Control the collection of lvm grains via config (bsc#1204939)
+- Added:
+  * control-the-collection-of-lvm-grains-via-config.patch</comment>
+    <requestid>1059578</requestid>
+  </revision>
+  <revision rev="136" vrev="4">
+    <srcmd5>a010809d3bd130fb5749abf4c5f06284</srcmd5>
+    <version>3005.1</version>
+    <time>1679238972</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes pkg.version_cmp on openEuler systems and a few other OS flavors
+- Make pkg.remove function from zypperpkg module to handle also PTF packages
+- Require python3-jmespath runtime dependency (bsc#1209233)
+- Fix problem with detecting PTF packages (bsc#1208691)
+- Added:
+  * skip-package-names-without-colon-bsc-1208691-578.patch
+  * fixes-pkg.version_cmp-on-openeuler-systems-and-a-few.patch
+  * 3005.1-implement-zypper-removeptf-573.patch</comment>
+    <requestid>1072612</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>2a2af6c44b343b429578032b17635c4a</srcmd5>
+    <version>3006.0</version>
+    <time>1683403717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Salt release version 3006.0 (jsc#PED-3139)
+  * See release notes: https://docs.saltproject.io/en/latest/topics/releases/3006.0.html
+
+- Add python3-looseversion as new dependency for salt
+- Add python3-packaging as new dependency for salt
+- Drop conflictive patch dicarded from upstream
+- Fix SLS rendering error when Jinja macros are used
+- Fix version detection and avoid building and testing failures</comment>
+    <requestid>1085020</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>0b1afc1e964a36ed903e6d957fd39ee5</srcmd5>
+    <version>3006.0</version>
+    <time>1691762110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103320</requestid>
+  </revision>
+  <revision rev="139" vrev="3">
+    <srcmd5>ec6ec62571ccdb10ea2713b88b801c74</srcmd5>
+    <version>3006.0</version>
+    <time>1693383557</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1107946</requestid>
+  </revision>
+  <revision rev="140" vrev="4">
+    <srcmd5>b40a13fdeecf28a424f25b68eb7899b3</srcmd5>
+    <version>3006.0</version>
+    <time>1693570753</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108398</requestid>
+  </revision>
+  <revision rev="141" vrev="5">
+    <srcmd5>5de4e66344d0bfc1e0e7fc290cea779e</srcmd5>
+    <version>3006.0</version>
+    <time>1695412033</time>
+    <user>anag+factory</user>
+    <comment>- Fix inconsistency in reported version by egg-info metadata (bsc#1215489)
+- Added:
+  * write-salt-version-before-building-when-using-with-s.patch</comment>
+    <requestid>1112589</requestid>
+  </revision>
+</revisionlist>

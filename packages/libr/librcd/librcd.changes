@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Sun Nov 15 09:29:56 UTC 2015 - jengelh@inai.de
+
+- Utilize new URL for source tarball (old one yielded NXDOMAIN).
+  Update summary/description slightly.
+
+-------------------------------------------------------------------
+Fri Dec  6 19:02:07 UTC 2013 - jengelh@inai.de
+
+- Set RPM groups after SRPM rename
+
+-------------------------------------------------------------------
+Fri Dec  6 18:19:30 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.1.14.
+  * Added pkgconfig file.
+
+-------------------------------------------------------------------
+Mon Jun 18 09:58:22 UTC 2012 - coolo@suse.com
+
+- add baselibs.conf for librcc0 to use -32bit
+
+-------------------------------------------------------------------
+Fri Dec 16 10:57:58 UTC 2011 - lazy.kent@opensuse.org
+
+- Corrected License tag according to SPDX standard.
+- Use full URL as a source.
+- Spec clean up and formatting.
+
+-------------------------------------------------------------------
+Tue Nov 22 16:10:07 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Tue Nov 22 10:17:33 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Apr  7 10:49:09 UTC 2010 - lazy.kent.suse@gmail.com
+
+- corrected Summary
+
+-------------------------------------------------------------------
+Fri Apr  2 19:32:38 UTC 2010 - lazy.kent.suse@gmail.com
+
+- add COPYING
+
+-------------------------------------------------------------------
+Mon Mar  8 14:26:14 UTC 2010 - lazy.kent.suse@gmail.com
+
+- spec-file reworked
+
+-------------------------------------------------------------------
+Sat Feb 13 00:00:00 MSK 2010 - csa@dside.dyndns.org
+
+- Update to 0.1.13
+
+-------------------------------------------------------------------
+Mon Oct  6 00:00:00 MSD 2008 - andamasov@gmail.com
+
+- Update to 0.1.11
+
+-------------------------------------------------------------------
+Wed Jun 18 00:00:00 MSD 2008 - highwaystar.ru@gmail.com
+
+- initial OBS build
+

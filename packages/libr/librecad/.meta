@@ -1,0 +1,8 @@
+<package name="librecad" project="openSUSE:Factory">
+  <title></title>
+  <description>
+License (between librecad and fparser) is incompatible.
+Do not enable builds.
+  </description>
+  <devel project="graphics" package="librecad"/>
+</package>

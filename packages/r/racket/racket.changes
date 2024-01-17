@@ -1,0 +1,778 @@
+-------------------------------------------------------------------
+Sat Dec 16 09:35:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.11.1:
+  * This bug-fix release repairs a problem with building from source
+    when using the “builtpkgs” source distribution
+
+-------------------------------------------------------------------
+Wed Nov 15 18:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
+
+- Update to 8.11:
+
+  * Match clauses can include a #:do option to allow evaluation of code and
+    bindings before a following #:when clause.
+
+  * JSON Serialization supports indentation with an #:indent option to
+    write-json. Cf. https://docs.racket-lang.org/json/index.html#%28def._%28%28lib._json%2Fmain..rkt%29._write-json%29%29
+
+  * An initiate-sequence function simplifies the creation of
+    sequences. Cf. https://docs.racket-lang.org/reference/sequences.html#%28def._%28%28lib._racket%2Fsequence..rkt%29._initiate-sequence%29%29
+
+  * The :do-in form allows an inner definition
+    sequence. Cf. https://docs.racket-lang.org/reference/for.html#%28form._%28%28lib.racket%2Fprivate%2Fbase..rkt%29.~3ado-in%29%29
+
+  * The redex-define form allows pattern-matching in PLT Redex using a
+    define-like syntax.
+    Cf. https://docs.racket-lang.org/redex/reference.html#%28form._%28%28lib._redex%2Freduction-semantics..rkt%29._redex-define%29%29
+
+  * Racket and Chez Scheme use Robert L. Smith’s “Algorithm 116” for division of
+    complex numbers. Cf. https://dl.acm.org/doi/10.1145/368637.368661
+
+  * DrRacket has indentation guides that provide visual cues indicating how code
+    is indented and grouped, accessible by using (<menu-key>-shift-i).
+
+  * “Comment-out” menu items can be specific to the #lang used by the current
+    file.
+    Cf. https://docs.racket-lang.org/framework/Text.html#%28def._%28%28lib._framework%2Fmain..rkt%29._text~3aindent-guides~3c~25~3e%29%29
+
+  * Unused identifiers have a tooltip indicating that they have no bound
+    occurrences.
+
+  * Quickscript includes a new form of scripting in the form of “hook” functions
+    that can be attached to existing
+    events. Cf. https://docs.racket-lang.org/quickscript/index.html#%28part._.Hooks%29
+
+  * Plots include plot-inset and plot-legend-padding parameters to control the
+    amount of space left unused around the plot edge and plot
+    legend. Cf. https://docs.racket-lang.org/plot/params.html#%28def._%28%28lib._plot%2Fmain..rkt%29._plot-inset%29%29
+
+  * There are many other documentation improvements, optimizations, and bug fixes!
+
+-------------------------------------------------------------------
+Fri Aug 18 20:18:56 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 8.10:
+  * syntax/parse no longer always compiles its patterns; this release
+    includes an interpreter which is used to reduce code size
+  * Racket includes primitives [im]mutable-string?, [im]mutable-bytes?,
+    [im]mutable-vector?, [im]mutable-box?, and [im]mutable-hash?
+    (cf.
+    https://docs.racket-lang.org/reference/booleans.html#%28mod-path._racket%2Fmutability%29)
+  * Redex adds judgment-form->rule-names (cf.
+    https://docs.racket-lang.org/redex/reference.html#%28def._%28%28lib._redex%2Freduction-semantics..rkt%29._judgment-form-~3erule-names%29%29)
+  * Fasl and compiled code allow fxvectors and flvectors
+  * DrRacket allows #lang-specific customization of the definition
+    navigation popdown (cf.
+    https://docs.racket-lang.org/tools/drracket_language.html#%28idx._%28gentag._55._%28lib._scribblings%2Ftools%2Ftools..scrbl%29%29%29)
+  * Racket and DrRacket include Finnish internationalization
+  * Check Syntax binding arrows are drawn for names bound with
+    define-local-member-name
+  * Many other improvements and bug fixes are included, including to
+    the scribble and plot packages
+- Remove config.sub since the fix is now included in upstream release
+
+-------------------------------------------------------------------
+Sun May 13 15:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.9:
+ * The HtDP student languages come with checked signatures. Programmers can
+   express signatures in a formal notation, and these signatures are checked at
+   run-time (in a performance-neutral manner). The addition of this formal
+   language associates meaning with several names that had no meaning before. —
+   This feature is experimental, and we may amend or retract it later. (cf. 2
+   Beginning Student with List Abbreviations 27)
+
+ * Switching into and out of dark mode is handled better on Mac OS and Linux.
+
+ * Racket uses Unicode 15.0 for character and string operations.
+
+ * The racket/hash-code library provides support for combining hash
+   codes. (cf. 4.1 Equality 5)
+
+ * A language module can have a configure-expand submodule that is dynamically
+   required to configure a parameterization before expansion of another
+   module. (cf. 18.1 Running Racket or GRacket 1)
+
+ * stream-cons supports multiple values. (cf. 4.16.2 Streams 5)
+
+ * unit/c subcontracts may depend on bindings from any imported or exported
+   signature. Additionally, bindings’ contracts are enforced within
+   subcontracts, and violations blame the contract itself (like ->i). (cf. 7.9
+   Unit Contracts 2)
+
+ * racket/class provides the dynamic-instantiate procedure for instantiating a
+   class with a dynamic list of by-name initialization arguments. (cf. 6.3
+   Creating Objects 2)
+
+ * TCP output block buffering implies TCP_NODELAY. (cf. 15.3.1 TCP 3)
+
+ * Submodules and Check Syntax require arrows work better together.
+
+ * Typed Racket's shallow check generation is improved.
+
+ * Many other improvements and bug fixes are included!
+
+-------------------------------------------------------------------
+Wed Feb 15 21:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.8:
+  * The dependent contract form, ->i, supports a #:param element that specifies
+    dependencies for parameter values that are set during the dynamic extent of
+    the function call.
+
+  * The copy-file library function supports permission-management arguments.
+
+  * Pressing <SHIFT>-return in DrRacket’s interactions window makes it easier to
+    edit and enter expressions without sending them to be evaluated.
+
+  * The numeric comparison operators (=, etc.) require at least two arguments in
+    the “How To Design Programs” teaching languages.
+
+  * Redex has improved typesetting when customized renders are used in certain
+    multi-line situations.
+
+  * We have fixed many bugs, and written lots of documentation.
+
+-------------------------------------------------------------------
+Wed Dec 14 09:55:06 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update config.sub from upstream
+
+-------------------------------------------------------------------
+Mon Dec 5 10:17:43 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.7:
+  * Typed Racket offers Shallow and Optional modes for its gradual
+    types. These modes lower the cost of interacting with untyped code,
+    but provide less protection against buggy interactions.
+
+  * Racket uses Unicode 14.0 for character and string operations, and
+    includes grapheme operations. DrRacket supports emojis.
+
+  * Racket supports RV64G (RISC-V).
+
+  * Programmers can disable definition shadowing using
+    `(#%declare #:require=define)`.
+
+  * The module dependency graphs available using raco dependencies-graph
+    and DrRacket's Module browser are faster and have new package
+    filtering support.
+
+  * DrRacket is more responsive when killing programs that produce a lot
+    of output.
+
+  * Plot 3D allows negative altitude values (e.g., looking at the plot
+    from "below").
+
+  * The `scriblib/bibtex` and `scriblib/autobib` libraries support DOIs.
+
+  * There are many other repairs and improvements!
+
+-------------------------------------------------------------------
+Thu Aug 18 10:17:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Fix file list
+
+-------------------------------------------------------------------------
+Fri Aug 12 21:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+
+- Update to 8.6:
+  * Racket has an “equal-always?” primitive that equates values that will stay
+    the same even if mutated. See
+    https://docs.racket-lang.org/reference/Equality.html#%28def.%28%28quote.~23~25kernel%29._equal-always~3f%29%29
+
+  * This release uses a new build system, Zuo, which is implemented as a little
+    language, in accordance with the ideas of Language Oriented Programming
+    (LOP). The implementation has a single C file (plus libraries implemented in
+    Zuo), so it compiles easily. The zuo/build library is modeled on make and
+    Shake for tracking dependencies and build steps. See
+    https://docs.racket-lang.org/zuo/index.html and
+    https://racket.discourse.group/t/new-build-system-pushed-to-git-repo/873
+
+  * Racket supports stencil vectors, which associate a virtual bitmask with a
+    vector, enabling certain mask-equipped update operations. See
+    https://docs.racket-lang.org/reference/stencil_vectors.html
+
+  * Racket supports Arm64 machines running Windows.
+
+  * Redex has support for simultaneous substitutions. See
+    https://docs.racket-lang.org/redex/reference.html#%28form._%28%28lib._redex%2Freduction-semantics..rkt%29._substitute%29%29
+
+  * The Web Server provides control over the maximum number of concurrent
+    connections via its “safety limits” construct. See
+    https://docs.racket-lang.org/web-server-internal/dispatch-server-unit.html#%28part._safety-limits%29
+
+  * The Web Server has improved logging performance and improved request parsing performance, reducing tail latencies.
+
+  * The Web Server supports logging response status code via
+    web-server/dispatchers/dispatch-logresp. See
+    https://docs.racket-lang.org/web-server-internal/dispatch-logresp.html
+
+  * The db library supports custom types for PostgreSQL connections; see
+    pg-custom-type for details. See
+    https://docs.racket-lang.org/db/util.html#%28def._%28%28lib._db%2Futil%2Fpostgresql..rkt%29._pg-custom-type%29%29
+
+  * The release includes many other repairs and changes!
+
+- Remove patch racket-amsmath-mathabx.patch, since the conflict between modern
+  amsmath and mathabx LaTeX styles has been resolved in the upstream
+
+-------------------------------------------------------------------
+Thu Jun  9 07:01:25 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch racket-amsmath-mathabx.patch
+  * Avoid conflict between modern amsmath and mathabx LaTeX styles to
+    get e.g. scsh build again
+
+-------------------------------------------------------------------------
+Sun May 8 18:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.5:
+  * Racket's new `-y` flag automatically keeps compiled files up to date,
+    reducing subsequent load times.
+
+  * Error-message realms allow Racket-hosted languages to adapt and
+    rewrite error messages to make sense in a particular context.
+
+  * Nonprivileged users can control package installation scope using an
+    "other-version" directory in the addon-dir.
+
+  * Racket CS runs on platforms where native-code generation is not
+    currently supported (e.g., s390x or ppc64). See "README.txt" in the
+    source distribution for more information on the --enable-pb flag to
+    configure.
+
+  * DrRacket's new 'Reopen Closed Tab' file menu item will open previously
+    closed tabs.
+
+  * Typed Racket has support for the `xml` library; use `typed/xml`.
+
+  * Rackunit reports source locations for failed test cases in the
+    Typed Racket language.
+
+  * Plot has violin plots and improved box-and-whisker plots.
+
+  * Boxes are supported alongside lists, vectors etc. in place-channel
+    messages.
+
+  * Those who manually configure Racket CS to use Zlib compression for
+    compiled code should be aware of CVE-2018-25032; the next release and
+    the current snapshot builds use a newer, safer version of zlib.
+
+  * The release includes many other repairs and changes!
+
+- Spec changes:
+  * add google-roboto-fonts to the build dependencies. Fonts are required for
+  the following two cases: 1. making scribble documents 2. compiling programs
+  that depend on font-related library (e.g. racket/draw) at compile time.
+
+-------------------------------------------------------------------
+Sat Apr 16 15:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+- Fix bug for boo#1198475
+  * add a new build dependency, `ncurses-devel`, to enable `expeditor`
+
+-------------------------------------------------------------------
+Sun Mar 6 15:26:11 UTC 2022 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.4:
+  * Command-line Racket provides a new expression editor by default for
+    its read-eval-print loop (REPL). The new REPL is based on the Chez
+    Scheme expression editor, but extended to use the same
+    language-sensitive syntax coloring and indentation tools as DrRacket.
+  * Typed Racket adds a kind system, preventing programmers from
+    writing nonsensical type expressions. It checks whether type
+    constructors are correctly applied to arguments, and separates
+    type constructors from polymorphic types. The `:kind` form enables
+    checking the kind of a type expression at the REPL. The new system
+    also correctly rejects some ill-formed recursive types.
+  * Racket has a `file-or-directory-stat` for unified information about
+    file-system objects.
+  * DrRacket shows the region affected by an `#;` S-expression comment
+    by fading the commented-out region.
+  * Racket on Chez has faster multiplication and division for some
+    numbers.
+  * Web server: The files dispatcher supports all standard caching-related
+    HTTP response headers (e.g., Cache-Control).
+  * Web server: A new dispatcher captures the common pattern of processing
+    HTTP requests and responses in a layered fashion.
+  * The Web Server supports use of the Cache-Control header, and includes
+    a new wrapping dispatcher.
+  * Expander: add "portal" syntax to support new forms of syntax object
+    binding.
+  * Documentation search is improved.
+  * Some hash operations support an optional `try-order?` argument.
+  * The plot-metrics interface has documentation.
+  * Fonts support OpenType feature settings.
+  * The Gui library has improved support for Wayland.
+  * The computation of quadratic roots is further improved.
+  * The `set/c` contract adds support for random generation.
+  * DrRacket's interactions window supports #lang-specific coloring
+    and indentation.
+  * DrRacket's parenthesis-based keyboard shortcuts change based on
+    the parentheses that each different #lang uses.
+  * The release includes many other bug repairs and other improvements!
+
+  Transition/Update notes:
+  * To turn off expeditor and make Racket's REPL go back to the old
+    editline/readline-based editor, use the command
+
+      ,input readline
+
+    and then restart Racket. Get back to the new expression editor with
+
+      ,input expeditor
+
+    To toggle color mode for the new expression editor, use one of the
+    following, which does not require restarting Racket:
+
+      ,color #false
+      ,color #true
+
+  * Support for comment fading in DrRacket requires an increment to
+    the "WXME" format version so files with non-text content written
+    by DrRacket v8.4 will open only in v8.4 and later. This does not
+    affect files that consist only of unicode text.
+  * The addition of the kind system to Typed Racket means that certain
+    mild abuses of the type system no longer type check, most notably
+    the 'application' of a polymorphic type.
+
+- Spec changes:
+  * fix the path to locate a list of html files where references of
+    %{build-root} need to removed
+  * add more html files to the list above
+  * remove the command that deletes `.LOCKpkgs.rktd`, so users will not
+    have to manually create this file as a root user in order to successfully
+    run `raco` or `drracket`.
+
+- RPMlintrc changes:
+  * remove unused filters.
+  * add a filter to ignore warnings on `.LOCKpkgs.rktd`
+
+-------------------------------------------------------------------
+Wed Dec 1 12:26:11 UTC 2021 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.3:
+  * Racket removes syntax arming and disarming in favor of a simpler system of
+    protected syntax operations, along with other updates to the syntax system.
+  * DrRacket has improved support for custom #lang languages.
+  * Typed Racket improves precision for type-checking of non-polymorphic
+    structures, existential types, and certain binding forms.
+  * Scribble HTML output gains a button to show / hide the table of contents on
+    mobile platforms.
+  * Redex’s stepper’s GUI shows IO-judgment form rule names.
+  * Many bug fixes!
+- Remove dont-strip.patch, since --disable-strip has been repaired or improved
+  in 8.3.
+
+-------------------------------------------------------------------
+Sun Oct 10 07:26:11 UTC 2021 - Fred Fu <moonsolo@gmail.com>
+- Update to 8.2:
+  * Racket CS improved the performance of large-integer arithmetic.
+  * Racket has improved support for layered and tethered installation.
+  * Racket CS supports nonatomic allocation via ffi/unsafe.
+  * Cross-compilation works fully with the raco cross tool, which
+    is distributed separately as the “raco-cross” package.
+  * DrRacket has performance improvements when editing files with
+    picts containing large bitmaps.
+  * Typed Racket more consistently refines field types of
+    non-polymorphic structs.
+  * Printing of values is unified across the teaching language
+    implementations and the stepper.
+- Rebase racket-doc.patch
+
+-------------------------------------------------------------------
+Wed Jun 16 07:26:11 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Fix for bug boo#1187288
+  * Do not remove pre-compiled and compresse object files (*.zo) as
+    with 8.1 those are mandatory for a functional racket installation
+- Enforce the usage of the system libraries libz and liblz4
+
+-------------------------------------------------------------------
+Mon May 31 08:09:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.1:
+  * DrRacket tabs can be dragged, and have new close buttons.
+  * Racket CS supports cross-compilation using raco exe.
+  * Racket CS supports Android on 32-bit and 64-bit ARM processors.
+  * The database library supports running queries in OS threads.
+  * Check-Syntax arrows correctly identify the definition site of
+    identifiers with contracts.
+  * Racket CS performance has improved for structure predicates
+    and accessors
+  * Racket CS is faster at multiplying extremely large numbers
+    and dividing large integers.
+  * Racket CS allows callbacks to raise exceptions if they are
+    annotated with #:callback-exns?.
+  * New ephemeron hash tables simplify the implementation of
+    tables where keys can refer to values.
+  * Typed Racket supports for/foldr.
+  * The stepper works for #lang htdp/*sl.
+  * Struct signatures work for the ASL teaching language.
+
+-------------------------------------------------------------------
+Tue Apr 27 11:34:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.0:
+  * Racket CS is the default implementation
+    (except for ppc64le and s390x)
+  * Racket CS has better parallel garbage collection, a 10%–30% reduction
+    in the size of generated code, and various targeted optimizations.
+  * A rewrite of the test-engine package allows the #lang versions of
+    teaching languages to produce linked test-failure messages.
+  * The release comes with a new mark-up DSL for composing text to appear
+    in the REPL (simple-tree-text-markup).
+  * Redex has an added define-overriding-judgment form and improved
+    error source location reporting.
+  * Windows scrolling speed reflects the system preference.
+  * The db package uses the utf8mb4 charset for MySQL connections.
+- Rebase dont-strip.patch
+
+-------------------------------------------------------------------
+Fri Aug 21 13:14:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.8:
+* Racket CS supports AArch32 and AArch64, including places and
+  futures.
+* Racket CS supports an "incremental" garbage-collection mode that can
+  eliminate long GC pauses for some applications, such as animations and
+  interactive games.
+* Racket CS unboxes local floating-point arithmetic
+* DrRacket's spell check features lower overhead and has fewer bugs.
+* Web Server performance under high concurrency is better by up to an
+  order of magnitude
+* The math library includes the Kronecker product.
+* The new prop:struct-field-info property provides static information
+  about field names.
+* In `plot`, the legend font and the plot font can be controlled
+  independently, and error-bars have an `#:invert?` option.
+* Racket CS uses a new HAMT implementation, dramatically reducing the memory
+  required for immutable hash tables.
+* GC callbacks are reliably called on major collections in Racket CS.
+  Also, Garbage collection is 10-20% faster.
+* DrRacket can recover much more quickly from errors involving large
+  stack traces.
+* Call-with-current-language allows more reliable tests for language
+  level code.
+* Use of the Cairo library can be multi-threaded.
+* DrRacket's scrolling has been made more responsive.
+* DrRacket's dark mode support is improved for Mac OS and Unix.
+* The Web Server provides fine-grained control over various aspects of
+  handling client connections (timeouts, buffer sizes, maximum header
+  counts, etc.) via the new "safety limits" construct.
+* The Web Server's handling of large files is improved, and its
+  latency for long-running request handlers is reduced.
+
+-------------------------------------------------------------------
+Tue Mar 24 13:53:40 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- adapt _constraints, sse3 never existed, but this is not anymore
+  ignored in OBS
+
+-------------------------------------------------------------------
+Tue Jul 16 07:38:56 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to 7.3:
+  * There is a new set of teaching languages for the upcoming
+    German-language textbook "Schreibe Dein Programm!"
+  * Racket's IO system has been refactored to improve performance
+    and simplify internal design.
+  * Racket's JSON reader is dramatically faster.
+  * The `plot` library includes color map support for renderers.
+  * The Racket web library has improved support for 307 redirects.
+  * The Racket web server provides better response messages by default
+    for common status codes.
+  * The `pict` library includes a `shear` function.
+- remove patches:
+  * extflvector-length-inlined.patch: included in release
+- clean up spec file
+  * %foo -> %{foo}
+  * remove %defattr
+  * multiple other smaller clean ups
+
+- Remove extflvector-length-inlined.patch
+
+-------------------------------------------------------------------
+Wed Apr  3 14:22:44 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- dont-strip.patch: don't strip libraries
+
+-------------------------------------------------------------------
+Mon Apr  1 11:32:05 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch extflvector-length-inlined.patch from upstream commit
+  80f84f21 to get extflvector-length work even on i586
+- Add patch racket-doc.patch to be able to split package into
+  main and doc pacakges
+
+-------------------------------------------------------------------
+Fri Mar 29 12:55:43 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Spec file clean up
+- Try to get it work on some ix86 CPU versions
+
+-------------------------------------------------------------------
+Wed Mar 27 18:12:23 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Require some missed libraries and certificates for build
+  as well as for installation even if rmplint cries
+- Update to racket 7.2
+  * The contract system supports collapsible contracts, which avoid
+    repeated wrappers in certain pathological situations. Thanks to Daniel
+    Feltey.
+  * Quickscript, a scripting tool for DrRacket, has become part of the
+    standard distribution. Thanks to Laurent Orseau.
+  * The web server's built-in configuration for serving static files
+    recognizes the ".mjs" extension for JavaScript modules.
+  * The `data/enumerate` library supports an additional form of
+    subtraction via `but-not/e`, following Yorgey and Foner's ICFP'18
+    paper. Thanks to Max New.
+  * The `letrec.rkt` example model in Redex has been changed to more
+    closely match Racket, which led to some bug fixes in Racket's
+    implementation of `letrec` and `set!`.
+  * The racklog library has seen a number of improvements, including fixes
+    to logic variable binding, logic variables containing predicates being
+    applicable, and the introduction of an `%andmap` higher-order predicate.
+
+-------------------------------------------------------------------
+Thu Nov 29 22:02:09 UTC 2018 - Tomasz Olszewski <olszewst@gmail.com>
+
+- Downgrade to Racket 7.1
+  * 7.1.0.1 was only a snapshot release and is already gone from
+    Racket mirrors
+
+-------------------------------------------------------------------
+Sat Oct 13 17:43:25 UTC 2018 - sean@suspend.net
+
+- Update to Racket 7.1.0.1
+  * Syntax (#') now supports new template subforms: ~@ and ~?
+  * Interactive overlays can be added to plots produced by plot-snip
+  * Added contrcat-equivalent?, a way to compare contracts
+  * Lazy Racket supports functions with keyword arguments
+
+
+-------------------------------------------------------------------
+Mon Jun 25 09:43:21 UTC 2018 - schwab@suse.de
+
+- gc-aarch64.patch: remove obsolete patch, this GC implementation is no
+  longer used.
+
+-------------------------------------------------------------------
+Wed Dec 27 08:46:28 UTC 2017 - kgronlund@suse.com
+
+- Update to Racket 6.11
+  * Typed Racket supports refinement types and dependent function types.
+  * DrRacket’s Program Contour is significantly more efficient
+  * The web-server/formlets library produces formlets that are serializable
+  * The db library supports the Cassandra database
+- Ensure more system resources when building package
+
+-------------------------------------------------------------------
+Sun Sep 24 21:10:21 UTC 2017 - olszewst@gmail.com
+
+- Racket version bumped to 6.10.1.
+- Spec changes
+  * Drop --collectsdir in %configure in favour of --prefix (%configure
+    would fail otherwise)
+  * Drop 0-size file guard. This used to delete lock files (LOCKpkgs.rktd)
+    lack of which would result in errors in many contexts, including
+    basic usage of both DrRacket and raco (package manager)
+  * Drop %_datadir/%name/collects from %dir, because parent folder is already
+    included in another %dir entry. This fixes a warning about collects folder
+    being listed twice.
+  * Added reference to starter-sh.
+  * Drop DrRacket's -singleInstance option from %suse_update_desktop_file. This
+    option caused error messages coming from %suse_update_desktop_file itself.
+
+-------------------------------------------------------------------
+Sat Mar 11 22:37:03 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to explicity package %{_docdir}/%{name} to clear
+  unpackaged files builderror in openSUSE:Factory
+
+-------------------------------------------------------------------
+Fri Jul 29 09:00:45 UTC 2016 - jengelh@inai.de
+
+- Guard 0-size deletion by -type f, as other types can have
+  size 0 too. Run spec-beautifier to bring (almost) all macro uses
+  into same style.
+
+-------------------------------------------------------------------
+Mon Jul 25 00:10:49 UTC 2016 - kgronlund@suse.com
+
+- Update to Racket 6.6
+
+-------------------------------------------------------------------
+Sun Aug 11 20:59:59 UTC 2013 - schwab@suse.de
+
+- gc-aarch64.patch: add support for aarch64
+
+-------------------------------------------------------------------
+Sat May  3 01:37:00 UTC 2014 - MihailJP
+
+- Spec changes
+  * Collection 'config' should be included in main package
+
+-------------------------------------------------------------------
+Sat Aug 10 13:58:09 UTC 2013 - toganm@opensuse.org
+
+- Update to Racket 5.3.6
+  * This is a bug fix release.  It eliminates errors from v5.3.5
+    that people have found over the summer.
+- Spec changes
+  * remove libpng16.patch and libpng16-adjustment.patch
+  * rather then use of mirrors for source downloads use the main
+    site as mirrors are not uptodate
+
+-------------------------------------------------------------------
+Tue Jun 18 12:13:38 UTC 2013 - toganm@opensuse.org
+
+- Update to Racket v5.3.5
+
+  * This is a special-purpose release to match the arrival of "Realm of
+    Racket" in bookstores.  Racket v.5.3.5 adds a single `realm'
+    collection to the v5.3.4 release.  The new collection contains the
+    source code that readers of Realm may wish to use for experiments.
+
+- Add racket to the requires of webserver subpackage
+
+-------------------------------------------------------------------
+Fri May 17 06:16:25 UTC 2013 - toganm@opensuse.org
+
+- Added backported patches libpn16.patch and libpng16-adjustment.patch
+  correcting libpn16
+- Fix randomly generated mode 666 documentation files
+
+-------------------------------------------------------------------
+Tue May 14 14:33:37 UTC 2013 - toganm@opensuse.org
+
+- Update to 5.3.4 release for details see changelog.txt and News
+
+  * Extflonums (80-bit floating-point numbers) are supported on some
+    x86/x86_64 platforms -- including Windows, and including platforms
+    where Racket is compiled to use SSE instructions for flonum
+    arithmetic.  Thanks to Michael Filonenko.
+  * Tally Maze: a new game based an enumeration of 2d mazes.
+  * The Optimization Coach, a DrRacket plugin, has been moved from the
+    Racket distribution to the Racket package repository.  Install it
+    with: raco pkg install optimization-coach
+  * Redex: `define-union-language' now merges productions when
+    languages define the same nonterminals.  Thanks to William Bowman.
+  * The `srfi/19' library is now compatible with the date structure
+    type exported by `racket/base'.
+
+- Packaging changes
+  * 0001-Fix-install-path-for-doc-and-collects.patch based on debian
+    patch but correct doc install directory as well, this patch also
+    enable the removal of 0001-pkg-collects-path.patch
+  * For Factory use libpng12 as racket is not compatible with
+    libpng16
+  * Include libtools to BuildRequires, not to depend on bundled software
+    in the source package
+  * Include full URL for the source package
+
+-------------------------------------------------------------------
+Fri Mar 15 15:04:42 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-2.1+ and GPL-3.0+
+  testsuite contains GPL-3.0+ licensed code
+
+-------------------------------------------------------------------
+Sat Feb 16 09:07:11 UTC 2013 - toganm@opensuse.org
+
+- Update to 5.3.3 release for details see changelog.txt and News
+
+  * This is a bug-fix release to address a flaw in DrRacket v5.3.2
+    concerning interactions between the contour window and the syntax
+    coloring.
+
+
+-------------------------------------------------------------------
+Fri Feb  1 11:16:05 UTC 2013 - toganm@opensuse.org
+
+- Update to 5.3.2 release for details see changelog.txt and News
+
+  * Changed case to use equal? instead of eqv?
+  * Changed log-message to support a name argument
+  * Changed the synchronization result of a log receiver to include an
+    event name
+  * Added exn:fail:filesystem:errno and exn:fail:network:errno
+  * Added phantom byte strings
+  * Added 'word mode to system-type
+  * Added arguments to impersonate-prompt-tag and chaperone-prompt-tag
+    to support interposition on non-composable continuation results
+  * Add #fx() and #fl() reader forms for flvectors and fxvectors
+  * racket/unsafe/ops: added unsafe-cons-list
+  * racket/gui: added get-current-mouse-state, and added
+    display-changed to frame%
+  * racket/serialize: fxvectors and flvectors are serializable
+  * racket/net: added uri-path-segment-unreserved-encode
+  * racket/url: added current-url-encode-mode
+  * racket/date: fixed 'iso-8601 date formatting
+  * scribble/tag: added
+  * scribble/base: added make-section-tag, taglet?
+    r5rs, r6rs: fixed case and cond to disallow internal definitions
+    in clauses
+  * ffi/com: added com-get-property*
+  * file/untar: added
+  * file/untgz: added
+  * file/unzip: added
+  * compiler/zo-structs: generalize flonum? field to type
+    field in localref, let-one, and fun
+  * compiler/zo-structs: added a constantness field to module-variable
+
+-------------------------------------------------------------------
+Thu Nov  8 09:28:40 UTC 2012 - toganm@opensuse.org
+
+- Update to 5.3.1 release for details see changelog and News
+
+  * Changed make-log-receiver to accept a logger name as an event
+    filter
+  * Addded define-logger
+  * Changed -W, -L, PLTSTDERR, and PLTSYSLOG to support log filters
+    of the form "<level> <name>=<level> ..."
+  * Changed log-error, etc., to support format mode
+  * Added racket/format, which is re-exported by racket
+  * Added #:break and #:final clauses to for forms
+  * Added exn:break:hang-up and exn:break:terminate, added extra
+    argument to break-thread and place-break, and redirect SIGTERM
+    and SIGHUP as breaks
+  * Add #:fill option to for/vector, for*/vector, for/flvector,
+    for*/flvector, for/fxvector, and for*/fxvector
+  * Added PLTCOMPILEDROOTS and --compiled/-R command-line flag
+  * Added reroot-path
+  * Changed a thread's initial prompt to use the default handler
+    (instead of accepting and ignoring abort arguments)
+  * ffi/unsafe: added cpointer-gcable?
+  * racket/class: added dynamic-get-field and dynamic-set-field!
+  * racket/set: added set-first and set-rest, sets are streams
+  * racket/require-transformer: an import's module path can be syntax
+  * scribble/base: add items/c
+  * scribble/decode: add spliceof
+  * syntax/for-body: added
+
+- drop racket-glibc-2.16.patch
+
+-------------------------------------------------------------------
+Thu Oct 11 15:10:49 UTC 2012 - toganm@opensuse.org
+
+- enabled documentation
+
+-------------------------------------------------------------------
+Wed Aug  8 08:03:24 UTC 2012 - toganm@opensuse.org
+
+- Update to official 5.3 release
+
+-------------------------------------------------------------------
+Wed Aug  1 10:18:40 UTC 2012 - toganm@opensuse.org
+
+- split packaging
+
+-------------------------------------------------------------------
+Thu Jul 26 22:34:05 UTC 2012 - toganm@opensuse.org
+
+- Use the upcoming version 5.3.0.16 from nightly builds
+  * add racket.desktop
+  * disable documentation as it breaks the build
+- TODO
+  * fix the rpmlint warnings for srfi
+
+-------------------------------------------------------------------
+Tue May  1 14:08:37 UTC 2012 - toganm@opensuse.org
+
+- Initial packaging for racket-lang

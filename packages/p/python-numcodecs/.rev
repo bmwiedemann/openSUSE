@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c571e755b635f1850403c81832c69d23</srcmd5>
+    <version>0.7.2</version>
+    <time>1609405165</time>
+    <user>dimstar_suse</user>
+    <comment>used by zarr, dask</comment>
+    <requestid>859300</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>822634106cde8745d13a2c05baa9ccb6</srcmd5>
+    <version>0.7.3</version>
+    <time>1618859148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886342</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7c0146e66dc4fb7cd104daf181ba86a3</srcmd5>
+    <version>0.7.3</version>
+    <time>1650922557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972607</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ddc79e6f2a717396d5d983ccf27972f</srcmd5>
+    <version>0.11.0</version>
+    <time>1673650975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058132</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>755e4dda643d95f723d966ef7404d273</srcmd5>
+    <version>0.11.0</version>
+    <time>1693235756</time>
+    <user>anag+factory</user>
+    <comment>- Add patch move-from-entrypoints.patch:
+  * Drop requirements on entrypoints, use importlib.metadata.</comment>
+    <requestid>1106198</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="gnome-tweaks" project="openSUSE:Factory">
+  <title>A tool to customize advanced GNOME 3 options</title>
+  <description>GNOME Tweak Tool is an application for changing the advanced settings
+of GNOME 3.
+
+</description>
+  <devel project="GNOME:Factory" package="gnome-tweaks"/>
+  <url>http://live.gnome.org/GnomeTweakTool</url>
+</package>

@@ -1,0 +1,14 @@
+---
+ src/rediff.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/rediff.c
++++ b/src/rediff.c
+@@ -841,6 +841,7 @@
+ 		newhunk->filepos = pos;
+ 		newhunk->line_in_diff = linenum;
+ 		newhunk->num_lines = 0;
++		newhunk->discard_offset = 0;
+ 
+ 		if (!strncmp (line, "--- ", 4)) {
+ 			struct file_info *info = xmalloc (sizeof *info);

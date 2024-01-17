@@ -1,0 +1,25 @@
+From 8d32843ec80c6e26ee1a1b7d576e8ac69462bf3d Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 17 Feb 2020 17:19:04 +0100
+Subject: [PATCH 124/130] Makefile: "collect" must depend on "build"
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8a71be7..c8af827 100644
+--- a/Makefile
++++ b/Makefile
+@@ -55,7 +55,7 @@ clean-test-docs:
+ $(BUILDDIR):
+ 	mkdir -p $@
+ 
+-collect:
++collect:	$(BUILDDIR)
+ 	cp -R extension/* $(BUILDDIR)
+ 	cp -R data/* $(BUILDDIR)
+ 
+-- 
+2.26.1
+

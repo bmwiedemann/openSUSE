@@ -1,0 +1,6 @@
+<package name="crda" project="openSUSE:Factory">
+  <title>802.11 central regulatory domain agent</title>
+  <description>The crda binary provides access to the wireless-regdb to the kernel
+through udev.</description>
+  <devel project="hardware" package="crda"/>
+</package>

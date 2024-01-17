@@ -1,0 +1,24 @@
+From: Fabian Vogt <fvogt@suse.com>
+Date: 2019-04-04 13:41:59 +0200
+Subject: 'iptables -L' reads garbage
+References: [bsc#1106751]
+Upstream: reported (https://bugzilla.netfilter.org/show_bug.cgi?id=1331)
+
+This patch fixes a situation where 'iptables -L' reads garbage
+from the struct as the kernel never filled it in the bugged case.
+This can lead to issues like mapping a few TiB of memory
+
+---
+
+Index: iptables-1.8.2/libiptc/libiptc.c
+===================================================================
+--- iptables-1.8.2.orig/libiptc/libiptc.c
++++ iptables-1.8.2/libiptc/libiptc.c
+@@ -1305,6 +1305,7 @@ TC_INIT(const char *tablename)
+ {
+ 	struct xtc_handle *h;
+ 	STRUCT_GETINFO info;
++	memset(&info, 0, sizeof(info));
+ 	unsigned int tmp;
+ 	socklen_t s;
+ 	int sockfd;

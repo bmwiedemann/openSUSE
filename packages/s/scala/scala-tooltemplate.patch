@@ -1,0 +1,25 @@
+--- a/src/compiler/templates/tool-unix.tmpl
++++ b/src/compiler/templates/tool-unix.tmpl
+@@ -12,15 +12,14 @@
+ # additional information regarding copyright ownership.
+ ##############################################################################
+ 
++. /usr/share/java-utils/java-functions || exit 1
++
++set_javacmd || exit 3
++check_java_env || exit 4
++set_jvm_dirs || exit 5
++
+ findScalaHome () {
+-  # see scala/bug#2092 and scala/bug#5792
+-  local source="${BASH_SOURCE[0]}"
+-  while [ -h "$source" ] ; do
+-    local linked="$(readlink "$source")"
+-    local dir="$( cd -P "$(dirname "$source")" && cd -P "$(dirname "$linked")" && pwd )"
+-    source="$dir/$(basename "$linked")"
+-  done
+-  ( cd -P "$(dirname "$source")/.." && pwd )
++  echo "/usr/share/java/scala"
+ }
+ execCommand () {
+   [[ -n $SCALA_RUNNER_DEBUG ]] && echo "" && for arg in "$@@"; do echo "$arg"; done && echo "";

@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2319f5fc974d45635224610f3ce6135b</srcmd5>
+    <version>1.44.0</version>
+    <time>1651088528</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial build
+  + Version 1.44.0</comment>
+    <requestid>973191</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5dee50d6861f4709168088092072745</srcmd5>
+    <version>1.56.0</version>
+    <time>1688399005</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.56.0:
+  * Add type stub generation support to grpcio-tools.
+  * [aio types] Fix some grpc.aio python types.
+  * [Bazel Python3.11] Update Bazel dependencies for Python 3.11
+  * Build native MacOS arm64 artifacts (universal2).
+  * Build with System OpenSSL on Mac OS arm64.
+  * Change Aio abort() function return type to NoReturn.
+  * Change the annotated return type of UnaryStreamCall and StreamStreamCall from AsyncIterable to AsyncIterator.
+  * De-experimentalize compression.
+  * De-experimentalize wait-for-ready.
+  * [EventEngine] Disable EventEngine polling in gRPC Python
+  * Fix DeprecationWarning when calling asyncio.get_event_loop().
+  * Fix lack of cooldown between poll attempts.
+  * Include .pyi file.
+  * Remove enum and future.
+  * Remove references to deprecated syntax field.
+  * [Remove Six] Remove dependency on six.
+  * Respect CC variable in grpcio python build.
+  * Revert &quot;Build with System OpenSSL on Mac OS arm64
+  * Support Python 3.11.
+  * Support python 3.11 on aarch64.
+  * Update xds-protos package to pull in protobuf 4.X.
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1096503</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d1d5e5523a5bd7beb9250394c687aab</srcmd5>
+    <version>1.56.2</version>
+    <time>1694545423</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110468</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14c2e74d3194b462f6a82f945eb57474</srcmd5>
+    <version>1.60.0</version>
+    <time>1704829801</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.60.0:
+  * Change return of grpc.aio.ServicerContext.code() from integer
+    to grpc.StatusCode</comment>
+    <requestid>1137630</requestid>
+  </revision>
+</revisionlist>

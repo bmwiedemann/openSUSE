@@ -1,0 +1,5 @@
+<package name="spi-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="spi-tools"/>
+</package>

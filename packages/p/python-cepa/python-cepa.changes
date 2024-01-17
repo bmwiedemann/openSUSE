@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Mar  8 04:31:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-fullargspec.patch:
+  - Stop using a function that was removed in Python 3.11.
+
+-------------------------------------------------------------------
+Thu Oct 27 22:11:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.8.4 
+  Complete changelog https://stem.torproject.org/change_log.html#version-1-8
+
+-------------------------------------------------------------------
+Wed Mar 16 20:59:30 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- Provides/Obsoletes added to avoid python-stem conflict
+
+-------------------------------------------------------------------
+Thu Feb 24 20:49:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Create package on version 1.8.3, based on python-stem 1.8.0
+- Use mock.patch from python-stem

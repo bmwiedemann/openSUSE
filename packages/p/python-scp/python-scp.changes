@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Tue Jul 18 18:53:34 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 0.14.5:
+  * Update docstrings to clarify sanitation and use of wildcards
+  * Make sure to close the local file on errors
+
+-------------------------------------------------------------------
+Thu Jul  6 12:09:19 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue Jul 19 11:58:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.4:
+  * Update type hints for pyright
+
+-------------------------------------------------------------------
+Tue Feb 22 09:22:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.3:
+  * Add type hints
+
+-------------------------------------------------------------------
+Mon Jan  3 12:34:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.2:
+  * Don't fail if the remote path is a PurePath not a Path
+
+-------------------------------------------------------------------
+Sun Oct 31 23:50:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch off the test suite (gh#jbardin/scp.py#167).
+
+-------------------------------------------------------------------
+Sat Sep 11 22:23:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Run unittests
+- Get tarball from github.com instead pythonhosted.org
+
+-------------------------------------------------------------------
+Sat Sep 11 12:35:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.14.1
+  * Don't fail if 'pathlib' doesn't import (Python 2)
+  * Accept 'unicode' objects as paths (Python 2)
+- Update to 0.14.0
+  * Accept iterables other than list and tuple in get() and put()
+  * Accept pathlib.Path objects
+
+-------------------------------------------------------------------
+Sat Jul 17 13:37:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.6:
+  * Fix put when the source directory has a trailing slash. It will now work
+    similarly to rsync, copying the contents of the directory.
+
+-------------------------------------------------------------------
+Tue Jun 29 20:06:41 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.13.5
+  * Fix extra space sent in SSH command-line for get(), causing
+    issues on some servers.
+- Update to version 0.13.4
+  * Add scp_command attribute, allowing changing the command run
+    on the server (for example to sudo scp)
+
+-------------------------------------------------------------------
+Thu Nov 26 08:46:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.13.3:
+  - Fix hanging when underlying paramiko channel is closed
+
+-------------------------------------------------------------------
+Mon Mar 25 13:59:28 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.13.2
+  *  Fix AssertionError in recursive get() when `_rename` is set and
+     server sends a POPD at the end (`_depth > 0`)
+
+-------------------------------------------------------------------
+Wed Mar 13 13:52:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.13.1:
+  * Guard against some malformed messages from the server
+  * Remove all introspection logic for progress callback introduced in 0.12
+  * progress callback only accept 3 arguments again
+  * Introduce progress4 parameter which accepts the peername as 4th argument
+  * Fix progress callback failing when it is an instance or class method
+  * Fix README.rst for PyPI
+  * Add possibility of getting the peer IP and port from the progress callback
+  * Make putfo() work with file-like objects that don't provide getvalue()
+  * Add putfo() method, allowing one to upload a file-like object
+  * Add top-level get() and put() functions for convenience
+  * Increase default socket time from 5 to 10 seconds
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Aug  6 18:01:13 UTC 2017 - mardnh@gmx.de
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Mon Aug 15 09:21:22 UTC 2016 - mardnh@gmx.de
+
+- use python-setuptools instead of python-distribute
+
+-------------------------------------------------------------------
+Fri Jan 22 11:26:51 UTC 2016 - mardnh@gmx.de
+
+- initial package
+

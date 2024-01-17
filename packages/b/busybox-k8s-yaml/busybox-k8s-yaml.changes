@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Aug 26 17:09:27 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use pause command instead of sleep, else the container will
+  always quit hard after 1 hour.
+
+-------------------------------------------------------------------
+Sat Feb 22 17:37:38 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version

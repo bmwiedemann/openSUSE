@@ -1,0 +1,8 @@
+<package name="WindowMaker-themes" project="openSUSE:Factory">
+  <title>Themes for Window Maker</title>
+  <description>This packages contains themes for the Window Maker window manager.
+Documentation:
+
+/usr/share/doc/packages/wmthemes</description>
+  <devel project="X11:windowmanagers" package="WindowMaker-themes"/>
+</package>

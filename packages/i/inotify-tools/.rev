@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90a236e3c10be90df7114f19ad185ba3</srcmd5>
+    <version>3.14</version>
+    <time>1427313915</time>
+    <user>dimstar_suse</user>
+    <comment>Installed COYPING and removed rpmlint workarounds</comment>
+    <requestid>292665</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fda6bc0cdd8598fe67ad38c65944c4b5</srcmd5>
+    <version>3.14</version>
+    <time>1445288042</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339939</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8f2a417372b5f13635f6487a05d7e3e</srcmd5>
+    <version>3.20.1</version>
+    <time>1549286718</time>
+    <user>coolo</user>
+    <comment>- adjust source to the github download url
+
+- update to version 3.20.1
+  * no changelog
+  * drop upstreamed patch reserved-identifier.patch</comment>
+    <requestid>670902</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e817e3d607d2b32efc6b44b6e281574c</srcmd5>
+    <version>3.20.1</version>
+    <time>1556023163</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697039</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d2691f06e1ff50170c85a2e383859b6f</srcmd5>
+    <version>3.20.2.2</version>
+    <time>1597756239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.20.2:
+  * New maintainer 
+  * Fix potential buffer overflow
+  * gcc 9 support
+- remove inotify-tools-no-timestamp-in-doc.patch
+  inotify-return.patch (merged upstream)</comment>
+    <requestid>826943</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>433b2e65c3f2a56ae5a77208b7ae1122</srcmd5>
+    <version>3.20.11.0</version>
+    <time>1608542665</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.20.11.0:
+  * Added --no-dereference to watch a symlink
+  * bugfixes</comment>
+    <requestid>857150</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>95c7f464fb1cf53de3cf4fac38e7dc4c</srcmd5>
+    <version>3.21.9.5</version>
+    <time>1633038191</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.21.9.5:
+  * Fix Wrong pointer passed to realloc
+  * Fix offset compiler warning
+  * various static code analyse annotations and fixes</comment>
+    <requestid>921871</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d17a52fe22bbf913d8639f39821d4d03</srcmd5>
+    <version>3.21.9.6</version>
+    <time>1634754164</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.21.9.6:
+  * update path for includes in stats.h 
+  * Fix spellings in manpages</comment>
+    <requestid>925709</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f36b8bfd780b281513113f960f7f0c6b</srcmd5>
+    <version>3.21.9.6</version>
+    <time>1636577184</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.21.9.6 (jsc#SLE-21025):</comment>
+    <requestid>930621</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6d1b5e12817268a97f995df50833354a</srcmd5>
+    <version>3.22.1.0</version>
+    <time>1652039528</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.22.1.0:
+  * print to stderr if you fail to fopen file
+  * Properly terminate escaped CSV strings. (#158)
+  * Fix printing of filename when watching a file</comment>
+    <requestid>975529</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>850b72b8ea5b6358d6a1a3aeddf36e70</srcmd5>
+    <version>3.22.6.0</version>
+    <time>1655732220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983714</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>84736045fe5e2aee80f38a5732534554</srcmd5>
+    <version>4.23.9.0</version>
+    <time>1704491908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.23.9.0:
+  * support cross compile for Android
+  * libinotifytools: Rename init variable to fix conflict with
+    entry point
+  * Add CodeQL workflow for GitHub code scanning
+  * Fix build with musl and add Alpine buildnode to CI
+  * Update Cirrus CI FreeBSD images
+  * Fix enabling of fanotify/fsnotify.
+  * Fix fanotify_supported()
+  * Combine to one build machine, reduce test iteration to 64
+  * Add -fanalyzer to build
+  * Enable CentOS Stream 9 build
+  * Add debian 12
+  * Ensure C++ libraries are not linked in
+
+  * update path for includes in stats.h
+  * various static code analyse annotations and fixes
+  * New maintainer
+- Build noarch package for doc only for newer suse version, otherwise
+- initial package</comment>
+    <requestid>1135769</requestid>
+  </revision>
+</revisionlist>

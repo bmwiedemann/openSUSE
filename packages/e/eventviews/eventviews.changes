@@ -1,0 +1,1382 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:19:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- No code change since 23.08.3
+
+-------------------------------------------------------------------
+Tue Nov  7 17:04:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- No code change since 23.08.2
+
+-------------------------------------------------------------------
+Tue Oct 10 18:26:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- No code change since 23.08.1
+
+-------------------------------------------------------------------
+Tue Sep 12 11:55:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Agenda: fix timezone being lost when moving event by drag
+
+-------------------------------------------------------------------
+Sun Aug 20 13:58:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:15 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix korganizer crashes when graphically moving or resizing a copied recurring event (kde#472789)
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Avoid crashes if findCalendar or calendar2 return empty (kde#470584)
+  * Invalidate model to apply sortCompletedTodosSeparately pref (kde#458254)
+  * Remove TodoModel from eventviews
+  * Switch to the TodoModel copy coming from akonadi-calendar
+  * Remove CI 6 job. We will use kf6 branch for kf6 works
+  * Explicitly link against KConfig
+  * Remove the background coloring from TodoModel
+  * Add a ColorTodoProxyModel providing the colored background feature
+  * Adapt to CalendarSupport::createMimeData having moved to akoandi-calendar
+  * Remove tooltips on TodoModel
+  * not export symbol of private methods
+  * Allow to build test + fix generated QCH target
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+  * Const'ify pointer
+
+-------------------------------------------------------------------
+Tue Jul  4 10:19:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- Changes since 23.04.2:
+  * Invalidate model to apply sortCompletedTodosSeparately pref (kde#458254)
+
+-------------------------------------------------------------------
+Tue Jun  6 20:00:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- No code change since 23.04.1
+
+-------------------------------------------------------------------
+Tue May  9 10:46:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix crash when dragging event ouf of month view scene (kde#466971)
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+
+-------------------------------------------------------------------
+Sat Apr 15 08:45:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:41:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:42:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Feb 28 09:45:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
+Tue Jan 31 10:33:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.2/
+
+-------------------------------------------------------------------
+Tue Jan  3 10:19:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.1/
+
+-------------------------------------------------------------------
+Fri Dec  2 12:24:40 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:44:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:53:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Nov  1 11:19:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.3/
+
+-------------------------------------------------------------------
+Tue Oct 11 14:31:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.2/
+
+-------------------------------------------------------------------
+Tue Sep  6 15:18:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.1/
+
+-------------------------------------------------------------------
+Sun Aug 14 09:41:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Fri Aug  5 12:10:23 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Jul 16 08:27:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  5 17:02:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Wed Jun  8 09:52:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+
+-------------------------------------------------------------------
+Tue May 10 16:29:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+
+-------------------------------------------------------------------
+Mon Apr 18 07:50:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Changes since 21.12.3:
+  * Fix compile without deprecated method
+  * Port to setFilterRegularExpression
+  * Fix some compile error against qt6
+  * Use new akonadi calendar install include
+  * Fix ecm_set_disabled_deprecation_versions
+  * Fix install headers
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+  * Adapt build system for building against qt6
+  * Port deprecated methods
+  * Make it compile on freebsd
+  * Modernize code
+  * Fix more prefixes on dependencies
+  * Correct prefix to other PIM repositories in .kde-ci.yml
+  * Do not merge release/21.12 .gitlab-ci.yml
+  * not necessary to use I18N_NOOP here, i18n(..) is enough
+
+-------------------------------------------------------------------
+Tue Mar  1 09:56:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- No code change since 21.12.2
+
+-------------------------------------------------------------------
+Tue Feb  1 13:02:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Fix build with GCC 12 (standard attributes in middle of decl-specifiers)
+
+-------------------------------------------------------------------
+Tue Jan  4 10:25:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- No code change since 21.12.0
+
+-------------------------------------------------------------------
+Fri Dec  3 19:21:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Enable new GitLab CI on stable branch.
+  * Agenda view: fix misalignement of allday view & day headers \wo scrollbar (kde#405714)
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Color the borders of items in the Agenda view
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * AgendaView: fix misaligned layout of header & footer columns
+  * Allow to show header in qtc6
+  * Show decoration elements without frame in all widget styles
+  * Drop support for EVENTVIEWS_NODECOS flag
+  * Make TodoModel accessible to QML
+  * Add changes ignored by the git merge
+  * Fix some cppcheck warning
+  * Add a Completed Date column to the To-Do List view
+  * Add a dependency for Gitlab CI
+  * Use theme colors for today's cell and the selected cell in the Month View
+  * Use const'ref
+  * Port for(...:...)
+  * Fix include
+  * Add KDE CI file
+  * Const'ify variable
+  * A new api was added => increase version
+  * Use qOverload directly (scripted)
+  * Use std::chrono_literals
+  * Use KPluginFactory to instantiate plugins
+  * USe std::chrono_literals
+  * CalendarDecoration::StoredElement: tag property getters with Q_REQUIRED_RESULT
+  * CalendarDecoration::Element: make property getters const
+
+-------------------------------------------------------------------
+Tue Nov  2 21:33:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- No code change since 21.08.2
+
+-------------------------------------------------------------------
+Tue Oct  5 16:27:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Simplify drawBackground()
+  * Use theme colors for today's cell and the selected cell in the Month View
+  * CI: use stable-kf5-qt5 BRANCH_GROUP in stable branch
+  * Do not use "due today" color for completed to-dos in Agenda View (kde#122776)
+  * src/helper.cpp - fix crash in setResourceColor (kde#426906)
+  * Display multi-day holidays as one wide block in the Month View (kde#187116)
+  * Avoid vertical gaps around multi-day events in the month view (kde#435667)
+
+-------------------------------------------------------------------
+Wed Sep  1 12:37:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Allow separate ListView configurations
+  * Preserve sorting in the ListView (kde#441530)
+
+-------------------------------------------------------------------
+Fri Aug  6 09:34:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Simplify sorting the Todo List view
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Shorten holiday names to fit the Agenda view's header (kde#225498)
+  * Fix clazy warning
+  * Modernize code
+  * Use forward declaration (scripted)
+- Only install the license files once
+
+-------------------------------------------------------------------
+Wed Jul  7 08:56:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- Changes since 21.04.2:
+  * Make To-do List sort by priority consistent with KCalendarCore
+  * Display the tops of journal entries in journal frames (kde#437669)
+
+-------------------------------------------------------------------
+Tue Jun  8 12:39:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Fix corner cases in the Agenda and Month views
+  * Show recurring to-dos on DTDUE in the month view, like plain to-dos
+
+-------------------------------------------------------------------
+Wed May 12 06:06:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * Tidy up TimelineView's interface, some day.
+  * Adjust layout and resizing of the timeline view
+  * Initialize the view's preferences
+  * Don't crash if an agenda item is deleted while it is being moved (kde#435352)
+
+-------------------------------------------------------------------
+Fri Apr 16 16:11:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Display recurrence without main incidence
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Mar  4 06:09:34 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- Changes since 20.12.2:
+  * Use placeHolderText for the priority quick filter
+  * Fix agenda view's display of end-of-day events
+  * Fix month view's display of end-of-day instances (kde#165212)
+
+-------------------------------------------------------------------
+Wed Feb  3 08:27:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- No code change since 20.12.1
+
+-------------------------------------------------------------------
+Tue Jan  5 12:24:47 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Revert merge request 14
+  * Make To-do List popup menu match other menus
+  * agendaviews: Display recurrence w/o main incidence
+  * incidencetreemodel: Improve debug ouput
+  * Fix display of multi-day events from non-local time zones (kde#429007)
+
+-------------------------------------------------------------------
+Sat Dec  5 23:15:28 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:44 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- No code change since 20.11.80
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Nov  5 22:45:29 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- No code change since 20.08.2
+
+-------------------------------------------------------------------
+Fri Oct  9 05:43:01 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- No code change since 20.08.1
+
+-------------------------------------------------------------------
+Tue Sep  1 20:49:07 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * use no deprecated enum Qt::MiddleButton
+
+-------------------------------------------------------------------
+Sun Aug  9 09:08:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- No code change since 20.07.90
+
+-------------------------------------------------------------------
+Sun Aug  2 07:58:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- No code change since 20.07.80
+
+-------------------------------------------------------------------
+Sun Jul 19 10:03:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Jul  9 20:08:37 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- Changes since 20.04.2:
+  * Sort by date/time correctly in the Event List view
+  * Display incidences at the time they are dragged to in the agenda view.
+  * Display recurring to-dos on their due date/time in the agenda view
+  * Display all-day to-dos on their due date in the agenda view (kde#338302)
+
+-------------------------------------------------------------------
+Tue Jun  9 12:14:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- No code change since 20.04.1
+
+-------------------------------------------------------------------
+Fri May 15 15:40:59 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Fix warning about index outside the valid range
+
+-------------------------------------------------------------------
+Thu Apr 23 12:21:54 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * [IncidenceTreeModel] Update UID if it was changed
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- Changes since 20.03.80:
+  * [TodoView] Use parents collection when creating a subtodo
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Changes since 19.12.3:
+  * agenda/agenda.cpp - fix condition testing for failed deletion
+  * Fix build with Qt 5.15 beta2
+  * UiTools is not required for building it
+  * Make it compile without deprecated methods
+  * Autogenerate categories file
+  * Port to QRandomGenerator
+  * Remove QCombobox usage
+  * Month View: background color computation for dark mode theme (kde#413521)
+
+-------------------------------------------------------------------
+Thu Mar  5 20:35:43 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-03-apps-update
+- No code change since 19.12.2
+
+-------------------------------------------------------------------
+Fri Feb  7 08:36:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:28:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-02-apps-update
+- No code change since 19.12.1
+
+-------------------------------------------------------------------
+Tue Jan  7 10:00:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- No code change since 19.12.0
+
+-------------------------------------------------------------------
+Tue Dec 10 06:38:09 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12
+- Changes since 19.11.90:
+  * Don't use nullptr for flags
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:31 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * Month View: background color computation for dark mode theme
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:02 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Changes since 19.08.3:
+  * month/monthitem.cpp - fix chronological sorting in day block (kde#232162)
+  * agenda/agenda.cpp - grid colors when not using system settings (kde#411608)
+  * src/month/monthscene.cpp - use QDate stringification
+  * month/monthscene.cpp - remove comma in year (in the title) (kde#412833)
+  * Prefer icon over pixmap, and QIcon::fromTheme over KIconLoader
+  * Use QLatin1String overload for QString::operator ==/!=
+  * Warning--
+  * Add metainfo.yaml to trigger API docs generation
+
+-------------------------------------------------------------------
+Thu Nov  7 23:12:35 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- Changes since 19.08.2:
+  * month/monthscene.cpp - remove comma in year (in the title) (kde#412833)
+- Dropped patches, now upstream:
+  * 0001-month-monthscene.cpp-remove-comma-in-year-in-the-tit.patch
+
+-------------------------------------------------------------------
+Thu Oct 17 08:28:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-month-monthscene.cpp-remove-comma-in-year-in-the-tit.patch
+  to fix a display bug in korganizer (kde#412833)
+
+-------------------------------------------------------------------
+Fri Oct 11 07:42:25 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Port away from QWheelEvent deprecated API to fix compilation with Qt 5.14
+
+-------------------------------------------------------------------
+Thu Sep  5 14:00:01 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Include KDE* cmake macros before any others
+
+-------------------------------------------------------------------
+Fri Aug  9 08:30:08 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- No code change since 19.07.90
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Adapt to KCalendarCore namespace changes
+  * Port KCalCore-related connect to PMF syntax
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Adapt to KCalCore::Attachment changes
+  * Adapt to KCalCore::Attendee changes
+  * When we use framework 5.59.0 we can use new logging file directory
+  * Fix infinite loop guard in case of duplicate UIDs
+  * Adapt to KCalCore::Person changes
+  * Use ellipsis in search placeholder
+  * It was fixed in 5.13.0beta2
+  * Use new connect api
+  * Remove local copy of KCalCore::DateList typedef
+  * Port local usage of SortableList to std::vector
+  * Make it compile without foreach
+
+-------------------------------------------------------------------
+Fri Jul 19 08:26:14 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_kf5_debugdir for logging categories.
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:33 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- No code changes since 19.04.2
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- No code changes since 19.04.1
+
+-------------------------------------------------------------------
+Fri May 10 05:37:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- No code changes since 19.04.0
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- No code changes since 19.03.90
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Workaround qt5.13 bug
+  * Make Attributes const, to prepare for akonadi changes
+  * Fix misuse of QColor API, the return value was ignored so
+  	these lines were no-ops
+
+-------------------------------------------------------------------
+Wed Mar 27 06:40:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Fix compile against qt5.13
+  * Fix compile with Qt 5.13 and QT_DISABLE_DEPRECATED_BEFORE=0x060000
+  * Remove QT_CHECK
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * No code changes since 18.12.2
+
+-------------------------------------------------------------------
+Sat Feb 09 08:24:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * No code changes since 18.12.1
+
+-------------------------------------------------------------------
+Fri Jan 11 05:41:54 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * No code changes since 18.12.0
+
+-------------------------------------------------------------------
+Fri Dec 14 06:08:52 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * No code changes since 18.11.90
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Fix mem leak found by asan
+  * Fix mem leak. Found by asan
+
+-------------------------------------------------------------------
+Tue Nov 20 06:21:53 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:39 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Remove virtual keyword
+  * Improve contrast in header from agendaitem
+  * Replace old connect with QT5 style in eventsview (Part 1)
+  * QT_NO_NARROWING_CONVERSIONS_IN_CONNECT is defined in kf5.51
+  * Fix a bug created in D16377
+  * Using the system palette for drawing the month- and agendaitem.
+  * Rewrite the painting of an month item
+  * Rewrite the painting part of agendaitem
+  * use new syntax
+  * Port deprecated method
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:28 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * Eventviews: properly fall back to color-generator if ColorAttribute is absent
+  * Eventviews: simplify/modernize resource color code
+  * Fix color inconsistency for unset categories. (kde#382185)
+  * Factor out coloring from AgendaItem::paintEvent.
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:51 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Aug 16 22:00:59 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * None
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:27 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Use Q_REQUIRED_RESULT
+  * various - support multiple holiday regions
+  * src/agenda/agenda.cpp - const ref range-loop (found by clazy)
+  * timelabels.cpp -  Don't call QList::first() on temporary (found by clazy)
+  * todo/todoviewquickaddline - rename returnPressed() slot (for clazy)
+  * src/agenda/calendardecoration.h - de-const some signals (found by clazy)
+  * src/agenda/agenda.cpp - Q_EMIT showNewEventPopupSignal (found by clazy) minor coding style and spelling fixes.
+  * src/eventview.h - eventDurationHint is not a SLOT (found by clazy)
+  * src/agenda/agendaview.cpp - removed unused variable found by clazy and some coding style
+  * todo/incidencetreemodel.h - minor includes clean
+  * todo/todoview.cpp - add some KUIT
+  * various - tidy-up includes and some coding style
+  * eventview.cpp - fix fallthrough compiler warning
+  * support firstDayOfWeek setting (to override the locale) in monthview CCBUG: 358106
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * None
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:35 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * None
+
+-------------------------------------------------------------------
+Fri May 11 05:17:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 18 07:48:38 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * None
+
+-------------------------------------------------------------------
+Fri Apr 06 07:08:46 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Fix crash when comparing nodes with depth of -1
+  * Use override keyword
+  * Use QLatin1String
+  * refactor, add a tooltip for the day/hour cells for each timezone label
+  * Use lambda method
+  * .krazy - add krazy config
+  * timelabels.cpp - use new tzUTCOffsetStr from kcalutils and some code styling improvements
+  * It's always a QIcon
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:02 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:18 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * timelabels.cpp - fix invalid times when using multiple timezones BUG: 369365 FIXED-IN: 5.7.2 (kde#369365)
+
+-------------------------------------------------------------------
+Thu Jan 11 23:40:55 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * agendaview.cpp - in loadDecorations(), don't add failed decos to the list if unable to load the decoration associated with the specified plugin name
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:01 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * None
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:35 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * None
+
+-------------------------------------------------------------------
+Mon Nov 20 06:58:53 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 09 23:10:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:13 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Make sure that agenda is not null
+
+-------------------------------------------------------------------
+Thu Sep 07 07:01:18 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Aug 11 22:44:55 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Aug  5 18:16:43 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:59:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * MonthView: fix day number overflowing from the cell header
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:40 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * None
+
+-------------------------------------------------------------------
+Wed May 17 20:35:38 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Fix enable/disable button. Don't crash when currentItem is empty (during removing items)
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:46 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:15 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Minor optimization
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:10 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * USe new libkdepim
+  * not necessary to check identitymanager here
+  * Adapt to libkdepimakonadi
+  * Use qAsConst
+  * Remvoe some cppcheck warning
+  * Add missing Q_DECL_OVERRIDE
+  * Add ECMCoverageOption
+
+-------------------------------------------------------------------
+Thu Mar  9 12:34:18 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Thu Feb  9 06:42:01 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Wed Jan 25 23:09:30 UTC 2017 - jengelh@inai.de
+
+- Take better description from Debian
+
+-------------------------------------------------------------------
+Sat Jan 14 08:49:58 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:30:06 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:01:21 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:18:36 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:10:27 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Tue Oct 11 20:47:12 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Fri Sep  9 08:06:57 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Tue Aug 23 13:49:10 UTC 2016 - fabian@ritter-vogt.de
+
+- Build only on architectures supported by libqt5-qtwebengine
+
+-------------------------------------------------------------------
+Fri Aug 12 10:04:21 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:37:29 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Fri Jul 22 16:41:39 UTC 2016 - wbauer@tmo.at
+
+- Cleanup build requirements
+- Add necessary requires to the devel package
+
+-------------------------------------------------------------------
+Thu Jul  7 23:24:51 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Fri Jun 10 17:48:19 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Wed May 18 07:50:12 UTC 2016 - jengelh@inai.de
+
+- Set RPM groups
+
+-------------------------------------------------------------------
+Mon May  9 18:57:31 UTC 2016 - wbauer@tmo.at
+
+- Move unversioned files from the lib subpackage to the main one,
+  as per the shared library packaging policy
+
+-------------------------------------------------------------------
+Sat May  7 10:12:34 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+
+-------------------------------------------------------------------
+Sun Apr 17 05:52:30 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 07:12:38 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+

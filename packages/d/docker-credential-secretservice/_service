@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/docker/docker-credential-helpers</param>
+    <param name="exclude">.git</param>
+    <param name="filename">docker-credential-helpers</param>
+    <param name="versionformat">0.7.0</param>
+    <param name="revision">v0.7.0</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

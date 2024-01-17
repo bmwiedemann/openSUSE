@@ -1,0 +1,54 @@
+The command to run this container is:
+
+podman run -d --rm -v /etc/squid/squid.cfg:/etc/squid/squid.cfg:ro -v /srv/squid/cache:/var/cache/squid -p 3128:3128 --name squid registry.opensuse.org/opensuse/squid
+
+To make the cache persistent, /var/cache/squid inside the container needs to be mapped to a persistent storage.
+
+To use an own configuration, /etc/squid/squid.cfg needs to be overwritten.
+
+
+Usage of squid proxy:
+---------------------
+Configure your web browser network/connection settings to use the proxy server which is available at <squid>:3128
+
+To make the proxy settings available to all applications, adjust 
+/etc/sysconfig/proxy.
+
+
+Configuration file:
+-------------------
+To adjust the configuration file, get at first the default squid.conf:
+mkdir /srv/squid
+podman exec -it squid cat /etc/squid/squid.conf > /etc/squid/squid.conf
+
+Adjust /etc/squid/squid.conf
+
+Add "-v /srv/squid/squid.cfg:/etc/squid/squid.cfg:ro" to PODMAN_SQUID_ARGS
+in /etc/sysconfig/container-squid.
+
+Restart the squid container: systemctl restart container-squid
+
+
+Persistent cache:
+-----------------
+To have a persistent cache, get at first the default squid.conf from
+the container (follow above instruction) and enable the 'cache_dir'
+option.
+
+Create the disk cache directory: mkdir -p /srv/squid/cache
+
+Add "-v /srv/squid/cache:/var/cache/squid" to PODMAN_SQUID_ARGS
+in /etc/sysconfig/container-squid.
+
+Restart the squid container: systemctl restart container-squid
+
+
+Logs:
+-----
+The squid logs are located at /var/log/squid/ inside the container. They
+can be accessed with podman or kubectl exec. For example, to tail the
+access logs:
+
+podman exec squid tail -f /var/log/squid/access.log
+
+You can also mount a volume at /var/log/squid/ so that the logs are directly accessible on the host.

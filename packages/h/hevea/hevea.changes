@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Jun 16 16:26:18 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.36.
+  * Compatibility with OCaml 5.0.
+
+-------------------------------------------------------------------
+Tue Aug 31 15:15:15 UTC 2021 - olaf@aepfle.de
+
+- Requires at least OCaml 4.08
+
+-------------------------------------------------------------------
+Sun Jan 17 20:11:12 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.35.
+  * Some optimisation in text output (replace ' '+ '\n' by '\n').
+  * Correct bug in text mode on bad combination of indentation and
+    underlining.
+
+-------------------------------------------------------------------
+Sun Mar 29 21:20:12 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.34.
+  * Add command \formatlinks for greater control over navigation
+    links.
+
+-------------------------------------------------------------------
+Fri Feb 14 23:34:46 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.33.
+  * Modifications to cope with upcoming ocaml 4.10.0.
+
+-------------------------------------------------------------------
+Fri Nov  1 11:29:16 UTC 2019 - olaf@aepfle.de
+
+- Require the native ocaml compiler, those Makefiles are written that way...
+
+-------------------------------------------------------------------
+Sun Jul 14 22:20:56 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.32.
+  * Introduce SVG arrows, contribution by Florian Angeletti.
+  * Correct doc typos.
+  * Better error message when several \documentclass are present.
+  * Mathjax 'automatic' support.
+  * Mathjax support.
+- Clean up spec file.
+- Package LICENSE as %license.
+- Mention executables separately in %files.
+
+-------------------------------------------------------------------
+Thu Apr 13 13:10:28 UTC 2017 - peter.trommler@ohm-hochschule.de
+
+- update to 2.29 from upstream 
+
+-------------------------------------------------------------------
+Fri Jan  4 18:14:54 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 2.00 from upstream
+* version 2.00
+     - HTML 5.0 output.
+* version 1.99
+     - Last released version that outputs html 4.0
+     - Simplified html.mli, text.mli and info.mli by including outManager
+       signature
+     - Corrected installer bug (lstlang?.sty not installed !!)
+     - Buffers with underlying rope structure (use our own) 
+
+-------------------------------------------------------------------
+Fri Jan  4 18:09:08 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- old changelog:
+  * Mon Dec 22 2008 Gernot Hillier <gernot.hillier@siemens.com>
+    - updated to hevea 1.10
+  * Thu Dec 22 2005 Texstar <texstar@houston.rr.com> 1.08-1tex
+    - build for pclos
+

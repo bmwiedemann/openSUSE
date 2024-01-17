@@ -1,0 +1,12 @@
+<package name="flom" project="openSUSE:Factory">
+  <title>Distributed Lock Manager</title>
+  <description>FLoM is a free open source distributed lock manager that can be used to
+synchronize shell commands, scripts and custom developed software. When used
+in a shell environment, FLoM manages process synchronization in the same way
+that &quot;nice&quot; manages process prioritization. Supports networking, abstract
+resources, offers a library, encryption and peer authentication.
+
+</description>
+  <devel project="utilities" package="flom"/>
+  <url>https://www.tiian.org/flom/</url>
+</package>

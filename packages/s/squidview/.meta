@@ -1,0 +1,15 @@
+<package name="squidview" project="openSUSE:Factory">
+  <title>Interactive console program which monitors squid logs access</title>
+  <description>Squidview is an interactive console program which monitors 
+and displays squid logs in a nice fashion, and may then go 
+deeper with searching and reporting functions.
+
+If you don't know what squid is or does this program is probably not for you.
+
+To use squidview you must at least have read access to squid's 
+access.log file. You may need to see your administrator for this.
+Squidview uses this text log file for all operations. 
+It does not generate its own database for tasks
+ </description>
+  <devel project="server:proxy" package="squidview"/>
+</package>

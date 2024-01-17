@@ -1,0 +1,15 @@
+Index: distributed-2023.11.0/distributed/distributed.yaml
+===================================================================
+--- distributed-2023.11.0.orig/distributed/distributed.yaml
++++ distributed-2023.11.0/distributed/distributed.yaml
+@@ -290,6 +290,10 @@ distributed:
+       ignore-files:
+         - runpy\.py  # `python -m pytest` (or other module) shell command
+         - pytest  # `pytest` shell command
++        - pytest-3\.9
++        - pytest-3\.10
++        - pytest-3\.11
++        - pytest_rerunfailures\.py
+         - py\.test  # `py.test` shell command
+         - pytest-script\.py  # `pytest` shell command in Windows
+         - _pytest  # pytest implementation

@@ -1,0 +1,720 @@
+-------------------------------------------------------------------
+Fri May 12 08:00:13 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag 17.0.7+2
+- Changes of version 17.0.7
+  * Fixed Bugs
+    + JDK-8087673: [TableView] TableView and TreeTableView menu
+      button overlaps columns when using a constrained resize
+      policy.
+    + JDK-8089009: TableView with CONSTRAINED_RESIZE_POLICY
+      incorrectly displays a horizontal scroll bar.
+    + JDK-8187145: (Tree)TableView with null selectionModel: throws
+      NPE on sorting
+    + JDK-8235491: Tree/TableView: implementation of
+      isSelected(int) violates contract
+    + JDK-8254676: Alert disables Tab selection when TabDragPolicy
+      REORDER is used
+    + JDK-8277853: With Touch enabled devices scrollbar disappears
+      and the table is scrolled to the beginning
+    + JDK-8291908: VirtualFlow creates unneeded empty cells
+    + JDK-8292353: TableRow vs. TreeTableRow: inconsistent visuals
+      in cell selection mode
+    + JDK-8296413: Tree/TableView with null focus model throws NPE
+      in queryAccessibleAttribute()
+    + JDK-8300893: Wrong state after deselecting two or more cells
+      of a TableView selection
+    + JDK-8303026: [TextField] IOOBE on setting text with control
+      characters that replaces existing text
+    + JDK-8281327: JavaFX does not support fonts installed per-user
+      on Windows 10/11
+    + JDK-8300872: WebView’s ColorChooser fails to initialize when
+      running in security context
+    + JDK-8295755: Update SQLite to 3.39.4
+    + JDK-8298167: Opacity in WebView not working anymore
+    + JDK-8299977: Update WebKit to 615.1
+    + JDK-8300954: HTML default Range input control not rendered
+    + JDK-8301022: Video distortion is observed while playing
+      youtube video
+    + JDK-8301712: [linux] Crash on exit from WebKit 615.1
+    + JDK-8302294: Cherry-pick WebKit 615.1 stabilization fixes
+    + JDK-8302684: Cherry-pick WebKit 615.1 stabilization fixes (2)
+    + JDK-8303217: Webview loaded webpage is not showing play,
+      volume related buttons for embeded Audio/Video elements
+    + JDK-8296654: [macos] Crash when launching JavaFX app with JDK
+      that targets SDK 13
+  * Security Fixes
+    + JDK-8299781: Improve JFX navigation
+    + JDK-8303501: Unable to navigate to relative URLs after fix
+      for JDK-8299781
+- Changes of version 17.0.6
+  * Important Changes
+    + FXML JavaScript Engine Disabled by Default
+      The “JavaScript script engine” for FXML is now disabled by
+      default. Any .fxml file that has a “javascript” Processing
+      Instruction (PI) will no longer load by default, and an
+      exception will be thrown.
+      If the JDK has a JavaScript script engine, it can be enabled
+      by setting the system property: -Djavafx.allowjs=true
+  * Fixed Bugs
+    + JDK-8087557: [Win] [Accessibility, Dialogs] Alert Dialog
+      content is not fully read by Screen Reader
+    + JDK-8284281: [Accessibility] [Win] [Narrator] Exceptions with
+      TextArea & TextField when deleted last char
+    + JDK-8291087: Wrong position of focus of screen reader on
+      Windows with screen scale > 1
+    + JDK-8293795: [Accessibility] [Win] [Narrator] Exceptions When
+      Deleting Text with Continuous Key Press in TextArea and
+      TextField
+    + JDK-8277785: ListView scrollTo jumps to wrong location when
+      CellHeight is changed
+    + JDK-8284665: First selected item of a TreeItem multiple
+      selection gets removed if new items are constantly added to
+      the TreeTableView
+    + JDK-8290348: TreeTableView jumping to top
+    + JDK-8291625: DialogPane without header nor headerText nor
+      graphic node adds padding to the left of the content pane
+    + JDK-8289542: Update JPEG Image Decoding Software to 9e
+    + JDK-8294400: Provide media support for libavcodec version 59
+    + JDK-8222210: JFXPanel popups open at wrong coordinates when
+      using multiple hidpi monitors
+    + JDK-8289541: Update ICU4C to 71.1
+  * Security Fixes
+    + JDK-8294779: Improve FX pages
+    + JDK-8289336: Better platform image support
+    + JDK-8289343: Better GL support
+    + JDK-8299628: BMP top-down images fail to load after
+      JDK-8289336
+    + JDK-8292097: Better video decoding
+    + JDK-8292105: Improve Robot functionality
+    + JDK-8292112: Better DragView handling
+- Changes of version 17.0.5
+  * Fixed Bugs
+    + JDK-8284676: TreeTableView loses sort ordering when applied
+      on empty table
+    + JDK-8088420: JavaFX WebView memory leak via EventListener
+    + JDK-8285881: Update WebKit to 614.1
+    + JDK-8289587: IllegalArgumentException: Color.rgb’s red
+      parameter (-16776961) expects color values 0-255
+    + JDK-8292609: Cherry-pick WebKit 614.1 stabilization fixes
+- Changes of version 17.0.4
+  * Fixed Bugs
+    + JDK-8187596: TreeView selection incorrectly changes after
+      deleting an unselected row
+    + JDK-8193442: Removing TreeItem from a TreeTableView sometime
+      changes selectedItem
+    + JDK-8244234: MenuButton: NPE on removing from scene with open
+      popup
+    + JDK-8273336: Clicking a selected cell from a group of
+      selected cells in a TableView clears the selected items list
+      but remains selected
+    + JDK-8273339: IOOBE with ListChangeListener added to the
+      selectedItems list of a TableView
+    + JDK-8274137: TableView scrollbar/header misaligned when
+      reloading data
+    + JDK-8276167: VirtualFlow.scrollToTop doesn’t scroll to the
+      top of the last element
+    + JDK-8276553: ListView scrollTo() is broken after fix for
+      JDK-8089589
+    + JDK-8282093: LineChart path incorrect when outside lower bound
+    + JDK-8286261: Selection of non-expanded non-leaf treeItem
+      grows unexpectedly when adding two-level descendants
+    + JDK-8280840: Update libFFI to 3.4.2
+    + JDK-8283218: Update GStreamer to 1.20.1
+    + JDK-8283403: Update Glib to 2.72.0
+    + JDK-8255940: localStorage is null after window.close()
+    + JDK-8269115: WebView paste event contains old data
+    + JDK-8278759: PointerEvent: buttons property set to 0 when
+      mouse down
+    + JDK-8280020: Underline and line-through not straight in
+      WebView
+    + JDK-8280841: Update SQLite to 3.37.2
+    + JDK-8282134: Certain regex can cause a JS trap in WebView
+    + JDK-8283328: Update libxml2 to 2.9.13
+    + JDK-8284184: Crash in GraphicsContextJava::drawLinesForText
+      on https://us.yahoo.com/
+    + JDK-8286256: Update libxml2 to 2.9.14
+    + JDK-8286257: Update libxslt to 1.1.35
+    + JDK-8271054: [REDO] Wrong stage gets focused after modal
+      stage creation
+    + JDK-8284654: Modal behavior returns to wrong stage
+  * Security fixes
+    + JDK-8282121: Improve WebKit referencing
+    + JDK-8285691: Additional fix for JDK-8282121
+- Changes of version 17.0.3
+  * Fixed Bugs
+    + JDK-8203463: [Accessibility, Narrator] NPE in TableView
+    + JDK-8197991: Selecting many items in a TableView is very slow
+    + JDK-8281089: JavaFX built with VS2019 and jlinked into JDK
+      11.x fails to start
+    + JDK-8277457: AccessControlException: access denied
+      ("java.net.NetPermission" "getCookieHandler")
+    + JDK-8278980: Update WebKit to 613.1
+    + JDK-8281459: WebKit 613.1 build broken on M1
+    + JDK-8281711: Cherry-pick WebKit 613.1 stabilization fixes
+    + JDK-8282099: Cherry-pick WebKit 613.1 stabilization fixes (2)
+    + JDK-8242544: CMD+ENTER key event crashes the application when
+      invoked on dialog
+- Changes of version 17.0.2
+  * Fixed Bugs
+    + JDK-8274022: Additional Memory Leak in
+      ControlAcceleratorSupport
+    + JDK-8274854: Mnemonics for menu containing numeric text not
+      working
+    + JDK-8276490: Incorrect path for duplicate x and y values,
+      when path falls outside axis bound
+    + JDK-8275138: WebView: UserAgent string is empty for first
+      request
+    + JDK-8276847: JSException: ReferenceError: Can't find
+      variable: IntersectionObserver
+    + JDK-8277133: Dragboard contents retrieved all over again
+      during a DND process on WebView
+    + JDK-8160597: IllegalArgumentException when we initiate drag
+      on Image
+    + JDK-8274929: Crash while reading specific clipboard content
+    + JDK-8275723: Crash on macOS 12 in GlassRunnable::dealloc
+  * Security fixes
+    + JDK-8272546: Better TrueType font loading
+- Changes of version 17.0.1
+  * Fixed Bugs
+    + JDK-8273138: BidirectionalBinding fails to observe changes of
+      invalid properties
+    + JDK-8273754: Re-introduce Automatic-Module-Name in empty jars
+    + JDK-8273324: IllegalArgumentException: fromIndex(0) >
+      toIndex(-1) after clear and select TableCell
+    + JDK-8269374: Menu inoperable after setting stage to second
+      monitor
+    + JDK-8268718: [macos] Video stops, but audio continues to play
+      when stopTime is reached
+    + JDK-8268849: Update to 612.1 version of WebKit
+    + JDK-8270479: WebKit 612.1 build fails with Visual Studio 2017
+    + JDK-8272329: Cherry pick GTK WebKit 2.32.3 changes
+    + JDK-8274107: Cherry pick GTK WebKit 2.32.4 changes
+- Changes of version 17.0.0.1
+  * Fixed Bugs
+    + JDK-8273754: Re-introduce Automatic-Module-Name in empty jars
+- Changes of version 17
+  * Enhancement
+    + JDK-8258777: SkinBase: add api to un-/register
+      invalidation-/listChange listeners
+    + JDK-8267554: Support loading stylesheets from data-URIs
+    + JDK-8223717: javafx printing: Support Specifying Print to
+      File in the API
+    + JDK-8234920: Add SpotLight to the selection of 3D light types
+    + JDK-8259718: Remove the Marlin rasterizer (single-precision)
+    + JDK-8267551: Support loading images from inline data-URIs
+    + JDK-8268120: Allow hardware cursor to be used on Monocle-EGL
+      platforms
+    + JDK-8258499: JavaFX: Move src.zip out of the lib directory
+    + JDK-8252935: Add treeShowing listener only when needed
+    + JDK-8259680: Need API to query states of CAPS LOCK and NUM
+      LOCK keys
+    + JDK-8092439: [Monocle] Refactor monocle SPI to allow support
+      for multiple screens
+  * Fixed Bugs
+    + JDK-8185447: The special high-contrast mode of JavaFX
+      Controls in Japanese environment do not work.
+    + JDK-8263322: Calling Application.launch on FX thread should
+      throw IllegalStateException, but causes deadlock
+    + JDK-8260468: Wrong behavior of LocalDateTimeStringConverter
+    + JDK-8260475: Deprecate for removal protected access members
+      in DateTimeStringConverter
+    + JDK-8264770: BidirectionalBinding should use
+      InvalidationListener to prevent boxing
+    + JDK-8267505: {List,Set,Map}PropertyBase::bind should check
+      against identity
+    + JDK-8089589: [ListView] ScrollBar content moves
+      toward-backward during scrolling.
+    + JDK-8089913: CSS pseudo classes missing by default for some
+      controls
+    + JDK-8137323: Incorrect parsing of mnemonic in controls text
+    + JDK-8165214: ListView.EditEvent.getIndex() does not return
+      the correct index
+    + JDK-8186904: TableColumnHeader: resize cursor lost on right
+      click
+    + JDK-8187229: Tree/TableCell: cancel event must return correct
+      editing location
+    + JDK-8189354: Change.getRemoved() list contains incorrect
+      selected items when a TreeItem is collapsed
+    + JDK-8196065: ListChangeListener getRemoved() returns items
+      that were not removed.
+    + JDK-8204568: Relative CSS-Attributes don't work all time
+    + JDK-8208088: Memory Leak in ControlAcceleratorSupport
+    + JDK-8228363: ContextMenu.show with side=TOP does not work the
+      first time in the presence of CSS
+    + JDK-8239138: StyleManager should use a BufferedInputStream
+    + JDK-8244075: Accelerator of ContextMenu's MenuItem is not
+      removed when ContextMenu is removed from Scene
+    + JDK-8252238: TableView: Editable (pseudo-editable) cells
+      should respect the row editability
+    + JDK-8256283: IndexOutOfBoundsException when sorting a
+      TreeTableView
+    + JDK-8258663: Fixed size TableCells are not removed from sene
+      graph when column is removed
+    + JDK-8261460: Incorrect CSS applied to ContextMenu on
+      DialogPane
+    + JDK-8261840: Submenus close to screen borders are no longer
+      repositioned
+    + JDK-8263807: Button types of a DialogPane are set twice,
+      returns a wrong button
+    + JDK-8264157: Items of non-editable ComboBox cannot be
+      selected using up/down keys
+    + JDK-8264127: ListCell editing status is true, when index
+      changes while editing
+    + JDK-8264677: MemoryLeak: Progressindicator leaks, when
+      treeShowing is false
+    + JDK-8265206: Tree-/TableCell: editing state not updated on
+      cell re-use
+    + JDK-8265210: TreeCell: cell editing state not updated on cell
+      re-use
+    + JDK-8265669: AccumCell should not be visible
+    + JDK-8266539: [TreeView]: Change.getRemoved() contains null
+      item when deselecting a TreeItem
+    + JDK-8266966: Wrong CSS properties are applied to other nodes
+      after fix for JDK-8204568
+    + JDK-8267094: TreeCell: cancelEvent must return correct
+      editing location
+    + JDK-8267392: ENTER key press on editable TableView throws NPE
+    + JDK-8269026: PasswordField doesn't render bullet character on
+      Android
+    + JDK-8269136: Tree/TablePosition: must not throw NPE on
+      instantiating with null table
+    + JDK-8270314: TreeTableCell: inconsistent naming for tableRow
+      and tableColumn property methods
+    + JDK-8165749: java.lang.RuntimeException: dndGesture.dragboard
+      is null in dragDrop
+    + JDK-8210199: [linux / macOS] fileChooser can't handle emojis
+    + JDK-8211362: Restrict export of libjpeg symbols from
+      libjavafx_iio.so
+    + JDK-8217955: Problems with touch input and JavaFX 11
+    + JDK-8239589: JavaFX UI will not repaint after reconnecting
+      via Remote Desktop
+    + JDK-8252099: JavaFX does not render Myanmar script correctly
+    + JDK-8258986: getColor throws IOOBE when PixelReader reads the
+      same pixel twice
+    + JDK-8259046: ViewPainter.ROOT_PATHS holds reference to Scene
+      causing memory leak
+    + JDK-8262396: Update Mesa 3-D Headers to version 21.0.3
+    + JDK-8262802: Wrong context origin coordinates when using EGL
+      and HiDPI
+    + JDK-8263402: MemoryLeak: Node hardreferences it's previous
+      Parent after csslayout and getting removed from the scene
+    + JDK-8267160: Monocle mouse never get ENTERED state
+    + JDK-8267314: Loading some animated GIFs fails with
+      ArrayIndexOutOfBoundsException: Index 4096 out of bounds for
+      length 4096
+    + JDK-8259356: MediaPlayer's seek freezes video
+    + JDK-8262365: Update GStreamer to version 1.18.3
+    + JDK-8262366: Update glib to version 2.66.7
+    + JDK-8264737: JavaFX media stream stops playing after
+      reconnecting via Remote Desktop
+    + JDK-8266860: [macos] Incorrect duration reported for HLS live
+      streams
+    + JDK-8267819: CoInitialize/CoUninitialize should be called on
+      same thread
+    + JDK-8268152: gstmpegaudioparse does not provides timestamps
+      for HLS MP3 streams
+    + JDK-8268219: hlsprogressbuffer should provide PTS after
+      GStreamer update
+    + JDK-8269147: Update GStreamer to version 1.18.4
+    + JDK-8252783: Remove the css Selector and ShapeConverter
+      constructors
+    + JDK-8264162: PickResult.toString() is missing the closing
+      square bracket
+    + JDK-8264330: Scene MouseHandler is referencing removed nodes
+    + JDK-8270246: Deprecate for removal implementation methods in
+      Scene
+    + JDK-8254836: Cherry pick GTK WebKit 2.30.3 changes
+    + JDK-8259555: Webkit crashes on Apple Silicon
+    + JDK-8259635: Update to 610.2 version of WebKit
+    + JDK-8260163: IrresponsiveScriptTest.testInfiniteLoopInScript
+      unit test fails on Windows
+    + JDK-8260165: CSSFilterTest.testCSSFilterRendering system test
+      fails
+    + JDK-8260245: Update ICU4C to version 68.2
+    + JDK-8260257: [Linux] WebView no longer reacts to some mouse
+      events
+    + JDK-8263788: JavaFX application freezes completely after some
+      time when using the WebView
+    + JDK-8264501: UIWebView for iOS is deprecated
+    + JDK-8264990: WebEngine crashes with segfault when not loaded
+      through system classloader
+    + JDK-8269131: Update libxml2 to version 2.9.12
+    + JDK-8206253: No/Wrong scroll events from touch input in
+      window mode
+    + JDK-8231558: [macos] Platform.exit causes assertion error on
+      macOS 10.15 or later
+    + JDK-8240640: [macos] Wrong focus behaviour with multiple
+      Alerts
+    + JDK-8248126: JavaFX ignores HiDPI scaling settings on some
+      linux platforms
+    + JDK-8249737: java.lang.RuntimeException: Too many touch
+      points reported
+    + JDK-8258381: [macos] Exception when input emoji using Chinese
+      input method
+    + JDK-8263169: [macOS] JavaFX windows open as tabs when system
+      preference for documents is set
+    + JDK-8266743: Crash on macOS 10.11 due to ignored @available
+      10.12 check
+  * Security fixes
+    + JDK-8263112: Enhance String Conclusions
+- Build using maven build files taken from Fedora package
+- Removed patches:
+  * 0000-Fix-wait-call-in-PosixPlatform.patch
+  * 0001-Change-SWT-and-Lucene.patch
+  * 0002-Allow-build-to-work-on-newer-gradles.patch
+  * 0004-Fix-Compilation-Flags.patch
+  * 0005-fxpackager-extract-jre-accept-symlink.patch
+  * openjfx-32bit-fix.patch
+  * openjfx-antlr.patch
+  * openjfx-architectures.patch
+  * openjfx-gradle441.patch
+  * openjfx-nowerror.patch
+  * openjfx-rpm-build.patch
+    + not needed in this version
+
+-------------------------------------------------------------------
+Fri May 20 05:37:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force building with java <= 15, since we now can run
+  gradle with Java 17 too
+
+-------------------------------------------------------------------
+Wed Mar 23 20:01:49 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with JDK <= 15, since our gradle does not work
+  with anything higher
+- Switch off DocLint to be able to build with newer javadoc
+  versions
+
+-------------------------------------------------------------------
+Fri Feb 18 08:45:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.14, including October 2021 and
+  January 2022 CPU security fixes)
+  * Fixes of 11.0.13+2
+    + JDK-8274107: Cherry pick GTK WebKit 2.32.4 changes
+    + JDK-8273732: Clarify review policies for clean backports in
+      JavaFX update releases
+    + JDK-8269374: Menu inoperable after setting stage to second
+      monitor
+    + JDK-8211362: Restrict export of libjpeg symbols from
+      libjavafx_iio.so
+    + JDK-8185447: The special high-contrast mode of JavaFX
+      Controls in Japanese environment do not work.
+    + JDK-8263760: Update gradle to version 7.0.1 8240336: JavaFX
+      build uses deprecated features that will be removed in
+      gradle 7
+    + JDK-8262236: Configure Gradle checksum verification
+    + JDK-8220222: build.gradle does not specify clearly the
+      project dependencies
+    + JDK-8211308: Support HTTP/2 in WebView
+    + JDK-8267892: Add .gitattributes to repo
+    + JDK-8267858: Document that title property in WebEngine gets
+      updated asynchronously
+    + JDK-8267121: Illegal access to private "size" field of
+      ArrayList from build.gradle
+    + JDK-8265400: Update to gcc 10.3 on Linux
+    + JDK-8268718: [macos] Video stops, but audio continues to play
+      when stopTime is reached
+    + JDK-8231558: [macos] Platform.exit causes assertion error on
+      macOS 10.15 or later
+    + JDK-8268219: hlsprogressbuffer should provide PTS after
+      GStreamer update
+    + JDK-8267819: CoInitialize/CoUninitialize should be called on
+      same thread
+    + JDK-8266860: [macos] Incorrect duration reported for HLS live
+      streams
+    + JDK-8264737: JavaFX media stream stops playing after
+      reconnecting via Remote Desktop
+    + JDK-8271230: Remove obsolete test classes and data files from
+      3DViewer sample
+    + JDK-8266462: Update copyright years of javafx.web native
+      sources in jfx11u
+    + JDK-8272329: Cherry pick GTK WebKit 2.32.3 changes
+    + JDK-8270479: WebKit 612.1 build fails with Visual Studio 2017
+    + JDK-8268849: Update to 612.1 version of WebKit
+    + JDK-8269131: Update libxml2 to version 2.9.12
+    + JDK-8269147: Update GStreamer to version 1.18.4
+    + JDK-8268915: WebKit build fails with Xcode 12.5
+    + JDK-8209086: Some javafx.web files are missing
+      GPLv2+Classpath copyright header
+    + JDK-8262396: Update Mesa 3-D Headers to version 21.0.3
+    + JDK-8270992: Change JavaFX release version in jfx11u to
+      11.0.13
+  * Fixes of 11.0.14+3
+    + JDK-8279396: Define version in .jcheck/conf
+    + JDK-8272638: Update copyright header for files modified in
+      2021
+    + JDK-8276490: Incorrect path for duplicate x and y values,
+      when path falls outside axis bound
+    + JDK-8276847: JSException: ReferenceError: Can't find
+      variable: IntersectionObserver
+    + JDK-8277133: Dragboard contents retrieved all over again
+      during a DND process on WebView
+    + JDK-8160597: IllegalArgumentException when we initiate drag
+      on Image
+    + JDK-8274929: Crash while reading specific clipboard content
+    + JDK-8275723: Crash on macOS 12 in GlassRunnable::dealloc
+    + JDK-8275138: WebView: UserAgent string is empty for first
+      request
+    + JDK-8263807: Button types of a DialogPane are set twice,
+      returns a wrong button
+    + JDK-8274413: FX: Update copyright year in docs, readme files
+      to 2022
+    + JDK-8272546: Better TrueType font loading
+    + JDK-8275835: Change JavaFX release version in jfx11u to
+      11.0.14
+- Modified patches:
+  * openjfx-gradle441.patch
+    + revert all recent gradle 7.0.1 changes
+  * 0001-Change-SWT-and-Lucene.patch
+  * openjfx-antlr.patch
+  * openjfx-nowerror.patch
+  * openjfx-rpm-build.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Fri Jul 30 13:57:35 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * openjfx-32bit-fix.patch
+    + Do not add -m32 on 32-bit architectures, since it breaks
+      build on arm and is not needed on x86
+
+-------------------------------------------------------------------
+Tue Jul 27 07:26:19 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.12, including April 2021 and
+  July 2021 CPU security fixes)
+  * Fixes of 11.0.11+1
+    + JDK-8248126: JavaFX ignores HiDPI scaling settings on some
+      linux platforms
+    + JDK-8261460: Incorrect CSS applied to ContextMenu
+       on DialogPane
+    + JDK-8252099: JavaFX does not render Myanmar script correctly
+    + JDK-8249737: java.lang.RuntimeException: Too many touch
+      points reported
+    + JDK-8256283: IndexOutOfBoundsException when sorting a
+      TreeTableView
+    + JDK-8258592: Control labels in Dialogs are truncated at
+      certain DPI scaling levels
+    + JDK-8260165: CSSFilterTest.testCSSFilterRendering system test
+      fails
+    + JDK-8260257: [Linux] WebView no longer reacts to some mouse
+      events
+    + JDK-8213135: HTMLEditorTest.checkStyleProperty fails
+      intermittently
+    + JDK-8261927: WebKit build fails with Visual Studio 2017
+    + JDK-8254836: Cherry pick GTK WebKit 2.30.3 changes
+    + JDK-8260163: IrresponsiveScriptTest.testInfiniteLoopInScript
+       unit test fails on Windows
+    + JDK-8259635: Update to 610.2 version of WebKit
+    + JDK-8242361: JavaFX Web View crashes with Segmentation Fault,
+      when HTML contains Data-URIs
+    + JDK-8253356: JavaFX Terminology Refresh
+    + JDK-8257897: Fix webkit build for XCode 12
+    + JDK-8233678: [macos 10.15] System menu bar does not work
+      initially on macOS Catalina
+    + JDK-8254049: Update WebView to public suffix list 2020-04-24
+    + JDK-8242861: Update ImagePattern to apply SVG pattern
+      transforms
+    + JDK-8202990: javafx webview css filter property with display
+      scaling
+    + JDK-8260519: Change JavaFX release version in 11-dev to
+      11.0.11
+  * Fixes of 11.0.12+4  
+    + JDK-8267314: Loading some animated GIFs fails with
+      ArrayIndexOutOfBoundsException: Index 4096 out of bounds for
+      length 4096
+    + JDK-8210199: [linux / macOS] fileChooser can't handle emojis
+    + JDK-8216377: JavaFX: memoryleak for initial nodes of Window
+    + JDK-8207837: Indeterminate ProgressBar does not animate if
+      content is added after scene is set on window
+    + JDK-8268152: gstmpegaudioparse does not provides timestamps
+      for HLS MP3 streams
+    + JDK-8266554: Change default macOS min version for aarch64 to
+      11.0
+    + JDK-8257895: Allow building of JavaFX media libs for Apple
+      Silicon
+    + JDK-8266966: Wrong CSS properties are applied to other nodes
+      after fix for JDK-8204568
+    + JDK-8257758: Allow building of JavaFX native libs for Apple
+      Silicon
+    + JDK-8264536: Building OpenJFX on Apple AARCH64 not possible
+    + JDK-8264928: Update to Xcode 12.4
+    + JDK-8262276: Debug build of WebKit fails
+    + JDK-8263788: JavaFX application freezes completely after some
+      time when using the WebView
+    + JDK-8264990: WebEngine crashes with segfault when not loaded
+      through system classloader
+    + JDK-8259356: MediaPlayer's seek freezes video
+    + JDK-8259555: Webkit crashes on Apple Silicon
+    + JDK-8211294: ScrollPane content is blurry with 125% scaling
+    + JDK-8258381: [macos] Exception when input emoji using Chinese
+      input method
+    + JDK-8239589: JavaFX UI will not repaint after reconnecting
+      via Remote Desktop
+    + JDK-8240539: Upgrade gradle to version 6.3
+    + JDK-8232063: Upgrade gradle to version 6.0
+    + JDK-8226754: FX build fails using gradle 5.6+ or 6
+    + JDK-8204568: Relative CSS-Attributes don't work all time
+    + JDK-8263169: [macos] JavaFX windows open as tabs when system
+      preference for documents is set
+    + JDK-8259680: Need API to query states of CAPS LOCK and NUM
+      LOCK keys
+    + JDK-8260245: Update ICU4C to version 68.2
+    + JDK-8232379: Need to remove large icudt64l.zip binary file
+      from source repository
+    + JDK-8262366: Update glib to version 2.66.7 8262365: Update
+      GStreamer to version 1.18.3
+    + JDK-8263111: Enhance String Conclusions
+    + JDK-8265703: Change JavaFX release version in jfx11u to
+      11.0.12
+    + JDK-8265697: Add .jcheck/conf to jfx11u repo
+    + JDK-8265667: Add README.md and CONTRIBUTING.md to FX 11-dev/rt
+      repo
+    + JDK-8227920: Remove dummy README from FX repo
+    + JDK-8223719: Add .gitignore to repo
+    + JDK-8223722: Cleanup .gitignore file
+    + JDK-8231735: gradle checkrepo is obsolete and doesn't work
+      with git
+- Modified patches:
+  * 0000-Fix-wait-call-in-PosixPlatform.patch
+  * 0001-Change-SWT-and-Lucene.patch
+  * 0002-Allow-build-to-work-on-newer-gradles.patch
+  * 0004-Fix-Compilation-Flags.patch
+  * 0005-fxpackager-extract-jre-accept-symlink.patch
+  * openjfx-antlr.patch
+  * openjfx-architectures.patch
+  * openjfx-nowerror.patch
+  * openjfx-pango.patch
+  * openjfx-rpm-build.patch
+    + rediff to changed context
+  * openjfx-gradle441.patch
+    + revert recent changes mandating at least gradle 5
+
+-------------------------------------------------------------------
+Thu Feb  4 13:43:37 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.10, including January 2021 CPU
+  security fixes (bsc#1181239)
+  * Fixes:
+    + JDK-8177945: Single cell selection flickers when adding data
+      to TableView
+    + JDK-8178297: TableView scrolls slightly when adding new
+      elements
+    + JDK-8181775: JavaFX WebView does not calculate border-radius
+      properly
+    + JDK-8197536: TableView, ListView: unexpected scrolling
+      behaviour on up/down keys
+    + JDK-8199592: Control labels truncated at certain DPI scaling
+      levels
+    + JDK-8201567: QuantumRenderer modifies buffer in use by JavaFX
+      Application Thread
+    + JDK-8205092: NullPointerException in
+      PickResultChooser.processOffer when using viewOrder
+    + JDK-8209764: JavaFX/Monocle - Partial Screen Capture Broken
+    + JDK-8212102: [TextField] IOOBE on paste/replace text with
+      control characters
+    + JDK-8214397: Provide fallback if user home is not writable
+      for native libs
+    + JDK-8223296: NullPointerException in GlassScene.java at line
+      325
+    + JDK-8237469: Inherited styles don't update when node is moved
+    + JDK-8239822: Intermittent unit test failures in RegionCSSTest
+    + JDK-8240499: Enforce whitespace checking for additional
+      source files
+    + JDK-8251241: macOS: iconify property doesn't change after
+      minimize when resizable is false
+    + JDK-8251858: Update to Xcode 11.3.1
+    + JDK-8252060: gstreamer fails to build with gcc 10
+    + JDK-8252062: WebKit build fails with recent VS 2019 compiler
+    + JDK-8252191: Update to gcc 10.2 on Linux
+    + JDK-8252811: The list of cells in a VirtualFlow is cleared
+      every time the number of items changes
+    + JDK-8254100: FX: Update copyright year in docs, readme files
+      to 2021
+    + JDK-8255415: Nested calls to snap methods in Region give
+      different results
+    + JDK-8255586: Change JavaFX release version in 11-dev to
+      11.0.10
+    + JDK-8257719: JFXPanel scene fails to render correctly on
+      HiDPI after fix for JDK-8199592
+- Modified patches:
+  * 0004-Fix-Compilation-Flags.patch
+  * openjfx-nowerror.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Mon Nov  9 11:49:26 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.9, including October 2020 CPU
+  security fixes (bsc#1174157)
+
+-------------------------------------------------------------------
+Fri Jul 24 11:25:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.8, including July 2020 CPU
+  security fixes (bsc#1174157)
+  * Security Fixes:
+    + JDK-8245422, CVE-2020-14664: Better Pisces rasterizing
+    + JDK-8236798: Enhance FX scripting support
+  * Other Fixes:
+    + JDK-8189092: ArrayIndexOutOfBoundsException on Linux in 
+      getCachedGlyph
+    + JDK-8200224: Multiple press event when JFXPanel gains focus
+    + JDK-8212034: Potential memory leaks in jpegLoader.c in error 
+      case
+    + JDK-8232811: Dialog's preferred size no longer accommodates 
+      multi-line strings
+    + JDK-8234474: [macos 10.15] Crash in file dialog in sandbox 
+      mode
+    + JDK-8234916: [macos 10.15] Garbled text running with 
+      native-image
+    + JDK-8235627: Blank stages when running JavaFX app in a macOS 
+      virtual machine
+    + JDK-8236685: [macOs] Remove obsolete file dialog subclasses
+    + JDK-8236832: [macos 10.15] JavaFX Application hangs on video 
+      play on Catalina
+    + JDK-8236971: [macos] Gestures handled incorrectly due to 
+      missing events
+    + JDK-8237078: [macOS] Media build broken on XCode 11
+    + JDK-8237782: Only read advances up to the minimum of the 
+      numHorMetrics or the available font data.
+    + JDK-8237833: Check glyph size before adding to glyph texture 
+      cache
+    + JDK-8237889: Update libxml2 to version 2.9.10
+    + JDK-8237944: webview native cl "-m32" unknown option for 
+      windows 32-bit build
+    + JDK-8238249: GetPrimitiveArrayCritical passed with hardcoded 
+      FALSE value
+    + JDK-8239107: Update libjpeg to version 9d
+    + JDK-8240694: [macos 10.15] JavaFX Media hangs on some video 
+      files on Catalina
+    + JDK-8241108: Glib improvements
+    + JDK-8241370: Crash in JPEGImageLoader after fix for 
+      JDK-8212034
+    + JDK-8241474: Build failing on Ubuntu 20.04
+    + JDK-8241629: [macos10.15] Long startup delay playing media 
+      over https on Catalina
+    + JDK-8242106: [macos] Remove obsolete GlassView2D.m class
+    + JDK-8242209: Increase web native thread stack size for x86 
+      mode
+    + JDK-8242530: [macos] Some audio files miss spectrum data when 
+      another audio file plays first
+    + JDK-8244042: Change JavaFX release version in 11-dev to 11.0.8
+    + JDK-8244579: Windows "User Objects" leakage with WebView
+    + JDK-8247360: Add missing license file for Microsoft 
+      DirectShow Samples
+
+-------------------------------------------------------------------
+Mon Apr 27 12:53:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 11.0.7, including April 2020 CPU
+  security fixes (bsc#1169511)
+
+-------------------------------------------------------------------
+Wed Jan 22 15:11:31 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of openjfx 11.0.6

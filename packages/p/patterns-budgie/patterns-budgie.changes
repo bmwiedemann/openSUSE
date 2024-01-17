@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Thu Nov 24 13:04:16 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add budgie-backgrounds
+
+-------------------------------------------------------------------
+Fri May 27 14:25:04 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Sync with budgie-extras (20220527)
+
+-------------------------------------------------------------------
+Fri Nov 26 10:52:25 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Lightdm not GDM it breaks locking
+
+-------------------------------------------------------------------
+Fri Nov 12 22:49:47 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Enable budgie applets pattern
+- Add all applets to budgie applets pattern
+
+-------------------------------------------------------------------
+Sat Nov  6 13:40:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add some recommends from budgie-desktop
+
+-------------------------------------------------------------------
+Sat Oct 16 13:57:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial packaging version 20200903 (boo#1176164)
+

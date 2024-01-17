@@ -1,0 +1,7 @@
+<package name="maim" project="openSUSE:Factory">
+  <title>Flexible screenshotting utilit</title>
+  <description>maim (Make Image) is a utility that takes screenshots of your desktop
+using imlib2. It's meant to overcome shortcomings of scrot and performs
+better in several ways.</description>
+  <devel project="X11:Utilities" package="maim"/>
+</package>

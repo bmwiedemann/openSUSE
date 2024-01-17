@@ -1,0 +1,5 @@
+<package name="qscintilla" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Qt:PyQt" package="qscintilla"/>
+</package>

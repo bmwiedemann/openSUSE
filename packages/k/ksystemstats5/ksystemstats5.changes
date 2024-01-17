@@ -1,0 +1,543 @@
+-------------------------------------------------------------------
+Wed Dec  6 11:46:28 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- No code changes since 5.27.9
+
+-------------------------------------------------------------------
+Tue Oct 24 14:24:41 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- No code changes since 5.27.8
+
+-------------------------------------------------------------------
+Wed Oct 11 02:12:45 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- dbus-1 no longer provides dbus-run-session, so BuildRequire
+  it explicitly
+
+-------------------------------------------------------------------
+Tue Sep 12 11:22:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * NvidiaSmiProcess: Fix missing data for GPU 2+ BUG: 473424 (kde#473424)
+
+-------------------------------------------------------------------
+Tue Aug  1 11:18:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * gpu/nvidia: Discover data fields based on headers (kde#470474)
+
+-------------------------------------------------------------------
+Tue Jun 20 17:15:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- No code changes since 5.27.5
+
+-------------------------------------------------------------------
+Tue May  9 13:44:09 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- No code changes since 5.27.4
+
+-------------------------------------------------------------------
+Tue Apr  4 15:05:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- No code changes since 5.27.3
+
+-------------------------------------------------------------------
+Tue Mar 14 15:05:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- No code changes since 5.27.2
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- No code changes since 5.27.1
+
+-------------------------------------------------------------------
+Tue Feb 21 14:09:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * gpu/nvidia: lower pci id (kde#462512)
+
+-------------------------------------------------------------------
+Thu Feb  9 14:19:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- No code changes since 5.26.90
+
+-------------------------------------------------------------------
+Thu Jan 19 14:42:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Changes since 5.26.5:
+  * cpu: Account for offline processors when adding CPU objects (kde#459130)
+  * plugins/gpu: Use pci address to identify nvidia gpus (kde#463033,kde#461361)
+  * plugins/gpu: Don't let a newline confuse the nvidia-smi output parsing (kde#462512)
+  * Use ecm_set_disabled_deprecation_versions
+  * fix null pointer in amd platforms
+  * initial implementation for NVidia GPUs
+  * Install po folder
+  * Remove unused includes
+
+-------------------------------------------------------------------
+Wed Jan  4 14:06:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- No code changes since 5.26.4
+
+-------------------------------------------------------------------
+Tue Nov 29 14:47:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- No code changes since 5.26.3
+
+-------------------------------------------------------------------
+Tue Nov  8 17:24:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- No code changes since 5.26.2
+
+-------------------------------------------------------------------
+Wed Oct 26 14:15:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- No code changes since 5.26.1
+
+-------------------------------------------------------------------
+Tue Oct 18 11:27:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- No code changes since 5.26.0
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+
+-------------------------------------------------------------------
+Thu Sep 15 20:46:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * New CPU cumulative sensors
+  * Add FreeBSD Qt6 CI support
+  * Remove unused include
+  * Request passing unit tests on Linux and BSD
+  * GPU: Query for DRM devices and use DRM number as card number (kde#453283)
+  * Add REUSE CI check
+
+-------------------------------------------------------------------
+Tue Sep  6 16:55:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- No code changes since 5.25.4
+
+-------------------------------------------------------------------
+Tue Aug  2 14:07:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- No code changes since 5.25.3
+
+-------------------------------------------------------------------
+Tue Jul 12 11:29:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- No code changes since 5.25.2
+
+-------------------------------------------------------------------
+Tue Jun 28 13:03:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- No code changes since 5.25.1
+
+-------------------------------------------------------------------
+Tue Jun 21 11:39:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- No code changes since 5.25.0
+
+-------------------------------------------------------------------
+Thu Jun  9 11:14:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- No code changes since 5.24.90
+
+-------------------------------------------------------------------
+Thu May 19 19:45:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Changes since 5.24.5:
+  * Add more network sensor
+  * Add a window system sensor (kde#452461)
+  * cmake: Make sure we also search for dbus interfaces in DESTDIR
+  * Remove duplicate header between header cpp file
+  * Add Qt6 CI
+  * Allow to compile against qt6
+  * CPU Plugin: Prevent integer overflow of total usage (kde#448626)
+  * Set proper initial values for many SensorProperties (kde#446414)
+  * disks: Properly initialize read/write counters (kde#448494)
+
+-------------------------------------------------------------------
+Tue May  3 13:00:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- No code changes since 5.24.4
+
+-------------------------------------------------------------------
+Tue Mar 29 16:04:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- No code changes since 5.24.3
+
+-------------------------------------------------------------------
+Tue Mar  8 18:09:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- No code changes since 5.24.2
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- No code changes since 5.24.1
+
+-------------------------------------------------------------------
+Tue Feb 15 19:18:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * CPU Plugin: Prevent integer overflow of total usage (kde#448626)
+
+-------------------------------------------------------------------
+Sat Feb  5 19:50:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * CPU Plugin: Prevent integer overflow of total usage (kde#448626)
+  * disks: Properly initialize read/write counters (kde#448494)
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:13 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Add support for bits per second (kde#418968)
+  * Fix some clazy warnings
+  * Don't update disks if no one is listening (kde#445039)
+  * Add GitLab CI
+  * Update lmsensors.cpp to compile with clang+libcxx
+  * Update loadaverages.cpp to compile with clang+libcxx
+  * Update freebsdbackend.cpp: fix typo in sysctl
+  * Add description for the Sensors package
+  * Move find_package line
+  * Fix missing "Hardware Sensors" on Linux (kde#442528)
+  * Fix .kde-ci file
+  * Read extra amd gpu sensors
+  * Correct discoverSensors chip detection (kde#442042)
+  * Fix ksystemstatstest failure
+  * Initialize some more pointer members to nullptr
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- No code changes since 5.23.4
+
+-------------------------------------------------------------------
+Tue Nov 30 14:59:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * Don't update disks if no one is listening (kde#445039)
+
+-------------------------------------------------------------------
+Tue Nov  9 15:43:24 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- No code changes since 5.23.2
+
+-------------------------------------------------------------------
+Tue Oct 26 14:55:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- No code changes since 5.23.1
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- No code changes since 5.23.0
+
+-------------------------------------------------------------------
+Fri Oct  8 12:35:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Fix ksystemstatstest failure
+  * Add description for the Sensors package
+  * Move find_package line
+  * Fix missing "Hardware Sensors" on Linux (kde#442528)
+  * Read extra amd gpu sensors
+  * Correct discoverSensors chip detection (kde#442042)
+  * Initialize some more pointer members to nullptr
+- Drop patches, now upstream:
+  * 0001-Initialize-some-more-pointer-members-to-nullptr.patch
+  * 0001-Fix-ksystemstatstest-failure.patch
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * [plugins/gpu] Initialise properties (kde#442023)
+  * Discover more hardware gpu sensors (kde#438318)
+  * Use sensors to read amd gpu  temperature
+  * Use SensorFeatureSensor in CPU plugin
+  * Use SensorsFeatureSensor from libksysguard
+  * Make libsensors required on Linux
+  * Do not dereference iterator that has been invalidated
+  * Only add a new VolumeObject if there's no other one with the same mounting point (kde#440477)
+  * Add maximum for total GPU usage (kde#441148)
+  * viewer: expand README with usage examples
+  * viewer: drop the "rolling" display, expand diagnostics
+  * daemon: log successfully loaded plugins, too
+  * freebsd-cpu: fix CPU load data retrieval
+  * freebsd-cpu: fix sysctl name of temperature sensor
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Fix handling of IPV6 addresses (kde#436296)
+  * gpu: Only scan pci devices
+  * Add load averages sensors
+  * Don't crash if there's no input subfeature (kde#439615)
+  * Only add "All GPUs" sensors when there is at least one GPU with statistics (kde#436770)
+  * Use 500ms update rate for network traffic sensors in NetworkManager backend
+  * Filter duplicate provider names
+  * Simplify plugin loading
+  * Use version-less qt DBus macros
+  * Init lib sensors centrally in the daemon (kde#437523)
+  * Update .gitignore
+- Add patch to fix autotest failure:
+  * 0001-Fix-ksystemstatstest-failure.patch
+- Add patch to fix crash on startup:
+  * 0001-Initialize-some-more-pointer-members-to-nullptr.patch
+
+-------------------------------------------------------------------
+Tue Aug 31 19:08:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * Fix handling of IPV6 addresses (kde#436296)
+
+-------------------------------------------------------------------
+Tue Jul 27 12:34:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- Changes since 5.22.3:
+  * gpu: Only scan pci devices
+  * Don't crash if there's no input subfeature (kde#439615)
+
+-------------------------------------------------------------------
+Tue Jul  6 12:01:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.3
+- Changes since 5.22.2.1:
+  * Really fix build
+  * Fix build
+- Drop patches, now upstream:
+  * 0001-Fix-build.patch
+  * 0002-Really-fix-build.patch
+
+-------------------------------------------------------------------
+Sat Jun 26 19:58:31 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- s390 has no libsensors
+- Add patches to fix build without libsensors:
+  * 0001-Fix-build.patch
+  * 0002-Really-fix-build.patch
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- No code changes since 5.22.1
+
+-------------------------------------------------------------------
+Tue Jun 15 13:17:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- No code changes since 5.22.0
+
+-------------------------------------------------------------------
+Thu Jun  3 13:06:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * Only add "All GPUs" sensors when there is at least one GPU with statistics (kde#436770)
+  * Use 500ms update rate for network traffic sensors in NetworkManager backend
+  * Init lib sensors centrally in the daemon (kde#437523)
+
+-------------------------------------------------------------------
+Tue May 18 16:02:24 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use GPL-2.0-or-later as substitute for LicenseRef-KDE-Accepted-GPL
+
+-------------------------------------------------------------------
+Thu May 13 18:33:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New in Plasma 5.21.90
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+
+-------------------------------------------------------------------
+Tue Apr 20 18:29:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit, split from ksysguard5

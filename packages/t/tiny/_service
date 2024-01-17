@@ -1,0 +1,25 @@
+<services>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/osa1/tiny</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">v0.12.0</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="update">true</param>
+     <param name="srcdir">tiny</param>
+     <param name="compression">zst</param>
+  </service>
+  <service name="cargo_audit" mode="manual" />
+</services>
+

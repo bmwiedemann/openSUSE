@@ -1,0 +1,14 @@
+<package name="gbdfed" project="openSUSE:Factory">
+  <title>A Gtk-based BDF Font Editor, Descendant of XmBDFed</title>
+  <description>A Gtk-based bitmap font (BDF) editor, descendant of XmBDFed. It can
+import PK/GF fonts, HBF fonts (Han Bitmap Font),Linux console fonts
+(PSF, CP, FNT), Sun console fonts (vfont), Windows FON/FNT fonts,
+TrueType fonts and collections, and X server fonts. It exports PSF and
+HEX fonts and allows you to edit two- and four-bits-per-pixel grayscale
+fonts.
+
+Authors
+Mark Leisher &lt;mleisher@crl.nmsu.edu&gt;</description>
+  <devel project="M17N" package="gbdfed"/>
+  <url>http://crl.nmsu.edu/~mleisher/gbdfed.html</url>
+</package>

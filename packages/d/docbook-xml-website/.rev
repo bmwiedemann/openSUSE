@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="88">
+    <srcmd5>3fabfaeac15acc73db654604dcae9030</srcmd5>
+    <version>2.5.0</version>
+    <time>1168614869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="100">
+    <srcmd5>89edf03f9db39914767ea7b9a642f6d3</srcmd5>
+    <version>2.5.0</version>
+    <time>1178833389</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b42b931d5d6f3a5b28bbf7b107f8e1e0</srcmd5>
+    <version>2.6.0</version>
+    <time>1197375711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="60">
+    <srcmd5>b42b931d5d6f3a5b28bbf7b107f8e1e0</srcmd5>
+    <version>2.6.0</version>
+    <time>1197375711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="61">
+    <srcmd5>571f3fd15271ff3f87ec480f87d2d937</srcmd5>
+    <version>2.6.0</version>
+    <time>1245338184</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="63">
+    <srcmd5>571f3fd15271ff3f87ec480f87d2d937</srcmd5>
+    <version>2.6.0</version>
+    <time>1245338184</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="64">
+    <srcmd5>034d1b70b9cb8d64613776a522179551</srcmd5>
+    <version>2.6.0</version>
+    <time>1264075854</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/docbook-xml-website based on submit request 29856 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="65">
+    <srcmd5>5e04eae6f33db7b77f7d24c6bfbb7c8c</srcmd5>
+    <version>2.6.0</version>
+    <time>1268923374</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="67">
+    <srcmd5>5e04eae6f33db7b77f7d24c6bfbb7c8c</srcmd5>
+    <version>2.6.0</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="68">
+    <srcmd5>5e04eae6f33db7b77f7d24c6bfbb7c8c</srcmd5>
+    <version>2.6.0</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="71">
+    <srcmd5>5e04eae6f33db7b77f7d24c6bfbb7c8c</srcmd5>
+    <version>2.6.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="73">
+    <srcmd5>5e04eae6f33db7b77f7d24c6bfbb7c8c</srcmd5>
+    <version>2.6.0</version>
+    <time>1319181852</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="74">
+    <srcmd5>63713fd10d5d49a2e7d200a48ecd6a23</srcmd5>
+    <version>2.6.0</version>
+    <time>1329221119</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103871</requestid>
+  </revision>
+  <revision rev="14" vrev="76">
+    <srcmd5>63713fd10d5d49a2e7d200a48ecd6a23</srcmd5>
+    <version>2.6.0</version>
+    <time>1340183287</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="78">
+    <srcmd5>63713fd10d5d49a2e7d200a48ecd6a23</srcmd5>
+    <version>2.6.0</version>
+    <time>1359108821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="80">
+    <srcmd5>63713fd10d5d49a2e7d200a48ecd6a23</srcmd5>
+    <version>2.6.0</version>
+    <time>1379662243</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="82">
+    <srcmd5>63713fd10d5d49a2e7d200a48ecd6a23</srcmd5>
+    <version>2.6.0</version>
+    <time>1409300777</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

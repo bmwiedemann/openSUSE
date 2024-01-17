@@ -1,0 +1,6 @@
+<package name="trader" project="openSUSE:Factory">
+  <title>Star Traders</title>
+  <description>Star Traders is a simple game of interstellar trading, where the objective is to create companies, buy and sell shares and borrow and repay money in order to become the wealthiest player (the winner).
+</description>
+  <devel project="games" package="trader"/>
+</package>

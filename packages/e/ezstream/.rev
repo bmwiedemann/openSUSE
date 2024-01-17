@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a868c61a01b877b92912e879f642378</srcmd5>
+    <version>0.6.0</version>
+    <time>1517932035</time>
+    <user>dimstar_suse</user>
+    <comment>- Set correct license (GPL-2.0)
+- Spec cleanup
+- update to 0.6.0
+- Remove date references from binaries to help build-compare
+- initial version (0.5.6)
+</comment>
+    <requestid>572212</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ee46d566b8dfe2a7312e6a6ca1e3a03c</srcmd5>
+    <version>0.6.0</version>
+    <time>1518426938</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>575373</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3add72f3772ba3ab22e105ce78c763e</srcmd5>
+    <version>1.0.1</version>
+    <time>1597675307</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+ * Fix a crash, if there is a typo in the &lt;encoder /&gt; setting
+ * Fix regression setting the stream name. From zygmund2000 on Github.
+ * Minor example and documentation tweaks
+ * Major feature release with a new configuration file structure
+ * New configuration migration tool to help with the upgrade
+   (ezstream-cfgmigrate)
+ * Added support for modern libshout functionality:
+   - WebM and Matroska media formats
+   - ICY and RoarAudio streaming protocols
+   - TLS encryption
+ * Several bug fixes and an extensive unit test suite
+ * Support the new '@b@' placeholder for separate album metadata
+ * The command line option -p has been added, causing ezstream to write a
+   locked PID file to a given location
+ * The command line options -m and -n have been removed, and new configuration
+   file settings have been added accordingly
+ * The real-time status information is now enabled explicitly with the new
+   command line option -r
+ * The behaviour of the -s command line argument was changed:
+   To shuffle lines from standard input, the special file name &quot;-&quot; needs
+   to be provided.
+ * TagLib (its C wrapper library) is now a mandatory dependency
+ * Native support for MS Windows and certain legacy UNIX systems has been
+   removed</comment>
+    <requestid>827327</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7e5715fc1e5c209070f3fe45ccd6f2d2</srcmd5>
+    <version>1.0.2</version>
+    <time>1619031626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887302</requestid>
+  </revision>
+</revisionlist>

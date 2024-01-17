@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2635ce8329d69f6dd975c63698bb6603</srcmd5>
+    <version>3.0.0</version>
+    <time>1505332007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0:
+  + Updated translations.</comment>
+    <requestid>522934</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7512715ed1663963e9b53edf30718915</srcmd5>
+    <version>3.0.0</version>
+    <time>1505416558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>525938</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9858b52ac06f7a7eda18122bc22dca69</srcmd5>
+    <version>3.99.1</version>
+    <time>1521052619</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583615 from dimstar)</comment>
+    <requestid>584777</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8413f4b2e4bed5ac43651cef9b730c8a</srcmd5>
+    <version>4.0.0</version>
+    <time>1523956562</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 594650 from iznogood)</comment>
+    <requestid>596122</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1aca3395e7d1115830f701eae869c4a1</srcmd5>
+    <version>4.2.0</version>
+    <time>1533214622</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 624884 from iznogood)</comment>
+    <requestid>624995</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54f281e013afd0a98c78a42f51a52362</srcmd5>
+    <version>4.2.1</version>
+    <time>1574784223</time>
+    <user>dimstar_suse</user>
+    <comment>new stable rel (forwarded request 750075 from iznogood)</comment>
+    <requestid>750929</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>43d3152dd2ba4016cec71a4f95d842f0</srcmd5>
+    <version>4.2.1</version>
+    <time>1580152588</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767224 from dimstar)</comment>
+    <requestid>767484</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aed38221e90fc0f4db6220dd4402cdd5</srcmd5>
+    <version>4.4.0</version>
+    <time>1587659296</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795108 from iznogood)</comment>
+    <requestid>795253</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9ce03a869a7e4c8a005dd2bb3c9d2b29</srcmd5>
+    <version>5.0.0</version>
+    <time>1605783444</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 3.38</comment>
+    <requestid>847269</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c659fc5f7eb1684b95449ec6b7763308</srcmd5>
+    <version>5.0.1</version>
+    <time>1606648913</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 849741 from iznogood)</comment>
+    <requestid>851028</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a04662e4dce4b27583afa8e2a0d13c2e</srcmd5>
+    <version>5.1.1</version>
+    <time>1613677151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872508</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aa7d382d67d78c4c717366e65c9722d7</srcmd5>
+    <version>6.00.0</version>
+    <time>1618223749</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 881000 from dimstar)</comment>
+    <requestid>881168</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3bf4bb94478df64b2eaaf75273feabbc</srcmd5>
+    <version>6.0.2</version>
+    <time>1654691116</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 980351 from dimstar)</comment>
+    <requestid>981302</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>50bbb0f2cafb3dbb2f9a76133ef3d835</srcmd5>
+    <version>6.2.0</version>
+    <time>1667825538</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1033633 from iznogood)</comment>
+    <requestid>1034162</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4f4d393bf092ec14cdd00e93d94a71b4</srcmd5>
+    <version>6.4.0</version>
+    <time>1673108164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056380</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c79c7dc2764ea4a28b763f38a71c1637</srcmd5>
+    <version>6.8.0</version>
+    <time>1695208882</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109861 from iznogood)</comment>
+    <requestid>1110523</requestid>
+  </revision>
+</revisionlist>

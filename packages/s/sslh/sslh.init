@@ -1,0 +1,143 @@
+#!/bin/sh
+#
+#     This library is free software; you can redistribute it and/or modify it
+#     under the terms of the GNU Lesser General Public License as published by
+#     the Free Software Foundation; either version 2.1 of the License, or (at
+#     your option) any later version.
+#                             
+#     This library is distributed in the hope that it will be useful, but
+#     WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#     Lesser General Public License for more details.
+#      
+#     You should have received a copy of the GNU Lesser General Public
+#     License along with this library; if not, write to the Free Software
+#     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA 
+#
+# /etc/init.d/sslh
+#   and its symbolic link
+# /usr/sbin/rcsslh
+#
+### BEGIN INIT INFO
+# Provides:          sslh
+# Required-Start:    $network $remote_fs
+# Should-Start:      sshd httpd
+# Required-Stop:     $syslog $remote_fs
+# Should-Stop:       sshd httpd
+# Default-Start:     3 5
+# Default-Stop:      0 1 2 6
+# Short-Description: sslh - ssl/ssh multiplexer
+# Description:       sslh lets one accept both HTTPS and SSH connections on 
+#	the same port. It makes it possible to connect to an SSH server on 
+#	port 443 (e.g. from inside a corporate firewall) while still serving 
+#	HTTPS on that port.
+### END INIT INFO
+#
+
+# Check for missing binaries (stale symlinks should not happen)
+# Note: Special treatment of stop for LSB conformance
+SSLH_BIN=/usr/sbin/sslh
+test -x $SSLH_BIN || { echo "$SSLH_BIN not installed";
+        if [ "$1" = "stop" ]; then exit 0;
+        else exit 5; fi; }
+
+# Check for existence of needed config file and read it
+SSLH_CONFIG=/etc/sysconfig/sslh
+test -r $SSLH_CONFIG || { echo "$SSLH_CONFIG not existing";
+        if [ "$1" = "stop" ]; then exit 0;
+        else exit 6; fi; }
+
+SSLH_PID='/var/run/sslh.pid'
+
+# Shell functions sourced from /etc/rc.status
+. /etc/rc.status
+
+# Reset status of this service
+rc_reset
+
+# set defaults
+TIMEOUT=2
+LISTENING_ADDRESS=0.0.0.0:443
+TARGET_ADDRESS_FOR_SSL=localhost:443
+TARGET_ADDRESS_FOR_SSH=localhost:22
+TARGET_ADDRESS_FOR_OPENVPN=localhost:1194
+case "$BE_VERBOSE" in 
+	[y|Y][e|E][s|S])
+		VERBOSE='--verbose'
+	;;
+	*)
+		VERBOSE=''
+	;;
+esac
+USERNAME='nobody'
+SSLH_OPTS=""
+
+# Read config
+. $SSLH_CONFIG
+
+
+case "$1" in
+    start)
+        echo -n "Starting sslh "
+        /sbin/startproc $SSLH_BIN \
+			--timeout $TIMEOUT \
+			--listen $LISTENING_ADDRESS \
+			--ssh $TARGET_ADDRESS_FOR_SSH \
+			--ssl $TARGET_ADDRESS_FOR_SSL \
+			--openvpn $TARGET_ADDRESS_FOR_OPENVPN \
+			--user $USERNAME \
+			--pidfile $SSLH_PID $VERBOSE $SSLH_OPTS
+
+        # Remember status and be verbose
+        rc_status -v
+        ;;
+    stop)
+        echo -n "Shutting down sslh "
+        /sbin/killproc  -p $SSLH_PID -TERM $SSLH_BIN
+
+        # Remember status and be verbose
+        rc_status -v
+        ;;
+    try-restart|condrestart)
+        if test "$1" = "condrestart"; then
+                echo "${attn} Use try-restart ${done}(LSB)${attn} rather than condrestart ${warn}(RH)${norm}"
+        fi
+        $0 status
+        if test $? = 0; then
+                $0 restart
+        else
+                rc_reset        # Not running is not a failure.
+        fi
+        rc_status
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        rc_status
+        ;;
+    force-reload)
+        echo -n "Reload service sslh "
+	touch $SSLH_PID
+        /sbin/killproc -HUP $SSLH_BIN
+        rc_status -v
+        ;;
+    reload)
+        echo -n "Reload service sslh "
+	touch $SSLH_PID
+        /sbin/killproc -HUP $SSLH_BIN
+        rc_status -v
+        ;;
+    status)
+        echo -n "Checking for service sslh "
+        /sbin/checkproc $SSLH_BIN
+        rc_status -v
+        ;;
+    probe)
+        test $SSLH_CONFIG -nt $SSLH_PID && echo reload
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+        exit 1
+        ;;
+esac
+rc_exit

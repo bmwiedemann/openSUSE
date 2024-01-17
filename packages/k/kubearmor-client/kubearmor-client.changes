@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Mon Dec 04 06:13:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.0.0:
+  * updated kubearmor dependencies
+  * ignore cluster access with save flag
+
+-------------------------------------------------------------------
+Fri Nov 17 17:55:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.3:
+  * update go version to v1.21
+  * fix `karmor uninstall`
+  * fixing the issue about progress bar
+  * default read permissions for all workflows
+- BuildRequire go1.21
+
+-------------------------------------------------------------------
+Wed Oct 25 13:41:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.2:
+  * fix(deps): update github.com/kubearmor/kubearmor/deployments
+    digest to 15ad34e
+  * feat: allow karmor probe to show policies applied in systemd
+    mode
+  * remove summary, discover as they depend on an external tool
+  * add govulncheck install check
+  * add govulncheck scan to Makefile
+
+-------------------------------------------------------------------
+Wed Oct 11 12:27:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- upstream fixed the missing third digit in the version, code stays
+  the same (tag 0.14 has the same code as 0.14.1)
+
+-------------------------------------------------------------------
+Tue Oct 10 14:14:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14:
+  * feat(ns): update default namespace to "kubearmor" (#361)
+  * feat: Add support for k0s
+  * feat: Enhanced handling of policy addition and deletion events
+  * Add license scan report and status
+  * handling comments and empty objects in policy
+  * migrate Userhome func to common
+  * refractoring recommend cli
+
+-------------------------------------------------------------------
+Mon Oct  9 07:26:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubearmor-client: CLI for the Kubernetes KubeArmor
+  Cloud-native Runtime Security Enforcement System

@@ -1,0 +1,5 @@
+<package name="khtml" project="openSUSE:Factory">
+  <title>khtml</title>
+  <description>KHtml</description>
+  <devel project="KDE:Frameworks5" package="khtml"/>
+</package>

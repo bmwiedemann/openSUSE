@@ -1,0 +1,5 @@
+<package name="instsource-susedata" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Tools" package="instsource-susedata"/>
+</package>

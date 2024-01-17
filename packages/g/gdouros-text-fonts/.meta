@@ -1,0 +1,11 @@
+<package name="gdouros-text-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description>Aroania: Victor Julius Scholderer (1880-1971)
+Anaktoria: Claude Garamond (1480-1561)
+Alexander: Alexander Wilson (1714-1786)
+Avdira: Demetrios Damilas (late 15 c.)
+Asea: Firmin Didot (1764-1836) a typeface with four styles
+
+</description>
+  <devel project="M17N:fonts" package="gdouros-text-fonts"/>
+</package>

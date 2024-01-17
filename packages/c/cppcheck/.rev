@@ -1,0 +1,435 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d51b3db1dab119e235f185acefa45d0b</srcmd5>
+    <version>1.69</version>
+    <time>1438899839</time>
+    <user>dimstar_suse</user>
+    <comment>New package, usefull tool</comment>
+    <requestid>320724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>442cd6b90b01e3bb12ca3510cde19ab6</srcmd5>
+    <version>1.70</version>
+    <time>1442474494</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>331102</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3a6bdd49d47c3b549e4f85c624e35ab2</srcmd5>
+    <version>1.70</version>
+    <time>1456243044</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360676</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49e8fb66b3a1885aba4d9b573a745d21</srcmd5>
+    <version>1.77</version>
+    <time>1490318541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.77:
+- Always build Qt5 GUI</comment>
+    <requestid>481721</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6e01220fab180074c74f2275a5e36f49</srcmd5>
+    <version>1.82</version>
+    <time>1519041809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577906</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79b4d2672ea5a37ada835260da732752</srcmd5>
+    <version>1.85</version>
+    <time>1539869998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642840</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3057bc21c7c9fa6580012503d0a94ad8</srcmd5>
+    <version>1.86</version>
+    <time>1545376938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660219</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>44bedc9f6f2ed71f687c606e2d0a45c9</srcmd5>
+    <version>1.86</version>
+    <time>1545996942</time>
+    <user>dimstar_suse</user>
+    <comment>- Small packaging enhancements
+
+- Use Python 3 instad of Python 2
+- Switch to CMake as the used build system, otherwise Python 3
+  could not be detected by plain make</comment>
+    <requestid>661573</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>39521a6727a83fdf03288d3aa2f93b3d</srcmd5>
+    <version>1.86</version>
+    <time>1546695754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662754</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d78d140634408b42c575bd407332624</srcmd5>
+    <version>1.88</version>
+    <time>1562843626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712895</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2159bf543d3747a7ce8416d99cc4c784</srcmd5>
+    <version>1.90</version>
+    <time>1583446850</time>
+    <user>dimstar_suse</user>
+    <comment>- Use cmake macros
+
+- Update to version 1.90
+  * alias to vector element invalid after vector is changed
+  * improved value flow analysis for struct members
+  * improved value flow analysis for pointer alias
+  * CERT: Added ENV33-C: Do not call system()
+  * MISRA: added rules 2.7, 3.2, 4.2, 14.2, 21.1, 21.12
+- update to version 1.89
+  * The default warning message format was changed. The new format
+    is similar to GCC. If you want to get warnings in the old 
+    format, add --template=cppcheck1 to the command line.
+  * improved value flow analysis for pointer aliases
+  * improved checking for uninitialized variables/structs
+  * better checking of smart pointers
+  * better checking of global variables
+  * Added Cppcheck annotations cppcheck_low(VALUE) and 
+    cppcheck_high(VALUE)
+  * shadow variables; warn when argument is shadowed
+  * warn if local reference variable can be const
+  * Added API01-C: Avoid laying out strings in memory directly 
+    before sensitive data
+  * Added MSC24-C: Do not use deprecated or obsolescent functions
+  * Added STR11-C: Do not specify the bound of a character array
+    initialized with a string literal
+  * MISRA: added rules 17.2, 18.4, 18.7</comment>
+    <requestid>781477</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>03b99ccfee427fd361267d52cf8004cf</srcmd5>
+    <version>1.90</version>
+    <time>1584051026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784399</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d8c0e0f59894c31a925c8dea0a52e700</srcmd5>
+    <version>2.1</version>
+    <time>1594818261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820782</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>892714d488452d1ad7d71c1a2ca6354e</srcmd5>
+    <version>2.3</version>
+    <time>1608221109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856470</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ba626bf6499d291e444473665d953e3c</srcmd5>
+    <version>2.4.1</version>
+    <time>1616598866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>881016</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>8b11a271ea5ae058b8000fd94e26bf4d</srcmd5>
+    <version>2.4.1</version>
+    <time>1620767045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892005</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c783b4138297101fd40e922e1dee76f2</srcmd5>
+    <version>2.4.1</version>
+    <time>1622664697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896668</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9fb30153b1bc56078520c5c32a277304</srcmd5>
+    <version>2.5</version>
+    <time>1626557808</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5:
+  * checked that all features in c++11, c++14, c++17 are supported
+  * c++20 support is improved but not complete yet
+  * improved library files, better knowledge about APIs
+  * improved checks to detect more bugs
+  * fixed checks to avoid unwanted warnings
+  * suspicious container/iterator assignment in condition
+  * rethrow without current handled exception
+- drop 0002-Another-gcc11-fix-3179.patch, 0001-Fix-gcc11-build-errors.patch: upstream</comment>
+    <requestid>906819</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4848dd537d9bb152350e31f7bf6602c2</srcmd5>
+    <version>2.5</version>
+    <time>1632251600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920630</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>98a6c850409f15fe8a0ac5757e430198</srcmd5>
+    <version>2.6.2</version>
+    <time>1639267063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939552</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>29cac65cc9aa624f202e032a2d353fd4</srcmd5>
+    <version>2.6.3</version>
+    <time>1639860768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941431</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cce75e230b8f7fae097b39aba7cd6ff2</srcmd5>
+    <version>2.7.1</version>
+    <time>1647889860</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.1:
+  * Add support for container views. The view attribute has been added to the
+    &lt;container&gt; library tag to specify the class is a view. The lifetime
+    analysis has been updated to use this new attribute to find dangling
+    lifetime containers.
+  * Various checker improvements.
+  * Fixed false positives.
+- drop fix-i586.patch (obsolete)</comment>
+    <requestid>963325</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c236161537be6e803ed45ed3a661b8d6</srcmd5>
+    <version>2.7.4</version>
+    <time>1648330288</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.4:
+  * Fixes &quot;undefined reference to `tinyxml2::&quot;
+  * Replace tinyxml2_LIBRARY with tinyxml2_LIBRARIES</comment>
+    <requestid>965031</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bd8e9216270e232b84f29806480456c3</srcmd5>
+    <version>2.7.5</version>
+    <time>1650657215</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.5:
+  * Import Project: Fix problem with define value with space</comment>
+    <requestid>971910</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a7e9a8108e27dc7843af43e7f5688ead</srcmd5>
+    <version>2.8</version>
+    <time>1654691095</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8:
+  * Lifetime analysis can now track lifetime across user-defined constructors
+    when they are inline and using member initializer list.
+  * SymbolDatabase can now deduce iterator types from how they are specified in
+    the library files.
+  * ValueFlow can evaluate class member functions that return known values.
+  * Improve duplicateValueTenary to not warn when used as an lvalue or when one
+    branch has side effects
+  * Fix variableScope to not warn when variables are used in lambda functions
+  * Fix unassignedVariable warnings when using structured bindings
+  * Fix redundantInitialization warning when variable is used in a lambda
+  * Fix variableScope warnings when using if/while init-statement
+  * Improve lifetime analysis when returning variadic template expressions
+  * Detect more statements with constStatement
+  * Detect variableScope for more types
+  * Improvements to unreadVariable
+  * Detect more instances of C style casts
+  * Warn if the return value of new is discarded
+  * The pre-ValueFlow uninitialized checker now uses a different ID as legacyUninitvar
+  * Extended library format to exclude specific function argument values</comment>
+    <requestid>981215</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>66770dff32ff064f0e70e1fd52858385</srcmd5>
+    <version>2.8.2</version>
+    <time>1658162056</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 2.8.2:
+  * do not allocate std::string when column is -1
+  * catch internal error during whole program analysis
+  * fix whole program analysis</comment>
+    <requestid>989720</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>378f0bedcbf815be014745a5660df0ea</srcmd5>
+    <version>2.9</version>
+    <time>1663438254</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9:
+  * restored check for negative allocation (new[]) and negative VLA sizes from
+    cppcheck 1.87 (LCppC backport)
+  * replaced hardcoded check for pipe() buffer size by library configuration
+    option (LCppC backport)
+  * on Windows the callstack is now being written to the output specific via
+    &quot;--exception-handling&quot;
+  * make it possible to disable the various exception handling parts via the
+    CMake options &quot;NO_UNIX_SIGNAL_HANDLING&quot;, &quot;NO_UNIX_BACKTRACE_SUPPORT&quot; and
+    &quot;NO_WINDOWS_SEH&quot;
+  * detect more redundant calls of std::string::c_str(), std::string::substr(),
+    and unnecessary copies of containers
+  * Add a match function to addon similiar to Token::Match used internally by
+    cppcheck:
+  * | for either-or tokens(ie struct|class to match either struct or class)
+  * !! to negate a token
+  * It supports the %any%, %assign%, %comp%, %name%, %op%, %or%, %oror%, and %var% keywords
+  * It supports (*), {*}, [*], and &lt;*&gt; to match links
+  * @ can be added to bind the token to a name
+  * ** can be used to match until a token
+  * Add math functions which can be used in library function definition. This
+    enables evaluation of more math functions in ValueFlow
+  * Further improve lifetime analysis with this pointers
+  * Propagate condition values from outer function calls
+  * Add debug intrinsics debug_valueflow and debug_valuetype to show more
+    detail including source backtraces</comment>
+    <requestid>1004372</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>24855ffc9e55f3d1124c3b0d0da5d008</srcmd5>
+    <version>2.9.3</version>
+    <time>1671128729</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1043016</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fc03abb2f1913119e46012037b92e696</srcmd5>
+    <version>2.10</version>
+    <time>1675265990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062417</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f56fcdb1a3d007e509544ecee894cd68</srcmd5>
+    <version>2.10.2</version>
+    <time>1678204219</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1069760</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dd6ec26103228ab3efefdc7ddb596c8a</srcmd5>
+    <version>2.10.3</version>
+    <time>1679003849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072201</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6e41d4339d34ca782fdf0abf3dd25b15</srcmd5>
+    <version>2.10.3</version>
+    <time>1680125298</time>
+    <user>dimstar_suse</user>
+    <comment>- switch on Tumbleweed temporarily to gcc 12 to avoid
+  &quot;allocator_traits&lt;A&gt;::rebind_alloc&lt;A::value_type&gt; must be A&quot;
+  (as mentioned on https://gcc.gnu.org/gcc-13/porting_to.html)</comment>
+    <requestid>1075209</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>36c6c8afc7f0fab8c1574b62a028c3c6</srcmd5>
+    <version>2.10.3</version>
+    <time>1685632844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090242</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8f90035aa8ea2bdebc3b1a62cc811ec6</srcmd5>
+    <version>2.12.1</version>
+    <time>1696269899</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.12.1:
+  * Support importing projects with project-name
+
+- update to 2.12.0:
+  * uselessOverride finds overriding functions that either
+    duplicate code from or delegate back to the base class
+    implementation
+  * knownPointerToBool finds pointer to bool conversions that are
+    always true or false
+  * truncLongCastAssignment and truncLongCastReturn check
+    additional types, including float/double/long double
+  * duplInheritedMember also reports duplicated member functions
+  * constParameter*/constVariable* checks find more instances of
+    pointers/references that can be const, e.g. when calling
+    library functions
+  * Write how many checkers was activated after a run
+  * Added --checkers-report that can be used to generate a report
+    in a file that shows what checkers was activated and disabled
+  * The qmake build system has been deprecated and will be
+    removed in a future version.
+  * Command-line option '--template
+- update to 2.11:
+  * pop_back on empty container is UB
+  * Improve useStlAlgorithm check to handle many more conditions
+    in the loop for any_of, all_of and none_of algorithms
+  * ValueFlow can evaluate the return value of functions even
+    when conditionals are used
+  * ValueFlow will now forward the container sizes being returned
+    from a function
+  * ValueFlow can infer possible values from possible symbolic</comment>
+    <requestid>1114263</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>de679e8d97d8879c88a9338550c212a0</srcmd5>
+    <version>2.12.1</version>
+    <time>1699910470</time>
+    <user>anag+factory</user>
+    <comment>- Replace disable-some-tests-about-char-signedness.patch with
+  upstream patch to fix tests on non-x86_64 (such as aarch64):
+  * eb076d87.patch
+</comment>
+    <requestid>1125244</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>da019128d5eeedfa0afbc7d64b0e5527</srcmd5>
+    <version>2.12.1</version>
+    <time>1703198324</time>
+    <user>anag+factory</user>
+    <comment>- add CVE-2023-39070.patch (CVE-2023-39070, bsc#1215233)</comment>
+    <requestid>1134347</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2a2abcab683b505ad1be90cb4e2a281e</srcmd5>
+    <version>2.13.0</version>
+    <time>1703527552</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.13.0
+  * newCheck passedByValueCallback for functions which take a
+    parameter by value but are used as callbacks
+  * newCheck returnImplicitInt for C functions without return type
+  * newCheck iterateByValue for iterating by value in a range-based
+    for loop when a const reference could be used
+- Drop patches werror-return-type.patch, eb076d87.patch, and
+  CVE-2023-39070.patch which are part of upstream or fixed in a
+  similar way.</comment>
+    <requestid>1134967</requestid>
+  </revision>
+</revisionlist>

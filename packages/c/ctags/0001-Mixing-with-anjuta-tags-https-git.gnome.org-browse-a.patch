@@ -1,0 +1,2868 @@
+From 504c9e52393b1a3620de00878043271812adb887 Mon Sep 17 00:00:00 2001
+From: Federico Fissore <federico@fissore.org>
+Date: Fri, 23 Jan 2015 15:36:29 +0100
+Subject: [PATCH 01/19] Mixing with anjuta-tags
+ https://git.gnome.org/browse/anjuta/tree/plugins/symbol-db/anjuta-tags
+
+---
+ .gitignore         |   5 +
+ acconfig.h         | 127 +++++++++++++++++
+ ant.c              |   4 +-
+ c.c                | 145 +++++++++++++++++--
+ config.h           | 275 ++++++++++++++++++++++++++++++++++++
+ ctags-utils.c      |  41 ++++++
+ ctags-utils.h      |  38 +++++
+ ctags-visitor.vala | 400 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ ctags.h            |   2 +-
+ eiffel.c           |  20 ++-
+ entry.c            |   6 +
+ entry.h            |   3 +-
+ falcon.c           | 149 ++++++++++++++++++++
+ flex.c             |  55 +++++++-
+ gir.c              | 216 +++++++++++++++++++++++++++++
+ lregex.c           |   4 +-
+ make.c             |   4 +-
+ options.c          |   6 +-
+ options.h          |   1 +
+ parsers.h          |  47 +++++++
+ php.c              |  24 ++--
+ python.c           |   8 +-
+ sort.c             |   4 +-
+ sql.c              | 278 ++++++++++++++++++++++++++++++++-----
+ test-cmd-line      |   1 +
+ tex.c              |  35 ++---
+ vala.c             | 103 ++++++++++++++
+ verilog.c          |   3 +-
+ 28 files changed, 1900 insertions(+), 104 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 acconfig.h
+ create mode 100644 config.h
+ create mode 100644 ctags-utils.c
+ create mode 100644 ctags-utils.h
+ create mode 100644 ctags-visitor.vala
+ create mode 100644 falcon.c
+ create mode 100644 gir.c
+ create mode 100644 test-cmd-line
+ create mode 100644 vala.c
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..868b69d
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,5 @@
++*.o
++Makefile
++config.log
++config.status
++ctags
+diff --git a/acconfig.h b/acconfig.h
+new file mode 100644
+index 0000000..8431027
+--- /dev/null
++++ b/acconfig.h
+@@ -0,0 +1,127 @@
++/*
++*   $Id: acconfig.h 318 2003-04-01 05:02:21Z darren $
++*
++*   Copyright (c) 1998-2003, Darren Hiebert
++*
++*   This source code is released for free distribution under the terms of the
++*   GNU General Public License.
++*
++*   This module contains input source for generating config.h.in
++*/
++
++/*  Package name.
++ */
++#undef PACKAGE
++
++/*  Package version.
++ */
++#undef VERSION
++
++/*  Define to the appropriate type if <time.h> does not define this.
++ */
++#undef clock_t
++
++/*  Define to long if <stdio.h> does not define this.
++ */
++#undef fpos_t
++
++/*  Define to the appropriate size for tmpnam() if <stdio.h> does not define
++ *  this.
++ */
++#undef L_tmpnam
++
++/*  Define this macro if the field "st_ino" exists in struct stat in
++ *  <sys/stat.h>.
++ *  */
++#undef HAVE_STAT_ST_INO
++
++/*  Define remove to unlink if you have unlink(), but not remove().
++ */
++#undef remove
++
++/*  Define this value used by fseek() appropriately if <stdio.h>
++ *  (or <unistd.h> on SunOS 4.1.x) does not define them.
++ */
++#undef SEEK_SET
++
++/*  Define as the maximum integer on your system if not defined <limits.h>.
++ */
++#undef INT_MAX
++
++/*  You can define this label to be a string containing the name of a
++ *  site-specific configuration file containing site-wide default options. The
++ *  files /etc/ctags.conf and /usr/local/etc/ctags.conf are already checked,
++ *  so only define one here if you need a file somewhere else.
++ */
++#undef CUSTOM_CONFIGURATION_FILE
++
++/*  Define this label if you want macro tags (defined lables) to use patterns
++ *  in the EX command by default (original ctags behavior is to use line
++ *  numbers).
++ */
++#undef MACROS_USE_PATTERNS
++
++/*  Define this as desired.
++ *    1:  Original ctags format
++ *    2:  Extended ctags format with extension flags in EX-style comment.
++ */
++#define DEFAULT_FILE_FORMAT	2
++
++/*  Define this label if your system supports starting scripts with a line of
++ *  the form "#! /bin/sh" to select the interpreter to use for the script.
++ */
++#undef SYS_INTERPRETER
++
++/*  Define this label if your system uses case-insensitive file names
++ */
++#undef CASE_INSENSITIVE_FILENAMES
++
++/*  Define this label to use the system sort utility (which is probably more
++ *  efficient) over the internal sorting algorithm.
++ */
++#ifndef INTERNAL_SORT
++# undef EXTERNAL_SORT
++#endif
++
++/* If you wish to change the directory in which temporary files are stored,
++ * define this label to the directory desired.
++ */
++#undef TMPDIR
++
++/* Define this label if regcomp() is broken.
++ */
++#undef REGCOMP_BROKEN
++
++/* Define this label if you wish to check the regcomp() function at run time
++ * for correct behavior. This function is currently broken on Cygwin.
++ */
++#undef CHECK_REGCOMP
++
++/*  This corrects the problem of missing prototypes for certain functions
++ *  in some GNU installations (e.g. SunOS 4.1.x).
++ */
++#undef __USE_FIXED_PROTOTYPES__
++
++/*  Define this is you have a prototype for putenv() in <stdlib.h>, but
++ *  doesn't declare its argument as "const char *".
++ */
++#undef NON_CONST_PUTENV_PROTOTYPE
++
++/*  If you receive error or warning messages indicating that you are missing
++ *  a prototype for, or a type mismatch using, one of the following functions,
++ *  define the appropriate label and remake.
++ */
++#undef NEED_PROTO_REMOVE
++#undef NEED_PROTO_UNLINK
++#undef NEED_PROTO_MALLOC
++#undef NEED_PROTO_GETENV
++#undef NEED_PROTO_FGETPOS
++#undef NEED_PROTO_STAT
++#undef NEED_PROTO_LSTAT
++#undef NEED_PROTO_TRUNCATE
++#undef NEED_PROTO_FTRUNCATE
++
++/*----------------------------------------------------------------------------
++-	Lines below this are automatically generated by autoheader
++----------------------------------------------------------------------------*/
++/* @TOP@ */
+diff --git a/ant.c b/ant.c
+index eedfcec..bd01de4 100644
+--- a/ant.c
++++ b/ant.c
+@@ -24,9 +24,9 @@
+ static void installAntRegex (const langType language)
+ {
+ 	addTagRegex (language,
+-		"^[ \t]*<[ \t]*project.*name=\"([^\"]+)\".*", "\\1", "p,project,projects", NULL);
++		"^[ \t]*<[ \t]*project[^>]+name=\"([^\"]+)\".*", "\\1", "p,project,projects", NULL);
+ 	addTagRegex (language,
+-		"^[ \t]*<[ \t]*target.*name=\"([^\"]+)\".*", "\\1", "t,target,targets", NULL);
++		"^[ \t]*<[ \t]*target[^>]+name=\"([^\"]+)\".*", "\\1", "t,target,targets", NULL);
+ }
+ 
+ extern parserDefinition* AntParser ()
+diff --git a/c.c b/c.c
+index 0cf0a14..ccca3a4 100644
+--- a/c.c
++++ b/c.c
+@@ -48,7 +48,7 @@
+ *   DATA DECLARATIONS
+ */
+ 
+-enum { NumTokens = 3 };
++enum { NumTokens = 15 };
+ 
+ typedef enum eException {
+ 	ExceptionNone, ExceptionEOF, ExceptionFormattingError,
+@@ -119,6 +119,8 @@ typedef enum eTokenType {
+ 	TOKEN_PAREN_NAME,    /* a single name in parentheses */
+ 	TOKEN_SEMICOLON,     /* the semicolon character */
+ 	TOKEN_SPEC,          /* a storage class specifier, qualifier, type, etc. */
++	TOKEN_STAR,          /* pointer * detection */
++	TOKEN_AMPERSAND,	 /* ampersand & detection */
+ 	TOKEN_COUNT
+ } tokenType;
+ 
+@@ -259,6 +261,7 @@ static langType Lang_java;
+ static langType Lang_vera;
+ static vString *Signature;
+ static boolean CollectingSignature;
++static vString *ReturnType;
+ 
+ /* Number used to uniquely identify anonymous structs and unions. */
+ static int AnonymousID = 0;
+@@ -564,7 +567,7 @@ static const char *implementationString (const impType imp)
+ /*
+ *   Debugging functions
+ */
+-
++#define DEBUG
+ #ifdef DEBUG
+ 
+ #define boolString(c)   ((c) ? "TRUE" : "FALSE")
+@@ -573,7 +576,7 @@ static const char *tokenString (const tokenType type)
+ {
+ 	static const char *const names [] = {
+ 		"none", "args", "}", "{", "colon", "comma", "double colon", "keyword",
+-		"name", "package", "paren-name", "semicolon", "specifier"
++		"name", "package", "paren-name", "semicolon", "specifier", "star", "ampersand"
+ 	};
+ 	Assert (sizeof (names) / sizeof (names [0]) == TOKEN_COUNT);
+ 	Assert ((int) type < TOKEN_COUNT);
+@@ -637,13 +640,13 @@ static void __unused__ pt (tokenInfo *const token)
+ static void __unused__ ps (statementInfo *const st)
+ {
+ 	unsigned int i;
+-	printf ("scope: %s   decl: %s   gotName: %s   gotParenName: %s\n",
++	printf ("scope: %s   decl: %s   gotName: %s   gotParenName: %s isPointer: %s\n",
+ 		scopeString (st->scope), declString (st->declaration),
+-		boolString (st->gotName), boolString (st->gotParenName));
++		boolString (st->gotName), boolString (st->gotParenName), boolString (st->isPointer));
+ 	printf ("haveQualifyingName: %s\n", boolString (st->haveQualifyingName));
+ 	printf ("access: %s   default: %s\n", accessString (st->member.access),
+ 		accessString (st->member.accessDefault));
+-	printf ("token  : ");
++	printf ("active token  : ");
+ 	pt (activeToken (st));
+ 	for (i = 1  ;  i < (unsigned int) NumTokens  ;  ++i)
+ 	{
+@@ -982,8 +985,15 @@ static void addOtherFields (tagEntryInfo* const tag, const tagType type,
+ 		case TAG_FUNCTION:
+ 		case TAG_METHOD:
+ 		case TAG_PROTOTYPE:
+-			if (vStringLength (Signature) > 0)
++			if (vStringLength (Signature) > 0) 
++			{
+ 				tag->extensionFields.signature = vStringValue (Signature);
++			}
++
++			if (vStringLength (ReturnType) > 0) 
++			{				
++				tag->extensionFields.returnType = vStringValue (ReturnType);
++			}
+ 		case TAG_CLASS:
+ 		case TAG_ENUM:
+ 		case TAG_ENUMERATOR:
+@@ -1156,7 +1166,7 @@ static void makeTag (const tokenInfo *const token,
+ 
+ 		findScopeHierarchy (scope, st);
+ 		addOtherFields (&e, type, st, scope, typeRef);
+-
++		
+ 		makeTagEntry (&e);
+ 		makeExtraTagEntry (type, &e, scope);
+ 		vStringDelete (scope);
+@@ -1377,6 +1387,8 @@ static void skipToMatch (const char *const pair)
+ 	{
+ 		if (CollectingSignature)
+ 			vStringPut (Signature, c);
++		
++
+ 		if (c == begin)
+ 		{
+ 			++matchLevel;
+@@ -2073,7 +2085,7 @@ static void processAngleBracket (void)
+ 			cppUngetc (c);
+ 		}
+ 	} else {
+-		cppUngetc (c);
++		cppUngetc (c);		
+ 	}
+ }
+ 
+@@ -2102,6 +2114,106 @@ static void parseJavaAnnotation (statementInfo *const st)
+ 	}
+ }
+ 
++static void parseReturnType (statementInfo *const st)
++{
++	int i;
++	int lower_bound;
++	tokenInfo * finding_tok;
++	
++	/* FIXME TODO: if java language must be supported then impement this here
++	 * removing the current FIXME */
++	if (!isLanguage (Lang_c) && !isLanguage (Lang_cpp))
++	{		
++		return;
++	}
++	
++	vStringClear (ReturnType);	
++
++	finding_tok = prevToken (st, 1);
++	
++	if (isType (finding_tok, TOKEN_NONE))
++		return;
++	
++	finding_tok = prevToken (st, 2);
++		
++	if (finding_tok->type == TOKEN_DOUBLE_COLON)
++	{
++		/* get the total number of double colons */
++		int j;
++		int num_colons = 0;
++
++		/* we already are at 2nd token */
++		/* the +=2 means that colons are usually found at even places */
++		for (j = 2; j < NumTokens; j+=2)
++		{
++			tokenInfo *curr_tok;
++			curr_tok = prevToken (st, j);
++			if (curr_tok->type == TOKEN_DOUBLE_COLON)
++				num_colons++;
++			else
++				break;
++		}
++
++		/*printf ("FOUND colons %d\n", num_colons);*/
++		lower_bound = 2 * num_colons + 1;
++	}
++	else
++		lower_bound = 1;
++	
++	for (i = (unsigned int) NumTokens;  i > lower_bound;  i--)
++	{
++		tokenInfo * curr_tok;
++		curr_tok = prevToken (st, i);	
++
++		switch (curr_tok->type)
++		{
++			case TOKEN_PAREN_NAME:
++			case TOKEN_NONE:
++				continue;
++				break;
++			
++			case TOKEN_DOUBLE_COLON:
++				/* usually C++ class scope */
++				vStringCatS (ReturnType, "::");				
++				break;
++
++			case TOKEN_STAR:
++				/* pointers */
++				vStringPut (ReturnType, '*');
++				break;
++
++			case TOKEN_AMPERSAND:
++				/* references */
++				vStringPut (ReturnType, '&');
++				break;
++
++			case TOKEN_KEYWORD:
++				vStringPut (ReturnType, ' ');
++				
++			default:
++				vStringCat (ReturnType, curr_tok->name);
++				break;				
++		}
++	}
++
++	/* clear any white space from the front */
++	vStringStripLeading (ReturnType);
++
++	/* .. and from the tail too */
++	vStringStripTrailing (ReturnType);
++
++	/* put and end marker */
++	vStringTerminate (ReturnType);
++
++	/*/
++	printf ("~~~~~ statement ---->\n");
++	ps (st);
++	printf ("NumTokens: %d\n", NumTokens);
++	printf ("FOUND ReturnType: %s\n", vStringValue (ReturnType));	
++	printf ("<~~~~~\n");
++	//*/
++}
++
+ static int parseParens (statementInfo *const st, parenInfo *const info)
+ {
+ 	tokenInfo *const token = activeToken (st);
+@@ -2301,6 +2413,7 @@ static void analyzeParens (statementInfo *const st)
+ 
+ 		initParenInfo (&info);
+ 		parseParens (st, &info);
++		parseReturnType (st);
+ 		c = skipToNonWhite ();
+ 		cppUngetc (c);
+ 		if (info.invalidContents)
+@@ -2536,9 +2649,15 @@ static void nextToken (statementInfo *const st)
+ 		switch (c)
+ 		{
+ 			case EOF: longjmp (Exception, (int) ExceptionEOF);  break;
+-			case '(': analyzeParens (st);                       break;
++			/* analyze functions and co */
++			case '(': analyzeParens (st);						break;
+ 			case '<': processAngleBracket ();                   break;
+-			case '*': st->haveQualifyingName = FALSE;           break;
++			case '*': 
++				st->haveQualifyingName = FALSE;
++				setToken (st, TOKEN_STAR);
++				break;
++			case '&': setToken (st, TOKEN_AMPERSAND);			break;
++				
+ 			case ',': setToken (st, TOKEN_COMMA);               break;
+ 			case ':': processColon (st);                        break;
+ 			case ';': setToken (st, TOKEN_SEMICOLON);           break;
+@@ -2654,6 +2773,7 @@ static void nest (statementInfo *const st, const unsigned int nestLevel)
+ 		case DECL_FUNCTION:
+ 		case DECL_TASK:
+ 			st->inFunction = TRUE;
++
+ 			/* fall through */
+ 		default:
+ 			if (includeTag (TAG_LOCAL, FALSE))
+@@ -2765,6 +2885,7 @@ static void createTags (const unsigned int nestLevel,
+ 
+ 		nextToken (st);
+ 		token = activeToken (st);
++		
+ 		if (isType (token, TOKEN_BRACE_CLOSE))
+ 		{
+ 			if (nestLevel > 0)
+@@ -2801,6 +2922,7 @@ static boolean findCTags (const unsigned int passCount)
+ 	Assert (passCount < 3);
+ 	cppInit ((boolean) (passCount > 1), isLanguage (Lang_csharp));
+ 	Signature = vStringNew ();
++	ReturnType = vStringNew ();
+ 
+ 	exception = (exception_t) setjmp (Exception);
+ 	retry = FALSE;
+@@ -2817,6 +2939,7 @@ static boolean findCTags (const unsigned int passCount)
+ 		}
+ 	}
+ 	vStringDelete (Signature);
++	vStringDelete (ReturnType);
+ 	cppTerminate ();
+ 	return retry;
+ }
+diff --git a/config.h b/config.h
+new file mode 100644
+index 0000000..d33e48b
+--- /dev/null
++++ b/config.h
+@@ -0,0 +1,275 @@
++/* config.h.  Generated from config.h.in by configure.  */
++/* config.h.in.  Generated from configure.in by autoheader.  */
++/*
++*   $Id: acconfig.h 318 2003-04-01 05:02:21Z darren $
++*
++*   Copyright (c) 1998-2003, Darren Hiebert
++*
++*   This source code is released for free distribution under the terms of the
++*   GNU General Public License.
++*
++*   This module contains input source for generating config.h.in
++*/
++
++/*  Package name.
++ */
++/* #undef PACKAGE */
++
++/*  Package version.
++ */
++/* #undef VERSION */
++
++/*  Define to the appropriate type if <time.h> does not define this.
++ */
++/* #undef clock_t */
++
++/*  Define to long if <stdio.h> does not define this.
++ */
++/* #undef fpos_t */
++
++/*  Define to the appropriate size for tmpnam() if <stdio.h> does not define
++ *  this.
++ */
++/* #undef L_tmpnam */
++
++/*  Define this macro if the field "st_ino" exists in struct stat in
++ *  <sys/stat.h>.
++ *  */
++#define HAVE_STAT_ST_INO 1
++
++/*  Define remove to unlink if you have unlink(), but not remove().
++ */
++/* #undef remove */
++
++/*  Define this value used by fseek() appropriately if <stdio.h>
++ *  (or <unistd.h> on SunOS 4.1.x) does not define them.
++ */
++/* #undef SEEK_SET */
++
++/*  Define as the maximum integer on your system if not defined <limits.h>.
++ */
++/* #undef INT_MAX */
++
++/*  You can define this label to be a string containing the name of a
++ *  site-specific configuration file containing site-wide default options. The
++ *  files /etc/ctags.conf and /usr/local/etc/ctags.conf are already checked,
++ *  so only define one here if you need a file somewhere else.
++ */
++/* #undef CUSTOM_CONFIGURATION_FILE */
++
++/*  Define this label if you want macro tags (defined lables) to use patterns
++ *  in the EX command by default (original ctags behavior is to use line
++ *  numbers).
++ */
++/* #undef MACROS_USE_PATTERNS */
++
++/*  Define this as desired.
++ *    1:  Original ctags format
++ *    2:  Extended ctags format with extension flags in EX-style comment.
++ */
++#define DEFAULT_FILE_FORMAT 2
++
++/*  Define this label if your system supports starting scripts with a line of
++ *  the form "#! /bin/sh" to select the interpreter to use for the script.
++ */
++#define SYS_INTERPRETER 1
++
++/*  Define this label if your system uses case-insensitive file names
++ */
++/* #undef CASE_INSENSITIVE_FILENAMES */
++
++/*  Define this label to use the system sort utility (which is probably more
++ *  efficient) over the internal sorting algorithm.
++ */
++#ifndef INTERNAL_SORT
++# define EXTERNAL_SORT 1
++#endif
++
++/* If you wish to change the directory in which temporary files are stored,
++ * define this label to the directory desired.
++ */
++#define TMPDIR "/tmp"
++
++/* Define this label if regcomp() is broken.
++ */
++/* #undef REGCOMP_BROKEN */
++
++/* Define this label if you wish to check the regcomp() function at run time
++ * for correct behavior. This function is currently broken on Cygwin.
++ */
++/* #undef CHECK_REGCOMP */
++
++/*  This corrects the problem of missing prototypes for certain functions
++ *  in some GNU installations (e.g. SunOS 4.1.x).
++ */
++/* #undef __USE_FIXED_PROTOTYPES__ */
++
++/*  Define this is you have a prototype for putenv() in <stdlib.h>, but
++ *  doesn't declare its argument as "const char *".
++ */
++/* #undef NON_CONST_PUTENV_PROTOTYPE */
++
++/*  If you receive error or warning messages indicating that you are missing
++ *  a prototype for, or a type mismatch using, one of the following functions,
++ *  define the appropriate label and remake.
++ */
++/* #undef NEED_PROTO_REMOVE */
++/* #undef NEED_PROTO_UNLINK */
++/* #undef NEED_PROTO_MALLOC */
++/* #undef NEED_PROTO_GETENV */
++/* #undef NEED_PROTO_FGETPOS */
++/* #undef NEED_PROTO_STAT */
++/* #undef NEED_PROTO_LSTAT */
++/* #undef NEED_PROTO_TRUNCATE */
++/* #undef NEED_PROTO_FTRUNCATE */
++
++/*----------------------------------------------------------------------------
++-	Lines below this are automatically generated by autoheader
++----------------------------------------------------------------------------*/
++
++/* Define to 1 if you have the `chmod' function. */
++/* #undef HAVE_CHMOD */
++
++/* Define to 1 if you have the `chsize' function. */
++/* #undef HAVE_CHSIZE */
++
++/* Define to 1 if you have the `clock' function. */
++#define HAVE_CLOCK 1
++
++/* Define to 1 if you have the <dirent.h> header file. */
++#define HAVE_DIRENT_H 1
++
++/* Define to 1 if you have the <fcntl.h> header file. */
++#define HAVE_FCNTL_H 1
++
++/* Define to 1 if you have the `fgetpos' function. */
++#define HAVE_FGETPOS 1
++
++/* Define to 1 if you have the `findfirst' function. */
++/* #undef HAVE_FINDFIRST */
++
++/* Define to 1 if you have the `fnmatch' function. */
++#define HAVE_FNMATCH 1
++
++/* Define to 1 if you have the <fnmatch.h> header file. */
++#define HAVE_FNMATCH_H 1
++
++/* Define to 1 if you have the `ftruncate' function. */
++/* #undef HAVE_FTRUNCATE */
++
++/* Define to 1 if you have the <inttypes.h> header file. */
++#define HAVE_INTTYPES_H 1
++
++/* Define to 1 if you have the <memory.h> header file. */
++#define HAVE_MEMORY_H 1
++
++/* Define to 1 if you have the `mkstemp' function. */
++#define HAVE_MKSTEMP 1
++
++/* Define to 1 if you have the `opendir' function. */
++#define HAVE_OPENDIR 1
++
++/* Define to 1 if you have the `putenv' function. */
++/* #undef HAVE_PUTENV */
++
++/* Define to 1 if you have the `regcomp' function. */
++#define HAVE_REGCOMP 1
++
++/* Define to 1 if you have the `remove' function. */
++#define HAVE_REMOVE 1
++
++/* Define to 1 if you have the `setenv' function. */
++#define HAVE_SETENV 1
++
++/* Define to 1 if you have the <stat.h> header file. */
++/* #undef HAVE_STAT_H */
++
++/* Define to 1 if you have the <stdint.h> header file. */
++#define HAVE_STDINT_H 1
++
++/* Define to 1 if you have the <stdlib.h> header file. */
++#define HAVE_STDLIB_H 1
++
++/* Define to 1 if you have the `strcasecmp' function. */
++#define HAVE_STRCASECMP 1
++
++/* Define to 1 if you have the `strerror' function. */
++#define HAVE_STRERROR 1
++
++/* Define to 1 if you have the `stricmp' function. */
++/* #undef HAVE_STRICMP */
++
++/* Define to 1 if you have the <strings.h> header file. */
++#define HAVE_STRINGS_H 1
++
++/* Define to 1 if you have the <string.h> header file. */
++#define HAVE_STRING_H 1
++
++/* Define to 1 if you have the `strncasecmp' function. */
++#define HAVE_STRNCASECMP 1
++
++/* Define to 1 if you have the `strnicmp' function. */
++/* #undef HAVE_STRNICMP */
++
++/* Define to 1 if you have the `strstr' function. */
++#define HAVE_STRSTR 1
++
++/* Define to 1 if you have the <sys/dir.h> header file. */
++#define HAVE_SYS_DIR_H 1
++
++/* Define to 1 if you have the <sys/stat.h> header file. */
++#define HAVE_SYS_STAT_H 1
++
++/* Define to 1 if you have the <sys/times.h> header file. */
++#define HAVE_SYS_TIMES_H 1
++
++/* Define to 1 if you have the <sys/types.h> header file. */
++#define HAVE_SYS_TYPES_H 1
++
++/* Define to 1 if you have the `tempnam' function. */
++/* #undef HAVE_TEMPNAM */
++
++/* Define to 1 if you have the `times' function. */
++/* #undef HAVE_TIMES */
++
++/* Define to 1 if you have the <time.h> header file. */
++#define HAVE_TIME_H 1
++
++/* Define to 1 if you have the `truncate' function. */
++#define HAVE_TRUNCATE 1
++
++/* Define to 1 if you have the <types.h> header file. */
++/* #undef HAVE_TYPES_H */
++
++/* Define to 1 if you have the <unistd.h> header file. */
++#define HAVE_UNISTD_H 1
++
++/* Define to 1 if you have the `_findfirst' function. */
++/* #undef HAVE__FINDFIRST */
++
++/* Define to the address where bug reports for this package should be sent. */
++#define PACKAGE_BUGREPORT ""
++
++/* Define to the full name of this package. */
++#define PACKAGE_NAME ""
++
++/* Define to the full name and version of this package. */
++#define PACKAGE_STRING ""
++
++/* Define to the one symbol short name of this package. */
++#define PACKAGE_TARNAME ""
++
++/* Define to the version of this package. */
++#define PACKAGE_VERSION ""
++
++/* Define to 1 if you have the ANSI C header files. */
++#define STDC_HEADERS 1
++
++/* Define to empty if `const' does not conform to ANSI C. */
++/* #undef const */
++
++/* Define to `long int' if <sys/types.h> does not define. */
++/* #undef off_t */
++
++/* Define to `unsigned int' if <sys/types.h> does not define. */
++/* #undef size_t */
+diff --git a/ctags-utils.c b/ctags-utils.c
+new file mode 100644
+index 0000000..0db7745
+--- /dev/null
++++ b/ctags-utils.c
+@@ -0,0 +1,41 @@
++/*
++ * Copyright (C) Massimo Cora' 2010 <maxcvs@email.it>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ * 
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU Library General Public License for more details.
++ * 
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
++ */
++
++#include "ctags-utils.h"
++
++void
++get_file_pos (gint line, fpos_t *fpos, FILE *f)
++{
++	vString * str = vStringNew ();
++	gint i;
++	g_assert (fseek (f, 0, SEEK_SET) == 0);
++
++	for (i = 0;i < line - 1; i++)
++	{
++		if (readLine (str, f) == NULL)
++		{
++			vStringDelete (str);
++			return;
++		}
++	}
++
++	vStringDelete (str);
++	g_assert (fgetpos (f, fpos) == 0);
++}
++
++
+diff --git a/ctags-utils.h b/ctags-utils.h
+new file mode 100644
+index 0000000..41283bf
+--- /dev/null
++++ b/ctags-utils.h
+@@ -0,0 +1,38 @@
++/*
++ * Copyright (C) Massimo Cora' 2010 <maxcvs@email.it>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ * 
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU Library General Public License for more details.
++ * 
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
++ */
++
++#include "general.h"	/* must always come first */
++#include "read.h"
++#include <assert.h>
++#include <glib.h>
++#include <string.h>
++
++
++/**
++ * IMPORTANT NOTE 
++ *
++ * This file should contain functions/helpers that aren't strictly 
++ * ctags-standardized and that can be used in extra parsers (i.e. parser
++ * not included with ctags distribution).
++ * Doing so and keeping separate standard/extra files should make 
++ * an upgrade of ctags easier.
++ */
++ 
++
++void get_file_pos (gint line, fpos_t *fpos, FILE *f);
++
+diff --git a/ctags-visitor.vala b/ctags-visitor.vala
+new file mode 100644
+index 0000000..f7c050a
+--- /dev/null
++++ b/ctags-visitor.vala
+@@ -0,0 +1,400 @@
++/*
++ * ctags-visitor.vala
++ *
++ * Copyright 2008, 2010 Abderrahim Kitouni <a.kitouni@gmail.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
++ * MA 02110-1301, USA.
++ */
++
++using Vala;
++
++public struct CTagsEntry {
++	public int line_number;
++	public string name;
++	public string kind_name;
++	public char kind;
++	public string access;
++	public string implementation;
++	public string inheritance;
++	public string scope[2];
++	public string signature;
++	public string typeref;
++	public string returntype;
++}
++
++class DummyReport : Report {
++	public override void warn (SourceReference? source, string message) {}
++	public override void err (SourceReference? source, string message) {}
++}
++
++[CCode (has_target=false)]
++public delegate void CTagsEntryMaker (CTagsEntry entry);
++
++public class CTagsVisitor : CodeVisitor {
++	Parser vala_parser;
++	Genie.Parser genie_parser;
++	GLib.List<CTagsEntry?> taglist;
++	public CTagsVisitor () {
++		vala_parser = new Parser();
++		genie_parser = new Genie.Parser();
++	}
++	/* helper functions */
++	static string get_access (Symbol sym) {
++		switch (sym.access) {
++		case SymbolAccessibility.PRIVATE : return "private";
++		case SymbolAccessibility.INTERNAL : return "internal";
++		case SymbolAccessibility.PROTECTED : return "protected";
++		case SymbolAccessibility.PUBLIC : return "public";
++		}
++		assert_not_reached ();
++	}
++	static string to_string (Iterable<DataType> seq, string sep = ",") {
++		var str = new StringBuilder();
++		var first = true;
++		foreach (var type in seq) {
++			if(first) {
++				first = false;
++			} else {
++				str.append(sep);
++			}
++			str.append(type.to_qualified_string());
++		}
++		return str.str;
++	}
++	static string? implementation (Symbol sym) {
++		var list = new GLib.List<string>();
++
++		if (sym is Vala.Signal) {
++			var sig = (Vala.Signal)sym;
++			if (sig.is_virtual)
++				list.append("virtual");
++		} else if (sym is Class) {
++			var cls = (Class)sym;
++			if (cls.is_abstract)
++				list.append("abstract");
++		} else if (sym is Method) {
++			var meth = (Method)sym;
++			if (meth.is_abstract)
++				list.append("abstract");
++			else if (meth.is_virtual)
++				list.append("virtual");
++		} else if (sym is Property) {
++			var prop = (Property)sym;
++			if (prop.is_abstract)
++				list.append("abstract");
++			else if (prop.is_virtual)
++				list.append("virtual");
++		} else
++			return_val_if_reached(null);
++
++		var ret = new StringBuilder();
++		var first = true;
++		foreach (var str in list) {
++			if(first) {
++				first = false;
++			} else {
++				ret.append(",");
++			}
++			ret.append(str);
++		}
++		return ret.str;
++	}
++	static string signature (Vala.List<Vala.Parameter> parameter) {
++		var ret = new StringBuilder("(");
++		var first = true;
++		foreach (var p in parameter) {
++			if(first) {
++				first = false;
++			} else {
++				ret.append(",");
++			}
++			if (p.ellipsis) {
++				ret.append("...");
++			} else {
++				ret.append (p.variable_type.to_qualified_string());
++				ret.append (" ");
++				ret.append (p.name);
++			}
++		}
++		ret.append (")");
++		return ret.str;
++	}
++	static string[] scope (Symbol s) {
++		string scope[2];
++		var par = s.parent_symbol;
++		if (par != null && par.name != null) {
++			if (par is Class)
++				scope[0] = "class";
++			else if (par is Struct)
++				scope[0] = "struct";
++			else if (par is Interface)
++				scope[0] = "interface";
++			else
++				return scope;
++			scope[1] = par.name;
++		}
++		return scope;
++	}
++	/*static void print_tag(CTagsEntry en) {
++		stdout.printf("%s: %s at %d\n", en.name, en.kind_name, en.line_number);
++	}*/
++
++	public override void visit_source_file (SourceFile source_file) {
++		source_file.accept_children (this);
++	}
++
++	public override void visit_class (Class cl) {
++		var entry = CTagsEntry();
++
++		entry.line_number = cl.source_reference.begin.line;
++		entry.name = cl.name;
++		entry.kind_name = "class";
++		entry.kind = 'c';
++		entry.access = get_access (cl);
++		entry.implementation = implementation(cl);
++		entry.inheritance = to_string(cl.get_base_types(), ",");
++		entry.scope = scope (cl);
++
++		taglist.append(entry);
++//		print_tag(entry);
++		cl.accept_children(this);
++	}
++	public override void visit_struct (Struct st) {
++		var entry = CTagsEntry();
++		entry.line_number = st.source_reference.begin.line;
++		entry.name = st.name;
++		entry.kind_name = "struct";
++		entry.kind = 's';
++		entry.access = get_access (st);
++		entry.scope = scope (st);
++
++		taglist.append(entry);
++//		print_tag(entry);
++		st.accept_children(this);
++	}
++	public override void visit_interface (Interface iface) {
++		var entry = CTagsEntry();
++
++		entry.line_number = iface.source_reference.begin.line;
++		entry.name = iface.name;
++		entry.kind_name = "interface";
++		entry.kind = 'i';
++		entry.access = get_access (iface);
++		entry.inheritance = to_string(iface.get_prerequisites());
++		entry.scope = scope (iface);
++
++		taglist.append(entry);
++//		print_tag(entry);
++		iface.accept_children(this);
++	}
++
++	public override void visit_enum (Vala.Enum en) {
++		var entry = CTagsEntry();
++
++		entry.line_number = en.source_reference.begin.line;
++		entry.name = en.name;
++		entry.kind_name = "enum";
++		entry.kind = 'e';
++		entry.access = get_access (en);
++		entry.scope = scope (en);
++
++		taglist.append(entry);
++//		print_tag(entry);
++		en.accept_children(this);
++	}
++	public override void visit_error_domain (ErrorDomain edomain) {
++		var entry = CTagsEntry();
++
++		entry.line_number = edomain.source_reference.begin.line;
++		entry.name = edomain.name;
++		entry.kind_name = "errordomain";
++		entry.kind = 'E';
++		entry.access = get_access (edomain);
++		entry.scope = scope (edomain);
++
++		taglist.append(entry);
++//		print_tag(entry);
++		edomain.accept_children(this);
++	}
++
++	public override void visit_enum_value (Vala.EnumValue ev) {
++		var entry = CTagsEntry();
++
++		entry.line_number = ev.source_reference.begin.line;
++		entry.name = ev.name;
++		entry.kind_name = "enumvalue";
++		entry.kind = 'v';
++		entry.access = get_access (ev);
++		entry.scope = scope (ev);
++
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++	public override void visit_error_code (ErrorCode ecode) {
++		var entry = CTagsEntry();
++
++		//entry.line_number = ecode.source_reference.begin.line;
++		entry.name = ecode.name;
++		entry.kind_name = "errorcode";
++		entry.kind = 'r';
++		entry.access = get_access (ecode);
++		entry.scope = scope (ecode);
++
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++
++	public override void visit_delegate (Delegate d) {
++		var entry = CTagsEntry();
++
++		entry.line_number = d.source_reference.begin.line;
++		entry.name = d.name;
++		entry.kind_name = "delegate";
++		entry.kind = 'd';
++		entry.access = get_access (d);
++		entry.scope = scope (d);
++		entry.returntype = d.return_type.to_qualified_string();
++		entry.signature = signature(d.get_parameters());
++
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++	public override void visit_signal (Vala.Signal sig) {
++		var entry = CTagsEntry();
++
++		entry.line_number = sig.source_reference.begin.line;
++		entry.name = sig.name;
++		entry.kind_name = "signal";
++		entry.kind = 'S';
++		entry.access = get_access (sig);
++		entry.implementation = implementation(sig);
++		entry.scope = scope (sig);
++		entry.returntype = sig.return_type.to_qualified_string();
++		entry.signature = signature(sig.get_parameters());
++
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++	public override void visit_field (Field f) {
++		var entry = CTagsEntry();
++
++		entry.line_number = f.source_reference.begin.line;
++		entry.name = f.name;
++		entry.kind_name = "field";
++		entry.kind = 'f';
++		entry.access = get_access (f);
++		entry.scope = scope (f);
++		entry.typeref = f.variable_type.to_qualified_string();
++
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++	public override void visit_constant (Constant c) {
++		var entry = CTagsEntry();
++
++		entry.line_number = c.source_reference.begin.line;
++		entry.name = c.name;
++		entry.kind_name = "field";
++		entry.kind = 'f';
++		entry.access = get_access (c);
++		entry.scope = scope (c);
++		entry.typeref = c.type_reference.to_qualified_string();
++  
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++	public override void visit_property (Property prop) {
++		var entry = CTagsEntry();
++
++		entry.line_number = prop.source_reference.begin.line;
++		entry.name = prop.name;
++		entry.kind_name = "property";
++		entry.kind = 'p';
++		entry.access = get_access (prop);
++		entry.implementation = implementation(prop);
++		entry.scope = scope (prop);
++		entry.typeref = prop.property_type.to_qualified_string();
++
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++
++	public override void visit_method (Method m) {
++		var entry = CTagsEntry();
++
++		entry.line_number = m.source_reference.begin.line;
++		entry.name = m.name;
++		entry.kind_name = "method";
++		entry.kind = 'm';
++		entry.access = get_access (m);
++		entry.implementation = implementation(m);
++		entry.scope = scope (m);
++		entry.returntype = m.return_type.to_qualified_string();
++		entry.signature = signature(m.get_parameters());
++
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++
++	public override void visit_local_variable (LocalVariable local) {
++		var entry = CTagsEntry();
++
++		entry.line_number = local.source_reference.begin.line;
++		entry.name = local.name;
++		entry.kind_name = "local";
++		entry.kind = 'l';
++		entry.access = get_access (local);
++
++		taglist.append(entry);
++//		print_tag(entry);
++	}
++
++	public void parse_vala (string filename, CTagsEntryMaker maker ) {
++		taglist = new GLib.List<CTagsEntry?>();
++		/* We create a context for every source file so that Parser.parse(context)
++		 * don't parse a file multiple times causing errors. Parser.parse_file(source_file)
++		 * assumes that Parser.context is the same as source_file.context anyway */
++		var context = new CodeContext();
++		context.report = new DummyReport();
++		var source_file = new SourceFile(context, filename.has_suffix("vapi") ? SourceFileType.PACKAGE : SourceFileType.SOURCE, filename);
++
++		CodeContext.push(context);
++		context.add_source_file(source_file);
++		vala_parser.parse(context);
++		context.accept(this);
++		foreach (var tagentry in taglist) {
++			maker(tagentry);
++		}
++		taglist = null;
++		CodeContext.pop();
++	}
++	public void parse_genie (string filename, CTagsEntryMaker maker ) {
++		taglist = new GLib.List<CTagsEntry?>();
++		var context = new CodeContext();
++		context.report = new DummyReport();
++		var source_file = new SourceFile(context, SourceFileType.SOURCE, filename);
++		context.add_source_file(source_file);
++
++		CodeContext.push(context);
++		genie_parser.parse(context);
++		context.accept(this);
++		foreach (var tagentry in taglist) {
++			maker(tagentry);
++		}
++		taglist = null;
++		CodeContext.pop();
++		}
++}
+diff --git a/ctags.h b/ctags.h
+index f8884af..fb5ca5b 100644
+--- a/ctags.h
++++ b/ctags.h
+@@ -15,7 +15,7 @@
+ *   MACROS
+ */
+ #ifndef PROGRAM_VERSION
+-# define PROGRAM_VERSION "5.8"
++# define PROGRAM_VERSION "Development"
+ #endif
+ #define PROGRAM_NAME      "Exuberant Ctags"
+ #define PROGRAM_URL       "http://ctags.sourceforge.net"
+diff --git a/eiffel.c b/eiffel.c
+index b504ac3..e2f5a5c 100644
+--- a/eiffel.c
++++ b/eiffel.c
+@@ -1,5 +1,5 @@
+ /*
+-*   $Id: eiffel.c 706 2009-06-28 23:09:30Z dhiebert $
++*   $Id: eiffel.c 748 2009-11-06 02:44:42Z dhiebert $
+ *
+ *   Copyright (c) 1998-2002, Darren Hiebert
+ *
+@@ -53,13 +53,15 @@ typedef enum eException { ExceptionNone, ExceptionEOF } exception_t;
+  */
+ typedef enum eKeywordId {
+ 	KEYWORD_NONE = -1,
+-	KEYWORD_alias, KEYWORD_all, KEYWORD_and, KEYWORD_as, KEYWORD_assign,
++	KEYWORD_alias, KEYWORD_all, KEYWORD_and,
++	KEYWORD_as, KEYWORD_assign, KEYWORD_attached,
+ 	KEYWORD_check, KEYWORD_class, KEYWORD_convert, KEYWORD_create,
+ 	KEYWORD_creation, KEYWORD_Current,
+-	KEYWORD_debug, KEYWORD_deferred, KEYWORD_do, KEYWORD_else,
+-	KEYWORD_elseif, KEYWORD_end, KEYWORD_ensure, KEYWORD_expanded,
+-	KEYWORD_export, KEYWORD_external, KEYWORD_false, KEYWORD_feature,
+-	KEYWORD_from, KEYWORD_frozen, KEYWORD_if, KEYWORD_implies,
++	KEYWORD_debug, KEYWORD_deferred, KEYWORD_detachable, KEYWORD_do,
++	KEYWORD_else, KEYWORD_elseif, KEYWORD_end, KEYWORD_ensure,
++	KEYWORD_expanded, KEYWORD_export, KEYWORD_external,
++	KEYWORD_false, KEYWORD_feature, KEYWORD_from, KEYWORD_frozen,
++	KEYWORD_if, KEYWORD_implies,
+ 	KEYWORD_indexing, KEYWORD_infix, KEYWORD_inherit, KEYWORD_inspect,
+ 	KEYWORD_invariant, KEYWORD_is, KEYWORD_like, KEYWORD_local,
+ 	KEYWORD_loop, KEYWORD_not, KEYWORD_obsolete, KEYWORD_old, KEYWORD_once,
+@@ -154,6 +156,7 @@ static const keywordDesc EiffelKeywordTable [] = {
+ 	{ "and",            KEYWORD_and        },
+ 	{ "as",             KEYWORD_as         },
+ 	{ "assign",         KEYWORD_assign     },
++	{ "attached",       KEYWORD_attached   },
+ 	{ "check",          KEYWORD_check      },
+ 	{ "class",          KEYWORD_class      },
+ 	{ "convert",        KEYWORD_convert    },
+@@ -162,6 +165,7 @@ static const keywordDesc EiffelKeywordTable [] = {
+ 	{ "current",        KEYWORD_Current    },
+ 	{ "debug",          KEYWORD_debug      },
+ 	{ "deferred",       KEYWORD_deferred   },
++	{ "detachable",     KEYWORD_detachable },
+ 	{ "do",             KEYWORD_do         },
+ 	{ "else",           KEYWORD_else       },
+ 	{ "elseif",         KEYWORD_elseif     },
+@@ -870,7 +874,9 @@ static boolean parseType (tokenInfo *const token)
+ 	}
+ 	else
+ 	{
+-		if (isKeyword (id, KEYWORD_expanded))
++		if (isKeyword (id, KEYWORD_attached) ||
++		    isKeyword (id, KEYWORD_detachable) ||
++		    isKeyword (id, KEYWORD_expanded))
+ 		{
+ 			copyToken (id, token);
+ 			readToken (token);
+diff --git a/entry.c b/entry.c
+index 3890e50..28bfe07 100644
+--- a/entry.c
++++ b/entry.c
+@@ -761,6 +761,11 @@ static int addExtensionFields (const tagEntryInfo *const tag)
+ 		length += fprintf (TagFile.fp, "%s\tsignature:%s", sep,
+ 				tag->extensionFields.signature);
+ 
++	if (Option.extensionFields.returnType &&
++			tag->extensionFields.returnType != NULL)
++		length += fprintf (TagFile.fp, "%s\treturntype:%s", sep,
++				tag->extensionFields.returnType);
++	
+ 	return length;
+ #undef sep
+ }
+@@ -836,6 +841,7 @@ extern void initTagEntry (tagEntryInfo *const e, const char *const name)
+ {
+ 	Assert (File.source.name != NULL);
+ 	memset (e, 0, sizeof (tagEntryInfo));
++
+ 	e->lineNumberEntry = (boolean) (Option.locate == EX_LINENUM);
+ 	e->lineNumber      = getSourceLineNumber ();
+ 	e->language        = getSourceLanguageName ();
+diff --git a/entry.h b/entry.h
+index 2365c50..323c1c5 100644
+--- a/entry.h
++++ b/entry.h
+@@ -72,7 +72,8 @@ typedef struct sTagEntryInfo {
+ 		const char* inheritance;
+ 		const char* scope [2];    /* value and key */
+ 		const char* signature;
+-
++		const char* returnType;
++		
+ 		/* type (union/struct/etc.) and name for a variable or typedef. */
+ 		const char* typeRef [2];  /* e.g., "struct" and struct name */
+ 
+diff --git a/falcon.c b/falcon.c
+new file mode 100644
+index 0000000..2730462
+--- /dev/null
++++ b/falcon.c
+@@ -0,0 +1,149 @@
++/*
++ * $Id$
++ * 
++ * Copyright (c) 2011, 2012 Steven Oliver <oliver.steven@gmail.com>
++ * 
++ * This source code is released for free distribution under the terms of the
++ * GNU General Public License.
++ * 
++ * This module contains functions for generating tags for Falcon language
++ * files.
++ */
++
++
++/* 
++ * INCLUDE FILES 
++ */
++#include "general.h"
++
++#include <string.h>
++#include <ctype.h>   
++
++#include "parse.h"
++#include "read.h"  
++
++/*
++ * Data Definitions
++ */
++typedef enum eFalconKinds {
++    K_CLASS,
++    K_FUNCTION,
++    K_MEMBER,
++    K_VARIABLE,
++    K_NAMESPACE
++} falconKind;
++
++static kindOption FalconKinds [] = {
++    {TRUE, 'c', "class",     "classes" },
++    {TRUE, 'f', "function",  "functions"},
++    {TRUE, 'm', "member",    "class members"},
++    {TRUE, 'v', "variable",  "variables"},
++    {TRUE, 'i', "namespace", "imports"}
++};
++
++/* 
++ * Function Definitions
++ */
++
++static boolean isIdentifierChar (int c)
++{
++    return (boolean) (isalnum (c) || c == '_');
++}
++
++static const char *skipSpace (const char *cp)
++{
++    while (isspace ((int) *cp))
++        ++cp;
++        
++    return cp;
++}
++
++static const char *skipString (const char *cp)
++{
++    const char *start = cp;
++    int escaped = 0;
++    
++    for (cp++; *cp; cp++)
++    {
++        if (escaped)
++            escaped--;
++        else if (*cp == '\\')
++            escaped++;
++        else if (*cp == *start)
++            return cp + 1;
++    }
++    
++    return cp;
++}
++
++static void findFalconTags (void)
++{
++    vString *name = vStringNew ();
++    const unsigned char *line;
++
++    while ((line = fileReadLine ()) != NULL)
++    {
++        const unsigned char *cp = line;
++
++        if (*cp == '#')
++            continue;
++
++        if (strncmp ((const char*) cp, "function", (size_t) 8) == 0)
++        {
++            cp += 8;
++            cp = skipSpace (cp);
++            
++            while (isIdentifierChar ((int) *cp))
++            {
++                vStringPut (name, (int) *cp);
++                ++cp;
++            }
++            vStringTerminate (name);
++            makeSimpleTag (name, FalconKinds, K_FUNCTION);
++            vStringClear (name);
++        }
++        else if (strncmp ((const char*) cp, "class", (size_t) 5) == 0)
++        {
++            cp += 5;
++            cp = skipSpace (cp);
++            
++            while (isIdentifierChar ((int) *cp))
++            {
++                vStringPut (name, (int) *cp);
++                ++cp;
++            }
++            vStringTerminate (name);
++            makeSimpleTag (name, FalconKinds, K_CLASS);
++            vStringClear (name);
++        }
++        else if (strncmp ((const char*) cp, "load", (size_t) 4) == 0)
++        {
++            cp += 4;
++            cp = skipSpace (cp);
++            
++            while (isIdentifierChar ((int) *cp))
++            {
++                vStringPut (name, (int) *cp);
++                ++cp;
++            }
++            vStringTerminate (name);
++            makeSimpleTag (name, FalconKinds, K_NAMESPACE);
++            vStringClear (name);
++        }
++    }
++    vStringDelete (name);
++}
++
++/* 
++ * Parser definition structure
++ */
++extern parserDefinition* FalconParser (void)
++{
++    static const char *const extensions [] = { "fal", "ftd", NULL };
++    parserDefinition *def = parserNew ("Falcon");
++    def->kinds      = FalconKinds;
++    def->kindCount  = KIND_COUNT (FalconKinds);
++    def->extensions = extensions;
++    def->parser     = findFalconTags;
++    return def;
++}
+diff --git a/flex.c b/flex.c
+index 06ca243..038ac4e 100644
+--- a/flex.c
++++ b/flex.c
+@@ -80,7 +80,8 @@ typedef enum eKeywordId {
+ 	KEYWORD_id,
+ 	KEYWORD_script,
+ 	KEYWORD_cdata,
+-	KEYWORD_mx
++	KEYWORD_mx,
++	KEYWORD_override
+ } keywordId;
+ 
+ /*	Used to determine whether keyword is valid for the token language and
+@@ -184,7 +185,8 @@ static const keywordDesc FlexKeywordTable [] = {
+ 	{ "id",			KEYWORD_id					},
+ 	{ "script",		KEYWORD_script				},
+ 	{ "cdata",		KEYWORD_cdata				},
+-	{ "mx",			KEYWORD_mx					}
++	{ "mx",			KEYWORD_mx					},
++	{ "override",	KEYWORD_override			}
+ };
+ 
+ /*
+@@ -726,7 +728,7 @@ static void skipArgumentList (tokenInfo *const token)
+ 	 * Other databases can have arguments with fully declared
+ 	 * datatypes:
+ 	 *	 (	name varchar(30), text binary(10)  )
+-	 * So we must check for nested open and closing parantheses
++	 * So we must check for nested open and closing parentheses
+ 	 */
+ 
+ 	if (isType (token, TOKEN_OPEN_PAREN))	/* arguments? */
+@@ -1780,7 +1782,7 @@ static boolean parseStatement (tokenInfo *const token)
+ 			if (isType (token, TOKEN_CLOSE_CURLY)) 
+ 			{
+ 				/*
+-				 * Assume the closing parantheses terminates
++				 * Assume the closing parenthesis terminates
+ 				 * this statements.
+ 				 */
+ 				is_terminated = TRUE;
+@@ -2154,6 +2156,33 @@ static boolean parseActionScript (tokenInfo *const token)
+ 		{
+ 			if (isType(token, TOKEN_KEYWORD))
+ 			{
++				if (isKeyword (token, KEYWORD_private)   ||
++				    isKeyword (token, KEYWORD_public)    ||
++				    isKeyword (token, KEYWORD_override)  )
++				{
++					/*
++					 * Methods can be defined as:
++					 *     private function f_name
++					 *     public override function f_name
++					 *     override private function f_name
++					 * Ignore these keywords if present.
++					 */
++					readToken (token);
++				}
++				if (isKeyword (token, KEYWORD_private)   ||
++				    isKeyword (token, KEYWORD_public)    ||
++				    isKeyword (token, KEYWORD_override)  )
++				{
++					/*
++					 * Methods can be defined as:
++					 *     private function f_name
++					 *     public override function f_name
++					 *     override private function f_name
++					 * Ignore these keywords if present.
++					 */
++					readToken (token);
++				}
++
+ 				switch (token->keyword)
+ 				{
+ 					case KEYWORD_function:	parseFunction (token); break;
+@@ -2178,11 +2207,14 @@ static void parseFlexFile (tokenInfo *const token)
+ 		{
+ 			parseMXML (token);
+ 		} 
+-		if (isType (token, TOKEN_LESS_THAN))
++		else if (isType (token, TOKEN_LESS_THAN))
+ 		{
+ 			readToken (token);
+ 			if (isType (token, TOKEN_QUESTION_MARK))
+ 			{
++				/*
++				 * <?xml version="1.0" encoding="utf-8"?>
++				 */
+ 				readToken (token);
+ 				while (! isType (token, TOKEN_QUESTION_MARK) )
+ 				{
+@@ -2190,6 +2222,19 @@ static void parseFlexFile (tokenInfo *const token)
+ 				} 
+ 				readToken (token);
+ 			}
++			else if (isKeyword (token, KEYWORD_NONE))
++			{
++				/*
++				 * This is a simple XML tag, read until the closing statement
++				 * <something .... >
++				 * </something>
++				 */
++				readToken (token);
++				while (! isType (token, TOKEN_GREATER_THAN) )
++				{
++					readToken (token);
++				} 
++			}
+ 		} 
+ 		else 
+ 		{
+diff --git a/gir.c b/gir.c
+new file mode 100644
+index 0000000..517472b
+--- /dev/null
++++ b/gir.c
+@@ -0,0 +1,216 @@
++#include "general.h"	/* must always come first */
++#include "debug.h"
++#include "entry.h"
++#include "keyword.h"
++#include "parse.h"
++#include "read.h"
++#include "routines.h"
++#include "string.h"
++#include "vstring.h"
++#include <glib.h>
++#include <assert.h>
++#include <libxml/xmlmemory.h>
++#include <libxml/parser.h>
++#include <libxml/tree.h>
++#include "ctags-utils.h"
++
++static kindOption Kinds [] = {
++	{ TRUE,  'f', "function",	  "functions"},
++	{ TRUE,  'c', "class",		  "classes"},
++	{ TRUE,  'm', "method",		  "methods"},
++	{ TRUE,  'p', "property",	  "properties"},
++	{ TRUE,  'v', "variable",	  "global variables"}
++};
++
++static void
++initialize (const langType language)
++{
++}
++
++static void
++parse_function (xmlNode *node, const gchar *parent)
++{
++	xmlNode *i, *k;
++	gchar *name;
++	tagEntryInfo *tag;
++
++	g_assert (node != NULL);
++
++	name = (gchar*)xmlGetProp (node, (xmlChar*)"name");
++	if (!name)
++		return;
++
++	tag = (tagEntryInfo*)malloc (sizeof (tagEntryInfo));
++	initTagEntry (tag, name);
++	get_file_pos (node->line, &tag->filePosition, File.fp);
++	tag->lineNumber = node->line;
++	tag->isFileScope	= 1;
++	tag->kindName = "function";
++	tag->kind = 'f';
++	if (parent) {
++		tag->kindName = "member";
++		tag->kind = 'm';
++		tag->extensionFields.scope[0] = "class";
++		tag->extensionFields.scope[1] = parent;
++	}
++
++	for (i = node->children; i; i = i->next)
++	{
++		if (!i->name)
++			continue;
++		if (strcmp ((const gchar*)i->name, "return-value") == 0)
++		{
++			for (k = i->children; k; k = k->next)
++			{
++				const gchar *tmp;
++				if (!k->name)
++					continue;
++				tmp = (const gchar*)xmlGetProp (k, (const xmlChar*)"name");
++				if (!tmp)
++					continue;
++				tag->extensionFields.returnType = tmp;
++			}
++		}
++		if (strcmp ((const gchar*)i->name, "parameters") == 0)
++		{
++			for (k = i->children; k; k = k->next)
++			{
++/*TODO:				const gchar *name;
++				if (!k->name)
++					continue;
++				name = (const gchar*)xmlGetProp (node, (const xmlChar*)"name");
++				if (!name)
++					continue;
++				tmp = g_new (Argument, 1);
++				tmp->name = g_strdup (name);
++				tmp->types = NULL;
++				ret->args = g_list_append (ret->args, tmp);*/
++			}
++		}
++	}
++	makeTagEntry (tag);
++}
++
++static void makeTags (xmlNode *node, const gchar *parent);
++
++static void
++parse_class (xmlNode *node)
++{
++	xmlNode *i;
++	gchar *name;
++
++	g_assert (node);
++
++	name = (gchar*)xmlGetProp (node, (const xmlChar*)"name");
++	if (!name)
++		return;
++
++	tagEntryInfo *tag = (tagEntryInfo*)malloc (sizeof (tagEntryInfo));
++	initTagEntry (tag, name);
++	tag->isFileScope = 1;
++	tag->kindName = "class";
++	tag->kind = 'c';
++	get_file_pos (node->line, &tag->filePosition, File.fp);
++	tag->lineNumber = node->line;
++	makeTagEntry (tag);
++
++	for (i = node->children; i; i = i->next)
++	{
++		makeTags (i, name);
++	}
++}
++
++static void
++makeTags (xmlNode *node, const gchar *parent)
++{
++	g_assert (node != NULL);
++	g_assert (node->name != NULL);
++
++	if (strcmp ((const gchar*)node->name, "text") == 0
++			|| strcmp ((const gchar*)node->name, "implements") == 0)
++		return;
++	if (strcmp ((const gchar*)node->name, "enumeration") == 0
++			|| strcmp ((const gchar*)node->name, "union") == 0
++			|| strcmp ((const gchar*)node->name, "namespace") == 0
++			|| strcmp ((const gchar*)node->name, "class") == 0
++			|| strcmp ((const gchar*)node->name, "record") == 0
++			|| strcmp ((const gchar*)node->name, "bitfield") == 0
++			|| strcmp ((const gchar*)node->name, "interface") == 0)
++	{
++		parse_class (node);
++		return;
++	}
++	if (strcmp ((const gchar*)node->name, "function") == 0 || strcmp ((const gchar*)node->name, "method") == 0
++			|| strcmp ((const gchar*)node->name, "callback") == 0
++			|| strcmp ((const gchar*)node->name, "constructor") == 0)
++	{
++		parse_function (node, parent);
++		return;
++	}
++	if (strcmp ((const gchar*)node->name, "alias") == 0 ||
++			strcmp ((const gchar*)node->name, "constant") == 0 ||
++			strcmp ((const gchar*)node->name, "signal") == 0 ||
++			strcmp ((const gchar*)node->name, "field") == 0 ||
++			strcmp ((const gchar*)node->name, "property") == 0 ||
++			strcmp ((const gchar*)node->name, "member") == 0)
++	{
++		gchar *name = (gchar*)xmlGetProp (node, (const xmlChar*)"name");
++		if (!name)
++			return;
++		tagEntryInfo *tag = (tagEntryInfo*)malloc (sizeof (tagEntryInfo));
++		initTagEntry (tag, name);
++		tag->isFileScope	= 1;
++		tag->kindName = "variable";
++		tag->kind = 'v';
++		get_file_pos (node->line, &tag->filePosition, File.fp);
++		tag->lineNumber = node->line;
++		if (parent) {
++			tag->kindName = "member";
++			tag->kind = 'm';
++			tag->extensionFields.scope[0] = "class";
++			tag->extensionFields.scope[1] = parent;
++		}
++		makeTagEntry (tag);
++		return;
++	}
++}
++
++static void
++findTags (void)
++{
++	xmlNode *i;
++	xmlDocPtr doc = xmlParseFile(getInputFileName());
++	xmlNode *root;
++
++	if (doc == NULL) {
++		g_warning ("could not parse file");
++	}
++	root = xmlDocGetRootElement(doc);
++	for (i = root->children; i; i = i->next)
++	{
++		xmlNode *j;
++		if (!i->name)
++			continue;
++		if (strcmp ((const char*)i->name, "namespace") !=0)
++			continue;
++		for (j = i->children; j; j = j->next)
++		{
++			makeTags (j, NULL);
++		}
++	}
++}
++
++extern parserDefinition*
++GirParser (void)
++{
++	static const char *const extensions [] = { "gir", NULL };
++	parserDefinition *const def = parserNew ("GObject-Introspection");
++	def->extensions = extensions;
++
++	def->kinds = Kinds;
++	def->kindCount = KIND_COUNT (Kinds);
++	def->parser = findTags;
++	def->initialize = initialize;
++
++	return def;
++}
+diff --git a/lregex.c b/lregex.c
+index 59f5df6..37d7ea0 100644
+--- a/lregex.c
++++ b/lregex.c
+@@ -1,5 +1,5 @@
+ /*
+-*   $Id: lregex.c 576 2007-06-30 04:16:23Z elliotth $
++*   $Id: lregex.c 747 2009-11-06 02:33:37Z dhiebert $
+ *
+ *   Copyright (c) 2000-2003, Darren Hiebert
+ *
+@@ -408,7 +408,7 @@ static void processLanguageRegex (const langType language,
+ 		const char* regexfile = parameter + 1;
+ 		FILE* const fp = fopen (regexfile, "r");
+ 		if (fp == NULL)
+-			error (WARNING | PERROR, regexfile);
++			error (WARNING | PERROR, "%s", regexfile);
+ 		else
+ 		{
+ 			vString* const regex = vStringNew ();
+diff --git a/make.c b/make.c
+index f468b5a..7b56830 100644
+--- a/make.c
++++ b/make.c
+@@ -1,5 +1,5 @@
+ /*
+-*   $Id: make.c 681 2008-10-12 22:43:00Z dhiebert $
++*   $Id: make.c 751 2010-02-27 17:41:57Z elliotth $
+ *
+ *   Copyright (c) 2000-2005, Darren Hiebert
+ *
+@@ -100,7 +100,7 @@ static void skipToMatch (const char *const pair)
+ 			++matchLevel;
+ 		else if (c == end)
+ 			--matchLevel;
+-		else if (c == '\n')
++		else if (c == '\n' || c == EOF)
+ 			break;
+ 	}
+ 	if (c == EOF)
+diff --git a/options.c b/options.c
+index d26627f..1bee61d 100644
+--- a/options.c
++++ b/options.c
+@@ -119,6 +119,7 @@ optionValues Option = {
+ 		FALSE,  /* -fields=n */
+ 		TRUE,   /* -fields=s */
+ 		FALSE,  /* -fields=S */
++		FALSE,	/* -fields=T */
+ 		TRUE    /* -fields=t */
+ 	},
+ 	NULL,       /* -I */
+@@ -208,7 +209,7 @@ static optionDescription LongOptionDescription [] = {
+  {1,"  --extra=[+|-]flags"},
+  {1,"      Include extra tag entries for selected information (flags: \"fq\")."},
+  {1,"  --fields=[+|-]flags"},
+- {1,"      Include selected extension fields (flags: \"afmikKlnsStz\") [fks]."},
++ {1,"      Include selected extension fields (flags: \"afmikKlnsStTz\") [fks]."},
+  {1,"  --file-scope=[yes|no]"},
+  {1,"       Should tags scoped only for a single file (e.g. \"static\" tags"},
+  {1,"       be included in the output [yes]?"},
+@@ -291,7 +292,7 @@ static const char* const License2 =
+ "\n"
+ "You should have received a copy of the GNU General Public License\n"
+ "along with this program; if not, write to the Free Software\n"
+-"Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.\n";
++"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.\n";
+ 
+ /*  Contains a set of strings describing the set of "features" compiled into
+  *  the code.
+@@ -859,6 +860,7 @@ static void processFieldsOption (
+ 		case 'S': field->signature      = mode; break;
+ 		case 'z': field->kindKey        = mode; break;
+ 		case 't': field->typeRef        = mode; break;
++		case 'T': field->returnType		= mode; break;		
+ 
+ 		default: error(WARNING, "Unsupported parameter '%c' for \"%s\" option",
+ 					c, option);
+diff --git a/options.h b/options.h
+index 34150e7..28b276f 100644
+--- a/options.h
++++ b/options.h
+@@ -77,6 +77,7 @@ struct sExtFields {  /* extension field content control */
+ 	boolean lineNumber;
+ 	boolean scope;
+ 	boolean signature;
++	boolean returnType;
+ 	boolean typeRef;
+ };
+ 
+diff --git a/parsers.h b/parsers.h
+index 3dcc8ae..e4a50e1 100644
+--- a/parsers.h
++++ b/parsers.h
+@@ -15,6 +15,7 @@
+ #define _PARSERS_H
+ 
+ /* Add the name of any new parser definition function here */
++#ifndef ENABLE_VALA
+ #define PARSER_LIST \
+ 	AntParser, \
+ 	AsmParser, \
+@@ -57,6 +58,52 @@
+ 	VhdlParser, \
+ 	VimParser, \
+ 	YaccParser
++#else
++#define PARSER_LIST \
++	AntParser, \
++	AsmParser, \
++	AspParser, \
++	AwkParser, \
++	BasicParser, \
++	BetaParser, \
++	CParser, \
++	CppParser, \
++	CsharpParser, \
++	CobolParser, \
++	DosBatchParser, \
++	EiffelParser, \
++	ErlangParser, \
++	FlexParser, \
++	FortranParser, \
++	GenieParser, \
++	HtmlParser, \
++	JavaParser, \
++	JavaScriptParser, \
++	LispParser, \
++	LuaParser, \
++	MakefileParser, \
++	MatLabParser, \
++	OcamlParser, \
++	PascalParser, \
++	PerlParser, \
++	PhpParser, \
++	PythonParser, \
++	RexxParser, \
++	RubyParser, \
++	SchemeParser, \
++	ShParser, \
++	SlangParser, \
++	SmlParser, \
++	SqlParser, \
++	TclParser, \
++	TexParser, \
++	ValaParse, \
++	VeraParser, \
++	VerilogParser, \
++	VhdlParser, \
++	VimParser, \
++	YaccParser
++#endif
+ 
+ #endif  /* _PARSERS_H */
+ 
+diff --git a/php.c b/php.c
+index 0dd60c5..90e096a 100644
+--- a/php.c
++++ b/php.c
+@@ -1,5 +1,5 @@
+ /*
+-*   $Id: php.c 624 2007-09-15 22:53:31Z jafl $
++*   $Id: php.c 734 2009-08-20 23:33:54Z jafl $
+ *
+ *   Copyright (c) 2000, Jesus Castagnetto <jmcastagnetto@zkey.com>
+ *
+@@ -64,17 +64,17 @@ static kindOption PhpKinds [] = {
+ 
+ static void installPHPRegex (const langType language)
+ {
+-	addTagRegex(language, "(^|[ \t])class[ \t]+([" ALPHA "_][" ALNUM "_]*)",
+-		"\\2", "c,class,classes", NULL);
+-	addTagRegex(language, "(^|[ \t])interface[ \t]+([" ALPHA "_][" ALNUM "_]*)",
+-		"\\2", "i,interface,interfaces", NULL);
+-	addTagRegex(language, "(^|[ \t])define[ \t]*\\([ \t]*['\"]?([" ALPHA "_][" ALNUM "_]*)",
+-		"\\2", "d,define,constant definitions", NULL);
+-	addTagRegex(language, "(^|[ \t])function[ \t]+&?[ \t]*([" ALPHA "_][" ALNUM "_]*)",
+-		"\\2", "f,function,functions", NULL);
+-	addTagRegex(language, "(^|[ \t])(\\$|::\\$|\\$this->)([" ALPHA "_][" ALNUM "_]*)[ \t]*=",
+-		"\\3", "v,variable,variables", NULL);
+-	addTagRegex(language, "(^|[ \t])(var|public|protected|private|static)[ \t]+\\$([" ALPHA "_][" ALNUM "_]*)[ \t]*[=;]",
++	addTagRegex(language, "^[ \t]*((final|abstract)[ \t]+)*class[ \t]+([" ALPHA "_][" ALNUM "_]*)",
++		"\\3", "c,class,classes", NULL);
++	addTagRegex(language, "^[ \t]*interface[ \t]+([" ALPHA "_][" ALNUM "_]*)",
++		"\\1", "i,interface,interfaces", NULL);
++	addTagRegex(language, "^[ \t]*define[ \t]*\\([ \t]*['\"]?([" ALPHA "_][" ALNUM "_]*)",
++		"\\1", "d,define,constant definitions", NULL);
++	addTagRegex(language, "^[ \t]*((static|public|protected|private)[ \t]+)*function[ \t]+&?[ \t]*([" ALPHA "_][" ALNUM "_]*)",
++		"\\3", "f,function,functions", NULL);
++	addTagRegex(language, "^[ \t]*(\\$|::\\$|\\$this->)([" ALPHA "_][" ALNUM "_]*)[ \t]*=",
++		"\\2", "v,variable,variables", NULL);
++	addTagRegex(language, "^[ \t]*((var|public|protected|private|static)[ \t]+)+\\$([" ALPHA "_][" ALNUM "_]*)[ \t]*[=;]",
+ 		"\\3", "v,variable,variables", NULL);
+ 
+ 	/* function regex is covered by PHP regex */
+diff --git a/python.c b/python.c
+index 5fdf31b..a90d072 100644
+--- a/python.c
++++ b/python.c
+@@ -1,5 +1,5 @@
+ /*
+-*   $Id: python.c 720 2009-07-07 03:55:23Z dhiebert $
++*   $Id: python.c 752 2010-02-27 17:52:46Z elliotth $
+ *
+ *   Copyright (c) 2000-2003, Darren Hiebert
+ *
+@@ -240,7 +240,7 @@ static const char *skipEverything (const char *cp)
+ {
+ 	for (; *cp; cp++)
+ 	{
+-		if (*cp == '"' || *cp == '\'')
++		if (*cp == '"' || *cp == '\'' || *cp == '#')
+ 		{
+ 			cp = skipString(cp);
+ 			if (!*cp) break;
+@@ -398,7 +398,9 @@ static void parseFunction (const char *cp, vString *const def,
+ 	cp = parseIdentifier (cp, def);
+ 	arglist = parseArglist (cp);
+ 	makeFunctionTag (def, parent, is_class_parent, arglist);
+-	eFree (arglist);
++	if (arglist != NULL) {
++		eFree (arglist);
++	}
+ }
+ 
+ /* Get the combined name of a nested symbol. Classes are separated with ".",
+diff --git a/sort.c b/sort.c
+index 09ba87a..c58defc 100644
+--- a/sort.c
++++ b/sort.c
+@@ -1,5 +1,5 @@
+ /*
+-*   $Id: sort.c 498 2007-02-17 22:43:15Z dhiebert $
++*   $Id: sort.c 747 2009-11-06 02:33:37Z dhiebert $
+ *
+ *   Copyright (c) 1996-2002, Darren Hiebert
+ *
+@@ -109,7 +109,7 @@ static void failedSort (FILE *const fp, const char* msg)
+ 	if (fp != NULL)
+ 		fclose (fp);
+ 	if (msg == NULL)
+-		error (FATAL | PERROR, cannotSort);
++		error (FATAL | PERROR, "%s", cannotSort);
+ 	else
+ 		error (FATAL, "%s: %s", msg, cannotSort);
+ }
+diff --git a/sql.c b/sql.c
+index efe7e5d..6c0c76a 100644
+--- a/sql.c
++++ b/sql.c
+@@ -1,5 +1,5 @@
+ /*
+- *	$Id: sql.c 703 2009-03-14 22:06:12Z dfishburn $
++ *	$Id: sql.c 745 2009-10-27 02:42:55Z dfishburn $
+  *
+  *	Copyright (c) 2002-2003, Darren Hiebert
+  *
+@@ -65,9 +65,14 @@ typedef enum eKeywordId {
+ 	KEYWORD_end,
+ 	KEYWORD_function,
+ 	KEYWORD_if,
++	KEYWORD_else,
++	KEYWORD_elseif,
++	KEYWORD_endif,
+ 	KEYWORD_loop,
++	KEYWORD_while,
+ 	KEYWORD_case,
+ 	KEYWORD_for,
++	KEYWORD_do,
+ 	KEYWORD_call,
+ 	KEYWORD_package,
+ 	KEYWORD_pragma,
+@@ -114,6 +119,7 @@ typedef enum eKeywordId {
+ 	KEYWORD_ml_conn_dnet,
+ 	KEYWORD_ml_conn_java,
+ 	KEYWORD_ml_conn_chk,
++	KEYWORD_ml_prop,
+ 	KEYWORD_local,
+ 	KEYWORD_temporary,
+ 	KEYWORD_drop,
+@@ -140,6 +146,7 @@ typedef enum eTokenType {
+ 	TOKEN_BLOCK_LABEL_END,
+ 	TOKEN_CHARACTER,
+ 	TOKEN_CLOSE_PAREN,
++	TOKEN_COLON,
+ 	TOKEN_SEMICOLON,
+ 	TOKEN_COMMA,
+ 	TOKEN_IDENTIFIER,
+@@ -154,7 +161,8 @@ typedef enum eTokenType {
+ 	TOKEN_OPEN_SQUARE,
+ 	TOKEN_CLOSE_SQUARE,
+ 	TOKEN_TILDE,
+-	TOKEN_FORWARD_SLASH
++	TOKEN_FORWARD_SLASH,
++	TOKEN_EQUAL
+ } tokenType;
+ 
+ typedef struct sTokenInfoSQL {
+@@ -198,6 +206,7 @@ typedef enum {
+ 	SQLTAG_SYNONYM,
+ 	SQLTAG_MLTABLE,
+ 	SQLTAG_MLCONN,
++	SQLTAG_MLPROP,
+ 	SQLTAG_COUNT
+ } sqlKind;
+ 
+@@ -223,7 +232,8 @@ static kindOption SqlKinds [] = {
+ 	{ TRUE,  'V', "view",		  "views"				   },
+ 	{ TRUE,  'n', "synonym",	  "synonyms"			   },
+ 	{ TRUE,  'x', "mltable",	  "MobiLink Table Scripts" },
+-	{ TRUE,  'y', "mlconn",		  "MobiLink Conn Scripts"  }
++	{ TRUE,  'y', "mlconn",		  "MobiLink Conn Scripts"  },
++	{ TRUE,  'z', "mlprop",		  "MobiLink Properties "   }
+ };
+ 
+ static const keywordDesc SqlKeywordTable [] = {
+@@ -237,9 +247,14 @@ static const keywordDesc SqlKeywordTable [] = {
+ 	{ "end",							KEYWORD_end				      },
+ 	{ "function",						KEYWORD_function		      },
+ 	{ "if",								KEYWORD_if				      },
++	{ "else",							KEYWORD_else			      },
++	{ "elseif",							KEYWORD_elseif			      },
++	{ "endif",							KEYWORD_endif			      },
+ 	{ "loop",							KEYWORD_loop			      },
++	{ "while",							KEYWORD_while			      },
+ 	{ "case",							KEYWORD_case			      },
+ 	{ "for",							KEYWORD_for				      },
++	{ "do",								KEYWORD_do				      },
+ 	{ "call",							KEYWORD_call			      },
+ 	{ "package",						KEYWORD_package			      },
+ 	{ "pragma",							KEYWORD_pragma			      },
+@@ -286,6 +301,7 @@ static const keywordDesc SqlKeywordTable [] = {
+ 	{ "ml_add_dnet_connection_script",	KEYWORD_ml_conn_dnet	      },
+ 	{ "ml_add_java_connection_script",	KEYWORD_ml_conn_java	      },
+ 	{ "ml_add_lang_conn_script_chk",	KEYWORD_ml_conn_chk 	      },
++	{ "ml_add_property",				KEYWORD_ml_prop		 	      },
+ 	{ "local",							KEYWORD_local			      },
+ 	{ "temporary",						KEYWORD_temporary		      },
+ 	{ "drop",							KEYWORD_drop			      },
+@@ -303,6 +319,7 @@ static const keywordDesc SqlKeywordTable [] = {
+ 
+ /* Recursive calls */
+ static void parseBlock (tokenInfo *const token, const boolean local);
++static void parseDeclare (tokenInfo *const token, const boolean local);
+ static void parseKeywords (tokenInfo *const token);
+ static void parseSqlFile (tokenInfo *const token);
+ 
+@@ -541,6 +558,7 @@ getNextChar:
+ 		case EOF: longjmp (Exception, (int)ExceptionEOF);	break;
+ 		case '(': token->type = TOKEN_OPEN_PAREN;		break;
+ 		case ')': token->type = TOKEN_CLOSE_PAREN;		break;
++		case ':': token->type = TOKEN_COLON;			break;
+ 		case ';': token->type = TOKEN_SEMICOLON;		break;
+ 		case '.': token->type = TOKEN_PERIOD;			break;
+ 		case ',': token->type = TOKEN_COMMA;			break;
+@@ -549,6 +567,7 @@ getNextChar:
+ 		case '~': token->type = TOKEN_TILDE;			break;
+ 		case '[': token->type = TOKEN_OPEN_SQUARE;		break;
+ 		case ']': token->type = TOKEN_CLOSE_SQUARE;		break;
++		case '=': token->type = TOKEN_EQUAL;			break;
+ 
+ 		case '\'':
+ 		case '"':
+@@ -770,7 +789,7 @@ static void skipArgumentList (tokenInfo *const token)
+ 	 * Other databases can have arguments with fully declared
+ 	 * datatypes:
+ 	 *	 (	name varchar(30), text binary(10)  )
+-	 * So we must check for nested open and closing parantheses
++	 * So we must check for nested open and closing parentheses
+ 	 */
+ 
+ 	if (isType (token, TOKEN_OPEN_PAREN))	/* arguments? */
+@@ -848,7 +867,7 @@ static void parseSubProgram (tokenInfo *const token)
+ 			/*
+ 			 * Read token after which could be the
+ 			 * command terminator if a prototype
+-			 * or an open parantheses
++			 * or an open parenthesis
+ 			 */
+ 			readToken (token);
+ 			if (isType (token, TOKEN_OPEN_PAREN))
+@@ -870,6 +889,7 @@ static void parseSubProgram (tokenInfo *const token)
+ 					isKeyword (token, KEYWORD_internal) ||
+ 					isKeyword (token, KEYWORD_external) ||
+ 					isKeyword (token, KEYWORD_url) ||
++					isType (token, TOKEN_EQUAL) ||
+ 					isCmdTerm (token)
+ 				)
+ 			  )
+@@ -900,6 +920,12 @@ static void parseSubProgram (tokenInfo *const token)
+ 
+ 			vStringClear (token->scope);
+ 		} 
++		if ( isType (token, TOKEN_EQUAL) )
++			readToken (token);
++
++		if ( isKeyword (token, KEYWORD_declare) )
++			parseDeclare (token, FALSE);
++
+ 		if (isKeyword (token, KEYWORD_is) || 
+ 				isKeyword (token, KEYWORD_begin) )
+ 		{
+@@ -1066,18 +1092,18 @@ static void parseDeclare (tokenInfo *const token, const boolean local)
+ 			case KEYWORD_type:		parseType (token); break;
+ 
+ 			default:
+-									if (isType (token, TOKEN_IDENTIFIER))
+-									{
+-										if (local)
+-										{
+-											makeSqlTag (token, SQLTAG_LOCAL_VARIABLE);
+-										} 
+-										else 
+-										{
+-											makeSqlTag (token, SQLTAG_VARIABLE);
+-										}
+-									}
+-									break;
++				if (isType (token, TOKEN_IDENTIFIER))
++				{
++					if (local)
++					{
++						makeSqlTag (token, SQLTAG_LOCAL_VARIABLE);
++					} 
++					else 
++					{
++						makeSqlTag (token, SQLTAG_VARIABLE);
++					}
++				}
++				break;
+ 		}
+ 		findToken (token, TOKEN_SEMICOLON);
+ 		readToken (token);
+@@ -1164,12 +1190,13 @@ static void parseLabel (tokenInfo *const token)
+ 	}
+ }
+ 
+-static void parseStatements (tokenInfo *const token)
++static void parseStatements (tokenInfo *const token, const boolean exit_on_endif )
+ {
+ 	boolean isAnsi   = TRUE;
+ 	boolean stmtTerm = FALSE;
+ 	do
+ 	{
++
+ 		if (isType (token, TOKEN_BLOCK_LABEL_BEGIN))
+ 			parseLabel (token);
+ 		else
+@@ -1210,6 +1237,7 @@ static void parseStatements (tokenInfo *const token)
+ 					 */
+ 					while (! isKeyword (token, KEYWORD_then))
+ 						readToken (token);
++
+ 					readToken (token);
+ 					continue;
+ 
+@@ -1220,6 +1248,15 @@ static void parseStatements (tokenInfo *const token)
+ 					 *	IF...THEN
+ 					 *	END IF;
+ 					 *
++					 *	IF...THEN
++					 *	ELSE
++					 *	END IF;
++					 *
++					 *	IF...THEN
++					 *	ELSEIF...THEN
++					 *	ELSE
++					 *	END IF;
++					 *
+ 					 *	or non-ANSI
+ 					 *	IF ...
+ 					 *	BEGIN
+@@ -1248,7 +1285,22 @@ static void parseStatements (tokenInfo *const token)
+ 					else
+ 					{
+ 						readToken (token);
+-						parseStatements (token);
++
++						while( ! (isKeyword (token, KEYWORD_end ) ||
++						          isKeyword (token, KEYWORD_endif ) ) 
++								)
++						{
++							if ( isKeyword (token, KEYWORD_else) ||
++									isKeyword (token, KEYWORD_elseif)    )
++								readToken (token);
++
++							parseStatements (token, TRUE);
++
++							if ( isCmdTerm(token) )
++								readToken (token);
++
++						}
++
+ 						/* 
+ 						 * parseStatements returns when it finds an END, an IF
+ 						 * should follow the END for ANSI anyway.
+@@ -1258,7 +1310,13 @@ static void parseStatements (tokenInfo *const token)
+ 						if( isKeyword (token, KEYWORD_end ) )
+ 							readToken (token);
+ 
+-						if( ! isKeyword (token, KEYWORD_if ) )
++						if( isKeyword (token, KEYWORD_if ) || isKeyword (token, KEYWORD_endif ) )
++						{
++							readToken (token);
++							if ( isCmdTerm(token) )
++								stmtTerm = TRUE;
++						} 
++						else 
+ 						{
+ 							/*
+ 							 * Well we need to do something here.
+@@ -1284,14 +1342,64 @@ static void parseStatements (tokenInfo *const token)
+ 					 *	END CASE;
+ 					 *	
+ 					 *	FOR loop_name AS cursor_name CURSOR FOR ...
++					 *	DO
+ 					 *	END FOR;
+ 					 */
++					if( isKeyword (token, KEYWORD_for ) )
++					{
++						/* loop name */
++						readToken (token);
++						/* AS */
++						readToken (token);
++
++						while ( ! isKeyword (token, KEYWORD_is) )
++						{
++							/*
++							 * If this is not an AS keyword this is 
++							 * not a proper FOR statement and should 
++							 * simply be ignored
++							 */
++							return;
++						}
++
++						while ( ! isKeyword (token, KEYWORD_do) )
++							readToken (token);
++					}
++
++
+ 					readToken (token);
+-					parseStatements (token);
++					while( ! isKeyword (token, KEYWORD_end ) )
++					{
++						/*
++						if ( isKeyword (token, KEYWORD_else) ||
++								isKeyword (token, KEYWORD_elseif)    )
++							readToken (token);
++							*/
++
++						parseStatements (token, FALSE);
++
++						if ( isCmdTerm(token) )
++							readToken (token);
++					}
++
+ 
+ 					if( isKeyword (token, KEYWORD_end ) )
+ 						readToken (token);
+ 
++					/*
++					 * Typically ended with 
++					 *    END LOOP [loop name];
++					 *    END CASE
++					 *    END FOR [loop name];
++					 */
++					if ( isKeyword (token, KEYWORD_loop) ||
++							isKeyword (token, KEYWORD_case) ||
++							isKeyword (token, KEYWORD_for)    )
++						readToken (token);
++
++					if ( isCmdTerm(token) )
++						stmtTerm = TRUE;
++
+ 					break;
+ 
+ 				case KEYWORD_create:
+@@ -1324,11 +1432,36 @@ static void parseStatements (tokenInfo *const token)
+ 			 *
+ 			 * So we must read to the first semi-colon or an END block
+ 			 */
+-			while ( ! stmtTerm && 
+-					! (   isKeyword (token, KEYWORD_end) ||
+-						 (isCmdTerm(token))              )	  
++			while ( ! stmtTerm                               && 
++					! (   isKeyword (token, KEYWORD_end)     ||
++						 (isCmdTerm(token))              )	 
+ 					)
+ 			{
++				if (   isKeyword (token, KEYWORD_endif)   &&
++						 exit_on_endif                   )	  
++					return;
++
++				if (isType (token, TOKEN_COLON) )
++				{
++					/*
++					 * A : can signal a loop name 
++					 *    myloop:
++					 *    LOOP 
++					 *        LEAVE myloop;
++					 *    END LOOP;
++					 * Unfortunately, labels do not have a
++					 * cmd terminator, therefore we have to check 
++					 * if the next token is a keyword and process 
++					 * it accordingly.
++					 */
++					readToken (token);
++					if ( isKeyword (token, KEYWORD_loop) ||
++							isKeyword (token, KEYWORD_while) ||
++							isKeyword (token, KEYWORD_for) )
++						/* parseStatements (token); */
++						return;
++				}
++
+ 				readToken (token);
+ 
+ 				if (isType (token, TOKEN_OPEN_PAREN)  ||
+@@ -1336,6 +1469,20 @@ static void parseStatements (tokenInfo *const token)
+ 				    isType (token, TOKEN_OPEN_SQUARE)  )
+ 						skipToMatched (token);
+ 
++				/*
++				 * Since we know how to parse various statements 
++				 * if we detect them, parse them to completion
++				 */
++				if (isType (token, TOKEN_BLOCK_LABEL_BEGIN) ||
++						isKeyword (token, KEYWORD_exception) ||
++						isKeyword (token, KEYWORD_loop) ||
++						isKeyword (token, KEYWORD_case) ||
++						isKeyword (token, KEYWORD_for) ||
++						isKeyword (token, KEYWORD_begin)    )
++					parseStatements (token, FALSE);
++				else if (isKeyword (token, KEYWORD_if))
++					parseStatements (token, TRUE);
++
+ 			}
+ 		}
+ 		/*
+@@ -1343,11 +1490,12 @@ static void parseStatements (tokenInfo *const token)
+ 		 * See comment above, now, only read if the current token 
+ 		 * is not a command terminator.
+ 		 */
+-		if ( isCmdTerm(token) )
+-		{
+-			readToken (token);
+-		}
+-	} while (! isKeyword (token, KEYWORD_end) && ! stmtTerm );
++		if ( isCmdTerm(token) && ! stmtTerm )
++			stmtTerm = TRUE;
++				
++	} while (! isKeyword (token, KEYWORD_end) && 
++			 ! (exit_on_endif && isKeyword (token, KEYWORD_endif) ) && 
++			 ! stmtTerm );
+ }
+ 
+ static void parseBlock (tokenInfo *const token, const boolean local)
+@@ -1378,7 +1526,10 @@ static void parseBlock (tokenInfo *const token, const boolean local)
+ 		token->begin_end_nest_lvl++;
+ 		while (! isKeyword (token, KEYWORD_end))
+ 		{
+-			parseStatements (token);
++			parseStatements (token, FALSE);
++
++			if ( isCmdTerm(token) )
++				readToken (token);
+ 		}
+ 		token->begin_end_nest_lvl--;
+ 
+@@ -1994,6 +2145,70 @@ static void parseMLConn (tokenInfo *const token)
+ 	deleteToken (event);
+ }
+ 
++static void parseMLProp (tokenInfo *const token)
++{
++	tokenInfo *const component     = newToken ();
++	tokenInfo *const prop_set_name = newToken ();
++	tokenInfo *const prop_name     = newToken ();
++
++	/*
++	 * This deals with these formats
++     *   ml_add_property ( 
++     *       'comp_name', 
++     *       'prop_set_name', 
++     *       'prop_name', 
++     *       'prop_value'
++     *   )
++	 */
++
++	readToken (token);
++	if ( isType (token, TOKEN_OPEN_PAREN) )
++	{
++		readToken (component);
++		readToken (token);
++		while (!(isType (token, TOKEN_COMMA) ||
++					isType (token, TOKEN_CLOSE_PAREN)
++				))
++		{
++			readToken (token);
++		}
++
++		if (isType (token, TOKEN_COMMA))
++		{
++			readToken (prop_set_name);
++			readToken (token);
++			while (!(isType (token, TOKEN_COMMA) ||
++						isType (token, TOKEN_CLOSE_PAREN)
++					))
++			{
++				readToken (token);
++			}
++
++			if (isType (token, TOKEN_COMMA))
++			{
++				readToken (prop_name);
++
++				if (isType (component, TOKEN_STRING) && 
++						isType (prop_set_name, TOKEN_STRING) && 
++						isType (prop_name, TOKEN_STRING) )
++				{
++					addToScope(component, prop_set_name->string);
++					addToScope(component, prop_name->string);
++					makeSqlTag (component, SQLTAG_MLPROP);
++				}
++			} 
++			if( !isType (token, TOKEN_CLOSE_PAREN) )
++				findToken (token, TOKEN_CLOSE_PAREN);
++		} 
++	}
++
++	findCmdTerm (token, TRUE);
++
++	deleteToken (component);
++	deleteToken (prop_set_name);
++	deleteToken (prop_name);
++}
++
+ static void parseComment (tokenInfo *const token)
+ {
+ 	/*
+@@ -2039,7 +2254,7 @@ static void parseKeywords (tokenInfo *const token)
+ 			case KEYWORD_drop:			parseDrop (token); break;
+ 			case KEYWORD_event:			parseEvent (token); break;
+ 			case KEYWORD_function:		parseSubProgram (token); break;
+-			case KEYWORD_if:			parseStatements (token); break;
++			case KEYWORD_if:			parseStatements (token, FALSE); break;
+ 			case KEYWORD_index:			parseIndex (token); break;
+ 			case KEYWORD_ml_table:		parseMLTable (token); break;
+ 			case KEYWORD_ml_table_lang: parseMLTable (token); break;
+@@ -2051,6 +2266,7 @@ static void parseKeywords (tokenInfo *const token)
+ 			case KEYWORD_ml_conn_dnet:	parseMLConn (token); break;
+ 			case KEYWORD_ml_conn_java:	parseMLConn (token); break;
+ 			case KEYWORD_ml_conn_chk:	parseMLConn (token); break;
++			case KEYWORD_ml_prop:		parseMLProp (token); break;
+ 			case KEYWORD_package:		parsePackage (token); break;
+ 			case KEYWORD_procedure:		parseSubProgram (token); break;
+ 			case KEYWORD_publication:	parsePublication (token); break;
+diff --git a/test-cmd-line b/test-cmd-line
+new file mode 100644
+index 0000000..980f6b9
+--- /dev/null
++++ b/test-cmd-line
+@@ -0,0 +1 @@
++./anjuta_tags --sort=no --fields=afmiKlnsStTz --c++-kinds=+p foo.cpp ; cat tags
+diff --git a/tex.c b/tex.c
+index a285797..0c6714e 100644
+--- a/tex.c
++++ b/tex.c
+@@ -53,7 +53,8 @@ typedef enum eKeywordId {
+ 	KEYWORD_subsubsection,
+ 	KEYWORD_part,
+ 	KEYWORD_paragraph,
+-	KEYWORD_subparagraph
++	KEYWORD_subparagraph,
++	KEYWORD_include
+ } keywordId;
+ 
+ /*	Used to determine whether keyword is valid for the token language and
+@@ -68,27 +69,15 @@ typedef enum eTokenType {
+ 	TOKEN_UNDEFINED,
+ 	TOKEN_CHARACTER,
+ 	TOKEN_CLOSE_PAREN,
+-	TOKEN_SEMICOLON,
+-	TOKEN_COLON,
+ 	TOKEN_COMMA,
+ 	TOKEN_KEYWORD,
+ 	TOKEN_OPEN_PAREN,
+-	TOKEN_OPERATOR,
+ 	TOKEN_IDENTIFIER,
+ 	TOKEN_STRING,
+-	TOKEN_PERIOD,
+ 	TOKEN_OPEN_CURLY,
+ 	TOKEN_CLOSE_CURLY,
+-	TOKEN_EQUAL_SIGN,
+-	TOKEN_EXCLAMATION,
+-	TOKEN_FORWARD_SLASH,
+ 	TOKEN_OPEN_SQUARE,
+ 	TOKEN_CLOSE_SQUARE,
+-	TOKEN_OPEN_MXML,
+-	TOKEN_CLOSE_MXML,
+-	TOKEN_CLOSE_SGML,
+-	TOKEN_LESS_THAN,
+-	TOKEN_GREATER_THAN,
+ 	TOKEN_QUESTION_MARK,
+ 	TOKEN_STAR
+ } tokenType;
+@@ -118,6 +107,7 @@ typedef enum {
+ 	TEXTAG_PART,
+ 	TEXTAG_PARAGRAPH,
+ 	TEXTAG_SUBPARAGRAPH,
++	TEXTAG_INCLUDE,
+ 	TEXTAG_COUNT
+ } texKind;
+ 
+@@ -128,7 +118,8 @@ static kindOption TexKinds [] = {
+ 	{ TRUE,  'b', "subsubsection",	  "subsubsections"	   },
+ 	{ TRUE,  'p', "part",			  "parts"			   },
+ 	{ TRUE,  'P', "paragraph",		  "paragraphs"		   },
+-	{ TRUE,  'G', "subparagraph",	  "subparagraphs"	   }
++	{ TRUE,  'G', "subparagraph",	  "subparagraphs"	   },
++	{ TRUE,  'i', "include",	  	  "includes"		   }
+ };
+ 
+ static const keywordDesc TexKeywordTable [] = {
+@@ -139,7 +130,8 @@ static const keywordDesc TexKeywordTable [] = {
+ 	{ "subsubsection",	KEYWORD_subsubsection		},
+ 	{ "part",			KEYWORD_part				},
+ 	{ "paragraph",		KEYWORD_paragraph			},
+-	{ "subparagraph",	KEYWORD_subparagraph		}
++	{ "subparagraph",	KEYWORD_subparagraph		},
++	{ "include",		KEYWORD_include				}
+ };
+ 
+ /*
+@@ -150,7 +142,7 @@ static boolean isIdentChar (const int c)
+ {
+ 	return (boolean)
+ 		(isalpha (c) || isdigit (c) || c == '$' || 
+-		  c == '_' || c == '#');
++		  c == '_' || c == '#' || c == '-' || c == '.');
+ }
+ 
+ static void buildTexKeywordHash (void)
+@@ -297,16 +289,11 @@ getNextChar:
+ 		case EOF: longjmp (Exception, (int)ExceptionEOF);	break;
+ 		case '(': token->type = TOKEN_OPEN_PAREN;			break;
+ 		case ')': token->type = TOKEN_CLOSE_PAREN;			break;
+-		case ';': token->type = TOKEN_SEMICOLON;			break;
+ 		case ',': token->type = TOKEN_COMMA;				break;
+-		case '.': token->type = TOKEN_PERIOD;				break;
+-		case ':': token->type = TOKEN_COLON;				break;
+ 		case '{': token->type = TOKEN_OPEN_CURLY;			break;
+ 		case '}': token->type = TOKEN_CLOSE_CURLY;			break;
+-		case '=': token->type = TOKEN_EQUAL_SIGN;			break;
+ 		case '[': token->type = TOKEN_OPEN_SQUARE;			break;
+ 		case ']': token->type = TOKEN_CLOSE_SQUARE;			break;
+-		case '?': token->type = TOKEN_QUESTION_MARK;		break;
+ 		case '*': token->type = TOKEN_STAR;					break;
+ 
+ 		case '\'':
+@@ -427,7 +414,8 @@ static boolean parseTag (tokenInfo *const token, texKind kind)
+ 		readToken (token);
+ 		while (! isType (token, TOKEN_CLOSE_CURLY) )
+ 		{
+-			if (isType (token, TOKEN_IDENTIFIER) && useLongName)
++			/* if (isType (token, TOKEN_IDENTIFIER) && useLongName) */
++			if (useLongName)
+ 			{
+ 				if (fullname->length > 0)
+ 					vStringCatS (fullname, " ");
+@@ -479,6 +467,9 @@ static void parseTexFile (tokenInfo *const token)
+ 				case KEYWORD_subparagraph:	
+ 					parseTag (token, TEXTAG_SUBPARAGRAPH); 
+ 					break;
++				case KEYWORD_include:	
++					parseTag (token, TEXTAG_INCLUDE); 
++					break;
+ 				default:
+ 					break;
+ 			}
+diff --git a/vala.c b/vala.c
+new file mode 100644
+index 0000000..555ffc5
+--- /dev/null
++++ b/vala.c
+@@ -0,0 +1,103 @@
++/*
++ * vala.c
++ *
++ * Copyright 2008 Abderrahim Kitouni <a.kitouni@gmail.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
++ * MA 02110-1301, USA.
++ */
++
++/*
++ *   INCLUDE FILES
++ */
++#include "general.h"  /* must always come first */
++#include "parse.h"
++#include "read.h"
++
++#include "entry.h"
++#include "ctags-vala.h"
++
++CTagsVisitor *visitor;
++/* using different data structure because fpos_t isn't available in Vala*/
++static void make_ctags_entry (CTagsEntry* entry) {
++	tagEntryInfo tag;
++	initTagEntry(&tag, entry->name);
++
++	tag.lineNumberEntry = TRUE;
++	tag.lineNumber = entry->line_number;
++	tag.kindName = entry->kind_name;
++	tag.kind = entry->kind;
++	/* FIXME: add filePosition */
++	tag.extensionFields.access = entry->access;
++	tag.extensionFields.implementation = entry->implementation;
++	tag.extensionFields.inheritance = entry->inheritance;
++	tag.extensionFields.scope[0] = entry->scope[0];
++	tag.extensionFields.scope[1] = entry->scope[1];
++	tag.extensionFields.typeRef[0] = entry->typeref;
++	tag.extensionFields.returnType = entry->returntype;
++	tag.extensionFields.signature = entry->signature;
++	makeTagEntry(&tag);
++}
++
++static kindOption ValaKinds [] = {
++	{ TRUE,	'c', "class", "Classes" },
++	{ TRUE, 's', "struct", "Structures" },
++	{ TRUE, 'i', "interface", "Interfaces" },
++	{ TRUE, 'e', "enum", "Enumerations" },
++	{ TRUE, 'v', "enumvalue", "Enumeration Values" },
++	{ TRUE, 'E', "errordomain", "Error domains" },
++	{ TRUE, 'r', "errorcode", "Error codes" },
++	{ TRUE, 'd', "delegate", "Delegates" },
++	{ TRUE, 'S', "signal", "Signals" },
++	{ TRUE,	'f', "field", "Fields" },
++	{ TRUE,	'p', "property", "Properties" },
++	{ TRUE, 'm', "method", "Methods" },
++	{ FALSE, 'l', "local", "Local variables" },
++};
++
++static void findValaTags (void) {
++	if (visitor == NULL) {
++		visitor = ctags_visitor_new();
++	}
++	ctags_visitor_parse_vala (visitor, getSourceFileName(), (CTagsEntryMaker) make_ctags_entry);
++}
++
++extern parserDefinition *ValaParse(void) {
++	g_type_init();
++	static const char *const extensions [] = { "vala", "vapi", NULL };
++	parserDefinition* def = parserNew ("Vala");
++	def->kinds      = ValaKinds;
++	def->kindCount  = KIND_COUNT (ValaKinds);
++	def->extensions = extensions;
++	def->parser     = findValaTags;
++	return def;
++}
++
++static void findGenieTags (void) {
++	if (visitor == NULL) {
++		visitor = ctags_visitor_new();
++	}
++	ctags_visitor_parse_genie (visitor, getSourceFileName(), (CTagsEntryMaker) make_ctags_entry);
++}
++
++extern parserDefinition *GenieParser(void) {
++	static const char *const extensions [] = { "gs", NULL };
++	parserDefinition* def = parserNew ("Genie");
++	def->kinds      = ValaKinds;
++	def->kindCount  = KIND_COUNT (ValaKinds);
++	def->extensions = extensions;
++	def->parser     = findGenieTags;
++	return def;
++}
+diff --git a/verilog.c b/verilog.c
+index 814f5b0..52afc31 100644
+--- a/verilog.c
++++ b/verilog.c
+@@ -1,5 +1,5 @@
+ /*
+-*   $Id: verilog.c 573 2007-06-26 05:41:27Z elliotth $
++*   $Id: verilog.c 753 2010-02-27 17:53:32Z elliotth $
+ * 
+ *   Copyright (c) 2003, Darren Hiebert
+ * 
+@@ -232,6 +232,7 @@ static void tagNameList (const verilogKind kind, int c)
+ 		c = skipWhite (c);
+ 		if (c == '=')
+ 		{
++			c = skipWhite (vGetc ());
+ 			if (c == '{')
+ 				skipPastMatch ("{}");
+ 			else
+-- 
+2.11.0
+

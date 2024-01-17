@@ -1,0 +1,31 @@
+Index: pidentd-3.0.19/src/Makefile.in
+===================================================================
+--- pidentd-3.0.19.orig/src/Makefile.in
++++ pidentd-3.0.19/src/Makefile.in
+@@ -60,9 +60,9 @@ c_osinfo.o:	gen_osinfo.o support.o safei
+ # Installing
+ 
+ install:	$(PROGRAMS)
+-	-mkdir -p $(sbindir)
++	-mkdir -p $(DESTDIR)$(sbindir)
+ 	for P in $(PROGRAMS) ; do \
+-		$(INSTALL) -m 755 $${P} $(sbindir); \
++		$(INSTALL) -m 755 $${P} $(DESTDIR)$(sbindir); \
+ 	done
+ #	-mkdir -p $(etcdir)
+ #	$(INSTALL) -m 644 identd.conf $(etcdir)
+Index: pidentd-3.0.19/Makefile.in
+===================================================================
+--- pidentd-3.0.19.orig/Makefile.in
++++ pidentd-3.0.19/Makefile.in
+@@ -26,8 +26,8 @@ all identd ibench itest @CRYPTO_PROGRAMS
+ 
+ install:
+ 	@cd src ; $(MAKE) $@ CC="$(CC)" CFLAGS="$(MY_CFLAGS)" LDFLAGS="$(LDFLAGS)" install
+-	-mkdir -p $(mandir)/man8
+-	$(INSTALL) -m 644 $(srcdir)/doc/identd.8 $(mandir)/man8
++	-mkdir -p $(DESTDIR)$(mandir)/man8
++	$(INSTALL) -m 644 $(srcdir)/doc/identd.8 $(DESTDIR)$(mandir)/man8
+ 
+ 
+ clean mostlyclean:

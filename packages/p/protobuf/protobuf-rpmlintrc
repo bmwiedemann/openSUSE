@@ -1,0 +1,3 @@
+addFilter("shlib-policy-name-error")
+addFilter("env-script-interpreter")
+addFilter("spurious-executable-perm")

@@ -1,0 +1,9 @@
+<package name="mupdf" project="openSUSE:Factory">
+  <title></title>
+  <description>MuPDF is a lightweight PDF and XPS viewer and parser/rendering library.
+
+The renderer in MuPDF is tailored for high quality anti-aliased graphics. It renders text with metrics and spacing accurate to within fractions of a pixel for the highest fidelity in reproducing the look of a printed page on screen. 
+MuPDF is also small, fast, and yet complete. It supports PDF 1.7 with transparency, encryption, hyperlinks, annotations, search and many other bells and whistles. MuPDF can also read XPS documents (OpenXPS/ECMA-388).
+  </description>
+  <devel project="Publishing" package="mupdf"/>
+</package>

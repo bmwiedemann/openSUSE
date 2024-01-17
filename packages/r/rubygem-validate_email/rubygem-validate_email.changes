@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Sep 22 08:59:01 UTC 2017 - mmeister@suse.com
+
+- enable building on SLE_12 by cleaning up docfolder
+
+  README file gets linked to:
+  /usr/lib64/ruby/gems/2.1.0/gems/validate_email-*/README.markdown
+
+-------------------------------------------------------------------
+Fri Sep 22 07:49:26 UTC 2017 - mmeister@suse.com
+
+- Initial packaging of version 0.1.6

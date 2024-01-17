@@ -1,0 +1,33 @@
+diff -ru packages.orig/xemacs-packages/build/build.el packages/xemacs-packages/build/build.el
+--- packages/xemacs-packages/build/build.el	2003-10-13 17:52:13.000000000 +0200
++++ packages/xemacs-packages/build/build.el	2006-06-30 21:53:30.000000000 +0200
+@@ -922,6 +922,7 @@
+ 		   (match-string 2 (cdr result))) tags)))
+       (reverse tags))))
+ 
++;;;###autoload 
+ (defun build-cvs-checkout-options-validate (sym val)
+   (cond
+    ((string-match "-\\(d\\|N\\)\\b" val)
+diff -ru packages.orig/xemacs-packages/ps-print/ps-mule.el packages/xemacs-packages/ps-print/ps-mule.el
+--- packages/xemacs-packages/ps-print/ps-mule.el	2002-07-30 14:40:40.000000000 +0200
++++ packages/xemacs-packages/ps-print/ps-mule.el	2006-06-30 19:22:32.000000000 +0200
+@@ -298,6 +298,7 @@
+ 
+ See also the variable `ps-font-info-database'.")
+ 
++;;;###autoload
+ (defconst ps-mule-font-info-database-latin
+   '((latin-iso8859-1
+      (normal nil nil iso-8859-1)))
+diff -ru packages.orig/xemacs-packages/ps-print/ps-print.el packages/xemacs-packages/ps-print/ps-print.el
+--- packages/xemacs-packages/ps-print/ps-print.el	2004-03-08 23:43:35.000000000 +0100
++++ packages/xemacs-packages/ps-print/ps-print.el	2006-07-01 12:30:51.000000000 +0200
+@@ -1436,6 +1436,7 @@
+ 
+ ;;; Code:
+ 
++;;;###autoload
+ (eval-and-compile
+   (require 'lpr)
+ 

@@ -1,0 +1,10 @@
+<package name="3omns" project="openSUSE:Factory">
+  <title>Old-school Arcade-style Tile-based Bomb-dropping Deathmatch Game</title>
+  <description>3omns is an old-school arcade-style tile-based bomb-dropping deathmatch game.
+The name is a bastardization of the word Bombs
+(and you should pronounce it however you want).
+
+</description>
+  <devel project="games" package="3omns"/>
+  <url>https://chazomaticus.github.io/3omns/</url>
+</package>

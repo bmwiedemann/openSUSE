@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9db072d55cdfae52690b96e0833da78a</srcmd5>
+    <version>unknown</version>
+    <time>1619298492</time>
+    <user>dimstar_suse</user>
+    <comment>Submit cdi-cloner-container to Factory</comment>
+    <requestid>886465</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>742b61a655a6e3f121069a6e90759f50</srcmd5>
+    <version>unknown</version>
+    <time>1619552085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888565</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e54319406ab953a7fab4747c57fd601d</srcmd5>
+    <version>unknown</version>
+    <time>1620239985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890446</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fd375d64bb2991c1cb0c1241e590bead</srcmd5>
+    <version>unknown</version>
+    <time>1623705056</time>
+    <user>dimstar_suse</user>
+    <comment>- Include the registry in org.opensuse.reference</comment>
+    <requestid>898428</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0f80a0e612f23dad1a18187e71f7e679</srcmd5>
+    <version>unknown</version>
+    <time>1642198422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946490</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1377542ad9576b23cf3c4aa30ca2860f</srcmd5>
+    <version>unknown</version>
+    <time>1642724738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947691</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>3ccb4fafb6d90c47edd00645d2caf9cd</srcmd5>
+    <version>unknown</version>
+    <time>1650922524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972505</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>f1b626cb3f2804f4beb19ca5b3c96b9a</srcmd5>
+    <version>unknown</version>
+    <time>1659721886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993197</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>eb49ef0bfe6880c66f15932035abbe2a</srcmd5>
+    <version>unknown</version>
+    <time>1665754929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010516</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>524eaa4325ecb2c850ccabf4c58c1a56</srcmd5>
+    <version>unknown</version>
+    <time>1683916707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086657</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>fcc2aa3188f696948653e43d0d72f873</srcmd5>
+    <version>unknown</version>
+    <time>1698170901</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119845</requestid>
+  </revision>
+</revisionlist>

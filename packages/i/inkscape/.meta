@@ -1,0 +1,5 @@
+<package name="inkscape" project="openSUSE:Factory">
+  <title>Vector Illustration Program</title>
+  <description>Inkscape is a vector illustration program for the GNOME desktop.</description>
+  <devel project="graphics" package="inkscape"/>
+</package>

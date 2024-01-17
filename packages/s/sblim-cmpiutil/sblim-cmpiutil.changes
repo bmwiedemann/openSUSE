@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Mar 27 21:57:13 UTC 2012 - coolo@suse.com
+
+- little cleanup
+
+-------------------------------------------------------------------
+Sun Nov 20 06:47:55 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Jul  3 10:13:06 MDT 2008 - npaxton@novell.com
+
+- Initial checkin 
+

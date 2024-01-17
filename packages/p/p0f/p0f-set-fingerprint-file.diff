@@ -1,0 +1,13 @@
+diff --git a/config.h b/config.h
+index 3408dd1..b9c1ac8 100644
+--- a/config.h
++++ b/config.h
+@@ -20,7 +20,7 @@
+ /* Default location of p0f.fp: */
+ 
+ #ifndef FP_FILE
+-#  define FP_FILE           "p0f.fp"
++#  define FP_FILE           "/etc/p0f3/p0f.fp"
+ #endif /* !FP_FILE */
+ 
+ /* Initial permissions on log files: */

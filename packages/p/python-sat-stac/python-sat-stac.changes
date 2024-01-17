@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Oct  7 15:22:59 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.4.1
+  Added
+  * User can now provide custom headers to download function
+  * id and description keywords added to itemcollection.save() and itemcollection.geojson() for user to supply values to save single file STAC
+  Changed
+  * Allow reading in of ItemCollections without collections
+  * Default STAC_VERSION updated to 1.0.0-beta.2
+  Fixed
+  * Saved ItemCollections now adhere to STAC single-file-stac spec 
+
+-------------------------------------------------------------------
+Mon Aug 17 07:08:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix download url
+
+-------------------------------------------------------------------
+Mon Aug 10 11:46:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix few minor issues with alternatives
+
+-------------------------------------------------------------------
+Fri Jul 31 15:33:36 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update spec file to use python alternative.
+
+-------------------------------------------------------------------
+Sun Jul 26 14:20:25 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 

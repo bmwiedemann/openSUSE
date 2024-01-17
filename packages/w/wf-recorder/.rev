@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1bca5e018b5c4dcac9a5537ccfcab3a</srcmd5>
+    <version>0.2.1</version>
+    <time>1613942080</time>
+    <user>dimstar_suse</user>
+    <comment>wf-recorder is a utility program for screen recording of wlroots-based compositors (more specifically, those that support wlr-screencopy-v1 and xdg-output).</comment>
+    <requestid>874129</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f02093cbb547cd119621fc5f2e4baec</srcmd5>
+    <version>0.3.0</version>
+    <time>1656587903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985857</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>26d1941489737281775dae4edb694017</srcmd5>
+    <version>0.3.0+git7</version>
+    <time>1663080472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003325</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>afcddd11b14c9653c8206e5115790823</srcmd5>
+    <version>0.3.0+git19</version>
+    <time>1673973345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058885</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0b6f1a83f288d1a8aff1ca6682a1db90</srcmd5>
+    <version>0.4.0+git0</version>
+    <time>1692795521</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105455</requestid>
+  </revision>
+</revisionlist>

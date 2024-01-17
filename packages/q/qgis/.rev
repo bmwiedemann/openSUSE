@@ -1,0 +1,416 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>724959f91acac23b5c7752622bf8faf1</srcmd5>
+    <version>3.8.2</version>
+    <time>1573164936</time>
+    <user>dimstar_suse</user>
+    <comment>Now all issues should be solved I hope.</comment>
+    <requestid>731404</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1671608ab052cab323190fdcb5915035</srcmd5>
+    <version>3.8.3</version>
+    <time>1573223215</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746438</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4ce724f72eaa10a5f8ebcebc7eecf28b</srcmd5>
+    <version>3.10.0</version>
+    <time>1573773178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748573</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>94045bd7357d6932ba689ce23af91e84</srcmd5>
+    <version>3.10.0</version>
+    <time>1574414872</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750169</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d775deab60f401ee57cd25a5af444122</srcmd5>
+    <version>3.10.0</version>
+    <time>1574552242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750379</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>88b4fc66d31a0005e942e0fa1e071ccf</srcmd5>
+    <version>3.10.0</version>
+    <time>1575464037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753770</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ef26ad4f847d5411d6ac7741240da720</srcmd5>
+    <version>3.10.0</version>
+    <time>1578069419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760477</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>271b66dde793ee2ae06da27b8cd95570</srcmd5>
+    <version>3.10.2</version>
+    <time>1581277682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772138</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>622414ec2fa0bb5a2585f76d3d967015</srcmd5>
+    <version>3.10.2</version>
+    <time>1582643086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778800</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>99a3b93dbdc01f101b50f8413cad2a60</srcmd5>
+    <version>3.12.0</version>
+    <time>1584050763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784358</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff654fb9f536e5c75ac08333d620a68b</srcmd5>
+    <version>3.12.1</version>
+    <time>1586973343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794061</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fafdd607476e5867ebf928cd2c8acdc1</srcmd5>
+    <version>3.12.2</version>
+    <time>1588450573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798862</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ea30d71ff47c809823701bcb7ddb1ea3</srcmd5>
+    <version>3.12.3</version>
+    <time>1591742858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812702</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3a03df58ed622e1a011699ffc9b64f87</srcmd5>
+    <version>3.14.0</version>
+    <time>1593606374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816985</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>774f88f3d356e8de8345cd2fc5c82a93</srcmd5>
+    <version>3.14.0</version>
+    <time>1594894441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820780</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dfc636764832abede38d21a1e2f3c825</srcmd5>
+    <version>3.14.16</version>
+    <time>1600346752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834956</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>1b668b2c49d5d539724474edf452c2d0</srcmd5>
+    <version>3.14.16</version>
+    <time>1606142484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849880</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a1c310ed884254df2cd02c2ac329d691</srcmd5>
+    <version>3.14.16</version>
+    <time>1608031897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855947</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e751d4733d13c7ac58a266d3e637237f</srcmd5>
+    <version>3.18.0</version>
+    <time>1614948393</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875975</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4c8b1645528e1de2a014d9a9e66ca68d</srcmd5>
+    <version>3.18.1</version>
+    <time>1616680371</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881281</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bed5122cd7fdaed71a2a553c1894fcef</srcmd5>
+    <version>3.18.2</version>
+    <time>1618859195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886719</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cd07285eb8e1f4fa8fd244f9eb063f23</srcmd5>
+    <version>3.18.3</version>
+    <time>1622536630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895571</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2df735e49fa6d65625a081a91ab606cb</srcmd5>
+    <version>3.20.0</version>
+    <time>1625675425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904377</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>59cfbc13ab44e93b854d25e84ddbae4d</srcmd5>
+    <version>3.20.1</version>
+    <time>1628023726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.20.1 (monthly bugfix)
+- Add patch to fix build with current Tumbleweed - boo#1188902
+  * qgis-fix-missing-qwt-inc.patch
+  * qgis-fix-missing-qwt-inc-part2.patch
+</comment>
+    <requestid>909901</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>a7a4cf7d864b7d52e507ceeed5e27411</srcmd5>
+    <version>3.20.1</version>
+    <time>1629795259</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-infinite-loop.patch: fix startup of QGIS. This will be
+  integrated upstream in 3.20.2.
+- Enable PDAL (add qgis-fix-cmake-findpdal.patch)
+</comment>
+    <requestid>911938</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4b38d0f61671523237dd40a21ea24e03</srcmd5>
+    <version>3.20.2</version>
+    <time>1631129813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917548</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>dc3d52a2f14b4669eac0ac147976dde7</srcmd5>
+    <version>3.20.3</version>
+    <time>1635272835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927530</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>810fb377e1367a59761726075e617be7</srcmd5>
+    <version>3.22.0</version>
+    <time>1636498498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930395</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8bd7ca8eb11b274037c27abe0d58b128</srcmd5>
+    <version>3.22.4</version>
+    <time>1646767916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960189</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c11285fb4f396b9abed23a163b56311c</srcmd5>
+    <version>3.24.0</version>
+    <time>1646848073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960377</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e1581b8c456f8deeb61c616f165ef5e8</srcmd5>
+    <version>3.24.1</version>
+    <time>1649949910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969975</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>b6cd2b43c94086663809145070f17d50</srcmd5>
+    <version>3.24.1</version>
+    <time>1653503690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979122</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>bac61e3a72d274662f0c56b92058b397</srcmd5>
+    <version>3.24.1</version>
+    <time>1657044828</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>986880</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>bfb66eedc404514da46487d8c63806ec</srcmd5>
+    <version>3.24.1</version>
+    <time>1657809249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988980</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>f1bd691a47f32a7438112a35c1971047</srcmd5>
+    <version>3.24.1</version>
+    <time>1664820483</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python numpy requirement (see BSC#1203696)
+</comment>
+    <requestid>1007667</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5378629aba081bb9e38ae5c456172f95</srcmd5>
+    <version>3.28.2</version>
+    <time>1672927228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix-release 3.28.2
+- Update to 3.28.1 (2nd release after 3.24.1, skipping 3.26)
+  https://changelog.qgis.org/en/qgis/version/3.28/
+  https://changelog.qgis.org/en/qgis/version/3.26/
+</comment>
+    <requestid>1055951</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0c6dc464e6dfb6225fca9aec360b1cbf</srcmd5>
+    <version>3.28.3</version>
+    <time>1675458302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062656</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>59bbddd7b347e898b509b6bc100a6773</srcmd5>
+    <version>3.28.3</version>
+    <time>1678125411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069671</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d0a2a4b97a4b6a96af8543614acf7dd9</srcmd5>
+    <version>3.30.0</version>
+    <time>1678482512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070661</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>e9745a78521ebd67b1cccbfc63be0518</srcmd5>
+    <version>3.30.0</version>
+    <time>1680636421</time>
+    <user>dimstar_suse</user>
+    <comment>- add qgis-3.30.0_include_fix.patch to fix missing include files
+</comment>
+    <requestid>1077197</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f0dbd8dd6e3a9666a8c75b1bcfffb072</srcmd5>
+    <version>3.30.1</version>
+    <time>1680722884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077448</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>620dda7d854e9961a041d7bfba852a1d</srcmd5>
+    <version>3.30.1</version>
+    <time>1681918947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079960</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>19add5fe8f90f7a7ee82621640e9183b</srcmd5>
+    <version>3.30.1</version>
+    <time>1683111403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084052</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0dc6f508e9b96b0fbc16fea08e409d18</srcmd5>
+    <version>3.30.2</version>
+    <time>1683991087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086976</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4dadc3f4f3a9353e0dcced9f3a5d42e5</srcmd5>
+    <version>3.30.3</version>
+    <time>1687033228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093531</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>9ba526f5b333eacbd6d342cce117b124</srcmd5>
+    <version>3.30.3</version>
+    <time>1688849194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097492</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7fa0817111d65e5196409ebeade99358</srcmd5>
+    <version>3.32.0</version>
+    <time>1690370693</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100781</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>4b6199f52658d1b6ec664609d03fede8</srcmd5>
+    <version>3.32.0</version>
+    <time>1695209237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112051</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>e33a0222cdf937358c7c50f1a17344d9</srcmd5>
+    <version>3.32.3</version>
+    <time>1696760265</time>
+    <user>anag+factory</user>
+    <comment>- update to bugfix release 3.32.3
+</comment>
+    <requestid>1115841</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a8e2d0fea439ba69bcacddba40c2015c</srcmd5>
+    <version>3.34.1</version>
+    <time>1703800829</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135147</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+Index: qsynth-0.9.6/src/appdata/org.rncbc.qsynth.desktop
+===================================================================
+--- qsynth-0.9.6.orig/src/appdata/org.rncbc.qsynth.desktop
++++ qsynth-0.9.6/src/appdata/org.rncbc.qsynth.desktop
+@@ -15,4 +15,3 @@ Terminal=false
+ Type=Application
+ StartupWMClass=qsynth
+ X-Window-Icon=qsynth
+-X-SuSE-translate=true

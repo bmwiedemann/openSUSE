@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48307c8700fdb91488d15ffc864080e6</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471137</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115377</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>48307c8700fdb91488d15ffc864080e6</srcmd5>
+    <version>1.0.4</version>
+    <time>1340183687</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>48307c8700fdb91488d15ffc864080e6</srcmd5>
+    <version>1.0.4</version>
+    <time>1359109427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>91a3255fbc53c81ed6131611c34fd007</srcmd5>
+    <version>1.0.5</version>
+    <time>1376911793</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.0.5 (forwarded request 195520 from Zaitor)</comment>
+    <requestid>195565</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>91a3255fbc53c81ed6131611c34fd007</srcmd5>
+    <version>1.0.5</version>
+    <time>1379663246</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>91a3255fbc53c81ed6131611c34fd007</srcmd5>
+    <version>1.0.5</version>
+    <time>1409301849</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>e86125e559a4fbcde98750a709c69827</srcmd5>
+    <version>1.0.5</version>
+    <time>1459237919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>380109</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aa15742d2cb5ffdc2e2e25b3832af1c4</srcmd5>
+    <version>1.0.6</version>
+    <time>1553635792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * This minor maintenance release fixes some bugs, lifts a limit,
+    clears some compiler warnings, boosts performance, and includes
+    other janitorial cleanups.
+- supersedes u_Escape-special-characters-in-paths.patch</comment>
+    <requestid>687648</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c329db5383e7be9cc7a6f0214ad98d29</srcmd5>
+    <version>1.0.6</version>
+    <time>1602762230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840871</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3ec6e8a6f84a72395ad008915dc3a1b6</srcmd5>
+    <version>1.0.7</version>
+    <time>1667994956</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034311</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bf259ad5d88359027efa98cd816168db</srcmd5>
+    <version>1.0.7</version>
+    <time>1671128612</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042621</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>72c59ea851a044c6ed8ea85aa1c17f5f</srcmd5>
+    <version>1.0.8</version>
+    <time>1672668094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045912</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ca1ffecbe3daf4569f6c9400c32aac43</srcmd5>
+    <version>1.0.8</version>
+    <time>1675265905</time>
+    <user>dimstar_suse</user>
+    <comment>- renamed 0001-Avoid-depending-on-xproto.patch to
+  u_Avoid-depending-on-xproto.patch, i.e. patch is to be upstreamed
+
+- Add patch to avoid the xproto (+pkgconfig) dependency,
+  useful for boo#1207721:
+  * 0001-Avoid-depending-on-xproto.patch</comment>
+    <requestid>1062231</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,25 @@
+<multibuild>
+  <flavor>a3700</flavor>
+  <flavor>a80x0_mcbin</flavor>
+  <flavor>fvp</flavor>
+  <flavor>hikey</flavor>
+  <flavor>hikey960</flavor>
+  <flavor>imx8mm</flavor>
+  <flavor>imx8mq</flavor>
+  <flavor>imx8qm</flavor>
+  <flavor>imx8qx</flavor>
+  <flavor>poplar</flavor>
+  <flavor>qemu</flavor>
+  <flavor>qemu_sbsa</flavor>
+  <flavor>rk3328</flavor>
+  <flavor>rk3368</flavor>
+  <flavor>rk3399</flavor>
+  <flavor>rpi3</flavor>
+  <flavor>rpi4</flavor>
+  <flavor>sun50i_a64</flavor>
+  <flavor>sun50i_h6</flavor>
+  <flavor>sun50i_h616</flavor>
+  <flavor>tegra186</flavor>
+  <flavor>tegra210</flavor>
+  <flavor>zynqmp</flavor>
+</multibuild>

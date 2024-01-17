@@ -1,0 +1,5 @@
+<package name="orthanc-volview" project="openSUSE:Factory">
+  <title>VolView viewer plugin for Orthanc</title>
+  <description></description>
+  <devel project="graphics" package="orthanc-volview"/>
+</package>

@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Sat Sep 23 15:03:00 UTC 2017 - coolo@suse.com
+
+- compile with perl 5.26 by patching the Makefile
+
+-------------------------------------------------------------------
+Tue Feb  3 15:32:50 CET 2015 - tiwai@suse.de
+
+- sort the entries in HanExtra.c for consistent packaging
+  (boo#915951):
+  HanExtra-include-sort.patch
+
+-------------------------------------------------------------------
+Sun Nov 09 21:15:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in postun script
+
+-------------------------------------------------------------------
+Fri Dec  2 11:09:44 UTC 2011 - coolo@suse.com
+
+- use original tar
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:11 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:52 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:34 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Nov 12 15:33:18 CET 2007 - mfabian@suse.de
+
+- update to 0.23.
+• Split .ucm files into several object files, so enc2xs will no longer
+  take absurd amount of memory.
+  Reported by: David Cantrell
+• Add Big5-2003, the newest incarnation of Big5 and a Taiwanese national
+  standard (as an appendix to CNS11643).
+• Oops, the CCCII map was broken.  So sowwy. :-/
+  Reported by: CPAN Testers.
+• LICENSING CHANGE: This compilation and all individual files in it
+  are now under the permissive "MIT" license.  See the COPYRIGHT
+  section in README for the new terms.
+• CCCII: Revised, using table supplied by the Koha Taiwan project.
+• GB18030: Removed invalid Unicode codepoints.
+• Build system upgraded from ExtUtils::MakeMaker to Module::Install.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 02 14:39:07 CEST 2005 - mfabian@suse.de
+
+- update to 0.10.
+
+-------------------------------------------------------------------
+Sat Jan 10 20:10:19 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Sat Sep 13 17:56:30 CEST 2003 - mfabian@suse.de
+
+- add "Prereq: /usr/bin/enc2xs", thanks to
+  Andreas Jaeger <aj@suse.de> for noticing the omission.
+
+-------------------------------------------------------------------
+Fri Aug 29 12:25:40 CEST 2003 - mfabian@suse.de
+
+- redirect stdout and stderr of "enc2xs -C" to /dev/null.
+
+-------------------------------------------------------------------
+Fri Aug 22 14:44:44 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Wed Jul 16 13:08:44 CEST 2003 - mfabian@suse.de
+
+- use vendorarch instead of sitearch.
+- simplify file list.
+
+-------------------------------------------------------------------
+Sun Jun 15 13:07:41 CEST 2003 - mfabian@suse.de
+
+- fix "directory now owned by any package".
+
+-------------------------------------------------------------------
+Sun May 25 23:54:12 CEST 2003 - ro@suse.de
+
+- remove unpackaged files from buildroot 
+
+-------------------------------------------------------------------
+Fri May 16 18:31:15 CEST 2003 - mfabian@suse.de
+
+- remove perllocal.pod from buildroot.
+
+-------------------------------------------------------------------
+Mon May 12 16:11:10 CEST 2003 - mfabian@suse.de
+
+- use "enc2xs -C" in %post and %postun to register/unregister
+  the new encodings in the on demand-loading list.
+
+-------------------------------------------------------------------
+Fri May  9 18:46:00 CEST 2003 - mfabian@suse.de
+
+- new package: perl-Encode-HanExtra-0.07
+- fix installation of man-page

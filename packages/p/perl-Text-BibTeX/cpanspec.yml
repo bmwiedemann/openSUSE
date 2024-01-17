@@ -1,0 +1,49 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+patches:
+  manual-pages-for-libbtparse.patch: -p1
+#  bar.patch:
+preamble: |-
+  BuildRequires:  glibc-devel
+
+  %package        devel
+  Summary:        C library for parsing and processing BibTeX files
+  Group:          Development/Libraries/Other
+  Provides:       %{name}:%{_libdir}/libbtparse.so
+
+  %description    devel
+  The libbtparse is a C library for parsing and processing BibTeX files.
+  Note that the interface provided by libbtparse, while complete, is fairly
+  low-level.  If you have more sophisticated needs, you might be interested
+  the "Text::BibTeX" module for Perl.
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+#post_install: |-
+misc: |-
+  %exclude %{_mandir}/man3/*.3.gz
+
+  %files devel
+  %defattr(-,root,root,755)
+  %{_libdir}/libbtparse.so
+  %{_mandir}/man3/*.3%{?ext_man}
+  %{_includedir}/btparse.h
+
+  %post devel -p /sbin/ldconfig
+  %postun devel -p /sbin/ldconfig
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

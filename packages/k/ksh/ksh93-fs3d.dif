@@ -1,0 +1,62 @@
+--- ./src/lib/libast/misc/fs3d.c.orig	2014-11-11 12:09:50.142397030 +0000
++++ ./src/lib/libast/misc/fs3d.c	2014-11-11 12:11:19.667992242 +0000
+@@ -39,6 +39,7 @@
+ int
+ fs3d(register int op)
+ {
++#if SHOPT_FS_3D
+ 	register int	cur;
+ 	register char*	v;
+ 	char		val[sizeof(FS3D_off) + 8];
+@@ -95,6 +96,7 @@ fs3d(register int op)
+ 	return cur;
+  nope:
+ 	fsview = -1;
++#endif
+ 	return 0;
+ }
+ 
+@@ -107,6 +109,7 @@ fs3d(register int op)
+ 
+ #undef	mount
+ 
++#if SHOPT_FS_3D
+ extern int	mount(const char*, char*, int, void*);
+ 
+ int
+@@ -114,3 +117,4 @@ fs3d_mount(const char* source, char* tar
+ {
+ 	return mount(source, target, flags, data);
+ }
++#endif
+--- ./src/lib/libast/path/pathkey.c.orig	2014-11-11 12:11:29.333948438 +0000
++++ ./src/lib/libast/path/pathkey.c	2014-11-11 12:11:47.067868209 +0000
+@@ -109,8 +109,10 @@ pathkey_20100601(const char* lang, const
+ 		 * 3D
+ 		 */
+ 
++#if SHOPT_FS_3D
+ 		if (!flags && fs3d(FS3D_TEST) && (c = mount(path, tmp, FS3D_GET|FS3D_ALL|FS3D_SIZE(PATH_MAX), NiL)) > 1 && c < PATH_MAX)
+ 			path = tmp;
++#endif
+ 
+ 		/*
+ 		 * preroot
+--- ./src/lib/libcoshell/coinit.c.orig	2014-11-11 12:08:49.438671153 +0000
++++ ./src/lib/libcoshell/coinit.c	2014-11-11 12:09:25.956506292 +0000
+@@ -355,6 +355,7 @@ coinitialize(Coshell_t* co, int flags)
+ 			p = (int)sfstrtell(sp);
+ 			sfprintf(sp, "vpath ");
+ 			n = PATH_MAX;
++#if SHOPT_FS_3D
+ 			if (fs3d(FS3D_TEST))
+ 				for (;;)
+ 				{
+@@ -370,6 +371,7 @@ coinitialize(Coshell_t* co, int flags)
+ 					}
+ 				}
+ 			else
++#endif
+ 			{
+ 				m = 0;
+ 				sfprintf(sp, "- /#option/2d");

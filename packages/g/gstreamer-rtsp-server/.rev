@@ -1,0 +1,415 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95e8b0bfe8388a98736ddcb1677c2e5e</srcmd5>
+    <version>1.8.3</version>
+    <time>1473242072</time>
+    <user>dimstar_suse</user>
+    <comment>Rename of gst-rtsp-server</comment>
+    <requestid>424410</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>01013df7e15c3c5b47a035a4d09b37f1</srcmd5>
+    <version>1.10.2</version>
+    <time>1481390909</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444158</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>875f95d7613788195603a498ebcac637</srcmd5>
+    <version>1.10.2</version>
+    <time>1484041496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448415</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d0d7164a2d9e578d8b4860b2e89ae62</srcmd5>
+    <version>1.10.3</version>
+    <time>1486135644</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453509</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>01b840f4f914daf29f0397b63f642d87</srcmd5>
+    <version>1.10.4</version>
+    <time>1488479746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460485</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>59124d5f74c05f25c4ad50a88bf688fa</srcmd5>
+    <version>1.12.0</version>
+    <time>1497871415</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495721</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0c9bf9ff29c4e8d6421affa4de4b4b2f</srcmd5>
+    <version>1.12.1</version>
+    <time>1498120822</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505408</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d0008daa9d3143ebdd5fdc2091225105</srcmd5>
+    <version>1.12.2</version>
+    <time>1500275568</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510505</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6b1333c1fdb2a8b12d03ce11549f92d2</srcmd5>
+    <version>1.12.3</version>
+    <time>1506340717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528115</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>28f0e4352979a2f642896848c6113deb</srcmd5>
+    <version>1.12.4</version>
+    <time>1513110202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556343</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>709a712a997a4628c2bc80be2a999eec</srcmd5>
+    <version>1.12.4</version>
+    <time>1515623830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563160</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>454acf5097d3114cf0831f2195c24bcf</srcmd5>
+    <version>1.12.4</version>
+    <time>1518601859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576014</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>3c51ed18c154da8b578f36bf55dc4194</srcmd5>
+    <version>1.12.4</version>
+    <time>1520329610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581589</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6c34115cc980e1040fe48fd719b7a8c3</srcmd5>
+    <version>1.12.5</version>
+    <time>1522750330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592850</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8ca575f5b6b5ef7e7cba622d886f9ee8</srcmd5>
+    <version>1.14.1</version>
+    <time>1527675740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611160</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>4479780e091274daf5c0ea9a5144e9d9</srcmd5>
+    <version>1.14.1</version>
+    <time>1529919705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618588</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>59f089224d051c1ffa995deaa31b8b38</srcmd5>
+    <version>1.14.1</version>
+    <time>1530087744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619154</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5506f372d17e7f39a22c1a7f68e5f4e6</srcmd5>
+    <version>1.14.2</version>
+    <time>1533045435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624964</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c24127af16707888646b085938466e02</srcmd5>
+    <version>1.14.4</version>
+    <time>1539342610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639887</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4bf52d02e72e4b90c7ff57b4784cce11</srcmd5>
+    <version>1.14.5</version>
+    <time>1560536686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707919</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>76a937dab618276faa298bb09c747458</srcmd5>
+    <version>1.16.0</version>
+    <time>1561898447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.0:
+  + Highlights:
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support,
+      as well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+   -  Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin
+      (msdk): dmabuf import/export for zero-copy integration with
+      other components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen</comment>
+    <requestid>711872</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>569717b5205b2636627f4c5805b982a0</srcmd5>
+    <version>1.16.1</version>
+    <time>1570799651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733429</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>12bca3cf072436a5c99a5831e4d4c528</srcmd5>
+    <version>1.16.2</version>
+    <time>1576189027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754309</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ff3b7bfd58c63be036e7ee4fc26c1037</srcmd5>
+    <version>1.16.2</version>
+    <time>1586869883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793763</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>608a0dc65f779456a0128e49317ca1e7</srcmd5>
+    <version>1.18.0</version>
+    <time>1603821528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839190</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a1f46e91c8d6c8cf8bad9c229e312611</srcmd5>
+    <version>1.18.1</version>
+    <time>1606649140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846456</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4c18db966d368de44a80d3fd01cf07ac</srcmd5>
+    <version>1.18.2</version>
+    <time>1607876974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854563</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8fe8cafc34479b73315e34f00a766e4d</srcmd5>
+    <version>1.18.3</version>
+    <time>1611262462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864318</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>487fd5a4c921fab94f8512906f2c9adc</srcmd5>
+    <version>1.18.4</version>
+    <time>1618223794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>883609</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8778d3b8784306d4972e92e7c4d44100</srcmd5>
+    <version>1.18.5</version>
+    <time>1632251556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919131</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>54022e9996c2405a6ef31790293bfae1</srcmd5>
+    <version>1.18.5</version>
+    <time>1642835894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947899</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>398bbab3c62d1a8c481ffdeb23107778</srcmd5>
+    <version>1.18.6</version>
+    <time>1644435536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952077</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8884ff50d7775da83548f5cf4ccbe62a</srcmd5>
+    <version>1.20.1</version>
+    <time>1648159038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963524</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>b645964b0eac7f134ade6f2046cc98db</srcmd5>
+    <version>1.20.1</version>
+    <time>1649274704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967196</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2225534f8605d66060e0dc7e3188e520</srcmd5>
+    <version>1.20.2</version>
+    <time>1652561690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976630</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a68e7bf1b56c56754cceeac84232bd63</srcmd5>
+    <version>1.20.3</version>
+    <time>1656056717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984568</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>357049a9cf479a862aa80cdb44c084c7</srcmd5>
+    <version>1.20.4</version>
+    <time>1666689566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030669</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>43acc3cb134c9692d96e537e4ec5d9a3</srcmd5>
+    <version>1.20.5</version>
+    <time>1671977681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045101</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3fa1710664b00ed6f26fcf8f43887c6e</srcmd5>
+    <version>1.22.0</version>
+    <time>1675458287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061335</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>6764090232019e52e02a4861ef6f7d18</srcmd5>
+    <version>1.22.0</version>
+    <time>1677794612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068513</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1b83ec92a15bd46522b05e927775cce8</srcmd5>
+    <version>1.22.1</version>
+    <time>1678707609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070793</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4aa1c398c2c360fef715d895f52a52af</srcmd5>
+    <version>1.22.2</version>
+    <time>1681654012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079385</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5f18a2ff783d8e6f21c0eba68b6fb58a</srcmd5>
+    <version>1.22.3</version>
+    <time>1685294555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089229</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b2508126a9259278ec903a11fbc4d997</srcmd5>
+    <version>1.22.4</version>
+    <time>1688246251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096153</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>763d3e11ae5ea7687d9361864935994b</srcmd5>
+    <version>1.22.5</version>
+    <time>1690469462</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100817</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>587bee39cb969625cf3ad46428d248a6</srcmd5>
+    <version>1.22.6</version>
+    <time>1696014825</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114002</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6f7c6945988d329334559fefa532afcf</srcmd5>
+    <version>1.22.7</version>
+    <time>1700162946</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126818</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>030e53e8da7cc29553494ea64779cb3c</srcmd5>
+    <version>1.22.8</version>
+    <time>1704487325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136829</requestid>
+  </revision>
+</revisionlist>

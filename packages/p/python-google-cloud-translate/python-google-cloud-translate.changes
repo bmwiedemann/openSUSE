@@ -1,0 +1,213 @@
+-------------------------------------------------------------------
+Sat Jan  6 17:16:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.0:
+  * Add Adaptive MT API
+  * Fixes a typo in docs
+
+-------------------------------------------------------------------
+Sat Dec 16 20:28:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.0:
+  * Add support for python 3.12
+  * Introduce compatibility with native namespace packages
+  * Require proto-plus >= 1.22.3
+  * Use retry_async instead of retry in async client
+
+-------------------------------------------------------------------
+Thu Dec  7 10:23:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.12.1
+  * Require google-cloud-core >= 1.4.4 (8542583)
+  * Minor formatting (21cd6f6)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Wed Aug 30 13:33:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.12.0
+  * Added shadow removal and rotation correction options to Document
+    Translation and Batch Document Translation API (#511)
+- from version 3.11.3
+  * Minor formatting (#505)
+  * Minor formatting (#507)
+
+-------------------------------------------------------------------
+Tue Jul 18 10:11:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.11.2
+  * Add async context manager return types (#496)
+
+-------------------------------------------------------------------
+Tue Jun 20 09:53:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.11.1
+  * Fix formatting of request arg in docstring (#487)
+
+-------------------------------------------------------------------
+Fri Mar  3 15:23:57 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.11.0
+  * Add supported fields in document translation request and refresh translation
+    v3 GA service proto documentation (cb63888)
+  * Enable "rest" transport in Python for services supporting numeric enums (cb63888)
+- from version 3.10.1
+  * Add context manager return types (e20fa00)
+  * Add documentation for enums (e20fa00)
+- from version 3.10.0
+  * Add support for python 3.11 (#474)
+- from version 3.9.0
+  * Add typing to proto.Message based class attributes (60573e6)
+  * Add dict typing for client_options (60573e6)
+  * **deps:** Require google-api-core &gt;=1.34.0, >=2.11.0  (60573e6)
+  * Drop usage of pkg_resources (60573e6)
+  * Fix timeout default values (60573e6)
+  * **samples:** Snippetgen handling of repeated enum field (60573e6)
+  * **samples:** Snippetgen should call await on the operation coroutine
+    before calling result (60573e6)
+- Drop handling of fixup scripts in spec file
+  * fixup_translate_v3_keywords.py
+  * fixup_translate_v3beta1_keywords.py
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Mon Oct 17 09:52:07 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.8.4
+  * **deps:** Allow protobuf 3.19.5 (#457)
+- from version 3.8.3
+  * **deps:** Require protobuf >= 3.20.2 (#452)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Mon Sep 12 16:02:14 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.8.2
+  * **samples:** Fixing file saving for local documents translation (#419)
+- from version 3.8.1
+  * **deps:** allow protobuf < 5.0.0 (#425)
+  * **deps:** require proto-plus >= 1.22.0 (ba884c6)
+- from version 3.8.0
+  * add audience parameter (b665051)
+  * **deps:** require google-api-core>=1.32.0,>=2.8.0 (#409)
+  * require python 3.7+ (#411)
+- Drop patches for issues fixed upstream
+  * python-google-cloud-translate-no-mock.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Jun  9 07:57:58 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.7.4
+  * deps: require protobuf <4.0.0dev (#395) (6747720)
+  * fix changelog header to consistent size (#396) (d4d2825)
+  * fix type in docstring for map fields (3b845d6)
+- added patches
+  fix https://github.com/googleapis/python-translate/issues/403
+  + python-google-cloud-translate-no-mock.patch
+
+-------------------------------------------------------------------
+Wed Apr 13 10:40:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.7.2
+  Bug Fixes
+  * **deps:** require google-api-core>=1.31.5, >=2.3.2 (#348) (fe3ac1e)
+  * **deps:** require proto-plus>=1.15.0 (fe3ac1e)
+- from version 3.7.1
+  Documentation
+  * add generated snippets (#336) (36c4483)
+- from version 3.7.0
+  Features
+  * add api key support (#329) (4b08cd5)
+  Bug Fixes
+  * 290 added a create glossary line before each call using bistro-glossary (#302) (742e414)
+  * resolve DuplicateCredentialArgs error when using credentials_file (26791c2)
+- from version 3.6.1
+  Bug Fixes
+  * **deps:** drop packaging dependency (7924322)
+  * **deps:** require google-api-core >= 1.28.0 (7924322)
+  Documentation
+  * list oneofs in docstring (7924322)
+  * **samples:** Add Cloud Code tags for API Explorer pilot (#282) (3e8df68)
+- from version 3.6.0
+  Features
+  * add support for python 3.10 (#275) (381fc15)
+  Bug Fixes
+  * add model signature for batch document translation (#276) (be0b01b)
+- from version 3.5.0
+  Features
+  * add context manager support in client (#267) (6e750e8)
+  Bug Fixes
+  * (#254) by increasing timeout, use backoff module instead of flaky (#271) (0cff0f2)
+- from version 3.4.1
+  Bug Fixes
+  * add 'dict' annotation type to 'request' (6bbf390)
+  * improper types in pagers generation (cd70523)
+- from version 3.4.0
+  Features
+  * add translate_document and batch_translate_document (#234) (b5962d6)
+  * **v3beta1:** add format_conversions (b5962d6)
+  Bug Fixes
+  * add missing annotation for batch document translation (#231) (a1297ba)
+- from version 3.3.2
+  Bug Fixes
+  * enable self signed jwt for grpc (#215) (2f1bc32)
+  Documentation
+  * add Samples section to CONTRIBUTING.rst (#206) (6f1df67)
+  Miscellaneous Chores
+  * release as 3.3.2 (#218) (e14de99)
+- from version 3.3.1
+  Bug Fixes
+  * **deps:** pin 'google-{api,cloud}-core', 'google-auth' to
+    allow 2.x versions (#205) (3a11025)
+- from version 3.3.0
+  Features
+  * add always_use_jwt_access (778878d)
+  Bug Fixes
+  * disable always_use_jwt_access (#186) (778878d)
+- from version 3.2.1
+  Documentation
+  * omit mention of Python 2.7 in 'CONTRIBUTING.rst' (#1127) (#175) (7ef5f04)
+- from 3.2.0
+  Features
+  * support self-signed JWT flow for service accounts (959a35c)
+  Bug Fixes
+  * add async client to %name_%version/init.py (959a35c)
+  * **deps:** add packaging requirement (959a35c)
+  Documentation
+  * connect Python Translate client library to nebulous serverless example (#162) (2986864)
+- from version 3.1.0
+  Features
+  * add `from_service_account_info` (a397eff)
+  * **v3beta1:** add online and batch document translation (a397eff)
+  * **v3beta1:** add online and batch document translation  (#121) (a397eff)
+  Bug Fixes
+  * moves region tags (#103) (e161eb5)
+  * use correct retry deadlines (a397eff)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Fri Mar 12 12:21:41 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 3.0.2
+  * add w/ glossary and model
+- Install alternative binary files for different Python versions
+- Reenable tests
+
+-------------------------------------------------------------------
+Tue Oct 20 13:30:16 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 3.0.1
+  * update retry and timeout config
+- Update to version 3.0.0
+  * migrate API to microgenerator
+- New requirements
+  * python-libcst >= 0.2.5
+  * python-proto-plus >= 0.4.0
+  * python-pytest-asyncio
+- Disable not working tests for now
+
+-------------------------------------------------------------------
+Tue Jun 16 12:58:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by weblate

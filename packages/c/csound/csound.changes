@@ -1,0 +1,425 @@
+-------------------------------------------------------------------
+Wed Apr 26 19:27:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop unused BuildRequire on xorg-x11-devel
+- Modernize specfile constructs
+
+-------------------------------------------------------------------
+Wed Dec 14 01:02:31 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 6.18.1
+
+  * A long-standing big-endian test failure with score strings has been fixed.
+  * The symbol spillage caused by a build misconfiguration has been resolved.
+  * Plugin ABI compatibility with earlier versions (affecting the FLTK plugin) has been restored
+  * Some left-over tracing in the mod function has been removed.
+
+- Version 6.18.0 Changes:
+  New opcodes
+  
+  * scanmap reads internal state of scanu
+  * elapsedcycles, elapsedtime, eventcycles, and eventtime. See under
+    "bugs fied" for detials.
+
+  Modified Opcodes and Gens
+
+  * fix midi list printing to stdout part of the list.
+
+  Bugs Fixed
+
+  * Fixed bug where fixed-point phase computation (in oscil family) was
+    incorrect resulting in slight freq deviations in very low freq cases.
+
+  * Fixed bug where freeing instr 0 caused memory issues in new
+    compilations. Instr 0 is not freed until reset now.
+
+  * Fixed a bug where opcode directory search was crashing Csound if HOME
+    variable not set.
+
+  * Fixed pol2rect array size setting.
+
+  * OSCsend, OSCsend_lo and OSClisten can now work with OSC messages
+    carrying no payload (as per spec and manual).
+
+  * bug in sum fixed
+
+  * 'pitchamd' opcode causes segmentation fault (macOS) (#1599)
+
+  * fixed crash on channel setting with empty channel name
+
+  * bug in ftloadk fixed (#1611)
+
+  * qnan works even when compiled with fast arithmetic
+
+  * Fix the flanger opcode for sample-accurate mode, where the xdel input was
+    not being correctly offset.
+
+  * elapsedcycles, elapsedtime, eventcycles, and eventtime introducd as
+    fixed versions of timek, times, timeinstk and timeinsts but return
+    the correct values instead of being one cycle late. This prserves
+    backward compatability
+
+  System Changes
+
+  * Fix for issue #1613:
+    Fixes the rtauhal module for all cases of multichannel output. Previously the
+    module would not work correctly with some devices.
+
+  * Csound now supports MP3 files for input and output through libsndfile
+    (version 1.1.0 and higher).
+
+  Platform Specific
+  Bela:
+
+  * Many changes to Bela csound. See bela web site for details
+
+  MacOS:
+
+  * Universal build for x86_64 and arm64, backward compatible to MacOS 10.9
+
+  WASM:
+
+  * fix sampleRate for single-thread worklet
+
+-------------------------------------------------------------------
+Wed Dec  7 21:39:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.18.1:
+  * This is a patchfix release mainly dealing with issues arisen in Linux
+    package management. This contains the same code as 6.18.0, except for:
+  * A long-standing big-endian test failure with score strings has been
+    fixed.
+  * The symbol spillage caused by a build misconfiguration has been
+    resolved.
+  * Plugin ABI compatibility with earlier versions (affecting the FLTK
+    plugin) has been restored
+  * Some left-over tracing in the mod function has been removed.
+- update to 6.18.0:
+  * Mainly a bug-fixing release.  Major new facility is MP3 (MPEG) audio
+  * files are supported both for input and output in platforms where this is
+  * supported by libsndfile.
+  * fix midi list printing to stdout part of the list.
+  * Fixed bug where fixed-point phase computation (in oscil family) was
+  * incorrect resulting in slight freq deviations in very low freq cases.
+  * Fixed bug where freeing instr 0 caused memory issues in new
+  * compilations. Instr 0 is not freed until reset now.
+  * Fixed a bug where opcode directory search was crashing Csound if HOME
+  * variable not set.
+  * Fixed pol2rect array size setting.
+  * OSCsend, OSCsend_lo and OSClisten can now work with OSC messages
+  * carrying no payload (as per spec and manual).
+  * bug in sum fixed
+  * elapsedcycles, elapsedtime, eventcycles, and eventtime introducd as
+  * fixed versions of timek, times, timeinstk and timeinsts but return
+  * the correct values instead of being one cycle late.  This prserves
+  * backward compatability
+  * Csound now supports MP3 files for input and output through libsndfile
+
+-------------------------------------------------------------------
+Fri Aug 12 08:35:32 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 6.17.0
+
+USER-LEVEL CHANGES
+  New opcodes
+  
+  * scanmap and scansmap are like the xscanmap/xscansmap opcodes but
+    work with the mainstream scan opcodes.
+  * trigexpseg, triglinseg are aliases for trigExpseg, trigLinseg.
+  * xscan opcodes are deprecated as they add nothing to the scan opcodes.
+  * bformdec2 provides more ambisonic decoding of bformat audio.
+  * metrobpm is like metro but the timing is in beats per minute and the
+    signal can be offset by a proportion of the cycle.
+  * sequ is a csound version of a hardware sequencer. It has many modes and options.
+  * gtadsr implements a gated ADSR envelope
+
+  Orchestra
+
+  * Message printing has been revised so -m16 suppresses all
+    messages.
+  * add channel count to list_audio_devices (called when the flag
+    --devices is used so that it can be parsed by frontends).
+
+  Modified Opcodes and Gens
+
+  * event opcode does not bail out if the instrument called does not exist.
+  * Added an optional prefix to soundfont instruments printed via sfilist.
+  * lpslots reworked with better control.
+
+  Utilities
+
+  * cvanal now uses the SADIR environment to look for analysis files.
+
+  Bugs Fixed
+
+  * fareylen called a non-existent function leading to a crash. Removed typo.
+  * turnoff could cause clicks in some cases; fixed.
+  * turnoff3 improved.
+  * cntReset fixed; had a false initialisation code.
+  * binary search in bpf fixed.
+  * pvscfs frame counting issue fixed.
+  * --sample-accurate fixed in a-rate form of tabsum.
+  * Problem in atssinnoi fixed; did read outside allocated memory.
+  * hrtfmove fixed; it could use the wrong value for sr.
+  * Named instruments could use wrong structure in redefinition.
+  * fixes in the jack backend relating to --get-system-sr.
+  * pvcross frequency warp mode fixed.
+  * lpcfilter/lpcanal bug where processing could not be restarted after
+    a freeze fixed.
+  * the emugens collection of opcode, a large group incorporation mainly
+    array operations, were not made available due to a small editing
+    error.
+  * If using a float build (rather than a double) array access could be
+    wrong.
+  * In some cases instr0 code could ignore loops after an incorrect
+    warning. Now fixed.
+  * Bugs in mp3len and similar fixed.
+  * Crash in syncgrain issue #1773 fixed
+  * UDO output of fsigs fixed.
+
+SYSTEM LEVEL CHANGES
+  System Changes
+
+  * winsound has been removed.
+
+  API
+  
+  * CreateThread2 is a new API function that allows threads to be given a
+    user-defined stack size.
+
+-------------------------------------------------------------------
+Wed Jan 19 16:38:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 6.16.2:
+  * This is a hotfix release dealing with an issue that prevented
+    CsoundQT successfully producing a recording using one of the
+    API threading services. Fixes for desktop OS packages affected
+    are provided here.
+- Changes from version 6.16.1:
+  * This is a bug fix release of Csound 6.16, where an issue
+    affecting the use of turnoff/turnoff2 was repaired.
+
+-------------------------------------------------------------------
+Tue Jun 29 01:50:28 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 6.16.0
+- add python3-csound package
+- update csound-rename-sndinfo.patch
+
+-------------------------------------------------------------------
+Wed May 26 23:30:30 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 6.15.0
+- add -samples subpackage 
+
+-------------------------------------------------------------------
+Sat Feb 20 07:59:29 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Added quotes to %{_lib} conditional to satisfy new rpmlint.
+
+-------------------------------------------------------------------
+Fri Jul 10 08:45:28 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Removed unused util/new_srconv.c from sources to fix licensing.
+
+-------------------------------------------------------------------
+Wed Jun 03 08:03:33 UTC 2020 - davejplater@gmail.com
+
+- Update to version 6.14.0+git20200601 and fix factory build
+- Use service file instead of pre_checkin.sh to create tarball.
+- Remove incorporated patche fluidsynth2.patch.
+  * init
+  * resonbnk and apoleparams
+  * fix to multicore + etter code
+  * resonator bank
+  * fix prepiano meory issue
+  * allpoleb opcode
+  * Nearly there
+  * coeffs to params fix
+
+-------------------------------------------------------------------
+Wed Jun 26 08:00:12 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Renamed sndifo to csndinfo again to fix conflict with snd package
+  using csound-rename-sndinfo.patch this time.
+
+-------------------------------------------------------------------
+Wed Jun  5 13:57:01 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Added pre_checkin.sh to remove undistributable scansyn files from
+  the source tarball.
+- Relicenced to GPL-2.0-or-later AND BSD-3-Clause AND PostgreSQL
+  GPL-2.0 or later source file which relicenses the LGPL sources
+- Added COPYING_gpl2+.txt to licenses.
+
+-------------------------------------------------------------------
+Tue Apr  9 07:29:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Sat Apr  6 11:05:19 UTC 2019 - plater <davejplater@gmail.com>
+
+- Update to version 6.12.2 and fix Factory build.
+- Remove obsolete patches:
+  csound-scons-on-py3.patch and csound-strncat-fix.patch
+- Added fluidsynth2.patch from Arch linux
+- Added csound-6.08-default-pulse.patch, csound-6.08-xdg-open.patch
+  from Fedora.
+- Now builds with cmake
+- For upstream changes see:
+  /usr/share/doc/packages/csound/Release_Notes/
+
+-------------------------------------------------------------------
+Thu Nov 23 14:49:33 UTC 2017 - dimstar@opensuse.org
+
+- Add csound-scons-on-py3.patch: Fix build with scons using python3
+  as interpreter.
+
+-------------------------------------------------------------------
+Wed Nov  8 18:22:43 UTC 2017 - dimstar@opensuse.org
+
+- Rename README.SuSE to README.SUSE, adhering to the correct
+  spelling.
+
+-------------------------------------------------------------------
+Sat Feb 11 14:14:39 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups, trim descriptions from repeated information.
+  Remove unnecessary ldconfig calls (they do not apply for
+  plugin directories).
+
+-------------------------------------------------------------------
+Mon Jan 16 19:54:07 UTC 2017 - bwiedemann@suse.com
+
+- drop useless uninstall script and make build reproducible
+
+-------------------------------------------------------------------
+Tue Nov  6 16:03:11 CET 2012 - tiwai@suse.de
+
+- updated to version 5.18.02, including previous security fixes:
+  this fixes the build failure on FACTORY with new bison, too;
+  see ChangeLog for detailed updates and fixes
+
+-------------------------------------------------------------------
+Wed Apr 18 11:21:46 CEST 2012 - tiwai@suse.de
+
+- VUL-0: csound: buffer overflow in pv_import (CVE-2012-2106,
+  bnc#757254),
+  VUL-0: csound: buffer overflow in lpc_import (CVE-2012-2107,
+  bnc#757255),
+  VUL-0: csound: Stack-based buffer overflow in lpc_import
+  (CVE-2012-2108, bnc#757256):
+  a single patch for all three issues
+
+-------------------------------------------------------------------
+Mon Feb 27 12:04:56 CET 2012 - tiwai@suse.de
+
+- updated to version 5.16.6, including a fix for
+  VUL-0: CVE-2012-0270: csound: two buffer overflow flaws in
+  getnum() (bnc#749073)
+- drop obsoleted patches
+
+-------------------------------------------------------------------
+Sun Jan  8 15:04:23 UTC 2012 - prusnak@opensuse.org
+
+- updated to version 5.15.0
+- drop unused patches
+- fix wrong memset and strncat usage ({memset,strncat}-fix.patch)
+- create -devel subpackage
+
+-------------------------------------------------------------------
+Sun Sep 18 00:04:38 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Jul 16 18:04:52 CEST 2009 - tiwai@suse.de
+
+- fix scons argument to build for 64bit archs (bnc#521979)
+
+-------------------------------------------------------------------
+Wed Jan 28 14:40:46 CET 2009 - tiwai@suse.de
+
+- Fix python module search path insecure issue (bnc#470095)
+  This package is unaffected; the patch is included just for any
+  possible cases in future.
+
+-------------------------------------------------------------------
+Wed Oct  1 15:28:52 CEST 2008 - tiwai@suse.de
+
+- fix build with python-2.6
+
+-------------------------------------------------------------------
+Wed Jun 20 15:44:26 CEST 2007 - tiwai@suse.de
+
+- fix fdupes usage
+
+-------------------------------------------------------------------
+Mon Jun 11 17:57:22 CEST 2007 - tiwai@suse.de
+
+- updated to version 5.06:
+  * fix k-rate, vrandh and vrandi scaling problems, mod fix
+  * new opcodes: partikkel, partikkelsync
+
+-------------------------------------------------------------------
+Tue Mar 27 18:08:43 CEST 2007 - tiwai@suse.de
+
+- update to version 5.05:
+  * fixes/improvements on FLTK support
+  * fix heap overflow
+  * clean up old codes
+
+-------------------------------------------------------------------
+Mon Jan 22 13:11:02 CET 2007 - tiwai@suse.de
+
+- major update to version 5.04
+  (not built with fltk due to lack of threading support)
+
+-------------------------------------------------------------------
+Mon Mar 27 18:54:23 CEST 2006 - pth@suse.de
+
+- Add missing parameter in printf call (bug #129676).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:15 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct 15 10:54:27 CEST 2004 - tiwai@suse.de
+
+- renamed extract to csound-extract to avoid name confliction
+  (bug #45347).
+
+-------------------------------------------------------------------
+Wed Jun  2 17:05:41 CEST 2004 - tiwai@suse.de
+
+- fixed the ALSA RT plugin with the new API.
+
+-------------------------------------------------------------------
+Sat Jan 10 18:11:42 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig and %defattr
+
+-------------------------------------------------------------------
+Tue Aug  5 12:48:27 CEST 2003 - tiwai@suse.de
+
+- renamed sndinfo to csndinfo to avoid name confliction with snd.
+
+-------------------------------------------------------------------
+Wed Jul 30 12:48:59 CEST 2003 - tiwai@suse.de
+
+- fixed the build on x86-64.
+
+-------------------------------------------------------------------
+Mon Jul 28 16:11:55 CEST 2003 - tiwai@suse.de
+
+- updated to 4.24.1.
+- fixed tmpnam with mkstemp.
+
+-------------------------------------------------------------------
+Thu Feb  1 19:18:36 CET 2001 - tiwai@suse.de
+
+- Initial vesrion: unofficial-4.10.0.0c
+

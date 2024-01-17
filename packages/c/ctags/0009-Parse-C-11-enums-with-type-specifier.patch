@@ -1,0 +1,33 @@
+From cf9442ccad73448ff22ee96fa743893b29df5cfc Mon Sep 17 00:00:00 2001
+From: Ivan Grokhotkov <igrokhotkov@gmail.com>
+Date: Thu, 4 Feb 2016 19:36:35 +0300
+Subject: [PATCH 09/19] Parse C++11 enums with type specifier
+
+Manual cherry-pick of https://github.com/geany/geany/commit/f2f22d34ab9063852279bc6c5a45c8d3cfafdc0a
+---
+ c.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/c.c b/c.c
+index 6e8b5aa..ff7aa24 100644
+--- a/c.c
++++ b/c.c
+@@ -2528,6 +2528,15 @@ static void processColon (statementInfo *const st)
+ 			else if (c == ';')
+ 				setToken (st, TOKEN_SEMICOLON);
+ 		}
++		else if (isLanguage (Lang_cpp) && st->declaration == DECL_ENUM)
++		{
++			/* skip enum's base type */
++			c = skipToOneOf ("{;");
++			if (c == '{')
++				setToken (st, TOKEN_BRACE_OPEN);
++			else if (c == ';')
++				setToken (st, TOKEN_SEMICOLON);
++		}
+ 		else
+ 		{
+ 			const tokenInfo *const prev  = prevToken (st, 1);
+-- 
+2.11.0
+

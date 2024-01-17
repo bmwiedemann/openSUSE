@@ -1,0 +1,6 @@
+<package name="polaris" project="openSUSE:Factory">
+  <title>polaris</title>
+  <description>Validation of best practices in your Kubernetes clusters </description>
+  <devel project="devel:kubic" package="polaris"/>
+  <url>https://github.com/FairwindsOps/polaris</url>
+</package>

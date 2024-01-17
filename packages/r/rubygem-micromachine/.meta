@@ -1,0 +1,6 @@
+<package name="rubygem-micromachine" project="openSUSE:Factory">
+  <title>rubygem-micromachine</title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-micromachine"/>
+  <url>https://rubygems.org/gems/micromachine</url>
+</package>

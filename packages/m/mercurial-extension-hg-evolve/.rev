@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bd2f965107f0bf103d359dff25445f5</srcmd5>
+    <version>10.5.1</version>
+    <time>1653244082</time>
+    <user>dimstar_suse</user>
+    <comment>Mercurial extension for history evolution.</comment>
+    <requestid>978546</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7638ab123dd4021024048ab084ef96fd</srcmd5>
+    <version>10.5.1</version>
+    <time>1655582765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983477</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b5cf75b28d6ef5d7624aa963f3c94ec3</srcmd5>
+    <version>10.5.2</version>
+    <time>1658244005</time>
+    <user>RBrownFactory</user>
+    <comment>Update to version 10.5.2 (forwarded request 990251 from develop7)</comment>
+    <requestid>990252</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>83dbd2a4e01441ac2a32a153277143f8</srcmd5>
+    <version>10.5.3</version>
+    <time>1671889918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.3
+  Changelog: https://foss.heptapod.net/mercurial/evolve/-/blob/10.5.3/CHANGELOG
+- Temporarily blacklist test-cmdserver.t (forwarded request 1045019 from develop7)</comment>
+    <requestid>1045020</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e92bc87538ce92ba01ee879dca6d400</srcmd5>
+    <version>11.0.0</version>
+    <time>1678902866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071835</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f5704b4c9091f88820564dd509c58145</srcmd5>
+    <version>11.0.1</version>
+    <time>1679933874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 11.0.1
+  * compatibility with Mercurial 6.4 (forwarded request 1074698 from develop7)</comment>
+    <requestid>1074699</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fb2feb7a9d76c2c797c28fa74271f49</srcmd5>
+    <version>11.0.2</version>
+    <time>1691502939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102867</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>29f15f155032838c2378e9b4429ab354</srcmd5>
+    <version>11.1.0</version>
+    <time>1698249785</time>
+    <user>anag+factory</user>
+    <comment>Update to version 11.1.0 (forwarded request 1120131 from develop7)</comment>
+    <requestid>1120132</requestid>
+  </revision>
+</revisionlist>

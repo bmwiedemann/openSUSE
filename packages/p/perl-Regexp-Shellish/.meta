@@ -1,0 +1,7 @@
+<package name="perl-Regexp-Shellish" project="openSUSE:Factory">
+  <title>Shell-like regular expressions</title>
+  <description>Provides shell-like regular expressions.  The wildcards provided are ?,
+* and **, where ** is like * but matches /.  See compile_shellish for
+details.</description>
+  <devel project="devel:languages:perl" package="perl-Regexp-Shellish"/>
+</package>

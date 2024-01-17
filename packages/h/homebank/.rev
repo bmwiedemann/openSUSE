@@ -1,0 +1,504 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>695d4a62f948eef4fd7c62e5e5d44a5e</srcmd5>
+    <version>4.4</version>
+    <time>1327403889</time>
+    <user>coolo</user>
+    <comment>New package: accounting app, pushed by community</comment>
+    <requestid>100902</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>695d4a62f948eef4fd7c62e5e5d44a5e</srcmd5>
+    <version>4.4</version>
+    <time>1340183436</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>695d4a62f948eef4fd7c62e5e5d44a5e</srcmd5>
+    <version>4.4</version>
+    <time>1359109048</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7dc1aab687a62329a02f0302d4524d2</srcmd5>
+    <version>4.5</version>
+    <time>1363104940</time>
+    <user>coolo</user>
+    <comment>push staged updates from GNOME:Apps</comment>
+    <requestid>158678</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d7dc1aab687a62329a02f0302d4524d2</srcmd5>
+    <version>4.5</version>
+    <time>1379662615</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>983c57d6e5aca29768539862eb085401</srcmd5>
+    <version>4.5.5</version>
+    <time>1391604185</time>
+    <user>coolo</user>
+    <comment>Update to ver 4.5.5 (forwarded request 220641 from Zaitor)</comment>
+    <requestid>220731</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5a25f3fee998a87d78245a29d66e4ae3</srcmd5>
+    <version>4.5.6</version>
+    <time>1393780966</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 4.5.6:
+  + This is a stable maintenance release.
+  + Bugs fixed: lp#1285326, lp#1285164, lp#1277622, lp#1276377,
+    lp#1275534, lp#1273848. (forwarded request 224355 from Zaitor)</comment>
+    <requestid>224361</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5a25f3fee998a87d78245a29d66e4ae3</srcmd5>
+    <version>4.5.6</version>
+    <time>1409301169</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>730c30cbc196a78248753f89eff823ac</srcmd5>
+    <version>4.6.3</version>
+    <time>1421787292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.3:
+  + New: enhanced categories completion (complete is done with
+    partial match on both categories and subcategories).
+  + Change: win32: upgraded to libofx 0.9.9.
+  + Bugfixes:
+    - lp#1351098 win32: OFX import freeze HomeBank.
+    - lp#1349160 layout are not persisted well on maximized
+      windows.</comment>
+    <requestid>282114</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ce2469505b56d79f5bcec4b43b51ede6</srcmd5>
+    <version>5.0.0</version>
+    <time>1423669464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285126</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6736749061ec13590e809e23ae2a9000</srcmd5>
+    <version>5.0.1</version>
+    <time>1428652366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294917</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06d6fe61d511f41a882ddc0b87cc1887</srcmd5>
+    <version>5.0.2</version>
+    <time>1431247608</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305771</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ec1738bd63e48088e8d0138764c0d43f</srcmd5>
+    <version>5.0.3</version>
+    <time>1434133865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311605</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>940b3e72ca160f8f3f9bcb998166b996</srcmd5>
+    <version>5.0.6</version>
+    <time>1452027338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352023</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d99c59c4aee4b4f907532bd278450936</srcmd5>
+    <version>5.0.9</version>
+    <time>1473548120</time>
+    <user>dimstar_suse</user>
+    <comment>Version update</comment>
+    <requestid>426297</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>014e35087d0302f5682d3fb377f193bd</srcmd5>
+    <version>5.1.4</version>
+    <time>1489759600</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479297</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e3fab47b09510e4686808fe218f3a7eb</srcmd5>
+    <version>5.1.5</version>
+    <time>1500275407</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, resub tweakedx2 (forwarded request 509414 from Zaitor)</comment>
+    <requestid>509992</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>576d74afdeb881c5cf52e18dc8651332</srcmd5>
+    <version>5.1.6</version>
+    <time>1506453365</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.1.6. Comment added. (forwarded request 528449 from luc14n0)</comment>
+    <requestid>528647</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2133b76e03c18f7903020654182718d6</srcmd5>
+    <version>5.1.7</version>
+    <time>1516634441</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.1.7. (forwarded request 567527 from luc14n0)</comment>
+    <requestid>568071</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7cf2d233c26e2e11aac208ca5524a514</srcmd5>
+    <version>5.1.8</version>
+    <time>1524238038</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.1.8. (forwarded request 596057 from luc14n0)</comment>
+    <requestid>596177</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fc8d36bbc471305d914ea4be9cafbb1e</srcmd5>
+    <version>5.2.1</version>
+    <time>1537787508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636742</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ca7cff1022f26db2697bab305bd4d74d</srcmd5>
+    <version>5.2.3</version>
+    <time>1553635944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687763</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f66d542060125c051f3accb53d1f9c00</srcmd5>
+    <version>5.2.6</version>
+    <time>1558948495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6:
+  + Changes:
+    - access to the show all transaction with the toolbar
+  + Bugfixes:
+    - #1829630 homebank: _cairo_arc_in_direction(): homebank killed by SIGABRT 
+    - #1829076 status &quot;no category&quot; filter not working
+    - #1829603 multi currencies problem in Trend Time Report
+  + Wishes:
+    - #1829007 prefill txn dialog with account if single
+    - #1828209 multiple edit could allow updating transaction amount
+    - #1809022 detail txn show only category amount split part
+    - #1792749 main window date 'other...' consistency (forwarded request 705570 from jubalh)</comment>
+    <requestid>705590</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b07e904ce74117bd8b757ccf65401e8c</srcmd5>
+    <version>5.2.6</version>
+    <time>1580511381</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768620 from dimstar)</comment>
+    <requestid>768683</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>78a47f9e162ebab34528b30c5734c2c8</srcmd5>
+    <version>5.3.2</version>
+    <time>1583949228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783718</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ff6dedb16dcee2158f6bd0be1764849d</srcmd5>
+    <version>5.4.3</version>
+    <time>1602073015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4.3:
+  * change: remove deprecated GtkAction/GtkUIManager for
+    rep_balance
+  * change: harmonization of dialog dimension with aspect
+    ratio
+  * change: split list column now follow same width rule
+    than other list
+  * change: updated the file statistics: added tags, currencies,
+    template, scheduled
+  * change: updated the welcome dialog: added icon, relayout, show
+    next time checkbox
+  * change: reworked and improved the new file assistant
+  * change: prefixed template created from the register
+  * wish  : #1861759 search &quot;Manage Accounts&quot;
+  * wish  : #1861432 merge tags
+  * wish  : #1860905 sort by amount in budget report
+  * wish  : #1851733 Reports/Vehicle Cost Report filtered dropdown
+  * wish  : #1851729 multi line scheduled post
+  * wish  : #1851718 popup menu on transaction list
+  * wish  : #1847907 add reconcile data when export as CSV
+  * wish  : #1829597 view split transaction detail from the register
+    (expand or other)
+  * wish  : #1810621 mass prefill assignment from the register
+  * bugfix: double click on scheduled list total line was faulty
+    reactive
+  * wish  : #1886299 export to csv/clipboard 1st column title
+    naming
+  * wish  : #1886181 default preference or remind for import
+    similar date gap
+  * wish  : #1880386 revert ease to combine expense/income in
+    splits dialog
+  * wish  : #1882081 add a gtk font size override Edit
+  * wish  : #1871383 increase exchange rate size
+  * wish  : #1869112 &quot;Export CSV&quot; feature for the &quot;Show all...&quot;
+    transactions view
+  * wish  : #1837550 export transaction from account as CSV with
+    every split line 
+  * bugfix: delete tag was partially working
+  * bugfix: your accounts list was not refreshed after new
+    file or import
+  * bugfix: #1870476 typo: Your
+  * bugfix: #1870433 default backup path folder not initialized
+    with wallet folder
+  * bugfix: #1869727 typo: assigment
+  * bugfix: #1868185 search not finding amounts with more than 3
+    digits dollar amount
+  * bugfix: #1867392 delete tooltip not translated in
+    scheduled/template dialog
+  * bugfix: #1865361 txn dialog template list switch sort order
+    on each save
+  * bugfix: #1865083 when moving a transaction a 'changed' icon
+    isn't displayed against the 'from' account
+  * bugfix: #1864176 'Restore backup' doesn't open default
+    backup folder
+  * bugfix: #1864089 missing icons for &quot;Case sensitive&quot; and
+    &quot;Regular expression in the assignment dialog
+  * bugfix: #1863484 scheduled 'stop after' cannot be removed
+  * bugfix: #1862769 manage schedule/template and quicksearch
+    behavior
+  * bugfix: #1862677 add and keep FROM register reset the date
+  * bugfix: #1862540 win: currency symbol detection fail leads
+    to crash
+  * bugfix: #1862436 win: incorrect display of russian ruble
+    currency symbol
+  * bugfix: #1858675 import/export budget mixup if subcategory
+    has same name (forwarded request 838785 from polslinux)</comment>
+    <requestid>839599</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e24b70ab87b13f69e8be7742829f1e90</srcmd5>
+    <version>5.5</version>
+    <time>1613774991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.5:
+  * new   : your accounts added cleared column
+  * new   : target xfer dialog add a match ratio column
+  * new   : added checking and savings account type
+  * new   : added tooltip on 'your accounts' to show last reconciled
+    date, minimun/maximum remaining
+  * new   : trend time, added average value and line into the graph
+  * change: your accounts renamed bank column to reconciled
+  * change: statistics report renamed the 'Balance' term with a more
+    accurate 'Total'
+  * change: statistics report added a compare Exp. &amp; Inc. checkbox
+    to clarify the interface
+  * wish  : #1911838 integrate fr_CA categories (included with wish)
+  * wish  : #1909694 duplicate auto assignment find
+  * wish  : #1909590 include one decimal digit in the fuel average
+  * wish  : #1900281 homebank Stats Rept - Subcategory heading
+  * wish  : #1898277 add a &quot;today&quot; button/calendar option when adding
+    new transactions
+  * wish  : #1897810 search or sort assignment rules
+  * wish  : #1897696 red text in budget report for negative results
+  * wish  : #1894425 Add switch inside app to change dark/light theme
+  * wish  : #1893854 shortcut for scheduled main window button
+  * wish  : #1892606 graph legend text not smaller than windows font
+  * wish  : #1891878 your accounts add remaining before overdraft
+  * wish  : #1890024 add a high limit for saving accounts
+  * wish  : #1887212 internal xfer detection day gap manual preference
+  * wish  : #1884376 payee multimatch for autocompletion
+  * wish  : #1882876 category/payee separate usage count for
+    transaction and overall usage
+  * wish: : #1882456 txn dialog to order popover category by type
+  * wish  : #1870390 statistic report - sum/total as last row
+  * wish  : #1866456 import option to invert expense/income for
+    credit card account
+  * wish  : #1857636 Allow showing only short/medium-term scheduled
+    operations in the main window's overview
+  * wish  : #1847622 txn status display to button and/or add icon
+  * wish  : #1846928 top spending max items configurable
+  * wish  : #1846822 your accounts column choose + add cleared
+  * wish  : #1581863 on main window, accounts have 'Reconciled date'
+  * wish  : #1565386 ability to set time interval for the Balance report
+  * wish  : # 300380 add direct print + pdf/png/ps export mostly
+    for report/graph
+  * bugfix: #1911805 the decimal digits of the Belarusian ruble is
+    indicated incorrectly
+  * bugfix: #1909323 windows: crash importing an OFX file with
+    info + add to info
+  * bugfix: #1903437 date column in transaction list can be empty
+  * bugfix: #1898408 split window does not provide 8 decimal places
+    for cryptocurrency
+  * bugfix: #1898294 time unit is not translated 'Manage
+    scheduled/template transactions' dialog
+  * bugfix: #1895478 ofx file marked as invalid if empty line at top
+- Remove obsolete (0%{?suse_version} &lt; 1330) stuff from spec file (forwarded request 871989 from Kieltux)</comment>
+    <requestid>873924</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>566e5f85d61fb477cc2013e377581850</srcmd5>
+    <version>5.5.1</version>
+    <time>1620240108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890664</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2952d264b6bceb57bfa545ce2ab9548d</srcmd5>
+    <version>5.5.2</version>
+    <time>1620653948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891888</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5beb7da668ff8997e7afd19a1af37300</srcmd5>
+    <version>5.5.3</version>
+    <time>1628751694</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911460</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>aec5c4be4976a1aef7d0cb3d99fa13b9</srcmd5>
+    <version>5.5.4</version>
+    <time>1642455252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946935</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f05aa7d019970f82479c7ce0ed07042e</srcmd5>
+    <version>5.5.5</version>
+    <time>1650996939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972816</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7adaf6fcfa1a0f6022203f7c6c1e7d4d</srcmd5>
+    <version>5.5.6</version>
+    <time>1657487730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988060</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>35e35314ff3587038c5270f0dbb7debe</srcmd5>
+    <version>5.5.7</version>
+    <time>1665184995</time>
+    <user>RBrownFactory</user>
+    <comment>Update to 5.5.7</comment>
+    <requestid>1008305</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>997cccdb7a35a4dd0c6331e03484d485</srcmd5>
+    <version>5.5.8</version>
+    <time>1666440800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030459</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>beabc18a313fdf1ac9f9fcd94ad93653</srcmd5>
+    <version>5.6</version>
+    <time>1670430918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040810</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ce4060f781be53e2d8f8fc16dd1de7af</srcmd5>
+    <version>5.6.1</version>
+    <time>1673359200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057218</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ece08e6b1d53fc76c322fc481637c055</srcmd5>
+    <version>5.6.2</version>
+    <time>1675873232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063775</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2761a8c3e361272390fa9ab7e9ea889c</srcmd5>
+    <version>5.6.3</version>
+    <time>1679416998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073345</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>84c8b980b6eaab635c62e9ea5664e6e1</srcmd5>
+    <version>5.6.4</version>
+    <time>1684754064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088162</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>16ede36874a9de8ad7bf0684883d36ed</srcmd5>
+    <version>5.6.5</version>
+    <time>1688052526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095868</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1aa47ca901b47c2ef32f1b82e55d2af0</srcmd5>
+    <version>5.6.6</version>
+    <time>1691594762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103040</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a4eb57191986bbd4f72f397d031c90d8</srcmd5>
+    <version>5.7</version>
+    <time>1694200533</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109603</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ccd06c975f34b9468c397e6d806d4dc6</srcmd5>
+    <version>5.7.1</version>
+    <time>1696964424</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116529</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0d04542445aef5a922eb0138e656e4cd</srcmd5>
+    <version>5.7.2</version>
+    <time>1699994544</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125724</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d5c22e4d9fc1d7318c049fbca2a40d9a</srcmd5>
+    <version>5.7.3</version>
+    <time>1704487470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137016</requestid>
+  </revision>
+</revisionlist>

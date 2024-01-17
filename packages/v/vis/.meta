@@ -1,0 +1,5 @@
+<package name="vis" project="openSUSE:Factory">
+  <title>vis</title>
+  <description>An editor combining the strengths of both vi(m) and sam</description>
+  <devel project="editors" package="vis"/>
+</package>

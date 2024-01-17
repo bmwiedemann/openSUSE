@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31e22ab609f5cff68ead4fb7eda132f3</srcmd5>
+    <version>2.3.2</version>
+    <time>1586368516</time>
+    <user>dimstar_suse</user>
+    <comment>Fork of synergy package that is not monetized.</comment>
+    <requestid>791937</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>81c5123c4579b8eaf583c83e07d725aa</srcmd5>
+    <version>2.3.2</version>
+    <time>1587162637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794796</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2aea1eae8a62eff370eb60689d41f1ac</srcmd5>
+    <version>2.3.3</version>
+    <time>1605644780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848984</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8f06745e2af40e2e088f8edb91289d93</srcmd5>
+    <version>2.4.0</version>
+    <time>1637136495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931877</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>234689696710cc55503d678bbc74e7c1</srcmd5>
+    <version>2.4.0</version>
+    <time>1680018622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074799</requestid>
+  </revision>
+</revisionlist>

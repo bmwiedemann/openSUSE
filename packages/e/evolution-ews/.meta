@@ -1,0 +1,5 @@
+<package name="evolution-ews" project="openSUSE:Factory">
+  <title>Evolution connector for Microsoft exchange 2007 or later</title>
+  <description>evolution-ews is an evolution plugin which allows you to connect evolution to MS Exchange 2007 and 2010 servers. This is based on publicly available Soap based Exchange Web services apis.</description>
+  <devel project="GNOME:Factory" package="evolution-ews"/>
+</package>

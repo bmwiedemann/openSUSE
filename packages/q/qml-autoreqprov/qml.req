@@ -1,0 +1,82 @@
+#!/bin/bash
+# SPDX-FileCopyrightText: 2020-2023 Fabian Vogt <fabian@ritter-vogt.de>
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+set -euo pipefail
+
+qtvers=
+ret=0
+
+while [ $# -gt 0 ]; do
+	case $1 in
+	--qtver)
+		qtvers=$2
+		shift
+		;;
+	*)
+		echo "Unknown argument $1" >&2
+		exit 1
+	esac
+	shift
+done
+
+# Guess Qt version
+qtver=
+[[ -n ${qtvers} ]] || qtvers="5 6 7"
+
+for ver in ${qtvers}; do
+	stat /usr/lib*/qt${ver} &>/dev/null && qtver="${qtver}${ver}"
+done
+
+# Zero or more than one version of Qt found. Abort.
+if [[ ${#qtver} -ne 1 ]]; then
+	echo "Failed to guess Qt version!" >&2
+	exit 1
+fi
+
+if [[ ${qtver} == 5 ]]; then
+	importscanner="qmlimportscanner-qt5"
+else
+	importscanner="$(qtpaths${qtver} --qt-query QT_HOST_LIBEXECS)/qmlimportscanner"
+fi
+
+command -v "${importscanner}" &>/dev/null || echo "Failed to locate qmlimportscanner"
+
+declare -A dependencies
+# foundDependency Module.Uri 42 69
+# In the dependencies array, it sets the version of qt5qmlimport(Module.Uri.42) to 69, if lower.
+foundDependency() {
+	uri="$1.$2"
+	if [ ${dependencies[$uri]:=0} -lt $3 ]; then
+		dependencies[$uri]=$3
+	fi
+}
+
+# TODO: Get exit status of qmlimportscanner
+while read import version; do
+	if [ -z "$version" ]; then
+		dependencies[$import]=0
+		continue
+	fi
+
+	maj="${version%.*}"
+	min="${version#*.}"
+
+	# For imports without minor version like "import org.kde.kirigami 2",
+	# the minor version is reported as 255. Treat that as 0 instead.
+	if [ "$min" = 255 ]; then
+		min=0
+	fi
+	foundDependency "$import" "$maj" "$min"
+done < <(grep -vE '/designer/.*\.qml' | xargs -r "$importscanner" -qmlFiles | jq -r '.[] | select(.type == "module") | .name + " " + .version')
+
+for export in "${!dependencies[@]}"; do
+	ver="${dependencies["$export"]}"
+	if [ "$ver" != 0 ]; then
+		echo "qt${qtver}qmlimport(${export}) >= ${ver}"
+	else
+		echo "qt${qtver}qmlimport(${export})"
+	fi
+done
+
+exit $ret

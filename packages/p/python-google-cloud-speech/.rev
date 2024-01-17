@@ -1,0 +1,228 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eca35d90819cd7a7f4ee8307b65d0d01</srcmd5>
+    <version>0.36.0</version>
+    <time>1540988511</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit reworded by jengelh</comment>
+    <requestid>645699</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47e77630345a82f030143640bb175278</srcmd5>
+    <version>0.36.0</version>
+    <time>1545224031</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659399</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eae8ddf5d442ac98bf32d74fc3dbabbc</srcmd5>
+    <version>0.36.3</version>
+    <time>1552901930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.36.3:
+  * Add 'RecognitionConfig.audio_channel_count' field via synth. (#7240)
+  * Protoc-generated serialization update. (#7106)
+  * Bump minimum api_core version for all GAPIC libs to 1.4.1. (#6391)
+  * Import iam.policy from google.api_core. (#6741)
+  * Pick up fixes to GAIPC generator. (#6508)
+  * Add result_end_time, docstring changes via synth. (#6462)
+  * Assorted synth fixups / cleanups (#6400)
+  * Fix client_info bug, update docstrings and timeouts. (#6421)
+  * Re-generate library using speech/synth.py (#5979)
+- Really execute tests</comment>
+    <requestid>685335</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a72de23448af981534985146fb21d3db</srcmd5>
+    <version>1.0.0</version>
+    <time>1553809712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Remove unused message exports. (#7275)
+  * Promote google-cloud-speech to GA (#7525)
+  * Speech: copy lintified proto files (via synth).
+  * Add clarifying comment to blacken nox target. (#7404)
+  * Copy proto files alongside protoc versions. Remove unneeded utf-8 header.</comment>
+    <requestid>688735</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e343065e6bc673d41c7bd593965b6220</srcmd5>
+    <version>1.2.0</version>
+    <time>1569588417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Add 'client_options' support (via synth). (#8534)
+  * Increase speech max received msg size to 256 MiB (#8338)
+  * Add MP3 to Audio Encoding and add boost to Speech Context (via synth). (#8109)
+  * Add Recognition Metadata (via synth). (#7961)</comment>
+    <requestid>730383</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1616a2cd96e75c0a70a381e9df7b879c</srcmd5>
+    <version>1.3.2</version>
+    <time>1586555590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792428</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a3f26d08b4525c94ece343f440dd3f0b</srcmd5>
+    <version>2.13.1</version>
+    <time>1649370499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.1
+  Bug Fixes
+  * **deps:** require google-api-core&gt;=1.31.5, &gt;=2.3.2 (#334)
+  * **deps:** require proto-plus&gt;=1.15.0 (b35bd09)
+- from version 2.13.0
+  Features
+  * add api key support (#313)
+  Bug Fixes
+  * **deps:** move libcst to extras (#322)
+  * resolve DuplicateCredentialArgs error when using credentials_file (#318)
+  Documentation
+  * add generated snippets (#321)
+- from version 2.12.0
+  Features
+  * add hint boost in SpeechContext (3fdef1f)
+  * add result_end_time to SpeechRecognitionResult (#291)
+  * add SpeechAdaptation configuration (3fdef1f)
+  * add spoken punctuation and spoken emojis (3fdef1f)
+  * add WEBM_OPUS codec (3fdef1f)
+  * add word confidence (3fdef1f)
+  * added alternative_language_codes to RecognitionConfig (#290)
+- from version 2.11.1
+  Bug Fixes
+  * **deps:** drop packaging dependency (43f25c0)
+  * **deps:** require google-api-core &gt;= 1.28.0 (43f25c0)
+  Documentation
+  * list oneofs in docstring (43f25c0)
+- from version 2.11.0
+  Features
+  * add support for python 3.10 (#274) (forwarded request 967509 from glaubitz)</comment>
+    <requestid>967510</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dc6eabd6b41c67f7e75b543dc04e33f3</srcmd5>
+    <version>2.14.1</version>
+    <time>1654869454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981536</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4b48554df7f01c847bdfd474b2f3e854</srcmd5>
+    <version>2.15.1</version>
+    <time>1663074604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003292</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f69a2802409050f961ae3852b6ac5059</srcmd5>
+    <version>2.16.2</version>
+    <time>1665754979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.16.2
+  * **deps:** Allow protobuf 3.19.5 (#456)
+  * **samples:** Add create_recognizer code sample (#450)
+  * **samples:** Add quickstart code sample for STT V2 (#451)
+- from version 2.16.1
+  * Remove SpeechHelpers from STT V2 client library (#452)
+- from version 2.16.0
+  * Added Speech-to-Text V2 API (#447)
+  * **deps:** Require protobuf &gt;= 3.20.2 (#446) (forwarded request 1010888 from glaubitz)</comment>
+    <requestid>1010890</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a3e7a598fd38afcc0fbcd2bbcad3dd04</srcmd5>
+    <version>2.19.0</version>
+    <time>1680209496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.19.0
+  * Add support for BatchRecognize (2e7ee2d)
+  * Fix formatting of request arg in docstring (#512)
+  * Fix the resource name format in comment for CreatePhraseSetRequest (2e7ee2d)
+- from version 2.18.0
+  * Enable &quot;rest&quot; transport in Python for services supporting numeric enums (a20d0f1)
+  * Voice Activity Detection - adding speech event time and speech event type (a20d0f1)
+- from version 2.17.3
+  * **v1:** Clarified boost usage (#491)
+- from version 2.17.2
+  * Clarify boost usage in Reference (#486)
+- from version 2.17.1
+  * Add context manager return types (ed80330)
+  * Add documentation for enums (ed80330)
+- from version 2.17.0
+  * Add support for python 3.11 (#478)
+  * Add typing to proto.Message based class attributes (c2a079c)
+  * Added new fields to facilitate debugging (c2a079c)
+  * **v1:** Added ABNF Grammars field in Speech Adaptation (ca28974)
+  * **v1p1beta1:** Added ABNF Grammars field in Speech Adaptation (ca28974)
+  * Add dict typing for client_options (c2a079c)
+  * **deps:** Require google-api-core &gt;=1.34.0, &gt;=2.11.0 (c2a079c)
+  * Drop usage of pkg_resources (c2a079c)
+  * Fix timeout default values (c2a079c)
+  * **samples:** Code samples for Speech-to-Text V2 (5c99f00)
+  * **samples:** Snippetgen handling of repeated enum field (c2a079c)
+  * **samples:** Snippetgen should call await on the operation coroutine
+    before calling result (c2a079c)
+  * **samples:** Update code samples for adaptation and VAD (#462)
+- Update BuildRequires and Requires from setup.py (forwarded request 1075495 from glaubitz)</comment>
+    <requestid>1075513</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f13b22c91fbbed46711bdb4bd72c4384</srcmd5>
+    <version>2.20.0</version>
+    <time>1687900679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.20.0
+  * **v2:** Add processing strategy to batch recognition requests (#514)
+- Refresh patches for new version
+  * python-google-cloud-speech-no-mock.patch (forwarded request 1095634 from glaubitz)</comment>
+    <requestid>1095649</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8ef2eeba19a66eecb51c2b5b5ef0d8c7</srcmd5>
+    <version>2.21.0</version>
+    <time>1689710935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099262</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6d3289c452aab412d2f085608836f4a4</srcmd5>
+    <version>2.22.0</version>
+    <time>1701902955</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.22.0
+  * Add transcript normalization + m4a audio format support (8536b20)
+  * Support MP3, TranscriptNormalization and SpeakerLabels in STT V1 API (#11967)
+  * Clarify alternatives for deprecated fields (8536b20)
+  * Deprecate `BatchRecognizeFileResult.transcript` in favor of
+    `inline_result.transcript` (8536b20)
+  * Deprecate `BatchRecognizeFileResult.uri` in favor of
+    `cloud_storage_result.native_format_uri` (8536b20)
+- Drop patches for issues fixed upstream
+  * python-google-cloud-speech-no-mock.patch
+- Skip tests that are currently failing
+  * test_list_phrase_set (forwarded request 1131330 from glaubitz)</comment>
+    <requestid>1131340</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3b84f85532dc0ae0287c794ea8fd7282</srcmd5>
+    <version>2.23.0</version>
+    <time>1702845140</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.23.0:
+  * Add support for python 3.12
+  * Introduce compatibility with native namespace packages
+  * Require proto-plus &gt;= 1.22.3 (e9655df)
+  * Use retry_async instead of retry in async client
+
+  * Add SpeakerDiarizationConfig, deprecate enable_speaker_diarization</comment>
+    <requestid>1133642</requestid>
+  </revision>
+</revisionlist>

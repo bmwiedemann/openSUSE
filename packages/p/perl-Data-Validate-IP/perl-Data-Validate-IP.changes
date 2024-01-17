@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Tue Nov 29 03:06:49 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.31
+   see /usr/share/doc/packages/perl-Data-Validate-IP/Changes
+
+  0.31  2022-11-28
+
+  - Fixed handling of the ::0/128 subnet. This is a special subnet(/address)
+    that is called the "unspecified address". It is not public or
+    routable. Reported by Dan Sherry. GH #13.
+
+-------------------------------------------------------------------
+Tue Mar 30 03:06:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-Data-Validate-IP/Changes
+
+  0.30  2021-03-29
+  - Added some more details to the security docs to include mentions of the
+    is_*_ip() functions too.
+  0.29  2021-03-29
+  - Fixed a typo in the POD.
+  0.28  2021-03-29
+  - Added docs about the security implications of using functions like
+    is_private_ip4() without _also_ calling is_ipv4() first. This was inspired
+    by a recent issue with the Node netmask package. See
+    https://sick.codes/universal-netmask-npm-package-used-by-270000-projects-vulnerable-to-octal-input-data-server-side-request-forgery-remote-file-inclusion-local-file-inclusion-and-more-cve-2021-28918/
+    for a write up.
+
+-------------------------------------------------------------------
+Fri Nov 18 06:19:31 UTC 2016 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Data-Validate-IP/Changes
+
+  0.27  2016-11-17
+  
+  - If your version of Socket.pm provides a sane inet_pton, most of the is_*_ip
+    subroutines will use a much faster implementation. is_private_ipv4 and
+    is_private_ipv4 are approximately 16x faster. is_private_ipv6 and
+    is_public_ipv6 are about 3-4x faster.  Implemented by Greg Oschwald. GitHub
+    PR #8.
+
+-------------------------------------------------------------------
+Wed Jun  1 09:27:52 UTC 2016 - coolo@suse.com
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-Data-Validate-IP/Changes
+
+  0.26  2016-05-31
+  
+  - Fixed issue where invalid IPv6 strings such as ::0000000 would be marked as
+    valid by is_ipv6() when using the faster inet_pton() code path (GitHub
+    #6). Fixed by Greg Oschwald. GitHub PR #7.
+
+-------------------------------------------------------------------
+Wed Feb  3 09:55:36 UTC 2016 - coolo@suse.com
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-Data-Validate-IP/Changes
+
+-------------------------------------------------------------------
+Mon Sep 15 09:35:25 UTC 2014 - mlin@suse.com
+
+- Update to 0.24
+  * A string with a null byte (\0) would be considered valid if the internal
+    implementation used inet_pton() to validate IP addresses. Fixed by Greg
+    Oschwald. GitHub PR #4. 
+
+-------------------------------------------------------------------
+Fri Jul 25 06:04:07 UTC 2014 - mlin@suse.com
+
+- Update to 0.23. Changes from 0.20:
+  * Fixed is_ipv6 to correctly fail for a string like ":abcd" on platforms
+    where inet_pton() isn't usable. Reported by Brian Bickerton. RT #93622.
+  * As a side effect of the above, the code to check IPv6 addresses when
+    inet_pton() isn't usable is about 7-8x times faster now.
+  * Fixed some small doc typo/formatting issues.
+  * The 198.51.100.0/24 and 203.0.113.0/24 networks were mistakenly put in
+    the unroutable list, rather than the testnet list. This has been
+    fixed. Note that if you've just been using is_public_ipv4 in your code,
+    there are no changes in the results.
+  * Added the 6to4 anycast network - 192.88.99.0/24. Addresses in this
+    network are not considered public and there is now a new
+    is_anycast_ipv4() subroutine exported.
+  * Added a number of missing reserved IPv6 networks. These are the
+    IPv4-mapped block (::ffff:0:0/96), the discard prefix (100::/64), TEREDO
+    (2001::/32), ORCHID (2001:10::/28), and documentation (2001:db8::/32)
+    IPv6 networks. There are now is_ipv4_mapped_ipv6(), is_discard_ipv6(),
+    is_teredo_ipv6(), is_orchid_ipv6(), and is_documentation_ipv6()
+    subs. Note that the TEREDO and ORCHID networks are both subnets of the
+    larger special network, and as such were already excluded by
+    is_public_ipv6(), though arguably the TEREDO addresses _should_ be
+    considered public.
+  * Rewrote most of the docs to greatly reduce the amount of text and to
+    improve the ToC on MetaCPAN and search.cpan.org.
+
+-------------------------------------------------------------------
+Mon Oct 28 07:11:46 UTC 2013 - mlin@suse.com
+
+- Update to 0.20
+  * Changelog see http://cpansearch.perl.org/src/DROLSKY/Data-Validate-IP-0.20/Changes
+- Update license according to http://search.cpan.org/~drolsky/Data-Validate-IP-0.20/
+
+-------------------------------------------------------------------
+Mon May 23 08:33:57 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.14)
+

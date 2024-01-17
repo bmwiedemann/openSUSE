@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>64d2e7d5f04bcccdf02deecf8340fe12</srcmd5>
+    <version>0.4.2</version>
+    <time>1508316630</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-django-nose
+
+See request 531880 : https://build.opensuse.org/request/show/531880</comment>
+    <requestid>533024</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7155d85d87b3e7d551eec4ec01b23aeb</srcmd5>
+    <version>0.4.2</version>
+    <time>1513245791</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github url to contain the LICENSE file</comment>
+    <requestid>556696</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f1e7f9defcaf85985134bd7b898d0406</srcmd5>
+    <version>0.4.2</version>
+    <time>1544726583</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654017</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>667b7f755cea00011b9736508c33258c</srcmd5>
+    <version>0.5.0</version>
+    <time>1552380835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Fixes for python3.6
+  * ipv6 parsing</comment>
+    <requestid>682847</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6bd62e317bdd5f5dbe4992213e7c0836</srcmd5>
+    <version>0.5.0</version>
+    <time>1552986173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686224</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8c75480cdc050b83f0f70bc43254545a</srcmd5>
+    <version>0.5.0</version>
+    <time>1605783683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849338</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f35d27965701f3fdb55cbe648e650713</srcmd5>
+    <version>1.2.0</version>
+    <time>1672394925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045761</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9070556a30ceb0f52fd9abe48a747037</srcmd5>
+    <version>1.3.0</version>
+    <time>1682522678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Better error on missing schema
+  * Add types
+  * 100% test coverage
+  * Avoid duplicating the uses_netloc and schemes lines
+  * isort 5.11.4 is broken
+  * Throw warning if DATABASE_URL isn't set
+  * Fixes #209 - Make conn_max_age optional[int] type</comment>
+    <requestid>1082829</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1ce969a62f968e8daceb3bdfcc70311d</srcmd5>
+    <version>1.3.0</version>
+    <time>1683630543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085628</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6ee70a1b61c9750d248e1caeda4b5bd1</srcmd5>
+    <version>2.1.0</version>
+    <time>1704829781</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.0:
+  * fix: parse options with numerical values as int
+- update to 2.0.0:
+  * setup.py: Fix `project_urls` parameter name
+  * Redo as a package to fix mypy issues
+
+- Update to 1.0.0</comment>
+    <requestid>1137636</requestid>
+  </revision>
+</revisionlist>

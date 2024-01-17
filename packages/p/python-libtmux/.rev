@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd7b2563a24649f258c703522401e172</srcmd5>
+    <version>0.22.1</version>
+    <time>1685632760</time>
+    <user>dimstar_suse</user>
+    <comment>new package python-libtmux: Python API / wrapper for tmux, required by ansible-navigator and ansible-sign</comment>
+    <requestid>1090139</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>473819e944edabb1206d2c4171ad569c</srcmd5>
+    <version>0.23.1</version>
+    <time>1694019586</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109236</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af7a515f295b81c524902081687d01ff</srcmd5>
+    <version>0.23.2</version>
+    <time>1694460122</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110213</requestid>
+  </revision>
+</revisionlist>

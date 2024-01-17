@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5acd17ef9a20cac271722e825843e616</srcmd5>
+    <version>2.6.20</version>
+    <time>1517606485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568003</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0567ef673f5b323dc527aeef92605cf</srcmd5>
+    <version>2.8.3</version>
+    <time>1532681726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623392</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>41f2f7a0bab2a535b2a8595d35208ff6</srcmd5>
+    <version>2.8.6</version>
+    <time>1543953277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653509</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e518848edc12912d23069214f0abeed4</srcmd5>
+    <version>2.8.6</version>
+    <time>1544539725</time>
+    <user>dimstar_suse</user>
+    <comment>Don't build against xerces-j2-xml-apis that is bound to go</comment>
+    <requestid>656907</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>efe9b39a937064e71f81a645e1acf9ab</srcmd5>
+    <version>2.8.12</version>
+    <time>1557142077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700917</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f9fc67c6ae848c994c6fa591d997ce1</srcmd5>
+    <version>2.8.13</version>
+    <time>1561641988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712162</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09c81f8504117aefcc2b802f04704efe</srcmd5>
+    <version>2.8.18</version>
+    <time>1571402206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>740235</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1853df4c08dc7d415519dcc6cf68369e</srcmd5>
+    <version>2.8.22</version>
+    <time>1578069505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760608</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fefc828f0e70de72a67590e6f19828a9</srcmd5>
+    <version>2.8.23</version>
+    <time>1589315620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802915</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf391b41c7e63762a6a5b1269ad69eb5</srcmd5>
+    <version>2.8.24</version>
+    <time>1594818190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820752</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>59e0e9fb83825fd8f1cdbd213e256cf2</srcmd5>
+    <version>2.10.0</version>
+    <time>1609253345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851674</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>885badd4d7b640571587cbd76f56bbc2</srcmd5>
+    <version>2.10.0</version>
+    <time>1616925406</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881579</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e03f59d7ed30b14c0f6f788c9a381329</srcmd5>
+    <version>2.10.3</version>
+    <time>1625338255</time>
+    <user>dimstar_suse</user>
+    <comment>banking software always requires recent version
+</comment>
+    <requestid>903841</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>542be47e89125be7858180bec099f455</srcmd5>
+    <version>2.10.4</version>
+    <time>1646494060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959597</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d0f411396a7f20e91ac8171622ca9429</srcmd5>
+    <version>2.10.4</version>
+    <time>1649713786</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1198345</comment>
+    <requestid>969266</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e8baf5d4e298be6a08cfbcda64cfb79b</srcmd5>
+    <version>2.10.4</version>
+    <time>1665034919</time>
+    <user>RBrownFactory</user>
+    <comment>fix factory build</comment>
+    <requestid>1008158</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bdae16f8d235a9f1ed2e61a95f628a20</srcmd5>
+    <version>2.10.8</version>
+    <time>1669041001</time>
+    <user>dimstar_suse</user>
+    <comment>2.10.8</comment>
+    <requestid>1037030</requestid>
+  </revision>
+</revisionlist>

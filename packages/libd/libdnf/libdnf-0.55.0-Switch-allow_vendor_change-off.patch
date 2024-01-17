@@ -1,0 +1,41 @@
+From 6a67b1a671f5778b014d8652321a193715cf952c Mon Sep 17 00:00:00 2001
+From: Neal Gompa <ngompa13@gmail.com>
+Date: Sun, 29 Nov 2020 18:46:15 -0500
+Subject: [PATCH] Switch allow_vendor_change off by default
+
+This is consistent with how SUSE distributions expect package
+management to work.
+---
+ libdnf/conf/ConfigMain.cpp | 2 +-
+ libdnf/dnf-sack.cpp        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libdnf/conf/ConfigMain.cpp b/libdnf/conf/ConfigMain.cpp
+index 1ffd3b33..c451015d 100644
+--- a/libdnf/conf/ConfigMain.cpp
++++ b/libdnf/conf/ConfigMain.cpp
+@@ -216,7 +216,7 @@ class ConfigMain::Impl {
+     OptionBool obsoletes{true};
+     OptionBool showdupesfromrepos{false};
+     OptionBool exit_on_lock{false};
+-    OptionBool allow_vendor_change{true};
++    OptionBool allow_vendor_change{false};
+     OptionSeconds metadata_timer_sync{60 * 60 * 3}; // 3 hours
+     OptionStringList disable_excludes{std::vector<std::string>{}};
+     OptionEnum<std::string> multilib_policy{"best", {"best", "all"}}; // :api
+diff --git a/libdnf/dnf-sack.cpp b/libdnf/dnf-sack.cpp
+index 9fd2c72d..e0b53b60 100644
+--- a/libdnf/dnf-sack.cpp
++++ b/libdnf/dnf-sack.cpp
+@@ -190,7 +190,7 @@ dnf_sack_init(DnfSack *sack)
+     priv->running_kernel_fn = running_kernel;
+     priv->considered_uptodate = TRUE;
+     priv->cmdline_repo = NULL;
+-    priv->allow_vendor_change = TRUE;
++    priv->allow_vendor_change = FALSE;
+     queue_init(&priv->installonly);
+ 
+     /* logging up after this*/
+-- 
+2.28.0
+

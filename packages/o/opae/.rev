@@ -1,0 +1,129 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f4682b71ceefdb608a5e1586bec095f6</srcmd5>
+    <version>0.9.0</version>
+    <time>1505238931</time>
+    <user>dimstar_suse</user>
+    <comment>Add OPAE package   (FATE#323188)</comment>
+    <requestid>523253</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f3be99cf73bb119d3a4dfa5f80c1f635</srcmd5>
+    <version>0.9.0</version>
+    <time>1505335058</time>
+    <user>dimstar_suse</user>
+    <comment>- Add opae-fix-cmake-paths.patch, opae-add-missing-lpthread.patch and</comment>
+    <requestid>524471</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>519d2276aaf7e12ada80130235454d52</srcmd5>
+    <version>0.13.0</version>
+    <time>1516804111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567761</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2df0974cec9212ec7a6e8d016972875f</srcmd5>
+    <version>0.13.0</version>
+    <time>1519308173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update opae-missing-shebang.patch to use /usr/bin/python3
+  instead of /usr/bin/python (bsc#1082133).</comment>
+    <requestid>578907</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f3b1be9e5aff2be5712f5f7446146612</srcmd5>
+    <version>0.13.0</version>
+    <time>1530866935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621152</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb4e2bf36700574274a62e018045c152</srcmd5>
+    <version>1.3.2</version>
+    <time>1571401997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2-1
+  - See RELEASE_NOTES for a complete list of changes
+- Drop patches fixed upstream:
+  - opae-fix-gcc-warning-on-exception.patch
+- Refresh patch against new sources:
+  - opae-missing-shebang.patch
+  - opae-add-missing-lpthread.patch
+  - opae-fix-python-packaging.patch 
+- Add patch to fix compilation against hwloc &gt;= 2.0
+  - opae-fix-support-for-hwloc-2.patch
+
+- Update to 1.3.0-2
+  - See RELEASE_NOTES for a complete list of changes
+- Drop patches fixed upstream:
+  - opae-fix-cmake-paths.patch
+- Refresh patch against new sources:
+  - opae-missing-shebang.patch
+  - opae-add-missing-lpthread.patch
+- Add new patches
+  - opae-fix-gcc-warning-on-exception.patch to workaround a GCC8 error
+    on exception handling
+  - opae-fix-python-packaging.patch to fix the bad usage of string in
+    python ByteIO.write</comment>
+    <requestid>736831</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>37f014da29d753b98719f159e80ebf00</srcmd5>
+    <version>1.4.1</version>
+    <time>1587467182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795472</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cc37d3adce173e77a0e64a2bcc72d668</srcmd5>
+    <version>2.0.0</version>
+    <time>1619552119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888754</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3a91f918dcf7ec9f2a3b290a15e2739d</srcmd5>
+    <version>2.0.0</version>
+    <time>1624887224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902744</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f9c2f08c3c48d7a1fbc9877741c55fd7</srcmd5>
+    <version>2.0.0</version>
+    <time>1625868022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905177</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>91a32de2632b68b886191c0a2efc5fa5</srcmd5>
+    <version>2.0.0</version>
+    <time>1631310084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917903</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>9a93b1668768cfe9a1a87c939d707748</srcmd5>
+    <version>2.0.0</version>
+    <time>1656053121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984706</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>d2ce18523aa9c940dc36a950ad47045b</srcmd5>
+    <version>2.0.0</version>
+    <time>1680125280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075166</requestid>
+  </revision>
+</revisionlist>

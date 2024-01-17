@@ -1,0 +1,8 @@
+<package name="pcmanfm" project="openSUSE:Factory">
+  <title>The next generation LXDE file manager</title>
+  <description>An extremly fast, lightweight, yet feature-rich
+file manager with tabbed browsing. It's also the
+LXDE default file manager. This is a complete
+rewrite of the old pcmanfm 0.5.x series</description>
+  <devel project="X11:lxde" package="pcmanfm"/>
+</package>

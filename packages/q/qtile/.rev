@@ -1,0 +1,306 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d02e4d05f208a4d9a39ab8d36b8f1e1</srcmd5>
+    <version>0.10.7</version>
+    <time>1517932045</time>
+    <user>dimstar_suse</user>
+    <comment>Update description in spec file</comment>
+    <requestid>572403</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de34fcefffed6d05f226a7b8b15297b9</srcmd5>
+    <version>0.10.7</version>
+    <time>1518443162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add qtile to update-alternatives</comment>
+    <requestid>575585</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>291935e411e0ea83a6e0c24c61c3ce95</srcmd5>
+    <version>0.10.7</version>
+    <time>1519396267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579208</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>da0597b28ea1e09e9b7889407763f75b</srcmd5>
+    <version>0.11.1+20180305.e741d3fe</version>
+    <time>1521052698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585478</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78d6a2ad0e055cea46810bb4796ad3d3</srcmd5>
+    <version>0.11.1+20180406.68ddde55</version>
+    <time>1523447912</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594769</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1640c57a0461f7ab6ef4c5584b58e5fd</srcmd5>
+    <version>0.11.1+20180513.39ced15a</version>
+    <time>1526488970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609036</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e5bd5247eeba92cf6db76528775ab793</srcmd5>
+    <version>0.12.0</version>
+    <time>1533045542</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>625973</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b573eec8b5a8bed5c33895e5f15fa717</srcmd5>
+    <version>0.13.0</version>
+    <time>1557916446</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename rpmlintrc to qtile-rpmlintrc 
+
+- Update to version 0.13.0:
+  * Deprecation
+    wmii layout is deprecated in terms of columns layout, which has the
+    same behavior with different defaults, see the wmii definition for
+    more details
+  * Features
+    - add svg handling for images
+    - allow addgroup command to set the layout
+    - add command to get current log level
+    - allow groupbox to hide unused groups
+    - add caps lock indicator widget
+    - add custom_command to check_update widget
+  * Bugfixes
+     - better shutdown handling
+     - fix clientlist current client tracking
+     - fix typo in up command on ratiotile layout
+     - various fixes to check_update widget
+     - fix 0 case for resize screen
+- Add rpmlintrc to ignore warning related to dqtile-cmd
+- Add python3-cairocffi-pixbuf dependency 
+- Increase python3-cairocffi dependency version</comment>
+    <requestid>702846</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4be0687de9f69d9ca467063a06b68080</srcmd5>
+    <version>0.14.2</version>
+    <time>1561970688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712733</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ca68559cec2fa41a347eb491942edd10</srcmd5>
+    <version>0.14.2</version>
+    <time>1565695414</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase required cairocffi version</comment>
+    <requestid>722651</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d34a7d14440b86e8762a9116cad56da7</srcmd5>
+    <version>0.15.1</version>
+    <time>1587467507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.1:
+  * Bugfixes
+    - Revert core: properly shutdown event loop (#1615)(#1609)
+- Update to version 0.15.0:
+  * Config breakage
+    - removed the mpd widget, which depended on python-mpd
+  * Bugfixes
+    - Fix #1298: fall back to get int items for digit string in qtile_cmd.
+    - Fix qtile-cmd failure, #1410.
+    - Fix #755: use a valid timestamp for WM_TAKE_FOCUS events.
+    - Issue #1510: Added missing kwargs argument in EzKey class.
+    - Toggle group if setting a group twice. (#1491)
+    - Added non-graph CPU widget (feature req #1439)
+    - Changes to make the dev.sh script more generic. (#1471)
+    - Show current layout and prepare all layouts in the default config. (#1469)
+    - Fix #1394: handle empty HOME completion in test_bar.py::test_completion.
+    - Center-align groupboxes by default. (#1452)
+    - Reorganize and complete hacking.rst (#1442)
+    - Update gmail_checker.py (#1448)
+    - docs: Fix parameter type of Screen's top/left/right/bottom (#1438)
+    - docs: Fix missing psutil mock (#1432)
+    - Remove pythonwifi related code in Wlan widget (#1429)
+    - Fix command to build cffi module (#1427)
+    - Use lazy.lazy in default config instead of command.lazy (deprecated) (#1428)
+    - Use new style format in pomodoro widget (#1426)
+    - docs: Add missing requirement for Wlan widget (#1400)
+    - Use `$PYTHON` instead of `PYTHON`. (#1397)
+    - Make it explicit to install cairocffi after xcffib. (#1406)
+    - Fix #1407 (missing &quot;-o screen&quot; in &quot;qtile-cmd&quot; output)
+    - Small bug fix (#1366)
+    - Make the Spacer widget accept a background color (#1365)
+    - Fix (#1361) - Battery widget debug info
+    - Execute the volume widget commands in a shell (#1359)
+  * Features
+    - Add pyxdg widget requirement in LaunchBar docstring
+    - Add PyCharm debugging instructions in hacking.rst
+    - Add missing instruction to build docs in hacking.rst
+    - Add more docs and qtile-session file
+    - Add notes about graphviz and dev.sh in hacking.rst
+    - Add groupbox feature: Font colour when box highlighting
+    - add an issue template
+    - add callback functions to textbox widget
+    - Add test_qtile_cmd.py file.
+    - Add a test case for int indexed items in InteractiveCommandClient.
+    - add pulseaudio C api based volume control widget
+    - add setting wallpapers per Screen, with x11 backend
+    - add display option to Net widget and introduce f-strings
+    - Add Python script to automate screenshots
+    - Add the license header to the xcore file
+    - Add ability to use bits as unit in net widget
+    - Add a quick_exit widget to __init__.py to pass the static checker(mypy).
+    - Add a quick exit widget and add this widget to default configuration that is loaded when configuratin error occured.
+    - Add non-graph CPU widget (feature req #1439)
+    - Add support for checking updates via yay on Arch
+    - Add an error handling when backlight widget failed to read a status file.
+    - Add steps about how to run qtile within a virtualenv.
+    - Add option &quot;options&quot; to keyboardLayout widget
+    - Add gkrellm to run all tests
+    - Add note about psutil
+    - Add line length to pylintrc
+    - Add type annotations to the command object
+    - Add a command object that operates against a running command object
+    - Add a command graph object for IPC
+    - Add functions to the command interface to enable lazy evaluation
+    - Add an interface for eagerly evaluating command graph elements
+    - Add client to dispatch into command graph
+    - Add tests to the command graph
+</comment>
+    <requestid>795578</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4c6904fe4f6688ff568ba92938cc3f5c</srcmd5>
+    <version>0.15.1</version>
+    <time>1588538918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799882</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f9dffba1712f3f021876da71738598f</srcmd5>
+    <version>0.16.1</version>
+    <time>1603979514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844505</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>95a0f709909409475ca337c4cffe14d6</srcmd5>
+    <version>0.17.0</version>
+    <time>1622536654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895748</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e328c17a4665aafc77842b905df9d77c</srcmd5>
+    <version>0.18.1</version>
+    <time>1633365634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922976</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>23faafac0e67e8ddafa70bacf1f1a3f9</srcmd5>
+    <version>0.18.1</version>
+    <time>1642548919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947190</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b364f54c793fa79088f17deaab221d52</srcmd5>
+    <version>0.21.0</version>
+    <time>1661159106</time>
+    <user>dimstar_suse</user>
+    <comment>- Added _constraints file as tests need more memory
+- Disabled many of the new tests due to failures reported upstream
+- Update to v0.21.0</comment>
+    <requestid>998572</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c857ca0e25efb8944cd409bd71ec2eb6</srcmd5>
+    <version>0.22.1</version>
+    <time>1665754946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.22.1</comment>
+    <requestid>1010573</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>81617556d275f1c72186bbfe80f97e0e</srcmd5>
+    <version>0.22.1</version>
+    <time>1666102009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029696</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>c0f4bb297490bc9d7d0a00c7de9276f5</srcmd5>
+    <version>0.22.1</version>
+    <time>1676990179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066890</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>7a3b1f40d4e497f17239584b51adefcd</srcmd5>
+    <version>0.22.1</version>
+    <time>1687980799</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095707</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2d15d67594f6be9df35f81037ee0d47f</srcmd5>
+    <version>0.23.0</version>
+    <time>1698604886</time>
+    <user>anag+factory</user>
+    <comment>- Cleanup specfile
+- Fix wayland backend build
+- Disabled tests for now. Undeterministic and random fails. Might be VM related.
+- Requires pycairo &gt;= 1.25.1 to prevent crashes
+- update _constraints to avoid oom:
+  * physical memory to 24G
+- Requires python xcffib &gt;= 1.4.0
+- Requires now python-cairocffi &gt;=1.6.0
+- Change recommends from pulseaudio to pipewire and pipewire-pulseaudio
+- Qtile requires python-pywayland and python-pywlroots for it to run on wayland backend
+- Disabled tests again since it requires https://github.com/leifgehrmann/pangocffi which
+  openSUSE does not have yet.
+- Update to version 0.23.0
+    !!! Dependency Changes !!!
+      - xcffib must be upgraded to &gt;= 1.4.0
+      - cairocffi must be upgraded to &gt;= 1.6.0
+      - New optional dependency `pulsectl-asyncio` required for `PulseVolume` widget
+    !!! Notice for packagers - wlroots (optional dependency) bump !!!</comment>
+    <requestid>1120985</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>58bc9731fe2eb92ca47ed73afe1b834f</srcmd5>
+    <version>0.23.0</version>
+    <time>1700162843</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126666</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>2398331a877c4b06cb233dba1f79edce</srcmd5>
+    <version>0.23.0</version>
+    <time>1702845221</time>
+    <user>anag+factory</user>
+    <comment>- Reenable tests. 
+- Added python-importlib-resources and python-importlib-metadata as part of tests.
+- Update required and recommended dependencies.
+- Update alternatives is done wrong in postuninstall. fixed.
+</comment>
+    <requestid>1133752</requestid>
+  </revision>
+</revisionlist>

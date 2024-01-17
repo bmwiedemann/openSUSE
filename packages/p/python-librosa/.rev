@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ffb43bf0e84d0444bc0440ff4643f7c2</srcmd5>
+    <version>0.6.2</version>
+    <time>1541511213</time>
+    <user>dimstar_suse</user>
+    <comment>Python module for audio and music processing. Also used by some other python audio packages.</comment>
+    <requestid>646135</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>987d09b91e59b49c66837197fac17029</srcmd5>
+    <version>0.6.3</version>
+    <time>1554114896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684459</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>832297d9d68c331348c3b8896e9f6586</srcmd5>
+    <version>0.7.0</version>
+    <time>1564137816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718645</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c6f3ea9d74b710041367d8a0295f372</srcmd5>
+    <version>0.7.1</version>
+    <time>1574337576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750042</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9e986e34932c3552e4a150a9bf4287e1</srcmd5>
+    <version>0.7.1</version>
+    <time>1575727740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754760</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f9f9835a9b191ece52ae7a2ca0c88869</srcmd5>
+    <version>0.7.2</version>
+    <time>1580724801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768829</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4b47229c3463008f9f1bfd87f09360e0</srcmd5>
+    <version>0.8.0</version>
+    <time>1610123970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861731</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1dcd0e6db4afe939338e92760373bd29</srcmd5>
+    <version>0.8.0</version>
+    <time>1617130554</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>867960</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>330af0ad592c0aa14661f40eb7ab129b</srcmd5>
+    <version>0.9.2</version>
+    <time>1664210884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2:
+  * Fixed librosa.show_versions to match package dependencies.
+  * Fixed a bug in librosa.effects.split when applied to multichannel data.
+  * Removed test data from main repository and reduced the git attic.
+  * Accept pre-constructed audioread objects in librosa.load.
+  * Accelerate librosa.magphase.
+  * Nearly full support for multi-channel processing.
+  * Option to disable unicode characters in display functions.
+  * Significantly expanded the library of example audio clips.
+  * The default padding mode for most functions (including STFT) is now
+    zero-padding.
+  * librosa.load and librosa.stream can now operate directly on open
+    soundfile objects.
+  * librosa.display.specshow now uses centered coordinate grids.
+  * librosa.iirt now exposes API control over resampling modes.
+  * Maximum frequency is now correctly inferred as Nyquist in onset strength
+    calculation.
+  * librosa.effects.deemphasis no longer modifies the input signal in-place.
+  * librosa.util.frame now correctly works for arbitrary memory layouts and
+    numbers of axes.
+  * Corrected a normalization error in inverse CQT.
+  * ibrosa.cqt now supports arbitrary hop lengths.
+  * Added a run-time check for minimally supported matplotlib versions.
+  * Enhanced continuous integration testing for oldest and newest environments.
+  * librosa.effects.deemphasis, inverse operation of
+    librosa.effects.preemphasis.
+  * librosa.display.waveshow, adaptively visualize waveforms by amplitude
+    envelope when zoomed out, or raw sample values when zoomed in.
+- Add patch remove-contextlib2.patch:
+  * No longer require contextlib2.</comment>
+    <requestid>1005935</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e7713e2a4c1bc8050eb53c21d2403564</srcmd5>
+    <version>0.9.2</version>
+    <time>1666361994</time>
+    <user>dimstar_suse</user>
+    <comment>- Add update-tests-for-numpy-123.patch gh#librosa/librosa#1581
+- Add remove-hanning-from-tests.patch gh#librosa/librosa#1548
+</comment>
+    <requestid>1030302</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e4e75fa20f19c8eb54e7b045527a96aa</srcmd5>
+    <version>0.9.2</version>
+    <time>1674997862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061808</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>73db5b4bead4032eeb6bde736a57477e</srcmd5>
+    <version>0.9.2</version>
+    <time>1680722904</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python311, python-numba is not available for python 3.11 yet.
+</comment>
+    <requestid>1077186</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>8151e1765236fb72f771f3927f49fce1</srcmd5>
+    <version>0.9.2</version>
+    <time>1685476930</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable python311 build (numba now available)</comment>
+    <requestid>1089583</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90140add8cbb6d979f811ec74dc26011</srcmd5>
+    <version>0.10.1</version>
+    <time>1693235525</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105317</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6cdfddf5250971d524cb581bc1cd3515</srcmd5>
+    <version>0.10.1</version>
+    <time>1695665008</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113320</requestid>
+  </revision>
+</revisionlist>

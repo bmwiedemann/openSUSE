@@ -1,0 +1,8 @@
+<package name="python-pyannotate" project="openSUSE:Factory">
+  <title>PyAnnotate: Auto-generate PEP-484 annotations</title>
+  <description>Insert annotations into your source code based on call arguments and return types observed at runtime.
+
+</description>
+  <devel project="devel:languages:python" package="python-pyannotate"/>
+  <url>https://github.com/dropbox/pyannotate</url>
+</package>

@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Tue Oct  3 07:54:01 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.1
+  * fix a qt warning triggered on wayland 
+
+-------------------------------------------------------------------
+Sun Aug 20 06:01:42 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * add program to display actual Qt im module information
+  * implement new page button alignment option
+  * change the default behavior of virtual keyboard visibility
+  * add a funtion to get the full im group information
+  * add new layout field to FullInputMehtodGroupInfo
+  * add support of virtualkeyboard show and hide
+  * add new inputContextCreationFailed signal
+  * add old fcitx4 dbus service support but always prefer fcitx5
+
+-------------------------------------------------------------------
+Mon May 22 09:52:06 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.17
+  * fix an issue related to fractional scale with Qt 6.5 in the client
+side input panel.
+  * fix committing preedit when focus out
+  * workaround QTBUG-108522 in QCompleter
+
+-------------------------------------------------------------------
+Sun Nov 20 09:27:43 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- Update to 5.0.16
+  * remove fcitx5-qt-5.9.patch
+
+-------------------------------------------------------------------
+Fri Nov 18 05:06:58 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- Set a better obsolete's version
+
+-------------------------------------------------------------------
+Tue Sep 20 13:16:48 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.15
+  * remove unused include
+
+-------------------------------------------------------------------
+Tue Jul  5 11:29:17 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.14
+  * Avoid to display size 0 input panel window
+- Install org.fcitx.fcitx5-qt5-gui-wrapper.desktop to applications
+  folder
+
+-------------------------------------------------------------------
+Sat Mar 12 08:44:23 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.11
+  * Use highlight color from fcitx theme in client side input
+    window, instead of Qt.
+
+-------------------------------------------------------------------
+Sat Feb 12 15:11:44 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.10
+  * Fix paging button not clickable under vertical layout
+
+-------------------------------------------------------------------
+Tue Feb  8 14:12:41 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- drop baselibs.conf, no consumer yet
+
+-------------------------------------------------------------------
+Tue Feb  1 14:03:45 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- fix baselibs.conf
+
+-------------------------------------------------------------------
+Tue Jan 25 13:37:07 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update to version 5.0.9
+  * Bug fixing related to preedit
+
+-------------------------------------------------------------------
+Sat Jan 15 05:10:20 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- fix requirements
+
+-------------------------------------------------------------------
+Wed Dec 15 04:12:55 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update to version 5.0.8
+  * Fix hotkey like shift+space is not accepted by keysequence widget.
+
+-------------------------------------------------------------------
+Sat Nov  6 17:39:24 UTC 2021 - J <hj@powersnail.com>
+
+- update to version 5.0.7 
+  * Fix hotkey like shift+space not accepted 
+
+-------------------------------------------------------------------
+Thu Oct 28 16:31:32 CEST 2021 - tiwai@suse.de
+
+- Fix builds for Leap 15.3 and 15.4, use some macros for conditonal
+  builds with Qt4 and Qt6
+
+-------------------------------------------------------------------
+Wed May  5 07:09:52 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.6
+  * Fix potential reforwarding key issue for auto repeat 
+- changes in version 5.0.5
+  * add support for client side input window on wayland 
+    to get the correct positioning. Due to some limitation
+    on wayland, you may want to disable the popup fading
+    effect under kwin.
+- changes in version 5.0.4
+  * Use fixed line light in client side ui
+  * Add support for Qt6
+- drop fcitx5-qt-unique_ptr.patch, upstreamed
+- drop fcitx5-qt-SkipEmptyParts.patch, upstreamed
+
+-------------------------------------------------------------------
+Tue Mar 16 01:29:58 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+  * add support for client side input window on wayland
+    to get the correct positioning. Due to some limitation
+    on wayland, you may want to disable the popup fading
+    effect under kwin.
+
+-------------------------------------------------------------------
+Sat Jan 30 11:59:03 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+  * Add support for Qt6
+
+-------------------------------------------------------------------
+Sun Dec  6 05:23:53 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Sun Nov  8 03:57:14 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update to version 5.0.0
+
+-------------------------------------------------------------------
+Thu Sep  3 07:23:38 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update to version 4.99.0+git20200827.73bfd76
+
+-------------------------------------------------------------------
+Tue Mar  3 21:26:45 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- update to version git20200117.2e38c95
+  * clarify license coverage for other files
+  * make plugin dir cached
+  * ensure the dbus focus in order in qt4
+  * avoid focus in im disabled object
+
+-------------------------------------------------------------------
+Mon Feb  3 03:57:30 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- conditionally build -qt5 flavor
+
+-------------------------------------------------------------------
+Sun Sep 16 06:47:09 UTC 2018 - i@marguerite.su
+
+- initial package
+

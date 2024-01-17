@@ -1,0 +1,152 @@
+From: Martin Nowack <m.nowack@imperial.ac.uk>
+Date: Mon, 30 Oct 2023 14:52:37 +0000
+Subject: Use APIs of newer LLVM versions instead of unsupported ones
+Patch-mainline: no
+References: llvm16
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ include/klee/Expr/Expr.h   |  8 +++++++-
+ lib/Core/Executor.cpp      | 18 ++++++++++++++++++
+ lib/Module/LowerSwitch.cpp | 14 ++++++--------
+ lib/Module/RaiseAsm.cpp    |  6 ++++++
+ 4 files changed, 37 insertions(+), 9 deletions(-)
+
+diff --git a/include/klee/Expr/Expr.h b/include/klee/Expr/Expr.h
+index 15075eb8..eb936c3d 100644
+--- a/include/klee/Expr/Expr.h
++++ b/include/klee/Expr/Expr.h
+@@ -1117,7 +1117,13 @@ public:
+   }
+ 
+   /// isAllOnes - Is this constant all ones.
+-  bool isAllOnes() const { return getAPValue().isAllOnesValue(); }
++  bool isAllOnes() const {
++#if LLVM_VERSION_CODE <= LLVM_VERSION(13, 0)
++    return getAPValue().isAllOnesValue();
++#else
++    return getAPValue().isAllOnes();
++#endif
++  }
+ 
+   /* Constant Operations */
+ 
+diff --git a/lib/Core/Executor.cpp b/lib/Core/Executor.cpp
+index 58c15141..792b0c76 100644
+--- a/lib/Core/Executor.cpp
++++ b/lib/Core/Executor.cpp
+@@ -2985,7 +2985,11 @@ void Executor::executeInstruction(ExecutionState &state, KInstruction *ki) {
+     llvm::APFloat Arg(*fpWidthToSemantics(arg->getWidth()), arg->getAPValue());
+     uint64_t value = 0;
+     bool isExact = true;
++#if LLVM_VERSION_CODE >= LLVM_VERSION(16, 0)
++    auto valueRef = llvm::MutableArrayRef(value);
++#else
+     auto valueRef = makeMutableArrayRef(value);
++#endif
+     Arg.convertToInteger(valueRef, resultType, false,
+                          llvm::APFloat::rmTowardZero, &isExact);
+     bindLocal(ki, state, ConstantExpr::alloc(value, resultType));
+@@ -3003,7 +3007,11 @@ void Executor::executeInstruction(ExecutionState &state, KInstruction *ki) {
+ 
+     uint64_t value = 0;
+     bool isExact = true;
++#if LLVM_VERSION_CODE >= LLVM_VERSION(16, 0)
++    auto valueRef = llvm::MutableArrayRef(value);
++#else
+     auto valueRef = makeMutableArrayRef(value);
++#endif
+     Arg.convertToInteger(valueRef, resultType, true,
+                          llvm::APFloat::rmTowardZero, &isExact);
+     bindLocal(ki, state, ConstantExpr::alloc(value, resultType));
+@@ -4846,7 +4854,12 @@ size_t Executor::getAllocationAlignment(const llvm::Value *allocSite) const {
+       type = GO->getType();
+     }
+   } else if (const AllocaInst *AI = dyn_cast<AllocaInst>(allocSite)) {
++#if LLVM_VERSION_CODE <= LLVM_VERSION(10, 0)
+     alignment = AI->getAlignment();
++
++#else
++    alignment = AI->getAlign().value();
++#endif
+     type = AI->getAllocatedType();
+   } else if (isa<InvokeInst>(allocSite) || isa<CallInst>(allocSite)) {
+     // FIXME: Model the semantics of the call to use the right alignment
+@@ -4869,7 +4882,12 @@ size_t Executor::getAllocationAlignment(const llvm::Value *allocSite) const {
+     assert(type != NULL);
+     // No specified alignment. Get the alignment for the type.
+     if (type->isSized()) {
++#if LLVM_VERSION_CODE >= LLVM_VERSION(16, 0)
++      alignment = kmodule->targetData->getPrefTypeAlign(type).value();
++#else
+       alignment = kmodule->targetData->getPrefTypeAlignment(type);
++#endif
++
+     } else {
+       klee_warning_once(allocSite, "Cannot determine memory alignment for "
+                                    "\"%s\". Using alignment of %zu.",
+diff --git a/lib/Module/LowerSwitch.cpp b/lib/Module/LowerSwitch.cpp
+index 84b04b24..f8473156 100644
+--- a/lib/Module/LowerSwitch.cpp
++++ b/lib/Module/LowerSwitch.cpp
+@@ -70,9 +70,8 @@ void LowerSwitchPass::switchConvert(CaseItr begin, CaseItr end,
+ 
+   // iterate through all the cases, creating a new BasicBlock for each
+   for (CaseItr it = begin; it < end; ++it) {
+-    BasicBlock *newBlock = BasicBlock::Create(F->getContext(), "NodeBlock");
+-    Function::iterator FI = origBlock->getIterator();
+-    F->getBasicBlockList().insert(++FI, newBlock);
++    BasicBlock *newBlock = BasicBlock::Create(F->getContext(), "NodeBlock", F);
++
+     Builder.SetInsertPoint(newBlock);
+     auto cmpValue = Builder.CreateICmpEQ(value, it->value, "case.cmp");
+     Builder.CreateCondBr(cmpValue, it->block, curHead);
+@@ -106,10 +105,10 @@ void LowerSwitchPass::processSwitchInst(SwitchInst *SI) {
+ 
+   // Create a new, empty default block so that the new hierarchy of
+   // if-then statements go to this and the PHI nodes are happy.
+-  BasicBlock* newDefault = BasicBlock::Create(F->getContext(), "newDefault");
++  BasicBlock *newDefault =
++      BasicBlock::Create(F->getContext(), "newDefault", F, defaultBlock);
+   llvm::IRBuilder<> Builder(newDefault);
+ 
+-  F->getBasicBlockList().insert(defaultBlock->getIterator(), newDefault);
+   Builder.CreateBr(defaultBlock);
+ 
+   // If there is an entry in any PHI nodes for the default edge, make sure
+@@ -132,11 +131,10 @@ void LowerSwitchPass::processSwitchInst(SwitchInst *SI) {
+   //   the if comparisons will happen in the same order
+   //   as the cases appear in the switch
+   std::reverse(cases.begin(), cases.end());
+-  
+-  switchConvert(cases.begin(), cases.end(), switchValue, origBlock, newDefault);
+ 
++  switchConvert(cases.begin(), cases.end(), switchValue, origBlock, newDefault);
+   // We are now done with the switch instruction, so delete it
+-  origBlock->getInstList().erase(SI);
++  SI->eraseFromParent();
+ }
+ 
+ }
+diff --git a/lib/Module/RaiseAsm.cpp b/lib/Module/RaiseAsm.cpp
+index ec447bc4..799218c9 100644
+--- a/lib/Module/RaiseAsm.cpp
++++ b/lib/Module/RaiseAsm.cpp
+@@ -91,8 +91,14 @@ bool RaiseAsmPass::runOnModule(Module &M) {
+     klee_warning("Warning: unable to select target: %s", Err.c_str());
+     TLI = 0;
+   } else {
++#if LLVM_VERSION_CODE >= LLVM_VERSION(16, 0)
++    TM = Target->createTargetMachine(TargetTriple, "", "", TargetOptions(),
++                                     std::nullopt);
++#else
+     TM = Target->createTargetMachine(TargetTriple, "", "", TargetOptions(),
+                                      None);
++#endif
++
+     TLI = TM->getSubtargetImpl(*(M.begin()))->getTargetLowering();
+ 
+     triple = llvm::Triple(TargetTriple);
+-- 
+2.43.0
+

@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:08:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Aug 21 17:20:10 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update silently to version 1.2.5.3.
+  # 1.2.5.3 August 2022
+
+  * Tested with GHC 7.0 - 9.4.1.
+  * Remove remnants of GHC 6.x support.
+  * Silence incomplete pattern matching warning, refactor code.
+  * Add section about limitations to README.
+
+-------------------------------------------------------------------
+Tue Nov  9 08:00:21 UTC 2021 - psimons@suse.com
+
+- Update silently to version 1.2.5.2.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:46:01 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:14 UTC 2020 - psimons@suse.com
+
+- Add silently at version 1.2.5.1.
+

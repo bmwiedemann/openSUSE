@@ -1,0 +1,5 @@
+<package name="kcmutils" project="openSUSE:Factory">
+  <title>kcmutils</title>
+  <description>Utilities for interacting with KCModules</description>
+  <devel project="KDE:Frameworks5" package="kcmutils"/>
+</package>

@@ -1,0 +1,26 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Nov 29 18:31:24 2018 +0100
+Subject: LSB: Use sharedstatedir instead of localstatedir for WW_STATEDIR
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 096967810a0d6a8027a2f33a463c5294c56b910f
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ common/lib/Warewulf/ACVars.pm.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/common/lib/Warewulf/ACVars.pm.in b/common/lib/Warewulf/ACVars.pm.in
+index fe874c1..18e8601 100644
+--- a/common/lib/Warewulf/ACVars.pm.in
++++ b/common/lib/Warewulf/ACVars.pm.in
+@@ -24,7 +24,7 @@ my $singleton = {
+     "VERSION"      => $VERSION,
+     "GITVERSION"   => "@GITVERSION@",
+     "PREFIX"       => "@prefix@",
+-    "STATEDIR"     => "@localstatedir@",
++    "STATEDIR"     => "@sharedstatedir@",
+     "SYSCONFDIR"   => "@sysconfdir@",
+     "LIBDIR"       => "@libdir@",
+     "DATAROOTDIR"  => "@datarootdir@",

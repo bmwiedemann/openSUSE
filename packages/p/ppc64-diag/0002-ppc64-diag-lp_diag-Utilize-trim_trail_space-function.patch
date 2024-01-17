@@ -1,0 +1,46 @@
+From 476b0af7516b86c4d98cfa229fb0c6b856eea31d Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Fri, 8 Sep 2023 12:35:13 +0530
+Subject: [PATCH 2/3] ppc64-diag/lp_diag: Utilize trim_trail_space() function
+ in event_fru_callout()
+
+Upstream: merged, expected in 2.7.10
+Git-commit: 476b0af7516b86c4d98cfa229fb0c6b856eea31d
+
+Update the event_fru_callout() function to use the trim_trail_space()
+function to be able to remove any trailing spaces from the location code.
+This change aims to address an issue where the presence of trailing spaces
+in the location code results in failure to find an indicator for the given
+location code. Use trim_trail_space() on the location to ensure that the
+device location code is properly compared with the indicator list.
+
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+Signed-off-by: Mahesh Salgaonkar <mahesh@linux.ibm.com>
+---
+ lpd/lp_diag.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lpd/lp_diag.c b/lpd/lp_diag.c
+index 988a021168b9..e6f5d3cb64cf 100644
+--- a/lpd/lp_diag.c
++++ b/lpd/lp_diag.c
+@@ -35,6 +35,7 @@
+ #include "servicelog.h"
+ #include "indicator.h"
+ #include "lp_util.h"
++#include "utils.h"
+ 
+ /* FRU callout priority as defined in PAPR+
+  *
+@@ -344,6 +345,8 @@ event_fru_callout(struct sl_callout *callouts, struct loc_code *list,
+ 		/* get FRUs nearest fault indicator */
+ 		strncpy(location, callout->location, LOCATION_LENGTH);
+ 		location[LOCATION_LENGTH - 1] = '\0';
++		trim_trail_space(location);
++
+ 		loc_led = get_fru_indicator(list, location, &truncated);
+ 		if (!loc_led) { /* No indicator found for the given loc code */
+ 			*attn_on = 1;
+-- 
+2.42.0
+

@@ -1,0 +1,40 @@
+From 60c32b2493061b8ea8b8e3c24b533b38d1e85134 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <ngompa13@gmail.com>
+Date: Sat, 13 Feb 2021 12:16:10 -0500
+Subject: [PATCH] Use /usr/lib/sysimage for the persistent state directory
+
+This aligns us with the location where the RPM database is stored.
+---
+ dnf/const.py.in  | 2 +-
+ doc/conf_ref.rst | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dnf/const.py.in b/dnf/const.py.in
+index 5c1fef0f..7028515d 100644
+--- a/dnf/const.py.in
++++ b/dnf/const.py.in
+@@ -38,7 +38,7 @@ LOG_LIBREPO='dnf.librepo.log'
+ LOG_MARKER='--- logging initialized ---'
+ LOG_RPM='dnf.rpm.log'
+ NAME='DNF'
+-PERSISTDIR='/var/lib/dnf' # :api
++PERSISTDIR='/usr/lib/sysimage/dnf' # :api
+ PID_FILENAME = '/var/run/dnf.pid'
+ RUNDIR='/run'
+ USER_RUNDIR='/run/user'
+diff --git a/doc/conf_ref.rst b/doc/conf_ref.rst
+index 653ebbea..64dc8686 100644
+--- a/doc/conf_ref.rst
++++ b/doc/conf_ref.rst
+@@ -406,7 +406,7 @@ configuration file by your distribution to override the DNF defaults.
+ ``persistdir``
+     :ref:`string <string-label>`
+ 
+-    Directory where DNF stores its persistent data between runs. Default is ``"/var/lib/dnf"``.
++    Directory where DNF stores its persistent data between runs. Default is ``"/usr/lib/sysimage/dnf"``.
+ 
+ .. _pluginconfpath-label:
+ 
+-- 
+2.31.1
+

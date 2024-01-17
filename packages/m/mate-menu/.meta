@@ -1,0 +1,7 @@
+<package name="mate-menu" project="openSUSE:Factory">
+  <title>Advanced MATE menu</title>
+  <description>An advanced menu for MATE. Supports filtering, favourites, autosession, and many other features.
+
+This menu originated in the Linux Mint distribution and has been ported to other distros that ship the MATE Desktop Environment.</description>
+  <devel project="X11:MATE:Factory" package="mate-menu"/>
+</package>

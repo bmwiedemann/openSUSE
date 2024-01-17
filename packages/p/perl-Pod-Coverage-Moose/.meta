@@ -1,0 +1,15 @@
+<package name="perl-Pod-Coverage-Moose" project="openSUSE:Factory">
+  <title>L&lt;Pod::Coverage&gt; extension for L&lt;Moose&gt;</title>
+  <description>When using the Pod::Coverage manpage in combination with the Moose manpage,
+it will report any method imported from a Role. This is especially bad when
+used in combination with the Test::Pod::Coverage manpage, since it takes
+away its ease of use.
+
+To use this module in combination with the Test::Pod::Coverage manpage, use
+something like this:
+
+  use Test::Pod::Coverage;
+  all_pod_coverage_ok({ coverage_class =&gt; 'Pod::Coverage::Moose'});</description>
+  <devel project="devel:languages:perl" package="perl-Pod-Coverage-Moose"/>
+  <url>http://search.cpan.org/perldoc?Pod::Coverage::Moose</url>
+</package>

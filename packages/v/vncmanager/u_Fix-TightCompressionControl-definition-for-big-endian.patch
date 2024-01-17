@@ -1,0 +1,41 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Thu, 14 May 2020 17:23:21 +0200
+Subject: Fix TightCompressionControl definition for big-endian
+References: bsc#1171344
+Upstream: merged
+Git-commit: b487e58a4f8d0b879d34cb9be18a292c753daf3e
+
+Bitfields are allocated from the most significant bit down to the
+least significant bit on big-endian systems, so the declaration
+order must be reversed to match on-wire format.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ rfb.h |   10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+--- a/rfb.h
++++ b/rfb.h
+@@ -523,13 +523,21 @@ struct VeNCryptPlainMessage {
+ };
+ 
+ struct TightCompressionControl {
++#if __BYTE_ORDER == __BIG_ENDIAN
++    unsigned rest : 4;
++
++    unsigned resetStream3 : 1;
++    unsigned resetStream2 : 1;
++    unsigned resetStream1 : 1;
++    unsigned resetStream0 : 1;
++#else
+     unsigned resetStream0 : 1;
+     unsigned resetStream1 : 1;
+     unsigned resetStream2 : 1;
+     unsigned resetStream3 : 1;
+ 
+     unsigned rest : 4;
+-
++#endif	// __BYTE_ORDER
+     int useStream() const {
+         return rest & 0x3;
+     }

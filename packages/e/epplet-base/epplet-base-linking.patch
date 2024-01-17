@@ -1,0 +1,64 @@
+Index: epplets-0.10/configure.in
+===================================================================
+--- epplets-0.10.orig/configure.in
++++ epplets-0.10/configure.in
+@@ -39,6 +39,7 @@ dnl# At least make the attempt to suppor
+ AC_CYGWIN
+ 
+ AM_PROG_LIBTOOL
++LT_LIB_M
+ 
+ AC_GCC_TRADITIONAL
+ 
+Index: epplets-0.10/epplets/Makefile.am
+===================================================================
+--- epplets-0.10.orig/epplets/Makefile.am
++++ epplets-0.10/epplets/Makefile.am
+@@ -54,6 +54,7 @@ E_Exec_epplet_LDFLAGS = -rpath $(libdir)
+ E_SD_epplet_SOURCES = E-SD.c esdcloak.c utils.c utils.h esdcloak.h
+ E_SD_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+ E_SD_epplet_LDFLAGS = -rpath $(libdir):$(pkglibdir) -lesd
++E_SD_epplet_LDADD = $(LDADD) $(LIBM)
+ 
+ E_Load_epplet_SOURCES = E-Load.c
+ E_Load_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+@@ -68,10 +69,12 @@ E_LoadMeter_epplet_LDADD = $(LDADD) $(GT
+ E_Clock_epplet_SOURCES = E-Clock.c
+ E_Clock_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+ E_Clock_epplet_LDFLAGS = -rpath $(libdir):$(pkglibdir)
++E_Clock_epplet_LDADD = $(LDADD) $(LIBM)
+ 
+ E_MoonClock_epplet_SOURCES = E-MoonClock.c CalcEphem.c CalcEphem.h Moon.c
+ E_MoonClock_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+ E_MoonClock_epplet_LDFLAGS = -rpath $(libdir):$(pkglibdir)
++E_MoonClock_epplet_LDADD = $(LDADD) $(LIBM)
+ 
+ E_Time_epplet_SOURCES = E-Time.c
+ E_Time_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+@@ -145,15 +148,18 @@ E-ScreenShoot.c cloak.c utils.c utils.h
+ E-ScreenShoot_ftp.c E-ScreenShoot_ftp.h
+ E_ScreenShoot_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+ E_ScreenShoot_epplet_LDFLAGS = -rpath $(libdir):$(pkglibdir)
++E_ScreenShoot_epplet_LDADD = $(LDADD) $(LIBM)
+ 
+ E_NetGraph_epplet_SOURCES = E-NetGraph.c net.c net.h
+ E_NetGraph_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+ E_NetGraph_epplet_LDFLAGS = -rpath $(libdir):$(pkglibdir)
++E_NetGraph_epplet_LDADD = $(LDADD) $(LIBM)
+ 
+ E_ScreenSave_epplet_SOURCES = \
+ E-ScreenSave.c cloak.c utils.c utils.h cloak.h
+ E_ScreenSave_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+ E_ScreenSave_epplet_LDFLAGS = -rpath $(libdir):$(pkglibdir)
++E_ScreenSave_epplet_LDADD = $(LDADD) $(LIBM)
+ 
+ E_UrlWatch_epplet_SOURCES = E-UrlWatch.c E-UrlWatch.h utils.c utils.h
+ E_UrlWatch_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+@@ -162,6 +168,7 @@ E_UrlWatch_epplet_LDFLAGS = -rpath $(lib
+ E_Mountbox_epplet_SOURCES = E-Mountbox.c
+ E_Mountbox_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la
+ E_Mountbox_epplet_LDFLAGS = -rpath $(libdir):$(pkglibdir)
++E_Mountbox_epplet_LDADD = $(LDADD) $(LIBM)
+ 
+ E_Pinger_epplet_SOURCES = E-Pinger.c
+ E_Pinger_epplet_DEPENDENCIES = $(top_builddir)/api/libepplet.la

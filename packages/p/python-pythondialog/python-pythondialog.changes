@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Oct  6 22:56:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.5.3 
+
+	Fix related to the 'timeout' option (--timeout for dialog)
+
+	* dialog.py (Dialog._perform): ignore the dialog output when a timeout
+	occurred, which we know thanks to the exit code. Without this change,
+	output parsing or checking (e.g., in Dialog._widget_with_no_output())
+	would be broken by the '\ntimeout\n' string printed by dialog in such
+	cases (seen with msgbox, at least).
+
+	It might be that parsing is still disturbed for some widgets when a
+	timeout occurs, if they never produce an empty output in a no-timeout
+	situation: this remains to be checked. Also, it appears that the
+	--timeout option doesn't work with all widgets in the dialog
+	backend (tested with dialog 1.3-20201126: 'msgbox', 'checklist' and
+	'menu' support --timeout; 'inputbox' and 'mixedform' don't; other
+	widgets untested with this option).
+
+	Show use of d.add_persistent_args(["--no-nl-expand"]) in examples
+
+	* Using this option is quite relevant when using pythondialog. Thanks to
+	ChristianTacke for the report. Closes:
+	<https://github.com/frougon/pythondialog/issues/8>.
+
+	Improve support for the --timeout dialog option
+
+	* Set DIALOG_TIMEOUT in the environment when invoking dialog; this
+	allows us to distinguish between DIALOG_TIMEOUT and DIALOG_ESC. Add
+	the corresponding TIMEOUT attribute to the Dialog class. Thanks to
+	Rolf for the report. Closes:
+	<https://sourceforge.net/p/pythondialog/bugs/11/>.
+
+- Update to version 3.5.1
+
+        README.rst: update the latest version of the Python 2 backport
+
+	* README.rst: the latest version of the Python 2 backport is now 3.5.1.
+	This will also be the last version, unless metadata needs to be updated
+	(e.g., if the home page or Git repository were to move, we would
+	probably have to make a new upload in order to update the data published
+	on PyPI).
+ 
+        Safer instruction when using easy_install
+
+	* INSTALL: when easy_install is mentioned (deprecated method!),
+	explicitly use <base_dir>/bin/easy_install to ensure it comes from the
+	right Python installation.
+
+        demo: remove invalid escape sequence from sample string
+
+	* examples/with-autowidgetsize/demo.py: same change as in commit
+	94f0dc952f7cfe7cecc7865dd3febf4a457072c0, since the file is essentially
+	a copy of examples/demo.py. The escape sequence \/ is invalid in normal
+	strings; use a raw string here, since the goal was to display both
+	characters.
+
+-------------------------------------------------------------------
+Tue Jan 21 14:08:27 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- initial commit 

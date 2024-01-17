@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93b92e21e360215dafecc4abb2e359b3</srcmd5>
+    <version>0.9.4</version>
+    <time>1527605455</time>
+    <user>dimstar_suse</user>
+    <comment>needed by python-WeasyPrint</comment>
+    <requestid>611777</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6deae8d7596ac707c8826486f7d3c378</srcmd5>
+    <version>0.9.4</version>
+    <time>1548334988</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659312</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bdbefd2ba49a502225761122acf25db6</srcmd5>
+    <version>0.9.5</version>
+    <time>1551386564</time>
+    <user>coolo</user>
+    <comment>- Switch to github tarball for the test.py so source_validators
+  actually works
+
+- Update to version 0.9.5
+  + Update Bulgarian and Spanish dictionaries, add Indonesian
+- Add test.py from GH, missing in tarball, enable checks</comment>
+    <requestid>678218</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>095aeb8af4d11eaa08872b39bce53b76</srcmd5>
+    <version>0.10.0</version>
+    <time>1617131675</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.10.0:
+  * Ignore *HYPHENMIN options in dictionaries
+  * Improve dictionaries update script 
+  * Drop Python 3.5 and add Python 3.9 support</comment>
+    <requestid>878252</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab0705410ea365cbb91487616477ea58</srcmd5>
+    <version>0.14.0</version>
+    <time>1704919939</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.0:
+  * Store Path objects instead of strings in LANGUAGE.
+  * Use importlib.resources instead of deprecated pkg_resources.
+  * Add Thai dictionary.
+  * Update Italian dictionary.
+  * Make language parameter case-insensitive.
+  * Add Catalan dictionary.
+  * Update French dictionary.
+  * Update script upgrading dictionaries.
+  * Support Python 3.10, drop Python 3.6 support.
+  * Add documentation.
+  * Update Belarusian dictionary.
+  * Update dictionaries (add Albanian, Belarusian, Esperanto,
+    Mongolian; update Italian, Portuguese of Brazil, Russian).
+  * Use Flit for packaging. You can now build packages using pip
+    install flit, flit build.
+
+  * Improve dictionaries update script</comment>
+    <requestid>1137833</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7564abe208f0b6e5d17cbec48eae6575</srcmd5>
+    <version>0.14.0</version>
+    <time>1705003527</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons} to build for python 3.11 in Leap</comment>
+    <requestid>1138080</requestid>
+  </revision>
+</revisionlist>

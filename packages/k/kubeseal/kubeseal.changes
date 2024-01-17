@@ -1,0 +1,579 @@
+-------------------------------------------------------------------
+Thu Jan 04 17:55:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.24.5:
+  * Release notes for v0.24.5 (#1399)
+  * Update golang to the latest tooling version (#1398)
+  * Bump github.com/onsi/ginkgo/v2 from 2.13.1 to 2.13.2 (#1397)
+  * Bump golang.org/x/crypto from 0.15.0 to 0.16.0 (#1394)
+  * feat: Helm - Add sources (#1383)
+  * Expose controller metrics in an isolated port (#1369)
+  * Bump k8s.io/client-go from 0.28.3 to 0.28.4 (#1389)
+  * Bump k8s.io/code-generator from 0.28.3 to 0.28.4 (#1390)
+  * Update carvel package to v2.13.3 (#1381)
+  * Release chart 2.13.3 (#1380)
+
+-------------------------------------------------------------------
+Thu Nov 16 14:29:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.4:
+  * Release notes for v0.24.4 (#1378)
+  * docs: Correct skipRecreate description (#1371)
+  * feat: write help message to stdout (#1377)
+  * Bump github.com/onsi/ginkgo/v2 from 2.13.0 to 2.13.1 (#1374)
+  * Bump golang.org/x/crypto from 0.14.0 to 0.15.0 (#1375)
+  * Bump github.com/onsi/gomega from 1.29.0 to 1.30.0 (#1376)
+  * Set up LastTransitionTime in case that it is empty (#1370)
+  * Bump k8s.io/klog/v2 from 2.100.1 to 2.110.1 (#1367)
+  * Improve examples with a more legible kubeseal command (#1366)
+  * Include refereces to the maintainers team  email (#1365)
+  * Release Carvel v0.24.3 (#1363)
+  * Release Chart v0.24.3 (#1362)
+
+-------------------------------------------------------------------
+Thu Nov 02 09:30:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.3:
+  * Release Notes v0.24.3 (#1361)
+  * Check ObservedGeneration and generation before to check (#1360)
+  * Bump k8s.io/code-generator from 0.28.2 to 0.28.3 (#1358)
+  * Bump github.com/onsi/gomega from 1.28.1 to 1.29.0 (#1357)
+  * fix: add pdb (#1340)
+  * Bump github.com/mattn/go-isatty from 0.0.19 to 0.0.20 (#1353)
+  * Bump github.com/onsi/gomega from 1.28.0 to 1.28.1 (#1351)
+  * Bump k8s.io/client-go from 0.28.2 to 0.28.3 (#1350)
+  * Bump k8s.io/api from 0.28.2 to 0.28.3 (#1349)
+  * Bump github.com/google/go-cmp from 0.5.9 to 0.6.0 (#1348)
+  * Release Carvel for 0.24.2 version (#1347)
+  * Release Chart for 0.24.2 version (#1346)
+
+-------------------------------------------------------------------
+Thu Oct 19 05:49:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.2:
+  * Prepare Release Notes for 0.24.2 (#1345)
+  * Fix issue where sealed secrets status is not updated if sealed
+    secret… (#1295)
+  * Bump golang.org/x/net from 0.14.0 to 0.17.0 (#1344)
+  * Bump golang.org/x/crypto from 0.13.0 to 0.14.0 (#1341)
+  * Bump github.com/onsi/ginkgo/v2 from 2.12.1 to 2.13.0 (#1342)
+  * Updated command for restoring from backups (#1334)
+
+-------------------------------------------------------------------
+Thu Oct 05 12:27:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.1:
+  * Release notes for 0.24.1 (#1339)
+  * fix: remove trailing dashes for multidoc yaml (#1335)
+  * Bump github.com/prometheus/client_golang from 1.16.0 to 1.17.0
+    (#1338)
+  * Bump github.com/onsi/gomega from 1.27.10 to 1.28.0 (#1337)
+  * Bump github.com/onsi/ginkgo/v2 from 2.12.0 to 2.12.1 (#1333)
+  * Bump k8s.io/code-generator from 0.28.1 to 0.28.2 (#1327)
+  * Bump k8s.io/client-go from 0.28.1 to 0.28.2 (#1328)
+  * Bump k8s.io/api from 0.28.1 to 0.28.2 (#1329)
+  * Update carvel package to v2.13.0 (#1325)
+  * Release chart 2.13.0 (#1323)
+
+-------------------------------------------------------------------
+Fri Sep 15 11:07:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.0:
+  * Release notes for v0.24.0 (#1322)
+  * feat: multidoc support for yaml and json (#1304)
+  * Bump golang.org/x/crypto from 0.12.0 to 0.13.0 (#1319)
+  * Update the golang version to the latest available one (#1318)
+  * Bump k8s.io/client-go from 0.28.0 to 0.28.1 (#1308)
+  * Bump github.com/onsi/ginkgo/v2 from 2.11.0 to 2.12.0 (#1310)
+  * Bump k8s.io/code-generator from 0.28.0 to 0.28.1 (#1307)
+  * Delete repeating warning message (#1303)
+  * Bump k8s.io/code-generator from 0.27.4 to 0.28.0 (#1300)
+  * Bump k8s.io/client-go from 0.27.4 to 0.28.0 (#1297)
+  * Add dashboard configmap annotations (#1302)
+  * docs: updating readme to show how to get kubeseal version
+    dynamically in install (#1294)
+  * Update carvel package to v2.12.0 (#1293)
+  * Release chart 2.12.0 (#1292)
+
+-------------------------------------------------------------------
+Thu Sep 07 07:24:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.23.1:
+  * Release notes for v0.23.1 (#1291)
+  * Bump golang.org/x/crypto from 0.11.0 to 0.12.0 (#1287)
+  * feat: allow changing the default revisionHistoryLimit (#1286)
+  * Introduce KUBESEAL_VERSION for Linux installation (#1275)
+  * securityContext adjusted (#1261)
+  * Bump k8s.io/code-generator from 0.27.3 to 0.27.4 (#1278)
+  * Bump k8s.io/client-go from 0.27.3 to 0.27.4 (#1277)
+  * Bump github.com/onsi/gomega from 1.27.8 to 1.27.10 (#1279)
+  * Bump k8s.io/api from 0.27.3 to 0.27.4 (#1281)
+  * Release carvel package v2.11.0 (#1273)
+  * Create an Install Sealed Secrets tutorial for Sealed Secrets
+    public documentation (#1270)
+  * Release chart 2.11.0 (#1272)
+
+-------------------------------------------------------------------
+Mon Jul 17 11:46:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.23.0:
+  * Release notes for v0.23.0 (#1271)
+  * Create a FAQ document for Sealed Secrets public documentation
+    (#1269)
+  * Bump golang.org/x/crypto from 0.10.0 to 0.11.0 (#1268)
+  * Add missing document seperator (#1260)
+  * Create a cryptography document for Sealed Secrets public
+    documentation (#1267)
+  * Validate existing Sealed Secrets (#1266)
+  * added support policy to readme (#1265)
+  * Create index for Sealed Secrets public documentation (#1264)
+  * Enable full linter support for golangci-lint (#1262)
+  * Add option to patch secrets instead of clobbering them (#1259)
+  * Add option for custom annotations and labels on sealing
+    keypairs (#1250)
+  * Improve CLI UX error message while service is not found (#1256)
+  * Bump github.com/onsi/ginkgo/v2 from 2.10.0 to 2.11.0 (#1254)
+  * Bump k8s.io/code-generator from 0.27.2 to 0.27.3 (#1255)
+  * Getting started page (#1253)
+  * Draft: Update minikube K8S versions (#1251)
+  * Fix networkpolicy port + add egress (#1243)
+  * add --log-info-stdout to chart (#1238)
+  * Bump github.com/prometheus/client_golang from 1.15.1 to 1.16.0
+    (#1247)
+  * Bump golang.org/x/crypto from 0.9.0 to 0.10.0 (#1248)
+  * Bump k8s.io/client-go from 0.27.2 to 0.27.3 (#1244)
+  * Add namespaced roles support to Helm chart (#1240)
+  * Carvel release 0.22.0 (#1242)
+  * Helm chart release 0.22.0 (#1241)
+
+-------------------------------------------------------------------
+Fri Jun 16 05:16:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.22.0:
+  * Update maintainers list (#1237)
+  * Bump github.com/onsi/gomega from 1.27.7 to 1.27.8 (#1234)
+  * Bump github.com/onsi/ginkgo/v2 from 2.9.7 to 2.10.0 (#1235)
+  * Bump github.com/onsi/ginkgo/v2 from 2.9.5 to 2.9.7 (#1231)
+  * Feature allow to skip set owner references (#1200)
+  * Bump github.com/onsi/gomega from 1.27.6 to 1.27.7 (#1229)
+  * Update generated code (#1228)
+  * Fix doc generated code directory (#1227)
+  * Create SECURITY.md (#1226)
+  * Bump k8s.io/client-go from 0.27.1 to 0.27.2 (#1222)
+  * Bump k8s.io/code-generator from 0.27.1 to 0.27.2 (#1225)
+  * Bump github.com/mattn/go-isatty from 0.0.18 to 0.0.19 (#1223)
+  * Bump k8s.io/apimachinery from 0.27.1 to 0.27.2 (#1221)
+  * feat: add replicas default value to the deployment manifest
+    (#1219)
+  * Add additionalPrinterColumns for status and age (#1217)
+  * Bump github.com/onsi/ginkgo/v2 from 2.9.4 to 2.9.5 (#1215)
+  * Bump golang.org/x/crypto from 0.8.0 to 0.9.0 (#1216)
+  * Release Carvel from Helm Chart v2.9.0 (#1213)
+  * Allow Helm Chart release v2.9.0 (#1212)
+  * Release Helm Chart to use v0.21.0 (#1211)
+
+-------------------------------------------------------------------
+Mon May 15 18:38:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.21.0:
+  * Release notes and version bump to 0.20.6 (#1209)
+  * Bump github.com/prometheus/client_golang from 1.15.0 to 1.15.1
+    (#1204)
+  * Bump github.com/onsi/ginkgo/v2 from 2.9.2 to 2.9.4 (#1203)
+  * Include validate flag into the README file (#1202)
+  * Bump k8s.io/klog/v2 from 2.90.1 to 2.100.1 (#1201)
+  * Index kubeseal install section explicitly (#1198)
+  * Update bring-your-own-certificates.md (#1196)
+  * Enable logging info to stdout (#1195)
+  * Fix go generate to use module dep instead of vendor dir (#1192)
+  * Bump k8s.io/code-generator from 0.26.3 to 0.27.1 (#1188)
+  * Bump k8s.io/client-go from 0.26.3 to 0.27.1 (#1187)
+  * Bump github.com/prometheus/client_golang from 1.14.0 to 1.15.0
+    (#1189)
+  * Release Carvel package  2.8.2 to use release 0.20.5 (#1185)
+  * Release Helm Chart 2.8.2 to use release 0.20.5 (#1184)
+
+-------------------------------------------------------------------
+Mon Apr 17 16:00:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.5:
+  * Release version v0.20.5 (#1183)
+  * Fix kubeseal image sign for cosign v2 (#1182)
+
+-------------------------------------------------------------------
+Mon Apr 17 14:52:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.4:
+  * Release version v0.20.4 with the latest PR included (#1181)
+  * Fix cosign command for goreleaser (#1180)
+  * Release version v0.20.4 (#1179)
+
+-------------------------------------------------------------------
+Mon Apr 17 13:30:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.3:
+  * Release version v0.20.3 (#1178)
+  * Generate embedded ObjectMeta in CRD (#1177)
+  * Sign images using Cosign v2 (#1176)
+  * Bump golang.org/x/crypto from 0.7.0 to 0.8.0 (#1175)
+  * ReProcess only on spec changes (#1174)
+  * Upgrade sealed secrets to Go 1.20 (#1173)
+  * Feature/updatereadme (#1172)
+  * Bump github.com/onsi/gomega from 1.27.5 to 1.27.6 (#1169)
+  * order certs by notBefore date (#1153)
+  * Feature/updatevib (#1165)
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18 (#1167)
+  * Bump github.com/onsi/gomega from 1.27.4 to 1.27.5 (#1168)
+  * Update vib action (#1164)
+  * Verify chart with secret recreation disabled (#1163)
+  * Remove automountServiceAccountToken parameter (#1162)
+  * Bump k8s.io/code-generator from 0.26.2 to 0.26.3 (#1159)
+  * Bump k8s.io/client-go from 0.26.2 to 0.26.3 (#1157)
+  * Release Carvel package 2.8.1 (#1156)
+  * Release chart v2.8.1 (#1155)
+
+-------------------------------------------------------------------
+Mon Mar 20 19:32:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.2:
+  * Release v0.20.2 (#1154)
+  * Fix skip recreate panic (#1152)
+  * Carvel Release 0.20.1 (#1150)
+  * Helm Release Version to v0.20.1 (#1149)
+
+-------------------------------------------------------------------
+Thu Mar 16 05:54:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.1:
+  * Release version v0.20.1 (#1148)
+
+-------------------------------------------------------------------
+Thu Mar 16 05:51:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.0:
+  * Release version v0.20.0 (#1147)
+  * Do not require vib-validate for vib-k8s-verify (#1145)
+  * Bump github.com/onsi/gomega from 1.27.2 to 1.27.4 (#1143)
+  * Parametrize cluster role name (#1141)
+  * Run VIB Helm chart validations on push to main (#1140)
+  * Update parameters table (#1139)
+  * Bump k8s.io/client-go from 0.26.1 to 0.26.2 (#1136)
+  * Update docs (#1127)
+  * Bump k8s.io/code-generator from 0.26.1 to 0.26.2 (#1137)
+  * Bump k8s.io/api from 0.26.1 to 0.26.2 (#1135)
+  * Bump github.com/onsi/gomega from 1.27.1 to 1.27.2 (#1134)
+  * Bump k8s.io/apimachinery from 0.26.1 to 0.26.2 (#1133)
+  * Bump k8s.io/klog/v2 from 2.90.0 to 2.90.1 (#1132)
+  * Bump github.com/onsi/ginkgo/v2 from 2.8.3 to 2.9.0 (#1131)
+  * Bump golang.org/x/crypto from 0.6.0 to 0.7.0 (#1130)
+  * Allow automountServiceAccountToken to be set to false (#1128)
+  * Ensure vib runs only when PR is approved (#1121)
+  * Allow to disable secret auto-recreation (#1118)
+  * change drop capabilities to uppercase (#1124)
+  * Run VIB chart checks only after PR approval (#1120)
+  * feat: add drop all capabilities (#1116)
+  * Bump github.com/onsi/gomega from 1.26.0 to 1.27.1 (#1114)
+  * Bump github.com/onsi/ginkgo/v2 from 2.8.0 to 2.8.3 (#1113)
+  * Bump golang.org/x/net from 0.6.0 to 0.7.0 (#1112)
+  * Manually fixing the carvel package version and reference
+    (#1111)
+  * Release Helm Chart 2.7.4 and Carvel package to use release
+    0.19.5 (#1110)
+
+-------------------------------------------------------------------
+Wed Feb 15 16:42:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.19.5:
+  * Release version v0.19.5 (#1109)
+  * Bump golang.org/x/crypto from 0.5.0 to 0.6.0 (#1108)
+  * Include OpenShift VIB (#1107)
+  * Add workflow for Carvel package release (#1104)
+  * Bump k8s.io/code-generator from 0.26.0 to 0.26.1 (#1102)
+  * Bump github.com/onsi/gomega from 1.25.0 to 1.26.0 (#1103)
+  * Bump github.com/onsi/ginkgo/v2 from 2.7.0 to 2.8.0 (#1101)
+  * Add carvel package (#1100)
+  * Generate values table (#1099)
+  * Bump k8s.io/client-go from 0.26.0 to 0.26.1 (#1096)
+  * Bump github.com/onsi/gomega from 1.24.2 to 1.25.0 (#1095)
+  * Bump k8s.io/klog/v2 from 2.80.1 to 2.90.0 (#1094)
+  * Bump k8s.io/apimachinery from 0.26.0 to 0.26.1 (#1093)
+  * Release Helm Chart 2.7.3 to use release 0.19.4 (#1089)
+
+-------------------------------------------------------------------
+Tue Jan 17 05:46:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.19.4:
+  * Release version v0.19.4 (#1088)
+  * Bump k8s.io/code-generator from 0.25.4 to 0.26.0 (#1078)
+  * add reccommended Kubernetes label app.kubernetes.io/part-of to Helm chart (#1084)
+  * Bump golang.org/x/crypto from 0.4.0 to 0.5.0 (#1085)
+  * Bump github.com/onsi/ginkgo/v2 from 2.6.1 to 2.7.0 (#1086)
+  * Bump github.com/mattn/go-isatty from 0.0.16 to 0.0.17 (#1083)
+  * Bump github.com/onsi/gomega from 1.24.1 to 1.24.2 (#1079)
+  * Bump github.com/onsi/ginkgo/v2 from 2.6.0 to 2.6.1 (#1077)
+  * Release chart v2.7.2 (#1075)
+
+-------------------------------------------------------------------
+Fri Dec 16 12:45:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.3:
+  * Add release notes for version v0.19.3 (#1074)
+  * Update to Go 1.19.4 (#1073)
+  * Bump k8s.io/client-go from 0.25.4 to 0.26.0 (#1071)
+  * Bump golang.org/x/crypto from 0.3.0 to 0.4.0 (#1072)
+  * Bump github.com/onsi/ginkgo/v2 from 2.5.1 to 2.6.0 (#1069)
+  * Bump k8s.io/api from 0.25.4 to 0.26.0 (#1068)
+  * Fix spelling mistakes in readme (#1067)
+  * docs(readme): add kubeseal-convert (#1065)
+  * Bump golang.org/x/crypto from 0.2.0 to 0.3.0 (#1063)
+  * Bump k8s.io/client-go from 0.25.3 to 0.25.4 (#1062)
+  * Bump github.com/onsi/ginkgo/v2 from 2.5.0 to 2.5.1 (#1061)
+  * Release Helm Chart 2.7.1 to use release 0.19.2 (#1059)
+
+-------------------------------------------------------------------
+Fri Nov 18 15:05:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.2:
+  * Release version v0.19.2 (#1058)
+  * Bump k8s.io/api from 0.25.3 to 0.25.4 (#1056)
+  * Bump github.com/onsi/gomega from 1.24.0 to 1.24.1 (#1055)
+  * Bump k8s.io/code-generator from 0.25.3 to 0.25.4 (#1053)
+  * Bump github.com/prometheus/client_golang from 1.13.1 to 1.14.0 (#1054)
+  * Bump golang.org/x/crypto from 0.1.0 to 0.2.0 (#1052)
+  * Bump github.com/prometheus/client_golang from 1.13.0 to 1.13.1 (#1050)
+  * Bump github.com/onsi/gomega from 1.23.0 to 1.24.0 (#1049)
+  * Bump github.com/onsi/gomega from 1.22.1 to 1.23.0 (#1047)
+  * Distinguish std & k8s errors (#1046)
+  * Fix empty Group Version Kind (#1044)
+  * Fix set-output warnings upgrading github actions (#1045)
+  * Upgrade VIB GitHub Action to 0.4.7 (#1043)
+  * Bump github.com/onsi/ginkgo/v2 from 2.3.1 to 2.4.0 (#1042)
+  * Minor fixes (#1040)
+  * Fix set-output usages as per GH guidance (#1039)
+  * Replace minikube action to use Node 16 (#1035)
+  * Include golang unit test report in the GitHub PR context (#1034)
+  * Regenerate code - detected some dummy changes (#1033)
+  * Decouple the kubeseal CLI from the kubeseal library (#1030)
+  * Replace minikube action to use Node 16 (#1031)
+  * Remove namespaceFn (#1029)
+  * Explain released registration steps (#1022)
+  * Upgrade node 12 actions to node 16 versions (#1011)
+  * Bump k8s.io/client-go from 0.25.0 to 0.25.3 (#1026)
+  * Bump github.com/onsi/gomega from 1.20.2 to 1.22.1 (#1024)
+  * Bump k8s.io/code-generator from 0.25.0 to 0.25.3 (#1025)
+  * Bump github.com/onsi/ginkgo/v2 from 2.1.6 to 2.3.1 (#1023)
+  * Enable dependabot Auto PRs (#1009)
+  * Helm chart: field 'rules' removed from 'templates/psp-clusterrolebinding.yaml' (#1006)
+  * Release Helm Chart 2.7.0 to use release 0.19.1 (#1020)
+
+-------------------------------------------------------------------
+Mon Oct 17 10:30:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.1:
+  * Release version v0.19.1 (#1007) (#1018)
+  * Fix container image release tag (#1014)
+
+-------------------------------------------------------------------
+Fri Oct 14 04:53:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.0:
+  * Release version v0.19.0 (#1007)
+  * Fix release train (#1004)
+  * Update golang.org/x/text (#1008)
+  * Solve GO_VERSION from env (#1003)
+  * Fix release train typo (#1002)
+  * Project Labels are managed with issue templates and PR labeler action (#999)
+  * Explain the new upcoming release train process (#992)
+  * Fix fulfilled error executing update integration test (#1000)
+  * Bump ginkgo version (#996)
+  * Updated GH actions to latest releases (no breaking changes) (#993)
+  * Remove binary (#995)
+  * Add namespace flag to ginkgo tests (#994)
+  * Revert "Dummy changes"
+  * Dummy changes
+  * Add DCO requirement (#988)
+  * expired certificate error now prints expiration date (#986)
+  * Use a single versioning source (#985)
+  * Bump golangci-lint to the newest one (#983)
+  * Support to recreate a deleted secret generated by the controller (#963)
+  * Release chart version 2.6.9 (#981)
+  * Release version v0.18.5 (#980)
+  * Fix metadata validation issues (#979)
+  * Fix controller image reference (#977)
+  * Release chart version 2.6.8 (#974)
+
+-------------------------------------------------------------------
+Sun Sep 25 07:02:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.4:
+  * Release version v0.18.4 (#973)
+
+-------------------------------------------------------------------
+Sun Sep 25 06:56:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.3:
+  * Release version v0.18.3 (#972)
+  * Generate deepcopy functions for SealedSecretEncryptedData (#970)
+  * Release chart v2.6.7 (#968)
+  * Check SealedSecret status in tests (#967)
+  * Fix status sub-resource not found error on updating status (#964)
+  * Autogenerate schema-v1alpha1.yaml (#966)
+  * fix: CRDs should not include unnecessary dashes (#965)
+  * feat: Support hostNetwork and dnsPolicy (#946)
+  * Run integration tests on the chart (#962)
+  * Upgrade Go versions and dependencies (#960)
+  * Make imagePullPolicy default to Always only if using :latest image (#959)
+  * feat: Publish kubeseal binary in a Docker image (#921)
+  * Fix schema validation errors (#957)
+  * Makes the README file clean and neat. (#911)
+  * Bump Chart version to release 'Allow additional volumes deployment' (#953)
+  * Allow additional volumes deployment (#945)
+  * Add CRD schema and fix JSON errors (#941)
+  * Make the controller main skinny (#947)
+  * Extend controller-tests support and docs to minikube (#943)
+  * Take into account annotations and commonAnnotations in our chart (#944)
+  * Make the kubeseal CLI have a skinny main (#939)
+  * Remove magic init funcs and global flags (#940)
+  * Explain helm chart install on restricted environments (#938)
+  * Remove /dev/stdin mentions in Readme (#935)
+  * Fix missing push and readme on new tests rules (#937)
+  * Simplify controller testing (#924)
+  * Upgrade chart to image version 1.18.2 (#932)
+
+-------------------------------------------------------------------
+Wed Sep 07 11:30:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.2:
+  * Fix Dockerfile to align with new GoReleaser Path format (#933)
+  * Release Sealed Secrets 0.18.2 (#927)
+  * Remove non-inclusive references (#930)
+  * Include gotestsum dependency in the Release process (#931)
+  * Upgrade VIB action to 0.4.0 (#926)
+  * Rebase of Refactor flag handling (#920)
+  * Add josvazg to the maintainer list (#922)
+  * Add kubectl command to alter deployment (#919)
+  * Use inclusive terminology (#917)
+  * instruction about kubeseal installation on Linux distribution like ubuntu (#913)
+  * Update README.md - changed the example secret (#910)
+  * Allow skipping ClusterRole creation (#906)
+  * Upgrade code-generator tool and update generated code (#905)
+  * Remove clientconfig and related global variables (#901)
+  * Rename package folders to sealedsecrets (#902)
+  * Qualify RSA replacement recommendation (#899)
+  * Update CI to support Go 1.19 (#904)
+  * Use gotestsum for better test reporting. (#900)
+  * Replace ioutil with io or os (#895)
+  * Update CODEOWNERS to add myself (#903)
+  * Fix some minor issues in Readme (#897)
+  * fix honorLabels (#889)
+  * Fix rateLimit values (#893)
+  * Include additionalNamespace option in our chart (#892)
+  * Release chart v2.4.0 (#886)
+  * feat(kubernetes/chart): explicitly mount service-account-token in deployment (#885)
+  * feat: override rate limit for chart (#876)
+
+-------------------------------------------------------------------
+Sat Jul 16 19:16:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.1:
+  * New v0.18.1 release (#884)
+  * Add flagenv and pflagenv to the project (#882)
+  * Fixed typo in the CODEOWNERS file (#883)
+  * Static documentation site for Sealed Secrets (#877)
+  * feat: override rate limit (#873)
+  * add deploymentAnnotations field in helm chart (#864)
+  * Add Nixpkgs to installation options in README.md (#849)
+  * Updated CODEOWNERS and created maintainers file (#867)
+  * Release chart v2.2.0 (#856)
+
+-------------------------------------------------------------------
+Sat Jun 04 18:56:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.0:
+  * New v0.18.0 release (#855)
+  * Update golang target version to latest release 1.18.3 (#854)
+  * Add capability to watch multiple namespaces (#572)
+  * Update gopkg.in/yaml.v3 to v3.0.0 (#852)
+  * Publish images in GHCR (#851)
+  * Remove operator links (#845)
+  * Indent controller installation instructions (#844)
+  * Made gosec a step of the CI (#798)
+  * Update resourcenames in the controller.jsonnet to align it with the helm rbac rules (#838)
+  * fix: rbac permission (#828)
+  * Fix gosec warnings (#837)
+  * Cosign signature setup for release and docker image in CI (#810)
+  * Remove race condition in merge (#789)
+  * Gosec g304 (#795)
+  * Update the vmware-image-builder action with the latest release (#834)
+  * Add runtimeClassName as configurable value (#832)
+  * Fix make generate and set up temporally an specific code-generator version (#817)
+  * #791 Check if kubeseal encrypts using an expired certificate (#818)
+  * Bump prometheus/client_golang dependency to avoid CVE-2022-21698 and crypto dependency to avoid CVE-2022-27191 (#831)
+  * Chart: update registry and bump version (#825)
+  * Bump goreleaser to v1.7.0 (#826)
+
+-------------------------------------------------------------------
+Tue Apr 26 06:21:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.17.5:
+  * Bump goreleaser to v1.7.0
+  * Update v0.17.5 release notes (#824)
+  * Publish sealed-secret-controller in Dockerhub (#823)
+  * Enable goimports in golangci-lint (#816)
+  * Added a nosec comment to a deferred f.close call (#793)
+  * Format code with goimports (#815)
+  * Add a nosec directory to allow http.Dir("/") (#812)
+  * Include cosign public key (#814)
+  * Adding post-quantum analysis and recommendations (#801)
+  * Updated the distroless image verification to use a local key (#813)
+  * Add cosign verification for distroless image (#796)
+  * Crypto doc rewrite (#794)
+  * Chart: bump image version (#807)
+  * Update VIB pipeline (#809)
+  * Run CI with the last two Go releases (#805)
+
+-------------------------------------------------------------------
+Fri Apr 01 07:11:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.17.4:
+  * Update v0.17.4 release notes (#804)
+  * Bump the Golang project version to 1.17 (#782)
+  * fixing Dockerfile to run as non root (#784)
+  * Add alemorcuq to the CODEOWNERS list (#803)
+  * Update Docker image version (#792)
+  * Added a way to run gosec using a Makefile task (#797)
+  * Fixing the deprecated MAINTAINER usage (#790)
+  * Bump prometheus/client_golang dependency to avoid CVE-2022-21698 (#783)
+  * New v0.17.4 release (#777)
+  * Bump distroless/static to fix DLA-2542-1, DLA-2509-1, DLA-2424-1 (#604)
+  * Document use of --controller-name for kubeseal (#774)
+  * [vib] fix trivy action configuration (#776)
+  * Include golangci-lint (#775)
+  * Fix linter errors running golangci-lint (#771)
+  * Update README file CI Badges (#772)
+  * Add script to easily run kubeseal with a service account credentials (#746)
+  * update k8s API dependencies for Go1.18 compatibility (#763)
+  * Add Controller's OpenAPI spec (#766)
+  * Helm chart - add support for customizing probes (#764)
+  * fix: address some golangci-lint issues (#751)
+  * Upgrade kubecfg from v0.16.0 to v0.25.0 (#760)
+  * Update VIB GitHub action repository (#759)
+  * docs: update README (#750)
+  * Add arm64 releases for Darwin (#752)
+  * Added required resourceName to Role (#745)
+  * Improve raw mode docs (#738)
+  * Trivial PR to test VIB integration (#743)
+  * Add integration with VIB (#742)
+  * Fix image pull secrets in chart (#737)
+  * docs: add webseal projects (#735)
+  * Do not add 'stale' label to issues marked as 'help wanted' (#736)
+  * Chart command args (#734)
+  * contrib/prometheus: Honor Labels added by controller (#614)
+  * Add 'Simple Issue Labeler' GH action (#733)
+  * updated ocp install using helm (#730)
+  * Chart: bump image version (#729)
+
+-------------------------------------------------------------------
+Fri Feb 11 14:09:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubeseal: CLI part for using Bitnami's SealedSecrets in Kubernetes

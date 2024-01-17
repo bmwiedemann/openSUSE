@@ -1,0 +1,8 @@
+<package name="cups-pdf" project="openSUSE:Factory">
+  <title>Virtual PDF printer for CUPS.</title>
+  <description>CUPS-PDF is a PDF writer backend for CUPS. It is designed to produce PDF files in a heterogeneous network by providing a PDF printer on the central fileserver. It will convert files printed to its queue in CUPS to PDF and put them in a per-user-based directory structure. It can execute post-processing scripts, e.g. to allow mailing the results to the user.
+
+We do not recommend to install this package on multi-user systems, like SuSE Linux Enterprise Server. Users can overwrite PDFs from other user, the spool isn't purged and can fill the harddisk fast, which can result in a denial-of-service for the whole system.</description>
+  <devel project="Printing" package="cups-pdf"/>
+  <url>http://www.cups-pdf.de</url>
+</package>

@@ -1,0 +1,42 @@
+From bdc3895f330f10bfbef1079417c023d4f4157673 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Wolfgang=20St=C3=B6ggl?= <c72578@yahoo.de>
+Date: Fri, 1 May 2020 14:39:31 +0200
+Subject: [PATCH] Update websocketpp-configVersion.cmake
+
+- Disable check for same 32/64bit-ness. Use the ARCH_INDEPENDENT option
+  for CMake 3.14 and newer.
+- Use AnyNewerVersion instead of ExactVersion in order to increase
+  compatibility. Otherwise cmake find_package will fail, if the version
+  is not exactly the same.
+---
+ CMakeLists.txt | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bff3654e..198ffd93 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -272,9 +272,20 @@ configure_package_config_file(websocketpp-config.cmake.in
+   INSTALL_DESTINATION "${INSTALL_CMAKE_DIR}"
+   NO_CHECK_REQUIRED_COMPONENTS_MACRO
+ )
+-write_basic_package_version_file("${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/websocketpp-configVersion.cmake"
+-  VERSION ${WEBSOCKETPP_VERSION}
+-  COMPATIBILITY ExactVersion)
++if (${CMAKE_VERSION} VERSION_LESS "3.14.0")
++    # Disable check for same 32/64bit-ness in websocketpp-configVersion.cmake by setting CMAKE_SIZEOF_VOID_P
++    set (CMAKE_SIZEOF_VOID_P "")
++    write_basic_package_version_file("${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/websocketpp-configVersion.cmake"
++      VERSION ${WEBSOCKETPP_VERSION}
++      COMPATIBILITY AnyNewerVersion)
++else ()
++    # Use ARCH_INDEPENDENT option introduced in CMake 3.14
++    # ARCH_INDEPENDENT is intended for header-only libraries or similar packages with no binaries
++    write_basic_package_version_file("${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/websocketpp-configVersion.cmake"
++      VERSION ${WEBSOCKETPP_VERSION}
++      COMPATIBILITY AnyNewerVersion
++      ARCH_INDEPENDENT)
++endif ()
+ 
+ # Install the websocketpp-config.cmake and websocketpp-configVersion.cmake
+ install (FILES

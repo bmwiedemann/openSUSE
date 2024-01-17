@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>156340e3979bd002a8ddc9c2d152c56d</srcmd5>
+    <version>0.3.11</version>
+    <time>1569588537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731430</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f2471f44e9ff33b75c69bc44014cb0d0</srcmd5>
+    <version>0.3.12</version>
+    <time>1584745188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786860</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ca53c570409e96a698890523efc99a9</srcmd5>
+    <version>0.4.1</version>
+    <time>1642835887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * This release just incorporates the fix for #223
+  * Default values will now always serialize, even if the default value is null. Since this change could cause unexpected changes in serialized output the minor version has been bumped. Fixes #200
+  * Literals now properly support comparisons of all types (#213)
+  * oneOfs inside oneOfs (oneOf-ception?!) no longer fail to serialize (#214)
+  * #203 validatorSchemas passed in are now respected
+  * #208 oneOf roundtrip serializations work better
+  * #207 Another fix for abc deprecation
+  * Fixes import path for collections.abc to be compliant with Python 3.8 [#197] (h/t @adriangay) 
+- Remove duplicate setuptools BuildRequires.</comment>
+    <requestid>947811</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7e0bc2ad28354fc17927ac7c40abe68e</srcmd5>
+    <version>0.4.1</version>
+    <time>1657281787</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a failing test for now.</comment>
+    <requestid>987785</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8a5482f39a9263168030a603a0b5d3d6</srcmd5>
+    <version>0.4.1</version>
+    <time>1661599281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999544</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eb767dd3e5e876d3f5ea2621afe392fa</srcmd5>
+    <version>0.4.2</version>
+    <time>1689710942</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099288</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b286a17bdf90966d6a10a6d523e3e507</srcmd5>
+    <version>0.5.0</version>
+    <time>1695209479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Migrate to jsonschema 4.18
+  * Drop support for Python 3.7 due to lack of support under jsonschema&gt;=4.18
+  * Drop support for jsonschema&lt;4.18 due to breaking changes in that
+    libraries interfaces
+- Migrate to pyproject macros
+- Stop using greedy globs in %files</comment>
+    <requestid>1112409</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4a02b4fb9e8b10a0d33e52ca8bf5137e</srcmd5>
+    <version>0.5.1</version>
+    <time>1702327865</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.5.1:
+  * Setup for handling anyOf simplifying to oneOf on import.
+- Add patch use-specification-obj.patch:
+  * Stop passing string schemas, convert it to a Specification object</comment>
+    <requestid>1132394</requestid>
+  </revision>
+</revisionlist>

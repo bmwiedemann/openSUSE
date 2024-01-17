@@ -1,0 +1,5 @@
+<package name="partclone" project="openSUSE:Factory">
+  <title>partclone</title>
+  <description>A set of file system clone utilities, including ext2/3, reiserfs, reiser4, xfs, hfs+ file system</description>
+  <devel project="filesystems" package="partclone"/>
+</package>

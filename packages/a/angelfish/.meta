@@ -1,0 +1,9 @@
+<package name="angelfish" project="openSUSE:Factory">
+  <title>Mobile web browser</title>
+  <description>Angelfish is a mobile web browser. It supports typical browser features, such
+as bookmarks, history and tabs.
+
+</description>
+  <devel project="KDE:Applications" package="angelfish"/>
+  <url>https://apps.kde.org/angelfish</url>
+</package>

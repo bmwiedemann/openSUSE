@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Dec 14 16:55:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.101
+  * Re-release of the entire font family; this work collects all
+    the developments from various forks (impallari and TypeNetwork)
+    and brings them back to the original project repository.
+- Rename package back to lomt-raleway-fonts
+
+-------------------------------------------------------------------
+Tue Apr 22 21:57:05 UTC 2014 - jengelh@inai.de
+
+- Update description and set full Obsolete on lomt-raleway-fonts
+
+-------------------------------------------------------------------
+Thu Oct 17 09:05:27 UTC 2013 - pgajdos@suse.com
+
+- initial version 3.0
+
+

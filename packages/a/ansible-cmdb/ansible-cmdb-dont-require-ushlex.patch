@@ -1,0 +1,22 @@
+diff --git a/requirements.txt b/requirements.txt
+index f1fdb38..ca9b91d 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,4 +1,3 @@
+ mako
+ pyyaml
+-ushlex
+ jsonxs
+diff --git a/setup.py b/setup.py
+index 0662504..1c30a5a 100755
+--- a/setup.py
++++ b/setup.py
+@@ -50,7 +50,7 @@ setup(
+         ) +
+         [['lib/ansiblecmdb/', ['src/ansible-cmdb.py']]],
+     zip_safe=False,
+-    install_requires=['mako', 'pyyaml', 'ushlex', 'jsonxs'],
++    install_requires=['mako', 'pyyaml', 'jsonxs'],
+     scripts=[
+         'src/ansible-cmdb',
+     ],

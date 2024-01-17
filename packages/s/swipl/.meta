@@ -1,0 +1,8 @@
+<package name="swipl" project="openSUSE:Factory">
+  <title>Prolog compiler</title>
+  <description>Edinburgh-style Prolog compiler including modules, autoload, libraries,  
+Garbage collector, stack expandor, C interface, GNU readline and GNU  
+Emacs interface, a very fast compiler,and an X11 interface using XPCE  
+(see http://www.swi.psy.uva.nl/projects/xpce).  </description>
+  <devel project="devel:languages:misc" package="swipl"/>
+</package>

@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14d5c0d4ad2eba380edb6494ca1e388c</srcmd5>
+    <version>1.0.0</version>
+    <time>1579101367</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain r128gain in Factory</comment>
+    <requestid>764477</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>461ac6c26504b584ae79015de24a298d</srcmd5>
+    <version>1.0.1</version>
+    <time>1580724903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769354</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c119d7f82b40b792f49bca42a25d9172</srcmd5>
+    <version>1.0.2</version>
+    <time>1591863247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813389</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>23e7567689025e0ae2d9af2c1a7494b1</srcmd5>
+    <version>1.0.3</version>
+    <time>1600802030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835997</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a0288a5f85eb6faae2ff7f0e43c47453</srcmd5>
+    <version>1.0.4</version>
+    <time>1635167855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927250</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>731b19a782ef7e44c0b24aae66ac3450</srcmd5>
+    <version>1.0.7</version>
+    <time>1679854789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074378</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b84a9fd344d3170b1d4e9a6a9de2fde1</srcmd5>
+    <version>1.0.7</version>
+    <time>1703281314</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134600</requestid>
+  </revision>
+</revisionlist>

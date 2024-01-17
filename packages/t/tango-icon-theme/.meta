@@ -1,0 +1,6 @@
+<package name="tango-icon-theme" project="openSUSE:Factory">
+  <title>Tango Icon Theme</title>
+  <description>This is the Tango base theme. On top of that, the package includes
+some specific icons from the legacy tango-icon-theme-extras package.</description>
+  <devel project="GNOME:Factory" package="tango-icon-theme"/>
+</package>

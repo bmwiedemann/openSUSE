@@ -1,0 +1,20 @@
+<package name="Cadence" project="openSUSE:Factory">
+  <title>A JACK Audio Toolbox</title>
+  <description> Cadence is a set of tools useful for audio production.
+Cadence itself is also an application (the main one), which this page will document.
+There are other applications that are part of the Cadence suite, they are usually named as the &quot;Cadence tools&quot;.
+They are:
+
+    Catarina
+    Catia
+    Claudia
+
+Some of these also have sub-tools, such as Cadence-JackMeter and Claudia-Launcher.
+
+
+Authors:
+--------
+Filipe Coelho &lt;falktx@gmail.com&gt;
+</description>
+  <devel project="multimedia:apps" package="Cadence"/>
+</package>

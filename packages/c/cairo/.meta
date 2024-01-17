@@ -1,0 +1,9 @@
+<package name="cairo" project="openSUSE:Factory">
+  <title>Vector Graphics Library with Cross-Device Output Support</title>
+  <description>Cairo is a vector graphics library with cross-device output support.
+Currently supported output targets include the X Window System,
+in-memory image buffers, and PostScript. Cairo is designed to produce
+identical output on all output media while taking advantage of display
+hardware acceleration when available.</description>
+  <devel project="GNOME:Factory" package="cairo"/>
+</package>

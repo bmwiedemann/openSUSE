@@ -1,0 +1,43 @@
+commit acac613af7d702dae533cbdf9ef49cef803d0559
+Author: Robert Frohl <rfrohl@suse.com>
+Date:   Tue Sep 12 14:53:17 2023 +0200
+
+    Warn if user can't access dumpcap.
+
+Index: wireshark-4.2.0rc2/capture/capture_sync.c
+===================================================================
+--- wireshark-4.2.0rc2.orig/capture/capture_sync.c
++++ wireshark-4.2.0rc2/capture/capture_sync.c
+@@ -24,6 +24,10 @@
+ #include <wsutil/strtoi.h>
+ #include <wsutil/ws_assert.h>
+ 
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <grp.h>
++
+ #ifdef _WIN32
+ #include <wsutil/unicode-utils.h>
+ #include <wsutil/win32-utils.h>
+@@ -530,10 +534,21 @@ sync_pipe_open_command(char* const argv[
+             ws_close(data_pipe[PIPE_READ]);
+             ws_close(data_pipe[PIPE_WRITE]);
+         }
++        char * grp_warning = calloc(1, 256);
+         dup2(sync_pipe[PIPE_WRITE], 2);
+         ws_close(sync_pipe[PIPE_READ]);
+         ws_close(sync_pipe[PIPE_WRITE]);
+         execv(argv[0], argv);
++        if (errno == EPERM || errno == EACCES) {
++                struct stat statbuf;
++                struct group *grp;
++                if(stat("/usr/bin/dumpcap", &statbuf) == 0) {
++                        if ((grp = getgrgid(statbuf.st_gid)) != NULL) {
++                                snprintf(grp_warning , 256, "\nYou need to be a member of the '%s' group. Try running\n'usermod -a -G %s <YOUR_USERNAME>' as root.", grp->gr_name, grp->gr_name);
++                        }
++                }
++        }
++        free(grp_warning);
+         sync_pipe_write_int_msg(2, SP_EXEC_FAILED, errno);
+ 
+         /* Exit with "_exit()", so that we don't close the connection

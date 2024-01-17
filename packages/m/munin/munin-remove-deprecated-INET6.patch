@@ -1,0 +1,150 @@
+From 012b33a702155ba7c96fd62028a3559364693c7e Mon Sep 17 00:00:00 2001
+From: Steve Schnepp <steve.schnepp@pwkf.org>
+Date: Wed, 26 Feb 2020 21:50:47 +0100
+Subject: [PATCH] Use IO::Socket::IP instead of IO::Socket::INET[6]
+
+---
+ Build.PL                 | 2 +-
+ Dockerfile               | 2 +-
+ cpanfile                 | 2 +-
+ lib/Munin/Master/Node.pm | 4 ++--
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+Index: munin-2.0.72/cpanfile
+===================================================================
+--- munin-2.0.72.orig/cpanfile
++++ munin-2.0.72/cpanfile
+@@ -11,7 +11,7 @@ requires 'Getopt::Long';
+ requires 'HTML::Template::Pro';
+ requires 'HTTP::Server::Simple::CGI';
+ requires 'IO::Scalar';
+-requires 'IO::Socket::INET6';
++requires 'IO::Socket::IP';
+ requires 'JSON';
+ requires 'LWP::Simple';
+ requires 'LWP::UserAgent';
+Index: munin-2.0.72/Announce-2.0
+===================================================================
+--- munin-2.0.72.orig/Announce-2.0
++++ munin-2.0.72/Announce-2.0
+@@ -14,7 +14,7 @@ The most important features:
+   - Large performance improvements on almost all munin's components
+ 
+ * Complete IPv6 integration.
+-  - The master only require a new perl module (IO::Socket::INET6)
++  - The master only require a new perl module (IO::Socket::IP)
+   - The node needs a IPv6-patched Net::Server
+ 
+ * Native SSH transport
+Index: munin-2.0.72/doc/installation/prerequisites.rst
+===================================================================
+--- munin-2.0.72.orig/doc/installation/prerequisites.rst
++++ munin-2.0.72/doc/installation/prerequisites.rst
+@@ -56,7 +56,7 @@ The munin master needs
+     * File\::Copy::Recursive
+     * Getopt::Long
+     * HTML::Template
+-    * IO::Socket::INET6
++    * IO::Socket::IP
+     * Log::Log4perl 1.18 or later
+     * Net::SSLeay (Optional, if you want to use SSL/TLS)
+     * Params::Validate
+Index: munin-2.0.72/master/lib/Munin/Master/Node.pm
+===================================================================
+--- munin-2.0.72.orig/master/lib/Munin/Master/Node.pm
++++ munin-2.0.72/master/lib/Munin/Master/Node.pm
+@@ -13,7 +13,7 @@ use Munin::Common::TLSClient;
+ use Data::Dumper;
+ use Log::Log4perl qw( :easy );
+ use Time::HiRes qw( gettimeofday tv_interval );
+-use IO::Socket::INET6;
++use IO::Socket::IP;
+ 
+ # Used as a timestamp value, this declares none was found
+ use constant NO_TIMESTAMP => -1;
+@@ -82,7 +82,7 @@ sub _do_connect {
+     LOGCROAK("[FATAL] '$url' is not a valid address!") unless $uri->scheme;
+ 
+     if ($uri->scheme eq "munin") {
+-        $self->{reader} = $self->{writer} = IO::Socket::INET6->new(
++        $self->{reader} = $self->{writer} = IO::Socket::IP->new(
+ 		PeerAddr  => $uri->host,
+ 		PeerPort  => $self->{port} || 4949,
+ 		LocalAddr => $self->_get_node_or_global_setting("local_address"),
+Index: munin-2.0.72/master/t/munin_master_node.t
+===================================================================
+--- munin-2.0.72.orig/master/t/munin_master_node.t
++++ munin-2.0.72/master/t/munin_master_node.t
+@@ -45,7 +45,7 @@ sub setup {
+     });
+     my $connected_socket = Test::MockObject->new();
+     $connected_socket->set_true('connected');
+-    my $inet = Test::MockModule->new('IO::Socket::INET6');
++    my $inet = Test::MockModule->new('IO::Socket::IP');
+     $inet->mock(new => sub { return $connected_socket });
+ 
+     $node->_do_connect();
+Index: munin-2.0.72/INSTALL
+===================================================================
+--- munin-2.0.72.orig/INSTALL
++++ munin-2.0.72/INSTALL
+@@ -40,7 +40,7 @@ Server:
+    - Getopt::Long
+    - File::Copy::Recursive
+    - CGI::Fast
+-   - IO::Socket::INET6
++   - IO::Socket::IP
+    - Log::Log4perl 1.18 or later (which depends on
+      - IPC::Shareable
+      - Log::Dispatch
+Index: munin-2.0.72/contrib/Net-Server.patch
+===================================================================
+--- munin-2.0.72.orig/contrib/Net-Server.patch
++++ munin-2.0.72/contrib/Net-Server.patch
+@@ -9,7 +9,7 @@ diff -ur lib.orig/Net/Server/Proto/SSLEA
+  use strict;
+  use vars qw($VERSION $AUTOLOAD @ISA);
+ -use IO::Socket::INET;
+-+use IO::Socket::INET6;
+++use IO::Socket::IP;
+  use Fcntl ();
+  use Errno ();
+  use Socket ();
+@@ -18,7 +18,7 @@ diff -ur lib.orig/Net/Server/Proto/SSLEA
+  
+  $VERSION = $Net::Server::VERSION; # done until separated
+ -@ISA = qw(IO::Socket::INET);
+-+@ISA = qw(IO::Socket::INET6);
+++@ISA = qw(IO::Socket::IP);
+  
+  sub object {
+      my $type  = shift;
+@@ -63,11 +63,11 @@ diff -ur lib.orig/Net/Server/Proto/TCP.p
+  use strict;
+  use vars qw($VERSION $AUTOLOAD @ISA);
+ -use IO::Socket ();
+-+use IO::Socket::INET6 ();
+++use IO::Socket::IP ();
+  
+  $VERSION = $Net::Server::VERSION; # done until separated
+ -@ISA = qw(IO::Socket::INET);
+-+@ISA = qw(IO::Socket::INET6);
+++@ISA = qw(IO::Socket::IP);
+  
+  sub object {
+    my $type  = shift;
+@@ -156,12 +156,12 @@ diff -ur lib.orig/Net/Server.pm lib/Net/
+  ### perform basic allow/deny service
+  sub allow_deny {
+    my $self = shift;
+-@@ -1145,7 +1147,7 @@
++@@ -1145,6 +1147,6 @@
+        or $self->fatal("Can't dup socket [$!]");
+  
+      ### hold on to the socket copy until exec
+ -    $prop->{_HUP}->[$i] = IO::Socket::INET->new;
+-+    $prop->{_HUP}->[$i] = IO::Socket::INET6->new();
+++    $prop->{_HUP}->[$i] = IO::Socket::IP->new();
+      $prop->{_HUP}->[$i]->fdopen($fd, 'w')
+        or $self->fatal("Can't open to file descriptor [$!]");
+ 

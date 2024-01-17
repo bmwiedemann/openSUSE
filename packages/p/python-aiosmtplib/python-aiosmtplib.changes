@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Tue Nov 14 15:41:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Bugfix: 'Future exception was never retrieved' warning in
+    SMTPProtocol after successful connection close and garbage
+    collection.
+  * Cleanup: Updated FlowControlMixin logic from stdlib
+    are keyword only.
+  * **BREAKING**: Passing ``source_address`` as a string argument
+    is now an error. ``source_address``  takes a (addr, port)
+    tuple that is used as the ``local_addr`` param of
+    ``asyncio.create_connection``, allowing for binding
+    to a specific IP. The ``local_hostname`` argument takes the
+    value to be sent to the server with the EHLO/HELO message
+    (which is what ``source_address`` was used for prior to 2.0).
+  * Change: don't use timeout value passed to ``connect``
+    everywhere, only for the initial connection
+  * Change: removed unnecessary connection lost callback
+  * Change: revised handling for 'Future exception was never
+    retrieved' warnings in protocol
+
+-------------------------------------------------------------------
+Tue Jun 20 16:49:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Bugfix: don't send extra EHLO/HELO before QUIT
+  * Change: added SMTPConnectionResponseError for invalid
+    response on connect only
+
+-------------------------------------------------------------------
+Fri Feb 10 10:34:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Bugfix: "tests" and "docs" in the sdist should be includes,
+    not packages, so that they do not get put in site-packages.
+
+-------------------------------------------------------------------
+Thu Nov 10 16:08:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2.0.0
+  * BREAKING: Drop Python 3.5 and 3.6 support.
+  * BREAKING: On connect, if the server supports STARTTLS, automatically try to upgrade the connection.
+    STARTTLS after connect can be turned on or off explicitly by passing start_tls=True or start_tls=False respectively.
+  * BREAKING: Remove deprecated loop keyword argument for the SMTP class.
+  * Change: The source_address argument now takes a (addr, port) tuple that is passed as the local_addr param to asyncio.create_connection,
+    allowing for binding to a specific IP. The new local_hostname argument that takes the value to be sent to the server with the EHLO/HELO message.
+    This behaviour more closely matches smtplib.
+  * In order to not break existing usage, passing a string instead of a tuple to source_address will give a DeprecationWarning,
+    and use the value as it if had been passed for local_hostname.
+  * Thanks @rafaelrds and @davidmcnabnz for raising and contributing work on this issue.
+  * Bugfix: the mail_options and rcpt_options arguments to the send coroutine no longer cause errors
+  * Cleanup: Refactored SMTP parent classes to remove complex inheritance structure.
+  * Cleanup: Switched to asyncio.run for sync client methods.
+  * Cleanup: Don't use private email.message.Message policy attribute (instead, set an appropriate policy based on message class)
+
+- Update to v1.1.7
+  * Security: Fix a possible injection vulnerability (a variant of https://consensys.net/diligence/vulnerabilities/python-smtplib-multiple-crlf-injection/)
+  * Note that in order to exploit this vulnerability in aiosmtplib, the attacker would need control of the hostname or source_address parameters.
+    Thanks Sam Sanoop @ Snyk for bringing this to my attention.
+  * Bugfix: include CHANGLOG in sdist release
+  * Type hints: fix type hints for async context exit (credit @JelleZijlstra)
+
+-------------------------------------------------------------------
+Sat Jan 15 17:24:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.6:
+  * update auth other than login
+- remove failing_smtpd_tests.patch: not needed
+
+-------------------------------------------------------------------
+Fri May  7 20:53:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add failing_smtpd_tests.patch to fix failing tests
+  (gh#cole/aiosmtplib#171).
+
+-------------------------------------------------------------------
+Fri Apr 30 10:00:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.5:
+  - Bugfix: avoid raising asyncio.CancelledError on connection lost
+  - Bugfix: allow UTF-8 chars in usernames and password strings
+  - Feature: allow bytes type args for login usernames and passwords
+- Switch off failing tests because of gh#cole/aiosmtplib#171.
+
+-------------------------------------------------------------------
+Sun Nov 29 07:16:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add docs/*.rst to %doc
+- Remove a test skip that has been resolved upstream
+- Update to v1.1.4
+  * Bugfix: parsing comma separated addresses in to header
+- from v1.1.3
+  * Feature: add pause and resume writing methods to SMTPProcotol,
+    via asyncio.streams.FlowControlMixin
+  * Bugfix: allow an empty sender
+  * Cleanup: more useful error message when login called without TLS
+
+-------------------------------------------------------------------
+Mon Mar 23 13:06:24 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove docs/tests folders that were not supposed to be installed
+
+-------------------------------------------------------------------
+Thu Jan 16 17:00:41 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.1.2
+  * Fix handling of sending legacy email API (Message) objects.
+  * Fix SMTPNotSupported error with UTF8 sender/recipient names
+    on servers that don’t support SMTPUTF8.
+
+-------------------------------------------------------------------
+Tue Sep 17 08:45:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Sep 17 01:40:23 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip two online tests, and one failing test on i586
+
+-------------------------------------------------------------------
+Wed Sep 11 12:10:26 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.0

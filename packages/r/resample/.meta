@@ -1,0 +1,7 @@
+<package name="resample" project="openSUSE:Factory">
+  <title>Sampling-rate conversion program</title>
+  <description>The resample program is a high-quality resampling program. For example,
+it can be used to convert the sampling rate from 48 kHz (used by DAT
+machines) to 44.1 kHz (the standard sampling rate for Compact Discs).</description>
+  <devel project="multimedia:apps" package="resample"/>
+</package>

@@ -1,0 +1,14 @@
+Index: b/src/validate.c
+===================================================================
+--- a/src/validate.c
++++ b/src/validate.c
+@@ -329,6 +329,9 @@ static DesktopKeyDefinition registered_d
+   /* Since 1.5 */
+   { DESKTOP_BOOLEAN_TYPE,           "SingleMainWindow", FALSE, FALSE, FALSE, NULL },
+ 
++  /* SuSE specific */
++  { DESKTOP_BOOLEAN_TYPE,      "X-SuSE-translate",  FALSE, FALSE, FALSE, NULL },
++
+   /* Keys reserved for KDE */
+ 
+   /* since 0.9.4 */

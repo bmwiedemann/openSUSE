@@ -1,0 +1,71 @@
+#
+# spec file for package python-wsgi_intercept
+#
+# Copyright (c) 2024 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           python-wsgi_intercept
+Version:        1.13.0
+Release:        0
+Summary:        Library for installing a WSGI application in place of a real URI for testing
+License:        MIT
+URL:            https://github.com/cdent/python3-wsgi-intercept
+Source:         https://files.pythonhosted.org/packages/source/w/wsgi_intercept/wsgi_intercept-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module httplib2}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest >= 2.4}
+BuildRequires:  %{python_module requests >= 2.0.1}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module urllib3 >= 1.11.0 with %python-urllib3 < 2}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-six
+Requires:       python-urllib3 < 2
+Recommends:     python-requests >= 2.0.1
+BuildArch:      noarch
+%python_subpackages
+
+%description
+Testing a WSGI application normally involves starting a server at a local host
+and port, then pointing your test code to that address. Instead, this library
+lets you intercept calls to any specific host/port combination and redirect
+them into a `WSGI application`_ importable by your test program.  Thus, you
+can avoid spawning multiple processes or threads to test your Web app.
+
+%prep
+%setup -q -n wsgi_intercept-%{version}
+
+%build
+%pyproject_wheel
+
+%install
+%pyproject_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/wsgi_intercept/tests
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+export WSGI_INTERCEPT_SKIP_NETWORK=true
+%pytest
+
+%files %{python_files}
+%doc README
+%license LICENSE
+%{python_sitelib}/wsgi_intercept
+%{python_sitelib}/wsgi_intercept-%{version}.dist-info
+
+%changelog

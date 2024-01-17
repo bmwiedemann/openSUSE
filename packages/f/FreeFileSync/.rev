@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d36de17730ec63f79cffcaf8b7c09944</srcmd5>
+    <version>11.0</version>
+    <time>1597221454</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submit of FreeFileSync to Factory.
+
+It would be nice to have this application available in the default repos. </comment>
+    <requestid>825852</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>238f87b55e214a8cc667a709649fb8fd</srcmd5>
+    <version>11.2</version>
+    <time>1601919662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839424</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f789f86139565afec6e8534687c59848</srcmd5>
+    <version>11.3</version>
+    <time>1604609778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846292</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a19d90e4a028a906e586539c712f49f6</srcmd5>
+    <version>11.4</version>
+    <time>1607877041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855495</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9714f1f7aa7c45fb435f9282fa6b0f40</srcmd5>
+    <version>11.7</version>
+    <time>1615061936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877292</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>052396ced400a15072ee62ad64693f13</srcmd5>
+    <version>11.9</version>
+    <time>1621721165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894912</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3719b1904f03611942e2fccc65eae48</srcmd5>
+    <version>11.11</version>
+    <time>1624136579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900616</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>43f9ca9eeb7925706eaa508a6dc0c6ff</srcmd5>
+    <version>11.13</version>
+    <time>1629917873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913915</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7a5675a735bafa4df260133003fd6e66</srcmd5>
+    <version>11.16</version>
+    <time>1643062228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948471</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>621115804af2f66066e671b095b7aba2</srcmd5>
+    <version>11.19</version>
+    <time>1655048496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982157</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>791dbe0d719fa981cf7cffd1d4362f4f</srcmd5>
+    <version>11.23</version>
+    <time>1662063052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.23
+  - Format local file times with no limits on time span
+  - Deferred child item failure when traversing MTP folder
+  - Fixed occasional wrong thumbnail orientation for MTP
+  - Support additional image formats for MTP preview (e.g. CR2)
+  - Fixed folder pair window being squashed after text size increase
+  - Fixed wrong folder pair order when loading config (Linux)
+  - Fixed some images being stretched on high-DPI monitors
+  - Fixed config panel tab text being mirrored in RTL layout
+  - Fixed parsing file times one second before Unix epoch (Gdrive, FTP)
+- Changes from 11.22
+  - Allow to change default log folder in global settings
+  - Fixed sort order when items existing on one side only
+  - Consider HOME environment variable for home path (Linux)
+  - Fixed config selection using shift and arrow keys
+  - Start comparison, then sync by only pressing Enter after startup
+  - Fall back to default path when failing to save log file
+  - Improved relative config path handling in portable mode
+- Changes from 11.21
+  - Support volume GUID as path: \\?\Volume{01234567-89ab-cdef-0123-456789abcdef} (Windows)
+  - Avoid Two-Way conflict when changing folder name upper/lower-case
+  - List hidden warning messages in options dialog
+  - Fixed buffer overflow while receiving SFTP server banner
+  - Create crash dumps even if FFS-internal crash handling doesn't kick in
+  - Log time when error occured, not when it is reported
+  - Swap sides: Require confirmation only after comparison
+  - Updated translation files
+- Changes from 11.20
+  - Fixed broken icon scaling on high-DPI displays
+  - Fixed user language set to English after update
+- Drop obsolete FreeFileSync-build-with-gcc12.patch
+- Drop obsolete FreeFileSync-build-with-wx3.1.5.patch
+- Update FreeFileSync-disable-in-app-updates.patch for version 11.23
+- Update FreeFileSync-icon-loader.patch for version 11.23
+- Update FreeFileSync-resources.patch for version 11.23
+</comment>
+    <requestid>1000395</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>11b8c094069be49f494bcba09ab40bcd</srcmd5>
+    <version>11.29</version>
+    <time>1672221290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045533</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cd18afbd6897808d62f77f7b29e20bf2</srcmd5>
+    <version>11.29</version>
+    <time>1676149079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064400</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9221050dd968c1bbb9240555cdf5867e</srcmd5>
+    <version>12.0</version>
+    <time>1676827147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066553</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77a1a6abc50bc64c00704f4c28ee3cd1</srcmd5>
+    <version>12.3</version>
+    <time>1684688933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088077</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3df58736884108b1ac70962be4ca149d</srcmd5>
+    <version>12.4</version>
+    <time>1688052503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.4:
+  * Show dynamic error and warning count in progress dialogs
+  * Show process elevation status in title bar (Administrator, root)
+  * Fixed libcurl bug CURLE_URL_MALFORMAT for numerical host name
+  * Don't discard config panel last log after no changes found
+  * Set taskbar relaunch command to launcher executable (Windows)
+  * Fixed Btrfs compression not being applied during copy (Linux)
+  * Run on file systems with buggy GetFinalPathNameByHandle() implementation, e.g. Dokany-based
+  * Save selected view mode (F11) in batch config file
+- Rebase FreeFileSync-disable-in-app-updates.patch
+- Rebase FreeFileSync-resources.patch
+</comment>
+    <requestid>1095755</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c7b9cb33f0efa27f7abae0f3918a8a9f</srcmd5>
+    <version>12.5</version>
+    <time>1690987858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.5:
+  * Merge logs of individual steps (comparison, manual operation, sync)
+  * Show total percentage in progress dialog header
+  * Log and report errors during cleanup or exception handling
+  * Skip folder traversal if existence check fails for other side of the pair
+  * Automatically adapt batch options to prevent hanging a non-interactive process (Windows)
+  * Support path lists for external applications: %item_paths%, %local_paths%, %item_names%, %parent_paths%
+  * Create directory lock files with hidden attribute
+  * Don't clear other side when right-clicking file selection
+  * Fixed passive FTP when using different IP than control connection
+  * Work around FTP servers silently renaming unsupported characters of temporary file
+</comment>
+    <requestid>1101985</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>62a777c942b6b290ac4633b011bfce0e</srcmd5>
+    <version>13.0</version>
+    <time>1695327788</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.0:
+  * Rename (multiple) files manually (F2 key)
+  * Configure individual directions for DB-based sync
+  * Detect moved files with &quot;Update&quot; sync variant (requires sync.ffs_db files)
+  * Update variant: Do not restore files that were deleted on target
+  * Distinguish file renames from file moves and simplify grid display
+  * Fixed ERROR_NOT_SUPPORTED when copying files with NTFS extended attributes
+  * Fixed error during process initialization while connecting with quick launch
+  * Avoid redundant file reopen when setting file times during copy
+  * Set working directory to match FFS configuration file when double-clicking (Linux)
+</comment>
+    <requestid>1112735</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>73289524b51b87f8af94ca48f2bd4ad3</srcmd5>
+    <version>13.1</version>
+    <time>1699301661</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.1:
+  * Keep comparison results when only changing cloud connection settings
+  * Sync button: indicate if database will be used
+  * Remove leading/trailing space during manual file rename
+  * Set environment variable &quot;DISPLAY=:0&quot; if missing (Linux)
+  * Support dropping ffs_gui/ffs_real config on RealTimeSync directory input field
+- Add FreeFileSync-remove_ifdef_exceptions.patch
+</comment>
+    <requestid>1123534</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7fd2400a9f57b1918fb5b1a06771b2ae</srcmd5>
+    <version>13.2</version>
+    <time>1701206369</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.2:
+  * Prevent files from being moved to versioning recursively
+  * Return first FTP parsing error when trying multiple variants
+  * Allow file times from the future for Linux-style FTP listing
+</comment>
+    <requestid>1129308</requestid>
+  </revision>
+</revisionlist>

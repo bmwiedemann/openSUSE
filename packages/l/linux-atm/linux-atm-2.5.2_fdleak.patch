@@ -1,0 +1,29 @@
+diff -Ppru linux-atm-2.5.2.orig/.directory linux-atm-2.5.2/.directory
+--- linux-atm-2.5.2.orig/.directory	1970-01-01 01:00:00.000000000 +0100
++++ linux-atm-2.5.2/.directory	2014-01-23 23:39:47.120089077 +0100
+@@ -0,0 +1,4 @@
++[Dolphin]
++Timestamp=2014,1,23,23,39,47
++Version=3
++ViewMode=1
+diff -Ppru linux-atm-2.5.2.orig/src/arpd/atmarp.c linux-atm-2.5.2/src/arpd/atmarp.c
+--- linux-atm-2.5.2.orig/src/arpd/atmarp.c	2009-11-30 17:56:52.000000000 +0100
++++ linux-atm-2.5.2/src/arpd/atmarp.c	2014-01-23 23:44:31.170128564 +0100
+@@ -89,14 +89,17 @@ static int print_table(void)
+     }
+     while ((size = read(fd,buffer,BUF_SIZE))) {
+ 	if (size < 0) {
++	    close(fd);
+ 	    perror("read " ATMARP_DUMP_DIR "/" ATMARP_DUMP_FILE);
+ 	    return 1;
+ 	}
+ 	if (write(1,buffer,size) < 0) {
++	    close(fd);
+ 	    perror("write stdout");
+ 	    return 1;
+ 	}
+     }
++    close(fd);
+     return 0;
+ }
+ 

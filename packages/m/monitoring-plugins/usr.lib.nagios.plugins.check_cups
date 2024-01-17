@@ -1,0 +1,31 @@
+# Last Modified: Mon Mar 11 14:58:16 2013
+#include <tunables/global>
+
+/usr/lib/nagios/plugins/check_cups {
+  #include <abstractions/base>
+  #include <abstractions/bash>
+  #include <abstractions/consoles>
+  #include <abstractions/nameservice>
+
+  network inet dgram,
+  network inet stream,
+
+  /{usr/,}bin/bash rix,
+  /{usr/,}bin/grep rix,
+  /{usr/,}bin/which rix,
+  /{usr/,}bin/lpstat rix,
+  /{usr/,}bin/basename rix,
+  /{usr/,}bin/mktemp rix,
+  /{usr/,}bin/date rix,
+  /{usr/,}bin/rm rix,
+  /{usr/,}bin/cut rix,
+  /{usr/,}bin/bc rix,
+  /{usr/,}bin/wc rix,
+  /tmp/lpstat* wr,
+
+  /var/run/nscd/services r,
+
+  /etc/cups/client.conf r,
+  /proc/sys/crypto/fips_enabled r,
+
+}

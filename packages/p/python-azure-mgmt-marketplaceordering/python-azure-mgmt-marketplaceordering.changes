@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Thu May  6 12:13:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Mon Jan 11 14:15:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Fri Oct  4 12:18:19 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.2.1
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Drop patch to support older versions of setuptools as
+  SLE-12 is now shipping with a recent enough version
+  + amm_drop-compatible-releases-operator.patch
+- Update Requires from setup.py
+- Update %description from setup.py
+
+-------------------------------------------------------------------
+Fri Apr 12 12:33:14 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Bump minimum version for namespace packages
+  to 3.0.0 in BuildRequires and Requires
+- Remove python-devel package from BuildRequires
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+
+-------------------------------------------------------------------
+Thu Sep  6 14:49:59 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Move LICENSE.txt from %doc to %license section
+
+-------------------------------------------------------------------
+Thu Jan 25 12:56:22 UTC 2018 - adrian.glaubitz@suse.com
+
+- Initial build
+  + Version 0.1.0
+- Add patch to drop compatible releases operator from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + amm_drop-compatible-releases-operator.patch

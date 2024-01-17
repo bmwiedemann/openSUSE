@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3b48c89c75362c3b4421521fe4eacd8</srcmd5>
+    <version>2.2.0</version>
+    <time>1616365229</time>
+    <user>dimstar_suse</user>
+    <comment>changed the source URL to match upstream</comment>
+    <requestid>880314</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ca8fe35de356c6572b7716787b55603</srcmd5>
+    <version>2.2.0</version>
+    <time>1616598987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880887</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0cb732fa7d6ef9279460093b0dd0b6ec</srcmd5>
+    <version>2.2.1</version>
+    <time>1635956777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928940</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e43f9340e10c8009467577e34baec736</srcmd5>
+    <version>2.2.1</version>
+    <time>1648330271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965024</requestid>
+  </revision>
+</revisionlist>

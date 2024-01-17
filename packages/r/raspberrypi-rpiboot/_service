@@ -1,0 +1,13 @@
+<!-- See https://en.opensuse.org/openSUSE:Build_Service_Concept_SourceService -->
+<!-- for more details on the syntax -->
+
+<services>
+        <service name="tar_scm" mode="disabled">
+                <param name="scm">git</param>
+                <param name="url">https://github.com/raspberrypi/usbboot.git</param>
+                <param name="filename">raspberrypi-rpiboot</param>
+		<param name="parent-tag">e5e49940caf53b3c70b8167aa06234e5b215ea2c</param>
+		<param name="versionformat">0~git@TAG_OFFSET@.%h</param>
+        </service>
+        <service name="set_version" mode="disabled" />
+</services>

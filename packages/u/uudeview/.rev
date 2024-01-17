@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="26">
+    <srcmd5>d97da30f0d226450167a62553f377d5c</srcmd5>
+    <version>0.5.20</version>
+    <time>1168904425</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="193">
+    <srcmd5>12f79f0918df0c1ca7bd3453a16c587f</srcmd5>
+    <version>0.5.20</version>
+    <time>1211501355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="235">
+    <srcmd5>12f79f0918df0c1ca7bd3453a16c587f</srcmd5>
+    <version>0.5.20</version>
+    <time>1211501355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="236">
+    <srcmd5>579258955e3adada71c1eeaf049b82ed</srcmd5>
+    <version>0.5.20</version>
+    <time>1245363531</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="238">
+    <srcmd5>579258955e3adada71c1eeaf049b82ed</srcmd5>
+    <version>0.5.20</version>
+    <time>1245363531</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="239">
+    <srcmd5>79d1011b8ef23576cbd092f9dc519256</srcmd5>
+    <version>0.5.20</version>
+    <time>1268926441</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="241">
+    <srcmd5>79d1011b8ef23576cbd092f9dc519256</srcmd5>
+    <version>0.5.20</version>
+    <time>1278667394</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="242">
+    <srcmd5>79d1011b8ef23576cbd092f9dc519256</srcmd5>
+    <version>0.5.20</version>
+    <time>1278678624</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="245">
+    <srcmd5>79d1011b8ef23576cbd092f9dc519256</srcmd5>
+    <version>0.5.20</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="247">
+    <srcmd5>79d1011b8ef23576cbd092f9dc519256</srcmd5>
+    <version>0.5.20</version>
+    <time>1319182545</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="248">
+    <srcmd5>56c511f0e438b08953e4309b3604e82e</srcmd5>
+    <version>0.5.20</version>
+    <time>1323195062</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="249">
+    <srcmd5>cb1aac6319ffc2523e6a6910504e6d98</srcmd5>
+    <version>0.5.20</version>
+    <time>1324831347</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97557 from coolo)</comment>
+    <requestid>97581</requestid>
+  </revision>
+  <revision rev="13" vrev="251">
+    <srcmd5>cb1aac6319ffc2523e6a6910504e6d98</srcmd5>
+    <version>0.5.20</version>
+    <time>1340184304</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="253">
+    <srcmd5>cb1aac6319ffc2523e6a6910504e6d98</srcmd5>
+    <version>0.5.20</version>
+    <time>1359110533</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="255">
+    <srcmd5>cb1aac6319ffc2523e6a6910504e6d98</srcmd5>
+    <version>0.5.20</version>
+    <time>1379664901</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="257">
+    <srcmd5>cb1aac6319ffc2523e6a6910504e6d98</srcmd5>
+    <version>0.5.20</version>
+    <time>1409303590</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="258">
+    <srcmd5>1bb6b46cc37a06c1bfa8a9d76153b6c9</srcmd5>
+    <version>0.5.20</version>
+    <time>1515623731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562891</requestid>
+  </revision>
+  <revision rev="18" vrev="259">
+    <srcmd5>4dd5b44f97938ff615383c253f3b77c3</srcmd5>
+    <version>0.5.20</version>
+    <time>1526463798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>608993</requestid>
+  </revision>
+  <revision rev="19" vrev="260">
+    <srcmd5>ac0064a11ab64ea5f22ef402d3486a0c</srcmd5>
+    <version>0.5.20</version>
+    <time>1568191010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729854</requestid>
+  </revision>
+</revisionlist>

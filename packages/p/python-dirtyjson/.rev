@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a7f4ee9ce6239be2eca9798c743e9a8</srcmd5>
+    <version>1.0.7</version>
+    <time>1558037245</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>703008</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9bcdfe9144767911f6a14354764ccfb8</srcmd5>
+    <version>1.0.7</version>
+    <time>1621355238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894050</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c543980c60ec80acd3cbe557ceb7a60e</srcmd5>
+    <version>1.0.7</version>
+    <time>1643062187</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-310.patch:
+  * Support Python 3.10.</comment>
+    <requestid>948299</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49858ee13757d3ca3f02d36cc19cf766</srcmd5>
+    <version>1.0.8</version>
+    <time>1676036163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.8:
+  * Add Python 3.10 support
+- drop support-python-310.patch (upstream)</comment>
+    <requestid>1064208</requestid>
+  </revision>
+</revisionlist>

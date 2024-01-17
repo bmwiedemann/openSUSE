@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ef38734d61f1b870f72f24d02879f7b</srcmd5>
+    <version>1.1.0</version>
+    <time>1502562303</time>
+    <user>maxlin_factory</user>
+    <comment>Add LICENSE and README.rst</comment>
+    <requestid>510141</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>55778ba51585cc739f79c5842f169230</srcmd5>
+    <version>1.1.0</version>
+    <time>1544189771</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the fdupes call to match up documentation
+- Run tests</comment>
+    <requestid>655699</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7c714c4f3ccebcb4092eceb501f40927</srcmd5>
+    <version>2.1.0</version>
+    <time>1645054271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  - Includes PEP 561 marker file so modules depending on this one
+    can take advantage of its inline type hints.
+  - Including the `py.typed` marker file required rearranging
+    files in this repository, but the exposed API is identical to
+    prior releases.
+  - Removal of py2k code.
+</comment>
+    <requestid>955433</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>efc53efd61b0a7cb73c4650a5f675b42</srcmd5>
+    <version>2.1.0</version>
+    <time>1686576365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092354</requestid>
+  </revision>
+</revisionlist>

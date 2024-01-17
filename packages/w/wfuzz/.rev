@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e559c2beb121778dbfd438a2fdd762d</srcmd5>
+    <version>3.1.0</version>
+    <time>1624626105</time>
+    <user>dimstar_suse</user>
+    <comment>A web application fuzzer useful during security assessments</comment>
+    <requestid>902358</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>abb0f613c2c2d21f8b4ecf682dcd8647</srcmd5>
+    <version>3.1.0</version>
+    <time>1639685988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940914</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>efcdb31b6466e7ddb56fe6bbd3b0423a</srcmd5>
+    <version>3.1.0</version>
+    <time>1675266330</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed a problem preventing this package to build in Factory
+- Fixed URL in spec file
+- Removed shebang to fix rpmlint warning
+- First version of wfuzz package.
+</comment>
+    <requestid>1062471</requestid>
+  </revision>
+</revisionlist>

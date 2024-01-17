@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5b539e094147795ac406dd0ac80113d</srcmd5>
+    <version>1.3.3</version>
+    <time>1572542085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742004</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2847c3118b44bedce3deba1b0b5cb9f</srcmd5>
+    <version>1.3.5</version>
+    <time>1584530990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.5</comment>
+    <requestid>785590</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4c67bf51fdebd5dc1da765e964f8c074</srcmd5>
+    <version>1.3.5</version>
+    <time>1590649894</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808043</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e015957ed4cb8149e50b88eba391cbb</srcmd5>
+    <version>1.4.0</version>
+    <time>1592245748</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  *  a new way of the mirroring; some fixes</comment>
+    <requestid>814555</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07a9181e93a63fe33b07a69fe60e5861</srcmd5>
+    <version>1.5.0</version>
+    <time>1600278108</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * ignore ssl option, MSYS2 support</comment>
+    <requestid>834890</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb3996be053b14451f3a486d5e540a64</srcmd5>
+    <version>1.6.0</version>
+    <time>1624136586</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * M1 support</comment>
+    <requestid>900660</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f28546472ae0f9676517599044111be7</srcmd5>
+    <version>1.6.0</version>
+    <time>1648159110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964659</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5f4e8af09d1e0cd2a8932302b6c1f7e7</srcmd5>
+    <version>1.7.0</version>
+    <time>1658244000</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.7.0:
+  * improved m1 support
+  * drop python 3.4-3.6</comment>
+    <requestid>990226</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4cf0ce0bc8d7691eb442ada715f29450</srcmd5>
+    <version>1.7.0</version>
+    <time>1700772157</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1128298 from theMarix
+
+- Also build for modern Python on Leap.
+  - Drop explicit definition of %python_module in the spec file.
+    This is nowadays defined on all distributions we build for.</comment>
+    <requestid>1128370</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61eb3c8422c59ed96f349015cfd43e08</srcmd5>
+    <version>1.8.0</version>
+    <time>1703102540</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.0:
+  * Changes:
+  * #312
+  * #313
+  * #317
+  * #320
+  * #327
+  * #329
+  * #330
+- drop python-nodeenv-no-mock.patch (obsolete)
+
+  * M1 support</comment>
+    <requestid>1134138</requestid>
+  </revision>
+</revisionlist>

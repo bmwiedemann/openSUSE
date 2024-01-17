@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5c232e1ed91ccde051e479373ac0029</srcmd5>
+    <version>3.11.0</version>
+    <time>1572443031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743744</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d9f3ee118ef462966a1bc141e3f26170</srcmd5>
+    <version>3.11.1</version>
+    <time>1574691803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.1:
+  * Resolve #232 -- Change license information to MIT</comment>
+    <requestid>745448</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>690189d384a6ed075260717a28e49592</srcmd5>
+    <version>3.12.1</version>
+    <time>1582207142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.12.1:
+  * Add health_check Django command (CLI) (#217, #234)</comment>
+    <requestid>777589</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2d4a2881207d121aee1d37727a15515a</srcmd5>
+    <version>3.12.1</version>
+    <time>1599088660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831412</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5dab9e949d00fb1265695ea328f03d23</srcmd5>
+    <version>3.14.0</version>
+    <time>1600347787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835131</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4135f911a227b1e0cf78d675530f42d9</srcmd5>
+    <version>3.14.0</version>
+    <time>1600701522</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround upstream packaging problem omitting sub-packages
+  and templates
+</comment>
+    <requestid>835769</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>510104fe2f6c89ef689ad336afeae481</srcmd5>
+    <version>3.16.5</version>
+    <time>1640529037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942600</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5f550d098478f1e447eead9508f6fc96</srcmd5>
+    <version>3.16.5</version>
+    <time>1641556014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944671</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>48915761d12e0ee7c7ebf3de18897f73</srcmd5>
+    <version>3.16.5</version>
+    <time>1652114665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975787</requestid>
+  </revision>
+</revisionlist>

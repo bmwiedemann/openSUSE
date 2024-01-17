@@ -1,0 +1,6 @@
+--- freeradius-server-3.0.8.orig/suse/freeradius-server-tmpfiles.conf	2015-04-22 19:21:34.000000000 +0200
++++ freeradius-server-3.0.8.suse/suse/freeradius-server-tmpfiles.conf	2015-04-23 09:56:08.342988185 +0200
+@@ -1 +1,2 @@
+-D /var/run/radiusd 0710 radiusd radiusd -
++D /run/radiusd 0710 radiusd radiusd -
++

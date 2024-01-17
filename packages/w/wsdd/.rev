@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c83750c106b8122565e1d8b63573603</srcmd5>
+    <version>0.6.4</version>
+    <time>1614792833</time>
+    <user>RBrownSUSE</user>
+    <comment>Updated user creation and removed use of /run/sysconfig</comment>
+    <requestid>876006</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b99596522147fa8bea9843ec8617b7f4</srcmd5>
+    <version>0.6.4</version>
+    <time>1614875689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876786</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3acc259a03158032f2b94588519362ea</srcmd5>
+    <version>0.6.4</version>
+    <time>1618223620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>883673</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f7e394f01d692ce43010a6686676629f</srcmd5>
+    <version>0.6.4</version>
+    <time>1620937086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892175</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e8d296466df6f0c897c42579aca8776</srcmd5>
+    <version>0.7.0</version>
+    <time>1638131401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933929</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>47c555626319f9c83babc87e7b5a956d</srcmd5>
+    <version>0.7.0</version>
+    <time>1645891300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957436</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>9d410b1cb944d4fb7175d797282a1efe</srcmd5>
+    <version>0.7.0</version>
+    <time>1656927142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986253</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5f8a7a15c21f971b53b6a3c797c4ad57</srcmd5>
+    <version>0.7.1</version>
+    <time>1680635842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077023</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5b481b55f0f9ff23bf967822bc92b9ae</srcmd5>
+    <version>0.7.1</version>
+    <time>1680789720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077706</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>832692ce9f5b29c39bd9b2e650ca1b83</srcmd5>
+    <version>0.7.1</version>
+    <time>1697748451</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118630</requestid>
+  </revision>
+</revisionlist>

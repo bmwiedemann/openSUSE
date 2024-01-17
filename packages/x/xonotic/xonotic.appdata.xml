@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Richard Hughes <richard@hughsie.com> -->
+<!--
+EmailAddress: http://www.xonotic.org/team/contact/
+SentUpstream: 2014-09-23
+-->
+<application>
+  <id type="desktop">xonotic.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <description>
+    <p>
+      Xonotic is a free and fast-paced first person shooter which combines
+      addictive, arena-style gameplay with rapid movement and a wide array of
+      weapons.
+    </p>
+    <p>
+      Xonotic is easy to learn, but hard to master! Besides thrilling action for
+      the casual player, the game also provides e-sport opportunities for those
+      interested in its competitive aspects.
+      From mapping contests and monthly quick cups to sponsored tournaments,
+      Xonotic allows every e-sport enthusiast to participate in competitions
+      hosted by its open-minded community.
+    </p>
+    <p>
+      Features such as simple items, fully customizable configs and servers, a
+      functioning anticheat system, the spectator mode, and the opportunity to
+      watch and record games makes Xonotic attractive to competitive players.
+    </p>
+  </description>
+  <url type="homepage">http://www.xonotic.org/</url>
+  <screenshots>
+    <screenshot type="default">http://www.xonotic.org/m/uploads/2012/07/frontpage_005.jpg</screenshot>
+    <screenshot>http://www.xonotic.org/m/uploads/2012/07/frontpage_006.jpg</screenshot>
+    <screenshot>http://www.xonotic.org/m/uploads/2012/07/frontpage_007.jpg</screenshot>
+    <screenshot>http://www.xonotic.org/m/uploads/2012/07/frontpage_008.jpg</screenshot>
+    <screenshot>http://www.xonotic.org/m/uploads/2012/07/frontpage_003.jpg</screenshot>
+  </screenshots>
+  <!-- FIXME: change this to an upstream email address for spec updates
+  <updatecontact>someone_who_cares@upstream_project.org</updatecontact>
+   -->
+</application>

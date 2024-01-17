@@ -1,0 +1,5 @@
+<package name="deepin-wayland" project="openSUSE:Factory">
+  <title>deepin wayland</title>
+  <description></description>
+  <devel project="X11:Deepin" package="deepin-wayland"/>
+</package>

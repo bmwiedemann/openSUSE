@@ -1,0 +1,398 @@
+-------------------------------------------------------------------
+Mon Dec  4 09:11:46 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for a crash on malformed BGP UPDATE message
+  with an EOR, because the presence of EOR does not lead to a
+  treat-as-withdraw outcome (CVE-2023-47235,1216896,https://github.com/FRRouting/frr/pull/14716/commits/6814f2e0138a6ea5e1f83bdd9085d9a77999900b)
+  [+ 0015-bgpd-Treat-EOR-as-withdrawn-to-avoid-unwanted-handli.patch]
+- Apply upstream fix for a crash on crafted BGP UPDATE message with
+  a MP_UNREACH_NLRI attribute and additional NLRI data (CVE-2023-47234,
+  bsc#1216897,ttps://github.com/FRRouting/frr/pull/14716/commits/c37119df45bbf4ef713bc10475af2ee06e12f3bf)
+  [+ 0016-bgpd-Ignore-handling-NLRIs-if-we-received-MP_UNREACH.patch]
+- Apply upstream fix for attempts to read beyond the end of the
+  stream during labeled unicast parsing (CVE-2023-38407,bsc#1216899,https://github.com/FRRouting/frr/pull/12956/commits/ab362eae68edec12c175d9bc488bcc3f8b73d36f)
+  [+ 0017-bgpd-Fix-use-beyond-end-of-stream-of-labeled-unicast.patch]
+- Apply upstream fix for an nlri length of zero mishandling, aka
+  "flowspec overflow" (CVE-2023-38406,bsc#1216900,https://github.com/FRRouting/frr/pull/12884/commits/0b999c886e241c52bd1f7ef0066700e4b618ebb3)
+  [+ 0018-bgpd-Flowspec-overflow-issue.patch]
+
+-------------------------------------------------------------------
+Mon Oct 30 12:38:21 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for a crash due to a crafted BGP UPDATE message
+  (CVE-2023-46753,bsc#1216626,https://github.com/FRRouting/frr/pull/14655/commits/21418d64af11553c402f932b0311c812d98ac3e4).
+  [+ 0013-bgpd-Check-mandatory-attributes-more-carefully-for-U.patch]
+- Apply upstream fix for a crash due to mishandled malformed
+  MP_REACH_NLRI data (CVE-2023-46752,bsc#1216627,https://github.com/FRRouting/frr/pull/14645/commits/b08afc81c60607a4f736f418f2e3eb06087f1a35).
+  [+ 0014-bgpd-Handle-MP_REACH_NLRI-malformed-packets-with-ses.patch]
+
+-------------------------------------------------------------------
+Tue Sep 12 13:40:19 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for NULL pointer dereference due to processing
+  of malformed requests with no attributes in bgp_nlri_parse_flowspec
+  (CVE-2023-41909,bsc#1215065,https://github.com/FRRouting/frr/pull/13222/commits/cfd04dcb3e689754a72507d086ba3b9709fc5ed8).
+  [+ 0012-bgpd-Limit-flowspec-to-no-attribute-means-a-implicit.patch]
+
+-------------------------------------------------------------------
+Wed Aug 30 17:15:35 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Removed protobuf-c BuildRequires (source package name) breaking
+  build-system setup with libprotobuf-c-devel 1.3.2 updates.
+- Apply upstream fix for bgpd: Don't read initial byte of the ORF
+  header in an ahead-of-stream situation (CVE-2023-41360,
+  bsc#1214739,https://github.com/FRRouting/frr/pull/14245)
+  [+ 0008-bgpd-Don-t-read-the-first-byte-of-ORF-header-if-we-a.patch]
+- Apply upstream fix for bgpd: Do not process NLRIs if the attribute
+  length is zero (CVE-2023-41358,bsc#1214735,
+  https://github.com/FRRouting/frr/pull/14260)
+  [+ 0009-bgpd-Do-not-process-NLRIs-if-the-attribute-length-is.patch]
+- Apply upstream fix bgpd: Use treat-as-withdraw for tunnel encapsulation
+  attribute instead of session reset (CVE-2023-38802,bsc#1213284,
+  https://github.com/FRRouting/frr/pull/14290)
+  [+ 0010-bgpd-Use-treat-as-withdraw-for-tunnel-encapsulation-.patch]
+- Apply upstream fix babeld: avoid infinite loops (CVE-2023-3748,bsc#1213434,
+  gh#FRRouting/frr#11808,https://github.com/FRRouting/frr/pull/12952)
+  [+ 0011-babeld-fix-11808-to-avoid-infinite-loops.patch]
+
+-------------------------------------------------------------------
+Mon May 15 08:01:39 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for denial of service via the bgp_capability_llgr()
+  function (bsc#1211248,CVE-2023-31489,gh#FRRouting/frr#13098).
+  [+ 0006-bgpd-Check-7-bytes-for-Long-lived-Graceful-Restart-c.patch]
+- Apply upstream fix for denial of service via the bgp_attr_psid_sub()
+  function (bsc#1211249,CVE-2023-31490,gh#FRRouting/frr#13099).
+  [+ 0007-bgpd-Ensure-stream-received-has-enough-data.patch]
+
+-------------------------------------------------------------------
+Mon Apr  3 14:00:27 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Enable pim6d providing PIMv6 support (bsc#1206234)
+
+-------------------------------------------------------------------
+Fri Jan 13 12:27:58 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Migration of PAM settings to /usr/lib/pam.d. 
+
+-------------------------------------------------------------------
+Fri Nov 11 13:04:52 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- Migration to /usr/etc: Conditionally moved /etc/logrotate.d/frr
+  file to vendor specific directory /usr/etc/logrotate.d and added
+  saving of user changed configuration files in /etc and restoring
+  them while an RPM update.
+- Declare root as sufficient also in the pam account verification;
+  without vtysh use causes to log a pam frr:account warnings
+  (https://github.com/FRRouting/frr/pull/12308)
+  [+ 0005-root-ok-in-account-frr.pam.patch]
+- Applied fix removing a not needed backslash causing to log a warning
+  (https://github.com/FRRouting/frr/pull/12307)
+  [+ 0004-tools-remove-backslash-from-declare-check-regex.patch]
+- Applied upstream fixes for frrinit.sh to avoid a privilege escalation
+  from frr to root in frr config creation (bsc#1204124,CVE-2022-42917,
+  https://github.com/FRRouting/frr/pull/12157).
+  [+ 0003-tools-Run-as-FRR_USER-install-chown-commands-to-avoi.patch]
+- Removed obsolete patches provided in the 8.4 source archive:
+  [- 0003-babeld-fix-10487-by-adding-a-check-on-packet-length.patch,
+   - 0004-babeld-fix-10502-10503-by-repairing-the-checks-on-le.patch,
+   - 0005-isisd-fix-router-capability-TLV-parsing-issues.patch,
+   - 0006-isisd-fix-10505-using-base64-encoding.patch,
+   - 0007-bgpd-Make-sure-hdr-length-is-at-a-minimum-of-what-is.patch,
+   - 0008-isisd-Ensure-rcap-is-freed-in-error-case.patch]
+- Update to version 8.4, see https://frrouting.org/release/8.4/
+  * New BGP command (neighbor PEER soo) to configure SoO to prevent
+    routing loops and suboptimal routing on dual-homed sites.
+  * Command debug bgp allow-martian replaced to bgp allow-martian-nexthop
+    because previously we allowed using martian next-hops when debug is
+    turned on.
+  * Implement BGP Prefix Origin Validation State Extended Community rfc8097
+  *  Implement Route Leak Prevention and Detection Using Roles in UPDATE
+     and OPEN Messages rfc9234
+  * BMP L3VPN support
+  * PIMv6 support
+  * MLD support
+  * New command to enable using reserved IPv4 ranges as normal addresses
+    for BGP next-hops, interface addresses, etc.
+  * As usual, lots of bugs and memory leaks were fixed \m/
+    such as a fix for a possible use-after-free due to a race
+    condition related to bgp_notify_send_with_data() and
+    bgp_process_packet() in bgp_packet.c. This could lead to
+    Remote Code Execution or Information Disclosure by sending
+    crafted BGP packets (CVE-2022-37035,bsc#1202085).
+- Update to version 8.3, see https://frrouting.org/release/8.3/
+  * Notification Message support for BGP Graceful Restart
+  * BGP Cease Notification Subcode For BFD
+  * Send Hold Timer for BGP
+  * RFC5424 syslog support
+  * PIM passive command
+- Update to version 8.2.2, see https://frrouting.org/release/8.2.2/
+  * BGP Long-lived graceful restart capability
+  * BGP Extended Optional Parameters Length for BGP OPEN Message
+  * BGP Extended BGP Administrative Shutdown Communication
+  * IS-IS Link State Traffic Engineering support
+  * OSPFv3 Support for NSSA Type-7 address ranges
+  * PBR VLAN actions support
+
+-------------------------------------------------------------------
+Mon Sep  5 11:48:25 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for out-of-bounds read in the BGP daemon
+  that may lead to information disclosure or denial of service
+  (bsc#1202023,CVE-2022-37032)
+  [+ 0007-bgpd-Make-sure-hdr-length-is-at-a-minimum-of-what-is.patch]
+- Apply upstream fix for a memory leak in the IS-IS daemon that
+  may lead to server memory exhaustion (bsc#1202022,CVE-2019-25074)
+  [+ 0008-isisd-Ensure-rcap-is-freed-in-error-case.patch]
+
+-------------------------------------------------------------------
+Thu Mar 17 11:45:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Make build a bit cheaper: do only BuildRequire the primary python
+  interpreter and its modules (python3-FOO) instead of all
+  available versions as done using %{python_module FOO}
+
+-------------------------------------------------------------------
+Mon Feb 28 11:05:48 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- Apply fix for a buffer overflow in isisd due to the use of strdup
+  with a non-zero-terminated binary string (bsc#1196506,CVE-2022-26126)
+  [+ 0006-isisd-fix-10505-using-base64-encoding.patch]
+- Apply fix for a buffer overflow in isisd due to wrong checks on
+  the input packet length (bsc#1196505,CVE-2022-26125) with workaround
+  for the GIT binary patch to tests/isisd/test_fuzz_isis_tlv_tests.h.gz
+  [+ 0005-isisd-fix-router-capability-TLV-parsing-issues.patch]
+- Apply fix for a buffer overflow in babeld due to wrong checks on
+  the input packet length in the packet_examin and subtlv parsing
+  (bsc#1196504,bsc#1196507,CVE-2022-26128,CVE-2022-26129)
+  [+ 0004-babeld-fix-10502-10503-by-repairing-the-checks-on-le.patch]
+- Apply fix for a heap buffer overflow in babeld due to missing check
+  on the input packet length (bsc#1196503,CVE-2022-26127)
+  [+ 0003-babeld-fix-10487-by-adding-a-check-on-packet-length.patch]
+
+-------------------------------------------------------------------
+Thu Dec  9 08:40:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Add ReadWritePaths=/etc/frr to harden_frr.service.patch (bsc#1181400).
+
+-------------------------------------------------------------------
+Wed Nov 17 05:48:12 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
+
+- Update to version 8.1
+  * Graceful Restart for OSPFv2 and OSPFv3
+  * OSPFv3 NSSA and NSSA-TSA support
+  * OSPFv3 ASBR Summarisation Support
+  * BGP SRv6 and Prefix-SID Type 5 improvements
+  * BGP EVPN type-5 gateway IP overlay Index
+  * Lua hook support
+  * See: https://frrouting.org/release/8.1/
+
+-------------------------------------------------------------------
+Fri Oct 15 12:11:50 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
+Sat Oct  9 01:58:08 UTC 2021 - Linnaea Lavia <linnaea@lavia.moe>
+
+- Update to version 8.0.1
+  * refreshed patch:
+    - 0001-disable-zmq-test.patch
+    - harden_frr.service.patch
+  * LDP gained SNMP support
+  * OSPFv3 gained VRF support
+  * EVPN Multihoming is now fully supported
+  * TI-LFA implemented in IS-IS and OSPS
+  * New Segment Routing daemon
+  * See: https://frrouting.org/release/8.0/
+     and https://github.com/FRRouting/frr/releases/tag/frr-8.0.1
+
+-------------------------------------------------------------------
+Thu Sep 16 07:12:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_frr.service.patch
+
+-------------------------------------------------------------------
+Fri Apr 23 03:05:06 UTC 2021 - Marius Tomaschewski <mt@suse.com>
+
+- Use skip, not xfail in 0001-disable-zmq-test.patch to disable
+  zmq test as it is not expected to fail but hangs (bsc#1180217)
+
+-------------------------------------------------------------------
+Thu Mar  4 21:20:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.5.1
+  * Maintenance release
+    See: https://github.com/FRRouting/frr/blob/stable/7.5/changelog-auto.in
+
+-------------------------------------------------------------------
+Fri Jan  8 08:08:08 UTC 2021 - olaf@aepfle.de
+
+- Requires libyang 1.0.184
+
+-------------------------------------------------------------------
+Tue Dec 22 10:54:56 UTC 2020 - Rubén Torrero Marijnissen <rtorreromarijnissen@suse.com>
+
+- Disable ZeroMQ tests due to sporadic timeouts during package builds (bsc#1180217)
+  [+ 0001-disable-zmq-test.patch] 
+
+-------------------------------------------------------------------
+Wed Nov  4 19:17:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.5
+  * Upstream does not provide a changelog
+- Make grpc support optional and don't enable it by default
+
+-------------------------------------------------------------------
+Fri Oct  2 12:38:25 UTC 2020 - Marius Tomaschewski <mt@suse.com>
+
+- add build condition disabling mininet build require by default,
+  needed by the optional topology tests.
+- removed one occurrence of vrrpd binary listed twice in file list
+
+-------------------------------------------------------------------
+Wed Jul  1 12:21:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.4
+  * Upstream does not provide a changelog
+- Drop patch (fixed upstream):
+  * 0001-build-use-configfile-mode-in-init-script.patch
+
+-------------------------------------------------------------------
+Sun May 31 22:40:46 UTC 2020 - Erico Mendonca <erico.mendonca@suse.com>
+
+- 0001-build-use-configfile-mode-in-init-script.patch: Fix CVE-2020-12831 (boo#1171658).
+
+-------------------------------------------------------------------
+Wed May  6 16:07:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.3.1
+  Bugfix/maintenance release
+  * Upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Tue Apr  7 21:38:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable verbose make rules 
+- enable grpc support. new subpackage libfrrgrpc_pb0, new BR:
+  pkgconfig(grpc)
+- enable config rollbacks. new BR: pkgconfig(sqlite3)
+- enable realms support
+- enable shell access
+- make sure we use system openssl
+- fix shebang line of the frr-reload.py and
+  generate_support_bundle.py script so we dont pull python2
+- do not delete users and groups.
+- add Requires for libyang-extentions
+
+-------------------------------------------------------------------
+Sat Feb 15 21:27:22 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.3
+  * Upstream does not provide a changelog this time
+- Remove patch:
+  * fix_tests.patch (not longer needed)
+
+-------------------------------------------------------------------
+Sat Jan 18 20:25:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.2.1:
+  BGPd
+  * Fix Addpath issue
+  * Do not apply eBGP policy for iBGP peers
+  * Show ip and fqdn in json output for show [ip] bgp <route> json
+  * Fix large route-distinguisher's format
+  * Fix no bgp listen range ... configuration command
+  * Autocomplete neighbor for clear bgp
+  * Reflect the distance in RIB when it is changed for an
+    arbitrary afi/safi
+  * Notify "Peer De-configured" after entering 'no neighbor cmd
+  * Fix per afi/safi addpath peer counting
+  * Rework BGP dampening to be per AFI/SAFI
+  * Do not send next-hop as :: in MP_REACH_NLRI if no link-local
+    exists
+  * Override peer's TTL only if peer-group is configured with TTL
+  * Remove error message for unkown afi/safi combination
+  * Keep the session down if maximum-prefix is reached
+  OSPFd
+  * Fix BFD down not tearing down OSPF adjacency for
+    point-to-point net
+  BFDd
+  * Fix multiple VRF handling
+  * VRF security improvement
+  PIMd
+  * Fix rp crash
+  NHRPd
+  * Make sure no ip nhrp map <something> works as expected
+  LDPd
+  * Add missing sanity check in the parsing of label messages
+  Zebra
+  * Use correct state when installing evpn macs
+  * Capture dplane plugin flags
+  lib
+  * Fix interface config when vrf changes
+  * Fix Interface Infinite Loop Walk (for special interfaces such
+    as bond)
+  Others
+  * Rename man pages (to avoid conflicts with other packages)
+  * Various other fixes for code cleanup and memory leaks
+
+-------------------------------------------------------------------
+Fri Jan 17 21:07:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Fix license tag
+
+-------------------------------------------------------------------
+Wed Jan 15 20:34:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Build with support for pcre, protobuf, rpki and zeromq by default
+
+-------------------------------------------------------------------
+Wed Jan 15 14:34:59 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup spec file 
+
+-------------------------------------------------------------------
+Sun Jan 12 09:40:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Fix build-time dependencies
+- Remove superflous comments
+
+-------------------------------------------------------------------
+Wed Dec 11 23:18:06 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
+
+- fix_tests.patch: correct syntax for Python 3 imports in tests.
+- Enabling tests
+
+-------------------------------------------------------------------
+Wed Dec 11 02:37:42 UTC 2019 - erico.mendonca@suse.com
+
+- Update to version frr7.2:
+  * zebra: use correct state when installing evpn macs
+  * lib: set entry to xpath in if_update_to_new_vrf
+  * zebra: capture dplane plugin flags
+  * bgpd: Autocomplete neighbor for clear bgp
+  * ospfd,eigrpd: don't take address of packed struct member
+  * bgpd: Prevent crash in bgp_table_range_lookup
+  * bgpd: Fix memory leak in json output of show commands
+  * tests: Test if `distance bgp (1-255) (1-255) (1-255)` works
+  * bgpd: Reflect the distance in RIB when it is changed for an arbitrary afi/safi
+  * bfdd: fix multiple VRF handling
+
+-------------------------------------------------------------------
+Tue Dec 10 12:58:21 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Updating to version 7.2
+- Adding systemd scripts
+- Fixing build and permission issues
+
+-------------------------------------------------------------------
+Tue Jun 18 08:59:05 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.1
+
+-------------------------------------------------------------------
+Sat Feb  2 13:50:16 UTC 2019 - mardnh@gmx.de
+
+- Initial package, version 6.0.2

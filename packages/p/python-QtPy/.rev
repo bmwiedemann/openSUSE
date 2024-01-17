@@ -1,0 +1,214 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb884d3e3efa4ead1bfeb44629ab506c</srcmd5>
+    <version>1.2.1</version>
+    <time>1495883666</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-QtPy. Fixes current build failures.</comment>
+    <requestid>492688</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d30387e92897afc30baae4da47d3a78</srcmd5>
+    <version>1.3.1</version>
+    <time>1503999988</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519187</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>16ace00a55753932febbe2dea659190c</srcmd5>
+    <version>1.4.1</version>
+    <time>1525121795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602303</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8176be91b7d5aafe80179fcad68ea505</srcmd5>
+    <version>1.4.2</version>
+    <time>1527934409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613348</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e51d61a468337815512fa3c401a673a</srcmd5>
+    <version>1.5.2</version>
+    <time>1542012146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647645</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7c85dafbe36cdfdd9e6c254753a793cf</srcmd5>
+    <version>1.5.2</version>
+    <time>1545223921</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659353</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>12a73da3c0c288cc140cb767d4df57f0</srcmd5>
+    <version>1.6.0</version>
+    <time>1552985887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  * Add support for QtQuickWidgets
+  * Issue 178 - Error when import QtCore.version in PySide2</comment>
+    <requestid>682089</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2c8eadaf28d9ce972591daf7d62663af</srcmd5>
+    <version>1.7.0</version>
+    <time>1553084444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Add support for QtCharts.</comment>
+    <requestid>686447</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7d1629ee0979af7675b493bce92d36d4</srcmd5>
+    <version>1.7.1</version>
+    <time>1558690345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704981</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9b95989d4f12f03133531d3e46c5b8c6</srcmd5>
+    <version>1.8.0</version>
+    <time>1563914556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717930</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4171684db635dd5bc664d29c3a36265e</srcmd5>
+    <version>1.9.0</version>
+    <time>1564414287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719516</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cae308e63d7c6ab24093ba68e8fb2e61</srcmd5>
+    <version>1.9.0</version>
+    <time>1598726616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830306</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f72cad76401ee82ecddd8828a2e8d3eb</srcmd5>
+    <version>1.9.0</version>
+    <time>1610736356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863156</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>ac4696de19e7391e47ac082aac1ea65a</srcmd5>
+    <version>1.9.0</version>
+    <time>1611668777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865321</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>43d939865cb9fb23cf925051c414a801</srcmd5>
+    <version>1.9.0</version>
+    <time>1629269774</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912686</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>70a2bab47b28931797eb811c6cd3fe51</srcmd5>
+    <version>1.10.0</version>
+    <time>1629360067</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912864</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>53ac8fb7bb628de5f4ecff5c949c5eb2</srcmd5>
+    <version>1.11.1</version>
+    <time>1631826884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918909</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a45d3bf6bb5ce9e2913f898b6db38b92</srcmd5>
+    <version>2.0.1</version>
+    <time>1649713729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969155</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a33f6d8135a63b273867a0f60ccf9d43</srcmd5>
+    <version>2.1.0</version>
+    <time>1654378034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980738</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4a29e00a9e5c0c3ad188ed7d43ea2af6</srcmd5>
+    <version>2.2.0</version>
+    <time>1660924425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998092</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3ce055dd7dc352a0e2c1718e52a5a04d</srcmd5>
+    <version>2.3.0</version>
+    <time>1669040994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036994</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e0785df0fc53f3e0a95ff9ceed16812e</srcmd5>
+    <version>2.3.0</version>
+    <time>1686506142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092066</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4ddc52f34b93c379531efdd768d46e78</srcmd5>
+    <version>2.4.0</version>
+    <time>1695665019</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113368</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3a6ef3742df8daf72106f79ef807759a</srcmd5>
+    <version>2.4.1</version>
+    <time>1700598761</time>
+    <user>anag+factory</user>
+    <comment>- add qt6.6-deprecations.patch to avoid deprecation warnings
+  with qt 6.6
+
+- Update to 2.4.1
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #456
+  * PR: Fix bug when importing from PySide6.QtWebEngineCore/QtWebEngineWidgets
+    (QWebEngineScrip vs QWebEngineScript) by @damonlynch in #455
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #459
+
+  * Add support for PySide2.QtOpenGL
+  + New features
+      macOS and Qt versions.
+  + Issues Closed
+    * Issue 123 - Wrap QWebChannel module (PR 157)
+  + Pull Requests Merged
+    * PR 157 - Add more Qt modules (123)
+    * Changes to QDesktop split</comment>
+    <requestid>1127913</requestid>
+  </revision>
+</revisionlist>

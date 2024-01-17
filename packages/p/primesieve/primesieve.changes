@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Thu Jan 11 17:30:00 UTC 2024 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-11.2
+- Fix CMake libatomic detection
+- Improved nth prime algorithm
+- Fix off by 1 error in OpenMP example in C_API.md
+- Fix off by 1 error in OpenMP example in CPP_API.md
+
+-------------------------------------------------------------------
+Sat May 13 08:05:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-11.1
+- Vectorized pre-sieving algorithm using x64 SSE2 and ARM NEON
+- Added POPCNT algorithm for x64 & AArch64
+- Fix -Wstrict-prototypes warnings
+
+-------------------------------------------------------------------
+Wed Dec 07 10:40:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-11.0
+- primesieve version now match libprimesieve version (.so version)
+- Added new primesieve::iterator::jump_to() method (C++ API)
+- Added new primesieve_jump_to() function (C API)
+- Mark primesieve_skipto() as deprecated
+- Fix use after free in primesieve::iterator::clear()
+- Fix use after free in primesieve_iterator_clear()
+- Fix potential memory leak in malloc_vector.hpp
+
+-------------------------------------------------------------------
+Thu July 07 09:00:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-8.0
+- Added multiarch support (POPCNT, BMI2, AVX512) for x64 CPUs
+- Generating an array (or vector) of primes is up to 20% faster
+- Main CMakeLists.txt has been split up into multiple modules
+- Improved documentation of C & C++ APIs
+
+-------------------------------------------------------------------
+Tue May 03 11:25:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-7.9
+- Reduced memory usage and faster initialization
+- Reduced branch mispredictions by up to 30%
+- Improved nth prime approximation
+- Increase max sieve array size to 8 KiB
+
+-------------------------------------------------------------------
+Sun Jan 30 12:08:00 UTC 2022 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-7.8
+- Improved pre-sieving, up to 10% speedup
+- Improved primesieve::iterator, up to 15% speedup
+- C++ refactoring: get rid of using namespace std
+
+-------------------------------------------------------------------
+Tue Dec  7 15:57:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
+
+- Fix issues with big.LITTLE CPUs e.g. Intel Alder Lake
+- Improved C API error messages
+- Improved C/C++ API documentation
+
+-------------------------------------------------------------------
+Fri Jan  8 15:00:02 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-7.6
+
+-------------------------------------------------------------------
+Mon Jan  6 10:39:00 UTC 2020 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-7.5
+
+-------------------------------------------------------------------
+Wed May  1 11:15:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim subjective parts from description.
+
+-------------------------------------------------------------------
+Tue Apr 30 15:23:14 UTC 2019 - Kim Walisch <kim.walisch@gmail.com>
+
+- Fix review issues
+- Fix rpmlint warnings
+- Convert Fedora spec file to openSUSE format

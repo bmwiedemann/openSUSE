@@ -1,0 +1,172 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5db5f545c11da5f295ea26e757aa41c</srcmd5>
+    <version>1.6.0</version>
+    <time>1545141396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658032</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac55cb21ca3858eace3445527dd1ebe4</srcmd5>
+    <version>1.8.0</version>
+    <time>1556916096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.8.0
+  - Add 'client_authentication' in Listener on client
+  - Add 2 new options to Pool for support backend certificates validation
+  - Update json module to jsonutils
+  - Make the documentation reproducible
+  - Add python 3.6 unit test job
+  - Add --provider to load balancer create
+  - import zuul job settings from project-config
+  - Add provider command support
+  - Add 4 l7rule types into Octavia CLI
+  - Add new options to HealthMonitor CLI
+  - Change openstack-dev to openstack-discuss
+  - Update reno for stable/rocky
+  - add python 3.6 unit test job
+  - Add some commands for octavia flavor and flavor_profile
+  - Add Python 3.6 classifier to setup.cfg
+  - Fix coverage and set a minimum
+  - switch documentation job to new PTI
+  - Adds loadbalancer amphora configure to OSC
+  - Add compute_flavor field to amphora
+  - Add enable_tls option into Pool CLI
+  - Fixed some typos
+  - Add load balancer flavor support to the OSC client
+  - Support REDIRECT_PREFIX for openstack client
+  - Add 'tls_container_ref' option into Pool for backend re-encrption
+  - Add a new option '--redirect-http-code' into L7Policy CLI
+  - Add client_crl_container_ref for Listener API in CLI
+  - Add 'client_ca_tls_container_ref' in Listener on client side
+  - Add failover an amphora client support
+  - add python 3.7 unit test job</comment>
+    <requestid>692844</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>efc46de544048952cc4a1127e30b776b</srcmd5>
+    <version>1.8.1</version>
+    <time>1562247747</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.8.1
+  - OpenDev Migration Patch
+  - Update .gitreview for stable/stein
+  - Make sure we always requests JSON responses
+  - Update UPPER_CONSTRAINTS_FILE for stable/stein</comment>
+    <requestid>710316</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f63558cb828cedb081a973ce94dbca92</srcmd5>
+    <version>1.10.0</version>
+    <time>1575463729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.10.0
+  - Adds &quot;unset&quot; action to the quota command
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Wrap several show api calls with correct_return_codes
+  - Update master for stable/stein
+  - Blacklist sphinx 2.1.0 (autodoc bug)
+  - Add support for SOURCE_IP_PORT algorithm
+  - OpenDev Migration Patch
+  - Adds &quot;unset&quot; action to the l7rule command
+  - Remove python3.5 jobs for Train
+  - Update tox.ini for new upper constraints strategy
+  - Make sure we always requests JSON responses
+  - Add Python 3 Train unit tests
+  - Fix a bad unit test for amphora list
+  - Bump the openstackdocstheme extension to 1.20
+  - Adds &quot;unset&quot; action to the loadbalancer command
+  - Adds &quot;unset&quot; action to the member command
+  - Adds &quot;unset&quot; action to the flavor command
+  - Add support to VIP access control list
+  - Adds &quot;unset&quot; action to the l7policy command
+  - Adds &quot;unset&quot; action to the pool command
+  - Adds &quot;unset&quot; action to the listener command
+  - Cleanup requirements.txt
+  - Adds &quot;unset&quot; action to the healthmonitor command</comment>
+    <requestid>736666</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3251ade9085b2b0ae9bb54e3b0690271</srcmd5>
+    <version>1.10.0</version>
+    <time>1585085526</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only build</comment>
+    <requestid>783979</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ce843ef7350131d9f927a8d57ecee47b</srcmd5>
+    <version>2.2.0</version>
+    <time>1603725365</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841195</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c0bc9baea8584bb53cc63ca250c8326</srcmd5>
+    <version>2.3.0</version>
+    <time>1620653853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889981</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e77fc537dcb9f38172ff734b2ebc0924</srcmd5>
+    <version>2.4.0</version>
+    <time>1639267050</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.0
+  - Support pagination for 'list' API calls
+  - Improve the client performance on large clouds
+  - Update master for stable/wallaby
+  - Fix some typos
+  - Add Python3 xena unit tests
+  - setup.cfg: Replace dashes with underscores</comment>
+    <requestid>939530</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>85c3e026c236e1ff8b135953c886e64e</srcmd5>
+    <version>2.5.0</version>
+    <time>1653503666</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.5.0
+  - Use py3 as the default runtime for tox
+  - Ignore new pylint checker
+  - Update master for stable/xena
+  - Add Python3 yoga unit tests
+  - Add support for PROMETHEUS listeners.</comment>
+    <requestid>979067</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>10abc2a8997f1dba83b60433afe565b2</srcmd5>
+    <version>3.6.0</version>
+    <time>1705353483</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.6.0
+  - Bump tox minversion to 3.18.0
+  - Fix inconsistency in validation error message for HSTS
+  - Update master for stable/zed
+  - Fix validation of HSTS attributes
+  - Fixing jobs with tox4
+  - Add support for HTTP Strict Transport Security
+  - Add munch explicitly to requirements
+  - Add extra validation for HSTS related arguments
+  - Fix new pylint warnings
+  - Allow creating/showing LBs with Additional VIPs
+  - Remove DELETED from the provisioning status list
+  - Drop lower-constraints.txt and its testing
+  - Update python testing as per zed cycle testing runtime
+  - Remove munch dependency
+  - Update master for stable/2023.1
+  - Set default value for HSTS options to None
+  - Update master for stable/yoga
+  - Add missing flavor set --description option
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Clarify the client code is not python bindings
+  - Fix inconsistent parameter name in azp
+  - Fix pool protocols
+  - Add *.orig to .gitignore</comment>
+    <requestid>1138708</requestid>
+  </revision>
+</revisionlist>

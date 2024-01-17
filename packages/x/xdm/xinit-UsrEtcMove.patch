@@ -1,0 +1,70 @@
+diff -u -r ../old/etc/X11/xdm/Xsession ./etc/X11/xdm/Xsession
+--- ../old/etc/X11/xdm/Xsession	2017-07-25 11:58:00.067080000 +0200
++++ ./etc/X11/xdm/Xsession	2020-09-08 16:49:26.220507000 +0200
+@@ -35,9 +35,17 @@
+ #
+     XETCDIR=/etc/X11
+      XDMDIR=$XETCDIR/xdm
+-   XINITDIR=$XETCDIR/xinit
+ :  ${TMPDIR=/tmp}
+ 
++# xinitrc moved to %{_libexecdir}/xinit in xinit package
++if [ -r /usr/libexec/xinit/xinitrc ]; then
++   XINITDIR=/usr/libexec/xinit
++elif [ -r /usr/lib/xinit/xinitrc ]; then
++   XINITDIR=/usr/lib/xinit
++else
++   XINITDIR=$XETCDIR/xinit
++fi 
++
+ export OPENWINHOME TMPDIR
+ test -n "$XAUTHORITY" || unset XAUTHORITY
+ 
+@@ -291,7 +299,12 @@
+ # Source common code shared between the
+ # X session and X init scripts
+ #
+-. /etc/X11/xinit/xinitrc.common
++
++if [ -r /etc/X11/xinit/xinitrc.common ]; then
++    . /etc/X11/xinit/xinitrc.common
++elif [ -r /usr/etc/X11/xinit/xinitrc.common ]; then
++    . /usr/etc/X11/xinit/xinitrc.common
++fi
+ 
+ # Restore arguments but skip window manager
+ set -- "${argv[@]}"
+diff -u -r ../old/etc/X11/xdm/sys.xsession ./etc/X11/xdm/sys.xsession
+--- ../old/etc/X11/xdm/sys.xsession	2016-06-03 15:25:42.000000000 +0200
++++ ./etc/X11/xdm/sys.xsession	2020-09-08 16:54:30.682569000 +0200
+@@ -63,7 +63,16 @@
+ #
+ # Use system default xinitrc if the users does not have one.
+ #
+-XINITRCFILE=/etc/X11/xinit/xinitrc
++
++# xinitrc moved to %{_libexecdir}/xinit in xinit package
++if [ -r /usr/libexec/xinit/xinitrc ]; then
++    XINITRCFILE=/usr/libexec/xinit/xinitrc
++elif [ -r /usr/lib/xinit/xinitrc ]; then
++    XINITRCFILE=/usr/lib/xinit/xinitrc
++else
++    XINITRCFILE=/etc/X11/xinit/xinitrc
++fi 
++
+ test -r "$HOME/.xinitrc" && XINITRCFILE="$HOME/.xinitrc"
+ 
+ if test -f "$XINITRCFILE" ; then
+@@ -77,7 +86,11 @@
+     # Source common code shared between the
+     # X session and X init scripts
+     #
+-    . /etc/X11/xinit/xinitrc.common
++    if [ -r /etc/X11/xinit/xinitrc.common ]; then
++        . /etc/X11/xinit/xinitrc.common
++    elif [ -r /usr/etc/X11/xinit/xinitrc.common ]; then
++        . /usr/etc/X11/xinit/xinitrc.common
++    fi
+     unset STARTUP WINDOW_MANAGER
+ 
+     set -- ${1+"$@"} $WINDOWMANAGER

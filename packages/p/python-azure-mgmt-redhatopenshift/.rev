@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d0bdce8cb990d75c4c268918027b4a8</srcmd5>
+    <version>0.1.0</version>
+    <time>1588971928</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of the Azure SDK</comment>
+    <requestid>801189</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f8e772fb87675a197ad0b8fb6aa7dd0</srcmd5>
+    <version>0.1.0</version>
+    <time>1607548791</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853967</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>25122cd2a0a713cfbfd4a0271e70219e</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1610051250</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 861348 from glaubitz)</comment>
+    <requestid>861433</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>139d9a18cb92a12f00ee4d3f9c8f2c2f</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1623767846</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1
+- Update Requires from setup.py (forwarded request 898464 from glaubitz)</comment>
+    <requestid>898479</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ba68da2cbdae85ec97d25a11cc554bc7</srcmd5>
+    <version>1.1.0</version>
+    <time>1652188364</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 975993 from glaubitz)</comment>
+    <requestid>976053</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4888726dff7f71d4083d2e7c1707b684</srcmd5>
+    <version>1.2.0</version>
+    <time>1673973359</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1058854 from glaubitz)</comment>
+    <requestid>1058907</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f94cdca43ee959d12fd0d18af3cdb4d0</srcmd5>
+    <version>1.3.0</version>
+    <time>1692687394</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1105048 from glaubitz)</comment>
+    <requestid>1105076</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7169daacb236c2cb224fafa5d1ad8949</srcmd5>
+    <version>1.4.0</version>
+    <time>1696964369</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1116416 from glaubitz)</comment>
+    <requestid>1116428</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="yast2-packager" project="openSUSE:Factory">
+  <title>YaST2 - Package Library</title>
+  <description>This package contains the scanner/parser and dependency checker for all
+packages handled by YaST2.</description>
+  <devel project="YaST:Head" package="yast2-packager"/>
+</package>

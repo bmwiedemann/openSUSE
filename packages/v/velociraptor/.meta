@@ -1,0 +1,15 @@
+<package name="velociraptor" project="openSUSE:Factory">
+  <title>velociraptor</title>
+  <description>Velociraptor is a tool for collecting host based state information               
+using The Velociraptor Query Language (VQL) queries.                             
+                                                                                 
+To learn more about Velociraptor, read the documentation on:                     
+                                                                                 
+https://docs.velociraptor.app/                                                   
+                                                                                 
+This package contains the endpoint agent and full console GUI.                   
+For just the endpoint agent, please install the 'velociraptor-client' package.   
+</description>
+  <devel project="security:sensor" package="velociraptor"/>
+  <url>https://docs.velociraptor.app/                                                   </url>
+</package>

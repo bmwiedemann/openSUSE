@@ -1,0 +1,13 @@
+Index: qcdloop-2.0.9/CMakeLists.txt
+===================================================================
+--- qcdloop-2.0.9.orig/CMakeLists.txt
++++ qcdloop-2.0.9/CMakeLists.txt
+@@ -86,7 +86,7 @@ add_library(qcdloop SHARED src/box.cc
+                          ${Headers}
+ )
+ 
+-target_link_libraries(qcdloop)
++target_link_libraries(qcdloop quadmath)
+ install(FILES ${CMAKE_BINARY_DIR}/src/qcdloop-config
+   DESTINATION bin PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ
+   GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)

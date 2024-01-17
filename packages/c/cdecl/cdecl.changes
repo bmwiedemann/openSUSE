@@ -1,0 +1,602 @@
+-------------------------------------------------------------------
+Sun Jan 14 18:25:23 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16.1
+  * The value of the explicit-ecsu option now also applies in
+    pseudo-English.
+
+-------------------------------------------------------------------
+Fri Jan  5 22:54:53 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16
+  * Cdecl now allows you to #define macros and expand them
+    step-by-step.
+  * Improved C99 with extension error messages.
+  * Implicit int pointer declarations, e.g. ``*p``, are now
+    correctly illegal in C++.
+  * The former ``--explain`` and ``-e`` options have been renamed
+    ``--infer-command`` and ``-I``; the former explain-by-default
+    set option has been renamed infer-command.
+
+-------------------------------------------------------------------
+Tue Oct  3 02:07:19 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 15
+  * Coalesced output for "explain" command
+
+-------------------------------------------------------------------
+Thu Sep  7 14:35:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.4
+  * _Alignas is now correctly forbidden on forward declarations.
+  * Now correctly forbidden in C: ``auto`` with multiple
+    declarators, ``auto`` with a pointer declarator, and bit-fields
+    of a typedef for an enum.
+  * Support C99's ability to qualify function parameters using
+    array syntax.
+  * cdecl now flags member functions with user-specified
+    linkage as an error.
+
+-------------------------------------------------------------------
+Tue Aug  8 09:36:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.3
+  * Arrays with named sizes, e.g. ``explain void f(int n, int a[n])``
+  * Ding (\a) on no command match during TAB completion
+
+-------------------------------------------------------------------
+Sun Apr 30 14:39:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.2
+  * Autocompletion of '='
+  * The -I option (--explicit-int) has been changed to -i.
+  * The -R option (--trailing-return) has been changed to -r.
+  * New --west-pointer and -w command-line options and a new
+    west-pointer set option
+
+-------------------------------------------------------------------
+Sat Apr 15 14:22:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.1.1
+  * Escaping quotes in dump strings
+  * Quoting lambda capture dump strings
+  * Fixed operator dump crash
+
+-------------------------------------------------------------------
+Tue Apr  4 14:25:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.1
+  * Blocks, lambda captures, and reference functions now
+    correctly print alternative tokens when the option
+    "alternative tokens"is enabled.
+  * Now allowing C-style casting without a name:
+    ``cast to pointer to char`` produces ``(char*)``
+
+-------------------------------------------------------------------
+Thu Feb 23 00:04:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.0
+  * Casting to arrays did not fully work, was repaired
+  * Support for C++ lambdas
+
+-------------------------------------------------------------------
+Sun Jan 29 13:21:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 13.2
+  * No longer require certain declarations to be function
+    parameters: const, volatile, static, and variable length
+    arrays
+  * The set of word-break characters for autocompletion has been
+    expanded to be (almost) all non-identifier characters.
+  * Bit-fields having [[no_unique_address]] are now correctly
+    reported as an error.
+
+-------------------------------------------------------------------
+Sun Jan  8 15:55:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 13.1
+  * Added support for `auto` as a deduced type in C23.
+  * C23 (anti-)trigraphs
+  * friend scoped user-defined conversion operators are now
+    parsed correctly.
+
+-------------------------------------------------------------------
+Tue Nov  1 13:11:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 13
+  * Better copy constructor support
+  * A lot of C23 keywords are now recognized
+  * More C++23 keywords are now recognized
+  * Enumerations in C++ can now be bit fields.
+  * C++11 explicit user-defined conversion operators
+- Delete 0001-build-resolve-compile-failure-due-to-improper-attrib.patch
+
+-------------------------------------------------------------------
+Tue Nov  1 10:24:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12
+  * Added suggestions to error messages in certain cases when a
+    keyword is expected, for example:
+  * The placeholder name of C2X has been changed to C23.
+  * The TERM environment variable is no longer considered when
+    determining whether color should be used in output. Now, all
+    that matters is whether the output stream is connected to a
+    TTY.
+  * Previously declared types in pseudo-Engilsh are now checked
+    to ensure they're not being used as objects.
+- Add 0001-build-resolve-compile-failure-due-to-improper-attrib.patch
+- Delete unbreak-gnulib.diff
+
+-------------------------------------------------------------------
+Fri May 13 15:37:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.15
+  * _Atomic arrays are now correctly forbidden.
+  * New "CDECLRC" environment variable.
+  * Alignment of enums is now correctly allowed in C11 mode.
+
+-------------------------------------------------------------------
+Thu Mar 10 19:40:00 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.14
+  * Now prints a warning that neither alternative tokens nor
+    digraphs are supported until C95.
+  * Now prints a warning that east-const isn't supported until C89.
+  * Now prints a warning that using isn't supported until C++11.
+
+-------------------------------------------------------------------
+Sat Feb 26 17:06:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.13
+  * Alignment of enum, struct, and union is now correctly
+    forbidden in C.
+  * alignas & _Alignas: These keywords are now additionally
+    allowed instead of aligned [as|to] in pseudo-English.
+  * "restrict" is now correctly allowed on typedefs of pointer.
+
+-------------------------------------------------------------------
+Sun Feb 13 11:23:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.12
+  * noexcept for function parameters
+  * Ignore leading whitespace for command completion
+
+-------------------------------------------------------------------
+Sun Jan 23 09:02:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.11
+  * Support the use of attributes in conjunction with
+    `using T = ...` declarations.
+  * Types will now be presented as `using T = ...` for
+    C++11 and onwards.
+
+-------------------------------------------------------------------
+Mon Jan  3 16:52:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.10
+  * const (and volatile) qualifiers for void as a function
+    "parameter" (even via a typedef) are now correctly flagged as
+    an error.
+  * A restricted pointer to a non-object, e.g., function, is now
+    correctly flagged as an error.
+
+-------------------------------------------------------------------
+Thu Dec 23 04:24:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.9
+  * Fixed reading from stdin when it's not a TTY.
+  * Function-like parameters are now checked for redefinition
+    (more than one parameter having the same name).
+  * Added the standard C++ types std::ispanstream,
+    std::stacktrace_entry, and std::wispanstream.
+
+-------------------------------------------------------------------
+Tue Dec 14 18:33:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.8
+  * New cdecl keywords: There are now the new pseudo-English
+    keywords of evaluation (plus eval as a shorthand), expression
+    (plus expr), and initialization (plus init) that can
+    optionally be used after constant (or const) instead of
+    consteval, constexpr, or constinit, respectively.
+
+-------------------------------------------------------------------
+Sat Dec 11 10:19:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.7
+  * When an unexpected name token is encountered, if said token
+    is a cdecl keyword, it's now mentioned in the error message.
+  * Zero-sized arrays are now correctly forbidden.
+
+-------------------------------------------------------------------
+Fri Dec  3 18:37:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.6
+  * C++23: integer literal suffix support (z, uz)
+  * C++23: operator[] support for zero-or-more arguments
+
+-------------------------------------------------------------------
+Thu Nov 11 16:00:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.5
+  * Locations for error and warning messages have been improved.
+  * The `show` command now correctly prints all possible commands
+    to define a type when requested to show a type that does not
+    exist.
+  * A deprecated warning is now printed for a `register` array,
+    `enum`, `class`, `struct`, `union`, pointer, pointer to
+    member, reference, and rvalue reference between C++11 and
+    C++14. (Previously, a warning was printed only for built-in
+    types and `typedef`s.)
+
+-------------------------------------------------------------------
+Fri Oct 15 07:59:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.4
+  * Allow declarations using unknown scoped type names
+  * const-volatile-restrict-qualified _Atomic types are now
+    correctly forbidden.
+
+-------------------------------------------------------------------
+Fri Oct  8 08:29:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.3
+  * Both an --explicit-csu/-S command-line and explicit-ecsu set
+    option have been added.
+
+-------------------------------------------------------------------
+Sun Oct  3 16:16:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.2
+  * const_cast, dynamic_cast, and reinterpret_cast now perform
+    additional checks.
+- Add unbreak-gnulib.diff
+
+-------------------------------------------------------------------
+Fri Oct  1 22:22:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.1
+  * Fixed multiple nested declarations crash.
+
+-------------------------------------------------------------------
+Tue Sep 28 09:00:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.0
+  * Correctly forbid functions returning struct in K&R C.
+  * Support digraphs before C95 and trigraphs in K&R C.
+  * Optional () for destructor.
+  * C++20's nested inline namespaces are now supported
+  * In-class default, delete, and noexcept constructors are now
+    accepted.
+  * A raw string literal like R"abc(X)ab)abc" was previously not
+    parsed correctly.
+  * An array of reference (or rvalue reference) is now correctly
+    flagged as an error.
+
+-------------------------------------------------------------------
+Sat Aug 28 13:35:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.4
+  * Added support for Microsoft calling conventions, MS __declspec,
+    and __asm keywords, and __m64/__m128 types.
+- Drop unbreak-gnulib.diff (solved upstream)
+
+-------------------------------------------------------------------
+Sun Aug 15 16:06:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.3
+  * Marking functions and conversion operators = delete is now
+    supported.
+- Add unbreak-gnulib.diff
+
+-------------------------------------------------------------------
+Wed Jun 30 16:05:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.2
+  * At most one of `virtual`, `final`, or `override` is now printed.
+  * Pointers to union members are now allowed.
+
+-------------------------------------------------------------------
+Sun Jun  6 21:48:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.1
+  * More robust scoped name type checking
+  * More C++ std types
+
+-------------------------------------------------------------------
+Thu May 27 10:07:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.0
+  * cdecl now recognizes "asm" just to say it's not supported.
+  * Improved operator<=> now checks for usable return type.
+  * Default relational operators in C++20 are now supported.
+  * C++'s raw string literals R"delim(...)delim" are now supported.
+
+-------------------------------------------------------------------
+Thu Apr 29 18:33:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.10
+  * The show command now supports globs.
+
+-------------------------------------------------------------------
+Mon Mar 22 15:25:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.9
+  * Added more predefined types: iconv_t, locale_t,
+    posix_spawnattr_t, posix_spawn_file_actions_t, regex_t,
+    regmatch_t, and regoff_t.
+  * A pointer to function with qualifiers is now caught for C.
+  * Nested types are now correctly caught as an error in C.
+  * A scoped name having a bit-field width is now caught as
+    an error.
+  * A declaration having a storage class and a bit-field width is
+    now correctly caught as an error.
+
+-------------------------------------------------------------------
+Sat Mar  6 17:19:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.8
+  * extern "C" using declarations are now supported.
+  * The help for pseudo-English now correctly includes auto as a
+    storage class for C++98 and C++03.
+
+-------------------------------------------------------------------
+Fri Feb 26 19:03:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.7
+  * Multi-type typedef support
+
+-------------------------------------------------------------------
+Sat Feb 20 10:17:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.6
+  * More constructor & destructor warning checks
+  * Type redefinition error now includes existing type
+
+-------------------------------------------------------------------
+Wed Feb 10 14:41:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.5.1
+  * A function as a parameter is now automatically converted to a
+    pointer to function per 6.3.2.1(4) of the C standard.
+
+-------------------------------------------------------------------
+Sat Feb  6 00:23:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.5
+  * Added enum, class, struct, and union attribute specifier
+    support.
+  * Added fixed-type enum support.
+  * Added C2X __attr__ aliases.
+  * Added support for parsing C++ attribute arguments.
+  * Added support for parsing C++17 using in attributes.
+  * Added support for parsing GNU __attribute__.
+
+-------------------------------------------------------------------
+Sun Jan 24 11:07:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.4
+  * Improved constructor & destructor declaration support
+  * Ability to explain forward declarations
+  * Ability to catch types having bit-field widths
+
+-------------------------------------------------------------------
+Fri Jan 15 10:18:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.3
+  * Declarations with bit-field widths are now supported.
+
+-------------------------------------------------------------------
+Wed Jan 13 09:04:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.2
+  * In-class constructor declarations without any
+    storage-class-like type are now supported.
+  * Both final and override are now recognized as keywords only
+    in a member function declaration context.
+
+-------------------------------------------------------------------
+Fri Jan  1 17:59:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.1
+  * Implicit int functions in K&R C are now supported ("set knrc",
+    "explain f(x)")
+
+-------------------------------------------------------------------
+Sat Dec 19 09:09:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0
+  * The `show` command can now alternatively show types as
+    `using` declarations.
+  * For `predefined` or `user`, the `show` command now shows only
+    types that are valid in the current language.
+  * When printing `enum`, `struct`, `class`, or `union` types,
+    they are shown differently depending on what language the
+    type was defined in and whether the current language is C or
+    C++.
+
+-------------------------------------------------------------------
+Fri Dec 11 12:21:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.3
+  * "Did you mean ...?" added
+  * Multiple, comma-separated declarations are supported
+
+-------------------------------------------------------------------
+Sat Nov 21 22:19:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2
+  * Pseudo-English now allows "align" as a synonym for "aligned".
+  * The "set" command can now take multiple options.
+  * C99 type-qualified array function arguments can now have a
+    size omitted. ("void f(int a[const])")
+
+-------------------------------------------------------------------
+Mon Sep 14 07:45:12 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.1
+  * Added support for Unified Parallel C
+
+-------------------------------------------------------------------
+Fri Sep  4 13:13:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix awkward grammar in description.
+
+-------------------------------------------------------------------
+Thu Jul 30 10:47:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.0
+  * Support for C2X and Embedded C.
+  * More support for C++20.
+
+-------------------------------------------------------------------
+Sun Jul 12 09:56:04 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.4.1
+  * The legal signed main() signature is now accepted.
+  * "East const" is now ignored when explaining gibberish.
+
+-------------------------------------------------------------------
+Mon Jun 29 15:40:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.3
+  * Explaining a declaration like: "explain void f(double (*a)[5])"
+    crashed; this was fixed.
+
+-------------------------------------------------------------------
+Thu Jun 18 09:19:55 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2
+  * Added support for composing and deciphering C++ overloaded
+    new, new[], delete, and delete[] operators.
+  * Added types std::align_val_t, std::destroying_delete_t, and
+    std::nothrow_t.
+
+-------------------------------------------------------------------
+Wed May 27 09:49:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * Added GNU C's __complex, __complex__, __const, __inline,
+    __restrict, __signed, __signed__, __volatile, and
+    __volatile__.
+
+-------------------------------------------------------------------
+Sat May 16 00:21:09 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.0
+  * New -E/--east-const command-line option.
+  * Added support for the [[no_unique_address]] attribute
+    from C++20.
+
+-------------------------------------------------------------------
+Sat Apr 25 18:02:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Refresh tarball due to force push upstream.
+
+-------------------------------------------------------------------
+Sat Apr 25 16:58:25 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.11
+  * Added __inline__, __restrict__, and __thread
+  * Added GNU C types
+  * Added WIN32 types
+
+-------------------------------------------------------------------
+Mon Apr 13 17:38:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.10
+  * The "long long" type was incorrectly allowed in C89; it
+    was not added until C99.
+  * Added pthread.h, threads.h, and C++ thread types.
+
+-------------------------------------------------------------------
+Wed Feb 26 19:16:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.9
+  * The `cast` command now accepts `as` and `to` in addition
+    to `into`.
+  * Autocomplete was missing `explain-by-default;`.
+
+-------------------------------------------------------------------
+Thu Jan 23 23:13:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.8.2
+  * When in explain-by-default mode, a special case has to be made
+    for `const` and `static` keywords, since the `explain` command
+    is implied only when not followed by the `cast` keyword.
+
+-------------------------------------------------------------------
+Tue Jan 21 22:24:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.8.1
+  * Reset lexer start-state
+
+-------------------------------------------------------------------
+Mon Jan 13 17:04:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.8
+  * Since the set explicit-int option was added (an option that
+    takes a value), a set lang=lang option was added.
+
+-------------------------------------------------------------------
+Tue Jan  7 09:01:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.7
+  * Add emission of explicit "int" to English output mode.
+
+-------------------------------------------------------------------
+Mon Dec 16 15:57:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.6.2
+  * Command-line long-options.
+  * Distinguishes among K&R C, C89, C95, C99, C11, C18, C++98,
+    C++03, C++11, C++14, C++17, and C++20.
+  * Support for C89 const, restrict, and volatile declarations.
+  * Support for the standard C95 type wchar_t.
+  * Support for the standard C99 types _Bool, _Complex,
+    _Imaginary, int8_t, int16_t, ptrdiff_t, size_t, etc.
+  * Support for C99 static, type-qualified, and variable length
+    array function arguments.
+  * Support for the standard C11 atomic types atomic_bool,
+    atomic_char, etc.
+  * Support for the standard C11 and C++11 types char16_t,
+    char32_t, and thread_local.
+  * Support for inline function and variable declarations.
+  * Support for typedef declarations.
+  * Support for variadic function arguments.
+  * Support for C and C++ alternative tokens (and, and_eq, etc.).
+  * Support for C++ mutable data members, namespaces and scoped
+    names, new-style casts, throw, overloaded operators, and
+    friend, virtual and pure virtual member function
+    declarations, and user-defined conversion operators.
+  * Support for C++11 constexpr, enum class, final, noexcept,
+    override, rvalue references, user-defined literals, using (as
+    a typedef synonym), the function trailing return-type syntax,
+    and ref-qualified member function declarations.
+  * Support for C++ [[carries_dependency]], [[deprecated]],
+    [[maybe_unused]], [[nodiscard]], and [[noreturn]] attribute
+    specifiers.
+  * Better warning and error messages complete with location
+    information and color.
+- Drop cdecl-2.5-deb11.diff
+
+-------------------------------------------------------------------
+Thu Jun 11 09:08:54 UTC 2015 - schwab@suse.de
+
+- keyword-identifier.patch: rename identifier conflicting with keyword
+
+-------------------------------------------------------------------
+Mon Feb 13 10:44:51 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Sep 17 22:41:18 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Aug 13 00:56:53 UTC 2010 - jengelh@medozas.de
+
+- Add -DOLD_READLINE to get prototypes into scope

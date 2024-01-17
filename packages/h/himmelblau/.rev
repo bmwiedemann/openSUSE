@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3dc2c42f3a7a5134c0db40d75de2b414</srcmd5>
+    <version>0.1.0+git.2.2391ac0</version>
+    <time>1699478238</time>
+    <user>anag+factory</user>
+    <comment>Submit new pam/nss module that support azure ad to factory.
+
+This will be delayed on https://bugzilla.suse.com/show_bug.cgi?id=1215355
+for the pam approval.</comment>
+    <requestid>1111412</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e2f353d69affb80ac5b009825bec013</srcmd5>
+    <version>0.1.1+git.0.6d2f645</version>
+    <time>1699994542</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.1+git.0.6d2f645:
+  * config: Remove comments about experimental policy enforement
+  * config: Fix typos in the config file
+- Reduce size of expanded scriptlets by reducing %service_* calls
+- Wrap descriptions
+</comment>
+    <requestid>1125720</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8796b3fe989c6d13e0ef0e261d6b050</srcmd5>
+    <version>0.1.1+git.10.4aa76b7</version>
+    <time>1703281373</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1.1+git.10.4aa76b7:
+  * daemon: Fix inverted logic on cache dir check
+  * nss: Use upstream nss package
+  * idprovider: Provider auth needs to point to just the host
+  * config: Consistently use the config file provided to the daemon
+  * cargo: Use relative paths and remove most symlinks
+  * clippy: Add kanidm's clippy config
+  * config: Only check for tenant_id, authority, graph if necessary
+  * Correct the cargo version
+</comment>
+    <requestid>1134659</requestid>
+  </revision>
+</revisionlist>

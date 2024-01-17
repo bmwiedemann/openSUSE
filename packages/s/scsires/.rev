@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>c5a055c9c386d33745904aafab760a66</srcmd5>
+    <version>0.7</version>
+    <time>1225770670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>c5a055c9c386d33745904aafab760a66</srcmd5>
+    <version>0.7</version>
+    <time>1225770670</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>67bf182ae0c6cd39c37a8734721899d6</srcmd5>
+    <version>0.7</version>
+    <time>1268926117</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>67bf182ae0c6cd39c37a8734721899d6</srcmd5>
+    <version>0.7</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>67bf182ae0c6cd39c37a8734721899d6</srcmd5>
+    <version>0.7</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>67bf182ae0c6cd39c37a8734721899d6</srcmd5>
+    <version>0.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>0cc70eb309654868392767fa188bc043</srcmd5>
+    <version>0.7</version>
+    <time>1318348759</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86470 from a_jaeger)</comment>
+    <requestid>87387</requestid>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>0cc70eb309654868392767fa188bc043</srcmd5>
+    <version>0.7</version>
+    <time>1319182459</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>2c0ceacd895921b889520d2f4b26dc35</srcmd5>
+    <version>0.7</version>
+    <time>1323194567</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>2c0ceacd895921b889520d2f4b26dc35</srcmd5>
+    <version>0.7</version>
+    <time>1340184204</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>2c0ceacd895921b889520d2f4b26dc35</srcmd5>
+    <version>0.7</version>
+    <time>1359110390</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="21">
+    <srcmd5>2c0ceacd895921b889520d2f4b26dc35</srcmd5>
+    <version>0.7</version>
+    <time>1379664639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="23">
+    <srcmd5>2c0ceacd895921b889520d2f4b26dc35</srcmd5>
+    <version>0.7</version>
+    <time>1409303341</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>5342cc085904317c52093261a1bdb71c</srcmd5>
+    <version>0.7</version>
+    <time>1521716687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589230</requestid>
+  </revision>
+</revisionlist>

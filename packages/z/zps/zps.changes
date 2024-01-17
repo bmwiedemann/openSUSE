@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Sun Nov 26 17:13:31 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to v1.2.9:
+  * Fix memory leaks 
+
+- archive signature and checksum no more available from upstream 
+
+-------------------------------------------------------------------
+Mon Nov  7 22:33:24 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for zps version 1.2.8

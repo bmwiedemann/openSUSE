@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun May 28 20:20:08 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.2.1: Fix missing project version increment in CMake.
+- Changes of version 1.2.0:
+  * Fix a rare but critical bug which only occurs when a very long collision
+    chain (> 32 767) occurs due to a poor hash function
+    (gh#Tessil/robin-map#52).
+  * Replace deprecated std::aligned_storage since C++23 by alignas
+   (gh#Tessil/robin-map#61).
+  * Raise DIST_FROM_IDEAL_BUCKET_LIMIT to 8192.
+  * Clear and shrink the moved hash table in the move operator to be coherent
+    with the move constructor.
+  * When using C++17, std::launder the reinterpreted pointer from
+    std::aligned_storage to adapt to the change of object model introduced in
+    P0137R1. Fix potential but very unlikely undefined behaviour.
+  * When exceptions are disabled, only print the error message when
+    defined(TSL_DEBUG) instead of !defined(NDEBUG).
+  * Check that bucket_count doesn't exceed max_bucket_count() after the
+    constructor initialization.
+
+-------------------------------------------------------------------
+Sat Jun 25 14:44:09 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.0.1:
+  * For the tests, force the usage of the Boost static libraries by
+    setting Boost_USE_STATIC_LIBS to ON in CMake
+    (gh#Tessil/robin-map#50).
+- Changes from version 1.0:
+  * Add support for efficient serialization.
+  * Remove compilation warnings when -Wshadow flag is set.
+  * Fix USE_STORED_HASH_ON_REHASH to return true when bucket_count
+    is 0, STORE_HASH is true and is_power_of_two_policy::value is
+    true.
+  * Fix CMake warning by specifying a project language before
+    including GNUInstallDirs.
+  * Create a local tsl-robin-mapTargets.cmake
+    (gh#Tessil/robin-map#45).
+
+-------------------------------------------------------------------
+Sat Feb 27 14:07:52 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.6.3:
+  * Fix gh#Tessil/robin-map#26: Raise the maximum possible size of
+    the hash table when using the prime_growth_policy on a  64-bit
+    platform.
+  * Fix gh#Tessil/robin-map#31: When min_load_factor() > 0, the
+    clear() method will also reset the bucket_count of the hash
+    table to 0.
+  * Fix shrink when min_load_factor is set and a range erase with
+    end() as last is called. The m_try_skrink_on_next_insert was
+    not correctly set.
+  * Fix gh#Tessil/robin-map#33: The value function of a const
+    iterator can now be called and returns a mutable reference to
+    the underlying value_type.
+- Ran spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Apr 19 12:19:18 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Created robin-map package from Fedora source rpm to enable
+  OpenImageIO > 2.0.0 to build to enable OpenShadingLanguage to be
+  updated and build with LLVM10.

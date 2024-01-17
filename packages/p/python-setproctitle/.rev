@@ -1,0 +1,304 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1291382614af28bf70a6913e634c1e7a</srcmd5>
+    <version>1.0.1</version>
+    <time>1288974622</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52237 from user hennevogel
+</comment>
+    <requestid>52237</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>26de98eb72fb34860402ff72bd79e0a0</srcmd5>
+    <version>1.0.1</version>
+    <time>1288974627</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52237
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>517cab35e7595c0567bb6d6005828752</srcmd5>
+    <version>1.1</version>
+    <time>1290099672</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53348 from user hennevogel
+</comment>
+    <requestid>53348</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7aa9cdf581b0631bba5327e1dd8dbd24</srcmd5>
+    <version>1.1</version>
+    <time>1290099680</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53348
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7aa9cdf581b0631bba5327e1dd8dbd24</srcmd5>
+    <version>1.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6809e6b6c693d6de28f9d21d4234efe7</srcmd5>
+    <version>1.1</version>
+    <time>1301579741</time>
+    <user>darix</user>
+    <comment>Accepted submit request 65616 from user coolo
+</comment>
+    <requestid>65616</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9b46552ccec114e6f04b0d3ab00f4cff</srcmd5>
+    <version>1.1</version>
+    <time>1301579751</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 65616
+</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>9b46552ccec114e6f04b0d3ab00f4cff</srcmd5>
+    <version>1.1</version>
+    <time>1319182405</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>45d01378b1f4a72836eda6aebe759735</srcmd5>
+    <version>1.1.3</version>
+    <time>1327087516</time>
+    <user>coolo</user>
+    <comment>- Update to v1.1.3
+  * Don't clobber environ if the variable SPT_NOENV is set
+  * Fixed segfault when the module is imported under vim (bnc#739242)
+
+- Provide python3 spec file
+
+
+- Update to v1.1.3
+  * Don't clobber environ if the variable SPT_NOENV is set
+  * Fixed segfault when the module is imported under vim (bnc#739242)
+
+- Provide python3 spec file
+
+- Spec file cleanup:
+  * changed license to BSD3c
+  * packaded documentation files
+  * fixed build non-SUSE distros
+
+- Update to version 1.1
+  * add support python3
+
+- Initial package, Version 1.0.1</comment>
+    <requestid>99880</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>45d01378b1f4a72836eda6aebe759735</srcmd5>
+    <version>1.1.3</version>
+    <time>1340184091</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>4e20b46be745ddefce068836a5675cdf</srcmd5>
+    <version>1.1.3</version>
+    <time>1340726568</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126152</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>57e6197f64f5ca9bba020e9ac26cd957</srcmd5>
+    <version>1.1.6</version>
+    <time>1348148700</time>
+    <user>coolo</user>
+    <comment>Update to 1.1.6, simplify %build section, fix %files section. (forwarded request 133716 from poorboywilly)</comment>
+    <requestid>134633</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>864303aaad29f84e6e05447654e84192</srcmd5>
+    <version>1.1.6</version>
+    <time>1358016434</time>
+    <user>namtrac</user>
+    <comment>- Fix typo in Requires line (p3_ver -&gt; py3_ver)</comment>
+    <requestid>148173</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>864303aaad29f84e6e05447654e84192</srcmd5>
+    <version>1.1.6</version>
+    <time>1359110121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>4a423cec8ec70b820254bc2d7079ae0c</srcmd5>
+    <version>1.1.6</version>
+    <time>1362745841</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157737</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>8364f8ed5ae8c2ad4ac401a5bf61f4ab</srcmd5>
+    <version>1.1.6</version>
+    <time>1371650082</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>180003</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9c223d3918042d93823476b7a88546bd</srcmd5>
+    <version>1.1.7</version>
+    <time>1379342130</time>
+    <user>coolo</user>
+    <comment>Update to 1.1.7 (forwarded request 199064 from poorboywilly)</comment>
+    <requestid>199190</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>9c223d3918042d93823476b7a88546bd</srcmd5>
+    <version>1.1.7</version>
+    <time>1379664281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bd9c9260cd51e8bcde7ff32c941779ba</srcmd5>
+    <version>1.1.8</version>
+    <time>1385562733</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208595</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>bd9c9260cd51e8bcde7ff32c941779ba</srcmd5>
+    <version>1.1.8</version>
+    <time>1409302989</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>54695a89358c00d1adb9b59f41626411</srcmd5>
+    <version>1.1.10</version>
+    <time>1501840727</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>508801</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>a7687ba521926c57ffac9037bbac552d</srcmd5>
+    <version>1.1.10</version>
+    <time>1551687858</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests and add skip-failing-tests.patch to skip failing tests
+  (gh#dvarrazzo/py-setproctitle#60)</comment>
+    <requestid>681144</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>fae696ced1d3f11c71496a933fb99b21</srcmd5>
+    <version>1.1.10</version>
+    <time>1568805022</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731153</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>14155b79ac1a7c39b0ac4505b407b57a</srcmd5>
+    <version>1.1.10</version>
+    <time>1583843160</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch use-pkg-config.patch as we don't need to tweak
+  this stuff at all
+
+- Update use-pkg-config.patch to use the embedded profile, to build
+  against Python 3.8.</comment>
+    <requestid>783354</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>9ea92e3aa334726e995119525d5990e1</srcmd5>
+    <version>1.1.10</version>
+    <time>1598351807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826981</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>18f42ca923f65d4c3dbda18d4594f6ec</srcmd5>
+    <version>1.2</version>
+    <time>1607196934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853085</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8ea45be5e0001681613e3fbbcef9780d</srcmd5>
+    <version>1.2.1</version>
+    <time>1608729524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1
+  - Fixed segfault after ``os.environ.clear()`` (issue #88).</comment>
+    <requestid>856966</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3137585826403357812ebea03ea8e647</srcmd5>
+    <version>1.2.2</version>
+    <time>1612182419</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.2:
+  - Fixed Windows build (issues #89, #90).
+  - Added wheel packages for Windows (issues #47, #90).
+  - Added wheel packages for aarch64 (issues #95).</comment>
+    <requestid>867595</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6d8a2fdb9b2264ba80d4a6ab17e94995</srcmd5>
+    <version>1.2.3</version>
+    <time>1652389182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.3:
+  * Added Python 3.10 packages (issue #102).
+  * Added Wheel packages for macOS (issue #96).</comment>
+    <requestid>976286</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2827ace9af7c04b72e052d8c420b634b</srcmd5>
+    <version>1.3.2</version>
+    <time>1663438239</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.2:
+  * Restore import-time initialization of macOS to avoid crash on thread+fork
+  * Fixed segfault on macOS 12.5 in forked processes (issue #111).
+    Note that, as a workaround, Activity Monitor will show the title of the
+    parent.
+  * Added fallback no-op implementation if building the extension fails.
+  * Added support for displaying title as the process name in MacOS Activity
+    Monitor (issue #10).
+  * Fixed &quot;Symbol not found: _Py_GetArgcArgv&quot; error when using Xcode provided
+    Python (issues #82, #103).
+  * Fixed FreeBSD support, broken in 1.2 (issue #94).
+  * Added package type annotations (issue #101).
+  * Dropped support for Python 3.6.</comment>
+    <requestid>1004177</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f602c2293ebae55ff491c0bc5c4b01c7</srcmd5>
+    <version>1.3.3</version>
+    <time>1701121488</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.3:
+  * Add support for Python 3.12
+  * Fix package metadata to include Python 3.11, 3.12.
+
+  - Fixed segfault after ``os.environ.clear()`` (issue #88).
+- Update to version 1.2
+  * Initialisation of the module moved to the first usage:</comment>
+    <requestid>1129198</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>2499f021448f7b60f0023fec9a072f66</srcmd5>
+    <version>1.3.3</version>
+    <time>1702673402</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133403</requestid>
+  </revision>
+</revisionlist>

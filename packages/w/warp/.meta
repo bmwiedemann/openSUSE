@@ -1,0 +1,12 @@
+<package name="warp" project="openSUSE:Factory">
+  <title>App to securely send files via the internet or local network</title>
+  <description>Warp allows you to securely send files to each other via the internet or local
+network by exchanging a word-based code.
+
+The best transfer method will be determined using the &quot;Magic Wormhole&quot; protocol
+which includes local network transfer if possible.
+
+</description>
+  <devel project="network" package="warp"/>
+  <url>https://apps.gnome.org/en-GB/app/app.drey.Warp/</url>
+</package>

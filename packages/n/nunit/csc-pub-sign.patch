@@ -1,0 +1,569 @@
+Index: nunitv2-2.6.4/src/ClientUtilities/util/nunit.util.dll.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/ClientUtilities/util/nunit.util.dll.csproj
++++ nunitv2-2.6.4/src/ClientUtilities/util/nunit.util.dll.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Util</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -208,4 +210,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/ConsoleRunner/nunit-console-exe/nunit-console.exe.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/ConsoleRunner/nunit-console-exe/nunit-console.exe.csproj
++++ nunitv2-2.6.4/src/ConsoleRunner/nunit-console-exe/nunit-console.exe.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Exe</OutputType>
+     <RootNamespace>NUnit.ConsoleRunner</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -138,4 +140,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/ConsoleRunner/nunit-console/nunit-console.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/ConsoleRunner/nunit-console/nunit-console.csproj
++++ nunitv2-2.6.4/src/ConsoleRunner/nunit-console/nunit-console.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.ConsoleRunner</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -144,4 +146,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/ConsoleRunner/tests/nunit-console.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/ConsoleRunner/tests/nunit-console.tests.csproj
++++ nunitv2-2.6.4/src/ConsoleRunner/tests/nunit-console.tests.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>ConsoleRunner.Tests</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -156,4 +158,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/ClientUtilities/tests/nunit.util.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/ClientUtilities/tests/nunit.util.tests.csproj
++++ nunitv2-2.6.4/src/ClientUtilities/tests/nunit.util.tests.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Util.Tests</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+Index: nunitv2-2.6.4/src/GuiComponents/UiKit/nunit.uikit.dll.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/GuiComponents/UiKit/nunit.uikit.dll.csproj
++++ nunitv2-2.6.4/src/GuiComponents/UiKit/nunit.uikit.dll.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.UiKit</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -400,4 +402,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/GuiComponents/tests/nunit.uikit.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/GuiComponents/tests/nunit.uikit.tests.csproj
++++ nunitv2-2.6.4/src/GuiComponents/tests/nunit.uikit.tests.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.UiKit.Tests</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -169,4 +171,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/GuiRunner/nunit-gui-exe/nunit-gui.exe.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/GuiRunner/nunit-gui-exe/nunit-gui.exe.csproj
++++ nunitv2-2.6.4/src/GuiRunner/nunit-gui-exe/nunit-gui.exe.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>WinExe</OutputType>
+     <RootNamespace>NUnit.Gui</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -152,4 +154,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/GuiRunner/nunit-gui/nunit-gui.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/GuiRunner/nunit-gui/nunit-gui.csproj
++++ nunitv2-2.6.4/src/GuiRunner/nunit-gui/nunit-gui.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Gui</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -274,4 +276,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/GuiRunner/tests/nunit-gui.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/GuiRunner/tests/nunit-gui.tests.csproj
++++ nunitv2-2.6.4/src/GuiRunner/tests/nunit-gui.tests.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Gui.Tests</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -144,4 +146,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/NUnitCore/core/nunit.core.dll.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/NUnitCore/core/nunit.core.dll.csproj
++++ nunitv2-2.6.4/src/NUnitCore/core/nunit.core.dll.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Core</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -233,4 +235,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/NUnitCore/interfaces/nunit.core.interfaces.dll.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/NUnitCore/interfaces/nunit.core.interfaces.dll.csproj
++++ nunitv2-2.6.4/src/NUnitCore/interfaces/nunit.core.interfaces.dll.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Core</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -166,4 +168,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/NUnitCore/tests/nunit.core.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/NUnitCore/tests/nunit.core.tests.csproj
++++ nunitv2-2.6.4/src/NUnitCore/tests/nunit.core.tests.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Core.Tests</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -254,4 +256,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/NUnitFramework/framework/nunit.framework.dll.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/NUnitFramework/framework/nunit.framework.dll.csproj
++++ nunitv2-2.6.4/src/NUnitFramework/framework/nunit.framework.dll.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Framework</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -281,4 +283,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/NUnitFramework/tests/nunit.framework.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/NUnitFramework/tests/nunit.framework.tests.csproj
++++ nunitv2-2.6.4/src/NUnitFramework/tests/nunit.framework.tests.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Framework.Tests</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -225,4 +227,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/NUnitMocks/mocks/nunit.mocks.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/NUnitMocks/mocks/nunit.mocks.csproj
++++ nunitv2-2.6.4/src/NUnitMocks/mocks/nunit.mocks.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Mocks</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -136,4 +138,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/NUnitMocks/tests/nunit.mocks.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/NUnitMocks/tests/nunit.mocks.tests.csproj
++++ nunitv2-2.6.4/src/NUnitMocks/tests/nunit.mocks.tests.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Mocks.Tests</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -128,4 +130,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/NUnitTestServer/nunit-agent-exe/nunit-agent.exe.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/NUnitTestServer/nunit-agent-exe/nunit-agent.exe.csproj
++++ nunitv2-2.6.4/src/NUnitTestServer/nunit-agent-exe/nunit-agent.exe.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>WinExe</OutputType>
+     <RootNamespace>NUnit.Agent</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -145,4 +147,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/PNUnit/agent/pnunit-agent.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/PNUnit/agent/pnunit-agent.csproj
++++ nunitv2-2.6.4/src/PNUnit/agent/pnunit-agent.csproj
+@@ -21,6 +21,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Exe</OutputType>
+     <RootNamespace>agent</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -159,4 +161,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/PNUnit/launcher/pnunit-launcher.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/PNUnit/launcher/pnunit-launcher.csproj
++++ nunitv2-2.6.4/src/PNUnit/launcher/pnunit-launcher.csproj
+@@ -23,6 +23,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Exe</OutputType>
+     <RootNamespace>launcher</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -161,4 +163,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/PNUnit/pnunit.framework/pnunit.framework.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/PNUnit/pnunit.framework/pnunit.framework.csproj
++++ nunitv2-2.6.4/src/PNUnit/pnunit.framework/pnunit.framework.csproj
+@@ -20,6 +20,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>pnunit.framework</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -131,4 +133,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/PNUnit/tests/pnunit.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/PNUnit/tests/pnunit.tests.csproj
++++ nunitv2-2.6.4/src/PNUnit/tests/pnunit.tests.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>TestLibraries</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -148,4 +150,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/tests/mock-assembly/mock-assembly.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/tests/mock-assembly/mock-assembly.csproj
++++ nunitv2-2.6.4/src/tests/mock-assembly/mock-assembly.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.Tests</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -132,4 +134,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/tests/nonamespace-assembly/nonamespace-assembly.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/tests/nonamespace-assembly/nonamespace-assembly.csproj
++++ nunitv2-2.6.4/src/tests/nonamespace-assembly/nonamespace-assembly.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>nonamespace_assembly</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -127,4 +129,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/tests/test-assembly/test-assembly.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/tests/test-assembly/test-assembly.csproj
++++ nunitv2-2.6.4/src/tests/test-assembly/test-assembly.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.TestData</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -185,4 +187,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/tests/test-utilities/test-utilities.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/tests/test-utilities/test-utilities.csproj
++++ nunitv2-2.6.4/src/tests/test-utilities/test-utilities.csproj
+@@ -14,6 +14,8 @@
+     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+     <DefaultTargetSchema>IE50</DefaultTargetSchema>
+     <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.TestUtilities</RootNamespace>
+     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+@@ -147,4 +149,4 @@
+     <PostBuildEvent>
+     </PostBuildEvent>
+   </PropertyGroup>
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/nunit.sln
+===================================================================
+--- nunitv2-2.6.4.orig/nunit.sln
++++ nunitv2-2.6.4/nunit.sln
+@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, F
+ # Visual Studio 2012
+ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A65042E1-D8BC-48DD-8DE1-F0991F07EA77}"
+ 	ProjectSection(SolutionItems) = preProject
+-		src\nunit.snk = src\nunit.snk
++		src\nunit.pub = src\nunit.pub
+ 		NUnitTests.v1.nunit = NUnitTests.v1.nunit
+ 		NUnitTests.v2.nunit = NUnitTests.v2.nunit
+ 	EndProjectSection
+Index: nunitv2-2.6.4/src/GuiException/UiException/nunit.uiexception.dll.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/GuiException/UiException/nunit.uiexception.dll.csproj
++++ nunitv2-2.6.4/src/GuiException/UiException/nunit.uiexception.dll.csproj
+@@ -12,7 +12,9 @@
+     <AssemblyName>nunit.uiexception</AssemblyName>
+     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+     <FileAlignment>512</FileAlignment>
+-    <AssemblyOriginatorKeyFile>..\..\..\..\src\GuiException\UiException\stackSgKey.snk</AssemblyOriginatorKeyFile>
++    <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <FileUpgradeFlags>
+     </FileUpgradeFlags>
+     <OldToolsVersion>3.5</OldToolsVersion>
+@@ -160,4 +162,4 @@
+   <Target Name="AfterBuild">
+   </Target>
+   -->
+-</Project>
+\ No newline at end of file
++</Project>
+Index: nunitv2-2.6.4/src/GuiException/tests/nunit.uiexception.tests.csproj
+===================================================================
+--- nunitv2-2.6.4.orig/src/GuiException/tests/nunit.uiexception.tests.csproj
++++ nunitv2-2.6.4/src/GuiException/tests/nunit.uiexception.tests.csproj
+@@ -6,6 +6,9 @@
+     <ProductVersion>9.0.30729</ProductVersion>
+     <SchemaVersion>2.0</SchemaVersion>
+     <ProjectGuid>{092486D0-6AB9-4134-932F-0FDA10704455}</ProjectGuid>
++    <DelaySign>false</DelaySign>
++    <SignAssembly>true</SignAssembly>
++    <AssemblyOriginatorKeyFile>./../../../nunit.pub</AssemblyOriginatorKeyFile>
+     <OutputType>Library</OutputType>
+     <RootNamespace>NUnit.UiException.Tests</RootNamespace>
+     <AssemblyName>nunit.uiexception.tests</AssemblyName>
+@@ -148,4 +151,4 @@
+   <Target Name="AfterBuild">
+   </Target>
+   -->
+-</Project>
+\ No newline at end of file
++</Project>

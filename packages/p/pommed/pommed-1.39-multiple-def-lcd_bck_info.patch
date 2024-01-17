@@ -1,0 +1,22 @@
+--- pommed-1.39/pommed/mactel/x1600_backlight.c	2020/09/21 23:14:08	1.1
++++ pommed-1.39/pommed/mactel/x1600_backlight.c	2020/09/21 23:14:26
+@@ -45,7 +45,7 @@
+ #include "../dbus.h"
+ 
+ 
+-struct _lcd_bck_info lcd_bck_info;
++extern struct _lcd_bck_info lcd_bck_info;
+ 
+ static int fd = -1;
+ static char *memory = NULL;
+--- pommed-1.39/pommed/mactel/nv8600mgt_backlight.c	2020/09/21 23:14:47	1.1
++++ pommed-1.39/pommed/mactel/nv8600mgt_backlight.c	2020/09/21 23:14:56
+@@ -48,7 +48,7 @@
+ #include "../dbus.h"
+ 
+ 
+-struct _lcd_bck_info lcd_bck_info;
++extern struct _lcd_bck_info lcd_bck_info;
+ 
+ 
+ static int nv8600mgt_inited = 0;

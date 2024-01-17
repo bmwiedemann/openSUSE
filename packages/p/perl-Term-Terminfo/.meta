@@ -1,0 +1,6 @@
+<package name="perl-Term-Terminfo" project="openSUSE:Factory">
+  <title>Access the terminfo database</title>
+  <description>Objects in this class provide access to terminfo database entires. This database provides information about a terminal, in three separate sets of capabilities. Flag capabilities indicate the presence of a particular ability, feature, or bug simply by their presence. Number capabilities give the size, count or other numeric detail of some feature of the terminal. String capabilities are usually control strings that the terminal will recognise, or send. Capabilities each have two names; a short name called the capname, and a longer name called the varname. This class provides two sets of methods, one that works on capnames, one that work on varnames. This module optionally uses unibilium to access the terminfo(5) database, if it is available at compile-time. If not, it will use &lt;term.h&gt; and -lcurses.</description>
+  <devel project="devel:languages:perl" package="perl-Term-Terminfo"/>
+  <url>https://metacpan.org/release/Term-Terminfo</url>
+</package>

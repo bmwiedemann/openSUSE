@@ -1,0 +1,26 @@
+Index: ecryptfs-utils-111/configure.ac
+===================================================================
+--- ecryptfs-utils-111.orig/configure.ac
++++ ecryptfs-utils-111/configure.ac
+@@ -358,11 +358,17 @@ if test "${enable_gui}" = "yes"; then
+ fi
+ 
+ pkgconfigdir="\$(libdir)/pkgconfig"
+-if test "${prefix}" = "/usr"; then
+-	rootsbindir="/sbin"
+-else
+-	rootsbindir="\$(sbindir)"
++# check for rootsbindir environment var
++if test -z $rootsbindir; then
++	if test "${prefix}" = "/usr"; then
++		rootsbindir="/sbin"
++	else
++		rootsbindir="\$(sbindir)"
++	fi
++	export rootsbindir
+ fi
++AC_ARG_VAR(rootsbindir, [Location of /sbin @<:@default=/sbin@:>@])
++
+ 
+ GETTEXT_PACKAGE=ecryptfs-utils
+ AC_SUBST(GETTEXT_PACKAGE)

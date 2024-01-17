@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b61aa088768ec431a79b0b1336d151b</srcmd5>
+    <version>0.1.0</version>
+    <time>1582899588</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure SDK component package</comment>
+    <requestid>775188</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>19f6b7d25d41440f8bee15907d20e48b</srcmd5>
+    <version>0.2.0</version>
+    <time>1606649194</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 850436 from glaubitz)</comment>
+    <requestid>850525</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8e787450368a40c07a1d498175e059c9</srcmd5>
+    <version>0.2.0</version>
+    <time>1607548661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853913</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ad85d62ee74f9926f8e5ffbc84e7e57</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1610051174</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 861108 from glaubitz)</comment>
+    <requestid>861146</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7348a22e8a9fc728801539e56606b19</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400515</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1
+- Update file list in %files section
+- Update Requires from setup.py (forwarded request 890926 from glaubitz)</comment>
+    <requestid>890974</requestid>
+  </revision>
+</revisionlist>

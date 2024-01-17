@@ -1,0 +1,7 @@
+<package name="python-hatch" project="openSUSE:Factory">
+  <title>Hatch</title>
+  <description>A modern project, package, and virtual env manager for Python
+
+Hatch is a productivity tool designed to make your workflow easier and more efficient, while also reducing the number of other tools you need to know. It aims to make the 90% use cases as pleasant as possible.</description>
+  <devel project="devel:languages:python" package="python-hatch"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="fluid-soundfont" project="openSUSE:Factory">
+  <title>Fluid (R3) GM &amp; GS SoundFonts</title>
+  <description>
+Free GM (General MIDI) and GS (General MIDI + Roland Sound Canvas extensions)
+SoundFonts for use with any modern MIDI synthesiser: hardware
+(like the emu10k1 sound card), or software (like FluidSynth).
+  </description>
+  <devel project="multimedia:apps" package="fluid-soundfont"/>
+</package>

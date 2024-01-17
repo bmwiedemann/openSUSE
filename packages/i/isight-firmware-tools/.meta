@@ -1,0 +1,6 @@
+<package name="isight-firmware-tools" project="openSUSE:Factory">
+  <title>Tools to manipulate firmware for Built-in iSight</title>
+  <description>This project provide tools to manipulate firmware for Built-in iSight
+found on Apple machine since iMac G5 iSight</description>
+  <devel project="hardware" package="isight-firmware-tools"/>
+</package>

@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Tue Oct  3 21:07:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update text-short to version 0.1.5 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 12 15:24:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update text-short to version 0.1.5 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug 10 20:38:52 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update text-short to version 0.1.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jan  1 00:37:38 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update text-short to version 0.1.5.
+  ## 0.1.5
+
+    * text-2.0 support
+
+-------------------------------------------------------------------
+Tue Nov 16 19:51:04 UTC 2021 - psimons@suse.com
+
+- Update text-short to version 0.1.4 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:28:51 UTC 2021 - psimons@suse.com
+
+- Update text-short to version 0.1.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Oct 12 10:51:26 UTC 2021 - psimons@suse.com
+
+- Update text-short to version 0.1.4.
+  ## 0.1.4
+
+    * Fix `fromString` for single character strings.
+      https://github.com/haskell-hvr/text-short/issues/20
+    * Add Template Haskell `Lift ShortText` instance.
+
+-------------------------------------------------------------------
+Fri Feb 19 23:03:07 UTC 2021 - psimons@suse.com
+
+- Update text-short to version 0.1.3 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
+
+- Update text-short to version 0.1.3 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:14 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:18 UTC 2020 - psimons@suse.com
+
+- Add text-short at version 0.1.3.
+

@@ -1,0 +1,213 @@
+-------------------------------------------------------------------
+Fri Nov 10 13:36:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.2:
+  * Add support for Python 3.12.
+  * Various documentation improvements.
+
+-------------------------------------------------------------------
+Mon May 29 16:03:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * Depend on Python >= 3.7.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:23:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Sat Jan 28 12:28:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * Add ``cache_info()`` function to ``@cached`` decorator.
+
+-------------------------------------------------------------------
+Fri Jan 13 09:53:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Add support for Python 3.11.
+  * Correct version information in RTD documentation.
+  * ``badges/shields``: Change to GitHub workflow badge routes.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:34:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to v5.2.0
+  * Add cachetools.keys.methodkey().
+  * Add cache_clear() function to decorators.
+  * Add src directory to sys.path for Sphinx autodoc.
+  * Modernize func wrappers.
+
+- update to v5.1.0
+  * Add cache decorator parameters as wrapper function attributes.
+
+- update to v5.0.0
+  * Require Python 3.7 or later (breaking change).
+  * Remove deprecated submodules (breaking change).
+    The cache, fifo, lfu, lru, mru, rr and ttl submodules have been deleted. Therefore, statements like
+    from cachetools.ttl import TTLCache will no longer work. Use from cachetools import TTLCache instead.
+  * Pass self to @cachedmethod key function (breaking change).
+    The key function passed to the @cachedmethod decorator is now called as key(self, *args, **kwargs).
+    The default key function has been changed to ignore its first argument, so this should only affect applications using custom
+    key functions with the @cachedmethod decorator.
+  * Change exact time of expiration in TTLCache (breaking change).
+    TTLCache items now get expired if their expiration time is less than or equal to timer(). For applications using the default timer(),
+    this should be barely noticable, but it may affect the use of custom timers with larger tick intervals. Note that this also implies
+    that a TTLCache with ttl=0 can no longer hold any items, since they will expire immediately.
+  * Change Cache.__repr__() format (breaking change).
+    String representations of cache instances now use a more compact and efficient format, e.g.
+    LRUCache({1: 1, 2: 2}, maxsize=10, currsize=2)
+  * Add TLRU cache implementation.
+  * Documentation improvements.
+
+-------------------------------------------------------------------
+Sat Oct 16 21:02:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.4:
+  - Add submodule shims for backward compatibility.
+  - Add documentation and tests for using ``TTLCache`` with
+    ``datetime``.
+  - Link to typeshed typing stubs.
+  - Flatten package file hierarchy.
+
+-------------------------------------------------------------------
+Fri May 28 06:44:53 UTC 2021 - pgajdos@suse.com
+
+- version update to 4.2.2
+  * Update build environment.
+  * Remove Python 2 remnants.
+  * Format code with Black.
+- %check: use %pyunittest macro
+
+-------------------------------------------------------------------
+Thu Jan 28 22:51:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  - Handle ``__missing__()`` not storing cache items.
+  - Clean up ``__missing__()`` example.
+
+-------------------------------------------------------------------
+Tue Dec 29 13:43:41 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  - Add FIFO cache implementation.
+  - Add MRU cache implementation.
+  - Improve behavior of decorators in case of race conditions.
+  - Improve documentation regarding mutability of caches values and use
+    of key functions with decorators.
+  - Officially support Python 3.9.
+
+-------------------------------------------------------------------
+Fri Jul 17 07:21:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.1.1:
+  - Improve ``popitem()`` exception context handling.
+  - Replace ``float('inf')`` with ``math.inf``.
+
+-------------------------------------------------------------------
+Wed Apr 29 10:47:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.1.0:
+  - Support ``user_function`` with ``cachetools.func`` decorators
+    (Python 3.8 compatibility).
+
+  - Support ``cache_parameters()`` with ``cachetools.func`` decorators
+    (Python 3.9 compatibility).
+
+-------------------------------------------------------------------
+Fri Jan 24 09:43:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.0.0
+  * Require Python 3.5 or later.
+
+-------------------------------------------------------------------
+Fri Sep 13 11:08:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.1.1:
+  * Document how to use shared caches with @cachedmethod.
+  * Fix pickling/unpickling of cache keys
+
+-------------------------------------------------------------------
+Wed Feb 27 18:17:13 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 3.1.0:
+  - Fix Python 3.8 compatibility issue.
+  - Use ``time.monotonic`` as default timer if available.
+  - Improve documentation regarding thread safety.
+  - Officially support Python 3.7.
+  - Drop Python 3.3 support (breaking change).
+  - Remove ``missing`` cache constructor parameter (breaking change).
+  - Remove ``self`` from ``@cachedmethod`` key arguments (breaking
+    change).
+  - Add support for ``maxsize=None`` in ``cachetools.func`` decorators.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:24 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Aug 16 13:51:39 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 2.0.1
+  * Officially support Python 3.6.
+  * Move documentation to RTD.
+  * Documentation: Update import paths for key functions
+    (courtesy of slavkoja).
+
+-------------------------------------------------------------------
+Thu Jun  1 21:04:54 UTC 2017 - dmueller@suse.com
+
+- update to 2.0.0:
+  - Drop Python 3.2 support (breaking change).
+  - Drop support for deprecated features (breaking change).
+  - Move key functions to separate package (breaking change).
+  - Accept non-integer ``maxsize`` in ``Cache.__repr__()``.
+
+-------------------------------------------------------------------
+Tue Aug 30 19:48:39 UTC 2016 - tbechtold@suse.com
+
+- update to 1.1.6:
+  - Reimplement ``LRUCache`` and ``TTLCache`` using
+    ``collections.OrderedDict``.  Note that this will break pickle
+    compatibility with previous versions.
+  - Fix ``TTLCache`` not calling ``__missing__()`` of derived classes.
+  - Handle ``ValueError`` in ``Cache.__missing__()`` for consistency
+    with caching decorators.
+  - Improve how ``TTLCache`` handles expired items.
+  - Use ``Counter.most_common()`` for ``LFUCache.popitem()``.
+  - Refactor ``Cache`` base class.  Note that this will break pickle
+    compatibility with previous versions.
+  - Clean up ``LRUCache`` and ``TTLCache`` implementations.
+  - Refactor ``LRUCache`` and ``TTLCache`` implementations.  Note that
+    this will break pickle compatibility with previous versions.
+  - Document pending removal of deprecated features.
+  - Minor documentation improvements.
+  - Fix pickle tests.
+  - Fix pickling of large ``LRUCache`` and ``TTLCache`` instances.
+  - Improve key functions.
+  - Improve documentation.
+  - Improve unit test coverage.
+  - Add ``@cached`` function decorator.
+  - Add ``hashkey`` and ``typedkey`` fuctions.
+  - Add `key` and `lock` arguments to ``@cachedmethod``.
+  - Set ``__wrapped__`` attributes for Python versions < 3.2.
+  - Move ``functools`` compatible decorators to ``cachetools.func``.
+  - Deprecate ``@cachedmethod`` `typed` argument.
+  - Deprecate `cache` attribute for ``@cachedmethod`` wrappers.
+  - Deprecate `getsizeof` and `lock` arguments for `cachetools.func`
+    decorator.
+- Use pypi.io as Source url
+
+-------------------------------------------------------------------
+Thu Jul  9 08:04:04 UTC 2015 - dmueller@suse.com
+
+- Initial package (1.0.3)
+

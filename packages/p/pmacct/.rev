@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cfe711e7fec898521a32a074bc70c96</srcmd5>
+    <version>1.7.2</version>
+    <time>1546946801</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain pmacct in Factory</comment>
+    <requestid>661837</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f23c5495aa9ad51331ad8997e00ff3de</srcmd5>
+    <version>1.7.3</version>
+    <time>1558939134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705313</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>359567232a06e9004c9faf51bb03a9f5</srcmd5>
+    <version>1.7.3</version>
+    <time>1573422724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747206</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9faa485b8bd3a99114c647a98cf52169</srcmd5>
+    <version>1.7.4</version>
+    <time>1578437616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761347</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77487b386d88bd4384ee67e2fc44a094</srcmd5>
+    <version>1.7.4p1</version>
+    <time>1582112571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>776204</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e16f32b2b2983c04524d4a82b74271a5</srcmd5>
+    <version>1.7.4p1</version>
+    <time>1585602238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789671</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1b24acbb5a0eb17b4e434f3f81a67577</srcmd5>
+    <version>1.7.4p1</version>
+    <time>1591880465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813451</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8bb71f83a5a773056f18690c8346b6fa</srcmd5>
+    <version>1.7.5</version>
+    <time>1593727796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817802</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f1cc21d2e56448480a27ef41203c51c7</srcmd5>
+    <version>1.7.6</version>
+    <time>1616104530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879913</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5bb5ada01d8ebc9a6019472895c02b2b</srcmd5>
+    <version>1.7.6</version>
+    <time>1635167844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927183</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e36cddad911445c51117a949c22eebc8</srcmd5>
+    <version>1.7.7</version>
+    <time>1636577222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930667</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d0dd3ee75f84e644d6e0cefa75f075a2</srcmd5>
+    <version>1.7.8</version>
+    <time>1673209523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056788</requestid>
+  </revision>
+</revisionlist>

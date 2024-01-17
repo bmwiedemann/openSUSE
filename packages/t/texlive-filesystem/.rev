@@ -1,0 +1,588 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f06fcaf72c76a3d0f0f38f72a3a31748</srcmd5>
+    <version>unknown</version>
+    <time>1342426354</time>
+    <user>coolo</user>
+    <comment>I hate renames as there are always some left overs</comment>
+    <requestid>127843</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8b7d954bad7613ab006737a832cd6704</srcmd5>
+    <version>unknown</version>
+    <time>1347512865</time>
+    <user>coolo</user>
+    <comment>- Make update script to run updmap-sys only once on texhash 
+
+- Fix update script: do not override with wrong md5 check sum for
+  language format check 
+- Run updmap-sys only if required
+
+- Change font config semantic as the font directories below
+  /usr/share/fonts will be always found by freetype</comment>
+    <requestid>133761</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7a49b190d3cee4820819c3e724c491d1</srcmd5>
+    <version>unknown</version>
+    <time>1348048656</time>
+    <user>coolo</user>
+    <comment>- If update script falis on some points like fmtutils then do not
+  remove the execution tag file to handle this later</comment>
+    <requestid>135015</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7a49b190d3cee4820819c3e724c491d1</srcmd5>
+    <version>unknown</version>
+    <time>1359110476</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e3d61aef01ed1c01e1efc96df78f3e4c</srcmd5>
+    <version>unknown</version>
+    <time>1360230570</time>
+    <user>coolo</user>
+    <comment>- Work around missing support of %posttrans scriptlets in libzypp
+  due missing rpm option for not to execute those scriptlets (bnc#773575)</comment>
+    <requestid>151321</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>52a6958cf120b574493ee7425b606e94</srcmd5>
+    <version>unknown</version>
+    <time>1365147243</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>162640</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>149af4b3858e965dee331e12e3a2f141</srcmd5>
+    <version>unknown</version>
+    <time>1368452673</time>
+    <user>coolo</user>
+    <comment>- Asymptote binaries may have the same version as the format files
+  of the asymptote package it self (bnc#813032)</comment>
+    <requestid>174721</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>97d77011827b6602689647d16340c01a</srcmd5>
+    <version>unknown</version>
+    <time>1374605650</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184119</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>18bd3f9430d1982a72297159b28b3c0c</srcmd5>
+    <version>unknown</version>
+    <time>1378988093</time>
+    <user>scarabeus_factory</user>
+    <comment>- Repair several wrong paths cause by the move of TEXMFMAIN that is 
+  the location of TLUtils.pm used by updmap 
+
+- Refresh formats if required
+
+- Update to TeXLive 2013 (timestamp 20130620)
+  + Distribution layout: the top-level texmf/ directory has been
+    merged into texmf-dist/, for simplicity. Both the TEXMFMAIN
+    and TEXMFDIST Kpathsea variables now point to texmf-dist.
+  + Many small language collections have been merged together,
+    to simplify installation.
+  + MetaPost: native support for PNG output and floating-point
+    (IEEE double) has been added.
+  + LuaTEX: updated to Lua 5.2, and includes a new library
+    (pdfscanner) to process external PDF page content, among
+    much else (see its web pages).
+  + XeTEX (also see its web pages for more):
+    The HarfBuzz library now used for font layout instead of ICU.
+    Graphite2 and HarfBuzz are used instead of SilGraphite for Graphite layout.
+    On Macs, Core Text is used instead of the (deprecated) ATSUI.
+    Prefer TrueType/OpenType fonts to Type1 when the names are the same.
+    Fix occasional mismatch in font finding between XeTEX and xdvipdfmx.
+    Support OpenType math cut-ins.
+  + xdvi: now uses FreeType instead of t1lib for rendering.
+  + microtype.sty: some support for XeTEX (protrusion) and LuaTEX
+    (protrusion, font expansion, tracking), among other enhancements. 
+- Update biblatex-biber to 1.7
+- Udpate biblatex of TeXLive 2013 to 2.7a</comment>
+    <requestid>197250</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>18bd3f9430d1982a72297159b28b3c0c</srcmd5>
+    <version>unknown</version>
+    <time>1379664794</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>6465afd5cf0c04b009dc10e2de389ee4</srcmd5>
+    <version>unknown</version>
+    <time>1392481315</time>
+    <user>coolo</user>
+    <comment>- Avoid that missing formats for a hyphen file will cause high
+  load at installation</comment>
+    <requestid>221588</requestid>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>5ab562f8057db50f1f7c86f0c8ed8b96</srcmd5>
+    <version>unknown</version>
+    <time>1403070557</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236663</requestid>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>5ab562f8057db50f1f7c86f0c8ed8b96</srcmd5>
+    <version>unknown</version>
+    <time>1409303475</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>0c604407eb2c96ecc767e3834e457256</srcmd5>
+    <version>unknown</version>
+    <time>1429948149</time>
+    <user>coolo</user>
+    <comment>- Update to TeXLive 2014 (timestamp 20140525 revision 34252)
+  * Support DVIPDFMx
+  * [fix] avoid luatex crash under math_mode 'decimal'
+  * luaotfload: Fix incorrect handling of font file formats luaotfload)
+  * Sync with Context beta as of 2014-04-05
+  * pdfTeX: sync with Knuth TeX 3.14159265, e-TeX 2.6
+  * Many more ...
+  * Further collection split
+    - texlive-collection-langchinese
+    - texlive-collection-langjapanese
+    - texlive-collection-langkorean</comment>
+    <requestid>293920</requestid>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>78df1184a9b77f234125379cea8434d3</srcmd5>
+    <version>unknown</version>
+    <time>1458228615</time>
+    <user>dimstar_suse</user>
+    <comment>- Add both texlive.infra and texlive.infra.doc as these provides
+  some perl module files used by fmtutil.pl 
+
+- Update to TeXLive 2015 (timestamp 20150521 revision 26946)</comment>
+    <requestid>358527</requestid>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>fa3970e7e5b2ca4de6b0a43d7454700d</srcmd5>
+    <version>unknown</version>
+    <time>1461334941</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct cut&amp;paste typo with texlua-devel package name 
+
+- Really require the devel packages with texlive-devel</comment>
+    <requestid>389514</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>1affa6bb90dd0480322ac3aa87a5db09</srcmd5>
+    <version>unknown</version>
+    <time>1469530564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>405424</requestid>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>7bbd489c784b11eac06a29f05fe35045</srcmd5>
+    <version>unknown</version>
+    <time>1496926417</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>500697</requestid>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>16fc05c43fd015b38924bf7b9894db1d</srcmd5>
+    <version>unknown</version>
+    <time>1498411252</time>
+    <user>dimstar_suse</user>
+    <comment>This submition depends on SR#503073, SR#503942, SR#503941. as well as on SR#503940</comment>
+    <requestid>504154</requestid>
+  </revision>
+  <revision rev="20" vrev="23">
+    <srcmd5>7a11dd7f07ebcc3d81508bcf3d428184</srcmd5>
+    <version>unknown</version>
+    <time>1500275054</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate/remove specific formats at installation/erease of a
+  package (boo#1046277)
+
+- Modify update.texlive script in such a way that we detect old
+  format files and enforce a refresh based on hyphen (boo#1046277)</comment>
+    <requestid>509705</requestid>
+  </revision>
+  <revision rev="21" vrev="24">
+    <srcmd5>92c554d573e562becaace20e4fa39e34</srcmd5>
+    <version>unknown</version>
+    <time>1500669822</time>
+    <user>dimstar_suse</user>
+    <comment>- Even more speedup for update.texlive, that is remove empty
+  work load directory
+
+- Make update.texlive faster and remove specific tag file after
+  creating specific format</comment>
+    <requestid>511224</requestid>
+  </revision>
+  <revision rev="22" vrev="25">
+    <srcmd5>c66346a99dfd0143661fe75326ce5378</srcmd5>
+    <version>unknown</version>
+    <time>1500892402</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid error in zypper python script</comment>
+    <requestid>512198</requestid>
+  </revision>
+  <revision rev="23" vrev="26">
+    <srcmd5>bf3f266a812f34d1a9b86c7e8a731ae4</srcmd5>
+    <version>unknown</version>
+    <time>1501227748</time>
+    <user>dimstar_suse</user>
+    <comment>- Enforce mktexlsr if texlive-filesystem becomes installed to
+  refresh/rehash the kpathsea data base files after this (boo#1046277)</comment>
+    <requestid>512248</requestid>
+  </revision>
+  <revision rev="24" vrev="27">
+    <srcmd5>f576477aaed4652236034e7bf4748814</srcmd5>
+    <version>unknown</version>
+    <time>1503392773</time>
+    <user>dimstar_suse</user>
+    <comment>- Really not define texgid rpm macro (boo#1054325)</comment>
+    <requestid>517484</requestid>
+  </revision>
+  <revision rev="25" vrev="28">
+    <srcmd5>998ed7c4a62ef3bba3be57d0ccb2517f</srcmd5>
+    <version>unknown</version>
+    <time>1509035992</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid overwriting ls-R files</comment>
+    <requestid>535953</requestid>
+  </revision>
+  <revision rev="26" vrev="29">
+    <srcmd5>84e32c00d3e7eb193a9473b706bc9fef</srcmd5>
+    <version>unknown</version>
+    <time>1512042057</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)</comment>
+    <requestid>545149</requestid>
+  </revision>
+  <revision rev="27" vrev="30">
+    <srcmd5>2df3a8eb172c1f734e57c6964d92628c</srcmd5>
+    <version>unknown</version>
+    <time>1513453694</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable by a build conditions using zypper way of posttrans scripts
+  as we already use %posttrans. Nevertheless correct naming scheme
+  (boo#1069445)</comment>
+    <requestid>557089</requestid>
+  </revision>
+  <revision rev="28" vrev="31">
+    <srcmd5>c5348583dc04fbb5e1e6ad6eb5245906</srcmd5>
+    <version>unknown</version>
+    <time>1515875986</time>
+    <user>dimstar_suse</user>
+    <comment>- Add debug and force mode to the TeXLive update script which
+  might help to fix broken systems as well as might show some
+  debug messages as well.
+
+- If zypper way of posttrans scripts are disabled do use the rpm
+  %posttrans scriptlets (boo#1074128)</comment>
+    <requestid>563597</requestid>
+  </revision>
+  <revision rev="29" vrev="32">
+    <srcmd5>9c9aeb7762e1af2341e0aaf565ad5d25</srcmd5>
+    <version>unknown</version>
+    <time>1516971445</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch over to python 3 (boo#1077170)</comment>
+    <requestid>568898</requestid>
+  </revision>
+  <revision rev="30" vrev="33">
+    <srcmd5>7162279206b2087d911ca93fe197ad3f</srcmd5>
+    <version>unknown</version>
+    <time>1526370989</time>
+    <user>dimstar_suse</user>
+    <comment>TeXLive 2018</comment>
+    <requestid>603642</requestid>
+  </revision>
+  <revision rev="31" vrev="34">
+    <srcmd5>91d0acac8362141e1e9d50a16221e7db</srcmd5>
+    <version>unknown</version>
+    <time>1531469508</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620921</requestid>
+  </revision>
+  <revision rev="32" vrev="35">
+    <srcmd5>3e3d94b9d1588d0f50f37fdbbaa12292</srcmd5>
+    <version>unknown</version>
+    <time>1551385397</time>
+    <user>coolo</user>
+    <comment>- A binary only TeXLive installation is a fatal error</comment>
+    <requestid>677705</requestid>
+  </revision>
+  <revision rev="33" vrev="36">
+    <srcmd5>c5af0ecc1b8aa54679225d47090a6f1f</srcmd5>
+    <version>unknown</version>
+    <time>1563018124</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove (texlive-)axessibility package as it has a nofree license:
+  Creative Commons Attribution-NonCommercial 4.0 License
+
+- Update to TeXLive 2019</comment>
+    <requestid>714868</requestid>
+  </revision>
+  <revision rev="34" vrev="37">
+    <srcmd5>ced3ac3adb95dc7084cb3d8d081cb116</srcmd5>
+    <version>unknown</version>
+    <time>1567848412</time>
+    <user>dimstar_suse</user>
+    <comment>submit staged fixes - so we can move forward</comment>
+    <requestid>727178</requestid>
+  </revision>
+  <revision rev="35" vrev="38">
+    <srcmd5>b3a38d5d4578f0edafbd0433dbf27fa4</srcmd5>
+    <version>unknown</version>
+    <time>1574104003</time>
+    <user>dimstar_suse</user>
+    <comment>- Make cron script more failsafe (boo#1150556)
+- Refresh font map files as well on update (boo#1155381)</comment>
+    <requestid>748893</requestid>
+  </revision>
+  <revision rev="36" vrev="39">
+    <srcmd5>5fb03bc694dd2ba6f64ebb2c7e699c4d</srcmd5>
+    <version>unknown</version>
+    <time>1575282614</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750744</requestid>
+  </revision>
+  <revision rev="37" vrev="40">
+    <srcmd5>dfeb737a650b7cae5421f13394be8c86</srcmd5>
+    <version>unknown</version>
+    <time>1576505947</time>
+    <user>dimstar_suse</user>
+    <comment>- Simply use rm(1) for the cron job of texlive as all files below
+  /var/cache/texmf/ belong to texlive and only root can write and
+  remove those files (bsc#1158910). All other users do create their
+  own files below ~/.cache/texmf/</comment>
+    <requestid>756829</requestid>
+  </revision>
+  <revision rev="38" vrev="41">
+    <srcmd5>384ed62829dc7b15e7b14be3faedc8d0</srcmd5>
+    <version>unknown</version>
+    <time>1577194166</time>
+    <user>dimstar_suse</user>
+    <comment>- Harden ls-R file generation at installation (bsc#1158910)</comment>
+    <requestid>758097</requestid>
+  </revision>
+  <revision rev="39" vrev="42">
+    <srcmd5>46cadfc626123602cc212795128cb7df</srcmd5>
+    <version>unknown</version>
+    <time>1578867498</time>
+    <user>dimstar_suse</user>
+    <comment>- Set default user for ls-R files and font cache directories
+  to user nobody (bsc#1159740) 
+- Use setpriv to switch to nobody:mktex before clearing
+  font cache directories (bsc#1158910)</comment>
+    <requestid>762831</requestid>
+  </revision>
+  <revision rev="40" vrev="43">
+    <srcmd5>859033db98e7d4683ca57597e252c30b</srcmd5>
+    <version>unknown</version>
+    <time>1579463593</time>
+    <user>dimstar_suse</user>
+    <comment>- Be sure that owner of ls-R files are corrected even on update
+  of already existing texlive filesystem</comment>
+    <requestid>764960</requestid>
+  </revision>
+  <revision rev="41" vrev="44">
+    <srcmd5>4fc738d2f162e26b115cb208e9448e7e</srcmd5>
+    <version>unknown</version>
+    <time>1579872069</time>
+    <user>dimstar_suse</user>
+    <comment>- Overwrite not wanted symbolic links on ls-R files</comment>
+    <requestid>766273</requestid>
+  </revision>
+  <revision rev="42" vrev="45">
+    <srcmd5>f72a27664f4299540b0e386e8902fc4b</srcmd5>
+    <version>unknown</version>
+    <time>1580990837</time>
+    <user>dimstar_suse</user>
+    <comment>- Check passwd not group file for user mktex 
+
+- Again use setpriv but now switch to every single owner for clearing
+  the files of this owner (boo#1159740) 
+
+- Introduce a user mktex as replacement for user nobody (boo#1159740)</comment>
+    <requestid>770139</requestid>
+  </revision>
+  <revision rev="43" vrev="46">
+    <srcmd5>b4ab16bf0a12239fb60fbe1f07831777</srcmd5>
+    <version>unknown</version>
+    <time>1582394227</time>
+    <user>dimstar_suse</user>
+    <comment>- Use setpriv to create ls-R files, below /var/cache/texmf/fonts
+  use uid mktex for this (boo#1159740)</comment>
+    <requestid>777663</requestid>
+  </revision>
+  <revision rev="44" vrev="47">
+    <srcmd5>d89ccd630b6b75b571f024c287b25adf</srcmd5>
+    <version>unknown</version>
+    <time>1585176167</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new configuration variable HAVE_MKTEX_MEMBERS to texlive
+  sysconfig file to control the behaviour of the cron job.
+- Change the cron job to clear data of other users which are
+  member of the group mktex
+
+- Use CVE numbers 
+
+  use uid mktex for this (boo#1159740, CVE-2020-8016)
+  the files of this owner (boo#1159740, CVE-2020-8016)
+  to user nobody (bsc#1159740, CVE-2020-8016)
+  font cache directories (bsc#1158910, CVE-2020-8017)</comment>
+    <requestid>787537</requestid>
+  </revision>
+  <revision rev="45" vrev="48">
+    <srcmd5>c156340b9d0dcf6d6b74b9cdb53650ee</srcmd5>
+    <version>unknown</version>
+    <time>1590779755</time>
+    <user>maxlin_factory</user>
+    <comment>- No pstools anymore in texlive database 
+
+- Update to TeXLive 2020</comment>
+    <requestid>798522</requestid>
+  </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>29785d11491203ff4ca6e2abfab623d7</srcmd5>
+    <version>unknown</version>
+    <time>1602155240</time>
+    <user>dimstar_suse</user>
+    <comment>- Enhance update script to detect user changes in configuration
+  files to warn the user.  Also run texlinks script to be sure
+  that local configuration fits the linked engines (boo#1176557)</comment>
+    <requestid>839106</requestid>
+  </revision>
+  <revision rev="47" vrev="50">
+    <srcmd5>143d5399afeeb372072056edba2be373</srcmd5>
+    <version>unknown</version>
+    <time>1615489709</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+- Skip packages which are based on python2</comment>
+    <requestid>877921</requestid>
+  </revision>
+  <revision rev="48" vrev="51">
+    <srcmd5>a0fb7c70541fb8eb225aecd4270c047d</srcmd5>
+    <version>unknown</version>
+    <time>1619729140</time>
+    <user>dimstar_suse</user>
+    <comment>- Force updmap-sys to sync trees 
+
+- Simplify update script, that is always hash before updating
+  font maps 
+
+- Re-add texlive-updmap-map as it is not part of any archive
+  anymore but is required 
+
+- Update to TeXLive 2021</comment>
+    <requestid>888675</requestid>
+  </revision>
+  <revision rev="49" vrev="52">
+    <srcmd5>fc9aa8b7f0e75ac1a662568e7a3c2cf0</srcmd5>
+    <version>unknown</version>
+    <time>1623443431</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>898104</requestid>
+  </revision>
+  <revision rev="50" vrev="53">
+    <srcmd5>62af9494200b9e387723149b588d3f07</srcmd5>
+    <version>unknown</version>
+    <time>1639266944</time>
+    <user>dimstar_suse</user>
+    <comment>-  Modifiy texlive.cron
+   * boo#1193473 -- /etc/cron.daily/suse-texlive from texlive causes warnings
+     OK make them silent</comment>
+    <requestid>937801</requestid>
+  </revision>
+  <revision rev="51" vrev="54">
+    <srcmd5>3757016576d2e254b4df8dc84a740f38</srcmd5>
+    <version>unknown</version>
+    <time>1650548484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to TeXLive 2022 
+- Try to debug entries like boo#1194496</comment>
+    <requestid>967550</requestid>
+  </revision>
+  <revision rev="52" vrev="55">
+    <srcmd5>dd8cfd56237bdce647b533ad40dd0511</srcmd5>
+    <version>unknown</version>
+    <time>1661497673</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999228</requestid>
+  </revision>
+  <revision rev="53" vrev="56">
+    <srcmd5>4f3eb8b49bedaa55d087abc23eaa5dad</srcmd5>
+    <version>unknown</version>
+    <time>1680722732</time>
+    <user>dimstar_suse</user>
+    <comment>- Support mkiv as well as lmtx ConTeXt formats 
+
+- Correct the meta package name for boo#1204746 to
+  texlive-alldocumentation as the documentation.sty has its own
+  package.
+
+- Modify update script in such way that the hash sum of the
+  mtxrun calls agree with those of the users 
+
+- Update to final TeXLive 2023
+
+- Update to pretest TeXLive 2023</comment>
+    <requestid>1077463</requestid>
+  </revision>
+  <revision rev="54" vrev="57">
+    <srcmd5>37543673fd77116059737e580aba0298</srcmd5>
+    <version>unknown</version>
+    <time>1684239357</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix syntax error in update script (forwarded request 1087234 from Andreas_Schwab)</comment>
+    <requestid>1087240</requestid>
+  </revision>
+  <revision rev="55" vrev="58">
+    <srcmd5>d1804ad7214fa44331572f4a943021fb</srcmd5>
+    <version>unknown</version>
+    <time>1685124908</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch over to systemd to a) replace cron usage with timer
+  and b) to make use the transactional update support of the
+  update script (boo#1211613) 
+
+- Better support of transactional updates (boo#1211613)
+
+- Enable the force mode of update script to handle broken
+  /var/lib and /var/cache texmf entries (boo#1211613)</comment>
+    <requestid>1089013</requestid>
+  </revision>
+  <revision rev="56" vrev="59">
+    <srcmd5>1a6a2b4952bcd22556043b6f53aae7d9</srcmd5>
+    <version>unknown</version>
+    <time>1686074128</time>
+    <user>dimstar_suse</user>
+    <comment>- For creation of ls-R after transactional update used secure
+  way via setpriv(8) (boo#1212006)</comment>
+    <requestid>1090926</requestid>
+  </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>fa9f80b7f05d9a9408b6b7a73975ab39</srcmd5>
+    <version>unknown</version>
+    <time>1688563836</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework lua(meta)tex/context resource findings</comment>
+    <requestid>1096749</requestid>
+  </revision>
+</revisionlist>

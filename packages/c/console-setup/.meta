@@ -1,0 +1,5 @@
+<package name="console-setup" project="openSUSE:Factory">
+  <title>console-setup</title>
+  <description>Tools for configuring the console using X Window System key maps</description>
+  <devel project="Base:System" package="console-setup"/>
+</package>

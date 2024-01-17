@@ -1,0 +1,5 @@
+<package name="bees" project="openSUSE:Factory">
+  <title>BEES is a btrfs deduplication tool</title>
+  <description>Bees is a block-oriented userspace deduplication agent designed for large btrfs filesystems. It is an offline dedupe combined with an incremental data scan capability to minimize time data spends on disk from write to dedupe.</description>
+  <devel project="filesystems" package="bees"/>
+</package>

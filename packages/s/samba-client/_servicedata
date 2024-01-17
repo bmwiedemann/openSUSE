@@ -1,0 +1,10 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/openSUSE/samba-container.git</param>
+    <param name="changesrevision">602a44991137144e1cda297069fdb961268ef499</param>
+  </service>
+  <service name="tar_scm">
+    <param name="url">https://github.com/samba-in-kubernetes/samba-container.git</param>
+    <param name="changesrevision">ed539a871a67d8987f703e16cdfed81902aa589a</param>
+  </service>
+</servicedata>

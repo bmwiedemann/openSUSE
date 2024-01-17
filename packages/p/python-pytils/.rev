@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79b981fce3b86a8d62410d86005b0f08</srcmd5>
+    <version>0.3</version>
+    <time>1543528731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651666</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>268c0a4f0e33ee8a17dab00a688a8d47</srcmd5>
+    <version>0.3</version>
+    <time>1622536681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895946</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>223af40307bc5c2754427881a1ac4883</srcmd5>
+    <version>0.4.1</version>
+    <time>1665185121</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008703</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>630db6888cbd4b55dd63213b1c3e230c</srcmd5>
+    <version>0.4.1</version>
+    <time>1676990189</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11
+  gh#last-partizan/pytils#50
+</comment>
+    <requestid>1066953</requestid>
+  </revision>
+</revisionlist>

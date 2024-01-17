@@ -1,0 +1,52 @@
+From 7f3c0dd8bd9ed89e3e146f934212516831147c51 Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Mon, 31 Jul 2023 16:33:40 +0200
+Subject: [PATCH] Remove dependency on future
+
+Fixes: https://github.com/zardus/ana/issues/16
+---
+ ana/storable.py | 8 +++-----
+ setup.py        | 2 +-
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/ana/storable.py b/ana/storable.py
+index a11710b..37379b1 100644
+--- a/ana/storable.py
++++ b/ana/storable.py
+@@ -1,5 +1,3 @@
+-from future.utils import iteritems
+-from past.builtins import long, unicode
+ import uuid as uuid_module
+ 
+ import logging
+@@ -48,11 +46,11 @@ def ana_load(cls, uuid):
+     def _any_to_literal(o, known_set, objects):
+         if o is None:
+             return None
+-        elif type(o) in (long, int, str, unicode, float, bool):
++        elif type(o) in (int, str, float, bool):
+             return o
+         elif isinstance(o, dict):
+             return {
+-                Storable._any_to_literal(k, known_set, objects):Storable._any_to_literal(v, known_set, objects) for k,v in iteritems(o)
++                Storable._any_to_literal(k, known_set, objects):Storable._any_to_literal(v, known_set, objects) for k,v in o.items()
+             }
+         elif isinstance(o, list) or isinstance(o, tuple) or isinstance(o, set):
+             return [ Storable._any_to_literal(e, known_set, objects) for e in o ]
+@@ -108,7 +106,7 @@ def _ana_getstate(self):
+             return { k: getattr(self, k) for k in self._all_slots() if hasattr(self, k) }
+ 
+     def _ana_setstate(self, s):
+-        for k,v in iteritems(s):
++        for k,v in s.items():
+             setattr(self, k, v)
+ 
+     def _ana_getliteral(self):
+diff --git a/setup.py b/setup.py
+index f574ef5..291104b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,2 +1,2 @@
+ from distutils.core import setup
+-setup(name='ana', version='0.06', install_requires=['future'], packages=['ana'])
++setup(name='ana', version='0.06', packages=['ana'])

@@ -1,0 +1,11 @@
+<package name="post-build-checks" project="openSUSE:Factory">
+  <title>post checks for build after rpms have been created</title>
+  <description>some scripts to check for problems like test-installing the newly
+created rpms and checking the logfile for errors.
+
+This package will also set/change the following sysconfig variables, so
+it may not be a good idea to install this to a running system:
+/etc/sysconfig/security:PERMISSION_SECURITY=&quot;secure&quot;
+/etc/sysconfig/clock:TIMEZONE=&quot;UTC&quot;</description>
+  <devel project="Base:System" package="post-build-checks"/>
+</package>

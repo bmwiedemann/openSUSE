@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40cfda91e30cc096eadc8783a34bc2b3</srcmd5>
+    <version>1.2</version>
+    <time>1550668296</time>
+    <user>maxlin_factory</user>
+    <comment>This is a new dependency of ocaml-migrate-parsetree.</comment>
+    <requestid>677324</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f8a078e9cf98a9419f77c31dbe7d01f</srcmd5>
+    <version>1.2.1</version>
+    <time>1558037396</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (1.2.1).
+  * Convert from Jbuilder to Dune. 
+</comment>
+    <requestid>703424</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>687ace998a88e4ddd856def3a3c0c04e</srcmd5>
+    <version>1.2.1</version>
+    <time>1571950919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735915</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>84f069e82e4f8c7088a8a8447d21b484</srcmd5>
+    <version>1.2.1</version>
+    <time>1573504060</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746708</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6b9aad690c84df99d11ccb626f6396ba</srcmd5>
+    <version>1.2.1</version>
+    <time>1649274683</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros</comment>
+    <requestid>967070</requestid>
+  </revision>
+</revisionlist>

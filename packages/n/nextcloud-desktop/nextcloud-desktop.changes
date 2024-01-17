@@ -1,0 +1,2098 @@
+-------------------------------------------------------------------
+Wed Dec 13 11:33:41 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.11.0:
+  * Allow deleting remotely deleted files locally in case of
+    upload errors (gh#nextcloud/desktop#6014).
+  * Bugfix/lock state spam (gh#nextcloud/desktop#6022).
+  * Remove locketimeout condition (gh#nextcloud/desktop#6027).
+  * fixed detection of server version in cmd client similar to gui
+    client (2nd try, signed off) (gh#nextcloud/desktop#6023).
+  * Add compatibility with the new libcloudproviders integration
+    (gh#nextcloud/desktop#6031).
+  * Store the new etag into local database when opening with
+    auto-locking… (gh#nextcloud/desktop#6038).
+  * Fix visual bug with folder size confirmation combo box in
+    general settings (gh#nextcloud/desktop#6035).
+  * Display correct conflict part in multiple conflicts resolution
+    dialog (gh#nextcloud/desktop#6043).
+  * Rewrite share expiration date field's date handling, fixing
+    issues (gh#nextcloud/desktop#5961).
+  * Use a standardised locale to create log file filenames
+    (gh#nextcloud/desktop#6012).
+  * Bugfix/multiple accounts migration
+    (gh#nextcloud/desktop#6046).
+  * Remove unused shareuserline ui component
+    (gh#nextcloud/desktop#6042).
+  * once we call done on a sync file item, return is needed
+    (gh#nextcloud/desktop#6053).
+  * Bugfix/infinite sync (gh#nextcloud/desktop#6056).
+  * do not check every 5 seconds files with infinite timeout (= 0)
+    (gh#nextcloud/desktop#6059).
+  * FileProvider: Add missing AccountState State case for
+    notifying account state to extension
+    (gh#nextcloud/desktop#6006).
+  * Fix folder wizard warning color for local path in dark mode
+    (gh#nextcloud/desktop#5968).
+  * Fix residual typos found by codespell
+    (gh#nextcloud/desktop#5860).
+  * Fix new typos found by codespell (gh#nextcloud/desktop#6069).
+  * Remove dead OAuth code (gh#nextcloud/desktop#6005).
+  * Fix Chunk v2 upload headers (gh#nextcloud/desktop#6084).
+  * Bugfix/activity list fixes (gh#nextcloud/desktop#6064).
+  * Optimize CaseConflictRecords search in local DB during the
+    sync (gh#nextcloud/desktop#6083).
+  * Bugfix/legacy migration (gh#nextcloud/desktop#6072).
+  * Prevent empty password being passed into share creation
+    (gh#nextcloud/desktop#6100).
+  * Unhide discovery logs for file deleted on the server and for
+    discovered file (gh#nextcloud/desktop#6112).
+  * Use material icon for folders (gh#nextcloud/desktop#6114).
+  * Fix chunk v2 destination header (gh#nextcloud/desktop#6133).
+  * Bugfix/restore folders recursively
+    (gh#nextcloud/desktop#6134).
+  * Show more informative error message when VFS hydration fails.
+    Displaya popup and put an error into activity list. More
+    detailed logs (gh#nextcloud/desktop#6140).
+  * Improve Settings dialog design (gh#nextcloud/desktop#6150).
+  * Do not show failure popul for VFS when hydration finished with
+    code 200 or 204 (gh#nextcloud/desktop#6160).
+  * Bump peter-evans/create-or-update-comment from 3.0.1 to 3.0.2
+    (gh#nextcloud/desktop#6091).
+  * Enforce virtual file type when it is falsely marked as
+    non-virtual. Added more logs for scenarios when virtual
+    placeholder gets marked as non-virtual
+    (gh#nextcloud/desktop#6158).
+  * Fix crash when clicking on import legacy account dialog 'Skip'
+    button (gh#nextcloud/desktop#6184).
+  * Fix crash. Remove unnecessary dependency injection causing
+    crash (gh#nextcloud/desktop#6178).
+  * Bugfix/vfs toggle fix (gh#nextcloud/desktop#6223).
+  * Fix. Bulk upload. Accumulate sent bytes. Fix negative value in
+    UI (gh#nextcloud/desktop#6227).
+  * Don't log notification successes as warnings
+    (gh#nextcloud/desktop#6234).
+  * avoid restore algorithm by setting the data fingerprint from
+    sync DB (gh#nextcloud/desktop#6216).
+  * docs(troubleshooting): Add warning about sensitive data in
+    logs (gh#nextcloud/desktop#6237).
+  * add a cmake flag to not build with Qt5 WebEngine
+    (gh#nextcloud/desktop#6257).
+  * Change logging for sparkle update to qCInfo
+    (gh#nextcloud/desktop#6161).
+  * maintain lock state if unlock happens during sync
+    (gh#nextcloud/desktop#6236).
+  * avoid modifying a placeholder (virtual files) when not needed
+    (gh#nextcloud/desktop#6263).
+  * Fix build with latest NextcloudKit, caused by search for
+    XCTest and friends (gh#nextcloud/desktop#6265).
+  * Feature/client status reporting (gh#nextcloud/desktop#6283).
+
+-------------------------------------------------------------------
+Sat Dec  9 03:43:16 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.10.2:
+  * Fix folder wizard warning color for local path in dark mode
+    (gh#nextcloud/desktop#6068).
+  * Bugfix/remove dead oauth code (gh#nextcloud/desktop#6075).
+  * Open Nextcloud after installation on macOS
+    (gh#nextcloud/desktop#6076).
+  * Fix Chunk v2 upload headers (gh#nextcloud/desktop#6086).
+  * Bugfix/legacy migration (gh#nextcloud/desktop#6095).
+  * Prevent empty password being passed into share creation
+    (gh#nextcloud/desktop#6107).
+  * Unhide discovery logs for file deleted on the server and for
+    discovered file (gh#nextcloud/desktop#6116).
+  * Fix issues on manpages (gh#nextcloud/desktop#6122).
+  * Fix chunk v2 destination header (gh#nextcloud/desktop#6141).
+  * Bugfix/restore folders recursively
+    (gh#nextcloud/desktop#6143).
+  * Show more informative error message when VFS hydration fails.
+    Displaya popup and put an error into activity list. More
+    detailed logs. (gh#nextcloud/desktop#6153).
+  * Do not show failure popul for VFS when hydration finished with
+    code 200 or 204. (gh#nextcloud/desktop#6163).
+  * Upgrade to Mac OS 12.0.0. (gh#nextcloud/desktop#6171).
+  * Enforce virtual file type when it is falsely marked as
+    non-virtual. Added more logs for scenarios when virtual
+    placeholder gets marked as non-virtual.
+    (gh#nextcloud/desktop#6172).
+  * we require version 12.0+ for macOS
+    (gh#nextcloud/desktop#6175).
+  * Fix crash when clicking on import legacy account dialog 'Skip'
+    button. (gh#nextcloud/desktop#6208).
+  * avoid restore algorithm by setting the data fingerprint from
+    sync DB (gh#nextcloud/desktop#6241).
+  * Fix crash. Remove unnecessary dependency injection causing
+    crash. (gh#nextcloud/desktop#6252).
+  * Fix. Bulk upload. Accumulate sent bytes. Fix negative value in
+    UI. (gh#nextcloud/desktop#6253).
+  * Bugfix/vfs toggle fix (gh#nextcloud/desktop#6251).
+  * maintain lock state if unlock happens during sync
+    (gh#nextcloud/desktop#6259).
+  * avoid modifying a placeholder (virtual files) when not needed
+    (gh#nextcloud/desktop#6262).
+  * Fix build with latest NextcloudKit, caused by search for
+    XCTest and friends (gh#nextcloud/desktop#6266).
+  * Feature. Do not allow move of external storage mounted
+    folders. (gh#nextcloud/desktop#6268).
+
+-------------------------------------------------------------------
+Thu Oct 19 10:00:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.10.1:
+  * No upstream release notes.
+
+-------------------------------------------------------------------
+Sat Sep 16 10:12:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.10.0:
+  * Long list of changes, see
+    https://github.com/nextcloud/desktop/releases/tag/v3.10.0
+
+-------------------------------------------------------------------
+Thu Sep  7 16:03:03 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.4:
+  * Convert VFS file to placeholder again if needed
+    (gh#nextcloud/desktop#5927).
+  * Update read-only status of virtual files when needed for lock
+    state (gh#nextcloud/desktop#5987).
+  * Hide password field in share settings when share type does not
+    support passwords (gh#nextcloud/desktop#5988).
+  * Display correct server colour prior to acquiring server
+    capabilities (gh#nextcloud/desktop#6001).
+  * Update VFS placeholder each time a file is opened by Word
+    (gh#nextcloud/desktop#6029).
+
+-------------------------------------------------------------------
+Tue Sep  5 15:23:28 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.3:
+  * Fix filename encoding test on windows
+    (gh#nextcloud/desktop#5974).
+- Drop NO_SHIBBOLETH flag: has not been used by build since
+  version 3.2.0.
+
+-------------------------------------------------------------------
+Wed Aug  9 19:05:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.2:
+  * Feature/check server availibility every minute
+    (gh#nextcloud/desktop#5928).
+  * windows reserved word silently excluded - csync exclude.cpp
+    (gh#nextcloud/desktop#5934).
+  * Do not modify discovered files on disk if not necessary
+    (gh#nextcloud/desktop#5958).
+
+-------------------------------------------------------------------
+Wed Jul 26 08:43:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.1:
+  * Bugfix/unsupported filename on server
+    (gh#nextcloud/desktop#5812).
+  * Bugfix/remove stale caseclashcopies
+    (gh#nextcloud/desktop#5817).
+  * Bugfix/checksum calculation stop on destruction
+    (gh#nextcloud/desktop#5827).
+  * Prevent crash by resetting common pointer after deleting
+    gobject menu (gh#nextcloud/desktop#5850).
+  * Documentation for mass deployment (gh#nextcloud/desktop#5857).
+  * Update the documentation with information on how 'Edit
+    locally' works (gh#nextcloud/desktop#5858).
+  * Fix typos found by codespell (gh#nextcloud/desktop#5859).
+  * Remove seen Talk notificatios from Tray window
+    (gh#nextcloud/desktop#5869).
+  * Fix bulk upload of empty files (gh#nextcloud/desktop#5878).
+  * Add link in readme to nextcloud-releases correct page with
+    binaries (gh#nextcloud/desktop#5880).
+  * Always propagate locked status to read-only or read/write for
+    real file (gh#nextcloud/desktop#5883).
+  * Added new state and new job to check if /index.php/204 is
+    being redirected (gh#nextcloud/desktop#5894).
+  * Fix crash and incorrect implementation of seen chat
+    notofications removal (gh#nextcloud/desktop#5897).
+  * Disable share view completely when server does not support/has
+    disabled file sharing (gh#nextcloud/desktop#5900).
+  * Set VFS PinState to Excluded for ignored files
+    (gh#nextcloud/desktop#5904).
+  * Create placeholder while dehydrating if needed
+    (gh#nextcloud/desktop#5906).
+  * Fix password generation for shares, improve generator
+    (gh#nextcloud/desktop#5908).
+  * Fix expire date field in Share settings
+    (gh#nextcloud/desktop#5907).
+  * Fix SVG rendering error in SvgImageProvider
+    (gh#nextcloud/desktop#5909).
+- Use rsvg-convert instead of inkscape to convert svg icons to
+  bitmaps during build. This shaves about 40 GUI dependencies of
+  inkscape --- and the significant disk-space they occupy ---
+  pulled in for builds but are otherwise unnecessary
+  (boo#1205096).
+
+-------------------------------------------------------------------
+Thu Jun 29 18:50:15 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add nextcloud-fix-HiDPI-window-size.patch -- Fix huge sized
+  windows for nextcloud client settings and crash-reporter on
+  HiDPI systems.
+- Set SOURCE_DATE_EPOCH from the last modified time of source
+  files to avoid non-reproducible builds due to __DATE__/__TIME__;
+  this replaces nextcloud-desktop-remove-datetime.patch which is
+  therefore dropped. Requires cmake >= 3.8.0. Using
+  SOURCE_DATE_EPOCH seems to be a better solution than the patch
+  as this still preserves the date and time shown on the Settings
+  window and could prove useful for debugging upstream. On the
+  contrary, the patch simply removed __DATE__/__TIME__ from the
+  sources and was not going to be accepted by upstream anyway.
+
+-------------------------------------------------------------------
+Fri Jun 23 07:41:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Split off nextcloudcmd into nextcloud-cli subpackage, which is
+  required by nextcloud-desktop. Allow users of text-only remote
+  systems to interact with a nextcloud instance without the need to
+  pull ub a full graphical stack. Users of 'nextcloud-desktop', the
+  'leading' package, will get the -cli tool installed by
+  dependency.
+- Move /etc/Netcloud to the -cli sub package. This is the common
+  denominator for all installations (text-only users will pick the
+  -cli package, graphical users pick nextcloud-desktop, which in
+  turn requires the -cli package.
+
+-------------------------------------------------------------------
+Wed Jun 14 06:27:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.9.0
+  - sort encrypted files by their id to compute checksum in #5568
+  - try different permutation to try to recover the broken checksum in #5572
+  - Fix unit tests SecureFileDrop in #5574
+  - Do not display error status and messages when aborting a sync during hydration request in VFS mode in #5579
+  - Correct spelling in #5567
+  - in case server has no private key, let e2ee init fail in #5566
+  - Edit locally. Restart current folder sync immediately after file opened. in #5588
+  - fix compilation with clazy and fully-qualified-moc-types checks enabled in #5587
+  - Enter next log file if the current log file is larger than 512 KB in #5580
+  - Alway add the item at the end of the layout. in #5595
+  - properly preserve the format of e2ee metadata during DB operations in #5577
+  - Edit locally. Elide loading dialog filename label middle. in #5612
+  - Fix crash on entering new log file after file size of 512kb reached in #5603
+  - Properly handle all fatal errors during edit locally setup procedure in #5583
+  - Update nextcloudcmd.rst to include dedicated install method for Debian instead of using a Ubuntu ppa. in #5243
+  - Fix MacOS UTF-8 normalization issue in #4957
+  - Parse sharees 'lookup' key to include federated sharees. in #5613
+  - Unlock Office files when they are closed by @allexzander in #5607
+  - Implement missing share settings in #5622
+  - no longer override the pixman default version in #5630
+  - Edit locally. Fix crash on _chekTokenJob pointer deref. in #5637
+  - Remove some SQL debug logs to unclutter the output. in #5634
+  - Annotated version of Big Sur icon in #4714
+  - E2EE. Fix freeze on metadata checksum validation. in #5655
+  - Fix update request channel being set to wrong localised string in #5462
+  - Fix folder progress bar positioning in account settings on macOS in #5645
+  - Fix setting [undefined] to QFont in 'Sync now' button in #5628
+  - Attempt sign in when an account state is added in AccountManager in #5493
+  - Fix account migration from legacy desktop clients (again) in #5640
+  - Feature/group folders visibility improved in #5636
+  - Use addLayout to insert the VFS option when setting account. in #5665
+  - Update CHANGELOG. in #5643
+  - i18n: Word separation in #5676
+  - Implement File Provider file synchronisation engine for macOS in #5527
+  - Fix unrecoverable freezing when PutMultiFileJob is used with upload rate limits enabled in #5680
+  - Dismiss notifications in #5687
+  - Display file tags in File Details in #5596
+  - Allow opening a file or folder in the local sync root. in #5686
+  - Provide feedback on share link copy in #5672
+  - Ask before importing accounts from legacy clients in #5654
+  - Feature/resolve all conflicts in #5635
+  - Update CHANGELOG. in #5706
+  - change size of dismiss button for items in activity list in #5377
+  - [stable-3.9] Fix tray window header folders button colour in #5723
+  - [stable-3.9] align activity text with "Sync now" text in #5725
+  - [stable-3.9] ensure that the file to test monitoring is hidden in #5733
+  - [stable-3.9] Fix tray styling in #5741
+  - [stable-3.9] Fix macOS build when file provider module build is disabled in #5742
+  - [stable-3.9] Fix dark mode switch issues in tray controls manually overriding palette colours in #5744
+  - [stable-3.9] fix build on windows by adding missing archive name properties on libs in #5748
+  - [stable-3.9] Fix macOS icon in #5762
+  - [stable-3.9] Bugfix/log less verbose in #5775
+  - Revert inclusion of File Provider module in 3.9 branch in #5772
+  - [stable-3.9] Bugfix. Conflict resolution button not clickable. in #5777
+  - [stable-3.9] display subject when we have sync issues like network errors in #5782
+  - [stable-3.9] Fix UnifiedSearch text field placeholder text color for light and dark theme in #5785
+  - [stable-3.9] addd a cmake option to enable single account desktop client in #5789
+  - [stable-3.9] Fix colouring of NCRadioButton in #5790
+  - [stable-3.9] chore: update workflows from templates in #5794
+  - [stable-3.9] Bugfix/rotate log less often in #5795
+  - [stable-3.9] Bugfix/adjust log levels in #5799
+
+-------------------------------------------------------------------
+Wed May 17 09:40:12 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.8.2
+  - desktop#5619 [stable-3.8] Edit locally. Elide loading dialog filename label middle.
+  - desktop#5620 [stable-3.8] Fix crash on entering new log file after file size of 512kb reached
+  - desktop#5623 [stable-3.8] Properly handle all fatal errors during edit locally setup procedure
+  - desktop#5624 [stable-3.8] Fix MacOS UTF-8 normalization issue
+  - desktop#5625 [stable-3.8] Parse sharees 'lookup' key to include federated sharees.
+  - desktop#5631 [stable-3.8] Implement missing share settings
+  - desktop#5632 [stable-3.8] no longer override the pixman default version
+  - desktop#5647 [stable-3.8] Edit locally. Fix crash on _chekTokenJob pointer deref.
+  - desktop#5651 [stable-3.8] Remove some SQL debug logs to unclutter the output.
+  - desktop#5657 [stable-3.8] E2EE. Fix freeze on metadata checksum validation.
+  - desktop#5660 [stable-3.8] Fix folder progress bar positioning in account settings on macOS
+  - desktop#5671 [stable-3.8] Use addLayout to insert the VFS option when setting account.
+  - desktop#5658 [stable-3.8] Fix update request channel being set to wrong localised string
+  - desktop#5661 [stable-3.8] Fix setting [undefined] to QFont in 'Sync now' button
+  - desktop#5664 [stable-3.8] Fix account migration from legacy desktop clients (again)
+  - desktop#5663 [stable-3.8] Attempt sign in when an account state is added in AccountManager
+  - desktop#5673 [stable-3.8] Update CHANGELOG.
+  - desktop#5694 [stable-3.8] Fix unrecoverable freezing when PutMultiFileJob is used with upload rate limits enabled
+
+-------------------------------------------------------------------
+Wed Apr 19 15:03:44 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.8.1
+  - desktop#5570 [stable-3.8] sort encrypted files by their id to compute checksum
+  - desktop#5573 [stable-3.8] try different permutation to try to recover the broken checksum
+  - desktop#5578 [stable-3.8] Fix unit tests SecureFileDrop
+  - desktop#5582 [stable-3.8] Do not display error status and messages when aborting a sync during hydration request in VFS mode
+  - desktop#5589 [stable-3.8] in case server has no private key, let e2ee init fail
+  - desktop#5592 [stable-3.8] Edit locally. Restart current folder sync immediately after file opened.
+  - desktop#5597 [stable-3.8] Alway add the item at the end of the layout.
+  - desktop#5599 [stable-3.8] properly preserve the format of e2ee metadata during DB operations
+
+-------------------------------------------------------------------
+Sat Apr  1 07:40:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update ot 3.8.0
+  - desktop#5161 Resize WebView widget once the loginpage rendered
+  - desktop#5327 Feature/secure file drop
+  - desktop#5351 Check German translation for wrong wording
+  - desktop#5378 L10n: Correct word
+  - desktop#5379 Fix displaying of file details button for local syncfileitem activities
+  - desktop#5384 Improve config upgrade warning dialog
+  - desktop#5385 Only accept folder setup page if overrideLocalDir is set
+  - desktop#5389 Update CHANGELOG.
+  - desktop#5391 Prevent ShareModel crash from accessing bad pointers
+  - desktop#5393 Bugfix/init value for pointers
+  - desktop#5410 Log to stdout when built in Debug config
+  - desktop#5416 Clean up account creation and deletion code
+  - desktop#5427 L10n: Added dot to end of sentence
+  - desktop#5430 L10n: Fixed grammar
+  - desktop#5435 Fix "Create new folder" menu entries in settings not working correctly on macOS
+  - desktop#5436 Ci/clang tidy checks init variables
+  - desktop#5442 Fix share dialog infinite loading
+  - desktop#5444 Fix edit locally job not finding the user account: wrong user id
+  - desktop#5448 Skip e2e encrypted files with empty filename in metadata
+  - desktop#5451 Use new connect syntax
+  - desktop#5453 Fix avatars not showing up in settings dialog account actions until clicked on
+  - desktop#5459 Always discover blacklisted folders to avoid data loss when modifying selectivesync list.
+  - desktop#5472 Fix infinite loading in the share dialog when public link shares are disabled on the server
+  - desktop#5474 With cfapi when dehydrating files add missing flag
+  - desktop#5478 Fix text labels in Sync Status component
+  - desktop#5485 Display 'Search globally' as the last sharees list element
+  - desktop#5486 Fix display of 2FA notification.
+  - desktop#5498 Bugfix/do not restore virtual files
+  - desktop#5513 Show server name in tray main window
+  - desktop#5520 Add Ubuntu Lunar
+  - desktop#5521 Debian build classification 'beta' cannot override 'release'.
+  - desktop#5525 Update changelog
+  - desktop#5530 Follow shouldNotify flag to hide notifications when needed
+  - desktop#5532 Bugfix/stop after creating config file
+  - desktop#5534 E2EE cut extra zeroes from derypted byte array.
+  - desktop#5546 When local sync folder is overriden, respect this choice
+  - desktop#5560 Feature/e2ee fixes
+
+-------------------------------------------------------------------
+Thu Mar  9 17:29:08 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.4
+  - desktop#5425 [stable-3.7] check German translation for wrong wording
+  - desktop#5437 [stable-3.7] Fix "Create new folder" menu entries in settings not working correctly on macOS
+  - desktop#5438 [stable-3.7] Clean up account creation and deletion code
+  - desktop#5446 [stable-3.7] Fix share dialog infinite loading
+  - desktop#5450 [stable-3.7] fix edit locally job not finding the user account: wrong user id
+  - desktop#5454 [stable-3.7] skip e2e encrypted files with empty filename in metadata
+  - desktop#5481 [stable-3.7] Always discover blacklisted folders to avoid data loss when modifying selectivesync list.
+  - desktop#5483 [stable-3.7] use new connect syntax
+  - desktop#5484 [stable-3.7] with cfapi when dehydrating files add missing flag
+  - desktop#5487 [stable-3.7] Fix avatars not showing up in settings dialog account actions until clicked on
+  - desktop#5488 [stable-3.7] Fix text labels in Sync Status component
+  - desktop#5489 [stable-3.7] Fix infinite loading in the share dialog when public link shares are disabled on the server
+  - desktop#5490 [stable-3.7] Ci/clang tidy checks init variables
+  - desktop#5494 [stable-3.7] Display 'Search globally' as the last sharees list element
+  - desktop#5499 [stable-3.7] Resize WebView widget once the loginpage rendered
+  - desktop#5502 [stable-3.7] Bugfix/do not restore virtual files
+  - desktop#5505 [stable-3.7] Fix display of 2FA notification.
+
+-------------------------------------------------------------------
+Fri Feb 10 06:25:57 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.3
+  - Revert "Fix(l10n): capital_abcd Update translations from Transifex"
+  - Revert "Fix(l10n): capital_abcd Update translations from Transifex"
+  - Revert "Fix(l10n): capital_abcd Update translations from Transifex"
+
+-------------------------------------------------------------------
+Thu Feb  9 19:06:27 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.2
+  - No regular changelog from upstream.
+    See instead: https://github.com/nextcloud/desktop/compare/v3.7.1...v3.7.2
+
+-------------------------------------------------------------------
+Tue Feb  7 12:28:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.1
+  - Backport/5393/stable 3.7 by @mgallien in #5403
+  - Fix wrong estimated time when doing sync. in #4902
+  - Bugfix/selective sync abort error in #4903
+  - Set UnifiedSearchResultNothingFound visibility less messily in #4751
+  - Clean up QML type and singleton registration in #4817
+  - Simplify activity list delegates by making them ItemDelegates, clean up in #4786
+  - Improve activity list highlighting/keyboard item selection in #4781
+  - Replace private API QZipWriter with KArchive in #4768
+  - makes Qt WebEngine optional only on macOS in #4875
+  - Bugfix/conflict resolution when selecting folder in #4914
+  - Fix fileactivitylistmodel QML registration in #4920
+  - Updated link to documentation in #4792
+  - Fix menu bar height calculation on macOS in #4917
+  - Fix ActivityItem activityHover error in #4921
+  - Fix add account window text clipping, enlarge text in #4910
+  - Accept valid lsColJob reply XML content types in #4919
+  - Fix low-resolution file changed overlay icons in activities in #4930
+  - Refactor ActivityListModel population mechanisms in #4736
+  - Make account setup wizard's adjustWizardSize resize to current page size instead of largest wizard page in #4911
+  - Deallocate call notification dialog objects when closed by @claucambra in #4939
+  - Ensure that the file being processed has had its etag properly sanitised, log etag more in #4940
+  - Feature/syncjournaldb handle errors in #4819
+  - Do not format text in QML components as HTML in #4944
+  - Fix two factor auth notification: activity item was disabled. in #4961
+  - Add a placeholder item for empty activity list in #4959
+  - Ensure strings in main window QML are presented as plain text and not HTML by @claucambra in #4972
+  - Improve handling of file name clashes by @claucambra in #4970
+  - Add a QSortFilterProxyModel-based SortedActivityListModel by @claucambra in #4933
+  - Bring back .lnk files on Windows and always treat them as non-virtual files. by @allexzander in #4968
+  - Fix two factor authentication notification by @camilasan in #4967
+  - Ensure placeholder message in emoji picker wraps correctly in #4960
+  - Make activity action button an actual button, clean up contents in #4784
+  - Improve the error box QML component in #4976
+  - Fix 'Reply' primary property. in #4985
+  - Fix sync progress bar colours in dark mode in #4986
+  - Fix predefined status text formatting in #4987
+  - Don't set up tray context menu on macOS, even if not building app bundle in #4988
+  - Ci/check clang tidy in ci in #4995
+  - check our code with clang-tidy in #4999
+  - alway use constexpr for all text constants in #4996
+  - avoid possibly crashing static_cast in #4994
+  - switch AppImage CI to latest tag: client-appimage-6 in #5003
+  - configure a list of checks for clang-tidy in #5004
+  - Fix link shares default expire date being enforced as maximum expire date even when maximum date enforcement is disabled on the server in #4982
+  - apply modernize-use-using via clang-tidy in #4993
+  - Ci/use no discard in #4992
+  - Fix files not unlocking after lock time expired in #4962
+  - Update client image in #5002
+  - let's check the format via some github action in #4991
+  - Feature/vfs windows sharing and lock state in #4942
+  - Update after tx migrate in #5019
+  - Improve 'Handle local file editing' feature. Add loading popup. Add force sync before opening a file. in #4990
+  - Command-line client. Do not trust SSL certificates by default, unless '--trust' option is set. in #5022
+  - Bugfix/files lock fail metadata in #5024
+  - do not ignore return value in #4998
+  - improve logs when adding sync errors in activity list of main dialog in #5032
+  - Fix invisible user status selector button not being checked when user is in Offline mode in #5012
+  - use correct version copmparison on NSIS updater: fix update from rc in #4979
+  - Bugfix/check token for edit locally requests in #5039
+  - Fix the dismiss button: display it whenever possible. in #4989
+  - Fix account not found when doing local file editing. in #5040
+  - Improve "pretty user name"-related strings, display in webflow credentials in #5013
+  - Update CHANGELOG with 3.6.1 changes. in #5066
+  - Fix call notification dialog buttons in #5074
+  - validate certificate for E2EE against private key in #4949
+  - emit missing signal to update folder sync status icon in #5087
+  - Update CMake usage in README build instructions in #5086
+  - Clean up methods in sync engine in #5071
+  - Make Systray's void methods slots in #5042
+  - Remove unneeded parameter from CleanupPollsJob constructor in #5070
+  - Add a 'Sync now' button to the sync status header in the tray window in #5018
+  - Modernise and improve code in AccountManager in #5026
+  - Fix macOS autoupdater settings in #5102
+  - Validate and sanitise edit locally token and relpath before sending to server in #5093
+  - Refactor FolderMan's "Edit Locally" capabilities as separate class in #5107
+  - Modernise and improve code in AccountSettings in #5027
+  - Fix compatibility with newer python3-nautilus in #5105
+  - Only show Sync Now button if account is connected in #5097
+  - use new public API to open an edit locally URL in #5116
+  - Add a new file details window, unify file activity and sharing in #4929
+  - E2EE. Do not generate keypair without user request. in #5067
+  - Fix incorrect current user index when adding or removing a user account. Also fix incorrect user avatar lookup by id. in #5092
+  - Remove unused internal link widget from old share dialog in #5123
+  - Use separate variable for cfg file name in CMAKE. in #5136
+  - Bugfix/delete folders during propagation even when propagation has errors in #5104
+  - Remove unused app pointer in CocoaInitializer in #5127
+  - Ensure 'Sync now' button doesn't have its text elided in #5129
+  - Fix share delegate button icon colors in dark mode in #5132
+  - Do not use copy-assignment of QDialog. in #5148
+  - Remove unused remotePath in User::processCompletedSyncItem in #5118
+  - Make user status selector modal, show user header in #5145
+  - properly escape a path when creating a test file during tests in #5151
+  - Add support cmake unity build in #5109
+  - Fix typo of connector in #5157
+  - fully qualify types in signals and slots in #5088
+  - Remove reference to inexistent property in NCCustomButton in #5173
+  - Fix ActivityList delegate warnings in #5172
+  - Ensure forcing a folder to be synced unpauses syncing on said folder in #5152
+  - switch back to upstream craft in #5178
+  - fix renaming of folders with a deep hierarchy inside them in #5182
+  - fix instances of: c++11 range-loop might detach Qt container warnings in #5089
+  - Implement context menu entry "Leave this share" in #5081
+  - check that we update local file mtime on changes from server in #5188
+  - Add end-to-end tests to our CI in #5124
+  - Modernize the Dolphin action plugin in #5192
+  - Ci/do not modify configuration file duringtests in #5200
+  - cmake: Use FindPkgConfig's pkg_get_variable instead of custom macro in #5199
+  - Fix tray window margins, stop cutting into window border in #5202
+  - fix regressions on pinState management when doing renames in #520
+  - Fix bad custom button alignments, sizings, etc. in #5189
+  - Ci/do not override configuration file in #5206
+  - Clearly tell user that E2EE has been enabled for an account in #5164
+  - Fix CfApiShellExtensionsIPCTest in #5209
+  - l10n: Fixed grammar in #5220
+  - Prevent bad encrypting of folder if E2EE has not been correctly set up in #5223
+  - Remove close/dismiss button from encryption message in #5163
+  - Update macOS shell integration deployment targets in #5227
+  - Bugfix/case cash conflicts should not terminate sync in #5224
+  - Differentiate between E2EE not being enabled at all vs. E2EE being enabled already through another device in account settings message in #5179
+  - Ensure more QML text components are rendering things as plain text in #5231
+  - l10n: Correct spelling in #5221
+  - Make use of plain text-enforcing qml labels in #5233
+  - Feature/edit file locally restart sync in #5175
+  - Fix CI errors for Edit Locally. in #5241
+  - Lock file when editing locally in #5226
+  - Format some QLabels as plain text in #5247
+  - do not create GUI from a random thread and show error on real error in #5253
+  - Fix BasicComboBox internal layout in #5216
+  - Explicitly size and align user status selector text input to avoid bugs with alternate QtQuick styles in #5214
+  - do not use bulk upload for e2ee files in #5256
+  - Only show mnemonic request dialog when user explicitly wants to enable E2EE in #5181
+  - Replace share settings popup with a page on a StackView in #5194
+  - Add interactive NC Talk notifications on macOS in #5143
+  - Show file details within the tray dialog, rather than in a separate dialog in #5139
+  - Silence sync termination errors when running EditLocallyJob. in #5261
+  - Fix typo in #5257
+  - Add an "Encrypt" menu entry in file browser context menu for folders in #5263
+  - Add a nix flake for easy building and dev environments in #5007
+  - Add an internal link share to the share dialog in #5131
+  - Avoid the Get-Task-Allow Entitlement (macOS Notarization) in #5274
+  - sets a fixed version for pixman when buildign desktop client via Craft in #5269
+  - Fix SyncEngineTest failure when localstate is destroyed. in #5273
+  - Feature/remove obsolete names in #5271
+  - Remove unused HeaderBanner component in #5245
+  - Feature/do not sync enc folders if e2ee is not setup in #5258
+  - fix migration from old settings configuration files in #5141
+  - Use QFileInfo::exists where we are only creating a QFileInfo to check if file exists in #5291
+  - Make correct use of Qt signal 'emit' keyword in #5287
+  - Remove unused variables in #5290
+  - Declare all QRegularExpressions statically in #5289
+  - l10n: Remove space in #5297
+  - Feature/move shellextensions to root installdir in #5295
+  - Improve backup dark mode palette for Windows in #5298
+  - Allow setting up an account with apppasword and folder via command-line arguments. For deployment. in #5296
+  - Update file's metadata in the local database when the etag changes while file remains unchanged. 
+    Fix subsequent conflict when locking and unlocking. in #5293
+  - Fix warnings on QPROPERTY-s in #5286
+  - Replace now deprecated FSEventStreamScheduleWithRunLoop with FSEventStreamSetDispatchQueue in #5272
+  - Fix macOS shell integration class inits in #5299
+  - Drop dependency on Qt Quick Controls 1 in #5309
+  - Fix full-text search results not being opened in browser in #5279
+  - Feature/allow forceoverrideurl via command line in #5329
+  - Bugfix/e2ee vulnerability empty metadatakeys in #5323
+  - Always generate random initialization vector when uploading encrypted file in #5324
+  - Fix bad string for translation. in #5358
+  - Update legal notice to 2023 in #5361
+  - Fix migration from legacy client when override server url is set in #5322
+  - Don't try to lock folders when editing locally in #5317
+  - Fix fetch more unified search result item not being clickable in #5266
+  - Add ability to disable E2EE in #5167
+  - Remove unused monochrome icons setting in #5366
+  - Feature/sync with case clash names in #5232
+  - Edit locally. Do not lock if locking is disabled on the server. in #5371
+  - Revert "Merge pull request #5366 from nextcloud/bugfix/remove-mono-icons-setting" in #5372
+  - Open calendar notifications in the browser. in #4684
+  - Migrate old configs in #5362
+  - Always unlock E2EE folders, even when network failure or crash. in #5370
+  - [stable-3.7] Fix displaying of file details button for local syncfileitem activities in #5380
+  - [stable-3.7] Improve config upgrade warning dialog in #5386
+  - Backport/5385/stable 3.7 in #5388
+
+-------------------------------------------------------------------
+Fri Jan 20 10:17:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.6
+  - Revert "Fix(l10n): capital_abcd Update translations from Transifex" 33f3975
+- Drop Fix_3.6.5_Language_Bug_#5339.patch, because now in upstream.
+
+-------------------------------------------------------------------
+Thu Jan 19 16:50:38 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add patch Fix_3.6.5_Language_Bug_#5339.patch.
+
+-------------------------------------------------------------------
+Thu Jan 19 12:49:14 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.5
+  - do not assert when sharing to a circle in #5310
+  - [stable-3.6] Fix macOS shell integration class inits in #5311
+  - [stable-3.6] Drop dependency on Qt Quick Controls 1 in #5312
+  - [stable-3.6] Feature/allow forceoverrideurl via command line in #5332
+  - [stable-3.6] Fix typo in #5270
+  - [stable-3.6] check that we update local file mtime on changes from server in #5321
+  - [stable-3.6] fix regressions on pinState management when doing renames in #5333
+  - [stable-3.6] Always generate random initialization vector when uploading encrypted file in #5334
+  - [stable-3.6] Fix SyncEngineTest failure when localstate is destroyed. in #5336
+  - [stable-3.6] Bugfix/e2ee vulnerability empty metadatakeys in #5335
+
+-------------------------------------------------------------------
+Thu Dec  8 13:26:29 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.4
+  - desktop#5254 [stable-3.6] do not create GUI from a random thread and show error on real error
+
+-------------------------------------------------------------------
+Thu Dec  8 10:08:24 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.3
+  - desktop#5171 [stable-3.6] Fix typo of connector
+  - desktop#5186 [stable-3.6] fix renaming of folders with a deep hierarchy inside them
+  - desktop#5213 [stable-3.6] Make user status selector modal, show user header
+  - desktop#5225 [stable-3.6] Prevent bad encrypting of folder if E2EE has not been correctly set up
+  - desktop#5237 [stable-3.6] Feature/edit file locally restart sync
+  - desktop#5239 Add forcefoldersync method to folder manager
+  - desktop#5240 [stable-3.6] Make use of plain text-enforcing qml labels
+  - desktop#5246 [stable-3.6] Lock file when editing locally
+  - desktop#5249 [stable-3.6] Format some QLabels as plain text
+
+-------------------------------------------------------------------
+Thu Nov 10 18:58:04 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.2
+  - [stable-3.6] Fix call notification dialog buttons by @backportbot-nextcloud in #5075
+  - [stable-3.6] emit missing signal to update folder sync status icon by @backportbot-nextcloud in #5090
+  - [stable-3.6] Fix macOS autoupdater settings by @backportbot-nextcloud in #5103
+  - [stable-3.6] Validate and sanitise edit locally token and relpath
+    before sending to server by @backportbot-nextcloud in #5106
+  - [stable-3.6] Fix compatibility with newer python3-nautilus by @backportbot-nextcloud in #5112
+  - [stable-3.6] Refactor FolderMan's "Edit Locally" capabilities
+    as separate class by @backportbot-nextcloud in #5111
+  - [stable-3.6] use new public API to open an edit locally URL by @backportbot-nextcloud in #5117
+  - [stable-3.6] Use separate variable for cfg file name in CMAKE. by @backportbot-nextcloud in #5140
+  - Fix stable-3.6 compile on macOS by @claucambra in #5154
+  - Fix bad backport of CustomButton changes in Stable-3.6 by @claucambra in #5155
+  - Backport/5067/stable 3.6 by @allexzander in #5153
+  - Backport/5092/stable 3.6 by @allexzander in #5156
+  - [stable-3.6] properly escape a path when creating a test file during tests by @backportbot-nextcloud in #5158
+- Drop fix_nautilus_ext.patch because now in upstream.
+
+-------------------------------------------------------------------
+Fri Nov  4 11:41:37 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Split out the dbus service related files that provides
+  libcloudproviders integration for nextcloud desktop client into
+  a separate package; when this is installed, launching any
+  app supporting libowncloudproviders (e.g. nautilus on GNOME)
+  will automatically launch the desktop client -- which is rather
+  annoying to happen by default, esp. in cases where a user does
+  not even have a nextcloud account (gh#nextcloud/desktop#1982,
+  gh#nextcloud/desktop#2622).
+
+-------------------------------------------------------------------
+Sat Oct 22 14:36:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix_nautilus_ext.patch: make the extension working again on Nautilus 43.
+  This patch also support previous Nautilus versions.
+
+-------------------------------------------------------------------
+Wed Oct 19 10:10:54 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.1
+  - desktop#4907 [stable-3.6] Fix wrong estimated time when doing sync.
+  - desktop#4908 [stable-3.6] Bugfix/selective sync abort error
+  - desktop#4922 [stable-3.6] Bugfix/conflict resolution when selecting folder
+  - desktop#4923 [stable-3.6] Fix menu bar height calculation on macOS
+  - desktop#4926 [stable-3.6] Fix add account window text clipping, enlarge text
+  - desktop#4928 [stable-3.6] Accept valid lsColJob reply XML content types
+  - desktop#4934 [stable-3.6] Fix low-resolution file changed overlay icons in activities
+  - desktop#4941 [stable-3.6] Deallocate call notification dialog objects when closed
+  - desktop#4943 [stable-3.6] Ensure that the file being processed has had its etag properly sanitised, log etag more
+  - desktop#4973 [stable-3.6] Ensure strings in main window QML are presented as plain text and not HTML
+  - desktop#4974 [stable-3.6] Do not format text in QML components as HTML
+  - desktop#4978 [stable-3.6] Fix two factor authentication notification
+  - desktop#5000 [stable-3.6] Bring back .lnk files on Windows and always treat them as non-virtual files.
+  - desktop#5006 [stable-3.6] Fix 'Reply' primary property.
+  - desktop#5020 [stable-3.6] Update after tx migrate
+  - desktop#5030 [stable-3.6] Command-line client. Do not trust SSL certificates by default,
+    unless '--trust' option is set.
+  - desktop#5037 [stable-3.6] Fix invisible user status selector button not being checked when user is in Offline mode
+  - desktop#5048 [stable-3.6] Fix link shares default expire date being enforced as maximum expire date
+    even when maximum date enforcement is disabled on the server
+  - desktop#5052 Backport/4989/stable 3.6
+  - desktop#5053 [stable-3.6] use correct version copmparison on NSIS updater: fix update from rc
+  - desktop#5054 Improve 'Handle local file editing' feature. Add loading popup. Add f…
+  - desktop#5055 Backport/5039/bugfix/check token for edit locally requests
+  - desktop#5056 Fix account not found when doing local file editing.
+  - desktop#5057 Fix two factor auth notification: activity item was disabled.
+  - desktop#5058 [stable-3.6] Fix predefined status text formatting
+  - desktop#5059 [stable-3.6] Fix sync progress bar colours in dark mode
+  - desktop#5061 [stable-3.6] Improve handling of file name clashes
+  - desktop#5063 [stable-3.6] Ensure placeholder message in emoji picker wraps correctly
+
+-------------------------------------------------------------------
+Wed Sep  7 14:40:48 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.0
+  - desktop#3461 Fix crash in cldapi.dll
+  - desktop#4526 Updating command-rebase.yml workflow from template
+  - desktop#4577 Reply button size should be same as the input field, smaller + text color
+  - desktop#4616 Fix crashing when selecting user status and predefined statuses not appearing
+  - desktop#4624 Make user status dialog look in line with the rest of the desktop client tray and Nextcloud
+  - desktop#4628 Add a placeholder message for the recents tab of the emoji picker
+  - desktop#4631 Add SVG icon styled for macOS Big Sur
+  - desktop#4643 Ensure the dispatch source only gets deallocated after the dispatch_source_cancel is done,
+    avoiding crashing of the Finder Sync Extension on macOS
+  - desktop#4650 Properly adapt the UserStatusSelectorModel to QML, eliminate hacks, make code more declarative
+  - desktop#4655 Fix the system tray menu not being correctly replaced in setupContextMenu on GNOME
+  - desktop#4663 Make the share dialog resizeable
+  - desktop#4667 Make client language gender-neutral and more clear
+  - desktop#4671 Use an en-dash for the userstatus panel
+  - desktop#4672 Close call notifications when the call has been joined by the user, or the call has ended
+  - desktop#4678 Correct spelling
+  - desktop#4679 Print sync direction in SyncFileStatusTracker::slotAboutToPropagate
+  - desktop#4682 Windows CI. Use specific Craft revision.
+  - desktop#4683 Add 'db/local/remote' reference to log string.
+  - desktop#4685 Work around issues with window positioning on Linux DEs,
+    hardcode tray window to screen center when new account added
+  - desktop#4686 Add a custom back button to the account wizard's advanced setup page
+  - desktop#4687 Clean up systray methods, make more QML-friendly
+  - desktop#4688 Refactor tray window opening code for clarity and efficiency
+  - desktop#4693 Increase the call state checking interval to not overload the server
+  - desktop#4700 Fix bad quote in CMakeLists PNG generation message
+  - desktop#4703 Only set _FORTIFY_SOURCE when a higher level of this flag has not been set
+  - desktop#4704 Switch to using the main client CI image based on ubuntu 22.04
+  - desktop#4706 Limit concurrent notifications
+  - desktop#4707 Use macOS-specific application icon
+  - desktop#4710 QML-ify the UserModel, use properties rather than setter methods
+  - desktop#4712 Take ints by value rather than reference in UserModel methods
+  - desktop#4713 Feature/vfs windows thumbnails
+  - desktop#4717 Respect skipAutoUpdateCheck in nextcloud.cfg with Sparkle on macOS
+  - desktop#4718 Restyle unified search skeleton items animation and simplify their code
+  - desktop#4719 Stop styling QML unified search items hierarchically, use global Style constants
+  - desktop#4720 Use preprocessor directive rather than normal 'if' for UNNotification types
+  - desktop#4723 Make apps menu scrollable when content taller than available vertical space,
+    preventing borking of layout
+  - desktop#4734 Ensure that throttled notifications still appear in tray activity model
+  - desktop#4735 Stop clearing notifications when new notifications are received
+  - desktop#4738 Fix ActivityItemContent QML paintedWidth errors
+  - desktop#4748 Clicking on an activity list item for a file opens the local file if available
+  - desktop#4753 Replace unified search text field busy indicator with custom indicator
+  - desktop#4755 Update macOS Info.plist
+  - desktop#4756 Ensure debug archive contents are readable by any user
+  - desktop#4758 Remove Ubuntu Impish, add Kinetic
+  - desktop#4760 Make UserStatusSelector a dismissible page pushed onto the tray window
+  - desktop#4771 Feature/handle edit locally
+  - desktop#4773 Add Debian Bullseye build
+  - desktop#4774 Double-clicking tray icon opens currently-selected user's local folder (if available)
+  - desktop#4790 Clean up TalkReplyTextField, remove unnecessary parent Item
+  - desktop#4797 Refactor user line
+  - desktop#4799 Do not reboot PC when running an MSI via autoupdate.
+  - desktop#4801 Always run MSI with full UI.
+  - desktop#4802 Eliminate padding around the menu separator in the account menu
+  - desktop#4804 Feature/enable more warnings also for gcc
+  - desktop#4810 Move CFAPI shell extensions variables to root CMakeLists.
+  - desktop#4815 Move URI scheme variable from Nextcloud.cmake to root CMakeListsts.
+  - desktop#4816 Ensure SyncEngine use an initialized instance of SyncOptions
+  - desktop#4818 Fix QML warnings
+  - desktop#4820 I18n: Spelling unification
+  - desktop#4821 Fix crash: 'Failed to create OpenGL context'.
+  - desktop#4822 Fix bugs with setting 'Away' user status
+  - desktop#4827 Fix greek translation for application name in menu
+  - desktop#4829 Align, resize, and layout everything uniformly in the unified search view
+  - desktop#4830 Remove libglib-2.0.so.0 and libgobject-2.0.so.0 from Appimage.
+  - desktop#4831 Fix unified search item placeholder image source
+  - desktop#4833 Use same tooltip component everywhere, fix tooltip clipping bugs
+  - desktop#4834 Bump version and year.
+  - desktop#4839 Fix account switching and hover issues with UserLine component
+  - desktop#4840 Remove Ubuntu Focal
+  - desktop#4842 Add a ScrollView to the predefined statuses area of the UserStatusSelector
+  - desktop#4843 Prevent the 'Cancel' button of the user status selector getting squashed
+  - desktop#4844 Ensure that clear status message combo box is at least implicit width
+  - desktop#4845 Fix alignment of predefined status contents regardless of emoji fonts
+  - desktop#4850 Prevent crashing when trying to create error-ing QML component in systray.cpp, output error to log
+  - desktop#4852 Add CHANGELOG.md.
+  - desktop#4853 Ensure file activity dialog is centered on screen and appears at top of window stack
+  - desktop#4866 Build script for AppImage should not assume Nextcloud is the name
+  - desktop#4867 Fix File Activities dialog not showing up.
+  - desktop#4869 Reads and store fileId and remote permissions during bulk upload
+  - desktop#4882 Do not build qt keychain already included in the CI images
+  - desktop#4884 Bugfix/web engine on win11
+  - desktop#4885 Update CHANGELOG for the 3.6.0 release.
+  - desktop#4900 Fix script that upload AppImage to go in correct path
+
+-------------------------------------------------------------------
+Tue Aug  2 17:22:48 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.4
+  - #4794 Add and use DO_NOT_REBOOT_IN_SILENT=1 parameter for MSI to not reboot during the auto-update.
+
+-------------------------------------------------------------------
+Fri Jul 29 16:09:27 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.3
+  - desktop#4726 [stable-3.5] Fix the system tray menu not being correctly replaced in setupContextMenu on GNOME
+  - desktop#4727 [stable-3.5] Ensure call notification stays on top of other windows
+  - desktop#4729 [stable-3.5] Work around issues with window positioning on Linux DEs,
+    hardcode tray window to screen center when new account added
+  - desktop#4731 [stable-3.5] Clean up systray methods, make more QML-friendly
+  - desktop#4739 [stable-3.5] Refactor tray window opening code for clarity and efficiency
+  - desktop#4740 [stable-3.5] Only set _FORTIFY_SOURCE when a higher level of this flag has not been set
+  - desktop#4741 [stable-3.5] Limit concurrent notifications
+  - desktop#4742 [stable-3.5] Take ints by value rather than reference in UserModel methods
+  - desktop#4743 [stable-3.5] Respect skipAutoUpdateCheck in nextcloud.cfg with Sparkle on macOS
+  - desktop#4744 [stable-3.5] Use preprocessor directive rather than normal 'if' for UNNotification types
+  - desktop#4745 [stable-3.5] QML-ify the UserModel, use properties rather than setter methods
+  - desktop#4750 [stable-3.5] Fix ActivityItemContent QML paintedWidth errors
+  - desktop#4763 [stable-3.5] Stop clearing notifications when new notifications are received
+  - desktop#4764 [stable-3.5] Ensure debug archive contents are readable by any user
+  - desktop#4765 [stable-3.5] Stop styling QML unified search items hierarchically, use global Style constants
+  - desktop#4766 [stable-3.5] Update macOS Info.plist
+  - desktop#4767 [stable-3.5] print sync direction in SyncFileStatusTracker::slotAboutToPropagate
+  - desktop#4772 [stable-3.5] Remove Ubuntu Impish, add Kinetic
+  - desktop#4775 [stable-3.5] Ensure that throttled notifications still appear in tray activity model
+  - desktop#4783 [stable-3.5] Make apps menu scrollable when content taller than available vertical space,
+    preventing borking of layout
+- Drop nextcloud-remove-fortify-source-2.patch, because the fortify
+  problem is now handled in code from upstream.
+
+-------------------------------------------------------------------
+Mon Jul  4 17:09:14 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.2
+  - desktop#4569 [stable-3.5] Explicitly ask user for notification authorisation on launch (macOS)
+  - desktop#4571 [stable-3.5] Fix crash caused by overflow in FinderSyncExtension
+  - desktop#4583 [stable-3.5] add new fixup workflow from nextcloud org
+  - desktop#4589 [stable-3.5] Bump up minimum macOS version
+  - desktop#4592 [stable-3.5] Display chat message inside the OS notification.
+  - desktop#4595 [stable-3.5] Fix 'TypeError: Cannot readproperty 'messageSent' of undefined'.
+  - desktop#4596 [stable-3.5] Add a transparent background to the send reply button.
+  - desktop#4605 [stable-3.5] Fix build on macOS versions pre-11 (down to 10.14)
+  - desktop#4623 [stable-3.5] Ignore Office temp folders on Mac ('.sb-' in folder name).
+  - desktop#4647 [stable-3.5] Remove assert, it is no longer useful.
+  - desktop#4658 [stable-3.5] Add contrast to the text/icon of buttons if the server defined color is light.
+  - desktop#4665 [stable-3.5] fix general section
+  - desktop#4666 [stable-3.5] Remove tooltip because it is only repeating the label of the link.
+  - desktop#4668 [stable-3.5] bugfix/share-dialog
+  - desktop#4676 [stable-3.5] Updating command-rebase.yml workflow from template
+  - desktop#4680 [stable-3.5] Reply button size should be same as the input field, smaller + text color
+  - desktop#4692 [stable-3.5] Close call notifications when the call has been joined by the user, or the call has ended
+  - desktop#4694 [stable-3.5] Increase the call state checking interval to not overload the server
+  - desktop#4696 [stable-3.5] Ensure the dispatch source only gets deallocated after
+    the dispatch_source_cancel is done, avoiding crashing of the Finder Sync Extension on macOS
+
+-------------------------------------------------------------------
+Sun Jul  3 12:21:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add nextcloud-remove-fortify-source-2.patch
+  * A more future-proof and distribution friendly fix for
+    boo#1201070
+  * Upstream issue: gh#nextcloud/desktop#4697
+
+-------------------------------------------------------------------
+Fri Jul  1 11:08:59 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Fix Tumbleweed build and install error boo#1201070.
+  Use own CFLAGS for Tumblweed with -D_FORTIFY_SOURCE=2 instead of -D_FORTIFY_SOURCE=3.
+
+-------------------------------------------------------------------
+Tue May 17 16:42:55 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.1
+  - desktop#4486 [stable-3.5] Add new and correct sparkle update signature
+  - desktop#4489 [stable-3.5] l10n: Remove string from translation
+  - desktop#4490 [stable-3.5] l10n: Changed triple dot to ellipsis
+  - desktop#4491 [stable-3.5] Ensure cache is stored in default cache location
+  - desktop#4492 [stable-3.5] Updating command-rebase.yml workflow from template
+  - desktop#4493 [stable-3.5] Remove "…" from "Create Debug Archive" button
+  - desktop#4494 [stable-3.5] docs: Replace "preceded" with "followed"
+  - desktop#4511 [stable-3.5] only add OCS-APIREQUEST header for 1st request of webflow v1
+  - desktop#4514 [stable-3.5] Make the make_universal.py script more verbose for easier debugging
+  - desktop#4515 [stable-3.5] Revamp notifications for macOS and add support for actionable update notifications
+  - desktop#4537 [stable-3.5] Use proper online status for user ('dnd', 'online', 'invisible', etc.) to enable or disable desktop notifications.
+  - desktop#4538 [stable-3.5] Bugfix. Take root folder's files size into account when displaying the total size in selective sync dialog.
+  - desktop#4539 [stable-3.5] Fix activity list item issues with colours/layout/etc.
+  - desktop#4541 [stable-3.5] Bugfix/allow manual rename files with spaces
+  - desktop#4544 [stable-3.5] Fixed share link expiration box being ineditable and always attempting to set invalid date
+  - desktop#4545 [stable-3.5] Fix crashing of finder sync extension caused by dispatch_source_cancel of nullptr
+  - desktop#4546 [stable-3.5] Simplify and remove the notification "cache"
+  - desktop#4547 [stable-3.5] Fix tray icon not displaying "Open main dialog"
+  - desktop#4548 [stable-3.5] if an exclude file is deleted, skip it and remove it from internal list
+  - desktop#4549 [stable-3.5] Bugfix/two factor notification
+  - desktop#4550 [stable-3.5] Fix visual borking in the share dialog
+  - desktop#4555 [stable-3.5] add explicit capture for lambda
+
+-------------------------------------------------------------------
+Tue May  3 11:36:28 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.5.0
+  - desktop#3714 Require cmake 3.16
+  - desktop#4135 Add testing for ActivityListModel
+  - desktop#4154 Check for dbus-1 when building with cloudproviders
+  - desktop#4162 Add ability to copy internal link from share dialog
+  - desktop#4186 Feature/improve activity buttons
+  - desktop#4189 Add thumbnails for files in the activity view
+  - desktop#4191 Use proper API to dehydrate a placeholder file
+  - desktop#4200 Feature/Talk Reply v1
+  - desktop#4205 Ensure we emit a rename command for renamed files
+  - desktop#4212 Remove Hirsute, add Jammy
+  - desktop#4216 Allow account menu to scroll when content height is larger than menu height
+  - desktop#4217 Always build with updater. Use 'beta/stable' channel selector in 'General Settins' dialog with default 'stable'.
+  - desktop#4218 Cmake option to disable proxy
+  - desktop#4237 Add support for server color theming
+  - desktop#4247 No longer assume status bar height, calculate, fixing notch borking on new MacBook Pro
+  - desktop#4251 Add a dark mode
+  - desktop#4252 Generates pot files automatically.
+  - desktop#4257 Add headers in cmake files to get them properly detected
+  - desktop#4263 Ensure that bulk upload network job errors are handled
+  - desktop#4268 Do not remove a folder that has files that were not uploaded yet during propagation
+  - desktop#4272 L10n: Change to lowercase
+  - desktop#4279 Simplify currentScreen in systray.cpp
+  - desktop#4283 Fix warn colour in dark mode
+  - desktop#4292 Do not remove files from a Group folder and its nested folders when it is renamed or removed while not allowed.
+  - desktop#4303 Rollback local move on server move failure
+  - desktop#4316 Implement local socket to communicate with finder extension
+  - desktop#4319 Bugfix/prevent overflow with mtime
+  - desktop#4320 L10n: Changed spelling
+  - desktop#4322 Add 'Help' action back.
+  - desktop#4326 Ensure file activity dialog appears in centre of screen
+  - desktop#4329 Increase maximum text line count in tray activity items to two lines
+  - desktop#4334 Fix file activity dialog
+  - desktop#4340 Properly ask Qt to create qml opengl surface with proper options
+  - desktop#4351 Old submodule url does not work anylonger
+  - desktop#4359 Old submodule url does not work anylonger
+  - desktop#4360 Prepare for 3.5.0-rc1
+  - desktop#4363 Fix icon color and highlight color issues
+  - desktop#4364 Fix for VFS crashes due to mimetype checking for thumbnails
+  - desktop#4371 Fix various dark mode bugs
+  - desktop#4372 Add a new yml github issue template for bug reports.
+  - desktop#4379 Ensure we only store update channel not localized in settings
+  - desktop#4385 Improve talk reply
+  - desktop#4392 Prepare for 3.5.0-rc2
+  - desktop#4393 Bugfix/talk reply part 2
+  - desktop#4398 Darkmode. Fix crash on exit.
+  - desktop#4399 Avoid deleting renamed file with spaces in name
+  - desktop#4403 More dark mode fixes
+  - desktop#4408 Ensure we do properly failed hydration jobs
+  - desktop#4414 Fix build of appimage for branded clients
+  - desktop#4418 Prepare for 3.5.0-rc3
+  - desktop#4420 Feature/files lock
+  - desktop#4426 Add call notification dialog.
+  - desktop#4428 Fix thumbnails for new files made while client open
+  - desktop#4430 Increase time between connection tries
+  - desktop#4437 Improve contrast on server color themed elements
+  - desktop#4438 Fix positioning of activities in the activities list
+  - desktop#4441 Bugfix/activities fetch server overload
+  - desktop#4447 Realigned and resized thumbnails
+  - desktop#4465 Add user avatars in talk notifications in activity list
+  - desktop#4466 Fix sparkle implementation in the desktop client
+  - desktop#4470 Prepare 3.5.0-rc4
+  - desktop#4471 Prepare final 3.5.0 release
+
+-------------------------------------------------------------------
+Fri Mar 18 15:07:25 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.4.4
+  - desktop#4339 [stable-3.4] Do not remove files from a Group
+    folder and its nested folders when it is renamed or removed
+    while not allowed.
+  - desktop#4354 [stable-3.4] Bugfix/prevent overflow with mtime
+  - desktop#4356 Bump version to 3.4.4
+  - desktop#4358 Old submodule url does not work anylonger
+
+-------------------------------------------------------------------
+Mon Feb 28 07:19:08 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.4.3
+  - desktop#4238 [stable-3.4] Remove Hirsute, add Jammy
+  - desktop#4245 [stable-3.4] Cmake option to disable proxy
+  - desktop#4258 [stable-3.4] ensure we emit a rename command for renamed files
+  - desktop#4262 Makes sure that sync engine terminates when an error happen
+  - desktop#4267 [stable-3.4] ensure that bulk upload network job errors are handled
+  - desktop#4311 [stable-3.4] Rollback local move on server move failure
+  - desktop#4312 [stable-3.4] Do not remove a folder that has files that were not uploaded yet during propagation
+
+-------------------------------------------------------------------
+Fri Feb 11 13:24:54 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.4.2
+  - desktop#4140 [stable-3.4] Bugfix/force re-login on SSL Handshake error
+  - desktop#4150 [stable-3.4] Do not display 'Conflict when uploading some files to a folder
+  - desktop#4151 [stable-3.4] Windows. MSI. Unregister Nextcloud folders in SyncRootManager on uninstall.
+  - desktop#4156 [stable-3.4] Unbreak loading translations
+  - desktop#4169 [stable-3.4] Hide share button for deleted files and ignored files in tray activity
+  - desktop#4170 [stable-3.4] Display error message when creating a link share with compromised password.
+  - desktop#4174 [stable-3.4] Bugfix. Re-init sharing manager to enable link sharing UI when receivng sharing permissions.
+  - desktop#4179 [stable-3.4] Show only filenames in tray activity items, with full path in tooltip
+  - desktop#4197 [stable-3.4] use proper API to dehydrate a placeholder file
+  - desktop#4203 [stable-3.4] Add macOS *.textClipping files to ignore list
+
+-------------------------------------------------------------------
+Tue Dec 21 07:59:36 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Updatete to 3.4.1
+  - desktop#4013 [stable-3.4] fix random error when updating CfApi metadata
+  - desktop#4046 [stable-3.4] do not forget the path when renaming files with invalid names
+  - desktop#4049 [stable-3.4] Bugfix/assert invalid modtime
+  - desktop#4050 [stable-3.4] Feature/folder logo variations
+  - desktop#4051 [stable-3.4] Always prefill username from Windows login name based on server version
+  - desktop#4057 [stable-3.4] Bugfix/3.4.1 rc1
+  - desktop#4066 [stable-3.4] Bugfix/sync stuck on error
+  - desktop#4075 [stable-3.4] Bugfix/force download local invalid files
+  - desktop#4078 [stable-3.4] Enforce VFS. Disable 'Make always available locally'.
+  - desktop#4080 [stable-3.4] Bugfix/avoid sync getting stuck
+  - desktop#4081 [stable-3.4] Fix CMake error in ECMAddAppIcon for mac
+  - desktop#4083 [stable-3.4] Do not crash on findAndCancelDeletedJob
+  - desktop#4094 [stable-3.4] ensure any errors after calling FileSystem::getModTime are handled
+  - desktop#4097 Bump version
+- Skiped version 3.4.0 because of modtime bug:
+  See: https://github.com/nextcloud/desktop/pull/4049
+  Please read the following wiki page How to fix files invalid modification date:
+  https://github.com/nextcloud/desktop/wiki/Fix-bug-invalid-modification-date
+
+-------------------------------------------------------------------
+Thu Oct 28 14:58:44 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.6
+  - desktop#3904 [stable-3.3] Only use basic authentication if needed
+  - desktop#3931 [stable-3.3] Windows. Remove CWD from DLL search paths.
+  - desktop#3932 [stable-3.3] Remove Temporary solution for file
+    restoration issue due to set the data-fingerprint.
+
+-------------------------------------------------------------------
+Thu Sep 30 21:33:04 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.5
+  - desktop#3850 [stable-3.3] Fix incorrect db name for nextcloud command line client.
+  - desktop#3851 [stable-3.3] Don't log encryption data in release mode
+
+-------------------------------------------------------------------
+Wed Sep 22 12:01:49 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.4
+  - desktop#3756 [stable-3.3] macOS client is not able to do auto
+    updates
+  - desktop#3757 [stable-3.3] prevent infinte recursion when
+    closing a websocket in case of SSL errors
+  - desktop#3791 [stable-3.3] Accept nc scheme in provider page
+
+-------------------------------------------------------------------
+Fri Sep  3 13:31:27 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.3
+  - desktop#3739 [stable-3.3] Only set dav user after log
+
+-------------------------------------------------------------------
+Fri Aug 27 08:32:47 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.2
+  - desktop#3676 Bugfix/checksums parse issue
+  - desktop#3686 [stable-3.3] Fix macOS app bundle name in packaging scripts
+  - desktop#3706 [stable-3.3] Bugfix/nextcloud cmd dav fix
+  - desktop#3711 [stable-3.3] support server versions for one year after it is end of life
+  - desktop#3717 [stable-3.3] Update nextcloudcmd documentation.
+  - desktop#3718 Release 3.3.2
+
+-------------------------------------------------------------------
+Thu Aug 12 20:33:05 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.1
+  - desktop#3610 [stable-3.3] Update supported server versions
+  - desktop#3647 [stable-3.3] Ensure that the users id is used for accessing webdav
+  - desktop#3648 [stable-3.3] Enforce fetching of user id
+  - desktop#3656 [stable-3.3] Return the login name instead of user id
+
+-------------------------------------------------------------------
+Tue Aug  3 10:02:29 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.0
+  - desktop#3333 Check if first is not empty
+  - desktop#3337 L10n: Spelling unification
+  - desktop#3339 Takes ECMCoverageOption from ECM to enable code coverage analysis
+  - desktop#3341 Automate removal of needs info labels when the issue is commented
+  - desktop#3345 Ci/test appveyor
+  - desktop#3352 Bugfix. Crash when printing OpenSSL decryption errors with no e2ee mnemonic,
+  - desktop#3368 Improve error message
+  - desktop#3369 Prevent crash in dialog that warns user about vfs and e2ee
+  - desktop#3370 Fix/files fixes for windows and logs
+  - desktop#3380 Document --background
+  - desktop#3386 Fix needs info label remover action by providing github token
+  - desktop#3388 Bugfix/qml warnings
+  - desktop#3390 VFS freeze fix. Treat .sync-exclude.lst as a non-virtual file always.
+  - desktop#3393 Added unit tests for Utility::isPathWindowsDrivePartitionRoot.
+  - desktop#3394 Really fix the actions to remove needsinfo when someone comment
+  - desktop#3395 Generate png icons with inkscape
+  - desktop#3397 Enable clazy in drone
+  - desktop#3401 Added config parameter that allows to bypass checksum validation failure
+  - desktop#3404 Start macOS app bundle name with uppercase letter
+  - desktop#3410 Check compiler against CMAKE_CXX_COMPILER_ID
+  - desktop#3420 Cfapi: Make sure no data is transfered after cancellation
+  - desktop#3425 VFS wipe moved folder when conflict
+  - desktop#3432 Set pin state correct after rename
+  - desktop#3437 Bring back dynamic load of VFS plugins
+  - desktop#3445 Remove unused function declaration
+  - desktop#3449 Fix VFS crash and false conflict on local new.
+  - desktop#3460 Add unit test for move custom remote root
+  - desktop#3464 Add building for Ubuntu Impish
+  - desktop#3468 Show main dialog as normal window if tray icons not available
+  - desktop#3471 Build optional without QWebEngine
+  - desktop#3472 Directly send the icon url for activities to the qml component
+  - desktop#3475 Use the full GPG key ID for signing Debian packages
+  - desktop#3486 Improve error message in case of trailing space in directory name
+  - desktop#3488 Remove unused pushNotifications variable
+  - desktop#3489 Design call improvements
+  - desktop#3490 Update documentation and replace old screenshots
+  - desktop#3492 Update command-rebase.yml from template
+  - desktop#3494 Download server public key and check user certificate against it
+  - desktop#3497 Run legacy uninstall exe in a secure way
+  - desktop#3498 Fix QML Warnings and create custom component for the activity list
+  - desktop#3501 Avoid error when doing hydration when data socket is closed too early
+  - desktop#3502 Fix all usage of _com_error(cfExecuteresult).ErrorMessage()
+  - desktop#3511 Improve the error message returned by updateMetadata
+  - desktop#3523 Avoid being stuck trying to create placeholder for existing file
+  - desktop#3536 Remove unnecessary png files
+  - desktop#3537 Only compile xattr virtual files backend for linux platform (not unices)
+  - desktop#3540 Position main dialog on at tray icon if not a regular window
+  - desktop#3541 Use dav instead of webdav
+  - desktop#3542 Enforce https in flow2 for https connections
+  - desktop#3547 Windows. Nextcloud Overlay Identifiers. Set 16 spaces before each identifier's name.
+  - desktop#3548 Update screenshot in README.md
+  - desktop#3552 Remove request to config for userVisibleURL.
+  - desktop#3554 Bump version to 3.3.0-rc1
+  - desktop#3557 Fix size of the Label with user status
+  - desktop#3558 Bugfix/user status too long account menu
+  - desktop#3565 Do not block account menu: availability checking can be slow
+  - desktop#3566 Create QMessageBox on heap and continue running the app when update is ready.
+  - desktop#3569 Print the real permissions string instead of its address
+  - desktop#3574 Open main dialog gnome always
+  - desktop#3579 L10n: Change to uppercase
+  - desktop#3581 Bump version to 3.3.0-rc2
+  - desktop#3582 Make main dialog normal window when displayed as regular window
+  - desktop#3586 Fix crash in Folder::isSyncRunning()
+  - desktop#3592 In wizard always use the correct way to get dav path
+  - desktop#3594 Revert: Added config parameter that allows to bypass checksum validation failure.
+  - desktop#3595 Do not build for Groovy
+  - desktop#3596 Don't constrain size of hover background
+  - desktop#3599 Update improvements and news in the documentation
+  - desktop#3602 Prevent crash in Accont::davPath without credentials
+  - desktop#3607 Bump version 3.3.0
+
+-------------------------------------------------------------------
+Fri Jul  9 08:32:07 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.4
+  - desktop#3480 [stable-3.2] Bugfix. Crash when printing OpenSSL
+    decryption errors with no e2ee mnemonic,
+  - desktop#3484 [stable-3.2] Add building for Ubuntu Impish
+  - desktop#3485 [stable-3.2] Use the full GPG key ID for signing
+    Debian packages
+  - desktop#3514 [stable-3.2] avoid error when doing hydration when
+    data socket is closed too early
+
+-------------------------------------------------------------------
+Sun Jun 27 16:49:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded QtWebKit build dependency.
+
+-------------------------------------------------------------------
+Fri Jun 25 10:55:39 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.3
+  - desktop#3359 [stable-3.2] Block Virtual Files for partition 
+    root sync folders.
+  - desktop#3375 [stable-3.2] Add remote folder prefix for renaming
+    in a non-root local folder.
+  - desktop#3415 [stable-3.2] VFS freeze fix.
+    Treat .sync-exclude.lst as a non-virtual file always.
+  - desktop#3439 [stable-3.2] Set pin state correct after rename
+  - desktop#3453 [stable-3.2] Cfapi: Make sure no data is
+    transfered after cancellation
+  - desktop#3466 [stable-3.2] Generate png icons with inkscape
+
+-------------------------------------------------------------------
+Mon May 31 07:28:10 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.2
+  - desktop#3264 [stable-3.2] Fallback to primary screen if screen
+    under pointer not found
+  - desktop#3273 [stable-3.2] send OS name and version to auto
+    updater to allow selective upgrades
+  - desktop#3327 [stable-3.2] upgrade SQLite3 to 3.35.5
+  - desktop#3357 [stable-3.2] VFS. Display local file name clash
+    error when syncing in VFS mode.
+  - desktop#3358 [stable-3.2] VFS. Allow dehydartion of readonly
+    files. Preserve 'readonly' flag when creating a placeholder.
+
+-------------------------------------------------------------------
+Thu Apr 29 14:40:22 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.1
+  - desktop#3122 [stable-3.2] Do not schedule reboot when
+    installing MSI in silent mode unless 'SCHEDULE_REBOOT is set.
+  - desktop#3123 [stable-3.2] Temporary solution for file
+    restoration issue due to failing the data…
+  - desktop#3149 [stable-3.2] Display VFS sync folder within the
+    navigation panel on Windows.
+  - desktop#3151 [stable-3.2] Windows MSI. Do not allow installing
+    Nextcloud client on < Windows 10 or < 1709
+  - desktop#3211 [stable-3.2] fix errors when calling 
+    CfRegisterSyncRoot by setting more fields
+  - desktop#3212 [stable-3.2] add info in the installation page
+    about the supported server versions
+  - desktop#3213 [stable-3.2] status wrong for directories when
+    using vfs and nextcloud desktop 3.2.0
+  - desktop#3219 [stable-3.2] update the news part of documentation
+    with improvements from 3.2 release
+
+-------------------------------------------------------------------
+Thu Apr  8 18:18:51 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.0
+  - No changelog from upstream at this time.
+- Drop nextcloud-desktop-fix-rpath.patch because RPATH no more in 
+  CMakeLists.
+- Changes from 3.2.0-rc3
+  - desktop#3015 Update documentation for the account wizard
+  - desktop#3040 Don't deploy bearer plugin on MacOS
+  - desktop#3042 Temp fix for vfs failure.
+  - desktop#3043 Fix VFS CfAPI Syncroot Register Error.
+  - desktop#3049 Bump version to 3.1.83.
+- Changes from 3.2.0-rc2
+  - desktop#2505 Status feature
+  - desktop#2967 Add missing error handling for downloads of client side encryption
+  - desktop#2976 Split content of User::isValueableActivity()
+  - desktop#2981 Refresh Windows download dialog progress when hydrating a placeholder
+  - desktop#2989 Display the content of the login dialog correct
+  - desktop#2990 Fix crash when trying to open the folder creation dialog
+  - desktop#2995 Repair basic auth support
+  - desktop#2998 Fix incorrect type when reading the 'logExpire' property from config.
+  - desktop#2999 Don't customize settings dialog palette
+  - desktop#3009 Don't check against product name if checking server version
+  - desktop#3010 CFAPI: Handle cancelation of hydration requests
+  - desktop#3016 Fix for Windows CreateFile long path
+  - desktop#3020 Increase logging around file removal events
+  - desktop#3025 Enable high dpi scaling on all platforms
+  - desktop#3028 Check reading from journal was successful before remove placeholder
+  - desktop#3029 L10n: Change sync message
+- Changes from 3.2.0-rc1
+  - desktop#2700 Major engine update
+  - desktop#2725 Make monochrome icons the default on Linux and Mac OS.
+  - desktop#2726 UI improvements: Settings dialog
+  - desktop#2732 Replace dots with ellipses and add spaces.
+  - desktop#2733 Move space in "owncloudadvancedsetuppage.cpp"
+  - desktop#2734 Move space in "folderwizard.cpp"
+  - desktop#2735 Change the quotation marks
+  - desktop#2739 Fixed the autostart for AppImages. See #2504.
+  - desktop#2748 Removed translation for "etag" and changed spelling
+  - desktop#2749 Changed triple dot to ellipsis
+  - desktop#2759 Add support for Hirsute
+  - desktop#2778 Windows cfapi backend for vfs
+  - desktop#2781 Cherry pick 2020 w53
+  - desktop#2793 XAttr backend for VFS
+  - desktop#2794 Remove NO_SHIBBOLETH flag and dead code
+  - desktop#2799 E2ee root folder remove issue
+  - desktop#2800 Fix CfAPI wrapper build in Win32 mode
+  - desktop#2801 Fix CfAPI Win32 build
+  - desktop#2814 Add push notifications for file changes
+  - desktop#2815 Update Github issue template and documentation with the new 3.1 option to "Create Debug Archive".
+  - desktop#2821 E2EE fix upload parallelism issue.
+  - desktop#2823 Repair chunked uploads
+  - desktop#2824 Fix e2ee folder move issue
+  - desktop#2826 Reference coding style wiki page from CONTRIBIUTING.md
+  - desktop#2827 Integrate the version suffix to the MSI filename
+  - desktop#2834 Compile nextcoud gui as separate library
+  - desktop#2840 Avoid keeping Account alive via a shared ptr in ClientSideEncryption
+  - desktop#2844 Handle SVG branded clients
+  - desktop#2845 Default to colored systray on linux
+  - desktop#2853 E2ee fix rename root folder issue & Fix upload stuck issue due to incorrect Lock/Unlock sequence
+  - desktop#2859 Fix build against Qt 5.15.3
+  - desktop#2860 Removed blank before colon
+  - desktop#2864 Fixes for wizard advanced setup
+  - desktop#2865 VFS CfAPI implementation shouldn't get stuck
+  - desktop#2867 Start file conflict resolve dialog asynchronous
+  - desktop#2868 Don't treat new folders in unpinned folders as files to dehydrate
+  - desktop#2872 Use push notifications for Tray activities/notifications fetch trigger.
+  - desktop#2874 Reduce exempt labels list to give a chance to stale bot to do something
+  - desktop#2875 Specify PUBLIC for the link targets to make them visible to windeployqt
+  - desktop#2877 Revert "Specify PUBLIC for the link targets to make them visible to w…
+  - desktop#2892 Repair E2EE on sync folders which don't point to the root of the server on the remote end
+  - desktop#2894 Documentation: break line in config example.
+  - desktop#2895 Improve wizard ui
+  - desktop#2897 Allow creation of new folders from the Settings Dialog.
+  - desktop#2900 Load the theme resource explictly
+  - desktop#2901 Win tests compilation fix.
+  - desktop#2904 Move FolderCreationDialog into the OCC namespace
+  - desktop#2906 Validate sensitive URLs to onle allow http(s) schemes.
+  - desktop#2914 Configuration Options for Windows Registry
+  - desktop#2919 Validate the providers ssl certificate
+  - desktop#2925 Fix incorrect logger output for non-Latin strings.
+  - desktop#2928 Add missing override specifier
+  - desktop#2931 WIP: Build Instructions
+  - desktop#2935 Do not add debug build to startup programs.
+  - desktop#2937 Stale: issue must have bug and must not have approved label
+  - desktop#2948 Fix crash when opening conflict dialog
+  - desktop#2949 Move from stale bot to stale action
+  - desktop#2951 Log error message from CFAPI
+  - desktop#2958 VFS Windows: Fix download of large files
+  - desktop#2972 Do no include glib.h with extern C
+  - desktop#2979 Do not include glib.h with extern C (2)
+  - desktop#2986 Bump version to 3.1.81
+  
+-------------------------------------------------------------------
+Sat Feb 20 10:24:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.3:
+  - desktop#2884 [stable-3.1] Add support for Hirsute
+  - desktop#2920 [stable-3.1] Validate sensitive URLs to onle allow http(s) schemes.
+  - desktop#2926 [stable-3.1] Validate the providers ssl certificate
+  - desktop#2939 Bump release to 3.1.3
+- This also fix security issues:
+  - (boo#1184770, CVE-2021-22879, NC-SA-2021-008 , CWE-99)
+    Nextcloud Desktop Client prior to 3.1.3 is vulnerable to resource
+    injection by way of missing validation of URLs, allowing a 
+    malicious server to execute remote commands.
+    User interaction is needed for exploitation. 
+
+-------------------------------------------------------------------
+Thu Jan 28 17:31:58 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.1.2
+  - desktop#2846 [stable-3.1] Handle SVG branded clients
+  - desktop#2849 [stable-3.1] Default to colored systray on linux
+  - desktop#2866 [stable-3.1] Add push notifications for file changes
+  - desktop#2871 [stable-3.1] Start file conflict resolve dialog asynchronous
+  - desktop#2878 [stable-3.1] Use push notifications for Tray activities/notifications fetch trigger.
+  - desktop#2880 Bump release to 3.1.2
+
+-------------------------------------------------------------------
+Wed Dec 23 09:44:24 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.1.1
+  - desktop#2709 [stable-3.1] Have the new account wizard open again
+  - desktop#2715 [stable-3.1] UserModel: check indices are inside the user list
+  - desktop#2716 [stable-3.1] Use the icon color property to color the icons in the tray window header.
+  - desktop#2717 [stable-3.1] Ensure a sync happens after a conflict resolution
+  - desktop#2730 [stable-3.1] Make monochrome icons the default on Linux and Mac OS.
+  - desktop#2753 [stable-3.1] Fixed the autostart for AppImages. See #2504.
+  - desktop#2761 Bump release to 3.1.1
+
+-------------------------------------------------------------------
+Mon Dec 14 13:29:11 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.1.0
+  - desktop#2221 Make QML code more declarative by using properties
+  - desktop#2497 MacOS: Fix memory leak in FolderWatcherPrivate::startWatching
+  - desktop#2500 Windows MSI: Update Docs & add SKIPAUTOUPDATE property
+  - desktop#2512 Handle redirects when downloading updates
+  - desktop#2514 Make it easier for user to provide debug information
+  - desktop#2520 Handle ask for optional password capability
+  - desktop#2521 Use friendly user agent during authentication
+  - desktop#2527 Improve conflict handling gui
+  - desktop#2530 Repair the Windows build
+  - desktop#2531 Bring back the "Pause sync" action in the systray context menu
+  - desktop#2534 Connection wizard improvements
+  - desktop#2540 Add last / to exclude list file path.
+  - desktop#2541 Don't use nullptr for QFlags
+  - desktop#2542 Avoid string translation puzzle
+  - desktop#2543 Update bookmarks location
+  - desktop#2551 Fix share dialog animation for enforced password policy
+  - desktop#2568 Fix crash when clicking on folder with status 403 in the main dialog.
+  - desktop#2572 Avoid depth infinity propfind for e2ee
+  - desktop#2575 Expose branding values to qtquick
+  - desktop#2580 Delay initialization of SettingsDialog
+  - desktop#2581 Ensure we quickly show/hide the systray window on startup
+  - desktop#2582 Also output the event flags in the debug logs
+  - desktop#2586 L10n: Add a space in generalsettings.ui
+  - desktop#2587 Triple dot to ellipsis
+  - desktop#2589 Misc fixes for Windows 7
+  - desktop#2591 Remove last left over of the "remote" wording
+  - desktop#2603 Get rid of FindQt5Keychain.cmake
+  - desktop#2615 Fetch apps when we get connected only
+  - desktop#2616 Move journaldb files back to sync folders
+  - desktop#2620 Make sure the settings dialog exist before hiding it
+  - desktop#2621 [documentation] upload chunks config
+  - desktop#2630 Master is now 3.0.81
+  - desktop#2647 Cherry pick updater fixes and improvements
+  - desktop#2648 Issue a warning for Debian pipeline failures but don't fail the CI
+  - desktop#2652 Handle the case when the release version differs from that in VERSION.cmake
+  - desktop#2655 Use dynamic path for account online/offline state icon.
+    Refresh GUI on connection state change.
+  - desktop#2658 Enable the QML debugger on debug builds
+  - desktop#2660 FolderWatcher: fixes and improvements
+  - desktop#2662 Fix QML debugging by removing incorrect dependency
+  - desktop#2663 Fix Windows compilation broken after QML debugging fix.
+  - desktop#2665 Sparkle build fixes
+  - desktop#2666 Notification action buttons and context menu
+  - desktop#2667 Master is now 3.0.82.
+  - desktop#2675 Fix AppImage build
+  - desktop#2677 Fix macOS bug where tray window causes spaces to switch
+  - desktop#2682 Add debug log to check which folders are being skipped during syncing.
+  - desktop#2685 Fixed slow sharee search in the share dialog
+  - desktop#2686 Added sharing via email.
+  - desktop#2690 Update documentation on how to generate debug logs.
+  - desktop#2696 Bump master version to 3.1.0
+- Rebase nextcloud-desktop-fix-rpath.patch.
+
+-------------------------------------------------------------------
+Sat Oct 31 09:18:19 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.3
+  - desktop#2479 [stable-3.0] Free IconJob after use
+  - desktop#2491 [stable-3.0] Connect signal guiLog to slot to display systray message.
+  - desktop#2498 [stable-3.0] Update propagateupload.cpp
+  - desktop#2502 [stable-3.0] macOS: Fix memory leak in FolderWatcherPrivate::startWatching
+  - desktop#2511 [stable-3.0] Windows MSI: Update Docs & add SKIPAUTOUPDATE property
+  - desktop#2513 [stable-3.0] Handle redirects when downloading updates
+  - desktop#2524 [stable-3.0] Handle ask for optional password capability
+  - desktop#2533 [stable-3.0] Repair the Windows build
+  - desktop#2567 [stable-3.0] Fix share dialog animation for enforced password policy
+  - desktop#2570 [stable-3.0] Fix crash when clicking on folder with status 403 in 
+    the main dialog.
+  - desktop#2576 [stable-3.0] Avoid depth infinity propfind for e2ee
+  - desktop#2577 [stable-3.0] Expose branding values to qtquick
+  - desktop#2592 [stable-3.0] Also output the event flags in the debug logs
+
+-------------------------------------------------------------------
+Tue Oct 27 23:42:49 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add missing dependencies (boo#1178209)
+
+-------------------------------------------------------------------
+Thu Sep 24 18:18:06 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.2
+  - desktop#2346 Use httpd/unix-directory mimetype for E2EE folders
+  - desktop#2388 Update copyright date and version displayed in the page title.
+  - desktop#2415 syncjournaldb: index e2eMangledName column in metadata
+  - desktop#2421 Use QGuiApplication::primaryScreen() as fallback for Systray::currentScreen()
+  - desktop#2422 Fix menu popup in main dialog
+  - desktop#2426 Include list info in tooltip
+  - desktop#2428 Try to enable the CI on stable branches as well
+  - desktop#2429 Improve drone config
+  - desktop#2430 Fix clang tidy errors in csync tests
+  - desktop#2434 Windows: Fix NSIS language encoding (use UTF-8)
+  - desktop#2436 Fix incomplete journal upgrade from 2.x to 3.x
+  - desktop#2448 If there's no description just say nothing
+  - desktop#2455 Remove "This includes" due to tooltip order
+  - desktop#2456 Fix missing subdirectory discovery on move operations in macOS
+  - desktop#2458 Windows: MSI support & Win32 migration tools
+  - desktop#2463 Use native text rendering for qml windows
+  - desktop#2465 Allow server URL to be pre-defined without enforcing it
+  - desktop#2471 Force tooltip wrap mode because it's not enabled in Qt 5.12...
+    
+-------------------------------------------------------------------
+Thu Sep 24 18:18:06 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.2
+  - desktop#2346 [stable-3.0] Use httpd/unix-directory mimetype for E2EE folders
+  - desktop#2388 [stable-3.0] Update copyright date and version displayed in the page title.
+  - desktop#2415 [stable-3.0] syncjournaldb: index e2eMangledName column in metadata
+  - desktop#2421 [stable-3.0] Use QGuiApplication::primaryScreen() as fallback for Systray::currentScreen()
+  - desktop#2422 [stable-3.0] Fix menu popup in main dialog
+  - desktop#2426 [stable-3.0] Include list info in tooltip
+  - desktop#2428 [stable-3.0] Try to enable the CI on stable branches as well
+  - desktop#2429 [stable-3.0] Improve drone config
+  - desktop#2430 [stable-3.0] Fix clang tidy errors in csync tests
+  - desktop#2434 [stable-3.0] Windows: Fix NSIS language encoding (use UTF-8)
+  - desktop#2436 [stable-3.0] Fix incomplete journal upgrade from 2.x to 3.x
+  - desktop#2448 [stable-3.0] If there's no description just say nothing
+  - desktop#2455 [stable-3.0] Remove "This includes" due to tooltip order
+  - desktop#2456 [stable-3.0] Fix missing subdirectory discovery on move operations in macOS
+  - desktop#2458 [stable-3.0] Windows: MSI support & Win32 migration tools
+  - desktop#2463 [stable-3.0] Use native text rendering for qml windows
+  - desktop#2465 [stable-3.0] Allow server URL to be pre-defined without enforcing it
+  - desktop#2471 [stable-3.0] Force tooltip wrap mode because it's not enabled in Qt 5.12...
+    
+-------------------------------------------------------------------
+Fri Aug 28 17:58:16 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.1
+  - desktop#2300 Support client builds on VS2019 (QLinkedList is deprecated)
+  - desktop#2302 Do not build for Eoan
+  - desktop#2288 Windows shell extensions: Use custom GUIDs via CMake and prepare MSI reg
+  - desktop#2292 Present sharing of E2EE files from the main dialog too
+  - desktop#2292 Disable context menu actions for E2EE files and folders
+  - desktop#2281 Show the "Display mnemonic" button only when we know e2e is supported
+  - desktop#2278 Make sure we don't assert when calling fileStatus
+- Enable libcloudprovider again.
+
+-------------------------------------------------------------------
+Fri Aug 21 07:26:59 UTC 2020 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 3.0.0
+  - #1886 Move the proxyfiles to libsync where they make more sense
+  - #1939 Major multi monitor improvements and rewrite of tray window positioning
+  - #2093 Add photothumb.db to sync-exclude.lst
+  - #2099 Ease access to main dialog
+  - #2106 Fix libsync exports for proxy changes in #1886
+  - #2110 Darken menu border color
+  - #2119 Fix SEGV (due to circular ownership) at exit
+  - #2126 Slightly simplify code for Systray positioning
+  - #2127 ConfigFile security: Migrate Proxy password to keychain
+  - #2128 Fix subfolder encryption scheme
+  - #2139 Fix e2ee folder sync connection
+  - #2144 Fix e2ee upload lock starvation
+  - #2145 Repair and improve logging
+  - #2150 Fix e2e moves handling
+  - #2159 Reach out to the contentItem inside of the ListView to find the width
+  - #2167 Fix url decoding for folder encryption status
+  - #2168 Display the correct default permissions when creating a share.
+  - #2177 Share link display the correct permissions for files and folders.
+  - #2183 Prevent empty FileMap in local csync to be processed if folder not empty
+  - #2188 Move existing syncjournal db files from client ver <2.7
+  - #2201 Disable parallelism for e2e remote mkdir jobs
+  - #2209 Fix pause sync states
+  - #2211 Logo update for 2.7
+  - #2213 Drone: Upload AppImage to GitHub using nextcloud-desktop-bot
+  - #2215 Change ownCloud reference to Nextcloud
+  - #2224 Update CI for Qt 5.12.9
+  - #2227 Support png for branded clients systray
+  - #2245 Fix #2243
+  - #2248 There won't be a 2.7, this is called 3.0 instead
+  - #2257 [stable-3.0] Restore E2EE old key storage format compatibility
+  - #2259 [stable-3.0] Keep the E2EE info message around to allow displaying mnemonic
+
+
+-------------------------------------------------------------------
+Thu Jul  9 17:43:21 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.6.5
+  - #1449 Linux/Wayland: Updated .desktop file naming scheme
+  - #1834 Use print() function in both Python 2 and Python 3
+  - #1835 Added build for Focal
+  - #1838 Allow sharing to circles
+  - #1839 Added Focal-specific files
+  - #1841 Allow sharing to circles
+  - #1843 Enhance Version info display (minimal info, hide details)
+  - #1847 Updater: Enhance UI, make build optional
+  - #1848 WebView: Add missing Q_OBJECT macros
+  - #1851 Enhance Version info display (minimal info, hide details)
+  - #1853 Updater: Fix Tests build (failed with BUILD_UPDATER=NO)
+  - #1854 Updater: Fix Tests build (failed with BUILD_UPDATER=NO)
+  - #1855 WebView: Add missing Q_OBJECT macros
+  - #1859 Provide specific install file for Debian oldstable
+  - #1879 Add desktop-entry hint to notifications
+  - #1880 Remove timeout parameter from showMessage
+  - #1881 Use qEnvironmentVariableIsEmpty
+  - #1882 Fix container detaching
+  - #1883 [dolphin] Add icon to context menu
+  - #1886 Move the proxyfiles to libsync where they make more sense
+  - #1909 Fix build with Qt 5.15
+  - #1931 Fix container detaching
+  - #1932 [dolphin] Add icon to context menu
+  - #1933 Fix build of Dolphin integration
+  - #1934 Fix build of Dolphin integration
+  - #1954 Fix typos.
+  - #1956 Update ChangeLog with 2.6 series.
+  - #1958 Resolve symlinks when checking for registered paths.
+  - #1972 Fix leak in FileUtil::IsChildFile
+  - #1973 Fix leak in FileUtil::IsChildFile
+  - #1974 Don't silently kill debug messages
+  - #1975 Don't silently kill debug messages
+  - #1986 Properly handle denormalized href
+  - #1987 Fix a few leaks
+  - #1988 Use nullptr when appropriate
+  - #1989 Remove useless virtual, better use override only
+  - #1991 Improve sanitizer support
+  - #1992 Update github links to desktop repository
+  - #1996 Properly handle denormalized href
+  - #1997 Use nullptr when appropriate
+  - #1998 Update github links to desktop repository
+  - #1999 Remove useless virtual, better use override only
+  - #2000 Don't use int literals for bools
+  - #2001 Use default member initialization
+  - #2005 Use default member initialization
+  - #2006 Improve URL input field in Wizard
+  - #2007 Improve URL input field in Wizard
+  - #2017 Remove redundant initializer
+  - #2018 Use using instead of typedef
+  - #2019 Remove redundant void argument list
+  - #2020 Use make_unique when appropriate
+  - #2021 Use = default for trivial ctors and dtors
+  - #2023 Use the return braced init list pattern
+  - #2024 Use raw string literals when appropriate
+  - #2025 Remove redundant initializer
+  - #2026 Use using instead of typedef
+  - #2027 Remove redundant void argument list
+  - #2028 Use make_unique when appropriate
+  - #2029 Use = default for trivial ctors and dtors
+  - #2032 TestLaunchOnStartup shouldn't fail on dev setup
+  - #2033 Use the return braced init list pattern
+  - #2034 testLaunchOnStartup shouldn't fail on dev setup
+  - #2051 Remove Submodule binary (old upstream binaries)
+  - #2052 Remove Submodule binary (old upstream binaries)
+  - #2061 Improve command line version info and help display (gui & cmd)
+  - #2062 Improve command line version info and help display (gui & cmd)
+  - #2063 MacOS: Opt In to Dark Mode for building against older macOS SDKs < 10.14
+  - #2064 macOS: Opt In to Dark Mode for building against older macOS SDKs < 10.14
+  - #2065 Use APPLICATION_ICON_NAME for autostart icon
+  - #2068 Don't show a message box if the entered url returned an error
+  - #2069 Use APPLICATION_ICON_NAME for autostart icon
+  - #2071 Linux/Wayland: Updated .desktop file naming scheme
+  - #2072 AppImage: Upgrade to Qt 5.12.8
+  - #2078 Replace NULL by nullptr in all C++ files
+  - #2083 Simplify nullptr comparisons where appropriate
+  - #2084 macOS: Use macdeployqt instead of the old admin/osx/macdeployqt.py
+  - #2093 Add photothumb.db to sync-exclude.lst
+  - #2106 Fix libsync exports for proxy changes in #1886
+  - #2109 Default system proxy not working with Account Wizard (fixes #2108)
+  - #2127 ConfigFile security: Migrate Proxy password to keychain
+  - #2147 Repair and improve logging
+  - #2152 Don't display quota information when the user has no quota.
+  - #2162 ConfigFile security: Migrate Proxy password to keychain
+  - #2168 Display the correct default permissions when creating a share.
+  - #2170 [stable 2.6] Asemmar/issue 2137
+  - #2177 Share link display the correct permissions for files and folders.
+  - #2179 Display the correct default permissions when creating a share.
+- Drop nextcloud-desktop-qt_5.15.patch because now in upstream.
+
+-------------------------------------------------------------------
+Mon Jun  8 14:52:29 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Tumbleweed.
+  - Add nextcloud-desktop-qt_5.15.patch to fix build error with
+    Qt 5.15.
+
+-------------------------------------------------------------------
+Sun Mar  8 20:18:45 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Rename nextcloud-client to nextcloud-desktop following upstream.
+- Stop redundantly recommending the -lang package.
+
+-------------------------------------------------------------------
+Wed Mar  4 10:24:44 UTC 2020 - ecsos@opensuse.org
+
+- Update to 2.6.4
+  * Fix Explorer pinning: Add fallbacks for Shell commands
+    (gh#nextcloud/desktop#1599).
+  * WebFlowCredentials: Make username comparison case-insensitive
+    (gh#nextcloud/desktop#1741).
+  * ActivityListModel: Show full date and time as a Tooltip only.
+  * Disable HTTP/2 for now due to a Qt bug, allow enabling it via
+    an environment variable.
+  * Fix Explorer integration re-save and hide option.
+  * l10n: Changes to improve source strings.
+  * Updater: Add query-parameter "updatesegment" to the update
+    check.
+
+-------------------------------------------------------------------
+Mon Feb 17 07:16:57 UTC 2020 - ecsos@opensuse.org
+
+- Update to 2.6.3
+  - desktop#1782 Add UserInfo class and fetch quota via API instead
+    of PropfindJob
+  - desktop#1770 l10n: Changed grammar and triple dots to ellipsis
+  - desktop#1767 l10n: Changed spelling of user name to username
+  - desktop#1765 Start the client in background if activated 
+    by D-Bus
+  - desktop#1764 Do not install files related to cloud providers 
+    under Xenial
+  - desktop#1763 Make sure that the libcloudprovider integration is
+    using a valid D-Bus path
+  - desktop#1762 Changed product name to Nextcloud
+  - desktop#1760 Update autoupdate.rst
+  - desktop#1745 Use system proxy by default if no config file is
+    present
+  - desktop#1729 Install libcloudproviders files by default on
+    debian
+  - desktop#1727 Windows 7 is out of support
+  - desktop#1721 BugFix: Handle broken shared file error gracefully
+  - desktop#1720 Fix Explorer integration on Windows and the crash
+    on other systems
+  - desktop#1718 Welcome to 2020
+  - desktop#1707 Updated year in legalnotice.cpp
+  - desktop#1699 apply http2 qt resend patch from owncloud
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Dec 25 15:06:19 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.6.2
+  - desktop#1456 Revert DEFAULT_REMOTE_POLL_INTERVAL back from 5 
+    seconds to 30 seconds
+  - desktop#1459 Use user-provided username in displayName() - 
+    Fix #836
+  - desktop#1462 Fix typo
+  - desktop#1471 Build with libcloudproviders on debian and in the 
+    AppImage
+  - desktop#1487 Fix tests for Windows platform
+  - desktop#1523 Merge the list of ignored files/symlinks into one
+    Activity notification.
+  - desktop#1526 Fix clang's variadic macro warnings
+  - desktop#1531 Add libdbus-1-dev to the build dependencies
+  - desktop#1593 Compare QDateTime objects more efficient
+  - desktop#1611 Improve the translation of "Share via …"
+  - desktop#1617 Upgrade for Qt 5.12.5 in docker-ci
+  - desktop#1619 Bump Qt 5.12.5 image
+  - desktop#1621 Add timestamp to Mac installer code signing
+  - desktop#1623 MacOS build: Avoid the Get-Task-Allow Entitlement
+    (Notarization)
+  - desktop#1629 Build for Debian stable and oldstable
+  - desktop#1641 Happy new year
+  - desktop#1644 Fall back to old login flow on GS as this is not 
+    yet ready
+  - desktop#1645 [stable-2.6] macOS build: Avoid the Get-Task-Allow
+    Entitlement (Notarization)
+  - desktop#1646 Fix remote wipe keychain storage (issue #1592)
+  - desktop#1647 Fix copyright year in MacOSXBundleInfo.plist.in 
+    for 2019
+  - desktop#1651 Fix macOS GUI (Qt 5.12)
+  - desktop#1664 Windows: Workaround for storing >= 4k (4096 bit)
+    client-cert SSL keys
+
+-------------------------------------------------------------------
+Fri Nov  8 19:17:41 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Rename 100-nextcloud-client-sync-inotify.conf to
+  99-nextcloud-client-sync-inotify.conf (boo#1155457).
+  
+-------------------------------------------------------------------
+Tue Nov  5 08:48:40 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.6.1
+  - desktop#1032 Changed max GUI bandwidth limits
+  - desktop#1039 Add sync date next to "Synchronized with local 
+    folder"
+  - desktop#1149 Slideshow buttons
+  - desktop#1214 Fix qt warning about registering a URL sheme first.
+  - desktop#1231 Issue #1216: added sync-exclude entry for emacs 
+    recovery files
+  - desktop#1240 Race condition in the remote size loading logic
+  - desktop#1409 Review of msvc/gcc warnings -> code cleanup,
+    prevention of implicit casts, variadic macros
+  - desktop#1414 Fix double slashes
+  - desktop#1420 Fixing E2E CSR transmission failure for new 
+    connections
+  - desktop#1441 Fixed missing 'translatable' exclusions, added 
+    missing window titles
+  - desktop#1461 Checks if exclude file is empty before creating 
+    the regular expressions.
+  - desktop#1465 Add server info to menu
+  - desktop#1474 Fixed grammar
+  - desktop#1477 Prevent jumping of tray menu
+  - desktop#1478 Don't run connection wizard when quitting the 
+    application
+  - desktop#1481 Avoiding copying in range-based loops
+  - desktop#1495 Add a 'Content-Length: 0' header to initial POST
+    requests
+  - desktop#1504 Remote wipe.
+  - desktop#1520 Pick from upstream: Update qtmacgoodies for an OSX
+    crash fix #6930
+  - desktop#1522 * fix for issue no. #1351
+  - desktop#1523 Merge the list of ignored files/symlinks into one 
+    Activity notification.
+  - desktop#1527 Update submodules for Qt 5.12.5 (qtmacgoodies)
+  - desktop#1554 Fix duplicate items in Apps menu 
+    (a bug introduced in #1477)
+  - desktop#1573 Fix #1182
+  - desktop#1579 Fix remote wipe when a proxy is configured.
+  - desktop#1580 Fix updater message: Download link instead of 
+    "use the system's update
+
+-------------------------------------------------------------------
+Thu Oct 10 11:54:47 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire python: this is python2, but in other places
+  we buildrequire python3-Sphinx. This does not really belong
+  together.
+- Switch the python-nautilus Requires in
+  nautilus-extension-nextcloud to be python3-nautilus: the plugin
+  supports py3 already, so best to make use of it.
+
+-------------------------------------------------------------------
+Fri Sep 27 20:42:15 UTC 2019 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 2.6.0
+  * desktop#1222 Reinstate Debian build in the new Drone config
+  * desktop#1225 Typo
+  * desktop#1256 Marking unused strings as unstranslatable
+  * desktop#1275 Fixes #607
+  * desktop#1278 Fixes issue #878
+  * desktop#1342 Fixes issue #1187
+  * desktop#1347 Displays FileIgnored activities with an info icon
+  * desktop#1354 Minor text change in the link to help in the tab 'General'.
+  * desktop#1359 Update Qt 5.5 compatibility patch for Xenial
+  * desktop#1360 Remove Ubuntu Cosmic and add Eoan package
+  * desktop#1366 Add proper CA to client side certificate connection
+  * desktop#1372 Remove dependency on libgnome-keyring0 on Eoan
+  * desktop#1374 Read .sync_exclude.lst in each subdirectory
+  * desktop#1376 Updates ChangeLog.
+  * desktop#1384 Login flow v2
+  * desktop#1389 Adds SSL client cert storage to webflow + Login Flow v2
+  * desktop#1394 Windows: Workaround for CredWriteW used by QtKeychain
+  * desktop#1399 Integrated registry check on windows when hasDarkSystray is called.
+  * desktop#1401 Logo update
+  * desktop#1402 Updated .gitignore to integrate unwanted files when working with VSC …
+  * desktop#1405 Full-Scaled new logo in Windows 10 start menu tile
+  * desktop#1408 Qt5.5 compatiblity patch for login flow V2 + UI improvement (Use newer digest algorithms in TLS error dialog)
+  * desktop#1427 Fix for #1382 "linux client crashes for no discernable reason"
+  * desktop#1434 UI improvement: Message box: Delete / Keep all files
+  * desktop#1443 Improve wording of the context menu in the file manager extension.
+  * desktop#1447 Changes wording in the share context menu.
+  * Fix White Window issue on Windows by upgrading to Qt 5.12.5
+
+-------------------------------------------------------------------
+Mon Jul 22 21:55:32 UTC 2019 - ecsos@opensuse.org
+
+- Update to 2.5.3
+  - desktop#1118 Fix empty file wording in error log (small)
+  - desktop#1153 Add Qt-5.12 to CI
+  - desktop#1157 Fix a minor typo
+  - desktop#1185 Libcloudproviders: Add missing check for Qt5DBus
+  - desktop#1186 Fix several memory leaks in cloudproviders and add
+    translation support
+  - desktop#1191 Share link fixing
+  - desktop#1200 New drone config
+  - desktop#1201 Uses configuraion to determine if it should show 
+    empty folder popup.
+  - desktop#1212 Simplify cmake command to make copy-pastable
+  - desktop#1234 Updated default remote poll to 5 seconds #1115
+  - desktop#1239 Fix memory leak with device pointer
+  - desktop#1241 Added a nice UI for the E2E-enabled account first 
+    connect
+  - desktop#1245 This should fix issue #1000
+  - desktop#1247 Adds parameter to retrieve shares with its 
+    reshares.
+  - desktop#1251 Fixed typo
+  - desktop#1253 Fixed typo in "certificate"
+  - desktop#1273 WebView: Properly handle usernames with spaces and
+    plus signs in it
+  - desktop#1301 Add error category for http file lock error status
+    423.
+  - desktop#1309 Displays the uid_owner of a shared file.
+
+-------------------------------------------------------------------
+Tue Apr 30 11:21:02 UTC 2019 - Bjoern Voigt <bjoernv@arcor.de>
+
+- Update to version 2.5.2
+  * desktop#1001 Handle spaces in username properly in login flow
+  * desktop#1006 Wizard: show an error message if there is no enough free space in the local folder
+  * desktop#1050 Removed whitespace from string
+  * desktop#1054 Do not add double slash to login flow url
+  * desktop#1057 Fix login flow with system proxy
+  * desktop#1060 Start with easier theming
+  * desktop#1062 Do not display dismissed notifications
+  * desktop#1069 Fixed l18n issue. Added space for separating string
+  * desktop#1071 Add invalid certiticate messagebox
+  * desktop#1087 Correct app passwords link
+  * desktop#1092 Be less verbose with logging
+  * desktop#1119 Fix typo in translation string
+  * desktop#778 Add a command line option to launch the client in the background
+  * desktop#923 Support Ubuntu Disco Dingo
+  * desktop#946 Added missing Include
+  * desktop#959 Make sure _profile and _page are deleted in the correct order
+  * desktop#981 Fix KDEInstallDirs deprecation warnings
+  * desktop#993 Removed Stylesheet
+- Removed nextcloud-client-fix-qt-5.12.patch
+
+-------------------------------------------------------------------
+Tue Jan 15 15:55:48 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Stop building with libcloudproviders (boo#1118327).
+
+-------------------------------------------------------------------
+Mon Jan  7 18:11:07 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Append to nextcloud-client-fix-qt-5.12.patch a fix for a
+  QtWebEngine crash on Qt 5.12 (commit 09b0055, boo#1120310).
+
+-------------------------------------------------------------------
+Wed Jan  2 20:48:04 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add nextcloud-client-fix-qt-5.12.patch: Fix an error during build
+  with Qt 5.12 (commit 1295884).
+
+-------------------------------------------------------------------
+Tue Dec  4 13:04:12 UTC 2018 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.5.1:
+  * See https://github.com/nextcloud/desktop/compare/v2.5.0...v2.5.1
+
+-------------------------------------------------------------------
+Wed Nov 14 12:28:56 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 2.5.0:
+  * See https://github.com/nextcloud/desktop/compare/57bc791...v2.5.0
+- Remove nextcloud-client-2.3.3-fix-qt-5.11.patch,
+  nextcloud-client-fix-caja-nemo-appnames.patch: fixed upstream.
+- Rebase nextcloud-client-fix-rpath.patch,
+  nextcloud-client-remove-datetime.patch.
+- Build with libcloudproviders.
+- Drop openSUSE Leap 42.3 and older support.
+
+-------------------------------------------------------------------
+Tue Jun 12 11:12:00 UTC 2018 - sor.alexei@meowr.ru
+
+- Add nextcloud-client-2.3.3-fix-qt-5.11.patch: Fix Qt 5.11+
+  compatibility.
+
+-------------------------------------------------------------------
+Thu Mar  1 12:21:22 UTC 2018 - ecsos@opensuse.org
+
+- fix build error for Tumbleweed
+
+-------------------------------------------------------------------
+Mon Dec 25 11:52:57 UTC 2017 - sor.alexei@meowr.ru
+
+- Use a better tarball.
+
+-------------------------------------------------------------------
+Tue Dec  5 10:45:09 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.3.3:
+  * Chunking NG: Don't use old chunking on new DAV endpoint
+    (gh#owncloud/client#5855).
+  * Selective Synch: Skip excluded directories when reading DB,
+    don't let them show errors (gh#owncloud/client#5772).
+  * Settings: Make the window bigger so the Qt version is always
+    visible (gh#owncloud/client#5760).
+  * Share links: Show a warning that public link shares are public
+    (gh#owncloud/client#5786).
+  * Downloads: Re-trigger directory discovery on HTTP 404
+    (gh#owncloud/client#5799).
+  * Notifications: Propagate "Dismiss" as DELETE to server
+    (gh#owncloud/client#5922).
+  * SynchJournalDB: Don't use ._ as a filename pattern if that does
+    not work because of SMB storage settings
+    (gh#owncloud/client#5844)
+  * SynchJournalDB: Log reason for sqlite3 opening errors.
+  * Stop maintaining Qt 4 support.
+  * New synch state icon design.
+  * Add a state-information icon.
+  * Update the icon patch.
+
+-------------------------------------------------------------------
+Fri Jul 21 07:17:00 UTC 2017 - ecsos@opensuse.org
+
+- update to 2.3.2
+  * Fix more crashes (thanks to everyone submitting to our crash
+    reporter!)
+  * Improve compatibility with server 10.0 (5691, X-OC-Total-Size)
+  * Share dialog: UI improvements, Bring to front on tray click
+  * owncloudcmd: Align process return value with sync return value
+    (3936)
+  * Fix disk free check on Windows when opening the local DB
+- insert Requires: %{soname}%{sover} = %{version} because lib
+  does not up- or downgrade by up- or downgrade from client itself.
+
+-------------------------------------------------------------------
+Wed Jun 14 15:12:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Only enable documentation for openSUSE Leap 14.3 and newer
+  (boo#1044061).
+
+-------------------------------------------------------------------
+Thu Mar 23 20:40:27 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 2.3.1 (changes since 2.2.4):
+  * Decreased memory usage during synchronisation.
+  * Overlay icons: Lower CPU usage.
+  * Allow to not synchronise the server's external storages by
+    default.
+  * Switch to the new Nextcloud Server WebDAV endpoint.
+  * Chunking NG: New file upload chunking algorithm for
+    Nextcloud Server 11.0.
+  * Allow to synchronise a directory to multiple different servers
+    (filename change from .csync_journal.db to _sync_$HASH.db).
+  * Conflicts: Use the local mtime for the conflict file name
+    (gh#owncloud/client#5273).
+  * Add a "Sync now" menu item.
+  * Improve SSL Client certificate support (Show UI, Store keys in
+    keychain).
+  * Propagator: Upload smaller files in parallel.
+  * Sync Engine: Read data-fingerprint property to detect backups
+    (gh#owncloud/client#2325).
+  * GUI: Show link to create an application password/token for
+    synchronising.
+  * Share dialogue: Add a "Mail link" button.
+  * A Caja file manager plugin.
+  * Make the "backup detected" message not triggered in wrong cases.
+  * SyncEngine: Fix directory renaming when files are changed
+    (gh#owncloud/client#5192)
+  * Fix a reconnect bug if status.php intermittently returns wrong
+    data (gh#owncloud/client#5188).
+  * Improve synchronisation scheduling (gh#owncloud/client#5317).
+  * Overlay icons: Improvements in correctnes.
+  * Tray menu: Only update on demand to fix GNU/Linux desktop
+    integration glitches.
+  * Progress: Better time/bandwidth estimations.
+  * Network: Follow certain HTTP redirects (gh#owncloud/client#2791).
+  * Network: Remove all cookies (including load balancers, etc.)
+    when logging out.
+  * Discovery thread: Low priority.
+  * nextcloudsync.log: Write during propagation.
+  * Excludes: Consider files in hidden directories excluded
+    (gh#owncloud/client#5163).
+  * Allow the synchronised directory to be a symlinked directory.
+  * Improve HTTP redirect handling (gh#owncloud/client#5555).
+  * Blacklist: Escalate repeated soft error to normal error
+    (gh#owncloud/client#5500).
+  * Fix the URL for linking to application password generation for
+    ownCloud 10.0 (gh#owncloud/client#5605).
+  * Shibboleth bugfixes.
+  * Fixes with regards to low disc space.
+  * A tonne of other bugfixes.
+  * Refactorings.
+  * Improve documentation.
+  * Crash fixes.
+- Add nextcloud-client-remove-datetime.patch: Remove __TIME__ and
+  __DATE__.
+- Rebase and rename nextcloud-client-fix-nemo-appname.patch to
+  nextcloud-client-fix-caja-nemo-appnames.patch.
+- Remove nextcloud-client-fix-dolphin.patch,
+  nextcloud-client-fix-ru-typo.patch,
+  nextcloud-client-fix-tray-workaround.patch: fixed upstream.
+- Rename 100-sync-inotify.conf to the less conflicting
+  100-nextcloud-sync-inotify.conf.
+
+-------------------------------------------------------------------
+Fri Feb  3 14:40:27 UTC 2017 - sor.alexei@meowr.ru
+
+- Add nextcloud-client-fix-dolphin.patch from bruno_friedmann to
+  fix the Dolphin plugin.
+
+-------------------------------------------------------------------
+Tue Jan 24 17:08:34 UTC 2017 - sor.alexei@meowr.ru
+
+- Add nextcloud-client-fix-tray-workaround.patch: fix the tray
+  workaround (from commit 98efb07 of owncloud-client).
+
+-------------------------------------------------------------------
+Fri Sep 30 19:06:17 UTC 2016 - ecsos@opensuse.org
+
+- Update to version 2.2.4:
+  * Dolphin Plugin: Use the Application name for the socket path
+    (gh#owncloud/client#5172).
+  * SyncEngine: Fix renaming of directories when files are changed
+    (gh#owncloud/client#5195).
+  * Selective Sync: Fix HTTP request loop and show error in view
+    (gh#owncloud/client#5154).
+  * ConnectionValidator: Properly handle error in status.php
+    request (gh#owncloud/client#5188).
+  * Discovery: Set thread priority to low (gh#owncloud/client#5017).
+  * ExcludeFiles: Fix when the directory casing is not the same in
+    the settings and in the FS.
+  * ShareLink: Ensure the password line edit is enabled
+    (gh#owncloud/client#5117).
+
+-------------------------------------------------------------------
+Fri Aug 26 21:24:30 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package.

@@ -1,0 +1,33 @@
+From f26507dda730ace8daff38d1d4dd87e6fea1bc23 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 30 Mar 2020 14:48:30 +0200
+Subject: [PATCH] Link to pthread unconditionnally.
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b757c99..cf1a575 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -136,14 +136,14 @@ endif()
+ 
+ if (ENABLE_RTAUDIO)
+ 	add_definitions(-D__HAVE_RTAUDIO)
++	find_package(Threads REQUIRED CMAKE_THREAD_PREFER_PTHREAD)
++	list(APPEND OAML_LIBS ${CMAKE_THREAD_LIBS_INIT})
+ 
+ 	if (CMAKE_SYSTEM_NAME MATCHES ".*BSD")
+ 		message(STATUS "*BSD detected, using OSS")
+-		find_package(Threads REQUIRED CMAKE_THREAD_PREFER_PTHREAD)
+ 		if (CMAKE_SYSTEM_NAME MATCHES "kNetBSD|NetBSD")
+ 			list(APPEND OAML_LIBS ossaudio)
+ 		endif ()
+-		list(APPEND OAML_LIBS ${CMAKE_THREAD_LIBS_INIT})
+ 		set(AUDIO_LINUX_OSS ON)
+ 	elseif (UNIX AND NOT APPLE)
+ 		find_library(PULSE_LIB pulse)
+-- 
+2.26.0
+

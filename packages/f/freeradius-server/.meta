@@ -1,0 +1,17 @@
+<package name="freeradius-server" project="openSUSE:Factory">
+  <title>Very Highly Configurable Radius Server</title>
+  <description>The FreeRADIUS server has a number of features found in other servers
+and additional features not found in any other server. The server's
+features are:
+
+* Support for RFC and VSA attributes
+
+* Additional server configuration attributes
+
+* Selection of a particular configuration
+
+* Authentication methods
+
+* Accounting methods</description>
+  <devel project="network" package="freeradius-server"/>
+</package>

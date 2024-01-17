@@ -1,0 +1,11 @@
+<package name="sha3sum" project="openSUSE:Factory">
+  <title>SHA-3 and Keccak checksum utility</title>
+  <description>sha3sum contains command line utilities for the Keccak, SHA-3, SHAKE, and
+RawSHAKE checksum utilities
+
+A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
+
+</description>
+  <devel project="utilities" package="sha3sum"/>
+  <url>https://github.com/maandree/sha3sum</url>
+</package>

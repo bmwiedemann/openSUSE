@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Mar 30 11:58:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.3.4
+  * Fixed bug with playing conditional audios
+  * Conditions can now be set before a PlayTrack() call.
+  * Added a new function ClearConditions()
+  * Implemented two new functions: SaveState and LoadState
+  * Added resampling support through libsoxr.
+  https://github.com/oamldev/oaml/releases for the full list of
+  changes.
+- spec-cleanup
+- Add patches:
+  * 0001-Link-to-pthread-unconditionnally.patch
+  * 0001-Don-t-hardcode-lib.patch
+
+-------------------------------------------------------------------
+Thu Apr 20 09:41:03 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description. Update summaries.
+
+-------------------------------------------------------------------
+Tue Apr 11 21:03:41 UTC 2017 - rpm@fthiessen.de
+
+- Update to version 1.2
+  * Added SetTension function.
+  * Added InitAudioDevice function, which uses RtAudio to initialize
+    the audio system
+  * Projects may have a few settings now,
+    only default bpm and beatsPerBar so far.
+  * Layers now in oaml are global, and every oamlAudio contains a
+    list of files which can be linked to one of those global layers.
+  * Added studioApi for oamlStudio.
+  * Implemented new function: LoadTrackProgress; will load a
+    track progressively in a non-blocking mode
+  * Implemented a playOrder property for audios that can be used
+    to specify a custom playing order for the main loop audios
+- Use correct group for shared library subpackage
+- Dropped upstream merged fix-missing-so-version.patch
+  and fix-libdir.patch
+
+-------------------------------------------------------------------
+Sun May 15 14:43:04 UTC 2016 - rpm@fthiessen.de
+
+- Initial version 1.0
+- Added fix-libdir.patch for correct build on 64bit systems
+- Added fix-missing-so-version.patch

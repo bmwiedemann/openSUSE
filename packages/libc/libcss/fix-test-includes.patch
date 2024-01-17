@@ -1,0 +1,9 @@
+Index: libcss-0.9.1/test/dump_computed.h
+===================================================================
+--- libcss-0.9.1.orig/test/dump_computed.h
++++ libcss-0.9.1/test/dump_computed.h
+@@ -1,3 +1,4 @@
++#include <assert.h>
+ #include <libcss/computed.h>
+ #include <libcss/properties.h>
+ #include <libcss/types.h>

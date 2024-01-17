@@ -1,0 +1,240 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>362fbf0b4c15c7b4d001fd947dbbcd54</srcmd5>
+    <version>1.0.4</version>
+    <time>1540451512</time>
+    <user>dimstar_suse</user>
+    <comment>Base container, now part of the main prj.</comment>
+    <requestid>644208</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4985c42063a1f194292ecb777d41923b</srcmd5>
+    <version>1.0.4</version>
+    <time>1543953484</time>
+    <user>dimstar_suse</user>
+    <comment>- define repositories to use for installing packages within OBS</comment>
+    <requestid>653803</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c49d00f5729db35720c3f998a47b6175</srcmd5>
+    <version>1.0.4</version>
+    <time>1548537731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668569</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2836c9f30369ac312edcac4ec3198ab7</srcmd5>
+    <version>1.0.4</version>
+    <time>1551113796</time>
+    <user>coolo</user>
+    <comment>- Use correct org.opencontainers.image prefix</comment>
+    <requestid>678646</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3cb18950c8e56ea39a55731d59cf20fa</srcmd5>
+    <version>1.0.4</version>
+    <time>1551455323</time>
+    <user>dimstar_suse</user>
+    <comment>- Add comment for obsrepositories back, as requested.
+  Let's see how long it stays this time.</comment>
+    <requestid>680168</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c4c300b7c19c8e8239ce479a8787df6a</srcmd5>
+    <version>1.0.4</version>
+    <time>1551784843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681231</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>1f8958fed3da08e92a2b304af6054320</srcmd5>
+    <version>1.0.4</version>
+    <time>1564994580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720973</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>bc3669d4aaad622285f71b27b860a451</srcmd5>
+    <version>1.0.4</version>
+    <time>1565865006</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>723495</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b9434d30db0409c82242551c443af779</srcmd5>
+    <version>1.0.4</version>
+    <time>1580842301</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop call of suseSetupProduct in config.sh, it needs find which
+  isn't installed anymore. Setting up baseproduct is done by the
+  release package's %post script already.
+- Replace find call in config.sh with glob expansion
+- Use set -x</comment>
+    <requestid>769965</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>1de7eb3f9381bbeb9beb1f05ba79f497</srcmd5>
+    <version>1.0.4</version>
+    <time>1586112752</time>
+    <user>dimstar_suse</user>
+    <comment>- Install everything except for systemd/wicked in the bootstrap section
+- Remove unneeded settings
+- Drop explicit krb5 dep
+- Add a proper LICENSE file, drop the header from config.sh
+- Let kiwi uninstall live-add-yast-repos</comment>
+    <requestid>790887</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e0a5610eb2b7cf2ed9aa9443573fec45</srcmd5>
+    <version>1.0.4</version>
+    <time>1587162577</time>
+    <user>dimstar_suse</user>
+    <comment>- Add systemd-sysvinit to the lxc flavor for /sbin/init (boo#1169002)
+
+- Avoid using &lt;packages type=&quot;uninstall&quot;/&gt; as it recreates
+  AnonymousUniqueId (gh#OSInside/kiwi#1396)</comment>
+    <requestid>794931</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>1eaa5a84ede671b2fb6759103a962ce2</srcmd5>
+    <version>1.0.4</version>
+    <time>1594894111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820842</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>36d9a13af439bc97efb0077d5b406af6</srcmd5>
+    <version>1.0.4</version>
+    <time>1604609656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845731</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>1e94c8e087d5b6e677898c7550b25d87</srcmd5>
+    <version>1.0.4</version>
+    <time>1620653806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891034</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>ea5b3be14e36bcc1ddfcd74f425c6d10</srcmd5>
+    <version>1.0.4</version>
+    <time>1624626050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901330</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>2a2c7b795babd3c1456d9320f14bf1dc</srcmd5>
+    <version>1.0.4</version>
+    <time>1624688321</time>
+    <user>dimstar_suse</user>
+    <comment>revert, breaks dependent images like rstudio-desktop</comment>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>0f40c57dd619e1dff9e512949b6bca09</srcmd5>
+    <version>1.0.4</version>
+    <time>1627898701</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patterns-base-fips to work also in FIPS environments (bsc#1183154)
+</comment>
+    <requestid>909205</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>3f447b5940db6d450958df3aa92351e1</srcmd5>
+    <version>1.0.4</version>
+    <time>1646767899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960012</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>7bf21fe5516e70b650dc42e2061927ad</srcmd5>
+    <version>1.0.4</version>
+    <time>1647031265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960518</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>8fcbe4c61b212c7f1dec40271cc88b48</srcmd5>
+    <version>1.0.4</version>
+    <time>1658395972</time>
+    <user>RBrownFactory</user>
+    <comment>- Add curl (jsc#SLE-23748) and timezone (bsc#1201537)</comment>
+    <requestid>990400</requestid>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>1160bef2ac9292de21bd10e27a7c11d2</srcmd5>
+    <version>1.0.4</version>
+    <time>1677351289</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tar and gzip for simpler use in GitHub actions and similar
+  environments (jsc#PED-3548)</comment>
+    <requestid>1067598</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>820c7d81e4f5c900c28a591849eebb74</srcmd5>
+    <version>1.0.4</version>
+    <time>1680536723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076842</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>d0883af36da373ad013a8e10e6428f71</srcmd5>
+    <version>unknown</version>
+    <time>1688737556</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097075</requestid>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>393b0ab513ba580d41465403c294c08d</srcmd5>
+    <version>unknown</version>
+    <time>1689455661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098472</requestid>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>762884a90064d46f6d89c7300b3760b2</srcmd5>
+    <version>unknown</version>
+    <time>1691845563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103514</requestid>
+  </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>678be0d4a997ed947ada6417bede8b7c</srcmd5>
+    <version>unknown</version>
+    <time>1694344179</time>
+    <user>anag+factory</user>
+    <comment>- spelling fixes in comments</comment>
+    <requestid>1109727</requestid>
+  </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>f56826dd4afe52fdad9c03991c2ad010</srcmd5>
+    <version>unknown</version>
+    <time>1694971724</time>
+    <user>anag+factory</user>
+    <comment>- Install shadow explicitly, no longer pulled in by
+  system-group-hardware</comment>
+    <requestid>1111339</requestid>
+  </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>db3671995c0e355abda83ed8ebd91aef</srcmd5>
+    <version>unknown</version>
+    <time>1698170870</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119914</requestid>
+  </revision>
+</revisionlist>

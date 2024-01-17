@@ -1,0 +1,10 @@
+<package name="tinyobjloader" project="openSUSE:Factory">
+  <title>Tiny wavefront obj loader</title>
+  <description>Tiny but powerful single file wavefront obj loader written in C++.
+No dependency except for C++ STL. It can parse over 10M polygons with
+moderate memory and time.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="tinyobjloader"/>
+  <url>https://github.com/syoyo/tinyobjloader</url>
+</package>

@@ -1,0 +1,298 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>fc701c00312883b7b1d06cace61a1676</srcmd5>
+    <version>1.7</version>
+    <time>1388480714</time>
+    <user>coolo</user>
+    <comment>Push to factory</comment>
+    <requestid>210427</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1cfdaeecab3dd62ce703eb0d8a5d4420</srcmd5>
+    <version>1.9</version>
+    <time>1408524652</time>
+    <user>lnussel</user>
+    <comment>- removed patches (fixed upstream)
+   * hwloc-1.7-manpage.patch
+   * hwloc-1.7.patch 
+- Update to Version 1.9.0
+  * API
+    + Add hwloc_obj_type_sscanf() to extend hwloc_obj_type_of_string() with
+      type-specific attributes such as Cache/Group depth and Cache type.
+      hwloc_obj_type_of_string() is moved to hwloc/deprecated.h.
+    + Add hwloc_linux_get_tid_last_cpu_location() for retrieving the
+      last CPU where a Linux thread given by TID ran.
+    + Add hwloc_distrib() to extend the old hwloc_distribute[v]() functions.
+      hwloc_distribute[v]() is moved to hwloc/deprecated.h.
+    + Don't mix total and local memory when displaying verbose object attributes
+      with hwloc_obj_attr_snprintf() or in lstopo.
+  * Backends
+    + Add CPUVendor, CPUModelNumber and CPUFamilyNumber info attributes for
+      x86, ia64 and Xeon Phi sockets on Linux, to extend the x86-specific
+      support added in v1.8.1. Requested by Ralph Castain.
+    + Add many CPU- and Platform-related info attributes on ARM and POWER
+      platforms, in the Machine and Socket objects.
+    + Add CUDA info attributes describing the number of multiprocessors and
+      cores and the size of the global, shared and L2 cache memories in CUDA
+      OS devices.
+    + Add OpenCL info attributes describing the number of compute units and
+      the global memory size in OpenCL OS devices.
+    + The synthetic backend now accepts extended types such as L2Cache, L1i or
+      Group3. lstopo also exports synthetic strings using these extended types.
+  * Tools
+    + lstopo
+      - Do not overwrite output files by default anymore.</comment>
+    <requestid>245030</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1cfdaeecab3dd62ce703eb0d8a5d4420</srcmd5>
+    <version>1.9</version>
+    <time>1409301185</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3cb719e5bd652c521d9c30e4e6107b16</srcmd5>
+    <version>1.10.0</version>
+    <time>1419159877</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265780</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c31dbd358b6c909b14a8d9038ef12bab</srcmd5>
+    <version>1.10.0</version>
+    <time>1420021347</time>
+    <user>dimstar_suse</user>
+    <comment>- minor spec fixes (unbreak build for suse_version &lt; Factory)</comment>
+    <requestid>266851</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9635d077b00969c96a1133d5a3c5262c</srcmd5>
+    <version>1.10.1</version>
+    <time>1426064226</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289778</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>707d95ce0196e4245ccf9d1285cb4d62</srcmd5>
+    <version>1.11.1</version>
+    <time>1447766597</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344785</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e0228d93c7f49ccba63dad9bcc63f87</srcmd5>
+    <version>1.11.2</version>
+    <time>1451390380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350944</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>20791929362eca9aac431d73af91cdb2</srcmd5>
+    <version>1.11.5</version>
+    <time>1487029403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455568</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c6eb33475af7ff0c5b1b34a2360e56f5</srcmd5>
+    <version>1.11.5</version>
+    <time>1489345338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477308</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2c2548d1b39274c5e847fd2b8192b8d6</srcmd5>
+    <version>1.11.5</version>
+    <time>1511274987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544164</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4e9b220175abc639e777226a52f5e849</srcmd5>
+    <version>1.11.8</version>
+    <time>1511426642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544379</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ca884212f58393d866dedec846c7b8d9</srcmd5>
+    <version>2.0.4</version>
+    <time>1570010336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734220</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f811c1c0cce9a77a066e99496c380f13</srcmd5>
+    <version>2.1.0</version>
+    <time>1572443323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744097</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ef26e47fcb61c8805e1f79a510899628</srcmd5>
+    <version>2.2.0</version>
+    <time>1598029436</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * API
+    + Add hwloc_bitmap_singlify_by_core() to remove SMT from a given cpuset,
+      thanks to Florian Reynier for the suggestion.
+    + Add --enable-32bits-pci-domain to stop ignoring PCI devices with domain
+      &gt;16bits (e.g. 10000:02:03.4). Enabling this option breaks the library ABI.
+      Thanks to Dylan Simon for the help.
+  * Backends
+    + Add support for Linux cgroups v2.
+    + Add NUMA support for FreeBSD.
+    + Add get_last_cpu_location support for FreeBSD.
+    + Remove support for Intel Xeon Phi (MIC, Knights Corner) co-processors.
+  * Tools
+    + Add --uid to filter the hwloc-ps output by uid on Linux.
+    + Add a GRAPHICAL OUTPUT section in the manpage of lstopo.
+  * Misc
+    + Use the native dlopen instead of libltdl,
+      unless --disable-plugin-dlopen is passed at configure time. 
+- install systemd files using systemd macros and register it on install
+  with systemd
+- build against libnuma on all architectures</comment>
+    <requestid>828324</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7bb2f3d7bddf1c16f1db40e0ade625aa</srcmd5>
+    <version>2.2.0</version>
+    <time>1606252204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850238</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c36b9101e1fde67fa776441e98bb714e</srcmd5>
+    <version>2.4.0</version>
+    <time>1611770270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866970</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>496e1bd069120266181d01cc11364a34</srcmd5>
+    <version>2.4.1</version>
+    <time>1616168633</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880105</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>797794055ab35e0e72fee0b6e221429c</srcmd5>
+    <version>2.5.0</version>
+    <time>1626788368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907175</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ec8a8f99e3d70e5a78905bb974257fe9</srcmd5>
+    <version>2.6.0</version>
+    <time>1641386367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943614</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b375291a37bb3c034583dd218fa1ad7d</srcmd5>
+    <version>2.7.1</version>
+    <time>1650657163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970777</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b8d0e8dfa8394db41c2a5418ed716e5f</srcmd5>
+    <version>2.8.0</version>
+    <time>1658857348</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990738</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>768371afe7c008ebbcb893a222a49315</srcmd5>
+    <version>2.8.0</version>
+    <time>1661863703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999885</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6aa4416a447ec6044063c41d7ca03032</srcmd5>
+    <version>2.9.0</version>
+    <time>1674495030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060060</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>92e4594e74bdba1f30ea201089a2122d</srcmd5>
+    <version>2.9.0</version>
+    <time>1674932392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061309</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>76947110bd7148740c0637a88aaaef23</srcmd5>
+    <version>2.9.0</version>
+    <time>1685476876</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089567</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>7c1f617490af5af91be0d74632192f0d</srcmd5>
+    <version>2.9.0</version>
+    <time>1686074123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090899</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>6092c35c438a475cbe40aac80c4521b1</srcmd5>
+    <version>2.9.0</version>
+    <time>1688052456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095754</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>900f16db6a1d994ff218b2021094e57a</srcmd5>
+    <version>2.9.1</version>
+    <time>1688147889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096014</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>483d2512527a3fe90ea6141e0a3ec40a</srcmd5>
+    <version>2.9.2</version>
+    <time>1690743457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101307</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d44be2bdfad196eb443b53259f0f0f9e</srcmd5>
+    <version>2.9.3</version>
+    <time>1697836574</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118856</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,200 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6975668cc7b2de4bba901e22437659e8</srcmd5>
+    <version>0.15.2</version>
+    <time>1474976661</time>
+    <user>dimstar_suse</user>
+    <comment>Fix rpm uninstall warnings by removing alternatives in postun</comment>
+    <requestid>429775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7cddf054cf2d64b94e05b92f1ef3f978</srcmd5>
+    <version>0.15.2</version>
+    <time>1476997686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434318</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f76d9dd9824cd04d1762c034c9a22ab9</srcmd5>
+    <version>0.16.0</version>
+    <time>1480342107</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441966</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>61635e474ec62e6749fd13babfb2d75c</srcmd5>
+    <version>0.16.0</version>
+    <time>1493363545</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>486204</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>068672030144403e8c45888b683e7718</srcmd5>
+    <version>0.17.1</version>
+    <time>1542749219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649806</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c03ebd62756a28534893d529c416b9d6</srcmd5>
+    <version>0.17.1</version>
+    <time>1545866764</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659390</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f862da12d3bde460465df4a6059e4735</srcmd5>
+    <version>0.17.1</version>
+    <time>1552380394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683765</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e2f29e8574012e09d71a9e1d9ac8bfcb</srcmd5>
+    <version>0.17.1</version>
+    <time>1557321318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701205</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c46aeb66305d130a4d67ab562e3abdb7</srcmd5>
+    <version>0.17.1</version>
+    <time>1570285227</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python38-compat.patch to fix compatibility with Python 3.8
+  gh#PythonCharmers/python-future#447
+- Add python38-pow.patch not to expect exception on new available
+  parameters for Python 3.8. gh#PythonCharmers/python-future#474</comment>
+    <requestid>734651</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7c7f5c9a6c663e3a18167a4f6c3bc0e1</srcmd5>
+    <version>0.18.0</version>
+    <time>1572883525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0.
+- Remove python38-compat.patch, already included.
+- Add future-correct-mimetype.patch, since Python 3.8 is able to detect
+  the MIME type now.</comment>
+    <requestid>738188</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8d0261a2470c53e8b9ec1dc6fd74a735</srcmd5>
+    <version>0.18.2</version>
+    <time>1576062573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.2:
+  - Fix min/max functions with generators, and 'None' default (PR #514)
+  - Use BaseException in raise_() (PR #515)
+  - Fix builtins.round() for Decimals (Issue #501)
+  - Fix raise_from() to prevent failures with immutable classes (PR #518)
+  - Make FixInput idempotent (Issue #427)
+  - Fix type in newround (PR #521)
+  - Support mimetype guessing in urllib2 for Py3.8+ (Issue #508)
+  - fix for raise_() when passed an exception that's not an
+    Exception (e.g. BaseException subclasses)
+- Rebase future-correct-mimetype.patch to revert incorrect fix in
+  gh#PythonCharmers/python-future#508</comment>
+    <requestid>754444</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a850698699fecb7dff4afec6229c116f</srcmd5>
+    <version>0.18.2</version>
+    <time>1607196931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853083</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c136ee2a173f3f7fbae9e71339651f6f</srcmd5>
+    <version>0.18.2</version>
+    <time>1616008401</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python39-build.patch to avoid test failures
+  (gh#PythonCharmers/python-future#578).
+</comment>
+    <requestid>878588</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>5491b4715ec1afd0cb6cf8b5fb1726d6</srcmd5>
+    <version>0.18.2</version>
+    <time>1673021063</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-40899.patch to fix REDoS in http.cookiejar
+  gh#PythonCharmers/python-future#610
+  bsc#1206673
+</comment>
+    <requestid>1056169</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d98023ee7047a765b49f3c5a8c9696a7</srcmd5>
+    <version>0.18.3</version>
+    <time>1674495040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.18.3:
+  * Backport fix for bpo-38804 (c91d70b)
+  * Fix bug in fix_print.py fixer (dffc579)
+  * Fix bug in fix_raise.py fixer (3401099)
+  * Fix newint bool in py3 (fe645ba)
+  * Fix bug in super() with metaclasses (6e27aac)
+  * docs: fix simple typo, reqest -&gt; request (974eb1f)
+  * Correct eq (c780bf5)
+  * Pass if lint fails (2abe00d)
+  * fix order (f96a219)
+  * Add flake8 to image (046ff18)
+  * Make lint.sh executable (58cc984)
+  * Add docker push to optimize CI (01e8440)
+  * Build System (42b3025)
+  * Add docs build status badge to README.md (3f40bd7)
+  * Use same docs requirements in tox (18ecc5a)
+  * Add docs/requirements.txt (5f9893f)
+  * Add PY37_PLUS, PY38_PLUS, and PY39_PLUS (bee0247)
+  * fix 2.6 test, better comment (ddedcb9)
+  * fix 2.6 test (3f1ff7e)
+  * remove nan test (4dbded1)
+  * include list test values (e3f1a12)
+  * fix other python2 test issues (c051026)
+  * fix missing subTest (f006cad)
+  * import from old imp library on older python versions (fc84fa8)
+  * replace fstrings with format for python 3.4,3.5 (4a687ea)
+  * minor style/spelling fixes (8302d8c)
+  * improve cmp function, add unittest (0d95a40)
+  * Pin typing==3.7.4.1 for Python 3.3 compatiblity (1a48f1b)
+  * Fix various py26 unit test failures (9ca5a14)</comment>
+    <requestid>1060113</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>61fc3b7eb4fe71dedc2039b1ba7cbff1</srcmd5>
+    <version>0.18.3</version>
+    <time>1675357649</time>
+    <user>dimstar_suse</user>
+    <comment>- pull in dbm for all flavors on SLE15 SP4+ as well</comment>
+    <requestid>1062425</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>34c5038be964e94b31b97dc490fb31d7</srcmd5>
+    <version>0.18.3</version>
+    <time>1682193648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081909</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>76d8bef3162f14871974316f98dd7183</srcmd5>
+    <version>0.18.3</version>
+    <time>1688660867</time>
+    <user>favogt_factory</user>
+    <comment>- Add 619-test-zero-byte.patch to fix
+  gh#PythonCharmers/python-future#618.
+</comment>
+    <requestid>1096863</requestid>
+  </revision>
+</revisionlist>

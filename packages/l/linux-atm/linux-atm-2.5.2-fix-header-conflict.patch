@@ -1,0 +1,12 @@
+Index: linux-atm-2.5.2/src/maint/zntune.c
+===================================================================
+--- linux-atm-2.5.2.orig/src/maint/zntune.c
++++ linux-atm-2.5.2/src/maint/zntune.c
+@@ -14,6 +14,7 @@
+ #include <sys/ioctl.h>
+ #include <atm.h>
+ #include <sys/time.h> /* for struct timeval, although it's not used */
++#define _LINUX_TIME_H /* block linux/time.h from being included */
+ #include <linux/atm_zatm.h>
+ 
+ 

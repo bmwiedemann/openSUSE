@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccf13f1582b51b3745cbb9708f1c4c30</srcmd5>
+    <version>0.8.4</version>
+    <time>1557142009</time>
+    <user>dimstar_suse</user>
+    <comment>Textwrap, but savvy to ANSI colors and styles</comment>
+    <requestid>700451</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c333bb55f777b0ecb36e19142baf4592</srcmd5>
+    <version>0.8.4</version>
+    <time>1679182351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072864</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3c825b7db2b9ea23bb8d2040afd08319</srcmd5>
+    <version>0.8.4</version>
+    <time>1705437502</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python312.patch:
+  * Use importlib not imp, also includes changes from the previous patch.
+- Drop patch ansiwrap-pr18-py311.patch, included in above.</comment>
+    <requestid>1139057</requestid>
+  </revision>
+</revisionlist>

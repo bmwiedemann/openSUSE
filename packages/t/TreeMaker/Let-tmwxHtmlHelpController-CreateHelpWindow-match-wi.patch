@@ -1,0 +1,55 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 01:52:05 +0200
+Subject: [PATCH 14/20] Let tmwxHtmlHelpController::CreateHelpWindow match with
+ base class
+
+The method on the base class requires a `wxWindow*` return value, so we
+offer that. This won't compile on Mac, but I have no idea how to fix
+that.
+---
+ Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp | 6 +++---
+ Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.h   | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp
+index 7bb4761..0658817 100644
+--- a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp
++++ b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp
+@@ -46,14 +46,14 @@ wxHtmlHelpFrame* tmwxHtmlHelpController::CreateHelpFrame(wxHtmlHelpData* data)
+ Create the help window. Overridden so that on Mac we can replace the menu bar
+ of the frame.
+ *****/
+-void tmwxHtmlHelpController::CreateHelpWindow()
++wxWindow* tmwxHtmlHelpController::CreateHelpWindow()
+ {
+ #ifdef __WXMAC__
+   // Here we simply reproduce the ancestor method, except for the extra call
+   // to replace the menu bar partway through.
+   if (m_helpFrame) {
+     m_helpFrame->Raise();
+-    return ;
++    return GetHelpWindow();
+   }
+   if (m_Config == NULL) {
+     m_Config = wxConfigBase::Get(false);
+@@ -69,6 +69,6 @@ void tmwxHtmlHelpController::CreateHelpWindow()
+   m_helpFrame->SetTitleFormat(m_titleFormat);
+   m_helpFrame->Show(true);
+ #else
+-  wxHtmlHelpController::CreateHelpWindow();
++  return wxHtmlHelpController::CreateHelpWindow();
+ #endif // __WXMAC__
+ }
+diff --git a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.h b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.h
+index cff80eb..3f68772 100644
+--- a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.h
++++ b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.h
+@@ -30,7 +30,7 @@ public:
+ 
+   tmwxHtmlHelpController();
+   wxHtmlHelpFrame* CreateHelpFrame(wxHtmlHelpData* data);
+-  void CreateHelpWindow();
++  wxWindow* CreateHelpWindow();
+ };
+ 
+ 

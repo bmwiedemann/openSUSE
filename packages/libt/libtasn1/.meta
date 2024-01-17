@@ -1,0 +1,7 @@
+<package name="libtasn1" project="openSUSE:Factory">
+  <title>ASN.1 parsing library</title>
+  <description>This is the ASN.1 library used in GNUTLS. More up to date information
+can be found at http://www.gnu.org/software/gnutls and
+http://www.gnutls.org</description>
+  <devel project="security:tls" package="libtasn1"/>
+</package>

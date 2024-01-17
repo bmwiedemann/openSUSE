@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cdd142c6335bdd4c537230950da369ae</srcmd5>
+    <version>1.5.5</version>
+    <time>1592579194</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>815003</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a474518f184c2c58914d887e49042d62</srcmd5>
+    <version>1.5.5</version>
+    <time>1598643732</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829520</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a6c6228c51c8f29a7f9617959d2ec41c</srcmd5>
+    <version>1.6.0</version>
+    <time>1599507175</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832347</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>84bb53c0f86689ab9803ccaa01c1ea5f</srcmd5>
+    <version>1.6.0</version>
+    <time>1608634196</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857687</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12317c860523bc78a4eae614058c77b8</srcmd5>
+    <version>1.6.1</version>
+    <time>1616008558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update hledger-interest to version 1.6.1.
+  Upstream does not provide a change log file.</comment>
+    <requestid>879194</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73343b6ae3a6d3a1d974ebf538e28881</srcmd5>
+    <version>1.6.2</version>
+    <time>1629917858</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>912761</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a82276409cce99fd755eb6e4f96cd528</srcmd5>
+    <version>1.6.3</version>
+    <time>1634068153</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>923806</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a1e204a706adf8fc7b5d4f02240a1cff</srcmd5>
+    <version>1.6.3</version>
+    <time>1644617291</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953409</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f4f705844efd5a2f88bf23187c2e00a5</srcmd5>
+    <version>1.6.4</version>
+    <time>1659382262</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987123</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9a13e73603b16c3b26757eecca3ad1ae</srcmd5>
+    <version>1.6.4</version>
+    <time>1665668620</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008552</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f5e6e6fd5d4cb4f063f10131e1de5c4b</srcmd5>
+    <version>1.6.5</version>
+    <time>1674043869</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059136</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a30ffad6ed154b15ccd3fa58b9892cd8</srcmd5>
+    <version>1.6.5</version>
+    <time>1680636317</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076153</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>95dd66c75f71cd13b872c70294f8a126</srcmd5>
+    <version>1.6.5</version>
+    <time>1687469142</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094460</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>427cabe06c3178560a00579bd5cf57a7</srcmd5>
+    <version>1.6.6</version>
+    <time>1694545363</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1110384</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b591a494669baf427e9214614282c756</srcmd5>
+    <version>1.6.6</version>
+    <time>1701792237</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1130930</requestid>
+  </revision>
+</revisionlist>

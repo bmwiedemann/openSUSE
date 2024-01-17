@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Mon Jan  2 21:20:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 2.1.1:
+  * buildsystem - undo co-installability of Qt5 and Qt6 headers.
+- Update to 2.1.0:
+  * Re-license project to MIT and remove the commercial offering
+  * buildsystem - Increase minimum CMake version to 3.12.0
+  * buildsystem - Build in Release mode by default (in non-developer situations)
+  * Client-side:
+    + Generate "explicit" in front of service and job constructors
+  * Server-side:
+    + Disable HTTP/2 support (which Qt 6 enables by default), it causes trouble with some SOAP servers.
+    + Improve parsing of GET argument to avoid misinterpreting queries (possible security issue #247).
+
+-------------------------------------------------------------------
+Wed May 25 07:03:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a Qt6 flavor for kdsoap.
+
+-------------------------------------------------------------------
+Sat Jul  3 08:40:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.0.0
+  * Supports Qt6 in addition to Qt5
+  * Minimum Qt version is 5.9
+  * The qmake buildsystem (via autogen.py) is removed.
+  * buildsystem: a new 'docs' target is created when CMake
+    -DKDSoap_DOCS=True.
+  * buildsystem: the API manual is now generated in build/docs
+    vice source/docs.
+  * buildsystem: added an uninstall target
+  * buildsystem: generate and install kdsoap-version.h
+  * The API manual is generated+installed in qch format for Qt
+    assistant.
+ + Client-side:
+  * Added options to the KDSoapClient specifying the SOAP action
+    sending method
+ + WSDL parser:
+  * Fix generated code in case a variable is called "d" or "q"
+  * Fix generated code for an enumeration type with a length
+    restriction
+  * Avoid potential type collisions in nested complexTypes
+- Drop the obsolete _service file. license issues were addressed.
+
+-------------------------------------------------------------------
+Wed Mar  4 22:30:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Use a service to generate a tarball with no non-free unit
+  test data (neither used nor installed; gh#KDSoap#207)
+
+-------------------------------------------------------------------
+Thu Feb 27 13:37:32 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add a note to mention that "no modification" files are not used
+  nor installed (gh#KDSoap#207)
+
+-------------------------------------------------------------------
+Sat Feb 22 13:29:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package

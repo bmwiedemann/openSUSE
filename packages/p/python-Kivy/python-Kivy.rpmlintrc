@@ -1,0 +1,2 @@
+# Not listed in setup.cfg but imported in core/spelling/spelling_enchant.py
+addFilter("python-leftover-require .*pyenchant")

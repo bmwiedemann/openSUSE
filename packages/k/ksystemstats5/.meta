@@ -1,0 +1,8 @@
+<package name="ksystemstats5" project="openSUSE:Factory">
+  <title>Plugin based system monitoring daemon</title>
+  <description>KSystemStats is a daemon that collects statistics about the running system.
+
+</description>
+  <devel project="KDE:Frameworks5" package="ksystemstats5"/>
+  <url>http://www.kde.org</url>
+</package>

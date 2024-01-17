@@ -1,0 +1,26 @@
+From 779f65c1845968b59e5bfa21cf0468ba3664271b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 1 Mar 2023 14:00:08 +0000
+Subject: [PATCH] Fix comparison to work with expected bytes string
+
+The urlgrab function initially coverts given url to bytes string
+via the _to_utf8() helper. This make "url" parameter to be bytes,
+and therefore we need to fix the this comparison
+---
+ urlgrabber/grabber.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: urlgrabber-4.1.0/urlgrabber/grabber.py
+===================================================================
+--- urlgrabber-4.1.0.orig/urlgrabber/grabber.py
++++ urlgrabber-4.1.0/urlgrabber/grabber.py
+@@ -1210,7 +1210,7 @@ class URLGrabber(object):
+             if not filename:
+                 # This is better than nothing.
+                 filename = 'index.html'
+-        if scheme == 'file' and not opts.copy_local:
++        if scheme == b'file' and not opts.copy_local:
+             # just return the name of the local file - don't make a
+             # copy currently
+             path = url2pathname(path)

@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c19c719dea7dd8e173201b4f3210b5d</srcmd5>
+    <version>1.0.4</version>
+    <time>1554115120</time>
+    <user>dimstar_suse</user>
+    <comment>This package is needed to run the abcde CD ripper with 
+MusicBrainz support.</comment>
+    <requestid>689944</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3905b80c53670fe66f68f0b48657e1ad</srcmd5>
+    <version>1.0.5</version>
+    <time>1603875545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844392</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f838871a47e71f71c1df69d1752d91df</srcmd5>
+    <version>1.0.6</version>
+    <time>1661346698</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.0.6
+   - use HTTPS instead of HTTP in URLs to prevent redirects
+   - fix tests
+- updated to 1.0.5
+   see /usr/share/doc/packages/perl-WebService-MusicBrainz/Changes
+  1.0.4 Friday February 16th 2018
+  - Merge pull request (jwbargsten)</comment>
+    <requestid>999006</requestid>
+  </revision>
+</revisionlist>

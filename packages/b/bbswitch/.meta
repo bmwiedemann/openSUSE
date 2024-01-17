@@ -1,0 +1,5 @@
+<package name="bbswitch" project="openSUSE:Factory">
+  <title>bbswitch</title>
+  <description>bbswitch is a kernel module which automatically detects the required ACPI calls for two kinds of Optimus laptops.</description>
+  <devel project="X11:Bumblebee" package="bbswitch"/>
+</package>

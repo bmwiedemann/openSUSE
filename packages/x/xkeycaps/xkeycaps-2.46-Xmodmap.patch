@@ -1,0 +1,118 @@
+--- XKeyCaps.ad
++++ XKeyCaps.ad
+@@ -328,7 +328,7 @@
+ \n\
+ You should modify your login script to contain a line like\n\
+ \n\
+-         xmodmap ~/.xmodmap-`uname -n`\n\
++         xmodmap ~/.Xmodmap-`uname -n`\n\
+ \n\
+ (those are backquotes.)\n
+ 
+--- XKeyCaps_ad.h
++++ XKeyCaps_ad.h
+@@ -259,7 +259,7 @@
+ \\n\
+ You should modify your login script to contain a line like\\n\
+ \\n\
+-         xmodmap ~/.xmodmap-`uname -n`\\n\
++         xmodmap ~/.Xmodmap-`uname -n`\\n\
+ \\n\
+ (those are backquotes.)\\n",
+ "*noKeysymDBError.title:				Error",
+--- commands.c
++++ commands.c
+@@ -304,9 +304,10 @@
+ #endif /* ! __STDC__ */
+ {
+   const char *home = getenv("HOME");
+-  const char *base = ".xmodmap";
++  const char *base = ".Xmodmap";
+   int L = strlen(home) + strlen(base) + 2;
+   char *target = 0;
++  char *basetarget = 0;
+   struct stat st;
+   FILE *out = 0;
+ 
+@@ -325,6 +326,9 @@
+ 
+   strcat(target, base);
+ 
++  basetarget = (char *) malloc(L+1);
++  strcpy(basetarget, target);
++ 
+ #ifndef NO_UNAME
+   if (uts.nodename)
+     {
+@@ -333,6 +337,24 @@
+     }
+ #endif
+ 
++  if (!lstat(basetarget, &st)) 
++    {
++      char *t2;
++      if ((st.st_mode & S_IFLNK) != S_IFLNK) {
++        if (y_or_n_p_with_args(widget,
++			     "overwriteQuery",
++			     "ok", "cancel", 0,
++			     basetarget, 0, 0, 0, 0, 0))
++	goto DONE;
++
++        t2 = (char *) malloc (strlen(basetarget) + 10);
++        strcpy (t2, basetarget);
++        strcat (t2, ".BAK");
++        rename (basetarget, t2);
++        free (t2);
++      }  	
++    }
++
+   if (!stat(target, &st))
+     {
+       char *t2;
+@@ -348,7 +370,17 @@
+       rename (target, t2);
+       free (t2);
+     }
+-
++  {  
++      
++      char *t2 = (char *) malloc (strlen(base) + strlen(uts.nodename) + 3);
++      strcpy (t2, base);
++      strcat (t2, "-");
++      strcat (t2, uts.nodename);
++      unlink(basetarget);
++      symlink(t2, basetarget);
++      free (t2);
++  }
++  
+   out = fopen(target, "w");
+  DONE:
+   *name = 0;
+@@ -356,6 +388,7 @@
+     *name = target;
+   else
+     free (target);
++  free (basetarget);
+   return out;
+ }
+ 
+--- xkeycaps.man
++++ xkeycaps.man
+@@ -138,7 +138,7 @@
+ state of the keyboard (including all of your changes) to a file in your 
+ home directory.  
+ 
+-The file will be called \fB.xmodmap-\fP\fIhostname\fP,
++The file will be called \fB.Xmodmap-\fP\fIhostname\fP,
+ where \fIhostname\fP is the name of the machine you're running on.
+ It will warn you if the file already exists.
+ 
+@@ -149,7 +149,7 @@
+ The idea is that in the appropriate startup script, you would
+ add a line like
+ .EX
+-xmodmap \~/.xmodmap\-\`uname \-n\`
++xmodmap \~/.Xmodmap\-\`uname \-n\`
+ .EE
+ in the appropriate init file, so that those keyboard modifications are
+ made each time you log in.  (If you're not sure where this command should

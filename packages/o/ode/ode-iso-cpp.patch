@@ -1,0 +1,36 @@
+diff -Nur ode-0.16/ode/demo/demo_jointPR.cpp new/ode/demo/demo_jointPR.cpp
+--- ode-0.16/ode/demo/demo_jointPR.cpp  2018-12-09 21:04:03.000000000 +0100
++++ new/ode/demo/demo_jointPR.cpp       2019-03-23 13:28:50.789647854 +0100
+@@ -329,7 +329,7 @@
+             {
+                 int j = i+1;
+                 if ( j >= argc      ||  // Check if we have enough arguments
+-                        argv[j][0] == '\0' ||  // We should have a path here
++                        argv[j][0] == NULL ||  // We should have a path here
+                         argv[j][0] == '-' ) // We should have a path not a command line
+                     Help(argv);
+                 else
+diff -Nur ode-0.16/ode/demo/demo_jointPU.cpp new/ode/demo/demo_jointPU.cpp
+--- ode-0.16/ode/demo/demo_jointPU.cpp  2018-12-09 21:04:03.000000000 +0100
++++ new/ode/demo/demo_jointPU.cpp       2019-03-23 13:29:20.649522656 +0100
+@@ -576,7 +576,7 @@
+       if (0 == strcmp ("-t", argv[i]) || 0 == strcmp ("--texture-path", argv[i]) ) {
+         int j = i+1;
+         if ( j >= argc      ||  // Check if we have enough arguments
+-             argv[j][0] == '\0' ||  // We should have a path here
++             argv[j][0] == NULL ||  // We should have a path here
+              argv[j][0] == '-' ) // We should have a path not a command line
+           Help (argv);
+         else
+diff -Nur ode-0.16/ode/demo/demo_piston.cpp new/ode/demo/demo_piston.cpp
+--- ode-0.16/ode/demo/demo_piston.cpp   2018-12-09 21:04:03.000000000 +0100
++++ new/ode/demo/demo_piston.cpp        2019-03-23 13:29:39.781442132 +0100
+@@ -659,7 +659,7 @@
+                 {
+                     int j = i+1;
+                     if ( j >= argc      ||  // Check if we have enough arguments
+-                            argv[j][0] == '\0' ||  // We should have a path here
++                            argv[j][0] == NULL ||  // We should have a path here
+                             argv[j][0] == '-' ) // We should have a path not a command line
+                         Help (argv);
+                     else

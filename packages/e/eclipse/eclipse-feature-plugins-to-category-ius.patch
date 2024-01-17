@@ -1,0 +1,844 @@
+From 6dd34f0b0365e0529f3852c688bfd99519f035d1 Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Thu, 6 Dec 2018 11:38:58 +0000
+Subject: [PATCH] IU inclusion changes:
+
+* Change features bundling third-party modules to feature requirements
+* Make some IU name changes to accommodate for distro-specific packaging
+---
+ .../org.eclipse.jdt-feature/feature.xml       | 114 ++-----------
+ .../org.eclipse.pde-feature/feature.xml       |  16 +-
+ .../bundles/org.eclipse.jdt.doc.isv/pom.xml   |   2 +-
+ .../bundles/org.eclipse.pde.doc.user/pom.xml  |   2 +-
+ .../org.eclipse.platform.doc.isv/pom.xml      |  10 +-
+ .../org.eclipse.help-feature/feature.xml      | 130 +++------------
+ .../org.eclipse.platform-feature/feature.xml  |  18 +--
+ .../org.eclipse.sdk.tests/feature.xml         |  58 ++-----
+ .../org.eclipse.test-feature/feature.xml      |  56 +------
+ .../org.eclipse.tips.feature/feature.xml      |  11 +-
+ .../features/org.eclipse.e4.rcp/feature.xml   | 150 ++----------------
+ 11 files changed, 87 insertions(+), 480 deletions(-)
+
+diff --git a/eclipse.jdt/org.eclipse.jdt-feature/feature.xml b/eclipse.jdt/org.eclipse.jdt-feature/feature.xml
+index e12ef6a13..6deae2a13 100644
+--- a/eclipse.jdt/org.eclipse.jdt-feature/feature.xml
++++ b/eclipse.jdt/org.eclipse.jdt-feature/feature.xml
+@@ -19,6 +19,22 @@
+       %license
+    </license>
+ 
++   <requires>
++      <import plugin="org.junit" />
++      <import plugin="org.junit.jupiter.api" />
++      <import plugin="org.junit.jupiter.engine" />
++      <import plugin="org.junit.jupiter.migrationsupport" />
++      <import plugin="org.junit.jupiter.params" />
++      <import plugin="org.junit.platform.commons" />
++      <import plugin="org.junit.platform.engine" />
++      <import plugin="org.junit.platform.launcher" />
++      <import plugin="org.junit.platform.runner" />
++      <import plugin="org.junit.platform.suite.api" />
++      <import plugin="org.junit.vintage.engine" />
++      <import plugin="org.opentest4j" />
++      <import plugin="org.apiguardian" />
++   </requires>
++
+    <plugin
+          id="org.eclipse.jdt"
+          download-size="0"
+@@ -167,103 +184,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.junit"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"/>
+-
+-   <plugin
+-         id="org.hamcrest.core"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.jupiter.api"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.jupiter.engine"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.jupiter.migrationsupport"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.jupiter.params"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.platform.commons"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.platform.engine"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.platform.launcher"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.platform.runner"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.platform.suite.api"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.junit.vintage.engine"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.opentest4j"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apiguardian"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.jdt.doc.user"
+          download-size="0"
+diff --git a/eclipse.pde.ui/features/org.eclipse.pde-feature/feature.xml b/eclipse.pde.ui/features/org.eclipse.pde-feature/feature.xml
+index 57a58c6d5..a9c3e2c9b 100644
+--- a/eclipse.pde.ui/features/org.eclipse.pde-feature/feature.xml
++++ b/eclipse.pde.ui/features/org.eclipse.pde-feature/feature.xml
+@@ -21,6 +21,8 @@
+ 
+    <requires>
+       <import feature="org.eclipse.jdt" version="3.15.0" match="compatible"/>
++      <import plugin="org.objectweb.asm" />
++      <import plugin="org.objectweb.asm.tree" />
+    </requires>
+ 
+    <plugin
+@@ -78,20 +80,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.objectweb.asm"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.objectweb.asm.tree"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.pde.api.tools"
+          download-size="0"
+diff --git a/eclipse.platform.common/bundles/org.eclipse.jdt.doc.isv/pom.xml b/eclipse.platform.common/bundles/org.eclipse.jdt.doc.isv/pom.xml
+index abc2711c0..cada26023 100644
+--- a/eclipse.platform.common/bundles/org.eclipse.jdt.doc.isv/pom.xml
++++ b/eclipse.platform.common/bundles/org.eclipse.jdt.doc.isv/pom.xml
+@@ -120,7 +120,7 @@
+                       <type>eclipse-plugin</type>
+                     </dependency>
+                     <dependency>
+-                      <artifactId>javax.annotation</artifactId>
++                      <artifactId>javax.annotation-api</artifactId>
+                       <type>eclipse-plugin</type>
+                     </dependency>
+                     <dependency>
+diff --git a/eclipse.platform.common/bundles/org.eclipse.pde.doc.user/pom.xml b/eclipse.platform.common/bundles/org.eclipse.pde.doc.user/pom.xml
+index 16a7a02dc..23ffa475a 100644
+--- a/eclipse.platform.common/bundles/org.eclipse.pde.doc.user/pom.xml
++++ b/eclipse.platform.common/bundles/org.eclipse.pde.doc.user/pom.xml
+@@ -119,7 +119,7 @@
+                       <type>eclipse-plugin</type>
+                     </dependency>
+                     <dependency>
+-                      <artifactId>javax.annotation</artifactId>
++                      <artifactId>javax.annotation-api</artifactId>
+                       <type>eclipse-plugin</type>
+                     </dependency>
+                     <dependency>
+diff --git a/eclipse.platform.common/bundles/org.eclipse.platform.doc.isv/pom.xml b/eclipse.platform.common/bundles/org.eclipse.platform.doc.isv/pom.xml
+index 5b9e03021..1702d4dc6 100644
+--- a/eclipse.platform.common/bundles/org.eclipse.platform.doc.isv/pom.xml
++++ b/eclipse.platform.common/bundles/org.eclipse.platform.doc.isv/pom.xml
+@@ -78,12 +78,12 @@
+                   </requirement>
+                   <requirement>
+                     <type>eclipse-plugin</type>
+-                    <id>javax.annotation</id>
++                    <id>javax.annotation-api</id>
+                     <versionRange>0.0.0</versionRange>
+                   </requirement>
+                   <requirement>
+                     <type>eclipse-plugin</type>
+-                    <id>javax.el</id>
++                    <id>javax.el-api</id>
+                     <versionRange>0.0.0</versionRange>
+                   </requirement>
+                   <requirement>
+@@ -93,7 +93,7 @@
+                   </requirement>
+                   <requirement>
+                     <type>eclipse-plugin</type>
+-                    <id>javax.servlet</id>
++                    <id>javax.servlet-api</id>
+                     <versionRange>0.0.0</versionRange>
+                   </requirement>
+                   <requirement>
+@@ -118,7 +118,7 @@
+                   </requirement>
+                   <requirement>
+                     <type>eclipse-plugin</type>
+-                    <id>org.apache.jasper.glassfish</id>
++                    <id>org.glassfish.web.javax.servlet.jsp</id>
+                     <versionRange>0.0.0</versionRange>
+                   </requirement>
+                   <requirement>
+@@ -287,7 +287,7 @@
+                       <type>eclipse-plugin</type>
+                     </dependency>
+                     <dependency>
+-                      <artifactId>javax.annotation</artifactId>
++                      <artifactId>javax.annotation-api</artifactId>
+                       <type>eclipse-plugin</type>
+                     </dependency>
+                     <dependency>
+diff --git a/eclipse.platform.releng/features/org.eclipse.help-feature/feature.xml b/eclipse.platform.releng/features/org.eclipse.help-feature/feature.xml
+index 79fa77d7e..5f3d6f6d0 100644
+--- a/eclipse.platform.releng/features/org.eclipse.help-feature/feature.xml
++++ b/eclipse.platform.releng/features/org.eclipse.help-feature/feature.xml
+@@ -21,69 +21,6 @@
+       %license
+    </license>
+ 
+-   <plugin
+-         id="javax.el"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="javax.servlet"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="javax.servlet.jsp"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="com.sun.el"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.commons.logging"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.jasper.glassfish"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.lucene.analyzers-common"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.lucene.core"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.lucene.analyzers-smartcn"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.equinox.http.jetty"
+          download-size="0"
+@@ -140,55 +77,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.eclipse.jetty.continuation"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.eclipse.jetty.http"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.eclipse.jetty.io"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.eclipse.jetty.security"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.eclipse.jetty.server"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.eclipse.jetty.servlet"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.eclipse.jetty.util"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.core.net"
+          download-size="0"
+@@ -203,4 +91,22 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
++   <requires>
++      <import plugin="javax.el-api" />
++      <import plugin="javax.servlet-api" />
++      <import plugin="javax.servlet.jsp" />
++      <import plugin="com.sun.el.javax.el" />
++      <import plugin="org.apache.commons.logging" />
++      <import plugin="org.glassfish.web.javax.servlet.jsp" />
++      <import plugin="org.apache.lucene.analyzers-common" />
++      <import plugin="org.apache.lucene.core" />
++      <import plugin="org.apache.lucene.analyzers-smartcn" />
++      <import plugin="org.eclipse.jetty.continuation" />
++      <import plugin="org.eclipse.jetty.http" />
++      <import plugin="org.eclipse.jetty.io" />
++      <import plugin="org.eclipse.jetty.security" />
++      <import plugin="org.eclipse.jetty.server" />
++      <import plugin="org.eclipse.jetty.servlet" />
++      <import plugin="org.eclipse.jetty.util" />
++   </requires>
+ </feature>
+diff --git a/eclipse.platform.releng/features/org.eclipse.platform-feature/feature.xml b/eclipse.platform.releng/features/org.eclipse.platform-feature/feature.xml
+index 94f21e6f8..694d49dc1 100644
+--- a/eclipse.platform.releng/features/org.eclipse.platform-feature/feature.xml
++++ b/eclipse.platform.releng/features/org.eclipse.platform-feature/feature.xml
+@@ -19,6 +19,11 @@
+       %license
+    </license>
+ 
++   <requires>
++      <import plugin="org.apache.ant" />
++      <import plugin="com.jcraft.jsch" />
++   </requires>
++
+    <includes
+          id="org.eclipse.rcp"
+          version="0.0.0"/>
+@@ -32,12 +37,6 @@
+          id="org.eclipse.help"
+          version="0.0.0"/>
+ 
+-   <plugin
+-         id="org.apache.ant"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"/>
+-
+    <plugin
+          id="org.eclipse.ant.core"
+          download-size="0"
+@@ -45,13 +44,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="com.jcraft.jsch"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.compare.core"
+          download-size="0"
+diff --git a/eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml b/eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
+index 6d7659ab9..23f4e6524 100644
+--- a/eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
++++ b/eclipse.platform.releng/features/org.eclipse.sdk.tests/feature.xml
+@@ -19,6 +19,13 @@
+       %license
+    </license>
+ 
++   <requires>
++      <import plugin="org.apache.commons.fileupload" />
++      <import plugin="org.apache.commons.io" />
++      <import plugin="org.mockito" />
++      <import plugin="org.objenesis" />
++   </requires>
++
+    <includes
+          id="org.eclipse.test"
+          version="0.0.0"/>
+@@ -427,20 +436,6 @@
+          install-size="0"
+          version="0.0.0"/>
+ 
+-   <plugin
+-         id="org.apache.commons.fileupload"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.commons.io"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.equinox.p2.installer"
+          download-size="0"
+@@ -490,41 +485,6 @@
+          install-size="0"
+          version="0.0.0"/>
+ 
+-   <plugin
+-         id="org.hamcrest.core"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.hamcrest.integration"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.hamcrest.library"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-    <plugin
+-         id="org.mockito"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.objenesis"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.ui.tests.pluginchecks"
+          download-size="0"
+diff --git a/eclipse.platform.releng/features/org.eclipse.test-feature/feature.xml b/eclipse.platform.releng/features/org.eclipse.test-feature/feature.xml
+index 1f422b76e..9e26326c3 100644
+--- a/eclipse.platform.releng/features/org.eclipse.test-feature/feature.xml
++++ b/eclipse.platform.releng/features/org.eclipse.test-feature/feature.xml
+@@ -19,6 +19,12 @@
+       %license
+    </license>
+ 
++   <requires>
++      <import plugin="org.junit" />
++      <import plugin="org.easymock" />
++      <import plugin="org.mockito" />
++   </requires>
++
+    <plugin
+          id="org.eclipse.ant.optional.junit"
+          download-size="0"
+@@ -54,58 +62,10 @@
+          fragment="true"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.junit"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"/>
+-
+-   <plugin
+-         id="org.easymock"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.hamcrest.core"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.mockito"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="net.bytebuddy.byte-buddy"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="net.bytebuddy.byte-buddy-agent"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.core.tests.harness"
+          download-size="0"
+          install-size="0"
+          version="0.0.0"/>
+ 
+-   <plugin
+-         id="org.hamcrest.library"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+ </feature>
+diff --git a/eclipse.platform.ua/org.eclipse.tips.feature/feature.xml b/eclipse.platform.ua/org.eclipse.tips.feature/feature.xml
+index b8f52fe1a..a1d866a52 100644
+--- a/eclipse.platform.ua/org.eclipse.tips.feature/feature.xml
++++ b/eclipse.platform.ua/org.eclipse.tips.feature/feature.xml
+@@ -32,6 +32,10 @@
+       %license
+    </license>
+ 
++   <requires>
++      <import plugin="com.google.gson" />
++   </requires>
++
+    <plugin
+          id="org.eclipse.tips.ui"
+          download-size="0"
+@@ -60,11 +64,4 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="com.google.gson"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+ </feature>
+diff --git a/eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml b/eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml
+index 0ce4361be..ac28b73c2 100644
+--- a/eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml
++++ b/eclipse.platform.ui/features/org.eclipse.e4.rcp/feature.xml
+@@ -22,6 +22,23 @@
+    <requires>
+       <import feature="org.eclipse.emf.common" version="2.7.0" match="compatible"/>
+       <import feature="org.eclipse.emf.ecore" version="2.7.0" match="compatible"/>
++      <import plugin="org.apache.batik.css" />
++      <import plugin="org.w3c.css.sac" />
++      <import plugin="org.apache.batik.util" />
++      <import plugin="org.w3c.dom.svg" />
++      <import plugin="javax.inject" />
++      <import plugin="javax.annotation-api" />
++      <import plugin="org.apache.batik.i18n" />
++      <import plugin="org.apache.batik.constants" />
++      <import plugin="org.apache.xmlgraphics" />
++      <import plugin="org.apache.commons.io" />
++      <import plugin="org.apache.commons.logging" />
++      <import plugin="org.apache.felix.scr" />
++      <import plugin="com.ibm.icu" />
++      <import plugin="org.apache.felix.gogo.command" />
++      <import plugin="org.apache.felix.gogo.runtime" />
++      <import plugin="org.apache.felix.gogo.shell" />
++      <import plugin="org.apache.commons.jxpath" />
+    </requires>
+ 
+    <plugin
+@@ -94,62 +111,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.apache.batik.css"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.w3c.css.sac"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.batik.util"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.w3c.dom.svg"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.w3c.dom.smil"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.w3c.dom.events"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="javax.inject"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="javax.annotation"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.e4.core.di"
+          download-size="0"
+@@ -164,41 +125,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.apache.batik.i18n"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.batik.constants"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.xmlgraphics"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.commons.io"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.commons.logging"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.e4.core.di.extensions"
+          download-size="0"
+@@ -244,13 +170,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.apache.felix.scr"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.equinox.event"
+          download-size="0"
+@@ -335,13 +254,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="com.ibm.icu"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.equinox.preferences"
+          download-size="0"
+@@ -504,27 +416,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.apache.felix.gogo.command"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.felix.gogo.runtime"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+-   <plugin
+-         id="org.apache.felix.gogo.shell"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.equinox.console"
+          download-size="0"
+@@ -553,13 +444,6 @@
+          version="0.0.0"
+          unpack="false"/>
+ 
+-   <plugin
+-         id="org.apache.commons.jxpath"
+-         download-size="0"
+-         install-size="0"
+-         version="0.0.0"
+-         unpack="false"/>
+-
+    <plugin
+          id="org.eclipse.e4.emf.xpath"
+          download-size="0"
+-- 
+2.21.1
+

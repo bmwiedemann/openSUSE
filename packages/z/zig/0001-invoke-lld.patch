@@ -1,0 +1,132 @@
+From: Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Date: Fri, 04 Aug 2023 14:55:02 PST
+Based on Aaron Puchert's <aaronpuchert@alice-dsl.net> patch.
+diff --git a/src/zig_llvm.cpp b/src/zig_llvm.cpp
+index d22bfc1..c6502f5 100644
+--- a/src/zig_llvm.cpp
++++ b/src/zig_llvm.cpp
+@@ -66,18 +66,100 @@
+ #include <llvm/Transforms/Utils/CanonicalizeAliases.h>
+ #include <llvm/Transforms/Utils/NameAnonGlobals.h>
+ 
+-#include <lld/Common/Driver.h>
+-
+ #if __GNUC__ >= 9
+ #pragma GCC diagnostic pop
+ #endif
+ 
+ #include <new>
+ 
++#include <poll.h>
+ #include <stdlib.h>
++#include <spawn.h>
++#include <sys/wait.h>
++#include <unistd.h>
+ 
+ using namespace llvm;
+ 
++namespace {
++  class Pipe {
++  public:
++    Pipe(llvm::raw_ostream *output) : output(output) {}
++    ~Pipe() {
++      if (fd[0] != -1) close(fd[0]);
++      if (fd[1] != -1) close(fd[1]);
++    }
++    bool open() { return pipe(fd) == 0; }
++    int getRead() const { return fd[0]; }
++    int getWrite() const { return fd[1]; }
++    void closeWrite() { close(fd[1]); fd[1] = -1; }
++    void flush() const {
++      constexpr size_t size = 1024;
++      char buf[size];
++      ssize_t ret;
++      do {
++        ret = read(getRead(), buf, size);
++        if (ret > 0 && output)
++          output->write(buf, ret);
++      } while (ret == size || (ret == -1 && errno == EINTR));
++    }
++  private:
++    int fd[2] = {-1, -1};
++    llvm::raw_ostream *output;
++  };
++} // anonymous namespace
++
++static bool InvokeLld(const char *variant, llvm::ArrayRef<const char *> args,
++                      llvm::raw_ostream &stdoutOS,
++                      llvm::raw_ostream &stderrOS, bool disableOutput)
++{
++    Pipe outPipe(disableOutput ? nullptr : &stdoutOS),
++         errPipe(disableOutput ? nullptr : &stderrOS);
++    if (!outPipe.open())
++        return false;
++    if (!errPipe.open())
++        return false;
++
++    posix_spawn_file_actions_t actions;
++    posix_spawn_file_actions_init(&actions);
++    posix_spawn_file_actions_adddup2(&actions, outPipe.getWrite(), STDOUT_FILENO);
++    posix_spawn_file_actions_adddup2(&actions, errPipe.getWrite(), STDERR_FILENO);
++
++    // We need the command as argument, and end with nullptr.
++    SmallVector<char*, 32> arguments{const_cast<char*>(variant)};
++    for (size_t arg = 1; arg != args.size(); ++arg)
++        arguments.push_back(const_cast<char*>(args[arg]));
++    arguments.push_back(nullptr);
++
++    pid_t pid;
++    if (posix_spawnp(&pid, variant, &actions, nullptr, arguments.data(), environ) != 0)
++        return false;
++    posix_spawn_file_actions_destroy(&actions);
++    outPipe.closeWrite();
++    errPipe.closeWrite();
++
++    // Wait for child to finish and flush pipes.
++    sigset_t signals, old;
++    sigemptyset(&signals);
++    sigaddset(&signals, SIGCHLD);
++    pthread_sigmask(SIG_BLOCK, &signals, &old);
++    pollfd pollfds[2] = {{outPipe.getRead(), POLLIN}, {errPipe.getRead(), POLLIN}};
++    int wstatus;
++    do {
++        poll(pollfds, 2, -1);
++        if (pollfds[0].revents & POLLIN)
++            outPipe.flush();
++        if (pollfds[1].revents & POLLIN)
++            errPipe.flush();
++    } while (waitpid(pid, &wstatus, WNOHANG) == 0);
++    pthread_sigmask(SIG_SETMASK, &old, nullptr);
++
++    outPipe.flush();
++    errPipe.flush();
++
++    return WIFEXITED(wstatus) && WEXITSTATUS(wstatus) == 0;
++}
++
++
+ void ZigLLVMInitializeLoopStrengthReducePass(LLVMPassRegistryRef R) {
+     initializeLoopStrengthReducePass(*unwrap(R));
+ }
+@@ -1375,18 +1457,15 @@ bool ZigLLVMWriteArchive(const char *archive_name, const char **file_names, size
+ }
+ 
+ bool ZigLLDLinkCOFF(int argc, const char **argv, bool can_exit_early, bool disable_output) {
+-    std::vector<const char *> args(argv, argv + argc);
+-    return lld::coff::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
++ return InvokeLld("lld-link", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
+ }
+ 
+ bool ZigLLDLinkELF(int argc, const char **argv, bool can_exit_early, bool disable_output) {
+-    std::vector<const char *> args(argv, argv + argc);
+-    return lld::elf::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
++  return InvokeLld("ld.lld", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
+ }
+ 
+ bool ZigLLDLinkWasm(int argc, const char **argv, bool can_exit_early, bool disable_output) {
+-    std::vector<const char *> args(argv, argv + argc);
+-    return lld::wasm::link(args, llvm::outs(), llvm::errs(), can_exit_early, disable_output);
++  return InvokeLld("wasm-ld", llvm::ArrayRef<const char *>(argv, argc), llvm::outs(), llvm::errs(), disable_output);
+ }
+ 
+ inline LLVMAttributeRef wrap(Attribute Attr) {

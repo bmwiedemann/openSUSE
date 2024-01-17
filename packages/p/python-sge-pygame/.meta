@@ -1,0 +1,13 @@
+<package name="python-sge-pygame" project="openSUSE:Factory">
+  <title>A 2-D game engine for Python</title>
+  <description>The SGE Game Engine (&quot;SGE&quot;, pronounced like &quot;Sage&quot;) is a general-purpose
+2-D game engine.  It takes care of several details for you so you can
+focus on the game itself.  This makes more rapid game development
+possible, and it also makes the SGE easy to learn.
+
+This implementation of the SGE uses Pygame as a backend.
+
+</description>
+  <devel project="devel:languages:python" package="python-sge-pygame"/>
+  <url>http://stellarengine.nongnu.org</url>
+</package>

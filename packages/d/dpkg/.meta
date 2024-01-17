@@ -1,0 +1,13 @@
+<package name="dpkg" project="openSUSE:Factory">
+  <title>Debian package management system</title>
+  <description>This package contains tools for working with Debian packages. It makes
+it possible to create and extract Debian packages. If Alien is
+installed, the packages can be converted to RPMs.
+
+This package contains the following Debian packages: dpkg, dselect,
+dpkg-doc, dpkg-dev.
+
+</description>
+  <devel project="system:packagemanager" package="dpkg"/>
+  <url>http://www.debian.org</url>
+</package>

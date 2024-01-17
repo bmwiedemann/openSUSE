@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>419b05d60481998c7d1e66ec52b9cf25</srcmd5>
+    <version>1.0.2</version>
+    <time>1168904393</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="55">
+    <srcmd5>6f7dfb285851b5b8dd59c1a982abb8e2</srcmd5>
+    <version>1.0.2</version>
+    <time>1173919819</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="95">
+    <srcmd5>f1ec79e7ae68cf30b8b0367f8e1e0f50</srcmd5>
+    <version>1.0.2</version>
+    <time>1186435061</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="158">
+    <srcmd5>d6032ac3daddf73ce7f13f1e78634149</srcmd5>
+    <version>1.0.2</version>
+    <time>1203957790</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="239">
+    <srcmd5>d6032ac3daddf73ce7f13f1e78634149</srcmd5>
+    <version>1.0.2</version>
+    <time>1203957790</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="240">
+    <srcmd5>479d9406a2d01e689bea02086c997bc2</srcmd5>
+    <version>1.0.2</version>
+    <time>1244240657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="242">
+    <srcmd5>479d9406a2d01e689bea02086c997bc2</srcmd5>
+    <version>1.0.2</version>
+    <time>1244240657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="243">
+    <srcmd5>0e3c64839aef268022719d0cdfd741db</srcmd5>
+    <version>1.0.2</version>
+    <time>1268926394</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="245">
+    <srcmd5>0e3c64839aef268022719d0cdfd741db</srcmd5>
+    <version>1.0.2</version>
+    <time>1278667393</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="246">
+    <srcmd5>0e3c64839aef268022719d0cdfd741db</srcmd5>
+    <version>1.0.2</version>
+    <time>1278678623</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="249">
+    <srcmd5>0e3c64839aef268022719d0cdfd741db</srcmd5>
+    <version>1.0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="251">
+    <srcmd5>0e3c64839aef268022719d0cdfd741db</srcmd5>
+    <version>1.0.2</version>
+    <time>1319182533</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="252">
+    <srcmd5>49d7489b177f28a735d10247cc01f71c</srcmd5>
+    <version>1.0.2</version>
+    <time>1322073477</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93026 from coolo)</comment>
+    <requestid>93029</requestid>
+  </revision>
+  <revision rev="14" vrev="253">
+    <srcmd5>2dca11afdf4466adab1481f2606871ed</srcmd5>
+    <version>1.0.2</version>
+    <time>1323194988</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="254">
+    <srcmd5>03c46036bc54c03f2b74315bf91599f4</srcmd5>
+    <version>1.0.2</version>
+    <time>1329823577</time>
+    <user>coolo</user>
+    <comment>- add explicit buildrequire on xorg-x11-devel (forwarded request 106051 from coolo)</comment>
+    <requestid>106104</requestid>
+  </revision>
+  <revision rev="16" vrev="256">
+    <srcmd5>03c46036bc54c03f2b74315bf91599f4</srcmd5>
+    <version>1.0.2</version>
+    <time>1340184289</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="257">
+    <srcmd5>94204ef88768b8390c06a4fa8b619ee4</srcmd5>
+    <version>1.0.2</version>
+    <time>1347283415</time>
+    <user>coolo</user>
+    <comment>- package builds also against libpng15
+  * tvtime-libpng15.patch</comment>
+    <requestid>132874</requestid>
+  </revision>
+  <revision rev="18" vrev="259">
+    <srcmd5>94204ef88768b8390c06a4fa8b619ee4</srcmd5>
+    <version>1.0.2</version>
+    <time>1359110510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="261">
+    <srcmd5>94204ef88768b8390c06a4fa8b619ee4</srcmd5>
+    <version>1.0.2</version>
+    <time>1379664854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="263">
+    <srcmd5>94204ef88768b8390c06a4fa8b619ee4</srcmd5>
+    <version>1.0.2</version>
+    <time>1409303540</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="264">
+    <srcmd5>90fb4aeeca9b57924f5cb1899601a3c3</srcmd5>
+    <version>1.0.2</version>
+    <time>1415696373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260677</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>79e86ef82d6393705370fde646f4a637</srcmd5>
+    <version>1.0.8</version>
+    <time>1456434464</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361084</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>7e8b3ea396c2d145874abe6560c2407e</srcmd5>
+    <version>1.0.8</version>
+    <time>1466814219</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404256</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f99789d119ee25f9c10b1f6c6fe067bc</srcmd5>
+    <version>1.0.11</version>
+    <time>1487261213</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457347</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>743d88242fcac569a49aa7c5b2a12879</srcmd5>
+    <version>1.0.11</version>
+    <time>1551113722</time>
+    <user>coolo</user>
+    <comment>add tvtime-1.0.11-sysmacros.diff to build with current glibc (forwarded request 678406 from seife)</comment>
+    <requestid>678407</requestid>
+  </revision>
+</revisionlist>

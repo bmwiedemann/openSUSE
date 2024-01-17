@@ -1,0 +1,1421 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc9bd07590070c4806a333e06b008c62</srcmd5>
+    <version>MACRO</version>
+    <time>1488641802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>458674</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b55b8b153ff956b2591bf8cbead0bd36</srcmd5>
+    <version>MACRO</version>
+    <time>1496926916</time>
+    <user>dimstar_suse</user>
+    <comment>- Move wrapper script mpiexec provided by slrum-torque to
+  mpiexec.slurm to avoid conflicts. This file is normally
+  provided by the MPI implementation (boo#1041706). 
+
+- Replace remaining ${RPM_BUILD_ROOT}s.
+- Improve description.
+- Fix up changelog.
+
+- Spec file: Replace &quot;Requires : slurm-perlapi&quot; by
+  &quot;Requires: perl-slurm = %{version}&quot; (boo#1031872).
+
+- Fix array initialzation and ensure strings are always NULL terminated in
+-  pam_slurm.c (bsc#1007053).
+- Create slurm user/group in preinstall script.</comment>
+    <requestid>499661</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bdb1b396f5ed4ec2fe4ca8c5af53af09</srcmd5>
+    <version>MACRO</version>
+    <time>1507896818</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim redundant wording in descriptions. (forwarded request 532228 from jengelh)</comment>
+    <requestid>532262</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>411e593576035fdce2341330223d47bc</srcmd5>
+    <version>MACRO</version>
+    <time>1508434346</time>
+    <user>dimstar_suse</user>
+    <comment>- Add feature request number to changelog entry (FATE#324026).</comment>
+    <requestid>534182</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d31095d3d6272b7f656e4bda4613aa7</srcmd5>
+    <version>17.02.9</version>
+    <time>1509722741</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 17.02.9 to fix CVE-2017-15566 (bsc#1065697).
+   Changes in 17.0.9
+   * When resuming powered down nodes, mark DOWN nodes right after
+     ResumeTimeout
+    has been reached (previous logic would wait about one minute longer).
+   * Fix sreport not showing full column name for TRES Count.
+   * Fix slurmdb_reservations_get() giving wrong usage data when job's spanned
+     reservation that was modified.
+   * Fix sreport reservation utilization report showing bad data.
+   * Show all TRES' on a reservation in sreport reservation utilization report
+     by default.
+   * Fix sacctmgr show reservation handling &quot;end&quot; parameter.
+   * Work around issue with sysmacros.h and gcc7 / glibc 2.25.
+   * Fix layouts code to only allow setting a boolean.
+   * Fix sbatch --wait to keep waiting even if a message timeout occurs.
+   * CRAY - If configured with NodeFeatures=knl_cray and there are non-KNL
+     nodes which include no features the slurmctld will abort without
+     this patch when attemping strtok_r(NULL).
+   * Fix regression in 17.02.7 which would run the spank_task_privileged as
+     part of the slurmstepd instead of it's child process.
+   * Fix security issue in Prolog and Epilog by always prepending SPANK_ to
+     all user-set environment variables. CVE-2017-15566.
+   Changes in 17.0.8:
+   * Add 'slurmdbd:' to the accounting plugin to notify message is from dbd
+    instead of local.
+   * mpi/mvapich - Buffer being only partially cleared. No failures observed.
+   * Fix for job  --switch option on dragonfly network.
+   * In salloc with  --uid option, drop supplementary groups before changing UID.
+   * jobcomp/elasticsearch - strip any trailing slashes from JobCompLoc.
+   * jobcomp/elasticsearch - fix memory leak when transferring generated buffer. (forwarded request 538161 from eeich)</comment>
+    <requestid>538162</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>280621df8b04711433af223ac7855657</srcmd5>
+    <version>17.02.9</version>
+    <time>1510761881</time>
+    <user>dimstar_suse</user>
+    <comment>- Package so-versioned libs separately. sibslurm is expected
+  to change more frequently and thus is packaged separately
+  from libpmi. (forwarded request 542024 from eeich)</comment>
+    <requestid>542025</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fd2071556fe47fcdda944085ee82d8e8</srcmd5>
+    <version>17.02.9</version>
+    <time>1511274785</time>
+    <user>dimstar_suse</user>
+    <comment>- Package so-versioned libs separately: currently: libslrum31, libpmi0 (forwarded request 543898 from eeich)</comment>
+    <requestid>543899</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>b96bffdcb6a3dd330edd393ae1817aa2</srcmd5>
+    <version>17.02.9</version>
+    <time>1513941534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554997</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>a5df83228d186a4e076abdc74313d999</srcmd5>
+    <version>17.02.9</version>
+    <time>1517424744</time>
+    <user>dimstar_suse</user>
+    <comment>- moved config files to slurm-config package (FATE#324574).
+
+- Moved slurmstepd and man page into slurm-node due to slurmd dependency
+- Moved config files into slurm-node
+- Moved slurmd rc scripts into slurm-node
+- Made slurm-munge require slurm-plugins instead of slurm itself
+  - slurm-node suggested slurm-munge, causing the whole slurm to be
+    installed. The slurm-plugins seems to be a more base class
+    (FATE#324574).
+
+- split up light wight slurm-node package for deployment on nodes
+  (FATE#324574).</comment>
+    <requestid>571153</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c275143d1e51b6d8e7cc2ad6da11eddb</srcmd5>
+    <version>17.11.5</version>
+    <time>1521579541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587828</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ef2af401f64d4e0399bfe3b2cbfea517</srcmd5>
+    <version>17.11.5</version>
+    <time>1522317425</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed wrong log file location in slurmdbd.conf and 
+  fixed pid location for slurmdbd and made slurm-slurmdbd
+  depend on slurm config which provides the dir /var/run/slurm
+  (bsc#1086859) (forwarded request 591103 from mslacken)</comment>
+    <requestid>591864</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>99f309911a582ead7078cc5876becd5f</srcmd5>
+    <version>17.11.5</version>
+    <time>1523875740</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requires for slurm-sql to the slurmdbd package.
+
+- Package READMEs for pam and pam_slurm_adopt.
+- Use the new %%license directive for COPYING file.
+
+- Add:
+  * split-xdaemon-in-xdaemon_init-and-xdaemon_finish-for-systemd-compatibilty.patch
+  * slurmctld-uses-xdaemon_-for-systemd.patch
+  * slurmd-uses-xdaemon_-for-systemd.patch
+  * slurmdbd-uses-xdaemon_-for-systemd.patch
+  * removed-deprecated-xdaemon.patch
+  Fix interaction with systemd: systemd expects that a 
+  daemonizing process doesn't go away until the PID file
+  with it PID of the daemon has bee written (bsc#1084125).
+
+- Make sure systemd services get restarted only when all
+  packages are in a consistent state, not in the middle
+  of an 'update' transaction (bsc#1088693).
+  Since the %postun scripts that run on update are from
+  the old package they cannot be changed - thus we work
+  around the restart breakage.
+
+  (bsc#1086859).</comment>
+    <requestid>596387</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d1b8f087ba68bbdbc52deeecfb0384cd</srcmd5>
+    <version>17.11.5</version>
+    <time>1524238330</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid running pretrans scripts when running in an instsys:
+  there may be not much installed, yet. pretrans code should
+  be done in lua, this way, it will be executed by the rpm-internal
+  lua interpreter and not be passed to a shell which may not be
+  around at the time this scriptlet is run (bsc#1090292). (forwarded request 599201 from eeich)</comment>
+    <requestid>599202</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7ff73d1f7c1564a82084a0d333230ae4</srcmd5>
+    <version>17.11.7</version>
+    <time>1528897186</time>
+    <user>maxlin_factory</user>
+    <comment>- Update from 17.11.5 to 17.11.7
+- Fix security issue in handling of username and gid fields
+  CVE-2018-10995 and bsc#1095508 what implied an 
+  update from 17.11.5 to 17.11.7
+  Highlights of 17.11.6:
+  * CRAY - Add slurmsmwd to the contribs/cray dir
+  * PMIX - Added the direct connect authentication.
+  * Prevent the backup slurmctld from losing the active/available node
+    features list on takeover.
+  * Be able to force power_down of cloud node even if in power_save state.
+  * Allow cloud nodes to be recognized in Slurm when booted out of band.
+  * Numerous fixes - check 'NEWS' file.
+  Highlights of 17.11.7:
+  * Notify srun and ctld when unkillable stepd exits.
+  * Numerous fixes - check 'NEWS' file.
+- Add: slurmsmwd-uses-xdaemon_-for-systemd.patch
+  * Fixes daemoniziation in newly introduced slurmsmwd daemon.
+- Rename:
+  split-xdaemon-in-xdaemon_init-and-xdaemon_finish-for-systemd-compatibilty.patch
+  to split-xdaemon-in-xdaemon_init-and-xdaemon_finish-for.patch
+  * remain in sync with commit messages which introduced that file</comment>
+    <requestid>616050</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>de1590e252a9f64f233edbf1ad41fd4a</srcmd5>
+    <version>17.11.7</version>
+    <time>1531470052</time>
+    <user>dimstar_suse</user>
+    <comment>- Shield comments between script snippets with a %{!?nil:...} to
+  avoid them being interpreted as scripts - in which case the update
+  level is passed as argument (see chapter 'Shared libraries' in:
+  https://en.opensuse.org/openSUSE:Packaging_scriptlet_snippets)
+  (bsc#1100850).</comment>
+    <requestid>622077</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b2e65a57c038f84ea7028abc6cf932c9</srcmd5>
+    <version>17.11.9</version>
+    <time>1534543328</time>
+    <user>dimstar_suse</user>
+    <comment>- slurmctld-rerun-agent_init-when-backup-controller-takes-over.patch
+  Fix an issue where the fallback controller will not be able to idle
+  nodes after a failover when a process has terminated (bsc#1084917). (forwarded request 629226 from eeich)</comment>
+    <requestid>629227</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d1be191b5d003a5914cd29f0b0d43071</srcmd5>
+    <version>17.11.9</version>
+    <time>1535123467</time>
+    <user>dimstar_suse</user>
+    <comment>- slurmctld-rerun-agent_init-when-backup-controller-takes-over.patch:
+  Fix race in the slurmctld backup controller which prevents it</comment>
+    <requestid>631120</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>e7811ac4753a6265005f642daf5d737f</srcmd5>
+    <version>17.11.9</version>
+    <time>1537787608</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Requires(pre) and Requires(post) for slurm-config and slurm-node.
+  This fixes issues with failing slurm user creation when installed
+  during initial system installation (bsc#1109373). (forwarded request 637165 from eeich)</comment>
+    <requestid>637167</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>88a46387072f5cfe8374fa950c038c70</srcmd5>
+    <version>17.11.9</version>
+    <time>1537882956</time>
+    <user>dimstar_suse</user>
+    <comment>- added correct link flags for perl bindings (bsc#1108671)
+  * added correct linker search path in slurm-2.4.4-rpath.patch
+  * perl:Switch is required by slurm torque wrappers</comment>
+    <requestid>637642</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>0005a5158674954c39b1fb5c715a0d13</srcmd5>
+    <version>17.11.9</version>
+    <time>1538377686</time>
+    <user>dimstar_suse</user>
+    <comment>- Move config man-pages to config package. (forwarded request 639244 from eeich)</comment>
+    <requestid>639245</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b27b7ead9485d79cf7cbe22c31553644</srcmd5>
+    <version>18.08.3</version>
+    <time>1543953446</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653720</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>e508c87340b55a0726a5f7ee9901d062</srcmd5>
+    <version>18.08.3</version>
+    <time>1544189643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655559</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>19163b55b8edda3c092d683f47301800</srcmd5>
+    <version>18.08.3</version>
+    <time>1544632261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657426</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5dee566f5cea0f9cbf1b599fe21e7d01</srcmd5>
+    <version>18.08.4</version>
+    <time>1548064051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663813</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8015b91164c8acf87fa6255f717593c1</srcmd5>
+    <version>18.08.5</version>
+    <time>1549018114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.08.05-2:
+  This version obsoletes:
+  Fix-contrib-perlapi-to-build-with-the-fix-for-CVE-2019-6438-750cc23ed.patch
+- Fix spec file for older SUSE versions.
+
+- Update to version 18.08.05:
+  * Add mitigation for a potential heap overflow on 32-bit systems in xmalloc.
+    (CVE-2019-6438, bsc#1123304).
+  * Other fixes:
+    + Backfill - If a job has a time_limit guess the end time of a job better
+      if OverTimeLimit is Unlimited.
+    + Fix &quot;sacctmgr show events event=cluster&quot;
+    + Fix sacctmgr show runawayjobs from sibling cluster
+    + Avoid bit offset of -1 in call to bit_nclear().
+    + Insure that &quot;hbm&quot; is a configured GresType on knl systems.
+    + Fix NodeFeaturesPlugins=node_features/knl_generic to allow other gres
+      other than knl.
+    + cons_res: Prevent overflow on multiply.
+    + Better debug for bad values in gres.conf.
+    + Fix double accounting of energy at end of job.
+    + Read gres.conf for cloud nodes on slurmctld.
+    + Don't assume the first node of a job is the batch host when purging jobs
+      from a node.
+    + Better debugging when a job doesn't have a job_resrcs ptr.
+    + Store ave watts in energy plugins.
+    + Add XCC plugin for reading Lenovo Power.
+    + Fix minor memory leak when scheduling rebootable nodes.
+    + Fix debug2 prefix for sched log.
+    + Fix printing correct SLURM_JOB_ACCOUNT_PACK_GROUP_* in env for a Het Job.
+    + sbatch - search current working directory first for job script.</comment>
+    <requestid>670462</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1d663891f16fe38202f2ebcdc3ef7e41</srcmd5>
+    <version>18.08.5</version>
+    <time>1549140618</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670636</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>dbbf7cdd764a1b5331f3aaa2a939b005</srcmd5>
+    <version>18.08.5</version>
+    <time>1559375754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706361</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c68de1096a8288536608a70e9749344f</srcmd5>
+    <version>18.08.8</version>
+    <time>1563018615</time>
+    <user>dimstar_suse</user>
+    <comment>- added cray depend libraries to seperate package, as they are now
+  built, since json is enabled
+
+- Updated to 18.0.7 for fixing CVE-2019-12838 and (bsc#1140709)
+  * Update &quot;xauth list&quot; to use the same 10000ms timeout as the other xauth
+    commands.
+  * Fix issue in gres code to handle a gres cnt of 0.
+  * Don't purge jobs if backfill is running.
+  * Verify job is pending add/removing accrual time.
+  * Don't abort when the job doesn't have an association that was removed
+    before the job was able to make it to the database.
+  * Set state_reason if select_nodes() fails job for QOS or Account.
+  * Avoid seg_fault on referencing association without a valid_qos bitmap.
+  * If Association/QOS is removed on a pending job set that job as ineligible.
+  * When changing a jobs account/qos always make sure you remove the old limits.
+  * Don't reset a FAIL_QOS or FAIL_ACCOUNT job reason until the qos or
+    account changed.
+  * Restore &quot;sreport -T ALL&quot; functionality.
+  * Correctly typecast signals being sent through the api.
+  * Properly initialize structures throughout Slurm.
+  * Sync &quot;numtask&quot; squeue format option for jobs and steps to &quot;numtasks&quot;.
+  * Fix sacct -PD to avoid CA before start jobs.
+  * Fix potential deadlock with backup slurmctld.
+  * Fixed issue with jobs not appearing in sacct after dependency satisfied.
+  * Fix showing non-eligible jobs when asking with -j and not -s.
+  * Fix issue with backfill scheduler scheduling tasks of an array
+    when not the head job.
+  * accounting_storage/mysql - fix SIGABRT in the archive load logic.
+  * accounting_storage/mysql - fix memory leak in the archive load logic.
+  * Limit records per single SQL statement when loading archived data. (forwarded request 714908 from mslacken)</comment>
+    <requestid>714909</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>e7b01dfbcb00ce5e9ebd2d1479d7bd9a</srcmd5>
+    <version>18.08.8</version>
+    <time>1563259277</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for SLE-11-SP4 and older. (forwarded request 715348 from eeich)</comment>
+    <requestid>715349</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>c8d0c924b405f3dad41342809a763207</srcmd5>
+    <version>18.08.8</version>
+    <time>1563362426</time>
+    <user>dimstar_suse</user>
+    <comment>removed explanation of changelog entry (forwarded request 715613 from mslacken)</comment>
+    <requestid>715614</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>744158a9e8140606b85e58eea6103515</srcmd5>
+    <version>18.08.8</version>
+    <time>1566243696</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix logic of slurm-munge recommends: slurm-munge requires munge
+  already, so if we have munge installed we recommend slurm-munge
+  as the authentication when installing slurm or slurm-node.
+
+- Updated to 18.08.8 for fixing (CVE-2019-12838, bsc#1140709, jsc#SLE-7341,
+  jsc#SLE-7342)</comment>
+    <requestid>724412</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>4534731b063faf770b74849efe6bc694</srcmd5>
+    <version>18.08.8</version>
+    <time>1568623978</time>
+    <user>maxlin_factory</user>
+    <comment>- Edit sample configuration to deprecate &quot;ControlMachine&quot;,
+  &quot;ControlAddr&quot;, &quot;BackupController&quot; and &quot;BackupAddr&quot; in favor
+  &quot;SlurmctldHost&quot;. (forwarded request 731004 from eeich)</comment>
+    <requestid>731005</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>88594d4f5e9da96d140dffe2a655494b</srcmd5>
+    <version>18.08.8</version>
+    <time>1570010454</time>
+    <user>dimstar_suse</user>
+    <comment>- Set %base_ver for SLE-15-SP2 to 18.08 (for now).</comment>
+    <requestid>734512</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b9bc93d612a2552574d922f0eba4571b</srcmd5>
+    <version>18.08.9</version>
+    <time>1578606629</time>
+    <user>dimstar_suse</user>
+    <comment>- Deprecate &quot;ControlMachine&quot; only for SLURM version upgrades and
+  products newer than 1501. This ensures that the original setting
+  is retained for the SLURM version shipped origianlly with SLE-15-SP1
+  or Leap 15.1.
+
+- Update to v18.08.9 for fixing CVE-2019-19728 (bsc#1159692).
+  * Wrap END_TIMER{,2,3} macro definition in &quot;do {} while (0)&quot; block.
+  * Make sview work with glib2 v2.62.
+  * Make Slurm compile on linux after sys/sysctl.h was deprecated.
+  * Install slurmdbd.conf.example with 0600 permissions to encourage secure
+    use. CVE-2019-19727.
+  * srun - do not continue with job launch if --uid fails. CVE-2019-19728.
+
+- added pmix support jsc#SLE-10800 
+
+- Use --with-shared-libslurm to build slurm binaries using libslurm.
+- Make libslurm depend on slurm-config.
+
+- Fix ownership of /var/spool/slurm on new installations
+  and upgrade (boo#1158696).
+
+- Fix permissions of slurmdbd.conf (bsc#1155784, CVE-2019-19727).
+- Fix %posttrans macro _res_update to cope with added newline
+  (bsc#1153259).
+
+- Add package slurm-webdoc which sets up a web server to provide
+  the documentation for the version shipped.
+
+- Move srun from 'slurm' to 'slurm-node': srun is required on the
+  nodes as well so sbatch will work. 'slurm-node' is a requirement (forwarded request 760450 from eeich)</comment>
+    <requestid>761961</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>44e1a08d0f29e6b7ca7f4ccee6c1e5a8</srcmd5>
+    <version>19.05.5</version>
+    <time>1578675005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762780</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>b53b849db1794f21e4b6f7e66d80559d</srcmd5>
+    <version>19.05.5</version>
+    <time>1578950572</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix base_ver for SLE 15 SP2.</comment>
+    <requestid>764070</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>f2fc64d1074a3227a9c585a5abd99e57</srcmd5>
+    <version>19.05.5</version>
+    <time>1579955039</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove special OHPC compatibility macro: these settings should
+  be applied univerally.
+- Add a Recommends for mariadb to slurm-slurmdbd: it is recommened
+  to run the database on the same machine as the daemon. (forwarded request 767005 from eeich)</comment>
+    <requestid>767017</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>b0294e5b04421b88fd97e97471b5b6e7</srcmd5>
+    <version>19.05.5</version>
+    <time>1580152630</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a missed systemd_requires -&gt; systemd_ordering conversion.</comment>
+    <requestid>767593</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>03ff0bcb2a7a820dfa3ecf63d9310b79</srcmd5>
+    <version>19.05.5</version>
+    <time>1580990898</time>
+    <user>dimstar_suse</user>
+    <comment>- standard slurm.conf uses now also SlurmctldHost on all build 
+  targets (bsc#1162377)</comment>
+    <requestid>770336</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f021465eb15cc0354abc74fab92d531c</srcmd5>
+    <version>20.02.0</version>
+    <time>1582899696</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable %arm builds as this is no longer supported. (forwarded request 780053 from kasimir)</comment>
+    <requestid>780146</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>5408ed36274465c4b4b592bb6b4735db</srcmd5>
+    <version>20.02.0</version>
+    <time>1583094470</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed autopatch as it doesn't work for the SLE-11-SP4 build.
+
+- pmix searches now also for libpmix.so.2 so that there is no dependency
+  for devel package (bsc#1164386)
+  * added patch file check-for-lipmix.so.MAJOR.patch
+  * reworded patch file Remove-rpath-from-build.patch to use %autopatch (forwarded request 780353 from eeich)</comment>
+    <requestid>780356</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>1843ef0482e89d04a47d5ea231205669</srcmd5>
+    <version>20.02.0</version>
+    <time>1583447026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781815</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>ad19d5cc25478f09cbb80dfc015db1cc</srcmd5>
+    <version>20.02.0</version>
+    <time>1584176189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784699</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>17261d1d0e8c5496ae17068b5306d12c</srcmd5>
+    <version>20.02.1</version>
+    <time>1585342707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788917</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d23c92917ce7ac6b882073e748311cfb</srcmd5>
+    <version>20.02.3</version>
+    <time>1590506467</time>
+    <user>maxlin_factory</user>
+    <comment>- Updated to 20.02.3 which fixes CVE-2020-12693 (bsc#1172004).
+- Other changes are:
+ * Factor in ntasks-per-core=1 with cons_tres.
+ * Fix formatting in error message in cons_tres.
+ * Fix calling stat on a NULL variable.
+ * Fix minor memory leak when using reservations with flags=first_cores.
+ * Fix gpu bind issue when CPUs=Cores and ThreadsPerCore &gt; 1 on a node.
+ * Fix --mem-per-gpu for heterogenous --gres requests.
+ * Fix slurmctld load order in load_all_part_state().
+ * Fix race condition not finding jobacct gather task cgroup entry.
+ * Suppress error message when selecting nodes on disjoint topologies.
+ * Improve performance of _pack_default_job_details() with large number of job
+ * arguments.
+ * Fix archive loading previous to 17.11 jobs per-node req_mem.
+ * Fix regresion validating that --gpus-per-socket requires --sockets-per-node
+ * for steps. Should only validate allocation requests.
+ * error() instead of fatal() when parsing an invalid hostlist.
+ * nss_slurm - fix potential deadlock in slurmstepd on overloaded systems.
+ * cons_tres - fix --gres-flags=enforce-binding and related --cpus-per-gres.
+ * cons_tres - Allocate lowest numbered cores when filtering cores with gres.
+ * Fix getting system counts for named GRES/TRES.
+ * MySQL - Fix for handing typed GRES for association rollups.
+ * Fix step allocations when tasks_per_core &gt; 1.
+ * Fix allocating more GRES than requested when asking for multiple GRES types.</comment>
+    <requestid>808569</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>d770ef32a1fe797ee7a7e3ef3184f0bf</srcmd5>
+    <version>20.02.3</version>
+    <time>1593727625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815491</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>a668fd6aff9821338f32d578ab38b21b</srcmd5>
+    <version>20.02.3</version>
+    <time>1594228589</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for openPMIx also for Leap/SLE 15.0/1 (bsc#1173805).
+- Do not run %check on SLE-12-SP2: Some incompatibility in tcl
+  makes this fail.
+- Remove unneeded build dependency to postgresql-devel.
+- Disable build on s390 (requires 64bit).</comment>
+    <requestid>819285</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3b75d19cb168eb616ae65ef7f3ea9737</srcmd5>
+    <version>20.02.5</version>
+    <time>1604413330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845437</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>db95ad3dfbc180692b35e3aaf3077667</srcmd5>
+    <version>20.02.6</version>
+    <time>1605783593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849253</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e4eb1adbc3336cc3b1f596b3567138b2</srcmd5>
+    <version>20.11.0</version>
+    <time>1607197057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.11.0
+  Slurm 20.11 includes a number of new features including:
+  * Overhaul of the job step management and launch code, alongside improved
+    GPU task placement support.
+  * A new &quot;Interactive Step&quot; mode of operation for salloc.
+  * A new &quot;scrontab&quot; command that can be used to submit and manage
+    periodically repeating jobs.
+  * IPv6 support.
+  * Changes to the reservation logic, with new options allowing users
+    to delete reservations, allowing admins to skip the next occurance of a
+    repeated reservation, and allowing for a job to be submitted and eligible
+    to run within multiple reservations.
+  * Dynamic Future Nodes - automatically associate a dynamically
+    provisioned (or &quot;cloud&quot;) node against a NodeName definition with matching
+    hardware.
+  * An experimental new RPC queuing mode for slurmctld to reduce thread
+    contention on heavily loaded clusters.
+  * SlurmDBD integration with the Slurm REST API.
+  Also check
+  https://github.com/SchedMD/slurm/blob/slurm-20-11-0-1/RELEASE_NOTES (forwarded request 852039 from eeich)</comment>
+    <requestid>853268</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5b457453c04126a1268d0152180d5346</srcmd5>
+    <version>20.11.2</version>
+    <time>1609253578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859115</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>01de24cd42a43d6d5b6cddd6272b27e1</srcmd5>
+    <version>20.11.2</version>
+    <time>1609959424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860691</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>7cf6caec8fb4f1f462bd340bed8f07d3</srcmd5>
+    <version>20.11.2</version>
+    <time>1610123959</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Provides:/Conflicts: for libnss_slurm.
+
+- Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'
+  '-n' is deprecated and will be removed in the future.</comment>
+    <requestid>861655</requestid>
+  </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>2a2ceb3d91742c567ecd27759a7e49ed</srcmd5>
+    <version>20.11.2</version>
+    <time>1610304217</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fallout introduced by:
+  &quot;Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'&quot;
+  for older Leap/SLE versions. (forwarded request 861776 from eeich)</comment>
+    <requestid>861777</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f3a8eb03e950efd3cdf616530a65a629</srcmd5>
+    <version>20.11.3</version>
+    <time>1611163755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865000</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>aa9703784fc230e84205c08a21fe66e6</srcmd5>
+    <version>20.11.4</version>
+    <time>1614274079</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874787</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>af098a549a4542119d346c6aa3bf922a</srcmd5>
+    <version>20.11.5</version>
+    <time>1616008614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879660</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>3a86f1d2f4c12086f36cf440880e72b8</srcmd5>
+    <version>20.11.5</version>
+    <time>1620158459</time>
+    <user>dimstar_suse</user>
+    <comment>- Ship REST API version and auth plugins with slurmrestd.
+- Add YAML support for REST API to build (bsc#1185603). (forwarded request 890261 from eeich)</comment>
+    <requestid>890262</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>28cf01358f0be265d0210138364d1fe2</srcmd5>
+    <version>20.11.7</version>
+    <time>1621034662</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 20.11.7 which fixes CVE-2021-31215 (bsc#1186024)
+- New featuresi from 20.11.7:
+ * slurmd - handle configless failures gracefully instead of hanging
+   indefinitely.
+ * select/cons_tres - fix Dragonfly topology not selecting nodes in the same
+   leaf switch when it should as well as requests with *-switches option.
+ * Fix issue where certain step requests wouldn't run if the first node in the
+   job allocation was full and there were idle resources on other nodes in
+   the job allocation.
+ * Fix deadlock issue with &lt;Prolog|Epilog&gt;Slurmctld.
+ * torque/qstat - fix printf error message in output.
+ * When adding associations or wckeys avoid checking multiple times a user or
+   cluster name.
+ * Fix wrong jobacctgather information on a step on multiple nodes
+   due to timeouts sending its the information gathered on its node.
+ * Fix missing xstrdup which could result in slurmctld segfault on array jobs.
+ * Fix security issue in PrologSlurmctld and EpilogSlurmctld by always
+   prepending SPANK_ to all user-set environment variables. CVE-2021-31215.
+- New features from 20.11.6:
+ * Fix sacct assert with the --qos option.
+ * Use pkg-config --atleast-version instead of --modversion for systemd.
+ * common/fd - fix getsockopt() call in fd_get_socket_error().
+ * Properly handle the return from fd_get_socket_error() in _conn_readable().
+ * cons_res - Fix issue where running jobs were not taken into consideration
+   when creating a reservation.
+ * Avoid a deadlock between job_list for_each and assoc QOS_LOCK.
+ * Fix TRESRunMins usage for partition qos on restart/reconfig.
+ * Fix printing of number of tasks on a completed job that didn't request
+   tasks.
+ * Fix updating GrpTRESRunMins when decrementing job time is bigger than it.</comment>
+    <requestid>893087</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>816233931c0b0ad0cfb67ba5f5902c21</srcmd5>
+    <version>20.11.7</version>
+    <time>1621531501</time>
+    <user>dimstar_suse</user>
+    <comment>- New features in 20.11.7:
+- New features in 20.11.6:
+- Fix Provides:/Conflicts: for libnss_slurm (bsc#1180700).</comment>
+    <requestid>894432</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>cc0b2d3e4812f6f881b7aa7ea5fe4502</srcmd5>
+    <version>20.11.8</version>
+    <time>1625338246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903746</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>de747543a49ac15ac3521cea1d32510a</srcmd5>
+    <version>21.08.0</version>
+    <time>1631042480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917119</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>66a586c70e914c6dd498d894e1bf7f67</srcmd5>
+    <version>21.08.0</version>
+    <time>1631129809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917457</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>696de8385c1174398ec9dbd34e05f71c</srcmd5>
+    <version>21.08.1</version>
+    <time>1632766137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921717</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>1b8fc43f9e43de13e10c97d262d01ca7</srcmd5>
+    <version>21.08.1</version>
+    <time>1632939535</time>
+    <user>dimstar_suse</user>
+    <comment>- moved pam module from /lib64 to /usr/lib64 which fixes boo#1191095 
+  via the macro %_pam_moduledir</comment>
+    <requestid>922117</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>100fa831862ca9dcc7694aabe6b95141</srcmd5>
+    <version>21.08.2</version>
+    <time>1633959118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924633</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>0313dc1c95bed7fa62ec7f5225ab8c12</srcmd5>
+    <version>21.08.2</version>
+    <time>1635539680</time>
+    <user>dimstar_suse</user>
+    <comment>- Utilize sysuser infrastructure to set user/group slurm.
+  For munge authentication slurm should have a fixed UID across
+  all nodes including the management server. Set it to 120
+- Limit firewalld service definitions to SUSE versions &amp;gt;= 15. (forwarded request 928191 from eeich)</comment>
+    <requestid>928192</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>0dd1fe5d53dea726cb5e1fedce6f7fa3</srcmd5>
+    <version>21.08.4</version>
+    <time>1637535110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932162</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>f56a92b5b15a45d31119650248485dff</srcmd5>
+    <version>21.08.5</version>
+    <time>1640278432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942222</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>e587a086f98c1abc589cc87cbb0662cb</srcmd5>
+    <version>21.08.7</version>
+    <time>1651605544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974456</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>8e2b633de10c6c31118dadb5638a3fbe</srcmd5>
+    <version>21.08.8</version>
+    <time>1651856414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975440</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>d6814495c7d56e9b86989665ecd0ea98</srcmd5>
+    <version>21.08.8</version>
+    <time>1652389175</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a comment about the CommunicationParameters=block_null_hash
+  option warning users who migrate - just in case.
+
+- Update to 21.08.8 which fixes CVE-2022-29500 (bsc#1199278),
+  CVE-2022-29501 (bsc#1199279), and CVE-2022-29502 (bsc#1199281).</comment>
+    <requestid>976280</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f6fc2dbbd105f9538d00f3bb7c048c4d</srcmd5>
+    <version>22.05.0</version>
+    <time>1654005891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980097</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>4d40024f74d377a483fa71e6028105e0</srcmd5>
+    <version>22.05.2</version>
+    <time>1657712723</time>
+    <user>dimstar_suse</user>
+    <comment>- Package the Slurm testsuite for QA purposes.
+  * Fixes for test suite:
+    Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
+    Fix-test-21.41.patch
+    Fix-test-38.11.patch
+    Fix-test-32.8.patch
+    Fix-test-3.13.patch
+    Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
+  * Add documentation:
+    README_Testsuite.md
+- Allow log in as user 'slurm'. This allows admins to run certain
+  priviledged commands more easily without becoming root. (forwarded request 988732 from eeich)</comment>
+    <requestid>988733</requestid>
+  </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>07f2f6f974861cc9c8c0e9e2ae3d830c</srcmd5>
+    <version>22.05.2</version>
+    <time>1658510485</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990643</requestid>
+  </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>3a0a590ca2e0e31d6dd7139ac9802bec</srcmd5>
+    <version>22.05.2</version>
+    <time>1659470994</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a potential security vulnerability in the test package
+  (bsc#1201674, CVE-2022-31251).
+
+- Patch NOFILE Limit in the slurmd.service copy for the testsuite. (forwarded request 992353 from eeich)</comment>
+    <requestid>992362</requestid>
+  </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>34b3fbe43a8f091434ae54dd169b39bc</srcmd5>
+    <version>22.05.2</version>
+    <time>1663850995</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for older product version. (forwarded request 1005246 from eeich)</comment>
+    <requestid>1005247</requestid>
+  </revision>
+  <revision rev="78" vrev="5">
+    <srcmd5>3d11c84ed2184b53f0b4851613001c0a</srcmd5>
+    <version>22.05.2</version>
+    <time>1664210924</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not deduplicate files of testsuite Slurm configuration.
+  This directory is supposed to be mounted over /etc/slurm
+  therefore it must not contain softlinks to the files in
+  this directory.
+- Improve .a and .o file collection for test suite: find these
+  files even if there are multiple ones in a single line. (forwarded request 1005746 from eeich)</comment>
+    <requestid>1006180</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>f243f1bbabaaa954c655f85f271273de</srcmd5>
+    <version>22.05.5</version>
+    <time>1666440798</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 22.05.5
+- NOTE: Slurm validates that libraries are of the same version. Unfortunately,
+  due to an oversight, we failed to notice that the slurmstepd loads the
+  hash_k12 library only after a job has completed. This means that if the
+  hash_k12 library is upgraded before a job finishes, the slurmstepd will load
+  the new library when the job finishes, and will fail due to a mismatch of
+  versions.  This results in nodes with slurmstepd processes stuck
+  indefinitely. These processes require manual intervention to clean up. There
+  is no clean way to resolve these hung slurmstepd processes.
+  The only recommended way to upgrade between minor versions of 22.05 with
+  RPM’s or upgrades that replace current binaries and libraries is to drain the
+  nodes of running jobs first.
+- Fixes a number of moderate severity issues, noteable are:
+  * Load hash plugin at slurmstepd launch time to prevent issues loading the
+    plugin at step completion if the Slurm installation is upgraded.
+  * Update nvml plugin to match the unique id format for MIG devices in new
+    Nvidia drivers.
+  * Fix multi-node step launch failure when nodes in the controller aren't in
+    natural order. This can happen with inconsistent node naming (such as
+    node15 and node052) or with dynamic nodes which can register in any order.
+  * job_container/tmpfs - cleanup containers even when the .ns file isn't
+    mounted anymore.
+  * Wait up to PrologEpilogTimeout before shutting down slurmd to allow prolog
+    and epilog scripts to complete or timeout. Previously, slurmd waited 120
+    seconds before timing out and killing prolog and epilog scripts. (forwarded request 1010642 from mslacken)</comment>
+    <requestid>1030432</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>96159247c76cea4952135361b11af56c</srcmd5>
+    <version>22.05.5</version>
+    <time>1666780320</time>
+    <user>dimstar_suse</user>
+    <comment>- Test Suite fixes:
+  * Update README_Testsuite.md.
+  * Clean up left over files when de-installing test suite.
+  * Adjustment to test suite package: for SLE mark the openmpi4
+    devel package and slurm-hdf5 optional.
+  * Add -ffat-lto-objects to the build flags when LTO is set to
+    make sure the object files we ship with the test suite still
+    work correctly.
+  * Improve setup-testsuite.sh: copy ssh fingerprints from all nodes.
+
+- set environment variable SUSE_ZNOW to 0 in %build to avoid module load
+  failures due to unresolved symbols as module take advantage of lazy
+  bindings (bsc#1200030).</comment>
+    <requestid>1031255</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>1551ed7c197ebd5038ba6635b0da3892</srcmd5>
+    <version>22.05.5</version>
+    <time>1670775418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042071</requestid>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>bbd701c78eae5487516a6f4fb6ed6ae9</srcmd5>
+    <version>22.05.5</version>
+    <time>1675956206</time>
+    <user>dimstar_suse</user>
+    <comment>- testsuite: on laster SUSE versions claim ownership of directory
+  /etc/security/limits.d. (forwarded request 1063954 from eeich)</comment>
+    <requestid>1063957</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>0ada831384246d26a3069b433914bf8e</srcmd5>
+    <version>23.02.0</version>
+    <time>1677683657</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 23.02.0
+  * Highlights
+    + slurmctld - Add new RPC rate limiting feature. This is enabled through
+      SlurmctldParameters=rl_enable, otherwise disabled by default.
+    + Make scontrol reconfigure and sending a SIGHUP to the slurmctld behave
+      the same. If you were using SIGHUP as a 'lighter' scontrol reconfigure
+      to rotate logs please update your scripts to use SIGUSR2 instead.
+    + Change cloud nodes to show by default. PrivateData=cloud is no longer
+      needed.
+    + sreport - Count planned (FKA reserved) time for jobs running in
+      IGNORE_JOBS reservations. Previously was lumped into IDLE time.
+    + job_container/tmpfs - Support running with an arbitrary list of private
+      mount points (/tmp and /dev/shm are the default, but not required).
+    + job_container/tmpfs - Set more environment variables in InitScript.
+    + Make all cgroup directories created by Slurm owned by root. This was the
+      behavior in cgroup/v2 but not in cgroup/v1 where by default the step
+      directories ownership were set to the user and group of the job.
+    + accounting_storage/mysql - change purge/archive to calculate record ages
+      based on end time, rather than start or submission times.
+    + job_submit/lua - add support for log_user() from slurm_job_modify().
+    + Run the following scripts in slurmscriptd instead of slurmctld:
+      ResumeProgram, ResumeFailProgram, SuspendProgram, ResvProlog, ResvEpilog,
+      and RebootProgram (only with SlurmctldParameters=reboot_from_controller).
+    + Only permit changing log levels with 'srun --slurmd-debug' by root
+      or SlurmUser.
+    + slurmctld will fatal() when reconfiguring the job_submit plugin fails.
+    + Add PowerDownOnIdle partition option to power down nodes after nodes
+      become idle.
+    + Add &quot;[jobid.stepid]&quot; prefix from slurmstepd and &quot;slurmscriptd&quot; prefix
+      from slurmcriptd to Syslog logging. Previously was only happening when</comment>
+    <requestid>1068320</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>38a7e6c08d161156888731dc5e2f31ac</srcmd5>
+    <version>23.02.0</version>
+    <time>1677794614</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Provides: and Obsoletes: to slurm-cray, slurm-hdf5
+  and slurm-testsuite to avoid package conflicts.
+- Add dependency for the general plugin package to the
+  AcctGatherProfile HDF5 plugin.
+- Adjust node RealMemory in slurm.conf of test suite for 8G test
+  nodes. (forwarded request 1068522 from eeich)</comment>
+    <requestid>1068523</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>082ad8ba0777d48520cc9392a30633b6</srcmd5>
+    <version>23.02.0</version>
+    <time>1678380323</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixing dependencies for slurm--plugin-ext-sensors-rrd again. (forwarded request 1070212 from eeich)</comment>
+    <requestid>1070214</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>22deeacf77fbb8794c1d16d8f0290f4b</srcmd5>
+    <version>23.02.0</version>
+    <time>1678902972</time>
+    <user>dimstar_suse</user>
+    <comment>- slurm-plugins need to require pmix-pluginlib (bsc#1209260) (forwarded request 1072084 from mslacken)</comment>
+    <requestid>1072087</requestid>
+  </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>394c567a5df0c8421de98c15bf54fdee</srcmd5>
+    <version>23.02.0</version>
+    <time>1679069103</time>
+    <user>dimstar_suse</user>
+    <comment>added: right-pmix-path.patch (forwarded request 1072591 from mslacken)</comment>
+    <requestid>1072592</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>d8214f1962618b544bacafd8d48a2589</srcmd5>
+    <version>23.02.1</version>
+    <time>1680370340</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 23.02.1 with the following changes:
+  * job_container/tmpfs - cleanup job container even if namespace mount is
+    already unmounted.
+  * openapi/dbv0.0.38 - Fix not displaying an error when updating QOS or
+    associations fails.
+  * Fix nodes remaining as PLANNED after slurmctld save state recovery.
+  * Add cgroup.conf EnableControllers option for cgroup/v2.
+  * Get correct cgroup root to allow slurmd to run in containers like Docker.
+  * slurmctld - add missing PrivateData=jobs check to step ContainerID lookup
+    requests originated from 'scontrol show step container-id=&lt;id&gt;' or certain
+    scrun operations when container state can't be directly queried.
+  * Fix nodes un-draining after being drained due to unkillable step.
+  * Fix remote licenses allowed percentages reset to 0 during upgrade.
+  * sacct - Avoid truncating time strings when using SLURM_TIME_FORMAT with
+    the --parsable option.
+  * Fix regression in 22.05.0rc1 that broke Nodes=ALL in a NodeSet.
+  * openapi/v0.0.39 - fix jobs submitted via slurmrestd being allocated fewer
+    CPUs than tasks when requesting multiple tasks.
+  * Fix job not being scheduled on valid nodes and potentially being rejected
+    when using parentheses at the beginning of square brackets in a feature
+    request, for example: &quot;feat1&amp;[(feat2|feat3)]&quot;.
+  * Fix regression in 23.02.0rc1 which made --gres-flags=enforce-binding no
+    longer enforce optimal core-gpu job placement.
+  * mpi/pmix - Fix v5 to load correctly when libpmix.so isn't in the normal
+    lib path.
+  * data_parser/v0.0.39 - fix regression where &quot;memory_per_node&quot; would be
+    rejected for job submission.
+  * data_parser/v0.0.39 - fix regression where &quot;memory_per_cpu&quot; would be
+    rejected for job submission.
+  * slurmctld - add an assert to check for magic number presence before deleting</comment>
+    <requestid>1076522</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>f0ebc9e182fb5352efc7ca7245a66115</srcmd5>
+    <version>23.02.1</version>
+    <time>1682691793</time>
+    <user>dimstar_suse</user>
+    <comment>- Web-configurator: changed presets to SUSE defaults.
+- If %_restart_on_update is no longer defined replace by own
+  macro.
+- Marked slurm-openlava, slurm-seff and slurm-sjstat noarch.
+- rpmlint:
+  * dropped some rpmlint filters which are no longer relevant.
+  * added/refreshed filters. For Details, see rpmlintrc.
+- Remove workaround to fix the restart issue in an Slurm package
+  described in bsc#1088693.
+  The Slurm version in this package as 16.05. Any attempt to
+  directly migrate to the current version is bound to fail
+  anyway.
+- Now require slurm-munge if munge authentication is installed.</comment>
+    <requestid>1083466</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>7eb4f0b3b436a50e0576ff31531175a8</srcmd5>
+    <version>23.02.2</version>
+    <time>1683630556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085677</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>5cd638da9f13b7be0fa1684ced9821f2</srcmd5>
+    <version>23.02.4</version>
+    <time>1694019431</time>
+    <user>anag+factory</user>
+    <comment>- updated to 23.02.04 which includes following changes: 
+  * fixing the main scheduler loop not starting on the backup controller after
+    a failover event, a segfault when attempting to use
+  * AccountingStorageExternalHost, and an issue where steps could continue
+    running indefinitely if the slurmctld takes too long to respond (bsc#1214983)
+  * include a fix for a potential slurmctld crashes when the backup slurmctld
+    takes over.
+  * This also fixes some issues when using older versions of the command line
+    tools with a 23.02 controller.
+  * srun/sbatch/salloc - In order to support user namespaces, process user and
+    group ids are no longer used unless explicitly requested as an argument and
+    are left as nobody(99) by default. Any cli_filters or SPANK plugins need to
+    ignore any uid or gid that equal SLURM_AUTH_NOBODY (99). User and group ids
+    are now resolved by the active auth plugin. To determine the actual job uid
+    or gid you should use the RESPONSE_RESOURCE_ALLOCATION RPC.
+- removed Fix-test-3.13.patch as fixed upstream
+- removed Fix-test-38.11.patch as test changed upstream (forwarded request 1109009 from mslacken)</comment>
+    <requestid>1109029</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>388c3b38e5235593a2040a08ccdbad95</srcmd5>
+    <version>23.02.4</version>
+    <time>1694113961</time>
+    <user>anag+factory</user>
+    <comment>- Fixes since 23.02.03:
+  Highlights:
+  * Fix main scheduler loop not starting after a failover to backup controller.
+  * Avoid slurmctld segfault when specifying `AccountingStorageExternalHost`
+    (bsc#1214983).
+  Other:
+  * Fix sbatch return code when `--wait` is requested on a job array.
+  * Fix collected `GPUUtilization` values for `acct_gather_profile` plugins.
+  * Fix `slurmrestd` handling of job hold/release operations.
+  * Make spank `S_JOB_ARGV` item value hold the requested command `argv`
+    instead of the `srun --bcast` value when `--bcast` requested (only in local
+    context).
+  * Fix step running indefinitely when slurmctld takes more than
+    `MessageTimeout` to respond. Now, slurmctld will cancel the step when
+    detected, preventing following steps from getting stuck waiting for
+    resources to be released.
+  * Fix regression to make `job_desc.min_cpus` accurate again in job_submit when
+    requesting a job with `--ntasks-per-node`.
+  * Fix handling of `ArrayTaskThrottle` in backfill.
+  * Fix regression in 23.02.2 when checking gres state on `slurmctld` startup or
+    reconfigure. Gres changes in the configuration were not updated on slurmctld
+    startup. On startup or reconfigure, these messages were present in the log:
+    `&quot;error: Attempt to change gres/gpu Count`&quot;.
+  * Fix potential double count of gres when dealing with limits.
+  * Fix slurmstepd segfault when ContainerPath is not set in `oci.conf`
+  * Fixed an issue where jobs requesting licenses were incorrectly rejected.
+  * `scrontab` - Fix cutting off the final character of quoted variables.
+  * `smail` - Fix issues where e-mails at job completion were not being sent.
+  * `scontrol/slurmctld` - fix comma parsing when updating a reservation's
+    nodes.</comment>
+    <requestid>1109308</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>c60a2ab89ab5c5111000ff4ad14cf624</srcmd5>
+    <version>23.02.4</version>
+    <time>1694460139</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 23.02.4 with the following changes:
+  * Bug Fixes:
+    + Fix main scheduler loop not starting after a failover to backup
+      controller. Avoid slurmctld segfault when specifying
+     `AccountingStorageExternalHost` (bsc#1214983).
+    + Fix sbatch return code when `--wait` is requested on a job array.
+    + Fix collected `GPUUtilization` values for `acct_gather_profile` plugins.
+    + Fix `slurmrestd` handling of job hold/release operations.
+    + Fix step running indefinitely when slurmctld takes more than
+      `MessageTimeout` to respond. Now, `slurmctld` will cancel the step when
+       detected, preventing following steps from getting stuck waiting for
+       resources to be released.
+    + Fix regression to make `job_desc.min_cpus` accurate again in `job_submit`
+      when requesting a job with `--ntasks-per-node`.
+    + Fix handling of `ArrayTaskThrottle` in backfill.
+    + Fix regression in 23.02.2 when checking gres state on `slurmctld`
+      startup  or reconfigure. Gres changes in the configuration were not
+      updated on slurmctld startup. On startup or reconfigure, these messages
+      were present in the log: `&quot;error: Attempt to change gres/gpu Count`&quot;.
+    + Fix potential double count of gres when dealing with limits.
+    + Fix `slurmstepd` segfault when `ContainerPath` is not set in `oci.conf`
+    + Fixed an issue where jobs requesting licenses were incorrectly rejected.
+    + `scrontab` - Fix cutting off the final character of quoted variables.
+    + `smail` - Fix issues where e-mails at job completion were not being sent.
+    + `scontrol/slurmctld` - fix comma parsing when updating a reservation's
+       nodes.
+    + Fix `--gpu-bind=single binding` tasks to wrong gpus, leading to some gpus
+      having more tasks than they should and other gpus being unused.
+    + Fix regression in 23.02 that causes slurmstepd to crash when `srun`
+      requests more than `TreeWidth` nodes in a step and uses the pmi2 or</comment>
+    <requestid>1110259</requestid>
+  </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>43c1e012a44daa7e5dc5406760c1c4ab</srcmd5>
+    <version>23.02.4</version>
+    <time>1694545373</time>
+    <user>anag+factory</user>
+    <comment>- Create a macro for upgrade dependency to ensure uniform handling. (forwarded request 1110421 from eeich)</comment>
+    <requestid>1110422</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>febeb16f7cdf2f22cf99b9677b408780</srcmd5>
+    <version>23.02.5</version>
+    <time>1695209206</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 23.02.5 with the following changes:
+  * Bug Fixes:
+    + Revert a change in 23.02 where `SLURM_NTASKS` was no longer set in the
+      job's environment when `--ntasks-per-node` was requested.
+      The method that is is being set, however, is different and should be more
+      accurate in more situations.
+    + Change pmi2 plugin to honor the `SrunPortRange` option. This matches the
+      new behavior of the pmix plugin in 23.02.0. Note that neither of these
+      plugins makes use of the `MpiParams=ports=` option, and previously
+      were only limited by the systems ephemeral port range.
+    + Fix regression in 23.02.2 that caused slurmctld -R to crash on startup if
+      a node features plugin is configured.
+    + Fix and prevent reoccurring reservations from overlapping.
+    + `job_container/tmpfs` - Avoid attempts to share BasePath between nodes.
+    + With `CR_Cpu_Memory`, fix node selection for jobs that request gres and
+      `--mem-per-cpu`.
+    + Fix a regression from 22.05.7 in which some jobs were allocated too few
+      nodes, thus overcommitting cpus to some tasks.
+    + Fix a job being stuck in the completing state if the job ends while the
+      primary controller is down or unresponsive and the backup controller has
+      not yet taken over.
+    + Fix `slurmctld` segfault when a node registers with a configured
+      `CpuSpecList` while `slurmctld` configuration has the node without
+      `CpuSpecList`.
+    + Fix cloud nodes getting stuck in `POWERED_DOWN+NO_RESPOND` state after
+      not registering by `ResumeTimeout`.
+    + `slurmstepd` - Avoid cleanup of `config.json-less` containers spooldir
+      getting skipped.
+    + Fix scontrol segfault when 'completing' command requested repeatedly in
+      interactive mode.</comment>
+    <requestid>1111943</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>19a9f057571b284b27cfd0ad405e9608</srcmd5>
+    <version>23.02.6</version>
+    <time>1697146902</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.02.6 to fix (CVE-2023-41914)
+  * Removed Fix-test-32.8.patch as fixed upstream
+  * Bug Fixes:
+    + Fix `CpusPerTres=` not upgreadable with scontrol update
+    + Fix unintentional gres removal when validating the gres job state.
+    + Fix `--without-hpe-slingshot` configure option.
+    + Fix cgroup v2 memory calculations when transparent huge pages are used.
+    + Fix parsing of `sgather --timeout` option.
+    + Fix regression from 22.05.0 that caused `srun --cpu-bind &quot;=verbose&quot;`
+      and `&quot;=v&quot;` options give different CPU bind masks.
+    + Fix &quot;_find_node_record: lookup failure for node&quot; error message appearing
+      for all dynamic nodes during reconfigure.
+    + Avoid segfault if loading serializer plugin fails.
+    + `slurmrestd` - Correct OpenAPI format for `GET /slurm/v0.0.39/licenses`.
+    + `slurmrestd` - Correct OpenAPI format for
+      `GET /slurm/v0.0.39/job/{job_id}`.
+    + `slurmrestd` - Change format to multiple fields in
+     'GET /slurmdb/v0.0.39/assocations` and `GET /slurmdb/v0.0.39/qos` to
+      handle infinite and unset states.
+    + When a node fails in a job with `--no-kill`, preserve the extern step on the
+      remaining nodes to avoid breaking features that rely on the extern step
+      such as `pam_slurm_adopt`, `x11`, and `job_container/tmpfs`.
+    + `auth/jwt` - Ignore `x5c` field in JWKS files.
+    + `auth/jwt` - Treat 'alg' field as optional in JWKS files.
+    + Allow job_desc.selinux_context to be read from the job_submit.lua script.
+    + Skip check in slurmstepd that causes a large number of errors in the
+      munge log: &quot;Unauthorized credential for client UID=0 GID=0&quot;.
+      This error will still appear on `slurmd`/`slurmctld`/`slurmdbd` start up
+      and is not a cause for concern.
+    + `slurmctld` - Allow startup with zero partitions.</comment>
+    <requestid>1117163</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>b46863a47250c59bb702fb74f353db15</srcmd5>
+    <version>23.02.6</version>
+    <time>1697567088</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.02.6 to fix (CVE-2023-41914, bsc#1216207)</comment>
+    <requestid>1118220</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>8d763fb9860a1681486d066504fd65ac</srcmd5>
+    <version>23.02.6</version>
+    <time>1698872997</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1121548</requestid>
+  </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>67815d17f5d44b157fb896a9dd5ce66c</srcmd5>
+    <version>23.02.6</version>
+    <time>1699301678</time>
+    <user>anag+factory</user>
+    <comment>- Add missing dependencies to slurm-config to plugins package.
+  These should help to tie down the slurm version and help to avoid
+  a package mix (bsc#1216869). (forwarded request 1123595 from eeich)</comment>
+    <requestid>1123596</requestid>
+  </revision>
+  <revision rev="100" vrev="5">
+    <srcmd5>f3a2bae0db2fb8a29c65ad4ad71e1d9f</srcmd5>
+    <version>23.02.6</version>
+    <time>1701121482</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1129192</requestid>
+  </revision>
+  <revision rev="101" vrev="6">
+    <srcmd5>fbbda57d6684437252aa1f3136276e36</srcmd5>
+    <version>23.02.6</version>
+    <time>1701727168</time>
+    <user>anag+factory</user>
+    <comment>- Add missing service file for slurmrestd (boo#1217711). (forwarded request 1130096 from eeich)</comment>
+    <requestid>1130097</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>bbe32e7ae815ca74f049d8a3aa6db5a1</srcmd5>
+    <version>23.02.7</version>
+    <time>1704487515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 23.02.6 to fix (CVE-2023-49933 - bsc#1218046, CVE-2023-49935 -
+  bsc#1218049, CVE-2023-49936 - bsc#1218050, CVE-2023-49937 - bsc#1218051,
+  CVE-2023-49938 - bsc#1218053)
+  * Security Fixes:
+    + Add `JobAcctGatherParams=DisableGPUAcct` to disable gpu accounting.
+    + `acct_gather_energy/ipmi` - Improve logging of DCMI issues.
+    + `gpu/oneapi` - Add support for new env vars `ZE_FLAT_DEVICE_HIERARCHY`
+      and `ZE_ENABLE_PCI_ID_DEVICE_ORDER`.
+    + `data_parser/v0.0.39` - skip empty string when parsing QOS ids.
+    + Remove error message from `assoc_mgr_update_assocs` when purposefully
+      resetting the default QOS.
+  * Bug Fixes:
+    + `libslurm_nss` - Avoid causing glibc to assert due to an unexpected
+      return from slurm_nss due to an error during lookup.
+    + Fix job requests with `--tres-per-task` sometimes resulting in bad
+      allocations that cannot run subsequent job steps.
+    + Fix issue with `slurmd` where `srun` fails to be warned when a node
+      prolog script runs beyond `MsgTimeout` set in `slurm.conf`.
+    + `gres/shard` - Fix plugin functions to have matching parameter orders.
+    + `gpu/nvml` - Fix issue that resulted in the wrong MIG devices being
+      constrained to a job
+    + `gpu/nvml` - Fix linking issue with MIGs that prevented multiple MIGs
+      being used in a single job for certain MIG configurations
+    + Fix file descriptor leak in slurmd when using `acct_gather_energy/ipmi`
+      with DCMI devices.
+    + `sview` - avoid crash when job has a node list string &gt; 49 characters.
+    + Prevent `slurmctld` crash during reconfigure when packing job start
+      messages.
+    + Preserve reason uid on reconfig.
+    + Update node reason with updated `INVAL` state reason if different from (forwarded request 1136624 from eeich)</comment>
+    <requestid>1137045</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="talloc" project="openSUSE:Factory">
+  <title>Samba talloc Library</title>
+  <description>This package includes the talloc2 library.
+
+
+</description>
+  <devel project="network:samba:STABLE" package="talloc"/>
+  <url>http://talloc.samba.org/</url>
+</package>

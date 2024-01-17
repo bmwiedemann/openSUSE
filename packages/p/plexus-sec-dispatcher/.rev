@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01a6503601ec8a61f12dcfe3cebdfd69</srcmd5>
+    <version>1.4</version>
+    <time>1554281407</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>688993</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f0b002760f8c740ee3964cd05aab36c3</srcmd5>
+    <version>1.4</version>
+    <time>1570448783</time>
+    <user>dimstar_suse</user>
+    <comment>avoid version-less dependencies that gradle does not like</comment>
+    <requestid>735440</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e5fe1a4dc6ee1868caa336e80c3c6213</srcmd5>
+    <version>2.0</version>
+    <time>1642112496</time>
+    <user>dimstar_suse</user>
+    <comment>2.0</comment>
+    <requestid>946192</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>aa0d9294054e53b0f993f39633563bd9</srcmd5>
+    <version>2.0</version>
+    <time>1652475802</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with modello-2.0.0</comment>
+    <requestid>977027</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6f648f0d5b57f30e58293a800dd1b99d</srcmd5>
+    <version>2.0</version>
+    <time>1653503693</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changes with sle</comment>
+    <requestid>979215</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>e28400027f2d8d72e018bb22919c062f</srcmd5>
+    <version>2.0</version>
+    <time>1698333212</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120341</requestid>
+  </revision>
+</revisionlist>

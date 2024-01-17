@@ -1,0 +1,5 @@
+<package name="purple-xmpp-http-upload" project="openSUSE:Factory">
+  <title>XMPP HTTP File Upload plugin for libpurple</title>
+  <description>A XEP-0363: HTTP File Upload plugin for libpurple (Pidgin, Finch, etc.).</description>
+  <devel project="network:pidgin" package="purple-xmpp-http-upload"/>
+</package>

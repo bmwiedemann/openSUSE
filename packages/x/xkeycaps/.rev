@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="748">
+    <srcmd5>b7d04fa0bb9e7ec2625c733dddfb120c</srcmd5>
+    <version>2.46</version>
+    <time>1168904564</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="812">
+    <srcmd5>b940e5baf24d252d9b7e0d0b60a8d0c6</srcmd5>
+    <version>2.46</version>
+    <time>1181830958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="843">
+    <srcmd5>6a55f9a1c7e447018175f93e22e3d6cf</srcmd5>
+    <version>2.46</version>
+    <time>1191537627</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="947">
+    <srcmd5>6a55f9a1c7e447018175f93e22e3d6cf</srcmd5>
+    <version>2.46</version>
+    <time>1191537627</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="948">
+    <srcmd5>8d15afd81bdbae0bb48473f5dcddf138</srcmd5>
+    <version>2.46</version>
+    <time>1245363988</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="949">
+    <srcmd5>cafa38a47fe952508ac29272a75f7882</srcmd5>
+    <version>2.46</version>
+    <time>1254534459</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xkeycaps based on submit request 21329 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="7" vrev="951">
+    <srcmd5>cafa38a47fe952508ac29272a75f7882</srcmd5>
+    <version>2.46</version>
+    <time>1254534459</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xkeycaps based on submit request 21329 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="8" vrev="952">
+    <srcmd5>fd947f5081f8c2ef5362722e7f7ec56c</srcmd5>
+    <version>2.46</version>
+    <time>1268926616</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="954">
+    <srcmd5>fd947f5081f8c2ef5362722e7f7ec56c</srcmd5>
+    <version>2.46</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="955">
+    <srcmd5>fd947f5081f8c2ef5362722e7f7ec56c</srcmd5>
+    <version>2.46</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="956">
+    <srcmd5>b6c71cb98afdfd183eec6bc7320e4415</srcmd5>
+    <version>2.46</version>
+    <time>1289415277</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52519 from user prusnak
+</comment>
+    <requestid>52519</requestid>
+  </revision>
+  <revision rev="12" vrev="957">
+    <srcmd5>0903ce7e3896f390e529b7352e9c7f72</srcmd5>
+    <version>2.46</version>
+    <time>1289415284</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52519
+</comment>
+  </revision>
+  <revision rev="13" vrev="960">
+    <srcmd5>0903ce7e3896f390e529b7352e9c7f72</srcmd5>
+    <version>2.46</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="962">
+    <srcmd5>0903ce7e3896f390e529b7352e9c7f72</srcmd5>
+    <version>2.46</version>
+    <time>1319182599</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="963">
+    <srcmd5>320b94756e3c6244c712fe2f60927ac9</srcmd5>
+    <version>2.46</version>
+    <time>1323195362</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="965">
+    <srcmd5>320b94756e3c6244c712fe2f60927ac9</srcmd5>
+    <version>2.46</version>
+    <time>1340184369</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="967">
+    <srcmd5>320b94756e3c6244c712fe2f60927ac9</srcmd5>
+    <version>2.46</version>
+    <time>1359110650</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="968">
+    <srcmd5>de183a7935d2df6a0a3c713eccbc9f8f</srcmd5>
+    <version>2.46</version>
+    <time>1363156410</time>
+    <user>coolo</user>
+    <comment>license update: MIT
+no BSD found (forwarded request 157495 from babelworx)</comment>
+    <requestid>157536</requestid>
+  </revision>
+  <revision rev="19" vrev="970">
+    <srcmd5>de183a7935d2df6a0a3c713eccbc9f8f</srcmd5>
+    <version>2.46</version>
+    <time>1379665076</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="972">
+    <srcmd5>de183a7935d2df6a0a3c713eccbc9f8f</srcmd5>
+    <version>2.46</version>
+    <time>1409303763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="973">
+    <srcmd5>fcd6be5e71a2a16aaed133bbaad9bc20</srcmd5>
+    <version>2.46</version>
+    <time>1415016727</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259226</requestid>
+  </revision>
+</revisionlist>

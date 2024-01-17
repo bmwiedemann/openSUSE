@@ -1,0 +1,128 @@
+From 4dbd5534a39fbfaebad32a00d0e6c512d840b0fd Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Thu, 31 Mar 2022 13:39:57 +0300
+Subject: [PATCH] Fix salt-ssh opts poisoning (bsc#1197637) - 3004 (#501)
+
+* Fix salt-ssh opts poisoning
+
+* Pass proper __opts__ to roster modules
+
+* Remove redundant copy.deepcopy for opts from handle_routine
+---
+ salt/client/ssh/__init__.py | 17 ++++++++++-------
+ salt/loader/__init__.py     |  7 ++++++-
+ 2 files changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
+index e6837df4e5..a527c03de6 100644
+--- a/salt/client/ssh/__init__.py
++++ b/salt/client/ssh/__init__.py
+@@ -338,7 +338,7 @@ class SSH(MultiprocessingStateMixin):
+         self.session_flock_file = os.path.join(
+             self.opts["cachedir"], "salt-ssh.session.lock"
+         )
+-        self.ssh_session_grace_time = int(self.opts.get("ssh_session_grace_time", 3))
++        self.ssh_session_grace_time = int(self.opts.get("ssh_session_grace_time", 1))
+ 
+     # __setstate__ and __getstate__ are only used on spawning platforms.
+     def __setstate__(self, state):
+@@ -571,7 +571,6 @@ class SSH(MultiprocessingStateMixin):
+         """
+         LOG_LOCK.release()
+         salt.loader.LOAD_LOCK.release()
+-        opts = copy.deepcopy(opts)
+         single = Single(
+             opts,
+             opts["argv"],
+@@ -608,6 +607,7 @@ class SSH(MultiprocessingStateMixin):
+         Spin up the needed threads or processes and execute the subsequent
+         routines
+         """
++        opts = copy.deepcopy(self.opts)
+         que = multiprocessing.Queue()
+         running = {}
+         targets_queue = deque(self.targets.keys())
+@@ -618,7 +618,7 @@ class SSH(MultiprocessingStateMixin):
+             if not self.targets:
+                 log.error("No matching targets found in roster.")
+                 break
+-            if len(running) < self.opts.get("ssh_max_procs", 25) and not init:
++            if len(running) < opts.get("ssh_max_procs", 25) and not init:
+                 if targets_queue:
+                     host = targets_queue.popleft()
+                 else:
+@@ -636,7 +636,7 @@ class SSH(MultiprocessingStateMixin):
+                             pid_running = (
+                                 False
+                                 if cached_session["pid"] == 0
+-                                else psutil.pid_exists(cached_session["pid"])
++                                else cached_session.get("running", False) or psutil.pid_exists(cached_session["pid"])
+                             )
+                             if (
+                                 pid_running and prev_session_running < self.max_pid_wait
+@@ -651,9 +651,10 @@ class SSH(MultiprocessingStateMixin):
+                         "salt-ssh/session",
+                         host,
+                         {
+-                            "pid": 0,
++                            "pid": os.getpid(),
+                             "master_id": self.master_id,
+                             "ts": time.time(),
++                            "running": True,
+                         },
+                     )
+                 for default in self.defaults:
+@@ -681,7 +682,7 @@ class SSH(MultiprocessingStateMixin):
+                     continue
+                 args = (
+                     que,
+-                    self.opts,
++                    opts,
+                     host,
+                     self.targets[host],
+                     mine,
+@@ -717,6 +718,7 @@ class SSH(MultiprocessingStateMixin):
+                             "pid": routine.pid,
+                             "master_id": self.master_id,
+                             "ts": time.time(),
++                            "running": True,
+                         },
+                     )
+                 continue
+@@ -768,12 +770,13 @@ class SSH(MultiprocessingStateMixin):
+                                 "pid": 0,
+                                 "master_id": self.master_id,
+                                 "ts": time.time(),
++                                "running": False,
+                             },
+                         )
+             if len(rets) >= len(self.targets):
+                 break
+             # Sleep when limit or all threads started
+-            if len(running) >= self.opts.get("ssh_max_procs", 25) or len(
++            if len(running) >= opts.get("ssh_max_procs", 25) or len(
+                 self.targets
+             ) >= len(running):
+                 time.sleep(0.1)
+diff --git a/salt/loader/__init__.py b/salt/loader/__init__.py
+index 32f8a7702c..bbe4269839 100644
+--- a/salt/loader/__init__.py
++++ b/salt/loader/__init__.py
+@@ -757,7 +757,12 @@ def roster(opts, runner=None, utils=None, whitelist=None, loaded_base_name=None,
+         opts,
+         tag="roster",
+         whitelist=whitelist,
+-        pack={"__runner__": runner, "__utils__": utils, "__context__": context},
++        pack={
++            "__runner__": runner,
++            "__utils__": utils,
++            "__context__": context,
++            "__opts__": opts,
++        },
+         extra_module_dirs=utils.module_dirs if utils else None,
+         loaded_base_name=loaded_base_name,
+     )
+-- 
+2.39.2
+
+

@@ -1,0 +1,9 @@
+<package name="jflex-maven-plugin" project="openSUSE:Factory">
+  <title>JFlex Maven Plugin</title>
+  <description>This is a Maven 3 plugin to generate Lexer code in Java from
+a Lexer specification, using JFlex.
+
+</description>
+  <devel project="Java:packages" package="jflex-maven-plugin"/>
+  <url>https://github.com/jflex-de/jflex</url>
+</package>

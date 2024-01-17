@@ -1,0 +1,10 @@
+/var/log/wtmp /var/log/btmp {
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    size=+400k
+    notifempty
+    missingok
+    copytruncate
+}

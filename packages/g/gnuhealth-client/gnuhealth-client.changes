@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Sat Jan  6 10:31:32 UTC 2024 - Ben Greiner <code@bnavigator.de>
+
+- Enable to SLE15 python module pythons
+
+-------------------------------------------------------------------
+Thu Dec 21 22:01:03 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.2.1
+  * Various Tryton-patches applied, see Changelog for details
+
+-------------------------------------------------------------------
+Tue Oct 17 11:53:13 UTC 2023 - Daniel Garcia Moreno <daniel.garcia@suse.com>
+
+- Remove %python3_install prefix and root options, that's included in
+  the macro by default.
+
+-------------------------------------------------------------------
+Sun Feb 12 13:42:59 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- verion 4.2.0
+  * Instance and connection information visible at the GTK client title 
+  * Add GNUHEalth scalable icon - svg - for desktop menu and panel entries
+  * see Changelog for full description
+  * separate gnuhalth-client.desktop file removed
+
+-------------------------------------------------------------------
+Thu Jun 16 19:58:10 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.0.1
+  * various bug fixes, see changelog
+  * plugins adapted and renamed for 4.0
+  
+-------------------------------------------------------------------
+Sun Mar  6 10:19:38 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.0.0
+  * based on Tryton 6.0
+  * for details see CHANGELOG
+
+-------------------------------------------------------------------
+Sat Feb 27 08:21:03 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
+Thu Feb 25 18:36:27 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- python_dependency_generator removed (misses dependencies....)
+
+-------------------------------------------------------------------
+Mon Feb 15 10:52:18 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.8.1
+  spec-file updated to use new python macros 
+
+-------------------------------------------------------------------
+Sat Nov  7 16:56:47 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- remove __pycache__ from plugins (boo#1178453)
+
+-------------------------------------------------------------------
+Sun May 17 16:20:07 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.9
+  various bugfixes (including boo#1170553)
+
+-------------------------------------------------------------------
+Sun Mar  1 16:58:48 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.8
+  * Removed the deprecated App Menu in favor of the Menu Bar.
+  * Migrate from obsolete Table to Grid
+  * Fix the footer
+  * Include accelerator for preferences (ctrl+shift+p) and fix
+    accelerator for shortcuts (ctrl+shift+F1) 
+  * Avoid maximizing application at startup
+  * Remove unused fast tabbing option from menu
+  * Allow setting the GH command line on the bottom again (cli_position =
+    bottom). By default is top.
+
+-------------------------------------------------------------------
+Fri Jan 31 07:57:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.6
+  * Fix bug #57682: GTK Client - CLI is activated when pressing Shift+Z
+  * Add GNU Health shortcuts to the help window
+
+-------------------------------------------------------------------
+Thu Jan  2 15:47:00 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- update frl plugin to 3.6.1
+
+-------------------------------------------------------------------
+Tue Dec 24 20:02:26 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.5: Fix variable name to values
+
+-------------------------------------------------------------------
+Sat Dec  7 14:48:01 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.4 #57371  Error when assigning a health professional on the work schedule
+
+-------------------------------------------------------------------
+Mon Dec  2 20:41:43 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.3 - various performance improvements 
+
+-------------------------------------------------------------------
+Sun Dec  1 18:31:49 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.2 - various bugfixes
+
+-------------------------------------------------------------------
+Thu Nov 21 14:42:32 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.6.0
+
+-------------------------------------------------------------------
+Mon Nov 11 18:56:37 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- camera.diff added
+  plugins changed from *latest* to version 3.4.x
+
+-------------------------------------------------------------------
+Thu Jul 11 06:40:35 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- plugin_frl updated to version 3.4.1 
+
+-------------------------------------------------------------------
+Sat Apr 20 07:25:40 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.4.4 - Security fix boo#1131707
+
+-------------------------------------------------------------------
+Tue Apr  2 20:31:19 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- link to python2-GooCalendar (remains python2) boo#1131096
+
+-------------------------------------------------------------------
+Sun Jan 27 20:34:32 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Version 3.4.3
+  * Fix bug #55458: Command line gets activated with shift Z 
+  * many bugfixes from tryton client
+
+-------------------------------------------------------------------
+Fri Dec 28 17:15:08 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.4.2 with many bugfixes
+
+-------------------------------------------------------------------
+Tue Dec 11 17:34:32 UTC 2018 - Axel Braun <axel.braun@gmx.de>
+
+- New client for the GNU Health 3.4 series based on Tryton 4.6 series
+  * Enhanced support for Calendar and WebDAV system
+  * Native client has a command line interface
+  * Over 30 new commands for the main daily tasks
+  * Enhanced GNU Health camera plugin, including zoom
+  * gnuhealth_crypto.patch replaced by plugin
+  * Activity Log window on the client
+  * SYSINFO command to retrieve the information about client and server 
+  * Customize the banner on the client
+
+-------------------------------------------------------------------
+Fri Mar 16 06:52:23 UTC 2018 - axel.braun@gmx.de
+
+- Bugfix Release 3.2.6
+
+-------------------------------------------------------------------
+Mon Jan 29 09:22:30 UTC 2018 - tchvatal@suse.com
+
+- Add emptly build phase to silence rpmlint
+- Drop python-rsvg require, the code does not include it
+
+-------------------------------------------------------------------
+Fri Jan  5 18:41:40 UTC 2018 - axel.braun@gmx.de
+
+- GNU Health client - initial version 3.2.5

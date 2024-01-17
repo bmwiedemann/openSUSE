@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f11ec509242b36fe1517024cab637891</srcmd5>
+    <version>0.26</version>
+    <time>1527933555</time>
+    <user>dimstar_suse</user>
+    <comment>Find dead code</comment>
+    <requestid>612035</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c982c111e6b74b6bd64c97466f907d31</srcmd5>
+    <version>0.26</version>
+    <time>1533045667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626382</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3bfaab51557489f4d0c7b6e70b484ffb</srcmd5>
+    <version>0.29</version>
+    <time>1535122985</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.29
+  * Check that NEWS file is up-to-date before releasing
+  * Add --ignore-names flag (#139)
+  * Add --make-whitelist flag (#135)
+  * Single-source package version string (#134)
+  * Use absolute imports (#132)
+  * Fix PEP8 issues (#120)</comment>
+    <requestid>628654</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>876f5ae052e39bde4ca4b8bbdcd88b54</srcmd5>
+    <version>0.29</version>
+    <time>1545648358</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659748</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>662d30d5eb588f0a153f848f894de9b2</srcmd5>
+    <version>1.0</version>
+    <time>1550668237</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>673195</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2fa942e23cafbc4d8ddaad934be84635</srcmd5>
+    <version>1.3</version>
+    <time>1581087316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770681</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3d0d17e5406a16ed91fe4f274e115ff</srcmd5>
+    <version>1.4</version>
+    <time>1587071007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Ignore unused import statements in __init__.py (RJ722, #192).
+  * Report first decorator's line number for unused decorated objects on Python 3.8+ (RJ722, #200).
+  * Check code with black and pyupgrade.</comment>
+    <requestid>794478</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>af9b38e9e2512ef6f6073cc0ef1b5ef2</srcmd5>
+    <version>2.1</version>
+    <time>1598029615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828348</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7bba86765dc41764f3123af2777a9f0a</srcmd5>
+    <version>2.1</version>
+    <time>1686753022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093043</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>98e75a26d6aed4b0c7601c8833671da9</srcmd5>
+    <version>2.10</version>
+    <time>1703800969</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.10:
+  * Drop support for Python 3.7 (Jendrik Seipp, #323).
+  * Add support for Python 3.12 (Jendrik Seipp, #332).
+  * Use `end_lineno` AST attribute to obtain more accurate line
+    counts (Jendrik Seipp).
+  * Use exit code 0 for `--help` and `--version` again (Jendrik
+    Seipp, #321).
+  * Use exit code 3 when dead code is found (whosayn, #319).
+  * Treat non-supported decorator names as &quot;@&quot; instead of
+    crashing (Llandy3d and Jendrik Seipp, #284).
+  * Drop support for Python 3.6 (Jendrik Seipp).
+  * Add `UnicodeEncodeError` exception handling to `core.py`
+  * Add whitelist for `Enum` attributes `_name_` and `_value_`
+  * Run tests and add PyPI trove for Python 3.11 (Jendrik Seipp).
+  * Ignore `setup_module()`, `teardown_module()`, etc. in pytest
+    `test_*.py` files (Jendrik Seipp).
+  * Add whitelist for
+    `socketserver.TCPServer.allow_reuse_address` (Ben Elliston).
+  * Clarify that `--exclude` patterns are matched against
+    absolute paths (Jendrik Seipp, #260).
+  * Add basic `match` statement support (kreathon, #276, #291).
+  * Mark imports in `__all__` as used (kreathon, #172, #282).
+  * Add whitelist for `pint.UnitRegistry.default_formatter` (Ben
+    Elliston, #258).
+  * Print absolute filepaths as relative again (as in version 2.1
+    and before)
+  * if they are below the current directory (The-Compiler, #246).
+  * Run tests and add PyPI trove for Python 3.10 (chayim, #266).
+  * Allow using the `del` keyword to mark unused variables
+    (sshishov, #279).</comment>
+    <requestid>1135359</requestid>
+  </revision>
+</revisionlist>

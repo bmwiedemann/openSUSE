@@ -1,0 +1,5 @@
+<package name="librepo" project="openSUSE:Factory">
+  <title>librepo - Library for processing rpm-md</title>
+  <description></description>
+  <devel project="system:packagemanager:dnf" package="librepo"/>
+</package>

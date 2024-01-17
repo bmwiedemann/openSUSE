@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>982dd193d24a69d6a9d28b3613c1ae12</srcmd5>
+    <version>1.3.0</version>
+    <time>1627313886</time>
+    <user>dimstar_suse</user>
+    <comment>new requirement of ipykernel 6</comment>
+    <requestid>908015</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd9c019c5e7a08992dec18bb04b39e2d</srcmd5>
+    <version>1.3.0</version>
+    <time>1630787529</time>
+    <user>dimstar_suse</user>
+    <comment>- Add correct-pthread-library-name.patch:
+  * Look for the correct pthread library.</comment>
+    <requestid>915711</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9fc2cb82871d0363b2b6c01817ac1582</srcmd5>
+    <version>1.5.1</version>
+    <time>1640200670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941846</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>827646932302df01699d11b245ed3a63</srcmd5>
+    <version>1.6.3</version>
+    <time>1665754827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010150</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6bfb550f72b73c72521083e77980d85</srcmd5>
+    <version>1.6.4</version>
+    <time>1669983127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.4
+  Fixes: #985, #1003, #1005, #1018, #1024, #1025, #1030, #1031, #1042, #1064,
+         #1081, #1100, #1104, #1111, #1126
+  Improvements: #532, #989, #1022, #1056, #1099
+</comment>
+    <requestid>1039300</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c17d5fcee758a266178c903da4c44584</srcmd5>
+    <version>1.6.5</version>
+    <time>1674324615</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.6.5:
+  * Fixes: #1078, #1129, #1138, #1142, #1146, #1148, #1154</comment>
+    <requestid>1059952</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4876320244802c58c2684d72fcf0e86</srcmd5>
+    <version>1.6.6</version>
+    <time>1674664940</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.6.6:
+  * Disable optimization causing issues when debugging Python 3.10 and 3.11.</comment>
+    <requestid>1060514</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>18ffb87e04ab14bd1cc69db2751bbbd1</srcmd5>
+    <version>1.6.6</version>
+    <time>1675458283</time>
+    <user>dimstar_suse</user>
+    <comment>- skip more tests for python 3.11</comment>
+    <requestid>1062640</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>cea2526a45c7f66d7ec875cd412f7fb2</srcmd5>
+    <version>1.6.6</version>
+    <time>1679068870</time>
+    <user>dimstar_suse</user>
+    <comment>- Add setuptools-67.3.0.patch to fix test issues with new setuptools.
+  gh#microsoft/debugpy#1230
+</comment>
+    <requestid>1072342</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>ed5c7a5e730e1b731c43268d7e989144</srcmd5>
+    <version>1.6.6</version>
+    <time>1684596218</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh the tarball from upstream
+</comment>
+    <requestid>1087981</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aff55ec88021248383b4e38609577a42</srcmd5>
+    <version>1.8.0</version>
+    <time>1700421334</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8.0:
+  - Error while enumerating installed packages.
+  - Drops Python 3.7 support. Please use debugpy v1.7.0 if you
+    need to debug Python 3.7.
+  - Remove DeprecationWarning: Deprecated call to
+    pkg_resources.declare_namespace('pydevd_plugins.extensions')
+  - Fix invalid file hashes in RECORD of wheels
+  - Support &quot;restart&quot; in &quot;terminated&quot; event for &quot;attach&quot;{&quot;listen&quot;}
+  - Use &quot;startDebugging&quot; request for subprocesses
+- Remove upstreamed patch setuptools-67.3.0.patch
+- Skip test test_attach_pid_client (gh#microsoft/debugpy#1462)
+</comment>
+    <requestid>1127362</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9ee8bcf2ec3bb21a9bc2001b29d0ff59</srcmd5>
+    <version>1.8.0</version>
+    <time>1701121432</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1129088</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e3eae36d2794452d35a62f8e6383be7a</srcmd5>
+    <version>1.8.0</version>
+    <time>1701902866</time>
+    <user>anag+factory</user>
+    <comment>- remove python 3.6 support as the version update to 1.8.0 dropped
+  it
+
+- Update to version 1.6.3
+  * Look for the correct pthread library.
+- enable testsuite (multibuild)</comment>
+    <requestid>1131030</requestid>
+  </revision>
+</revisionlist>

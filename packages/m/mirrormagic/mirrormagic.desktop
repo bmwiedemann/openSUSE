@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mirror Magic
+GenericName=Deflektor, Mindbender
+Comment=Puzzle game where you steer a beam of light using mirrors
+Icon=mirrormagic
+Exec=mirrormagic
+Type=Application
+Categories=Game;LogicGame;
+StartupNotify=false

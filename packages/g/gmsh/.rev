@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d34c27c13052bde085ac5cd667384349</srcmd5>
+    <version>4.4.1</version>
+    <time>1567849584</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for FreeCAD-test, optional dependency for FreeCAD</comment>
+    <requestid>720647</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b906260e9ff4f276aee1c8a8dede981</srcmd5>
+    <version>4.4.1</version>
+    <time>1568624003</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731076</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>078cb7be47b897b3c39b771e2bd35e2e</srcmd5>
+    <version>4.5.2</version>
+    <time>1580928171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770099</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba43a07f7f6e4b1feeb4810a5bee2864</srcmd5>
+    <version>4.5.6</version>
+    <time>1586641702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793227</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>14bc6459876b2a14e4e271398ec22a68</srcmd5>
+    <version>4.5.6</version>
+    <time>1591653899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812371</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e207f7c940155a436c11ab9a8d1b0336</srcmd5>
+    <version>4.7.1</version>
+    <time>1613774570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863661</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>401f0bd44bdc3b7d47c3b04d97231a90</srcmd5>
+    <version>4.8.3</version>
+    <time>1619653066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888889</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d238785ed9abce5974a4575092352654</srcmd5>
+    <version>4.9.3</version>
+    <time>1641765019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945145</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6ee2ba7ef3cc25b7991a2f89cdcb3848</srcmd5>
+    <version>4.9.4</version>
+    <time>1644617251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953294</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>92a65c7667e59b8dd69014fcc6024cea</srcmd5>
+    <version>4.10.3</version>
+    <time>1655582788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983602</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>880b7d3598731fe2d28e691f8056c3d4</srcmd5>
+    <version>4.10.5</version>
+    <time>1662239964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001042</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c9a6941ce96267b379adbc893ba67afb</srcmd5>
+    <version>4.11.0</version>
+    <time>1667995077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034680</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>118f9e8564cdb480c28e45ea78204eaa</srcmd5>
+    <version>4.11.1</version>
+    <time>1672562324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045907</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>bb261549f4ed29a054c5257d8fd97765</srcmd5>
+    <version>4.11.1</version>
+    <time>1680018722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075007</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>419a4d1176d0c72f4bfd268bce9d0438</srcmd5>
+    <version>4.11.1</version>
+    <time>1695758485</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113465</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>f0bc42aebcb09fcbbf10a5a54332a589</srcmd5>
+    <version>4.11.1</version>
+    <time>1702071202</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132076</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>907bef3be462f2edc1829a9b298b0edd</srcmd5>
+    <version>4.12.0</version>
+    <time>1704281323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136012</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>d660d1c8f933496b884c3d8463105d7c</srcmd5>
+    <version>4.12.0</version>
+    <time>1704361473</time>
+    <user>dimstar_suse</user>
+    <comment>Emergency fix: do not install python3-gmsh on all python3 based systems</comment>
+  </revision>
+</revisionlist>

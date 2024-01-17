@@ -1,0 +1,5 @@
+<package name="terminology" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Enlightenment:Factory" package="terminology"/>
+</package>

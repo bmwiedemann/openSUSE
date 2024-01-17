@@ -1,0 +1,22 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 00:47:54 +0200
+Subject: [PATCH 10/20] Fix flag arguments to wxFileDialog constructor
+
+Seems they've gained an additional prefix.
+---
+ Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp b/Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp
+index e51102d..e653bb4 100644
+--- a/Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp
++++ b/Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp
+@@ -47,7 +47,7 @@ void tmwxDoc::OnExportv4(wxCommandEvent&)
+   if (pname1.empty()) pname1 = pname;
+   pname1 += wxT("_v4.tmd5");
+   wxFileDialog fileDialog(NULL, wxT("Export Tree"), wxEmptyString, pname1, 
+-    wxT("*.tmd5"), wxSAVE | wxOVERWRITE_PROMPT);
++    wxT("*.tmd5"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+   int ret = fileDialog.ShowModal();
+   if (ret == wxID_CANCEL) return;
+   wxString fname = fileDialog.GetPath();

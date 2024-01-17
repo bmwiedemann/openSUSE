@@ -1,0 +1,12 @@
+--- khunphan/kpglutuserinterface.cpp
++++ khunphan/kpglutuserinterface.cpp
+@@ -84,8 +84,7 @@
+   char temp[64];
+ 
+   DEBUGPRINT("GLUT UserInterface initialization\n");
+-  DEBUGPRINT2("GLUT API Version %d, GLUT XLIB Implementation #%d\n",
+-	           GLUT_API_VERSION, GLUT_XLIB_IMPLEMENTATION);
++  DEBUGPRINT1("GLUT API Version %d", GLUT_API_VERSION);
+   // Open OpenGL Window with GLUT
+   glutInit(&argc, argv);
+   glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);

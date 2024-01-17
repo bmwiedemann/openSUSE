@@ -1,0 +1,131 @@
+-------------------------------------------------------------------
+Fri Jan 12 08:18:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Some of the major work has been on making performance
+    improvements to the more data intensive parts of the package.
+    There should be some improvements across the board, however
+    some exciting new performance features include:
+  * A new HTTP transfer mechanism that uses a pool of background
+    worker threads to transmit logs and reports to the Rollbar
+    system. You can enable it with the following...
+  * Removed Python 2
+  * Fixed handling `sensitive_post_parameters` decorator in
+    Django
+  * Fixed Werkzeug DeprecationWarning of `BaseRequest`
+  * Fixed missing locals shortening on items with "trace_chain"
+    instead of "trace"
+  * Fixed FastAPI version comparison
+  * Fixed #436 `WSGIRequest` has no attribute
+    `sensitive_post_parameters`.
+  * Added new `thread_pool` handler
+  * Added Rollbar branding to the readme
+  * Added batched transform to increase sanitization and
+    serialization performance
+- drop python-rollbar-no-unittest2.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Feb 20 12:16:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.16.3:
+  * Pinned Python 2 CI tests to legacy version of dependencies. See #408
+  * Add PyPI badge for supported Python versions. See #408
+  * Add Django 4.0+ compatibility. See #408
+  * Update PR template. See #408
+  * SC-95272: Remove support for Python 3.3. See #408
+- Disable broken tests in python 3.11, test_encode_empty_tuple
+
+-------------------------------------------------------------------
+Mon Jan 24 01:54:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.16.2:
+  * Fix building person data in Django. See #385
+  * Fix circular error logging for non-HTTP events in Starlette. See #390
+  * Fix Python 3.4 builds. See #389
+  * Add support for FastAPI framework. See #373
+  * Add support for Starlette framework. See #373
+  * Add support for ASGI-compliant frameworks. See #373
+  * Add support for HTTPX async handler. See #373
+  * Add new honored values of rollbar.SETTINGS['handler']: default, async
+    and httpx. See #373
+  * Add support for async report_exc_info and report_message. See #373
+  * Collect user IP from X-Forwarded-For, fall back to X-Real-Ip. See #370
+  * Improve examples. See #368
+  * Fix Python 3.3 builds. See #374
+  * Fix Flask 0.x builds. See #376
+- Add httpx to BuildRequires
+- Refresh python-rollbar-no-unittest2.patch
+
+-------------------------------------------------------------------
+Wed Aug  5 16:13:20 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace self.assertRegex with six.assertRegex in
+  python-rollbar-no-unittest2.patch to finally unrequire
+  unittest2 (gh#rollbar/pyrollbar#340).
+- Update the patch according to the pending pull request
+  gh#rollbar/pyrollbar#346.
+
+-------------------------------------------------------------------
+Sat Jul 18 05:17:28 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Upstream doesn't care about unittest2 at all
+  (gh#rollbar/pyrollbar#340), we can just ignore it. Adjust
+  python-rollbar-no-unittest2.patch accordingly.
+
+-------------------------------------------------------------------
+Wed Jun  3 09:05:04 UTC 2020 - pgajdos@suse.com
+
+- use %pytest macro
+- remove dependency on unittest2 for python3
+- added patches
+  https://github.com/rollbar/pyrollbar/pull/340
+  + python-rollbar-no-unittest2.patch
+
+-------------------------------------------------------------------
+Tue May 19 09:27:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Apr 15 16:06:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.15.0
+  * Prevent recursive re-raising
+  * Correctly apply logger formatting
+  * Fix deprecation warnings
+
+-------------------------------------------------------------------
+Tue Mar 26 14:01:55 UTC 2019 - pgajdos@suse.com
+
+- require python-setuptools
+
+-------------------------------------------------------------------
+Mon Mar 25 14:08:31 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.14.7
+  * Create the configuration options, `capture_username`
+    and `capture_email`.
+  * Create the configuration option `capture_ip`.
+  * Fix `request.files_keys` for Flask
+  * If you call `init` multiple times we will update the settings
+    at each call.
+  * see CHANGELOG.md for details
+
+-------------------------------------------------------------------
+Wed Dec 13 15:29:46 UTC 2017 - tchvatal@suse.com
+
+- Add python-rpm-macros to buildrequires
+
+-------------------------------------------------------------------
+Wed Dec 13 15:05:53 UTC 2017 - tchvatal@suse.com
+
+- Switch to github url to contain license
+- Distribute license
+- Switch to singlespec
+- Enable tests
+- Add all missing test and runtime dependencies
+
+-------------------------------------------------------------------
+Mon Dec  4 13:12:18 UTC 2017 - tampakrap@opensuse.org
+
+- Initial package

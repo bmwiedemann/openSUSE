@@ -1,0 +1,49 @@
+From 0da6e64b06dd55fbf80438dfa62157a64e73eca9 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 22 Sep 2023 20:04:12 +0200
+Subject: [PATCH 164/173] prefs.js: Remove display of extension version
+
+The meta data object in recent versions of GNOME shell
+doesn't contain a 'version' field. We have removed it from
+metadata.json with 4b9687b ("metadata.json: remove "version" field").
+The prefs dialog will just show "undefined", which is not helpful.
+Remove the widget displaying the version.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ extension/prefs.js | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/extension/prefs.js b/extension/prefs.js
+index 86b2f5e..23e9ab0 100644
+--- a/extension/prefs.js
++++ b/extension/prefs.js
+@@ -25,10 +25,7 @@ const Gdk = imports.gi.Gdk;
+ const Gio = imports.gi.Gio;
+ const Gtk = imports.gi.Gtk;
+ const GObject = imports.gi.GObject;
+-
+-
+ const ExtensionUtils = imports.misc.extensionUtils;
+-const Me = ExtensionUtils.getCurrentExtension();
+ 
+ const HamsterSettingsWidget = GObject.registerClass(
+ class HamsterSettingsWidget extends Gtk.Grid {
+@@ -124,14 +121,6 @@ class HamsterSettingsWidget extends Gtk.Grid {
+         });
+         this.attach(label, 0, 3, 2, 1);
+ 
+-        let version_text = Me.metadata.version;
+-        label = new Gtk.Label({
+-            label: "You are running hamster-shell-extension version " + version_text,
+-            halign: Gtk.Align.CENTER,
+-            visible: true,
+-            margin_top: 10
+-        });
+-        this.attach(label, 0, 4, 2, 1);
+     }
+ 
+     _onPlacementChange(widget) {
+-- 
+2.42.0
+

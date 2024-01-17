@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Dec 27 18:15:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix the name, it should be glean-parser, not glean_parser.
+
+-------------------------------------------------------------------
+Sun Dec  4 03:31:10 UTC 2022 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 6.3.0
+  * events: Increase extras limit to 15 ([bug 1798713](https://bugzilla.mozilla.org/show_bug.cgi?id=1798713))

@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e94f2d2869494d92bfad67f57222d0b3</srcmd5>
+    <version>1.1.0</version>
+    <time>1569588547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731433</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>86a83aad91972b63e385d187b3110d36</srcmd5>
+    <version>1.1.2</version>
+    <time>1579273697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765073</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8ccd4f9e1b37d4581a4a87b1c379d141</srcmd5>
+    <version>1.1.2</version>
+    <time>1585085650</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove docs/tests folders that were not supposed to be installed</comment>
+    <requestid>787470</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3338100c22a42067f4b613206ab81d83</srcmd5>
+    <version>1.1.4</version>
+    <time>1606828987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851905</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5844bd7c4b9ba8de3f241ebd66809adf</srcmd5>
+    <version>1.1.5</version>
+    <time>1619973358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.5:
+  - Bugfix: avoid raising asyncio.CancelledError on connection lost
+  - Bugfix: allow UTF-8 chars in usernames and password strings
+  - Feature: allow bytes type args for login usernames and passwords
+- Switch off failing tests because of gh#cole/aiosmtplib#171.
+</comment>
+    <requestid>889680</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>09b59aeaf2be11e5481d6afa64d51ac6</srcmd5>
+    <version>1.1.5</version>
+    <time>1620504453</time>
+    <user>dimstar_suse</user>
+    <comment>- Add failing_smtpd_tests.patch to fix failing tests
+  (gh#cole/aiosmtplib#171).
+</comment>
+    <requestid>891391</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1988c4b1f68f87375ed7f7bc59b0188f</srcmd5>
+    <version>1.1.6</version>
+    <time>1642375365</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.6:
+  * update auth other than login
+- remove failing_smtpd_tests.patch: not needed</comment>
+    <requestid>946684</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fec88f06bde2bd60f455d635243facc1</srcmd5>
+    <version>2.0.0</version>
+    <time>1668271267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.0 
+  * BREAKING: Drop Python 3.5 and 3.6 support.
+  * BREAKING: On connect, if the server supports STARTTLS, automatically try to upgrade the connection.
+    STARTTLS after connect can be turned on or off explicitly by passing start_tls=True or start_tls=False respectively.
+  * BREAKING: Remove deprecated loop keyword argument for the SMTP class.
+  * Change: The source_address argument now takes a (addr, port) tuple that is passed as the local_addr param to asyncio.create_connection,
+    allowing for binding to a specific IP. The new local_hostname argument that takes the value to be sent to the server with the EHLO/HELO message.
+    This behaviour more closely matches smtplib.
+  * In order to not break existing usage, passing a string instead of a tuple to source_address will give a DeprecationWarning,
+    and use the value as it if had been passed for local_hostname.
+  * Thanks @rafaelrds and @davidmcnabnz for raising and contributing work on this issue.
+  * Bugfix: the mail_options and rcpt_options arguments to the send coroutine no longer cause errors
+  * Cleanup: Refactored SMTP parent classes to remove complex inheritance structure.
+  * Cleanup: Switched to asyncio.run for sync client methods.
+  * Cleanup: Don't use private email.message.Message policy attribute (instead, set an appropriate policy based on message class)
+- Update to v1.1.7
+  * Security: Fix a possible injection vulnerability (a variant of https://consensys.net/diligence/vulnerabilities/python-smtplib-multiple-crlf-injection/)
+  * Note that in order to exploit this vulnerability in aiosmtplib, the attacker would need control of the hostname or source_address parameters.
+    Thanks Sam Sanoop @ Snyk for bringing this to my attention.
+  * Bugfix: include CHANGLOG in sdist release
+  * Type hints: fix type hints for async context exit (credit @JelleZijlstra)
+</comment>
+    <requestid>1035265</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dc485cb3debaadea16a3a1b01e3f1773</srcmd5>
+    <version>2.0.1</version>
+    <time>1676036166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Bugfix: &quot;tests&quot; and &quot;docs&quot; in the sdist should be includes,
+    not packages, so that they do not get put in site-packages.</comment>
+    <requestid>1064217</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c52efe4f2de6d8e8726a0cc05fc93d86</srcmd5>
+    <version>2.0.2</version>
+    <time>1687379940</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Bugfix: don't send extra EHLO/HELO before QUIT
+  * Change: added SMTPConnectionResponseError for invalid
+    response on connect only</comment>
+    <requestid>1094128</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>909047820445f822d9ec8715a92966bf</srcmd5>
+    <version>3.0.1</version>
+    <time>1700078904</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.1:
+  * Bugfix: 'Future exception was never retrieved' warning in
+    SMTPProtocol after successful connection close and garbage
+    collection.
+  * Cleanup: Updated FlowControlMixin logic from stdlib
+    are keyword only.
+  * **BREAKING**: Passing ``source_address`` as a string argument
+    is now an error. ``source_address``  takes a (addr, port)
+    tuple that is used as the ``local_addr`` param of
+    ``asyncio.create_connection``, allowing for binding
+    to a specific IP. The ``local_hostname`` argument takes the
+    value to be sent to the server with the EHLO/HELO message
+    (which is what ``source_address`` was used for prior to 2.0).
+  * Change: don't use timeout value passed to ``connect``
+    everywhere, only for the initial connection
+  * Change: removed unnecessary connection lost callback
+  * Change: revised handling for 'Future exception was never
+    retrieved' warnings in protocol
+
+- Update to v2.0.0
+- remove failing_smtpd_tests.patch: not needed
+  * Fix SMTPNotSupported error with UTF8 sender/recipient names</comment>
+    <requestid>1126230</requestid>
+  </revision>
+</revisionlist>

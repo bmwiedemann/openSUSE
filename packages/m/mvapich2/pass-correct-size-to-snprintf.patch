@@ -1,0 +1,103 @@
+diff -wruN -x '*~' -x '*.o' -x '*.a' -x '*.so' -x '*.so.[0-9]' -x autom4te.cache -x .deps -x .libs ../orig-mvapich2-2.3.7-1/src/mpid/ch3/channels/common/src/affinity/hwloc_bind.c ./src/mpid/ch3/channels/common/src/affinity/hwloc_bind.c
+--- ../orig-mvapich2-2.3.7-1/src/mpid/ch3/channels/common/src/affinity/hwloc_bind.c	2022-05-16 18:58:22.000000000 +0200
++++ ./src/mpid/ch3/channels/common/src/affinity/hwloc_bind.c	2022-06-29 15:07:17.700058168 +0200
+@@ -2107,7 +2107,7 @@
+         for (i = 0; i < g_smpi.num_local_nodes; ++i) {
+             hwloc_bitmap_clr(*free_sock_cpuset, local_core_ids[i]);
+         }
+-        hwloc_bitmap_snprintf(cpu_str, 128, *free_sock_cpuset);
++        hwloc_bitmap_snprintf(cpu_str, sizeof(cpu_str), *free_sock_cpuset);
+         PRINT_DEBUG(DEBUG_INIT_verbose, "Free sock_cpuset = %s\n", cpu_str);
+     }
+ 
+@@ -3190,11 +3190,11 @@
+         for (i = 0; i < local_procs; i++) {
+             curr = count;
+             for (k = 0; k < num_app_threads; k++) {
+-                j += snprintf (mapping+j, _POSIX2_LINE_MAX, "%d,", mv2_core_map[curr]);
++                j += snprintf (mapping+j, sizeof(mapping)-j, "%d,", mv2_core_map[curr]);
+                 curr = (curr + 1) % num_pu;
+             }
+             mapping [--j] = '\0'; 
+-            j += snprintf (mapping+j, _POSIX2_LINE_MAX, ":");
++            j += snprintf (mapping+j, sizeof(mapping)-j, ":");
+             count = (count + hw_threads_per_core) % num_pu;
+         }
+     } else if (mv2_hybrid_binding_policy == HYBRID_LINEAR) {
+@@ -3203,14 +3203,14 @@
+          * resources  */
+         for (i = 0; i < local_procs; i++) {
+             for (k = 0; k < num_app_threads; k++) {
+-                j += snprintf (mapping+j, _POSIX2_LINE_MAX, "%d,", mv2_core_map[curr]);
++                j += snprintf (mapping+j, sizeof(mapping)-j, "%d,", mv2_core_map[curr]);
+ 
+                 curr = ((curr + hw_threads_per_core) >= num_pu) ?
+                             ((curr + hw_threads_per_core+ ++step) % num_pu) :
+                             (curr + hw_threads_per_core) % num_pu;
+             }
+             mapping [--j] = '\0';
+-            j += snprintf (mapping+j, _POSIX2_LINE_MAX, ":");
++            j += snprintf (mapping+j, sizeof(mapping)-j, ":");
+         }    
+     } else if (mv2_hybrid_binding_policy == HYBRID_SPREAD) {
+ #if defined(CHANNEL_MRAIL)
+@@ -3232,12 +3232,12 @@
+             for (i = 0; i < local_procs; i++) {
+                  for (k = curr; k < curr+chunk; k++) {
+                      for (l = 0; l < hw_threads_per_core; l++) {
+-                        j += snprintf (mapping+j, _POSIX2_LINE_MAX, "%d,", 
++                        j += snprintf (mapping+j, sizeof(mapping)-j, "%d,", 
+                                 mv2_core_map[k * hw_threads_per_core + l]);
+                      }
+                  }
+                  mapping [--j] = '\0';
+-                 j += snprintf (mapping+j, _POSIX2_LINE_MAX, ":");
++                 j += snprintf (mapping+j, sizeof(mapping)-j, ":");
+                  curr = (curr + chunk) % size;
+             } 
+         } else {
+@@ -3252,11 +3252,11 @@
+             for (i = 0; i < num_sockets; i++) {
+                 for (k = curr; k < curr+ranks_per_sock; k++) {
+                     for (l = 0; l < hw_threads_per_core; l++) {
+-                        j += snprintf (mapping+j, _POSIX2_LINE_MAX, "%d,",
++                        j += snprintf (mapping+j, sizeof(mapping)-j, "%d,",
+                                 mv2_core_map[k * hw_threads_per_core + l]);
+                     }
+                     mapping [--j] = '\0';
+-                    j += snprintf (mapping+j, _POSIX2_LINE_MAX, ":");
++                    j += snprintf (mapping+j, sizeof(mapping)-j, ":");
+                 }
+                 curr = (curr + ((num_pu_per_socket/hw_threads_per_core)  * chunk)) % size;
+             }
+@@ -3265,7 +3265,7 @@
+         /* Bunch mapping: Bind each MPI rank to a single phyical core of first
+          * socket followed by second secket */
+         for (i = 0; i < local_procs; i++) {
+-            j += snprintf (mapping+j, _POSIX2_LINE_MAX, "%d:", mv2_core_map[k]);
++            j += snprintf (mapping+j, sizeof(mapping)-j, "%d:", mv2_core_map[k]);
+             k = (k + hw_threads_per_core) % size;
+         } 
+     } else if (mv2_hybrid_binding_policy == HYBRID_SCATTER) {
+@@ -3283,7 +3283,7 @@
+             return MPI_ERR_OTHER;
+         }
+         for (i = 0; i < local_procs; i++) {
+-            j += snprintf (mapping+j, _POSIX2_LINE_MAX, "%d:", mv2_core_map[k]);
++            j += snprintf (mapping+j, sizeof(mapping)-j, "%d:", mv2_core_map[k]);
+             k = (i % num_sockets == 0) ?
+                     (k + num_pu_per_socket) % size :
+                     (k + num_pu_per_socket + hw_threads_per_core) % size;
+@@ -3315,10 +3315,10 @@
+         /* NUMA mapping: Bind consecutive MPI ranks to different NUMA domains in
+          * round-robin fashion. */
+         for (i = 0; i < local_procs; i++) {
+-            j += snprintf (mapping+j, _POSIX2_LINE_MAX, "%d,", 
++            j += snprintf (mapping+j, sizeof(mapping)-j, "%d,", 
+                                mv2_core_map_per_numa[node_base_pu+node_offset]);
+             mapping [--j] = '\0';
+-            j += snprintf (mapping+j, _POSIX2_LINE_MAX, ":");
++            j += snprintf (mapping+j, sizeof(mapping)-j, ":");
+             node_base_pu = (node_base_pu + num_pu_per_numanode) % size;
+             node_offset = (node_base_pu == 0) ? 
+                             (node_offset + ((hw_threads_per_core > 0) ? hw_threads_per_core : 1)) : 

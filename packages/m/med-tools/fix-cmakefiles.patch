@@ -1,0 +1,11 @@
+--- med-4.1.0/python/CMakeLists.txt	2020-01-31 00:03:53.000000000 +0800
++++ med-4.1.0-new/python/CMakeLists.txt	2021-01-04 14:37:17.305927211 +0800
+@@ -36,7 +36,7 @@
+   ${PYTHON_LIBRARIES}
+   )
+ 
+-SET(_install_dir lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/med)
++SET(_install_dir lib${LIB_SUFFIX}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/med)
+ 
+ # Ensure we will be able to run the Python tests from the build tree by outputing
+ # files into the package folder:

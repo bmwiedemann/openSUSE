@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Tue Sep  5 01:14:13 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch correct-version.patch, version in the tarball does not match.
+- Add patch remove-future-requirement.patch, drop requirement of future
+- Switch to pyproject and autosetup macros
+- Clean up python 2 leftovers
+- Do not install testdata
+- Stop using greedy globs in %files
+
+-------------------------------------------------------------------
+Thu Jul  6 12:19:23 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sat Jan 29 16:53:20 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.3:
+  * Fix to mismatched parenthesis.
+
+-------------------------------------------------------------------
+Tue Dec  7 19:13:58 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
+Mon Jul 19 06:41:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * String handling fix for Windows platforms
+
+-------------------------------------------------------------------
+Sun Dec 20 10:50:25 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Remove Conflicts: python-texttable because it should fixed since 
+  version 1.0.0. https://github.com/google/textfsm/issues/77
+  texttable.py is now in subdir textfsm.
+
+-------------------------------------------------------------------
+Tue Nov 26 19:25:18 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  * Fix parsing of value string to allow mismatched parenthesis
+    inside [] brackets.
+  * Improve readability of value parse fix.
+  * Added additional test.
+  * Soft fail when fcntl is missing, fallback to default screen size.
+
+-------------------------------------------------------------------
+Thu Aug  1 11:38:10 UTC 2019 - pgajdos@suse.com
+
+- require future for python2
+
+-------------------------------------------------------------------
+Wed Jul 31 13:48:06 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * Per 'http://python-future.org/automatic_conversion.html' py2 & py3 compatibility.
+  * Make sure test fails if there is more than one list entry.
+  * Fix deprecated warning for invalid escapes.
+  * Support utf-8 in template files
+  * Add utf-8 characters to a test example
+  * Unicode example in template input.
+  * Switch to utf-8 strings and remove unnecessary conversions.
+  * Remove legacy lint checks
+  * Migrate StringIO and remove unneeded import six.
+  * Remove unnecessary explicit unicast declaration.
+  * oll back changes to 'open'.
+  * Cosmetic linting.
+  * Package 'future' needed for importing builtins.
+  * Add tests and testdata to distribution.
+  * Use correct install_requires stanza for dependencies.
+  * Include testdata files in binarty dist for tyesting.
+- deleted patches
+  - textfsm_test_do_not_relay_on_dic_order.patch (upstreamed)
+
+-------------------------------------------------------------------
+Fri Jul 20 11:49:46 UTC 2018 - tchvatal@suse.com
+
+- Conflict with texttable as we provide same package file
+  reported on GH for upstream to sort out
+
+-------------------------------------------------------------------
+Mon Jul  2 13:04:39 UTC 2018 - aplanas@suse.com
+
+- Add textfsm_test_do_not_relay_on_dic_order.patch to enable
+  tests in Python2 and Python3
+
+-------------------------------------------------------------------
+Thu Jun 21 07:33:03 UTC 2018 - tchvatal@suse.com
+
+- Add dependency over python-six as it is stated by upstream
+- Switch to github archive as it contains the testdata
+
+-------------------------------------------------------------------
+Wed Jun 20 21:02:45 UTC 2018 - gyee@suse.com
+
+- Remove python-devel requirement as it is not needed.
+
+-------------------------------------------------------------------
+Wed Jun 20 18:01:31 UTC 2018 - gyee@suse.com
+
+- Remove useless descriptions. 
+
+-------------------------------------------------------------------
+Wed Jun 20 16:16:13 UTC 2018 - gyee@suse.com
+
+- Regenerate the spec file using py2pack.
+
+-------------------------------------------------------------------
+Tue Jun 19 17:58:08 UTC 2018 - gyee@suse.com
+
+- Fix SingleSpec requirements. 
+
+-------------------------------------------------------------------
+Tue Jun 19 16:46:33 UTC 2018 - gyee@suse.com
+
+- Make it a SingleSpec package.
+
+-------------------------------------------------------------------
+Mon Jun 18 21:50:46 UTC 2018 - gyee@suse.com
+
+- create initial package version 0.4.1:
+  Pulled from https://files.pythonhosted.org/packages/a1/0d/a1b490503545b3b4600b965eae5d44cc2b6ce27cfb44f4debc563dbb56d3/textfsm-0.4.1.tar.gz

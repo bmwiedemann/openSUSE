@@ -1,0 +1,8 @@
+<package name="python-smpplib" project="openSUSE:Factory">
+  <title>SMPP library for Python</title>
+  <description>SMPP library for Python.
+
+</description>
+  <devel project="devel:languages:python" package="python-smpplib"/>
+  <url>https://pypi.org/project/smpplib/</url>
+</package>

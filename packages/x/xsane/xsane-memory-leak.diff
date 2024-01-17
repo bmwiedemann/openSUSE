@@ -1,0 +1,21 @@
+Index: xsane-0.998/src/xsane-batch-scan.c
+===================================================================
+--- xsane-0.998.orig/src/xsane-batch-scan.c
++++ xsane-0.998/src/xsane-batch-scan.c
+@@ -680,7 +680,6 @@ static GtkWidget *xsane_batch_scan_creat
+  GtkWidget *list_item;
+  GtkWidget *hbox;
+  int size = 120;
+- char *data;
+ 
+   list_item = gtk_list_item_new();
+ 
+@@ -688,8 +687,6 @@ static GtkWidget *xsane_batch_scan_creat
+   gtk_container_add(GTK_CONTAINER(list_item), hbox);
+   gtk_widget_show(hbox);
+ 
+-  data = calloc(size, size);
+-
+   parameters->gtk_preview = gtk_preview_new(GTK_PREVIEW_COLOR);
+   gtk_preview_size(GTK_PREVIEW(parameters->gtk_preview), size, size);
+   gtk_box_pack_start(GTK_BOX(hbox), parameters->gtk_preview, FALSE, FALSE, 0);

@@ -1,0 +1,335 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ca48ac3cc89fce5bd4c9b785bdd291b</srcmd5>
+    <version>2.0</version>
+    <time>1413987840</time>
+    <user>coolo</user>
+    <comment>new package, obsoleting nagios-plugins (incl. subpackages)</comment>
+    <requestid>257389</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>208ddb25215262c2d90a42636e54b6bb</srcmd5>
+    <version>2.1.2</version>
+    <time>1455190622</time>
+    <user>dimstar_suse</user>
+    <comment>- remove monitoring-plugins-postgresql.patch : fixed upstream
+- remove monitoring-plugins.negate.validate_arguments.patch : fixed
+  upstream
+- add patch comments to spec file as requested by rpmlint
+- rebase all patches to current code stream
+
+- update to 2.1.2:
+  ENHANCEMENTS
+  + check_snmp's performance data now also includes warning/critical
+    thresholds
+  + New check_snmp &quot;-N&quot; option to specify SNMPv3 context name
+  + New check_nt &quot;-l&quot; parameters: seconds|minutes|hours|days
+  + New check_mailq -s option which tells the plugin to use sudo(8)
+  + New -W/-C option for check_ldap to check number of entries (Gerhard Lausser)
+  + The check_http -S/--ssl option now accepts the arguments &quot;1.1&quot; and &quot;1.2&quot;
+    to force TLSv1.1 and TLSv1.2 connections, respectively
+  + The check_http -S/--ssl option now allows for specifying the desired
+    protocol with a &quot;+&quot; suffix to also accept newer versions
+  FIXES
+  + Let check_real terminate lines with CRLF when talking to the server, as
+    mandated by 2326
+  + Fix check_procs on HP-UX
+  + check_smtp's -e/--expect option can now be combined with -S/--starttls
+  + Fix incorrect performance data thresholds emitted by check_ups
+  WARNINGS
+  + The format of the performance data emitted by check_mrtgtraf has been
+    changed to comply with the development guidelines
+  + check_ssh now returns CRITICAL for protocol/version errors
+  + If a plugin is invoked with -h/--help or -V/--version, the exit status
+    is now UNKNOWN</comment>
+    <requestid>341451</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cedb511f9e6d7b1e125b8ab4c595acb0</srcmd5>
+    <version>2.1.2</version>
+    <time>1457353588</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>364649</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>59885dd78af2ca5514487f48fda1ec2b</srcmd5>
+    <version>2.2</version>
+    <time>1485250678</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>451649</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9f1d679c68ef3b092ebc6eac529a9d59</srcmd5>
+    <version>2.2</version>
+    <time>1493456032</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491853</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6ab93be1a8657012e714971b9a82dc23</srcmd5>
+    <version>2.2</version>
+    <time>1495058127</time>
+    <user>lrupp</user>
+    <comment>1</comment>
+    <requestid>495700</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bdac9ddc28896bbaaaa15381ffed5848</srcmd5>
+    <version>2.2</version>
+    <time>1501067117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512474</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d6df61cb221b33a6f133faaae11994c0</srcmd5>
+    <version>2.2</version>
+    <time>1508876544</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>534540</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>8c8c8a61df9a7e088bf1e47fac81414b</srcmd5>
+    <version>2.2</version>
+    <time>1510506190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540707</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>489a195e53fe720b44cefe1655782622</srcmd5>
+    <version>2.2</version>
+    <time>1535123572</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631188</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>7772724dd5029b200894e342d26b5d34</srcmd5>
+    <version>2.2</version>
+    <time>1539342691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>641318</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>4365f852579b825cfb7b91fe1e6c6a57</srcmd5>
+    <version>2.2</version>
+    <time>1549624309</time>
+    <user>coolo</user>
+    <comment>- update usr.lib.nagios.plugins.check_procs again for &gt;= sle15
+  case so that ptrace is allowed</comment>
+    <requestid>672187</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>13c1ed0e000a070482022345bd468d0e</srcmd5>
+    <version>2.2</version>
+    <time>1555488488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694443</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>1e1cf11c93c3d25ab81620d481452b0e</srcmd5>
+    <version>2.2</version>
+    <time>1556107026</time>
+    <user>maxlin_factory</user>
+    <comment>- apply check_ping_fix_ip4.patch only for suse_version &gt;= 1500
+  sle12/leap42 ping does not know the -4 parameter (boo#132903)
+
+  case so that ptrace is allowed (boo#1133107)</comment>
+    <requestid>697173</requestid>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>e6af14a9864f864a60e28de594f036fb</srcmd5>
+    <version>2.2</version>
+    <time>1556817506</time>
+    <user>dimstar_suse</user>
+    <comment>  sle12/leap42 ping does not know the -4 parameter (boo#1132903)</comment>
+    <requestid>699682</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>68addc376f6df5f42121c291b7260dda</srcmd5>
+    <version>2.2</version>
+    <time>1563259306</time>
+    <user>dimstar_suse</user>
+    <comment>- monitoring-plugins-mysql should also provide monitoring-plugins-mysql_query
+- Provide/Obsolete nagios-plugins in old version for better 
+  compatibility and to allow dist upgrade (boo#1114483)</comment>
+    <requestid>715402</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eaf343d736b147678a8d113a347dd378</srcmd5>
+    <version>2.3~alpha.20200520T233014.cadac85e</version>
+    <time>1600702949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835552</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>39622fae3e59d697e25e85916ab84a7c</srcmd5>
+    <version>2.3~alpha.20200520T233014.cadac85e</version>
+    <time>1603203491</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842723</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>135ec2dc621f9c47858ae07220008b6d</srcmd5>
+    <version>2.3.1</version>
+    <time>1619653098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888965</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>edff61ed4c50c9cbcbdb981306a78299</srcmd5>
+    <version>2.3.1</version>
+    <time>1625777367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905095</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>f0d5beff785ff4ccc5653b41f069a725</srcmd5>
+    <version>2.3.1</version>
+    <time>1628023732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909914</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>4b88b84334912f62be5aa825b06c7e12</srcmd5>
+    <version>2.3.1</version>
+    <time>1633038216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922292</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>2a52528473212fe7ca05c33812d7d1ec</srcmd5>
+    <version>2.3.1</version>
+    <time>1637701833</time>
+    <user>dimstar_suse</user>
+    <comment>JFYI: this is planned as update also for SLE12 and SLE15.
+Please have a closer look, not that I missed something.
+As the plugins are in productive use on monitor.opensuse.org, I
+do not expect big issues. But the dhcpd plugin was not extensively tested, yet.
+
+
+- recommend syslog for monitoring-plugins-log, as people probably 
+  want to analize logs generated by (r)syslog or journald
+Renamed patches:
+- renamed monitoring-plugins-1.4.6-no_chown.patch to 
+  monitoring-plugins-1.4.6-Makefile_-_no_chown.patch to make it
+  easier to detect the patched file
+- renamed monitoring-plugins-2.1.1-check_logfile.patch to 
+  monitoring-plugins-2.1.1-check_log_-_quoting.patch to make it
+  easier to detect the patched file and reason for the patch
+New patches:
+- added monitoring-plugins-2.3.1-check_snmp_segfaults.patch 
+  check_snmp will segfaults at line 489 if number of lines returned 
+  by SNMPD is greater than number of defined thresholds
+  -&gt; https://github.com/monitoring-plugins/monitoring-plugins/pull/1589
+- added monitoring-plugins-2.3.1-check_snmp_hang_on_STDERR_workaround.patch
+  When the MIBs are not quite right, snmpget outputs lots of errors on 
+  STDERR before getting down to business.
+  If this is enough to fill the pipe buffer, snmpget hangs waiting for 
+  it to be cleared, which it never will be because check_snmp is 
+  waiting for snmpget to output something on STDOUT.
+  This simple fix from s2156945 for this is to read STDERR before STDOUT.
+  cmd_run_array from utils_cmd.c is also used by plugins/check_by_ssh 
+  and plugins/negate but you're likely to get lots of errors or lots 
+  of output, not both at the same time.
+  The real fix is probably to do a select() and read from both as 
+  they come in.
+  https://github.com/monitoring-plugins/monitoring-plugins/issues/1706
+- added monitoring-plugins-2.3.1-check_dhcp_-_detect_rogue_dhcp_servers.patch 
+  feature enhancement from Patrick Cervicek for check_dhcp, which allows 
+  to detect rogue DHCP servers. Use it with the &quot;-x&quot; flag, example:</comment>
+    <requestid>933139</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>a7c3d21a7a6624a654d32485aa09a781</srcmd5>
+    <version>2.3.1</version>
+    <time>1639685991</time>
+    <user>dimstar_suse</user>
+    <comment>Preparing for inclusion in SLE12 and (latest) SLE15 as general update (to have the package on the same version in all SLE distributions. </comment>
+    <requestid>940945</requestid>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>fb84335997ae02f0cde78794baf25ca9</srcmd5>
+    <version>2.3.1</version>
+    <time>1648330270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965012</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>093ef7200a834a6a2339060f59cb7d96</srcmd5>
+    <version>2.3.1</version>
+    <time>1657809253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988981</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>e6240cedcbf93a9e0caa09ca589b2cdc</srcmd5>
+    <version>2.3.1</version>
+    <time>1665844710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011118</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d0139651fb593b5b519df5011aedbea1</srcmd5>
+    <version>2.3.3</version>
+    <time>1698872985</time>
+    <user>dimstar_suse</user>
+    <comment>- renamed patches
+  monitoring-plugins-wrong_return_in_check_swap.patch
+  to monitoring-plugins-2.3.3-wrong_percent_in_check_swap.patch
+  monitoring-plugins.check_snmp.arrayaddress.patch
+  to monitoring-plugins-2.3.3-check_snmp.arrayaddress.patch
+  monitoring-plugins-2.3-check_ntp_perf_absolute.patch
+  to monitoring-plugins-2.3.3-check_ntp_perf_absolute.patch
+
+- Add buildrequires for coreutils-systemd, as the configure script
+  checks for uptime [bsc#1216148]
+
+- systemd-not-utmp.patch: let check_users prefer systemd-logind
+  over utmp (jsc#PED-3144)
+
+- Add attach_disconnected flag for usr.lib.nagios.plugins.check_procs
+  and usr.lib.nagios.plugins.check_procs.sle15 apparmor profiles to
+  permit /proc/PID/exe access; (bsc#1209194)
+
+- added monitoring-plugins-2.3.3-check_icmp.patch
+  Simple patch to avoid compiler errors with latest gcc
+- removed monitoring-plugins-2.3.1-fixing-shellcheck.patch - upstream
+- renamed monitoring-plugins-2.2-mariadb_102_build_fix.patch
+  to monitoring-plugins-2.3.3-mariadb_102_build_fix.patch
+
+- added monitoring-plugins-2.3.3-check_http-proxy.patch
+  Fixes a check_http bug when trying to follow a redirect
+  returned from a URL retrieved via SSL proxy (issue #1764)
+
+- finally remove monitoring-plugins-1.4.6-Makefile_-_no_chown.patch: 
+  obsoleted by monitoring-plugins-2.3.3-root-plugins-Makefile_-_no_chown.patch</comment>
+    <requestid>1121479</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>4bb72df1dfc11d020c0e89654d4e77f2</srcmd5>
+    <version>2.3.3</version>
+    <time>1700162974</time>
+    <user>anag+factory</user>
+    <comment>- also require coreutils-systemd in monitoring-plugins-load
+  as the check uses the uptime binary at runtime
+  revisiting [bsc#1216148]</comment>
+    <requestid>1126870</requestid>
+  </revision>
+</revisionlist>

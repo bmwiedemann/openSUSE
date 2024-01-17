@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c969915adea5f0bc52cbf3a1d6f21fe6</srcmd5>
+    <version>1.8.1</version>
+    <time>1532774619</time>
+    <user>dimstar_suse</user>
+    <comment>noson is a C++ library for accessing/controlling sonos devices. Noson-app is a graphical Qt5 client which relies on this library, that ideally should also get into Factory. </comment>
+    <requestid>625690</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0acdae87bb9dde7c854b63e2746fe15a</srcmd5>
+    <version>1.8.2</version>
+    <time>1533412497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2
+</comment>
+    <requestid>627385</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>06bdad1cc8657a0399238906514e99ee</srcmd5>
+    <version>1.10.4</version>
+    <time>1548335631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.4
+  * Add fallback to parse malformed xml
+  * Refactor secure socket and fix SNI issue
+  * Add functions to handles bass and treble levels
+  * Add functions to provides the protocol identifier from an URI
+  * Fix the parse of alarm recurrence
+  * Remove unused builtin functions since standard C++98 is no 
+    longer supported
+  * Improve SMAPI interoperability
+  * Improve OAuth registration for third part services
+</comment>
+    <requestid>667840</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1918b4d3a558ee177ab4c613bfc5e442</srcmd5>
+    <version>1.12.4</version>
+    <time>1554712738</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.4
+  * Fix Sonos API changes in build 49263270 (10.1)
+  * Allows to stream local files including artworks
+  * Allows to stream from the pulseaudio output
+  * Minor fixes and improvements
+</comment>
+    <requestid>691967</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ddfa590f8fbc35867a611fb2cb7d6659</srcmd5>
+    <version>1.12.4</version>
+    <time>1555053433</time>
+    <user>dimstar_suse</user>
+    <comment>- Pulseaudio support
+</comment>
+    <requestid>693340</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1e5f921beb2e553aee203e80a86e02d7</srcmd5>
+    <version>2.2.0</version>
+    <time>1576505992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0
+  * Stream all audio files using the transfer by range
+  * Allow to stream M4A and M4B files
+  * Bug fixing
+  * Manage failure of renewable subscription
+  * Cache the response of AVTransport::GetPositionInfo
+  * New API to handle the global system.
+  * Pooling of event subscriptions.
+  * Pooling of available zone players.
+  * Allow to bypass the SSDP discovery by passing the url of a
+    SONOS device
+  * Fix missing search categories for the services without
+    presentation map
+  * Fix a bug in service registration (PocketCasts and problaly few
+    others)
+  * Support actions to control loudness
+  * Workaround Spotify BUG using locale en_GB
+  * Support for output fixed
+  * Improvements
+  * Improves the extractor of cover art from ogg files
+  * Minor fixes
+  * Allow to stream media file OGG/Vorbis
+  * Fix language range to be compliant with RFC-4647 (Issue with
+    Spotify services)
+  * Improvements
+  * Fix the build with MSVC 2017
+  * Refactor inet socket
+  * Use multicast UDP packet as fallback when discovering
+  * Fix to work around multicast filtering when discovering devices
+    (i.e Google WIFI and probably many others)
+  * Fix MSVC build
+  * Minor improvements
+- Add %license and %doc to spec file
+</comment>
+    <requestid>757209</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b34f08f16a56f9addbe5dee09bed147</srcmd5>
+    <version>2.3.0</version>
+    <time>1579463819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0
+  * Discard any obsolete event according to the last stamped. 
+    That fixes some cases when rendering update events are caught
+    out of order (i.e swiping the volume up/down).
+  * Discard some device models during discovery
+</comment>
+    <requestid>765503</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>38b972c66c6311be119408b5651d55cd</srcmd5>
+    <version>2.3.1</version>
+    <time>1593378420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817491</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2423b5e326c8184e93fdd05cf03e8085</srcmd5>
+    <version>2.4.1</version>
+    <time>1618387886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1
+  * Fallback when presentation map is invalid for the service
+  * Includes improvements for pulse streamer
+</comment>
+    <requestid>885151</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e82b2fb061cd6af7a8f1a140c94f18fe</srcmd5>
+    <version>2.6.0</version>
+    <time>1641555965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0
+  * add support for changing sub gain
+  * The SetEQ/GetEQ actually use i2
+  * Add support for volume in decibel
+  * add github workflows to test the build on ubuntu-latest
+  * show the badge of build status
+  * Update build-ubuntu-latest.yml 
+  * implement the move constructor for the shared pointer
+  * fix const qualifier of returned shared_ptr
+- Change source URL according to upstream
+</comment>
+    <requestid>944526</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e158530c5fa1a4844f0fd6cec3d348bf</srcmd5>
+    <version>2.8.6</version>
+    <time>1652801058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977573</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>384d03c39274253bf82dbcd839a83d27</srcmd5>
+    <version>2.8.6</version>
+    <time>1660662451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>995743</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>77c73f992dd0aac66b8a9b1f4b1b29d5</srcmd5>
+    <version>2.10.1</version>
+    <time>1676464854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065869</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7e295c6a555198cda94d75ef810f0ac1</srcmd5>
+    <version>2.10.2</version>
+    <time>1680549201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077030</requestid>
+  </revision>
+</revisionlist>

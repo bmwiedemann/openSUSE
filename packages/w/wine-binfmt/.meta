@@ -1,0 +1,5 @@
+<package name="wine-binfmt" project="openSUSE:Factory">
+  <title>Windows binfmt_misc support</title>
+  <description>Run Windows(tm) executables out of the box.</description>
+  <devel project="Emulators:Wine" package="wine-binfmt"/>
+</package>

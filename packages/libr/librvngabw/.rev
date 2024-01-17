@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5781a79cf983ca3bad175615294166d1</srcmd5>
+    <version>0.0.1</version>
+    <time>1460482295</time>
+    <user>dimstar_suse</user>
+    <comment>Used by writerperfect now</comment>
+    <requestid>379296</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0d1ce8b7736113e71fb4b1da62567e2</srcmd5>
+    <version>0.0.1</version>
+    <time>1643404346</time>
+    <user>dimstar_suse</user>
+    <comment>fix license header to correspond to SPDX abbreviation</comment>
+    <requestid>949568</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd876e0ad8cca4abf304d30b7ec8df43</srcmd5>
+    <version>0.0.3</version>
+    <time>1670703514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041932</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dc35c63d4300c6cfbe95d69df2dafb1d</srcmd5>
+    <version>0.0.3</version>
+    <time>1691594766</time>
+    <user>dimstar_suse</user>
+    <comment>fix sle12sp5</comment>
+    <requestid>1103051</requestid>
+  </revision>
+</revisionlist>

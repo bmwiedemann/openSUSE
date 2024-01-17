@@ -1,0 +1,5 @@
+<package name="megaglest-data" project="openSUSE:Factory">
+  <title>Data Files for Megaglest</title>
+  <description>Data files required for playing Megaglest.</description>
+  <devel project="games" package="megaglest-data"/>
+</package>

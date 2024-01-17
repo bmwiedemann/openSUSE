@@ -1,0 +1,10 @@
+--- freemarker-2.3.31/build.xml	2023-08-22 01:25:24.046989855 +0200
++++ freemarker-2.3.31/build.xml	2023-09-11 10:28:52.456873100 +0200
+@@ -488,6 +488,7 @@
+       charset="UTF-8"
+       docencoding="UTF-8"
+       locale="en_US"
++      additionalparam="-notimestamp"
+     >
+       <link href="http://docs.oracle.com/javase/8/docs/api/"/>
+     </javadoc>

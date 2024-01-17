@@ -1,0 +1,73 @@
+---
+ doc/generic/enctex/unimap.py |   25 +++++++------------------
+ 1 file changed, 7 insertions(+), 18 deletions(-)
+
+--- texmf-dist/doc/generic/enctex/unimap.py
++++ texmf-dist/doc/generic/enctex/unimap.py	2021-06-30 04:30:00.079549875 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ ###################################################################
+ # unimap.py
+ # Generates utf8raw.tex file containing math character definitions
+@@ -47,17 +47,6 @@ from time import asctime, gmtime
+ database = 'unimap.txt'    # Input file
+ output = 'utf8raw.tex'   # Output file
+ 
+-# Compatibility with Pyhton-2.1
+-if not __builtins__.__dict__.has_key('True'):
+-    True = 1; False = 0
+-if not __builtins__.__dict__.has_key('file'):
+-    file = open
+-if not __builtins__.__dict__.has_key('dict'):
+-    def dict(l):
+-        d = {}
+-        for x in l: d[x[0]] = x[1]
+-        return d
+-
+ charline_re = re.compile(r'^[0-9A-F]{4,}\t')
+ comsect_re = re.compile(r'^@+\t')
+ line_template = '\\mubyte %s %s\\endmubyte %% U+%04X %s\n'
+@@ -91,12 +80,12 @@ def linetype(line):
+         return LineType.Character, (int(line[:m.end()], 16),
+                                     line[m.end():].strip().lower())
+     if not line.startswith('\t'):
+-        raise ValueError, 'Queer line doesn\'t start with @ or Tab'
++        raise ValueError('Queer line doesn\'t start with @ or Tab')
+     line = line.strip()
+     if not line:
+         return LineType.Empty, None
+-    if not LineType.map.has_key(line[0]):
+-        raise ValueError, 'Queer character info line (marker %s)' % line[0]
++    if line[0] not in LineType.map:
++        raise ValueError('Queer character info line (marker %s)' % line[0])
+     return line[0], line[1:].strip()
+ 
+ def utf8chars(u):
+@@ -112,7 +101,7 @@ def utf8chars(u):
+                                    0x80 | (0x3f & (u >> 6)),
+                                    0x80 | (0x3f & u))
+ 
+-fh = file(database, 'r')
++fh = open(database, 'r')
+ # skip some initial noise
+ while True:
+     line = fh.readline()
+@@ -123,7 +112,7 @@ while True:
+     if typ == LineType.Section:
+         break
+ 
+-fw = file(output, 'w')
++fw = open(output, 'w')
+ fw.write('%% Generated from %s %s\n' % (database, asctime(gmtime())))
+ while typ:
+     if typ == LineType.Section:
+@@ -132,7 +121,7 @@ while typ:
+         char = val
+     elif typ == LineType.TeX:
+         if not val.startswith('\\'):
+-            raise ValueError, '%s is not a control seq (U%X)' % (val, char[0])
++            raise ValueError('%s is not a control seq (U%X)' % (val, char[0]))
+         if sect:
+             fw.write('\n%% %s\n' % sect)
+             sect = None

@@ -1,0 +1,180 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>ab6f0985fcdae12b3a238c33f04a4d94</srcmd5>
+    <version>0.99_1.0beta1</version>
+    <time>1168903452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="57">
+    <srcmd5>beb1172b96c3a8e1d3cc30c257b21567</srcmd5>
+    <version>0.99_1.0beta1</version>
+    <time>1179395040</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>25e80997e4689eedff7dde3a70812817</srcmd5>
+    <version>1.0</version>
+    <time>1185819477</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="29">
+    <srcmd5>8902ca8c51fc4a2afb2f411dde25561f</srcmd5>
+    <version>1.0</version>
+    <time>1196289829</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="60">
+    <srcmd5>3735589739cec45b41252377cf6337c7</srcmd5>
+    <version>1.0</version>
+    <time>1207693272</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="91">
+    <srcmd5>fc56f9c29805061c7587bfedc7678d0b</srcmd5>
+    <version>1.0</version>
+    <time>1219446804</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="99">
+    <srcmd5>49bccc7d6c120e24fa422e0384673d01</srcmd5>
+    <version>1.0</version>
+    <time>1222790435</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="100">
+    <srcmd5>04522ca4e06615abdc4173d79c07d65c</srcmd5>
+    <version>1.0</version>
+    <time>1232066971</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="101">
+    <srcmd5>7d8a676241cc93c39ced67b84b88b973</srcmd5>
+    <version>1.0</version>
+    <time>1233993956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="103">
+    <srcmd5>7d8a676241cc93c39ced67b84b88b973</srcmd5>
+    <version>1.0</version>
+    <time>1233993956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="104">
+    <srcmd5>0b877b6f2f7dbf4e50f9d155efe3f2d1</srcmd5>
+    <version>1.0</version>
+    <time>1268924850</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="105">
+    <srcmd5>affad8e3c15a3104b68ab16fa06ae945</srcmd5>
+    <version>1.0</version>
+    <time>1268990504</time>
+    <user>autobuild</user>
+    <comment>Copy from games:tools/lomoco based on submit request 35231 from user lnussel
+</comment>
+    <requestid>35231</requestid>
+  </revision>
+  <revision rev="13" vrev="107">
+    <srcmd5>affad8e3c15a3104b68ab16fa06ae945</srcmd5>
+    <version>1.0</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="108">
+    <srcmd5>affad8e3c15a3104b68ab16fa06ae945</srcmd5>
+    <version>1.0</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="111">
+    <srcmd5>affad8e3c15a3104b68ab16fa06ae945</srcmd5>
+    <version>1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="113">
+    <srcmd5>affad8e3c15a3104b68ab16fa06ae945</srcmd5>
+    <version>1.0</version>
+    <time>1319182159</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="114">
+    <srcmd5>69d9575054dcf0c7cd4e87901c93e6a0</srcmd5>
+    <version>1.0</version>
+    <time>1323341457</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95085 from coolo)</comment>
+    <requestid>95531</requestid>
+  </revision>
+  <revision rev="18" vrev="116">
+    <srcmd5>69d9575054dcf0c7cd4e87901c93e6a0</srcmd5>
+    <version>1.0</version>
+    <time>1340183673</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="117">
+    <srcmd5>24278159d84b122fe517c54d9769d5c2</srcmd5>
+    <version>1.0</version>
+    <time>1352407839</time>
+    <user>namtrac</user>
+    <comment>Update to make the package install it's udev related files in the /usr/lib/udev directory as is now required by the new systemd (forwarded request 140258 from tittiatcoke)</comment>
+    <requestid>140655</requestid>
+  </revision>
+  <revision rev="20" vrev="119">
+    <srcmd5>24278159d84b122fe517c54d9769d5c2</srcmd5>
+    <version>1.0</version>
+    <time>1359109408</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="120">
+    <srcmd5>db02862a8a824609e774576f3ae57627</srcmd5>
+    <version>1.0</version>
+    <time>1366797146</time>
+    <user>coolo</user>
+    <comment>- Fix udev rules location paths. (forwarded request 163694 from elvigia)</comment>
+    <requestid>173120</requestid>
+  </revision>
+  <revision rev="22" vrev="122">
+    <srcmd5>db02862a8a824609e774576f3ae57627</srcmd5>
+    <version>1.0</version>
+    <time>1379663192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="124">
+    <srcmd5>db02862a8a824609e774576f3ae57627</srcmd5>
+    <version>1.0</version>
+    <time>1409301818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="125">
+    <srcmd5>fe6cebfebb721d034f7cbf441211f48d</srcmd5>
+    <version>1.0</version>
+    <time>1429769057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298488</requestid>
+  </revision>
+  <revision rev="25" vrev="126">
+    <srcmd5>3e605320f02a46341d9561a4da5b8e25</srcmd5>
+    <version>1.0</version>
+    <time>1500456159</time>
+    <user>dimstar_suse</user>
+    <comment>- require %fillup_prereq (boo#1040198)</comment>
+    <requestid>511205</requestid>
+  </revision>
+  <revision rev="26" vrev="127">
+    <srcmd5>32dd97c9453b431cc8181bb8d674e3fc</srcmd5>
+    <version>1.0</version>
+    <time>1511817504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545887</requestid>
+  </revision>
+</revisionlist>

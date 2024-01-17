@@ -1,0 +1,41 @@
+Use /var/db for nss_db
+
+Index: glibc-2.27/Makeconfig
+===================================================================
+--- glibc-2.27.orig/Makeconfig
++++ glibc-2.27/Makeconfig
+@@ -245,7 +245,7 @@ inst_sysconfdir = $(install_root)$(sysco
+ 
+ # Directory for the database files and Makefile for nss_db.
+ ifndef vardbdir
+-vardbdir = $(localstatedir)/db
++vardbdir = /var/lib/misc
+ endif
+ inst_vardbdir = $(install_root)$(vardbdir)
+ 
+Index: glibc-2.27/nss/db-Makefile
+===================================================================
+--- glibc-2.27.orig/nss/db-Makefile
++++ glibc-2.27/nss/db-Makefile
+@@ -22,7 +22,7 @@ DATABASES = $(wildcard /etc/passwd /etc/
+ 		       /etc/rpc /etc/services /etc/shadow /etc/gshadow \
+ 		       /etc/netgroup)
+ 
+-VAR_DB = /var/db
++VAR_DB = /var/lib/misc
+ 
+ AWK = awk
+ MAKEDB = makedb --quiet
+Index: glibc-2.27/sysdeps/unix/sysv/linux/paths.h
+===================================================================
+--- glibc-2.27.orig/sysdeps/unix/sysv/linux/paths.h
++++ glibc-2.27/sysdeps/unix/sysv/linux/paths.h
+@@ -68,7 +68,7 @@
+ /* Provide trailing slash, since mostly used for building pathnames. */
+ #define	_PATH_DEV	"/dev/"
+ #define	_PATH_TMP	"/tmp/"
+-#define	_PATH_VARDB	"/var/db/"
++#define	_PATH_VARDB	"/var/lib/misc/"
+ #define	_PATH_VARRUN	"/var/run/"
+ #define	_PATH_VARTMP	"/var/tmp/"
+ 

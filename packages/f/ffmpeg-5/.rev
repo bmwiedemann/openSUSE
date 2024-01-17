@@ -1,0 +1,189 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb27f872069deae33fe392380746e53b</srcmd5>
+    <version>5.0</version>
+    <time>1649014246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964438</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c1d59e5908359bf7a6ffb833121d4de</srcmd5>
+    <version>5.0.1</version>
+    <time>1649713784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969259</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91016eedf1fe04f75678cd450b1740ac</srcmd5>
+    <version>5.1</version>
+    <time>1659034737</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 5.1
+  * AVIF image muxer support for the AV1-based image format
+  * JPEG-XL image support
+  * Removed the X-Video Motion Compensation (XvMC) hardware
+    acceleration
+  * IPFS/IPNS protocol support
+  * PCM-Bluray encoder support</comment>
+    <requestid>991461</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5fb1b97886daf2c2ea22fb2a2b9804ca</srcmd5>
+    <version>5.1.1</version>
+    <time>1663275549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.1.1</comment>
+    <requestid>1003761</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d38676aacd0554ca1712cc7e26faf06f</srcmd5>
+    <version>5.1.2</version>
+    <time>1664302411</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 5.1.2</comment>
+    <requestid>1006269</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>194b8772b4ffb841d35940a2b5f16a08</srcmd5>
+    <version>5.1.2</version>
+    <time>1665420425</time>
+    <user>favogt_factory</user>
+    <comment>- Enable AMF conditionally (forwarded request 1008954 from alois)</comment>
+    <requestid>1008955</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cc3bd9c9a3ecbcb997cfd6e1b4b01fd6</srcmd5>
+    <version>5.1.2</version>
+    <time>1665929375</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh Fedora OpenH264 dlopen patch and sources for OpenH264 2.3.1
+  * Patch: ffmpeg-dlopen-openh264.patch
+  * Source: ffmpeg-dlopen-headers.tar.xz
+  * Source: ffmpeg_get_dlopen_headers.sh (forwarded request 1011140 from Pharaoh_Atem)</comment>
+    <requestid>1011142</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d28cbd4455aa88773ae0db5e45b3d289</srcmd5>
+    <version>5.1.2</version>
+    <time>1668609855</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix
+  out of bounds read in update_block_in_prev_frame() (bsc#1205388).</comment>
+    <requestid>1036209</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>ce7e30129ee7f5358b761a886568e35c</srcmd5>
+    <version>5.1.2</version>
+    <time>1670863036</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable librist support on TW: enables usage of RIST encoded MPEG-TS
+  streams and is used by OBS Studio (forwarded request 1041371 from gmbr3)</comment>
+    <requestid>1042185</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>fa4c5d793b976f7f9496e61ef4192162</srcmd5>
+    <version>5.1.2</version>
+    <time>1671023432</time>
+    <user>dimstar_suse</user>
+    <comment>- build for x86_64 subarchs the same way like for baseline (forwarded request 1042488 from dirkmueller)</comment>
+    <requestid>1042490</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>e720983e61a86c8a5dc876a3a69c5891</srcmd5>
+    <version>5.1.2</version>
+    <time>1674589370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060634</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>140df5302f9609d820b3de371dd45856</srcmd5>
+    <version>5.1.2</version>
+    <time>1675094982</time>
+    <user>dimstar_suse</user>
+    <comment>- Merge ffmpeg-5-mini.spec with the main .spec file in order to
+  make building the _multibuild packages easier for the case the
+  package is named to be built for a specific distribution; an
+  example would be &quot;A_tw-ffmpeg-5&quot; in Packman.</comment>
+    <requestid>1061829</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>021f53f2515be95f814bc64150b86dd3</srcmd5>
+    <version>5.1.2</version>
+    <time>1675265937</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-vk-video-decoding.patch to resolve build failure with Vulkan 1.3.239</comment>
+    <requestid>1062300</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>b6a1b1e9c0a5005b4d9fc61b1819a0ec</srcmd5>
+    <version>5.1.2</version>
+    <time>1677584894</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ``Requires: this-is-only-for-build-envs`` [boo#1208652]</comment>
+    <requestid>1067951</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>55c5a148b137e2173cec44ca1b8b903d</srcmd5>
+    <version>5.1.2</version>
+    <time>1678902779</time>
+    <user>dimstar_suse</user>
+    <comment>add to ADI:66</comment>
+    <requestid>1071235</requestid>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>2cc4447e388cf6b0f02c43ee9f5ab7a8</srcmd5>
+    <version>5.1.2</version>
+    <time>1679416808</time>
+    <user>dimstar_suse</user>
+    <comment>obsoletes != provides
+THIS IS NEEDED
+https://www.reddit.com/r/openSUSE/comments/11sl1a7/comment/jcg9pbh/?utm_source=share&amp;utm_medium=web2x&amp;context=3 (forwarded request 1072935 from gmbr3)</comment>
+    <requestid>1072937</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d768aa161e652ed6ba507ecf575a6be4</srcmd5>
+    <version>5.1.3</version>
+    <time>1682079336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080446</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>6ac887e79b352eee5c140bc5e0105671</srcmd5>
+    <version>5.1.3</version>
+    <time>1688052572</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-avcodec-libsvtav1-replace-vbv_bufsize-with-maximum_b.patch,
+  0002-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch,
+  0003-avcodec-libsvtav1-only-set-max_buf_sz-if-both-bitrat.patch,
+  0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch</comment>
+    <requestid>1095979</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>601acd4908179675d2236f52569543cd</srcmd5>
+    <version>5.1.4</version>
+    <time>1699910298</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.4:
+  * Updates and bugfixes to avcodecs, avformat and avfilters
+    mainly.
+- Drop patches fixed upstream:
+  * 0001-avcodec-libsvtav1-replace-vbv_bufsize-with-maximum_b.patch
+  * 0002-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
+  * 0003-avcodec-libsvtav1-only-set-max_buf_sz-if-both-bitrat.patch
+  * 0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch
+  * 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch (forwarded request 1124867 from iznogood)</comment>
+    <requestid>1124970</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>23e01e4bbeedfe2d177bdb481977c27e</srcmd5>
+    <version>5.1.4</version>
+    <time>1701972612</time>
+    <user>anag+factory</user>
+    <comment>- Copy codec list from ffmpeg-6</comment>
+    <requestid>1131457</requestid>
+  </revision>
+</revisionlist>

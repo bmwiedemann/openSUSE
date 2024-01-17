@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Dec  4 20:23:09 UTC 2017 - crrodriguez@opensuse.org
+
+- BuildRequire only the needed X libraries, not xorg-x11-devel. 
+
+-------------------------------------------------------------------
+Mon Apr 15 13:29:10 UTC 2013 - idonmez@suse.com
+
+- Add Source URL, see https://en.opensuse.org/SourceUrls 
+
+-------------------------------------------------------------------
+Wed Nov 30 10:35:32 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Aug 30 09:14:01 UTC 2011 - sndirsch@suse.com
+
+- Release 1.2: build system was updated for recent distributions.
+
+-------------------------------------------------------------------
+Thu Jan 25 17:32:53 CET 2007 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Mon Dec  4 14:53:12 CET 2006 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Sun Jul 23 16:43:43 CEST 2006 - sndirsch@suse.de
+
+- fixed build for X.Org 7 
+
+-------------------------------------------------------------------
+Tue May 23 15:04:48 CEST 2006 - sndirsch@suse.de
+
+- created package 
+

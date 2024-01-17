@@ -1,0 +1,5 @@
+<package name="terminology-theme-dark" project="openSUSE:Factory">
+  <title>terminology-theme-dark</title>
+  <description>Old default Dark theme.</description>
+  <devel project="X11:Enlightenment:Factory" package="terminology-theme-dark"/>
+</package>

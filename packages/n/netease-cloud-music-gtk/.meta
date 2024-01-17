@@ -1,0 +1,5 @@
+<package name="netease-cloud-music-gtk" project="openSUSE:Factory">
+  <title>Rust + GTK based NetEase Cloud Music Player for Linux </title>
+  <description>netease-cloud-music-gtk is a Rust + GTK based netease cloud music player, built for Linux systems.（基于 Rust + GTK 开发的网易云音乐播放器，专为 Linux 系统打造。）</description>
+  <devel project="multimedia:apps" package="netease-cloud-music-gtk"/>
+</package>

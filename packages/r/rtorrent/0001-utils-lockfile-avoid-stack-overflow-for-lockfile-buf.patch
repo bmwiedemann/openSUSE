@@ -1,0 +1,28 @@
+From 954bfb70f24578ef33b1f77cf1a3d64fc2f2f595 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Mon, 20 Jun 2022 19:09:57 +1000
+Subject: [PATCH] utils: lockfile: avoid stack overflow for lockfile buffer
+References: https://github.com/rakshasa/rtorrent/pull/1169
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ src/utils/lockfile.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/utils/lockfile.cc b/src/utils/lockfile.cc
+index 7d11d8c9970f..fac5cb23e26f 100644
+--- a/src/utils/lockfile.cc
++++ b/src/utils/lockfile.cc
+@@ -98,7 +98,8 @@ Lockfile::try_lock() {
+   int pos = ::gethostname(buf, 255);
+ 
+   if (pos == 0) {
+-    ::snprintf(buf + std::strlen(buf), 255, ":+%i\n", ::getpid());
++    ssize_t len = std::strlen(buf);
++    ::snprintf(buf + len, 255 - len, ":+%i\n", ::getpid());
+     int __UNUSED result = ::write(fd, buf, std::strlen(buf));
+   }
+ 
+-- 
+2.36.1
+

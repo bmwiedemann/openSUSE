@@ -1,0 +1,11 @@
+--- src/plugin.h-dist	2003-07-25 11:09:43.000000000 +0200
++++ src/plugin.h	2003-07-25 11:10:11.000000000 +0200
+@@ -23,7 +23,7 @@
+ 
+ #include "ac_config.h"
+ 
+-#include <glib-2.0/glib.h>
++#include <glib.h>
+ #include <ladspa.h>
+ #include <jack/jack.h>
+ 

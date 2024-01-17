@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a08094adf420af20eacf718483513b3</srcmd5>
+    <version>2.1.1</version>
+    <time>1526371945</time>
+    <user>dimstar_suse</user>
+    <comment>Docstring format checker for python</comment>
+    <requestid>605974</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>73337bad7577cfb829a779357a8114d8</srcmd5>
+    <version>2.1.1</version>
+    <time>1528896988</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614993</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9aef2be92aeef586d50f1b45da0e0550</srcmd5>
+    <version>2.1.1</version>
+    <time>1548335656</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667867</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e57d381e9e89bf04cd751b5cce94e908</srcmd5>
+    <version>2.1.1</version>
+    <time>1551468743</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680462</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30e9dc2e882cf3ff0b6d005611c186be</srcmd5>
+    <version>3.0.0</version>
+    <time>1552039214</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the changelog whitespace mess
+
+- Fix %check to run the tests from GitHub tarball, and use
+  integration-tests-invocation.patch to invoke pycodestyle using
+  sys.executable, and do not install and uninstall pip during tests.
+- Fix line endings and remove hashbangs
+- Update to v3.0.0
+  + Major Updates
+    * Support for Python 3.3 has been dropped
+    * Added support for Python 3.7
+  + New features
+    * Violations are now reported on the line where the docstring starts, not
+      the line of the def/class it corresponds to
+    * Updated description of pep257 and numpy conventions
+    * __all__ parsing is now done on a best-effort basis - if __all__ can't
+      be statically determined, it will be ignored
+  + Bug Fixes
+    * Fixed a false-positive recognition of section names causing D405 to be
+      reported
+    * Fixed a bug where functions that don't end with a newline will sometimes
+      raise an exception
+- Set six minimum version to v1.10.0</comment>
+    <requestid>681665</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6acdce32a6fea897aea6607ca6312bca</srcmd5>
+    <version>4.0.1</version>
+    <time>1569233922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update integration-tests-invocation.patch to match PR submitted
+  upstream, including an additional use of sys.executable in tests,
+  and move disabling of problematic fixture to the .spec
+- Update to v4.0.1
+  * D401: Fixed a false positive where one stem had multiple
+    imperative forms, e.g., init and initialize / initiate
+  * Fix parser hanging when there's a comment directly after ``__all__``
+  * Fixed RST error in table which resulted in the online
+    documentation missing the violation code table
+  * Fixed IndentationError when parsing function arguments
+- from v4.0.0
+  * Support for Python 2.x and PyPy has been dropped
+  * Added initial support for Google convention
+  * Added pre-commit hook (#346)
+  * Fix parsing tuple syntax ``__all__`` (#355, #352).</comment>
+    <requestid>731444</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>baa8c5005a5c082ee33aee26b1d02759</srcmd5>
+    <version>5.0.2</version>
+    <time>1581693917</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>772544</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ab56fb40603e22565cfb77fb4092474c</srcmd5>
+    <version>5.0.2</version>
+    <time>1590649695</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807658</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>56153d08e60fdeb3b5fc71319fa95048</srcmd5>
+    <version>5.1.1</version>
+    <time>1603961244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841138</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8009e2319b611cf9460081736f02b64a</srcmd5>
+    <version>6.1.1</version>
+    <time>1648570432</time>
+    <user>dimstar_suse</user>
+    <comment>- update 6.1.1:
+  * Split ``--source`` by lines instead of by characters (#536).
+  * Enable full toml configuration and pyproject.toml (#534).
+  * Support for Python 3.5 has been dropped (#510).
+  * Add flag to disable `# noqa` comment processing in API (#485).
+  * Methods, Functions and Nested functions that have a docstring now throw D418 (#511).
+  * Methods decorated with @overload no longer reported as D102 (#511).
+  * Functions and nested functions decorated with @overload no longer reported as D103 (#511).
+  * Treat &quot;package&quot; as an imperative verb for D401 (#356).
+  * Fix the parsing of decorated one line functions (#499).
+  * Methods, Functions and Nested functions that have a docstring now throw D418 (#511).
+  * Methods decorated with @overload no longer reported as D102.
+  * Functions and nested functions decorated with @overload no longer reported as D103.</comment>
+    <requestid>965073</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4536b3101e79f57d82a1834f478bd3ef</srcmd5>
+    <version>6.1.1</version>
+    <time>1649461434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967525</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ec02afcb061b424d42df07b881b2f329</srcmd5>
+    <version>6.1.1</version>
+    <time>1650060823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969584</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>fbf23089bcb182d85a07e9320dd1555b</srcmd5>
+    <version>6.1.1</version>
+    <time>1659941086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989318</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8006d66b2d79dcdfa1449060963c9b5b</srcmd5>
+    <version>6.3.0</version>
+    <time>1674232713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059820</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f660b550446ba8c225b3393eedf87193</srcmd5>
+    <version>6.3.0</version>
+    <time>1686753024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093045</requestid>
+  </revision>
+</revisionlist>

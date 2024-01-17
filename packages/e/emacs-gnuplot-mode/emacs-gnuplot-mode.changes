@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Mar 11 07:04:22 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Make sure that Upstream source tar ball fits local copy 
+
+-------------------------------------------------------------------
+Mon Nov 20 15:34:47 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Initial separate package for gnuplot mode. The gnuplot mode
+  was formerly distributed as part of the gnuplot package.
+- Update from version 0.6.1 to version 0.7.0
+  * Added context sensitive auto completion

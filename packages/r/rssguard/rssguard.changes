@@ -1,0 +1,1465 @@
+-------------------------------------------------------------------
+Wed Dec 20 22:32:55 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.6.3
+  * Added:
+    - Lite internal web browser now properly decodes all HTML pages according
+      to their declared encoding.
+    - Image downscaling in lite browser is faster.
+    - Icon for classic RSS/ATOM accounts is now changeable.
+      (gh#martinrotter/rssguard#695)
+    - If main window is active then "fetching started" notifications are not
+      delivered. (gh#martinrotter/rssguard#597)
+    - Number of child feed/categories is now shown for each category.
+      (gh#martinrotter/rssguard#1183)
+  * Fixed:
+    - MPV libs were moved to separate Git submodule.
+      (gh#martinrotter/rssguard#1250)
+    - Applied workaround to fix PC not sleeping after sound is played.
+      (gh#martinrotter/rssguard#1118)
+    - Fixed problem with disappearing tabs.
+- Update to version 4.6.2
+  * Fixed:
+    - Fixed "Browse" button not working in "Media player" tab of settings
+      dialog. (gh#martinrotter/rssguard#1245)
+    - Was crashing on Linux. (gh#martinrotter/rssguard#1244)
+- Update to version 4.6.0
+  * Added:
+    - Media/podcast player capabilities. (gh#martinrotter/rssguard#1226)
+    - Indication of which feed is actually fetching at the moment can be
+      enabled in settings. (gh#martinrotter/rssguard#1203)
+    - Newspaper view was removed as it was slow and very buggy. It might be
+      replaced by something better in the future.
+    - Sections of settings now have icons.
+    - Docs updated.
+    - Layout of articles in default nudus-* skins was unified for full/lite
+      versions. Formatting is now very similar.
+    - Image size/wrapping behavior was greatly improved in article viewer,
+      particularly in lite version.
+  * Fixed:
+    - Context menus in both full/lite article viewer are now more similar.
+    - Fixed crashing when editing e-mail via Gmail plugin.
+    - No more warning journal messages generated on Linux.
+      (gh#martinrotter/rssguard#1207)
+    - Updated and fixed some languages. (gh#martinrotter/rssguard#1205)
+
+-------------------------------------------------------------------
+Tue Nov 14 21:29:15 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.5.5
+  * Added:
+    - Added feed manipulation for Google Reader API plugin - creating, editing,
+      deleting feeds.
+  * Fixed:
+    - Fixed yellow background in nowebengine version.
+    - No more double right mouse button click when closing notifications.
+- Update to version 4.5.4
+  * Added:
+    - Toast notifications now have configurable width, margins and opacity.
+      Couple of related GUI fixes are also there.
+      (gh#martinrotter/rssguard#1125)
+    - Standard RSS/ATOM account now can be renamed. (gh#martinrotter/rssguard#824)
+    - Aux nodes "Important", "Probes", "Unread" and "Labels" now can be
+      disabled per-account separately in account settings dialog.
+      (gh#martinrotter/rssguard#584)
+    - Toast notifications can be closed with right mouse button click.
+    - Google Reader API plugin now offers OPML import and export function. See
+      context menu for it.
+  * Fixed:
+    - Updated translations.
+    - Fixed integration with Miniflux via Google Reader API plugin. This
+      requires additional testing. (gh#martinrotter/rssguard#837)
+
+-------------------------------------------------------------------
+Thu Nov  2 17:54:57 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+- Update to version 4.5.3
+  + Added:
+    - Article and feed toolbar heights are now normalized to same values.
+  + Fixed:
+    - Fixed couple of cases where feed multi-selection and/or batch operations
+      were not taking multi-selection properly into account.
+    - Fixed some unnecessary prompts to restart app in settings dialog.
+    - Updated translations and readme.
+- Update to version 4.5.2
+  + Added:
+    - Added new "Discover feeds" dialog which is automatically opened when user
+      hits "Add new feed" button. In this dialog, use does not have to input
+      exact feed address but can enter just regular website address and RSS
+      Guard will try to discover all available feeds possible.
+      (gh#martinrotter/rssguard#1134)
+    - ATOM/RSS/JSON/Sitemap feeds now automatically use "ETag" HTTP headers
+      which has potential speedup when fetching feeds with no new messages.
+      This can bring 10-80 % speedup if user uses more feeds which do support
+      "ETag". (gh#martinrotter/rssguard#1136)
+    - Support for Sitemap "sitemap.xml" files is added! Vast majority of
+      websites have sitemaps and RSS Guard now can read them in the same way it
+      does with RSS/ATOM formats. "Discover feeds" dialog has Sitemaps support
+      integrated and it even is able to traverse sitemap indexes. GZipped
+      sitemaps are supported too. (gh#martinrotter/rssguard#1129)
+    - Added multiple/extended selection to feeds list! Now it is possible to
+      select multiple items at once (feeds, categories, etc.) and perform batch
+      actions on them - batch editing, deleting, marking read/unread,
+      re-sorting - when some feeds are selected it is now in "Edit selected
+      items" dialog possible to batch change only some properties in a very
+      clean and universal way. (gh#martinrotter/rssguard#1010,
+      gh#martinrotter/rssguard#89)
+    - Localizations updated.
+    - Documentation updated.
+    - Arguments parsing is now totally overhauled. It is now possible to use
+      both double and single quotes to quote arguments. Read "Scraping
+      Websites" chapter in docs to know more.
+    - Local files can now be used directly as sources for feeds, just select
+      "Local file" in add/edit feed dialog.
+  + Fixed:
+    - Fixed OPML import/export when some feeds use custom script as source.
+      (gh#martinrotter/rssguard#1133)
+    - RSS/ATOM parsing is now greatly enhanced.
+- Update to version 4.5.1
+  + Added:
+    - Completely new, custom "toast" notifications:
+      - Configurable position on screen.
+      - Can be displayed on secondary screens.
+      - Automatically adopts look of currently active RSS Guard skin.
+      - Can be close via close corner button or via Esc keyboard button.
+      - When hovered with mouse, notification stays shown, when not hovered,
+        it is automatically hidden after 15 seconds.
+      - Displays list of newly fetched articles and offers some basic actions
+        like marking as read, showing in article list or in web browser.
+      - These notifications do not need "tray icon" to be activated.
+      - Can be tweaked in Notifications section of settings.
+    - pdb debugging file is now distributed with RSS Guard on Windows.
+    - NPM packages updated to latest versions.
+  + Fixed:
+    - AppData file now does not contain <pre> tags.
+    - HTTP redirection cycles are now solved.
+    - Web cache is now stored in correct directory on Linux.
+      (gh#martinrotter/rssguard#1098)
+    - Fixed behavior of Google-based phrase suggestion in web browser
+      navigation text box.
+    - Many different features of RSS Guard got minor fixes, some parts of
+      source code were refactored. Particularly, one nasty "semi-bug" was fixed
+      which influenced speed of article switching in article list. It should
+      now be faster. Much faster.
+    - Article counting for "regex queries" is now disabled because this was
+      very performance-hungry even with small number of regex queries, sadly.
+    - Translations of some languages are now more complete.
+    - Some unused source code was removed.
+    - Some unused deps were removed.
+- Update to version 4.5.0
+  + Added:
+    - List of article filters assigned to feed is now visible in feed details
+      pane. (gh#martinrotter/rssguard#1045)
+    - Right-to-left optional layout for feeds/articles. You can switch this in
+      each feed properties.
+    - Gmail: Labels are now fetched from the service too and they are
+      synchronizable.
+    - New feature called "regex queries" allowing users to have (persistent)
+      regular expression based article list filters. See your feed list for
+      "Regex queries" item and right click to add one.
+    - "reader mode" feature now uses skin-based format & colors.
+    - All features which generate random colors now use better HSV-based
+      algorithm.
+    - Added application-wide and feed-wide ability to limit articles based on
+      article date/time. This can be changed in application settings in "Feed
+      fetching" section and in feed properties dialog in "Articles" section.
+    - JavaScript code of article filters now has syntax highlighting.
+    - Use non-standard "url" element as fallback for article URLs in RSS
+      format.
+    - Percentages of localization progres for each translation is now shown in
+      "Localization" settings section.
+    - "clang-format" updated.
+    - User CSS styles can now be supplied via file
+      <user-data-folder>/web/user-styles.css.
+    - When fetching metadata during OPML import, there is now option to NOT
+      fetch icons. (gh#martinrotter/rssguard#1009)
+  + Fixed:
+    - Icons in feed list are now correctly vertically centered.
+      (gh#martinrotter/rssguard#999)
+    - Fixes related to word-wrap of long texts in article list and feed details
+      pane. (gh#martinrotter/rssguard#1033)
+    - Multi-column sorting is now correctly persistent.
+      (gh#martinrotter/rssguard#1039)
+    - Fixed a problem where article filters are sometimes not applied correctly
+      when feed is fetched.
+    - Skin's pallete (dark) are now applied depending on slightly enhanced
+      logic.
+    - Skin's custom colors are now applied depending on slightly enhanced
+      logic.
+    - HTTP redirection was not working sometimes, breaking some feeds.
+    - Docs updated.
+    - Feedly: Fix errors when some feeds did not have titles.
+    - Almost all localizations refreshed.
+    - Fixed multiple crashes.
+    - Correctly show numeric badge on Windows if RSS Guard starts in
+      tray/minimized mode.
+- Update to version 4.4.0
+  + Added:
+    - Read/unread state is now also shown by coloured dot in article list,
+      inspired by similar feature of QuiteRSS. The behavior is switchable in
+      settings. (gh#martinrotter/rssguard#948)
+    - Details of selected feed list item are now enhanced with new information.
+      (gh#martinrotter/rssguard#962)
+    - Item (feed) ID is now visible in item details and in tooltips of feed
+      list. (gh#martinrotter/rssguard#965)
+    - "nudus" skin is bit tweaked. (gh#martinrotter/rssguard#942)
+    - Added option to reorganize any folder in feed list alphabetically even in
+      manual sorting mode. (gh#martinrotter/rssguard#918)
+    - Added shortcuts to scroll article up/down. (gh#martinrotter/rssguard#408)
+    - Added global option to open all hyperlinks by default in external web
+      browser. (gh#martinrotter/rssguard#386)
+    - Email editor for Gmail now supports rich-text.
+    - Added support for very fast feed fetching intervals.
+    - Added button to clear web cache and storage.
+    - Added some missing icons.
+  + Fixed:
+    - Application performance is now hugely improved when using big number of
+      labels and/or article filters. There are some possibilities for extra
+      performance fine-tuning which might be addressed in the future.
+      (gh#martinrotter/rssguard#952)
+    - Behavior and visual representation of "article highlighter" and "article
+      list filter" tool buttons is now fixed. (gh#martinrotter/rssguard#943)
+    - Newly created label is now placed in correct sort position in feed list.
+      (gh#martinrotter/rssguard#978)
+    - Fixed html/plain auto-detection for
+      "https://blog.torproject.org/blog/feed". (gh#martinrotter/rssguard#979)
+    - Modal dialogs are also taken into account for feature "do not fetch feeds
+      when main window is unfocused". (gh#martinrotter/rssguard#973)
+    - Hamburger menu did not work in fullscreen mode in some cases.
+      (gh#martinrotter/rssguard#953)
+    - Resizing of feed import dialog is now better. (gh#martinrotter/rssguard#945)
+    - Unwanted application restarts. (gh#martinrotter/rssguard#940)
+    - Main window fade-in effect on Windows OS is now consistent.
+      (gh#martinrotter/rssguard#933)
+    - Many other smaller fixes.
+- Refresh rssguard-4.2.2-add_library_version.patch
+- Drop rssguard-4.3.4-fix-build.patch: merged upstream
+- Add the Group tags
+
+-------------------------------------------------------------------
+Wed Apr 26 20:17:04 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.3.4
+  + Added:
+    - Persistent article/item viewer. By default it is on. If no article is
+      selected but feed/category is, then miscellaneous information about
+      selected feed list item is displayed. (gh#martinrotter/rssguard#424)
+    - Reworked logic of determining which article states
+      (read/unread/starred/unstarred) have changed when synchronizing states to
+      remote feed servers. This concerns all synchronized plugins like Gmail,
+      Greader, Feedly, etc. and show in theory lead to much better performance
+      when you mark many articles as read or unread.
+    - Couple of extra QoL enhancements for Gmail like proper encoding of
+      attachment filenames, turned off displaying of "enclosures" as these are
+      displayed in other way, etc.
+  + Fixed:
+    - Deadlock when fetching feeds in some corner situations is now resolved.
+      (gh#martinrotter/rssguard#910)
+    - URLs of articles are now sanitized from leading and trailing spaces.
+      (gh#martinrotter/rssguard#914)
+    - ATOM feeds were mistakenly changed to RSS feeds during OPML import.
+      (gh#martinrotter/rssguard#913)
+    - Now compiles with GCC 13. (gh#martinrotter/rssguard#911)
+    - Freezing of GUI when fetching feeds should now be gone even on newer Qt
+      library.
+    - Correct account-wide proxy is used when importing feeds.
+    - Article duplicity checks are now much more useful and actually working in
+      article filters.
+    - Translations synced.
+    - All buttons from article toolbar now correctly follow tool button style.
+- Add rssguard-4.3.4-fix-build.patch
+- Drop rssguard-4.3.3-fix-build.patch
+
+-------------------------------------------------------------------
+Thu Mar 30 20:35:46 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- Update to version 4.3.3
+  + Added:
+    - Article searching was greatly improved - now you can use either text or
+      regexp or wildcard as search phrase and you can choose whether to search
+      just in titles or in whole article. (#886)
+    - Added option to focus feed/article lists with keyboard shortcuts. (545)
+    - Uninstaller now should detect if RSS Guard is running or not. (#529)
+    - Gmail: Original e-mail body is now appended to response.
+    - Gmail: E-mail preview now uses styling from skin for unified UX.
+    - Minor enhancements for OPML importing.
+  + Fixed:
+    - Showing pictures from authenticated feeds now should work. (#909)
+    - Word-wrap is now correctly used for plain-text articles. (#900)
+    - Some memory leaks were patched and also SQLite database connections now
+      share "cache" across all threads, resulting in drastically better RAM
+      usage of the app.
+    - Feedly: Article state synchronization now works.
+    - Updated docs, updated translations.
+- Added patch rssguard-4.3.3-fix-build.patch
+- Refreshed patch rssguard-4.2.2-add_library_version.patch
+
+-------------------------------------------------------------------
+Wed Feb  8 20:35:40 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.3.2:
+  + Added:
+    - Display total number of underlying feeds/categories in account's tooltip
+      in feed list. (gh#martinrotter/rssguard#881)
+    - Press "CTRL+F" when article script textbox is highlighted in "Article
+      filters" dialog to allow for text searching. (gh#martinrotter/rssguard#889)
+    - Filtering option in article list toolbar are now inclusive with checkbox
+      like appearance. You can now thus select multiple filtering conditions
+      and if article meets atleast one of them, it is displayed. (gh#martinrotter/rssguard#468)
+    - WebEngine disk cache now can be disabled in settings. If it is "disabled"
+      then RSS Guard will use memory-based cache which is automatically
+      destroyed when RSS Guard exits. (gh#martinrotter/rssguard#725)
+    - Help spoilers now can display HTML help with clickable hyperlinks.
+    - Skins are now able to load custom TTF and OTF fonts and also skins now
+      are able to specify application-wide font. You can see sample usage of
+      this feature in sample skin.
+  + Fixed:
+    - Fixed crash when importing OPML files.
+    - Fixed looooong-standing hidden bug which could cause that labels
+      DEassigned from filters were not synchronized back to feed service if
+      supported.
+    - Enhanced information about "resources" in "About" dialog.
+- Update to version 4.3.1:
+  + Fixed:
+    - Reverted to Qt 6.3 for Windows 10+ builds due to some regressions AGAIN.
+    - Fixed TT-RSS icons downloading when obtaining list of feeds/folders.
+    - RSS Guard now converts all placeholders (for example "%data%") to native
+      path folder separators.
+- Update to version 4.3.0:
+  + Added:
+    - Massive update for feed fetching mechanism. It is now very parallelized
+      and performance gain should be brutal. On my development PC with 4 cores
+      (Intel i5) I observed 800 % performance boost. Note that this feature
+      required huge number of changes on source code so there could be some
+      corner case regressions or not so polished situations. File bug report
+      when that happens. Also, number of threads used by this feature is
+      configurable via --threads command line switch. This parallelization
+      approach will also be applied to some other parts of application in the
+      future, particularly for some massive batched network operations in some
+      plugin - TT-RSS, Greader or Gmail - which will result in massive
+      performance boost too.
+    - RSS Guard is now available on Flathub in two distinct variants - "full"
+      and "lite" (same as "nonwebengine").
+    - Suffix ".xml" is also accepted for OPML 2.0 files.
+    - Brutal speed enhancements when importing OPML 2.0 files. Whole
+      functionality is now properly parallelized and performance boost is
+      potentially massive, depending on number of your CPU cores/threads.
+    - Qt 6 bumped to 6.4.2 version - this fixes some regressions.
+  + Fixed:
+    - Some random Mac OS X crash. (gh#martinrotter/rssguard#866)
+- Update to version 4.2.6:
+  + Added:
+    - Bunch of premade sample article filters added to "Article filters" window.
+    - Placeholders in external tools definitions can be now arbitrarily placed.
+    - Article RSS enclosures can now be added from within article filters.
+    - Added customizable skin color for feeds with NEW articles. So now it is
+      possible to distinguish between NEW and UNREAD (but old) articles. (gh#martinrotter/rssguard#850)
+    - Added application debug log dialog. See "Help" menu for more.
+    - Too big fetched feed icons are now automatically scaled down to fixed
+      size (48x48).
+    - Now it is possible to run post-process script when importing OPML. (gh#martinrotter/rssguard#848)
+    - Now it is possible to change "User-Agent" HTTP header. (gh#martinrotter/rssguard#835)
+    - Added now column into article list which shows labels for each article. (gh#martinrotter/rssguard#768)
+    - Now it is possible to "suppress" feed. Suppressed feeds do not trigger
+      notifications. (gh#martinrotter/rssguard#745)
+  + Fixed:
+    - HTML detection on the QTextBrowser viewer is now more precise. (gh#martinrotter/rssguard#813)
+    - Article decoding for Nextcloud News works better. (gh#martinrotter/rssguard#814)
+    - Inoreader built-in API tokens are removed, because they were abused.
+    - Default AdBlock lists now have corrected URL addresses.
+    - Fixed full-article scraper "scrape-full-articles.py".
+    - Do some preparations and code cleanups for adding "lite" RSS Guard
+      variant to Flathub.
+    - Nextcloud News plugin processes "mediaThumbnail" and "mediaDescription"
+      when parsing articles. (gh#martinrotter/rssguard#831)
+    - Avoid appending empty RSS enclosures to articles. (gh#martinrotter/rssguard#832)
+    - AppImage reverted to Qt 5 as Qt 6 support in AppImage generator is very
+      very buggy.
+    - All dialogs where icons/images are selected now load their "formats"
+      dynamically to support all possible image formats correctly. (gh#martinrotter/rssguard#834) This
+      effectivelly adds "webp" and other formats on systems where it is
+      supported.
+    - Fixed crash. (gh#martinrotter/rssguard#849)
+    - Enable smooth-scrolling by default. (gh#martinrotter/rssguard#793)
+
+-------------------------------------------------------------------
+Mon Nov 21 13:15:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.2.5:
+  + Added:
+    - RSS Guard now can use super fast feed/article refresh rates.
+      At this point it is possible to set refresh interval even to
+      1 second to allow super fast checking for content changes.
+  + Fixed:
+    - Newspaper mode caused some GUI glitches.
+    - Feedly crashed whole application when performing folder/feed
+      synchronization.
+    - Some specific feeds are faulty but some adjustments were made
+      to make RSS/ATOM parsing more loose.
+    - Fixed HTML/plain article content auto-detection for some
+      specific HTML cases.
+    - Lessened severity of some debug messages.
+- Rebase rssguard-4.2.2-add_library_version.patch.
+
+-------------------------------------------------------------------
+Thu Jun  2 15:30:18 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.2.3
+  Added:
+  * Autostart feature is now overally better and works with Flatpak build too.
+  * Added a switch to automatically reject all incoming HTTP cookies application-wide.
+  * Gmail: Display proper "To" e-mail header when displaying e-mails.
+  Fixed:
+  * Feedly: Correct article URLs are now fetched if possible.
+  * Mac OS X: Fixed launching with error "invalid application".
+  * External resources for non-web-engine article viewer are now resolved more correctly.
+
+-------------------------------------------------------------------
+Sat May 21 18:58:09 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 4.2.2
+  Added:
+  * Feedly now supports intelligent synchronization algorithm, resulting in
+    much faster sync.
+  * Feedly now decodes feed titles from HTML to plain text.
+  * New CLI "-w" option to force "nowebengine" behavior even in standard
+    "webengine" RSS Guard builds.
+  * Article viewers are greatly refactored and internally use sane C++
+    interface - this allows this piece of RSS Guard to be expanded better in
+    the future.
+  * "nowebengine" text-based article viewer now can display images. (#583)
+  * "nowebengine" text-based article viewer now can act as VERY SIMPLE web browser.
+    It displays webpages in a simpler text-like fashion, it can follow hyperlinks, context menu offers more actions like downloading of links etc.
+  * Gmail plugin now has better e-mail viewer which also allows to "Forward" e-mails.
+    It will be extended in the future even more. Also, e-mails are now sent in "HTML" mode.
+  * Data can be optionally exported to OPML 2.0 without icons. (#685)
+  * Added button into tray icon context menu to allow show/hide of main RSS Guard window. (#679)
+  * Article list filtering button is now greatly enhanced.
+    Go to "Settings -> User interface -> Toolbars -> Toolbar for article list"
+    and add "Article list filter" button to the toolbar.
+  Fixed:
+  * If article does not provide sane date/time, replace with current date.
+    This particularly concerned Gmail plugin.
+  * Added some missing icons, some icons changed.
+  * Some UI strings updated, translations updated too.
+  * "Licenses" page in "About" dialog was redesigned.
+  * Other minor fixes.
+- Replaced rssguard-4.2.0-add_library_version.patch with rssguard-4.2.2-add_library_version.patch:
+  Update the patch for the new version
+
+-------------------------------------------------------------------
+Thu Mar 31 17:21:48 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Recommend nodejs and npm (fixes boo#1197561)
+
+-------------------------------------------------------------------
+Wed Mar 23 11:15:38 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.1
+  Added:
+  * Number format of unread counts in task bar icon and tray
+    icon is now enhanced. It shows format "%1k" for number
+    bigger than 999, for example 16 000 of unread articles will
+    be displayed as "16k".
+
+-------------------------------------------------------------------
+Tue Mar 22 11:21:46 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.0
+  Added:
+  * Items in feed list
+  * Article list now can display full article titles with
+    multiline layout. Switch the feature in "Settings -> Feeds &
+    articles -> Articles list".
+  * Date/time format of articles in article list is now VERY
+    customizable, you can set to display e. g. time only for today's
+    items, or show relative dates for recent items etc.
+  * RSS Guard now builds with cmake.
+  * "Add feed" and "Edit feed" dialogs were redesigned a bit for
+    better UX.
+  * New action "Open main menu" can now be added to toolbars.
+  * If feed does not provide date/time for its articles, then
+    current date/time is used and now this artificial date/time is
+    iterated to achieve consistent sorting for those articles.
+  * Individual feeds can now be turned off. Turning feed "off"
+    disables it and it won't get any new articles. See "Edit feed"
+    dialog, specifically "Miscellaneous" tab.
+  * Gmail: Synchronization of e-mails is now MUCH faster,
+    especially subsequent synchronizations. Also, some Gmail-related
+    fixes were added.
+  * TT-RSS: Added "share to published" feature which allows user
+    to save custom notes to TT-RSS. Can be used with context menu on
+    "[SYSTEM] User-published articles" feed list item.
+  * Count of unread articles in taskbar is now switchable.
+  * Documentation was updated.
+  * All modal dialogs now should have "maximize" button.
+  * Context menu of article list now offers action "Copy links".
+  * Articles downloaded from single feed are now de-duplicated
+    before they are processed and saved into RSS Guard DB.
+  * Node.js integration was polished and generalized and will be
+    used for more optional features in the future.
+  * Firefox-inspired "reader mode" is now available in WebEngine
+    version of RSS Guard. Check internal web browser toolbar for the
+    relevant "Open in reader mode" button.
+  * New action "Open in internal browser
+  * Polishing of feed import feature.
+  * Updated built-in "nudus-*" skins. Thanks to akinokonomi for
+    this.
+  * RSS Guard is now aware of "qt5/6-ct" style used by "qtct"
+    tool.
+  * Handling of skins, Qt stylesheets and Qt styles is now
+    rewritten quite a lot to achieve more consistent UX and allow
+    for much greater flexibility for skin creators.
+  Fixed:
+  * Feedly: HTML entities/code in article titles were not
+    encoded and displayed correctly.
+  * GUI separators were resetting their positions to middle,
+    hopefully fixed.
+  * Inaccurate reporting of new articles when there are no new
+    articles, due to DB layer error.
+  * "New messages" feed status is now more persistent.
+  * Handling of character set in MariaDB backend is now
+    improved, all UTF-8 characters should now work correctly.
+  * Loading of skins/themes is now done more early to avoid some
+    clashes with GUI initialization.
+  * Fixed displaying of special characters in RSS/RDF/ATOM
+    account name.
+  * No separators in custom source specification are needed now.
+- Refresh rssguard-4.0.2-add_library_version.patch as
+  rssguard-4.2.0-add_library_version.patch
+- Drop rssguard-4.1.2-Qt512.patch (too much hassle)
+
+-------------------------------------------------------------------
+Tue Jan 11 08:29:23 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.2
+  Fixed:
+  * Make webengine cookies synchronization one-way because it
+    was crashing in some instances. This is likely temporary fix.
+  * Fixed RSS Guard crashing when using MariaDB backend. Problem
+    was in buggy runtime generation of DDL SQL scripts.
+  * Expanding/collapsing of categories is now EVEN MORE properly
+    persistent and behaves more correctly when filtering feed
+    list in some way.
+- Add rssguard-4.1.2-Qt512.patch
+
+-------------------------------------------------------------------
+Fri Jan  7 16:44:55 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.1:
+  * Fixing crash when syncing cookies.
+  version 4.1.0:
+  Added:
+  * Network communication of RSS Guard now shares cookies and
+    user-agent with bundled WebEngine. You can thus access
+    cookie-protected resources in RSS Guard, including feeds.
+  * Confirmation dialog is displayed when removing article
+    filter.
+  * Use "QSoundPlayer" for better support when playing
+    notification sounds, no GStreamer required now.
+  * New default skins with light/dark variants, Nudus. Note all
+    other skins will be removed in next release as it is
+    difficult to provide reasonable support for them.
+  * Optionally display only time
+  * Icon size of toolbars is now configurable.
+  * More web attributes added to web viewer context menu.
+  * Use more standard user-agent.
+  * Tens of minor tweaks added.
+  Fixed:
+  * Expanding/collapsing of categories is now properly
+    persistent and behaves more correctly when filtering feed
+    list in some way.
+  * No more crashing after "mark item as read" action.
+  * Deal with spaces in feed URLs.
+  * Fix crash in Greader plugin.
+  * Fix cleaning up of database when clearing articles older
+    than 0 days.
+  * Finally solving issues with remembering article list/viewer
+    splitter position.
+  * Update some hyperlinks, use correct terminology.
+  * Make "article list row height" work as intended.
+  * Localizations synced.
+  * Application now closes correctly, if tray area is not
+    available and tray icon is mistakenly still "enabled".
+  * Server JavaScript file of Adblock is now copied to
+    destination properly.
+  * Regex filtering and "show unread only" features now work
+    together in feed list.
+  * Node.js "NODE_PATH" value is now determined in runtime, not
+    hardcoded.
+
+-------------------------------------------------------------------
+Fri Oct 15 12:47:41 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.4
+  Added:
+  * Updated documentation.
+  * Sizes of horizontal/vertical width/height of article preview
+    are now kept separately. User can thus have different sizes
+    of article preview in each layout.
+  * Added new simplistic skin "nudus".
+  * Article filters now can determine "uniqueness" of article
+    according to article's "id".
+  * Some columns in article list now also display respective
+    values in tooltips.
+  * Columns "read" and "important" in article list are now
+    resizable.
+  Fixed:
+  * Avoid unwanted displays of article previewer.
+  * "Automatically expand item when selected" now behaves
+    consistently when launched with keyboard shortcut.
+  * Fixed multiple issues regarding article "focus" or
+    "selection".
+  * Fixed some problems with recognizing filenames when
+    downloading files.
+  * Fixed crash when repeatedly downloading some files.
+  * Tweaked some icons.
+  * Fixed executable bits on some deployed files.
+  * Updated skin "API".
+
+-------------------------------------------------------------------
+Fri Sep 24 06:38:09 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.3
+  Added:
+  * Now it is possible to disable hardcoded keyboard shortcuts
+    in feed/article lists so that user-defined single-stroke
+    shortcuts can work properly.
+  * Skins were reverted to 4.0.1 as they were very buggy.
+    Previous skins were stable and will be used for time to come.
+    I will make brand new polished skin in some next release
+    which will not replace existing skins but will be added.
+  Fixed:
+  * Settings dialog now remembers its size and also adds
+    scrollbars where needed. Also was polished a bit.
+  * Icon of "standard RSS/ATOM/..." service/account was updated
+    to be "RSS" icon, not "RSS Guard" icon and also is
+    preselected in "Add account" dialog.
+  * Updated documentation and translations.
+  * "Written by" bottom section of article preview now uses same
+    date/time format as article list.
+  * Code refactored.
+  * Icons are now properly loaded when fetching list of feeds in
+    Tiny Tiny RSS.
+  * Inline article searching now uses much smaller delay after
+    typing search phrase.
+
+-------------------------------------------------------------------
+Wed Sep  8 10:22:57 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.2
+  Added:
+  * Documentation now contains section for DIY migration of data
+    from RSS Guard 3.x line.
+  * Updated localizations.
+  * Notification sounds now have adjustable volume.
+  * Searching in articles is now performed with delay after
+    search expression is typed.
+  * Big account "edit" dialogs now have scrollbars if they are
+    too big to fit on screen.
+  * Both built-in skins now use same Pico.css CSS library and
+    have unified look for both light and dark variants (except of
+    dark colors of course).
+  Fixed:
+  * Feedly now fetches messages correctly, no more message
+    disappearing, related algorithm for article DB storing was
+    also updated.
+  * AdBlock local Node.js-based server now has only really
+    needed dependencies.
+  * Fixed problem with linking "librssguard.so" on some Linux
+    distributions.
+- Refresh rssguard-3.9.0-add_library_version.patch as
+  rssguard-4.0.2-add_library_version.patch
+
+-------------------------------------------------------------------
+Fri Sep  3 11:00:04 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.1
+  * Fix build regression with Qt < 5.13.0. No other changes.
+  version 4.0.0:
+  * RSS Guard 4.x is NOT backwards compatible with 3.x line.
+    + configuration file "config.ini" IS fully backwards
+      compatible.
+    + database file "database.db" is NOT backwards compatible.
+  Added:
+  * Brand new notifications subsystem added. It can play sounds,
+    individual events are independently configurable in
+    application settings.
+  * "MessageObject" class now exposes "rawContents" property for
+    message filtering. Property contains raw RSS/ATOM/JSON
+    contents of the message.
+  * URL-embedded cookies are now supported, as well as classic
+    cookies, which are now saved in non-persistent cookie jar.
+  * "Next-gen" synchronization algorithms which may, in some
+    cases, dramatically speed-up two-way synchronization of
+    articles. This new synchronization algorithm is right now
+    implemented and enabled for Google Reader API plugin as PoC
+    and is called "Intelligent synchronization algorithm" within
+    RSS Guard. The algorithm will be also implemented for other
+    plugins in the future.
+  * Google Reader API plugin supports "ot" option.
+  * Documentation was completely rewritten.
+  * Optional notification for login failures.
+  * Improved bug report templates
+  * Properly implement "feed://" scheme to be able to "open"
+    feeds from web browsers etc.
+  * Added "Unread messages" node to feeds list which now
+    centralizes access to all unread messages.
+  * New search box for feeds list toolbar which now allows users
+    to search/filter feeds list.
+  * Ability to show nothing instead of message count in feeds
+    list if count is 0.
+  * Added button to feeds list context menu to expand or
+    collapse items (recursively).
+  * Message/feeds list tooltips are now switchable.
+  * Old AdBlock implementation was replaced by new modern
+    JS/NPM-based solution "Adblocker".
+  * RSS/ATOM/JSON parsers were updated to avoid some parsing
+    errors.
+  * Google Reader API plugin is greatly enhanced, has better
+    support for TheOldReader.
+  * Inoreader plugin was merged into Google Reader API plugin as
+    Inoreader too uses Google Reader API.
+  * Toolbar search boxes have now dynamic width.
+  * Visual state of some dialogs is now remembered, for example
+    "Cleanup database".
+  * Some GUI texts and terms were unified and changed (message
+    -> article, download feed -> fetch feed, etc.).
+  * There is now some default filename set when exporting feeds
+    to file.
+  * Number of unread messages is now shown also in taskbar (not
+    just tray icon).
+  * Unified minimize/maximize/close window buttons in all RSS
+    Guard dialogs.
+  * Most of text boxes now have "clear text" button.
+  * Feeds with disable auto-fetch policy now do not update on
+    application start-up.
+  * Notifications with new messages is now only launched if
+    there are NEW UNREAD messages.
+  Fixed/changed:
+  * RSS Guard can be correctly "killed.
+  * Database file "database.db" now not stored in redundant
+    "local" subfolder.
+  * Expand state of "Labels" item is now remembered.
+  * Example scraper "translate-feed.py" now can translate ATOM
+    feeds too.
+  * External tools now can be used with any hyperlink.
+  * Account's folders/feeds are resynchronized when "Edit"
+    dialog exits only when really needed.
+  * Fixed problems related to custom order (and sorting) of
+    columns in article list.
+  * Qt stylesheet from skins is now not loaded if there is
+    already loaded some external stylesheet.
+  * Local-only labels/tags are now note removed when performing
+    folder synchronization of the account.
+  * Progress bar in "Import/Export feeds" dialog was misleading
+    and show invalid progress.
+  * Feeds were not correctly re-sorted by titles after some feed
+    is renamed.
+  * "Select next unread message" feature produces some exotic
+    message list scrolling.
+  * Application was not able to synchronize unread messages with
+    Reedah.
+  * Fixed some repeated notifications when feed gets new
+    articles.
+  * Fixed some article formatting in embedded web browser.
+  * Fixed crash in "Message filters" dialog.
+  * Fixed main window problem when hidden with tray icon
+    activated in KDE.
+  * Font size in article previewer is now properly configurable.
+  * Added some missing icons.
+  * Improved some visual glitches in dialogs and skins.
+  * "Keep message selection in the middle" now works in a more
+    reasonable way when trigerred with mouse vs keyboard.
+  * Fixed GUI behavior of "Database cleanup" dialog.
+  * "Bring application window to front once article is opened in
+    external web browser" is now disabled by default.
+  * Fixed cooperation of "Next unread article" + "Keep message
+    selection in the middle" features.
+  * URL of feeds are now sanitized before making a network
+    request.
+  * All pictures from feeds should be now properly displayed.
+  * Completely overhauled the logic of detecting existing
+    articles and updating them.
+  * Fixed problem when multi-column sorting was mistakenly
+    activated when article list is reloaded after feed is
+    fetched.
+  * Monochrome icon was adjusted a bit.
+  * Fixed feeds list scrolling when feature "Next unread
+    article" is activated.
+
+-------------------------------------------------------------------
+Mon Apr 12 11:29:45 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.9.2
+  Fixed/changed:
+  * Fixed main app window behavior when it is maximized and
+    article is opened in external web browser.
+  * Google Reader API plugin now correctly synchronizes changed
+    messages back to server.
+
+-------------------------------------------------------------------
+Tue Apr  6 09:04:07 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.9.1
+  Fixed/changed:
+  * Properly accept all HTTP redirections, this was regression
+    and is now fixed.
+  * Fix repeated overwriting of messages due to bad
+    UTC/localtime article timezone handling.
+  * Alternating list background colors are now better suited for
+    foreground text visibility.
+  * Re-gaining focus after external browser was opened is now
+    optional.
+  * Small fixes for  "Message filters" dialog.
+  * Fixed windows hiding problem when tray icon is enabled.
+  * Better favicon downloading strategy which works much much
+    better than previous one.
+
+-------------------------------------------------------------------
+Wed Feb 24 12:37:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.9.0
+  Added:
+  * Feedly support.
+    https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#feedly
+  * Google Reader API support, tested with many services like
+    The Old Reader, Bazqux, Reedah, FreshRSS.
+    https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#google-reader-api
+  * Liferea-like Website scraping and feed post-processing.
+    https://github.com/martinrotter/rssguard/blob/master/resources/docs/Feed-formats.md#websites-scraping-and-related-advanced-features
+  * Internal web browser now offers a button which opens loaded
+    webpage in external web browser.
+  * Per account proxy support.
+  * Display feed's icon in "is read" message list column. This
+    is switchable in settings.
+  * User now can sort via "id" column in a numeric way in
+    message list.
+  * Minimum interval for feed auto-updates is now 1 minute, not
+    3 minutes like before.
+  * Added some new localizations, "pt_BR" and others. Thank you,
+    translators, for your hard work.
+  Fixed/changed:
+  * This CHANGELOG is now written in Markdown.
+  * Simplified "account" dialogs.
+  * Use DuckDuckGo online favicon source as fallback when
+    fetching feed icons.
+  * Properly disable adding/editing/deleting of synchronized
+    tags/labels on some accounts.
+  * RSS Guard can now be added to "favorites" on Linux/Gnome.
+  * Remove "feed auto-update started" notification.
+  * Some improvements of network behavior in Inoreader plugin.
+  * OAuth listeners now has default post "14488".
+  * Fix some deployment issues on Windows.
+  * Follow HTTP/301 redirection more properly for some feeds.
+  * Fixed some weird behaviors of OAuth listener.
+  * All dirty account's not synchronized data are now
+    synchronized when editing account.
+  * All console output now sent to "std:err". Also new "-n"
+    switch to disable all console outputs.
+  * Some refactoring for deployment process, build packages now
+    have all names according to RSS Guard installers naming
+    convention.
+  * Some major refinements for AdBlock which now has:
+    + fixed of adding of custom rules,
+    + better UX in some dialogs,
+    + fully working site-wide blocking with proper error pages,
+    + working element hiding rules,
+    + removed some redundant and obsolete code.
+- Refreshed rssguard-3.8.0-add_library_version.patch as
+  rssguard-3.9.0-add_library_version.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 14:57:01 UTC 2021 - aloisio@gmx.com
+
+- Update to version 3.8.4
+  Added:
+  * Dialog for message filters management now allows you to:
+    + Preview your message filter by running it against COPIES
+      of stored messages.
+    + Run your message filter against ORIGINALS of already
+      stored messages.
+    + Create message filters based on single message data.
+  * Toolbars in message previewer now can be hidden.
+  * Number of unread messages seen in tray icon can now be
+    disabled.
+  Fixed/changed:
+  * "Edit feed" dialog was rewritten and made modular so that it
+    fits better all plugins.
+  * Users now can tweak auto-update policies for feeds of all
+    account types.
+  * Tweaked logic of loading feed's messages to make it all work
+    with some broken feeds
+  * RSS Guard now prefers to use desktop environment's icon.
+  * Make loading of feed's icons work better.
+  * Fixed repeated overwriting of same message downloaded from
+    Nextcloud News server.
+  * Feed sorting is correctly case insensitive.
+  * Cached message states are now far more reliably pushed back
+    to server.
+
+-------------------------------------------------------------------
+Mon Nov 30 11:23:28 UTC 2020 - aloisio@gmx.com
+
+- Update to version 3.8.3
+  Added:
+  * Initial Qt 6 support.
+  * When you run "open source article externally" action, then
+    RSS Guard window regains focus again.
+  Fixed/changed:
+  * Fixed URL not passed to custom external web browser.
+
+-------------------------------------------------------------------
+Sat Nov 21 14:17:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.8.2
+  * Fixed "reset" notification signal when editing toolbars in
+    settings.
+
+-------------------------------------------------------------------
+Fri Nov 20 13:58:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.8.1
+Added:
+  * New applications icons.
+  * Added some documentation related to message filters and some
+    other parts of the application:
+    https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#documentation
+  * Add switchable action to automatically expand categories
+    when selected.
+  * Added basic CLI with some basic options, run "rssguard
+    --help" to see them.
+  * Ability to run multiple instance of RSS Guard at the same
+    time, can be activated via CLI.
+  * Ability to specify custom user data folder, can be activated
+    via CLI.
+  * Finnish translation.
+  * Greatly enhanced user experience for authors of message
+    filters. See the documentation: enums for accepting/rejecting
+    of messages are now directly calleable via their names.
+  Fixed/changed:
+  * Handles separating feeds list, messages list and message
+    viewer has now better color in default skin.
+  * Now only titles of messages are sanitized before they are
+    passed to message filters. Message content is left intact.
+  * Nextcloud News: Do not use obsolete API endpints.
+  * Nextcloud News: Support newest API breaking changes
+    regarding "parent categories".
+  * Partially fixed behavior of statusbar, which did not respect
+    new settings for order of its buttons.
+  * Use "cout" instead of "wcout" for debugging outputs.
+  * Do not escape empty strings when sanitizing messages.
+
+-------------------------------------------------------------------
+Tue Nov 10 12:01:28 UTC 2020 - aloisio@gmx.com
+
+- Update to version 3.8.0
+  Added:
+  * Support for labels:
+    + Labels are even synchronizable for Inoreader and TT-RSS.
+    + Each message can have assigned multiple labels.
+    + Feed's view now offers "Labels" folder with handy
+      per-label filtering.
+    + Labels assigned in message are now even available in
+      message filtering.
+    + You can assign arbitrary color to each of your labels.
+  * Numix is now default icon theme.
+  * Built-in web-base message viewer now uses mini.css
+    (https://minicss.org) instead of Bootstrap. This will make
+    viewing of messages quite faster while being more
+    lightweight.
+  * Message body now has "auto" reading direction - enhances
+    support for RTL messages.
+  * JSON feeds (https://www.jsonfeed.org) are now supported.
+  * Added basic CLI interface, run "rssguard --help" to see its
+    API overview.
+  * Message view header context menu now uses non-closable menu
+    for column show/hide operations.
+  * Background color of rows in feed/message list can now be
+    alternated.
+  * Message titles are now properly sanitized before messages
+    are processed by message filters.
+  * There is a new documentation
+    (https://github.com/martinrotter/rssguard/blob/master/resources/docs/Documentation.md#documentation)
+  Fixed/changed:
+  * Correct icons are now downloaded when fetching metadata for
+    RSS/ATOM/JSON feeds.
+  * Fixed crash when clearing contents of statusbar.
+  * Translations synchronized.
+  * Message previwers were completely overhauled to support
+    displaying of (active) labels.
+  * Codebase of web-based and text-based message previwers was
+    unified, they now share all common code.
+  * Some fixes for message filtering mechanism.
+  * Scroll position within message viewer is now remembered if
+    message gets reloaded.
+  * Text-based message viewer now handles newlines better.
+  * Fixed OPML export/import for some feeds/categories which
+    could be skipped due to various specific errors.
+  * Synchronization logic for "feeds" is now more universal,
+    resulting in better behavior when running "Sync in" actions.
+  * Obsolete Qt-related code removed/replaced.
+  * Source code does not use hardcoded GUI colors anymore. They
+    are fetched from active skin instead, making some texts more
+    readable and GUI more consistent.
+  * Fixed various MySQL-related problems and errors which
+    rendered MySQL DB backend unusable for many users.
+  * Icon themes are not bundled on Linux anymore, RSS Guard
+    fully relies on system-wide themes now.
+  * Big thanks to ttrss.info for providing Tiny Tiny RSS account
+    for testing.
+- Rebased rssguard-3.6.3-add_library_version.patch as
+  rssguard-3.8.0-add_library_version.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 12:42:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.7.2
+  Added:
+  * Parent item/folder in add category/feed dialog is now
+    correctly preselected according to current feed's list
+    selection.
+  * Icons of parent item/folder are now correctly displayed in
+    add feed/category dialogs.
+  * Ability to update only feeds with custom auto-update policy
+    set.
+  * Enhanced feed's list context menus, now displays "Add
+    feed/category here".
+  Fixed/changed:
+  * Fixed build on ARM machines.
+- Dropped fix-mimesis-for-arm.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Sep  1 10:00:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on %arm and aarch64:
+  * fix-mimesis-for-arm.patch
+
+-------------------------------------------------------------------
+Tue Aug 25 12:04:25 UTC 2020 - aloisio@gmx.com
+
+- Update to version 3.7.1
+  Added:
+  * Gmail plugin is now able to send e-mail messages and also
+    reply to them.
+  * Branch arrows in feeds list can now be displayed.
+  * Changes in read/important field in a message from a message
+    filter are now synced back to online services.
+  * Filterin mechanism now accepts constants named "MSG_ACCEPT"
+    and "MSG_IGNORE" which can be used instead of hardcoded
+    values "1" and "2".
+  Fixed/changed:
+  * Message previewers now more correctly convert ASCII newlines
+    to HTML line breaks to ensure better readability of message
+    contents.
+  * Localizations updated.
+  * Accented characters now correctly decoded for Inoreader.
+  * Fixed decoding of attachment URLs in messages.
+  * Gmail API usage migrated to correct "batch" endpoints.
+  * Crash in message filters window.
+  * Some files were not downloaded correctly via internal
+    downloader
+  * OAuth handler was rewritten and is now able to listen on
+    arbitrary destination port.
+  * C++ 11 code base refactorings.
+
+-------------------------------------------------------------------
+Mon Jul 13 13:45:49 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.7.0
+  Added:
+  * Fully scriptable MESSAGE FILTERING:
+    + Is avaialble for all accounts, including TT-RSS,
+      Inoreader, etc.
+    + Is fully scriptable with JavaScript.
+    + Almost all attributes of every single message are
+      changeable.
+    + You can assign the same filter to multiple feeds.
+    + There is a special JavaScript function which allows you to
+      check if message is "duplicate".
+    + There is a simple dialog for creating and testing filters.
+    + Filters are automagically applied when new messages are
+      downloaded.
+    + See dialog accessible from menu "Messages -> Message
+      filters".
+    + Note that this feature is highly experimental, report
+      bugs, please.
+    + For more information, see
+      https://github.com/martinrotter/rssguard/wiki/Message-filtering
+  * Delay for first automatic feed update after application
+    launch is now configurable and defaults to smaller value.
+  * It is now possible to download UNREAD messages ONLY for
+    TT-RSS and Nextcloud News accounts. See settings dialog for
+    each respective account.
+  * All accounts now offer "Important message" node in feed's
+    list which allows you to elegantly display all important
+     messages you have.
+  * Message list is now able to show UNREAD messages only, see
+    "Messages" menu. Setting is persistent.
+  * RSS parser now partially supports M-RSS.
+  Fixed/changed:
+  * Localizations updated.
+  * Show correct DB size for MariaDB in DB cleanup dialog.
+  * Sorting in feed's list is now case insensitive.
+  * Fixed couple of crashes when saving in-memory SQLite
+    databases to persistent file.
+  * Simplified code for OAuth2.0 flow, removed WebEngine-based
+    solution entirely, rely on system web browser to handle the
+    challenge.
+  * Fixed mouse selections in message's list when "keep
+    selection in center" setting is enabled.
+  * Feed updating logic was rewritten and now should be more
+    reliable.
+  * Some obsolete code removed and refactored.
+  * Purging of messages wasn't purgin important messages if
+    chosen, now fixed.
+  * Fixed errors in internal SQL code when displaying empty
+    message list.
+- Drop rssguard-3.6.3-fix_sizeof.patch (merged upstream)
+
+-------------------------------------------------------------------
+Wed Jun  3 08:57:39 UTC 2020 - aloisio@gmx.com
+
+- Update to version 3.6.3
+  Fixed/changed:
+  * Fixed some compiler warnings.
+  * Fixed application crash when doing some network operations
+    when application exits.
+  * Some localizations now have more precise country codes.
+    Localizations were also synced.
+- Replace rssguard-3.6.0-add_library_version.patch with
+  rssguard-3.6.3-add_library_version.patch
+- Add rssguard-3.6.3-fix_sizeof.patch
+
+-------------------------------------------------------------------
+Thu May  7 07:54:52 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.6.1
+  * Translations synced.
+  * Big code refactoring, fixed almost all usages of Qt deprecated
+    code.
+- Drop rssguard-3.6.0-fix_no_return_nonvoid.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
+Thu Apr 30 15:59:59 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.6.0
+  Added:
+  * UK, GL translation and some other localizations.
+  * Executable is now separated from library, making it possible
+    to write external plugins for RSS Guard and distribute them
+    separately as dll/lib/so/dylib file.
+  * Fetch some M-RSS metadata when downloading RSS feeds.
+  * Ability to postpone updates if main window is visible.
+  * Switchable monochrome tray icons.
+  * Default system icon theme is now default for RSS Guard on
+    all platforms.
+  * QtWebEngine-based RSS Guard variant now should respect web
+    proxy set in settings.
+  Fixed/changed:
+  * Feeds.url attribute in MySQL storage now has <=1000 length.
+  * Message viewer now responds to "zoom" action via mouse wheel
+    + CTRL key and persistently saves the zoom level fixing the
+    problem with small text in HIDPI screens.
+  * Minimum Qt version is now 5.9.0.
+  * Translations synced with newest strings.
+  * TT-RSS: Saving of message states now works
+    (read/unread/important).
+  * Many code cleanups, refactorings and regressions fixed.
+  * Tray icon now shows correct number of unread messages upon
+    app startup.
+  * Many fixes for build scripts for dev builds.
+- Refreshed rssguard-3.5.2-fix_no_return_nonvoid.patch as
+  rssguard-3.6.0-fix_no_return_nonvoid.patch
+- Dropped rssguard-3.5.9-Qt59.patch (merged upstream)
+- Added rssguard-3.6.0-add_library_version.patch
+- Dropped Group tag
+
+-------------------------------------------------------------------
+Thu Sep  5 17:50:40 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Disable LTO
+
+-------------------------------------------------------------------
+Thu Jun  6 08:27:16 UTC 2019 - aloisio@gmx.com
+
+- Add rssguard-3.5.9-Qt59.patch to fix build on Leap
+
+-------------------------------------------------------------------
+Tue Jun  4 13:22:23 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.5.9
+  * Font in message and feed lists is now changeable, including
+    its size. (#187)
+  Fixed:
+  * Broken backward compatibility to Qt 5.7.
+
+-------------------------------------------------------------------
+Fri May 31 07:31:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.5.8
+  Added:
+  * Image placeholders can now be completely disabled in
+    "nowebengine" RSS Guard variant. (#205)
+  Changed:
+  * Source code refactored, faster regexp-related operations.
+  * Optimized displaying of messages which do not have any
+    associated URLs.
+  Fixed:
+  * "optimize tables" command for MariaDB now works correctly.
+  * Fixed downloading of e-mail attachments in Gmail plugin.
+  * Parsing of datetime strings now works better with Gmail
+    plugin.
+  * Corrected logic of cleaning DB, which allows to really get
+    rid of all messages stored in DB.
+  * Fixed crash when closing settings dialog.
+  * Message datetime decoded correctly in Gmail plugin.
+  * I hope, that appveyor/travis CI are now fixed as well.
+
+-------------------------------------------------------------------
+Thu Apr  4 09:21:04 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+ - Update to version 3.5.7
+   Added:
+   * "Default" icons of feeds/categories are now NOT directly
+     stored in RSS Guard DB and they are dynamically loaded from
+     active icon theme instead. (#200)
+   Fixed:
+   * Feeds that fail to update are now correctly shown in red.
+   * Newspaper mode is now correctly opened when clicked on "Open
+     feed in newspaper mode" context menu item.
+   * Built-in skins now properly embed HTML of displayed messages
+     and no HTML "underflowing" is visible.
+   * Icons are now installed to proper folders under Linux.
+   * Correct "desktop" file filename.
+   * Qt translations are now correctly loaded.
+   * Crash related to feed update to be finished in worker thread.
+   Changed:
+   * Default size of main window and sizes of its widgets are now
+     edited and when app is launched for the first time it just
+     looks better.
+   * Default width of columns in message view is now unified with
+     feeds view.
+   * Qt translations are now dynamically compiled and not
+     hard-coded.
+   * Synced translations.
+   * Enhanced behavior of "Select next/previous item" in feed's
+     list.
+
+-------------------------------------------------------------------
+Mon Feb 26 09:55:39 UTC 2018 - aloisio@gmx.com
+
+- Update to version 3.5.6
+  Fixed:
+  * Some minor stuff fixes.
+  * Unnecessary "Welcome" notifications. (bug #176)
+  * Bad handling of null/empty strings when inserting messages
+    into DB. (bug #169)
+  * Bad conversion of "created on" date/time in TT-RSS plugin.
+    (bug #172)
+  * Missing obligatory attribute in OPML 2.0 files. (bug #166)
+
+-------------------------------------------------------------------
+Sun Nov 19 19:00:09 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.5.5
+  Added:
+  * Internal message web viewer (and also lighter message text
+    viewer) now support (#63) text searching. How to use:
+    + Select some messages, it now gets displayed in internal
+      viewer.
+    + Give focus to internal viewer (click somehwere in it).
+    + Press standard "find" keyboard shortcut (CTRL+F on Windows).
+    + Search box appears on the bottom if internal message
+      previewer.
+  * New context menu internal web viewer action to open links in
+    ext. browser (#80)
+  * New bindable menu action Messages -> Enable message preview,
+    which can disable opening message preview in internal web
+    viewer. (#141)
+  Fixed:
+  * Displaying correct update files. (#155)
+
+-------------------------------------------------------------------
+Tue Nov  7 12:03:48 UTC 2017 - aloisio@gmx.com
+
+- Added AGPL-3.0+ license for QOAuth sources
+
+-------------------------------------------------------------------
+Mon Oct 23 07:52:57 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.5.4
+  Fixed:
+  * First item in itemviews is now selected when focus is gained.
+    (#142)
+  * Some feed files do not have URLs of messages properly
+    sanitized. Strip "\n" and "\t" from URls. (bug #154)
+
+-------------------------------------------------------------------
+Fri Oct 20 10:38:33 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.5.2 (no changelog supplied)
+- Added rssguard-3.5.2-fix_no_return_nonvoid.patch
+
+-------------------------------------------------------------------
+Mon Oct 16 07:04:52 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.5.1
+  * Font size of message/feed list can now be changed. (#145)
+  * Inoreader plugin can mark messages starred and accounts can be
+    deleted.
+  * All cached online service data are synchronously saved when
+    any feed is updated.
+
+-------------------------------------------------------------------
+Tue Oct 10 06:47:53 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.5.0
+  * All application resources (skins, icons, ...) are now compiled
+    into the executable file. This allows for easier deployment.
+  * "Add account" dialog is displayed when app is launched and no
+    accounts exist so far.
+  * New plugin for Inoreader. This is supported only in full RSS
+    Guard "web-engine" version, because of web OAuth 2.0. The new
+    plugins is in EXPERIMENTAL phase, expect errors and report them.
+  * NextCloud plugin now allows to persistently set max number of
+    messages to get downloaded per feed.
+  * Added support for arbitrary external tools (settings category
+    "Web browser & e-mail & proxy") which can open URLs of selected
+    messages. (#136)
+  * Standard account is now automatically added if RSS Guard is
+    started with empty database.
+  * Menu action "Select next unread message" in "Messages" menu
+    now works across all feeds, so user can navigate through all
+    unread messages with a sigle keyboard shortcut. (#132, #6)
+  * Added two bindable menu actions (in menu "Web browser & tabs")
+    which allow to cycle among tabs. (#6)
+
+- Drop -lang subpackage since localisation is embedded in the
+  executable now.
+
+-------------------------------------------------------------------
+Wed Sep  6 06:45:21 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.4.2
+  * All (well, almost all) web-engine attributes can be
+    disabled/enabled, including JS/plugins. (#57)
+  * Some minor tweaks/fixes.
+  * New Ad-Block feature for internal web browser. Based on Qt
+    examples and QupZilla. Original license GNU GPLv3 is retained.
+    (#123)
+
+-------------------------------------------------------------------
+Thu Jul 13 11:40:16 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.4.1
+  Added:
+  * Toolbar editor can reset toolbars.
+  * Toolbar editor now uses iconified tool buttons.
+  * Double mouse click on feed or recycle bin items in feeds list
+    now opens all messages of the item in newspaper mode.
+  * Columns in message list can be hidden/shown/reordered with
+    context menu. (issue #115)
+  * Auto-update notification is now switchable. (issue #119)
+  * Messages which are not removed or restored are not instantly
+    deleted from list, they are striked-through instead. This is
+    more resource friendly.
+  * Message list is now not reloaded when doing batch message
+    operations.
+  * Message list SQL queries are now fully adjustable. This will
+    allow for integration of labels functionality in the future.
+  * Auto-update status of feeds is now more general and complete.
+    (issue #91)
+  * Display feed title in list of messages. (issue #97)
+  * Displayed feeds can now be sorted by multiple columns. Do you
+    want to sort by author, and THEN by title? Simply click first
+    "Title" column, then on "Author" column. If you hold CTRL during
+    sorting, the sort is done in reverse column order.
+  Changed:
+  * Updating of RSS Guard now uses GitHub API. (issue #109)
+  * Better ATOM/RSS parsing, respects now XML namespaces, bit
+    better link parsing and other stuff. (issue #104)
+  * Folder which holds SQL scripts got renamed to "sql".
+  * Tweaked some conditions for determining newly "updated"
+    messages in ATOM format. (issue #103)
+  Fixed:
+  * Fixed regression when restoring deleted messages.
+  * Crash in TT-RSS plugin on application exit, when TT-RSS user
+    needed to be logged out.
+
+-------------------------------------------------------------------
+Mon Mar 13 09:40:56 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.4.0
+  Added:
+  * New icons (CC 3.0 BY) inspired by the work of Dave Gandy.
+  * "Cleanup database" action has now configurable shortcut. 
+    (issue #90)
+  * Fixed #76, now user can choose to "not show the dialog 
+    again" when opening hyperlink from message previewer. This 
+    only concerns the lite version of RSS Guard which uses 
+    simpler text component for message previewing.
+  Changed:
+  * (Linux only) Primary user data/config storage is now undex 
+    $HOME/.config/RSS Guard. XDG_CONFIG_HOME variable is 
+    respected. If old user data is detected, then old user data 
+    path is used. Note that the location of cache is now changed 
+    too to $XDG_{CACHE,DATA}_HOME/RSS Guard.
+  * RSS Guard now uses "_" character as localization file 
+    names separator. (issue #75)
+  * Localizations are now placed in "translations" subfolder 
+    instead of "l10n" subfolder. (issue #75)
+  version 3.3.8
+  Fixed:
+  * Percent HTML encoding is now decoded when messages are 
+    downloaded. (bug #83)
+
+- Dropped rssguard-locale.patch (integrated upstream)
+
+- Dropped rssguard-rpmlintrc
+
+-------------------------------------------------------------------
+Tue Jan 24 11:42:36 UTC 2017 - jengelh@inai.de
+
+- Update for description guidelines.
+
+-------------------------------------------------------------------
+Tue Jan 24 10:00:57 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.3.7
+  Added:
+  * Some localizations added & updated.
+  * User now can place custom user skins in user "data" 
+    folder. (issue #81) See "About" dialog for the exact path.
+  * User now can select if DB transactions are enabled or not. 
+    (bug #70) By default, DB transactions are now switched OFF, 
+    therefore anyone who wants better performance, must turn 
+    them ON in app settings.
+  * MySQL database backend now requires at least version 5.5, 
+    DB encoding is now changed to utf8mb4 character set. (bug 
+    #74)
+  * Height if message attachment image is now configurable, 
+    defaults to 36. (issue #69)
+  * All textual contents of all messages are now locally saved 
+    in explicit UTF-8 encoding. This is partially because of 
+    MySQL backend. We need to keep encoding of data sent to DB 
+    and encoding of DB itself in parity.
+  Changed:
+  * TT-RSS plugin now does NOT require service URL to be 
+    entered with "/api/" suffix. In other words, do not use that 
+    suffix now, RSS Guard will add it silently when it needs to.
+  Fixed:
+  * Fixed problem with strings in core being rendered 
+    untranslated. (bug #60)
+  * Fixed problem with feed updates progress bar flickering. 
+    (bug #73)
+  * Partially fixed problem with incorrect number of 
+    downloaded messages being reported. (bug #70)
+
+- Refreshed rssguard-locale.patch
+
+-------------------------------------------------------------------
+Sun Dec  3 18:09:26 UTC 2016 - aloisio@gmx.com
+
+- Initial package (version 3.3.5)
+

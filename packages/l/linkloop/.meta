@@ -1,0 +1,6 @@
+<package name="linkloop" project="openSUSE:Factory">
+  <title>Test network connectivity at link layer (layer-2)</title>
+  <description>Linkloop is similar to ping, but tests the network connectivity at the
+link layer (layer 2) instead of the network layer (layer 3).</description>
+  <devel project="network:utilities" package="linkloop"/>
+</package>

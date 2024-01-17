@@ -1,0 +1,187 @@
+--- src/cmd/builtin/pty.c
++++ src/cmd/builtin/pty.c	2013-02-01 15:59:52.697952156 +0000
+@@ -216,27 +216,64 @@ mkpty(int* master, int* slave)
+ #if !_lib_openpty
+ 	char*		sname;
+ #endif
++#ifdef __linux__
++	sigset_t blckttou, oldset;
++	(void)sigemptyset(&blckttou);
++	(void)sigaddset(&blckttou, SIGTTOU);
++	sigprocmask(SIG_BLOCK, &blckttou, &oldset);
++#endif
+ 	/*
+ 	 * some systems hang hard during the handshake
+ 	 * if you know why then please let us know
+ 	 */
+ 
+-	alarm(4);
+-	if (tcgetattr(STDERR_FILENO, &tty) >= 0)
+-		ttyp = &tty;
+-	else
++	alarm(6);
++	if (tcgetattr(sffileno(sfstderr), &tty) < 0)
+ 	{
++		if (errno != ENOTTY)
++			error(-1, "unable to get standard error terminal attributes");
++		cfmakeraw(&tty);
+ 		ttyp = 0;
+-		error(-1, "unable to get standard error terminal attributes");
+ 	}
++	tty.c_lflag |= ICANON | IEXTEN | ISIG | ECHO|ECHOE|ECHOK|ECHOKE;
++	tty.c_oflag |= (ONLCR | OPOST);
++	tty.c_oflag &= ~(OCRNL | ONLRET);
++	tty.c_iflag |= BRKINT;
++	tty.c_iflag &= ~IGNBRK;
++	tty.c_lflag |= ISIG;
++	tty.c_cc[VTIME] = 0;
++	tty.c_cc[VMIN] = CMIN;
++#ifdef B115200
++	cfsetispeed(&tty, B115200);
++	cfsetospeed(&tty, B115200);
++#elif defined(B57600)
++	cfsetispeed(&tty, B57600);
++	cfsetospeed(&tty, B57600);
++#elif defined(B38400)
++	cfsetispeed(&tty, B38400);
++	cfsetospeed(&tty, B38400);
++#endif
++	ttyp = &tty;
+ #ifdef TIOCGWINSZ
+-	if (ioctl(STDERR_FILENO, TIOCGWINSZ, &win) >= 0)
+-		winp = &win;
+-	else
++	if (ioctl(sffileno(sfstderr), TIOCGWINSZ, &win) < 0)
+ 	{
++		if (errno != ENOTTY)
++			error(-1, "unable to get standard error window size");
++		win.ws_row = 0;
++		win.ws_col = 0;
+ 		winp = 0;
+-		error(-1, "unable to get standard error window size");
+ 	}
++	if (win.ws_row < 24)
++		win.ws_row = 24;
++	if (win.ws_col < 80)
++		win.ws_col = 80;
++	winp = &win;
++#endif
++#ifdef __linux__
++# if !_lib_openpty
++#  undef  _lib_openpty
++#  define _lib_openpty 1
++# endif
+ #endif
+ #if _lib_openpty
+ 	if (openpty(master, slave, NULL, ttyp, winp) < 0)
+@@ -279,6 +316,9 @@ mkpty(int* master, int* slave)
+ #if !O_cloexec
+ 	fcntl(*slave, F_SETFD, FD_CLOEXEC);
+ #endif
++#ifdef __linux__
++	sigprocmask(SIG_SETMASK, &oldset, NULL);
++#endif
+ 	alarm(0);
+ 	return 0;
+ }
+@@ -317,9 +357,13 @@ process(Sfio_t* mp, Sfio_t* lp, int dela
+ 	char*		s;
+ 	Sfio_t*		ip;
+ 	Sfio_t*		sps[2];
++	struct stat	dst;
++	struct stat	fst;
+ 
+ 	ip = sfstdin;
+-	for (;;)
++	if (!fstat(sffileno(ip), &dst) && !stat("/dev/null", &fst) && dst.st_dev == fst.st_dev && dst.st_ino == fst.st_ino)
++		ip = 0;
++	do
+ 	{
+ 		i = 0;
+ 		t = timeout;
+@@ -336,39 +380,39 @@ process(Sfio_t* mp, Sfio_t* lp, int dela
+ 		{
+ 			if (n < 0)
+ 				error(ERROR_SYSTEM|2, "poll failed");
+-			if (t < 0)
+-				break;
++			break;
+ 		}
+-		else
+-			for (i = 0; i < n; i++)
++		for (i = t = 0; i < n; i++)
++		{
++			if (!(sfvalue(sps[i]) & SF_READ))
++				/*skip*/;
++			else if (sps[i] == mp)
+ 			{
+-				if (!(sfvalue(sps[i]) & SF_READ))
+-					/*skip*/;
+-				else if (sps[i] == mp)
++				t++;
++				if (!(s = (char*)sfreserve(mp, SF_UNBOUND, -1)))
+ 				{
+-					if (!(s = (char*)sfreserve(mp, SF_UNBOUND, -1)))
+-					{
+-						sfclose(mp);
+-						mp = 0;
+-					}
+-					else if ((r = sfvalue(mp)) > 0 && (sfwrite(sfstdout, s, r) != r || sfsync(sfstdout)))
+-					{
+-						error(ERROR_SYSTEM|2, "output write failed");
+-						goto done;
+-					}
++					sfclose(mp);
++					mp = 0;
+ 				}
+-				else
++				else if ((r = sfvalue(mp)) > 0 && (sfwrite(sfstdout, s, r) != r || sfsync(sfstdout)))
+ 				{
+-					if (!(s = sfgetr(ip, '\n', 1)))
+-						ip = 0;
+-					else if (sfputr(mp, s, '\r') < 0 || sfsync(mp))
+-					{
+-						error(ERROR_SYSTEM|2, "write failed");
+-						goto done;
+-					}
++					error(ERROR_SYSTEM|2, "output write failed");
++					goto done;
+ 				}
+ 			}
+-	}
++			else
++			{
++				t++;
++				if (!(s = sfgetr(ip, '\n', 1)))
++					ip = 0;
++				else if (sfputr(mp, s, '\r') < 0 || sfsync(mp))
++				{
++					error(ERROR_SYSTEM|2, "write failed");
++					goto done;
++				}
++			}
++		}
++	} while (t);
+  done:
+ 	if (mp)
+ 		sfclose(mp);
+--- src/cmd/builtin/what.c
++++ src/cmd/builtin/what.c	2012-02-13 11:02:18.645933606 +0000
+@@ -68,7 +68,7 @@ static struct
+ 	int		match;
+ 	int		single;
+ 	size_t		skip[UCHAR_MAX+1];
+-	unsigned char	prev[3];
++	unsigned char	prev[4];
+ } state;
+ 
+ static void
+@@ -99,7 +99,7 @@ what(const char* file, Sfio_t* ip, Sfio_
+ 			{
+ 			next:
+ 				s = state.prev;
+-				s[0] = s[1] = s[2] = 0;
++				s[0] = s[1] = s[2] = s[3] = 0;
+ 				switch (mid)
+ 				{
+ 				default:

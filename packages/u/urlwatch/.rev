@@ -1,0 +1,291 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd73a8c2680c30b00832e47b35b244a1</srcmd5>
+    <version>1.17</version>
+    <time>1408089355</time>
+    <user>lnussel</user>
+    <comment></comment>
+    <requestid>244721</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fd73a8c2680c30b00832e47b35b244a1</srcmd5>
+    <version>1.17</version>
+    <time>1409303582</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>66ca3aabe769014578b04f977ecaf32d</srcmd5>
+    <version>1.18</version>
+    <time>1449145963</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347099</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e30ce66aceb37c5e7e0cf69b23dedc62</srcmd5>
+    <version>2.1</version>
+    <time>1457685499</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368418</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b14beb32da15a85261f50d6ef571e01f</srcmd5>
+    <version>2.5</version>
+    <time>1468482649</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408351</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>16256c30de9cc23753eba78d64b981c0</srcmd5>
+    <version>2.6</version>
+    <time>1484475690</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450334</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7565b3abda6494fef2eeb7adfc75e40d</srcmd5>
+    <version>2.8</version>
+    <time>1517606508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571819</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50023fe8418ad918f68f2936cf737713</srcmd5>
+    <version>2.9</version>
+    <time>1522596467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592807</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f46a373abfe2d41d6edf2c485860adc2</srcmd5>
+    <version>2.10</version>
+    <time>1526646506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10:
+  * File editing: Fix issue when $EDITOR contains spaces
+  * Browser: Add support for browser jobs using requests-html
+  * Retry: Add support for optional retry count in job list
+  * HTTP: Add support for specifying optional headers</comment>
+    <requestid>610232</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>63816c23b31494b08aa684dbe936f426</srcmd5>
+    <version>2.11</version>
+    <time>1527001338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611193</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>355715593327b44008b14e5bdc5f62fb</srcmd5>
+    <version>2.13</version>
+    <time>1528492578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614546</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>135b1c6fd28fdb622672e733875e3f0c</srcmd5>
+    <version>2.14</version>
+    <time>1536094670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632968</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>64ef1af7f486c1e1096f491c4c4d2b92</srcmd5>
+    <version>2.14</version>
+    <time>1539758411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642028</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>776ffc21dd20da4ac95f496a8eecdbf4</srcmd5>
+    <version>2.15</version>
+    <time>1540451480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644180</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a9393602b8eb29167b8fb5a83ccbb582</srcmd5>
+    <version>2.16</version>
+    <time>1548704974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668992</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8ca61aa5a42592ee04383f7ed5cb2f43</srcmd5>
+    <version>2.17</version>
+    <time>1555329592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694199</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>47cba321afbc7ef76244af843ee8384a</srcmd5>
+    <version>2.17</version>
+    <time>1584350275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784830</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>42f6e1ca48fd316e07ced0855c3731c8</srcmd5>
+    <version>2.18</version>
+    <time>1590780225</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809787</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ff0edc1231017e0a0a3ea72bbe3cf401</srcmd5>
+    <version>2.21</version>
+    <time>1597955580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828139</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cd1814d6c4e81ebaf30d1440105c40fd</srcmd5>
+    <version>2.22</version>
+    <time>1612011431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867912</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c0aff7acbbc139ae4373cb8c016e60dc</srcmd5>
+    <version>2.23</version>
+    <time>1618387873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.23:
+  Added:
+  * New filter: pretty-xml to indent/pretty-print XML documents
+  * New filter: jq to parse, transform, and extract JSON data
+  * New reporter: prowl
+  Fixed:
+  * Proper multi-line highlighting for wdiff (PR#615)
+  * Fix command-line generation for html2text (PR#619)</comment>
+    <requestid>884942</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>65fbc1d39fbdfc3ebf646dea1c76897e</srcmd5>
+    <version>2.24</version>
+    <time>1639424715</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.24:
+  Added:
+  * The Telegram reporter has gained two new options:
+    silent: Receive message notification without sound
+    monospace: Format message in monospace style
+  * Support for running a subset of jobs by specifying their index
+    on the command line
+  Changed:
+  * Migrated CI pipeline from Travis CI to Github Actions
+  * user_visible_url can now be specified for all job types (#654)
+  * Added a remove-duplicate-lines filter.
+  * Added a csv2text filter.
+  * Set envelope from (-f option) when sending emails using sendmail
+  * It is now possible to override the HTTP method when data is set
+    on a URL job
+  Fixed:
+  * Fix UnboundLocalError when SMTP auth is enabled, but keyring
+    is not installed (#667)</comment>
+    <requestid>940291</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fc9729bac9cc84afff40475cfbcc5026</srcmd5>
+    <version>2.25</version>
+    <time>1647618140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.25:
+  Added:
+  * Add a colored setting for the Discord reporter, enabled by
+    default (PR#683)
+  * Add a splitlines filter for trimming leading/trailing whitespace
+    in each line (PR#693)
+  * If a shell job fails, the job's stdout and stderr are added to
+    the error message (fixes #689)
+  * shell job: Add optional stderr key to customize how output on
+    stderr is treated
+  * Add --dump-history JOB command-line option to print historic
+    job outputs (fixes #681)
+  * Add display / empty-diff configuration option to skip reports when
+    diffs are empty due to diff_filter (fixes #692)
+  * New man pages: urlwatch-intro(7), urlwatch-deprecated(7),
+    urlwatch-cookbook(7), urlwatch-jobs(5), urlwatch-filters(5),
+    urlwatch-config(5) and urlwatch-reporters(5).
+  Changed:
+  * Require minidb 2.0.6; issue VACUUM only with --gc-cache (fixes #690)
+  * For shell jobs, stderr output isn't sent to urlwatch's stdout anymore;
+    add stdout: urlwatch to your shell job definition if you depend on
+    the old default behavior
+  Fixed:
+  * pytest command-line arguments are not wrongly interpreted by
+    CommandConfig anymore (fixes #677)</comment>
+    <requestid>962616</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2ac2f6c2ca6d2283bb28a4b6c72263ba</srcmd5>
+    <version>2.26</version>
+    <time>1681221281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26:
+  Added:
+  * browser job: Add support for specifying useragent (#700)
+  * Document how to ignore whitespace changes (PR#707)
+  * shell reporter: Call a script or program when chanegs are detected (fixes #650)
+  * New separate configuration option for reporters to split reports into one-per-job
+  * --change-location option allowing job location to be changed without losing job history (#739)
+  Changed:
+  * Docs: Re-group diff-related topics and improve wording (PR#712)
+  * Improved HTML e-mail diff style, including Dark Mode support (#730)
+  * Require Python &gt;= 3.7, as Python 3.6 was EOL'd on 2021-12-23
+  * Dockerfile: Shrink image by switching to an Alpine-based Python 3.11
+    base image, this reduces the container size from 1 GiB to 151 MiB (#731)
+  * --gc-cache can now take a parameter to keep more than 1 historical snapshot (#732)
+  Fixed:
+  * Limit e-mail header length to 78 characters to avoid issues with some SMTP servers (PR#703, fixes #702)
+  * Fix a ResourceWarning for unclosed files when running unit tests (PR#698)
+  * Add support for html2text 2.1.1 and newer by feature-checking -utf8 support via -help (fixes #718)
+  * html2text options were only applied to the first job when using job_defaults (PR#726, fixes #588)
+  * Update Github tags watch filter documentation with new XPath (fixes #723)
+  * Fix --gc-cache to clear unknown keys when using Redis storage (fixes #743)</comment>
+    <requestid>1078448</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5f85d9bf9d0b163b9243cb49fd713f02</srcmd5>
+    <version>2.28</version>
+    <time>1683111476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.28:
+  * Browser jobs: Migrate from Pyppeteer to Playwright (#761, #751)
+
+- Update to 2.27:
+  Added:
+  * css and xpath filters now accept a sort subfilter to sort matched elements lexicographically
+  Fixed:
+  * Rework handling of running from a source checkout, fixes issues with example
+    files when urlwatch was run as /usr/sbin/urlwatch, e.g. on Void Linux (fixes #755)
+  * Add support for docutils &gt;= 0.18, which deprecated frontend.OptionParser (fixes #754)
+  * Browser jobs: Fix support for Python 3.11 with @asyncio.coroutine removal (#759)</comment>
+    <requestid>1084225</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>b6f09a46f5c888a745fb8b214eca0996</srcmd5>
+    <version>2.28</version>
+    <time>1696356937</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114304</requestid>
+  </revision>
+</revisionlist>

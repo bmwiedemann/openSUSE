@@ -1,0 +1,12 @@
+<package name="bchunk" project="openSUSE:Factory">
+  <title>A CD image format converter from .bin/.cue to .iso/.cdr/.wav</title>
+  <description>The bchunk package contains a UNIX/C rewrite of the BinChunker
+program. BinChunker converts a CD image in a .bin/.cue format
+(sometimes .raw/.cue) into a set of .iso and .cdr/.wav tracks.
+The .bin/.cue format is used by some non-UNIX CD-writing
+software, but is not supported on most other CD-writing programs.
+
+</description>
+  <devel project="multimedia:apps" package="bchunk"/>
+  <url>http://he.fi/bchunk</url>
+</package>

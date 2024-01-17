@@ -1,0 +1,5 @@
+<package name="kbruch" project="openSUSE:Factory">
+  <title>Excercise Fractions</title>
+  <description>KBruch is an application to learn calculating with fractions.</description>
+  <devel project="KDE:Applications" package="kbruch"/>
+</package>

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75b4a5feeafae0af556dd8a0c5cc1651</srcmd5>
+    <version>1.0.1</version>
+    <time>1621034623</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>890980</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6948a843fe9e527b72c195e8e589f636</srcmd5>
+    <version>1.0.1</version>
+    <time>1654595104</time>
+    <user>dimstar_suse</user>
+    <comment>- Add procmon-add_missing_include.patch to fix Factory build
+</comment>
+    <requestid>981026</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f2272248dd2ce7cc9dfbba576673632b</srcmd5>
+    <version>1.0.1</version>
+    <time>1667306607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032638</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a386ce0f015d927bf37063ca86bf52bf</srcmd5>
+    <version>1.0.1</version>
+    <time>1680018683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074935</requestid>
+  </revision>
+</revisionlist>

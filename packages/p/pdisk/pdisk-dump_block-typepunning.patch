@@ -1,0 +1,42 @@
+ dump.c: In function 'full_dump_block_zero':
+ dump.c:718: warning: dereferencing type-punned pointer will break strict-aliasing rules
+
+ dump.c |   14 ++++++++------
+ 1 files changed, 8 insertions(+), 6 deletions(-)
+
+Index: pdisk/dump.c
+===================================================================
+--- pdisk.orig/dump.c
++++ pdisk/dump.c
+@@ -685,6 +685,7 @@ full_dump_block_zero(partition_map_heade
+ {
+     Block0 *zp;
+     DDMap *m;
++    DDMap *me;
+     int i;
+ 
+     if (map == NULL) {
+@@ -706,16 +707,17 @@ full_dump_block_zero(partition_map_heade
+     printf("                  data: 0x%lx\n", zp->sbData);
+     printf("          driver count: %d\n", zp->sbDrvrCount);
+     m = (DDMap *) zp->sbMap;
+-    for (i = 0; &m[i].ddType < &zp->sbMap[247]; i++) {
+-    	if (m[i].ddBlock == 0 && m[i].ddSize == 0 && m[i].ddType == 0) {
++    me = (DDMap *) (zp + 1);
++    for (i = 0; m < me; m++, i++) {
++    	if (m->ddBlock == 0 && m->ddSize == 0 && m->ddType == 0) {
+     	    break;
+     	}
+-	printf("      driver %3u block: %ld\n", i+1, m[i].ddBlock);
+-	printf("        size in blocks: %d\n", m[i].ddSize);
+-	printf("           driver type: 0x%x\n", m[i].ddType);
++	printf("      driver %3u block: %ld\n", i+1, m->ddBlock);
++	printf("        size in blocks: %d\n", m->ddSize);
++	printf("           driver type: 0x%x\n", m->ddType);
+     }
+     printf("remainder of block -");
+-    dump_block((unsigned char *)&m[i].ddBlock, (&zp->sbMap[247]-((unsigned short *)&m[i].ddBlock))*2);
++    dump_block((unsigned char *)m, (int)(me - m) * sizeof(DDMap));
+ }
+ 
+ 

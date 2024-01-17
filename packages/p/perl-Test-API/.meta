@@ -1,0 +1,5 @@
+<package name="perl-Test-API" project="openSUSE:Factory">
+  <title>perl-Test-Api - Test a list of subroutines provided by a module</title>
+  <description>This simple test module checks the subroutines provided by a module. This is useful for confirming a planned API in testing and ensuring that other functions aren't unintentionally included via import.</description>
+  <devel project="devel:languages:perl" package="perl-Test-API"/>
+</package>

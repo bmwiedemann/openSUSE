@@ -1,0 +1,13 @@
+--- pmemkv-python-1.0/setup.py.orig	2020-10-21 15:37:03.070648872 +0200
++++ pmemkv-python-1.0/setup.py	2020-10-26 11:51:45.086875940 +0100
+@@ -31,7 +31,10 @@
+ """
+ import setuptools
+ from os import path
++from os import environ
+ 
++environ["CC"]="gcc-9"
++environ["CXX"]="g++-9"
+ project_dir = path.abspath(path.dirname(__file__))
+ with open(path.join(project_dir, "README.md"), encoding="utf-8") as f:
+     readme = f.read()

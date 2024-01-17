@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Sat Nov 25 22:32:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.99:
+  * Export to image functionality disabled for now (I don't know
+    how to accomplish this in GTK 4)
+  * Switch default font from Cascadia Code to Cascadia Mono (GTK
+    4 Cascadia Code would render ligatures, which don't fit well in
+    NFO;
+  * Mono is basically the same font, but without ligatures)
+  * Bump required Python version to 3.8
+  * Add Georgian translation
+
+-------------------------------------------------------------------
+Thu Oct 27 13:12:40 UTC 2022 - C J <c.j@tuta.io>
+
+- update to 1.29:
+  * Fix font name quoting in Gtk CSS
+  * Update translations
+
+-------------------------------------------------------------------
+Sun Apr 10 13:39:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.28.1:
+  * Add Chinese (China) translation
+  * Add German (Switzerland) translation
+  * Add Italian translation
+  * Update existing translations
+
+-------------------------------------------------------------------
+Thu Apr 30 07:59:19 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.28:
+  * Switch default font from Terminus to Cascadia Code as Terminus is
+    most commonly a bitmap font, which no longer work with Pango 1.44:
+    https://gitlab.gnome.org/GNOME/pango/issues/386
+  * Always fall back on the platform default monospace font
+  * Add Dutch translation (Heimen Stoffels)
+
+-------------------------------------------------------------------
+Thu Apr 23 18:41:25 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.27.1:
+  * Fix CSS error with the abnormal weight of the Unscii font
+- Drop nfoview-fix-css-font-abnormal-weight.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 15:04:05 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.27:
+  * New app icon, as full-color and symbolic SVGs.
+  * Use the reverse domain name "io.otsaloma.nfoview" for desktop
+    file, appdata file and icons.
+- Changes from version 1.26.1:
+  * Updated translations.
+- Modernize spec, use autosetup and python macros.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Drop -lang Recommends: No longer needed, supplements in place.
+- Drop hicolor-icon-theme and update-desktop-files
+  Requires(post(un)) and macros: No longer needed.
+- Add nfoview-fix-css-font-abnormal-weight.patch: Fix CSS error
+  with the abnormal weight of the Unscii font.
+
+-------------------------------------------------------------------
+Wed Jan 23 20:24:30 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 1.26:
+  * Use native file dialogs when available.
+- Changes from version 1.25:
+  * Add support for building a Flatpak.
+  * Add 64x64 and 128x128 icons.
+  * Update AppData XML file.
+  * Fix build reproducibility.
+  * Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 26 18:06:53 UTC 2018 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 1.24:
+  * Avoid error output if not using header bars
+  * Set program name
+  * Sort input file list to make build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Sun Nov 12 20:47:54 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.23:
+  * Install AppData XML file under /usr/share/metainfo.
+  * Drop build dependency on intltool (use gettext instead).
+  * Add Donate button to about dialog.
+  * Updated translations.
+- Replace intltool with gettext BuildRequires following upstreams
+  port.
+
+-------------------------------------------------------------------
+Sat Sep 30 18:43:42 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.22:
+  * Fix window height calculation if line-spacing non-zero.
+  * Fix color scheme names not translated.
+  * Updated translations.
+- Disable desktop_database_post/postun and
+  icon_theme_cache_post/postun scriptlets on suse_version >= 1330:
+  this functionality is now covered by file triggers and the macros
+  expand to %nil.
+
+-------------------------------------------------------------------
+Sat Feb 18 13:00:04 UTC 2017 - mpluskal@suse.com
+
+- Cleanup specfile:
+  * Run spec-cleaner
+  * Use pretty archive name
+  * Add dependencies for scriplets
+
+-------------------------------------------------------------------
+Mon Feb  6 19:02:32 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 1.21
+
+-------------------------------------------------------------------
+Sun Apr 29 15:00:52 UTC 2012 - lazy.kent@opensuse.org
+
+- Split off language package.
+- Build requires python-distribute (for openSUSE >= 12.1).
+- Removed check for unsupported openSUSE versions.
+
+-------------------------------------------------------------------
+Fri Jul 29 14:06:15 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 1.9.5.
+- Patch to correct font name and size.
+

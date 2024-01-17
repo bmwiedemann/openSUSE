@@ -1,0 +1,6 @@
+<package name="lxqt-powermanagement" project="openSUSE:Factory">
+  <title>lxqt-powermanagement</title>
+  <description>lxqt daemon for power management and auto-suspend
+</description>
+  <devel project="X11:LXQt" package="lxqt-powermanagement"/>
+</package>

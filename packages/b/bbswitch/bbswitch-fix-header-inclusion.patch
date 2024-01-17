@@ -1,0 +1,24 @@
+From: Takashi Iwai <tiwai@suse.de>
+Subject: Add missing inclusion of linux/proc_fs.h
+References: boo#1183060
+
+The recent kernels like Leap 15.3 and later need to include
+linux/proc_fs.h explicitly, otherwise the procfs API won't be
+available.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+
+---
+ bbswitch.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/bbswitch.c
++++ b/bbswitch.c
+@@ -35,6 +35,7 @@
+ #include <linux/suspend.h>
+ #include <linux/seq_file.h>
+ #include <linux/pm_runtime.h>
++#include <linux/proc_fs.h>
+ 
+ #define BBSWITCH_VERSION "0.8"
+ 

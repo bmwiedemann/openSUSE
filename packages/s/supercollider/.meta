@@ -1,0 +1,12 @@
+<package name="supercollider" project="openSUSE:Factory">
+  <title>Object oriented programming environment for real-time audio and video processing</title>
+  <description>SuperCollider is an object oriented programming environment for
+real-time audio and video processing. It is one of the finest and most
+versatile environments for signal processing and especially for
+creating music applications of all kinds, such as complete
+compositions, interactive performances, installations etc.
+
+</description>
+  <devel project="multimedia:apps" package="supercollider"/>
+  <url>http://supercollider.sourceforge.net/</url>
+</package>

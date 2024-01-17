@@ -1,0 +1,8 @@
+<package name="proj" project="openSUSE:Factory">
+  <title>Cartographic projection software</title>
+  <description>This package offers the commandline tools for performing respective
+forward and inverse transformation of cartographic data to or from cartesian
+data with a wide range of selectable projection functions.</description>
+  <devel project="Application:Geo" package="proj"/>
+  <url>http://www.remotesensing.org/proj/</url>
+</package>

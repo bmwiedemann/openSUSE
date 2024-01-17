@@ -1,0 +1,5 @@
+<package name="ghc-case-insensitive" project="openSUSE:Factory">
+  <title>Case insensitive string comparison</title>
+  <description>The module Data.CaseInsensitive provides the CI type constructor which can be parameterised by a string-like type like: String, ByteString, Text, etc.. Comparisons of values of the resulting type will be insensitive to cases. </description>
+  <devel project="devel:languages:haskell" package="ghc-case-insensitive"/>
+</package>

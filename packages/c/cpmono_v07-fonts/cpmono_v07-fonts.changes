@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:54 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu May  3 11:41:05 UTC 2012 - pgajdos@suse.com
+
+- renamed cpmono_v07-font to cpmono_v07-fonts
+
+-------------------------------------------------------------------
+Thu Apr 26 14:34:12 UTC 2012 - pgajdos@suse.com
+
+- license contains only SPDX tag
+
+-------------------------------------------------------------------
+Tue Nov 22 09:31:59 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (1.0)
+

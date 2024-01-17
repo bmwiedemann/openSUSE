@@ -1,0 +1,11 @@
+--- src/cmd/ksh93/sh/nvtree.c.orig	2015-03-17 16:00:01.111718083 +0000
++++ src/cmd/ksh93/sh/nvtree.c	2015-03-17 16:00:31.560586300 +0000
+@@ -1152,6 +1152,8 @@ static void put_tree(register Namval_t *
+ 	nv_putv(np, val, flags,fp);
+ 	if(val && nv_isattr(np,(NV_INTEGER|NV_BINARY)))
+ 		return;
++	if (!val && !np->nvfun)
++		return;
+ 	if(ap= nv_arrayptr(np))
+ 		nleft = array_elem(ap);
+ 	if(nleft==0)

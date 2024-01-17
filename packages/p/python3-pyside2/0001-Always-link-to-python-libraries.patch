@@ -1,0 +1,41 @@
+From d46be00db12b97bff6b62222ccb4e97fdb0a7ed4 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 21 Mar 2022 14:48:20 +0100
+Subject: [PATCH] Always link to python libraries.
+
+---
+ sources/shiboken2/data/shiboken_helpers.cmake | 18 +++---------------
+ 1 file changed, 3 insertions(+), 15 deletions(-)
+
+diff --git a/sources/shiboken2/data/shiboken_helpers.cmake b/sources/shiboken2/data/shiboken_helpers.cmake
+index 5e0c6ea..5c0bcdc 100644
+--- a/sources/shiboken2/data/shiboken_helpers.cmake
++++ b/sources/shiboken2/data/shiboken_helpers.cmake
+@@ -413,21 +413,9 @@ macro(shiboken_compute_python_libraries)
+         "SHIBOKEN_COMPUTE_LIBS" "shiboken_compute_python_libraries"
+         "IS_CALLED_FROM_EXPORT" "" "" ${ARGN})
+ 
+-    if (NOT SHIBOKEN_PYTHON_LIBRARIES)
+-        set(SHIBOKEN_PYTHON_LIBRARIES "")
+-    endif()
+-
+-    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+-        if(WIN32 AND NOT SHIBOKEN_PYTHON_LIBRARIES)
+-            set(SHIBOKEN_PYTHON_LIBRARIES ${PYTHON_DEBUG_LIBRARIES})
+-        endif()
+-    endif()
+-
+-    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+-        if(WIN32 AND NOT SHIBOKEN_PYTHON_LIBRARIES)
+-            set(SHIBOKEN_PYTHON_LIBRARIES ${PYTHON_LIBRARIES})
+-        endif()
+-    endif()
++    # Always link to python libraries.
++    message(STATUS "Linking shiboken to ${PYTHON_LIBRARIES}")
++    set(SHIBOKEN_PYTHON_LIBRARIES ${PYTHON_LIBRARIES})
+ 
+     # If the resulting variable
+     # contains a "debug;X;optimized;Y" list like described in shiboken_check_if_limited_api,
+-- 
+2.35.1
+

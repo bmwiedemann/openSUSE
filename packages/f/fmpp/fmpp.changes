@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Mar 21 04:52:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+- Modified patch:
+  * fmpp-0.9.16-build.xml.patch
+    + Allow specifying the source and target levels on command-line
+
+-------------------------------------------------------------------
+Thu Nov 14 12:00:17 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of fmpp 0.9.16

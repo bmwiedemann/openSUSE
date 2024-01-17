@@ -1,0 +1,1081 @@
+-------------------------------------------------------------------
+Fri Aug 18 20:58:09 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.7.6:
+  - Changes
+    - Significant improvement to visual when drag/drop entries
+      [#9698]
+    - Automatically prompt for Quick Unlock when showing unlock
+      dialog [#9697]
+    - Improve colorful lock icon and fix file MIME icon on KDE
+      [#9632]
+    - Ability to search by entry UUID [#9571]
+    - Add challenge-response support for NitroKey 3 [#9631]
+    - Auto-Type: Disable entry level Auto-Type when disabled at
+      group/entry [#9672]
+    - Browser: Show warning when adding duplicate URL's to entry
+      [#9588][#9635]
+    - Browser: Improve error message when proxy cannot be found
+      [#9385]
+  - Fixes
+    - Fix crash on exit on macOS [#9620]
+    - Fix crash on search if entry doesn't have a group [#9633]
+    - Fix several issues with Quick Unlock [#9697]
+    - Enable save button when not auto-saving non-data changes
+      [#9634]
+    - Several UI/UX fixes [#9647]
+    - Move toolbar back to top of window when disabling movement
+      [#9699]
+    - Browser: Fix handling of expired credentials [#9595]
+    - Windows: Prevent white flicker when launching application
+      [#9637]
+    - Linux: Fix warning message about allow screencapture [#9638]
+    - FdoSecrets: Fix access confirmation dialog showing even when
+      disabled [#9690]
+
+-------------------------------------------------------------------
+Tue May 16 14:38:19 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.7.5:
+  - Changes
+    - Add menu option to allow screenshots [#8841]
+    - Add support for Botan 3 [#9388]
+    - Increase max TOTP step to 24 hours [#9149]
+    - Improve HTML export layout [#8987]
+    - Turn search reset off by default [#9153]
+    - Use QClipboard::clear() instead of setting blank text [#9148]
+    - Hide group column header choice when not in search [#9171]
+    - Improve look of KeePassXC logo and icons [#9355]
+    - Add keyboard shortcuts for app and database settings [#9007]
+    - Hide rename button from attachments preview panel [#8842]
+    - Linux: Set SingleMainWindow in .desktop file [#7430]
+  - Fixes
+    - Fix crash when search clears while creating new entry [#9230]
+    - Fix crash when using Windows Hello in a Remote Desktop
+      session [#9006]
+    - Fix crash in Group Edit after enabling Browser Integration
+      [#8778]
+    - Fix canceling quick unlock when it is unavailable [#9034]
+    - Set password input field font correctly [#8732]
+    - Greatly improve performance when rendering entry view [#9398]
+    - Fix various accessibility issues [#9138]
+    - Fix arrows size when expand/collapse a group [#9096]
+    - Select the clone instead of the original after cloning an
+      entry [#9070]
+    - Fix bugs with preview widget [#9170]
+    - Fix status bar update when switching to other DB [#9073]
+    - Fix database settings spin box bug [#9101]
+    - Fix Ctrl+Tab shortcut to cycle databases in unlock dialog
+      [#8839]
+    - Fix TOTP QR code maintaining square ratio [#9027]
+    - Fix Auto-Type configuration page on custom sequence selection
+      [#8752]
+    - Fix unexpected behavior of --lock when KeePassXC is not
+      running [#8889]
+    - Make open folder icon exempt from "Apply group icon to entry"
+      [#9205]
+    - Allow setting default file open directory with env var
+      [#9192]
+    - SSH Agent: Fix support for AES-256/GCM openssh keys [#8968]
+    - Browser: Fix Native Messaging script path with BSD OS's
+      [#8835]
+    - MacOS: Fix text selection for Auto-Type clear field [#9066]
+    - MacOS: Don't rely on AppleInterfaceStyle for theme switching
+      [#8615]
+    - Windows: Remove registry detection of desktop shortcut
+      [#9380]
+
+-------------------------------------------------------------------
+Mon Oct 31 20:48:12 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.7.4:
+  - Changes
+    - Add 2 months expiration preset [#8687]
+    - CLI: Add Unicode support on Windows [#8618]
+  - Fixes
+    - Fix crash on macOS when unlocking database [#8676]
+    - Fix display of passwords in preview panel [#8633]
+    - Fix clicking links in entry preview panel [#8644]
+    - Prevent expired entries search if no results returned [#8643]
+    - Browser: Revert code causing connection problems [#8665]
+    - Browser: Fix socket file symbolic link on Linux [#8656]
+    - Flatpak: Fix launching browser proxy service [#8680]
+    - SSH Agent: Fix paegent support on Windows [#8619]
+
+-------------------------------------------------------------------
+Mon Oct 24 10:19:21 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.7.3:
+  Due to a bug in macOS window behavior, 2.7.2 has been immediately
+  superseded by 2.7.3.
+  - Changes
+    - Enhance Tags Support and Add Saved Searches [#8435, #8607]
+    - Significant improvements to entry preview panel [#7993]
+    - Add password strength indicator to all password fields [#7885]
+    - Limit zxcvbn entropy estimation length to 128 characters [#7748]
+    - Try full URL path when fetching favicon [#8565]
+    - Hide usernames in preview panel when hidden in entry view [#8608]
+    - Enable dark title bar on windows when accent color is not used [#8498]
+    - Add option to display passwords in color in preview panel [#7097]
+    - Add XML Export option to GUI [#8524]
+    - Increase entropy required for a "good" password rating to 75 [#8523]
+    - Add shortcut to copy password with TOTP appended [#8443]
+    - Show entry count in status bar [#8435]
+    - Allow KeePassXC to be built without X11 [#8147]
+    - Enable use of VivoKey Apex and Dangerous Things FlexSecure tokens [#8332]
+    - Add setting for number of recent files [#8239]
+    - Add Ctrl+Tab shortcut to cycle databases in unlock dialog [#8168]
+    - Replace offensive words in eff_large.wordlist [#7968]
+    - Auto-Type: PICKCHARS can specify attribute and ignore BEEP [#8118]
+    - Linux: Add isHardwareKeySupported and refreshHardwareKeys to DBus methods [#8055]
+    - Add config variable to specify default database file name [#8042]
+    - Support numeric aware sorting on Windows and macOS [#8363]
+    - CLI: Add db-edit command [#8400]
+    - CLI: Add option to display all attributes with show command [#8256]
+    - CLI: Show UUID and tags with show and clip commands [#8241]
+    - Browser: Move socket into separate directory on Linux [#8030]
+    - Browser: Add group setting to omit WWW subdomain when matching URLs [#7988]
+    - FdoSecrets: Ask to unlock the database when creating items [#8022, #8028]
+    - FdoSecrets: Skip entries in recycle bin when searching [#8021]
+  - Fixes
+    - Fix potential deadlock in UI when saving [#8606]
+    - Fix newlines when copying notes from preview panel [#8542]
+    - Fix dark mode detection on Linux [#8477]
+    - Fix crash when deleting items in recycle bin while searching [#8117]
+    - Fix crash when trying to close database during unlock [#8144]
+    - Fix tabbing around the interface [#8435, #8520]
+    - Fix OPVault import when there are multiple OTP fields [#8436]
+    - Fix various Windows Hello bugs [#8354]
+    - Fix use of Apple Watch for Quick Unlock [#8311]
+    - Better handling of "Lock on Minimize" setting [#8202]
+    - Check for write permission before entering portable mode [#8447]
+    - Correct regex escape logic to prevent parse errors [#7778]
+    - Normalize slashes and file case for last used databases [#7864, #7214]
+    - Link ykcore against pthread [#7807]
+    - Auto-Type: Fix menu entries in selection dialog on Windows [#7987]
+    - Auto-Type: Fix use of modifiers under macOS [#8111]
+    - CLI: Fix output when using clip with the -t flag [#8271]
+    - Browser: Use asynchronous access confirm dialog [#8273]
+    - Browser: Always send database locked/unlocked status [#8114]
+
+-------------------------------------------------------------------
+Sat Apr  9 11:36:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * Show when tags are changed in entry history
+  * Improve tags editing and allow spaces in tags
+  * Improve layout of entry preview panel
+  * Incorporate patches to support Flatpak distribution
+  * Add expiration presets for 12 and 24 hours
+  * Fix crash when building history change list
+  * Fix hiding password on database unlock
+  * Fix AES KDF slow transform speed
+  * Auto-Type: Correct timing issue on macOS and Linux that prevented typing
+  * Auto-Type: Fix use of Ctrl/Alt/Shift/Win modifiers on Windows
+  * Auto-Type: Reduce/eliminate delay when searching for entries
+  * Auto-Type: Map ASCII dead keys on Linux for international keyboards
+  * CLI: Fix detection of hardware keys (YubiKey)
+  * CLI: Add missing parameter -c to add/edit entries command
+  * Secret Service: Fix crash when multiple prompts are shown
+  * SSH Agent: Fix default agent selection on Windows
+  * Fix database unlock dialog not being the top window on Linux
+  * Fix drag/drop entries between tabs on Wayland
+  * Fix compiling with minizip-ng 
+
+-------------------------------------------------------------------
+Thu Mar 24 21:30:20 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.7.0
+  - Major Additions
+    - Implement KDBX 4.1 [#7114]
+    - Add direct write save option for cloud storage and GVFS
+      [#6594]
+    - Prevent screen capture on Windows and macOS [#6030]
+    - Support quick unlock using Windows Hello [#7384]
+    - Support quick unlock using Apple Watch [#5526]
+    - Allow specifying database backup paths [#7035]
+    - Add tag functionality [#6487][#7436][#7446]
+    - Add password rating column to entry view [#4797]
+    - Add group clone action [#6124]
+    - Show modifications between entry history items [#6789]
+    - Ability to bulk-delete and purge unused custom icons [#5970]
+    - Support adding custom passphrase wordlists [#6799]
+    - Support passphrase wordlists in numbered and PGP-signed
+      formats [#6791]
+    - Implement support for hardware keys via wireless NFC [#6895]
+    - SSH Agent: Add support for OpenSSH 8.2 FIDO/U2F keys [#6371]
+    - CLI: Implement attachment handling [#5538]
+    - CLI: Add support for okon in offline HIBP checks [#5478]
+    - CLI: Implement search command and remove locate [#6805]
+    - CLI: Add db statistic output to db-info command [#7032]
+    - CLI: Add -i/--include option to generate command. [#7112]
+    - CLI: Add a -n (--notes) option to add and edit commands
+      [#4646]
+    - CLI: Add keyfile option to import command [#5402]
+    - CLI: Adding a best option to clip to copy a password of the
+      best match [#4489]
+    - Browser: Add Microsoft Edge support on Linux [#7100]
+    - Browser: Support native password generator from the extension
+      [#6529]
+    - Browser: Add group settings [#4180]
+    - Browser: Add feature to ignore entries for HTTP-Auth Logins
+      [#5394]
+    - Browser: Support triggering Auto-Type from browser extension
+      [#6272]
+    - Browser: Add delete-entry command to API [#6899]
+    - Browser: Add search 'by-path' url to API [#5535]
+    - Browser: search for entries by UUID to API [#4763]
+    - Browser: Support auto-download of favicon on entry addition
+      [#7179]
+    - Auto-Type: Major improvements to Auto-Type
+      [#5864][#7463][#7435][#7391][#7129][#6400][#6364][#6361][#5283][#7507]
+    - Auto-Type: Fix typing to virtual machines on Windows [#7366]
+    - Auto-Type: Re-implement X11 keysym emulation [#7098]
+    - Auto-Type: Support multiple Xkb layouts [#6247]
+    - Auto-Type: Abort keystroke if modifiers held on X11
+      [#6351][#6357]
+    - Auto-Type: Add TOTP option to entry level Auto-Type menu
+      [#6675]
+    - FdoSecrets: Major Refactor and Code Consolidation
+      [#5747][#5660][#7043][#6915]
+    - FdoSecrets: Implement unlock before search [#6943]
+    - Reports: Add browser statistics report [#7197]
+  - Major Changes
+    - Port crypto backend to Botan [#6209]
+    - Improve attachment handling and security
+      [#6606][#5034][#7083]
+    - Allow selecting any open database in unlock dialog [#5427]
+    - KeeShare: Remove checking signed container and QuaZip
+      dependency [#7223]
+    - Introduce security option to enable copy on double click
+      (default off) [#6433]
+    - Add 'delete entry without confirm' functionality [#5812]
+    - Improve macOS and Windows platform integration [#5851]
+    - Lock only the current database by default [#6652]
+    - Show expired entries on DB unlock [#7290]
+    - Update D-Bus adaptor interface class name to match definition
+      file [#7523]
+  - Other Changes and Fixes
+    - Add countdown progress bar to TOTP preview [#6930]
+    - Enter favicon url directly on icons page [#6614]
+    - Set C++17 as standard in the build system [#7180]
+    - Internalize ykcore into code base [#6654]
+    - Transition to Visual Studio builds on Windows [#5874]
+    - Ability to delete entries from health check reports [#6537]
+    - Enhance remembering last-used directories [#6711]
+    - Implement org.freedesktop.appearance.color-scheme support on
+      Linux [#7422]
+    - Support sorting HTML export [#7011]
+    - Add display number of characters in passphrases [#5449]
+    - Use Alt+Tab on macOS to switch between databases [#5407]
+    - Add feature to sort groups using shortcut keys [#6999]
+    - Add CTRL+Enter to apply password generator changes [#6414]
+    - Display Database created timestamp on statistics report
+      [#6876]
+    - Browser: Improve best matching credentials setting [#6893]
+    - SSH Agent: Use both Pageant and OpenSSH agent simultaneously
+      on Windows [#6288]
+    - SSH Agent: Allow using database path to resolve keys [#6365]
+    - SSH Agent: Show correct error messages in main window [#7166]
+    - Multiple fixes for MSI installer [#6630]
+    - Fix tab order for CSV import dialog to match screen order
+      [#7315]
+    - Don't mark kdbx:// urls as invalid [#7221]
+    - Make selected text copyable instead of copying password
+      [#7209]
+    - Detect timestamp resolution for CSV files [#7196]
+    - Fix crash while downloading favicon [#7104]
+    - Correct naming of newly generated keyx files [#7010]
+    - Place the 'Recycle Bin' at the bottom of the list when groups
+      are sorted [#7004]
+    - Handle tilde with custom browser paths [#6659]
+    - Don't scroll up when deleting an entry [#6833]
+    - Set the MIME-Type to text/plain when using wl-copy on wayland
+      [#6832]
+    - Fix adaptive icon painting [#5989][#6033]
+    - Fix favicon download from URL with non-standard port [#5509]
+    - Ignore recycle bin on KeePassHTTP migration [#5481]
+    - Fix keepassxc-cr-recovery utility [#7521]
+    - Fix Auto-Type not working when audio recording indicator is
+      active on macOS 12.2+ [#7526]
+- drop 7045.patch
+- adapt build requires to the new version
+
+-------------------------------------------------------------------
+Wed Oct 13 14:14:47 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- add https://patch-diff.githubusercontent.com/raw/keepassxreboot/keepassxc/pull/7045.patch 
+  and adapt it for 2.6.6: This allows us building with LTO
+
+-------------------------------------------------------------------
+Thu Jun 17 16:25:56 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- newer version of fedora now have the sane cmake macros too.
+
+-------------------------------------------------------------------
+Thu Jun 17 15:56:11 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.6.6
+  - Fixed
+    - Fix focusing search when pressing hotkey #6603
+    - Trim whitespace from TOTP key input prior to processing #6604
+    - Fix building on macOS #6598
+    - Resolve compiler warnings for unused return values #6607
+- Changes from 2.6.5
+  - Added
+    - Show search bar when toolbar is hidden or in overflow #6279
+    - Show countdown for clipboard clearing in status bar #6333
+    - Command line option to lock all open databases #6511
+    - Allow CSV import of bare TOTP secrets #6211
+    - Retain file creation time when saving database #6576
+    - Set permissions of saved attachments to be private to the
+      current user #6363
+    - OPVault: Use Text instead of Name for attribute names #6334
+  - Changed
+    - Reports: Allow resizing of reports columns #6435
+    - Reports: Toggle showing expired entries #6534
+    - Save Always on Top setting #6236
+    - Password generator can exclude additional lookalike
+      characters (6/G, 8/B) #6196
+  - Fixed
+    - Allow setting MSI properties in unattended install #6196
+    - Update MainWindow minimum size to enable smaller verticle
+      space #6196
+    - Use application font size when setting default or monospace
+      fonts #6332
+    - Fix notes not clearing in entry preview panel in some cases
+      #6481
+    - macOS: Correct window activation when restoring from tray
+      #6575
+    - macOS: Better handling of minimize after unlock when using
+      browser integration #6338
+    - Linux: Start after the system tray is available on LXQt #6216
+    - Linux: Allow selection of modal dialogs on X11 in Auto-Type
+      #6204
+    - KeeShare: prevent crash when file extension is missing #6174
+
+-------------------------------------------------------------------
+Tue Feb  2 12:39:47 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.6.4
+  - Added
+    - Automatically adapt to light/dark system theme changes
+      (Windows/macOS only) [#6034]
+  - Changed
+    - Show window title as tooltip on system tray [#5948]
+    - Compress Snap release as LZO for faster initial startup
+      [#5877]
+    - Password generator: Set maximum selectable password length to
+      999 [#5937]
+  - Fixed
+    - Fix crash on app close when using SSH agent [#5935]
+    - Fix KDF selection showing wrong item when using Argon2id
+      [#5923]
+    - Automatically close About dialog on database lock if it is
+      still open [#5947]
+    - Linux: Fix automatic launch at system startup with AppImages
+      [#5901]
+    - Linux: Fix click-to-move on empty area activating when using
+      menus [#5971]
+    - Linux: Try multiple times to show tray icon if tray is not
+      ready yet [#5948]
+    - macOS: Fix KeePassXC blocking clean shutdown [#6002]
+
+-------------------------------------------------------------------
+Tue Jan 12 18:45:51 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.6.3 
+  - Added
+    - Support Argon2id KDF [#5778]
+    - Support XMLv2 key files [#5798]
+  - Changed
+    - Improve CSV Import/Export, include time fields and TOTP
+      [#5346]
+    - Support empty area dragging of the application window [#5860]
+    - Display default Auto-Type sequence in preview pane [#5654]
+    - Remove strict length limit on generated passwords [#5748]
+    - Hide key file path by default when unlocking database [#5779]
+    - Document browser extension use with Edge in managed mode
+      [#5692]
+    - Windows: Prevent clipboard history and cloud sync [#5853]
+    - macOS: Update the application icon to Big Sur styling [#5851]
+  - Fixed
+    - Re-select previously selected entry on database unlock
+      [#5559]
+    - Properly save special character choice in password generator
+      [#5610]
+    - Fix crash in browser integration with multiple similar
+      entries [#5653]
+    - Remove offset on username field in classic theme [#5788]
+    - Ensure entry history is copied when drag/dropping entries and
+      groups [#5817]
+    - Close modal dialogs when database is locked [#5820]
+    - Prevent crash when KeeShare modifies an entry that is
+      currently being edited [#5827]
+    - Improve preview of entry attributes [#5834]
+    - Always activate/focus database open dialog preventing mistype
+      [#5878]
+    - Reports: fix calculation of average password length [#5862]
+    - Linux: Delay startup on login to correct tray icon issues
+      [#5724]
+
+-------------------------------------------------------------------
+Thu Oct 22 11:46:32 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.6.2 
+  - Added
+    - Add option to keep window always on top to view menu [#5542]
+    - Move show/hide usernames and passwords to view menu [#5542]
+    - Add command line options and environment variables for
+      changing the config locations [#5452]
+    - Include TOTP settings in CSV import/export and add support
+      for ISO datetimes [#5346]
+  - Changed
+    - Mask sensitive information in command execution confirmation
+      prompt [#5542]
+    - SSH Agent: Avoid shortcut conflict on macOS by changing "Add
+      key" to Ctrl+H on all platforms [#5484]
+  - Fixed
+    - Prevent data loss with drag and drop between databases
+      [#5536]
+    - Fix crash when toggling Capslock rapidly [#5545]
+    - Don't mark URL references as invalid URL [#5380]
+    - Reset entry preview after search [#5483]
+    - Set Qt::Dialog flag on database open dialog [#5356]
+    - Fix sorting of database report columns [#5426]
+    - Fix IfDevice matching logic [#5344]
+    - Fix layout issues and a stray scrollbar appearing on top of
+      the entry edit screen [#5424]
+    - Fix tabbing into the notes field [#5424]
+    - Fix password generator ignoring settings on load [#5340]
+    - Restore natural entry sort order on application load [#5438]
+    - Fix paperclip and TOTP columns not saving state [#5327]
+    - Enforce fixed password font in entry preview [#5454]
+    - Add scrollbar when new database wizard exceeds screen size
+      [#5560]
+    - Do not mark database as modified when viewing Auto-Type
+      associations [#5542]
+    - CLI: Fix two heap-use-after-free crashes [#5368, #5470]
+    - Browser: Fix key exchange not working with multiple
+      simultaneous users on Windows [#5485]
+    - Browser: Fix entry retrieval when "only best matching" is
+      enabled [#5316]
+    - Browser: Ignore recycle bin on KeePassHTTP migration [#5481]
+    - KeeShare: Fix import crash [#5542]
+    - macOS: Fix toolbar theming and breadcrumb display issues
+      [#5482]
+    - macOS: Fix file dialog randomly closing [#5479]
+    - macOS: Fix being unable to select OPVault files for import
+      [#5341]
+
+-------------------------------------------------------------------
+Sun Aug 30 07:21:06 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.6.1:
+  - Add menu entries for auto-typing only username or only
+    password [#4891]
+  - Browser: Add command for retrieving current TOTP [#5278]
+  - Improve man pages [#5010]
+  - Linux: Support Xfce screen lock signals [#4971]
+  - Linux: Add OARS metadata to AppStream markup [#5031]
+  - SSH Agent: Substitute tilde with %USERPROFILE% on Windows
+    [#5116]
+  - Improve password generator UI and UX [#5129]
+  - Do not prompt to restart if switching the theme back and
+    forth [#5084]
+  - Change actions for F1, F2, and F3 keys [#5082]
+  - Skip referenced passwords in health check report [#5056]
+  - Check system-wide Qt translations directory for downstream
+  - translations packaging [#5064]
+  - macOS: Change password visibility toggle shortcut to Ctrl+H to
+  - avoid conflict with system shortcut [#5114]
+  - Browser: Only display domain name in browser access confirm
+    dialog to avoid overly wide window sizes [#5214]
+  - Fix clipboard not being cleared when database is locked while
+    timeout is still active [#5184]
+  - Fix list of previous databases not being cleared in some
+    cases [#5123]
+  - Fix saving of non-data changes on database lock [#5210]
+  - Fix search results banner theming [#5197]
+  - Don’t enforce theme palette in Classic theme mode and add hover
+    effect for buttons [#5122, #5267]
+  - Fix label clipping in settings on high-DPI screens [#5227]
+  - Fix excessive memory usage by icons on systems with high-DPI
+    screens [#5266]
+  - Fix crash if number of TOTP digits exceeds ten [#5106]
+  - Fix slot detection when first YubiKey is configured on the second
+    slot [#5004]
+  - Prevent crash if focus widget gets deleted during saving [#5005]
+  - Always show buttons for opening or saving attachments [#4956]
+  - Update link to Auto-Type help [#5228]
+  - Fix build errors with Ninja [#5121]
+  - CLI: Fix db-info command wrongly labelled as db-show in
+    usage listing [#5140]
+  - Windows: Use Classic theme by default if high-contrast mode
+    is on [#5191]
+  - Linux: Add workaround for qt5ct bug, causing icons not to show
+    up [#5011]
+  - Linux: Correct high-DPI display by not allowing fractional
+    scaling [#5185]
+  - Browser: Consider subdomain and path when requesting only
+    “best-matching credentials” [#4832]
+  - SSH Agent: Always forget all keys on lock [#5115]
+
+-------------------------------------------------------------------
+Wed Jul  8 01:09:45 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add _constraints with 6GB to fix build on ppc64 hopefully 
+
+-------------------------------------------------------------------
+Tue Jul  7 23:42:33 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add BR for asciidoctor 
+
+-------------------------------------------------------------------
+Tue Jul  7 23:33:41 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.6.0:
+  * https://keepassxc.org/blog/2020-07-07-2.6.0-released/
+  * https://github.com/keepassxreboot/keepassxc/releases/tag/2.6.0
+- drop keepassxc-Fix-window-hiding-after-shown.patch:
+  included in update
+
+-------------------------------------------------------------------
+Mon May 11 14:05:15 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop build/requirement on libgcrypt20-hmac boo#1171438
+
+-------------------------------------------------------------------
+Thu Apr  9 17:22:16 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.5.4:
+  * https://github.com/keepassxreboot/keepassxc/releases/tag/2.5.4
+
+-------------------------------------------------------------------
+Fri Feb 28 15:15:34 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Clicking the tray icon momentarily shows and immediately hides window. Make
+  it stick (boo#1165293).
+- Fix window not minimizing to tray.
+  + add keepassxc-Fix-window-hiding-after-shown.patch
+
+-------------------------------------------------------------------
+Sun Jan 19 21:24:09 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.5.3:
+  * https://github.com/keepassxreboot/keepassxc/releases/tag/2.5.3
+
+-------------------------------------------------------------------
+Sat Jan  4 15:59:24 UTC 2020 - droidmonkey <support@dmapps.us>
+
+- Update to version 2.5.2:
+  * https://github.com/keepassxreboot/keepassxc/releases/tag/2.5.2
+
+-------------------------------------------------------------------
+Mon Dec  9 08:49:34 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.1:
+  * https://github.com/keepassxreboot/keepassxc/releases/tag/2.5.1
+
+-------------------------------------------------------------------
+Sat Oct 26 19:39:26 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.5.0
+  https://github.com/keepassxreboot/keepassxc/releases/tag/2.5.0
+
+-------------------------------------------------------------------
+Mon Sep  2 14:21:48 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable lto for keepassxc. It causes a build error.
+- Provide/Obsolete keepassx. Keepassx still depends on Qt4 and shall be
+  dropped shortly. (boo#1148401)
+
+-------------------------------------------------------------------
+Wed Jun 12 11:02:22 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.4.3
+  - Fix library loading issues in the Snap and macOS releases
+    [#3247]
+  - Fix various keyboard navigation issues [#3248]
+  - Fix main window toggling regression when clicking the tray icon
+    on KDE [#3258]
+  - Add documentation for keyboard shortcuts to source code
+    distribution [#3215]
+
+-------------------------------------------------------------------
+Mon Jun  3 16:14:29 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.4.2
+  - Improve resilience against memory attacks - overwrite memory
+    before free [#3020]
+  - Prevent infinite save loop when location is unavailable [#3026]
+  - Attempt to fix quitting application when shutdown or logout
+    issued [#3199]
+  - Support merging database custom data [#3002]
+  - Fix opening URL's with non-http schemes [#3153]
+  - Fix data loss due to not reading all database attachments if
+    duplicates exist [#3180]
+  - Fix entry context menu disabling when using keyboard navigation
+    [#3199]
+  - Fix behaviors when canceling an entry edit [#3199]
+  - Fix processing of tray icon click and doubleclick [#3112]
+  - Update group in preview widget when focused [#3199]
+  - Prefer DuckDuckGo service over direct icon download (increases
+    resolution) [#2996]
+  - Remove apply button in application settings [#3019]
+  - Use winqtdeploy on Windows to correct deployment issues [#3025]
+  - Don't mark entry edit as modified when attribute selection
+    changes [#3041]
+  - Use console code page CP_UTF8 on Windows if supported [#3050]
+  - Snap: Fix locking database with session lock [#3046]
+  - Snap: Fix theming across Linux distributions [#3057]
+  - Snap: Use SNAP_USER_COMMON and SNAP_USER_DATA directories
+    [#3131]
+  - KeeShare: Automatically enable WITH_XC_KEESHARE_SECURE if
+    quazip is found [#3088]
+  - macOS: Fix toolbar text when in dark mode [#2998]
+  - macOS: Lock database on switching user [#3097]
+  - macOS: Fix global Auto-Type when the database is locked [#3138]
+  - Browser: Close popups when database is locked [#3093]
+  - Browser: Add tests [#3016]
+  - Browser: Don't create default group if custom group is enabled
+    [#3127]
+
+-------------------------------------------------------------------
+Fri Apr 12 22:41:57 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.4.1
+  - Fix database deletion when using unsafe saves to a different
+    file system [#2889]
+  - Fix opening databases with legacy key files that contain '/'
+    [#2872]
+  - Fix opening database files from the command line [#2919]
+  - Fix crash when editing master key [#2836]
+  - Fix multiple issues with apply button behavior [#2947]
+  - Fix issues on application startup (tab order, --pw-stdin, etc.)
+    [#2830]
+  - Fix building without WITH_XC_KEESHARE
+  - Fix reference entry coloring on macOS dark mode [#2984]
+  - Hide window when performing entry auto-type on macOS [#2969]
+  - Improve UX of update checker; reduce checks to every 7 days
+    [#2968]
+  - KeeShare improvements [#2946, #2978, #2824]
+  - Re-enable Ctrl+C to copy password from search box [#2947]
+  - Add KeePassXC-Browser integration for Brave browser [#2933]
+  - SSH Agent: Re-Add keys on database unlock [#2982]
+  - SSH Agent: Only remove keys on app exit if they are removed on
+    lock [#2985]
+  - CLI: Add --no-password option [#2708]
+  - CLI: Improve database extraction to XML [#2698]
+  - CLI: Don't call mandb on build [#2774]
+  - CLI: Add debug info [#2714]
+  - Improve support for Snap theming [#2832]
+  - Add support for building on Haiku OS [#2859]
+  - Ctrl+PgDn now goes to the next tab and Ctrl+PgUp to the
+    previous
+  - Fix compiling on GCC 5 / Xenial [#2990]
+  - Add .gitrev output to tarball for third-party builds [#2970]
+  - Add WITH_XC_UPDATECHECK compile flag to toggle the update
+    checker [#2968]
+- disable update check
+- no longer use our gitrev hack in favor for upstream solution
+
+-------------------------------------------------------------------
+Wed Mar 20 12:43:12 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.4.0
+  - New Database Wizard [#1952]
+  - Advanced Search [#1797]
+  - Automatic update checker [#2648]
+  - KeeShare database synchronization [#2109, #1992, #2738, #2742,
+    #2746, #2739]
+  - Improve favicon fetching; transition to Duck-Duck-Go [#2795,
+    #2011, #2439]
+  - Remove KeePassHttp support [#1752]
+  - CLI: output info to stderr for easier scripting [#2558]
+  - CLI: Add --quiet option [#2507]
+  - CLI: Add create command [#2540]
+  - CLI: Add recursive listing of entries [#2345]
+  - CLI: Fix stdin/stdout encoding on Windows [#2425]
+  - SSH Agent: Support OpenSSH for Windows [#1994]
+  - macOS: TouchID Quick Unlock [#1851]
+  - macOS: Multiple improvements; include CLI in DMG [#2165, #2331,
+    #2583]
+  - Linux: Prevent Klipper from storing secrets in clipboard
+    [#1969]
+  - Linux: Use polling based file watching for NFS [#2171]
+  - Linux: Enable use of browser plugin in Snap build [#2802]
+  - TOTP QR Code Generator [#1167]
+  - High-DPI Scaling for 4k screens [#2404]
+  - Make keyboard shortcuts more consistent [#2431]
+  - Warn user if deleting referenced entries [#1744]
+  - Allow toolbar to be hidden and repositioned [#1819, #2357]
+  - Increase max allowed database timeout to 12 hours [#2173]
+  - Password generator uses existing password length by default
+    [#2318]
+  - Improve alert message box button labels [#2376]
+  - Show message when a database merge makes no changes [#2551]
+  - Browser Integration Enhancements [#1497, #2253, #1904, #2232,
+    #1850, #2218, #2391, #2396, #2542, #2622, #2637, #2790]
+  - Overall Code Improvements [#2316, #2284, #2351, #2402, #2410,
+    #2419, #2422, #2443, #2491, #2506, #2610, #2667, #2709, #2731]
+- drop patches: keepassxc-qt_includes.patch  klipper-hint.patch
+- add support to build for more distros
+  - track debian files as sources
+  - add macros for fedora
+- use GIT_HEAD_OVERRIDE to pass the git rev to the build
+- enable keeshare secure (new BR: quazip Qt5)
+- add BR for the QR code feature:
+  pkgconfig(libqrencode)
+  pkgconfig(Qt5Svg)
+- workaround for boo#1117355
+  add BR/R for libgcrypt20-hmac
+- BR: libcurl-devel
+- enable dbus support
+- enable ssh agent and browser support
+
+-------------------------------------------------------------------
+Wed Aug 29 15:37:25 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- add klipper-hint.patch:
+  Prevent Klipper from storing secrets in clipboard history (#1969)
+
+-------------------------------------------------------------------
+Fri Aug 24 15:07:41 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.3.4
+  - Show all URL schemes in entry view [#1768]
+  - Disable merge when database is locked [#1975]
+  - Fix intermittent crashes with favorite icon downloads [#1980]
+  - Provide potential crash warning to Qt 5.5.x users [#2211]
+  - Disable apply button when creating new entry/group to prevent
+    data loss [#2204]
+  - Multiple SSH Agent fixes [#1981, #2117]
+  - Multiple Browser Integration enhancements [#1993, #2003, #2055,
+    #2116, #2159, #2174, #2185]
+  - Fix browser proxy application not closing properly [#2142]
+  - Add real names and Patreon supporters to about dialog [#2214]
+  - Add settings button to toolbar, Donate button, and Report a Bug
+    button to help menu [#2214]
+
+-------------------------------------------------------------------
+Wed Jun 27 08:37:41 UTC 2018 - mpluskal@suse.com
+
+- Fix building with Qt 5.11:
+  * keepassxc-qt_includes.patch
+
+-------------------------------------------------------------------
+Mon May 14 10:54:15 UTC 2018 - mrueckert@suse.de
+
+- update to 2.3.3
+  - Fix crash when browser integration is enabled [#1923]
+
+-------------------------------------------------------------------
+Wed May  9 12:50:05 UTC 2018 - mrueckert@suse.de
+
+- update to 2.3.2
+  - Enable high entropy ASLR on Windows [#1747]
+  - Enhance favicon fetching [#1786]
+  - Fix crash on Windows due to Auto-Type [#1691]
+  - Fix dark tray icon changing all icons [#1680]
+  - Fix --pw-stdin not using getPassword function [#1686]
+  - Fix placeholders being resolved in notes [#1907]
+  - Enable auto-type start delay to be configurable [#1908]
+  - Browser: Fix native messaging reply size [#1719]
+  - Browser: Increase maximum buffer size [#1720]
+  - Browser: Enhance usability and functionality
+    [#1810, #1822, #1830, #1884, #1906]
+  - SSH Agent: Parse aes-256-cbc/ctr keys [#1682]
+  - SSH Agent: Enhance usability and functionality
+    [#1677, #1679, #1681, #1787]
+
+-------------------------------------------------------------------
+Wed Mar  7 00:13:46 UTC 2018 - mrueckert@suse.de
+
+- update to 2.3.1
+  - Fix unnecessary automatic upgrade to KDBX 4.0 and prevent
+    challenge-response key being stripped [#1568]
+  - Abort saving and show an error message when challenge-response
+    fails [#1659]
+  - Support inner stream protection on all string attributes
+    [#1646]
+  - Fix favicon downloads not finishing on some websites [#1657]
+  - Fix freeze due to invalid STDIN data [#1628]
+  - Correct issue with encrypted RSA SSH keys [#1587]
+  - Fix crash on macOS due to QTBUG-54832 [#1607]
+  - Show error message if ssh-agent communication fails [#1614]
+  - Fix –pw-stdin and filename parameters being ignored [#1608]
+  - Fix Auto-Type syntax check not allowing spaces and special
+    characters [#1626]
+  - Fix reference placeholders in combination with Auto-Type
+    [#1649]
+  - Fix qtbase translations not being loaded [#1611]
+  - Fix startup crash on Windows due to missing SVG libraries
+    [#1662]
+  - Correct database tab order regression [#1610]
+  - Fix GCC 8 compilation error [#1612]
+  - Fix copying of advanced attributes on KDE [#1640]
+  - Fix member initialization of CategoryListWidgetDelegate [#1613]
+  - Fix inconsistent toolbar icon sizes and provide higher-quality
+    icons [#1616]
+  - Improve preview panel geometry [#1609]
+
+-------------------------------------------------------------------
+Wed Feb 28 13:31:24 UTC 2018 - mrueckert@suse.de
+
+- also offer the uncompressed svg icons for desktop environments
+  which dont support compressed icons. The program uses the .svgz
+  internally so we keep them around.
+
+-------------------------------------------------------------------
+Wed Feb 28 13:09:09 UTC 2018 - mrueckert@suse.de
+
+- if we kill the post/postun scriptlets we can also remove the
+  related requires from the package
+
+-------------------------------------------------------------------
+Wed Feb 28 11:55:36 UTC 2018 - mpluskal@suse.com
+
+- Mark license as such
+- Convert more dependencies to pkgconfig() style
+
+-------------------------------------------------------------------
+Wed Feb 28 00:16:40 UTC 2018 - mrueckert@suse.de
+
+- Drop the post/postun scriptlets as they are a noop on TW/Leap
+  15.0 and we can't build on older distros anymore.
+  This fixes a warning about empty scriptlets.
+
+-------------------------------------------------------------------
+Wed Feb 28 00:11:19 UTC 2018 - mrueckert@suse.de
+
+- use -DWITH_XC_ALL=ON instead of enabling all features manually
+  - this brings back the old HTTP based extension support for a
+    graceful migration for users.
+
+-------------------------------------------------------------------
+Tue Feb 27 23:35:00 UTC 2018 - mrueckert@suse.de
+
+- update to 2.3.0
+  - Add support for KDBX 4.0, Argon2 and ChaCha20 [#148, #1179,
+    #1230, #1494]
+  - Add SSH Agent feature [#1098, #1450, #1463]
+  - Add preview panel with details of the selected entry [#879,
+    #1338]
+  - Add more and configurable columns to entry table and allow
+    copying of values by double click [#1305]
+  - Add KeePassXC-Browser API as a replacement for KeePassHTTP
+    [#608]
+  - Deprecate KeePassHTTP [#1392]
+  - Add support for Steam one-time passwords [#1206]
+  - Add support for multiple Auto-Type sequences for a single entry
+    [#1390]
+  - Adjust YubiKey HMAC-SHA1 challenge-response key generation for
+    KDBX 4.0 [#1060]
+  - Replace qHttp with cURL for website icon downloads [#1460]
+  - Remove lock file [#1231]
+  - Add option to create backup file before saving [#1385]
+  - Ask to save a generated password before closing the entry
+    password generator [#1499]
+  - Resolve placeholders recursively [#1078]
+  - Add Auto-Type button to the toolbar [#1056]
+  - Improve window focus handling for Auto-Type dialogs [#1204,
+    #1490]
+  - Auto-Type dialog and password generator can now be exited with
+    ESC [#1252, #1412]
+  - Add optional dark tray icon [#1154]
+  - Add new "Unsafe saving" option to work around saving problems
+    with file sync services [#1385]
+  - Add IBus support to AppImage and additional image formats to
+    Windows builds [#1534, #1537]
+  - Add diceware password generator to CLI [#1406]
+  - Add --key-file option to CLI [#816, #824]
+  - Add DBus interface for opening and closing KeePassXC databases
+    [#283]
+  - Add KDBX compression options to database settings [#1419]
+  - Discourage use of old fixed-length key files in favor of
+    arbitrary files [#1326, #1327]
+  - Correct reference resolution in entry fields [#1486]
+  - Fix window state and recent databases not being remembered on
+    exit [#1453]
+  - Correct history item generation when configuring TOTP for an
+    entry [#1446]
+  - Correct multiple TOTP bugs [#1414]
+  - Automatic saving after every change is now a default [#279]
+  - Allow creation of new entries during search [#1398]
+  - Correct menu issues on macOS [#1335]
+  - Allow compilation on OpenBSD [#1328]
+  - Improve entry attachments view [#1139, #1298]
+  - Fix auto lock for Gnome and Xfce [#910, #1249]
+  - Don't remember key files in file dialogs when the setting is
+    disabled [#1188]
+  - Improve database merging and conflict resolution [#807, #1165]
+  - Fix macOS pasteboard issues [#1202]
+  - Improve startup times on some platforms [#1205]
+  - Hide the notes field by default [#1124]
+  - Toggle main window by clicking tray icon with the middle mouse
+    button [#992]
+  - Fix custom icons not copied over when databases are merged
+    [#1008]
+  - Allow use of DEL key to delete entries [#914]
+  - Correct intermittent crash due to stale history items [#1527]
+  - Sanitize newline characters in title, username and URL fields
+    [#1502]
+  - Reopen previously opened databases in correct order [#774]
+  - Use system's zxcvbn library if available [#701]
+  - Implement various i18n improvements [#690, #875, #1436]
+- bump BR for libgcrypt-devel to >= 1.7 as required by the update
+- BR libargon2, libcurl and libsodium for the new features
+- enable new browser integration mode, ssh-agent, dbus and
+  networking support
+- disable old style browser support
+- cleanup filelist
+
+-------------------------------------------------------------------
+Thu Dec 14 12:33:01 UTC 2017 - mpluskal@suse.com
+
+- Update on Leap and in Backports (boo#1072867)
+- Fix filelist
+
+-------------------------------------------------------------------
+Thu Dec 14 11:56:07 UTC 2017 - idonmez@suse.com
+
+- Update to version 2.2.4:
+  * Prevent database corruption when locked
+  * Fixes apply button not saving new entries
+  * Switch to Consolas font on Windows for password edit
+  * Fixes multiple memory leaks
+  * Resize message close to 16x16 pixels
+
+-------------------------------------------------------------------
+Thu Oct 26 08:31:59 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.2.2:
+  * Fixed entries with empty URLs being reported to KeePassHTTP
+    clients
+  * Added AppStream description
+  * Improved TOTP compatibility and added new Base32 implementation
+  * Fixed error handling when processing invalid cipher stream
+  * Fixed double warning display when opening a database
+  * Fixed unlocking databases with --pw-stdin
+  * Fixed transform seed not being regenerated when saving the
+    database
+  * Fixed only one YubiKey slot being polled
+  * Corrected an issue with entry icons while merging
+  * Corrected desktop and tray icons in Snap package
+  * Fixed screen lock and Google fallback settings
+
+-------------------------------------------------------------------
+Thu Oct 12 12:17:43 UTC 2017 - astieger@suse.com
+
+- update to 2.2.1:
+  * Correct multiple snap issues
+  * Correct multiple custom icon issues
+  * Correct multiple Yubikey issues
+  * Fix single instance preventing load on occasion
+  * Keep entry history when merging databases
+  * Prevent data loss if passwords were mismatched
+  * Fix crash after merge
+  * Add configurable auto-type default delay
+  * Unlock database dialog window comes to front
+  * Translation and compiling fixes
+
+-------------------------------------------------------------------
+Mon Jun 26 09:17:58 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.2.0:
+  * Added YubiKey 2FA integration for unlocking databases [#127]
+  * Added TOTP support [#519]
+  * Added CSV import tool [#146, #490]
+  * Added KeePassXC CLI tool [#254]
+  * Added diceware password generator [#373]
+  * Added support for entry references [#370, #378]
+  * Added support for Twofish encryption [#167]
+  * Enabled DEP and ASLR for in-memory protection [#371]
+  * Enabled single instance mode [#510]
+  * Enabled portable mode [#645]
+  * Enabled database lock on screensaver and session lock [#545]
+  * Redesigned welcome screen with common features and recent databases [#292]
+  * Multiple updates to search behavior [#168, #213, #374, #471, #603, #654]
+  * Added auto-type fields {CLEARFIELD}, {SPACE}, {{}, {}} [#267, #427, #480]
+  * Fixed auto-type errors on Linux [#550]
+  * Prompt user prior to executing a cmd:// URL [#235]
+  * Entry attributes can be protected (hidden) [#220]
+  * Added extended ascii to password generator [#538]
+  * Added new database icon to toolbar [#289]
+  * Added context menu entry to empty recycle bin in databases [#520]
+  * Added "apply" button to entry and group edit windows [#624]
+  * Added macOS tray icon and enabled minimize on close [#583]
+  * Fixed issues with unclean shutdowns [#170, #580]
+  * Changed keyboard shortcut to create new database to CTRL+SHIFT+N [#515]
+  * Compare window title to entry URLs [#556]
+  * Implemented inline error messages [#162]
+  * Ignore group expansion and other minor changes when making database "dirty" [#464]
+  * Updated license and copyright information on souce files [#632]
+  * Added contributors list to about dialog [#629]
+- Drop no longer needed keepassxc-qt5.9.patch
+- Enforce locale setting for tests (gh#keepassxreboot/keepassxc#667)
+
+-------------------------------------------------------------------
+Wed Jun 21 07:52:11 UTC 2017 - mpluskal@suse.com
+
+- Fix building with Qt 5.9 - gh#keepassxreboot/keepassxc#528
+  * keepassxc-qt5.9.patch
+
+-------------------------------------------------------------------
+Mon Apr 17 08:17:21 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.1.4:
+  * Bumped KeePassHTTP version to 1.8.4.2
+  * KeePassHTTP confirmation window comes to foreground [#466]
+
+-------------------------------------------------------------------
+Fri Apr  7 13:29:41 UTC 2017 - mpluskal@suse.com
+
+- Fetch gpg key from web
+
+-------------------------------------------------------------------
+Fri Mar  3 14:42:42 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.1.3:
+  * Fix possible overflow in zxcvbn library [#363]
+  * Revert HiDPI setting to avoid problems on laptop screens [#332]
+  * Set file meta properties in Windows executable [#330]
+  * Suppress error message when auto-reloading a locked database [#345]
+  * Improve usability of question dialog when database is already locked by a different instance [#346]
+  * Fix compiler warnings in QHttp library [#351]
+  * Use unified toolbar on Mac OS X [#361]
+  * Fix an issue on X11 where the main window would be raised instead of closed on Alt+F4 [#362]
+
+-------------------------------------------------------------------
+Thu Mar  2 19:01:25 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies (fixes boo#1027653)
+
+-------------------------------------------------------------------
+Sat Feb 25 11:03:18 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.1.2:
+  * Ask for save location when creating a new database [#302]
+  * Remove Libmicrohttpd dependency to clean up the code and ensure better OS X compatibility [#317, #265]
+  * Prevent Qt from degrading Wifi network performance on certain platforms [#318]
+  * Visually refine user interface on OS X and other platforms [#299]
+  * Remove unusable tray icon setting on OS X [#293]
+  * Fix compositing glitches on Ubuntu and prevent flashing when minimizing to the tray at startup [#307]
+  * Fix AppImage tray icon on Ubuntu [#277, #273]
+  * Fix global menu disappearing after restoring KeePassXC from the tray on Ubuntu [#276]
+  * Fix result order in entry search [#320]
+  * Enable HiDPI scaling on supported platforms [#315]
+  * Remove empty directories from installation target [#282]
+
+-------------------------------------------------------------------
+Tue Feb 21 00:35:31 UTC 2017 - jengelh@inai.de
+
+- Remove filler words from description
+
+-------------------------------------------------------------------
+Thu Feb 16 13:56:37 UTC 2017 - mpluskal@suse.com
+
+- Initial package for version 2.1.1 (boo#1024998):
+  * based on package for keepassx
+

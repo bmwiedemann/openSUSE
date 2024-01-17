@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Tue Jul 11 13:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.0:
+  * Drop Python 3.7 support.
+
+-------------------------------------------------------------------
+Tue Jun 20 16:18:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.0:
+  * Support Python 3.12.
+
+-------------------------------------------------------------------
+Thu May  4 23:19:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop unmaintained and unused pytest-flake8dir 
+
+-------------------------------------------------------------------
+Thu Apr 13 12:27:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.0:
+  * Add rule C418 to check for calls passing a dict literal or
+    dict comprehension to ``dict()``.
+  * Add rule C419 to check for calls passing a list comprehension
+    to ``any()``/``all()``.
+
+-------------------------------------------------------------------
+Tue Mar 21 15:37:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.1:
+  * Fix false positives in C406 “unnecessary dict literal”.
+  * Expand C416 to ``dict`` comprehensions.
+
+-------------------------------------------------------------------
+Thu Mar  9 09:48:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.10.1
+  * Fix false positive in rules C402 and C404 for dict() calls with
+    keyword arguments.
+- 3.10.0 (2022-05-19)
+  * Add rule C417 which recommends rewriting use of map() with lambda
+    to an equivalent generator expression or comprehension.
+- 3.9.0 (2022-05-11)
+  * Support Python 3.11.
+- 3.8.0 (2022-01-10)
+  * Drop Python 3.6 support.
+  * Remove upper bound on Flake8 version.
+- 3.7.0 (2021-10-11)
+  * Support Flake8 4.
+- 3.6.1 (2021-08-16)
+  * Fix type hint for tree argument.
+- 3.6.0 (2021-08-13)
+  * Add type hints.
+- 3.5.0 (2021-05-10)
+  * Support Python 3.10.
+  * Stop distributing tests to reduce package size. Tests are not
+    intended to be run outside of the tox setup in the repository.
+    Repackagers can use GitHub's tarballs per tag.
+
+-------------------------------------------------------------------
+Fri Mar 19 08:36:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't skip test_C416_fail_1_list, because it has been fixed in
+  python-pytest-flake8dir.
+
+-------------------------------------------------------------------
+Thu Mar 18 12:59:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.4.0:
+  - Remove rules C407 (Unnecessary <dict/list> comprehension
+    - <builtin> can take a generator) and C412 (Unnecessary
+    <dict/list/set> comprehension - 'in' can take a generator).
+    Both rules recommended increasing laziness, which is not
+    always desirable and can lead to subtle bugs. Also, a fully
+    exhausted generator is slower than an equivalent
+    comprehension, so the advice did not always improve
+    performance.
+  - Drop Python 3.5 support.
+  - Support Python 3.9.
+  - Move license from ISC to MIT License.
+  - Partially reverted the change to C408 to make it apply again
+    to when dict is called with keyword arguments, e.g. dict(a=1,
+    b=2) will be flagged to be rewritten in the literal form
+    {"a": 1, "b": 2}
+- Skip test test_C416_fail_1_list
+  (gh#adamchainz/flake8-comprehensions#313).
+
+-------------------------------------------------------------------
+Sat Jul 11 18:38:19 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.2.3:
+  * Made C408 only apply when no arguments are passed to
+    dict/list/tuple.
+
+-------------------------------------------------------------------
+Sun Feb  9 16:53:49 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.2.2:
+  * Remove check for dict comprehensions in rule C407 as it would also
+    change the results for certain builtins such as sum().
+
+- changes from version 3.2.1:
+  * Remove check for set comprehensions in rule C407 as it would
+    change the results for certain builtins such as sum().
+
+- changes from version 3.2.0:
+  * Add filter and map to rule C407.
+  * Check for dict and set comprehensions in rules C407 and C412.
+
+-------------------------------------------------------------------
+Sat Dec  7 17:47:28 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 3.1.4:
+  * Remove the tuple/unpacking check from C416 to prevent false
+    positives where the type of the iterable is changed from some
+    iterable to a tuple.
+
+- changes from version 3.1.3:
+  * Ensure the fix for false positives in C416 rule for asynchronous
+    comprehensions runs on Python 3.6 too.
+
+- changes from version 3.1.2:
+  * Fix false positives in C416 rule for list comprehensions returning
+    tuples.
+
+- changes from version 3.1.1:
+  * Fix false positives in C416 rule for asynchronous comprehensions.
+
+- changes from version 3.1.0:
+  * Update Python support to 3.5-3.8.
+  * Fix false positives for C404 for list comprehensions not directly
+    creating tuples.
+  * Add C413 rule that checks for unnecessary use of list() or
+    reversed() around sorted().
+  * Add C414 rule that checks for unnecessary use of the following:
+    + list(), reversed(), sorted(), or tuple() within set or sorted()
+    + list() or tuple() within list() or tuple()
+    + set() within set
+  * Add C415 rule that checks for unnecessary reversal of an iterable
+    via subscript within reversed(), set(), or sorted().
+  * Add C416 rule that checks for unnecessary list or set
+    comprehensions that can be rewritten using list() or set().
+
+- changes from version 3.0.1:
+  * Fix version display on flake8 --version (removing dependency on
+    cached-property). Thanks to Jon Dufresne.
+
+- changes from version 3.0.0:
+  * Update Flake8 support to 3.0+ only. 3.0.0 was released in 2016 and
+    the plugin hasn't been tested with it since.
+
+- changes from version 2.3.0:
+  * Converted setuptools metadata to configuration file. This meant
+    removing the __version__ attribute from the package. If you want
+    to inspect the installed version, use
+    importlib.metadata.version("flake8-comprehensions") (docs /
+    backport).
+  * Add dependencies on cached-property and importlib-metadata.
+  * Fix false negatives in C407 for cases when enumerate and sum() are
+    passed more than one argument.
+
+-------------------------------------------------------------------
+Fri Sep 13 07:29:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.0:
+  * Update Python support to 3.5-3.7, as 3.4 has reached its end of life.
+  * C412 rule that complains about using list comprehension with in.
+
+-------------------------------------------------------------------
+Sat Aug  3 06:40:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Switch to github tarball
+- Run tests
+
+-------------------------------------------------------------------
+Mon Jul 15 21:57:07 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Initial (v2.1.0)

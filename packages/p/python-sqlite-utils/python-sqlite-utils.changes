@@ -1,0 +1,465 @@
+-------------------------------------------------------------------
+Fri Jan 12 08:20:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.36:
+  *  Support for creating tables in SQLite STRICT mode. Thanks,
+    Taj Khattra. (:issue:`344`)  CLI commands create-table,
+    insert and upsert all now accept a --strict option. Python
+    methods that can create a table - table.create() and
+    insert/upsert/insert_all/upsert_all all now accept an
+    optional strict=True parameter. The transform command and
+    table.transform() method preserve strict mode when
+    transforming a table.
+  * CLI commands create-table, insert and upsert all now accept a
+    --strict option.
+  * Python methods that can create a table - table.create() and
+    insert/upsert/insert_all/upsert_all all now accept an
+    optional strict=True parameter.
+  * The transform command and table.transform() method preserve
+    strict mode when transforming a table.
+  * The sqlite-utils create-table command now accepts str, int
+    and bytes as aliases for text, integer and blob respectively.
+    (:issue:`606`)
+
+-------------------------------------------------------------------
+Fri Dec  8 13:46:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.35.2:
+  * The ``--load-extension=spatialite`` option and
+    :ref:`find_spatialite() <python_api_gis_find_spatialite>`
+    utility function now both work correctly on ``arm64`` Linux.
+  * Fix for bug where ``sqlite-utils insert`` could cause your
+    terminal cursor to disappear. Thanks, `Luke Plant
+  * ``datetime.timedelta`` values are now stored as ``TEXT``
+    columns. Thanks, `Harald Nezbeda
+  * Test suite is now also run against Python 3.12.
+  * Fixed a bug where :ref:`table.transform()
+    <python_api_transform>` would sometimes re-assign the
+    ``rowid`` values for a table rather than keeping them
+    consistent across the operation. (:issue:`592`)
+  * Adding foreign keys to a table no longer uses ``PRAGMA
+    writable_schema = 1`` to directly manipulate the
+    ``sqlite_master`` table. This was resulting in errors in some
+    Python installations where the SQLite library was compiled in
+    a way that prevented this from working, in particular on
+    macOS. Foreign keys are now added using the :ref:`table
+    transformation <python_api_transform>` mechanism instead.
+  * This new mechanism creates a full copy of the table, so it is
+    likely to be significantly slower for large tables, but will
+    no longer trigger ``table sqlite_master may not be modified``
+    errors on platforms that do not support ``PRAGMA
+    writable_schema = 1``.
+  * A new plugin, `sqlite-utils-fast-fks
+    <https://github.com/simonw/sqlite-utils-fast-fks>`__, is now
+    available for developers who still want to use that faster
+    but riskier implementation.
+  * The :ref:`table.transform() method <python_api_transform>`
+    has two new parameters: ``foreign_keys=`` allows you to
+    replace the foreign key constraints defined on a table, and
+    ``add_foreign_keys=`` lets you specify new foreign keys to
+    add. These complement the existing ``drop_foreign_keys=``
+    parameter. (:issue:`577`)
+  * The :ref:`sqlite-utils transform <cli_transform_table>`
+    command has a new ``--add-foreign-key`` option which can be
+    called multiple times to add foreign keys to a table that is
+    being transformed. (:issue:`585`)
+  * :ref:`sqlite-utils convert <cli_convert>` now has a ``--pdb``
+    option for opening a debugger on the first encountered error
+    in your conversion script. (:issue:`581`)
+  * Fixed a bug where ``sqlite-utils install -e '.[test]'``
+    option did not work correctly.
+  * Plugin hook: :ref:`plugins_hooks_register_commands`, for
+    plugins to add extra commands to ``sqlite-utils``.
+  * Plugin hook: :ref:`plugins_hooks_prepare_connection`. Plugins
+    can use this to help prepare the SQLite connection to do
+    things like registering custom SQL functions.
+  * ``sqlite_utils.Database(..., execute_plugins=False)`` option
+    for disabling plugin execution.
+  * ``sqlite-utils install -e path-to-directory`` option for
+    installing editable code.
+  * ``table.create(...)`` method now accepts ``replace=True`` to
+    drop and replace an existing table with the same name, or
+    ``ignore=True`` to silently do nothing if a table already
+    exists with the same name. (:issue:`568`)
+  * ``sqlite-utils insert ... --stop-after 10`` option for
+    stopping the insert after a specified number of records.
+    Works for the ``upsert`` command as well. (:issue:`561`)
+  * The ``--csv`` and ``--tsv`` modes for ``insert`` now accept a
+    ``--empty-null`` option, which causes empty strings in the
+    CSV file to be stored as ``null`` in the database.
+  * New ``db.rename_table(table_name, new_name)`` method for
+    renaming tables. (:issue:`565`)
+  * ``sqlite-utils rename-table my.db table_name new_name``
+    command for renaming tables. (:issue:`565`)
+  * The ``table.transform(...)`` method now takes an optional
+    ``keep_table=new_table_name`` parameter, which will cause the
+    original table to be renamed to ``new_table_name`` rather
+    than being dropped at the end of the transformation.
+    (:issue:`571`)
+  * Documentation now notes that calling ``table.transform()``
+    without any arguments will reformat the SQL schema stored by
+    SQLite to be more aesthetically pleasing. (:issue:`564`)
+  * ``sqlite-utils`` will now use `sqlean.py
+    <https://github.com/nalgeon/sqlean.py>`__ in place of
+    ``sqlite3`` if it is installed in the same virtual
+    environment. This is useful for Python environments with
+    either an outdated version of SQLite or with restrictions on
+    SQLite such as disabled extension loading or restrictions
+    resulting in the ``sqlite3.OperationalError: table
+    sqlite_master may not be modified`` error. (:issue:`559`)
+  * New ``with db.ensure_autocommit_off()`` context manager,
+    which ensures that the database is in autocommit mode for the
+    duration of a block of code. This is used by
+    ``db.enable_wal()`` and ``db.disable_wal()`` to ensure they
+    work correctly with ``pysqlite3`` and ``sqlean.py``.
+  * New ``db.iterdump()`` method, providing an iterator over SQL
+    strings representing a dump of the database. This uses
+    ``sqlite-dump`` if it is available, otherwise falling back on
+    the ``conn.iterdump()`` method from ``sqlite3``. Both
+    ``pysqlite3`` and ``sqlean.py`` omit support for
+    ``iterdump()`` - this method helps paper over that
+    difference.
+  * Examples in the :ref:`CLI documentation <cli>` can now all be
+    copied and pasted without needing to remove a leading ``$``.
+    (:issue:`551`)
+  * Documentation now covers :ref:`installation_completion` for
+    ``bash`` and ``zsh``. (:issue:`552`)
+  * New experimental ``sqlite-utils tui`` interface for
+    interactively building command-line invocations, powered by
+    `Trogon <https://github.com/Textualize/trogon>`__. This
+    requires an optional dependency, installed using ``sqlite-
+    utils install trogon``. There is a screenshot :ref:`in the
+    documentation <cli_tui>`. (:issue:`545`)
+  * ``sqlite-utils analyze-tables`` command (:ref:`documentation
+    <cli_analyze_tables>`) now has a ``--common-limit 20`` option
+    for changing the number of common/least-common values shown
+    for each column. (:issue:`544`)
+  * ``sqlite-utils analyze-tables --no-most`` and ``--no-least``
+    options for disabling calculation of most-common and least-
+    common values.
+  * If a column contains only ``null`` values, ``analyze-tables``
+    will no longer attempt to calculate the most common and least
+    common values for that column. (:issue:`547`)
+  * Calling ``sqlite-utils analyze-tables`` with non-existent
+    columns in the ``-c/--column`` option now results in an error
+    message. (:issue:`548`)
+  * The ``table.analyze_column()`` method (:ref:`documented here
+    <python_api_analyze_column>`) now accepts
+    ``most_common=False`` and ``least_common=False`` options for
+    disabling calculation of those values.
+  * Dropped support for Python 3.6. Tests now ensure
+    compatibility with Python 3.11. (:issue:`517`)
+  * Automatically locates the SpatiaLite extension on Apple
+    Silicon. Thanks, Chris Amico. (`#536
+    <https://github.com/simonw/sqlite-utils/pull/536>`__)
+  * New ``--raw-lines`` option for the ``sqlite-utils query`` and
+    ``sqlite-utils memory`` commands, which outputs just the raw
+    value of the first column of every row. (:issue:`539`)
+  * Fixed a bug where ``table.upsert_all()`` failed if the
+    ``not_null=`` option was passed. (:issue:`538`)
+  * Fixed a ``ResourceWarning`` when using ``sqlite-utils
+    insert``. (:issue:`534`)
+  * Now shows a more detailed error message when ``sqlite-utils
+    insert`` is called with invalid JSON. (:issue:`532`)
+  * ``table.convert(..., skip_false=False)`` and ``sqlite-utils
+    convert --no-skip-false`` options, for avoiding a misfeature
+    where the :ref:`convert()  <python_api_convert>` mechanism
+    skips rows in the database with a falsey value for the
+    specified column. Fixing this by default would be a
+    backwards-incompatible change and is under consideration for
+    a 4.0 release in the future. (:issue:`527`)
+  * Tables can now be created with self-referential foreign keys.
+    Thanks, Scott Perry. (`#537
+    <https://github.com/simonw/sqlite-utils/pull/537>`__)
+  * ``sqlite-utils transform`` no longer breaks if a table
+    defines default values for columns. Thanks, Kenny Song.
+    (:issue:`509`)
+  * Fixed a bug where repeated calls to ``table.transform()`` did
+    not work correctly. Thanks, Martin Carpenter. (:issue:`525`)
+  * Improved error message if ``rows_from_file()`` is passed a
+    non-binary-mode file-like object. (:issue:`520`)
+  * Now tested against Python 3.11. (:issue:`502`)
+  * New ``table.search_sql(include_rank=True)`` option, which
+    adds a ``rank`` column to the generated SQL. Thanks, Jacob
+    Chapman. (`#480 <https://github.com/simonw/sqlite-
+    utils/pull/480>`__)
+  * Progress bars now display for newline-delimited JSON files
+    using the ``--nl`` option. Thanks, Mischa Untaga.
+    (:issue:`485`)
+  * New ``db.close()`` method. (:issue:`504`)
+  * Conversion functions passed to :ref:`table.convert(...)
+    <python_api_convert>` can now return lists or dictionaries,
+    which will be inserted into the database as JSON strings.
+    (:issue:`495`)
+  * ``sqlite-utils install`` and ``sqlite-utils uninstall``
+    commands for installing packages into the same virtual
+    environment as ``sqlite-utils``, :ref:`described here
+    <cli_install>`. (:issue:`483`)
+  * New :ref:`sqlite_utils.utils.flatten()
+    <reference_utils_flatten>` utility function. (:issue:`500`)
+  * Documentation on :ref:`using Just <contributing_just>` to run
+    tests, linters and build documentation.
+  * Documentation now covers the :ref:`release_process` for this
+    package.
+  * The ``sqlite-utils query``, ``memory`` and ``bulk`` commands
+    now all accept a new ``--functions`` option. This can be
+    passed a string of Python code, and any callable objects
+    defined in that code will be made available to SQL queries as
+    custom SQL functions. See :ref:`cli_query_functions` for
+    details. (:issue:`471`)
+  * ``db[table].create(...)`` method now accepts a new
+    ``transform=True`` parameter. If the table already exists it
+    will be :ref:`transformed <python_api_transform>` to match
+    the schema configuration options passed to the function. This
+    may result in columns being added or dropped, column types
+    being changed, column order being updated or not null and
+    default values for columns being set. (:issue:`467`)
+  * Related to the above, the ``sqlite-utils create-table``
+    command now accepts a ``--transform`` option.
+  * New introspection property: ``table.default_values`` returns
+    a dictionary mapping each column name with a default value to
+    the configured default value. (:issue:`475`)
+  * The ``--load-extension`` option can now be provided a path to
+    a compiled SQLite extension module accompanied by the name of
+    an entrypoint, separated by a colon - for example ``--load-
+    extension ./lines0:sqlite3_lines0_noread_init``. This feature
+    is modelled on code first `contributed to Datasette
+    <https://github.com/simonw/datasette/pull/1789>`__ by Alex
+    Garcia. (:issue:`470`)
+  * Functions registered using the :ref:`db.register_function()
+    <python_api_register_function>` method can now have a custom
+    name specified using the new ``db.register_function(fn,
+    name=...)`` parameter. (:issue:`458`)
+  * :ref:`sqlite-utils rows <cli_rows>` has a new ``--order``
+    option for specifying the sort order for the returned rows.
+    (:issue:`469`)
+  * All of the CLI options that accept Python code blocks can now
+    all be used to define functions that can access modules
+    imported in that same block of code without needing to use
+    the ``global`` keyword. (:issue:`472`)
+  * Fixed bug where ``table.extract()`` would not behave
+    correctly for columns containing null values. Thanks, Forest
+    Gregg. (:issue:`423`)
+  * New tutorial: `Cleaning data with sqlite-utils and Datasette
+    <https://datasette.io/tutorials/clean-data>`__ shows how to
+    use ``sqlite-utils`` to import and clean an example CSV file.
+  * Datasette and ``sqlite-utils`` now have a Discord community.
+    `Join the Discord here <https://discord.gg/Ass7bCAMDw>`__.
+  * New :ref:`table.duplicate(new_name) <python_api_duplicate>`
+    method for creating a copy of a table with a matching schema
+    and row contents. Thanks, `David
+    <https://github.com/davidleejy>`__. (:issue:`449`)
+  * New ``sqlite-utils duplicate data.db table_name new_name``
+    CLI command for :ref:`cli_duplicate_table`. (:issue:`454`)
+  * ``sqlite_utils.utils.rows_from_file()`` is now a
+    :ref:`documented API <reference_utils_rows_from_file>`. It
+    can be used to read a sequence of dictionaries from a file-
+    like object containing CSV, TSV, JSON or newline-delimited
+    JSON. It can be passed an explicit format or can attempt to
+    detect the format automatically. (:issue:`443`)
+  * ``sqlite_utils.utils.TypeTracker`` is now a documented API
+    for detecting the likely column types for a sequence of
+    string rows, see :ref:`python_api_typetracker`.
+    (:issue:`445`)
+  * ``sqlite_utils.utils.chunks()`` is now a documented API for
+    :ref:`splitting an iterator into chunks
+    <reference_utils_chunks>`. (:issue:`451`)
+  * ``sqlite-utils enable-fts`` now has a ``--replace`` option
+    for replacing the existing FTS configuration for a table.
+    (:issue:`450`)
+  * The ``create-index``, ``add-column`` and ``duplicate``
+    commands all now take a ``--ignore`` option for ignoring
+    errors should the database not be in the right state for them
+    to operate. (:issue:`450`)
+  * Code examples in documentation now have a "copy to clipboard"
+    button. (:issue:`436`)
+  * ``sqlite_utils.utils.utils.rows_from_file()`` is now a
+    documented API, see :ref:`python_api_rows_from_file`.
+    (:issue:`443`)
+  * ``rows_from_file()`` has two new parameters to help handle
+    CSV files with rows that contain more values than are listed
+    in that CSV file's headings: ``ignore_extras=True`` and
+    ``extras_key="name-of-key"``. (:issue:`440`)
+  * ``sqlite_utils.utils.maximize_csv_field_size_limit()`` helper
+    function for increasing the field size limit for reading CSV
+    files to its maximum, see
+    :ref:`python_api_maximize_csv_field_size_limit`.
+    (:issue:`442`)
+  * ``table.search(where=, where_args=)`` parameters for adding
+    additional ``WHERE`` clauses to a search query. The
+    ``where=`` parameter is available on
+    ``table.search_sql(...)`` as well. See
+    :ref:`python_api_fts_search`. (:issue:`441`)
+  * Fixed bug where ``table.detect_fts()`` and other search-
+    related functions could fail if two FTS-enabled tables had
+    names that were prefixes of each other. (:issue:`434`)
+  * Now depends on `click-default-group-wheel
+    <https://github.com/simonw/click-default-group-wheel>`__, a
+    pure Python wheel package. This means you can install and use
+    this package with `Pyodide <https://pyodide.org/>`__, which
+    can run Python entirely in your browser using WebAssembly.
+    (`#429 <https://github.com/simonw/sqlite-utils/pull/429>`__)
+  * Try that out using the `Pyodide REPL
+    <https://pyodide.org/en/stable/console.html>`__:
+  * .. code-block:: python
+  * >>> import micropip
+  * >>> await micropip.install("sqlite-utils")
+  * >>> import sqlite_utils
+  * >>> db = sqlite_utils.Database(memory=True)
+  * >>> list(db.query("select 3 * 5"))
+  * [{'3 * 5': 15}]
+  * New ``errors=r.IGNORE/r.SET_NULL`` parameter for the
+    ``r.parsedatetime()`` and ``r.parsedate()`` :ref:`convert
+    recipes <cli_convert_recipes>`. (:issue:`416`)
+  * Fixed a bug where ``--multi`` could not be used in
+    combination with ``--dry-run`` for the :ref:`convert
+    <cli_convert>` command. (:issue:`415`)
+  * New documentation: :ref:`cli_convert_complex`. (:issue:`420`)
+  * More robust detection for whether or not
+    ``deterministic=True`` is supported. (:issue:`425`)
+  * Improved display of type information and parameters in the
+    :ref:`API reference documentation <reference>`.
+    (:issue:`413`)
+  * New ``hash_id_columns=`` parameter for creating a primary key
+    that's a hash of the content of specific columns - see
+    :ref:`python_api_hash` for details. (:issue:`343`)
+  * New :ref:`db.sqlite_version <python_api_sqlite_version>`
+    property, returning a tuple of integers representing the
+    version of SQLite, for example ``(3, 38, 0)``.
+  * Fixed a bug where :ref:`register_function(deterministic=True)
+    <python_api_register_function>` caused errors on versions of
+    SQLite prior to 3.8.3. (:issue:`408`)
+  * New documented :ref:`hash_record(record, keys=...)
+    <reference_utils_hash_record>` function.
+
+-------------------------------------------------------------------
+Wed Feb 16 20:38:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.24:
+  * SpatiaLite helpers for the ``sqlite-utils`` command-line tool
+  * All commands now include example usage in their ``--help`` - see :ref:`cli_reference`. (:issue:`384`)
+  * Python library documentation has a new :ref:`python_api_getting_started` section. (:issue:`387`)
+  * Documentation now uses `Plausible analytics <https://plausible.io/>`__. (:issue:`389`)
+  * CLI and Python library improvements to help run `ANALYZE
+    inserting rows, to gain better performance from the SQLite query planner
+    when it runs against indexes.
+  * Three new CLI commands: ``create-database``, ``analyze`` and ``bulk``.
+  * More details and examples can be found in `the annotated release notes <https://simonwillison.net/2022/Jan/11/sqlite-utils/>`__.
+  * Fixed bug where ``sqlite-utils upsert ... --detect-types`` ignored the ``--detect-types`` option.
+
+-------------------------------------------------------------------
+Tue Dec 14 07:51:51 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.19
+  * lot of changes, see changelog.rst in the package or
+    https://github.com/simonw/sqlite-utils/blob/main/docs/changelog.rst
+
+-------------------------------------------------------------------
+Thu Feb 18 08:32:36 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.5.
+  * ``sqlite-utils insert --sniff`` option for detecting the delimiter
+    and quote character used by a CSV file
+  * The ``table.rows_where()``, ``table.search()`` and
+    ``table.search_sql()`` methods all now take optional ``offset=``
+    and ``limit=`` arguments.
+  * New ``--no-headers`` option for ``sqlite-utils insert --csv`` to
+    handle CSV files that are missing the header row.
+  * Fixed bug where inserting data with extra columns in subsequent
+    chunks would throw an error.
+  * Fixed bug importing CSV files with columns containing more than
+    128KB of data.
+  * Test suite now runs in CI against Ubuntu, macOS and Windows.
+- Updates for 3.4.1
+  * Fixed a code import bug that slipped in to 3.4.
+- Updates for 3.4
+  * ``sqlite-utils insert --csv`` now accepts optional
+  ``--delimiter`` and ``--quotechar`` options.
+- Updates for 3.3
+  * The ``table.m2m()`` method now accepts an optional ``alter=True``
+    argument to specify that any missing columns should be added to
+    the referenced table.
+- Updates for 3.2.1
+  * Fixed a bug where ``.add_missing_columns()`` failed to take case
+    insensitive column names into account.
+- Updates for 3.2
+  * This release introduces a new mechanism for speeding up
+    ``count(*)`` queries using cached table counts, stored in a
+    ``_counts`` table and updated by triggers. This mechanism is
+    described in :ref:`python_api_cached_table_counts`, and can be
+    enabled using Python API methods or the new ``enable-counts``
+    CLI command.
+  * ``table.enable_counts()`` method for enabling these triggers
+    on a specific table.
+  * ``db.enable_counts()`` method for enabling triggers on every
+    table in the database.
+  * New ``sqlite-utils enable-counts my.db`` command for enabling
+    counts on all or specific tables, see :ref:`cli_enable_counts`.
+  * New ``sqlite-utils triggers`` command for listing the triggers
+    defined for a database or specific tables.
+  * New ``db.use_counts_table`` property which, if ``True``, causes
+    ``table.count`` to read from the ``_counts`` table.
+  * ``table.has_counts_triggers`` property revealing if a table has
+    been configured with the new ``_counts`` database triggers.
+  * ``db.reset_counts()`` method and ``sqlite-utils reset-counts``
+    command for resetting the values in the ``_counts`` table.
+  * The previously undocumented ``db.escape()`` method has been
+    renamed to ``db.quote()``.
+  * New ``table.triggers_dict`` and ``db.triggers_dict``
+    introspection properties.
+  * ``sqlite-utils insert`` now shows a more useful error message
+    for invalid JSON.
+- Updates for 3.1.1
+  * Fixed failing test caused by ``optimize`` sometimes creating
+   larger database files.
+  * Documentation now lives on https://sqlite-utils.datasette.io/
+  * README now includes ``brew install sqlite-utils`` installation method.
+- Updates for 3.1
+  * New command: ``sqlite-utils analyze-tables my.db`` outputs useful
+   information about the table columns in the database, such as the
+   number of distinct values and how many rows are null.
+  * New ``table.analyze_column(column)`` Python method used by the
+    ``analyze-tables`` command - see :ref:`python_api_analyze_column`.
+  * The ``table.update()`` method now correctly handles values that
+    should be stored as JSON.
+- Updates for 3.0
+  * This release introduces a new ``sqlite-utils search`` command
+    for searching tables, see :ref:`cli_search`.
+  * The ``table.search()`` method has been redesigned.
+  * The release includes minor backwards-incompatible changes, hence
+    the version bump to 3.0. Those changes, which should not affect
+    most users, are:
+  * The ``-c`` shortcut option for outputting CSV is no longer
+    available. The full ``--csv`` option is required instead.
+  * The ``-f`` shortcut for ``--fmt`` has also been removed - use
+    ``--fmt``.
+  * The ``table.search()`` method now defaults to sorting by
+    relevance, not sorting by ``rowid``.
+  * The ``table.search()`` method now returns a generator over a list
+    of Python dictionaries. It previously returned a list of tuples.
+  * The ``query``, ``tables``, ``rows`` and ``search`` CLI commands
+    now accept a new ``--tsv`` option which outputs the results in TSV.
+  * A new ``table.virtual_table_using`` property reveals if a table
+    is a virtual table, and returns the upper case type of virtual
+    table (e.g. ``FTS4`` or ``FTS5``) if it is. It returns ``None``
+    if the table is not a virtual table.
+  * The new ``table.search_sql()`` method returns the SQL for
+    searching a table, see :ref:`python_api_fts_search_sql`.
+  * ``sqlite-utils rows`` now accepts multiple optional ``-c``
+    parameters specifying the columns to return.
+  * The ``sqlite-utils search`` command now defaults to returning
+    every result, unless you add a ``--limit 20`` option.
+  * The ``sqlite-utils search -c`` and ``table.search(columns=[])``
+    options are now fully respected.
+- Skip python2 because python-sqlite-fts4 don't support it.
+- Skip python36 because python-panda don't support it.
+
+-------------------------------------------------------------------
+Sun Aug 23 16:02:45 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.16
+
+-------------------------------------------------------------------
+Mon Jan  6 20:21:59 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.0.1

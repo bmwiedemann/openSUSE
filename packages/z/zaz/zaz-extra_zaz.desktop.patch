@@ -1,0 +1,10 @@
+--- extra/zaz.desktop.orig	2010-05-09 18:25:22.000000000 +0200
++++ extra/zaz.desktop	2015-10-07 18:14:24.165825161 +0200
+@@ -2,6 +2,7 @@
+ Version=1.0
+ Type=Application
+ Name=Zaz
++GenericName=Puzzle Bobble
+ Comment=Zaz ain't Z***
+ Comment[ru]=Zaz не клон Z***
+ Comment[tr]=Top Yok Etme Oyunu

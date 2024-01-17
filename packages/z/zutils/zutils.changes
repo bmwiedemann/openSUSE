@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Sun Jan 22 11:39:46 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.12:
+  * 'zutilsrc' has been renamed to 'zutils.conf', and is loog for in 
+    $XDG_CONFIG_HOME/zutils.conf instead of $HOME/.zutilsrc.
+    (XDG_CONFIG_HOME defaults to $HOME/.config).
+  * In zcat, zcmp, zdiff, and zgrep, the option '-O, --force-format'
+    now can force also "uncompressed" format.
+  * zcmp now accepts the option '-H, --hexadecimal' to print byte
+    values in hexadecimal instead of octal.
+  * zcmp: option '-s' changed to '--script'
+  * zcmp: '-q' has been assigned to options '--quiet' and '--silent'
+  * zcmp: '-q' now only suppresses diagnostic messages written to 
+    stderr
+  * zcmp: '-s' now only suppresses messages about file differences
+    written to stdout or stderr.
+  * zcmp: Option '-l, --list' is now different from option '-v,
+    --verbose', whichnow undoes the effect of '--quiet'.
+  * zcmp now prints byte and line in EOF message like GNU cmp:
+    "zcmp: EOF on FILE after byte B, in line L".
+  * zgrep now also accepts the following options:
+    '-G, --basic-regexp',
+    '--label=<label>',
+    '--line-buffered',
+    '-P, --perl-regexp',
+    '--silent',
+    '-T, --initial-tab',
+    '-U, --binary', and
+    '-Z, --null'.
+  * ztest now exits with status 2 if an uncompressed file has a
+    compressed file name extension, or if a compressed file has a 
+    wrong compressed extension.
+  * zudate now accepts option '-d, --destdir' to write recompressed
+    files to another directory.
+  * zupdate now accepts option '-e, --expand-extensions', which
+    makes it expand combined file name extensions; tgz --> tar.lz.
+  * zupdate now also accepts option '-i, --ignore-errors', which
+    makes it ignore non-fatal errors
+  * All utilities now support compress'd (.Z) files through gzip.
+  * At verbosity level 1 (2 for zdiff and zgrep) or higher, '-V,
+    --version' now prints the versions of the compressors used
+    (limited by option '-M, --format').
+  * Diagnostics caused by invalid arguments to command line options
+    now show the argument and the name of the option.
+
+-------------------------------------------------------------------
+Thu Apr 14 12:49:57 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.11:
+  * zcmp.cc, zdiff.cc (main): Fix race returning 1 instead of 2 when a
+    compressor is not found or when the wrong format is forced.
+  * zcmp.cc (getnum): Show option name and valid range if error.
+  * All tools: Show option name if error in option argument.
+  * Add support for zstd format to all tools.
+  * 'zdiff -v -V' now prints the version of the diff program used.
+  * 'zgrep --verbose -V' now prints the version of the grep program used.
+  * zutils.texi: Document recompression of read-only files by linking.
+  * zutils.texi: Change GNU Texinfo category to 'Compression'.
+
+-------------------------------------------------------------------
+Thu Jan 21 09:42:36 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.10:
+  * zdiff.cc (set_fifonames): Encode pid in little endian order.
+  * zupdate.cc (zupdate_file): Fix a portability issue with Solaris 10.
+  * zutils.texi: Document that 'zgrep -L' fails with GNU grep 3.2 to 3.4.
+  * check.sh: Test empty input files with all tools except zupdate.
+
+-------------------------------------------------------------------
+Mon Aug 17 11:55:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9:
+  * zcmp.cc zdiff.cc: Read standard input only if requested.
+  * zdiff.cc (main): Pass options '-W' and '-y' to diff.
+  * zutils.cc (test_format): Detect bzip2 and lzip files better.
+  * ztest.cc (main): Continue testing if any input file is a terminal.
+  If verbosity >= 1, print number of files that failed the test.
+  * zcat.cc zgrep.cc ztest.cc (main): Check return value of close( infd ).
+  * zutils.cc (good_status): Ignore trailing data remaining in feeder.
+  * zupdate.cc (zupdate_file): Support new and old lzip option '-o'.
+  Keep combined extensions: tgz, tbz, tbz2, txz --> tlz.
+  Quote file names in zcmp_command to allow file names with spaces.
+  * *.cc (main): Set a valid invocation_name even if argc == 0.
+  * zutils.texi: Improve descriptions of zcat, zcmp, and zdiff.
+
+-------------------------------------------------------------------
+Wed Apr 22 06:23:09 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.8:
+  * See provided NEWS for detailed list of changes
+- Drop no longer needed patches:
+  * zutils-1.7-zcat-buffer-overrun.patch
+
+-------------------------------------------------------------------
+Sat Aug 25 12:28:27 UTC 2018 - aloisio@gmx.com
+
+- Added zutils-1.7-noconflict.patch (fixes boo#1105973)
+
+-------------------------------------------------------------------
+Mon Aug  6 10:29:51 UTC 2018 - aloisio@gmx.com
+
+- Added zutils-1.7-zcat-buffer-overrun.patch (fixes boo#1103878)
+
+-------------------------------------------------------------------
+Sat Jul 14 08:27:03 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 1.7:
+  * zgrep.cc (main): Pass '--color' option to grep.
+  * check.sh: Added new tests for zgrep.
+
+-------------------------------------------------------------------
+Mon Feb 19 12:07:34 UTC 2018 - aloisio@gmx.com
+
+  - Update to version 1.6
+  * zcmp.cc: Accept 'B' suffix in '--ignore-initial=1kB:1234B'.
+  * zutils.cc (feed_data): Show input filename in error messages.
+  Version 1.5
+  * zupdate.cc (zupdate_file): Pass '-q' to zcmp if verbosity < 0.
+  * zcat.cc zgrep.cc ztest.cc (main): Don't use stdin more than
+    once.
+  * zdiff.cc (set_fifonames): Use '_' if both names are different.
+  * configure: Avoid warning on some shells when testing for g++.
+  * Makefile.in: Detect the existence of install-info.
+  * testsuite/check.sh: A POSIX shell is required to run the
+    tests.
+
+-------------------------------------------------------------------
+Sun Jan  3 13:57:23 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 1.4
+  * Option '--format' has been renamed to '-O, --force-format'.
+  * Added new option '-M, --format=<list>' to all utilities.
+
+-------------------------------------------------------------------
+Sat Apr 18 16:51:15 UTC 2015 - mpluskal@suse.com
+
+- Conflict with gzip
+
+-------------------------------------------------------------------
+Sat Apr 18 10:22:53 UTC 2015 - mpluskal@suse.com
+
+- Initial package for version 1.3
+

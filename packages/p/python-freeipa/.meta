@@ -1,0 +1,6 @@
+<package name="python-freeipa" project="openSUSE:Factory">
+  <title>python-freeipa</title>
+  <description>Lightweight FreeIPA client.</description>
+  <devel project="security:idm" package="python-freeipa"/>
+  <url>https://python-freeipa.readthedocs.io/</url>
+</package>

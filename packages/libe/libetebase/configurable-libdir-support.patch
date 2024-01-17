@@ -1,0 +1,39 @@
+diff --git a/Makefile b/Makefile
+index 8b7f1af..83661dd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,5 @@
+ PREFIX ?= /usr
++LIB ?= lib64
+ DESTDIR ?=
+ # Set MODE to debug to build in debug mode
+ MODE ?= release
+@@ -7,7 +8,7 @@ PKGNAME = etebase
+ 
+ BUILDDIR = ./target
+ 
+-DST_LIBRARY_DIR = $(DESTDIR)$(PREFIX)/lib
++DST_LIBRARY_DIR = $(DESTDIR)$(PREFIX)/$(LIB)
+ DST_PKGCONFIG_DIR = $(DST_LIBRARY_DIR)/pkgconfig
+ DST_CMAKECONFIG_DIR = $(DST_LIBRARY_DIR)/cmake/Etebase
+ DST_INCLUDE_DIR = $(DESTDIR)$(PREFIX)/include/$(PKGNAME)
+@@ -26,6 +27,7 @@ pkgconfig: $(PKGCONFIG_FILE)
+ $(PKGCONFIG_FILE): $(PKGNAME).pc.in
+ 	mkdir -p "$(BUILDDIR)"
+ 	sed "s#@prefix@#$(PREFIX)#g" $< > "$(BUILDDIR)/$(PKGNAME).pc"
++	sed -i "s#@lib@#$(LIB)#g" "$(BUILDDIR)/$(PKGNAME).pc"
+ 
+ build-release: pkgconfig
+ 	cargo build --release
+diff --git a/etebase.pc.in b/etebase.pc.in
+index d8afc03..d9858ad 100644
+--- a/etebase.pc.in
++++ b/etebase.pc.in
+@@ -1,5 +1,6 @@
+ prefix=@prefix@
+-libdir=${prefix}/lib
++lib=@lib@
++libdir=${prefix}/${lib}
+ includedir=${prefix}/include
+ 
+ Name: Etebase

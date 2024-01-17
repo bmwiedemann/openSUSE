@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+                         "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY product "xmlgraphics-fop-fontmetrics">
+]>
+<refentry id="fop-fontmetrics">
+  <refentryinfo>
+    <productname>&product;</productname>
+    <authorgroup>
+      <corpcredit>Apache Foundation</corpcredit>
+      <author>
+        <firstname>Thomas</firstname>
+        <surname>Schraitle</surname>
+        <contrib>Manpage</contrib>
+      </author>
+    </authorgroup>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>&product;</refentrytitle>
+    <manvolnum>1</manvolnum>
+    <refmiscinfo class="version">1.1</refmiscinfo>
+    <!--<refmiscinfo class="source"></refmiscinfo>-->
+    <refmiscinfo class="manual"
+      >http://xmlgraphics.apache.org/fop/1.0/fonts.html#advanced</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>&product;</refname>
+    <refpurpose>Reads TTF files and Generates Appropriate Font Metrics</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id="fontmetrics.synopsis">
+    <title>Synopsis</title>
+    <para>Classnames:
+      <classname>org.apache.fop.fonts.apps.PFMReader</classname> and 
+      <classname>org.apache.fop.fonts.apps.TTFReader</classname></para>
+
+    <cmdsynopsis><command>&product;</command>
+      <group choice="opt">
+        <arg choice="plain">-t</arg>
+        <arg choice="plain">-p</arg>
+      </group>
+      <group choice="opt">options</group>
+      <arg>fontfile.ttf</arg>
+      <arg>xmlfile.xml</arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsection id="fontmetrics.options">
+    <title>Options</title>
+    <para>The first argument has to be <option>-t</option> or
+      <option>-p</option>. The option <option>-t</option> (default)
+      activates the TrueTypeReader, option <option>-p</option> activates
+    the PostSriptReader.</para>
+    <para>The following options in alphabetical order are
+      available:</para>
+    <variablelist>
+      <varlistentry>
+        <term><option>-d</option></term>
+        <listitem>
+          <para>debug mode</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-enc ansi</option></term>
+        <listitem>
+          <para>With this option you create a WinAnsi encoded font. The
+            default is to create a CID keyed font. If you're not going
+            to use characters outside the pdfencoding range (almost the
+            same as iso-8889-1) you can add this option.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-fn <replaceable>FONTNAME</replaceable></option></term>
+        <listitem>
+          <para>default is to use the fontname in the <filename
+              class="extension">.ttf</filename> file, but you can
+            override that name to make sure that the embedded font is
+            used (if you're embedding fonts) instead of installed fonts
+            when viewing documents with Acrobat Reader.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-ttcname <replaceable>FONTNAME</replaceable></option></term>
+        <listitem>
+          <para>If you're reading data from a TrueType Collection
+              (<filename class="extension">.ttc</filename> file) you
+            must specify which font from the collection you will read
+            metrics from. If you read from a <filename class="extension"
+              >.ttc</filename> file without this option, the fontnames
+            will be listed for you.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-q</option></term>
+        <listitem>
+          <para>quiet mode</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsection>
+  
+</refentry>

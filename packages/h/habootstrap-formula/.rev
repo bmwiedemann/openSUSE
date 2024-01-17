@@ -1,0 +1,224 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6ff7956438ffbe354fde946feed016f</srcmd5>
+    <version>0.1.0</version>
+    <time>1557321401</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed requires from salt-saphana to salt-shaptools.
+- Update to version 1.0.0+git.1550242845.0e69ab8:
+  * Allow pre-configured packages
+  * Update package installation to use ha pattern for SUSE distros
+  * Update join_timer parameter description
+  * Allow custom timer before cluster join
+  * Improve pre validation state to check the proper parameters
+  * Create suma form and adapt states to that
+  * Add new feature to the formula: - Ntp connection - SSH keys management - Watchdog - Mandatory pacakges and RA packages
+  * Add new options to configure the cluster in creation
+  * Update ha formula to use crmsh salt code
+  * Updated README and added comment about NET_IP in Vagrantfile
+- Consolidate the SUMA specific package into one .spec file
+- Update to version 1.0.0+git.1536931866.e47f6ce:
+  * Pillar data has to be defined in a separate SLS
+  * Revised pillar data layout to make usage simpler
+  * Drop extraneous dash in join args
+  * Set group in metadata.yml
+- Update to version 1.0.0+git.1536240306.8442de8:
+  * Add metadata.yml
+- Initial version
+ 
+</comment>
+    <requestid>698152</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42f2a4336374ffe35054f67f1c3641be</srcmd5>
+    <version>0.1.0</version>
+    <time>1559375817</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706511</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>33a2749bc3e2366f1e81cd88387e8d70</srcmd5>
+    <version>0.2.2</version>
+    <time>1562247802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713173</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>af3691486a85620763280eeca5dfbbbd</srcmd5>
+    <version>0.2.3</version>
+    <time>1563018604</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream version.</comment>
+    <requestid>714881</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e89cb865fb4b168c21a06682a59cd085</srcmd5>
+    <version>0.2.9</version>
+    <time>1573648145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748022</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3404cc2704b2aff1b86f3bdb4b4d6d14</srcmd5>
+    <version>0.2.10</version>
+    <time>1575563741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754376</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>55794c7718c046c0c49015eb3918b724</srcmd5>
+    <version>0.2.10</version>
+    <time>1579032603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764262</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4727df934ad4e7facf1a6ed140b4aa2f</srcmd5>
+    <version>0.3.0</version>
+    <time>1583526542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782126</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b43799582b6e6b65e1c57574b65d168</srcmd5>
+    <version>0.3.6</version>
+    <time>1590650362</time>
+    <user>maxlin_factory</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>809529</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b382581f37825e3af9ece0c006b9b81e</srcmd5>
+    <version>0.3.7+git.1591284136.61a57d8</version>
+    <time>1591297056</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>811548</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>57a28d776f46878f3c8f8b622dcddc7f</srcmd5>
+    <version>0.3.8+git.1597913606.d7bf629</version>
+    <time>1597955483</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>828072</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bafaed1785188c06beaf0d0c83ce378</srcmd5>
+    <version>0.3.8+git.1599825027.ca5817c</version>
+    <time>1599862318</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>833770</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>09f05dd57e033eafb31a61a27de65599</srcmd5>
+    <version>0.3.8+git.1600211526.98835ed</version>
+    <time>1600277868</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>834757</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>97a46e0c821fc622ce160880bfd3c035</srcmd5>
+    <version>0.3.9+git.1600700065.14360cc</version>
+    <time>1600801978</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>835849</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>02edd17354f4b7749ab262ff53c41dad</srcmd5>
+    <version>0.3.9+git.1601909969.6702e47</version>
+    <time>1601996970</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>839608</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ecbe9d7b6d113bde9d1f2c6c6232400b</srcmd5>
+    <version>0.3.10+git.1602612394.3dfa262</version>
+    <time>1602682807</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>841620</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>16527a807bb3858a7949938168eb68ea</srcmd5>
+    <version>0.3.11+git.1602831614.0f63599</version>
+    <time>1602857761</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>842051</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>46a815e14e6eeb5ce2230d3f0d3758c9</srcmd5>
+    <version>0.3.11+git.1611046122.d1bd8e6</version>
+    <time>1611068544</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>864243</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>313b2395effa6eca156ce6934ca110cb</srcmd5>
+    <version>0.4.0+git.1611071659.c94de02</version>
+    <time>1611163617</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>864370</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>144502673700ce015e83b4b8b0208d2b</srcmd5>
+    <version>0.4.0+git.1611213679.df6b3fb</version>
+    <time>1611262615</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>865251</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>90f053e44c4ddfb6b0773188ea59c98e</srcmd5>
+    <version>0.4.1+git.1611775401.451718e</version>
+    <time>1611865362</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>867351</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9c6a49410b06411e1c31f66556a5eb2e</srcmd5>
+    <version>0.4.1+git.1622731415.6c3fd47</version>
+    <time>1622759643</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>897228</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cd407482dba83370c4be157b0369617f</srcmd5>
+    <version>0.4.2+git.1623406073.ac4a6b1</version>
+    <time>1623443449</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>899440</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>95d2bbdca4794b96f5d0d446b752a41b</srcmd5>
+    <version>0.4.3+git.1624949151.2d42096</version>
+    <time>1624999400</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>902934</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c1335758e2546950fe89e0fd2585f2ee</srcmd5>
+    <version>0.4.3+git.1625210910.7b0645d</version>
+    <time>1625225281</time>
+    <user>dimstar_suse</user>
+    <comment>New version of habootstrap-formula released</comment>
+    <requestid>903629</requestid>
+  </revision>
+</revisionlist>

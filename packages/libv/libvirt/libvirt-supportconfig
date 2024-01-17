@@ -1,0 +1,95 @@
+#!/bin/bash
+#############################################################
+# Name:        Supportconfig Plugin for libvirt
+# Description: Gathers important troubleshooting information
+#              about libvirt
+#############################################################
+
+RCFILE="/usr/lib/supportconfig/resources/supportconfig.rc"
+OF="output-libvirt.txt"
+
+# conf files for all daemons reside in /etc/libvirt/. VM conf files
+# and log files reside in hypervisor-specific locations.
+DAEMON_CONF_FILES="$(find -L /etc/libvirt/*.conf -type f 2>/dev/null | sort)"
+PERSISTENT_VM_CONF_FILES=""
+ACTIVE_VM_CONF_FILES=""
+DAEMON_LOG_FILES=""
+
+if [ -s $RCFILE ]; then
+    if ! source $RCFILE; then
+        log_write $OF "ERROR: Initializing resource file: $RCFILE"
+        exit 1
+    fi
+fi
+
+rpm_installed() {
+    thisrpm="$1"
+
+    if rpm -q "$thisrpm" >/dev/null 2>&1; then
+        return 0
+    fi
+    return 1
+}
+
+if rpm_installed libvirt-daemon-driver-libxl; then
+    test -d /etc/libvirt/libxl && PERSISTENT_VM_CONF_FILES="$PERSISTENT_VM_CONF_FILES $(find -L /etc/libvirt/libxl/ -type f | sort)"
+    test -d /run/libvirt/libxl && ACTIVE_VM_CONF_FILES="$ACTIVE_VM_CONF_FILES $(find -L /run/libvirt/libxl/ -type f | sort)"
+    test -d /var/log/libvirt/libxl && DAEMON_LOG_FILES="$DAEMON_LOG_FILES $(find -L /var/log/libvirt/libxl/ -type f | sort)"
+fi
+
+if rpm_installed libvirt-daemon-driver-qemu; then
+    test -d /etc/libvirt/qemu && PERSISTENT_VM_CONF_FILES="$PERSISTENT_VM_CONF_FILES $(find -L /etc/libvirt/qemu/ -type f | sort)"
+    test -d /run/libvirt/qemu && ACTIVE_VM_CONF_FILES="$ACTIVE_VM_CONF_FILES $(find -L /run/libvirt/qemu/ -type f | sort)"
+    test -d /var/log/libvirt/qemu && DAEMON_LOG_FILES="$DAEMON_LOG_FILES $(find -L /var/log/libvirt/qemu/ -type f | sort)"
+fi
+
+if rpm_installed libvirt-daemon; then
+    DAEMON_LOG_FILES="$DAEMON_LOG_FILES $(find -L /var/log/libvirt/*.log -type f 2>/dev/null | sort)"
+fi
+
+if rpm_installed libvirt-client && virsh capabilities > /dev/null 2>&1; then
+
+    log_cmd $OF "virsh version"
+    log_cmd $OF "virsh capabilities"
+    log_cmd $OF "virsh domcapabilities"
+    log_cmd $OF "virsh nodeinfo"
+    log_cmd $OF "virsh nodedev-list"
+    # print all known domains on default URI
+    log_cmd $OF "virsh list --all"
+    # dump configuration info of active domains on default URI
+    for DOM in $(virsh list --name)
+    do
+        log_cmd $OF "virsh dumpxml $DOM"
+        log_cmd $OF "virsh vcpuinfo $DOM"
+        log_cmd $OF "virsh dominfo $DOM"
+        log_cmd $OF "virsh domjobinfo $DOM"
+        log_cmd $OF "virsh dommemstat $DOM"
+        log_cmd $OF "virsh snapshot-list $DOM"
+    done
+    # dump configuration info of inactive domains on default URI
+    for DOM in $(virsh list --name --inactive)
+    do
+        log_cmd $OF "virsh dumpxml $DOM"
+        log_cmd $OF "virsh snapshot-list $DOM"
+    done
+    # dump active networks, interfaces and storage pools
+    log_cmd $OF "virsh net-list"
+    log_cmd $OF "virsh iface-list"
+    log_cmd $OF "virsh pool-list"
+fi
+
+# dump libvirtd-related conf files
+conf_files $OF "$DAEMON_CONF_FILES"
+
+# dump persistent VM-related conf files
+conf_files $OF "$PERSISTENT_VM_CONF_FILES"
+
+# dump active VM-related conf files
+conf_files $OF "$ACTIVE_VM_CONF_FILES"
+
+# dump hook conf files
+test -d /etc/libvirt/hooks && FILES="$(find -L /etc/libvirt/hooks/ -type f | sort)"
+conf_files $OF "$FILES"
+
+# dump all log files
+log_files $OF 0 "$DAEMON_LOG_FILES"

@@ -1,0 +1,16 @@
+<package name="NetworkManager-dns-bind" project="openSUSE:Factory">
+  <title>NetworkManager dispatcher script for DNS bind configuration</title>
+  <description>NetworkManager attempts to keep an active network connection
+available at all times. The point of NetworkManager is to make
+networking configuration and setup as painless and automatic as
+possible. If using DHCP, NetworkManager is intended to replace
+default routes, obtain IP addresses from a DHCP server, and change
+name servers whenever it sees fit.
+
+This package provides a NetworkManager dispatcher script for DNS
+bind configuration.
+
+</description>
+  <devel project="GNOME:Factory" package="NetworkManager-dns-bind"/>
+  <url>http://www.gnome.org/projects/NetworkManager/</url>
+</package>

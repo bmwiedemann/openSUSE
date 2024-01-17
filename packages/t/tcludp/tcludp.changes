@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Mar 31 17:56:20 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.0.11
+  * generic/udp_tcl.c,tests/*.test:
+    - solved tcl8.6.2 incompatility issue
+      (see http://core.tcl.tk/tcl/tktview/1ff0660e6e)
+    - updated unit tests
+    - added IPV6 support
+    - enhanced reuse option for use on all platforms
+    - refactored get/set option functions
+    - enhanced mcastadd/drop option to be able to specify network
+- Specfile cleanup
+- Use download Url
+
+-------------------------------------------------------------------
+Mon Apr 21 13:55:34 CEST 2008 - max@suse.de
+
+- New bugfix release: 1.0.8.
+  * Use TEA 3.5 to fix some build system problems.
+  * Set the close-on-exec flag for the socket.
+  * Use socklen_t type correctly.
+- Use the new Tcl file system layout.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 14 02:20:22 CET 2005 - ro@suse.de
+
+- fix typo in tcl configure script 
+
+-------------------------------------------------------------------
+Fri Jun 17 14:11:18 CEST 2005 - max@suse.de
+
+- Moved script library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Fri May 20 14:10:10 CEST 2005 - max@suse.de
+
+- New version: 1.0.7.
+
+-------------------------------------------------------------------
+Tue Apr 26 19:39:59 CEST 2005 - max@suse.de
+
+- New package: tcludp - UDP sockets for Tcl.
+

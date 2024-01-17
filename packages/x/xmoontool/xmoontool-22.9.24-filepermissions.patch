@@ -1,0 +1,13 @@
+--- Makefile
++++ Makefile
+@@ -12,8 +12,8 @@
+ 	rm -f xmoontool *.o
+ 
+ install: xmoontool xmoontool.1
+-	install -o root -m 755 -d ${INSTALLBIN}
+-	install -o root -m 755 -d ${INSTALLMAN}
++	install -m 755 -d ${INSTALLBIN}
++	install -m 755 -d ${INSTALLMAN}
+ 	cp xmoontool ${INSTALLBIN}
+ 	chmod 755 ${INSTALLBIN}/xmoontool
+ 	cp xmoontool.1 ${INSTALLMAN}

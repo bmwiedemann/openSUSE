@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Tue Jun  4 15:22:47 UTC 2013 - coolo@suse.com
+
+- updated to 1.23
+  New method Clear()
+  Deleting current element when doing cycle using each will work (test by OLEG, RT#82248)
+
+-------------------------------------------------------------------
+Wed Feb 27 06:22:50 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:07 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:55 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:22 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 15:36:37 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Thu Mar  4 14:47:21 CET 2010 - anicka@suse.cz
+
+- update to 1.22
+ * Build.PL added
+ * Better META.yml
+ * Distribution upgrade
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:59 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 28 22:16:30 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Fri Aug 22 15:54:00 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 13:19:38 CEST 2003 - poeml@suse.de
+
+- use install_vendor and new %perl_process_packlist macro
+
+-------------------------------------------------------------------
+Tue Jun 17 01:30:15 CEST 2003 - ro@suse.de
+
+- added directory to filelist 
+
+-------------------------------------------------------------------
+Mon May 19 12:22:58 CEST 2003 - ro@suse.de
+
+- remove perllocal.pod 
+
+-------------------------------------------------------------------
+Tue May 13 01:41:07 CEST 2003 - ro@suse.de
+
+- use defattr 
+
+-------------------------------------------------------------------
+Thu Aug  8 18:51:27 CEST 2002 - mls@suse.de
+
+- use sitearch macro
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Nov  7 12:50:24 CET 2000 - ro@suse.de
+
+- renamed package perl_tie to perl-Tie-IxHash 
+
+-------------------------------------------------------------------
+Mon Sep 25 14:22:02 CEST 2000 - ro@suse.de
+
+- fixed filelist 
+
+-------------------------------------------------------------------
+Mon Sep 25 14:05:25 CEST 2000 - ro@suse.de
+
+- created package 
+

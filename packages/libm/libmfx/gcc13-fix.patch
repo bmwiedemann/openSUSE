@@ -1,0 +1,66 @@
+From 51b95bb315b0c6b41685641ba60eeef3bda69d1e Mon Sep 17 00:00:00 2001
+From: Dominik 'Rathann' Mierzejewski <dominik@greysector.net>
+Date: Wed, 18 Jan 2023 14:57:44 +0100
+Subject: [PATCH] include <cstdint> explicitly
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Prior to gcc-13 various C++ headers in gcc included `<cstdint>` even
+though it was not strictly necessary; this results in the compiler
+having to parse unnecessary code and thus slows down compilation for
+everyone.  Those unnecessary #includes of `<cstdint>` have been removed
+and applications which need the `<cstdint>` header file need to
+explicitly include it.
+
+Without the patch, when compiling with gcc-13 you will get this error:
+
+```
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp: In function 'std::string MFX::printCodecId(mfxU32)':
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:60:3: error: 'uint8_t' was not declared in this scope
+   60 |   uint8_t* data = reinterpret_cast<uint8_t*>(&id);
+      |   ^~~~~~~
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:29:1: note: 'uint8_t' is defined in header '<cstdint>'; did you forget to '#include <cstdint>'?
+   28 | #include "mfxloader.h"
+  +++ |+#include <cstdint>
+   29 |
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:60:12: error: 'data' was not declared in this scope
+   60 |   uint8_t* data = reinterpret_cast<uint8_t*>(&id);
+      |            ^~~~
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:60:36: error: 'uint8_t' does not name a type
+   60 |   uint8_t* data = reinterpret_cast<uint8_t*>(&id);
+      |                                    ^~~~~~~
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:60:36: note: 'uint8_t' is defined in header '<cstdint>'; did you forget to '#include <cstdint>'?
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:60:43: error: expected '>' before '*' token
+   60 |   uint8_t* data = reinterpret_cast<uint8_t*>(&id);
+      |                                           ^
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:60:43: error: expected '(' before '*' token
+   60 |   uint8_t* data = reinterpret_cast<uint8_t*>(&id);
+      |                                           ^
+      |                                           (
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:60:44: error: expected primary-expression before '>' token
+   60 |   uint8_t* data = reinterpret_cast<uint8_t*>(&id);
+      |                                            ^
+/builddir/build/BUILD/MediaSDK-intel-mediasdk-22.6.4/api/mfx_dispatch/linux/mfxparser.cpp:60:50: error: expected ')' before ';' token
+   60 |   uint8_t* data = reinterpret_cast<uint8_t*>(&id);
+      |                                                  ^
+      |                                                  )
+```
+
+Fixes issue #2954 .
+---
+ api/mfx_dispatch/linux/mfxparser.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/api/mfx_dispatch/linux/mfxparser.cpp b/api/mfx_dispatch/linux/mfxparser.cpp
+index 9d3823ec3e..beea53220c 100644
+--- a/api/mfx_dispatch/linux/mfxparser.cpp
++++ b/api/mfx_dispatch/linux/mfxparser.cpp
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#include <cstdint>
+ #include <list>
+ 
+ #include "mfxloader.h"

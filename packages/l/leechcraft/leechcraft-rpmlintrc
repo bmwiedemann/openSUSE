@@ -1,0 +1,8 @@
+# Adium stuff.
+addFilter("zero-length /usr/share/leechcraft/azoth/styles/adium/.*/Contents/Resources/.*.html");
+# No CD/DVD.
+addFilter("filename-too-long-for-joliet");
+# No linking.
+addFilter("explicit-lib-dependency libQt5Sql5-sqlite");
+# Binary is provided via main package not plugins ones.
+addFilter("desktopfile-without-binary /usr/share/applications/leechcraft-.*.desktop leechcraft");

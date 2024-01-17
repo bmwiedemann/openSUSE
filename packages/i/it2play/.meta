@@ -1,0 +1,9 @@
+<package name="it2play" project="openSUSE:Factory">
+  <title>Bit-accurate C port of Impulse Tracker 2.15's IT replayer</title>
+  <description>Bit-accurate C port of Impulse Tracker 2.15's IT replayer.
+This is a direct port of the original asm source codes.
+
+</description>
+  <devel project="multimedia:apps" package="it2play"/>
+  <url>https://github.com/8bitbubsy/it2play</url>
+</package>

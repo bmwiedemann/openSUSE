@@ -1,0 +1,32 @@
+Index: bindep-2.11.0/bindep/tests/test_main.py
+===================================================================
+--- bindep-2.11.0.orig/bindep/tests/test_main.py
++++ bindep-2.11.0/bindep/tests/test_main.py
+@@ -24,7 +24,10 @@ from fixtures import FakeLogger
+ from fixtures import Fixture
+ from fixtures import MonkeyPatch
+ from fixtures import TempDir
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ from testtools import TestCase
+ 
+ from bindep.__main__ import main
+Index: bindep-2.11.0/bindep/tests/test_depends.py
+===================================================================
+--- bindep-2.11.0.orig/bindep/tests/test_depends.py
++++ bindep-2.11.0/bindep/tests/test_depends.py
+@@ -23,7 +23,10 @@ from textwrap import dedent
+ 
+ import distro
+ import fixtures
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import ometa.runtime
+ from testtools import ExpectedException
+ from testtools.matchers import Contains

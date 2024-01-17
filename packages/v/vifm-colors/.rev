@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9069c641eef4b7cea03b1af923da2dad</srcmd5>
+    <version>0.8</version>
+    <time>1442638489</time>
+    <user>coolo</user>
+    <comment>Themes package for vifm file manager.</comment>
+    <requestid>331035</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>640e6796258f9da5c548826e22557c9b</srcmd5>
+    <version>0.8</version>
+    <time>1467705101</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406001</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f29ef30e83e4c14e5a0217b468e11cd3</srcmd5>
+    <version>0.8.2</version>
+    <time>1472026149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>421377</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d99bcee90f9462f39e56bb81e7082865</srcmd5>
+    <version>0.9</version>
+    <time>1497944467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9:
+  * Add new color scheme: lucius (Thanks francogonzaga)
+  * Add new color scheme: SemiDarkDesert (Thanks clausED)
+  * Add new color scheme: near-default (Thanks xaizek)
+  * Clean up info in README</comment>
+    <requestid>504779</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8fb81299e1feb51b10b16dc4412fc873</srcmd5>
+    <version>0.10</version>
+    <time>1601044567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10:
+  * Add new color scheme: dwmlight (Thanks satsaeid)
+  * Add new color scheme: solorized-light (Thanks ayroblu)
+  * Add new color scheme: palenight (Thanks mroavi)
+  * Add new color scheme: onedark (Thanks mroavi)
+  * Add new color scheme: gruvbox (Thanks laur89)
+  * Add new color scheme: iceberg (Thanks puven12)
+  * Add new color scheme: dracula (Thanks EgZvor)
+  * Add new color scheme: molokai (Thanks mimadrid)
+  * Add missing :highlight clear to:
+    - lucius
+    - reicheltd-light</comment>
+    <requestid>837212</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b76c0ed8c18867ad3882aaeeb68a5b6d</srcmd5>
+    <version>0.11</version>
+    <time>1625777358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11:
+  * Add new color scheme: sandy
+  * Update mc-like color theme
+  * Add PaperColor light/dark
+  * Update solarized-dark theme</comment>
+    <requestid>904730</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed15fca584d64b73334d620b7d3ae683</srcmd5>
+    <version>0.12</version>
+    <time>1663596196</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12:
+  Add new color scheme: ansa
+  Add new color scheme: monochrome
+  Add new color scheme: crown_24bit
+  Add new color scheme: nord
+  Add new color scheme: fargo
+  Add new color scheme: paper</comment>
+    <requestid>1004518</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6a7673c20dc4d346eab029ca8f0eb55c</srcmd5>
+    <version>0.13</version>
+    <time>1703102609</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.13:
+  * Add new color scheme: truedark
+  * Add new color scheme: afterglow
+  * Fix invalid cterm=default in astrell.vifm
+
+  * Add new color scheme: ansa
+  * Add new color scheme: monochrome
+  * Add new color scheme: crown_24bit
+  * Add new color scheme: nord
+  * Add new color scheme: fargo
+  * Add new color scheme: paper</comment>
+    <requestid>1134278</requestid>
+  </revision>
+</revisionlist>

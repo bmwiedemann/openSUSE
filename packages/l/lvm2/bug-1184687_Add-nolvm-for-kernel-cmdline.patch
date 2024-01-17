@@ -1,0 +1,46 @@
+From 6ebef9ad80ee156285a61d413b5265de9c0aa2ae Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Wed, 21 Apr 2021 11:17:36 +0800
+Subject: [PATCH] Add "nolvm" for kernel cmdline
+
+This patch is inspried by multipath patch cd3184e107c8 ("Add
+support for "multipath=off" and "nompath" on kernel cmdline")
+
+This new item for disabling lvm2 startup from kernel command
+line. One of usecases is in rescue mode, disabling lvm2 will
+allow user to enable lvm2 devices by manual.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+
+2023-09-07:
+The file udev/69-dm-lvm-metad.rules.in has been removed since v2_03_19.
+So remove the change of above file. 
+
+Signed-off-by: Glass Su <glass.su@suse.com>
+
+---
+
+diff -Nupr a/scripts/lvm2-pvscan.service.in b/scripts/lvm2-pvscan.service.in
+--- a/scripts/lvm2-pvscan.service.in	2022-09-02 14:05:03.706825230 +0800
++++ b/scripts/lvm2-pvscan.service.in	2022-09-02 14:04:09.115063287 +0800
+@@ -7,6 +7,7 @@ BindsTo=dev-block-%i.device
+ After=multipathd.service
+ Before=shutdown.target
+ Conflicts=shutdown.target
++ConditionKernelCommandLine=!nolvm
+ 
+ [Service]
+ Type=oneshot
+diff -Nupr a/udev/69-dm-lvm.rules.in b/udev/69-dm-lvm.rules.in
+--- a/udev/69-dm-lvm.rules.in	2022-09-02 14:04:51.074880312 +0800
++++ b/udev/69-dm-lvm.rules.in	2022-09-02 14:07:19.978230990 +0800
+@@ -10,6 +10,9 @@ SUBSYSTEM!="block", GOTO="lvm_end"
+ 
+ ENV{DM_UDEV_DISABLE_OTHER_RULES_FLAG}=="1", GOTO="lvm_end"
+ 
++IMPORT{cmdline}="nolvm"
++ENV{nolvm}=="?*", GOTO="lvm_end"
++
+ # Only process devices already marked as a PV - this requires blkid to be called before.
+ ENV{ID_FS_TYPE}!="LVM2_member", GOTO="lvm_end"
+ ENV{DM_MULTIPATH_DEVICE_PATH}=="1", GOTO="lvm_end"

@@ -1,0 +1,12 @@
+<package name="monitoring-plugins-bind9" project="openSUSE:Factory">
+  <title>Nagios BIND9 Monitoring Plugin</title>
+  <description>Nagios Plugins for BIND9 and DNS resolver monitoring. The check_bind9.pl plugin
+expects to run on the host running BIND.
+
+Please run it with --help to see where it expects to find a variety of files
+and commands, and the options you are likely to require to provide.
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-bind9"/>
+  <url>https://github.com/thorfi/nagios-bind9-plugin</url>
+</package>

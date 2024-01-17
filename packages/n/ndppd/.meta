@@ -1,0 +1,13 @@
+<package name="ndppd" project="openSUSE:Factory">
+  <title>NDP Proxy Daemon</title>
+  <description>ndppd is a daemon that proxies certain IPv6 NDP messages between two or more
+interfaces. It currently supports proxying Neighbor Solicitation Messages
+and Neighbor Advertisement messages in order to allow IPv6 routing without
+relying on Linux &quot;proxy_ndp&quot;.
+
+The daemon is partially compliant with (experimental) RFC4389. 
+
+</description>
+  <devel project="network" package="ndppd"/>
+  <url>https://github.com/DanielAdolfsson/ndppd</url>
+</package>

@@ -1,0 +1,33 @@
+From cb467471b31cd653e758bc3f82fffe7c44654796 Mon Sep 17 00:00:00 2001
+From: Marius Tomaschewski <mt@suse.com>
+Date: Fri, 11 Nov 2022 14:50:12 +0100
+References: https://github.com/FRRouting/frr/pull/12308
+Upstream: submitted
+Subject: [PATCH] pam: declare root as sufficient frr pam account
+
+https://github.com/FRRouting/frr/pull/11465 enabled account verification,
+but the pam config declares rootok as sufficient in authentication only
+and not in account verification, what causes warning in the log:
+
+vtysh[3747]: pam_warn(frr:account): function=[pam_sm_acct_mgmt]
+             flags=0 service=[frr] terminal=[<unknown>] user=[root]
+	     ruser=[<unknown>] rhost=[<unknown>]
+---
+ redhat/frr.pam | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/redhat/frr.pam b/redhat/frr.pam
+index 5cef5d9d74..17a62f1999 100644
+--- a/redhat/frr.pam
++++ b/redhat/frr.pam
+@@ -5,6 +5,7 @@
+ # Only allow root (and possibly wheel) to use this because enable access
+ # is unrestricted.
+ auth       sufficient   pam_rootok.so
++account    sufficient   pam_rootok.so
+ 
+ # Uncomment the following line to implicitly trust users in the "wheel" group.
+ #auth       sufficient   pam_wheel.so trust use_uid
+-- 
+2.35.3
+

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6ab1ed0ca9a2edf06e78dbd6f16122a</srcmd5>
+    <version>1.5.0</version>
+    <time>1527933594</time>
+    <user>dimstar_suse</user>
+    <comment>Persistent dict in Python, backed up by sqlite3</comment>
+    <requestid>612044</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>baaa6a7237be33f9c2dc2744e83e8638</srcmd5>
+    <version>1.5.0</version>
+    <time>1533045681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626391</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f4850dff06b39d05ce95befa4bccb2d4</srcmd5>
+    <version>1.5.0</version>
+    <time>1545648279</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659698</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6be0fead5e564e93491eb2eaedcd0f59</srcmd5>
+    <version>1.6.0</version>
+    <time>1554977856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693000</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f91698320ad19b08afff7650d557d61d</srcmd5>
+    <version>1.6.0</version>
+    <time>1576062835</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on full python stack for sqlite</comment>
+    <requestid>755738</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d4cafdf7db77f1a75d7543e4872070ea</srcmd5>
+    <version>1.6.0</version>
+    <time>1591990686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811144</requestid>
+  </revision>
+</revisionlist>

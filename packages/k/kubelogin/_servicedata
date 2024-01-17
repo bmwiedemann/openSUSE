@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/Azure/kubelogin.git</param>
+              <param name="changesrevision">0fcd072d45250a50cde855cf50204ad2dc784095</param></service></servicedata>

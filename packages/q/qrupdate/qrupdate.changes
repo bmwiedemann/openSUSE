@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Tue Dec 10 14:38:11 UTC 2013 - sweet_f_a@gmx.de
+
+- Update to version 1.1.2
+  * Fix fast return conditions for out-of-bounds row.
+
+-------------------------------------------------------------------
+Fri May 11 05:31:48 UTC 2012 - scorot@free.fr
+
+- remove conditional BuildRequires for blas and lapack since
+  recent lapack now build correctly for all suse version 
+
+-------------------------------------------------------------------
+Wed May  2 07:01:27 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-3.0+
+  No GPL-3.0 (only) code found in package
+
+-------------------------------------------------------------------
+Sat Apr 14 04:30:49 UTC 2012 - badshah400@gmail.com
+
+- Update BuildRequires in keeping with lapack package naming
+  changes
+- Spec file cleanups including modifying License in keeping with
+  spdx.org specifications
+- Make devel package Require shared lib = %{version} instead of
+  %{version}-%{release}.
+
+-------------------------------------------------------------------
+Wed Oct  5 12:04:32 UTC 2011 - pgajdos@suse.com
+
+- package updated to version 1.1.1
+
+-------------------------------------------------------------------
+Wed Oct  5 12:04:00 UTC 2011 - pgajdos@suse.com
+
+- package copyed from home:ars3niy:octave
+- dependency of octave
+

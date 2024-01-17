@@ -1,0 +1,13 @@
+<package name="conntrack-tools" project="openSUSE:Factory">
+  <title>Userspace tools for interacting with the Connection Tracking System</title>
+  <description>The conntrack-tools are a set of tools targeted at system
+administrators. They are conntrack, the userspace command line
+interface, and conntrackd, the userspace daemon. The tool conntrack
+provides a full featured interface that has replaced the old procfs
+interface. Using conntrack, you can view and manage the in-kernel
+connection tracking state table from userspace. On the other hand,
+conntrackd covers the specific aspects of stateful firewalls to
+enable highly available scenarios, and can be used as statistics
+collector as well.</description>
+  <devel project="security:netfilter" package="conntrack-tools"/>
+</package>

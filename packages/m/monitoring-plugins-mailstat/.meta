@@ -1,0 +1,12 @@
+<package name="monitoring-plugins-mailstat" project="openSUSE:Factory">
+  <title>Monitoring mail server statistics</title>
+  <description>This plugin includes a patch for mailgraph so that it will also output its
+statistics counter to an external file(plus the rra file),and a
+check_mailstat.pl which check the stat counter to see if it’s ok, emit
+WARN/CRITICAl result if not.It can run on nagios server, or on remote server
+via NRPE.
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-mailstat"/>
+  <url>http://linuxplayer.org/2010/12/check_mailstat-pl-a-nagios-plugin-for-monitoring-mail-server-statistics</url>
+</package>

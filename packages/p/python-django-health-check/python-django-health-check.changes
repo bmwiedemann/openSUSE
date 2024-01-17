@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Mon May  9 10:16:02 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/KristianOellegaard/django-health-check/issues/323
+  + python-django-health-check-no-mock.patch
+
+-------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
+Sun Dec 26 12:08:51 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use django-codemod to finish Django 4 compatibility
+- Update to 3.16.5
+  * Fix default_app_config RemovedInDjango41Warning warning
+  * Fix Django 4 Exception 'never_cache didn't receive an HttpRequest'
+- from v3.16.4
+  * Add default_auto_field to satisfy Django 4.0
+- from v3.16.2
+  * Fix text alignment for time column in Safari
+- from v3.16.1
+  * Fix Celery ping health check functionality with multiple workers
+- from v3.16.0
+  * Add second celery health chat that uses ping instead of executing a task
+- from v3.15.0
+  * Split celery timeout into two separate settings
+- from v3.14.3
+  * Use default cache timeout instead of 1s
+- from v3.14.2
+  * Resolve Django 4.0 deprecation warnings
+- from v3.14.1
+  * Revert "Clean results task Health Check"
+
+-------------------------------------------------------------------
+Thu Sep 17 10:41:14 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Workaround upstream packaging problem omitting sub-packages
+  and templates
+
+-------------------------------------------------------------------
+Thu Sep 17 08:42:06 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.14.0
+  * Register health check for each cache configuration
+- from v3.13.2
+  * Add backend checking if all migrations are applied
+- from v3.12.2
+  * Close all (even non default) db connections after check suite
+
+-------------------------------------------------------------------
+Wed Sep  2 09:18:12 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Fix test execution
+
+-------------------------------------------------------------------
+Thu Feb 20 08:20:25 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.12.1:
+  * Add health_check Django command (CLI) (#217, #234)
+
+-------------------------------------------------------------------
+Tue Nov  5 11:02:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.11.1:
+  * Resolve #232 -- Change license information to MIT
+
+-------------------------------------------------------------------
+Tue Oct 29 07:49:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, will be needed by ara

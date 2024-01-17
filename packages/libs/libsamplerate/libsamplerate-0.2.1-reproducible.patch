@@ -1,0 +1,12 @@
+Index: libsamplerate-0.2.1/Makefile.am
+===================================================================
+--- libsamplerate-0.2.1.orig/Makefile.am
++++ libsamplerate-0.2.1/Makefile.am
+@@ -91,7 +91,6 @@ TESTS = \
+ 	tests/simple_test \
+ 	tests/snr_bw_test \
+ 	tests/termination_test \
+-	tests/throughput_test \
+ 	tests/varispeed_test
+ 
+ check_PROGRAMS = \

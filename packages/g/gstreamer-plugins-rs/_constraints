@@ -1,0 +1,56 @@
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">30</size>
+    </disk>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">27</size>
+      </disk>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">27</size>
+      </disk>
+      <memory>
+        <size unit="G">16</size>
+      </memory>
+    </hardware>
+  </overwrite>  
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">23</size>
+      </disk>
+      <memory>
+        <size unit="G">10</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">23</size>
+      </disk>
+      <memory>
+        <size unit="G">10</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

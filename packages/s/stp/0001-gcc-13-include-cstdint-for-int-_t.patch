@@ -1,0 +1,28 @@
+From 46fde27d3274e84414a55c80231628f9a86c188e Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Wed, 22 Mar 2023 10:22:16 +0100
+Subject: [PATCH] [gcc 13] include cstdint for *int*_t
+References: https://github.com/stp/stp/pull/462
+
+Otherwise we see errors like this with gcc13:
+include/stp/AST/ASTNode.h:77:3: error: 'uint8_t' does not name a type
+---
+ include/stp/AST/ASTNode.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/stp/AST/ASTNode.h b/include/stp/AST/ASTNode.h
+index e05f8925..a05c15d6 100644
+--- a/include/stp/AST/ASTNode.h
++++ b/include/stp/AST/ASTNode.h
+@@ -24,6 +24,8 @@ THE SOFTWARE.
+ #ifndef ASTNODE_H
+ #define ASTNODE_H
+ 
++#include <cstdint>
++
+ #include "stp/NodeFactory/HashingNodeFactory.h"
+ #include "stp/Util/Attributes.h"
+ #include "ASTInternal.h"
+-- 
+2.35.3
+

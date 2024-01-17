@@ -1,0 +1,9 @@
+<package name="linux-glibc-devel" project="openSUSE:Factory">
+  <title>Linux headers for userspace development</title>
+  <description>This package provides Linux kernel headers, the kernel API description
+required for compilation of almost all programs. This is the userspace
+interface; compiling external kernel modules requires
+kernel-(flavor)-devel, or kernel-syms to pull in all kernel-*-devel,
+packages, instead.</description>
+  <devel project="Base:System" package="linux-glibc-devel"/>
+</package>

@@ -1,0 +1,214 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a654e75a9202f396307c907fa8644eac</srcmd5>
+    <version>1.3b2</version>
+    <time>1332416358</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109053</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4da4570983fdeda1d50d8c8db016e685</srcmd5>
+    <version>1.3b3</version>
+    <time>1333355453</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111816</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4da4570983fdeda1d50d8c8db016e685</srcmd5>
+    <version>1.3b3</version>
+    <time>1340184083</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4da4570983fdeda1d50d8c8db016e685</srcmd5>
+    <version>1.3b3</version>
+    <time>1359110101</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>3002eed0686c4c468edbe9c317e30cce</srcmd5>
+    <version>1.3b3</version>
+    <time>1362732482</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 156922 from coolo)</comment>
+    <requestid>157555</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>3002eed0686c4c468edbe9c317e30cce</srcmd5>
+    <version>1.3b3</version>
+    <time>1379664258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>88c5301d7ae38f5542b179e04173168d</srcmd5>
+    <version>1.4.5</version>
+    <time>1391376097</time>
+    <user>coolo</user>
+    <comment>indicate patch removal (forwarded request 208358 from posophe)</comment>
+    <requestid>208359</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>88c5301d7ae38f5542b179e04173168d</srcmd5>
+    <version>1.4.5</version>
+    <time>1409302962</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7e51ce2c6d00cd9e306d7819ccac76f5</srcmd5>
+    <version>1.5.2</version>
+    <time>1423258700</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284521</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>80369c7b6c52cb565e350e351469ab7f</srcmd5>
+    <version>1.5.7</version>
+    <time>1438750307</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320172</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ac820baa76e4094d3523858baaf611e5</srcmd5>
+    <version>1.6</version>
+    <time>1452122688</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352107</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a38886b19411dab562dcb47c9c612d66</srcmd5>
+    <version>1.9.1</version>
+    <time>1506524057</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523279</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>308f184e7cef59e9fb0092e064ea39fb</srcmd5>
+    <version>1.9.1</version>
+    <time>1508316621</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532998</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8309dd0aae7acaaf0cc63ebc3bf3b797</srcmd5>
+    <version>1.10.4</version>
+    <time>1561195478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711308</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e2086909908f8fdc41a0df848728d68f</srcmd5>
+    <version>1.10.4</version>
+    <time>1584350441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785398</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0d05c02cf42623a4d2f7a3ce2d1c30ee</srcmd5>
+    <version>1.10.4</version>
+    <time>1584447134</time>
+    <user>dimstar_suse</user>
+    <comment>- Match up all the deps to the reality</comment>
+    <requestid>785887</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>77768ce5ae45901e901e57878a0b80c3</srcmd5>
+    <version>1.10.4</version>
+    <time>1593727898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818272</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d6e54b2fe19f347ace4c1b6e79c1f053</srcmd5>
+    <version>1.10.4</version>
+    <time>1598885503</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conditionaling of bcond with_python2 as it ain't needed
+</comment>
+    <requestid>830693</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6fc91d0d290f9d6dafc4eb8e3aa34df2</srcmd5>
+    <version>2.0</version>
+    <time>1628023737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909945</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>36437bfd9099428c08c7068510a739ba</srcmd5>
+    <version>2.0.1</version>
+    <time>1676911566</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * Add support for Python 3.10 and 3.11.
+  * Copy __name__ from decorated attribute when using pyramid.decorator.reify.
+  * Fix method signatures in docs for
+    pyramid.config.Configurator.add_static_view and
+    pyramid.config.Configurator.override_asset.
+  * Remove obsolete stackframe hack used in Python 3.5.0 when showing
+    configurator conflict errors.
+  * Fix an error when injecting certain objects into the pshell env due to
+    the use of !=.
+  * Pyramid drops support for l*gettext() methods in the i18n module. These
+    have been deprecated in Python's gettext module since 3.8, and removed
+    in Python 3.11.
+  * Avoid setDaemon(True) deprecation warning by updating threading API
+    usage to .daemon = True.</comment>
+    <requestid>1066679</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f92772272964d0e4c3ed6f0d05e62199</srcmd5>
+    <version>2.0.1</version>
+    <time>1686576342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092227</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6ea3a7b0b28756971d8b00b81ff855b9</srcmd5>
+    <version>2.0.2</version>
+    <time>1704281453</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Removed support for null-bytes in the path when making a
+    request for a file
+  * Backward Incompatibilities - Requests to a static_view are no
+    longer allowed to contain a null-byte in any
+
+    usage to .daemon = True.
+  * The authentication and authorization policies of Pyramid 1.x have been
+    merged into a single security policy in Pyramid 2.0. New security APIs
+  * It is now possible to control whether a route pattern contains
+  * Deprecated the authentication and authorization interfaces and
+    principal-based support.
+  * Deprecated several ACL-related aspects of pyramid.security. Equivalent
+- Remove python2 support, due to pyton-venusian being only python3
+- use the PyPI tarball instead of github
+    This should mitigate attacks from Flash (See CVE-2014-4671).
+  * Fix regression where pserve --reload would not work when running as a daemon.
+    command, introduced the method column for displaying available request methods, and
+    improved the view output by showing the module instead of just __repr__.
+    tables creation.  See https://github.com/Pylons/pyramid/pull/1049.  Backport
+    http-related exceptions when you wanted that exception view to override the
+  + When the ``pyramid.reload_templates`` setting was true, and a Chameleon
+    template was reloaded, and the renderer specification named a macro
+    was reloaded due to a file change would produce the entire template body
+    instead of just a rendering of the macro.  See
+  + Fix an obscure problem when combining a virtual root with a route with a</comment>
+    <requestid>1136288</requestid>
+  </revision>
+</revisionlist>

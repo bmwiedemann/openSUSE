@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1d2947a2e3da0483b61cc84e45cc61d1</srcmd5>
+    <version>0.2.2</version>
+    <time>1562247754</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>712771</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>81e4be0ea3c75f2f04fe8566248abf3b</srcmd5>
+    <version>0.3.4</version>
+    <time>1572443332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.4:
+  * Commandline interface redesign
+  * Update for new django releases
+  * Various test fixes</comment>
+    <requestid>744145</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>920d910dd29860d32269d6b600f7597b</srcmd5>
+    <version>0.3.5</version>
+    <time>1578606698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.5:
+  * Added settings MINIO_STORAGE_ASSUME_MEDIA_BUCKET_EXISTS and
+    MINIO_STORAGE_ASSUME_STATIC_BUCKET_EXISTS</comment>
+    <requestid>762084</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b31c2d6e8b643e09d549f63e7a27266</srcmd5>
+    <version>0.3.7</version>
+    <time>1586248080</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.7:
+  * no changelog</comment>
+    <requestid>791485</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7137e638d3215be3828d07a19debea8d</srcmd5>
+    <version>0.3.10</version>
+    <time>1608634320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857978</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>31f62cbb7a8ddaae6bc8d326136256b6</srcmd5>
+    <version>0.5.0</version>
+    <time>1682368265</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Switched the minio-py client library version from `&lt;7` to
+    `&gt;=7`.
+  * Minimum Django version is now 3.2
+  * Minimum Python version is now 3.8</comment>
+    <requestid>1082317</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e3c1149a4b5d426a6f1e87ee6632c873</srcmd5>
+    <version>0.5.2</version>
+    <time>1683559452</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.2:
+  * Add/fix more type hints.
+  * Fix type hints</comment>
+    <requestid>1085339</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1a88cb7bb622f9f35279e5522bd3bfc</srcmd5>
+    <version>0.5.3</version>
+    <time>1684415995</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.3:
+  * This is an package metadata only update.</comment>
+    <requestid>1087755</requestid>
+  </revision>
+</revisionlist>

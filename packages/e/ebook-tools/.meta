@@ -1,0 +1,5 @@
+<package name="ebook-tools" project="openSUSE:Factory">
+  <title>A library for reading ebook files</title>
+  <description>ebook-tools provides some tools to handle ebook files</description>
+  <devel project="KDE:Extra" package="ebook-tools"/>
+</package>

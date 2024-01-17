@@ -1,0 +1,6 @@
+<package name="python-linstor" project="openSUSE:Factory">
+  <title>git project linstor-api-py</title>
+  <description>LINSTOR Python API required by linstor-client.
+https://github.com/LINBIT/linstor-api-py</description>
+  <devel project="network:ha-clustering:Factory" package="python-linstor"/>
+</package>

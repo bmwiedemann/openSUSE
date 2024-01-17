@@ -1,0 +1,81 @@
+Index: mjpegtools-2.2.0/lavtools/lavvideo.c
+===================================================================
+--- mjpegtools-2.2.0.orig/lavtools/lavvideo.c	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/lavtools/lavvideo.c	2021-05-11 12:24:57.188741183 +0200
+@@ -63,7 +63,7 @@ Copyright by Gernot Ziegler.
+  * errors here, check your linux/time.h && sys/time.h header setup.
+  */
+ #define _LINUX_TIME_H
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ 
+ #include <videodev_mjpeg.h>
+ #include <frequencies.h>
+Index: mjpegtools-2.2.0/lavtools/liblavplay.c
+===================================================================
+--- mjpegtools-2.2.0.orig/lavtools/liblavplay.c	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/lavtools/liblavplay.c	2021-05-11 12:24:57.188741183 +0200
+@@ -68,7 +68,8 @@
+  * errors here, check your linux/time.h && sys/time.h header setup.
+  */
+ #define _LINUX_TIME_H
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
++#define BASE_VIDIOCPRIVATE  192     /* 192-255 are private */
+ #else
+ #define VIDEO_MODE_PAL		0
+ #define VIDEO_MODE_NTSC		1
+Index: mjpegtools-2.2.0/lavtools/liblavrec.c
+===================================================================
+--- mjpegtools-2.2.0.orig/lavtools/liblavrec.c	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/lavtools/liblavrec.c	2021-05-11 12:25:27.076907401 +0200
+@@ -63,7 +63,9 @@
+  * errors here, check your linux/time.h && sys/time.h header setup.
+  */
+ #define _LINUX_TIME_H
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
++#include <linux/videodev2.h>
++#define BASE_VIDIOCPRIVATE  192     /* 192-255 are private */
+ #ifdef HAVE_SYS_SOUNDCARD_H
+ #include <sys/soundcard.h>
+ #endif
+Index: mjpegtools-2.2.0/lavtools/testrec.c
+===================================================================
+--- mjpegtools-2.2.0.orig/lavtools/testrec.c	2021-02-11 07:02:26.000000000 +0100
++++ mjpegtools-2.2.0/lavtools/testrec.c	2021-05-11 12:24:57.192741206 +0200
+@@ -89,7 +89,7 @@
+  * errors here, check your linux/time.h && sys/time.h header setup.
+  */
+ #define _LINUX_TIME_H
+-#include <linux/videodev.h>
++#include <libv4l1-videodev.h>
+ #include <linux/soundcard.h>
+ 
+ /* These are explicit prototypes for the compiler, to prepare separation of audiolib.c */
+Index: mjpegtools-2.2.0/configure.ac
+===================================================================
+--- mjpegtools-2.2.0.orig/configure.ac	2021-02-11 06:09:59.000000000 +0100
++++ mjpegtools-2.2.0/configure.ac	2021-05-11 12:24:57.192741206 +0200
+@@ -153,7 +153,7 @@ AC_ARG_WITH([v4l], AC_HELP_STRING([--wit
+ AS_IF([test "x$with_v4l" != "xno"], [
+ case $host in
+   *-*-linux*)
+-  AC_CHECK_HEADER(linux/videodev.h,
++  AC_CHECK_HEADER(libv4l1-videodev.h,
+                   [have_video4linux=true
+                    AC_DEFINE(HAVE_V4L, 1,
+ 		             [Building for Linux - using the video4linux API])], [])
+Index: mjpegtools-2.2.0/configure
+===================================================================
+--- mjpegtools-2.2.0.orig/configure	2021-02-11 06:23:37.000000000 +0100
++++ mjpegtools-2.2.0/configure	2021-05-11 12:24:57.192741206 +0200
+@@ -17764,7 +17764,7 @@ if test "x$with_v4l" != "xno"; then :
+ 
+ case $host in
+   *-*-linux*)
+-  ac_fn_c_check_header_mongrel "$LINENO" "linux/videodev.h" "ac_cv_header_linux_videodev_h" "$ac_includes_default"
++  ac_fn_c_check_header_mongrel "$LINENO" "libv4l1-videodev.h" "ac_cv_header_linux_videodev_h" "$ac_includes_default"
+ if test "x$ac_cv_header_linux_videodev_h" = xyes; then :
+   have_video4linux=true
+ 

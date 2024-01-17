@@ -1,0 +1,7 @@
+<package name="qnapi" project="openSUSE:Factory">
+  <title>A NAPI-PROJEKT client</title>
+  <description>QNapi is unofficial clone of NAPI-PROJEKT program (http://napiprojekt.pl)
+written using Qt5. It's focused to be functional on GNU/Linux and other
+Unix-like systems, for which NAPI-PROJEKT is not available.</description>
+  <devel project="KDE:Extra" package="qnapi"/>
+</package>

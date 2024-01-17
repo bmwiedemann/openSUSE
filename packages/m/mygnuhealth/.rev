@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e8182e18eecd2e5e5c607cf3ded170a5</srcmd5>
+    <version>1.0.0</version>
+    <time>1624626077</time>
+    <user>dimstar_suse</user>
+    <comment>version 1.0</comment>
+    <requestid>901770</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6308b5708ab779206328a572c09e6b6b</srcmd5>
+    <version>1.0.1</version>
+    <time>1625777364</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.0.1
+* Fix the download path within GNU.org. Now it points to
+  https://ftp.gnu.org/gnu/health/mygnuhealth/
+* Include Changelog file
+* Include local / offline documentation (resides on
+  /usr/share/doc/packages/mygnuhealth) 
+* doc_path.diff added
+* Clean up __pycache__ from tarball 
+</comment>
+    <requestid>905077</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>366c9dd1a111c05a38fd4051ee847252</srcmd5>
+    <version>1.0.2</version>
+    <time>1626386429</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.0.2
+* MyGNUHealth does not display global menu on MATE
+* Update link from GNU Savannah 
+</comment>
+    <requestid>906398</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fcc319c0c212b3ed5a508aa4494f4237</srcmd5>
+    <version>1.0.3</version>
+    <time>1627236559</time>
+    <user>dimstar_suse</user>
+    <comment>- version 1.0.3
+* update of Uniprot-database
+* some minor changes / updates in the documentation and credits
+</comment>
+    <requestid>908147</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e58032e80f05fa75f803b75aa96e728e</srcmd5>
+    <version>1.0.4</version>
+    <time>1629795294</time>
+    <user>dimstar_suse</user>
+    <comment>- version 1.0.4
+* fixes plotting issues when matplotlib uses unsorted records or dup
+  batch inputs.
+</comment>
+    <requestid>913871</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3149c1d0ba6c4c877169e44dfec7a984</srcmd5>
+    <version>1.0.5</version>
+    <time>1634677434</time>
+    <user>dimstar_suse</user>
+    <comment>version 1.0.5
+the _link needed to be removed as the .spec file got out of sync</comment>
+    <requestid>926158</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fd5f23515ff24ed827e52122d36ee7f1</srcmd5>
+    <version>1.0.5</version>
+    <time>1647031298</time>
+    <user>dimstar_suse</user>
+    <comment>license string corrected</comment>
+    <requestid>961068</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a54474c2b67a2811ae367e558124908</srcmd5>
+    <version>2.0.0</version>
+    <time>1696188135</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114438</requestid>
+  </revision>
+</revisionlist>

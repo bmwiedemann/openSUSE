@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sat Nov 19 03:15:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.10
+  * Build system changes only
+
+-------------------------------------------------------------------
+Wed Nov 14 23:33:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.5.6
+  * Fix crash in the gpmakefsa tools, used e.g. by
+    AutomaticStructure (long-standing bug in kbmag which was
+    exposed by modern compiler optimizing more aggressively)
+
+-------------------------------------------------------------------
+Fri Sep  8 17:49:14 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream 1.5.4
+  * Stop accessing the obsolete global variable `Revision`
+  * Other minor internal cleanup
+
+-------------------------------------------------------------------
+Fri Mar 11 23:15:21 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 1.5.3) for build.opensuse.org

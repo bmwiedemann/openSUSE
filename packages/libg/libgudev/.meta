@@ -1,0 +1,5 @@
+<package name="libgudev" project="openSUSE:Factory">
+  <title>This library provides GObject bindings for libudev</title>
+  <description>This library provides GObject bindings for libudev. It was originally part of udev-extras, then udev, then systemd. It's now a project on its own.</description>
+  <devel project="Base:System" package="libgudev"/>
+</package>

@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Wed Jan  3 09:43:39 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Tue May 23 22:54:06 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+
+-------------------------------------------------------------------
+Fri Apr 21 12:22:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Thu Mar 24 07:28:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+ - Handle RSASSA-PSS in `keys.PrivateKeyInfo.bit_size` and
+   `keys.PublicKeyInfo.bit_size`
+ - Handle RSASSA-PSS in `keys.PrivateKeyInfo.wrap` and
+   `keys.PublicKeyInfo.wrap`
+ - Updated docs for `keys.PrivateKeyInfo.algorithm` and
+   `keys.PublicKeyInfo.algorithm` to reflect that they can return
+   `"rsassa_pss"`
+ - Fix `tsp.TimeStampAndCRL` to be a `core.Sequence` instead of a
+   `core.SequenceOf` *via @joernheissler*
+ - Added OIDs for Edwards curves from RFC 8410 - via @MatthiasValvekens
+ - Fixed convenience attributes on `algos.EncryptionAlgorithm` when the
+   algorithm is RC2 *via @joernheissler*
+ - Added Microsoft OIDs `microsoft_enrollment_csp_provider`
+   (`1.3.6.1.4.1.311.13.2.2`), `microsoft_os_version`
+   (`1.3.6.1.4.1.311.13.2.3`) and `microsoft_request_client_info`
+   (`1.3.6.1.4.1.311.21.20`)
+   to `csr.CSRAttributeType` along with supporting extension structures
+   *via @qha*
+ - Added Microsoft OID `microsoft_enroll_certtype` (`1.3.6.1.4.1.311.20.2`)
+   to `x509.ExtensionId` *via @qha*
+ - Fixed a few bugs with parsing indefinite-length encodings *via @davidben*
+ - Added various bounds checks to parsing engine *via @davidben*
+ - Fixed a bug with tags not always being minimally encoded *via @davidben*
+ - Fixed `cms.RoleSyntax`, `cms.SecurityCategory` and `cms.AttCertIssuer` to
+   have explicit instead of implicit tagging *via @MatthiasValvekens*
+ - Fixed tagging of, and default value for fields in `cms.Clearance` *via
+   @MatthiasValvekens*
+ - Fixed calling `.dump(force=True)` when the value has undefined/unknown
+   `core.Sequence` fields. Previously the value would be truncated, now
+   the existing encoding is preserved.
+ - Added sMIME capabilities (`1.2.840.113549.1.9.15`) support from RFC 2633
+   to `cms.CMSAttribute` *via Hellzed*
+
+-------------------------------------------------------------------
+Mon May 24 12:20:00 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Thu Aug 20 12:41:38 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.4.0
+ * core.ObjectIdentifier and all derived classes now obey X.660 §7.6
+   and thus restrict the first arc to 0 to 2, and the second arc to less
+   than 40 if the first arc is 0 or 1. This also fixes parsing of OIDs where
+   the first arc is 2 and the second arc is greater than 39.
+ * Fixed keys.PublicKeyInfo.bit_size to return an int rather than a float
+   on Python 3 when working with elliptic curve keys
+ * Fixed the asn1crypto-tests sdist on PyPi to work properly to generate a .whl
+
+-------------------------------------------------------------------
+Fri Jan 17 12:41:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.3.0
+  * Added encrypt_key_pref to cms.CMSAttributeType(), along with related structures
+  * Added Brainpool curves from RFC 5639 to keys.NamedCurve()
+  * Fixed x509.Certificate().subject_directory_attributes_value
+  * Fixed some incorrectly computed minimum elliptic curve primary key encoding sizes in keys.NamedCurve()
+  * Fixed a TypeError when trying to call .untag() or .copy() on a core.UTCTime()
+    or core.GeneralizedTime(), or a value containing one, when using Python 2
+  * Added asn1crypto.load_order(), which returns a list of unicode strings of the names
+    of the fully-qualified module names for all of submodules of the package. The module
+    names are listed in their dependency load order. This is primarily intended
+    for the sake of implementing hot reloading.
+  * Added User ID to x509.NameType()
+  * Added various EC named curves to keys.NamedCurve()
+  * Fix an absolute import in keys to a relative import
+
+-------------------------------------------------------------------
+Thu Oct  3 13:23:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.0.0
+  * BREAKING CHANGE: Removed functionality to calculate public key
+    values from private key values. Alternatives have been added to
+    oscrypto. (see upstream changelog)
+  * Significantly improved parsing of core.UTCTime() and core.GeneralizedTime()
+    values that include timezones and fractional seconds
+  * core.Choice() may now be constructed by a 2-element tuple or a 1-key dict
+  * No longer try to load optional performance dependency, libcrypto,
+    on Mac or Linux
+  * Add support for explicit RSA SSA PSS to keys.PublicKeyInfo()
+    and keys.PrivateKeyInfo()
+  * Add/improve few algorithms (RC4, secp256k1, SHA-3, SHAKE)
+  * Added asn1crypto_tests package to PyPi
+  * Many bugfixes
+
+-------------------------------------------------------------------
+Thu Jan  3 14:14:59 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Reduce duplicities
+- Install license
+
+-------------------------------------------------------------------
+Tue Dec  4 12:45:43 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Dec 16 23:08:43 UTC 2017 - arun@gmx.de
+
+- update to version 0.24.0:
+  * x509.Certificate().self_signed will no longer return "yes" under
+    any circumstances. This helps prevent confusion since the library
+    does not verify the signature. Instead a library like oscrypto
+    should be used to confirm if a certificate is self-signed.
+  * Added various OIDs to x509.KeyPurposeId()
+  * Added x509.Certificate().private_key_usage_period_value
+  * Added structures for parsing common subject directory attributes
+    for X.509 certificates, including x509.SubjectDirectoryAttribute()
+  * Added algos.AnyAlgorithmIdentifier() for situations where an
+    algorithm identifier may contain a digest, signed digest or
+    encryption algorithm OID
+  * Fixed a bug with
+    x509.Certificate().subject_directory_attributes_value not
+    returning the correct value
+  * Fixed a bug where explicitly-tagged fields in a core.Sequence()
+    would not function properly when the field had a default value
+  * Fixed a bug with type checking in pem.armor()
+
+-------------------------------------------------------------------
+Sat Nov 11 17:39:30 UTC 2017 - arun@gmx.de
+
+- update to version 0.23.0:
+  * Backwards compatibility break: the tag_type, explicit_tag and
+    explicit_class attributes on core.Asn1Value no longer exist and
+    were replaced by the implicit and explicit attributes. Field param
+    dicts may use the new explicit and implicit keys, or the old
+    tag_type and tag keys. The attribute changes will likely to have
+    little to no impact since they were primarily an implementation
+    detail.
+  * Teletex strings used inside of X.509 certificates are now
+    interpreted using Windows-1252 (a superset of ISO-8859-1). This
+    enables compatibility with certificates generated by
+    OpenSSL. Strict parsing of Teletex strings can be retained by
+    using the x509.strict_teletex() context manager.
+  * Added support for nested explicit tagging, supporting values that
+    are defined with explicit tagging and then added as a field of
+    another structure using explicit tagging.
+  * Fixed a UnicodeDecodeError when trying to find the (optional)
+    dependency OpenSSL on Python 2
+  * Fixed next_update field of crl.TbsCertList to be optional
+  * Added the x509.Certificate.sha256_fingerprint property
+  * x509.Certificate.ocsp_urls and x509.DistributionPoint.url will now
+    return https://, ldap:// and ldaps:// URLs in addition to http://.
+  * Added CMS Attribute Protection definitions from RFC 6211
+  * Added OIDs from RFC 6962
+
+-------------------------------------------------------------------
+Fri Mar 17 11:33:07 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of descriptions
+
+-------------------------------------------------------------------
+Thu Mar 16 14:18:32 UTC 2017 - tbechtold@suse.com
+
+- Initial packaging (version 0.22.0)

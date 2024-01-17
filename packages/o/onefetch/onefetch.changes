@@ -1,0 +1,434 @@
+-------------------------------------------------------------------
+Fri Dec  1 07:23:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.19.0:
+  New Features:
+  * exclude files from churn #1120
+  * add odin support #1064
+  * New language: Arduino #1176
+  * Right align authorship percentages #1207
+  * Add Agda to languages.yaml #1216
+  Bug Fixes:
+  * add a test for negative dates and see how onefetch handles it #1100
+
+-------------------------------------------------------------------
+Mon Jun 26 05:25:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.18.1:
+  * don't fail when computing diff on partial clones (#1093)
+  * fetch banner info from github (#1094)
+
+-------------------------------------------------------------------
+Fri Jun 23 06:20:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.18.0:
+  * add new info line called "Churn" which displays the files with
+    the most modifications (commits) (#1071)
+  * add Hlsl support (#1082)
+  * performance: optimize case where repo has a commit-graph for
+    massive performance gains (#1081)
+  * docs: add a cmd.exe version of the cd snippet (#1048)
+  * refacto: use the builder pattern to instantiate the Info struct (#1047)
+  * improve bot regex (#1086)
+
+-------------------------------------------------------------------
+Sat Apr 29 08:23:10 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.17.1:
+  * Improve code coverage of src/info/mod.rs #1011
+  * Improve code coverage of src/ui/mod.rs #1012
+  * Added fish git repository greeter script to wiki #1021
+  * upgrade gitoxide to v0.44 and incorporate #1023 #1024
+
+-------------------------------------------------------------------
+Sun Apr  9 07:52:50 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.17.0:
+  Features:
+  * Disable line wrap #983
+  * Add Pascal support #989
+  * Add Coldfusion support #971
+  * Remove github token from url field #996
+  Chore:
+  * Changed Hashbang #979
+  * Prevent conflicts in wiki action 39fe441
+  * Fix typos #992
+  * Group CLI options in sections #995
+  * replace --show-logo with --no-art #1002
+  * Set snapshot language to plain text #1003
+  * Better error message when human_time panics #1010
+
+-------------------------------------------------------------------
+Mon Feb 27 15:41:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.0:
+  Features:
+  * Add GLSL language support #490 #824
+  Bug fixes:
+  * Fix Markdown / Jupyter markup not getting counted #937
+  * upgrade gix to 0.36.1 to avoid breakage. #965
+
+-------------------------------------------------------------------
+Fri Jan 20 07:48:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.1:
+  * Fix CD Github action
+
+-------------------------------------------------------------------
+Fri Jan 20 07:46:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.0:
+  Features:
+  * Add --number-separator CLI flag #892
+  * Add Makefile language support #867
+  * Vercel: add section links #922
+  Chore:
+  * Add gitpod.io configuration #881
+  * Use human_panic #887
+  * Read license from manifest first #769
+  * Install cargo-insta in dev containers #909
+  * Info struct to holds a Vec #911
+  * Add benchmark #912
+  * GH action to synchronize wiki with .github/wiki #926
+  * Clean up greeter and fix repository detection mechanism in wiki #927
+  * Turn AsciiArt.rs into its own crate #934
+  Bug Fixes:
+  * Use ISO time for snapshot tests #908
+  * Parse multi-byte unicode chars correctly + docs #936
+
+-------------------------------------------------------------------
+Thu Dec  1 09:22:05 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.2:
+  Bug Fixes:
+  * Include assets in crate a2f508a
+  * Fix clap deps for onefetch-image crate 8cca7af
+  * Add description field to onefetch-image and onefetch-manifest crate 2888186
+
+-------------------------------------------------------------------
+Thu Dec  1 09:21:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.1:
+  * Fix CD 5085c5b
+
+-------------------------------------------------------------------
+Thu Dec  1 09:21:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0:
+  Features:
+  * Add description info line #851
+  * Add CLI flag to set the maximum number of languages to be shown 8159b34
+  * Add VisualBasic language support #867
+  Chore:
+  * Add manifest crate #851
+  * Move image_backends into its own crate 9ce17c1
+  * Add devcontainer/codespace config #857
+  * Switch to Swatinem/rust-cache for caching 7592eb2
+  * Add README translation for Korean #869
+  * add icon to windows exe 584574f
+  Bug Fixes:
+  * Fix typo in help message for -e (--exclude) #861
+
+-------------------------------------------------------------------
+Mon Nov  7 21:51:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Disable tests: they break the build by needing an internet
+  connection
+
+-------------------------------------------------------------------
+Mon Oct 31 07:51:02 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.2:
+  * [fix] Repo without remote should not fail #841
+  * [chore] Add integration tests with snapshot testing for Info struct #827
+  * [chore] Refactor test expressions #831
+
+-------------------------------------------------------------------
+Thu Oct 27 10:33:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.1:
+  * [ci/cd] fix Snapcraft release
+  * [misc] fix Cargo.lock
+
+-------------------------------------------------------------------
+Thu Oct 27 10:32:44 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.0:
+  * [chore] reducing allocations and switching to gitoxide from libgit2 #635
+  * [docs] add README translation for Spanish #631
+  * [docs] add Changelog generated using cargo-smart-release #637
+  * [cli] add --completion option #657
+  * [language] update PHP colors #664
+  * [misc] switch to actions/stale #666
+  * [misc] add github issue forms #667
+  * [ci/cd] generate Windows installer from CD #668
+  * [ci/cd] create WinGet workflow for auto publishing #673
+  * [language] update logo: shell #677
+  * [docs] adding french documentation support #693
+  * [chore] extract language definitions into data file #699
+  * [ci/cd] add codecov + tarpaulin in ci
+  * [misc] create Vercel app for onefetch with ASCII preview #701
+  * [docs] update the README in Russian #736
+  * [chore] turn InfoField into a trait (big refactoring) #755
+  * [language] Improve JSX ASCII logo #784
+  * [language] Improve TSX ASCII logo #785
+  * [language] added support for verilog #789
+  * [language] improve ruby logo #786
+  * [language] added support for xsl #798
+  * [language] added support for systemverilog #797
+  * [test] add unit tests to src/info/info_field.rs #810
+  * [ci/cd] automate publish to crates.io #800
+  * [language] added support for ABNF #811
+  * [test] add unit tests src/info/repo/commits.rs #813
+  * [test] add unit tests src/info/repo/contributors.rs #814
+  * [language] added support for ABAP #821@atluft
+  * [test] testing get_git_username using git-testtools for #812
+  * [language] improve bash logo
+  * [language] improve assembly logo
+  * [test] add unit tests for author.rs #829
+
+-------------------------------------------------------------------
+Thu Oct 27 10:32:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12.0:
+  * [language] added support for Ren'Py #560
+  * [info] added language bar distribution #585
+  * [misc] granted read access to onefetch snap to gitconfig files #588
+  * [language] added support for Ceylon #602
+  * [misc] default to terminal foreground color for tilde, underline, colon and info #604
+  * [language] fix Lua logo so that it can be read even without color #610
+  * [misc] replace colored crate with owo-colors #620
+  * [misc] remap White ANSI color to Default #625
+  * [language] added support for Wolfram #609
+  * [misc] match circle color with github linguist #630
+  * [language] added support for VHDL #632
+- Remove onefetch-fix-test.patch
+
+-------------------------------------------------------------------
+Thu Oct 27 10:12:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Port to cargo_build macros and better _service file
+
+-------------------------------------------------------------------
+Thu Apr  7 13:28:06 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add onefetch-fix-test.patch to fix build
+
+-------------------------------------------------------------------
+Wed Mar  2 21:42:34 UTC 2022 - James Hobson <james.hobson@oriel.ox.ac.uk>
+
+- Update to 2.11.0
+  * [docs] Add Persian README
+  * [docs] Add Chinese README
+  * [misc] add CLI flag to count hidden files and directories
+  * [language] added support for Protocol Buffers
+  * [misc] Better error handling (Replace error-chain with anyhow)
+  * [docs] Add Russian README 
+  * [language] added support for SQL
+  * [cd] Automate "languages supported" badge
+  * [language] added support for WebAssembly
+  * [language] added support for Toml
+  * [misc] removed json dependency
+  * [language] added support for Yaml
+  * [language] added support for Jsonnet
+  * [language] added support for Solidity
+  * [docs] Fix contributing link in cn readme
+  * [language] added support for Json
+  * [language] added support for Sass
+  * [language] added support for LLVM
+  * [language] added support for AutoHotKey
+  * [misc] add LanguageType
+  * [language] added support for Coq
+  * [misc] update license cache
+  * [language] added support for Fortran Legacy
+  * [cd] Add workflow for Minimum Rust Version badge
+  * [misc] Use time crate instead of chrono
+
+-------------------------------------------------------------------
+Fri Nov  5 04:02:48 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
+Mon Jul  5 07:34:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.2:
+  * [bug] fix text coloring
+
+-------------------------------------------------------------------
+Mon Jul  5 07:33:25 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.1:
+  * [bug] add build step to Makefile to fix CD
+
+-------------------------------------------------------------------
+Mon Jul  5 07:32:14 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.10.0:
+  * [bug] fix "Last change: now ago"
+  * [language] added support for Haxe
+  * [language] added support for Scheme
+  * [language] added support for GDScript
+  * [ci] Make audit scheduled and manually runnable
+  * [language] added support for Svelte
+  * [language] added support for Ada
+  * [docs] add README.ja.md
+  * [language] added support for Hcl
+  * [bug] round up instead of truncate in perc. of contribution
+  * [language] Fixed Fortran ASCII to be more symetrical
+  * [misc] add CLI option to ignore bot commits
+  * [info] use .mailmap to merge authors
+  * [info] merge authors by signature
+  * [misc] add CLI option for displaying author emails
+  * [language] added support for PowerShell
+  * [info] display the number of contributors
+
+-------------------------------------------------------------------
+Mon Jan 18 08:54:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.1:
+  * [misc]  Update dependencies and fix serde related build failure
+
+-------------------------------------------------------------------
+Thu Jan 14 10:00:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.0:
+  * [info] add pyproject.toml and Pipfile parsers for pip package manager
+  * [language] added support for Emojicode
+  * [language] added support for GraphQL
+  * [misc] automate Homebrew release
+  * [language] added support for Qml
+  * [misc] add Yaml output and ISO 8601 date format option
+  * [misc] add CLI option to switch true colors on/off
+
+-------------------------------------------------------------------
+Fri Dec 18 14:23:27 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.8.0:
+  * [language] added support for VimScript
+  * [language] added support for Vala
+  * [language] added support for Processing
+  * [misc] new CLI flag to hide logo if terminal size is too narrow
+  * [misc] new CLI flag to output in JSON format
+  * [misc] exclude .git folder when computing repo size
+  * [info] replace git sys calls with git2-rs calls
+  * [info] added pub as another package manager for dart projects
+
+-------------------------------------------------------------------
+Mon Nov 23 08:42:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.3:
+  * [info] if user.name is not set print unknown instead of crashing
+
+-------------------------------------------------------------------
+Mon Nov 23 08:41:49 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.2:
+  * [language] added support for HolyC
+  * [language] added support for Xaml
+  * [info] get_repo_name_and_url defaults to remote.origin.url
+  * [misc] replaced some git sys calls with git2-rs calls
+  * [ascii] improved coloring for c, c++, c#, typescript, and lua
+  * [ascii] fixed ascii max-width integration test --> update raku ascii logo
+  * [image] fixed image detection for kitty: remove check on env variable
+
+-------------------------------------------------------------------
+Mon Nov  9 07:52:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.1:
+  * Remove Language::Unknown
+
+-------------------------------------------------------------------
+Mon Nov  9 07:51:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.0:
+  New features:
+  * Detect dependencies
+  * add print-package-mangers cli option
+  Bug fixes:
+  * Don't output unnecessary newline when checking for image backend support
+  * Fix trailing white space in LOC
+  Misc:
+  * Colon is white by default
+
+-------------------------------------------------------------------
+Thu Nov  5 07:23:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.6.0:
+  Language:
+  * Added support for Zsh, bash, JSX and TSX
+  New features:
+  * Support COLORTERM for TrueColor ASCII
+  * CLI flag to use more color (16 -> 256) in sixel graphics
+  * Add Text Coloring via CLI flag
+  * Add CLI flag to disable ASCII art (or image) and only
+    display info lines
+  * Extend image backend support to ITerm2 Inline Images Protocol
+  * Replace ASCII logo with shell command output
+  Misc:
+  * clean up python script from wiki
+  * make build fail when deprecated dependencies
+  * remove async/await
+
+-------------------------------------------------------------------
+Thu Oct 22 08:40:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.0:
+  Bug Fixes:
+  * Identify author by email
+  * Fix #180
+  * Fix layout with sixel image backend
+  New features:
+  * Show number of Tags and Branches
+  Misc:
+  * Reduce size of Lua, Clojure, Jupyter-Notebooks, Tex, Zig ASCII logo
+  * Reduce size of Swift, Objective-C ASCII logo
+  * Reduce size of Php
+  * Reduce size of Nim
+  * Better CI/CD
+  * New Go and Rust ASCII logo
+
+-------------------------------------------------------------------
+Mon Oct  5 07:23:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.0:
+  Language:
+  * Added support for Crystal
+  New feature:
+  * Use async/await to improve performance
+  * Refacto language.rs with the introduction of a macro
+  * Refacto info.rs to use git log once #198
+  Misc:
+  * Add info for cargo-deb
+  * Enable stale bot #184
+  * Enable dependabot
+  * Improved ci/cd actions
+
+-------------------------------------------------------------------
+Thu Aug 20 15:14:56 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- avoid build error for ppc64le as reported by boo#1175502
+
+-------------------------------------------------------------------
+Mon Aug  3 06:54:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.0:
+  Language:
+  * Added support for Docker File
+  * Added support for Jupyter Notebooks
+  New feature:
+  * Add exclude OPTION (#178)
+  Misc:
+  * Accept LICENCE... as license file name
+  * Better descriptions for flags and options
+  * Remove Bright Colors (#179)
+
+-------------------------------------------------------------------
+Wed Apr 22 08:10:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add GPL-2.0-only (zstd dependency)
+
+-------------------------------------------------------------------
+Wed Apr 15 16:12:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Create initial package in version 2.2.0 for openSUSE

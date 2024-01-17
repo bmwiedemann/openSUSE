@@ -1,0 +1,62 @@
+fcitx README for SuSE
+How to start using fcitx
+
+English:
+
+1.openSUSE can start fcitx automatically when your locale is set to en, zh_CN.
+The setup script is a link in /etc/X11/xim.d/YOUR-LOCALE/30-fcitx which link to /etc/X11/xim.d/fcitx. 
+The number "30" makes fcitx have priority over other input-method (e.g 50-scim or 90-xcin ).
+If you prefer not using fcitx, mv 30-fcitx to 80-fcitx (for example). Or see 2.
+
+2.If for some reason can't start fcitx when login Xwindow
+There is another input-method who has higher priority than fcitx (e.g 10-oxim)
+You can edit ~/.xim, see ~/.xim.template for more informations.
+Or edit ~/.profile, add
+export INPUT_METHOD="fcitx"
+After installing fcitx, there's a template for fcitx: /usr/share/doc/packages/fcitx/xim.fcitx.suse.template
+copy this file to ~/.xim, then you can use fcitx next login X.
+
+3.You want to use your own input-method other than system setting
+(1)System setting:
+Edit /etc/sysconfig/language , set INPUT_METHOD="fcitx", or whatever you want,Make sure your start-up script is put in /etc/X11/xim.d/ with same name ypu mention.
+(2)For specific language setting:
+Link a start-up script in /etc/X11/xim.d/ to your locale with a higher priority (smaller number), eg
+ln -s /etc/X11/xim.d/fcitx /etc/X11/xim.d/zh_CN/20-fcitx
+(3)Personal setting:
+Edit ~/.profile add
+export INPUT_METHOD="fcitx" or whatever script in /etc/X11/xim.d/
+or white your own ~/.xim, see ~/.xim.template for more informations.
+
+4.Bug report or any suggestion to
+https://github.com/fcitx/
+
+
+Chinese:
+
+1.当您使用的语系是 en 或 zh_CN 时，SuSE 会自动启动 fcitx
+启动的脚本是 /etc/X11/xim.d/YOUR-LOCALE/30-fcitx，这是一个到上层目录 fcitx 的连结
+"30"这个数字使他的优先顺序高于 90-xcin 及 50-scim
+如果您不喜欢这个顺序，修改连结的名称为(例如：80-fcitx)，或参考2.
+
+2.重新登入 X 后，如果不能用 fcitx...可能是：
+有别的输入法的优先顺序高于 fcitx (例如：10-oxim)
+您可以编辑 ~/.xim，请参考 ~/.xim.template
+安装 fcitx 后，会有一个范本：/usr/share/doc/packages/fcitx/xim.fcitx.suse.template
+将这个档案复制到您的 ~/.xim，当您下次登入X时就可以使用 fcitx 了
+或编辑 ~/.profile，加入
+export INPUT_METHOD="fcitx"
+
+3.如果您想要自己选择输入法而非使用系统设定
+(1)全系统设定：
+编辑 /etc/sysconfig/language, 设定 INPUT_METHOD="ibus" 或其他你想用的输入法，
+请注意你的启动程序必须位于 /etc/X11/xim.d/，并和您指定的名称相同
+(2)针对特定语言：
+将您的启动程序连结到你的语系中，并前置较高的优先顺序(较小数字)，例如
+ln -s /etc/X11/xim.d/fcitx /etc/X11/xim.d/zh_CN/30-fcitx
+(3)个人设定：
+编辑 ~/.profile 加入
+export INPUT_METHOD="fcitx" 或其他在 /etc/X11/xim.d/ 的启动程序
+或自行编写启动程序 ~/.xim，请参考 ~/.xim.template
+
+5.臭虫回报或建议请至
+https://github.com/fcitx/

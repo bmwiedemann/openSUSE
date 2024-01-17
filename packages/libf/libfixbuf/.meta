@@ -1,0 +1,16 @@
+<package name="libfixbuf" project="openSUSE:Factory">
+  <title>Implementation of the IPFIX Protocol as a C library</title>
+  <description>libfixbuf is a compliant implementation of the IPFIX Protocol, as defined in
+RFC 5101. It supports the information model defined in RFC 5102, extended as
+proposed by RFC 5103 to support information elements for representing biflows.
+libfixbuf supports UDP, TCP, SCTP, TLS over TCP, and Spread as transport
+protocols. It also supports operation as an IPFIX File Writer or IPFIX File
+Reader.
+
+ipfixDump is a command line tool for printing the contents of an IPFIX
+file as text.
+
+</description>
+  <devel project="server:monitoring" package="libfixbuf"/>
+  <url>https://tools.netsa.cert.org/fixbuf</url>
+</package>

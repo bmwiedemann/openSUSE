@@ -1,0 +1,42 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-07-06 23:36:50.264333010 +0200
+X-Upstream: upstream should just abandon the non-r variant, making this patch unnecessary
+
+Only ever build with reentrant library form since openSUSE will not
+be shipping the non-r variant.
+---
+ Makefile.in  |    7 +------
+ configure.in |    2 +-
+ 2 files changed, 2 insertions(+), 7 deletions(-)
+
+Index: libtecla/Makefile.in
+===================================================================
+--- libtecla.orig/Makefile.in
++++ libtecla/Makefile.in
+@@ -149,12 +149,7 @@ DEMOS = demos
+ #
+ # List the programs that are to be made by default.
+ #
+-PROGRAMS = enhance
+-
+-#
+-# List programs for which reentrant versions are to be built by default.
+-#
+-PROGRAMS_R =
++PROGRAMS_R = enhance_r
+ 
+ #-----------------------------------------------------------------------
+ # You shouldn't need to change anything below this line.
+Index: libtecla/configure.in
+===================================================================
+--- libtecla.orig/configure.in
++++ libtecla/configure.in
+@@ -171,7 +171,7 @@ dnl that we can create both the normal a
+ dnl of the library.
+ 
+ AC_SUBST(TARGETS)
+-TARGETS="normal reentrant"
++TARGETS="reentrant"
+ 
+ dnl Check for reentrant functions by attempting to compile and link a
+ dnl temporary program which calls them, being sure to include the

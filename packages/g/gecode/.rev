@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a609cb9e21afe606369741318a7e20f</srcmd5>
+    <version>6.3.0~git20211208.6b09bea4</version>
+    <time>1653417077</time>
+    <user>dimstar_suse</user>
+    <comment>New package, required for a complete libminizinc.
+See https://build.opensuse.org/package/show/openSUSE:Factory:Staging:adi:8/libminizinc
+
+No proper current release, but older releases are unbuildable. </comment>
+    <requestid>978934</requestid>
+  </revision>
+</revisionlist>

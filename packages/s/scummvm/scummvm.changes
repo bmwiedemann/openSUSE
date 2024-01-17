@@ -1,0 +1,2328 @@
+-------------------------------------------------------------------
+Mon Jan  1 17:36:13 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to 2.8.0
+  * see https://downloads.scummvm.org/frs/scummvm/2.8.0/ReleaseNotes.html for notes
+
+-------------------------------------------------------------------
+Fri Aug  4 20:51:48 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 2.7.1
+
+- Update to 2.7.1
+  * see https://downloads.scummvm.org/frs/scummvm/2.7.1/ReleaseNotes.html for notes
+- fix build on Leap by requiring libieee1284-devel only for tumbleweed
+
+-------------------------------------------------------------------
+Mon Mar 13 20:47:35 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Build with support for OPL2LPT / OPL3LPT audio devices
+
+-------------------------------------------------------------------
+Tue Feb 28 14:23:41 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.7.0
+  lots of addition and bugfixes, please see https://downloads.scummvm.org/frs/scummvm/2.7.0/ReleaseNotes.html
+
+-------------------------------------------------------------------
+Wed Nov  9 16:42:20 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 2.6.1
+
+-  Update to 2.6.1
+    General:
+    * Various improvements to the icon-based grid view in the ScummVM launcher.
+    * Fixed possible graphics corruptions when using the OpenGL renderer.
+    AGS:
+    * Fixed a crash in AGDI's KQ1 remake (and some other games), on big-endian systems.
+    AGOS:
+    * Fixed various bugs that lead to crashes in the demo versions of The Feeble Files and Personal Nightmare and in the full version of Waxworks.
+    * Fixed pirate dialogue freeze in Simon the Sorcerer 2.
+    Asylum:
+    * Fixed the Keyboard Config screen.
+    * Added support for the keymapper feature to the dialog screen.
+    * The in-game menu is now accessible via a keyboard shortcut.
+    * Fixed a bug that caused the controls to be reset when leaving the Hive puzzle.
+    * Fixed animation of floating bodies in Chapter 4.
+    Ultima:
+    * Fixed rendering issue when moving the minimap off the screen.
+    * Fixed possible crash when using the autosave function.
+    SCI:
+    * Fixed various bugs and script issues in KQ4, KQ5, LB2, LONGBOW, PQ1, PQ3, QFG2, QFG3, QFG4 and SQ5.
+    * Numerous improvements to various parts of the engine code.
+    SCUMM:
+    * Fixed potential lockups in games using iMuse.
+    * Prevented crashes caused by missing .SOU/.BUN files.
+    * Fixed crashes in v7-v8 games on strict-alignment platforms.
+    * Fixed speech lipsync for COMI on big-endian ports (such as PS3 or Wii).
+    Tinsel:
+    * Fixed an issue in Discworld that prevented some items from being placed in the inventory.
+    Toltecs:
+    * Fixed crashes on some strict-alignment platforms.
+    Toon:
+    * Fixed music and SFX being muted by default when adding the Toonstruck game.
+    Android port:
+    * Properly convert mouse coordinates between screen coordinates and virtual ones.
+    Windows port:
+    * Clearing the icons cache created a duplicate ScummVM folder in the APPDATA directory. Fixed.
+
+-------------------------------------------------------------------
+Wed Nov  9 05:52:13 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- BuildRequre sdl2 stuff via pkgconfig(*).
+
+-------------------------------------------------------------------
+Tue Aug  2 04:05:43 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 2.6.0
+
+-  Update to 2.6.0
+   New games:
+   * Added support for Sanitarium.
+   * Added support for Hades Challenge.
+   * Added support for Marvel Comics Spider-Man: The Sinister Six.
+   * Added support for The 11th Hour.
+   * Added support for Clandestiny.
+   * Added support for Tender Loving Care (CD-ROM Editions).
+   * Added support for Uncle Henry's Playhouse.
+   * Added support for Wetlands.
+   * Added support for Chewy: Esc from F5.
+   General:
+   * The project license has been upgraded to GPLv3+.
+   * Now ScummVM requires C++11 for building.
+   * Removed support for VS2008, as it doesn't support C++11.
+   * Implemented enhanced filtering in the Search box. See "Understanding the search box" 
+     in the documentation for details.
+   * Implemented Icon view in GUI (GSoC task).
+   * Added support for the RetroWave OPL3 sound card.
+   * Added OpenDingux beta port.
+   * Removed Symbian port.
+   * Added the create_engine tool to aid when creating new engines.
+   * Fixed mouse capture in HiDPI mode.
+   * The GUI Options dialog now marks settings overridden via command lines in red.
+   * In GUI launcher it is now possible to group games by different categories.
+   * GUI launcher has new game icons grid look.
+   AGI:
+   * Added support for Macintosh versions of Manhunter 1-2.
+   AGS:
+   * Synced changes from upstream AGS.
+   AGOS:
+   * Elvira 1: Added support for Casio MT-540/CT-460/CSM-1 and CMS/GameBlaster.
+   * Elvira 1 & 2, Waxworks, Simon the Sorcerer: Added AdLib OPL3 mode. Depending on the game, 
+     this will prevent cut-off notes, add extra notes or instruments and/or add stereo.
+   * Elvira 2, Waxworks: Added support for AdLib and MT-32 sound effects.
+   * Elvira 2, Waxworks, Simon the Sorcerer floppy: Added Mixed MIDI support 
+     (MT-32 music with AdLib sound effects).
+   * Simon the Sorcerer floppy: Improved AdLib sound effects accuracy.
+   * Simon the Sorcerer: DOS version music tempos are now accurate. Both DOS and Windows 
+     versions now offer the choice of the DOS music tempos or the faster Windows tempos.
+   * Simon the Sorcerer 2: Improved AdLib and GM support.
+   * Simon the Sorcerer 2: Added workaround for the missing MT-32 tracks in the intro.
+   BBVS:
+   * Fixed the size of the main menu buttons being incorrect in some cases.
+   * Fixed crash at the end of the Hock-A-Loogie mini game.
+   Buried:
+   * Added support for skipping synchronous audio and video.
+   * The mouse pointer is now hidden during cutscenes.
+   * Implemented game pausing via Control-P.
+   * After saving, the player returns back to the game instead of the Biochip menu.
+   * The game is now always paused when the Biochip menu or the save/restore dialogs are open.
+   * Added metadata to saved games, including thumbnails, creation date and play time.
+   * Saved games are now sorted by slot, like in other engines, instead of being 
+     sorted alphabetically.
+   * The currently selected item is now stored in saved games.
+   * Comments from Arthur that play in the background can now be stopped with the 
+     space key (the same key that replays Arthur's last comment).
+   * The agent evaluation (current points) can now be shown with Control-D.
+   * Fixed global flag corruption in death screens.
+   Dreamweb:
+   * Added text to speech for dialogs and object descriptions.
+   Glk:
+   * Added support for ZX Spectrum games with graphics in the Scott sub-engine.
+   Kyra:
+   * Added support for the Traditional Chinese versions of Legend of Kyrandia 1 - 3.
+   * Added sound support for the Macintosh version of Legend of Kyrandia.
+   * Added support for playing the Macintosh non-talkie version of Legend of Kyrandia 1 
+     directly from the files on the CD. This means you no longer have to run the installer 
+     to extract the data files.
+   NGI:
+   * Fixed the rolling bridge state in scene 13.
+   * Fixed getting stuck when teleporting to the foot in scene 30.
+   * Fixed inconsistent cactus state.
+   Private:
+   * Refactored code to allow rendering using the original 256 color palette.
+   * Fixed endianness issues.
+   * Added support for the Korean release.
+   Supernova:
+   * Added text to speech for dialogs and object descriptions.
+   SCI:
+   * Added support for Text To Speech in SCI floppy games.
+   * Allow saving from the ScummVM Global Game Menu in the following games: BRAIN1, BRAIN2, 
+     ECOQUEST1, ECOQUEST2, FAIRYTALES, PHARKAS, GK1, GK2, ICEMAN, KQ1, KQ4, KQ5, KQ6, KQ7, 
+     LB1, LB2, LIGHTHOUSE, LONGBOW, LSL1, LSL2, LSL3, LSL5, LSL6, LSL6HIRES, LSL7, PEPPER, 
+     PHANT2, PQ1, PQ2, PQ3, PQ4, PQSWAT, QFG1, QFG1VGA, QFG2, QFG3, QFG4, SHIVERS, SQ1, SQ3, 
+     SQ4, SQ5, SQ6, TORIN.
+   * Fixed many script bugs in KQ6, KQ7, GK2, QFG3, QFG4, Hoyle4.
+   * Fixed loading autosaves in Shivers and Phantasmagoria 2.
+   * Added support for Korean fan translations from the scummkor project: EcoQuest 2 and 
+     Gabriel Knight 2.
+   SCUMM:
+   * New Digital iMUSE engine. Support for re-compressed audio files dropped in Full Throttle, 
+     The Dig and The Curse of Monkey Island.
+   * Rewrote music player for Amiga versions of Indy3 and Loom in accordance to the original code.
+   * Fix missing cursor in the 16-color Macintosh versions of Loom and Indiana Jones and the 
+     Last Crusade after loading a savegame.
+   * It is now possible to replace the music in the floppy versions of Loom with audio tracks. 
+     The ScummVM Wiki has a list of which parts of the Swan Lake ballet the game uses: 
+     https://wiki.scummvm.org/index.php/Loom.
+   * Fixed some MIDI music looping when it shouldn't in EGA/VGA floppy versions of 
+     The Secret of Monkey Island.
+   * Fixed the lava flowing in the wrong direction in the VGA floppy version of 
+     The Secret of Monkey Island.
+   * Fixed Full Throttle distorted graphics when Ben runs past the Corley Motors entrance.
+   * Fixed the dissolve effect, and Bobbin's palette when leaving the darkened tent in the 
+     TurboGrafx-16 version of Loom, to match the original behavior.
+   * Fixed incorrect dark rooms colors in MM NES on strict-alignment ports such as 
+     Dreamcast, Apple silicon and various handheld devices.
+   * Rewrote text rendering routines for Full Throttle, The Dig and The Curse of Monkey 
+     Island in accordance to the original interpreters.
+   * Rewrote timer handling routines to better approximate both the original hardware 
+     behavior and the intepreters' quirks.
+   * Fix lip syncing in Backyard Baseball 2003.
+   * Fixed various original game bugs and oversights in most of the LucasArts titles: 
+     https://wiki.scummvm.org/index.php?title=SCUMM/Game_Enhancements. Most of these 
+     enhancements can now be disabled in the game's settings if one prefers playing 
+     with the original behavior.
+   * Added sliders for tweaking the CD audio playback in the MI1 CD intro, as well as 
+     VGA CD Loom in general. Loom is particularly sensitive to the amount of silence 
+     at the start of the track, and the CD version of MI1 never synced the music as well 
+     to the intro as previous versions. See the Wiki for more details.
+   * Detect and reject the EGA floppy version of Monkey Island 1 that Limited Run Games 
+     sold in their Monkey Island 30th Anniversary Anthology, if using the default 
+     DISK4 image, which is corrupted. It's possible to recover a working image from 
+     the KryoFlux dumps they also provided.
+   * Fixed random number generation which fixes throwing in Backyard Baseball.
+   * Marked a workaround in Monkey Island 2 (FM-Towns version) as an enhancement; 
+     this workaround originally restored a portion of the map chasing puzzle in 
+     Booty Island which had been cut in the FM-Towns version of the game.
+   * Made the sentence line in Maniac Mansion work like the manual says, i.e. you can 
+     click on it to execute the command.
+   Sherlock:
+   * Fixed slowdown in Serrated Scalpel intro when playing the game from a small installation.
+   * Fixed UI glitches in Serrated Scalpel.
+   Titanic:
+   * Fixed not being able to see House in Starfield puzzle.
+   TwinE:
+   * Fixed a bug in the collision code that made the game unfinishable due to the 
+     tank not moving any further in scene 63.
+   * Fixed light angle calculation which produced rendering artifacts in a few scenes.
+   * Fixed polygon rendering method for the boat windows.
+   * Fixed wrong shooting direction for some actors.
+   * Fixed door movement in some situations.
+   Android port:
+   * Added hardware acceleration for 3D graphics.
+   * Improved touch controls.
+   macOS port:
+   * Added support for displaying OSD messages on the Touch Bar.
+   Windows port:
+   * Added "Portable Mode" in which the executable's directory is used to store application 
+     files if a scummvm.ini file is present, instead of the user's profile directory.
+   * Fixed detection of the Application Data path on Windows 95/98/ME.
+   RISC OS port:
+   * Added support for dynamic plugins.
+   * Added a native MIDI driver.
+   Nintendo DS port:
+   * Fixed screen scrolling when using the Load and Save dialogs.
+
+-------------------------------------------------------------------
+Sun Jan 16 15:40:04 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 2.5.1
+
+- Update to 2.5.1
+  General:
+  * Ported ResidualVM GUI theme to remastered version.
+  * Fixed edge case for Punycode.
+  * Fixed checking for savegame overwrite in autosave slot.
+  * Fixed moving savegame to new slot for most engines.
+  * Scalers are now supported with the OpenGL graphics mode.
+  AGOS:
+  * Fixed old Waxworks AdLib music regression.
+  AGS:
+  * Detection list updates.
+  Grim:
+  * Fixed default "Talk Speed" option value.
+  * Fixed black screen while entering save game name.
+  * OpenGL without shaders is preferred as default for Grim Fandango.
+  Kyra:
+  * Fixed graphical glitch in Legend of Kyrandia 3.
+  SAGA:
+  * Fixed digitized music not looping in Inherit the Earth.
+  SCUMM:
+  * Improved support for the high-resolution text in the 16-color Macintosh versions of Loom and Indiana Jones and the Last Crusade.
+  * Improved OPL3 sound emulation for Sam&Max.
+  * Fixed music not looping in The Dig.
+  * Fixed crash when loading savegames from Humongous Entertainment games.
+  Sherlock:
+  * Fixed crash using matches on lab table.
+  * Fixed character animation in Rose Tattoo.
+  * Fixed glitch opening map in Rose Tattoo.
+  * Fixed bell pull and fog horn sounds in Serrated Scalpel.
+  * Fixed inventory not updating in Serrated Scalpel after examining watch.
+  * Fixed fog overlay at Cleopatra's Needle in Rose Tattoo.
+  * Fixed graphic issues in Serrated Scalpel looking at items whilst inventory is open.
+  * Made Serrated Scalpel darts closer in speed to the original.
+  * Fixed crash when moving cursor past end of string in Rose Tattoo save dialog.
+  * Process pending key presses in the order they were made, not the most recent first.
+  * Fixed crash when using Delete key in Rose Tattoo save dialog.
+  * Fixed rare conversation bug in Serrated Scalpel that would happen when Lord Brumwell started talking to you while the inventory window was open.
+  * Resume animations in Serrated Scalpel after conversations. This fixes the bug where Jock Mahoney or Nobby Charleton would get stuck indefinitely, refusing to talk to you.
+  * Fixed various user interface glitches in both games.
+  Stark:
+  * Added OpenGL renderer (without shaders).
+  * Added TinyGL renderer.
+  * Fixed autosave handling.
+  TwinE:
+  * Numerous bugfixes and stability improvements.
+  Xeen:
+  * Fixed crash on startup loading constants from xeen.ccs.
+  * Fixed spell selection aborting when characters were switched.
+  * Fixed some bad memory accesses.
+  * Various sound fixes.
+  * Fixed the monster item drop probabilities.
+
+-------------------------------------------------------------------
+Wed Nov 24 19:38:46 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 2.5.0
+
+- Update to 2.5.0
+  New games:
+  * Added support for Grim Fandango.
+  * Added support for The Longest Journey (only on some desktop platforms).
+  * Added support for Myst 3: Exile (only on some desktop platforms).
+  * Added support for Little Big Adventure.
+  * Added support for Red Comrades 1: Save the Galaxy.
+  * Added support for Red Comrades 2: For the Great Justice.
+  * Added support for Transylvania.
+  * Added support for Crimson Crown.
+  * Added support for OO-Topos.
+  * Added support for Glulx interactive fiction games.
+  * Added support for Lure of the Temptress Konami release.
+  * Added support for Private Eye.
+  * Added support for Spanish Blue Force.
+  * Added support for Spanish Ringworld.
+  * Added support for Spanish Amazon: Guardians of Eden.
+  * Added support for AGS Games versions 2.5+.
+  * Added support for Nightlong: Union City Conspiracy.
+  * Added support for The Journeyman Project 2: Buried in Time.
+  * Added support for Crusader: No Remorse.
+  * Added support for L-ZONE.
+  * Added support for Spaceship Warlock.
+  New ports:
+  * The Nintendo DS port got a major rewrite.
+  General:
+  * Switched ScummVM GUI output to UTF-32.
+  * Updated the Roland MT-32 emulation code to the Munt project’s mt32emu 2.5.1.
+  * Updated Dropbox Cloud Storage to use the new Dropbox OAuth workflow.
+  * Major extension to the number of supported graphics scalers.
+  * Display path to scummvm configuration file in GUI -> Options -> Paths.
+  * Added new optional dependency, giflib >= 5.0.0. Used by some version of LBA.
+  * Added HiDPI support to the ScummVM GUI.
+  * Added command line option --window-size for specifying ScummVM window size,
+  * applicable only to the OpenGL renderer.
+  * Fixed switching to the default graphics mode. This was sometimes not applied
+  * until restarting ScummVM or starting a game.
+  * ScummVM GUI has been fully translated into Korean and Japanese.
+  * Added GUI option for enabling and disabling the Discord RPC integration.
+  ADL:
+  * Added support for Mystery House French translation.
+  * Added support for several game variants.
+  AGI:
+  * Added support for Russian versions. Input now works.
+  AGOS:
+  * Added support for the Japanese PC-98 version of Elvira 1.
+  CGE:
+  * Added option to use Text To Speech for Soltys.
+  CGE2:
+  * Added option to use Text To Speech for Sfinx.
+  Cine:
+  * Added detection for Future Wars CD version with French translation patch.
+  * Added detection for Italian Amiga Operation Stealth.
+  * Fixed crash before entering secret base.
+  * Fixed space missing in verb line.
+  * Fixed vertically overflowing message boxes.
+  Dreamweb:
+  * Rendering fixes for Russian fan translation.
+  Glk:
+  * Fixed savegame issues with several subengines.
+  * Fixed memory overrun in Level9 game detector.
+  * Added detections for 2020 IF Comp games.
+  * Enabled Glulx sub-engine.
+  Gob:
+  * Added support for Bargon Attack Russian translation.
+  * Added support for Woodruff Russian translation.
+  Griffon:
+  * Fixed Return to Launcher from The Griffon Legend.
+  * Added option to use Text To Speech in The Griffon Legend
+  Grim:
+  * Added support for Brazillian Portuguese Grim Fandango.
+  Kyra:
+  * Added support for the Japanese Sega-CD version of Eye of the Beholder.
+  * Added support for the Hebrew fan translation of Legend of Kyrandia.
+  * Added support for the Hebrew fan translation of Legend of Kyrandia 2.
+  * Added support for the Simplified Chinese version of Legend of Kyrandia 3.
+  * Added support for the playable demo of Lands of Lore.
+  Lure:
+  * Fixed fire animation in first room when loading saves.
+  * Fixed AdLib support.
+  * Fixed MT-32 support.
+  Pegasus:
+  * Added support for DVD/GOG.com release.
+  Queen:
+  * Added support for German Amiga floppy release.
+  SAGA:
+  * Added support for ITE GOG Mac CD v1.1.
+  * Added support for ITE PC-98 Japanese.
+  SCI:
+  * Added RGB rendering mode (16/32bpp) for SCI0 - SCI1.1 games, which addresses palette
+  * issues in screen transitions and avoids mode changes when playing Mac QuickTime videos.
+  * Added custom palette mods for SQ3 and LSL2 from the FreeSCI project.
+    When enabled, the mods improve the visuals
+  * in these two games.
+  * Added support for Macintosh version of Gabriel Knight 1.
+  * Added support for CD-Audio version of Mixed-Up Mother Goose.
+  * Added support for Korean fan translations from the scummkor project: Castle of Dr. Brain,
+  * EcoQuest 1, Gabriel Knight 1, King’s Quest 1, 5, and 6, Laura Bow 2, and Space Quest 4.
+  * Added support for Space Quest 4 Update 1.3 by New Rising Sun.
+  * Added support for French LSL1VGA.
+  * Added support for Hebrew QFG1VGA.
+  * Added support for Hebrew GK1.
+  * Added support for Russian Longbow.
+  * Added support for Russian LSL6.
+  * Added support for alternate Russian LSL7.
+  * Added support for alternate Polish LSL7 including files packaged with InstallShield.
+  * Added support for alternate Russian SQ5.
+  * Added support for alternate Russian Torin’s Passage.
+  * Added support for fan game Soulshade Asylum.
+  * SCI1.1 views are now scaled accurately.
+  * Fixed sounds not stopping or restarting correctly.
+  * Fixed sound issues when restoring SCI0 games.
+  * Fixed corruption when “Prefer digital sound effects” was disabled in SCI1 games.
+  * Space Quest 4 CD sound effects now match the selected platform.
+  * Added option to enable Windows cursors in CD versions of King’s Quest 5 and Space Quest 4.
+  * Fixed “Girl In The Tower” song not playing at the end of King’s Quest 6 CD.
+  * Fixed King’s Quest 5 Amiga beach error that prevented completing the game.
+  * Fixed over 30 script bugs in GK1, HOYLE4, KQ1DEMO, KQ5, KQ6, KQ7, LB1,
+  * LSL3, PEPPER, PQ3, QFG3, SQ1, SQ4, and SQ6.
+  * Unlocked JANE easter egg in Gabriel Knight 1.
+  SCUMM:
+  * Fixed Chinese, Japanese and Korean text display for The Dig and for
+    The Curse of Monkey Island. These fixes
+  * also include some improvements to the common text display (mainly the formatting of wrapped texts).
+  * Fixed display of Chinese, Japanese and Korean pause and restart dialogs.
+  * Added support for numerous Korean translations from scummkor project.
+  * Added support for Russobit-M versions of Pajama2 and SpyOzone.
+  * Fixed speech playback in Akella version of COMI.
+  * Added support for Discord and Humble Bundle versions of Indiana Jones and the Fate of Atlantis.
+  * Added smooth scrolling for FM-TOWNS versions of games.
+  * Added optional trimming to 200 pixels for some FM-TOWNS games, so aspect-ratio correction is possible.
+  * Fixed audio distortion in Loom for PC-Engine.
+  * Added support for the high resolution font and cursor in the 16-color Macintosh version of Loom.
+  * Added support for Japanese Mac version of The Dig.
+  * Added partial support for the high resolution fonts and cursor in the
+  * 16-color Macintosh version of Indiana Jones and the Last Crusade.
+  * Fixed missing instruments in the m68k Mac versions of Monkey Island 2
+  * and Indiana Jones and the Fate of Atlantis.
+  * Added “Macintosh b/w” render mode for the 16-color Macintosh versions of
+  * Loom and Indiana Jones and the Last Crusade.
+  * Enabled difficulty selection in the version of Monkey Island 2 that was
+  * included on the LucasArts Mac CD Game Pack II compilation. (It had been
+  * disabled along with the copy protection.)
+  * Repaired clumsy crack in Maniac Mansion (enhanced)'s keypad script.
+  * This means that the GOG and Steam versions will no longer accept incorrect
+  * numbers, e.g. for Edna’s phone number. (Why are they selling a cracked
+  * version anyway?!)
+  * Added support for Low quality music in Macintosh version of Loom.
+  * Improved Digital iMUSE accuracy for Full Throttle and The Curse of Monkey Island.
+    These improvements also fix several audio related bugs for both games.
+  * Fixed a very old regression in the walk code for Full Throttle which softlocked the game.
+  * Improved the accuracy of the walk code for The Dig and The Curse of Monkey Island.
+  * Fixed a bug in The Curse of Monkey Island which prevented, during the cannon minigame
+    in Part 1, the destruction of one of the three destroyable turrets in the fort.
+  * Added animated cigar smoke to the close-up of captain Smirk in the CD
+  * version of Monkey Island 1. It was present in earlier versions.
+  * Restored some missing Lemonhead lines in the English, Italian, German and Spanish CD
+  * versions as well as the English Macintosh, FM-Towns and Sega CD versions
+  * of Monkey Island 1.
+  * Made the clock tower in Monkey Island 1 behave the same in the CD version
+  * as in earlier versions, i.e. after examining it you have to leave the
+  * room and come back again for its description to change.
+  Tinsel:
+  * Enabled the Return to Launcher feature.
+  Titanic:
+  * Fixed crashes when asking bots what I should do.
+  TsAGE:
+  * Added support for uninstalled floppy version.
+  Stark:
+  * Added support for Hungarian translation.
+  Supernova:
+  * Added Italian translation for part 1.
+  Sword25:
+  * Made the extracted version working.
+  * Fixed crash when selecting Croatian language.
+  Ultima:
+  * Ultima 4: Added several debugger commands.
+  * Ultima 4: Allow Enter key to exit ZStats display.
+  * Ultima 8: Fixed several animation bugs for events and objects.
+  * Ultima 8: Restored original text for the Spell of Resurrection book.
+  Xeen:
+  * Fixed occasional border corruption during fights.
+  * Improvements to cutscenes to better match the original games.
+  * Fixes for character selection, deselection, and dismissing to better match original.
+  * Added support for Russian version.
+  AmigaOS port:
+  * Added native system file browser feature.
+  * Re-activated nuked OPL Adlib driver.
+  Big-endian ports:
+  * Fixed crashes or rendering issues with the Blazing Dragons, Duckman and
+  * Full Pipe games.
+  iOS port:
+  * Fixed using arrow keys on physical keyboard in iOS 15.
+  * Fixed rotating the device while ScummVM is inactive.
+  * Added support for upside down portrait orientation.
+  macOS port:
+  * Added support for Dark Mode.
+  * Use OpenGL renderer by default, providing better support for HiDPI displays.
+  MorphOS port:
+  * Added native system file browser feature.
+  * Added Cloud feature.
+  * Re-activate nuked OPL Adlib driver.
+  * Added CAMD MIDI driver support.
+  Windows port:
+  * Use OpenGL renderer by default, providing better support for HiDPI displays.
+- Drop all patches to fix build with fluidsynth 2.2 (0001-0006)
+  * 0001-FLUIDSYNTH-Make-FluidSynth-logging-less-noisy-by-default.patch
+  * 0002-FLUIDSYNTH-Swapped-debug-levels-for-FLUID_WARN-and-FLUID_INFO.patch
+  * 0003-FLUIDSYNTH-Fix-build.patch
+  * 0004-AUDIO-Fix-compilation-with-Fluidsynth2.patch
+  * 0005-FLUIDSYNTH-Simplify-FluidSynth-version-check.patch
+  * 0006-FLUIDSYNTH-Fix-compilation-with-Fluidsynth-2.2.patch
+- Enable build with libmpeg2
+
+-------------------------------------------------------------------
+Fri Apr 16 14:49:13 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream to fix build with fluidsynth 2.2
+  * 0001-FLUIDSYNTH-Make-FluidSynth-logging-less-noisy-by-default.patch
+  * 0002-FLUIDSYNTH-Swapped-debug-levels-for-FLUID_WARN-and-FLUID_INFO.patch
+  * 0003-FLUIDSYNTH-Fix-build.patch
+  * 0004-AUDIO-Fix-compilation-with-Fluidsynth2.patch
+  * 0005-FLUIDSYNTH-Simplify-FluidSynth-version-check.patch
+  * 0006-FLUIDSYNTH-Fix-compilation-with-Fluidsynth-2.2.patch
+
+-------------------------------------------------------------------
+Thu Nov  5 14:10:14 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Add Discord RPC support.
+
+-------------------------------------------------------------------
+Thu Oct  1 16:46:47 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Drop 0001-AUDIO-Really-Fix-Compilation-Against-Fluidsynth-v2.1.patch
+- Update to version 2.2.0
+  * Add support for ~1594 Interactive Fiction games
+  * Adds 3 more game engines and extended another 4
+
+-------------------------------------------------------------------
+Sat Aug 22 09:24:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.2:
+   - Fixed an issue with the Sparkle updater which lead to an infinite update loop.
+   - Fixed application freeze on start on Mac OS X 10.5 and older.
+   - Fixed application icon on Mac OS X 10.5 and older.
+
+-------------------------------------------------------------------
+Tue Jan 28 09:21:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.1.1
+  General:
+  * Fixed crash when switching certain languages in GUI.
+  * Fixed ESC erroneously saving the changes in the options dialog.
+  * Improvements in FM-TOWNS/PC-98 audio.
+  * Improved Greek language support in the GUI.
+
+  Networking:
+  * Improved error handling.
+  * Only download saves when necessary.
+
+  Bladerunner:
+  * Fixed buggy savestate in some scenes.
+  * Added engine checkbox to target 120fps.
+  * Fixed thumbnail portability.
+  * Use virtual keyboard on save screen on relevant platforms.
+
+  Kyra:
+  * Fixed EOB1-Amiga ending sequence (which would play only if you
+    achieved all bonus quests).
+  * Fixed monster random item drop chance in EOB1.
+  * Added handling for the secret potion in the Legend of Kyrandia 2.
+  * Fixed sound issues in the Legend of Kyrandia 2.
+  * Fixed graphics glitches in Legend of Kyrandia 1 and 3, EOB1 and
+    EOB2-FM-TOWNS.
+
+  Mohawk:
+  * Persist changes in game options across sessions.
+
+  Queen:
+  * Fixed regression with the display of the bellboy dialogue.
+
+  SCI:
+  * Numerous game script fixes in CAMELOT, ECO2, GK1, GK2,
+     KQ7, PHANT1, PQ1VGA, QFG3, QFG4, SQ5 and SQ6.
+  * Implement horizontal and FM-TOWNS type screen shake.
+  * Added support for Phantasmagoria 1 censored mode.
+  * Added support for Polish LSL7.
+  * Added support for Italian GK2.
+  * Added support for Portuguese GK2.
+  * Added support for Russian KQ7.
+  * Added support for Russian SQ1VGA.
+  * Added support for GK2 fan-made subtitle patches.
+
+  SCUMM:
+  * Added support for Pajama2 (UK release).
+
+  Supernova:
+  * Hooked F5 to the Main Menu.
+
+  Toltecs:
+  * Added Czech version support.
+  * Fixed exiting from game menus when returning to the launcher.
+
+  Wintermute:
+  * Added several missing game variants and demos to the detection tables.
+  * Fixed regression with stack handling.
+  * Fixed the behavior of edit boxes.
+  * Improved support for Chinese language game variants.
+
+  Xeen:
+  * Fixed display of gold and gem amounts on the Switch.
+  * Fixed tavern exit locations in Swords of Xeen.
+  * Fixed crash loading Deep Mine Alpha in World of Xeen CD.
+
+  GUI:
+  * MIDI setting tabs are no longer shown if a game has no music at all.
+
+  All ports:
+  * Fixed screen filling in non-paletted screen modes.
+
+  3DS port:
+  * Major improvements.
+
+  AmigaOS4 port:
+  * Minor tweaks (stack cookie, build automation).
+
+  Android port:
+  * Improved filesystem navigation.
+  * Proper handling of HiDPI displays.
+  * Improved keyboard support.
+
+  iOS port:
+  * The home indicator is now automatically hidden on iPhone X and later models.
+
+  MacOS X port:
+  * Follow the OS dark theme for window decorations.
+
+  RISC OS port:
+  * Fixed crash when accessing an unavailable drive.
+  * Reduced the required DigitalRenderer version.
+
+  Switch port:
+  * Added cloud integration.
+
+  OpenPandora port:
+  * Minor improvements.
+
+  Windows:
+  * Added Text-to-Speech support.
+  * Fix screenshots with Unicode paths.
+- Add 0001-AUDIO-Really-Fix-Compilation-Against-Fluidsynth-v2.1.patch
+  to fix build with fluidsynth 2.1
+
+-------------------------------------------------------------------
+Mon Dec  9 15:01:25 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Undefine _lto_cflags before building scummvm. The lto flags are
+  incompatible with -gsplit-dwarf which scummvm relies on.
+
+-------------------------------------------------------------------
+Sat Oct 12 12:38:37 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.1.0
+  New games:
+  * Added support for Blade Runner.
+  * Added support for Duckman: The Graphic Adventures of a
+    Private Dick.
+  * Added support for Hoyle Bridge.
+  * Added support for Hoyle Children's Collection.
+  * Added support for Hoyle Classic Games.
+  * Added support for Hoyle Solitaire.
+  * Added support for Hyperspace Delivery Boy!
+  * Added support for Might and Magic IV - Clouds of Xeen.
+  * Added support for Might and Magic V - Darkside of Xeen.
+  * Added support for Might and Magic - World of Xeen.
+  * Added support for Might and Magic - World of Xeen 2 CD
+    Talkie.
+  * Added support for Might and Magic - Swords of Xeen.
+  * Added support for Mission Supernova Part 1.
+  * Added support for Mission Supernova Part 2.
+  * Added support for Quest for Glory: Shadows of Darkness.
+  * Added support for The Prince and the Coward.
+  * Added support for Versailles 1685.
+  New ports:
+  * Added Nintendo Switch port.
+  General:
+  * Improved GUI rendering and overall GUI performance.
+  * Added stretch mode option to control how the display is
+    stretched to the window or screen area.
+  * Fixed incorrect cursor movement when it's controlled using
+    the keyboard.
+  * Updated the Roland MT-32 emulation code to Munt 2.3.0.
+  * Improved unknown game variants reporting.
+  * Enabled cloud support.
+  * Added Text to Speech capabilities for better accessibility
+    on some platforms.
+  ADL:
+  * Improved color accuracy.
+  * Added a TV emulation mode.
+  * Added support for the WOZ disk image format.
+  Drascula:
+  * Fixed loading game from launcher when the game had been
+    saved in chapter 1.
+  Full Pipe:
+  * Fixed playtime not being restored when loading a savegame.
+  * Fixed a bug that leads to enormous memory consumption in
+    scene 22.
+  Kyra:
+  * Added support for the Amiga version of Eye of the Beholder I
+    + II.
+  * Added support for the FM-Towns version of Eye of the
+    Beholder II.
+  * Several bug fixes.
+  MOHAWK:
+  * Added a main menu for the 25th anniversary release of Myst
+    ME.
+  * Repurposed the landing menu as a main menu for the 25th
+    anniversary release of Riven.
+  * Added autosave to slot 0 to Myst and Riven.
+  * Added keyboard shortcuts for loading and saving as
+    documented in the game manual to Myst and Riven.
+  * Fixed a crash caused by the observatory viewer random
+    position going out of bounds in Myst.
+  * Fixed a crash caused by Jungle Island flies going out of
+    bounds in Riven.
+  * Fixed missing end credits for the Polish version in Riven.
+  * Improved usability for some puzzles in Myst and Riven.
+  * Fixed various crashes, graphics glitches, and sound
+    imperfections in Myst and Riven.
+  Mortevielle:
+  * Added speech synthesis on some platforms.
+  SCI:
+  * Added LarryScale, a high quality cartoon scaler for Leisure
+    Suit Larry 7.
+  * Fixed over 100 original game script bugs in CAMELOT, ECO1,
+    ECO2, FREDDYPHARKAS, GK1, HOYLE5, ICEMAN, KQ6, LB1, LB2,
+    LONGBOW, LSL6, MOTHERGOOSE256, PQ3, PQ4, QFG1VGA, QFG4, and
+    SQ4.
+  * Fixed a bug in version 2.0.0 that prevented the Macintosh
+    versions of Freddy Pharkas, King's Quest 6, and Quest for
+    Glory 1 (VGA) from loading.
+  * Fixed a crash in the Macintosh version of Freddy Pharkas
+    when picking up the shovel which makes the game completable.
+  * Fixed loading autosave games.
+  SCUMM:
+  * Implemented lipsync for v6 and v7+ games.
+  * Improved Audio quality in Humongous Entertainment games by
+    using the Miles AdLib driver.
+  * Fixed possible stack overflows in The Dig and Full Throttle.
+  * Fixed original speech glitch on submarine in Indiana Jones
+    and the Fate of Atlantis. Users need to recompress their
+    monster.sou using an up-to-date version of scummvm-tools for
+    this to take effect when using compressed audio.
+  * Fixed an issue in the wig maker room in the German version
+    of SPY Fox 3: Operation Ozone which makes the game
+    completable.
+  * Added sound driver for the Amiga versions of Monkey Island 2
+    and Indiana Jones and the Fate of Atlantis.
+  Sherlock:
+  * Fixed crash in Spanish version talking to lady in Tailor
+    shop.
+  SKY:
+  * Added workaround for original game bug to improve intro and
+    not cut off images which exist as fullscreen (320x200px) in
+    the game data files.
+  Tinsel:
+  * Fix loading Discworld 1 savegames from the launcher where
+    Rincewind had a held item.
+  * Script patch for hang in Discworld 1 GRA using items on
+    Temple big hammer.
+  * In Discworld 1, Held items being released that were never in
+    the Luggage or Rincewind's inventory will now be
+    automatically dropped into the Luggage rather than being
+    lost.
+  Titanic:
+  * Fixed bug in entering floor numbers numerically that could
+    crash the game.
+  * Fixed parser not getting properly reset across sentences in
+    a conversation.
+  * Fixed endless busy cursor on Titania closeup when brain
+    slots are incorrectly inserted.
+  * Fixed loading saves in front of Barbot could cause him to go
+    into an infinite animation loop.
+  * Fixed crash asking Parrot who sabotaged the ship.
+  Tucker:
+  * Fixed multiple graphic issues in Bud Tucker in Double
+    Trouble.
+  * Fixed multiple issues with font and subtitle rendering.
+  * Fixed dentist music in mall being played incorrectly.
+  * Fixed wrong sound effects being played.
+  * Fixed a bug that made the bubbles in the Plugs Shop not
+    always visible.
+  * Fixed a missing animation when Ego and Billie are on the
+    boat.
+  * Fixed a bug that caused a dead end in the second museum
+    scene.
+  * Bud is no longer able to walk outside the walkable area when
+    visiting the club.
+  * Bud is also no longer able to walk through closed doors.
+  * Added mouse wheel support for inventory scrolling.
+  * Allow skipping of speech.
+  * Improved savegame handling and added support for autosaves.
+  ZVISION:
+  * Fixed graphical glitch in Zork: Grand Inquisitor.
+  * Packaged the required fonts with ScummVM.
+  SDL ports (including Windows, Linux, macOS):
+  * Added support for game controllers.
+  * Added support for adding games via Drag and Drop.
+
+- Dropped scummvm-fix_CVE-2017-17528.patch (merged upstream)
+
+- Dropped scummvm.changes as source (no longer necessary as date
+  reference)
+
+-------------------------------------------------------------------
+Sun Aug 11 17:58:36 UTC 2019 - Benoît Monin <benoit.monin@gmx.fr>
+
+- run spec-cleaner
+  * update copyright date
+  * update bugzilla url
+  * correct the license
+- fix the configure failure by building the endianess test without
+  optimization
+
+-------------------------------------------------------------------
+Mon Dec 18 09:12:00 UTC 2017 - aloisio@gmx.com
+
+- Added scummvm-fix_CVE-2017-17528.patch to address (boo#1073248)
+
+-------------------------------------------------------------------
+Sun Dec 17 19:25:33 UTC 2017 - alarrosa@suse.com
+
+- Update to version 2.0.0
+  New Games:
+  * Added support for Full Pipe.
+  * Added support for Hi-Res Adventure #3: Cranston Manor.
+  * Added support for Hi-Res Adventure #4: Ulysses and the Golden Fleece.
+  * Added support for Hi-Res Adventure #5: Time Zone.
+  * Added support for Hi-Res Adventure #6: The Dark Crystal.
+  * Added support for Riven.
+  * Added support for Starship Titanic English & German.
+  New Games (Sierra SCI2 - SCI3):
+  * Added support for Gabriel Knight.
+  * Added support for Gabriel Knight 2.
+  * Added support for King's Quest VII.
+  * Added support for King's Questions.
+  * Added support for Leisure Suit Larry 6 (hires).
+  * Added support for Leisure Suit Larry 7.
+  * Added support for Lighthouse.
+  * Added support for Mixed-Up Mother Goose Deluxe.
+  * Added support for Phantasmagoria.
+  * Added support for Phantasmagoria 2.
+  * Added support for Police Quest 4.
+  * Added support for RAMA.
+  * Added support for Shivers.
+  * Added support for Space Quest 6.
+  * Added support for Torin's Passage.
+  General:
+  * Added bilinear filtering option for SDL2 fullscreen mode.
+  * Fixed a bug that caused a crash in the options dialog of the GUI.
+  * Added a command-line option to automatically scan for supported games in
+    the current or a specified directory.
+  * Added possibility to apply changes in the options dialog without closing
+    the dialog.
+  * Added support for on-the-fly GUI language switching.
+  * Updated Munt MT-32 emulation code to version 2.0.3.
+  * Improved handling of joysticks.
+  * Improved audio latency.
+  * Improved management of the ScummVM window in games that switch display
+    modes.
+  * Fixed list view drawing over text above it (for example in the save dialog).
+  * Changed location where screenshot are saved. This fixes issues when scummvm
+    is installed in a read*only directory. Also added setting to allow changing
+    this location.
+  * Changed screenshot format to png.
+  * Fixed multithreading issue that could cause a crash in games using MP3 audio.
+  ADL:
+  * Fixed application freeze when reading sign in rocket in Mission Asteroid.
+  AGI:
+  * Fixed game script blocking forever after loading a savegame that was saved
+    while music was playing (this could happen for example in Police Quest 1
+    poker back room.
+  * Fixed cursor behaviour in Manhunter.
+  * Fixed nightclub arcade sequence speed for Manhunter Apple IIgs version.
+  * Reduced fastest game speed to a maximum of 40 FPS to ensure the games do
+    not run too fast.
+  AGOS:
+  * Fixed subtitle speed setting in the Hebrew version of Simon the Sorcerer 1.
+  Composer:
+  * Added save/load from General Main Menu.
+  * Fixed the detection for the French Gregory.
+  * Added detection for German Baba Yaga.
+  Cruise:
+  * Fixed font rendering.
+  Drascula:
+  * Fixed bug that made it impossible to talk to the drunkard more than once in the inn.
+  * Added handling of the master volume and fix volume synchronization between
+    the game and ScummVM options.
+  * Added possibility to load and save games using GMM.
+  Dreamweb:
+  * Fixed crash when collecting last stones under church.
+  * Fixed detection of Italian CD release.
+  Kyra:
+  * Fixed a buffer overflow in Lands of Lore.
+  * Fixed crash due to missing palette data for Legend of Kyrandia floppy version.
+  MADE:
+  * Fixed badly distorted sound (bug #9753).
+  MADS:
+  * Fixed a bug that caused a crash after starting Rex Nebular and the Cosmic Gender Bender.
+  * Fix rare crash that can happen when Rex is first locked up
+  MOHAWK:
+  * Added patch to the original data files to correct the vault access
+    instructions in Myst ME.
+  * Fixed situations where Myst could appear to be unresponsive.
+  * Reworked sound handling in Myst to be more accurate.
+  * Fixed crash in Myst piano puzzle.
+  Neverhood:
+  * Fixed crash in musical hut in Russian DR version.
+  * Fixed late game notes crash in Russian DR version.
+  Pegasus:
+  * Fixed loading a game from the launcher after returning to the launcher.
+  * Ignored events occuring while the GUI is visible. This for example fixed an
+    issue where closing the GMM using Escape would also opens the game's own
+    menu.
+  * Fixed several crashes when toggling the shared screen space.
+  * Improved performances when fading screen.
+  SAGA:
+  * Fixed crash when using the give verb on an actor in IHNM.
+  * Fixed Gorrister invisible and stuck when reloading at mooring ring in IHNM.
+  * Fixed the conversation panel background color in IHNM.
+  * Added support French Fan Translation of Inherit the Earth.
+  SCI:
+  * Fixed a script bug in Laura Bow 2: Dagger of Amon Ra that made it impossible
+    to exit the party room with the large golden head inside the museum (room 350).
+    This bug is also present, when using the original interpreter.
+  * Improved startup speed when using the MT-32 emulator.
+  * Improved handling of MT-32 reverb in SCI0 games.
+  * Improved selection of synthesized sound effects in SCI0 games.
+  * Improved selection of digital audio in SQ4.
+  * Improved resource bounds checking.
+  * Improved error handling of corrupt MIDI data.
+  * Fixed slow leak of small amounts of data into save games over time.
+  * Fixed broken day/night cycle in QFG3.
+  * Fixed a script bug in Police Quest 3 to now grant 10 points when giving the
+    locket to Marie. Now it's possible to beat the game with a perfect score.
+    This bug is also present when using the original interpreter.
+  * Fixed various other script bugs.
+  * Improved audio volume and settings synchronization.
+  SCUMM:
+  * Fixed crash in amiga games.
+  * Fixed two soundtracks playing at once in Monkey Island 2.
+  * Fixed Caponians dont disguise after using blue crystal in Zak McKracken.
+  * Fixed Dr. Fred facing wrong way in lab cutscene in Maniac Mansion.
+  * Fixed actors being drawn one line too high in V0 and V1 games.
+  * Fixed Purple Tentacle appears in Lab Entry after being chased out in maniac Mansion.
+  * Fixed power not turning back on in Maniac Mansion when entering the lab
+    while Dr. Fred has the power off.
+  * Fixed actors skipping between certain walk-boxes in Maniac Mansion.
+  Sherlock:
+  * Fixed detection for Italian fan translation of Serrated Scalpel.
+  Sky:
+  * Fixed collision detection.
+  Sword1:
+  * Added thumbnail when saving from in-game dialog.
+  * Fixed audio and subtitles settings being changed when open the load/save
+    in*game dialog.
+  Tinsel:
+  * Fixed some Discworld 2 text/voice not displaying & playing all the way through
+  * Fix crash in in-game save menu when all slots are used with long names
+  TsAGE:
+  * Fixed regression preventing animations in Return to Ringworld from playing.
+  * Fixed display issues in Return to Ringworld Demo.
+  * Fixed loading Return to Ringworld savegames with unreferenced dynamic objects.
+  * Fixed deadlock in audio code.
+  * Fixed crash on Return to Launcher.
+  Voyeur:
+  * Fixed backgrounds not showing for static rooms.
+  * Fixed playback of audio events on VCR.
+  * Fixed exiting game from the VCR screen.
+  * Added workaround for original game bug using invalid hotspot Ids
+- Drop use-getaddrinfo.patch which is already included upstream
+- Use libmad to build scummvm by default
+
+-------------------------------------------------------------------
+Wed Feb  1 13:19:09 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.9.0
+  New Games:
+  * Added support for Myst.
+  * Added support for Myst: Masterpiece Edition.
+  * Added support for U.F.O.s.
+  * Added support for Hi-Res Adventure #0: Mission Asteroid.
+  * Added support for Hi-Res Adventure #1: Mystery House.
+  * Added support for Hi-Res Adventure #2: The Wizard and the
+    Princess.
+  General:
+  * Fixed audio corruption in the MS ADPCM decoder.
+  * Fixed audio pitch in the CMS/GameBlaster emulation.
+  * Switched SDL backend to SDL2 by default. SDL1 is still a
+    fallback.
+  AGI:
+  * Added support for Hercules rendering. Both green and amber
+    modes are supported.
+  * Added support for the Hercules high resolution font.
+    The font is also usable outside of Hercules rendering.
+  * Added optional "pause, when entering commands" feature,
+    that was only available in the original interpreter for
+    Hercules rendering.
+  Beneath a Steel Sky:
+  * Fixed a bug that could possibly make the game unfinishable
+    due to a wrong animation for Officer Blunt that makes
+    further interaction with this character impossible.
+  Gob:
+  * Fixed graphical issues in Gobliiins (EGA version).
+  Kyra:
+  * Updated Italian EOB1 translation.
+  * Fixed a bug that caused a crash in Lands of Lore.
+  SCI:
+  * Fixed a missing dialog line in QfG3 which awards the player
+    with 3 additional points. This is a bug in the original game
+    interpreter. Due to this bug, it was not possible to get all
+    points in the original game.
+  * Fixed a bug in Space Quest 1 that caused issues with the
+    spider droid.
+  * Fixed a bug in Laura Bow: The Colonel's Bequest that could
+    cause a lock-up when interacting with the armor in room 37
+    (main house, downstairs). This bug is also present in the
+    original game.
+  * Fixed auto-saving in the fan-made Cascade Quest.
+  * Fixed a game bug in the Conquests of Longbow scripts that
+    could cause crashes in Sherwood Forest.
+  * Added support for the ImagiNation Network (INN) demo.
+  SCUMM:
+  * Fixed missing translations in the in-game quit and restart
+    dialogs in Pajama Sam 1.
+  * Fixed visual glitches in DOTT that occured after loading a
+    savegame with the stereo in Green Tentacle's room turned on.
+  * Improved timing and pathfinding in Maniac Mansion (C64 and
+    Apple II versions)
+  * Added support for the Dutch demo of Let's Explore the
+    Airport with Buzzy.
+  Sherlock:
+  * Fixed a bug that could cause a crash in The Case of the
+    Serrated Scalpel.
+  * Fixed an issue with item hotspots in The Case of the
+    Serrated Scalpel.
+  * Fixed a bug that caused game lockups in the inventory of
+    The Case of the Rose Tattoo.
+
+- Dropped appdata.xml.patch (merged upstream)
+
+- Added optional mpeg2 support
+
+-------------------------------------------------------------------
+Sun Aug 21 18:36:00 UTC 2016 - rpm@fthiessen.de
+
+- Using changes as source file for fixing the date-and-time issue,
+  so also list it as a source file.
+- Added use-getaddrinfo.patch to get rid of gethostbyname,
+  this will bring full IPv6 support.
+
+-------------------------------------------------------------------
+Wed Aug  3 08:38:02 UTC 2016 - olaf@aepfle.de
+
+- Correct buildconditionals: aac -> faad, mp3 -> mad
+
+-------------------------------------------------------------------
+Fri Jul 29 17:51:04 UTC 2016 - mailaender@opensuse.org
+
+- Update to 1.8.1 (maintenance release)
+  * General:
+    - Removed TESTING flag from several supported games.
+    - Added Chinese Pinyin translation.
+    - Fixed cursor stuttering in the launcher that occured on some systems.
+  * BBVS:
+    - Fixed game restart.
+  * CinE:
+    - Fixed sound effect loading.
+  * Drascula:
+    - Fixed text alignment to be faithful to the original.
+    - Fixed character walking off screen.
+    - Fixed loading savegames in the Pendulum scene.
+    - Fixed wrong background for inventory items during chapter 6 in the
+     Spanish version.
+    - Fixed animations speed (they were running two times slower than in the
+     original engine).
+    - Fixed noise at start and/or end of speech. This was most noticeable
+     with the Spanish speech.
+    - Fixed delay when interacting with the verb menu and the inventory.
+    - Fixed possibility to pick up the axe in the castle multiple times.
+  * Gob:
+    - Fixed lock up for some games during sound initialization.
+  * KYRA:
+    - Fixed potential crash when using swamp snake potion on the rat in Hand
+     of Fate. (NOTE: This fix was included in version 1.8.0, but it was not
+     added to the NEWS file).
+    - Fixed missing voice reactions when hitting enemies in CD version of
+     Lands of Lore.
+  * Lab:
+    - Fixed lock-up during ending sequence.
+    - Improved internal game controls.
+    - Fixed lock-up during some in-game animations.
+  * SAGA:
+    - Fixed user interface colors in the French and German versions of I Have No
+     Mouth and I Must Scream.
+  * SCI:
+    - Make cursor workarounds work properly on OpenPandora (and other devices, that
+     support touch screen and analog sticks/mouse at the same time)
+    - Script patch to fix broken ending battle in multilingual King's Quest 5
+     (French, German + Spanish versions are all broken)
+    - Fixed invalid memory access, when loading broken King's Quest 5 credit music track
+    - Fixed lowres/hires issues in King's Quest 6 when saving, changing the lowres/hires
+     setting and restoring the saved game afterwards.
+  * SCUMM:
+    - Fixed detection of Maniac Mansion from Day of the Tentacle in the Windows
+     version of ScummVM.
+    - Fixed a sound effect not stopping in Loom EGA with AdLib.
+  * Broken Sword 2.5:
+    - Added option to use English speech instead of German one when no speech is
+     available for the selected language.
+    - Fixed resource releasing on game exit.
+    - Fixed game restart after language change in-game.
+    - Fixed flickering in main Menu.
+    - Fixed long save time on Windows.
+- Add appdata.xml.patch
+
+-------------------------------------------------------------------
+Sun Mar  6 12:25:48 UTC 2016 - mailaender@opensuse.org
+
+- Update to 1.8.0
+  * New Games:
+    - Amazon: Guardians of Eden
+    - Beavis and Butthead in Virtual Stupidity
+    - Broken Sword 2.5: The Return of the Templars
+    - Labyrinth of Time
+    - Rex Nebular and the Cosmic Gender Bender
+    - Sfinx
+    - The Lost Files of Sherlock Holmes: The Case of the Rose Tattoo
+    - The Lost Files of Sherlock Holmes: The Case of the Serrated Scalpel
+    - Zork: Grand Inquisitor
+    - Zork Nemesis: The Forbidden Lands
+  * Updated the MT-32 (Miles Audio) emulator
+  * Overhauled the graphics subsystem in AGI
+- Remove scummvm-underlinking.patch
+- Remove scummvm-themed_icons.patch
+
+-------------------------------------------------------------------
+Sat Sep 13 19:21:29 UTC 2014 - mailaender@opensuse.org
+
+- Update to 1.7.0
+  * New Games:
+    - Added support for Chivalry is Not Dead.
+    - Added support for Return to Ringworld.
+    - Added support for The Neverhood.
+    - Added support for Mortville Manor.
+    - Added support for Voyeur.
+  * General:
+    - Updated Munt MT-32 emulation code to version 1.3.0.
+    - Switched from our custom JPEG and PNG decoders to libjpeg(-turbo) and
+      libpng, which are faster and can handle more images.
+    - Added generic OpenGL (ES) output (based on GSoC Task).
+    - The GUI can now be rendered in 32-bits.
+    - The build system has been changed to be more modular and easier to add new
+      engines.
+  * SDL:
+    - Added OpenGL graphics mode based on our generic OpenGL output. This
+      allows for arbitrary output sizes. However, it does not support special
+      filters like AdvMAME, HQ, etc.
+  * AGOS:
+    - Added mouse wheel support for inventory and save game lists.
+    - Enabled verb name display in Simon the Sorcerer 2.
+    - Fixed the Feeble Files loyalty rating in the English 4CD version. (This
+      was apparently a bug in the original game. It is currently unknown if
+      other versions still have the same problem.)
+  * Broken Sword 1:
+    - Added back support for MPEG-2 videos.
+  * Broken Sword 2:
+    - Added back support for MPEG-2 videos.
+  * CGE:
+    - Added an option to enable "Color Blind Mode" to the ScummVM GUI.
+  * Gob:
+    - Improved video quality in Urban Runner.
+  * Hopkins:
+    - Added an option to toggle "Gore Mode" from the ScummVM GUI.
+    - Fixed bug that could cause the music to stop prematurely.
+  * Pegasus:
+    - Fixed several rare crashes and glitches.
+    - Fixed multiple bugs carried over from the original binary.
+  * SCI:
+    - Added support for the more detailed RAVE lip syncing data in the Windows
+      version of King's Quest 6. Portraits should now be much more expressive
+      when talking.
+    - Added support for simultaneous speech and subtitles in the CD versions
+      of Laura Bow 2 and King's Quest 6 (toggled either in-game with the new
+      "Dual" audio state, or via the ScummVM audio options).
+    - Fixed music fading.
+    - Fixed several script bugs in Camelot, Crazy Nick's, Hoyle 3, QFG1VGA, KQ5,
+      KQ6, LB2, LSL2, LSL5, Pharkas, PQ1VGA, SQ4, SQ5.
+    - Improved the MIDI parser so that music event processing is done more
+      properly.
+  * SCUMM:
+    - Changed the saved game naming scheme of HE games to always contain
+      the target name.
+    - Fixed having multiple coaches in Backyard Football.
+    - Improved AdLib support for Loom and Indiana Jones and the Last Crusade.
+      This makes sound effects like, for example, the typewriter and waterfall
+      in Indiana Jones and the Last Crusade sound like in the original.
+    - Added support for the Steam versions of Indiana Jones and the Last
+      Crusade, Indiana Jones and the Fate of Atlantis, Loom and The Dig. Both
+      the Windows and the Macintosh versions are supported.
+  * TONY:
+    - Savegames in Tony Tough now work on big-endian systems.
+  * Tinsel:
+    - Discworld 1 and 2 no longer crash on big-endian systems.
+
+-------------------------------------------------------------------
+Thu Jun  6 21:11:18 UTC 2013 - reddwarf@opensuse.org
+
+- Update to 1.6.0
+  * New Games:
+    - Added support for 3 Skulls of the Toltecs.
+    - Added support for Eye of the Beholder.
+    - Added support for Eye of the Beholder II: The Legend of Darkmoon.
+    - Added support for Hopkins FBI.
+    - Added support for Tony Tough and the Night of Roasted Moths.
+    - Added support for The Journeyman Project: Pegasus Prime.
+    - Added support for the Macintosh version of Discworld 1.
+  * General:
+    - Added a new save/load chooser based on a grid of thumbnails. This is only
+      supported for resolutions bigger than 640x400. The old chooser is still
+      available and used for games without thumbnail support. It is possible to
+      select the old one as default too.
+    - Rewrote VideoDecoder subsystem.
+    - Added Galician translation.
+    - Added Finnish translation.
+    - Added Belarusian translation.
+    - Using the mouse wheel on a slider widget now changes the value by the
+      smallest possible amount. This is more predictable than the old behaviour,
+      which was to change the value by "one pixel" which would sometimes not
+      change it at all.
+    - Updated MT-32 emulation code to latest munt project snapshot.
+    - Added FluidSynth settings dialog, mainly for reverb and chorus settings.
+    - Fixed crash on certain Smacker movies.
+  * Cine:
+    - Improved audio support for Amiga and AtariST versions of Future Wars.
+      Now music fades out slowly instead of stopping immediately. Sound
+      effects are now properly panned, when requested by the game.
+  * CGE:
+    - Soltys contains a puzzle requiring the ALT key to be pressed while clicking
+      on an object. This puzzle has been disabled on devices not using this key.
+  * Drascula:
+    - Resolved multiple UI issues with the original save/load screen.
+    - Added advanced savegame functionality, including savegame timestamps and
+      thumbnails and the ability to load and delete savegames from the launcher.
+      It's now possible to use the ScummvM save/load dialogs.
+    - The F7 key (previously unmapped) now always shows the ScummVM load screen.
+      The F10 key displays either the original save/load screen, or the ScummVM
+      save screen, if the user has selected to use the ScummVM save/load
+      dialogs.
+  * Dreamweb:
+    - Now that the game is freeware, there is a small extra help text showing
+      the available commands in the in-game terminals when the player uses the
+      'help' command. Previously, players needed to consult the manual for the
+      available commands. Since this reference to the manual is a form of copy
+      protection, this extra line can be toggled by the ScummVM copy protection
+      command line option.
+  * Groovie:
+    - Simplified the movie speed options, and added a custom option for The 7th
+      Guest. Movie options are now "normal" and "fast", with the latter changing
+      the movie speed in T7G to match the faster movie speed of the iOS version.
+      The game entry might need to be readded in the launcher for the new setting
+      to appear.
+  * SAGA:
+    - Added music support for the Macintosh version of I Have No Mouth and, I
+      Must Scream.
+  * SCUMM:
+    - Implemented Monkey Island 2 Macintosh's audio driver. Now we properly
+      support its sample based audio output. The same output is also used for
+      the m68k Macintosh version of Indiana Jones and the Fate of Atlantis.
+    - Improved music support for the Macintosh version of Monkey Island 1. It
+      now uses the original instruments, rather than approximating them with
+      General MIDI instruments, and should sound a lot closer to the original.
+    - Added sound and music support for the Macintosh version of Loom.
+    - Handle double-clicking in the Macintosh version of Loom.
+    - Major bugfixes in INSANE (the Full Throttle bike fights).
+  * TOUCHE:
+    - Added support for Enhanced Music by James Woodcock
+      (http://www.jameswoodcock.co.uk/category/scummvm-music-enhancement-project/).
+- Remove scummvm-nostrip.patch
+- Add scummvm-themed_icons.patch
+
+-------------------------------------------------------------------
+Tue Oct 23 07:29:50 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  SPDX format - plus it appears as though only one license relevant binary
+  is created (2 if you count the extra package) - meaning that the binary
+  is almost GPL licensed (i.e. there does not appear to be a library which
+  could be LGPL licensed)
+
+-------------------------------------------------------------------
+Sat Jul 21 22:37:28 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 1.5.0
+  * New Games:
+    - Added support for Backyard Baseball 2003.
+    - Added support for Blue Force.
+    - Added support for Darby the Dragon.
+    - Added support for Dreamweb.
+    - Added support for Geisha.
+    - Added support for Gregory and the Hot Air Balloon.
+    - Added support for Magic Tales: Liam Finds a Story.
+    - Added support for Once Upon A Time: Little Red Riding Hood
+    - Added support for Sleeping Cub's Test of Courage.
+    - Added support for Soltys.
+    - Added support for The Princess and the Crab.
+  * General:
+    - Updated MT-32 emulation code to latest munt project snapshot.
+      The emulation improved dramatically.
+    - Implemented support for TrueType fonts via FreeType2 in our
+      GUI. Along with it GNU FreeFont was also added to our modern
+      theme. Note that not all ports take advantage of this.
+    - Added Basque translation.
+    - Added custom game and engine options in the AGI, DREAMWEB,
+      KYRA, QUEEN, SKY and SCI engines. It is now possible to
+      toggle these options via the Engine tab when adding or
+      editing a configuration for a game. In most cases, you will
+      have to run each game once or readd them all in ScummVM's
+      launcher in order to get the custom options tab.
+    - Improved predictive dialog look.
+    - Various GUI improvements.
+  * Broken Sword 1:
+    - Fixed incorrect sound effects in the DOS/Windows demo.
+    - Added support for PlayStation videos.
+    - Fixed missing subtitles in the demo.
+  * Broken Sword 2:
+    - Added support for PlayStation videos.
+  * Cine:
+    - Implemented Roland MT-32 output driver.
+  * Drascula:
+    - Added Spanish subtitles in the Von Braun cutscene (#3069981:
+      no subtitles in scene with "von Braun").
+  * Gob:
+    - Fixed a crash in Lost in Time
+    - Rewrote the AdLib player. Enabled the now working MDY player
+      in Fascination and Geisha.
+  * SCUMM:
+    - Added support for the Macintosh version of SPY Fox in Hold
+      the Mustard.
+    - Added a difficulty selection dialog for Loom FM-TOWNS.
+    - Fixed graphical glitches in HE98 version of Pajama Sam's Lost
+      & Found.
+
+-------------------------------------------------------------------
+Wed May 16 13:35:26 UTC 2012 - reddwarf@opensuse.org
+
+- fix license issues (bnc#761623)
+
+-------------------------------------------------------------------
+Fri Mar 30 13:56:31 UTC 2012 - reddwarf@opensuse.org
+
+- update to 1.4.1
+
+-------------------------------------------------------------------
+Thu Sep  1 08:35:15 UTC 2011 - reddwarf@opensuse.org
+
+- update to new 1.3.1 release
+ * General:
+   - Improved audio device detection and fallback.
+     There should be no more silent errors due to invalid audio devices.
+     Instead ScummVM should pick up a suitable alternative device.
+
+ * Mohawk:
+   - Added detection entries for more variants of some Living Books
+     games.
+
+ * Tinsel:
+   - Fixed a regression that made Discworld uncompletable.
+
+ * SAGA:
+   - Fixed a regression in Inherit the Earth's dragon walk code which
+     was causing crashes there.
+   - Fixed a regression causing various crashes in I Have No Mouth and
+     I Must Scream.
+
+ * SCI:
+   - Added detection entries for some Macintosh game versions.
+   - Audio settings are now stored correctly for the CD version of EcoQuest 1.
+
+ * SCUMM:
+   - Fixed graphics bug in FM-TOWNS versions of games on ARM devices
+     (Android, iPhone, etc.).
+
+-------------------------------------------------------------------
+Thu Jun  2 09:12:42 UTC 2011 - cmorve69@yahoo.es
+
+- update to new 1.3.0 release
+  * New Games:
+    - Added support for Backyard Baseball.
+    - Added support for Backyard Baseball 2001.
+    - Added support for Urban Runner.
+    - Added support for Playtoons: Bambou le Sauveur de la Jungle.
+    - Added support for Toonstruck.
+    - Added support for Living Books v1 and v2 games.
+    - Added support for Hugo's House of Horrors, Hugo 2: Whodunit?
+      and Hugo 3: Jungle of Doom.
+    - Added support for Amiga SCI games (except Conquests of the
+      Longbow).
+    - Added support for Macintosh SCI1 games.
+
+  * General
+    - Added Danish translation.
+    - Added Norwegian Bokmaal translation.
+    - Added Norwegian Nynorsk translation.
+    - Added Swedish translation.
+    - Added Debug Console to Cine, Draci, Gob, MADE, Sword1, Touche
+      and Tucker Engines.
+    - Closed significant memory leaks. RTL should now be more
+      usable.
+
+  * AGOS:
+    - Closed memory leaks in Simon 2 and Feeble Files.
+
+  * Cine:
+    - Corrected memory leaks and invalid memory accesses.
+      Future Wars should be more stable.
+    - Made Operation Stealth completable, though significant
+      graphical glitches remain so not official supported.
+
+  * Drascula:
+    - Added German and French subtitles in the Von Braun cutscene
+      (#3069981: no subtitles in scene with "von Braun").
+    - Improved French translation of the game.
+    - Added support for "Return To Launcher".
+
+  * Gob:
+    - Fixed "Goblin Stuck On Reload" bugs affecting Gobliiins.
+
+  * Kyra:
+    - Closed memory leaks.
+
+  * Parallaction:
+    - Corrected issue which could cause crash at engine exit.
+    - Closed memory leaks in Nippon Safes Amiga.
+
+  * SCI:
+    - Added a CMS music driver for SCI1 - SCI1.1 games.
+    - Added an option to toggle undithering from the ScummVM GUI.
+    - Added several previously missing parts of the game state in
+      saved games, such as game played time, script created
+      windows, the script string heap and information related to
+      the text parser in old EGA games.
+    - Added support for SCI1.1 magnifier cursors.
+    - Added support for the keypad +/- keys.
+    - Added support for the alternative General MIDI tracks in the
+      Windows CD versions of Eco Quest, Jones in the Fast Lane,
+      King's Quest 5 and Space Quest 4.
+    - Added support for the alternative Windows cursors in the
+      Windows versio of King's Quest 6.
+    - Added support for simultaneous speech and subtitles in the CD
+      versions of Space Quest 4 and Freddy Pharkas.
+    - Corrected resource loading leaks.
+    - Corrected several problems and issues in the Skate-O-Rama
+      rooms in Space Quest 4.
+    - Corrected several issues in Hoyle Classic Card Games.
+    - Fixed several graphical glitches (like, for example, parts of
+      the screen that weren't erased correctly under some rare
+      circumstances).
+    - Fixed several script bugs.
+    - Fixed several pathfinding related issues and lockups (like,
+      for example, a lockup in the shower scene of Laura bow 1 and
+      pathfinding in some screens during the chase sequence in
+      Laura Bow 2).
+    - Fixed several music related glitches and possible lockups
+      (like, for example, a rare music lockup that occurred when
+      loading a saved game outside the palace in Quest for Glory 3).
+    - Fixed possible problems and lockups in the character import
+      screens of Quest for Glory 2 and 3.
+    - Fixed a bug that caused a lockup in the SCI1 CD version of
+      Mixed Up Mother Goose, after Tommy Tucker's song.
+    - Fixed a script bug in the CD version of King's Quest 5, which
+      caused a lockup under certain circumstances when going
+      outside the witch's house in the dark forest.
+    - Function keys now work correctly when the num lock key is on.
+    - Improved support for fanmade game scripts.
+    - Improved support for non-English versions of games.
+    - Made several enhancements and fixes related to MT-32 music
+      (e.g. reverb).
+    - Music is no longer out of tune when loading saved games.
+
+  * SCUMM:
+    - Improved support for FM-TOWNS versions of games.
+
+  * Teenagent:
+    - Closed memory leaks.
+
+  * Tinsel:
+    - Closed memory leaks in Coroutines.
+    - Added enhanced music support for the German CD
+      "Neon Edition" re-release of Discworld 1.
+
+  * Touche:
+    - Corrected memory leaks and minor issues.
+
+  * Tucker:
+    - Added workarounds for several issues present in the original game.
+
+  * SDL ports:
+    - Closed memory leaks in Mouse Surfaces.
+
+-------------------------------------------------------------------
+Sun Dec 12 05:19:55 UTC 2010 - reddwarf@opensuse.org
+
+- update to new 1.2.1 release
+  * General
+    - Add Hungarian translation.
+    - Add Brazilian Portuguese translation.
+  * Cruise:
+    - Fixed a problem with Raoul appearing when examining the Book
+  * Groovie:
+    - Fixed a regression that made the Russian version of T7G crash.
+  * Lure:
+    - Fixed several NPC movement bugs
+
+-------------------------------------------------------------------
+Mon Oct 11 13:04:24 UTC 2010 - reddwarf@opensuse.org
+
+- update to new 1.2.0 release
+
+-------------------------------------------------------------------
+Thu May  6 17:28:42 UTC 2010 - cmorve69@yahoo.es
+
+- update to new 1.1.1 release
+
+-------------------------------------------------------------------
+Mon Apr  5 19:30:09 UTC 2010 - cmorve69@yahoo.es
+
+- update to new 1.1.0 release
+
+-------------------------------------------------------------------
+Fri Oct 23 00:00:00 CEST 2009 - cmorve69@yahoo.es
+
+- make it compile in openSUSE 11.2
+
+-------------------------------------------------------------------
+Tue May  5 00:00:00 CEST 2009 - cmorve69@yahoo.es
+
+- made mpeg2 and mp3 support optional
+- updated to new 0.13.1 release
+  * AGOS:
+  - Fixed crash after OmniTV video is played in The Feeble Files
+  - Fixed crashes when exploring Jack the Ripper scene in the PC version of
+    the Waxworks
+  - Fixed palette glitches in the AtariST version of Elvira 2
+  - Fixed noise that can occur when sound effects are played, when exploring
+    Pyramid scene in the Waxworks
+
+  * Gob:
+  - Fixed a crash in the Italian version of Woodruff
+
+  * Groovie:
+  - Fixed some issues with music in The 7th Guest
+
+  * Parallaction:
+  - Fixed the sarcophagus puzzle in Nippon Safes
+
+  * SAGA:
+  - Fixed a crash in Inherit the Earth
+  - Fixed glitches in the save/load dialog.
+
+  * Sword2:
+  - Fixed random sound corruption when using the original sound files.
+
+  * Game launcher:
+  - Fixed a case where memory could be corrupted
+  - Fixed the small cursor in the modern theme
+  - Fixed a bug in the theme engine, which could cause crashes
+  - Made the file browser bigger in 1x mode
+
+-------------------------------------------------------------------
+Sat Mar  7 00:00:00 CET 2009 - cmorve69@yahoo.es
+
+- fixed lincense tag
+- removed README.SUSE file
+- package scummvm-tools in a separate package
+- updated description
+- various fixes taken from Fedora and upstream spec files
+- updated to new 0.13.0 release
+  * General:
+  - Added MIDI driver for Atari ST / FreeMint.
+  - Added a 'Load' button to the Launcher (not supported by all engines).
+  - Added a new global main menu (GMM) dialog usable from all engines.
+  - Added the ability to return to the launcher from running games (via the
+    GMM).
+  - Rewrote GUI renderer to use an vector based approach.
+  - Rewrote GUI configuration to use XML.
+  * New Games:
+  - Added support for Blue's 123 Time Activities.
+  - Added support for Blue's ABC Time Activities.
+  - Added support for Bud Tucker in Double Trouble.
+  - Added support for The 7th Guest.
+  *KYRA:
+  - Added support for Auto-save feature.
+  - Added support for MIDI music.
+  *SCUMM:
+  - Implemented radio-chatter effect in The DIG.
+
+-------------------------------------------------------------------
+Tue Sep  2 00:00:00 CEST 2008 - sndirsch@suse.de
+
+- updated to new 0.12.0 release
+  * New Games:
+  - The Legend of Kyrandia: Book Two: Hand of Fate.
+  - The Legend of Kyrandia: Book Three: Malcolm's Revenge.
+  - Lost in Time.
+  - The Bizarre Adventures of Woodruff and the Schnibble.
+  - PC version of Waxworks.
+  - Macintosh version of I Have no Mouth, and I must Scream.
+  - Drascula: The Vampire Strikes Back.
+  * General
+  - Added CAMD MIDI driver for AmigaOS4.
+  - Revived the PS2 port (was already in 0.11.1 but was
+    forgotten in the release notes).
+  - Plugged numerous memory leaks in all engines (part of
+    GSoC'08 task),
+  - Added audio double buffering to the SDL backend, which
+    fixes the problems with the MT-32 emulator on Mac OS X
+    (for now only enabled on Mac OS X).
+  * AGOS:
+  - Fixed crashes during certain music in Amiga versions of
+    Elvira 1 and Simon the Sorcerer 1.
+  - Fixed palette issues in Amiga versions of Simon the
+    Sorcerer 1.
+  * Queen:
+  - Speech is played at the correct sample rate. (It used to be
+    pitched a bit too low.)
+  * SCUMM:
+  - Rewrote parts of Digital iMUSE, fixing some bugs.
+  - Rewrote the internal timer code, fixing some speed issues
+    in e.g. COMI.
+  - Improved support for sound effects in Amiga version of Zak
+    McKracken.
+  - Added support for mixed Adlib/MIDI mode in Monkey Island 1
+    (Floppy).
+
+-------------------------------------------------------------------
+Sat Mar  1 00:00:00 CET 2008 - sndirsch@suse.de
+
+- updated to new 0.11.1 release
+  * fixed digital iMUSE system (better COMI experience)
+  * squashed King's Quest 4 bugs
+  * improved support for fanmade AGI games
+  * fixed several crashes and lock-ups in Lure of the Temptress,
+    Inherit the Earth and I Have no Mouth
+
+-------------------------------------------------------------------
+Sun Jan 13 00:00:00 CET 2008 - sndirsch@suse.de
+
+- updated to new 0.11.0 release
+  * New Games:
+  - Added support for Elvira: Mistress of the Dark.
+  - Added support for Elvira 2: The Jaws of Cerberus.
+  - Added support for I Have no Mouth, and I Must Scream (demo
+    and full game).
+  - Added support for preAGI game Mickey's Space Adventure.
+  - Added support for preAGI game Troll's Tale.
+  - Added support for preAGI game Winnie the Pooh in the Hundred
+    Acre Wood.
+  - Added support for Amiga version of Waxworks.
+  - Added support for Lure of the Temptress.
+  * New Ports:
+  - Added iPhone port.
+  - Added Maemo port for Nokia Internet tablets.
+  * General:
+  - Added ARM assembly routines for code in the sound mixer and
+    SCUMM video playback, resulting in some nice speedups on
+    several ports.
+  - Improved the way keyboard input is handled internally,
+    resolving some odd quirks in some game / port combinations.
+  - Added optional 'confirm exit' dialog to the SDL backend.
+  - Added support for TiMidity++ MIDI server.
+  - Added DMedia MIDI driver for IRIX.
+  - Improved detection of new game variants and localized
+    versions.
+  - Completely reworked internal access to files. (GSoC Task)
+  - Added option to delete games from the list with Del key.
+  - Added support for "~/" prefix being substituted by $HOME in
+    paths
+    on POSIX systems (Linux, Mac OS X etc.).
+  * AGI:
+  - Added support for AGI256 and AGI256-2 hacks (GSoC Task)
+  - Added support for Amiga menus and palettes (GSoC Task)
+  - Better support for early Sierra AGI titles
+  * AGOS:
+  - Fixed crashes related to OmniTV playback in The Feeble Files.
+  - Improved work on 64-bit systems.
+  * Broken Sword 1:
+  - Added support for FLAC encoded music.
+  * Kyrandia:
+  - Added support for Macintosh version.
+  * Parallaction:
+  - Added support for Amiga version of Nippon Safes, Inc.
+  - Many bugfixes
+  * Queen:
+  - Added support for Adlib music.
+  - Added missing music patterns playback in Amiga version.
+  * SCUMM:
+  - Added subtitle skipping (via '.' key) in older games which
+    didn't have this feature so far (e.g. Zak, MM, Indy3, Loom).
+  - Added support for Chinese COMI.
+  - Better support for eastern versions of games.
+  - Various fixes for COMI and other games.
+  - Added support for original save menus (browse only). Use
+    Alt-F5 to activate.
+  - Added support for Spanish version of NES Maniac Mansion.
+  - Better support for German version of C64 Maniac Mansion.
+  - Fixed bug with cursors in Windows versions of Humongous
+    Entertainment games.
+  * SAGA:
+  - Added support for compressed sound effects, voices and music.
+  * Touche:
+  - Added workarounds for some glitches/issues present in the
+    original game.
+  * WinCE Port:
+  - Switched compilers again. Now using cegcc
+    (http://cegcc.sourceforge.net/).
+  - Plugins now supported for WinCE (but not used in this
+    release).
+  - Redesigned 'Free Look' action, mainly for the lure engine's
+    requirements.
+  - Smaller optimization setting to counteract the growth of the
+    executable.
+  - Various bug fixes.
+  * GP2X Port:
+  - Support F200 Touchscreen
+  - Various fixes to input code
+
+-------------------------------------------------------------------
+Sat Dec  1 00:00:00 CET 2007 - sndirsch@suse.de
+
+- fixed gcc version check
+
+-------------------------------------------------------------------
+Mon Nov 19 00:00:00 CET 2007 - mkoenig@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Thu Jun 21 00:00:00 CEST 2007 - sndirsch@suse.de
+
+- updated to new 0.10.0 release
+  * Several new engines and thus new games supported:
+  - Sierra AGI engine: Space Quest I & II, King's Quest I-III
+    and many more, including a vast number of fan-made games
+  - Cinematique evo 1 engine: Future Wars
+  - GOB engine: Bargon Attack, Gobliins 2, Goblins 3, Ween: The
+    Prophecy
+  - AGOS engine: Simon the Sorcerer's Puzzle Pack
+  - Parallaction engine: Nippon Safes Inc.
+  - Touche: The Adventures of the Fifth Musketeer engine.
+  * DXA movies (higher quality than MPEG2) can be compressed
+    better now and can be used for the Broken Sword cutscenes.
+  * Added 'Mass Add' feature to the Launcher, which allows you to
+    scan for all games in all subdirectories of a given directory
+    (to use it, press shift then click on "Add Game").
+  * Many nice improvements to our ports.
+  * And as usual a gazillion small fixes, tweaks and improvements.
+
+-------------------------------------------------------------------
+Wed May  2 00:00:00 CEST 2007 - sndirsch@suse.de
+
+- added Provides/Obsoletes for sarien since Sarien project stopped
+  its development, continuing the development into ScummVM's AGI
+  engine
+
+-------------------------------------------------------------------
+Fri Jan  5 00:00:00 CET 2007 - sndirsch@suse.de
+
+- added 'modern' GUI theme
+
+-------------------------------------------------------------------
+Wed Oct 25 00:00:00 CEST 2006 - sndirsch@suse.de
+
+- updated to new 0.9.1 release
+  * fixes Kyra bug which made game uncompletable
+
+-------------------------------------------------------------------
+Mon Oct 23 00:00:00 CEST 2006 - sndirsch@suse.de
+
+- updated to release 0.9.1 (2006-10-29)
+  * New Ports:
+  - Added Nintendo DS port.
+  - Added GP2X port.
+  - Added GP32 port.
+  * General:
+  - Fixed potential garbage and/or crash in debug console.
+  - Removed restriction on 27 games per game id when added via
+    launcher.
+  * SCUMM:
+  - Improved support for international versions of HE games.
+  - Fixed rare actor drawing glitches.
+  - Fixed path finding during smart star challendge in Big
+    Thinkers 1st Grade,
+  - Fixed graphical glitches in stomach location of Pajama Sam 3.
+  - Fixed graphical glitches in HE80 version of Putt-Putt Travels
+    Through Time.
+  - Fixed FM-TOWNS version of Indy3 failing on Amiga port.
+  - Fixed crash in MM NES when clicking on top screen area
+  - Now it is possible to turn on or off subtitles during SMUSH
+    movies
+  * Simon:
+  - Improved support for international versions of the Feeble
+    Files.
+  - Fixed undefined behaviour when loading music.
+  - Fixed crash when displaying some subtitles in the Feeble
+    Files.
+  - Fixed crackling sound in Mac version of Feeble Files
+  * BASS:
+  - Fixed character spacing in LINC terminals in floppy version
+    v0.0303
+  - Fixed a regression which caused incorrect adlib music
+    emulation
+  * Broken Sword 1:
+  - Fixed speech-related crashes.
+  * Broken Sword 2:
+  - More robust handling of the optional startup.inf file.
+  * Kyrandia:
+  - Scrolling in the Kyrandia intro is less CPU intensive, at the
+    cost of not being as smooth as before.
+  - Fixed a tiny graphics glitch in the Kyrandia intro.
+  - Improved screen update handling, speeds up drawing on small
+    devices.
+  - Improved resource loading, faster startup.
+  * PSP Port:
+  - Fixed crashes during scrolling scenes in certain SCUMM games.
+  - Added saving of thumbnail in SCUMM savegames.
+  * PS2 Port:
+  - Overlay uses higher resolution now.
+  - Can boot from USB, HDD etc. as well.
+  * WinCE Port:
+  - Several bugfixes
+  - Re-add support for 2002 based devices
+
+-------------------------------------------------------------------
+Wed Oct 18 00:00:00 CEST 2006 - sndirsch@suse.de
+
+- scummvm-template-fix.diff:
+  * fixes compilation errors with new gcc
+
+-------------------------------------------------------------------
+Thu Jun 22 00:00:00 CEST 2006 - sndirsch@suse.de
+
+- updated to release 0.9.0:
+  New Games:
+  - Added kyra engine (for the Kyrandia series). Currently only
+    the first part of the series is supported.
+  - Added support for The Feeble Files
+  General:
+  - Switched from CVS to Subversion.
+  - Restructured our source tree partially.
+  - Fixed a bug that prevented you from overriding the scaler from
+    the command line for 640x480 games.
+  - Added subtitle configuration controls to the Launcher options
+    dialogs.
+  - GUI was completely redesigned and is now themeable.
+  SCUMM:
+  - Rewrote the detection code, for improved accuracy and better
+    support of fan translations. It should now work much better
+    on games with unknown MD5.
+  - Added subtitle configuration controls to the options dialog.
+  - Fixed graphical glitches in several HE games.
+  - Fixed palette glitches in Big Thinkers 1st Grade.
+  - Fixed songs in the kitchen of Pajama Sam 1.
+  SAGA
+  - Fixed sound distortion in the Inherit the Earth demo.
+  Simon
+  - Improved Hebrew support
+  - Lots of long-overdue cleanups and re-structuring were made to
+    accomodate for The Feeble Files.
+  - Fixed a rare MIDI bug that would cause a channel to change
+    volume without adjusting it to the master volume.
+  - Fixed delay after introduction of Simon the Sorcerer 1 demo
+    (With speech)
+  - Fixed music tempo in DOS versions of Simon the Sorcerer 1.
+  Broken Sword 1:
+  - Added support for the --save-slot option.
+  Broken Sword 2:
+  - Major rewrite of how game resources are accessed in memory.
+    This should fix alignment issues reported on some platforms.
+  - Missing data files are handled more gracefully.
+  WinCE Port:
+  - Added: PocketPC: Vertical oversampling scaler 320x200=>320x240
+    when panel not shown (n0p)
+  - Added: PocketPC: Right click by double-tapping (n0p)
+  - Fixed: All: Clipping issues in some cases
+  - Added: PocketPC: Mouse emulation using keys
+  - Added: Smartphones: Virtual keyboard popup
+  - Fixed: Smartphones: Incorrect screen blit in SDL port
+  - Added: All: Mouse cursor visible on panel if using emulated
+    mouse
+  - Added: All: Inverse landscape mode
+  - Fixed: PocketPC: Dialogs cut-off/not redrawn
+
+-------------------------------------------------------------------
+Wed Jun 14 00:00:00 CEST 2006 - dmueller@suse.de
+
+- build parallel
+
+-------------------------------------------------------------------
+Sun Jun 11 00:00:00 CEST 2006 - sndirsch@suse.de
+
+- updated to current CVS (2006-06-11)
+  * various fixes
+
+-------------------------------------------------------------------
+Tue May 30 00:00:00 CEST 2006 - sndirsch@suse.de
+
+- updated to current CVS (2006-05-30)
+  * obsoletes gob2.diff
+  * heavy development in gob2 engine
+
+-------------------------------------------------------------------
+Sun May 28 00:00:00 CEST 2006 - sndirsch@suse.de
+
+- updated to current CVS (2006-05-28)
+  * adds eperimental support for lure, cine, agi *and* gob2 (at
+    least the intro works now including sound)
+
+-------------------------------------------------------------------
+Mon Feb  6 00:00:00 CET 2006 - sndirsch@suse.de
+
+- updated to release 0.8.2 (2006-02-08)
+  * General:
+  - Fixed OS X bundle building when using GCC 3.3.
+  * SCUMM:
+  - Added support for rotating/scaling of sprites in HE games.
+  * Sword2:
+  - Fixed last-minute crash when playing sound effects.
+  * WinCE Port:
+  - Should fix weird crashes with DOTT stamp and in FOA
+  - Fixed Monkey Island blocking keyboard panel on Smartphones
+  - Fixed QVGA Smartphone detection
+  - Fixed Smartphone double right click issue.
+
+-------------------------------------------------------------------
+Sun Jan 29 00:00:00 CET 2006 - sndirsch@suse.de
+
+- updated to release 0.8.1
+  * General:
+  - More descriptive game titles in all engines.
+  - Fixed crash when trying to apply aspect-ratio correction to
+    games that cannot use it.
+  - Fixed potential security vulnerability with oversized PATH
+    environment variables.
+  - Lowered the default gain for the FluidSynth music driver and
+    made it configurable.
+  * SCUMM:
+  - Scrolling fixes in COMI, so it is less CPU-hungry.
+  - Added support for Maniac Mansion NES German version.
+  - Fixed mouse button states in COMI.
+  - Fixed overflow when using control panel for robot in the Dig.
+  - Added support for sound code, used by songs in HE games.
+  - Improved shadows in later HE games.
+  - Fixed subtitles glitches in HE games.
+  - Improved music/sound for HE games.
+  - Improved support for international versions of HE games.
+  - Improved support for Macintosh versions of games.
+  - Fixed several minor bugs.
+  * BASS:
+  - Fix crash when speed/volume sliders are clicked and then
+    dragged out of the scummvm window.
+  * Gob:
+  - Fixed disappearing cursor when level password is typed in
+  - Warn user if he tries to run CD version directly from CD under
+    Windows
+  * Queen:
+  - Fixed charset for Spanish version.
+  * SAGA:
+  - Fixed digital music playback under BE systems.
+  * Simon:
+  - Implemented more precise MD5-based game detection.
+  - Added Polish support for Simon the Sorcerer 2.
+  - Fixed fades during ride to goblins camp in Simon the Sorcerer 2.
+  - Fixed palette delay at the end of Simon the Sorcerer 1.
+  - Fixed sound looping in Windows version of Simon the Sorcerer 2.
+  * Sword1:
+  - Fixed a bug where looping sounds would keep playing during
+    cutscenes or when displaying any form of control panel dialog.
+  - The save game dialog would erroneously claim an I/O error
+    occurred if the savegame list had unused slots, and savegames
+    were compressed.
+  - Fixed a scrolling bug which caused the finale sequence to be
+    displayed
+    incorrectly.
+  * Sword2:
+  - Fixes and cleanups to the end credits. The German credits work
+    now.
+  - Fixed missing speech/music in the second half of the game,
+    reported to happen in some versions of the game.
+  * PS2 Port:
+  - Completely reworked and now really goes official.
+  * PSP Port:
+  - Fixed a bug that caused Broken Sword 1, and games that use
+    ripped CDDA tracks (most notably the CD version of Monkey
+    Island 1), to stop functioning properly after a while.
+  * WinCE Port:
+  - Check backends/wince/README-WinCE for the latest news
+  - Fixed disappearing panel when opening a list widget in GUI
+  - Knakos patches (QVGA smartphones fix, easier key binding and
+    panel switching)
+- update scummvm tools to current CVS sources (2006-01-29)
+
+-------------------------------------------------------------------
+Wed Jan 25 00:00:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 21 00:00:00 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Tue Jan 10 00:00:00 CET 2006 - sndirsch@suse.de
+
+- update scummvm tools to current CVS sources (Bug #141852)
+
+-------------------------------------------------------------------
+Fri Nov 25 00:00:00 CET 2005 - sndirsch@suse.de
+
+- added -fno-strict-aliasing to fix build
+
+-------------------------------------------------------------------
+Sat Oct 29 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to release 0.8.0
+  * New Games:
+  - Added SAGA engine (for the games "I Have No Mouth and I Must
+    Scream" and "Inherit the Earth").
+  - Added Gob engine (for the Goblins series). Currently, only
+    the first of the Goblins games is supported.
+  * SCUMM engine:
+  - Added thumbnail support for savegames.
+
+-------------------------------------------------------------------
+Fri Oct 28 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20051027)
+
+-------------------------------------------------------------------
+Mon Oct 17 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20051017)
+
+-------------------------------------------------------------------
+Sat Oct 15 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20051015)
+
+-------------------------------------------------------------------
+Sat Oct  8 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20051008)
+
+-------------------------------------------------------------------
+Tue Sep 20 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20050920)
+
+-------------------------------------------------------------------
+Mon Sep 12 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- another update of README.SUSE; now I know the filesize of the
+  unconverted version to download (#116335)
+
+-------------------------------------------------------------------
+Sun Sep 11 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- added README.SUSE (#116335)
+
+-------------------------------------------------------------------
+Wed Aug 10 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- added scummvm tools (Bug #103725)
+
+-------------------------------------------------------------------
+Sun Jul 31 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20050730)
+
+-------------------------------------------------------------------
+Tue Jul 19 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20050718)
+- removed obsolete gcc4 patches
+
+-------------------------------------------------------------------
+Mon Jul 11 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20050710)
+
+-------------------------------------------------------------------
+Mon Jul  4 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- enabled fluidsynth MIDI driver
+- added the build of "The Legend of Kyrandia" engine
+- use RPM_OPT_FLAGS everywhere
+- use install target
+
+-------------------------------------------------------------------
+Fri Jun 24 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20050626)
+
+-------------------------------------------------------------------
+Sun Jun 12 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20050612)
+
+-------------------------------------------------------------------
+Sun Jun  5 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- updated to daily snapshot (20050604)
+- adjusted gcc4.diff/gcc4-friends.patch
+
+-------------------------------------------------------------------
+Mon May 23 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- gcc4-friends.patch
+  * fixes new gcc build error:
+  "ISO C++ forbids declaration of 'Win32ResExtractor' with no type"
+
+-------------------------------------------------------------------
+Tue May 10 00:00:00 CEST 2005 - ro@suse.de
+
+- use -mmmx and -msse on x86
+
+-------------------------------------------------------------------
+Tue Apr  5 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- fixed to build with gcc4
+
+-------------------------------------------------------------------
+Tue Mar 29 00:00:00 CEST 2005 - sndirsch@suse.de
+
+- update to 0.7.1:
+  * General:
+  - Added a MT-32 emulator. (It was actually added in 0.7.0 but
+    we forgot to put it into the NEWS file :-).
+  - Less memory-hungry MPEG movie playback for the Broken Sword
+    games.
+  * SCUMM:
+  - Fixed wrong actor animation in Full Throttle INSANE
+  * Windows Mobile port (PocketPC / Smartphone) :
+  - Fixed FOTAQ crash on all platforms when leaving the hotel
+    AGAIN
+  - Better low quality Adlib emulation for FOTAQ
+  - Fix randomly broken Hide Toolbar option (thanks iKi)
+  - Fix first hardware key mapping (was not displayed before)
+  - Fix BASS & Simon hangs on Smartphone when using the Skip
+    hotkey
+  - Fix Zone key action on Smartphone (now mapped on key 9)
+  - Experimental third party VGA mode (SE-VGA) fix
+  - Add Key Mapping option in the launcher (Options/Misc/ Keys)
+  - Remove AYGSHELL.DLL dependency to work on CE .Net platforms
+  - Fix key mapping issues introduced in 0.7.0
+  - Full Throttle interactive action sequences should be more
+    playable.
+  - New key mapping option "FT Cheat" to win a Full Throttle
+    action sequence
+  - Quit Simon game with 'Action key' on Smartphones
+  * Sword2:
+  - Fixed crash caused by attempting to play music from CD1 and
+    CD2 at the same time.
+  - Fixed crash in the cutscene player if the speech file was
+    missing.
+  * BASS:
+  - Fixed crash when talking to the gardener using spanish text
+    with the floppy version.
+
+-------------------------------------------------------------------
+Wed Mar 23 00:00:00 CET 2005 - sndirsch@suse.de
+
+- removed mad support (usually not required)
+
+-------------------------------------------------------------------
+Sun Jan  2 00:00:00 CET 2005 - sndirsch@suse.de
+
+- update to 0.7.0:
+  * Added preliminary support for 26 Humongous Entertainment titles
+  * Added support for FLAC (lossless) encoded audio files
+  * Added native support for Macintosh versions of some SCUMM games;
+    this means the 'rescumm' tool is now mostly obsolete, and you
+    can now play those games directly from the original CD
+  * Added smooth horizontal scrolling for The Dig, Full Throttle
+    and COMI (matching the original engine)
+  * Added support for compressed speech and music in Broken Sword 1
+    and Broken Sword 2
+  * And as usual, we fixed lots and lots of bugs
+- added flac/flac-devel to #neededforbuild -> enabled flac support
+
+-------------------------------------------------------------------
+Fri Nov 12 00:00:00 CET 2004 - sndirsch@suse.de
+
+- added MPEG-2 support; required for cutscenes of Broken Sword 1/2
+  (Bug #48180)
+
+-------------------------------------------------------------------
+Fri Aug  6 00:00:00 CEST 2004 - uli@suse.de
+
+- update -> 0.6.1b (now 64-bit clean, mostly sound-related bugfixes)
+
+-------------------------------------------------------------------
+Tue Mar 16 00:00:00 CET 2004 - sndirsch@suse.de
+
+- Update to 0.6.0:
+  * many bugfixes in all supported game engines
+  * dramatic fixes and improvements in the area of sound and music
+  * greatly improved game management/options screen
+  * two new graphics modes (HQ2x and HQ3x)
+  * new support for the following games
+  - Maniac Mansion, Zak McKracken, Full Throttle
+  - Broken Sword 1 and Broken Sword 2
+  - Flight of the Amazon Queen (released now as freeware
+    including permission to include it on a Linux distribution!)
+
+-------------------------------------------------------------------
+Tue Dec  2 00:00:00 CET 2003 - sndirsch@suse.de
+
+- fixed build for ALSA 1.0
+
+-------------------------------------------------------------------
+Wed Oct 15 00:00:00 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+- Don't strip explicitly
+
+-------------------------------------------------------------------
+Tue Sep 23 00:00:00 CEST 2003 - uli@suse.de
+
+- no ALSA on s390*
+
+-------------------------------------------------------------------
+Sat Aug 16 00:00:00 CEST 2003 - sndirsch@suse.de
+
+- enabled MIDI support via ALSA sequencer
+
+-------------------------------------------------------------------
+Wed Aug 13 00:00:00 CEST 2003 - sndirsch@suse.de
+
+- Update to 0.5.1 including:
+  * Beneath a Steel Sky savegame code completely rewritten,
+    eliminating several situations where ScummVM 0.5.0 would
+    produce unusable 'frozen' saved games
+  * Several other Beneath a Steel Sky bugs have been fixed
+  * Some Curse of Monkey Island actor graphical issues have
+    been fixed
+  * Some issues when running ScummVM fullscreen under MacOS X
+    have been resolved
+  * MorphOS port has undergone several critical bugfixes
+  * Dreamcast port now supports Simon the Sorcerer 1 and 2
+
+-------------------------------------------------------------------
+Sun Aug  3 00:00:00 CEST 2003 - sndirsch@suse.de
+
+- Update to 0.5.0 including:
+  * Enhanced versions of Maniac Mansion and Zak McKracken are now
+  supported and completable
+  * Beneath A Steel Sky is now supported and completable
+  * Added support for Amiga version of Monkey Island 1
+  * Initial unplayable support for V1 version of Maniac Mansion/Zak
+  McKracken
+  * Curse of Monkey Island (COMI) support for playing from CD improved
+  on Mac OS X
+  * Loading COMI savegames for disk 2 doesn't anymore require disk 1
+  first
+  * Rewritten iMUSE enginee, and many Music fixes (exp. Monkey Island 2)
+  * Support for music in Humongous games and simon2dos/simon2talkie
+  (XMIDI format)
+  * Support for music in simon1demo (Proprietary format)
+  * Complete music support for Simon the Sorcerer 2
+  * Improved music and sound support in Zak256
+  * Added Aspect Ratio option
+  * Many other bug fixes, improvements and optimisations
+  * Added AdvMame3x filter
+  * Fixed crash in Curse of Monkey Island (and possibly other games as
+  well)
+  * Fixed airport doors in Zak256
+  * Fixed crash in SDL backend
+  * Fixed various iMUSE bugs
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 CEST 2003 - mmj@suse.de
+
+- Update to 0.4.0 including:
+  * Curse of Monkey Island (comi) support (experimental)
+  * Added support for the EGA versions of Loom, Monkey Island and
+  Indy3
+  * Improved music support in Indy3 and the floppy versions of
+  Monkey Island
+  * Many Simon the Sorcerer 1 & 2 improvements and fixes
+  * Even more pre-alpha support for enhanced versions of V2 SCUMM
+  games (Maniac Mansion and Zak)
+  * Preliminary support for early Humongous Entertainment titles
+  (very experimental)
+  * New debug console and several GUI/Launcher enhancements
+  * New Save/Load code (easier to expand while retaining
+  compatibility)
+  * Dreamcast port now works with new games added for 0.3.0b
+  * New official PalmOS port
+  * Various minor and not so minor SCUMM game fixes
+  * Large memory leak fixed for The Dig/COMI
+  * SMUSH code optimised, frame dropping added for slower machines
+  * Code cleanups
+
+-------------------------------------------------------------------
+Wed Dec 11 00:00:00 CET 2002 - mmj@suse.de
+
+- Update to 0.3.0b
+
+-------------------------------------------------------------------
+Wed Dec  4 00:00:00 CET 2002 - mmj@suse.de
+
+- Use BuildRoot:
+
+-------------------------------------------------------------------
+Sun May 19 00:00:00 CEST 2002 - mmj@suse.de
+
+- Update to 0.2.0
+
+-------------------------------------------------------------------
+Thu Apr 18 00:00:00 CEST 2002 - uli@suse.de
+
+- build and link with g++
+
+-------------------------------------------------------------------
+Thu Jan 24 00:00:00 CET 2002 - uli@suse.de
+
+- initial package
+

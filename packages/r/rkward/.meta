@@ -1,0 +1,8 @@
+<package name="rkward" project="openSUSE:Factory">
+  <title>Graphical frontend for R language</title>
+  <description>RKWard aims to provide an easily extensible, easy to use IDE/GUI for the
+R-project. RKWard tries to combine the power of the R-language with the
+(relative) ease of use of commercial statistics tools. Long term plans
+include integration with office suites</description>
+  <devel project="devel:languages:R:released" package="rkward"/>
+</package>

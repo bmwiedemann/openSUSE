@@ -1,0 +1,8 @@
+<package name="squidGuard" project="openSUSE:Factory">
+  <title>Filter plugin for squid</title>
+  <description>SquidGuard is a free (GPL), flexible and ultra-fast filter, redirector,
+and access controller plugin for squid.  It lets you define multiple
+access rules with different restrictions for different user groups on a
+squid cache.  SquidGuard uses squid's standard redirector interface.</description>
+  <devel project="server:proxy" package="squidGuard"/>
+</package>

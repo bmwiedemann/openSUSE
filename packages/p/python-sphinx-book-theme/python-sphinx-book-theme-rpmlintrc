@@ -1,0 +1,1 @@
+addFilter("file-not-in-%lang .*/usr/lib/python[0-9.]+/site-packages/sphinx_book_theme/translations/locales/.*/LC_MESSAGES/booktheme.mo")

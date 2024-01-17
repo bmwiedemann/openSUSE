@@ -1,0 +1,6 @@
+<package name="qbittorrent" project="openSUSE:Factory">
+  <title>A Bittorrent Client built with C++ / Qt4</title>
+  <description>A Bittorrent client using C++ / libtorrent and a Qt4 Graphical User Interface.
+It aims to be as fast as possible and to provide multi-OS, unicode support.</description>
+  <devel project="network" package="qbittorrent"/>
+</package>

@@ -1,0 +1,1074 @@
+-------------------------------------------------------------------
+Fri Jan  5 08:28:20 UTC 2024 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- config.sh: drop intel vsc firmware (11MB): Visual Sensing Control
+  is potentially used for 'walk away lock'.
+
+-------------------------------------------------------------------
+Tue Dec 12 08:22:23 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-xfce: Drop samba. Not really used but recommended by the pattern
+- list-xfce: Drop xdg-desktop-portal on Leap.
+- Drop qcom FW on non-aarch64 again
+- Only allow passwordless sudo for linux
+
+-------------------------------------------------------------------
+Wed Dec  6 15:58:56 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop b43-fwcutter. Only makes sense if there's already
+  a network connection. Keep pciutils though.
+
+-------------------------------------------------------------------
+Wed Dec  6 13:41:48 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-common.sh: ignore patterns-base-documentation. This makes
+  the Live CD a little bit smaller again, as it no longer includes
+  + cryptsetup-doc
+  + coreutils-doc (was explicitly ignored already; cleaned up)
+  + bash-doc (was explicitly ignored already; cleaned up)
+  + readline-doc (was explicitly ignored already; cleaned up)
+  + info-std
+  + systemd-doc (was explicitly ignored already; cleaned up)
+
+-------------------------------------------------------------------
+Fri Dec  1 08:02:36 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-gnome.sh: no longer install the games pattern. We really run
+  low on space.
+
+-------------------------------------------------------------------
+Wed Nov 29 11:17:40 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop the nvidia/gsp firmware images: they make up > 70MB.
+
+-------------------------------------------------------------------
+Thu Nov 23 09:22:49 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add kernel modules and some qcom firmware for X13s - boo#1217315
+
+-------------------------------------------------------------------
+Tue Nov  7 09:36:40 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore xorg-x11-fonts-converted
+
+-------------------------------------------------------------------
+Thu Sep 14 20:09:45 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-x11: no longer block accountsservice: it is now a dependency
+  of xfce4-panel.
+
+-------------------------------------------------------------------
+Fri Jun 23 08:57:38 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-gnome: Ignore gnome-backgrounds
+
+-------------------------------------------------------------------
+Thu Jun 22 12:05:26 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- livecd.kiwi.in, list-common.sh: Make use of patterns-base-bootloader and
+  drop redundant package inclusions. This also adds mokutil (boo#1209985).
+- Drop gfxboot, kiwi uses grub2 on ix86 for some time now
+
+-------------------------------------------------------------------
+Thu Jun 22 06:14:21 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-gnome.sh: ignore gnome-control-center-user-faces: gain some
+  space; user generation on the live system is not relevant.
+- list-common.sh: drop coreutils-doc: a little bit more space for
+  all.
+
+-------------------------------------------------------------------
+Wed Apr 12 12:02:26 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-common.sh: Don't ignore xorg-x11-fonts, needed by GDM now
+- list-kde.sh, list-x11.sh, list-xfce.sh: Ignore xorg-x11-fonts
+
+-------------------------------------------------------------------
+Mon Mar 27 09:22:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Ignore openssh-askpass-gnome and block gtk2
+- list-kde: Ignore breeze5-wallpapers on Leap as well now
+- list-common: Don't install gtk2-branding-openSUSE explicitly
+
+-------------------------------------------------------------------
+Mon Mar 13 10:34:22 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore pam_kwallet like gnome-keyring-pam
+
+-------------------------------------------------------------------
+Tue Feb 21 15:27:21 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- list-gnome: ignore sushi on Leap, deps too big. Hopefully temporary.
+
+-------------------------------------------------------------------
+Wed Nov 23 07:44:58 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Explicitly list 'checkmedia' to be added to the live images
+  (boo#1205540).
+
+-------------------------------------------------------------------
+Thu Nov 17 10:22:49 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-{common,x11,installer}: Don't install YaST on the rescue CD anymore
+
+-------------------------------------------------------------------
+Sun Sep 25 14:20:12 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Re-add tumbler: build fixed 
+
+-------------------------------------------------------------------
+Wed Sep 21 17:38:31 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove tumbler and pragha from xfce medium for now: fails to build.
+
+-------------------------------------------------------------------
+Fri Aug 19 07:30:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-gnome: Ignore yelp, needed especially on Leap
+- list-common: vim-small is also available on Leap meanwhile
+
+-------------------------------------------------------------------
+Mon Aug  8 07:51:52 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Delete xorg-x11-server-Xvfb only if installed
+- Make list-gnome compatible with Leap again
+- Don't ignore alsa-plugins-pulse anymore, no longer needed
+- Raise disk size constraint to 20GiB to fix occasional build failures
+
+-------------------------------------------------------------------
+Wed Aug  3 05:53:28 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Adjust GNOME ignore list: google-noto- font packages were renamed
+  to include the google- prefix.
+
+-------------------------------------------------------------------
+Wed Jul 27 06:25:00 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Cope with new name of noto-coloremoji-fonts
+
+-------------------------------------------------------------------
+Fri Jul 22 12:14:30 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop fcoe-utils
+- list-x11: Ignore gstreamer-plugins-bad
+
+-------------------------------------------------------------------
+Wed Jul 20 09:40:43 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Don't block bind-utils on Leap
+
+-------------------------------------------------------------------
+Wed Jul 20 09:13:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Ignore bind-utils
+
+-------------------------------------------------------------------
+Thu Jul  7 20:56:36 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Ignore alsa-plugins-pulse for now: conflicts with pipewire. 
+
+-------------------------------------------------------------------
+Mon Feb 28 10:20:14 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Drop ristretto (boo#1193538)
+
+-------------------------------------------------------------------
+Mon Feb 21 09:19:36 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Change default target from runlevel5.target (sysv compat) to
+  graphical.target (actual systemd target). Defacto the same thing,
+  as runlevel5.target is just a symlink to graphical.target, but is
+  no longer part of 'systemd' and moved to 'systemd-sysvcompat'.
+  Instead of pulling legacy compat along, we perform the actual
+  switch.
+
+-------------------------------------------------------------------
+Mon Jan 24 09:45:22 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Avoid samba-libs
+- list-kde, list-gnome: Don't require cifs-utils
+- list-x11: Ignore 7zip
+- config.sh: Compress the initrd more strongly, delete the ruby gem
+  cache and block some more kernel modules in the initrd
+
+-------------------------------------------------------------------
+Thu Jan 13 10:28:43 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Disable initrd networking also for Xfce
+- list-xfce: add shotwell back
+
+-------------------------------------------------------------------
+Thu Jan 13 09:17:06 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-xfce: ignore shotwell
+
+-------------------------------------------------------------------
+Wed Jan 12 09:14:26 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore gstreamer-plugins-rs and procmail
+- list-xfce: Ignore gdb
+
+-------------------------------------------------------------------
+Wed Dec 29 10:41:40 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-xfce: Drop gimp and pidgin from the XFCE Live image: no
+  space left.
+
+-------------------------------------------------------------------
+Thu Dec  2 14:45:48 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Use /lib/modules without /usr to be compatible with Leap
+
+-------------------------------------------------------------------
+Fri Nov 12 11:23:42 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop no longer maintained X video drivers: glint, mach64 and tga.
+
+-------------------------------------------------------------------
+Wed Nov 10 15:47:19 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Uncompress kernel modules to avoid double-compressing in squashfs
+  and initrd (boo#1192457)
+
+-------------------------------------------------------------------
+Mon Oct 18 14:22:14 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Can't ignore breeze5-wallpapers on Leap yet
+
+-------------------------------------------------------------------
+Wed Oct 13 10:12:38 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Ignore breeze5-wallpapers
+
+-------------------------------------------------------------------
+Thu Oct  7 07:20:17 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Drop plymouth
+- Set systemd.show_status=yes to have some boot progress output
+
+-------------------------------------------------------------------
+Tue Oct  5 11:05:29 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop acpica
+- config.sh: Drop libisl*, only needed by cpp which got dropped already
+- config.sh: Drop google-poppins-fonts, cxgb4 firmware
+
+-------------------------------------------------------------------
+Thu Sep 30 07:34:07 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-xfce: Ignore mugshot, incompatible with GNOME 41
+- list-x11: Ignore tumbler, needs additional webkitgtk version now
+
+-------------------------------------------------------------------
+Tue Aug 24 14:39:26 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- config.sh: Also remove vmlinux.xz from UsrMerged kernel location
+  in /usr/lib
+
+-------------------------------------------------------------------
+Tue Aug 24 06:22:09 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-kde: drop VLC media player.
+
+-------------------------------------------------------------------
+Mon Aug  9 12:48:47 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop open-iscsi, not that useful and introduces
+  dependency on network-online.target
+
+-------------------------------------------------------------------
+Mon Aug  9 09:36:59 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: On x11, drop Mesa-gallium and udev hwdb
+
+-------------------------------------------------------------------
+Tue Jun 22 07:39:59 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore providers of smtp_daemon
+- list-common: Don't ignore systemd-logger
+- config.sh: Drop some more firmware
+
+-------------------------------------------------------------------
+Tue May 25 09:44:02 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Switch from midori to epiphany
+
+-------------------------------------------------------------------
+Mon May 10 07:37:43 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Create /etc/fstab if it doesn't exist (boo#1185815)
+- list-kde: Ignore plasma-nm5-openconnect and plasma-nm5-openvpn
+
+-------------------------------------------------------------------
+Mon Apr 26 11:16:03 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore spax and tigervnc
+
+-------------------------------------------------------------------
+Mon Apr 26 11:12:14 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Limit gfxboot to i686 only: on x86_64, we have been using grub2
+  to boot for quite a while already.
+
+-------------------------------------------------------------------
+Thu Apr 22 09:53:03 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Ignore kipi-plugins
+- list-common: Fix python-pip ignore: It's python3X-pip meanwhile
+
+-------------------------------------------------------------------
+Wed Apr 14 17:53:20 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Omit some more dracut modules from the Rescue CD's initrd
+
+-------------------------------------------------------------------
+Wed Apr 14 17:21:52 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Shrink RescueCD: drop libqt5-qttranslations.
+
+-------------------------------------------------------------------
+Wed Apr 14 16:56:37 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Backport fixes done by R. Brown in :Live directly:
+  + Remove psix-man to free up space
+  + Remove man and related packages, as man-pages are not being
+    installed.
+
+-------------------------------------------------------------------
+Tue Apr  6 13:55:09 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214
+
+-------------------------------------------------------------------
+Wed Mar 10 02:50:23 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Enable creation of Xfce Leap Live images
+- Xfce switched to evince as pdf reader
+
+-------------------------------------------------------------------
+Mon Mar  8 09:43:08 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Add more filesystem tools (boo#1183146)
+
+-------------------------------------------------------------------
+Thu Mar  4 11:18:15 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- More size reduction:
+  * Drop unneeded kernel binary
+  * Stop writing /var/log/config.log
+  * Exclude networking from the initrd
+
+-------------------------------------------------------------------
+Tue Feb 23 10:52:12 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde, list-xfce: opensuse-welcome is also for Leap now
+
+-------------------------------------------------------------------
+Wed Feb 17 14:31:06 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Don't blacklist update_test pattern, hard dep on
+  Leap and fortunately small enough
+
+-------------------------------------------------------------------
+Fri Feb 12 13:45:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop insserv, ignore patterns-base-x11_enhanced. On TW,
+  it was ignored because of the xorg-x11-essentials block anyway.
+
+-------------------------------------------------------------------
+Fri Jan 22 11:44:45 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove recommended python38-pip from RescueCD.
+
+-------------------------------------------------------------------
+Sun Jan 17 10:25:00 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop joe from the RescueCD: we have vim-small, and one text
+  editor is enough (no space left).
+- Drop libstorage-ng-lang: no spaceleft on the rescue CD.
+
+-------------------------------------------------------------------
+Wed Jan 13 13:42:35 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- No longer remove adwaita-icon-theme on x11 Rescue CD: xfce 4.16's
+  updated icon theme inherits Adwaita (boo#1180853).
+
+-------------------------------------------------------------------
+Tue Jan 12 07:33:10 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop xfce4-mixer from x11 flavor: not even the xfce flavor
+  installs this anymore.
+
+-------------------------------------------------------------------
+Fri Nov 27 12:49:12 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Also drop files from /usr/lib/locale and /usr/share/qt5/translations
+- Also drop zh* locales
+
+-------------------------------------------------------------------
+Fri Nov 27 07:57:16 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Ignore gimp-lang on all flavors, not only kde (mainly needed on
+  xfce, where space is tight).
+
+-------------------------------------------------------------------
+Mon Nov 16 10:15:46 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Don't enable spice-vdagentd.service, that's done by udev
+- Don't try to delete netronome firmware twice
+- Add upgrade.desktop on xfce as well
+
+-------------------------------------------------------------------
+Wed Nov  4 12:38:52 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Switch "leap" back to "Leap" for 15.3
+
+-------------------------------------------------------------------
+Wed Nov  4 09:30:39 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Forcibly remove noto-coloremoji-fonts until it can be replaced with
+  a buildignore
+- Ignore xorg-x11-fonts-legacy everywhere
+
+-------------------------------------------------------------------
+Wed Nov  4 08:17:48 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Block systemd-doc and man-pages from all flavors, not only xfce.
+
+-------------------------------------------------------------------
+Fri Oct 30 10:10:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Do only use set -u: set -e causes issues with stepping out of the
+  for loop using continue.
+- Skip the for loop early: no reason to calculate the PACKAGES list
+  and then not consume it.
+- Use tr [:lower:] [:upper:] instead of tr a-z A-Z.
+
+-------------------------------------------------------------------
+Wed Oct 14 08:36:12 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop set -e, it breaks when there's a conditional experssion as
+  last statement in a file
+- Use vim-small for non-Rescue as well
+
+-------------------------------------------------------------------
+Mon Sep  7 09:07:51 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Switch "leap" over to "Jump":
+  * Add back yast2-trans-*
+  * Don't replace vim with vim-small
+- Drop pcmciautils
+- Use set -eu in pre-checkin.sh
+
+-------------------------------------------------------------------
+Tue Sep  1 07:07:55 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Install sysvinit-tools: required by gdm (for pidof and startproc).
+
+-------------------------------------------------------------------
+Mon Aug 10 07:38:01 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- config.sh: Forcibly remove adwaita-icon-theme for kde and Rescue CD
+
+-------------------------------------------------------------------
+Mon Aug 10 07:01:34 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop xorg-x11-fonts-legacy from the rescue CD: hunt for space.
+
+-------------------------------------------------------------------
+Mon Aug  3 09:30:59 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Add back okular-lang, kate-lang and gwenview
+- list-kde: Drop kdoctools and deps
+- config.sh: Forcibly remove adwaita-icon-theme for kde
+
+-------------------------------------------------------------------
+Mon Aug  3 07:16:00 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop okular-lang from the KDE Live CD - hunting for space
+
+-------------------------------------------------------------------
+Mon Jun 15 08:25:41 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop thunar-lang from the Rescue CD - more hunt for space.
+
+-------------------------------------------------------------------
+Sat Jun 13 16:09:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use vim-small on the rescue cd.
+
+-------------------------------------------------------------------
+Fri Jun 12 08:30:05 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop yast translations (space constraints).
+
+-------------------------------------------------------------------
+Wed Jun 10 13:49:35 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Ignore p7zip-full instead of p7zip
+
+-------------------------------------------------------------------
+Sat May  9 12:45:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- list-common: drop xf86-video-ast and -cirrus: obsoleted by
+  xorg-x11-server.
+
+-------------------------------------------------------------------
+Fri Apr 17 09:25:33 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore xorg-x11-fonts, LO no longer needs it
+- pkg-diff.sh: Also compare versions
+
+-------------------------------------------------------------------
+Wed Apr  8 10:19:06 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Allow samba-libs on XFCE Live: indirect dependency for
+  opensuse-welcome.
+
+-------------------------------------------------------------------
+Mon Mar 16 15:15:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Remove more unnecessary firmware to not exceed size constraints
+
+-------------------------------------------------------------------
+Wed Mar  4 10:53:06 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Ignore plasma5-desktop-emojier, too big (~42MiB!)
+
+-------------------------------------------------------------------
+Wed Feb 12 14:13:07 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Use bgrt as plymouth theme for Leap (boo#1162535)
+
+-------------------------------------------------------------------
+Mon Jan 27 11:19:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Rescue CD size limitation: block more -lang files
+  (NetworkManager-applet, gvfs, gsettings-desktop-schemas and
+  libgphoto2-6).
+
+-------------------------------------------------------------------
+Fri Jan 24 08:53:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Rescue CD size limitation: block NetworkManager-lang.
+
+-------------------------------------------------------------------
+Fri Jan 17 08:43:37 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Rescue CD size limitation: block glib2-lang.
+
+-------------------------------------------------------------------
+Tue Jan 14 15:33:41 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Block (again?) vlc-lang from the KDE Lives.
+
+-------------------------------------------------------------------
+Mon Jan 13 11:02:29 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop kmahjongg-lang and konversation-lang from the KDE Live
+  image: save some MiB.
+
+-------------------------------------------------------------------
+Sun Jan 12 21:02:45 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop LO now also from the GNOME Live CD: no more space
+  (overshot by 30MB).
+
+-------------------------------------------------------------------
+Sun Jan 12 19:35:13 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Block java-11-openjdk-headless from the GNOME Live CDs.
+
+-------------------------------------------------------------------
+Thu Jan  9 08:49:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Block iso-codes-lang from the Rescue CD: once again space constraints.
+
+-------------------------------------------------------------------
+Thu Dec 19 15:14:46 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Add hack to remove LOADER_TYPE to fix upgrading (boo#1155545)
+
+-------------------------------------------------------------------
+Mon Nov 11 09:01:22 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Comment Leap-release change out again, as reverted in 000package-groups
+
+-------------------------------------------------------------------
+Thu Oct 31 08:13:59 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-gnome: explicitly list NetworkManager-applet (otherwise:
+  have choice for NetworkManager-client needed by NetworkManager:
+  NetworkManager-applet plasma-nm5).
+
+-------------------------------------------------------------------
+Wed Oct 30 10:54:55 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- More adjustments for Leap-release-*
+
+-------------------------------------------------------------------
+Wed Oct 30 09:53:50 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Blacklist nouveau Mesa+vdpau drivers
+- list-installer: Drop ipa-gothic-fonts, too big
+- list-gnome: Ignore gnome-photos, eog is enough
+
+-------------------------------------------------------------------
+Wed Oct 23 13:39:39 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- It's Leap-release on Leap now for some reason
+- Only install opensuse-welcome on TW
+
+-------------------------------------------------------------------
+Tue Oct 22 08:40:15 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- list-x11: Block libpeas-loader-python to avoid libpython2_7
+- Fix pkg-diff for prjs with multiple repos
+- Move xf86-video-vmware from list-common to list-{gnome,kde,xfce}
+
+-------------------------------------------------------------------
+Mon Sep 30 09:08:32 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-x11: drop tcpdump
+
+-------------------------------------------------------------------
+Mon Sep 30 08:43:48 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-kde: shrink a little bit, drop kate-lang (again)
+
+-------------------------------------------------------------------
+Mon Sep 30 07:43:33 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-gnome: drop gnome-software: SW Center is a nice to have, but on the live
+  medium of limited use.
+
+-------------------------------------------------------------------
+Wed Sep 25 10:29:05 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-gnome: ignore eog-lang and vim-data
+
+-------------------------------------------------------------------
+Wed Sep 25 09:25:28 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Block gimp-help from the Live images
+
+-------------------------------------------------------------------
+Mon Sep 16 17:37:10 UTC 2019 - Yuchen Lin <mlin+factory@suse.de>
+
+- list-x11: ignore midori-lang and gparted-lang
+- list-gnome: ignore some more packages on GNOME Live
+  * gparted-lang, vinagre-lang, gedit-lang and fwupd-lang
+
+-------------------------------------------------------------------
+Mon Sep 16 06:52:25 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Add shim for x86_64 explicitly
+
+-------------------------------------------------------------------
+Thu Sep 12 09:52:37 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Ignore evolution-data-server-lang on the GNOME live media.
+
+-------------------------------------------------------------------
+Thu Sep 12 07:53:13 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop orca again from the GNOME Live - we are really above the
+  space limits with it - or we find something else to drop.
+
+-------------------------------------------------------------------
+Mon Sep  2 13:23:00 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- no py2 on gnome live
+
+-------------------------------------------------------------------
+Mon Sep  2 07:19:52 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Install opensuse-welcome explicitly on Xfce and KDE, but blacklist on GNOME
+
+-------------------------------------------------------------------
+Fri Aug 30 08:54:24 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Install opensuse-welcome explicitly
+
+-------------------------------------------------------------------
+Mon Aug 26 09:49:41 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Xfce Image:
+  - Dropped evince (xreader already installed by pattern)
+  - Dropped gparted (gnome-disks-utility already installed by pattern)
+
+-------------------------------------------------------------------
+Fri Aug 16 06:58:23 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Use "openSUSE" bootsplash for leap
+
+-------------------------------------------------------------------
+Thu Aug 15 09:22:47 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Use %OS_VERSION_ID% for Leap version and add the
+  kiwi_metainfo_helper OBS service
+
+-------------------------------------------------------------------
+Fri Jul 26 12:08:16 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Move deltarpm ignore to list-x11 to allow libzypp-plugin-appdata
+  elsewhere
+
+-------------------------------------------------------------------
+Fri Jun 28 06:21:43 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Block gtk2-lang from the Rescue CD - We run again out of space.
+
+-------------------------------------------------------------------
+Fri Jun  7 11:20:37 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Move OBS comment
+- Use set in config.sh correctly
+
+-------------------------------------------------------------------
+Fri Jun  7 07:39:29 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Handle aarch64
+
+-------------------------------------------------------------------
+Sat May  4 11:15:35 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop no longer existing gnome-shell-browser-plugin from GNOME Live.
+
+-------------------------------------------------------------------
+Sat Apr 27 19:55:55 UTC 2019 - Yuchen Lin <mlin+factory@suse.de>
+
+- Reverted ignoring xdg-desktop-portal-kde change
+
+-------------------------------------------------------------------
+Sat Apr 27 15:33:37 UTC 2019 - Yuchen Lin <mlin+factory@suse.de>
+
+- Ignore xdg-desktop-portal-kde on Tumbleweed
+
+-------------------------------------------------------------------
+Wed Apr 10 07:57:20 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Switch bootsplash_theme to bgrt, following the branding change.
+
+-------------------------------------------------------------------
+Fri Apr  5 14:42:10 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Xfce Live Image: removed obsolete xfce-changecontrolxml.xsl
+  System Role was addded to default YaST2 installer 
+  PR gh#yast/skelcd-control-openSUSE#165 (boo#1131666)
+
+-------------------------------------------------------------------
+Wed Apr  3 14:45:56 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Split packages for installation into list-installer.sh, shared
+  between gnome, kde and xfce
+- Require yast2_basis pattern in list-common
+- Pull in skelcd-control-openSUSE for installer deps
+  (boo#1131235)
+- Add more fonts for the installation (boo#1131061)
+- Ignore ntp, workaround for bsc#1131492
+
+-------------------------------------------------------------------
+Mon Mar 25 15:59:12 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Replace rest_cd_* patterns with direct package mentions
+- Some cleanups
+- Don't install cracklib-dict-full on x11
+- Don't ignore snapper on xfce, needed for the installer
+- Ignore usb_modeswitch, fprintd, open-vm-tools
+- Add pkg_diff.sh to show list of effective package changes
+
+-------------------------------------------------------------------
+Mon Mar 25 09:45:17 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Support new product EULA location
+
+-------------------------------------------------------------------
+Sun Mar 24 09:38:00 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Save space on the rescue CD: skip gtk3-lang and zenity-lang.
+
+-------------------------------------------------------------------
+Tue Mar 12 09:13:58 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Moved "buildignore cyrus-sasl" from list-common.sh.
+  cyrus-sasl is a required dependency of Pidgin in Xfce Live CD
+- Cleaned up dependencies in list-xfce.sh
+- Added evince as temporary replacement for xreader
+- Added gparted
+
+-------------------------------------------------------------------
+Thu Mar  7 14:01:41 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Removed patterns-media-rest_cd_x11. Use media-rest_cd_core instead. 
+
+-------------------------------------------------------------------
+Wed Mar  6 13:24:11 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Prevent creation of livecd-leap-xfce.kiwi in pre-checkin.sh
+- Removed white spaces in pre-checkin.sh
+
+-------------------------------------------------------------------
+Wed Mar  6 09:16:09 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed indendation in config.sh
+- Temporarily removed live-leap-xfce.kiwi
+- Added Xfce System Role to installer as option via xfce-changecontrolxml.xsl
+
+-------------------------------------------------------------------
+Sat Mar  2 18:07:22 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added config and files for the installer to use Xfce System Role
+
+-------------------------------------------------------------------
+Sat Mar  2 06:40:53 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Added Xfce TW Live Image kiwi file and related configs
+
+-------------------------------------------------------------------
+Mon Feb 18 14:50:30 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Ignore more fonts
+
+-------------------------------------------------------------------
+Thu Feb 14 11:57:25 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Force kde pattern as well, more complete and still enough space
+
+-------------------------------------------------------------------
+Thu Feb 14 10:23:36 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- list-kde: Force kde_plasma pattern
+
+-------------------------------------------------------------------
+Tue Feb 12 16:16:46 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Move intel-gpu-tools ignore from list-x11 to list-common (bsc#1125156)
+- Install and enable spice-vdagent
+- list-kde: Ignore patterns instead of single packages (requires switch to rest_cd_core)
+- Enable some -lang packages again
+
+-------------------------------------------------------------------
+Sat Feb  9 14:27:09 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- KDE Live image contains libreoffice-icon-themes for some reason - blocking
+  to shrink. Remove gcc8 and vim-data from X11 Live image
+
+-------------------------------------------------------------------
+Mon Jan 28 12:51:12 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove netronome firmwares. Somebody using the LiveCD on such specialized
+  hardware is a stretch. And the firmware for those devices sums
+  up to > 120MB, which we can make better use of on the Live CD.
+
+-------------------------------------------------------------------
+Mon Jan 28 08:45:33 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Shrink the KDE Live image a bit: ignore plasma5-desktop-lang and
+  kate-lang.
+
+-------------------------------------------------------------------
+Mon Jan 28 07:48:20 UTC 2019 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Minimize GNOME live CD: drop zenity-lang and gnome-weather
+
+-------------------------------------------------------------------
+Thu Jan 24 08:44:40 UTC 2019 - dleuenberger@suse.com
+
+- list-gnome: buildignore gnome-user-docs and more noto-sans fonts
+- live-kde: buildignore vlc-lang and gimp-lang
+
+-------------------------------------------------------------------
+Mon Jan  7 12:57:35 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- buildignore some packages recommended by the base pattern in list-common.sh
+
+-------------------------------------------------------------------
+Sat Dec 22 10:47:47 UTC 2018 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Save space on live media:
+  + Drop marble-lang, hugin and digikam from kde live cd
+  + Drop evolution-lang from gnome live cd
+
+-------------------------------------------------------------------
+Thu Dec 20 11:18:42 UTC 2018 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Block intel-gpu-tools from the Rescue CD
+
+-------------------------------------------------------------------
+Thu Dec 13 10:37:21 UTC 2018 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Drop gimp from the GNOME live CD.
+
+-------------------------------------------------------------------
+Thu Dec 13 10:07:08 UTC 2018 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Put midori instead of Firefox on the rescue CD
+
+-------------------------------------------------------------------
+Thu Dec 13 08:58:14 UTC 2018 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- No longer block noto-coloremoji-fonts from the rescue CD:
+  xfce4-branding requires it.
+
+-------------------------------------------------------------------
+Tue Nov 20 09:11:15 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Allow binutils, but force-remove it in config.sh (bsc#1116665)
+
+-------------------------------------------------------------------
+Wed Nov  7 12:49:31 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Add livecd-openSUSE.kiwi to allow submission as "livecd-openSUSE"
+  into the main project
+
+-------------------------------------------------------------------
+Mon Nov  5 15:13:45 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Install README.BETA from skelcd-openSUSE
+
+-------------------------------------------------------------------
+Mon Nov  5 12:14:37 UTC 2018 - Fabian Vogt <fvogt@suse.com>
+
+- Set the upgrade icon as "trusted"
+
+-------------------------------------------------------------------
+Mon Sep  3 14:37:53 UTC 2018 - fvogt@suse.com
+
+- Bump leap to 15.1
+- Also show upgrade.desktop on the desktop if available
+
+-------------------------------------------------------------------
+Thu Jun 21 07:30:20 UTC 2018 - fvogt@suse.com
+
+- Remove more generated files (boo#1098535)
+
+-------------------------------------------------------------------
+Wed Jun 13 08:29:21 UTC 2018 - fvogt@suse.com
+
+- Block virtualbox-guest-kmp-default on Leap due to boo#1095148
+- Exclude multipath from the initrd (boo#1097203)
+- Move deletion of wodim/cpp* to config.sh
+- Buildignore systemd-logger to resolve conflict
+
+-------------------------------------------------------------------
+Mon May 28 11:24:11 UTC 2018 - fvogt@suse.com
+
+- Add GParted to X11 and GNOME
+- Add KDE Partitionmanager to KDE
+- Don't block virtualbox-guest-x11 from KDE and Rescue (boo#1094789)
+
+-------------------------------------------------------------------
+Tue May 22 09:23:03 UTC 2018 - fvogt@suse.com
+
+- Remove konqueror
+- No longer block virtualbox modules from Leap
+
+-------------------------------------------------------------------
+Thu May  3 14:48:02 UTC 2018 - dleuenberger@suse.com
+
+- Add cracklib and cracklib-dict-full to the media (boo#1013206).
+
+-------------------------------------------------------------------
+Tue Apr 17 12:34:31 UTC 2018 - fvogt@suse.com
+
+- Move snapper buildignore from list-common to list-x11
+
+-------------------------------------------------------------------
+Mon Apr 16 10:15:06 UTC 2018 - dleuenberger@suse.com
+
+- do not add systemd-coredump to the live images.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:36:06 UTC 2018 - fvogt@suse.com
+
+- Add grub2-x86_64-efi on x86_64
+
+-------------------------------------------------------------------
+Tue Apr  3 07:38:45 UTC 2018 - fvogt@suse.com
+
+- Replace geturls.tar.xz with live-add-yast-repos
+
+-------------------------------------------------------------------
+Tue Mar 27 11:26:02 UTC 2018 - fvogt@suse.com
+
+- Remove /usr/share/doc/packages/ subdirectories to save space
+- Remove netronome and liquidio firmware, space offenders in
+  kernel-firmware
+- Enable rpm excludedocs
+
+-------------------------------------------------------------------
+Fri Mar 23 09:30:18 UTC 2018 - fvogt@suse.com
+
+- Fix invocation of xsltproc with geturls.xsl
+- Ignore virtualbox on leap, not available right now
+- Ignore more packages: pam_mount, deja-dup, inkscape, amavisd-new,
+  system-config-printer and tuned
+- Remove yast locales as well
+
+-------------------------------------------------------------------
+Thu Mar 15 12:30:09 UTC 2018 - fvogt@suse.com
+
+- Use the new arch attribute for profiles instead of relying on the
+  prjconf
+
+-------------------------------------------------------------------
+Wed Mar 14 14:39:38 UTC 2018 - fvogt@suse.com
+
+- Handle $releasever in a different way - leave expansion to libzypp
+
+-------------------------------------------------------------------
+Tue Mar 13 08:35:51 UTC 2018 - fvogt@suse.com
+
+- Add support for $releasever in geturls.tar.xz/geturls.xsl (boo#1085005)
+- Call geturls.xsl with releasever in config.sh
+- From Dominique:
+  * Exclude yet another -lang package
+  * Use spaces for VOLID again
+  * Don't add gconf2-branding-openSUSE
+
+-------------------------------------------------------------------
+Wed Feb 14 14:58:44 UTC 2018 - fvogt@suse.com
+
+- Don't buildignore xorg-x11-fonts in list-gnome, just everywhere
+  else as it's required by libreoffice
+- Don't ignore vim-data in list-common
+- Ignore autofs, google-droid-fonts, awesfx, libgweather-lang and espeak
+- Move ignoring of printing to list-common
+
+-------------------------------------------------------------------
+Mon Jan  8 09:18:07 UTC 2018 - fvogt@suse.com
+
+- Convert package-lists into direct dependencies, generated
+  by list-{common,gnome,kde,x11}.sh
+- Support firewalld
+- Clear RC_LANG in /etc/sysconfig/language as kiwi writes a value,
+  taking precedence over localectl used by live-langset-data
+- Also tell UDisks2 to ignore the rescue CD
+- Don't put the installer on the rescue CD
+- Instead of installing gnome-keyring-pam(-32bit) and disabling it
+  in config.sh, just don't install it
+- Support Leap 15:
+  * Build livecd-leap-FLAVOR and livecd-tumbleweed-FLAVOR
+
+-------------------------------------------------------------------
+Sat Oct  7 15:49:45 UTC 2017 - fabian@ritter-vogt.de
+
+- Adjust the rules file in udev-livecd.tar.xz to the python-kiwi
+  9.11.8 layout
+
+-------------------------------------------------------------------
+Tue Aug 15 13:02:16 UTC 2017 - fvogt@suse.com
+
+- Move from build-time config generation to static image configuration
+- Move langset and installer parts into separate packages:
+  * langset: langset.service, langset.sh, getcountrydata.rb
+  * installer: start-install.sh, installation.desktop
+- Remove obsolete files:
+  * README (outdated, important parts missing)
+  * SoftLocks (packages don't exist anymore)
+  * isopatch.sh.in (kiwi issues now fixed in the right place)
+  * kiwi-config-openSUSE-rpmlintrc (split into live-langset-data)
+- Based on kiwi-config-openSUSE
+- Rewrite HAL-based 99-ignore-live-usb.fdi into udev-live.tar.xz/99-livecd.rules
+- Use uid 1000 for livecd user to treat it as normal user

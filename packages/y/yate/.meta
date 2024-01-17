@@ -1,0 +1,9 @@
+<package name="yate" project="openSUSE:Factory">
+  <title>Yet Another Telephony Engine</title>
+  <description>Yate is a next-generation telephony engine. While currently focused on Voice
+over Internet Protocol (VoIP) and PSTN, its power lies in its ability to be
+easily extended. Voice, video, data and instant messenging can all be unified
+under Yate's flexible routing engine, maximizing communications efficiency and
+minimizing infrastructure costs for businesses.</description>
+  <devel project="network:telephony" package="yate"/>
+</package>

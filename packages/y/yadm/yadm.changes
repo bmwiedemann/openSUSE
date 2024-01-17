@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Sun Oct 22 17:12:04 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- require git-core instead of git
+
+-------------------------------------------------------------------
+Sat May 20 12:54:01 UTC 2023 - stigpro@outlook.fr
+
+- Update to version 3.2.2:
+  * Update version number and update documentation
+  * Adjust markdown creation for new version of groff
+  * Create tests for underscores in distro/family
+  * Accept _ as space substitutes
+  * Remove superfluous space
+  * Document OCI switch
+  * Support docker-like OCI engines
+- Update yadm-fix-shebangs.patch: Fix line skew
+- Compress install archive to minimize file size
+
+-------------------------------------------------------------------
+Tue Mar 22 09:11:49 UTC 2022 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Fix specfile to conform to packaging guidelines
+  * Move yadm.rpmlintrc to yadm-rpmlintrc
+  * Remove yadm.obscpio
+
+-------------------------------------------------------------------
+Tue Mar 22 08:10:46 UTC 2022 - stigpro@outlook.fr
+
+- Update to version 3.2.1:
+  * Update version number and update documentation
+  * Fix Bash 3 bad array subscript bug (#411)
+  * Update version number and update documentation
+  * Fix table format
+  * Clarify requirements for linked directories (#328)
+  * Adjust exempt labels
+  * Add local.arch to config introspection
+  * Reduce supported labels for architecture
+  * Reorder list
+  * Tweak stale workflow
+  * Update yaml formatting
+  * Change extension to match other workflows
+  * Adding new github workflow for stale issues Adding a Github workflow that will mark issues that didn't have any activity on them for the last 60 days and put a label of stale on them. After 7 days if the stale issue didn't have any updates the issue will be deleted.
+
+- Fix shebang patch
+-------------------------------------------------------------------
+Mon Mar 21 16:16:17 UTC 2022 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Update to 3.2.0
+  * Support architecture for alternates/templates (#202, #203, #393)
+  * Support distro_family for alternates/templates (#213)
+  * Support setting multiple classes (#185, #304)
+  * Support environment variables in default template processor (#347)
+  * Update version command to include Bash & Git versions (#377)
+
+- Update shebang patch file to remove /bin/sh shebang and portability function
+- Update makefile patch file to account for a part of the patch being patched upstream
+
+
+-------------------------------------------------------------------
+Thu Dec  9 15:57:49 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Fix specfile
+
+- Changelog for 3.1.1
+  * Fix clone support for older versions of Git (#348)
+  * Fix support for multiple GPG recipients (#342)
+  * Find symlinks in bootstrap-in-dir (#340)
+
+- See CHANGES for the full changelog of previous versions
+
+-------------------------------------------------------------------
+Thu Nov 25 20:57:19 UTC 2021 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Intial commit for v3.1.1 

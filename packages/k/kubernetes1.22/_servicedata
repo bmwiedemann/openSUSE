@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubernetes/kubernetes.git</param>
+              <param name="changesrevision">a7736eaf34d823d7652415337ac0ad06db9167fc</param></service></servicedata>

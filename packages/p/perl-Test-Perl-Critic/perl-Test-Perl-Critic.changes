@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Tue Mar 27 06:03:18 UTC 2018 - coolo@suse.com
+
+- updated to 1.04
+   see /usr/share/doc/packages/perl-Test-Perl-Critic/Changes
+
+  [1.04] Released on 2018-03-26
+  
+       Sped up critic_ok() by 4x by not recreating a Perl::Critic object
+       over and over.  Thanks, Jan Holčapek.  (GH#10)
+  
+       Now requires Test::Builder~0.88 or later to support the done_testing()
+       method. (GH#2)
+  
+       Now requires MCE 1.827 to deal with problems running under taint
+       mode.  Thanks, Alexandr Ciornii.  (GH #6)
+
+-------------------------------------------------------------------
+Fri Apr 17 17:48:02 UTC 2015 - coolo@suse.com
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-Test-Perl-Critic/Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 13:35:36 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:14 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Aug 22 23:02:44 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.02)
+

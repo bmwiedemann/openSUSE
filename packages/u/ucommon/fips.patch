@@ -1,0 +1,24 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-11-07 11:43:16.366627007 +0100
+
+OpenSSL 3 did away with this function
+
+---
+ openssl/secure.cpp |    4 ----
+ 1 file changed, 4 deletions(-)
+
+Index: commoncpp/openssl/secure.cpp
+===================================================================
+--- commoncpp.orig/openssl/secure.cpp
++++ commoncpp/openssl/secure.cpp
+@@ -52,10 +52,6 @@ bool secure::fips(void)
+     // must always be first init function called...
+     if(private_locks)
+         return false;
+-
+-    if(!FIPS_mode_set(1))
+-        return false;
+-
+     return init();
+ #else
+     return false;

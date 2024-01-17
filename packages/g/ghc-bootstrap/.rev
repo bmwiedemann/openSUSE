@@ -1,0 +1,296 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6acd277a75f2e457608d0b24b8fc993e</srcmd5>
+    <version>7.6.3</version>
+    <time>1411404634</time>
+    <user>coolo</user>
+    <comment>add LICENSE</comment>
+    <requestid>250592</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b2426d2c21b1bed8c9b10c7216cfb1d2</srcmd5>
+    <version>7.6.3</version>
+    <time>1427983371</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293375</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3ec1d0f760f6a9bf4c755aeb06e3eba0</srcmd5>
+    <version>7.8.3</version>
+    <time>1430891347</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 7.8.3 for faster bootstrap.
+Add support for ppc64le.</comment>
+    <requestid>305363</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a06ab565628a600bc7d21a14fb8fd516</srcmd5>
+    <version>7.8.3</version>
+    <time>1432305412</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308338</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>28c5aaa34129f13288881f80c7c4b0bf</srcmd5>
+    <version>7.8.3</version>
+    <time>1486465806</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455172</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>32ae3fc4b7860bcedc07ff81e19fc054</srcmd5>
+    <version>7.8.3</version>
+    <time>1488932089</time>
+    <user>dimstar_suse</user>
+    <comment>- added ncurses also to requires (forwarded request 477022 from mimi_vx)</comment>
+    <requestid>477023</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>2905c86b2ffe74570cd75da29b135ab2</srcmd5>
+    <version>7.8.3</version>
+    <time>1518187702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574222</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>2905c86b2ffe74570cd75da29b135ab2</srcmd5>
+    <version>7.8.3</version>
+    <time>1518187836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574222</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d83c1583bed02e4e8bbfc30f5eb86d46</srcmd5>
+    <version>8.2.1</version>
+    <time>1527674008</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-bootstrap to the latest version.</comment>
+    <requestid>607759</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>05481797c4c2501bdc00ad5ee2608462</srcmd5>
+    <version>8.2.1</version>
+    <time>1532445225</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- remove libgmp hack, upstream bindists link against new libgmp
+- explicitly depends on ncurses
+- add 7.8.4 tarball for aarch64
+- add conflicts for new ghc-*-devel packages in ghc 7.8
+* provide ppc64le build now
+- update README.suse with note on upstream tarballs
+* need more disk space
+* bootstrap ghc is built against libgmp.so.3
+- fix typo in description
+- add LICENSE file
+  package ghc
+* the tar file is quite the monstrosity :-)
+- initial packaging (version 7.6.3)</comment>
+    <requestid>623734</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c6ff21252b48c6d8e91d19b6c5bd2059</srcmd5>
+    <version>8.4.3</version>
+    <time>1540448091</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642850</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>456b6fd65eeb454efec318b856cfea40</srcmd5>
+    <version>8.4.3</version>
+    <time>1540988324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645509</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6c0c0ad2769d9af5a0c4bb8ecf8549ac</srcmd5>
+    <version>8.4.3</version>
+    <time>1548452548</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667133</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>507eb5d54b22c54019ea25b2a168286c</srcmd5>
+    <version>8.4.3</version>
+    <time>1555053373</time>
+    <user>dimstar_suse</user>
+    <comment>Re-built 'ghc-bootstrap' binary archives for aarch64 and s390x that work properly on SLE-15-SP1.</comment>
+    <requestid>693337</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ad983f264bba7b5aed61722ed76a312f</srcmd5>
+    <version>8.6.5</version>
+    <time>1579032352</time>
+    <user>dimstar_suse</user>
+    <comment>- Add RISCV bindist taken from openSUSE:Factory:RISCV64 
+- Update to version 8.6.5 for GHC 8.10 bootstrap 
+</comment>
+    <requestid>763796</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9516fab92489b689b8592d237bfd762d</srcmd5>
+    <version>8.6.5</version>
+    <time>1579729415</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build on ix86
+- add requires tags
+  * needed for ghc-bootstrap-helpers</comment>
+    <requestid>766206</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>f9fbac9636f133b2203600b862f2dad8</srcmd5>
+    <version>8.6.5</version>
+    <time>1579867799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766526</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>1de013b4818fceb9d87cc60daf75dba4</srcmd5>
+    <version>8.6.5</version>
+    <time>1582810516</time>
+    <user>dimstar_suse</user>
+    <comment>Drop llvm6-devel requirement for ARM</comment>
+    <requestid>769057</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>bc402881e171923809ee2e15a9e03ddc</srcmd5>
+    <version>8.6.5</version>
+    <time>1583759682</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>780013</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>1bdd6318ef2ff37f064363ae6ff39bb1</srcmd5>
+    <version>8.6.5</version>
+    <time>1584176134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784604</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>86bdc6ed9f218a07905eca263c54b71e</srcmd5>
+    <version>8.6.5</version>
+    <time>1589196799</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801004</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>71e651b731dac81ea9d19025864eb45c</srcmd5>
+    <version>8.10.1</version>
+    <time>1591380993</time>
+    <user>dimstar_suse</user>
+    <comment>- update most archs to 8.10.1
+- clean-up spec
+
+- Add numa-devel requirement
+  * fixes ghc-bootstrap-helpers builds on ppc64, ppc64le
+
+- ghc-8.6.5-riscv64-unknown-linux.tar.xz: rebuilt with current libffi</comment>
+    <requestid>811490</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bb9b86609ceb812f38ff5bd4f5610bf2</srcmd5>
+    <version>8.10.1</version>
+    <time>1601919573</time>
+    <user>dimstar_suse</user>
+    <comment>- update s390x bootstrap to 8.10.2 (forwarded request 839340 from mimi_vx)</comment>
+    <requestid>839341</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>21f5745d6d54b7d2e45cf62286c4f3ba</srcmd5>
+    <version>8.10.1</version>
+    <time>1608633362</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857261</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>554f09a222c82c34da6e471a3b93574a</srcmd5>
+    <version>8.10.1</version>
+    <time>1629917865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914207</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>a17e3a2ada0de683d1e9af58c78b194c</srcmd5>
+    <version>8.10.1</version>
+    <time>1644617269</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953387</requestid>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>5de7bdf5818067fb2b46240dcd9433a7</srcmd5>
+    <version>8.10.1</version>
+    <time>1659382146</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>986171</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>2877fb3735f97ae8c82cd1b69d155d17</srcmd5>
+    <version>8.10.1</version>
+    <time>1670703488</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing dependency on libffi8.so to fix jsc#PED-1151.</comment>
+    <requestid>1041880</requestid>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>74c40d6b9a94a78d7234f6b079adcefe</srcmd5>
+    <version>8.10.1</version>
+    <time>1674495169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060396</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3b16c038513e91bb6c63d473e382a2f3</srcmd5>
+    <version>9.2.3</version>
+    <time>1680636333</time>
+    <user>dimstar_suse</user>
+    <comment>- update bootstrap compiler to 9.2.3 using hadrian build 
+
+- Update bootstrap compiler to ghc-8.10.7.</comment>
+    <requestid>1076859</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f17db668a5fe522c74e0156f24e4ed71</srcmd5>
+    <version>9.2.3</version>
+    <time>1682522786</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>1082946</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>f0319e5cefe1a4a678aa79b5b65ddc22</srcmd5>
+    <version>9.2.3</version>
+    <time>1687469144</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094476</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>33f1ceb4deb74a0eb1c4204b18907339</srcmd5>
+    <version>9.4.4</version>
+    <time>1700771953</time>
+    <user>anag+factory</user>
+    <comment>- Reduce memory constraints for riscv64
+
+- Update bootsrap compiler to ghc-9.4.4</comment>
+    <requestid>1126686</requestid>
+  </revision>
+</revisionlist>

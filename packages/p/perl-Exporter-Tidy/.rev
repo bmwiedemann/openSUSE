@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95b7142e22284c8c1fb066d75a0244d2</srcmd5>
+    <version>0.07</version>
+    <time>1264638074</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Exporter-Tidy based on submit request 30426 from user anicka
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a51ec3847c8cce622d29c4eefea99a22</srcmd5>
+    <version>0.07</version>
+    <time>1265751604</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Exporter-Tidy based on submit request 31766 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>81ffd01fdc7de957a6cef91124c774c4</srcmd5>
+    <version>0.07</version>
+    <time>1268925453</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f3a54db21b406babb30356878a4b488b</srcmd5>
+    <version>0.07</version>
+    <time>1274791490</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Exporter-Tidy based on submit request 40555 from user coolo
+</comment>
+    <requestid>40555</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>f3a54db21b406babb30356878a4b488b</srcmd5>
+    <version>0.07</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>f3a54db21b406babb30356878a4b488b</srcmd5>
+    <version>0.07</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>8a2a340591156ad7d08163912cff7570</srcmd5>
+    <version>0.07</version>
+    <time>1287485648</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50982 from user coolo
+</comment>
+    <requestid>50982</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>e38285db823058c4d13faea164bf6567</srcmd5>
+    <version>0.07</version>
+    <time>1287485671</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50982
+</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>ae7e0c7223b248a12c3ade55807208cf</srcmd5>
+    <version>0.07</version>
+    <time>1291582212</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54529 from user coolo
+</comment>
+    <requestid>54529</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>258d34e43c087ae39c0c199b186ec0fb</srcmd5>
+    <version>0.07</version>
+    <time>1291582219</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54529
+</comment>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>258d34e43c087ae39c0c199b186ec0fb</srcmd5>
+    <version>0.07</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>258d34e43c087ae39c0c199b186ec0fb</srcmd5>
+    <version>0.07</version>
+    <time>1319182264</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>dc48e6fe1999df11475cd2f2654d9c86</srcmd5>
+    <version>0.07</version>
+    <time>1323419533</time>
+    <user>coolo</user>
+    <comment>- rewrite license field for public domain (forwarded request 95738 from coolo)</comment>
+    <requestid>95749</requestid>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>dc48e6fe1999df11475cd2f2654d9c86</srcmd5>
+    <version>0.07</version>
+    <time>1340183837</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>dc48e6fe1999df11475cd2f2654d9c86</srcmd5>
+    <version>0.07</version>
+    <time>1359109658</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>dc48e6fe1999df11475cd2f2654d9c86</srcmd5>
+    <version>0.07</version>
+    <time>1379663665</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="25">
+    <srcmd5>dc48e6fe1999df11475cd2f2654d9c86</srcmd5>
+    <version>0.07</version>
+    <time>1409302276</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3fe88f62829b19ff5eada77f6d85ee99</srcmd5>
+    <version>0.08</version>
+    <time>1423596165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284812</requestid>
+  </revision>
+</revisionlist>

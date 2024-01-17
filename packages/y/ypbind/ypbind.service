@@ -1,0 +1,20 @@
+[Unit]
+Description=NIS/YP Clients to NIS Domain Binder
+Documentation=man:ypbind(8)
+Requires=rpcbind.service
+Wants=nss-user-lookup.target network-online.target
+After=network.target rpcbind.service ypserv.service nss-lookup.target network-online.target
+Before=systemd-user-sessions.service nss-user-lookup.target
+
+[Service]
+Type=notify
+NotifyAccess=all
+EnvironmentFile=-/usr/etc/default/ypbind
+EnvironmentFile=-/etc/default/ypbind
+ExecStartPre=/usr/libexec/ypbind/ypbind-systemd-pre
+ExecStart=/usr/sbin/ypbind -n $YPBIND_OPTIONS
+ExecStopPost=/bin/sh -c "/bin/rm -f /var/yp/binding/* /var/run/ypbind.pid"
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

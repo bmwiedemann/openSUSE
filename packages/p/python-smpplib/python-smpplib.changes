@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Dec  8 16:04:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * Fix: correct UCS2 part length following #184, fixes #216
+- update to 2.2.2:
+  * Added python 3.10 tests to CircleCI
+  * fix socket recv error being silently ignored
+  * Refactored Client.read_pdu()
+  * Refactored Client.send_pdu()
+  * increment sequence of commands as spec (fixes #214)
+
+-------------------------------------------------------------------
+Wed May  4 07:55:32 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/python-smpplib/python-smpplib/issues/200
+  + python-smpplib-no-mock.patch
+
+-------------------------------------------------------------------
+Mon Nov 22 11:07:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.1
+  * Fix: split message detection
+
+-------------------------------------------------------------------
+Mon Nov  8 10:09:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing six buildrequires
+
+-------------------------------------------------------------------
+Mon Oct 25 19:33:46 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+  * New: allow customizing how error PDUs are handled
+  * New: ignoring unknown optional parameters
+  * New: add the option to create TLS/SSL sockets
+  * Fix: the max check should include the NULL terminator
+  * Fix: not always setting the socket timeout
+  * Fix: add mandatory parameters to GenericNack command
+  * Fix: handle errors on PDU payload retrieval
+- Drop patch:
+  * python-smpplib-use-unittest-mock.patch
+
+-------------------------------------------------------------------
+Mon Sep  7 07:26:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use a more meaningful description
+- Add patch:
+  * python-smpplib-use-unittest-mock.patch
+    Use 'unitest.mock' instead of the external mock package
+
+-------------------------------------------------------------------
+Mon Sep  7 05:49:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.1.0
+- Switch to singlespec
+- Package cleanup
+
+-------------------------------------------------------------------
+Sun Jul 31 19:23:06 UTC 2016 - mardnh@gmx.de
+
+- Update to version 0.0.0.git1456854982.ee4a653:
+  * fix Unknown SMPP command code
+
+-------------------------------------------------------------------
+Wed Jan 20 10:58:36 UTC 2016 - mardnh@gmx.de
+
+- initial package
+

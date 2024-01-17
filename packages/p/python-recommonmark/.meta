@@ -1,0 +1,10 @@
+<package name="python-recommonmark" project="openSUSE:Factory">
+  <title>A python docutils-compatibility bridge to CommonMark.</title>
+  <description>
+This allows you to write CommonMark inside of Docutils &amp; Sphinx projects.
+
+Documentation is available on Read the Docs:
+http://recommonmark.readthedocs.org
+</description>
+  <devel project="devel:languages:python" package="python-recommonmark"/>
+</package>

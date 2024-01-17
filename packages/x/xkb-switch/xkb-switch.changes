@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Mar 17 02:20:30 UTC 2021 - Martin Rey <mrey@suse.com>
+
+- Adapt spec file to corrctly rename man file
+
+- Update to version 1.8.5 
+  * Fix a potential int/char error
+
+- Changes from version 1.8.4
+  * Use optarg for arguments
+  * Fix longopt of -s
+
+- Changes from version 1.8.3
+  * Can process tightly coupled one letter flags
+  * Rewrote option parsing using getopt 
+
+- Changes from version 1.8.2
+  * Minor fix for CMakeLists.tx
+  * Use gzip as a manpage compression
+  * Adjust CMakeLists style
+  * Replace vimtest.sh with more powerful test.sh 
+  * Fix and update test.sh
+
+- Changes from version 1.8.1
+  * Better header names
+
+- Changes from version 1.8.0
+  * Change error messages
+
+- Changes from version 1.7.1
+  * Change default man compression tool to gz
+
+- Changes from version 1.7.0
+  * Add -d|--debug flag
+  * Print version in verbose mode
+  * Enhance debug printing
+
+-------------------------------------------------------------------
+Wed Dec  2 02:46:22 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.6.0
+

@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Fri Nov 24 17:32:00 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231124+git.fc8a6e0:
+  * do not let alias chew on empty data
+  * Support Desktop Actions, update docs
+  * xdg-terminal-exec: Don't default to `xterm`
+  * README: Reflect new `XTE_STOCK_TERMINALS` behaviour
+  * xdg-terminal-exec: Convert all IDs in one `tr` call
+  * xdg-terminal-exec: Map ID-path pairs using aliases
+  * xdg-terminal-exec: Mask `IFS` inside functions
+  * xdg-terminal-exec: Introduce `check_entry_key`
+  * xdg-terminal-exec: Introduce `find_entry`
+  * xdg-terminal-exec: Introduce `find_entry_paths`
+  * xdg-terminal-exec: check `Categories` in `check_entry`
+  * xdg-terminal-exec: Use `$XTE_STOCK_TERMINALS`
+  * xdg-terminal-exec: Introduce `read_config_paths`
+  * xdg-terminal-exec: Introduce `find_config_paths`
+  * xdg-terminal-exec: Use `find -print`
+  * xdg-terminal-exec: Make `find` call POSIX compliant
+  * xdg-terminal-exec: match default paths with spec
+  * xdg-terminal-exec: disable pathname expansion
+
+-------------------------------------------------------------------
+Thu Oct 26 14:51:17 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231014+git.b6d2874:
+  * update readme
+  * WIP #28 internal list deduplicator, formatting
+  * WIP #28 add stock applications controls to configs
+  * check_bool function
+  * WIP #28 filter terminals from applications
+  * tr is faster than xargs -n1 on lots of lines
+- Store only *.obscpio, the tarball is generated in buildtime.
+
+-------------------------------------------------------------------
+Sat Oct 07 12:58:52 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231003+git.e5c20d0:
+  * test/tests.bats: Add a TODO for additional tests
+  * Add myself as a contributor
+  * xdg-terminal-exec: Remove now unused code
+  * xdg-terminal-exec: Move entry ID loops out to main
+  * xdg-terminal-exec: Use globals set by `find*entry`
+  * xdg-terminal-exec: Parse config file using `case`
+  * xdg-terminal-exec: Check entries using `case`
+  * xdg-terminal-exec: Parse entry file using `case`
+  * xdg-terminal-exec: set `errexit` and `nounset`
+  * README: Small fixes and changes
+  * default debug value (fixes #24)
+  * xdg-terminal-exec: Remove empty variable assignments
+  * xdg-terminal-exec: Normalise printing
+  * xdg-terminal-exec: Normalise string quotes
+  * xdg-terminal-exec: Indent here documents
+  * tests: Make `tests.bats` executable
+  * xdg-terminal-exec: run `shfmt`
+  * xdg-terminal-exec: don't use `find -printf`
+
+-------------------------------------------------------------------
+Mon Jul 31 12:33:33 UTC 2023 - mcepl@suse.com
+
+- Update to version 20230731+git.6426085:
+  * fix shellcheck warnings, fixes #20
+
+-------------------------------------------------------------------
+Mon Jul 31 06:34:31 UTC 2023 - mcepl@suse.com
+
+- Update to version 20230725+git.97162b5:
+  * Update xdg-terminal-exec
+  * replace bloated xargs -0/IFS sorcery with more compact and
+    clean eval/set magic
+  * Use ASCII chars as candidates for delimiter, fixes #12
+  * Fix errors during tests
+  * xdg-terminal-exec: add missed $ to CHAR variable
+  * Fixes for missing executable and empty data dirs
+  * account for explicitly empty EXECARG, construct_argv
+    function, update doc
+- Enable tests.
+
+-------------------------------------------------------------------
+Thu Feb 23 13:24:23 UTC 2023 - rbrown@suse.com
+
+- Update to version 20230223+git.c70f178:
+  * Add support for /usr/etc configurations
+
+-------------------------------------------------------------------
+Thu Feb 23 12:13:45 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Initial Packaging, to be used by MicroOS Desktop and forks 

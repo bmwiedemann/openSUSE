@@ -1,0 +1,49 @@
+#!/bin/sh
+
+if [ "`id -u`" != "0" ]; then
+ echo "You must be root to use this program!"
+ exit 0
+fi
+
+if ! test -x /usr/bin/gdb; then
+  echo "gdb (package gdb, series d) must be installed before running this program!"
+  exit 0
+fi
+
+# It is recommended to also have installed the following debuginfo packages:
+#  freetype2-debuginfo
+#  xorg-x11-libXau-debuginfo
+#  xorg-x11-libXdmcp-debuginfo
+#  xorg-x11-fontenc-debuginfo
+#  xorg-x11-libs-debuginfo
+#  xorg-x11-driver-video-debuginfo
+#  xorg-x11-driver-input-debuginfo
+#  xorg-x11-server-debuginfo
+
+tmpfile=`mktemp /tmp/xf86debug.XXXXXXXXXX`
+
+# generate core file
+ulimit -c unlimited
+corefile=`mktemp /tmp/core.Xorg.XXXXXXXXXX`
+
+echo -n "Starting X Server in Debugger ... "
+gdb <<EOF > $tmpfile 2>&1
+file  /usr/bin/Xorg
+set args ${1+"$@"}
+handle SIGUSR1 nostop
+handle SIGUSR2 nostop
+handle SIGPIPE nostop
+run
+generate-core-file $corefile
+bt full
+cont
+quit
+EOF
+echo "done"
+
+echo "Debugger output written to $tmpfile." 
+if [ -s $corefile ]; then
+  echo "Core file written to $corefile."
+else
+  rm $corefile
+fi

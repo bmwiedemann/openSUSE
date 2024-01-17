@@ -1,0 +1,436 @@
+-------------------------------------------------------------------
+Mon Sep  4 17:36:39 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.8.0
+  * Update python version test matrix by @auvipy in #895
+  * Add ``strict_aud`` as an option to ``jwt.decode`` by @woodruffw in #902
+  * Export PyJWKClientConnectionError class by @daviddavis in #887
+  * Allows passing of ssl.SSLContext to PyJWKClient by @juur in #891
+- Skip test_get_jwt_set_sslcontext_default test in testsuite
+
+-------------------------------------------------------------------
+Fri May 19 13:25:05 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.7.0
+  * Add classifier for Python 3.11 by @eseifert in #818
+  * Add Algorithm.compute_hash_digest and use it to implement at_hash validation example by @sirosen in #775
+  * fix: use datetime.datetime.timestamp function to have a milliseconds by @daillouf in #821
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #825
+  * Custom header configuration in jwk client by @thundercat1 in #823
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #828
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #833
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #835
+  * Add PyJWT._{de,en}code_payload hooks by @akx in #829
+  * Add sort_headers parameter to api_jwt.encode by @evroon in #832
+  * Make mypy configuration stricter and improve typing by @akx in #830
+  * Bump actions/stale from 6 to 7 by @dependabot in #840
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #838
+  * Add more types by @Viicos in #843
+  * Differentiate between two errors by @irdkwmnsb in #809
+  * Fix _validate_iat validation by @Viicos in #847
+  * Improve error messages when cryptography isn't installed by @Viicos in #846
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #852
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #855
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #859
+  * Make Algorithm an abstract base class by @Viicos in #845
+  * docs: correct mistake in the changelog about verify param by @gbillig in #866
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #868
+  * Bump actions/stale from 7 to 8 by @dependabot in #872
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #874
+  * Add a timeout for PyJWKClient requests by @daviddavis in #875
+  * Add client connection error exception by @daviddavis in #876
+  * Add complete types to take all allowed keys into account by @Viicos in #873
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #878
+  * Build and upload PyPI package by @jpadilla in #884
+  * Fix for issue #862 - ignore invalid keys in a jwks. by @timw6n in #863
+  * Add as_dict option to Algorithm.to_jwk by @fluxth in #881
+
+-------------------------------------------------------------------
+Fri Apr 21 12:21:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Fri Oct 28 20:29:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Thu Oct 27 21:01:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.6.0
+  Changed
+  * bump up cryptography >= 3.4.0 by @jpadilla in #807
+  * Remove types-cryptography from crypto extra by @lautat in #805
+  Fixed
+  * Invalidate token on the exact second the token expires #797
+  * fix: version 2.5.0 heading typo by @c0state in #803
+  Added
+  * Adding validation for issued_at when iat > (now + leeway) as ImmatureSignatureError by @sriharan16 in #794
+
+-------------------------------------------------------------------
+Sun Oct  9 14:11:04 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.5.0
+  * Bump actions/checkout from 2 to 3 by @dependabot in #758
+  * Bump codecov/codecov-action from 1 to 3 by @dependabot in #757
+  * Bump actions/setup-python from 2 to 3 by @dependabot in #756
+  * adding support for compressed payloads by @danieltmiles in #753
+  * Revert "adding support for compressed payloads" by @auvipy in #761
+  * Add to_jwk static method to ECAlgorithm by @leonsmith in #732
+  * Remove redundant wheel dep from pyproject.toml by @mgorny in #765
+  * Adjust expected exceptions in option merging tests for PyPy3 by @mgorny in #763
+  * Do not fail when an unusable key occurs by @DaGuich in #762
+  * Fixes for pyright on strict mode by @brandon-leapyear in #747
+  * Bump actions/setup-python from 3 to 4 by @dependabot in #769
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #770
+  * docs: fix simple typo, iinstance -> isinstance by @timgates42 in #774
+  * Expose get_algorithm_by_name as new method by @sirosen in #773
+  * Remove support for python3.6 by @sirosen in #777
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #778
+  * Emit a deprecation warning for unsupported kwargs by @sirosen in #776
+  * Fix typo: priot -> prior by @jdufresne in #780
+  * Fix for headers disorder issue by @kadabusha in #721
+  * Update audience typing by @JulianMaurin in #782
+  * Improve PyJWKSet error accuracy by @JulianMaurin in #786
+  * Add type hints to jwt/help.py and add missing types dependency by @kkirsche in #784
+  * Add cacheing functionality for JWK set by @wuhaoyujerry in #781
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #788
+  * Mypy as pre-commit check + api_jws typing by @JulianMaurin in #787
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #791
+  * Bump version to 2.5.0 by @jpadilla in #801
+
+-------------------------------------------------------------------
+Thu Jul 21 11:39:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1199282, jsc#PM-3243, jsc#SLE-24629)
+- Drop CVE-2022-29217-non-blocked-pubkeys.patch in older dists
+  since the issue was fixed upstream in version 2.4.0
+
+-------------------------------------------------------------------
+Tue Jun  7 17:27:32 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.4.0 (CVE-2022-29217 boo#1199756)
+  - Security
+    - [CVE-2022-29217] Prevent key confusion through
+      non-blocklisted public key formats. GHSA-ffqj-6fqr-9h24
+  - Other changes:
+    - Explicit check the key for ECAlgorithm by @estin in
+      https://github.com/jpadilla/pyjwt/pull/713
+    - Raise DeprecationWarning for jwt.decode(verify=...) by @akx
+      in https://github.com/jpadilla/pyjwt/pull/742
+    - Don't use implicit optionals by @rekyungmin in
+      https://github.com/jpadilla/pyjwt/pull/705
+    - documentation fix: show correct scope for decode_complete()
+      by @sseering in https://github.com/jpadilla/pyjwt/pull/661
+    - fix: Update copyright information by @kkirsche in
+      https://github.com/jpadilla/pyjwt/pull/729
+    - Don't mutate options dictionary in .decode_complete() by @akx
+      in https://github.com/jpadilla/pyjwt/pull/743
+    - Add support for Python 3.10 by @hugovk in
+      https://github.com/jpadilla/pyjwt/pull/699
+    - api_jwk: Add PyJWKSet.__getitem__ by @woodruffw in
+      https://github.com/jpadilla/pyjwt/pull/725
+    - Update usage.rst by @guneybilen in
+      https://github.com/jpadilla/pyjwt/pull/727
+    - Docs: mention performance reasons for reusing RSAPrivateKey
+      when encoding by @dmahr1 in
+      https://github.com/jpadilla/pyjwt/pull/734
+    - Fixed typo in usage.rst by @israelabraham in
+      https://github.com/jpadilla/pyjwt/pull/738
+    - Add detached payload support for JWS encoding and decoding by
+      @fviard in https://github.com/jpadilla/pyjwt/pull/723
+    - Replace various string interpolations with f-strings by @akx
+      in https://github.com/jpadilla/pyjwt/pull/744
+
+-------------------------------------------------------------------
+Wed Nov  3 08:57:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.0
+  * Revert "Remove arbitrary kwargs." (#701)
+  * Add exception chaining (#702)
+- from version 2.2.0
+  * Remove arbitrary kwargs. (#657)
+  * Use timezone package as Python 3.5+ is required. (#694)
+  * Assume JWK without the "use" claim is valid for signing
+    as per RFC7517 (#668)
+  * Prefer `headers["alg"]` to `algorithm` in `jwt.encode()`. (#673)
+  * Fix aud validation to support {'aud': null} case. (#670)
+  * Make `typ` optional in JWT to be compliant with RFC7519. (#644)
+  * Remove upper bound on cryptography version. (#693)
+  * Add support for Ed448/EdDSA. (#675)
+
+-------------------------------------------------------------------
+Tue May 18 22:19:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  - Allow claims validation without making JWT signature validation mandatory. `
+  - Remove padding from JWK test data. `
+  - Make `kty` mandatory in JWK to be compliant with RFC7517. `
+  - Allow JWK without `alg` to be compliant with RFC7517. `
+  - Allow to verify with private key on ECAlgorithm, as well as on Ed25519Algorithm. `
+  - Add caching by default to PyJWKClient `
+  - Add missing exceptions.InvalidKeyError to jwt module __init__ imports `
+  - Add support for ES256K algorithm `
+  - Add `from_jwk()` to Ed25519Algorithm `
+  - Add `to_jwk()` to Ed25519Algorithm `
+  - Export `PyJWK` and `PyJWKSet`
+
+-------------------------------------------------------------------
+Fri Feb 26 10:54:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)
+
+-------------------------------------------------------------------
+Mon Feb  1 20:52:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Drop support for Python 2 and Python 3.0-3.5
+  * Require cryptography >= 3
+  * Drop support for PyCrypto and ECDSA
+  * Drop CLI
+  * Improve typings
+  * Dropped deprecated errors
+  * Dropped deprecated ``verify_expiration`` param in ``jwt.decode(...)``
+  * Dropped deprecated ``verify`` param in ``jwt.decode(...)``
+  * Require explicit ``algorithms`` in ``jwt.decode(...)`` by default
+  * Dropped deprecated ``require_*`` options in ``jwt.decode(...)``
+  * Introduce better experience for JWKs
+  * further details see included CHANGELOG.rst
+- drop 0001-Catch-BadSignatureError-raised-by-ecdsa-0.13.3.patch (obsolete)
+
+-------------------------------------------------------------------
+Fri Oct 18 20:24:47 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with ecdsa >= 0.13.3, #447
+  * 0001-Catch-BadSignatureError-raised-by-ecdsa-0.13.3.patch
+
+-------------------------------------------------------------------
+Thu Mar  7 11:13:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes and test calls
+
+-------------------------------------------------------------------
+Mon Feb  4 20:05:58 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 1.7.1:
+  * Update test dependencies with pinned ranges
+  * Fix pytest deprecation warnings
+
+- update to version v1.7.0:
+  * Remove CRLF line endings #353
+  * Update usage.rst #360
+  * Support for Python 3.7 #375 #379 #384
+
+- removed pyjwt-pytest390.patch (fixed upstream)
+- removed pyjwt-python37.patch (fixed upstream)
+- removed dos2unix conversion of jwt/__main__.py (fixed upstream)
+- add test build conditional
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:21 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Nov 27 11:52:40 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix testsuite with pytest 3.9.0:
+  * pyjwt-pytest390.patch
+
+-------------------------------------------------------------------
+Wed Nov 14 13:51:54 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with python 3.7:
+  * pyjwt-python37.patch
+
+-------------------------------------------------------------------
+Sat Jul  7 17:24:24 UTC 2018 - arun@gmx.de
+
+- update to version 1.6.4:
+  * Reverse an unintentional breaking API change to .decode() #352
+
+-------------------------------------------------------------------
+Wed May 23 10:35:21 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.6.3:
+  * Dropped support for python 2.6 and 3.3 #301
+  * An invalid signature now raises an InvalidSignatureError instead of DecodeError #316
+  * Fix over-eager fallback to stdin #304
+  * Audience parameter throws InvalidAudienceError when application does not specify an audience, but the token does. #336
+  * All exceptions inherit from PyJWTError #340
+  * Add type hints #344
+  * Add help module 7ca41e5
+- Drop pointless _service file
+
+-------------------------------------------------------------------
+Fri Feb 23 19:47:34 UTC 2018 - tbechtold@suse.com
+
+- Avoid not needed python-pytest-cov and python-pytest-runner
+  BuildRequires. There is no need todo a coverage run during
+  package build.
+
+-------------------------------------------------------------------
+Thu Nov  2 02:05:49 UTC 2017 - arun@gmx.de
+
+- update to version 1.5.3:
+  * Changed
+    + Increase required version of the cryptography package to
+      >=1.4.0.
+  * Fixed
+    + Remove uses of deprecated functions from the cryptography
+      package.
+    + Warn about missing algorithms param to decode() only when verify
+      param is True #281
+
+-------------------------------------------------------------------
+Mon Aug 21 15:51:40 UTC 2017 - tbechtold@suse.com
+
+- update to 1.5.2:
+  - Ensure correct arguments order in decode super call [7c1e61d][7c1e61d]
+  - Change optparse for argparse. [#238][238]
+  - Guard against PKCS1 PEM encododed public keys [#277][277]
+  - Add deprecation warning when decoding without specifying `algorithms` [#277][277]
+  - Improve deprecation messages [#270][270]
+  - PyJWT.decode: move verify param into options [#271][271]
+  - Support for Python 3.6 [#262][262]
+  - Expose jwt.InvalidAlgorithmError [#264][264]
+  - Add support for ECDSA public keys in RFC 4253 (OpenSSH) format [#244][244]
+  - Renamed commandline script `jwt` to `jwt-cli` to avoid issues with the script clobbering the `jwt` module in some circumstances. [#187][187]
+  - Better error messages when using an algorithm that requires the cryptography package, but it isn't available [#230][230]
+  - Tokens with future 'iat' values are no longer rejected [#190][190]
+  - Non-numeric 'iat' values now raise InvalidIssuedAtError instead of DecodeError
+  - Remove rejection of future 'iat' claims [#252][252]
+  - Add back 'ES512' for backward compatibility (for now) [#225][225]
+  - Fix incorrectly named ECDSA algorithm [#219][219]
+  - Fix rpm build [#196][196]
+  - Add JWK support for HMAC and RSA keys [#202][202]
+
+-------------------------------------------------------------------
+Fri Apr 28 12:25:53 UTC 2017 - pousaduarte@gmail.com
+
+- Restore runtime dependency python-ecdsa
+
+-------------------------------------------------------------------
+Wed Apr 26 18:03:53 UTC 2017 - pousaduarte@gmail.com
+
+- Convert to singlespec
+- Remove unneeded dependency python-ecdsa
+- Use "download_files" in _service file to automate source fetching
+
+-------------------------------------------------------------------
+Fri Mar 17 18:58:52 UTC 2017 - rjschwei@suse.com
+
+- Drop pycrypto as dependency, we only need cryptography
+
+-------------------------------------------------------------------
+Fri Mar 10 08:52:47 UTC 2017 - alarrosa@suse.com
+
+- Use update-alternatives so it can be co-installable with python3-PyJWT
+- Use dos2unix on jwt/__init__.py
+- updated source url to files.pythonhosted.org
+- Run the spec file through spec-cleaner
+- Drop PyJWT-1.1.0.diff which was only used on rhel (?)
+
+-------------------------------------------------------------------
+Thu Sep 15 13:52:58 UTC 2016 - rjschwei@suse.com
+
+- Include in SLES 12 (FATE#321371, bsc#998103)
+
+-------------------------------------------------------------------
+Thu Sep  1 12:36:06 UTC 2016 - tbechtold@suse.com
+
+- Use https for Source url
+
+-------------------------------------------------------------------
+Thu Sep  1 05:41:26 UTC 2016 - tbechtold@suse.com
+
+- update to 1.4.2:
+  - A PEM-formatted key encoded as bytes could cause a `TypeError` to be raised [#213][213]
+  - Newer versions of Pytest could not detect warnings properly [#182][182]
+  - Non-string 'kid' value now raises `InvalidTokenError` [#174][174]
+  - `jwt.decode(None)` now gracefully fails with `InvalidTokenError` [#183][183]
+
+-------------------------------------------------------------------
+Tue Jan  5 09:38:01 UTC 2016 - bwiedemann@suse.com
+
+- BuildRequire python-pytest-cov >= 1.7
+
+-------------------------------------------------------------------
+Thu Nov  5 10:38:45 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 1.4.0
+  + Fixed
+    * Exclude Python cache files from PyPI releases.
+  + Added
+    * Added new options to require certain claims
+      (require_nbf, require_iat, require_exp) and raise `MissingRequiredClaimError`
+      if they are not present.
+    * If `audience=` or `issuer=` is specified but the claim is not present,
+      `MissingRequiredClaimError` is now raised instead of `InvalidAudienceError`
+      and `InvalidIssuerError`
+- Update to 1.3.0
+  + Fixed
+    * ECDSA (ES256, ES384, ES512) signatures are now being properly serialized [#158][158]
+    * RSA-PSS (PS256, PS384, PS512) signatures now use the proper salt length for PSS padding. [#163][163]
+  + Added
+    * Added a new `jwt.get_unverified_header()` to parse and return the header portion of a token prior to signature verification.
+  + Removed
+    * Python 3.2 is no longer a supported platform. This version of Python is
+      rarely used. Users affected by this should upgrade to 3.3+.
+- Update to 1.2.0
+  + Fixed
+    * Added back `verify_expiration=` argument to `jwt.decode()` that was erroneously removed in [v1.1.0][1.1.0].
+  + Changed
+    * Refactored JWS-specific logic out of PyJWT and into PyJWS superclass. [#141][141]
+  + Deprecated
+    * `verify_expiration=` argument to `jwt.decode()` is now deprecated and will be removed in a future version. Use the `option=` argument instead.
+- Rebase PyJWT-1.1.0.diff
+
+-------------------------------------------------------------------
+Mon Aug 10 09:20:26 UTC 2015 - seife+obs@b1-systems.com
+
+- apply PyJWT-1.1.0.diff only on RHEL/CentOS
+
+-------------------------------------------------------------------
+Thu Jul  9 16:43:37 UTC 2015 - seife+obs@b1-systems.com
+
+- fix build on RHEL7, add PyJWT-1.1.0.diff
+
+-------------------------------------------------------------------
+Wed Apr 22 14:01:31 UTC 2015 - mcihar@suse.cz
+
+- Include pycrypto and ecdsa in BuildRequires for complete test coverage
+- Use setup.py test to execute testsuite
+
+-------------------------------------------------------------------
+Wed Apr 22 11:14:42 UTC 2015 - mcihar@suse.cz
+
+- Simplify dependencies (only python-cryptography is needed, pycrypto and ecdsa
+  are just fallbacks whet is is not)
+
+-------------------------------------------------------------------
+Mon Apr 20 11:56:59 UTC 2015 - mcihar@suse.cz
+
+- Enable testsuite during build
+
+-------------------------------------------------------------------
+Mon Apr 20 11:55:52 UTC 2015 - mcihar@suse.cz
+
+- Update to 1.1.0
+
+-------------------------------------------------------------------
+Thu Nov  6 09:08:37 UTC 2014 - mcihar@suse.cz
+
+- Update to 0.3.0
+
+-------------------------------------------------------------------
+Wed Jul 23 13:28:19 UTC 2014 - mcihar@suse.cz
+
+- initial packaging
+

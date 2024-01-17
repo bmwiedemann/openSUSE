@@ -1,0 +1,5 @@
+<package name="crc32csum" project="openSUSE:Factory">
+  <title>crc32csum</title>
+  <description>A tool to calculate crc32c of files.</description>
+  <devel project="utilities" package="crc32csum"/>
+</package>

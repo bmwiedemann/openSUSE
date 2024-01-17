@@ -1,0 +1,161 @@
+diff --git a/Makefile b/Makefile
+index 3338ccf..92f6a8b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -22,9 +22,13 @@ PROJECT=tiobench
+ VERSION=$(shell egrep "tiotest v[0-9]+.[0-9]+" tiotest.c | cut -d " " -f 8 | sed "s/v//g")
+ DISTNAME=$(PROJECT)-$(VERSION)
+ INSTALL=install
+-PREFIX=/usr/local
+-BINDIR=$(PREFIX)/bin
+-DOCDIR=/usr/local/doc/$(DISTNAME)
++DESTDIR=
++prefix?=/usr/local
++PREFIX=$(prefix)
++bindir=$(PREFIX)/bin
++BINDIR=$(bindir)
++docdir=/usr/local/doc/$(DISTNAME)
++DOCDIR=$(docdir)
+ 
+ all: $(TEST_LARGE) $(TIOTEST)
+ 
+@@ -55,20 +59,20 @@ dist:
+ 	rm $(DISTNAME)
+ 
+ install:
+-	if [ ! -d $(BINDIR) ]; then \
+-		mkdir -p $(BINDIR); \
++	if [ ! -d $(DESTDIR)$(BINDIR) ]; then \
++		mkdir -p $(DESTDIR)$(BINDIR); \
+ 	fi;
+-	if [ ! -d $(DOCDIR) ]; then \
+-		mkdir -p $(DOCDIR); \
++	if [ ! -d $(DESTDIR)$(DOCDIR) ]; then \
++		mkdir -p $(DESTDIR)$(DOCDIR); \
+ 	fi;
+-	$(INSTALL) tiotest $(BINDIR)
+-	$(INSTALL) tiobench.pl $(BINDIR)
+-	$(INSTALL) tiosum.pl $(BINDIR)
+-	$(INSTALL) README $(DOCDIR)
+-	$(INSTALL) BUGS $(DOCDIR)
+-	$(INSTALL) COPYING $(DOCDIR)
+-	$(INSTALL) ChangeLog $(DOCDIR)
+-	$(INSTALL) TODO $(DOCDIR)
++	$(INSTALL) tiotest $(DESTDIR)$(BINDIR)
++	$(INSTALL) tiobench.pl $(DESTDIR)$(BINDIR)
++	$(INSTALL) tiosum.pl $(DESTDIR)$(BINDIR)
++	$(INSTALL) README $(DESTDIR)$(DOCDIR)
++	$(INSTALL) BUGS $(DESTDIR)$(DOCDIR)
++	$(INSTALL) COPYING $(DESTDIR)$(DOCDIR)
++	$(INSTALL) ChangeLog $(DESTDIR)$(DOCDIR)
++	$(INSTALL) TODO $(DESTDIR)$(DOCDIR)
+ 
+ uninstall:
+ 	rm -f $(BINDIR)/tiotest
+diff --git a/test_largefiles.c b/test_largefiles.c
+index e06f3f8..fad7994 100644
+--- a/test_largefiles.c
++++ b/test_largefiles.c
+@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
+         exit(1);
+     }
+ 
+-    printf( xstr(TIO_ftruncate) "()'ing large test file to size %Lx\n", LARGEFILE_SIZE);
++    printf( xstr(TIO_ftruncate) "()'ing large test file to size %Lx\n", (unsigned long long)LARGEFILE_SIZE);
+     rc = TIO_ftruncate(fd, LARGEFILE_SIZE); /* pre-allocate space */
+     if(rc != 0) 
+     {
+@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
+ 
+     for(offset = (TIO_off_t)0; offset + CHUNK_SIZE <= LARGEFILE_SIZE; offset += CHUNK_SIZE) {
+ 
+-        printf(xstr(TIO_lseek) "()ing to offset %Lx\n", offset);
++        printf(xstr(TIO_lseek) "()ing to offset %Lx\n", (unsigned long long)offset);
+         offset_ret = TIO_lseek(fd, offset, SEEK_SET);
+         if (offset_ret != offset) {
+             perror("Error " xstr(TIO_lseek) "()ing");
+@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
+         printf("read()ing a chunk of data\n");
+         count = read(fd, &data, sizeof(data));
+         if (count != sizeof(data)) {
+-            fprintf(stderr, "Error read()ing, %d byte(s) read (!= %d)\n", count, sizeof(data));
++            fprintf(stderr, "Error read()ing, %zd byte(s) read (!= %zd)\n", count, sizeof(data));
+             exit(-1);
+         }
+         if (data != 0) {
+@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
+         printf(xstr(TIO_pread)"()ing a data value\n");
+         count = TIO_pread(fd, &data, sizeof(data), offset);
+         if (count != sizeof(data)) {
+-            fprintf(stderr, "Error " xstr(TIO_pread) "()ing, %d byte(s) read (!= %d)\n", count, sizeof(data));
++            fprintf(stderr, "Error " xstr(TIO_pread) "()ing, %zd byte(s) read (!= %zd)\n", count, sizeof(data));
+             exit(-1);
+         }
+         if (data != 0) {
+@@ -100,12 +100,12 @@ int main(int argc, char *argv[])
+         printf(xstr(TIO_pwrite)"()ing a test data value (%x)\n", TEST_DATA1);
+         count = TIO_pwrite(fd, &data, sizeof(data), offset);
+         if (count != sizeof(data)) {
+-            fprintf(stderr, "Error " xstr(TIO_pwrite) "()ing, %d bytes written (!= %d)\n", count, sizeof(data));
++            fprintf(stderr, "Error " xstr(TIO_pwrite) "()ing, %zd bytes written (!= %zd)\n", count, sizeof(data));
+             exit(-1);
+         }
+         data = 0;
+ 
+-        printf(xstr(TIO_mmap) "()ing chunk of size %Lx at offset %Lx\n", CHUNK_SIZE, offset);
++        printf(xstr(TIO_mmap) "()ing chunk of size %Lx at offset %Lx\n", (unsigned long long)CHUNK_SIZE, (unsigned long long)offset);
+         file_loc = TIO_mmap((caddr_t )0, CHUNK_SIZE,
+                  PROT_READ | PROT_WRITE, MAP_SHARED, fd, (TIO_off_t)offset);
+         if (file_loc == MAP_FAILED) {
+@@ -148,7 +148,7 @@ int main(int argc, char *argv[])
+         printf(xstr(TIO_pread)"()ing a data value, checking value == %x\n", TEST_DATA2);
+         count = TIO_pread(fd, &data, sizeof(data), offset+sizeof(data));
+         if (count != sizeof(data)) {
+-            fprintf(stderr, "Error " xstr(TIO_pread) "()ing, %d byte(s) read (!= %d)\n", count, sizeof(data));
++            fprintf(stderr, "Error " xstr(TIO_pread) "()ing, %zd byte(s) read (!= %zd)\n", count, sizeof(data));
+             exit(-1);
+         }
+         if (data != TEST_DATA2) {
+diff --git a/tiotest.c b/tiotest.c
+index 06491ef..8a92931 100644
+--- a/tiotest.c
++++ b/tiotest.c
+@@ -997,7 +997,7 @@ static void* do_generic_test(file_io_function io_func, mmap_io_function mmap_fun
+ 							  this_chunk_offset);
+ 			if(file_loc == MAP_FAILED) {
+ 				fprintf(stderr, "this_chunk_size=%ld, fd=%d, offset=" OFFSET_FORMAT 
+-						"\n", this_chunk_size, fd, d->fileOffset);
++						"\n", this_chunk_size, fd, (unsigned long long)d->fileOffset);
+ 				perror("Error " xstr(TIO_mmap) "()ing data file");
+ 				close(fd);
+ 				return 0;
+@@ -1095,7 +1095,9 @@ static int do_pread_operation(int fd, TIO_off_t offset, ThreadData *d)
+ 		if( rc == -1 ) {
+ 			perror("Error " xstr(TIO_pread) "()ing to file");
+ 		} else {
+-			fprintf(stderr, "Tried to read %ld bytes from offset " OFFSET_FORMAT " of file %s of length " OFFSET_FORMAT ", but only read %d bytes\n", d->blockSize, offset, d->fileName, d->fileSizeInMBytes*MB, rc);
++			fprintf(stderr, "Tried to read %ld bytes from offset " OFFSET_FORMAT " of file %s of length " OFFSET_FORMAT ", but only read %ld bytes\n",
++					d->blockSize, (unsigned long long)offset, d->fileName,
++					(unsigned long long)d->fileSizeInMBytes*MB, rc);
+ 		}
+ 
+ 		return -1;
+@@ -1123,7 +1125,8 @@ static int do_pwrite_operation(int fd, TIO_off_t offset, ThreadData *d)
+ 		if( rc == -1 ) {
+ 			perror("Error " xstr(TIO_pwrite) "()ing to file");
+ 		} else {
+-			fprintf(stderr, "Tried to write %ld bytes from offset " OFFSET_FORMAT " of file %s of length " OFFSET_FORMAT ", but only wrote %d bytes\n", d->blockSize, offset, d->fileName, d->fileSizeInMBytes*MB, rc);
++			fprintf(stderr, "Tried to write %ld bytes from offset " OFFSET_FORMAT " of file %s of length " OFFSET_FORMAT ", but only wrote %ld bytes\n",
++					d->blockSize, (unsigned long long)offset, d->fileName, (unsigned long long)d->fileSizeInMBytes*MB, rc);
+ 		}
+ 		return -1;
+ 	}
+@@ -1168,7 +1171,7 @@ static int do_mmap_read_operation(void *loc, ThreadData *d)
+ 
+ 		if(crc != d->bufferCrc)
+ 		{
+-			fprintf(stderr, "Thread(%lu) mmap consistency check failed at 0x%x\n", d->myNumber, (unsigned int)loc);
++			fprintf(stderr, "Thread(%lu) mmap consistency check failed at 0x%lx\n", d->myNumber, (unsigned long)loc);
+ 			return -1;
+ 		}
+ 	}

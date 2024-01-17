@@ -1,0 +1,37 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 00:24:32 +0200
+Subject: [PATCH 08/20] Replace tmwxDoc::GetPrintableName call by
+ GetDocumentName
+
+Not really sure about this, but it seems close enough.
+---
+ Source/tmwxGUI/tmwxDocView/tmwxDesignCanvas.cpp | 2 +-
+ Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Source/tmwxGUI/tmwxDocView/tmwxDesignCanvas.cpp b/Source/tmwxGUI/tmwxDocView/tmwxDesignCanvas.cpp
+index bc95e5b..e5128a2 100644
+--- a/Source/tmwxGUI/tmwxDocView/tmwxDesignCanvas.cpp
++++ b/Source/tmwxGUI/tmwxDocView/tmwxDesignCanvas.cpp
+@@ -1045,7 +1045,7 @@ void tmwxDesignCanvas::DrawPaper<tmwxDesignCanvas::Text>(wxDC& dc)
+     dc.SetTextForeground(*wxBLACK);
+     wxPoint p1 = TreeToDC(tmPoint(0, theTree->GetPaperHeight()));
+     p1.y -= PixelsToDC(HEADER_OFFSET);
+-    mDoc->GetPrintableName(text);
++    text = mDoc->GetDocumentName();
+     dc.DrawText(text, p1);
+     wxPoint p2 = TreeToDC(tmPoint(theTree->GetPaperWidth(), 
+       theTree->GetPaperHeight()));
+diff --git a/Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp b/Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp
+index d6477fa..e51102d 100644
+--- a/Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp
++++ b/Source/tmwxGUI/tmwxDocView/tmwxDoc_File.cpp
+@@ -42,7 +42,7 @@ Useful for recording tree structures while version 5 format is in flux.
+ void tmwxDoc::OnExportv4(wxCommandEvent&)
+ {
+   wxString pname;
+-  GetPrintableName(pname);
++  pname = GetDocumentName();
+   wxString pname1 = pname.BeforeLast(wxT('.')); // strip extension
+   if (pname1.empty()) pname1 = pname;
+   pname1 += wxT("_v4.tmd5");

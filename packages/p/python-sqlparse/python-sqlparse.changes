@@ -1,0 +1,239 @@
+-------------------------------------------------------------------
+Fri Jun  9 11:45:02 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu May 25 16:21:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.4:
+  * IMPORTANT: This release fixes a security vulnerability in
+    the parser where a regular expression vulnerable to ReDOS
+    (Regular Expression Denial of Service) was used. See the
+    security advisory for details (CVE-2023-30608, bsc#1210617,
+    https://github.com/andialbrecht/sqlparse/security/advisories/GHSA-rrm6-wvj7-cwh2)
+    The vulnerability was discovered by @erik-krogh from GitHub
+    Security Lab (GHSL). Thanks for reporting!
+  * Revert a change from 0.4.0 that changed IN to be a comparison
+    (issue694).  The primary expectation is that IN is treated as
+    a keyword and not as a comparison operator. That also follows
+    the definition of reserved keywords for the major SQL syntax
+    definitions.
+  * Fix regular expressions for string parsing.
+  * sqlparse now uses pyproject.toml instead of setup.cfg
+    (issue685).
+
+-------------------------------------------------------------------
+Mon Oct  3 16:01:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Add support for DIV operator.
+  * Add support for additional SPARK keywords.
+  * Avoid tokens copy.
+  * Add REGEXP as a comparision.
+  * Add DISTINCTROW keyword for MS Access.
+  * Improve parsing of CREATE TABLE AS SELECT.
+  * Fix spelling of INDICATOR keyword.
+  * Fix formatting error in EXTRACT function.
+  * Fix bad parsing of create table statements that use lower case.
+  * Handle backtick as valid quote char.
+  * Allow any unicode character as valid identifier name.
+
+-------------------------------------------------------------------
+Fri Oct  1 12:42:17 UTC 2021 - Johannes Grassler <johannes.grassler@suse.com>
+
+- update to 0.4.2 (bsc#1190741, CVE-2021-32839):
+  * This release fixes a security vulnerability in the strip
+    comments filter.
+  * Add ELSIF as keyword (issue584).
+  * Add CONFLICT and ON_ERROR_STOP keywords.
+  * Fix parsing of backticks (issue588).
+  * Fix parsing of scientific number (issue399).
+
+-------------------------------------------------------------------
+Thu Jan 28 08:27:49 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable building a python2 flavor so we can build the package
+  for Leap/SLE.
+
+-------------------------------------------------------------------
+Thu Nov 26 08:42:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.4.1:
+  * Python 3.9 support
+  * Remove support for end-of-life Python 2.7 and 3.4. Python 3.5+ is now
+  required.
+  * Remaining strings that only consist of whitespaces are not treated as
+  statements anymore. Code that ignored the last element from
+  sqlparse.split() should be updated accordingly since that function
+  now doesn't return an empty string as the last element in some
+  cases (issue496).
+- remove non-upstream stdout-encoding-set.patch patch
+
+-------------------------------------------------------------------
+Tue Mar 24 02:45:39 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add stdout-encoding-set.patch to use sys.stdout.reconfigure() if
+  the stream is an instance of TextIOWrapper to support a pytest change.
+
+-------------------------------------------------------------------
+Mon Mar  9 16:22:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to v0.3.1:
+  * Add HQL keywords (pr475, by matwalk).
+  * Add support for time zone casts (issue489).
+  * Enhance formatting of AS keyword (issue507, by john-bodley).
+  * Stabilize grouping engine when parsing invalid SQL statements.
+  * Fix splitting of SQL with multiple statements inside
+    parentheses (issue485, pr486 by win39).
+  * Correctly identify NULLS FIRST / NULLS LAST as keywords (issue487).
+  * Fix splitting of SQL statements that contain dollar signs in
+    identifiers (issue491).
+  * Remove support for parsing double slash comments introduced in
+    0.3.0 (issue456) as it had some side-effects with other dialects and
+    doesn't seem to be widely used (issue476).
+  * Restrict detection of alias names to objects that acutally could
+    have an alias (issue455, adopted some parts of pr509 by john-bodley).
+  * Fix parsing of date/time literals (issue438, by vashek).
+  * Fix initialization of TokenList (issue499, pr505 by john-bodley).
+  * Fix parsing of LIKE (issue493, pr525 by dbczumar).
+  * Improve parsing of identifiers (pr527 by liulk).
+
+-------------------------------------------------------------------
+Wed Apr 17 12:00:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use %pytest macro
+
+-------------------------------------------------------------------
+Tue Mar 12 01:49:22 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Move fdupes from %check to %install
+- Update to v0.3.0
+  * Remove support for Python 3.3.
+  * New formatting option "--indent_after_first"
+  * New formatting option "--indent_columns"
+  * Add UPSERT keyword
+  * Strip multiple whitespace within parentheses
+  * Support double slash (//) comments
+  * Support for Calcite temporal keywords
+  * Fix occasional IndexError
+  * Fix incorrect splitting of strings containing new lines
+  * Fix reindent issue for parenthesis
+  * Fix from( parsing issue
+  * Fix for get_real_name() to return correct name
+  * Wrap function params when wrap_after is set
+  * Fix parsing of "WHEN name" clauses
+  * Add missing EXPLAIN keyword
+  * Fix issue with strip_comments causing a syntax error
+  * Fix formatting on INSERT which caused staircase effect on values
+  * Avoid formatting of psql commands
+  * Unify handling of GROUP BY/ORDER BY
+  * Remove unnecessary compat shim for bytes
+
+-------------------------------------------------------------------
+Thu Aug 23 06:31:42 UTC 2018 - alarrosa@suse.com
+
+- Update to 0.2.4:
+  * Add more keywords for MySQL table options (pr328, pr333, by phdru).
+  * Add more PL/pgSQL keywords (pr357, by Demetrio92).
+  * Improve parsing of floats (pr330, by atronah).
+  * Fix parsing of MySQL table names starting with digits (issue337).
+  * Fix detection of identifiers using comparisons (issue327).
+  * Fix parsing of UNION ALL after WHERE (issue349).
+  * Fix handling of semicolon in assignments (issue359, issue358).
+- Use fdupes and %license
+- Remove shebangs from non-executable python files
+
+-------------------------------------------------------------------
+Wed Jul 12 05:40:09 UTC 2017 - tbechtold@suse.com
+
+- update to 0.2.3:
+  * New command line option "--encoding" (by twang2218, pr317).
+  * Support CONCURRENTLY keyword (issue322, by rowanseymour).
+  * Fix some edge-cases when parsing invalid SQL statements.
+  * Fix indentation of LIMIT (by romainr, issue320).
+  * Fix parsing of INTO keyword (issue324).
+  * Several improvements regarding encodings.
+  * Add comma_first option: When splitting list "comma first" notation
+  is used (issue141).
+  * Fix parsing of incomplete AS (issue284, by vmuriart).
+  * Fix parsing of Oracle names containing dollars (issue291).
+  * Fix parsing of UNION ALL (issue294).
+  * Fix grouping of identifiers containing typecasts (issue297).
+  * Add Changelog to sdist again (issue302).
+  * `is_whitespace` and `is_group` changed into properties
+- convert to singlespec
+
+-------------------------------------------------------------------
+Tue Nov 15 10:13:47 UTC 2016 - dmueller@suse.com
+
+- update to 0.2.1
+
+-------------------------------------------------------------------
+Wed May 13 16:39:54 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 0.1.15:
+  * Fix a regression for identifiers with square brackets notation
+    (issue153, by darikg).
+  * Add missing SQL types (issue154, issue155, issue156, by
+    jukebox).
+  * Fix parsing of multi-line comments (issue172, by JacekPliszka).
+  * Fix parsing of escaped backslashes (issue174, by caseyching).
+  * Fix parsing of identifiers starting with underscore (issue175).
+  * Fix misinterpretation of IN keyword (issue183).
+  * Improve formatting of HAVING statements.
+  * Improve parsing of inline comments (issue163).
+  * Group comments to parent object (issue128, issue160).
+  * Add double precision builtin (issue169, by darikg).
+  * Add support for square bracket array indexing (issue170,
+    issue176, issue177 by darikg).
+  * Improve grouping of aliased elements (issue167, by darikg).
+  * Support comments starting with '#' character (issue178).
+- additional changes from version 0.1.14:
+  * Floats in UPDATE statements are now handled correctly
+    (issue145).
+  * Properly handle string literals in comparisons (issue148,
+    change proposed by aadis).
+  * Fix indentation when using tabs (issue146).
+  * Improved formatting in list when newlines precede commas
+    (issue140).
+- additional changes from version 0.1.13:
+  * Fix a regression in handling of NULL keywords introduced in
+    0.1.12.
+- additional changes from version 0.1.12:
+  * Fix handling of NULL keywords in aliased identifiers.
+  * Fix SerializerUnicode to split unquoted newlines (issue131, by
+    Michael Schuller).
+  * Fix handling of modulo operators without spaces (by gavinwahl).
+  * Improve parsing of identifier lists containing placeholders.
+  * Speed up query parsing of unquoted lines (by Michael Schuller).
+- additional changes from version 0.1.11:
+  * Fix incorrect parsing of string literals containing line breaks
+    (issue118).
+  * Fix typo in keywords, add MERGE, COLLECT keywords
+    (issue122/124, by Cristian Orellana).
+  * Improve parsing of string literals in columns.
+  * Fix parsing and formatting of statements containing EXCEPT
+    keyword.
+  * Fix Function.get_parameters() (issue126/127, by spigwitmer).
+  * Classify DML keywords (issue116, by Victor Hahn).
+  * Add missing FOREACH keyword.
+  * Grouping of BEGIN/END blocks.
+  * Python 2.5 isn't automatically tested anymore, neither Travis
+    nor Tox still support it out of the box.
+
+-------------------------------------------------------------------
+Sat Nov 08 20:20:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in pre script
+
+-------------------------------------------------------------------
+Fri Nov 15 12:18:02 UTC 2013 - speilicke@suse.com
+
+- Only ghost /etc/alternatives on 12.3 or newer
+
+-------------------------------------------------------------------
+Fri Nov  8 07:52:44 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

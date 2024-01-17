@@ -1,0 +1,22 @@
+From: Lee Duncan
+Date: Sat 24 Dec 2022 09:15:40 AM PST
+Subject: [PATCH] tgt: systemd service update
+
+Update our systemd service file to match what we do at SUSE.
+
+---
+Index: tgt-1.0.85/scripts/tgtd.service
+===================================================================
+--- tgt-1.0.85.orig/scripts/tgtd.service
++++ tgt-1.0.85/scripts/tgtd.service
+@@ -20,8 +20,9 @@ RestrictRealtime=true
+ # end of automatic additions 
+ Type=forking
+ Environment=TGTD_CONFIG=/etc/tgt/targets.conf
++EnvironmentFile=-/etc/sysconfig/tgt
+ 
+-ExecStart=/usr/sbin/tgtd
++ExecStart=/usr/sbin/tgtd $TGTD_OPTS
+ ExecStartPost=/usr/sbin/tgtadm --op update --mode sys --name State -v offline
+ ExecStartPost=/usr/sbin/tgtadm --op update --mode sys --name State -v ready
+ ExecStartPost=/usr/sbin/tgt-admin -e -c ${TGTD_CONFIG}

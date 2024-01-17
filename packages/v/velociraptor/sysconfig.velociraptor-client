@@ -1,0 +1,9 @@
+## Path:        Security/Monitoring
+## Description: Velociraptor client settings
+## Type:        string                                                          
+## Default:     ""
+## ServiceRestart: velociraptor-client
+#
+# Options for velociraptor-client
+#
+VELOCIRAPTOR_CLIENT_OPTS="-v"

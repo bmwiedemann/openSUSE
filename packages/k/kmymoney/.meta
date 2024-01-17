@@ -1,0 +1,11 @@
+<package name="kmymoney" project="openSUSE:Factory">
+  <title>A Personal Finance Manager by KDE</title>
+  <description>KMyMoney is a Personal Finance Manager by KDE. It operates
+similar to Quicken, supports various account types, categorization
+of expenses, multiple currencies, online banking support via QIF,
+OFX and HBCI, budgeting and a rich set of reports.
+
+</description>
+  <devel project="KDE:Extra" package="kmymoney"/>
+  <url>https://www.kmymoney.org/</url>
+</package>

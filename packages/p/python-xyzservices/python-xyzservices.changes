@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Fri Dec  1 13:36:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.10.1:
+  * ``Stamen`` tiles have been removed due to their upstream
+    deprecation.
+  * Use ``Stamen`` styles of ``Stadia`` provider instead.
+  * ``JusticeMap`` tiles are temporarily marked as broken.
+  * ``Stamen`` tiles are now available under ``Stadia`` provider.
+  * Providers:
+  * Added ``GeoportailFrance``
+    ``Orthoimagery_Orthophotos_Irc_express_2023`` and
+  * ``Orthoimagery_Orthophotos_Ortho_express_2023`` layers
+  * Updated domain for ``OpenStreetMap.DE``
+    ``GeoportailFrance.Orthoimagery_Orthophotos_1980_1995`` as
+    possibly broken
+  * Added ``OrdnanceSurvey`` layers
+  * xyzservices 2023.2.0 (February 19, 2023)
+  * Updated available layers of ``GeoportailFrance``
+  * Use ``pkgutil`` instead of ``importlib`` to fetch the JSON if
+    the default in ``share``
+  * is not available. Fixes this fallback for Python 3.8.
+  * Added ``GeoportailFrance`` tile layers (#126)
+  * Better cleaning of names in ``query_name`` method
+  * Added a gallery of included tiles to the documentation (#114)
+  * xyzservices 2022.06.0 (June 21, 2022)
+  * Added ``NASAGIBS.ASTER_GDEM_Greyscale_Shaded_Relief``
+  * Added ``Esri.ArcticImagery`` (EPSG:5936) and
+    ``Esri.AntarcticImagery`` (EPSG:3031)
+  * Update ``OpenStreetMap.DE`` URL
+  * Remove broken Hydda tiles
+  * Added ``Esri`` ``ArcticOceanBase``, ``ArcticOceanReference``
+    and ``AntarcticBasemap``
+  * Fixed ``MapTiler.Winter``
+  * Updated ``AzureMaps`` links
+  * Added ``NASAGIBS.BlueMarble`` datasets in EPSG 3857
+    (default), 3413, and 3031
+  * Added more ``MapTiler`` providers (``Outdoor``,
+    ``Topographique``, ``Winter``, ``Satellite``, ``Terrain``,
+    and ``Basic4326`` in ESPG 4326).
+  * Added ``SwissFederalGeoportal`` providers
+    (``NationalMapColor``, ``NationalMapGrey``, ``SWISSIMAGE``,
+    ``JourneyThroughTime``)
+  * Updated deprecated links to ``nlmaps`` providers
+  * Added ``nlmaps.water``
+  * Added ``OPNVKarte`` map
+  * Removed discontinued ``OpenPtMap``
+  * Max zoom of ``CartoDB`` tiles changed from 19 to 20
+  * xyzservices 2021.09.1 (September 20, 2021)
+  * New functionality:
+  * Added ``Bunch.query_name()`` method allowing to fetch the
+    ``TileProvider`` object based on the name with flexible
+    formatting. (#93)
+  * Fixed ``Strava`` maps (#85)
+  * Fixed ``nlmaps.luchtfoto`` (#90)
+  * Fixed ``NASAGIBS.ModisTerraSnowCover`` (#90)
+  * ``JusticeMap`` and ``OpenAIP`` now use https instead of http
+  * Added ``OpenStreetMap.BlackAndWhite`` (#83)
+  * Added ``Gaode`` tiles (``Normal`` and ``Satellite``) (#83)
+  * Expanded ``NASAGIBS`` tiles with ``ModisTerraBands721CR``,
+    ``ModisAquaTrueColorCR``, ``ModisAquaBands721CR`` and
+    ``ViirsTrueColorCR`` (#83)
+  * Added metadata to ``Strava`` maps (currently down) (#83)
+  * New functionality:
+  * Added ``TileProvider.from_qms()`` allowing to create a
+    ``TileProvider`` object from the remote Quick Map Services
+    repository (#71)
+  * Added support of ``html_attribution`` to have live links in
+    attributions in HTML-based outputs like leaflet (#60)
+  * New ``Bunch.flatten`` method creating a flat dictionary of
+    ``TileProvider`` objects based on a nested ``Bunch`` (#68)
+  * Added ``fill_subdomain`` keyword to
+    ``TileProvider.build_url`` to control ``{s}`` placeholder in
+    the URL (#75)
+  * New Bunch.filter method to filter specific providers based on
+    keywords and other criteria (#76)
+  * Minor enhancements:
+  * Indent providers JSON file for better readability (#64)
+  * Support dark themes in HTML repr (#70)
+  * Mark broken providers with ``status="broken"`` attribute
+    (#78)
+  * Document providers requiring registrations (#79)
+  * The initial release provides ``TileProvider`` and ``Bunch``
+    classes and an initial set of providers.
+
+-------------------------------------------------------------------
+Mon Oct 31 11:51:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v2022.9.0
+- Required by bokeh 3

@@ -1,0 +1,36 @@
+--- autoconf-2.71/tests/local.at	2021-01-28 21:46:48.000000000 +0100
++++ autoconf-2.71-new/tests/local.at	2022-10-27 16:36:24.604217375 +0200
+@@ -352,7 +352,7 @@ m4_define([AT_CHECK_CONFIGURE],
+ # - AC_SUBST'ed variables
+ #   (FIXME: Generate a list of these automatically.)
+ # - _|@|.[*#?$].|argv|ARGC|LINENO|OLDPWD|PIPESTATUS|RANDOM|SECONDS
+-#   |START_TIME|ToD|_AST_FEATURES
++#   |SHLVL|START_TIME|ToD|_AST_FEATURES
+ #   Some variables some shells use and change.
+ #   `.[*#?$].' catches `$#' etc. which are displayed like this:
+ #      | '!'=18186
+@@ -403,7 +403,7 @@ if test -f state-env.before && test -f s
+       [GREP|[EF]GREP|SED],
+       [[_@]|.[*@%:@?$].],
+       [argv|ARGC|LINENO|BASH_ARGC|BASH_ARGV|OLDPWD|PIPESTATUS|RANDOM],
+-      [SECONDS|START_TIME|ToD|_AST_FEATURES]))=' \
++      [SECONDS|SHLVL|START_TIME|ToD|_AST_FEATURES]))=' \
+      $act_file ||
+        test $? -eq 1 || echo failed >&2
+     ) 2>stderr-$act_file |
+@@ -434,6 +434,7 @@ fi
+ #   - PPID [bash, zsh]
+ #   - RANDOM [bash, zsh]
+ #   - SECONDS [bash, zsh]
++#   - SHLVL [bash]
+ #   - START_TIME [NetBSD sh]
+ #   - ToD [NetBSD sh]
+ #   - '$' [zsh]
+@@ -481,6 +482,7 @@ do
+ 	/^PPID=/ d
+ 	/^RANDOM=/ d
+ 	/^SECONDS=/ d
++      /^SHLVL=/ d
+ 	/^START_TIME=/ d
+ 	/^ToD=/ d
+ 	/'\'\\\$\''=/ d

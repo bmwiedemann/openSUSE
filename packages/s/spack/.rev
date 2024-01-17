@@ -1,0 +1,425 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>689e0e830a7acbea2a7b7ea5aade746c</srcmd5>
+    <version>0.16.0</version>
+    <time>1609253319</time>
+    <user>dimstar_suse</user>
+    <comment>more reproduceable output in the doc file as relevant spack command called during documentation build now have an explicit `target` and `os`</comment>
+    <requestid>854933</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4f790797de4ad939226c547653134b48</srcmd5>
+    <version>0.16.0</version>
+    <time>1612707642</time>
+    <user>dimstar_suse</user>
+    <comment>- Add
+  * Fix-documentation-so-that-parser-doesn-t-stumble.patch:
+  * Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
+    Fix documentation building.
+- Fix texinfo file installation. (forwarded request 869487 from eeich)</comment>
+    <requestid>869552</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3ebd764db1c656089e97102b1d706039</srcmd5>
+    <version>0.16.0</version>
+    <time>1615489904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878329</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7702ad2928e4b2eb4400bb6286f9d563</srcmd5>
+    <version>0.16.1</version>
+    <time>1616008563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879453</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a1de0442644c94a68cbcbc778fcf148f</srcmd5>
+    <version>0.16.1</version>
+    <time>1616271962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880147</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d34aded165ffafedb2c69a4b95eb6017</srcmd5>
+    <version>0.16.1</version>
+    <time>1617722983</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882566</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>0a59a0fb2c5f60b9bd1c61092c79477c</srcmd5>
+    <version>0.16.1</version>
+    <time>1620072490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889925</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f5da16784339539d762a69de5d18845c</srcmd5>
+    <version>0.16.2</version>
+    <time>1622536526</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.16.1
+  * Major performance improvement for spack load and other commands.
+  * spack fetch is now environment-aware. (#19166)
+  * Numerous fixes for the new, clingo-based concretizer.
+  * Supoprt for automatically bootstrapping clingo from source.
+  * Python 3.10 support: collections.abc
+  * Fix import issues by using __import__ instead of Spack package import.
+  * Bugfixes and --source-dir argument for spack location.
+  * Better support for externals in shared prefixes.
+  * spack build-env now prefers specs defined in the active environment. 
+  * Remove erroneous warnings about quotes in from_sourcing_files.
+  * Fix clearing cache of InternalConfigScope.
+  * Bugfix for active when pkg is already active error.
+  * Make SingleFileScope able to repopulate the cache after clearing it.
+  * Channelflow: Fix the package.
+  * More descriptive error message for bugs in package.py
+  * Use package-supplied autogen.sh
+  * Respect -k/verify-ssl-false in _existing_url method.</comment>
+    <requestid>895310</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5f1ef28ef4aa363c141bd2e5a97819b4</srcmd5>
+    <version>0.16.2</version>
+    <time>1622839457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897435</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>104b8e61cc164db5c8acf93399765699</srcmd5>
+    <version>0.16.2</version>
+    <time>1626118808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904614</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>274338149f9cbd13493d772f060009c0</srcmd5>
+    <version>0.16.2</version>
+    <time>1627389122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908421</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>5f74c2b92f90cab11afb1dc808235988</srcmd5>
+    <version>0.16.2</version>
+    <time>1628675238</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911265</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>84f54df2ee1959982525eec4e0a272f2</srcmd5>
+    <version>0.16.3</version>
+    <time>1633644357</time>
+    <user>dimstar_suse</user>
+    <comment>- Utilize sysuser infrastructure to set group spack. 
+
+- update to version 0.16.3 (JSC#SLE-22137):
+  * clang/llvm: fix version detection
+  * Fix use of quotes in Python build system
+  * Ensure all roots of an installed environment are marked explicit in db
+  * Fix fetching for Python 3.8 and 3.9
+  * locks: only open lockfiles once instead of for every lock held
+
+- fix typo to export prefix in patch (bsc#1191395):</comment>
+    <requestid>923607</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cc851567769bb5a7ac65f639bd2d91b6</srcmd5>
+    <version>0.16.3</version>
+    <time>1635272017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926030</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>96d9a942ab658d936b3321dbc11b1f2d</srcmd5>
+    <version>0.17.0</version>
+    <time>1637535108</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 0.17.0
+  (Upstream feature/bug references (&lt;ID&gt;) are relative to
+   https://github.com/spack/spack/issues/&lt;ID&gt;).
+  * New concretizer is now default
+    The new concretizer introduced as an experimental feature in v0.16.0
+    is now the default (#25502). The new concretizer is based on the
+    clingo logic programming system,
+    and it enables us to do much higher quality and faster dependency solving
+    The old concretizer is still available via the concretizer: original
+    setting, but it is deprecated and will be removed in v0.18.0.
+  * Binary Bootstrapping
+    To make it easier to use the new concretizer and binary packages,
+    Spack now bootstraps clingo and GnuPG from public binaries. If it
+    is not able to bootstrap them from binaries, it installs them from
+    source code. With these changes, you should still be able to clone Spack
+    and start using it almost immediately.
+  * Reuse existing packages (experimental)
+    The most wanted feature from our
+    2020 user survey and
+    the most wanted Spack feature of all time (#25310). spack install,
+    spack spec, and spack concretize now have a --reuse option, which
+    causes Spack to minimize the number of rebuilds it does. The --reuse
+    option will try to find existing installations and binary packages locally
+    and in registered mirrors, and will prefer to use them over building new
+    versions. This will allow users to build from source far less than in
+    prior versions of Spack. This feature will continue to be improved, with
+    configuration options and better CLI expected in v0.17.1. It will become
+    the default concretization mode in v0.18.0.
+  * Better error messages
+    We have improved the error messages generated by the new concretizer by</comment>
+    <requestid>931907</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>64b81e3ae298a7351477abac81e3f52f</srcmd5>
+    <version>0.17.0</version>
+    <time>1639075527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937186</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>dcba8fe785ea773c12511b9f3a9d39e0</srcmd5>
+    <version>0.17.0</version>
+    <time>1639424676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940175</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>5aa798bd46a372c482e144b803d3587c</srcmd5>
+    <version>0.17.0</version>
+    <time>1639515715</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed the configuration files /etc/skel/.spack/{config|modules}.yaml
+  so that spack writes to $HOME if started as user (forwarded request 940447 from mslacken)</comment>
+    <requestid>940448</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bbe1cd95f6cf54866b0f9ebea6cffc9d</srcmd5>
+    <version>0.17.1</version>
+    <time>1641932382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945414</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6cf66c7d424694997f2228728e23496e</srcmd5>
+    <version>0.17.1</version>
+    <time>1642029756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945894</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>26ba6077a35226b42aaa46301fba64fd</srcmd5>
+    <version>0.17.1</version>
+    <time>1644617241</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openssl-devel, xz-devel and libzip-devel as recommends
+  bsc#1195789. (forwarded request 953232 from eeich)</comment>
+    <requestid>953233</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>c5ccde93ca17f169914c69f4f2861e42</srcmd5>
+    <version>0.17.1</version>
+    <time>1646241758</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded build dependency.
+- Make dependencies of spack and spack-recipes symetrical. (forwarded request 958481 from eeich)</comment>
+    <requestid>958493</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>350ac9afa13d67d519126b9945f6b9ee</srcmd5>
+    <version>0.17.1</version>
+    <time>1649544128</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix: Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
+  This is needed to prevent an AttributeError during
+  'import spack.environment as some_name'
+  when building Sphinx documentation - due to an outdated
+  Python on SLE.
+  The original version caused errors:
+  'NameError: name 'uenv' is not defined'
+  when using 'spack env activate' et.al. (bsc#1198212). (forwarded request 967985 from eeich)</comment>
+    <requestid>967990</requestid>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>112021357b0eda59c22b70de4566bb55</srcmd5>
+    <version>0.17.1</version>
+    <time>1660924606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998181</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>43cbc5c0757f1db48b9bf73bd97e5f62</srcmd5>
+    <version>0.19.0</version>
+    <time>1670259720</time>
+    <user>dimstar_suse</user>
+    <comment>env stuff fixed (forwarded request 1040235 from mslacken)</comment>
+    <requestid>1040236</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>552fa5f79c9fd02759d5067502358e78</srcmd5>
+    <version>0.19.0</version>
+    <time>1673559887</time>
+    <user>dimstar_suse</user>
+    <comment>- Yet another fix for /var/spack/repos -&gt; /usr/share/spack/repos
+  move. (forwarded request 1057973 from eeich)</comment>
+    <requestid>1057974</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d75215e5f1a83b51411e617b8010f3e3</srcmd5>
+    <version>0.19.0</version>
+    <time>1675177795</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure the spack environment is set up correctly in
+  spack-generated Dockerfiles (boo#1207784):
+  Make-sure-spack-environment-is-set-up-in-Dockerfile-template.patch (forwarded request 1062187 from eeich)</comment>
+    <requestid>1062188</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6f41337a30ec1a4cb6521eaa3764c80a</srcmd5>
+    <version>0.19.1</version>
+    <time>1677794604</time>
+    <user>dimstar_suse</user>
+    <comment>- Udpate to 0.19.1 with following bug fixes:
+  * buildcache create: make &quot;file exists&quot; less verbose
+  * spack mirror create: don't change paths to urls
+  * Improve error message for requirements
+  * Fix libtool filter for Fujitsu compilers
+  * FileCache: delete the new cache file on exception
+- using `--all` flag for `spack external find` in the %triggrin 
+  section, as MPI packages were not recognized any more, fixing
+  (bsc#1208751) (forwarded request 1068458 from mslacken)</comment>
+    <requestid>1068487</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5032a0ad3a97bde7a963b584a92b3a8b</srcmd5>
+    <version>0.19.1</version>
+    <time>1678380399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070345</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f211a33063ac3d5adadf975e8358b046</srcmd5>
+    <version>0.19.1</version>
+    <time>1679667698</time>
+    <user>dimstar_suse</user>
+    <comment>- run-find-external.sh: Extend the range of versions of MPI
+  flavors to be searched for when asking Spack to look (forwarded request 1074103 from eeich)</comment>
+    <requestid>1074104</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>e8d70fd7b7aa18e4d785d6b1c84039e5</srcmd5>
+    <version>0.19.1</version>
+    <time>1680209560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075574</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>aa89e5110b46ce9bcfacaf298247ec14</srcmd5>
+    <version>0.19.2</version>
+    <time>1683213072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084588</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e91a1165eb08c77db161f9cf17508e89</srcmd5>
+    <version>0.20.0</version>
+    <time>1685830344</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not attempt to build documentation for 32-bit, s390x and
+  ppc64*. There are build issues on some build targets. (forwarded request 1090531 from eeich)</comment>
+    <requestid>1090534</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>ae0af1d416de69832ed34ed12765dfd1</srcmd5>
+    <version>0.20.0</version>
+    <time>1687900662</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure, libhwloc and hwloc are installed together when
+  spack is installed. (forwarded request 1095549 from eeich)</comment>
+    <requestid>1095551</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>9472365c27e04f2d7dbc0ae4e5d5daca</srcmd5>
+    <version>0.20.0</version>
+    <time>1692045347</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SPACK_ROOT setting in /etc/profile.d/spack.[c]sh (bsc#1214222).
+- Don't source /etc/os-release directly, use a subshell.</comment>
+    <requestid>1103772</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f6a7a42352dd6129fb66abbeea87698a</srcmd5>
+    <version>0.20.1</version>
+    <time>1694630668</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.20.1 with the following changes:
+  * Bug fixes:
+    + Fix spec removed from an environment where not actually
+      removed if `--force` was not given.
+    + Hotfix for a few recipes that treat CMake as a link
+      dependency.
+    + Fix re-running stand-alone test a second time, which was
+      getting a trailing spurious failure.
+    + Fix reading JSON manifest on Cray, reporting non-concrete
+      specs.
+    + Fix a few bugs when generating Dockerfiles from Spack.
+    + Fix a few long-standing bugs when generating module files.
+    + Fix issues with building Python extensions when using an
+      external Python.
+    + Fix `spack compiler remove`: remove from command line even
+      if they appear in different scopes.
+  * Features:
+    + Speed-up module file generation.
+    + Show external status as `[e]`.
+    + Backport `archspec` fixes.
+    + Improve a few error messages. (forwarded request 1110679 from eeich)</comment>
+    <requestid>1110682</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cc38fc0163dd6e24d324caabdd9adf90</srcmd5>
+    <version>0.20.3</version>
+    <time>1699388948</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.20.3 with the following changes:
+  * Bug fixes:
+    + Fix a bug where `spack mirror set-url` would drop configured
+	  connection info.
+    + Fix a minor issue with package hash computation for Python 3.12.
+    + Improve escaping in Tcl module files.
+    + Make repo cache work on repositories with zero mtime.
+    + Ignore errors for newer, incompatible buildcache version.
+    + Print an error when git is required, but missing.
+    + Ensure missing build dependencies get installed when using
+	  `spack install --overwrite`.
+    + Fix an issue where Spack freezes when the build process
+	  unexpectedly exits.
+    + Fix a bug where installation failures cause an unrelated
+	  `NameError` to be thrown.
+    + Fix an issue where Spack package versions would be incorrectly
+	  derived from git tags.
+    + Fix a bug triggered when file locking fails internally.
+    + Prevent `spack external find` to error out when a directory
+	  cannot be accessed.
+    + Fix multiple performance regressions in environments.
+    + Add more ignored modules to `pyproject.toml` for `mypy`.
+  * Features:
+    + Spack now supports Python 3.12.</comment>
+    <requestid>1124071</requestid>
+  </revision>
+</revisionlist>

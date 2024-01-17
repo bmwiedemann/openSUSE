@@ -1,0 +1,63 @@
+Basedo on 2ee6b2d137da843737fadd2fcdd7349600020f77 Mon Sep 17 00:00:00 2001
+From: Chris Samuel <chris@csamuel.org>
+Date: Sun, 1 Dec 2013 23:28:50 +1100
+Subject: [PATCH] Patch to handle long (folded) headers from Zdenek Havranek
+
+---
+ ChangeLog       |    3 +++
+ vacation.c      |   23 +++++++++++++++++++----
+ 5 files changed, 33 insertions(+), 18 deletions(-)
+
+--- ChangeLog
++++ ChangeLog	2015-09-08 12:14:58.201720884 +0000
+@@ -1,3 +1,6 @@
++2013/12/01
++- Patch to handle long (folded) headers from Zdenek Havranek
++
+ 2011/11/06
+ - Fix location for tarballs in the vacation.spec file.
+ - Tagged and released Vacation 1.2.7.1.
+--- vacation.c
++++ vacation.c	2015-09-08 12:20:01.137625786 +0000
+@@ -394,13 +394,25 @@ readheaders (void)
+   register ALIAS *cur;
+   register char *p;
+   int tome, cont;
+-  char buf[MAXLINE];
++  char buf[MAXLINE]; /* actual line */
++  char buf2[MAXLINE]; /* next line */
+   char uucpfrom[MAXLINE];
+ /*  char sender[MAXLINE]; */
+ /*  char domain[MAXLINE]; */
+ 
+   cont = tome = 0;
+-  while (fgets (buf, sizeof (buf), stdin) && *buf != '\n')
++  fgets (buf, sizeof (buf), stdin);
++  if (*buf != '\n')
++    fgets (buf2, sizeof (buf2), stdin);
++  while (*buf != '\n')
++   {
++    while (*buf2 != '\n' && ((buf2)[0] == ' ' || (buf2)[0] == '\t') &&
++	strlen (buf) + strlen (buf2) < MAXLINE) /* only to buf capacity */
++      { /* it's OK for "From:" and it doesn't matter for "To:" and "Cc:" */
++	(buf)[strlen (buf) - 1] = '\0'; /* remove '\n' */
++	strlcat (buf, buf2, MAXLINE);
++	fgets (buf2, sizeof (buf2), stdin);
++      }
+     switch (toupper (*buf))
+       {
+       case 'F':		/* "From: " or "From " */
+@@ -527,8 +539,11 @@ readheaders (void)
+       findme:
+ 	for (cur = names; !tome && cur; cur = cur->next)
+ 	  tome += nsearch (cur->name, buf);
+-      } /* switch(toupper(*buf)) */
+-
++      }
++    strlcpy (buf, buf2, MAXLINE);
++    if (*buf != '\n')
++      fgets (buf2, sizeof (buf2), stdin);
++   }
+   if (!jflag && !tome)
+     EXITIT (0);
+   if (!*from)

@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Oct 18 07:40:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update sop-core to version 0.5.0.2 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Apr 12 20:00:51 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update sop-core to version 0.5.0.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:22 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Aug 22 18:17:21 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update sop-core to version 0.5.0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Jan  2 15:38:34 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update sop-core to version 0.5.0.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/sop-core-0.5.0.2/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Nov  3 10:09:03 UTC 2020 - psimons@suse.com
+
+- Add sop-core at version 0.5.0.1 revision 1.
+

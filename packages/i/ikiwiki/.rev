@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69db4db2e08bc240194e7def4c569f62</srcmd5>
+    <version>3.20190228</version>
+    <time>1563914091</time>
+    <user>dimstar_suse</user>
+    <comment>ikiwiki 3.20190228, push it to Tumbleweed
+</comment>
+    <requestid>715702</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d842d537a89b8540795fd2d302ff1651</srcmd5>
+    <version>3.20190228</version>
+    <time>1586368643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792488</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>24b865bb23ce7451277a763567613f73</srcmd5>
+    <version>3.20200202.3</version>
+    <time>1596104756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823530</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>00b49a98f554c845c8704e3fbcfe1adb</srcmd5>
+    <version>3.20200202.3</version>
+    <time>1601997077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839749</requestid>
+  </revision>
+</revisionlist>

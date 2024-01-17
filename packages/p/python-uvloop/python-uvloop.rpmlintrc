@@ -1,0 +1,4 @@
+# The devel files identified by rpmlint are required for
+# uvloop, it does not make sense to put them in a separate
+# devel package
+addFilter("devel-file-in-non-devel-package")

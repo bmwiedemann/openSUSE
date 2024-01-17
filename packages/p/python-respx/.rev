@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46785e15f6d8d44534635004acbe9098</srcmd5>
+    <version>0.19.2</version>
+    <time>1659470949</time>
+    <user>dimstar_suse</user>
+    <comment>Initial release of 0.19.2</comment>
+    <requestid>992130</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>613828a2724d7ceb4ffb294d07929038</srcmd5>
+    <version>0.19.2</version>
+    <time>1661159107</time>
+    <user>dimstar_suse</user>
+    <comment>- Run pytest with --asyncio-mode=auto due to new release of
+  pytest-asyncio.</comment>
+    <requestid>998574</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b8d2a06433fadd38bf4af9a19a65f2ce</srcmd5>
+    <version>0.20.0</version>
+    <time>1665754885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010383</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8eab323bfbc5654c907c17567bda481</srcmd5>
+    <version>0.20.1</version>
+    <time>1674048193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.1
+  * Support HTTPX 0.23.1, thanks @g-as for input (#223)
+</comment>
+    <requestid>1058833</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6a08718d2e7954d9e2709f5669654e43</srcmd5>
+    <version>0.20.1</version>
+    <time>1686927329</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch use-real-ipv6-address.patch:
+  * Use a real IPv6 address to avoid an address parsing exception</comment>
+    <requestid>1093417</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b7781bee9e3f68b8d34a00c016c983ca</srcmd5>
+    <version>0.20.2</version>
+    <time>1704919938</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.20.2:
+  * Better assertion output for `assert_all_called`
+  * Support for quoted path pattern matching
+  * Enable content\_\_contains pattern, thanks @rjprins
+  * Added initial `CONTRIBUTING.md`, thanks @morenoh149
+  * Docs about retrieving mocked calls, thanks
+  * Docs about `Router.assert_all_called()`, thanks @BeyondEvil
+    for input
+- drop use-real-ipv6-address.patch (upstream)
+
+- Update to version 0.20.0
+  pytest-asyncio.</comment>
+    <requestid>1137830</requestid>
+  </revision>
+</revisionlist>

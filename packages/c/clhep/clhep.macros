@@ -1,0 +1,38 @@
+# Note: Inter-package dependencies are listed here: https://proj-clhep.web.cern.ch/proj-clhep/packages.html
+
+# Section Helper macros to define CLHEP subpackages
+%define clhep_libname(:-:) libCLHEP-%1-%{tagname}
+%define clhep_pkconf_name(:-:) clhep-%( PKGNAME=%1; echo -n ${PKGNAME,,} )
+
+%define clhep_subpkg_lib(n:)\
+%define libname %{-n:%{-n*}}%{!-n:%{nil}}\
+%package -n libCLHEP-%{libname}-%{tagname}\
+Summary: Shared library for CLHEP %{libname}\
+\
+%description -n libCLHEP-%{libname}-%{tagname}\
+This package provides the CLHEP %{libname} shared library.\
+\
+%post -n libCLHEP-%{libname}-%{tagname} -p /sbin/ldconfig\
+%postun -n libCLHEP-%{libname}-%{tagname} -p /sbin/ldconfig\
+\
+%files -n libCLHEP-%{libname}-%{tagname}\
+%{_libdir}/libCLHEP-%{libname}-%{version}.so\
+
+%define clhep_subpkg_devel(n:)\
+%define pname %{-n:%{-n*}}%{!-n:%{nil}}\
+%package %{pname}-devel\
+Summary: Headers and sources for development with CLHEP %{pname} library\
+Requires: %{clhep_libname %{pname}} = %{version} %*\
+\
+%description %{pname}-devel\
+This package provides the headers and sources for development with CLHEP %{pname} library.\
+\
+%files %{pname}-devel\
+%license COPYING COPYING.LESSER\
+%{_bindir}/%{pname}-config\
+%{_libdir}/pkgconfig/%{clhep_pkconf_name %{pname}}.pc\
+%dir %{_includedir}/CLHEP\
+%{_includedir}/CLHEP/%{pname}/\
+
+# /Section
+

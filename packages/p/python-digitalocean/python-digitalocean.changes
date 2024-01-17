@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Nov 21 16:58:50 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Tue Nov 21 15:07:55 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Require old urllib3
+  * Cookie headers are stripped since urllib3 2.0.6, which breaks Firewall
+
+-------------------------------------------------------------------
+Sun Jul  2 12:24:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sat Jan 15 16:19:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.0:
+  * Update records
+  * Delete records
+  * Support for Projects in Manager
+  * Loadbalancer missing properties
+  * Updated Loadbalancer docs
+
+-------------------------------------------------------------------
+Tue May 18 09:40:47 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.16.0
+  * no upstream changelog except git log:
+  https://github.com/koalalorenzo/python-digitalocean/compare/v1.15.0...v1.16.0
+
+-------------------------------------------------------------------
+Thu Jan 30 11:37:49 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
+
+- Bump to 1.15.2
+  see the GIT log for full list of changes
+  https://github.com/koalalorenzo/python-digitalocean/compare/v1.13.2...v1.15.0
+
+-------------------------------------------------------------------
+Mon Sep  3 09:10:40 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Added python-digitalocean version 1.13.2 needed by python-certbot-dns-digitalocean

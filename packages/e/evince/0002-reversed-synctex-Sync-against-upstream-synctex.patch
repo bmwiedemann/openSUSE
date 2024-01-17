@@ -1,0 +1,416 @@
+--- b/cut-n-paste/synctex/synctex_parser.c
++++ a/cut-n-paste/synctex/synctex_parser.c
+@@ -267,6 +267,8 @@
+ #       pragma mark Abstract OBJECTS and METHODS
+ #   endif
+ 
++void synctex_node_free(synctex_node_p node);
++
+ /**
+  *  \def SYNCTEX_MSG_SEND
+  *  \brief Takes care of sending the given message if possible.
+@@ -284,7 +286,7 @@
+  *  Free the given node by sending the free message.
+  *  - parameter NODE: of type synctex_node_p
+  */
++void synctex_node_free(synctex_node_p node) {
+-static void synctex_node_free(synctex_node_p node) {
+     SYNCTEX_MSG_SEND(node,free);
+ }
+ #   if defined(SYNCTEX_TESTING)
+@@ -441,7 +443,7 @@
+ /*
+  *  _synctex_tree_set_... methods return the old value.
+  *  The return value of _synctex_tree_set_child and 
++ *  _synctex_tree_set_sibling must be released somehown.
+- *  _synctex_tree_set_sibling must be released somehow.
+  */
+ DEFINE_SYNCTEX_TREE__GETSETRESET(sibling)
+ DEFINE_SYNCTEX_TREE_GETSETRESET(parent)
+@@ -538,6 +540,10 @@
+     synctex_io_mode_t io_mode;
+ } synctex_open_s;
+ 
++void synctex_reader_free(synctex_reader_p reader);
++synctex_reader_p synctex_reader_init_with_output_file(synctex_reader_p reader, const char * output, const char * build_directory);
++synctex_node_p _synctex_node_next(synctex_node_p node);
++
+ /*	This functions opens the file at the "output" given location.
+  *  It manages the problem of quoted filenames that appear with pdftex and filenames containing the space character.
+  *  In TeXLive 2008, the synctex file created with pdftex did contain unexpected quotes.
+@@ -653,12 +659,12 @@
+             quoteless_synctex_name = NULL;
+         }
+     }
++    /*  The operation is successfull, return the arguments by value.    */
+-    /*  The operation is successful, return the arguments by value.    */
+     open.status = SYNCTEX_STATUS_OK;
+     return open;
+ }
+ 
++/*	Opens the ouput file, taking into account the eventual build_directory.
+-/*	Opens the output file, taking into account the eventual build_directory.
+  *	- returns: an open structure which status is
+  *      SYNCTEX_STATUS_OK on success,
+  *      SYNCTEX_STATUS_ERROR on failure.
+@@ -712,7 +718,7 @@
+     } /* if (build_directory...) */
+     return open;
+ }
++void synctex_reader_free(synctex_reader_p reader) {
+-static void synctex_reader_free(synctex_reader_p reader) {
+     if (reader) {
+         _synctex_free(reader->output);
+         _synctex_free(reader->synctex);
+@@ -725,7 +731,7 @@
+  *  Return reader on success.
+  *  Deallocate reader and return NULL on failure.
+  */
++synctex_reader_p synctex_reader_init_with_output_file(synctex_reader_p reader, const char * output, const char * build_directory) {
+-static synctex_reader_p synctex_reader_init_with_output_file(synctex_reader_p reader, const char * output, const char * build_directory) {
+     if (reader) {
+         /*  now open the synctex file */
+         synctex_open_s open = _synctex_open_v2(output,build_directory,0,synctex_ADD_QUOTES);
+@@ -752,7 +758,6 @@
+             (char *)_synctex_malloc(reader->size+1); /*  one more character for null termination */
+         if (NULL == reader->start) {
+             _synctex_error("!  malloc error in synctex_reader_init_with_output_file.");
+-        bailey:
+ #ifdef SYNCTEX_DEBUG
+             return reader;
+ #else
+@@ -2832,6 +2837,20 @@
+     }
+     return _synctex_node_sibling_or_parents(node);
+ }
++/**
++ *  The next nodes corresponds to a deep first tree traversal.
++ *  Does not create child proxies as side effect contrary to
++ *  the synctex_node_next method above.
++ *  May loop infinitely many times if the tree
++ *  is not properly built (contains loops).
++ */
++synctex_node_p _synctex_node_next(synctex_node_p node) {
++    synctex_node_p N = _synctex_tree_child(node);
++    if (N) {
++        return N;
++    }
++    return _synctex_node_sibling_or_parents(node);
++}
+ /**
+  *  The node which argument is the sibling.
+  *  - return: NULL if the argument has no parent or
+@@ -5156,7 +5175,7 @@
+     /* At least 1 more character */
+     zs = _synctex_buffer_get_available_size(scanner,1);
+     if (zs.size == 0){
++        _synctex_error("Uncomplete synctex file, postamble missing.");
+-        _synctex_error("Incomplete synctex file, postamble missing.");
+         SYNCTEX_RETURN(SYNCTEX_STATUS_ERROR);
+     }
+     goto main_loop;
+@@ -5173,13 +5192,13 @@
+             --ignored_form_depth;
+         }
+         if (_synctex_next_line(scanner)<SYNCTEX_STATUS_OK) {
++            _synctex_error("Uncomplete container.");
+-            _synctex_error("Incomplete container.");
+             SYNCTEX_RETURN(SYNCTEX_STATUS_ERROR);
+         }
+     } else {
+         zs = _synctex_buffer_get_available_size(scanner,1);
+         if (zs.size == 0){
++            _synctex_error("Uncomplete synctex file, postamble missing.");
+-            _synctex_error("Incomplete synctex file, postamble missing.");
+             SYNCTEX_RETURN(SYNCTEX_STATUS_ERROR);
+         }
+     }
+@@ -5255,7 +5274,7 @@
+                 synctex_node_log(child);
+ #   endif
+                 if (_synctex_next_line(scanner)<SYNCTEX_STATUS_OK) {
++                    _synctex_error("Uncomplete container.");
+-                    _synctex_error("Incomplete container.");
+                     SYNCTEX_RETURN(SYNCTEX_STATUS_ERROR);
+                 }
+                 last_k = last_g = NULL;
+@@ -5364,7 +5383,7 @@
+                     sibling = _synctex_tree_child(parent);
+                     _synctex_data_set_point(sibling,_synctex_data_point_V(parent));
+                     if (last_k && last_g && (child = synctex_node_child(parent))) {
++                        /* Find the node preceeding last_k */
+-                        /* Find the node preceding last_k */
+                         synctex_node_p next;
+                         while ((next = __synctex_tree_sibling(child))) {
+                             if (next == last_k) {
+@@ -5388,7 +5407,7 @@
+ #   endif
+                 }
+                 if (_synctex_next_line(scanner)<SYNCTEX_STATUS_OK) {
++                    _synctex_error("Uncomplete container.");
+-                    _synctex_error("Incomplete container.");
+                     SYNCTEX_RETURN(SYNCTEX_STATUS_ERROR);
+                 }
+                 last_k = last_g = NULL;
+@@ -5443,7 +5462,6 @@
+ #       pragma mark + SCAN KERN
+ #   endif
+             ns = _synctex_parse_new_kern(scanner);
+-        continue_scan:
+             if (ns.status == SYNCTEX_STATUS_OK) {
+                 if (child) {
+                     _synctex_node_set_sibling(child,ns.node);
+@@ -5669,7 +5687,7 @@
+     }
+     zs = _synctex_buffer_get_available_size(scanner,1);
+     if (zs.size == 0){
++        _synctex_error("Uncomplete synctex file, postamble missing.");
+-        _synctex_error("Incomplete synctex file, postamble missing.");
+         SYNCTEX_RETURN(SYNCTEX_STATUS_ERROR);
+     }
+     last_k = last_g = NULL;
+@@ -5935,11 +5953,11 @@
+ /*  Used when parsing the synctex file
+  */
+ static synctex_status_t _synctex_scan_content(synctex_scanner_p scanner) {
++    scanner->reader->lastv = -1;
++    synctex_status_t status = 0;
+     if (NULL == scanner) {
+         return SYNCTEX_STATUS_BAD_ARGUMENT;
+     }
+-    scanner->reader->lastv = -1;
+-    synctex_status_t status = 0;
+     /*  Find where this section starts */
+ content_not_found:
+     status = _synctex_match_string(scanner,"Content:");
+@@ -5947,7 +5965,7 @@
+         return status;
+     }
+     if (_synctex_next_line(scanner)<SYNCTEX_STATUS_OK) {
++        _synctex_error("Uncomplete Content.");
+-        _synctex_error("Incomplete Content.");
+         return SYNCTEX_STATUS_ERROR;
+     }
+     if (status == SYNCTEX_STATUS_NOT_OK) {
+@@ -6052,8 +6070,8 @@
+     scanner->pre_magnification = 1000;
+     scanner->pre_unit = 8192;
+     scanner->pre_x_offset = scanner->pre_y_offset = 578;
++    /*  initialize the offset with a fake unprobable value,
++     *  If there is a post scriptum section, this value will be overriden by the real life value */
+-    /*  initialize the offset with a fake improbable value,
+-     *  If there is a post scriptum section, this value will be overridden by the real life value */
+     scanner->x_offset = scanner->y_offset = 6.027e23f;
+     scanner->reader->line_number = 1;
+     
+@@ -7603,7 +7621,7 @@
+                 width = _synctex_data_width(node);
+                 min = _synctex_data_h(node);
+                 max = min + (width>0?width:-width);
++                /*  We allways have min <= max */
+-                /*  We always have min <= max */
+                 if (hit->h<min) {
+                     nd.distance = min - hit->h; /*  regions 1+4+7, result is > 0 */
+                 } else if (hit->h>max) {
+@@ -7617,7 +7635,7 @@
+                 width = synctex_node_width(node);
+                 min = synctex_node_h(node);
+                 max = min + (width>0?width:-width);
++                /*  We allways have min <= max */
+-                /*  We always have min <= max */
+                 if (hit->h<min) {
+                     nd.distance = min - hit->h; /*  regions 1+4+7, result is > 0 */
+                 } else if (hit->h>max) {
+@@ -7632,7 +7650,7 @@
+                 width = synctex_node_hbox_width(node);
+                 min = synctex_node_hbox_h(node);
+                 max = min + (width>0?width:-width);
++                /*  We allways have min <= max */
+-                /*  We always have min <= max */
+                 if (hit->h<min) {
+                     nd.distance = min - hit->h; /*  regions 1+4+7, result is > 0 */
+                 } else if (hit->h>max) {
+@@ -7744,7 +7762,7 @@
+             min = synctex_node_v(node);
+             max = min + _synctex_abs(_synctex_data_depth(node));
+             min -= _synctex_abs(_synctex_data_height(node));
++            /*  We allways have min <= max */
+-            /*  We always have min <= max */
+             if (hit->v<min) {
+                 nd.distance = min - hit->v; /*  regions 1+2+3, result is > 0 */
+             } else if (hit->v>max) {
+@@ -7758,7 +7776,7 @@
+             min = synctex_node_v(node);
+             max = min + _synctex_abs(synctex_node_depth(node));
+             min -= _synctex_abs(synctex_node_height(node));
++            /*  We allways have min <= max */
+-            /*  We always have min <= max */
+             if (hit->v<min) {
+                 nd.distance = min - hit->v; /*  regions 1+2+3, result is > 0 */
+             } else if (hit->v>max) {
+@@ -7775,7 +7793,7 @@
+             max = min + (depth>0?depth:-depth);
+             height = synctex_node_hbox_height(node);
+             min -= (height>0?height:-height);
++            /*  We allways have min <= max */
+-            /*  We always have min <= max */
+             if (hit->v<min) {
+                 nd.distance = min - hit->v; /*  regions 1+2+3, result is > 0 */
+             } else if (hit->v>max) {
+@@ -7791,7 +7809,7 @@
+             min = _synctex_data_v(node);
+             max = min + _synctex_abs(_synctex_data_depth(_synctex_tree_parent(node)));
+             min -= _synctex_abs(_synctex_data_height(_synctex_tree_parent(node)));
++            /*  We allways have min <= max */
+-            /*  We always have min <= max */
+             if (hit->v<min) {
+                 nd.distance = min - hit->v; /*  regions 1+2+3, result is > 0 */
+             } else if (hit->v>max) {
+@@ -8384,10 +8402,10 @@
+     gzFile as_gzFile;
+     FILE * as_FILE_p;
+     void * as_ptr;
++} syncex_file_u;
+-} synctex_file_u;
+ 
+ struct synctex_updater_t {
++    syncex_file_u file;
+-    synctex_file_u file;
+     synctex_print_f print;
+     synctex_close_f close;
+     int length;             /*  the number of chars appended */
+@@ -8552,20 +8570,6 @@
+ #       pragma mark -
+ #       pragma mark Testers
+ #   endif
+-/**
+- *  The next nodes corresponds to a deep first tree traversal.
+- *  Does not create child proxies as side effect contrary to
+- *  the synctex_node_next method above.
+- *  May loop infinitely many times if the tree
+- *  is not properly built (contains loops).
+- */
+-static synctex_node_p _synctex_node_next(synctex_node_p node) {
+-    synctex_node_p N = _synctex_tree_child(node);
+-    if (N) {
+-        return N;
+-    }
+-    return _synctex_node_sibling_or_parents(node);
+-}
+ static int _synctex_input_copy_name(synctex_node_p input, char * name) {
+     char * copy = _synctex_malloc(strlen(name)+1);
+     memcpy(copy,name,strlen(name)+1);
+--- b/cut-n-paste/synctex/synctex_parser.h
++++ a/cut-n-paste/synctex/synctex_parser.h
+@@ -146,7 +146,7 @@
+     
+     /*  The main entry points.
+      *  Given the file name, a line and a column number, synctex_display_query returns the number of nodes
++     *  satisfying the contrain. Use code like
+-     *  satisfying the constrain. Use code like
+      *
+      *      if(synctex_display_query(scanner,name,line,column,page_hint)>0) {
+      *         synctex_node_p node;
+@@ -165,7 +165,7 @@
+      * - highlight just the character using that information
+      *
+      *  Given the page and the position in the page, synctex_edit_query returns the number of nodes
++     *  satisfying the contrain. Use code like
+-     *  satisfying the constrain. Use code like
+      *
+      *     if(synctex_edit_query(scanner,page,h,v)>0) {
+      *         synctex_node_p node;
+@@ -230,7 +230,7 @@
+      *          synctex_node_box_visible_depth(node)
+      *      );
+      *  The visible dimensions are bigger than real ones
++     *  to compensate 0 width boxes or nodes intentionnaly
+-     *  to compensate 0 width boxes or nodes intentionally
+      *  put outside the box (using \kern for example).
+      *  - parameter node: a node.
+      *  - returns: a float.
+@@ -248,7 +248,7 @@
+      *  as opposite to TeX coordinates.
+      *  The origin is at the top left corner of the page.
+      *  The visible dimensions are bigger than real ones
++     *  to compensate 0 width boxes or nodes intentionnaly
+-     *  to compensate 0 width boxes or nodes intentionally
+      *  put outside the box (using \kern for example).
+      *  All nodes have coordinates, but all nodes don't
+      *  have non null size. For example, math nodes
+@@ -389,7 +389,7 @@
+      *  The scanner owns a list of sheet siblings and
+      *  a list of form siblings.
+      *  Sheets or forms have one child which is a box:
++     *  theie contents.
+-     *  their contents.
+      *  - argument page: 1 based sheet page number.
+      *  - argument tag: 1 based form tag number.
+      */
+--- b/cut-n-paste/synctex/synctex_parser_advanced.h
++++ a/cut-n-paste/synctex/synctex_parser_advanced.h
+@@ -449,7 +449,7 @@
+      */
+     void synctex_iterator_free(synctex_iterator_p iterator);
+     /**
++     *  Wether the iterator actually points to an object.
+-     *  Whether the iterator actually points to an object.
+      *  - argument iterator: the object to iterate on...
+      */
+     synctex_bool_t synctex_iterator_has_next(synctex_iterator_p iterator);
+--- b/cut-n-paste/synctex/synctex_parser_utils.c
++++ a/cut-n-paste/synctex/synctex_parser_utils.c
+@@ -48,6 +48,7 @@
+ 
+ #include <limits.h>
+ #include <ctype.h>
++#include <string.h>
+ 
+ #include <sys/stat.h>
+ 
+@@ -86,7 +87,10 @@
+ #   include <syslog.h>
+ #endif
+ 
++int _synctex_error(const char * reason, ...) __attribute__((__format__ (__printf__, 1, 2)));
++int _synctex_log(int level, const char * prompt, const char * reason, va_list arg) __attribute__((__format__ (__printf__, 3, 0)));
++
++int _synctex_log(int level, const char * prompt, const char * reason,va_list arg) {
+-static int _synctex_log(int level, const char * prompt, const char * reason,va_list arg) {
+ 	int result;
+ #	ifdef SYNCTEX_RECENT_WINDOWS
+ 	{/*	This code is contributed by William Blum.
+@@ -301,7 +305,7 @@
+   if(src && dest_ref) {
+       const char * lpc;
+ #		define dest (*dest_ref)
++		dest = NULL;	/*	Default behavior: no change and sucess. */
+-		dest = NULL;	/*	Default behavior: no change and success. */
+ 		lpc = _synctex_last_path_component(src);
+ 		if(strlen(lpc)) {
+ 			if(strchr(lpc,' ') && lpc[0]!='"' && lpc[strlen(lpc)-1]!='"') {
+@@ -351,7 +355,6 @@
+ 		size_t len = strlen(temp);
+ 		if(UINT_MAX-len<size) {
+ 			_synctex_error("!  _synctex_merge_strings: Capacity exceeded.");
+-			va_end(arg);
+ 			return NULL;
+ 		}
+ 		size+=len;
+@@ -372,7 +375,6 @@
+ 						_synctex_error("!  _synctex_merge_strings: Copy problem");
+ 						free(result);
+ 						result = NULL;
+-						va_end(arg);
+ 						return NULL;
+ 					}
+ 					dest += size;
+@@ -390,7 +392,7 @@
+ 
+ /*  The purpose of _synctex_get_name is to find the name of the synctex file.
+  *  There is a list of possible filenames from which we return the most recent one and try to remove all the others.
++ *  With two runs of pdftex or xetex we are sure the the synctex file is really the most appropriate.
+- *  With two runs of pdftex or xetex we are sure the synctex file is really the most appropriate.
+  */
+ int _synctex_get_name(const char * output, const char * build_directory, char ** synctex_name_ref, synctex_io_mode_t * io_mode_ref)
+ {

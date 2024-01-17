@@ -1,0 +1,345 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c0eae620520d0f1977322d3fca45ad6</srcmd5>
+    <version>3.3.0</version>
+    <time>1576014283</time>
+    <user>dimstar_suse</user>
+    <comment>Disable the failing test.</comment>
+    <requestid>755651</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1373893a53b9169585a68570b4f921a5</srcmd5>
+    <version>3.3.0</version>
+    <time>1579346279</time>
+    <user>dimstar_suse</user>
+    <comment>SLE-7686 (forwarded request 765299 from pgajdos)</comment>
+    <requestid>765303</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>07b1d586c3edd5e57a194d27708c7bfc</srcmd5>
+    <version>3.3.0</version>
+    <time>1579867918</time>
+    <user>dimstar_suse</user>
+    <comment>- do not require python-cffi, it will be required by
+  python-PyNaCl (forwarded request 766647 from pgajdos)</comment>
+    <requestid>766648</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0871b51d41fe04bd3c7cd946fd4828b7</srcmd5>
+    <version>3.3.1</version>
+    <time>1587839464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.1:
+  * No obvious changelog</comment>
+    <requestid>796939</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>10e964889587b70067424162e15326ae</srcmd5>
+    <version>3.3.1</version>
+    <time>1590506628</time>
+    <user>maxlin_factory</user>
+    <comment>submit (forwarded request 808637 from pgajdos)</comment>
+    <requestid>808659</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>554fc270fcb300909b4d3c42fbfd70cc</srcmd5>
+    <version>3.3.1</version>
+    <time>1602155519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840224</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1db62030bac03f0f413cf21b467e29a2</srcmd5>
+    <version>3.3.2</version>
+    <time>1606649479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851640</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3d1debdb025856258218880aa122a57b</srcmd5>
+    <version>3.3.2</version>
+    <time>1608112836</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix systemd services
+- Add missing services and timers to systemd
+</comment>
+    <requestid>856057</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>eb5e73badd51776043d69672a6c4ea77</srcmd5>
+    <version>3.3.2</version>
+    <time>1608317994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856847</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>321608f5c080cb4e3e1cd798fd02e37b</srcmd5>
+    <version>3.3.3</version>
+    <time>1612707425</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gl823_exclude_failing_tests.patch to skip two failing tests
+  (gl#mailman/mailman#823).
+- Modernize specfile. Update summary so it does not fall under
+  rpmlint name-repeated-in-summary.
+- Fix building on tumbleweed
+- Update to 3.3.3:
+  * Handle some UnicodeEncodeErrors in creating digests.  (Closes #560)
+  * Increased the size of the data column in the workflowstate table.
+    (Closes #793)
+  * Implemented a ``scrubber`` for plain text digests.  (Closes #473)
+  * The ``mailman gatenews`` command now adds ``original_size`` as a message
+    attribute.  (Extends fix for #762)
+  * Handle FileNotFoundError when creating digest.mmdf file without a
+    parent directory present.  (Closes #699)
+  * Fixed an issue where content filtering can throw UnicodeEncodeError when
+    converting HTML to plain text.  (Closes #798)
+  * A bounce for a non-existent list is now handled.  (Closes #799)
+  * RFC 2047 From: headers in emailed ``join`` commands are now decoded.
+    (Closes #802)
+  * The ``mailman addmembers`` command now catches and reports a
+    ``SubscriptionPendingError``.  (Closes #805)
+  * RFC 2369 ``List-Owner`` header is now added when these headers are included.
+    (Closes #809)
+  * Header filters will now properly match RFC 2047 encoded headers.
+    (Closes #815)
+  * Mailman's ``vette`` log discard messages now include the reasons.
+    (Closes #816)
+  * Increase the default REST API (gunicorn) timeout to 360 seconds from 30 as
+    several API endpoinds can be very slow. (Closes #770)
+  * Header filter rules are now properly processed after deletions and/or
+    reordering.  (Closes #818)
+  * Folded ``To: list-confirm+token@...`` headers are now parsed correctly.
+    (Closes: #819)
+</comment>
+    <requestid>869592</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fe9d31cef40036a59e3b2f0f037810ad</srcmd5>
+    <version>3.3.4</version>
+    <time>1617034892</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880765</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9730f1bb6702b1e9355e4a3ee12b4b90</srcmd5>
+    <version>3.3.4</version>
+    <time>1620653897</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict build to primary python3 in order to avoid conflicting
+  packages. (forwarded request 890325 from bnavigator)</comment>
+    <requestid>890490</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c2ff85244de88f08e053d26000e5fef4</srcmd5>
+    <version>3.3.4</version>
+    <time>1627680115</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-click-8-0.patch:
+  * Lightly rebased from upstream to support click 8.0
+- Add support-sqlalchemy-1-4.patch:
+  * Support running with SQLAlchemy 1.4</comment>
+    <requestid>909272</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6c3b164909d8cade2a8e5fccbd5ff12b</srcmd5>
+    <version>3.3.5</version>
+    <time>1637618639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.5, which provides many bug fixes and also these new features:
+  - There is a new bounce_notify_admin_on_bounce_increment list
+    setting and a corresponding list:admin:notice:increment
+    template for the notice. This setting, if True, will cause a
+    notice to be sent to the list admins when a member's bounce
+    score is incremented, but doesn't disable delivery.
+  - There is a new moderator_request_life setting in the
+    [mailman] section of mailman.cfg that controls the lifetime
+    of pending moderator requests as opposed to pending user
+    confirmations.  Default is 180 days.
+  - There is a new task runner to do periodic tasks.  The current
+    implementation evicts expired pendings and cache entries
+    and removes orphaned workflows and orphaned message store
+    messages.  It does these tasks at intervals defined by the
+    new run_tasks_every setting in the [mailman] section of
+    mailman.cfg. Default is 1 hour.
+  - There is a new list:admin:notice:pending template for the
+    notice from the mailman notify command.
+  - The nntp runner will now run the gatenews subcommand at
+    intervals defined by a new gatenews_every setting in the
+    [nntp] section of mailman.cfg. Default is 5 every minutes.
+  - Check the REST API password in a way that is resistant to
+    timing attacks. (CVE-2021-34337)
+- Added support-alembic-1-7.patch
+- Removed obsolete support-click-8-0.patch
+- Added rpmlintrc
+</comment>
+    <requestid>932595</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>901a1f824a2011a63e446582bc1a634e</srcmd5>
+    <version>3.3.5</version>
+    <time>1642724727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947670</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3fd0b4dc7f6e56f5f2ab65a9e8d0e323</srcmd5>
+    <version>3.3.5</version>
+    <time>1645462000</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up a half-completed migration away from python-rpm-macros.
+  As a consequence, mailman3 now pulls in all dependencies again.</comment>
+    <requestid>956302</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>df64779c342a437294f93f366913bac7</srcmd5>
+    <version>3.3.5</version>
+    <time>1655245921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982453</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>52372f344f0462de00c07d89a3b99347</srcmd5>
+    <version>3.3.5</version>
+    <time>1659034661</time>
+    <user>RBrownFactory</user>
+    <comment>- Go back to Python 3.9 for mailman. Python 3.10 is not supported
+  and it is unclear whether the test failures are due to the
+  production code or only in the setup of aiosmtpd in the test
+  suite. -- https://gitlab.com/mailman/mailman/-/issues/936 (forwarded request 986649 from bnavigator)</comment>
+    <requestid>986717</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>98699794cbbd35e01eb3a4612c279a85</srcmd5>
+    <version>3.3.5</version>
+    <time>1662063134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000644</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>99c29ac7c9455b7b1e7c3b275aadf851</srcmd5>
+    <version>3.3.5</version>
+    <time>1664380307</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006539</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>02b896a11a44601a7bbef6f3d7460fa9</srcmd5>
+    <version>3.3.6</version>
+    <time>1666871692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031517</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f1e6e48d1c5934c9bfe7551565c697bd</srcmd5>
+    <version>3.3.6</version>
+    <time>1667995048</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034603</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>3eb4605790c2a9c4ec56382348023453</srcmd5>
+    <version>3.3.6</version>
+    <time>1671128753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043120</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0d182be111f7175b68ce58e869d70bed</srcmd5>
+    <version>3.3.8</version>
+    <time>1675689330</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.8:
+  * The deprecated SQLAlchemy query.values() method is replaced by
+    query.with_entities(). This fixes an issue with MariaDB that truncated
+    the generated postfix_lmtp file. (Closes #1044)
+  * An uncaught passlib.exc.UnknownHashError in utilities/passwords.py is
+    now caught and handled appropriately. (Closes #1046)
+  * Rejection notices for a message with an RFC 2047 encoded Subject: now
+    display the decoded subject. (Closes #672)
+  * Don't RFC 2047 encode display names in UserNotifications. Allow sending
+    utf-8 encoded notifications. (Closes #673)
+  * Don't replace non-ascii in subjects in notifications. (Closes #673)
+  * The mailman members command no longer RFC 2047 encodes non-ascii display
+    names. (Closes #1048)
+  * Improve the performance of Held message handling by reducing the total
+    number of database calls required. (Fixes #1026 and #1045)
+  * Add support for Python 3.10. (Closes #936)
+  * Add support for Python 3.11 (See !1076)
+  * Add support for SQLAlchemy 1.4+ (Closes #964)
+  * Drop support for Python 3.6 since SQLAlchemy 2.0 will drop support for
+    it and it is EOL by now. (See !1035)
+  * The fix for #994 in 3.3.6 blocked too many subscription attempts. This is
+    now corrected and another test added.
+- Drop patches now included upstream:
+  * mailman-support-sqlalchemy-1-4.patch
+  * python-mailman-test_interact_default_banner.patch
+  * support-alembic-1-8.patch
+  * support-attrs-22.patch
+  * support-sqlalchemy-1-4.patch</comment>
+    <requestid>1063334</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f32019540b03ec1c49a0148c62e87efb</srcmd5>
+    <version>3.3.8</version>
+    <time>1680290146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075743</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>d499fb5400cc48b8305fa955d7bac9f6</srcmd5>
+    <version>3.3.8</version>
+    <time>1687207847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093767</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>e5321deac447352a23f343f2cec3aded</srcmd5>
+    <version>3.3.8</version>
+    <time>1693235889</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107098</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>539d1851b3ba94a017b92fb23cb9c201</srcmd5>
+    <version>3.3.8</version>
+    <time>1695327788</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112756</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d474090d8efef82efc5999e501d463bd</srcmd5>
+    <version>3.3.9</version>
+    <time>1699046457</time>
+    <user>anag+factory</user>
+    <comment>- Require authheaders &gt;= 0.15.2
+
+- Update to version 3.3.9
+  * See https://gitlab.com/mailman/mailman/-/blob/v3.3.9/src/mailman/docs/NEWS.rst
+    or the file NEWS.rst in this package
+- Removed mailman-fix-importlib-resources.patch</comment>
+    <requestid>1123211</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>3900acdf792ac2271a77027f516695f2</srcmd5>
+    <version>3.3.9</version>
+    <time>1699301655</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123514</requestid>
+  </revision>
+</revisionlist>

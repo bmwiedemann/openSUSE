@@ -1,0 +1,10 @@
+<package name="perl-Domain-PublicSuffix" project="openSUSE:Factory">
+  <title>Parse a domain down to root</title>
+  <description>This module utilizes the &quot;effective_tld_names.dat&quot; provided by Mozilla as a way to effectively reduce a fully qualified domain name down to the absolute root. The Mozilla PublicSuffix file is an open source, fully documented format that shows absolute root TLDs, primarily for Mozilla's browser products to be able to determine how far a cookie's security boundaries go.
+
+This module will attempt to search etc directories in /usr/share/publicsuffix, /usr, /usr/local, and /opt/local for the effective_tld_names.dat file. If a file is not found, a default file is loaded from Domain::PublicSuffix::Default, which is current at the time of the module's release. You can override the data file path by giving the new() method a 'data_file' argument.
+
+When creating a new PublicSuffix object, the module will load the data file as specified, and use the internal structure to parse each domain sent to the get_root_domain method. To re-parse the file, you must destroy and create a new object, or execute the _parse_data_file method directly, though that is not recommended.</description>
+  <devel project="devel:languages:perl" package="perl-Domain-PublicSuffix"/>
+  <url>https://metacpan.org/pod/Domain::PublicSuffix</url>
+</package>

@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc115134540cc434601d11f71f101f54</srcmd5>
+    <version>1.0.0</version>
+    <time>1594818425</time>
+    <user>dimstar_suse</user>
+    <comment>Initial postfix relay container</comment>
+    <requestid>820906</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f679cc7b84591bdcf2345dbb22c2004a</srcmd5>
+    <version>1.0.0</version>
+    <time>1595271807</time>
+    <user>dimstar_suse</user>
+    <comment>- Implement and document virtual mailbox support (forwarded request 821854 from kukuk)</comment>
+    <requestid>821855</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7ead9fed4357274420644ec99c184a0d</srcmd5>
+    <version>1.0.0</version>
+    <time>1605124016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847699</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3f220786c877d7e916e412cca54d262f</srcmd5>
+    <version>1.0.0</version>
+    <time>1605644864</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for LMTP (forwarded request 849119 from kukuk)</comment>
+    <requestid>849120</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6ca6c4f758fd767c17f76c5a8b334448</srcmd5>
+    <version>1.0.0</version>
+    <time>1605783676</time>
+    <user>dimstar_suse</user>
+    <comment>- Enhance documentation (forwarded request 849312 from kukuk)</comment>
+    <requestid>849313</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c91c123dca59878abecdd8a0799bd09d</srcmd5>
+    <version>1.0.0</version>
+    <time>1610123966</time>
+    <user>dimstar_suse</user>
+    <comment>- Use LMDB instead of BDB in preparation of obsoleting BDB
+
+- Add &quot;SMTP_TLS_SECURITY_LEVEL&quot; confguration variable
+
+- Add &quot;NULLCLIENT&quot; support for pure relayhosts 
+
+- Use mailLocalAddress (LDAP) for mail aliases, too.
+
+- Rework container description
+- Fix virtual domain handling: don't use environment variable and
+  LDAP at the same time.
+
+- Add support for spamassassin
+
+- Set local_header_rewrite_clients to static:all if domain
+  masquerading is requested (required for postfix &amp;gt;= 2.2)
+
+- Fix error caused by uninitialized DEBUG variable (forwarded request 861721 from kukuk)</comment>
+    <requestid>861722</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>87ee80ccf167f37d9a805bf212fca49c</srcmd5>
+    <version>1.0.0</version>
+    <time>1611348769</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure LMDB is used for /etc/aliases by newaliases (forwarded request 865994 from kukuk)</comment>
+    <requestid>865995</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c393e27487b6efb2b78bef734adfaf89</srcmd5>
+    <version>1.0.0</version>
+    <time>1628023713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909723</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>4a28103065efb081d9c0727e5135ebb2</srcmd5>
+    <version>1.0.0</version>
+    <time>1657712734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988906</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>94054c291ecca43aba6ec252587d8782</srcmd5>
+    <version>1.0.0</version>
+    <time>1660753023</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>997514</requestid>
+  </revision>
+</revisionlist>

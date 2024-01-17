@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd88a24c9c1a10e1f50fba8d37f691e0</srcmd5>
+    <version>0.13</version>
+    <time>1465847725</time>
+    <user>dimstar_suse</user>
+    <comment>xmoto requirement.</comment>
+    <requestid>398294</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>466e10538f2ce635f2d0e1ba709556d6</srcmd5>
+    <version>0.13</version>
+    <time>1497944404</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504492</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8b62a04bd6e7f796c059b4f20bb6783</srcmd5>
+    <version>0.15.2</version>
+    <time>1510837291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541084</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>38d0af2d20a578ae4a189182a8999afd</srcmd5>
+    <version>0.16</version>
+    <time>1559375806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706493</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>222a91d44dcb822f55d44c1782e2ce3f</srcmd5>
+    <version>0.16.1</version>
+    <time>1585602445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789834</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>138a6dd1888e64cf96f79bb4d6e502d8</srcmd5>
+    <version>0.16.2</version>
+    <time>1600347977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835158</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7cae9061ed5162137c4a96a1304dfcc2</srcmd5>
+    <version>0.16.3</version>
+    <time>1674043949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059200</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4272a46917dc318f632833681231efa1</srcmd5>
+    <version>0.16.4</version>
+    <time>1696529107</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115798</requestid>
+  </revision>
+</revisionlist>

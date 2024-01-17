@@ -1,0 +1,13 @@
+php_admin_flag register_globals off
+php_admin_flag magic_quotes_gpc off
+php_admin_flag allow_url_include off
+php_admin_flag allow_url_fopen off
+php_admin_flag zend.ze1_compatibility_mode off
+php_admin_flag safe_mode Off
+# customize suhosin
+php_admin_value suhosin.post.max_array_index_length 256
+php_admin_value suhosin.post.max_totalname_length 8192
+php_admin_value suhosin.post.max_vars 2048
+php_admin_value suhosin.request.max_array_index_length 256
+php_admin_value suhosin.request.max_totalname_length 8192
+php_admin_value suhosin.request.max_vars 2048

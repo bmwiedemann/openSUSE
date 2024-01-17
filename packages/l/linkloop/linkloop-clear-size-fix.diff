@@ -1,0 +1,40 @@
+--- linkloop.c-dist	2008-08-11 16:19:51.000000000 +0200
++++ linkloop.c	2008-08-11 17:01:31.000000000 +0200
+@@ -95,7 +95,7 @@ void handle_options(int argc, char * con
+ 		fprintf(stderr, "interface=%s timeout=%d num=%d size=%d\n",
+ 			iface, timeout, retries, pack_size);
+ 	if(optind != argc - 1) {
+-		fprintf(stderr, "%s: missing target address\n");
++		fprintf(stderr, "%s: missing target address\n", program);
+ 		usage();
+ 	}
+ 	arg_addr = argv[optind];
+--- common.c-dist	2008-08-11 15:39:54.000000000 +0200
++++ common.c	2008-08-11 17:00:15.000000000 +0200
+@@ -82,7 +82,7 @@ int parse_address(u_int8_t mac[], const
+ #if HAVE_ETHER_HOSTTON
+ 	} else if(ether_hostton(str, &ea) == 0) {
+ 		/* A name from /etc/ethers */
+-		memcpy(mac, ea.ether_addr_octet, 8);
++		memcpy(mac, ea.ether_addr_octet, IFHWADDRLEN);
+ #endif
+ 	} else
+ 		return 0;
+@@ -111,7 +111,7 @@ void mk_test_packet(struct llc_packet *p
+ 	pack->llc.ssap = (response) ? 0x01 : 0x80;	/* XNS? */
+ 	pack->llc.ctrl = TEST_CMD;			/* TEST */
+ 
+-	for(i = 0; i < len; i++)
++	for(i = 0; i < len - sizeof(struct llc) - sizeof(struct ether_header); i++)
+ 		pack->data[i] = i;
+ }
+ 
+@@ -121,7 +121,7 @@ void send_packet(int sock, const char if
+ 
+ 	bzero((char *)&sa, sizeof(struct sockaddr));
+ 	sa.sa_family = AF_INET;
+-	strncpy(sa.sa_data, iface, IF_NAMESIZE - 1);
++	strncpy(sa.sa_data, iface, sizeof(sa.sa_data) - 1);
+ 
+ 	/* Send the packet */
+ 	ret = sendto(sock, pack, sizeof(*pack), 0, (struct sockaddr *)&sa, sizeof(sa));

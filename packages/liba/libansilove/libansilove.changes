@@ -1,0 +1,186 @@
+-------------------------------------------------------------------
+Mon Jun  5 08:11:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.4.1
+  * Sync embedded Spleen 8x16 version to Spleen 2.0.0 (this swap arrows at positions 1A and 1B)
+
+- Update to 1.4.0
+  * Add font data for Spleen 8x16, it now has full CP437 support
+
+-------------------------------------------------------------------
+Thu May  5 05:57:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.3.1
+  * Increment pcboard_buffer by more than one element at a time
+  * Fix XBin font memory leaks
+
+-------------------------------------------------------------------
+Fri Feb 11 16:08:56 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.2.9
+  - Use CMAKE_C_STANDARD instead of hardcoding compiler flags.
+  - Add missing <stdint.h> include.
+
+-------------------------------------------------------------------
+Sun Oct 25 18:30:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.8
+  * Add LibFuzzer-based fuzzers for each supported format
+  * Do not hardcode CMAKE_BUILD_TYPE to "Release" in CMakeLists.txt
+  * Only enable FORTIFY_SOURCE level 2 for release builds
+  * Add #ifdef __cplusplus extern "C" to allow calling library
+    functions from C++
+  * Constify input and output arguments of ansilove_loadfile() and
+    ansilove_savefile()
+
+-------------------------------------------------------------------
+Thu Oct 22 19:11:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.7
+  - Error out early with ANSILOVE_FORMAT_ERROR in case ctx->length
+    is 0.
+  - Initialize ansi_buffer and pcboard_buffer to NULL.
+  - Refactor the IceDraw loader to use a state machine.
+  - Check strndup() return value and error out on failed allocations
+  - Add some file format integrity checks in the IceDraw loader.
+  - Add range integrity checks for scale_factor values in the
+    output() function.
+  - Return error code directly if ctx->length is 0 in the ANSI and
+    PCBoard loaders.
+  - Add range integrity checks for columns value in relevant loaders
+  - Add range integrity checks for bits value in relevant loaders
+  - Add additional file format integrity check in the XBin loader
+
+-------------------------------------------------------------------
+Wed Sep 30 20:50:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.6
+  * Introduce canvas' width/height variables and refactor canvas
+    creation.
+  * Refactor the ANSI loader to use a state machine.
+  * Remove systematic filtering of Form Feed characters in Amiga mode
+  * Correct values for TUNDRA_COLOR_FOREGROUND and
+    TUNDRA_COLOR_BACKGROUND.
+  * Switch to using reallocarray(3) in the ANSI and PCBoard loaders
+  * Add a compat layer for systems which do not have reallocarray(3)
+  * Refactor canvas allocation for retina output
+  * Introduce the ANSILOVE_RANGE_ERROR macro, for values out of
+    allowed range
+  * Error gracefully if canvas' width or height is equal to zero
+  * Remove an useless comparison in drawchar()
+  * Add some file format integrity checks in the Tundra loader
+  * Refactor error handling in several loaders
+
+-------------------------------------------------------------------
+Thu Sep 24 18:38:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.5
+  * Add missing parentheses in an if statement in output()
+  * Define CR, LF, TAB, SUB, and ESC macros only once
+  * Refactor error handling in the PCBoard loader
+  * Stop parsing for PCBoard cursor position sequences
+  * Add bound checks for {back,fore}ground color values in the
+    PCBoard loader
+  * Fix default background and foreground colors in the PCBoard
+    loader
+  * Refactor the PCBoard loader to use a state machine
+  * Refactor the Binary loader to use a state machine
+  * Refactor the Artworx loader to use a state machine
+  * Add some file format integrity checks in the XBin loader
+
+-------------------------------------------------------------------
+Sun Jun 21 07:48:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.4
+  * Use size_t in for loops setting color palettes
+  * Remove unneeded gdImageFill() call when using Workbench mode
+  * Define _GNU_SOURCE in CMakeLists.txt to avoid cluttering
+    source files
+  * Use size_t type for variables used to loop over arrays
+  * Separate RGB values for palettes, makes color allocation code
+    more readable and efficient
+  * Move ADF color mapping array to config.h
+
+-------------------------------------------------------------------
+Mon May 25 17:30:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.3
+  * Call memset() to set all fontData struct fields to zero in
+    all loaders
+  * Refactor error handling in ansilove_savefile()
+  * Add error handling for fwrite() in ansilove_savefile()
+  * Fix includes in various source files
+
+-------------------------------------------------------------------
+Thu Apr 30 12:05:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.2
+  * Refactor the output function, to allow combining DOS aspect
+    ratio and Retina
+  * Remove the im_ prefix for all gdImagePtr variables
+  * Various README changes and improvements
+
+-------------------------------------------------------------------
+Tue Mar 17 15:49:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * Call memset() to set all fontData struct fields to zero
+  * Use the ternary operator to simplify character attributes
+    assignments
+
+-------------------------------------------------------------------
+Mon Feb 17 19:29:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.0
+  * Correct section number in manual page.
+  * Add initial manual pages for all library functions and file
+    formats renders
+  * Stop calculating columnMax in the PCBoard loader, it's unused
+  * Add support for user-specified columns in the PCBoard loader
+
+-------------------------------------------------------------------
+Mon Jan 20 20:19:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.9
+  * Remove unneeded gdImageColorAllocate calls in the ADF and IDF
+    loaders
+  * Reset background24 to 0 when encountering blink attribute in
+    an SGR sequence, fixing the remaining rendering bugs for 24-bit
+    ANSI artworks
+
+-------------------------------------------------------------------
+Sun Jan 19 10:07:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.8
+  * Properly reset pcboard buffer when CLS is encountered
+  * Use memcmp() instead of testing each character one by one in
+    the PCB loader
+  * Do not use background and foreground variables to handle 24-bit
+    ANSI colors
+  * Various improvements in the IDF loader
+
+-------------------------------------------------------------------
+Thu Dec 19 19:17:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.7
+  * Rename the alSelectFont() function to select_font()
+  * Only export symbols which are part of the public API
+
+-------------------------------------------------------------------
+Mon Nov 18 19:13:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.6
+  * Use CMAKE_INSTALL_{LIB,INCLUDE}DIR instead of hardcoding
+    directories.
+  * Introduce a XBIN_PALETTE_LENGTH macro
+  * Use XBIN_HEADER_LENGTH and XBIN_PALETTE_LENGTH macros instead
+    of magic numbers
+  * Add another format validation check (palette size) in the
+    XBin loader
+- Drop patch (fixed by upstream):
+  * libansilove-libsuffix.patch
+
+-------------------------------------------------------------------
+Fri Oct 25 19:16:47 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.1.5

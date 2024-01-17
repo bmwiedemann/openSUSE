@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed May 11 03:08:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-Test-Alien-CPP/Changes
+
+  1.03      2022-05-10 14:44:45 -0600
+    - Fix bug in synopsis example (gh#10, gh#11)
+
+-------------------------------------------------------------------
+Sat Oct 17 14:03:09 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- initial package 1.02
+ * created by cpanspec 1.78.09

@@ -1,0 +1,8 @@
+<package name="crash" project="openSUSE:Factory">
+  <title>Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles</title>
+  <description>The core analysis suite is a self-contained tool that can be used to
+investigate either live systems, kernel core dumps created from the
+netdump and diskdump packages from Red Hat Linux, the mcore kernel
+patch offered by Mission Critical Linux, or the LKCD kernel patch.</description>
+  <devel project="Kernel:kdump" package="crash"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="gnu_parallel" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="gnu_parallel"/>
+</package>

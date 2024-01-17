@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd11e94fe9c15e0b3839869d888dcdf3</srcmd5>
+    <version>0.5.1</version>
+    <time>1390429176</time>
+    <user>coolo</user>
+    <comment>add for factory</comment>
+    <requestid>214259</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bd11e94fe9c15e0b3839869d888dcdf3</srcmd5>
+    <version>0.5.1</version>
+    <time>1409301739</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ea0b66c18c41aa4ea453ddf9fb1a883a</srcmd5>
+    <version>0.5.2</version>
+    <time>1427109538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.2
+  * No entry for this release
+- Update project home and download Urls
+- Add autoconf, automake and libtool build require; the tarball
+  comes from git and configure script has to be generated</comment>
+    <requestid>292213</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5476a60e74a88acecd6bc1f3b57191a</srcmd5>
+    <version>0.6.0</version>
+    <time>1516804158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568220</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>422580084efb5faf6eb496c008944451</srcmd5>
+    <version>0.6.0</version>
+    <time>1551284870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674674</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>023103b2f4996daad0d5bbb42214497d</srcmd5>
+    <version>0.7.0</version>
+    <time>1568066295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729455</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>26d5988898f58d94812df92e7c13b72c</srcmd5>
+    <version>0.7.3</version>
+    <time>1595577923</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.7.3. Other minor changes to the spec file were done automatically by the format spec service. (forwarded request 822315 from kailiu)</comment>
+    <requestid>822328</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>45395f5957b47aebe370a5f3c1a45fe8</srcmd5>
+    <version>0.7.4</version>
+    <time>1606142937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.4
+  * Addressed potential constant-time related issues in TPM 1.2 and
+    TPM 2 code
+    TPM 1.2: RSA decryption
+    TPM 2: EcSchnorr and EcSM2 signatures; Ecsda is handled by OpenSSL
+  * Fixed some compilation issues (forwarded request 850056 from gary_lin)</comment>
+    <requestid>850101</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65425b4a6c4c181d8587432f3dc1a3f5</srcmd5>
+    <version>0.7.7</version>
+    <time>1616598589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.7
+  * CryptSym: fix AES output IV (bsc#1183729, CVE-2021-3446)
+  * tpm2: Fix public key context save due to ANY_OBJECT_Marshal usage
+  * tpm2: Address some Coverity issues (false positives)
+  * tpm1.2: Backported ASAN/UBSAN related fixes
+  * tpm2: Return properly sized array for b parameter for NIST P521
+    (HLK)
+  * tpm2: Addressed issues detected by UBSAN
+  * tpm2: Addressed issues detected by cppcheck (false positives) (forwarded request 880005 from gary_lin)</comment>
+    <requestid>880046</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72c50a587059c83ac0b8802649d021fe</srcmd5>
+    <version>0.8.2</version>
+    <time>1619192976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2
+  * tpm2: rev155: Add new RsaAdjustPrimeCandidate code but do
+    not use (bsc#1184939 CVE-2021-3505)
+  * tpm2: Activate SEED_COMPAT_LEVEL_RSA_PRIME_ADJUST_FIX
+    (bsc#1184939 CVE-2021-3505) (forwarded request 886589 from gary_lin)</comment>
+    <requestid>886707</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67374b83b93413d61d4c9b739a195bf8</srcmd5>
+    <version>0.8.4</version>
+    <time>1628751662</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910800</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>21af37d39fea9005f003ec3d82bb9ba7</srcmd5>
+    <version>0.8.4</version>
+    <time>1631543069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917964</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1e1c6f93d2099f03ff93ef1e3001d1f4</srcmd5>
+    <version>0.9.1</version>
+    <time>1639340830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939041</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>de7a1ee8504b9eec7e636490b8e3e592</srcmd5>
+    <version>0.9.3</version>
+    <time>1649876639</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.3:
+  * build-sys: Add probing for -fstack-protector
+  * tpm2: Do not call EVP_PKEY_CTX_set0_rsa_oaep_label() for label of size
+  * (OSSL 3)
+  * tpm2: When writing state initialize s_ContextSlotMask if not set (forwarded request 968240 from dirkmueller)</comment>
+    <requestid>968367</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4873ee6240e0c4199deb2f56f6a12112</srcmd5>
+    <version>0.9.3</version>
+    <time>1666780291</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed CVE-2021-3623 (bsc#1187767) (forwarded request 1030434 from msmeissn)</comment>
+    <requestid>1031153</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0ef922afc7a118e12609f7d22360bdc8</srcmd5>
+    <version>0.9.3</version>
+    <time>1669484709</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for ppc64le: use -Wl,--no-as-needed in check-local
+  [bsc#1204556] (forwarded request 1038171 from pgajdos)</comment>
+    <requestid>1038201</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>847075aa991d8b18c6f35bb51a70d5c9</srcmd5>
+    <version>0.9.5</version>
+    <time>1670430814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.5:
+  * tpm2: Do not set RSA_FLAG_NO_BLINDING on RSA keys anymore
+  * tpm2: Fix a potential overflow expression (coverity)
+  * tpm2: Fix size check in CryptSecretDecrypt
+  * tpm: #undef printf in case it is #define'd (OSS-Fuzz)
+  * tpm2: Check return code of BN_div()
+  * tpm2: Initialize variables due to gcc complaint (s390x, false positive)
+  * tpm12: Initialize variables due to gcc complaint (s390x, false positive)
+  * build-sys: Fix configure script to support _FORTIFY_SOURCE=3 (forwarded request 1039771 from dirkmueller)</comment>
+    <requestid>1040190</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4039469a4134c42f5e999d29f497c743</srcmd5>
+    <version>0.9.6</version>
+    <time>1678283487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.6:
+  * CVE-2023-1018: tpm2: Fixed out of bounds read in CryptParameterDecryption (bsc#1206023)
+  * CVE-2023-1017: tpm2: Fixed out of bounds write in CryptParameterDecryption (bsc#1206022)</comment>
+    <requestid>1069859</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e23b032e5e2cf7c9a5cec070e464f45e</srcmd5>
+    <version>0.9.6</version>
+    <time>1704281243</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-tpm2-Check-size-of-buffer-before-accessing-it-CVE-20.patch: upstreamed
+- Used in SLE:
+  0001-tpm2-Reset-TPM2B-buffer-sizes-after-test-fails-for-v.patch
+  0002-tpm2-Add-maxSize-parameter-to-TPM2B_Marshal-for-sani.patch
+  0003-tpm2-Restore-original-value-if-unmarsalled-value-was.patch (forwarded request 1134474 from msmeissn)</comment>
+    <requestid>1135332</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,52 @@
+--- manpage.1
++++ manpage.1	2006-05-22 14:15:56.000000000 +0200
+@@ -0,0 +1,49 @@
++.\"
++.TH PLOTUTILS 1 "March 2, 2000" "Version 2.4.1" "GNU Plotting Utilities"
++.SH NAME
++plotutils \- The GNU plotting utilities.
++.PP
++double \- Final plotting utility.
++.br
++graph \- Converts table format to plot or graphic formats.
++.br
++ode \- Integrates ordinary differential equation(s).
++.br
++plot \- The plot filter.
++.br
++plotfont\- Displays mapping of available plot fonts.
++.br
++spline \- Spline interpolation of data.
++.br
++tek2plot \- Translates tektronix format to plot.
++.SH SYNOPSIS
++.B double
++[--help | options]
++.br
++.B graph
++[--help | options]
++.br
++.B ode
++[--help | options]
++.br
++.B plot
++[--help | options]
++.br
++.B plotfont
++[--help | options]
++.br
++.B spline
++[--help | options]
++.br
++.B tek2plot
++[--help | options]
++.SH DESCRIPTION
++.B plotutils
++does not have useful man pages.  Documentation is available through
++the info system.  The relevant command is "info plotutils".
++.SH SEE ALSO
++.BR ode (1),
++.BR plot (1),
++.BR plotfont (1),
++.BR spline (1),
++.BR tek2plot (1).

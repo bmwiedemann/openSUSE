@@ -1,0 +1,31 @@
+<package name="bsh2" project="openSUSE:Factory">
+  <title>Lightweight Scripting for Java (BeanShell Version 2.x)</title>
+  <description>BeanShell is a small, free, embeddable, Java source interpreter with
+object scripting language features, written in Java. BeanShell executes
+standard Java statements and expressions, in addition to obvious
+scripting commands and syntax. BeanShell supports scripted objects as
+simple method closures like those in Perl and JavaScript(tm). You can
+use BeanShell interactively for Java experimentation and debugging or
+as a simple scripting engine for your applications. In short: BeanShell
+is a dynamically interpreted Java, plus some useful stuff. Another way
+to describe it is to say that in many ways BeanShell is to Java as
+Tcl/Tk is to C: BeanShell is embeddable - You can call BeanShell from
+your Java applications to execute Java code dynamically at run-time or
+to provide scripting extensibility for your applications.
+Alternatively, you can call your Java applications and objects from
+BeanShell; working with Java objects and APIs dynamically. Since
+BeanShell is written in Java and runs in the same space as your
+application, you can freely pass references to &quot;real live&quot; objects into
+scripts and return them as results.
+
+With version 2.0 BeanShell becomes a fully Java compatible scripting
+language. BeanShell is now capable of interpreting ordinary Java source
+and loading .java source files from the class path. BeanShell scripted
+classes are fully typed and appear to outside Java code and via
+reflective inspection as ordinary classes. However their implementation
+is fully dynamic and they may include arbitrary BeanShell scripts in
+their bodies, methods, and constructors. Users may now freely mix
+loose, unstructured BeanShell scripts, method closures, and full
+scripted classes.</description>
+  <devel project="Java:packages" package="bsh2"/>
+</package>

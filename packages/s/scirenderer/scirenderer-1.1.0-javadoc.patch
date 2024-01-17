@@ -1,0 +1,31 @@
+--- scirenderer-1.1.0/build.xml	2017-09-20 09:28:34.738932803 +0200
++++ scirenderer-1.1.0/build.xml	2017-09-20 09:31:22.759435307 +0200
+@@ -126,7 +126,8 @@
+        verbose="off"
+        listfiles="on"
+        includeAntRuntime="no"
+-       source="5"
++       source="6"
++       target="6"
+        >
+       <classpath>
+         <path refid="compile.classpath" />
+@@ -148,12 +149,18 @@
+     <javadoc
+            destdir="${doc.dir}"
+            author="true"
++           source="6"
+            version="true"
+            use="true"
+            windowtitle="SciRenderer API">
+       <packageset dir="src" defaultexcludes="yes">
+         <include name="org/**"/>
+       </packageset>
++      <classpath>
++        <path refid="compile.classpath" />
++        <path location="${library.jar}" />
++        <path location="${jogl2.jar}"/>
++      </classpath>
+     </javadoc>
+   </target>
+ 

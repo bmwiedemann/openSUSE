@@ -1,0 +1,5 @@
+<package name="go1.14" project="openSUSE:Factory">
+  <title>Go programming language compiler and tools</title>
+  <description>Go is an expressive, concurrent, garbage collected systems programming language that is type safe and memory safe. It has pointers but no pointer arithmetic. Go has fast builds, clean syntax, garbage collection, methods for any type, and run-time reflection. It feels like a dynamic language but has the speed and safety of a static language.</description>
+  <devel project="devel:languages:go" package="go1.14"/>
+</package>

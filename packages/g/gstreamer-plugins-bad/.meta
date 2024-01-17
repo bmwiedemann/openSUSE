@@ -1,0 +1,12 @@
+<package name="gstreamer-plugins-bad" project="openSUSE:Factory">
+  <title>GStreamer Streaming-Media Framework Plug-Ins</title>
+  <description>This package is based on the package 'gstreamer-0_10-plugins-bad' from project 'openSUSE:Factory'.
+
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related,from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+</description>
+  <devel project="multimedia:libs" package="gstreamer-plugins-bad"/>
+</package>

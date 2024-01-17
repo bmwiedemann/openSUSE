@@ -1,0 +1,5 @@
+<package name="args4j" project="openSUSE:Factory">
+  <title>Argument Parsing for Java</title>
+  <description>args4j is a small Java class library that makes it easy to parse command line options/arguments in your CUI application.</description>
+  <devel project="Java:packages" package="args4j"/>
+</package>

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sun Jan 14 10:40:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.8:
+  * Remove Sphinx as a required dependency, as circular
+    dependencies may cause failure with package managers that
+    expect a directed acyclic graph (DAG) of dependencies.
+
+-------------------------------------------------------------------
+Tue Aug 29 19:03:33 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Mon Aug 28 11:28:56 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.0.7
+  * Drop support for Python 3.8
+  * Raise minimum required Sphinx version to 5.0
+  * Fix tests for Sphinx 7.1 and below
+
+-------------------------------------------------------------------
+Fri Apr 21 12:36:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:45:06 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Mar  6 20:30:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Fix package name
+  * Drop Python 3.8 and lower
+  * Fix deprecation warnings from Sphinx 6.1
+
+-------------------------------------------------------------------
+Fri Mar  6 12:57:06 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.0.2
+  * Fix package metadata
+
+-------------------------------------------------------------------
+Tue Jun  4 11:51:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by Sphinx

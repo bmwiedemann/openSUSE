@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Sat Sep  9 13:46:01 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Tue Aug 15 06:37:30 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.1.10
+  * Fixed issue #205: Classpath: Class archive file naming: Removed
+    the file name check for class file archives; previously: *.jar
+    and *.zip
+  * Fixed issue #201: A Stack overflow error: Catch
+    StackOverflowError in all relevant API methods 8e.g. "cook()"
+    and "guessParameterNames()") and convert it into a
+    CompileException (bsc#1211923, CVE-2023-33546).
+  * Fixed issue #204: Evaluate method is ambiguous: Changed method
+    "evaluate(Object...)" back to "evaluate(Object[])", and added a
+    method "evaluate()" for convenience.
+  * Fixed issue #202: Gracefully degradation if loading system
+    properties throws an SecurityException
+  * Fixed issue #182: Incompatible return types, when there are
+    multiple methods with different return type
+  * Fixed issue #188: Some expressions are failing without explicit
+    cast of null
+  * C++-style comment before EOI caused an internal compiler error.
+  * Fixed issue #195: "Redefinition of constructors and methods
+    allowed".
+  * AutoIndentWriter: flush() / close(): The "tabulatorBuffer" and
+    the "lineBuffer" were flushed in the wrong order, leaving the
+    tabulatorBuffer unflushed under some conditions.
+  * Fixed issue #196: "First type argument in ReferenceType lose
+    its type arguments".
+  * Fixed issue #183: "Add Automatic-Module-Name to MANIFEST.MF".
+- Upgrade to version 3.1.9
+  * Merged pr #189 "Implement implicit conversions to Arrays with
+    Annotations".
+  * Reproduce issue #188 "Some expressions are failing without
+    explicit cast of null".
+  * Fixed issue #187 "Compilation of vars initialized in different
+    if/else branches is failing".
+  * Fixed issue #185 "InternalCompilerException while compiling
+    variables initialized in while condition".
+  * Added the "-benchmark" command line option.
+  * Fixed issue #182 "Incompatible return types, when there are
+    multiple methods with different return type".
+  * Eliminated generation of empty StackMapTable attributes.
+- Upgrade to version 3.1.8
+  * Generation of the StackMapTable is finally correct! However,
+    the default tar version is still 6.
+  * Regression tests finally pass for target version 8!
+  * Fixed an AccessControlException with JRE 7.
+  * Fixed issue #172 "SimpleCompiler Variable Bug", and also for
+    VOID return type. Added test cases for issue 172 "SimpleCompiler
+    Variable Bug".
+  * Added more test cases for the "ConstantValue" attribute.
+  * Added fix and regression test case for issue #177
+    "ClassFormatError when assigning integer to constant double".
+    Added test cases.
+  * Fixed issue #174: "Byte code is 350 times larger due to
+    StackMapTable, JVM crashes when loading the class". Added test
+    cases.
+  * Implementing nested types didn't work (dollar signs in class
+    name).
+  * Added code for debugging the loading of .class file and source
+    files.
+  * Added fix and regression test case for issue #178 "Janino
+    incorrectly thinks variables are uninitialized". Added
+    regression test cases.
+  * Issue #176: "String s = System.out.println();" throws an
+    InternalCompilerException
+  * Implemented a system property
+    "org.codehaus.janino.CodeContext.suppressStackMapTable"
+    (boolean).
+  * Fixed Issue #168 "commons-compiler-jdk: Unable to load class".
+  * Added JDISASM with scope "test" because some test cases now need
+    JDISASM.
+  * Fixed GITHUB PR #10: Replace if condition with literal if
+    possible to simplify if statement
+  * Allow variable declarators between the LV declaration and the IF
+    statement iff none of the VDs modify the LV.
+  * Added "-Xverify:all" to all run configuration to enforce the
+    strictest bytecode verification possible.
+  * Test case "JlsTest.test_9_7_1__Normal_Annotations2()" choked
+    because of annotation-type element value (annotation type is
+    described by an UTF8 CPE, not a CLASS CPE).
+  * Fixed issue #167 "After a successful compilation, compiling
+    identical (or similar) code fails with an assignment conversion
+    error".
+  * Moved the "getArrayIClass(...)" methods from "IClass" to
+    "IClassLoader", and keep the array classes per-class-loader
+    (which is important because arrays refer to java.lang.Object).
+    Also added a test case.
+  * Removed JUnit launch configurations for Java 12, 15 and 16,
+    which are no longer supported.
+- Upgrade to version 3.1.7
+  * Merged PR #148 "Correct the logic to truncate Stack map in
+    CodeContext.restoreLocalVariables".
+  * Merged PR #163 "Add SUPER flag for package member types only
+    (#163)".
+  * Fixed issue #166 "Get generate method bytecode size".
+  * Added a test case for issue #165.
+  * Fixed issue #165 "Compilation failure when a class and package
+    name match case insensitively".
+  * Replaced "new (Byte|Short|Integer|Long|Float|Double|Character
+    |Boolean)(...)" with "valueOf(...)".
+  * Replaced types "Visitor.*Visitor" with "*Visitor".
+  * Fixed issue #135 again; this time right.
+  * Fixed Issue #155 "Enhanced FOR statement does not work with
+    primitive variable".
+  * Verified compatibility with Java 17.
+  * Began to extend IClass and ClassFile for generics; specifically
+    added IType and ITypeVariable. However generics are not yet
+    supported; work in progress (although regression tested).
+  * Implemented private interface methods (a Java 9 feature).
+  * Further simplified the
+    org.codehaus.commons.compiler.jdk.SimpleCompiler: It now uses a
+    delegate o.c.c.c.j.Compiler, which saves a lot of duplicate
+    code.
+  * Major refactoring of org.codehaus.commons.compiler.jdk to get
+    rid of duplicate code.
+  * Fixed the error handling of the
+    o.c.c.c.jdk.(Compiler|SimpleCompiler); added respective test
+    cases.
+  * Marking the SimpleCompiler as "cooked" was not reliable.
+  * Static and default interface methods were still declared as "not
+    implemented" on the home page, while they are already
+    implemented! Updated the home page, added some test cases and
+    fixed a minor bug.
+  * Added a test for the "diamond operator".
+  * Removed all "redundant type arguments", i.e. made use of the
+    "diamond operator". This became possible because support was
+    dropped for Java 6.
+  * Also dropped support for "funny" intermediate Java versions 9
+    and 10.
+  * Dropped support for Java 6. Thus, Janino is now compiled against
+    the JRE 7 runtime.
+
+-------------------------------------------------------------------
+Tue Mar 22 11:34:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.1.6
+  * Fixed issue #151: Calcite tests fail with compiler error
+  * Added a test case that reproduces issue #151.
+  * #141 Class loader workaround so that Calcite doesn't need to
+    change. (#150)
+- Removed patch:
+  * janino-2.7.8-remove-nullanalysis-annotations.patch
+    + not needed any more
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Tue Nov 12 17:31:50 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of janino 2.7.8

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9946fd31f69de10c708f498c1020f734</srcmd5>
+    <version>0.6</version>
+    <time>1578950460</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain msoak in Factory</comment>
+    <requestid>763703</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5e34db3264125b1448eac8fc96049e40</srcmd5>
+    <version>0.8</version>
+    <time>1579557356</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765642</requestid>
+  </revision>
+</revisionlist>

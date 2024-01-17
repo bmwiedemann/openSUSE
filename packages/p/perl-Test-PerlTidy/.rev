@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a829068f61ce0e354037a193fb11101</srcmd5>
+    <version>20130104</version>
+    <time>1489345245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>476951</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>05cd8bb6657cc22747cb63f6adefa6ac</srcmd5>
+    <version>20130104</version>
+    <time>1489653802</time>
+    <user>dimstar_suse</user>
+    <comment>- update with cpanspec
+
+- Replace storytelling by an actual %description.</comment>
+    <requestid>479651</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>147757e44c8a79e6817a984115746d89</srcmd5>
+    <version>20130104</version>
+    <time>1507755770</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533130</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>48f8f3ae615e70a2c77108929ce80349</srcmd5>
+    <version>20190309.001</version>
+    <time>1554189628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684902</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2ca37dcd97c8a1c90267243671a6db1</srcmd5>
+    <version>20190402</version>
+    <time>1554372415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690904</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9dd99b6c8c6990e1dcad8e9c32caea68</srcmd5>
+    <version>20200412</version>
+    <time>1587070883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794247</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a2d87a4ebe780e567369b36f22dc9c9e</srcmd5>
+    <version>20200930</version>
+    <time>1602282470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839562</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f8fc69a8c4cd564d0da88688f61fd7d9</srcmd5>
+    <version>20210709</version>
+    <time>1626788338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907027</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e3813a05ab4e2a41149b06f0a22a88d3</srcmd5>
+    <version>20220902</version>
+    <time>1662740870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002185</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1637a600c04adbf07a1f3db9fa0b0e28</srcmd5>
+    <version>20230226</version>
+    <time>1678482523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070667</requestid>
+  </revision>
+</revisionlist>

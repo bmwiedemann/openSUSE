@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4472db1405c282b90088d12f7ea1279e</srcmd5>
+    <version>3.3</version>
+    <time>1559837929</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>708019</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2fb383049ffc3b08cdf01ac3729b9056</srcmd5>
+    <version>3.3</version>
+    <time>1566894315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726113</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c5402b6ec3da33496841e7da1d1d55c9</srcmd5>
+    <version>3.3</version>
+    <time>1661257795</time>
+    <user>dimstar_suse</user>
+    <comment>- Install the data file into the expected directories.</comment>
+    <requestid>998752</requestid>
+  </revision>
+</revisionlist>

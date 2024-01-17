@@ -1,0 +1,36 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Feb 10 12:26:59 2022 +0100
+Subject: Add suse to overlay template
+Patch-mainline: Not yet
+Git-commit: 430ccf8a1a853372cf50e0805a759754d36a4d8b
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ vnfs/libexec/wwmkchroot/example-overlay.tmpl | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+diff --git a/vnfs/libexec/wwmkchroot/example-overlay.tmpl b/vnfs/libexec/wwmkchroot/example-overlay.tmpl
+index 957f41b..ba0770c 100644
+--- a/vnfs/libexec/wwmkchroot/example-overlay.tmpl
++++ b/vnfs/libexec/wwmkchroot/example-overlay.tmpl
+@@ -4,6 +4,7 @@
+ # one of these must come first
+ # . include-rhel
+ # . include-deb
++# . include-suse
+ 
+ # ! make sure to use this template as overlay !
+ # must be set after the above platform options
+@@ -20,7 +21,11 @@ set_as_overlay
+ # Define the location of the YUM repository
+ # YUM_MIRROR="http://mirror.centos.org/centos-6/6/os/\$basearch/"
+ 
+-
++# required for a suse overlay
++#------------------------------#
++# Define the location of the zypper repository
++# ZYPP_MIRROR="http://download.opensuse.org/distribution/leap/15.3/repo/oss/,\
++#        http://download.opensuse.org/update/leap/15.3/oss/"
+ # list of package to install into chroot
+ # PKGLIST="cups build-essential"
+ 

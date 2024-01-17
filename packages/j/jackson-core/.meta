@@ -1,0 +1,9 @@
+<package name="jackson-core" project="openSUSE:Factory">
+  <title>Core part of Jackson</title>
+  <description>Core part of Jackson that defines Streaming API as well
+as basic shared abstractions.
+
+</description>
+  <devel project="Java:packages" package="jackson-core"/>
+  <url>https://github.com/FasterXML/jackson-core/</url>
+</package>

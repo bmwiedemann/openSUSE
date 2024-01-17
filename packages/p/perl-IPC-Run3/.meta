@@ -1,0 +1,8 @@
+<package name="perl-IPC-Run3" project="openSUSE:Factory">
+  <title>Run a subprocess with input/ouput redirection</title>
+  <description>This module allows you to run a subprocess and redirect stdin, stdout,
+and/or stderr to files and perl data structures. It aims to satisfy 99%
+of the need for using system, qx, and open3 with a simple, extremely
+Perlish API.</description>
+  <devel project="devel:languages:perl" package="perl-IPC-Run3"/>
+</package>

@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Sun Nov 24 07:21:47 UTC 2019 - munix9@googlemail.com
+
+- remove extra CFLAGS for gcc9
+
+-------------------------------------------------------------------
+Sat Nov 23 12:53:46 UTC 2019 - munix9@googlemail.com
+
+- update to version 4.4.3.1
+  * Fix a regression with the dat tool not working with plugins
+    (SiegeLord).
+
+- update to version 4.4.3
+  * Allow building the dependencies as shared libraries.
+    (Michał Cichoń, Edgar Reynaldo)
+  * Fix typo preventing get_executable_name from using System V
+    procfs correctly. (Peter Wang)
+  * Relicense loadpng under ZLib license.
+  * Fix spelling of endianness in textconv (Andreas Rönnquist).
+  * Fix format string warnings (Andreas Rönnquist).
+  * Add Linux console tslib mouse "touch screen" driver.
+    (Tobi Vollebregt)
+  * Don't define a duplicate DLLMain. (SiegeLord)
+  * Fix Allegro crashes/compilation under 64 bit Windows.
+    (Sven Eden, David Capello)
+  * Fix possible random crashes on Windows restoring DirectDraw
+    surfaces. (David Capello)
+  * Make internal function get_value in jpgalleg static.
+    (Trent Gamblin)
+  * Implemented load_midi_pf, play_fli_pf, open_fli_pf.
+    (Ivan Mogilko)
+  * Make use of in MSVS 2010 and higher. (Ivan Mogilko)
+  * Fixes several issues related to fullscreen mode in Windows.
+    (Etienne Vouga)
+  * Windows: fixed TAB key getting stuck in key buffer when held
+    before ALT. (Ivan Mogilko)
+  * Fix building with Mesa 18.2.5 and later. (Andreas Rönnquist)
+  * Remove f* variants of fixed math functions. (Andreas Rönnquist)
+  * Fix complilation of datedit. (rofl0r)
+  * Modernize and fix release zipup script. (rofl0r)
+
+- clean up spec file
+- remove allegro-4.4.2-shared_plugins.patch (fixed upstream)
+- add allegro-4.4.3-texinfo-non-utf8-input-fix.patch
+
+-------------------------------------------------------------------
+Thu Sep 21 13:53:17 UTC 2017 - rpm@fthiessen.de
+
+- Renamed to allegro44
+
+-------------------------------------------------------------------
+Sun May 17 09:12:43 UTC 2015 - meissner@suse.com
+
+- info deinstall needs to be in preun section
+
+-------------------------------------------------------------------
+Mon Dec 22 22:24:01 UTC 2014 - nemysis@gmx.ch
+
+- Use for patch(es) %{name}-version instead of %{name}-%{version}
+
+-------------------------------------------------------------------
+Fri Dec 19 04:53:49 UTC 2014 - nemysis@gmx.ch
+
+- Use SED-FIX-OPENSUSE for sed
+
+-------------------------------------------------------------------
+Thu Dec 18 22:34:16 UTC 2014 - nemysis@gmx.ch
+
+- Rename allegro4 to allegro
+- Change Summary
+- Change URL for The giftware licence
+- Use for patches %{name}-%{version} instead of liballeg4_4 or
+  allegro-4.4.2 and add descriptions for patches
+- Add patch allegro4-4.4.2-src_x_xkeyboard.c.patch
+- Use check for openSUSE %if 0%{?suse_version}
+- Change Description
+- Add sed, fix include xf86dga.h
+
+-------------------------------------------------------------------
+Sun Dec  7 20:44:36 UTC 2014 - mailaender@opensuse.org
+
+- fixed rpmlint warnings
+
+-------------------------------------------------------------------
+Fri May  2 09:47:59 UTC 2014 - bwiedemann@suse.com
+
+- Add 32bit modules.lst via baselibs.conf
+
+-------------------------------------------------------------------
+Sat Sep 22 09:36:19 UTC 2012 - reddwarf@opensuse.org
+
+- Add texinfo BuildRequires
+
+-------------------------------------------------------------------
+Thu Apr 19 16:39:35 UTC 2012 - reddwarf@opensuse.org
+
+- Update to 4.4.2
+
+-------------------------------------------------------------------
+Sun May 15 17:50:12 UTC 2011 - reddwarf@opensuse.org
+
+- Fix main pkg-config, requiring X11 related packages.
+  Through RPM magic automatically fixes the package dependencies.
+
+-------------------------------------------------------------------
+Fri May 13 00:11:38 UTC 2011 - reddwarf@opensuse.org
+
+- Fix module loading
+
+-------------------------------------------------------------------
+Wed Jul 14 13:30:49 CEST 2010 - uli@suse.de
+
+- build baselibs
+
+-------------------------------------------------------------------
+Sun Mar 28 10:46:53 UTC 2010 - reddwarf@opensuse.org
+
+- First release 4.4.1.1
+

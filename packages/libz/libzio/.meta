@@ -1,0 +1,6 @@
+<package name="libzio" project="openSUSE:Factory">
+  <title>A Library for Accessing Compressed Text Files</title>
+  <description>Libzio provides a wrapper function for reading or writing gzip or bzip2
+files with FILE streams.</description>
+  <devel project="devel:libraries:c_c++" package="libzio"/>
+</package>

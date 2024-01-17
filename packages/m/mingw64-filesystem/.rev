@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09cf32f9c490b7d89ca326b65d53fe26</srcmd5>
+    <version>20190529</version>
+    <time>1578502433</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>753300</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ea4829219728d0b95920c965115a9c5</srcmd5>
+    <version>20191217</version>
+    <time>1578674937</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>761925</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>071c26730177f18ffc36ac0792ea2d1a</srcmd5>
+    <version>20191217</version>
+    <time>1587467413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795758</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>82af542edc60172ab4ddf569d8b6a9fb</srcmd5>
+    <version>20200816</version>
+    <time>1598341025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828963</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b94f685d37b790602e83fa88f8e345dc</srcmd5>
+    <version>20200825</version>
+    <time>1598726341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829913</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ec2b9c90f00857a14952b6b5f1b3dc27</srcmd5>
+    <version>20200825</version>
+    <time>1598885570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830627</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>29deaf2a723db9f709fbe6587efbd6d0</srcmd5>
+    <version>20201017</version>
+    <time>1603203092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842557</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a3389aaae7bb46f3536e6669b7a1397a</srcmd5>
+    <version>20201105</version>
+    <time>1605124070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847688</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>af73fcf84059aa0291e735acf8f2b44b</srcmd5>
+    <version>20201105</version>
+    <time>1623705080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899955</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>43868c56eafa443be02d9205524bff97</srcmd5>
+    <version>20201105</version>
+    <time>1626118845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905865</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>8de6c7a0570e8445ea8ac7715f35c9d1</srcmd5>
+    <version>20201105</version>
+    <time>1628023721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909869</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2ad60b91f7ca973ef4b7d9a781850642</srcmd5>
+    <version>20210914</version>
+    <time>1631826896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919512</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4577b39c46baf3cb6eddf6b08ded4945</srcmd5>
+    <version>20210914</version>
+    <time>1638480623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935199</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>43318b1fff5b07bcc88661a7eb9880c5</srcmd5>
+    <version>20220524</version>
+    <time>1653417103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978889</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dc9d845d804b77bf19feec16b67b2913</srcmd5>
+    <version>20220620</version>
+    <time>1657885970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989339</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5808feb20c06cd1ccbf7f969ce615a58</srcmd5>
+    <version>20220801</version>
+    <time>1658857428</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990820</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f2175bd4e504394178cb47e4b09f1cad</srcmd5>
+    <version>20220801</version>
+    <time>1659034753</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991567</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>18bb1b8494a1f0d75352eb567f1a00bd</srcmd5>
+    <version>20220805</version>
+    <time>1659816499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993445</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ca1b6b24a80f992c6f449d7f41781cfa</srcmd5>
+    <version>20220805</version>
+    <time>1660235530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994368</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e059515663df7976470234de412674c9</srcmd5>
+    <version>20220826</version>
+    <time>1661593800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999403</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e8e5690e6cbfb49fd7b1a722b4242e27</srcmd5>
+    <version>20220826</version>
+    <time>1661863823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000166</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e65003075797f75be69dc70f5b8a3ea0</srcmd5>
+    <version>20221115</version>
+    <time>1669041009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037042</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>70ce673638f5eef5e9ed89022f66f377</srcmd5>
+    <version>20230309</version>
+    <time>1679003855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072200</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>eff9d1bc4451b4bbf242b779dca26368</srcmd5>
+    <version>20230309</version>
+    <time>1679182329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072800</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>148155f52eb0baf659d24ef9457ae4fc</srcmd5>
+    <version>20230401</version>
+    <time>1680636371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230401
+  * Drop cmake support files as they are now located in the
+    mingw64-cross-cmake (boo#1209611)
+</comment>
+    <requestid>1077092</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>821954e890320c2cb8791c1b458d133a</srcmd5>
+    <version>20230614</version>
+    <time>1687379916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093535</requestid>
+  </revision>
+</revisionlist>

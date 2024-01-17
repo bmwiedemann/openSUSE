@@ -1,0 +1,6 @@
+<package name="gnome-video-effects" project="openSUSE:Factory">
+  <title>Collection of GStreamer effects</title>
+  <description>A collection of GStreamer effects to be used in different GNOME Modules.</description>
+  <devel project="GNOME:Factory" package="gnome-video-effects"/>
+  <url>http://live.gnome.org/GnomeVideoEffects</url>
+</package>

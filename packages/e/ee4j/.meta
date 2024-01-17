@@ -1,0 +1,14 @@
+<package name="ee4j" project="openSUSE:Factory">
+  <title>EE4J Project</title>
+  <description>Eclipse Enterprise for Java (EE4J) is an open source initiative to create standard
+APIs, implementations of those APIs, and technology compatibility kits for Java
+runtimes that enable development, deployment, and management of server-side and
+cloud-native applications.
+
+EE4J is based on the Java(TM) Platform, Enterprise Edition (Java EE) standards,
+and uses Java EE 8 as the baseline for creating new standards.
+
+</description>
+  <devel project="Java:packages" package="ee4j"/>
+  <url>https://projects.eclipse.org/projects/ee4j</url>
+</package>

@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Tue Jun 27 11:48:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.03:
+  * Added new timeline menu option to move selection to a new
+    step.
+  * Place new pieces relative to the side of the piece under the
+    mouse.
+  * Scan submodels when dragging a new piece into the model.
+  * Added support for trackpad pan gesture.
+  * Slow down mouse wheel zoom when the shift key is down.
+  * Added option to print from the instructions dialog.
+  * Weight vertex normals based on the angle of each face.
+  * Customizable object colors.
+  * Removed commas from descriptions in csv files.
+  * Added --export-csv command line option.
+  * Almost unlimited control points in synthesized pieces
+  * Fixed menus in fullscreen mode on Windows.
+  * Fixed missing steps at the end of instructions.
+  * Fixed submodels not being added to instructions.
+  * Fixed gradient background tiles.
+  * Fixed POV render issues with synth parts.
+  * Don't show invalid submodels in properties parts list.
+
+-------------------------------------------------------------------
+Tue Jul 12 14:49:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.06:
+  * Synthesize Technic Pneumatic Tubes
+  * Added option to choose the axis icon location.
+  * Added LeoCAD to the Linux Snap Store.
+  * Added preview indicator for synth parts.
+  * Fixed crash loading certain parts.
+  * Fixed moving pieces while editing submodels in place.
+  * Fixed loading primitives from ldrawunf.zip.
+  * Made library installation optional in the Windows installer.
+  * Highlight missing parts in the timeline.
+  * Add Unhide selected menu item
+- drop patches that are upstream:
+  0001-Don-t-enable-relative-transforms-by-default.patch
+  0002-Disabled-relative-movement-when-moving-pieces-withou.patch
+  0003-Fixed-moving-pieces-while-editing-submodels-in-place.patch
+  0004-Fixed-drawing-the-rotate-overlay-during-in-place-sub.patch
+
+-------------------------------------------------------------------
+Wed Apr 28 19:05:13 UTC 2021 - Gustavo Pichorim Boiko <gboiko@suse.com>
+
+- Backport upstream fixes for moving of rotated pieces.
+  Added patches:
+  * 0001-Don-t-enable-relative-transforms-by-default.patch
+  * 0002-Disabled-relative-movement-when-moving-pieces-withou.patch
+  * 0003-Fixed-moving-pieces-while-editing-submodels-in-place.patch
+  * 0004-Fixed-drawing-the-rotate-overlay-during-in-place-sub.patch
+
+-------------------------------------------------------------------
+Sat Apr 17 01:21:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 21.03:
+  * Added option to draw conditional lines.
+  * Added option to draw logos on studs.
+  * Added option to draw high contrast studs.
+  * Added option to configure edge colors.
+  * Added new find/replace widget.
+  * Improved Bricklink xml export.
+  * Added option to paste parts and keep their original steps.
+  * Added model measurements to the Properties Dialog.
+  * Load official parts before unofficial parts.
+  * Fixed mac retina display issues.
+
+-------------------------------------------------------------------
+Wed Jan 13 16:12:55 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 21.01.
+  * Switched to a dark color theme by default.
+  * Added a new interactive 3D preview window.
+  * Added an option to fade previous steps and support a new 
+    translucent fade mode.
+  * Added user defined part palettes and favorites.
+  * Added stud logo option.
+  * Added support for customizing the interface colors.
+  * Save files with OMR style headers.
+  * Replaced HTML parts list with BOM style image.
+  * Use part color instead of the edge color in wireframe mode.
+  * Added Spanish and Czech translations.
+  * Added language option.
+  * Added minifig template import/export options.
+  * Added color picker tool.
+  * Added support for more synth parts.
+  * Added new ways to change the color of pieces.
+  * Added option to change the color of the grid origin lines.
+  * Added shortcut support to more actions.
+  * Added option to disable restoring tabs when loading a model.
+  * Added more camera command line options.
+  * Added warning when assigning a keyboard shortcut that is 
+    already assigned to something else.
+  * Better part placement when dragging new parts to a model.
+  * Improved zoom extents in some cases.
+  * Prevent users from collapsing the category/parts lists 
+    completely.
+  * Split console output into stdout and stderr when running in 
+    CLI mode.
+  * Use antialised lines when antialiasing is enabled.
+  * Render Dialog fixes and improvements.
+  * Fixed errors loading certain MPD files.
+  * Fixed view size on retina displays.
+  * Fixed view rolling when using Look At.
+  * Fixed color popup being shown across multiple monitors.
+  * Fixed the context menu showing when a clickable tool is 
+    assigned to the right mouse button.
+
+-------------------------------------------------------------------
+Tue May  5 16:19:56 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Remove group tag. 
+
+-------------------------------------------------------------------
+Sun May  3 22:15:18 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 

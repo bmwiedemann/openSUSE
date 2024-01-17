@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Wed Aug 31 11:09:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable introspection building: this fails to build against babl
+  0.1.96 and is in fact not used by anything at the moment.
+
+-------------------------------------------------------------------
+Sat Apr 23 22:48:36 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.6.1
+  * This release contains no code changes just avoiding future
+    unnecessary rebuilds of reverse dependencies.
+  * Also this release marks the end of including the
+    MAJOR.MINOR API version fields in the library names.
+
+-------------------------------------------------------------------
+Thu May  7 10:19:17 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.0:
+  * The new mypaint_brush_stroke_to_2_linearsRGB function.
+  * Some performance improvements, particularly improved
+  * auto-vectorization in the spectral->rgb conversion function
+  * Improved documentation (still lacking a comprehensive
+    overview).
+  * Updated translations.
+- Bump shared lib version in keeping with upstream numbering.
+- Define macros for consistent shared object and shlib versioning.
+
+-------------------------------------------------------------------
+Mon Feb 24 06:49:00 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.1:
+  * mypaint-brush.c:count_dabs_to calculation changed to be
+    consistent with v1.3.0 / 1.4.0 when called via the old stroke
+    interface, and generally fixed so that there's no need for an
+    additional initial mypaint_brush_stroke_to call to produce a
+    visible stroke.
+  * mypaint-brush.c: estimation of dabs per pixel reverted to the
+    old calculation when called via the old stroke interface.
+  * Fixes incorrect versions for the requirements in the
+    libmypaint-gegl pkg-config file (for both gegl and libmypaint)
+  * The openmp flags are now actually used when building with
+    --enable-openmp
+  * Translation updates.
+- Drop libmypaint-gegl-pkgconfig.patch: incorporated upstream.
+- Compile with openmp support by passing `--enable-openmp` to
+  configure.
+- Build introspection bindings:
+  * Add BuildRequires pkgconfig(gobject-introspection-1.0) and
+    pkgconfig(glib-2.0).
+  * Split out new packages for introspection bindings:
+    typelib-1_0-MyPaint-1_5 and typelib-1_0-MyPaintGegl-1_5.
+
+-------------------------------------------------------------------
+Tue Feb 18 21:12:09 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.0:
+  * view zoom & view rotation.
+  * spectral color blending (pigment mode).
+  * new smudge settings: length multiplier, buckets, transparency.
+  * new symmetry modes: vertical, vertical+horizontal, rotational,
+    snowflake.
+  * adjustable angle for symmetry modes.
+  * optional multiple output rectangles (only relevant w. new
+    symmetry modes).
+  * Directional offsets are clamped to a maximum distance of 3 *
+    1080 pixels.
+- Drop libmypaint-gegl-0.4.14.patch: fixed upstream.
+- Drop libmypaint-gegl-shlib-version.patch: incorporated upstream.
+- Drop libmypaint-bump-gegl-version.patch: only applicable hunk
+  moved to libmypaint-gegl-pkgconfig.patch; rest incorporated
+  upstream.
+- Add libmypaint-gegl-pkgconfig.patch: In libmypaint-gegl.pc,
+  change Name to libmypaint-gegl to avoid conflict with
+  libmypaint.pc and Requires to depend on the correct version of
+  gegl and on libmypaint - not
+  libmypaint-@LIBMYPAINT_API_PLATFORM_VERSION@.
+- No longer needed to run autoreconf/autogen.sh before configure
+  since patches that modified build files are dropped; also drop
+  libtool BuildRequires required only for autoreconf.
+- Use autosetup to apply existing patch.
+- Bump so version in keeping with upstream (1_5-1).
+- Move libmypaint-gegl.pc file to libmypaint-gegl-devel package.
+
+-------------------------------------------------------------------
+Wed Sep  4 12:55:21 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.0:
+  * Back-port a few new features and bug fixes from the 2.0
+    alpha branch.
+- Add libmypaint-gegl-shlib-version.patch: Fixes building with
+  GEGL Support by removing versioning from the gegl lib
+  (gh#mypaint/libmypaint#144).
+- Minor refresh of patches to apply cleanly.
+- Version Obsoletes for mypaint-devel appropirately to avoid
+  self-obsoleting.
+- Fix spurious exec perm for README.md file.
+
+-------------------------------------------------------------------
+Tue Apr  9 17:07:39 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add libmypaint-gegl-0.4.14.patch: Fix compilation against gegl
+  0.4.14 (only for openSUSE >= 15); patch from
+https://www.gimpusers.com/forums/gimp-developer/21248-libmypaint-needs-patching-for-recent-gegl.
+
+-------------------------------------------------------------------
+Wed May  2 13:30:12 UTC 2018 - badshah400@gmail.com
+
+- Provide/Obsolete mypaint-devel: mypaint > 1.2.0 already builds
+  against libmypaint [although we don't package the 1.2.x series
+  because it doesn't work on openSUSE].
+
+-------------------------------------------------------------------
+Mon Apr 30 16:20:16 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sat Apr 28 16:59:30 UTC 2018 - badshah400@gmail.com
+
+- libmypaint, the library, should not obsolete mypaint, the GUI
+  application.
+- Move libmypaint-lang Recommends and libmypaint-%%{version}
+  Provides from non-built mainpackage to shared lib subpackage.
+- Recommend the same-version lang package.
+
+-------------------------------------------------------------------
+Fri Apr 27 19:09:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Add libmypaint-bump-gegl-version.patch: Bump minimum gegl version
+  to new stable branch 0.4.0.
+- Following the above, replace pkgconfig(gegl-0.3) with
+  pkgconfig(gegl-0.4) and add libtool BuildRequires aswell as pass
+  autoreconf since the patch touches the buildsystem.
+- Drop currently unused pkgconfig(gobject-2.0) BuildRequires.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Sat Feb 25 10:33:44 UTC 2017 - mailaender@opensuse.org
+
+- update to version 1.3.0
+
+-------------------------------------------------------------------
+Fri Oct 14 20:55:26 UTC 2016 - badshah400@gmail.com
+
+- Initial package.
+

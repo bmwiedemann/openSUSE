@@ -1,0 +1,22 @@
+--- src/cmd/ksh93/bltins/read.c
++++ src/cmd/ksh93/bltins/read.c	2013-02-01 15:29:39.393452098 +0000
+@@ -288,6 +288,19 @@ int sh_readline(register Shell_t *shp,ch
+ 			ep->e_nttyparm.c_lflag |= ISIG;
+ 			tty_set(fd,TCSADRAIN,&ep->e_nttyparm);
+ 		}
++#if defined(__linux__)
++		else if ((shp->fdstatus[fd]&(IOTTY|IONOSEEK))==0)
++		{
++			struct stat st;
++			if ((fstat(fd, &st) == 0) && S_ISFIFO(st.st_mode))
++			{
++				int fdflg;
++				if (((fdflg = fcntl(fd, F_GETFL)) != -1) && !(fdflg & O_NONBLOCK))
++					fcntl(fd, F_SETFL, fdflg|O_NONBLOCK);
++				shp->fdstatus[fd] |= IONOSEEK;
++			}
++		}
++#endif
+ 	}
+ 	binary = nv_isattr(np,NV_BINARY);
+ 	if(!binary && !(flags&(N_FLAG|NN_FLAG)))

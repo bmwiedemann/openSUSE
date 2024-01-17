@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sun Apr 12 08:05:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add no_download_setup.patch for skipping the files download during build.
+- add download_client.sh as helper to download files for build.
+
+-------------------------------------------------------------------
+Sat Apr 11 20:22:12 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial package for version 0.0.3.

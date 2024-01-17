@@ -1,0 +1,44 @@
+diff --git a/test/test_parse.py b/test/test_parse.py
+index 3c0bf86..491b4dc 100644
+--- a/test/test_parse.py
++++ b/test/test_parse.py
+@@ -37,7 +37,7 @@ class TestParse(object):
+         (example_json, None, example_as_dict),
+         (example_json5, 'json5', example_as_dict),
+         (example_toml, 'toml', toml_example_as_dict),  # we can't tell toml from ini
+-        (example_xml, None, example_as_ordered_dict),
++        (example_xml, None, example_as_dict),
+         (example_yaml_map, None, example_as_dict),
+         (example_yaml_omap, None, example_as_ordered_dict),
+     ])
+@@ -55,7 +55,7 @@ class TestParse(object):
+         (example_json, None, example_as_dict),
+         (example_json5, 'json5', example_as_dict),
+         (example_toml, 'toml', toml_example_as_dict),  # we can't tell toml from ini
+-        (example_xml, None, example_as_ordered_dict),
++        (example_xml, None, example_as_dict),
+         (example_yaml_map, None, example_as_dict),
+         (example_yaml_omap, None, example_as_ordered_dict),
+     ])
+diff --git a/test/test_serialize.py b/test/test_serialize.py
+index 8191561..7b1d67f 100644
+--- a/test/test_serialize.py
++++ b/test/test_serialize.py
+@@ -32,7 +32,7 @@ class TestSerialize(object):
+         (example_as_dict, 'json'),
+         (example_as_dict, 'json5'),
+         (toml_example_as_dict, 'toml'),
+-        (example_as_ordered_dict, 'xml'),
++        (example_as_dict, 'xml'),
+         (example_as_dict, 'yaml'),
+         (example_as_ordered_dict, 'yaml'),
+     ])
+@@ -60,7 +60,7 @@ class TestSerialize(object):
+         (example_as_dict, None, 'example.json'),
+         (example_as_dict, 'json5', 'example.json5'),
+         (toml_example_as_dict, 'toml', 'example.toml'),
+-        (example_as_ordered_dict, None, 'example.xml'),
++        (example_as_dict, None, 'example.xml'),
+         (example_as_dict, None, 'example.yaml'),
+         (example_as_ordered_dict, None, 'example_ordered.yaml'),
+     ])

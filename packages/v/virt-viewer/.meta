@@ -1,0 +1,7 @@
+<package name="virt-viewer" project="openSUSE:Factory">
+  <title>Virtual Machine Viewer</title>
+  <description>Virtual Machine Viewer provides a graphical console client for
+connecting to virtual machines. It uses the GTK-VNC widget to provide
+the display, and libvirt for looking up VNC server details.</description>
+  <devel project="Virtualization" package="virt-viewer"/>
+</package>

@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Sun Jan  8 17:54:43 UTC 2023 - Michael Calmer <mc@suse.com>
+
+- fix createTempFile vulnerability - CVE-2022-41946 (bsc#1206921)
+  * Added: fix-createTempFile-vulnerability-CVE-2022-41946.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 14:35:20 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Address SQL Injection Vulnerability CVE-2022-31197
+  (bsc#1202170)
+  * Add: fix-SQL-Injection-CVE-2022-31197.patch
+
+-------------------------------------------------------------------
+Fri Jun  3 10:34:36 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Address arbitrary File Write Vulnerability CVE-2022-26520
+  (bsc#1197356)
+  * Add: CVE-2022-26520.patch
+
+-------------------------------------------------------------------
+Thu Mar  3 16:01:03 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Upgrade to upstream version 42.2.25
+  * uses SASLprep normalization for SCRAM authentication fixing
+    some issues with spaces in passwords. (bsc#1196693)
+    (jsc#SLE-23993, jsc#SLE-23994)
+  * https://jdbc.postgresql.org/documentation/changelog.html
+
+-------------------------------------------------------------------
+Fri Aug 28 15:14:36 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 42.2.16
+  * building with maven
+- Removed patch:
+  * jdbc-postgresql-9.4_p1201-remove-sspi.patch
+    - not needed any more
+
+-------------------------------------------------------------------
+Tue Sep 19 08:47:08 UTC 2017 - fstrba@suse.com
+
+- Build with java compatibility 1.6
+- Modified file:
+  * build.xml
+    + Detect correctly java 9
+
+-------------------------------------------------------------------
+Mon Jul  6 11:37:30 UTC 2015 - dmacvicar@suse.de
+
+- update to version 9.4-1200 (fate#318788)
+  * https://jdbc.postgresql.org/documentation/changelog.html
+- Add patch:
+  * jdbc-postgresql-9.4_p1201-remove-sspi.patch
+
+-------------------------------------------------------------------
+Fri Jul 11 13:52:03 UTC 2014 - tchvatal@suse.com
+
+- Do not version java docdir.
+
+-------------------------------------------------------------------
+Tue Jul  8 10:34:41 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-trax.
+
+-------------------------------------------------------------------
+Fri Jun 27 12:49:44 UTC 2014 - tchvatal@suse.com
+
+- Fix build on SLE11
+
+-------------------------------------------------------------------
+Fri Jun 27 11:58:20 UTC 2014 - tchvatal@suse.com
+
+- Version bump to latest release 9.3:
+  * Various fixes
+  * Better integration with pgsql9.3
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:17 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Mar 28 15:56:58 UTC 2013 - darin@darins.net
+
+- Set the correct license 
+
+-------------------------------------------------------------------
+Tue Mar 26 16:55:12 UTC 2013 - darin@darins.net
+
+- Update license
+- rpmlint cleanup 
+
+-------------------------------------------------------------------
+Thu Feb 21 10:16:34 UTC 2013 - darin@darins.net
+
+- Update to 9.2
+- cleaned up .spec
+- moved %changelog to .changes
+ 
+
+-------------------------------------------------------------------
+Thu Mar  3 00:00:00 UTC 2011 - vlado.paskov@gmail.com
+
+- Initial package release.
+

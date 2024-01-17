@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>911f7befe41d508b289535f5838b2c0e</srcmd5>
+    <version>3.31git.1525871461.698c199</version>
+    <time>1548064280</time>
+    <user>dimstar_suse</user>
+    <comment>Script to monitor X509 certificates.</comment>
+    <requestid>665332</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc9a2539af83f38a2619f28cd92d7d53</srcmd5>
+    <version>4.9git.1549917512.89cd021</version>
+    <time>1550048796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673661</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2e63d2bf2360a30ae5dd24c82257df0e</srcmd5>
+    <version>4.11git.1556282902.f3fc941</version>
+    <time>1565097118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721125</requestid>
+  </revision>
+</revisionlist>

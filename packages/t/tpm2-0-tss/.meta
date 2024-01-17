@@ -1,0 +1,8 @@
+<package name="tpm2-0-tss" project="openSUSE:Factory">
+  <title>TSS (TCG Software Stack) access daemon for a TPM chip</title>
+  <description>The trousers package provides a TSS implementation through the help of a user-space daemon, the tcsd, and a library  Trousers aims to be compliant to the 1.1b and 1.2 TSS specifications as available from the Trusted Computing website http://www.trustedcomputinggroup.org/.
+
+The package needs the /dev/tpm device file to be present on your system. It is a character device file major 10 minor 224, 0600 tss:tss.
+</description>
+  <devel project="security" package="tpm2-0-tss"/>
+</package>

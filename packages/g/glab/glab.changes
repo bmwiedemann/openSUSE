@@ -1,0 +1,415 @@
+-------------------------------------------------------------------
+Thu Dec 14 11:16:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.36.0:
+  * feat: use ciutils.getJobId in trigger cmd (#7424)
+  * fix: prefer CTRL+D for cancel job (#1286)
+  * docs: add information about docker image
+  * feat(ci-delete): add flags for filtering and pagination
+  * feat(ci): add ci trigger (#682)
+  * feat(ci): align job id resolution ( #7422)
+  * feat(ci): add flag with-job-details to output job data as table
+    (#1226)
+  * docs: clarify archived flag on repo clone
+  * docs: Create minimal template for docs MRs
+  * fix: git-credential command by using oauth2 user
+  * docs: Statement of support for GitLab 16.0
+  * chore: update Vale and Markdownlint versions and configuration
+  * feat(delete): Add perpage and page flags to ssh-key delete
+    command
+  * feat(repo): add option to limit list in one group
+  * feat: add --web to glab ci view command
+  * chore: Do not set CGO_ENABLED when running tests
+  * fix(mr create): support non-english languages
+
+-------------------------------------------------------------------
+Fri Nov 10 09:33:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adapt BuildRequires to allow building on
+  Fedora/RHEL/CentOS/Almalinux/RockyLinux
+- BuildRequire go1.19 on openSUSE
+
+-------------------------------------------------------------------
+Tue Nov 07 07:37:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.35.0:
+  * feat(set): add raw flag for set variable command
+  * chore(templates): Add environment information section to bug
+    template
+  * fix(repo search): Fix missing color reset and broken links in
+    Bash
+  * chore: Bump minimum supported Go version to 1.19
+  * feat(cluster): Implement basic `update-kubeconfig` command
+  * feat(get): add perpage and page options to ssh-key get command
+  * fix(mr create): better error message when no accces
+
+-------------------------------------------------------------------
+Tue Oct 24 09:39:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.34.0:
+  * fix(ci variable list): print entity type
+  * docs: Adding precedence order to docs
+  * fix: upgrade x/net
+  * chore: Fixing lint job for CI
+  * feat(sshkey): add ssh-key delete command
+  * feat(cluster): implement cluster agent `get-token` command
+  * Revert "Merge branch 'nh/pin-gitlab-dangerfiles-version' into
+    'main'"
+  * chore: Pin gitlab-dangerfiles version
+  * chore(dependency): remove alecthomas/assert module
+  * chore(dependency): remove jarcoal/httpmock
+  * fix: Parse string arrays passed to glab api --field command
+  * feat(cluster): add cluster agent list command
+  * feat: Add note about homebrew zsh for completions
+  * fix: only show web login for GitLab SaaS
+  * test(repo clone): seperate integration tests
+
+-------------------------------------------------------------------
+Thu Sep 21 04:41:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.33.0:
+  * feat: prefill scope parameter for PAT generation
+  * chore: Update which docs files are linted
+  * fix(check-update): remove auth for check-update
+  * docs: Add feature design guidelines
+  * docs(mr delete): change close to delete
+  * fix(auth login): encode scopes for oauth url
+  * docs(config): add check_update and display_hyperlinks
+  * fix: Fix errors which show up when running `make check'
+  * fix: glab ci status needs terminal on stdin
+  * chore: update golangci-lint image
+  * docs: Add note about maintainership
+
+-------------------------------------------------------------------
+Tue Aug 22 07:44:39 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.32.0:
+  * feat: handle response from VertexAI instead of OpenAI
+  * feat: add support for child pipelines in ci view
+  * fix: Don't add glab-resolved when it already exists in a remote
+  * feat(ci): add Pipeline IID to `ci list`
+  * fix(deps): upgrade go-gitlab to v0.88.0
+  * fix(issue): fix using issue commands from non-git dir
+  * test: Fix test Test_repoArchive_Integration integration test
+  * chore: use latest tview version
+  * chore: downgrade tview
+  * fix: Handle trailing slash in remote URL
+  * fix(ci run): use correct default branch
+  * release: fix assets-links suggestion/help
+  * fix: use basereporemote.name as argument to GetDefaultBranch
+  * chore: enable better debugging for flaky test
+  * docs: clarify possible options for parameters for "ci list"
+  * chore(ci): save test log as an artifact
+  * chore: bumping go-gitlab to 0.86.0
+  * chore(ci): remove ssh key from build
+  * fix: goreleaser deprecated replacements, fixing the filename templates
+  * fix: Preventing a panic when not using a sub command
+  * feat: add incident note command
+  * chore: use new test repo for clone integration tests
+  * fixup! set error context in mrBody
+  * fixup! no index trickery, compare values
+  * feat(mr): populate description from commit messages
+  * refactor(mr): split mrBody out of mrBodyAndTitle
+
+-------------------------------------------------------------------
+Wed Jun 28 06:37:40 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.31.0:
+  * chore: Sync canonical repo
+  * fix(repo view): consider current host when viewing a repo details
+  * chore: Keeping in regular repo in sync
+  * docs: add installation options with wakemeops
+  * docs: fix mr create example
+  * chore: Continue to rename 'when pipeline succeeds' to 'auto merge'
+  * docs: Clarifying method change when using --update for api command
+  * feat(incident): add incident subscribe command
+  * chore: Renames strings to auto-merge
+  * fix: Update multiple labels bug for glab mr create labels
+  * feat(schedule): Fixed broken test for delete schedule
+  * fix(check-update): always show error when check-update fails
+  * feat(schedule): Add commands to create and delete schedules
+  * feat(mr/checkout): Track by default without adding extra remotes
+  * fix: Adjusting timeout value to prevent hangs
+  * feat: Make mr create prompt for reviewers
+  * fix(check-update): remove unicode characters in favor of ascii
+  * fix(repo list): #1327 fix filters
+
+-------------------------------------------------------------------
+Sat May 20 10:34:07 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.30.0:
+  * feat: better error messages for no matching remotes
+  * chore: Updating snapcraft info
+  * feat: add new changelog command
+  * fix(ci): Fixed issue with API deprecation for CI lint
+  * chore: stop overwriting config file in test
+
+-------------------------------------------------------------------
+Sun May 14 06:08:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.29.4:
+  * fix(ci): Fixed issue with API deprecation for CI lint
+  * chore: Fix typos in new AI commands
+  * docs: change release process not to push all tags
+  * chore: stop overwriting config file in test
+  * chore: use testdata dir rather than fixtures
+
+-------------------------------------------------------------------
+Thu May 11 19:19:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.29.3:
+  * fix(auth login): use token when logging in
+
+-------------------------------------------------------------------
+Thu May 11 04:45:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.29.2:
+  * feat(ask): add a message that the ask-git response are
+    AI-generated
+  * feat(incident): add incident unsubscribe command
+  * refactor: move issue/unsubscribe to issuable/unsubscribe
+
+-------------------------------------------------------------------
+Tue May 09 05:18:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.29.1:
+  * chore: downgrade tview
+
+-------------------------------------------------------------------
+Fri May 05 05:10:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.29.0:
+  * feat(ci delete): add dry-run flag to ci delete
+  * fix(ask git): do not show prompt when no commands
+  * feat: add command that generates Git commands from natural
+    language
+  * docs: add OAuth to authentication instructions
+  * feat(auth login): Add support for OAuth2
+  * feat: update go and dependency versions
+  * fix(spinner): Bump spinner library version
+  * refactor: autogenerate config stub from lockfile
+  * feat(incident): add incident reopen command
+  * fix: remove executable flag from non-executables
+  * fix: do not enforce argument for 'ci delete' when using filter
+  * refactor(release): update `release download` cmd to remove
+    `external`
+  * refactor: move issue/close to issuable/close
+  * test: add some test to improve coverage
+  * docs: update godoc for function
+
+-------------------------------------------------------------------
+Mon Apr 24 09:39:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording and duplicate info (present in License field).
+
+-------------------------------------------------------------------
+Mon Apr 24 06:39:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.28.1:
+  * docs: Update installation_options.md
+  * docs: update string for merge request flag on repo
+  * docs: et cetera without dots
+  * docs: Update README.md - fix punctuation
+  * fix: Disable breaking test for CI Lint endpoint
+  * chore: fix broken link
+  * chore: improve documentation visibility
+  * chore: replace README badges with native project badges
+  * fix: add newline to auth status command output
+  * test: fix Test_getFromKeyring not passing in CI
+  * test: fix assertion order, clear token in keyring test
+  * chore: update use-keyring flag description
+  * test: add tests for loading and storing tokens in keyring
+  * chore: update docs, fix lint error
+  * chore: replace native keyring with os keyring in login argument
+    desc
+  * docs: regenerate the docs
+  * feat: add support for token storage in encrypted keychains
+
+-------------------------------------------------------------------
+Thu Apr 13 17:43:20 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.28.0:
+  * chore: simpler installation method from binary if Go is available
+  * fix: Change platform generating code
+  * fix: purposely adding the "v" goreleaser strips out
+  * refactor: default check_update true on new install
+  * chore: modify MIT license and inspiration
+  * feat(incident): add `incident close` command
+  * refactor: move issue/close to issuable/close
+
+-------------------------------------------------------------------
+Thu Apr 06 03:28:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.27.1:
+  * chore: upgrade go-gitlab to 0.81.0
+  * chore: fix testing repo to a local GitLab one
+  * feat(docs): Add aliases to gen-docs
+
+-------------------------------------------------------------------
+Mon Apr 03 12:48:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.27.0:
+  * chore: security release merge
+  * fix: markdown fence shell script needs to be "shell"
+  * feat(pagination): add pagination to user events
+  * chore: update golang/x/net package
+  * fix(variable set): scope for group variables
+  * refactor(test): replace os.Setenv with t.Setenv in tests
+  * docs: configuration for self-signed certs
+  * fix(test): use gray256 color in tests when enabled
+  * fix(color): fix gray color for 256 color terminal
+  * test(glab auth login): use temp config for test
+  * docs: fix link to issue command in index
+  * fix(issue): display list of comments in raw format
+  * docs(config): clarify config help
+  * docs(readme): clarify config file location and environment
+    variables
+  * feat(label): display label colors in the list
+  * security: Remove configuration import for old locations
+
+-------------------------------------------------------------------
+Wed Mar 15 08:08:40 UTC 2023 - kastl@b1-systems.de
+
+- set tar and recompress services to "buildtime"
+- use obscpio file for local go-modules run
+- cleanup spec file, remove old %go macros
+- Update to version 1.26.0:
+  * Merge security fix for v1.26.0 release
+  * refactor(test): use http constants in tests
+  * refactor: use HTTP constants in code
+  * chore: Remove profclems/glab from .goreleaser.yml
+  * chore: add debug environment variable to Makefile
+  * chore: remove build date and add architecture
+  * refactor(project): Stop requsting for README when viewing
+    project on web
+  * docs: add guidelines for triaging bugs
+  * chore: Modify UserAgent to be more like other CLIs
+  * docs: self-managed doc improvements
+  * docs: fix link to issue command in README
+  * chore(ci/test): separate integration tests
+  * docs: update core commands with links
+  * fix(issue create): better error message when users are not
+    members
+  * docs: reword homebrew section
+  * docs: Build jump list of core commands
+  * docs(installation): Add asdf-vm to install options
+  * feat: variable export
+  * docs: specify [flags] position in clone command
+  * feat(schedule): Add command to run schedules
+  * refactor: use strings.Join in comma separated list functions
+  * fix(repo): URL encode branch name when viewing on web
+  * refactor(test): combine issue/incident list tests
+  * refactor(issue/view): extract issuable/list package
+  * fix(project): Remove repo override functionality
+  * chore: Add test-race make target
+  * ci: lock down go lint image version
+  * docs: Add Fedora to installation options
+  * docs: Updating instructions for homebrew release
+  * ci(coverage): report correct coverage
+  * fix(ci): Fix issue where `ci get` fails if user is not
+    maintainer
+  * fix: check-update command output to StdErr
+  * refactor(test): adjust issuable tests to cover both types
+  * refactor(issue/view): extract issuable/view package
+  * chore: Expose make gen-docs task
+  * chore: Run tests in different Go versions
+  * fix: making sure homebrew doesn't try to open a browser
+  * test: fix timing issue with release tests
+
+-------------------------------------------------------------------
+Wed Mar 15 06:53:12 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adapt to new URL https://gitlab.com/gitlab-org/cli
+- BuildRequire go1.18
+
+-------------------------------------------------------------------
+Tue Feb 07 14:07:31 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.25.3:
+  * Update .gitlab-ci.yml file
+  * Update .gitlab-ci.yml file
+  * chore: better omit test and chores from changelog
+  * fix: Adding git name/email for homebrew
+  * docs: update installation instructions for windows
+  * test(project): add missing project tests
+  * fix(project): fixes issue with filtering with starred and membership
+  * fix(mr): Fixed EOF error when todo is called multiple times
+
+-------------------------------------------------------------------
+Tue Jan 11 02:28:38 UTC 2022 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 1.22.0:
+  * feat: Add group flag to mr list command (#931)
+  * chore: Update Arch README link to official repos
+  * fix: Write aliases to symlink if it exists (#930)
+  * added push mirror and command (#887)
+  * feature: Read config directory from GLAB_CONFIG_DIR (#921)
+  * feature: add variable update command (#902)
+  * feat(mr): Only output MR URL to stdout if output is not a TTY (#883)
+  * fix(mr_create/issue_create): add encoding to title and change description encoding (#871)
+  * fix: add linebreak to check-output msg (#895)
+  * mr: deprecate `mr for` command
+  * Require Go 1.17+ (#898)
+  * feature: add variable delete command (#890)
+  * Add support for terminal hyperlinks (#852)
+  * Update docs for `ci run` to include passing variables
+  * commands/project/create: fix typo
+  * update dependencies (#884)
+  * fix: allow setting variable without using --value (#881)
+  * fix: obsolete % char for weights
+  * fix(mr-create): escape titles in new MR preview URLs
+  * fix(ci status): add check for pending pipelines
+  * refactor: rename Squash to SquashBeforeMerge
+  * Handle invalid job id
+  * Apply improvements from code review
+  * feat(command/ci/retry): Add new command to retry CI jobs
+  * Update README.md
+  * Update README.md
+  * docs(README): add awesome-go badge to README
+  * fix: weird condition when prompt disabled
+  * feat(mr update): add --squash parameter
+  * fix ci pipeline view incorrect timestamp being used
+  * ci: fix the linter by targeting the pull request instead of the target
+  * refactor: rename Squash to SquashBeforeMerge
+  * chore: remove colon
+  * docs(template): use different header styles for the Pull Request template
+  * feat(mr create): add --squash parameter
+  * docs(mr create): remove doc entry as it's automatically generated
+  * docs(mr create): add --reviewer parameter to docs
+  * feat(mr create): add --reviewer parameter
+  * chore: use errors.Is instead of error equality
+  * docs(readme): update Fosshost.org logo location
+  * add remoteName flag to 'create project' command
+  * fix(ci trace): exit normally when prompts are interrupted
+  * docs: remove --autofill references
+  * docs(update): v1.21.1
+
+-------------------------------------------------------------------
+Tue Jan  4 08:12:22 UTC 2022 - Orville Q. Song <orville@anislet.dev>
+
+- Fix for reproducible builds
+
+-------------------------------------------------------------------
+Sun Dec 05 11:42:32 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 1.21.1:
+  * fix debian packaging installer location
+  * auth login use OverridableDefault
+  * Login using default hostname string
+  * Move glinstance to pkg
+  * {go.mod,go.sum}: update dependencies
+  * api: fix wrong comment
+  * fix: error 404 when creating release
+  * Handle paginated response in pipeline.GetPipelineJobs
+  * Update ssh-key.go
+  * feat(cmdutils): Add group milestones to the prompt
+
+-------------------------------------------------------------------
+Sat Dec  4 16:39:53 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Init glab Package
+
+An open-source GitLab command line tool bringing GitLab's cool features to your command line.
+
+Current Version: v1.21.1
+Commit Hash: 5cb2858d1fb7a5317e89259fc4ac135414e99be2

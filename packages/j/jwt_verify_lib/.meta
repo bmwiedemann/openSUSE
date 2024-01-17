@@ -1,0 +1,6 @@
+<package name="jwt_verify_lib" project="openSUSE:Factory">
+  <title>jwt_verify_lib</title>
+  <description>JSON Web Tokens verification library for C++</description>
+  <devel project="devel:libraries:c_c++" package="jwt_verify_lib"/>
+  <url>https://github.com/google/jwt_verify_lib</url>
+</package>

@@ -1,0 +1,30 @@
+Index: src/main.c
+===================================================================
+--- src/main.c.orig
++++ src/main.c
+@@ -60,6 +60,10 @@
+ 
+ #define SIGRUNPATH 100 /* anything that's not SIGTERM/SIGKILL */
+ 
++#ifndef SCHED_RESET_ON_FORK
++#define SCHED_RESET_ON_FORK 0
++#endif
++
+ struct thread_pool {
+ 	int num_workers;
+ 	int max_workers;
+Index: wdmd/main.c
+===================================================================
+--- wdmd/main.c.orig
++++ wdmd/main.c
+@@ -41,6 +41,10 @@
+ #define GNUC_UNUSED __attribute__((__unused__))
+ #endif
+ 
++#ifndef SCHED_RESET_ON_FORK
++#define SCHED_RESET_ON_FORK 0
++#endif
++
+ #define DEFAULT_TEST_INTERVAL 10
+ #define RECOVER_TEST_INTERVAL 1
+ #define DEFAULT_FIRE_TIMEOUT 60

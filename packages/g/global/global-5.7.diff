@@ -1,0 +1,17 @@
+---
+ Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -20,7 +20,7 @@ if USE_GTAGSCSCOPE
+         SUBDIRS += gtags-cscope
+ endif
+ 
+-gtagsdir = ${datadir}/gtags
++gtagsdir = ${datadir}/doc/packages/global
+ gtags_DATA = AUTHORS COPYING COPYING.LIB ChangeLog FAQ INSTALL LICENSE NEWS README THANKS \
+ 	DONORS BUILD_TOOLS README.PATCHES \
+         gtags.conf gtags.el gtags.pl gtags.vim gtags-cscope.vim \

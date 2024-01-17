@@ -1,0 +1,12 @@
+<package name="smssend" project="openSUSE:Factory">
+  <title>interface to internet SMS forwarding services</title>
+  <description>smssend is a utility providing a command line interface to the GSM
+Short Message Service (SMS) via internet gateways. It requires an
+active internet connection (HTTP proxy is suitable) and may require a
+registration for such gateways. The program is quite configurable for
+other gateways than provided, examples are included.
+
+Keep in mind that these internet to SMS gateways may not tolerate and
+may even forbid their use via scripts.</description>
+  <devel project="network:telephony" package="smssend"/>
+</package>

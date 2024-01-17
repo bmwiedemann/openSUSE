@@ -1,0 +1,800 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f746d8f4e423a8c1097768f760123a97</srcmd5>
+    <version>1.2.13</version>
+    <time>1394516793</time>
+    <user>coolo</user>
+    <comment>- command line tools to manage AWS</comment>
+    <requestid>224661</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f746d8f4e423a8c1097768f760123a97</srcmd5>
+    <version>1.2.13</version>
+    <time>1409300544</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>786ac85769ec75c7a4529fea0f678d76</srcmd5>
+    <version>1.5.3</version>
+    <time>1417031731</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>259206</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f391dc3a468514a4873b3d7be4d89a7d</srcmd5>
+    <version>1.7.1</version>
+    <time>1421787290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1 (bnc#905354)
+  + bugfix:``aws s3 cp``: Fix issue with parts of a file being
+    downloaded more than once when streaming to stdout
+    (`issue 1087 &lt;https://github.com/aws/aws-cli/pull/1087&gt;`__)
+  + bugfix:``--no-sign-request``: Fix issue where requests were still trying to
+    be signed even though user used the ``--no-sign-request`` flag.
+    (`botocore issue 433 &lt;https://github.com/boto/botocore/pull/433&gt;`__)
+  + bugfix:``aws cloudsearchdomain search``: Fix invalid signatures when
+    using the ``aws cloudsearchdomain search`` command
+    (`issue 976 &lt;https://github.com/aws/aws-cli/issues/976&gt;`__)
+  + feature:``aws cloudhsm``: Add support for AWS CloudHSM.
+  + feature:``aws ecs``: Add support for ``aws ecs``, the Amazon EC2
+    Container Service (ECS)
+  + feature:``aws rds``: Add Encryption at Rest and CloudHSM Support.
+  + feature:``aws ec2``: Add Classic Link support
+  + feature:``aws cloudsearch``: Update ``aws cloudsearch`` command
+    to latest version
+  + bugfix:``aws cloudfront wait``: Fix issue where wait commands did not
+    stop waiting when a success state was reached.
+    (`botocore issue 426 &lt;https://github.com/boto/botocore/pull/426&gt;`_)
+  + bugfix:``aws ec2 run-instances``: Allow binary files to be passed to
+    ``--user-data``
+    (`botocore issue 416 &lt;https://github.com/boto/botocore/pull/416&gt;`_)
+  + bugfix:``aws cloudsearchdomain suggest``: Add ``--suggest-query``
+    option to fix the argument being shadowed by the top level
+    ``--query`` option.
+    (`issue 1068 &lt;https://github.com/aws/aws-cli/pull/1068&gt;`__)
+  + bugfix:``aws emr``: Fix issue with endpoints for ``eu-central-1`` and
+    ``cn-north-1``
+    (`botocore issue 423 &lt;https://github.com/boto/botocore/pull/423&gt;`__)</comment>
+    <requestid>281660</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>27e551de303e89dfad2f42fa428cf700</srcmd5>
+    <version>1.7.29</version>
+    <time>1432982029</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.29 (bnc#905354)
+  + Follow up to previous update to address compatibility with latest
+    amazon-ecs-agent
+  + From 1.7.28
+    - feature:aws ec2: Add support for Spot Fleet.
+    - feature:aws opsworks: Add support for custom AutoScaling.
+    - feature:aws elasticbeanstalk: Update model to latest version.
+  + From 1.7.27
+    - feature:aws ds: Add support for AWS Directory Service.
+    - feature:aws ec2: Add support for VPC endpoints for Amazon S3.
+    - feature:aws ec2: Add support for EIP Migration.
+    - feature:aws logs: Add support for filtering log events.
+  + From 1.7.26
+    - feature:aws glacier: Add support for vault policies.
+    - bugfix:aws iam create-open-id-connect-provider: Fix issue where the
+      --url parameter would try to retrieve the contents from the url instead
+      of use the url as its value. (issue 1317)
+    - bugfix:aws workspaces: Fix issue where throttling errors were not
+      being retried (botocore issue 529)
+  + From 1.7.25
+    - feature:aws dynamodb query: Add support for KeyConditonExpression.
+  + From 1.7.24
+    - feature:aws help topics: Add support for listing available help topics.
+    - feature:aws help config-vars: Add help topic for configuration variables.
+    - feature:aws help return-codes: Add help topic for return codes.
+    - feature:aws help s3-config: Add help topic for configuration of s3
+      commands.
+    - bugfix:aws lambda create-function/update-function-code: Improve
+      error message when invalid --zip-file values are provided (issue 1296)
+    - feature:aws ec2: Add support for new VM Import APIs, including</comment>
+    <requestid>308965</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b989081df563386a07598b74331c2892</srcmd5>
+    <version>1.7.31</version>
+    <time>1435053348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>311201</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de311c3ac41846d6dd7146a7f82cfc1f</srcmd5>
+    <version>1.7.42</version>
+    <time>1440658516</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>322471</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>921c70a5e5d9f686d6486426554e5fd0</srcmd5>
+    <version>1.8.12</version>
+    <time>1445350948</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>339349</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bcbcde0dc7fad7c03a1b61eeacf7835f</srcmd5>
+    <version>1.9.12</version>
+    <time>1450695892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>349441</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6b16ede562fc00f7bf7a0337073a50aa</srcmd5>
+    <version>1.10.19</version>
+    <time>1461855295</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390638</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff23c5a145f927c525bb03378030231f</srcmd5>
+    <version>1.11.29</version>
+    <time>1483955809</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447428</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f4e5992afbddb53afab41cb34e9d083</srcmd5>
+    <version>1.11.104</version>
+    <time>1498202321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.104 (bsc#1044370)
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.11.104/CHANGELOG.rst</comment>
+    <requestid>505741</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ed99894f8e5a0c1d63aace6172589d03</srcmd5>
+    <version>1.11.185</version>
+    <time>1510406426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.185 (boo#1066528)
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.11.185/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+
+- Update to version 1.11.151
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.11.151/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+- Remove build capability for SLE 11
+- Set up for Python 3 build distro &gt; SLE 12 openSUSE Leap 42.x</comment>
+    <requestid>540355</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e6ec0ac1773e2a4a4d4caf5a132e7ae3</srcmd5>
+    <version>1.11.185</version>
+    <time>1510578535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541221</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2cef47d111d31818f314016376612dd5</srcmd5>
+    <version>1.15.40</version>
+    <time>1529667236</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617767</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1a5c228723caab359682a8f13eb6e6a5</srcmd5>
+    <version>1.15.63</version>
+    <time>1532527835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624786</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>64dd7966448cd293cbf59b1dd882c5c1</srcmd5>
+    <version>1.15.76</version>
+    <time>1535367466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629037</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8b572b4403d7f63a9e3e8fcb956ff0b0</srcmd5>
+    <version>1.16.1</version>
+    <time>1537264076</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636198</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>28a1156f96173a5faeac4fa7ca86a443</srcmd5>
+    <version>1.16.48</version>
+    <time>1541746421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646684</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c32b19d9fea7b8c044c3d1e9d2a054a7</srcmd5>
+    <version>1.16.61</version>
+    <time>1543953494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653841</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3fb224e8fdbf3f4d8b6814007e2d0e71</srcmd5>
+    <version>1.16.84</version>
+    <time>1547130046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663354</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1797fe45155b3b2e8e069d594fdcd0c2</srcmd5>
+    <version>1.16.94</version>
+    <time>1549018095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>670337</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d960a05508e927f2ee301e52a2111f09</srcmd5>
+    <version>1.16.103</version>
+    <time>1550221313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674658</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f21637ae4501aadb38d800b2eff99f76</srcmd5>
+    <version>1.16.176</version>
+    <time>1561049687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709459</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cac5bf288e1d9c6393a1aa25b07ca58e</srcmd5>
+    <version>1.16.182</version>
+    <time>1561641921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711561</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a4b6ebb04e0484a120b4a75a2bd158b2</srcmd5>
+    <version>1.16.189</version>
+    <time>1562056703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712413</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b2c76da156af13692dd9ab1e82e1309b</srcmd5>
+    <version>1.16.223</version>
+    <time>1567001002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725326</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f04f8ce130f0ff8c5d60e0b79b05aea0</srcmd5>
+    <version>1.16.223</version>
+    <time>1569851946</time>
+    <user>dimstar_suse</user>
+    <comment>- Add groff as a dependency (boo# 1152258)</comment>
+    <requestid>733741</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0faae0d23f8f601b766c725b91078a9d</srcmd5>
+    <version>1.16.258</version>
+    <time>1573044545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738466</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9a7d2c9c8f475e83f504477b16cfa7a1</srcmd5>
+    <version>1.16.281</version>
+    <time>1574164745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748683</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fea73c0d00f832dd4b39237944781856</srcmd5>
+    <version>1.16.297</version>
+    <time>1576189045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754434</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>4c04c85474b137205e7df2fe11da319e</srcmd5>
+    <version>1.16.297</version>
+    <time>1578606786</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>762247</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cf4e77e44b656a099d3e6e0887bde6d8</srcmd5>
+    <version>1.17.9</version>
+    <time>1580842310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.9
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.17.9/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+  + Update Requires in spec file from setup.py</comment>
+    <requestid>768990</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f75fb68f0e24996b4fe9b88bac13cd13</srcmd5>
+    <version>1.17.9</version>
+    <time>1581801905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774371</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b249b78c5561f0a9ffb27c6a85c6333c</srcmd5>
+    <version>1.18.27</version>
+    <time>1585342621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787898</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>219768f0b640baabeaa142ae96451eb4</srcmd5>
+    <version>1.18.35</version>
+    <time>1586248075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791224</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e3fee82ded5015a5b736af872c85f16f</srcmd5>
+    <version>1.18.38</version>
+    <time>1587325809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792414</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4d354476d04bc859f2217f20bd3ebed0</srcmd5>
+    <version>1.18.79</version>
+    <time>1592840650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814726</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>41b9795c4a0ec80ba5e560807d83165e</srcmd5>
+    <version>1.18.98</version>
+    <time>1596456804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821876</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>83e5fd9ac9abbfea1267e52d0bdfac74</srcmd5>
+    <version>1.18.117</version>
+    <time>1597390348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.117 (bsc#1175147, bsc#1175148, jsc#ECO-2362, jsc#PM-2069)
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.18.117/CHANGELOG.rst
+  + Forward port hide_py_pckgmgmt.patch
+  + Update Requires in spec file from setup.py
+- Rename README.rst to README.md in %docs section</comment>
+    <requestid>826017</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>360eb83f1ac011b177f5834cbfb45777</srcmd5>
+    <version>1.18.133</version>
+    <time>1600179374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833075</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9dd32c778c73fcb7e972b386d7ba5f0a</srcmd5>
+    <version>1.18.156</version>
+    <time>1603454441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840492</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5abe8d9acea5ad38a9d21be3c5a763c7</srcmd5>
+    <version>1.18.185</version>
+    <time>1607113713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851842</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c3827cc9300c415f708b67c5d0dadf0f</srcmd5>
+    <version>1.19.9</version>
+    <time>1614108029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874612</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a195633840b9831fb6c48026b81d3595</srcmd5>
+    <version>1.19.50</version>
+    <time>1619298491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885135</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ac3b15da45182dd890f44d6edfa0cd66</srcmd5>
+    <version>1.19.75</version>
+    <time>1622536484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894760</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>ab8487f6e3e811f6adb5f26124983d17</srcmd5>
+    <version>1.19.86</version>
+    <time>1624300530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900398</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7e48c956926576a468b42eef5cabee96</srcmd5>
+    <version>1.20.7</version>
+    <time>1629360043</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910004</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>5cae746fe4e7120bc17a72129d0f8bb3</srcmd5>
+    <version>1.20.7</version>
+    <time>1630936681</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>917095</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>62de960c770d222f165644abe478f2ae</srcmd5>
+    <version>1.21.6</version>
+    <time>1636154501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928511</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>90827579f85ef3be71b03d1662e8a20b</srcmd5>
+    <version>1.22.24</version>
+    <time>1639860768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940883</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>da7dc25bce8f93679da7715f762012e1</srcmd5>
+    <version>1.22.28</version>
+    <time>1641680599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944471</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>b54031d4bb1031a45882a83025958388</srcmd5>
+    <version>1.22.35</version>
+    <time>1642198411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946441</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3aea3b4293beccf26c92aa8ce001b8b8</srcmd5>
+    <version>1.22.46</version>
+    <time>1644007648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950410</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b2f89d89ae1bb9c0ba9ac335a893ce44</srcmd5>
+    <version>1.22.65</version>
+    <time>1647974375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962443</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>3788e3648e4641cda378bcaa90283f39</srcmd5>
+    <version>1.22.87</version>
+    <time>1649181337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966813</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>ca2caa32a45056ac3dbcff9f9c73654d</srcmd5>
+    <version>1.23.1</version>
+    <time>1651324103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973110</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>6a2d8bd7528221cf0f96e63a5d91ce48</srcmd5>
+    <version>1.23.11</version>
+    <time>1652634019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976600</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>908a83d188997f1a85d4ecde0a646b9c</srcmd5>
+    <version>1.24.1</version>
+    <time>1652888890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977742</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>cecea414465e8be6aab17d8dc87e9356</srcmd5>
+    <version>1.24.4</version>
+    <time>1653250214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978318</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>76fd5f381da075322357e13f20bfee93</srcmd5>
+    <version>1.25.2</version>
+    <time>1654382744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980637</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>fc8295ec19d14bb78ea2531eaa08a1b2</srcmd5>
+    <version>1.25.20</version>
+    <time>1656768840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986108</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>b24018cb446a66c28fa14169b9de4311</srcmd5>
+    <version>1.25.37</version>
+    <time>1659034663</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991239</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>fb080bd2f6c8a8fbb804a81bacb9cc5a</srcmd5>
+    <version>1.25.45</version>
+    <time>1659721847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992776</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>66a809a4d3867469df031eab03629a4c</srcmd5>
+    <version>1.25.55</version>
+    <time>1661159096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998167</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>de5ed988c5e3b6d43ad80ba2960f5486</srcmd5>
+    <version>1.25.60</version>
+    <time>1661962128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000022</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>0cf301e1bf84c71c41a8b7dc8ecc7a7b</srcmd5>
+    <version>1.25.72</version>
+    <time>1663327934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003521</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>fd597b4264003b820b1b9e946c01c673</srcmd5>
+    <version>1.25.76</version>
+    <time>1664797487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1006405</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>64c5f70aa2823d80e0fbb44184d324fc</srcmd5>
+    <version>1.25.85</version>
+    <time>1665754848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007892</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>b587454bad5883743f7b544b69f74161</srcmd5>
+    <version>1.25.91</version>
+    <time>1666099320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012095</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>3916e45c3445ff5c92e0dabc682f646f</srcmd5>
+    <version>1.27.2</version>
+    <time>1667901227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034104</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>51fcf20357c16c5830266739e2b930fd</srcmd5>
+    <version>1.27.8</version>
+    <time>1668514716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035645</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f057aeec0dbfeefc9730adebbf8d97c2</srcmd5>
+    <version>1.27.21</version>
+    <time>1670058208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039569</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>e926a439548b8c1c1286e1a110d4364c</srcmd5>
+    <version>1.27.26</version>
+    <time>1670959436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042394</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8d83678b5d8c17c4cab38bc4b7cafd6c</srcmd5>
+    <version>1.27.41</version>
+    <time>1672851071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046527</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>044b12f0f1968bdac7d0343fdc5e5e0a</srcmd5>
+    <version>1.27.52</version>
+    <time>1674324622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059960</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>573425eb56ca85fc250b1a3e7d432c61</srcmd5>
+    <version>1.27.58</version>
+    <time>1674927848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061569</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>b22103acbb0cb33ee74c0c2cc021a30d</srcmd5>
+    <version>1.27.60</version>
+    <time>1675458353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063011</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>917a2ccd2a13f66e8886c0eed5cae5d7</srcmd5>
+    <version>1.27.66</version>
+    <time>1675962092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063875</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>5093bdcc6b4ed0e8bfcf4d8b25ddd65e</srcmd5>
+    <version>1.27.71</version>
+    <time>1676562931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065953</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>79d28ca03c293f4385db4c3ca987663b</srcmd5>
+    <version>1.27.78</version>
+    <time>1677351302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067590</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>2561cc4c92dca1da900583b252afa8fd</srcmd5>
+    <version>1.27.89</version>
+    <time>1679003982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072351</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>b5e4cba274b295479bc07bb96a383d68</srcmd5>
+    <version>1.27.115</version>
+    <time>1681996455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080311</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>75996890034f291351a3cad1a625bd19</srcmd5>
+    <version>1.27.130</version>
+    <time>1685051536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088303</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>e0cc11522c2b503a3bd87991303a5cec</srcmd5>
+    <version>1.27.153</version>
+    <time>1687033224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093116</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>38abf5409e48df4c5d90020ccdd3ff76</srcmd5>
+    <version>1.27.163</version>
+    <time>1689083844</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098140</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>6c4788bda323c205a16d23a6163dcd1e</srcmd5>
+    <version>1.29.27</version>
+    <time>1692483096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1104373</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>0fa6987e4f8af625ba847a6f9d37dd70</srcmd5>
+    <version>1.29.36</version>
+    <time>1693482340</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108071</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>a0407170db9319f73da2283f745d7b21</srcmd5>
+    <version>1.29.61</version>
+    <time>1696964308</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116051</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>fe24cda9fdee7b8e2ef1136f1a3768ff</srcmd5>
+    <version>1.31.11</version>
+    <time>1703527492</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134158</requestid>
+  </revision>
+</revisionlist>

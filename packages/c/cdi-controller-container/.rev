@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf67edc374525db965fac53cd4176f35</srcmd5>
+    <version>unknown</version>
+    <time>1619298493</time>
+    <user>dimstar_suse</user>
+    <comment>Submit cdi-controller-container to Factory</comment>
+    <requestid>886467</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9cd49878999d0ef8674e9908a8cc7e8c</srcmd5>
+    <version>unknown</version>
+    <time>1619552084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888564</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7654e1476cf039dbebcddde64abab6e0</srcmd5>
+    <version>unknown</version>
+    <time>1620239986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890447</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b5e42134b8bfc2ef3835c6c884b0bd05</srcmd5>
+    <version>unknown</version>
+    <time>1623705056</time>
+    <user>dimstar_suse</user>
+    <comment>- Include the registry in org.opensuse.reference</comment>
+    <requestid>898429</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f49d01286185245e3d6a2f0fd26fd4eb</srcmd5>
+    <version>unknown</version>
+    <time>1642198422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946489</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e6530d491cf581ac8ba90fab0e910c21</srcmd5>
+    <version>unknown</version>
+    <time>1659721887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993198</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>021246b5bf818470f3836aec0c2ac2ef</srcmd5>
+    <version>unknown</version>
+    <time>1698170902</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119846</requestid>
+  </revision>
+</revisionlist>

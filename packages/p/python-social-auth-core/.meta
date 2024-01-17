@@ -1,0 +1,6 @@
+<package name="python-social-auth-core" project="openSUSE:Factory">
+  <title>Python Social Auth - Core</title>
+  <description>Python Social Auth is an easy to setup social authentication/registration mechanism with support for several frameworks and auth providers.
+  This is the core component of the python-social-auth ecosystem, it implements the common interface to define new authentication backends to third parties services, implement integrations with web frameworks and storage solutions.</description>
+  <devel project="devel:languages:python" package="python-social-auth-core"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="liburing" project="openSUSE:Factory">
+  <title>liburing</title>
+  <description>Provides native async IO for the Linux kernel, in a fast and efficient
+manner, for both buffered and O_DIRECT.
+</description>
+  <devel project="devel:libraries:c_c++" package="liburing"/>
+</package>

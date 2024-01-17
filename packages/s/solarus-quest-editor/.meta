@@ -1,0 +1,5 @@
+<package name="solarus-quest-editor" project="openSUSE:Factory">
+  <title>Solarus Quest Editor</title>
+  <description>A free and open-source game editor for the Solarus engine.</description>
+  <devel project="games:tools" package="solarus-quest-editor"/>
+</package>

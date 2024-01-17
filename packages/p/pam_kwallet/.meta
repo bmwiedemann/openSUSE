@@ -1,0 +1,5 @@
+<package name="pam_kwallet" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="pam_kwallet"/>
+</package>

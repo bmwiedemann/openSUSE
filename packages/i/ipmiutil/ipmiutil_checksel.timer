@@ -1,0 +1,9 @@
+[Unit]
+Description=Automatic execution of ipmiutil's checksel
+
+[Timer]
+OnCalendar=Daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

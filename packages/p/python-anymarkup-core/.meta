@@ -1,0 +1,5 @@
+<package name="python-anymarkup-core" project="openSUSE:Factory">
+  <title></title>
+  <description>Core library for anymarkup</description>
+  <devel project="devel:languages:python" package="python-anymarkup-core"/>
+</package>

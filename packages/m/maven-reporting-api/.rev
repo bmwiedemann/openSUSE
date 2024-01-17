@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b6c378ab5886573e426899a42613f87</srcmd5>
+    <version>3.0</version>
+    <time>1554458535</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>690919</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16245b6f57bf53fcf9372626d3a2b17f</srcmd5>
+    <version>3.1.0</version>
+    <time>1647031279</time>
+    <user>dimstar_suse</user>
+    <comment>3.1.0</comment>
+    <requestid>961009</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cfc9b0ea80c864b3ec0b69ae23568712</srcmd5>
+    <version>3.1.0</version>
+    <time>1647889866</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963343</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f22cccf1aff330a5defb512c59734b94</srcmd5>
+    <version>3.1.0</version>
+    <time>1653503681</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>979136</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af3fb068fecdc22b050aa9022ca87069</srcmd5>
+    <version>3.1.1</version>
+    <time>1695664966</time>
+    <user>anag+factory</user>
+    <comment>3.1.1</comment>
+    <requestid>1113246</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+<package name="cm-unicode-fonts" project="openSUSE:Factory">
+  <title>Unicode Version of the Computer Modern Fonts</title>
+  <description>Computer Modern Unicode fonts were converted from metafont sources
+using [1] textrace and [2] pfaedit (030404). Their main purpose is to
+create free good quality fonts for use in X Window System applications
+supporting many languages. Currently the fonts contain glyphs from
+Latin1 (Metafont ec, tc), Cyrillic (la, rx) and Greek (cbgreek when
+available) code sets.
+</description>
+  <devel project="M17N:fonts" package="cm-unicode-fonts"/>
+</package>

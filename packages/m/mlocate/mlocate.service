@@ -1,0 +1,32 @@
+[Unit]
+Description=Update locate database
+Documentation=man:updatedb
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=read-only
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions
+Type=oneshot
+ExecStart=/bin/sh -c \
+          "chown -R ${RUN_UPDATEDB_AS}:root /var/lib/mlocate && \
+          su --shell=/bin/sh ${RUN_UPDATEDB_AS} -c 'umask 0022; /usr/bin/updatedb'"
+
+# Ensure we have proper umask bnc#941296
+UMask=0022
+
+# Alter the priority of the updatedb process
+Nice=19
+IOSchedulingClass=2
+IOSchedulingPriority=7
+
+# Load sysconfig
+EnvironmentFile=/etc/sysconfig/locate

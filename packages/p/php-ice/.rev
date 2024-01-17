@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f915bbd154ffac20cc386baaf4123d7a</srcmd5>
+    <version>1.7.0</version>
+    <time>1613774931</time>
+    <user>dimstar_suse</user>
+    <comment>Rename php7-ice to php-ice</comment>
+    <requestid>873873</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>921ad2a987e32e47df7386a325b1c86c</srcmd5>
+    <version>1.7.0</version>
+    <time>1617723032</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882919</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>99e8c58b176953065957547521a7706d</srcmd5>
+    <version>1.7.0</version>
+    <time>1643486382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949868</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>35827c8a06ab6f43f2d4a99a800d4487</srcmd5>
+    <version>1.7.0</version>
+    <time>1655245932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982523</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ef84fc6e55ea4358cd78e77c364681ea</srcmd5>
+    <version>1.7.0</version>
+    <time>1670863213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042374</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5f08e60a875a999982f8e95bd78d039a</srcmd5>
+    <version>1.7.0</version>
+    <time>1676149034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064343</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>0662076cf2a312879d4f62e17f114145</srcmd5>
+    <version>1.7.0</version>
+    <time>1676832803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066647</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>1f81a7f3d24f63122fc03ccef12ad674</srcmd5>
+    <version>1.7.0</version>
+    <time>1680455921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076688</requestid>
+  </revision>
+</revisionlist>

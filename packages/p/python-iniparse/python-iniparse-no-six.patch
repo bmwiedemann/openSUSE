@@ -1,0 +1,181 @@
+Index: iniparse-0.5/iniparse/compat.py
+===================================================================
+--- iniparse-0.5.orig/iniparse/compat.py
++++ iniparse-0.5/iniparse/compat.py
+@@ -24,8 +24,6 @@ from .configparser import DuplicateSecti
+ from .configparser import Error, InterpolationError, \
+                    MissingSectionHeaderError, ParsingError
+ 
+-import six
+-
+ from . import ini
+ 
+ 
+@@ -91,7 +89,7 @@ class RawConfigParser(object):
+         filename may also be given.
+         """
+         files_read = []
+-        if isinstance(filenames, six.string_types):
++        if isinstance(filenames, str):
+             filenames = [filenames]
+         for filename in filenames:
+             try:
+@@ -284,7 +282,7 @@ class SafeConfigParser(ConfigParser):
+     _badpercent_re = re.compile(r"%[^%]|%$")
+ 
+     def set(self, section, option, value):
+-        if not isinstance(value, six.string_types):
++        if not isinstance(value, str):
+             raise TypeError("option values must be strings")
+         # check for bad percent signs:
+         # first, replace all "good" interpolations
+Index: iniparse-0.5/iniparse/config.py
+===================================================================
+--- iniparse-0.5.orig/iniparse/config.py
++++ iniparse-0.5/iniparse/config.py
+@@ -161,7 +161,7 @@ class BasicConfig(ConfigNamespace):
+ 
+     Finally, values can be read from a file as follows:
+ 
+-    >>> from six import StringIO
++    >>> from io import StringIO
+     >>> sio = StringIO('''
+     ... # comment
+     ... ui.height = 100
+Index: iniparse-0.5/iniparse/ini.py
+===================================================================
+--- iniparse-0.5.orig/iniparse/ini.py
++++ iniparse-0.5/iniparse/ini.py
+@@ -7,7 +7,7 @@
+ 
+ Example:
+ 
+-    >>> from six import StringIO
++    >>> from io import StringIO
+     >>> sio = StringIO('''# configure foo-application
+     ... [foo]
+     ... bar1 = qualia
+@@ -44,8 +44,6 @@ Example:
+ import re
+ from .configparser import DEFAULTSECT, ParsingError, MissingSectionHeaderError
+ 
+-import six
+-
+ from . import config
+ 
+ 
+@@ -569,7 +567,7 @@ class INIConfig(config.ConfigNamespace):
+ 
+         for line in readline_iterator(fp):
+             # Check for BOM on first line
+-            if line_count == 0 and isinstance(line, six.text_type):
++            if line_count == 0 and isinstance(line, str):
+                 if line[0] == u'\ufeff':
+                     line = line[1:]
+                     self._bom = True
+Index: iniparse-0.5/setup.py
+===================================================================
+--- iniparse-0.5.orig/setup.py
++++ iniparse-0.5/setup.py
+@@ -33,7 +33,6 @@ use.''',
+         'Topic :: Software Development :: Libraries :: Python Modules',
+       ],
+       packages = ['iniparse'],
+-      install_requires=['six'],
+       data_files = [
+         ('share/doc/iniparse-%s' % VERSION, ['README.md', 'LICENSE-PSF',
+                                              'LICENSE', 'Changelog',
+Index: iniparse-0.5/tests/test_compat.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_compat.py
++++ iniparse-0.5/tests/test_compat.py
+@@ -1,5 +1,5 @@
+ from iniparse import compat as ConfigParser
+-from six import StringIO
++from io import StringIO
+ try:
+     import UserDict
+ except ImportError:
+Index: iniparse-0.5/tests/test_fuzz.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_fuzz.py
++++ iniparse-0.5/tests/test_fuzz.py
+@@ -3,8 +3,8 @@ import os
+ import random
+ import sys
+ import unittest
+-from six import StringIO
+-from six.moves import configparser
++from io import StringIO
++import configparser
+ from iniparse import compat, ini, tidy
+ 
+ # TODO:
+Index: iniparse-0.5/tests/test_ini.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_ini.py
++++ iniparse-0.5/tests/test_ini.py
+@@ -1,5 +1,5 @@
+ import unittest
+-from six import StringIO
++from io import StringIO
+ 
+ from iniparse import ini
+ from iniparse import compat
+Index: iniparse-0.5/tests/test_misc.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_misc.py
++++ iniparse-0.5/tests/test_misc.py
+@@ -1,8 +1,8 @@
+ import re
+ import unittest
+ import pickle
+-from six.moves import configparser
+-from six import StringIO
++import configparser
++from io import StringIO
+ from textwrap import dedent
+ from iniparse import compat, ini
+ 
+Index: iniparse-0.5/tests/test_tidy.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_tidy.py
++++ iniparse-0.5/tests/test_tidy.py
+@@ -1,6 +1,6 @@
+ import unittest
+ from textwrap import dedent
+-from six import StringIO
++from io import StringIO
+ 
+ from iniparse import tidy, INIConfig
+ from iniparse.compat import ConfigParser
+Index: iniparse-0.5/tests/test_unicode.py
+===================================================================
+--- iniparse-0.5.orig/tests/test_unicode.py
++++ iniparse-0.5/tests/test_unicode.py
+@@ -1,5 +1,5 @@
+ import unittest
+-import six
++from io import StringIO
+ from iniparse import ini
+ 
+ 
+@@ -18,14 +18,14 @@ baz = Marc-Andr\202
+     """
+ 
+     def basic_tests(self, s, strable):
+-        f = six.StringIO(s)
++        f = StringIO(s)
+         i = ini.INIConfig(f)
+-        self.assertEqual(six.text_type(i), s)
+-        self.assertEqual(type(i.foo.bar), six.text_type)
++        self.assertEqual(str(i), s)
++        self.assertEqual(type(i.foo.bar), str)
+         if strable:
+             self.assertEqual(str(i), str(s))
+         else:
+-            self.assertRaises(UnicodeEncodeError, lambda: six.text_type(i).encode('ascii'))
++            self.assertRaises(UnicodeEncodeError, lambda: str(i).encode('ascii'))
+         return i
+ 
+     def test_ascii(self):

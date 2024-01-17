@@ -1,0 +1,42 @@
+<services>  
+  <service name="tar_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/RPCS3/rpcs3.git</param>
+    <param name="filename">rpcs3</param>
+    <param name="versionformat">@PARENT_TAG@~git%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">3rdparty/curl/curl</param>
+    <param name="exclude">3rdparty/ffmpeg</param>
+    <param name="exclude">3rdparty/libpng/libpng</param>
+    <param name="exclude">3rdparty/libsdl-org</param>
+    <param name="exclude">3rdparty/libusb</param>
+    <param name="exclude">3rdparty/llvm/llvm</param>
+    <param name="exclude">3rdparty/XAudio2Redist</param>
+    <param name="exclude">3rdparty/zlib/zlib</param>
+    <param name="exclude">*.bat</param>
+    <param name="exclude">*.cmd</param>
+    <param name="exclude">*.dll</param>
+    <param name="exclude">*.vcproj</param>
+    <param name="exclude">*.vcxproj</param>
+    <param name="exclude">*.vcxproj.user</param>
+    <param name="exclude">*.vcxproj.filters</param>
+    <param name="exclude">*.yml</param>
+    <param name="exclude">*.props</param>
+    <param name="exclude">*.sln</param>
+  </service>
+  <service name="tar_scm" mode="localonly">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/intel/ittapi.git</param>
+    <param name="filename">intel-ittapi</param>
+    <param name="version">_none_</param>
+  </service>
+  <service name="recompress" mode="localonly">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="localonly">
+    <param name="basename">rpcs3</param>
+  </service>
+  <service name="download_files" mode="localonly"/>
+</services>

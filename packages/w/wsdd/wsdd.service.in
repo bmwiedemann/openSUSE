@@ -1,0 +1,26 @@
+[Unit]
+Description=Web Services Dynamic Discovery host daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+Type=simple
+AmbientCapabilities=CAP_SYS_CHROOT
+Environment= WSDD_ARGS=-p
+ExecStartPre=@LIBEXECDIR@/wsdd-init.sh
+EnvironmentFile=-/run/wsdd/env-vars
+ExecStart=/usr/sbin/wsdd --shortlog -c /run/wsdd $WSDD_ARGS
+ExecStartPost=/usr/bin/rm /run/wsdd/env-vars
+User=wsdd
+Group=wsdd
+
+[Install]
+WantedBy=multi-user.target

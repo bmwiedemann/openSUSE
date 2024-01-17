@@ -1,0 +1,7 @@
+<package name="perl-Sub-Uplevel" project="openSUSE:Factory">
+  <title>Apparently run a function in a higher stack frame</title>
+  <description>Like Tcl's uplevel() function, but not quite so dangerous. The idea is
+just to fool caller(). All the really naughty bits of Tcl's uplevel()
+are avoided.</description>
+  <devel project="devel:languages:perl" package="perl-Sub-Uplevel"/>
+</package>

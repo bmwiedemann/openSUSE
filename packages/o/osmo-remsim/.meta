@@ -1,0 +1,5 @@
+<package name="osmo-remsim" project="openSUSE:Factory">
+  <title>osmo-remsim</title>
+  <description></description>
+  <devel project="network:telephony" package="osmo-remsim"/>
+</package>

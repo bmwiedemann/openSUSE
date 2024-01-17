@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9240de98c581b8289d81d8fa20bf33f6</srcmd5>
+    <version>3.14.1</version>
+    <time>1607113740</time>
+    <user>dimstar_suse</user>
+    <comment>from :misc</comment>
+    <requestid>852935</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>391d4843e4dd99622aa4d75f10e87fa1</srcmd5>
+    <version>4.2.0</version>
+    <time>1622536627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895560</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ff9441e63dfa2d13a96a7691bef12897</srcmd5>
+    <version>4.3.1</version>
+    <time>1643062212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948408</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>12683c8c89be8f8e4f4dcb810aabaa12</srcmd5>
+    <version>4.3.4</version>
+    <time>1665185130</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008713</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2617f851293f75753635d85b5290e946</srcmd5>
+    <version>4.3.4</version>
+    <time>1677584915</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch to support python 3.11,
+  gh#miguelgrinberg/python-engineio@ac3911356fbe
+</comment>
+    <requestid>1067992</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>65552f4b08147ead13106d5c18920df6</srcmd5>
+    <version>4.3.4</version>
+    <time>1701533596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1130384</requestid>
+  </revision>
+</revisionlist>

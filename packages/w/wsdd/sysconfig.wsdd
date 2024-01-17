@@ -1,0 +1,34 @@
+## Path:        Network/WSDD
+## Description: WSDD Configuration
+## Type:           string
+## Default:        ""
+## ServiceRestart:·wsdd
+# Windows domain
+# If empty use the machines domain, overrides WSDD_WORKGROUP
+WSDD_DOMAIN=""
+
+## Type:           string
+## Default:        ""
+## ServiceRestart:·wsdd
+# Windows workgroup.
+# If empty use the domain name
+WSDD_WORKGROUP=""
+
+## Type:           string
+## Default:        ""
+## ServiceRestart:·wsdd
+# Hostname
+# If empty use the machines hostname
+WSDD_HOSTNAME=""
+
+## Type:           string
+## Default:        ""
+## ServiceRestart:·wsdd
+# If empty use all interfaces, except loopback interfaces
+WSDD_INTERFACES=""
+
+## Type:           string
+## Default:        ""
+## ServiceRestart:·wsdd
+# Additional wsdd options
+WSDD_ARGS=""

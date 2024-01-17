@@ -1,0 +1,7 @@
+<package name="ksh" project="openSUSE:Factory">
+  <title>Korn Shell</title>
+  <description>The original Korn Shell.  The ksh is an sh-compatible command
+interpreter that executes commands read from standard input or from a
+file.</description>
+  <devel project="shells" package="ksh"/>
+</package>

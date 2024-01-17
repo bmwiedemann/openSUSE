@@ -1,0 +1,20 @@
+--- Vendor.conf.orig	2023-11-09 11:16:32.708147487 +0100
++++ Vendor.conf	2023-11-09 11:16:46.314807879 +0100
+@@ -12,7 +12,7 @@
+ # If the value is set to 'none' then no link is shown.
+ #
+ # default=https://www.freedesktop.org/software/PackageKit/pk-package-not-found.html
+-DefaultUrl=https://www.freedesktop.org/software/PackageKit/pk-package-not-found.html
++DefaultUrl=none
+ 
+ # The URL which is shown to the user when a codec could not be found.
+ # It should explain why certain codecs cannot be used, and perhaps show
+@@ -21,7 +21,7 @@
+ # If the value is set to 'none' then the value of DefaultUrl is used.
+ #
+ # default=none
+-CodecUrl=none
++CodecUrl=https://en.opensuse.org/SDB:Installing_codecs_from_Packman_repositories
+ 
+ # The URL which is shown to the user when hardware drivers could not be found.
+ # It should explain why some hardware is not supported, and links to futher

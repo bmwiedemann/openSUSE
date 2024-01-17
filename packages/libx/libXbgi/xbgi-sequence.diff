@@ -1,0 +1,47 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2014-01-23 14:42:25.612279578 +0100
+
+bgidemo: resolve invocation of undefined behavior near i=++i
+
+rpmlint says:
+I: Program causes undefined operation
+   (likely same variable used twiceand post/pre incremented in the same expression).
+   e.g. x = x++; Split it in two operations.
+W: libXbgi sequence-point bgidemo.c:534, 1116
+
+gcc had to say:
+bgidemo.c: In function 'ColorDemo':
+bgidemo.c:534:13: warning: operation on 'color' may be undefined [-Wsequence-point]
+       color = ++color % MaxColors; /* Advance to the next color */
+             ^
+bgidemo.c: In function 'UserLineStyleDemo':
+bgidemo.c:1116:7: warning: operation on 'i' may be undefined [-Wsequence-point]
+     i = ++i % 16;   /* Advance to next bit pattern */
+       ^
+
+---
+ src/test/bgidemo.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: xbgi-364/src/test/bgidemo.c
+===================================================================
+--- xbgi-364.orig/src/test/bgidemo.c
++++ xbgi-364/src/test/bgidemo.c
+@@ -531,7 +531,7 @@ void ColorDemo(void)
+       itoa( color, cnum, 10 );		/* Convert # to ASCII		*/
+       outtextxy( x+(width/2), y+height+4, cnum );  /* Show color #	*/
+ 
+-      color = ++color % MaxColors;	/* Advance to the next color	*/
++      color = (color + 1) % MaxColors;	/* Advance to the next color	*/
+       x += (width / 2) * 3;		/* move the column base 	*/
+     }				/* End of Column loop		*/
+ 
+@@ -1113,7 +1113,7 @@ void UserLineStyleDemo(void)
+     line( x, y, x, h-y );		/* Draw the new line pattern	*/
+ 
+     x += 5;				/* Move the X location of line	*/
+-    i = ++i % 16;			/* Advance to next bit pattern	*/
++    i = (i + 1) % 16;			/* Advance to next bit pattern	*/
+ 
+     if( style == 0xffff ){		/* Are all bits set?		*/
+       flag = FALSE;			/*   begin removing bits	*/

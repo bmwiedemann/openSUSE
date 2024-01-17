@@ -1,0 +1,408 @@
+-------------------------------------------------------------------
+Thu Jul 20 20:38:02 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 1.33.0 
+  * Add collection of c sources and headers to dub by @cschlote in #2544
+  * update version to v1.32.0-beta.1 by @ibuclaw in #2609
+  * Don't depend on the whole of Vibe.d for the test_registry by @Geod24 in #2612
+  * Upgrade dependencies by @Geod24 in #2613
+  * Make all static library exports contribute to dlls on Windows by @rikkimax in #2614
+  * Revert "Make all static library exports contribute to dlls on Windows" by @Geod24 in #2616
+  * PackageManager: Store packages hierarchically, by version by @Geod24 in #2610
+  * add pr_info GitHub actions run by @WebFreak001 in #2586
+  * try to fix pr_info permissions problem by @WebFreak001 in #2621
+  * fix pr_info_post file paths by @WebFreak001 in #2622
+  * update version to v1.32.0-rc.1 by @ibuclaw in #2625
+  * merge stable by @ibuclaw in #2628
+  * update version to v1.32.1-beta.1 by @ibuclaw in #2631
+  * update version to v1.32.1 by @ibuclaw in #2634
+
+-------------------------------------------------------------------
+Wed May  3 07:29:25 UTC 2023 - Deepthi Yadabettu Venkatachala <deepthi.venkatachala@suse.com>
+
+- Update to 1.32.1
+  * Implement --color=auto|always|never, fix #2410 by @WebFreak001 
+    in #2552
+  * update version to v1.31.0-beta.1 by @ibuclaw in #2555
+  * Remove GeneratorSettings.direct as it is never set by @Geod24 in #2559
+  * Fix various DDOC warnings by @Geod24 in #2558
+  * Don't assume the cache path is relative to CWD by @Geod24 in #2557
+  * replace std.variant with std.sumtype by @WebFreak001 in #2550
+  * add markdown documentation generator to gen_man.d by @WebFreak001 
+    in #2563
+  * update version to v1.31.0-rc.1 by @ibuclaw in #2565
+  * Fix typo in subpackage license warning by @zyedidia in #2576
+  * merge stable by @ibuclaw in #2578
+  * fix man page generator by @WebFreak001 in #2571
+  * fix typo(s) by @WebFreak001 in #2564
+  * Add betterC support - fixes #1636 by @etcimon in #2581
+  * merge stable by @ibuclaw in #2591
+  * Add OpenBSD package to README.md by @ibara in #2592
+  * Fix #2574: Suggest alternative spelling when a command is mistyped by 
+    @elvodqa in #2593
+  * improve warning messages, especially with ~branch by @WebFreak001 in #2585
+  * reintroduce dmd-latest to CI runner by @WebFreak001 in #2594
+  * merge stable by @ibuclaw in #2595
+  * make build names much smaller by @WebFreak001 in #2589
+  * Make getDUBExePath returns a NativePath by @Geod24 in #2604
+ 
+-------------------------------------------------------------------
+Thu Nov 17 12:59:32 UTC 2022 - Chris Josten <chris+suse@netsoj.nl>
+
+- Update to 1.29.0
+  * Harden package version detection from git describe by @kinke
+
+- Update to 1.28.0
+  * Removes dynamicLibrary being built as staticLibrary for targets 
+    other than OMF. by @rikkimax in #2211
+  * move command variable substitution to execution by @WebFreak001 
+    in #2217
+  * Fix interactive run-unittest.d by @WebFreak001 
+    in #2219
+  * merge stable by @MartinNowak in #2221
+  * fix: parse version from filesystem supplier correctly by 
+    @Panke in #2220
+  * merge stable by @MartinNowak in #2225
+  * add CompilerInvocationException by @WebFreak001 in #2226
+  * Adapt determinePlatform to the new defaults for Win32 by 
+    @MoonlightSentinel in #2227
+  * Define the $DUB_BUILD_PATH variable. by @veelo in #2228
+  * merge stable by @MartinNowak in #2231
+  * Add link to dub-docs. by @veelo in #2232
+  * Remove travis-ci badge from README.md by @ibuclaw in #2233
+  * Annotate escaping reference. by @veelo in #2237
+  * Posix: use /etc/dub/settings.json if in /usr by @WebFreak001 
+    in #2203
+  * Add -fno-druntime to GDC BuildOptions; it is the betterC 
+    flag. by @ibara in #2186
+  * Fix #2238 - Renew source files after preGenerateCommands by 
+    @atilaneves in #2239
+  * Inject source file (replaces #2207) by @rikkimax in #2240
+
+- Update to 1.27.0
+  * merge stable by @MartinNowak in #2132
+  * Add environment variables to BuildSettings by @shoo in #2121
+  * merge stable by @MartinNowak in #2138
+  * Fix dependency build settings flooding dflags by @omerfirmak 
+    in #2139
+  * merge stable by @MartinNowak in #2140
+  * Adds quotation marks to error message by @denizzzka in #2148
+  * Generate paths relative to visuald project files by @JudgeFish 
+    in #2150
+  * merge stable by @MartinNowak in #2152
+  * merge stable by @MartinNowak in #2154
+  * Fix #2141 - When used as a library, the default compiler is 
+    different from the expected. by @shoo in #2158
+  * Remove line 'Exclusing package.d blah...' from default dub 
+    build by @p0nce in #2157
+  * RegistryPackageSupplier.genPackageDownloadUrl added by 
+    @denizzzka in #2156
+
+- Update to 1.26.0
+  * merge stable by @MartinNowak in #2114
+  * Fix single file package dynamic library by @andre2007 
+    in #2112
+  * fix #1867 - Add lowmem for settings by @shoo in #1905
+  * Fix #2046 - Dependencies specified with a path ignore 
+    optional settings by @shoo in #2103
+  * Replacing rununittest.sh by @drug007 in #2109
+  * merge stable by @MartinNowak in #2115
+  * merge stable by @MartinNowak in #2117
+  * Only show package.d warning once by @dkorpel in #2131
+  * [stable] LDC: Recognize -gcc as linker D flag by @kinke 
+    in #2135
+
+- Update to 1.25.0
+  * merge stable by @MartinNowak in #2061
+  * Minor code cleanup (whitespace, import) by @Geod24 in #2063
+  * Remove redundant code with relativeTo by @Geod24 in #2062
+  * Set cwd on spawn functions instead of chdir by @Geod24 
+    in #2065
+  * Hotfix for #2051 by @drug007 in #2064
+  * Renaming a file by @drug007 in #2066
+  * Raise minimum Vibe.d requirement to v0.9.0 by @Geod24 
+    in #2067
+  * merge stable by @MartinNowak in #2071
+  * Cleanup http listener in vibed template by @gizmomogwai in #2072
+  * merge stable by @MartinNowak in #2074
+  * Improve 'linker-D-flag' detection for ldmd2 by @kinke in #2082
+  * Extend 'linker dflags' detection for DMD by @kinke in #2083
+  * Selectively import symbols from std.array. by @veelo in #2089
+  * Remove unused selective imports. by @veelo in #2088
+  * Remove unused imports from compiler.d. by @veelo in #2090
+  * Refactor imports (inet.url -> inet.path). by @veelo in #2091
+  * Remove unused std.range import. by @veelo in #2092
+  * Remove unused imports. by @veelo in #2093
+  * Refactor imports. by @veelo in #2094
+  * Refactor import. Url is not used directly, but path is. 
+    by @veelo in #2097
+  * Remove unused imports. by @veelo in #2096
+  * Deprecate unused but public import. by @veelo in #2095
+  * Fix #2085: [visuald] spurious library project by @veelo in #2098
+  * Add some generated files to .gitignore by @ljmf00 in #2102
+  * Fix #2086 copyFiles in subPackage does not honour targetPath. 
+    by @veelo in #2087
+  * Replacing run-unittest.sh by run-unittest.d. Inception by 
+    @drug007 in #2084
+  * Include copyFiles and extraDependencyFiles in visuald projects. 
+    by @veelo in #2099
+  * Bump FRONTEND, move dmd to latest by default. by @maxhaton 
+    in #2104
+  * merge stable by @MartinNowak in #2106
+  * Actually copy copyFiles when building in Visual Studio. by 
+    @veelo in #2105
+  * import 'std.variant.Algebraic' properly by @BorisCarvajal 
+    in #2108
+  * merge stable by @MartinNowak in #2107
+  * Fixed a regression with DFLAGS environment variable and cached 
+    generated unittest by @foerdi in #2116
+
+- Update to 1.24.1
+  * Allow adding dflags on dependencies when using SDL format by 
+    @omerfirmak in #2081
+
+- Update to 1.24.0
+  * merge stable by @MartinNowak in #2011
+  * [stable] Deduplicate dflags and lflags by @Geod24 in #2016
+  * cache the generated test main file: dub_test_root.d by @foerdi 
+    in #2005
+  * Revert "Deduplicate dflags and lflags" (#2016) by @s-ludwig 
+    in #2020
+  * merge stable by @MartinNowak in #2022
+  * Remove usage of deprecated std.xml by @andre2007 in #1977
+  * Support for .netrc file added by @andre2007 in #2027
+  * ci: build release .tar.gz without travis owner and group id 
+    by @ljmf00 in #2030
+  * Add support for '-platformlib' option. Fixes #2031 by 
+    @dbankov-vmware in #2032
+  * GH Actions: Use new syntax for set-env by @Geod24 in #2036
+  * Merge stable into master by @Geod24 in #2037
+  * dub.compilers.ldc: Fix --rdmd with --compiler=ldc2 by 
+    @CyberShadow in #2033
+  * Correct issue #1673 (with dupe #1797 and #2019) by @p0nce 
+    in #2034
+  * betterC flag enabled in generated visuald project file. Fixes #2024 
+    by @MrZoraman in #2025
+  * Fix Issue #1474 - Regenerate build settings after preGenerateCommands 
+    by @omerfirmak in #2035
+  * Mutually exclude mainSourceFile of different configurations by 
+    @omerfirmak in #2039
+  * [CI]: Remove old AppVeyor, TravisCI, SemaphoreCI and build-gdc.sh 
+    files by @PetarKirov in #2042
+  * [stable] Use compiler version, not frontend version for build IDs
+    and paths by @kinke in #2045
+  * [stable] Add support for --arch=x86_mscoff for LDC (for DMD 
+    compatibility) by @kinke in #2049
+  * Use DC env variable as the default compiler by @omerfirmak in #2047
+  * Fix #2051: Running unit tests from DUB single file packages fails by 
+    @drug007 in #2052
+  * Improved ldc cross compile by @foerdi in #2055
+  * improve list command (filter by package spec) by @deviator 
+    in #2057
+  * Dont export DFLAGS & LFLAGS by default by @omerfirmak 
+    in #2048
+  * Allow custom dflags to be defined for dependencies by 
+    @omerfirmak in #2040
+  * Normalize line endings & UTF8 BOMs by @Geod24 in #2058
+  * add ability for specify version range for commandline commands 
+    by @deviator in #2056
+
+
+-------------------------------------------------------------------
+Sun Dec 27 21:43:41 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 1.23.0 
+  * Added architecture x86_omf for windows-dmd
+  * dub remove --non-interactive will now remove all packages by default
+  * Running dub upgrade on a package-less folder is now a no-op
+  * Support dependencies as git url with exact commit
+  * All commands now support package[@<version-spec>], --version is deprecated
+
+-------------------------------------------------------------------
+Tue May  5 11:50:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.20.0 (no changelog) 
+
+-------------------------------------------------------------------
+Wed Aug 14 13:41:19 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.16.0 
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Sun Mar 17 15:55:15 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.14.0 
+  * dub fetch now supports <package>@<version> as a shortcut
+  * extraDependencyFiles attribute added
+  * File system supplier enabled
+  * toolchainRequirements recipe entry
+
+-------------------------------------------------------------------
+Mon Feb 11 13:46:36 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase required memory in _constraints as latest ldc requires more RAM
+
+-------------------------------------------------------------------
+Fri Jan 25 07:29:14 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM errors
+- Fix builds with ldc on %ix86
+
+-------------------------------------------------------------------
+Sat Jan  5 19:04:03 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 1.13.0
+  * Add Command
+  * dub now supports $DUB variable
+  * Pre/Post run commands added
+  * Shebang without .d extension
+  * Sort JSON
+  * Added experimental feature to improve build cache efficiency
+
+-------------------------------------------------------------------
+Wed Dec  5 21:43:38 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to version 1.12.0
+  * betterC build option has been added
+  * Environment variable DUB_PACKAGE_VERSION added
+
+-------------------------------------------------------------------
+Sun Sep  9 14:54:07 UTC 2018 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to 1.11.0
+  * Variables such as $ARCH or $PLATFORM are now supported in the build settings.
+  * DUB supports build type "syntax"
+  * Enviroment variable expansion was improved
+  * Dependency resolution has been reimplemented using a recursive algorithm
+  * DUB accepts single file packages on STDIN
+  * The regular upgrade check has been removed
+
+-------------------------------------------------------------------
+Thu Aug 30 19:41:40 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Remove '-g' flag for armv6/armv7 as it breaks the build
+
+-------------------------------------------------------------------
+Thu Aug 30 14:29:42 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use LDC compiler when DMD is not available
+
+-------------------------------------------------------------------
+Sun Jul  8 13:24:16 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 1.10.0
+  * DUB supports "customCachePaths" for providing read-only package paths
+
+-------------------------------------------------------------------
+Mon May  7 21:55:40 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 1.9.0
+  * No changelog was made available.
+- Rename LICENCE.txt to LICENCE
+
+-------------------------------------------------------------------
+Mon Apr 16 19:46:59 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to 1.8.1
+  * Fixed a regression in 1.8.0 that caused linker files specified 
+    as `sourceFiles` to not get inherited properly
+    issue (gh#dlang/dub#1408) pull (gh#dlang/dub#1409)
+
+-------------------------------------------------------------------
+Sat Apr 14 10:02:07 UTC 2018 - matthias.eliasson@gmail.com
+
+- Stop with static linking. Should resolve build issues in openSUSE:Factory
+- Remove dependency of git. It is not needed now when we don't use build script
+- Generate dub version file
+- Set defaultlib to libphobos2.so
+
+-------------------------------------------------------------------
+Mon Mar  5 21:15:57 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to version 1.8.0
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Sun Feb 18 19:31:47 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to version 1.7.2
+  * more reliable retries and fallback mirror usage - pull (gh#dlang/dub#1339)
+
+-------------------------------------------------------------------
+Wed Jan 24 21:51:23 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to version 1.7.1
+  * Timeout requests to query mirror instead of hanging - pull (gh#dlang/dub#1338)
+- Change to %autosetup rpm macro
+
+-------------------------------------------------------------------
+Fri Jan  5 19:25:14 UTC 2018 - matthias.eliasson@gmail.com
+
+- Update to version 1.7.0
+  * No changelog was made available.
+- Move LICENCE.txt to %license macro in %files section
+
+-------------------------------------------------------------------
+Mon Jan  1 22:41:41 UTC 2018 - matthias.eliasson@gmail.com
+
+- Revert to original build script
+
+-------------------------------------------------------------------
+Thu Nov  9 19:36:04 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to version 1.6.0 
+  * The version list displayed for interactive package removal is now sorted
+  * File attributes of fetched packages are now preserved
+  * http://code-mirror.dlang.io is now used as a fallback for code.dlang.org
+  * Failed package downloads are now retried two more times (by Colin Grogan)
+- Run spec-cleaner
+- Get Dub to complie on i586 with some hints from Arch Linux package.  
+
+-------------------------------------------------------------------
+Wed Nov  8 08:38:15 UTC 2017 - jengelh@inai.de
+
+- RPM group fix.
+
+-------------------------------------------------------------------
+Sat Jun  3 11:44:58 UTC 2017 - mailaender@opensuse.org
+
+- update to version 1.3.0
+
+-------------------------------------------------------------------
+Fri Mar 24 17:29:51 UTC 2017 - mailaender@opensuse.org
+
+- Support https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Mar  9 20:41:59 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to 1.2.2
+
+-------------------------------------------------------------------
+Tue Sep 13 10:30:43 UTC 2016 - kgronlund@suse.com
+
+- Update to 1.0.0
+  * Implemented support for single-file packages, including shebang
+  script support - issue #103, pull #851, pull #866, pull #870, pull
+  #878
+  * Builds on DMD 2.065.0 up to 2.071.1
+  * Removed all deprecated functionality from the API, CLI and data
+  formats
+  * Switched from std.stream to std.stdio - pull #847 
+  * Now passes -vcolumns also to LDC - issue #859, pull #860
+  * Avoids superfluous registry queries when building - issue #831,
+  pull #861
+  * Fixed escaping of command line arguments with spaces for LDC -
+  issue #834, pull #860
+
+-------------------------------------------------------------------
+Sun May  8 18:11:01 UTC 2016 - jengelh@inai.de
+
+- Eliminate rpmlint-flagged __DATE__
+
+-------------------------------------------------------------------
+Sun Jan 24 12:17:12 UTC 2016 - t.gruner@katodev.de
+
+- Initial Version 0.9.24 - 2015-09
+

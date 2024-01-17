@@ -1,0 +1,5 @@
+<package name="python-apns2" project="openSUSE:Factory">
+  <title></title>
+  <description>A python library for interacting with the Apple Push Notification Service via HTTP/2 protocol</description>
+  <devel project="devel:languages:python" package="python-apns2"/>
+</package>

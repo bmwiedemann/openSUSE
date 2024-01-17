@@ -1,0 +1,20 @@
+/* -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*- */
+
+// create e.g 40-fudo-noauth-xxx and in there set
+// polkit._fudo_noauth_group = "xxx";
+polkit._fudo_noauth_group = null;
+polkit._fudo_selfauth_group = null;
+
+polkit.addRule(function(action, subject) {
+    if (action.id != 'org.freedesktop.machine1.host-shell')
+	  return polkit.Result.NOT_HANDLED;
+
+    if (polkit._fudo_noauth_group && subject.isInGroup(polkit._fudo_noauth_group))
+	  return polkit.Result.YES;
+
+    if (polkit._fudo_selfauth_group && subject.isInGroup(polkit._fudo_selfauth_group))
+	  return polkit.Result.AUTH_SELF;
+
+    return polkit.Result.NOT_HANDLED;
+});
+// vim: syntax=javascript sw=4 et

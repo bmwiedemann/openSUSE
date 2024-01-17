@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0069796916bdd13c0b65937a423490d5</srcmd5>
+    <version>0.4.0</version>
+    <time>1572277612</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>737406</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5521569d0860ec73077a93c2af5e8bce</srcmd5>
+    <version>0.5.0</version>
+    <time>1585667649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789774</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f7b942ee26335b6a68d9213d216f1d6f</srcmd5>
+    <version>0.5.0</version>
+    <time>1589579544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805803</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbbe145cb121fe38c47f255fb14d46f8</srcmd5>
+    <version>0.6.0</version>
+    <time>1595272142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821958</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>963ae9d4f118a5f72a5e784d74731e88</srcmd5>
+    <version>0.7.0</version>
+    <time>1596565330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824187</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fdb80e30e7f72daf50a95420e8089a47</srcmd5>
+    <version>0.7.0</version>
+    <time>1616104472</time>
+    <user>dimstar_suse</user>
+    <comment>- Add setup-parse-requirements.patch to use the correct property for
+  recent pip versions.</comment>
+    <requestid>879333</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6ff893167405277e147dc23df26dbb56</srcmd5>
+    <version>0.7.0</version>
+    <time>1631543075</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing tests gh#ixs/napalm-procurve#19.
+</comment>
+    <requestid>918666</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>fe11f1d49960656aeb257e1d6228a3f5</srcmd5>
+    <version>0.7.0</version>
+    <time>1661599282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999545</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>33d353ba3980d0aa7f27e801cb77fc95</srcmd5>
+    <version>0.7.0</version>
+    <time>1665034946</time>
+    <user>RBrownFactory</user>
+    <comment>- Add fix-linter.patch to remove pyflakes code check. Some files fails with the
+  newer version of pyflakes.
+</comment>
+    <requestid>1008196</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>2216d2ce3427854a13fab14ccd40da96</srcmd5>
+    <version>0.7.0</version>
+    <time>1673444156</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test test_get_facts (gh#ixs/napalm-procurve#30).
+</comment>
+    <requestid>1057734</requestid>
+  </revision>
+</revisionlist>

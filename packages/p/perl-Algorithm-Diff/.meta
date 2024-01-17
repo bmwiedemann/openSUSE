@@ -1,0 +1,9 @@
+<package name="perl-Algorithm-Diff" project="openSUSE:Factory">
+  <title>Compute 'Intelligent' Differences Between Two Files or Lists</title>
+  <description>This is a module for computing the difference between two files, two
+strings, or any other two lists of things.  It uses an intelligent
+algorithm similar to (or identical to) the one used by the Unix &quot;diff&quot;
+program.  It is guaranteed to find the *smallest possible* set of
+differences.</description>
+  <devel project="devel:languages:perl" package="perl-Algorithm-Diff"/>
+</package>

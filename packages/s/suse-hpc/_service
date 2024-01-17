@@ -1,0 +1,23 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/openSUSE/hpc.git</param>
+    <param name="package-meta">no</param>
+    <param name="exclude">.git</param>
+    <param name="filename">suse-hpc</param>
+    <param name="versionformat">0.5.%cd.%h</param>
+    <param name="revision">36e049da8d5c8bab1e78e15d7a26c91b58b12ff5</param>
+	<param name="extract">general/dlinfo.c</param>
+	<param name="extract">general/macros.hpc</param>
+	<param name="extract">general/hpc_elf.pl</param>
+	<param name="extract">general/hpc_elf.attr</param>
+	<param name="extract">general/hpc_elflib.attr</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">suse-hpc*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service mode="disabled" name="set_version">
+    <param name="basename">suse-hpc</param>
+  </service>
+</services>

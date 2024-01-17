@@ -1,0 +1,6 @@
+<package name="octave-forge-matgeom" project="openSUSE:Factory">
+  <title></title>
+  <description>Library for geometric computing extending MatGeom functions. Useful to create, transform, manipulate and display geometric primitives.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-matgeom"/>
+</package>

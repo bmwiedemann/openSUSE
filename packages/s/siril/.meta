@@ -1,0 +1,8 @@
+<package name="siril" project="openSUSE:Factory">
+  <title>An astronomical image processing software for Linux. (IRIS clone)</title>
+  <description>Siril is meant to be Iris for Linux (sirI-L). It is an astronomical image processing tool, able to convert, pre-process images, help aligning them automatically or manually, stack them and enhance final images.
+
+</description>
+  <devel project="graphics" package="siril"/>
+  <url>https://www.siril.org/</url>
+</package>

@@ -1,0 +1,11 @@
+<package name="orafce" project="openSUSE:Factory">
+  <title>Implementation of some Oracle functions into PostgreSQL</title>
+  <description>The goal of this project is implementation some functions from Oracle database.
+Some date functions (next_day, last_day, trunc, round, ...) are implemented
+now. Functionality was verified on Oracle 10g and module is useful
+for production work.
+
+</description>
+  <devel project="server:database:postgresql" package="orafce"/>
+  <url>https://github.com/orafce/orafce</url>
+</package>

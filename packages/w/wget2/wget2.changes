@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Fri Sep  1 11:56:36 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.0
+  * New option --follow-sitemaps
+  * New option --dane (cert validation via DNS)
+  * Implement --check-certificate=quiet
+  * Support proxies on non-default ports
+  * Added CIDR support for no_proxy (IPv4 and IPv6)
+  * Add decoding of numeric XML entities
+  * Support compilation of wget.h from C++
+  * Handle comments in robots.txt correctly
+
+-------------------------------------------------------------------
+Sat Jun  4 07:20:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Fix escaping space in query part
+  * Set EXIT_STATUS_NETWORK on error for the last try
+  * Fix -k/--convert-links fragment
+  * Fix escapng URLs with -k/--convert-links
+  * Fix false reporting of a PSL error
+  * Fix --directory-prefix with --content-disposition
+  * Allow spaces and \ escaping in passwords in .netrc
+  * Fix download abortion on some versions of Windows
+  * Fix --unlink behavior
+  * Fix deflate decompression when server omits the header
+  * WolfSSL: Fix buffer overflow in SHA512 hashing
+  * WolfSSL: Fix memory leak
+  * Add support for unquoted HTML attribute values
+  * OpenSSL: Fix several OCSP issues
+  * Use keep-alive for HTTP/1.1 and higher as default
+  * Don't create core dumps on CTRL-c
+  * Fix replacing Content-Type: headers
+  * Fix NULL pointer read / segfault
+  * Fix several build issues
+  * Fix several documentation issues
+
+-------------------------------------------------------------------
+Sat Feb 26 18:27:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
+Sun Sep 26 21:15:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.0
+- Drop test-buffer-printf.patch, test-dl.patch (no longer applies)
+
+-------------------------------------------------------------------
+Tue Apr 14 11:47:51 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- test-dl.patch, test-buffer-printf.patch: Fix undefined behviour in
+  testsuite
+
+-------------------------------------------------------------------
+Sat Sep  7 14:50:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to beta release 1.99.2
+  * Add new option --keep-extension, --retry-on-http-status,
+    --dns-cache-preload, -X/--exclude-directories,
+    -I/--include-directories, --save-content-on, --limit-rate,
+    --unlink, --start-pos, --no-if-modified-since, --ocsp-server,
+    --ocsp-nonce, --ocsp-date
+  * Add zstd decompression (RFC8478)
+  * Add TLSv1_x to --secure-protocol
+  * Add support for TCP FastOpen Linux 4.11+ style
+  * Add basic HTML entity decoding (RFC1866)
+  * Add TLS 1.3 post-handshake authentication
+  * Skip -np/--no-parent for CSS URLs
+
+-------------------------------------------------------------------
+Fri Oct 21 09:57:43 UTC 2016 - jengelh@inai.de
+
+- Initial package for build.opensuse.org (1.0~855)

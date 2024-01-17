@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a70c18f0e5cf050b74088db0c4553cd</srcmd5>
+    <version>3.0</version>
+    <time>1554458508</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>690914</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d3a70cf0a649ca45755297aba23ec30</srcmd5>
+    <version>3.0.1</version>
+    <time>1610381678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862218</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7f0be1dd979de2f5294256820c6c67cf</srcmd5>
+    <version>3.0.1</version>
+    <time>1620840732</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against the legacy guava20 any more
+</comment>
+    <requestid>892412</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ec9f70e529a971154892d8e5ba8920a6</srcmd5>
+    <version>3.0.1</version>
+    <time>1647889864</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963341</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>cb657f4c455e1fb352ddf57721168383</srcmd5>
+    <version>3.0.1</version>
+    <time>1694113967</time>
+    <user>anag+factory</user>
+    <comment>Decrease dependencies a bit</comment>
+    <requestid>1109323</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c60a612876621fab05bbedf6dce49c1e</srcmd5>
+    <version>3.2.1</version>
+    <time>1695853566</time>
+    <user>dimstar_suse</user>
+    <comment>3.2.1</comment>
+    <requestid>1113870</requestid>
+  </revision>
+</revisionlist>

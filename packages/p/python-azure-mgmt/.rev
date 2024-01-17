@@ -1,0 +1,319 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>534230594066d9be875d1563595f4c03</srcmd5>
+    <version>1.0.0</version>
+    <time>1507755479</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531815</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>686239ddf89a7411a64c6f568cb48b11</srcmd5>
+    <version>1.0.0</version>
+    <time>1518601917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576313</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d916e7be354d05ab1b5c34864549613</srcmd5>
+    <version>2.0.0</version>
+    <time>1526220291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605134</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60ce85e45f34f1aa91f52e73fcdadea9</srcmd5>
+    <version>4.0.0</version>
+    <time>1537971205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637942</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e29966f13376577859abffe24cf0449b</srcmd5>
+    <version>4.0.0</version>
+    <time>1557833986</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-security
+  + python-azure-mgmt-sqlvirtualmachine
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-advisor &amp;gt;= 2.0.1
+  + python-azure-mgmt-authorization &amp;gt;= 0.51.1
+  + python-azure-mgmt-batch &amp;gt;= 6.0.0
+  + python-azure-mgmt-batchai &amp;gt;= 2.0.0
+  + python-azure-mgmt-cdn &amp;gt;= 3.0.0
+  + python-azure-mgmt-cognitiveservices &amp;gt;= 3.0.0
+  + python-azure-mgmt-commerce &amp;gt;= 1.0.1
+  + python-azure-mgmt-compute &amp;gt;= 4.4.0
+  + python-azure-mgmt-consumption &amp;gt;= 2.0.0
+  + python-azure-mgmt-containerinstance &amp;gt;= 1.4.0
+  + python-azure-mgmt-containerregistry &amp;gt;= 2.7.0
+  + python-azure-mgmt-containerservice &amp;gt;= 4.4.0
+  + python-azure-mgmt-cosmosdb &amp;gt;= 0.5.2
+  + python-azure-mgmt-datafactory &amp;gt;= 0.7.0
+  + python-azure-mgmt-datamigration &amp;gt;= 2.1.0
+  + python-azure-mgmt-devtestlabs &amp;gt;= 3.0.0
+  + python-azure-mgmt-dns &amp;gt;= 2.1.0
+  + python-azure-mgmt-eventgrid &amp;gt;= 2.0.0
+  + python-azure-mgmt-eventhub &amp;gt;= 2.3.0
+  + python-azure-mgmt-hanaonazure &amp;gt;= 0.4.0
+  + python-azure-mgmt-hdinsight &amp;gt;= 0.2.1
+  + python-azure-mgmt-iotcentral &amp;gt;= 1.0.0
+  + python-azure-mgmt-iothub &amp;gt;= 0.7.0
+  + python-azure-mgmt-keyvault &amp;gt;= 1.1.0
+  + python-azure-mgmt-kusto &amp;gt;= 0.3.0
+  + python-azure-mgmt-logic &amp;gt;= 4.0.0 (forwarded request 694370 from glaubitz)</comment>
+    <requestid>694568</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8fc5eb21a98c25ed7939cd63f806cf39</srcmd5>
+    <version>4.0.0</version>
+    <time>1570710886</time>
+    <user>dimstar_suse</user>
+    <comment>- Resubmit with corrected Requires</comment>
+    <requestid>736687</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>2296b4bc820a16f5464998570e755220</srcmd5>
+    <version>4.0.0</version>
+    <time>1574945471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751543</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>a5138b600cbed7410ab153cbe018b828</srcmd5>
+    <version>4.0.0</version>
+    <time>1578950429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764092</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>7eced604e2eaac28b6d5ef1f793bbcb9</srcmd5>
+    <version>4.0.0</version>
+    <time>1580205427</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version numbers for component packages in Requires
+  + python-azure-mgmt-advisor &gt;= 3.0.0
+  + python-azure-mgmt-cdn &gt;= 4.0.0
+  + python-azure-mgmt-containerservice &gt;= 8.2.0
+  + python-azure-mgmt-datamigration &gt;= 4.0.0
+  + python-azure-mgmt-deploymentmanager &gt;= 0.2.0
+  + python-azure-mgmt-frontdoor &gt;= 0.3.
+  + python-azure-mgmt-hanaonazure &gt;= 0.12.0
+  + python-azure-mgmt-hdinsight &gt;= 1.4.0
+  + python-azure-mgmt-imagebuilder &gt;= 0.3.0
+  + python-azure-mgmt-iotcentral &gt;= 2.0.0
+  + python-azure-mgmt-iothub &gt;= 0.10.0
+  + python-azure-mgmt-kusto &gt;= 0.5.0
+  + python-azure-mgmt-media &gt;= 2.1.0
+  + python-azure-mgmt-netapp &gt;= 0.8.0
+  + python-azure-mgmt-network &gt;= 9.0.0
+  + python-azure-mgmt-recoveryservicesbackup &gt;= 0.6.0
+  + python-azure-mgmt-storagecache &gt;= 0.2.0
+  + python-azure-mgmt-storagesync &gt;= 0.2.0
+  + python-azure-mgmt-web &gt;= 0.44.0</comment>
+    <requestid>767870</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>0257d0e91bff18c9c15eec70beac0a9c</srcmd5>
+    <version>4.0.0</version>
+    <time>1582899605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778758</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>ef426eb09bf091f5ea8abb25108e0d7f</srcmd5>
+    <version>4.0.0</version>
+    <time>1583949199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783678</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>65ffdda0ab2df51b59e9f1a14c4a2e8a</srcmd5>
+    <version>4.0.0</version>
+    <time>1588538765</time>
+    <user>dimstar_suse</user>
+    <comment>- Please move into openSUSE:Factory:Staging:adi:27</comment>
+    <requestid>793751</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>5d1c5f70d9ae457af92ade0fd569aee9</srcmd5>
+    <version>4.0.0</version>
+    <time>1588971876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801173</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>4b1f98ca0d352362f5f91f11e423537f</srcmd5>
+    <version>4.0.0</version>
+    <time>1595865031</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>823011</requestid>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>3278379538a36e440ba4b7666489cc42</srcmd5>
+    <version>4.0.0</version>
+    <time>1597855992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827750</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>9bac2997aa9da6debbff83bd032593f4</srcmd5>
+    <version>4.0.0</version>
+    <time>1601652580</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version numbers for component packages in Requires
+  + python-azure-mgmt-containerservice &amp;gt;= 9.4.0
+  + python-azure-mgmt-eventhub &amp;gt;= 8.0.0
+  + python-azure-mgmt-network &amp;gt;= 16.0.0
+  + python-azure-mgmt-rdbms &amp;gt;= 3.0.0
+  + python-azure-mgmt-sql &amp;gt;= 0.21.0 (forwarded request 836300 from glaubitz)</comment>
+    <requestid>836335</requestid>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>a5012ea25ad80091ef6ff2113fb28eee</srcmd5>
+    <version>4.0.0</version>
+    <time>1602155591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version numbers for component packages in Requires
+  + python-azure-mgmt-appconfiguration &gt;= 1.0.1
+  + python-azure-mgmt-compute &gt;= 17.0.0
+  + python-azure-mgmt-hybridcompute &gt;= 2.0.0
+  + python-azure-mgmt-loganalytics &gt;= 1.0.0
+  + python-azure-mgmt-monitor &gt;= 1.0.1
+  + python-azure-mgmt-netapp &gt;= 0.13.0
+  + python-azure-mgmt-resource &gt;= 15.0.0
+  + python-azure-mgmt-search &gt;= 3.0.0
+  + python-azure-mgmt-servicebus &gt;= 1.0.0
+  + python-azure-mgmt-storage &gt;= 16.0.0
+  + python-azure-mgmt-synapse &gt;= 0.4.0
+  + python-azure-mgmt-web &gt;= 0.48.0</comment>
+    <requestid>840042</requestid>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>76d414987baeb284a9224ef56ba7ab4d</srcmd5>
+    <version>4.0.0</version>
+    <time>1602596604</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-automanage
+  + python-azure-mgmt-azurestackhci
+  + python-azure-mgmt-baremetalinfrastructure
+  + python-azure-mgmt-communication
+  + python-azure-mgmt-resourcemover
+  + python-azure-mgmt-streamanalytics (forwarded request 841256 from glaubitz)</comment>
+    <requestid>841297</requestid>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>ad21025a0a24275b998ea06a95906730</srcmd5>
+    <version>4.0.0</version>
+    <time>1605290336</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-cognitiveservices &amp;gt;= 6.3.0
+  + python-azure-mgmt-core &amp;gt;= 1.2.2
+  + python-azure-mgmt-keyvault &amp;gt;= 8.0.0
+  + python-azure-mgmt-sql &amp;gt;= 0.24.0
+  + python-azure-mgmt-subscription &amp;gt;= 0.7.0 (forwarded request 848165 from glaubitz)</comment>
+    <requestid>848199</requestid>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>439c928143c3772f8d5bcd2546d1336b</srcmd5>
+    <version>4.0.0</version>
+    <time>1606649201</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-databoxedge
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-attestation &gt;= 0.2.0
+  + python-azure-mgmt-billing &gt;= 1.0.0
+  + python-azure-mgmt-communication &gt;= 1.0.0b4
+  + python-azure-mgmt-compute &gt;= 18.0.0
+  + python-azure-mgmt-containerservice &gt;= 10.1.0
+  + python-azure-mgmt-datafactory &gt;= 0.14.0
+  + python-azure-mgmt-datamigration &gt;= 4.1.0
+  + python-azure-mgmt-hdinsight &gt;= 2.0.0
+  + python-azure-mgmt-healthcareapis &gt;= 0.2.0
+  + python-azure-mgmt-kusto &gt;= 0.10.0
+  + python-azure-mgmt-loganalytics &gt;= 2.0.0
+  + python-azure-mgmt-media &gt;= 3.0.0
+  + python-azure-mgmt-netapp &gt;= 0.14.0
+  + python-azure-mgmt-policyinsights &gt;= 0.6.0
+  + python-azure-mgmt-security &gt;= 0.6.0</comment>
+    <requestid>851004</requestid>
+  </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>7260c5b11d402eb00535802cd91f1bee</srcmd5>
+    <version>4.0.0</version>
+    <time>1607548573</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853883</requestid>
+  </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>bf2dcb7af5f20ec059082f83cbd88799</srcmd5>
+    <version>4.0.0</version>
+    <time>1611348612</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-azureadb2c
+  + python-azure-mgmt-confluent
+  + python-azure-mgmt-customproviders
+  + python-azure-mgmt-databox
+  + python-azure-mgmt-datadog
+  + python-azure-mgmt-hybridkubernetes
+  + python-azure-mgmt-maintenance
+  + python-azure-mgmt-portal
+  + python-azure-mgmt-powerbidedicated
+  + python-azure-mgmt-support
+  + python-azure-mgmt-timeseriesinsights
+- Remove all version constraints in Requires (forwarded request 861574 from glaubitz)</comment>
+    <requestid>861619</requestid>
+  </revision>
+  <revision rev="23" vrev="20">
+    <srcmd5>2280a06c90cb7903298019983bed8ed4</srcmd5>
+    <version>4.0.0</version>
+    <time>1647458454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962117</requestid>
+  </revision>
+  <revision rev="24" vrev="21">
+    <srcmd5>31da89ae13d8aec19a25b539dc282ad9</srcmd5>
+    <version>4.0.0</version>
+    <time>1647974428</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-app (forwarded request 963890 from glaubitz)</comment>
+    <requestid>963915</requestid>
+  </revision>
+  <revision rev="25" vrev="22">
+    <srcmd5>09d975b42c3b06913c3d82bee63ac357</srcmd5>
+    <version>4.0.0</version>
+    <time>1649370489</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-redisenterprise (forwarded request 967452 from glaubitz)</comment>
+    <requestid>967476</requestid>
+  </revision>
+  <revision rev="26" vrev="23">
+    <srcmd5>421a375785d5e1c54876a966336f598d</srcmd5>
+    <version>4.0.0</version>
+    <time>1649876772</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-dashboard
+  + python-azure-mgmt-securityinsight (forwarded request 969723 from glaubitz)</comment>
+    <requestid>969850</requestid>
+  </revision>
+</revisionlist>

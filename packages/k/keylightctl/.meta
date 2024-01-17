@@ -1,0 +1,6 @@
+<package name="keylightctl" project="openSUSE:Factory">
+  <title> CLI for managing Elgato Keylight (Air) </title>
+  <description>A command line tool for controlling Elgato Key Lights and Key Light Airs.</description>
+  <devel project="hardware" package="keylightctl"/>
+  <url>https://github.com/endocrimes/keylightctl</url>
+</package>

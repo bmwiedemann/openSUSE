@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Tue Jan  2 08:26:58 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- update year to 2024
+
+-------------------------------------------------------------------
+Thu Sep 28 14:29:10 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- add copyright and description header
+
+-------------------------------------------------------------------
+Mon Aug  7 08:16:03 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- refresh entrypoint scripts from upstream
+
+-------------------------------------------------------------------
+Mon Jul 24 12:54:31 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Fix base image naming in description label
+
+-------------------------------------------------------------------
+Sun Jul 23 09:35:12 UTC 2023 - SUSE Update Bot <bci-internal@suse.de>
+
+- First version of the NGINX BCI

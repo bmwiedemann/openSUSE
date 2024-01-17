@@ -1,0 +1,31 @@
+From 60f7cbc244359926016b1966588093d813571ddf Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 28 Apr 2020 15:20:53 +0200
+Subject: [PATCH 134/147] README: mention GNOME shell compatibility of this
+ version
+
+---
+ README.rst | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index 06ff7d9..e28ccc7 100644
+--- a/README.rst
++++ b/README.rst
+@@ -30,10 +30,11 @@ hamster`` which should bring up ``hamster-service`` and
+ ``hamster-windows-service``.
+ 
+ Install For Production
+-~~~~~~~~~~~~~~~~~~~~~~~
++~~~~~~~~~~~~~~~~~~~~~~
+ The extension is available on `the central extension repository <https://extensions.gnome.org/extension/425/project-hamster-extension>`_.
+ 
+-Current compatible Gnome shell version: 3.30
++Current compatible Gnome shell version: 3.32. *This version is not compatible
++with Gnome shell 3.30 and earlier.*
+ For previous shell versions check `releases <https://github.com/projecthamster/hamster-shell-extension/tags>`_.
+ 
+ Creating a development environment
+-- 
+2.31.1
+

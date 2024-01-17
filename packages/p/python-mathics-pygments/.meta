@@ -1,0 +1,9 @@
+<package name="python-mathics-pygments" project="openSUSE:Factory">
+  <title>Mathematica/Wolfram Language Lexer for Pygments</title>
+  <description>A lexer and highlighter for Mathematica/Wolfram Language source code using the
+pygments engine.
+
+</description>
+  <devel project="science" package="python-mathics-pygments"/>
+  <url>http://github.com/Mathics3/mathics-pygments/</url>
+</package>

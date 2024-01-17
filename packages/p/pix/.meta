@@ -1,0 +1,6 @@
+<package name="pix" project="openSUSE:Factory">
+  <title>Image viewer and browser utility</title>
+  <description>pix lets you browse your hard disk, showing you thumbnails of image files.
+It also lets you view single files (including GIF animations), add comments to images, organise images in catalogs, print images, view slide shows, set your desktop background, and more.</description>
+  <devel project="X11:Cinnamon:Factory" package="pix"/>
+</package>

@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri May 29 10:59:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Replace nose with pytest
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:05 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 24 13:57:39 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Tue Apr 12 23:12:21 UTC 2016 - badshah400@gmail.com
+
+- Initial package.
+
+

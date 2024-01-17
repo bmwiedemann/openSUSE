@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/google/jwt_verify_lib</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">jwt_verify_lib</param>
+    <param name="versionformat">%cd</param>
+    <param name="revision">9f10e2d60d42edeb6662e185707a7d6a4ebc5604</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

@@ -1,0 +1,740 @@
+-------------------------------------------------------------------
+Fri Jan 12 13:11:26 UTC 2024 - pgajdos@suse.com
+
+- have a possibility to not use pyarrow for testing [bsc#1218592]
+
+-------------------------------------------------------------------
+Sat Dec 16 12:44:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.2:
+  * top-level glob in ZIP (#1454)
+  * append mode on local ZIP files/truncate (#1449)
+  * restrict ":" as protocol marker to data: (#1452)
+  * sftp relative paths (#1451)
+  * http encoding in HTTP FS put_file (#1450)
+
+-------------------------------------------------------------------
+Thu Dec  7 21:30:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.1:
+  * Remove trailing "/" from directory names in zipFS (#1445)
+  * allow HTTP size guess in more circumstances (#1440)
+  * allow kwargs passed to GUI to be dict (#1437)
+  * transaction support for writing via a cache FS (#1434)
+  * make cached FSs work better with async backends (#1429)
+  * allow FSs to set their transaction implementation (#1424)
+  * add dataFS (#1421, 1415)
+  * allow basic auth in webHDFS (#1409)
+  * in referenceFS, maintain order when some keys are omitted in
+    cat (#1436)
+  * nested subdirectory listing in referenceFS (#1433)
+  * allow "=" in webHDF paths (#1428)
+  * fix file mode to consistent "r+b" format (#1426)
+  * pass on kwargs in HTTP glob (#1422)
+  * allow Path in can_be_local and open_local (#1419, #1418)
+  * fix parent for cachedFS (#1413)
+  * "ends" list in _cat_ranges was incorrect (#1402)
+
+-------------------------------------------------------------------
+Tue Nov 14 20:22:08 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2023.10.0
+ *  alias "local://" to "file://" (#1381)
+ * get size of file cache (#1377)
+ * stop unexpected kwargs for SMB (#1391)
+ * dos formatting (#1383)
+ * small optimisations in referenceFS (#1393)
+ * define ordering behaviour for entrypoints (#1389)
+ * add LazyReferenceMapper to API docs (#1378)
+
+-------------------------------------------------------------------
+Thu Oct  5 08:54:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.9.2:
+  * revert #1358: auto_mkdir in open() (#1365)
+  * code style updates (#1373, 1372, 1371, 1370, 1369, 1364)
+  * update CI setup (#1386)
+- 2023.9.1
+  * #1353, save file cache metadata in JSON
+  * #1352, remove some unnecessary list iterations
+  * #1361, re-allow None for default port for SMB
+  * #1360, initialising GUI widget FS with kwargs
+  * #1358, pass auto_mkdir vi url_to_fs again
+  * #1354, auto delete temp cache directory
+- 2023.9.0
+  * #1346, add ocilake protocol
+  * #1345, implement async-sync and async-async generic cp and
+    rsync
+  * #1344, add lakefs protocol
+  * #1337 add goatcounter to docs
+  * #1323, 1328, add xethub protocol
+  * #1320, in HTTP, check content-encoding when getting length
+  * #1303, add on_error in walk
+  * #1302, add dirfs attribute to mappers
+  * #1293, configure port for smb
+  * #1349, don't reorder paths in bulk ops if source and dest are
+    both lists
+  * #1333, allow mode="x" in get_fs_token_paths
+  * #1324, allow generic to work with complex URLs
+  * #1316, exclude bytes-cache kwargs in url_to_fs
+  * #1314, remote utcnow/utcfromtimestamp
+  * #1311, dirFS's protocol
+  * #1305, use get_file rather than get in file caching
+  * #1295, allow bz2 to be optional
+  * #1340, 1339, 1329 more bulk ops testing
+  * #1326, 1296 separate out classes in file caching for future
+    enhancements
+
+-------------------------------------------------------------------
+Wed Jul  5 08:46:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.6.0
+  # Enhancements
+  * #1259, add maxdepth fo cp/get/put
+  * #1263, allow dir modification during walk()
+  * #1264, add boxfs to registry
+  * #1266, optimise referenceFS lazy lookups, especially for
+    writing parquet
+  * #1287, 1288 "encoding" for FTP
+  # Fixes
+  * #1273, (re)allow reading .zstd reference sets
+  * #1275, resource.error for win32
+  * #1278, range reads in dbfs
+  * #1282, create parent directories in get_file
+  * #1283, off-by-one in reference block writing
+  * #1286, strip protocol in local rm_file
+  # Other
+  * #1267, async bulk tests
+  * #1268, types and mypy
+  * #1277, 1279, drop outdated forms io.open, IOError
+
+-------------------------------------------------------------------
+Tue May 30 11:16:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.5.0:
+  * #1236, allow writing ReferenceFS references directly to
+    parquet
+  * #1255, copy of glob to single output directory
+  * #1254, non-recursive copy of directory (no-op)
+  * #1253, cleanup fix on close of ZIP FS
+  * #1250, ignore dirs when copying list of files
+  * #1249, don't error on register without clobber is registering
+    same thing again
+  * #1245, special case for other_files and relative path
+  * Other
+  * #1248, add test harness into released wheel package
+  * #1247, docs and tests around common bulk file operations
+  * 2023.4.0
+  * #1225, comprehensive docs of expected behaviour of cp/get/put
+    and tests
+  * #1216, test harness for any backend
+  * #1224, small fixes in reference and dask FSs
+  * #1218, mv is no-op when origin and destination are the same
+  * #1217, await in AbstractStreamedFile
+  * #1215, docbuild fixes
+  * #1214, unneeded maxdepth manipulation in expand_path
+  * #1213, pyarros and posixpath related test fixes
+  * #1211, BackgroundBlockCache: keep a block longer if not yet
+    used
+  * #1210, webHDFS: location parameter
+  * Other
+  * #1241, add HfFileSystem to registry
+  * #1237, register_implementation clobber default changes to
+    False
+  * #1228, "full" and "devel" installation options
+  * #1227, register_cache and reporting collision
+  * #1221, docs about implementations and protocols
+
+-------------------------------------------------------------------
+Sun Apr  2 14:27:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- migrate to PEP517
+- Enable pyarrow tests
+- Reenable distributed test for python311
+
+-------------------------------------------------------------------
+Fri Mar 24 14:09:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.0
+  ## Enhancements
+  * #1201, add directory FS to the registry and constructable from URLs
+  * #1194, allow JSON for setting dict-like kwargs in the config
+  * #1181, give arrow FS proper place in the registry
+  * #1178, add experimental background-thread buffering cache
+  * #1162, make ZipFS writable
+  ## Fixes
+  * #1202, fix on_error="omit" when using caching's cat
+  * #1199, 1163, get/put/cp consistency and empty directories
+  * #1197, 1183 use bytes for setting value on mapper using numpy
+  * #1191, clean up open files in spec get_file
+  * #1164, pass on kwargs correctly to http
+  ## Other
+  * #1186, make seekable=True default for pyarrow files
+  * #1184, 1185, set minimum python version to 3.8
+- Release 2023.1.0
+  ## Enhancements
+  * experimental DFReferenceFileSystem (#1157, 1138)
+  * pyarrow seeking (#1154)
+  * tar thread safety (#1132)
+  * fsid method (#1122)
+  ## Fixes
+  * ReferenceFS order fix (#1158)
+  * fix du and maxdepth (#1128, 1151)
+  * http ranges (#1141)
+  ## Other
+  * coverage on referenceFS (#1133, 1123)
+  * docs (#1152, 1150)
+  * remove code duplication in unchain (#1143, 1156, 1121)
+- Skip testing distributed for Python 3.11: no numba yet
+
+-------------------------------------------------------------------
+Sat Nov 19 14:48:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.11.0
+  ## Enhancements
+  * Speed up FSMap._key_to_str (#1101)
+  * Add modified/created to Memory and Arrow (#1096)
+  * Clear expired cache method (#1092)
+  * Allow seekable arrow file (#1091)
+  * Allow append for arrow (#1089)
+  * recursive for sftp.get (#1082)
+  * topdown arg to walk() (#1081)
+  ## Fixes
+  * fix doc warnings (#1106, #1084)
+  * Fix HDFS _strip_protocol (#1103)
+  * Allow URLs with protocol for HDFS (#1099)
+  * yarl in doc deps (#1095)
+  * missing await in genericFS.cp (#1094)
+  * explicit IPv4 for test HTTP server (#1088)
+  * sort when merging ranges for referenceFS (#1087)
+  ## Other
+  * Check that snappy is snappy (#1079)
+
+-------------------------------------------------------------------
+Fri Oct 28 17:10:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022.10.0
+  Enhancements
+  * referenceFS consolidates reads in the same remote file (#1063)
+  * localfs: add link/symlink/islink (#1059)
+  * asyncfs: make mirroring methods optional (#1054)
+  * local: info: provide st_ino and st_nlink from stat (#1053)
+  * arrow_hdfs replaces hdfs (#1051)
+  * Add read/write_text (#1047)
+  * Add pipe/cat to genericFS (#1038)
+  Fixes
+  * SSH write doesn’t return number of bytes (#1072)
+  * wrap flush method for LocalFileOpened (#1070)
+  * localfs: fix support for pathlib/os.PathLike objects in rm (#1058)
+  * don’t get_file remote FTP directory (#1056)
+  * fix zip write to remote (#1046)
+  * fix zip del following failed init (#1040)
+  Other
+  * add asynclocalfs to the registry (#1060)
+  * add DVCFileSystem to the registry (#1049)
+  * add downstream tests (#1037)
+  * Don’t auto-close OpenFiles (#1035)
+
+-------------------------------------------------------------------
+Fri Oct 14 11:11:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with python-s3fs: It is pinning aiobotocore which
+  does not play well with a rolling distro
+  gh#fsspec/s3fs#615, gh#aio-libs/aiobotocore#971
+
+-------------------------------------------------------------------
+Wed Sep 28 19:37:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022.8.2
+  * don’t close OpenFile on del (#1035)
+
+- Update to 2022.8.1
+  * revert #1024 (#1029), with strciter requirements on OpenFile usage
+
+- Update to 2022.8.0
+  Enhancements
+  * writable ZipFileSystem (#1017)
+  * make OpenFile behave like files and remove dynamic closer in .open() (#1024)
+  * use isal gunzip (#1008)
+  Fixes
+  * remove strip from _parent (#1022)
+  * disallow aiohttp prereleases (#1018)
+  * be sure to close cached file (#1016)
+  * async rm in reverse order (#1014)
+  * expose fileno in LocalFileOpener (#1010, #1005)
+  * remove temp files with simplecache writing (#1006)
+  * azure paths (#1003)
+  copy dircache keys before iter
+
+- Update to 2022.7.1
+  Fixes
+  * Remove fspath from LocalFileOpener (#1005)
+  * Revert 988 (#1003)
+
+- Update to 2022.7.0
+  Enhancements
+  * added fsspec-xrootd implementation to registry (#1000)
+  * memory file not to copy bytes (#999)
+  * Filie details passed to FUSE (#972)
+  Fixes
+  * Return info for root path of archives (#996)
+  * arbitrary kwargs passed through in pipe_file (#993)
+  * special cases for host in URLs for azure (#988)
+  * unstrip protocol criterion (#980)
+  * HTTPFile serialisation (#973)
+  Other
+  * Show erroring path in FileNotFounds (#989)
+  * Reference file info without searching directory tree (#985)
+  * Truncate for local files (#975)
+
+-------------------------------------------------------------------
+Wed Jun 29 09:00:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update ot 2022.5.0
+  Enhancements
+  * mutable ReferenceFS (#958)
+  Fixes
+  * Make archive FSs not cachable (#966)
+  * glob fixes (#961)
+  * generic copy with unknown size (#959)
+  * zstd open (#956)
+  * empty archive file (#954)
+  * tar chaining (#950, 947)
+  * missing exceptions in mapper (#940)
+  Other
+  * update registry (#852)
+  * allow None cache (#942)
+  * mappers to remember init arguments (#939)
+  * cache docstrings (#933)
+
+-------------------------------------------------------------------
+Mon Apr  4 09:08:29 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2022.3.0
+  Enhancements
+  * tqdm example callback with simple methods (#931, 902)
+  * Allow empty root in get_mapper (#930)
+  * implement real info for reference FS (#919)
+  * list known implementations and compressions (#913)
+  Fixes
+  * git branch for testing git backend (#929)
+  * maintaine mem FS's root (#926)
+  * kargs to FS in parquet module (#921)
+  * fix on_error in references (#917)
+  * tar ls consistency (#9114)
+  * pyarrow: don't decompress twice (#911)
+  * fix FUSE tests (#905)
+
+-------------------------------------------------------------------
+Tue Feb 22 23:01:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2022.02.0:
+  - reference FS performance
+  - directory/prefix FS
+  - FUSE
+  - iteration in threads
+  - OpenFiles slicing
+  - drop py36
+
+-------------------------------------------------------------------
+Mon Jan 24 17:08:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.1.0
+  * Fix blocks cache metadata (#746)
+  * Fix default SMB port (#853)
+  * Fix caching fixes (#856, 855)
+  * Fix explicit close for http files (#866)
+  * Fix put_file to continue when no bytes (#869, 870)
+  * temporary files location (#851, 871)
+  * async abstract methods (#858, 859, 860)
+  * md5 for FIPS (#872)
+  * remove deprecated pyarrow/distutils (#880, 881)
+- Update flavored requirements: python36 no longer exists,
+  python-distributed does not support python310 yet.
+
+-------------------------------------------------------------------
+Fri Dec 24 23:06:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Release 2021.11.1
+  Enhancements
+  * allow compression for fs.open (#826)
+  * batch more async operations (#824)
+  * allow github backend for alternate URL (#815)
+  * speec up reference filesystem (#811)
+  Fixes
+  * fixes for parquet functionality (#821, 817)
+  * typos and docs (#839, 833, 816)
+  * local root (#829)
+  Other
+  * remove BlockSizeError for http (#830)
+- Release 2021.11.0
+  Enhancement
+  * parquet-specific module and cache type (#813, #806)
+  Fixes
+  * empty ranges (#802, 801, 803)
+  * doc typos (#791, 808)
+  * entrypoints processing (#784)
+  * cat in ZIP (#789)
+  Other
+  * move to fsspec org
+  * doc deps (#786, 791)
+- Release 2021.10.1
+  Fixes
+  * Removed inaccurate ZipFileSystem.cat() override so that the base class' version is used (#789)
+  * fix entrypoint processing (#784)
+  * case where no blocks of a block-cache have yet been loaded (#801)
+  * don't fetch empty ranges (#802, 803)
+  Other
+  * simplify doc deps (#786, 791)
+- Release 2021.10.0
+  Fixes
+  * only close http connector if present (#779)
+  * hdfs strip protocol (#778)
+  * fix filecache with check_files (#772)
+  * put_file to use _parent (#771)
+  Other
+  * add kedro link (#781)
+- Release 2021.09.0
+  Enhancement
+  * http put from file-like (#764)
+  * implement webhdfs cp/rm_file (#762)
+  * multiple (and concurrent) cat_ranges (#744)
+  Fixes
+  * sphinx warnings (#769)
+  * lexists for links (#757)
+  * update versioneer (#750)
+  * hdfs updates (#749)
+  * propagate async timeout error (#746)
+  * fix local file seekable (#743)
+  * fix http isdir when does not exist (#741)
+  Other
+  * ocifs, arrow added (#754, #765)
+  * promote url_to_fs to top level (#753)
+
+-------------------------------------------------------------------
+Tue Sep 21 10:00:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.8.1
+  * HTTP get_file/put_file APIs now support callbacks (#731)
+  * New HTTP put_file method for transferring data to the remote
+    server (chunked) (#731)
+  * Customizable HTTP client initializers (through passing
+    get_client argument) (#731, #701)
+  * Support for various checksum / fingerprint headers in HTTP
+    info() (#731)
+  * local implementation of rm_file (#736)
+  * local speed improvements (#711)
+  * sharing options in SMB (#706)
+  * streaming cat/get for ftp (#700)
+  * check for remote directory when putting (#737)
+  * storage_option update handling (#734(
+  * await HTTP call before checking status (#726)
+  * ftp connect (#722)
+  * bytes conversion of times in mapper (#721)
+  * variable overwrite in WholeFileCache cat (#719)
+  * http file size again (#718)
+  * rm and create directories in ftp (#716, #703)
+  * list of files in async put (#713)
+  * bytes to dict in cat (#710)
+- Drop fsspec-pr710-bytesreturn.patch merged upstream
+
+-------------------------------------------------------------------
+Mon Aug 23 17:04:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add fsspec-pr710-bytesreturn.patch in order to fix zarr
+  * gh#intake/filesystem_spec#710
+  * gh#zarr-developers/zarr-python#812
+
+-------------------------------------------------------------------
+Sun Aug  8 15:32:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.07.0
+  * no release notes
+- Release 2021.06.1
+  * Introduce fsspec.asyn.fsspec_loop to temporarily switch to the
+    fsspec loop. (#671)
+  * support list for local rm (#678)
+  * error when local mkdir twice (#679)
+  * fix local info regression for pathlike (#667)
+  * link to wandbfs (#664)
+- Release 2021.06.0
+  * Better testing and folder handling for Memory (#654)
+  * Negative indexes for cat_file (#653)
+  * optimize local file listing (#647)
+  * FileNoteFound in http and range exception subclass (#649, 646)
+  * async timeouts (#643, 645)
+  * stringify path for pyarrow legacy (#630)
+  * The fsspec.asyn.get_loop() will always return a loop of a
+    selector policy (#658)
+  * add helper to construct Range headers for cat_file (#655)
+
+-------------------------------------------------------------------
+Thu May 20 13:22:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.05.0
+  * Enable listings cache for HTTP filesystem (#560)
+  * Fold ZipFileSystem and LibArchiveFileSystem into a generic
+    implementation and add new TarFileSystem (#561)
+  * Use throttling for the ``get``/``put`` methods of
+    ``AsyncFileSystem``.
+- Release 2021.04.0
+  * Major changes: calendar versioning
+  * better link and size finding for HTTP (#610, %99)
+  * link following in Local (#608)
+  * ReferenceFileSystem dev (#606, #604, #602)
+  * Fix: drop metadata dep (#605)
+
+-------------------------------------------------------------------
+Thu Apr 15 13:10:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.9
+  * avoid nested sync calls by copying code (#581, #586, docs #593)
+  * release again for py36 (#564, #575)
+  * logging in mmap cacher, explicitly close files (#559)
+  * make LocalFileOpener an IOBase (#589)
+  * better reference file system (#568, #582, #584, #585)
+  * first-chunk cache (#580)
+  * sftp listdir (#571)
+  * http logging and fetch all (#551, #558)
+  * doc: entry points (#548)
+  * get_mapper for caching filesystems (#559)
+  * fix cross-device file move (#547)
+  * store paths without trailing "/" for DBFS (#557)
+  * errors that happen on _initiate_upload when closing the
+    AbstractBufferedFile will now be propagated (#587)
+  * infer_compressions with upper case suffix ($595)
+  * file initialiser errors (#587)
+  * CI fix (#563)
+  * local file commit cross-device (#547)
+- Version 0.8.7
+  * fix error with pyarrow metadata for some pythons (#546)
+- Version 0.8.6
+  * Add dbfs:// support (#504, #514)
+  * don't import pyarrow (#503)
+  * update entry points syntax (#515)
+  * ci precommit hooks (#534)
+  * random appending of a directory within the filesystems find()
+    method (#507, 537)
+  * fix git tests (#501)
+  * fix recursive memfs operations (#502)
+  * fix recorsive/maxdepth for cp (#508)
+  * fix listings cache timeout (#513)
+  * big endian bytes tests (#519)
+  * docs syntax (#535, 524, 520, 542)
+  * transactions and reads (#533)
+- Don't test with distributed on python36 -- not available anymore
+
+-------------------------------------------------------------------
+Mon Feb 22 16:55:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update python36 requirements. Don't try to test nonexistent
+  optional python36-numpy and -panel
+
+-------------------------------------------------------------------
+Mon Jan  4 17:59:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Test in _multibuild in order to break build dependency cycles
+
+-------------------------------------------------------------------
+Mon Dec 28 15:19:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.8.5
+  Features:
+  * config system
+  * libarchive implementation
+  * add reference file system implementation
+- Changes in version 0.8.4
+  Features:
+  * function can_be_local to see whether URL is compatible with
+    open_local
+  * concurrent cat with filecaches, if backend supports it
+  * jupyter FS
+  Fixes:
+  * dircache expiry after transaction
+  * blockcache garbage collection
+  * close for HDFS
+  * windows tests
+  * glob depth with "**"
+- Changes in version 0.8.3
+  Features:
+  * error options for cat
+  * memory fs created time in detailed ls
+  Fixes:
+  * duplicate directories could appear in MemoryFileSystem
+  * Added support for hat dollar lbrace rbrace regex character
+    escapes in glob
+  * Fix blockcache (was doing unnecessary work)
+  * handle multibyte dtypes in readinto
+  * Fix missing kwargs in call to _copy in asyn
+  Other:
+  * Stop inheriting from pyarrow.filesystem for pyarrow>=2.0
+  * Raise low-level program friendly OSError.
+  * Guard against instance reuse in new processes
+  * Make hash_name a method on CachingFileSystem to make it easier
+    to change.
+  * Use get_event_loop for py3.6 compatibility
+ - Changes in version 0.8.2
+  Fixes:
+  * More careful strip for caching
+  * Version 0.8.1
+  Features:
+  * add sign to base class
+  * Allow calling of coroutines from normal code when running async
+  * Implement writing for cached many files
+  * Allow concurrent caching of remote files
+  * Add gdrive:// protocol
+  Fixes:
+  * Fix memfs with exact ls
+  * HTTPFileSystem requires requests and aiohttp in registry
+  Other:
+  * Allow http kwargs to clientSession
+  * Use extras_require in setup.py for optional dependencies
+  * Replacing md5 with sha256 for hash (CVE req)
+  * Test against Python 3.8, drop 3.5 testing
+  * add az alias for abfs
+- Get source tarball from PyPI instead of GitHub
+- BuildRequires and Suggests extra stuff and test it, where
+  possible
+
+-------------------------------------------------------------------
+Mon Sep  7 13:23:31 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.0:
+  *  Change channel order for s3fs test
+  *  Add aiobotocore to dpes for s3fs check
+  *  test_local: fix username not in home path (#253)
+  *  Tighten cacheFS if dir deleted and open_local behaviour
+  *  Add test and docs
+  *  Attempt at context for multiple files
+  *  #355 typo fixed
+  *  Fix race condition of lzma import when using threads
+  *  Small change to methods in async not to overwrite
+  *  remove debugging print
+  *  properly rewind MemoryFile
+  *  Make sync functions in asyn to avoid nedsted cals to sync()
+  *  Bail when unchaining if only one element
+  *  Update fsspec/tests/test_api.py
+  *  Fix local mv
+  *  Document async, and ensure docstrings
+  *  included smb:// in api docs
+  *  fix smbprotocol[kerberos] docs on smb://
+  *  smb:// wrap in SMBFileOpener instead of patching open_file
+  *  pass glob kwargs to super class from local fs
+  *  add test for local fs glob detail arg
+  *  improve docs for smb protocol
+  *  clean memfs
+  *  fix CI failure for remote black complaining extra commas
+  *  refactor smb functions from smv review issue
+  *  fixed many pylint nitpicks in smb suport modules
+  *  Remove chunk access; add mapper methods
+  *  fixed typo "gui" => "gid"
+  *  address review issues of smb:// protocol PR #340
+  *  Use downstream URL paths when using {block,file,simple}cache in the middle.
+  *  add smbprotocol as deps for the CI build
+  *  handle smb:// protocol using smbprotocol package
+  *  Implement maybe_sync and text for using http in async
+  *  Add "pipe" and async version
+  *  Fix caching (needed cat_file)
+  *  Set default clobber=True on impl register
+  *  Add docs, more methods and one test-ish
+  *  Use skip_instance_cache instead of using a fixture for blockcache_workflow test
+  *  Show that chaining zip::zip::file works
+  *  Reproduce #334 in a test case
+  *  Convert unpickled cached file blocks info from list to set.
+  *  Async restructure and back-n-forth
+  *  Show #333 can be replicated
+  *  Create a disable_fs_caching pytest fixture
+  *  Revert "Force MMapCache blocks to "set" type"
+  *  Use "/".join instead of os.path.join in tests.
+  *  Try to replicate the blockcache bug
+  *  Use self._parent instead of os.dirname
+  *  Remove ZipFS feature flag to use AbstractFS info implementation
+  *  Test find behavior for ZipFileSystem
+  *  Use fsspec.filesystem("zip", ...) instead of get_filesystem_cls("zip")(...)
+  *  Force MMapCache blocks to "set" type
+  *  Remove unused monkeypatch, and use 1000 instead of 1_000
+  *  Only use the base vs cache implementation when we compare the results directly
+  *  Add flag to select the old zip.info() implementation
+  *  Add pytest-benchmark as dev dependency
+  *  Add cached version of ZipFileSystem.info
+  *  Test implicit directories as well.
+  *  Add unit test for zip.info
+  *  Add s3fs dep (was there before?)
+  *  Use _get_kwargs_from_url when unchaining
+  *  Fix local file ops
+  *  Don't check exists in expand_path
+  *  Reduce cache miss on read-ahead
+  *  mismatch test & shutil.move
+  *  re-allow Path object
+  *  Add mcat to http
+  *  Add newline to openfile reduce
+  *  Test multi-download
+  *  fix memfs dir recursive and add test
+  *  Fix recursive and some memfs dirs
+  *  add aiohttp to test deps
+  *  Tighten up mkdir/rmdir for memfs
+  *  Fix cache for downloads
+  *  add doc example and test
+  *  Make simplecache writable
+  *  Add cache_type and cache_options to HTTPFileSystem constructore
+  *  Do unchain one level deeper
+  *  Make LocalFileOpener iterable
+  *  Fix pickling of LocalFileOpener
+
+-------------------------------------------------------------------
+Wed Jun 24 03:58:37 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.4:
+  * No upstream changelog.
+- Add numpy to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Nov 20 14:14:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.6.0:
+  * Fixed issues with filesystem instance caching. This was causing authorization errors in downstream libraries like gcsfs and s3fs in multi-threaded code (:pr:`155`, :pr:`181`)
+  * Changed the default file caching strategy to :class:`fsspec.caching.ReadAheadCache` (:pr:`193`)
+  * Moved file caches to the new fsspec.caching module. They're still available from their old location in fsspec.core, but we recommend using the new location for new code (:pr:`195`)
+  * Added a new file caching strategy, :class:`fsspec.caching.BlockCache` for fetching and caching file reads in blocks (:pr:`191`).
+  * Fixed equality checks for file system instance to return False when compared to objects other than file systems (:pr:`192`)
+  * Fixed a bug in :meth:`fsspec.FSMap.keys` returning a generator, which was consumed upon iteration (:pr:`189`).
+  * Removed the magic addition of aliases in AbstractFileSystem.__init__. Now alias methods are always present (:pr:`177`)
+  * Deprecated passing trim to :class:`fsspec.spec.AbstractBufferedFile`. Pass it in storage_options instead (:pr:`188`)
+  * Improved handling of requests for :class:`fsspec.implementations.http.HTTPFileSystem` when the HTTP server responds with an (incorrect) content-length of 0 (:pr:`163`)
+  * Added a detail=True parameter to :meth:`fsspec.spec.AbstractFileSystem.ls` (:pr:`168`)
+  * Fixed handling of UNC/DFS paths (:issue:`154`)
+
+-------------------------------------------------------------------
+Wed Oct 16 13:06:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.2:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Tue Sep 24 11:48:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.1:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Thu Sep 12 11:59:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.4:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Thu Aug  1 09:17:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.0:
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Tue Jul 30 14:02:33 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.3.6
+  * no upstream change log found
+
+-------------------------------------------------------------------
+Mon Jul 22 16:32:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

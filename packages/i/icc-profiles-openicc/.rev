@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a4b36273351f00b209009ae0a97ad33</srcmd5>
+    <version>unknown</version>
+    <time>1316619443</time>
+    <user>saschpe</user>
+    <comment>I want to maintain icc-profiles-openicc in factory and would like to use multimedia:color_management as development base. This is the first package containing code. rev6</comment>
+    <requestid>84213</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>03e03af92a44ad65aae1f7612a7b20bb</srcmd5>
+    <version>unknown</version>
+    <time>1316681178</time>
+    <user>saschpe</user>
+    <comment>removed prefix as requested by saschpe</comment>
+    <requestid>84236</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d86dd408eb36e65dcb1258718ed6f5f3</srcmd5>
+    <version>unknown</version>
+    <time>1317909865</time>
+    <user>lrupp</user>
+    <comment>Pushing to Factory</comment>
+    <requestid>86635</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d86dd408eb36e65dcb1258718ed6f5f3</srcmd5>
+    <version>unknown</version>
+    <time>1319181981</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>9ebee8979a4268803e80e2578452ba51</srcmd5>
+    <version>unknown</version>
+    <time>1319822579</time>
+    <user>coolo</user>
+    <comment>- remove vendor tag, the vendor is defined by the project config</comment>
+    <requestid>89620</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>7eed8787c11eae7331ced1da6d9bbd01</srcmd5>
+    <version>unknown</version>
+    <time>1323191934</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>67e1fd2240d9f8a0988581415c9a6f8b</srcmd5>
+    <version>unknown</version>
+    <time>1336653119</time>
+    <user>coolo</user>
+    <comment>changlog is now as requested</comment>
+    <requestid>118843</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>67e1fd2240d9f8a0988581415c9a6f8b</srcmd5>
+    <version>unknown</version>
+    <time>1340183450</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>67e1fd2240d9f8a0988581415c9a6f8b</srcmd5>
+    <version>unknown</version>
+    <time>1359109066</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>67e1fd2240d9f8a0988581415c9a6f8b</srcmd5>
+    <version>unknown</version>
+    <time>1379662648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>67e1fd2240d9f8a0988581415c9a6f8b</srcmd5>
+    <version>unknown</version>
+    <time>1409301204</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

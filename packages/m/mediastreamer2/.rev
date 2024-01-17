@@ -1,0 +1,646 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4005d5fdf33b8d403032144c23336507</srcmd5>
+    <version>2.8.2</version>
+    <time>1351193179</time>
+    <user>coolo</user>
+    <comment>required by kopete to end the dependency on linphone https://bugzilla.novell.com/show_bug.cgi?id=784728</comment>
+    <requestid>139161</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4005d5fdf33b8d403032144c23336507</srcmd5>
+    <version>2.8.2</version>
+    <time>1359109439</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0c3f33521a14e90350965141950f397a</srcmd5>
+    <version>2.8.2</version>
+    <time>1370516764</time>
+    <user>coolo</user>
+    <comment>- Add 0001-Fixes-for-new-versions-of-ffmpeg.patch: fix for new
+  ffmpeg API.
+- Spec cleanup.
+- Call ldconfig for shared library.
+- Enable conditional build for &quot;video&quot; configure option. (forwarded request 177397 from Fisiu)</comment>
+    <requestid>177765</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b9722a17427f5b0f6ebaaf7a5b01f91</srcmd5>
+    <version>2.9.0</version>
+    <time>1373049436</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>182328</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c04691bb1c14fa21cc4f9a8719f14e80</srcmd5>
+    <version>2.9.0</version>
+    <time>1376401628</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add missing BuildRequires for Video support. (forwarded request 186822 from Fisiu)</comment>
+    <requestid>186823</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>c04691bb1c14fa21cc4f9a8719f14e80</srcmd5>
+    <version>2.9.0</version>
+    <time>1379663279</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>210a184a6151d53523e1edddd65b2d61</srcmd5>
+    <version>2.9.0</version>
+    <time>1401108018</time>
+    <user>coolo</user>
+    <comment>- Use LFS_CFLAGS in 32 bit systems, a mediastreamer without 
+  large file support is not very pleasant..
+- Make the build verbose. (forwarded request 235328 from elvigia)</comment>
+    <requestid>235329</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c5bdabcbfa2198f01908fb79f178d91a</srcmd5>
+    <version>2.10.0</version>
+    <time>1408549981</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244948</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c5bdabcbfa2198f01908fb79f178d91a</srcmd5>
+    <version>2.10.0</version>
+    <time>1409301884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c5fdbf09f9f1f5eff0cee476d3c13fbd</srcmd5>
+    <version>2.11.0</version>
+    <time>1426680159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291105</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5f054f2c4320d5dfe9158d649b6e9c4c</srcmd5>
+    <version>2.11.0</version>
+    <time>1428192150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292517</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>ded12ebb3bbf2101ff69b42f3b9c45cf</srcmd5>
+    <version>2.11.0</version>
+    <time>1428391650</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with zrtp support: fix boo#903431. (forwarded request 294621 from Fisiu)</comment>
+    <requestid>294623</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3f7f5e3334e170c30ce9041686a07b21</srcmd5>
+    <version>2.11.2</version>
+    <time>1440479932</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325371</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a9c2b0aaa012c95090ed3d3098b77440</srcmd5>
+    <version>2.11.2</version>
+    <time>1442638393</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>329774</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>b3d68862248583905d4210907fcdc6ad</srcmd5>
+    <version>2.11.2</version>
+    <time>1443896936</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332586</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0b0201628711fdb8eb727cd2693f5608</srcmd5>
+    <version>2.12.0</version>
+    <time>1447882315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>344431</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c98dbdb12a67237ca1ecc60c74320d14</srcmd5>
+    <version>2.12.1</version>
+    <time>1457532951</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367119</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>140a6b8004d65ca24a7e3b4a4bc487a4</srcmd5>
+    <version>2.12.1</version>
+    <time>1468360194</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406189</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>4d13fcdc103e5d70d5b8a8872bfcb30d</srcmd5>
+    <version>2.12.1</version>
+    <time>1469742304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415092</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f73e3dc614497bbe3aff93ed6845a06b</srcmd5>
+    <version>2.14.0</version>
+    <time>1475241947</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431202</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>135654365c8274483c055458634b0df8</srcmd5>
+    <version>2.15.1</version>
+    <time>1498638895</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>502708</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>41b5e027670a6661f2ccaa2807451d66</srcmd5>
+    <version>2.16.1</version>
+    <time>1503999519</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511963</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0baf09987555561edf401092eee637c0</srcmd5>
+    <version>2.16.1</version>
+    <time>1535370430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629596</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>028b907584943b3e91af6730cbf9ae82</srcmd5>
+    <version>4.3.1</version>
+    <time>1583526257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781569</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b746648fce4856d23e99947a1d416152</srcmd5>
+    <version>4.4.0</version>
+    <time>1593378308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.0
+  * TURN over TCP or TLS (previously was only UDP)
+  * Capture/playback gain control for Mac OS (AudioUnit)
+  * Optimize mirroring for OpenGL based display filters. It was previously done in software.
+  * Make V4L2 capture filter work with read-only devices (such as with v4lloopback driver)
+  * ICE: set source IP addresses of outgoing packets consistent with the local candidate it is supposed to test or use. This fixes various ICE failures occuring when the host has multiple IP addresses (which is now common with IPv6)
+  * New implementation of MSEventQueue, to fix unreproductible crashes with the previous implementation.
+  * Crashes around mblk_t management of Video4Linux2 catpure filter.
+  * Random crash in VideoToolbox decoding filter.
+  * VP8 decoding errors due to an invalid aggregation of packets in rare circumstances
+  * Crash while reading mkv file with checksums.
+</comment>
+    <requestid>817228</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9cc2d0f49fb12a3e41a31b07b3779130</srcmd5>
+    <version>4.4.2</version>
+    <time>1601296106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837509</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e4e875c6cfff9151f00baf8b9e116ea9</srcmd5>
+    <version>4.4.6</version>
+    <time>1604702581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846044</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>34b357f88cc21016ee8d6e13b4b1bc81</srcmd5>
+    <version>4.4.7</version>
+    <time>1605450125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848303</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ec6982896c9afe37f295609711029775</srcmd5>
+    <version>4.4.13</version>
+    <time>1607196978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.13 (no changelog) 
+</comment>
+    <requestid>852678</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5b8689df79907cfa138d69cb6dcf7d88</srcmd5>
+    <version>4.4.21</version>
+    <time>1609705592</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.21 (no changelog) 
+</comment>
+    <requestid>859591</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>31ef2c6da4ffcc218a201e845a1872f5</srcmd5>
+    <version>4.4.24</version>
+    <time>1611770233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865999</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>eb451d43f30660eeaa06084e0166df81</srcmd5>
+    <version>4.4.24</version>
+    <time>1613511314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870820</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ad45dbcd6823bc9ce7b6a1b2d5f1d173</srcmd5>
+    <version>4.4.29</version>
+    <time>1615362517</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>875960</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>82246776b085f6cebffec873083ec543</srcmd5>
+    <version>4.4.33</version>
+    <time>1616168388</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879483</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2d680f20574488bb1d3ca90f4cd88f9d</srcmd5>
+    <version>4.5.0</version>
+    <time>1617279397</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 4.5.0:
+  + Added
+    * New camera capture backend based on Windows MediaFoundation
+    * MSMediaPlayer enhancements.
+    * VideoConference API and engine prototype (active speaker switching only)
+  + Changed
+    * audio flow control algorithm improved, silent portions are dropped first.
+    * MKVPlayer supports seek in files without cue table.
+    'packetlosspercentage' is now configurable in opus encoder.
+  + Fixed
+    * misfunction in DTLS handshake over TURN
+    * fix arythmetic issue in clock skew computation, causing bad audio when the sound device outputs
+    * audio fragments not multiple of 10ms.
+    * wrong selection of ICE TURN candidates when the TURN server is behind a firewall
+    * unsent TURN SenderIndication packets on iOS
+    * fix video freeze in VP8, due to lack of retransmission of SLIs.
+    * All these fix were backported to 4.4 branch.
+</comment>
+    <requestid>882348</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e4ac01d71409cbaa6ea0380b4dbf8d9c</srcmd5>
+    <version>4.5.3</version>
+    <time>1619192981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886880</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ac0ce4afb6f805a78f5a454efd67e903</srcmd5>
+    <version>4.5.10</version>
+    <time>1619973326</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.10 (no changelog) 
+</comment>
+    <requestid>889050</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>92828dd45894753a380c588ade284e76</srcmd5>
+    <version>4.5.15</version>
+    <time>1621355188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.15 (no changelog)
+</comment>
+    <requestid>893048</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3dc9a9dc490ee536d8aefe165066778f</srcmd5>
+    <version>4.5.16</version>
+    <time>1623443433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.16 (no changelog)
+- Bump min requirement for libjpeg-turbo to 2.0.0
+</comment>
+    <requestid>898110</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9182067dce1da23c231719c4eb8825f8</srcmd5>
+    <version>4.5.20</version>
+    <time>1624626060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902226</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b125d5b76eabec830bd11ce476ea1e80</srcmd5>
+    <version>5.0.0</version>
+    <time>1627492772</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>908564</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d9a14a6078b2f8bc402f88f28d8a297f</srcmd5>
+    <version>5.0.3</version>
+    <time>1628108898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.3:
+  * no changelog
+- SRTP_LIBRARIES not found during build, fixing fix-srtp2-linphone.patch
+</comment>
+    <requestid>909329</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>be203c1ce5e1604fd29a3f812c978ad9</srcmd5>
+    <version>5.0.35</version>
+    <time>1634587408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.35:
+  * no changelog
+</comment>
+    <requestid>925348</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d5b2ab5d94cff19c8ed89814479bcc12</srcmd5>
+    <version>5.0.36</version>
+    <time>1635877156</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927663</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3cd3f4c52031c18d7e41f1097fb21673</srcmd5>
+    <version>5.0.49</version>
+    <time>1637108015</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931482</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>962cf8fd77a47ae3d649a9a23b59ed09</srcmd5>
+    <version>5.0.53</version>
+    <time>1638131414</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934343</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>39858e0e3acef7d139c73bf28f324019</srcmd5>
+    <version>5.0.53</version>
+    <time>1638831584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935850</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d937e463255054ee8ecd67000a2c721e</srcmd5>
+    <version>5.0.66</version>
+    <time>1642548917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.66:
+  * no changelog
+</comment>
+    <requestid>947170</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>60df55429b524b6cd002934edbaf51ef</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * no changes
+- fix license tag
+</comment>
+    <requestid>950589</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>467926811aa042afcd59944e22461386</srcmd5>
+    <version>5.1.3</version>
+    <time>1646158026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.3:
+  * Experimental Forward Error Correction feature for video streams.
+  * Mkv and Wav file player and recorders file I/O is tunneled through
+    bctbx VFS API.
+</comment>
+    <requestid>958314</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>03dbeef2b3428ef571610e115f63364a</srcmd5>
+    <version>5.1.15</version>
+    <time>1648159104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.15:
+  * no changelog
+</comment>
+    <requestid>964626</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>231a8675bbb42468408ee76de6816410</srcmd5>
+    <version>5.1.20</version>
+    <time>1651501556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.20:
+  * no changelog
+</comment>
+    <requestid>974357</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>ff1a2c2232096e02a1fd89d669adb208</srcmd5>
+    <version>5.1.20</version>
+    <time>1651784770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974933</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>b2dfc4cee71922f6335cf6f6488304b5</srcmd5>
+    <version>5.1.29</version>
+    <time>1652561830</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>977250</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>834feeb94421aede94ee591a9453f16f</srcmd5>
+    <version>5.1.32</version>
+    <time>1655396409</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982692</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8a0ef53e206d45bfac241dc81fd3870e</srcmd5>
+    <version>5.1.45</version>
+    <time>1657281798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.45:
+  * Make DTLS-SRTP to start immediately after the default candidate pair is verified by ICE.
+  * Prevent default sound device descriptor to use BUILTIN_AEC flags if AcousticEchoCanceler isn't available.
+  * Fix an issue where audio stops when trying to send a DTMF while no telephone-event payload types are configured in the session.
+  * Do not add audio devices detected as “UNKNOWN” type.
+  * Fix audio route change event size, which was too big and could create unexpected behaviours.
+</comment>
+    <requestid>987834</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>05fab4546431bccc2da040abc3458416</srcmd5>
+    <version>5.1.45</version>
+    <time>1660834135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997464</requestid>
+  </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>a5456055523a6709626191de15aa06da</srcmd5>
+    <version>5.1.45</version>
+    <time>1662740890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002230</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>272fc3480fdaf727950530417fa47522</srcmd5>
+    <version>5.1.64</version>
+    <time>1666011496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.64 (no changelog).
+</comment>
+    <requestid>1012005</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>94d435539f8f73ed621305c2a2c4d95c</srcmd5>
+    <version>5.2.6</version>
+    <time>1672851208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6:
+  * Added
+    + Video conferencing features
+    + RFC6464 client-to-mixer
+    + RFC6465 mixer-to-client
+    + Video conference: added CSRC of contributor to active speaker stream.
+    + Add support for post-quantum encryption algorithms within ZRTP protocol.
+  * Changed
+    + Licence becomes AGPL-3.
+    + Improvements to Android bluetooth audio support.
+    + Performance improvements to Android Texture video renderer.
+    + Optimizations to DTLS handshake to be more robust to packet losses.
+    + libyuv used for rescaling and pixel conversion (instead of libswscale).
+  * Fixed
+    + Crash with buffer overflow in GenericPLC filter.
+    + ARM64/linux compilation.
+    + MSVideoRouter algorithm improved.
+</comment>
+    <requestid>1055797</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>4202bd8014811fa0614c01d329aeafdd</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * Fix a crash due to a race condition in conference server
+  * Add logs to troubleshoot inactive streams issue
+</comment>
+    <requestid>1059007</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>d3637b42b42b394df516a1fc672be232</srcmd5>
+    <version>5.2.30</version>
+    <time>1678283625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.30 (no changelog)
+</comment>
+    <requestid>1070102</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>df893b03fb22206eb3354ffacb25a6c7</srcmd5>
+    <version>5.2.49</version>
+    <time>1680884238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.49 (no changelog).
+- Add set_current_version.patch.
+</comment>
+    <requestid>1077859</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>a6b045dd9ef34a3ac76d991aaf4a56d1</srcmd5>
+    <version>5.2.73</version>
+    <time>1688052506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.73 (no changelog)
+- Rebase fix-build-ffmpeg5.patch
+</comment>
+    <requestid>1095757</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>f904006a42928135bc9a8a464c9347a5</srcmd5>
+    <version>5.2.73</version>
+    <time>1691232966</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires:  Mesa-libGL-devel
+  * fix build on tumbleweed
+</comment>
+    <requestid>1102445</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>028e72f90c4031c50eddbded601be85c</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235824</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog)
+</comment>
+    <requestid>1106253</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>446c260259c66a6dfc06ca089ccc99a0</srcmd5>
+    <version>5.2.98</version>
+    <time>1697390896</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117872</requestid>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>1001f9c36c314e91c37ea7eb7011207c</srcmd5>
+    <version>5.2.98</version>
+    <time>1700598754</time>
+    <user>anag+factory</user>
+    <comment>- Add ENABLE_QT_GL for x86_64 (boo#1217352).
+</comment>
+    <requestid>1127847</requestid>
+  </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>465f288ea86b1b0b280eb86e6e5585ed</srcmd5>
+    <version>5.2.98</version>
+    <time>1703281312</time>
+    <user>anag+factory</user>
+    <comment>- Add missing deps on TW.
+</comment>
+    <requestid>1134593</requestid>
+  </revision>
+</revisionlist>

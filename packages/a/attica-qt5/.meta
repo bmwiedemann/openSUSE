@@ -1,0 +1,8 @@
+<package name="attica-qt5" project="openSUSE:Factory">
+  <title>Open Collaboration Service client library</title>
+  <description>
+    Attica is a library to access Open Collaboration Service servers.
+  </description>
+  <devel project="KDE:Frameworks5" package="attica-qt5"/>
+  <url>http://websvn.kde.org/trunk/kdesupport/attica/</url>
+</package>

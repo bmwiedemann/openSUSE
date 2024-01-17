@@ -1,0 +1,11 @@
+<package name="tuxpaint-config" project="openSUSE:Factory">
+  <title>Configuration tool for Tux Paint</title>
+  <description>Tux Paint has a rich set of configuration options, controllable via
+command-line options or configuration files. This configuration tool 
+provides a point-and-click interface for administrators to tailor 
+Tux Paint to suit the needs of their users.
+
+</description>
+  <devel project="Education" package="tuxpaint-config"/>
+  <url>http://www.tuxpaint.org/</url>
+</package>

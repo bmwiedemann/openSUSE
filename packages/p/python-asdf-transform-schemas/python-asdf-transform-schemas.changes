@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sat Nov 25 12:53:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0:
+  * Move root-level $ref in schemas to an allOf combiner. [#87]
+  * Fix URI fragment format in transform-1.2 schema. [#88]
+
+-------------------------------------------------------------------
+Thu Oct 27 16:48:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.3.0
+  * Add schemas to properly support bounding_box and
+    compound_bounding_box.
+  * Add fixed and bounds to base transform schema to properly
+    document them.
+  * Add input_units_equivalencies to base transform schema to
+    properly document it.
+  * Update spline1d schema.
+  * Add Schechter1D schema.
+  * Fix fix_inputs tag bug.
+  * Create docs for package.
+  * Move packaging configuration to pyproject.toml.
+  * Remove unnecessary tag: entry from all schemas.
+
+-------------------------------------------------------------------
+Sun Mar 13 09:04:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.2.2
+  * Add inputs and outputs to base transform schema to properly
+    document them. [#33]
+  * Add spline1d schema. [#41]
+  * Add cosine, tangent, arcsine, arccosine, and arctangent
+    schemas. [#40]
+  * Fix circular build dependencies for asdf. [#38]
+- Make _multibuild in order to avoid build cycles
+
+-------------------------------------------------------------------
+Tue Dec 28 15:23:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.2.0
+- Required by python-asdf-astropy which is required by gwcs-0.18

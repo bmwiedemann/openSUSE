@@ -1,0 +1,8 @@
+<package name="hylafax+" project="openSUSE:Factory">
+  <title>An enterprise-class fax server and client</title>
+  <description>
+HylaFAX is an enterprise-class system for sending and receiving facsimiles
+ as well as for sending alpha-numeric pages.
+    </description>
+  <devel project="network:telephony" package="hylafax+"/>
+</package>

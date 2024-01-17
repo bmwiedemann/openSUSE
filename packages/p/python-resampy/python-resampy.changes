@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Mon May 29 13:53:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reenable build for python311 (numba available) 
+
+-------------------------------------------------------------------
+Sat Apr  1 18:22:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip building for python311: no numba yet
+
+-------------------------------------------------------------------
+Mon Nov 14 10:54:42 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.4.2
+  v0.4.2
+  ~~~~~~
+  * Fixed buffer length calculation to avoid
+    numerical overflow issues on some platforms.
+  v0.4.1
+  ~~~~~~
+  * Fixed a rounding error in output buffer length calculations.
+  * Added a special case to disable unsupported parallel mode on 32bit architectures.
+  v0.4.0
+  ~~~~~~
+  * Reduced import time and switched to parallel=False by default.
+  * Integer-valued inputs now produce floating point outputs.
+  v0.3.1
+  ~~~~~~
+  * Fixed an efficiency regression introduced in the 0.3.0 release.
+  v0.3.0
+  ~~~~~~
+  * Enable caching of pre-computed filters to improve runtime efficiency.
+  * Automate pre-computed filter generation.  Regenerated and improved `kaiser_fast` and `kaiser_best` filters.
+  * Improved documentation
+  * Enable parallel processing for sample rate conversion. *Antonio Valentino*
+  * Improved python packaging workflow.
+  * Fixed a bug in resampling high-dimensional data.
+  * Removed support for python 2.7.
+  * Bypass sample rate conversion if input and output rates are identical.
+  * Added continuous integration tests for linting.
+  * Non-uniform output sample positions. *Antonio Valentio*
+
+-------------------------------------------------------------------
+Fri Apr 23 11:46:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: No NumPy for python36 in TW (NEP 29)
+- Enable test suite with GitHub archive
+
+-------------------------------------------------------------------
+Thu Apr  9 01:01:09 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Temporarily add skip_python2 to allow other packages to build.
+
+-------------------------------------------------------------------
+Sat Aug 31 22:23:49 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+  * removed python devel
+
+- update to version 0.2.2:
+  * #68 Preserve array ordering (C- or F-contiguity) from input to
+    output.
+
+-------------------------------------------------------------------
+Fri Nov  2 11:35:12 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Fri Nov  2 04:50:01 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

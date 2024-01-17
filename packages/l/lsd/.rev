@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07614ade271783a30ea94ea431208d61</srcmd5>
+    <version>0.22.0</version>
+    <time>1660313203</time>
+    <user>dimstar_suse</user>
+    <comment>New package.</comment>
+    <requestid>994659</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb29b5d07ec77aeefc349801735b4159</srcmd5>
+    <version>0.23.0</version>
+    <time>1662405734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001243</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>647fa026c20c9b65895d139eda806302</srcmd5>
+    <version>0.23.1</version>
+    <time>1663074592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003104</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>708d6c996108d497a75f316adaec9610</srcmd5>
+    <version>1.0.0</version>
+    <time>1693235760</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106206</requestid>
+  </revision>
+</revisionlist>

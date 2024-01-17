@@ -1,0 +1,5 @@
+<package name="iprange" project="openSUSE:Factory">
+  <title>IP range management tool for FireHOL</title>
+  <description></description>
+  <devel project="security:netfilter" package="iprange"/>
+</package>

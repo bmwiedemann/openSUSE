@@ -1,0 +1,1749 @@
+<revisionlist>
+  <revision rev="1" vrev="32">
+    <srcmd5>b27dd75e68181f35aac3e7a9d1d6081d</srcmd5>
+    <version>7.2</version>
+    <time>1166205480</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="34">
+    <srcmd5>7e05561efedc7008c2e8665dc262b944</srcmd5>
+    <version>7.2</version>
+    <time>1166483895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="36">
+    <srcmd5>6772c7c20454ae20dba5bd87bb87da4c</srcmd5>
+    <version>7.2</version>
+    <time>1166545286</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="42">
+    <srcmd5>1e0f0f981d558345eccbd4f0f3ab8e09</srcmd5>
+    <version>7.2</version>
+    <time>1168902963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="43">
+    <srcmd5>bb13addb52d7756af96d5118a1017faf</srcmd5>
+    <version>7.2</version>
+    <time>1169829749</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="44">
+    <srcmd5>4e66df221d047de54641d18afffc0f50</srcmd5>
+    <version>7.2</version>
+    <time>1170428372</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="46">
+    <srcmd5>32c79c8595a32a579336bf87dc3b2e80</srcmd5>
+    <version>7.2</version>
+    <time>1170980500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="49">
+    <srcmd5>a6c707fe1f85e558ae8ede26814f0703</srcmd5>
+    <version>7.2</version>
+    <time>1172152184</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="50">
+    <srcmd5>36fc33c4caf22c91da0b679777f56da7</srcmd5>
+    <version>7.2</version>
+    <time>1172443332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="52">
+    <srcmd5>ef2ff91a4927e721302ab3ed582f2efe</srcmd5>
+    <version>7.2</version>
+    <time>1172773650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="53">
+    <srcmd5>47ab34dabbff0d239d325593d13bec1e</srcmd5>
+    <version>7.2</version>
+    <time>1173105247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="54">
+    <srcmd5>d4e266a6067a14cd9f964ecd3645ea4a</srcmd5>
+    <version>7.2</version>
+    <time>1173168788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="56">
+    <srcmd5>578cc8a13b0f354109b8ccae5cca6a7b</srcmd5>
+    <version>7.2</version>
+    <time>1173919877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="57">
+    <srcmd5>04f8ca96b11de827f8fcafbbf7f1417f</srcmd5>
+    <version>7.2</version>
+    <time>1173979007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="58">
+    <srcmd5>444f5f33c809cbd333dd6fab2b3c5bb7</srcmd5>
+    <version>7.2</version>
+    <time>1174592984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="65">
+    <srcmd5>c2879405ce46291b3646c664383c76ba</srcmd5>
+    <version>7.2</version>
+    <time>1177655309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="66">
+    <srcmd5>c407c66eb38e4c02a33ceac26738762c</srcmd5>
+    <version>7.2</version>
+    <time>1177764244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="86">
+    <srcmd5>b9e583456e6457edd105800f11b9494a</srcmd5>
+    <version>7.2</version>
+    <time>1182212570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="87">
+    <srcmd5>b90848d47c027ed4da2f1ed88d7586d7</srcmd5>
+    <version>7.2</version>
+    <time>1182678862</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="89">
+    <srcmd5>36604e5a3454ee2d42c6a92555866b30</srcmd5>
+    <version>7.2</version>
+    <time>1183066734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="90">
+    <srcmd5>9c8a3fc97725ceca9a395c7797b5c58b</srcmd5>
+    <version>7.2</version>
+    <time>1183587478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="91">
+    <srcmd5>4005b29b7e39dd4e1df1bfb07f1a4493</srcmd5>
+    <version>7.2</version>
+    <time>1183629500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="93">
+    <srcmd5>d173fc036c70a4bed4962ec45941be05</srcmd5>
+    <version>7.2</version>
+    <time>1184067217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="95">
+    <srcmd5>8fc806cbd22a9e4f598584dae06cef3b</srcmd5>
+    <version>7.2</version>
+    <time>1184347207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="97">
+    <srcmd5>74d25813862cca04fc3340840814810a</srcmd5>
+    <version>7.2</version>
+    <time>1184791639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="98">
+    <srcmd5>481227a364e2c8c2c4ae5db65cd1e4fb</srcmd5>
+    <version>7.2</version>
+    <time>1185034352</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="101">
+    <srcmd5>84e25155e8024a564bb745be3bea92cd</srcmd5>
+    <version>7.2</version>
+    <time>1185495294</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="108">
+    <srcmd5>6d935f1d297d74a0e1118ad26ed79d5f</srcmd5>
+    <version>7.2</version>
+    <time>1186693661</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="109">
+    <srcmd5>9f81a9b3635dc57e49ec2001ff8f194f</srcmd5>
+    <version>7.2</version>
+    <time>1186759278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="111">
+    <srcmd5>5e9bb74fe6289cba37de09c834ac3b19</srcmd5>
+    <version>7.2</version>
+    <time>1186912121</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="114">
+    <srcmd5>49696b0980f6be4c770f0427f9bd7fa7</srcmd5>
+    <version>7.2</version>
+    <time>1187202809</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="116">
+    <srcmd5>f9aaa8fdc5ce8576fe98d9e5402784ad</srcmd5>
+    <version>7.2</version>
+    <time>1187370177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="118">
+    <srcmd5>55f79b1854b209733d58cfbf385ee94e</srcmd5>
+    <version>7.2</version>
+    <time>1187914348</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="120">
+    <srcmd5>ae8156d5ecfcdc07cd98721d6f395b2c</srcmd5>
+    <version>7.2</version>
+    <time>1187993290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="125">
+    <srcmd5>37c5a07f026db36e0fe858bc85083548</srcmd5>
+    <version>7.2</version>
+    <time>1188510166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="129">
+    <srcmd5>7091b6e7e29f0ea49d1862dcd26bbe7f</srcmd5>
+    <version>7.2</version>
+    <time>1189421400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="131">
+    <srcmd5>181a6b3dd5ac812cd665d91c03f701a9</srcmd5>
+    <version>7.2</version>
+    <time>1189702820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>be691eb4257b08cf985045524ac35554</srcmd5>
+    <version>7.3</version>
+    <time>1191367141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>b5f43ad577e96a98e75bb6e1b1b587ec</srcmd5>
+    <version>7.3</version>
+    <time>1191839530</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>0c646bb2dff17cd350688d5e5f0e32a2</srcmd5>
+    <version>7.3</version>
+    <time>1192133593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>a3f86dbc00df6e94d1e91e7c90c908f4</srcmd5>
+    <version>7.3</version>
+    <time>1192227224</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="18">
+    <srcmd5>80432757f5522adce2ee1cab009514cb</srcmd5>
+    <version>7.3</version>
+    <time>1194566835</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="19">
+    <srcmd5>86de4a3c9eff6e8a85cd62391186572a</srcmd5>
+    <version>7.3</version>
+    <time>1194645982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="25">
+    <srcmd5>790f36de83654f4d6426716ef6d45cc4</srcmd5>
+    <version>7.3</version>
+    <time>1196290417</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="27">
+    <srcmd5>cf2c3180f5c4c605b8b2053200febd1a</srcmd5>
+    <version>7.3</version>
+    <time>1196901895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="36">
+    <srcmd5>11326fa71f680abbf26e6c63650577af</srcmd5>
+    <version>7.3</version>
+    <time>1200101759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="42">
+    <srcmd5>90da47285916dfeb777518a0eab3fe92</srcmd5>
+    <version>7.3</version>
+    <time>1201366909</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="45">
+    <srcmd5>297bcf6820d7f368ea85913111796e9f</srcmd5>
+    <version>7.3</version>
+    <time>1201910744</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="48">
+    <srcmd5>f2c3779e028de4508808699a01b89f44</srcmd5>
+    <version>7.3</version>
+    <time>1202503895</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="54">
+    <srcmd5>a542384c949162406e12402353eba012</srcmd5>
+    <version>7.3</version>
+    <time>1203145576</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="57">
+    <srcmd5>6ecb8ec57b5e1f0a5d44ee74fd7b9fe2</srcmd5>
+    <version>7.3</version>
+    <time>1203958169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="60">
+    <srcmd5>392ee1a26c9d08ac22b595c5f25ff151</srcmd5>
+    <version>7.3</version>
+    <time>1205114478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="69">
+    <srcmd5>594125448b1f13a96a0e77efbc4efa4e</srcmd5>
+    <version>7.3</version>
+    <time>1207466596</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="70">
+    <srcmd5>88dac74e5e80ea6dbb371f7a135ee13d</srcmd5>
+    <version>7.3</version>
+    <time>1207595247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="72">
+    <srcmd5>dc3681d1fc0370008b01464d50fe37b0</srcmd5>
+    <version>7.3</version>
+    <time>1207695921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="74">
+    <srcmd5>55216da1e686cf2d56d1a7b921b71aa5</srcmd5>
+    <version>7.3</version>
+    <time>1208698371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="77">
+    <srcmd5>481e360536fab0267b533ae007e6f155</srcmd5>
+    <version>7.3</version>
+    <time>1209392896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="80">
+    <srcmd5>ee57284f0f5cb3c585f9f9a7d5bb9afb</srcmd5>
+    <version>7.3</version>
+    <time>1210092016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="81">
+    <srcmd5>72612703c225d16285874cc5b4876322</srcmd5>
+    <version>7.3</version>
+    <time>1210206050</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="83">
+    <srcmd5>34db61dcd5f2c2a739672eeb5189c316</srcmd5>
+    <version>7.3</version>
+    <time>1210369023</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="85">
+    <srcmd5>f6f96332b7f7aabefed7a6b4a09b7029</srcmd5>
+    <version>7.3</version>
+    <time>1210673987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="87">
+    <srcmd5>c1b5da21dcf2984c0426c2550b371fef</srcmd5>
+    <version>7.3</version>
+    <time>1210986292</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="89">
+    <srcmd5>cf70262dbf63480474724ad7bce8c666</srcmd5>
+    <version>7.3</version>
+    <time>1211426130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="90">
+    <srcmd5>d88a30105f9567f97472ee459602c263</srcmd5>
+    <version>7.3</version>
+    <time>1211555699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="91">
+    <srcmd5>eaefc63e57a064431381a2e56e1c1d71</srcmd5>
+    <version>7.3</version>
+    <time>1211578642</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="92">
+    <srcmd5>df827b228b83aa46ecc2714cbfdbebaa</srcmd5>
+    <version>7.3</version>
+    <time>1211820849</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="94">
+    <srcmd5>d5a780cbc033862364c266efd26de63b</srcmd5>
+    <version>7.3</version>
+    <time>1212229830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="98">
+    <srcmd5>dd053393f1176dd6fffcf21d602756ab</srcmd5>
+    <version>7.3</version>
+    <time>1214178525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="99">
+    <srcmd5>c149280c9cd429f87cde7ae4b2e94dc5</srcmd5>
+    <version>7.3</version>
+    <time>1214490538</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="101">
+    <srcmd5>d2fb1a1dba8b7b751550947350ca5339</srcmd5>
+    <version>7.3</version>
+    <time>1215214919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="71" vrev="104">
+    <srcmd5>df0c5581b2d81718793628afa6d6e4da</srcmd5>
+    <version>7.3</version>
+    <time>1216064502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="72" vrev="112">
+    <srcmd5>ba555b2e4f8c9951e809c2918bfcdebd</srcmd5>
+    <version>7.3</version>
+    <time>1217629819</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="73" vrev="119">
+    <srcmd5>7689e76e98995ff47a2e67e4ea5534ed</srcmd5>
+    <version>7.3</version>
+    <time>1218324969</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="74" vrev="121">
+    <srcmd5>42f7951b708bf5b901b233b6c2222bbe</srcmd5>
+    <version>7.3</version>
+    <time>1218850120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="75" vrev="126">
+    <srcmd5>93156e35a6e3b883b31080e6241d0397</srcmd5>
+    <version>7.3</version>
+    <time>1219451921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="76" vrev="130">
+    <srcmd5>7804b0a435632edbb6c9a8a57e905467</srcmd5>
+    <version>7.3</version>
+    <time>1220053678</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="77" vrev="132">
+    <srcmd5>b71febe97b6fb82db2a9c02b6fb58193</srcmd5>
+    <version>7.3</version>
+    <time>1220641502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>dc112990b59f3f859754ea9a2334e2d0</srcmd5>
+    <version>7.4</version>
+    <time>1221234304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>bc5908beaf3f4a8dcac1c3f32e8dec81</srcmd5>
+    <version>7.4</version>
+    <time>1222271000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>d375739fb4a2606e1a95f67f953ca7bf</srcmd5>
+    <version>7.4</version>
+    <time>1223764263</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="81" vrev="6">
+    <srcmd5>c449304755ec667f4a4a38dd07fd581b</srcmd5>
+    <version>7.4</version>
+    <time>1223916039</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="82" vrev="7">
+    <srcmd5>4189f09cebd75d8bdc53cb210430b4f3</srcmd5>
+    <version>7.4</version>
+    <time>1224758007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="83" vrev="8">
+    <srcmd5>4691bae8da2057d1fdc9d4cd0799b0cb</srcmd5>
+    <version>7.4</version>
+    <time>1224977707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="84" vrev="9">
+    <srcmd5>9f87c367fa1c72b2d5d8b6b76df6feba</srcmd5>
+    <version>7.4</version>
+    <time>1231463390</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="85" vrev="11">
+    <srcmd5>c01cd23589871f01935b67ba889fd549</srcmd5>
+    <version>7.4</version>
+    <time>1233934738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="86" vrev="12">
+    <srcmd5>13469a9b275f22f057007846152c9854</srcmd5>
+    <version>7.4</version>
+    <time>1234783533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="87" vrev="13">
+    <srcmd5>d42627526bb551fa63310e7ff0ab3870</srcmd5>
+    <version>7.4</version>
+    <time>1235615607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="88" vrev="14">
+    <srcmd5>33181cceccd2ba13ea5daec2da89b5da</srcmd5>
+    <version>7.4</version>
+    <time>1235647095</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="89" vrev="15">
+    <srcmd5>12d66b3aa8cc11c6a17ea8246b2c2b93</srcmd5>
+    <version>7.4</version>
+    <time>1236787170</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="90" vrev="16">
+    <srcmd5>6f0209cc3d03e1b6f9dc4cf400242d1d</srcmd5>
+    <version>7.4</version>
+    <time>1237336745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="91" vrev="17">
+    <srcmd5>08de39a9c631af28882b3c637c3d3c19</srcmd5>
+    <version>7.4</version>
+    <time>1238688117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="92" vrev="18">
+    <srcmd5>c86dade25a93dba2337720f1aed26324</srcmd5>
+    <version>7.4</version>
+    <time>1239808045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="93" vrev="19">
+    <srcmd5>331acda4f22aec58d787e1095c9ba68f</srcmd5>
+    <version>7.4</version>
+    <time>1240516620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="94" vrev="20">
+    <srcmd5>eb01809f36a14a84fbabbb60574508d9</srcmd5>
+    <version>7.4</version>
+    <time>1242418065</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="95" vrev="21">
+    <srcmd5>c682ca7f7850bd6f3c74463c7c28eaba</srcmd5>
+    <version>7.4</version>
+    <time>1242687049</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="96" vrev="22">
+    <srcmd5>42830e9b61c3f7454b666283b6eef2f8</srcmd5>
+    <version>7.4</version>
+    <time>1244235112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="97" vrev="23">
+    <srcmd5>8f5e371e241b7beef1b44e56b5adb6c8</srcmd5>
+    <version>7.4</version>
+    <time>1245448400</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="98" vrev="24">
+    <srcmd5>e2632f8ca2674ec0684721e4e6d41e0f</srcmd5>
+    <version>7.4</version>
+    <time>1247236833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="99" vrev="25">
+    <srcmd5>989c1f6529f2dcc52bf5642bd6608324</srcmd5>
+    <version>7.4</version>
+    <time>1248446140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="100" vrev="26">
+    <srcmd5>32c10dfb2a79611d74f0b5ee1d395fb7</srcmd5>
+    <version>7.4</version>
+    <time>1249574181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="101" vrev="27">
+    <srcmd5>5e55583cade8bd846489e412ea219d1d</srcmd5>
+    <version>7.4</version>
+    <time>1250177670</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 17459 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="102" vrev="28">
+    <srcmd5>cd33cd2f2a31a4971dd34b66ff8a6c2c</srcmd5>
+    <version>7.4</version>
+    <time>1250864786</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 18335 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="103" vrev="29">
+    <srcmd5>a11771d9df68817765027e0b452e423e</srcmd5>
+    <version>7.4</version>
+    <time>1251392144</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 18924 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="104" vrev="30">
+    <srcmd5>f536e5b42668b89e139c9dc448851bcb</srcmd5>
+    <version>7.4</version>
+    <time>1251908476</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 19490 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="105" vrev="31">
+    <srcmd5>d9b971dce590281167cebb5883381a72</srcmd5>
+    <version>7.4</version>
+    <time>1252105555</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 19849 from user eeich
+</comment>
+  </revision>
+  <revision rev="106" vrev="32">
+    <srcmd5>7ded53ca1c1a8240ee8cbc6c946e240b</srcmd5>
+    <version>7.4</version>
+    <time>1253133524</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 20526 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="107" vrev="33">
+    <srcmd5>cb13dcef2729cc9bb4b953f6db8d008a</srcmd5>
+    <version>7.4</version>
+    <time>1253733713</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 20841 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="108" vrev="34">
+    <srcmd5>87f497686fb2be86df954e91428037a0</srcmd5>
+    <version>7.4</version>
+    <time>1255341575</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 22068 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="109" vrev="36">
+    <srcmd5>87f497686fb2be86df954e91428037a0</srcmd5>
+    <version>7.4</version>
+    <time>1255341575</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 22068 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="110" vrev="37">
+    <srcmd5>3f707280846d4858a6771b404554dfed</srcmd5>
+    <version>7.4</version>
+    <time>1256573967</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 23076 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="111" vrev="38">
+    <srcmd5>099dc1d6124dab037257f5f50e561d79</srcmd5>
+    <version>7.4</version>
+    <time>1257162374</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 23544 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="112" vrev="39">
+    <srcmd5>ef0f1e88ca82a6eefb0c9590c04ddcd5</srcmd5>
+    <version>7.4</version>
+    <time>1257843821</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 23882 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="113" vrev="40">
+    <srcmd5>f48d3f2b1bd644c2b59bbf75b2596c6f</srcmd5>
+    <version>7.4</version>
+    <time>1258364750</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 24335 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="114" vrev="41">
+    <srcmd5>cb68c14ad0830a60ca6af1787c9d4077</srcmd5>
+    <version>7.4</version>
+    <time>1260270803</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 25684 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="115" vrev="42">
+    <srcmd5>b7bcb1e529ff80ccefd8c471f4585135</srcmd5>
+    <version>7.4</version>
+    <time>1260952064</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 26508 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="116" vrev="43">
+    <srcmd5>dcbac826d6c5d6d50637e764ef1037c6</srcmd5>
+    <version>7.4</version>
+    <time>1261433803</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 27161 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="117" vrev="44">
+    <srcmd5>5fa415b08623776b54404ebd1487988c</srcmd5>
+    <version>7.4</version>
+    <time>1261832454</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 27645 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="118" vrev="45">
+    <srcmd5>eca7c11b5f7eff5f92b926ac38485d7e</srcmd5>
+    <version>7.4</version>
+    <time>1261997572</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 27683 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="119" vrev="46">
+    <srcmd5>e3cf1800a343e21cc030397244dae0df</srcmd5>
+    <version>7.4</version>
+    <time>1264067180</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 29962 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="120" vrev="47">
+    <srcmd5>443148afcf4d2fbe0bee5e39ed3cea9a</srcmd5>
+    <version>7.4</version>
+    <time>1268926638</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="121" vrev="48">
+    <srcmd5>20c1869a7793f3eab6d62a21b02033f2</srcmd5>
+    <version>7.4</version>
+    <time>1268950768</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 35039 from user sndirsch
+</comment>
+    <requestid>35039</requestid>
+  </revision>
+  <revision rev="122" vrev="49">
+    <srcmd5>a32bae836d3484a05ae7636c1ecde030</srcmd5>
+    <version>7.4</version>
+    <time>1269560235</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 35609 from user sndirsch
+</comment>
+    <requestid>35609</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>38aaf434a544226862134db6951bb5d5</srcmd5>
+    <version>7.5</version>
+    <time>1270639353</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 37187 from user sndirsch
+</comment>
+    <requestid>37187</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>c8e3b527a92b072492cef38aa5a4ef40</srcmd5>
+    <version>7.5</version>
+    <time>1270653729</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 37209 from user sndirsch
+</comment>
+    <requestid>37209</requestid>
+  </revision>
+  <revision rev="125" vrev="3">
+    <srcmd5>c57dab3e06498f0ca613a1447f3d78e1</srcmd5>
+    <version>7.5</version>
+    <time>1271185850</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 37655 from user sndirsch
+</comment>
+    <requestid>37655</requestid>
+  </revision>
+  <revision rev="126" vrev="4">
+    <srcmd5>e4f2edee3b4c3aadd4670bbb2f02159d</srcmd5>
+    <version>7.5</version>
+    <time>1272043326</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 38330 from user sndirsch
+</comment>
+    <requestid>38330</requestid>
+  </revision>
+  <revision rev="127" vrev="5">
+    <srcmd5>16aec53ef1e97da2f952b527168269be</srcmd5>
+    <version>7.5</version>
+    <time>1273789164</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 39764 from user sndirsch
+</comment>
+    <requestid>39764</requestid>
+  </revision>
+  <revision rev="128" vrev="6">
+    <srcmd5>7c63224a1bc816c0786ff7c5b853e791</srcmd5>
+    <version>7.5</version>
+    <time>1273876168</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 40065 from user sndirsch
+</comment>
+    <requestid>40065</requestid>
+  </revision>
+  <revision rev="129" vrev="7">
+    <srcmd5>f7f66dc83a78a2d31ea352ffc4744fa5</srcmd5>
+    <version>7.5</version>
+    <time>1274776695</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 40085 from user sndirsch
+</comment>
+    <requestid>40085</requestid>
+  </revision>
+  <revision rev="130" vrev="8">
+    <srcmd5>f7383bc9e41d461faf1247f797f45082</srcmd5>
+    <version>7.5</version>
+    <time>1274784807</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 40617 from user sndirsch
+</comment>
+    <requestid>40617</requestid>
+  </revision>
+  <revision rev="131" vrev="9">
+    <srcmd5>28aa11a2a9d2e739db648f482557e295</srcmd5>
+    <version>7.5</version>
+    <time>1275058493</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 40705 from user sndirsch
+</comment>
+    <requestid>40705</requestid>
+  </revision>
+  <revision rev="132" vrev="10">
+    <srcmd5>a2b638d83152b87ddfa7beaf11d6eb20</srcmd5>
+    <version>7.5</version>
+    <time>1277135361</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 41768 from user sndirsch
+</comment>
+    <requestid>41768</requestid>
+  </revision>
+  <revision rev="133" vrev="11">
+    <srcmd5>5e43d91b0bf84c8a82fc23b1cb550931</srcmd5>
+    <version>7.5</version>
+    <time>1277712823</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 42052 from user sndirsch
+</comment>
+    <requestid>42052</requestid>
+  </revision>
+  <revision rev="134" vrev="12">
+    <srcmd5>5e43d91b0bf84c8a82fc23b1cb550931</srcmd5>
+    <version>7.5</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="135" vrev="13">
+    <srcmd5>5e43d91b0bf84c8a82fc23b1cb550931</srcmd5>
+    <version>7.5</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="136" vrev="14">
+    <srcmd5>8f0bfc3a07870d9449da0dd72edd3318</srcmd5>
+    <version>7.5</version>
+    <time>1279563366</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 43405 from user sndirsch
+</comment>
+    <requestid>43405</requestid>
+  </revision>
+  <revision rev="137" vrev="15">
+    <srcmd5>398bcb4d9ea9138ed15da22526d4fcf9</srcmd5>
+    <version>7.5</version>
+    <time>1279650484</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 43470 from user sndirsch
+</comment>
+    <requestid>43470</requestid>
+  </revision>
+  <revision rev="138" vrev="16">
+    <srcmd5>8aea6e486be8d168fee484e3417352bd</srcmd5>
+    <version>7.5</version>
+    <time>1281736817</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 45487 from user sndirsch
+</comment>
+    <requestid>45487</requestid>
+  </revision>
+  <revision rev="139" vrev="17">
+    <srcmd5>376d9e1704ae31175a29c2f3ab72afae</srcmd5>
+    <version>7.5</version>
+    <time>1283511826</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 46937 from user sndirsch
+</comment>
+    <requestid>46937</requestid>
+  </revision>
+  <revision rev="140" vrev="18">
+    <srcmd5>d6451236c65a20752f577d89d293bf8c</srcmd5>
+    <version>unknown</version>
+    <time>1284041249</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 47189 from user sndirsch
+</comment>
+    <requestid>47189</requestid>
+  </revision>
+  <revision rev="141" vrev="19">
+    <srcmd5>07212de3c5a3a7396df0f48d5e787daf</srcmd5>
+    <version>7.5</version>
+    <time>1285279136</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 48816 from user sndirsch
+</comment>
+    <requestid>48816</requestid>
+  </revision>
+  <revision rev="142" vrev="20">
+    <srcmd5>565b30de398c1fa00b9b2a10b5914599</srcmd5>
+    <version>7.5</version>
+    <time>1285310235</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 49007 from user sndirsch
+</comment>
+    <requestid>49007</requestid>
+  </revision>
+  <revision rev="143" vrev="21">
+    <srcmd5>2089296138ed0bf608a41fcc3b5feaa7</srcmd5>
+    <version>7.5</version>
+    <time>1285320486</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 49012 from user sndirsch
+</comment>
+    <requestid>49012</requestid>
+  </revision>
+  <revision rev="144" vrev="22">
+    <srcmd5>2fa794f39cd1a185749c55bf2a92ca84</srcmd5>
+    <version>7.5</version>
+    <time>1285541440</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 49075 from user sndirsch
+</comment>
+    <requestid>49075</requestid>
+  </revision>
+  <revision rev="145" vrev="23">
+    <srcmd5>21d10069acfe17f4912aa1cebe6e44f8</srcmd5>
+    <version>7.5</version>
+    <time>1285594918</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 49186 from user sndirsch
+</comment>
+    <requestid>49186</requestid>
+  </revision>
+  <revision rev="146" vrev="24">
+    <srcmd5>082d0210c593a7ed568e33f3384707a8</srcmd5>
+    <version>7.5</version>
+    <time>1286488282</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 49962 from user sndirsch
+</comment>
+    <requestid>49962</requestid>
+  </revision>
+  <revision rev="147" vrev="25">
+    <srcmd5>7d20c7268b898cef9ef996f06d1a8fd6</srcmd5>
+    <version>7.5</version>
+    <time>1286790651</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/xorg-x11 based on submit request 50055 from user sndirsch
+</comment>
+    <requestid>50055</requestid>
+  </revision>
+  <revision rev="148" vrev="26">
+    <srcmd5>51153723e80bb79da5b2fff7b6cd8b3b</srcmd5>
+    <version>7.5</version>
+    <time>1287758101</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51221 from user sndirsch
+</comment>
+    <requestid>51221</requestid>
+  </revision>
+  <revision rev="149" vrev="27">
+    <srcmd5>31be96888ef478e58f3d6a9d013248c1</srcmd5>
+    <version>7.5</version>
+    <time>1287758110</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51221
+</comment>
+  </revision>
+  <revision rev="150" vrev="28">
+    <srcmd5>a2f7651f8adca6234f278e8b8e17be03</srcmd5>
+    <version>7.5</version>
+    <time>1287959090</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51314 from user sndirsch
+</comment>
+    <requestid>51314</requestid>
+  </revision>
+  <revision rev="151" vrev="29">
+    <srcmd5>6cf49372d8dded418e07ee648fa864f6</srcmd5>
+    <version>7.5</version>
+    <time>1287959098</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51314
+</comment>
+  </revision>
+  <revision rev="152" vrev="30">
+    <srcmd5>1518b6135292c8702b7d8c9897284c59</srcmd5>
+    <version>7.5</version>
+    <time>1288691585</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51950 from user sndirsch
+</comment>
+    <requestid>51950</requestid>
+  </revision>
+  <revision rev="153" vrev="31">
+    <srcmd5>c5cac69d53d16d9d3f875bbda7b3ace3</srcmd5>
+    <version>7.5</version>
+    <time>1288691609</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51950
+</comment>
+  </revision>
+  <revision rev="154" vrev="32">
+    <srcmd5>70a712a731a561f35ac15227963585d7</srcmd5>
+    <version>7.5</version>
+    <time>1288961326</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52075 from user sndirsch
+</comment>
+    <requestid>52075</requestid>
+  </revision>
+  <revision rev="155" vrev="33">
+    <srcmd5>386f1c4fa235c4f8c4a1bd90aa75381b</srcmd5>
+    <version>7.5</version>
+    <time>1288961333</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52075
+</comment>
+  </revision>
+  <revision rev="156" vrev="34">
+    <srcmd5>9dbaa4342ea7ed8641ef323a903d2a2a</srcmd5>
+    <version>7.5</version>
+    <time>1289217045</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52324 from user sndirsch
+</comment>
+    <requestid>52324</requestid>
+  </revision>
+  <revision rev="157" vrev="35">
+    <srcmd5>7bf3c89f0e2be34bb97eef9366a7f0b5</srcmd5>
+    <version>7.5</version>
+    <time>1289217057</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52324
+</comment>
+  </revision>
+  <revision rev="158" vrev="36">
+    <srcmd5>c332e0d10f0a4bdc3d95f2df27768eeb</srcmd5>
+    <version>7.5</version>
+    <time>1289409356</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52542 from user sndirsch
+</comment>
+    <requestid>52542</requestid>
+  </revision>
+  <revision rev="159" vrev="37">
+    <srcmd5>7abc09ad7c8ac1761a3c6fb9b546e1e2</srcmd5>
+    <version>7.5</version>
+    <time>1289409370</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52542
+</comment>
+  </revision>
+  <revision rev="160" vrev="38">
+    <srcmd5>714a9f93917ab5f503485d55bf300d35</srcmd5>
+    <version>7.5</version>
+    <time>1289568905</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52882 from user sndirsch
+</comment>
+    <requestid>52882</requestid>
+  </revision>
+  <revision rev="161" vrev="39">
+    <srcmd5>13595839e9d2e28542e252b04bf5a023</srcmd5>
+    <version>7.5</version>
+    <time>1289568912</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52882
+</comment>
+  </revision>
+  <revision rev="162" vrev="40">
+    <srcmd5>bd1206671b5036a3d31b7dbca04f8b02</srcmd5>
+    <version>7.5</version>
+    <time>1290504979</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 53683 from user sndirsch
+</comment>
+    <requestid>53683</requestid>
+  </revision>
+  <revision rev="163" vrev="41">
+    <srcmd5>7d37ae72df499d6ff0c16614408e5bee</srcmd5>
+    <version>7.5</version>
+    <time>1290504985</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 53683
+</comment>
+  </revision>
+  <revision rev="164" vrev="42">
+    <srcmd5>6618be38fd999ca0eae40c7d31f14ca0</srcmd5>
+    <version>7.5</version>
+    <time>1290786056</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53973 from user sndirsch
+</comment>
+    <requestid>53973</requestid>
+  </revision>
+  <revision rev="165" vrev="43">
+    <srcmd5>190122c2d79e56b44d5835b95864c847</srcmd5>
+    <version>7.5</version>
+    <time>1290786062</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 53973
+</comment>
+  </revision>
+  <revision rev="166" vrev="44">
+    <srcmd5>501aef4e089baca6cb72b7b84f21db2e</srcmd5>
+    <version>7.5</version>
+    <time>1291128172</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54037 from user sndirsch
+</comment>
+    <requestid>54037</requestid>
+  </revision>
+  <revision rev="167" vrev="45">
+    <srcmd5>35f645283f6ce05dbfe0cb86458a27c8</srcmd5>
+    <version>7.5</version>
+    <time>1291128185</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54037
+</comment>
+  </revision>
+  <revision rev="168" vrev="46">
+    <srcmd5>1cc43aa2c19cea58b87a387a6d007a20</srcmd5>
+    <version>7.5</version>
+    <time>1291306481</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54344 from user sndirsch
+</comment>
+    <requestid>54344</requestid>
+  </revision>
+  <revision rev="169" vrev="47">
+    <srcmd5>5e22ec249bc997ab2ec767dbc8665f8b</srcmd5>
+    <version>7.5</version>
+    <time>1291306494</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54344
+</comment>
+  </revision>
+  <revision rev="170" vrev="48">
+    <srcmd5>2713ba0ce46f71c7389c32fe91889ad5</srcmd5>
+    <version>7.5</version>
+    <time>1292240064</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55683 from user sndirsch
+</comment>
+    <requestid>55683</requestid>
+  </revision>
+  <revision rev="171" vrev="49">
+    <srcmd5>53951852f64656f1651664d50b92f993</srcmd5>
+    <version>7.5</version>
+    <time>1292240076</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55683
+</comment>
+  </revision>
+  <revision rev="172" vrev="36">
+    <srcmd5>c7d8ca5d87a721c474ec76a6478f1afb</srcmd5>
+    <version>7.6</version>
+    <time>1293579388</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56468 from user sndirsch
+</comment>
+    <requestid>56468</requestid>
+  </revision>
+  <revision rev="173" vrev="37">
+    <srcmd5>c024aa4d73e4c6ba94436d64a5a87bbc</srcmd5>
+    <version>7.6</version>
+    <time>1293579394</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56468
+</comment>
+  </revision>
+  <revision rev="174" vrev="38">
+    <srcmd5>4ce361bf206ef270fdb299d581feb4bb</srcmd5>
+    <version>7.6</version>
+    <time>1295013047</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58107 from user coolo
+</comment>
+    <requestid>58107</requestid>
+  </revision>
+  <revision rev="175" vrev="39">
+    <srcmd5>9b0d9c43845af18e6b3e35f9ffc4b3b7</srcmd5>
+    <version>7.6</version>
+    <time>1295013054</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58107
+</comment>
+  </revision>
+  <revision rev="176" vrev="40">
+    <srcmd5>67d402f9e81203d50d0549af1e12b129</srcmd5>
+    <version>7.6</version>
+    <time>1296692774</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59781 from user sndirsch
+</comment>
+    <requestid>59781</requestid>
+  </revision>
+  <revision rev="177" vrev="41">
+    <srcmd5>92386cd202b0e36d267cc7a5b1856042</srcmd5>
+    <version>7.6</version>
+    <time>1296692781</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59781
+</comment>
+  </revision>
+  <revision rev="178" vrev="44">
+    <srcmd5>92386cd202b0e36d267cc7a5b1856042</srcmd5>
+    <version>7.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="179" vrev="45">
+    <srcmd5>affc4dfe2675d36810fff497ba876a0f</srcmd5>
+    <version>7.6</version>
+    <time>1298383478</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62489 from user sndirsch
+</comment>
+    <requestid>62489</requestid>
+  </revision>
+  <revision rev="180" vrev="46">
+    <srcmd5>bb72130f22bed322eb8fb4fae1f82b92</srcmd5>
+    <version>7.6</version>
+    <time>1298383488</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 62489
+</comment>
+  </revision>
+  <revision rev="181" vrev="47">
+    <srcmd5>905c86342e5ac056b61cfbc224f5ecbf</srcmd5>
+    <version>7.6</version>
+    <time>1301469696</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65326 from user coolo
+</comment>
+    <requestid>65326</requestid>
+  </revision>
+  <revision rev="182" vrev="48">
+    <srcmd5>d3a07ccd55d44ae9f0f9eff25c9293b5</srcmd5>
+    <version>7.6</version>
+    <time>1301469702</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65326
+</comment>
+  </revision>
+  <revision rev="183" vrev="49">
+    <srcmd5>b14a25f393df4bc45a39262a622bbb15</srcmd5>
+    <version>7.6</version>
+    <time>1302082255</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66160 from user licensedigger
+</comment>
+    <requestid>66160</requestid>
+  </revision>
+  <revision rev="184" vrev="50">
+    <srcmd5>8ccd797b6fada41d4d518e6274be6329</srcmd5>
+    <version>7.6</version>
+    <time>1302082266</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66160
+</comment>
+  </revision>
+  <revision rev="185" vrev="51">
+    <srcmd5>70c1d55f98e380c39e54375c2728f5a1</srcmd5>
+    <version>7.6</version>
+    <time>1302506137</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66518 from user coolo
+</comment>
+    <requestid>66518</requestid>
+  </revision>
+  <revision rev="186" vrev="52">
+    <srcmd5>92e7601214b996275a5532f426b2ddc3</srcmd5>
+    <version>7.6</version>
+    <time>1302506148</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66518
+</comment>
+  </revision>
+  <revision rev="187" vrev="53">
+    <srcmd5>e24503a5d5a1093937f62bbf483d97ae</srcmd5>
+    <version>7.6</version>
+    <time>1306396809</time>
+    <user>saschpe</user>
+    <comment>- edit s390/s390x sysconfig template in place instead of applying
+  a patch.
+
+- remove xrdb.diff (bnc#149007) as this is also adressed by 
+  xrdb-Create-shell-escape-safe-cpp-options-in-the-non-path-bnc674733.patch
+  which has been included in upstream already and can also be removed
+  once the xrdb package got updated.
+
+- remove xfs-no_config_file.diff as this no longer needed since
+  commit b0c41c11 which is included in xfs-1.1.1.
+
+- remove xrx.diff patch as the function has the correct type already.
+
+- etc/X11/xdm/sys.xsession: do not start gpg-agent with GNOME3 as
+  WM since the GPG agent feature is now integrated</comment>
+    <requestid>71208</requestid>
+  </revision>
+  <revision rev="188" vrev="54">
+    <srcmd5>167d6f2bfcd6d210600e18c247b6ddab</srcmd5>
+    <version>7.6</version>
+    <time>1306396826</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71208
+</comment>
+  </revision>
+  <revision rev="189" vrev="55">
+    <srcmd5>ffcd1866338f9a1be97b64ae109c13e8</srcmd5>
+    <version>7.6</version>
+    <time>1308040840</time>
+    <user>saschpe</user>
+    <comment>- add missing install directory for x11percomp scripts.
+
+- remove scripts.diff:
+  Exclude script during package generation.
+
+- remove x11perf.diff:
+  Let x11perf install it's scripts into /usr/lib[64].
+
+- update Keyboard.map:
+  Remove jp106 and abnt2. Those two keyboard models don't exist 
+  any more.
+  Instead those mappings are part of the jp and br symbol tables.
+  Now it is possible to specify a microsoftprosub keyboard with
+  the jp or br mappings. 
+  For Mac keyboards add the altwin:swap_lalt_lwin,lv3:alt_switch
+  options, as those patches have been removed from the 
+  keyboard-config.</comment>
+    <requestid>73285</requestid>
+  </revision>
+  <revision rev="190" vrev="56">
+    <srcmd5>104b9c9455d1fe9cbc79ece6e6060468</srcmd5>
+    <version>7.6</version>
+    <time>1308040853</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73285
+</comment>
+  </revision>
+  <revision rev="191" vrev="57">
+    <srcmd5>82e4b893165a75d58c874e6d865333db</srcmd5>
+    <version>7.6</version>
+    <time>1312879061</time>
+    <user>saschpe</user>
+    <comment>- added mapping for romanian keyboard (bnc #709443)</comment>
+    <requestid>78300</requestid>
+  </revision>
+  <revision rev="192" vrev="58">
+    <srcmd5>01c563a1a06123558b7c027479304c9f</srcmd5>
+    <version>7.6</version>
+    <time>1312879072</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78300
+</comment>
+  </revision>
+  <revision rev="193" vrev="59">
+    <srcmd5>2f1c68795a593e1e7779339cf7335ee5</srcmd5>
+    <version>7.6</version>
+    <time>1314259419</time>
+    <user>saschpe</user>
+    <comment>- add u_luit-Set-up-terminal-before-fork.diff:
+  Set up terminal before fork. 
+  An older version of this patch was dropped as 
+  it didn't apply any more.
+  This patch is to be upstreamed.</comment>
+    <requestid>79687</requestid>
+  </revision>
+  <revision rev="194" vrev="60">
+    <srcmd5>ecd33a4d9dad6fba9c12828e52ff6c08</srcmd5>
+    <version>7.6</version>
+    <time>1314259430</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79687
+</comment>
+  </revision>
+  <revision rev="195" vrev="61">
+    <srcmd5>ba9b1b8edf562a874f232c835292881c</srcmd5>
+    <version>7.6</version>
+    <time>1314277046</time>
+    <user>saschpe</user>
+    <comment>- update xbiff 1.0.3 to fix build again with current toolchain
+  * Xmu functions are called directly, so include it in
+    PKG_CHECK_MODULES 
+- added some xdm git commits (adjusted to xdm 1.10.1) to fix build
+  again with current toolchain
+  * U_xdm_config-AC_LIBTOOL_DLOPEN-is-required-for-dynamic-lin.patch
+  * U_xdm_config-use-libtool-export-dynamic-option-for-reverse.patch
+  * U_xdm_Fix-missing-linking-dependency-on-ldl.patch</comment>
+    <requestid>79766</requestid>
+  </revision>
+  <revision rev="196" vrev="62">
+    <srcmd5>c12817ec87df3ddabcc7879754592eca</srcmd5>
+    <version>7.6</version>
+    <time>1314277059</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79766
+</comment>
+  </revision>
+  <revision rev="197" vrev="63">
+    <srcmd5>ecb7d8996090381baeb4f8e8d86ff017</srcmd5>
+    <version>7.6</version>
+    <time>1316766872</time>
+    <user>saschpe</user>
+    <comment>- Update /etc/X11/xdm/sys.xsession: do not start a gpg agent if
+  gnome-keyring is running, since starting with GNOME 3,
+  gnome-keyring plays that role. Also, drop support for
+  seahorse-agent as gpg agent for the same reason. Fix bnc#692277.
+
+- Don't use %{_libexecdir} it's not uniformly defined on all 
+  supported products. 
+
+- Change %{_libdir} to ${_libexecdir}.
+
+- add fallback files for all DMs which have been updated
+  to suport the new xdm startup script. 
+
+- xdm.tar.bz2: Fixed some bugs in the xdm startup script,
+  mode HOWTO.xdm to rhe sources as a separate file.  
+
+- add missing &quot;%dir %{_sysconfdir}/X11/displaymanagers&quot;
+  to specfile. 
+
+- xdm.tar.bz2:
+  Remove any display manager specific stuff from
+  /etc/xinit.d/xdm.
+  Display manager specific settings will be read
+  from scripts in /etc/X11/displaymanagers.
+  Those script need to be provided with the display
+  manager package. A HOWTO describing how this
+  scipt should look like can be found in this
+  directory.</comment>
+    <requestid>84511</requestid>
+  </revision>
+  <revision rev="198" vrev="64">
+    <srcmd5>d2a1765ccc97886bf33ceb91b75767b3</srcmd5>
+    <version>7.6</version>
+    <time>1317213720</time>
+    <user>saschpe</user>
+    <comment>- xdm.tar.bz2:
+  Fixed name of function in dm startup script fallback for slim:
+  slimdm_vars -&gt; slim_vars. 
+
+- xdm.tar.bz2:
+  Fixed name of function in dm startup script fallback for entrance:
+  entrancedm_vars -&gt; entrance_vars.</comment>
+    <requestid>84923</requestid>
+  </revision>
+  <revision rev="199" vrev="65">
+    <srcmd5>fbbaf02cd15236444a3c83d037bd9f6e</srcmd5>
+    <version>7.6</version>
+    <time>1318429083</time>
+    <user>lrupp</user>
+    <comment>- xdm.tar.bz2:
+  commented out Tablet PC detection code in /etc/X11/xdm/Xsetup and
+  /etc/X11/xdm/Xstartup which relied on hal-find-by-property</comment>
+    <requestid>87449</requestid>
+  </revision>
+  <revision rev="200" vrev="66">
+    <srcmd5>423a27828f1e0cb8ff689f16498b7ef1</srcmd5>
+    <version>7.6</version>
+    <time>1318762954</time>
+    <user>lrupp</user>
+    <comment>-------------------------------------------------------------------
+Fri Oct 14 11:46:48 UTC 2011 - sndirsch@suse.com
+
+- fixed typo in /usr/lib/X11/displaymanagers/slim.fallback 
+  slimdm_vars() --&gt; slim_vars()
+
+-------------------------------------------------------------------
+Tue Oct 11 13:45:11 UTC 2011 - gber@opensuse.org
+
+- xdm.tar.bz2:
+  commented out Tablet PC detection code in /etc/X11/xdm/Xsetup and
+  /etc/X11/xdm/Xstartup which relied on hal-find-by-property</comment>
+    <requestid>87830</requestid>
+  </revision>
+  <revision rev="201" vrev="68">
+    <srcmd5>423a27828f1e0cb8ff689f16498b7ef1</srcmd5>
+    <version>7.6</version>
+    <time>1319182604</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="202" vrev="69">
+    <srcmd5>9f90b2c29d25de473376bc2ae20180e6</srcmd5>
+    <version>7.6</version>
+    <time>1320489202</time>
+    <user>coolo</user>
+    <comment>- luit 1.2-20111030
+  * modify  configure  script  to  add  X_LIBS  symbol  after resolving
+    fontenc  library,  to  use  the  associated -L option in subsequent
+    configure-checks.
+  * add  -t  to simplify testing available locales versus luit's tables
+    and the locale.alias file.
+  * add &quot;US-ASCII&quot; for C/POSIX to the locale-charset table.
+  * add  entries  to  the  locale-charset  table to correspond with the
+    font-encoding table, making it possible to use locales defined with
+    each  named  charset  (reported  by Andrey Ivanov, also reported in
+    Freedesktop #41857).
+  * modify  the  lookup  by  locale  charset to help match results from
+    nl_langinfo(CODESET)  by  mapping  commonly  used prefixes into the
+    prefixes used by luit.
+  * check   for,   and   use   nl_langinfo(CODESET)   to   augment  X's
+    locale.aliases file for determining the encoding to use.
+  * workaround  limitation in copying terminal settings on Solaris from
+    original tty to pty.
+  * add  /usr/openwin/lib/locale  to  search-list  of  locale.alias for
+    Solaris 10.
+  * improve  configure  script so that it does not error-out if fontenc
+    is unavailable, using iconv instead.
+  * bump  version  to 1.2, noting xorg hackers having marked (with only
+    cosmetic changes) the 2010/6/1 snapshot as &quot;1.1.0&quot;.
+  * add/use  configure  check  for  posix_openpt,  prompted  by FreeBSD
+    ports/161480.
+  * updated      configure      script     macros:     CF_ANSI_CC_CHECK
+    CF_DISABLE_RPATH_HACK  CF_LD_RPATH_OPT  CF_PKG_CONFIG CF_RPATH_HACK
+    CF_SVR4 CF_WITH_ZLIB CF_XOPEN_SOURCE
+  * update config.guess, config.sub</comment>
+    <requestid>89933</requestid>
+  </revision>
+  <revision rev="203" vrev="70">
+    <srcmd5>9b450ffdfed0b60e1e5a9a397aa2dafc</srcmd5>
+    <version>7.6</version>
+    <time>1320771674</time>
+    <user>coolo</user>
+    <comment>- Add ntp service to should-start in /etc/init.d/xdm in file 
+  xdm.tar.bz2 to prevent conflict between kdm3 and ntp (bnc#728846)</comment>
+    <requestid>90539</requestid>
+  </revision>
+  <revision rev="204" vrev="71">
+    <srcmd5>07743006ecdb8b5ebe77a223773369b0</srcmd5>
+    <version>7.6</version>
+    <time>1321460539</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency</comment>
+    <requestid>91546</requestid>
+  </revision>
+  <revision rev="205" vrev="72">
+    <srcmd5>6b589632705fff70013429ebffa28f6e</srcmd5>
+    <version>7.6</version>
+    <time>1322483893</time>
+    <user>coolo</user>
+    <comment>- fixed build failure on s390(x) due to wrong sed syntax</comment>
+    <requestid>93965</requestid>
+  </revision>
+  <revision rev="206" vrev="73">
+    <srcmd5>cb3fdf5e25b39d1410dd4ef9d555ee90</srcmd5>
+    <version>7.6</version>
+    <time>1323195405</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="207" vrev="74">
+    <srcmd5>3205bfc45ef3d085efc02209496c2206</srcmd5>
+    <version>7.6</version>
+    <time>1326448832</time>
+    <user>coolo</user>
+    <comment>- u_xauth_Look-for-FamilyLocal-if-inet-or-inet6-addr.patch
+  * Look for FamilyLocal if inet or inet6 address is loopback. 
+    (bnc #731504)
+
+- xlsclient 1.1.2
+  * fixes build against xcb-util 0.3.8</comment>
+    <requestid>100023</requestid>
+  </revision>
+  <revision rev="208" vrev="75">
+    <srcmd5>ee65e90ae1643edc21636941fd2f90d8</srcmd5>
+    <version>7.6</version>
+    <time>1328890865</time>
+    <user>coolo</user>
+    <comment>- remove AUTHORS from description
+- switch {?jobs:-j%jobs} to {?_smp_mflags}
+
+- xlsclient 1.1.2 - fixes build against xcb-util 0.3.8
+  * Depend on xcb &gt;= 1.6 for XCB_ATOM_*.
+  * Drop dependency on xcb-atom/xcb-util
+  * Use XCB_ATOM_* atom names rather than deprecated atom names
+  * config: move man pages into their own directory
+  * man: replace hard coded man page section with substitution strings
+  * man: remove trailing spaces and tabs
+  * config: replace deprecated AM_CONFIG_HEADER with AC_CONFIG_HEADERS
+  * Purge cvs tags.</comment>
+    <requestid>103493</requestid>
+  </revision>
+  <revision rev="209" vrev="76">
+    <srcmd5>6ec16c3e0916b1f480aa77db916b7555</srcmd5>
+    <version>7.6</version>
+    <time>1329477037</time>
+    <user>coolo</user>
+    <comment>- fixed buildreqs due to splitted xorg-x11-libs</comment>
+    <requestid>105532</requestid>
+  </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>50ccb14ad0f1f9bd6d00f14e4823d4fb</srcmd5>
+    <version>7.6_1</version>
+    <time>1336471611</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115490</requestid>
+  </revision>
+  <revision rev="211" vrev="2">
+    <srcmd5>c9381b531593f8069b9683532ba12546</srcmd5>
+    <version>7.6_1</version>
+    <time>1339707206</time>
+    <user>coolo</user>
+    <comment>do not require xmh, workaround for not being able to uninstall postfix. The real bug is, that packages require xorg-x11, though (forwarded request 124949 from seife)</comment>
+    <requestid>125001</requestid>
+  </revision>
+  <revision rev="212" vrev="4">
+    <srcmd5>c9381b531593f8069b9683532ba12546</srcmd5>
+    <version>7.6_1</version>
+    <time>1340184377</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="213" vrev="5">
+    <srcmd5>0c20fc803de121e3e9c35ed6efeeba87</srcmd5>
+    <version>7.6_1</version>
+    <time>1340896948</time>
+    <user>coolo</user>
+    <comment>- require only a few packages, the remaining packages are still
+  recommended; let's hope it won't break the build of too many
+  packages which still use a &quot;BuildRequires: xorg-x11&quot; for whatever
+  reason ...</comment>
+    <requestid>126163</requestid>
+  </revision>
+  <revision rev="214" vrev="6">
+    <srcmd5>7c4542556d0e2ce92e8a11d8a0aa8675</srcmd5>
+    <version>7.6_1</version>
+    <time>1356731502</time>
+    <user>namtrac</user>
+    <comment>Change twm from Required to Recommends.
+
+Mostly important for GNOME 3.6, since having extra sessions installed on a single-user computer leads to a superfluous Log Out menu element. Some users will want to remove this. (forwarded request 146452 from Golbats_Everywhere)</comment>
+    <requestid>146570</requestid>
+  </revision>
+  <revision rev="215" vrev="8">
+    <srcmd5>7c4542556d0e2ce92e8a11d8a0aa8675</srcmd5>
+    <version>7.6_1</version>
+    <time>1359110668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="216" vrev="9">
+    <srcmd5>357aa52403f43a91d5eca87b3c0b7bef</srcmd5>
+    <version>7.6_1</version>
+    <time>1375629998</time>
+    <user>coolo</user>
+    <comment>- split off -essentials package for X.Org core apps (meta package
+  for required packages); recommends remain in xorg-x11 meta 
+  package; this allows minimum X11 patterns in a consistent way
+  (request by Coolo)</comment>
+    <requestid>185616</requestid>
+  </revision>
+  <revision rev="217" vrev="10">
+    <srcmd5>21dcf6e74ecb3a412e75f2cf447ee303</srcmd5>
+    <version>7.6_1</version>
+    <time>1377856341</time>
+    <user>coolo</user>
+    <comment>- reverted previous change; requires for xbitmaps-devel needs to
+  be added to libXmu instead (bnc#836530)
+
+- added xbitmaps-devel to Requires for -essential package 
+  (bnc#836530)</comment>
+    <requestid>196751</requestid>
+  </revision>
+  <revision rev="218" vrev="12">
+    <srcmd5>21dcf6e74ecb3a412e75f2cf447ee303</srcmd5>
+    <version>7.6_1</version>
+    <time>1379665101</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="219" vrev="13">
+    <srcmd5>7b767499fcd5371035737ac52cc0de0d</srcmd5>
+    <version>7.6_1</version>
+    <time>1381754007</time>
+    <user>scarabeus_factory</user>
+    <comment>- let -essentials package also require xset and iceauth
+  (bnc#845264)</comment>
+    <requestid>203209</requestid>
+  </revision>
+  <revision rev="220" vrev="14">
+    <srcmd5>1cbcac43a931f421f5b996a4573aa949</srcmd5>
+    <version>7.6_1</version>
+    <time>1382516109</time>
+    <user>scarabeus_factory</user>
+    <comment>- let -essentials package also require xkbcomp, xmessage and xprop
+  (bnc#846953)</comment>
+    <requestid>204290</requestid>
+  </revision>
+  <revision rev="221" vrev="16">
+    <srcmd5>1cbcac43a931f421f5b996a4573aa949</srcmd5>
+    <version>7.6_1</version>
+    <time>1409303787</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

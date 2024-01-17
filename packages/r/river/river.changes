@@ -1,0 +1,291 @@
+-------------------------------------------------------------------
+Thu Jan  4 15:44:48 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Fix supplements in contrib package in the specfile.
+
+-------------------------------------------------------------------
+Sat Dec 16 12:05:17 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Set minimum wlroots version to 0.16.0. Add build conflicts if it is 0.17.0
+
+-------------------------------------------------------------------
+Sat Nov 25 13:35:32 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.6:
+  * InputDevice: fix identifier generation
+
+-------------------------------------------------------------------
+Fri Nov 24 14:25:45 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update sources
+  * Add river.keyring
+  * Add river-0.2.5.tar.gz properly
+  * Add river-0.2.5.tar.gz.sig
+
+-------------------------------------------------------------------
+Fri Nov 24 13:58:47 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.5:
+  * No changes. Just a new tagged release
+
+-------------------------------------------------------------------
+Sat Nov 18 13:58:37 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.4+985:
+  * session-lock: fix pointer focus handling on map
+
+-------------------------------------------------------------------
+Fri Nov 17 10:05:35 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.4+984:
+  * Cursor: fix high polling rate resize regression
+  * Cursor: clamp cursor movement to resize bounds
+  * View: handle map while no outputs are available
+  * keyboard: add the ability to load layout from file
+  * river: remove dead code
+  * xdg-toplevel: ignore redundant move/resize requests
+  * rules: rename "tag" action to "tags"
+  * river: add fullscreen rule
+  * river: add position and dimensions rules
+
+-------------------------------------------------------------------
+Tue Nov  7 02:16:42 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.2.4+g976:
+  * pointer-constraints: fix assertion failure
+  * XdgToplevel: tweak fullscreen state policy
+  * Cursor: use inflight_mode as needed in updateState()
+  * riverctl(1): add a section on terminology
+  * rivertile: eliminate an @intCast()
+  * DragIcon: set position on creation
+
+-------------------------------------------------------------------
+Sat Oct 21 04:57:12 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4+g970:
+  * completions/zsh: Fix incomplete input names
+  * completions: Rewrite zsh
+  * Cursor: use total delta for resize calculation
+  * riverctl: rule-{add,del}: reorder parameters
+  * View: clean up after Zig update
+  * build: update to Zig 0.11.0
+  * Cursor: keep focus_follows_cursor_target updated
+  * Root: fix inflight_layout_demands counting
+  * Root: migrate {all,active}_outputs to wl.list
+  * Root: make 'fallback output empty' assertion stricter
+  * Root: rename field outputs to active_outputs
+  * river: update some comments
+  * river: fix spatial direction focusing / swapping
+  * river: focus-view and swap by spatial direction
+  * river: fix crash when trying to add tag rule without tag argument
+  * river: add tags rule
+  * river: change order of colums in list-rules command
+  * river: allow settings child type of RuleList
+  * river-layout: Remove incorrect assertion
+
+-------------------------------------------------------------------
+Thu Oct  5 08:45:27 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove dbus-run-session in the script. Portals can still work without it.
+
+-------------------------------------------------------------------
+Thu Oct  5 01:47:08 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Edit river-portals.conf
+  * default to wlr -> fallback to gtk
+- Always use dbus-run-session now since this is required to start portals
+
+-------------------------------------------------------------------
+Mon Sep 25 03:10:09 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- XDP 0.18.0 requires desktop and other environments to have their own portals.conf
+  by adding river-portals.conf, we will avoid some of the problems for portals for
+  * File picker -> We default to xdp-gtk since xdp-wlr does not have it.
+  * For screenshots/screenshare, we use the wlr supplied interfaces
+
+  For more information, see https://github.com/flatpak/xdg-desktop-portal/issues/1077
+  and the release statement for 0.18.0
+
+  This is a workaround for boo#1215641
+
+-------------------------------------------------------------------
+Sun Sep 17 10:17:30 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.4+g960:
+  * wlr-output-management: apply adaptive sync state
+  * ci: Use meson setup command
+  * View: fix pointer comparison in notifyTitle()
+  * rivertile: fix code to disallow 0 main count
+  * session-lock: wait for present before locking
+  * session-lock: fix assertion failure due to race
+  * session-lock: fix assertion failure on abnormal client behavior
+  * render: fix rounding for fractional scaling
+  * deps: update to Zig 0.10
+  * flags: further cleanup after Zig 0.10
+  * deps: update zig-wayland to fix build on aarch64
+  * Seat: rework Xwayland Override Redirect focus
+  * command/layout: fix a memory leak
+  * session-lock: properly handle disabled outputs
+  * idle-inhibit: fix use-after-free
+  * wlr-output-management: leverage new wlroots APIs
+  * session-lock: fix assertion failure on hot-plug while locked
+  * wlr-output-management: fix bug due to zig miscompilation
+  * docs: fix typos in riverctl man page
+  * docs: remove repology badge from readme
+  * Seat: guard setFocusRaw() usage while locked
+  * deps: update to latest zig-wayland/zig-wlroots
+  * deps: update to latest zig-wayland/zig-wlroots
+  * Keyboard: fix keyboard-layout mapping crash
+  * pointer-constraints: remove protocol
+  * render: remove damage tracking
+  * wlr-foreign-toplevel-management: remove protocol
+  * render: use wlr_scene to render views
+  * Cursor: remove surfaceAt()
+  * session-lock: use the scene graph
+
+-------------------------------------------------------------------
+Wed Aug 16 13:43:16 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add subpackage river-contrib.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Sat Jun 10 01:44:52 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4+g953:
+  * riverctl: Add error messages for failed connections
+  * XdgToplevel: store scene node in wlr_surface data
+  * XdgToplevel: keep wlroots updated on view sizes
+
+-------------------------------------------------------------------
+Sun Apr 16 09:25:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Change requirement of xdg-desktop-portal-wlr as a suggestion. This is
+  for if an alternative exists e.g. xdg-desktop-portal-hyprland
+
+-------------------------------------------------------------------
+Thu Apr  6 12:44:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix installation of manpages.
+
+-------------------------------------------------------------------
+Mon Mar 27 14:14:50 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4+g109:
+  * command/send-to-output: add -current-tags flag
+  * Server: remove debug leftover
+  * session-lock: fix assertion failures and clean up
+  * LayerSurface: fix surfaces on multiple outputs at once
+  * LayerSurface: handle focus when switching outputs
+  * build: work around zig 0.10.0 bug to fix CI
+  * Cursor: apply x/y change during resize on commit
+  * Cursor: lock to current geometry during move/resize
+  * XdgToplevel: ensure view dimensions match geometry
+
+-------------------------------------------------------------------
+Sat Mar 18 13:32:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.4+g106:
+  * LayerSurface: fix surfaces on multiple outputs at once
+  * LayerSurface: handle focus when switching outputs 
+  * Cursor: apply x/y change during resize on commit
+
+-------------------------------------------------------------------
+Wed Mar 15 01:13:12 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.4+g32:
+  * Cursor: fix warp on output change with no views
+  * Root: separate fallback list to handle 0 outputs
+  * Root: remove incorrect assertions in addOutput()
+  * Output: reinitialize output_status, cleanup
+
+-------------------------------------------------------------------
+Sun Mar 05 04:40:56 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4+g30:
+  * Keyboard: fix keyboard-layout mapping crash
+  * deps: update to latest zig-wayland/zig-wlroots
+  * deps: update to latest zig-wayland/zig-wlroots
+  * Seat: guard setFocusRaw() usage while locked
+  * docs: remove repology badge from readme
+  * docs: fix typos in riverctl man page
+  * wlr-output-management: fix bug due to zig miscompilation
+  * session-lock: fix assertion failure on hot-plug while locked
+  * wlr-output-management: leverage new wlroots APIs
+  * wlr-output-management: apply adaptive sync state
+  * idle-inhibit: fix use-after-free
+  * session-lock: properly handle disabled outputs
+  * View: fix pointer comparison in notifyTitle()
+  * Cursor: fix incorrect lock manager state assertion
+  * command/layout: fix a memory leak
+  * Seat: rework Xwayland Override Redirect focus
+  * Seat: keep parent Xwayland view of a focused OR surface activated
+  * deps: update zig-wayland to fix build on aarch64
+  * flags: further cleanup after Zig 0.10
+  * deps: update to Zig 0.10
+  * render: fix rounding for fractional scaling
+  * session-lock: fix assertion failure on abnormal client behavior
+  * session-lock: fix assertion failure due to race
+  * session-lock: wait for present before locking
+  * rivertile: fix code to disallow 0 main count
+  * render: premultiply alpha for user-provided colors
+  * completions: add keyboard-layout
+  * ci: Use meson setup command
+  * river: fix bug in snap down / right
+  * build: bump version to 0.3.0-dev
+
+-------------------------------------------------------------------
+Sun Feb 12 20:49:58 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4:
+  * build: bump version to 0.2.4
+  * Seat: guard setFocusRaw() usage while locked
+  * docs: remove repology badge from readme
+  * docs: fix typos in riverctl man page
+  * session-lock: fix assertion failure on hot-plug while locked
+  * wlr-output-management: apply adaptive sync state
+  * build: bump version to 0.2.4-dev
+  * build: bump version to 0.2.3
+  * idle-inhibit: fix use-after-free
+  * session-lock: properly handle disabled outputs
+  * View: fix pointer comparison in notifyTitle()
+  * Cursor: fix incorrect lock manager state assertion
+  * command/layout: fix a memory leak
+  * Seat: rework Xwayland Override Redirect focus
+  * Seat: keep parent Xwayland view of a focused OR surface activated
+  * deps: update zig-wayland to fix build on aarch64
+  * build: bump version to 0.2.3-dev
+  * build: bump version to 0.2.2
+  * flags: further cleanup after Zig 0.10
+  * deps: update to Zig 0.10
+  * build: bump version to 0.2.2-dev
+  * build: bump version to 0.2.1
+  * render: fix rounding for fractional scaling
+  * session-lock: fix assertion failure on abnormal client behavior
+  * session-lock: fix assertion failure due to race
+  * session-lock: wait for present before locking
+  * rivertile: fix code to disallow 0 main count
+  * render: premultiply alpha for user-provided colors
+  * completions: add keyboard-layout
+  * ci: Use meson setup command
+  * river: fix bug in snap down / right
+  * build: bump version to 0.2.1-dev
+
+-------------------------------------------------------------------
+Wed Feb  8 08:34:01 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix group name of river-devel as "Development/Libraries/Other"
+
+-------------------------------------------------------------------
+Thu Feb  2 11:30:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Only exclusive arches are supported.
+
+-------------------------------------------------------------------
+Tue Jan 31 12:01:45 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for river version 0.2.0+g24

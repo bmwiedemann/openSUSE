@@ -1,0 +1,66 @@
+From 8c4857f9902810b4c369c0317ea90ebabe15caba Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 22 Sep 2023 17:28:06 +0200
+Subject: [PATCH 163/173] TotalTimeWidget: port to JS6 classes
+
+See 9c0b672 ("Port GObject classes to JS6 classes")
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ extension/widgets/totalTimeWidget.js | 21 ++++++++-------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
+
+diff --git a/extension/widgets/totalTimeWidget.js b/extension/widgets/totalTimeWidget.js
+index a956c36..9a6d64b 100644
+--- a/extension/widgets/totalTimeWidget.js
++++ b/extension/widgets/totalTimeWidget.js
+@@ -21,12 +21,10 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ Copyright (c) 2018 Thibaut Madelaine <madtibo_git@tribu-ml.fr>
+ */
+ 
+-
+-const Lang = imports.lang;
+ const St = imports.gi.St;
+ const Clutter = imports.gi.Clutter;
+ const GLib = imports.gi.GLib;
+-
++const GObject = imports.gi.GObject;
+ const Me = imports.misc.extensionUtils.getCurrentExtension();
+ const Stuff = Me.imports.stuff;
+ 
+@@ -34,19 +32,16 @@ const Stuff = Me.imports.stuff;
+ /**
+  * Custom Label widget that displays total time.
+  */
+-var TotalTimeWidget = new Lang.Class({
+-    Name: 'TotalTime',
+-    Extends: St.Label,
+-
+-    _init: function() {
+-        this.parent({style_class: 'summary-label'});
+-
+-    },
++var TotalTimeWidget = GObject.registerClass(
++  class TotalTime extends St.Label {
++    _init() {
++      super._init({style_class: 'summary-label'});
++    }
+ 
+     /**
+      * Recompute values and replace old string with new one based on passed facts.
+      */
+-    refresh: function(facts) {
++    refresh(facts) {
+         /**
+          * Construct a string representing today total.
+          */
+@@ -61,5 +56,5 @@ var TotalTimeWidget = new Lang.Class({
+         }
+ 
+         this.set_text(getString(facts));
+-    },
++    }
+ });
+-- 
+2.42.0
+

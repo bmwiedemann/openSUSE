@@ -1,0 +1,9 @@
+<package name="spice-parent" project="openSUSE:Factory">
+  <title>Sonatype Spice Components</title>
+  <description>Spice components and libraries are common components
+used throughout the Sonatype Forge.
+
+</description>
+  <devel project="Java:packages" package="spice-parent"/>
+  <url>http://github.com/sonatype/oss-parents</url>
+</package>

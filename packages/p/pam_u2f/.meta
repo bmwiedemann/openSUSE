@@ -1,0 +1,5 @@
+<package name="pam_u2f" project="openSUSE:Factory">
+  <title>Pluggable Authentication Module (PAM) Universal 2nd Factor (U2F)</title>
+  <description>The PAM U2F module provides an easy way to integrate the Yubikey (or other U2F-compliant authenticators) into your existing user authentication infrastructure. PAM is used by GNU/Linux, Solaris and Mac OS X for user authentication.</description>
+  <devel project="security" package="pam_u2f"/>
+</package>

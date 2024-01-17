@@ -1,0 +1,22 @@
+[Unit]
+Description=pkcs11 event manager
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=forking
+ExecStart=/usr/bin/pkcs11_eventmgr
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

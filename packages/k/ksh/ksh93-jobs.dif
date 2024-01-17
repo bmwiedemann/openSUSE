@@ -1,0 +1,35 @@
+--- src/cmd/ksh93/sh/jobs.c
++++ src/cmd/ksh93/sh/jobs.c	2012-12-20 13:33:28.000000000 +0000
+@@ -638,12 +638,14 @@ void job_init(Shell_t *shp, int lflag)
+ 		/* This should have already been done by rlogin */
+                 register int fd;
+                 register char *ttynam;
++		int err = errno;
+ #ifndef SIGTSTP
+                 setpgid(0,shp->gd->pid);
+ #endif /*SIGTSTP */
+                 if(job.mypgid<0 || !(ttynam=ttyname(JOBTTY)))
+                         return;
+-                close(JOBTTY);
++		while(close(JOBTTY)<0 && errno==EINTR)
++			errno = err;
+                 if((fd = open(ttynam,O_RDWR)) <0)
+                         return;
+                 if(fd!=JOBTTY)
+@@ -1110,7 +1112,7 @@ static struct process *job_bystring(regi
+ 
+ int job_kill(register struct process *pw,register int sig)
+ {
+-	Shell_t	*shp = pw->p_shp;
++	Shell_t	*shp;
+ 	register pid_t pid;
+ 	register int r;
+ 	const char *msg;
+@@ -1123,6 +1125,7 @@ int job_kill(register struct process *pw
+ 	errno = ECHILD;
+ 	if(pw==0)
+ 		goto error;
++	shp = pw->p_shp;
+ 	pid = pw->p_pid;
+ #if SHOPT_COSHELL
+ 	if(pw->p_cojob)

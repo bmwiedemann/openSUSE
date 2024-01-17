@@ -1,0 +1,8 @@
+<package name="kdsingleapplication" project="openSUSE:Factory">
+  <title>Helper class for single-instance policy applications</title>
+  <description>KDSingleApplication is a helper class for single-instance policy applications.
+
+</description>
+  <devel project="KDE:Qt6" package="kdsingleapplication"/>
+  <url>https://github.com/KDAB/KDSingleApplication</url>
+</package>

@@ -1,0 +1,8 @@
+<package name="pam_csync" project="openSUSE:Factory">
+  <title>A PAM module for roaming home directories</title>
+  <description>This is a PAM module to provide roaming home directories for a user
+session. The authentication module verifies the identity of a user and
+triggers a synchronization with the server on the first login and the
+last logout.</description>
+  <devel project="network:synchronization:files" package="pam_csync"/>
+</package>

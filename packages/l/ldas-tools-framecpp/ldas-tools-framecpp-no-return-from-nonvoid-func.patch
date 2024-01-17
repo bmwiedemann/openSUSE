@@ -1,0 +1,12 @@
+Index: ldas-tools-framecpp-2.7.0/test/ChecksumValidator.cc
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/test/ChecksumValidator.cc
++++ ldas-tools-framecpp-2.7.0/test/ChecksumValidator.cc
+@@ -82,6 +82,7 @@ test_helper( const char*  TestDir,
+             BOOST_CHECK( ( ret == 0 ) == Expected );
+         }
+     }
++    return retval;
+ }
+ 
+ void

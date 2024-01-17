@@ -1,0 +1,12 @@
+diff -Naur libircclient-1.9.orig/src/ssl.c libircclient-1.9/src/ssl.c
+--- libircclient-1.9.orig/src/ssl.c	2013-11-05 17:37:29.983166000 +0100
++++ libircclient-1.9/src/ssl.c	2016-06-13 14:11:03.682176849 +0200
+@@ -127,7 +127,7 @@
+ 		return LIBIRC_ERR_SSL_INIT_FAILED;
+ 
+ 	// Enable only strong ciphers
+-	if ( SSL_CTX_set_cipher_list( ssl_context, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH" ) != 1 )
++	if ( SSL_CTX_set_cipher_list( ssl_context, "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH" ) != 1 )
+ 		return LIBIRC_ERR_SSL_INIT_FAILED;
+ 
+ 	// Set the verification

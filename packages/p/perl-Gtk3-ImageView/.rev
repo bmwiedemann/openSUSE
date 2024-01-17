@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>03adab8415dd9528d3370a072a2a9bc7</srcmd5>
+    <version>6</version>
+    <time>1614948388</time>
+    <user>RBrownSUSE</user>
+    <comment>Needed for new version of gscan2pdf.</comment>
+    <requestid>875626</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>233b6be956b2a7fcfe30f6e26f1ac248</srcmd5>
+    <version>8</version>
+    <time>1620653923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891831</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9d56b757b4d4828945929f6e6f31dc8c</srcmd5>
+    <version>9</version>
+    <time>1621355253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894105</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5315d3900ff4c56383b508917761db3b</srcmd5>
+    <version>10</version>
+    <time>1634068186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924832</requestid>
+  </revision>
+</revisionlist>

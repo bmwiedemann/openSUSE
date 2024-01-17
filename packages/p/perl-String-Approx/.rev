@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70e4a89c3d435d3e3702434450647576</srcmd5>
+    <version>3.26</version>
+    <time>1355138444</time>
+    <user>coolo</user>
+    <comment>needed by w3c-markup-validator</comment>
+    <requestid>143538</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>70e4a89c3d435d3e3702434450647576</srcmd5>
+    <version>3.26</version>
+    <time>1359109797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>42ac76f67b68d0636fe91330ee9bab5a</srcmd5>
+    <version>3.27</version>
+    <time>1364409131</time>
+    <user>coolo</user>
+    <comment>- updated to 3.27:
+  * Resolve https://rt.cpan.org/Ticket/Display.html?id=69029
+    Do not die (adist()) on empty pattern string.
+  * Resolve https://rt.cpan.org/Ticket/Display.html?id=36707
+    Do not die on undefined inputs, just return undef.
+  * Resolve https://rt.cpan.org/Ticket/Display.html?id=82341
+    Explicitly specify the licensing to be Artistic 2 or LGPL 2.
+  * Modernize all the tests to use Test::More.
+  * Add some tests for UTF-8 inputs.</comment>
+    <requestid>161230</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>42ac76f67b68d0636fe91330ee9bab5a</srcmd5>
+    <version>3.27</version>
+    <time>1379663841</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>42ac76f67b68d0636fe91330ee9bab5a</srcmd5>
+    <version>3.27</version>
+    <time>1409302482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea294fee36f74556b456b0df85cb130e</srcmd5>
+    <version>3.28</version>
+    <time>1496225746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494774</requestid>
+  </revision>
+</revisionlist>

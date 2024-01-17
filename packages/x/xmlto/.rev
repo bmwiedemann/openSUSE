@@ -1,0 +1,241 @@
+<revisionlist>
+  <revision rev="1" vrev="43">
+    <srcmd5>62d3b4728b52b6a17fb34d745f8067cc</srcmd5>
+    <version>0.0.18</version>
+    <time>1168904584</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="119">
+    <srcmd5>8aa9fae3c0dda0a97a8fa08935715916</srcmd5>
+    <version>0.0.18</version>
+    <time>1197480000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="120">
+    <srcmd5>ac71a95f80b924f283919d2e194b75a8</srcmd5>
+    <version>0.0.18</version>
+    <time>1197649067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="138">
+    <srcmd5>b0477fc13342a371eac5601f4dc15e94</srcmd5>
+    <version>0.0.18</version>
+    <time>1205928886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="182">
+    <srcmd5>93c4486a1823e8f855b094a3ab329261</srcmd5>
+    <version>0.0.18</version>
+    <time>1221235242</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="185">
+    <srcmd5>b28217880c55d051bb0ca858e4e363d2</srcmd5>
+    <version>0.0.18</version>
+    <time>1241129733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="187">
+    <srcmd5>b28217880c55d051bb0ca858e4e363d2</srcmd5>
+    <version>0.0.18</version>
+    <time>1241129733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>17805f4985153c5cc1b7830368c753e6</srcmd5>
+    <version>0.0.23</version>
+    <time>1261139647</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/xmlto based on submit request 26966 from user keichwa
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2dbbab085cfa8f3bf990d510864191d3</srcmd5>
+    <version>0.0.23</version>
+    <time>1263818960</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/xmlto based on submit request 29825 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>cff42b799998e4746b0d3049aef3d5f3</srcmd5>
+    <version>0.0.23</version>
+    <time>1268926633</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>cff42b799998e4746b0d3049aef3d5f3</srcmd5>
+    <version>0.0.23</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>cff42b799998e4746b0d3049aef3d5f3</srcmd5>
+    <version>0.0.23</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>cff42b799998e4746b0d3049aef3d5f3</srcmd5>
+    <version>0.0.23</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>06ec7db94b51cd9916ce68f7cc52c0fa</srcmd5>
+    <version>0.0.23</version>
+    <time>1307543134</time>
+    <user>saschpe</user>
+    <comment>COPYING; bnc#695072</comment>
+    <requestid>72912</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>1933cc18ff3371bcbfe5f9d6fcae1a64</srcmd5>
+    <version>0.0.23</version>
+    <time>1307543173</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72912
+</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>0760f8c756a52f148f8276d60f8275c1</srcmd5>
+    <version>0.0.23</version>
+    <time>1315238391</time>
+    <user>lrupp</user>
+    <comment>- Recommends texlive (bnc#688032)</comment>
+    <requestid>80955</requestid>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>cc4efb0a8bc0e9667a290af6fd4331df</srcmd5>
+    <version>0.0.23</version>
+    <time>1315238409</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80955
+</comment>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>ce28125db83fc2269a90f761b4da469d</srcmd5>
+    <version>0.0.23</version>
+    <time>1315564108</time>
+    <user>saschpe</user>
+    <comment>SLE RPM compatibility fix (forwarded request 81006 from yecril71pl)</comment>
+    <requestid>81610</requestid>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>6d2f451b4bb9c1c1e3b394b6d7d37148</srcmd5>
+    <version>0.0.23</version>
+    <time>1315564114</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81610
+</comment>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>6d2f451b4bb9c1c1e3b394b6d7d37148</srcmd5>
+    <version>0.0.23</version>
+    <time>1319182603</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>b1261a21da439a20a2841f04a4781274</srcmd5>
+    <version>0.0.23</version>
+    <time>1319208461</time>
+    <user>coolo</user>
+    <comment>- Add xmlto-lynx-empty-file.patch to fix problems with lynx on
+  empty files, upstream commit 57 (forwarded request 88729 from namtrac)</comment>
+    <requestid>88781</requestid>
+  </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>66407b22a9b92335b68d1469a0cb7d9f</srcmd5>
+    <version>0.0.23</version>
+    <time>1323195398</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9af5a8f41a7d1e85c1a7c69b48860fa7</srcmd5>
+    <version>0.0.25</version>
+    <time>1339767594</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>124715</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>9af5a8f41a7d1e85c1a7c69b48860fa7</srcmd5>
+    <version>0.0.25</version>
+    <time>1340184375</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>db6364cbdcb3cc79d53138f43a31a646</srcmd5>
+    <version>0.0.25</version>
+    <time>1355922699</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145260</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>db6364cbdcb3cc79d53138f43a31a646</srcmd5>
+    <version>0.0.25</version>
+    <time>1359110664</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>db6364cbdcb3cc79d53138f43a31a646</srcmd5>
+    <version>0.0.25</version>
+    <time>1379665094</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>836275871b7310a16cda38f70713f858</srcmd5>
+    <version>0.0.26</version>
+    <time>1402947781</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236923</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>836275871b7310a16cda38f70713f858</srcmd5>
+    <version>0.0.26</version>
+    <time>1409303781</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>dc4056383f83a0450bea58a4b01119c1</srcmd5>
+    <version>0.0.26</version>
+    <time>1415199284</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259593</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>81946f2804954697388d0aa4873a8ecc</srcmd5>
+    <version>0.0.28</version>
+    <time>1521498655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586675</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>196d95c2ab38e4661f85c60a89849271</srcmd5>
+    <version>0.0.28</version>
+    <time>1552464394</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify spec file</comment>
+    <requestid>682075</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>0438c94b923b148127b08bb4fcae4dba</srcmd5>
+    <version>0.0.28</version>
+    <time>1553699551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686161</requestid>
+  </revision>
+</revisionlist>

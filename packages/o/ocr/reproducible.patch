@@ -1,0 +1,22 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2019-02-15
+
+Sort input file list
+so that libocr.so builds in a reproducible way
+in spite of indeterministic filesystem readdir order.
+
+See https://reproducible-builds.org/ for why this is good.
+
+diff --git a/ocr/build/common.mk b/ocr/build/common.mk
+index aa8d333..7b39f17 100644
+--- a/ocr/build/common.mk
++++ b/ocr/build/common.mk
+@@ -213,7 +213,7 @@ CFLAGS := -g -Wall $(CFLAGS) $(CFLAGS_USER)
+ #
+ # Generate a list of all source files and the respective objects
+ #
+-SRCS   := $(shell find -L $(OCR_ROOT)/src -name '*.[csS]' -print)
++SRCS   := $(sort $(shell find -L $(OCR_ROOT)/src -name '*.[csS]' -print))
+ 
+ #
+ # Generate a source search path

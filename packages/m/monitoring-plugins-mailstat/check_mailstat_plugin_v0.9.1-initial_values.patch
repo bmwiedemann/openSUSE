@@ -1,0 +1,14 @@
+Index: check_mailstat_plugin_v0.9.1/check_mailstat.pl
+===================================================================
+--- check_mailstat_plugin_v0.9.1.orig/check_mailstat.pl
++++ check_mailstat_plugin_v0.9.1/check_mailstat.pl
+@@ -217,6 +217,9 @@ sub get_counter{
+ 			$stat{$k} = $msgs_per_min;
+ 		}
+ 	}
++	else {
++		%stat=%stat_new;
++	}
+ 	
+ 	#write new stat to old file
+ 	open(my $stath_old, ">", $stat_old) or plugin_die "Can't open file $stat_old to write: $!";

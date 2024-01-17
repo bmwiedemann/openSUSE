@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f33ade97bf6e601e5b1a7cad61d2d35</srcmd5>
+    <version>22.11</version>
+    <time>1669816812</time>
+    <user>dimstar_suse</user>
+    <comment>Add armnn back to Factory</comment>
+    <requestid>1039050</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>61a5c6be1ad89034350632af8cec3c1a</srcmd5>
+    <version>22.11</version>
+    <time>1671128704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042947</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd60c2014f84e1280499df5537abf5e5</srcmd5>
+    <version>23.02</version>
+    <time>1678902976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072066</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4f3738fb00e62bc6fe482c7e4d3d1445</srcmd5>
+    <version>23.02</version>
+    <time>1682002140</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additionnal gcc13 fixes:
+  * 4cf40d7.diff
+  * armnn-fix-gcc13-2.patch
+- Update armnn-fix-gcc13.patch with upstream patch
+- Add patch to fix build with GCC13:
+  * armnn-fix-gcc13.patch
+</comment>
+    <requestid>1080889</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7dec55b053bbb00ee499b07e4be54a97</srcmd5>
+    <version>23.05</version>
+    <time>1686665359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 23.05:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v23.05
+- Drop upstream patches:
+  * armnn-fix-gcc13.patch
+  * armnn-fix-gcc13-2.patch
+  * 4cf40d7.diff
+</comment>
+    <requestid>1092624</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a0a393933436ba426115036240b708f1</srcmd5>
+    <version>23.08</version>
+    <time>1694019575</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109209</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4900d9eccead85efeb7dbc3a8cc520c</srcmd5>
+    <version>23.11</version>
+    <time>1702071194</time>
+    <user>anag+factory</user>
+    <comment>- Update to 23.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v23.11
+</comment>
+    <requestid>1132049</requestid>
+  </revision>
+</revisionlist>

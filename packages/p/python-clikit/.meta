@@ -1,0 +1,5 @@
+<package name="python-clikit" project="openSUSE:Factory">
+  <title>python-clikit</title>
+  <description>Helper to build testable command line interfaces</description>
+  <devel project="devel:languages:python" package="python-clikit"/>
+</package>

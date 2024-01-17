@@ -1,0 +1,13 @@
+diff --git a/isc_dhcp_leases/iscdhcpleases.py b/isc_dhcp_leases/iscdhcpleases.py
+index e16677e..8578060 100644
+--- a/isc_dhcp_leases/iscdhcpleases.py
++++ b/isc_dhcp_leases/iscdhcpleases.py
+@@ -5,8 +5,6 @@ import re
+ import struct
+ import gzip
+ 
+-from six import iteritems
+-
+ 
+ try:
+     utc = datetime.timezone.utc

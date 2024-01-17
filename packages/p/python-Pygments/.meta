@@ -1,0 +1,17 @@
+<package name="python-Pygments" project="openSUSE:Factory">
+  <title>Pygments is a syntax highlighting package written in Python</title>
+  <description>Pygments is a syntax highlighting package written in Python.
+
+It is a generic syntax highlighter for general use in all kinds of software
+such as forum systems, wikis or other applications that need to prettify
+source code. Highlights are:
+
+ * a wide range of common languages and markup formats is supported
+ * special attention is paid to details, increasing quality by a fair amount
+ * support for new languages and formats are added easily
+ * a number of output formats, presently HTML, LaTeX, RTF, SVG, all image
+   formats that PIL supports and ANSI sequences
+ * it is usable as a command-line tool and as a library
+ * ... and it highlights even Brainfuck!</description>
+  <devel project="devel:languages:python" package="python-Pygments"/>
+</package>

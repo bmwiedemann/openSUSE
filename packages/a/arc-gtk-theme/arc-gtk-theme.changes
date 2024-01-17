@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Mon Apr  3 09:53:57 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20221218
+  * Cinnamon theme:
+    * Update for Cinnamon 5.4
+  * GNOME Shell theme:
+    * Update for GNOME Shell 43
+    * Various fixes and updates for GNOME Shell 42
+  * GTK 3 and GTK4 themes:
+    * Fix "dark style" preference with Arc-Dark variant
+    * Add borders to solid-csd decorations, fixing some borderless windows
+  * GTK 3 theme:
+    * Fix switches in xfce4-panel menus
+    * Fix offset titlebar decorations in some cases
+      (e.g. Cinnamon 5.4 and Electron applications in GNOME)
+    * Various Fixes and improvements
+
+-------------------------------------------------------------------
+Sat Apr 30 10:04:59 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20220405
+  * GNOME Shell theme: Update for GNOME Shell 42
+  * GTK 3 theme:
+    * Nautilus path-bar improvements
+    * Style redesigned path-bar in Nautilus 42
+    * Various fixes
+  * GTK 4 theme: Add libadwaita public color definitions
+- Update to version 20220223
+  * GTK 3 theme: Various fixes and improvements
+  * GTK 4 theme:
+    * Add styling for libadwaita widgets
+    * Stop versioning the theme, as that seems unnecessary for GTK 4
+    * Various fixes and improvements
+  * GNOME Shell theme: Fix dash-to-dock focused application icon
+    mouseover background
+- Update to version 20220102
+  * Cinnamon theme:
+    * Update for Cinnamon 5.2
+    * Drop support for versions before 3.8
+  * GTK 4 theme: Fix applications crashing with GTK 4.6
+  * GTK 3 theme:
+    * Drop versioned themes, and only target GTK 3.24 for now on
+    * Xfce4 panel padding fixes
+    * Hide border on MATE panel sensors applet graph
+  * GNOME Shell theme:
+    * Drop Arc-Lighter variant for GNOME Shell 40 and later
+    * Drop support for versions before 3.28
+  * Metacity theme:
+    * Add dark Metacity v3 variant, with distinct window border
+    * Adjust titlebar padding
+    * Increase rounded corner radius slightly
+    * Don't round corners for tiled windows
+  * Xfwm4 theme:
+    * Increase resize border width
+    * Make bottom decoration corners square
+    * Fix titlebar button spacing
+- Update to version 20211018
+  * Added Arc GTK 4 theme: Currently based on GTK 4.2, but should
+    work just as well with GTK 4.4. Any libadwaita specific styling
+    is not yet supported, so applications using it may appear
+    imperfectly themed.
+  * GTK 3 theme:
+    * Update style for libhandy
+    * Fix circular buttons appearing elliptical
+  * GNOME Shell theme:
+    * Add support for GNOME Shell 41
+    * Various updates and fixes for GNOME Shell 40
+  * Cinnamon theme: Support version 5.01
+
+-------------------------------------------------------------------
+Wed May 12 11:59:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 20210412:
+  + Support GNOME 40
+  + Switch to meson build system.
+- Replace autoconf and automake BuildRequires with meson.
+
+-------------------------------------------------------------------
+Thu May  7 20:32:54 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 20200502:
+  * No changelog available.
+- Build the Cinnamon theme.
+- Switch to https://github.com/jnsh/arc-theme
+
+-------------------------------------------------------------------
+Tue Nov 19 06:33:05 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Update to version 20190917:
+  * Allow builds against gnome-shell 3.34
+  * Refactor gnome-shell 3.32 code
+    * Removes redundant selectors/styling (i.e. styling that is no longer
+      required in newer gnome shell versions), and replaces with newer selectors/styling
+      (modifying to match Arc styling where necessary)
+    * Integrates styling from the default gnome shell theme into the Arc shell theme.
+      Because the user shell theme (Arc in this case) is "overlaid" over the default shell
+      theme, this is styling that was being "pulled in" anyway.
+    * Add full shadows to panel dropdown menus
+  * InfoBar colors should respect type
+  * Remove border from stackswitcher
+  * Don't hardcode LightDM font-size
+  * XFCE 4.14 panel styling fixes
+- Update GitHub project url from NicoHood to arc-design
+- Update public keyring from  NicoHood <pgp@nicohood.de> to David Mohammed <fossfreedom@ubuntu.com>
+
+-------------------------------------------------------------------
+Thu Oct 17 13:31:51 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Sat May 11 08:22:44 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 20190330 (no changelog supplied)
+- Fix build with gnome-shell 3.32 and newer
+
+-------------------------------------------------------------------
+Thu Oct 25 12:16:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 20181022:
+  * No changelog available.
+- Use GPG signing.
+
+-------------------------------------------------------------------
+Mon Sep 10 22:19:48 UTC 2018 - minava@t-online.de
+
+- Update to version 20180715 (changes since 20180114):
+  * Added openbox theme
+  * Updated thunar style
+  * Added inkscape and optipng dependencies
+  * Bugfixes
+
+-------------------------------------------------------------------
+Thu May 31 09:06:48 UTC 2018 - mati865@gmail.com
+
+- Update to version 20180114
+  * General cleanup of outdated gtk versions and extras
+  * Readme update
+  * Minor fixes for cinnamon and xfce4
+  * Add budgie desktop styling #17
+  * Slightly darken fonts for light theme to improve contrast #15
+  * Switch building from gulp to sassc
+  * Mate screensaver styling #27
+  * Install plank theme with makefile directly
+
+-------------------------------------------------------------------
+Sun Mar 12 22:15:09 UTC 2017 - matthias.eliasson@gmail.com
+
+- Update to version 20170302
+  * Cinnamon 3.2 fixes
+  * Fix frame borders with GTK 3.22.9
+  * Small bugfixes
+
+-------------------------------------------------------------------
+Tue Nov 22 09:02:29 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 20161119:
+  * Cinnamon 3.2 support.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Sun Nov 13 15:27:55 UTC 2016 - mailaender@opensuse.org
+
+- Update to version 20161005
+  * Fix OSD windows in MATE 1.16
+  * Fix Unity window decorations with GTK 3.20
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Sat Sep 24 10:10:00 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 20160923:
+  * GNOME 3.22 support.
+  * elementary OS Loki support.
+  * Improve GNOME Flashback support (3.20+ only).
+  * Easier window resizing in Xfce and MATE.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Sun Jun  5 14:23:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 20160605 (changes since 20160331):
+  * Use highlight colour for selected menuitems.
+  * Add dark Chromium theme.
+  * Merge xfce-notify theme with GTK+ 2 theme (this removes the
+    --disable-xfce-notify build option).
+  * Fix bugs in GTK+ 2 entry styling.
+  * Update Unity window decorations.
+  * Bugfixes.
+
+-------------------------------------------------------------------
+Sat Apr  9 11:24:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 20160331:
+  * Lots of fixes for Gnome/GTK+ 3.20.
+
+-------------------------------------------------------------------
+Fri Mar 25 19:25:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package.

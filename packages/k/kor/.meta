@@ -1,0 +1,17 @@
+<package name="kor" project="openSUSE:Factory">
+  <title>Tool to discover unused Kubernetes Resources</title>
+  <description>Kor is a tool to discover unused Kubernetes resources. Currently, Kor can identify and list unused:                                                                                          
+- ConfigMaps                                                                                                                                                                                 
+- Secrets                                                                                                                                                                                    
+- Services                                                                                                                                                                                   
+- ServiceAccounts                                                                                                                                                                            
+- Deployments                                                                                                                                                                                
+- StatefulSets                                                                                                                                                                               
+- Roles                                                                                                                                                                                      
+- HPAs                                                                                                                                                                                       
+- PVCs                                                                                                                                                                                       
+- Ingresses                                                                                                                                                                                  
+- PDBs</description>
+  <devel project="devel:kubic" package="kor"/>
+  <url>https://github.com/yonahd/kor</url>
+</package>

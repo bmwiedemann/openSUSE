@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Sun Dec  4 13:42:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.14:
+  * Update translations
+  * Add 'fur' into shipped locales
+  * Update translations
+
+-------------------------------------------------------------------
+Tue May 18 15:04:30 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't call dbus-send in %post as that would auto launch the server
+
+-------------------------------------------------------------------
+Mon Mar 15 18:21:01 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+-  Update to 3.3.12
+
+  Summary of the changes from 3.3.10 to 3.3.12
+ * Use get_package_nvr* functions instead of get_rpm_nvr*
+ * Add plugin which analyzes execmem denials
+ * Update qemu_blk_image and qemu_file_image
+ * Update "xen_image" plugin
+ * update "file" plugin
+ * Handle no "allowed_target_types" properly
+ * bind_ports: Do not use when there are no allowed_target_types
+ * Fix summary and "if" text for AVCs with unknown target path
+
+-------------------------------------------------------------------
+Wed May 16 07:36:17 UTC 2018 - mcepl@suse.com
+
+- Rebase to 3.3.9
+
+-------------------------------------------------------------------
+Thu Feb 25 15:43:36 UTC 2010 - prusnak@suse.cz
+
+- updated to 2.1.40
+
+-------------------------------------------------------------------
+Wed Jun 10 17:11:34 CEST 2009 - prusnak@suse.cz
+
+- initial version 2.0.16
+  * based on Fedora package
+

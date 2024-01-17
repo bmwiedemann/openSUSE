@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Sat Dec 16 20:48:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * Add the multiple-valued properties artists_credit, artists_sort,
+    albumartists_credit, and albumartists_sort.
+- drop python-mediafile-pyupgrade.patch
+- add python-mediafile-remove-six.patch
+
+-------------------------------------------------------------------
+Tue Apr 25 06:53:17 UTC 2023 - pgajdos@suse.com
+
+- drop python 2 support
+- added patches
+  fix https://github.com/beetbox/mediafile/issues/68
+  + python-mediafile-pyupgrade.patch
+
+-------------------------------------------------------------------
+Mon Jan  2 15:27:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * List-valued properties now return None instead of an empty list when the
+    underlying tags are missing altogether.
+  * Fix a test failure that arose with Mutagen 1.46.
+  * Require Python 3.7 or later.
+
+-------------------------------------------------------------------
+Fri Oct 28 18:25:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.10.0
+  * Add the multiple-valued properties albumtypes, catalognums and languages.
+  * The catalognum property now refers to additional file tags named CATALOGID and DISCOGS_CATALOG (but only for reading, not writing).
+  * The multi-valued albumartists property now refers to additional file tags named ALBUM_ARTIST and ALBUM ARTISTS. (The latter is used only for reading.)
+  * The ListMediaField class now doesn’t concatenate multiple lists if found. The first available tag is used instead, like with other kinds of fields.
+
+-------------------------------------------------------------------
+Sat Feb 12 14:50:51 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file a little bit.
+
+-------------------------------------------------------------------
+Thu Feb 10 21:22:33 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Create package for version 0.9.0

@@ -1,0 +1,20 @@
+<package name="perl-Crypt-SSLeay" project="openSUSE:Factory">
+  <title>OpenSSL support for LWP</title>
+  <description>This Perl module provides support for the HTTPS protocol under LWP, to
+allow an 'LWP::UserAgent' object to perform GET, HEAD and POST requests.
+Please see LWP for more information on POST requests.
+
+The 'Crypt::SSLeay' package provides 'Net::SSL', which is loaded by
+'LWP::Protocol::https' for https requests and provides the necessary SSL
+glue.
+
+This distribution also makes following deprecated modules available:
+
+    Crypt::SSLeay::CTX
+    Crypt::SSLeay::Conn
+    Crypt::SSLeay::X509
+
+Work on Crypt::SSLeay has been continued only to provide https support for
+the LWP (libwww-perl) libraries.</description>
+  <devel project="devel:languages:perl" package="perl-Crypt-SSLeay"/>
+</package>

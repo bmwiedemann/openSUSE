@@ -1,0 +1,35 @@
+commit 997b7e98990cd44243651827e4efa366d9885907
+Author: Stefan Raspl <raspl@de.ibm.com>
+Date:   Thu Apr 2 10:57:05 2020 +0200
+
+    tools/kvm_stat: add sample systemd unit file
+    
+    Add a sample unit file as a basis for systemd integration of kvm_stat
+    logs.
+    
+    Signed-off-by: Stefan Raspl <raspl@de.ibm.com>
+    Message-Id: <20200402085705.61155-4-raspl@linux.ibm.com>
+    Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat.service b/tools/kvm/kvm_stat/kvm_stat.service
+new file mode 100644
+index 000000000000..71aabaffe779
+--- /dev/null
++++ b/tools/kvm/kvm_stat/kvm_stat.service
+@@ -0,0 +1,16 @@
++# SPDX-License-Identifier: GPL-2.0-only
++
++[Unit]
++Description=Service that logs KVM kernel module trace events
++Before=qemu-kvm.service
++
++[Service]
++Type=simple
++ExecStart=/usr/bin/kvm_stat -dtcz -s 10 -L /var/log/kvm_stat.csv
++ExecReload=/bin/kill -HUP $MAINPID
++Restart=always
++SyslogIdentifier=kvm_stat
++SyslogLevel=debug
++
++[Install]
++WantedBy=multi-user.target

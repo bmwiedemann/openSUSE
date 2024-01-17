@@ -1,0 +1,36 @@
+<package name="perl-PPIx-Regexp" project="openSUSE:Factory">
+  <title>Represent a regular expression of some sort</title>
+  <description>The purpose of the _PPIx-Regexp_ package is to parse regular expressions in
+a manner similar to the way the PPI package parses Perl. This class forms
+the root of the parse tree, playing a role similar to PPI::Document.
+
+This package shares with PPI the property of being round-trip safe. That
+is,
+
+ my $expr = 's/ ( \d+ ) ( \D+ ) /$2$1/smxg';
+ my $re = PPIx::Regexp-&gt;new( $expr );
+ print $re-&gt;content() eq $expr ? &quot;yes\n&quot; : &quot;no\n&quot;
+
+should print 'yes' for any valid regular expression.
+
+Navigation is similar to that provided by PPI. That is to say, things like
+'children', 'find_first', 'snext_sibling' and so on all work pretty much
+the same way as in PPI.
+
+The class hierarchy is also similar to PPI. Except for some utility classes
+(the dumper, the lexer, and the tokenizer) all classes are descended from
+PPIx::Regexp::Element, which provides basic navigation. Tokens are
+descended from PPIx::Regexp::Token, which provides content. All containers
+are descended from PPIx::Regexp::Node, which provides for children, and all
+structure elements are descended from PPIx::Regexp::Structure, which
+provides beginning and ending delimiters, and a type.
+
+There are two features of PPI that this package does not provide -
+mutability and operator overloading. There are no plans for serious
+mutability, though something like PPI's 'prune' functionality might be
+considered. Similarly there are no plans for operator overloading, which
+appears to the author to represent a performance hit for little tangible
+gain.</description>
+  <devel project="devel:languages:perl" package="perl-PPIx-Regexp"/>
+  <url>http://search.cpan.org/dist/PPIx-Regexp/</url>
+</package>

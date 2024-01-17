@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Tue Oct 11 17:08:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.5.8 
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Wed Jul 22 10:15:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.5.7
+  * dont't use extension on non-Windows
+  * firefox: Fix <browser> setup to specify remoteness.
+
+-------------------------------------------------------------------
+Mon May 18 07:25:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Tue Mar 19 15:36:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.6:
+  * no upstream changelog
+- Run tests
+
+-------------------------------------------------------------------
+Tue Oct 30 15:59:40 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update summary
+
+-------------------------------------------------------------------
+Mon Oct 29 14:50:49 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

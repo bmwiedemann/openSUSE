@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Jul  3 11:54:36 UTC 2017 - lars@linux-schulserver.de
+
+- use complete options for rrdtool (lower-limit instead of lower, etc)
+
+-------------------------------------------------------------------
+Wed Jul 30 19:21:01 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-sentry3
+
+-------------------------------------------------------------------
+Fri Apr 25 12:48:52 UTC 2014 - lars@linux-schulserver.de
+
+- initial version (using 2012 as version number, as this is the 
+  only number I found in the source: the year)
+

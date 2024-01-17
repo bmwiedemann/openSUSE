@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Mon Jan  8 22:21:39 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- Update to release 2.4.1
+  * fix a race condition in FLQ in which kea could crash
+  * fix a regression where redetection of interfaces stopped working
+
+-------------------------------------------------------------------
+Wed Jul  6 13:57:08 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add RuntimeDirectory to kea.service
+- Update to release 2.4.0
+  Breaking Changes:
+  * Both MySQL and PostgreSQL database schemas were updated to
+    accommodate DHCPv6 Bulk Leasequery support.
+  * The values accepted by `operation-target` used in
+    `reservation-*` commands have been renamed: primary ->
+    memory, alternate -> database.
+  * Kea DHCPv4 server can now handle multiple `vivco-suboptions`
+    options with different enterprise IDs and multiple vendor
+    options.
+  * The Discovery of Network-designated Resolvers (DNR) options
+    have been implemented for both DHCPv4 and DHCPv6. The options
+    allow configuration.
+  * Template classes mechanism, similar to spawning classes in
+    ISC DHCP, has been implemented.
+  * Kea now keeps leases for a period of time after they are
+    released.
+  * An address reserved in a global reservation must now lie
+    within the range of the subnet or shared-network selected by
+    Kea.
+  * It is now possible to add an "empty" host reservation without
+    any attribute.
+  * kea-dhcp4 now supports the `offer-lifetime` parameter to
+    allow the temporary allocation of leases during DHCPOFFER.
+  * Added support for Secure Zero Touch Provisioning options, per
+    RFC8572.
+  * The kea-dhcp6 `prefix-len` and `pd-pools` list now checks the
+    prefix lengths correctly.
+  * The preferred lifetime is now calculated as 0.625 *
+    `valid-lifetime` unless explicitly specified.
+  * The link selection suboption is now optional.
+  * See /usr/share/doc/kea/ChangeLog in the kea-doc package for
+    details.
+
+-------------------------------------------------------------------
+Wed Dec 14 14:51:33 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Separate documentation into kea-doc package
+- Remove following packages from BuildRequires
+  * docbook-xsl-stylesheets
+  * elinks
+  * libxslt-tools
+
+-------------------------------------------------------------------
+Thu Aug 18 12:53:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * Kea now features full native support for TLS in HA
+  * PostgreSQL configuration backend
+  * A new hook is dedicated to RBAC.
+  * A new hook limits the rate and number of leases.
+  * A new DDNS Tuning library adds custom behaviors related to
+    Dynamic DNS updates on a per-client basis.
+  * The subnet_cmds hook has been expanded with several new
+    commands: `subnet4-delta-add`, `subnet4-delta-del`,
+    `subnet6-delta-add`, and `subnet6-delta-del`.
+
+-------------------------------------------------------------------
+Mon Oct  4 23:33:08 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.0
+  * In Kea 2.0, the HA component has undergone a substantial
+    architectural change. When HA+MT is enabled, the DHCPv4 and
+    DHCPv6 daemons are now able to open HTTP sockets on their own
+    and connect directly to each other, bypassing the Control Agent
+    (CA). This eliminates the bottlenecks of sequential UNIX socket
+    connection and the need to translate between HTTP and UNIX
+    socket connections.
+  * A new parameter on-fail gives the operator more control over
+    what to do on database connection loss.
+  * The length of the "parking lot queue" is now configurable; a
+    default value of 256 is used.
+  * A new statistic, `packet-queue-size`, has been added that
+    reports packet-queue utilization.
+
+-------------------------------------------------------------------
+Thu Jun  3 23:21:35 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.8
+  * Kea now recognizes requests sent from vendors that include
+    their information in DHCPv6 Vendor Class option (code 16).
+  * Fixed the server ignoring the Subnet Selection option
+    supplied by a client if its query contained a Relay Agent
+    Information (RAI) option without a Link Selection option.
+
+-------------------------------------------------------------------
+Sat May 15 11:09:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.7
+  * The Control Agent now supports TLS/HTTPS.
+  * kea-shell supports TLS/HTTPS.
+  * kea-admin now accepts the -P, --port parameter
+  * kea-dhcp4 now supports specifying valid-lifetime in
+    client classes.
+
+-------------------------------------------------------------------
+Mon Apr  5 10:02:22 UTC 2021 - Samu Voutilainen <smar@smar.fi>
+
+- Own directory /var/lib/kea, as that is used as default for
+  memfile lease store.
+
+-------------------------------------------------------------------
+Tue Nov 10 08:04:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.1
+  * New parameters: ddns-use-conflict-resolution,
+    ip-reservations-unique, ddns-update-on-renew,
+    cache-threshold, cache-max-age.
+  * Support for new IPv6-only-preferred option for DHCPv4.
+  * Added support of basic HTTP authentication in HTTP library,
+    control agent.
+
+-------------------------------------------------------------------
+Sat Sep  5 22:02:39 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.0
+  * User-defined option definitions were not committed, which was
+    fixed.
+  * kea-dhcp4 now rejects inbound client messages that have
+    neither a hardware address nor a client identifier.
+  * Rather than within the 'dhcp-ddns' section, DDNS behavioral
+    parameters may now be specified at global, shared-network,
+    and subnet scopes.
+  * Added support of BOOTP leases with infinite valid lifetime.
+  * Added the -N command line switch that enables experimental
+    multi-threading support.
+
+-------------------------------------------------------------------
+Wed Apr 22 04:03:08 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to Python 3 Sphinx due to Python 2 removal. 
+
+-------------------------------------------------------------------
+Mon Sep  9 17:18:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Corrected multiple occurrences of out of bounds vector reads.
+  * Corrected a bug in the Kea MySQL Configuration Backend which
+    caused the Kea DHCPv6 server to incorrectly require the
+    server tag to be provided with the remote-subnet6-option-set
+    command.
+  * Corrected a bug in the Kea MySQL Configuration Backend which
+    prevented the DHCP servers from discovering and fetching the
+    changes applied with the new commands.
+  * Prevent the DHCP servers from asserting when malformed
+    hostname or FQDN options are received.
+
+-------------------------------------------------------------------
+Tue Aug 27 14:36:52 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update keyring file
+- Temporarily hardcode version in upstream URLs
+
+-------------------------------------------------------------------
+Wed Aug 21 15:08:38 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 1.6.0~beta2
+  * Default file locations for lease file, server-duid, log files and lock 
+    files have changed. Files previously stored in `/var/kea` are now stored 
+    in `/var/run/kea`. Server hooks previously installed in `/usr/lib/hooks` 
+    are now installed in `/usr/lib/kea/hooks`. The log files are now stored 
+    in `/var/log/kea`.
+  * The kea-admin commands (lease-init, lease-version, lease-upgrade) were 
+    renamed to better reflect the fact that the database can store much more 
+    than just leases. They're now called db-init, db-version, db-upgrade.
+  * The Logging entry in the configuration file has moved to specific 
+    daemon sections. This require a simple configuration file modification. 
+    You need to move Logging entry from its global scope into the Dhcp4, 
+    Dhcp6, DhcpDdns, Control-agent or Netconf scope.
+
+Please see 1.6 migration wiki
+https://gitlab.isc.org/isc-projects/kea/wikis/migrating-to-kea-1.6
+
+For release notes, see
+https://ftp.isc.org/isc/kea/1.6.0-beta2/Kea160beta2ReleaseNotes.txt
+
+- Fix building of perfdhcp
+- Enable building of kea-shell
+- Update sonames of all affected libraries and ship only libraries,
+  allowing `ldconfig` to actually make the symlinks
+- Rework spec file to abstract soversions
+
+-------------------------------------------------------------------
+Fri Dec 28 23:05:17 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.5.0
+  * Support for YANG/NETCONF, the ability to store major
+    configuration elements in a YANG model and manipulate it
+    using NETCONF.
+  * Support for global host reservations (previously each host
+    reservation had to be associated with a specific subnet)
+  * Class commands – a new hook that allows dynamic changes
+    to be made to client classes without restarting.
+  * Performance and resiliency improvements to the High
+    Availability hook.
+  * A new congestion control feature to mitigate the effects of
+    heavy DHCP traffic conditions.
+  * Improvements to the High Availability feature, including paged
+    updates between HA pairs to alleviate timeouts.
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jun 19 22:45:35 UTC 2018 - jengelh@inai.de
+
+- Remove unnecessary ldconfig call for kea-hooks: files are
+  outside standard search dirs.
+- Drop --disable-dependency-tracking, this is already part of
+  %configure.
+
+-------------------------------------------------------------------
+Mon Jun 18 10:00:52 UTC 2018 - adam.majer@suse.de
+
+- update to new upstream release 1.4.0
+- fix licence - Mozilla Public License v2.0
+- package default hook libraries
+- regenerate parser and documentation
+- add ISC keyring (2017 & 2018)
+
+-------------------------------------------------------------------
+Fri Jun 30 19:55:50 UTC 2017 - jengelh@inai.de
+
+- Stop on errors from useradd/groupadd
+
+-------------------------------------------------------------------
+Thu Jun 30 10:02:50 UTC 2017 - obs@botter.cc
+
+- compile in support for MySQL and PostgresQL
+- add symlink to rckea
+- add environment variable for PID_FILE_DIR to service file
+
+-------------------------------------------------------------------
+Sat May 27 13:06:10 UTC 2017 - obs@botter.cc
+
+- Update to new upstream release 1.2.0 
+
+-------------------------------------------------------------------
+Fri Jan 22 11:00:02 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.0.0
+
+-------------------------------------------------------------------
+Mon Dec  8 08:38:54 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 0.9.g20262) for build.opensuse.org

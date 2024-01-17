@@ -1,0 +1,29 @@
+From 55b3aca010a5617dab176f7dc45040d2e36c1bb5 Mon Sep 17 00:00:00 2001
+From: marian <marian@26ef948f-17ed-0410-91a8-c94bd273f071>
+Date: Fri, 12 Jun 2020 07:38:10 +0000
+Subject: [PATCH 2/2] Fixed compile time error: use newer Channel::getStatus()
+ instead of removed status().
+
+git-svn-id: http://voip.null.ro/svn/yatebts/trunk@678 26ef948f-17ed-0410-91a8-c94bd273f071
+---
+ ybts.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/ybts.cpp b/ybts.cpp
+index 8288e32..b246e3a 100644
+--- a/ybts.cpp
++++ b/ybts.cpp
+@@ -7057,7 +7057,9 @@ bool YBTSChan::serialize(String& str)
+ {
+     if (!(conn() && conn()->serialize(str)))
+ 	return false;
+-    str << " " << status() << ":" << (int)m_cref;
++    str << " ";
++    getStatus(str);
++    str << ":" << (int)m_cref;
+ 
+     YBTSCallDesc* act = m_activeCall;
+     if (act)
+-- 
+2.30.1
+

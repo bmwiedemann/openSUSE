@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Jul 31 12:34:56 UTC 2023 - olaf@aepfle.de
+
+- Fix path to udev helper script
+- Remove stale specfile constructs
+
+-------------------------------------------------------------------
+Wed Aug 19 09:35:52 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
+Fri Jul 31 20:22:59 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 0.2.5
+  * reduce verbosity on loop warnings
+- Move library to separate package
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Fri Jan 03 00:00:00 UTC 2014 bernd.wachter@jollamobile.com
+
+- Update to latest upstream

@@ -1,0 +1,5 @@
+<package name="python-pyjavaproperties" project="openSUSE:Factory">
+  <title>python-pyjavaproperties</title>
+  <description>Python replacement for java.util.Properties.</description>
+  <devel project="devel:languages:python" package="python-pyjavaproperties"/>
+</package>

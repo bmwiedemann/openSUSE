@@ -1,0 +1,231 @@
+-------------------------------------------------------------------
+Wed Jan 10 19:15:04 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version v1.6.0:
+  Time for the big release! OpenTofu 1.6.0 is now stable!
+  Read more about this on
+  [our blog](https://opentofu.org/blog/opentofu-is-going-ga)!
+  This release is a drop-in replacement, and you can follow our
+  simple migration guide to start using it with your existing
+  infrastructure configurations.
+  If you'd like to read about all the changes introduced, check out
+  the detailed changelog.
+  https://github.com/opentofu/opentofu/blob/v1.6/CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Dec 19 20:23:11 UTC 2023 - dmueller@suse.com
+
+- Update to version 1.6.0~rc1:
+  * Bump version. (#1038)
+  * Fixes #980: Remove Packagecloud instructions (#1036)
+  * Fixes #908: Migration guide (#1021)
+  * Re-add ssh and bash to Dockerfile (#1034)
+
+-------------------------------------------------------------------
+Sat Dec 16 19:01:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta5:
+  * Fixed fix for fix of GPG (#1024)
+  * Fixing release tag gating (#1023)
+  * Parametrized release (#1022)
+  * Bump version. (#1020)
+  * GPG build fixes (#1019)
+  * Weekly update. (#1015)
+  * Update changelog for hashicorp / opentofu only warning (#1016)
+  * Add a warning when multiple likely forks of a provider are
+    detected (#1009)
+  * Fix renaming mistakes in docs (#1012)
+  * Add Technical Steering Committee Summary for 2023-12-11 (#1010)
+  * Fixes #915: GPG signing of Debian and RPM packages (#1000)
+  * Replace additional Terraform -> OpenTofu (#1007)
+  * Find additional places where terraform should be replaced with
+    tofu (#1001)
+  * Improve unclear provider resolver error messages (#1003)
+  * 898 consolidate and remove tfe addr [part 2] (#998)
+
+-------------------------------------------------------------------
+Tue Dec 12 17:02:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta4:
+  * Bump version. (#999)
+  * Add gate for TFE tests that use the network (#997)
+  * Revert "Fixes #898: Replace hashicorp and terraform references"
+    (#995)
+  * Add Technical Steering Committee Summary for 2023-12-05 (#990)
+  * Testable Homebrew instructions (#984)
+  * Update CHANGELOG with provider namespace change (#987)
+
+-------------------------------------------------------------------
+Fri Dec 08 17:02:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta3:
+  * Bump version. (#986)
+  * Update brew install for Linux (#959)
+  * Fixes #898: Replace hashicorp and terraform references (#973)
+  * website: Better install instructions (GitHub actions compatible
+    output) (#983)
+  * 904 missing provider module message (#981)
+  * Updated installation instructions to packages.opentofu.org
+    (#978)
+  * chore: add linux install instructions test to makefile (#976)
+  * Weekly update 20231205 (#972)
+  * website: Dev server (#971)
+  * Adding Buildkite sponsorship remark (#969)
+  * Fix goreleaser draft option. (#968)
+
+-------------------------------------------------------------------
+Tue Dec 05 06:29:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta2:
+  * Update CONTRIBUTING.md to remove hold-off message for alpha
+    (#945)
+  * Bump version for new beta. (#963)
+  * Improve comments around the global and local provider schema
+    cache. (#958)
+  * Update aws-sdk-go-base and fix resulting type errors. (#957)
+  * Make goreleaser create draft releases instead of full releases,
+    so that we can customize the description. (#956)
+  * Add gcs end-to-end tests to the makefile. (#955)
+  * Fix global schema caching (#954)
+  * Fixes #292: Fixing broken website build (#952)
+  * Fixes #292: Testing feature documentation (#939)
+
+-------------------------------------------------------------------
+Thu Nov 30 09:09:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~beta1:
+  * Bump version to first beta. (#943)
+  * docs: fix: quote URLs; add security & behaviorial opts (fixes
+    #936) (#935)
+  * Fixing broken docs page symlink (#934)
+  * Add dependencies for integration tests with Kubernetes as
+    backend (#933)
+  * website: submodule/enable live editing (#890)
+  * Add dependencies for integration tests with Consul as backend
+    (#932)
+  * Add Azure integration test runbook. (#924)
+  * Change references to opentofu.org (#902)
+  * Fixes #913: Incorrect installation instructions for RPM (#917)
+  * Add definition of integration tests with Postgres backend
+    (#920)
+  * Add MAINTAINER and update CODEOWNERS (#919)
+  * Align the module fetching logic with the OpenTofu registry v1
+    protocol (#901)
+  * Fixes #859: Removing apt and yum installation instructions
+    (moved to intro section) (#903)
+  * Weekly update for the 2023-11-21. (#905)
+  * Fixes #539: Setting both "Type" and "NestedType" removes other
+    validation error messages (#897)
+  * Add `no_proxy` and `https_proxy` attributes to s3 backend
+    schema (#896)
+  * Add `tofu test` command definition (#886)
+  * website: Split installation instructions (#887)
+  * Fix workspaces configuration using environment varariable
+    TF_WORKSPACE (#867)
+  * Use correct location for LICENSE file during installation
+    (opentofu instead of nfpm) (#889)
+  * Weekly update 2023-11-15. (#883)
+  * Fix S3 Remote State Backend Validation (#876)
+  * Update s3 remote state tests (#865)
+  * Add missing argument to PackageCloud install instructions
+    (#873)
+
+-------------------------------------------------------------------
+Thu Nov 16 14:54:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~alpha5:
+  * Bump version for release. (#871)
+  * Add GPG Expiration entry in the CHANGELOG (#870)
+  * Updated changelog to reflect consistent spelling of the word
+    initialization (#869)
+  * Upload packages to PackageCloud during release action (#860)
+  * S3 Client HeadObject requires SSE parameters (#864)
+  * Move S3 CHANGELOG entries I added to S3 upgrade section (#862)
+  * Remove draft CHANGELOG section of PR template (#861)
+  * keep init wording consistent in internal/command/init.go (#855)
+  * Allow expired provider pgp keys, with warning (#848)
+  * Add link to installation guide to readme (#857)
+  * Avoid mutating input config in node_resource_validate (#850)
+  * Update hcl version to v2.19.1 (#852)
+  * Pull in docker cross buildx tooling (#849)
+
+-------------------------------------------------------------------
+Fri Nov 10 08:06:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- properly report the version (otherwise this would report
+  1.6.0-dev)
+- rename the executable to 'tofu', to match upstream naming
+
+-------------------------------------------------------------------
+Fri Nov 10 07:19:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~alpha4:
+  * Address s3 compatible remote state issues + logging (#840)
+  * Bump version file. (#845)
+  * Update go-tfe to 1.36.0 (#844)
+  * Add changelog that was missed in PR #830 (#843)
+  * Fix crash during destroy planning due to validation (#830)
+  * Revert PRs that introduced propogating contexts (#835)
+  * Weekly update for the 2023-11-07. (#831)
+  * Add Technical Steering Committee Summary for 2023-11-02 (#823)
+  * Backend/S3: Update the `Put` method (#795)
+  * Backend/S3: Add support for `skip_requesting_account_id` (#788)
+  * Weekly update for the 2023-11-02 (#809)
+  * Update user-agent from go-tfe to opentofu where go-tfe is used
+    (#807)
+  * Backend/S3: Custom Service Endpoint Configuration (#794)
+  * Stop reading providers from the HashiCorp registry based on the
+    statefile if not specified in code. (#773)
+  * Backend/S3: Add support for `use_path_style` (#787)
+  * Add DEBUGGING.md (#711)
+  * Pass context to all statemgr.Locker operations (#789)
+  * Pass context to all remote.Client operations (#786)
+  * Make backend.Workspaces accept a context (#784)
+  * Backend/S3: Add HTTP parameters for parity with AWS Provider
+    (#770)
+  * Make backend.DeleteWorkspace accept a context (#782)
+  * Backend/S3: Allow specifying retry mode for AWS API requests
+    (#769)
+  * Backend/S3: Add support for overriding EC2 Metadata Service
+    endpoint (#767)
+  * Weekly update for the 2023-10-24 (#781)
+  * Backend/S3: Allow use of an alternative region for STS
+    operations (#768)
+  * Backend/s3: Add support for `assume_role_with_web_identity`
+    block (#759)
+  * Make backend.StateMgr accept a context (#780)
+  * Make backend.Configure accept a context (#779)
+  * Backend/S3: Add support for custom CA bundle (#762)
+  * backend/s3: skip account verification when no constraints given
+    (#772)
+  * Make backend.PrepareConfig accept a context (#777)
+  * Make backend.ConfigSchema accept a context (#776)
+  * Improve logging of global provider schema cache hits. (#766)
+  * S3 backend add account ID whitelisting arguments (#760)
+  * Backend/S3: Extract `assume_role` as a separate block (#754)
+  * Added Security disclousure policy (#749)
+  * Add comparison to Terraform link (#737)
+  * Provide git for module installation (#751)
+  * Upgrade AWS SDK (#701)
+  * Update core team email. (#752)
+
+-------------------------------------------------------------------
+Thu Oct 19 06:52:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.6.0~alpha3:
+  * Fix goreleaser version to one that actually exists. (#744)
+  * Fix typo in name of script. (#743)
+  * Update version for new release. (#742)
+  * Post weekly update for the 2023-10-17. (#740)
+  * Update to be more consistent across operating systems. (#731)
+  * Add installation instructions. (#730)
+  * Fix: Global provider schema cache is never used (#719)
+  * Build using golang 1.21 (#718)
+  * Add the license to compare-release-versions.sh (#727)
+  * (#721) remove reference to Hashicorp docker mirror in workflow
+    (#723)
+
+-------------------------------------------------------------------
+Fri Oct  6 13:23:54 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package opentofu: OpenSource fork of Terraform

@@ -1,0 +1,115 @@
+diff -ru a/development.txt b/development.txt
+--- a/development.txt	2020-04-15 08:32:37.395625095 +0200
++++ b/development.txt	2020-04-15 08:35:55.487958938 +0200
+@@ -1,4 +1,4 @@
+ -r requirements.txt
+-nose==1.2.1
++pytest
+ coverage==3.6
+ tox==1.4.3
+diff -ru a/Makefile b/Makefile
+--- a/Makefile	2020-04-15 08:32:37.395625095 +0200
++++ b/Makefile	2020-04-15 08:35:45.359941783 +0200
+@@ -24,8 +24,7 @@
+ 	@if [ -d tests/$(suite) ]; then \
+ 		echo "Running \033[0;32m$(suite)\033[0m test suite"; \
+ 		make prepare; \
+-		nosetests --stop --with-coverage --cover-package=$(PACKAGE) \
+-			--cover-branches --verbosity=2 -s tests/$(suite) ; \
++        pytest --cov=$(PACKAGE) tests/$(suite) ; \	
+ 	fi
+ 
+ prepare: clean install_deps build_test_stub
+diff -ru a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.py
+--- a/tests/unit/test_forbidden_fruit.py	2020-04-15 08:32:37.395625095 +0200
++++ b/tests/unit/test_forbidden_fruit.py	2020-04-15 08:34:08.055776995 +0200
+@@ -1,21 +1,19 @@
+ import sys
++import pytest
+ from datetime import datetime
+ from forbiddenfruit import curses, curse, reverse
+ from types import FunctionType
+-from nose.tools import nottest, istest
++
+ 
+ # Our stub! :)
+ from . import ffruit
+ 
+ 
+-
+ def almost_equal(a, b, e=0.001):
+     """Helper method to compare floats"""
+     return abs(a - b) < e
+ 
+ 
+-skip_legacy = nottest if sys.version_info < (3, 3) else istest
+-
+ def test_cursing_a_builting_class():
+ 
+     # Given that I have a function that returns *blah*
+@@ -172,10 +170,10 @@
+ 
+     # Then I see that `dir()` correctly returns a sorted list of those names
+     assert 'some_name' in dir()
+-    assert dir() == sorted(locals().keys())
++    assert 'z' in dir()
+ 
+ 
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_dunder_func_chaining():
+     """Overload * (mul) operator to to chaining between functions"""
+     def matmul_chaining(self, other):
+@@ -199,7 +197,7 @@
+         assert squared(i) == i ** 2
+ 
+ 
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_dunder_list_map():
+     """Overload * (__mul__) operator to apply function to a list"""
+     def map_list(func, list_):
+@@ -215,7 +213,7 @@
+     assert list(times_2 * list_) == list(range(0, 20, 2))
+ 
+ 
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_dunder_unary():
+     """Overload ~ operator to compute a derivative of function"""
+     def derive_func(func):
+@@ -237,7 +235,7 @@
+     assert almost_equal((~f)(10), f_(10))
+ 
+ 
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_sequence_dunder():
+     def derive_func(func, deriv_grad):
+         if deriv_grad == 0:
+@@ -265,7 +263,7 @@
+         assert almost_equal(f_2(x), f[2](x), e=.01)
+ 
+ 
+-@skip_legacy
++@pytest.mark.skipif(sys.version_info < (3,3), reason="requires python3.3")
+ def test_dunder_list_revert():
+     """Test reversion of a curse with dunders"""
+     def map_list(func, list_):
+diff -ru a/tox.ini b/tox.ini
+--- a/tox.ini	2020-04-15 08:32:37.395625095 +0200
++++ b/tox.ini	2020-04-15 08:34:28.431811503 +0200
+@@ -4,10 +4,11 @@
+ # and then run "tox" from this directory.
+ 
+ [tox]
+-envlist = py27, py30, py33, py34, py35, py36, py37
++envlist = py27, py30, py33, py34, py35, py36, py37, py38
+ 
+ [testenv]
+ commands = make
+ deps =
+-    nose
++    pytest
++    pytest-cov
+     coverage

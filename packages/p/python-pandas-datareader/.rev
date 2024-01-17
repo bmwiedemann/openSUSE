@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3d1dae77d45523432cd06a2ffc1ee73</srcmd5>
+    <version>0.6.0</version>
+    <time>1528022047</time>
+    <user>dimstar_suse</user>
+    <comment>https://build.opensuse.org/request/show/603363</comment>
+    <requestid>603814</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aa382dcf6599d3a45c652822526a98da</srcmd5>
+    <version>0.6.0</version>
+    <time>1528897049</time>
+    <user>maxlin_factory</user>
+    <comment>- Repeal time-sensitive wording from description. (forwarded request 615081 from jengelh)</comment>
+    <requestid>615169</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b140d12b40a0e01b9379e42c3e176a68</srcmd5>
+    <version>0.7.0</version>
+    <time>1537263855</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636127</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2ee82dcaaeb1cc97b77be7ee74c3e4c</srcmd5>
+    <version>0.7.4</version>
+    <time>1564994541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720882</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dadec6a364c0818494deba86b6848f5c</srcmd5>
+    <version>0.8.1</version>
+    <time>1571950948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * A new connector for Econdb
+  * Migrated IEX readers to IEX Cloud
+  * Removal of Google finance and Morningstar
+  * Immediate deprecation of Robinhood for quotes and historical data</comment>
+    <requestid>736051</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5d53b4ad2b98406fb3ae4b233c264cf2</srcmd5>
+    <version>0.9.0</version>
+    <time>1614108051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874337</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a238e200266313d58a5fc65118ed223a</srcmd5>
+    <version>0.10.0</version>
+    <time>1657712742</time>
+    <user>dimstar_suse</user>
+    <comment>- Tighten %%files.
+- specfile:
+  * README.rst -&gt; README.md
+- update to version 0.10.0:
+  * Fixed Yahoo readers which now require headers
+  * Fixed other reader
+  * Improved compatibility with pandas
+</comment>
+    <requestid>988959</requestid>
+  </revision>
+</revisionlist>

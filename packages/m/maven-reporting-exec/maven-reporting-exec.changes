@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Mar 22 13:40:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.6.0
+- Build with source and target levels 8
+- Removed patch:
+  * 0001-Port-to-Eclipse-Aether-and-Eclipse-Sisu.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
+Sun Nov 24 17:09:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
+Mon Jun  3 17:53:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim description repetition of itself.
+
+-------------------------------------------------------------------
+Sun May  5 20:30:17 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Group: field.
+
+-------------------------------------------------------------------
+Fri May  3 15:11:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-reporting-exec 1.4

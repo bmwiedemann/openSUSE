@@ -1,0 +1,5 @@
+<package name="python-whatthepatch" project="openSUSE:Factory">
+  <title>python-whatthepatch</title>
+  <description>A patch parsing and application library</description>
+  <devel project="devel:languages:python" package="python-whatthepatch"/>
+</package>

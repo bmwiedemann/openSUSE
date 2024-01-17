@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Wed Sep 28 21:01:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- 0.8.3 (12/10/2021)
+  Announcement: Compatibility with Python versions older than 3.6 (2.7, 3.4, and 3.5) is deprecated and will be removed in getmac 1.0.0.
+  If you are stuck on an unsupported Python, considor loosely pinning the version of this package in your dependency list, e.g. getmac<1.
+  Changed
+  Added support for Thomas Habets' version of arping in addition to the existing iputils one (contributed by Ville Skyttä (@scop) in #52 and #54)
+  Added support for docker in network bridge mode (contributed by Tomasz Duda (@tomaszduda23) in #57)
+  Add CHANGELOG URL to PyPI metadata (contributed by Ville Skyttä (@scop) in #58)
+  Fixed code quality test suite errors (includes changes by Daniel Flanagan (@FlantasticDan) in #67)
+  Improved Android support (contributed by @emadmahdi in #71)
+  Minor code quality fixes (2 years of neglecting master branch)
+  Add Code of Conduct for project contributors
+  Add SECURITY.md for reporting security issues (e.g. vulnerabilities)
+  Deprecate Python 3.4 and 3.5
+  Issue deprecation message as a warning in addition to a log message 
+
+-------------------------------------------------------------------
+Fri Apr 16 17:16:11 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix build by skipping a test that doesn't work as
+  expected:
+  * fix-failing-darwin-test.patch
+- Add patch to fix build with python 3.9:
+  * support-python3.9.patch
+
+-------------------------------------------------------------------
+Tue May 26 06:34:22 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Apr 16 13:23:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip test_cli_main as it fails for some reason on OBS
+
+-------------------------------------------------------------------
+Thu Apr 16 13:18:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix all files having executable bit
+
+-------------------------------------------------------------------
+Mon Apr  6 14:41:53 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.8.2
+  * Added warning about Python 2 compatibility being dropped in 1.0.0
+  * Officially support Python 3.8
+  * Documented a known issue with looking up IP of a local interface on Linux/WSL (See the "Known Issues" section in the README)
+  * Added remote host lookup using `arping` as last resort
+
+-------------------------------------------------------------------
+Tue Sep 10 07:13:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase/full sentences for summary/description.
+
+-------------------------------------------------------------------
+Wed Sep  4 09:47:36 UTC 2019 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-getmac 0.8.1

@@ -1,0 +1,44 @@
+From 5dbd71201f79e976a728802ca8638b14db0728dc Mon Sep 17 00:00:00 2001
+From: Martino Facchin <m.facchin@arduino.cc>
+Date: Wed, 9 Mar 2016 15:03:07 +0100
+Subject: [PATCH 14/19] fix wrongly interpreted >> in template
+
+---
+ c.c | 20 +++++++-------------
+ 1 file changed, 7 insertions(+), 13 deletions(-)
+
+diff --git a/c.c b/c.c
+index 1386ddd..6add5f3 100644
+--- a/c.c
++++ b/c.c
+@@ -1410,20 +1410,14 @@ static void skipToMatch (const char *const pair)
+ 		}
+ 		else if (c == end)
+ 		{
+-			// watch out for '>>' in template arguments
++			// don't care if you find a '>>' (the important thing is closing the brackets)
+ 			int x = cppGetc ();
+-			if(c == '>' && x == '>') { 
+-				// we've found a >> - do nothing except record the signature
+-				if (CollectingSignature)
+-					vStringPut(Signature, x);
+-			} else {
+-				cppUngetc (x);
+-				--matchLevel;
+-				if (braceFormatting  &&  getDirectiveNestLevel () != initialLevel)
+-				{
+-					skipToFormattedBraceMatch ();
+-					break;
+-				}
++			cppUngetc (x);
++			--matchLevel;
++			if (braceFormatting  &&  getDirectiveNestLevel () != initialLevel)
++			{
++				skipToFormattedBraceMatch ();
++				break;
+ 			}
+ 		}
+ 		/* early out if matching "<>" and we encounter a ";" or "{" to mitigate
+-- 
+2.11.0
+

@@ -1,0 +1,19 @@
+<services>
+ <service name="obs_scm" mode="manual">
+   <param name="url">https://github.com/psanford/tpm-fido</param>
+   <param name="revision">main</param>
+   <param name="versionformat">%cd.%h</param>
+   <param name="scm">git</param>
+   <param name="changesgenerate">enable</param>
+   <param name="changesauthor">dheidler@suse.de</param>
+ </service>
+ <service name="set_version" mode="manual" />
+ <service name="tar" mode="buildtime"/>
+ <service name="recompress" mode="buildtime">
+   <param name="compression">gz</param>
+   <param name="file">*.tar</param>
+ </service>
+ <service name="go_modules" mode="manual">
+   <param name="compression">zstd</param>
+ </service>
+</services>

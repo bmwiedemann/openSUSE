@@ -1,0 +1,97 @@
+Index: thunderbolt-software-user-space-0.9.3/CMakeLists.txt
+===================================================================
+--- thunderbolt-software-user-space-0.9.3.orig/CMakeLists.txt
++++ thunderbolt-software-user-space-0.9.3/CMakeLists.txt
+@@ -8,14 +8,17 @@ include(GNUInstallDirs)
+ 
+ include(FindPkgConfig)
+ pkg_get_variable(PKG_CONFIG_UDEV_DIR udev udevdir)
++pkg_get_variable(PKG_CONFIG_DRACUT_MOD_DIR dracut dracutmodulesdir)
+ 
+ set(UDEV_RULES_DIR "${PKG_CONFIG_UDEV_DIR}/rules.d" CACHE PATH "Install path for udev rules")
+ set(UDEV_BIN_DIR   "${PKG_CONFIG_UDEV_DIR}"         CACHE PATH "Install path for udev-triggered executables")
+ set(RULES_PREFIX   "60"                             CACHE PATH "The numeric prefix for udev rules file")
++set(DRACUT_MOD_DIR "${PKG_CONFIG_DRACUT_MOD_DIR}"   CACHE PATH "Install path for dracut modules")
+ 
+ set(TBT_CXXFLAGS ${CXX_FLAGS} -Wall -Wextra)
+ 
+ add_subdirectory(common)
++add_subdirectory(dracut-module)
+ add_subdirectory(tbtacl)
+ add_subdirectory(tbtxdomain)
+ add_subdirectory(tbtadm)
+@@ -85,6 +88,7 @@ endfunction()
+ foreach(dir "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}"
+             "${UDEV_RULES_DIR}"
+             "${UDEV_BIN_DIR}"
++            "${DRACUT_MOD_DIR}"
+             "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_MANDIR}/man1"
+             "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATAROOTDIR}/bash-completion/completions")
+   ALL_ANCESTOR_DIRS(LIST_FOR_RPM "${dir}")
+Index: thunderbolt-software-user-space-0.9.3/dracut-module/35-thunderbolt.conf
+===================================================================
+--- /dev/null
++++ thunderbolt-software-user-space-0.9.3/dracut-module/35-thunderbolt.conf
+@@ -0,0 +1,2 @@
++# Uncomment this line to add thunderbolt support to the initramfs
++#add_dracutmodules+=thunderbolt
+Index: thunderbolt-software-user-space-0.9.3/dracut-module/CMakeLists.txt
+===================================================================
+--- /dev/null
++++ thunderbolt-software-user-space-0.9.3/dracut-module/CMakeLists.txt
+@@ -0,0 +1,8 @@
++set(MODULE_NAME 35thunderbolt)
++set(MODULE_FILE "module-setup.sh")
++set(CONFIG_FILE "35-thunderbolt.conf")
++
++install(PROGRAMS     "${CMAKE_CURRENT_SOURCE_DIR}/${MODULE_FILE}"
++        DESTINATION   ${DRACUT_MOD_DIR}/${MODULE_NAME})
++install(FILES        "${CMAKE_CURRENT_SOURCE_DIR}/${CONFIG_FILE}"
++        DESTINATION   ${CMAKE_INSTALL_FULL_SYSCONFDIR}/dracut.conf.d)
+Index: thunderbolt-software-user-space-0.9.3/dracut-module/module-setup.sh
+===================================================================
+--- /dev/null
++++ thunderbolt-software-user-space-0.9.3/dracut-module/module-setup.sh
+@@ -0,0 +1,42 @@
++#!/bin/bash
++
++# called by dracut
++check() {
++    # do not add this module by default
++    return 255
++}
++
++# called by dracut
++depends() {
++    return 0
++}
++
++# called by dracut
++installkernel() {
++    # make sure the thunderbolt kernel module is loaded
++    instmods thunderbolt
++    return 0
++}
++
++# called by dracut
++install() {
++	# Location of thunderbolt acl auth data
++    local _tbt_auth_data
++    _tbt_auth_data="/var/lib/thunderbolt"
++
++	# Install necessary binaries/scripts/udev rules
++    inst_binary /lib/udev/tbtacl-write
++    # dependencies for tbtacl
++    inst_binary /usr/bin/basename
++    inst_binary /usr/bin/dirname
++    inst_binary /usr/bin/grep
++    inst_binary /usr/bin/logger
++    # end of dependencies
++    inst_script /lib/udev/tbtacl
++    inst_rules /lib/udev/rules.d/60-tbtacl.rules
++	# Install auth data
++    for auth_file in $(find "$_tbt_auth_data" -type f)
++    do :
++        inst_simple "$auth_file"
++    done
++}

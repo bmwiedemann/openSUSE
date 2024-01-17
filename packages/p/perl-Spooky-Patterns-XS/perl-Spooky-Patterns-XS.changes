@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Nov 02 14:38:05 UTC 2020 - Sebastian Riedel <sriedel@suse.com>
+
+- Enable aarch64 builds
+
+-------------------------------------------------------------------
+Sun Oct 25 09:59:05 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- redownloaded source file
+
+-------------------------------------------------------------------
+Sat Jan 25 14:49:03 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- 1.55: Ignore more tokens on matching
+
+-------------------------------------------------------------------
+Thu Jan 23 16:00:47 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- 1.54: Add BagOfPatterns to calculcate closest pattern
+
+-------------------------------------------------------------------
+Tue Jan 14 08:03:32 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- 1.53: Return all characters of last line
+
+-------------------------------------------------------------------
+Sat Jul 27 13:13:50 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- 1.52: Record all matches even if they overlap at the start
+
+-------------------------------------------------------------------
+Mon Dec  4 14:18:29 UTC 2017 - coolo@suse.com
+
+- 1.51: Ignore skips at the end of a pattern
+
+-------------------------------------------------------------------
+Wed May 31 07:35:42 UTC 2017 - coolo@suse.com
+
+- Update to 1.50, needed for cavil
+
+-------------------------------------------------------------------
+Mon Mar  6 15:53:51 UTC 2017 - coolo@suse.com
+
+- initial package 1.0
+ * created by cpanspec 1.78.08

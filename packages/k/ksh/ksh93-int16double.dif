@@ -1,0 +1,22 @@
+--- src/cmd/ksh93/sh/array.c.orig	2015-04-01 11:26:36.544797902 +0000
++++ src/cmd/ksh93/sh/array.c	2015-04-01 11:27:01.414692760 +0000
+@@ -592,7 +592,7 @@ static char *array_getval(Namval_t *np,
+ 		return(cp);
+ 	}
+ #if SHOPT_FIXEDARRAY
+-	if(ap->fixed && nv_isattr(np,NV_INT16P) == NV_INT16)
++	if(ap->fixed && nv_isattr(np,NV_INT16P|NV_DOUBLE) == NV_INT16)
+ 		np->nvalue.s = *np->nvalue.sp;
+ #endif /* SHOPT_FIXEDARRAY */
+ 	return(nv_getv(np,&ap->hdr));
+--- src/cmd/ksh93/sh/name.c.orig	2015-04-01 11:25:38.049045236 +0000
++++ src/cmd/ksh93/sh/name.c	2015-04-01 11:25:55.169972879 +0000
+@@ -1647,7 +1647,7 @@ void nv_putval(register Namval_t *np, co
+ 		return;
+ 	}
+ 	up= &np->nvalue;
+-	if(nv_isattr(np,NV_INT16P) == NV_INT16)
++	if(nv_isattr(np,NV_INT16P|NV_DOUBLE) == NV_INT16)
+ 	{
+ 		if(!np->nvalue.up || !nv_isarray(np))
+ 		{

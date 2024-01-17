@@ -1,0 +1,10 @@
+/var/log/thttpd.log {
+    compress
+    dateext
+    maxage 365
+    rotate 99
+    size=+4096k
+    notifempty
+    missingok
+    copytruncate
+}

@@ -1,0 +1,5 @@
+<package name="gtksourceview5" project="openSUSE:Factory">
+  <title></title>
+  <description>GTK+ Source Editing Widget</description>
+  <devel project="GNOME:Factory" package="gtksourceview5"/>
+</package>

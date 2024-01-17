@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">hg</param>
+		<param name="url">http://hg.code.sf.net/p/octave/nurbs</param>
+		<param name="version">1.4.2</param>
+		<param name="filename">nurbs</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="compression">xz</param>
+		<param name="file">nurbs-*.tar</param>
+	</service>
+	<service name="set_version" mode="disabled" />
+</services>

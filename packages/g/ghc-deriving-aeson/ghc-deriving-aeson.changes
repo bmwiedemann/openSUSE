@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Aug  7 07:25:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update deriving-aeson to version 0.2.9 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Jan  8 14:38:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update deriving-aeson to version 0.2.9.
+  ## 0.2.9
+
+  * Fixed a bug in chaining `ConstructorTagModifier` & `FieldLabelModifier`
+
+-------------------------------------------------------------------
+Thu Jun 16 00:50:00 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Add deriving-aeson at version 0.2.8 revision 1.
+

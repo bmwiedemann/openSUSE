@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>539f1713f073c98946e9083bea31202e</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1489019660</time>
+    <user>dimstar_suse</user>
+    <comment>fix License tag</comment>
+    <requestid>460896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c907903608ca0f703ffcd0cf3e4f996f</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1489481431</time>
+    <user>dimstar_suse</user>
+    <comment>Build libffi7-32bit</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9d8194f561d913c516323d33f1c50c9e</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1492516072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>487855</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7d91c73d9c94c874c562a3c1307498d2</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1506340352</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527478</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f4ba51406135119a7923e39ad76c87ff</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1519902362</time>
+    <user>dimstar_suse</user>
+    <comment>Use %license (boo#1082318). Please forward to SLE, if possible (forwarded request 580095 from favogt)</comment>
+    <requestid>580187</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e6e7a0e194bb559c1f44d7d6aadc2ce1</srcmd5>
+    <version>3.2.1.git259</version>
+    <time>1521579030</time>
+    <user>dimstar_suse</user>
+    <comment>- libffi-riscv.patch: add support for RISC-V (forwarded request 585950 from Andreas_Schwab)</comment>
+    <requestid>586039</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>577a83c06432e485ec9cb71bda655b0a</srcmd5>
+    <version>3.2.1.git505</version>
+    <time>1569851265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to commit c2a6859
+- gccbug.patch: Update check for gccbug target flag
+- stdcall.patch: Fix FFI_STDCALL ABI
+- libffi-riscv.patch: Removed
+- libffi-include-location.patch: Removed (forwarded request 731700 from Andreas_Schwab)</comment>
+    <requestid>731707</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>67668d69957bfc5b8011f950655cacb9</srcmd5>
+    <version>3.2.1.git505</version>
+    <time>1571307460</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround aarch64 bug (boo#1153573) with upstream patch
+  https://github.com/libffi/libffi/pull/499 updated to apply
+  on current sources (upstream will probably rework this patch
+  so we need to monitor the issue for the proper fix):
+  * aarch64.patch (forwarded request 738187 from Guillaume_G)</comment>
+    <requestid>738228</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>228c813ad22d9ce36af5352120e07f91</srcmd5>
+    <version>3.3.git30</version>
+    <time>1584530745</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to commit b844a9c7f1ca based on libffi 3.3 with the
+  following changes:
+        Add RISC-V support.
+        New API in support of GO closures.
+        Add IEEE754 binary128 long double support for 64-bit Power
+        Default to Microsoft's 64 bit long double ABI with Visual C++.
+        GNU compiler uses 80 bits (128 in memory) FFI_GNUW64 ABI.
+        Add Windows on ARM64 (WOA) support.
+        Add Windows 32-bit ARM support.
+        Raw java (gcj) API deprecated.
+        Add pre-built PDF documentation to source distribution.
+        Many new test cases and bug fixes.
+- SONAME change to libffi.so.8
+- stdcall.patch is now upstream
+- Adjust baselibs.conf for SONAME change
+- Adjust aarch64.patch for upstream changes
+- Drop gccbug.patch XFAILing testcases that now PASS with fixed
+  GCC 9.3</comment>
+    <requestid>783284</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7e98e5386eebc17525dbeb399914c927</srcmd5>
+    <version>3.4.2</version>
+    <time>1639075491</time>
+    <user>dimstar_suse</user>
+    <comment>- disable static trampolines (bsc#1193272) (forwarded request 935016 from dirkmueller)</comment>
+    <requestid>935125</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7d7e0ae42b0df388f57a80b100500f75</srcmd5>
+    <version>3.4.2</version>
+    <time>1664380267</time>
+    <user>RBrownFactory</user>
+    <comment>- add riscv-rvalue-ext.patch to fix libffi for RISCV64</comment>
+    <requestid>1006099</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b32638f89995be1681a7487b8e21a17a</srcmd5>
+    <version>3.4.3</version>
+    <time>1665184961</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007869</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3f514bcbad0e34bcf009ad895ff4d367</srcmd5>
+    <version>3.4.3</version>
+    <time>1666089847</time>
+    <user>dimstar_suse</user>
+    <comment>- add riscv64-handle-big-structures.patch</comment>
+    <requestid>1010285</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7e0409dd54d8e2d086a6dae81926f1bc</srcmd5>
+    <version>3.4.4</version>
+    <time>1666780274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libffi 3.4.4
+  * Important aarch64 fixes, including support for linux builds
+      with Link Time Optimization (-flto).
+  * Fix x86 stdcall stack alignment.
+  * Fix x86 Windows msvc assembler compatibility.
+  * Fix moxie and or1k small structure args.
+- drop riscv64-handle-big-structures.patch
+- reenable LTO</comment>
+    <requestid>1031049</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6b0b0b9fa11c238a649d26e422553518</srcmd5>
+    <version>3.4.4</version>
+    <time>1702158537</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches to fix BTI on aarch64:
+  * 808.patch
+  * 810.patch (forwarded request 1131289 from Guillaume_G)</comment>
+    <requestid>1131297</requestid>
+  </revision>
+</revisionlist>

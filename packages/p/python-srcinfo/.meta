@@ -1,0 +1,5 @@
+<package name="python-srcinfo" project="openSUSE:Factory">
+  <title>python-srcinfo</title>
+  <description>Python library to parse Arch SRCINFO files</description>
+  <devel project="devel:languages:python" package="python-srcinfo"/>
+</package>

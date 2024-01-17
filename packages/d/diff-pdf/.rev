@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc2c46b1bc5ff7b8385d636eae1dfd6e</srcmd5>
+    <version>0.2</version>
+    <time>1464964716</time>
+    <user>dimstar_suse</user>
+    <comment>New package, somehow usefull tool</comment>
+    <requestid>398691</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f4f7712df3f8923c046fc3b0f0068ebb</srcmd5>
+    <version>0.2</version>
+    <time>1466333590</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc6 (boo#985353)
+- Use safer ldflags</comment>
+    <requestid>403346</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f5d4fe6a70d9332d8b13812c2785300</srcmd5>
+    <version>0.4.1</version>
+    <time>1609253622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859212</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9e626cec7d595b1a15eeff91e7b1b8c0</srcmd5>
+    <version>0.4.1</version>
+    <time>1609532020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859578</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a0a103eec056b2c79c18065338b1264c</srcmd5>
+    <version>0.5</version>
+    <time>1619653094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5:
+  * Reflect renaming of package from Ubuntu 20.10 on
+  * Increase version to v0.5
+  * Add --grayscale option
+  * Show default DPI value used in --help output
+  * Remove code for old versions of glib and wxWidgets
+  * Tiny code formatting fixes
+  * Add rasterization DPI option (#71)
+  * AppVeyor: fix MSYS2 build
+  * Remove legacy poppler-cairo dependency (#69)
+  * Add instructions for installing on Fedora and CentOS 8 (#66)
+- Drop no longer needed fix-find-poppler.patch
+- Switch to obs scm _service</comment>
+    <requestid>888966</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b1f01e08e2ee17e0cb718172d2b16d67</srcmd5>
+    <version>0.5</version>
+    <time>1676302877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065417</requestid>
+  </revision>
+</revisionlist>

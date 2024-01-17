@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Tue May 18 09:35:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build by removing stray pyton single spec macros: this is a
+  pure application, written in python, not a python module.
+
+-------------------------------------------------------------------
+Sun Oct 25 21:30:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- prewikka 5.2.0:
+  * Allow periodic deletion of no-severity alerts
+  * Deprecate apps requiring deprecated apps
+  * Add a system for reloading failed plugins
+  * Compatibility with Elasticsearch 7
+  * Allow binary file import in prewikka-cli
+  * Add new plugins
+    + Local DB authentication
+    + Dataprovider and view for logs
+    + Statistics pages
+    + Risk overview
+    + External website embedding
+  * Improve DataSearch aggregation page
+  * Add JSON and text representations in IDMEF details
+  * Support multi-column sorting in DataSearch
+  * Add ability to disable session redirection mechanism
+  * Updates to CSRF protection
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
+Fri Oct 25 08:00:00 UTC 2019 - thomas.andrejak@gmail.com
+
+Bump version 5.1.1
+  - Use the correct hook in heartbeat detail
+  - Fix grouping errors with datasearch:update
+  - Reload plugins if needed in prewikka-crontab
+
+- Add missing depends (see INSTALL file):
+  - python3-croniter
+  - python3-gevent
+  - python3-voluptuous
+  - python3-lark-parser
+
+-------------------------------------------------------------------
+Fri Oct 25 07:00:00 UTC 2019 - thomas.andrejak@gmail.com
+
+Bump version 5.1.0
+  - Update frameworks
+  - Add prewikka-cli, prewikka in command line
+  - Add new options in config file
+  - Various fixes
+  - Separate dataprovider backend and instance
+  - Implement support for time-spanning data
+  - Add past periods to the control menu
+  - Add comparison operators for additional data
+
+- Use the correct hook in heartbeat detail
+- Remove patchs:
+  - prewikka-fix_python3.patch
+    - Fixed upstream
+- Add patchs:
+  - prewikka-fix_shebang.patch
+    - Non executives files do not need shebang
+- Remove python2
+  - Python 2 will be removed step by step in all Linux distributions
+
+-------------------------------------------------------------------
+Sat Feb 10 07:00:00 UTC 2018 - thomas.andrejak@gmail.com
+
+- Fix building prewikka with new find-lang.sh
+
+-------------------------------------------------------------------
+Wed Oct 04 07:00:00 UTC 2017 - thomas.andrejak@gmail.com
+
+- Update to 4.0.0
+- Create python2-prewikka and python3-prewikka
+  packages since prewikka is python 3 compatible
+- Move to Python Singlespec
+- Remove patch prewikka-ez_setup.patch because we can only be
+  compatible with Factory/Tumbleweed because of Python Singlespec
+- Add patch prewikka-fix_python3.patch to make prewikka fully
+  compatible with Python 3
+
+-------------------------------------------------------------------
+Fri Feb 10 00:33:55 UTC 2017 - thomas.andrejak@gmail.com
+
+- Update to 3.1.0 (Prelude 3.1.0 released on 14 Sept 2016)
+- Remove unnecessary patches
+  - prewikka-cheetah-shbang.patch
+  - prewikka-wsgi-shbang.patch
+- Spec-Cleaner
+
+-------------------------------------------------------------------
+Thu Jan 26 21:28:03 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description.
+- Replace -exec rm by simpler -delete.
+
+-------------------------------------------------------------------
+Sun Sep  4 21:57:53 UTC 2016 - thomas.andrejak@gmail.com
+
+Fix Group to be a valid OpenSuse Group
+Fix Requires
+Fix source URL
+Fix dependencies
+Clean usage of "-n %{name}-"
+
+-------------------------------------------------------------------
+Tue May  3 22:03:50 UTC 2016 - thomas.andrejak@gmail.com
+
+Initial import
+
+Add patchs :
+  * prewikka-cheetah-shbang.patch
+    * Fix shebang in cheetah generated files
+  * prewikka-ez_setup.patch
+    * Support old setuptools
+  * prewikka-wsgi-shbang.patch
+    * Fix shebang in wsgi file

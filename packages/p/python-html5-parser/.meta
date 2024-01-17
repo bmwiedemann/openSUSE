@@ -1,0 +1,10 @@
+<package name="python-html5-parser" project="openSUSE:Factory">
+  <title>Fast C based HTML 5 parsing for python</title>
+  <description>A fast, standards compliant, C based, HTML 5 parser for python. 
+Over thirty times as fast as pure python based parsers, such as html5lib.
+
+From author of calibre.
+
+</description>
+  <devel project="devel:languages:python" package="python-html5-parser"/>
+</package>

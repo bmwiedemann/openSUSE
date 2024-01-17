@@ -1,0 +1,30 @@
+From cc161359ef7432960ef2f0b8f816986fa6798403 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 20 Sep 2023 13:07:29 +0100
+Subject: [PATCH] Write salt version before building when using
+ --with-salt-version (bsc#1215489) (#604)
+
+---
+ setup.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/setup.py b/setup.py
+index 8ca8a66d45..cf7e54f930 100755
+--- a/setup.py
++++ b/setup.py
+@@ -591,6 +591,10 @@ HOME_DIR = {home_dir!r}
+ 
+ class Build(build):
+     def run(self):
++        if getattr(self.distribution, "with_salt_version", False):
++            self.distribution.salt_version_hardcoded_path = SALT_VERSION_HARDCODED
++            self.run_command("write_salt_version")
++
+         # Run build.run function
+         build.run(self)
+         salt_build_ver_file = os.path.join(self.build_lib, "salt", "_version.txt")
+-- 
+2.41.0
+
+

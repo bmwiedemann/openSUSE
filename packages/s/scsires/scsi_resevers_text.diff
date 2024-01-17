@@ -1,0 +1,75 @@
+Index: scsires-0.7/scsi_reserve.c
+===================================================================
+--- scsires-0.7.orig/scsi_reserve.c	2001-07-20 02:46:46.000000000 +0800
++++ scsires-0.7/scsi_reserve.c	2008-10-27 23:49:22.000000000 +0800
+@@ -208,39 +208,37 @@
+ 
+ static void print_operation(const char *name)
+ {
+-    fprintf(stderr,"
+-Theory of Operation:
+-
+-	This program is designed to be used as a locking mechanism between
+-nodes in a high availability cluster.  It uses STONITH as a basis for
+-protecting from data corruption.  SCSI Reservations should not be used
+-to establish quorum or do other similar tasks.  Instead, this is merely
+-a tool to be used by High Availability cluster software in managing the
+-locks between machines.
+-
+-	Under normal conditions, this program should be invoked with the
+-drive parameter (which is required for operation) and a chain of command
+-options.  Each command will be executed in the order listed on the command
+-line.  For example:
+-	%s -d /dev/sda --reserve --hold --stonith
+-will result in the program attempting to get an initial reservation on
+-/dev/sda, and the program will then attempt to keep that reservation by
+-reissuing it on a regular basis.  The --stonith option tells the program
+-to do this under the stonith model.  Without this option, the program will
+-exit with an error code if the reservation is ever lost.
+-
+-	The ordering of options on the command line is both important and
+-not important.  Those options that don't represent an action can be anywhere
+-on the command line.  Those options that do represent some action are
+-executed in the order presented, so their ordering is important.  Command
+-options are: preempt, release, reserve, reset, show, test.
+-
+-	Note that test mode is not yet implemented.  When implemented it
+-will be exclusive of all other command options except show.  Specifying the
+-test command in combination with anything other than the show option will
+-result in the progam claiming you have made an error and exiting.
+-
+-", name);
++    fprintf(stderr,"Theory of Operation:\n"
++"	This program is designed to be used as a locking mechanism between\n"
++"nodes in a high availability cluster.  It uses STONITH as a basis for\n"
++"protecting from data corruption.  SCSI Reservations should not be used\n"
++"to establish quorum or do other similar tasks.  Instead, this is merely\n"
++"a tool to be used by High Availability cluster software in managing the\n"
++"locks between machines.\n"
++"\n"
++"	Under normal conditions, this program should be invoked with the\n"
++"drive parameter (which is required for operation) and a chain of command\n"
++"options.  Each command will be executed in the order listed on the command\n"
++"line.  For example:\n"
++"	%s -d /dev/sda --reserve --hold --stonith\n"
++"will result in the program attempting to get an initial reservation on\n"
++"/dev/sda, and the program will then attempt to keep that reservation by\n"
++"reissuing it on a regular basis.  The --stonith option tells the program\n"
++"to do this under the stonith model.  Without this option, the program will\n"
++"exit with an error code if the reservation is ever lost.\n"
++"\n"
++"	The ordering of options on the command line is both important and\n"
++"not important.  Those options that don't represent an action can be anywhere\n"
++"on the command line.  Those options that do represent some action are\n"
++"executed in the order presented, so their ordering is important.  Command\n"
++"options are: preempt, release, reserve, reset, show, test.\n"
++"\n"
++"	Note that test mode is not yet implemented.  When implemented it\n"
++"will be exclusive of all other command options except show.  Specifying the\n"
++"test command in combination with anything other than the show option will\n"
++"result in the progam claiming you have made an error and exiting.\n"
++"\n"
++, name);
+ }
+ 
+ int

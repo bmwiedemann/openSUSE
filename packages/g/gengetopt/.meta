@@ -1,0 +1,22 @@
+<package name="gengetopt" project="openSUSE:Factory">
+  <title>Commandline parser generator</title>
+  <description>This program generates a C function that uses getopt_long function to parse the
+command line options, to validate them and fills a struct.
+
+Thus your program can now handle options such as:
+myprog --input foo.c -o foo.o --no-tabs -i 100 *.class
+
+Both long options (those that start with --) and short options (start with -
+and consist of only one character) can be handled.
+
+
+Authors:
+--------
+	Roberto Arturo Tena Sanchez &lt;arturo@directmail.org&gt;
+	Lorenzo Bettini &lt;http://www.lorenzobettini.it&gt;
+
+
+</description>
+  <devel project="devel:tools" package="gengetopt"/>
+  <url>http://www.gnu.org/software/gengetopt/</url>
+</package>

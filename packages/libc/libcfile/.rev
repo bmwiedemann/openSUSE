@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5079a6bb510dbb4c08060800d16f682b</srcmd5>
+    <version>0~20130329</version>
+    <time>1366357772</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.
+</comment>
+    <requestid>163825</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>273d70093e1f58e059f7f900b04b1317</srcmd5>
+    <version>0~20130609</version>
+    <time>1375284220</time>
+    <user>coolo</user>
+    <comment>update to 0~20130609
+part of summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185035</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>273d70093e1f58e059f7f900b04b1317</srcmd5>
+    <version>0~20130609</version>
+    <time>1379662915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>afe64455d676b6ccae42423d745a2ffe</srcmd5>
+    <version>0~20130809</version>
+    <time>1383810019</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205882</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e4f56177ce751aecac62a918b33a2e00</srcmd5>
+    <version>0~20130809</version>
+    <time>1386156446</time>
+    <user>coolo</user>
+    <comment>- don't buildrequire ourselves</comment>
+    <requestid>209311</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d27e441b4c635b89d3715972d3b3c5b7</srcmd5>
+    <version>0~20140624</version>
+    <time>1408089344</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244701</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d27e441b4c635b89d3715972d3b3c5b7</srcmd5>
+    <version>0~20140624</version>
+    <time>1409301518</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ecdb8616a73df822916fceea141014a5</srcmd5>
+    <version>0~20150101</version>
+    <time>1420927501</time>
+    <user>dimstar_suse</user>
+    <comment>Part of libyal 2015 refresh - may need to go to ring D.  libcstring is a dependency and is currently in ring D.</comment>
+    <requestid>280460</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f5df4929a965ac6a7baeae0a2d7d5bcd</srcmd5>
+    <version>0~20170105</version>
+    <time>1487681253</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458545</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a0b5fc4e470de34b2818b2fdf1d9e56b</srcmd5>
+    <version>0~20190314</version>
+    <time>1557141723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693953</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62e867d95ac953560531c2aa90eb1914</srcmd5>
+    <version>0~20200216</version>
+    <time>1608317954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855523</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9fa8dee57b326e961f54c79948d92f43</srcmd5>
+    <version>20210409</version>
+    <time>1623268314</time>
+    <user>dimstar_suse</user>
+    <comment>make libuna happy</comment>
+    <requestid>898041</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7207d423c21be2ad729cc51440855644</srcmd5>
+    <version>20210409</version>
+    <time>1660051698</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>993972</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bd2bc83c48c8ac1b7a4ca30648ccd5c3</srcmd5>
+    <version>20220106</version>
+    <time>1661863758</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999941</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a1818672406d93be94e976be56559ded</srcmd5>
+    <version>20220106</version>
+    <time>1669629963</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038446</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>29a63d1a472a2a85847c2de771f7f7fa</srcmd5>
+    <version>20220106</version>
+    <time>1701633005</time>
+    <user>anag+factory</user>
+    <comment>- Add signature and keyring</comment>
+    <requestid>1130601</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ff232a83761fb83a6c349c4e9ffd4f77</srcmd5>
+    <version>20240106</version>
+    <time>1704558614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20240106</comment>
+    <requestid>1137224</requestid>
+  </revision>
+</revisionlist>

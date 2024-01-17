@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50f422039630492106548dbd0b5e90e2</srcmd5>
+    <version>0.003004</version>
+    <time>1375901434</time>
+    <user>coolo</user>
+    <comment>needed by perl-Moose-Autobox
+--Thi and those below, will be ignored--</comment>
+    <requestid>185895</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>50f422039630492106548dbd0b5e90e2</srcmd5>
+    <version>0.003004</version>
+    <time>1379663851</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c97def3f269c589aaea5f6b8642a733</srcmd5>
+    <version>0.003007</version>
+    <time>1394521391</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225384</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5c97def3f269c589aaea5f6b8642a733</srcmd5>
+    <version>0.003007</version>
+    <time>1409302493</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9a4b1463d615630e6560c3e9013d15da</srcmd5>
+    <version>0.003008</version>
+    <time>1429107792</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296044</requestid>
+  </revision>
+</revisionlist>

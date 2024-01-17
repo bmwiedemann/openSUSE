@@ -1,0 +1,8 @@
+<package name="pavucontrol" project="openSUSE:Factory">
+  <title>PulseAudio Volume Control</title>
+  <description>PulseAudio Volume Control (pavucontrol) is a simple GTK based volume
+control tool (&quot;mixer&quot;) for the PulseAudio sound server. In contrast to
+classic mixer tools this one allows you to control both the volume of
+hardware devices and of each playback stream separately.</description>
+  <devel project="GNOME:Apps" package="pavucontrol"/>
+</package>

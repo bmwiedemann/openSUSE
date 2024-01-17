@@ -1,0 +1,27 @@
+diff -rub OpenRGB-release_0.9.orig/OpenRGB.pro OpenRGB-release_0.9.patch/OpenRGB.pro
+--- OpenRGB-release_0.9.orig/OpenRGB.pro	2023-07-10 05:51:47.000000000 +0200
++++ OpenRGB-release_0.9.patch/OpenRGB.pro	2023-07-14 15:54:00.355006793 +0200
+@@ -68,7 +68,6 @@
+     dependencies/hueplusplus-1.0.0/include/hueplusplus                                          \
+     dependencies/httplib                                                                        \
+     dependencies/json/                                                                          \
+-    dependencies/libe131/src/                                                                   \
+     dependencies/libcmmk/include/                                                               \
+     dependencies/mdns                                                                           \
+     hidapi_wrapper/                                                                             \
+@@ -812,7 +811,6 @@
+     dependencies/hueplusplus-1.0.0/src/UPnP.cpp                                                 \
+     dependencies/hueplusplus-1.0.0/src/Utils.cpp                                                \
+     dependencies/hueplusplus-1.0.0/src/ZLLSensors.cpp                                           \
+-    dependencies/libe131/src/e131.c                                                             \
+     dependencies/libcmmk/src/libcmmk.c                                                          \
+     main.cpp                                                                                    \
+     cli.cpp                                                                                     \
+@@ -1789,6 +1787,7 @@
+     -lmbedtls                                                                                   \
+     -lmbedcrypto                                                                                \
+     -ldl                                                                                        \
++    $$system(pkg-config --libs libe131)                                                         \
+ 
+     COMPILER_VERSION = $$system($$QMAKE_CXX " -dumpversion")
+     if (!versionAtLeast(COMPILER_VERSION, "9")) {

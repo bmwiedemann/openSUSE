@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34e7292fca425c559e5a2e6a20a64011</srcmd5>
+    <version>3.8.0</version>
+    <time>1365139887</time>
+    <user>coolo</user>
+    <comment>Addition - helper script for GNOME Games packages</comment>
+    <requestid>161957</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>34e7292fca425c559e5a2e6a20a64011</srcmd5>
+    <version>3.8.0</version>
+    <time>1379662488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>34e7292fca425c559e5a2e6a20a64011</srcmd5>
+    <version>3.8.0</version>
+    <time>1409301023</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>c77333c822511e906196139abb6bcc1e</srcmd5>
+    <version>3.8.0</version>
+    <time>1520588280</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581083 from dimstar)</comment>
+    <requestid>582728</requestid>
+  </revision>
+</revisionlist>

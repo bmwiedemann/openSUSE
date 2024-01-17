@@ -1,0 +1,32 @@
+Index: scsires-0.7/scsires.c
+===================================================================
+--- scsires-0.7.orig/scsires.c	2001-02-23 19:08:39.000000000 +0800
++++ scsires-0.7/scsires.c	2008-10-27 23:58:02.000000000 +0800
+@@ -334,7 +334,7 @@
+     memcpy((void *)&sg_dev->revision[0], (const void *)&cmd.buf[32], 4);
+     sg_dev->vendor[8] = '\0';
+     sg_dev->product[16] = '\0';
+-    sg_dev->revision[5] = '\0';
++    sg_dev->revision[4] = '\0';
+ 
+     /*
+      * First try the device ID page.  Then get the serial number.
+@@ -517,7 +517,7 @@
+ 	buffer = malloc(cmd.buf[3] + 1);
+ 	if(buffer == NULL)
+ 	    return 1;
+-	strncpy(&buffer[0], &cmd.buf[4], cmd.buf[3]);
++	strncpy(&buffer[0], (char*)&cmd.buf[4], cmd.buf[3]);
+ 	buffer[cmd.buf[3]] = '\0';
+ 	sg_dev->serial_number = buffer;
+     } else if (WAS_SENSE(cmd) && SENSE_KEY(cmd) == ILLEGAL_REQUEST) {
+@@ -674,8 +674,7 @@
+ int
+ scsires_init_persistent_reservations(scsires_sg_dev_t * sg_dev, char *path)
+ {
+-    scsires_send_command_t cmd;
+-    int fd, result, old_errno;
++    int fd, old_errno;
+     char buffer[512];
+ 
+     if ((fd = open(path, O_RDONLY | O_NDELAY)) == -1) {

@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Fri Dec 29 10:17:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.0:
+  * When accessing tags or macro definitions by name, specfile
+    now takes validity into account when looking for the best
+    match. For example if there are two instances of `Version`
+    tag, one in the true and one in the false branch of a
+    condition, `Specfile.version` will always access the one that
+    is in the true branch. (#328)
+  * Third pre-release for testing Packit support.
+
+-------------------------------------------------------------------
+Thu Nov 23 07:47:50 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.25.0:
+  - There is a new method, Specfile.update_version(), that allows
+    updating spec file version even if it is a pre-release. (#317)
+
+-------------------------------------------------------------------
+Wed Nov  8 10:08:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.24.0:
+  - Improved type annotations for UserList subclasses. (#299)
+  - Macro definitions gained a new commented_out property
+    indicating that a macro definition is commented out. Another
+    new property, comment_out_style, determines if it is achieved
+    by using a %dnl (discard next line) directive (e.g. %dnl
+    %global prerelease beta2) or by replacing the starting % with
+    # (e.g. #global prerelease beta2). (#298)
+- Fix a bad Requires: %{python_module typing_extensions}
+
+-------------------------------------------------------------------
+Mon Oct 30 10:14:03 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.23.0:
+  - Sources now have a valid property that indicates whether a
+    source is valid in the current context, meaning it is not
+    present in a false branch of any condition.
+
+-------------------------------------------------------------------
+Tue Oct 17 07:30:54 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 0.22.1:
+  - Removed dependency on setuptools-scm-git-archive
+
+-------------------------------------------------------------------
+Mon Sep  4 10:43:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reduce buildrequires to git-core
+
+-------------------------------------------------------------------
+Sun Sep  3 17:13:37 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 0.22.0:
+  - Changes from 0.22.0:
+    * Macro definitions and tags gained a new valid attribute. A macro
+      definition/tag is considered valid if it doesn't appear in a
+      false branch of any condition appearing in the spec file.
+  - Changes from 0.21.0:
+    * specfile no longer tracebacks when some sources are missing and
+      can't be emulated. In such case the spec file is parsed without
+      them at the cost of %setup and %patch macros potentially
+      expanding differently than with the sources present.
+    * Specfile's license in RPM spec file is now confirmed to be SPDX
+      compatible.
+- Blacklist a new broken test on spec file: test_parse_texlive_spec.
+- Add a new Python module dependency: typing_extensions.
+- Apply spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Jul 19 04:53:41 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.20.0:
+  * Fixed infinite loop when removing macros with `%` in the name. (#244)
+  * Added a possibility to undefine system macros by setting a macro value
+    to `None` in the `macros` argument of the `Specfile` constructor. (#244)
+  * Fixed a bug in processing options of `%prep` macros. For instance, when
+    a quoted string appeared inside an expression expansion, it could lead
+    to improper parsing, rendering the spec file invalid after accessing
+    the options. (#253)
+  * Parsing has been optimized so that even spec files with hundreds of
+    thousands of lines can be processed in reasonable time. (#240)
+- Drop setuptools_scm_git_archive BuildRequires.
+- Don't need to skip Python 3.8.
+
+-------------------------------------------------------------------
+Mon May 29 09:50:26 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.18.0:
+  * Specfile library now handles multiple %changelog sections. (#230)
+
+-------------------------------------------------------------------
+Thu May 11 12:19:01 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.17.0:
+  * Added a new guess_packager() function that uses similar
+    heuristics as rpmdev-packager, meaning that the
+    Specfile.add_changelog_entry() method no longer requires
+    rpmdev-packager to guess the changelog entry author. (#220)
+  * The Specfile.add_changelog_entry() method now uses dates based
+    on UTC instead of the local timezone. (#223)
+
+-------------------------------------------------------------------
+Tue Apr 25 07:18:46 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.16.0:
+  * Added Specfile.has_autorelease property to detect if a spec
+    file uses the %autorelease macro. (#221)
+
+-------------------------------------------------------------------
+Mon Mar 13 12:34:39 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.15.0:
+  * Parsing the spec file by RPM is now performed only if really
+    necessary, greatly improving performance in certain scenarios.
+    (#212)
+  * Checked that license is a valid SPDX license.
+
+-------------------------------------------------------------------
+Sat Feb 25 12:10:44 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.14.0:
+  * Fixed a bug that broke parsing in case spec file contained
+    conditionalized macro definitions or similar constructs
+  * Specfile no longer depends on rpm-py-installer, it now depends
+    directly on rpm.
+
+-------------------------------------------------------------------
+Mon Feb  6 06:32:11 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.13.2:
+  * Fixed infinite loop that occured when section options were
+    followed by whitespace.
+
+-------------------------------------------------------------------
+Mon Jan 23 15:38:33 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.13.1:
+  * Fixed a bug in section parsing that caused sections to be
+    ignored when there were macro definitions spread across the spec
+    file and not cumulated at the top.
+
+- Update to version 0.13.0:
+  * Added Section.options attribute for convenient manipulation of
+    section options.
+  * specfile now supports single-line sections where section content
+    is represented by a macro starting with a newline.
+  * Added evr argument to Specfile.add_changelog_entry(). This
+    allows adding a changelog entry with an EVR value that's
+    different from the current specfile's value. This makes it
+    easier to reconstruct a specfile's %changelog based on another
+    source using the higher level interface.
+
+-------------------------------------------------------------------
+Thu Jan 12 10:27:28 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Remove patch (already upstream):
+  * python-specfile-improve-setup-cfg.patch
+
+- Update to version 0.12.0:
+  * All classes including `Specfile` itself can now be copied using
+    the standard `copy()` and `deepcopy()` functions from `copy`
+    module.
+  * `Section.name` attribute has been renamed to a more fitting
+    `Section.id`.
+  * `setup.cfg` now uses `license_files` instead of deprecated
+    `license_file`.
+
+-------------------------------------------------------------------
+Tue Dec 13 08:20:36 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Add config.cfg improvements to remove deprecation warnings
+  * python-specfile-improve-setup-cfg.patch
+
+- Update to version 0.11.1
+  * Tags enclosed in conditional macro expansions are not ignored
+    anymore.
+  * Fixed context managers being shared between Specfile instances.
+
+- Update to version 0.11.0
+  * Context managers (Specfile.sections(), Specfile.tags() etc.) can
+    now be nested and combined together (with one exception -
+    Specfile.macro_definitions()), and it is also possible to use
+    tag properties (e.g. Specfile.version, Specfile.license) inside
+    them. It is also possible to access the data directly, avoiding
+    the with statement, by using the content property
+    (e.g. Specfile.tags().content), but be aware that no
+    modifications done to such data will be preserved. You must use
+    with to make changes.
+
+-------------------------------------------------------------------
+Wed Nov 30 17:15:22 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to version 0.10.0
+  * Fixed an issue that caused empty lines originally inside
+    changelog entries to appear at the end. (#140)
+  * Renamed the ignore_missing_includes option to a more general
+    force_parse. If specified, it allows to attempt to parse the
+    spec file even if one or more sources required to be present at
+    parsing time are not available. Such sources include sources
+    referenced from shell expansions in tag values and sources
+    included using the %include directive. (#137)
+
+-------------------------------------------------------------------
+Wed Nov  9 19:02:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.9.0
+  * Added utility classes for working with (N)EVR. (#113)
+  * Fixed an issue with multiple instances of Specfile not expanding macros in the right context. (#117)
+
+-------------------------------------------------------------------
+Tue Oct 25 09:48:05 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version v0.8.0
+  * Added Specfile.update_tag() method that allows updating tag values while
+    trying to preserve macro expansions. You can watch a demo on YouTube.
+    (#101)
+- 0.7.0
+  * It is now possible to filter changelog entries by specifying lower bound
+    EVR, upper bound EVR or both. (#104)
+  * Added support for filenames specified in source URL fragments, for example:
+    https://example.com/foo/1.0/download.cgi#/%{name}-%{version}.tar.gz (#100)
+
+-------------------------------------------------------------------
+Sat Sep 17 04:08:46 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.6.0
+

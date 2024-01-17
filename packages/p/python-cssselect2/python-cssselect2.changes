@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:24:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:46 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Fri Mar 24 13:02:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.7.0:
+  * Support :has selector
+0.6.0:
+  * Improve speed of ancestors and previous siblings
+0.5.0:
+  * Support Python 3.10
+  * Drop support of Python 3.6
+  * Handle many CSS4 selectors
+  * Ignore comments at the beginning of selectors
+0.4.1:
+  * Fix PyPI description and various links.
+0.4.0:
+  * Drop support of Python 3.5, add support of Python 3.9.
+  * Don’t crash on empty :not() selectors.
+  * New code structure, new packaging, new documentation.
+
+-------------------------------------------------------------------
+Wed Apr  1 14:58:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.3.0
+  * Drop Python2 support
+  * Improve packaging and testing
+
+-------------------------------------------------------------------
+Fri Sep 13 10:29:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.2:
+  * Optimize lang attribute selectors
+
+-------------------------------------------------------------------
+Fri Apr 26 07:31:02 UTC 2019 - pgajdos@suse.com
+
+- python3 package only as python-tinycss2 become too
+
+-------------------------------------------------------------------
+Wed Feb 27 13:06:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the build again
+
+-------------------------------------------------------------------
+Tue Feb 26 12:19:15 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary build dependencies on pytest plugins, by
+  invoking pytest directly avoiding setup.py checking test deps,
+  and removing addopts from setup.cfg
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:03 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 24 03:54:51 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,256 @@
+-------------------------------------------------------------------
+Mon Jan  1 10:08:16 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.37
+  * Updated Dutch, Spanish and Esperanto translations.
+  * Fixed an issue whereby the Grub King could push the player out
+    of the map.
+
+-------------------------------------------------------------------
+Sat Jan 14 17:12:55 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.36
+  * Updated Polish translation
+  * Updated Esperanto translation
+
+-------------------------------------------------------------------
+Thu Jan 13 21:16:06 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.35
+  * Added Latvian translation
+  * Some compilation fixes
+
+-------------------------------------------------------------------
+Fri Jan  1 11:01:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.34
+  * Fixed issue with dialog box text sometimes not appearing on
+    certain platforms.
+  * Fixed a crash when exiting the game on certain platforms.
+  * Music now plays when loading a save from within the game.
+  * Joysticks are now detected whilst the game is running, as
+    opposed to being needed to be connected before startup.
+  * Fixed a rare crash when loading a game.
+  * Fixed a rare crash when drawing entities.
+
+-------------------------------------------------------------------
+Fri May  1 17:03:29 UTC 2020 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+
+- Update to version 1.33:
+  * Updated Brazilian Portuguese and French translations
+
+-------------------------------------------------------------------
+Sat Sep 21 19:47:49 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.32
+  * Updated Dutch translation
+  * Fixed an issue with wrong names being displayed in certain
+    dialogs
+
+-------------------------------------------------------------------
+Wed Mar 27 22:28:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.31
+  * Updated game to use SDL2
+  * Updated Esperanto translation
+
+-------------------------------------------------------------------
+Sat Mar  9 20:29:55 UTC 2019 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+
+- Update to version 1.30
+  *Updated Esperanto translation
+  *Updated homepage URL
+
+-------------------------------------------------------------------
+Mon Jul 23 20:48:18 UTC 2018 - mardnh@gmx.de
+
+- Introduce subpackages for data and language files
+- Fix URL
+
+-------------------------------------------------------------------
+Sat Jul 21 16:01:06 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.29
+  * Added Indonesian translation
+  * Updated Esperanto translation
+  * Fixed a crash on some systems when determining the localisation
+
+- Update to version 1.28
+  * Updated German, Italian, Japanese, Simplified Chinese, Russian
+    and Ukrainian translations
+  * Fixed a problem where the Gargoyle could freeze if its lance was
+    thrown through a missing bridge section
+
+- Update to version 1.27
+  * Added new music for the Laboratory
+  * Updated German translation
+  * Fixed a problem where Evil Edgar could get blocked by monsters
+    during his first cutscene
+  * Increased the size of the safe dial image
+  * Health potions now restore 5 health points
+  * Boulders spin more realistically
+  * The Gargoyle now hovers lower down during his second phase attack
+  * Fixed a memory leak when saving PNG images
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan  2 19:48:31 UTC 2017 - nemysis@openSUSE.org
+
+- Update to 1.26, announce message:
+
++Replaced the Forest music
+ 
+-------------------------------------------------------------------
+Tue Nov  1 11:56:46 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 1.24, announce message: 
+
+* Added Serbian translation
+* Updated German translation
+* Fixed the mine cart's reset switch in the Fortress Dungeon
+* Fixed the scrolling in the medals table
+
+- Remove check %if 0%{?suse_version}, because is only for openSUSE
+
+-------------------------------------------------------------------
+Sun May 22 20:46:53 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 1.24, announce message:
+
+* Updated Brazilian Portuguese and German translations
+* The ice blocks dropped by the large blue book's third form now shatter if they land on lifts
+
+- license update: GPL-2.0+ No indication that this is GPL-2.0 (only)
+
+-------------------------------------------------------------------
+Sat Jan 23 19:08:45 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 1.23, announce message:
+
+ * Updated French and German translations
+
+-------------------------------------------------------------------
+Tue Dec  1 10:39:32 UTC 2015 - nemysis@openSUSE.org
+
+- Update to 1.22, announce message:
+
+ * Updated Brazilian Portuguese, Dutch, German and Italian translations
+
+- Add %{name}.appdata.xml, Upstream have accepted changes
+
+-------------------------------------------------------------------
+Sat Jun 27 17:38:09 UTC 2015 - nemysis@gmx.ch
+
+- Update to 1.21, announce message:
+
+ * Updated German and Slovak translations
+
+ The game's source has also been moved from Sourceforge to GitHub.
+
+- Change Source0 Web URL
+
+-------------------------------------------------------------------
+Sat Mar 21 13:24:57 UTC 2015 - nemysis@gmx.ch
+
+- Update to 1.20, announce message:
+ * Added Slovak translation
+ * Updated French and German translations
+ * Added makefile for Mac OS
+
+- Move hicolor-icon-theme to %if 0%{?suse_version}
+- Add description for sed and change sed
+- Remove obsolete sed icons/edgar.desktop, Upstream have
+  accepted changes
+
+-------------------------------------------------------------------
+Mon Dec 15 18:38:58 UTC 2014 - nemysis@gmx.ch
+
+- Update to 1.19-1, announce message:
+
+  Updated Esperanto, French, German, Japanese, Russian and Ukranian
+  translations
+
+- Add Man Pages, changed by upstream
+
+-------------------------------------------------------------------
+Sat Nov  1 13:43:40 UTC 2014 - nemysis@gmx.ch
+
+- Revert Source0 that works 'osc service localrun download_files'
+
+-------------------------------------------------------------------
+Sat Nov  1 11:04:37 UTC 2014 - nemysis@gmx.ch
+
+- Update to 1.18, announce message:
+
+ * Updated German translation
+
+- Use BuildRequires pkgconfig(SDL_image), pkgconfig(SDL_mixer) and
+  pkgconfig(SDL_ttf) instead of SDL_image-devel, SDL_mixer-devel,
+  SDL_ttf-devel and SDL-devel
+- Use check for openSUSE %if 0%{?suse_version}
+- Use CC="cc %{optflags}" to fix
+ 'File is compiled without RPM_OPT_FLAGS'
+
+-------------------------------------------------------------------
+Sat Sep 27 20:11:42 UTC 2014 - nemysis@gmx.ch
+
+- Change sed
+- Remove not needed %files
+
+-------------------------------------------------------------------
+Tue Sep 23 22:25:32 UTC 2014 - nemysis@gmx.ch
+
+- Change Sourc0 to use %{name} and %{version}
+- Use shorter for hicolor
+
+-------------------------------------------------------------------
+Mon Sep 15 20:58:24 UTC 2014 - nemysis@gmx.ch
+
+- Use usual Copyright on top
+- Update to 1.17, announce message:
+
+  Updated German translation
+  Updated Brazilian Portuguese, Dutch, Italian and Russian translations
+
+- Change Summary
+- Change license GPLv2 to GPL-2.0
+- Change URL
+- Change Source to use Web URL
+- Add BuildRequires for fdupes
+- Change dependency pkg-config to pkgconfig(sdl)
+- Remove BuildRequires for SDL_net-devel, not used in build
+- Change description
+- Simplify installation handling, use normal build
+- Move makefile to Makefile
+- Add sed, fix Makefile to good install and .deskto to not get
+  ERROR: No sufficient Category definition
+- Use default make %{?_smp_mflags}
+- Add for locale %find_lang %name and %files -f %name.lang
+- Add edgar.changes
+- Import from spec this list, this edgar.changes was not used before
+
+* Mon Mar  5 2012 kobayashi 0.98
+- Updated to version 0.98
+-
+* Wed May 19 2010 David Bolt <davjam@davjam.org> 0.56
+- Updated to version 0.56
+-
+* Wed Mar 10 2010 David Bolt <davjam@davjam.org> 0.51
+- Updated to version 0.51
+-
+* Tue Dec  1 2009 David Bolt <davjam@davjam.org> 0.41
+- Updated to version 0.41
+-
+* Thu Oct 15 2009 David Bolt <davjam@davjam.org> 0.33
+- Updated to version 0.33
+-
+* Sat Aug 22 2009 David Bolt <davjam@davjam.org> 0.25
+- Updated to version 0.25
+-
+* Wed Jul 22 2009 David Bolt <davjam@davjam.org> 0.20
+- Updated to version 0.20
+- Fixes most 64bit issues
+-
+* Wed Jun 24 2009 David Bolt <davjam@davjam.org> 0.11
+- First version for openSUSE

@@ -1,0 +1,6 @@
+<package name="gpg2" project="openSUSE:Factory">
+  <title>GnuPG 2</title>
+  <description>GnuPG 2 is the successor of &quot;GnuPG&quot; or GPG. It provides: GPGSM,
+gpg-agent, and a keybox library.</description>
+  <devel project="Base:System" package="gpg2"/>
+</package>

@@ -1,0 +1,35 @@
+--- a/Makefile
++++ b/Makefile
+@@ -15,10 +15,8 @@ MANDIR=$(DESTDIR)/usr/share/man
+ NAME=cntlm
+ CC=gcc
+ VER=`cat VERSION`
+-CFLAGS+=$(FLAGS) -std=c99 -Wall -Wno-unused-but-set-variable -pedantic -O3 -D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"`cat VERSION`\"
+-OS=$(shell uname -s)
+-OSLDFLAGS=$(shell [ $(OS) = "SunOS" ] && echo "-lrt -lsocket -lnsl")
+-LDFLAGS:=-lpthread $(OSLDFLAGS)
++override CFLAGS += -std=c99 -pedantic -D__BSD_VISIBLE -D_ALL_SOURCE -D_XOPEN_SOURCE=600 -D_POSIX_C_SOURCE=200112 -D_ISOC99_SOURCE -D_REENTRANT -D_BSD_SOURCE -DVERSION=\"`cat VERSION`\"
++override LDFLAGS += -lpthread
+ 
+ ifeq ($(findstring CYGWIN,$(OS)),)
+ 	OBJS=utils.o ntlm.o xcrypt.o config.o socket.o acl.o auth.o http.o forward.o direct.o scanner.o pages.o main.o
+@@ -45,16 +43,16 @@ main.o: main.c
+ install: $(NAME)
+ 	# Special handling for install(1)
+ 	if [ "`uname -s`" = "AIX" ]; then \
+-		install -M 755 -S -f $(BINDIR) $(NAME); \
++		install -M 755 -f $(BINDIR) $(NAME); \
+ 		install -M 644 -f $(MANDIR)/man1 doc/$(NAME).1; \
+ 		install -M 600 -c $(SYSCONFDIR) doc/$(NAME).conf; \
+ 	elif [ "`uname -s`" = "Darwin" ]; then \
+-		install -d -m 755 -s $(NAME) $(BINDIR)/$(NAME); \
++		install -d -m 755 $(NAME) $(BINDIR)/$(NAME); \
+ 		install -d -m 644 doc/$(NAME).1 $(MANDIR)/man1/$(NAME).1; \
+ 		[ -f $(SYSCONFDIR)/$(NAME).conf -o -z "$(SYSCONFDIR)" ] \
+ 			|| install -d -m 600 doc/$(NAME).conf $(SYSCONFDIR)/$(NAME).conf; \
+ 	else \
+-		install -D -m 755 -s $(NAME) $(BINDIR)/$(NAME); \
++		install -D -m 755 $(NAME) $(BINDIR)/$(NAME); \
+ 		install -D -m 644 doc/$(NAME).1 $(MANDIR)/man1/$(NAME).1; \
+ 		[ -f $(SYSCONFDIR)/$(NAME).conf -o -z "$(SYSCONFDIR)" ] \
+ 			|| install -D -m 600 doc/$(NAME).conf $(SYSCONFDIR)/$(NAME).conf; \

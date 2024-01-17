@@ -1,0 +1,27 @@
+From a55bd2ddc1ca21ca6fb44df58d7287f619cb54f6 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Thu, 14 Sep 2023 01:42:29 +0200
+Subject: [PATCH 23/24] tests: skip test when lvmdbusd runs on the system
+
+lvmdbusd changes $RUNDIR results.
+---
+ test/shell/duplicate-pvs-md0.sh | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/shell/duplicate-pvs-md0.sh b/test/shell/duplicate-pvs-md0.sh
+index ea800cf5a..9c1005b0b 100644
+--- a/test/shell/duplicate-pvs-md0.sh
++++ b/test/shell/duplicate-pvs-md0.sh
+@@ -27,6 +27,9 @@ _clear_online_files() {
+ 
+ . lib/inittest
+ 
++# Running lvmdbusd with its fullreport scannnig changes $RUNDIR results
++pgrep lvmdbusd && skip "Test cannot work, while there is running lvmdbusd."
++
+ MD_LEVEL=${MD_LEVEL-0}
+ 
+ aux prepare_devs 4 10
+-- 
+2.35.3
+

@@ -1,0 +1,24 @@
+#include <tunables/global>
+
+/usr/lib/nagios/plugins/check_repomd {
+  #include <abstractions/base>
+  #include <abstractions/bash>
+  #include <abstractions/consoles>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+
+  network inet,
+
+  /{usr/,}bin/bash rix,
+  /{usr/,}bin/grep rix,
+  /usr/bin/curl rix,
+  /{usr/,}bin/cat rix,
+  /{usr/,}bin/mktemp rix,
+  /{usr/,}bin/rm rix,
+  /usr/bin/cut rix,
+  /{usr/,}bin/date rix,
+  /usr/lib/nagios/plugins/utils.sh r,
+  /proc/sys/crypto/fips_enabled r,
+  owner /tmp/check_repomd* rw,
+}
+

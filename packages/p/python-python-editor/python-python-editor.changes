@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu May  9 06:53:20 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.0.4
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Tue Dec 18 23:49:45 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Clairfy what the
+  "system's EDITOR" is.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:01 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Aug 22 12:49:38 UTC 2017 - tbechtold@suse.com
+
+- update to 1.0.3:
+  * don't re-split arguments
+  * Version bump (1.0.2)
+  * Version bump to 1.0.3
+  * remove un-needed function
+  * update README
+- convert to singlespec
+
+-------------------------------------------------------------------
+Fri Sep 16 14:35:20 UTC 2016 - toddrme2178@gmail.com
+
+- Fix Download URL
+
+-------------------------------------------------------------------
+Thu Sep 15 22:17:54 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 1.0.1
+  * Detect tty and add helper function
+  * Default to not using tty
+  * Use branch instead of ternary operator
+  * Use /dev/tty by default
+
+-------------------------------------------------------------------
+Wed Jan 13 12:04:08 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 0.5
+  * Add "vim.basic" and "vim.tiny" to editors
+  * Check editor from path (and traverse symlinks)
+- Update to 0.4
+  * Added MANIFEST file to include README.md and LICENSE file in
+    pypi tarball
+
+-------------------------------------------------------------------
+Fri Aug 21 12:15:52 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging (version 0.3)
+

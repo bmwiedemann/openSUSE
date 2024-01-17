@@ -1,0 +1,6 @@
+<package name="perl-Proc-SyncExec" project="openSUSE:Factory">
+  <title>perl-Proc-SyncExec - Spawn processes but report exec() errors</title>
+  <description>This module contains functions for synchronized process spawning with full error return. If the child's exec() call fails the reason for the failure is reported back to the parent.</description>
+  <devel project="devel:languages:perl" package="perl-Proc-SyncExec"/>
+  <url>https://metacpan.org/release/Proc-SyncExec</url>
+</package>

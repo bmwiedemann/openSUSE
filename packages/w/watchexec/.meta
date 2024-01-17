@@ -1,0 +1,5 @@
+<package name="watchexec" project="openSUSE:Factory">
+  <title>watchexec is a simple, standalone tool that watches a path and runs a command whenever it detects modifications.</title>
+  <description></description>
+  <devel project="utilities" package="watchexec"/>
+</package>

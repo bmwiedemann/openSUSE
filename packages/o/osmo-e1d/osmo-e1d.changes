@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Wed Nov  1 20:21:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.6.0
+  * proto_clnt: close osmo-e1d control socket on connection loss
+  * octoi: Add force-send-all-ts mode
+
+-------------------------------------------------------------------
+Thu May 18 10:24:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.5.0
+  * Support for e1-tracer hardware
+
+-------------------------------------------------------------------
+Wed Aug  3 17:22:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.0
+  * Use the error counters for remote alarm + remote CRC error
+  * Add support for icE1usb RAI interrupt error flag
+  * Allow configuration of interfaces/lines via VTY
+  * GPS-DO support for icE1usb hardware
+  * OCTOI: initial support for E1oIP forwarding
+  * RIFO (random in, first out) for IP->E1 direction
+  * Add rate counters for number of frames muxed/demuxed (E1 side)
+
+-------------------------------------------------------------------
+Sat Apr  2 14:45:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3.0
+  * e1d: Add watchdog timer to detect dead lines / USB devices
+  * e1d-ts-pipe: Don't write more HDLC bytes than e1d supports
+  * e1d: reliably detect EOF (HDLC-FCS & RAW mode)
+
+-------------------------------------------------------------------
+Fri Nov 19 10:40:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 0.2.2
+  * make compile-time default logging configuration less verbose
+  * Use new stat item/ctr getter APIs
+  * ctl: properly set the timeslot mode in E1DP_CMD_TS_QUERY
+
+-------------------------------------------------------------------
+Sat May 15 11:15:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.1
+  * e1d: fix ASSERT during "write terminal"
+
+-------------------------------------------------------------------
+Sun Mar 14 20:40:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.0
+  * Add support for icE1usb interrupt endpoint error reporting.
+  * Add per-line rate counter group to count various errors.
+  * Support for control endpoint requests to icE1usb to switch
+    Rx/Tx mode.
+  * Evaluate received E and A bits in TS0.
+  * Add new "osmo-e1gen" program.
+
+-------------------------------------------------------------------
+Sun Sep  6 12:49:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.1.1
+  * No user-visible changes.
+
+-------------------------------------------------------------------
+Wed Jul 01 19:17:39 UTC 2020 - mardnh@gmx.de
+
+- Update to version 0.1.0.1:
+  * add systemd service/unit
+  * Add osmo-e1d-pipe utility
+  * Add virtual pair of E1 interfaces
+
+-------------------------------------------------------------------
+Wed Jul 10 20:19:26 UTC 2019 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20190710:
+  * build: Disable some warnings
+  * proto: Fix aliasing error when setting the FD in the CMSG data
+
+-------------------------------------------------------------------
+Thu May 16 19:49:15 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.0.0+git.20190511

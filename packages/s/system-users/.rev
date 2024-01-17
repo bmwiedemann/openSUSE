@@ -1,0 +1,266 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1c64fa46b85573f0f4aeb1b74092f25</srcmd5>
+    <version>20161020</version>
+    <time>1488479291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>459514</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4f957636cec3084bf7a490e15e0d24a</srcmd5>
+    <version>20161020</version>
+    <time>1489241981</time>
+    <user>dimstar_suse</user>
+    <comment>- Add hardware access groups: kmem, lock, tty, audio, cdrom,
+  dialout, disk, input, tape, video
+- Add group wheel</comment>
+    <requestid>478630</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c03e6edbd082d938c542ac2c873ad67b</srcmd5>
+    <version>20161020</version>
+    <time>1489759663</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix group ownership of /var/lib/wwwrun (forwarded request 480796 from kukuk)</comment>
+    <requestid>480797</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f9445859cc5dc4c06c213664251420d0</srcmd5>
+    <version>20161020</version>
+    <time>1492009757</time>
+    <user>maxlin_factory</user>
+    <comment>- Prerequire group lock for uucp
+
+- Allow user uucp to do locking</comment>
+    <requestid>485070</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fba418492f9d1785bfe5c17439ad1d3d</srcmd5>
+    <version>20161020</version>
+    <time>1494441160</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492622</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b0ad76f3505867816fef3df94384e36</srcmd5>
+    <version>20170617</version>
+    <time>1498202039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505024</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9b7f5ba3fc2240c298a7190d52355f66</srcmd5>
+    <version>20170617</version>
+    <time>1500669424</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509140</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8eaadbeb624a3ee1df9b31f106bd05b0</srcmd5>
+    <version>20170617</version>
+    <time>1503999348</time>
+    <user>dimstar_suse</user>
+    <comment>- user nobody: move usermod to %post, else it will be executed
+  before the user is created. (forwarded request 517841 from kukuk)</comment>
+    <requestid>517842</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>5559b0c49c07ebbaaea3cbb221836e9f</srcmd5>
+    <version>20170617</version>
+    <time>1505757262</time>
+    <user>dimstar_suse</user>
+    <comment>- uuidd does not need group daemon, Copy&amp;Paste error.
+
+- udev needs groups kvm and lp: [bsc#1058703]
+  - Add group kvm to system-group-hardware
+  - Move group lp from system-user-lp to system-group-hardware
+
+- Add system-user-uuidd.conf (boo#1057937#c3).</comment>
+    <requestid>526091</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>7a1633a70650f1b6abe2dd165274b5aa</srcmd5>
+    <version>20170617</version>
+    <time>1512546444</time>
+    <user>dimstar_suse</user>
+    <comment>- Change home directory of user man to /var/lib/empty. Home
+  directories below /var/cache are by definition insecure and a
+  bad idea.</comment>
+    <requestid>546397</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>73a99b41f47e02bc1363dcbf379330cc</srcmd5>
+    <version>20170617</version>
+    <time>1522403700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590364</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>9662b027f47364fa7bdf1ca72e2f8482</srcmd5>
+    <version>20170617</version>
+    <time>1551784554</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679449</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>075af639137031be5e135c0870f2561e</srcmd5>
+    <version>20170617</version>
+    <time>1565864824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723093</requestid>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>290c6917a733e5b8766a9830dec4a3c8</srcmd5>
+    <version>20170617</version>
+    <time>1581278475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769061</requestid>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>f732c5a0c43a8e6969461d6a4c4bd6f9</srcmd5>
+    <version>20170617</version>
+    <time>1582555785</time>
+    <user>dimstar_suse</user>
+    <comment>- Align /var/lib/tss permissions with trousers (boo#1162360). (forwarded request 775182 from michals)</comment>
+    <requestid>775206</requestid>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>1f7df20e5c57e77970fc14a8bc0a3c30</srcmd5>
+    <version>20170617</version>
+    <time>1585601457</time>
+    <user>dimstar_suse</user>
+    <comment>- Use test -x instead of -f (forwarded request 788124 from kukuk)</comment>
+    <requestid>788125</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>f6e2abaf402d4fee71a2aa485faf7f37</srcmd5>
+    <version>20170617</version>
+    <time>1598642183</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't add group nogroup to user nobody, as many daemons misuse
+  'nogroup' as own group (forwarded request 828854 from kukuk)</comment>
+    <requestid>828855</requestid>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>67c0b92f31315f27a1f3cfe331ec5c08</srcmd5>
+    <version>20170617</version>
+    <time>1606142019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848960</requestid>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>af3c9bf2ec22719302a601f4c500d433</srcmd5>
+    <version>20170617</version>
+    <time>1608112726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853579</requestid>
+  </revision>
+  <revision rev="20" vrev="15">
+    <srcmd5>08e56674b4e10ff478103abacbf2d413</srcmd5>
+    <version>20170617</version>
+    <time>1609344658</time>
+    <user>dimstar_suse</user>
+    <comment>- Add system-user-vscan subpackage with vscan user and group and
+  /var/spool/amavis as home directory
+
+The vscan user is currently used by the amavisd-new and clamav packages, but there are other packages that might benefit from running daemons as non-privileged user (looking at you, spamassassin) (forwarded request 858972 from adkorte)</comment>
+    <requestid>859003</requestid>
+  </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>f810d75ccab0a1d505cf89f811fefe23</srcmd5>
+    <version>20170617</version>
+    <time>1611348538</time>
+    <user>dimstar_suse</user>
+    <comment>- system-user-tss.conf: Remove group entry, not needed and did
+  contain syntax errors
+- remove duplicate group entry:
+  - system-user-tftp.conf
+  - system-user-uuidd.conf
+  - system-user-uucp.conf
+  - system-user-uucp.conf
+  - system-user-ftp.conf
+  - system-user-games.conf
+  - system-user-news.conf (forwarded request 863309 from kukuk)</comment>
+    <requestid>863310</requestid>
+  </revision>
+  <revision rev="22" vrev="17">
+    <srcmd5>59bf3f68f2bd097867f94b165674a79b</srcmd5>
+    <version>20170617</version>
+    <time>1611567014</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1181328</comment>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>95018aa7608efcccbb9c493af139e5e6</srcmd5>
+    <version>20170617</version>
+    <time>1611826987</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:system-users revision:08e56674b4e10ff478103abacbf2d413, using expand</comment>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>88f7c56a574cf9aad02ff47d63b10fc1</srcmd5>
+    <version>20170617</version>
+    <time>1612466487</time>
+    <user>dimstar_suse</user>
+    <comment>Add system-user-ntp</comment>
+    <requestid>868678</requestid>
+  </revision>
+  <revision rev="25" vrev="20">
+    <srcmd5>f810d75ccab0a1d505cf89f811fefe23</srcmd5>
+    <version>20170617</version>
+    <time>1613581731</time>
+    <user>dimstar_suse</user>
+    <comment>Try again</comment>
+    <requestid>871210</requestid>
+  </revision>
+  <revision rev="26" vrev="21">
+    <srcmd5>d445aa8f79cfc53b2965559d69e5795d</srcmd5>
+    <version>20170617</version>
+    <time>1614692496</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874356</requestid>
+  </revision>
+  <revision rev="27" vrev="22">
+    <srcmd5>b42119baa2bd752182bb9828b1cd4370</srcmd5>
+    <version>20170617</version>
+    <time>1625115924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898638</requestid>
+  </revision>
+  <revision rev="28" vrev="23">
+    <srcmd5>352b31536ee64b2621deadd7e3165c56</srcmd5>
+    <version>20170617</version>
+    <time>1631310036</time>
+    <user>dimstar_suse</user>
+    <comment>- Set shell for nobody in sysusers.d config (forwarded request 917597 from kukuk)</comment>
+    <requestid>917598</requestid>
+  </revision>
+  <revision rev="29" vrev="24">
+    <srcmd5>87094dcba229da2ac37639b84cbcce97</srcmd5>
+    <version>20170617</version>
+    <time>1637372321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932250</requestid>
+  </revision>
+  <revision rev="30" vrev="25">
+    <srcmd5>bb3a1639c6c73bdcfb6c97ff5e991037</srcmd5>
+    <version>20170617</version>
+    <time>1694459984</time>
+    <user>anag+factory</user>
+    <comment>- system-group-hardware: remove group lp, we have system-user-lp (forwarded request 1104654 from kukuk)</comment>
+    <requestid>1104655</requestid>
+  </revision>
+</revisionlist>

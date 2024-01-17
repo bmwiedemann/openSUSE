@@ -1,0 +1,71 @@
+From 99a6c339f1828d3cd1b193cf702bada9011d900b Mon Sep 17 00:00:00 2001
+From: Djordje Senicic <x0157990@ti.com>
+Date: Mon, 24 Jun 2019 14:29:19 -0400
+Subject: [PATCH] add armnn mobilenet test example
+
+Upstream-Status: Inappropriate [TI only test code]
+Signed-off-by: Qin Su <qsu@ti.com>
+Signed-off-by: Djordje Senicic <x0157990@ti.com>
+[Guillaume's update: Add boost_log dep]
+[Guillaume's update: Update to apply on top of 20.08]
+---
+ tests/CMakeLists.txt | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index dfcf4b48..5a78d3a6 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,3 +1,6 @@
++find_package( OpenCV REQUIRED )
++include_directories( ${OpenCV_INCLUDE_DIRS} )
++
+ # UnitTests
+ include(CheckIncludeFiles)
+ 
+@@ -348,3 +351,42 @@ if(BUILD_ARMNN_QUANTIZER)
+     target_include_directories(ImageCSVFileGenerator PRIVATE ../src/armnnUtils)
+     ImageTensorExecutor(ImageCSVFileGenerator)
+ endif()
++
++if (BUILD_ARMNN_EXAMPLES)
++    set(ArmnnExamples_sources
++        ArmnnExamples/ArmnnExamples.cpp)
++
++    add_executable_ex(ArmnnExamples ${ArmnnExamples_sources})
++
++    target_include_directories(ArmnnExamples PRIVATE ../src/armnnUtils)
++    target_include_directories(ArmnnExamples PRIVATE ../src/armnn)
++    target_include_directories(ArmnnExamples PRIVATE ../src/backends)
++
++    if (BUILD_CAFFE_PARSER)
++        target_link_libraries(ArmnnExamples armnnCaffeParser)
++    endif()
++    if (BUILD_TF_PARSER)
++        target_link_libraries(ArmnnExamples armnnTfParser)
++    endif()
++
++    if (BUILD_TF_LITE_PARSER)
++        target_link_libraries(ArmnnExamples armnnTfLiteParser)
++    endif()
++    if (BUILD_ONNX_PARSER)
++            target_link_libraries(ArmnnExamples armnnOnnxParser)
++    endif()
++
++    target_link_libraries(ArmnnExamples armnn)
++    target_link_libraries(ArmnnExamples ${CMAKE_THREAD_LIBS_INIT})
++    if(OPENCL_LIBRARIES)
++        target_link_libraries(ArmnnExamples ${OPENCL_LIBRARIES})
++    endif()
++
++    target_link_libraries(ArmnnExamples
++        ${Boost_LOG_LIBRARY}
++        ${Boost_SYSTEM_LIBRARY}
++        ${Boost_FILESYSTEM_LIBRARY}
++        ${Boost_PROGRAM_OPTIONS_LIBRARY}
++		${OpenCV_LIBS})
++    addDllCopyCommands(ArmnnExamples)
++endif()
+-- 
+2.17.1
+

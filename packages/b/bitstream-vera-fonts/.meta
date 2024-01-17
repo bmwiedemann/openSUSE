@@ -1,0 +1,5 @@
+<package name="bitstream-vera-fonts" project="openSUSE:Factory">
+  <title>bitstream-vera</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="M17N:fonts" package="bitstream-vera-fonts"/>
+</package>

@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d261c2437abcc9efc481f0f6d7f3f708</srcmd5>
+    <version>0.1.1</version>
+    <time>1584643702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785479</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>548537f7bf34c7cdbc5ba06cfbd7f999</srcmd5>
+    <version>0.1.1</version>
+    <time>1607548928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854250</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f05bd762a02f09f42a7428cdcb218854</srcmd5>
+    <version>0.1.1</version>
+    <time>1618859176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886598</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4faf39132e20924e738d3af9b1758bf7</srcmd5>
+    <version>0.1.1</version>
+    <time>1635023646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927091</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>64751be00159ab6dc4e051e3f27fab82</srcmd5>
+    <version>0.1.2</version>
+    <time>1683299569</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.2:
+  * Fixed bug that caused ``-P time`` to also match
+    ``package.timeseries``. [#7]
+  * Dropped Python 3.6 support.
+- drop fix-doctestplus-count.patch (upstream)</comment>
+    <requestid>1084905</requestid>
+  </revision>
+</revisionlist>

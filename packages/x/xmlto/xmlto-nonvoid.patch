@@ -1,0 +1,20 @@
+--- a/xmlif/xmlif.c
++++ b/xmlif/xmlif.c
+@@ -2435,6 +2435,7 @@ main(int argc, char *argv[])
+ 	}
+ 
+     yylex();
++    return 0;
+ }
+ 
+ /*
+--- a/xmlif/xmlif.l
++++ b/xmlif/xmlif.l
+@@ -259,6 +259,7 @@ main(int argc, char *argv[])
+ 	}
+ 
+     yylex();
++    return 0;
+ }
+ 
+ /*

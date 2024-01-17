@@ -1,0 +1,20 @@
+--- deadbeef-1.9.5/deadbeef.desktop.in.orig	2023-02-24 16:00:06.833542450 +0100
++++ deadbeef-1.9.5/deadbeef.desktop.in	2023-02-24 16:00:38.869651872 +0100
+@@ -14,7 +14,7 @@
+ Icon=deadbeef
+ Exec=deadbeef %F
+ Terminal=false
+-Actions=Play;Pause;Toggle Pause;Stop;Next;Prev;
++Actions=Play;Pause;TogglePause;Stop;Next;Prev;
+ MimeType=application/ogg;audio/x-vorbis+ogg;application/x-ogg;audio/mp3;audio/prs.sid;audio/x-flac;audio/mpeg;audio/x-mpeg;audio/x-mod;audio/x-it;audio/x-s3m;audio/x-xm;audio/x-mpegurl;audio/x-scpls;application/x-cue;
+ Categories=Audio;AudioVideo;Player;GTK;
+ Keywords=Sound;Music;Audio;Player;Musicplayer;MP3;
+@@ -35,7 +35,7 @@
+ Name[zh_TW]=暫停
+ Exec=deadbeef --pause
+ 
+-[Desktop Action Toggle Pause]
++[Desktop Action TogglePause]
+ Name=Toggle Pause
+ Name[zh_CN]=播放/暂停
+ Name[zh_TW]=播放/暫停

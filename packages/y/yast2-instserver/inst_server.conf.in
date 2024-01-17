@@ -1,0 +1,11 @@
+# httpd configuration for Installation Server included by httpd.conf
+<IfDefine inst_server>
+    Alias @ALIAS@ @SERVERDIR@
+    <Directory @SERVERDIR@>
+
+        Options +Indexes +FollowSymLinks
+        IndexOptions +NameWidth=*
+
+        Require all granted
+    </Directory>
+</IfDefine>

@@ -1,0 +1,15 @@
+<package name="lnav" project="openSUSE:Factory">
+  <title>Logfile Navigator</title>
+  <description>The Logfile Navigator, lnav for short, is a curses-based tool for viewing and
+analyzing log files. The value added by lnav over text viewers or editors is
+that it takes advantage of any semantic information that can be gleaned from
+the log file, such as timestamps and log levels. Using this extra semantic
+information, lnav can do things like interleaving messages from different
+files, generate histograms of messages over time, and provide hotkeys for
+navigating through the file. These features are meant to allow the user to
+quickly and efficiently focus on problems.
+
+</description>
+  <devel project="server:monitoring" package="lnav"/>
+  <url>http://lnav.org</url>
+</package>

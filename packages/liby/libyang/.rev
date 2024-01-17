@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a3da4f68f985bf836321a77fa1310270</srcmd5>
+    <version>0.16r3</version>
+    <time>1551284869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674508</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f7235dfb72d4d161f92f9eda39b6cf4</srcmd5>
+    <version>1.0r5</version>
+    <time>1577451022</time>
+    <user>dimstar_suse</user>
+    <comment>- Package extensions in a separate package - libyang-extentions
+
+- Update to version 1.0r5
+  Main features of this release are:
+  * value canonization support in API functions
+  * new debug message categories
+  * nested notification/action validation clarifications and fixes
+  * LYB format decimal64 value handling fixed
+  * C++ bindings minor improvements
+  * other minor fixes
+
+- Update to version 1.0r4
+  Main features of this release are:
+  * many bugfixes in various parts of the library
+    + schema and data validation
+    + manipulation with internal schemas and loading user schemas
+      in the context
+    + xpath
+    + LYB format
+
+- Update to version 1.0r3
+  Main features of this release are:
+  * many bugfixes in various parts of the library
+    + LYB format
+    + schema
+    + data
+    + xpath
+
+- Build with ENABLE_LYD_PRIV=ON</comment>
+    <requestid>758498</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>267428e516e28c4e037a956bbf601fb4</srcmd5>
+    <version>1.0r5</version>
+    <time>1577972477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760257</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>23ecc632b90b58339c4d8d8aee647e23</srcmd5>
+    <version>1.0.130</version>
+    <time>1582038988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775208</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e1ab0d262f7b2dd0a02fb4c9806d505</srcmd5>
+    <version>1.0.167</version>
+    <time>1589579520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805751</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4cefe69383686092a731b994d37c450c</srcmd5>
+    <version>1.0.184</version>
+    <time>1597064590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825276</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1310d4160fccb1841c0b7d991af0cd84</srcmd5>
+    <version>1.0.240</version>
+    <time>1623268319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897969</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b07153eff34dd95544e156d9d4e58c57</srcmd5>
+    <version>2.0.97</version>
+    <time>1634073403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924938</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3c82a2984e54aeabd35a628cc7296d66</srcmd5>
+    <version>2.0.112</version>
+    <time>1637228086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932044</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d81547afed4971b84884c0186d07ec53</srcmd5>
+    <version>2.0.164</version>
+    <time>1650657266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971902</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1aaad0ad8a4c44ea9425161d68f19c00</srcmd5>
+    <version>2.0.194</version>
+    <time>1651960465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975552</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9b8e5a5ff89c14173137658679da043f</srcmd5>
+    <version>2.0.231</version>
+    <time>1662541552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001457</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6e1234e02b7fd54de9d591638b94e287</srcmd5>
+    <version>2.1.4</version>
+    <time>1670068115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.4:
+  * large extensions refactoring
+  * increased ext plugin API version
+  * new callbacks and capabilities of plugins
+  * changes in the parsed and compiled ext instance structures
+  * native support for structure extension
+  * error path logging improvements
+  * fixed unions with leafrefs
+  * yanglint schema mount support
+  * huge number of other fixes and improvements</comment>
+    <requestid>1039775</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d690fdba1d4d333e099942e923da6892</srcmd5>
+    <version>2.1.30</version>
+    <time>1674232717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059677</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f11af50076b3292d47d6c158908bb877</srcmd5>
+    <version>2.1.55</version>
+    <time>1680636454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077238</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b8d1f7eeee967342b53ff9165d3efad5</srcmd5>
+    <version>2.1.128</version>
+    <time>1699994529</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125277</requestid>
+  </revision>
+</revisionlist>

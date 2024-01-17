@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebe9aae4a2d7b94fedd0aab915447f33</srcmd5>
+    <version>1.13.0</version>
+    <time>1591879885</time>
+    <user>dimstar_suse</user>
+    <comment>Libraries start to require this, first one is the current release of OpenImageDenoise,
+as found in https://build.opensuse.org/package/show/home:frispete:blender/OpenImageDenoise
+
+Now as full llvm build using thin lto, thanks to Ismail.
+</comment>
+    <requestid>798009</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be607e9076f69609e8bcfd78dbab4c07</srcmd5>
+    <version>1.13.0</version>
+    <time>1594706342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820556</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40ae7db0d46cf1c80007558dd2482ad6</srcmd5>
+    <version>1.14.1</version>
+    <time>1605644521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847048</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0404465a5cf7175e42b4c3dc9fa284d</srcmd5>
+    <version>1.15.0</version>
+    <time>1618775126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886459</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b953d1c22147dce0194daff4e52b7a19</srcmd5>
+    <version>1.15.0</version>
+    <time>1619973376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889833</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc77e6c8c4c3bda5dd66077577063655</srcmd5>
+    <version>1.16.1</version>
+    <time>1634587188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925980</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20fe055a61b860c528fd3a24bd0b17f7</srcmd5>
+    <version>1.17.0</version>
+    <time>1650825263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972400</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>879028c5d0dca87ff43e4b2ac74ba849</srcmd5>
+    <version>1.18.0</version>
+    <time>1665504216</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009818</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>cf08cc31a07418b0d8ec59eda0da1a77</srcmd5>
+    <version>1.18.0</version>
+    <time>1666257105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030117</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4161014f20530360b8cae8d436407e5d</srcmd5>
+    <version>1.18.1</version>
+    <time>1669289041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037643</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>48f2304be42a5be70b59ebea857504ee</srcmd5>
+    <version>1.18.1</version>
+    <time>1679766935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074203</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3ed9ac7afe8c03b3d92fd2850d7c40bb</srcmd5>
+    <version>1.18.1</version>
+    <time>1699301702</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123661</requestid>
+  </revision>
+</revisionlist>

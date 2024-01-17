@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Jan 26 10:19:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update package to 1.0.0:
+  This is the initial stable release of wev, suitable for distros
+  to package if they so desire.
+
+-------------------------------------------------------------------
+Mon Aug 12 07:06:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 0~git2) for build.opensuse.org.

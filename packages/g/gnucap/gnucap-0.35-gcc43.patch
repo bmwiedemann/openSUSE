@@ -1,0 +1,100 @@
+--- gnucap-0.35/modelgen/ap.h	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/modelgen/ap.h	2008-01-08 22:28:50.000000000 +0100
+@@ -24,6 +24,7 @@
+ //testing=script,sparse 2006.07.17
+ #ifndef AP_H
+ #define AP_H
++#include <string.h>
+ #include "md.h"
+ /*--------------------------------------------------------------------------*/
+ enum AP_MOD{
+--- gnucap-0.35/src/ap.h	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/src/ap.h	2008-01-08 22:29:01.000000000 +0100
+@@ -24,6 +24,7 @@
+ //testing=script,sparse 2006.07.17
+ #ifndef AP_H
+ #define AP_H
++#include <string.h>
+ #include "md.h"
+ /*--------------------------------------------------------------------------*/
+ enum AP_MOD{
+--- gnucap-0.35/src/e_base.h	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/src/e_base.h	2008-01-08 22:29:59.000000000 +0100
+@@ -24,6 +24,7 @@
+ //testing=script,complete 2006.07.12
+ #ifndef E_BASE_H
+ #define E_BASE_H
++#include <strings.h>
+ #include "l_compar.h"
+ #include "u_opt.h"
+ #include "u_status.h"
+--- gnucap-0.35/src/io_findf.cc	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/src/io_findf.cc	2008-01-08 22:33:15.000000000 +0100
+@@ -32,6 +32,7 @@
+  * PATHSEP, ENDDIR are system dependent, defined in md.h
+  */
+ //testing=script,sparse 2006.07.17
++#include <string.h>
+ #include "l_lib.h"
+ /*--------------------------------------------------------------------------*/
+ std::string findfile(const std::string& filename, const std::string& path,
+--- gnucap-0.35/src/io_getln.cc	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/src/io_getln.cc	2008-01-08 22:32:51.000000000 +0100
+@@ -27,6 +27,7 @@
+  * start with + is extension line, spice compatibility.
+  */
+ //testing=script 2006.07.17
++#include <string.h>
+ #include "l_lib.h"
+ /*--------------------------------------------------------------------------*/
+ std::string getlines(FILE *fileptr)
+--- gnucap-0.35/src/io_out.cc	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/src/io_out.cc	2008-01-08 22:33:34.000000000 +0100
+@@ -31,6 +31,7 @@
+  * but I have yet to find a system that did not meet this form.
+  */
+ //testing=script,sparse 2006.07.17
++#include <string.h>
+ #include "u_opt.h"
+ /*--------------------------------------------------------------------------*/
+ 	const char* octal(int x);
+--- gnucap-0.35/src/l_ftos.cc	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/src/l_ftos.cc	2008-01-08 22:33:53.000000000 +0100
+@@ -37,6 +37,7 @@
+  * after that, the space is overwritten, every POOLSIZE calls
+  */
+ //testing=script 2005.10.11
++#include <string.h>
+ #include "l_lib.h"
+ #include "constant.h"
+ /*--------------------------------------------------------------------------*/
+--- gnucap-0.35/src/l_timer.cc	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/src/l_timer.cc	2008-01-08 22:34:16.000000000 +0100
+@@ -22,6 +22,7 @@
+  * Time a command, or whatever
+  */
+ //testing=script,sparse 2006.07.13
++#include <string.h>
+ #include "l_timer.h"
+ /*--------------------------------------------------------------------------*/
+ //		TIMER::TIMER();
+--- gnucap-0.35/src/main.cc	2006-09-20 19:18:52.000000000 +0200
++++ gnucap-0.35.new/src/main.cc	2008-01-08 22:31:35.000000000 +0100
+@@ -23,6 +23,7 @@
+  * it all starts here
+  */
+ //testing=script 2006.07.14
++#include <strings.h>
+ #include "patchlev.h"
+ #include "c_comand.h"
+ #include "declare.h"	/* lots */
+--- gnucap-0.35/src/plot.cc	2006-08-28 08:15:43.000000000 +0200
++++ gnucap-0.35.new/src/plot.cc	2008-01-08 22:34:56.000000000 +0100
+@@ -2,6 +2,7 @@
+  * (this file is a mess.  it should be redone.)
+  */
+ //testing=script 2006.07.17
++#include <string.h>
+ #include "declare.h"	/* self */
+ #include "s__.h"
+ #include "u_prblst.h"

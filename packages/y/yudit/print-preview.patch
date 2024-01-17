@@ -1,0 +1,12 @@
+Index: yudit-2.9.2/gui/SYudit.cpp
+===================================================================
+--- yudit-2.9.2.orig/gui/SYudit.cpp
++++ yudit-2.9.2/gui/SYudit.cpp
+@@ -2414,6 +2414,7 @@ SYudit::addMytoolPrefix (SString* execut
+   }
+ #else
+   SString pr = getPrefix();
++  pr = "/usr/X11R6";
+   pr.append ("/bin/mytool");
+   SFile f0 (pr);
+   if (f0.size () <= 0) 

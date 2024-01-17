@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec2e2d7d29f6a447b008d274b0c4256e</srcmd5>
+    <version>1.10.12</version>
+    <time>1592578773</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814911</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>38bc96f168dd15d80d96859e1b4eec64</srcmd5>
+    <version>1.10.12</version>
+    <time>1598642861</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829222</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b297aac04d47e35e2d19202e2d83b660</srcmd5>
+    <version>1.10.12</version>
+    <time>1608633463</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857292</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6df1f1b7a191f54779a06ce1c3e4c42e</srcmd5>
+    <version>1.10.15</version>
+    <time>1644617322</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953446</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2d15f8e260ba2b582e176dc7a4c5c4bb</srcmd5>
+    <version>1.10.16</version>
+    <time>1660144398</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>994040</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>03d9168b77251dc95eb5bb9bf8a89617</srcmd5>
+    <version>1.10.17</version>
+    <time>1674043784</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059058</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b7f0416e568c79fbc497a5e60d06d7ee</srcmd5>
+    <version>1.10.17</version>
+    <time>1680635955</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075818</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f29702cff237f49914647c9f34bef009</srcmd5>
+    <version>1.10.18</version>
+    <time>1687469118</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094423</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8e748a192a7bf8cc4d04c6d0e643a88b</srcmd5>
+    <version>1.10.19</version>
+    <time>1693860824</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1108864</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>555d9c601b2f3ae269feae1c00e98324</srcmd5>
+    <version>1.10.20</version>
+    <time>1697657152</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118471</requestid>
+  </revision>
+</revisionlist>

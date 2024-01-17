@@ -1,0 +1,13 @@
+<package name="python-gpstime" project="openSUSE:Factory">
+  <title>GPS-aware Python datetime module</title>
+  <description>This package provides GPS time conversion utilities, including a
+gpstime subclass of the built-in datetime class with the addition of
+GPS time parsing and conversion methods.
+
+It also provides a command-line GPS conversion utility that uses the
+gpstime module, a rough work-alike to LIGO &quot;tconvert&quot; utility.
+
+</description>
+  <devel project="science" package="python-gpstime"/>
+  <url>https://git.ligo.org/cds/software/gpstime</url>
+</package>

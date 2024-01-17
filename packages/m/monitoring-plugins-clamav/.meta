@@ -1,0 +1,15 @@
+<package name="monitoring-plugins-clamav" project="openSUSE:Factory">
+  <title>Check to see if your ClamAV signatures are current</title>
+  <description>This check plugin is a Perl script which compares your local signature database
+(daily.cvd) version to the version advertised from the ClamAV site. It verifies
+the latest ClamAV revision using a DNS TXT query against
+current.cvd.clamav.net. 
+
+Author:
+-------
+    Darren Spruell &lt;phatbuckett@gmail.com&gt;
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-clamav"/>
+  <url>http://exchange.nagios.org/directory/Plugins/Anti-2DVirus/ClamAV/ClamAV-check-plugin/details</url>
+</package>

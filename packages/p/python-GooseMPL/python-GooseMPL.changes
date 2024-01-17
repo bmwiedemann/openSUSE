@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Fri Jan 20 16:25:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.1
+  * Add asLinearSegmentedColormap by @tdegeus in #41
+  * bin: adding number of samples per bin to output by @tdegeus in
+    #39
+  * Fit functions: default use absolute error, let option to user
+    by @tdegeus in #37
+  * Minor bugfix: adding return in histogram_bin_edges_mincount by
+    @tdegeus in #38
+  * Binning data & Fit error by @tdegeus in #36
+  * Function to re-normalize a histogram by @tdegeus in #33
+  * Adding fit_exp by @tdegeus in #32
+  * Adding yerr to fit_powerlaw by @tdegeus in #31
+  * Adding log-ticks function
+  * Updating plot-styles. Breaking change, "goose" -> "goose",
+    "goose-autolayout"
+  * fit_powerlaw : plot using just two data-points in the scale is
+    log-log
+  * Adding plot function to fit_powerlaw
+  * Deprecating "write_data" and "restore_data"
+  * Adding integer bin-edges to public API (formerly only
+    integrated in histogram_bin_edges) + minor bugfix (#25)
+  * Adding "fit_powerlaw" (#24, #28)
+
+-------------------------------------------------------------------
+Fri May  7 10:06:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Require the latex packages which are used in the code
+
+-------------------------------------------------------------------
+Tue Apr 20 00:50:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0: 
+  * Add new minmax function
+- Don't build on Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
+Tue Jul  7 10:33:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.2
+  * Integration "__version__" directly in module
+  * Added functionality to write to HDF5 file
+  * Updating requirements for readthedocs
+  * Add LaTeX number formatting
+  * Extracting parameters from "plot_powerlaw"
+  * Style changes
+
+-------------------------------------------------------------------
+Mon Nov 18 17:46:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25ecbef125338936bb10fbeb8a094ac5</srcmd5>
+    <version>1.0.5</version>
+    <time>1577972538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760354</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc731d88e11907fef2cabf0b47da3f68</srcmd5>
+    <version>1.0.7</version>
+    <time>1600347139</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.7:
+  * python 3.8 support</comment>
+    <requestid>835102</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0ac69858989563feab9d695c31d6830c</srcmd5>
+    <version>1.0.8</version>
+    <time>1637618675</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict more which files are packaged.
+- update to 1.0.8:
+  * docs: fix typos: s/againts/against
+  * Support special video/3gp file.
+  * fix: small error in docs
+  * Fix for PEP8 styles
+  * Fix version
+  * Add command line
+  * Fix linter error.
+  * Add xcf type.
+  * Add application abstraction and wasm type.
+  * Add rpm and dcm type.
+  * Add 3gp type.
+  * Add aac type.
+  * Add dwg type.
+  * Add brotli support.
+  * Fix avi matcher.
+  * Fix cr2 handling.
+  * Add py39 to test environment.
+  * Add clean and doc target to tox.
+  * Add docs to .gitignore
+  * Switch to tox in travis CI.
+  * Add lint and test target to tox.ini
+  * Clean up .gitignore
+  * Update Readme.
+  * Extend mp3 matcher
+  * Added support for lzop.
+  * Added support for lz4.
+  * Accept os.PathLike objects.
+  * Added support for elf
+  * setup.py: Exclude 'examples' from being installed as a global pkg
+  * Create LICENSE
+  * Add sample.jpg fixture
+- Install new filetype command into %{_bindir}
+- Enable update-alternatives mechanism for filetype command
+</comment>
+    <requestid>933145</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22901a13187b242ccc3aef7c0a94838f</srcmd5>
+    <version>1.0.10</version>
+    <time>1648479638</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.10:
+  * Merge pull request #113 from nottaw/master
+  * Use `==` for string comparisons
+  * Update __init__.py
+  * Merge pull request #111 from asfaltboy/patch-1
+  * Add python 3.9 to version classifiers
+  * Merge pull request #108 from hannesbraun/aiff-support
+  * Add AIFF support
+  * fix(Readme): rst syntax</comment>
+    <requestid>965101</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ecd03e6b9be2b24be762af2e88142cab</srcmd5>
+    <version>1.2.0</version>
+    <time>1667904489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034476</requestid>
+  </revision>
+</revisionlist>

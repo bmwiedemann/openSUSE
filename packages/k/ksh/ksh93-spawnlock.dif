@@ -1,0 +1,40 @@
+--- ./src/cmd/ksh93/sh/jobs.c.orig	2016-07-26 12:52:44.178281624 +0000
++++ ./src/cmd/ksh93/sh/jobs.c	2016-07-26 12:52:59.563281597 +0000
+@@ -2071,6 +2071,10 @@ void job_fork(pid_t parent)
+ 		job_lock();
+ 		jobfork++;
+ 		break;
++	case -2:
++		jobfork--;
++		job_unlock();
++		break;
+ 	case 0:
+ 		jobfork=0;
+ 		job_unlock();
+--- ./src/cmd/ksh93/sh/xec.c.orig	2016-07-26 12:52:37.322281636 +0000
++++ ./src/cmd/ksh93/sh/xec.c	2016-07-26 12:55:37.097281318 +0000
+@@ -3952,6 +3952,7 @@ static pid_t sh_ntfork(Shell_t *shp,cons
+ #   endif /* !_lib_fork */
+ 	sh_pushcontext(shp,buffp,SH_JMPCMD);
+ 	errorpush(&buffp->err,ERROR_SILENT);
++	job_lock();		/* errormsg will unlock */
+ 	jmpval = sigsetjmp(buffp->buff,0);
+ 	if(jmpval == 0)
+ 	{
+@@ -4050,7 +4051,7 @@ static pid_t sh_ntfork(Shell_t *shp,cons
+ 		}
+ 	fail:
+ 		if(jobfork && spawnpid<0) 
+-			job_fork(0);
++			job_fork(-2);
+ 		if(spawnpid < 0) switch(errno=shp->path_err)
+ 		{
+ 		    case ENOENT:
+@@ -4058,6 +4059,7 @@ static pid_t sh_ntfork(Shell_t *shp,cons
+ 		    default:
+ 			errormsg(SH_DICT,ERROR_system(ERROR_NOEXEC),e_exec+4);
+ 		}
++		job_unlock();
+ 	}
+ 	else
+ 		exitset();

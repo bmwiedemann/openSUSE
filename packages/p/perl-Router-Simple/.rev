@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e959d697866c9384082df9a62c667169</srcmd5>
+    <version>0.14</version>
+    <time>1371814352</time>
+    <user>coolo</user>
+    <comment>needed for JSON::RPC</comment>
+    <requestid>179300</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e959d697866c9384082df9a62c667169</srcmd5>
+    <version>0.14</version>
+    <time>1379663828</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d8e774490b6cc1821a446bee68bf5c6</srcmd5>
+    <version>0.15</version>
+    <time>1381064168</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202246</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7d8e774490b6cc1821a446bee68bf5c6</srcmd5>
+    <version>0.15</version>
+    <time>1409302466</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2cba3dc105e8802124e837a167d94f7c</srcmd5>
+    <version>0.17</version>
+    <time>1429107797</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296046</requestid>
+  </revision>
+</revisionlist>

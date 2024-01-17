@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/kohsuke/xsom.git</param>
+		<param name="revision">78a9cb7d9db01c27a2ee9857df2895fdd1262cdf</param>
+		<param name="versionformat">20140925</param>
+		<param name="exclude">lib/*</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+</services>

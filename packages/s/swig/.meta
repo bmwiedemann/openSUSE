@@ -1,0 +1,12 @@
+<package name="swig" project="openSUSE:Factory">
+  <title>Simplified Wrapper and Interface Generator</title>
+  <description>SWIG is a compiler that attempts to make it easy to integrate C, C++,
+or Objective-C code with scripting languages including Perl, Tcl, and
+Python.  In a nutshell, you give it a bunch of ANSI C/C++ declarations
+and it generates an interface between C and your favorite scripting
+language.  However, this is only scratching the surface of what SWIG
+can do--some of its more advanced features include automatic
+documentation generation, module and library management, extensive
+customization options, and more.</description>
+  <devel project="devel:tools:building" package="swig"/>
+</package>

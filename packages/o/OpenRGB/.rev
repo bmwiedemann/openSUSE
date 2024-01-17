@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f80e76b1d098153bc32d694716ff10af</srcmd5>
+    <version>0.4</version>
+    <time>1605644741</time>
+    <user>dimstar_suse</user>
+    <comment>New package.</comment>
+    <requestid>848876</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a27f173d70e4b9ee136cc921fd1738c</srcmd5>
+    <version>0.4</version>
+    <time>1605783630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849273</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa5e956cf9964ec7b607faeba003e2e9</srcmd5>
+    <version>0.5</version>
+    <time>1607430287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853686</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7ae93c7409eb9a48e0e5d390cd01ac1</srcmd5>
+    <version>0.6</version>
+    <time>1622928689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897570</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b25f56a0f3dd093138a8e4beb9329401</srcmd5>
+    <version>0.6</version>
+    <time>1632849416</time>
+    <user>dimstar_suse</user>
+    <comment>- Add OpenRGB-Logitch_G502_detect.patch and
+  OpenRGB-Logitch_G502_PID.patch (fix boo#1190894)
+</comment>
+    <requestid>922037</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ad91a7f865716024f5656f50e51a562</srcmd5>
+    <version>0.7</version>
+    <time>1641321470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7
+  New Features:
+  * Improved plugin architecture - Plugins can now be easily
+    installed from Settings and are versioned to ensure
+    compatibility.
+    + Plugins include effects engine, E1.31 receiver, visual map
+      editor, and more.
+  * Settings tabs for various configurable features so you don't
+    have to manually edit settings file
+    + E1.31 Devices
+    + Serial Devices
+    + QMK OpenRGB Protocol
+    + Philips Hue
+    + Philips Wiz
+    + Yeelight
+  * Log console
+    + Log console can be enabled in settings, allows to view the
+      log in the GUI under Information
+  * Save To Device
+    + On supported controllers, the Save To Device button allows
+      you to save the selected mode and color configuration to
+      device internal memory
+  * Brightness Control
+    + On supported controllers, you can adjust the brightness
+      with the Brightness slider
+  * Autostart Settings
+    + Configure OpenRGB to automatically start on login in the
+      Settings tab
+    + Configure auto-start options such as start server, load
+      profile, and more (forwarded request 943651 from alois)</comment>
+    <requestid>943652</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bbe35f9c562f26653ada4b566b0a076c</srcmd5>
+    <version>0.7</version>
+    <time>1641480661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944028</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52d1b97d96d8e6cdfdcdb16d14f483b4</srcmd5>
+    <version>0.8</version>
+    <time>1669715589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038655</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>38a7b76b6726763fd47b199a44ed1700</srcmd5>
+    <version>0.8</version>
+    <time>1686253328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091705</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1bca86ac53485c65641ce7875a6b005a</srcmd5>
+    <version>0.9</version>
+    <time>1693235722</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106125</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d152d4245f50ff5050bc2ac8214ec998</srcmd5>
+    <version>0.9</version>
+    <time>1694808273</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111348</requestid>
+  </revision>
+</revisionlist>

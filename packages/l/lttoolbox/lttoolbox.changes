@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Thu Dec 28 02:43:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7.6
+  * Add option to set compound_max_elements in lt-proc
+
+-------------------------------------------------------------------
+Tue Nov  1 09:02:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7.1
+  * Write directly to output stream; Don't hexify single char16_t.
+
+-------------------------------------------------------------------
+Fri Oct 28 17:58:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7.0
+  * Hardcoded sanity-max state size for case-insensitive matching
+  * Deleted FSTProcessor.current_state since confusingly all the
+    processors (except transliteration) make a local State called
+    current_state
+
+-------------------------------------------------------------------
+Mon Jun  6 14:35:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.6
+  * Cleanup lt-proc flag logic and make -C and -g compatible
+  * Allow -b and -d to be combined on lt-proc
+
+-------------------------------------------------------------------
+Tue Apr 26 14:50:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.4
+  * Support compound analyses where left part has spaces
+  * Split multichar non-tag symbols into multiple transitions in ATT
+
+-------------------------------------------------------------------
+Mon Mar 21 15:09:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.1
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Sun Mar 13 13:51:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.0
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Thu Oct 28 12:26:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.4
+  * postgenerator failed when ~ in middle of wblanked word
+
+-------------------------------------------------------------------
+Fri Nov 27 17:55:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.3
+  * Support for wordbound blanks stream format.
+
+-------------------------------------------------------------------
+Wed Oct 14 10:29:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.2
+  * Support for weights
+  * New `lt-proc -x` mode: intergen
+
+-------------------------------------------------------------------
+Mon Jul  7 14:40:33 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 3.3.0~svn55329) for build.opensuse.org

@@ -1,0 +1,36 @@
+From 711131531b9f52240b7624002051bff1fc07a3a9 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Tue, 20 Mar 2018 19:05:52 +0100
+Subject: [PATCH] Fix build with gcc 4.8
+
+See also https://bugreports.qt.io/browse/QTBUG-48988
+---
+ src/KPropertyEditorView.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/KPropertyEditorView.cpp b/src/KPropertyEditorView.cpp
+index 174986a..67ae63a 100644
+--- a/src/KPropertyEditorView.cpp
++++ b/src/KPropertyEditorView.cpp
+@@ -418,13 +418,13 @@ void KPropertyEditorView::changeSetInternal(KPropertySet *set, SetOptions option
+     }
+     if (d->set && setChanged) {
+         //receive property changes
+-        connect(d->set, SIGNAL(propertyChangedInternal(KPropertySet&,KProperty&)),
++        connect(d->set.data(), SIGNAL(propertyChangedInternal(KPropertySet&,KProperty&)),
+                 this, SLOT(slotPropertyChanged(KPropertySet&,KProperty&)));
+-        connect(d->set, SIGNAL(propertyReset(KPropertySet&,KProperty&)),
++        connect(d->set.data(), SIGNAL(propertyReset(KPropertySet&,KProperty&)),
+                 this, SLOT(slotPropertyReset(KPropertySet&,KProperty&)));
+-        connect(d->set, SIGNAL(aboutToBeCleared()), this, SLOT(slotSetWillBeCleared()));
+-        connect(d->set, SIGNAL(aboutToBeDeleted()), this, SLOT(slotSetWillBeDeleted()));
+-        connect(d->set, &KPropertySet::readOnlyFlagChanged,
++        connect(d->set.data(), SIGNAL(aboutToBeCleared()), this, SLOT(slotSetWillBeCleared()));
++        connect(d->set.data(), SIGNAL(aboutToBeDeleted()), this, SLOT(slotSetWillBeDeleted()));
++        connect(d->set.data(), &KPropertySet::readOnlyFlagChanged,
+                 this, &KPropertyEditorView::slotReadOnlyFlagChanged);
+     }
+ 
+-- 
+2.13.6
+

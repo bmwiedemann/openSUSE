@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Sun Dec 26 12:13:07 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix Source URL.
+- Minor cleanup: trim unnecessary braces.
+
+-------------------------------------------------------------------
+Tue Nov 30 20:27:20 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix URLs
+
+-------------------------------------------------------------------
+Tue Oct  5 12:54:53 UTC 2021 - Markus Ebner <info@ebner-markus.de>
+
+- Add patch to fix build with Octave 5.1.0
+  https://sourceforge.net/p/octave/quaternion/merge-requests/1/
+
+-------------------------------------------------------------------
+Tue Apr  7 19:20:07 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.4.0
+  * q2rot
+    - Vectorized code to support the input of multiple quaternions.
+    - Return axis as a column vector.
+    - Add test.
+  * rot2q
+    - Support for multiple rotation angles (vectorized code).
+    - Improved error messages.
+    - Add test.
+  * The following functions are new:
+    - rotm2q
+  * The following functions are now overloaded for quaternions:
+    - mean
+    - numel
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.2.2

@@ -1,0 +1,6 @@
+<package name="metis" project="openSUSE:Factory">
+  <title>Serial Graph Partitioning and Fill-reducing Matrix Ordering</title>
+  <description>METIS is a family of programs for partitioning unstructured graphs and hypergraph and computing fill-reducing orderings of sparse matrices. The underlying algorithms used by METIS are based on the state-of-the-art multilevel paradigm that has been
+shown to produce high quality results and scale to very large problems. </description>
+  <devel project="science" package="metis"/>
+</package>

@@ -1,0 +1,433 @@
+-------------------------------------------------------------------
+Thu Dec  7 15:40:19 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.21:
+  * sigmoid.ctl: added white point control
+  * updated wb presets
+  * CTL: fixed glitch in parameter parsing
+  * updated Dutch translation
+  * updated French translation
+  * improved error reporting for invalid CTL scripts
+  * main-cli: fixed bugs in --check-lut
+  * ART-cli: added option --check-lut to aid debugging luts
+    (esp. CTL scripts)
+  * slightly reduce 3d lut size of fast preview of CTL scripts
+  * added generic LUT3D class
+  * small tweak to bundled profiles
+  * added option to speed up CTL script application in preview
+  * added reset button for clut parameters
+  * moved CTL scripts to a separate repo
+  * improved wb correction formula in wbchmix.ctl
+  * fix focus distance for Nikon Z cameras
+  * minor gui tweaks
+  * sigmoid: added support for base primaries
+  * added translation strings to plugins and builtin luts
+  * fixed glitches in color correction UI with plugins
+  * added some bundled luts and CTL scripts
+  * some more tweaks to the support for CTL scripts
+  * colorcorrection: fixed glitches
+  * clutstore: code cleanup, get rid of need for LUTs for
+    parametric CTL scripts
+  * colorcorrection: reorder pixel-level applications to make
+    parametric luts faster
+  * CTL LUT: use tabulation to avoid massive slowdown in
+    apply_single with complex uniform parameters
+  * parametric CTL LUTs: improved comment
+  * parametric CTL LUTs: fixed glitches and improved logging
+  * added support for parametric CTL luts
+  * renamed HaldCLUT to CLUT
+  * improved cache invalidation for LUTs
+  * Added support for building ART with the ACES CTL interpreter
+  * neutral tone curve: always use rec2020 for calculating the base
+    hues for the final shifts
+  * neutral tone curve: further tweaks to hue shifts
+  * logenc: improved implementation of "highlights precompression"
+  * neutral tone curve: alternative criterion for hue shifts and
+    desaturation
+  * neutral tone curve: added some hue shifts to (try to) consider
+    perceptual effects
+  * tuned threshold for hot pixel detection for xtrans
+  * procparams: fix missing auto-computed settings when comparing
+    ProcParams instances
+  * procparams: properly consider auto-computed settings when
+    comparing ProcParams instances
+  * basic hot/dead pixel filter for xtrans cfa
+  * spot removal: properly take film negative into account
+  * added option to specify the currently-active snapshot in the
+    output file name pattern
+
+-------------------------------------------------------------------
+Fri Oct  6 07:26:12 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use better macro for selecting a newer GCC on Leap. 
+
+-------------------------------------------------------------------
+Thu Sep 14 07:16:02 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use GCC11 on Leap.
+
+-------------------------------------------------------------------
+Thu Sep 14 05:54:13 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.20.2:
+  * histogram: fixed bug in showing the pixel values under the
+    cursor in log modes
+  * fixed glitch in opening pictures that are filtered out from the
+    current file catalog
+  * rawimage: use internal decoder for floating-point DNGs
+  * CLF-LUTs: invalidate cache when content of clf files change
+  * moved film simulation before tone curve (with backwards-
+    compatibility option added)
+  * rgb curves: show the other curves in the curve editor
+  * restored shortcuts for the Lab tool
+  * masks: do not perform guided filtering if blur is set to the
+    minimum val
+  * texture boost: make the "iterations" slider better behaved
+  * updated labeling of some tools - Sharpening -> Capture
+    Sharpening - Texture Boost -> Texture Boost / Sharpening
+  * wbpresets: use the internal "make+model" key to match camera
+    preset info
+  * fixed another glitch in displaying the "triangle" indicator for
+    the currently-selected thumbnails
+  * updated translations
+  * updated camera matrices
+  * updated WB presets
+
+-------------------------------------------------------------------
+Thu Jul 13 21:49:10 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.20.1:
+  * updated camera matrices to increase chances of matching names
+    of smartphones
+  * fixed glitch in displaying the "triangle" indicator for the
+    currently-selected thumbnails
+  * fix wb multipliers corner case for monochrome images
+  * rawimage: allow 4-color linear DNG files
+  * Porting fix for truncated curve widget from RT
+  * metadata: fixed focus distance computation, a wrong focus
+    distance calculation was affecting lensfun vignetting
+    correction
+  * theme: better visual feedback for selected thumbnails in the
+    file browser
+  * added wb presets and dcp profile for Canon Powershot G5XmkII
+  * file catalog: made background color of selected thumbnails
+    slightly brighter
+
+-------------------------------------------------------------------
+Thu May 18 19:35:28 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.20:
+  * updated camera matrices
+  * updated WB presets with latest additions from darktable
+  * neutral tone curve: disable the now-unnecessary output
+    hue blending
+  * neutral tone curve: one more typo in the application of
+    the whitepoint 2
+    one more typo in the application of the whitepoint
+  * neutral tone curve: fixed bug in computing the conversion
+    matrices for gamut mapping
+  * tonecurve: fixed bug in setting the whitepoint for the LUT
+  * prevent segfault when switching images while editing the crop
+  * updated German and Hungarian translations.
+  * procparams: fixed corruption of stroke lists due to rounding
+    errors in HalfFloats with large integers
+  * changed default values for some GUI preferences including
+    histogram position
+  * rawimage: do not handle images with more than 3 colors
+
+-------------------------------------------------------------------
+Mon Mar 27 16:04:13 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.19.3:
+  * vignette: update the on-screen center widget when the crop changes
+  * thumbnail: do not try to load from cache after the first failure
+  * added raw crop for Fujifilm X-T5
+  * updated camera matrices and wb presets
+  * spot removal: added button to bypass heavy tools when editing spot
+  * smoothing: fixed bug with mask application in lens/motion blur modes
+  * improved formatting of exiftool makernotes
+  * metadata: added option to show makernotes with exiftool
+  * improve spot removal performance in preview window
+  * improve description of system monitor profile detected
+  * dcrop: avoid recomputing transform when not needed
+  * limit scale for output sharpening in preview to 1.0
+  * lens blur: apply inpainting to the unaffected areas to better simulate a "large aperture background separation" effect
+
+-------------------------------------------------------------------
+Mon Jan 30 10:00:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.18.1:
+  * replace omp_get_max_threads() with omp_get_num_procs()
+  * denoise: more aggressive caching of auto chroma coefficients
+  * fixed corrupted thumbnails when using the libraw decoder with a custom raw crop
+  * trying to speedup denoise with automatic chroma
+  * denoise: try avoiding recomputation of automatic chrominance denoise when not necessary
+  * saveasdlg: fixed bug in setting filename
+  * try to recover if the exiftool process returns an error
+  * better integration with exiftool (reuse the same process instead of spawning a new one every time)
+  * added support for lcms2 fast float
+
+-------------------------------------------------------------------
+Tue Jan  3 14:04:06 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.18.0:
+  * properly refresh the progress bar when loading thumbnails
+  * fixed bugs with launching external editor on windows when filename is not ASCII or contains spaces
+  * session save: ask before overwriting
+  * imageio: further improvements to ease bundling of image load/save plugins on windows
+  * file catalog: properly update the session when renaming/moving/deleting files
+  * local editing: do not include the effects of "show mask" in output images
+  * file rename: added %# pattern for numeric suffixes of filenames
+  * automatically add ".ars" extension when saving sessions
+  * improved support for sessions
+  * always apply the tone curve when enabled (even if it is an identity)
+  * filecatalog: try to avoid refreshing directories while files are still being modified
+  * metadata: fixed uninitialized value in star rating
+  * film negative: fix behaviour of "pick neutral spots"
+
+-------------------------------------------------------------------
+Wed Dec  7 15:58:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.17.2:
+  * fixed bad interaction between film negative and dehaze or dynamic range compression
+  * fixed regression in loading pixel-shift raw files
+  * draw the crop guides in the batch queue thumbnails
+  * spot removal: fixed history messages
+  * PDAF lines filter: fixed oob accesses
+  * added script to import wb presets from darktable
+  * added DCP profiles from RT
+  * film negative: show deprecation warning for "color space"
+  * grain: removed redundant "scale" parameter
+  * metadata: write star rating to the output image
+  * highlight recovery: fixed crash due to typo
+  * camconst: added raw_crop for Fuji X-H2
+  * support camconst raw_crop when using the libraw decoder
+  * dcraw: reject RGBA tiff files
+  * replaced "balanced" highlight recovery with "inpaint opposed" from darktable
+
+-------------------------------------------------------------------
+Wed Nov  2 09:37:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.16.4:
+ * crop window: reset the tool to "hand" after a "spot wb" action
+ * allow to save pngs uncompressed
+ * improved support for custom loaders and savers
+ * metadata: trying to improve lens identification for canon cameras
+ * reverted thumbnail.cc change due to glitch in the file browser (issue #267)
+ * trying to improve the (perceived) responsiveness of the file browser
+
+-------------------------------------------------------------------
+Fri Oct  7 07:55:37 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.16.3:
+  * editorpanel: fixed refresh of image area when switching images
+  * clutstore: do not search for working profile in the file name for CLF LUTs
+  * pipeline: move film simulation earlier (right after tone curve)
+  * tone equalizer: improved robustness of regularization with hdr images
+  * avoid infinities when loading and manipulating hdr images
+  * exposure: do not use a LUT, it's not needed
+  * fixed bug in applying partial profiles in append mode from the combobox
+  * filecatalog: let the user choose which sidecars to affect when deleting a file
+  * colorcorrection: slightly extend the range of offset sliders
+  * tonecurve: fixed glitch in expansion of curve according to the white point
+  * denoise: testing new ways of adjusting parameters according to the scale factor
+
+-------------------------------------------------------------------
+Tue Sep  6 05:41:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.16.2:
+  * Fixed bug in fast-path for output profile application.
+  * Fixed segfault when the thumb cache contains an invalid date.
+  * Update camera matrices.
+  * Update translations.
+  * LUT: protect against NaN indices.
+  * Img out: added custom ICC profile conversion to avoid clamping to [0,1].
+  * Color correction: added LUT mode.
+  * Handle linear DNG as other raw images.
+  * Tonecurve: improved range for the saturation2 curve.
+  * Denoise: some tweaks to the detail mask.
+  * Filmsimulation: added support for ACES clf LMT LUTs using OpenColorIOv2.
+  * Logenc: added highlight precompression.
+  * Tonecurve: allow whitepoint to go up to 100 (~10000 nits).
+- Drop fix-ppc-cflags.patch
+
+-------------------------------------------------------------------
+Thu Aug 18 12:59:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Disable LTO, since it makes the program crashing.
+
+-------------------------------------------------------------------
+Wed Aug 17 07:11:28 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-ppc-cflags.patch: set mcpu=native instead of march=native
+  on ppc64, otherwise compilation will fail.
+
+-------------------------------------------------------------------
+Mon Jul 25 12:26:08 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.15:
+  * Many changes, see
+    https://bitbucket.org/agriggio/art/branches/compare/1.15%0D1.14
+- Use released tarballs instead of git service for source.
+- Drop add_releaseinfo.patch: No longer needed when using released
+  source tarballs.
+- Drop duplicated options passed to cmake.
+- Drop post(un) scriptlets running update-desktop-database and
+  gtk-update-icon-cache: these are taken care of by file triggers.
+
+-------------------------------------------------------------------
+Wed Jun 29 06:31:34 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.14 (no changelog)
+
+-------------------------------------------------------------------
+Tue Apr 19 08:46:59 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.13 (no changelog)
+
+-------------------------------------------------------------------
+Fri Feb 18 14:41:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.12.1 (no changelog)
+
+-------------------------------------------------------------------
+Fri Dec 31 09:23:28 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.12 (no changelog)
+
+-------------------------------------------------------------------
+Wed Dec 15 09:59:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.11.1 (no changelog)
+
+-------------------------------------------------------------------
+Mon Nov  8 15:57:23 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.10.1 (no changelog)
+
+-------------------------------------------------------------------
+Mon Jul 19 13:06:32 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.3 (no changelog)
+
+-------------------------------------------------------------------
+Fri May 28 05:34:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.1:
+  * New gradient mask
+  * Updated the CR3 decoder to the latest from libraw
+  * Added option to periodically auto-save arp sidecars
+  * Slightly reworked the UI of the Log Tone Mapping tool
+  * A bunch of bug fixes
+
+-------------------------------------------------------------------
+Fri Apr  2 13:58:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8.3 (no changelog) 
+
+-------------------------------------------------------------------
+Tue Feb 23 14:39:27 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8.2 (no changelog) 
+
+-------------------------------------------------------------------
+Thu Feb 18 13:46:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8.1 (no changelog) 
+
+-------------------------------------------------------------------
+Fri Feb  5 07:59:51 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8:
+  * slightly improved “colour propagation” highlight recovery
+    (trying to mitigate artifacts that might sometimes occur)
+  * added Spanish and Catalan translations
+  * changed the UI of the color/tone correction tool in “HSL factors” mode,
+    from sliders to color wheels
+  * added “luminance mode” for color correction with “separate RGB channels”
+  * improved RCD demosaicing code, taken from RT
+  * added a new “Glow” mode to the smoothing filter, inspired by recent discussions here
+  * simplified and improved the “final smoothing” part of the “noise reduction” tool
+    (median is gone, replaced by a custom-tweaked non-local means implementation)
+  * you can now select whether you want to use “hovering navigation” in the inspector
+  * the brush mask now includes a “live preview” of the brush strokes
+
+-------------------------------------------------------------------
+Mon Jan  4 15:41:39 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.7.1:
+  * improved usability of the brush mask, now strokes are smoother
+    (you can go faster and still get a continuous stroke) and if you
+    have a drawing tablet the brush radius and/or its hardness
+    can be made pressure-sensitive
+  * added support for lens correction parameters embedded
+    in EXIF metadata
+  * improved batch renaming, now supporting also moving to
+    different directories
+  * added support for Fuji GFX 100 pixel-shift files
+    (both 4- and 16-frame), in combination with the make_arq 2 tool.
+  * added support for using the “fast float” plugin of LCMS2
+    for (significantly) faster color space conversions
+  * various bug fixes
+
+-------------------------------------------------------------------
+Tue Dec  1 16:12:00 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.6.1 (no changelog) 
+
+-------------------------------------------------------------------
+Tue Nov 24 15:32:47 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.6 (no changelog) 
+
+-------------------------------------------------------------------
+Fri Oct 23 08:24:25 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.4 (no changelog) 
+
+-------------------------------------------------------------------
+Thu Sep 17 10:57:46 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.3 (no changelog) 
+
+-------------------------------------------------------------------
+Wed Sep  2 16:01:54 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.0:
+  * added support for camera-specific white balance presets
+  * added support for manipulating WB by setting the R,G,B multipliers
+  * added input/output saturation to the colour correction module
+  * added support for embedding the processing parameters inside the
+    (XMP) metadata of the output images
+  * added "saturation control" to the dynamic range compression module
+  * added new experimental "dynamic row noise" filter
+    (under Raw Bayer -> preprocessing) to fix colour banding occurring
+    when taking long exposures with some Canon cameras
+  * tweaked the default theme (for GTK >= 3.20)
+
+-------------------------------------------------------------------
+Tue Jun 30 09:29:03 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.4.1 (no changelog) 
+
+-------------------------------------------------------------------
+Fri Jun 19 14:31:45 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.4 (no changelog) 
+
+-------------------------------------------------------------------
+Mon Jun  8 11:57:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Adding -fno-tree-loop-vectorize due to https://github.com/Beep6581/RawTherapee/issues/5749 
+
+-------------------------------------------------------------------
+Sat May  2 11:53:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.3 (no changelog) 
+
+-------------------------------------------------------------------
+Fri Apr 24 09:26:38 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Initial release 1.2 
+- Add add_releaseinfo.patch
+- Add fix-cmake.patch

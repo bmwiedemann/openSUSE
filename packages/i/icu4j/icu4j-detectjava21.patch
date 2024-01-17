@@ -1,0 +1,26 @@
+--- a/build.xml	2023-04-13 18:15:08.000000000 +0200
++++ b/build.xml	2023-09-21 08:36:23.783902985 +0200
+@@ -134,6 +134,14 @@
+         <matches string="${java.version}" pattern="^19((-.|\.\d).*)?"/>
+     </condition>
+ 
++    <condition property="is.java20">
++        <matches string="${java.version}" pattern="^20((-.|\.\d).*)?"/>
++    </condition>
++
++    <condition property="is.java21">
++        <matches string="${java.version}" pattern="^21((-.|\.\d).*)?"/>
++    </condition>
++
+   <condition property="is.java9.plus">
+         <or>
+             <isset property="is.java9"/>
+@@ -147,6 +155,8 @@
+             <isset property="is.java17"/>
+             <isset property="is.java18"/>
+             <isset property="is.java19"/>
++            <isset property="is.java20"/>
++            <isset property="is.java21"/>
+         </or>
+   </condition>
+ 

@@ -1,0 +1,5 @@
+<package name="soci" project="openSUSE:Factory">
+  <title>The C++ Database Access Library</title>
+  <description>soci is a C++ database access library that provides the illusion of embedding SQL in regular C++ code, staying entirely within the C++ standard.</description>
+  <devel project="server:database" package="soci"/>
+</package>

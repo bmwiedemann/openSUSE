@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+                         "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY product "xmlgraphics-fop">
+]>
+<refentry id="fop">
+  <refentryinfo>
+    <productname>&product;</productname>
+    <authorgroup>
+      <corpcredit>Apache Foundation</corpcredit>
+      <author>
+        <firstname>Thomas</firstname>
+        <surname>Schraitle</surname>
+        <contrib>Manpage</contrib>
+      </author>
+    </authorgroup>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>&product;</refentrytitle>
+    <manvolnum>1</manvolnum>
+    <refmiscinfo class="version">1.1</refmiscinfo>
+    <!--<refmiscinfo class="source"></refmiscinfo>-->
+    <refmiscinfo class="manual"
+      >http://xmlgraphics.apache.org/fop/1.0/fonts.html#advanced</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>&product;</refname>
+    <refpurpose>Formatter for Printing XSLT Processed XML
+      Files</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id="fop.synopsis">
+    <title>Synopsis</title>
+    <para>Classname: <classname>org.apache.fop.cli.Main</classname></para>
+    <cmdsynopsis>
+      <command>&product;</command>
+      <group choice="opt">
+        <arg choice="plain">-fo</arg>
+        <arg choice="plain">-xml</arg>
+      </group>
+      <arg choice="plain">infile</arg>
+      <group choice="opt">
+        <arg choice="plain">-xsl file</arg>
+      </group>
+      <group choice="opt">
+        <arg choice="plain">-awt</arg>
+        <arg choice="plain">-pdf</arg>
+        <arg choice="plain">-mif</arg>
+        <arg choice="plain">-rtf</arg>
+        <arg choice="plain">-tiff</arg>
+        <arg choice="plain">-png</arg>
+        <arg choice="plain">-pcl</arg>
+        <arg choice="plain">-ps</arg>
+        <arg choice="plain">-txt</arg>
+        <arg choice="plain">-at <arg choice="opt">mime</arg></arg>
+        <arg choice="plain">-print</arg>
+      </group>
+      <arg choice="plain">outfile</arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <refsect1 id="fop.options">
+    <title>Options</title>
+    <para>The following options in alphabetical order are
+      available:</para>
+    <variablelist>
+      <!-- A -->
+      <varlistentry>
+        <term><option>-a</option></term>
+        <listitem>
+          <para>enables accessibility features (Tagged PDF etc., default
+            off)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-afp <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as AFP</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-at [mime] <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>representation of area tree as XML specify optional mime
+            output to allow the AT to be converted to final format
+            later</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-atin
+          <replaceable>INFILE</replaceable></option></term>
+        <listitem>
+          <para>area tree input file </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-awt</option></term>
+        <listitem>
+          <para>input will be displayed on screen </para>
+        </listitem>
+      </varlistentry>
+      <!-- C -->
+      <varlistentry>
+        <term><option>-c</option>
+          <filename>cfg.xml</filename></term>
+        <listitem>
+          <para>use additional configuration file
+            <filename>cfg.xml</filename></para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-catalog</option></term>
+        <listitem>
+          <para>use XML catalog resolver for input XML and XSLT
+            files</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-conserve</option></term>
+        <listitem>
+          <para>enable memory-conservation policy (trades
+            memory-consumption for disk I/O) (Note: currently only
+            influences whether the area tree is serialized.)</para>
+        </listitem>
+      </varlistentry>
+      <!-- D -->
+      <varlistentry>
+        <term><option>-d</option></term>
+        <listitem>
+          <para>debug mode</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-dpi
+          <replaceable>XXX</replaceable></option></term>
+        <listitem>
+          <para>target resolution in dots per inch (dpi) where
+            <replaceable>XXX</replaceable> is a number</para>
+        </listitem>
+      </varlistentry>
+      <!-- F -->
+      <varlistentry>
+        <term><option>-fo
+          <replaceable>INFILE</replaceable></option></term>
+        <listitem>
+          <para>XSL-FO input file</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-foout <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will only be XSL transformed. The intermediate
+            XSL-FO file is saved and no rendering is performed. (Only
+            available if you use <option>-xml</option> and
+            <option>-xsl</option> parameters)</para>
+        </listitem>
+      </varlistentry>
+      <!-- I -->
+      <varlistentry>
+        <term><option>-if [mime] <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>representation of document in intermediate format XML
+            specify optional mime output to allow the IF to be converted
+            to final format later</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-ifin
+          <replaceable>INFILE</replaceable></option></term>
+        <listitem>
+          <para>intermediate format input file </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-imagein
+          <replaceable>INFILE</replaceable></option></term>
+        <listitem>
+          <para>image input file (piping through stdin not
+            supported)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>infile</option></term>
+        <listitem>
+          <para>XSL-FO input file (use <option>-</option> for infile to
+            pipe input from stdin); same as <option>-fo</option></para>
+        </listitem>
+      </varlistentry>
+      <!-- L -->
+      <varlistentry>
+        <term><option>-l <replaceable>LANG</replaceable></option></term>
+        <listitem>
+          <para>use the language for user information</para>
+        </listitem>
+      </varlistentry>
+      <!-- M -->
+      
+      <!-- N -->
+      <varlistentry>
+        <term><option>-noannotations</option></term>
+        <listitem>
+          <para>encrypt PDF file without edit annotation
+            permission</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-nocopy</option></term>
+        <listitem>
+          <para>encrypt PDF file without copy content permission</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-noedit</option></term>
+        <listitem>
+          <para>encrypt PDF file without edit content permission</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-noprint</option></term>
+        <listitem>
+          <para>encrypt PDF file without printing permission</para>
+        </listitem>
+      </varlistentry>
+      <!-- O -->
+      <varlistentry>
+        <term><option>-o
+          <replaceable>PASSWORD</replaceable></option></term>
+        <listitem>
+          <para>encrypt PDF file with option owner password</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-out mime <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered using the given MIME type.
+                  Example: <option>-out application/pdf D:\out.pdf</option>
+                  (Tip: <option>-out list</option> prints the list of 
+            supported MIME types)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>outfile</option></term>
+        <listitem>
+          <para>input will be rendered as PDF into outfile (use
+              <option>-</option> for outfile to pipe output to
+            stdout)</para>
+        </listitem>
+      </varlistentry>
+      <!-- P -->
+      <varlistentry>
+        <term><option>-param <replaceable>NAME</replaceable>
+          <replaceable>VALUE</replaceable></option></term>
+        <listitem>
+          <para>
+            <replaceable>NAME</replaceable> to use for parameter
+            <replaceable>NAME</replaceable> in XSLT stylesheet (repeat
+            this option for each parameter)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-pcl <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as PCL</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-pdf
+          <replaceable>OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as PDF (outfile required)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-pdfa1b
+            <replaceable>OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as PDF/A-1b compliant PDF
+            (outfile required, same as <option>-pdf outfile</option>
+            <option>-pdfprofile PDF/A-1b</option>)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-pdfprofile
+          <replaceable>PROF</replaceable></option></term>
+        <listitem>
+          <para>PDF file will be generated with the specified profile
+            (Examples for <replaceable>PROF</replaceable>: PDF/A-1b or
+            PDF/X-3:2003)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-png <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as PNG</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-print</option></term>
+        <listitem>
+          <para>input file will be rendered and sent to the printer 
+            see options with <option>-print help</option></para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-ps <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as PostScript</para>
+        </listitem>
+      </varlistentry>
+      <!-- Q -->
+      <varlistentry>
+        <term><option>-q</option></term>
+        <listitem>
+          <para>quiet mode</para>
+        </listitem>
+      </varlistentry>
+      <!-- R -->
+      <varlistentry>
+        <term><option>-r</option></term>
+        <listitem>
+          <para>relaxed/less strict validation (where available)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-rtf <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as RTF</para>
+        </listitem>
+      </varlistentry>
+      <!-- S -->
+      <varlistentry>
+        <term><option>-s</option></term>
+        <listitem>
+          <para>for area tree XML, down to block areas only</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-svg <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as an SVG slides file.
+            Experimental feature; requires additional
+              <filename>fop-sandbox.jar</filename></para>
+        </listitem>
+      </varlistentry>
+      <!-- T -->
+      <varlistentry>
+        <term><option>-tiff <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as TIFF</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-txt <replaceable
+          >OUTFILE</replaceable></option></term>
+        <listitem>
+          <para>input will be rendered as plain text</para>
+        </listitem>
+      </varlistentry>
+      <!-- U -->
+      <varlistentry>
+        <term><option>-u
+          <replaceable>PASSWORD</replaceable></option></term>
+        <listitem>
+          <para>encrypt PDF file with option user password</para>
+        </listitem>
+      </varlistentry>
+      <!-- V -->
+      <varlistentry>
+        <term><option>-v</option></term>
+        <listitem>
+          <para>run in verbose mode (currently simply print FOP version
+            and continue)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-version</option></term>
+        <listitem>
+          <para>print FOP version and exit</para>
+        </listitem>
+      </varlistentry>
+      <!-- X -->
+      <varlistentry>
+        <term><option>-x</option></term>
+        <listitem>
+          <para>dump configuration settings </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-xml
+          <replaceable>INFILE</replaceable></option></term>
+        <listitem>
+          <para>XML input file, must be used together with
+            <option>-xsl</option>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-xsl
+          <replaceable>STYLESHEET</replaceable></option></term>
+        <listitem>
+          <para>XSLT stylesheet </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+  
+  <refsect1 id="fop.config">
+    <title>FOP Configuration File</title>
+    <para>This is a small overview. More details can be found in <ulink
+      url="http://xmlgraphics.apache.org/fop/trunk/configuration.html#renderers"/>.</para>
+    <example>
+      <title>Excerpt FOP Configuration File</title>
+      <screen><![CDATA[<fop version="1.0">
+
+  <!-- Strict user configuration -->
+  <strict-configuration>true</strict-configuration>
+
+  <!-- Strict FO validation -->
+  <strict-validation>true</strict-validation>
+
+  <!-- Base URL for resolving relative URLs -->
+  <base>./</base>
+
+  <!-- Font Base URL for resolving relative font URLs -->
+  <font-base>./</font-base>
+
+  <!-- Source resolution in dpi (dots/pixels per inch) for determining the size of pixels in SVG and bitmap images, default: 72dpi -->
+  <source-resolution>72</source-resolution>
+  <!-- Target resolution in dpi (dots/pixels per inch) for specifying the target resolution for generated bitmaps, default: 72dpi -->
+  <target-resolution>72</target-resolution>
+
+  <!-- default page-height and page-width, in case
+       value is specified as auto -->
+  <default-page-settings height="11in" width="8.26in"/>
+
+  <!-- Use file name nl_Bel instead of the default nl_BE -->
+  <hyphenation-pattern lang="nl" country="BE">nl_Bel</hyphenation-pattern>
+  
+  <!-- etc. etc..... -->
+</fop>]]></screen>
+    </example>
+    
+    <table>
+      <title>Summary of the General Configuration Options</title>
+      <tgroup cols="4">
+        <colspec colname="c1"/>
+        <colspec colname="c2"/>
+        <colspec colname="c3"/>
+        <colspec colname="c4"/>
+        <thead>
+          <row>
+            <entry>Element</entry>
+            <entry>Data Type</entry>
+            <entry>Description</entry>
+            <entry>Default Value</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><sgmltag>base</sgmltag></entry>
+            <entry>URL or directory</entry>
+            <entry>Specifies the base URL based on which relative URL will be resolved</entry>
+            <entry>current directory</entry>
+          </row>
+          <row>
+            <entry><sgmltag>font-base</sgmltag></entry>
+            <entry>URL or directory</entry>
+            <entry>Specifies the base URL based on which relative font URLs will be resolved</entry>
+            <entry>base URL/directory</entry>
+          </row>
+          <row>
+            <entry><sgmltag>hyphenation-base</sgmltag></entry>
+            <entry>URL or directory</entry>
+            <entry>Specifies the base URL based on which relative URLs<!--
+             --> to hyphenation pattern files will be resolved. If not<!--
+             --> specified, support for user-supplied hyphenation patterns<!--
+             --> remains disabled</entry>
+            <entry>disabled</entry>
+          </row>
+          <row>
+            <entry namest="c1" nameend="c4">Relative URIs for the above<!--
+             --> three properties are evaluated relative to the base URI of<!--
+             --> the configuration file. If the configuration is provided<!--
+             --> programmatically, the base URI can be set with<!--
+               --> <classname>FopFactory.setUserConfigBaseURI</classname>;<!--
+             --> default is the current working directory.</entry>
+          </row>
+          <row>
+            <entry><sgmltag>hyphenation-pattern</sgmltag></entry>
+            <entry>String, attribute lang, attribute country (optional)</entry>
+            <entry>Register a file name for the hyphenation pattern for the mentioned language and country. Language ll and country CC must both consist of two letters.</entry>
+            <entry>ll_CC</entry>
+          </row>
+          <row>
+            <entry><sgmltag>source-resolution</sgmltag></entry>
+            <entry>Integer</entry>
+            <entry>Resolution in dpi (dots per inch) which is used internally to determine the pixel size for SVG images and bitmap images without resolution information. </entry>
+            <entry>72dpi</entry>
+          </row>
+          <row>
+            <entry><sgmltag>target-resolution</sgmltag></entry>
+            <entry>Integer</entry>
+            <entry>Resolution in dpi (dots per inch) used to specify the output resolution for bitmap images generated by bitmap renderers (such as the TIFF renderer) and by bitmaps generated by Apache Batik for filter effects and such.
+            </entry>
+            <entry>72dpi</entry>
+          </row>
+          <row>
+            <entry><sgmltag>strict-configuration</sgmltag></entry>
+            <entry>Boolean</entry>
+            <entry>Setting this option to 'true' will cause FOP to strictly verify the contents of the FOP configuration file to ensure that defined resources (such as fonts and base URLs/directories) are valid and available to FOP. Any errors found will cause FOP to immediately raise an exception.</entry>
+            <entry>false</entry>
+          </row>
+          <row>
+            <entry><sgmltag>strict-validation</sgmltag></entry>
+            <entry>Boolean</entry>
+            <entry>Setting this option to 'false' causes FOP to be more forgiving about XSL-FO validity, for example, you're allowed to specify a border on a region-body which is supported by some FO implementations but is non-standard. Note that such a border would currently have no effect in Apache FOP.</entry>
+            <entry>true</entry>
+          </row>
+          <row>
+            <entry><sgmltag>break-indent-inheritance</sgmltag></entry>
+            <entry>Boolean</entry>
+            <entry>Setting this option to 'true' causes FOP to use an alternative rule set to determine text indents specified through margins, start-indent and end-indent. Many commercial FO implementations have chosen to break the XSL specification in this aspect. This option tries to mimic their behaviour. Please note that Apache FOP may still not behave exactly like those implementations either because FOP has not fully matched the desired behaviour and because the behaviour among the commercial implementations varies. The default for this option (i.e. false) is to behave exactly like the specification describes.</entry>
+            <entry>false</entry>
+          </row>
+          <row>
+            <entry><sgmltag>default-page-settings</sgmltag></entry>
+            <entry>n/a</entry>
+            <entry>Specifies the default width and height of a page if "auto" is specified for either or both values. Use "height" and "width" attributes on the default-page-settings element to specify the two values.</entry>
+            <entry>"height" 11 inches, "width" 8.26 inches</entry>
+          </row>
+          <row>
+            <entry><sgmltag>use-cache</sgmltag></entry>
+            <entry>Boolean</entry>
+            <entry>All fonts information that has been gathered as a result of "directory" or "auto-detect" font configurations will be cached for future rendering runs. This setting should improve performance on systems where fonts have been configured using the "directory" or "auto-detect" tag mechanisms. By default this option is switched on.</entry>
+            <entry>true</entry>
+          </row>
+          <row>
+            <entry><sgmltag>cache-file</sgmltag></entry>
+            <entry>String</entry>
+            <entry>This option specifies the file/directory path of the fop cache file. This file is currently only used to cache font triplet information for future reference.</entry>
+            <entry>${base}/conf/fop.cache</entry>
+          </row>
+          <row>
+            <entry><sgmltag>renderers</sgmltag></entry>
+            <entry>MIME</entry>
+            <entry>Contains the configuration for each renderer</entry>
+            <entry>n/a</entry>
+          </row>
+        </tbody>
+      </tgroup>
+      
+    </table>
+  </refsect1>
+  
+  <refsect1 id="fop.files">
+    <title>Files</title>
+    <variablelist>
+      <varlistentry>
+        <term><filename>/etc/fop.conf</filename></term>
+        <listitem>
+          <para>System-wide configuration</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename>~/.foprc</filename></term>
+        <listitem>
+          <para>User configuration</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename>fop.xconf</filename></term>
+        <listitem>
+          <para>Example configuration file; can be handed over with
+            <option>-c</option> option. See <xref linkend="fop.config"/>
+          for details.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+  
+  <refsect1 id="fop.examples">
+    <title>Examples</title>
+    <itemizedlist>
+      <listitem>
+        <para>Transforms the <filename>foo.fo</filename> FO file into
+          PDF:</para>
+        <screen>fop foo.fo foo.pdf</screen>
+      </listitem>
+      <listitem>
+        <para>Does the same as the previous line:</para>
+        <screen>fop -xml foo.xml -xsl foo.xsl -pdf foo.pdf</screen>
+      </listitem>
+      <listitem>
+        <para>Transforms and formats <filename>foo.xml</filename> with
+          the help of the XSLT stylesheet <filename>foo.xsl</filename>
+          into the PDF file <filename>foo.pdf</filename>:</para>
+        <screen>fop -xml foo.xml -xsl foo.xsl -pdf foo.pdf</screen>
+      </listitem>
+      <listitem>
+        <para>Only transforms, but don't format:</para>
+        <screen>fop -xml foo.xml -xsl foo.xsl -foout foo.fo</screen>
+      </listitem>
+      <listitem>
+        <para>Formats <filename>foo.fo</filename> into FRTF:</para>
+        <screen>fop foo.fo -mif foo.rtf</screen>
+      </listitem>
+      <listitem>
+        <para>Input file is send to the printer:</para>
+        <screen>fop foo.fo -print</screen>
+      </listitem>
+    </itemizedlist>
+  </refsect1>
+
+</refentry>

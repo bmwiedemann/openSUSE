@@ -1,0 +1,12 @@
+<package name="python-flask-oidc" project="openSUSE:Factory">
+  <title>OpenID Connect support for Flask</title>
+  <description>This library should work with any standards compliant OpenID Connect provider.
+
+It is designed around Google’s oauth2client library and OpenID Connect implementation.
+
+It has been tested with:
+* Google+ Login
+* Ipsilon
+</description>
+  <devel project="devel:languages:python:flask" package="python-flask-oidc"/>
+</package>

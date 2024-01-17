@@ -1,0 +1,5 @@
+<package name="python-python-for-android" project="openSUSE:Factory">
+  <title></title>
+  <description>Android APK packager for Python scripts and apps</description>
+  <devel project="devel:languages:python" package="python-python-for-android"/>
+</package>

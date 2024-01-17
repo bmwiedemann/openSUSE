@@ -1,0 +1,318 @@
+-------------------------------------------------------------------
+Fri Dec 08 13:36:07 UTC 2023 - kukuk@suse.com
+
+- Update to version 0.0+git20231208.299201e:
+  * certbot needs a tty
+  * wsdd: don't run binary to set HOSTNAME
+
+-------------------------------------------------------------------
+Fri Mar 24 07:04:46 UTC 2023 - kukuk@suse.com
+
+- Update to version 0.0+git20230324.9cd3b7a:
+  * container-certbot-renew.service is a oneshot service
+
+-------------------------------------------------------------------
+Thu Aug 11 12:31:53 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220811.226e80e:
+  * Add service for cups container
+  * Make sure dhcp container has NET_RAW capabilities
+
+-------------------------------------------------------------------
+Wed Jul 13 12:22:17 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220713.967c6f4:
+  * Add submission/smtps support for postfix
+
+-------------------------------------------------------------------
+Sun Jul 10 05:21:07 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220710.f290756:
+  * container-openldap: fix syntax error in ExecStart
+
+-------------------------------------------------------------------
+Wed Jul 06 08:14:35 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220706.2c928fe:
+  * Fix partly missing SELinux support (#5), call podman directly
+
+-------------------------------------------------------------------
+Tue Jun 28 09:16:00 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220628.ee9e63c:
+  * Add files to renew certificates with certbot
+
+-------------------------------------------------------------------
+Mon Jan 31 14:00:04 UTC 2022 - kukuk@suse.com
+
+- Update to version 0.0+git20220131.79f09c7:
+  * Adjust timing for start limits in case of errors
+  * Fix typo
+
+-------------------------------------------------------------------
+Tue Nov 30 12:45:23 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20211130.31bd054:
+  * Use Type=notify instead of forking (following podman upstream)
+
+-------------------------------------------------------------------
+Mon Nov 29 16:52:01 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20211129.1b144ae:
+  * Add roundcube files
+
+-------------------------------------------------------------------
+Fri May 07 09:28:29 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210507.9afe2a6:
+  * Add files for samba
+
+-------------------------------------------------------------------
+Wed Apr 07 14:20:42 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210407.9384691:
+  * Add service for wsdd
+
+-------------------------------------------------------------------
+Thu Mar 18 13:19:21 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210318.fea98a6:
+  * Add lost podman pull back
+  * nginx: fix syntax error
+
+-------------------------------------------------------------------
+Mon Feb 22 14:39:31 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210222.f3de7fa:
+  * Rewrite based on podman changes
+  * Correct TimeoutStopSec to 70
+  * Replace KillMode=none with TimeoutStopSec
+
+-------------------------------------------------------------------
+Fri Feb 05 10:43:04 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210205.a4b07b6:
+  * Add container-nfs-service files
+
+-------------------------------------------------------------------
+Mon Jan 18 13:27:55 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210118.1366ecb:
+  * postfix: provide SPAMASSASSIN_HOST environment variable
+
+-------------------------------------------------------------------
+Thu Jan 07 15:29:28 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210107.f55f4b3:
+  * postfix: provide SMTP_TLS_SECURITY_LEVEL variable
+
+-------------------------------------------------------------------
+Thu Jan 07 14:59:44 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210107.5e7d60c:
+  * spamassassin: add volume for configuration files
+
+-------------------------------------------------------------------
+Tue Jan 05 14:46:15 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210105.c149375:
+  * postfix: Add SMTP_PORT and NULLCLIENT
+
+-------------------------------------------------------------------
+Sun Dec 20 17:20:42 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201220.ed8a6b2:
+  * Add default for FETCHMAILRC
+
+-------------------------------------------------------------------
+Sun Dec 20 15:35:17 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201220.0fae7ba:
+  * Add service for fetchmail container
+
+-------------------------------------------------------------------
+Sun Dec 20 07:41:26 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201220.69a11d7:
+  * Document spamassassin support
+  * Add support for a spamassassin container
+
+-------------------------------------------------------------------
+Thu Dec 17 14:50:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- LDAP_MAIL_READER_PASSWORD was renamed to LDAP_BIND_PASSWORD
+- Update to version 0.0+git20201217.a84253d:
+  * Allow to overwrite TLS key location
+
+-------------------------------------------------------------------
+Tue Dec 08 15:35:19 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201208.1b4413e:
+  * Add support for dovecot
+  * Fix description
+  * Add support for minidlna container
+  * Add LMTP variable
+
+-------------------------------------------------------------------
+Fri Nov 13 14:11:01 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201113.5e435e8:
+  * Make more options configureable
+  * Make list of ports to export configureable
+  * Only restart containers when the process fails abnormally
+  * Add LDAP_BIND_DN, make password files configureable
+
+-------------------------------------------------------------------
+Tue Oct 27 13:09:41 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201027.f1d33d8:
+  * Add a way to provide pki directory to postfix
+
+-------------------------------------------------------------------
+Mon Oct 26 11:46:27 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201026.4046317:
+  * Start some services only after firewall is running
+
+-------------------------------------------------------------------
+Fri Oct 23 13:54:40 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201023.1bb4d20:
+  * Point to documentation in wiki
+  * Unify names of spool directories
+  * Fix name of container
+  * Fix typo
+
+-------------------------------------------------------------------
+Fri Sep 18 14:49:49 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.0+git20200918.c14836a:
+  * All services should 'Want=' targets not just 'After='
+
+-------------------------------------------------------------------
+Tue Sep 01 12:15:54 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200901.c31b0cc:
+  * Add LDAP_TLS_VERIFY_CLIENT, use "organization"
+
+-------------------------------------------------------------------
+Fri Aug 28 12:27:44 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200828.7cc6e97:
+  * Add support for postfix container
+
+-------------------------------------------------------------------
+Tue Aug 25 11:50:22 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200825.e6c35ce:
+  * Allow extra args for podman for the ldap container
+
+-------------------------------------------------------------------
+Mon Aug 24 14:16:49 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200824.8ed78c3:
+  * New files to support OpenLDAP
+  * Adjust documentation
+
+-------------------------------------------------------------------
+Tue Jun 02 12:43:51 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200602.25da9c0:
+  * Fix creation of nginx directories
+
+-------------------------------------------------------------------
+Tue Jun 02 12:19:05 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200602.570333a:
+  * Move from sysconfig to /etc/default to seperate defaults from user made
+    changes (containers-systemd#1)
+  * Use conmon-pidfile for better systemd integration
+    (container-registry-systemd#2)
+
+-------------------------------------------------------------------
+Fri Apr 24 13:20:21 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use SLE15 compatible %service_del_postun
+
+-------------------------------------------------------------------
+Mon Mar 30 14:22:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Package service file for squid conainer
+
+-------------------------------------------------------------------
+Tue Mar 24 12:58:08 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200324.5f4ae65:
+  * Add timer to prune unnamed images
+
+-------------------------------------------------------------------
+Wed Feb 19 14:56:48 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200219.a6acfd1:
+  * Adjust for new nginx container image
+  * Fix comment
+
+-------------------------------------------------------------------
+Mon Feb 17 21:06:26 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200217.580c00f:
+  * Add squid
+
+-------------------------------------------------------------------
+Wed Feb 12 15:24:54 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200212.47b21c6:
+  * Add haproxy
+
+-------------------------------------------------------------------
+Thu Jan 30 16:10:06 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200124.e3c2408:
+  * Fix network parameter for dhcp servers
+
+-------------------------------------------------------------------
+Wed Jan 22 10:55:04 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200122.8276c03:
+  * Add support for nginx container
+
+-------------------------------------------------------------------
+Fri Jan 17 14:31:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use new macro to prevent restart on update
+
+-------------------------------------------------------------------
+Thu Jan 16 14:29:33 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20200116.87baa97:
+  * Start container only after network, don't abort if pull fails
+
+-------------------------------------------------------------------
+Wed Oct 30 14:45:16 UTC 2019 - kukuk@suse.com
+
+- Add mariadb files
+- Update to version 0.0+git20191030.b2f919f:
+  * Fix typo, mention which variable adjusts secrets path for mariadb
+  * Add environment variables and files to initialize mariadb at first startup
+  * Enhance documentation
+  * Add first mariadb service and sysconfig file
+  * Mention dhcp6-server
+
+-------------------------------------------------------------------
+Tue Oct 29 08:18:14 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191029.39ca697:
+  * Provide dhcpd4 and dhcpd6 service files
+
+-------------------------------------------------------------------
+Mon Oct 28 15:58:40 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191028.2cbfdca:
+  * Add sysconfig and service file for dhcp-server container image
+
+-------------------------------------------------------------------
+Sat Oct 26 05:29:47 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.0+git20191026.e3a4918:
+  * Add service and sysconfig file for bind container
+

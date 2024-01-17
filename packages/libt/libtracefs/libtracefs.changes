@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Thu Jun 15 18:50:11 UTC 2023 - Tony Jones <tonyj@suse.com>
+
+- Add explicit thread dependency for older versions of meson (i.e SLE-15-SP5)
+  New patch: add-explicit-meson-thread-dependency.patch
+
+-------------------------------------------------------------------
+Thu Jun 15 18:40:11 UTC 2023 - Tony Jones <tonyj@suse.com>
+
+- Update to version 1.7.0
+  * Add initial support for meson
+  * Add tracefs_kprobe_destroy() to index man page
+  * State that tracefs_dynevent_create() is needed for tracefs_kprobe_alloc()
+  * Add missing prototypes in top level man page
+  * Add tracefs_kprobe_destory() API
+  * Add helper function to destroy dynamic event
+  * Add tracefs_time_conversion() API
+  * Add tracefs_find_cid_pid() API
+  * Fix crashing of synth test when synths exist
+  * Do not use synth for test_synth element
+  * Clarify the tracefs_synth_create() man page
+  * Do not allow tracefs_synth_set_instance() on created synth
+  * Documentation for tracefs_synth_set_instance
+  * New API to set synthetic event instance
+  * Do not segfault in tests if synthetic events are not configured
+  * Add tracefs_instance_tracers() API
+  * Do not use hwlat tracer and fdb_delete event for test
+  * Add stacktrace to tracefs_sql()
+  * Unit test for tracefs_instance_reset()
+  * Documentation for tracefs_instance_reset()	
+  * New API to reset ftrace instance 
+
+- Drop patch 0001-libtracefs-Add-initial-support-for-meson.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Feb  7 13:23:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Sync meson build patch with latest upstream version
+  * Documentation is built via extra build target
+
+-------------------------------------------------------------------
+Wed Jan 18 09:39:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4:
+  * Flush pipe data in tracefs_cpu_flush()
+  * Add check for duplicate functions in man pages
+  * Make sure 32 bit works on 64 bit file systems
+
+-------------------------------------------------------------------
+Tue Dec 27 09:22:13 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use meson to build package
+  * add 0001-libtracefs-Add-initial-support-for-meson.patch
+
+-------------------------------------------------------------------
+Fri Dec 16 15:06:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.3
+  * Fix a regression of where tracefs_tracing_dir() did not mount
+    the tracefs file system if it was not already mounted.
+    Same for mounting debugfs with tracefs_debug_dir().
+  * Have tracefs_tracing_dir() and tracefs_debug_dir() check if the
+    cached directory still exists and is mounted.
+
+-------------------------------------------------------------------
+Fri Nov 25 00:14:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.1
+  * Fix tracefs_iterate_raw_events() to handle NULL callback
+
+-------------------------------------------------------------------
+Wed Nov 16 01:32:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * No changelog provided by upstream
+  * A set of new API functions
+
+-------------------------------------------------------------------
+Mon Aug 29 09:59:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.2
+  * Build fixes only (parallel build, musl support)
+
+-------------------------------------------------------------------
+Tue Jun 21 11:27:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Force make -j1 during build because of object file corruption.
+
+-------------------------------------------------------------------
+Tue Jun  7 08:34:18 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (1.4.1)
+  * Raw uprobe API: tracefs_uprobe_alloc(), tracefs_uretprobe_alloc
+  * Return the debugfs mount point from tracefs_debug_dir()
+  * sqlhst: Fix labels being ignored for synthetic event field
+  * sqlhst: Allow same event to be both the start and end event
+  * sqlhst: Use unique names for labels
+  * sqlhst: Report errors when executing commands
+
+-------------------------------------------------------------------
+Tue Apr  5 15:46:56 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to latest upstream version (1.3.1)
+  * Optimized string list handling. It was always stated that some string
+    lists must be freed with tracefs_list_free(), and now it is mandatory, as
+    metadata is used to store the size, and normal freeing of the list will
+    cause memory issues.
+  * More consistency with errno values
+  * sqlhist is now officially built
+  * New methods for setting and reading affinity
+      tracefs_instance_set_affinity_set()
+      tracefs_instance_set_affinity_raw()
+      tracefs_instance_set_affinity()
+      tracefs_instance_get_affinity()
+      tracefs_instance_get_affinity_raw()
+      tracefs_instance_get_affinity_set()
+  * New method to see the system tracers
+      tracefs_instances()
+  * New methods to read and clear the error log
+      tracefs_error_last()
+      tracefs_error_all()
+      tracefs_error_clear()
+  * New methods to modify the string lists
+      tracefs_list_add()
+      tracefs_list_size()
+  * New method to stop the iterator over raw events
+      tracefs_iterate_stop()
+  * New methods to make it easier to access event files
+      tracefs_event_get_file()
+      tracefs_event_file_read()
+      tracefs_event_file_write()
+      tracefs_event_file_append()
+      tracefs_event_file_clear()
+      tracefs_event_file_exists()
+  * New method to get the available filter functions
+      tracefs_filter_functions()
+  * New methods to enable or disable tracers
+      tracefs_tracer_set()
+      tracefs_tracer_clear()
+  * New methods for streaming the trace_pipe file
+      tracefs_trace_pipe_stream()
+      tracefs_trace_pipe_print()
+      tracefs_trace_pipe_stop()
+  * New methods for creating, modifying and destroying dynamic events
+      tracefs_dynevent_create()
+      tracefs_dynevent_destroy()
+      tracefs_dynevent_destroy_all()
+      tracefs_dynevent_free()
+      tracefs_dynevent_list_free()
+      tracefs_dynevent_get_all()
+      tracefs_dynevent_get()
+      tracefs_dynevent_info()
+      tracefs_dynevent_get_event()
+  * New method to create an event probe (then use dynamic methods above)
+      tracefs_eprobe_alloc()
+  * New methods to create kprobes and kretprobes
+      tracefs_kprobe_alloc()
+      tracefs_kretprobe_alloc()
+      tracefs_kprobe_raw()
+      tracefs_kretprobe_raw()
+  * New methods for creating, modifying and destroying histograms
+      tracefs_hist_free()
+      tracefs_hist_alloc()
+      tracefs_hist_alloc_2d()
+      tracefs_hist_alloc_nd()
+      tracefs_hist_get_name()
+      tracefs_hist_get_event()
+      tracefs_hist_get_system()
+      tracefs_hist_add_key()
+      tracefs_hist_add_value()
+      tracefs_hist_add_sort_key()
+      tracefs_hist_set_sort_key()
+      tracefs_hist_sort_key_direction()
+      tracefs_hist_add_name()
+      tracefs_hist_append_filter()
+      tracefs_hist_echo_cmd()
+      tracefs_hist_command()
+      tracefs_hist_start()
+      tracefs_hist_pause()
+      tracefs_hist_continue()
+      tracefs_hist_reset()
+      tracefs_hist_destroy()
+   * New methods for creating, modifying and destroying synthetic events
+      tracefs_synth_get_name()
+      tracefs_synth *tracefs_synth_alloc()
+      tracefs_synth_add_match_field()
+      tracefs_synth_add_compare_field()
+      tracefs_synth_add_start_field()
+      tracefs_synth_add_end_field()
+      tracefs_synth_append_start_filter()
+      tracefs_synth_append_end_filter()
+      tracefs_synth_trace()
+      tracefs_synth_snapshot()
+      tracefs_synth_save()
+      tracefs_synth_complete()
+      tracefs_synth_get_start_hist()
+      tracefs_synth_create()
+      tracefs_synth_destroy()
+      tracefs_synth_free()
+      tracefs_synth_echo_cmd()
+      tracefs_synth_raw_fmt()
+      tracefs_synth_show_event()
+      tracefs_synth_show_start_hist()
+      tracefs_synth_show_end_hist()
+      tracefs_synth_get_event()
+  * New methods to modify event filters
+      tracefs_filter_string_append()
+      tracefs_filter_string_verify()
+      tracefs_event_filter_apply()
+      tracefs_event_filter_clear()
+      tracefs_event_append_filter()
+      tracefs_event_verify_filter()
+  * New method to create a synthetic event via a SQL string
+      tracefs_sql()
+      The man page comes with its own program (sqlhist).
+
+-------------------------------------------------------------------
+Tue Feb 22 12:34:56 UTC 2022 - olaf@aepfle.de
+
+- Force correct pkgconfig_dir location to fix build
+
+-------------------------------------------------------------------
+Wed Jan 19 13:13:55 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest upstream version (1.2.5)
+  * No changelog provided again
+
+-------------------------------------------------------------------
+Fri May 14 15:06:28 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to new upstream version (1.2.0)
+  * No changelog was provided by upstream.
+  * libtracefs: Add tracefs_event_enable/disable() API
+
+-------------------------------------------------------------------
+Mon May 10 08:03:05 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- update to new upstream version (1.1.2)
+- drop patch 294319.patch (already present upstream)
+
+-------------------------------------------------------------------
+Tue Dec 22 19:28:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.0.0) for build.opensuse.org
+- Add 294319.patch

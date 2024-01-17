@@ -1,0 +1,156 @@
+From d0e32620bfb3bc8803bffcec3f0f3b1db6440d51 Mon Sep 17 00:00:00 2001
+From: Matthieu Herrb <matthieu@herrb.eu>
+Date: Sat, 14 Mar 2015 20:05:25 +0100
+Subject: [PATCH] Allow the greeter to set the input fields bg color
+
+A new 'inpColor' resource is added for that.
+
+Signed-off-by: Matthieu Herrb <matthieu@herrb.eu>
+Reviewed-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ config/Xresources.in  |  1 +
+ greeter/Login.c       | 26 ++++++++++++++++++++------
+ greeter/Login.h       |  1 +
+ greeter/LoginP.h      |  2 ++
+ 4 files changed, 24 insertions(+), 6 deletions(-)
+
+diff --git a/config/Xresources.in b/config/Xresources.in
+index 0a92270..c880db7 100644
+--- a/config/Xresources.in
++++ b/config/Xresources.in
+@@ -46,6 +46,7 @@ xlogin*innerFramesWidth: 2
+ xlogin*shdColor: grey30
+ xlogin*hiColor: grey90
+ xlogin*background: grey
++xlogin*inpColor: grey80
+ !xlogin*foreground: darkgreen
+ xlogin*greetColor: Blue3
+ xlogin*failColor: red
+diff --git a/greeter/Login.c b/greeter/Login.c
+index d899376..6a99050 100644
+--- a/greeter/Login.c
++++ b/greeter/Login.c
+@@ -156,6 +156,8 @@ static XtResource resources[] = {
+ 	offset(hipixel), XtRString,	XtDefaultForeground},
+     {XtNshdColor, XtCForeground, XtRPixel, sizeof (Pixel),
+ 	offset(shdpixel), XtRString,	XtDefaultForeground},
++    {XtNinpColor, XtCForeground, XtRPixel, sizeof (Pixel),
++	offset(inppixel), XtRString,	XtDefaultBackground},
+     {XtNframeWidth, XtCFrameWidth, XtRInt, sizeof(int),
+         offset(outframewidth), XtRImmediate, (XtPointer) 1},
+     {XtNinnerFramesWidth, XtCFrameWidth, XtRInt, sizeof(int),
+@@ -325,14 +327,14 @@ XmuXftTextWidth(Display *dpy, XftFont *font, FcChar8 *string, int len);
+ 			  F_ASCENT(greet) + Y_INC(w)) + \
+ 			 (n * PROMPT_SPACE_Y(w)))
+ #define PROMPT_W(w)	(w->core.width - (2 * TEXT_X_INC(w)))
+-#define PROMPT_H(w)	(3 * Y_INC(w) / 2)
++#define PROMPT_H(w)	(5 * Y_INC(w) / 4)
+ #define VALUE_X(w,n)	(PROMPT_X(w) + CUR_PROMPT_W(w,n))
+ #define CURSOR_W	5
+ #define MAX_VALUE_W(w,n) (PROMPT_W(w) - VALUE_X (w,n) - CURSOR_W - 1 - \
+ 			  (w->login.inframeswidth * 2) - LOGO_W(w))
+ #define PROMPT_SPACE_Y(w)	(10 * Y_INC(w) / 5)
+ 
+-#define ERROR_X(w,m)	((int)(w->core.width - STRING_WIDTH (fail, m)) / 2)
++#define ERROR_X(w,m)	((int)(w->core.width - LOGO_W(w) - STRING_WIDTH (fail, m)) / 2)
+ #define FAIL_X(w)	ERROR_X(w, w->login.fail)
+ #define FAIL_Y(w)	(PROMPT_Y(w,1) + 2 * FAIL_Y_INC (w) + F_ASCENT(fail))
+ 
+@@ -744,14 +746,15 @@ draw_it (LoginWidget w)
+ 	int in_width = PROMPT_W(w) - VALUE_X(w,p) - LOGO_W(w);
+ 	int in_height = PROMPT_H(w) + w->login.inframeswidth + 2;
+ 
+-	GC topLeftGC, botRightGC;
++	GC topLeftGC, botRightGC, inpGC;
+ 
+ 	if ((PROMPT_STATE(w, p) == LOGIN_PROMPT_ECHO_ON) ||
+ 	    (PROMPT_STATE(w, p) == LOGIN_PROMPT_ECHO_OFF)) {
+ 	    topLeftGC = w->login.shdGC;
+ 	    botRightGC = w->login.hiGC;
++	    inpGC = w->login.inpGC;
+ 	} else {
+-	    topLeftGC = botRightGC = w->login.bgGC;
++	    topLeftGC = botRightGC = inpGC = w->login.bgGC;
+ 	}
+ 
+ 	/* draw borders of editboxes */
+@@ -775,6 +778,11 @@ draw_it (LoginWidget w)
+ 		      in_frame_x + i-1,         in_frame_y + in_height-i,
+ 		      in_frame_x + in_width-i,  in_frame_y + in_height-i);
+ 	}
++	XFillRectangle(XtDisplay (w), XtWindow (w), inpGC,
++	    in_frame_x + w->login.inframeswidth,
++	    in_frame_y + w->login.inframeswidth,
++	    in_width - 2*w->login.inframeswidth,
++	    in_height - 2*w->login.inframeswidth);
+     }
+ 
+     if (GREETING(w)[0]) {
+@@ -1682,6 +1690,11 @@ static void Initialize (
+     valuemask = GCForeground | GCBackground;
+     w->login.shdGC = XtGetGC(gnew, valuemask, &myXGCV);
+ 
++    myXGCV.foreground = w->login.inppixel;
++    myXGCV.background = w->core.background_pixel;
++    valuemask = GCForeground | GCBackground;
++    w->login.inpGC = XtGetGC(gnew, valuemask, &myXGCV);
++
+     myXGCV.foreground = TEXT_COLOR(text);
+     myXGCV.background = w->core.background_pixel;
+     valuemask = GCForeground | GCBackground;
+@@ -1692,10 +1705,10 @@ static void Initialize (
+     }
+ #endif
+     w->login.textGC = XtGetGC(gnew, valuemask, &myXGCV);
+-    myXGCV.foreground = w->core.background_pixel;
++    myXGCV.foreground = w->login.inppixel;
+     w->login.bgGC = XtGetGC(gnew, valuemask, &myXGCV);
+ 
+-    myXGCV.foreground = TEXT_COLOR(text) ^ w->core.background_pixel;
++    myXGCV.foreground = TEXT_COLOR(text) ^ w->login.inppixel;
+     myXGCV.function = GXxor;
+     xvaluemask = valuemask | GCFunction;
+     w->login.xorGC = XtGetGC (gnew, xvaluemask, &myXGCV);
+@@ -1961,6 +1974,7 @@ static void Destroy (Widget gw)
+ #endif
+     XtReleaseGC(gw, w->login.hiGC);
+     XtReleaseGC(gw, w->login.shdGC);
++    XtReleaseGC(gw, w->login.inpGC);
+ 
+ #ifdef XPM
+     if (True == w->login.logoValid)
+diff --git a/greeter/Login.h b/greeter/Login.h
+index 9b5212c..6af3369 100644
+--- a/greeter/Login.h
++++ b/greeter/Login.h
+@@ -111,6 +111,7 @@ from The Open Group.
+ /* added by Amit Margalit Oct 1996 */
+ # define XtNhiColor		"hiColor"
+ # define XtNshdColor		"shdColor"
++# define XtNinpColor		"inpColor"
+ # define XtNframeWidth		"frameWidth"
+ # define XtCFrameWidth		"FrameWidth"
+ # define XtNinnerFramesWidth	"innerFramesWidth"
+diff --git a/greeter/LoginP.h b/greeter/LoginP.h
+index bd82ce3..57ed182 100644
+--- a/greeter/LoginP.h
++++ b/greeter/LoginP.h
+@@ -95,6 +95,7 @@ typedef struct {
+ # endif
+ 	Pixel		hipixel;	/* frame hilite pixel */
+ 	Pixel		shdpixel;	/* shadow frame pixel */
++	Pixel		inppixel;	/* input field bg pixel */
+ 	GC		textGC;		/* pointer to GraphicsContext */
+ 	GC		bgGC;		/* pointer to GraphicsContext */
+ 	GC		xorGC;		/* pointer to GraphicsContext */
+@@ -105,6 +106,7 @@ typedef struct {
+ # endif
+ 	GC		hiGC;		/* for hilight part of frame */
+ 	GC		shdGC;		/* for shaded part of frame */
++	GC		inpGC;		/* for input field of frame */
+ 	char		*greeting;	/* greeting */
+ 	char		*unsecure_greet;/* message displayed when insecure */
+ 	char		*namePrompt;	/* name prompt */
+-- 
+2.21.0
+

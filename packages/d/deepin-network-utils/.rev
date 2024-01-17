@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3cb07cfe41e5fa1082d57d99babebae4</srcmd5>
+    <version>5.3.0.8</version>
+    <time>1619447947</time>
+    <user>dimstar_suse</user>
+    <comment>Bring Deepin Desktop Environment to openSUSE</comment>
+    <requestid>886019</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2d4e251f8fe484f38ea8f7c66ebf0cb</srcmd5>
+    <version>5.4.5</version>
+    <time>1622664651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.5
+  * Configure ci rule
+  * Update translations
+  * Fix bugs</comment>
+    <requestid>891661</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad1c0789da4f394925296a160dfe9555</srcmd5>
+    <version>5.4.6</version>
+    <time>1624300561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4.6
+  * Fix compiler warnings
+- Use find_lang macro (forwarded request 900401 from hillwood)</comment>
+    <requestid>901179</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5f28db6c3f788918c8b087fbab9605c4</srcmd5>
+    <version>5.4.9</version>
+    <time>1629101350</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.4.9
+  * Fix bugs (forwarded request 910686 from hillwood)</comment>
+    <requestid>910902</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f76c1fba92596049413d534e52522f6a</srcmd5>
+    <version>5.4.13</version>
+    <time>1643666210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.4.13
+  * Fix a bug 
+
+- Update version to 5.4.12
+  * Change interface name for LAN
+  * Fix bug for DSL</comment>
+    <requestid>950171</requestid>
+  </revision>
+</revisionlist>

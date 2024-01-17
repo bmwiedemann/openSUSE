@@ -1,0 +1,210 @@
+-------------------------------------------------------------------
+Tue Oct 17 05:26:11 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 9.6
+  * new Opcodes.V22 constant for Java 22
+  * bug fixes
+    + 317991: Analyzer produces frames that have different locals
+      than those detected by JRE bytecode verifier
+    + 317995: Invalid stackmap generated when the instruction
+      stream has new instruction after invokespecial to <init>
+    + 317998: Analyzer can fail to catch thrown exceptions
+    + 318002: asm-analysis Frame allocates an array unnecessarily
+      inside executeInvokeInsn
+    + bug in CheckFrameAnalyzer with static methods
+
+-------------------------------------------------------------------
+Sun Apr  2 18:13:50 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 9.5
+  * new Opcodes.V21 constant for Java 21
+  * new readBytecodeInstructionOffset hook in ClassReader
+  * more detailed exception messages
+  * Javadoc improvements and fixes
+  * bug fixes
+    + 317989: Silent removal of zero-valued entries from the
+      line-number table
+
+-------------------------------------------------------------------
+Sun Jan 29 01:33:32 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 9.4
+  * new Opcodes.V20 constant for Java 20
+  * more checks in CheckClassAdapter
+  * Javadoc improvements and fixes
+  * module-info classes can be built without Gradle and Bnd
+  * parent POM updated to org.ow2:ow2:1.5.1
+  * bug fixes
+    + 317977: CheckClassAdapter is no longer transparent for MAXLOCALS
+    + 317981: Add public getDelegate method to all visitor classes
+    + Analyzer does not compute optimal maxLocals for static methods
+    + Fix SignatureWriter when a generic type has a depth over 30
+    + Skip remap inner class name if not changed in Remapper
+
+-------------------------------------------------------------------
+Wed Apr 20 07:35:37 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Upgrade to version 9.3
+  * new Opcodes.V19 constant for Java 19
+  * new size() method in ByteVector
+  * checkDataFlow option in CheckClassAdapter can now be used 
+    without valid maxStack and maxLocals values
+  * new Maven BOM
+  * bug fixes
+    + 317949: fix javadoc errors
+    + remap invokedynamic field handles properly
+    + add missing left curly brace in ASMifier output of visitModule
+
+-------------------------------------------------------------------
+Wed Mar  2 17:03:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build asm as modular jar files to be used as such by java >= 9
+- Leave asm-all.jar as a non-modular jar
+
+-------------------------------------------------------------------
+Wed Oct 20 19:54:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.2
+  * Up to JDK 18 support
+  * ClassReader.readStream() performance improvements
+  * Add some input validations in ClassReader
+  * Replace -debug flag in Printer with -nodebug (-debug continues
+    to work)
+  * new V15 constant
+  * experimental support for PermittedSubtypes and RecordComponent
+  * Javadoc fixes
+  * bug fixes
+    + 317942: ClassCheckAdaptor output represents reference arrays
+      as only their "root" component type
+    + 317921: Make Analyzer not require correct maxs or calculate
+      maxs fast
+    + 317922: InstructionAdapter shall throw consistent exceptions
+    + 317923: Incorrect documentation on ClassReader's use of
+      AnnotationVisitor
+    + 317929: ClassRemapper doesn't remap annotation values
+    + 317930: Can CheckClassAdapter.checkTypeRef throw a more
+      specific exception?
+    + 317931: Shall CheckMethodAdapter.Method.visitLabel throw
+      IllegalStateException?
+    + Tests that requires preview features should only run if the
+      preview features of the right JDK are enabled
+    + 317897: AdviceAdapter incorrectly emits onMethodEnter from a
+      try-catch block in a constructor
+    + 317900: Javadoc of ClassVisitor does not specify order of
+      visitRecordComponent
+    + 317904: Bug with constructors in AdviceAdapter
+    + 317910: Iterating over a InsnList with an iterator traverses
+      the list twice
+    + 317898: ASM 8 does not support writing of empty records
+    + 317896: Performance degradation when using dynamic constants
+      as a static paramet to another InDy/ConDy
+    + 317885: SKIP_DEBUG now skips MethodParameters attributes
+
+-------------------------------------------------------------------
+Mon Nov 25 07:55:52 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 7.2
+  * Upstream dropped asm-xml submodule
+
+-------------------------------------------------------------------
+Wed Mar  6 10:17:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 6.2.1
+- Generate and customize the ant build system to be able to build
+  without gradle
+- Removed patches:
+  * objectweb-asm-6.0-no_bnd.patch
+  * objectweb-asm-6.0-no_retrofit.patch
+  * objectweb-asm-6.0-sourcetarget.patch
+  * objectweb-asm-6.0-uberjar.patch
+    + not needed in this version
+
+-------------------------------------------------------------------
+Tue Dec 11 14:03:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM groups
+
+-------------------------------------------------------------------
+Tue Dec 11 10:09:57 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 6.0, the last version buildable with ant
+- Removed patches:
+  * asm-3.3.1-jdk9.patch
+  * asm-3.3.1-sourcetarget.patch
+  * objectweb-asm-no-classpath-in-manifest.patch
+    + Not corresponding any more to the current state of code
+- Added patches:
+  * objectweb-asm-6.0-no_bnd.patch
+    + Don't use bnd (which we don't have) to create bundles
+  * objectweb-asm-6.0-no_retrofit.patch
+    + Don't retrofit bytecode, since we build with target > 1.5
+  * objectweb-asm-6.0-sourcetarget.patch
+    + Build with source/target 8
+  * objectweb-asm-6.0-uberjar.patch
+    + Bring back the uberjars (asm-all.jar and asm-debug-all.jar)
+      since some packages might still depend on them
+
+-------------------------------------------------------------------
+Wed May 16 07:57:32 UTC 2018 - fstrba@suse.com
+
+- Build with source and target 8 to prepare for a possible removal
+  of 1.6 compatibility
+- Added patch:
+  * asm-3.3.1-jdk9.patch
+    + Since JDK9, "_" is reserved keyword
+
+-------------------------------------------------------------------
+Wed Oct  4 08:01:47 UTC 2017 - fstrba@suse.com
+
+- Remove dependency on java-1_5_0-gcj-compat-devel
+- Specify java source and target level 1.6 to allow building with
+  jdk9
+- Added patch:
+  * asm-3.3.1-sourcetarget.patch
+    + Don't hardcode the source and target levels, allow specifying
+      them on command-line
+
+-------------------------------------------------------------------
+Fri May 19 12:01:04 UTC 2017 - dziolkowski@suse.com
+
+- New build dependency: javapackages-local
+- cleaned spec using spec-cleaner 
+- remove "section free" macro
+- get rid of %if 0 blocks
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:18 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Wed Sep 25 12:03:11 UTC 2013 - mvyskocil@suse.com
+
+- Build with gcc-java as openjdk7 (1.7.0_40) fails to build it
+- Disable javadoc package
+
+-------------------------------------------------------------------
+Wed Sep 11 07:32:22 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap from javapackages-tools
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:16 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Sun Dec 18 00:42:38 UTC 2011 - nlminhtl@gmail.com
+
+- 3.3.1 release 
+  * added new InstructionAdapter class, TryCatchBlockSorter (provided by Adrian Sampson)
+  * improved extensibility of analysis package (patch from Markus Heiden)
+  * 314119 Provide read access to uninitializedTypes in AnalyzerAdapter
+  * 313804 Improve analysis results
+  * a lot of bugfixes
+
+-------------------------------------------------------------------
+Tue Jun  2 14:50:36 CEST 2009 - mvyskocil@suse.cz
+
+- Initial SUSE packaging of objectweb-asm (from jpp 5.0) 
+

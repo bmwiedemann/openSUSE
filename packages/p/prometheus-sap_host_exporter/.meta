@@ -1,0 +1,5 @@
+<package name="prometheus-sap_host_exporter" project="openSUSE:Factory">
+  <title>Prometheus exporter for SAP systems (a.k.a. NetWeaver)</title>
+  <description></description>
+  <devel project="server:monitoring" package="prometheus-sap_host_exporter"/>
+</package>

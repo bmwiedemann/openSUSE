@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f9bc0f182642b832383e53e191c7ef7</srcmd5>
+    <version>2.5.2</version>
+    <time>1557141665</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>691876</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>12d7507b5bd768b08f71c1ab3f7e2cde</srcmd5>
+    <version>2.5.2</version>
+    <time>1574783979</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750601</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>118decc582a1e1b943aaa9550cd3ceb3</srcmd5>
+    <version>2.5.2</version>
+    <time>1647974444</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963945</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fec530660088b2ab6957110a88e0e24d</srcmd5>
+    <version>3.0.0~M1</version>
+    <time>1652389212</time>
+    <user>dimstar_suse</user>
+    <comment>3.0.0-M1</comment>
+    <requestid>976411</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5eb9e28b6412ad8c744cc842ae3995c3</srcmd5>
+    <version>3.0.0~M1</version>
+    <time>1653503679</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>979132</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f9c9e39b740addfc57c868a9b1e339f</srcmd5>
+    <version>3.1.1</version>
+    <time>1683213005</time>
+    <user>dimstar_suse</user>
+    <comment>3.1.1</comment>
+    <requestid>1084295</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,83 @@
+--- src/lib/libast/astsa/ast.h
++++ src/lib/libast/astsa/ast.h	2012-02-21 12:03:33.000000000 +0000
+@@ -93,6 +93,12 @@ typedef struct
+ #define pointerof(x)	((void*)((char*)0+(x)))
+ #define roundof(x,y)	(((x)+(y)-1)&~((y)-1))
+ 
++#ifdef __GNUC__
++#if (__GNUC__ >= 4) && !defined(offsetof)
++#define offsetof(type,member)	__builtin_offsetof(type,member)
++#endif
++#endif
++
+ #ifndef offsetof
+ #define offsetof(type,member) ((unsigned long)&(((type*)0)->member))
+ #endif
+--- src/lib/libast/features/libpath.sh
++++ src/lib/libast/features/libpath.sh	2007-03-30 16:45:55.000000000 +0000
+@@ -21,7 +21,7 @@
+ ########################################################################
+ ok=0
+ for i in \
+-	-x /lib/ld.so /lib/ld-*.so /usr/lib/ld.so /lib/rld \
++	-x /lib64/ld.so /lib/ld.so /lib64/ld-*.so /lib/ld-*.so /usr/lib/ld.so /lib/rld \
+ 	-f /usr/shlib/libc.so /shlib/libc.so /usr/lib/libc.so \
+ 	-r /usr/shlib/libc.so /shlib/libc.so
+ do	case $i in
+--- src/lib/libast/features/map.c
++++ src/lib/libast/features/map.c	2009-12-09 11:13:24.000000000 +0000
+@@ -67,10 +67,14 @@ main()
+ #define _map_malloc	1
+ 	printf("\n");
+ 	printf("#define	_map_libc	1\n");
++#endif
++#if _map_libc || defined(__linux__)
+ 	printf("#undef	basename\n");
+ 	printf("#define basename	_ast_basename\n");
+ 	printf("#undef	dirname\n");
+ 	printf("#define dirname		_ast_dirname\n");
++#endif
++#if _map_libc
+ #if !_lib_eaccess
+ 	printf("#undef	eaccess\n");
+ 	printf("#define eaccess		_ast_eaccess\n");
+--- src/lib/libast/features/sys
++++ src/lib/libast/features/sys	2012-02-21 12:04:43.000000000 +0000
+@@ -134,7 +134,7 @@ tst	typ_signed_size_t output{
+ 	}
+ }end
+ 
+-define	offsetof	(type,member)	((size_t)&(((type*)0)->member))
++define	offsetof	(type,member)	__builtin_offsetof(type,member)
+ define	EXIT_FAILURE	1
+ define	EXIT_SUCCESS	0
+ define	MB_CUR_MAX	1
+--- src/lib/libdll/features/dll
++++ src/lib/libdll/features/dll	2007-03-30 16:40:59.000000000 +0000
+@@ -15,7 +15,7 @@ tst	dll_DYNAMIC link{
+ }end
+ tst	run{
+ 	lib=
+-	for d in  /shlib /usr/shlib /lib /usr/lib
++	for d in  /lib64 /usr/lib64 /lib /usr/lib
+ 	do	if	test -d $d
+ 		then	for s in "*.*" "*[!a]*"
+ 			do	for b in libc
+@@ -52,7 +52,7 @@ tst	run{
+ 	"")	lib=/lib/libc.so.1 ;;
+ 	esac
+ 	case $lib in
+-	/usr/lib/*)
++	/usr/lib64/*|/usr/lib/*)
+ 		case `package` in
+ 		sgi.mips3)
+ 			abi=/lib32
+@@ -65,7 +65,7 @@ tst	run{
+ 		esac
+ 		case $abi in
+ 		?*)	if	test -d $abi
+-			then	lib=`echo $lib | sed 's,/usr/lib/,,'`
++			then	lib=`echo $lib | sed 's,/usr/lib\(64\)\?/,,'`
+ 				lib=$abi/$lib
+ 			fi
+ 			;;

@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Sat Sep 30 17:01:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile and add sle15_python_module_pythons
+  (for mygnuhealth)
+
+-------------------------------------------------------------------
+Sat Jul  8 20:34:19 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove github tar-ball, tests are again included in pypi tar-ball
+  * switched from setuptools to poetry
+
+- update to version 4.8.0:
+  * Feature: Allow retrieve multiple documents by document ID using
+    Table.get(doc_ids=[...]) (see pull request 504).
+
+- changes from version 4.7.1:
+  * Improvement: Improve typing annotations (see pull request 477).
+  * Improvement: Fix some typos in the documentation (see pull request
+    479 and pull request 498).
+
+-------------------------------------------------------------------
+Tue Mar 22 08:34:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to  4.7.0
+  * Feature: Allow inserting Document instances using
+    Table.insert_multiple (see #455).
+  * Performance: Only convert document IDs of a table when
+    returning documents. This improves performance the Table.count
+    and Table.get operations and also for Table.search when only
+    returning a few documents (see #460).
+  * Internal change: Run all Table tests JSONStorage in addition to
+    MemoryStorage.
+  * Fix: Make using callables as queries work again (see #454)
+  * Feature: Add map() query operation to apply a transformation to
+    a document or field when evaluating a query (see PR #445).
+  * Note: This may break code that queries for a field named map
+    using the Query APIs property access syntax
+  * Feature: Add support for typing-extensions v4
+- Disable mypy tests for GNUHealth submission into 15.4
+  jsc#SLE-23990
+- This package needs typing-extensions if used with Python 3.6
+
+-------------------------------------------------------------------
+Fri Nov 19 13:03:12 UTC 2021 - pgajdos@suse.com
+
+- version update to 4.5.2
+  - Fix: Make Table.delete()'s argument priorities consistent with
+    other table methods. This means that if you pass both cond as
+    well as doc_ids to Table.delete(), the latter will be prefered
+    (see #424)
+
+-------------------------------------------------------------------
+Fri Aug 27 11:09:53 UTC 2021 - pgajdos@suse.com
+
+- version update to 4.5.1
+  v4.5.1 (2021-07-17)
+  ^^^^^^^^^^^^^^^^^^^
+  - Fix: Correctly install ``typing-extensions`` on Python 3.7
+    (see `issue 413 <https://github.com/msiemens/tinydb/issues/413>`__)
+  v4.5.0 (2021-06-25)
+  ^^^^^^^^^^^^^^^^^^^
+  - Feature: Better type hinting/IntelliSense for PyCharm, VS Code and MyPy
+    (see `issue 372 <https://github.com/msiemens/tinydb/issues/372>`__).
+    PyCharm and VS Code should work out of the box, for MyPy see
+    :ref:`MyPy Type Checking <mypy_type_checking>`
+- actually test the package
+
+-------------------------------------------------------------------
+Sun Apr  4 23:28:01 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 4.4.0:
+  * Feature: Add operation for searching for all documents that match
+    a dict fragment (see issue 300)
+  * Fix: Correctly handle queries that use fields that are also Query
+    methods, e.g. Query()['test'] for searching for documents with a
+    test field (see issue 373)
+
+- changes from version 4.3.0:
+  * Feature: Add operation for updating multiple documents:
+    update_multiple (see issue 346)
+  * Improvement: Expose type information for MyPy typechecking (PEP
+    561) (see pull request 352)
+
+-------------------------------------------------------------------
+Sat Oct 10 18:44:41 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.2.0:
+  * Feature: Add support for specifying document IDs during insertion
+    (see issue 303)
+  * Internal change: Use OrderedDict.move_to_end() in the query cache
+    (see issue 338)
+
+-------------------------------------------------------------------
+Thu Sep 24 12:08:57 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 4.1.1
+  group added to .spec file (RPMLINT complain)
+  Python 3 only
+
+-------------------------------------------------------------------
+Sun Dec 29 21:16:42 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.15.2:
+  * Fix: handle Query().search and Query().matches with non-string
+    values correctly (see a forum post by foprel).
+
+-------------------------------------------------------------------
+Sat Nov  9 14:37:54 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.15.1:
+  * Internal change: fix missing values handling for LRUCache
+
+-------------------------------------------------------------------
+Sat Oct 19 16:21:05 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 3.15.0:
+  * Feature: allow setting the parameters of TinyDB’s default table
+    (see issue 278)
+
+- changes from version 3.14.2:
+  * Internal change: support correct iteration for LRUCache objects
+
+-------------------------------------------------------------------
+Mon Sep 16 13:23:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.14.1:
+  * More tes fixes
+  * Deprecate ujson support
+  * Fixed various deprecation warnings
+
+-------------------------------------------------------------------
+Sun Jun  2 21:17:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary.
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sat May 11 12:25:49 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Prevent use with python-json
+- Remove unnecessary build dependencies
+- Add optional build dependency PyYAML
+- Trim summary and description
+- Use fdupes
+- Update to v3.13.0
+
+-------------------------------------------------------------------
+Fri Apr 27 17:24:10 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * LICENSE now included in tar-ball
+
+- update to version 3.9.0:
+  * Feature: Allow setting a table class for single table only (see
+    issue 197)
+  * Internal change: call fsync after flushing JSONStorage (see issue
+    208)
+
+- changes from version 3.8.1:
+  * Bugfix: Don't install tests as a package anymore (see pull request
+    #195)
+
+- changes from version 3.8.0:
+  * Feature: Allow disabling the query cache with db.table(name,
+    cache_size=0) (see pull request #187)
+  * Feature: Add db.write_back(docs) for replacing documents (see pull
+    request #184)
+
+-------------------------------------------------------------------
+Wed Apr  4 21:54:42 UTC 2018 - arun@gmx.de
+
+- update to single-spec
+
+- specfile:
+  * added tests
+  * added license
+
+-------------------------------------------------------------------
+Thu Feb  1 01:57:43 UTC 2018 - jchoy@suse.com
+
+- Initial tinydb package

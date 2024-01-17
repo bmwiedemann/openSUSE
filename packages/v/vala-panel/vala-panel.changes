@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Tue May  3 13:11:11 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.5.0
+  * Fixed item removal bug.
+  * Inital Wayland support based on layer-shell
+- Drop upstream fixed vala-panel-0.4.91-libm.patch
+- Add upstream patch 52f40ce779cfa224266dd427cfe57afd83a28362.diff
+
+-------------------------------------------------------------------
+Sat Feb 22 15:48:43 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Split vala-cmake-modules into a separate source package.
+- Drop support for old openSUSE versions.
+
+-------------------------------------------------------------------
+Sat Nov  9 02:45:59 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Add vala-panel-0.4.91-libm.patch
+  * fix linking with libm by vala-panel-0.4.91-libm.patch
+
+-------------------------------------------------------------------
+Sat Oct 19 06:27:37 UTC 2019 - Marguerite Su <i@marguerite.su>
+
+- Update to version 0.4.91:
+  * Fixes for hide and updated tasklist
+- New subpackage: vala-cmake-modules
+  * needed by vala-panel-appmenu
+
+-------------------------------------------------------------------
+Mon Aug 27 11:59:46 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 0.4.61:
+  * No changelog available.
+- Remove vala-panel-lower-reqs.patch.
+
+-------------------------------------------------------------------
+Wed Apr  5 14:54:33 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.3.8:
+  * No changelog available.
+- Remove vala-panel-0.3.6-vala-0.36.patch: fixed upstream.
+- Add vala-panel-lower-reqs.patch: lower requirements for
+  openSUSE Leap 42.x.
+
+-------------------------------------------------------------------
+Sat Apr  1 11:12:25 UTC 2017 - sor.alexei@meowr.ru
+
+- Add vala-panel-0.3.6-vala-0.36.patch: Fix build with Vala 0.36
+  and newer (commits 01bb0cd, 466bc4b).
+
+-------------------------------------------------------------------
+Mon Jan 23 12:25:12 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 0.3.6:
+  * No changelog available.
+- Fix recommends.
+
+-------------------------------------------------------------------
+Sat May  7 07:12:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Fix build by using upstream glib-2.0.vapi.
+
+-------------------------------------------------------------------
+Wed Jun 24 13:48:32 UTC 2015 - cdenicolo@suse.com
+
+- correct license is GPL-3.0+, see LICENSE-file
+
+-------------------------------------------------------------------
+Fri Jun 19 12:43:17 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

@@ -1,0 +1,199 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40a2d97bf4d6a422994ff3de6731fa51</srcmd5>
+    <version>2.5.5</version>
+    <time>1473409239</time>
+    <user>dimstar_suse</user>
+    <comment>a old/new game for the distribution</comment>
+    <requestid>416724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>92b16416087657505e0fec759e88e55e</srcmd5>
+    <version>2.5.6</version>
+    <time>1481969952</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445588</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cf2765557fbcc48a6db8dbdf26fab04</srcmd5>
+    <version>2.5.8</version>
+    <time>1502707246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516631</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6cdf6ee9fc58ee48f28ab458485130d</srcmd5>
+    <version>2.5.9</version>
+    <time>1505835321</time>
+    <user>dimstar_suse</user>
+    <comment>Freeciv 2.5.9</comment>
+    <requestid>527027</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ccd2fac84a10ddfde7463aeedf298e7</srcmd5>
+    <version>2.5.10</version>
+    <time>1517606513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571833</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46a261fd2126895f72792e17c1d54906</srcmd5>
+    <version>2.5.11</version>
+    <time>1529402598</time>
+    <user>maxlin_factory</user>
+    <comment>freeciv 2.5.11</comment>
+    <requestid>617142</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9795d0fa2c5fc8439543c06ce8a80998</srcmd5>
+    <version>2.6.0</version>
+    <time>1563223432</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0, lots of changes
+  See https://freeciv.fandom.com/wiki/NEWS-2.6.0
+  Rebase freeciv-appdata-desktop-references.patch
+  Cleanup build
+  Introduce separate freeciv-lang package
+</comment>
+    <requestid>714482</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2fc602cb82b51aa45438f28183021723</srcmd5>
+    <version>2.6.2</version>
+    <time>1585484817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789278</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d0953fcbf12860f512f5617d4ef01dc3</srcmd5>
+    <version>2.6.2</version>
+    <time>1591297029</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt 5.15 and without ggz</comment>
+    <requestid>811554</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c95c72c10933349a35b6559b39cf4739</srcmd5>
+    <version>2.6.2.1</version>
+    <time>1608640549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858123</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>123552052950abdb0dca8f89045166be</srcmd5>
+    <version>2.6.3</version>
+    <time>1613427262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870285</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b2f3f8ace43a6a8ef3a521cbb0468025</srcmd5>
+    <version>2.6.4</version>
+    <time>1618243348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884655</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f4f7153c4768fb7e755bcf56ce4470ee</srcmd5>
+    <version>2.6.5</version>
+    <time>1626788342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907066</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dd399b97e5377f45ad72fc3ca96bb22c</srcmd5>
+    <version>2.6.6</version>
+    <time>1639424713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940287</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f2c9961bb0d5b229f5df154f994d2ff7</srcmd5>
+    <version>3.0.0</version>
+    <time>1648241694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964812</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>558aaa3dca47b6bfe713c4398c4eff54</srcmd5>
+    <version>3.0.1</version>
+    <time>1651605559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974531</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>18000cfbaf91d0b7b1e943efc633c60c</srcmd5>
+    <version>3.0.2</version>
+    <time>1658857446</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990879</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f9bd673c9a47e48166cd302141368543</srcmd5>
+    <version>3.0.3</version>
+    <time>1660924602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998126</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0d416653e7a32ce4bda6cbb5d805daf3</srcmd5>
+    <version>3.0.4</version>
+    <time>1670259696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040163</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8104136e28d562a0a45b92ceef3a18d8</srcmd5>
+    <version>3.0.5</version>
+    <time>1671209542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043344</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c8b74d5419fee36f1062e911a919d3c4</srcmd5>
+    <version>3.0.6</version>
+    <time>1675689338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063365</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1f6b7758b07cc5f0f7f73e28ee1b9297</srcmd5>
+    <version>3.0.7</version>
+    <time>1681302770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078625</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>56d76efa58cfd50bb9f5956aec92feb0</srcmd5>
+    <version>3.0.8</version>
+    <time>1689710835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099039</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ba1d3e54d00b49f1e38433d3502c615f</srcmd5>
+    <version>3.0.9</version>
+    <time>1700675696</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128052</requestid>
+  </revision>
+</revisionlist>

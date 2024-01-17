@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2e1bd066dc4d38392b643a569696d6c8</srcmd5>
+    <version>0.25</version>
+    <time>1603204936</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for https://build.opensuse.org/request/show/839441</comment>
+    <requestid>839442</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f6191c6187b24c8209e9942da4da8b5</srcmd5>
+    <version>0.27</version>
+    <time>1660662510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997345</requestid>
+  </revision>
+</revisionlist>

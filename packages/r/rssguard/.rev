@@ -1,0 +1,457 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df8a15188606399cf119b6ab5ea3e939</srcmd5>
+    <version>3.3.7</version>
+    <time>1486773617</time>
+    <user>dimstar_suse</user>
+    <comment>Yet another RSS/ATOM reader (2nd attempt).</comment>
+    <requestid>452169</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a3f90b84b849e03dc4ad7cf3ce6a184c</srcmd5>
+    <version>3.4.0</version>
+    <time>1489482367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479020</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b3b7ec649fd304590f201ce692e8e71b</srcmd5>
+    <version>3.4.1</version>
+    <time>1502186317</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>510076</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>731e230758d2bb5ff9eebf88a40b64db</srcmd5>
+    <version>3.4.2</version>
+    <time>1504981535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.2
+  * All (well, almost all) web-engine attributes can be
+    disabled/enabled, including JS/plugins. (#57)
+  * Some minor tweaks/fixes.
+  * New Ad-Block feature for internal web browser. Based on Qt
+    examples and QupZilla. Original license GNU GPLv3 is retained.
+    (#123)
+</comment>
+    <requestid>521664</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1e345a7b65acb0834589d4e57a4cfd7</srcmd5>
+    <version>3.5.0</version>
+    <time>1507755708</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532980</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>61ec34d74b8be84f7e60e0d19906bac3</srcmd5>
+    <version>3.5.4</version>
+    <time>1510150250</time>
+    <user>dimstar_suse</user>
+    <comment>- Added AGPL-3.0+ license for QOAuth sources
+- Update to version 3.5.4
+  Fixed:
+  * First item in itemviews is now selected when focus is gained.
+    (#142)
+  * Some feed files do not have URLs of messages properly
+    sanitized. Strip &quot;\n&quot; and &quot;\t&quot; from URls. (bug #154)
+- Update to version 3.5.2 (no changelog supplied)
+- Added rssguard-3.5.2-fix_no_return_nonvoid.patch
+- Update to version 3.5.1
+  * Font size of message/feed list can now be changed. (#145)
+  * Inoreader plugin can mark messages starred and accounts can be
+    deleted.
+  * All cached online service data are synchronously saved when
+    any feed is updated.
+</comment>
+    <requestid>539505</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f439a4ade77d6712077ffac0389feec</srcmd5>
+    <version>3.5.5</version>
+    <time>1511193970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542960</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e4026bf2918268b767f2a81da1feea0f</srcmd5>
+    <version>3.5.6</version>
+    <time>1519683982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580171</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a1867b57ea8ad95ce300a727d6202763</srcmd5>
+    <version>3.5.7</version>
+    <time>1554458667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691455</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>95f439110c0049c044c65a004a639043</srcmd5>
+    <version>3.5.8</version>
+    <time>1559375871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706612</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2feb83b1267366beeca938a5cd1d29e2</srcmd5>
+    <version>3.5.9</version>
+    <time>1559727967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707616</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>13c08d1c7b2f652fd5ea0f89748e74b8</srcmd5>
+    <version>3.5.9</version>
+    <time>1559837949</time>
+    <user>dimstar_suse</user>
+    <comment>- Add rssguard-3.5.9-Qt59.patch to fix build on Leap
+</comment>
+    <requestid>708101</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>563990fe19b74c8c7c4233d369934742</srcmd5>
+    <version>3.5.9</version>
+    <time>1567849971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728583</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>47963d83468d49a54977eaf1e2f55ead</srcmd5>
+    <version>3.6.0</version>
+    <time>1588538792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.0
+  Added:
+  * UK, GL translation and some other localizations.
+  * Executable is now separated from library, making it possible
+    to write external plugins for RSS Guard and distribute them
+    separately as dll/lib/so/dylib file.
+  * Fetch some M-RSS metadata when downloading RSS feeds.
+  * Ability to postpone updates if main window is visible.
+  * Switchable monochrome tray icons.
+  * Default system icon theme is now default for RSS Guard on
+    all platforms.
+  * QtWebEngine-based RSS Guard variant now should respect web
+    proxy set in settings.
+  Fixed/changed:
+  * Feeds.url attribute in MySQL storage now has &lt;=1000 length.
+  * Message viewer now responds to &quot;zoom&quot; action via mouse wheel
+    + CTRL key and persistently saves the zoom level fixing the
+    problem with small text in HIDPI screens.
+  * Minimum Qt version is now 5.9.0.
+  * Translations synced with newest strings.
+  * TT-RSS: Saving of message states now works
+    (read/unread/important).
+  * Many code cleanups, refactorings and regressions fixed.
+  * Tray icon now shows correct number of unread messages upon
+    app startup.
+  * Many fixes for build scripts for dev builds.
+- Refreshed rssguard-3.5.2-fix_no_return_nonvoid.patch as
+  rssguard-3.6.0-fix_no_return_nonvoid.patch
+- Dropped rssguard-3.5.9-Qt59.patch (merged upstream)
+- Added rssguard-3.6.0-add_library_version.patch
+- Dropped Group tag
+</comment>
+    <requestid>799702</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d4aea7b0f9ca222f8e6f66765cb0d645</srcmd5>
+    <version>3.6.1</version>
+    <time>1588856215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800967</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c13723ab0d6f9a9cfc7c6590bea60c53</srcmd5>
+    <version>3.6.3</version>
+    <time>1591209312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811103</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cacf781318f9276dc7a01916df9ecfc9</srcmd5>
+    <version>3.7.0</version>
+    <time>1594706449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820697</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b907b98b0617abb0d199f52023f38f11</srcmd5>
+    <version>3.7.1</version>
+    <time>1598725942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829554</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dcc07d82e9f87e60eedcf97f782b16f1</srcmd5>
+    <version>3.7.2</version>
+    <time>1598983856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.2
+  Added:
+  * Parent item/folder in add category/feed dialog is now
+    correctly preselected according to current feed's list
+    selection.
+  * Icons of parent item/folder are now correctly displayed in
+    add feed/category dialogs.
+  * Ability to update only feeds with custom auto-update policy
+    set.
+  * Enhanced feed's list context menus, now displays &quot;Add
+    feed/category here&quot;.
+  Fixed/changed:
+  * Fixed build on ARM machines.
+- Dropped fix-mimesis-for-arm.patch (merged upstream)
+- Fix build on %arm and aarch64:
+  * fix-mimesis-for-arm.patch
+</comment>
+    <requestid>831119</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>95d9a8bb67b2f6fedc2a8e2dedc59e5c</srcmd5>
+    <version>3.8.0</version>
+    <time>1605017331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847496</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>12212f2f5009d6b17ccbc51865eba9ae</srcmd5>
+    <version>3.8.1</version>
+    <time>1605959003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849692</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c8068af90cbc6bcded4b59d420437af0</srcmd5>
+    <version>3.8.2</version>
+    <time>1606142506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849857</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9b5fb8339a25612750dd36b53122542b</srcmd5>
+    <version>3.8.3</version>
+    <time>1606828950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851821</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c5f5b5597c410a5a01e863889c29fc3d</srcmd5>
+    <version>3.8.4</version>
+    <time>1609867018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860498</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4020d84ec60daf2c0737cd826c3fe32f</srcmd5>
+    <version>3.9.0</version>
+    <time>1614274137</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874912</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>491b3445c1918438983bec6a0650f41e</srcmd5>
+    <version>3.9.1</version>
+    <time>1617723074</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 3.9.1
+  Fixed/changed:
+  * Properly accept all HTTP redirections, this was regression
+    and is now fixed.
+  * Fix repeated overwriting of messages due to bad
+    UTC/localtime article timezone handling.
+  * Alternating list background colors are now better suited for
+    foreground text visibility.
+  * Re-gaining focus after external browser was opened is now
+    optional.
+  * Small fixes for  &quot;Message filters&quot; dialog.
+  * Fixed windows hiding problem when tray icon is enabled.
+  * Better favicon downloading strategy which works much much
+    better than previous one.
+</comment>
+    <requestid>883278</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>aec15a72585aa91a75f2ada812c090d4</srcmd5>
+    <version>3.9.2</version>
+    <time>1618235385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884631</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8f523291ba9b7bdf4e71313d1a3ba5f9</srcmd5>
+    <version>4.0.1</version>
+    <time>1630697174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916734</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b0d36d8aafff3e8b7992058ca0932f0e</srcmd5>
+    <version>4.0.2</version>
+    <time>1631129812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917546</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d3f04a8eb4c1805634d1ddad82e30797</srcmd5>
+    <version>4.0.3</version>
+    <time>1632522925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921221</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d73b8290c736f22aed93596093b420d1</srcmd5>
+    <version>4.0.4</version>
+    <time>1634331866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925435</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9546420db74f2358440339174353b3d1</srcmd5>
+    <version>4.1.1</version>
+    <time>1641680625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944811</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fdc3939aafe0df393c37a817a3d25ef2</srcmd5>
+    <version>4.1.2</version>
+    <time>1642029753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.2
+  Fixed:
+  * Make webengine cookies synchronization one-way because it
+    was crashing in some instances. This is likely temporary fix.
+  * Fixed RSS Guard crashing when using MariaDB backend. Problem
+    was in buggy runtime generation of DDL SQL scripts.
+  * Expanding/collapsing of categories is now EVEN MORE properly
+    persistent and behaves more correctly when filtering feed
+    list in some way.
+- Add rssguard-4.1.2-Qt512.patch
+</comment>
+    <requestid>945872</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4b6629ddeea67e2411047be69985304c</srcmd5>
+    <version>4.2.0</version>
+    <time>1647983668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964096</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d88485183af027e903f65c7e838922ed</srcmd5>
+    <version>4.2.1</version>
+    <time>1648063137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964265</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>18a4e81f542fc5857c0c8f76d992e684</srcmd5>
+    <version>4.2.1</version>
+    <time>1648841737</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend nodejs and npm (fixes boo#1197561)
+</comment>
+    <requestid>966389</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c1816dfdcd8042fec482bfb629f9d867</srcmd5>
+    <version>4.2.2</version>
+    <time>1653503697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979126</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e4f933f06ab0b8076451d46f8d058e46</srcmd5>
+    <version>4.2.3</version>
+    <time>1654524747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980986</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>69af7c2018e5a821dc324c20aaa05646</srcmd5>
+    <version>4.2.5</version>
+    <time>1669193283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037359</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>80253687f0402f946aa2cebfaab00aec</srcmd5>
+    <version>4.3.2</version>
+    <time>1676225674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064496</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>af29a8d88a4d60126fbf8c5f4918b552</srcmd5>
+    <version>4.3.3</version>
+    <time>1681150611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078183</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7f4a4e3a6d18fd204b08836c05080180</srcmd5>
+    <version>4.3.4</version>
+    <time>1682959875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083780</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3f2cd3c6b48dc619ab0bad4b7b05f2e3</srcmd5>
+    <version>4.5.3</version>
+    <time>1699388767</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123674</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>383f712a9224098ae4e35b944daa5a5e</srcmd5>
+    <version>4.5.5</version>
+    <time>1700162881</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126671</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d5d57113230489b7b4f5725626ad8aef</srcmd5>
+    <version>4.6.3</version>
+    <time>1703198366</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134465</requestid>
+  </revision>
+</revisionlist>

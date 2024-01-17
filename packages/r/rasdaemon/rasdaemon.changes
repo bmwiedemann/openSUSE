@@ -1,0 +1,334 @@
+-------------------------------------------------------------------
+Wed Dec 06 10:18:18 UTC 2023 - aschnell@suse.com
+
+- Update to version 0.8.0.39.git+cfabd93 (jsc#PED-7381):
+  * rasdaemon: ras-mc-ctl: Modify check for HiSilicon KunPeng9xx error fields
+  * rasdaemon: Add Emerald Rapids support
+  * Add a space between "diskerror_event" and "store"
+  * rasdaemon: ras-mc-ctl: Add support to display the THead vendor errors
+  * rasdaemon: add support for THead Yitian non-standard error decoder
+  * rasdaemon: log non_standard_event at just one line
+  * rasdaemon: Fix SMCA bank type decoding
+  * rasdaemon: Identify the DIe Number in multidie system
+  * rasdaemon: Handle reassigned bit definitions for UMC bank
+  * rasdaemon: Add new MA_LLC, USR_DP, and USR_CP bank types.
+  * rasdaemon: Add support for post-processing MCA errors
+  * rasdaemon: Handle reassigned bit definitions for CS SMCA
+  * rasdaemon: Update SMCA bank error descriptions
+  * add ':' before error output
+  * Add label for mainboard: ASUSTeK COMPUTER INC. Model: Z9PH-D16 Series
+  * Add label for mainboard: GIGABYTE model MZ62-HD0-00
+  * Check CPUs online, not configured.
+  * rasdaemon: Add support for the CXL memory module events
+  * rasdaemon: Add support for the CXL dram events
+  * rasdaemon: Add support for the CXL general media events
+  * rasdaemon: Add support for the CXL generic events
+  * rasdaemon: Add support for the CXL overflow events
+  * rasdaemon: Add common function to get timestamp for the event
+  * rasdaemon: Add common function to convert timestamp in the CXL event records to the broken-down time format
+  * rasdaemon: Add support for creating the vendor error tables at startup
+  * rasdaemon: fix issue of signed and unsigned integer comparison and remove redundant header file
+  * rasdaemon: fix return value type issue of read/write function from unistd.h
+  * Rasdaemon: Fix autoreconf build error
+  * ras-events: quit loop in read_ras_event when kbuf data is broken
+
+-------------------------------------------------------------------
+Mon Oct 16 18:50:53 UTC 2023 - Thomas Renninger <trenn@suse.de>
+
+- Fix build on old distros by linking new README.md to README
+- minor spec cleanups
+
+-------------------------------------------------------------------
+Mon Jul 10 21:10:45 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 0.8.0.10.git+a247baf:
+  * rasdaemon: Add support for the CXL AER correctable errors.
+  * rasdaemon: Add support for the CXL AER uncorrectable errors.
+  * rasdaemon: Add support for the CXL poison events.
+  * rasdaemon: Move definition for BIT and BIT_ULL to a common
+    file.
+  * rasdaemon: fix table create if some cpus are offline.
+  * rasdaemon: Fix poll() on per_cpu trace_pipe_raw blocks
+    indefinitely.
+  * ras-mc-ctl: add option to exclude old events from reports.
+  * configure.ac: fix bashisms.
+  * ci.yml: fix workflow to build rasdaemon.
+  * ChangeLog: do some minor updates.
+  * labels/asrock: add X399D8A-2T.
+  * Convert README to markdown format.
+
+-------------------------------------------------------------------
+Wed Feb 01 13:35:51 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 0.7.0.7.git+24204af:
+  * README: Update instructions about how to contribute.
+  * Makefile.am: enable all options on make distcheck.
+  * configure.ac: get rid of obsolete macros.
+  * ci.yml: add libtraceevent-dev dependency.
+  * Remove the old libtrace.
+  * Adjust indentations.
+  * Convert to use libtraceevent.
+  * on_tag.yml: use a different approach to upload artifact.
+  * Add a release workflow.
+- Changes from version 0.7.0:
+  * .gitignore: add the auto-generated "compile" file.
+  * INSTALL: update from latest version of it.
+  * configure.ac: fix bashisms.
+  * labels/asus: add ASUS TUF GAMING B450-PLUS II.
+  * rasdaemon: Add four modules supported by HiSilicon common
+    section.
+  * rasdaemon: Fix for a memory out-of-bounds issue and optimized
+    code to remove duplicate function.
+  * rasdaemon: ras-mc-ctl: Updated HiSilicon platform name.
+  * rasdaemon: ras-mc-ctl: Relocate reading and display Kunpeng920
+    errors to under Kunpeng9xx.
+  * rasdaemon: ras-mc-ctl: Add support to display the HiSilicon
+    vendor errors for a specified module.
+  * rasdaemon: ras-mc-ctl: Add printing usage if necessary
+    parameters are not passed for the vendor-error options.
+  * rasdaemon: ras-mc-ctl: Reformat error info of the HiSilicon
+    Kunpeng920.
+  * rasdaemon: ras-mc-ctl: Modify error statistics for HiSilicon
+    KunPeng9xx common errors.
+  * rasdaemon: Modify recording Hisilicon common error data.
+  * rasdaemon: Support cpu fault isolation for recoverable errors.
+  * rasdaemon: Support cpu fault isolation for corrected errors.
+  * rasdaemon: ras-memory-failure-handler: handle localtime()
+    failure correctly.
+  * rasdaemon: mce-amd-smca: properly limit bank types.
+  * rasdaemon: ras-report: fix possible but unlikely file
+    descriptor leak.
+  * libtrace: Use XSI version of strerror_r on non glibc systems.
+  * rasdaemon: use the new block_rq_error tracepoint.
+- Add build requires libtraceevent-devel.
+
+-------------------------------------------------------------------
+Tue May 10 09:21:05 UTC 2022 - moritz.kodytek@suse.com
+
+- Update to version 0.6.8.0.git+c225517:
+  * Bump version to 0.6.8
+  * misc/rasdaemon.spec.in: fix some issues on it
+  * Makefile.am: clean output from misc/*.in
+  * rasdaemon: Add some modules supported by hisi common error section
+  * rasdaemon: Fix some print format issues for hisi common error section
+  * rasdaemon: Fix the issue of command option -r for hip08
+  * rasdaemon: Fix the issue of sprintf data type mismatch in uuid_le()
+  * rasdaemon.service.in: comment out syslog.target
+  * add labels for asrock x570 motherboard
+  * Update ras-mc-ctl manpage to match current options
+  * rasdaemon: ras-mc-ctl: Fix script to parse dimm sizes
+  * rasdaemon: fix compile against musl libc
+
+-------------------------------------------------------------------
+Thu Oct 14 09:33:08 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Fix systemd service file pointing to fillup file instead of
+  /etc/sysconfig/rasdaemon
+
+-------------------------------------------------------------------
+Tue Oct 12 13:36:44 UTC 2021 - trenn@suse.de
+
+- Add new /etc/sysconfig/rasdaemon config via fillup (bsc#1190668)
+
+-------------------------------------------------------------------
+Tue Aug 31 13:32:04 UTC 2021 - trenn@suse.de
+
+- Update to version 0.6.7.18.git+7ccf12f:
+  * labels/supermicro: added Supermicro X11SCW
+  * labels/supermicro: added Supermicro X10DRL, X11SPM
+  * labels/supermicro: added Supermicro X11SCA(-F)
+  * labels/supermicro: added Supermicro B1DRi
+  * labels/supermicro: added Supermicro X11DDW-NT(-L)
+  * labels/supermicro: added Supermicro X10DRI(-T)
+  * labels/supermicro: supermicro db syntax
+  * labels/supermicro: added x11dph-i labels
+  * rasdaemon: Support MCE for AMD CPU family 19h
+  * rasdaemon: Enumerate memory on noncpu nodes
+  * rasdaemon: set SMCA maximum number of banks to 64
+  * rasdaemon: Add new SMCA bank types with error decoding
+  * configure.ac: fix SYSCONFDEFDIR default value
+  * Add error handling for Ampere-specific errors.
+- Make git hash in version better visable .git+<githash>
+
+-------------------------------------------------------------------
+Wed Aug 11 10:20:51 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Use %{?systemd_ordering} instead of %{?systemd_requires}
+
+-------------------------------------------------------------------
+Fri Jul 09 11:20:05 UTC 2021 - trenn@suse.de
+
+- Enable ppc64le build
+- Enhance _service magic
+- Update to version 0.6.7.4.gdda7d95:
+  * Add support for multi-arch builds
+  * rasdaemon.spec.in: don't install _sharedstatedir
+  * rasdaemon: Add Ice Lake and Sapphire Rapids MSCOD values
+  * rasdaemon: fix build error in register_ns_ev_decoder if the sqlite3 is not enabled
+  * rasdaemon: Modify confiure.ac for Hisilicon Kunpeng errors
+  * rasdaemon: ras-mc-ctl: Add support for HiSilicon Kunpeng9xx common errors
+  * rasdaemon: ras-mc-ctl: Add support for HiSilicon Kunpeng920 errors
+  * rasdaemon: ras-mc-ctl: Add support for the vendor-specific errors
+  * rasdaemon: ras-mc-ctl: Add memory failure events
+  * rasdaemon: ras-mc-ctl: Modify ARM processor error summary log
+  * rasdaemon: add support for memory_failure events
+  * ras-record: Create RASSTATEDIR at runtime instead of install time
+  * add labels for A2SDi-8C+-HLN4F
+  * Added label for ASUS PRIME X570-PRO
+  * Add code to decode Ampere specific error
+  * rasdaemon: fix memory leak in parse_ras_data
+  * Fix ras-mc-ctl script.
+  * add Supermicro X10SRA-F and H8DGU.
+  * ras-page-isolation: page which is PAGE_OFFLINE_FAILED can be offlined again
+  * ras-page-isolation: do_page_offline always considers page offline was successful
+  * Fix problem from make dist-rpm
+  * rasdaemon: Add 8 channel decoding for SMCA systems
+  * rasdaemon: Fix error print
+  * Create SYSCONFDEFDIR configure parameter
+  * rasdaemon: ras-mc-ctl: Add ARM processor error information
+  * rasdaemon: add support for hisilicon common section decoder
+  * rasdaemon: Add error decoding for new SMCA Load Store bank type
+  * rasdaemon: Fix "ignoring return value" build warning.
+  * Match rankX in ras-mc-ctl
+  * added label for A2SDi-8C-HLN4F
+  * ras-mc-ctl: PCIe AER: display PCIe dev name
+  * rasdaemon: add support for memory Corrected Error predictive failure analysis
+  * rasdaemon: add rbtree support for page record
+  * rasdaemon: fix the issue that non standard decoder can't work in pthread way
+  * rasdaemon: add support of l3tag and l3data in hip08 OEM format2
+
+-------------------------------------------------------------------
+Wed Apr 29 10:44:25 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Let squlite create devlink_event and other tables via configure option
+  bsc#1170016, bsc#1170014
+
+-------------------------------------------------------------------
+Thu Feb 06 17:57:39 UTC 2020 - trenn@suse.de
+
+- Update to version 0.6.5+git20200205.3dca35f
+- bsc#1162524
+  Mainline commits:
+  3a4fc059d58d876733d5fd9098b6be9e2a9034d8
+  a16ca0711001957ee98f2c124abce0fa1f801529
+  which are required for bsc#1162524:
+  rasdaemon update with support for AMD scalable MCA and cnamburu-naples-support
+
+-------------------------------------------------------------------
+Thu Aug 23 11:36:13 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.6.2:
+  * Bump to version 0.6.2
+  * INSTALL: update it from auto-generated data
+  * ChangeLog: Reorder to place new stuff at the beginning
+  * rasdaemon: ras-mc-ctl: add option to show error counts
+  * mce-amd-k8: be sure to not go past error_msg buffer
+  * ras-report: avoid copying after addr.sun_path
+  * mce-intel-*: fix a warning when using FIELD(<num>, NULL)
+  * rasdaemon: use separate string array for error status
+  * rasdaemon: fix PCIe AER error type
+
+-------------------------------------------------------------------
+Fri Jun 15 08:45:26 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0.6.1:
+  * Bump version to 0.6.1
+  * rasdaemon: Update DIMM labels for 2-socket servers
+  * rasdaemon: Add Skylake Xeon MSCOD values
+  * rasdaemon: ARM: fully initialize ras_arm_event
+  * Update my email
+  * mce-intel-p4-p6: prevent build errors with -Werror=format-security
+
+-------------------------------------------------------------------
+Thu Apr  5 12:46:00 UTC 2018 - josef.moellers@suse.com
+
+- Enabled arm and non-standard.
+  [bsc#1086520, FATE#323658]
+
+-------------------------------------------------------------------
+Wed Jan 17 10:44:06 UTC 2018 - josef.moellers@suse.com
+
+- Do not require dmidecode on s390x and ppc64le, it does not
+  exist there!
+  [bsc#1071830]
+
+-------------------------------------------------------------------
+Tue Nov 21 07:37:13 UTC 2017 - eich@suse.com
+
+- Update to version 0.6.0:
+  * rasdaemon: Update DIMM labels for Intel Skylake servers
+  * rasdaemon:add support for non-standard error decoder
+  * rasdaemon:add support for Hisilicon non-standard error decoder
+  * configure.ac: show if Hisilicon error report are enabled
+  * rasdaemon: add support for ARM events
+  * configure.ac: display if ARM error report is enabled
+  * rasdaemon: update bugs report information
+  * Makefile: add new rasdaemon headers
+  * rasdaemon.spec: add other --enable options
+  * Bump to version 0.6.0
+  (FATE#323162).
+
+-------------------------------------------------------------------
+Fri Jun 09 16:47:20 UTC 2017 - fschnizlein@suse.com
+
+- Update to version 0.5.9:
+  * Update it to point to the new repository
+  * configure.ac: report enabled features
+  * rasdaemon: Update DIMM labels for Dell Servers
+  * rasdaemon: add Knights Mill model
+  * rasdaemon.spec.in: update it to reflect current needs
+
+-------------------------------------------------------------------
+Mon Apr 10 11:07:39 UTC 2017 - mpluskal@suse.com
+
+- Switch to _service as fedorahosted is retired
+- Update project url
+- Use macro for systemd dependencies
+- Make building more verbose
+- Install provided labels for dell
+
+-------------------------------------------------------------------
+Tue May 31 14:02:13 UTC 2016 - fvogt@suse.com
+
+- Update to 0.5.8, obsoleted patches:
+  - broadwell_de_mscod.patch
+  - broadwell_ep_ex_mscod.patch
+
+-------------------------------------------------------------------
+Tue May 31 09:54:13 UTC 2016 - trenn@suse.de
+
+- Add MSCOD values for broadwell de/ep/ex processors
+* Add broadwell_de_mscod.patch
+* Add broadwell_ep_ex_mscod.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 15:40:41 UTC 2016 - fvogt@suse.com
+
+- Run spec-cleaner: - Change Group and copyright notice
+
+-------------------------------------------------------------------
+Mon Mar  7 10:05:08 UTC 2016 - trenn@suse.de
+
+- Update to version 0.5.7 (including Knights Landing CPU support, fate#319513)
+
+-------------------------------------------------------------------
+Fri Nov 27 13:35:57 UTC 2015 - fvogt@suse.com
+
+- Use provided .tar.xz directly instead of generating one via tar_scm
+
+-------------------------------------------------------------------
+Wed Nov 25 16:33:33 UTC 2015 - trenn@suse.de
+
+- Fix upper case letter issues on requires on package perl-DBD-SQLite
+- Create /var/lib/rasdaemon for db file creation at runtime
+
+-------------------------------------------------------------------
+Fri Nov  6 10:28:49 UTC 2015 - fvogt@suse.com
+
+- Disable _service and run manually
+
+-------------------------------------------------------------------
+Tue Nov  3 09:36:41 UTC 2015 - fvogt@suse.com
+
+- Initial commit from git
+

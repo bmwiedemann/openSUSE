@@ -1,0 +1,110 @@
+From d05654e5ec6f37cf6caa491fc7d95b336f9603e2 Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Mon, 10 Jul 2023 13:43:21 +0530
+Subject: [PATCH] rtas_errd: Handle multiple platform dumps
+
+References: bsc#1209274 ltc#198526
+Upstream: merged, expected in 2.7.10
+Git-commit: d05654e5ec6f37cf6caa491fc7d95b336f9603e2
+
+Currently, whenever a new dump arrives, old dump file of that specific dump
+type is removed before writing the new dump out. Any dump file with the
+same prefix (dump type) gets deleted. This means only one set of dump files
+is saved, since only one dump file per dump type is saved.
+
+Handle multiple dumps on Linux by allowing as many dumps to be offloaded
+until disk space is available. To do this, remove the function that checks
+for prefix size and removes old dump files. In the event of not enough
+disk space available, log an error to the user along with the dump tag.
+User will free up space and run extract_platdump tool using the dump tag
+provided in the error message to offload the dump. Error log can be viewed
+by the user by issuing 'journalctl -p err -t rtas_errd' command.
+
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+Signed-off-by: Mahesh Salgaonkar <mahesh@linux.ibm.com>
+---
+ rtas_errd/dump.c             | 29 ++++++++++++++++++++++++++++-
+ rtas_errd/extract_platdump.c |  6 ------
+ 2 files changed, 28 insertions(+), 7 deletions(-)
+
+diff --git a/rtas_errd/dump.c b/rtas_errd/dump.c
+index cc50d91b593b..494c322c4164 100644
+--- a/rtas_errd/dump.c
++++ b/rtas_errd/dump.c
+@@ -30,8 +30,10 @@
+ #include <fcntl.h>
+ #include <librtas.h>
+ #include <librtasevent.h>
++#include <syslog.h>
+ #include <sys/stat.h>
+ #include <sys/wait.h>
++#include <sys/statvfs.h>
+ #include "utils.h"
+ #include "rtas_errd.h"
+ 
+@@ -284,7 +286,9 @@ void
+ check_platform_dump(struct event *event)
+ {
+ 	struct rtas_dump_scn *dump_scn;
++	struct statvfs vfs;
+ 	uint64_t dump_tag;
++	uint64_t dump_size;
+ 	char	filename[DUMP_MAX_FNAME_LEN + 20], *pos;
+ 	char	*pathname = NULL;
+ 	FILE	*f;
+@@ -306,11 +310,34 @@ check_platform_dump(struct event *event)
+ 		return;
+ 	}
+ 
+-	/* Retrieve the dump */
++	/* Retrieve the dump tag */
+ 	dump_tag = dump_scn->id;
+ 	dump_tag |= ((uint64_t)dump_scn->v6hdr.subtype << 32);
+ 	dbg("Dump ID: 0x%016LX", dump_tag);
+ 
++	if (statvfs(d_cfg.platform_dump_path, &vfs) == -1) {
++		log_msg(event, "statvfs() failed on %s: %s",
++				d_cfg.platform_dump_path, strerror(errno));
++		return;
++	}
++
++	/* Retrieve the size of the platform dump */
++	dump_size = dump_scn->size_hi;
++	dump_size <<= 32;
++	dump_size |= dump_scn->size_lo;
++
++	/* Check if there is sufficient space in the file system to store the dump */
++	if (vfs.f_bavail * vfs.f_frsize < dump_size) {
++		syslog(LOG_ERR, "Insufficient space in %s to store platform dump for dump ID: "
++				"0x%016lX (required: %lu bytes, available: %lu bytes)",
++				d_cfg.platform_dump_path, dump_tag, dump_size,
++				(vfs.f_bavail * vfs.f_frsize));
++		syslog(LOG_ERR, "After clearing space, run 'extract_platdump "
++				"0x%016lX'.\n", dump_tag);
++		return;
++	}
++
++	/* Retrieve the dump */
+ 	snprintf(tmp_sys_arg, 60, "0x%016LX", (long long unsigned int)dump_tag);
+ 	system_args[0] = EXTRACT_PLATDUMP_CMD;
+ 	system_args[1] = tmp_sys_arg;
+diff --git a/rtas_errd/extract_platdump.c b/rtas_errd/extract_platdump.c
+index fbe65b2fe5c5..831e57ea8b69 100644
+--- a/rtas_errd/extract_platdump.c
++++ b/rtas_errd/extract_platdump.c
+@@ -290,12 +290,6 @@ extract_platform_dump(uint64_t dump_tag)
+ 		}
+ 	}
+ 
+-	/*
+-	 * Before writing the new dump out, we need to see if any older
+-	 * dumps need to be removed first
+-	 */
+-	remove_old_dumpfiles(filename, prefix_size);
+-
+ 	/* Copy the dump off to the filesystem */
+ 	pathname[0] = '\0';
+ 	strcpy(pathname, d_cfg.platform_dump_path);
+-- 
+2.41.0
+

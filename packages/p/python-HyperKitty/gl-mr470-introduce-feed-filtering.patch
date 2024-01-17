@@ -1,0 +1,51 @@
+diff --git a/hyperkitty/feed.py b/hyperkitty/feed.py
+index 8242662c2158be7b34527cf933565588892ce25f..a9bd9ae546aa51f717b07b6c270b769e9e8c775f 100644
+--- a/hyperkitty/feed.py
++++ b/hyperkitty/feed.py
+@@ -16,7 +16,7 @@
+ # You should have received a copy of the GNU General Public License along with
+ # HyperKitty.  If not, see <http://www.gnu.org/licenses/>.
+ #
+-# Author: Stasiek Michalski <stasiek@michalski.cc>
++# Author: Jacob Michalskie <jacob@michalskie.cc>
+ #
+ import re
+ 
+@@ -43,20 +43,32 @@ def sanitize(x):
+ class MailingListFeed(Feed):
+ 
+     def get_object(self, request, mlist_fqdn):
+-        return get_object_or_404(MailingList, name=mlist_fqdn)
++        return {'mlist': get_object_or_404(MailingList, name=mlist_fqdn),
++                'params': request.GET}
+ 
+     def title(self, obj):
+-        return sanitize(obj.display_name)
++        return sanitize(obj['mlist'].display_name)
+ 
+     def link(self, obj):
+-        return reverse("hk_list_overview", kwargs={"mlist_fqdn": obj.name})
++        return reverse("hk_list_overview",
++                       kwargs={"mlist_fqdn": obj['mlist'].name})
+ 
+     def description(self, obj):
+-        return sanitize(obj.description)
++        return sanitize(obj['mlist'].description)
+ 
+     def items(self, obj):
+         len = getattr(settings, 'HYPERKITTY_MLIST_FEED_LENGTH', 30)
+-        return Email.objects.filter(mailinglist=obj).order_by('-date')[:len]
++        emails = Email.objects.filter(mailinglist=obj['mlist'])
++        if 'subject' in obj['params']:
++            emails = emails.filter(subject__regex=obj['params']['subject'])
++        if 'sender' in obj['params']:
++            emails = emails.filter(sender_name__regex=obj['params']['email'])
++        if 'threads' in obj['params']:
++            emails = emails.filter(thread_depth=0)
++        if 'limit' in obj['params']:
++            if int(obj['params']['limit']) < len:
++                len = int(obj['params']['limit'])
++        return emails.order_by('-date')[:len]
+ 
+     def item_title(self, item):
+         return sanitize(item.subject)

@@ -1,0 +1,8 @@
+--- a/neofetch	2018-07-12 10:47:31.001360160 +0200
++++ b/neofetch	2018-07-12 11:23:51.853587960 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ # vim: noai:ts=4:sw=4:expandtab
+ # shellcheck source=/dev/null
+ # shellcheck disable=2009

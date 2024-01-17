@@ -1,0 +1,54 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Oct 11 07:33:15 2021 +0200
+Subject: initramfs: Handle NTP client configuration for SUSE
+Patch-mainline: Not yet
+Git-commit: e3a259240ffed475ff3f8442ffdc81f517427f24
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ vnfs/libexec/wwmkchroot/functions | 27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+diff --git a/vnfs/libexec/wwmkchroot/functions b/vnfs/libexec/wwmkchroot/functions
+index fe3028f..b729cdb 100644
+--- a/vnfs/libexec/wwmkchroot/functions
++++ b/vnfs/libexec/wwmkchroot/functions
+@@ -219,22 +219,27 @@ configure_timezone() {
+ }
+ 
+ configure_ntp() {
+-    NETDEV=`grep "^network device =" $WAREWULF_SYSCONFDIR/warewulf/provision.conf | cut -d = -f 2`
++    NETDEV=`sed -ne "/network device =/s/.*=\s*//p" $WAREWULF_SYSCONFDIR/warewulf/provision.conf`
++    IPADDR=""
++    BOOTPROTO=""
+     if [ -f "/etc/sysconfig/network-scripts/ifcfg-$NETDEV" ]; then
+         . /etc/sysconfig/network-scripts/ifcfg-$NETDEV
+-        if [ -n "$IPADDR" -a "x$BOOTPROTO" == "xstatic" ]; then
+-            echo "# Written by Warewulf:wwmkchroot" >> $CHROOTDIR/etc/ntp.conf
+-            echo "driftfile /var/lib/ntp/drift" >> $CHROOTDIR/etc/ntp.conf
++    elif [ -f "/etc/sysconfig/network/ifcfg-$NETDEV" ]; then
++	. /etc/sysconfig/network/ifcfg-$NETDEV
++    fi
++    if [ -n "$IPADDR" -a "x$BOOTPROTO" == "xstatic" ]; then
++        IPADDR=${IPADDR/\/*/}
++        echo "# Written by Warewulf:wwmkchroot" >> $CHROOTDIR/etc/ntp.conf
++        echo "driftfile /var/lib/ntp/drift" >> $CHROOTDIR/etc/ntp.conf
+ 
+-            echo "restrict default kod nomodify notrap nopeer noquery" >> $CHROOTDIR/etc/ntp.conf
+-            echo "restrict -6 default kod nomodify notrap nopeer noquery" >> $CHROOTDIR/etc/ntp.conf
++        echo "restrict default kod nomodify notrap nopeer noquery" >> $CHROOTDIR/etc/ntp.conf
++        echo "restrict -6 default kod nomodify notrap nopeer noquery" >> $CHROOTDIR/etc/ntp.conf
+ 
+-            echo "restrict 127.0.0.1" >> $CHROOTDIR/etc/ntp.conf
+-            echo "restrict -6 ::1" >> $CHROOTDIR/etc/ntp.conf
++        echo "restrict 127.0.0.1" >> $CHROOTDIR/etc/ntp.conf
++        echo "restrict -6 ::1" >> $CHROOTDIR/etc/ntp.conf
+ 
+-            echo "server $IPADDR prefer" >> $CHROOTDIR/etc/ntp.conf
+-            echo "restrict $IPADDR mask 255.255.255.255 nomodify notrap noquery" >> $CHROOTDIR/etc/ntp.conf
+-        fi
++        echo "server $IPADDR prefer" >> $CHROOTDIR/etc/ntp.conf
++        echo "restrict $IPADDR mask 255.255.255.255 nomodify notrap noquery" >> $CHROOTDIR/etc/ntp.conf
+     fi
+     return 0
+ }

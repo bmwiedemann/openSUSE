@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3150dbc873548e66aee47318a031361</srcmd5>
+    <version>0.2.26</version>
+    <time>1576014114</time>
+    <user>dimstar_suse</user>
+    <comment>Style and extension functions for matplotlib</comment>
+    <requestid>755322</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d6e7bf707e8e5168060338259002f979</srcmd5>
+    <version>0.4.2</version>
+    <time>1594228471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819236</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>11904408c570a09026074327414f3e8e</srcmd5>
+    <version>0.5.0</version>
+    <time>1619031568</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0: 
+  * Add new minmax function
+- Don't build on Python 3.6, due to no NumPy.</comment>
+    <requestid>886808</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>792d4e3f0b629f27675a9a4319afebfd</srcmd5>
+    <version>0.5.0</version>
+    <time>1620937106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891302</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7773fb3f1c0a21bc54c5487e3619ae1</srcmd5>
+    <version>0.12.1</version>
+    <time>1674324674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060050</requestid>
+  </revision>
+</revisionlist>

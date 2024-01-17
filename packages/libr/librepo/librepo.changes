@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Fri Oct 27 07:57:28 UTC 2023 - Wang Jun <badboywj@gmail.com>
+
+- Update to 1.17.0
+  * lr_gpg_check_signature: Forward PGP error messages from RPM
+  * PGP: fix: Support importing binary public keys in librpm backend
+  * PGP: Enable creating a UID directory for GnuGP agent socket
+    in /run/gnupg/user
+  * PGP: Set a default creation SELinux labels on GnuPG directories
+  * Update PGP test vectors
+  * Implement OpenPGP using librpm API
+  * Fixes and optimizations in header files
+  * Fix lr_gpg_list_keys function when keys are empty
+  * Fix CMake warnings
+  * Bump glib version
+
+-------------------------------------------------------------------
+Wed Dec 28 16:50:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.15.1:
+  * Add API support for waiting on network in an event driven
+    manner
+  * OpenPGP API extension and fixes
+- lincense updated to LGPL-2.1-or-later
+
+-------------------------------------------------------------------
+Sat Oct 15 19:32:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.14.5:
+  * Detailed error message when using non-existing TMPDIR
+  * Make error messages about repodata and rpm mismatch more user
+    friendly 
+
+-------------------------------------------------------------------
+Wed Aug 25 16:46:36 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.14.2
+  + Recover from fsync fail on read-only filesystem (rh#1956361)
+  + Reduce time to load metadata
+  + Fix resource leaks
+  + Fix memory leaks
+
+-------------------------------------------------------------------
+Tue Apr 13 12:59:28 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.14.0
+  + Fix LRO_PRESERVETIME behavior
+  + Support multiple checksums in xattr (rh#1931904)
+  + Return "calculated" checksum if requested w/caching
+  + Fix lr_yum_download_url in case lr_handle is NULL
+
+-------------------------------------------------------------------
+Wed Feb  3 02:37:36 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.13.0
+  + Fix the key string parsing in url_substitution
+  + Fix memory leak in 'fastestmirror'
+  + Download whole file when server doesn't support ranges (rh#1886706)
+  + Various fixes for mirrors without ranges support and zchunk
+  + Add support for pkcs11 certificate and key for repository authorization (rh#1859495)
+  + Fix lr_perform() - Avoid 100% CPU usage
+  + Drop Python 2 support
+  + Add support for working with certificates used with proxy (rh#1920991)
+
+-------------------------------------------------------------------
+Sat Aug 22 20:18:17 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.12.1
+  + Validate path read from repomd.xml (rh#1868639, CVE-2020-14352)
+- Dropped validate_path.patch to prevent directory traversal attacks
+  (boo#1175475, CVE-2020-14352) since it is upstream with version 1.12.1
+
+-------------------------------------------------------------------
+Thu Aug 20 10:30:12 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Add validate_path.patch to prevent directory traversal attacks
+  (boo#1175475, CVE-2020-14352)
+
+-------------------------------------------------------------------
+Tue Jul  7 10:38:49 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.12.0
+  + Prefer mirrorlist/metalink over baseurl (rh#1775184)
+  + Decode package URL when using for local filename (rh#1817130)
+  + Fix memory leak in lr_download_metadata() and lr_yum_download_remote()
+  + Download sources work when at least one of specified is working (rh#1775184)
+
+-------------------------------------------------------------------
+Sun Jan 19 14:52:18 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.11.2
+  + Fix calling Python API without holding GIL (rh#1788918)
+  + Do not unref LrErr_Exception on exit (rh#1778854)
+  + Cleanup zchunk-related error messages (rh#1790625)
+- Fix typo in changes entry about version update to 1.11.1
+
+-------------------------------------------------------------------
+Sat Dec 14 22:17:03 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.11.1
+  + Create a directory for gpg sockets in /run/user/ (rh#1769831, rh#1771012)
+- Fix bcond declaration for zchunk so defaults are always declared
+
+-------------------------------------------------------------------
+Sun Dec  1 15:37:41 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.11.0
+  + Define LRO_SUPPORTS_CACHEDIR only with zchunk (rh#1726141)
+  + Allow to use mirrors multiple times for a target (rh#1678588)
+  + Allow to try baseurl multiple times (rh#1678588)
+  + Remove librepo xattr when no file descriptor (rh#1690894)
+  + Fix verification of checksum from file attr (rh#1700341)
+  + Rephrase repository GPG check error message (rh#1741442)
+  + Add sleep when all mirrors were tried (rh#1741931)
+  + Raise logging level of error messages (rh#1737709)
+  + retry mirrorlist/metalink downloads
+  + Fix lr_url_substitute() and add ${variable} support
+  + Add support for one-time URL flags
+  + Fix API - LrHandleOption enum - LRO_ONETIMEFLAG (rh#1761779)
+
+-------------------------------------------------------------------
+Fri May 24 03:18:15 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.10.3
+  + Exit gpg-agent after repokey import (rh#1650266)
+  + Make sure to check next transfer if current zck transfer already exists (rh#1706627)
+
+-------------------------------------------------------------------
+Sun May 12 02:58:52 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.10.2
+  + Fix librepo isn't able to load zchunk files from next server on failure (rh#1706321)
+
+-------------------------------------------------------------------
+Fri May 10 14:21:16 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.10.1
+  + Clean up target->curl_handle rather than target->handle (rh#1694411)
+  + Add an option to preserve timestamps of the downloaded files (rh#1688537)
+  + Fix fetching repositories supplied by SUSE Customer Center
+  + [tests] Wait for server to start instead of doing arbitrary sleep
+- Drop patch included in this release
+  * Patch: librepo-PR148-clean-up-curl-target_handle.patch
+- Disable executing test suite on ARM and RISC-V due to performance issues with builders
+
+-------------------------------------------------------------------
+Sun Mar 31 18:26:16 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patch to fix fetching zck-compressed repos (rh#1694411)
+  * Patch: librepo-PR148-clean-up-curl-target_handle.patch
+
+-------------------------------------------------------------------
+Sun Mar 31 15:04:35 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.9.6
+  + Fix progress reporting with zchunk files
+  + Reduce download delays by using still_running correctly
+  + Improve error handling, cleanup
+  + Simplified lr_perform()'s loop to prevent busy wait
+  + Require libcurl >= 7.28.0
+- Drop patch included in this release
+  * Patch: PR138-Fix-progress-reporting-with-zchunk-files.patch
+
+-------------------------------------------------------------------
+Sun Feb  3 17:23:59 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.9.3
+  + Replace expat with libxml2
+  + Support using python-gpg instead of pygpgme
+  + Fix major performance regression with libcurl-7.61.1
+  + Add zchunk support
+- Drop patch for backported fix that is part of this release
+  * Patch: 0001-stop-requiring-attr-xattr.patch
+- Add patch proposed upstream to fix progress reporting for zck
+  * Patch: PR138-Fix-progress-reporting-with-zchunk-files.patch
+- Fix RPM group and description for Python 3 subpackage
+- Drop Python 2 subpackage
+
+-------------------------------------------------------------------
+Thu Sep 13 13:57:02 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix RPM groups. Update descriptions so that librepo0
+  (which is going to be installed most of the time) has something
+  halfway useful.
+
+-------------------------------------------------------------------
+Thu Sep 13 11:19:32 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Backport fix from upstream to use glibc's xattr instead of libattr
+  * Add patch: 0001-stop-requiring-attr-xattr.patch
+- Use full author identities in changelog entries
+
+-------------------------------------------------------------------
+Thu Jan  4 00:45:16 UTC 2018 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 1.8.1
+  + Fix memory leaks in Python bindings (gh#rpm-software-management/librepo#83)
+  + Fix HTTP header checking to work with proxies (gh#rpm-software-management/librepo#86)
+  + Change connection and low-speed default timeouts to sync with DNF/Yum
+  + Fix max download speed from repo (rh#1227921)
+
+-------------------------------------------------------------------
+Sun Aug 13 17:13:45 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Disable running unit tests by default because of random pygpgme failures
+
+-------------------------------------------------------------------
+Mon Feb 20 14:35:02 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.7.20
+
+-------------------------------------------------------------------
+Mon Feb  1 06:28:16 UTC 2016 - Neal Gompa <ngompa13@gmail.com>
+
+- Use SUSE-specific groups and tags
+
+-------------------------------------------------------------------
+Mon Feb  1 06:15:57 UTC 2016 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging of librepo derived from Mageia packaging
+

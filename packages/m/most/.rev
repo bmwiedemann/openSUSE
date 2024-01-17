@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8ef83b4b957b84a1e2c3a440eebae26</srcmd5>
+    <version>pre5.1</version>
+    <time>1548064003</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix warnings for pre5.1
+- Trim description to openSUSE relevant parts.</comment>
+    <requestid>663074</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb47a1ab8fa48ee0d0e19350f4bd46a5</srcmd5>
+    <version>5.1.0</version>
+    <time>1557263760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694730</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81a1b67649eb8b4ef0ec1cc92b251c2c</srcmd5>
+    <version>pre5.2</version>
+    <time>1580081070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767512</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4d950426d6a50a2edb2605756c491c2</srcmd5>
+    <version>5.2.0</version>
+    <time>1660235554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994441</requestid>
+  </revision>
+</revisionlist>

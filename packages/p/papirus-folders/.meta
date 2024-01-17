@@ -1,0 +1,6 @@
+<package name="papirus-folders" project="openSUSE:Factory">
+  <title>Papirus Folders</title>
+  <description>Papirus Folders is a CLI to change color of folders in Papirus icon theme.
+https://github.com/PapirusDevelopmentTeam/papirus-folders</description>
+  <devel project="X11:common:Factory" package="papirus-folders"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-slycot" project="openSUSE:Factory">
+  <title>Slycot</title>
+  <description>Python wrapper for the Subroutine Library in Systems and Control Theory (SLICOT)</description>
+  <devel project="devel:languages:python:numeric" package="python-slycot"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-build" project="openSUSE:Factory">
+  <title></title>
+  <description>Simple PEP517 package builder</description>
+  <devel project="devel:languages:python" package="python-build"/>
+</package>

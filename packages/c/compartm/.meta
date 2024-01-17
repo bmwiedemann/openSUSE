@@ -1,0 +1,8 @@
+<package name="compartm" project="openSUSE:Factory">
+  <title>A Wrapper to Securely Run Insecure or Untrusted Programs</title>
+  <description>Compartment provides all possibilities (chroot, kernel capabilities)
+for securely running insecure or untrusted programs. It provides all
+necessary options to fine-tune the security tightening process as
+needed.</description>
+  <devel project="security" package="compartm"/>
+</package>

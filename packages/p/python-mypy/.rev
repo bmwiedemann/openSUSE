@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d13bbeabcf377d56c0638d1f4e2069e</srcmd5>
+    <version>1.5.1</version>
+    <time>1694019572</time>
+    <user>anag+factory</user>
+    <comment>Renaming mypy to the correct name.</comment>
+    <requestid>1109212</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>04714956f6febcb030148926a2bb6617</srcmd5>
+    <version>1.8.0</version>
+    <time>1704281434</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0:
+  * https://mypy-lang.blogspot.com/2023/12/mypy-18-released.html
+  * https://mypy-lang.blogspot.com/2023/11/mypy-17-released.html
+  * https://mypy-lang.blogspot.com/2023/10/mypy-16-released.html
+- fix dependencies
+
+  - Support better __post_init__ method signature for dataclasses (Nikita Sobolev, PR 15503)
+  - Don't explicitly assign NULL values in setup functions (Logan Hunt, PR 15379)
+  - Fix crash on non-str docstring (Ali Hamdan, PR 15623)
+  - Remove confusing instance variable example in cheat sheet (Adel Atallah, PR 15441)
+  - Check for abstract class objects in tuples (Nikita Sobolev, PR 15366)
+  - Fix frozen behavior for base classes with direct metaclasses (Wesley Collin Wright, PR 14878)
+   - Fixes to float to int conversion (Jukka Lehtosalo, PR 14936)
+  - Faster classmethod calls via cls (Jukka Lehtosalo, PR 14789)
+  - Fix crash on ParamSpec in incremental mode (Ivan Levkivskyi, PR 14885)
+  - Improve documentation of top level mypy: disable-error-code comment (Nikita Sobolev, PR 14810)
+  - Add suggestions for pandas-stubs and lxml-stubs (Shantanu, PR 14737)
+  - Honor NoReturn as __setitem__ return type to mark unreachable code (sterliakov, PR 12572)
+- Sadly, six is still required for tests, re-add to BuildRequires.
+  The full release notes can be found here:
+  - Fix types of inherited attributes in generic dataclasses (Jukka Lehtosalo, PR 12656)
+- add missing g++ compiler for tests</comment>
+    <requestid>1136250</requestid>
+  </revision>
+</revisionlist>

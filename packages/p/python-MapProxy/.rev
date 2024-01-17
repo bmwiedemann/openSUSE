@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf416ff6f9f9333550cab6e4e41569d4</srcmd5>
+    <version>1.11.0</version>
+    <time>1553809684</time>
+    <user>dimstar_suse</user>
+    <comment>Proxy for geospatial data</comment>
+    <requestid>682506</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37b58a44e586dace9ef8677671376fc4</srcmd5>
+    <version>1.13.0</version>
+    <time>1619552106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888650</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cac2fc4de0018eacdec2e8c695722b26</srcmd5>
+    <version>1.13.2</version>
+    <time>1627492898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908875</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0d3a9f039095a861aad142f43a83e0d</srcmd5>
+    <version>1.14.0</version>
+    <time>1642455268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947029</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b9caac3319f6a765738ee8a4f429d23b</srcmd5>
+    <version>1.14.0</version>
+    <time>1646073817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957969</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>55463f9f4767162eb1fa556a89569a7f</srcmd5>
+    <version>1.14.0</version>
+    <time>1656237564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985075</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b115b86e17bdf02d03efc4b1393a8cb3</srcmd5>
+    <version>1.15.1</version>
+    <time>1680473179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.1
+  * WMS Dimension caching (#449)
+  * Add a mechanism to define plugins (#578)
+  * Support of non-EPSG SRS authorities (#572)
+  * Support for python 3.10 (#582)
+</comment>
+    <requestid>1076758</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a22f9bee92d7e63c6c2930989b6ff918</srcmd5>
+    <version>1.16.0</version>
+    <time>1693383657</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.16.0
+  ## Improvements:
+  * New cache: Azure Blob storage
+  * Support for JSON legends
+  * Updated layer preview to use latest openlayers
+  * Official docker images released, documentation updated
+  ## Fixes:
+  * Fixed issues with sqlite cache (#629 and #625)
+  * Dependency correction
+  * library detection difficulties on some operating systems
+  * encoding issues with umlauts in featureinfo
+  * Several minor bugfixes
+  * mapproxy-util export - derive image format from cache config</comment>
+    <requestid>1107940</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9a08a95e29fa8f52ef01abe3e1227557</srcmd5>
+    <version>1.16.0</version>
+    <time>1695664931</time>
+    <user>anag+factory</user>
+    <comment>- Add MapProxy-pr749-shapely2.patch
+  * gh#mapproxy/mapproxy#611
+  * gh#mapproxy/mapproxy#749
+- Add MapProxy-pr750-Pillow10.patch
+  * gh#mapproxy/mapproxy#750</comment>
+    <requestid>1113210</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61ae28a697d54e3db4d6cb796915adce</srcmd5>
+    <version>2.0.0</version>
+    <time>1704281117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135741</requestid>
+  </revision>
+</revisionlist>

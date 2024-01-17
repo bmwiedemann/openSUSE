@@ -1,0 +1,34 @@
+From: Andrey Borzenkov <arvidjaar@gmail.com>
+Subject: keep UEFI scripts the same as they were in openSUSE
+
+Small cosmetic changes to ensure UEFI scripts keep content
+after upstream merged (slightly outdated) version of them.
+
+- retain ELILO vendor prefix in case someone is really using it
+
+- comment in 05efi is obviously wrong
+Index: os-prober/os-probes/mounted/x86/efi/10elilo
+===================================================================
+--- os-prober.orig/os-probes/mounted/x86/efi/10elilo
++++ os-prober/os-probes/mounted/x86/efi/10elilo
+@@ -11,7 +11,8 @@ elilo=`find $1 -name "elilo.efi"`
+ if [ -n "$elilo" ]; then
+ 	bdir="${elilo%/*}"
+ 	bdir="${elilo##*/}"
+-	long="ELILO Boot Manager"
++	vendor=$(echo $bdir | sed 's|SuSE|SUSE|')
++	long="${vendor} ELILO Boot Manager"
+ 	short="ELILO"
+ 	path=${bdir}/elilo.efi
+ 	found=true
+Index: os-prober/os-probes/mounted/x86/05efi
+===================================================================
+--- os-prober.orig/os-probes/mounted/x86/05efi
++++ os-prober/os-probes/mounted/x86/05efi
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# Detects all Microsoft OSes on a collection of partitions.
++# Detects all UEFI bootloaders on EFI System Partition
+ 
+ . /usr/share/os-prober/common.sh
+ 

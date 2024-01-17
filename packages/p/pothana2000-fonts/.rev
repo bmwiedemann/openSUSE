@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="137">
+    <srcmd5>69a02f195ab75a2288ae81ab804c0e35</srcmd5>
+    <version>1.1</version>
+    <time>1336471835</time>
+    <user>coolo</user>
+    <comment>Moving M17N/pothana2000 to M17N:fonts/pothana2000-fonts.</comment>
+    <requestid>116366</requestid>
+  </revision>
+  <revision rev="2" vrev="138">
+    <srcmd5>7c6d832071f1a0ee4e12e10d21e75621</srcmd5>
+    <version>1.1</version>
+    <time>1338017290</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122177</requestid>
+  </revision>
+  <revision rev="3" vrev="140">
+    <srcmd5>7c6d832071f1a0ee4e12e10d21e75621</srcmd5>
+    <version>1.1</version>
+    <time>1340184014</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="141">
+    <srcmd5>761bfecd548edabdace978de3a5fb5bc</srcmd5>
+    <version>1.1</version>
+    <time>1347618832</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133978</requestid>
+  </revision>
+  <revision rev="5" vrev="143">
+    <srcmd5>761bfecd548edabdace978de3a5fb5bc</srcmd5>
+    <version>1.1</version>
+    <time>1359109946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="145">
+    <srcmd5>761bfecd548edabdace978de3a5fb5bc</srcmd5>
+    <version>1.1</version>
+    <time>1379664057</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="147">
+    <srcmd5>761bfecd548edabdace978de3a5fb5bc</srcmd5>
+    <version>1.1</version>
+    <time>1409302737</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

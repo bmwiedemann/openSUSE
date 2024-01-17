@@ -1,0 +1,5 @@
+<package name="python-tempora" project="openSUSE:Factory">
+  <title>Objects and routines pertaining to date and time (tempora)</title>
+  <description>Objects and routines pertaining to date and time (tempora).</description>
+  <devel project="devel:languages:python" package="python-tempora"/>
+</package>

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Jun  2 19:20:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Build with system provided iniparser
+- Package README and LICENSE file
+- Specfile cleanup
+- Update to version 0.9.18
+  * Fix issue with data transfer thread unexpectedly stopping
+- Update to version 0.9.17
+  * Recover from EINVAL and exit ubridge on unrecoverable errors.
+- Update to version 0.9.16
+  * Updated iniparser to v4.1
+  * Fixed issue with incompatible interface to iniparser.
+- Update to version 0.9.15
+  * Hide erred line content during INI file parsing.
+
+-------------------------------------------------------------------
+Wed Apr 17 14:22:10 UTC 2019 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Build version 0.9.14 
+  - Version 0.9.14
+    * Fix BPF filtering for IOL bridge.
+  - Version 0.9.13
+    * Display uBridge version and PCAP lib version.
+    * Fix issue with TAP interfaces on OS X.
+    * Preserve timestamps during cp
+    * Add option to use system provided iniparser.
+  - Version 0.9.12
+    * Added function show in module bridge
+    * Do not require an IPv4 address to use Ethernet devices
+    * Enable to use existing TAP devices
+    * Fix and improve NIO statistics.
+    * Fix sendto() error when socket file is not yet present.
+    * Implement packet filter support, current filters include BPF, delay, packet loss, frequency drop and packet corruption
+
+-------------------------------------------------------------------
+Sat Mar 11 00:00:00 UTC 2017 - GNS3 <developers@gns3.com>
+
+- Increased max packet size
+

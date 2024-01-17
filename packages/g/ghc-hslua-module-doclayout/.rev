@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7eedb227b7124e58ab4b7c0ab4abd3d</srcmd5>
+    <version>1.0.4</version>
+    <time>1659382284</time>
+    <user>RBrownFactory</user>
+    <comment>Required for pandoc</comment>
+    <requestid>988575</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c0b7cc1c3154b54dab0e487fd57d6506</srcmd5>
+    <version>1.0.4</version>
+    <time>1680636029</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075904</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>148b19b08a7a967231367245c723e38e</srcmd5>
+    <version>1.1.0</version>
+    <time>1681470781</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1079185</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,475 @@
+-------------------------------------------------------------------
+Sun Dec 10 19:51:45 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.36.1
+  * Bug fixes
+    * Fixed assert failure with void expression in initialization
+      list
+    * Fixed assert failure with unsafe references turned on and
+      temporary copy of value in function call
+    * Fixed crash when doing handle assign from object handle
+      received by reference parameter
+    * Fixed error in compiler with unsafe references turned on and
+      destruction of temporary variables in boolean expressions
+    * Fixed crash when passing null to a ?&inout param with unsafe
+      references turned on
+    * Fixed assert failure when compiling switch case with
+      registered global const property
+    * Fixed error in parser with default array and initialization
+      lists
+    * Fixed crash in compiler when same funcdef declaration is
+      compiled multiple times in different modules
+    * Fixed lookup bug with use of partial namespace in scope when
+      already within a namespace
+    * Fixed assert failure in compiler when class has invalid
+      opCast method with parameters
+    * Parser failed to understand lambda functions with explicit
+      argument types with &in, &out, or &inout
+    * Fixed bug with use of default array on types without default
+      constructors
+    * Fixed bug with named args and construct calls
+    * Fixed bug with variables declared in for loop being seen as
+      in-scope by debugger after the loop ended
+    * Fixed name conflict error for lambdas being rebuilt multiple
+      times with CompileFunction
+    * Fixed assert failure when explicitly casting anonymous init
+      list to an object
+    * Fixed assert failure on bitwise operation with boolean value
+    * Fixed issue in compiler with unsafe references enabled and
+      &out parameters
+    * Compiler now gives proper error when using temporary object
+      for lvalue in assignment
+    * BindImportedFunction was not giving error when attempting
+      to bind class method
+    * Fixed bug in save bytecode when there were multiple
+      variables in different scope occupying the same stack
+      position
+    * Fixed bug in as_callfunc_x64_gcc.cpp when compiling with
+      optimizations on gnuc
+    * Fixed bug in compiler with compound assignment, virtual
+      property, and unsafe references
+    * Saved bytecode didn't store the 'property' function trait
+    * Fixed crash with template instance referred by other
+      template instance being deleted prematurely
+    * Fixed specialization of templates with multiple subtypes
+  * Library
+    * Improved the error message when a boolean expression is
+      required to inform the type that was given
+    * Improved error message when delegate object cannot be
+      created
+  * Script language
+    * Compiler now recognizes when switch cases have return in
+      all paths
+    * Anonymous functions can now be declared with nameless
+      arguments
+  * Add-ons & Samples
+    * Improved error message when array cannot be instantiated
+      due to subtype not having any default constructor
+    * Operations with strings and primitives can now be easily
+      disabled by compiling the add-on with
+      AS_NO_IMPL_OPS_WITH_STRING_AND_PRIMITIVE=1
+    * ScriptBuilder no longer accepts #include directives with
+      non-terminated strings for the filename
+    * The serializer add-on is now capable of restoring objects
+      only referenced from handles
+    * Fixed compiler warnings on deprecated sprintf in scriptarray
+      and scriptstdstring with xcode
+  * Project
+    * Fixed cmake project for compiling on apple arm64
+    * Changed the cmake project to allow it to be included in
+      other projects directly
+- Changes in version 2.36.0
+  * Bug fixes
+    * Fixed 32bit/64bit compatibility of saved bytecode with
+      unsafe references enabled
+    * Fixed 32bit/64bit compatibility of saved bytecode in
+      functions returning handles
+    * Destructor for template value types now get a unique
+      function with correct object type
+    * Fixed crash in compiler when compiling initialization lists
+      for a global variable with a higher index than 2^15
+    * Fixed crash that could happen on cleaning up stack when
+      unsafe references is used
+    * Fixed crash in context stack unwind if it happened at a
+      position after a branch return that returns a value object
+      by value
+    * Fixed GetAddressOfVar returning null for registered value
+      pod types without constructor
+    * Fixed GetAddressOfVar returning null for registered value
+      types when the same offset is shared in multiple scopes
+    * asIScriptEngine::AssignScriptObject didn't return any error
+      when a type didn't have a value assignment operator
+    * Fixed assert failure when two funcdefs with same name in
+      two different classes
+  * Script language
+    * Improved implicit conversion rules to reduce number of type
+      ambiguity errors for function overloads and ternary
+      operators
+    * Ternary condition will now return the result as handle if
+      possible to avoid unnecessary copy of objects
+  * Library
+    * Added engine property asEP_IGNORE_DUPLICATE_SHARED_INTF to
+      add backwards compatibility with 2.35.0 when scripts include
+      declaration of shared interfaces more than once
+    * Compiler now stores info on temporary variables too to allow
+      these to be inspected at runtime
+    * Added engine property to dynamically turn off debug output
+    * When asEP_ALLOW_UNSAFE_REFERENCES is turned on the
+      destruction of temporary objects will be deferred to end
+      of expressions
+  * Library interface
+    * asIScriptContext::GetAddressOfVar now supports returning the
+      address of a reference parameter without dereferencing it
+    * asIScriptContext::GetAddressOfVar now supports returning the
+      address of local value types even when not initialized yet
+    * Added asIScriptContext::GetVar to retrieve static
+      information on variables on the stack
+    * Deprecated asIScriptContext::GetVarName and GetVarTypeId
+    * asIScriptContext has new methods to support serialization
+      of context state
+  * Add-ons & Samples
+    * Fixed script array comparison for 64bit integers
+    * CScriptArray with CScriptHandle as sub type can now be
+      correctly copied
+    * CScriptArray::SetValue now works with CScriptHandle as
+      sub type
+    * Fixed a compatibility issue in autowrapper WRAP_MFN_PR on
+      clang compilers
+  * Project
+    * Added support for Linux with arm64 in gnuc project
+    * Added MSVC2022 project files 
+
+-------------------------------------------------------------------
+Thu Oct 21 14:45:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.35.1
+  * Bug fixes
+    * Fixed invalid bytecode sequence on calling method on explicit
+      temporary object of value type
+    * Fixed freeze in compiler when compiling script that declared
+      the same interface twice and inherited from another
+    * Fixed a problem with lambdas declared within shared functions
+      not being considered shared (Thanks Phong Ba)
+    * Fixed invalid bytecode sequence on creating a delegate from a
+      lambda
+    * Declaring arrays using the type[] syntax will now properly
+      add implicit handle for the type when needed
+    * Fixed crash if attempting to call CreateScriptObjectCopy with
+      an asITypeInfo for a script function
+    * Fixed error in compilation of ternary condition operator with
+      regards to deferred arguments
+    * Added more sanity checks in LoadByteCode to avoid crash on
+      invalid stream data
+    * Fixed crash when instantiating shared class after original
+      module was discarded
+    * Fixed assert failure in compiler on implicit conversion
+      between unsigned integer types of different sizes
+    * Fixed invalid bytecode sequence in initialization lists with
+      value types whose opAssign returns void
+    * Fixed registering asBEHAVE_LIST_CONSTRUCT on value type
+      templates
+    * Fixed compiler error in as_symboltable.h on GCC 11
+    * Compiler no longer silently accepts implicit conversion from
+      null handle to object type registered with ASHANDLE if there
+      is no matching implicit constructor
+    * Fixed problem in native calling convention on arm64 when
+      function returned a reference to a class with
+      asOBJ_APP_CLASS_ALLFLOATS
+  * Script language
+    * Ternary condition operator is now able to implicitly convert
+      the types in the expressions to a common type
+    * Declarations of shorthand nested namespaces is now supported
+  * Add-ons
+    * Fixed compilation error in filesystem add-on
+    * Fixed datetime add-on to properly handle timezones with
+      day-light-savings in a portable way
+    * Fixed WRAP_MFN on gnuc when used within templated functions
+    * Fixed issue in array::sort with callback that could cause
+      objects in the array to be destroyed by gc
+- Removed angelscript-fix-aarch64.patch, upstream merged 
+
+-------------------------------------------------------------------
+Fri Apr  2 07:48:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64:
+  * angelscript-fix-aarch64.patch
+
+-------------------------------------------------------------------
+Sat Mar 13 13:14:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.35.0
+  Bug fixes:
+  * asIScriptModule::GetGlobalVar was returning asSUCCESS when
+    the given index was out of range
+  * Compiler would give an error when compiling functions
+    returning a reference to a type that cannot be instantiated
+  * Fixed problem with LoadByteCode and shared classes
+  * Fixed crash when using copy constructor declared as taking
+    the object by value
+  * Fixed memory invasion in compiler when compiling
+    initialization lists with expressions using default arguments
+  * Fixed memory invasion in compiler when compiling default
+    arguments
+  * Fixed an issue in compiler with auto type and constness
+  * Fixed symbol lookup of child type from within class method
+    while compiling a construct call
+  * Fixed crash after a discarding a module that compiled a
+    shared object type that continues to be used by other modules
+  * Funcdefs are marked with asOBJ_GC as they can form circular
+    references when used with delegates
+  * Fixed memory leak when using CompileGlobalVar to add a
+    variable to a module with an object type
+  * Fixed error when loading bytecode that is using a list
+    constructor for a value type
+  * Fixed memory invasion in compiler when compiling default
+    argument after an argument with index operator 
+  Library:
+  * asIScriptModule::GetFunctionByName now supports informing
+    the scope in the name
+  * asIScriptModule::GetGlobalVarByName and GetTypeInfoByName
+    also support informing the scope in the name
+  * asIScriptEngine::GetTypeInfoByName and
+    GetGlobalPropertyIndexByName also support informing the scope in
+    the name
+  * The default opAssign implementation for script classes will
+    use the base class' opAssign method to copy inherited properties
+  * Added config for 64bit x86 CPU on Haiku OS
+  * Added flag asOBJ_APP_CLASS_MORE_CONSTRUCTORS to inform when
+    a class with defaulted constructors has additional non-trivial
+    constructors
+  * Added support for native calling conventions on Linux with
+    ARM64
+  * Improved time for compilation and loading pre-compiled
+    bytecode for scripts with lots of type definitions
+  * Added config to make the library buildable for Linux with
+    Elbrus 2000 CPU 
+  Library interface:
+  * asIScriptObject::CopyFrom now takes a const pointer
+  * RegisterGlobalProperty and RegisterObjectProperty now return
+    the index of the property upon success 
+  Virtual machine:
+  * asBC_Thiscall1 bytecode instruction is now capable of
+    catching and translating C++ exceptions to script exceptions 
+  Add-ons & Samples:
+  * Implemented to-string debug callback for datetime in asrun
+  * Fixed a problem due to daylight time when initializing a
+    datetime object with specific date
+  * debugger add-on handles incorrect user commands better
+  * Implemented a version of exec for asrun sample that captures
+    the standard output from the system command into a string
+  * Implemented getCreateDateTime and getModifyDateTime on the
+    filesystem add-on
+  * Improved performance on array sort for arrays holding object
+    types
+  * Fixed registration of the virtual property accessors in the
+    game sample
+  * Fixed compilation error in scriptstdstring.cpp with
+    AS_USE_NAMESPACE
+  * Registered the script array add-on in the console sample
+  * Added generic calling convention bindings for datetime and
+    filesystem add-ons 
+  Project:
+  * Fixed gnuc makefile to detect arm target and add a compiler
+    flag to accept implicit IT constructs in thumb mode 
+- Use https for source URL 
+- Switch build to meson
+- Add angelscript-addons_lib.patch
+- Add pkgconfig support file
+- Build addons library and install related headers
+- Add angelscript_addons library subpackage
+- Move docs to -devel and drop main package
+
+-------------------------------------------------------------------
+Fri Mar 27 13:18:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.34.0:
+  * Fixed problem in compiler with bool property returned as
+    reference in conditions
+  * Fixed problem with catching exceptions in functions with
+    multiple try-catch blocks
+  * Fixed read from unallocated memory in compiler when
+    compiling default args
+  * Fixed problem with doing a value assign from array
+    holding handles
+  * Fixed crash in compiler when there are multiple matching
+    global functions for set accessors 
+  * Fixed crash that could happen when loading bytecode with
+    shared classes that doesn't match current declared shared classes
+  * Fixed assert failure when compiling a construct call with
+    an anonymous initialization list
+  * Fixed incorrect bytecode sequence when doing value assignment
+    from handles for script classes using default assignment operator
+  * Fixed problem with default arg not being able to access members
+    in expression
+  * Fixed crash when releasing engine with template specialization
+    containing child funcdefs
+  * Fixed asCALL_THISCALL_ASGLOBAL to function correctly with
+    multiple inheritance
+  * Compiler now identifies match for functions taking object as
+    inout ref when passing anonymous init list
+  * Compiler now interrupts compilation after identifying error
+    while compiling use of get property accessor
+  * Compiler no longer identifies global script functions
+    as property accessors when this is turned off with
+    asEP_PROPERTY_ACCESSOR_MODE
+  * Fixed config for FreeBSD on non-x86 64bit targets
+  * asEP_PROPERTY_ACCESSOR_MODE has a new mode (3) to require
+    property accessors to be flagged with 'property'
+  * Property accessors are validated upon declaration when
+    flagged with 'property'
+  * asEP_PROPERTY_ACCESSOR_MODE is now set to 3 by default 
+  * Handles can now be declared read-only
+  * Functions and methods intended to be used as virtual
+    property should now be declared with a 'property' decorator
+  * Added non-reserved keyword 'property' 
+  * Added asIScriptFunction::IsProperty 
+  * Removed an invalid assert() statement in ExecuteString
+  * Debugger commands 'n' and 'o' no longer prints 'No
+    script is running' when used as first command
+  * Debugger command 'p' prints 'Invalid expression. No
+    matching symbol' when the symbol doesn't exist in the current context
+  * Fixed missing check for failed memory allocation
+    in CScriptArray::Precache
+  * The string factory in the std::string add-on is
+    now thread safe
+  * Enabled Virtual Terminal Processing in asrun for colored
+    text on Windows console 
+
+-------------------------------------------------------------------
+Mon Feb 18 19:46:51 UTC 2019 - Matthias Eliasson <matthias.eliasson@gmail.com>
+
+- Update to new upstream release 2.33.0
+  * Fixed crash when compiling is null comparison with ASHANDLE object without any opEquals operator
+  * Fixed bug with anonymous initialization lists when used to initialize value type passed by value to function
+  * Loading bytecode that included use of template value types with a template type as argument crashed
+  * Compiler would crash on compiling ternary operator with anonymous list in one of the conditions
+  * Fixed error when saving bytecode for scripts containing interfaces that derives from interfaces
+  * Saving bytecode for a never returning function would cause assert failure
+  * Fixed an error when compiling a class method call as post-op and the name matches a type name
+  * Template types are now properly identified in separate namespaces
+  * Fixed memory build-up due to delayed cleanup when discarding modules with shared entities
+  * opImplCast with variable type won't be used for non-ref types
+  * Fixed compiler error when both opConv and opImplConv are implemented
+  * Fixed bug when loading bytecode containing shared interfaces with inheritance
+  * auto declarations now works correctly with implicit handle types
+  * Initializing an ASHANDLE type with overloaded opHndlAssign taking a var type as a handle wasn't done correctly
+  * Fixed loading byte code that uses external shared classes in namespace
+  * The bytecode for external shared entities is no longer saved in the module when inherited from
+  * Bytecode with external shared classes with virtual methods failed to load from bytecode
+  * Fixed assert failure on call to opCast(?&out) with a non-variable expression
+  * Passing a string literal to function expecting &out will now give compiler error
+  * Fixed problem in compiler that didn't release a temporary variable when passing anonymous object to function expecting ?&in
+  * Fixed a bug when loading bytecode having identical shared functions in different namespaces
+  * Compiler will now detect name conflict between property and function
+  * asIScriptFunction::GetDeclaration(false, true) no longer includes the namespace before the function name for class methods
+  * Fixed assert failure in asIScriptEngine::RefCastObject when object has multiple opCast methods
+  * Compiler no longer accepts primitives in the right hand expression for handle assignments
+  * Fixed compiler warning with use of asOFFSET on 64bit platforms
+  * Fixed crash caused by CreateScriptObjectCopy when script class' constructor takes argument by handle
+  * Child funcdefs in templates will no longer convert parameter types to @const&
+  * Fixed problem when compiling anonymous initialization list from default arg
+  * Ownership of shared template instances wasn't correctly transferred when discarding modules
+  * Fixed crash in compiler when matching anonymous list to function taking funcdef
+  * Fixed assert failure in builder when compiling external shared interfaces with inheritance
+  * Fixed crash in compiler when invalid script has inheritance from class with duplicate methods
+- Clean with spec-cleaner
+-------------------------------------------------------------------
+Sat Jul 15 08:21:51 UTC 2017 - mailaender@opensuse.org
+
+- Add documentation (including license)
+
+-------------------------------------------------------------------
+Tue Jun 13 14:30:46 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+
+-------------------------------------------------------------------
+Tue Feb 28 16:52:32 UTC 2017 - rpm@fthiessen.de
+
+- Update to new upstream release 2.31.2
+  * Fixed big endian errors in the compiler related to enum values
+  * CreateScriptObject crashed when called for template value types
+  * Fixed crash when discarding modules containing shared funcdefs
+  * Fixed big endian errors in the compiler related to implicit
+    conversions of constants
+  * Fixed bug with saved byte code not being portable between
+    32bit and 64bit platforms when including ChkNullS instruction
+  * Fixed assert failure in compiler when compiling
+    invalid switch case
+  * Fixed bug in compiler when passing a @& argument to a function
+  * Fixed bug when compiling get property accessor returning
+    a registered type that is then implicitly converted to another
+  * Fixed assert failure when compiling boolean not operator
+    on constant
+  * Fixed incorrect compiler warning about too large value when
+    assigning negative value to const int8/int16
+  * Compiler emits warnings if 64bit integer constants cannot
+    fit when implicitly converted to smaller types
+  * Compiler didn't support implicitly converting constant uint64
+    values to uint32 values
+  * Fixed assert failure when compiling comparison operator on
+    boolean constant
+  * Fixed bug in bytecode serialization when adjusting pointer
+    sizes for calls using asBC_ALLOC
+  * Fixed problem with registering types using the
+    asOBJ_IMPLICIT_HANDLE flag
+  * Fixed assert failure on implicit conversion from 8/16 bit
+    uint constant to integer
+  * opCast(?&out) on null handle now works without raising
+    null pointer exceptions
+  * Corrected as_config.h so Linux for 64bit ARM doesn't try to
+    compile as_callfunc_x64_gcc.cpp
+  * Fixed crash on GCC 6 due to CastToObjectType
+    accepting this == null
+
+-------------------------------------------------------------------
+Thu Aug 18 18:12:02 UTC 2016 - rpm@fthiessen.de
+
+- Update to new upstream release 2.31.1
+
+-------------------------------------------------------------------
+Sun Nov 23 18:07:07 UTC 2014 - mailaender@opensuse.org
+
+- Build version 2.29.2
+- Use en.opensuse.org/SourceUrls
+- Remove upstreamed makefile-flags.diff and angelscript-makefile.patch
+
+-------------------------------------------------------------------
+Sun Dec  9 11:13:54 UTC 2012 - joop.boonen@opensuse.org
+
+- Build version 2.25.2
+
+-------------------------------------------------------------------
+Thu Nov 15 22:14:23 UTC 2012 - joop.boonen@opensuse.org
+
+- Build version 2.25.1
+
+-------------------------------------------------------------------
+Wed Apr  4 17:08:10 UTC 2012 - jengelh@medozas.de
+
+- Avoid use of descending relative paths in %files
+- Add patch to allow using %optflags and resolve the
+  prior rpmlint message about the lack of it
+
+-------------------------------------------------------------------
+Sun Mar  4 18:33:21 UTC 2012 - joop.boonen@opensuse.org
+
+- added docs
+- corrected the patch now it the soname and the devel file
+  are symlinked to the version file
+
+-------------------------------------------------------------------
+Sun Mar  4 01:27:09 UTC 2012 - joop.boonen@opensuse.org
+
+- cleaned the spec file by means of spec-cleaner
+
+-------------------------------------------------------------------
+Sat Mar  3 21:34:28 UTC 2012 - joop.boonen@opensuse.org
+
+- corrected the license
+- adapted the spec file to the openSUSE standard
+
+-------------------------------------------------------------------
+Fri Feb 24 00:00:00 UTC 2012 - virus0025@gmail.com
+
+- initial version

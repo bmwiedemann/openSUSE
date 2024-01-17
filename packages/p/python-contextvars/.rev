@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f9b71b73e032f4dd749dcaff045be0a</srcmd5>
+    <version>2.4</version>
+    <time>1557141839</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v2.4
+</comment>
+    <requestid>694204</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>369ec9e99500a399c0bb13d77040c137</srcmd5>
+    <version>2.4</version>
+    <time>1621531419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894231</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4dc0684dace6455e226b477258004e2f</srcmd5>
+    <version>2.4</version>
+    <time>1665754818</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010393</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ac99438a6dc6e963aa62769ee366a92a</srcmd5>
+    <version>2.4</version>
+    <time>1682193694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081960</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>980a747627498b59f4920d177fcd10c7</srcmd5>
+    <version>2.4</version>
+    <time>1694113971</time>
+    <user>anag+factory</user>
+    <comment>- Add the package to SUSE Linux Enterprise 15 (jsc#SLE-24404)</comment>
+    <requestid>1109342</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Fri Oct 13 18:52:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update xss-sanitize to version 0.3.7.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Apr  1 17:04:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update xss-sanitize to version 0.3.7.2.
+  # 0.3.7.2
+
+  Stops Tag Soup from escaping &"<> which breaks HTML entities
+
+-------------------------------------------------------------------
+Thu Mar 30 17:09:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Nov 29 05:34:18 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xss-sanitize to version 0.3.7.1.
+  # 0.3.7.1
+
+  add max height and max width as valid style attributes
+
+-------------------------------------------------------------------
+Wed Mar 30 14:05:07 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xss-sanitize to version 0.3.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Sep 20 07:11:01 UTC 2021 - psimons@suse.com
+
+- Update xss-sanitize to version 0.3.7.
+  # 0.3.7
+
+  clear the contents of style and script tags instead of escaping them
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:46:45 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:17 UTC 2020 - psimons@suse.com
+
+- Add xss-sanitize at version 0.3.6.
+

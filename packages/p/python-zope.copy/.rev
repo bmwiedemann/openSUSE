@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d457e42f9ea9c6aa882cf4eca6c54315</srcmd5>
+    <version>4.2</version>
+    <time>1554749597</time>
+    <user>dimstar_suse</user>
+    <comment>- initial packaging
+- multibuild because of circular dependency with zope.location
+</comment>
+    <requestid>691802</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>78b0c3e193e952b74ecbc447ad7ed6a6</srcmd5>
+    <version>4.2</version>
+    <time>1665754819</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010406</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>66d8d09b479a09414ba3fa6a8872ea5d</srcmd5>
+    <version>4.3</version>
+    <time>1670588199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041382</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dcd4ae2af314a1656e0f050ebf3090c2</srcmd5>
+    <version>4.3</version>
+    <time>1686576264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092198</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="dLeyna" project="openSUSE:Factory">
+  <title>Services and D-Bus APIs to access UPnP and DLNA media devices in a network</title>
+  <description>dLeyna is a set of services and D-Bus APIs that aim to simplify
+access to UPnP and DLNA media devices in a network.
+
+</description>
+  <devel project="GNOME:Factory" package="dLeyna"/>
+  <url>https://gitlab.gnome.org/World/dLeyna</url>
+</package>

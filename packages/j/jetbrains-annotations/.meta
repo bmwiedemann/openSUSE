@@ -1,0 +1,8 @@
+<package name="jetbrains-annotations" project="openSUSE:Factory">
+  <title>IntelliJ IDEA Annotations</title>
+  <description>A set of annotations used for code inspection support and code documentation.
+
+</description>
+  <devel project="Java:packages" package="jetbrains-annotations"/>
+  <url>http://www.jetbrains.org</url>
+</package>

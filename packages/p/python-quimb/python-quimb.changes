@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Thu Jun  1 07:31:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Numba now exists for Python 3.11, stop skipping it. 
+
+-------------------------------------------------------------------
+Thu Mar 23 06:51:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip python311: no numba yet
+
+-------------------------------------------------------------------
+Thu Feb  2 09:37:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- upgrade opt-einsum to requires as it is imported by tensor/
+  unconditionally
+
+-------------------------------------------------------------------
+Sat Jan 14 11:35:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to v1.4.2
+  * no relevant code changes for openSUSE users
+- Release v1.4.1
+  ## Enhancements
+  * unify much functionality from 1D, 2D and 3D into general
+    arbitrary geometry class
+    quimb.tensor.tensor_arbgeom.TensorNetworkGen
+  * refactor contraction, allowing using cotengra directly
+  * add visualize() for visualizing the actual data entries of an
+    arbitrarily high dimensional tensor
+  * add Gate class for more robust tracking and manipulation of
+    gates in quantum Circuit simulation
+  * tweak TN drawing style and layout
+  * tweak default gauging options of compressed contraction
+  * add compute_hierarchical_grouping()
+  * add as_network()
+  * add inds_size()
+  * add get_hyperinds()
+  * add outer_size()
+  * improve group_inds()
+  * refactor tensor decompositiona and ‘isometrization’ methods
+  * begin supporting pytree specifications in TNOptimizer, e.g. for
+    constants
+  * add experimental submodule for new sharing features
+  * register tensor and tensor network objects with jax pytree
+    interface (PR150)
+  * update CI infrastructure
+  ## Bug fixes:
+  * fix force atlas 2 and weight_attr bug (GH126)
+  * allow unpickling of PTensor objects (GH128, PR131)
+- Release v1.4.0
+  ## Enhancements
+  * Add 2D tensor network support and algorithms
+  * Add 3D tensor network infrastructure
+  * Add arbitrary geometry quantum state infrastructure
+  * Many changes to TNOptimizer
+  * Many changes to TN drawing
+  * Many changes to Circuit simulation
+  * Many improvements to TN simplification
+  * Make all tag and index operations deterministic
+  * Add tensor_network_sum(), tensor_network_distance() and fit()
+  * Various memory and performance improvements
+  * Various graph generators and TN builders
+
+-------------------------------------------------------------------
+Fri Feb  5 20:13:46 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Generalize the ExcludeArch into %ix64 %arm ppc s390x
+
+-------------------------------------------------------------------
+Thu Feb  4 22:31:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Disable build for armv7l and s390x
+
+-------------------------------------------------------------------
+Tue Jan 19 09:36:08 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Disable build for python36 because scipy.
+
+-------------------------------------------------------------------
+Sat Aug 22 07:04:12 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Clean up spec file. 
+
+-------------------------------------------------------------------
+Wed Aug 19 13:39:27 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Remove noarch macro from spec file.
+
+-------------------------------------------------------------------
+Wed Aug 19 07:07:33 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Disable build for 32-bit arch because numba and parallel does not
+  support 32-bit arch. Tried to export variable 
+  "export QUIMB_NUMBA_PARALLEL=off" does not solve the issue.
+
+-------------------------------------------------------------------
+Tue Aug 18 09:36:15 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release.

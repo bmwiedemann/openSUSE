@@ -1,0 +1,5 @@
+<package name="rubygem-dry-inflector" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-dry-inflector"/>
+</package>

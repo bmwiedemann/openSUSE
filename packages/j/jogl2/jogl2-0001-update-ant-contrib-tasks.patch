@@ -1,0 +1,39 @@
+Index: jogl-v2.3.0/make/build-jogl.xml
+===================================================================
+--- jogl-v2.3.0.orig/make/build-jogl.xml
++++ jogl-v2.3.0/make/build-jogl.xml
+@@ -1588,7 +1588,7 @@
+ 
+       	<!-- have to wrap cc task with outofdate, because otherwise cc links a new library
+       	     even when no files have been compiled -->
+-        <outofdate>
++        <outofdate force="true">
+           <sourcefiles>
+             <fileset dir="${project.root}"><patternset refid="@{c.compiler.src.files}"/></fileset>
+             <fileset dir="${obj.joglsub}" includes="*jogl_ffmpegv08*, *jogl_ffmpegv09*, *jogl_ffmpegv10*"/> <!-- requires linkage -->
+Index: jogl-v2.3.0/make/build-nativewindow.xml
+===================================================================
+--- jogl-v2.3.0.orig/make/build-nativewindow.xml
++++ jogl-v2.3.0/make/build-nativewindow.xml
+@@ -675,7 +675,7 @@
+ 
+         <!-- have to wrap cc task with outofdate, because otherwise cc links a new library
+              even when no files have been compiled -->
+-      	<outofdate>
++      	<outofdate force="true">
+           <sourcefiles>
+             <fileset dir="${project.root}"><patternset refid="@{c.compiler.src.files}"/></fileset>
+           </sourcefiles>
+Index: jogl-v2.3.0/make/build-newt.xml
+===================================================================
+--- jogl-v2.3.0.orig/make/build-newt.xml
++++ jogl-v2.3.0/make/build-newt.xml
+@@ -637,7 +637,7 @@
+ 
+         <!-- have to wrap cc task with outofdate, because otherwise cc links a new library
+              even when no files have been compiled -->
+-        <outofdate>
++        <outofdate force="true">
+           <sourcefiles>
+             <fileset dir="${project.root}"><patternset refid="@{c.compiler.src.files}"/></fileset>
+           </sourcefiles>

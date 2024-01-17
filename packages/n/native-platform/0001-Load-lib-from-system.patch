@@ -1,0 +1,36 @@
+From eaa1c5968d3953ea59b01cc2620da0a9eabb17d4 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Wed, 20 Sep 2017 16:12:27 +0300
+Subject: [PATCH 1/2] Load lib from system
+
+Try to load native library from /usr/lib*/native-platform
+instead of extractDir or classpath.
+---
+ .../platform/internal/NativeLibraryLocator.java               | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/main/java/net/rubygrapefruit/platform/internal/NativeLibraryLocator.java b/src/main/java/net/rubygrapefruit/platform/internal/NativeLibraryLocator.java
+index d08a40d..332187a 100755
+--- a/src/main/java/net/rubygrapefruit/platform/internal/NativeLibraryLocator.java
++++ b/src/main/java/net/rubygrapefruit/platform/internal/NativeLibraryLocator.java
+@@ -32,6 +32,17 @@ public class NativeLibraryLocator {
+ 
+     public File find(LibraryDef libraryDef) throws IOException {
+         String resourceName = String.format("net/rubygrapefruit/platform/%s/%s", libraryDef.platform, libraryDef.name);
++        String bits = "";
++
++        if (System.getProperty("os.arch").contains("64")) {
++            bits = "64";
++        }
++
++        File usrLibFile = new File("/usr/lib" + bits + "/native-platform/" + libraryDef.name);
++        if (usrLibFile.isFile()) {
++            return usrLibFile;
++        }
++
+         if (extractDir != null) {
+             File libFile = new File(extractDir, String.format("%s/%s/%s", NativeLibraryFunctions.VERSION, libraryDef.platform, libraryDef.name));
+             File lockFile = new File(libFile.getParentFile(), libFile.getName() + ".lock");
+-- 
+2.13.5
+

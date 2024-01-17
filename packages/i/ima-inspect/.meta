@@ -1,0 +1,5 @@
+<package name="ima-inspect" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="ima-inspect"/>
+</package>

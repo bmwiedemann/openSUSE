@@ -1,0 +1,6 @@
+<package name="zig" project="openSUSE:Factory">
+  <title>Zig Programming Language</title>
+  <description>A general-purpose programming language and toolchain for maintaining robust, optimal and reusable software.</description>
+  <devel project="devel:tools:compiler" package="zig"/>
+  <url>https://ziglang.org/</url>
+</package>

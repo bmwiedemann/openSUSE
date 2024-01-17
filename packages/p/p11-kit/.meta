@@ -1,0 +1,7 @@
+<package name="p11-kit" project="openSUSE:Factory">
+  <title>Library to work with PKCS#11 modules</title>
+  <description>p11-kit provides a way to load and enumerate PKCS#11 modules, as well
+as a standard configuration setup for installing PKCS#11 modules in
+such a way that they're discoverable.</description>
+  <devel project="Base:System" package="p11-kit"/>
+</package>

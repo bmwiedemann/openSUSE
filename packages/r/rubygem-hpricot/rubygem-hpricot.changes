@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Sat Feb 10 12:10:20 UTC 2018 - jengelh@inai.de
+
+- Trim rhetorics from description.
+
+-------------------------------------------------------------------
+Sun Apr 16 19:03:28 UTC 2017 - avvissu@yandex.by
+
+- Add rubygem-hpricot-rpmlintrc in spec file
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Oct 13 12:15:08 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Sat Feb 15 13:37:25 UTC 2014 - kkaempf@suse.com
+
+- add ruby-devel buildrequires
+
+-------------------------------------------------------------------
+Sat Jan 18 13:21:12 UTC 2014 - coolo@suse.com
+
+- use new ruby macros
+
+-------------------------------------------------------------------
+Sat Jul 14 19:01:06 UTC 2012 - chris@computersalat.de
+
+- update to 0.8.6
+  * Allow any tags to contain unknown tags (Steven Parkes)
+- 0.8.5
+  * Remove escaped quote (\') from matching (#55)
+  * Fix 'undefined method downcase for nil:NilClass' on JRuby (#58)
+  * Unescape hex numeric character references
+- 0.8.4
+  * GH #21, #32, #33, #36: Fix for reported segfaults
+- 0.8.3
+  * GH#8: Nil-check before downcasing attribute key
+  * GH#25: Proper ruby 1.9 encoding support
+  * GH#28. Use integers instead of ?? on 1.9, which is just a string.
+  * including noscript to ElementInclusions , so that hpricot wont fail
+    when trying to parse a meta tag inside head section when noscript is
+    present.
+  * latest changes from fast_xs mainline
+  * Fixes to get Hpricot running on Rubinius:
+    * Use free, not XFREE
+    * Remove RSTRUCT craziness, don't break Array#at
+- fix License:
+  * MIT: https://github.com/hpricot/hpricot/blob/master/COPYING
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Dec 25 01:23:12 UTC 2009 - prusnak@suse.cz
+
+- update to 0.8.2
+
+-------------------------------------------------------------------
+Fri Dec  4 23:50:57 UTC 2009 - chris@computersalat.de
+
+- update to version 0.8.1
+- some rpmlint fixes
+
+-------------------------------------------------------------------
+Fri Mar 20 16:40:27 CET 2009 - dmacvicar@suse.de
+
+- update to version 0.7
+
+-------------------------------------------------------------------
+Wed Aug 27 18:02:10 CEST 2008 - mrueckert@suse.de
+
+- update to version 0.6.161
+
+-------------------------------------------------------------------
+Tue May 22 18:27:14 CEST 2007 - mrueckert@suse.de
+
+- update to version 0.5
+
+-------------------------------------------------------------------
+Wed Sep 13 13:34:59 CEST 2006 - mrueckert@suse.de
+
+- Initial package of version 0.4
+

@@ -1,0 +1,6 @@
+<package name="python-MiniMock" project="openSUSE:Factory">
+  <title>The simplest possible mock library</title>
+  <description>Minimock is a simple library for doing Mock objects with doctest.
+When using doctest, mock objects can be very simple.</description>
+  <devel project="devel:languages:python" package="python-MiniMock"/>
+</package>

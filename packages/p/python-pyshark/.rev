@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69519c75c0dad4f880d2a78e4403c9e2</srcmd5>
+    <version>0.4.2.11</version>
+    <time>1572278140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738238</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6254277ff7d3481511b433dfcc4826c6</srcmd5>
+    <version>0.4.3</version>
+    <time>1615489819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877414</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a15fee2e815473bf2eb9dd65650b20d1</srcmd5>
+    <version>0.4.6</version>
+    <time>1655582796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983629</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a971959126b2b9b8fb523fdb9657dd3</srcmd5>
+    <version>0.6</version>
+    <time>1704281456</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6:
+  * Dropped support for Python 3.5/3.6
+  * Fix elastic mapping for new Wireshark 4
+  * Accepting rpcap:// as a valid interface name
+  * Add args and kwargs to RemoteCapture __init__
+  * Replace py dependency with termcolor.
+  * Unicode support added to correct issue617
+  * Make packet layer names case-insensitive for backward
+    compatibility with v0.4.6
+- update to 0.5.3:
+  * EK Bugfixes version
+  * Fix LiveRingCapture params.
+- update to 0.5.2:
+  * Add some params for LiveRingCapture.
+  * EK Layer now supports &quot;payload&quot;-type fields by casting to
+    bytes.
+  * EK Layer has new &quot;get_field_as_list&quot; function to assist with
+    getting fields that may appear once or more
+  * Fixed issues with printing boolean fields in EK layer.
+  * Fixed verification of capture interface on LiveCapture.
+- update to 0.5:
+  * New EK parsing mode, allowing faster and easier use than the
+    regular JSON mode which will likely be eventually deprecated.
+  * Support typing in EK mode.
+  * Checking file permissions in FileCapture
+  * Show tshark error in crash exception
+  * Verify capture settings before starting capture
+  * Fix path when user provides `tshark_path` using
+    `LiveCapture`.
+  * Fix some tshark_path problems.</comment>
+    <requestid>1136295</requestid>
+  </revision>
+</revisionlist>

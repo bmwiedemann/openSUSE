@@ -1,0 +1,209 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98013a6f12e3e75653fa1e547ed58450</srcmd5>
+    <version>1.5.1</version>
+    <time>1551784830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681223</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ff37af4ff65d155af3e54f5d2606b3b</srcmd5>
+    <version>1.5.1</version>
+    <time>1552207121</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682711</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>37c762d378f4273c2ccdd89292671229</srcmd5>
+    <version>1.6.0</version>
+    <time>1558037431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703511</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>621f9ec9966d04cb823c9e84c951a44c</srcmd5>
+    <version>1.6.2</version>
+    <time>1563993400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718178</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3fa913dec9a88b144bc8d03b893f7ddc</srcmd5>
+    <version>1.6.2</version>
+    <time>1573774375</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip out python2 build as the dependencies are unresolvable</comment>
+    <requestid>748705</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>00b26bf9e54dfda9428a20f5baba8c5b</srcmd5>
+    <version>1.6.2</version>
+    <time>1591381193</time>
+    <user>dimstar_suse</user>
+    <comment>- drop oslosphinx dependency</comment>
+    <requestid>811559</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>13987f91dd727a77bd02a1238251b304</srcmd5>
+    <version>1.6.2</version>
+    <time>1613427499</time>
+    <user>dimstar_suse</user>
+    <comment>- cli tool, don't build with multiple python versions</comment>
+    <requestid>871632</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ff9a6b814f14a562b155f75cfa27ce61</srcmd5>
+    <version>1.7.0</version>
+    <time>1615363034</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Remove blacklist call to input() (#662) @ericwb
+  * Remove universal support on the wheel (#655) @ericwb
+  * Give some tips on how to resolve B101 in the doc (#616) @xuhdev
+  * Don't show progress information on --quiet (#641) @fniessink
+  * Add skip configuration to assert_used (#633) @wilbertom
+  * Drop Python2 build, test, and install (#615) @ericwb
+  * [FIX] blacklist: fix typo in import_ftplib (#601) @Yenthe666
+  * Resolve 'NoneType' object has no attribute 'id'Traceback in
+    django_mark_safe (#598) @ehooo
+  * Fix typo for activating venv (#590) @bavedarnow
+  * Bump pyyaml (#588) @dosisod
+  * Fix colorama not being disabled after being used (#586) @adambenali
+  * Cleanup some typos in recent contributor guide (#585) @ericwb
+  * [DOC] Support python3 venv creation (#583) @look4regev
+  * Add sha1 to the list of insecure hashes (#561) @ericwb
+  * Fix docs for B610,B611,B703 (#555) @amacfie
+  * Add a section explaining &quot;nosec&quot; (#554) @exhuma
+  * Add official support of Python 3.8 (#547) @ericwb
+  * Ignore common directories by default (#544) @ericwb
+  * Add shelve to the pickle blacklists (#542) @auscompgeek
+  * Remove obsolete &quot;sudo&quot; keyword. (#538) @jugmac00
+  * Update test requirements to latest versions (#535) @ericwb
+  * Fix readme file on Extending Bandit on list things (#534) @Aurel10
+  * fix the documentation file README.rst (#533) @Aurel10
+  * Cleanup comments after #510 (#532) @florczakraf
+  * Use SPDX license identifier instead of bulky headers (#530) @ericwb
+  * fix B603 docstring (#524) @graingert
+  * Add type checking to name node of hashlib_new (#516) @teeann
+  * --exit-zero option (#510) @maciejstromich
+  * Fix 3.8 errors (#509) @tylerwince
+  * Add several ini options for .bandit file (#508) @vuolter
+  * get_url returns different urls calling twice (bug #506) (#507) @ehooo
+  * Replace setattr (#493) @tylerwince 
+- Refresh remove-non-test-deps.patch</comment>
+    <requestid>877896</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e37786960d68edc244372a7cc10a053e</srcmd5>
+    <version>1.7.0</version>
+    <time>1636388655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929843</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b2d416c5fb88d0f5fbcd9fb6349879d8</srcmd5>
+    <version>1.7.2</version>
+    <time>1644188086</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.2:
+  * Correctly define extras in \`setup.cfg\` (#755)
+  * Remove leftover openstack code (#778)
+  * Added snmp\_security check plugin for various SNMP checks (#403)
+  * Fix README.rst (#365)
+  * Fixup typo (#769)
+  * Drop end-of-life Python 3.6 (#777)
+  * Drop end-of-life Python 3.5 (#746)
+  * Start using auto-formatters (#754)
+  * Create FUNDING.yml (#774)
+  * test\_help\_arg: remove assert on 'optional arguments' (#752)
+  * Fix broken reported URL link for B107 (#751)
+
+- update to 1.7.1:
+  * fix reading initial values from .bandit
+  * Always use a Loader in yaml.load
+  * PEP-518 support: configure bandit via pyproject.toml
+  * document that random.choices() isn't secure either
+  * Fix syntax errors in bug report
+  * Update bug\_report.yaml
+  * Fix syntax error in bug report
+  * Use new issue template format
+  * Update README.rst
+  * Mock part of python 3.x
+  * Add license to package installation metadata
+  * #694 Bandit fails when using importlib with named arguments
+  * Add string options for severity and confidence
+  * Add support for Python 3.9
+  * Create config.yml
+  * Add default labels to issues</comment>
+    <requestid>951974</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>14c98f44ccbf4996af65914dd244f9f5</srcmd5>
+    <version>1.7.4</version>
+    <time>1647458443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962068</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e2dbc36638cd44e10aeda930767c41cd</srcmd5>
+    <version>1.7.4</version>
+    <time>1666871696</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed python-six dependency
+- Use autosetup instead of setup + patch
+- More specific sitelib package in %files
+</comment>
+    <requestid>1031533</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a3ea986c63802dedcbbeded47a71a0f3</srcmd5>
+    <version>1.7.5</version>
+    <time>1690469452</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.5:
+  * Added a bit more \`project\_urls\`
+  * Check for github action updates monthly
+  * Improve handling nosec for multi-line strings
+  * Improve detecting SQL injections in f-strings
+  * Correct build status badge in README
+  * Fix breaking build due to new tox
+  * DOC: Add explanation on how to use pre-commit with config
+    file
+  * Add official Python 3.11 support
+  * remove py2 exec example in docs
+  * Typo fix
+  * [docs] Mention \`exclude\_dirs\` option available in TOML and
+    YAML
+  * Fix AttributeError on detect of tuple assign condition
+  * Fix json and yaml formatters to respect num lines
+  * Fixup some invalid pickle testing
+  * Pass correct number of arguments to match the \`%s\`
+    placeholders.
+  * Remove python 2 reference in docs
+  * Fix filename of B202 in docs
+  * weak\_cryptographic\_key assumes positional arg
+  * Check for deprecated TLS 1.1
+  * Adding tarfile.extractall() plugin with examples
+  * Fix issue #453 jinja2 template select\_autoescape when using
+    jinja2.select\_autoescape
+  * Fix a false positive condition yaml\_load
+  * Add case for global exec
+  * Docs for request without timeout has dead link
+  * Blacklist pandas read\_pickle and add functional test for it</comment>
+    <requestid>1100808</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>28b138c91b3bc6d1e7afabd0526b9842</srcmd5>
+    <version>1.7.6</version>
+    <time>1702673420</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133415</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d0eadcdc3e107dd103f35c44a6fdfa3</srcmd5>
+    <version>1.31</version>
+    <time>1572443002</time>
+    <user>dimstar_suse</user>
+    <comment>Fix names of files.</comment>
+    <requestid>743621</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42f250facff43271b7bbf3b9ad28d9c0</srcmd5>
+    <version>1.31</version>
+    <time>1594383184</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819795</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>883d1d87d79637b4c39a9b46bfdc2159</srcmd5>
+    <version>1.31</version>
+    <time>1612901873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870687</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>696bd942a4c745771fe7d8ed136d4845</srcmd5>
+    <version>1.31</version>
+    <time>1669289035</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037556 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1037600</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>fb2be16dd69e7fa0b1571ad3a9975f1d</srcmd5>
+    <version>1.31</version>
+    <time>1679069058</time>
+    <user>dimstar_suse</user>
+    <comment>- Change upstream homepage to the current one at Lunar Modules.
+</comment>
+    <requestid>1072463</requestid>
+  </revision>
+</revisionlist>

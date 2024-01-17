@@ -1,0 +1,40 @@
+---
+ wpa_supplicant/wpa_supplicant.c |   18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+Index: wpa_supplicant-2.10/wpa_supplicant/wpa_supplicant.c
+===================================================================
+--- wpa_supplicant-2.10.orig/wpa_supplicant/wpa_supplicant.c
++++ wpa_supplicant-2.10/wpa_supplicant/wpa_supplicant.c
+@@ -121,6 +121,22 @@ const char *const wpa_supplicant_full_li
+ "\n";
+ #endif /* CONFIG_NO_STDOUT_DEBUG */
+ 
++static void wpa_supplicant_handle_sigusr1(int sig,
++				     void *signal_ctx)
++{
++	/* Increase verbosity (by decreasing the debug level) and wrap back
++	 * to MSG_INFO when needed.
++	 */
++	if (wpa_debug_level)
++		wpa_debug_level--;
++	else
++		wpa_debug_level = MSG_INFO;
++	
++	wpa_printf(MSG_INFO, "Signal %d received - changing debug level to %s", sig,
++	           (wpa_debug_level == MSG_INFO) ? "INFO" :
++	               ((wpa_debug_level == MSG_DEBUG) ? "DEBUG" :
++	                   ((wpa_debug_level == MSG_MSGDUMP) ? "MSGDUMP" : "UNKNOWN")));
++}
+ 
+ static void wpa_bss_tmp_disallow_timeout(void *eloop_ctx, void *timeout_ctx);
+ #if defined(CONFIG_FILS) && defined(IEEE8021X_EAPOL)
+@@ -7474,6 +7490,8 @@ int wpa_supplicant_run(struct wpa_global
+ 	eloop_register_signal_terminate(wpa_supplicant_terminate, global);
+ 	eloop_register_signal_reconfig(wpa_supplicant_reconfig, global);
+ 
++	eloop_register_signal(SIGUSR1, wpa_supplicant_handle_sigusr1, NULL);
++
+ 	eloop_run();
+ 
+ 	return 0;

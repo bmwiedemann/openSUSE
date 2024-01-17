@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79fde5940716f04d8b6384a64195db63</srcmd5>
+    <version>0.4.4</version>
+    <time>1432305361</time>
+    <user>dimstar_suse</user>
+    <comment>Distributive functors -- Dual to Traversable</comment>
+    <requestid>308174</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1424bd5d0f4f543ffea12d190a0906e2</srcmd5>
+    <version>0.5.0.2</version>
+    <time>1453998223</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0.2
+* Added flags for removing some dependencies.
+* upport doctests when building to non-standard locations (such as when using stack.)
+* Support base-orphans (forwarded request 355949 from mimi_vx)</comment>
+    <requestid>355950</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7595c1be899d969d4d542fff6bc48a0b</srcmd5>
+    <version>0.5.0.2</version>
+    <time>1469081278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411512</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ecfd9522a34b207e74a1778ce140eb17</srcmd5>
+    <version>0.5.2</version>
+    <time>1489866621</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477446</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5e7a4d0ca54c4c9c32ed0976eb5ec1d</srcmd5>
+    <version>0.5.3</version>
+    <time>1527674806</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-distributive to the latest version.</comment>
+    <requestid>607785</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb1329795f0721d34448322407879088</srcmd5>
+    <version>0.6</version>
+    <time>1532445473</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update distributive to version 0.6.
+  0.6 [2018.07.02]
+  ----------------
+  * Remove `fmapCollect`. (See
+    [here](https://github.com/ekmett/distributive/commit/1020655f15714514048d0dc842ffe4adcec89a7b)
+    for an explanation of why it was removed.)
+  * Avoid incurring some dependencies when using recent GHCs.
+
+- correct licence to BSD-2-Clause
+- initial commit</comment>
+    <requestid>623759</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6d4baaefc0af183a4c6641cec200eb7a</srcmd5>
+    <version>0.6</version>
+    <time>1540448684</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643384</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0d029d7b8aad966b39c46df4ab07db34</srcmd5>
+    <version>0.6.1</version>
+    <time>1571402045</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737199</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4c4d6d646968537860349e1c7c73d6b8</srcmd5>
+    <version>0.6.1</version>
+    <time>1577451181</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759383</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d1d5d37019813583899c2b52237acfbb</srcmd5>
+    <version>0.6.2</version>
+    <time>1589196873</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801010</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>80d37829a280a5eff07600261ff4e4d2</srcmd5>
+    <version>0.6.2</version>
+    <time>1592579521</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815076</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>79a9787cc24681d5d7592edcda7981bb</srcmd5>
+    <version>0.6.2</version>
+    <time>1598642975</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829254</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>da03f71586c98e27565351866fb1afc8</srcmd5>
+    <version>0.6.2</version>
+    <time>1599508864</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832269</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>ee93aefe9969373869bd046b6bbae9b7</srcmd5>
+    <version>0.6.2</version>
+    <time>1608633522</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857327</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5eec9ec9480e4683604e3de97f8467d9</srcmd5>
+    <version>0.6.2.1</version>
+    <time>1610123905</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>861597</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>be0ffecd576e01bd3db9898c227c16e9</srcmd5>
+    <version>0.6.2.1</version>
+    <time>1629917807</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>912594</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>734674893907ff9e74c211b5d16c2f7b</srcmd5>
+    <version>0.6.2.1</version>
+    <time>1680635986</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075857</requestid>
+  </revision>
+</revisionlist>

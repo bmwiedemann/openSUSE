@@ -1,0 +1,6 @@
+<package name="perl-Perl-Critic-Community" project="openSUSE:Factory">
+  <title>Community-inspired Perl::Critic policies</title>
+  <description>A set of Perl::Critic policies to enforce the practices generally recommended by subsets of the Perl community, particularly on IRC. Formerly known as Perl::Critic::Freenode. Because this policy &quot;theme&quot; is designed to be used with zero configuration on the command line, some duplication will occur if it is used in combination with core Perl::Critic policies.</description>
+  <devel project="devel:languages:perl" package="perl-Perl-Critic-Community"/>
+  <url>https://metacpan.org/dist/Perl-Critic-Community</url>
+</package>

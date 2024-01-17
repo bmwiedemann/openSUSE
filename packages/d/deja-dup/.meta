@@ -1,0 +1,14 @@
+<package name="deja-dup" project="openSUSE:Factory">
+  <title>Simple backup tool and frontend for duplicity</title>
+  <description>Déjà  Dup is a simple backup tool. It hides the complexity of doing
+backups the 'right way' (encrypted, off-site, and regular) and uses
+duplicity as the backend.
+
+Features:
+ * Support for local or remote backup locations, including Amazon S3
+ * Securely encrypts and compresses your data
+ * Incrementally backs up, letting you restore from any particular backup
+ * Schedules regular backups
+ * Integrates well into your GNOME desktop</description>
+  <devel project="GNOME:Apps" package="deja-dup"/>
+</package>

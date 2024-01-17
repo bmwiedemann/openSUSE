@@ -1,0 +1,5 @@
+<package name="opensuse-rstudio-server" project="openSUSE:Factory">
+  <title>openSUSE R-Studio Server</title>
+  <description>Image for R-Studio Server</description>
+  <devel project="devel:kubic:containers" package="opensuse-rstudio-server"/>
+</package>

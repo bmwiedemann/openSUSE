@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Tue Dec 12 11:16:16 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add %reconfigure_fonts_prereq to the subpackages
+  * required by the presence of the macro:
+    %reconfigure_fonts_scriptlets -n <subpackage-name>
+
+-------------------------------------------------------------------
+Mon Oct 30 16:40:54 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 15.1.04:
+  * Default and Japanese versions have larger supersets of Plane 2
+    and Plane 3 glyphs
+  * Updates for U+266D..U+266F and U+26BC
+
+-------------------------------------------------------------------
+Sun Oct 22 12:27:31 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 15.1.03:
+  * Additions and extensions to multiple CJK Unified Ideographs
+    Extension glyps, and Plane 0 Wen Quan Yi range
+
+-------------------------------------------------------------------
+Tue Sep 19 20:31:35 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 15.1.01:
+  * Aligned with Unicode 15.1.0 changes
+  * Update to multiple glyphs
+  * Full GB 18030-2022 Implementation Level 2 support
+
+-------------------------------------------------------------------
+Wed Feb 15 21:14:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add pcf font to SRPM
+
+-------------------------------------------------------------------
+Mon Feb 13 15:38:03 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Rename package
+  * gnu-unifont-ttf-fonts -> gnu-unifont-fonts
+- Package otf fonts. Introduce new subpackages
+  * gnu-unifont-otf-fonts
+  * gnu-unifont-jp-otf-fonts
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Tue Sep 20 19:08:49 UTC 2022 - Андрей Алыпов <and.november@opensuse.org>
+
+- update to version 15.0.01
+
+-------------------------------------------------------------------
+Tue Jul 27 16:36:08 UTC 2021 - Андрей Алыпов <and.november@opensuse.org>
+
+- update to version 13.0.06
+
+-------------------------------------------------------------------
+Mon Apr 13 10:22:15 UTC 2020 - Андрей Алыпов <and.november@opensuse.org>
+
+- added fonts
+- added new package gnu-unifont-jp-ttf-fonts
+
+-------------------------------------------------------------------
+Sun Apr 12 19:18:55 UTC 2020 - Андрей Алыпов <and.november@opensuse.org>
+
+- initial package (version 13.0.01) for openSUSE

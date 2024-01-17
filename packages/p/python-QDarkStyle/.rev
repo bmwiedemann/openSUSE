@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>132bafd067efcf1634e839fbb0e6cfad</srcmd5>
+    <version>2.6.5</version>
+    <time>1551024633</time>
+    <user>coolo</user>
+    <comment>New package python-QDarkStyle</comment>
+    <requestid>670113</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aaaa0f75a8cd6abbad2accd88a08fe60</srcmd5>
+    <version>2.6.8</version>
+    <time>1558690380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705019</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ef965d54b08d379a0203b7bef98dd4e6</srcmd5>
+    <version>2.8</version>
+    <time>1580300107</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the tarball fetching
+
+- disable python2 as build dependency pyside is only available on python3
+- update to version 2.8:
+ -  Fix tooltip giant rectangle #174
+ -  Fix QTextEdit wihout borders inside frame #188
+ -  Fix PyQt5 issuies on dropbown #191
+ -  Fix combo box with icons #169
+ -  Fix QToolbBar vertical handle #210
+ -  Fix pane tab labelcropped on activation #199
+ -  Enhance vertical/horiontal lines #184
+ -  Enhance tool button size and spacing #181, #183, #202
+ -  Enhance buttons and inputs with focus, blue border #194, #211
+ -  Enhance QSplitter #207
+ -  Removed QStatusBar vertical lines #205
+- update to version 2.7:
+ -  Remove utils from import in qdarkstyle, #170
+ -  Fix border colors in tool button #176
+ -  Fix scroll area and stacked with 2px padding, #159
+ -  Fix backgroung submenu color, #179
+ -  Fix extra border aside header's arrow indicator, #180
+ -  Fix menu right arrrow indicator
+ -  Fix slide bars colors, #150
+ -  Fix QLabels problems, #163, #139
+ -  Fix problems with example settings using PySide2 and --no\_dark #167
+ -  Provide SVG files for all images, standard names and sizes, fix images, #149
+ -  Improve images and add high resolution images, #140
+ -  Improve docs
+ -  Add check to scripts for generating images, #137
+ -  Fix tox and travis scripts #76</comment>
+    <requestid>767948</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bc1b2777bb4a2742a796ff3ebbad64a3</srcmd5>
+    <version>2.8.1</version>
+    <time>1589892552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806988</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>14051e41a44bd84d98f65918e11216d1</srcmd5>
+    <version>2.8.1</version>
+    <time>1609344777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859297</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9f95f416fc1fc5e4156a2fc63c918c93</srcmd5>
+    <version>3.0.2</version>
+    <time>1618061263</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>884006</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bd757cb8b9f82897835fcb27d4ccbe95</srcmd5>
+    <version>3.0.2</version>
+    <time>1692294274</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104323</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>85579b0fe25d0cfa9e4c18cf0aac7dca</srcmd5>
+    <version>3.2.1</version>
+    <time>1701121390</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128986</requestid>
+  </revision>
+</revisionlist>

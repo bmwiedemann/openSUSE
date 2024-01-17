@@ -1,0 +1,8 @@
+<package name="openbabel" project="openSUSE:Factory">
+  <title>Open Babel - The Open Source Chemistry Toolbox</title>
+  <description>Open Babel is a chemical toolbox designed to speak the many languages
+of chemical data. It's an open, collaborative project allowing anyone
+to search, convert, analyze, or store data from molecular modeling,
+chemistry, solid-state materials, biochemistry, or related areas.</description>
+  <devel project="science" package="openbabel"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="pamix" project="openSUSE:Factory">
+  <title>ncurses based pulseaudio mixer</title>
+  <description>ncurses/curses pulseaudio mixer in c++ similar to pavucontrol
+</description>
+  <devel project="multimedia:libs" package="pamix"/>
+</package>

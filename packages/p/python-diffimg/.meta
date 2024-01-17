@@ -1,0 +1,8 @@
+<package name="python-diffimg" project="openSUSE:Factory">
+  <title>Library to compute the percent difference between images</title>
+  <description>Get the percent difference in images and generate a diff image.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-diffimg"/>
+  <url>https://github.com/nicolashahn/python-image-diff</url>
+</package>

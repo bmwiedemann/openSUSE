@@ -1,0 +1,309 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d438551e7b6aee180389f7586c1a7216</srcmd5>
+    <version>2.3.6</version>
+    <time>1579195184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751596</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f5a3f43fbd76baf9e0070b71a8a133c7</srcmd5>
+    <version>2.4.0</version>
+    <time>1584745073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786721</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce5ba1d33b1a7bb3caf9468692727db6</srcmd5>
+    <version>2.4.1</version>
+    <time>1586555599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.4.1</comment>
+    <requestid>792819</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e78cb9675627a8a56cb5f8b5a0234f36</srcmd5>
+    <version>2.4.2</version>
+    <time>1590506448</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808369</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef8c5ce79271df50d0d805731d0ed323</srcmd5>
+    <version>2.4.3</version>
+    <time>1591101497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810499</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d79cd890c86a74466dd1e8ce3a0fb8cd</srcmd5>
+    <version>2.4.4</version>
+    <time>1591990868</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 2.4.4</comment>
+    <requestid>813806</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>57a2a62455d1306c7ea8b2b4b01c7075</srcmd5>
+    <version>2.4.5</version>
+    <time>1593200975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817221</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>400d538a0aa4d2c42735fc04bd8845d2</srcmd5>
+    <version>2.4.5.2</version>
+    <time>1594894557</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>820966</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>acb694045ab9e7177d4e2c1d8707ba35</srcmd5>
+    <version>2.4.6</version>
+    <time>1595864906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822964</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>449f0eab130083bfc534f84c44af49f0</srcmd5>
+    <version>2.5.5</version>
+    <time>1598885291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830597</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9e6f53d00e5fe2d68fd7de3dd7b51eda</srcmd5>
+    <version>2.6.1</version>
+    <time>1603202736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842376</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2ec4076d3e6ab58f2588dfcdf03c8623</srcmd5>
+    <version>2.6.2</version>
+    <time>1603369541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843267</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>051819588dac73fce198a6051de1d55f</srcmd5>
+    <version>2.6.3</version>
+    <time>1603821645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844148</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b3ea7f952708bc466c1e7d34f11929e</srcmd5>
+    <version>2.7.0</version>
+    <time>1607197021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.7.0
+  * More Keen Dreams fixes
+  * More Lua support and remaining python code is now completely
+    removed
+  * Added sound buffer amplifier for improving the sound/music
+    quality hopefully on certain systems</comment>
+    <requestid>853191</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>727ee66555465f89f5c215018782e128</srcmd5>
+    <version>2.7.1</version>
+    <time>1607877037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.1
+  * Bugfix release (forwarded request 855497 from mnhauke)</comment>
+    <requestid>855514</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a895be6ae1c2bbd26789f31f613be38b</srcmd5>
+    <version>2.7.2</version>
+    <time>1607965769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855599</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5a680056d14be5ec34cfcd92e3a079e3</srcmd5>
+    <version>2.7.3</version>
+    <time>1608318005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.3
+  * Smarter Game store. Catalogue entries can be read later at
+    runtime and in the background (forwarded request 856879 from mnhauke)</comment>
+    <requestid>856880</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6c140400afe34980eab0310de88e11d9</srcmd5>
+    <version>2.7.4</version>
+    <time>1609253542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859058</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6890a1b7c6df40557453efd0c1d736da</srcmd5>
+    <version>2.7.5</version>
+    <time>1609783685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860016</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>58d350f3c8747a14950b0122a44ce5c3</srcmd5>
+    <version>2.7.6</version>
+    <time>1612273503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868642</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>26b3eaf0ce072be0a3fe5654e3ec858c</srcmd5>
+    <version>2.7.7</version>
+    <time>1613427585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872170</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7147aa3a9c944250eb0e4e80aa5a79cb</srcmd5>
+    <version>2.8.0</version>
+    <time>1619729204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0
+  * Remove legacy SDL 1.2 code at many parts
+  * More stable graphics engine
+  * SDL2 is not an option anymore
+  * Improved logging
+  * Open GL 2.1 is minimum now
+  * Lots of OpenGL fixes
+  * Boost library now is optional
+  * C++17
+- Add patch:
+  * fix-icons.patch
+- Update to version 2.7.9
+  * Add appdata
+- Update to version 2.7.8
+  * More logging. Code cleanups
+</comment>
+    <requestid>889290</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>6422b71e5e3df6750cb6bb3b41a969e4</srcmd5>
+    <version>2.8.0</version>
+    <time>1621034665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893100</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>40a68f024ecd2e009dbe6e6b115d2eda</srcmd5>
+    <version>2.8.1</version>
+    <time>1623268381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898810</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>819a6084922526545b1d144575f90f6c</srcmd5>
+    <version>2.8.2</version>
+    <time>1624462716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901491</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b5affef6fdb1d43205d34a2c439edbd5</srcmd5>
+    <version>3.0.1</version>
+    <time>1632173586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920160</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b1e4f3c7a8c89e266d6267ab7cffb181</srcmd5>
+    <version>3.0.9</version>
+    <time>1637108032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931622</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5d530727e36d3342989cca0f6482a76e</srcmd5>
+    <version>3.1.0</version>
+    <time>1653152790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978413</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>641bc368387eb7ae2c95bfea7e0a2a71</srcmd5>
+    <version>3.1.2</version>
+    <time>1655396463</time>
+    <user>dimstar_suse</user>
+    <comment>- Upate to version 3.1.2</comment>
+    <requestid>982901</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6d76ed9455eccc182c2e9a33e5bc279c</srcmd5>
+    <version>3.1.3</version>
+    <time>1657015802</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.1.3</comment>
+    <requestid>986809</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8946197840e134ff126916d2bed5ee1e</srcmd5>
+    <version>3.2.0</version>
+    <time>1670775422</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.0
+  * More collision fixes, especially relevant in Keen 2.
+  * Improved the Video engine a bit. Changing resolutions on the
+    fly now work better.
+  * Fixed some ledge grabbing issues. (forwarded request 1042029 from mnhauke)</comment>
+    <requestid>1042082</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d53062f5f6c574f37ad8b95d3a2cae65</srcmd5>
+    <version>3.2.0</version>
+    <time>1680018684</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-build-resolve-compile-error-with-gcc-13.patch</comment>
+    <requestid>1074937</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>354d5adb7295e8907ba25e9636d90f68</srcmd5>
+    <version>3.4.0</version>
+    <time>1690469614</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1101092</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a5d969cdfeb318aca8d3a51765ff42e9</srcmd5>
+    <version>3.4.9</version>
+    <time>1693235861</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.4.9</comment>
+    <requestid>1106992</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d685f124d61b978cf92e8fe6ba1c0daf</srcmd5>
+    <version>3.5.0</version>
+    <time>1700421402</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.5.0</comment>
+    <requestid>1127472</requestid>
+  </revision>
+</revisionlist>

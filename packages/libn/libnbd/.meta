@@ -1,0 +1,5 @@
+<package name="libnbd" project="openSUSE:Factory">
+  <title>libnbd</title>
+  <description>NBD client library in userspace</description>
+  <devel project="Virtualization" package="libnbd"/>
+</package>

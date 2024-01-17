@@ -1,0 +1,8 @@
+<package name="servicelog" project="openSUSE:Factory">
+  <title>Servicelog Tools</title>
+  <description>Command-line interfaces for viewing and manipulating the contents of
+the servicelog database.  Servicelog contains entries that are useful
+for performing system service operations, and for providing a history
+of service operations that have been performed on the system.</description>
+  <devel project="Base:System" package="servicelog"/>
+</package>

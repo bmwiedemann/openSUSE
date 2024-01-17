@@ -1,0 +1,8 @@
+<package name="perl-Perl-Tidy" project="openSUSE:Factory">
+  <title>Parses and beautifies perl source</title>
+  <description>This module makes the functionality of the perltidy utility available to
+perl scripts. Any or all of the input parameters may be omitted, in which
+case the @ARGV array will be used to provide input parameters as described
+in the perltidy(1) man page.</description>
+  <devel project="devel:languages:perl" package="perl-Perl-Tidy"/>
+</package>

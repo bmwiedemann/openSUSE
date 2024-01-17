@@ -1,0 +1,176 @@
+From cb2c637fa006c566af05ae84b5085c9a9b14541d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kristoffer=20Gr=C3=B6nlund?= <krig@koru.se>
+Date: Wed, 20 Jun 2018 11:12:56 +0200
+Subject: [PATCH] Use Python 3 for all scripts (bsc#1065966)
+
+---
+ agents/autodetect/autodetect.py         | 2 +-
+ agents/autodetect/autodetect_test.py    | 2 +-
+ agents/autodetect/fence_apc.py          | 2 +-
+ agents/autodetect/fence_bladecenter.py  | 2 +-
+ agents/autodetect/fence_brocade.py      | 2 +-
+ agents/autodetect/fence_ilo_moonshot.py | 2 +-
+ agents/autodetect/fence_lpar.py         | 2 +-
+ agents/autodetect/fencing.py            | 2 +-
+ lib/tests/test_fencing.py               | 2 +-
+ tests/fence_testing_test.py             | 2 +-
+ tests/test-apc2.py                      | 2 +-
+ tests/test-apc5.py                      | 2 +-
+ tests/test-drac4.py                     | 2 +-
+ tests/test-multi-apc2.py                | 2 +-
+ tests/test.py                           | 2 +-
+ 15 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/agents/autodetect/autodetect.py b/agents/autodetect/autodetect.py
+index 24d9a731..366e5212 100755
+--- a/agents/autodetect/autodetect.py
++++ b/agents/autodetect/autodetect.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import pexpect
+ import re
+diff --git a/agents/autodetect/autodetect_test.py b/agents/autodetect/autodetect_test.py
+index a18aaed0..462c469d 100755
+--- a/agents/autodetect/autodetect_test.py
++++ b/agents/autodetect/autodetect_test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import unittest
+ import autodetect as detect
+diff --git a/agents/autodetect/fence_apc.py b/agents/autodetect/fence_apc.py
+index c6dd106e..935f18e8 100644
+--- a/agents/autodetect/fence_apc.py
++++ b/agents/autodetect/fence_apc.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -tt
++#!/usr/bin/python3 -tt
+ 
+ #####
+ ##
+diff --git a/agents/autodetect/fence_bladecenter.py b/agents/autodetect/fence_bladecenter.py
+index d72c07f1..dbcdb0d8 100644
+--- a/agents/autodetect/fence_bladecenter.py
++++ b/agents/autodetect/fence_bladecenter.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -tt
++#!/usr/bin/python3 -tt
+ 
+ #####
+ ##
+diff --git a/agents/autodetect/fence_brocade.py b/agents/autodetect/fence_brocade.py
+index 5257bccb..f1df7a23 100644
+--- a/agents/autodetect/fence_brocade.py
++++ b/agents/autodetect/fence_brocade.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -tt
++#!/usr/bin/python3 -tt
+ 
+ import sys, re
+ import atexit
+diff --git a/agents/autodetect/fence_ilo_moonshot.py b/agents/autodetect/fence_ilo_moonshot.py
+index e161ac65..a7e827bb 100644
+--- a/agents/autodetect/fence_ilo_moonshot.py
++++ b/agents/autodetect/fence_ilo_moonshot.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -tt
++#!/usr/bin/python3 -tt
+ 
+ import sys
+ import atexit
+diff --git a/agents/autodetect/fence_lpar.py b/agents/autodetect/fence_lpar.py
+index 6676e1c6..59cc2213 100644
+--- a/agents/autodetect/fence_lpar.py
++++ b/agents/autodetect/fence_lpar.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -tt
++#!/usr/bin/python3 -tt
+ 
+ #####
+ ##
+diff --git a/agents/autodetect/fencing.py b/agents/autodetect/fencing.py
+index ea21ace1..5d891eee 100644
+--- a/agents/autodetect/fencing.py
++++ b/agents/autodetect/fencing.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python -tt
++#!/usr/bin/python3 -tt
+ 
+ import sys, getopt, time, os, uuid, pycurl, stat
+ import pexpect, re, syslog
+diff --git a/lib/tests/test_fencing.py b/lib/tests/test_fencing.py
+index 6ee93858..389e9746 100644
+--- a/lib/tests/test_fencing.py
++++ b/lib/tests/test_fencing.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import unittest
+ import sys
+diff --git a/tests/fence_testing_test.py b/tests/fence_testing_test.py
+index 36b2a5e0..9da9d0cf 100755
+--- a/tests/fence_testing_test.py
++++ b/tests/fence_testing_test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import unittest
+ import fence_testing
+diff --git a/tests/test-apc2.py b/tests/test-apc2.py
+index bb5aefd8..d4325b9d 100755
+--- a/tests/test-apc2.py
++++ b/tests/test-apc2.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ from fence_testing import test_action
+ 
+diff --git a/tests/test-apc5.py b/tests/test-apc5.py
+index 6cea3b1c..2679b15b 100755
+--- a/tests/test-apc5.py
++++ b/tests/test-apc5.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ from fence_testing import test_action
+ 
+diff --git a/tests/test-drac4.py b/tests/test-drac4.py
+index 75c24c51..b750f0f3 100755
+--- a/tests/test-drac4.py
++++ b/tests/test-drac4.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ from fence_testing import test_action
+ 
+diff --git a/tests/test-multi-apc2.py b/tests/test-multi-apc2.py
+index 7ab9754d..e06e3d97 100755
+--- a/tests/test-multi-apc2.py
++++ b/tests/test-multi-apc2.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ from fence_testing import test_action
+ 
+diff --git a/tests/test.py b/tests/test.py
+index 8e82ed98..a39822ec 100755
+--- a/tests/test.py
++++ b/tests/test.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ from fence_testing import test_action
+ 
+-- 
+2.17.1
+

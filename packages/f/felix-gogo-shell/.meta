@@ -1,0 +1,5 @@
+<package name="felix-gogo-shell" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="felix-gogo-shell"/>
+</package>

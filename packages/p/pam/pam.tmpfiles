@@ -1,0 +1,4 @@
+#Type Path               Mode User Group Age Argument
+d     /run/faillock      0755 root root  -   -
+d     /run/motd.d        0755 root root  -   -
+d     /run/pam_timestamp 0755 root root  -   -

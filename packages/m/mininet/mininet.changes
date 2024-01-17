@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Jan 30 13:55:00 UTC 2023 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Update to upstream 2.3.0 (yes, 2.3.0 is newer than 2.3.0d6 for upstream):
+  * adds better Python 3 compatibility
+  * updated PIP URL
+  * removed unencrypted git protocol use
+
+-------------------------------------------------------------------
+Thu Jan  9 13:34:59 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- With the upgrade to 2.3.0d6 obsoleted these patches:
+  * mininet-2.2.1-private-mount.patch
+  * mininet-2.2.1-fallback-to-ovs-testcontroller.patch
+  * mininet-2.2.1-add-ovs-testcontroller.patch
+  * mininet-2.2.1-default-ofport.patch
+
+-------------------------------------------------------------------
+Thu Jan  9 12:58:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename back to mininet as it is simple tool only
+- Build with just python3 in mind
+
+-------------------------------------------------------------------
+Wed Dec 11 03:04:03 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Upgraded to version 2.3.0d6.
+- Removed previous patches, as they seem to have been merged upstream.
+- SPEC remade to conform to python single-spec.
+- Enabled tests (but they seem to required a root user).
+
+-------------------------------------------------------------------
+Mon Mar 13 23:47:26 UTC 2017 - mchandras@suse.de
+
+- Adjust openvswitch dependencies since the openvswitch and openvswitch-dpdk
+  packages have been merged into a single 'openvswitch' package.
+
+-------------------------------------------------------------------
+Fri Nov 25 11:04:59 UTC 2016 - mchandras@suse.de
+
+- Use the openvswitch capabilities as dependencies to accept the
+  openvswitch-dpdk packages as well.
+
+-------------------------------------------------------------------
+Thu Mar 24 18:19:52 UTC 2016 - mchandras@suse.de
+
+- Cherry-pick upstream patches (and one from PR) to fix compatibility
+  with latest OVS releases.
+  * Add mininet-2.2.1-add-ovs-testcontroller.patch: Take renamed
+    ovs-testcontroller into consideration when checking for existing
+    OVS controllers.
+  * Add mininet-2.2.1-fallback-to-ovs-testcontroller: Fixes previous
+    upstream patch to use the ovs-testcontroller if it's present.
+  * Add mininet-2.2.1-default-ofport: Adds support for the new OpenFlow
+    port if the controller listens to it.
+
+-------------------------------------------------------------------
+Mon Feb 29 23:00:23 UTC 2016 - mchandras@suse.de
+
+- Initial commit of version 2.2.1
+  * Add upstream mininet-2.2.1-private-mount.patch: Fixes mounts
+    with newer systemd
+

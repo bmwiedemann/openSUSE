@@ -1,0 +1,5 @@
+<package name="terminus" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:terminals" package="terminus"/>
+</package>

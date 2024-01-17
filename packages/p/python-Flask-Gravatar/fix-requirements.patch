@@ -1,0 +1,53 @@
+Index: Flask-Gravatar-0.5.0/Flask_Gravatar.egg-info/requires.txt
+===================================================================
+--- Flask-Gravatar-0.5.0.orig/Flask_Gravatar.egg-info/requires.txt
++++ Flask-Gravatar-0.5.0/Flask_Gravatar.egg-info/requires.txt
+@@ -1,25 +1,5 @@
+ Flask>=0.10
+ 
+-[all]
+-Sphinx>=1.4.2
+-check-manifest>=0.25
+-coverage>=4.0
+-isort>=4.2.2
+-pydocstyle>=1.0.0
+-pytest-cache>=1.0
+-pytest-cov>=1.8.0
+-pytest-pep8>=1.0.6
+-pytest>=2.8.0
+-Sphinx>=1.4.2
+-check-manifest>=0.25
+-coverage>=4.0
+-isort>=4.2.2
+-pydocstyle>=1.0.0
+-pytest-cache>=1.0
+-pytest-cov>=1.8.0
+-pytest-pep8>=1.0.6
+-pytest>=2.8.0
+-
+ [docs]
+ Sphinx>=1.4.2
+ 
+Index: Flask-Gravatar-0.5.0/setup.py
+===================================================================
+--- Flask-Gravatar-0.5.0.orig/setup.py
++++ Flask-Gravatar-0.5.0/setup.py
+@@ -21,9 +21,6 @@ tests_require = [
+     'coverage>=4.0',
+     'isort>=4.2.2',
+     'pydocstyle>=1.0.0',
+-    'pytest-cache>=1.0',
+-    'pytest-cov>=1.8.0',
+-    'pytest-pep8>=1.0.6',
+     'pytest>=2.8.0',
+ ]
+ 
+@@ -39,7 +36,7 @@ for reqs in extras_require.values():
+     extras_require['all'].extend(reqs)
+ 
+ setup_requires = [
+-    'pytest-runner>=2.6.2',
++#    'pytest-runner>=2.6.2',
+ ]
+ 
+ install_requires = [

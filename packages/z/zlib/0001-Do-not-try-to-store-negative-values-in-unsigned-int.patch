@@ -1,0 +1,28 @@
+From bb5eec59e3ec66f6dccb79b1900aa806a1cca12e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Fri, 8 Dec 2017 14:59:08 +0100
+Subject: [PATCH] Do not try to store negative values in unsigned int
+
+---
+ deflate.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/deflate.c b/deflate.c
+index 1ec7614..1bad1eb 100644
+--- a/deflate.c
++++ b/deflate.c
+@@ -1536,7 +1536,10 @@ local void fill_window(s)
+ 
+         /* Initialize the hash value now that we have some input: */
+         if (s->lookahead + s->insert >= MIN_MATCH) {
+-            uInt str = s->strstart - s->insert;
++            uInt str = 0;
++            /* storing negative values to uInt is not good idea */
++            if (s->strstart - s->insert > 0)
++                str = s->strstart - s->insert;
+             s->ins_h = s->window[str];
+             UPDATE_HASH(s, s->ins_h, s->window[str + 1]);
+ #if MIN_MATCH != 3
+-- 
+2.15.1
+

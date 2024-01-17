@@ -1,0 +1,47 @@
+--- build.xml	2022-03-20 01:20:17.315792163 +0100
++++ build.xml	2022-03-20 01:20:55.698993273 +0100
+@@ -745,6 +745,7 @@
+             <filterset>
+                 <filter token="SPECVERSION" value="${jar.spec.version}"/>
+                 <filter token="IMPLVERSION" value="${jar.impl.version}"/>
++                <filter token="DATAVERSION" value="${icu4j.data.version}"/>
+                 <filter token="COPYRIGHT" value="${jar.copyright.info}"/>
+                 <filter token="EXECENV" value="${jar.exec.env}"/>
+             </filterset>
+--- main/shared/build/common-targets.xml	2021-10-28 08:02:09.000000000 +0200
++++ main/shared/build/common-targets.xml	2022-03-20 01:20:55.698993273 +0100
+@@ -75,6 +75,7 @@
+             <filterset>
+                 <filter token="SPECVERSION" value="${jar.spec.version}"/>
+                 <filter token="IMPLVERSION" value="${jar.impl.version}"/>
++                <filter token="DATAVERSION" value="${icu4j.data.version}"/>
+                 <filter token="COPYRIGHT" value="${jar.copyright.info}"/>
+                 <filter token="EXECENV" value="${jar.exec.env}"/>
+             </filterset>
+--- manifest.stub	2021-10-28 08:02:10.000000000 +0200
++++ manifest.stub	2022-03-20 01:20:55.698993273 +0100
+@@ -15,5 +15,23 @@
+ Bundle-Copyright: @COPYRIGHT@
+ Bundle-RequiredExecutionEnvironment: @EXECENV@
+ Main-Class: com.ibm.icu.util.VersionInfo
+-Export-Package: com.ibm.icu.lang,com.ibm.icu.math,com.ibm.icu.number,com.ibm.icu.text,com.ibm.icu.util
++Export-Package: com.ibm.icu.lang;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.math;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.number;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.text;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.util;base=true;full=true;version="@IMPLVERSION@",
++ com.ibm.icu.impl;x-internal:=true,
++ com.ibm.icu.impl.data;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.brkitr;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.coll;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.curr;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.lang;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.rbnf;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.region;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.translit;x-internal:=true,
++ com.ibm.icu.impl.data.icudt@DATAVERSION@b.zone;x-internal:=true,
++ com.ibm.icu.impl.duration;x-internal:=true,
++ com.ibm.icu.impl.locale;x-internal:=true
++Bundle-ActivationPolicy: lazy
+ Automatic-Module-Name: com.ibm.icu

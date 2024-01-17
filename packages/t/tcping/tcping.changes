@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Sun Nov 12 20:34:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * new feature: add `-i` to specify the interval between sending
+    probes.
+  * new feature: add `-I` to specify the source interface to use
+    for sending probes.
+  * new feature: add `-t` to specify a custom timeout for probes.
+  * new feature: add `--db` to specify the path and file name to
+    store tcping output to sqlite database. e.g. `--db
+    /tmp/tcping.db`.
+  * fix: add `rtt` to JSON output
+  * refactor: remove unnecessary custom types
+  * refactor: memory align `structs`
+  * refactor: Debian packaging instructions
+
+-------------------------------------------------------------------
+Sun Aug 27 14:52:34 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  * new feature: add -c or count flag to exit TCPING after a
+    certain amount of probes specified by user.
+  * fix: packet loss NaN when program terminated too quickly.
+  * fix: random IP address selector index out of range bug.
+  * fix: display format of IPv4 embedded in IPv6 addresses.
+  * fix: time report bug. Everything is now accurate.
+  * docs: improve documentation.
+- Update to version 1.22.1
+  * new feature: implement JSON output.
+  * new feature: implement JSON output prettifier.
+  * fix IP version selection bug when -4 or -6 flags are passed.
+- Update to version 1.21.1
+  * make stats struct fields' names uniform.
+  * add | separator to summary report for better visibility.
+  * fix retry resolve logic.
+- Update to version 1.21.0
+  * add option to enforce the use of IPv4 -4 or IPv6 -6 addresses
+    only.
+  * instead of always picking the first, randomly pick an address
+    from the list of resolved IP addresses.
+- Update to version 1.20.0
+  * add hostname, IP and port number to summary output.
+
+-------------------------------------------------------------------
+Fri Apr  7 19:00:45 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.2
+  * display stats even if all the probes had failed update version
+
+-------------------------------------------------------------------
+Sat Mar  4 16:52:49 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.1
+  * close TCP connections faster to lessen the resource
+    utilization on target.
+
+-------------------------------------------------------------------
+Sun Feb 26 13:33:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.0
+  * implmenet sub-millisecond timing report to make it suitable
+    for Data center and Cloud environments.
+  * fix downtime report miscalculation.
+  * misc fixes
+
+-------------------------------------------------------------------
+Sat Oct 15 12:29:28 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package for tcping, version 1.12.1

@@ -1,0 +1,10 @@
+<package name="python-SimpleWebSocketServer" project="openSUSE:Factory">
+  <title>A Simple Websocket Server written in Python</title>
+  <description>A Simple Websocket Server written in Python
+
+- RFC 6455 (All latest browsers)
+- TLS/SSL out of the box
+- Passes Autobahns Websocket Testsuite
+- Support for Python 2 and 3</description>
+  <devel project="devel:languages:python" package="python-SimpleWebSocketServer"/>
+</package>

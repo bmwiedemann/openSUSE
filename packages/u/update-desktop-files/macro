@@ -1,0 +1,6 @@
+# macro: %suse_update_desktop_file
+#     Used to add easily a category to .desktop files according to XDG
+#     standard.
+%suse_update_desktop_file(cinrud:D:N:C:G:) \
+   /usr/lib/rpm/suse_update_desktop_file.sh %{**} || exit 1 \
+  %nil

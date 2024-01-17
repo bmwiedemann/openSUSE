@@ -1,0 +1,79 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Oct 4 19:59:38 2021 +0200
+Subject: vnfs: SUSE Templates - Leap 15.1 -> Leap 15.3, added SLE-15
+Patch-mainline: Not yet
+Git-commit: abf97eb1996a3bd2477efb0237000042fc6462e0
+References: 
+
+- Change Leap 15.1 template to Leap 15.3.
+- Change openSUSE-release -> distrobution-release
+- Add SLE-15 template (valid for all service packs).
+  Leave ZYPP_MIRROR empty, this will retrieve the zypper data
+  from the currently installed product.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ vnfs/libexec/wwmkchroot/Makefile.am                    |  2 +-
+ .../{opensuse-15.0.tmpl => opensuse-15.3.tmpl}         |  8 ++++----
+ vnfs/libexec/wwmkchroot/sle-15.tmpl                    | 18 ++++++++++++++++++
+ 3 files changed, 23 insertions(+), 5 deletions(-)
+diff --git a/vnfs/libexec/wwmkchroot/Makefile.am b/vnfs/libexec/wwmkchroot/Makefile.am
+index 99bfe9b..2246a52 100644
+--- a/vnfs/libexec/wwmkchroot/Makefile.am
++++ b/vnfs/libexec/wwmkchroot/Makefile.am
+@@ -1,6 +1,6 @@
+ wwmkchrootdir = $(libexecdir)/warewulf/wwmkchroot
+ 
+-dist_wwmkchroot_SCRIPTS = centos-5.tmpl centos-6.tmpl centos-7.tmpl include-rhel rhel-generic.tmpl sl-5.tmpl sl-6.tmpl sl-7.tmpl functions include-deb debian-8.tmpl debian7-32.tmpl debian7-64.tmpl golden-system.tmpl include-suse opensuse-42.3.tmpl opensuse-15.0.tmpl opensuse-tumbleweed.tmpl sles-11.tmpl sles-12.tmpl include-ubuntu ubuntu-16.04.tmpl
++dist_wwmkchroot_SCRIPTS = centos-5.tmpl centos-6.tmpl centos-7.tmpl include-rhel rhel-generic.tmpl sl-5.tmpl sl-6.tmpl sl-7.tmpl functions include-deb debian-8.tmpl debian7-32.tmpl debian7-64.tmpl golden-system.tmpl include-suse opensuse-42.3.tmpl opensuse-15.3.tmpl opensuse-tumbleweed.tmpl sles-11.tmpl sles-12.tmpl sle-15.tmpl include-ubuntu ubuntu-16.04.tmpl
+  
+ 
+ MAINTAINERCLEANFILES = Makefile.in
+diff --git a/vnfs/libexec/wwmkchroot/opensuse-15.0.tmpl b/vnfs/libexec/wwmkchroot/opensuse-15.3.tmpl
+similarity index 71%
+rename from vnfs/libexec/wwmkchroot/opensuse-15.0.tmpl
+rename to vnfs/libexec/wwmkchroot/opensuse-15.3.tmpl
+index db0f43e..4f8c96f 100644
+--- a/vnfs/libexec/wwmkchroot/opensuse-15.0.tmpl
++++ b/vnfs/libexec/wwmkchroot/opensuse-15.3.tmpl
+@@ -4,12 +4,12 @@
+ 
+ 
+ 
+-# Define the location of the YUM repository
+-ZYP_MIRROR="http://download.opensuse.org/distribution/leap/15.0/repo/oss/,\
+-http://download.opensuse.org/update/leap/15.0/oss/"
++# Define the location of the zypper repository
++ZYP_MIRROR="http://download.opensuse.org/distribution/leap/15.3/repo/oss/,\
++http://download.opensuse.org/update/leap/15.3/oss/"
+ 
+ # Install only what is necessary/specific for this distribution
+-PKGLIST="systemd-sysvinit aaa_base bash dracut openSUSE-release coreutils \
++PKGLIST="systemd-sysvinit aaa_base bash dracut distribution-release coreutils \
+     e2fsprogs ethtool filesystem findutils gawk grep iproute2 iputils \
+     mingetty net-tools nfs-kernel-server pam rpcbind procps psmisc shadow \
+     rsync sed rsyslog tcpd timezone util-linux tar less gzip kmod-compat \
+diff --git a/vnfs/libexec/wwmkchroot/sle-15.tmpl b/vnfs/libexec/wwmkchroot/sle-15.tmpl
+new file mode 100644
+index 0000000..fe46b99
+--- /dev/null
++++ b/vnfs/libexec/wwmkchroot/sle-15.tmpl
+@@ -0,0 +1,18 @@
++# The general SUSE include has all of the necessary functions, but requires
++# some basic variables specific to each chroot type to be defined.
++. include-suse
++
++
++ZYP_MIRROR=
++
++# Install only what is necessary/specific for this distribution
++PKGLIST="systemd-sysvinit aaa_base bash dracut distribution-release coreutils \
++    e2fsprogs ethtool filesystem findutils gawk grep iproute2 iputils \
++    mingetty net-tools nfs-kernel-server pam rpcbind procps psmisc shadow \
++    rsync sed rsyslog tcpd timezone util-linux tar less gzip kmod-compat \
++    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget zypper"
++
++
++
++
++# vim:filetype=sh:syntax=sh:expandtab:ts=4:sw=4:

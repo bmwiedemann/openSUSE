@@ -1,0 +1,7 @@
+<package name="gnome-packagekit" project="openSUSE:Factory">
+  <title>Applications for the PackageKit API</title>
+  <description>GNOME PackageKit provides session applications for the PackageKit API.
+There are several utilities designed for installing, updating and
+removing packages on your system.</description>
+  <devel project="GNOME:Factory" package="gnome-packagekit"/>
+</package>

@@ -1,0 +1,60 @@
+From e6d7bb6873531beb5b013a49e0b094cd7680cf89 Mon Sep 17 00:00:00 2001
+From: Mark Goodwin <mgoodwin@redhat.com>
+Date: Mon, 30 Aug 2021 11:22:19 +1000
+Subject: [PATCH] services: switch logutil and pmieutil scripts from type
+ oneshot to exec
+
+Switches the "daily" and "check" and related services from Type=oneshot
+to Type=exec (or Type=simple for older versions of systemd that do
+not support Type=exec) and nuke KillMode=none. Explicitly specify
+Restart=none, even though it's the default, to be clear that these
+timer invoked service scripts are not long running service daemons
+and are expected to exit normally.
+
+These changes are a precursor to further improvements to the long
+running PCP services and systemd integration.
+
+All tests in the logutil and pmieutil QA groups are passing and soak
+testing on several platforms has not shown any new issues (and the
+systemd warnings about "Support for KillMode=none is deprecated" are
+gone).
+
+Resolves: RHBZ#1942844
+Resolves: Fedora BZ#1897945
+Resolves: https://github.com/performancecopilot/pcp/issues/1186
+Obsoletes the earlier PR#1355.
+
+(cherry picked from commit 705b657107e8c812c96fa8b74d0f5d6384b00888)
+Reviewed-by: David Disseldorp <ddiss@suse.de>
+References: bsc#1186511
+---
+ configure                                          | 13 +++++++++++++
+ configure.ac                                       | 14 ++++++++++++++
+ src/include/builddefs.in                           |  3 +++
+ src/pmfind/GNUmakefile                             |  1 +
+ src/pmfind/pmfind.service.in                       |  4 ++--
+ src/pmie/GNUmakefile                               |  2 ++
+ src/pmie/pmie_check.service.in                     |  4 ++--
+ src/pmie/pmie_daily.service.in                     |  4 ++--
+ src/pmlogger/GNUmakefile                           |  5 +++++
+ src/pmlogger/pmlogger_check.service.in             |  4 ++--
+ src/pmlogger/pmlogger_daily-poll.service.in        |  4 ++--
+ src/pmlogger/pmlogger_daily.service.in             |  4 ++--
+ src/pmlogger/pmlogger_daily_report-poll.service.in |  4 ++--
+ src/pmlogger/pmlogger_daily_report.service.in      |  4 ++--
+ 14 files changed, 54 insertions(+), 16 deletions(-)
+
+Index: pcp-5.3.7/src/include/builddefs.in
+===================================================================
+--- pcp-5.3.7.orig/src/include/builddefs.in
++++ pcp-5.3.7/src/include/builddefs.in
+@@ -944,6 +944,9 @@ PCP_GROUP_INSTALL = @pcp_group_install@
+ # systemd service type for logutil scripts
+ SD_SERVICE_TYPE=@sd_service_type@
+ 
++# systemd service type for logutil scripts
++SD_SERVICE_TYPE=@sd_service_type@
++
+ PCPLIB = -lpcp
+ PCPLIB_EXTRAS = $(LIB_FOR_MATH) $(LIB_FOR_PTHREADS) $(LIB_FOR_DLOPEN) $(LIB_FOR_RT)
+ ifneq "$(PCPLIB)" "$(LIB_FOR_BASENAME)"

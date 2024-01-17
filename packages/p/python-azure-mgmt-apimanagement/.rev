@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9daca762aa2fe903172d7cbc66298720</srcmd5>
+    <version>0.1.0</version>
+    <time>1570710793</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure ADK component package</comment>
+    <requestid>735781</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>51c59ecc3c88fde6a21c1ac8e5f251da</srcmd5>
+    <version>0.2.0</version>
+    <time>1601652319</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833089 from glaubitz)</comment>
+    <requestid>833112</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d1dc8f4e6b238bb1ea86fb087075ce44</srcmd5>
+    <version>0.2.0</version>
+    <time>1607548582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853886</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6196a2fed921a89caae695f33aa23118</srcmd5>
+    <version>1.0.0</version>
+    <time>1611348625</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 862095 from glaubitz)</comment>
+    <requestid>862341</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>837d6b94f6411dfad86f9ddfb118ae45</srcmd5>
+    <version>2.0.0</version>
+    <time>1620400508</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 890787 from glaubitz)</comment>
+    <requestid>890800</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cff8866ddad99ddbec5de88d1a5e6d3e</srcmd5>
+    <version>2.1.0</version>
+    <time>1629101474</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>911833</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5be23e83c19516dfe570bb2420b66c70</srcmd5>
+    <version>3.0.0</version>
+    <time>1642112463</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 946018 from glaubitz)</comment>
+    <requestid>946115</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef713a6ebf1376210f40e7fdb2f85df1</srcmd5>
+    <version>4.0.0</version>
+    <time>1682079476</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1080502 from glaubitz)</comment>
+    <requestid>1081173</requestid>
+  </revision>
+</revisionlist>

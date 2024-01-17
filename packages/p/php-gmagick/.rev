@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b1accc4ba16003da4c4f0e2f8d972df</srcmd5>
+    <version>2.0.6RC1</version>
+    <time>1613774924</time>
+    <user>dimstar_suse</user>
+    <comment>Rename php7-gmagick to php-gmagick</comment>
+    <requestid>873871</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3bfa15cdbb1ea40cf2019fb48c476204</srcmd5>
+    <version>2.0.6RC1</version>
+    <time>1643321824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949535</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3d782990200cf0a6eb23916f412b7316</srcmd5>
+    <version>2.0.6RC1</version>
+    <time>1670703528</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)</comment>
+    <requestid>1041992</requestid>
+  </revision>
+</revisionlist>

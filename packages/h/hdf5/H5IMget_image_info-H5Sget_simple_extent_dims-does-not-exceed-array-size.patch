@@ -1,0 +1,33 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Sep 27 10:29:56 2022 +0200
+Subject: H5IMget_image_info: H5Sget_simple_extent_dims() does not exceed array size
+Patch-mainline: Not yet
+Git-repo: ssh://eich@192.168.122.1:/home/eich/sources/HPC/hdf5
+Git-commit: c1baab0937c8956a15efc41240f68d573c7b7324
+References: 
+
+Malformed hdf5 files may provide more dimensions than the array dim[] is
+able to hold. Check number of elements first by calling
+H5Sget_simple_extent_dims() with NULL for both 'dims' and 'maxdims' arguments.
+This will cause the function to return only the number of dimensions.
+
+This fixes CVE-2018-17439
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ hl/src/H5IM.c | 2 ++
+ 1 file changed, 2 insertions(+)
+diff --git a/hl/src/H5IM.c b/hl/src/H5IM.c
+index ff10d573c7..e37c696e25 100644
+--- a/hl/src/H5IM.c
++++ b/hl/src/H5IM.c
+@@ -283,6 +283,8 @@ H5IMget_image_info(hid_t loc_id, const char *dset_name, hsize_t *width, hsize_t
+     if ((sid = H5Dget_space(did)) < 0)
+         goto out;
+ 
++    if (H5Sget_simple_extent_dims(sid, NULL, NULL) > IMAGE24_RANK)
++        goto out;
+     /* Get dimensions */
+     if (H5Sget_simple_extent_dims(sid, dims, NULL) < 0)
+         goto out;

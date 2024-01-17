@@ -1,0 +1,33 @@
+From bebdffb4de586fb43fd07ac549121f4b22f6812d Mon Sep 17 00:00:00 2001
+From: "Douglas R. Reno" <renodr@linuxfromscratch.org>
+Date: Mon, 18 Oct 2021 13:18:01 -0500
+Subject: [PATCH] Fix CVE-2021-39359 by forcing TLS certificate validation
+
+This was done by adding "ssl-use-system-ca-file", TRUE to the options
+for each soup_session_new_with_options() call that was made.
+
+Tested on Linux From Scratch 11.0 and Debian 11.
+
+Fixes #249
+---
+ providers/web/gda-web-provider.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/providers/web/gda-web-provider.c b/providers/web/gda-web-provider.c
+index cf8d14dc3..cc818895f 100644
+--- a/providers/web/gda-web-provider.c
++++ b/providers/web/gda-web-provider.c
+@@ -355,8 +355,8 @@ gda_web_provider_open_connection (GdaServerProvider *provider, GdaConnection *cn
+ 	g_rec_mutex_init (& (cdata->mutex));
+ 	cdata->server_id = NULL;
+ 	cdata->forced_closing = FALSE;
+-	cdata->worker_session = soup_session_new ();
+-	cdata->front_session = soup_session_new_with_options ("max-conns-per-host", 1, NULL);
++	cdata->worker_session = soup_session_new_with_options ("ssl-use-system-ca-file", TRUE, NULL);
++	cdata->front_session = soup_session_new_with_options ("max-conns-per-host", 1, "ssl-use-system-ca-file", TRUE, NULL);
+ 	if (use_ssl) {
+ 		server_url = g_string_new ("https://");
+ 		g_print ("USING SSL\n");
+-- 
+GitLab
+

@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5db99018c02ceb7d6286ff5eeaed7b35</srcmd5>
+    <version>3.27.92</version>
+    <time>1521051920</time>
+    <user>dimstar_suse</user>
+    <comment>Replaces gnome-tweak-tools</comment>
+    <requestid>584815</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96f90528f7fa9baf5d43e517a9a8c875</srcmd5>
+    <version>3.28.0</version>
+    <time>1521192889</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.28.0</comment>
+    <requestid>587483</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>628514149e316f81f6d560da305ee923</srcmd5>
+    <version>3.28.0</version>
+    <time>1522061041</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589311 from dimstar)</comment>
+    <requestid>589996</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d73e0bb934e4f40fc42fcca4c1f4e469</srcmd5>
+    <version>3.28.1</version>
+    <time>1524144127</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 594663 from iznogood)</comment>
+    <requestid>596124</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8edafad851db14281bd4eae0eaae070</srcmd5>
+    <version>3.30.1</version>
+    <time>1539757122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638980</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1452d64275fae8ef19015e5c5a252299</srcmd5>
+    <version>3.30.2</version>
+    <time>1545223654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657856</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e948c98645e5e5c29182a15b09c3b6dc</srcmd5>
+    <version>3.32.0</version>
+    <time>1556914311</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695653 from dimstar)</comment>
+    <requestid>695700</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bd3545a8b3ff83ffd2f79e37681eba38</srcmd5>
+    <version>3.34.0</version>
+    <time>1571310084</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736569</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e38b9800f8c0d76c00a7091f7cdc173c</srcmd5>
+    <version>3.34.0</version>
+    <time>1597220421</time>
+    <user>dimstar_suse</user>
+    <comment>- Added gnome-tweaks-fix-titlebar-buttons-left.patch: GNOME Tweaks
+  titlebar starts flickering when setting button placement to left,
+  this patch fixs it. (bsc#1162080, glgo#GNOME/gnome-tweaks#245) (forwarded request 824565 from AZhou)</comment>
+    <requestid>824807</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ce5311eae016f8c0dba08a680e122272</srcmd5>
+    <version>3.34.0</version>
+    <time>1606913844</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstreams port to libhandy-1 (forwarded request 851397 from iznogood)</comment>
+    <requestid>851788</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2a20ffcf0065dcd00db2b9120fd51d16</srcmd5>
+    <version>3.34.1</version>
+    <time>1608031644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855312</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>13088d20896ad18f74a035a8a14ecf3c</srcmd5>
+    <version>3.34.1</version>
+    <time>1611595378</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 77dde7477922f645946bfc64b1b25aeed2b01919.patch -- Update
+  Norwegian bokmål translation. (forwarded request 864400 from iznogood)</comment>
+    <requestid>865371</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>99f3d5b8198f7e08d787d3e32146d165</srcmd5>
+    <version>40.beta</version>
+    <time>1618223735</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880976 from dimstar)</comment>
+    <requestid>881145</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9e3e0dbb8da6f184a12a6ded8c5fd458</srcmd5>
+    <version>40.0</version>
+    <time>1619298405</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 40.0 (forwarded request 886228 from dimstar)</comment>
+    <requestid>887479</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d784352a6a2111418a782c5496a1e273</srcmd5>
+    <version>40.0</version>
+    <time>1628584066</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909698 from yfjiang)</comment>
+    <requestid>909743</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3b95f459f0c0f273a55d4f5b80e1569a</srcmd5>
+    <version>40.0</version>
+    <time>1632522900</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920414 from sbrabec)</comment>
+    <requestid>920579</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>031a70a5266ed997bf1f0bafd646759c</srcmd5>
+    <version>40.0</version>
+    <time>1644188025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951414</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4e56681dbcb22ec3c13ddafd53b2d172</srcmd5>
+    <version>40.10</version>
+    <time>1646767889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959912</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>37878ab39888c380941167123dd97832</srcmd5>
+    <version>42.beta</version>
+    <time>1648062990</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963606</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8e2c1bd2ffdac1c65575215022e6486e</srcmd5>
+    <version>42.beta+60</version>
+    <time>1680125194</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1074029 from iznogood)</comment>
+    <requestid>1074642</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5fe92c0d532d224e8b87cb5538bad071</srcmd5>
+    <version>45.0</version>
+    <time>1695853468</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1113197 from iznogood)</comment>
+    <requestid>1113451</requestid>
+  </revision>
+</revisionlist>

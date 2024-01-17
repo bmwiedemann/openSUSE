@@ -1,0 +1,286 @@
+-------------------------------------------------------------------
+Tue Jul 11 15:03:17 UTC 2023 - Eike Waldt <waldt@b1-systems.de>
+
+- Version 0.3.18
+  * Salt no longer vendors six (>=salt-3006.0)
+    https://github.com/saltstack/salt/issues/63874
+
+-------------------------------------------------------------------
+Fri Apr 28 08:55:32 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version 0.3.17
+  * add HANA add_hosts feature
+
+-------------------------------------------------------------------
+Fri Apr 19 14:04:54 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version 0.3.16
+  * store crm state in __context__ instead of __salt__
+
+-------------------------------------------------------------------
+Fri Mar 18 15:02:13 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version 0.3.15
+  * workaround to detect aws cloud_provider
+    details https://github.com/SUSE/ha-sap-terraform-deployments/issues/832
+    until https://github.com/ClusterLabs/crmsh/pull/952 is available
+
+-------------------------------------------------------------------
+Wed Feb  2 16:36:27 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version 0.3.14
+  * do not raise exception on empty HANA query results
+
+-------------------------------------------------------------------
+Thu Jan 20 13:37:10 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version 0.3.13
+  * Add module query to HANA
+
+-------------------------------------------------------------------
+Wed Jul 21 07:55:12 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- Version 0.3.12
+  * Fix typo to fix uninstalled state
+
+-------------------------------------------------------------------
+Thu Mar 11 17:05:02 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- add cluster init support for OCFS2 device
+
+-------------------------------------------------------------------
+Wed Dec 16 09:04:29 UTC 2020 - Aleksei Burlakov <aburlakov@suse.com>
+
+- qdevice support: it can be created when initializing a cluster
+
+-------------------------------------------------------------------
+Thu Oct 15 07:14:20 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.11
+  * Improve extract_pydbapi to check recursively in subfolders
+  (jsc#SLE-4047)
+
+-------------------------------------------------------------------
+Thu Sep 24 12:42:59 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Implement a new state to set the ENSA version grains data 
+
+-------------------------------------------------------------------
+Fri Sep 11 14:09:09 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.10
+  * Add cloud_grains_present state
+  (jsc#SLE-4047)
+
+-------------------------------------------------------------------
+Tue Jun  9 13:08:47 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.9
+  * hana: Fix imp reload usage in py2
+
+-------------------------------------------------------------------
+Fri Jun  5 07:46:01 UTC 2020 - nick wang <nwang@suse.com>
+
+- Version 0.3.8
+  * DRBD: Avoid CommandExecutionError when estimation sync time not ready
+
+-------------------------------------------------------------------
+Thu Jun  4 09:17:52 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.7
+  * Make diskless sbd and using disks self exclusive (bsc#1172432)
+
+  (jsc#ECO-1965, jsc#SLE-4047)
+
+-------------------------------------------------------------------
+Thu May 21 10:14:22 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.6
+  * Add the option to configure the cluster properties and defaults
+  * Update cluster_configured to add `force` flag
+  (bsc#1170702)
+
+-------------------------------------------------------------------
+Fri May  8 23:37:02 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.3.5
+  * Add support to pass extra tar options
+
+-------------------------------------------------------------------
+Fri Mar 27 18:06:32 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.3.4
+  * Add new salt module and state to extract the sar files using SAPCAR
+
+-------------------------------------------------------------------
+Fri Mar 20 14:49:04 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.3
+  * Add new salt state to extract the HANA python dbapi client
+
+-------------------------------------------------------------------
+Thu Mar  5 10:03:39 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.2
+  * Add a new salt state method to update corosync configuration
+    file
+  * Fix travis file to install the py packages in develop mode
+
+-------------------------------------------------------------------
+Fri Jan 24 10:40:26 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.1
+  * Add the virtual_host_mask parameter (gcp uses 32 mask)
+  (jsc#SLE-4031, jsc#SLE-4143, boo#1137989)
+
+-------------------------------------------------------------------
+Wed Jan 22 10:52:20 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
+
+- Version 0.3.0
+  * Add first version of saptune module to apply specific solution
+
+-------------------------------------------------------------------
+Thu Jan  9 15:28:29 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.2.12
+  * Add module fn to update nw installation conf files
+
+-------------------------------------------------------------------
+Wed Jan  8 16:45:18 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.2.11
+  * Add functionality to install hana with xml passwords file
+
+-------------------------------------------------------------------
+Wed Jan 08 10:16:53 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.10
+  Add crmsh --no-overwrite-sshkeys option
+
+-------------------------------------------------------------------
+Mon Dec 23 07:39:31 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.2.9
+  * DRBD: refactory check_sync_status to avoid call drbdsetup
+    multiple times
+
+-------------------------------------------------------------------
+Fri Dec 20 09:12:51 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.2.8
+  * DRBD: check unfinished request in sync status via json
+
+-------------------------------------------------------------------
+Mon Dec 16 09:31:18 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.7
+  * Add automatic cloud detection method to the salt module
+
+-------------------------------------------------------------------
+Wed Dec 11 10:16:53 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.2.6
+  * Add option to configure multiple sbd disks
+
+-------------------------------------------------------------------
+Tue Dec  3 06:41:36 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.2.5
+  DRBD: support to get status via json format by default.
+
+-------------------------------------------------------------------
+Thu Nov 21 09:05:07 UTC 2019 - nick wang <nwang@suse.com>
+
+- Version 0.2.4, fix error parsing drbd status when congested.
+
+-------------------------------------------------------------------
+Mon Nov  5 08:48:50 UTC 2019 - nick wang <nwang@suse.com>
+
+- Create package version 0.2.3 with drbd files renamed.
+
+-------------------------------------------------------------------
+Thu Oct 31 14:58:19 UTC 2019 - Xabier Arbulu <xarbulu@suse.com>
+
+- Create package version 0.2.2 updating how additional_dvds is used
+  in netweavermod
+
+-------------------------------------------------------------------
+Wed Aug  7 12:54:03 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Create first salt modules and states to manage SAP Netweaver
+  * Install ASCS SAP instance in a idempotent way
+
+-------------------------------------------------------------------
+Tue Jun 11 11:34:25 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Create package version 0.2.1 with fixed spec files. Now the package
+  is available in all SLE12 and SLE15 versions
+  (jsc#SLE-4031, jsc#SLE-4143, boo#1137989)
+
+-------------------------------------------------------------------
+Tue Jun  4 07:29:24 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Create package version 0.2.0 after adding drbd module
+
+-------------------------------------------------------------------
+Thu May 16 09:03:43 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Update secondary registration methods to use the new parameters
+
+-------------------------------------------------------------------
+Fri May 07 12:00:53 UTC 2019 - Nick Wang <nwang@suse.com>
+
+- Add salt module and state to manage DRDB resources
+
+-------------------------------------------------------------------
+Fri Apr 26 08:56:53 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Add ha-cluster-init and ha-cluster-join usage when crmsh version
+  is older than 3.0.0
+- Add methods to customize sbd and corosync configuration files
+
+-------------------------------------------------------------------
+Tue Apr 25 10:24:07 UTC 2019 - Diego Vinicius Akechi <dakechi@suse.com>
+
+- Renamed the package from salt-saphana to salt-shaptools
+  * This package is intended to host SAP Applications and SLE-HA
+    salt modules and states, so a more meaningful name is needed.
+
+-------------------------------------------------------------------
+Tue Apr 23 13:44:07 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
+
+- Update system replication states constants usage
+
+-------------------------------------------------------------------
+Mon Mar  4 15:17:24 UTC 2019 - xarbulu@suse.com
+
+- Improved the use of keystore access. When the key_name is informed,
+  the user_name/user_password is not needed.
+- Removed salt warnings because of non usage of 'name' parameter as
+  the first parameter of the state.
+
+-------------------------------------------------------------------
+Mon Feb  25 10:22:24 UTC 2019 - dakechi@suse.com
+
+- Improve test case to check the last modification
+- Format instance number properly to have 2 digits in configuration file creation
+
+-------------------------------------------------------------------
+Wed Feb  6 14:09:24 UTC 2019 - xarbulu@suse.com
+
+- Update the way crm installation is checked
+
+-------------------------------------------------------------------
+Thu Jan 17 13:24:33 UTC 2019 - xarbulu@suse.com
+
+- Create crmsh cluster_configure new state
+
+-------------------------------------------------------------------
+Fri Jan 11 08:22:59 UTC 2019 - xarbulu@suse.com
+
+- Create crmsh core functionalities salt module and states code
+
+-------------------------------------------------------------------
+Thu Dec 20 08:33:10 UTC 2018 - xarbulu@suse.com
+
+- First package version

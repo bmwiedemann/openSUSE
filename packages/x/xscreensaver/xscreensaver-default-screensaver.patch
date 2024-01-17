@@ -1,0 +1,117 @@
+Index: driver/XScreenSaver_ad.h
+===================================================================
+--- a/driver/XScreenSaver_ad.h
++++ b/driver/XScreenSaver_ad.h
+@@ -1,35 +1,35 @@
+ "#error Do not run app-defaults files through xrdb!",
+ "#error That does not do what you might expect.",
+ "#error Put this file in /usr/lib/X11/app-defaults/XScreenSaver instead.",
+-"*mode:			random",
++"*mode:			blank",
+ "*timeout:		0:10:00",
+ "*cycle:			0:10:00",
+ "*lockTimeout:		0:00:00",
+ "*passwdTimeout:		0:00:30",
+-"*dpmsEnabled:		False",
++"*dpmsEnabled:		True",
+ "*dpmsQuickoffEnabled:	False",
+-"*dpmsStandby:		2:00:00",
+-"*dpmsSuspend:		2:00:00",
+-"*dpmsOff:		4:00:00",
+-"*grabDesktopImages:	True",
++"*dpmsStandby:		0:10:00",
++"*dpmsSuspend:		0:10:00",
++"*dpmsOff:		0:10:00",
++"*grabDesktopImages:	False",
+ "*grabVideoFrames:	False",
+ "*chooseRandomImages:	True",
+-"*imageDirectory:	/Library/Desktop Pictures/",
+-"*nice:			10",
++"*imageDirectory:	/usr/share/wallpapers/",
++"*nice:			19",
+ "*memoryLimit:		0",
+-"*lock:			False",
++"*lock:			True",
+ "*verbose:		False",
+ "*fade:			True",
+ "*unfade:		True",
+ "*fadeSeconds:		0:00:03",
+ "*fadeTicks:		20",
+-"*splash:		True",
++"*splash:		False",
+ "*splashDuration:	0:00:05",
+ "*visualID:		default",
+ "*installColormap:	True",
+-"*ignoreUninstalledPrograms: False",
++"*ignoreUninstalledPrograms: True",
+ "*authWarningSlack:	20",
+-"*textMode:		url",
++"*textMode:		date",
+ "*textLiteral:		XScreenSaver",
+ "*textFile:		",
+ "*textProgram:		fortune",
+@@ -322,7 +322,7 @@
+   GL: 				gleidescope --root			    \\n\
+   GL: 				glknots --root				    \\n\
+   GL: 				glmatrix --root				    \\n\
+-- GL: 				glslideshow --root			    \\n\
++- GL: 				glslideshow --root --duration 21 --zoom 84 --pan 30 --titles    \\n\
+   GL: 				hypertorus --root			    \\n\
+ - GL: 				jigglypuff --root			    \\n\
+ 				metaballs --root			    \\n\
+Index: driver/XScreenSaver.ad.in
+===================================================================
+--- a/driver/XScreenSaver.ad.in
++++ b/driver/XScreenSaver.ad.in
+@@ -28,7 +28,7 @@
+ 
+ ! /* (xrdb prevention kludge: whole file)
+ 
+-*mode:			random
++*mode:			blank
+ *timeout:		0:10:00
+ *cycle:			0:10:00
+ *lockTimeout:		0:00:00
+@@ -38,27 +38,27 @@
+ *dpmsStandby:		2:00:00
+ *dpmsSuspend:		2:00:00
+ *dpmsOff:		4:00:00
+-*grabDesktopImages:	True
++*grabDesktopImages:	False
+ *grabVideoFrames:	False
+ *chooseRandomImages:	@DEFAULT_IMAGES_P@
+ ! This can be a local directory name, or the URL of an RSS or Atom feed.
+ *imageDirectory:	@DEFAULT_IMAGE_DIRECTORY@
+-*nice:			10
++*nice:			19
+ *memoryLimit:		0
+-*lock:			False
++*lock:			True
+ *verbose:		False
+ *fade:			True
+ *unfade:		True
+ *fadeSeconds:		0:00:03
+ *fadeTicks:		20
+-*splash:		True
++*splash:		False
+ *splashDuration:	0:00:05
+ *visualID:		default
+ *installColormap:	True
+-*ignoreUninstalledPrograms: False
++*ignoreUninstalledPrograms: True
+ *authWarningSlack:	20
+ 
+-*textMode:		url
++*textMode:		date
+ *textLiteral:		XScreenSaver
+ *textFile:		@DEFAULT_TEXT_FILE@
+ *textProgram:		fortune
+@@ -467,7 +467,7 @@ XScreenSaver.bourneShell:		/bin/sh
+ @GL_KLUDGE@ GL: 				gleidescope --root			    \n\
+ @GL_KLUDGE@ GL: 				glknots --root				    \n\
+ @GL_KLUDGE@ GL: 				glmatrix --root				    \n\
+-- GL: 				glslideshow --root			    \n\
++- GL: 				glslideshow --root --duration 30 --zoom 60 --pan 30 --fade 5			    \n\
+ @GL_KLUDGE@ GL: 				hypertorus --root			    \n\
+ - GL: 				jigglypuff --root			    \n\
+ 				metaballs --root			    \n\

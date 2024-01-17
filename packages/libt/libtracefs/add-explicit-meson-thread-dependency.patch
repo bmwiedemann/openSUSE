@@ -1,0 +1,89 @@
+From: Daniel Wagner <dwagner@suse.de>
+Date: Thu Jun 15 11:48:53 AM PDT 2023
+Subject: Add explicit meson thread dependency 
+Patch-mainline: mailed to mailing list
+References: none
+Signed-off-by: Tony Jones <tonyj@suse.de>
+
+Older version of meson do not add automatically the pthread dependency.
+Thus add it explicitly to the build.
+
+Signed-off-by: Daniel Wagner <dwagner@suse.de>
+---
+ meson.build         | 1 +
+ samples/meson.build | 4 ++--
+ src/meson.build     | 4 ++--
+ utest/meson.build   | 2 +-
+ 4 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index d0f0e2dafc8a..9d42d78ad957 100644
+--- a/meson.build
++++ b/meson.build
+@@ -17,6 +17,7 @@ project(
+ library_version = meson.project_version()
+ 
+ libtraceevent_dep = dependency('libtraceevent', version: '>= 1.7.0', required: true)
++threads_dep = dependency('threads', required: true)
+ cunit_dep = dependency('cunit', required : false)
+ 
+ prefixdir = get_option('prefix')
+diff --git a/samples/meson.build b/samples/meson.build
+index 5e8ad270f812..112b12217a04 100644
+--- a/samples/meson.build
++++ b/samples/meson.build
+@@ -30,7 +30,7 @@ foreach ex : examples
+     executable(
+         ex.underscorify(),
+         src,
+-        dependencies: [libtracefs_dep, libtraceevent_dep],
++        dependencies: [libtracefs_dep, libtraceevent_dep, threads_dep],
+         include_directories: [incdir])
+ endforeach
+ 
+@@ -39,7 +39,7 @@ src = gen.process(meson.current_source_dir() + '/../Documentation/libtracefs-sql
+ executable(
+    'sqlhist',
+    src,
+-   dependencies: [libtracefs_dep, libtraceevent_dep],
++   dependencies: [libtracefs_dep, libtraceevent_dep, threads_dep],
+    include_directories: [incdir],
+    install: true,
+    install_dir: bindir)
+diff --git a/src/meson.build b/src/meson.build
+index 56087e2301bf..5b7655453f50 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -36,14 +36,14 @@ libtracefs = library(
+     'tracefs',
+     sources, lfiles, pfiles,
+     version: library_version,
+-    dependencies: [libtraceevent_dep],
++    dependencies: [libtraceevent_dep, threads_dep],
+     include_directories: [incdir],
+     install: true)
+ 
+ libtracefs_static = static_library(
+     'tracefs_static',
+     sources, lfiles, pfiles,
+-    dependencies: [libtraceevent_dep],
++    dependencies: [libtraceevent_dep, threads_dep],
+     include_directories: [incdir],
+     install: false)
+ 
+diff --git a/utest/meson.build b/utest/meson.build
+index 91a526fca2bf..c79313c7c1fb 100644
+--- a/utest/meson.build
++++ b/utest/meson.build
+@@ -11,7 +11,7 @@ e = executable(
+    'trace-utest',
+    source,
+    include_directories: [incdir],
+-   dependencies: [libtraceevent_dep, cunit_dep],
++   dependencies: [libtraceevent_dep, threads_dep, cunit_dep],
+    link_with: libtracefs_static)
+ 
+ test('trace-utest', e)
+-- 
+2.40.1
+

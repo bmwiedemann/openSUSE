@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13e348b98aa0aa2648abea494ff78ef5</srcmd5>
+    <version>2.1.9</version>
+    <time>1566248536</time>
+    <user>dimstar_suse</user>
+    <comment>initialize package</comment>
+    <requestid>724564</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2d69d809d70fd244d5f42dbe6608fb0</srcmd5>
+    <version>2.2.1</version>
+    <time>1573647922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747690</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa06cdda0090407ab6bdd98fbf0163bd</srcmd5>
+    <version>2.2.2</version>
+    <time>1576322505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756943</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3a356c8c4ee53a12bc132a237fa685e3</srcmd5>
+    <version>2.3.0</version>
+    <time>1588023665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798230</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d14b27aaaac672a63d50e8b4b75f62a9</srcmd5>
+    <version>2.3.1</version>
+    <time>1594706455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820704</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f1ddf5c49e30178bc2e9756e4106687</srcmd5>
+    <version>2.4.0</version>
+    <time>1594894766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821253</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>389bf7ae1ddcdaa8f3cbfe2c4899b8fa</srcmd5>
+    <version>2.4.1</version>
+    <time>1604309767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845263</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7f22c8985eab65d9a647b0b8b67e894c</srcmd5>
+    <version>2.4.2</version>
+    <time>1607714185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854709</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0cb63c8e5f2db2881e81e2b1c4b38fbf</srcmd5>
+    <version>2.5.1</version>
+    <time>1640200686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942024</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d7181599a8ebd78f0bea67c675c879da</srcmd5>
+    <version>2.5.2</version>
+    <time>1640808659</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 943006 from mschnitzer)</comment>
+    <requestid>943007</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f3c6e7753c416d177e988af5e75940d4</srcmd5>
+    <version>2.5.3</version>
+    <time>1641203385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943427</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5ed4b77d070ac34db06becd809f6004d</srcmd5>
+    <version>2.5.4</version>
+    <time>1645723226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956132</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>54b484c8bba8085a0f38b03dda1665a7</srcmd5>
+    <version>2.6.0</version>
+    <time>1655493682</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983439</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>74ff2d267ffd76445807c6a721631a65</srcmd5>
+    <version>2.6.1</version>
+    <time>1665591908</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.6.1
+  no changelog found
+</comment>
+    <requestid>1010057</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fc3c4ae12e06b6ac951ba0ca1a16a9c1</srcmd5>
+    <version>2.6.6</version>
+    <time>1670954224</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042665</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>58073b9a378c9789b5692550d9424cd4</srcmd5>
+    <version>2.6.12</version>
+    <time>1700078908</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126238</requestid>
+  </revision>
+</revisionlist>

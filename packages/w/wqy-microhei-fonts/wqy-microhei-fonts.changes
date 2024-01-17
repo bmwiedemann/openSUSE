@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Thu Apr 27 08:59:32 CEST 2017 - tiwai@suse.de
+
+- Don't install AUTHORS.txt that is way too large (boo#1036394)
+
+-------------------------------------------------------------------
+Sat Jan 16 09:17:16 UTC 2016 - i@marguerite.su
+
+- update version snapshot20150915
+  * no changelog, fetch from nightly build
+
+-------------------------------------------------------------------
+Mon Feb 16 09:58:08 UTC 2015 - i@marguerite.su
+
+- unset WenQuanYi Micro He as default Chinese font
+
+-------------------------------------------------------------------
+Sun Oct 19 18:04:56 UTC 2014 - i@marguerite.su
+
+- update version snapshot20141019
+  * This project didn't release for 5 years so snapshot version
+    is acceptable to me
+
+-------------------------------------------------------------------
+Tue Oct 16 12:14:58 UTC 2012 - pgajdos@suse.com
+
+- silented "Having multiple values in <test> isn't supported and may
+  not works as expected"
+  + amended 57-wqy-microhei.conf
+
+-------------------------------------------------------------------
+Mon Oct  8 13:12:36 UTC 2012 - pgajdos@suse.com
+
+- use %files_fontsconf_availdir and %files_fontsconf_file macros
+
+-------------------------------------------------------------------
+Wed Oct  3 12:04:49 UTC 2012 - pgajdos@suse.com
+
+- use %install_fontsconf macro which calls %link_avail_to_system_fontsconf
+  itself
+
+-------------------------------------------------------------------
+Tue Oct  2 12:57:11 UTC 2012 - pgajdos@suse.com
+
+-  install avail configuration into /usr/share/%{name}/conf.avail
+  and use %link_avail_to_system_fontsconf macro for linking it into
+  /etc/fonts/conf.d (fontconfig 2.10 doesn't use /etc/fonts/conf.avail)
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Sat Jun 2 15:09:17 UTC+8 2012 - hillwood@linuxfans.org
+
+- set WenQuanYi Micro He as default Chinese font.
+
+-------------------------------------------------------------------
+Thu May 17 09:10:36 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 29 15:16:47 UTC 2012 - pgajdos@suse.com
+
+- Apache-2.0 or SUSE-GPL-3.0+-with-font-exception license
+
+-------------------------------------------------------------------
+Thu Dec 22 18:07:54 CET 2011 - tiwai@suse.de
+
+- Renamed ttf-wqy-microhei -> wqy-microhei-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Fri Jul 23 09:01:56 UTC 2010 - mxwu@novell.com
+
+- Init import. 
+

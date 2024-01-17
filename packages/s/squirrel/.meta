@@ -1,0 +1,10 @@
+<package name="squirrel" project="openSUSE:Factory">
+  <title>A light weight programming language</title>
+  <description>
+Squirrel is a light weight programming language featuring higher-order
+functions, classes/inheritance, delegation, tail recursion, generators,
+cooperative threads, exception handling, reference counting and garbage
+collection on demand. C-like syntax.
+  </description>
+  <devel project="devel:libraries:c_c++" package="squirrel"/>
+</package>

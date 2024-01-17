@@ -1,0 +1,25 @@
+From 0da2a7c5c771b587789383e83062bfd4f28a8e4b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 1 May 2022 00:02:04 +0200
+Subject: [PATCH] Send DONE message before disconnecting
+
+Fixes #149.
+---
+ gecode/search/cpprofiler/tracer.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gecode/search/cpprofiler/tracer.cpp b/gecode/search/cpprofiler/tracer.cpp
+index 32a67089..af0c709a 100644
+--- a/gecode/search/cpprofiler/tracer.cpp
++++ b/gecode/search/cpprofiler/tracer.cpp
+@@ -146,6 +146,7 @@ namespace Gecode {
+ 
+   void
+   CPProfilerSearchTracer::done(void) {
++    connector->done();
+     connector->disconnect();
+   }
+ 
+-- 
+2.36.0
+

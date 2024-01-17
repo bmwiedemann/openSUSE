@@ -1,0 +1,5 @@
+<package name="signon-plugin-oauth2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="signon-plugin-oauth2"/>
+</package>

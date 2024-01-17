@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af911b3c47b805e4c330037c34e3cb77</srcmd5>
+    <version>2.3.3</version>
+    <time>1517824278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558834</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b422ff1a3d2627b8e303a74389948090</srcmd5>
+    <version>2.3.3</version>
+    <time>1544726759</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654082</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5bb490c1d74c10c5b3b28ed95751afd9</srcmd5>
+    <version>2.7.2</version>
+    <time>1553888561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689264</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f90dd840b3f4547220d4b3637cc57769</srcmd5>
+    <version>2.7.2</version>
+    <time>1558532463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704699</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>10e03dff3470e2cfb1005b9f86e0ddc3</srcmd5>
+    <version>2.8.1</version>
+    <time>1572542283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.1:
+  * Filter out -C and separate commingled yq and jq short options
+  * Set default block sequence indentation to 2 spaces, –indentless for 0
+  * Make main body of yq callable as a library function
+  * Test and release infrastructure updates</comment>
+    <requestid>744155</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc1c5012b06901247ada041cd5ac7eac</srcmd5>
+    <version>2.10.0</version>
+    <time>1583446947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.10.0:
+  * Add support for in-place editing (yq -yi)
+  * Add argcomplete integration
+  * Docs: Migrate from RTD to gh-pages
+  * Add -Y/--yaml-roundtrip for preserving YAML styles and tags
+- Add patch to work with new PyYAML:
+  * pyaml53.patch</comment>
+    <requestid>781772</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>535687ae0f779513c96328484231b1de</srcmd5>
+    <version>2.10.1</version>
+    <time>1595339447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822066</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>580f63a088e0d9a9637bd9ab92a1113c</srcmd5>
+    <version>2.12.0</version>
+    <time>1620398750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891236</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e94291a6400abe11431e2d1db394d830</srcmd5>
+    <version>2.14.0</version>
+    <time>1645891331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957672</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4b653b220ae43293ec8e1b8c08b486e0</srcmd5>
+    <version>3.1.0</version>
+    <time>1658857535</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.1.0:
+    Use configurable output grammar, compatible with YAML 1.1
+- Update to 3.0.2:
+  - Expand merge keys (https://yaml.org/type/merge.html). This is
+    a YAML 1.1 specific behavior, but will be accommodated in yq
+    due to its widespread use and low likelihood of accidental
+    invocation.
+- Update to 3.0.1:
+  - yq now uses the YAML 1.2 grammar when parsing and rendering
+    YAML documents. This means bare literals like “on”, “no”,
+    and “12:34:56” are interpreted as strings. (Fix interrupted
+    release)
+- Removed upstreamed e37a7981b505aa0fd60d062ca81fd7b23715233e.patch
+</comment>
+    <requestid>991280</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9b77d9d57b896b0fe78a09390b99eca</srcmd5>
+    <version>3.1.1</version>
+    <time>1677794620</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.1:
+  *  Handle TOML datetimes. Fixes #160
+  *  Test and documentation improvements</comment>
+    <requestid>1068548</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d5062943fa71e247c4e91f03998b16a2</srcmd5>
+    <version>3.2.1</version>
+    <time>1680884220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077834</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d679bd8df01f0a0bfe349b49f7bb30dd</srcmd5>
+    <version>3.2.2</version>
+    <time>1684162467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.2:
+  *  Allow XML documents to be streamed with –xml-item-depth</comment>
+    <requestid>1087126</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>117aeb2f1219a90e91760b3b365d2d71</srcmd5>
+    <version>3.2.2</version>
+    <time>1690469586</time>
+    <user>anag+factory</user>
+    <comment>- switch to wheels and opt into SLE15 python311 stack</comment>
+    <requestid>1101039</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9da177f334d80f3089b6ae2bfd407364</srcmd5>
+    <version>3.2.3</version>
+    <time>1696014840</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.3:
+  * test.py: use valid values for jsonargs. Fixes #172
+  * Allow editing toml in place (#171)
+  * Documentation improvements</comment>
+    <requestid>1114071</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3c9c1c70deb70fd31e308d2ddb4e1bd7</srcmd5>
+    <version>3.2.3</version>
+    <time>1704390813</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools</comment>
+    <requestid>1136268</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+<package name="git" project="openSUSE:Factory">
+  <title>Fast, scalable, distributed revision control system</title>
+  <description>Git is a fast, scalable, distributed revision control system with an
+unusually rich command set that provides both high-level operations and
+full access to internals.
+
+This package itself only provides the README of git but with the
+packages it requires, it brings you a complete Git environment
+including GTK and email interfaces and tools for importing source code
+repositories from other revision control systems such as subversion,
+CVS, and GNU arch.</description>
+  <devel project="devel:tools:scm" package="git"/>
+</package>

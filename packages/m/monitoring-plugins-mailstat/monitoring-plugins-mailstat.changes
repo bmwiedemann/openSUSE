@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Aug 17 11:29:10 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- fix path to stats file in nrpe check
+
+-------------------------------------------------------------------
+Sun Jun 21 09:51:12 UTC 2020 - lars@linux-schulserver.de - 0.9.1
+
+- require perl(RRDs) for the images and mailgraph for the stats
+- add an example check_mailstat.cfg NRPE definition
+- added gpl-3.0.txt license file
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jul 30 19:17:09 UTC 2014 - lars@linux-schulserver.de
+
+- Renamed package to monitoring-plugins-mailstat
+
+-------------------------------------------------------------------
+Thu Jun 19 20:00:14 UTC 2014 - lars@linux-schulserver.de
+
+- initial version
+- added:
+  + check_mailstat_plugin_v0.9.1-initial_values.patch
+  + check_mailstat_plugin_v0.9.1-stat_file.patch

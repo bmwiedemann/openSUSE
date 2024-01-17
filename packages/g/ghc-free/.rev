@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ffe48846e77fc15c684b0cef67efbcc</srcmd5>
+    <version>4.11</version>
+    <time>1432281040</time>
+    <user>dimstar_suse</user>
+    <comment>Monads for Fre
+
+Free monads are useful for many tree-like structures and domain specific
+languages.</comment>
+    <requestid>307869</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18d09ee5301800d1b079aa0c6274248c</srcmd5>
+    <version>4.12.1</version>
+    <time>1440658529</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324474</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d272d6fae44c6a36ea8574774a3a0732</srcmd5>
+    <version>4.12.4</version>
+    <time>1453416218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.12.4
+* Add instances for ExceptT: like ErrorT, but without an Error constraint.
+* Support containers
+* Support transformers 0.5
+* Removed a number of spurious class constraints.
+* Support comonad 5</comment>
+    <requestid>354575</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>92485e2c2535b58e4d96f44a27e95b50</srcmd5>
+    <version>4.12.4</version>
+    <time>1469081356</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411532</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>17614fa131d60ac78ad6f21fbd32f7c6</srcmd5>
+    <version>4.12.4</version>
+    <time>1505504430</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524537</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36e7d0bb28ce9bfd4f9effd270489e16</srcmd5>
+    <version>5.0.2</version>
+    <time>1527674869</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-free to the latest version.</comment>
+    <requestid>607800</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>88a437f804e186f09b757a0c36d52703</srcmd5>
+    <version>5.1</version>
+    <time>1532445532</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update free to version 5.1.
+  5.1 [2018.07.03]
+  ----------------
+  * Generalize the type of `_Free`.
+  * Allow building with `containers-0.6`.
+  * Avoid incurring some dependencies when using recent GHCs.
+  5.0.2 [2018.04.25]
+  ------------------
+  * Add `Generic` and `Generic1` instances where possible.</comment>
+    <requestid>623775</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>186683737fe66112f117da86e1bb14e6</srcmd5>
+    <version>5.1</version>
+    <time>1540448739</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643396</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2fe4cea84de582ccf001c56c22527abb</srcmd5>
+    <version>5.1.1</version>
+    <time>1557653719</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>701766</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d9cf2527200c9b2f3a8c139ee8ad0bb</srcmd5>
+    <version>5.1.2</version>
+    <time>1567092073</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726810</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f815de4817941e91ac9b5f56d2020c4</srcmd5>
+    <version>5.1.3</version>
+    <time>1577451217</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759401</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c6e2f1d32998efa565fd4dd94cc1c2da</srcmd5>
+    <version>5.1.3</version>
+    <time>1592579575</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815094</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>20cab3c81e9a4b6bf3f38c68a133b148</srcmd5>
+    <version>5.1.3</version>
+    <time>1598643163</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829282</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>623b00b2abb15b95b7de7cf904856145</srcmd5>
+    <version>5.1.3</version>
+    <time>1599508930</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832277</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c55106f526c12acc99557c3fcbb3d293</srcmd5>
+    <version>5.1.4</version>
+    <time>1603458833</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842744</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b5dc8b89b465abf6150659837acba2ff</srcmd5>
+    <version>5.1.5</version>
+    <time>1608633580</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857364</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f91446301d3e167f25445da877ec2ea1</srcmd5>
+    <version>5.1.6</version>
+    <time>1611163465</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>862325</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ea3f3326da16cba47b860480277be8d1</srcmd5>
+    <version>5.1.7</version>
+    <time>1620240030</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>890699</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ee85d43eefda5341d3651c461ebb9f4c</srcmd5>
+    <version>5.1.7</version>
+    <time>1644617336</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953460</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>161364a6ad0651a0e4381a0dfa299c07</srcmd5>
+    <version>5.1.9</version>
+    <time>1659382185</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987034</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c18f68ccb421356e392ad4f119ad9ec7</srcmd5>
+    <version>5.1.9</version>
+    <time>1665668520</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008464</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7e273c8313bf596cb764dc21cf31248e</srcmd5>
+    <version>5.1.10</version>
+    <time>1674043792</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059068</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bc3e4cd469db79211064b79c158220f3</srcmd5>
+    <version>5.1.10</version>
+    <time>1680636004</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075878</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3558d367739a1259ab9f4a4703ae40d5</srcmd5>
+    <version>5.2</version>
+    <time>1700772034</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1128072</requestid>
+  </revision>
+</revisionlist>

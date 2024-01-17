@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Aug  9 03:08:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.05
+   see /usr/share/doc/packages/perl-Digest-SHA3/Changes
+
+  1.05  Mon 08 Aug 2022 11:30:32 AM MST
+  	- corrected addfile to report error when stdin is a directory
+  		-- ref. rt.cpan.org #143899
+  		-- thanks to Gregor Herrmann for pointing this out
+
+-------------------------------------------------------------------
+Tue Apr 13 16:34:12 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Initial submission

@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04234667b3e53bfd6b2c91773368dc1a</srcmd5>
+    <version>2.01</version>
+    <time>1647458502</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain this package in Factory</comment>
+    <requestid>962231</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53a54f21fa8f6b37cd17af9f48b0d95c</srcmd5>
+    <version>2.03</version>
+    <time>1648665345</time>
+    <user>dimstar_suse</user>
+    <comment>- replace %{version} to a custom %{_commit_hash} to fix build errors
+- Use the commit hash instead. Upstream maintainer didn't tagged a release
+  and only changed the README that it is version 2.03. This (change) is to clarify
+  that commit `10e9ac86df9a823d7470deaaa50c44d2857ee6f7` signifies 2.03.
+- Fix spec and sources.
+- Update epub2text2 version to 2.03:
+  * Fixed buffer overrun bug
+- Update patches:
+  * Add bmwiedemann/sort patch for reproducible builds
+  * Use `%autopatch -p1` in spec file 
+- add bmwiedemann-sort.patch
+</comment>
+    <requestid>965784</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f637b87b037baea0aa45819a6da0ca3</srcmd5>
+    <version>2.04</version>
+    <time>1651424030</time>
+    <user>dimstar_suse</user>
+    <comment>- remove patches:
+  * bmwiedemann-sort.patch
+  * LICENSE.patch
+- update helix.spec
+- Update epub2text2 to version 2.04 (commit hash: 02f69e6243d6c96f78da45fb710a265e5aee2fb5)
+</comment>
+    <requestid>974167</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4dbf6c5e72b9c3a89ef3d95cbc18ef33</srcmd5>
+    <version>2.04</version>
+    <time>1656053105</time>
+    <user>dimstar_suse</user>
+    <comment>remove accidental paste from epub2txt2.changes file</comment>
+    <requestid>984722</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d284af502b1872489519537461f5d5e7</srcmd5>
+    <version>2.06</version>
+    <time>1659612228</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>992660</requestid>
+  </revision>
+</revisionlist>

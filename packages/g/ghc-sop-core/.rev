@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a643a72f4b296a18045fa53238fba237</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1605217408</time>
+    <user>dimstar_suse</user>
+    <comment>new package for cardano support</comment>
+    <requestid>847860</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ac8f3fc8cb64a076c8c0247ff616b70</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1608633979</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857565</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e01807dbc65657ae232fba0772933b9d</srcmd5>
+    <version>0.5.0.2</version>
+    <time>1644617380</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953533</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d81751b3db1560c518a4ce2eace0ef89</srcmd5>
+    <version>0.5.0.2</version>
+    <time>1665668582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008516</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>31481c9e3f7a50716957818c25c9d164</srcmd5>
+    <version>0.5.0.2</version>
+    <time>1680636202</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076050</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>e5a2ef83d0d9b81e2a36f8610f3d5455</srcmd5>
+    <version>0.5.0.2</version>
+    <time>1681470772</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1079160</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>237e7887869879bd70b842863c9335f2</srcmd5>
+    <version>0.5.0.2</version>
+    <time>1698333239</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1120391</requestid>
+  </revision>
+</revisionlist>

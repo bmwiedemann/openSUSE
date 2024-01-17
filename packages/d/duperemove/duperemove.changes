@@ -1,0 +1,382 @@
+-------------------------------------------------------------------
+Sun Nov 26 18:28:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * file_scan: satisfy clang CFI
+  * file_scan: walk_dir: improve rootfs support
+  * dbfile: get_duplicate_files: exclude inlined files before
+    looking for duplicates
+  * filerec: fiemap_scan_extent: fix typo: we must check the
+    return from get_extent
+
+-------------------------------------------------------------------
+Sun Nov 19 09:04:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14:
+  * Batching has been reimplemented on top of the dedupe_seq.
+  * The "scan" phase has been reimplemented (see 8264336 for details).
+  * Filesystem locking has been implemented. See f3947e9 for details.
+
+-------------------------------------------------------------------
+Fri Sep 29 10:11:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13:
+  * Add a new dedupe option: [no]rescan_files. It will increase
+    performance in some use cases.
+  * New behaviors from v0.12 has been consolidated. Extent-based
+    lookup is always enabled, as is fiemap. The v2
+    hashfile is no longer supported.
+  * Hashfile are now updated after deduplication, to reflect the
+    new physical offsets. This avoid (re)deduplicating extents
+    in some cases.
+  * Partial mode has been enhanced to support batching. The
+    overall performance of this mode (which was previously known
+    as "block-based mode") has been improved.
+  * All files are now open in readonly mode.
+  * Hashfile version has been increased to reflect the new
+    database behaviors. Previous hashfiles are not compatible.
+  * Always compute a hash for the entire file. This let us
+    deduplicate same files easily, regardless of their
+    extents mappings.
+  * Deduplicating only parts of a file can be disabled using
+    the [no]only_whole_files dedupe option.
+  * Hashfiles with unsupported features or hash algorithm are
+    now recreated transparently. Migration of the old content
+    is not implemented.
+  * Relative exclude patterns are no longer silently ingested.
+    Such patterns are now rebuilt on top of the current
+    working directory.
+  * Batching is now set to 1024 by default.
+
+-------------------------------------------------------------------
+Thu Sep 14 08:14:47 UTC 2023 - pgajdos@suse.com
+
+- build for 15
+
+-------------------------------------------------------------------
+Mon Jul 17 05:45:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12:
+  * Duplication lookup is now based on extents. This leads to a
+    massive increase of the performances. Block-based lookup is
+    still possible via --dedupe-options=partial.
+  * Following that change, a new hashfile format has been introduced.
+    Previous hashfile format is still supported when extents lookup
+    are disabled, this is not recommended.
+  * Batching has been implemented. When enabled with the -B <batchsize>
+    option, duperemove will run the deduplication phase every <batchsize>
+    scanned files. This is meant to help running duperemove on large
+    dataset, with small blocksize, or on memory-constrained systems.
+  * All hash algorithm has been removed and replaced by xxh128. This
+    variant is as robust as murmur3 while being faster. Choosing a
+    hash function via the --hash option has been removed. Hashfiles
+    built with other algorithm must be removed.
+
+-------------------------------------------------------------------
+Thu Feb  3 16:48:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.3:
+  * Increase open file limit. (#269)
+  * Create hash database file with 600 permission for improved
+    security. (#262)
+  * Read more data per pread, for v2 hashfile format this reduces
+    the overall number of syscalls made which in turns results
+    in better performance.
+  * Fix truncated file handling, eliminating a an infinite
+    loop case. (#255)
+
+-------------------------------------------------------------------
+Thu Nov  5 07:38:15 UTC 2020 - Nikolay Borisov <nborisov@suse.com>
+
+- Update to v0.11.2
+  - Improved detection of hyperthreading
+  - Multiple minor fixes and cleanups
+  - Updated xxhash algorithm to latest release
+  - Fixed extent collision handling
+  - Fix overflow scanning in extents
+
+-------------------------------------------------------------------
+Sun Jun 14 08:05:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+
+-------------------------------------------------------------------
+Tue Dec  4 20:59:22 UTC 2018 - mfasheh@suse.com
+
+- Use source tarball from github
+
+-------------------------------------------------------------------
+Fri Nov 30 22:04:37 UTC 2018 - mfasheh@suse.com
+
+- Update to v0.11.1
+  - Add 'quiet' mode - duperemove will only print errors and a
+    short summary of any dedupe.
+  - Revert block dedupe default, it is causing excessive
+    fragmentation on users systems.
+
+-------------------------------------------------------------------
+Tue May 15 20:05:26 UTC 2018 - mfasheh@suse.com
+
+- Update to v0.11
+  - Fix a minor fd leak in hyperthreading detection code
+  - Clean up some typos in documentation
+  - Some build fixes
+  - Removed patch: v0.11.beta4_to_git_f95e429.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 20:05:02 UTC 2016 - mark@fasheh.com
+
+- Update to v0.11.beta4 git commit f95e429
+  * Use proper len of tail blocks during block dedupe
+  * run_dedupe: avoid size_list corruption in push_blocks()
+  - Added patch: v0.11.beta4_to_git_f95e429.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 20:41:37 UTC 2016 - mfasheh@suse.com
+
+- Update to duperemove v0.11.beta4
+  - Many man page and FAQ updates
+  - Much lower memory usage (changed to use block-dedupe by default)
+  - removed unused sha256 module
+
+-------------------------------------------------------------------
+Fri Sep 16 19:49:06 UTC 2016 - mfasheh@suse.com
+
+- Update to duperemove v0.11.beta3
+  - Bugfixes
+  - Large (2.5x) performance improvement to find dupes stage
+  - Added '--cpu-threads' for user control of cpu bound tasks
+
+-------------------------------------------------------------------
+Fri Sep  9 21:39:39 UTC 2016 - mfasheh@suse.com
+
+- Update to duperemove v0.11.beta2
+  - Many bugfixes
+  - Improved dedupe coverage with better extent selection algorithm
+  - Improved (easier to read) output for csum stage
+  - Progress counter added for dedupe stage
+  - Removed patch v0.11.beta1_to_git_d4b9818.patch
+  - Removed patch v0.11-d4b9818_to_82234f5.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 20:02:21 UTC 2016 - mfasheh@suse.com
+
+- Update to v0.11.beta1 git commit 82234f5
+  - Set file->dedupe_seq if we drop out in add_file_db()
+  - add_file_db(): collapse all cases of ino/subvol/filename being
+    different
+  - Simplify the logic in add_file_db()
+  - add_file_db(): check for same filename in filerec table
+  - Store filerecs in a tree by filename
+
+-------------------------------------------------------------------
+Wed Aug 24 19:25:45 UTC 2016 - mfasheh@suse.com
+
+- Update to git commit d4b9818:
+  - Set scan flag on renamed file
+  - Remove db record if a file was renamed
+  - More vprints in add_file_db()
+  - Fix confused error handling in dbfile_load_one_filerec()
+  - Return 0 if user specified --help
+  - Don't list '-?' as a valid option
+  - add_file_db() Properly account for __add_file() skipping a file
+  - Add hashstats to the man page
+
+-------------------------------------------------------------------
+Fri Aug 12 23:03:06 UTC 2016 - mfasheh@suse.com
+
+- Update to duperemove v0.11.beta1
+  - Greatly increased performance during extent search
+  - Hashfiles are reusable now, Duperemove will only scan files which have
+    changed since the last time it was run.
+  - Better selection of target extent during dedupe
+    - reduces fragmentation of deduped space
+  - Support for dedupe on xfs (experimental)
+
+-------------------------------------------------------------------
+Sat Apr  2 13:43:23 UTC 2016 - mpluskal@suse.com
+
+- Use pretty name for tarball
+- Cleanup spec file with spec-cleaner
+- Use pkgconfig style dependnencies
+
+-------------------------------------------------------------------
+Fri Oct  9 22:37:04 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.10
+  - Documentation updates for latest stable version
+    - document --fdupes mode in manpage
+    - update man page headers
+    - update FAQ
+
+-------------------------------------------------------------------
+Thu Jul 16 21:45:34 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.10.beta4
+  - Better memory usage with hashstats utility
+
+-------------------------------------------------------------------
+Fri Jul 10 19:53:46 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.10.beta3
+  - fixes many crashes in the dedupe stage
+  - fixed an issue with our alignment function which would throw dedupe into
+    a loop
+  - improvements to output formatting
+  - better logic when throwing out already-deduped extents won't give as
+    many false positives
+
+-------------------------------------------------------------------
+Tue Jun 30 06:21:21 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.10.beta2
+  - multi-threaded dedupe stage (increased performance)
+  - hashfile mode for drastically improved memory consumption
+  - now uses murmur3 hash internally for improved cpu usage
+  - can now take input from 'fdupes'
+
+-------------------------------------------------------------------
+Mon Apr  6 19:45:42 UTC 2015 - mfasheh@suse.com
+
+- Update with correct tarball (last one didn't have version number bump)
+
+-------------------------------------------------------------------
+Mon Apr  6 19:14:50 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.09.3
+  - Fix hang during file scan phase (bsc#926098)
+
+- References: bsc#926098
+
+-------------------------------------------------------------------
+Thu Mar 26 23:07:33 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.09.2
+  - Now compiles on SLE11 targets
+  - Fallback to stat on filesystems that don't report file type from
+    readdir
+  - Don't assert on failed open during dedupe
+
+- References: bsc#923277 bsc#924577
+
+-------------------------------------------------------------------
+Thu Mar 19 16:29:24 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.09.1
+  - Fallback to stat on filesystems that don't report file type from
+    readdir
+
+-------------------------------------------------------------------
+Thu Jan 29 20:17:58 UTC 2015 - mfasheh@suse.com
+
+- Update to duperemove v0.09
+  - start with first node in free_compare_tree
+  - fix small typos in duperemove man page
+  - add test_progs variable in Makefile
+- References: bsc#915354 FATE#318171
+- Removed patch: do-not-install-test-binary.patch
+
+-------------------------------------------------------------------
+Tue Jan 20 10:02:26 UTC 2015 - tchvatal@suse.com
+
+- Cleanup a bit with spec-cleaner and fix few tiny issues
+- Use install phase from upstream Makefile
+- Move csum-test to test progs to prevent its install:
+  * do-not-install-test-binary.patch
+
+-------------------------------------------------------------------
+Tue Dec  9 04:12:43 UTC 2014 - mfasheh@suse.com
+
+- Update to duperemove v0.09.beta5
+  - Documentation updates
+    - FAQ and README are more relevant now
+    - added man pages for show-shared-extents and hashstats programs
+    - updated duperemove man page, and duperemove usage() function
+  - Have show-shared-extents take a file list as arguments.
+  - Change default of --lookup-extents option back to 'no'
+  - Write hash type into hashfile header, check against what hash we were
+    compiled with.
+
+-------------------------------------------------------------------
+Mon Nov 17 19:40:06 UTC 2014 - mfasheh@suse.com
+
+- Update to duperemove v0.09.beta3
+  - Fix leak of directory fd during file scan
+  - Fix EMFILES (too many file descriptors) error during dedupe
+  - Fix corner case with dedupe leaving a file open and not-queued
+  - Support '-x' (one file system) option
+  - Add option to turn off extent lookup during csum phase
+    - Useful if running against snapshotted volumes
+  - show-shared-extents program to help users examine file state before or
+    after dedupe.
+
+-------------------------------------------------------------------
+Mon Nov 10 14:49:27 UTC 2014 - schwab@suse.de
+
+- Build with %optflags
+
+-------------------------------------------------------------------
+Fri Oct 31 02:44:53 UTC 2014 - mfasheh@suse.com
+
+- Update to duperemove v0.09.beta2
+  - fix memory leak
+  - fix hardlink detection on btrfs
+  - print file number status during csum phase
+  - print a status bar during extent seearch
+  - several bugfixes and performance improvements to extent search
+- Removed patch: 001-fix-build.patch
+
+-------------------------------------------------------------------
+Sat Sep 27 00:18:33 UTC 2014 - mfasheh@suse.com
+
+- update to duperemove v0.09.beta1
+ - parallel checksum calculation
+ - performance improvements
+ - allow to store the hash tree to a file
+ - hashstats: new utility to analyze hash files
+ - add --version option
+ - build: add install target
+ - documentatin updates
+
+- Added patch: 001-fix-build.patch
+
+-------------------------------------------------------------------
+Sun Apr 20 22:13:45 UTC 2014 - mfasheh@suse.com
+
+- update to duperemove v0.08
+  - fixes many bugs
+  - a few more usability improvements
+  - adds fiemap support to better estimate space savings
+
+-------------------------------------------------------------------
+Fri Apr 11 17:38:32 UTC 2014 - mfasheh@suse.com
+
+- update to duperemove v0.07
+
+- fix usability of command line arguments
+
+- large documentation update
+
+-------------------------------------------------------------------
+Fri Apr 11 00:30:41 UTC 2014 - mfasheh@suse.com
+
+- update to duperemove v0.06. This adds several fixes and features:
+        - fixes bnc#871804 (duperemove not looping on entire range)
+
+- also includes important usability fixes
+
+- updates hashing library to libgcrypt to reflect upstream
+
+-------------------------------------------------------------------
+Wed Mar 12 06:43:13 UTC 2014 - mfasheh@suse.com
+
+- add duperemove rpm
+
+- add new tarball with manpages for all binaries
+
+-------------------------------------------------------------------
+Wed Mar 12 00:07:33 UTC 2014 - mfasheh@suse.com
+
+- Initial creation of rpm and rpm changelog
+
+

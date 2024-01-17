@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bd9cc118dcf4ef1059cc9d8f22937c6</srcmd5>
+    <version>1.26</version>
+    <time>1633365624</time>
+    <user>dimstar_suse</user>
+    <comment>Re-introduce to distribution (was dropped due to lack of maintainer; now maintained by me).</comment>
+    <requestid>922897</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4efab629686e1a377d1e62249d14479d</srcmd5>
+    <version>1.26</version>
+    <time>1642273506</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with meson 0.60 (intel-gpu-tools_fix-meson.patch)
+  + https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/107
+</comment>
+    <requestid>946551</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0e4134032050dcf9e42fcca6a79b92b4</srcmd5>
+    <version>1.26</version>
+    <time>1653768984</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable SUSE_ZNOW to fix failing tests on x86_64
+  + https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/issues/102
+</comment>
+    <requestid>979538</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ceb525ecde45c197c4428db5bd39316</srcmd5>
+    <version>1.27.1</version>
+    <time>1678204171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.1:   
+  * Support for Intel discrete graphics and other new platforms (Andrzej
+    Turko, Matt Roper, Clint Taylor, Tejas Upadhyay, et al)
+  * Support for MSM driver. (Mark Yacoub, Rob Clark)
+  * Support for SRIOV device selection. (Łukasz Łaguna)
+  * Tiled display emulation support with chamelium. (Kunal Joshi)
+  * Support for Chamelium v3. (Mark Yacoub)
+  * Initial FreeBSD support. (Jake Freeland)
+  * Structured communication from tests to igt_runner. (Petri Latvala)
+  * Removed last remaining uses of libdrm_intel in tests and
+    tools. (Zbigniew Kempczyński)
+  * Automatic kernel code coverage collection during testing. (Mauro
+    Carvalho Chehab)
+- Remove intel-gpu-tools_fix-meson.patch
+</comment>
+    <requestid>1069720</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>34e9efb755fbb9dff6e77b74b420529b</srcmd5>
+    <version>1.27.1</version>
+    <time>1682618470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1083135</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f5e52233733006840f38a5b72469231d</srcmd5>
+    <version>1.28</version>
+    <time>1699910493</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1125411</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5df49da280644497e0b0c9b0a3dfc06b</srcmd5>
+    <version>1.28</version>
+    <time>1701533588</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1130362</requestid>
+  </revision>
+</revisionlist>

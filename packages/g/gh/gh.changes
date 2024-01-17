@@ -1,0 +1,1804 @@
+-------------------------------------------------------------------
+Mon Jan 15 08:20:38 UTC 2024 - pdostal@suse.com
+
+- Update to version 2.42.0:
+  * Prevent downloading releases with assets that match windows reserved filenames (#8517)
+  * Support template, jq flags with standard format flag (#7832)
+  * Mark-up `gh-config` settings with backticks
+
+-------------------------------------------------------------------
+Wed Jan 10 13:03:07 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.41.0:
+  * Update deployment.yml
+  * Update pkg/cmd/browse/browse.go
+  * build(deps): bump golang.org/x/crypto from 0.14.0 to 0.17.0 (#8473)
+  * Ensure Windows sign script fails based on signtool
+  * Update deployment workflow for final HSM solution
+  * Fix signtool invocation
+  * Fix sign script fail conditions
+  * Fix HSM goreleaser calling sign script
+  * Fix HSM Windows signing
+  * Fix issue sourcing signtool for Windows signing
+  * build(deps): bump github/codeql-action from 2 to 3
+  * Verify the downloaded zip for `gh run view --log`
+  * Add missing PowerShell file from previous commit
+  * Unify Windows sign process on signtool
+  * Add more help message to browse command
+
+-------------------------------------------------------------------
+Mon Dec 18 13:59:47 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Restore _service to generate changelog
+
+-------------------------------------------------------------------
+Thu Dec 14 07:41:39 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 2.40.1:
+  * add Multiple Account Support
+  * fix build after 2024-01-06
+  * Full changelog https://github.com/cli/cli/compare/v2.38.0...v2.40.1
+
+-------------------------------------------------------------------
+Fri Nov 10 09:18:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.38.0:
+  * `extension install` no longer errors unhelpfully if the
+    extension is already installed
+  * All tables now have headers
+  * `project` commands have a clearer error message when no owner
+    can be resolved
+  * `workflow run` now presents a select for `choice` workflow
+    input types
+  * `codespace create` no longer polls for additional codespace
+    permissions unnecessarily
+  * `go install` now works with the removal of our crypto fork
+- update to 2.37.0:
+  * `project`: Remove `template` field from `--format=json`
+    output
+  * In v2.34.0 we introduced the `template` field when outputing
+    projects to JSON, unfortunately we forgot to take into account
+    our GHES users. This field does not exist on GHES 3.8 and older.
+    Including this field in our queries and output broke nearly
+    all the `project` commands for users targeting these older
+    versions of GHES. As we try our hardest to keep `gh` compatible
+    with all * non-deprecated GHES versions this was a pretty big
+    mistake.  In order to fix it we are reverting the querying and
+    exporting of the `template` field for `project` commands. We
+    apologize for the inconvenience this may cause, and plan to
+    bring back this field once GHES 3.8 gets deprecated.
+  * `repo create`: Allow `--disable-issues` and `--template`
+    flags to be used together
+  * `repo create`: Allow `--homepage` and `--template` flag to be
+    used together
+  * `repo create`: Allow creating repositories from templates in
+    interactive mode
+  * `repo fork`: Set default repo when forking repo
+  * `codespace`: Migrate all Codespaces operations from Live
+    Share to Dev Tunnels
+  * `codespace create`: Poll permission acceptance endpoint on
+    codespace creation
+  * `pr create`: Remove duplicates targets for push survey
+  * `pr create`: Fix typo in documentation
+  * `browse`: Do not use relative paths when `--repo` flag is
+    used
+
+-------------------------------------------------------------------
+Wed Oct 04 15:31:43 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.36.0:
+  * update(run): Use attempt input when fetching jobs (#7831)
+  * Bubble up return value from inner function calls in runEditItem
+  * Update pkg/cmd/pr/create/create.go
+  * pkg/cmd/root: fix startup panic (#8105)
+  * Split clearing item, updating draft item and updating item values into individual functions for better readability; refactor field ID and project ID presence check into a separate function
+  * Document clear flag in long form help as well
+  * Add clear flag usage example
+  * Move field value flag and clear flag exclusivity one level higher up to RunE
+  * Use camelCase for fields
+  * docs: update the details of fill and fill-first
+  * Forward codespace ports over Dev Tunnels
+  * Update triage.md
+  * Support standard output format flags for secret and deploy-key list
+  * docs: update the flag `--fill` docs
+  * Show cancelled checks (#7960)
+  * Return HTTP errors properly for some commands (#8037)
+  * test: Add unit test for cache.ExportData
+  * cache/delete: percent-encode keys
+  * build(deps): bump mislav/bump-homebrew-formula-action from 2 to 3
+  * Hint adding codespace scope to auth login (#7961)
+  * Tests for the new clear flag
+  * Driveby unrelated update: when both field ID and project ID are missing, specify that it's necessary to update the field value
+  * Introduce clear flag on 'project item-edit' command to remove field value
+  * feat(cache): Add JSON exporting support for cache list
+
+-------------------------------------------------------------------
+Wed Sep 20 12:15:33 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.35.0:
+  * Cleanup release create around new --notes-from-tag flag (#8016)
+  * Document when gh auth login writes oauth token to plain text (#7781)
+  * Show full permissions URL in `gh cs create` (#7983)
+  * build(deps): bump goreleaser/goreleaser-action from 4 to 5
+  * moved remoteTagExists under if NotesFromTag exists and added three tests
+  * Clarify list repo behavior (#7964)
+  * Reinforce not opening PRs without approval on an issue
+  * Delete local tag when running `gh release delete --cleanup-tag` (#7884)
+  * Add `--all` flag to `alias delete` command (#7900)
+  * Move homebrew bump fork to personal repo
+  * Revert "Add a test workflow for homebrew bump investigations (#7951)"
+  * Add a test workflow for homebrew bump investigations (#7951)
+  * Add `gh release create [<tag>] --notes-from-tag`
+
+-------------------------------------------------------------------
+Thu Sep 07 05:18:42 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.34.0:
+  * Use consistent variable naming
+  * `gh status`: show status even if a comment 404s (#7873)
+  * build(deps): bump actions/checkout from 3 to 4 (#7937)
+  * rename template to mark-template cmd (#7923)
+  * Simplify mock jobs response
+  * Use "Link" header for pagination completion check
+  * Fix pagination resp with "Link" header
+  * Refactor GetJobs to use RESTWithNext
+  * Add formula-path to homebrew-bump step (#7930)
+  * Add JSON output flags to workflow list command (#7902)
+  * fix tests
+  * no other descriptions have a period
+  * mark and unmark project as template
+  * Add config clear-cache command (#7693)
+  * Allow --disable-wiki flag with --template flag in repo create command (#7886)
+  * Reword token invalid message (#7906)
+  * 🐛 (repo create)execute clone when readme option is enabled (#7837)
+  * Use go-gh prompter package (#7896)
+  * pr checks return distinct exit code for PENDING checks (#7866)
+  * Properly rename remote for GHES hosts (#7890)
+  * Add verbose flag to api cmd (#7826)
+  * Fix up Nix installation instructions (#7891)
+  * Fetch all jobs on a gh view run --json
+
+-------------------------------------------------------------------
+Tue Aug 22 08:29:55 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.33.0:
+  * codespace: Handle HTTP request retry interruption (#7846)
+  * linter appeasement
+  * delete prompt package
+  * prompter for milestone
+  * prompter for projects
+  * use prompter for labels
+  * prompter for assignees
+  * prompter for reviewers
+  * use MultiSelect for metadata survey in pr, issue create
+  * use prompter in shared editable code
+  * linter appeasement
+  * linter appeasement
+  * prompter for milestone
+  * prompter for projects
+  * use prompter for labels
+  * prompter for assignees
+  * prompter for reviewers
+  * use MultiSelect for metadata survey in pr, issue create
+  * use prompter in shared editable code
+  * use prompter in issue delete
+  * use prompter in secret set
+  * fix RegisterPassword
+  * use new prompter in repo fork
+  * switch to prompter in workflow commands
+  * Upgrade to Go 1.21 (#7843)
+  * Remove GHE handling for `workflow` scope (#7841)
+  * Add clobber flag to `alias set` (#7787)
+  * pass prompter around instead of opts
+  * Add missing "ls" aliases to list commands (#7818)
+  * Allow --org parameter in lieu of a repo context for rulesets, add current_user_can_bypass to rs view (#7747)
+  * test for forking in org
+  * strip more dead code
+  * port more prompts and cover with new tests
+  * remove dead code
+  * finish porting existing tests
+  * Codespaces: Use the host name from the logged in server for commands (#7795)
+  * Update CONTRIBUTING.md
+  * WIP porting repo edit to opts.Prompter
+  * name MultiSelect parameters in interface
+  * switch to Prompter.MultiSelect
+  * Use filepath.Base to sanitize path for archive downloads (#7805)
+  * `release create`: Trim spaces on interactive tag name input (#7759)
+  * Do not allow issue and pr templates to be symlinks (#7756)
+  * Allow deleting of local branch after merging cross repo PRs (#7709)
+
+-------------------------------------------------------------------
+Tue Jul 25 06:00:17 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.32.1:
+  * Use asciisanitization package from go-gh (#7745)
+  * Do not make reviewer update request if there are no reviewer changes (#7730)
+  * Fix pr checks command for GHES versions older than 3.9 (#7725)
+  * Use filepath.Clean to sanitize path for archive downloads (#7720)
+  * Sanitize file contents before displaying them (#7694)
+  * Do not add auth token to redirect requests which do not have the same host as the inital request. (#7692)
+
+-------------------------------------------------------------------
+Wed Jul 12 08:39:44 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.32.0:
+  * add gh cache to Actions explainer
+  * Clean up style nits and simplify some logic
+  * fix typo
+  * remove stray print
+  * docs: example of setting multiple vars using stdin
+  * Add --branch-repo flag
+  * Add --verify-tag to release edit command (#7646)
+  * make IDs cyan, add prompter test
+  * Do not interpret "branch" placeholder in `api` command when `GH_REPO` is set (#7626)
+  * Always show created gist privacy status. (#7645)
+  * Use SmartBaseRepoFunc for api command (#7594)
+  * Add check description to pr checks output (#7451)
+  * fix pr create crash on interactive milestone selection
+  * build(deps): bump google.golang.org/grpc from 1.49.0 to 1.53.0
+  * split org/repo graphql queries, better tests
+  * refactor graphql query a bit
+  * add rs check tests
+  * fix merge errors
+  * misc cleanup
+  * add ruleset check command
+  * initial view tests
+  * list test updates
+  * update bypass response and parents logic, tests
+  * update tests, add rules to view command
+  * interactive ruleset selection, move shared logic
+  * gracefully handle missing admin:org scope
+  * don't allow both --repo and --org, add docs
+  * split ruleset types by API type
+  * allow getting parents, move list to shared package
+  * basic ruleset view works
+  * updates, initial list test
+  * refactor and support org rulesets
+  * GQL query works but it's messy
+  * wip
+  * start on rs list
+  * start writing up structs for rules API payloads
+  * WIP compute branch, call API
+  * start on gh rs
+  * build(deps): bump github.com/henvic/httpretty from 0.1.1 to 0.1.2 (#7657)
+  * Rewrite issue develop command to fix numerous issues
+  * Ensure gist edit request body matches desired schema (#7635)
+  * Automatically fetch new branches created with issue develop (#7589)
+  * Support --server-port behavior with conn details
+  * Update httpretty to released version (#7654)
+  * gh run cancel needs input validation
+  * Add tenancy support (#7636)
+  * Add title to iteration and milestone fields for projects (#7621)
+  * Change how remotes are treated during `pr create` when repo is forked  (#7330)
+  * Small tweaks to auth refresh remove-scopes and reset-scopes flags (#7631)
+  * Don't deduplicate checks that stem from different events (#7618)
+  * Add cli test to remove multiple scopes at once
+  * Refactor as per review
+  * Fix commit order
+  * Add test for fill first flag
+  * Add fill-first option to create pr
+  * Add option to remove file from gist (#7560)
+  * Remove old code paths and improve code comments for repo sync (#7610)
+  * Early exit repo sync if merge-upstream requires workflow scope
+  * Add remove/reset to auth refresh
+  * typo
+  * create cache commands
+  * Return error on no-browser option if repo don't exists
+
+-------------------------------------------------------------------
+Thu Jun 22 07:40:00 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Remove obsolete constructs from spec file
+
+-------------------------------------------------------------------
+Thu Jun 22 05:55:39 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.31.0:
+  * Add timeouts to keyring operations (#7580)
+  * Alphabetically sort labels for `pr/issue view` (#7587)
+  * output URL on project commands (#7578)
+  * refactor: nest if (#7596)
+  * Fix alias import clobber flag (#7569)
+  * Fix error handling for extension and shell alias commands (#7567)
+  * chore: pkg imported more than once (#7591)
+  * Added wantErrOut property
+  * Speed up listing extensions by lazy-loading extension information when needed (#7493)
+  * build(deps): bump github.com/AlecAivazis/survey/v2 from 2.3.6 to 2.3.7
+  * Set upstream remote to track all branches after initial fetch (#7542)
+  * api: output a single JSON array in REST pagination mode (#7190)
+  * Introduce `gh project` commands (#7375)
+  * fix tests
+  * fix test
+  * :nail_care: json export
+  * fixed a type
+  * Codespaces view command updates
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.0.0 to 2.0.1
+  * Use homebrew fork in cli org and update token
+  * Change site deployment ssh key to PAT
+  * Resolve tests/lint errors
+  * update gh auth status to write to stdout on success
+  * Remove unused linter flag
+  * Replace SurveyAskOne with Prompter
+  * Add gist selector option to gist edit command
+  * Improve docs around run rerun job flag (#7527)
+  * Support viewing logs for jobs with composite actions
+  * Fix bash completions for extensions and aliases
+  * fix: Allow aliases to recognize extended commands (#7523)
+  * force method to uppercase (#7514)
+  * api: support array params in GET queries (#7513)
+  * Fix flaky test
+  * Remove unused type
+  * Add test
+  * Fix linting error
+  * Don't display retention period if 0 days
+  * Address comments
+  * Update fields to show
+  * Check if running in a codespace
+  * Add gh cs view command
+  * fix tests
+  * Print empty line between file headers
+  * :nail_care: improve code search output
+  * incorporate code review feedback
+  * remove empty line
+  * change highlight color
+  * adopt changes to User
+  * implement code search
+
+-------------------------------------------------------------------
+Wed May 31 10:45:15 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.30.0:
+  * build(deps): bump github.com/stretchr/testify from 1.8.3 to 1.8.4
+  * Do not generate docs for aliases (#7497)
+  * Speed up gh start up time (#7487)
+  * fix: apply latin matching filter to more fields
+  * Allow creating of nested aliases (#7457)
+  * fix variable name
+  * Add cmd test for pr status with counts by state
+  * Reorder Check and Status States enums variants alphabetically
+  * Use go enums for status and check status graphql enums
+  * Remove unused emptyIntrospectionFor test helper
+  * Avoid setting status check rollups when user supplies fields
+  * Rework state parsing for CheckRuns and StatusContexts
+  * Split CheckRunState and StatusState parsing
+  * Use two queries in one request for PR feature detection
+  * go generate
+  * switch to []int return for multiselect
+  * Updated to sanitize asset filename prior to uploading. Fixes #7024
+  * Remove unused prInstrospection fixture
+  * Inject fake detector into PR status tests
+  * Move CheckRunAndStatusContextCounts feature detection up stack
+  * Use pseudo field for statusCheckRollupWithCountByState
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.18 to 0.0.19
+  * Clarify docs regarding what is listed when running gh workflow list
+  * Update browser package to avoid Windows crash
+  * Update triage.md with severity descriptions
+  * build(deps): bump github.com/stretchr/testify from 1.8.2 to 1.8.3
+  * Implement initial spike for detecting and using counts by state
+  * Short circuit status check GQL introspection for GitHub.com
+  * Add support for detecting status and check counts in GQL
+  * Implement parsing and counting of PR checks using new GQL fields
+  * build(deps): bump github.com/stretchr/testify from 1.8.1 to 1.8.2
+  * Remove old, unused detector fields (#7458)
+  * Fix windows crash by bumping wincred
+  * Avoid using named return in PR ChecksStatus
+  * Add some comments to PR ChecksStatus
+  * Add some further test coverage around PR ChecksStatus
+  * Do not fall back to legacy template if template selector returns nil (#7444)
+  * Mention setting GH_ENTERPRISE_TOKEN
+  * survey: fix color contrast of default values in prompts (#7354)
+  * respect GH_REPO env variable in `pr create`
+  * Allow `gh repo set-default --view` without repo argument (#7441)
+  * Introduce helpTopics type and reduce duplication across commands (#7414)
+  * linter appeasement
+  * use new prompter in run download
+  * implement multi select support for prompter
+  * delete PromptForRun
+  * golf
+  * use new prompter in run watch
+  * use new prompter in run rerun
+  * use new prompter in run cancel
+  * use new prompter in run view
+
+-------------------------------------------------------------------
+Thu May 11 13:30:50 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.29.0:
+  * Fix label assets
+  * Fix release guard for deployment workflow
+  * Print message after codespace deletion (#7353)
+  * Include auto-merge information in gh pr view (#7385)
+  * Include auto-merge information in gh pr status (#7386)
+  * Make: Fix target name for Windows platform (#7370)
+  * New deployment workflow
+  * Add progress labels for `gh release download` (#7380)
+  * Add PR auto-merge status info to PR queries (#7384)
+  * fix empty default description for local repository (#7383)
+  * Add `alias import` command (#7118)
+  * Fix shellcheck bugs in generate.sh (#7392)
+  * Add capability to filter codespaces by repo owner (#7347)
+  * Fix Makefile compatibility with macOS
+
+-------------------------------------------------------------------
+Tue Apr 25 17:46:19 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.28.0:
+  * New deployment workflow
+  * Pretty-print JSON results of jq filtering (#7236)
+  * gh: move `CODEOWNERS` inside the `.github/` dir (#7366)
+  * feat: add visibility field (#7337)
+  * Edit multiple issues, PRs in parallel (#7259)
+  * add `--created` flag to `gh run ls` to filter listed runs by when they were created (#7352)
+  * add `--event` flag to `gh run ls` to filter runs by their trigger
+  * Diacritics substitution in prompt (#7205)
+  * Correct some typos
+  * Fix `gh cs ports` requiring `sudo` for privileged port numbers (#7326)
+  * Initialize deployment.yml workflow file
+  * Clarify how SSH keys are selected (#7325)
+  * build(deps): bump github.com/cenkalti/backoff/v4 from 4.2.0 to 4.2.1
+  * fix: normalize hostname for auth login (#6999)
+  * Update go-gh to v2 (#7299)
+  * Fix typo in `cs stop` command: `Stoppping` -> `Stopping` (#7318)
+  * feat: add web flag for codespace list & create subcommand (#7288)
+  * Enable owner flag to take multiple values for searching
+  * Move completions generation from goreleaser to Makefile
+  * Generate completion scripts for bundling in rpm and deb on release
+  * Add `-R` as shorthand of `--repo` flag for search commands (#7274)
+  * Fix invoker immediately closing
+  * add "showing x of y organizations" header
+  * Enhance ssh-key list to show signing ssh keys also
+  * Add option to add ssh singing key
+  * extend secure storage default to auth refresh
+  * fix apparent typo
+  * add --insecure-storage and make secure storage the default
+  * fix: make number arg, commit arg, and flags mutually exclusive (#7268)
+  * Additional help doc and example for auth setup-git (#7243)
+  * docs: add commit SHA arg to gh browse help (#7267)
+  * feat: add gh org list
+  * move SSH key errors out of upload function
+  * don't parse key bytes twice
+  * lint fixes
+  * cleanup
+  * feat(run): add new delete command
+  * Improve Amazon Linux install instructions
+  * check SSH key existence before uploading
+  * Fix typo in README.md
+  * Autocomplete branch flags (#6031)
+  * Resolve lint error
+  * Specify branch to force exit code
+  * Retry fetching repo from template
+  * improve test resiliency
+  * feat: allow filtering workflow runs by statuses
+  * repo list: add test for invalid owner error
+  * repo sync: clearer error message with actionable hint (#7110)
+  * fix: throw error for non-existing org / repo with non-zero status in repo list (#7240)
+  * refactor: use net/url JoinPath
+  * refactor: set the default case first
+  * fix: change MaximumNArgs from 2 to 1 in run view.go
+  * Add `--template` flag for issue create and pr create (#7185)
+  * Add a `--fail-fast` option to `pr checks --watch` (#7203)
+  * docs: revise GH_CONFIG_DIR content in help_topic.go (#7230)
+  * feat: add tests for attempt flag
+  * feat: include attempt in getRunLog
+  * refactor: don't show latest attempt
+  * feat: append attempt number in returned run url
+  * feat: pass latest attempt to RenderRunHeader for watch
+  * feat: add attemptLabel to RenderRunHeader
+  * feat: pass attempt to RenderRunHeader
+  * feat: update GetRun path based on attempt
+  * feat: pass 0 to fetch latest attempt
+  * feat: add attempt flag to run view
+  * refactor: revise errMsg in rename_test.go
+  * refactor: remove unnecessary validations
+  * refactor: use ExactArgs instead of MaximumNArgs
+  * refactor: change from [] to {}
+  * Properly handle closing files that have been writen to (#7199)
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18 (#7217)
+  * feat: gist rename test
+  * variable: fix listing and deleting variables in an environment (#7207)
+  * Support ext install --force (#7173)
+  * use Prompter for `pkg/cmd/repo/archive` (#7083)
+  * fix: revise test cases in TestNewCmdRename in rename_test.go
+  * feat: add FlagErrorf for missing flag cases
+  * feat: TestNewCmdRename for gist rename
+  * refactor: remove unused code
+  * Replace deprecated command with environment file
+  * Skip checking keyring for token in certain scenarios (#7169)
+  * feat: add gist rename logic
+  * feat: add gistRenameCmd to gist.go
+  * Added apt update command to linux install docs.
+  * Bump actions/setup-go from 3 to 4 (#7177)
+  * Fix multiword keyword quoting for search commands (#7170)
+  * Fixes #455 - Hide "current branch" for pr status --repo
+  * Tech debt cleanup for variable and secret commands (#7151)
+  * Only replace control sequences (#7168)
+  * Dont follow redirects on repo delete (#7106)
+  * Add variable delete command (#6929)
+  * Add variable list command (#6995)
+  * Add variable set command (#6928)
+  * Clarify `gh auth refresh` command behavior (#7132)
+  * Make repo sync git fetch authenticated (#7139)
+  * Improve documentation and consistency of the `--commit` flag for `gh browse` command (#7105)
+  * Use transform.Transformer interface for ascii sanitization (#7117)
+  * use t.Cleanup(m.Verify)
+  * fix bug with Prompter.MultiSelect
+  * new tooling for assertions about prompting
+  * config get: support getting oauth_token from keyring
+  * codespace ssh: fix "connection reset by peer"
+  * Manually get current user name rather than use api client (#7114)
+  * pr diff: sanitize control characters for terminal output
+  * Bump github.com/gabriel-vasile/mimetype from 1.4.1 to 1.4.2
+  * Make auth refresh more convenient with secure storage (#7098)
+  * Fix delete tests
+  * Match return style
+  * Fix build errors
+  * Properly handle C1 control sequences (#7079)
+  * Introduce GH_PATH environment variable (#7025)
+  * Use default host for auth token command if a hostname is not provided (#7094)
+  * Always open new vscode window in `gh cs code` (#7092)
+  * fix: correctly set `ErrNotOnAnyBranch` error in git client (#7082)
+  * Standardize retry mechanism (#7027)
+  * Update working-with-us.md
+  * use new cfg.Authentication()
+  * Include new line after existing fork error log (#7030)
+  * Cleanup config.AuthToken and config.DefaultHost methods (#7049)
+  * Add ability to store tokens in encrypted storage (#7043)
+  * Refactor Config interface in preperation for encrypted token storage (#7033)
+  * feat: add open num hash to browse command
+  * Add `--repo` filter to more `gh codespaces` commands (#6669)
+  * Update golang.org/x/net package (#7026)
+  * Retry `git clone` on git clone failure in `gh repo fork --clone` (#6962)
+  * use prompter for pkg/cmd/repo/unarchive
+  * add command gh repo unarchive
+  * Enable darwin arm64 builds in goreleaser (#4435)
+  * Allow retrieving `projectItems` in JSON and allow adding/removing user owned projects (#7007)
+  * Allow adding named gpg keys (#6993)
+  * Adopt in delete.go
+  * Rename f to run
+  * Adopt in stop.go
+  * Adopt in ssh.go
+  * Adopt in ports.go
+  * Adopt in list.go
+  * Adopt in edit.go
+  * Adopt in delete.go
+  * Adopt in create.go
+  * Move helper to iostreams
+  * feat: add `--releases` option to `gh browse` (#6996)
+  * Fix set-default interactive not showing all remotes (#6969)
+  * Add visibility warning to repo edit (#6980)
+  * Avoid implicitly fetching when adding a new git remote (#6990)
+  * Teach gh cs create to use current repo as default (#6596)
+  * Disallow update checker delaying the gh process (#6978)
+  * Default to authenticated user on codespace delete (#6944)
+  * Support Fork with Default Branch Only
+  * Disable gh update checker in our precompiled binaries
+  * GH_DEBUG: fix api logging not corrupting response bodies
+  * secret set: enable multiline values when reading from .env file
+  * Fix panic in ASCII sanitization (#6956)
+  * Bump microsoft/setup-msbuild from 1.1.3 to 1.3.1
+  * Fix adding/removing projects using flags for edit commands (#6955)
+  * include readme viewing in small help
+  * longer small help
+  * Bump github.com/cli/oauth from 1.0.0 to 1.0.1
+  * Sanitize ANSII control characters returned from the server (#6916)
+  * Special case setting dependabot org secrets (#6941)
+  * fix tests
+  * WIP fixing tests
+  * Change uint8 to uint64 to hold job with more than 255 run attempts (#6935)
+  * Use int64 repository IDs for Codespaces user secrets
+  * Fix ignoring ProjectsV2-specific errors for GHES
+  * WIP: fixing tests
+  * update doc
+  * TODOs
+  * clean up command screen
+  * fix silencing git output
+  * remove unused args from installGit
+  * WIP on using pages
+  * clean up some key handling
+  * Rename `--confirm` flag to `--yes` for various destructive commands (#6915)
+  * Fix race conditions in invoker_test (#6905)
+  * Add `--reviewer` flag completion (#6873)
+  * repo delete: change confirmation flag to `--yes` (#6911)
+  * show token scopes on auth status (#6546)
+  * Add notes about project scope to various commands (#6907)
+  * Add `gh repo edit --enable-discussions` (#6903)
+  * Bump the oauth library (#6885)
+  * Fix flakey TestUpdateProjectV2Items (#6909)
+  * extension create: make initial commit (#6833)
+  * Warn against Windows absolute path when using `gh api` (#6895)
+  * Codespaces create: Fix missing billable owner notice for individuals (#6891)
+  * Linter and comment
+  * Close port forward writer on reader
+  * Add projectsV2 support to issue create, issue edit, pr create, and pr edit (#6735)
+  * Use gRPC client to notify codespace of activity (#6870)
+  * Fix `mergedBy` JSON export for PRs
+  * Fix JSON payload for PR review author
+  * repo set-default: support bare git repos
+  * Use AuthToken function to retrieve AuthToken instead of GetOrDefault (#6878)
+  * Migrate search commands to new table printer and add headers (#6869)
+  * Add `search commits` command (#6817)
+  * Use progress runner a few times
+  * Add generic progress runner
+  * Fix spinner on error
+  * Start SSH server with gRPC
+  * avoid panic when bad default given to Select
+  * Rebuild container using gRPC client
+  * link from readme
+  * add intake document
+  * Remove unused token field
+  * Fix typo in has_uncommitted_changes for codespaces (#6812)
+  * Address comments
+  * Create `Invoker` object
+  * Fix linting error and cleanup error messages
+  * Create centralized Codespaces RPC invoker
+  * Handle erase operation in auth git-credential command (#6805)
+  * tweak selection
+  * select base repo correctly when only one remote
+  * Bump github.com/mattn/go-isatty from 0.0.16 to 0.0.17 (#6794)
+  * docs: update codespace installation instructions (#6781)
+  * Bump github.com/gdamore/tcell/v2 from 2.5.3 to 2.5.4
+  * Fix fetching issue/PR comments
+  * downgrade ubuntu to fix osslsigncode
+  * Avoid sending empty JSON body when no params to api command (#6775)
+  * Supported passing nested JSON arrays/objects to api command via fields (#6614)
+  * Group PR, release, and repo subcommands
+  * finish tests
+  * WIP all but relocking
+  * stub out rest of tests
+  * todos
+  * WIP tests
+  * WIP on tests
+  * Split issue commands into "General" vs. "Targeted"
+  * further WIP
+  * WIP on adding tests, add prompt, tweak things
+  * Allow setting codespace display name during create (#6739)
+  * wip: tweak output, update to Prompter, start on tests
+  * error instead of prompt when no base repo + fixes
+  * final bit of feedback
+  * use factory git client
+  * rename command and fix tests
+  * tweak wording
+  * Update git/client.go
+  * WIP on single column support
+  * Fix release assets upload retry logic
+  * release create: clean up leftover draft release on upload/publish failure
+  * Improve looking up draft releases by tag name
+  * Fix API client code docs
+  * freeze input when help active
+  * use Pages to render help
+  * these were bad
+  * move help to its own window
+  * Change alias list output format to YAML (#6603)
+  * add more to usage
+  * tweak UX and switch to prompter
+  * tests pass
+  * Fix clobbering old files in release download (#6694)
+  * Bump goreleaser/goreleaser-action from 3 to 4
+  * Flags instead of PersistentFlag
+  * linter
+  * Use -R for --repo shorthand and deprecate -r
+  * Go 1.19: fix comment formatting for moq-generated mocks
+  * bump golangci-lint
+  * bump safeexec for 1.19 fix
+  * Linter fixes (#6722)
+  * Bump goreleaser
+  * Update to Go 1.19
+  * docs: Update installation instructions for WinGet (#6716)
+  * port release command to prompter
+  * Add `isDraft` to `search prs` json options, matching `pr view` (#6704)
+  * export is_bot from issue list
+  * export is_bot in issue/pr search
+  * Add `--allow-update-branch` to the `repo edit` command
+  * Use new domain for forwarded ports
+  * Show version diff when updating a single extension (#6647)
+  * Add support to exclude pre-releases from release list (#6625)
+  * Prompt for owner when interactively creating repos (#6578)
+  * Exclude the current user from reviewers when creating pr (#6464)
+  * fix test
+  * Document installing GitHub CLI in Codespaces
+  * Expose commit OID in PR reviews JSON export
+  * Bump mislav/bump-homebrew-formula-action from 1 to 2
+  * Avoid duplicate remote tag lookups
+  * Clarify --verify-tag flag description
+  * Add --verify-tag flag for release creation command
+  * Update go-gh to v1.0.0 (#6618)
+  * Authenticate network git commands (#6541)
+  * Fix up bindir for new version of goreleaser (#6621)
+  * Set fetch depth for goreleaser to work properly
+  * Fix commands that use iostreams RefreshScreen (#6607)
+  * Update goreleaser so we can release ARM64 binaries for windows (#6605)
+  * Revert "Fix `repo list` when belonging to org with IP Allow list enabled"
+  * Use git client in extension manager (#6547)
+  * Group issue commands into general vs. additional
+  * go mod tidy
+  * Fix SECURITY.md
+  * Create SECURITY.md
+  * Allow accessing Cobra built-in doc generation features
+  * Remove the feedback section from gh help
+  * Migrate to the new Cobra command grouping feature
+  * Bump Cobra
+  * use Prompter in pr merge
+  * use Prompter in Commentable
+  * use Prompter in template manager
+  * use Prompter in pr create
+  * Test reasonsMap construction
+  * Implicitly return the nil value when no lock reason given
+  * Alphabetize fields
+  * Update comments
+  * Remove direct calls to graphql library
+  * Use strings.Cut
+  * Backport strings.Cut
+  * Refactor code to live inside default pkg
+  * default lint fix
+  * lint test update
+  * fixing lint and formatting
+  * Created more test cases, added in env section
+  * beginning testing
+  * deleted scratch pad of commit
+  * thinking of a better solution, wip. BaseRepo() might be better split up
+  * headed in the right direction. Needs tests and to be cleaned up. This is a working example of the teams design combined with https://github.com/cli/cli/pull/4859#issuecomment-1012776582
+  * created `gh config base` a way to configure the base repo
+  * Add failure icon
+  * Restructured switch statement
+  * Polished things
+  * Polished error message
+  * Use `if/else if` on error checking
+  * Remove opts.PadlockState
+  * Skip unlock api call if already unlocked
+  * Remove opts.PadlockState
+  * Refactor things
+  * Modify documentation if called from issue or pr
+  * Get graphql queries and mutations working
+  * Rearrange
+  * Add lock-related values to issue
+  * Map parent commands to typenames
+  * Export return values for Issue.Typename
+  * Other changes
+  * Added lock subcommands to pr command
+  * Draft first design
+  * Stub out files for lock command
+  * Add author information in `pr list` JSON output
+
+-------------------------------------------------------------------
+Wed Apr  5 06:25:51 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.26.1
+  https://github.com/cli/cli/releases/tag/v2.26.1
+
+  What's Changed
+  * extend secure storage default to auth refresh by @vilmibm in #7278
+
+- Update to 2.26.1-pre0
+  https://github.com/cli/cli/releases/tag/v2.26.1-pre0
+
+  What's Changed
+  * extend secure storage default to auth refresh by @vilmibm in #7278
+
+- Update to 2.26.0
+  https://github.com/cli/cli/releases/tag/v2.26.0
+
+  Important: credentials now stored securely by default
+    When running gh auth login, your credentials will now be stored in your operating system's
+    credential storage instead of directly on disk. In other words, --secure-storage is now default
+    behavior. We've added a new flag, --insecure-storage, to opt into the old insecure behavior in
+    case you need to debug an issue with credential storage.
+
+    As before, to take advantage of credential storage, please re-run gh auth login.
+    For more context, you can read the v2.24.0 release notes
+    Ref: secure storage by default by @vilmibm in #7276
+
+  Other new features
+  * Allow filtering workflow runs by status by @alex-petrov-vt in #7249
+  * Gist rename by @wingkwong in #7212
+  * Add a --fail-fast option to pr checks --watch by @benjlevesque in #7203
+  * Add --template for issue and PR by @guerinoni in #7185
+  * gh run view --attempt by @wingkwong in #7232
+  * utocomplete branch flags by @bchadwic in #6031
+
+  Bugfixes
+  * Make number arg, commit arg, and flags mutually exclusive by @kkocha in #7268
+  * Check SSH key existence before uploading by @vaindil in #7246
+  * Throw error for non-existing org / repo with non-zero status in repo list by @wingkwong in #7240
+
+  Docs and development changes
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18 by @dependabot in #7217
+  * Properly handle closing files that have been writen to by @samcoe in #7199
+  * Added apt update command to linux install docs. by @srgk26 in #7186
+  * Revise GH_CONFIG_DIR content in help_topic.go by @wingkwong in #7230
+  * Refine the Makefile file so that it can do the basic work by @cubxxw in #7228
+  * Clearer message with actionable hint for repo sync by @macmacbr in #7110
+  * Fix typo in README.md by @SonicGDX in #7244
+  * Retry fetching repo from template by @heaths in #7080
+  * Repo list: add test for invalid owner error by @mislav in #7241
+  * Improve Amazon Linux install instructions by @mislav in #7252
+  * Add commit SHA arg to gh browse help by @kkocha in #7267
+  * Additional help doc and example for auth setup-git by @kkocha in #7243
+
+- Update to 2.26.0-pre0
+  https://github.com/cli/cli/releases/tag/v2.26.0-pre0
+
+  What's Changed
+  * Bump github.com/mattn/go-isatty from 0.0.17 to 0.0.18 by @dependabot in #7217
+  * Properly handle closing files that have been writen to by @samcoe in #7199
+  * feat: gist rename by @wingkwong in #7212
+  * Added apt update command to linux install docs. by @srgk26 in #7186
+  * docs: revise GH_CONFIG_DIR content in help_topic.go by @wingkwong in #7230
+  * add a --fail-fast option to pr checks --watch by @benjlevesque in #7203
+  * Add --template for issue and PR by @guerinoni in #7185
+  * Feature(Fixes #7229) : Refine the Makefile file so that it can do the basic work by @cubxxw in #7228
+  * feat: gh run view --attempt by @wingkwong in #7232
+  * fix: throw error for non-existing org / repo with non-zero status in repo list by @wingkwong in #7240
+  * issue-6910 clearer message with actionable hint for repo sync by @macmacbr in #7110
+  * Autocomplete branch flags by @bchadwic in #6031
+  * Fix typo in README.md by @SonicGDX in #7244
+  * Retry fetching repo from template by @heaths in #7080
+  * repo list: add test for invalid owner error by @mislav in #7241
+  * feat: allow filtering workflow runs by status by @alex-petrov-vt in #7249
+  * Improve Amazon Linux install instructions by @mislav in #7252
+  * Check SSH key existence before uploading by @vaindil in #7246
+  * docs: add commit SHA arg to gh browse help by @kkocha in #7267
+  * Additional help doc and example for auth setup-git by @kkocha in #7243
+  * fix: make number arg, commit arg, and flags mutually exclusive by @kkocha in #7268
+  * secure storage by default by @vilmibm in #7276
+
+-------------------------------------------------------------------
+Wed Mar 22 16:00:30 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.25.1
+  https://github.com/cli/cli/releases/tag/v2.25.1
+
+  What's Changed
+  * variable list: fix api path by @rsteube in #7207
+
+-------------------------------------------------------------------
+Tue Mar 21 08:14:42 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.25.0
+  https://github.com/cli/cli/releases/tag/v2.25.0
+
+  What's New
+  * New suit of commands for working with Repository and Organization variables
+    - variable set by @atirikt in #6928
+    - variable list by @atirikt in #6995
+    - variable delete by @atirikt in #6929
+  * ext install: Introduce new --force flag by @heaths in #7173
+
+  What's Changed
+  * browse: Improve documentation and consistency of the --commit flag by @alex-petrov-vt in #7105
+  * repo sync: Ensure git fetch is always authenticated by @samcoe in #7139
+  * repo delete: Don't delete repos that have transfered ownership by @samcoe in #7106
+  * auth: Skip searching keyring when checking for environment tokens by @benjlevesque in #7169
+  * auth refresh: Improve documentation of --scopes flag behavior by @alex-petrov-vt in #7132
+  * pr status: Hide "current branch" when using --repo flag by @jtpetty in #7180
+  * repo archive: Change to use Prompter package by @Ruminateer in #7083
+  * search: Fix multiword keyword quoting by @samcoe in #7170
+  * Replace deprecated command with environment file by @jongwooo in #7195
+  * New prompt testing utility by @vilmibm in #7116
+  * Use transform.Transformer interface for ascii sanitization by @samcoe in #7117
+  * Only replace control sequences by @samcoe in #7168
+  * Tech debt cleanup for variable and secret commands by @samcoe in #7151
+  * Bump actions/setup-go from 3 to 4 by @dependabot in #7177
+
+- Update to 2.25.0-pre0
+  https://github.com/cli/cli/releases/tag/v2.25.0-pre0
+
+  What's New
+  * New suit of commands for working with Repository and Organization variables
+  * variable set by @atirikt in #6928
+  * variable list by @atirikt in #6995
+  * variable delete by @atirikt in #6929
+  * ext install: Introduce new --force flag by @heaths in #7173
+
+  What's Changed
+  * browse: Improve documentation and consistency of the --commit flag by @alex-petrov-vt in #7105
+  * repo sync: Ensure git fetch is always authenticated by @samcoe in #7139
+  * repo delete: Don't delete repos that have transfered ownership by @samcoe in #7106
+  * auth: Skip searching keyring when checking for environment tokens by @benjlevesque in #7169
+  * auth refresh: Improve documentation of --scopes flag behavior by @alex-petrov-vt in #7132
+  * pr status: Hide "current branch" when using --repo flag by @jtpetty in #7180
+  * repo archive: Change to use Prompter package by @Ruminateer in #7083
+  * search: Fix multiword keyword quoting by @samcoe in #7170
+  * Replace deprecated command with environment file by @jongwooo in #7195
+  * New prompt testing utility by @vilmibm in #7116
+  * Use transform.Transformer interface for ascii sanitization by @samcoe in #7117
+  * Only replace control sequences by @samcoe in #7168
+  * Tech debt cleanup for variable and secret commands by @samcoe in #7151
+  * Bump actions/setup-go from 3 to 4 by @dependabot in #7177
+
+-------------------------------------------------------------------
+Thu Mar  9 15:06:16 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.24.2
+  https://github.com/cli/cli/releases/tag/v2.24.1
+
+  What's Changed
+  * codespace ssh: fix "connection reset by peer" by @mislav in #7120
+
+-------------------------------------------------------------------
+Thu Mar  9 10:11:08 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.24.1
+  https://github.com/cli/cli/releases/tag/v2.24.1
+
+  What's Changed
+  * Fix progress indicator bug with generic RunWithProgress function by @jungaretti in #6848
+  * auth login: Fix retrieving current login name when pasting auth token @samcoe in #7114
+
+- Update to 2.24.0
+  https://github.com/cli/cli/releases/tag/v2.24.0
+
+  What's Changed
+  * repo fork: retry git clone on git clone failure by @jsoref in #6962
+  * repo fork: add newline after printing error about existing fork by @digitalfu in #7030
+  * codespace: add --repo filter to more commands by @cmbrose in #6669
+  * codespace code: always open new VS Code window by @cmbrose in #7092
+  * pr diff: sanitize control characters for terminal output by @mislav in #7108
+  * browse: use --commit flag to browse commit SHAs containing only digits by @yanskun in #7038
+  * pr status: fix when on a detached HEAD by @alex-petrov-vt in #7082
+  * auth token: respect GH_HOST if a hostname is not provided by @samcoe in #7094
+  * Address Projects bugs by @samcoe in #7007
+  * Properly handle C1 control sequences by @samcoe in #7079
+  * Cleanup logic to retry on failure by @samcoe in #7027
+  * Cleanup config.AuthToken and config.DefaultHost methods by @samcoe in #7049
+  * Bump golang.org/x/net package by @samcoe in #7026
+  * Bump github.com/gabriel-vasile/mimetype from 1.4.1 to 1.4.2 by @dependabot in #7107
+  * Update working-with-us.md by @vilmibm in #7077
+
+  What's New
+  * Option to store gh access token in system encrypted storage
+    The gh auth login and gh auth refresh commands gained the new --secure-storage flag.
+    In this mode, the access token that GitHub CLI uses for GitHub API requests will now
+    be stored in the system keyring instead of in the plain text config file.
+
+    To migrate as an existing GitHub CLI user, re-authenticate like so:
+      gh auth refresh --secure-storage -h github.com
+
+    Depending on your system, you could get an interactive prompt to allow the CLI tool to access the system keyring. The systems that are supported are:
+    * Keychain on macOS
+    * GNOME Keyring on Linux (Secret Service dbus interface)
+    * Wincred on Windows
+
+    Please note:
+    This feature is currently opt-in, but will become the default in the near future.
+    If none of the system storage providers are found, or the store operation fails,
+    the token will be written to the config file as before.
+
+    Using this feature could result in Go extensions breaking if they were not updated to the latest go-gh version. If extensions you are using no longer work after migrating your token to secure token storage, please report the issue to that extension's repository.
+    Storing tokens in system keyring most likely won't work in “headless” environments.
+
+  Other additions
+  * Add option to store credentials in OS keyring by @samcoe @mislav in #7033 #7043 #7098
+  * browse: add --releases option by @owenvoke in #6996
+  * Add gpg-key add --title to name GPG keys by @rpadaki in #6993
+  * Add command gh repo unarchive by @Ruminateer in #7003
+  * Add macOS arm64 prebuilt binaries by @beret in #4435
+  * Introduce GH_PATH environment variable by @samcoe in #7025
+
+-------------------------------------------------------------------
+Wed Feb  8 09:25:56 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.23.0
+  https://github.com/cli/cli/releases/tag/v2.23.0
+  What's New
+  * repo fork: Add --default-branch-only flag by @jsoref in #6983
+  * repo edit: Add visibility warning by @tuananhlai and @samcoe in #6980
+  What's Changed
+  * secret set: Fix setting Codespaces user secrets by @joshmgross in #6923
+  * secret set: Fix setting Dependabot org secrets by @samcoe in #6941
+  * secret set: Fix multiline values when reading from .env file by @mislav in #6932
+  * run: Fix integer overflow error when more than 255 run attempts by @samcoe in #6935
+  * extension browse: Improve usability and accessibility by @vilmibm in #6584
+  * issue/pr edit: Fix adding/removing projects using flags by @samcoe in #6955
+  * codespace delete: Default to authenticated user by @luanzeba in #6944
+  * codespace create: Default to using current repo by @rneatherway in #6596
+  * repo set-default: Fix interactive mode not showing all remotes by @despreston in #6969
+  * GH_DEBUG: Fix API logging corrupting response bodies by @mislav in #6976
+  * Avoid implicitly fetching when adding a new git remote by @mislav in #6990
+  * Sanitize ANSII control characters returned from the server by @samcoe in #6916, #6956
+  * Disable gh update checker in our precompiled binaries by @mislav in #6977
+  * Disallow update checker delaying the gh process by @mislav in #6978
+  * Bump github.com/cli/oauth from 1.0.0 to 1.0.1 by @dependabot in #6948
+  * Bump microsoft/setup-msbuild from 1.1.3 to 1.3.1 by @dependabot in #6973
+
+-------------------------------------------------------------------
+Mon Jan 30 06:57:46 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.22.1
+  https://github.com/cli/cli/releases/tag/v2.22.1
+  * Fix gh issue edit and gh pr edit for GitHub Enterprise Server by @mislav in #6921
+  * Add --reviewer flag completion by @benjlevesque in #6873
+  * Rename --confirm flag to --yes for various destructive commands by @damiensedgwick in #6915
+  * Fix race conditions in invoker_test by @cmbrose in #6905
+
+-------------------------------------------------------------------
+Thu Jan 26 09:38:56 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.22.0
+  https://github.com/cli/cli/releases/tag/v2.22.0
+  * Fix typo in has_uncommitted_changes for codespaces by @jkeech in #6812
+  * Create centralized Codespaces RPC invoker by @dmgardiner25 in #6657
+  * avoid panic when bad default given to Select by @vilmibm in #6831
+  * Rebuild container using gRPC client by @dmgardiner25 in #6830
+  * Start SSH server with gRPC client by @dmgardiner25 in #6838
+  * Add search commits command by @kevhlee in #6817
+  * Migrate search commands to new table printer and add headers by @samcoe in #6869
+  * Use AuthToken function to retrieve AuthToken instead of GetOrDefault by @samcoe in #6878
+  * Use gRPC client to notify codespace of activity by @dmgardiner25 in #6870
+  * intake doc by @vilmibm in #6815
+  * Fix JSON payloads for PR reviewers, mergedBy by @mislav in #6881
+  * repo set-default: support bare git repos by @mislav in #6880
+  * Continue projectsv2 support by @qoega in #6735
+  * Codespaces create: Fix missing billable owner notice for individuals by @RyanJamesCaldwell in #6891
+  * Half close port forwarding connections to fix hangs by @cmbrose in #6888
+  * Warn against Windows absolute path when using gh api by @kevhlee in #6895
+  * make a commit on extension create by @mntlty in #6833
+  * Fix flakey TestUpdateProjectV2Items by @mislav in #6909
+  * Bump the oauth library by @mislav in #6885
+  * Add gh repo edit --enable-discussions by @azu in #6903
+  * Add notes about project scope to various commands by @samcoe in #6907
+  * show token scopes on auth status by @mntlty in #6546
+  * repo delete: change confirmation flag to --yes by @damiensedgwick in #6911
+
+-------------------------------------------------------------------
+Wed Jan  4 09:42:11 UTC 2023 - Pavel Dostál <pdostal@suse.com>
+
+- Update to 2.21.2
+  https://github.com/cli/cli/releases
+  * docs: update codespace installation instructions by @levenleven in #6781
+  * Bump github.com/mattn/go-isatty from 0.0.16 to 0.0.17 by @dependabot in #6794
+  * Bump github.com/gdamore/tcell/v2 from 2.5.3 to 2.5.4 by @dependabot in #6798
+  * Handle erase operation in auth git-credential command by @samcoe in #6805
+  * select base repo correctly when only one remote by @vilmibm in #6803
+
+-------------------------------------------------------------------
+Tue Nov 29 05:02:04 UTC 2022 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to 2.20.2
+  https://github.com/cli/cli/releases
+  * Update security policy by @maclarel in #6587
+  * Fix listing repositories for a named GitHub user by @mislav in #6608
+  * Fix commands not properly refreshing the terminal screen by @samcoe in #6607
+
+
+-------------------------------------------------------------------
+Fri Nov 11 14:18:49 UTC 2022 - chris@computersalat.de
+
+- Update to 2.20.0
+  https://github.com/cli/cli/releases
+
+-------------------------------------------------------------------
+Wed Sep 07 13:52:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.14.2:
+  * Remove accidental caching from `repo list` and other commands
+  * strip whitespace when adding topics
+  * Set blank headers so they are not automatically resolved by go-gh (#5935)
+  * Post go-gh integration cleanup (#5933)
+
+-------------------------------------------------------------------
+Wed Jul 13 08:19:26 UTC 2022 - chris@computersalat.de
+
+- Update to 2.14.1
+  https://github.com/cli/cli/releases
+  * What's Changed
+    - auth login/refresh: Fix auth token not being present in login and refresh flows @samcoe in #5928
+- fix spec
+  * add missing Group
+
+-------------------------------------------------------------------
+Mon Jul 11 13:16:36 UTC 2022 - chris@computersalat.de
+
+- Update to 2.13.0
+  https://github.com/cli/cli/releases
+  * What's New
+    - Add pr merge --match-head-commit flag by @ffalor in #5692
+    - Add codespace create --retention-period flag by @gdomingu in #5825
+    - Add codespace list/stop/delete --org management capabilities for organization administrators by @greggroth and @8Gitbrix in #5807 #5812 #5827
+    - codespace ssh: automatically generate SSH keys by @cmbrose in #5752
+    - codespace create: notify user when codespace usage is covered by an organization by @jshorty in #5816
+    - secret set: allow setting Codespace repository secrets by @greggroth in #5802
+    - Add Windows ARM precompiled binary and support arm64 extensions by @azchohfi in #5715
+  * What's Changed
+    - Improve gh auth help message based on CI environment by @spenserblack in #5781
+    - Fix determining the path to the gh executable under Homebrew by @mislav in #5822
+    - pr create: clear filter when selecting from a list in interactive mode by @wilhelmeek in #5841
+    - repo fork: raise error if attempting to fork own repository by @jf-delineate in #5794
+    - Simplify codespace picker by @greggroth in #5826
+    - Bump github.com/stretchr/testify from 1.7.3 to 1.7.4 by @dependabot in #5833
+
+-------------------------------------------------------------------
+Thu May 26 07:01:46 UTC 2022 - stimut@gmail.com
+
+- Update to version 2.11.3:
+  * Bugfix: Retention period is being sent to the API as 0 (#5706)
+  * Fix Cobra completion output going to stdout
+  * Fix --version flag printing to stdout
+  * Add --upstream-remote-name flag to gh replo clone (#5619)
+  * Parallelize `label clone` (#5687)
+  * Stop bumping winget manifest as part of release automation (#5699)
+  * Write Cobra deprecation messages to stderr
+  * Bump goreleaser/goreleaser-action from 2 to 3
+  * Clarify that ShowResponseHeaders includes status line
+  * Fix owner qualifier for search queries (#5693)
+  * Add `--pattern` field to `run download` (#5539)
+  * add `include-all-branches` flag to `repo create` (#5537)
+  * Add ability to set title for ssh key in auth login (#5524)
+  * Always clear screen when watching PR checks (#5678)
+  * Fix `label clone` to pass orderBy (#5675)
+  * pr create: ensure clear error when `--body` is missing in nonTTY mode
+  * Allow passing full extension name (#5464)
+  * Fixing #5624 - Removing unneeded hint and additional new line (#5642)
+  * Extract feature detection package (#5494)
+  * dont need assignment
+  * issue view: ensure loading indicator is stopped when a prompt is shown (#5641)
+  * Change int to uint64 for large fields (#5651)
+  * filter out internal ports from gh cs ports list
+  * Support rerunning Actions runs with debug logging (#5594)
+  * Allow nil to truncate template function
+  * Support and favor delete for secrets (#5617)
+  * Fix whitespace in search prs examples (#5650)
+  * Fix struct field tag (#5649)
+  * Replace uses of strings.Title (#5623)
+  * Removing confusing user search text (#5620)
+  * Re-enable linters now that golangci-lint has been updated (#5615)
+
+-------------------------------------------------------------------
+Wed May 11 09:03:37 UTC 2022 - rombert@apache.org
+
+- Update to version 2.10.1:
+  * Hide retention-period flag (#5607)
+  * Merge pull request #5504 from greggroth/gregg/retention-period
+  * repo clone: document the upstream remote (#5466)
+  * auth: respect GH_BROWSER, `browser` config, avoid opening non-HTTP URLs
+  * repo list: add `--visibility internal` filter (#5564)
+  * Fix nil pointer exception in codespace selection
+  * add devcontainer (#5592)
+  * Ensure stable presentation of FORBIDDEN errors
+  * :nail_care: optimize fetches
+  * Ignore FORBIDDEN errors for `gh status`
+  * status: exclude results from archived repositories
+  * Add `exclude-drafts` flag to `gh release list`
+  * Upgrade to go 1.18 (#5542)
+  * Update order
+  * Handle star in display name
+  * Dis-ambiguate "currentBranch"
+  * :nail_care:
+  * Add `--json` support to `label list` (#5567)
+  * Add Display Name to the list command
+  * Remove empty return
+  * Fix non-working `gh issue view` usage example (#5563)
+  * Fix: 5501 - Added examples of negated qualifiers to search commands (#5562)
+  * Add label list sorting and delete command (#5503)
+  * Add the ability to pass teams to `review-requested` (#5538)
+  * Document linux distribution updating  (#5531)
+  * Consistent version format in version upgrade notice
+  * Fix grammar in `repo create` prompt (#5557)
+  * issue comment: support quotes and arguments in EDITOR value
+  * Remove mention of function
+  * Use named return values
+  * Use safeClose instead of Close
+  * Update auth error message
+  * Remove `Stringer` from `ghrepo.Interface` (#5536)
+  * Bump github.com/google/go-cmp from 0.5.7 to 0.5.8 (#5533)
+  * Add progress indicator to `gist create` (#5526)
+  * Clarify `label edit --name` switch (#5525)
+  * Bump github.com/cpuguy83/go-md2man/v2 from 2.0.1 to 2.0.2
+  * Add autocomplete descriptions for aliases and extensions (#5447)
+  * Replace ioutil with io and os (#5498)
+  * Add `label edit` command (#5519)
+  * Properly handle issue and pr state options when building search queries (#5513)
+  * Add `label clone` command (#5452)
+  * Don't error on list commands when no results found (#5479)
+  * refactor merge command
+  * Bump github/codeql-action from 1 to 2
+  * Avoid crash when deleting gist with no owner
+  * Add context to errors
+  * Resolve feedback
+  * Remove function return
+  * PR feedback
+  * Fix displayed header for search prs command (#5488)
+  * add ls alias to gh repo list (#5480)
+  * Clarify session helper
+  * Clean up more errors
+  * Clean up errors
+  * Fix -c option
+  * Print JupyterLab URL
+  * Fix name of RPC service
+  * Clean up Jupyter code
+  * Fix tests
+  * Final copy and behavior update for prompt
+  * go fmt
+  * Change the way we parse list-devcontainers response
+  * Fix tests
+  * Change some copy per product's suggestions
+  * Refactor liveshare setup to a new function
+  * Clean up code
+  * Fix RPC call
+  * Add cs jupyter
+  * Rename test
+  * Add interactive prompt to choose from list of available devcontainer files
+  * Add devcontainer_path API param as an option
+
+-------------------------------------------------------------------
+Thu Mar 10 16:24:09 UTC 2022 - chris@computersalat.de
+
+- Update to 2.5.2
+  https://github.com/cli/cli/releases
+  * Other Bugfixes
+    - Fix HexToRGB panic by @markphelps in #5247
+  * Other Changes
+    - Support filtering PRs authored by GitHub Apps by @joshmgross in #5180
+    - gh auth login: added flags to partially automate flow by @jonathan-enf in #5158
+    - Codespaces Create: Allow Accepting Permissions by @markphelps in #5234
+  * Development & Docs
+    - Bump github.com/itchyny/gojq from 0.12.6 to 0.12.7 by @dependabot in #5263
+    - Misc. docs improvements by @mislav in #5223
+    - Use StringEnumFlag helper in more places by @mislav in #5221
+    - Change how gh-cli is installed on fedora by @Hanjingxue-Boling in #5204
+- updated vendor.tar.gz
+
+-------------------------------------------------------------------
+Thu Feb 17 17:02:15 UTC 2022 - <chris@computersalat.de>
+
+- Update to 2.5.1
+  https://github.com/cli/cli/releases
+  * New features
+    - Add display name to codespaces prompts and JSON output by @veverkap in #5044
+    - Add pr checks --watch flag by @endorama in #4519
+  * Fixes
+    - auth login --with-token: fix authenticating git operations by @mislav in #5186
+    - release create: respect discussion category when creating a release with assets by @k-jun in #5019
+    - gist create: handle Windows-style file paths by @joshmgross in #5173
+    - release create: warn about unpushed local git tag by @samcoe in #5104
+    - Ignore EPIPE errors when writing to a closed pager by @mislav in #5143
+    - Rotate our Windows code-signing certificates by @mislav in #5196
+- updated vendor.tar.gz
+
+-------------------------------------------------------------------
+Tue Dec 28 05:29:04 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 2.4.0
+	- Add repo edit command by @g14a in gh#cli/cli#4318
+	- release create: add --generate-notes functionality by @Sixeight in gh#cli/cli#4467
+	- release create: add interactive mode to choose a tag name by @sguzmanm in gh#cli/cli#4525
+	- pr merge: allow editing commit subject by @cristiand391 in gh#cli/cli#3344
+	- secret set: allow importing secrets from a dotenv file by @lpessoa in gh#cli/cli#4534
+	- run list/view: add --json export functionality by @cristiand391 in gh#cli/cli#3869
+	- Refresh man pages by @mislav in gh#cli/cli#4939
+	- Add installation instructions for pkgsrc by @bsiegert in gh#cli/cli#4931
+	- pr view: ensure that PR reviews are always rendered in --comments mode by @mislav in gh#cli/cli#4848
+	- api: handle HTTP 409 error message from the server by @mislav in gh#cli/cli#4862
+	- issue edit: fix race condition when updating labels by @despreston in gh#cli/cli#4861
+	- browse: support --commit with the repo override flag by @bchadwic in gh#cli/cli#4845
+	- repo create: fix printing repo URL in no-TTY mode by @mislav in gh#cli/cli#4904
+	- repo sync: use the new merge-upstream API if available by @mislav in gh#cli/cli#4942
+	- run: display and treat "Cancelled" status as a failure by @bchadwic in gh#cli/cli#4850
+	- extension upgrade: an already up-to-date extension should not a produce a failure by @tisonkun in gh#cli/cli#4857
+	- Avoid showing non-open PRs as related to the default branch by @AyushRawal in gh#cli/cli#4285
+	- git remotes: fix treating ssh.github.com as a github.com host by @mislav in gh#cli/cli#4938
+	- Bump Cobra to 1.3.0 for improved completion support by @mislav in gh#cli/cli#4936
+	- Bump spinner to 1.18.0 by @mislav in gh#cli/cli#4937
+
+-------------------------------------------------------------------
+Mon Dec 20 07:50:14 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Change issue references in the changelog to proper OBS abbreviations
+
+-------------------------------------------------------------------
+Sat Dec 18 03:04:36 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 2.3.0
+	* Add support for precompiled extensions
+    - fix binary extensions on windows by @vilmibm in gh#cli/cli#4717
+	  - binary extension migration by @vilmibm in gh#cli/cli#4588
+	  - make extension create binary aware by @vilmibm in gh#cli/cli#4718
+	  - Extensions create nail_care by @mislav in gh#cli/cli#4802
+	* rewrite gh repo create by @meiji163 @pxrth9 in gh#cli/cli#4578
+    - gh repo create will no longer automatically add a git remote to the local git repository in the current directory. To emulate old behavior when inside a local git repository, use gh pr create --source ..
+    - gh repo create will only prompt interactively when run with no arguments. Otherwise, all arguments should be passed explicitly.
+	* Fix codespace code command under WSL by @mislav in gh#cli/cli#4747
+	* Inherit API endpoint configuration from the Codespaces environment by @marwan-at-work in gh#cli/cli#4723
+	* Remove the default value from idle-timeout by @reybard in gh#cli/cli#4756
+	* Support listing and removing user Codespaces secrets by @joshmgross in gh#cli/cli#4714
+	* Support setting user Codespaces secrets by @joshmgross in gh#cli/cli#4699
+	* Add idle_timeout_minutes as possible cs create param by @reybard in gh#cli/cli#4741
+	* Adds a timeout context to the ssh waiter to prevent indefinite hanging by @reybard in gh#cli/cli#4635
+	* Rename errors from Live Share to generic codespace by @josebalius in gh#cli/cli#4705
+	* Add prebuild availability status to create codespaces by @adnamalin in gh#cli/cli#4737
+	* Add command gh auth setup-git for setting up gh-cli as git cred helper by @despreston in gh#cli/cli#4246
+	* Add gh config list by @meiji163 in gh#cli/cli#4729
+	* Add new flag gh secret set --no-store to print the encoded secret by @sguzmanm in gh#cli/cli#4423
+	* Adding release download for.zip and .tar.gz archives by @lpessoa in gh#cli/cli#4489
+	* gh repo rename by @pxrth9 in gh#cli/cli#4450
+	* Ignore scope suggestions for http 422 by @despreston in gh#cli/cli#4809
+	* pr diff color output fixes by @mislav in gh#cli/cli#4833
+	* PR merge should, after switching branches, pull by @pxrth9 in gh#cli/cli#4748
+	* Don't swallow duplicate SSH key error by @despreston in gh#cli/cli#4807
+	* gh pr merge fails to delete remote branch if $PWD is not a git repository by @pxrth9 in gh#cli/cli#4769
+	* Fix up bug in RemoveEntry and add tests for config_map by @samcoe in gh#cli/cli#4784
+	* Escape workflow information when generating URLs by @samcoe in gh#cli/cli#4760
+	* Confirm name change before creating a repo with special characters by @bchadwic in gh#cli/cli#4562
+	* encode gh browse output URL by @bchadwic in gh#cli/cli#4663
+	* add base repo resolution to gh repo archive by @meiji163 in gh#cli/cli#4654
+	* add base repo resolution to gh repo delete by @meiji163 in gh#cli/cli#4655
+	* Fix stack overflow in AddJSONFlags by @rsteube in gh#cli/cli#4614
+	* Fix rendering issue in "formatting" help topic by @pbnj in gh#cli/cli#4661
+	* fix branch flag on browse within dir by @bstncartwright in gh#cli/cli#4676
+	* Generate Go 1.17-style go:build directives by @mislav in gh#cli/cli#4838
+	* Bump github.com/itchyny/gojq from 0.12.5 to 0.12.6 by @dependabot in gh#cli/cli#4832
+	* some automation by @vilmibm in gh#cli/cli#4810
+	* Improve issue view re: overfetching, PR support by @mislav in gh#cli/cli#4803
+	* Improve queries in issue commands: no overfetching, support PR arguments by @mislav in gh#cli/cli#4794
+	* Bump github.com/mattn/go-colorable from 0.1.11 to 0.1.12 by @dependabot in gh#cli/cli#4804
+	* Replace shurcool/graphql with cli/shurcool-graphql by @samcoe in gh#cli/cli#4750
+	* update help for magic type conversion gh#cli/cli#4365 by @signalwerk in gh#cli/cli#4434
+	* fix angle brackets in man pages by @meiji163 in gh#cli/cli#4752
+	* Overhaul manual pages for the web by @mislav in gh#cli/cli#4675
+	* Fix CODEOWNERS for codespaces by @mislav in gh#cli/cli#4728
+	* Don't use gpg in Debian instruction by @TobiX in gh#cli/cli#4610
+	* Bump bluemonday to silence the security alert by @mislav in gh#cli/cli#4607
+- Changes from 2.2.0
+	* Support for GitHub Codespaces
+  * Add repo delete command by @meiji163 in gh#cli/cli#4451
+  * Add run cancel command by @cristiand391 in gh#cli/cli#3833
+  * Add gpg-key management commands by @owenvoke in gh#cli/cli#3822
+  * Support logging in to github.localhost by @joshmgross in gh#cli/cli#4523
+  * browse: respect the current working directory for file arguments by @bchadwic in gh#cli/cli#4007
+	* release create: respect the --draft flag in interactive mode by @Sixeight in gh#cli/cli#4542
+	* api: avoid repeating GET parameters when paginating by @mislav in gh#cli/cli#4559
+	* The progress spinner is now visible against a light background gh#cli/cli#4556
+	* Dispatch binary extensions directly by @vilmibm in gh#cli/cli#4568
+	* Fix copy/paste mistake in docs by @stdtom in gh#cli/cli#4582
+- Changes from 2.1.0
+  * Add repo archive command by @pxrth9 & @meiji163 in gh#cli/cli#4410
+  * Add support for precompiled extensions by @vilmibm in gh#cli/cli#4308 gh#cli/cli#4373
+  * If an extension repository publishes Releases with uploaded binary assets named with a suffix formatted like {OS}-{ARCH} (e.g. linux-amd64), the matching binary will be downloaded and installed as the extension instead of cloning the code from the extension repository.
+  * pr list: add --draft, --non-draft, and --head filters by @SiarheiFedartsou in gh#cli/cli#4316 gh#cli/cli#4279
+  * pr diff: add --patch flag by @m4ver1k in gh#cli/cli#4460
+  * browse: add --commit flag to open the permalink for the latest commit by @bchadwic in gh#cli/cli#3950
+  * api: add docs hint on how to use use stdin by @rethab in gh#cli/cli#4291
+  * pr checks/run: revised "pending" and "skipped" symbols by @bchadwic in gh#cli/cli#4090
+  * pr checkout: also set pushRemote for new branches by @RasmusWL in gh#cli/cli#4363
+  * extension list: speed up checking for updates by @samcoe in gh#cli/cli#4396
+  * extension install: document installing using a full URL by @wrslatz in gh#cli/cli#4271
+  * extension create: use /usr/bin/env bash instead of /bin/bash in generated shebang by @kidonng in gh#cli/cli#4203
+  * browse: add support for line ranges browse by @despreston in gh#cli/cli#4253
+  * browse: fix markdown files with line ranges by @andrewhsu in gh#cli/cli#4310
+  * repo garden: use the x/term package instead of shelling out to stty by @mislav in gh#cli/cli#4214
+  * repo sync: allow user input for git fetch by @samcoe in gh#cli/cli#4328
+  * repo create: avoid swallowing error from a prompt by @mislav in gh#cli/cli#4331
+  * Skip authentication requirement for internal completion commands by @cuonglm in gh#cli/cli#4189
+  * Add quotes around @me in documentation to ensure examples work in PowerShell by @Jernik in gh#cli/cli#4239
+  * Suggest to re-authenticate to fix "SAML enforcement" error by @mislav in gh#cli/cli#4241
+  * Print warning when limit exceeds search API maximum by @despreston in gh#cli/cli#3967
+  * Add git+https to the list of supported git remote URL protocols by @danburzo in gh#cli/cli#4347
+  * Fix detecting the current gh executable in PATH by @wilso199 in gh#cli/cli#4243
+  * Bump Survey library to fix the "Unexpected escape sequence" error by @mislav in gh#cli/cli#4405
+  * Warn about missing OAuth scopes when printing HTTP 4xx errors by @mislav in gh#cli/cli#4513
+
+-------------------------------------------------------------------
+Fri Dec 10 10:33:33 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Fix boogh#cli/cli#1192421 - Changed git dependency to only git-core
+
+-------------------------------------------------------------------
+Thu Sep  2 07:12:02 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 2.0.0
+  * Support for command extensions
+  * Display label colors in issue list output gh#cli/cli#4106
+  * Add tablerow/tablerender template functions for rendering data as tables gh#cli/cli#3519
+  * Add GH_FORCE_TTY to enable terminal-style output even when redirected gh#cli/cli#4146
+  * Add repo sync command to sync a branch with its upstream state gh#cli/cli#3813
+  * Add pr checkout --branch flag to control the branch name gh#cli/cli#4005
+  * Add release create --discussion-category flag gh#cli/cli#4003
+  * Add config set browser option and GH_BROWSER environment variable gh#cli/cli#3992
+  * Add repo list --topic filter gh#cli/cli#4136
+  * Add PowerShell instructions to completion help gh#cli/cli#4114
+  * Improve accessibility of interactive select menus gh#cli/cli#4172
+  * Improve detection of truecolor terminal capabilities gh#cli/cli#4106
+  * Avoid wrapping issues in powershell.exe gh#cli/cli#4106
+  * Detect missing git and abort early during auth login flow gh#cli/cli#4109
+  * Fix HTTP 502 error printing from GraphQL responses gh#cli/cli#4154
+  * Require Go 1.16+ gh#cli/cli#4175
+  * Remove backwards compatibility with homedir library for config files gh#cli/cli#4145
+
+-------------------------------------------------------------------
+Sat Aug  7 05:32:43 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 1.14.0
+  * Improve shell completion gh#cli/cli#4028
+    - Enable --json flag completion with multiple comma-separated fields
+    - Add completion for repo create --gitignore flag
+    - Add completion for repo create --license flag
+    - Switch to Cobra's improved bash completion with descriptions
+    - Enable descriptions in PowerShell completion gh#cli/cli#4085
+    - Add completion of -R/--repo flag based on available git remotes gh#cli/cli#3942
+  * Add pr merge --admin flag to allow admins to force-merge a pull request gh#cli/cli#4071
+  * Fix authenticating with GH_ENTERPRISE_TOKEN and GH_HOST environment variables gh#cli/cli#4019
+  * Fix labels display in issue list output gh#cli/cli#4079
+  * Fix printing certain GraphQL errors gh#cli/cli#4087
+
+-------------------------------------------------------------------
+Wed Jul 28 07:17:46 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 1.13.1
+  * Release fixes pre-built binaries, changes aren't applicable to this package
+- Changes from 1.13.0
+  * issue/pr view: output label names in their own color gh#cli/cli#3912
+  * Add gh browse --no-browser to only print the URL gh#cli/cli#3943
+  * repo create: respect privacy setting when using license/gitignore templates gh#cli/cli#3972
+  * repo create: respect repository description when creating from template repository gh#cli/cli#3972
+  * repo create --confirm: avoid license/gitignore template prompt gh#cli/cli#3995
+  * pr merge --auto: merge immediately if the PR is already mergeable gh#cli/cli#3706
+  * pr merge: suggest using --auto when merging is blocked gh#cli/cli#3706
+  * Allow using cursor keys in interactive text inputs gh#cli/cli#3980
+  * gh run watch --exit-status: correct exit status for completed runs gh#cli/cli#3982
+  * Skip auto-migrate of config files when GH_CONFIG_DIR is set gh#cli/cli#4017
+  * alias set: add note about double-quoting arguments for Command Prompt users gh#cli/cli#4013
+  * Clean up GH_CONFIG_DIR docs gh#cli/cli#4020
+- Changes from 1.12.1
+  * Fix bug where branchProtectionRule doesn't exist in enterprise 2.22 gh#cli/cli#3922
+  * Fix repo create in org with license/ignore gh#cli/cli#3924
+- Changes from 1.12.0
+  * Added gh browse command
+  * Add .gitignore and LICENSE when creating repositories from scratch
+  * A new config value http_unix_socket can be configured to a local path to push all traffic over a socket
+  * Print help even if logged out gh#cli/cli#3850
+  * Add shell completion for the --state flag gh#cli/cli#3877
+  * Allow explicitly empty body in issue/pr create gh#cli/cli#3787
+  * Increase GH_PAGER precedence gh#cli/cli#3789
+  * Fix showing Checks information in pr status gh#cli/cli#3804
+  * Update "Accept" header for github.com requests gh#cli/cli#3803
+  * Fix setting environment secrets gh#cli/cli#3832
+  * Fix gh run download fails on large artifacts due to uint32 limitation gh#cli/cli#3890
+  * repo fork: check that --org is not the empty string gh#cli/cli#3807
+  * Document installing via Conda package manager gh#cli/cli#3792
+  * Fix description for gh secret set --env option gh#cli/cli#3784
+  * Add a long command description for secrets remove gh#cli/cli#3786
+  * Update documentation for gist create command with default of secret gh#cli/cli#3871
+  * fork tests cleanup gh#cli/cli#3809
+  * Remove unused method from httpmock package gh#cli/cli#3834
+  * Factory cleanup gh#cli/cli#3841
+  * Improvements to build script on Windows gh#cli/cli#3846
+  * Ensure that tests for command factory never read from user's config gh#cli/cli#3856
+
+-------------------------------------------------------------------
+Wed Jun 23 12:15:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.11.0:
+  * Add support for environment secrets gh#cli/cli#3270 gh#cli/cli#3769 gh#cli/cli#3774
+  * run list: add "age" column and columns headers in output gh#cli/cli#3575
+  * Add support for XDG Base Directory specification gh#cli/cli#3671 gh#cli/cli#3768 gh#cli/cli#3717
+  * Additionally, the default configuration location on Windows is now changed from ~/.config/gh/ to %AppData%.
+  * Include number alongside the title in issue/pr view gh#cli/cli#3741
+
+-------------------------------------------------------------------
+Tue Jun 15 12:37:31 UTC 2021 - Christian Wittmer <chris@computersalat.de>
+
+- fix build for SLES12
+  * fix Supplements: packageand(X:Y)
+
+-------------------------------------------------------------------
+Sat May 22 21:38:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.10.3:
+  * Fix gh pr merge with GitHub Enterprise Server < 3.0 gh#cli/cli#3688
+  * Speed up measuring display width of text gh#cli/cli#3668
+  * Simplify Debian/Ubuntu installation docs gh#cli/cli#3672
+
+- Changes from 1.10.2:
+  * Fix creating Windows directory for gh config gh#cli/cli#3666
+
+-------------------------------------------------------------------
+Wed May 19 13:49:34 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.10.1:
+  * Fix pr checkout for cross-repository pull requests gh#cli/cli#3663
+
+-------------------------------------------------------------------
+Wed May 19 06:32:33 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.10.0:
+  - Improvements to JSON exporting
+    * Add gh repo list/view --json support gh#cli/cli#3627
+    * Add gh release view --json support gh#cli/cli#3656
+    * Fixes numerous issues with gh pr list/view --json support gh#cli/cli#3547
+      - fetching closed field
+      - fetching date fields like createdAt or mergedAt
+      - fetching files field
+    * Fix exporting milestone field for issues and PRs gh#cli/cli#3529
+    * Add commits field to JSON export for PRs gh#cli/cli#3547
+    * Show more than 100 comments in gh issue view --json comments gh#cli/cli#3547
+    * Add shell completion for valid --json flag values gh#cli/cli#3628
+  - New Features
+    * Add gh repo fork --org option gh#cli/cli#3611
+    * Allow passinggh alias set value via standard input gh#cli/cli#3490
+    * Prompt for value in gh secret set gh#cli/cli#3499
+    * Update gh api placeholder syntax to {owner}, {repo} to match
+      GitHub API documentation gh#cli/cli#3536
+    * Extend our package repository to support Ubuntu Hirsute and
+      Kali linux gh#cli/cli#3398
+  - Fixes
+    * Speedup across most gh pr commands gh#cli/cli#3547
+    * Fix gh pr operations from GitHub Actions when a PR was added
+      as a card to an org project gh#cli/cli#3547
+    * Allow deleting local git branch in gh pr close gh#cli/cli#3547
+    * Fix showing more than 100 checks in gh pr checks gh#cli/cli#3547
+    * Fix viewing and editing draft releases with GitHub Actions token gh#cli/cli#3656
+    * Fix Windows path in gh auth status output gh#cli/cli#3491
+    * Ignore HTTP 404 error for annotations in gh run watch gh#cli/cli#3517
+    * Handle Incorrect function exception for MinTTY users
+      (typically in Git Bash) by suggesting switching to Windows Terminal gh#cli/cli#3537
+    * Query fewer fields to determine issue status gh#cli/cli#3525
+    * Warn about empty contents on gh gist create gh#cli/cli#3578
+    * Fix "null" display in colored JSON output gh#cli/cli#3626
+    * Fix some docs formatting for the web gh#cli/cli#3648
+
+-------------------------------------------------------------------
+Tue Apr 20 23:40:06 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.9.2:
+  - Actions Fixes
+    * Fix Actions use int64 explicitly in Actions support gh#cli/cli#3432
+    * Fix requesting REST sub-resources on GHE gh#cli/cli#3461
+    * Fix run view --log when steps have slashes gh#cli/cli#3445
+    * Include magic repo resolution magic for gh workflow and gh run gh#cli/cli#3468
+  - Other Fixes
+    * Fix issue create --web gh#cli/cli#3472
+    * Fix detecting PR status when passing branch as arg gh#cli/cli#3351
+    * Bump AlecAivazis/survey to fix bug with unicode input gh#cli/cli#3439
+  - Development / Docs
+    * Increase linter timeout from 1min to 3min gh#cli/cli#3462
+    * Remove unused embedded struct gh#cli/cli#3402
+    * Add note on supported value types in raw-fields gh#cli/cli#3400
+    * linuxbrew details added in linux installation docs. gh#cli/cli#3465
+    * Add Funtoo Linux install instructions gh#cli/cli#3438
+    * Add Debian install variant without add-apt-repository gh#cli/cli#3419
+
+-------------------------------------------------------------------
+Mon Apr 19 15:19:07 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.9.1:
+  * Create cache dir
+  * Fix whitespace formatting of `issue/pr view` help text
+  * Disallow unsupported values for `--json` flag
+  * Fix `pr view` tests broken by `createdAt` → `submittedAt` switch
+  * Fix assigning null Exporter
+  * Tests for GraphQL query builder and JSON exporter
+  * Add `gh help formatting` topic & link to it from commands with JSON output
+  * Placeholder consistency
+  * Minor usage improvements
+  * Bump run list limit
+  * Annotation fixes
+  * Unhide actions commands
+  * Incorporate wording feedback
+  * Fix small bug with startup_failure conclusion
+  * Add note about current branch detection
+- Prevent Makefile from overriding variables
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Apr 13 07:50:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Supplement bash-completion instead of bash
+
+-------------------------------------------------------------------
+Mon Apr 12 08:17:36 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.8.1:
+  * Fix pr status/checks crash with unrecognized statuse from
+    the server(gh#cli/cli#3336)
+  * Fix repo fork --clone not cloning an existing fork locally
+    when running non-interactively(gh#cli/cli#3334)
+  * Fix commands not respecting default hostname from GH_HOST(gh#cli/cli#3347)
+- Create subpackages for completions
+
+-------------------------------------------------------------------
+Sun Mar  7 18:06:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * see https://github.com/cli/cli/releases/tag/v1.7.0
+  * https://github.com/cli/cli/releases/tag/v1.6.0
+  * https://github.com/cli/cli/releases/tag/v1.5.0
+
+-------------------------------------------------------------------
+Fri Jan 22 19:15:41 UTC 2021 - chris@computersalat.de
+
+- fix build for SLES12
+
+-------------------------------------------------------------------
+Tue Dec 15 19:32:00 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 1.4.0
+  * Add ability to view issue and pull request comment threads
+  * Add management of GitHub Actions secrets
+  * Set up git credentials when logging in to GitHub CLI
+  * Add make install and make uninstall for POSIX systems when building from source
+  * pr merge: attempt the merge even if mergeability status could not be determined
+  * repo clone: enable cloning repository wikis
+  * Recognize Include directives when parsing ssh config files
+  * Display the new release notice only once per 24 hours
+
+-------------------------------------------------------------------
+Thu Dec 10 09:26:16 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Fix app not showing the correct version
+- Install readme and license files
+
+-------------------------------------------------------------------
+Thu Dec 10 09:19:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Build and install manpages as well
+
+-------------------------------------------------------------------
+Wed Dec  9 17:44:56 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Use source specified at Source0 URL
+- Switch from tar_scm to download_files for obtaining source archive
+
+-------------------------------------------------------------------
+Tue Dec  8 22:58:18 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Simplify BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec  7 05:46:36 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Revert back to tar_scm service for submission to openSUSE:Factory
+
+-------------------------------------------------------------------
+Mon Dec 07 04:41:09 UTC 2020 - nopeinomicon@posteo.net
+
+- Update to version 1.3.1:
+  * Allow interactive `pr create` even if we failed to look up commits
+  * AskStubber now throws a more descriptive error when stubs do not match
+  * Make MetadataSurvey testable by accepting an interface
+  * Ensure efficient resolving of `issue/pr create` metadata to GraphQL IDs
+  * don't reset previously added metadata
+  * Prompt: avoid resetting PR/issue metadata if no option is selected
+  * Fix "Continue in browser" for `pr create` coming from forks
+  * Fix browser URL test on Windows
+  * Fix respecting chosen action in interactive `issue create`
+  * Properly check env auth tokens in CheckAuth
+  * Delete an error message that is not useful (and had a typo)
+  * Document that reviewers can be teams (gh#cli/cli#2465)
+  * Bump AlecAivazis/survey
+  * Sort latest PRs first when looking up PRs for a branch
+
+-------------------------------------------------------------------
+Wed Dec  2 10:53:17 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Reinstated and fixed obs_scm service for source control
+- Fixed build for openSUSE Leap
+
+-------------------------------------------------------------------
+Mon Nov 30 21:34:51 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Return to tar_scm due to breakages with obs_scm service
+
+-------------------------------------------------------------------
+Wed Nov 25 18:53:13 UTC 2020 - nopeinomicon@posteo.net
+
+- Switch from tar_scm to obs_scm service
+- Update to version 1.3.0:
+  * Warn termux users with older Android versions (gh#cli/cli#2467)
+  * no shorthand for --recover
+  * switch to recover instead of resubmit
+  * linter appeasement
+  * use TempFile though the testing is gross
+  * fix dumb test
+  * preserve and restore issue/pr input on failure
+  * add IOStreams.ReadUserFile
+  * spelling: unmatched
+  * spelling: template
+  * spelling: settings
+  * spelling: response
+  * spelling: nonexistent
+  * spelling: error
+  * spelling: dunno
+  * spelling: dismissed
+  * spelling: deprecated
+  * spelling: chestnuts
+  * spelling: beginning
+  * match parent repo protocol when forking (gh#cli/cli#2434)
+  * respect GH_HOST when resolving remotes (gh#cli/cli#2301)
+  * Add "reference" help topic (gh#cli/cli#2223)
+  * Implement --web for gh pr checks (gh#cli/cli#2146)
+  * Downgrade survey to v2.1.1
+  * fix missing import
+  * Support for --web when using gist create (gh#cli/cli#2263)
+  * Add a command to delete a gist (gh#cli/cli#2265)
+  * fix survey invocation
+  * Fix USAGE help for some commands
+  * add empty line between functions
+  * Generate correct URL when branch option is passed in
+  * add Draft to issue state
+  * use NewIssueState
+  * get everything working
+  * stop using Defaults struct
+  * stop using string pointer
+  * WIP works, probably some title/body input edge cases
+  * use named output param
+  * Fix typos
+  * Empty auth token env variables are equal to being unset
+  * cleanup
+  * Add support for GH_TOKEN and GH_ENTERPRISE_TOKEN
+  * Consistently print commands in DEBUG mode
+
+-------------------------------------------------------------------
+Sun Nov 15 09:26:53 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Clean up .spec file
+
+-------------------------------------------------------------------
+Thu Nov 12 02:59:01 UTC 2020 - nopeinomicon@posteo.net
+
+- Update to version 1.2.1:
+  * Fix git executable name for Windows in tests
+  * Improve error message when git isn't found
+  * Omit the full path of a command in DEBUG mode
+  * Ensure that only PATH is searched when shelling out to external commands
+  * Bump golang.org/x/text
+  * Bump golang.org/x/crypto
+  * Bump shurcooL/githubv4
+  * Bump muesli/termenv
+  * Bump mattn/go-colorable
+  * Bump AlecAivazis/survey
+  * Fix `truncateLabels` for empty values
+  * Ensure parentheses are preserved after truncating labels in table view
+  * Render links as absolute URLs in `repo view` (gh#cli/cli#2363)
+  * Add Gentoo instructions to install the package (gh#cli/cli#2389)
+  * Show MousetrapHelpText when double-clicking gh.exe
+  * Small cleanup
+  * Make markdown:generate annotation a markdown generation override for hidden commands
+  * Generate markdown for help topics
+  * Refactor help topics to include short message
+  * Extract repeated code to util function
+  * improve error message
+  * Refactor regexp writer
+  * Add multiple writes test
+  * Use custom scanLines function for RegexWriter
+  * Fix up regex to escape dot in URL
+  * Address PR comments
+  * Filter out unwanted stderr output during git push commands
+  * new packages for get and set subcommands
+  * Export type ConfigOption and group InvalidValueError code
+  * Refactor config command
+  * Cleanup duplicate config options
+  * move cobra mutation and document it
+  * Update install_linux.md
+  * more iostreams passing
+  * try passing iostreams around instead of writer+colorscheme
+  * use shared color function
+  * favor SuccessIcon
+  * Use slice and make both status lines the size of the terminal width.
+  * Use terminal width for the status line
+  * port entirely to ColorScheme
+  * added extra notes
+  * Better tests for clone argument parsing
+  * added Snap installation docs
+  * Simplify checks test
+  * add message on `pr checks` returns no CI with non-empty PR
+  * Fetch all issue labels
+  * Update triage.md
+  * link to aliases
+  * :nail_care: code style
+  * :nail_care: simplify `sortPullRequestsByState`
+  * PullRequestForBranch: fix outdated error message
+  * Allow PullRequestForBranch to search in closed pull requests
+  * Mention winget as an install option in README (gh#cli/cli#2272)
+  * Small releasing docs cleanup
+  * Update triage.md
+  * Clean up and refactor unused doc generation code
+  * Remove SEE ALSO from markdown docs generation
+  * Remove Cobra autogenerated string from docs generation
+  * Internalize doc generation from Cobra
+  * Print friendly error when "gh repo clone" is missing required argument
+  * removed runtime compare for windows The MousttrapHelpText will only be validated in cobra when running on windows.
+  * run gh commands from explorer.exe
+
+-------------------------------------------------------------------
+Tue Nov 10 06:19:48 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Initial package version

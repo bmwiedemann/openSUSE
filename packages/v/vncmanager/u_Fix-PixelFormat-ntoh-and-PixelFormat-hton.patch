@@ -1,0 +1,52 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Date: Tue, 12 May 2020 08:55:28 +0200
+Subject: Fix PixelFormat::ntoh() and PixelFormat::hton()
+References: bsc#1169732
+Upstream: merged
+Git-commit: 4626045b79011be2c0df8f8aa0e541ca9649f4ce
+
+The bigEndianFlag corresponds to the X server pixel byte
+order (defined as IMAGE_BYTE_ORDER in X.org sources). If it does
+not match client byte order, every pixel value must be
+byte-swapped.
+
+It's wrong to skip byte conversion of the red/gren/blue max values
+in struct PixelFormat itself when this flag is false. RFC6143 is
+very clear on this matter and explicitly states:
+
+> Note the -max values are always in big endian order.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ rfb.h | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/rfb.h b/rfb.h
+index 949bed0..4c2e658 100644
+--- a/rfb.h
++++ b/rfb.h
+@@ -114,15 +114,15 @@ struct PixelFormat {
+     uint8_t _padding[3] = { 0, 0, 0 };
+ 
+     void ntoh() {
+-        if (bigEndianFlag) {
+-            redMax = ntohs(redMax);
+-            greenMax = ntohs(greenMax);
+-            blueMax = ntohs(blueMax);
+-        }
++	redMax = ntohs(redMax);
++	greenMax = ntohs(greenMax);
++	blueMax = ntohs(blueMax);
+     }
+ 
+     void hton() {
+-        bigEndianFlag = (__BYTE_ORDER == __BIG_ENDIAN);
++	redMax = htons(redMax);
++	greenMax = htons(greenMax);
++	blueMax = htons(blueMax);
+     }
+ 
+     bool operator==(const PixelFormat &another) const {
+-- 
+2.16.4
+

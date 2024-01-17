@@ -1,0 +1,128 @@
+From bef62d87d8de7236d2a6b306c588440b885f579b Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 1 May 2013 09:53:49 +0200
+Subject: [PATCH] Implement color gradient for health bar
+
+I drew inspiration from the gradient bars from Fire Fight.
+---
+ prboom2/src/gl_intern.h | 11 +--------
+ prboom2/src/gl_main.c   | 52 ++++++++++++++++++++++++-----------------
+ 2 files changed, 31 insertions(+), 32 deletions(-)
+
+diff --git a/prboom2/src/gl_intern.h b/prboom2/src/gl_intern.h
+index f55c66049..b5a0d7f83 100644
+--- a/prboom2/src/gl_intern.h
++++ b/prboom2/src/gl_intern.h
+@@ -213,18 +213,9 @@ typedef struct
+   float light;
+ } GLShadow;
+ 
+-typedef enum
+-{
+-  health_bar_null,
+-  health_bar_red,
+-  health_bar_yellow,
+-  health_bar_green,
+-} health_bar_color_t;
+-
+ typedef struct
+ {
+-  health_bar_color_t color;
+-
++  float cr, cg;
+   float x1, x2, x3;
+   float z1, z2, z3;
+   float y;
+diff --git a/prboom2/src/gl_main.c b/prboom2/src/gl_main.c
+index 92e5a7b38..b5f023c60 100644
+--- a/prboom2/src/gl_main.c
++++ b/prboom2/src/gl_main.c
+@@ -2034,24 +2034,41 @@ static void gld_DrawSprite(GLSprite *sprite)
+ static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
+ {
+   bool all_shoot = dsda_ShowHealthBarsForShootables();
+-  int init_color = all_shoot ? health_bar_green : health_bar_null;
+   bool show_bar  = all_shoot ?
+                    thing->flags & MF_SHOOTABLE :
+                    (thing->flags & (MF_COUNTKILL | MF_CORPSE)) == MF_COUNTKILL;
++  /*
++   * These were called "health_bar_red", "health_bar_yellow" and
++   * "health_bar_green", respectively, in prboom-plus. I have given
++   * them some better names. —j.eng
++   */
++  static const int orange_ramp_end     = 50;
++  static const int chartreuse_ramp_end = 99;
++  static const int green_end           = 100;
+ 
+   if (thing->health > 0 && show_bar)
+   {
+     GLHealthBar hbar;
+     int health_percent = thing->health * 100 / P_MobjSpawnHealth(thing);
++    int yr = chartreuse_ramp_end - orange_ramp_end;
+ 
+-    hbar.color = init_color;
+-    if (health_percent <= 50)
+-      hbar.color = health_bar_red;
+-    else if (health_percent <= 99)
+-      hbar.color = health_bar_yellow;
++    hbar.cr = -1;
++    if (!all_shoot && health_percent == 100) {
++    } else if (health_percent <= 0) {
++      hbar.cr = 1;
++      hbar.cg = 0;
++    } else if (health_percent <= orange_ramp_end) {
++      hbar.cr = 1;
++      hbar.cg = yr == 0 ? 0 : (float)health_percent / yr;
++    } else if (health_percent <= chartreuse_ramp_end) {
++      hbar.cr = yr == 0 ? 1 : (float)(chartreuse_ramp_end - health_percent) / yr;
++      hbar.cg = 1;
++    } else if (health_percent <= green_end) {
++      hbar.cr = 0;
++      hbar.cg = 1;
++    }
+ 
+-    if (hbar.color != health_bar_null)
+-    {
++    if (hbar.cr >= 0) {
+       float sx2 = (float)thing->radius / 2.0f / MAP_SCALE;
+       float sx1 = sx2 - (float)health_percent * (float)thing->radius / 100.0f / MAP_SCALE;
+       float sx3 = -sx2;
+@@ -2071,17 +2088,10 @@ static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
+   }
+ }
+ 
+-static GLfloat health_bar_rgb[][3] = {
+-  [health_bar_null]   = { 0.0f, 0.0f, 0.0f },
+-  [health_bar_red]    = { 1.0f, 0.0f, 0.0f },
+-  [health_bar_yellow] = { 1.0f, 1.0f, 0.0f },
+-  [health_bar_green]  = { 0.0f, 1.0f, 0.0f },
+-};
+-
+ static void gld_DrawHealthBars(void)
+ {
+   int i, count;
+-  int color = health_bar_null;
++  float cr = -1, cg = -1;
+ 
+   count = gld_drawinfo.num_items[GLDIT_HBAR];
+   if (count > 0)
+@@ -2092,12 +2102,10 @@ static void gld_DrawHealthBars(void)
+     for (i = count - 1; i >= 0; i--)
+     {
+       GLHealthBar *hbar = gld_drawinfo.items[GLDIT_HBAR][i].item.hbar;
+-      if (hbar->color != color)
+-      {
+-        color = hbar->color;
+-        glColor4f(health_bar_rgb[color][0],
+-                  health_bar_rgb[color][1],
+-                  health_bar_rgb[color][2], 1.0f);
++      if (hbar->cr != cr || hbar->cg != cg) {
++        cr = hbar->cr;
++        cg = hbar->cg;
++        glColor4f(cr, cg, 0, 1);
+       }
+ 
+       glVertex3f(hbar->x1, hbar->y, hbar->z1);
+-- 
+2.42.1
+

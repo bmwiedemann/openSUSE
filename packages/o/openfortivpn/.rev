@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d7b179ae40761ef89ae13b3f4340d8bb</srcmd5>
+    <version>1.5.0</version>
+    <time>1508610093</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain openfortivpn in Factory</comment>
+    <requestid>535474</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bd141ac3919655faa12c40234f17bafe</srcmd5>
+    <version>1.6.0</version>
+    <time>1511274844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>543967</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d586987458277c61301f702f396623e</srcmd5>
+    <version>1.7.0</version>
+    <time>1525611703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603976</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19a2ec5d8e65c0f7fa7603de4fdaaf06</srcmd5>
+    <version>1.7.1</version>
+    <time>1531379989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622040</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ce5cc76dd3906db0d34de1b0c843de3</srcmd5>
+    <version>1.8.1</version>
+    <time>1548064753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666713</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>19c837b967e46eee52d026bcad294d47</srcmd5>
+    <version>1.9.0</version>
+    <time>1552902187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685778</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>62dd0458bd598befb0c7c029e0beff1e</srcmd5>
+    <version>1.11.0</version>
+    <time>1575373357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753038</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>12a0e38cd098efa5173f2b292d0e39b1</srcmd5>
+    <version>1.12.0</version>
+    <time>1583007885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780376</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2ee547021654e54c9b5411295a8f7ed5</srcmd5>
+    <version>1.13.2</version>
+    <time>1585342663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788893</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2f24fed7d9c8d00ad59e57eb7caa6bba</srcmd5>
+    <version>1.13.3</version>
+    <time>1585996034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791277</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a106930bcb7f8b978be8b0312d3d7365</srcmd5>
+    <version>1.14.0</version>
+    <time>1590247668</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807892</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a28ebfad5645e54f1d8b61f450f4f9e7</srcmd5>
+    <version>1.14.1</version>
+    <time>1593546971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810125</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>46d7fa0cf063c58d2f35168c26250d0c</srcmd5>
+    <version>1.15.0</version>
+    <time>1600079527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834122</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e5d24364fe8a282ba436f928876a2cea</srcmd5>
+    <version>1.16.0</version>
+    <time>1613677316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873511</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3aee382d73975f2a137a0fdcd036a12b</srcmd5>
+    <version>1.17.0</version>
+    <time>1627750291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909514</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6a77f804a979285d09605a01f4a2744e</srcmd5>
+    <version>1.17.1</version>
+    <time>1632431035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921039</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c3abebfd9eaa922458c66d33fe05ed23</srcmd5>
+    <version>1.17.1</version>
+    <time>1634587162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925826</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>9389e9276c5452a0b2dc1abc93d9a282</srcmd5>
+    <version>1.17.1</version>
+    <time>1642198386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946272</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>c3abebfd9eaa922458c66d33fe05ed23</srcmd5>
+    <version>1.17.1</version>
+    <time>1642203487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946539</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dd15156ca07f4e515c31aa0c426155bc</srcmd5>
+    <version>1.17.2</version>
+    <time>1648841807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966430</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5810239f74dff1cdf37fbe786df90d54</srcmd5>
+    <version>1.17.3</version>
+    <time>1652114662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975757</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>288f0954b84bca377310f2e898d46b05</srcmd5>
+    <version>1.19.0</version>
+    <time>1665844709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011120</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>caeeddf00bf474647dd5a6ca12effc6c</srcmd5>
+    <version>1.20.1</version>
+    <time>1678283590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070024</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a07a9ed5bd34f0163702d92bbf12c7d6</srcmd5>
+    <version>1.20.5</version>
+    <time>1688660925</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1096976</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>65658fa1ca42c97364480771db5ada00</srcmd5>
+    <version>1.20.5</version>
+    <time>1694808276</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111353</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5bf960b7be039a7524390156f9740d45</srcmd5>
+    <version>1.21.0</version>
+    <time>1703800984</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1135396</requestid>
+  </revision>
+</revisionlist>

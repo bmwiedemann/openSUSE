@@ -1,0 +1,185 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60af99e63d28012198fbb770dbed6652</srcmd5>
+    <version>0.1.4</version>
+    <time>1507755647</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531860</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>065a838cb13f6f7da695843d521d390e</srcmd5>
+    <version>0.1.7</version>
+    <time>1518596831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571122</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d340afb7bb48cbb96236f841013718a1</srcmd5>
+    <version>0.2.0</version>
+    <time>1524576827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600078</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94338a3631b9bb16b4c989e2734f38cd</srcmd5>
+    <version>0.2.2</version>
+    <time>1537971355</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>638000</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>49706b1e6209b432ffb2d4808ca046e6</srcmd5>
+    <version>0.2.3</version>
+    <time>1557833899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694339 from glaubitz)</comment>
+    <requestid>694533</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6672bf425aff76d5e2610d2ae493dd86</srcmd5>
+    <version>0.2.4</version>
+    <time>1570710835</time>
+    <user>dimstar_suse</user>
+    <comment>- Resubmit with corrected changelog entry</comment>
+    <requestid>735798</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01c79c37eeb4d540299336c111d751e3</srcmd5>
+    <version>0.3.2</version>
+    <time>1588971946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801197</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>863e3e1839db7e301b035a5734ff4962</srcmd5>
+    <version>0.4.1</version>
+    <time>1601652210</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.4.1
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 831071 from glaubitz)</comment>
+    <requestid>831095</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0b85906296a9f2ed5399840b601dd6eb</srcmd5>
+    <version>0.5.2</version>
+    <time>1605290353</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.5.2
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 848171 from glaubitz)</comment>
+    <requestid>848205</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1ad27ac95c54f4bf54acb08c8c6e94b0</srcmd5>
+    <version>0.5.2</version>
+    <time>1607548847</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853997</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>697383c91852ba810469e5c5e9debd75</srcmd5>
+    <version>0.6.2</version>
+    <time>1618235364</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.2
+  + For detailed information about changes see the
+    README.rst file provided with this package
+- Update Requires from setup.py (forwarded request 881894 from glaubitz)</comment>
+    <requestid>881974</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3391664e7ab5b48a0682f62563de8953</srcmd5>
+    <version>0.7.0</version>
+    <time>1635788154</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.7.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 928550 from glaubitz)</comment>
+    <requestid>928560</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e65ff42f1205772c025ab4ee46a35553</srcmd5>
+    <version>0.8.0</version>
+    <time>1648159120</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.8.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 964651 from glaubitz)</comment>
+    <requestid>964681</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d1bcbfc858bd61ce588a421932c87a6f</srcmd5>
+    <version>0.9.0</version>
+    <time>1653417216</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.9.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 978965 from glaubitz)</comment>
+    <requestid>978979</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>80dc420ff0aed05df4694c0413b9562f</srcmd5>
+    <version>0.10.0</version>
+    <time>1663438231</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.10.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 1004077 from glaubitz)</comment>
+    <requestid>1004096</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>69fdfe13e0e3a596080d31fbdb9266b2</srcmd5>
+    <version>1.0.0</version>
+    <time>1672851203</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 1055787 from glaubitz)</comment>
+    <requestid>1055791</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>5c84ff861a7e56760cf1102f28a0b56e</srcmd5>
+    <version>1.0.0</version>
+    <time>1677590653</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim Summary to not exceed 79 characters (forwarded request 1068158 from glaubitz)</comment>
+    <requestid>1068174</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9cb3abe6d33ff180ad245c906c85385f</srcmd5>
+    <version>1.1.0</version>
+    <time>1683121338</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 1084277 from glaubitz)</comment>
+    <requestid>1084287</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e8d3ebf4de86af26fd9319b702047a8f</srcmd5>
+    <version>1.2.0</version>
+    <time>1688476941</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 1096594 from glaubitz)</comment>
+    <requestid>1096626</requestid>
+  </revision>
+</revisionlist>

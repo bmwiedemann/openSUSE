@@ -1,0 +1,13 @@
+Index: smartmontools-7.4/smartd.service.in
+===================================================================
+--- smartmontools-7.4.orig/smartd.service.in
++++ smartmontools-7.4/smartd.service.in
+@@ -9,7 +9,7 @@ ConditionVirtualization=no
+ [Service]
+ Type=notify
+ EnvironmentFile=-/usr/local/etc/sysconfig/smartmontools
+-ExecStart=/usr/local/sbin/smartd -n $smartd_opts
++ExecStart=/usr/local/sbin/smartd -n -q never $smartd_opts
+ ExecReload=/bin/kill -HUP $MAINPID
+ 
+ [Install]

@@ -1,0 +1,5 @@
+<package name="terminology-theme-openSUSE-oliveleaf" project="openSUSE:Factory">
+  <title>terminology-theme-openSUSE</title>
+  <description>Theme to match openSUSE enlightenment theme for terminology</description>
+  <devel project="X11:Enlightenment:Factory" package="terminology-theme-openSUSE-oliveleaf"/>
+</package>

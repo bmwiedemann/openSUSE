@@ -1,0 +1,11 @@
+--- Makefile.old	2020-09-22 15:49:25.143735069 +0200
++++ Makefile	2020-09-22 15:49:58.307242835 +0200
+@@ -25,5 +25,5 @@
+ 	@echo ""
+-	install	-D twups                 "$(DESTDIR)$(PREFIX)/bin/twups"
+-	install -D twups-completion.bash "$(DESTDIR)$(SYSCONFIG)/bash_completion.d/twups-completion.bash"
+-	install -D twups.1               "$(DESTDIR)$(PREFIX)/share/man/man1/twups.1"
++	install	-D twups         	        "$(DESTDIR)$(PREFIX)/bin/twups"
++	install -D twups-completion.bash -m 444 "$(DESTDIR)$(PREFIX)/share/bash_completion/completions/twups-completion.bash"
++	install -D twups.1 -m 444               "$(DESTDIR)$(PREFIX)/share/man/man1/twups.1"
+ 	@echo ""

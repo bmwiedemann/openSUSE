@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Tue Sep  5 02:43:39 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.14.
+  # 0.4.3.14
+
+  * [#170](https://github.com/stevenfontanella/microlens/issues/170), [#171](https://github.com/stevenfontanella/microlens/pull/171) Support GHC 9.8.
+
+-------------------------------------------------------------------
+Sat Apr 29 17:23:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.13.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/microlens-th-0.4.3.13/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Apr  3 05:21:56 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.12.
+  # 0.4.3.12
+
+  * [#164](https://github.com/stevenfontanella/microlens/pull/164), [#165](https://github.com/stevenfontanella/microlens/issues/165) Support template-haskell 2.19 (and GHC 9.6 by extension).
+
+  # 0.4.3.11
+
+  * [#161](https://github.com/stevenfontanella/microlens/pull/161) Fix GHC 9.4 warning for using `~` without TypeOperators
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Dec 14 05:19:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.11.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Sat Aug 13 10:22:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.10 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue May 11 09:12:10 UTC 2021 - psimons@suse.com
+
+- Update microlens-th to version 0.4.3.10.
+  # 0.4.3.10
+
+  * Port lens commit [fae336e1](https://github.com/ekmett/lens/commit/fae336e191748782cff023540bd25e3582ca93fb), "Close over kind variables when computing fixed type variables", fixing lens issue [#972](https://github.com/ekmett/lens/issues/972).
+
+  * Allow building with template-haskell-2.18.
+
+-------------------------------------------------------------------
+Fri Jan  8 08:28:09 UTC 2021 - psimons@suse.com
+
+- Update microlens-th to version 0.4.3.9.
+  # 0.4.3.9
+
+  * Port lens commit [66e199ee](https://github.com/ekmett/lens/commit/66e199ee07f1aaf589faa2a8c661f6a722679959), fixing lens issue [#945](https://github.com/ekmett/lens/pull/945) — "Make the TH machinery handle PolyKinds more robustly".
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Thu Nov 19 19:49:21 UTC 2020 - psimons@suse.com
+
+- Update microlens-th to version 0.4.3.8.
+  # 0.4.3.8
+
+  * Fixup.
+
+-------------------------------------------------------------------
+Tue Nov 17 15:31:50 UTC 2020 - psimons@suse.com
+
+- Update microlens-th to version 0.4.3.7.
+  # 0.4.3.7
+
+  * Changes needed for template-haskell-2.17.
+
+-------------------------------------------------------------------
+Tue Oct  6 08:56:46 UTC 2020 - psimons@suse.com
+
+- Update microlens-th to version 0.4.3.6.
+  # 0.4.3.6
+
+  * Bumped th-abstraction.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:27 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:21 UTC 2020 - psimons@suse.com
+
+- Add microlens-th at version 0.4.3.5.
+

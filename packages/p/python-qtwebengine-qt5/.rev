@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f5eadfb013e31753c1bb9d688f49697</srcmd5>
+    <version>5.12</version>
+    <time>1551883720</time>
+    <user>dimstar_suse</user>
+    <comment>Python bindings for the Qt5 WebEngine framework 
+
+Required for python-AnyQt</comment>
+    <requestid>681762</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bcfe519ec386e5682a59b40e13a6f20c</srcmd5>
+    <version>5.13.0</version>
+    <time>1563259227</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.13.0</comment>
+    <requestid>714849</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95b98ee3a80ca1ef363f3dbde4e8873d</srcmd5>
+    <version>5.13.1</version>
+    <time>1569523143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.13.1
+  * Added the missing QWebEnginePage.Feature.Notifications enum member.
+  * Fix building against Qt v5.12 and earlier.
+  * Fixed building when Qt doesn't support QtWebChannel.
+  * Added support for sip v5.
+- Add update-timeline.patch</comment>
+    <requestid>732191</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e57150ba41ff48d24d8fdfad7bd2896a</srcmd5>
+    <version>5.13.2</version>
+    <time>1574783595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748564</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>20f6b76daaec1f0fe3755393589c4752</srcmd5>
+    <version>5.13.2</version>
+    <time>1575727798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update update-timeline.patch for Qt 5.14.</comment>
+    <requestid>754866</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dcf1059e11764b8e4b4c961e445aa781</srcmd5>
+    <version>5.15.0</version>
+    <time>1598983905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831269</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>70863e77489f900a96e537354a8bfe5a</srcmd5>
+    <version>5.15.1</version>
+    <time>1600180132</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.15.1
+  * A bug-fix release.
+- drop update-timeline-patch again. Nobody uses nonexistent tags.
+</comment>
+    <requestid>834345</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>421786ab8f8a026572325f9f685998ee</srcmd5>
+    <version>5.15.1</version>
+    <time>1605290256</time>
+    <user>dimstar_suse</user>
+    <comment>- Use sip5 where available
+</comment>
+    <requestid>846245</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f777f78bfb5e8d530a903132fd2ca68a</srcmd5>
+    <version>5.15.3</version>
+    <time>1615061911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875739</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>33b553cd8014627b6e953fe921095084</srcmd5>
+    <version>5.15.4</version>
+    <time>1616008501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878418</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b6b6569284f2aa209f238f959f03caf5</srcmd5>
+    <version>5.15.4</version>
+    <time>1624136661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900826</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>400f2028d0b319b894e2915571c09316</srcmd5>
+    <version>5.15.4</version>
+    <time>1631646881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918870</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>08af69608d3fac729d552ebe6dc05327</srcmd5>
+    <version>5.15.5</version>
+    <time>1634853314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.5</comment>
+    <requestid>926296</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>118d1c963f8b5540c31273806c66ffe6</srcmd5>
+    <version>5.15.6</version>
+    <time>1655972609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984224</requestid>
+  </revision>
+</revisionlist>

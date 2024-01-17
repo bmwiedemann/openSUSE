@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Fri Sep 22 13:17:14 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.20.0
+  - improved am/pm formatting
+  - support db expressions in filter rendering
+  - fix background in action bar dropdowns
+  - JsonRPC no supports proxy handlers
+  - dbstore improved modification detection
+
+-------------------------------------------------------------------
+Wed Nov 16 10:28:33 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.19.0
+  - improved ProcessInfo serialization
+  - allow to use Cli\Screen w/o CLI
+  - curl: fix PHP 8.1 support in specific error conditions
+  - InfluxDB: fix v2 support
+  - InfluxDB: body compression
+  - InfluxDB: add header for debugging purposes
+
+-------------------------------------------------------------------
+Wed Sep 21 11:23:08 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.18.0
+  - cosmetic changes for Icinga Web
+  - Settings can now be compared
+  - fix some zfdb exceptions on 8.1
+
+-------------------------------------------------------------------
+Thu Jul  7 12:22:54 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.17.0
+  - No changelog from upstream.
+
+-------------------------------------------------------------------
+Tue Apr 26 10:00:37 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.16.0
+  - No changelog from upstream.
+
+-------------------------------------------------------------------
+Fri Feb 18 06:35:16 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.12.0
+  - No changelog from upstream.
+
+-------------------------------------------------------------------
+Tue Dec 15 14:07:42 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.6.0
+  - No changelog from upstream.
+
+-------------------------------------------------------------------
+Mon Sep 30 07:54:22 UTC 2019 - ecsos@opensuse.org
+
+- initial version

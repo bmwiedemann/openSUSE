@@ -1,0 +1,203 @@
+-------------------------------------------------------------------
+Sun Nov 12 01:41:27 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Updated to release 6.0
+  * Breaking changes:
+    + Remove not allowed attributes function-rate,
+      functions-covered and functions-valid from cobertura report.
+      (gh#gcovr/gcovr#671)
+    + Remove "noncode" entries in JSON reports.
+      (gh#gcovr/gcovr#663)
+    + New option --exclude-noncode-lines to exclude noncode lines.
+      Noncode lines are not excluded by default anymore.
+      (gh#gcovr/gcovr#704, gh#gcovr/gcovr#705)
+    + Changed option --gcov-ignore-parse-errors to accept list of
+      errors to ignore. (gh#gcovr/gcovr#701)
+    + Handling of gcov errors:
+      - Do not ignore return code of gcov. (gh#gcovr/gcovr#653)
+      - New option --gcov-ignore-errors to ignore gcov errors. Old
+        behavior was to print a warning and continue.
+        (gh#gcovr/gcovr#718)
+    + The default filename for option --cobertura is changed from
+      coverage.xml to cobertura.xml (gh#gcovr/gcovr#721)
+    + Revert changes from gh#gcovr/gcovr#623 and add documentation
+      entry Support of Keil uVision format. (gh#gcovr/gcovr#727)
+  * New features and notable changes:
+    + New option --html-nested for reports that summarize
+      subdirectories with aggregated statistics per directory.
+      (gh#gcovr/gcovr#687)
+    + Accept NAN % which is used in GCOV 7.5.0 instead of an
+      invalid value. (gh#gcovr/gcovr#651)
+    + New option --json-base to define a base bath used in JSON
+      reports. (gh#gcovr/gcovr#656)
+    + New option --calls to report call coverage: function calls
+      invoked/total (gh#gcovr/gcovr#666)
+    + New nox session to generate a portable application with
+      pyinstaller. (gh#gcovr/gcovr#661)
+    + Print a warning if root directory contains symlinks.
+      (gh#gcovr/gcovr#652)
+    + Change option --keep when calling gcov internaly.
+      (gh#gcovr/gcovr#703)
+    + Allow annotations for never executed branches.
+      (gh#gcovr/gcovr#711)
+    + Add function merge mode for same function defined in
+      different lines. (gh#gcovr/gcovr#700)
+    + Update link to gcovr documentation in HTML report to point to
+      the documentation of the used version. (gh#gcovr/gcovr#723)
+    + Add environment SOURCE_DATE_EPOCH to set default for option
+      --timestamp. (gh#gcovr/gcovr#729)
+  * See https://github.com/gcovr/gcovr/releases/tag/6.0 for
+    complete changelog
+
+-------------------------------------------------------------------
+Tue Nov 22 08:47:39 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Updated to release 5.2:
+
+  New features and notable changes:
+
+  * Log additional info on gcov parsing errors. 
+  * Add support for branch exclude markers. 
+  * Additional options to configure the thresholds for lines and branches in HTML separate.
+
+  Bugfixes: 
+
+  * Remove function coverage from sonarcube report. 
+  * Fix parallel processing of gcov data. 
+  * Better diagnostics when dealing with corrupted input files. 
+  * Accept metadata lines without values (introduced in gcc-11). 
+  * Properly close <a> element in detailed HTML report. 
+  * Using --add-tracefile will now correctly merge branch coverage. 
+  * Fix package-level function coverage statistics in Cobertura XML reports. 
+  * Respect excluded/noncode lines for aggregated branchcoverage. 
+  * Fix list options in configuration file (search-path).
+  * Fix assert and key error in --decisions flag. 
+  * Fix adding none existing lines by decision analysis to data model. 
+  * Always treat relative paths in config files as relative to the directory of the file. 
+
+-------------------------------------------------------------------
+Fri Jun 11 12:22:55 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 5.0
+
+Breaking changes:
+
+ - Dropped support for Python 2 and Python 3.5.
+   From now on, gcovr will only support Python versions
+   that enjoy upstream support.
+
+Improvements and new features:
+
+ - Handles spaces in ``gcov`` path. (:issue:`385`)
+ - Early fail when output cannot be created. (:issue:`382`)
+ - Add :option:`--txt` for text output. (:issue:`387`)
+ - Add :option:`--csv` for CSV output. (:issue:`376`)
+ - Add :option:`--exclude-lines-by-pattern` to filter out source lines by arbitrary
+   regex. (:issue:`356`)
+ - Add :option:`--json-summary` to generate a :ref:`JSON Summary <json_summary_output>` report. (:issue:`366`)
+ - Add :option:`--coveralls` to generate a :ref:`Coveralls <coveralls_output>` compatible JSON report. (:issue:`328`)
+
+-------------------------------------------------------------------
+Mon Jan  4 15:27:45 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Add python3-lxml dependency (boo#1179867)
+
+-------------------------------------------------------------------
+Mon Feb  3 08:43:34 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 4.2
+
+  Breaking changes:
+
+  - Dropped support for Python 3.4.
+  - Format flag parameters like :option:`--xml` or :option:`--html`
+    now take an optional output file name.
+    This potentially changes the interpretation of search paths.
+    In ``gcovr --xml foo``,
+    previous gcovr versions would search the ``foo`` directory for coverage data.
+    Now, gcovr will try to write the Cobertura report to the ``foo`` file.
+    To keep the old meaning, separate positional arguments like
+    ``gcovr --xml -- foo``.
+
+  Improvements and new features:
+
+  - :ref:`Configuration file <configuration>` support (experimental).
+    (:issue:`167`, :issue:`229`, :issue:`279`, :issue:`281`, :issue:`293`,
+    :issue:`300`, :issue:`304`)
+  - :ref:`JSON output <json_output>`. (:issue:`301`, :issue:`321`, :issue:`326`)
+  - :ref:`Combining tracefiles <combining_tracefiles>`
+    with :option:`gcovr --add-tracefile`.
+    (:issue:`10`, :issue:`326`)
+  - :ref:`SonarQube XML Output <sonarqube_xml_output>`. (:issue:`308`)
+  - Handle cyclic symlinks correctly during coverage data search.
+    (:issue:`284`)
+  - Simplification of :option:`--object-directory` heuristics.
+    (:issue:`18`, :issue:`273`, :issue:`280`)
+  - Exception-only code like a ``catch`` clause is now shown as uncovered.
+    (:issue:`283`)
+  - New :option:`--exclude-throw-branches` option
+    to exclude exception handler branches. (:issue:`283`)
+  - Support ``--root ..`` style invocation,
+    which might fix some CMake-related problems. (:issue:`294`)
+  - Fix wrong names in report
+    when source and build directories have similar names. (:issue:`299`)
+  - Stricter argument handling. (:issue:`267`)
+  - Reduce XML memory usage by moving to lxml.
+    (:issue:`1`, :issue:`118`, :issue:`307`)
+  - Can write :ref:`multiple reports <multiple output formats>` at the same time
+    by giving the output file name to the report format parameter.
+    Now, ``gcovr --html -o cov.html`` and ``gcovr --html cov.html``
+    are equivalent. (:issue:`291`)
+  - Override gcov locale properly. (:issue:`334`)
+  - Make gcov parser more robust when used with GCC 8. (:issue:`315`)
+
+  Known issues:
+
+  - The :option:`--keep` option only works when using existing gcov files
+    with :option:`-g`/:option:`--use-gcov-files`.
+    (:issue:`285`, :issue:`286`)
+  - Gcovr may get confused
+    when header files in different directories have the same name.
+    (:issue:`271`)
+  - Gcovr may not work when no en_US locale is available.
+    (:issue:`166`)
+
+  Documentation:
+
+  - :ref:`Exclusion marker <exclusion markers>` documentation.
+  - FAQ: :ref:`exception branches` (:issue:`283`)
+  - FAQ: :ref:`uncovered files not shown`
+    (:issue:`33`, :issue:`100`, :issue:`154`, :issue:`290`, :issue:`298`)
+
+  Internal changes:
+
+  - More tests. (:issue:`269`, :issue:`268`, :issue:`269`)
+  - Refactoring and removal of dead code. (:issue:`280`)
+  - New internal data model.
+
+
+-------------------------------------------------------------------
+Tue Feb  5 15:02:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove excessive hard requires.
+
+-------------------------------------------------------------------
+Wed Jan 30 11:15:18 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Build documentation on Tumbleweed
+
+-------------------------------------------------------------------
+Thu Jan 10 13:20:05 UTC 2019 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix package name for Jinja2 dependency
+
+-------------------------------------------------------------------
+Tue Dec 11 11:18:10 UTC 2018 - Dan Čermák <dcermak@suse.com>
+
+- Bump gcovr version to 4.1
+  + Drop patch: 0001-re-enable-HTML-reports-under-Python3.patch
+
+-------------------------------------------------------------------
+Wed Dec 20 21:11:55 UTC 2017 - Neal Gompa <ngompa13@gmail.com>
+
+- Initial packaging based on Fedora package

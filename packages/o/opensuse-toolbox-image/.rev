@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f91b3404d8e4ee23fae058fbec380971</srcmd5>
+    <version>1.0.0</version>
+    <time>1570557428</time>
+    <user>dimstar_suse</user>
+    <comment>Toolbox container to help debugging on a Container Host OS with read-only root filesystem like MicroOS and Kubic</comment>
+    <requestid>735630</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f76dd9bb721d05ff09b336e3c2984018</srcmd5>
+    <version>1.0.0</version>
+    <time>1571210066</time>
+    <user>dimstar_suse</user>
+    <comment>- Add glibc-locale and man
+- Don't exclude docu from installation
+</comment>
+    <requestid>738322</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8f65d2b70c5f3e04df76cefdf316da76</srcmd5>
+    <version>1.0.0</version>
+    <time>1572557609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744431</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4d1124b88d5e6da52352d477c1992d4a</srcmd5>
+    <version>1.0.0</version>
+    <time>1582018658</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sudo, wheel group and libcap-progs
+- Add labels for containers/toolbox</comment>
+    <requestid>774803</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>bcf7a33117e969a8b52e1f5174ac0832</srcmd5>
+    <version>1.0.0</version>
+    <time>1590247607</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>806996</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1034a23aae7ea7a7f243bc37c1a80395</srcmd5>
+    <version>1.0.0</version>
+    <time>1614373178</time>
+    <user>dimstar_suse</user>
+    <comment>- Add socat to the container</comment>
+    <requestid>875213</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>461605c1a71404bee48eb6df0bfdc18e</srcmd5>
+    <version>1.0.0</version>
+    <time>1622536544</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>895369</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>45e8520e02fec75fe4f7085ec2885bec</srcmd5>
+    <version>1.0.0</version>
+    <time>1661593850</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable i586 builds (forwarded request 999419 from lukasstraub)</comment>
+    <requestid>999533</requestid>
+  </revision>
+</revisionlist>

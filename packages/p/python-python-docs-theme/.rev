@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>016065a6282e87b091b75ec6b29267b7</srcmd5>
+    <version>2018.7</version>
+    <time>1560338139</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging effort (required by python3-docs).</comment>
+    <requestid>708979</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21a22ea91dda4fd2cfd5947053b1e3f6</srcmd5>
+    <version>2020.1</version>
+    <time>1584964201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786882</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec8bcd73f9e69a8878acf6306fe12854</srcmd5>
+    <version>2022.1</version>
+    <time>1642835873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.1:
+  - Add a configuration for license URL.
+  - Exclude the floating navbar from CHM help.
+  - Make sidebar scrollable and sticky (on modern browsers)
+  - Fix monospace again, on buggy Google Chrome
+  - Add the copyright_url variable in the theme
+  - Improve readability
+  - Remove #searchbox on mobile to fix a layout bug
+  - Fix the appearance of version/language selects
+  - Make the theme responsive
+  - Use default pygments theme
+  - Test Github action to validate the theme against docsbuild scripts.
+  - Add the copy button to pycon3 highlighted code blocks.
+  - Updated the readme, to remind user to install the package in a virtual environment.
+  - Updated the package url, using the GitHub repository instead of docs.python.org
+  - Added license information to the footer of the doc
+  - Fixed typo in the footer
+  - Added information on how to use the package
+  - Fixed code formatting
+  - Fixed code bgcolor and codetextcolor for Sphinx 3.1.0+
+</comment>
+    <requestid>947585</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>93e044801e7b223a95df2399a813b61f</srcmd5>
+    <version>2023.7</version>
+    <time>1693860749</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.7:
+  * Fix compatability with Sphinx 7.1
+  * Enable the slash keypress to focus the search field
+  * Sphinx 6.2 fix: add ``nav.contents`` where ``div.topic`` is
+    used
+  * Dark mode: fix contrast for C++ specific styling (#133)
+  * Don't let long code literals extend beyond the right side of
+    the screen
+  * Test with Python 3.12
+  * Add a dark theme.
+  * Fix: Remove searchbox id from form.
+  * Update ``python-docs-theme`` to work with Sphinx 5 &amp; 6.
+  * Override font for ``.sig`` for consistency with other code
+    blocks.
+  * Dark mode: add class to invert image brightness.
+  * Skip cache-busting for old Sphinx
+  * Fix problem with monospace rendering in Vivaldi
+  * Fix mobile nav obstructing content
+  * Reduce footer margin only for desktop
+  * Append a hash ?digest to CSS files for cache-busting</comment>
+    <requestid>1108837</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f36915f45533d875f6f9b1b6024b557a</srcmd5>
+    <version>2023.9</version>
+    <time>1702158592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.9:
+  * Focus search box when pressing slash</comment>
+    <requestid>1132211</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<constraints>
+  <hardware>
+    <memory>
+      <size unit="G">5</size>
+    </memory>
+  </hardware>
+  <!-- relax constraints for qt6-wayland:docs -->
+  <overwrite>
+    <conditions>
+      <package>qt6-wayland:docs</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">2</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

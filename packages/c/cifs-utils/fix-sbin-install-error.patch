@@ -1,0 +1,11 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -118,7 +118,7 @@ endif
+ SUBDIRS = contrib
+ 
+ install-exec-hook: install-sbinPROGRAMS
+-	(cd $(DESTDIR)$(ROOTSBINDIR) && ln -sf mount.cifs mount.smb3)
++	(mkdir -p $(DESTDIR)$(ROOTSBINDIR) && cd $(DESTDIR)$(ROOTSBINDIR) && ln -sf mount.cifs mount.smb3)
+ 
+ install-data-hook:
+ if CONFIG_MAN

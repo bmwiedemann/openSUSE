@@ -1,0 +1,27 @@
+README.SUSE for monitoring-plugins
+
+== Features and documentation ==
+
+Please refer to the upstream documentation on 
+* http://www.nagios.org/docs/
+* http://docs.icinga.org/
+* https://shinken.readthedocs.org/
+* ...
+* https://www.monitoring-plugins.org/
+
+The openSUSE package contains most of the currently available plugins.
+
+All plugins are installed in ''/usr/lib/nagios/plugins/'' on every architecture. 
+
+== Special permissions for some plugins ==
+
+The following checks require special handling as they need some root privileges to run:
+* check_dhcp
+* check_icmp
+* check_ide_smart
+
+In a default installation, those checks will not work if executed as user with limited
+rights (such as user nagios or icinga). Please have a look into the corresponding 
+documentation for those packages for more details. 
+( /usr/share/doc/packages/monitoring-plugins-icmp/README.SUSE-check_icmp for example )
+

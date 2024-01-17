@@ -1,0 +1,16 @@
+--- diff-lcs-1.4.2.orig/bin/htmldiff	2020-06-27 20:58:32.365435269 +0200
++++ diff-lcs-1.4.2/bin/htmldiff	2020-06-27 20:58:49.297519679 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env ruby -w
++#!/usr/bin/ruby -w
+ # frozen_string_literal: true
+ 
+ require 'diff/lcs'
+--- diff-lcs-1.4.2.orig/bin/ldiff	2020-06-27 20:58:32.365435269 +0200
++++ diff-lcs-1.4.2/bin/ldiff	2020-06-27 20:59:01.713581567 +0200
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env ruby -w
++#!/usr/bin/ruby -w
+ # frozen_string_literal: true
+ 
+ require 'diff/lcs'

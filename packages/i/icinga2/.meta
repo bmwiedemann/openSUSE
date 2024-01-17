@@ -1,0 +1,20 @@
+<package name="icinga2" project="openSUSE:Factory">
+  <title>Icinga 2</title>
+  <description>Icinga 2 is a general-purpose monitoring application and the next generation after Icinga 1.x - which was a Nagios fork. It should fit the needs of a small environment as well as big installations.
+
+Rewritten from scratch in C++, with multi-threading and cluster support.
+
+Features:
+
+ * All common features of Icinga and Nagios
+ * Much faster and more scalable than Icinga 1 and Nagios
+ * New configuration format, more intuitive and template based
+ * Monitoring several services by executing checks (see nagios-plugins*)
+   for example ICMP/ping, SMTP, POP3, HTTP, NNTP, or other TCP port
+ * Any small script can be used as a check plugin, when following the Nagios
+   plugin API
+ * Notifications about alerts with any custom script, or shipped examples
+ * Native support for Livestatus and Graphite</description>
+  <devel project="server:monitoring" package="icinga2"/>
+  <url>http://www.icinga.org/</url>
+</package>

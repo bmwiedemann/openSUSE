@@ -1,0 +1,22 @@
+<package name="dmraid" project="openSUSE:Factory">
+  <title>A Device-Mapper Software RAID Support Tool</title>
+  <description>This software discovers, activates, deactivates, and displays
+properties of software RAID sets, such as ATARAID, and contained DOS
+partitions.
+
+dmraid uses libdevmapper and the device-mapper kernel runtime to create
+devices with respective mappings for the ATARAID sets discovered.
+
+The following ATARAID types are supported:
+
+- Highpoint HPT37X
+
+- Highpoint HPT45X
+
+- Intel Software RAID
+
+- Promise FastTrak
+
+- Silicon Image Medley</description>
+  <devel project="Base:System" package="dmraid"/>
+</package>

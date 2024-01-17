@@ -1,0 +1,6 @@
+<package name="dnstracer" project="openSUSE:Factory">
+  <title>dnstracer</title>
+  <description>trace DNS queries
+  </description>
+  <devel project="network" package="dnstracer"/>
+</package>

@@ -1,0 +1,13 @@
+<package name="PDAL" project="openSUSE:Factory">
+  <title>Point Data Abstraction Library. GDAL for point cloud data</title>
+  <description>PDAL is a BSD licensed library for translating and manipulating point cloud data of various formats. It is a library that is analogous to the GDAL raster library. PDAL is focussed on reading, writing, and translating point cloud data from the ever-growing constellation of data formats that are being developed for working with multi-dimensional emitted-pulse scanning systems. While PDAL is not explicitly limited to working with LiDAR data formats, its initial rollout is focused in that area.
+
+PDAL is not related to Point Cloud Library (PCL) except in the sense that both ostensibly work with point data. PDAL is for data format translation and data access, with some light filtering and processing algorithms to streamline those tasks. If you want a library that can do exploitation, visualization, and sophisticated processing of point cloud data, you want PCL at http://pointclouds.org.
+
+Developers and Sponsorship
+PDAL is developed by Howard Butler and Michael Gerlek.
+PDAL is currently sponsored by the U.S. Army Cold Regions Research and Engineering Laboratory. Thanks to Aerial Services, Inc for the http://pointcloud.org domain.
+</description>
+  <devel project="Application:Geo" package="PDAL"/>
+  <url>https://www.pdal.io/</url>
+</package>

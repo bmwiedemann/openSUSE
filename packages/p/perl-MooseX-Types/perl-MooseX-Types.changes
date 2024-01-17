@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Wed Feb  8 06:11:51 UTC 2017 - coolo@suse.com
+
+- updated to 0.50
+   see /usr/share/doc/packages/perl-MooseX-Types/Changes
+
+  0.50      2017-02-07 18:59:30Z
+          - reverted the is_Fo and to_Foo refactoring again temporarily to
+            resolve issues with Sub::Defer
+
+-------------------------------------------------------------------
+Fri Dec 23 06:46:07 UTC 2016 - coolo@suse.com
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-MooseX-Types/Changes
+
+  0.49      2016-12-23 00:12:12Z
+          - made the exported is_Foo and to_Foo subs much faster, especially for
+            type constraints which can be inlined. (Dave Rolsky)
+
+-------------------------------------------------------------------
+Thu Dec  8 06:52:06 UTC 2016 - coolo@suse.com
+
+- updated to 0.48
+   see /usr/share/doc/packages/perl-MooseX-Types/Changes
+
+  0.48      2016-12-07 01:15:14Z
+          - reverted is_Foo and to_Foo refactoring [from 0.47] for now, so they
+            can be reworked
+  
+  0.47      2016-12-07 00:40:34Z
+          - allow type libraries built with MooseX::Types::Combine to be
+            combined with MooseX::Types::Combine. (GH #1, Mark Fowler).
+          - made the exported is_Foo and to_Foo subs much faster, especially for
+            type constraints which can be inlined [reverted in 0.48]
+
+-------------------------------------------------------------------
+Wed Aug 19 09:18:30 UTC 2015 - coolo@suse.com
+
+- updated to 0.46
+   see /usr/share/doc/packages/perl-MooseX-Types/Changes
+
+  0.46      2015-08-16 00:43:46Z
+          - make use of Sub::Exporter::ForMethods's new rebless option
+
+-------------------------------------------------------------------
+Mon Sep 15 12:52:35 UTC 2014 - coolo@suse.com
+
+- updated to 0.45
+  - increase the required versions of some prerequisites
+
+-------------------------------------------------------------------
+Mon Mar 10 07:05:38 UTC 2014 - coolo@suse.com
+
+- updated to 0.44
+         - full respect for namespaces: declared types are now properly
+           installed into the proper package, so they survive
+           namespace::autoclean; however, types imported from the declaration
+           class are still properly cleaned by namespace::autoclean (as
+           implemented in trial versions 0.40-0.43)
+         - line numbers in shipped code are now almost the same (within 3) as
+           the repository source, for easier debugging
+         - skipped new namespacing tests that fail with older Moose versions,
+           due to an inability to install blessed subs
+         - declared (not imported) types are now properly installed into the
+           proper package, so they survive namespace::autoclean (fixed this
+           time)
+
+-------------------------------------------------------------------
+Sun Feb  9 13:31:11 UTC 2014 - coolo@suse.com
+
+- updated to 0.41
+        - reversed changes in 0.40, until compatibility issues with older
+          Moose versions are figured out
+        - types are now properly installed into the proper package, so they
+          survive namespace::autoclean
+
+-------------------------------------------------------------------
+Mon Dec  9 11:15:27 UTC 2013 - coolo@suse.com
+
+- updated to 0.39
+        - more strict warnings checking in tests
+        - re-release to fix compile test
+
+-------------------------------------------------------------------
+Fri Oct  4 09:13:25 UTC 2013 - coolo@suse.com
+
+- updated to 0.38
+        - removed use of deprecated enum syntax
+        - removed use of deprecated Class::MOP::load_class
+        - repository has moved to the GitHub Moose organization
+
+-------------------------------------------------------------------
+Wed Jul 24 12:25:47 UTC 2013 - coolo@suse.com
+
+- updated to 0.36
+    - fixed failing tests on 5.8.5 due to incorrect == overload
+       (RT#77100, Graham Knop)
+
+-------------------------------------------------------------------
+Wed May 30 12:27:14 UTC 2012 - coolo@suse.com
+
+- updated to 0.35
+     - The new delegation code could fail when a type had no
+       parent. Attempting to subtype Any was one way to trigger the
+       bug. (Dave Rolsky)
+     - The new delegation code broke calling ->can or ->isa on
+       MooseX::Types::TypeDecorator as a class method. (Dave Rolsky)
+     - Special case new to avoid unexpected exceptions on unloaded classes
+     - Switch delegation order to prioritise type over class except for new
+     - Support delegation of methods to the class for class types
+     - Factor out _try_delegate method
+
+-------------------------------------------------------------------
+Tue Feb 14 07:46:07 UTC 2012 - coolo@suse.com
+
+- updated to 0.31
+  - Add support for qw( :all ) on MooseX::Types::Combine libraries.
+
+-------------------------------------------------------------------
+Tue Dec  6 12:01:30 UTC 2011 - coolo@suse.com
+
+- shorten license string
+
+-------------------------------------------------------------------
+Fri Nov 18 18:28:16 UTC 2011 - coolo@suse.com
+
+- update to 0.30:
+    - Fix a bug in the tests that caused failures with Moose HEAD. (doy)
+    - Require namespace::clean 0.19. Tests fail with 0.18. Reported by
+      Ruslan Zakirov. RT #67923.
+    - Fixed git and bug tracking info in META.{yml,json}. Reported by
+      Petter Rabbitson. (Dave Rolsky)
+
+-------------------------------------------------------------------
+Wed Jun  8 13:17:58 UTC 2011 - coolo@novell.com
+
+- update to 0.27:
+  - A better fix for type constraint changes in Moose 2.0100. (doy)
+
+-------------------------------------------------------------------
+Sun Jun 05 21:17:24 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.26:
+  * small changes for forward compatibility with Moose 2.0100, when it is
+    released
+  * some small doc cleanup and improvements
+
+- changes from 0.25:
+  * the test suite now uses Test::Fatal instead of Test::Exception
+  * modernized tests to use Test::Requires and done_testing
+  * MooseX::Types::Combine is a little more efficient, and only tries to load
+    the libraries it's combining when that list is set. It also checks that
+    each lib in the list actually provides types
+
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:58 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:40 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Nov  4 21:58:21 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.24 (no user-visible changes)
+
+- changes from 0.22:
+  * ypdate docs to mention MRO::Compat rather than Class::C3
+  * added '0+' overloading to solve the type constraint equality regression introduced when Moose 1.05 tightened the rules determing type constraint equality
+
+- changes from 0.21:
+  * attempting to import a non-existent type from a combined type library gave a very confusing error message from the MooseX::Types::Combined internals. Now it gives you a much more useful message
+  * bump up Moose dep (RT#53016)
+
+-------------------------------------------------------------------
+Tue Jan 12 00:00:00 UTC 2010 - nine@detonation.org
+
+- Specfile autogenerated by cpanspec 1.78.
+

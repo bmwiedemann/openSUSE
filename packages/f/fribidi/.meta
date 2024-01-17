@@ -1,0 +1,13 @@
+<package name="fribidi" project="openSUSE:Factory">
+  <title>Free Implementation of BiDi Algorithm</title>
+  <description>This library implements the algorithm as described in the &quot;Unicode
+Standard Annex #9, the Bidirectional Algorithm,
+http://www.unicode.org/unicode/reports/tr9/&quot;. FriBidi is exhaustively
+tested against the Bidi Reference Code and, to the best of the
+developers' knowledge, does notcontain any conformance bugs.
+
+The API was inspired by the document &quot;Bi-Di languages support - BiDi
+API proposal&quot; by Franck Portaneri, which he wrote as a proposal for
+adding BiDi support to Mozilla.</description>
+  <devel project="M17N" package="fribidi"/>
+</package>

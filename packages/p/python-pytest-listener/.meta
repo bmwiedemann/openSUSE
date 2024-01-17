@@ -1,0 +1,5 @@
+<package name="python-pytest-listener" project="openSUSE:Factory">
+  <title>python-pytest-listener</title>
+  <description>A simple network listener for py.test</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-listener"/>
+</package>

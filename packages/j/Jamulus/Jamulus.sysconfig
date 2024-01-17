@@ -1,0 +1,16 @@
+# Directory(central) server
+# select only one directory server and port from 4 possible genres.
+#################################################################
+# genre: Default
+############
+DIRECTORYSERVER="jamulusallgenres.fischvolk.de:22224"
+# genre: Rock
+#DIRECTORYSERVER="jamulusrock.fischvolk.de:22424"
+# genre: Jazz
+#DIRECTORYSERVER="jamulusjazz.fischvolk.de:22324"
+# genre: Klassik/Folklore/Chor
+#DIRECTORYSERVER="jamulusclassical.fischvolk.de:22524"
+# Your Server
+yourServername=""
+yourCity=""
+yourCountryID=""

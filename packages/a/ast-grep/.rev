@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bfbfa72f1d7e1d98598564a9c7ef7798</srcmd5>
+    <version>0.14.4+0</version>
+    <time>1702405937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132617</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>28bae9e5165eb642b8c1ad0e684193b0</srcmd5>
+    <version>0.15.0+0</version>
+    <time>1702845196</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.0:
+  * Breaking change: feat: reduce metavar_env string allocation e1ab015
+  * Breaking change: fix: remove pattern as replacer f6e4293
+  * Breaking change: feat: better metavar detection e1ab18a</comment>
+    <requestid>1133676</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc474db0eb33535c11713655adc0b80d</srcmd5>
+    <version>0.15.1+0</version>
+    <time>1702936562</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.1:
+  * feat: support mutliple rules in -r and --inline-rules #786
+  * refactor: unify run_worker and run_std_in #785
+  * Breaking change: feat: --stdin now always awaits user input #791
+  * feat: support --inline-rules option for sg scan #396
+  * refactor: separate PathWorker and StdInWorker and Worker ef3d8ad
+  * test: add test cases for sg scan ed35c71
+  * fix: revert github action a2f22d8</comment>
+    <requestid>1133804</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ef5c33d6628d0976ae56a4d2575fb612</srcmd5>
+    <version>0.16.0+0</version>
+    <time>1704281129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * feat: add language globs to findInFiles in napi #780
+  * Breaking change: fix: rename MetaVar for better naming #805
+  * refactor: reorgnanize napi file structure 93f8577
+  * refactor: move file type related function out of lib 64e33a3
+  * feat: handle FileOption in LangOption::infer 7bc3efe</comment>
+    <requestid>1135750</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1cff3325c0b1abcf7deeb811a4d97542</srcmd5>
+    <version>0.16.1+0</version>
+    <time>1704558601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.1:
+  * feat: add support for bash and php #639
+  * Breaking change: fix: more strict meta var parsing 13ad32b
+  * Breaking change: refactor: remove thrift language 26ecdf6
+  * fix(deps): update dependency @swc/core to v1.3.102 9ca9711</comment>
+    <requestid>1137219</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c1b24e6d2d8eba21d49801219797521</srcmd5>
+    <version>0.17.0+0</version>
+    <time>1705099545</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.0:
+  * Breaking change: feat: change get_fixer to return Fixer 07c5363
+  * feat: add modify_range for tweaking fix range selection eeb2f98
+  * feat: rename modify_range -&gt; get_replace_range 54837df</comment>
+    <requestid>1138228</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b00c05b17978511b389ed083c7bec6c5</srcmd5>
+    <version>0.17.1+0</version>
+    <time>1705255367</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.1:
+  * feat: respect user's language extension option #848</comment>
+    <requestid>1138447</requestid>
+  </revision>
+</revisionlist>

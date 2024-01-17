@@ -1,0 +1,20 @@
+<package name="retext" project="openSUSE:Factory">
+  <title>ReText is a simple but powerful text editor for Markdown and reStructuredText</title>
+  <description>ReText is a simple but powerful text editor for Markdown and reStructuredText.
+
+Features:
+* Full Markdown and reST support
+* Markdown extensions support
+* Tabs
+* Files auto-save option
+* HTML, PDF, ODT export
+* WebPages generator
+* Google Docs uploads
+* CSS styles support
+* HTML syntax highlighting
+* Tags and symbols boxes for quick insert
+
+</description>
+  <devel project="editors" package="retext"/>
+  <url>http://sourceforge.net/p/retext/home/ReText/</url>
+</package>

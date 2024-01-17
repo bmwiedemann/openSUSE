@@ -1,0 +1,7 @@
+You may want to use the sbclrc.sample with sbcl. Todo so you need to
+copy it to $HOME/.sbclrc or /etc/sbclrc if you want it system wide.
+
+This sbclrc provides an AllegroCL style Read-Eval-Print Loop for
+SBCL. An AllegroCL style inspector is integrated and handles fasl
+recompilation automatically for ASDF-based systems
+(for more details see the sbcl info 2.3.2 FASL)

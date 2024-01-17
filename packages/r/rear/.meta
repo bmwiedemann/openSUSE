@@ -1,0 +1,13 @@
+<package name="rear" project="openSUSE:Factory">
+  <title>Relax and Recover (ReaR) is a Linux Disaster Recovery framework</title>
+  <description>Relax and Recover (abbreviated rear) is a highly modular disaster recovery
+framework for GNU/Linux based systems, but can be easily extended to other
+UNIX alike systems. The disaster recovery information (and maybe the backups)
+can be stored via the network, local on hard disks or USB devices, DVD/CD-R,
+tape, etc. The result is also a bootable image that is capable of booting via
+PXE, DVD/CD and USB media.
+
+Relax and Recover integrates with other backup software and provides integrated
+bare metal disaster recovery abilities to the compatible backup software.</description>
+  <devel project="Archiving" package="rear"/>
+</package>

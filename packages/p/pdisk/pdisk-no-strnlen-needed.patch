@@ -1,0 +1,33 @@
+Index: pdisk/dump.c
+===================================================================
+--- pdisk.orig/dump.c
++++ pdisk/dump.c
+@@ -131,7 +131,6 @@ void dump_partition_entry(partition_map
+ int get_max_base_or_length(partition_map_header *map);
+ int get_max_name_string_length(partition_map_header *map);
+ int get_max_type_string_length(partition_map_header *map);
+-int strnlen(char *s, int n);
+ 
+ 
+ //
+@@ -789,20 +788,6 @@ display_patches(partition_map *entry)
+ }
+ 
+ int
+-strnlen(char *s, int n)
+-{
+-    int i;
+-
+-    for (i = 0; i < n; i++) {
+-	if (*s == 0) {
+-	    break;
+-	}
+-	s++;
+-    }
+-    return i;
+-}
+-
+-int
+ get_max_type_string_length(partition_map_header *map)
+ {
+     partition_map * entry;

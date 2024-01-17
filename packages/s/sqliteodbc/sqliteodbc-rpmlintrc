@@ -1,0 +1,4 @@
+# This is not typical shared library but plugin for unixODBC
+addFilter("shlib-policy-missing-suffix .*")
+addFilter("postin-without-ldconfig .*")
+addFilter("library-without-ldconfig-postun .*")

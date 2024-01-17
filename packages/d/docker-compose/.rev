@@ -1,0 +1,279 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4eba4fa522d1dc23a458a2bedddccd6</srcmd5>
+    <version>2.9.0</version>
+    <time>1659554210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992167</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>03a93527a57b3a124850b4a7070072b0</srcmd5>
+    <version>2.9.0</version>
+    <time>1660051661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993846</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ddd794ffe72b401de8213de36574167</srcmd5>
+    <version>2.10.0</version>
+    <time>1661020129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0:
+  * Fix breaking test
+  * Update docs for new `compose kill` `--remove-orphans` option
+  * Apply compose model on `compose kill`, add `--remove-orphans`
+  * Code formatting
+  * Give environment variables precedence back to OS over .env
+  * Reset the DockerCli and APIClient after loading the environment file
+  * up/start/run: don't wait for disabled service
+  * create: pull all services logic out of loop; add DependsOn deps
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.14 to 0.0.16 (#9754)
+  * build windows/arm64 and linux/riscv64 binaries
+  * ci: fix checksums file
+  * Use compose to pull image twice
+  * root: filter out commandConn.Close* warning message
+  * Use alpine:3.13.12 to be unique across the test cases
+  * readme: fix badges
+  * Fix package name
+  * Try changing package used to avoid any race condition in tests
+  * Better sandboxed workflow and enhanced cross compilation
+  * build(deps): bump github.com/containerd/containerd from 1.6.7 to 1.6.8
+  * make compose pull tests more expressive
+  * lint: add `nolintlint` and clean up `nolint` directives (#9738)
+  * lint: run gofmt from Go 1.19 (#9728)
+  * don't apply default pull policy from command line if one is define in service configuration
+  * build(deps): bump github.com/containerd/containerd from 1.6.6 to 1.6.7
+  * update Docker CLI version use in CI to v20.10.17
+  * fix version of golangci-lint to v1.47.3, issue with v1.48.0 for now
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.5 to 0.3.6
+  * config: use correct YAML marshal func (#9712)
+  * docs: remove extra whitespaces in help text (#9710)</comment>
+    <requestid>998191</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>41f81d61d0a670b85cbd1c386d3e8efc</srcmd5>
+    <version>2.10.2</version>
+    <time>1662639728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001678</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>96c25ad3be8fcc26ff3b13389b61df2f</srcmd5>
+    <version>2.11.0</version>
+    <time>1663275545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003751</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08a4b33f640b8e1125c787727b9036ce</srcmd5>
+    <version>2.11.1</version>
+    <time>1663764190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005151</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5cf5137dfc57db520a04c164b97c9caf</srcmd5>
+    <version>2.11.2</version>
+    <time>1664380303</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006562</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f17813248ef4a9c7fcc9a248b14eb117</srcmd5>
+    <version>2.12.0</version>
+    <time>1666178263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029809</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f380747ff20cf44d10b55ce4ff1431e5</srcmd5>
+    <version>2.12.2</version>
+    <time>1666451799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030534</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>45a8f7d75e45ad6ed119a1d6679aaeae</srcmd5>
+    <version>2.13.0</version>
+    <time>1669378322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037943</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>644deb9fd40ff735927d62f8b0d2cab5</srcmd5>
+    <version>2.14.0</version>
+    <time>1670259712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040198</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6696bf6cb63b893b65a0eba1e557824d</srcmd5>
+    <version>2.14.1</version>
+    <time>1671305803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043460</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b76138be506032f98deb8a961aaf95e8</srcmd5>
+    <version>2.14.2</version>
+    <time>1671564074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043926</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>468a1be66f2e5f7ee425158e7b87b1b6</srcmd5>
+    <version>2.15.0</version>
+    <time>1672935106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056215</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>930552d2ca58287a08d61b003993d2ab</srcmd5>
+    <version>2.15.1</version>
+    <time>1673359196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057203</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ed46b271a84e3938642becfec07a1107</srcmd5>
+    <version>2.16.0</version>
+    <time>1675873256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063845</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>111a9089a9bbaea126fd3af11991e908</srcmd5>
+    <version>2.17.0</version>
+    <time>1679520704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073795</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a7a84bf5b2109b19e870874b8d1771ad</srcmd5>
+    <version>2.17.1</version>
+    <time>1679766947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074248</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a57513546572801594e4539e50f54312</srcmd5>
+    <version>2.17.2</version>
+    <time>1679933862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074678</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>655107a41ac1e47df0062895fc8bac55</srcmd5>
+    <version>2.17.3</version>
+    <time>1682079420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080914</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7c54791a9cdbb8197b8c57e01476aae1</srcmd5>
+    <version>2.18.1</version>
+    <time>1684415951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087700</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ef050cb1c438d90047786180dbf9f170</srcmd5>
+    <version>2.19.0</version>
+    <time>1687380022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094370</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3462b90e7333ced37b23af631f38c000</srcmd5>
+    <version>2.19.1</version>
+    <time>1688147977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096073</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8ffc1f699feedb93b010508d6134e1d4</srcmd5>
+    <version>2.20.0</version>
+    <time>1689614603</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098800</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b76810c731d3b83535e44947a93e5687</srcmd5>
+    <version>2.20.2</version>
+    <time>1689786640</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099535</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>93e6310cdea323773acc386af43f3b74</srcmd5>
+    <version>2.21.0</version>
+    <time>1694019479</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109080</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0173cdeb4f69116a188f90bae560a531</srcmd5>
+    <version>2.22.0</version>
+    <time>1695412172</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112921</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>50b7e591a5350039fb86d4bf392f060c</srcmd5>
+    <version>2.23.0</version>
+    <time>1697748547</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118766</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1f0bc1da942aa51bbc981e82614b1d0e</srcmd5>
+    <version>2.23.1</version>
+    <time>1700162998</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126927</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7880b6ad7b15d6318640d0710f4fe9cd</srcmd5>
+    <version>2.23.3</version>
+    <time>1700772145</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128338</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7eb898001739671dad103feb861b7c5b</srcmd5>
+    <version>2.24.0</version>
+    <time>1705437421</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139015</requestid>
+  </revision>
+</revisionlist>

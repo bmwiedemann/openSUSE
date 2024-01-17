@@ -1,0 +1,405 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3915ddc1c28d3f5f930a05c67a3806b0</srcmd5>
+    <version>0.3</version>
+    <time>1530866463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620279</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f053c34ff4b448f82a43f94854daf16</srcmd5>
+    <version>0.4</version>
+    <time>1532774723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625797</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>03c30b205bd5b11a4bdbd8b0a3d96b0a</srcmd5>
+    <version>0.9</version>
+    <time>1540544896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.</comment>
+    <requestid>644112</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80f0c7efeb51960a6af9b3cdc3ba71e6</srcmd5>
+    <version>0.10</version>
+    <time>1540988495</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>645610</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e39e6a772f774f954d576bde1f92c016</srcmd5>
+    <version>0.12</version>
+    <time>1542580333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649905</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4f140ca7e8a787f3e80a38d3ebb2797c</srcmd5>
+    <version>0.13</version>
+    <time>1544727011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657797</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9f6db0d202c6cdd93521962cdfc1ec4e</srcmd5>
+    <version>0.13</version>
+    <time>1546535224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662212</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f596be70f58715a7cbb0452126b92d66</srcmd5>
+    <version>0.16</version>
+    <time>1554749610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.16.</comment>
+    <requestid>692012</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eb6797ac8c20858d2516d2ed9bb3edfc</srcmd5>
+    <version>0.18</version>
+    <time>1559837729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706156</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c530dedd31fb89851277538241a3d7c8</srcmd5>
+    <version>0.19</version>
+    <time>1565721212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722681</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6245b9bdaa7f8f3250d6becaf4c99573</srcmd5>
+    <version>0.21</version>
+    <time>1569523151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732369</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ccab71707fd8b02bd367a932039c0738</srcmd5>
+    <version>1.0</version>
+    <time>1575106771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751841</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b15fc7ed71f789770b32441e6962ca2f</srcmd5>
+    <version>1.4</version>
+    <time>1578437488</time>
+    <user>dimstar_suse</user>
+    <comment>- ver 1.4:
+  * Fix issue with handling Crypto-Binding and invalid MACs.
+  * Fix issue with handling change station error results.
+  * Fix issue with handling DNS resolving installations.
+
+- ver 1.3:
+  * Fix issue with handling EAP-GTC and password requests.
+  * Fix issue with handling Crypto-Binding TLV for PEAPv0.
+  * Fix issue with handling key installation and PEAP Phase 2.
+  * Fix issue with handling externally triggered scan requests.
+  * Fix issue with handling RCPI calculation for RRM requests.
+- ver 1.2:
+  * Fix issue with handling scan requests while connecting.
+  * Fix issue with handling scan duration for RRM requests.
+  * Fix issue with handling parent TSF value for RRM requests.
+- ver 1.1:
+  * Fix issue with simple configuration support checks.
+  * Fix issue with handling TLS tunnel and PEAPv0.
+  * Add support for radio resource management.</comment>
+    <requestid>761073</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4d3657640ec26fc583ef261fcc35ee87</srcmd5>
+    <version>1.8</version>
+    <time>1592468934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.</comment>
+    <requestid>815552</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c0f2fabd9c0a7e740452b677df79fbd9</srcmd5>
+    <version>1.8</version>
+    <time>1597856011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827639</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>97beee7bd442764631996502ed856fab</srcmd5>
+    <version>1.9</version>
+    <time>1601652979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838820</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7527c0579a7172d4d85dbc01ac3cb692</srcmd5>
+    <version>1.11</version>
+    <time>1610965672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862453</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6f73f4887205dd92f52c3eba942c115a</srcmd5>
+    <version>1.12</version>
+    <time>1614684731</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.12.</comment>
+    <requestid>875525</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d4d8c094cf9029c100f34e64a0add8c8</srcmd5>
+    <version>1.14</version>
+    <time>1621201226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892612</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ed82cd02192939c2db595e3926d53d36</srcmd5>
+    <version>1.16</version>
+    <time>1630525023</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.16
+  ver 1.16:
+  * Fix issue with writing provisioning files with a passphrase.
+  * Add support for Authenticator &amp; Supplicant RSN Extension elements.
+  * Add support for handling Transition Disable info.
+  * Add support for SAE Hash-to-Element feature.
+  ver 1.15:
+  * Add support for FT-over-DS procedure with multiple BSS.
+  * Add support for estimation of VHT RX data rate.
+  * Add support for exporting Daemon information. (forwarded request 915063 from mohms)</comment>
+    <requestid>915320</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1db08cd0d236bf823c897438680b7b8a</srcmd5>
+    <version>1.17</version>
+    <time>1631310092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917967</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>95e6eb87efb97cd743fbaeeb84936c8c</srcmd5>
+    <version>1.18</version>
+    <time>1632766145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921835</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>936443401e98bdff8eaf7d4a9614f6e7</srcmd5>
+    <version>1.19</version>
+    <time>1636388666</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.19
+  * Fix issue with handling OCV if offloading is supported.
+  * Fix issue with handling SA Query on channel switch event.
+  * Fix issue with starting FT-over-DS actions after roaming.
+  * Add support for OWE transition networks.
+  * Add support for extended key IDs. </comment>
+    <requestid>930077</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5de9cc5c19e7566a84ea37817d1003a3</srcmd5>
+    <version>1.20</version>
+    <time>1637970689</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.20
+  * Fix issue with handling Hotspot 2.0 requirements.
+  * Add support for evict_nocarrier setting during roaming.
+  * Add support for experimental NetworkConfigurationAgent API.
+</comment>
+    <requestid>933999</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4d2cd3ffb0a71936a176f721a085ef23</srcmd5>
+    <version>1.22</version>
+    <time>1643321808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948977</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>53e7aeb74e8cdb6d00f2c2a7093ff9ac</srcmd5>
+    <version>1.22</version>
+    <time>1643404354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949595</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a302d6088e7fde557c83eecdb4b416bb</srcmd5>
+    <version>1.25</version>
+    <time>1646073837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958060</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a8ffba0a8adb3041312630780728c1a5</srcmd5>
+    <version>1.26</version>
+    <time>1650466597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970839</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e61e1d45083d4727f33b4baceaf167f5</srcmd5>
+    <version>1.27</version>
+    <time>1652389254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976597</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>386efe38112627ee286a20bf5582167f</srcmd5>
+    <version>1.28</version>
+    <time>1657617146</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.28:
+  * Fix issue with handling invalid EAPoL frames.
+  * Fix issue with handling unexpectedly unencrypted EAP frames.
+  * Fix issue with handling AlwaysRandomizeAddress/AddressOverride.
+  * Fix issue with handling initial signal level notification.
+  * Fix issue with handling sorting of scan requests.
+  * Fix issue with handling frame type check in FT.</comment>
+    <requestid>988300</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>584fcde972069bbd2ba27fd21edc2e4f</srcmd5>
+    <version>1.29</version>
+    <time>1658510428</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.29:</comment>
+    <requestid>990016</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2963d74e9f018ce6012a718fe3c365a2</srcmd5>
+    <version>1.30</version>
+    <time>1663155882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003273</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>2c735f29f530e93e832bc89aea0e8017</srcmd5>
+    <version>2.0</version>
+    <time>1670162291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039823</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>75e0714f5fa653315aa039a3102067d0</srcmd5>
+    <version>2.1</version>
+    <time>1671977688</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1:
+  * Fix issue with handling FT-over-DS action.
+  * Fix issue with handling scan and 6 GHz support check.
+  * Fix issue with handling when periodic scans get aborted.
+  * Add support for using 5 GHz frequencies in AP mode. (forwarded request 1045110 from dirkmueller)</comment>
+    <requestid>1045126</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3b6b59f0068add97fd9984947b67e420</srcmd5>
+    <version>2.2</version>
+    <time>1674997867</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2:
+  * Fix issue with handling FT and multiple roaming scans.
+  * Fix issue with handling multiple wiphy registrations.
+  * Fix issue with with EAP-PEAP session resumption.
+  * Add support for using PTK rekeying in AP mode.
+  * Add support for setting country IE in AP mode.
+  * Add support for setting WMM parameter IE in AP mode.</comment>
+    <requestid>1061799</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a1cda9748c06cd1979eeba0efbce043a</srcmd5>
+    <version>2.3</version>
+    <time>1676464867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065884</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>674e50c3a59818d122f24720ae1b958d</srcmd5>
+    <version>2.4</version>
+    <time>1684415997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087773</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>95a307192bf08749b1a0ed8d29841e64</srcmd5>
+    <version>2.5</version>
+    <time>1687272521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093836</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>86b382eeb34572653652574c58a66039</srcmd5>
+    <version>2.6</version>
+    <time>1687900690</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6:
+  * Add support for setting driver specific quirks.
+  * Add support for disabling power saving mode. (forwarded request 1095642 from dirkmueller)</comment>
+    <requestid>1095655</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>85eee36c0d19b10eb37afdbcac6c0e9a</srcmd5>
+    <version>2.7</version>
+    <time>1688999989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097854</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6edb3daedc91ecc5f6ab398e06a94622</srcmd5>
+    <version>2.8</version>
+    <time>1693685271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108572</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>237a2586db39b4a89fc588eda06250aa</srcmd5>
+    <version>2.9</version>
+    <time>1700675677</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9:
+  * Fix issue with handling certain FT failures.
+  * Fix issue with handling user-disabled bands.
+  * Fix issue with handling roam on beacon loss event.
+  * Add support for PKEX configurator.
+  * Add support for PKEX enrollee. (forwarded request 1127951 from dirkmueller)</comment>
+    <requestid>1127972</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5a76080169960f2bfb40535b58b7016a</srcmd5>
+    <version>2.12</version>
+    <time>1704380320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.12 [boo#1218410]</comment>
+    <requestid>1136583</requestid>
+  </revision>
+</revisionlist>

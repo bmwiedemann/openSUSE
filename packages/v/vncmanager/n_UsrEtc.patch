@@ -1,0 +1,23 @@
+diff -u -p vncmanager-1.0.2.orig/CMakeLists.txt vncmanager-1.0.2/CMakeLists.txt
+--- vncmanager-1.0.2.orig/CMakeLists.txt	2020-07-06 15:52:37.434334000 +0200
++++ vncmanager-1.0.2/CMakeLists.txt	2020-07-06 17:15:43.348893000 +0200
+@@ -56,5 +56,3 @@ if(SYSTEMD_FOUND)
+     configure_file("${CMAKE_CURRENT_SOURCE_DIR}/vncmanager.service.in" "${CMAKE_CURRENT_BINARY_DIR}/vncmanager.service")
+     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/vncmanager.service" DESTINATION "${SYSTEMD_SYSTEM_UNIT_DIR}")
+ endif()
+-
+-install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/vncmanager.conf" DESTINATION "${SYSCONF_INSTALL_DIR}/vnc")
+diff -u -p vncmanager-1.0.2.orig/README.md vncmanager-1.0.2/README.md
+--- vncmanager-1.0.2.orig/README.md	2020-07-06 15:52:37.532327000 +0200
++++ vncmanager-1.0.2/README.md	2020-07-06 17:05:45.945006000 +0200
+@@ -1,6 +1,10 @@
+ # vncmanager
+ VNC manager is a service that manages VNC sessions and directs VNC clients to them.
+ 
++Use vncmanager.conf as sample config file. Feel free to copy to /etc/vnc and adjust
++to your needs. The initial values in vncmanager.conf are the defaults already set
++thru the vncmanager code itself.
++
+ TODO: Add more information.
+ 
+ ## License

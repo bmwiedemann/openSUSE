@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Wed Jul 31 05:35:13 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.04
+   see /usr/share/doc/packages/perl-asa/Changes
+
+-------------------------------------------------------------------
+Mon Oct 16 11:39:28 UTC 2017 - ncutler@suse.com
+
+- spec file
+  + add "BuildRequires:  perl-Module-Install" to fix perl 5.26 build
+
+-------------------------------------------------------------------
+Mon Apr 13 18:35:42 UTC 2015 - coolo@suse.com
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-asa/Changes
+
+-------------------------------------------------------------------
+Mon Apr 13 18:35:41 UTC 2015 - coolo@suse.com
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-asa/Changes
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:21 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Fri Nov  5 09:36:04 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.02)
+

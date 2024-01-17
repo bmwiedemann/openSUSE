@@ -1,0 +1,294 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b78e08f53cc52319b905a947219edde</srcmd5>
+    <version>5.2.0</version>
+    <time>1513245449</time>
+    <user>dimstar_suse</user>
+    <comment>This package is needed by python-pykwalify in Staging:adi:60
+(which is needed by borgmatic)</comment>
+    <requestid>555905</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a189d449ae935db40d8cbf7c64b5f31</srcmd5>
+    <version>5.3.1</version>
+    <time>1515261058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561827</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a1dd9b5bc8dd9a724c70327650e210e3</srcmd5>
+    <version>5.3.1</version>
+    <time>1545648304</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659711</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bab2907e534db7fd2e619975a6654d97</srcmd5>
+    <version>5.3.1</version>
+    <time>1549464493</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671951</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>247aa701cedfca98d864b284638e7b6e</srcmd5>
+    <version>6.5.0</version>
+    <time>1551284874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674881</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6eba647dcd7160de714e50ad08d9b84</srcmd5>
+    <version>6.6.2</version>
+    <time>1553888555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689260</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5fcc0b8552122628a406cb81d544f7c1</srcmd5>
+    <version>6.7.0</version>
+    <time>1555928783</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696466</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6a86001f8afd63d4c760322ceadbe7c9</srcmd5>
+    <version>6.8.2</version>
+    <time>1558516533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704380</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a2bba44821ed7fce616a83b259847dd4</srcmd5>
+    <version>6.9.0</version>
+    <time>1560862679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710324</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e2699750101215b5c72dd3ed1f9ced0</srcmd5>
+    <version>6.10.0</version>
+    <time>1563808790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.10.0:
+  * Better feedback where objects do not :func:`compare` equal but do have the same representation.</comment>
+    <requestid>717575</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a79237fdb078c963d37602005d2e2c3b</srcmd5>
+    <version>6.14.0</version>
+    <time>1585264896</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2
+
+- version update to 6.14.0
+  6.14.0 (24 Feb 2020)
+  --------------------
+  - Add support for non-deterministic logging order when using :meth:`twisted.LogCapture`.
+  6.13.1 (20 Feb 2020)
+  --------------------
+  - Fix for using :func:`compare` to compare two-element :func:`~unittest.mock.call`
+    objects.
+  6.13.0 (18 Feb 2020)
+  --------------------
+  - Allow any attributes that need to be ignored to be specified directly when calling
+    :func:`~testfixtures.comparison.compare_object`. This is handy when writing
+    comparers for :func:`compare`.
+  6.12.1 (16 Feb 2020)
+  --------------------
+  - Fix a bug that occured when using :func:`compare` to compare a string with a
+    slotted object that had the same :func:`repr` as the string.
+  6.12.0 (6 Feb 2020)
+  -------------------
+  - Add support for ``universal_newlines``, ``text``, ``encoding`` and ``errors`` to
+    :class:`popen.MockPopen`, but only for Python 3.
+  6.11.0 (29 Jan 2020)
+  --------------------
+  - :class:`decimal.Decimal` now has better representation when :func:`compare` displays a failed
+    comparison, particularly on Python 2.
+  - Add support to :func:`compare` for explicitly naming objects to be compared as ``x`` and ``y``.
+    This allows symmetry with the ``x_label`` and ``y_label`` parameters that are now documented.
+  - Restore ability for :class:`Comparison` to compare properties and methods, although these uses</comment>
+    <requestid>784177</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f1ffc5251ca6af46fe2ebf6fdf25ec4a</srcmd5>
+    <version>6.14.1</version>
+    <time>1589992579</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with python 3.8.3:
+  * python383.patch
+- Update to 6.14.1:
+  * Fix bugs in comparison of :func:`~unittest.mock.call` objects where the :func:`repr` of the :func:`~unittest.mock.call` arguments were the same even when their attributes were not.</comment>
+    <requestid>807182</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a9031ff995d403bd2634e7ac03ec1257</srcmd5>
+    <version>6.14.1</version>
+    <time>1593200638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816634</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a736cc7c11b7cc94edf7164508001149</srcmd5>
+    <version>6.14.2</version>
+    <time>1603961123</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.14.2:
+  - Fix bug where ``ignore_eq`` had no effect on nested objects when using :func:`compare`
+- remove python383.patch (upstream)</comment>
+    <requestid>835017</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d6df1abd70f71e2d8ce4a092dc2e027</srcmd5>
+    <version>6.15.0</version>
+    <time>1607017245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851911</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>93bb6ad395c65fd32c5bae3d8d5526bf</srcmd5>
+    <version>6.17.0</version>
+    <time>1608729540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857036</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d4f02bcc89dd95b0a86cc43155444caa</srcmd5>
+    <version>6.17.0</version>
+    <time>1619729083</time>
+    <user>dimstar_suse</user>
+    <comment>- Add appease-django-320.patch:
+  * Upstream patch to avoid a test failure with building with Django 3.2</comment>
+    <requestid>888956</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>30b6c6d19a7b06fa8fec693aa013c1f4</srcmd5>
+    <version>6.17.1</version>
+    <time>1620840680</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.17.1
+  - Fix bug where bug where duplicated entries in an ordered but partial
+    :class:`SequenceComparison` could result in a failed match.</comment>
+    <requestid>891895</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>59870f2657cd5354a0ee85658f1724eb</srcmd5>
+    <version>6.18.3</version>
+    <time>1634754197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924047</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>863a83fe7bf0e1c48619079928bf19ec</srcmd5>
+    <version>6.18.3</version>
+    <time>1640278406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942014</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>e7988b1646c93b456b2003e6ec3cfc19</srcmd5>
+    <version>6.18.3</version>
+    <time>1640808639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942857</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3166486f3986801db5b881ac2477b3c0</srcmd5>
+    <version>7.0.0</version>
+    <time>1665420242</time>
+    <user>favogt_factory</user>
+    <comment>- Remove testfixtures-sybil3-py310.patch, it's included in upstream now.
+- Update to 7.0.0
+  * Refresh documentation.
+  * Add type annotations.
+  * Drop support for Python 2. The minimum supported Python version is now 3.6.
+  * Sybil 3 is now the minimum supported version if you use
+    :class:`~.sybil.FileParser`.
+  * Rename and refactor the date and time mocks, they are now :any:`mock_date`,
+    :any:`mock_datetime` and :any:`mock_time`. :func:`test_date`,
+    :func:`test_datetime` and :func:`test_time` are still present as aliases
+    but are now deprecated.
+  * Add :meth:`TempDirectory.as_string`, :meth:`TempDirectory.as_path` and
+    :meth:`TempDirectory.as_local`. :meth:`TempDirectory.getpath` is now
+    deprecated.
+  * :class:`TempDirectory` can now be used to wrap existing directories.
+  * Fixed a bug where :any:`OutputCapture.captured` returned bytes instead of a
+    string with fd=True.
+  * The deprecated strict option to :class:`Comparison` has been removed, use
+    the partial option instead.
+  * The deprecated :meth:`TempDirectory.check`, :meth:`TempDirectory.check_dir`
+    and :meth:`TempDirectory.check_all` methods have been removed.
+- 6.18.5 (1 Mar 2022)
+  * Fix bug in detection of Mock backport.
+- 6.18.4 (25 Feb 2022)
+  * Ensure compatibility with Sybil 2 and Sybil 3 along with pytest 6 and
+    pytest 7.</comment>
+    <requestid>1008127</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9154df1150c8afb96a05bbada37d5230</srcmd5>
+    <version>7.0.3</version>
+    <time>1668514692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.3 (3 Nov 2022)
+  * Further bugfixes around self-referential datastructures and :func:`compare`.
+- Update to 7.0.2 (1 Nov 2022)
+  * Reinstate support for self-referential data structures in :func:`compare`. The new implementation provides more clarity about
+    what's going on and also ignores more immutable data types.
+- Update to 7.0.1 (1 Nov 2022)
+  * Remove non-functional support for self-referential data structures in :func:`compare`. The functionality didn't work but did cause
+    erroneous reported equality of values in dictionaries that were actually not equal.</comment>
+    <requestid>1035575</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c8e2b6b2f3fefc0dfa1532d47c8477d3</srcmd5>
+    <version>7.0.4</version>
+    <time>1671128642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042863</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0b4774917d968b581c7f7a7b906d29d3</srcmd5>
+    <version>7.2.2</version>
+    <time>1701377943</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.2.2:
+  * Fix bug in support for :class:`os.PathLike` arguments to
+    :class:`popen.MockPopen`.
+  * Added missing support for :class:`os.PathLike` arguments to
+    :class:`popen.MockPopen`.
+  * Add ``order_matters`` parameter to :class:`ShouldWarn`.
+  * Implement new IDE and static-analysis ways of :doc:`mocking &lt;mocking&gt;`
+    including additional parameters to :meth:`~Replacer.replace` along with
+    the :any:`replace_on_class`, :any:`replace_in_module` and
+    :any:`replace_in_environ` context managers.
+- Add patch path-comparsion-312.patch:
+  * Compare paths string-wise, due to Python 3.12 changes.
+- Switch to autosetup and pyproject macros.
+- Remove now unneeded Python 3.6 special-casing.</comment>
+    <requestid>1129684</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>04b69481facbf6beeebf01429e3fa0d2</srcmd5>
+    <version>7.2.2</version>
+    <time>1702405902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132550</requestid>
+  </revision>
+</revisionlist>

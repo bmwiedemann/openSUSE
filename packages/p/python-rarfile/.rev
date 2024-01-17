@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd9311bf632d65c22b63e4fde4cede39</srcmd5>
+    <version>3.0</version>
+    <time>1492169694</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>483992</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6c574d3117bd40d05d36e792d9d3e0fe</srcmd5>
+    <version>3.1</version>
+    <time>1569235151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732398</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b4011280e2d42e6713b49201375f5df2</srcmd5>
+    <version>3.1</version>
+    <time>1571210135</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738391</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f759a798d7a6111d34b0861b2e8ca2fc</srcmd5>
+    <version>3.2</version>
+    <time>1595271741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821832</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e345ae2a6f3f2fbf186ec910b5ee6a79</srcmd5>
+    <version>4.0</version>
+    <time>1596703276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824573</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>11efa1c06d1f0e810b498201da25f4a6</srcmd5>
+    <version>4.0</version>
+    <time>1645054279</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.10 build - not yet supported</comment>
+    <requestid>955485</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>378627a25d551218742bfac199f99cf1</srcmd5>
+    <version>4.0</version>
+    <time>1651669871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974864</requestid>
+  </revision>
+</revisionlist>

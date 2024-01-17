@@ -1,0 +1,9 @@
+<package name="python-mygpoclient" project="openSUSE:Factory">
+  <title>Python gpodder.net API Client Library</title>
+  <description>The mygpoclient library allows developers to utilize a Pythonic interface to
+the my.gpodder.org web services.
+
+</description>
+  <devel project="devel:languages:python" package="python-mygpoclient"/>
+  <url>http://gpodder.org/mygpoclient</url>
+</package>

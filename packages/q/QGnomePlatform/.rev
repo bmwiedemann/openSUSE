@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9915dcdaa7cc25abe04bb37e56230b91</srcmd5>
+    <version>0.3</version>
+    <time>1521052827</time>
+    <user>dimstar_suse</user>
+    <comment>new package to go along with adwaita-qt (better theme integration of QT5 applications under GNOME)</comment>
+    <requestid>586724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d239fb7d488bdfc941cbd0bd02f9cbde</srcmd5>
+    <version>0.5</version>
+    <time>1552572148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684868</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>99d1327a16e11e0a64a4217017fe0370</srcmd5>
+    <version>0.6.0</version>
+    <time>1574784290</time>
+    <user>dimstar_suse</user>
+    <comment>0.6.0 (forwarded request 750491 from KAMiKAZOW)</comment>
+    <requestid>750963</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5ce8b65f32a81c78e6764dbaeb003ed1</srcmd5>
+    <version>0.6.0</version>
+    <time>1579637011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766122</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>db3b8746843d2eb5611729546dadac0d</srcmd5>
+    <version>0.6.1</version>
+    <time>1591083178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810721</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46f743e327596cceb3653afc4d979889</srcmd5>
+    <version>0.7.1</version>
+    <time>1621626587</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.7.1 (forwarded request 889605 from susnux)</comment>
+    <requestid>893947</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6541aa7f47b806adf6f21bdc2db36268</srcmd5>
+    <version>0.8.0</version>
+    <time>1625516602</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.8.0 (forwarded request 903881 from susnux)</comment>
+    <requestid>904178</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ba5f8aeb2e077dca1a5a6279ee6dc396</srcmd5>
+    <version>0.8.0</version>
+    <time>1627492790</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the missing gsettings-desktop-schemas build requirement. (forwarded request 908561 from cgiboudeaux)</comment>
+    <requestid>908598</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2ff432581edb925db5153830af392421</srcmd5>
+    <version>0.8.4</version>
+    <time>1645723260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957250</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6326629c5b6abe6144ab639079d07378</srcmd5>
+    <version>0.9.0</version>
+    <time>1664467954</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006650</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e35ad96115a394edecf6edc9cc5590a7</srcmd5>
+    <version>0.9.0</version>
+    <time>1677878914</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %elif which is not supported in SLE/Leap
+- Use qt6 macros when building the qt6 flavor so the correct
+  compiler is used to build the package in SLE/Leap
+- Add patch to fix an undefined reference to XSetTransientForHint
+  in SLE/Leap:
+  * fix-XSetTransientForHint.patch</comment>
+    <requestid>1069132</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8f3a1177909aae36831db55c67aaee23</srcmd5>
+    <version>0.9.0</version>
+    <time>1680884217</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-fix-qt-6.5-compilation.patch to fix a compilation
+  error with qt 6.5</comment>
+    <requestid>1077790</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fe47d7843947ec88bf2581130e1745ff</srcmd5>
+    <version>0.9.1</version>
+    <time>1684846483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088551</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2381a801ddacc9e19ec121fdaa075b57</srcmd5>
+    <version>0.9.1</version>
+    <time>1695208988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111853</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,1538 @@
+-------------------------------------------------------------------
+Fri Dec 15 16:59:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.5
+  - Test updates for rspamd-3.7 branch by @fatalbanana in #4708
+  - Fix rspamadm lua logger in rspamd-3.7 (#/4727) by @fatalbanana
+    in #4729
+  - Some picks for rspamd-3.7 by @fatalbanana in #4731
+  - rspamd-3.7: fix systemd logging by @fatalbanana in #4734
+  - rspamd-3.7: [Fix] dkim_signing: siging_table: lowercase before
+    lookup by @fatalbanana in #4737
+- drop pwatches included in update:
+  rspamd-d907a95.patch
+- refreshed patches to apply cleanly again:
+  fix_missing_return.patch
+  rspamd-conf.patch
+- While the fix for the logging bug was accepted into master. The
+  3.7.5 release uses a different solution apparently. Update patch
+  fix_stack_smash.patch.
+
+  https://github.com/rspamd/rspamd/pull/4732#issuecomment-1858255236
+
+-------------------------------------------------------------------
+Wed Dec  6 15:28:07 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- fix_stack_smash.patch: upstream rework of logging doesn't allocate
+  enough memory for an array (bsc#1216830)
+
+-------------------------------------------------------------------
+Wed Nov 22 10:06:42 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build without hyperscan:
+  * rspamd-d907a95.patch
+
+-------------------------------------------------------------------
+Tue Nov 14 20:41:32 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.4
+  - [Enhancement] Add composite rule for suspicious URLs in
+    suspicious messages
+  - [Fix] Another try to fix setproctitle
+  - [Fix] Do not cleanup hyperscan files unless new ones are loaded
+  - [Fix] Fix various issues with canonicalisation of the paths
+  - [Fix] Properly set config field when creating tasks from Lua
+  - [Fix] Set loaded variable explicitly
+  - [Fix] known_senders: fix config handling
+  - [Fix] rbl: fix exclude_local
+  - [Minor] Add missing include for gcc 14
+  - [Minor] Add rule for messages missing both X-Mailer and
+    User-Agent header
+  - [Minor] Bundle fasttext as linux distributives are just useless
+  - [Minor] Enable fasttext on RPM based linux
+  - [Minor] Forgot it in one more place
+  - [Minor] Improve FREEMAIL_AFF capture rates
+  - [Minor] Limit fasttext to amd64 only
+  - [Minor] Properly search for fasttext include
+  - [Minor] Treat *.zpaq attachments as archives and harmful
+  - [Minor] force_actions: set a group for symbols
+  - [WebUI] Update map editor
+
+-------------------------------------------------------------------
+Fri Oct 27 08:03:52 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.3
+  - [Fix] Emergency fix for the hyperscan path error
+
+-------------------------------------------------------------------
+Thu Oct 26 18:25:54 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.2
+  - [Minor] Make compiling with backward-cpp optional by
+    @a16bitsysop in #4639
+  - [Rules] Blank spam detection by @fatalbanana in #4644
+  - [Minor] Treat *.cue attachments as harmful by @twesterhever in
+    #4642
+  - Dzjaivnt patch 1 by @dzjaivnt in #4640
+  - [WebUI] Add control to invert action filter by @moisseev in
+    #4645
+  - [Fix] DMARC reporting: fix reporting for subdomains by
+    @fatalbanana in #4587
+  - [Test] Banish luacheck from functional tests by @fatalbanana in
+    #4648
+  - [Minor] RSPAMD_SHAREDIR is called SHAREDIR in configuration by
+    @fatalbanana in #4649
+  - [WebUI] Fix history table vanishing by @moisseev in #4661
+  - Tighten rspamd's attachment policy by @twesterhever in #4656
+  - [Minor] rbl: support use of different matchers for return codes
+    by @fatalbanana in #4657
+
+-------------------------------------------------------------------
+Sat Oct  7 21:56:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.7.1
+  - [Fix] CMakeLists.txt remove whitespace added by linter as it
+    makes te… by @a16bitsysop in #4560
+  - fix: redis schema parsing by @Conni2461 in #4562
+  - [Minor] Update JS libraries by @moisseev in #4567
+  - [WebUI] Restore contrasting foreground color by @moisseev in
+    #4569
+  - Add new exporter to push JSON to a raw TCP socket by @lingfish
+    in #4572
+  - [WebUI] Tweak bootstrap colors for accessibility by @moisseev
+    in #4577
+  - Rewrite configuration utils in C++ by @vstakhov in #4573
+  - [Minor] Slightly adjust DNSBL scores by @twesterhever in #4557
+  - Added support for Redis 6 ACL (username/password) by @laodc in
+    #4578
+  - [Feature] Support feed exclusions in phishing module by
+    @dragoangel in #4575
+  - [Minor] Remove unwanted debug logging by @fatalbanana in #4585
+  - Fix regression in invokation of rspamd-test by @ln5 in #4588
+  - [Fix] Correct format pattern for RE tree tempfile name by @ln5
+    in #4590
+  - [Minor] Remove unused variables by @ln5 in #4591
+  - [Fix] Correct format string for unw_word_t by @ln5 in #4592
+  - [Fix] rbl: really fix dependency registration when
+    symbols_prefixes i… by @fatalbanana in #4594
+  - [Fix] rspamadm mime: arguments beginning with letter t by
+    @fatalbanana in #4597
+  - [Minor] API docs: lua_ip: fix function name by @fatalbanana in
+    #4598
+  - [Feature] rbl: support checking numeric URLs in isolation by
+    @fatalbanana in #4596
+  - [Feature] Add ICAP Content-Type and Filename from TODO List by
+    @lbahtarliev in #4595
+  - [Minor] Try fix CI by @fatalbanana in #4603
+  - [Fix] MISSING_MIMEOLE: avoid matching messages from Android
+    GMail app (#4561) by @fatalbanana in #4600
+  - [WebUI] Set locale on UI load by @moisseev in #4607
+  - Update configwizard.lua by @Dani778 in #4605
+  - [Minor] Revisit numeric_urls by @fatalbanana in #4602
+  - [Fix] Change Date: header location to conform with RFC by
+    @lbahtarliev in #4608
+  - Implement known senders plugin by @vstakhov in #4610
+  - [Test] Rudimentary tests for known_senders plugin by
+    @fatalbanana in #4612
+  - [Test] Ignore encoding errors by @fatalbanana in #4616
+  - Merge tests into master branch by @fatalbanana in #4615
+  - Run CI on ARM by @fatalbanana in #4617
+  - [Minor] Try fix test logs by @fatalbanana in #4620
+  - Minor improvements for CI by @fatalbanana in #4621
+  - Fix wrong copypasta & mis-named file by @fatalbanana in #4624
+  - [Test] Use Robot Framework native IF by @fatalbanana in #4625
+  - [Fix] Prevent DNSWL sabotage by @mdierksen in #4627
+
+-------------------------------------------------------------------
+Thu Aug  3 21:34:15 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.6
+  - [WebUI] Migrate to Bootstrap v5.2 by @moisseev in #4444
+  - fix: avoid double-dip of nrcpt when calculating ratelimit
+    condition by @simbuerg in #4448
+  - [WebUI] Fix "Clean history" button enabling/disabling in the
+    Scan tab by @moisseev in #4453
+  - [Minor] Use a scalar variable as a dir handle by @moisseev in
+    #4457
+  - Fix arc by @jendis in #4449
+  - [Minor] Fix pagination control border radius by @moisseev in
+    #4461
+  - [Fix] remove obsolete rspamd-redirector files by @a16bitsysop
+    in #4422
+  - Add fasttext language detector to Rspamd by @vstakhov in #4473
+  - [Minor] Fix rows background coloring by @moisseev in #4490
+  - [WebUI] Add ability to compute fuzzy hashes by @moisseev in
+    #4499
+  - [Fix] rbl: fix dependency registration when symbols_prefixes is
+    used by @fatalbanana in #4498
+  - [Enhancement] Add composite rule for messages only containing a
+    redirector URL by @twesterhever in #4496
+  - [WebUI] Show validation feedback inside login modal by
+    @moisseev in #4504
+  - [Minor] Improve HACKED_WP_PHISHING coverage by @twesterhever in
+    #4506
+  - [Minor] Add additional bad extensions by @twesterhever in #4508
+  - [Minor] Assorted cleanup and housekeeping of configuration
+    files, take 2 by @twesterhever in #4505
+  - [Rules] Add thread hijacking composite rule by @twesterhever in
+    #4507
+  - [Minor] Move HAS_ONION_URI from "experimental" to "url" group
+    by @twesterhever in #4495
+  - [Enhancement] Make Google Firebase rule productive by
+    @twesterhever in #4494
+  - Use the correct mime format for 7z by @JasonStephenson in #4517
+  - [Minor] Increase score for .chm attachments by @twesterhever in
+    #4518
+  - [Enhancement] Improve detection of Google redirection URLs by
+    @twesterhever in #4497
+  - if elasticsearch_version >= 7 we should not send the _type to
+    elastic… by @mariojansen in #4520
+  - [Enhancement] Treat HTML attachments as (slightly) bad by
+    @twesterhever in #4519
+  - Dockerfile: Switch to bookworm by @mrueg in #4532
+  - [Feature] external_relay: add ip_map strategy by @moesoha in
+    #4537
+  - [Feature] Detect Apple Mail and remove scores for their known
+    common behavior by @dragoangel in #4538
+  - [Minor] A bit better apple_x_mailer regex by @dragoangel in
+    #4539
+  - replace ECDSA_sign_setup/ECDSA_sign_ex with ECDSA_sign by
+    @sthen in #4541
+  - [Fix] dmarc gramar - allow spaces before ";" by @rheoli in
+    #4547
+  - [Minor] Minor fixes for previous ratelimit changes by
+    @fatalbanana in #4549
+  - [Minor] Improve catch rates of FREEMAIL_AFF by @twesterhever in
+    #4556
+  - [Minor] Test & fix has_only_html_part regression by
+    @fatalbanana in #4559
+  - [Minor] Tweak HAS_GOOGLE_REDIR to detect Google AMP URLs as
+    well by @twesterhever in #4558
+
+-------------------------------------------------------------------
+Fri Mar 17 21:53:38 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Enable more features
+  - Enable nice stacktraces for crashes. New BR: libunwind-devel
+  - use system xxhash: New BR: xxhash-devel
+  - enable blas/lapack support for the neural network processing
+    New BR: lapack-devel, libopenblas_openmp-devel, openblas-common-devel 
+
+-------------------------------------------------------------------
+Fri Mar 17 21:21:47 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5
+  - [Test] Remove test case with non-deterministic result by
+    @arkamar in #4323
+  - [WebUI] Add legacy history version badge by @moisseev in #4326
+  - [Feature] Enable Mime part filters on antivirus module by
+    @jonmoesli in #4328
+  - [Test] Use TMPDIR if available by @arkamar in #4327
+  - metadata_exporter http pusher: Extend valid return codes by
+    @yo000 in #4334
+  - [Minor] debian package: disable luajit on arm64 by @fatalbanana
+    in #4335
+  - Support external maps in Rspamd by @vstakhov in #4324
+  - [Fix] Return true from has_urls(true) if only emails are
+    present by @cpragadeesh in #4365
+  - [Fix] received: filtering of artificial header by @kakochang in
+    #4367
+  - [Fix] Replace broken strict_domains with phishing_exceptions by
+    @dupondje in #4376
+  - Fix build with gcc 13 by including by @heirecka in #4375
+  - rspamc: add -R option for human readable report by @amishmm in
+    #4377
+  - rspamc: optimize indentation condition by @amishmm in #4381
+  - Set required_score = reject score and minor change to the
+    report by @amishmm in #4383
+  - conf/modules.d/arc.conf: fix parameter name by @jendis in #4387
+  - Fixes to support global lua maps in user settings by @dpetrov67
+    in #4393
+  - [Enhancement] Make Google URL redirection rules productive by
+    @twesterhever in #4399
+  - [Enhancement] Add rule to detect Google Firebase URLs by
+    @twesterhever in #4401
+  - [Minor] Assorted cleanup and housekeeping of configuration
+    files by @twesterhever in #4397
+  - addition: add Betterbird to user_agent_thunderbird by
+    @georglauterbach in #4404
+  - [Minor] Replace "Spamhaus XBL any" hack with a more clear
+    solution by @twesterhever in #4398
+  - [Enhancement] Add IPFS URL heuristic by @twesterhever in #4310
+  - Checking for redirector url in mail by @korgoth1 in #4351
+  - fix incorrect asn references in bimi.conf by @mta59066 in #4410
+  - [Minor] Account for one more undisclosed-recipients address
+    variant by @citrin in #4413
+  - Fix for x-rspamd-action in Milter headers module by @nishils in
+    #4416
+  - [WebUI] Update JS libraries by @moisseev in #4414
+  - [WebUI] Update bootstrap by @moisseev in #4420
+  - [Minor] remove check for sys/cdefs.h in CMakelists.txt by
+    @a16bitsysop in #4430
+  - [Minor] Fix some compiler warnings by @a16bitsysop in #4436
+- Drop 068714f9f5a96fbd94560211cec75775ee023d02.patch:
+- this drops the rspamd-director binary
+
+-------------------------------------------------------------------
+Wed Jan 25 11:11:42 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't build against libnsl, it's not used and deprecated
+
+-------------------------------------------------------------------
+Mon Nov 14 16:35:33 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Move cleanup code to %pre because otherwise it doesnt trigger
+  early enough
+
+-------------------------------------------------------------------
+Mon Nov 14 16:21:40 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 3.4 again 
+  - Fix metadata_exporter with many recipients by @yo000 in #4294
+  - [Fix] Fix favicon.ico Content-Type header by @moisseev in #4302
+  - [Minor] Fix copy-paste error by @moisseev in #4305
+  - Add basic auth to metadata_exporter http pusher by @yo000 in
+    #4300
+  - [Enhancement] Add composite rule against AFF involving
+    freemailers by @twesterhever in #4304
+  - Penalize bounce spam by @frederikbosch in #4308
+- Added 068714f9f5a96fbd94560211cec75775ee023d02.patch:
+  Official patch for the unaligned memory issue described in
+  https://github.com/rspamd/rspamd/issues/4329
+- Add cleanup code to the %postun scriptlet to remove bad files,
+  created by earlier/unpatched 3.4 versions, during package upgrade
+
+-------------------------------------------------------------------
+Wed Nov  9 01:42:46 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Downgrade to 3.3 until https://github.com/rspamd/rspamd/issues/4329
+  is solved.
+
+-------------------------------------------------------------------
+Tue Nov  1 21:41:46 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4
+  - Fix metadata_exporter with many recipients by @yo000 in #4294
+  - [Fix] Fix favicon.ico Content-Type header by @moisseev in #4302
+  - [Minor] Fix copy-paste error by @moisseev in #4305
+  - Add basic auth to metadata_exporter http pusher by @yo000 in
+    #4300
+  - [Enhancement] Add composite rule against AFF involving
+    freemailers by @twesterhever in #4304
+  - Penalize bounce spam by @frederikbosch in #4308
+
+-------------------------------------------------------------------
+Tue Oct  4 12:27:58 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- added fix_missing_return.patch:
+  case statement without a default return.
+- drop outdated patch comment
+
+-------------------------------------------------------------------
+Tue Oct  4 11:23:37 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3
+  see upgrades notes in:
+
+  https://rspamd.com/doc/migration.html#migration-to-rspamd-33
+
+  - [Minor] Fix typo in config documentation in statistic.conf by
+    @kamilsztuke in #4137
+  - New SYSTEM_XXHASH option and zstd MODULES fix by @arkamar in
+    #4138
+  - Migrate ZSTD_reset{C,D}Stream to a new API by @arkamar in #4140
+  - [Fix] Disable IPv6 lookups for Blocklist.de RBL by
+    @twesterhever in #4143
+  - [Fix] Do not exclude authenticated users from URIBL lookups by
+    @twesterhever in #4144
+  - [Enhancement] Adjust scores of Spamhaus SBL hits by
+    @twesterhever in #4142
+  - [Enhancement] Query HELOs, PTRs, and Reply-To's against SURBL
+    and URIBL as well by @twesterhever in #4141
+  - [Test] Allow linters to fail by @moisseev in #4150
+  - [WebUI] Add HTTP (Ajax) request timeout setting by @moisseev in
+    #4151
+  - [Minor] Query EBLs for authenticated users as well by
+    @twesterhever in #4153
+  - [WebUI] Learn a random server of "All SERVERS" by @moisseev in
+    #4160
+  - Rework symcache by @vstakhov in #4130
+  - [Minor] Add scan_time and hostname to metadata_exporter by
+    @lucasRolff in #4166
+  - fix missing preprocessor macro for SSSE3 support by @msuslu in
+    #4168
+  - [Minor] fix lower transformation for utf symbols by @tierpod in
+    #4173
+  - [Enhancement] Add expire to history redis by @vitalvas in #4175
+  - [WebUI] Add option to choose map editor by @moisseev in #4183
+  - [WebUI] Fix privileged access for secure_ip by @moisseev in
+    #4189
+  - [Fix] Upstreams: Don't ignore revive_time config option by
+    @citrin in #4208
+  - [WebUI] Tweak history table layout by @moisseev in #4209
+  - Update rspamd.spec, delete old el6 files by @ghtm2 in #4206
+  - Update rspamd.spec to fix Fedora 36 build by @ghtm2 in #4211
+  - [Minor] rspamc: fix crash on non-string element in messages by
+    @fatalbanana in #4214
+  - [Fix] Empty envelopes should not be emitted as arrays, drop
+    from schema instead by @JasonStephenson in #4216
+  - [Minor] Mimedump improvements by @JasonStephenson in #4222
+  - [Minor] Set diacritics flag for more languages by @fatalbanana
+    in #4233
+  - Add MIME types commonly used for mp3 and wav attachments by
+    @citrin in #4239
+  - [Fix] Skip sending dmarc reports in no-opt mode by @rekup in
+    #4242
+  - Fix: BAD_REP_POLICIES does not trigger for Bayes by @Player701
+    in #4244
+  - [Minor] Remove references to Atom in CONTRIBUTING.md by
+    @fiirhok in #4248
+  - [WebUI] Remove extra To column from filtering by @moisseev in
+    #4249
+  - [WebUI] Hide symbol order toggle in search dropdown by
+    @moisseev in #4250
+  - [WebUI] Hide extra To detail row on small screens by @moisseev
+    in #4254
+  - [WebUI] Migrate to D3 v7 by @moisseev in #4256
+  - [WebUI] Wrap Prism.highlightElement by @moisseev in #4257
+  - milter_headers: Header fields may be inserted at wrong
+    position. by @ikedas in #4259
+  - [WebUI] Put total in the center of pie charts by @moisseev in
+    #4262
+  - [Fix] Avoid overriding IP with Sender IP by @dragoangel in
+    #4268
+  - Allow fuzzy worker to listen on AF_UNIX sockets successfully by
+    @BtbN in #4283 
+
+-------------------------------------------------------------------
+Mon Apr  4 09:18:43 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- pcre2 is required; so removing any conditions around it
+  to fix build for Leap
+
+-------------------------------------------------------------------
+Sat Mar 26 17:02:38 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.2
+  * [Conf] Score MIME_OBFUSCATED_ARCHIVE to 8 points
+  * [Conf] Set one_shot for URIBL rules by default
+  * [CritFix] Fix upstreams name resolution when there is also a port
+  * [Feature] Add ROC feature to neural network plugin
+  * [Feature] Add public suffic compilation utility
+  * [Feature] Add support of Cloudmark
+  * [Feature] Allow hyperscan for ppc64, as vectorscan now suports it.
+  * [Feature] Allow to skip DNS resolution for keep-alive connections
+  * [Feature] Aws_s3: Allow to store large parts separately
+  * [Feature] BIMI: Add preliminary version of the BIMI plugin
+  * [Feature] JSON endpoint for querying maps
+  * [Feature] Lua_magic: Add a sane CSV heuristic
+  * [Feature] Lua_mime: Add schema for message transfer
+  * [Feature] Output average scan time in /stat endpoint
+  * [Feature] Show average scan time in `rspamc stat` output
+  * [Fix] Add guards to avoid race condition on TCP connection
+  * [Fix] Allow spaces in DKIM key records
+  * [Fix] Apply the similar fix to the url_reputation
+  * [Fix] Avoid overwriting whitelisted_signers_map
+  * [Fix] Backport PR from libucl
+  * [Fix] Clear SSL errors
+  * [Fix] ClickHouse cleanup of old partitions
+  * [Fix] Do not double call error handler on ssl errors in the timeout path
+  * [Fix] Do not forget to clear pointers on IOC reset
+  * [Fix] External_relay: Remove useless check of the map value
+  * [Fix] Find suspicious url encodings that could break url extraction
+  * [Fix] Fix HTTP(s) client timeout
+  * [Fix] Fix exclude flags setting
+  * [Fix] Fix expanding of the variables
+  * [Fix] Fix host header usage in lua_http
+  * [Fix] Fix http maps shared memory cache cleanup
+  * [Fix] Fix logic in HTML processing FSM
+  * [Fix] Fix parsing of the compound mailto urls
+  * [Fix] Fix processing captures from pcre2
+  * [Fix] Fix removing from khash
+  * [Fix] Fix stuctured headers pushing
+  * [Fix] Further fix for i386 compilation
+  * [Fix] Improve duplicate settings error reporting
+  * [Fix] Lua: task:remove_result didn't work in some cases
+  * [Fix] Output service parts as well
+  * [Fix] Phishing: Deal with phishing + redirected URL
+  * [Fix] Phishing: Fix finding domains in the phishing map
+  * [Fix] Plug memory leak by using mempool for a copied address
+  * [Fix] Properly find the request and the number of requested entries
+  * [Fix] Rbl: Fix inversed logic of the url_full_hostname
+  * [Fix] Read file maps if they were not pre-read during preload
+  * [Fix] Restrict x86_64 assembly to x86_64
+  * [Fix] Return a real number of recipients when dealing with aliases
+  * [Fix] Rework unshedule DNS request function
+  * [Fix] Support definition of ungrouped symbol in conf file, use group info from lua or other conf file
+  * [Fix] Unschedule DNS request when clearing IO channel
+  * [Fix] When checking for phishing, we need to convert punicode -> UTF8, not vice versa
+  * [Fix] lua_cfg_transform - actions without score (discard)
+  * [Fix] lua_cfg_transform - silly break break actions
+  * [Fix] ratelimit - symbol per bucket
+  * [Project] BIMI: Fix helper integration issues
+  * [Project] Further DNS over TCP architecturing
+  * [Project] Rdns: Add more functions for TCP based requests
+  * [Project] Rdns: Add preliminary reading logic for TCP channels
+  * [Project] Rdns: Add reaper for inactive TCP connections
+  * [Project] Rdns: Add timeout logic for TCP requests
+  * [Project] Rdns: Do not treat TCP channels failure as fatal
+  * [Project] Rdns: Fix TCP connection mess
+  * [Project] Rdns: Fix TCP stuff cleanup
+  * [Project] Rdns: Fix various ownership issues
+  * [Project] Rdns: Implement TCP writing logic
+  * [Project] Rdns: Initial support of TCP IO channels
+  * [Project] Rdns: More fixes in TCP handling
+  * [Project] Rdns: Restore the previous EDNS0 size
+  * [Project] Rdns: Send truncated replies via TCP
+  * [Project] Rdns: Unregister TCP requests
+  * [Rework] Allow to restore SSL handlers after keepalive pooling
+  * [Rework] Allow to set a different behaviour for actions from settings
+  * [Rework] Include SSL flag into keepalive hash
+  * [Rework] Make `rspamadm dmarc_report` default behaviour more sane
+  * [Rework] Mempool: Use explicit alignment
+  * [Rework] Rdns: Use faster and more compact hash table for DNS requests
+  * [Rework] Rework SSL flag operations
+  * [Rework] Take disabled flag into account
+  * [Rework] Timeouts are now global per event and not reseted by IO activity
+  * [Rework] Use xxh3 as a default hash and fix memory/alignment issues
+  * [Rules] Fix old rules to stop global functions usage
+  * [Rules] Fix symbol for DKIM temporary failure
+  * [Rules] Remove ancient and inefficient rules
+  * [Rules] Slightly reduce MULTIPLE_FROM score
+
+-------------------------------------------------------------------
+Wed Nov  3 13:39:29 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.1
+  - [Feature] Add junk_threshold for autolearn
+  - [Feature] Add neural test command
+  - [Feature] Antivirus: Allow to set fake eicar patterns for
+    testing AV engines
+  - [Feature] Lua_cdb: Add cdb building interface
+  - [Feature] Ratelimit: Add per bucket configurations
+  - [Feature] S3: Allow to store structured data in messagepack
+  - [Fix] Add concept of uncancellable events to prevent
+    use-after-free
+  - [Fix] Add temporary guard to prevent linked list exploitation
+  - [Fix] Allow spaces in DKIM key records
+  - [Fix] Another rework of the ucl hashing
+  - [Fix] Another try to fix references safety
+  - [Fix] Another try to fix rspamd_text passing in the selectors
+  - [Fix] Avoid copy for received structure as it has raw C
+    pointers
+  - [Fix] Avoid dangling reference
+  - [Fix] Correctly check numeric URLs in URL DNS lists
+  - [Fix] Delete the correct pointer type
+  - [Fix] Dmarc: Always lowercase domain
+  - [Fix] Fix compilation of the hyperscan databases with errors
+  - [Fix] Fix hash table lookup
+  - [Fix] Fix http message flag shift
+  - [Fix] Fix parsing of the from_hostname when it is an IP address
+  - [Fix] Fix parsing of the unquoted attributes in HTML
+  - [Fix] Fix passing of rspamd_text in selectors pipelines
+  - [Fix] Fix rubbish QP sequences decoding
+  - [Fix] Fix some complicated case with the closing tags parsing
+  - [Fix] Fix the case when l tag is too small
+  - [Fix] Html: Fix the case where only bgcolor is explicitly set
+  - [Fix] Libucl: Fix deletion from ucl objects
+  - [Fix] Namespace and add metadata for OpenMetrics, fix
+    interleaving
+  - [Fix] Plug memory leak in http settings reload
+  - [Fix] Preserve SPF top record in the mempool variable
+  - [Fix] Remove aarch64 GC64 workaround
+  - [Fix] Remove bogus G_LIKELY
+  - [Fix] Spf: Do not parse non TXT DNS replies as TXT replies
+  - [Fix] Try to use on_connect/on_disconnect callbacks to handle
+    internal Redis failures
+  - [Fix] buffer overflow in rspamc counters
+  - [Fix] fix static building
+  - [Fix] lua_scanners - message_min_words logic
+  - [Fix] src/lua/lua_mimepart.c: fix null dereference
+  - [Project] Add constant iterators
+  - [Project] Add helper library to handle mime strings in a more
+    safe matter
+  - [Project] Add preliminary support of CDB bayes dump
+  - [Project] Add trim operations
+  - [Project] Allow mempool allocated mime strings
+  - [Project] Cdb: Finish backend implementation
+  - [Project] Cdb: Fix configuration load
+  - [Project] Cdb: Use shared data between cdb statfiles
+  - [Project] Cdb: continue statistics backend implementation
+  - [Project] Finish received headers rework part
+  - [Project] Move C++ specific declarations to C++ header
+  - [Project] Rework received headers parsing to C++
+  - [Project] Start using of the new received structure
+  - [Project] Start work on cdb backend
+  - [Rework] Further rework of the redis pool
+  - [Rework] Redis_pool: fix issues found
+  - [Rework] Rework learn and add classify condition
+  - [Rework] Save invisible content to a separate buffer
+  - [Rework] Start rewriting of the redis pool logic
+  - [Rules] Improve zero font rule
+  Full Changelog: https://github.com/rspamd/rspamd/compare/3.0...3.1
+- drop patches included in this update:
+  https://github.com/onqtam/doctest/commit/099d5414e97244ec44cf46b14cd176b3a3dc52e3.patch
+  https://github.com/rspamd/rspamd/commit/cdedeb9f4.patch
+  https://github.com/rspamd/rspamd/commit/309bb213cf.patch
+
+-------------------------------------------------------------------
+Thu Sep 30 17:58:39 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- backported https://github.com/onqtam/doctest/commit/099d5414e97244ec44cf46b14cd176b3a3dc52e3.patch 
+  slighty modified to match rspamd
+
+-------------------------------------------------------------------
+Fri Sep 17 22:31:22 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- backport https://github.com/rspamd/rspamd/commit/cdedeb9f4.patch 
+  improve lua 5.4 support
+
+-------------------------------------------------------------------
+Fri Sep 17 21:18:15 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to autosetup, all target distros are new enough
+
+-------------------------------------------------------------------
+Fri Sep 17 21:17:54 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- backport https://github.com/rspamd/rspamd/commit/309bb213cf.patch 
+  to actually make it use system fmt
+
+-------------------------------------------------------------------
+Fri Sep 17 20:42:24 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- force gcc 9 all distros before Tumbleweed:
+  leap default compiler is gcc7 which is not enough anymore
+
+-------------------------------------------------------------------
+Fri Sep 17 20:30:05 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- use system libfmt and libzstd instead of building the intree copy 
+
+-------------------------------------------------------------------
+Thu Aug 19 23:06:34 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- removed obsolete rspamd-add-lua-5.4.patch
+- update to 3.0
+  * [Conf] Align ARC scores with DKIM scores
+  * [CritFix] Neural: Fix sorting application
+  * [Feature] Add a simple dumper for bayes tokens
+  * [Feature] Add lua_maps.fill_config_maps function
+  * [Feature] Add preliminary exporter to AWS S3
+  * [Feature] Add preliminary restore bayes support
+  * [Feature] Add race condition protection against hs_helper restarts
+  * [Feature] Add rspamd_utf8_strcmp utility
+  * [Feature] Add zstd streaming API
+  * [Feature] Allow to log severity level explicitly
+  * [Feature] Allow to save and show attachment name when inserting AV scan results
+  * [Feature] Allow to sort urls for Lua
+  * [Feature] Allow to specify different timeouts/retransmits for fuzzy rules
+  * [Feature] Aws_s3: Allow to compress data stored
+  * [Feature] CMakeLists.txt: Change check and run-test to use rspamd-test-cxx * fixes #3807
+  * [Feature] Dmarc_report: allow sending reports in batches
+  * [Feature] Fuzzy_check: Allow to disable subject when making short text hash
+  * [Feature] Lua_cryptobox: Add keyed ssl hash functions via HMAC
+  * [Feature] Lua_task: Add get_urls_filtered method
+  * [Feature] Make monitored checks less frequent
+  * [Feature] Milter_headers: Add x-rspamd-pre-result header
+  * [Feature] Neural: Allow to balance FP/FN for the network
+  * [Feature] Ppopagate monitored errors from rbl module
+  * [Feature] Pyzor calculate score dynamically Count - WL-Count of default_score in percent
+  * [Feature] Rbl: Distinguish flattened and non-flattened selectors in RBL requests
+  * [Feature] Re-add pyzor support
+  * [Feature] Settings: add ip_map check and rework structure slightly
+  * [Feature] Spamassassin: Allow to set the default priority for SA scores
+  * [Feature] Strip smtp comments from message id
+  * [Feature] add SYSTEM_ZSTD cmake option To use the system zstd instead on the bundled version
+  * [Feature] external_relay plugin
+  * [Feature] rspamadm clickhouse neural_train subcommand
+  * [Fix] #3400 milter_headers: fix inverted logic for extended_headers_rcpt
+  * [Fix] ASN: fix _FAIL symbol for when main symbol is disabled
+  * [Fix] Add a special logic for text part with no text extraction
+  * [Fix] Add diacritics flag for several eu languages
+  * [Fix] Another FSM fix to accomodate possibility of multiple consequent ?
+  * [Fix] Avoid curse of dynamic array referencing
+  * [Fix] Avoid reinitialising neural settings
+  * [Fix] Check remain before processing TXT records
+  * [Fix] Enable error multiplier on http errors
+  * [Fix] Finally rework parsing entities logic
+  * [Fix] Fix '==' parsing in the content type attributes parser
+  * [Fix] Fix IPv6 expansion for SPF macros
+  * [Fix] Fix Mozilla Message-ID detection
+  * [Fix] Fix an edge case in BITCOIN_ADDR rule
+  * [Fix] Fix brain-damaged behaviour when http request has a custom Host header
+  * [Fix] Fix check of limits in email address parsing
+  * [Fix] Fix copy&paste error and rework
+  * [Fix] Fix expressions logic for and/or and float values
+  * [Fix] Fix fuzzy retransmits
+  * [Fix] Fix http maps with no or invalid expires data
+  * [Fix] Fix last quote character parsing in the content-type state machine
+  * [Fix] Fix normalisation flags propagation
+  * [Fix] Fix overflow when appending many broken tags
+  * [Fix] Fix parsing of rfc2047 tokens with '?' inside
+  * [Fix] Fix phishing flag set
+  * [Fix] Fix rfc2047 embedded into rfc2231 pieces in special headers
+  * [Fix] Fix round-robin rotation
+  * [Fix] Fix searching for symbols
+  * [Fix] Fix storing of the regexps inside variant
+  * [Fix] Fix tokenization near exceptions
+  * [Fix] Fix visibility calculations
+  * [Fix] Html: Attach inline tags to the structure
+  * [Fix] Html: Do not treat empty tags as block tags
+  * [Fix] Ical: Do not extract urls from all flags using merely specific ones
+  * [Fix] Initialise symcache even if it cannot be loaded properly
+  * [Fix] Lua_fuzzy: Remove text parts check when checking image dimensions
+  * [Fix] Lua_maps: Fix adjustments for the map type in the complex map definitions
+  * [Fix] Lua_task: Fix deleted symbols in has_symbol/get_symbol
+  * [Fix] Move metric and symcache link from validation to the init stage
+  * [Fix] Oletools: Another try to fix table sorting
+  * [Fix] One more default behaviour fix
+  * [Fix] Phishing: Rework urls processing
+  * [Fix] RBL: was missing some config schema
+  * [Fix] Replies: Fix 'Reply-To' handling in task:get_reply_sender
+  * [Fix] Rework metrics handling
+  * [Fix] Save symcache on exit
+  * [Fix] Selectors: Filter nil elements in lists
+  * [Fix] Selectors: Properly fix implicit tostring for nils
+  * [Fix] Try to fix some broken code in DMARC reporting plugin
+  * [Fix] Urls: Fix processing of html urls when it comes to the flags
+  * [Fix] Use proper buffer length
+  * [Fix] Various visibility fixes
+  * [Fix]: ASN: dns cb func should also return in case of an error
+  * [Project] Add a simple css rule definition
+  * [Project] Add css style skeleton
+  * [Project] Add css syntax (adopted from ebnf)
+  * [Project] Add css_selectors
+  * [Project] Add doctest unit testing library
+  * [Project] Add expected library
+  * [Project] Add fmt library for simple string ops
+  * [Project] Add fu2 library to better functions abstractions
+  * [Project] Add hashing method
+  * [Project] Add parsers skeleton
+  * [Project] Add preliminary support of vcard parser
+  * [Project] Add process exceptions for invisible text
+  * [Project] Add some methods for css parser
+  * [Project] Allow static libstdc++
+  * [Project] Another whitespace hack
+  * [Project] CSS: Various fixes in the declarations and values parsing
+  * [Project] Cpp: Add robin-hood hash map library
+  * [Project] Css: Add AST debug
+  * [Project] Css: Add colors conversion functions
+  * [Project] Css: Add dimensions handling
+  * [Project] Css: Add display value support
+  * [Project] Css: Add frozen library from https://github.com/serge-sans-paille/frozen/
+  * [Project] Css: Add opacity support
+  * [Project] Css: Add parser helpers to simplify debugging
+  * [Project] Css: Add preliminary stylesheet support
+  * [Project] Css: Add rules processing functions and tests
+  * [Project] Css: Add simple selectors unit tests
+  * [Project] Css: Add some c++ unit tests
+  * [Project] Css: Add some debug methods
+  * [Project] Css: Add some debug statements for the css parser
+  * [Project] Css: Add some logical skeleton for declarations parser
+  * [Project] Css: Add url/function tokens
+  * [Project] Css: Allow at rules parsing
+  * [Project] Css: Declarations parsing logic skeleton
+  * [Project] Css: Enable conditional css parsing support from the HTML parser
+  * [Project] Css: Finish generic lexer cases
+  * [Project] Css: Fix HSL conversion
+  * [Project] Css: Fix minus parsing
+  * [Project] Css: Fix parser consumers nesting
+  * [Project] Css: Fix parsing of the qualified rules
+  * [Project] Css: Fix rules merging
+  * [Project] Css: Further fixes to lexer
+  * [Project] Css: Further steps to parse css colors + rework
+  * [Project] Css: Further work on parser's methods
+  * [Project] Css: Implement backlog of css tokens
+  * [Project] Css: Implement numbers and ident parsers
+  * [Project] Css: Implement simple css selectors lookup
+  * [Project] Css: Implement styles merging
+  * [Project] Css: Make debug strings json like to simplify tests
+  * [Project] Css: Minor adjustments
+  * [Project] Css: More meat to the lexer
+  * [Project] Css: Move some of the tests to the doctest
+  * [Project] Css: Projected a parser
+  * [Project] Css: Properties attachment logic
+  * [Project] Css: Remove ragel from build targets (maybe keep for reference)
+  * [Project] Css: Rework css block structure
+  * [Project] Css: Rework flags of css properties
+  * [Project] Css: Rework tokens structure
+  * [Project] Css: Several fixes + tests
+  * [Project] Css: Simplify checks
+  * [Project] Css: Simplify debug code
+  * [Project] Css: Start css selectors parsing logic
+  * [Project] Css: Start semantic parsing for rules
+  * [Project] Css: Start stylesheet implementation
+  * [Project] Css: Tidy up lambdas
+  * [Project] Css: rework tokeniser
+  * [Project] Dmarc: Add dmarc report tool (WIP)
+  * [Project] Dmarc: Add munging configuration
+  * [Project] Dmarc: Add preliminary munging logic
+  * [Project] Dmarc: Fix header removal
+  * [Project] Dmarc: Fix munging logic
+  * [Project] Dmarc: Use full recipient address instead of a domain map
+  * [Project] Dmarc: Use zlists for dmarc reports
+  * [Project] Dmarc_report: Add message generation logic
+  * [Project] Dmarc_report: Add preliminary sending support
+  * [Project] Fix lua bindings
+  * [Project] Fix xml/sgml tags processing
+  * [Project] Handle new modification
+  * [Project] Html/CSS: Add transform from a CSS rule to html block
+  * [Project] Html/CSS: Link html and css styles
+  * [Project] Html/CSS: Switch styles parsing to css parser
+  * [Project] Html/Css: Fix some issues found
+  * [Project] Html/Css: Implement visibility rules for a block
+  * [Project] Html: Add more tests cases and fix some more corner issues
+  * [Project] Html: Add rows display type support
+  * [Project] Html: Allow decode entities function to normalise spaces + unit tests
+  * [Project] Html: Another rework of the tags structure
+  * [Project] Html: Another try to fix unbalanced cases
+  * [Project] Html: Fix crossing spans
+  * [Project] Html: Fix parent propagation
+  * [Project] Html: Further rework of the html parsing stuff
+  * [Project] Html: Implement logic for tags pairing
+  * [Project] Html: Implement rawtext state machine
+  * [Project] Html: Insert closing tags as well :(
+  * [Project] Html: More fixes
+  * [Project] Html: More fixes
+  * [Project] Html: More spaces logic fixes
+  * [Project] Html: One more attempt to write text content
+  * [Project] Html: Replace \0 in html content
+  * [Project] Html: Rework img/a tags handling
+  * [Project] Html: Rework propagation method
+  * [Project] Html: Rework tags placement
+  * [Project] Html: Rework transparency logic
+  * [Project] Html: Support 'hidden' attribute
+  * [Project] Html: Try another approach to append tags content
+  * [Project] Html: Try to deal with bad unknown tags properly
+  * [Project] Lua_aws: Add canonicalisation utility
+  * [Project] Lua_aws: Add function to produce AWS Authorisation header
+  * [Project] Lua_aws: Implement request signing
+  * [Project] Lua_mime: Add lua_mime.modify_headers routine
+  * [Project] Lua_task: Add modify_header method
+  * [Project] Lua_task: Allow to extract modified headers
+  * [Project] Make unescape code public for unit testing
+  * [Project] More fixes for closed tags
+  * [Project] More fixes to calculations
+  * [Project] Rework API for the modified headers
+  * [Project] Rework html visibility rule
+  * [Project] Skeleton of the css library
+  * [Project] Start headers modification API structure
+  * [Project] Start working on AWS Lua API
+  * [Project] Use lua_mime to modify headers
+  * [Project] Use modified headers on dkim signing
+  * [Project] Use string_view to constexpr variant unpacking
+  * [Rework] Add composites manager concept
+  * [Rework] Add tags definitions
+  * [Rework] Allow C code to be compiled with C++ compiler
+  * [Rework] Clickhouse: Store url flags
+  * [Rework] Composites: Rewrite the composites logic
+  * [Rework] Composites: Start rework of the composites framework
+  * [Rework] Dmarc: Move check policy function to the common utils
+  * [Rework] Dmarc: Rework reports keys structure
+  * [Rework] Further work to make html content private
+  * [Rework] Html/CSS: Remove css C bindings as they are useless now
+  * [Rework] Html/CSS: Rework Lua bindings
+  * [Rework] Html/Css: Start rework of the html blocks
+  * [Rework] Html: Add images processing logic
+  * [Rework] Html: Add traverse function
+  * [Rework] Html: Another steps to get rid of gnode
+  * [Rework] Html: Convert to variant
+  * [Rework] Html: Deal with the utf_content part
+  * [Rework] Html: Final rework part for the html processing code
+  * [Rework] Html: Fix Lua bindings
+  * [Rework] Html: Forgot to add the internal include
+  * [Rework] Html: Further html urls rework
+  * [Rework] Html: Further rework of the tags content extraction
+  * [Rework] Html: Make parameters as a vector again
+  * [Rework] Html: Move blocks part
+  * [Rework] Html: Move images processing stuff
+  * [Rework] Html: Rework lua bindings
+  * [Rework] Html: Start html text extraction rework
+  * [Rework] Html: Start refactoring of the html tags handling
+  * [Rework] Html: Start removing of GNode stuff
+  * [Rework] Html: Start rework of the html content structure
+  * [Rework] Lua_magic: Try to detect text parts with 8bit characters for non-utf8 encodings
+  * [Rework] Move HTML url functions and rework them
+  * [Rework] Move and adopt entities handling logic
+  * [Rework] Move common and rarely used dmarc code to the library
+  * [Rework] Move compression routines outside of rspamd_util library
+  * [Rework] Move entities/tags handling
+  * [Rework] Phishing: Split from redirectors usage
+  * [Rework] Redesign html blocks propagation logic
+  * [Rework] Remove tag name string
+  * [Rework] Rename phished url to a linked url
+  * [Rework] Reorganize dmarc plugin and remove unsupported reporting code
+  * [Rework] Reputation: Use more flexible types in get/set functions
+  * [Rework] Require proper C++ environment for Rspamd build
+  * [Rework] Rework extended urls output
+  * [Rework] Rework tags parsing machine
+  * [Rework] Slightly improve old regexp API
+  * [Rework] Start conversion of the redis pool code to c++
+  * [Rework] Try to resolve failed upstreams more agressively
+  * [Rework] Use C++ utf8 library with unit tests to trim whitespaces
+  * [Rework] Use C++ version for unicode normalisation
+  * [Rework] Use C++ version of the lua threads pool
+  * [Rules] Add raw addresses to MULTIPLE_FROM options
+  * [Rules] Another fix to HTTP_TO_HTTPS rule
+  * [Rules] Do not trigger HTML_SHORT_LINK_IMG on external images
+  * [Rules] Extend FORGED_X_MAILER
+  * [Rules] Extend OLD_X_MAILER
+  * [Rules] Fix CTYPE_MIXED_BOGUS for text attachments
+  * [Rules] Fix FPs for CTYPE_MIXED_BOGUS
+  * [Rules] Fix HTTP_TO_HTTPS rule
+  * [Rules] Fix HTTP_TO_HTTPS rule
+  * [Rules] Fix zerofont rule (partially)
+  * [Rules] Micro-optimize X_PHP_EVAL
+  * [Rules] Reduce default weight for R_MISSING_CHARSET
+
+-------------------------------------------------------------------
+Wed Jun  2 13:55:50 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- use systemd_ordering 
+
+-------------------------------------------------------------------
+Wed Jun  2 13:55:08 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- add Requires(pre) to shadow to fix %pre scriptlet
+
+-------------------------------------------------------------------
+Wed Jun  2 00:19:41 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable PCRE2 for now:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1182864#c10
+
+-------------------------------------------------------------------
+Tue Mar  2 11:04:58 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build with lua 5.4:
+  * rspamd-add-lua-5.4.patch
+
+-------------------------------------------------------------------
+Fri Feb 19 01:02:52 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix i586 build
+
+-------------------------------------------------------------------
+Fri Jan  8 20:22:15 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.7
+  * [Conf] Add R_DKIM_PERMFAIL to the metric
+  * [CritFix] Dkim: Fix simple canonicalisation if multiple signatures are presented
+  * [CritFix] Fix controller paths normalisation
+  * [Feature] Add INVALID_DATE rule
+  * [Feature] Add controller endpoint for training neural
+  * [Feature] Add sanity checks for actions thresholds
+  * [Feature] Add support of '==' and '!=' in Rspamd expressions
+  * [Feature] Composites: Improve composite atoms parser
+  * [Feature] Docker: use Debian slim variant
+  * [Feature] Elastic: Add some missing fields
+  * [Feature] Extract text from img alt attributes
+  * [Feature] Improve charset detection logic
+  * [Feature] Lua_clickhouse: Add optional row callback for large selections
+  * [Feature] Lua_dns_resolver: Add idna_convert_utf8 method
+  * [Feature] Lua_mime: Add ability to do multipattern replacement
+  * [Feature] Lua_trie: Allow to report start of the match
+  * [Feature] Multimap: support adding map values as extra options
+  * [Feature] Neural: Move PCA learning to a subprocess
+  * [Feature] RBL: support matching content/image URLs only
+  * [Feature] RBL: support use of multiple selectors
+  * [Feature] Reputation: Allow to specify ip masks
+  * [Feature] Support SMIME signed messages container
+  * [Feature] Support multiple conditions for symbols
+  * [Feature] Support ping in milter mode
+  * [Feature] Support rspamd_text in selector regexps
+  * [Feature] Use own daemonization routine
+  * [Feature] Vadesecure: Implement settings_outbound feature as recommended by Vade
+  * [Feature] `rspamadm clickhouse` command
+  * [Feature] allow hyperscan for aarch64
+  * [Fix] Allow to set priorities between post init scripts
+  * [Fix] Allow to use maps for strings that are not zero terminated
+  * [Fix] Apply max_lua_urls limit for emails as well
+  * [Fix] Arc: Fix CV check on signing
+  * [Fix] Arc: Fix signing of the broken ARC chains
+  * [Fix] Clickhouse: escape carriage return
+  * [Fix] Composites: Allow partial match
+  * [Fix] Deduct type of a table methods
+  * [Fix] Do not load errored hyperscan database
+  * [Fix] Do not process links in ignored html tags
+  * [Fix] Fix ClamAV result for cached encrypted file (#3395)
+  * [Fix] Fix canonicalisation when l= tag is presented
+  * [Fix] Fix flag shift
+  * [Fix] Fix handling of skip/skip_process http flags
+  * [Fix] Fix html attachments checks
+  * [Fix] Fix issue with pushing binary formats to Lua strings
+  * [Fix] Fix logging for rspamadm
+  * [Fix] Fix off-by-one with init check
+  * [Fix] Fix parsing of escape characters in quoted pairs
+  * [Fix] Fix pushing ucl strings with \0 inside
+  * [Fix] Fix quoted-printable soft newlines bugged case
+  * [Fix] Fix settings in case actions are set to null (#3415)
+  * [Fix] Fix several issues with auth results producing
+  * [Fix] Fix smtp comments exclusion
+  * [Fix] Fix smtp date syntax definition
+  * [Fix] Fix substring search in case if srchlen == inlen
+  * [Fix] Fix text selectors
+  * [Fix] Honour `systemd` setting when logging to console (#3514)
+  * [Fix] Html: Add entities collisions prevention logic (e.g. for mathml entities)
+  * [Fix] Lua_auth_results: Quote potentially bad values in AR header
+  * [Fix] Multimap: Fix flags usage
+  * [Fix] Multimap: Fix scoring for combined maps
+  * [Fix] Plug GList * leak in redis pool
+  * [Fix] RBL: allow for multiple matches of the same label if types are different
+  * [Fix] Rely on libev checks for file maps
+  * [Fix] Restore simple dkim canonicalisation mode
+  * [Fix] Return MimeCharset as we work with emails...
+  * [Fix] Spamassassin: Fix pcre_only flags
+  * [Fix] Spamassassin: Preserve 'pcre_only' flag when dealing with regexp replacements
+  * [Fix] Try to fix GError leak
+  * [Fix] Try to fix a mess with settings loading by adding priorities
+  * [Fix] Try to move setings initialisation to a later stage
+  * [Fix] Use dup fd in milter handler to avoid races with the proxy
+  * [Fix] Use message pointer to avoid obsolete data to be cached
+  * [Project] Rbl: Migrate to `checks`
+  * [Project] Rbl: Move config code outside of the plugin
+  * [Project] Ressurect empty prefilters as connection filters
+  * [Project] Support connection filters registration from Lua
+  * [Rework] Add final cleanup logic
+  * [Rework] Add preliminary support of hyperscan caching for re maps
+  * [Rework] Add stale cache removal
+  * [Rework] Clickhouse: Improve performance
+  * [Rework] Distinguish between strict config test mode
+  * [Rework] Furhter logging improvements
+  * [Rework] Milter_headers: improve extended_headers_rcpt support
+  * [Rework] Move parsers to a separate lua library
+  * [Rework] Neural: Skip composite symbols
+  * [Rework] Rbl: Rework defaults logic
+  * [Rework] Some tunes to cache saving
+  * [Rework] Track maps origins
+  * [Rework] Use full crypto hash for regexp maps
+  * [Rules] Remove broken rule
+
+-------------------------------------------------------------------
+Thu Nov 26 12:05:28 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Wait for network to be up before starting
+
+-------------------------------------------------------------------
+Fri Oct  9 17:51:10 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix apparmor profile
+  - allow reading the webapp dir to make the builtin webserver work
+  - modernize the profile to use a short profile name
+  - remove php abstraction, replaced with rule to read the icu data
+    files
+  - remove all file rules that are covered by the base and
+    nameservice abstraction
+  - allow include (with "if exists) for local/rspamd and
+    local/usr.bin.rspamd (for backrwards compat)
+
+-------------------------------------------------------------------
+Mon Oct  5 10:42:14 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add usr.bin.rspamd apparmor profile
+
+-------------------------------------------------------------------
+Thu Oct  1 09:39:29 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 2.6
+  * https://rspamd.com/announce/2020/09/30/rspamd-2.6.html
+  * Rework neural network plugin
+  * Rework bitcoin detection library
+  * Fix IDNA bugs
+  * Send more fuzzy module telemetry data to rspamd servers
+  * Drop upstream rspamd-gcc10-buildfix.patch
+  * Drop rspamd-moonjit.patch
+
+-------------------------------------------------------------------
+Wed Aug 12 03:34:28 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add rspamd-gcc10-buildfix.patch for Factory
+- Skip rspamd-moonjit.patch on SLE to fix build
+
+-------------------------------------------------------------------
+Thu Apr 16 20:49:12 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- apply rspamd-moonjit.patch in order to allow using moonjit
+
+-------------------------------------------------------------------
+Wed Apr  1 21:48:03 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 2.5
+  https://rspamd.com/announce/2020/04/01/rspamd-2.5.html
+
+-------------------------------------------------------------------
+Fri Feb 28 06:41:59 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 2.4
+  https://rspamd.com/announce/2020/02/26/rspamd-2.4.html
+
+-------------------------------------------------------------------
+Sun Feb  9 17:09:51 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 2.3
+  https://rspamd.com/announce/2020/02/04/rspamd-2.3.html
+
+-------------------------------------------------------------------
+Thu Nov 28 16:22:35 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- only use hyperscan on x86_64
+
+-------------------------------------------------------------------
+Thu Nov 28 15:11:52 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.2
+  https://rspamd.com/announce/2019/11/19/rspamd-2.2.html
+
+-------------------------------------------------------------------
+Mon Oct 28 16:52:41 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.1
+  https://rspamd.com/announce/2019/10/28/rspamd-2.1.html
+- dropped rspamd-fix-crash-on-startup.patch
+
+-------------------------------------------------------------------
+Sun Oct 13 20:30:34 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 2.0
+  https://rspamd.com/announce/2019/10/11/rspamd-2.0.html
+  Please verify the upgrade notes for incompatible changes:
+  https://rspamd.com/doc/migration.html#migration-to-rspamd-20
+- changed build requires
+- added rspamd-fix-crash-on-startup.patch to fix startup crash
+  (https://github.com/rspamd/rspamd/issues/3079)
+
+-------------------------------------------------------------------
+Thu Jun  6 12:50:16 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 1.9.4
+  https://rspamd.com/changes.html#release-194-23-may-2019
+  https://rspamd.com/announce/2019/05/13/rspamd-1.9.3.html
+
+-------------------------------------------------------------------
+Fri Apr 19 15:42:58 UTC 2019 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.9.2
+  https://rspamd.com/announce/2019/04/16/rspamd-1.9.2.html
+  https://rspamd.com/announce/2019/04/05/rspamd-1.9.1.html
+
+-------------------------------------------------------------------
+Wed Mar 13 17:03:30 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.9.0
+  https://rspamd.com/announce/2019/03/12/rspamd-1.9.0.html
+
+-------------------------------------------------------------------
+Wed Jan 23 16:14:21 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- overrides.d should be override.d, this might require changes to
+  your configuration, please verify.
+
+-------------------------------------------------------------------
+Wed Jan 23 16:10:28 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+-  update to 1.8.3
+   - [CritFix] Make flags mutually exclusive for mime parts
+   - [CritFix] Strictly deny unencoded bad utf8 sequences in
+     headers
+   - [Feature] Add Kaspersky antivirus support
+   - [Feature] Add method to get dkim results
+   - [Feature] Add more words regexp classes
+   - [Feature] Allow to choose words format in `rspamadm mime`
+   - [Feature] Allow to get all types of words from Lua
+   - [Feature] Allow to get task flags in C expressions
+   - [Feature] Allow to require encryption when accepting
+     connections
+   - [Feature] Ignore bogus whitespaces in the words
+   - [Feature] Implement more strict configuration tests
+   - [Feature] Improve SPF results in Authentication-Results
+   - [Feature] Support ClickHouse database
+   - [Fix] Add failsafety for utf8 regexps
+   - [Fix] Do not trigger BROKEN_CONTENT_TYPE on innocent text
+     parts
+   - [Fix] Emit error if connection has been terminated with no
+     stop pattern
+   - [Fix] Fix boundaries checks in embedded messages
+   - [Fix] Fix double free
+   - [Fix] Perform policy downgrade on sample out, add tests
+   - [Fix] Properly escape utf8 regexps in hyperscan mode
+   - [Fix] Selectors - attachments args condition
+   - [Fix] Some fixes for raw parts
+   - [Fix] Treat learning errors as non-fatal
+   - [Fix] Use tld when looking for DKIM domains
+   - [Project] Words unicode structure rework
+   - [Project] Add preliminary Redis Sentinel support
+   - [Project] Improve Authentication-Results header
+   - [Project] Rework DKIM checks results
+   - [Project] Use more generalised API to produce meta words
+
+-------------------------------------------------------------------
+Mon Nov 19 13:17:01 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.8.2
+  - [Conf] Add DWL support in the default configuration
+  - [Conf] Disable rspamd_update by default (again)
+  - [Conf] Fix configuration sample for ratelimit
+  - [CritFix] Disable broken url tags by default
+  - [CritFix] Fix \0 processing when doing RSA sign
+  - [CritFix] Fix adding symbols to their primary groups
+  - [Feature] Add `rspamadm cookie` utility
+  - [Feature] Add specialised functions for generating encrypted cookies
+  - [Feature] Add support of cookies in replies module
+  - [Feature] Add support of words regexps
+  - [Feature] Allow to add 3rd party clang plugins
+  - [Feature] Allow to create lua regexps from glob or plain patterns
+  - [Feature] Allow to set custom limits for upstream lists
+  - [Feature] Detect orphaned parts and attach them to message
+  - [Feature] Filter tokens in bayes
+  - [Feature] Fold b= value when doing arc sealing
+  - [Feature] Ignore cookies in the future and too old in the past
+  - [Feature] Skip stop words in statistics
+  - [Feature] Store stop words and allow to query them
+  - [Feature] Support query arguments in controller's custom commands
+  - [Feature] Tune upstream limits in Rspamd proxy
+  - [Feature] Use different callback symbols for different uribls
+  - [Feature] Write DKIM selector in dkim allow/reject symbols
+  - [Fix] Add obs_fws state support to eoh state machine
+  - [Fix] Add sanity check when applying mime boundaries heuristic
+  - [Fix] Antivirus - virus names with 0 were recognized as tables
+  - [Fix] Disable headernames in bayes temporarily
+  - [Fix] Do not allow syntax errors in include files...
+  - [Fix] Do not allow to merge an object with an array (or vice versa)
+  - [Fix] Don't perform forged recipients check for missing recipients
+  - [Fix] Fix DKIM based RBLs
+  - [Fix] Fix actrie implementation (sync from upstream), fixed OOB read
+  - [Fix] Fix explicit methods call in selectors
+  - [Fix] Fix extraction of additional parts
+  - [Fix] Fix finalization for internal plugins
+  - [Fix] Fix override_defaults function
+  - [Fix] Fix squeezed symbols when using settings
+  - [Fix] Fix urls insertion in Clickhouse module
+  - [Fix] Furhter fixes to ratelimits logic
+  - [Fix] Ignore signatures when looking for boundaries
+  - [Fix] Properly set learned count
+  - [Fix] Really fix ratelimits configuration and work
+  - [Fix] Remove ambigious format flag from printf
+  - [Fix] Restore URLs exporting in ClickHouse plugin
+  - [Fix] Rework bayes calculations...
+  - [Fix] Switch from chi-square to naive for large Fisher value
+  - [Fix] Treat normal password as enable password if there is no enable password
+  - [Fix] Use proper syntax for making DNS requests
+  - [Fix] Various fixes in embedded plugins
+  - [Project] Change fuzzy check selection logic to lua_fuzzy library
+  - [Project] Rework async events and symbols
+  - [Project] Move all metatokens in Bayes to lua_stat from C
+  - [WebUI] Add history rows per page control
+- somehow the Patch/%patch lines for
+  rspamd-after-redis-target.patch were missing, adding them back.
+
+-------------------------------------------------------------------
+Sat Oct 27 01:54:35 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- simplify the feature conditionals:
+  mostly to enable luajit and torch on more platforms
+- add -fopenmp to the CFLAGS to fix a warning in torch
+
+-------------------------------------------------------------------
+Fri Oct 19 18:20:09 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.8.1
+  - [CritFix] Fix options insertion
+  - [CritFix] Fix words decay one more time (affects long messages)
+  - [CritFix] Increase default words_decay
+  - [CritFix] Plug memory leak in redis pool
+  - [Feature] Add `check_violation` feature to DKIM/ARC signing
+  - [Feature] Add only unique elements to Clickhouse url arrays
+  - [Feature] Allow `g+:` and `g-:` composite atoms
+  - [Feature] Allow dkim domains check in surbl
+  - [Feature] Allow maps with HTTP auth
+  - [Feature] Allow to disable actions by users settings
+  - [Feature] Extend whitelisting options
+  - [Feature] Store url object in images
+  - [Feature] Use verdict instead of the plain action in plugins
+  - [Fix] Allow to call fstring append with NULL string
+  - [Fix] DCC - luacheck
+  - [Fix] Do not load torch on each rspamadm invocation
+  - [Fix] Fix boundaries detection and rework stop words algorithm
+  - [Fix] Fix dependencies for DNS_SIGNED symbol
+  - [Fix] Fix errors when dealing with dynamic rates/bursts in
+    Ratelimit
+  - [Fix] Fix groups mess
+  - [Fix] Fix groups mess
+  - [Fix] Fix parsing address with comments
+  - [Fix] Fix resolving in DMARC reports
+  - [Fix] Fix various issues with parsing of the received headers
+  - [Fix] Fix watchers issue in lua_tcp when doing no resolving
+  - [Fix] Plug memory leak in language detector (affects reloads)
+  - [Fix] Remove one letter stop words
+  - [Fix] Slashing: backport chunk logic from libucl
+  - [Fix] Stop libevent from using cached time in rspamadm
+  - [Fix] Try to fix watchers chaining
+  - [Fix] Various fixes in redis sync interface
+  - [Fix] ip_score - respect check_authed and check_local settings
+    from config
+  - [Project] Rework passthrough actions
+  - [Project] Clustering module
+  - [Rework] Always create result for a task
+  - [Rework] Completely rewrite DMARC checks logic
+  - [Rework] Rework and fix whitelist plugin
+  - [WebUI] Add symbols sorting buttons
+  - [WebUI] Change symbols order without updating history
+  - [WebUI] Colorize symbols
+  - [WebUI] Do not display password form when secure_ip is set
+  - [WebUI] Fix symbol description tooltips display
+  - [WebUI] History: add sorting by symbol score value
+- drop 5093631ddd4d3389cddaaa95865dc4a23143a10f.patch
+
+-------------------------------------------------------------------
+Mon Oct  1 14:48:13 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- backport 5093631ddd4d3389cddaaa95865dc4a23143a10f.patch:
+  can be removed in 1.8.1
+
+-------------------------------------------------------------------
+Mon Sep 24 22:39:44 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.8.0
+  The most important features and fixes
+  - New selectors framework
+    This framework allows to combine and process different data
+    extracted from messages and use that in different plugins, such
+    as multimap, reputation or ratelimits. It is also possible to
+    use data extracted in Rspamd regular expressions.
+  - Coroutines API support in Lua
+    Now you can write code in a usual imperative manner but you
+    still will not block any other tasks. Each potentially blocking
+    operation creates a yielding-point. In turn, this means the
+    code is suspended until the operation is done (just like
+    blocking) and resumes only when there is some result.
+    Meanwhile, other tasks are processed as usual.
+  - Clickhouse optimization
+    Rspamd now uses a flat table to optimize ClickHouse SQL
+    requests. In fact, joins are not recommended by the ClickHouse
+    developers as multiple joins have proven to be slow. Hence,
+    Rspamd has moved all data to a single table. Schema migration
+    is done automatically, however, please read the migration notes
+    in case of any doubts. Old data is not migrated nor deleted
+    automatically.
+    There is now optional data retention support in the ClickHouse
+    module. You can set retention policies for the data stored in
+    Clickhouse to conform different regulations (e.g. GDPR).
+  - Unicode processing improvements
+    Rspamd now normalizes all unicode data using NFKC schema prior
+    to processing. This helps to prevent “glyph” attacks used by
+    some spammers nowadays. Unicode conversion has also been
+    improved to continue on bad symbols instead of giving up and
+    working with raw data.
+  - Language detection improvements
+    We have reworked the language detector to use stop-words and
+    rely on unicode glyphs more extensively. As the result of this
+    work, the speed of language detection has been increased
+    significantly (by 10 times in some cases). The preciseness of
+    the detection has also been improved.
+  - Fixed various bugs in sesssions handling
+    We have located and fixed various hidden issues caused by async
+    rules chaining. It might cause inconsistencies in the
+    dependencies processing, crashes in rare cases and other “bad
+    things”.
+  - Various Web Interface improvements and fixes
+    There are multiple improvements and fixes in the Web Interface.
+    In particular, the issues with cluster support and aggregation
+    have been addressed.
+
+  For all the fixes see
+  https://rspamd.com/announce/2018/09/24/rspamd-1.8.0.html
+- drop patch 66ffcdfa880daeb3b50c7ef3bcb5511abb6d92f6.patch
+  included in update
+
+-------------------------------------------------------------------
+Thu Aug 30 14:06:44 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- add conflicts on rspamd-client to ease switching between the 2
+  modes
+
+-------------------------------------------------------------------
+Thu Aug 30 13:48:21 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- undo the split by guarding it with split_out_client:
+  osc build --with=split_out_client if you want to build with it
+
+-------------------------------------------------------------------
+Thu Aug 30 13:39:03 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace our copy of rspamd.conf with a patch rspamd-conf.patch:
+  currently we only replace the logging to rspamd.conf with console
+  and set systemd mode
+
+-------------------------------------------------------------------
+Wed Aug 29 15:53:10 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- split out rspamc and rspamadm into a rspamd-client package.
+  the main package will still require it so nothing would change
+  from this perspective.
+
+  This allows administration and training from other machines
+  without installing the whole stack.
+
+-------------------------------------------------------------------
+Wed Aug 29 15:52:31 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- added rspamd-after-redis-target.patch:
+  make sure we start rspamd after redis.target
+
+-------------------------------------------------------------------
+Wed Aug  8 08:09:26 UTC 2018 - iippolitov@gmail.com
+
+- updated version to 1.7.8
+  https://github.com/vstakhov/rspamd/releases/tag/1.7.9
+- patch included to fix lua builds on i586
+  https://github.com/vstakhov/rspamd/commit/66ffcdfa880daeb3b50c7ef3bcb5511abb6d92f6.patch
+- 2338.patch is removed: included in the upstream tarball
+
+-------------------------------------------------------------------
+Fri Jul 13 16:42:32 UTC 2018 - mrueckert@suse.de
+
+- updated version to 1.7.8
+  https://github.com/vstakhov/rspamd/releases/tag/1.7.7
+  https://github.com/vstakhov/rspamd/releases/tag/1.7.8
+- added https://github.com/vstakhov/rspamd/pull/2338.patch
+
+-------------------------------------------------------------------
+Fri Jul 13 16:37:41 UTC 2018 - mrueckert@suse.de
+
+- limit pcre2 to 15.0 and newer
+
+-------------------------------------------------------------------
+Fri Jul 13 16:09:32 UTC 2018 - mrueckert@suse.de
+
+- we had a buildrequires for libfann but the cmake flag was in a
+  conditional. removed the conditional.
+- enable pcre2 support
+- prepare building utils but they are broken atm
+- enable hyperscan for TW and newer
+- enable openblas for 15.0 and newer
+- gd library had a BR but was not enabled
+
+-------------------------------------------------------------------
+Wed Jun 20 12:00:00 UTC 2018 - iippolitov@gmail.com
+
+- changed default configuration to match current rules
+  https://rspamd.com/doc/workers/
+
+-------------------------------------------------------------------
+Tue Jun 19 12:00:00 UTC 2018 - iippolitov@gmail.com
+
+- updated version to 1.7.6
+  https://github.com/vstakhov/rspamd/releases/tag/1.7.6
+
+-------------------------------------------------------------------
+Mon Apr 30 16:52:25 UTC 2018 - pieter@hollants.com
+
+- updated version to 1.7.3
+  https://github.com/vstakhov/rspamd/releases/tag/1.7.3
+- removed obsolete protocol.c.patch (incorporated into 1.7.3)
+
+-------------------------------------------------------------------
+Tue Mar 27 17:20:28 UTC 2018 - iippolitov@gmail.com
+
+- updated version to 1.7.2
+  https://github.com/vstakhov/rspamd/releases/tag/1.7.2
+- fix for https://github.com/vstakhov/rspamd/issues/2120 included
+
+-------------------------------------------------------------------
+Thu Mar 22 07:07:35 UTC 2018 - iippolitov@gmail.com
+
+- updated version to 1.7.1
+  https://github.com/vstakhov/rspamd/releases/tag/1.7.1 
+- fixed ix86 build
+  conditional jemalloc, luajit, external hiredis and torch build
+- fixed build without LUA JIT 
+  https://github.com/vstakhov/rspamd/pull/2100
+- fixed Leap 42.1 build (cmake used wrong ASM compiler)
+
+-------------------------------------------------------------------
+Mon Mar 19 18:33:42 UTC 2018 - iippolitov@gmail.com
+
+- updated version to 1.7.0
+  https://github.com/vstakhov/rspamd/releases/tag/1.7.0
+- disabled ENABLE_OPTIMIZE for Leap due to old GCC
+  https://github.com/vstakhov/rspamd/issues/2091
+- luajit enabled by default (required by torch)
+
+-------------------------------------------------------------------
+Mon Mar 12 11:57:47 UTC 2018 - asn@cryptomilk.org
+
+- Add missing runtime requirement for lua-lpeg
+
+-------------------------------------------------------------------
+Thu Mar  8 23:03:46 UTC 2018 - mrueckert@suse.de
+
+- BR libnsl to fix build on suse_version >= 1500
+
+-------------------------------------------------------------------
+Sat Feb 17 09:10:30 UTC 2018 - thomas@cupracer.de
+
+- updated version to 1.6.6
+  https://github.com/vstakhov/rspamd/releases/tag/1.6.6
+
+-------------------------------------------------------------------
+Thu Jul 27 12:15:45 UTC 2017 - iippolitov@gmail.com
+
+- updated version to 1.6.3
+  https://github.com/vstakhov/rspamd/releases/tag/1.6.3
+
+-------------------------------------------------------------------
+Tue Jul 11 08:36:19 UTC 2017 - iippolitov@gmail.com
+
+- updated version to 1.6.2 
+  https://github.com/vstakhov/rspamd/releases/tag/1.6.2
+
+-------------------------------------------------------------------
+Wed Jun 14 18:34:59 UTC 2017 - iippolitov@gmail.com
+
+- updated version to 1.6.1
+
+-------------------------------------------------------------------
+Tue Jun 13 10:10:53 UTC 2017 - iippolitov@gmail.com
+
+- updated version to 1.6.0
+- rspamd.conf with logging to console added to sources
+
+-------------------------------------------------------------------
+Tue Jun  6 17:30:00 UTC 2017 - iippolitov@gmail.com
+
+- updated version to 1.5.9
+
+-------------------------------------------------------------------
+Mon Apr  3 18:48:46 UTC 2017 - jengelh@inai.de
+
+- Ensure description is neutral. Replace unnecessary
+  %__-type macro indirections.
+
+-------------------------------------------------------------------
+Fri Mar 17 16:08:17 UTC 2017 - asn@cryptomilk.org
+
+- Update to version 1.5.3
+  https://rspamd.com/announce/2017/03/17/rspamd-1.5.3.html
+
+-------------------------------------------------------------------
+Wed Mar 15 08:22:49 UTC 2017 - asn@cryptomilk.org
+
+- Update to version 1.5.2
+  https://rspamd.com/announce/2017/03/01/rspamd-1.5.0.html
+
+-------------------------------------------------------------------
+Thu Dec  1 08:35:40 UTC 2016 - asn@cryptomilk.org
+
+- Update to version 1.4.1
+
+-------------------------------------------------------------------
+Tue Nov 29 13:02:36 UTC 2016 - asn@cryptomilk.org
+
+- Update to version 1.4.0
+
+-------------------------------------------------------------------
+Wed Jul 27 22:04:41 UTC 2016 - mrueckert@suse.de
+
+- initial package
+

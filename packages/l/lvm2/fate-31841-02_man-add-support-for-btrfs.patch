@@ -1,0 +1,38 @@
+From 34c04711e6c2a926b335c746643da7d4b5bba33e Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Wed, 30 Jun 2021 18:39:10 +0800
+Subject: [PATCH 2/3] man: add support for btrfs
+To: lvm-devel@redhat.com,
+    zkabelac@redhat.com,
+    teigland@redhat.com
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ man/fsadm.8_main | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/man/fsadm.8_main b/man/fsadm.8_main
+index dfff5bb97021..ad924ac3a304 100644
+--- a/man/fsadm.8_main
++++ b/man/fsadm.8_main
+@@ -31,6 +31,7 @@ It tries to use the same API for
+ .BR ext2 ,
+ .BR ext3 ,
+ .BR ext4 ,
++.BR btrfs ,
+ .BR ReiserFS
+ and
+ .BR XFS
+@@ -119,6 +120,9 @@ Defaults to "\fI/dev\fP" and must be an absolute path.
+ .BR tune2fs (8),
+ .BR resize2fs (8),
+ .P
++.BR btrfs (8),
++.BR btrfs-scrub (8),
++.P
+ .BR reiserfstune (8),
+ .BR resize_reiserfs (8),
+ .P
+-- 
+1.8.3.1
+

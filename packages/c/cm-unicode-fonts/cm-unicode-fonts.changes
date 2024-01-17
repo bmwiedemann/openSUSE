@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:53 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu May 10 06:55:33 UTC 2012 - pgajdos@suse.com
+
+- updated to 0.7.0 -> OFL-1.1 license
+
+-------------------------------------------------------------------
+Wed May  9 11:55:44 UTC 2012 - cfarrell@suse.com
+
+- license update: SUSE-XFree86-with-font-exception
+  This license was added to the spreadsheet linked at license.opensuse.org
+  today (SUSE-prefix until spdx.org accepts the license)
+
+-------------------------------------------------------------------
+Sat Sep 17 23:11:03 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Mon Nov  8 12:45:38 UTC 2010 - coolo@novell.com
+
+- remove support for pre-9.1
+
+-------------------------------------------------------------------
+Tue Aug 08 15:45:06 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts because of the move to Xorg X11R7.
+
+-------------------------------------------------------------------
+Wed Mar 01 13:09:37 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(ru;bg;el)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:00 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 30 16:31:27 CEST 2005 - mfabian@suse.de
+
+- update to 0.4.2.
+
+-------------------------------------------------------------------
+Fri Dec 03 17:22:13 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts".
+
+-------------------------------------------------------------------
+Thu Mar 18 18:25:21 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+
+-------------------------------------------------------------------
+Sat Feb 14 03:44:09 CET 2004 - mfabian@suse.de
+
+- update to 0.1.2.
+- don't build as root
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Wed Aug 27 23:18:43 CEST 2003 - mfabian@suse.de
+
+- new package: cm-unicode 0.1.

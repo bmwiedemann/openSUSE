@@ -1,0 +1,29 @@
+From 454539fba3c81fec4c1321cc52f6344c5a1c0e39 Mon Sep 17 00:00:00 2001
+From: Martin Hauke <mardnh@gmx.de>
+Date: Thu, 5 Nov 2020 11:15:59 +0100
+Subject: [PATCH] [FIX] adapted for gpsd >= 3.21
+
+With gpsd v3.21 gps_data_t->status was moved to gps_fix_t.status
+---
+ owntracks-cli-publisher.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/owntracks-cli-publisher.c b/owntracks-cli-publisher.c
+index f7c2be6..14c51e3 100644
+--- a/owntracks-cli-publisher.c
++++ b/owntracks-cli-publisher.c
+@@ -394,7 +394,11 @@ static void conditionally_log_fix(struct udata *ud, struct gps_data_t *gpsdata)
+ 	}
+ 
+ 	if (gpsdata->set & STATUS_SET) {
++#if GPSD_API_MAJOR_VERSION >= 10
++		switch (gpsdata->fix.status) {
++#else
+ 		switch (gpsdata->status) {
++#endif
+ 			case STATUS_FIX:
+ #ifdef STATUS_DGPS_FIX
+ 			case STATUS_DGPS_FIX:
+-- 
+2.29.1
+

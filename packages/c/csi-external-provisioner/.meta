@@ -1,0 +1,5 @@
+<package name="csi-external-provisioner" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems:ceph" package="csi-external-provisioner"/>
+</package>

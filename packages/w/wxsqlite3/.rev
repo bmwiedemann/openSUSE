@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eed73441a5a48aa8aa9079621302dc79</srcmd5>
+    <version>3.5.3.20170331.3494a8b</version>
+    <time>1491896303</time>
+    <user>maxlin_factory</user>
+    <comment>for multimedia:apps/guayadeque</comment>
+    <requestid>484091</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3505309b0683ea7d04a5e24cbd825733</srcmd5>
+    <version>3.5.8.20171102.1b93c9c</version>
+    <time>1510406476</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>540418</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>712383aec8562dbdca3992d38a088ce1</srcmd5>
+    <version>4.5.1</version>
+    <time>1581456316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773418</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>457eab9ef5060bcbf1bb0eb9af3bd47d</srcmd5>
+    <version>4.6.1</version>
+    <time>1603203160</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842696</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f14640ff1cc075004c1a89475121e740</srcmd5>
+    <version>4.7.2</version>
+    <time>1622536772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896363</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>048d5f266c78d58c98acc04bb27676a3</srcmd5>
+    <version>4.8.1</version>
+    <time>1652188314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975899</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4947292af143c0831df7b97295857dca</srcmd5>
+    <version>4.9.1</version>
+    <time>1676036056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064048</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b723ad5486af26a70a97da455854403</srcmd5>
+    <version>4.9.6</version>
+    <time>1696760305</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116140</requestid>
+  </revision>
+</revisionlist>

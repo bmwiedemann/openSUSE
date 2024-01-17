@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11c77f19d77a77da00c17b9430f9226f</srcmd5>
+    <version>45.0</version>
+    <time>1695327579</time>
+    <user>anag+factory</user>
+    <comment>New package</comment>
+    <requestid>1112579</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be43996204a8b1cd3dd7fbb38913eeba</srcmd5>
+    <version>45.0</version>
+    <time>1696451465</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114861</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>742008911c4b93a0abf77a2634c2fb3b</srcmd5>
+    <version>45.0</version>
+    <time>1699388807</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123785</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>41f1b81a40d642b0ba72b41bbf3ead89</srcmd5>
+    <version>45.1</version>
+    <time>1700421323</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.1:
+  + Fix sandbox for image decoding not enabled by default
+  + Fix printing on different printer than selected
+  + Fix print dialog crashes on confirmation
+  + Fix print dialog needs second confirmation inside Flatpaks
+  + Fix SVGs sometimes not re-rendering for zoom level
+  + Fix animated image formats with variable frame length using
+    only one length
+  + Fix rotation getting applied twice to HEIF images
+- Drop patches fixed upstream:
+  + loupe_glycin-loaders_sandbox.patch
+  + loupe_print_fix.patch (forwarded request 1126467 from iznogood)</comment>
+    <requestid>1127338</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af0a1c2a8576d5c0bc5f222156ed27f6</srcmd5>
+    <version>45.2</version>
+    <time>1701378239</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129989</requestid>
+  </revision>
+</revisionlist>

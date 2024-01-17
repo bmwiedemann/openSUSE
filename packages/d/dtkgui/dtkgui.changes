@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Fri Aug 26 12:36:47 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.25
+  * Fix dock radius changed when set global windowradius  
+
+-------------------------------------------------------------------
+Sat Jun 25 09:06:57 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.24
+  * Fix bugs
+
+-------------------------------------------------------------------
+Mon Apr  4 13:36:46 UTC 2022 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 5.5.22
+  * Optimize dnd-example
+  * Support non-title, window rounded corners, system menu
+
+-------------------------------------------------------------------
+Mon Feb 14 14:59:52 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.21
+  * Add dde-kwin-debug
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Sun Aug  1 08:17:35 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update pkgconfig profile version to 5.5 
+
+-------------------------------------------------------------------
+Sun Jul 25 07:53:38 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.17.1
+  * Update abi json file
+  * Add memory leak detection parameters
+  * fix: DGuiApplicationHelper::setSingleInstance start multiple instances
+  * fix: eliminate warning
+
+-------------------------------------------------------------------
+Wed May  5 10:57:57 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+ 
+- Update version ro 5.4.13
+  * Update apiversion to 5.5.0
+  * Use dtkcommonn
+  * Support the use of setAttribute function for some settings
+  * Fix color for TextTips
+  * Recode DFontManager
+  * Add Q_GADGET for DPalette
+  * Optimize pad support
+  * Support set wm class name
+  * Add interface for set wallpaper effect parameters 
+  * Fix bugs
+- Add fix-library-link.patch
+
+-------------------------------------------------------------------
+Tue Feb  9 11:25:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim obsolete specfile constructs.
+
+-------------------------------------------------------------------
+Fri Jan 29 12:36:08 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.0
+  * Fix default display right angle
+  * Fix DToolTip control, also modified to rounded corner values
+  * fix: fallback to parent theme for the windowRadius property
+  * add github action 
+
+-------------------------------------------------------------------
+Tue Sep 15 06:14:12 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.2.4
+  * Fix function name typo and default waitTime
+  * Add windowFromPoint Api
+  * remove link the librsvg-2.0
+  * remove libqt5x11extras5-dev depend
+
+-------------------------------------------------------------------
+Mon Apr 27 12:29:35 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.0
+  * Add many apis
+  * Switch to LGPLv3 license
+
+-------------------------------------------------------------------
+Fri Mar 20 14:14:50 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 2.1.1 

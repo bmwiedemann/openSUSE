@@ -1,0 +1,21 @@
+Index: scripts/find-debuginfo.in
+===================================================================
+--- scripts/find-debuginfo.in.orig
++++ scripts/find-debuginfo.in
+@@ -434,6 +434,16 @@ while read nlinks inum f; do
+       ;;
+     *) continue ;;
+   esac
++  # double check that we really have an ELF file,
++  # to handle monodevelop-debugger-gdb and monodevelop-debugger-mdb
++  ftype=`/usr/bin/file $f | cut -d: -f2-`
++  case $ftype in
++    *ELF*) ;;
++    *)
++       echo "$f is not an ELF file, skipping"
++       continue
++       ;;
++  esac
+   if [ $nlinks -gt 1 ]; then
+     var=seen_$inum
+     if test -n "${!var}"; then

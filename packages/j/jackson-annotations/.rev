@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e03a15cba6bcc5fcbe74429ce5bbef4</srcmd5>
+    <version>2.9.4</version>
+    <time>1557472745</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>701560</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1d2d90cbd8f5530469fd63fdbebd2375</srcmd5>
+    <version>2.9.4</version>
+    <time>1559580820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706981</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2eb23c030fefab6b5454d94acea395a3</srcmd5>
+    <version>2.10.1</version>
+    <time>1574552729</time>
+    <user>dimstar_suse</user>
+    <comment>2.10.1</comment>
+    <requestid>750409</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b3d5b18df4dd4899b282717387e24b5</srcmd5>
+    <version>2.10.2</version>
+    <time>1578437722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761585</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e74dd685cc9e8340729ab817fbf4525</srcmd5>
+    <version>2.10.3</version>
+    <time>1585261977</time>
+    <user>dimstar_suse</user>
+    <comment>2.10.3</comment>
+    <requestid>788428</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc1f79836b3a900fc8585467a2cdb3a1</srcmd5>
+    <version>2.10.5</version>
+    <time>1619447963</time>
+    <user>dimstar_suse</user>
+    <comment>2.10.5 + build with ant</comment>
+    <requestid>888371</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6dd179ac0e50f9139b3459472865cd54</srcmd5>
+    <version>2.13.0</version>
+    <time>1634853316</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade</comment>
+    <requestid>926590</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>639961077cfb2c836e12a6558d31c0c6</srcmd5>
+    <version>2.13.0</version>
+    <time>1647806175</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963294</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9e63ca8b67fa3820abf9365a2ebd711d</srcmd5>
+    <version>2.13.0</version>
+    <time>1653313912</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978556</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f610c0b527c48f59eb9fe1ec37721444</srcmd5>
+    <version>2.13.3</version>
+    <time>1655665850</time>
+    <user>dimstar_suse</user>
+    <comment>2.13.3</comment>
+    <requestid>983606</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fbcedaa68e9503687c435571bab2cf88</srcmd5>
+    <version>2.15.2</version>
+    <time>1692795427</time>
+    <user>anag+factory</user>
+    <comment>2.15.2</comment>
+    <requestid>1105099</requestid>
+  </revision>
+</revisionlist>

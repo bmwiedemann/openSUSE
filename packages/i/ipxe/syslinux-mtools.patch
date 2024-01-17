@@ -1,0 +1,11 @@
+--- ipxe-1.21.1+git20231006.ff0f8604/src/util/genfsimg~	2023-10-06 13:50:43.000000000 +0200
++++ ipxe-1.21.1+git20231006.ff0f8604/src/util/genfsimg	2023-10-18 18:30:45.850946442 +0200
+@@ -273,7 +273,7 @@
+     mformat -v iPXE -i "${FATIMG}" ${FATARGS} ::
+     mcopy -i "${FATIMG}" -s "${FATDIR}"/* ::
+     if [ "${BIOSDIR}" = "${FATDIR}" ] ; then
+-	syslinux "${FATIMG}"
++	syslinux-mtools "${FATIMG}"
+     fi
+ fi
+ 

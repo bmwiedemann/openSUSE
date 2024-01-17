@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Fri Oct 13 05:56:51 UTC 2017 - coolo@suse.com
+
+- updated to 1.20171012
+   see /usr/share/doc/packages/perl-UNIVERSAL-isa/Changes
+
+  1.20171012  2017-10-12 05:35:40Z
+      - original isa sub is now available in original_isa() (Graham Knop, PR#1)
+
+-------------------------------------------------------------------
+Mon Jun 15 09:18:13 UTC 2015 - coolo@suse.com
+
+- updated to 1.20150614
+   see /usr/share/doc/packages/perl-UNIVERSAL-isa/Changes
+
+  1.20150614  2015-06-14 23:16:46Z
+      - remove useless 'use UNIVERSAL'
+
+-------------------------------------------------------------------
+Tue Apr 14 15:49:46 UTC 2015 - coolo@suse.com
+
+- updated to 1.20140927
+   see /usr/share/doc/packages/perl-UNIVERSAL-isa/Changes
+
+-------------------------------------------------------------------
+Sat Jul 27 13:45:05 UTC 2013 - coolo@suse.com
+
+- updated to 1.20120726
+   - converted to Dist::Zilla
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:58 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Jul 15 15:43:41 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.03)
+

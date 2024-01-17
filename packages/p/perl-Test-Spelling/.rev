@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3897d27742269c34566cc2511499659d</srcmd5>
+    <version>0.11</version>
+    <time>1311591782</time>
+    <user>saschpe</user>
+    <comment>indirect dep of hermes</comment>
+    <requestid>76474</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b486cfee743bd91cbc7bd89268a6be8f</srcmd5>
+    <version>0.11</version>
+    <time>1311591792</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76474
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b486cfee743bd91cbc7bd89268a6be8f</srcmd5>
+    <version>0.11</version>
+    <time>1319182313</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5aa6a14bde3d9e6e6830401071b9c6cc</srcmd5>
+    <version>0.15</version>
+    <time>1324458166</time>
+    <user>coolo</user>
+    <comment>- update to 0.15
+     - Begin adding actual tests
+       (Hilariously, adding the suggested t/pod-spell.t to this
+       dist to test itself found a typo: &quot;stopwards&quot;)
+     - Fix an error when using add_stopwords(&quot;constant&quot;, &quot;strings&quot;)
+       [rt.cpan.org #68471] (reported by Nicholas Bamber)
+     - Make alternatives checking more robust by reading the spellchecker's
+       STDERR
+     - Best Practical has taken over maintainership of this module
+     - Try various spellcheck programs instead of hardcoding the ancient
+       `spell` [rt.cpan.org #56483] (reported by Lars Dɪᴇᴄᴋᴏᴡ, et al)
+     - Remove temporary files more aggressively [rt.cpan.org #41586]
+       (reported by Tokuhiro Matsuno)
+     - fixed by not creating them at all :) instead we now use IPC::Open3
+     - Remove suggestion to use broken `aspell -l` [rt.cpan.org #28967]
+       (reported by David Hand)
+     - Add set_pod_file_filter for skipping translations, etc.
+     - Skip tests in all_pod_files_spelling_ok if there is no working
+       spellchecker
+     - Provide a has_working_spellchecker so you can skip your own tests if
+       there's no working spellchecker
+     - Switch to Module::Install
+     - Rewrite and modernize a lot of the documentation
+     - Decruftify code, such as by using Exporter and lexical filehandles
+     - Support .plx files (you're welcome Schwern)</comment>
+    <requestid>97127</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5aa6a14bde3d9e6e6830401071b9c6cc</srcmd5>
+    <version>0.15</version>
+    <time>1340183935</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>5aa6a14bde3d9e6e6830401071b9c6cc</srcmd5>
+    <version>0.15</version>
+    <time>1359109821</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>283cef307c7572632b9c278b15097172</srcmd5>
+    <version>0.19</version>
+    <time>1370516262</time>
+    <user>coolo</user>
+    <comment>- updated to 0.19
+         - for more consistent results avoid using the user's local aspell
+           dictionary [rt.cpan.org #56483] (Karen Etheridge)
+ 
+         - Work around Pod::Spell limitations (David Golden)
+         - Improve case handling (David Golden)
+         - Improve test failure reporting (Karen Etheridge)
+         - Include more useful info in Test-Spelling's own test
+             suite (Shawn Moore)
+ 
+         - Use IPC::Run3 instead of IPC::Open3
+             Quoth IPC::Open3:
+                 If you try to read from the child's stdout writer
+                 and their stderr writer, you'll have problems with
+                 blocking ... This is very dangerous, as you may
+                 block forever.
+             Also the code is nicely shorter. (Randy Stauner)
+ 
+         - Allow use of a custom POD parser rather than Pod::Spell
+           using set_pod_parser (Thomas Sibley) (forwarded request 177496 from coolo)</comment>
+    <requestid>177522</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>283cef307c7572632b9c278b15097172</srcmd5>
+    <version>0.19</version>
+    <time>1379663882</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>283cef307c7572632b9c278b15097172</srcmd5>
+    <version>0.19</version>
+    <time>1409302525</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>08f8001015d47fdd635d136d763fb9e5</srcmd5>
+    <version>0.20</version>
+    <time>1423392163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>284642</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4052c33ee061956a6469b64b39975cce</srcmd5>
+    <version>0.20</version>
+    <time>1507065598</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530791</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ab3194f1abd193c5bd850ea1b6f05f7d</srcmd5>
+    <version>0.22</version>
+    <time>1556475293</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698640</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>22aa919ec30fa7f2cdc7918ece3bdfa9</srcmd5>
+    <version>0.23</version>
+    <time>1558690358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704997</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bddac325133fb4a611df1e5865b82c02</srcmd5>
+    <version>0.24</version>
+    <time>1558939187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705412</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>481c5ac8d22069db1fc7bdedd860202a</srcmd5>
+    <version>0.25</version>
+    <time>1559375511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706229</requestid>
+  </revision>
+</revisionlist>

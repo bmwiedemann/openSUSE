@@ -1,0 +1,5 @@
+<package name="klee" project="openSUSE:Factory">
+  <title>Klee</title>
+  <description>KLEE is a symbolic virtual machine built on top of the LLVM compiler infrastructure, and available under the UIUC open source license.</description>
+  <devel project="devel:tools:statica" package="klee"/>
+</package>

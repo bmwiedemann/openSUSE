@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue May 16 05:25:15 UTC 2017 - coolo@suse.com
+
+- updated to 2.023
+   see /usr/share/doc/packages/perl-Data-Dumper-Concise/Changes
+
+  2.023 - 2017-05-12
+    - convert distribution from Module::Install to Distar; fixes RT#120856
+    - every module has a $VERSION now (RT#116427)
+    - add support for Trailingcomma option (RT#114609, Aaron Crane)
+
+-------------------------------------------------------------------
+Sat Mar 22 19:05:14 UTC 2014 - coolo@suse.com
+
+- updated to 2.022
+ - Fix repo metadata
+
+-------------------------------------------------------------------
+Fri Mar  7 09:01:10 UTC 2014 - coolo@suse.com
+
+- updated to 2.021
+  - Make Dwarn output all arguments even in scalar context
+     (retun val is still the same though)
+
+-------------------------------------------------------------------
+Mon Dec 12 08:24:37 UTC 2011 - coolo@suse.de
+
+- updated to 2.020
+  - Add DumperObject for getting at the underlying obj
+  - create DwarnF for formatting Dumper'd output
+  - Create Ddie for die'ing output
+
+  - Make DwarnN test still work if Devel::ArgNames isn't installed
+
+  - add $DwarnN export
+  - make Devel::ArgNames an optional dep
+
+  - add $Dwarn export
+
+  - add documentation for DwarnN
+
+  - remove Dumper() returning object
+  - add DwarnN
+  - add DwarnL
+  - make Dwarn contextual
+  - document ::Dwarn idiom
+
+  - make sure Devel::Dwarn::Dwarn and Devel::Dwarn::DwarnS work
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:04 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Dec 10 23:54:38 UTC 2009 - chris@computersalat.de
+
+- initial pkg 1.100
+

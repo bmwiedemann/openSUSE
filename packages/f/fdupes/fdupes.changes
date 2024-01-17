@@ -1,0 +1,260 @@
+-------------------------------------------------------------------
+Sun Oct  2 16:21:27 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.2.1:
+  * Fix bug in code meant to skip over the current log file when --log option is given.
+  * Updates to copyright notices in source code.
+  * Add --deferconfirmation option.
+  * Check that files marked as duplicates haven't changed during program execution before deleting them.
+  * Update documentation to indicate units for SIZE in command-line options.
+  * Move some configuration settings to configure.ac file.
+
+-------------------------------------------------------------------
+Fri Apr  1 19:50:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fixes for the new wrapper:
+  * Order duplicates by name, to get a reproducible file set
+    (boo#1197484).
+  * Remove redundant order parameter from fdupes invocation.
+  * Modernize code, significantly reduce allocations.
+  * Exit immediately when mandatory parameters are missing.
+  * Remove obsolete buildroot parameter
+  * Add some tests for the wrapper
+
+-------------------------------------------------------------------
+Tue Mar 15 07:41:35 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- A more correct approach to creating symlinks (old bug actually):
+  Do not link the files as given by fdupes, but turn them into
+  relative links (it works by chance if given a buildroot, but
+  fails if running on a subdirectory)
+- Support multiple directories given (as glob to the macro)
+
+-------------------------------------------------------------------
+Mon Mar 14 13:44:54 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Handle symlinks (-s argument) correctly
+
+-------------------------------------------------------------------
+Sat Mar 12 08:17:37 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Simplify macros.fdupes with a call to a C++ program that does
+  the same within a fraction of a second what the shell loop did
+  in many seconds (bsc#1195709)
+
+-------------------------------------------------------------------
+Sun Aug 16 16:59:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * Do not enter ncurses mode when --immediate option given.
+  * Fix logging/memory corruption bug when using --log with --immediate.
+  * Break mtime ties using ctime when sorting by time.
+  * Reduce number of calls to stat(), for speed.
+  * Clear last command status when new command is entered.
+  * Rename cs command ("clear all selections") from cs to csel.
+  * Rename igs command ("invert selections") from igs to isel.
+  * Add "prune" command as synonym for DELETE key.
+  * Clear selections after deleting files via prune/DELETE.
+  * Fix dependency issues when fdupes is configured to not use ncurses.
+- build without ncurses for now until buildcycles can be solved
+
+-------------------------------------------------------------------
+Fri Jun  5 23:42:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Drop old specfile constructs.
+
+-------------------------------------------------------------------
+Fri May 22 08:27:11 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v2.0.0
+  * Add ncurses mode for interactive file deletion (plain mode still available via --plain or ./configure).
+  * Add --minsize option.
+  * Add --maxsize option.
+  * Add --time option.
+  * Add --order=ctime option.
+  * Add --log option.
+  * Use configure script for installation (Autotools/Automake).
+- Remove fdupes-makefile.patch
+
+-------------------------------------------------------------------
+Thu Apr 16 21:07:45 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Make package building even on platforms, where _rpmmacrodir
+  is not defined.
+
+-------------------------------------------------------------------
+Wed May  8 09:37:54 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Fri Dec 16 12:40:20 UTC 2016 - psimons@suse.com
+
+- We cannot update from fdupes 1.51 to 1.6.1. That "downgrade"
+  works okay'ish for Tumbleweed because we can replace the old
+  package with the new one, but in SLE this is not possible. We
+  asked upstream to please release a "2.0" version to remedy these
+  issues (https://github.com/adrianlopezroche/fdupes/issues/74),
+  but he does not respond. Therefore, we'll call this version 1.61,
+  ignoring upstreams change in the versioning scheme.
+
+-------------------------------------------------------------------
+Mon Dec  5 13:54:08 UTC 2016 - psimons@suse.com
+
+- Upstream has changed their versioning scheme after version 1.51.
+  Unfortunately, the new version 1.6.x won't be recognized as
+  "newer" by zypper. This commit adds appropriate "provides" and
+  "obsoletes" attributes to the spec file to remedy that issue.
+
+-------------------------------------------------------------------
+Fri Nov  4 14:33:59 UTC 2016 - psimons@suse.com
+
+- Drop 50_bts284274_hardlinkreplace.dpatch. The --linkhard option
+  added by this patch has an implementation bug that can cause data
+  loss. https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=677419
+  has more details.
+
+-------------------------------------------------------------------
+Fri Nov  4 13:47:27 UTC 2016 - psimons@suse.com
+
+- Update to version 1.6.1. The following patches have been applied
+  upstream and were dropped:
+  * 0001-restore-pristine-code.patch
+  * 0002-Added-to-escape-minus-signs-in-manpage-lintian-warni.patch
+  * 0003-Fix-a-typo-in-a-manpage-bts353789.patch
+  * 0005-add-summarize-to-manpage-bts481809.patch
+  * 0006-add-nohidden-support-bts511702.patch
+  * 0007-Disambiguate-the-options-recurse-and-recurse-bts5371.patch
+  * 0008-speedup-the-file-compare.patch
+  * 0009-glibc-endianness-check-in-md5.patch
+  * 0010-add-permissions-mode.patch
+  * 0011-add-an-option-to-sort-duplicate-files-by-name.patch
+- 50_bts284274_hardlinkreplace.dpatch had to be refreshed.
+
+-------------------------------------------------------------------
+Tue Aug  4 13:01:47 UTC 2015 - tchvatal@suse.com
+
+- By default relink hardlinks too, should fix bnc#940296
+
+-------------------------------------------------------------------
+Mon Aug  3 19:26:55 UTC 2015 - tchvatal@suse.com
+
+- Update to upstream git repo on github
+- Refresh patches:
+  * fdupes-makefile.patch
+  * 0008-speedup-the-file-compare.patch
+  * 0010-add-permissions-mode.patch
+  * 0011-add-an-option-to-sort-duplicate-files-by-name.patch
+  * 50_bts284274_hardlinkreplace.dpatch
+- Upstreamed patch:
+  * 0004-Large-file-support-for-2GB-files-bts447601.patch
+- Remove whitespace from fdupes.macros file
+- Cleanup with spec-cleaner
+  - Obey rpm-opt-flags
+  - run test phase
+
+-------------------------------------------------------------------
+Sun Dec 21 19:58:41 UTC 2014 - bwiedemann@suse.com
+
+- add -L (--linkhard) option
+  add 50_bts284274_hardlinkreplace.dpatch
+
+-------------------------------------------------------------------
+Tue Apr 29 16:08:34 UTC 2014 - stefan.bruens@rwth-aachen.de
+
+- sort the output of fdupes by filename to make it deterministic
+  for parallel builds
+  * 0011-add-an-option-to-sort-duplicate-files-by-name.patch
+
+-------------------------------------------------------------------
+Tue Oct 16 11:44:08 UTC 2012 - mvyskocil@suse.com
+
+- update to 1.5.0-PR2
+  * new "--summarize" option
+  * new  "--recurse:" selective recursion option
+  * new "--noprompt" option for totally automated deletion of
+  duplicate files.
+  * sorts duplicates (old to new) for consistent order when
+  listing or deleteing duplicate files.
+  * tests for early matching of files, which should help speed up
+  the matching process when large files are involved.
+  * warns whenever a file cannot be deleted.
+  * bugfixes (proper file closing, zero-length files, ...)
+- drop the fdupes-sort-output.diff (upstream uses mtime based)
+- rename and rebase fdupes-speedup.patch to 0008-speedup-the-compare.patch
+- rename and rebase fdupes-endianness.patch to
+  0009-glibc-endianness-check-in-md5.patch
+- add -p/--permissions switch so files with different permissions or uid/gid
+  are not considered as duplicates (bnc#784670)
+  * this mode is a default one for fdupes macro
+  0010-add-permissions-mode.patch
+- imported several fixes from Debian
+  * 0001-restore-pristine-code.patch - some common code fixes, partly obsoletes
+    speedup patch
+  * manual page fixes
+    0002-Added-to-escape-minus-signs-in-manpage-lintian-warni.patch
+    0003-Fix-a-typo-in-a-manpage-bts353789.patch
+    0005-add-summarize-to-manpage-bts481809.patch
+    0006-add-nohidden-support-bts511702.patch
+    0007-Disambiguate-the-options-recurse-and-recurse-bts5371.patch
+  * 0004-Large-file-support-for-2GB-files-bts447601.patch - large file support
+
+-------------------------------------------------------------------
+Sun Mar 25 22:13:12 UTC 2012 - behrisch@users.sf.net
+
+- added "which" requirement for red hat distros
+
+-------------------------------------------------------------------
+Mon Feb 13 10:46:03 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Oct  5 15:14:32 UTC 2011 - uli@suse.com
+
+- cross-build workaround: fake gcc script to work around build
+  system not honoring CC
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Mon Feb 15 15:43:34 UTC 2010 - mvyskocil@suse.cz
+
+- fix bnc#406825: speedup fdupes
+  * fdupes-speedup.patch fixes some performance gaps in code
+  * fdupes-endianness.patch speedups the built in md5 on little endian machines
+
+-------------------------------------------------------------------
+Wed Aug 26 12:53:54 CEST 2009 - mls@suse.de
+
+- make patch0 usage consistent
+
+-------------------------------------------------------------------
+Thu Jan 15 17:05:36 CET 2009 - coolo@suse.de
+
+- sort the output of fdupes to make it deterministic
+
+-------------------------------------------------------------------
+Thu Sep  6 18:41:37 CEST 2007 - mls@suse.de
+
+- do not hardlink empty files in %fdupes macro
+
+-------------------------------------------------------------------
+Wed Sep  5 15:44:52 CEST 2007 - nadvornik@suse.cz
+
+- support filenames with spaces in %fdupes macro [#307727]
+
+-------------------------------------------------------------------
+Tue May 15 22:53:03 CEST 2007 - coolo@suse.de
+
+- add an RPM macro to make use of it in spec files
+
+-------------------------------------------------------------------
+Thu Nov 16 13:16:07 CET 2006 - dmueller@suse.de
+
+- Initial package (1.40)
+

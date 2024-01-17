@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Sat Aug  5 20:17:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.106
+  * [IT] Increase the number of max-samples to match openMPT (it
+    can export files with more samples that original tracker and
+    Schism supports).
+  * [devpdisk] Reported time during playback was random.
+  * [adplug] Add support for SudoMakers RetroWave OPL3 Express,
+    please configure it in setup:/adplugconfig.dev
+  * [adplug] Make channel tracker aware of AM/FM modes so it more
+    correctly can display visualization.
+  * [adplug] Left/Right OPL3 logic was incorrect in the
+    register-tracker.
+  * [libancient] Add more fingerprints for compression formats
+    that v2.1.0 can decompress.
+  * [Linux CDROM] Fix deadlock.
+  * [configure] cleanup --bindir --libdir and --datadir, and new
+    syntax to override post ocp suffixes:
+    ./configure LIBDIROCP=/usr/lib/ocp DATADIROCP=/usr/data/ocp
+  * [configure] removed --with-dir-suffix
+  * [CDROM *.CUE] REM didn't work as expected.
+  * [CDROM *.CUE] files didn't work if containing INDEX 00.
+  * [CDROM *.CUE] BINARY keyword should be little endian, but
+    there are tools that produce big-endian files without marking
+    them correctly. So we need to detect the endian used.
+  * [CDROM *.CUE] files didn't include pregaps in the track table.
+  * [CDROM *.TOC] files didn't split the logic for pregap and
+    offset into the raw file.
+  * [musicbrainz] Increase the buffersize, some data retrivals
+    failed.
+  * [global MIME database] Add adplug fileformats.
+  * [global MIME database] Add Game Music Emulator fileformats.
+  * [SDL2] if entering fullscreen while in graphical effect mode,
+    it could not be exited without visiting a textmode resolution.
+  * [SDL2] Use SDL_OpenAudioDevice(), else the expected audio
+    format between SDL2 and OCP might not be what we expect
+    causing random noise to be played.
+  * [X11] non-Shm usage could fail to successfully create butter
+    on window resize.
+  * [X11] If background picture is loaded in GUI modes, it was not
+    repainted on window-resize.
+  * [unifont] Allow for unifont ttf/otf files to be placed in the
+    datadir by using ./configure --with-unifont-relative (you still
+    need to copy the files in).
+  * [*.VGZ] Silently convert them to *.VGM
+  * [GME] Add support for Game Music Emulator library (libgme) for
+    playback of various retro console systems.
+
+-------------------------------------------------------------------
+Sat May 13 19:20:49 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.105
+  * Avoid crash if attempting to access graphical viewer modes
+    when running in curses (text only).
+
+-------------------------------------------------------------------
+Fri May 12 06:57:39 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.104
+  * Update libsidplayfp
+  * Update adplug
+    + Latest version of the upstream version
+      - Adds support for *.PIS and *.MTR
+    + Reimplemented the OPL2/3 status viewer.
+    + Buffer for compositing tracker data for music that supports
+      this, was not cleared between pattern loads. Causing visual
+      data to be accumulated.
+    + OCP now supports multiple of the emulator implementations.
+    + Default emulator to use has been changed.
+    + Configuration dialog added into setup.
+  * Elapsed time is now based on played samples and not counting
+    seconds passed.
+  * Screen resizing should be more consistent on remembering
+    settings.
+  * Files that are detected as valid for libancient but fails
+    decompression, OCP failed to reset the filehandler
+    read-position back to 0.
+  * Track viewer had some excessive CPU usage
+  * Analyzer viewer has the scale gain range increased, and the
+    current gain is visible in the header.
+  * Quick help documentation has been updated, with special focus
+    on the keyboard shortcuts.
+
+-------------------------------------------------------------------
+Sat Feb 18 12:34:50 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.103
+  * If an autoload plugin fails to load, do not hard fail if all
+    the core plugins are statically linked in.
+  * version 0.2.91 update missed setting the color for XM files
+    in ocp.ini
+  * Fix logic for setting screenmode vs ocp.ini. This is now the
+    scheme and default values that SDL, SDL2 and X11 drivers use:
+    [screen]
+      screentype=5            ; 0=80x25, 1=80x30, 2=80x50, 3=80x60,
+      4=132x25, 5=132x30, 6=132x50, 7=132x60, 8=custom
+      fontsize=1              ; if screentype=8: 0=8x8, 1=8x16
+      winwidth=1024           ; if screentype=8
+      winheight=768           ; if screentype=8
+  * insttype= setting in ocp.ini was no longer working and it was
+    not maintained between songs.
+  * Remove more external symbols from the devp*.so and devw*.so
+    files, and API updates
+  * setup:/devp/ and setup:/devw/ directories has been replaced
+    with dialogs
+  * Detect that C++17 is available, needed due to libancient
+  * Failed detection of `update-mime-database` did not halt
+    ./configure causing errors later during make instead
+  * Update libsidplayfp to the latest version
+- Drop patch:
+  * 0001-When-compiling-code-against-libancient-ensure-that-C.patch
+
+-------------------------------------------------------------------
+Fri Feb 17 10:50:25 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * ocp-ini-set-audio-output.patch
+
+-------------------------------------------------------------------
+Thu Feb 16 19:43:49 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * 0001-When-compiling-code-against-libancient-ensure-that-C.patch
+
+-------------------------------------------------------------------
+Mon Feb 13 22:20:56 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Complete specfile overhaul
+- Update to version 0.2.102
+  * https://github.com/mywave82/opencubicplayer/releases/tag/v0.2.102
+
+-------------------------------------------------------------------
+Wed Nov  6 00:00:00 UTC 2013 - msrex@owncloud.com
+
+ - update to 0.1.21 and fixed SUSE packaging
+
+-------------------------------------------------------------------
+Sat Jan  9 00:00:00 UTC 2010 - stian (at) nixia.no
+
+ - Initial makeover of the .spec file
+

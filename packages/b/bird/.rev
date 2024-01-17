@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb136b16ba90311ff864b1553b498a07</srcmd5>
+    <version>1.6.4</version>
+    <time>1546946660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659818</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79f5f4f3ce1d4a1a345fc2828ca2846f</srcmd5>
+    <version>1.6.5</version>
+    <time>1551024677</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670907</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>16c794c2ce88222a75d401c347776af1</srcmd5>
+    <version>1.6.6</version>
+    <time>1551687753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680785</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>28a292eb18879cc14d431c94f915aa98</srcmd5>
+    <version>1.6.8</version>
+    <time>1568984025</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731869</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>67f187811f1df70c37f64578f3a9801b</srcmd5>
+    <version>1.6.8</version>
+    <time>1592468785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815510</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8398a291ea0c5814d8fb4178140f200e</srcmd5>
+    <version>2.0.7</version>
+    <time>1601200248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837839</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>df79be4e46ed4aa28fb8a753888fd761</srcmd5>
+    <version>2.0.7</version>
+    <time>1605644801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848952</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6ce48e75a43fa758f549122bee2878b1</srcmd5>
+    <version>2.0.8</version>
+    <time>1616598842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880617</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9e2c7587555413120a6121c5d0fe1c94</srcmd5>
+    <version>2.0.8</version>
+    <time>1630093451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914615</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>3667d049007c0cd5a6c8b7816b5dc5a1</srcmd5>
+    <version>2.0.8</version>
+    <time>1634331872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925496</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a0eeb6e6d4edf64f88a965857456305c</srcmd5>
+    <version>2.0.9</version>
+    <time>1645998195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957890</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ccef72b1f2588dcfb19a5c40053ff857</srcmd5>
+    <version>2.0.10</version>
+    <time>1656422499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985290</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>53b395ef7feab5a179ea35baff7c3db9</srcmd5>
+    <version>2.0.11</version>
+    <time>1670954130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042477</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ef1cc060242f70f25036632245058944</srcmd5>
+    <version>2.0.12</version>
+    <time>1674585819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060580</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4ca43dc0cbd2964dc9b7c7ac9c092de3</srcmd5>
+    <version>2.13</version>
+    <time>1682691810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083344</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d4564343345d28a4c0237f685172fc88</srcmd5>
+    <version>2.13.1</version>
+    <time>1687469234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094708</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>02e8d079e52cdb8cdd7257e36d882043</srcmd5>
+    <version>2.13.1</version>
+    <time>1696269901</time>
+    <user>anag+factory</user>
+    <comment>- add 'shadow' to Requires(pre)
+
+- Add -fcommon to allow building against GCC10</comment>
+    <requestid>1114256</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ca7a146451ed4b2269f38502a7ae7a89</srcmd5>
+    <version>2.14</version>
+    <time>1696964385</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116433</requestid>
+  </revision>
+</revisionlist>

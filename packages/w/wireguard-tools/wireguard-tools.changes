@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Fri Oct 20 13:16:54 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update WireGuard.keyring with latest copy from upstream.
+
+-------------------------------------------------------------------
+Wed Aug 31 13:40:41 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Support multiple DNS search domains
+  * Support-systemd-resolved-split-dns-setup.patch
+
+-------------------------------------------------------------------
+Mon Aug 15 08:58:22 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't hard require systemd, it's not a hard dependency
+
+-------------------------------------------------------------------
+Tue Feb 22 10:44:56 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop harden_wg-quick@.service.patch. The currrent logic for setting
+  DNS is fiddling massively with the system. This is currently not
+  compatible with these settings (bsc#1196096)
+
+-------------------------------------------------------------------
+Thu Feb 17 15:17:15 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Support systemd-resolved split-dns setup
+  * Support-systemd-resolved-split-dns-setup.patch
+
+-------------------------------------------------------------------
+Wed Jan  5 10:43:06 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_wg-quick@.service.patch
+
+-------------------------------------------------------------------
+Fri Oct  1 20:54:57 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove world-readable permissions from /etc/wireguard boo#1191224
+
+-------------------------------------------------------------------
+Sun Sep 26 09:34:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20210914
+  * no relevant changes for Linux systems
+
+-------------------------------------------------------------------
+Sun Apr 25 08:46:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20210424
+  * wg-quick: kill route monitor when loop terminates
+
+-------------------------------------------------------------------
+Mon Mar 15 15:11:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20210315
+  * Makefile: fix version indicator
+  * wireguard-tools: const correctness
+  * wireguard-tools: drag in headers for prototypes
+  * ipc: uniformly ignore preshared keys that are zero
+
+-------------------------------------------------------------------
+Tue Feb 23 20:12:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20210223
+  * embeddable-wg-library: sync latest from netlink.h
+  * completion: add help and syncconf completions
+  * sticky-sockets: do not use SO_REUSEADDR
+  * man: LOG_LEVEL variables changed name
+  * ipc: do not use fscanf with trailing \n
+  * ipc: read trailing responses after set operation
+
+-------------------------------------------------------------------
+Thu Aug 27 08:41:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 1.0.20200827
+  * wg-quick: android: use iproute2 to bring up interface instead 
+    of ndc
+  * Revert "wg-quick: wait on process substitutions"
+
+-------------------------------------------------------------------
+Sat Aug 22 20:44:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200820
+  * ipc: split into separate files per-platform
+  * wincompat: fold random into genkey
+  * systemd: add reload target to systemd unit
+  * man: wg-quick: use syncconf instead of addconf for strip example
+  * pubkey: isblank is a subset of isspace
+  * ctype: use non-locale-specific ctype.h
+  * wg-quick: wait on process substitutions
+
+-------------------------------------------------------------------
+Thu May 14 14:45:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200513
+  * Makefile: remember to install all systemd units
+  * ipc: openbsd: switch to array ioctl interface
+
+-------------------------------------------------------------------
+Mon May 11 06:39:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200510
+  * ipc: add support for openbsd kernel implementation
+  * ipc: cleanup openbsd support
+  * wg-quick: add support for openbsd kernel implementation
+  * wg-quick: cleanup openbsd support
+  * wg-quick: support dns search domains
+  * Makefile: simplify silent cleaning
+  * git: add gitattributes so tarball doesn't have gitignore files
+  * terminal: specialize color_mode to stdout only
+  * highlighter: insist on 256-bit keys, not 257-bit or 258-bit
+  * wg-quick: android: support application whitelist
+  * systemd: add wg-quick.target
+- Remove patch (not longer needed):
+  * wireguard-fix-systemd-service.patch
+- Remove source file (fixed upstream)
+  * wireguard.target
+    This functionality is now provided by wg-quick.target
+
+-------------------------------------------------------------------
+Sat Mar 21 13:57:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200319
+  * netlink: initialize mostly unused field
+  * curve25519: squelch warnings on clang
+  * man: fix grammar in wg(8) and wg-quick(8)
+  * man: backlink wg-quick(8) in wg(8)
+  * man: add a warning to the SaveConfig description
+  * wincompat: use string_list instead of inflatable_buffer
+
+-------------------------------------------------------------------
+Thu Feb  6 20:44:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200206
+  * man: document dynamic debug trick for Linux
+  * extract-{handshakes,keys}: rework for upstream kernel
+  * netlink: remove libmnl requirement
+  * embeddable-wg-library: use newer string_list
+  * netlink: don't pretend that sysconf isn't a function
+  * Small cleanups.
+
+-------------------------------------------------------------------
+Tue Jan 21 22:04:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20200121
+  * Makefile: add standard 'all' target
+  * ipc: simplify inflatable buffer and add fuzzer
+  * fuzz: add generic command argument fuzzer
+  * fuzz: add set and setconf fuzzers
+  * netlink: make sure to clear return value when trying again
+  * Makefile: sort inputs to linker so that build is reproducible
+
+-------------------------------------------------------------------
+Mon Jan 20 21:19:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.0.20200102

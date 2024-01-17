@@ -1,0 +1,430 @@
+-------------------------------------------------------------------
+Sun Dec  3 08:38:20 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.12.1
+  * Shadowsocks2022 Client Support
+  * Apply DomainStrategy to outbound target
+  * Add DomainStrategy to JSONv5 outbound
+  * Add sniffing for TUN
+  * Add HTTPUpgrade transport
+  * It is a reduced version of WebSocket Transport that can pass many
+    reverse proxies and CDNs without running a WebSocket protocol stack
+  * TUN Support
+  * Add uTLS support for h2 transport
+  * Fix bugs
+
+-------------------------------------------------------------------
+Sun Oct  8 13:35:54 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.0
+  * DNS over QUIC should not have "http/1.1" and "h2" ALPNs
+  * Migrate to quic-go v0.36.0
+  * Fix: parse for the CipherType of Shadowsocks in simplified config
+  * Fix protocol matching in routing
+  * Fix CI breakage in 5.7.0
+- Build by golang 1.20, workaround build error on golang 1.21
+ 
+-------------------------------------------------------------------
+Sun Jun 25 03:13:08 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Drop vendor in filelist
+
+-------------------------------------------------------------------
+Mon Jun 12 06:34:21 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 5.7.0
+  * meek: a new transport protocol meek is added.
+  * HTTP Proxy Add h1SkipWaitForReply Option to HTTP Proxy Protocol
+  * set v2ray binary as an entrypoint in container images
+  * Add Integrated Container Image Building
+  * Skip validating on empty http host config
+  * Add PacketAddr support to Trojan
+  * DomainStrategy support for all outbounds
+  * Add an option to replace destination address in access log with sniffed domain
+  * uTLS uTLS ALPN Control
+  * uTLS New Security Type uTLS: TLS Client Hello imitation
+  * DNS Support per-client configuration
+  * DNS Support specifying domain matcher
+  * Add bind to device to Windows and Darwin
+  * Replace default Health Ping URL to HTTPS for burst observatory
+  * Implement Match and MatchAny for all MatcherGroup
+  * Fix bugs
+
+-------------------------------------------------------------------
+Thu Jan  5 12:42:50 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Fix service command: "run" is required in v2ray 5.x
+
+-------------------------------------------------------------------
+Thu Dec 29 14:23:37 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- Update version to 5.2.0
+  * New Features
+    + uTLS New Security Type uTLS: TLS Client Hello imitation.
+      Only client without transport, or with websocket transport is
+      currently supported.
+    + DNS Support per-client configuration
+    + DNS Support specifying domain matcher
+    + Replace default Health Ping URL to HTTPS
+    + Implement Match and MatchAny for all MatcherGroup, IndexMatcher
+  * Fixes
+    + Fix typo in error message
+    + Support domain string validation
+    + Charset of ACAutomationMatcherGroup should accept all ASCII characters
+    + Fix logic of domain override
+    + Fix HTTP sniff
+    + Fix config merger fixes
+    + Fix selectLeastLoad() returns wrong number of nodes
+    + Fix(freebsd): ReadUDPMsg nil pointer
+    + fix: socks4/4a client handshake
+    + Add transport original name to listen unix
+    + fix Replace "math/rand" with "crypto/rand" in padding generation
+    + Fix remove v2ctl from debian/rules
+    + Fix getting shared flags for balance info command
+    + Fix erroneous prefix checking
+    + Fix json.Reader: fill output bytes as much as possible
+    + Guard against nil pointer dereference of (*NetworkList)
+  * Chores
+    + Add tests for idn support
+    + Refactor: replace netaddr package with netipx
+
+-------------------------------------------------------------------
+Sat Dec 25 14:01:53 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.44.0
+  * Fix DoS attack vulnerability in CommandSwitchAccountFactory. (@geeknik)
+  * Apply timeout to DNS outbound. (#1330 @nekohasekai)
+
+-------------------------------------------------------------------
+Wed Dec  1 08:11:01 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * v2ray.service
+  * v2ray@.service
+
+-------------------------------------------------------------------
+Thu Nov 11 02:55:40 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.43.0
+  * Send Shadowsocks handshake with payload data if available
+  * Custom TCP Fast Open queue length support
+  * Fix Trojan fallback cannot get ALPN
+  * Fix QueryStrategy ignored
+  * Fix UDP connection transport connection terminated unnecessarily
+  * refactor: move from io/ioutil to io and os package
+  * Fix some tests to use udp.PickPort() 
+  * Fix flaky TestVMessDynamicPort
+
+-------------------------------------------------------------------
+Tue Sep 21 13:38:23 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update to 4.42.2
+  * TLS: support client certificate authentication #1169 Thanks @qq906907952
+  * Socks: support 4/4a version of the socks protocol (#1269 Thanks @nekohasekai)
+  * DNS: add option disableFallbackIfMatch for DNS (#1270 Thanks @nekohasekai)
+  * DoQ(DNS over QUIC) local mode supports IP destination
+  (#1226 Thanks @AkinoKaede)
+  * Observatory will now probe outbounds in a deterministic order
+  (#1230 Thanks @digglife)
+  * DNS response will respect request type(like AAAA, A)
+  (#1235 Thanks @AkinoKaede)
+  * Fix typo in DNS log output (#1183 Thanks @rurirei)
+  * Fix typo in observatory log output (#1211 Thanks @ihotte)
+  * Fix version string not updated to match release version
+  * Fix IP length not deterministic (#1267 Thanks @Loyalsoldier)
+  * Fix HTTP outbound not respect socket config (#1264 Thanks @Vigilans)
+  * Fix sockopt.mark type (#1264 Thanks @Vigilans)
+  * Fix typo in browser forwarder error message
+- Update in 4.41.1
+  * VMess: Added 2 VMess experiments AuthenticatedLength and NoTerminationSignal
+  #940 Thanks @RPRX
+  * Hardening Draining connection at client side when receiving invalid data.
+  #940 Thanks @RPRX
+  * Observatory Support custom probe interval and probe URL. Thanks @nekohasekai
+  * Fixed connection stability issue when in h2, grpc transport.
+  #1059 #1058 #1056 Thanks @IRN-Kawakaze @architecturers @lijinglin3
+  * Further fixed connection stability issue when in h2, grpc transport.
+  check https://github.com/v2fly/v2ray-core/releases/tag/v4.41.1 for more info
+- Update in 4.40.1
+  * DNS: support DNS over TCP. #983 Thanks @AkinoKaede
+  * Fix: new cert issuing is incorrectly delayed. #998 Thanks @bhoppi
+
+-------------------------------------------------------------------
+Wed Jun  2 08:15:09 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.39.2
+  * Websocket: support header based Websocket early data & its partial browser
+  forwarder support
+  * GeoData: add a memory efficient geodata decoder called memconservative for
+  memory-limited devices #934 #953 #964 #965 #967 #977 Thanks @Loyalsoldier @rurirei
+  * HTTP/2 Transport: support to set method and headers for outgoing connections
+  * TCP Socket Option: support to set keepalive interval on Linux operating system
+  #962 Thanks @therealak12
+  * Fix BrowserForwarder panics with empty config (#954) Thanks @AkinoKaede
+  @Loyalsoldier
+  * Fix FakeDNS prints error with empty config (#955) Thanks @Loyalsoldier
+  * Fix Dual stack FakeDNS Close method (#956) Thanks @Loyalsoldier
+  * Fix Observatory starts with empty config & fails to close (#957) Thanks
+  @Loyalsoldier
+  * Fix Null check on alternative system dialer (#959) Thanks @rurirei
+  * Fixed the chain proxy support for gRPC and HTTP/2 transport
+  * Fixed leastping logic (#1019) Thanks @fanyiguang
+  * Fixed v2ctl unable to create geodata loaders (#1014) Thanks @ght99
+- Update in 4.38.3
+  - FakeDNS: Added fakedns+others sniffer , based on #697 . Thanks @yuhan6665
+  - TLS: A SECURITY improvement that allow the remote peer's TLS certificate
+  to be pinned to a known value. Document for TLS is updated
+  - Observatory: A component that measure the connectivity of selected outbounds
+  The document for Observatory is updated.
+  - Routing : leastPing balancing strategy is added. This strategy will select
+  a outbound that is alive and completed HTTPS GET request in the least time.
+  The document for Routing is updated.
+  - Fixed crashing in fake dns. #931 Thanks @IceCodeNew
+  - Added IPv6 pool in fake dns by default. #925 Thanks @Loyalsoldier
+  - Return ErrEmptyResponse for fakedns. #926 Thanks @sixg0000d
+  - Fixed UDP DNS connection cause crash. Thanks @nekohasekai
+  - Fixed two typo in comments. Thanks @U-v-U
+  * Multi-json support for observatory, browser forwarder.
+  #944 Thanks @ha-ku @AkinoKaede
+- Add browserforwarder related v2ray-extra.zip
+
+-------------------------------------------------------------------
+Thu Apr 15 06:11:12 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update version to 4.37.3
+  * Add multiple address host support for DNS (#884 #886 #888)
+  * Fix geoiop & geosite load issue (#889)
+- update in 4.37.2
+  * Add browser forwarder support for Websocket (#818)
+  * Add Websocket 0-RTT early data support (#818)
+  * Add replay protection for Shadowsocks proxy (#777)
+  * Add queryStrategy option for DNS (#794)
+  * Add disableFallback & skipFallback option for DNS client (#864)
+  * Add inversed GeoIP matching (#860)
+  * Add grpcSettings & gunSettings to streamSettings (00879c4) @rprx
+  * Fix vprotogen loop dependency (#797) @Loyalsoldier @U-v-U
+  * Fix DNS tests timeout due to network instability (#805) @Loyalsoldier
+  * Remove AA header flag in DNS query (#817) @Loyalsoldier
+  * TProxy: cannot find IPv6 destination in redirect mode (#815) @mzz2017
+  * Context: ctx initialization for core.functions (#841) @rurirei
+  * Set FakeDNS FakeEnable option dynamically (#879) @sixg0000d @Loyalsoldier
+  * Fix Websocket early data 404 bug (#859) @k79e
+  * Fix QUIC: disconnect due to timeout (#850) @bhoppi
+  * Log: remove package path prefix in logs (#840 0138017 78c1993) @kslr
+- update in 4.36.2
+  * Fix gRPC max delay unintentionally low (1eaec68) @xiaokangwang
+  * Fix core panics when zero domain/full type of rule (#786) @darsvador
+- update in 4.36.1
+  * Add gRPC/gun transport (#757 #783)
+  * Add loopback proxy (#770)
+  * Add a new efficient routing rule matcher MphDomainMatcher (#743)
+  * FakeDNS: use 198.18.0.0/15 as default FakeDNS IP pool (#779)
+- update build needed golang version to 1.16
+- keep go.sum go.mod to fix build issue with 'matched no packages'
+- add geo files manually since upstream removed them from source
+
+-------------------------------------------------------------------
+Tue Mar  9 10:26:12 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update version to 4.35.1
+  * Add support for FakeDNS (#395 #406 #696) @yuhan6665
+  * Add streamSetting / transport support for outbound front proxy
+  * Add zero pseudo encryption for better performance VMess
+  * Add support to disable compatibility for legacy VMess MD5 (#596) @dyhkwong
+  * Add a faster and more memory-efficient routing rule matcher
+    HybridDomainMatcher (#587 #639) @darsvador
+  * Add support to disable DNS cache (#699 #705) @CalmLong
+  * Fix test HTTP/2 dial timeout (#570) @kslr
+  * Fix Trojan panic when UDP dispatcher fails to write response (#599) @maskedeken
+  * Fix TCP default ALPN (#716) @AkinoKaede
+  * Fix DNS rule index out of range (#727) @Loyalsoldier
+  Check https://github.com/v2fly/v2ray-core/releases/tag/v4.35.1 for more info
+- update import path to github.com/v2fly/v2ray-core/v4
+
+-------------------------------------------------------------------
+Sat Jan  9 01:37:48 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update version to 4.34.0
+  * Disable TLS Session Resumption by default
+  * Remove legacy Shadowsocks unsecure stream ciphers
+  * Add preliminary support for DNS over QUIC
+
+-------------------------------------------------------------------
+Tue Dec 29 13:11:50 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Rename golang-github-v2ray-v2ray-core to golang-github-v2fly-v2ray-core
+- Update vendor.
+
+-------------------------------------------------------------------
+Wed Nov 25 15:31:22 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update to version 4.33.0
+  * Remove XTLS
+  * API: Reflection Service Support @Vigilans
+  * Update to IETF QUIC draft-32
+- update in 4.32.1
+  * VLESS XTLS Direct Mode ReadV Experiment
+  * Disable 0-RTT mechanism for HTTP/1.x outbound
+  * Set default alterId to 0 for VMess dynamic ports
+
+-------------------------------------------------------------------
+Sun Nov  1 12:26:08 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update version to 4.32.0
+  * loads JSON internally by default @forever8938
+  * Refine UNIX domain socket @lucifer9
+  * Fix mKCP sending window @p4gefau1t
+  * Fix JSON parsing dependency introduced by mutijson config @xiaokangwang
+  * Fix proto.go ProtoFilesUsingProtocGenGoFast on Windows @JimhHan
+- other changes before this version
+  * Add full VLESS fallbacks support to Trojan
+  * Add Trojan over XTLS support @maskedeken
+  * Add XTLS Direct Mode
+  * Add XTLS support to mKCP
+  * Add padding to abstract UNIX domain socket in fallbacks
+  * Add XTLS support to DomainSocket @rprx
+
+-------------------------------------------------------------------
+Mon Sep 28 08:35:06 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.29.0
+  * Fix issue#202
+  * Fix issue#203
+  * Routing: Implement Route interface as the routing result of Router
+  * kcp: removing annoying NewAEADAESGCMBasedOnSeed hint
+  * Make isAEAD more efficient
+  * Golangci-lint: disable some plugins
+  * Add XTLS support
+  * CodeQL: do NOT run on ready for review status
+
+-------------------------------------------------------------------
+Sat Sep 12 10:48:05 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.28.1
+  * Fix incorrect IV usage which slightly reduced security
+
+-------------------------------------------------------------------
+Fri Sep 11 08:42:39 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.28.0
+  * Changes
+    - VMess AEAD will be used when alterId is 0. ("testsEnabled" is discarded)
+  * Fixes
+    - Fix dns tests by setting v2ray.location.asset @felixonmars
+    - fix abstract UDS & add PROXY protocol support to DS inbound @lucifer9 @rprx
+    - Systemd: prevent restart on corrupt config @DuckSoft
+  * Chores
+    - Upgrade all dependencies @rprx
+    - Change lint order to avoid file changes notice @Loyalsoldier
+    - Update geoip, geosite
+
+-------------------------------------------------------------------
+Wed Sep  2 10:34:41 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.27.5
+  * Features
+    - Parse X-Forwarded-For in http transport @lucifer9
+  * Fix
+    - Fix according to staticcheck result @Loyalsoldier
+    - Fix: Bound check when accessing DNS server's ipIndexMap @Vigilans
+    - Refine code @Loyalsoldier
+  * Warning
+    - In version v4.28.0 and later, VMess AEAD will be enabled when alterId is
+    set to 0
+
+-------------------------------------------------------------------
+Sat Aug 29 03:26:28 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.27.4
+  * Features
+    - Dotless domain support in built-in DNS @Vigilans
+    - Support source port matching in routing config @Vigilans
+    - Make HTTP outbound 0-rtt @darhwa
+    - Add asset location auto search @vcptr
+    - Add PROXY protocol support to TCP & WebSocket inbound @lucifer9 and @rprx
+    - VLESS PREVIEW 1.5 @rprx
+  * Fixs
+    - Amending domain matcher with returning array of all matches @Vigilans
+    - Refactor DNS Server to record original rule of domain matchers @Vigilans
+    - New Systemd unit file @dctxmei
+    - Fix: logging empty rules & DNS @Loyalsoldier
+    - Fix a typo @dikaixu1999
+    - Shadowsocks Detection defense @studentmain and @xiaokangwang
+    - Update Old file @Loyalsoldier
+  * Breaking Changes
+    - VLESS fallback -> fallbacks,
+    see https://www.v2fly.org/config/protocols/vless.html
+    - Route matching order changes
+  * Warning
+    - In version v4.28.0 and later, VMess AEAD will be enabled when alterId is
+    set to 0
+- Update in 4.27.0
+  * Feature
+    - VLESS PREVIEW 1.3 https://www.v2fly.org/config/protocols/vless.html
+  * Fix
+    - Shadowsocks supports cipher as None @yuhan6665
+    - Add access log for Dokodemo inbound @lucifer9
+    - Some typo fixes @DuckSoft
+    - Add Linux riscv64 release @rprx
+    - Fix the error of missing curl in Dockerfile @kallydev
+    - GitHub Actions push to docker hub @kallydev
+    - Optimize SO_REUSEPORT implementation @Vigilans
+    - DOH supports HTTP/2 @darhwa
+    - Apply Sockopt from inbound config to Dokodemo Tproxy's response connection
+   @Vigilans
+  * Breaking Change
+    - VMessAEAD has been updated and needs both client and server to be the same
+    version for it to work.
+    - Release file structure changes.
+  * Warning
+    - In version v4.28.0 and later, VMess AEAD will be enabled when alterId is
+    set to 0
+
+-------------------------------------------------------------------
+Sun Aug  2 09:20:46 UTC 2020 - Sam Yu <ytz1995@hotmail.com>
+
+- Fix out-of-box usability
+
+-------------------------------------------------------------------
+Fri Jul 10 14:05:15 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 4.26.0
+  * Update Signing key
+  * Update geoip, geosite
+  * Fix bug with tag name extract
+  * Generate Manifest for bleeding edge release
+  * Adjust arm build
+  * Allow the use of Browser Bridge
+
+-------------------------------------------------------------------
+Thu Jun 25 15:09:25 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summary with something useful. Trim filler wording
+  from description.
+
+-------------------------------------------------------------------
+Sun Jun 21 09:05:14 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version  to 4.25.0
+  * VMess's new header format experiment begins. You can now enable VMessAEAD to
+    be better protected. Documents EN CH are updated. See extra-VMessAEADdoc.zip
+    for a more detailed explanation available in both Chinese and English.
+  * mKCP can now be encrypted to resist recognition, address issue mentioned in
+    #2530 #2253 #2131. Documents EN CH are updated.
+  * Updated Golang tool-chain. Thanks @rprx
+  * LocalAddr() in UDP workers will now return correct local addr. Thanks
+    @zhuobixin
+  * Further remove the identity leakage with TLS ClientHello from #2521 thank
+    @darhwa
+  * Fix UDP stability issue in Socks5 inbound, Shadowsocks inbound, and
+    Dokodemo( TProxy ) inbound. This should alleviate unnecessary CPU, memory
+    usage, and premature disconnection issue typically triggered by playing
+    games, video conference, and Torrenting. See #2565 thank @JimHan75d8c5
+    @xiaokangwang and Other testers @1265578519 @zhj9709 @Kylejustknows etc
+  * Added ARM v5 binary in the release. This should allow legacy ARM devices to
+    run V2Ray correctly. See #2536
+
+-------------------------------------------------------------------
+Sun Jun  7 02:44:52 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- initial package for version 4.23.4 

@@ -1,0 +1,20 @@
+#
+# Hylafax service for sendonly environment
+# Copyright (c) 2021 Dr. Axel Braun <DocB@opensuse.org>
+#
+
+[Unit]
+Description=HylaFAX sendonly environment
+ConditionPathExists=/var/spool/hylafax/FIFO
+Requires=hylafax-faxq.service
+PartOf=hylafax.target
+
+[Service]
+Type=oneshot
+User=root	
+Group=root
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/usr/sbin/faxmodem %I
+
+[Install]
+WantedBy=multi-user.target 

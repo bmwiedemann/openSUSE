@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Jan  9 17:29:27 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Use local TZ database (bsc#1206951)
+- Remove now unnecessary libcurl build dependency
+
+-------------------------------------------------------------------
+Wed Dec  7 21:53:26 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix file conflicts with devel package
+
+-------------------------------------------------------------------
+Tue Dec  6 16:42:27 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Clean up specfile: use `devel` instead of `-n hhdate-devel`
+- Improve description. It's based on the chrono header
+- Use %cmake_install
+- Remove rpmlint errors: 
+  * Package is a library and does not include an executable
+  * Create a libname package 
+  * add postun / post ldconfig declaration
+- Add license also in the libname
+
+-------------------------------------------------------------------
+Thu Dec  1 21:31:18 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Clean up spec file: redundant Provides in devel package
+
+-------------------------------------------------------------------
+Thu Dec  1 19:43:38 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Package version 3.0.1

@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7d3ee1f2dbe448c5fe63174cb825efe</srcmd5>
+    <version>0.2.1</version>
+    <time>1541152454</time>
+    <user>dimstar_suse</user>
+    <comment>audio resampling for python</comment>
+    <requestid>645967</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6483726733f38dfb5e505ef864fbc15d</srcmd5>
+    <version>0.2.1</version>
+    <time>1541511127</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias from description.
+</comment>
+    <requestid>646080</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>117d2290a5e6a9b30b5653b03fc9da51</srcmd5>
+    <version>0.2.2</version>
+    <time>1567423585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727556</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f5d308e86d1609bc3981ef5388877b30</srcmd5>
+    <version>0.2.2</version>
+    <time>1586466925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792580</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>303962227c3c6c9909a6bb3b6c483361</srcmd5>
+    <version>0.2.2</version>
+    <time>1619193046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888026</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>35157548ba6f213becde10748e1fafcd</srcmd5>
+    <version>0.4.2</version>
+    <time>1668514725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035663</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>986821d29f72a6b3f40350e903221100</srcmd5>
+    <version>0.4.2</version>
+    <time>1680636406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077162</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6bb1c6dff304caff5e49ca6408faf0eb</srcmd5>
+    <version>0.4.2</version>
+    <time>1685476929</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable build for python311 (numba available)</comment>
+    <requestid>1089580</requestid>
+  </revision>
+</revisionlist>

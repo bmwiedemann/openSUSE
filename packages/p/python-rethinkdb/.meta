@@ -1,0 +1,5 @@
+<package name="python-rethinkdb" project="openSUSE:Factory">
+  <title>python-rethinkdb</title>
+  <description>Python driver library for the RethinkDB database server</description>
+  <devel project="devel:languages:python" package="python-rethinkdb"/>
+</package>

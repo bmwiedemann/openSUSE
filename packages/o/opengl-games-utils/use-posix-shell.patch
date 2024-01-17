@@ -1,0 +1,6 @@
+++++++ opengl-game-wrapper.sh
+--- opengl-game-wrapper.sh
++++ opengl-game-wrapper.sh
+@@ -1,1 +1,1 @@
+-#!/bin/bash
++#!/bin/sh -e

@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Nov  9 08:57:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.6.1:
+  - Fix metadata_from_built only extracts one of the dist info files
+    in #100
+- Update to 1.6.0:
+  - Extrat build_<wheel|editable> from 
+    prepare_metadata_for_build_<wheel|editable> in #99
+
+-------------------------------------------------------------------
+Mon Aug 28 21:46:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.5.4:
+  - Exclude dependabot and pre-commit ci from release notes
+  - Bump tools and deps
+  - Make sure that the order of Requires-Dist does not matter
+- Update to 1.5.3:
+  - Bump pypa/gh-action-pypi-publish from 1.8.6 to 1.8.7
+  - Fix read_line to raise EOFError if nothing was read
+- Update to 1.5.2:
+  - Add pyproject-fmt
+  - docs: remove (dynamic) years from copyright
+  - Drop 2.7 test
+  - Add trusted-publish
+  - Add 3.12 support
+  - Bump pypa/gh-action-pypi-publish from 1.8.5 to 1.8.6
+    git ls-files -z -- .github/workflows/check.yml \
+        | xargs -0 sed -i 's|3.12.0-alpha.7|3.12.0-beta.1|g'
+  - Add ruff
+
+-------------------------------------------------------------------
+Fri May  5 14:49:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for pyproject-api v. 1.5.1.

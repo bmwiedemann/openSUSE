@@ -1,0 +1,9 @@
+# As this package is written in golang, it does not provide
+# python*-docker-compose. But as it obsoletes the v1 package
+# written in python, we get a warning.
+# In addition docker-compose > 2.0.0 is provided by the 
+# docker-compose package, that this package requires. So it
+# cannot provide what it obsoletes.
+#
+# The warning can therefore be ignored.
+addFilter("obsolete-not-provided")

@@ -1,0 +1,11 @@
+<package name="python-itemadapter" project="openSUSE:Factory">
+  <title>ItemAdapter class is a wrapper for data container objects</title>
+  <description>The ItemAdapter class is a wrapper for data container objects, providing a common interface to handle objects of different types in an uniform manner, regardless of their underlying implementation.
+
+Currently supported types are:
+- dict
+- scrapy.item.Item
+- dataclass-based classes
+- attrs-based classes</description>
+  <devel project="devel:languages:python" package="python-itemadapter"/>
+</package>

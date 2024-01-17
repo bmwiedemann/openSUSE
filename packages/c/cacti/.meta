@@ -1,0 +1,14 @@
+<package name="cacti" project="openSUSE:Factory">
+  <title>Web Front-End to Monitor System Data via RRDtool</title>
+  <description>This package is based on the package 'cacti' from project 'openSUSE:Factory:Contrib'.
+
+Cacti is a complete front-end to RRDtool: it stores all necessary
+information for creating graphs and populates them with data from a
+MySQL database. The front-end is completely PHP driven. Along with
+being ableto maintain graphs, data sources, and round robin archives
+ina database, Cacti also handles data gathering. There exists an SNMP
+support for those accustomed to creating traffic graphs with MRTG as
+well.
+</description>
+  <devel project="server:monitoring" package="cacti"/>
+</package>

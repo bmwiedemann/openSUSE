@@ -1,0 +1,20 @@
+From: "Richard W.M. Jones" <rjones@redhat.com>
+Date: Tue, 29 May 2012 20:44:18 +0100
+Subject: configure: Allow user defined C compiler flags.
+
+---
+ configure |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -1936,6 +1936,9 @@ AS_IF([test x"$DEFAULT_STRING" = "xunsaf
+   [default_safe_string=false],
+   [default_safe_string=true])
+ 
++# Store user defined global C Compiler flags
++common_cflags="$common_cflags $EXTRA_CFLAGS"
++
+ oc_cflags="$common_cflags $internal_cflags"
+ oc_cppflags="$common_cppflags $internal_cppflags"
+ ocamlc_cflags="$common_cflags $sharedlib_cflags \$(CFLAGS)"

@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Oct  4 09:13:40 UTC 2013 - coolo@suse.com
+
+- updated to 1.60000
+    - Removed support for smartmatch - as of perl 5.18.0 smartmatch is 
+      marked as experimental, and subject to change or removal.
+
+-------------------------------------------------------------------
+Sun Jun  9 15:02:04 UTC 2013 - coolo@suse.com
+
+- updated to 1.50000
+    - Add support for smartmatch (~~) for perl 5.10.1 and higher.
+      (Ricardo Signes)
+
+-------------------------------------------------------------------
+Thu Jul 21 12:01:24 UTC 2011 - coolo@novell.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon May 10 12:40:40 UTC 2010 - lars@linux-schulserver.de
+
+- initial version 1.40000
+

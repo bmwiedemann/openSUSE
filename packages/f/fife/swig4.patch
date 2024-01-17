@@ -1,0 +1,12 @@
+diff -Nur fifengine-0.4.2/CMakeLists.txt fifengine-0.4.2-patched/CMakeLists.txt
+--- fifengine-0.4.2/CMakeLists.txt	2019-09-18 19:25:13.294360097 +0200
++++ fifengine-0.4.2-patched/CMakeLists.txt	2019-09-18 18:24:23.708456634 +0200
+@@ -897,7 +897,7 @@
+   find_package(PythonLibs ${PYTHON_VERSION_STRING} EXACT)
+   include_directories(${PYTHON_INCLUDE_PATH})
+ 
+-  set(CMAKE_SWIG_FLAGS -modern -fastdispatch -dirvtable -nosafecstrings -noproxydel -fastproxy -fastinit -fastunpack -fastquery -modernargs -nobuildnone -keyword -w511 -w473 -w404 -w314)
++  set(CMAKE_SWIG_FLAGS -modern -fastdispatch -dirvtable -noproxydel -fastproxy -fastinit -fastunpack -fastquery -modernargs -keyword -w511 -w473 -w404 -w314)
+ 
+   set_source_files_properties("${PROJECT_BINARY_DIR}/fife.i" PROPERTIES CPLUSPLUS ON)
+   set(FIFE_SOURCES ${FIFE_CORE_SRC})

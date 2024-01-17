@@ -1,0 +1,28 @@
+--- texi2roff-2.0/table.c
++++ texi2roff-2.0/table.c	2005-03-18 17:59:54.000000000 +0000
+@@ -32,13 +32,14 @@
+ struct misccmds * cmds;
+ struct tablerecd * table, * endoftable;
+ 
++static void patchtable();
++
+ void
+ initialize(macropkg, showInfo, makeindex)
+ int macropkg;
+ int showInfo;
+ int makeindex;
+ {
+-    extern void patchtable();
+     int tablesize;
+ 
+     switch (macropkg) {
+--- texi2roff-2.0/texi2roff.c
++++ texi2roff-2.0/texi2roff.c	2012-07-17 16:09:22.852010105 +0000
+@@ -13,6 +13,7 @@
+ #include <sys/types.h>
+ #endif
+ #include <sys/stat.h>
++#include <unistd.h>
+ #include "texi2roff.h"
+ 
+ #if !defined(S_ISDIR) && defined(S_IFDIR)

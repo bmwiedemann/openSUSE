@@ -1,0 +1,6 @@
+<package name="python-opentracing" project="openSUSE:Factory">
+  <title></title>
+  <description>OpenTracing API for Python.
+See documentation at http://opentracing.io</description>
+  <devel project="devel:languages:python" package="python-opentracing"/>
+</package>

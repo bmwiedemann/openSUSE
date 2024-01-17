@@ -1,0 +1,15 @@
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+      <package>libbobcat</package>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">10</size>
+      </disk>
+    </hardware>
+  </overwrite>
+</constraints>

@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Tue Jan 21 14:08:21 UTC 2014 - pgajdos@suse.com
+
+- updated to 1.01
+  * no upstream changelog
+  * added README-SUSE
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:01 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 18 10:19:33 UTC 2012 - pgajdos@suse.com
+
+- SUSE-Permissive license
+
+-------------------------------------------------------------------
+Tue Dec 20 10:02:02 UTC 2011 - toms@suse.de
+
+- Renamed alfios-fonts -> gdouros-alfios-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Fri Jul  1 16:59:18 COT 2011 - bachinchi@gmail.com
+
+- Initial package for Alfios Fonts

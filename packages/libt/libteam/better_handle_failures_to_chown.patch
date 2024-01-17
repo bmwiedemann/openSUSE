@@ -1,0 +1,75 @@
+From 44ed6a1724bac01cd1c1dd25defb62237df5f379 Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Fri, 21 May 2021 18:32:07 +0200
+Subject: [PATCH 1/1] teamd: better handle failures to chown(TEAMD_RUN_DIR)
+ during teamd_drop_privileges()
+
+NetworkManager is exec-ing teamd while running without CAP_CHOWN.
+
+When teamd is configured to drop privileges, then it will call chown
+while still running as root user. But the command will fail because of
+lack of CAP_CHOWN.
+
+Note that chown() succeeds if the calling process has CAP_CHOWN or if
+the file already is owned by the calling user/group (whereas, changing
+the group will still work, if the user is a member of that group).
+
+The directory might have already been prepared with the right user/group.
+Let's handle that. If the first chown() as root succeeds, we are good.
+If it fails, we will retry after changing the user id. If the directory
+already has the right/compatible user, this command will succeeds too
+and teamd can proceed.
+
+See-also: https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/722
+
+Signed-off-by: Thomas Haller <thaller@redhat.com>
+---
+ teamd/teamd.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/teamd/teamd.c b/teamd/teamd.c
+index b310140570c5..3ef3d6cf09f6 100644
+--- a/teamd/teamd.c
++++ b/teamd/teamd.c
+@@ -1714,6 +1714,7 @@ static int teamd_drop_privileges()
+ 	cap_t my_caps;
+ 	struct passwd *pw = NULL;
+ 	struct group *grpent = NULL;
++	int chown_succeeded;
+ 
+ 	if ((pw = getpwnam(TEAMD_USER)) == NULL) {
+ 		fprintf(stderr, "Error reading user %s entry (%m)\n", TEAMD_USER);
+@@ -1734,11 +1735,12 @@ static int teamd_drop_privileges()
+ 		goto error;
+ 	}
+ 
+-	if (chown(TEAMD_RUN_DIR, pw->pw_uid, pw->pw_gid) < 0) {
+-		fprintf(stderr, "Unable to change ownership of %s to %s/%s (%m)\n",
+-			TEAMD_RUN_DIR, TEAMD_USER, TEAMD_GROUP);
+-		goto error;
+-	}
++	/* Try to change owner while still being root. We might not have
++	 * capabilities, so this might fail. At this point, we accept that,
++	 * because the directory might have been prepared with a suitable owner
++	 * already. But on failure, we will retry as the new user below.
++	 */
++	chown_succeeded = (chown(TEAMD_RUN_DIR, pw->pw_uid, pw->pw_gid) == 0);
+ 
+ 	if (prctl(PR_SET_KEEPCAPS, 1, 0, 0, 0) < 0)
+ 		goto error;
+@@ -1758,6 +1760,12 @@ static int teamd_drop_privileges()
+ 		goto error;
+ 	}
+ 
++	if (!chown_succeeded && chown(TEAMD_RUN_DIR, pw->pw_uid, pw->pw_gid) < 0) {
++		fprintf(stderr, "Unable to change ownership of %s to %s/%s (%m)\n",
++			TEAMD_RUN_DIR, TEAMD_USER, TEAMD_GROUP);
++		goto error;
++	}
++
+ 	if ((my_caps = cap_init()) == NULL)
+ 		goto error;
+ 	if (cap_set_flag(my_caps, CAP_EFFECTIVE, ARRAY_SIZE(cv), cv, CAP_SET) < 0)
+-- 
+2.31.1
+

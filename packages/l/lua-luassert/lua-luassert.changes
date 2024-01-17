@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Mar 16 18:17:12 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Change upstream homepage to the current one at Lunar Modules.
+
+-------------------------------------------------------------------
+Wed Nov 23 10:35:45 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
+Thu Feb 11 09:50:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %lua_provides: add the lua-mod_name provides/obsoletes to
+  the lua version matching the distro default.
+
+-------------------------------------------------------------------
+Mon Jul  6 19:06:23 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
+Mon Oct 28 17:11:55 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for luassert 1.7.11

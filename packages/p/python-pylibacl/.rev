@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ccd347defca0602961efbf3307e7d3c</srcmd5>
+    <version>0.5.3</version>
+    <time>1485769656</time>
+    <user>dimstar_suse</user>
+    <comment>required for sc-controller</comment>
+    <requestid>451836</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d3aebe180df171d7f0e2df009af98b8b</srcmd5>
+    <version>0.5.3</version>
+    <time>1571210127</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+- We really don't need to support SLE-11 in openSUSE packages.</comment>
+    <requestid>738383</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>91edbb354a5f9d529177a87e537cb1a3</srcmd5>
+    <version>0.5.4</version>
+    <time>1578606768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.4:
+  * Switch to python3 interpreter
+  * minor documentation improvements
+- Switch to singlespec</comment>
+    <requestid>762227</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6da12fe66117209d08051516ab077148</srcmd5>
+    <version>0.5.4</version>
+    <time>1582643199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778816</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef4328c962f6977d0badd83cbb23a3ec</srcmd5>
+    <version>0.6.0</version>
+    <time>1648665349</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  - Support for pathlib objects in `apply_to` and `has_extended`
+    functions when running with Python 3.6 and newer.
+  - Use of built-in C API functions for bytes/unicode/pathlib conversion
+    when dealing with file names, removing custom code (with the
+    associated benefits).
+  - Initialisation protocol has been changed, to disallow uninitialised
+    objects; this means that `__new__` will always create valid objects,
+    to prevent the need for checking initialisation status in all code
+    paths; this also (implicitly) fixes memory leaks on re-initialisation
+    (calling `__init__(342200246)` on an existing object) and segfaults (!) on
+    non-initialised object attribute access. Note ACL re-initialisation is
+    tricky and (still) leads to undefined behaviour of existing Entry
+    objects pointing to it.
+  - Fix another bug in ACL re-initialisation where failures would result
+    in invalid objects; now failed re-initialisation does not touch the
+    original object.
+  - Restore `__setstate__`/`__getstate__` support on Linux; this was
+    inadvertently removed due a typo(!) when adding support for it in
+    FreeBSD. Pickle should work again for ACL instances, although not sure
+    how stable this serialisation format actually is.
+  - Additionally, slightly change `__setstate__()` input to not allow
+    Unicode, since the serialisation format is an opaque binary format.
+  - Fix (and change) entry qualifier (which is a user/group ID) behaviour:
+    assume/require that uid_t/gid_t are unsigned types (they are with
+    glibc, MacOS and FreeBSD at least; the standard doesn't document the
+    signedness), and convert parsing and returning the qualifier to behave
+    accordingly. The breakage was most apparent on 32-bit architectures,
+    in which context the problem was originally reported (see issue #13).
+  - Added a `data` keyword argument to `ACL()`, which allows restoring an</comment>
+    <requestid>965828</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>534c253302897a76eec9b12a5c7f9cb6</srcmd5>
+    <version>0.6.0</version>
+    <time>1693685272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108573</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2900df7af1840fae3af0b4df9806bcb5</srcmd5>
+    <version>0.7.0</version>
+    <time>1704753889</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.0:
+  * Important: Python 3.7 is the minimum supported version, due
+    to difficulty of testing old releases, and the fact that
+    everything older has been deprecated a long time ago
+    (e.g. 3.6 at the end of 2021).
+  * Improve error handling in some corner cases (not expected to
+    have any real-life impact, but who knows).
+  * Improved testing coverage and test infrastructure.
+  * Modernise parts of the C code based on recent Python version
+  * guidelines.
+  * Add a simple security policy and contribution guidelines.
+
+- apply a manually merged version of
+  - Make test suite pass under FreeBSD, which has a stricter
+    behaviour with regards to invalid ACLs (which we do exercise
+  - No visible changes release: just fix tests when running under</comment>
+    <requestid>1137452</requestid>
+  </revision>
+</revisionlist>

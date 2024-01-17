@@ -1,0 +1,498 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c097db8d8debcd7b5fa5ba844695f2b</srcmd5>
+    <version>20200717</version>
+    <time>1601996779</time>
+    <user>dimstar_suse</user>
+    <comment>Policy is in better state now and should be fine for people with basic SELinux knowledge</comment>
+    <requestid>832021</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>65503cbc21b6c88fc4bacb596265d757</srcmd5>
+    <version>20200910</version>
+    <time>1602073101</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>839873</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73afd453550fca011b73f1cdfd3b0bc4</srcmd5>
+    <version>20201016</version>
+    <time>1603448412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842814</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4fc241cb3c4fa0b31f1e587e1862bb1</srcmd5>
+    <version>20201029</version>
+    <time>1604322242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844986</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8db23b421cd307fbf5bef90a78548384</srcmd5>
+    <version>20201029</version>
+    <time>1605290086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847443</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2fb7838c45bcc2a4c4362b771e71550f</srcmd5>
+    <version>20210111</version>
+    <time>1610736259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862277</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f2e695cb30400dcfd26f3a4f0ca1cf9</srcmd5>
+    <version>20210223</version>
+    <time>1614684462</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874853</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>51651f0ab95bab443e41ec865ee1a5f8</srcmd5>
+    <version>20210309</version>
+    <time>1616598531</time>
+    <user>dimstar_suse</user>
+    <comment>big toolchain update, please stage together. so versions change, so this has high potential to break stuff. Probably best to stage it isolated</comment>
+    <requestid>878582</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe8ba4f6b7ea6f26f624e55a5609af8b</srcmd5>
+    <version>20210419</version>
+    <time>1619107426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886701</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9cda263dff91190e823aec9eac73bf3a</srcmd5>
+    <version>20210419</version>
+    <time>1619729063</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Recommends for selinux-autorelabel (bsc#1181837)
+- Prevent libreoffice fonts from changing types on every relabel 
+  (bsc#1185265). Added fix_libraries.patch
+
+- Transition unconfined users to ldconfig type (bsc#1183121).
+  Extended fix_unconfineduser.patch</comment>
+    <requestid>888543</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e31120eba3786307956b2c95aae88c9b</srcmd5>
+    <version>20210419</version>
+    <time>1620398722</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>890550</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>aec050849d03aa73d10e04ece420cb85</srcmd5>
+    <version>20210419</version>
+    <time>1621531464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893917</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>fdf7d3970c4be32aa209b29639848731</srcmd5>
+    <version>20210419</version>
+    <time>1621805429</time>
+    <user>dimstar_suse</user>
+    <comment>- allow systemd to watch /usr, /usr/lib, /etc, /etc/pki as we have path units
+  that trigger on changes in those.
+  Added fix_systemd_watch.patch
+- own /usr/share/selinux/packages/$SELINUXTYPE/ and
+  /var/lib/selinux/$SELINUXTYPE/active/modules/* to allow packages to install
+  files there</comment>
+    <requestid>894727</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>4b66f4dc272233ecad12a96c62137107</srcmd5>
+    <version>20210419</version>
+    <time>1626045883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904732</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>51a4bdc5b894f3f18f9cdf013285503c</srcmd5>
+    <version>20210716</version>
+    <time>1627898673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909370</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e49382072205d10a78c36b493c3a2fcb</srcmd5>
+    <version>20210716</version>
+    <time>1629373141</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912873</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>320f6ab43e772aaacd49ab4568189f75</srcmd5>
+    <version>20210716</version>
+    <time>1630617608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915717</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>56449a636f38dcee0997f3e4099b8873</srcmd5>
+    <version>20210716</version>
+    <time>1633120134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922280</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>87d05a60ccac41e8b562939a0e2ab7ea</srcmd5>
+    <version>20210716</version>
+    <time>1635628410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927915</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9d22069b2edfda5438115892552a51c5</srcmd5>
+    <version>20211111</version>
+    <time>1636986360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930935</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9377ad2eed405ab8ad839a2b5ee5f4ea</srcmd5>
+    <version>20211111</version>
+    <time>1642724714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947458</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0006e501f9d84f8d9575fb7f2815bd82</srcmd5>
+    <version>20220124</version>
+    <time>1643228791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948335</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>da9c703c8a862216f2d9a1a77de1e3bd</srcmd5>
+    <version>20220124</version>
+    <time>1644617229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953129</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>73e21fc2f9f5783752c307b6a68b39a9</srcmd5>
+    <version>20220124</version>
+    <time>1645891318</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>957363</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ad0336bc46c6c117ccb9dcc4d19f850d</srcmd5>
+    <version>20220520</version>
+    <time>1655732203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978298</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4e426c932e819d69b47f705d7288e476</srcmd5>
+    <version>20220624</version>
+    <time>1656145432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984856</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a8f34ffa48c33dbc1b4886d1360dec4c</srcmd5>
+    <version>20220624</version>
+    <time>1657716954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988936</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>147d7ba0902f4a95a8666b4d7ef90898</srcmd5>
+    <version>20220714</version>
+    <time>1658161964</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989143</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>02db776fa0cb7c997bca3b294bcfa960</srcmd5>
+    <version>20220714</version>
+    <time>1659106031</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991558</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>8d5b3bf5d316730c258071267d1325a0</srcmd5>
+    <version>20220714</version>
+    <time>1661432956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999231</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>40938fb61af8699d94d21eb9a8230307</srcmd5>
+    <version>20220714</version>
+    <time>1662239916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000830</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>ab22975ca38189f6d53c798c520bb791</srcmd5>
+    <version>20220714</version>
+    <time>1664553426</time>
+    <user>RBrownFactory</user>
+    <comment>- Update fix_networkmanager.patch to ensure NetworkManager chrony
+  dispatcher is properly labled and update fix_chronyd.patch to ensure
+  chrony helper script has proper label to be used by NetworkManager.
+  Also allow NetworkManager_dispatcher_custom_t to query systemd status
+  (bsc#1203824)
+
+- Update fix_xserver.patch to add greetd support (bsc#1198559)
+
+- Revamped rtorrent module</comment>
+    <requestid>1007016</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>f7c876c3cd7c10368ad7c5bc13a118d9</srcmd5>
+    <version>20220714</version>
+    <time>1665420221</time>
+    <user>favogt_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008716</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7d58973de0cc8c01244b05d958e291be</srcmd5>
+    <version>20221019</version>
+    <time>1666440782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030152</requestid>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>f7c876c3cd7c10368ad7c5bc13a118d9</srcmd5>
+    <version>20220714</version>
+    <time>1666602781</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1204605</comment>
+    <requestid>1030696</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>7d58973de0cc8c01244b05d958e291be</srcmd5>
+    <version>20221019</version>
+    <time>1668514693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035583</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>1aa22ca3aff22ebda90e07f28240a122</srcmd5>
+    <version>20221019</version>
+    <time>1669381690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038037</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>611dee33337e992d096d1f551d68da3e</srcmd5>
+    <version>20221019</version>
+    <time>1669983120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039252</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>b52fc498c940644cd6ffbf4b9f8da288</srcmd5>
+    <version>20221019</version>
+    <time>1671023441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042580</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>0340e4b97476b504dfd310750ac7177a</srcmd5>
+    <version>20221019</version>
+    <time>1671128679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043074</requestid>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>af0f89597ec6ed253bf9b8f6c1228ce1</srcmd5>
+    <version>20221019</version>
+    <time>1671305770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043279</requestid>
+  </revision>
+  <revision rev="42" vrev="8">
+    <srcmd5>9103409b5d9043eb35366c3d80050f79</srcmd5>
+    <version>20221019</version>
+    <time>1673724642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058006</requestid>
+  </revision>
+  <revision rev="43" vrev="9">
+    <srcmd5>a71a71476865dc7623b3509ec13d24fc</srcmd5>
+    <version>20221019</version>
+    <time>1678204105</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove erroneous SUSE man page. Will not be created with the
+  3.5 toolchain</comment>
+    <requestid>1069867</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bbc56b7e3d573fcbd551f002192a9376</srcmd5>
+    <version>20230321</version>
+    <time>1679520558</time>
+    <user>dimstar_suse</user>
+    <comment>please stage this with the microos-tools changes. Should now be good since kernel_t is unconfined again</comment>
+    <requestid>1073587</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0e9d4260e418f9bed557629cbf62af83</srcmd5>
+    <version>20230420</version>
+    <time>1682079352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230420:
+  * libzypp creates temporary files in /var/adm/mount. Label it with
+    rpm_var_cache_t to prevent wrong labels in /var/cache/zypp
+  * only use rsync_exec_t for the rsync server, not for the client
+    (bsc#1209890)
+  * properly label sshd-gen-keys-start to ensure ssh host keys have proper
+    labels after creation
+  * Allow dovecot-deliver write to the main process runtime fifo files
+  * Allow dmidecode write to cloud-init tmp files
+  * Allow chronyd send a message to cloud-init over a datagram socket
+  * Allow cloud-init domain transition to insights-client domain
+  * Allow mongodb read filesystem sysctls
+  * Allow mongodb read network sysctls
+  * Allow accounts-daemon read generic systemd unit lnk files
+  * Allow blueman watch generic device dirs
+  * Allow nm-dispatcher tlp plugin create tlp dirs
+  * Allow systemd-coredump mounton /usr
+  * Allow rabbitmq to read network sysctls
+  * Allow certmonger dbus chat with the cron system domain
+  * Allow geoclue read network sysctls
+  * Allow geoclue watch the /etc directory
+  * Allow logwatch_mail_t read network sysctls
+  * allow systemd_resolved_t to bind to all nodes (bsc#1200182)
+  * Allow insights-client read all sysctls
+  * Allow passt manage qemu pid sock files
+  * Allow sssd read accountsd fifo files
+  * Add support for the passt_t domain
+  * Allow virtd_t and svirt_t work with passt
+  * Add new interfaces in the virt module
+  * Add passt interfaces defined conditionally</comment>
+    <requestid>1080824</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1f8b3d57bc817a975ce34e88b56681fe</srcmd5>
+    <version>20230425</version>
+    <time>1682522668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082789</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>ea6a3c052afb4585e2873c0ca19d60d7</srcmd5>
+    <version>20230622</version>
+    <time>1687630414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094793</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0a83adaeb82b504f94ed1d41f63d7fa9</srcmd5>
+    <version>20230728</version>
+    <time>1690654188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101215</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>ffa4def9c0ef80eba16aec9705e77e7d</srcmd5>
+    <version>20230728</version>
+    <time>1696528984</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115652</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>29a92fa8a876a1e3a20bf9cff96f2880</srcmd5>
+    <version>20231012</version>
+    <time>1697231628</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117140</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>13fa62f41e59af5f50420afaf04c7881</srcmd5>
+    <version>20231030</version>
+    <time>1698872962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1121154</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>148d54426c4deb9294a6cd12367df845</srcmd5>
+    <version>20231030</version>
+    <time>1700771937</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128144</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>28f8376690397ff85f95042f5a557210</srcmd5>
+    <version>20231124</version>
+    <time>1701023792</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128521</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>4bf0abe3e963e15241bcb177fa2e53c6</srcmd5>
+    <version>20231124</version>
+    <time>1702327783</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132428</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e3baa2ee73ac98dc39e74ac9beca9fa3</srcmd5>
+    <version>20240104</version>
+    <time>1705099453</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138076</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0ecc2122fc9344037d0f5927c0857aa6</srcmd5>
+    <version>20240116</version>
+    <time>1705437411</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139103</requestid>
+  </revision>
+</revisionlist>

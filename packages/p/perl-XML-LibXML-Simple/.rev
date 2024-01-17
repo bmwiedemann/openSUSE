@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39bbf1875eef00e2b52b92a459fd4137</srcmd5>
+    <version>0.91</version>
+    <time>1338284697</time>
+    <user>coolo</user>
+    <comment>TeXLive depends on it</comment>
+    <requestid>122427</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>39bbf1875eef00e2b52b92a459fd4137</srcmd5>
+    <version>0.91</version>
+    <time>1340183953</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>39bbf1875eef00e2b52b92a459fd4137</srcmd5>
+    <version>0.91</version>
+    <time>1359109851</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bbb6f56352dba69f27fcd88bf4a32218</srcmd5>
+    <version>0.93</version>
+    <time>1370516295</time>
+    <user>coolo</user>
+    <comment>- updated to 0.93
+       - move pod-test to xt/
+       - fix warning produced by Pod::Checker
+       - include license in the manuals. (forwarded request 177550 from coolo)</comment>
+    <requestid>177558</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>bbb6f56352dba69f27fcd88bf4a32218</srcmd5>
+    <version>0.93</version>
+    <time>1379663920</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d00d1cc2d1a59b7f7825721f496e7573</srcmd5>
+    <version>0.94</version>
+    <time>1406645276</time>
+    <user>coolo</user>
+    <comment>- updated to 0.94
+       Improvements:
+       - change documentation style.
+       - replace File::Slurp by File::Slurp::Tiny [Caleb Cushing]</comment>
+    <requestid>242678</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d00d1cc2d1a59b7f7825721f496e7573</srcmd5>
+    <version>0.94</version>
+    <time>1409302570</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad2336497004ad66d44fb2b5f092b288</srcmd5>
+    <version>0.95</version>
+    <time>1429657803</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296713</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>03c7a5f2cb8054fc93fe2eea728275a3</srcmd5>
+    <version>0.96</version>
+    <time>1458333060</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>372687</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f0617ea85763584d8f17fedb180c59c</srcmd5>
+    <version>0.97</version>
+    <time>1462865155</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393900</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>11ec1283d546b207ad5e42f8a7f6d19e</srcmd5>
+    <version>0.98</version>
+    <time>1510836990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541240</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bd2be27f73affebd5d1797d3e9f5c26b</srcmd5>
+    <version>0.99</version>
+    <time>1513676669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556881</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>31a841d34957bb35e8385cd35136a03c</srcmd5>
+    <version>1.01</version>
+    <time>1579463586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764942</requestid>
+  </revision>
+</revisionlist>

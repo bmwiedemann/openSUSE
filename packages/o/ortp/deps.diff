@@ -1,0 +1,18 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2017-07-06 00:16:45.404844863 +0200
+
+ortp/rtpsession.h includes bctoolbox/list.h, therefore must
+Require it in some form (pkgconfig / rpm - cohose pkgconfig).
+---
+ ortp.pc.in |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: ortp-1.0.1/ortp.pc.in
+===================================================================
+--- ortp-1.0.1.orig/ortp.pc.in
++++ ortp-1.0.1/ortp.pc.in
+@@ -8,3 +8,4 @@ Description: Implement the RFC3550 (RTP)
+ Version: @ORTP_PKGCONFIG_VERSION@
+ Libs: -L@libdir@ -lortp @ORTPDEPS_LIBS@
+ Cflags: -I@includedir@ @ORTPDEPS_CFLAGS@
++Requires: bctoolbox

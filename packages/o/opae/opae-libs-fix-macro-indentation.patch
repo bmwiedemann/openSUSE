@@ -1,0 +1,58 @@
+commit ad77bee0dd37435fc823e97ecb7ab5873fa04140
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Jun 4 08:59:33 2021 +0200
+
+    opae-libs: fix macro indentation
+    
+    Fixes compilation issue with newer GCC versions:
+    /home/abuild/rpmbuild/BUILD/opae-2.0.01.0.776b2b2718f7/opae-libs/include/opae/log.h:51:1: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+       51 | if (p > file)                                                  \
+          | ^~
+    /home/abuild/rpmbuild/BUILD/opae-2.0.01.0.776b2b2718f7/opae-libs/include/opae/log.h:69:9: note: in expansion of macro '__SHORT_FILE__'
+       69 |         __SHORT_FILE__, __LINE__, __func__, ##__VA_ARGS__)
+          |         ^~~~~~~~~~~~~~
+    /home/abuild/rpmbuild/BUILD/opae-2.0.01.0.776b2b2718f7/opae-libs/libopae-c/opae_int.h:85:25: note: in expansion of macro 'OPAE_ERR'
+       85 |                         OPAE_ERR("pthread_mutex_unlock failed: %s", \
+          |                         ^~~~~~~~
+    /home/abuild/rpmbuild/BUILD/opae-2.0.01.0.776b2b2718f7/opae-libs/libopae-c/pluginmgr.c:802:9: note: in expansion of macro 'opae_mutex_unlock'
+      802 |         opae_mutex_unlock(res, &adapter_list_lock);
+          |         ^~~~~~~~~~~~~~~~~
+    /home/abuild/rpmbuild/BUILD/opae-2.0.01.0.776b2b2718f7/opae-libs/include/opae/log.h:53:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+       53 |         p;                                                     \
+          |         ^
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git opae-libs/include/opae/log.h opae-libs/include/opae/log.h
+index f913b48f0f8a..96b3742f5482 100644
+--- opae-libs/include/opae/log.h
++++ opae-libs/include/opae/log.h
+@@ -40,17 +40,17 @@
+ #ifdef __SHORT_FILE__
+ #undef __SHORT_FILE__
+ #endif // __SHORT_FILE__
+-#define __SHORT_FILE__                                         \
+-	({                                                     \
+-	const char *file = __FILE__;                           \
+-	const char *p = file;                                  \
+-while (*p)                                                     \
+-	++p;                                                   \
+-while ((p > file) && ('/' != *p) && ('\\' != *p))              \
+-	--p;                                                   \
+-if (p > file)                                                  \
+-	++p;                                                   \
+-	p;                                                     \
++#define __SHORT_FILE__										   \
++	({														   \
++		const char *file = __FILE__;						   \
++		const char *p = file;                                  \
++		while (*p)											   \
++			++p;											   \
++		while ((p > file) && ('/' != *p) && ('\\' != *p))	   \
++			--p;											   \
++		if (p > file)										   \
++			++p;											   \
++		p;                                                     \
+ })
+ 
+ #ifdef OPAE_MSG

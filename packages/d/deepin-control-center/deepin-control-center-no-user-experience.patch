@@ -1,0 +1,12 @@
+diff -Nur dde-control-center-5.5.83/src/frame/window/modules/commoninfo/commoninfowidget.cpp dde-control-center-5.5.83-new/src/frame/window/modules/commoninfo/commoninfowidget.cpp
+--- dde-control-center-5.5.83/src/frame/window/modules/commoninfo/commoninfowidget.cpp	2022-06-06 10:44:57.000000000 +0800
++++ dde-control-center-5.5.83-new/src/frame/window/modules/commoninfo/commoninfowidget.cpp	2022-06-27 11:23:59.830903574 +0800
+@@ -115,8 +115,6 @@
+                                   });
+             }
+         }
+-        m_itemList.append({"dcc_ue_plan", tr("User Experience Program"),
+-                           QMetaMethod::fromSignal(&CommonInfoWidget::requestShowUEPlanWidget), nullptr, "userExperienceProgram"});
+ 
+ #if 0
+         m_itemList.append({"", tr("Tablet Mode"),

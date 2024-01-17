@@ -1,0 +1,966 @@
+-------------------------------------------------------------------
+Tue Nov 28 21:04:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.60
+  * Implemented dualstack IPv4 and IPv6 backend support, as per
+    draft gRFC A61. xDS support currently guarded by
+    GRPC_EXPERIMENTAL_XDS_DUALSTACK_ENDPOINTS env var.
+  * Support for setting proxy for addresses.
+  * Add v1 reflection.
+
+-------------------------------------------------------------------
+Sat Nov 18 08:56:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.59.3:
+  * Security - Revocation: Crl backport to 1.59. (#34926)
+
+-------------------------------------------------------------------
+Tue Nov 14 10:21:58 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Adjust RPATH handling to fix FTBFS on SLE-15
+  * Set CMAKE_SKIP_RPATH to FALSE
+  * Set CMAKE_SKIP_INSTALL_RPATH to TRUE
+- Build with gcc-12 on SLE-15 to fix FTBFS on ppc64le
+
+-------------------------------------------------------------------
+Tue Oct 31 05:21:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.59.2
+  * Fixes for CVE-2023-44487
+
+-------------------------------------------------------------------
+Sun Oct  8 00:05:42 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.59.1:
+  * C++: Fix MakeCordFromSlice memory bug (gh#grpc/grpc#34552).
+
+-------------------------------------------------------------------
+Sat Sep 30 22:13:53 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.59.0:
+  * xds ssa: Remove environment variable protection for stateful
+    affinity (gh#grpc/grpc#34435).
+  * c-ares: fix spin loop bug when c-ares gives up on a socket
+    that still has data left in its read buffer
+    (gh#grpc/grpc#34185).
+  * Deps: Adding upb as a submodule (gh#grpc/grpc#34199).
+  * EventEngine: Update Cancel contract on closure deletion
+    timeline (gh#grpc/grpc#34167).
+  * csharp codegen: Handle empty base_namespace option value to
+    fix gh#grpc/grpc#34113 (gh#grpc/grpc#34137).
+  * Ruby:
+    - replace strdup with gpr_strdup (gh#grpc/grpc#34177).
+    - drop ruby 2.6 support (gh#grpc/grpc#34198).
+- Drop fix_grpconfig_cmake.patch: incorporated upstream.
+- rpmlintrc: Drop unused filter for pem-certificate.
+
+-------------------------------------------------------------------
+Thu Sep 14 13:06:18 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to release 1.58.1
+  * Reintroduced c-ares 1.14 or later support
+- Pass "-f" flag to "rm" when removing CMakeConfigureLog.yaml
+
+-------------------------------------------------------------------
+Wed Sep 13 10:49:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add fix_grpconfig_cmake.patch to make find_package(gRPC) in
+  downstream using packages functional again.
+
+-------------------------------------------------------------------
+Wed Sep  6 16:02:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.58
+  * Build system updates
+  * ruby extension: remove unnecessary background thread startup
+    wait logic that interferes with forking
+
+-------------------------------------------------------------------
+Wed Aug  9 01:02:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.57
+  * EventEngine: Change GetDNSResolver to return
+    absl::StatusOr<std::unique_ptr<DNSResolver>>.
+  * Improve server handling of file descriptor exhaustion.
+  * Add a channel argument to set DSCP on streams.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:25:03 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Don't include non-deterministic CMakeConfigureLog.yaml in sources
+  to fix reproducible builds
+
+-------------------------------------------------------------------
+Sat Jul 15 06:20:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.56.2
+  * Improve server handling of file descriptor exhaustion
+
+-------------------------------------------------------------------
+Wed Jun 28 07:09:25 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Remove unnecessary BuildRequires: zypper
+
+-------------------------------------------------------------------
+Mon Jun 19 03:28:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.56.0
+  * core: Add support for vsock transport.
+  * EventEngine: Change TXT lookup result type to
+    std::vector<std::string>.
+  * C++/Authz: support customizable audit functionality for
+    authorization policy.
+
+-------------------------------------------------------------------
+Tue Jun 13 21:09:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- pin to protobuf < 22 until next version update
+
+-------------------------------------------------------------------
+Tue May  2 10:15:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.54.1
+  * Bring declarations and definitions to be in sync
+
+-------------------------------------------------------------------
+Fri Apr 14 11:07:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.54
+  * XDS: enable XDS federation by default
+  * TlsCreds: Support revocation of intermediate in chain
+
+-------------------------------------------------------------------
+Fri Dec  2 00:11:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.51.1
+  * Only a macOS/aarch64-related change
+
+-------------------------------------------------------------------
+Mon Nov 21 20:09:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.51
+  * c-ares DNS resolver: fix logical race between resolution
+    timeout/cancellation and fd readability.
+  * Remove support for pthread TLS
+
+-------------------------------------------------------------------
+Fri Oct 28 09:58:50 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 1.50.1
+  Fix Bazel 4 support and objc bazel tests on python3.9 (#31410)
+
+-------------------------------------------------------------------
+Fri Oct 14 18:04:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 1.50.0
+  * Core
+    - Derive EventEngine from std::enable_shared_from_this. (#31060)
+    - Revert "Revert "[chttp2] fix stream leak with queued flow control
+      update and absence of writes (#30907)" (#30991)". (#30992)
+    - [chttp2] fix stream leak with queued flow control update and absence of writes. (#30907)
+    - Remove gpr_codegen. (#30899)
+    - client_channel: allow LB policy to communicate update errors to resolver. (#30809)
+    - FaultInjection: Fix random number generation. (#30623)
+  * C++
+    - OpenCensus Plugin: Add measure and views for started RPCs. (#31034)
+  * C#
+    - Grpc.Tools: Parse warnings from libprotobuf (fix #27502). (#30371)
+    - Grpc.Tools add support for env variable GRPC_PROTOC_PLUGIN (fix #27099). (#30411)
+    - Grpc.Tools document AdditionalImportDirs. (#30405)
+    - Fix OutputOptions and GrpcOutputOptions (issue #25950). (#30410)
+  * Python
+    - Support Python 3.11. (#30818)
+  * Ruby
+    - Fix ruby windows ucrt build. (#31051)
+    - Drop support for ruby 2.5. (#30699)
+
+-------------------------------------------------------------------
+Thu Sep 22 08:43:56 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 1.49.1
+  * All
+    - Update protobuf to v21.6 on 1.49.x. (#31028)
+  * Ruby
+    - Backport "Fix ruby windows ucrt build #31051" to 1.49.x. (#31053)
+- Update to release 1.49.0
+  * Core
+    - Backport: "stabilize the C2P resolver URI scheme" to v1.49.x. (#30654)
+    - Bump core version. (#30588)
+    - Update OpenCensus to HEAD. (#30567)
+    - Update protobuf submodule to 3.21.5. (#30548)
+    - Update third_party/protobuf to 3.21.4. (#30377)
+    - [core] Remove GRPC_INITIAL_METADATA_CORKED flag. (#30443)
+    - HTTP2: Fix keepalive time throttling. (#30164)
+    - Use AnyInvocable in EventEngine APIs. (#30220)
+  Python
+    - Support Python 3.11 (#30818). (#30944)
+    - Add type stub generation support to grpcio-tools. (#30498)
+  Ruby
+    - Backport "Drop support for ruby 2.5 (#30699)" to v1.49.x. (#30762)
+
+-------------------------------------------------------------------
+Thu Sep  1 08:08:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.48.1
+  * Backport EventEngine Forkables
+
+-------------------------------------------------------------------
+Sat Aug 27 12:02:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.48.0
+  * C++14 is now required
+  * xDS: Workaround to get gRPC clients working with istio
+- Drop grpc-correct-pkgconfig-path.patch (merged)
+- Drop grpc-cxx17.patch, grpc-no-return-from-non-void-function.patch
+
+-------------------------------------------------------------------
+Fri May 20 21:20:13 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 1.46.3
+  * backport: xds: use federation env var to guard new-style
+    resource name parsing (#29725) #29727
+
+-------------------------------------------------------------------
+Mon May 16 19:18:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.46.2
+  * Ruby fixes
+
+-------------------------------------------------------------------
+Wed May 11 19:16:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.46.1
+  * This release contains unspecified refinements, improvements
+    and bug fixes.
+
+-------------------------------------------------------------------
+Thu May  5 09:26:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.46
+  * Added HTTP/1.1 support in httpcli
+  * HTTP2: Add graceful goaway
+
+-------------------------------------------------------------------
+Sun May  1 11:37:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.45.2
+  * Various fixes related to XDS
+  * HTTP2: Should not run cancelling logic on servers when
+    receiving GOAWAY
+
+-------------------------------------------------------------------
+Sat Apr  2 17:25:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.45.1
+  * Switched to epoll1 as a default polling engine for Linux
+
+-------------------------------------------------------------------
+Sat Mar 19 15:08:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.45.0:
+  * Core:
+    - Backport "Include ADS stream error in XDS error updates
+      (#29014)" to 1.45.x [gh#grpc/grpc#29121].
+    - Bump core version to 23.0.0 for upcoming release
+      [gh#grpc/grpc#29026].
+    - Fix memory leak in HTTP request security handshake
+      cancellation [gh#grpc/grpc#28971].
+    - CompositeChannelCredentials: Comparator implementation
+      [gh#grpc/grpc#28902].
+    - Delete custom iomgr [gh#grpc/grpc#28816].
+    - Implement transparent retries [gh#grpc/grpc#28548].
+    - Uniquify channel args keys [gh#grpc/grpc#28799].
+    - Set trailing_metadata_available for recv_initial_metadata
+      ops when generating a fake status [gh#grpc/grpc#28827].
+    - Eliminate gRPC insecure build [gh#grpc/grpc#25586].
+    - Fix for a racy WorkSerializer shutdown [gh#grpc/grpc#28769].
+    - InsecureCredentials: singleton object [gh#grpc/grpc#28777].
+    - Add http cancel api [gh#grpc/grpc#28354].
+    - Memory leak fix on windows in grpc_tcp_create()
+      [gh#grpc/grpc#27457].
+    - xDS: Rbac filter updates [gh#grpc/grpc#28568].
+  * C++
+    - Bump the minimum gcc to 5 [gh#grpc/grpc#28786].
+    - Add experimental API for CRL checking support to gRPC C++
+      TlsCredentials [gh#grpc/grpc#28407].
+- Add grpc-no-return-from-non-void-function.patch to return a
+  default string from a function defined to return a string.
+
+-------------------------------------------------------------------
+Tue Feb 15 21:05:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.44.0
+  * Add a trace to list which filters are contained in a
+    channel stack.
+  * Remove grpc_httpcli_context.
+  * xDS: Add support for RBAC HTTP filter.
+  * API to cancel grpc_resolve_address.
+
+-------------------------------------------------------------------
+Tue Feb  8 22:32:00 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.43.2:
+  * Fix google-c2p-experimental issue (gh#grpc/grpc#28692).
+- Changes from version 1.43.0:
+  * Core:
+    - Remove redundant work serializer usage in c-ares windows
+      code (gh#grpc/grpc#28016).
+    - Support RDS updates on the server (gh#grpc/grpc#27851).
+    - Use WorkSerializer in XdsClient to propagate updates in a
+      synchronized manner (gh#grpc/grpc#27975).
+    - Support Custom Post-handshake Verification in TlsCredentials
+      (gh#grpc/grpc#25631).
+    - Reintroduce the EventEngine default factory
+      (gh#grpc/grpc#27920).
+    - Assert Android API >= v21 (gh#grpc/grpc#27943).
+    - Add support for abstract unix domain sockets
+      (gh#grpc/grpc#27906).
+  * C++:
+    - OpenCensus: Move metadata storage to arena
+      (gh#grpc/grpc#27948).
+  * [C#] Add nullable type attributes to Grpc.Core.Api
+    (gh#grpc/grpc#27887).
+- Update package name libgrpc++1 to libgrpc++1_43 in keeping with
+  updated so number.
+- Add Requires: libupb%lver = %version on grpc-devel.
+- Update %{name}-rpmlintrc file to use 'filelist-forbidden-fhs23'
+  as a filter instead of the now superseded
+  'suse-filelist-forbidden-fhs23'.
+
+-------------------------------------------------------------------
+Mon Nov 15 20:27:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.41.1
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Mon Sep 27 19:12:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.41.0
+  * xDS: Remove environmental variable guard for security.
+  * xDS Security: Use new way to fetch certificate provider
+    plugin instance config.
+  * xDS server serving status: Use a struct to allow more fields
+    to be added in the future.
+
+-------------------------------------------------------------------
+Mon Aug 30 18:56:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.39.1
+  * Fix C# protoc plugin argument parsing on 1.39.x
+
+-------------------------------------------------------------------
+Mon Aug 30 17:52:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove cmake's build .log from grpc-source to make
+  build-compare happier.
+
+-------------------------------------------------------------------
+Wed Jul 28 11:09:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.39.0:
+  * Core
+    - Initialize tcp_posix for CFStream when needed
+      (gh#grpc/grpc#26530).
+    - Update boringssl submodule (gh#grpc/grpc#26520).
+    - Fix backup poller races (gh#grpc/grpc#26446).
+    - Use default port 443 in HTTP CONNECT request
+      (gh#grpc/grpc#26331).
+  * C++
+    - New iomgr implementation backed by the EventEngine API
+      (gh#grpc/grpc#26026).
+    - async_unary_call: add a Destroy method, called by
+      std::default_delete (gh#grpc/grpc#26389).
+    - De-experimentalize C++ callback API (gh#grpc/grpc#25728).
+  * PHP: stop reading composer.json file just to read the version
+    string (gh#grpc/grpc#26156).
+  * Ruby: Set XDS user agent in ruby via macros
+    (gh#grpc/grpc#26268).
+- Update so version in keeping with upstream (16 -> 18).
+
+-------------------------------------------------------------------
+Tue Jun 22 12:20:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.38.1
+  * Build system updates
+
+-------------------------------------------------------------------
+Wed Jun  2 23:13:25 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add grpc-cxx17.patch
+
+-------------------------------------------------------------------
+Fri May 21 11:24:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.38.0
+  * Invalidate ExecCtx now before computing timeouts in all
+    repeating timer events using a WorkSerializer or combiner.
+  * Fix use-after-unref bug in fault_injection_filter
+  * New gRPC EventEngine Interface
+  * Allow the AWS_DEFAULT_REGION environment variable
+  * s/OnServingStatusChange/OnServingStatusUpdate/
+- Drop 0001-Use-absl-pkg-config-instead-of-linking-them-directly.patch
+  (merged)
+
+-------------------------------------------------------------------
+Fri May 14 10:01:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add 0001-Use-absl-pkg-config-instead-of-linking-them-directly.patch
+
+-------------------------------------------------------------------
+Fri Apr 30 11:55:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.37.1
+  * Use URI form of address for channelz listen node
+  * Implementation CSDS (xDS Config Dump)
+  * xDS status notifier
+  * Remove CAS loops in global subchannel pool and simplify
+    subchannel refcounting
+
+-------------------------------------------------------------------
+Fri Mar 19 09:02:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.36.4
+  * A fix for DNS SRV lookups on Windows
+
+-------------------------------------------------------------------
+Fri Mar 19 00:13:19 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.36.3:
+  * No user-relevant changes
+
+-------------------------------------------------------------------
+Sat Mar  6 09:08:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.36.2
+  * No user-relevant changes
+
+-------------------------------------------------------------------
+Thu Mar  4 09:53:13 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.36.1:
+  * Core:
+  * Remove unnecessary internal pollset set in c-ares DNS resolver
+  * Support Default Root Certs in Tls Credentials
+  * back-port: add env var protection for google-c2p resolver
+  * C++:
+  * Move third party identity C++ api out of experimental namespace
+  * refactor!: change error_details functions to templates
+  * Support ServerContext for callback API
+  * PHP:
+  * support for PSM security
+  * fixed segfault on reused call object
+  * fixed phpunit 8 warnings
+  * Python:
+  * Implement Python Client and Server xDS Creds
+  * Ruby:
+  * Drop support for ruby 2.3
+
+-------------------------------------------------------------------
+Fri Feb 19 23:32:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unused "b" symlink (no longer used since openSUSE
+  switched from makefile to cmake with 1.32)
+
+-------------------------------------------------------------------
+Wed Jan 13 20:20:44 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.34.1:
+  * Backport "Lazily import grpc_tools when using runtime
+    stub/message generation" to 1.34.x (gh#grpc/grpc#25011).
+  * Backport "do not use <PublicSign>true</PublicSign> on
+    non-windows" to 1.34.x (gh#grpc/grpc#24995).
+- Drop untracked googletest-1.10.0.tar.gz source.
+
+-------------------------------------------------------------------
+Sun Dec  6 13:01:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.34.0:
+  * Core:
+    - Protect xds security code with the environment variable
+      "GRPC_XDS_EXPERIMENTAL_SECURITY_SUPPORT"
+      (gh#grpc/grpc#24782).
+    - Add support for "unix-abstract:" URIs to support abstract
+      unix domain sockets (gh#grpc/grpc#24500).
+    - Increment Index when parsing not plumbed SAN fields
+      (gh#grpc/grpc#24601).
+    - Revert "Revert "Deprecate
+      GRPC_ARG_HTTP2_MIN_SENT_PING_INTERVAL_WITHOUT_DATA_MS""
+      (gh#grpc/grpc#24518).
+    - xds: Set status code to INVALID_ARGUMENT when NACKing
+      (gh#grpc/grpc#24516).
+    - Include stddef.h in address_sorting.h (gh#grpc/grpc#24514).
+    - xds: Add support for case_sensitive option in RouteMatch
+      (gh#grpc/grpc#24381).
+  * C++:
+    - Fix --define=grpc_no_xds=true builds (gh#grpc/grpc#24503).
+    - Experimental support and tests for
+      CreateCustomInsecureChannelWithInterceptorsFromFd
+      (gh#grpc/grpc#24362).
+- Pass ZLIB_LIBRARY location to cmake as it fails to find zlib
+  using find_package() after the zlib libraries were moved to
+  %{_libdir} in openSUSE:Factory (sr#851291).
+- Update so version in keeping with upstream.
+- Leave a comment on why tests cannot be run (because of
+  `make clean` required to pkg sources).
+
+-------------------------------------------------------------------
+Wed Nov 11 13:26:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing ldconfig for libupb13.
+
+-------------------------------------------------------------------
+Wed Oct 28 08:17:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.33.2
+  * Deprecate GRPC_ARG_HTTP2_MIN_SENT_PING_INTERVAL_WITHOUT_DATA_MS.
+  * Expose Cronet error message to the application layer.
+  * Remove grpc_channel_ping from surface API.
+  * Do not send BDP pings if there is no receive side activity.
+
+-------------------------------------------------------------------
+Tue Oct 27 12:31:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Use -DgRPC_ABSL_PROVIDER=package
+  (https://github.com/grpc/grpc/issues/24476)
+
+-------------------------------------------------------------------
+Thu Oct 22 11:15:31 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.33.1
+  * Core
+    - Deprecate
+      GRPC_ARG_HTTP2_MIN_SENT_PING_INTERVAL_WITHOUT_DATA_MS
+      (gh#grpc/grpc#24063).
+    - Expose Cronet error message to the application layer
+      (gh#grpc/grpc#24083).
+    - Remove grpc_channel_ping from surface API
+      (gh#grpc/grpc#23894).
+    - Do not send BDP pings if there is no receive side activity
+      (gh#grpc/grpc#22997).
+  * C++
+    - Makefile: only support building deps from submodule
+      (gh#grpc/grpc#23957).
+- Drop grpc-find-re2-via-pkgconfig.patch: incorporated upstream
+  (commit 45e413d).
+- Bump so version from 12 to 13 in keeping with upstream.
+
+-------------------------------------------------------------------
+Sun Oct 11 16:14:38 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Specify gRPC_INSTALL_LIBDIR and gRPC_INSTALL_CMAKEDIR to
+  correctly configure install paths for libraries and cmake files
+  instead of moving them after the installation.
+- Add grpc-correct-pkgconfig-path.patch to fix install path for
+  pkgconfig file relative to gRPC_INSTALL_LIBDIR.
+- Add Requires: pkgconfig(libcares) for the -devel pkg.
+
+-------------------------------------------------------------------
+Tue Sep 22 16:37:51 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add new subpackages - libupb and upb-devel. Currently, grpc
+  sources include also upb sources. Before this change, libupb and
+  upb-devel used to be included in a separate package - upb.
+
+-------------------------------------------------------------------
+Fri Sep 18 19:53:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add pkgconfig(re2) to list of Requires for grpc-devel package.
+
+-------------------------------------------------------------------
+Thu Sep 17 13:14:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Fixup 1.32.0 update with wrong grpc-devel ->
+  libgrpc-support-plugin1 require.
+
+-------------------------------------------------------------------
+Sat Sep 12 22:11:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop now-obsolescent Conflicts.
+
+-------------------------------------------------------------------
+Thu Sep 10 14:33:01 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.32.0:
+  * Core
+    - Remove stream from stalled lists on remove_stream
+      (gh#grpc/grpc#23984).
+    - Do not cancel RPC if send metadata size if larger than
+      peer's limit (gh#grpc/grpc#23806).
+    - Don't consider receiving non-OK status as an error for HTTP2
+      (gh#grpc/grpc#19545).
+    - Keepalive throttling (gh#grpc/grpc#23313).
+    - Include the target_uri in "target uri is not valid" error
+      messages (gh#grpc/grpc#23782).
+    - Fix "cannot send compressed message large than 1024B" in
+      cronet_transport (gh#grpc/grpc#23219).
+    - Receive SETTINGS frame on clients before declaring
+      subchannel READY (gh#grpc/grpc#23636).
+    - Enabled GPR_ABSEIL_SYNC (gh#grpc/grpc#23372).
+    - Experimental xDS v3 support (gh#grpc/grpc#23281).
+  * C++
+    - Upgrade bazel used for all tests to 2.2.0
+      (gh#grpc/grpc#23902).
+    - Remove test targets and test helper libraries from Makefile
+      (gh#grpc/grpc#23813).
+    - Fix repeated builds broken by re2's cmake
+      (gh#grpc/grpc#23587).
+    - Log the peer address of grpc_cli CallMethod RPCs to stderr
+      (gh#grpc/grpc#23557).
+- Use cmake to configure and cmake macros to build and install.
+- New BuildRequires: abseil-cpp-source and pkgconfig(re2); copy
+  abseil-cpp-source contents into source's third_party dir and
+  build it as a module (since we don't have the actual abseil-cpp
+  library built for openSUSE.
+- Add grpc-find-re2-via-pkgconfig.patch to enable finding system
+  Re2 library via pkg-config; taken from upstream PR
+  gh#grpc/grpc#24088.
+- Split out new shared lib package libgrpc_plugin_support1 for
+  supporting grpc plugins.
+
+-------------------------------------------------------------------
+Wed Sep  9 22:43:27 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop python modules provided by python-grpcio source package in
+  openSUSE:Factory.
+
+-------------------------------------------------------------------
+Thu Mar 12 06:53:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add conditional to build without python2 if needed
+
+-------------------------------------------------------------------
+Thu Jan  9 11:39:15 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove patch for Bazel files, which is not needed anymore:
+  * 0001-bazel-Replace-boringssl-with-openssl.patch
+
+-------------------------------------------------------------------
+Mon Dec 16 23:36:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.25
+  * Change RR to consider a subchannel in TF if it has failed
+    since it was READY.
+  * Do not create streams after a GOAWAY has been received.
+  * Prevent HTTP2 parser from queueing a lot of induced frames.
+- Drop gettid.patch
+
+-------------------------------------------------------------------
+Mon Nov 11 15:37:45 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Define BoringSSL as a Bazel dependency in WORKSPACE instead of
+  grpc_deps.bzl - using new_local_repository function is now always
+  allowed in imported modules.
+
+-------------------------------------------------------------------
+Tue Nov  5 00:43:17 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add patch which replaces BoringSSL with OpenSSL as the SSL
+  library when grpc is used as a Bazel dependency:
+  * 0001-bazel-Replace-boringssl-with-openssl.patch
+
+-------------------------------------------------------------------
+Thu Oct 10 00:23:16 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Make sure that patches are included in the source package.
+- Filter out several rpmlintrc warnings for the source package.
+
+-------------------------------------------------------------------
+Wed Oct  2 18:39:47 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.23.1
+  * Unspecific refinements, improvements, and bug fixes.
+- Add gettid.patch
+- Split libgrpc into libgrpc++ because that has a SO version
+  group of its own.
+- Bump libgrpc6 to libgrpc7 as there is actually .so.7 files.
+  Add suitable Conflicts markers.
+
+-------------------------------------------------------------------
+Thu Aug 22 18:28:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable LTO because it's broken.
+
+-------------------------------------------------------------------
+Sun Aug 18 16:29:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.23 [boo#1144068]
+  * Fixed a bug where POST_RECV_MESSAGE was not being triggered.
+  * Renamed root certificate bundle in gRPC-C++ pod.
+  * Increased lower bound on DNS re-resolution period to 30 seconds.
+  * Fixed a segfault when forking while using gevent.
+  * Added channel idleness support
+  * Added threadpool support
+
+-------------------------------------------------------------------
+Wed Jun  5 18:52:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.21.3
+  * Add SPIFFE security stack to gRPC.
+  * Re-enable ALPN check in gRPC C core SSL stack.
+
+-------------------------------------------------------------------
+Fri Apr 12 18:26:00 CEST 2019 - sbrabec@suse.com
+
+- Fix typo in Groups.
+
+-------------------------------------------------------------------
+Sat Mar 16 17:39:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.19.1
+  * Use 32-bit nanopb fields.
+  * Avoid SRV and TXT lookups for localhost.
+  * Set c-ares as the default resolver.
+
+-------------------------------------------------------------------
+Mon Jan  7 11:39:15 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Add grpc-source package - some Go programs using gRPC need
+  protobuf definitions which are included inside the source code,
+  but are not included in the devel package.
+
+-------------------------------------------------------------------
+Sun Nov 11 17:57:35 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.16
+  * Keepalive watchdog firing should return status UNAVAILABLE.
+  * Set TCP_USER_TIMEOUT socket option for Linux.
+  * Turn loading system root certificate as default.
+  * Change pick_first to not unref unselected subchannels.
+  * cmake: prevent C core from depending on libstdc++.
+  * Implement Watch method in health check service.
+
+-------------------------------------------------------------------
+Sun Nov 11 10:57:12 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 1.15.1:
+  * Document SSL portability and performance considerations. See
+    https://github.com/grpc/grpc/blob/master/doc/ssl-performance.md .
+  * Simplify call arena size growth.
+  * PF: Check connectivity state before watching.
+  * Added system roots feature to load roots from OS trust store.
+  * Fix re-resolution in pick first.
+  * Allow error strings in final_info to propagate to filters on
+    call destruction.
+  * Add resolver executor.
+  * Data race fix for lockfree_event.
+  * Channelz: Expose new Core API.
+  * cmake: disable assembly optimizations only when necessary.
+  * C++ sync server: Return status RESOURCE_EXHAUSTED if no
+    thread quota available.
+  * Use correct target name for gflags-config.cmake.
+  * Make should generate pkg-config file for gpr as well.
+  * Restrict the number of threads in C++ sync server.
+  * Allow reset of connection backoff.
+- update to 1.14.2:
+  * Add TROUBLESHOOTING.md guide
+  * Fixed gRPC channels blocking indefinitely and not respecting
+    deadlines on network disconnect.
+  * Add user guide for keepalive.
+  * Fix GRPC_ARG_HTTP2_MIN_RECV_PING_INTERVAL_WITHOUT_DATA_MS doc
+    to restrict usage to server.
+  * Fixed ordering in adding pending picks to Round Robin LB.
+  * Implement local channel/server credentials for UDS connections.
+  * Allow extra copy in zero-copy protector integrity-only mode.
+  * Update to use the canonical version of LB proto.
+  * Prefer using https_proxy over http_proxy.
+  * Refactor to put c-ares queries under a combiner.
+  * Remove already_closed parameter from fd_orphan.
+  * Add channel arg to enable/disable http proxy.
+  * Fix shutdown of closed fd when c-ares opens a second fd.
+  * Fixed segmentation fault when product name from BIOS is empty.
+  * Introduce server-side load reporting service.
+  * Reorder steps in ServerBuilder::BuildAndStart().
+  * Support Per-Method Codegen Generic on Server Side.
+  * Protobuf-related headers are available in a subspec of
+    gRPC-C++ podspec.
+- update to 1.13.1:
+  * gRPC stats will only be collected for debug builds or if
+    GRPC_COLLECT_STATS is defined. It will be disabled for opt
+    builds.
+  * Fix for Issue #13553. Unlimited can now be set as the max
+    receive message length.
+  * cmake install now also installs should also installs the
+    roots.pem file.
+- Drop 0001-Allow-building-the-python-module-with-system-openssl.patch
+  Applied upstream
+- Drop 0002-Allow-building-the-python-module-with-system-zlib.patch
+  Applied upstream
+- 0003-Allow-building-the-python-module-with-system-cares.patch
+  Applied upstream
+
+-------------------------------------------------------------------
+Sat Jun 23 09:33:15 UTC 2018 - jengelh@inai.de
+
+- Throw out silly -Werror in release builds.
+
+-------------------------------------------------------------------
+Fri May 25 05:34:36 UTC 2018 - tbechtold@suse.com
+
+- build grpc python module for python2 and python3
+  * add 0001-Allow-building-the-python-module-with-system-openssl.patch
+  * add 0002-Allow-building-the-python-module-with-system-zlib.patch
+  * add 0003-Allow-building-the-python-module-with-system-cares.patch
+
+-------------------------------------------------------------------
+Fri May 18 14:55:27 UTC 2018 - jengelh@inai.de
+
+- Switch to plain makefiles since they generate more shared libs.
+- Remove grpc-build.diff, grpc-versioning.diff.
+
+-------------------------------------------------------------------
+Fri May 18 13:26:45 UTC 2018 - tbechtold@suse.com
+
+- update to 1.12.0:
+  Core:
+  * Update protobuf submodule to 3.5.2 (#15114)
+  * Make GrpcBuffer{Reader|Writer} Public (#14541)
+  * Compile Out Tracers Option (#15108)
+  * Fix bug in an address sorting comparison (#15208)
+  * Fix: Check retry timer before starting resolving (#15156)
+  * Fix c-ares resolution with default authority (#15073)
+  * Fix c-ares resolver crash when DNS server unreachable (#15134)
+  * Performance: Avoid low severity log message construction (#14945)
+  * Peformance: Enable SIO_LOOPBACK_FAST_PATH on Windows (#14905)
+  C#:
+  * Add RpcException.StatusCode property (#15140)
+  * Improvements to C# build instructions (#15178)
+  Python:
+  * Eliminate grpcio package dependency on protobuf package (#15034).
+    Please pay extra attention if you are using gRPC with Protocol Buffers and
+    your deployment scripts do not explicitly list the correct dependencies
+    and used to rely on the transitive Python package dependency from grpcio to protobuf.
+  * A new grpc.Channel.close method is introduced and correct use of gRPC
+    Python now requires that channels be closed after use. No existing code
+    should observably break when upgrading to 1.12 but code that creates
+    channels but does not close them will not be supported in 1.13 and later.
+  Core:
+  * Fix: Check retry timer before starting resolving (#15156)
+  * Fix c-ares resolution with default authority (#15073)
+  * Fix c-ares resolver crash when DNS server unreachable (#15134)
+  * Add core underpinnings for TLS session ticket support (#14483)
+  * Experimental support for configurable retries (use at your own risk) (#10684)
+  * Fail calls with wait_for_ready=false on transient resolver failure (#14733)
+  * Fix a call stack ref flake (#14681)
+  * c-ares DNS resolver sorts resolved addresses per RFC 6724 (#13290)
+  * Use socklen_t instead of size_t for address length (fixes use case for some
+    big endian systems) (#14464)
+  * Initial part of channel tracing implementation (#13883, #14746, #14751)
+  * Avoid crashes on environments with hot-plugged CPUs (#14712)
+  * When building from source, Makefile now checks for minimum protobuf
+    version 3.5.0 instead 3.0.0 (#14821)
+  * gRPC Core public header no longer includes inttypes.h (#14676)
+  * CMake improvements:
+    * Add well-commented examples and continuous test for various ways of
+      building gRPC as a dependency (via ExternalProject_Add in #14822,
+      via add_subdirectory in #14864)
+    *     Remove internal tools from binaries installed by cmake install (#14850)
+    *     Simplify Android build example (#14885)
+  * Enable SO_REUSEPORT in IPv6-only environments as well (#14748)
+  C#:
+  * Improvements in experimental support for Unity - added useful resources
+    and improved support for loading grpc_csharp_ext on Unity (#14576, #14605)
+  * Further prevent name collisions by using only fully qualified type
+    names in C# code generator (#14524)
+  * Fix C# connectivity watcher shutdown race (#14776)
+  Objective-C:
+  * Support for Keep-Alive (#14781)
+  * Experimental C++ podspec now supports Apple framework (#14480)
+  * Allow discarding generated implementation (leaving only protocol)
+    with macro (#14490)
+  * Better handling of network error (#14554)
+  PHP:
+  * Add missing -O2 compilation flag for pecl (#14768)
+  * Update the reserved variable list to check in PHP code generator to
+    match protobuf 3.5.0 (#13580)
+  Python:
+  * Progress towards full Beta API elimination (Beta API is and has been
+    unsupported and will go away completely):
+    Remove _face_interface_test tests for the Beta API (#14702)
+  * Remove Python background poller thread (#14448)
+    Note there is a small change in behavior. Before, clients would
+    detect disconnected channels immediately.
+  * Initial gevent compatibility (EXPERIMENTAL) (#14561)
+  * Release the GIL when calling grpc_call_start_batch to improve
+    performance under multithreaded scenarios. (#14801)
+  Ruby:
+  * Correct handling of underscores in package names by Protocol Buffers code
+    generator for Ruby (#13634)
+  * Source code and locally compiled (not cross-compiled) shared libraries
+    (grpc_c.so files) are removed from the linux binary packages. This includes
+    the packages targeting the x86_64-linux and x86-linux platforms (#14634)
+  * Bug fix for a use-after-free related to access to a garbage collected
+    object (#14809)
+  * Get rid of the -Wno-format argument to compilation of the ruby extension
+  * Documentation improvements (#14535)
+  * Don’t raise GRPC::Core::CallErrors for failed reads or writes of bidi
+    streaming calls (#14922)
+  * Fix a race condition in an interrupt handler that could cause an
+    assertion failure (#14953)
+
+-------------------------------------------------------------------
+Wed Mar 28 14:30:53 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.10.0
+  * Several features of core have been removed from the surface
+    or GPR API as they were not used in any wrapped language
+    (except C++) or in external applications.
+  * Changed resolver and LB policy APIs to C++
+  * C++ headers are moved from <grpc++/> to <grpcpp/>.
+
+-------------------------------------------------------------------
+Mon Feb  5 22:36:18 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.9.0
+  * LB policies request re-resolution without shutting down
+  * On server, include receiving HTTP/2 settings in handshake
+    timeout.
+  * Add thread naming support on platforms that support it.
+
+-------------------------------------------------------------------
+Tue Jan 30 21:44:51 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.8.6
+  * Fix server segfault on invalid HTTP/2
+
+-------------------------------------------------------------------
+Fri Jan 19 16:06:46 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.8.5
+  * Fix a couple of memory leak issues in the PHP parts
+
+-------------------------------------------------------------------
+Tue Jan 16 11:20:00 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.8.4
+  * Fix HTTP/2 PING issues
+  * Fix issues with poll engine
+
+-------------------------------------------------------------------
+Tue Jan  2 12:11:18 UTC 2018 - crrodriguez@opensuse.org
+
+- version 1.8.3
+  * Eliminate superfluous log error messages
+
+-------------------------------------------------------------------
+Thu Dec 21 12:05:39 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.8.2
+  * Several LB policies fixes (grpclb and pick_first)
+
+-------------------------------------------------------------------
+Mon Dec 11 23:23:19 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.7.3
+  * Bugfixes in Load Balancing policies
+  * Add flow-control and bugfixes to in-process transport
+  * (C++) Async API extensions to improve multithreading support
+    and reduce the need for explicit synchronization
+  * (C++) Unary call API for generic (non-protobuf) RPCs
+- Drop grpc-zlib.diff, grpc-protobuf.diff (fix included upstream)
+- Add grpc-build.diff
+
+-------------------------------------------------------------------
+Wed Apr 19 11:57:55 UTC 2017 - jengelh@inai.de
+
+- Initial package (version 1.2.3) for build.opensuse.org

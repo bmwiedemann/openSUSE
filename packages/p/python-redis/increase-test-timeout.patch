@@ -1,0 +1,23 @@
+Index: redis-5.0.1/tests/test_asyncio/test_lock.py
+===================================================================
+--- redis-5.0.1.orig/tests/test_asyncio/test_lock.py
++++ redis-5.0.1/tests/test_asyncio/test_lock.py
+@@ -107,7 +107,7 @@ class TestLock:
+     async def test_blocking_timeout(self, r, event_loop):
+         lock1 = self.get_lock(r, "foo")
+         assert await lock1.acquire(blocking=False)
+-        bt = 0.2
++        bt = 0.3
+         sleep = 0.05
+         lock2 = self.get_lock(r, "foo", sleep=sleep, blocking_timeout=bt)
+         start = event_loop.time()
+Index: redis-5.0.1/pytest.ini
+===================================================================
+--- redis-5.0.1.orig/pytest.ini
++++ redis-5.0.1/pytest.ini
+@@ -10,4 +10,4 @@ markers =
+     replica: replica tests
+     experimental: run only experimental tests
+ asyncio_mode = auto
+-timeout = 30
++timeout = 40

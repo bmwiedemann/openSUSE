@@ -1,0 +1,7 @@
+<package name="uperf" project="openSUSE:Factory">
+  <title>Unified Network Performance Tool</title>
+  <description>uperf is a network performance tool that supports modelling and replay of various networking patterns. uperf was developed by the Performance Applications Engineering group at Sun Microsystems and is released under the GNU General Public License Version 3.
+
+uperf represents the next generation benchmarking tools (like filebench) where instead of running a fixed benchmark or workload, a description (or model) of the workload is provided and the tool generates the load according to the model. By distilling the benchmark or workload into a model, you can now do various things like change the scale of the workload, change different parameters, change protocols, etc and analyse the effect of these changes on your model. You can also study the effect of interleaving CPU activity, or think times or the use of SSL instead of TCP among many other things.</description>
+  <devel project="benchmark" package="uperf"/>
+</package>

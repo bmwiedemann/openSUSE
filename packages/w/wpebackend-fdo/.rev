@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24747173758047f775a13044ab571254</srcmd5>
+    <version>1.4.0</version>
+    <time>1569523641</time>
+    <user>dimstar_suse</user>
+    <comment>New package, needed for webkitgtk.</comment>
+    <requestid>733491</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>908c904def7de0bce30f5f5054da127d</srcmd5>
+    <version>1.4.0</version>
+    <time>1570448903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735597</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4ed8c191a2b850f09cccb68d80eaf355</srcmd5>
+    <version>1.4.0</version>
+    <time>1571401991</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736616</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c75873e2ea6fd3dab61e4b8522ded620</srcmd5>
+    <version>1.4.1</version>
+    <time>1582726470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779116</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>37843ac8acf50214aa47992ab3acb4a5</srcmd5>
+    <version>1.4.2</version>
+    <time>1584350150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784410</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>103c217ba649912586d80ab3bd898da4</srcmd5>
+    <version>1.6.0</version>
+    <time>1587659338</time>
+    <user>dimstar_suse</user>
+    <comment>Push forgotten glib2 update</comment>
+    <requestid>795604</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bce3437b7e7bba4cfb8945cfbc537b88</srcmd5>
+    <version>1.6.1</version>
+    <time>1592151266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813506</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c708998d579b76392e352848019df10</srcmd5>
+    <version>1.8.0</version>
+    <time>1603725100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843381</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3caffc2b0a110bcd6f239eab12b89bd</srcmd5>
+    <version>1.10.0</version>
+    <time>1632522894</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 919870 from iznogood)</comment>
+    <requestid>920560</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2eb3510fc179beff427045783965ce74</srcmd5>
+    <version>1.12.0</version>
+    <time>1638203299</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 933923 from iznogood)</comment>
+    <requestid>934072</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ca5391f48efcc7f7f3bd8164c401f71</srcmd5>
+    <version>1.12.1</version>
+    <time>1661863693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999788</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>09f3a7018d7240187738944c82739e39</srcmd5>
+    <version>1.14.0</version>
+    <time>1665591794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009279</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>182a98217a4bba9990901e747f6ec02a</srcmd5>
+    <version>1.14.2</version>
+    <time>1691232834</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1102014 from vlefebvre
+
+Update to version 1.14.2</comment>
+    <requestid>1102254</requestid>
+  </revision>
+</revisionlist>

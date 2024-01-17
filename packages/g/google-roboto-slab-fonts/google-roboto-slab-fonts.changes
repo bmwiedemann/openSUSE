@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Aug 13 12:05:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summary to be more on point.
+- Add Provides to accomodate the package split in the solver.
+
+-------------------------------------------------------------------
+Thu Aug 06 19:18:45 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0_20200304:
+  * Update README.md
+  * Added compulsory glyphs
+  * Simplify buildchain
+  * Decompose comb accents
+  * Update static fonts
+  * Add hint issues folder
+  * Update VF and hinted VF
+  * Update control file glyph IDs
+  * Update source and build files
+  * Remove readme from fonts folder
+
+-------------------------------------------------------------------
+Thu Aug  6 19:11:13 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Initial version. Split from google-roboto-fonts package because it
+  is developped in a separated upstream repository.

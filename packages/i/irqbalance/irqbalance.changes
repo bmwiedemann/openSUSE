@@ -1,0 +1,681 @@
+-------------------------------------------------------------------
+Wed Dec 06 11:21:22 UTC 2023 - aschnell@suse.com
+
+- Update to version 1.9.3.10.git+1a7d461:
+  * filter console only output when using journal mode
+- build with libsystemd for logging (bsc#1217754)
+
+-------------------------------------------------------------------
+Tue Nov 21 19:56:47 UTC 2023 - trenn@suse.de
+
+- Update to version 1.9.3.8.git+c963f48:
+  * Enable systemd feature support by default when building with meson
+  * Add support for linking against libnl when building with meson
+  * Turn NUMA support into an enabled feature, when building with meson
+  * Set project version of meson build to 1.9.3
+  * Install man pages when building with meson
+  * When building with meson, make sure to link against numa
+  * Updating to version 1.9.3
+  * Automatically use systemd journal and run in foreground when under systemd
+
+-------------------------------------------------------------------
+Mon Aug 21 11:22:40 UTC 2023 - trenn@suse.de
+
+- Update to version 1.9.2.34.git+5069982:
+  * activate_mapping: avoid logging error when there is none
+  * activate_mapping: only blacklist irq if error is considered permanent
+  * activate_mapping: report error reason
+  * activate_mapping: make sure to catch all errors
+  * activate_mapping: avoid use-after-free when affinity cannot be set
+  * Revert "activate_mapping: fflush the buffered data to smp_affinity"
+  * activate_mapping: fflush the buffered data to smp_affinity
+
+-------------------------------------------------------------------
+Mon Jun 26 20:33:50 UTC 2023 - trenn@suse.de
+
+- Resurrect _service file and old git patch no versioning
+A _service
+A _servicedata
+A irqbalance.obsinfo
+- Update to version 1.9.2.24.git+184c950:
+  * procinterrupts: fix initialisation of regex_t struct
+  * Fix it so we actually stop when we hit an interrupt condition
+  * Fix signedness of error handling
+  * Revert "Fix CPU number condition in service file"
+  * Issue 259: select NL_SKIP / NL_STOP based on error
+  * fix CPU number condition in service file
+- Already included upstream:
+D irqbalance-systemd-netlink.patch
+
+-------------------------------------------------------------------
+Fri Dec 16 12:38:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build for x86_64 subarchs the same way like for baseline
+
+-------------------------------------------------------------------
+Fri Nov 11 09:44:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add irqbalance-systemd-netlink.patch (related to bsc#1205308)
+
+-------------------------------------------------------------------
+Mon Nov  7 12:23:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * avoid coredump on build_one_dev_entry()
+  * avoid double free on deinit_thermal()
+  * change the log level in thermal.c
+  * fix a minor typo
+- drop Avoid-double-free-on-deinit_thermal.patch, uninitialized.patch: (upstream)
+
+-------------------------------------------------------------------
+Tue Oct 25 21:09:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- run tests
+- add Avoid-double-free-on-deinit_thermal.patch (bsc#1204607)
+
+-------------------------------------------------------------------
+Tue Oct 18 21:15:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add uninitialized.patch (bsc#1204371)
+- build with thermald support on x86_64 (jsc#PED-1039)
+
+-------------------------------------------------------------------
+Thu Oct 13 09:03:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * get irq->module relationship from /sys/bus/pci/*/driver
+  * ensure --banmod is respected
+  * check whether savedptr is NULL before invoking strlen
+  * add meson
+  * support thermal events
+  * fix irqbalance never exits
+  * irqbalance-ui: able to scroll and show coulist and irqs' name 
+- drop proc-interrupts.patch (upstream)
+D proc-interrupts.patch
+
+-------------------------------------------------------------------
+Wed Aug 17 21:39:04 UTC 2022 - dmueller@suse.com
+
+- Update to version 1.9.0:
+  * correct wait time in oneshot mode
+  * Document updates
+  * disable irqbalance when we only have a single cpu/cache domain
+  * fix UI to fetch full messages from UNIX socket
+  * avoid some buffer overflows
+  * fix UI printf style formatting
+  * drop bounding set from irqbalance
+
+-------------------------------------------------------------------
+Mon Jun 27 12:52:42 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- proc-interrupts.patch: parse_proc_interrupts: fix parsing interrupt
+  counts
+
+-------------------------------------------------------------------
+Wed Sep 08 09:59:35 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.0.18.git+2435e8d:
+  * fix unsigned integer subtraction sign overflow
+  * fix opendir fails in check_platform_device
+  * irqbalance: Check validity of numa_node
+  * configure.ac: use pkg-config to find numa
+  * Disable the communication socket when UI is disabled
+  * Fix comma typo in ui.c
+  * drop NoNewPrivs from irqbalance service
+  * remove no existing irq in banned_irqs
+  * Fix compile issue with none AARCH64 builds
+
+-------------------------------------------------------------------
+Wed Sep  8 08:58:47 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Fixes integrated mainline:
+  * bsc#1119461
+  * bsc#1138190
+  * bsc#1154905
+  * bsc#1178477 bsc#1183405 (removed patches due to mainline integration):
+       procinterrupts-check-xen-dyn-event-more-flexible.patch
+  * bsc#1182254 bsc#1156315 (removed patches due to mainline integration):
+       fix-ambiguous-parsing-of-node-entries-in-sys.patch
+  * bsc#1183157
+       also-fetch-node-info-for-non-PCI-devices.patch
+
+-------------------------------------------------------------------
+Tue Aug 31 13:42:01 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.0.18.git+2435e8d.obscpio:
+  * fix unsigned integer subtraction sign overflow
+- Make git hash in version better visable .git+<githash>
+
+-------------------------------------------------------------------
+Wed Aug 11 10:16:57 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.0.14.ga7f8148:
+  * irqbalance: Check validity of numa_node
+  * configure.ac: use pkg-config to find numa
+  * Disable the communication socket when UI is disabled
+- Use %{?systemd_ordering} instead of %{?systemd_requires}
+
+-------------------------------------------------------------------
+Mon Jul 12 17:14:08 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.0.8.gbd5aaf5 (jsc#SLE-17697):
+  * Fix comma typo in ui.c
+  * drop NoNewPrivs from irqbalance service
+  * remove no existing irq in banned_irqs
+  * Fix compile issue with none AARCH64 builds
+  * Fix irqbalance cannot obtain the full name of irq
+- Enhance _service magic and add git hashtag to version
+
+-------------------------------------------------------------------
+Tue Apr 13 13:56:00 UTC 2021 - trenn@suse.de
+
+- Add _service file pointing to github sources
+A _service
+- Update to version 1.8.0:
+  * Add return value check of opendir in do_one_cpu
+  * Hotplug may occur again during sleep, so wait until there is no hotplug
+
+-------------------------------------------------------------------
+Wed Mar 10 17:45:54 UTC 2021 - trenn@suse.de
+
+- Update to version 1.7.0+git20210222.9db8d5c:
+  * ui: fix cpu/irq menu off by one
+  * fix uint64_t printf format (use PRIu64)
+  * Also fetch node info for non-PCI devices
+  * Add hot pull method for irqbalance
+  * Add log for hotplug appropriately
+  * add irq hotplug feature for irqbalance
+  * Remove some unused constant macros in constants.h
+  * Add a deprecation notice for IRQBALANCE_BANNED_CPUS
+  * Add IRQBALANCE_BANNED_CPULIST to env file
+  * log correctly for isolated and nohz_full cpus
+  * Update README.md
+  * Add some examples for IRQBALANCE_BANNED_CPUS
+  * Adjust how we determine if a cpu is online
+  * activate_mapping: activate only online CPUs
+  * add env variable to ban cpus using cpulist syntax
+  * put arg parsing detail into parse_command_line()
+  * Updating configure script to version 1.7.0
+  * Add strlen checking for IRQBALANCE_BANNED_CPUS
+  * remove redundant "/" in SOCKET_TMPFS
+  * Fix typo in service unit file
+  * arm64: Add irq aff change check For aarch64, the PPIs format in /proc/interrputs can be parsed and add to interrupt db, and next, the number of interrupts is counted and used to calculate the load. Finally these interrupts maybe scheduled between the NUMA domains.
+  * Correct typos in irqbalance.c
+  * free cpu_ban_string when the next request come
+  * improve irq migrate rule to avoid high irq load
+  * make the option 'V' closer to the option with no arg
+
+-------------------------------------------------------------------
+Sun Aug 16 14:14:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Strlen checking for IRQBALANCE_BANNED_CPU env var
+  * Typo cleanup in SOCKET_TMPFS
+  * consolidation of numa node creation on non-numa systems
+  * fix uninitialized use of package_mask in affinity setup
+  * use num_online_cpus instead of core_count
+  * fix a null ptr crash in do_one_cpu
+  * make list searching common from glib
+  * fix a calloc parameter bug
+  * remove some unused variables
+  * use g_list_free_full
+  * remove redundant call to free_cl_opts
+  * fix some resource leaks in main()
+  * fix some use after free issues in check_for_irq_ban
+  * fix resource leaks in irqballance-ui, and in add_one_node
+- remove Correct-capitalizing-in-service-file.patch: upstream
+
+-------------------------------------------------------------------
+Thu Jun 18 11:10:20 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Corrected mis-spelling (wrong CamelCase) of "EnvironmentFile"
+  in misc/irqbalance.service
+  [bsc#1172665, Correct-capitalizing-in-service-file.patch]
+
+-------------------------------------------------------------------
+Tue May 26 14:48:21 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Update to latest git HEAD version 0348a3b.
+  There has been no version update for quite some time, but some
+  restructuring and fixes we want to have included.
+D install-man-pages.patch
+
+-------------------------------------------------------------------
+Fri Apr 24 11:18:18 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Package COPYING and README.md
+- Add some deps for the -ui subpackage
+
+-------------------------------------------------------------------
+Thu Apr 23 21:19:15 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use fillup_prereq macro
+- Move ui into sub-package to get minimal core much smaller
+
+-------------------------------------------------------------------
+Thu Jul 11 13:19:49 UTC 2019 - trenn@suse.de
+
+- Add git hash tag and date in version as source is derived from
+  master/HEAD branch. Thanks to namtrac.
+  This is done via _service file.
+  Also add an example how to get back to a stable release version
+- Update to latest git master version:
+  git commit f7fdebbaa4dbc27fcdeb7
+
+-------------------------------------------------------------------
+Sun Jul  7 21:37:21 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summaries.
+
+-------------------------------------------------------------------
+Mon Jul  1 15:18:05 UTC 2019 - trenn@suse.de
+
+- Update to version 1.6.0 (b47eea84cbb93f533b0cba2f1aa):
+  * fix balancing when numa information isn't available
+  * Refine document about IRQBALANCE_BANNED_CPUS
+  * Fix string truncation issues detected by GCC 8
+  * fix socket path creation
+  * Update document for option --banmod and --deepestcache
+  * Fix ambiguous parsing of *node* entries in /sys.
+  * procinterrupts: check xen-dyn-event more flexible
+  * misc: Add an example for policy script
+  * policyscript: ignore non-executable files when specifying a directory
+
+remove because already mainline:
+D fix_buffer_overflow_compiler.patch
+
+-------------------------------------------------------------------
+Thu Oct  4 09:51:31 UTC 2018 - trenn@suse.de
+
+- Allow compilation with SLE-12 and before by:
+  * removing -std=C99 Latest compiler version does not complain
+  anymore, SLE12 SPx and before did.
+  * Fix a possible buffer overflow compiler warning
+A fix_buffer_overflow_compiler.patch
+
+-------------------------------------------------------------------
+Mon Oct  1 09:12:52 UTC 2018 - egotthold@suse.com
+
+- Removed aarch64-compile-fixes.patch because it is mainline now.
+
+- Update to version 1.4.0:
+  * Fixed an erroneous calculation of min_load that restricted candidates to a
+    subset of objects
+  * Fixed powerpc hotplug detection
+  * Cleaned up syslog target dependency
+  * Added some self test infrastructure (via make check)
+
+- Update to version 1.3.0
+  * New features in this release:
+      optimization of platform device irq detection
+      Added sample udev rules to trigger irq rescans on device add/remove
+      Made irqbalance ui an optional compile component
+      Added support for Intel CoD
+      Add -v | --version option to command line
+  * Bug fixes in this release:
+      Misc compiler warning fixes and spelling errors
+      Compilation error fix on aarch64
+      Compilation error fix when using clang in c99 mode
+      Unused variable cleanup
+      Lots of memory leak cleanup in irqbalance-ui
+      Prevent irqbalance from running in a container
+      Fix irq affinity assignment in some cases to wrong numa node
+      Fix oneshot mode
+      exclude legacy irq 255
+  * Deprecations:
+      without-glib2 is removed, we just need it enough that we can't dummy it up
+      anymore
+
+-------------------------------------------------------------------
+Thu Nov 23 13:40:17 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Mar  1 16:17:07 UTC 2017 - fschnizlein@suse.com
+
+- Remove superfluous comment out man package packing 
+
+-------------------------------------------------------------------
+Mon Feb  6 17:05:11 UTC 2017 - dimstar@opensuse.org
+
+- Switch to ncurses6: use ncurses6-config to find the correct
+  CFLAGS and libraries (boo#1021328).
+
+-------------------------------------------------------------------
+Thu Jan 12 18:03:02 UTC 2017 - dmueller@suse.com
+
+- update to 1.2.0:
+ * sort_irq logic rework to fix unintended ordering
+ * removal of the affinity_hint infrastructure as its not needed
+ * fixes for invalid cpumask parsing
+ * many other minior fixes (see git log)
+ * Aarch64 support
+ * live interactive monitoring of irqbalance and live adjustment with irqbalance-ui
+- remove fix-aarch64-support.patch: upstreamed
+- add install-man-pages.patch
+- add aarch64-compile-fixes.patch
+
+-------------------------------------------------------------------
+Fri Oct 14 13:31:38 UTC 2016 - msuchanek@suse.com
+
+- Set-fd-limit.patch: Increase limit on file descriptors (bsc#998399) (fate#321645)
+
+-------------------------------------------------------------------
+Tue Feb 23 10:11:19 UTC 2016 - schwab@suse.de
+
+- fix-aarch64-support.patch: Fix AArch64 support
+
+-------------------------------------------------------------------
+Sun Jan 17 11:46:01 UTC 2016 - mpluskal@suse.com
+
+- Update to 1.1.0
+  * Banning support fixes
+  * Load calculation improvements
+  * Documentation fixes
+  * Fix command line preservation across re-scan
+  * Memory leak fixes
+  * Misc. bug fixes
+  * ARM irq support
+  * New --banmod option
+  * New sleep interval option
+
+-------------------------------------------------------------------
+Wed Nov 18 09:59:47 UTC 2015 - mbrugger@suse.com
+
+- Only exclude arch s390 and s390x
+
+-------------------------------------------------------------------
+Tue Nov 17 16:56:50 UTC 2015 - mbrugger@suse.com
+
+- enable build for aarch64 
+
+-------------------------------------------------------------------
+Mon Nov  9 10:31:40 UTC 2015 - dmueller@suse.com
+
+- enable build for %arm
+
+-------------------------------------------------------------------
+Mon Mar 16 20:21:29 UTC 2015 - mpluskal@suse.com
+
+- Clenup spec file with spec-cleaner
+- Remove bug-893478_warn-once.patch
+- Update to 1.0.9
+  * PCI quirk support
+  * System Logging compatibility
+  * isolcpus inheritance
+  * Misc. Bugfixes
+
+-------------------------------------------------------------------
+Fri Jan 23 10:36:21 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.0.8
+  * No ChangeLog available
+- Fix home page and download source Url
+- Update bug-893478_warn-once.patch; (submitted and accepted to/by
+  upstream)
+
+-------------------------------------------------------------------
+Thu Sep 11 13:12:26 UTC 2014 - trenn@suse.de
+
+- Only warn once for affinity hint subset empty irqs (bnc#893478)
+* Add bug-893478_warn-once.patch
+- Rename rcirq_balancer like the package name and the already renamed
+  systemd service: rcirqbalance
+
+-------------------------------------------------------------------
+Mon Jun 16 13:22:17 UTC 2014 - trenn@suse.de
+
+- Change non-existing group: System/Environment/Daemons to System/Daemons
+
+-------------------------------------------------------------------
+Fri Jun 13 15:43:32 UTC 2014 - trenn@suse.de
+
+- Really fillup (and create) /etc/sysconfig/irqbalance file
+- Remove IRQBALANCE_ONESHOT variable from sysconfig file.
+  Default IRQBALANCE_ONESHOT=auto will be interpreted as --oneshot, other
+  than documented in /etc/sysconfig/irqbalance. The same can be achieved via
+  passing --oneshot via newly introduced IRQBALANCE_ARGS= variable (see below)
+  bnc#874125
+- The irqbalance.service file passes $IRQBALANCE_ARGS when the daemon
+  is started. Provide it for the user via /etc/sysconfig/irqbalance.
+
+-------------------------------------------------------------------
+Wed Dec 11 13:50:43 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le 
+
+-------------------------------------------------------------------
+Sun Oct 20 16:21:41 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.0.7
+  + No changelog available
+- Drop sysvinit support as no target systems use it anymore
+- Keep rcirq_balancer, make it symlink to /usr/sbin/service
+- Remove syslog.target in irqbalance.service
+  Please see http://lists.opensuse.org/archive/opensuse-packaging/2013-05/msg00102.html
+- Change Group for valid one
+
+-------------------------------------------------------------------
+Thu Mar 28 10:12:53 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Thu Nov 22 14:30:37 UTC 2012 - rmilasan@suse.com
+
+- Ensure that EnvironmentFile from irqbalance.service points to
+  /etc/sysconfig/irqbalance environment config file.
+
+-------------------------------------------------------------------
+Thu Sep  6 11:07:36 UTC 2012 - trenn@suse.de
+
+- Update to version 1.0.4:
+  New release of irqbalance, several minor cleanups and a few
+  significant bug fixes and feature enhancements:
+    - Fixed a divide by zero bug
+    - Fixed a memory corruptor when items are not assigned to a specfic numa node
+    - Added a banscript option, that allows a user defined script to be run to
+      determine if a given irq should be excluded from balancing
+    - Improve rescan ability to catch a timing race early in irqbalance setup
+    - Added ability to force irqbalance to rescan irqs on reception of a SIGHUP.
+    - Force affinity settings even if manually overridden outside of irqbalance.
+    - Added a --foreground option to force foreground execution without debug output
+
+-------------------------------------------------------------------
+Mon Jun 25 15:01:39 UTC 2012 - trenn@suse.de
+
+- Correct bogus /etc/sysconfig/irqbalance comment:
+  Service is started as daemon by default, on single and multi core
+  systems
+
+-------------------------------------------------------------------
+Wed May  9 15:28:56 UTC 2012 - trenn@suse.de
+
+- Update to version 1.0.3 and make spec file to spec-cleaner clean.
+
+-------------------------------------------------------------------
+Thu Dec  1 17:11:11 UTC 2011 - coolo@suse.com
+
+- make it as exclusive as numactl
+
+-------------------------------------------------------------------
+Tue Nov 29 21:11:49 UTC 2011 - crrodriguez@opensuse.org
+
+- Use systemd macros in pre/post scripts 
+
+-------------------------------------------------------------------
+Mon Oct 17 13:59:37 UTC 2011 - trenn@suse.de
+
+- Update to version 1.0
+   - Remove files that are upstream: manpage, systemd config file
+   - Introduction of highest topology level: Numa node
+   - ...
+
+-------------------------------------------------------------------
+Sat Oct 15 04:47:08 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Tue Aug 16 08:40:22 UTC 2011 - saschpe@suse.de
+
+- Run spec-cleaner on spec file
+- Don't start irqbalance by default, testing confirmed that it does
+  not make any difference on machines with less than 32 cores 
+  nowadays (GKH's comment)
+
+-------------------------------------------------------------------
+Tue Jun  7 14:13:36 UTC 2011 - aj@suse.de
+
+- Add systemd service file.
+
+-------------------------------------------------------------------
+Sun Nov  7 13:56:53 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- This is a long running service, use full RELRO here. 
+
+-------------------------------------------------------------------
+Sat Oct  2 19:37:52 UTC 2010 - cristian.rodriguez@opensuse.org
+
+- update to version 0.56 in order to get libcap-ng support
+  so irqbalance can drop privileges. 
+
+-------------------------------------------------------------------
+Wed Jun 17 17:52:43 CEST 2009 - crrodriguez@suse.de
+
+- fix build when as-needed is a default linker option  
+
+-------------------------------------------------------------------
+Wed Nov  5 22:14:13 CET 2008 - bwalle@suse.de
+
+- Don't start the irqbalance on IA64 SGI SN2 systems (bnc#441505).
+
+-------------------------------------------------------------------
+Fri Aug 15 22:44:13 CEST 2008 - bwalle@suse.de
+
+- add "Required-Stop" to fix rpmlint error
+
+-------------------------------------------------------------------
+Tue Dec 11 22:49:59 CET 2007 - bwalle@suse.de
+
+- add /etc/sysconfig/irqbalance configuration file for
+  IRQBALANCE_ONESHOT, IRQBALANCE_BANNED_CPUS and
+  IRQBALANCE_BANNED_INTERRUPTS configuration (#342593)
+- fix some minor rpmlint warnings
+
+-------------------------------------------------------------------
+Thu Apr 26 20:53:45 CEST 2007 - bwalle@suse.de
+
+- remove special handling of timer interrupt and dual core
+  systems from init script because the new irq balancer does
+  that automatically
+
+-------------------------------------------------------------------
+Mon Apr 16 00:19:32 CEST 2007 - bwalle@suse.de
+
+- wrote manpage for irqbalance
+
+-------------------------------------------------------------------
+Wed Apr 11 15:00:06 CEST 2007 - bwalle@suse.de
+
+- updated to irqbalance.org 0.55
+  o rewrite from static arrays to dynamic lists using glib
+  o added IRQBALANCE_ONESHOT, IRQBALANCE_BANNED_INTERRUPTS
+    IRQBALANCE_BANNED_CPUS configuration environment variables
+- changed init script to not balance the timer interrupt due to
+  broken hardware
+- added $remote_fs to Required-Start since the binary needs
+  glib2
+
+-------------------------------------------------------------------
+Tue Apr  3 11:31:56 CEST 2007 - bwalle@suse.de
+
+- increased IRQ number to (256 + (32*MAX_CPU)) as done in the
+  x86_64 kernel
+
+-------------------------------------------------------------------
+Fri Jul 14 11:10:59 CEST 2006 - sf@suse.de
+
+- added patch from bug #171500, fixing regexps 
+
+-------------------------------------------------------------------
+Tue May 16 09:53:02 CEST 2006 - sf@suse.de
+
+- added irqbalance-assert.diff to completely fix
+  bug #158186 (see changelog entry below) 
+
+-------------------------------------------------------------------
+Tue May  9 10:33:40 CEST 2006 - sf@suse.de
+
+- increase MAX_INTERRUPTS  to 512 to avoid
+  segfault (bug #158186) 
+
+-------------------------------------------------------------------
+Wed May  3 13:37:34 CEST 2006 - sf@suse.de
+
+- modified startscript to start irqbalancing only on real SMP
+  machines (multisocket) (bug #171500)  
+
+-------------------------------------------------------------------
+Thu Feb  9 00:05:31 CET 2006 - ak@suse.de
+
+- increase max number of cpus to 128 (#146945)
+- install manpage
+
+-------------------------------------------------------------------
+Wed Jan 25 21:36:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 31 12:22:21 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Fri Sep  2 12:41:38 CEST 2005 - ro@suse.de
+
+- rcscript: ignore on machines with < 2 CPUs
+
+-------------------------------------------------------------------
+Tue Jun 21 00:49:26 CEST 2005 - ro@suse.de
+
+- build with fPIE/pie 
+
+-------------------------------------------------------------------
+Mon Feb 16 21:23:23 CET 2004 - sf@suse.de
+
+- update to 0.09 
+
+-------------------------------------------------------------------
+Sat Sep 20 16:00:17 CEST 2003 - kukuk@suse.de
+
+- Add PreRequires for insserv
+
+-------------------------------------------------------------------
+Thu Sep  4 16:00:32 CEST 2003 - ro@suse.de
+
+- added stop_on_removal and restart_on_update
+- changed insserv_and_fillup to insserv_force_if_yast 
+
+-------------------------------------------------------------------
+Thu Sep  4 15:20:13 CEST 2003 - sf@suse.de
+
+- added %insserv_and_fillup in %post 
+  and %insserv_cleanup in %postun
+
+-------------------------------------------------------------------
+Thu Sep  4 11:46:23 CEST 2003 - ak@suse.de
+
+- update to version 0.6
+- Clean up init script a bit
+- Move initscript outside tar and mark as source
+
+-------------------------------------------------------------------
+Fri Mar 21 14:56:26 CET 2003 - sf@suse.de
+
+- initial version 0.1
+

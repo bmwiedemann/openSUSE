@@ -1,0 +1,18 @@
+<package name="diy" project="openSUSE:Factory">
+  <title>A block-parallel library</title>
+  <description>Diy is a block-parallel library for implementing scalable algorithms
+that can execute both in-core and out-of-core. The same program can be
+executed with one or more threads per MPI process, seamlessly
+combining distributed-memory message passing with shared-memory thread
+parallelism.  The abstraction enabling these capabilities is block
+parallelism; blocks and their message queues are mapped onto
+processing elements (MPI processes or threads) and are migrated
+between memory and storage by the diy runtime. Complex communication
+patterns, including neighbor exchange, merge reduction, swap
+reduction, and all-to-all exchange, are possible in- and out-of-core
+in diy.
+
+</description>
+  <devel project="science" package="diy"/>
+  <url>https://github.com/diatomic/diy</url>
+</package>

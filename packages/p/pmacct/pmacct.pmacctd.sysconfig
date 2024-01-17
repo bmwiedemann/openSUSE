@@ -1,0 +1,10 @@
+# Defaults for pmacct initscript and systemd service
+
+# IMPORTANT DURING UPGRADES:
+# SUPPORT FOR INTERFACES="" WAS REMOVED FROM THE INIT SCRIPT.
+
+# Location of the configuration file
+PMACCTD_CONF=/etc/pmacct/pmacctd.conf
+
+# Additional options that are passed to pmacctd
+DAEMON_OPTS=""

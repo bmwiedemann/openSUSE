@@ -1,0 +1,22 @@
+diff -purN edk2-platforms.orig/Platform/Hisilicon/HiKey/HiKey.dsc edk2-platforms/Platform/Hisilicon/HiKey/HiKey.dsc
+--- edk2-platforms.orig/Platform/Hisilicon/HiKey/HiKey.dsc	2022-11-10 09:35:19.965273138 +0100
++++ edk2-platforms/Platform/Hisilicon/HiKey/HiKey.dsc	2022-11-10 09:39:53.740055988 +0100
+@@ -62,6 +62,7 @@
+   AuthVariableLib|MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull.inf
+   TpmMeasurementLib|MdeModulePkg/Library/TpmMeasurementLibNull/TpmMeasurementLibNull.inf
+   VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
++  VariableFlashInfoLib|MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib.inf
+ 
+ [LibraryClasses.common.SEC]
+   PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf
+diff -purN edk2-platforms.orig/Platform/Hisilicon/HiKey960/HiKey960.dsc edk2-platforms/Platform/Hisilicon/HiKey960/HiKey960.dsc
+--- edk2-platforms.orig/Platform/Hisilicon/HiKey960/HiKey960.dsc	2022-11-10 09:35:19.961273097 +0100
++++ edk2-platforms/Platform/Hisilicon/HiKey960/HiKey960.dsc	2022-11-10 09:40:14.152263469 +0100
+@@ -63,6 +63,7 @@
+   AuthVariableLib|MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull.inf
+   TpmMeasurementLib|MdeModulePkg/Library/TpmMeasurementLibNull/TpmMeasurementLibNull.inf
+   VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
++  VariableFlashInfoLib|MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib.inf
+ 
+ [LibraryClasses.common.SEC]
+   PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf

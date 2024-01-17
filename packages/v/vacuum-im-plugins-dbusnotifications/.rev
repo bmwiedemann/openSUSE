@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>380a83d4e83ad7cbaf3aac2465e943a4</srcmd5>
+    <version>1.0.0</version>
+    <time>1314629597</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>79916</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64f0598a9aff3b07dd3ef8dc94f06798</srcmd5>
+    <version>1.0.0</version>
+    <time>1314629618</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79916
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>64f0598a9aff3b07dd3ef8dc94f06798</srcmd5>
+    <version>1.0.0</version>
+    <time>1319182546</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6cac8b04d17f57cfa6a184c70c3e9923</srcmd5>
+    <version>1.0.0</version>
+    <time>1323195070</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>6cac8b04d17f57cfa6a184c70c3e9923</srcmd5>
+    <version>1.0.0</version>
+    <time>1340184305</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>52119aaed37582f03c17d383a33739a9</srcmd5>
+    <version>1.0.2</version>
+    <time>1347348054</time>
+    <user>coolo</user>
+    <comment>- remove buildrequire on library, already required by -devel (forwarded request 133505 from coolo)</comment>
+    <requestid>133527</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>52119aaed37582f03c17d383a33739a9</srcmd5>
+    <version>1.0.2</version>
+    <time>1359110535</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>52119aaed37582f03c17d383a33739a9</srcmd5>
+    <version>1.0.2</version>
+    <time>1379664905</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>52119aaed37582f03c17d383a33739a9</srcmd5>
+    <version>1.0.2</version>
+    <time>1409303594</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6ef03cc74750e322cb7d829747078484</srcmd5>
+    <version>1.5.3</version>
+    <time>1514983159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557558</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>72759459e7b581aea81ba0e50b39b0c9</srcmd5>
+    <version>1.5.4</version>
+    <time>1528492648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.4
+  * add support for Qt 5.11
+</comment>
+    <requestid>614613</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="kawaii-player" project="openSUSE:Factory">
+  <title>Multimedia player, library manager and media server</title>
+  <description>Kawaii-Player is an audio/video manager and multimedia player based on mpv
+and can also work as media server.
+
+</description>
+  <devel project="multimedia:apps" package="kawaii-player"/>
+</package>

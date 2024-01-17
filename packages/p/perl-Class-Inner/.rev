@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>560588052d1fe77e9e586b6f8acf5ab8</srcmd5>
+    <version>0.200001</version>
+    <time>1303896320</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 68430 from user babelworx
+</comment>
+    <requestid>68430</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a674017e8cec011eab72733247acf0f6</srcmd5>
+    <version>0.200001</version>
+    <time>1303896335</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68430
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>a674017e8cec011eab72733247acf0f6</srcmd5>
+    <version>0.200001</version>
+    <time>1319182247</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>09c7ba364723ecb167a98d6c09491ec1</srcmd5>
+    <version>0.200001</version>
+    <time>1323193118</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>09c7ba364723ecb167a98d6c09491ec1</srcmd5>
+    <version>0.200001</version>
+    <time>1340183807</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>09c7ba364723ecb167a98d6c09491ec1</srcmd5>
+    <version>0.200001</version>
+    <time>1359109616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>09c7ba364723ecb167a98d6c09491ec1</srcmd5>
+    <version>0.200001</version>
+    <time>1379663583</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>09c7ba364723ecb167a98d6c09491ec1</srcmd5>
+    <version>0.200001</version>
+    <time>1409302199</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

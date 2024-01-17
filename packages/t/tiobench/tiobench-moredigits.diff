@@ -1,0 +1,38 @@
+Index: tiobench-0.4.1/tiobench.pl
+===================================================================
+--- tiobench-0.4.1.orig/tiobench.pl
++++ tiobench-0.4.1/tiobench.pl
+@@ -111,26 +111,29 @@ format SEQ_READS_TOP =
+                               File   Blk   Num                   Avg      Maximum      Lat%     Lat%    CPU
+ Identifier                    Size   Size  Thr   Rate  (CPU%)  Latency    Latency      >2s      >10s    Eff
+ ---------------------------- ------ ------ ---  ------ ------ --------- -----------  -------- -------- -----
++                              File  Blk    Num                    Avg      Maximum      Lat%     Lat%    CPU
++Identifier                    Size  Size   Thr    Rate  (CPU%)  Latency    Latency      >2s      >10s    Eff
++---------------------------- ------ ------ ---  ------- ------ --------- -----------  -------- -------- -----
+ .
+ 
+ format SEQ_READS =
+-@<<<<<<<<<<<<<<<<<<<<<<<<<<< @||||| @||||| @>>  @##.## @>>>>% @####.### @#######.##  @#.##### @#.##### @####
++@<<<<<<<<<<<<<<<<<<<<<<<<<<< @||||| @||||| @>>  @###.## @>>>>% @####.### @#######.##  @#.##### @#.##### @####
+ $identifier,$size,$block,$thread,$stat_data{$identifier}{$thread}{$size}{$block}{'read'}{'rate'},$stat_data{$identifier}{$thread}{$size}{$block}{'read'}{'cpu'},$stat_data{$identifier}{$thread}{$size}{$block}{'read'}{'avglat'},$stat_data{$identifier}{$thread}{$size}{$block}{'read'}{'maxlat'},$stat_data{$identifier}{$thread}{$size}{$block}{'read'}{'pct_gt_2_sec'},$stat_data{$identifier}{$thread}{$size}{$block}{'read'}{'pct_gt_10_sec'},$stat_data{$identifier}{$thread}{$size}{$block}{'read'}{'cpueff'}
+ .
+ 
+ format RAND_READS =
+-@<<<<<<<<<<<<<<<<<<<<<<<<<<< @||||| @||||| @>>  @##.## @>>>>% @####.### @#######.##  @#.##### @#.##### @####
++@<<<<<<<<<<<<<<<<<<<<<<<<<<< @||||| @||||| @>>  @###.## @>>>>% @####.### @#######.##  @#.##### @#.##### @####
+ $identifier,$size,$block,$thread,$stat_data{$identifier}{$thread}{$size}{$block}{'rread'}{'rate'},$stat_data{$identifier}{$thread}{$size}{$block}{'rread'}{'cpu'},$stat_data{$identifier}{$thread}{$size}{$block}{'rread'}{'avglat'},$stat_data{$identifier}{$thread}{$size}{$block}{'rread'}{'maxlat'},$stat_data{$identifier}{$thread}{$size}{$block}{'rread'}{'pct_gt_2_sec'},$stat_data{$identifier}{$thread}{$size}{$block}{'rread'}{'pct_gt_10_sec'},$stat_data{$identifier}{$thread}{$size}{$block}{'rread'}{'cpueff'}
+ .
+ 
+ format SEQ_WRITES =
+-@<<<<<<<<<<<<<<<<<<<<<<<<<<< @||||| @||||| @>>  @##.## @>>>>% @####.### @#######.##  @#.##### @#.##### @####
++@<<<<<<<<<<<<<<<<<<<<<<<<<<< @||||| @||||| @>>  @###.## @>>>>% @####.### @#######.##  @#.##### @#.##### @####
+ $identifier,$size,$block,$thread,$stat_data{$identifier}{$thread}{$size}{$block}{'write'}{'rate'},$stat_data{$identifier}{$thread}{$size}{$block}{'write'}{'cpu'},$stat_data{$identifier}{$thread}{$size}{$block}{'write'}{'avglat'},$stat_data{$identifier}{$thread}{$size}{$block}{'write'}{'maxlat'},$stat_data{$identifier}{$thread}{$size}{$block}{'write'}{'pct_gt_2_sec'},$stat_data{$identifier}{$thread}{$size}{$block}{'write'}{'pct_gt_10_sec'},$stat_data{$identifier}{$thread}{$size}{$block}{'write'}{'cpueff'}
+ .
+ 
+ 
+ format RAND_WRITES =
+-@<<<<<<<<<<<<<<<<<<<<<<<<<<< @||||| @||||| @>>  @##.## @>>>>% @####.### @#######.##  @#.##### @#.##### @####
++@<<<<<<<<<<<<<<<<<<<<<<<<<<< @||||| @||||| @>>  @###.## @>>>>% @####.### @#######.##  @#.##### @#.##### @####
+ $identifier,$size,$block,$thread,$stat_data{$identifier}{$thread}{$size}{$block}{'rwrite'}{'rate'},$stat_data{$identifier}{$thread}{$size}{$block}{'rwrite'}{'cpu'},$stat_data{$identifier}{$thread}{$size}{$block}{'rwrite'}{'avglat'},$stat_data{$identifier}{$thread}{$size}{$block}{'rwrite'}{'maxlat'},$stat_data{$identifier}{$thread}{$size}{$block}{'rwrite'}{'pct_gt_2_sec'},$stat_data{$identifier}{$thread}{$size}{$block}{'rwrite'}{'pct_gt_10_sec'},$stat_data{$identifier}{$thread}{$size}{$block}{'rwrite'}{'cpueff'}
+ .
+ 

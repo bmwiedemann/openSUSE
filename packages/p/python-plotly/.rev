@@ -1,0 +1,325 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>46d9e1eb6959bc3181b297338aad271c</srcmd5>
+    <version>2.0.14</version>
+    <time>1503925876</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>517548</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>82718dcac26a4d9afddea10b3e42dce0</srcmd5>
+    <version>2.0.16</version>
+    <time>1507571213</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532612</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a4084f137b7aafa10a917674473294ea</srcmd5>
+    <version>2.1.0</version>
+    <time>1508197995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534158</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cbf436954ca3440f03b5700e07a741f8</srcmd5>
+    <version>2.2.1</version>
+    <time>1509461028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537520</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5dc98a73689f25651a82867400b99e4f</srcmd5>
+    <version>2.2.2</version>
+    <time>1511817515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545904</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>afba494b99b60fb3b577f70cde8b072b</srcmd5>
+    <version>2.2.3</version>
+    <time>1512734321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554734</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d93153ebea810857f92826b79dec24f</srcmd5>
+    <version>2.3.0</version>
+    <time>1518597915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575270</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cc6b51ebd25306b9283975b3892c8fa7</srcmd5>
+    <version>2.4.1</version>
+    <time>1519308158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578896</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d8a2bdd20a2fd3cb1821ba6f4eac826b</srcmd5>
+    <version>2.5.1</version>
+    <time>1524238281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598787</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>17fe3129156e6179cf25a7494a7359a0</srcmd5>
+    <version>3.5.0</version>
+    <time>1548537768</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependency issue.
+- Update to version 3.5.0</comment>
+    <requestid>668731</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5ea9c202a46f80a7dde3d20f6eed3eec</srcmd5>
+    <version>3.10.0</version>
+    <time>1559837802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707292</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>58afefdf1668b7740b94cbfeff5bd758</srcmd5>
+    <version>4.0.0</version>
+    <time>1564155221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718606</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>826b49f357cf05c36d639f9296d40362</srcmd5>
+    <version>4.1.0</version>
+    <time>1566243486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724149</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4a5636ab2e01c288b5789ae3df56e837</srcmd5>
+    <version>4.1.1</version>
+    <time>1568190826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729679</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>872811c7d4c945dfa0b446185bc24b69</srcmd5>
+    <version>4.2.1</version>
+    <time>1573422681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747198</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bb84972267390b5ae4d747c2706aeb69</srcmd5>
+    <version>4.3.0</version>
+    <time>1574015009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749099</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ff87e8766e67c810f8f98dcaed07b9f5</srcmd5>
+    <version>4.3.0</version>
+    <time>1575727745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754762</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5d1d4d1b48075b5dcdd094717d34a188</srcmd5>
+    <version>4.4.1</version>
+    <time>1576235062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756725</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>26de72b0612d67d67d77b87c19b276d8</srcmd5>
+    <version>4.5.0</version>
+    <time>1580511417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768853</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8a0753618ce55fe683bb37a9ce6a0d64</srcmd5>
+    <version>4.5.1</version>
+    <time>1582555948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778509</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cc45dacb21e4d91bd6b54a4ac57a6877</srcmd5>
+    <version>4.5.4</version>
+    <time>1584176114</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.5.4:
+  * Updated
+    + The documentation of the API
+      https://plot.ly/python-api-reference/ now documents the full API
+      #2243
+    + New documentation examples for facets #2235, legend #2227,
+      subplots #2226, axes #2234 and histograms #2242. Thanks to
+      @SylwiaOliwia2 for all these great examples!
+  * Fixed
+    + Jupyterlab extension now compatible with both Jupyterlab 1.2 and
+      2.0 #2261 with thanks to @consideRatio for the contribution!
+    + Fixed a bug when using boolean values for the color argument of
+      px functions #2127
+    + Corrected import bug which was occuring with old versions of
+      ipywidgets #2265
+    + Fixed python 3.8 syntax warning #2262, with thanks to @sgn for
+      the contribution!
+- changes from version 4.5.3:
+  * Updated
+    + Removed development dependency on nose testing framework #2217
+  * Fixed
+    + JupyterLab extension now compatible with JupyterLab 2.0 #2245
+      with thanks to @consideRatio for the contribution!
+- changes from version 4.5.2:
+  * Fixed
+    + Fix build errors in JupyterLab extension by pinning version of
+      @types/plotly.js #2223</comment>
+    <requestid>784523</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8ea41e57c2811ebefd2634432f38d335</srcmd5>
+    <version>4.6.0</version>
+    <time>1586775195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793280</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4abdd55e810507a64986de5ce04f0175</srcmd5>
+    <version>4.7.1</version>
+    <time>1589197059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802286</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>542c9a0730595677bfb7f702fc8e16f9</srcmd5>
+    <version>4.8.2</version>
+    <time>1594706323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820513</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>854c74ab6933d73469eb753ddf93c586</srcmd5>
+    <version>4.10.0</version>
+    <time>1600079603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834240</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>09933e102b29421ad379d5453c5bcce5</srcmd5>
+    <version>4.11.0</version>
+    <time>1603645612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841149</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>14c6ca001aaf4c23bc4cab469ff3ce87</srcmd5>
+    <version>4.12.0</version>
+    <time>1604412974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845472</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0c084ba9a728d81659268b27c2882da0</srcmd5>
+    <version>4.14.3</version>
+    <time>1615802064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877580</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6f788e6c06ac8fc93632fe1ab691a758</srcmd5>
+    <version>5.3.0</version>
+    <time>1630617612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915575</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d9bab725f25ac68f215e8647267e5c5c</srcmd5>
+    <version>5.3.1</version>
+    <time>1631221662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917711</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fe4ed289897e1b8c026767bab37805a0</srcmd5>
+    <version>5.5.0</version>
+    <time>1642029757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945911</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7b49a6f53ea4c882de6f570240028ab0</srcmd5>
+    <version>5.6.0</version>
+    <time>1644874570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954167</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7d9fe5ae9d02440d7b34365719892702</srcmd5>
+    <version>5.8.0</version>
+    <time>1656145459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984880</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>5bdaad7c2495de6b372cc2f472fdcf5b</srcmd5>
+    <version>5.10.0</version>
+    <time>1660662474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>995870</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b13d2bc57ba6113fd9f2396d4a23ac06</srcmd5>
+    <version>5.11.0</version>
+    <time>1671907246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045230</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>124dc85fba37c865b32990837a6fde9f</srcmd5>
+    <version>5.13.1</version>
+    <time>1680018617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074796</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0026f655ac0abc96ff7db8c90afef4ef</srcmd5>
+    <version>5.14.1</version>
+    <time>1686506066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091744</requestid>
+  </revision>
+</revisionlist>

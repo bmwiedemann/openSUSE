@@ -1,0 +1,5 @@
+<package name="git-mr" project="openSUSE:Factory">
+  <title>git-mr</title>
+  <description>Checkout GitLab merge requests / GitHub pull requests locally</description>
+  <devel project="devel:tools:scm" package="git-mr"/>
+</package>

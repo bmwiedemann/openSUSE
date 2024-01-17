@@ -1,0 +1,5 @@
+<package name="kauth" project="openSUSE:Factory">
+  <title>kauth</title>
+  <description>KAuth</description>
+  <devel project="KDE:Frameworks5" package="kauth"/>
+</package>

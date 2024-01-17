@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Dec 20 23:17:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.9.6
+  * A fix to the testsuite
+
+-------------------------------------------------------------------
+Fri Oct 14 17:12:10 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to new upstream release 2.9.5
+  * Miniscule documentation updates
+
+-------------------------------------------------------------------
+Tue Dec  8 16:50:53 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.8
+* No changelog was provided
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split sonata (version 2.6) off the gap RPM package

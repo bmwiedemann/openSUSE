@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3aaea5bedc814ce3fc8e897e081de802</srcmd5>
+    <version>1.4.1git20120923</version>
+    <time>1381401233</time>
+    <user>scarabeus_factory</user>
+    <comment>A Japanese Simple Kana Kanji Input Method Engine for ibus.</comment>
+    <requestid>202623</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3aaea5bedc814ce3fc8e897e081de802</srcmd5>
+    <version>1.4.1git20120923</version>
+    <time>1409301198</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c7f2d7cb0a69a8c1c67a3aa3ec28b0fd</srcmd5>
+    <version>1.4.2</version>
+    <time>1413382812</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256630</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aeaf4dc3c9b83eca4905bdf719f5d2ea</srcmd5>
+    <version>1.4.3</version>
+    <time>1560971596</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.4.3
+  * Build and translation fixes (forwarded request 710702 from hillwood)</comment>
+    <requestid>710703</requestid>
+  </revision>
+</revisionlist>

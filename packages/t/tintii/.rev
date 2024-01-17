@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09c81d6cbb1c1ce9b7d44baf1995ec20</srcmd5>
+    <version>2.6.1</version>
+    <time>1366955167</time>
+    <user>coolo</user>
+    <comment>Useful for photographers.</comment>
+    <requestid>173231</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>09c81d6cbb1c1ce9b7d44baf1995ec20</srcmd5>
+    <version>2.6.1</version>
+    <time>1379664824</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de8a668beb66966233fdd74bf203b156</srcmd5>
+    <version>2.8.0</version>
+    <time>1382351592</time>
+    <user>scarabeus_factory</user>
+    <comment>update to 2.8.0</comment>
+    <requestid>204036</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>491477fad6ad6b8b96bb04f31d6fdff0</srcmd5>
+    <version>2.9.0</version>
+    <time>1404817321</time>
+    <user>coolo</user>
+    <comment>update to 2.9.0</comment>
+    <requestid>239836</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>491477fad6ad6b8b96bb04f31d6fdff0</srcmd5>
+    <version>2.9.0</version>
+    <time>1409303502</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1e28a685cc2b7f472de14eea5bedbfbe</srcmd5>
+    <version>2.10.0</version>
+    <time>1449996014</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>348379</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d396cd2a60d7ec0f0650f8a357d9a34b</srcmd5>
+    <version>2.10.0</version>
+    <time>1450857002</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>349737</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4b54c0f98aec34edb4279d188a6a7f2f</srcmd5>
+    <version>2.10.0</version>
+    <time>1465336021</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>399669</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>24bcabc24b64d6f982e2832c55762fd9</srcmd5>
+    <version>2.10.0</version>
+    <time>1486465766</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455142</requestid>
+  </revision>
+</revisionlist>

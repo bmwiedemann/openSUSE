@@ -1,0 +1,9 @@
+<package name="ndctl" project="openSUSE:Factory">
+  <title>Manage &quot;libnvdimm&quot; subsystem devices (Non-volatile Memory)</title>
+  <description>Utility library for managing the &quot;libnvdimm&quot; subsystem.  The &quot;libnvdimm&quot;
+subsystem defines a kernel device model and control message interface for
+platform NVDIMM resources like those defined by the ACPI 6.0 NFIT (NVDIMM
+Firmware Interface Table).
+</description>
+  <devel project="hardware:nvdimm" package="ndctl"/>
+</package>

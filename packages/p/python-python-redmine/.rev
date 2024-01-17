@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f1aae301b18f53cd1a257a9aee8c240</srcmd5>
+    <version>2.2.1</version>
+    <time>1551468641</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.2.1
+  Bugfixes:
+  * ProjectMembership resource ``group`` attribute was returned as
+    a dict instead of being converted to Resource object
+- Update to version 2.2.0
+  Improvements:
+  * ``PerformanceWarning`` will be issued when Python-Redmine does
+    some unnecessary work under the hood to fix the clients code
+    problems
+  Changes:
+  * *Backwards Incompatible:* Removed vendored Requests package
+    and make it an external dependency as Requests did the same with
+    it's own dependencies
+  * *Backwards Incompatible:* Removed Python 2.6 and 3.3 support as
+    they're not supported by Requests anymore
+  Bugfixes:
+  * ``Redmine.upload()`` fails under certain circumstances when used
+    with a file-like object and it contains unicode instead of bytes
+  * - ``Redmine.session()`` doesn't restore previous engine if fails
+- Update patch:
+  * python-python-redmine-use-system-requests.patch
+- Use %license for license install
+- Initial package, version 2.0.2
+- Add patch:
+  * python-python-redmine-use-system-requests.patch
+</comment>
+    <requestid>680144</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dc99ac2db1f1b7c0286b5240057a21fe</srcmd5>
+    <version>2.2.1</version>
+    <time>1587581496</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the runtime dependencies
+- Fix build without python2</comment>
+    <requestid>795750</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f840cd157fa1c1509c412e9436c90ce9</srcmd5>
+    <version>2.3.0</version>
+    <time>1596703327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824578</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4cc2f38489201d4db087ce9e2b82f684</srcmd5>
+    <version>2.3.0</version>
+    <time>1597668013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827206</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>be98a70ebdec0eb8a27d0290fbecff31</srcmd5>
+    <version>2.3.0</version>
+    <time>1649793064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969494</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>402661897c34a02a6e7c89846601181b</srcmd5>
+    <version>2.4.0</version>
+    <time>1674997872</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1061817</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d2788e9684ef5d0ddf13ccc5c8b4abd9</srcmd5>
+    <version>2.4.0</version>
+    <time>1696269898</time>
+    <user>anag+factory</user>
+    <comment>- Add 328.patch to workaround &quot;API key leakage on exception&quot;
+  described in boo#1215722
+  https://github.com/maxtepkeev/python-redmine/issues/330
+  https://github.com/maxtepkeev/python-redmine/pull/328</comment>
+    <requestid>1114261</requestid>
+  </revision>
+</revisionlist>

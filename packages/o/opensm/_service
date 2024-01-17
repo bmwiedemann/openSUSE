@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/linux-rdma/opensm.git</param>
+    <param name="package-meta">no</param>
+    <param name="exclude">.git</param>
+    <param name="filename">opensm</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">(opensm-)?(.*)</param>
+    <param name="versionrewrite-replacement">\2</param>
+    <param name="revision">844ab3b7edaad983449b5d3a4a773088b8daa299</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*opensm*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

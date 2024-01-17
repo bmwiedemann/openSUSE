@@ -1,0 +1,10 @@
+<package name="rocksdb" project="openSUSE:Factory">
+  <title>RocksDB</title>
+  <description>RocksDB is a high performance embedded database for key-value data.
+It is a fork of LevelDB which was then optimized to exploit many
+central processing unit (CPU) cores, and make efficient use of fast
+storage, such as solid-state drives (SSD), for input/output (I/O)
+bound workloads. It is based on a log-structured merge-tree (LSM tree)
+data structure.</description>
+  <devel project="server:database" package="rocksdb"/>
+</package>

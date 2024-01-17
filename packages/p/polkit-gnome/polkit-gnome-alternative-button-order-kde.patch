@@ -1,0 +1,12 @@
+Index: polkit-gnome-0.105/src/polkitgnomeauthenticationdialog.c
+===================================================================
+--- polkit-gnome-0.105.orig/src/polkitgnomeauthenticationdialog.c
++++ polkit-gnome-0.105/src/polkitgnomeauthenticationdialog.c
+@@ -537,6 +537,7 @@ polkit_gnome_authentication_dialog_const
+                                                           _("_Authenticate"),
+                                                           GTK_RESPONSE_OK);
+   gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
++  gtk_dialog_set_alternative_button_order (GTK_DIALOG (dialog), GTK_RESPONSE_OK, GTK_RESPONSE_CANCEL, -1);
+ 
+   content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+   action_area = gtk_dialog_get_action_area (GTK_DIALOG (dialog));

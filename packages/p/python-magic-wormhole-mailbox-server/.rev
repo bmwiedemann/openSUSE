@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6389b04991cb9f8f0195e8471009aa77</srcmd5>
+    <version>0.3.1</version>
+    <time>1558516457</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>704150</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>730a29746852d0f722688d908cce4848</srcmd5>
+    <version>0.3.1</version>
+    <time>1559580969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707065</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>42828c0b2738b4a9fd2e93b5b27a31cd</srcmd5>
+    <version>0.4.1</version>
+    <time>1570627150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736242</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>580cbd9860eebbce84cb8f46fbdfbe50</srcmd5>
+    <version>0.4.1</version>
+    <time>1626299936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906319</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ece0c0176f080392e34680e9d4b5d671</srcmd5>
+    <version>0.4.1</version>
+    <time>1652993368</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+- do not require python-mock for build
+- added patches
+  fix https://github.com/magic-wormhole/magic-wormhole/issues/439
+  + python-magic-wormhole-mailbox-server-no-mock.patch
+</comment>
+    <requestid>978017</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>586315d150a5cad09d273536cc550071</srcmd5>
+    <version>0.4.1</version>
+    <time>1656422572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985516</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>0c5e92976558a9eda72d1054e40fe416</srcmd5>
+    <version>0.4.1</version>
+    <time>1680125233</time>
+    <user>dimstar_suse</user>
+    <comment>- python-six is not required</comment>
+    <requestid>1075072</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,61 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-27 20:11:30.215109504 +0200
+Upstream: sent on Dec 03 00:28+0100
+This patch updated thereafter.
+
+---
+ Makefile.am  |   23 +++++++++++++++++++++++
+ configure.ac |   18 ++++++++++++++++++
+ 2 files changed, 41 insertions(+)
+
+Index: tachyon/Makefile.am
+===================================================================
+--- /dev/null
++++ tachyon/Makefile.am
+@@ -0,0 +1,23 @@
++# -*- Makefile -*-
++ACLOCAL_AMFLAGS = -I m4
++AM_CPPFLAGS = ${regular_CPPFLAGS} ${libGL_CFLAGS} ${libpng_CFLAGS} ${libX11_CFLAGS} -I${top_srcdir}/src
++AM_CFLAGS   = ${regular_CFLAGS}
++
++bin_PROGRAMS = tachyon
++lib_LTLIBRARIES = libtachyon.la
++libtachyon_la_SOURCES = \
++	src/api.c src/apigeom.c src/box.c src/global.c src/hash.c \
++	src/parallel.c src/threads.c src/camera.c src/render.c src/trace.c \
++	src/grid.c src/intersect.c src/sphere.c src/plane.c src/ring.c \
++	src/triangle.c src/cylinder.c src/quadric.c src/extvol.c src/vol.c \
++	src/ui.c src/util.c src/vector.c src/shade.c src/texture.c \
++	src/coordsys.c src/imap.c src/light.c src/imageio.c src/jpeg.c \
++	src/pngfile.c src/ppm.c src/psd.c src/sgirgb.c src/tgafile.c \
++	src/winbmp.c
++libtachyon_la_LIBADD = -lm -lpthread -ljpeg ${libpng_LIBS}
++libtachyon_la_LDFLAGS = -release ${PACKAGE_VERSION}
++tachyon_SOURCES = \
++	demosrc/main.c demosrc/getargs.c demosrc/parse.c demosrc/nffparse.c \
++	demosrc/glwin.c demosrc/spaceball.c demosrc/trackball.c \
++	demosrc/mgfparse.c demosrc/ac3dparse.c
++tachyon_LDADD = libtachyon.la -lm ${libGL_LIBS} ${libX11_LIBS}
+Index: tachyon/configure.ac
+===================================================================
+--- /dev/null
++++ tachyon/configure.ac
+@@ -0,0 +1,18 @@
++AC_INIT([tachyon], [0.99.5])
++AC_CONFIG_AUX_DIR([build-aux])
++AC_CONFIG_MACRO_DIRS([m4])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects])
++AC_PROG_INSTALL
++AC_PROG_CC
++AC_DISABLE_STATIC
++m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
++LT_INIT
++PKG_CHECK_MODULES([libGL], [gl])
++PKG_CHECK_MODULES([libpng], [libpng])
++PKG_CHECK_MODULES([libX11], [x11])
++regular_CPPFLAGS="-DUSEJPEG -DUSEOPENGL -DUSEPNG -DLinux -DTHR -D_REENTRANT"
++regular_CFLAGS="-ffast-math"
++AC_SUBST([regular_CPPFLAGS])
++AC_SUBST([regular_CFLAGS])
++AC_CONFIG_FILES([Makefile])
++AC_OUTPUT

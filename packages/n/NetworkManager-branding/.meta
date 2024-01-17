@@ -1,0 +1,5 @@
+<package name="NetworkManager-branding" project="openSUSE:Factory">
+  <title>NetworkManager-branding-openSUSE</title>
+  <description>Package providing NetworkManager.conf configured for connection checking against http://conncheck.opensuse.org.</description>
+  <devel project="GNOME:Factory" package="NetworkManager-branding"/>
+</package>

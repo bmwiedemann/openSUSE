@@ -1,0 +1,33 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/lite-xl/lite-xl-plugin-manager</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <!-- TESTING -->
+    <!-- LAST KNOWN GOOD:  older,  newer
+    <param name="revision">627caff</param>
+    -->
+    <!--
+    <param name="versionrewrite-pattern">v(.*)</param>
+    -->
+    <!-- Sometimes it's "continuous", sometimes "latest"
+    <param name="versionrewrite-pattern">latest</param>
+    -->
+    <param name="versionrewrite-pattern">continuous</param>
+    <param name="versionrewrite-replacement">1.0.13</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="replace_using_env" mode="manual">
+    <param name="file">lpm.c.diff</param>
+    <param name="var">NEWVERSION</param>
+    <param name="eval">NEWVERSION=$(grep ^Version lite-xl-plugin-manager.spec | awk '{print $2}')</param>
+    <param name="eval">sed -i -e 's#\([^\.]*\)"[0-9]\.[0-9]\.[0-9][0-9]+git[0-9]\{8\}\.[[:alnum:]]\{7\}"#\1"%%NEWVERSION%%"#' lpm.c.diff</param>
+    <param name="verbose">0</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>

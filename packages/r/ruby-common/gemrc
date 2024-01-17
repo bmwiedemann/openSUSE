@@ -1,0 +1,13 @@
+--- 
+:benchmark: false
+:install: --format-executable --no-user-install
+install: --format-executable --no-user-install
+:backtrace: true
+:update_sources: true
+:format_executable: true
+:verbose: true
+:update: --format-executable --no-user-install
+update: --format-executable --no-user-install
+:bulk_threshold: 1000
+:sources: 
+- https://rubygems.org

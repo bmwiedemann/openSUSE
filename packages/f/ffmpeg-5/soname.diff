@@ -1,0 +1,23 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-03-13 12:53:21.732953738 +0100
+
+Move libswresample.so.4 out the way for the benefit of ffmpeg-6
+which provides the same library.
+---
+ ffbuild/library.mak |    3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: ffmpeg-5.1.2/ffbuild/library.mak
+===================================================================
+--- ffmpeg-5.1.2.orig/ffbuild/library.mak
++++ ffmpeg-5.1.2/ffbuild/library.mak
+@@ -6,6 +6,9 @@ endif
+ 
+ LIBVERSION := $(lib$(NAME)_VERSION)
+ LIBMAJOR   := $(lib$(NAME)_VERSION_MAJOR)
++ifeq ($(NAME),swresample)
++LIBMAJOR := $(LIBMAJOR).ff5
++endif
+ LIBMINOR   := $(lib$(NAME)_VERSION_MINOR)
+ INCINSTDIR := $(INCDIR)/lib$(NAME)
+ 

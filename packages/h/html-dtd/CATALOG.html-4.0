@@ -1,0 +1,8 @@
+OVERRIDE YES
+
+PUBLIC "-//W3C//DTD HTML 4.0//EN" /usr/share/sgml/html/dtd/4.0/strict.dtd
+PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" /usr/share/sgml/html/dtd/4.0/loose.dtd
+PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN" /usr/share/sgml/html/dtd/4.0/frameset.dtd
+PUBLIC "-//W3C//ENTITIES Latin1//EN//HTML" /usr/share/sgml/html/dtd/4.0/HTMLlat1.ent
+PUBLIC "-//W3C//ENTITIES Special//EN//HTML" /usr/share/sgml/html/dtd/4.0/HTMLspecial.ent
+PUBLIC "-//W3C//ENTITIES Symbols//EN//HTML" /usr/share/sgml/html/dtd/4.0/HTMLsymbol.ent

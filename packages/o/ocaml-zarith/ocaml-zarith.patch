@@ -1,0 +1,214 @@
+--- /dev/null
++++ b/dune
+@@ -0,0 +1,88 @@
++(env
++ (dev
++  (flags
++   (:standard -w -6))))
++
++(library
++ (name zarith)
++ (public_name zarith)
++ (modules z q big_int_Z zarith_version)
++ (wrapped false)
++ (foreign_stubs
++  (language c)
++  (names caml_z)
++  (flags
++   :standard
++   (:include cflags.sxp)))
++ (c_library_flags
++  (:include libs.sxp)))
++
++(rule
++ (target Makefile)
++ (deps configure env)
++ (action
++  (bash "env %{read:env}  ./configure")))
++
++(rule
++ (target env)
++ (deps env-%{lib-available:gmp})
++ (action
++  (copy env-%{lib-available:gmp} env)))
++
++(rule
++ (target env-false)
++ (action
++  (with-stdout-to
++   %{target}
++   (bash "echo -n CC=\\\"%{cc}\\\""))))
++
++(rule
++ (target env-true)
++ (deps
++  %{lib:gmp:libgmp.a}
++  %{lib:gmp:libgmp.so}
++  %{lib:gmp:gmp.h}
++  %{workspace_root})
++ (action
++  (with-stdout-to
++   %{target}
++   (bash
++    "echo -n CC=\\\"%{cc}\\\" LDFLAGS=\\\"-L$(realpath $(dirname %{lib:gmp:libgmp.a}))\\\" CFLAGS=\\\"-I$(realpath $(dirname %{lib:gmp:libgmp.a}))\\\" CPPFLAGS=\\\"-I$(realpath $(dirname %{lib:gmp:libgmp.a}))\\\""))))
++
++(rule
++ (target cflags.sxp)
++ (deps Makefile)
++ (action
++  (with-stdout-to
++   %{target}
++   (progn
++    (bash "echo -n '('")
++    (bash "cat Makefile | sed -n -e 's/CFLAGS=//p'")
++    (bash "echo -n ')'")))))
++
++(rule
++ (target libs.sxp)
++ (deps Makefile)
++ (action
++  (with-stdout-to
++   %{target}
++   (progn
++    (bash "echo -n '('")
++    (bash "cat Makefile | sed -n -e 's/LIBS=//p'")
++    (bash "echo -n ')'")))))
++
++(rule
++ (deps META)
++ (action
++  (with-stdout-to
++   zarith_version.ml
++   (progn
++    (run echo "let")
++    (bash "grep \"version\" META | head -1")))))
++
++(library
++ (name zarith_top)
++ (optional)
++ (public_name zarith.top)
++ (modules zarith_top)
++ (libraries zarith compiler-libs.toplevel))
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,2 @@
++(lang dune 2.8)
++(name zarith)
+--- /dev/null
++++ b/tests/dune
+@@ -0,0 +1,108 @@
++; Run test for host
++
++(executable
++ (enabled_if
++  (= %{context_name} default))
++ (name zq)
++ (modules zq)
++ (libraries zarith))
++
++(rule
++ (enabled_if
++  (= %{context_name} default))
++ (action
++  (with-stdout-to
++   zq.output
++   (run ./zq.exe))))
++
++; Run test for Solo5 SPT target
++
++(rule
++ (copy zq.ml zq_freestanding.ml))
++
++(rule (with-stdout-to startup.c (echo """
++#include <solo5.h>
++#define CAML_NAME_SPACE
++#include <caml/callback.h>
++
++static char *unused_argv[] = { \"mirage\", NULL };
++
++void _nolibc_init(uintptr_t heap_start, size_t heap_size); // defined in solo5-libc/sysdeps_solo5.c
++
++int solo5_app_main(const struct solo5_start_info *si) {
++    _nolibc_init(si->heap_start, si->heap_size);
++    caml_startup(unused_argv);
++}
++""")))
++
++(rule (with-stdout-to manifest.json (echo """
++{
++  \"type\": \"solo5.manifest\",
++  \"version\": 1,
++  \"devices\": []
++}
++""")))
++
++(executable
++ (enabled_if
++  (= %{context_name} freestanding))
++ (name zq_freestanding)
++ (modules zq_freestanding)
++ (libraries zarith)
++ (link_flags :standard -cclib "-z solo5-abi=spt")
++ (foreign_stubs
++  (language c)
++  (names startup manifest)))
++
++(rule
++ (enabled_if
++  (= %{context_name} freestanding))
++ (targets manifest.c)
++ (deps manifest.json)
++ (action
++  (run solo5-elftool gen-manifest manifest.json manifest.c)))
++
++; Run solo5 code
++
++(rule
++ (enabled_if
++  (= %{context_name} freestanding))
++ (deps zq_freestanding.exe)
++ (action
++  (with-accepted-exit-codes
++   1
++   (with-stdout-to
++    zq.output.full
++    (run solo5-spt zq_freestanding.exe)))))
++
++; Remove solo5 intro
++
++(rule
++ (enabled_if
++  (= %{context_name} freestanding))
++ (deps zq.output.full)
++ (action
++  (with-stdout-to
++   zq.output
++   (bash "head -n -1 zq.output.full | tail -n +12 -"))))
++
++; Check results
++
++(rule
++ (alias runtest)
++ (action
++  (diff zq.expected zq.output)))
++
++(rule
++ (target zq.expected)
++ (enabled_if
++  (= %{arch_sixtyfour} true))
++ (action
++  (copy zq.output64 %{target})))
++
++(rule
++ (target zq.expected)
++ (enabled_if
++  (= %{arch_sixtyfour} false))
++ (action
++  (copy zq.output32 %{target})))
+--- a/tests/zq.ml
++++ b/tests/zq.ml
+@@ -825,3 +825,4 @@ let test_Q () =
+ 
+ let _ = test_Z()
+ let _ = test_Q()
++let _ = flush stdout

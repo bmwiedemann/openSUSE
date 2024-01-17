@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>001216de9a8ea002ec8c0dbd1ea6f019</srcmd5>
+    <version>3.0.0b5</version>
+    <time>1551455351</time>
+    <user>dimstar_suse</user>
+    <comment>Python c-ares .. dependency of aiodns</comment>
+    <requestid>680394</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6e841ee8638084c4e8d9debfcfedf0c6</srcmd5>
+    <version>3.0.0</version>
+    <time>1553263793</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0
+ * first stable version in 3.0 series</comment>
+    <requestid>687344</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>21f258f4ef2f5d836e55c3d82d775993</srcmd5>
+    <version>3.1.1</version>
+    <time>1585265261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786484</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f06d729b83e6b7aa3a969b617eeea451</srcmd5>
+    <version>4.0.0</version>
+    <time>1625950433</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.0
+  * core: add support for CAA queries
+  * core: add support for getaddrinfo()
+  * core: add ability to use the system installed c-ares
+  * test: remove TTL tests
+  * core: update c-ares and use a submodule
+  * core: drop bundled c-ares version
+  * misc: drop tasks.py</comment>
+    <requestid>903428</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0109b23b06cd531936174b1d3b525b11</srcmd5>
+    <version>4.2.1</version>
+    <time>1657715503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988453</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ff50a33f77c6b72f34018b9fba1c5bf</srcmd5>
+    <version>4.2.2</version>
+    <time>1665420254</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008176</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9fabc93a2c818942be4d25e8526e6277</srcmd5>
+    <version>4.2.2</version>
+    <time>1670703445</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cleanup_tests.patch to make the test suite slightly more sane.
+- No, the test suite is just broken, and the upstream doesn't care.
+</comment>
+    <requestid>1041743</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3790945694e72dc298730bdcd33bc5ec</srcmd5>
+    <version>4.3.0</version>
+    <time>1671128644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042871</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6652fb0548e32f7cd2c656fa1256b72c</srcmd5>
+    <version>4.3.0</version>
+    <time>1682193562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081811</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a536aa6e0997a298a73cdca2b837b6f8</srcmd5>
+    <version>4.4.0</version>
+    <time>1702327786</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.4.0:
+  * Add support for 3.12, drop EOL 3.7
+
+- Update to version 4.3.0
+- Update to version 4.2.2
+- initial commit</comment>
+    <requestid>1132432</requestid>
+  </revision>
+</revisionlist>

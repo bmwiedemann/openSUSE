@@ -1,0 +1,429 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4e29a588a55454a063061785f900067</srcmd5>
+    <version>1.1.17</version>
+    <time>1503392911</time>
+    <user>dimstar_suse</user>
+    <comment>This was dropped due to being outdated (SR#461941) It is now current and we have a maintainer.</comment>
+    <requestid>517514</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>624d402f06966a1b87f66d9154aa6283</srcmd5>
+    <version>1.1.19</version>
+    <time>1503999995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519189</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bff894cf1972f0aeb8d07d10e856608c</srcmd5>
+    <version>1.1.21</version>
+    <time>1504617551</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520977</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>23fff5b7ea9faeb48ccb9b306f795ae0</srcmd5>
+    <version>1.1.23</version>
+    <time>1505239080</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523672</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>feeabbfce91d2a48c29d8c27b4db5b32</srcmd5>
+    <version>1.1.24</version>
+    <time>1505920084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526934</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0441322334096a67cbc6693df51de55d</srcmd5>
+    <version>1.1.26</version>
+    <time>1508197965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534125</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b018d595f4e28a874de6d7c94f180d77</srcmd5>
+    <version>1.1.27</version>
+    <time>1508770369</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535847</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>77a04b54153a38b4f76cc39256837d2d</srcmd5>
+    <version>1.1.28</version>
+    <time>1511194010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>543592</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>abba3ccc63b9a25761dabeeb01c42b28</srcmd5>
+    <version>1.1.29</version>
+    <time>1514569869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560094</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae644b7782dfa5736913f1f829391696</srcmd5>
+    <version>1.1.30</version>
+    <time>1515110582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561552</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4819b34355280e820ba67e8a9cfb5623</srcmd5>
+    <version>1.1.31</version>
+    <time>1516222712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566552</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>54a2a2b4e39d8be78ca1d91f08c075ab</srcmd5>
+    <version>1.1.32</version>
+    <time>1516634426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568050</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>12d7398184e16b149dd01a52adcb5840</srcmd5>
+    <version>1.1.33</version>
+    <time>1516712008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568463</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>85ac546563e26c1e6963de68c84b197c</srcmd5>
+    <version>1.1.34</version>
+    <time>1517932192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573213</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>69e3b21bdcff3b61a318f0a07239e850</srcmd5>
+    <version>1.1.35</version>
+    <time>1518426971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575479</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>45b871fef74f09b059a63e4d02ff02c3</srcmd5>
+    <version>1.1.36</version>
+    <time>1519683953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580055</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>908b0b95ea83b448f428ebed5960852f</srcmd5>
+    <version>1.1.37</version>
+    <time>1522225789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590962</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cee0e432ee5bf1ad1d2e985fc7a44745</srcmd5>
+    <version>1.1.38</version>
+    <time>1523875938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596826</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5e593841e5a9e82cdfebac653c97fadc</srcmd5>
+    <version>1.1.38</version>
+    <time>1532774513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624934</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8dadfb305b1c786acb990e8529b238f9</srcmd5>
+    <version>1.2.1</version>
+    <time>1548335502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667386</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>42d4da8fbf7e8d6781b9098d43b157bc</srcmd5>
+    <version>1.2.2</version>
+    <time>1551455254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680039</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea693da78edb0a48d5884f9b7e1e348b</srcmd5>
+    <version>1.2.3</version>
+    <time>1554115231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690272</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>709aa4fe1e207151f84dfb8dc9a65b6c</srcmd5>
+    <version>1.2.5</version>
+    <time>1563456005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715586</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>652f0cb31059f90fcc31f37b83960fef</srcmd5>
+    <version>1.2.5</version>
+    <time>1566894137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726005</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8f9d21806d3027ef449a590b3d56fac0</srcmd5>
+    <version>1.2.6</version>
+    <time>1567581126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727764</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>67949a7479a5570e3ebeb58326643baa</srcmd5>
+    <version>1.2.7</version>
+    <time>1569852066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733959</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>24a51ec21670eef94ac48d4e9005a53b</srcmd5>
+    <version>1.2.8</version>
+    <time>1580990903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770246</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>512a1deff5604b8c1c3d38fc9be41045</srcmd5>
+    <version>1.2.9</version>
+    <time>1582028984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774966</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4523e59c8523eda621eee9f6e6f49a6e</srcmd5>
+    <version>1.2.10</version>
+    <time>1584532071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786099</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>26c25a7ced35726680d1974809aabc98</srcmd5>
+    <version>1.2.11</version>
+    <time>1586775212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793394</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1e867a46380564902a9867ce13cf67c9</srcmd5>
+    <version>1.2.12</version>
+    <time>1588972113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801764</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>fd9b48d67b18af6932d4395c64e29d5c</srcmd5>
+    <version>1.2.12</version>
+    <time>1590650441</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809673</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>666cea17e4e7b6734fe7ddd2c54352f1</srcmd5>
+    <version>1.2.13</version>
+    <time>1594818378</time>
+    <user>dimstar_suse</user>
+    <comment>- cacti 1.2.13:
+  * Query XSS vulnerabilities require vendor package update
+    (CVE-2020-11022 / CVE-2020-11023)
+  * Lack of escaping on some pages can lead to XSS exposure
+  * Update PHPMailer to 6.1.6 (CVE-2020-13625)
+  * SQL Injection vulnerability due to input validation failure when
+    editing colors (CVE-2020-14295, boo#1173090)
+  * Lack of escaping on template import can lead to XSS exposure
+</comment>
+    <requestid>820849</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>664767df30a528ad1d115053f6cbf24b</srcmd5>
+    <version>1.2.14</version>
+    <time>1596565454</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.14 (boo#1174850)
+</comment>
+    <requestid>824224</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>833efb2b28a9068ad100c56290c63dd3</srcmd5>
+    <version>1.2.15</version>
+    <time>1605290290</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.15</comment>
+    <requestid>847931</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c16c988be11f229184a62187e0b16509</srcmd5>
+    <version>1.2.16</version>
+    <time>1607430266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853622</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>9097f28d9a02ce4ab77d07219da12ee9</srcmd5>
+    <version>1.2.16</version>
+    <time>1608542592</time>
+    <user>dimstar_suse</user>
+    <comment>- fix httpd startup errors due to mismatched configuration
+  directives boo#1175314
+</comment>
+    <requestid>856911</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e3a2148269e8bad69b062eab8ebcb899</srcmd5>
+    <version>1.2.17</version>
+    <time>1620334359</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.17 CVE-2020-35701 boo#1180804
+</comment>
+    <requestid>890825</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7ca3cff5d7c099256d5bc50e35de6f37</srcmd5>
+    <version>1.2.18</version>
+    <time>1629706089</time>
+    <user>dimstar_suse</user>
+    <comment>- cacti 1.2.18:
+  * CVE-2020-14424: Lack of escaping on template import can lead to
+    XSS exposure under 'midwinter' theme (boo#1188188)
+  * Real time graphs can expose XSS issue
+</comment>
+    <requestid>913438</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f35af54ea85ed0a9abf47e057e08b937</srcmd5>
+    <version>1.2.19</version>
+    <time>1636240744</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.19 boo#1192408</comment>
+    <requestid>929901</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>56dfe41d9a798a1f75ff3a9405d7be13</srcmd5>
+    <version>1.2.20</version>
+    <time>1650657620</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.20 CVE-2022-0730 boo#1196692
+</comment>
+    <requestid>972230</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bb855b179cde1832ec4b016b7af1e44e</srcmd5>
+    <version>1.2.21</version>
+    <time>1653907420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979660</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>464ec52b3cfc3f3f76930f089fa59ab8</srcmd5>
+    <version>1.2.22</version>
+    <time>1664797595</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.22 (boo#1203952)</comment>
+    <requestid>1007577</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>adf642d54161514f9d0e322b8e7a336e</srcmd5>
+    <version>1.2.23</version>
+    <time>1672754716</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.23 CVE-2022-46169 boo#1206185</comment>
+    <requestid>1046255</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>80911186ec0b004a7dfd509f6bd2e7dc</srcmd5>
+    <version>1.2.24</version>
+    <time>1677584943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068075</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>bc09c6eabfdf84bce8a48de33fea8d54</srcmd5>
+    <version>1.2.25</version>
+    <time>1694019569</time>
+    <user>anag+factory</user>
+    <comment>cacti 1.2.25 (boo#1215024)</comment>
+    <requestid>1109188</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>a985b09230910570eb44c94b5b5b4de5</srcmd5>
+    <version>1.2.25</version>
+    <time>1694113978</time>
+    <user>anag+factory</user>
+    <comment>cl update for tracking...
+
+CVE-2023-30534 boo#1215082
+CVE-2023-39360 boo#1215044
+CVE-2023-39361 boo#1215045
+CVE-2023-39357 boo#1215040
+CVE-2023-39362 boo#1215047
+CVE-2023-39359 boo#1215043
+CVE-2023-39358 boo#1215042
+CVE-2023-39365 boo#1215051
+CVE-2023-39364 boo#1215050
+CVE-2023-39366 boo#1215052
+CVE-2023-39510 boo#1215053
+CVE-2023-39511 boo#1215081
+CVE-2023-39512 boo#1215054
+CVE-2023-39513 boo#1215055
+CVE-2023-39514 boo#1215056
+CVE-2023-39515 boo#1215058
+CVE-2023-39516 boo#1215059
+</comment>
+    <requestid>1109347</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7160a2ab478fdf875f1850fbc4410157</srcmd5>
+    <version>1.2.26</version>
+    <time>1703527565</time>
+    <user>anag+factory</user>
+    <comment>cacti 1.2.26
+CVE-2023-50250 boo#1218380
+CVE-2023-49084 boo#1218360
+CVE-2023-49085 boo#1218378
+CVE-2023-49086 boo#1218366
+CVE-2023-49088 boo#1218379
+CVE-2023-51448 boo#1218381
+</comment>
+    <requestid>1134986</requestid>
+  </revision>
+</revisionlist>

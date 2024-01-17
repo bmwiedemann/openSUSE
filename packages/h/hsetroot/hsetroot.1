@@ -1,0 +1,93 @@
+.TH HSETROOT 1 "November 18, 2019"
+.SH NAME
+hsetroot \- yet another wallpaper application
+.SH SYNOPSIS
+.B hsetroot
+[ command1 [ args... ] ] [ command2 [ args... ] ]
+.SH DESCRIPTION
+hsetroot is a tool which allows you to compose wallpapers ("root pixmaps")
+for X. It has a lot of options like rendering gradients, solids, images but
+it also allows you to perform manipulations on those things, or chain them
+together.
+.SH OPTIONS
+.SS "Generic Options:"
+.TP
+\fB\-root\fR
+Treat multiple displays as one big screen (ignore xrandr outputs)
+.TP
+\fB\-screens\fR <int>
+Set a screenmask to use
+.SS "Gradients:"
+.TP
+\fB\-add\fR <color>
+Add color to range using distance 1
+.TP
+\fB\-addd\fR <color> <distance>
+Add color to range using custom distance
+.TP
+\fB\-gradient\fR <angle>
+Render gradient using specified angle
+.TP
+\fB\-clear\fR
+Clear the color range
+.SS "Solid:"
+.TP
+\fB\-solid\fR <color>
+Render a solid using the specified color
+.SS "Image files:"
+.TP
+\fB\-center\fR <image>
+Render an image centered on screen
+.TP
+\fB\-cover\fR <image>
+Render an image centered on screen scaled so that all of screen is covered.
+.TP
+\fB\-tile\fR <image>
+Render an image tiled
+.TP
+\fB\-full\fR <image>
+Render an image maximum aspect
+.TP
+\fB\-extend\fR <image>
+Render an image maximum aspect, and copy 1px border taken from the image over
+the remaining area so that no black borders are shown.
+.TP
+\fB\-fill\fR <image>
+Render an image strechted
+.SS "Manipulations:"
+.TP
+\fB\-tint\fR <color>
+Tint the current image
+.TP
+\fB\-blur\fR <radius>
+Blur the current image
+.TP
+\fB\-sharpen\fR <radius>
+Sharpen the current image
+.TP
+\fB\-contrast\fR <amount>
+Adjust contrast of current image
+.TP
+\fB\-brightness\fR <amount>
+Adjust brightness of current image
+.TP
+\fB\-gamma\fR <amount>
+Adjust gamma level of current image
+.TP
+\fB\-flipv\fR
+Flip the current image vertically
+.TP
+\fB\-fliph\fR
+Flip the current image horizontally
+.TP
+\fB\-flipd\fR
+Flip the current image diagonally
+.SS "Misc:"
+.TP
+\fB\-alpha\fR <amount>
+Adjust alpha level for colors and images
+.TP
+\fB\-write\fR <filename>
+Write current image to file
+.SH AUTHORS
+Hyriand <hyriand@thegraveyard.org>, Martin Hradil

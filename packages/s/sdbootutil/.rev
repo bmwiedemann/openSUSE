@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f412f8a91e364afe58b5af8447aef9e</srcmd5>
+    <version>1+git20230717.dac075e</version>
+    <time>1689786658</time>
+    <user>anag+factory</user>
+    <comment>new package</comment>
+    <requestid>1099410</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c669e662f7185c4f1346c0c43200a9f</srcmd5>
+    <version>1+git20230727.a0e666f</version>
+    <time>1690575605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1+git20230727.a0e666f:
+  * Set and honor $SYSTEMD_ESP_PATH
+  * rpm-script: don't remove kernel on reinstalls (forwarded request 1101095 from lnussel)</comment>
+    <requestid>1101096</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>60fe0214ee537bb3be9edde11a97c96f</srcmd5>
+    <version>1+git20230727.a0e666f</version>
+    <time>1691414967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102648</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3bc2348a94ee9353cfe3f78f8684dfe4</srcmd5>
+    <version>1+git20230814.38973c7</version>
+    <time>1692045369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1+git20230814.38973c7:
+  * Support purge-kernels
+  * Fix postun
+  * Remove debug logging (forwarded request 1103881 from lnussel)</comment>
+    <requestid>1103882</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e08ef475567f57f7199a538afdc69d02</srcmd5>
+    <version>1+git20230817.2a3cd34</version>
+    <time>1695327246</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20230817.2a3cd34:
+  * Ignore errors from efibootmgr
+  * Update spec file
+  * Add marker to flag installation using sdbootutil
+  * Refactor and fix boot entry installation
+  * Don't exit in warn()
+  * feat: use arg_esp_path directly
+  * fix: get esp_device from bootctl
+  * fix: only install shim for secure boot
+  * feat: create only non-existing entries &amp; pass correct ESP partition
+  * fix: make efibootmgr silent
+  * feat: create boot menu entries when installed (forwarded request 1112549 from lnussel)</comment>
+    <requestid>1112550</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79b424d34ab29a9d8a770ed9fa14d137</srcmd5>
+    <version>1+git20231005.890f70c</version>
+    <time>1697836573</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118843</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ee59fc748cd42f4d69ce625115c2785</srcmd5>
+    <version>1+git20231023.873adb9</version>
+    <time>1698170846</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119679</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>05eaf8fb82a8fecea2743ec20f23cfc6</srcmd5>
+    <version>1+git20231026.f43c33c</version>
+    <time>1698952811</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1122190</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4648b31a081eb31c505df671a8154f60</srcmd5>
+    <version>1+git20231102.beb4c19</version>
+    <time>1699301617</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123573</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2746186249d616872c4ed7167d4021a8</srcmd5>
+    <version>1+git20231114.6bcf1d3</version>
+    <time>1700078809</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20231114.6bcf1d3:
+  * Fix quoting when calling dracut (forwarded request 1126270 from lnussel)</comment>
+    <requestid>1126272</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e3952a64afad510f124b97524b2ef8d4</srcmd5>
+    <version>1+git20231214.b186b2d</version>
+    <time>1702673244</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20231214.b186b2d:
+  * Fix exit code
+  * Revert &quot;Add pcr predictions to initrd for now&quot; (forwarded request 1133114 from lnussel)</comment>
+    <requestid>1133123</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bdbad04ea8caf6b976c0298b22aa890</srcmd5>
+    <version>1+git20231221.42797ab</version>
+    <time>1704380219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135444</requestid>
+  </revision>
+</revisionlist>

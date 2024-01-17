@@ -1,0 +1,180 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c419348b49d4f16665e84fc8ded179d</srcmd5>
+    <version>0.2.0</version>
+    <time>1332239541</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109261</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4582b43317ce2907f89037fd407e036f</srcmd5>
+    <version>0.2.1</version>
+    <time>1336452474</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116227</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4582b43317ce2907f89037fd407e036f</srcmd5>
+    <version>0.2.1</version>
+    <time>1340184048</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d435db861e1805c6f9661a90894afc4e</srcmd5>
+    <version>0.3.0</version>
+    <time>1355914396</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>145650</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d435db861e1805c6f9661a90894afc4e</srcmd5>
+    <version>0.3.0</version>
+    <time>1359110020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>4a7070977fb41c96e99eb1397ad80a00</srcmd5>
+    <version>0.3.0</version>
+    <time>1366017348</time>
+    <user>coolo</user>
+    <comment>- Remove pre_checkin.sh since the two versions are not the same
+- Remove unneeded macros
+- Added python buildrequires and requires since the package does not
+  work properly without them on openSUSE &lt;= 12.2 (forwarded request 163954 from TheBlackCat) (forwarded request 163955 from TheBlackCat)</comment>
+    <requestid>163956</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c959ce0c6f889a2ab8c778a966754333</srcmd5>
+    <version>0.3.0</version>
+    <time>1371652567</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179799</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>c959ce0c6f889a2ab8c778a966754333</srcmd5>
+    <version>0.3.0</version>
+    <time>1379664162</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>d70d3ca13e85364b4aaad5358db3eb85</srcmd5>
+    <version>0.3.0</version>
+    <time>1382692445</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204547</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>d70d3ca13e85364b4aaad5358db3eb85</srcmd5>
+    <version>0.3.0</version>
+    <time>1409302854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>354563b371b2c8e1da160faef5944dd0</srcmd5>
+    <version>0.3.1</version>
+    <time>1430983345</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305654</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef17ab52c6c12ce9efa8fe1b4bdfbc81</srcmd5>
+    <version>1.0.0</version>
+    <time>1504521177</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519906</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4646e23515207727c3f4860d6a8b1cec</srcmd5>
+    <version>2.0.0</version>
+    <time>1544539789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * no changelog
+- Enable tests</comment>
+    <requestid>657151</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>70ea694463ffc3dc68674a49eb8f1d5d</srcmd5>
+    <version>2.1.1</version>
+    <time>1582207157</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * no changelog</comment>
+    <requestid>777595</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c21f199dac8933aec31cd00bb2b3ea39</srcmd5>
+    <version>3.0.0</version>
+    <time>1591743096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0
+ * Allowed default pickle protocol to be overriden using
+    the PICKLEFIELD_DEFAULT_PROTOCOL setting.
+ * Dropped support for Python 2.
+ * Added testing against Django 3.0.
+ * Dropped support for Django 1.11.</comment>
+    <requestid>812910</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>418d31fff284891571ad2a2540a3b7d4</srcmd5>
+    <version>3.0.1</version>
+    <time>1591862925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1
+ * no changelog</comment>
+    <requestid>813221</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8a5a7a44209e7f3e9d2f93be1e6b5a2f</srcmd5>
+    <version>3.0.1</version>
+    <time>1627151946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908035</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a43abae4b5653f7449f57983df24a00f</srcmd5>
+    <version>3.0.1</version>
+    <time>1641555999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944615</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>a550e5ed4bea82ff6528b49047317d95</srcmd5>
+    <version>3.0.1</version>
+    <time>1652389101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976096</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>42c32d022b798c67f219128d9d467772</srcmd5>
+    <version>3.1.0</version>
+    <time>1672851219</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * Added testing against Django 3.2 and 4.0.
+  * addressed a packaging issue with 3.0.0</comment>
+    <requestid>1055856</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>302f82e8b1ef2e9881f049bdc5e0b195</srcmd5>
+    <version>3.1.0</version>
+    <time>1687796201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095395</requestid>
+  </revision>
+</revisionlist>

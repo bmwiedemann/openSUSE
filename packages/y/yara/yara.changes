@@ -1,0 +1,444 @@
+-------------------------------------------------------------------
+Sat Oct 14 10:29:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.0:
+  * New lnk module (#1732).
+  * Unreferenced strings are allowed if their identifier start
+    with _ (#1941)
+  * New command-line option --disable-console-logs for disabling
+    the output of the console module (#1915)
+  * New command-line option --strict-escape that raises warnings
+    on unknown escape sequences (#1880).
+  * Improve performance by avoiding the execution of rule
+    conditions that can't match (#1927)
+  * Add callback message CALLBACK_MSG_TOO_SLOW_SCANNING for
+    notifying about slow rules (#1921).
+  * Expose function RVA in pe.export_details(#1882).
+  * BUGFIX: Fix issues in the computation of imphash in pe module
+  * BUGFIX: Fix multiple out-of-bound memory reads in dex module
+  * BUGFIX: Fix memory alignment issues (#1930).
+  * BUGFIX: Some strings with the wide and ascii modifiers not
+    matching as they should (#1933).
+  * BUGFIX: Some rules not matching when --fast-scan is used
+
+-------------------------------------------------------------------
+Sun Jul 16 13:28:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+  * BUGFIX: assertion triggered with certain hex patterns when
+    scanning arbitrary files
+
+-------------------------------------------------------------------
+Sun Jun 11 13:22:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * BUGFIX: Functions `import_rva` and `import_delayed_rva` are
+    now case-insensitive (#1904)
+  * BUGFIX: Fix heap-related issue in `dotnet` module on Windows
+    (#1902)
+  * BUGFIX: Fix heap corruption with certain rules that have very
+    long string sets (67cccf0)
+
+-------------------------------------------------------------------
+Thu Mar 30 14:56:03 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+
+-------------------------------------------------------------------
+Thu Mar 30 12:41:35 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 4.3.0:
+  * Added a not operator for bytes in hex strings. Example: {01 ~02 03} (#1676).
+  * for statement can iterate over sets of literal strings (e.g. for any s in ("a", "b"): (pe.imphash() == s)) (#1787).
+    of statement can be used with at (e.g. any of them at 0) (#1790).
+  * Added the --print-xor-key (-X in short form) command-line option that prints the XOR key for xored strings (#1745).
+  * Implement the --skip-larger command-line option in Windows (#1678).
+  * Add parsing of .NET user types from .NET metadata stream in "dotnet" module (#1605).
+  * Improve certificate parsing and validation in "pe" module (#1623).
+  * Improve error reporting on certain edge cases (#1709, #1722).
+  * BUGFIX: Fix multiple memory alignment issues causing crashes in non-x86 platforms (#1724).
+  * BUGFIX: Fix implementation of math.serial_correlation(#1771).
+  * BUGFIX: Fix infinite recursion in dotnet module (#1794).
+  * BUGFIX: Fix SIGFPE when dividing INT64_MIN by -1 (c2557fc).
+  * BUGFIX: Fix several endianess issues (#1884, #1874, #1855).
+- removed fix-test-magic.patch as was merged into upstream
+
+-------------------------------------------------------------------
+Mon Feb  6 18:32:53 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- backport upstream fixes for file magic tests: fix-test-magic.patch
+
+-------------------------------------------------------------------
+Tue Aug  9 20:24:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.3:
+  * BUGFIX: Fix security issue that can lead to arbitrary code execution
+  (b77e4f4, b77e4f4). Thanks to ANSSI - CERT-FR for the report.
+  * BUGFIX: Fix incorrect logic in expressions like <quantifier> of
+    <string_set> in (start..end (#1757).
+
+-------------------------------------------------------------------
+Mon Jul 11 19:36:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.2:
+  * BUGFIX: Fix buffer overrun en "dex" module
+  * BUGFIX: Wrong offset used when checking Version string of .net metadata
+  * BUGFIX: YARA doesn't compile if --with-debug-verbose flag is enabled
+  * BUGFIX: Null-pointer dereferences while loading corrupted compiled rules
+  * Implement the --skip-larger command-line option in Windows.
+  * BUGFIX: Error while scanning process memory in Linux (#1662). Thanks to @hillu.
+  * BUGFIX: Issue in "magic" module leading to wrong matches
+  * BUGFIX: Multiple issues triggered in low-memory conditions (#1671, #1673, #1674, #1675). Reported by @1ndahous3.
+  * BUGFIX: Incorrect parsing of character classes in some regular expressions (#1690). Reported by @Sevaarcen.
+  * BUGFIX: Heap overflow in ARM. Reported by @briangreenery.
+  * New syntax for counting string occurrences within a range of offsets. Example: #a in
+  * New syntax for checking if a set of strings are found within a range of offsets all of them in
+  * of operator now accepts sets of rules, Examples: 2 of (rule1, rule2, rule3), 2 of (rule*)
+  * New syntactic sugar allows writing 0 of
+  * New operator % for string sets. Example: 20% of them
+  * New operator defined
+  * New operator iequals
+  * Added functions abs, count, percentage and mode to math module
+  * The dotnet module is now built into YARA by default.
+  * Added the is_dotnet field to dotnet module
+  * Added new console module
+  * Added support of delayed imports to pe module
+  * Reduce memory pressure when scanning process memory in Linux
+  * Improve performance while matching certain hex strings
+  * Implement support for unicode file names in Windows
+  * Add new API functions yr_get_configuration_uintXX and yr_set_configuration_uintXX
+  * Add --max-process-memory-chunk option for controlling the size of the chunks while scanning a process memory
+  * Add --skip-larger option for skipping files larger than a certain size while scanning directories.
+  * Improve scanning performance with better atom extraction
+  * BUGFIX: fullword modifier not working properly under all locales
+  * BUGFIX: Fix edge case when files have a numeric name that was interpreted as a PID number
+  * BUGFIX: Fix memory leaks in magic module.
+  * BUGFIX: Fix integer overflow while scanning files larger than 2GB
+
+-------------------------------------------------------------------
+Fri Nov  5 17:45:44 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 4.1.3:
+  * BUGFIX: Fix issue where ERROR_TOO_MANY_MATCHES was incorrectly returned
+  * BUGFIX: Fix potential buffer overrun due to incorrect macro
+- Change license to BSD-3-Clause (upstream changed to this license with
+  version 3.5.0)
+
+-------------------------------------------------------------------
+Sat Oct 16 12:18:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.2:
+  * BUGFIX: TOO_MANY_MATCHES warning was causing strings to be globally disabled
+  * BUGFIX: fullworld modifier not working as expected in Mac OS due to locale issue
+  * BUGFIX: Default value for pe.number_of_imported_function not set to 0
+
+-------------------------------------------------------------------
+Sat May 29 11:29:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.1.1
+  * BUGFIX: Accept the "+" character as valid in DLL names
+  * BUGFIX: Buffer overrun in "macho" module.
+  * BUGFIX: Crash due to consecutive jumps in hex strings
+
+-------------------------------------------------------------------
+Thu May  6 12:30:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.1.0
+  * New operators icontains, endswith, iendswith, startswith,
+    istartswith
+  * Accept \t escape sequence in text strings.
+  * Add --no-follow-links command-line option to yara.
+  * Prevent yara from following links to "."
+  * Implemented non-blocking scanning API
+  * When a string causes too many matches, YARA raises a warning
+    instead of failing
+  * BUGFIX: The use of --timeout could hang yara when scanning
+    directories or lists of files
+  * BUGFIX: Incorrect parsing of PE certificates
+  * BUGFIX: Short-circuit evaluation not working fine with
+    undefined expressions
+- Drop yara-fix-arm.patch, upstream merged
+
+-------------------------------------------------------------------
+Mon Feb  8 22:17:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.5:
+  * Fix bug in "macho" module introduced in v4.0.4.
+
+-------------------------------------------------------------------
+Fri Jan 29 22:36:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.4:
+  * Multiple out-of-bounds read in "dotnet" module.
+  * Multiple out-of-bounds reads in "macho" module.
+
+-------------------------------------------------------------------
+Tue Sep 15 09:07:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport upstream patch to fix a segfault on ARM:
+  * yara-fix-arm.patch
+
+-------------------------------------------------------------------
+Mon Aug 17 07:12:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- Update to 4.0.2:
+  - BUGFIX: Use-after-free bug in PE module (#1287).
+  - BUGFIX: Incorrect errors in rules when a single rule is badly
+    formatted (#1294).
+  - BUGFIX: Assertion failed with rules that have invalid syntax
+    (#1295).
+  - BUGFIX: Integer overflow causing missed matches on files larger
+    than 2GB (#1304).
+  - BUGFIX: Crashes in Mac OS while scanning binaries with a
+    signature that can't be verified (#1309).
+
+- Update to 4.0.1:
+  - Update sandboxed API (#1276)
+  - BUGFIX: Fix regression in exports parsing in PE module
+    (2bf67e6)
+  - BUGFIX: Fix unaligned accesses in ARM (e1654ae)
+
+- Update to 4.0.0:
+  - New string modifiers base64 and base64wide (#1185).
+  - New string modifier private (#1096)
+  - Iterators for dictionaries and arrays (#1141).
+  - Multiple API changes.
+  - Memory footprint greatly reduced, specially when compiling
+    large numbers of rules.
+  - New commmand-line option --scan-list (#1261).
+  - Added pdb_path field to "pe" module.
+  - Added export_details array to "pe" module.
+  - Added exports_index functions to "pe" module.
+  - Improvements to "cuckoo" module.
+  - BUGFIX: PE files with multiple signatures are parsed correctly
+    (#940).
+  - BUGFIX: Fix PE rich header parsing (#1164).
+  - BUGFIX: Buffer overruns in "dotnet" module (#1167, #1173).
+
+- Bump .so version
+
+- Update to 3.11.0:
+  - Duplicated string modifiers are now an error.
+  - More flexible “xor” modifier.
+  - Implement “private” strings (#1096)
+  - Add “field_offsets” to “dotnet” module.
+  - Implement “crc32” functions in “hash” module.
+  - Improvements to “rich_signature” functions in “pe” module.
+  - Implement sandboxed API using SAPI
+  - BUGFIX: Some regexp character classes not matching correctly
+    when used with “nocase” modifier (#1117)
+  - BUGFIX: Reduce the number of ERROR_TOO_MANY_RE_FIBERS errors
+    for certain hex pattern containing large jumps (#1107)
+  - BUGFIX: Buffer overrun in “dotnet” module (#1108)
+  - BUGFIX: Segfault in certain Windows versions (#1068)
+  - BUGFIX: Memory leak while attaching to a process fails (#1070)
+
+- Update to 3.10.0:
+  - Optimize integer range loops by exiting earlier when possible.
+  - Cache the result of PE module’s imphash function in order to
+    improve performance.
+  - Harden virtual machine against malicious code.
+  - BUGFIX: “xor” modifier not working as expected if not
+    accompanied by “ascii” (#1053).
+  - BUGFIX: \s and \S character classes in regular expressions now
+    include vertical tab, new line, carriage return and form feed
+    characters.
+  - BUGFIX: Regression bug in hex strings containing wildcards
+    (#1025).
+  - BUGFIX: Buffer overrun in “elf” module.
+  - BUGFIX: Buffer overrun in “dotnet” module.
+
+- Update to 3.9.0:
+  - Improve scan performance for certain strings.
+  - Reduce stack usage.
+  - Prevent inadvertent use of compiled rules by forcing the use of
+    -C when using yara command-line tool.
+  - BUGFIX: Buffer overflow in "dotnet" module.
+  - BUGFIX: Internal error when running multiple instances of YARA
+    in Mac OS X. (#945)
+  - BUGFIX: Regexp regression when using nested quantifiers {x,y}
+    for certain values of x and y. (#1018)
+  - BUGFIX: High RAM consumption in "pe" module while parsing
+    certain files.(0c8b461)
+  - BUGFIX: Denial of service when using "dex" module. Found by the
+    Cisco Talos team. (#1023)
+  - BUGFIX: Issues with comments inside hex strings.
+
+- Update to 3.8.1:
+  - BUGFIX: Some combinations of boolean command-line flags were
+    broken in version 3.8.0.
+  - BUGFIX: While reporting errors that occur at the end of the
+    file, the file name appeared as null.
+  - BUGFIX: dex module now works in big-endian architectures.
+  - BUGFIX: Keep ABI compatibility by keeping deprecated functions
+    visible.
+
+- Update to 3.8.0:
+  - Scanner API
+  - New “xor” modifier for strings
+  - New fields and functions in PE module.
+  - Add functions “min” and “max” to math module.
+  - Make compiled.
+  - yara and yaracsupport reading rules from stdin by using - as
+    the file name.
+  - Rule compilation is faster.
+  - BUGFIX: Regression in regex engine. /ba{3}b/ was matching
+    “baaaab”.
+  - BUGFIX: Function yr_compiler_add_fd() was reading only the
+    first 1024 bytes of the file.
+  - BUGFIX: Wrong calculation of sha256 hashes in Windows when
+    using native crypto API.
+  - Lots of more bug fixes.
+
+-------------------------------------------------------------------
+Tue May 22 10:30:37 UTC 2018 - tchvatal@suse.com
+
+- Update to 3.7.1:
+  * Fix regression in include directive (issue #796)
+  * Fix bug in PE checksum calculation causing wrong results in some cases.
+  * time module (Wesley Shields)
+  * yara command-line tool now accept multiple rule files
+  * Allow a configurable limit for the number of strings per rule (option --max-strings-per-rule)
+  * Implement integrity check for compiled rules
+  * Implement API for customizingimport statement (@edhoedt)
+  * Scan process memory in FreeBSD and OpenBDS (Hilko Bengen)
+  * BUGFIX: Negated character classes not working with case-insensitive regexps (#765)
+  * BUGFIX: Multiple bugs while parsing ELF files (Nate Rosenblum)
+  * BUGFIX: Out-of-bounds access while parsing PE files.
+  * BUGFIX: Memory leaks while parsing invalid rules.
+  * BUGFIX: Heap overflow (4a342f0)
+  * BUGFIX: Off-by-one NULL write in stack buffer (964d6c0)
+  * BUGFIX: Multiple issues in "dotnet" module (f40c14c, fc35e5f)
+  * Increase RE_MAX_AST_LEVELS from 2000 to 6000.
+  * BUGFIX: Buffer overrun in regexp engine (issue #678)
+  * BUGFIX: Null pointer dereference in regexp engine (issue #682).
+- Run testsuite
+
+-------------------------------------------------------------------
+Tue Jun  6 10:15:25 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v3.6.1
+  * BUGFIX: Stack overflow caused by uncontrolled recursiveness (CVE-2017-9304)
+  * BUGFIX: pe.overlay.size was undefined if the PE didn't have an overlay. Now it's set to 0 in those cases.
+  * BUGFIX: Fix initalization issue that could cause a crash if rules compiled with a 32bit yarac is used with a 64bit yara.
+- update to v3.6.0
+  * .NET module (Wesley Shields)
+  * New features for ELF module (Jacob Baines)
+  * Fix endianness issues (Hilko Bengen)
+  * Function yr_compiler_add_fd added to libyara
+  * MAX_THREADS limit can be arbitrarily increased (Emerson R. Wiley)
+  * Added --fail-on-warnings command-line option
+  * Multiple bug fixes:
+	CVE-2016-10210, CVE-2016-10211, CVE-2017-5923, CVE-2017-5924,
+	CVE-2017-8294, CVE-2017-8929, CVE-2017-9438
+
+-------------------------------------------------------------------
+Sat Nov 12 22:11:54 UTC 2016 - jengelh@inai.de
+
+- Add pkg-config to ensure .pc autodetection is always in effect
+
+-------------------------------------------------------------------
+Fri Sep 30 21:41:01 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v3.5.0
+  * Match length operator (http://yara.readthedocs.io/en/v3.5.0/writingrules.html#match-length)
+  * Performance improvements
+  * Less memory consumption while scanning processes
+  * Exception handling when scanning memory blocks
+  * Negative integers in meta fields
+  * Added the --stack-size command-argument
+  * Functions import_ordinal, is_dll, is_32bit and is_64bit added to PE module
+  * Functions rich_signature.toolid and rich_signature.version added to PE module
+  * Lots of bug fixes
+- upstream moved python-yara into a separate project.  Do the same.
+- python-plaso now requires python-yana >= v3.5.0
+- add BuildRequires: pkg-config as documented in the openSUSE packaging guidelines
+
+-------------------------------------------------------------------
+Thu Jul 23 16:05:05 UTC 2015 - Greg.Freemyer@gmail.com
+
+- add yara.pc to the libyara subpackage
+- remove sed command previously needed to properly link Yara and libyara.  No longer needed with latest upstream source.
+- update to v3.4.0
+  * Short-circuit evaluation for conditions
+  * New yr_rules_save_stream/yr_rules_load_stream APIs.
+  * load() and save() methods in yara-python accept file-like objects
+  * Improvements to the PE and ELF modules
+  * Some performance improvements
+  * New command-line option --print-module-data
+  * Multiple bug fixes.
+- v3.3.0
+  * Added support for negative integers and floating point numbers
+  * Implemented operators >,<, >=, <= for strings
+  * Implemented word boundary anchors (\b, \B) in regular expressions
+  * New features in PE module
+  * Math module
+  * New --print-namespace command line argument
+  * Better error handling in low memory conditions
+  * BUGFIX: "at" operator not working with certain strings containing wildcards
+  * BUGFIX: precedence of bitwise operators was incorrect
+  * BUGFIX: incorrect imphash result for certain PE files importing functions by ordinal
+  * BUGFIX: handle and memory leaks
+  * BUGFIX: multiple segfaults
+- v3.2.0
+  * ELF module
+  * Hash module
+  * New features in PE module
+  * Big-endian version of intXX and uintXX functions
+  * Modules can declare dictionary objects
+  * Modules accept overloaded functions
+  * Performance improvements
+  * BUGFIX: "and" operator not working properly with integer operands
+  * BUGFIX: False positive with strings declared as "fullword wide ascii"
+  * BUGFIX: False positive with "wide fullword" strings shorter than 5 bytes
+  * BUGFIX: Functions declared in a structure array not working properly
+  * BUGFIX: "contains" operator causing segfault if operand is an undefined string
+
+-------------------------------------------------------------------
+Fri Sep 26 16:32:42 UTC 2014 - Greg.Freemyer@gmail.com
+
+- split off a -doc sub-project
+
+-------------------------------------------------------------------
+Wed Sep 24 17:21:31 UTC 2014 - Greg.Freemyer@gmail.com
+
+- update to v3.1.0
+  * Yara now supports plugin modules
+  * Numerous major improvements.  See README.md in the documentation folder for details
+- update License to Apache 2.0
+- build with cuckoo and magic modules (cuckoo only for factory and newer)
+- major specfile cleanup
+  * add soname as a variable and use it appropriately
+  * add /usr/bin/yarac and associated man file
+  * update Url and Source fields
+  * add libtool build requirement
+  * delete no longer needed patch, now upstream: yara-fixes.patch
+  * add ./bootstrap.sh call to %build section as recommended by upstream
+  * add +%{_includedir}/yara to -devel since it is full of yara related header files
+  * use default naming for devel sub-project
+  * remove *.a and *.la files from the devel sub-project
+  * incorporate python-yara as a sub-project
+
+-------------------------------------------------------------------
+Wed Feb 15 23:26:11 UTC 2012 - Greg.Freemyer@gmail.com
+
+- Release should have a value of zero in OBS.  It is handled automatically via OBS.
+
+-------------------------------------------------------------------
+Mon Feb 13 18:02:09 UTC 2012 - Greg.Freemyer@gmail.com
+
+- use %{__make} macro
+
+-------------------------------------------------------------------
+Thu Feb  9 17:31:49 UTC 2012 - meissner@suse.com
+
+- built with default compile flags, fixed 2 small issues
+
+-------------------------------------------------------------------
+Tue Feb  7 19:05:42 UTC 2012 - Greg.Freemyer@gmail.com
+
+- Initial submission
+
+ A malware identification and classification tool
+

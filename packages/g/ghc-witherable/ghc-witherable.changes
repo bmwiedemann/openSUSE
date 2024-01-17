@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:09:01 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Mar  7 10:07:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update witherable to version 0.4.2 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jun 20 09:15:00 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update witherable to version 0.4.2 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Nov 20 17:29:39 UTC 2021 - psimons@suse.com
+
+- Update witherable to version 0.4.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Nov  7 14:54:26 UTC 2021 - psimons@suse.com
+
+- Update witherable to version 0.4.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Oct 12 10:51:40 UTC 2021 - psimons@suse.com
+
+- Update witherable to version 0.4.2.
+  0.4.2
+  -------
+
+  * Supported GHC 9.2
+  * Improved the instances for `vector`
+
+-------------------------------------------------------------------
+Sun Oct 10 14:49:58 UTC 2021 - psimons@suse.com
+
+- Add witherable at version 0.4.1 revision 1.
+

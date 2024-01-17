@@ -1,0 +1,13 @@
+--- mpi-benchmarks-IMB-v2021.3.orig/src_cpp/Makefile	2021-10-01 15:09:19.000000000 +0200
++++ mpi-benchmarks-IMB-v2021.3/src_cpp/Makefile	2022-09-30 11:15:13.866410222 +0200
+@@ -77,8 +77,8 @@
+ CXX=mpiicpc
+ endif
+ override CPPFLAGS += -I.
+-override CFLAGS += -g -O0 -Wall -Wno-long-long
+-override CXXFLAGS += -g -O0 -Wall -Wextra -pedantic -Wno-long-long
++override CFLAGS += -Wno-long-long
++override CXXFLAGS +=  -Wno-long-long
+ ifdef WITH_OPENMP
+ override CFLAGS += -fopenmp
+ override CXXFLAGS += -fopenmp

@@ -1,0 +1,12 @@
+<package name="ode" project="openSUSE:Factory">
+  <title>Open Dynamics Engine</title>
+  <description>
+ODE is a free, industrial quality library for simulating articulated
+rigid body dynamics - for example ground vehicles, legged creatures,
+and moving objects in VR environments. It is fast, flexible, robust
+and platform independent, with advanced joints, contact with friction,
+and built-in collision detection.
+</description>
+  <devel project="games" package="ode"/>
+  <url>http://www.ode.org/</url>
+</package>

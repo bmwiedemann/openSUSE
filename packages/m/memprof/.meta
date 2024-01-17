@@ -1,0 +1,6 @@
+<package name="memprof" project="openSUSE:Factory">
+  <title>A Memory Profiler with GNOME Interface</title>
+  <description>With this application, profile applications for their memory
+requirements and hunt for leaks very easily.</description>
+  <devel project="GNOME:Apps" package="memprof"/>
+</package>

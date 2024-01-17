@@ -1,0 +1,72 @@
+From 42fd7b7328cd9f0d866f0552c1d11114dad332da Mon Sep 17 00:00:00 2001
+From: Matthijs Kooijman <matthijs@stdin.nl>
+Date: Sun, 30 Apr 2023 23:54:54 +0200
+Subject: [PATCH 161/161] Gracefully handle hamster DBUS disappearing
+
+Previously, if this happened the extension would be disabled using the
+`disable()` method. However, this caused an error (because disable was
+called twice, once for each DBUS service) and gnome-shell would not be
+told that the extension was disabled, so the user could not re-enable
+it.
+
+With this commit, when the apiProxy disappears, the panel widget is
+hidden. When it reappears, the panel widget is shown again.
+
+Note that there are still some rough edges, but this change is mostly
+intended to simplify hamster development - you can now restart hamster
+after making changes (or to switch between installed and source
+versions) and still have the extension work without needing to restart
+gnome-shell (which means logging out with wayland).
+
+This commit does not attempt to handle windowsProxy disappearing, since
+keeping track of the status of both services can get messy quickly.
+Also, now you can restart just the api service, and leave the windows
+service to be autostarted when needed if you want (and if autostart
+fails, the user will be shown a proper error message).
+
+Also, this does not disable the keybindings, so pressing that while the
+DBUS proxy is down will probably still allow opening up the menu (but
+that's ok - making any changes will just autostart hamster again, or
+show an error message otherwise).
+
+(cherry picked from commit 6d9807c370198b016a4c628011042f487d0a355a)
+---
+ extension/extension.js | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/extension/extension.js b/extension/extension.js
+index 97e421e..8ece31e 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -148,23 +148,21 @@ class Controller {
+ 
+         // Callbacks that handle appearing/vanishing dbus services.
+         function apiProxy_appeared_callback() {
++            if (this.shouldEnable)
++                this.panelWidget.show();
+         }
+ 
+         function apiProxy_vanished_callback() {
+ 	    /* jshint validthis: true */
+-            global.log(_("hamster-shell-extension: 'hamster-service' not running. Shutting down."));
+-            Main.notify(_("hamster-shell-extension: 'hamster-service' not running. Shutting down."));
+-            this.disable();
++            this.reportIfError(_("DBUS proxy disappeared"), _("Disabling extension until it comes back"));
++            if (this.shouldEnable)
++                this.panelWidget.hide();
+         }
+ 
+         function windowsProxy_appeared_callback() {
+         }
+ 
+         function windowsProxy_vanished_callback() {
+-	    /* jshint validthis: true */
+-            global.log(_("hamster-shell-extension: 'hamster-windows-service' not running. Shutting down."));
+-            Main.notify(_("hamster-shell-extension: 'hamster-windows-service' not running. Shutting down."));
+-            this.disable();
+         }
+ 
+         // Set-up watchers that watch for required dbus services.
+-- 
+2.41.0
+

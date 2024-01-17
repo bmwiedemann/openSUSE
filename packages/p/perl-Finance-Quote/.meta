@@ -1,0 +1,8 @@
+<package name="perl-Finance-Quote" project="openSUSE:Factory">
+  <title>Provides access to time-delayed stockquotes</title>
+  <description>Finance::Quote provides access to time-delayed stockquotes from a
+number of sources.  After you've installed the pacakage, try 'perldoc
+Finance::Quote' for full information.  Alternatively, you can 'perldoc
+lib/Finance/Quote.pm' before the install.</description>
+  <devel project="devel:languages:perl" package="perl-Finance-Quote"/>
+</package>

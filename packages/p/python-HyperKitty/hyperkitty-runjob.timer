@@ -1,0 +1,10 @@
+[Unit]
+Description=HyperKitty runjob @HYPERKITTY_RUNJOB@
+
+[Timer]
+@HYPERKITTY_RUNJOB_CALENDAR@
+@HYPERKITTY_RUNJOB_DELAY@
+Persistent=true
+
+[Install]
+WantedBy=basic.target

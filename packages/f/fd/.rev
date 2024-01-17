@@ -1,0 +1,208 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>415f20a2fdc5d21914f8dc74758fe90c</srcmd5>
+    <version>6.3.0</version>
+    <time>1521716570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589024</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d768f18cf1c004ed7ad572d0321d2bc0</srcmd5>
+    <version>7.0.0</version>
+    <time>1527583401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.0.0
+Features
+  * Added --type executable (or -t x) to search for executable
+    files only
+  * Added support for .fdignore files
+  * Added --ignore-file option to add custom ignore files
+  * Suggest --fixed-strings on invalid regular expressions
+  * Detect when user supplied path instead of pattern
+Changes
+  * .ignore and .rgignore files are not parsed anymore. Use
+    .fdignore files
+  * or add custom files via --ignore-file instead.
+Bugfixes
+  * Properly normalize absolute paths
+  * Invalid utf8 filenames displayed when -e is used
+  * If --type is used, fifos/sockets/etc. are always shown
+- cleanup with spec-cleaner
+</comment>
+    <requestid>611908</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>045f41a051e9f88e4ffc97697477fae7</srcmd5>
+    <version>7.1.0</version>
+    <time>1537187240</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 7.1.0
+Features
+  * Added --size filter option
+  * Added --type empty (or -t e) to search for empty files and/or directories
+Changes
+  * .gitignore files will only be respected in Git repositories, not outside.
+  * A few performance improvements for --type searches
+- cleanup with spec-cleaner 
+</comment>
+    <requestid>635954</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0bbce8c028555a45cafc0f98f6c48d7</srcmd5>
+    <version>7.4.0</version>
+    <time>1584964268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787316</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>430001d77463f501a357c88356835116</srcmd5>
+    <version>8.0.0</version>
+    <time>1587581617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795676</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>75c534f4bc6d1da6175419f0e71377ff</srcmd5>
+    <version>8.1.0</version>
+    <time>1591653585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>808146</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>657520bbdeb42e085eae866ddba4337c</srcmd5>
+    <version>8.1.1</version>
+    <time>1597220631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824132</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50aa9a811dab7e199082c0340dac0ef8</srcmd5>
+    <version>8.2.1</version>
+    <time>1609013494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858643</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>133633699f120e4d73b7170dbf69abca</srcmd5>
+    <version>8.2.1</version>
+    <time>1609705598</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859866</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c36d77dd1186aac50c230e2316838ed7</srcmd5>
+    <version>8.2.1</version>
+    <time>1633365631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922955</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62acd061428a59972268cd2e33f2e5ae</srcmd5>
+    <version>8.3.0</version>
+    <time>1638997761</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.3.0:
+  * Update usage section
+  * Bump version
+  * Update CHANGELOG for v8.3
+  * Update dependencies
+  * Use non-sync channel
+  * squash! Add buffering to stdout when it's not a terminal
+  * Add entry for buffering to CHANGELOG
+  * Add buffering to stdout when it's not a terminal
+  * Modify example to a realistic use case
+  * Add an example of the -X option using rg
+</comment>
+    <requestid>936384</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>badb0abd8617b25ea6eeda5ef1fc725b</srcmd5>
+    <version>8.3.1</version>
+    <time>1641680622</time>
+    <user>dimstar_suse</user>
+    <comment>- remove service files to fix build
+
+- Update to version 8.3.1</comment>
+    <requestid>944794</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c7c5bab3f9993ccf64973575a4c0c849</srcmd5>
+    <version>8.3.2</version>
+    <time>1644099805</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>951787</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7c796ede072838ac981f6c7f590756ae</srcmd5>
+    <version>8.3.2</version>
+    <time>1649450749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967705</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>048b005e96454bb2c0a3bb4eace396f7</srcmd5>
+    <version>8.4.0</version>
+    <time>1655396431</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982751</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5d7acb5e443bea651f11aef22c7321fb</srcmd5>
+    <version>8.5.0</version>
+    <time>1667995099</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034798</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>011b4f903800d889ae9242f408edee17</srcmd5>
+    <version>8.6.0</version>
+    <time>1673801885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058403</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>def7edf39fc3c60c0685a9036013c6af</srcmd5>
+    <version>8.7.0</version>
+    <time>1677584931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068036</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>39d98d66be02bd769690f100dfe23022</srcmd5>
+    <version>8.7.1</version>
+    <time>1698001335</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119376</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2eca74e5b3b8fb7e04d3982533e9d9ab</srcmd5>
+    <version>9.0.0</version>
+    <time>1703024217</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134055</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ed058f41da4a2f841eb0f93a82d15f66</srcmd5>
+    <version>9.0.0</version>
+    <time>1704281120</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135743</requestid>
+  </revision>
+</revisionlist>

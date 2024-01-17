@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Wed Sep 27 11:25:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to verion 3.6.0
+  * Bug
+    + MDEP-660: Obsolete example of -Dverbose on web page
+    + MDEP-671: Unsupported verbose option still appears in docs
+    + MDEP-680: dependency:go-offline does not use repositories from
+      parent pom in reactor build
+    + MDEP-700: Fix possible NPE
+    + MDEP-693: `dependency:analyze-only` goal fails on OpenJDK 14
+    + MDEP-698: FileWriter and FileReader should be replaced
+    + MDEP-739: Dependency Plugin go-offline doesn't respect
+      artifact classifier
+    + MDEP-740: analyze-only failed: Unsupported class file major
+      version 60 (Java 16)
+    + MDEP-747: analyze-only failed: Unsupported class file major
+      version 61 (Java 17)
+    + MDEP-749: copy-dependencies fails when using excludeScope=test
+    + MDEP-679: mvn dependency:analyze detected wrong transitive
+      dependency
+    + MDEP-742: dependency plugin does not work with JDK 16
+    + MDEP-752: skip dependency analyze in ear packaging
+    + MDEP-753: Non-test dependency reported as Non-test scoped test
+      only dependency
+    + MDEP-759: 'Dependency not found' with 3.2.0 and Java-17 while
+      analyzing
+    + MDEP-761: Tree plugin does not terminate with 3.2.0
+    + MDEP-769: Minor improvement - continue
+    + MDEP-774: analyze-only failed: PermittedSubclasses requires
+      ASM9
+    + MDEP-781: Broken Link to "Introduction to Dependency Mechanism
+      Page"
+    + MDEP-783: TreeMojo docs say scope doesn't work due to
+      MSHARED-4
+    + MDEP-786: Sealed classes not supported
+    + MDEP-806: Dependency tree in verbose mode for war is empty
+    + MDEP-809: Javadoc was not updated to reflect that :tree's
+      verbose option is now ok
+    + MDEP-630: error dependency:list (caused by postgresql
+      dependency)
+    + MDEP-842: :list-classes does not skip if skip is set
+    + MDEP-843: :list-classes does not use GAV parameters
+  * New Feature
+    + MDEP-644: Reintroduce the verbose option for dependency:tree
+    + MDEP-645: List classes in a given artifact
+    + MDEP-708: dependency:analyze should recommend narrower scope
+      where possible
+    + MDEP-714: Add analyze parameter "ignoreUnusedRuntime"
+    + MDEP-787: Allow ignoring non-test-scoped dependencies
+    + MDEP-782: Add a <stripType> option to unpack goals
+    + MDEP-804: Allow auto-ignore of all non-test scoped
+      dependencies used only in test scope
+  * Improvement
+    + MDEP-705: Unused method o.a.m.p.d.t.TreeMojo.containsVersion
+    + MDEP-763: Minor improvements
+    + MDEP-768: GitHub Action build improvement
+    + MDEP-779: dependency:analyze should list the classes that
+      cause a used undeclared dependency
+    + MDEP-789: Improve documentation of analyze - Non-test scoped
+    + MDEP-602: Turn warnings into errors instead of failOnWarning
+    + MDEP-674: maven-dependency-plugin should leverage
+      plexus-build-api to support IDEs
+    + MDEP-716: TestListClassesMojo logs too much
+    + MDEP-827: Use outputDirectory from AbstractMavenReport
+    + MDEP-831: Remove not used dependencies / Replace parts
+    + MDEP-853: list-repositories - improvements
+    + MDEP-862: warns about depending on plexus-container-default
+    + MDEP-864: Replace AnalyzeReportView with a new
+      AnalyzeReportRenderer
+  * Task
+    + MDEP-681: Remove no longer required exclusions
+    + MDEP-760: Java 1.8 as minimum
+    + MDEP-841: Explicitly start and end tables with Doxia Sinks in
+      report renderers
+    + MDEP-849: Replace Maven shared StringUtils with Commons Lang3
+    + MDEP-855: Remove unused and ignored parameter - useJvmChmod
+    + MDEP-857: Remove custom plexus configuration
+    + MDEP-859: Code refactor - UnpackUtil
+    + MDEP-866: Refresh download page
+
+-------------------------------------------------------------------
+Wed Dec 30 09:39:37 UTC 2020 - Wang Jun <jgwang@suse.com>
+
+- Update to version 3.1.2
+  * Upgrade maven-plugins parent to version 32
+  * Upgrade plexus-io to 3.1.0
+  * Upgrade maven-shared-utils 3.2.1
+  * Upgrade plexus-archiver to 4.1.0
+  * Upgrade maven-artifact-transfer to 0.11.0
+  * Upgrade plexus-utils to 3.2.0
+  * Upgrade plexus-utils to 3.3.0
+  * Upgrade maven-common-artifact-filters to 3.1.0
+  * Upgrade parent POM from 32 to 33
+  * Upgrade maven-dependency-analyzer to 1.11.1
+  * Update ASM so it works with Java 13
+  * Add note on dependecy:tree -Dverbose support in 3.0+
+  * Add a TOC to ease navigating to each goal usage
+  * Remove @param for a parameter which does not exists.
+  * Remove newline and trailing space from log line.
+  * Remove deprecated call.
+  * Fix link to mailing list
+  * Fix JavaDoc issue.
+  * Use https for sigs, hashes and KEYS
+  * Use sha512 checksums instead of sha1
+  * Switch to asfMavenTlpPlgnBuild
+  * Unpacking File Mappers
+  * Replace CapturingLog class with Mockito usage
+  * Rewrite go-offline so it resembles resolve-plugins
+  * Perform transformation to artifact keys just once
+- Removed patch:
+  * 00-maven-artifact-transfer-0.11.0.patch
+    + not needed with this version any more
+
+-------------------------------------------------------------------
+Mon Nov 25 16:25:03 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+- Added patch:
+  * 00-maven-artifact-transfer-0.11.0.patch
+    + Fix build against maven-artifact-transfer >= 0.11
+
+-------------------------------------------------------------------
+Fri Apr  5 15:06:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-dependency-plugin 3.1.1

@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Fri Nov 25 19:15:41 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Make macros usable with older releases (boo#1205611).
+
+-------------------------------------------------------------------
+Fri Sep  2 15:13:06 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add LuaRocks macros:
+  * %luarocks_build
+  * %luarocks_install
+  * %luarocks_treedir
+
+-------------------------------------------------------------------
+Sat Aug 28 09:42:55 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change usage of math to string.gsub to prevent extra decimal
+  places causing issues
+
+-------------------------------------------------------------------
+Fri Aug 27 10:07:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add %lua_version_default, %lua_version_default_nodots
+  and %ifluadefault: to allow to separate what flavour builds
+  the documentation
+- Bump version to 20210827
+
+-------------------------------------------------------------------
+Thu Jun 10 16:58:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add -n (name) option to %lua_provides
+- Use lua instead of perl for %lua_version_nodots
+
+-------------------------------------------------------------------
+Fri Apr  9 10:03:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add %lua_version_nodots to equal package naming
+
+-------------------------------------------------------------------
+Fri Feb 26 15:54:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add -e (exclude) option to %lua_provides
+
+-------------------------------------------------------------------
+Wed Jan 27 15:51:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add lua_provides macro for default lua naming
+
+-------------------------------------------------------------------
+Sun Apr 12 13:22:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Modify lua_incdir to work even on Fedora/RHEL
+
+-------------------------------------------------------------------
+Sun Apr 12 13:14:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Install into /usr/lib/ not libexec
+
+-------------------------------------------------------------------
+Tue Jul 11 08:24:18 UTC 2017 - tchvatal@suse.com
+
+- Add lua_incdir macro to declare the lua includedir
+
+-------------------------------------------------------------------
+Mon Jul 10 11:26:37 UTC 2017 - tchvatal@suse.com
+
+- Split out from main lua packages to keep just one version for all

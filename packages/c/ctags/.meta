@@ -1,0 +1,11 @@
+<package name="ctags" project="openSUSE:Factory">
+  <title>A Program to Generate Tag Files for Use with vi and Other Editors</title>
+  <description>CTags (from Darren Hiebert) generates tag files from source code in C,
+C++, Eiffel, Fortran, and Java to be used with vi and its derivatives,
+Emacs, and several other editors.
+
+ETags (from GNU Emacs sources) generates tag files from source code in
+Pascal, Cobol, Ada, Perl, LaTeX, Scheme, Emacs Lisp/Common Lisp,
+Postscript, Erlang, Python, Prolog, and most assembler-like syntaxes.</description>
+  <devel project="devel:tools" package="ctags"/>
+</package>

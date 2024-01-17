@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Sep  6 13:18:05 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.4.1
+- Changes of 3.4.1
+  * Bug Fixes
+    + Fix symbolic link are being resolved into absolute path
+- Changes of 3.4.0
+  * New features and improvements
+    + Drop legacy and make components pure JSR330
+    + Restore speed improvements
+  * Maintenance
+    + Fix code style
+- Changes of 3.3.1
+  * Bug Fixes
+    + Fix symbolic links to directories are not recognized as
+      directories
+- Changes of 3.3.0
+  * Plexus IO 3.3.0 requires Java 8.
+  * New features and improvements
+    + Plexus IO build is now reproducible
+    + Various speed improvements
+  * Bug Fixes
+    + Fix issue related to symbolic link tests issue
+
+-------------------------------------------------------------------
+Tue May 11 20:09:08 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build/run tests against the legacy guava20 package
+
+-------------------------------------------------------------------
+Sun Nov 24 12:01:11 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.2.0
+
+-------------------------------------------------------------------
+Wed Mar  6 12:42:06 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of plexus-io 3.0.0
+- Generate and customize ant build file

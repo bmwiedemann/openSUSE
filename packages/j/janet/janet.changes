@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Wed Jan 10 00:44:49 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.33.0:
+  * Add more + and * keywords to default-peg-grammar
+  * Use libc strlen in janet_buffer_push_cstring
+  * net/ev: Cleaned up unused NetStateConnect, fixed janet_async_end() ev refcount
+  * fix (doc next)
+  * Fix arity typo in peg
+  * Cosmetically tweak string/format docstring
+  * Add a new (sub) PEG special
+
+-------------------------------------------------------------------
+Fri Nov  3 13:51:00 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.32.1:
+  * Report line and column when using janet_dobytes
+  * Add :unless loop modifier
+  * Allow calling reverse on generators.
+  * Improve performance of a number of core functions including partition, mean, keys, values, pairs, interleave.
+  * Add lengthable?
+  * Add os/sigaction
+  * Change every? and any? to behave like the functional versions of the and and or macros.
+  * Fix bug with garbage collecting threaded abstract types.
+  * Add :signal to the sandbox function to allow intercepting signals.
+  * Fix return value from C function janet_dobytes when called on Janet functions that yield to event loop.
+  * Change C API for event loop interaction - get rid of JanetListener and instead use janet_async_start and janet_async_end.
+  * Rework event loop to make fewer system calls on kqueue and epoll.
+  * Expose atomic refcount abstraction in janet.h
+  * Add array/weak for weak references in arrays
+  * Add support for weak tables via table/weak, table/weak-keys, and table/weak-values.
+  * Fix compiler bug with using the result of (break x) expression in some contexts.
+  * Rework internal event loop code to be better behaved on Windows
+
+-------------------------------------------------------------------
+Fri Nov  3 13:43:36 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Properly create subpackage for janet-devel-static
+
+-------------------------------------------------------------------
+Fri Nov  3 09:08:03 UTC 2023 - Jochen Breuer <brejoc@gmail.com>
+
+- Building static libjanet in addition to dynamic libjanet
+  * This change enables building static binaries with jpm
+
+-------------------------------------------------------------------
+Sat Sep 30 13:48:01 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.31.0:
+  * Report line and column when using `janet_dobytes`
+  * Add `:unless` loop modifier
+  * Allow calling `reverse` on generators.
+  * Improve performance of a number of core functions including `partition`, `mean`, `keys`, `values`, `pairs`, `interleave`.
+  * Add `lengthable?`
+  * Add `os/sigaction`
+  * Change `every?` and `any?` to behave like the functional versions of the `and` and `or` macros.
+  * Fix bug with garbage collecting threaded abstract types.
+  * Add `:signal` to the `sandbox` function to allow intercepting signals.
+
+-------------------------------------------------------------------
+Sat Aug 26 14:10:22 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.30.0:
+  Changes in 1.30.0:
+   - Change indexing of `array/remove` to start from -1 at the end instead of -2.
+   - Add new string escape sequences `\\a`, `\\b`, `\\?`, and `\\'`.
+   - Fix bug with marshalling channels
+   - Add `div` for floored division
+   - Make `div` and `mod` variadic
+   - Support `bnot` for integer types.
+   - Define `(mod x 0)` as `x`
+   - Add `ffi/pointer-cfunction` to convert pointers to cfunctions
+  Changes since 1.29.1:
+   - Add support for passing booleans to PEGs for "always" and "never" matching.
+   - Allow dictionary types for `take` and `drop`
+   - Fix bug with closing channels while other fibers were waiting on them - `ev/take`, `ev/give`, and `ev/select`  will now return the correct (documented) value when another fiber closes the channel.
+   - Add `ffi/calling-conventions` to show all available calling conventions for FFI.
+   - Add `net/setsockopt`
+   - Add `signal` argument to `os/proc-kill` to send signals besides `SIGKILL` on Posix.
+   - Add `source` argument to `os/clock` to get different time sources.
+   - Various combinator functions now are variadic like `map`
+   - Add `file/lines` to iterate over lines in a file lazily.
+   - Reorganize test suite to be sorted by module rather than pseudo-randomly.
+   - Add `*task-id*`
+   - Add `env` argument to `fiber/new`.
+   - Add `JANET_NO_AMALG` flag to Makefile to properly incremental builds
+   - Optimize bytecode compiler to generate fewer instructions and improve loops.
+   - Fix bug with `ev/gather` and hung fibers.
+   - Add `os/isatty`
+   - Add `has-key?` and `has-value?`
+   - Make imperative arithmetic macros variadic
+   - `ev/connect` now yields to the event loop instead of blocking while waiting for an ACK.
+
+-------------------------------------------------------------------
+Mon May 29 09:52:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix errors, trim, and wrap description.
+
+-------------------------------------------------------------------
+Sat May 27 13:19:20 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.28.0:
+  * Various bug fixes
+  * Make nested short-fn's behave a bit more predictably (it is still not recommended to nest short-fns).
+  * Add os/strftime for date formatting.
+  * Fix ev/select on threaded channels sometimes live-locking.
+  * Support the NO_COLOR environment variable to turn off VT100 color codes in repl (and in scripts).
+  * See http://no-color.org/
+  * Disallow using (splice x) in contexts where it doesn't make sense rather than silently coercing to x.
+  * Instead, raise a compiler error.
+  * Change the names of :user8 and :user9 sigals to :interrupt and :await
+  * Change the names of :user8 and :user9 fiber statuses to :interrupted and :suspended.
+  * Add ev/all-tasks to see all currently suspended fibers.
+  * Add keep-syntax and keep-syntax! functions to make writing macros easier.
+
+-------------------------------------------------------------------
+Sat Mar  4 05:52:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for janet 1.26.0

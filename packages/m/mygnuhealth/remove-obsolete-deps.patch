@@ -1,0 +1,28 @@
+Index: mygnuhealth/buildozer.spec
+===================================================================
+--- mygnuhealth.orig/buildozer.spec
++++ mygnuhealth/buildozer.spec
+@@ -37,8 +37,8 @@ version = 1.9
+ 
+ # (list) Application requirements
+ # comma separated e.g. requirements = sqlite3,kivy
+-# pygal, cairosvg, tinycss and cssselect are to render the charts in PNG format
+-requirements = python3,kivy, tinydb, bcrypt, pygal, cairosvg, tinycss, cssselect
++# pygal, cairosvg is to render the charts in PNG format
++requirements = python3,kivy, tinydb, bcrypt, pygal, cairosvg
+ 
+ # (str) Custom source folders for requirements
+ # Sets custom source for any requirements with recipes
+Index: mygnuhealth/pyproject.toml
+===================================================================
+--- mygnuhealth.orig/pyproject.toml
++++ mygnuhealth/pyproject.toml
+@@ -18,8 +18,6 @@ dependencies = [
+     'tinydb',
+     'bcrypt',
+     'cairosvg',
+-    'tinycss', 
+-    'cssselect'
+     ]
+ 
+ classifiers=[

@@ -1,0 +1,8 @@
+<package name="perl-Module-Build-Prereqs-FromCPANfile" project="openSUSE:Factory">
+  <title>perl-Module-Build-Prereqs-FromCPANfile - Construct prereq parameters of Module::Build from cpanfile</title>
+  <description>This simple module reads cpanfile and converts its content into valid prereq parameters for 'new()' method of Module::Build.
+
+Currently it does not support &quot;optional features&quot; specification (See the
+cpanfile/feature).</description>
+  <devel project="devel:languages:perl" package="perl-Module-Build-Prereqs-FromCPANfile"/>
+</package>

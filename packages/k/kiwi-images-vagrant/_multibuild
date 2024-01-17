@@ -1,0 +1,5 @@
+<multibuild>
+    <flavor>libvirt</flavor>
+    <flavor>libvirt_aarch64</flavor>
+    <flavor>virtualbox</flavor>
+</multibuild>

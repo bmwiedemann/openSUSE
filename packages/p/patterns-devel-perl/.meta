@@ -1,0 +1,9 @@
+<package name="patterns-devel-perl" project="openSUSE:Factory">
+  <title> Patterns for Installation (Devel Perl) </title>
+  <description>This is an internal package that is used to create the patterns as part
+of the installation source setup.  Installation of this package does
+not make sense. 
+
+This particular package contains the pattern for Perl Development</description>
+  <devel project="devel:languages:perl" package="patterns-devel-perl"/>
+</package>

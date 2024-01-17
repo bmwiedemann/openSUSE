@@ -1,0 +1,426 @@
+-------------------------------------------------------------------
+Tue Dec 27 18:02:52 UTC 2022 - Holger B. A. Rauch <holger.rauch@posteo.de>
+
+- "Fixed" patch
+  (originally coming from "https://github.com/aircrack-ng/aircrack-ng/pull/2335")
+  * s390x-enablement-cpustats.patch
+- Excluded .keepthisfolder file from being taken into account for RPM packaging
+
+-------------------------------------------------------------------
+Wed May 11 08:06:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  Airdecap-ng
+  * Endianness fixes.
+  * Output PCAP as little endian.
+  Airodump-ng
+  * Fixed blank encryption field when APs have TKIP (and/or CCMP)
+    with WPA2.
+  * Updated encryption filter (-t/--encrypt) for WPA3 and OWE.
+  * Fixed out-of-order timestamp captures.
+  * Ignore NULL PMKID.
+  * Fixed dropping management frames with zeroed timestamp.
+  * Fixed sorting where sometimes it started with a different field
+  * Allow setting colors only in AP selection mode.
+  * Fix crash on 4K Linux console.
+  * Fixed issue where existing clients not linked to an AP become
+    hidden when hitting 'o'.
+  * Allow use of WiFi 6E 6GHz frequencies.
+  * Look for oui.txt in /usr/share/hwdata.
+  Airgraph-ng
+  * Fixed graphviz package conflict.
+  * Fixed downloading OUI with python3.
+  * Ensure support/ directory is created when installing.
+  Aircrack-ng
+  * Fix handshake replay counter logic.
+  * Handle timeout when parsing EAPOL.
+  * Fixed WEP display.
+  * Fixed spurious EXIT messages.
+  * Improved handshake selection by fixing EAPOL timing and
+    clearing state.
+  * Ignore NULL PMKID.
+  * Added Apple M1 detection.
+  Aireplay-ng
+  * In test mode, detect tampering of sequence number b
+    firmware/driver.
+  * Fixed incorrectly rewritten loops affecting fragmentation
+    attack, and in some cases, SKA fake auth.
+  * Fixed a bunch of instances where packets had their
+    duration updated instead of the sequence number.
+  Airmon-ng
+  * Fix avahi killing.
+  * rewrite service stopping entirely.
+  * Codestyle fixes and code cleanup.
+  * Added a few Raspberry Pi hardware revisions.
+  * Fixes for 8812au driver.
+  * Fix iwlwifi firmware formatting.
+  * Remove broken KVM detection.
+  * Show regdomain in verbose mode.
+  * Document frequency usage.
+  * Add a sleep to help predictable names due to udev sometimes
+    renaming interface.
+  * Added warning for broken radiotap headers in kernel 5.15
+    to 5.15.4
+  * shellcheck fixes.
+  * support systemctl as some systems don't support 'service'
+    anymore.
+  * Fixes for pciutils 3.8, backward compatible.
+  Airbase-ng
+  * use enum for frame type/subtype.
+  * remove a few IE in association responses.
+  Besside-ng
+  * Support and detect all channels in 5GHz in Auto-Channel mode.
+  OSdep
+  * Search additional IE for channel information
+  Airgraph-ng
+  * switch airodump-join to Python 3
+  General
+  * Fix compilation with LibreSSL 3.5.
+  * Add Linux uclibc support.
+  * Shell script fixes thanks to shellcheck.
+  * Fixes for GCC 10 and 11.
+  * Fixed cross-compilation.
+  * Code refactoring, deduplication, cleanup, and misc code
+    improvements.
+  * Coverity Scan fixes, which includes memory leaks, race
+    conditions, division by 0, and other issues.
+- Remove patch:
+  * conflict.patch (not longer needed)
+
+-------------------------------------------------------------------
+Sun Jul  5 07:22:00 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with gcc10 (gh#2138)
+
+-------------------------------------------------------------------
+Sat May  9 11:43:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Run spec-cleaner
+- Force python3 for all tools written in python
+- Use proper docdir
+- Update patch:
+  * conflict.patch
+- Introduce devel subpackage
+- Run testsuite
+- Update to version 1.6:
+  * Aircrack-ng: Fixed ARM processors display with -u
+  * Aircrack-ng: Fixed AVX-512F support
+  * Aircrack-ng: Fixed cracking speed calculation
+  * Aircrack-ng: Fixed cracking WEP beyond 10k IVS
+  * Aircrack-ng: Fixed creating new session and added test case
+  * Aircrack-ng: Fixed encryption display in some cases when
+    prompting for network to crack
+  * Aircrack-ng: Fixed exiting Aircrack-ng in some cases
+  * Aircrack-ng: Fixed logical and physical processor count
+    detection
+  * Aircrack-ng: Fixed PMKID length check
+  * Aircrack-ng: Various fixes and improvements to WPA cracking
+    engine and its performance
+  * Airdecap-ng: Decrypt both directions when WDS is in use
+  * Airdecap-ng: Fixed decrypting WPA PCAP when BSSID changes
+  * Airgraph-ng: Added support for WPA3
+  * Airgraph-ng: Switch to argparse
+  * Airmon-ng: Added detection for wicd, Intel Wireless Daemon
+    (iwd), net_applet
+  * Airmon-ng: Handle case when avahi keeps getting restarted
+  * Airmon-ng: Indicates when interface doesn't exist
+  * Airodump-ng: Added autocolorization interactive key
+  * Airodump-ng: Added option to read PCAP in realtime (-T)
+  * Airodump-ng: Added PMKID detection
+  * Airodump-ng: Added support for GMAC
+  * Airodump-ng: Added support for WPA3 and OWE (Enhanced Open)
+  * Airodump-ng: Basic UTF-8 support
+  * Airodump-ng: Checked management frames are complete before
+    processing IE to avoid switch from WEP to WPA
+  * Airodump-ng: Display signal when reading from PCAP
+  * Airodump-ng: Fixed netxml output with hidden SSID
+  * Airodump-ng: Improved rates calculation for 802.11n/ac
+  * Airtun-ng: Fixed using -p with -e
+  * Autoconf: Fixed order of ssl and crypto libraries
+  * dcrack: Fixed client reporting benchmark
+  * dcrack: Now handles chunked encoding when communicating
+    (default in Python3)
+  * Freeradius-WPE: Updated patch for v3.0.20
+  * General: Added python3 support to scripts
+  * General: Added security policy to report security issues
+  * General: Reorganizing filesystem layout (See PR 2032), and
+    switch to automake 1.14+
+  * General: Convert to non-recursive make (part of PR 2032)
+  * General: Deduplicating functions and code cleanups
+  * General: Fixed packaging on cygwin due to openssl library
+    name change
+  * General: Removed coveralls.io
+  * General: Updated dependencies in README.md/INSTALLING
+  * General: Use upstream radiotap libary, as a sub-tree
+  * HostAPd-WPE: Updated for v2.9
+  * Manpages: Fixes and improvements
+  * Tests: Added Integration tests for aireplay-ng, airodump-ng,
+    aircrack-ng, airbase-ng, and others
+  * Tests: Added tests for airdecap-ng, aircrack-ng
+
+-------------------------------------------------------------------
+Fri Apr  3 20:29:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with pcre for regex filtering of SSID
+- with with hwloc to improve performance
+- fix experimental feature conditional build
+- fix SQLite conditional build
+
+-------------------------------------------------------------------
+Fri Jan 18 13:53:16 UTC 2019 - atoptsoglou@suse.com
+
+- Fix conflict issue with graphviz: python files are now installed
+  under air_graphviz, add conflict.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 14:03:49 UTC 2018 - atoptsoglou@suse.com
+
+- Update to version 1.5.2:
+   * Airodump-ng: Fixed AP selection slip in interactive mode
+   * Airodump-ng: Revamped GPS logging functionality and added new logging format (logcsv)
+   * Aircrack-ng: Only load the maximum supported and available crypto engine
+   * Aircrack-ng: Reworked wordlist producer/consumer queue
+   * Airserv-ng: Fixed communication between platforms with different size int
+   * Airmon-ng: Improved detection of Raspberry Pis
+   * General: Signed and unsigned comparison fixes
+   * General: Code cleanups
+   * General: Added more tests
+   * General: Compilation improvements/fixes in autotools
+   * General: Big endian fixes
+   * General: Fixed spelling errors
+
+   * Made the changelog look better
+   * Adjustments to spec file
+-------------------------------------------------------------------
+Wed Oct 10 2018 aloisio@gmx.com
+- Update to version 1.4
+  * Aircrack-ng: Added PMKID cracking
+  * Aircrack-ng: Serious speed up and memory usage decrease when
+    loading large files (multiple Gb) using AVL trees
+  * Aircrack-ng: Added hwloc (Hardware Locality) to improve
+    performance
+  * Aircrack-ng: Support cracking PCAP with Protected Management
+    Frames (802.11w)
+  * Aircrack-ng: Merged check_thread() and read_thread()
+  * Aircrack-ng: Allow static linking with chosen SIMD
+  * Aircrack-ng: Display AVX512F when present
+  * Airodump-ng: Added clients GPS coordinates in NetXML file
+  * Airdecap-ng: Improve decrypting/parsing speed
+  * Airmon-ng: Updated/fixed using with nexmon
+  * Airmon-ng: Better check for lspci requirement on systems
+    that don't have PCI/PCIe devices
+  * Airmon-ng: Added support for rtl8812au/8814au/rtl88xxau
+    driver
+  * Build: Fixed building with a few different architectures
+  * Build: Switch to new CI/CD tool, PyDeployer
+  * Build: Improved building on Windows (and building/testing
+    with AppVeyor)
+  * Build: Improved and tweaked CI systems (buildbots, Travis,
+    AppVeyor)
+  * Build: Support for statically linking libraries/binaries
+  * Build: Automatic development packages build for multiple
+    Linux distro and upload to PackageCloud.io
+  * Tests: Added new tests for Aircrack-ng
+  * Tests: Added new capture files
+  * Freeradius-WPE: Fixed opening log file twice
+  * General: Fixed loading PCAP on system with a different
+    endianness
+  * General: Fixed memory leaks and issues reported by static
+    analysis tools
+  * General: Fixed "error while loading shared libraries"
+  * General: Various other small improvements in the tools,
+    build system, tests and documentation
+  * General: Update FSF address
+  * General: Code formatting
+-------------------------------------------------------------------
+  version 1.3
+  * Aircrack-ng: Allow using Hashcat HCCAPX files as input files.
+  * Aircrack-ng: Fixed floating point exception due to division
+    by 0 when displaying stats.
+  * Aircrack-ng: Updated manpage regarding hex wordlist usage.
+  * Aircrack-ng: Added save/restore session when cracking using
+    wordlists (-N and -R).
+  * Aircrack-ng: Moved crypto to its own library,
+    aircrack-crypto/ (aka crypto engine).
+  * Aircrack-ng: Now back to a single binary thanks to
+    crypto-engine.
+  * Aircrack-ng: Performance improvements of the crypto engine
+    across various CPU architectures.
+  * Aircrack-ng: Added support for AVX512 in the crypto-engine
+    (and build).
+  * Aircrack-ng: Improved building crypto-engine across CPU
+    architectures and compilers (gcc, clang and ICC).
+  * Aircrack-ng: Allow to list available SIMD optimizations.
+  * Aircrack-ng: Improved benchmark tool for unusual CPU/cores
+    count.
+  * Airodump-ng: Fixed running in the background.
+  * Airodump-ng: Don't show WPA handshake capture notice for
+    out-of-scope ESSIDs.
+  * Airodump-ng: Add --background 0/1 to force disable/enable
+    background settings and override autodetection of background.
+  * Airodump-ng: Added support for GCMP, GCMP-256 and CCMP-256.
+  * Airolib-ng: Fixed importing data when interrupting process
+    using Ctrl-C.
+  * dcrack: Check if dictionary and capture file exists before
+    uploading them.
+  * dcrack: Clean up dictionary before uploading it to the
+    server.
+  * dcrack: Gracefully stop and display errors instead of
+    printing stacktrace whenever possible.
+  * dcrack: Move temporary user files to /tmp and cleanup when
+    done.
+  * dcrack: Fixed displaying status when no clients are
+    connected to the server.
+  * dcrack: Validate uploaded PCAP and display success/failure.
+  * dcrack: Improved removing BSSID.
+  * WPAClean: Fixed crash with invalid prism2 header PCAP and
+    added tests.
+  * WPAClean: Don't create output file if no handshake are
+    present or if input file is bad.
+  * WPAClean: Fixed memory leak.
+  * Airmon-ng: Fixed display of interface name if name is too
+    long.
+  * OSdep: Fixed memory leak and null pointer dereference.
+  * OSdep: Fixed byteorder macros and other tools crashing.
+  * OSdep: Added support to build as a shared library.
+  * FreeRADIUS-WPE: Updated instructions for v3.0.17.
+  * HostAPd-wpe: Added Response-Identity logging and displaying
+    NETNTLM hash in hashcat format.
+  * Airgraph-ng: Renamed dump-join to airodump-join.
+  * General: Added coveralls.io badge.
+  * General: Added --without-opt to disable stack protector when
+    using GCC >= 4.9
+  * General: Various improvements and fixes, some from Coverity
+    Scan and Valgrind.
+  * General: Fixed typos reported by codespell.
+  * General: Extracted console functions and moved to
+    aircrack-util/.
+  * General: Renamed osdep/ to aircrack-osdep/.
+  * General: Fixed and added functions prototypes and commented
+    out unused functions.
+  * General: Reformat source code using clang-format and added
+    .clang-format file for IDE.
+  * General: Improvements to AppVeyor and TravisCI builds
+  * Building: Added NEON intrinsic support.
+  * Building: Support paths containing spaces, during autoreconf.
+  * Building: Fix compilation without getauxval in the
+    trampoline binary.
+  * Building: Fixed compiler warnings on Windows, FreeBSD.
+  * Building: Fixes and documentation for OSX.
+  * Building: Added support for tcmalloc and jemalloc.
+  * Building: Added instruction to build Windows binaries with
+    Airpcap.
+  * Unit test: Using CMocka for some tests
+  * Documentation: Updated explanations regarding building some
+    experimental tools.
+-------------------------------------------------------------------
+Fri Jun 24 2016 i@margueirte.su
+-Update version 1.2-rc4
+  * Airodump-ng: Increase console window size.
+  * Aircrack-ng: Added time remaining and percentage done when doing
+    WPA cracking with a dictionary (file).
+  * Aircrack-ng: Make benchmark last 15 seconds for a more accurate
+    value.
+  * Airmon-ng: Display chipset for some Broadcom SDIO.
+  * Airbase-ng: Fixed broadcasting 'default'.
+  * General: Fixed a bunch of compilation warnings with gcc and clang.
+  * General: Fixed compilation on ARM and MIPS.
+  * General: Memory cleanups, fixed memory leaks and fix other issues
+    reported by Valgrind.
+-------------------------------------------------------------------
+ Sat Jun  6 2015 mailaender@opensuse.org
+- update to 1.2-rc2
+  * Airtun-ng: Adds WPA CCMP and TKIP decryption and CCMP encryption
+  * Compilation: Added support for DUMA.
+  * Makefile: Renamed 'unstable' to 'experimental'.
+  * Airodump-ng: Fixed XML sanitizing.
+  * Airmon-ng: Airmon-zc is now stable enough to replace airmon-ng.
+  * Manpages: Removed airdriver-ng manpage and references to it (forgot to do it before the previous release).
+  * Manpages: Updated 'see also' references in all manpages.
+  * PCRE: Added it in various places and docs.
+  * WZCook: Fixed processing values stored in register.
+  * Updated a few headers files (if_llc, ieee80211, ethernet and if_arp).
+  * Compilation: de-hardcode -lpcap to allow specifying pcap libraries.
+  * Makefile: Fixed installing/uninstalling Airdrop-ng documentation files.
+  * Makefile: Fixed uninstalling ext_scripts.
+  * Airodump-ng: Added new paths (and removed one) for OUI files and simplified logic to find the OUI file.
+  * Aircrack-ng: Fixed ignoring -p when specified after -S.
+  * Airmon-ng: fixes for openwrt busybox ps/grep issues which do not seem present in other versions of busybox
+  * Airmon-ng: fix vm detection.
+  * Airserv-ng: Fixed channel setting (and assert call).
+  * Airodump-ng: Fixes to NetXML (unassociated clients missing and various other small bugs) and update the code to match current NetXML output.
+  * Airodump-ng: Removed requirement for 2 packets before AP is written to output (text) files.
+  * Airodump-ng: Fixed formatting of ESSID and display of WPA/WPA2 (as well as a bunch of other small fixes) in CSV file.
+  * Airodump-ng: Fixed GPSd.
+  * Airodump-ng: Allow to specify write interval for CSV, kismet CSV and NetXML files.
+  * Airserv-ng: Fixed wrong station data displayed in Airodump-ng.
+  * General: Fixed 64 bit promotion issues.
+  * General: Fixed a bunch of uninitialized values and non-zeroed structures (upon allocating them).
+  * General: Added Stack protection.
+  * Various other small fixes and improvements
+-------------------------------------------------------------------
+Thu Nov 13 2014 p.seiler@linuxmail.org
+- update to 1.2-rc1
+  * Airodump-ng should be able to parse the canonical oui file.
+  * Airodump-ng: Fixed GPS stack overflow.
+  * Airodump-ng: Fixed stopping cleanly with Ctrl-C.
+  * Airmon-zc: better handling for when modules are not available (incomplete)
+  * Airmon-zc: users can now start the monitor interface again to change channels
+  * Airmon-zc: update to use ip instead of ifconfig if available.
+  * Airmon-zc: better handling of devices without pci bus
+  * Aireplay-ng: Fixed tcp_test stack overflow.
+  * OSdep: Fixed libnl detection. Also avoid detection on non Linux systems.
+  * OSdep: Fixed segmentation fault that happens with a malicious server.
+  * Besside-ng: Add regular expression matching for the SSID.
+  * Buddy-ng: Fixed segmentation fault.
+  * Makefile: Fixed 'commands commence before first target' error when building Aircrack-ng.
+  * Fixed segfault when changing the optimization when compiling with gcc thanks to Ramiro Polla.
+  * Removed airdriver-ng (outdated and not meant for today's kernels)
+  * Added gitignore file.
+  * Fixed build issues on other compilers by using stdint.h types.
+  * Updating installation file and added pkg-config as a requirement.
+  * Various small fixes and improvements.
+-------------------------------------------------------------------
+Sun Jan 12 2014 chris@computersalat.de
+- update to 1.2-beta2
+  * Airbase-ng: Fixed order of IE when creating soft Access Point.
+  * Airbase-ng: Fixed Caffe Latte Attack not working for all clients.
+  * Aircrack-ng: Improved PTW speed thanks to Ramiro Polla.
+  * Airmon-zc: Fixed improper use of the interface.
+  * Airdecap-ng: Fixed decoding captures with WMM enabled.
+  * Various: Fixed memory leaks in Aircrack-ng, Aireplay-ng, OSdep.
+  * Added support for static analysis using Coverity Scan.
+  * Fixed compilation due to PIC unfriendly assembly on Gentoo hardened.
+  * Fixed running tests using 'make check'.
+  * Fixed building aircrack-ng with recent version of gcc and also on cygwin.
+  * Various other small fixes.
+-------------------------------------------------------------------
+Sat Aug 31 2013 i@margueirte.su
+- update version 1.2-beta1
+  * see http://www.aircrack-ng.org/doku.php?id=changelog for details
+- enable:
+  * gcrypt: Use libgcrypt crypto library instead of the default OpenSSL
+    And also use internal fast sha1 implementation
+  * libnl: Add support for netlink (nl80211)
+  * ext_scripts: airoscript-ng, versuck-ng, airgraph-ng and airdrop-ng
+-------------------------------------------------------------------
+Sun Apr 25 2010 pascal.bleser@opensuse.org
+- update to 1.1
+-------------------------------------------------------------------
+Fri Oct 23 2009 pascal.bleser@opensuse.org
+- forced rebuild to avoid uploading the binary packages
+-------------------------------------------------------------------
+Tue Sep  8 2009 pascal.bleser@opensuse.org
+- update to 1.0
+-------------------------------------------------------------------
+Thu Sep  3 2009 pascal.bleser@opensuse.org
+- update to rc4
+-------------------------------------------------------------------
+Thu Apr 16 2009 pascal.bleser@opensuse.org
+- changed version to include rc3, final will be 1.0+final
+- pass %%%%optflags properly
+- spec file cleanup
+- update to rc3
+-------------------------------------------------------------------
+Thu Jul 17 2008 andrea@links2linux.de
+- First spec Making

@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78d5d1c3bfd2749efdc85474d6dcfb65</srcmd5>
+    <version>0.0.1</version>
+    <time>1569588768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733535</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5e28ddc3fd7e5659288901944ce6bbfe</srcmd5>
+    <version>0.1.0</version>
+    <time>1569852113</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.0:
+* Error out when template variables are not defined
+
+- Format with spec-cleaner
+- Do not pull in devel python module as it is not needed</comment>
+    <requestid>734019</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>74bdb5ed9b1513697e83505fd92204d9</srcmd5>
+    <version>0.1.0</version>
+    <time>1590508157</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808783</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>bf8710bd9907e50606f612611da74a0e</srcmd5>
+    <version>0.1.0</version>
+    <time>1636388654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929837</requestid>
+  </revision>
+</revisionlist>

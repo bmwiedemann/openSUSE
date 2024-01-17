@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Jul 21 10:20:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use %pyunittest macro instead of directly calling %python_exec
+
+-------------------------------------------------------------------
+Tue Jul 20 17:00:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Use tests.py from github
+- Add patch:
+  * skip-broken-tests.patch
+
+-------------------------------------------------------------------
+Sat Jul 17 10:14:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 4.4.1

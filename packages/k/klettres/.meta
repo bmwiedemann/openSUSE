@@ -1,0 +1,5 @@
+<package name="klettres" project="openSUSE:Factory">
+  <title>Alphabet Learning Game</title>
+  <description>Helps to learn the alphabet and read some syllables</description>
+  <devel project="KDE:Applications" package="klettres"/>
+</package>

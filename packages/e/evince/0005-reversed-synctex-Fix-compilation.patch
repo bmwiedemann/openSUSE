@@ -1,0 +1,41 @@
+--- b/cut-n-paste/synctex/synctex_parser.c
++++ a/cut-n-paste/synctex/synctex_parser.c
+@@ -95,7 +95,6 @@
+ #       endif
+ #   endif
+ 
+-#define _GNU_SOURCE
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <stdio.h>
+@@ -263,8 +262,6 @@
+ #       pragma mark Abstract OBJECTS and METHODS
+ #   endif
+ 
+-void synctex_node_free(synctex_node_p node);
+-
+ /**
+  *  \def SYNCTEX_MSG_SEND
+  *  \brief Takes care of sending the given message if possible.
+@@ -536,10 +533,6 @@
+     synctex_io_mode_t io_mode;
+ } synctex_open_s;
+ 
+-void synctex_reader_free(synctex_reader_p reader);
+-synctex_reader_p synctex_reader_init_with_output_file(synctex_reader_p reader, const char * output, const char * build_directory);
+-synctex_node_p _synctex_node_next(synctex_node_p node);
+-
+ /*	This functions opens the file at the "output" given location.
+  *  It manages the problem of quoted filenames that appear with pdftex and filenames containing the space character.
+  *  In TeXLive 2008, the synctex file created with pdftex did contain unexpected quotes.
+--- b/cut-n-paste/synctex/synctex_parser_utils.c
++++ a/cut-n-paste/synctex/synctex_parser_utils.c
+@@ -87,8 +87,6 @@
+ #   include <syslog.h>
+ #endif
+ 
+-int _synctex_log(int level, const char * prompt, const char * reason,va_list arg);
+-
+ int _synctex_log(int level, const char * prompt, const char * reason,va_list arg) {
+ 	int result;
+ #	ifdef SYNCTEX_RECENT_WINDOWS

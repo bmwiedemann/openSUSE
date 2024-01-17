@@ -1,0 +1,10 @@
+<package name="perl-Array-Diff" project="openSUSE:Factory">
+  <title>Find the differences between two arrays</title>
+  <description>This module compares two *pre-sorted* arrays and returns the added or deleted elements in two separate arrays. It's a simple wrapper around Algorithm::Diff.
+
+*Note*: the arrays must be sorted before you call 'diff'.
+
+And if you need more complex array tools, check Array::Compare.</description>
+  <devel project="devel:languages:perl" package="perl-Array-Diff"/>
+  <url>https://metacpan.org/release/Array-Diff</url>
+</package>

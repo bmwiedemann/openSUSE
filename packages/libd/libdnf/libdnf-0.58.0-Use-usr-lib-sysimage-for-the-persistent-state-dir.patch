@@ -1,0 +1,40 @@
+From 59a89fc7ec6153c94666afa4faa4666d5767f035 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <ngompa13@gmail.com>
+Date: Mon, 8 Feb 2021 09:17:27 -0500
+Subject: [PATCH] Use /usr/lib/sysimage for the persistent state directory
+
+This aligns us with the location where the RPM database is stored.
+---
+ libdnf/conf/Const.hpp       | 2 +-
+ libdnf/transaction/Swdb.hpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libdnf/conf/Const.hpp b/libdnf/conf/Const.hpp
+index ba21bbe6..ae981ebe 100644
+--- a/libdnf/conf/Const.hpp
++++ b/libdnf/conf/Const.hpp
+@@ -26,7 +26,7 @@
+ 
+ namespace libdnf {
+ 
+-constexpr const char * PERSISTDIR = "/var/lib/dnf";
++constexpr const char * PERSISTDIR = "/usr/lib/sysimage/dnf";
+ constexpr const char * SYSTEM_CACHEDIR = "/var/cache/dnf";
+ 
+ constexpr const char * CONF_FILENAME = "/etc/dnf/dnf.conf";
+diff --git a/libdnf/transaction/Swdb.hpp b/libdnf/transaction/Swdb.hpp
+index 5b2342c8..e0fac438 100644
+--- a/libdnf/transaction/Swdb.hpp
++++ b/libdnf/transaction/Swdb.hpp
+@@ -54,7 +54,7 @@ public:
+ 
+     // Database
+     // FIXME load this from conf
+-    static constexpr const char *defaultPath = "/var/lib/dnf/history.sqlite";
++    static constexpr const char *defaultPath = "/usr/lib/sysimage/dnf/history.sqlite";
+     static constexpr const char *defaultDatabaseName = "history.sqlite";
+ 
+     const std::string &getPath() { return conn->getPath(); }
+-- 
+2.29.2
+

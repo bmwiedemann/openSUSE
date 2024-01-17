@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Fri Mar 31 14:08:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 64.0:
+  + Stations: Add Radio Punjab Today (New Dehli, India).
+- Changes from version 48.0:
+  + Stations:
+    - Update Echo of Moscow from European Union (Moscow, Russia).
+- Changes from version 47.0:
+  + GUI: Update KCSN (Los Angeles, California).
+  + Stations: Update Radio Eins RBB (Frankfurt, Germany).
+
+-------------------------------------------------------------------
+Thu Sep 22 15:00:37 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Minor UI changes.
+  + Added radio stations.
+  + Revert back to GTK3 (no reason given).
+- Replace pkgconfig(gtk4) BuildRequires with pkgconfig(gtk+-3.0),
+  following upstream.
+
+-------------------------------------------------------------------
+Tue Aug 30 08:31:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.1:
+  + Stations: add RTI and Radio Free Asia.
+- Changes from version 45.0:
+  + Build system changes only.
+- Changes from version 44.1:
+  + BBC World Service profile
+- Changes from version 44.0:
+  + Initial port to GTK4.
+  + Include meson build system.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4):
+  follow upstreams port to GTK4.
+
+-------------------------------------------------------------------
+Mon May 30 12:16:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 16.0.43:
+  + Add some radio stations from Norway and Denmark.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr  8 00:24:32 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Updated to version 16.0.42
+   + Build
+     - configure.ac: Update for 16.0.42
+     - data/gnome-radio.desktop.in.in: Update for 16.0.42
+     - data/gnome-radio.desktop.in: Update for 16.0.42
+     - data/screenshot.png: Update for 16.0.42
+     - gnome-radio.doap: Update for 16.0.42
+     - gnome-radio.spec.in: Update for 16.0.42
+   + XML: src/gnome-radio.xml: Update for 16.0.42
+
+-------------------------------------------------------------------
+Thu Mar 31 14:10:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 16.0.6:
+  + Build:
+    - configure.ac: Update for gnome-radio 16.0.6
+    - gnome-radio.spec.in: Update for gnome-radio 16.0.6
+  + GUI: src/gnome-radio.c: New title ("gnome-radio 16.0.6")
+  + XML: src/gnome-radio.xml: Update for gnome-radio 16.0.6
+- Changes from version 16.0.5:
+  + Build:
+    - configure.ac: Update for gnome-radio 16.0.5
+    - gnome-radio.spec.in: Update for gnome-radio 16.0.5
+  + Documentation:
+    - data/gnome-radio.desktop.in: Update for gnome-radio 16.0.5
+    - data/gnome-radio.desktop.in.in: Update for gnome-radio 16.0.5
+  + XML: src/gnome-radio.xml: Update for gnome-radio 16.0.5
+
+-------------------------------------------------------------------
+Sun Mar 20 11:45:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 16.0.4:
+  + HACKING: Update GNOME_RADIO_DEBUG, uri and program history.
+  + THANKS: Update entry for Luna Jernberg.
+
+-------------------------------------------------------------------
+Thu Mar 17 15:09:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 16.0.3.

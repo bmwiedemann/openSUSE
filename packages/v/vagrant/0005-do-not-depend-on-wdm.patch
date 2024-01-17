@@ -1,0 +1,25 @@
+From c0a7db63b7cde09913c395737fabf02e6619d8e2 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Mon, 4 Jun 2018 09:18:23 +0200
+Subject: [PATCH 05/13] do not depend on wdm
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ vagrant.gemspec | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/vagrant.gemspec b/vagrant.gemspec
+index 2a740089a..7d417b019 100644
+--- a/vagrant.gemspec
++++ b/vagrant.gemspec
+@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
+   s.add_dependency "rgl", "~> 0.5.10"
+   s.add_dependency "rubyzip", "~> 2.3.2"
+   s.add_dependency "vagrant_cloud", "~> 3.0.5"
+-  s.add_dependency "wdm", "~> 0.1.1"
+   s.add_dependency "winrm", ">= 2.3.6", "< 3.0"
+   s.add_dependency "winrm-elevated", ">= 1.2.3", "< 2.0"
+   s.add_dependency "winrm-fs", ">= 1.3.5", "< 2.0"
+-- 
+2.41.0
+

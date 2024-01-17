@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Fri Jan  5 10:24:34 UTC 2024 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Do not overwrite os-update.conf on Leap
+
+-------------------------------------------------------------------
+Fri Nov 24 13:27:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.14
+  - Fix check if rebootmgrctl is installed
+
+-------------------------------------------------------------------
+Thu Nov 23 13:27:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.13
+  - Skip restart of virtlockd by default
+
+-------------------------------------------------------------------
+Thu Oct  5 13:28:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.12
+  - Add support for systemd soft-reboot
+
+-------------------------------------------------------------------
+Mon May  8 08:49:37 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use suse_version instead of sle_version
+
+-------------------------------------------------------------------
+Fri Apr 28 14:34:27 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust URL to openSUSE github repo
+
+-------------------------------------------------------------------
+Fri Apr 28 09:16:01 UTC 2023 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Fix things not available in SLE12:
+  - Do not require zypper-needs-restarting
+  - Require mailx since conditional requires are not available in SLE12
+  - define make_build macro
+
+-------------------------------------------------------------------
+Thu Apr 27 13:36:31 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.11
+  - Add LOG_TAG
+  - Fix reboottrigger for SLES12 
+
+-------------------------------------------------------------------
+Tue Apr 25 23:07:54 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Require lsof
+
+-------------------------------------------------------------------
+Thu Jan 19 09:21:19 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.10
+  - Fix check if reboot is required
+  - Improve/fix check if systemd needs to be restarted
+
+-------------------------------------------------------------------
+Fri Jan 13 13:40:55 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.9
+  - Minimal support for SLE12 (os-update)
+  - From address now configureable (systemd-status-mail)
+  - Include error messages of systemctl, too (systemd-status-mail)
+
+-------------------------------------------------------------------
+Wed Dec 21 10:53:22 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.8
+  - Allow to specify additional options for mailx
+
+-------------------------------------------------------------------
+Wed Dec 21 10:17:01 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- if sysconfdir is being used on older SLES/Leap versions,
+  mark the config file as %config(noreplace)
+
+-------------------------------------------------------------------
+Mon Dec 19 12:23:37 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.7
+ - Fix detection of running rebootmgrd
+ - Add SERVICES_TRIGGERING_REBOOT (#2)
+
+-------------------------------------------------------------------
+Mon Dec  5 13:47:15 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.6
+  - Restart systemd if necessary
+
+-------------------------------------------------------------------
+Thu Nov 24 13:49:25 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.5
+  - Restart udev after update by default
+  - Support REBOOT_CMD="none"
+
+-------------------------------------------------------------------
+Fri Nov 11 09:30:12 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4.2
+  - Fixes for openSUSE Leap
+  - Add docu URLs to service files
+
+-------------------------------------------------------------------
+Thu Nov 10 15:25:52 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4.1
+  - Increase limit of lines from log in status mail to 500
+  - Fix syntax error in systemd-status-mail manual page source
+
+-------------------------------------------------------------------
+Mon Nov  7 13:25:43 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4
+  - Provide service to send mails about systemd service status 
+
+-------------------------------------------------------------------
+Fri Nov  4 07:36:37 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.3
+  - Restart services: don't restart os-update itself during update
+
+-------------------------------------------------------------------
+Thu Nov  3 22:04:10 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Require zypper-needs-restarting
+
+-------------------------------------------------------------------
+Mon Oct 31 10:02:40 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.2
+  - Restart updated services
+
+-------------------------------------------------------------------
+Thu Oct 27 08:01:08 UTC 2022 - kukuk@suse.com
+
+- Update to version 1.1
+  - Update documentation
+  - Add openSUSE Leap support 
+
+-------------------------------------------------------------------
+Mon Jun 13 06:42:40 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0
+  - First public release
+  - Update documentation
+
+-------------------------------------------------------------------
+Thu Oct  8 07:52:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove debug output
+
+-------------------------------------------------------------------
+Fri Sep 25 15:37:34 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version

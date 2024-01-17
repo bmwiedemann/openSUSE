@@ -1,0 +1,33 @@
+From: cunix@mail.de
+Date: 2020-02-12 12:00:00
+Subject: linker should use "-pie" instead of "-no-pie"
+References: https://github.com/godotengine/godot/pull/23542#issuecomment-436385853
+            https://github.com/godotengine/godot/pull/23542
+            https://github.com/godotengine/godot/issues/34533
+Upstream:   seems to do the opposite
+Rebased:    2021-04-22
+Rebased:    2021-11-08
+Rebased:    2022-08-06
+
+Linker flag "-no-pie" is added by upstream.
+rpmlint complains this violates project policy.
+Patch replaces flag "-no-pie" with "-pie".
+
+---
+
+diff -r -U 5 a/platform/x11/detect.py b/platform/x11/detect.py
+--- a/platform/x11/detect.py
++++ b/platform/x11/detect.py
+@@ -236,11 +236,11 @@
+     # Check for gcc version >= 6 before adding -no-pie
+     version = get_compiler_version(env) or [-1, -1]
+     if using_gcc(env):
+         if version[0] >= 6:
+             env.Append(CCFLAGS=["-fpie"])
+-            env.Append(LINKFLAGS=["-no-pie"])
++            env.Append(LINKFLAGS=["-pie"])
+     # Do the same for clang should be fine with Clang 4 and higher
+     if using_clang(env):
+         if version[0] >= 4:
+             env.Append(CCFLAGS=["-fpie"])
+             env.Append(LINKFLAGS=["-no-pie"])

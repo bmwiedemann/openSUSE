@@ -1,0 +1,8 @@
+<package name="libpgf" project="openSUSE:Factory">
+  <title>Progressive Graphics File Library</title>
+  <description>
+libpgf is a library for working with PGF (Progresive Graphics File) images.
+</description>
+  <devel project="graphics" package="libpgf"/>
+  <url>http://www.libpgf.org/</url>
+</package>

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sat Dec 12 19:31:06 UTC 2015 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec-file with spec-cleaner
+- Remove explicit build requirement for library
+- Do not ship static library in devel package
+
+-------------------------------------------------------------------
+Wed Sep 03 12:00:01 UTC 2014 - ku.b@gmx.de
+
+- update to 0.9.8
+
+-------------------------------------------------------------------
+Wed May 09 12:00:01 UTC 2012 - ku.b@gmx.de
+
+- omit temp file removal during package build
+
+-------------------------------------------------------------------
+Thu Mar 05 12:00:01 UTC 2012 - ku.b@gmx.de
+
+- packaging fixes
+
+-------------------------------------------------------------------
+Thu Jan 19 12:00:01 UTC 2012 - ku.b@gmx.de
+
+- update to 0.9.6
+- add changes file
+- bump library version
+
+-------------------------------------------------------------------
+Wed Dec 01 12:00:01 UTC 2010 - ku.b@gmx.de
+
+- add XMLSchema
+
+-------------------------------------------------------------------
+Thu Sep 03 12:00:01 UTC 2010 - ku.b@gmx.de
+
+- initial specfile'ification
+

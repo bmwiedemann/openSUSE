@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Jul 11 13:54:11 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.1 
+  * Optimization of LookupResources mainly used in tools/find, C-Find and QIDO-RS.
+
+- version 5.0
+  * Compatibility with Orthanc SDK 1.12.0 (communications between the
+    Orthanc core and the database plugin using Google Protocol Buffers)
+  * Upgraded dependencies for static builds (notably on Windows and LSB):
+    - openssl 3.1.0
+  * psql114.patch removed (included in source)
+  
+-------------------------------------------------------------------
+Sun May  9 10:12:43 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 4.0 (no changelog)
+
+-------------------------------------------------------------------
+Mon Dec 14 17:34:32 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 3.3
+* Added an advisory lock to avoid race conditions during database setup
+* Added "MaximumConnectionRetries" & "ConnectionRetryInterval" to configure 
+  the retries when connecting to the DB at startup
+* Support of dynamic linking against the system-wide Orthanc framework library
+* build aginst orthanc-framework removed 
+
+-------------------------------------------------------------------
+Thu Oct 22 08:35:21 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- switch to orthanc-framework (static version)
+  psql114.patch extended for psql 12/13 versions
+
+-------------------------------------------------------------------
+Sun Mar 15 02:26:01 UTC 2020 - Max Lin <mlin@suse.com>
+
+- For Leap version >= 15.2, postgresql-server-devel need to be used
+
+-------------------------------------------------------------------
+Mon Aug  5 16:09:55 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- Version 3.2
+  Initial build on OBS 

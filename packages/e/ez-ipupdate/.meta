@@ -1,0 +1,30 @@
+<package name="ez-ipupdate" project="openSUSE:Factory">
+  <title>A Small Utility for Updating a Dynamic DNS Service</title>
+  <description>ez-ipupdate is a small utility for updating your hostname for any of
+the dynamic DNS services offered at:
+
+* http://www.ez-ip.net
+
+* http://www.justlinux.com
+
+* http://www.dhs.org
+
+* http://www.dyndns.org
+
+* http://www.ods.org
+
+* http://gnudip.cheapnet.net (GNUDip)
+
+* http://www.dyn.ca (GNUDip)
+
+* http://www.tzo.com
+
+* http://www.easydns.com
+
+* http://www.dyns.cx
+
+* http://www.hn.org
+
+* http://www.zoneedit.com</description>
+  <devel project="network" package="ez-ipupdate"/>
+</package>

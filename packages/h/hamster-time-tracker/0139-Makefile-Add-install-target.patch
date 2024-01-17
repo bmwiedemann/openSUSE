@@ -1,0 +1,47 @@
+From 0d9b54a7e443cfec177454cd82002e417538263c Mon Sep 17 00:00:00 2001
+From: Andrew Jeffery <andrew@aj.id.au>
+Date: Tue, 5 May 2020 10:47:43 +0930
+Subject: [PATCH 139/147] Makefile: Add install target
+
+`make install` deploys the extension to the system path rather than
+confining it to per-user directories.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+---
+ Makefile | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2fb39fa..12bb439 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,6 +4,8 @@ SPHINX_TEST_SPHINX_BUILDDIR = _test_build
+ 
+ # Directory to collect all sourc file to in order to build.
+ BUILDDIR = build
++# Distination installation directory
++DESTDIR := /usr/local
+ # Directory to save a 'ready to deploy extension' archive
+ DISTDIR = dist
+ # Extension "UUID" to use, default: contact@projecthamster.org
+@@ -103,8 +105,12 @@ test-docs:
+ test-style:
+ 	jshint --config .jshint.cfg extension/
+ 
+-.PHONY: install-user
+-install-user: dist
+-	rm -rf ${HOME}/.local/share/gnome-shell/extensions/$(UUID)
+-	mkdir -p ${HOME}/.local/share/gnome-shell/extensions/$(UUID)
+-	tar xfz dist/$(UUID).tar.gz -C ${HOME}/.local/share/gnome-shell/extensions/$(UUID)
++.PHONY: install install-user
++install-user: DESTDIR="${HOME}/.local"
++install-user: install
++
++install: dist
++	[ -n "$(DESTDIR)" ]
++	rm -rf $(DESTDIR)/share/gnome-shell/extensions/$(UUID)
++	mkdir -p $(DESTDIR)/share/gnome-shell/extensions/$(UUID)
++	tar xfz dist/$(UUID).tar.gz -C $(DESTDIR)/share/gnome-shell/extensions/$(UUID)
+-- 
+2.31.1
+

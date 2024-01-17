@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<constraints>
+  <hardware>
+    <processors>2</processors>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+    <disk>
+      <!-- Needed because OBS workers chronically run out of disk because sigghhh -->
+      <size unit="G">25</size>
+    </disk>
+  </hardware>
+</constraints>

@@ -1,0 +1,5 @@
+<package name="python-python-engineio" project="openSUSE:Factory">
+  <title></title>
+  <description>Python Engine.IO server.</description>
+  <devel project="devel:languages:python" package="python-python-engineio"/>
+</package>

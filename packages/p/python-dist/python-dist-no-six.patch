@@ -1,0 +1,30 @@
+Index: dist-1.0.3/tests/test_performance.py
+===================================================================
+--- dist-1.0.3.orig/tests/test_performance.py
++++ dist-1.0.3/tests/test_performance.py
+@@ -1,8 +1,6 @@
+ import math
+ from timeit import default_timer as timer
+ 
+-from six.moves import xrange
+-
+ import dist
+ 
+ 
+@@ -27,14 +25,14 @@ def test_positive_scenario():
+ def test_performance():
+     start_time = timer()
+ 
+-    for _ in xrange(10000000):
++    for _ in range(10000000):
+         pure_py_dist(10.1, 12.1, 10.1, 10.1)
+ 
+     pure_py_time = timer() - start_time
+ 
+     start_time = timer()
+ 
+-    for _ in xrange(10000000):
++    for _ in range(10000000):
+         dist.compute(10.1, 12.1, 10.1, 10.1)
+ 
+     ext_time = timer() - start_time

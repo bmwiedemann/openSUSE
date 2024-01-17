@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Aug 15 21:01:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.1
+  * OTF versions of int10h base fonts (better antialias in Freetype)
+  * Renamed smooth variants to have a "Smooth" suffix in the name
+
+-------------------------------------------------------------------
+Tue Sep 21 22:02:32 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package for build.opensuse.org (version 2.2)

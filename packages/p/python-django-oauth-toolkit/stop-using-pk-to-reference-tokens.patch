@@ -1,0 +1,22 @@
+Index: django-oauth-toolkit-1.7.0/tests/test_models.py
+===================================================================
+--- django-oauth-toolkit-1.7.0.orig/tests/test_models.py
++++ django-oauth-toolkit-1.7.0/tests/test_models.py
+@@ -322,7 +322,7 @@ class TestClearExpired(BaseTestModels):
+             RefreshToken(
+                 token=f"expired AT's refresh token {i}",
+                 application=app,
+-                access_token=expired_access_tokens[i].pk,
++                access_token=expired_access_tokens[i],
+                 user=self.user,
+             )
+             for i in range(0, len(expired_access_tokens) // 2, 2)
+@@ -331,7 +331,7 @@ class TestClearExpired(BaseTestModels):
+             RefreshToken(
+                 token=f"current AT's refresh token {i}",
+                 application=app,
+-                access_token=current_access_tokens[i].pk,
++                access_token=current_access_tokens[i],
+                 user=self.user,
+             )
+             for i in range(1, len(current_access_tokens) // 2, 2)

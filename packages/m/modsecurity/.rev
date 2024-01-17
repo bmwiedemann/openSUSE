@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd3c70f5fa7eeb26ac31342081ebb295</srcmd5>
+    <version>3.0.0</version>
+    <time>1531232136</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove libltdl7 from build dependencies
+- Make use of %license macro
+- Make use of %{version} variable
+- Sort dependencies alphabetically
+- Initial release
+</comment>
+    <requestid>621691</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a66b8a1362d5c71fac178047fe9fb5f</srcmd5>
+    <version>3.0.0</version>
+    <time>1531813378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623120</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0872c3ae3513ad28ad7e414b7bf148e9</srcmd5>
+    <version>3.0.4</version>
+    <time>1596116874</time>
+    <user>dimstar_suse</user>
+    <comment>add baselibs.conf to sources (forwarded request 823576 from mrostecki)</comment>
+    <requestid>823577</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ade10bef215b58eb9f2439e9fe5773b3</srcmd5>
+    <version>3.0.6</version>
+    <time>1654097681</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980136</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>93e73fa70f3dbd1a63ee432d60775d6c</srcmd5>
+    <version>3.0.7</version>
+    <time>1671023576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042903</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a9c1cd48afbf0ae52fff85cd86755b0c</srcmd5>
+    <version>3.0.8</version>
+    <time>1673559890</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1057876</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>534a496a8655538a9b52ebcbeb933536</srcmd5>
+    <version>3.0.9</version>
+    <time>1684313592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087408</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d467b411f51956d7b9af2d614971888b</srcmd5>
+    <version>3.0.10</version>
+    <time>1694019478</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109075</requestid>
+  </revision>
+</revisionlist>

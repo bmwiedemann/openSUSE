@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/gkdr/lurch.git</param>
+    <param name="filename">lurch</param>
+    <param name="versionformat">0.7.0</param>
+    <param name="revision">84f72d85a6735d64ade8f8bc8619bd61699298b2</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

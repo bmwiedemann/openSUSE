@@ -1,0 +1,5 @@
+<package name="python2-pip" project="openSUSE:Factory">
+  <title>Python 2 minimal package for pip</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python2-pip"/>
+</package>

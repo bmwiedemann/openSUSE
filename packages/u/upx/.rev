@@ -1,0 +1,226 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f506bdae91121b7d1b7094a995520da</srcmd5>
+    <version>3.08</version>
+    <time>1332763352</time>
+    <user>coolo</user>
+    <comment>upx compression tool</comment>
+    <requestid>110841</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2f506bdae91121b7d1b7094a995520da</srcmd5>
+    <version>3.08</version>
+    <time>1340184300</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>2f506bdae91121b7d1b7094a995520da</srcmd5>
+    <version>3.08</version>
+    <time>1359110529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>36d2f76553228ec40c9edce5e70ec572</srcmd5>
+    <version>3.09</version>
+    <time>1364303593</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.09
+  * New option --preserve-build-id for GNU ELF.
+  * Allow zero-filled final page in PackUnix::canUnpack().
+  * Bug fixes.</comment>
+    <requestid>161130</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>df62189d592e66a8e8d2139716540ec1</srcmd5>
+    <version>3.09</version>
+    <time>1364928297</time>
+    <user>coolo</user>
+    <comment>- upx-aarch64.patch: Support for AArch64 (forwarded request 161914 from Andreas_Schwab)</comment>
+    <requestid>162086</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>df62189d592e66a8e8d2139716540ec1</srcmd5>
+    <version>3.09</version>
+    <time>1379664893</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba44cd6782c6cd660f76b673d9a2d68e</srcmd5>
+    <version>3.91</version>
+    <time>1385391862</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.91
+* Initial support for amd64-win64.pe
+- Refresh upx-3.03_ia64-endianity.patch after fuzz (forwarded request 207914 from jengelh)</comment>
+    <requestid>208196</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>86503495d74cea0896e7d2c0cc3c0ed3</srcmd5>
+    <version>3.91</version>
+    <time>1390976255</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>215271</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>86503495d74cea0896e7d2c0cc3c0ed3</srcmd5>
+    <version>3.91</version>
+    <time>1409303580</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>452db9c07f6925ea337ed38df6e12fe1</srcmd5>
+    <version>3.91</version>
+    <time>1416425198</time>
+    <user>dimstar_suse</user>
+    <comment>- upx-endiantests.patch and lzma-x-endian.patch Correct
+  endianness tests by only considering what the compiler says
+  about target system and not a hardcoded architecture list.
+  (drop upx-3.03_ia64-endianity.patch)
+- build with hidden visibility. (forwarded request 261966 from elvigia)</comment>
+    <requestid>262111</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0c65f565c39e2af245a964be6ce0ba27</srcmd5>
+    <version>3.94</version>
+    <time>1507571195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.94
+  * Add support for arm64-linux (aka aarch64).
+  * Add support for --lzma compression on 64-bit PowerPC.
+  * From 3.92:
+  * Explicitly diagnose Go-language bad PT_LOAD.
+- Resolve apply/merge conflict of upx-endiantests.patch
+- Add 0001-Protect-against-bad-crafted-input.patch,
+  0002-Protect-against-bad-crafted-input.patch [boo#1062059]
+</comment>
+    <requestid>532587</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5e86e7680c9fe879597c05163d1b601f</srcmd5>
+    <version>3.94</version>
+    <time>1511086606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542899</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>71594940db83dbc916dd29c60dcc4961</srcmd5>
+    <version>3.95</version>
+    <time>1541865453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645492</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5321552ed0920d4b5f723d478f8b0d57</srcmd5>
+    <version>3.96</version>
+    <time>1579955047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766781</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>620475b704d959cd25feb583700af101</srcmd5>
+    <version>3.96</version>
+    <time>1621439381</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Unpack-Phdrs-must-be-within-expansion-of-first-compr.patch
+  [CVE-2020-24119] [boo#1186238] (forwarded request 894300 from jengelh)</comment>
+    <requestid>894328</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0c926f2c04292230aaed2c8f3f9e75e4</srcmd5>
+    <version>3.96</version>
+    <time>1622664686</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change to fix build with GCC 11:
+  * 0001-Silence-yet-some-more-compilation-warnings.patch</comment>
+    <requestid>896605</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4b46d5452250677df0b9fd15c2bd9e18</srcmd5>
+    <version>4.0.0</version>
+    <time>1667995001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0
+  * Add support for EFI files</comment>
+    <requestid>1034536</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7510d124803b0f96100d5f8e54d6ffae</srcmd5>
+    <version>4.0.1</version>
+    <time>1668702288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0.1</comment>
+    <requestid>1036300</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>32ba60ebb676f918038cf6b1c3685429</srcmd5>
+    <version>4.0.1</version>
+    <time>1673801887</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-invert_pt_dynamic-fix-thinko-PackLinuxElf64help1-ins.patch [boo#1207122] [CVE-2023-23457]</comment>
+    <requestid>1058444</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>34d215b08195c38156b2da1de55367e4</srcmd5>
+    <version>4.0.2</version>
+    <time>1675177753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0.2</comment>
+    <requestid>1062098</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6a4e98d7bbe4d96ed37f24d82c0da3f0</srcmd5>
+    <version>4.1.0</version>
+    <time>1691502941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.1</comment>
+    <requestid>1102871</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>56d6310caf4cd61f7a6596cceb9ece1b</srcmd5>
+    <version>4.1.0</version>
+    <time>1695327816</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112801</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>1b316ca387042cdfd9cec7dc668586f7</srcmd5>
+    <version>4.1.0</version>
+    <time>1697567093</time>
+    <user>anag+factory</user>
+    <comment>- Fix typo in BSD-4-Clause (forwarded request 1118108 from lkocman)</comment>
+    <requestid>1118222</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>489f3d1ccfbce0ad6c2f2df6de753c6b</srcmd5>
+    <version>4.2.0</version>
+    <time>1698333294</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.2.0</comment>
+    <requestid>1120515</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9b404f8c4306f5f284f1570bf832a75d</srcmd5>
+    <version>4.2.1</version>
+    <time>1698952870</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 4.2.1</comment>
+    <requestid>1121684</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2ac51b5e573e364ab3469926b114c401</srcmd5>
+    <version>4.2.2</version>
+    <time>1704380332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.2.2</comment>
+    <requestid>1136662</requestid>
+  </revision>
+</revisionlist>

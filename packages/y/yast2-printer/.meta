@@ -1,0 +1,5 @@
+<package name="yast2-printer" project="openSUSE:Factory">
+  <title>YaST2 - Printer Configuration</title>
+  <description>This package contains the YaST2 component for printer configuration.</description>
+  <devel project="YaST:Head" package="yast2-printer"/>
+</package>

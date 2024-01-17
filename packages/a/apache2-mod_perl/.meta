@@ -1,0 +1,34 @@
+<package name="apache2-mod_perl" project="openSUSE:Factory">
+  <title>Embedded Perl for Apache</title>
+  <description>The Apache/Perl integration project brings together the full power of
+the Perl programming language and the Apache HTTP server.
+
+With mod_perl, it is possible to write Apache modules entirely in Perl.
+The persistent interpreter embedded in the server avoids the overhead
+of starting an external interpreter and the penalty of Perl start-up
+time.
+
+Note that you do not need mod_perl to run perl scripts via the common
+gateway interface (CGI). mod_perl enables you to run Perl scripts in an
+embedded interpreter if the additional performance is needed, but may
+require modifications to the scripts.
+
+Usage:
+
+To load the module into Apache, run the command &quot;a2enmod perl&quot; as root.
+
+To learn about the configuration, the best reference unequivocally is
+http://perl.apache.org/docs/
+
+For porting 1.0 applications to 2.0, the page
+http://perl.apache.org/docs/2.0/user/porting/compat.html should give
+the required information.
+
+Most mod_perl handlers use the perl-script handler. Scripts can run in
+&quot;mod_perl mode&quot; (preconfigured for URLs starting with /perl/) or &quot;perl
+cgi mode&quot; (preconfigured for URLs starting /cgi-perl). Plain CGI
+scripts can be run via /cgi-bin/. In all these cases, the script would
+be placed inside the /srv/www/cgi-bin/ directory. Refer to
+/etc/apache2/conf.d/mod_perl.conf about this configuration.</description>
+  <devel project="Apache:Modules" package="apache2-mod_perl"/>
+</package>

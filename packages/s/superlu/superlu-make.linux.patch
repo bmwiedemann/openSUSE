@@ -1,0 +1,14 @@
+diff -Nrua a/MAKE_INC/make.linux b/MAKE_INC/make.linux
+--- a/MAKE_INC/make.linux
++++ b/MAKE_INC/make.linux
+@@ -21,8 +21,8 @@
+ #
+ #  The name of the libraries to be created/linked to
+ #
+-SuperLUroot	= $(HOME)/Dropbox/Codes/SuperLU/SuperLU
+-SUPERLULIB   	= $(SuperLUroot)/lib/libsuperlu_5.1.a
++SuperLUroot	= @superlu_home@
++SUPERLULIB	= @superlu_lib@
+ 
+ #BLASLIB   	= $(SuperLUroot)/lib/libblas.a
+ 

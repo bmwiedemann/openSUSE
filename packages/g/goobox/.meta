@@ -1,0 +1,5 @@
+<package name="goobox" project="openSUSE:Factory">
+  <title>CD Player and Ripper for GNOME</title>
+  <description>Goobox is a CD player and ripper that always knows just what to do.</description>
+  <devel project="GNOME:Apps" package="goobox"/>
+</package>

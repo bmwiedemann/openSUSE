@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d9e56efab1486edf1d587ac74be374e2</srcmd5>
+    <version>7.6.1</version>
+    <time>1568025198</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>714507</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69a11a571faa546a13a8016d5d25d809</srcmd5>
+    <version>7.8.1</version>
+    <time>1575464062</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow autoconfig of grass directory in software using grass
+- Update to 7.8.1:
+  * The GRASS GIS 7.8.1 release provides more than 80 fixes and improvements with respect to the stable release 7.8.0.
+  * The most important change is the new Python-3 support. 
+  * In this release, PROJ 6 and GDAL 3 support has been added. 
+  * The new version is backward compatible with older GRASS 7.x releases and older GDAL 2.x and PROJ 4/5 releases.
+  * More details: https://trac.osgeo.org/grass/wiki/Release/7.8.1-News
+- Use Python 3.
+</comment>
+    <requestid>753783</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>208fb591eb18428c1744e1e6755be2b2</srcmd5>
+    <version>7.8.1</version>
+    <time>1588105956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798678</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2dcbb0a4520d903ce11150936215433c</srcmd5>
+    <version>7.8.2</version>
+    <time>1588186289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798800</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ebd7bafefe101358e64ee96bf6e07704</srcmd5>
+    <version>7.8.3</version>
+    <time>1589993101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807396</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4353f9d0980d99a89d5dad9bbf82000c</srcmd5>
+    <version>7.8.4</version>
+    <time>1602503934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841035</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e736dd3066d0d687d7472e5fee2e24aa</srcmd5>
+    <version>7.8.5</version>
+    <time>1620653926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891854</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>09f4c4569aeb1bd44fc72c1cb6785c7f</srcmd5>
+    <version>7.8.5</version>
+    <time>1624004026</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch b86314c7.patch to fix build failure due
+  to gdal 3.3.0. This close boo#1187371 and upstream issue#1649
+</comment>
+    <requestid>900444</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9997c07002a976d5a2a89d16280d14bf</srcmd5>
+    <version>7.8.6</version>
+    <time>1638388033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934872</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b8333a0dae4cb834828cf081bbac9697</srcmd5>
+    <version>7.8.7</version>
+    <time>1669715631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038831</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>37c72855174b4fb122e8392f80152b32</srcmd5>
+    <version>7.8.7</version>
+    <time>1670514732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041343</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6beec2b09dff7f6b522bf5ab4226bcb1</srcmd5>
+    <version>8.2.1</version>
+    <time>1678125408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069669</requestid>
+  </revision>
+</revisionlist>

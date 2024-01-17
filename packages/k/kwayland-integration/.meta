@@ -1,0 +1,5 @@
+<package name="kwayland-integration" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="kwayland-integration"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="libansilove" project="openSUSE:Factory">
+  <title>libansilove</title>
+  <description></description>
+  <devel project="graphics" package="libansilove"/>
+</package>

@@ -1,0 +1,70 @@
+From 37df7fd81c3dee990bd7723f18c94713a0d842b6 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 15 Feb 2019 18:46:20 +0100
+Subject: [PATCH] setup: don't fail if commondir reference is deleted.
+
+Apparently it can happen that stat() claims there is a commondir file but when
+trying to open the file it is missing.
+
+Another even rarer issue is that the file might be zero size because another
+process initializing a worktree opened the file but has not written is content
+yet.
+
+When any of this happnes git aborts failing to perform perfectly valid
+command because unrelated worktree is not yet fully initialized.
+
+Rather than testing if the file exists before reading it handle ENOENT
+and ENOTDIR.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+v2:
+- do not test file existence first, just read it and handle ENOENT.
+- handle zero size file correctly
+v3:
+- handle ENOTDIR as well
+- add more details to commit message
+---
+ setup.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/setup.c b/setup.c
+index ca9e8a949ed8..49306e36990d 100644
+--- a/setup.c
++++ b/setup.c
+@@ -270,12 +270,20 @@ int get_common_dir_noenv(struct strbuf *sb, const char *gitdir)
+ {
+ 	struct strbuf data = STRBUF_INIT;
+ 	struct strbuf path = STRBUF_INIT;
+-	int ret = 0;
++	int ret;
+ 
+ 	strbuf_addf(&path, "%s/commondir", gitdir);
+-	if (file_exists(path.buf)) {
+-		if (strbuf_read_file(&data, path.buf, 0) <= 0)
++	ret = strbuf_read_file(&data, path.buf, 0);
++	if (ret <= 0) {
++		/*
++		 * if file is missing or zero size (just being written)
++		 * assume default, bail otherwise
++		 */
++		if (ret && errno != ENOENT && errno != ENOTDIR)
+ 			die_errno(_("failed to read %s"), path.buf);
++		strbuf_addstr(sb, gitdir);
++		ret = 0;
++	} else {
+ 		while (data.len && (data.buf[data.len - 1] == '\n' ||
+ 				    data.buf[data.len - 1] == '\r'))
+ 			data.len--;
+@@ -286,8 +294,6 @@ int get_common_dir_noenv(struct strbuf *sb, const char *gitdir)
+ 		strbuf_addbuf(&path, &data);
+ 		strbuf_add_real_path(sb, path.buf);
+ 		ret = 1;
+-	} else {
+-		strbuf_addstr(sb, gitdir);
+ 	}
+ 
+ 	strbuf_release(&data);
+-- 
+2.20.1
+

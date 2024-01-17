@@ -1,0 +1,230 @@
+-------------------------------------------------------------------
+Fri Nov  3 07:54:39 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- ## Rails 7.0.8 (September 09, 2023) ##
+
+*   Omit `webdrivers` gem dependency from `Gemfile` template
+
+    *Sean Doyle*
+
+## Rails 7.0.7.2 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7.1 (August 22, 2023) ##
+
+*   No changes.
+
+## Rails 7.0.7 (August 09, 2023) ##
+
+*   Update default scaffold templates to set 303 (See Other) as status code
+    on redirect for the update action for XHR requests other than GET or POST
+    to avoid issues (e.g browsers trying to follow the redirect using the
+    original request method resulting in double PATCH/PUT)
+
+    *Guillermo Iguaran*
+
+## Rails 7.0.6 (June 29, 2023) ##
+*   Avoid escaping paths when editing credentials.
+
+    *Jonathan Hefner*
+
+
+-------------------------------------------------------------------
+Tue Jun 27 19:31:19 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5.1
+  * https://rubyonrails.org/2023/6/26/Rails-Versions-7-0-5-1-6-1-7-4-have-been-released
+
+-------------------------------------------------------------------
+Mon Jun 26 19:13:51 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 7.0.5
+  * https://rubyonrails.org/2023/5/24/Rails-7-0-5-has-been-released
+
+-------------------------------------------------------------------
+Fri Apr 21 11:21:28 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 7.0.4.3:
+  https://rubyonrails.org/2023/3/13/Rails-7-0-4-3-and-6-1-7-3-have-been-released
+  https://rubyonrails.org/2023/1/24/Rails-7-0-4-2-and-6-1-7-2-have-been-released
+  https://rubyonrails.org/2023/1/17/Rails-Versions-6-0-6-1-6-1-7-1-7-0-4-1-have-been-released
+
+-------------------------------------------------------------------
+Mon Oct 10 13:17:03 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   `config.allow_concurrency = false` now use a `Monitor` instead of a `Mutex`
+  
+      This allows to enable `config.active_support.executor_around_test_case` even
+      when `config.allow_concurrency` is disabled.
+  
+      *Jean Boussier*
+  
+  *   Skip Active Storage and Action Mailer if Active Job is skipped.
+  
+      *Étienne Barrié*
+  
+  *   Correctly check if frameworks are disabled when running app:update.
+  
+      *Étienne Barrié* and *Paulo Barros*
+  
+  *   Fixed `config.active_support.cache_format_version` never being applied.
+  
+      Rails 7.0 shipped with a new serializer for Rails.cache, but the associated config
+      wasn't working properly. Note that even after this fix, it can only be applied from
+      the `application.rb` file.
+  
+      *Alex Ghiculescu*
+  
+  
+
+-------------------------------------------------------------------
+Thu Aug  4 13:25:25 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.3.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.3.1 (July 12, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Sun May 15 15:21:01 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.3
+
+*   If reloading and eager loading are both enabled, after a reload Rails eager loads again the application code.
+
+    *Xavier Noria*
+
+*   Use `controller_class_path` in `Rails::Generators::NamedBase#route_url`
+
+    The `route_url` method now returns the correct path when generating
+    a namespaced controller with a top-level model using `--model-name`.
+
+    Previously, when running this command:
+
+    ``` sh
+    bin/rails generate scaffold_controller Admin/Post --model-name Post
+    ```
+
+    the comments above the controller action would look like:
+
+    ``` ruby
+    # GET /posts
+    def index
+      @posts = Post.all
+    end
+    ```
+
+    afterwards, they now look like this:
+
+    ``` ruby
+    # GET /admin/posts
+    def index
+      @posts = Post.all
+    end
+    ```
+
+    Fixes #44662.
+
+    *Andrew White*
+
+-------------------------------------------------------------------
+Thu Apr 28 05:44:19 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.4 (April 26, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Thu Mar 10 13:23:50 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 7.0.2.3
+
+  * no changes
+
+-------------------------------------------------------------------
+Tue Feb 15 07:37:29 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.2.2
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.2.2 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2.1 (February 11, 2022) ##
+  
+  *   No changes.
+  
+  
+  ## Rails 7.0.2 (February 08, 2022) ##
+  
+  *   No changes.
+  
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 07:24:16 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.1
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.1 (January 06, 2022) ##
+  
+  *   Prevent duplicate entries in plugin Gemfile.
+  
+      *Jonathan Hefner*
+  
+  *   Fix asset pipeline errors for plugin dummy apps.
+  
+      *Jonathan Hefner*
+  
+  *   Fix generated route revocation.
+  
+      *Jonathan Hefner*
+  
+  *   Addresses an issue in which Sidekiq jobs could not reload certain
+      namespaces.
+  
+      See [fxn/zeitwerk#198](https://github.com/fxn/zeitwerk/issues/198) for
+      details.
+  
+      *Xavier Noria*
+  
+  *   Fix plugin generator to a plugin that pass all the tests.
+  
+      *Rafael Mendonça França*
+  
+  
+
+-------------------------------------------------------------------
+Mon Dec 27 11:25:56 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Don't limit building to specific ruby versions
+
+-------------------------------------------------------------------
+Tue Dec 21 22:10:26 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- Rails 7.0 has been released
+
+  https://edgeguides.rubyonrails.org/7_0_release_notes.html
+
+-------------------------------------------------------------------
+Sun Dec 12 22:02:31 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

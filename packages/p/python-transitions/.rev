@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc71def72283e71ce9057fb9c2821bde</srcmd5>
+    <version>0.7.1</version>
+    <time>1570010350</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>734237</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>386247c2ecbabe34fc4b99c07159a255</srcmd5>
+    <version>0.7.2</version>
+    <time>1578950481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763815</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>daa63ffdad93a884880462ab317b75e9</srcmd5>
+    <version>0.8.0</version>
+    <time>1585176458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788243</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5a78ae3f23b14d94ccd106af5b2a6a1d</srcmd5>
+    <version>0.8.1</version>
+    <time>1585995892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791102</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>90c58f03acdd84cf41e496c7a9fc5787</srcmd5>
+    <version>0.8.1</version>
+    <time>1591742953</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pep8 unit tests, those are not useful to execute and
+  fail</comment>
+    <requestid>812806</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e657920d01163018bda54d7a221af6b6</srcmd5>
+    <version>0.8.2</version>
+    <time>1593378449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817508</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c32fe4ffa6a619614c10a22346c9763d</srcmd5>
+    <version>0.8.2</version>
+    <time>1598341085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829015</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b7736d5dc3e0785755d813c29b8717b3</srcmd5>
+    <version>0.8.8</version>
+    <time>1617910337</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883677</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>010beed5a913fd86af4519a05402e05c</srcmd5>
+    <version>0.8.9</version>
+    <time>1634417239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925641</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>881839d3d6304179169f2a7472627fa9</srcmd5>
+    <version>0.8.10</version>
+    <time>1635272023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927350</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1825555ba597761c0def5f394b9f0880</srcmd5>
+    <version>0.8.10</version>
+    <time>1642112476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946130</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ed5a5ca8edc7251a6558677e2477eb3</srcmd5>
+    <version>0.9.0</version>
+    <time>1705099551</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.0:
+  * removed legacy implementation of `HierarchicalMachine` from
+    the package
+  * Bug #551: Fix active state styling in `GraphMachine` (thanks
+    @betaboon)
+  * Bug #554: Fix issues related to scopes and queueing in
+    `HierachicalMachine` (thanks @jankrejci)
+  * Bug #568: Reflexive transitions (dest: '=') had not been
+    resolved correctly when source was a wildcard (thanks @jnu)
+  * Bug #568: HSM did not detect reflexive transitions if src was
+    a parent state (thanks @lostcontrol)
+  * Bug #569: Fix implicit fallback to `graphviz` when
+    `pygraphviz` was not installed (thanks @FridjofAmundsen)
+  * Bug #580: Fix `on_timeout` callback resolution when timeout
+    had been initialized with `timeout=0` (thanks @Rysbai)
+  * Bug #582: Last label in `GraphSupport` was not correctly
+    aligned when `show_attributes=True` (thanks @spagh-eddie)
+  * Feature: Add pyi stub files for better type hinting. Since
+    many functions and constructors allow rather arbitrary
+    arguments time will tell whether typing should be strict (and
+    cause more mypy issues) or more relaxed (and thus less
+    precise).
+  * Feature: Reviewed and improved method documentation
+  * Feature #549: Add `may` transition check to transitions
+    (thanks @artofhuman)
+  * Feature #552: Refactored error handling to be able to handle
+    `MachineError` in `on_exception` callbacks (thanks @kpihus)
+  * Feature: Add `mypy` to test workflow
+  * PR #461: Add `Retry` state to supported state stereotypes
+    (thanks @rgov)</comment>
+    <requestid>1138239</requestid>
+  </revision>
+</revisionlist>

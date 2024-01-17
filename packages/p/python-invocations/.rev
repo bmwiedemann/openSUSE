@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf4957b0e076b0827f46e337948e2d85</srcmd5>
+    <version>0.20.0</version>
+    <time>1527605293</time>
+    <user>dimstar_suse</user>
+    <comment>Reusable Invoke tasks</comment>
+    <requestid>606019</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5776ab3f92652807ec6337e983a08970</srcmd5>
+    <version>1.4.0</version>
+    <time>1535123008</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the multibuild as the cycle is gone
+- Add patch to not rely on bundled stuff:
+  * invocations-no-bundled.patch
+- Add patch to fix tests on python3:
+  * invocations-py3.patch
+
+- Version update to 1.4:
+  * Various py3 fixes
+  * pytest for testing
+- Use multibuild to run tests
+- Use github tag to get the tarball with tests</comment>
+    <requestid>628767</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5f5b94b79598dc5a3025ab764e2a39bf</srcmd5>
+    <version>1.4.0</version>
+    <time>1553888619</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove release-testing tests as they are pointless for rpm package</comment>
+    <requestid>689804</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a1a7214709bf79f7fb57daf65c981087</srcmd5>
+    <version>1.4.0</version>
+    <time>1562247865</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests that are tied to sphinx and got utterly exploded</comment>
+    <requestid>713386</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>dd8333e7f7573e2bf232f87a7e52da93</srcmd5>
+    <version>1.4.0</version>
+    <time>1585265035</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784842</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>ddd93f5e85836713611fa03036f68bff</srcmd5>
+    <version>1.4.0</version>
+    <time>1603961279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841627</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>23b99f67a8730ec42538bc098d8cfcf5</srcmd5>
+    <version>2.3.0</version>
+    <time>1639685935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940556</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b6a116b24a726c0b655230703ca41ef0</srcmd5>
+    <version>2.3.0</version>
+    <time>1647199510</time>
+    <user>dimstar_suse</user>
+    <comment>- pytest-relaxed now supports pytest 6, so test on all python versions.</comment>
+    <requestid>960647</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0903506e8dd3bbb4d3608bcd291dbddf</srcmd5>
+    <version>2.3.0</version>
+    <time>1651856338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974983</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>780636891fc3f8225e6e25641998074f</srcmd5>
+    <version>2.6.1</version>
+    <time>1664638967</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.6.1
+  no changelog
+- Update to version 2.6.0 2022-03-25
+  [Feature]: Update packaging.release.publish with a new config option, rebuild_with_env,
+  to support a downstream (Fabric) release use-case.
+  [Feature]: Enhance packaging.release.test-install so it’s more flexible about the primary directory argument
+  (re: a dist dir, or a parent of one) and errors usefully when you (probably) gave it an incorrect path.
+- Update to version 2.5.0 2022-03-25
+  [Feature]: Port make-sshable from the travis module to the new ci one.
+- Update to version 2.4.0 2022-03-17
+  [Feature]: Add additional CLI flags to the use of gpg when signing releases,
+  to support headless passphrase entry. It was found that modern GPG versions require --batch and
+  --pinentry-mode=loopback for --passphrase-fd to function correctly.
+  [Feature]: Add a new invocations.ci task module for somewhat-more-generic CI support than the now legacy invocations.travis tasks.
+  [Feature]: Allow supplying additional test runners to pytest.coverage; primarily useful for setting up multiple additive test runs before publishing reports. 
+</comment>
+    <requestid>1006935</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>74583967c0411afe47ac10a81d635f74</srcmd5>
+    <version>3.0.0</version>
+    <time>1672852195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * The dual_wheels, alt_python, and check_desc arguments/config options for
+    the invocations.packaging.release module have been removed.
+  * The invocations.travis module has been removed.
+  * Drop Python 2 (and 3.5) support. We now support Python 3.6+ only.
+- Refreshed invocations-no-bundled.patch.
+- Dropped invocations-py3.patch, not required.
+- Dropped python-invocations-no-mock.patch, merged upstream.</comment>
+    <requestid>1046403</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cce4f026f7a09fb020b6c7e4f410fdb8</srcmd5>
+    <version>3.0.0</version>
+    <time>1682193621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081881</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>05c76612efe52d39fde696f1d230471b</srcmd5>
+    <version>3.0.2</version>
+    <time>1683801087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.2:
+  * backported` Unpin ``tabulate`` in our install
+    requirements, it's had many more releases since we instituted
+    a defensive pin vs some bugs in its later 0.7 line!
+  * We neglected to remove references to ``six`` in a
+    few spots including some that utilized Invoke's old vendor of same;
+    this causes issues when trying to use development and
+    upcoming versions of Invoke. Six is now truly gone!</comment>
+    <requestid>1085963</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>02fd8ee24a6b7b0c05cfe8cd93025680</srcmd5>
+    <version>3.0.2</version>
+    <time>1686074105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090793</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,52 @@
+diff --git a/SRC/CMakeLists.txt b/SRC/CMakeLists.txt
+index 34c4aa4..7996af0 100644
+--- a/SRC/CMakeLists.txt
++++ b/SRC/CMakeLists.txt
+@@ -23,7 +23,6 @@ set(sources
+   ilu_relax_snode.c
+   ilu_heap_relax_snode.c
+   mark_relax.c
+-  mc64ad.c
+   qselect.c
+   input_error.c
+   dmach.c
+@@ -68,9 +67,7 @@ if(enable_single)
+     smemory.c
+     sutil.c
+     smyblas2.c
+-    sgsisx.c
+     sgsitrf.c
+-    sldperm.c
+     ilu_sdrop_row.c
+     ilu_ssnode_dfs.c
+     ilu_scolumn_dfs.c
+@@ -118,9 +115,7 @@ if(enable_double)
+     dmemory.c
+     dutil.c
+     dmyblas2.c
+-    dgsisx.c
+     dgsitrf.c
+-    dldperm.c
+     ilu_ddrop_row.c
+     ilu_dsnode_dfs.c
+     ilu_dcolumn_dfs.c
+@@ -171,9 +166,7 @@ if(enable_complex)
+     cmemory.c
+     cutil.c
+     cmyblas2.c
+-    cgsisx.c
+     cgsitrf.c
+-    cldperm.c
+     ilu_cdrop_row.c
+     ilu_csnode_dfs.c
+     ilu_ccolumn_dfs.c
+@@ -222,9 +215,7 @@ if(enable_complex16)
+     zmemory.c
+     zutil.c
+     zmyblas2.c
+-    zgsisx.c
+     zgsitrf.c
+-    zldperm.c
+     ilu_zdrop_row.c
+     ilu_zsnode_dfs.c
+     ilu_zcolumn_dfs.c

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2f398954125aa0183317cd44007c634</srcmd5>
+    <version>3.0.1</version>
+    <time>1554458501</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>690911</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f369f1e6e97fe7bf1a5b08813402c988</srcmd5>
+    <version>3.0.1</version>
+    <time>1647889863</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963339</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2987e3981c780e8cb6e32cece0c24b18</srcmd5>
+    <version>3.3.2</version>
+    <time>1694019606</time>
+    <user>anag+factory</user>
+    <comment>3.3.2</comment>
+    <requestid>1109285</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6ec267593e4256434f3978e499341ed2</srcmd5>
+    <version>3.3.2</version>
+    <time>1694113965</time>
+    <user>anag+factory</user>
+    <comment>Stray dependencies</comment>
+    <requestid>1109319</requestid>
+  </revision>
+</revisionlist>

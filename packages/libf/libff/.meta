@@ -1,0 +1,8 @@
+<package name="libff" project="openSUSE:Factory">
+  <title>C++ library for Finite Fields and Elliptic Curves</title>
+  <description>libff is a C++ library for finite fields and elliptic curves.
+
+</description>
+  <devel project="network:cryptocurrencies" package="libff"/>
+  <url>https://github.com/scipr-lab/libff</url>
+</package>

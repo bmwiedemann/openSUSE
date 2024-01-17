@@ -1,0 +1,437 @@
+From 3ad188744cd404705a4ab43c998f4e5f8fef7d7c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Tue, 30 Mar 2021 13:03:35 +0200
+Subject: [PATCH] Docs: Adjust attributes order to avoid bugs in breathe/sphinx
+
+Using "unsigned const char" crashes it, but "const unsigned char" works.
+---
+ include/gammu-unicode.h             |  8 ++++----
+ libgammu/device/devfunc.c           |  2 +-
+ libgammu/device/devfunc.h           |  2 +-
+ libgammu/gsmstate.c                 | 16 ++++++++--------
+ libgammu/gsmstate.h                 | 14 +++++++-------
+ libgammu/misc/coding/coding.c       |  2 +-
+ libgammu/misc/coding/coding.h       |  2 +-
+ libgammu/misc/coding/md5.c          |  4 ++--
+ libgammu/phone/alcatel/alcatel.c    |  4 ++--
+ libgammu/phone/nokia/wd2/n3650.c    |  4 ++--
+ libgammu/protocol/alcatel/alcabus.c |  2 +-
+ libgammu/protocol/at/at.c           |  2 +-
+ libgammu/protocol/nokia/fbus2.c     |  4 ++--
+ libgammu/protocol/nokia/mbus2.c     |  2 +-
+ libgammu/protocol/nokia/phonet.c    |  2 +-
+ libgammu/protocol/obex/obex.c       |  2 +-
+ libgammu/protocol/s60/s60.c         |  2 +-
+ libgammu/protocol/symbian/gnapbus.c |  2 +-
+ tests/atgen/test_helper.c           |  6 +++---
+ 19 files changed, 41 insertions(+), 41 deletions(-)
+
+diff --git a/include/gammu-unicode.h b/include/gammu-unicode.h
+index cfd7913aa..56b86665a 100644
+--- a/include/gammu-unicode.h
++++ b/include/gammu-unicode.h
+@@ -116,22 +116,22 @@ void EncodeHexUnicode(char *dest, const unsigned char *src, size_t len);
+  *
+  * \ingroup Unicode
+  */
+-gboolean mywstrncmp(unsigned const char *a, unsigned const char *b, int num);
++gboolean mywstrncmp(const unsigned char *a, const unsigned char *b, int num);
+ 
+ /**
+  * Locates unicode substring.
+  *
+  * \ingroup Unicode
+  */
+-unsigned char *mywstrstr(unsigned const char *haystack,
+-			 unsigned const char *needle);
++unsigned char *mywstrstr(const unsigned char *haystack,
++			 const unsigned char *needle);
+ 
+ /**
+  * Compares two unicode strings case insensitive.
+  *
+  * \ingroup Unicode
+  */
+-gboolean mywstrncasecmp(unsigned const char *a, unsigned const char *b, int num);
++gboolean mywstrncasecmp(const unsigned char *a, const unsigned char *b, int num);
+ 
+ /**
+  * Encode text to UTF-8.
+diff --git a/libgammu/device/devfunc.c b/libgammu/device/devfunc.c
+index 631afb5c2..d1d4b0800 100644
+--- a/libgammu/device/devfunc.c
++++ b/libgammu/device/devfunc.c
+@@ -165,7 +165,7 @@ int socket_read(GSM_StateMachine *s UNUSED, void *buf, size_t nbytes, socket_typ
+ 	return result;
+ }
+ 
+-int socket_write(GSM_StateMachine *s, unsigned const char *buf, size_t nbytes, socket_type hPhone)
++int socket_write(GSM_StateMachine *s, const unsigned char *buf, size_t nbytes, socket_type hPhone)
+ {
+ 	int		ret;
+ 	size_t		actual = 0;
+diff --git a/libgammu/device/devfunc.h b/libgammu/device/devfunc.h
+index 941e83241..3f6d9da5e 100644
+--- a/libgammu/device/devfunc.h
++++ b/libgammu/device/devfunc.h
+@@ -16,7 +16,7 @@ int bluetooth_checkservicename(GSM_StateMachine *s, const char *name);
+ 
+ int socket_read(GSM_StateMachine *s, void *buf, size_t nbytes, socket_type hPhone);
+ 
+-int socket_write(GSM_StateMachine *s, unsigned const char *buf, size_t nbytes, socket_type hPhone);
++int socket_write(GSM_StateMachine *s, const unsigned char *buf, size_t nbytes, socket_type hPhone);
+ 
+ GSM_Error socket_close(GSM_StateMachine *s, socket_type hPhone);
+ 
+diff --git a/libgammu/gsmstate.c b/libgammu/gsmstate.c
+index 0260cc37f..4833a73ab 100644
+--- a/libgammu/gsmstate.c
++++ b/libgammu/gsmstate.c
+@@ -992,7 +992,7 @@ GSM_Error GSM_AbortOperation(GSM_StateMachine * s)
+ 	return ERR_NONE;
+ }
+ 
+-GSM_Error GSM_WaitForOnce(GSM_StateMachine *s, unsigned const char *buffer,
++GSM_Error GSM_WaitForOnce(GSM_StateMachine *s, const unsigned char *buffer,
+ 			  size_t length, int type, int timeout)
+ {
+ 	GSM_Phone_Data *Phone = &s->Phone.Data;
+@@ -1035,7 +1035,7 @@ GSM_Error GSM_WaitForOnce(GSM_StateMachine *s, unsigned const char *buffer,
+ 	return ERR_TIMEOUT;
+ }
+ 
+-GSM_Error GSM_WaitFor (GSM_StateMachine *s, unsigned const char *buffer,
++GSM_Error GSM_WaitFor (GSM_StateMachine *s, const unsigned char *buffer,
+ 		       size_t length, int type, int timeout,
+ 		       GSM_Phone_RequestID request)
+ {
+@@ -1719,7 +1719,7 @@ fail:
+ 	return error;
+ }
+ 
+-void GSM_DumpMessageText_Custom(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type, const char *text)
++void GSM_DumpMessageText_Custom(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type, const char *text)
+ {
+ 	GSM_Debug_Info *curdi;
+ 
+@@ -1736,17 +1736,17 @@ void GSM_DumpMessageText_Custom(GSM_StateMachine *s, unsigned const char *messag
+ 	}
+ }
+ 
+-void GSM_DumpMessageText(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type)
++void GSM_DumpMessageText(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type)
+ {
+ 	GSM_DumpMessageText_Custom(s, message, messagesize, type, "SENDING frame");
+ }
+ 
+-void GSM_DumpMessageTextRecv(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type)
++void GSM_DumpMessageTextRecv(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type)
+ {
+ 	GSM_DumpMessageText_Custom(s, message, messagesize, type, "RECEIVED frame");
+ }
+ 
+-void GSM_DumpMessageBinary_Custom(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type, int direction)
++void GSM_DumpMessageBinary_Custom(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type, int direction)
+ {
+ 	size_t i=0;
+ 	GSM_Debug_Info *curdi;
+@@ -1764,12 +1764,12 @@ void GSM_DumpMessageBinary_Custom(GSM_StateMachine *s, unsigned const char *mess
+ 		}
+ 	}
+ }
+-void GSM_DumpMessageBinary(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type)
++void GSM_DumpMessageBinary(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type)
+ {
+ 	GSM_DumpMessageBinary_Custom(s, message, messagesize, type, 0x01);
+ }
+ 
+-void GSM_DumpMessageBinaryRecv(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type)
++void GSM_DumpMessageBinaryRecv(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type)
+ {
+ 	GSM_DumpMessageBinary_Custom(s, message, messagesize, type, 0x02);
+ }
+diff --git a/libgammu/gsmstate.h b/libgammu/gsmstate.h
+index a19071a79..4cfe0a150 100644
+--- a/libgammu/gsmstate.h
++++ b/libgammu/gsmstate.h
+@@ -408,7 +408,7 @@ typedef struct {
+ 	/**
+ 	 * Writes message to device.
+ 	 */
+-	GSM_Error (*WriteMessage) (GSM_StateMachine *s, unsigned const char *buffer,
++	GSM_Error (*WriteMessage) (GSM_StateMachine *s, const unsigned char *buffer,
+ 				   size_t length, int type);
+ 	/**
+ 	 * This one is called when character is received from device.
+@@ -1511,7 +1511,7 @@ struct _GSM_StateMachine {
+  */
+ GSM_Error GSM_RegisterAllPhoneModules	(GSM_StateMachine *s);
+ 
+-GSM_Error GSM_WaitForOnce		(GSM_StateMachine *s, unsigned const char *buffer,
++GSM_Error GSM_WaitForOnce		(GSM_StateMachine *s, const unsigned char *buffer,
+ 			  		 size_t length, int type, int timeout);
+ 
+ /**
+@@ -1526,7 +1526,7 @@ GSM_Error GSM_WaitForOnce		(GSM_StateMachine *s, unsigned const char *buffer,
+  *
+  * \return Error code, ERR_NONE on sucecss.
+  */
+-GSM_Error GSM_WaitFor			(GSM_StateMachine *s, unsigned const char *buffer,
++GSM_Error GSM_WaitFor			(GSM_StateMachine *s, const unsigned char *buffer,
+ 		       			 size_t length, int type, int timeout,
+ 					 GSM_Phone_RequestID request) WARNUNUSED;
+ 
+@@ -1548,10 +1548,10 @@ GSM_Error GSM_WaitFor			(GSM_StateMachine *s, unsigned const char *buffer,
+ 
+ GSM_Error GSM_DispatchMessage		(GSM_StateMachine *s);
+ 
+-void 	  GSM_DumpMessageText		(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type);
+-void 	  GSM_DumpMessageTextRecv	(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type);
+-void 	  GSM_DumpMessageBinary		(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type);
+-void GSM_DumpMessageBinaryRecv(GSM_StateMachine *s, unsigned const char *message, size_t messagesize, int type);
++void 	  GSM_DumpMessageText		(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type);
++void 	  GSM_DumpMessageTextRecv	(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type);
++void 	  GSM_DumpMessageBinary		(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type);
++void GSM_DumpMessageBinaryRecv(GSM_StateMachine *s, const unsigned char *message, size_t messagesize, int type);
+ 
+ 
+ void GSM_OSErrorInfo(GSM_StateMachine *s, const char *description);
+diff --git a/libgammu/misc/coding/coding.c b/libgammu/misc/coding/coding.c
+index 7785ccdac..233012333 100644
+--- a/libgammu/misc/coding/coding.c
++++ b/libgammu/misc/coding/coding.c
+@@ -1506,7 +1506,7 @@ gboolean mywstrncmp(unsigned const  char *a, unsigned const  char *b, int num)
+ }
+ 
+ /* FreeBSD boxes 4.7-STABLE does't have it, although it's ANSI standard */
+-gboolean myiswspace(unsigned const char *src)
++gboolean myiswspace(const unsigned char *src)
+ {
+ #ifndef HAVE_ISWSPACE
+  	int 		o;
+diff --git a/libgammu/misc/coding/coding.h b/libgammu/misc/coding/coding.h
+index 7b57a1266..0a1649b64 100644
+--- a/libgammu/misc/coding/coding.h
++++ b/libgammu/misc/coding/coding.h
+@@ -30,7 +30,7 @@ typedef unsigned long gammu_int_t;
+ #endif
+ 
+ /* ---------------------------- Unicode ------------------------------------ */
+-gboolean 		myiswspace	  		(unsigned const char *src);
++gboolean 		myiswspace	  		(const unsigned char *src);
+ 
+ 
+ void 		ReverseUnicodeString		(unsigned char *String);
+diff --git a/libgammu/misc/coding/md5.c b/libgammu/misc/coding/md5.c
+index d7c9a7869..8877a4119 100644
+--- a/libgammu/misc/coding/md5.c
++++ b/libgammu/misc/coding/md5.c
+@@ -30,7 +30,7 @@ struct MD5Context {
+ };
+ 
+ void MD5Init(struct MD5Context *);
+-void MD5Update(struct MD5Context *, unsigned const char *, unsigned);
++void MD5Update(struct MD5Context *, const unsigned char *, unsigned);
+ void MD5Final(unsigned char digest[16], struct MD5Context *);
+ void MD5Transform(uint32 buf[4], uint32 const in[16]);
+ 
+@@ -83,7 +83,7 @@ void MD5Init(struct MD5Context *ctx)
+  * Update context to reflect the concatenation of another buffer full
+  * of bytes.
+  */
+-void MD5Update(struct MD5Context *ctx, unsigned const char *buf, unsigned len)
++void MD5Update(struct MD5Context *ctx, const unsigned char *buf, unsigned len)
+ {
+ 	uint32 t;
+ 
+diff --git a/libgammu/phone/alcatel/alcatel.c b/libgammu/phone/alcatel/alcatel.c
+index d926f6951..2bc8aae02 100644
+--- a/libgammu/phone/alcatel/alcatel.c
++++ b/libgammu/phone/alcatel/alcatel.c
+@@ -839,7 +839,7 @@ static GSM_Error ALCATEL_GetFields(GSM_StateMachine *s, int id) {
+ 	return ERR_NONE;
+ }
+ 
+-static void ALCATEL_DecodeString(GSM_StateMachine *s, unsigned const char *buffer, unsigned char *target, int maxlen)
++static void ALCATEL_DecodeString(GSM_StateMachine *s, const unsigned char *buffer, unsigned char *target, int maxlen)
+ {
+ 	GSM_Phone_ALCATELData 	*Priv = &s->Phone.Data.Priv.ALCATEL;
+ 	int			len;
+@@ -864,7 +864,7 @@ static void ALCATEL_DecodeString(GSM_StateMachine *s, unsigned const char *buffe
+ 	}
+ }
+ 
+-static GSM_Error ALCATEL_EncodeString(GSM_StateMachine *s, unsigned const char *buffer, unsigned char *target, GSM_Alcatel_FieldType type)
++static GSM_Error ALCATEL_EncodeString(GSM_StateMachine *s, const unsigned char *buffer, unsigned char *target, GSM_Alcatel_FieldType type)
+ {
+ 	GSM_Phone_ALCATELData 	*Priv = &s->Phone.Data.Priv.ALCATEL;
+ 	size_t			len;
+diff --git a/libgammu/phone/nokia/wd2/n3650.c b/libgammu/phone/nokia/wd2/n3650.c
+index 6427db97a..a2515f63c 100644
+--- a/libgammu/phone/nokia/wd2/n3650.c
++++ b/libgammu/phone/nokia/wd2/n3650.c
+@@ -48,7 +48,7 @@ static GSM_Error N3650_GetFilePart(GSM_StateMachine *s, GSM_File *File, int *Han
+ 	unsigned int 		len=10,i;
+ 	GSM_Error		error;
+ 	unsigned char 		*req;
+-	unsigned const char 	StartReq[11] = {
++	const unsigned char 	StartReq[11] = {
+ 		N7110_FRAME_HEADER, 0x0D, 0x10, 0x01, 0x07,
+ 		0x24,		/* len1 */
+ 		0x12,		/* len2 */
+@@ -158,7 +158,7 @@ static GSM_Error N3650_GetFolderInfo(GSM_StateMachine *s, GSM_File *File)
+ {
+ 	int 			len=10;
+ 	unsigned char		*req;
+-	unsigned const char 	template[11] = {
++	const unsigned char 	template[11] = {
+ 		N7110_FRAME_HEADER, 0x0B, 0x00, 0x01, 0x07,
+ 		0x18,		/* folder name length + 6 	*/
+ 		0x12,		/* folder name length 		*/
+diff --git a/libgammu/protocol/alcatel/alcabus.c b/libgammu/protocol/alcatel/alcabus.c
+index ea741e8dd..23003050c 100644
+--- a/libgammu/protocol/alcatel/alcabus.c
++++ b/libgammu/protocol/alcatel/alcabus.c
+@@ -15,7 +15,7 @@
+ #include "../../gsmcomon.h"
+ #include "alcabus.h"
+ 
+-static GSM_Error ALCABUS_WriteMessage (GSM_StateMachine *s, unsigned const char *data, size_t len, int type)
++static GSM_Error ALCABUS_WriteMessage (GSM_StateMachine *s, const unsigned char *data, size_t len, int type)
+ {
+ 	GSM_Protocol_ALCABUSData 	*d = &s->Protocol.Data.ALCABUS;
+ 	unsigned char	 		buffer[1024];
+diff --git a/libgammu/protocol/at/at.c b/libgammu/protocol/at/at.c
+index 74507168e..eaaadcd85 100644
+--- a/libgammu/protocol/at/at.c
++++ b/libgammu/protocol/at/at.c
+@@ -11,7 +11,7 @@
+ #include "../../gsmcomon.h"
+ #include "at.h"
+ 
+-static GSM_Error AT_WriteMessage (GSM_StateMachine *s, unsigned const char *buffer,
++static GSM_Error AT_WriteMessage (GSM_StateMachine *s, const unsigned char *buffer,
+ 				     size_t length, int type)
+ {
+ 	size_t sent=0, i=0;
+diff --git a/libgammu/protocol/nokia/fbus2.c b/libgammu/protocol/nokia/fbus2.c
+index 1add22d9c..fe3e2d36a 100644
+--- a/libgammu/protocol/nokia/fbus2.c
++++ b/libgammu/protocol/nokia/fbus2.c
+@@ -28,7 +28,7 @@
+ static GSM_Error FBUS2_Initialise(GSM_StateMachine *s);
+ 
+ static GSM_Error FBUS2_WriteFrame(GSM_StateMachine 	*s,
+-				  unsigned const char 	*MsgBuffer,
++				  const unsigned char 	*MsgBuffer,
+ 				  int 			MsgLength,
+ 				  unsigned char 	MsgType)
+ {
+@@ -76,7 +76,7 @@ static GSM_Error FBUS2_WriteFrame(GSM_StateMachine 	*s,
+ }
+ 
+ static GSM_Error FBUS2_WriteMessage (GSM_StateMachine 	*s,
+-				     unsigned const char *MsgBuffer,
++				     const unsigned char *MsgBuffer,
+ 				     size_t 		MsgLength,
+ 				     int 	MsgType)
+ {
+diff --git a/libgammu/protocol/nokia/mbus2.c b/libgammu/protocol/nokia/mbus2.c
+index d732b4968..ab6d254a6 100644
+--- a/libgammu/protocol/nokia/mbus2.c
++++ b/libgammu/protocol/nokia/mbus2.c
+@@ -13,7 +13,7 @@
+ #include "mbus2.h"
+ 
+ static GSM_Error MBUS2_WriteMessage (GSM_StateMachine 	*s,
+-				     unsigned const char 	*MsgBuffer,
++				     const unsigned char 	*MsgBuffer,
+ 				     size_t	MsgLength,
+ 				     int 	MsgType)
+ {
+diff --git a/libgammu/protocol/nokia/phonet.c b/libgammu/protocol/nokia/phonet.c
+index e483616a4..09bad3b8b 100644
+--- a/libgammu/protocol/nokia/phonet.c
++++ b/libgammu/protocol/nokia/phonet.c
+@@ -25,7 +25,7 @@
+ #include "phonet.h"
+ 
+ static GSM_Error PHONET_WriteMessage (GSM_StateMachine 	*s,
+-				      unsigned const char 	*MsgBuffer,
++				      const unsigned char 	*MsgBuffer,
+ 				      size_t 		MsgLength,
+ 				      int	MsgType)
+ {
+diff --git a/libgammu/protocol/obex/obex.c b/libgammu/protocol/obex/obex.c
+index 0d558e171..57f0d7364 100644
+--- a/libgammu/protocol/obex/obex.c
++++ b/libgammu/protocol/obex/obex.c
+@@ -13,7 +13,7 @@
+ #include "../../misc/coding/coding.h"
+ #include "obex.h"
+ 
+-static GSM_Error OBEX_WriteMessage (GSM_StateMachine *s, unsigned const char *MsgBuffer,
++static GSM_Error OBEX_WriteMessage (GSM_StateMachine *s, const unsigned char *MsgBuffer,
+ 				    size_t MsgLength, int type)
+ {
+ 	unsigned char	*buffer=NULL;
+diff --git a/libgammu/protocol/s60/s60.c b/libgammu/protocol/s60/s60.c
+index 5df3c6d97..ef3d08b86 100644
+--- a/libgammu/protocol/s60/s60.c
++++ b/libgammu/protocol/s60/s60.c
+@@ -28,7 +28,7 @@
+ #include "s60.h"
+ #include "s60-ids.h"
+ 
+-static GSM_Error S60_WriteMessage (GSM_StateMachine *s, unsigned const char *MsgBuffer,
++static GSM_Error S60_WriteMessage (GSM_StateMachine *s, const unsigned char *MsgBuffer,
+ 				    size_t MsgLength, int MsgType)
+ {
+ 	unsigned char	*buffer=NULL;
+diff --git a/libgammu/protocol/symbian/gnapbus.c b/libgammu/protocol/symbian/gnapbus.c
+index 6c945c170..26538fe8d 100644
+--- a/libgammu/protocol/symbian/gnapbus.c
++++ b/libgammu/protocol/symbian/gnapbus.c
+@@ -11,7 +11,7 @@
+ #include "../../gsmcomon.h"
+ #include "gnapbus.h"
+ 
+-static GSM_Error GNAPBUS_WriteMessage (GSM_StateMachine *s, unsigned const char *MsgBuffer,
++static GSM_Error GNAPBUS_WriteMessage (GSM_StateMachine *s, const unsigned char *MsgBuffer,
+ 				    size_t MsgLength, int MsgType)
+ {
+ 	unsigned char	*buffer=NULL;
+diff --git a/tests/atgen/test_helper.c b/tests/atgen/test_helper.c
+index 027c4b33d..6c201561f 100644
+--- a/tests/atgen/test_helper.c
++++ b/tests/atgen/test_helper.c
+@@ -8,7 +8,7 @@
+ #include "test_helper.h"
+ 
+ ssize_t _ResponseReadDevice(GSM_StateMachine *s, void *buf, size_t nbytes);
+-GSM_Error _ResponseWriteMessage(GSM_StateMachine *s, unsigned const char *buffer, size_t length, int type);
++GSM_Error _ResponseWriteMessage(GSM_StateMachine *s, const unsigned char *buffer, size_t length, int type);
+ 
+ #define  _BUFFER_SIZE 512
+ 
+@@ -56,7 +56,7 @@ const unsigned char* last_command(void)
+   return _echo_buffer.echo;
+ }
+ 
+-void set_echo(unsigned const char *buf, const size_t len)
++void set_echo(const unsigned char *buf, const size_t len)
+ {
+   if(buf && len > 0) {
+     memccpy(_echo_buffer.echo, buf, sizeof(*buf), len);
+@@ -96,7 +96,7 @@ ssize_t _ResponseReadDevice(GSM_StateMachine *s UNUSED, void *buf, size_t nbytes
+   return read_len;
+ }
+ 
+-GSM_Error _ResponseWriteMessage(GSM_StateMachine *s UNUSED, unsigned const char *buffer, size_t length, int type UNUSED)
++GSM_Error _ResponseWriteMessage(GSM_StateMachine *s UNUSED, const unsigned char *buffer, size_t length, int type UNUSED)
+ {
+   if(length) {
+     GSM_DumpMessageText(s, buffer, length, type);
+-- 
+2.30.2
+

@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7972c4cf80d89504c62452ae2f195777</srcmd5>
+    <version>0.4.0</version>
+    <time>1528492403</time>
+    <user>dimstar_suse</user>
+    <comment>Pytest Plugin to Show Failures Instantly</comment>
+    <requestid>613427</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>92be2f43fe90de8ab0e6736568e4ac86</srcmd5>
+    <version>0.4.0</version>
+    <time>1550221359</time>
+    <user>dimstar_suse</user>
+    <comment>- Really execute the testsuite</comment>
+    <requestid>676051</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4ff933ddc4d0bfaac457eca3a5d29451</srcmd5>
+    <version>0.4.0</version>
+    <time>1551113490</time>
+    <user>coolo</user>
+    <comment>- Add patch to fix build with pytest 4.2+:
+  * pytest42.patch</comment>
+    <requestid>676349</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>54f51d4dd50f157e014052d192d1b711</srcmd5>
+    <version>0.4.1</version>
+    <time>1551386644</time>
+    <user>coolo</user>
+    <comment>- Update to 0.4.1:
+  * Fixed compatibility with pytest 4.2.0. Thanks @blueyed for the PR.
+- Drop merged patch pytest42.patch</comment>
+    <requestid>679828</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5d06d64969b3843e85f4bc14d40b8332</srcmd5>
+    <version>0.4.1</version>
+    <time>1554749617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692226</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65f0523fb02826f0fd81ed6be68cd9d3</srcmd5>
+    <version>0.4.1.post0</version>
+    <time>1574104166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1.post0:
+  * do not use py.test but mention pytest everywhere</comment>
+    <requestid>749188</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3da23aa46bdef46a0914fcade77a1329</srcmd5>
+    <version>0.4.1.post0</version>
+    <time>1583446958</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fixing testing with new pytest:
+  * pytest5.patch</comment>
+    <requestid>781769</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>586c78dcc5a3b29c8b2ac13bd3f8a0d7</srcmd5>
+    <version>0.4.2</version>
+    <time>1593458276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817665</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>676245f41380c615845549aa8d3a2e76</srcmd5>
+    <version>0.5.0</version>
+    <time>1683295108</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Use ``pytest.hookimpl`` to configure hooks, avoiding a
+    deprecation warning in pytest 7.2.0.
+  * Dropped support for Python 3.6.
+  * Added support for Python 3.11.</comment>
+    <requestid>1084901</requestid>
+  </revision>
+</revisionlist>

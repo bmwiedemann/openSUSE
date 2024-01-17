@@ -1,0 +1,6 @@
+<package name="python-genfire" project="openSUSE:Factory">
+  <title>python-genfire</title>
+  <description>GENeralized Fourier Iterative REconstruction (GENFIRE) is a python package for 3D reconstruction from arbitrarily oriented projection images</description>
+  <devel project="devel:languages:python" package="python-genfire"/>
+  <url>https://github.com/genfire-em/GENFIRE-Python</url>
+</package>

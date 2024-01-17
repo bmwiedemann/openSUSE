@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Fri Dec  1 10:34:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231130
+  * Build system updates only
+
+-------------------------------------------------------------------
+Tue Aug  1 15:57:49 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
+
+-------------------------------------------------------------------
+Wed Jul 12 04:31:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230710
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Mon Jan 30 17:20:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230114
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (not needed - system libs are
+  autodetected)
+
+-------------------------------------------------------------------
+Sun Oct 23 12:00:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220907
+  * No changelog was provided.
+
+-------------------------------------------------------------------
+Mon Aug 29 09:39:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220123
+  * No changelog was provided.
+
+-------------------------------------------------------------------
+Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add forced symvers
+
+-------------------------------------------------------------------
+Sun Jan 23 09:05:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- (deleted entry because no-op change)
+
+-------------------------------------------------------------------
+Sat Jan 22 23:09:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable multipython builds. (This reenables python2 for Leap 15)
+
+-------------------------------------------------------------------
+Sat Jun 26 09:59:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop python2 module build.
+
+-------------------------------------------------------------------
+Thu May 13 11:38:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20210419 (4142a726)
+  * No changelog was provided
+- Add system-libs.patch
+
+-------------------------------------------------------------------
+Tue Dec 29 23:05:03 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20201204
+        * no documented changes
+- added all COPYING* files to %license line
+
+-------------------------------------------------------------------
+Tue Apr  7 19:21:03 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20191221
+        * minor release
+        * Worked on Python wheel support
+- rename python-libfwsi to python2-libfwsi
+- add python3 bindings submodule
+
+-------------------------------------------------------------------
+Mon Apr 15 22:16:20 UTC 2019 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v0~20181227
+	* Changes to improve handling corrupt shell item lists
+	* Worked on Python bindings
+	* Changes to improve handling corrupt URI extension values
+	* Fix for handling corrupt shell items
+	* Changes to improve handling corrupt file entry extension values
+	* Added URI sub values shell item type
+	* Changes for debug output and unsuppored extension block sizes
+	* Changes to URI and URI sub shell items
+
+-------------------------------------------------------------------
+Thu Feb 16 21:53:03 UTC 2017 - Greg.Freemyer@gmail.com
+
+- update to v0~20170117
+
+-------------------------------------------------------------------
+Tue Dec  1 20:08:40 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150701
+	* bug fix for shared usage
+
+-------------------------------------------------------------------
+Wed Jul  1 22:29:21 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150614
+	* bug fix for shared usage
+	* changes for shell item being created outside of list
+	* fix for missing libfwsi_notify_set_verbose
+- make pyfwsi provide version info
+- for the python sub-package add a Requires libfwsi
+
+-------------------------------------------------------------------
+Thu Jan 15 21:35:11 UTC 2015 - Greg.Freemyer@gmail.com
+
+- update to v0~20150105
+	* 2015 update
+	* worked on Python 3 support
+	* worked on utility scripts
+	* small fixes
+	* worked on format support
+- update URL to the new github site
+- replace Source: field with fully defined URL
+- remove DL-URL comment
+- remove %if opensuse logic.  Not needed with libyal in security:forensics
+- use libyal packages from OBS if available
+
+-------------------------------------------------------------------
+Mon Sep  1 19:50:09 UTC 2014 - Greg.Freemyer@gmail.com
+
+- initial package in OBS (v0~20140801)
+

@@ -1,0 +1,121 @@
+The patch from Arch Linux:
+
+https://aur.archlinux.org/packages/rxvt-unicode-better-wheel-scrolling/
+
+---
+ doc/rxvt.1.pod  |   12 ++++++++++++
+ src/command.C   |   40 ++++++++++++++++++++++++++++++++++++++--
+ src/optinc.h    |    1 +
+ src/rsinc.h     |    1 +
+ src/xdefaults.C |    1 +
+ 5 files changed, 53 insertions(+), 2 deletions(-)
+
+--- a/doc/rxvt.1.pod
++++ b/doc/rxvt.1.pod
+@@ -440,6 +440,11 @@ B<secondaryScreen>.
+ Turn on/off secondary screen scroll (default enabled); resource
+ B<secondaryScroll>.
+ 
++=item B<-ssw>|B<+ssw>
++
++Turn on/off secondary screen wheel support (default disabled); resource
++B<secondaryWheel>.
++
+ =item B<-rm> I<mode>
+ 
+ Compile I<frills>: Sets long line rewrapping behaviour on window resizes
+@@ -1096,6 +1101,13 @@ option is enabled, scrolls on the second
+ scrollback buffer and, when secondaryScreen is off, switching
+ to/from the secondary screen will instead scroll the screen up.
+ 
++=item B<secondaryWheel:> I<boolean>
++
++Turn on/off secondary wheel (default disabled). If enabled, when on
++secondary screen, using the mouse wheel will not scroll in the buffer
++but instead send 3 "fake" keystrokes (Up/Down arrow) to the running
++application (allows e.g. natural scrolling in B<man>, B<less>, etc).
++
+ =item B<hold>: I<boolean>
+ 
+ Turn on/off hold window after exit support. If enabled, @@RXVT_NAME@@
+--- a/src/command.C
++++ b/src/command.C
+@@ -2211,10 +2211,46 @@ rxvt_term::button_release (XButtonEvent
+                 }
+               else
+ # endif
++#ifndef NO_SECONDARY_SCREEN
+                 {
+-                  scr_page (dirn, lines);
+-                  scrollBar.show (1);
++                  /* on SECONDARY screen, we send "fake" UP/DOWN keys instead
++                   * (this allows to scroll within man, less, etc) */
++                  if (option (Opt_secondaryWheel) && current_screen != PRIMARY)
++                    {
++                       XKeyEvent event;
++                       event.display     = ev.display;
++                       event.window      = ev.window;
++                       event.root        = ev.root;
++                       event.subwindow   = ev.subwindow;
++                       event.time        = ev.time;
++                       event.x           = ev.x;
++                       event.y           = ev.y;
++                       event.x_root      = ev.x_root;
++                       event.y_root      = ev.y_root;
++                       event.same_screen = ev.same_screen;
++                       event.state       = 0;
++                       event.keycode     = XKeysymToKeycode(ev.display,
++                                            (dirn == UP) ? XK_Up : XK_Down);
++                       for ( ; lines > 0; --lines)
++                         {
++                            event.type = KeyPress;
++                            XSendEvent (event.display, event.window, True,
++                                        KeyPressMask, (XEvent *) &event);
++                            event.type = KeyRelease;
++                            XSendEvent (event.display, event.window, True,
++                                        KeyPressMask, (XEvent *) &event);
++                          }
++                    }
++                  /* on PRIMARY screen, we scroll in the buffer */
++                  else
++#endif
++                    {
++                       scr_page (dirn, lines);
++                       scrollBar.show (1);
++                    }
++#ifndef NO_SECONDARY_SCREEN
+                 }
++#endif
+             }
+             break;
+ #endif
+--- a/src/optinc.h
++++ b/src/optinc.h
+@@ -26,6 +26,7 @@
+  def(cursorBlink)
+  def(secondaryScreen)
+  def(secondaryScroll)
++ def(secondaryWheel)
+  def(pastableTabs)
+  def(cursorUnderline)
+ #if ENABLE_FRILLS
+--- a/src/rsinc.h
++++ b/src/rsinc.h
+@@ -98,6 +98,7 @@
+ #ifndef NO_SECONDARY_SCREEN
+   def (secondaryScreen)
+   def (secondaryScroll)
++  def (secondaryWheel)
+ #endif
+ #if ENABLE_FRILLS
+   def (rewrapMode)
+--- a/src/xdefaults.C
++++ b/src/xdefaults.C
+@@ -257,6 +257,7 @@ optList[] = {
+ #ifndef NO_SECONDARY_SCREEN
+               BOOL (Rs_secondaryScreen, "secondaryScreen", "ssc", Opt_secondaryScreen, 0, "secondary screen"),
+               BOOL (Rs_secondaryScroll, "secondaryScroll", "ssr", Opt_secondaryScroll, 0, "secondary screen scroll"),
++              BOOL (Rs_secondaryWheel, "secondaryWheel", "ssw", Opt_secondaryWheel, 0, "enable secondary screen wheel"),
+ #endif
+ #if ENABLE_FRILLS
+               STRG (Rs_rewrapMode, "rewrapMode", "rm", "string", "rewrap mode (auto, always, never)"),

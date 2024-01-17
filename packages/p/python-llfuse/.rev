@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de63c5f34b40c3f8f6faa77d0cadbbee</srcmd5>
+    <version>1.4.1</version>
+    <time>1622536518</time>
+    <user>dimstar_suse</user>
+    <comment>Restore python-llfuse package (boo#1186080)</comment>
+    <requestid>895275</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>81be6bb30a5d9fe4d2b6909719196975</srcmd5>
+    <version>1.4.2</version>
+    <time>1658857439</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.4.2:
+  * cythonize with Cython 0.29.30 (brings python 3.11 support)
+  * also test on python 3.10 and 3.11-dev
+  * remove &quot;nonempty&quot; default mount option, seems unsupported now.</comment>
+    <requestid>990872</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ed870a2f8d3616a59c5691e0d6ddb3a</srcmd5>
+    <version>1.5.0</version>
+    <time>1692045332</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Note: this is first pyfuse3 release supporting the Cython
+    3.0.0 release.
+  * Cythonized using Cython 3.0.0 release.
+  * Drop Python 3.5, 3.6, 3.7 support, see #69.
+  * Minimum requirement is Python 3.8 now.
+  * Get rid of PyEval_InitThreads, #55.
+  * CI: also test on python 3.12 / cython 3.0 release
+  * Tell Cython that callbacks may raise exceptions, #90.
+  * Misc. CI, testing, build related fixes/improvements.
+- drop fix-test-for-fusermount.patch (upstream)</comment>
+    <requestid>1103750</requestid>
+  </revision>
+</revisionlist>

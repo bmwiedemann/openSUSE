@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Dec 15 14:07:55 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update sources
+
+-------------------------------------------------------------------
+Thu Jul 13 22:13:36 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 2.7.4:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Thu Nov  5 13:08:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.3:
+  * No changelog available.
+
+-------------------------------------------------------------------
+Mon Dec 11 00:41:59 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Sun Dec  3 10:23:41 UTC 2017 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Really update to 2.7.1:
+  * Drop no longer needed z-fix-incorrect-fsf-address.patch
+
+-------------------------------------------------------------------
+Wed Nov 26 03:32:21 UTC 2014 - malcolmlewis@opensuse.org
+
+- Update to version 2.7.1:
+  + No changelog available.
+- Spec file clean up.
+- Add z-fix-incorrect-fsf-address.patch: Fix FSF address in
+  COPYING.
+
+-------------------------------------------------------------------
+Fri Dec  4 21:11:18 UTC 2009 - pascal.bleser@opensuse.org
+
+- initial package (2.6.1)
+

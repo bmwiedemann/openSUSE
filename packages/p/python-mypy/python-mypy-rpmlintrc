@@ -1,0 +1,2 @@
+addFilter("zero-length .*/usr/lib/python.*/site-packages/mypy/typeshed/.*\.pyi")
+addFilter("devel-file-in-non-devel-package")

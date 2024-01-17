@@ -1,0 +1,15 @@
+<package name="python-tweepy" project="openSUSE:Factory">
+  <title>Twitter Library for Python</title>
+  <description>Twitter library for Python, also works with identi.ca/laconi.ca.
+
+Features:
++ OAuth support (including xAuth)
++ Covers the entire Twitter API
++ Actively under development
++ Streaming API support
++ Cache system (memory, file)
+
+</description>
+  <devel project="devel:languages:python" package="python-tweepy"/>
+  <url>http://github.com/joshthecoder/tweepy</url>
+</package>

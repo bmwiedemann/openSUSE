@@ -1,0 +1,11 @@
+<package name="fileb0x" project="openSUSE:Factory">
+  <title>fileb0x</title>
+  <description>A better customizable tool to embed files in go.
+
+It is an alternative to `go-bindata` that have better features and organized configuration.
+
+TL;DR: a better `go-bindata`
+</description>
+  <devel project="devel:languages:go" package="fileb0x"/>
+  <url>https://github.com/Velocidex/fileb0x</url>
+</package>

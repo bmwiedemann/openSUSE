@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e21188f8111d4c1c277169e4d2ca7dd7</srcmd5>
+    <version>0.3</version>
+    <time>1574337568</time>
+    <user>dimstar_suse</user>
+    <comment>Interactive data selection cursors for Matplotlib</comment>
+    <requestid>750008</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8dc6143e84c5ff96586320ff2b39650</srcmd5>
+    <version>0.3</version>
+    <time>1587659879</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 dependencies from py3 only marked package</comment>
+    <requestid>796491</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fe06dbf90ace9f04063fac38c20d2219</srcmd5>
+    <version>0.3</version>
+    <time>1591742977</time>
+    <user>dimstar_suse</user>
+    <comment>- build against older pytest to have tests passing</comment>
+    <requestid>812808</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e4c0ded4bdcd5edb2a39da11f47ffd07</srcmd5>
+    <version>0.3</version>
+    <time>1595577475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822354</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb3638f1deeb4eb4b7b94937ba08977e</srcmd5>
+    <version>0.4</version>
+    <time>1618240241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884582</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>af9d60e8b04283fba848c9e93b64ef2b</srcmd5>
+    <version>0.5.1</version>
+    <time>1642835885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947806</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>308e6f8863fe617aea101be557f111f4</srcmd5>
+    <version>0.5.2</version>
+    <time>1673359204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057614</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cc94adf9713dffb39b4152963c79c153</srcmd5>
+    <version>0.5.2</version>
+    <time>1704281226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135865</requestid>
+  </revision>
+</revisionlist>

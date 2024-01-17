@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Tue May 20 14:12:01 UTC 2014 - tchvatal@suse.com
+
+- Add xz to exact dependencies as it is needed on SLE11.
+
+-------------------------------------------------------------------
+Sat Jan 25 20:48:39 UTC 2014 - tchvatal@suse.com
+
+- Pass over with spec-cleaner in the specs overview.
+
+-------------------------------------------------------------------
+Sat Apr 20 12:00:01 UTC 2013 - tchvatal@suse.com
+
+- Add url for download.
+
+-------------------------------------------------------------------
+Mon Dec  3 08:44:47 UTC 2012 - tchvatal@suse.com
+
+- Add obsoletes/provides for old libname so depending pkgs work.
+  * drop no longer needed lpsolve-5.5.0.11-cflags.patch we use
+    autotools now.
+  * drop no longer needed lpsolve-pic.diff for the same reason.
+
+-------------------------------------------------------------------
+Fri Nov 30 10:12:44 UTC 2012 - tchvatal@suse.com
+
+- Use the spec-beautifier to make it more readable.
+
+-------------------------------------------------------------------
+Thu Nov 29 10:53:07 UTC 2012 - tchvatal@suse.com
+
+- Drop duplication of the license string.
+
+-------------------------------------------------------------------
+Wed Nov 21 16:46:59 UTC 2012 - tchvatal@suse.com
+
+- Last commit was really bad idea.
+
+-------------------------------------------------------------------
+Wed Nov 21 16:22:36 UTC 2012 - tchvatal@suse.com
+
+- Drop useless requires line.
+
+-------------------------------------------------------------------
+Wed Nov 21 16:15:05 UTC 2012 - tchvatal@suse.com
+
+- Try to version bump on 5.5.2.0 based of Gentoo.
+
+-------------------------------------------------------------------
+Thu Feb 11 01:05:55 UTC 2010 - jengelh@medozas.de
+
+- SPARC requires large PIC model
+
+-------------------------------------------------------------------
+Wed Aug 13 12:30:35 CEST 2008 - pmladek@suse.cz
+
+- initial version 5.5.0.13
+- based on the spec file by Steve Cundy and Caolan McNamara

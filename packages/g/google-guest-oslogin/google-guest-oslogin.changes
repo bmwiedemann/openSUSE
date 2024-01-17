@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Thu Jan  4 11:56:22 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231116.00
+  * build: Fix DESTDIR concatenation (#124)
+- from version 20231113.00
+  * build: Fix clang build (#122)
+- from version 20231103.00
+  * Update owners (#121)
+
+-------------------------------------------------------------------
+Thu Nov  2 09:47:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231101.00 (bsc#1216548, bsc#1216750)
+  * Fix HTTP calls retry logic (#117)
+
+-------------------------------------------------------------------
+Thu Oct 19 12:40:54 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231004
+  * packaging: Make the dependency explicit (#120)
+
+-------------------------------------------------------------------
+Sun Oct  1 08:31:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230926.00:
+  * fix suse build
+  * selinux: fix selinux build (#114)
+  * test: align CXX Flags
+  * sshca: Make the implementation more C++ like
+  * sshca: Add a SysLog wrapper
+  * oslogin_utils: introduce AuthorizeUser() API
+  * sshca: move it out of pam dir
+  * pam: start disabling the use of oslogin_sshca
+  * sshca: consider sshca API to assume a cert only
+  * authorized principals: introduce the new command
+  * authorize keys: update to use new APIs
+  * pam modules: remove pam_*_admin and update pam_*_login
+  * cache_refresh: should be catching by reference.
+
+-------------------------------------------------------------------
+Thu Aug 31 11:46:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230823.00
+  * selinux: Add sshd_key_t type enforcement to trusted user ca (#113)
+- from version 20230822.00
+  * sshca: Add tests with fingerprint and multiple extensions (#111)
+- from version 20230821.01
+  * sshca: Support method token and handle multi line (#109)
+- from version 20230821.00
+  * Update owners (#110)
+
+-------------------------------------------------------------------
+Tue Aug 15 13:53:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230808.00
+  * byoid: extract and apply the ca fingerprint to policy call (#106)
+
+-------------------------------------------------------------------
+Tue May  9 08:10:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230502.00
+  * Improve the URL in 2fa prompt (#104)
+- from version 20230406.02
+  * Check open files (#101)
+- from version 20230406.01
+  * Initialize variables (#100)
+  * Fix formatting (#102)
+- from version 20230406.00
+  * PAM cleanup: remove duplicates (#97)
+- from version 20230405.00
+  * NSS cleanup (#98)
+- from version 20230403.01
+  * Cleanup Makefiles (#95)
+- from version 20230403.00
+  * Add anandadalton to the owners list (#96)
+
+-------------------------------------------------------------------
+Tue Feb 28 11:36:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230217.00
+  * Update OWNERS (#91)
+- from version 20230202.00
+  * Update owners file (#89)
+
+-------------------------------------------------------------------
+Wed Aug  3 10:25:32 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220721.00 (bsc#1202100, bsc#1202101)
+  * prune outdated info from readme (#86)
+- from version 20220714.00
+  * strip json-c version symbol (#84)
+- from version 20220622.00
+  * pam login: split conditions for logging (#83)
+
+-------------------------------------------------------------------
+Wed May  4 19:37:21 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- use pam_moduledir (boo#1191036)
+  * Support UsrMerge project
+
+-------------------------------------------------------------------
+Thu Apr 14 11:12:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220411.00
+  * pam login: split conditions for logging (#83)
+
+-------------------------------------------------------------------
+Tue Feb  8 15:47:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220205.00 (bsc#1195437, bsc#1195438)
+  * Fix build for EL9. (#82)
+- from version 20211213.00
+  * Reauth error (#81)
+- Rename Source0 field to Source
+- Update URL in Source field to point to upstream tarball
+
+-------------------------------------------------------------------
+Fri Oct 22 11:20:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211013.00 (bsc#1193257, bsc#1193258)
+  * remove deprecated binary (#79)
+- from version 20211001.00
+  * no message if no groups (#78)
+- from version 20210907.00
+  * use sigaction for signals (#76)
+- from version 20210906.00
+  * include cstdlib for exit (#75)
+  * catch SIGPIPE in authorized_keys (#73)
+- from version 20210805.00
+  * fix double free in ParseJsonToKey (#70)
+- from version 20210804.00
+  * fix packaging for authorized_keys_sk (#68)
+  * add authorized_keys_sk (#66)
+- Add google_authorized_keys_sk to %files section
+- Remove google_oslogin_control from %files section
+
+-------------------------------------------------------------------
+Wed Aug  4 07:35:45 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210728.00 (bsc#1188992, bsc#1189041)
+  * JSON object cleanup (#65)
+
+-------------------------------------------------------------------
+Mon Jul 19 12:28:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210707.00
+  * throw exceptions in cache_refresh (#64)
+- from version 20210702.00
+  * Use IP address for calling the metadata server. (#63)
+
+-------------------------------------------------------------------
+Wed Jun 23 11:34:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210618.00
+  * flush each group member write (#62)
+
+-------------------------------------------------------------------
+Tue May 11 08:22:46 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210429.00 (bsc#1185848, bsc#1185849)
+  * correct pagetoken in groupsforuser (#59)
+  * resolve self groups last (#58)
+  * support empty groups (#57)
+  * no paginating to find groups (#56)
+  * clear users vector (#55)
+  * correct usage of pagetoken (#54)
+
+-------------------------------------------------------------------
+Wed Mar 31 12:57:04 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210316.00 (bsc#1183414, bsc#1183415)
+  * call correct function in pwenthelper (#53)
+
+-------------------------------------------------------------------
+Tue Jan 12 10:43:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210108.00
+  * Update logic in the cache_refresh binary (#52)
+  * remove old unused workflow files (#49)
+
+-------------------------------------------------------------------
+Thu Oct  8 09:24:32 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200925.00 (bsc#1179031, bsc#1179032)
+  * add getpwnam,getpwuid,getgrnam,getgrgid (#42)
+  * Change requires to not require the python library for policycoreutils. (#44)
+  * add dial and recvline (#41)
+  * PR feedback
+  * new client component and tests
+
+-------------------------------------------------------------------
+Tue Aug 25 15:27:35 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200819.00 (bsc#1175740, bsc#1175741)
+  * deny non-2fa users (#37)
+  * use asterisks instead (#39)
+  * set passwords to ! (#38)
+  * correct index 0 bug (#36)
+  * Support security key generated OTP challenges. (#35)
+
+-------------------------------------------------------------------
+Fri Jul 24 13:40:56 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- No post action for ssh
+
+-------------------------------------------------------------------
+Wed Jul 22 10:57:18 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build (bsc#1174304, bsc#1174306, jsc#ECO-2099, jsc#PM-1945)
+  + Version 20200507.00
+  + Replaces google-compute-engine-oslogin package

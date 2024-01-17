@@ -1,0 +1,6 @@
+<package name="python-jsonschema-specifications" project="openSUSE:Factory">
+  <title>The JSON Schema meta-schemas and vocabularies, exposed as a Registry</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-jsonschema-specifications"/>
+  <url>https://github.com/python-jsonschema/jsonschema-specifications</url>
+</package>

@@ -1,0 +1,12 @@
+diff -uNr restic.org/build.go restic/build.go
+--- restic.org/build.go	2023-01-16 23:09:42.559283644 +0100
++++ restic/build.go	2023-01-16 23:10:38.002960609 +0100
+@@ -56,7 +56,7 @@
+ 	Name:             "restic",                                 // name of the program executable and directory
+ 	Namespace:        "github.com/restic/restic",               // subdir of GOPATH, e.g. "github.com/foo/bar"
+ 	Main:             "./cmd/restic",                           // package name for the main package
+-	DefaultBuildTags: []string{"selfupdate"},                   // specify build tags which are always used
++	//DefaultBuildTags: []string{"selfupdate"},                   // specify build tags which are always used
+ 	Tests:            []string{"./..."},                        // tests to run
+ 	MinVersion:       GoVersion{Major: 1, Minor: 18, Patch: 0}, // minimum Go version supported
+ }

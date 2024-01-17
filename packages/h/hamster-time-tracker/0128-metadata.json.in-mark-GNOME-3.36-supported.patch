@@ -1,0 +1,28 @@
+From aa7bcbe35ff5673f7194916b57ea391530b7ec3d Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 11 Mar 2020 23:55:55 +0100
+Subject: [PATCH 128/130] metadata.json.in: mark GNOME 3.36 supported
+
+This code works fine on 3.34, too.
+---
+ data/metadata.json.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 6818eea..8581b60 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -10,8 +10,8 @@
+     "gettext-domain": "hamster-shell-extension",
+     "settings-schema": "org.gnome.shell.extensions.project-hamster",
+     "shell-version": [
+-        "3.32",
+-        "3.34"
++        "3.34",
++        "3.36"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@,
+-- 
+2.26.1
+

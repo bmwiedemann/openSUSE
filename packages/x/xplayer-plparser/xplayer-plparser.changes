@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Nov  7 10:16:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Thu Oct  1 03:50:57 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- add xplayer-plparser-gmime-3.0.patch (boo#1171808)
+
+-------------------------------------------------------------------
+Wed Apr 27 16:43:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.2:
+  * Update hr.po.
+
+-------------------------------------------------------------------
+Sun Feb  7 08:54:23 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package, based on totem-pl-parser's package.

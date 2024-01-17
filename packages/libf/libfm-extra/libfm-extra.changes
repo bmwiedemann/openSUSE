@@ -1,0 +1,344 @@
+-------------------------------------------------------------------
+Tue Dec 25 12:34:06 UTC 2018 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.1:
+  * Fixed crash on reload while directory changes (folder might be not ready yet).
+  * Changed size of large thumbnails to 512 since 256*256 appears to be small on
+    hi-res displays.
+  * Added application/gzip to archivers.list file next to application/x-gzip.
+  * Added image/x-compressed-xcf to archivers.list file for xarchiver.
+
+-------------------------------------------------------------------
+Mon Oct 22 13:03:23 UTC 2018 - mvetter@suse.com
+
+- Update to 1.3.0.2:
+  * Fixed launching menu entries shortcuts on desktop which was broken by making
+    them all executable in 1.3.0 - those should be launchable still.
+  * Fixed installing modules into non-standard path: libtool couldn't relink them
+    properly.
+  * Added emblem support by reading the "metadata::emblems" attribute provided by
+    GFileInfo. The metadata is provided by gio/gvfs and are currently stored in
+    $XDG_DATA_HOME/gvfs-metadata.
+  * Fixed typo: occured -> occurred.
+  * Made desktop entries treaten as executables. Now clicking on a native desktop
+    file opens a confirmation dialog instead of executing it. Trashed desktop
+    files are only opened as text files and desktop files under system menu
+    (i.e. menu://applications/) are executed without prompt as before.
+  * Fixed build error with vala 0.36.1.
+  * Fixed crash on launching nonexistent link targets.
+  * Added tooltips for attributes of copying files.
+  * Fixed thumbnails generation for files in the thumbnails cache directory which
+    actually should never be done.
+  * Fixed crash on pasting large string when completion matches.
+  * Prevented creation corrupted image thumbnails with gdk-pixbuf2 >= 2.36.1.
+  * Fixed crash in fm_config_load_from_file().
+  * Dropped displaying "extension" for a directory.
+  * Fixed crash on pasting a file into the search folder, show an error message
+    when the copy destination doesn't exist instead.
+  * Added new API for FmAction new object type, to replace old VALA-generated
+    code. New API is more convenient, C instead of VALA, and should support all
+    DES-API specification features, not just limited set.
+  * Migrated module 'gtk-menu-actions' to new DES-EMA actions API.
+  * Added display of data transferred to progress dialog.
+  * Fixed wrong names for files, copied from Google Drive and similar places.
+
+-------------------------------------------------------------------
+Sun Dec 25 12:01:34 UTC 2016 - trcs@gmx.com
+
+- new upstream version 1.2.5
+  * Fixed 'Launch in Terminal' issue when custom args were ignored.
+  * Fixed crash with non-UTF regex search pattern.
+  * Added 'termite' into the terminals database.
+  * Fixed possible crash on FmPlacesView.
+  * Fixed crash on non-existent directory listing job.
+  * Added conversion of all URIs schemes to file:/// by mapping them 
+    to FUSE-mounted local paths if that is possible. This is required
+    for non-gio applications to open files mounted by gvfs.
+  * Added new MIME type for rar files to the archivers.list file.
+  * Fixed crash in _fm_template_update().
+  * Fixed incorrect initialization of FmPlacesViewClass, it should 
+    not call fm_get_home_dir() but initialized with NULL, that will do
+    the same at runtime.
+  * Fixed FTBFS when libmenu-cache was installed to non-standard 
+    location.
+  * Added check for edit name "/" for remote root directory so 
+    display name should be used in such cases as more sensible one.
+  * Fixed wrong width requested by FmCellRendererText (1.2.4 
+    regression).
+  * Updated list of MIME types handled by xarchiver.
+  * Don't show error message when attempting to rename file into the 
+    same.
+  * Fixed crash after file info job finished on a folder that already 
+    left.
+  * Changed limitations on libfm-pref-apps.desktop to show only in 
+    LXDE.
+  * Fixed incomplete file copy job pausing in some cases.
+  * Fixed missing 'Empty Trash Can' option in desktop's trash context 
+    menu.
+  
+  Changes on 1.2.4 since 1.2.3:
+  
+  * Fixed crash in templates on file that was deleted instantly after
+    creation.
+  * Fixed handling %c in desktop entry Exec key: launch may fail if 
+    the application name contains spaces so it needs quoting.
+  * Fixed missing folder info update on folder attributes change.
+  * Use G_SPAWN_DO_NOT_REAP_CHILD on application launch, that should 
+    fix a problem with pkexec.
+  * Corrected missing newline at end of generated shortcut desktop 
+    entry.
+  * Improved file type detection, it failed in some cases such as 
+    DOCX.
+  * Returned back the workaround on thumbnailers which don't save any 
+    of Thumb::MTime or Thumb::URI in the thumbnail.
+  * Fixed wrong treating files like ".purple" as having extension 
+    "purple".
+  * Fixed invalid desktop entry save if 'Cancel' was pressed in the 
+    file
+    properties dialog window.
+  * Fixed issues on dropping folders into Places for bookmarking them.
+  * Fixed crash in expand_exec_macros() on missing Exec line.
+  * Rewritten broken rubberband rendering in icon view for GTK3.
+  * Eliminated usage of GVolumeMonitor if no FmFolder object was 
+    created.
+  * Fixed renaming of desktop entries on copy operation error: it was 
+    the file name which was set in renaming dialog but it was 
+    compared with display name instead when decided whether "Rename" 
+    button should be active or not.
+  * Fixed dropping files onto applications shortcuts on the desktop: 
+    those should be not "inode/x-shortcut" but 
+    "application/x-desktop" instead and therefore handled as any other
+    applications, i.e. allow drop.
+  * Added 'urxvtc' into the terminals database.
+  * Fixed adding user-defined MIME associations into mimeapps.list 
+    config.
+  * Few UI adaptations to work with GTK+ 3.10 or newer.
+  * Fixed creating shortcuts on paths with basename started with '?'.
+  * Fixed pointer-related issues with GTK+ 3.10 or newer.
+  * Added 'terminology' into the terminals database.
+  * Fixed stuck tooltip on entering empty folder.
+  * Fixed crash on cancelling FmDirListJob while retrieving is in 
+    progress.
+  * Fixed incomplete cleanup on folder reloading.
+  * Corrected autoscrolling to position in view to not include extra 
+    space (so not show all the column/row at once but only fully show 
+    exactly the item). This may fix a problem with double-click at the
+    end of the file name which is already visible so no scrolling is 
+    needed, but if another file in the column/row has longer name then
+    it could bring a scrolling of the column/row, and second click 
+    lands out of item area.
+  * Fixed timer shown in progress dialog, it should show 01:00, not 
+    00:60.
+  * Fixed stuck tooltip after right-click on file in view, seen 
+    rarely.
+  * Disabled following symlinked directories on recursive search, 
+    that may give undesired results duplicating files and in some rare
+    cases even may lead to endless recursion and endless number of 
+    files found.
+  * Fixed few small issues with icon view interactive search:
+    + search should be not activated by space key;
+    + cursor was missing in the entry.
+  * Fixed the background of the name of selected file with GTK+ 3.0.
+  * Fixed not-ignored invalid Path= line on launch a desktop entry.
+  * Fixed testing URIs like http://some.host.com for MIME type.
+  * Dropped using shortcuts to URIs like http://host/ as directories, 
+    no directory should be in principle used in shortcuts.
+  * Fixed possible data loss on cross-partition data movement.
+  * Fixed incorrect data in the search dialog date selection window.
+  
+- Removed all the previously added patches from Git, they are all
+  now included upstream:
+  * [SF#902] Handle NULL returned by fm_mime_type_from_native_file()
+    correctly
+    + libfm-1.2.3-Fix-SF902.patch
+    + libfm-Additional-fix-after-SF902.patch
+  * [SF#922] Fix handling %c in desktop entry Exec key
+    + libfm-1.2.3-Fix-SF922.patch
+  * [SF#914] Fix missing folder info update on folder attributes
+    + libfm-1.2.3-Fix-SF914.patch
+  * Use G_SPAWN_DO_NOT_REAP_CHILD on application launch, that should 
+    fix a problem with pkexec
+    + libfm-1.2.3-Use-G_SPAWN_DO_NOT_REAP_CHILD-on-applicaton-launch.patch
+  * [SF#946] Add missing newline at end of generated shortcut
+    + libfm-1.2.3-Fix-SF946.patch
+  * [SF#925,938] Improve file type detection, it fails in some cases
+    such as DOCX
+    + libfm-1.2.3-Fix-SF925-and-SF938.patch
+  * Return back the workaround on thumbnailers which don't save 
+    Thumb::MTime
+    + libfm-1.2.3-Return-back-the-workaround-on-thumbnailers.patch
+  * [SF#937] Fix wrong treating files like ".purple" as having 
+    extension "purple"
+    + libfm-1.2.3-Fix-SF937.patch
+  * [SF#935] Fix invalid desktop entry save if 'Cancel' was pressed
+    in dialog
+    + libfm-1.2.3-Fix-SF935.patch
+  * [SF#915] Always do gtk_drag_finish() in FmDndDest even if drop 
+    was failed
+    + libfm-1.2.3-Fix-SF915.patch
+  * FmDndDest: reset cached data if drag context was changed
+    + libfm-1.2.3-Reset-cached-data-if-drag-context-was-changed.patch
+  * Fix uninitialized data in drag-motion callback of FmPlacesView
+    + libfm-1.2.3-Fix-uninitialized-data-in-drag-motion-callback.patch
+  * [SF#953] Fix crash in expand_exec_macros() on missing Exec line 
+    in desktop entry
+    + libfm-1.2.3-Fix-SF953.patch
+  * [SF#921] Rewrite broken rubberband rendering in icon view for 
+    GTK3
+    + libfm-1.2.3-Fix-SF921.patch
+  * [SF#932] Fix renaming of desktop entries on copy operation error
+    + libfm-1.2.3-Fix-SF932.patch
+  * Fix dropping files onto applications shortcuts on the desktop
+    + libfm-1.2.3-Fix-dropping-files-onto-applications.patch
+  * Fix desktop file name for urxvt in terminals.list
+    + libfm-1.2.3-Fix-desktop-file-name-for-urxvt.patch
+  * [SF#954] Add urxvtc data into the terminals.list file
+    + libfm-1.2.3-Fix-SF954.patch
+  * [SF#950] Fix adding user-defined MIME associations into 
+    mimeapps.list config
+    + libfm-1.2.3-Fix-SF950.patch
+  * [SF#959] Fix autoscroll issues with GTK+ 3
+    + libfm-1.2.3-Fix-SF959.patch
+  * [SF#965] Fix stuck tooltip on entering empty folder
+    + libfm-1.2.3-Fix-SF965.patch
+  * Fix crash on cancelling FmDirListJob while retrieving is in 
+    progress
+    + libfm-1.2.3-Fix-crash-on-cancelling-FmDirListJob.patch
+  * [SF#919] Fix incomplete cleanup on folder reloading
+    + libfm-1.2.3-Fix-SF919.patch
+  * [SF#967] Fix timer shown in progress dialog, it should show 
+    01:00, not 00:60
+    + libfm-1.2.3-Fix-SF967.patch
+
+-------------------------------------------------------------------
+Tue Feb 16 23:09:51 UTC 2016 - trcs@gmx.com
+
+- Fix typo in configure flag
+
+-------------------------------------------------------------------
+Mon Nov  2 19:37:21 UTC 2015 - trcs@gmx.com
+
+- Added many fixes from Git:
+  * [SF#902] Handle NULL returned by fm_mime_type_from_native_file()
+    correctly
+    + libfm-1.2.3-Fix-SF902.patch
+    + libfm-Additional-fix-after-SF902.patch
+  * [SF#922] Fix handling %c in desktop entry Exec key
+    + libfm-1.2.3-Fix-SF922.patch
+  * [SF#914] Fix missing folder info update on folder attributes
+    + libfm-1.2.3-Fix-SF914.patch
+  * Use G_SPAWN_DO_NOT_REAP_CHILD on application launch, that should 
+    fix a problem with pkexec
+    + libfm-1.2.3-Use-G_SPAWN_DO_NOT_REAP_CHILD-on-applicaton-launch.patch
+  * [SF#946] Add missing newline at end of generated shortcut
+    + libfm-1.2.3-Fix-SF946.patch
+  * [SF#925,938] Improve file type detection, it fails in some cases
+    such as DOCX
+    + libfm-1.2.3-Fix-SF925-and-SF938.patch
+  * Return back the workaround on thumbnailers which don't save 
+    Thumb::MTime
+    + libfm-1.2.3-Return-back-the-workaround-on-thumbnailers.patch
+  * [SF#937] Fix wrong treating files like ".purple" as having 
+    extension "purple"
+    + libfm-1.2.3-Fix-SF937.patch
+  * [SF#935] Fix invalid desktop entry save if 'Cancel' was pressed
+    in dialog
+    + libfm-1.2.3-Fix-SF935.patch
+  * [SF#915] Always do gtk_drag_finish() in FmDndDest even if drop 
+    was failed
+    + libfm-1.2.3-Fix-SF915.patch
+  * FmDndDest: reset cached data if drag context was changed
+    + libfm-1.2.3-Reset-cached-data-if-drag-context-was-changed.patch
+  * Fix uninitialized data in drag-motion callback of FmPlacesView
+    + libfm-1.2.3-Fix-uninitialized-data-in-drag-motion-callback.patch
+  * [SF#953] Fix crash in expand_exec_macros() on missing Exec line 
+    in desktop entry
+    + libfm-1.2.3-Fix-SF953.patch
+  * [SF#921] Rewrite broken rubberband rendering in icon view for 
+    GTK3
+    + libfm-1.2.3-Fix-SF921.patch
+  * [SF#932] Fix renaming of desktop entries on copy operation error
+    + libfm-1.2.3-Fix-SF932.patch
+  * Fix dropping files onto applications shortcuts on the desktop
+    + libfm-1.2.3-Fix-dropping-files-onto-applications.patch
+  * Fix desktop file name for urxvt in terminals.list
+    + libfm-1.2.3-Fix-desktop-file-name-for-urxvt.patch
+  * [SF#954] Add urxvtc data into the terminals.list file
+    + libfm-1.2.3-Fix-SF954.patch
+  * [SF#950] Fix adding user-defined MIME associations into 
+    mimeapps.list config
+    + libfm-1.2.3-Fix-SF950.patch
+  * [SF#959] Fix autoscroll issues with GTK+ 3
+    + libfm-1.2.3-Fix-SF959.patch
+  * [SF#965] Fix stuck tooltip on entering empty folder
+    + libfm-1.2.3-Fix-SF965.patch
+  * Fix crash on cancelling FmDirListJob while retrieving is in 
+    progress
+    + libfm-1.2.3-Fix-crash-on-cancelling-FmDirListJob.patch
+  * [SF#919] Fix incomplete cleanup on folder reloading
+    + libfm-1.2.3-Fix-SF919.patch
+  * [SF#967] Fix timer shown in progress dialog, it should show 
+    01:00, not 00:60
+    + libfm-1.2.3-Fix-SF967.patch
+
+-------------------------------------------------------------------
+Wed Oct 15 09:59:14 UTC 2014 - andrea@opensuse.org
+
+- new upstream release 1.2.3
+  * Changed licence for libfm-extra and libfm components from 
+    GPL-2 to LGPL-2.1.
+  * Fixed crash on dropping URL queries into some folder.
+  * Fixed filename on dropping URI queries into folder: URI query 
+    like http://some.site/path/query.php?new=yes&mine=0 should be 
+    never saved with file name path/query.php?new=yes&mine=0 but 
+    as query.php instead like all the web browsers do.
+  * Disabled debug messages in XML parser, it spammed a lot.
+  * Fixed content type detection which was broken in last release.
+  * Fixed incorrect call to g_environ_setenv() in the terminal 
+    call.
+  * Replaced deprecated atk_component_get_position() calls.
+  * Fixed invalid callback get_image_position() on ATK icon of 
+    ExoIconView, it could loop and therefore hang the application.
+  * Disabled deprecated atk_focus_tracker_notify() with new libatk.
+  * Fixed installation of headers with parallel install, it could 
+    create invalid symlink /usr/share/libfm/libfm in some 
+    conditions.
+  * Corrected handling of application launch failure - launch 
+    content have to be informed about failure if startup notify id 
+    was retrieved from it before.
+  * Fixed usage of POSIX.1-2001 declaration `environ' with GLib < 
+    2.28.
+  * Fixed "out-of-tree" build (e.g. make distcheck).
+  * Corrected menu cache to sync in 
+    fm_app_chooser_dlg_dup_selected_app(), otherwise it would not 
+    work without menu preloaded.
+  * Fixed launch of applications with %f or %u argument - it 
+    should launch not just first file but all of them with the 
+    same command.
+  * Fixed unneeded fm-folder-config save even if no changes were 
+    made.
+  * Fixed not updated file in FmFolder if file was not changed 
+    within last 2 seconds. In case of fast download it was not 
+    updated in time. This may cause a little performance issue 
+    though due to thumbnails update.
+  * Fixed crash if g_file_get_basename() returns NULL.
+  * Fixed issue with desktop entry file selected in the 
+    Application chooser dialog, it tried to execute the desktop 
+    entry directly. Now it setups dialog fields from that desktop 
+    entry instead.
+  * Fixed problem with unwanted application substitution in the 
+    Application chooser dialog: if user selected no name then no 
+    replacements should be attempted.
+  * Fixed default app detection in Application chooser combo box.
+
+
+-------------------------------------------------------------------
+Mon Sep 15 13:21:31 UTC 2014 - andrea@opensuse.org
+
+- spec file clean up 
+
+-------------------------------------------------------------------
+Fri Sep 12 17:00:40 UTC 2014 - andrea@opensuse.org
+
+- new libfm bootstrap package
+

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b835ffbb41aa7da9f52fc679258ffd1a</srcmd5>
+    <version>0.5.0</version>
+    <time>1643321809</time>
+    <user>dimstar_suse</user>
+    <comment>New Go application package Wire is a build-time dependency for Grafana</comment>
+    <requestid>949407</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba0d00f9bbb179fe0c06877c103d14d2</srcmd5>
+    <version>0.5.0</version>
+    <time>1644435573</time>
+    <user>dimstar_suse</user>
+    <comment>Fix copyright and update Jira ticket reference. (forwarded request 952731 from witekbedyk)</comment>
+    <requestid>952819</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ab2122b4fb144f9f0422e993285d9cc4</srcmd5>
+    <version>0.5.0</version>
+    <time>1644707723</time>
+    <user>dimstar_suse</user>
+    <comment>- Added alternative golang name to build on RHEL. (forwarded request 953372 from sbluhm)</comment>
+    <requestid>953840</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0212c46c15a9f4ab26a20062a4ad0e6b</srcmd5>
+    <version>0.5.0</version>
+    <time>1644874588</time>
+    <user>dimstar_suse</user>
+    <comment>- Disabled debug package build for RHEL. (forwarded request 954359 from sbluhm)</comment>
+    <requestid>954369</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>86d101139671043e2793f4b73d2a1423</srcmd5>
+    <version>0.5.0</version>
+    <time>1644965867</time>
+    <user>dimstar_suse</user>
+    <comment>- Refactor conditional golang BuildRequires for RHEL (forwarded request 954665 from witekbedyk)</comment>
+    <requestid>955083</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d725b2c814d2ff776b13f0d3bebd932b</srcmd5>
+    <version>0.5.0</version>
+    <time>1645137590</time>
+    <user>dimstar_suse</user>
+    <comment>Update Jira tickets reference in the changelog (forwarded request 955324 from witekbedyk)</comment>
+    <requestid>955506</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>5232e0e8f4450fc95cc581b55c5f8754</srcmd5>
+    <version>0.5.0</version>
+    <time>1655493684</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude s390 arch (forwarded request 982944 from juliogonzalezgil)</comment>
+    <requestid>983464</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>dad358ceadc6329429b90807e055a121</srcmd5>
+    <version>0.5.0</version>
+    <time>1664467990</time>
+    <user>RBrownFactory</user>
+    <comment>Require go1.18 (bsc#1203599, GH#19127) (forwarded request 1006664 from deneb_alpha)</comment>
+    <requestid>1006714</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>f6f38678f66961d8867c36e07efce261</srcmd5>
+    <version>0.5.0</version>
+    <time>1678380325</time>
+    <user>dimstar_suse</user>
+    <comment>Build with go &gt;= 1.19 on SUSE Linux Enterprise and with go1.18 only on SUSE Linux Enterprise 15 SP3. (bsc#1203599) (forwarded request 1070205 from deneb_alpha)</comment>
+    <requestid>1070228</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>08263bf9dc477eb416b68a0aa30abc23</srcmd5>
+    <version>0.5.0</version>
+    <time>1682368310</time>
+    <user>dimstar_suse</user>
+    <comment>use go1.19. bsc#1203599 (forwarded request 1082513 from deneb_alpha)</comment>
+    <requestid>1082526</requestid>
+  </revision>
+</revisionlist>

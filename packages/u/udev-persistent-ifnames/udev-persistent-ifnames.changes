@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Aug 17 21:18:18 UTC 2015 - jengelh@inai.de
+
+- Move udev-generate-persistent-rule.sh from systemd.
+
+-------------------------------------------------------------------
+Thu Jun 11 12:00:09 UTC 2015 - werner@suse.de
+
+- rules: support "locally administered" mac address in persistent rules (bnc#921831)
+- rules: drop 76-net-sriov-names.rules and net-set-sriov-names (bnc#921831)
+
+-------------------------------------------------------------------
+Mon May 18 18:27:59 UTC 2015 - jengelh@inai.de
+
+- Split off network device naming preferences into separate package
+  [bnc#931165]

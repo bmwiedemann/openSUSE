@@ -1,0 +1,72 @@
+From 0fa486dbe800bea05c81fc33eee197873573fefb Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Fri, 8 Sep 2023 12:35:14 +0530
+Subject: [PATCH 3/3] ppc64-diag/lp_diag: Enable light path diagnostics for
+ RTAS events
+
+Upstream: merged, expected in 2.7.10
+Git-commit: 0fa486dbe800bea05c81fc33eee197873573fefb
+
+Currently, Light Path Diagnostics support is enabled only for OS and
+Enclosure type events. Enable light path diagnostics support for RTAS
+type events by turning on only the high priority FRU callouts.
+
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+Signed-off-by: Mahesh Salgaonkar <mahesh@linux.ibm.com>
+---
+ lpd/lp_diag.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/lpd/lp_diag.c b/lpd/lp_diag.c
+index e6f5d3cb64cf..e67db0250ef4 100644
+--- a/lpd/lp_diag.c
++++ b/lpd/lp_diag.c
+@@ -37,6 +37,8 @@
+ #include "lp_util.h"
+ #include "utils.h"
+ 
++static int rtas_event;
++
+ /* FRU callout priority as defined in PAPR+
+  *
+  * Note: Order of the priority is important!
+@@ -173,8 +175,10 @@ service_event_supported(struct sl_event *event)
+ 			return 0;
+ 		}
+ 		break;
+-	case SL_TYPE_BMC:
+ 	case SL_TYPE_RTAS:
++		rtas_event = 1;
++		break;
++	case SL_TYPE_BMC:
+ 	case SL_TYPE_BASIC:
+ 	default:
+ 		return 0;
+@@ -446,14 +450,20 @@ parse_service_event(int event_id)
+ 	attn_loc = &list[0];
+ 
+ 	if (operating_mode == LED_MODE_LIGHT_PATH) {
+-		if (event->callouts)
++		if (event->callouts) {
+ 			/* Run over FRU callout priority in order and
+ 			 * enable fault indicator
+ 			 */
+-			for (i = 0; FRU_CALLOUT_PRIORITY[i]; i++)
++			if (!rtas_event) {
++				for (i = 0; FRU_CALLOUT_PRIORITY[i]; i++)
++					rc = event_fru_callout(event->callouts, list,
++							FRU_CALLOUT_PRIORITY[i],
++							&attn_on);
++			} else {
+ 				rc = event_fru_callout(event->callouts, list,
+-						       FRU_CALLOUT_PRIORITY[i],
+-						       &attn_on);
++						'H', &attn_on);
++			}
++		}
+ 		else {
+ 			/* No callout list, enable check log indicator */
+ 			indicator_log_write("Empty callout list");
+-- 
+2.42.0
+

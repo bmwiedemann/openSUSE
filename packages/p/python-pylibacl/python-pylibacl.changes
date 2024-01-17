@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Sun Jan  7 21:37:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Important: Python 3.7 is the minimum supported version, due
+    to difficulty of testing old releases, and the fact that
+    everything older has been deprecated a long time ago
+    (e.g. 3.6 at the end of 2021).
+  * Improve error handling in some corner cases (not expected to
+    have any real-life impact, but who knows).
+  * Improved testing coverage and test infrastructure.
+  * Modernise parts of the C code based on recent Python version
+  * guidelines.
+  * Add a simple security policy and contribution guidelines.
+
+-------------------------------------------------------------------
+Fri Sep  1 13:21:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sat Mar 26 19:52:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  - Support for pathlib objects in `apply_to` and `has_extended`
+    functions when running with Python 3.6 and newer.
+  - Use of built-in C API functions for bytes/unicode/pathlib conversion
+    when dealing with file names, removing custom code (with the
+    associated benefits).
+  - Initialisation protocol has been changed, to disallow uninitialised
+    objects; this means that `__new__` will always create valid objects,
+    to prevent the need for checking initialisation status in all code
+    paths; this also (implicitly) fixes memory leaks on re-initialisation
+    (calling `__init__(342200246)` on an existing object) and segfaults (!) on
+    non-initialised object attribute access. Note ACL re-initialisation is
+    tricky and (still) leads to undefined behaviour of existing Entry
+    objects pointing to it.
+  - Fix another bug in ACL re-initialisation where failures would result
+    in invalid objects; now failed re-initialisation does not touch the
+    original object.
+  - Restore `__setstate__`/`__getstate__` support on Linux; this was
+    inadvertently removed due a typo(!) when adding support for it in
+    FreeBSD. Pickle should work again for ACL instances, although not sure
+    how stable this serialisation format actually is.
+  - Additionally, slightly change `__setstate__()` input to not allow
+    Unicode, since the serialisation format is an opaque binary format.
+  - Fix (and change) entry qualifier (which is a user/group ID) behaviour:
+    assume/require that uid_t/gid_t are unsigned types (they are with
+    glibc, MacOS and FreeBSD at least; the standard doesn't document the
+    signedness), and convert parsing and returning the qualifier to behave
+    accordingly. The breakage was most apparent on 32-bit architectures,
+    in which context the problem was originally reported (see issue #13).
+  - Added a `data` keyword argument to `ACL()`, which allows restoring an
+    ACL directly from a serialised form (as given by `__getstate__()`),
+    which should simplify some uses cases (`a = ACL(); a.__set
+    state__(342200246)`).
+  - When available, add the file path to I/O error messages, which should
+    lead to easier debugging.
+  - The test suite has changed to `pytest`, which allows increased
+    coverage via parameterisation.
+- drop 09c5bd80cf811a0e7b81ceddfb525d576885e097.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Feb 24 15:28:16 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- apply a manually merged version of
+  09c5bd80cf811a0e7b81ceddfb525d576885e097.patch, in order to fix
+  build with 32 bit archs https://github.com/iustin/pylibacl/issues/13
+
+-------------------------------------------------------------------
+Thu Jan  9 14:06:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.4:
+  * Switch to python3 interpreter
+  * minor documentation improvements
+- Switch to singlespec
+
+-------------------------------------------------------------------
+Mon Oct 14 14:15:19 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+- We really don't need to support SLE-11 in openSUSE packages.
+
+-------------------------------------------------------------------
+Sun Oct 18 16:07:28 UTC 2015 - ecsos@opensuse.org
+
+- update to 0.5.3
+  - Enable all FreeBSD versions after 7.x at level 2
+  - Make test suite pass under FreeBSD, which has a stricter
+    behaviour with regards to invalid ACLs (which we do exercise
+    in the test suite)
+- update to 0.5.2
+  - No visible changes release: just fix tests when running under
+    pypy.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:11:58 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Mar 20 08:57:52 UTC 2013 - speilicke@suse.com
+
+- Use "-fno-strict-aliasing"
+- Simply documentation build
+
+-------------------------------------------------------------------
+Thu Mar 14 21:19:39 UTC 2013 - hpj@urpla.net
+
+- version 0.5.1: initial build
+

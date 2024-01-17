@@ -1,0 +1,593 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e5b8550ffcd1001dc2b31b5df1ea2f5</srcmd5>
+    <version>4.0.1</version>
+    <time>1531379793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621458</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>40d63f76b8226905362a54442988005b</srcmd5>
+    <version>4.0.1</version>
+    <time>1533214200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625732</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8539557b9615335fb020fd39487e71bc</srcmd5>
+    <version>4.0.2</version>
+    <time>1534543221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629391</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>be19e8ecd793ab96f5e51de20c4a7dab</srcmd5>
+    <version>4.0.2</version>
+    <time>1537115468</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635654</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4dffd16073057f72b6d92805ac14b6d9</srcmd5>
+    <version>4.1</version>
+    <time>1542122590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update ffmpeg to 4.1
+  * Lots of filter updates as usual: deblock, tmix, aplify,
+    fftdnoiz, aderivative, aintegral, pal75bars, pal100bars,
+    adeclick, adeclip, lensfun (wrapper), colorconstancy, 1D LUT
+    filter (lut1d), cue, acue, transpose_npp, amultiply,
+    Block-Matching 3d (bm3d) denoising filter, acrossover filter,
+    audio denoiser as afftdn filter, sinc audio filter source,
+    chromahold, setparams, vibrance, xstack,
+    (a)graphmonitor filter yadif_cuda filter.
+  * AV1 parser
+  * Support for AV1 in MP4
+  * PCM VIDC decoder and encoder
+  * libtensorflow backend for DNN based filters like srcnn
+  * -- The following only enabled in third-party builds:
+  * ATRAC9 decoder
+  * AVS2 video decoder via libdavs2
+  * IMM4 video decoder
+  * Brooktree ProSumer video decoder
+  * MatchWare Screen Capture Codec decoder
+  * WinCam Motion Video decoder
+  * RemotelyAnywhere Screen Capture decoder
+  * AVS2 video encoder via libxavs2
+  * ILBC decoder
+  * SER demuxer
+  * Decoding S12M timecode in H264
+  * For complete changelog, see https://git.ffmpeg.org/gitweb/ffmpeg.git/shortlog/n4.1
+- Remove 0001-avcodec-libaom-fix-setting-amount-of-threads.patch
+  (fixed upstream (bsc#776cdd1), remove ffmpeg-CVE-2018-13305.patch,
+  remove 0001-avformat-flvenc-Check-audio-packet-size.patch,
+  remove cve-2017-17555.diff (fixed upstream).</comment>
+    <requestid>647061</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>37f308c26ec3a67811f01272a3c9e159</srcmd5>
+    <version>4.1</version>
+    <time>1544539300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655451</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ed823d050c03b639e34e4ba2c0501b6c</srcmd5>
+    <version>4.1</version>
+    <time>1549311561</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>666343</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f1369a6cd56d0bf332ccb4bfeaea17db</srcmd5>
+    <version>4.1.1</version>
+    <time>1552042731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681111</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c1e126f549f7f66173b9a81e100d43e2</srcmd5>
+    <version>4.1.1</version>
+    <time>1552380553</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a new filter line to rpmlintrc
+- Add trivial encoder rawvideo, already enabled in decoders</comment>
+    <requestid>683053</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b429646a053bb2bc12a05c14d3c9db29</srcmd5>
+    <version>4.1.2</version>
+    <time>1554276216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689489</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4f7a2d0cca3d67820a9ed3baf984176a</srcmd5>
+    <version>4.1.3</version>
+    <time>1554930579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692065</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>67937578566ead3f9faad1b547afaa1a</srcmd5>
+    <version>4.1.3</version>
+    <time>1557388982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700903</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3c863d85769dd796e1a642732fe03a92</srcmd5>
+    <version>4.1.3</version>
+    <time>1558129055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702838</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>ed967f441e85a60804a1998e3fb89414</srcmd5>
+    <version>4.1.3</version>
+    <time>1561405748</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-4.1-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  from OpenMandriva to optionally enable runtime enabling of
+  fdkaac/lame/x264/x265
+- Enable runtime enabling for fdkaac via --enable-libfdk-aac-dlopen
+- Rename bcond fdk_aac to fdk_aac_dlopen
+- Remove fdk-aac BuildRequires now it's only dlopen'd</comment>
+    <requestid>709184</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>972e277ccaa52240abd2375a5c190212</srcmd5>
+    <version>4.1.3</version>
+    <time>1562591128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713763</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fcbebb64577aca27891c655cd6dc9f04</srcmd5>
+    <version>4.2</version>
+    <time>1565178916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to FFmpeg 4.2 &quot;Ada&quot;
+  * tpad filter
+  * AV1 decoding support through libdav1d
+  * dedot filter
+  * chromashift and rgbashift filters
+  * freezedetect filter
+  * truehd_core bitstream filter
+  * dhav demuxer
+  * PCM-DVD encoder
+  * GIF parser
+  * vividas demuxer
+  * hymt decoder
+  * anlmdn filter
+  * maskfun filter
+  * hcom demuxer and decoder
+  * ARBC decoder
+  * libaribb24 based ARIB STD-B24 caption support (profiles A and C)
+  * Support decoding of HEVC 4:4:4 content in nvdec and cuviddec
+  * removed libndi-newtek
+  * agm decoder
+  * KUX demuxer
+  * AV1 frame split bitstream filter
+  * lscr decoder
+  * lagfun filter
+  * asoftclip filter
+  * Support decoding of HEVC 4:4:4 content in vdpau
+  * colorhold filter
+  * xmedian filter
+  * asr filter
+  * showspatial multimedia filter</comment>
+    <requestid>721323</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b339c96d5d2ff8125fd964d0aa6d7130</srcmd5>
+    <version>4.2</version>
+    <time>1565962239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723353</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>79ab9ef86077a781167208b1fb0b424d</srcmd5>
+    <version>4.2</version>
+    <time>1566912196</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  to ffmpeg-4.2-dlopen-fdk_aac.patch since we need dlopen only
+  for fdk_aac and looks like some other parts of the patch is
+  buggy.
+
+- Sync ffmpeg-4.2-dlopen-faac-mp3lame-opencore-x264-x265-xvid.patch
+  from upstream.
+
+- Disable LTO for arm, fixes build.</comment>
+    <requestid>725249</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>833e0958267e3c7bbed62559cae188d2</srcmd5>
+    <version>4.2</version>
+    <time>1568900828</time>
+    <user>maxlin_factory</user>
+    <comment>- Add 0001-avcodec-h2645_parse-zero-initialize-the-rbsp-buffer.patch
+  [boo#1149839, CVE-2019-15942]</comment>
+    <requestid>729720</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>758964b174fb2a8568701de8010468f5</srcmd5>
+    <version>4.2.1</version>
+    <time>1569369398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.1</comment>
+    <requestid>732021</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>35b5c11fb05460827862d51c87951a0a</srcmd5>
+    <version>4.2.1</version>
+    <time>1577972443</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused liboil BuildRequires. (forwarded request 760067 from StefanBruens)</comment>
+    <requestid>760194</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>7ba1ca990f9ee6a05b1460a7ac1f0aaa</srcmd5>
+    <version>4.2.1</version>
+    <time>1578867509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762875</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>829a6b1e5450ba974b2d1c20d30948d5</srcmd5>
+    <version>4.2.2</version>
+    <time>1579872048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766154</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8fafcc7341083999df5e63c680cc7467</srcmd5>
+    <version>4.2.2</version>
+    <time>1583526303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781304</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>56512980f635d3e956cb99fe46c619e5</srcmd5>
+    <version>4.2.2</version>
+    <time>1585668754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789667</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>e079891d944ebd6adf787b301deedc23</srcmd5>
+    <version>4.2.2</version>
+    <time>1586247850</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Samba support for Factory (as this needs a fix in Samba itself)
+  Add --enable-libsmbclient to configure, add BR on pkgconfig(smbclient)
+- License is now GPLv3+ by default (--enable-version3)</comment>
+    <requestid>790242</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>cf89151137e9b71cc4c7043de0c81d7e</srcmd5>
+    <version>4.2.2</version>
+    <time>1589403309</time>
+    <user>dimstar_suse</user>
+    <comment>- Throw out v4l2 m2m. This is likely the same case as boo#1041794.
+- Add 0001-avcodec-cbs_jpeg-Check-length-for-SOS.patch
+  [boo#1170767]</comment>
+    <requestid>802662</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>5dd33810eed3dba4fa0e170f9a07d54c</srcmd5>
+    <version>4.2.2</version>
+    <time>1591208937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809841</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fc70c5fe15d8cd443a7ffb34e110f659</srcmd5>
+    <version>4.2.3</version>
+    <time>1591862444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811904</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>264a2d99ce2bdcfa4c554b7d18fe032d</srcmd5>
+    <version>4.3.1</version>
+    <time>1594805550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820572</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>f403cc81835acdb9026153a80c2af12d</srcmd5>
+    <version>4.3.1</version>
+    <time>1595339033</time>
+    <user>dimstar_suse</user>
+    <comment>- Add librav1e support (forwarded request 821298 from FuchtelJockel)</comment>
+    <requestid>821475</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>f5af15d07df53734ed069c4260e991bf</srcmd5>
+    <version>4.3.1</version>
+    <time>1595949882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823004</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>3d3ee74819a040ce6cf78da9832ef833</srcmd5>
+    <version>4.3.1</version>
+    <time>1603030735</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust soversion.patch to include a symlink [boo#1177667]
+- Add 0001-lavf-srt-fix-build-fail-when-used-the-libsrt-1.4.1.patch</comment>
+    <requestid>841753</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>ac7cbb8930de23ca22e19c1c6f57c64c</srcmd5>
+    <version>4.3.1</version>
+    <time>1603545183</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable VMAF. This can be used to compute VMAF/PSNR/SSIM.
+- Add vmaf-trim-usr-local.patch .</comment>
+    <requestid>842612</requestid>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>4cc0a7a047d5ec5ac73af2eb60bc1f82</srcmd5>
+    <version>4.3.1</version>
+    <time>1607017089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851368</requestid>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>f4562a35d19a4701360da5d70ae52f52</srcmd5>
+    <version>4.3.1</version>
+    <time>1612182265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866363</requestid>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>54424495da77cb1dee7466608a8b177e</srcmd5>
+    <version>4.3.1</version>
+    <time>1613044111</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-avformat-vividas-improve-extradata-packing-checks-in.patch
+  [boo#1180519] [CVE-2020-35964]</comment>
+    <requestid>870496</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8a1b971dc1825b32f4cc3c02d44c12fc</srcmd5>
+    <version>4.3.2</version>
+    <time>1616598594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880065</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>840aaadeea6dfe3637f3a0129bf57e9e</srcmd5>
+    <version>4.4</version>
+    <time>1618859146</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable libdavd1 on Leap 15.2+ [boo#1184830]
+- Update to release 4.4</comment>
+    <requestid>886260</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>27ce50256e6e4490a99462e91e0a6598</srcmd5>
+    <version>4.4</version>
+    <time>1623268300</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable SVT-AV1 encoding</comment>
+    <requestid>897550</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>b36577f7e83675934310a53a316680d4</srcmd5>
+    <version>4.4</version>
+    <time>1626045888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905445</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>3516ee1e8c0f268609e24cb83c2faebf</srcmd5>
+    <version>4.4</version>
+    <time>1628751680</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911225</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>ee95830066f1c3c8ac5d0a2f240b9f2a</srcmd5>
+    <version>4.4</version>
+    <time>1630697132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914535</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>5416b54a7c6941b10b3083a598c0f45a</srcmd5>
+    <version>4.4</version>
+    <time>1633038174</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-CVE-2020-22037.patch</comment>
+    <requestid>921538</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>889127e075a347a2a73332bbbdb62ede</srcmd5>
+    <version>4.4.1</version>
+    <time>1635717321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928013</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>cd179760e99ccdd72ca28be1642a7290</srcmd5>
+    <version>4.4.1</version>
+    <time>1638387983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934732</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>8615ffb3904cc5f2895f38c6ad794dc7</srcmd5>
+    <version>4.4.1</version>
+    <time>1642633914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946828</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>ebbfce72891dd661676a3817efa91ca9</srcmd5>
+    <version>4.4.1</version>
+    <time>1645137600</time>
+    <user>dimstar_suse</user>
+    <comment>- Disamble libsmbclient usage (can always be built with
+  --with-smbclient): the usecase of ffmpeg directly accessing
+  smb:// shares is quite constructed (most users will have their
+  smb shares mounted).</comment>
+    <requestid>955492</requestid>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>9c070f06fe26a68d4bb6c3d65a575515</srcmd5>
+    <version>4.4.1</version>
+    <time>1647367434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961685</requestid>
+  </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>cd33d5a93d63c80d7c68046c78346010</srcmd5>
+    <version>4.4.1</version>
+    <time>1648062914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962666</requestid>
+  </revision>
+  <revision rev="51" vrev="7">
+    <srcmd5>f536cbc9be1548e2946dc00799415521</srcmd5>
+    <version>4.4.1</version>
+    <time>1648479493</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflicts for ffmpeg-5's tools</comment>
+    <requestid>964437</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>6627cea97934a7aab2ad9d0acb5418e4</srcmd5>
+    <version>4.4.2</version>
+    <time>1655665841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983492</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>102b7259afc5ee369db9ec7297020436</srcmd5>
+    <version>4.4.2</version>
+    <time>1661863697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999856</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0cc8df59122e68ebc79f225e14b857ff</srcmd5>
+    <version>4.4.3</version>
+    <time>1665503956</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 4.4.3:
+  * Stable bug fix release, mainly codecs, filter and format fixes.
+- Drop ffmpeg-sdl2-detection.patch: Fixed upstream.
+- Refresh patches with quilt:
+  * ffmpeg-libglslang-detection.patch
+  * ffmpeg-4.2-dlopen-fdk_aac.patch (forwarded request 1009347 from iznogood)</comment>
+    <requestid>1009591</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f20209697960b9cdc5cd7459469567b4</srcmd5>
+    <version>4.4.3</version>
+    <time>1668702231</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix
+  out of bounds read in update_block_in_prev_frame() (bsc#1205388). (forwarded request 1035935 from AZhou)</comment>
+    <requestid>1036210</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>ab33158be7d69e956c83d2bfb2dee32a</srcmd5>
+    <version>4.4.3</version>
+    <time>1671889877</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-CVE-2022-3109.patch: Backport from upstream to fix
+  null pointer dereference in vp3_decode_frame() (bsc#1206442). (forwarded request 1044384 from AZhou)</comment>
+    <requestid>1044594</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>4999f328fc995be386f0a6a59ecc6ca8</srcmd5>
+    <version>4.4.3</version>
+    <time>1674585716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060279</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f7cc874348cd489a572b278b8700fd8d</srcmd5>
+    <version>4.4.4</version>
+    <time>1682079337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080447</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>66f73bbeec3bef2ef4ffbb1eaa0026d5</srcmd5>
+    <version>4.4.4</version>
+    <time>1687900547</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch</comment>
+    <requestid>1095543</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>0a0e75cc46f2c56e31ad633c7a42365e</srcmd5>
+    <version>4.4.4</version>
+    <time>1698700202</time>
+    <user>anag+factory</user>
+    <comment>- Add ffmpeg-glslang-cxx17.patch
+- Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+  to resolve build failure with binutils &gt;= 2.41. [boo#1215945]</comment>
+    <requestid>1121164</requestid>
+  </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>45caa879a08270cac27720e38d10fa1c</srcmd5>
+    <version>4.4.4</version>
+    <time>1701972610</time>
+    <user>anag+factory</user>
+    <comment>- Copy codec list from ffmpeg-6</comment>
+    <requestid>1131456</requestid>
+  </revision>
+  <revision rev="62" vrev="5">
+    <srcmd5>5600c7b9d2ef2dbb586b7398622c2baf</srcmd5>
+    <version>4.4.4</version>
+    <time>1703800508</time>
+    <user>anag+factory</user>
+    <comment>- Update ffmpeg-glslang-cxx17.patch to build with glslang 14
+- Disable vmaf integration as ffmpeg-4 cannot handle vmaf&gt;=3
+- Delete vmaf-trim-usr-local.patch</comment>
+    <requestid>1135304</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,223 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e75ceacff9577c4bb3fb0ac08f9b7ab2</srcmd5>
+    <version>1.0.0</version>
+    <time>1527582569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610040</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bcadc9cf470ea92da1e2e94a7bb9e333</srcmd5>
+    <version>1.0.3.4</version>
+    <time>1552985895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.3.4:
+  * fixes for python2.7
+  * Various flake fixes
+  * More tests
+  * python 3.8 support</comment>
+    <requestid>682390</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e153d5fa155d527951096ce453155a70</srcmd5>
+    <version>1.0.4.2</version>
+    <time>1579955079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766930</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8bfa4c4c3356afb58d94aba249fe3404</srcmd5>
+    <version>1.2.0</version>
+    <time>1594293616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Return the default values of dayofwk and dayofyr when calendar
+    is '' (issue #173).
+  * fix treatment of masked arrays in num2date and date2num (issue #175).
+    Also make sure masked arrays are output from num2date/date2num if
+    masked arrays are input.
+  * Where possible, use timedelta arithmetic to decode times exactly within
+    num2date (issue #171).
+  * Make taking the difference between two cftime datetimes to produce a
+    timedelta exact to the microsecond; depending on the units encoding,
+    this enables date2num to be exact as well (issue #109).
+  * utime.date2num/utime.num2date now just call module level functions.
+    JulianDayFromDate/DateFromJulianDay no longer used internally (PR #180).
+  * add isoformat method for compatibility with python datetime (issue #152).
+  * make 'standard' default calendar for cftime.datetime
+    so that dayofwk,dayofyr methods don't fail (issue #169).
+  * change dayofwk and dayofyr attributes into properties (issue #158)
+  * fix for issue #165 (python datetime should be returned when
+    only_use_cftime_datimes=False).
+  * include pyproject.toml in MANIFEST.in so it gets 
+    included in source tarball (issue #154).
+  * fix microsecond formatting issue, ensure identical results
+    computed for arrays and scales (issue #143, PR #146).
+  * improved exceptions for time differences (issue #128, PR #131).
+  * fix intersphinx entries (issue #133, PR #133)
+  * make only_use_cftime_datetimes=True by default, so cftime datetime
+    instances are returned by default by num2date (instead of returning python
+    datetime instances where possible). Issue #136, PR #135.
+  * Add daysinmonth attribute (issue #137, PR #138).
+  * If only_use_python_datetimes=True and only_use_cftime_datetimes=False,
+    num2date only returns python datetime instances and raises an exception
+    if this is not possible.
+  * Fix for fractional seconds in reference date in units string
+- Add numpy-devel to BuildRequires.</comment>
+    <requestid>819626</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1da4d164ddbd50ef4b5ac1a0122b61ae</srcmd5>
+    <version>1.4.1</version>
+    <time>1614684971</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.4.1:
+ 
+ * Restore use of calendar-specific sub-classes in `cftime.num2date`,
+   `cftime.datetime.__add__`, and `cftime.datetime.__sub__`.  The use of them 
+   will be removed in a later release.
+ * add 'fromordinal' static method to create a cftime.datetime instance
+   from a julian day ordinal and calendar (inverse of 'toordinal').
+ * `cftime.date2num` will now always return an array of integers, if the units
+   and times allow.  Previously this would only be true if the units were
+   'microseconds' (PR #225).  In other circumstances, as before, `cftime.date2num`
+   will return an array of floats.
+ * Rewrite of julian day/calendar functions (_IntJulianDayToCalendar and 
+   _IntJulianDayFromCalendar) to remove GPL'ed code.  cftime license
+   changed to MIT (to be consistent with netcdf4-python). 
+ * Added datetime.toordinal() (returns julian day, kwarg 'fractional'
+   can be used to include fractional day).
+ * cftime.datetime no longer uses calendar-specific sub-classes.
+ * fix for issue #211 (PR #212) bug in masked array handling in date2num)
+ * switch from travis/appveyor to github actions for CI/CD (PR #215).
+ * switch to cython language_level=3 (no more support for python 2) (PR #217).
+ * add __init__.py to test dir so pytest coverage works again. Add Coveralls
+   step to github actions workflow to upload coverage data to coveralls.io (PR
+   #217).
+ * move package under 'src' directory so cftime can be imported
+   from install dir (PR #218 - see
+   https://blog.ionelmc.ro/2014/05/25/python-packaging/#the-structure).
+ * zero pad years in strtime (issue #194)
+ * have cftime.datetime constuctor create 'calendar-aware' instances (default is
+   'standard' calendar, if calendar='' or None the instance is not calendar aware and some
+   methods, like dayofwk, dayofyr, __add__ and __sub__, will not work). Fixes issue #198.
+   The calendar specific sub-classes are now deprecated, but remain for now
+   as stubs that just instantiate the base class and override __repr__.
+ * update regex in _cpdef _parse_date so reference years with more than four
+   digits can be handled. 
+ * Change default calendar in cftime.date2num from 'standard' to None
+   (calendar associated with first input datetime object is used).
+ * add `cftime.datetime.tzinfo=None` for compatibility with python datetime
+   (issue #208).
+ * num2date uses 'proleptic_gregorian' scheme when basedate is post-Gregorian but date is pre-Gregorian
+   (issue #182).
+ * fix 1.2.0 regression (date2num no longer works with numpy scalar array inputs, issue #185).
+ * Fix for issue #187 (have date2num round to the nearest second when within 1
+   microsecond).
+ * Fix for issue #189 (leap years calculated incorrectly for negative years in
+   proleptic_gregorian calendar).
+- No longer build for Python 3.6, due to no NumPy.
+- Correct license file name.</comment>
+    <requestid>876106</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18b1a3da6119cc623bef109891e31c93</srcmd5>
+    <version>1.6.0</version>
+    <time>1648479652</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * fix for masked array inputs
+  * improved performance of the num2date algorithm, in some cases providing
+    an over 100x speedup
+  * fix for date2index for select != 'exact' when select='exact' works
+  * silently change calendar='gregorian' to 'standard' internally, 
+    since 'gregorian' deprecated in CF v1.9
+  * add &quot;is_leap_year&quot; function
+  * wheels that work on Apple M1 (arm64) available on pypi.
+  * added support for &quot;common_year&quot; and &quot;common_years&quot; units for &quot;noleap&quot; 
+    and &quot;365_day&quot; calendars
+  * check consistency of year arg and has_year_zero kwarg in cftime.datetime
+    (issue #248).  Also assume if has_year_zero not specified it should be True
+    if year=0. Allow replace method to change has_year_zero. Issue UserWarning
+    if year set to zero and calendar default is changed from False to True
+    (so that user is aware the resulting instance will not be CF compliant).
+  * '360_day' was missing from list of 'idealized' calendars.
+  * fixed a bug that led to subclasses losing their type identity upon
+    pickling
+  * Change default behavior of proleptic_gregorian to has_year_zero=T
+    (to be consistent with ISO-8601 since CF does not specify the year zero convention
+    for this calendar). Issue warning when trying to
+    to create a cftime.datetime instance that is not allowed in CF
+  * clean-up deprecated calendar specific subclasses
+  * added string formatting support to `cftime.datetime` objects
+    (via `cftime.datetime.__format__`)
+  * add support for astronomical year numbering (including year zero) for
+    real-world calendars using 'has_year_zero' cftime.datetime kwarg
+    Default is False for 'real-world' calendars ('julian', 'gregorian'/'standard', 
+    'proleptic_gregorian'). Ignored for idealized calendars like '360_day</comment>
+    <requestid>965204</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a2937a93f1c1f3cde55b216e82b28aee</srcmd5>
+    <version>1.6.1</version>
+    <time>1664302440</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006300</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d77129816b97a5b091923c3ed6c26d3b</srcmd5>
+    <version>1.6.2</version>
+    <time>1667067454</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1031655 from yarunachalam
+
+- Update to version 1.6.2 
+    * num2date should not fail on an empty integer array (issue #287).
+    * longdouble keyword in date2num so that a roundtrip from a time to a date
+      and back again does not lose microsecond precision when the units require
+      the times be encoded as floating point values (PR #284)
+    * added strptime method (issue #277).
+    * cibuildwheel wheel-building workflow added to github actions by @ocefpaf (triggers binary
+      wheel builds and uploads to pypi automatically when GH release created). PR #290.</comment>
+    <requestid>1032181</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4e7c7bfa5fa5f21701855c21f6f9c352</srcmd5>
+    <version>1.6.2</version>
+    <time>1693482351</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108098</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>285c89b2f81f682863f7c277c34bebb6</srcmd5>
+    <version>1.6.3</version>
+    <time>1701462398</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6.3:
+  * add support for formats without separators in strptime (e.g.
+    '20200229', issue #301).
+  * set the c_api_binop_methods compiler directive to True to
+    retain Cython 0.x behavior for arithmetic operators for
+    Cython &gt;= 3.0.0
+  * support for python 3.12.
+- drop cython3.patch (upstream)
+
+- Update to version 1.6.2
+  * silently change calendar='gregorian' to 'standard' internally,
+  * added support for &quot;common_year&quot; and &quot;common_years&quot; units for &quot;noleap&quot;
+    Default is False for 'real-world' calendars ('julian', 'gregorian'/'standard',
+  * add &quot;change_calendar&quot; cftime.datetime method to switch to another
+  * remove legacy `utime` class, and legacy `JulianDayFromDate` and
+   `cftime.datetime.__add__`, and `cftime.datetime.__sub__`.  The use of them
+ * Rewrite of julian day/calendar functions (_IntJulianDayToCalendar and
+   changed to MIT (to be consistent with netcdf4-python).
+   digits can be handled.
+  * include pyproject.toml in MANIFEST.in so it gets
+  * fix for date2num error when converting a DatetimeProlepticGregorian</comment>
+    <requestid>1130212</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+--- tenant.conf.ORIG	2023-03-07 17:08:27.642929656 +0100
++++ tenant.conf	2023-03-07 17:09:23.018891153 +0100
+@@ -106,7 +106,8 @@
+ # might provide a signed list of EK public key hashes.  Then you could write
+ # an ek_check_script that checks the signature of the allowlist and then
+ # compares the hash of the given EK with the allowlist.
+-require_ek_cert = True
++# require_ek_cert = True
++require_ek_cert = False
+ 
+ # Optional script to execute to check the EK and/or EK certificate against a
+ # allowlist or any other additional EK processing you want to do. Runs in

@@ -1,0 +1,7 @@
+<package name="perl-ExtUtils-MakeMaker" project="openSUSE:Factory">
+  <title>ExtUtils-MakeMaker Perl module</title>
+  <description>Module::Build is the official heir apparent to MakeMaker and we encourage people to work on M::B rather than spending time adding features to MakeMaker.
+
+This is here just to fulfil a dependency in Jifty.</description>
+  <devel project="devel:languages:perl" package="perl-ExtUtils-MakeMaker"/>
+</package>

@@ -1,0 +1,59 @@
+From: Ludwig Nussel <lnussel@suse.de>
+Subject: debug info is in /usr/lib/debug/usr/lib/modules
+References: boo#1190434
+Upstream: to be done (must not break Red Hat)
+
+---
+ defs.h    |    2 +-
+ help.c    |    2 +-
+ symbols.c |    4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: b/defs.h
+===================================================================
+--- a/defs.h
++++ b/defs.h
+@@ -413,7 +413,7 @@ struct number_option {
+ #define PIPE_OPTIONS (FROM_COMMAND_LINE | FROM_INPUT_FILE | REDIRECT_TO_PIPE | \
+                       REDIRECT_TO_STDPIPE | REDIRECT_TO_FILE)
+ 
+-#define DEFAULT_REDHAT_DEBUG_LOCATION  "/usr/lib/debug/lib/modules"
++#define DEFAULT_REDHAT_DEBUG_LOCATION  "/usr/lib/debug/usr/lib/modules"
+ 
+ #define MEMORY_DRIVER_MODULE        "crash"
+ #define MEMORY_DRIVER_DEVICE        "/dev/crash"
+Index: b/help.c
+===================================================================
+--- a/help.c
++++ b/help.c
+@@ -9649,7 +9649,7 @@ README_ENTER_DIRECTORY,
+ README_MEMORY_DRIVER,
+ "",
+ "  If the kernel file is stored in /boot, /, /boot/efi, or in any /usr/src",
+-"  or /usr/lib/debug/lib/modules subdirectory, then no command line arguments",
++"  or " DEFAULT_REDHAT_DEBUG_LOCATION " subdirectory, then no command line arguments",
+ "  are required -- the first kernel found that matches /proc/version will be",
+ "  used as the namelist.",
+ "  ",
+Index: b/symbols.c
+===================================================================
+--- a/symbols.c
++++ b/symbols.c
+@@ -335,7 +335,7 @@ check_gnu_debuglink(bfd *bfd)
+ 
+   	if ((pc->debuginfo_file = (char *)
+ 	    malloc(((strlen(namelist) + strlen("/.debug/") +
+-	    + strlen(".debug") + strlen(" /usr/lib/debug/boot/ "))*10)
++	    + strlen(".debug") + strlen(" /usr/lib/debug/usr/lib/modules/ "))*10)
+ 	    + strlen(pc->namelist_debug ? pc->namelist_debug : " "))) == NULL)
+ 		error(FATAL, "debuginfo file name malloc: %s\n", 
+ 			strerror(errno));
+@@ -411,7 +411,7 @@ check_gnu_debuglink(bfd *bfd)
+ 		}
+ 	}
+ 
+-	sprintf(pc->debuginfo_file, "/usr/lib/debug/boot/%s", contents);
++	sprintf(pc->debuginfo_file, "/usr/lib/debug/%s/%s", dirname, contents);
+ 	if (separate_debug_file_exists(pc->debuginfo_file, crc32, &exists)) {
+ 		if (CRASHDEBUG(1)) 
+ 			fprintf(fp, "%s: CRC matches\n", pc->debuginfo_file);

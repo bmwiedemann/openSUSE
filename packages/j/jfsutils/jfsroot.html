@@ -1,0 +1,211 @@
+<html>
+<head>
+  <title>JFS Root Boot HOWTO</title>
+</head>
+<body bgcolor="#FFFFFF">
+<center><h1>JFS Root Boot HOWTO</h1></center>
+Paul Larson <A HREF="mailto:plars@austin.ibm.com">plars@austin.ibm.com</A><br>
+v1.0, May 22, 2001 - Copyright &copy; International Business Machines  Corp., 2001
+<hr>
+1. <A HREF="jfsroot.html#1">Introduction</A><br>
+2. <A HREF="jfsroot.html#2">Assumptions/Prerequisites</A><br>
+3. <A HREF="jfsroot.html#3">Converting an ext2 based system to JFS</A>
+<li>3.1 <A HREF="jfsroot.html#3.1">Build the kernel with JFS support</A>
+<li>3.2 <A HREF="jfsroot.html#3.2">Create the JFS filesystem</A>
+<li>3.3 <A HREF="jfsroot.html#3.3">Copy the root filesystem</A>
+<li>3.4 <A HREF="jfsroot.html#3.4">Final setup</A>
+<li>3.5 <A HREF="jfsroot.html#3.5">Reboot</A>
+
+<A NAME="1">
+<h3>1. Introduction:</h3>
+This HOWTO describes a method for converting an ext2 filesystem based 
+Linux system to one running entirely on IBM's Journaled File System (JFS).  
+For further information about JFS and to download the latest version of 
+JFS, please visit the JFS for Linux web site at  
+<A HREF="http://oss.software.ibm.com/developerworks/opensource/jfs/">http://oss.software.ibm.com/developerworks/opensource/jfs/</A>.
+
+<A NAME="2">
+<h3>2. Assumptions/Prerequisites:</h3>
+Before we get started, there are two assumptions that will be made in 
+this document:  
+<li>You must already have Linux installed and running  
+<li>You must have an empty partition, partitioned as type 83 (Linux).  
+It doesn't matter if this partition is formatted or not, but we'll be 
+reformatting it as JFS so be prepared to lose anything you might already 
+have on it.  
+<p>
+The examples in this document assume that you just have one big partition 
+for your root filesystem and don't have separate mounts for /home, /usr, 
+etc.  It's ok if you do have separate partitions for those, but you'll 
+need to have enough free space to copy those to the new jfs partition, 
+and modify the /etc/fstab file to remove them or change the mount points as 
+necessary.  Finally, my root filesystem is on /dev/hda5 and the new 
+partition that I'm going to format as JFS is /dev/hda6.  This is system 
+specific though, so you'll need to substitute the right partitions from 
+your system.  
+<p>Something else to consider is that we will need to patch and recompile 
+the kernel to add support for JFS.  This isn't hard to do, but if you've 
+never recompiled a kernel before, this probably shouldn't be your first 
+experience with it.
+
+<A NAME="3">
+<h3>3. Converting an ext2 based system to JFS</h3>
+No commercial Linux distributions have picked up JFS yet, as it is still 
+in beta.  Hopefully soon, building a pure JFS system will be as easy as 
+selecting to format your partitions as JFS when you install your 
+favorite Linux distribution, but for now this procedure is the easiest 
+way to create a system running on JFS.
+<p>
+The following sections describe the steps necessary to build a JFS root 
+filesystem and boot from it.
+
+<A NAME="3.1">
+<h3>3.1 Build the kernel with JFS support</h3>
+Download the latest 2.4.x kernel from <A HREF="ftp://ftp.kernel.org">ftp.kernel.org</A>, 
+and the latest jfs-x.y.z-patch.tar.gz from the 
+<A HREF="http://oss.software.ibm.com/developerworks/opensource/jfs">JFS for Linux</A> 
+web site to /tmp.  Extract them into separate subdirectories.  Change 
+directory into the base directory of the kernel source and patch the kernel.
+
+<pre>
+#cd /usr/src
+#rm linux
+#tar -xvzf /tmp/linux-2.4.3.tar.gz
+#mv linux linux-2.4.3
+#ln -s linux-2.4.3 linux
+#mkdir jfs
+#cd jfs
+#tar -xvzf /tmp/jfs-0.3.1-patch.tar.gz
+#cd /usr/src/linux
+#patch -p1 < ../jfs/jfs-2.4.0-v0.3.1-patch
+#patch -p1 < ../jfs/jfs-common-v0.3.1-patch
+</pre>
+
+Configure the kernel using make config, make menuconfig, or make xconfig 
+(whichever you prefer).  In the section labeled "Code maturity level 
+options", turn on the item that says "Prompt for development and/or 
+incomplete code/drivers."  In the section labeled "File systems" turn on 
+the option for "JFS filesystem support."  Make sure to turn on JFS support 
+so that it is compiled into the kernel, NOT as a module.  Configure the 
+rest of the kernel as needed for your system.  Build the kernel with a 
+<tt>make dep; make clean; make bzImage</tt> and if necessary, 
+<tt>make modules; make modules_install</tt>.  Then, copy the new kernel into /boot.
+
+<pre>
+#make dep
+#make clean
+#make bzImage
+#cp arch/i386/boot/bzImage /boot/vmlinuz-2.4.0-jfs
+</pre>
+
+Now we need to build the JFS utilities.  These are the tools for formatting 
+a JFS filesystem, checking it for errors, extending the size, and more.
+
+<pre>
+#cd fs/jfs/utils
+#make
+#make install
+</pre>
+
+Next, we need to add an entry for LILO so that we can boot with our new 
+kernel that can use a JFS filesystem.
+Edit /etc/lilo.conf and add an entry for the new kernel similar to this:
+<pre>
+image=/boot/vmlinuz-2.4.0-jfs
+	label=jfsboot
+	read-only
+	root=/dev/hda5
+</pre>
+
+Run <tt>/sbin/lilo</tt> to to activate the new configuration and reboot 
+into the new kernel.
+
+<A NAME="3.2">
+<h3>3.2 Create the JFS filesystem</h3>
+Now that we have JFS support in the kernel, it's time to format our 
+empty partition as JFS.
+<pre>
+#mkfs -t jfs /dev/hda6
+
+mkfs.jfs development version: $Name: v0_3_1 $
+
+Warning!  All data on device /dev/hda6 will be lost!
+
+Continue? (Y/N) y
+   \
+
+Format completed successfully.
+
+5120608 kilobytes total disk space.
+</pre>
+
+<A NAME="3.3">
+<h3>3.3 Copy the root filesystem</h3>
+This is an easy step and requires very little work on your part, but it 
+will take the most time to complete.  First, unmount any NFS, SMB, or 
+cdroms that are mounted.  Create a mount point for the new 
+JFS partition and mount it.  There are a few things to remember before we 
+start copying files.  Don't copy /proc over, but do create a mount point 
+for it after you are done. If you didn't or couldn't unmount some of your 
+NFS mounts or cdroms, remember to skip them when you do the copy.  Copy 
+everything else using <tt>cp -a</tt>.
+
+<pre>
+#mkdir /jfsvol
+#mount -t jfs /dev/hda6 /jfsvol
+#cd /
+#cp -a bin etc lib boot dev home usr var [...] /jfsvol
+#mkdir /jfsvol/proc
+</pre>
+
+<A NAME="3.4">
+<h3>3.4 Final setup</h3>
+Before we reboot into our new root partition, there are a just a couple of 
+final things that need to be done.  First, we need to change the /etc/fstab 
+entry for the root partition, but you need to be certain to change the 
+right one.  Remember that the fstab file we want to work with is the one 
+under /jfsvol/etc.  So edit this file, and look for the line describing 
+the root partition.  Mine looks like this:
+<pre>
+LABEL=/		/	ext2	defaults	1 1
+</pre>
+
+We want to change that to say:
+<pre>
+/dev/hda6	/	jfs	defaults	1 1
+</pre>
+
+You can now unmount /jfsvol.
+
+Edit /etc/lilo.conf to point to the new root partition.  I'm 
+paranoid, so I like to just copy and paste the one I already have for the 
+jfs kernel and modify the root= line to point to the new partition.  
+You'll also need to give it a new label.  The new section on my system 
+looks like this:
+<pre>
+default=jfsboot2
+...
+image=/boot/vmlinuz-2.4.0-jfs
+	label=jfsboot2
+	read-only
+	root=/dev/hda6
+</pre>
+
+Make sure that you run 'lilo' again before you reboot.
+
+<A NAME="3.5">
+<h3>3.5 Reboot</h3>
+Congratulations! If you followed these steps, your system is now 
+running completely on JFS.  To verify this, type <tt>mount</tt> and you 
+should see output similar to this:
+<pre>
+/dev/hda6 on / type jfs (rw)
+none on /proc type proc (rw)
+none on /dev/pts type devpts (rw,gid=5,mode=620)
+</pre>
+
+Assuming everything works well, and you don't want or need to go back to 
+your old system, the old root partition can now be reformatted as JFS and 
+turned into a /home mount, or anything else you want.
+</body>
+</html>

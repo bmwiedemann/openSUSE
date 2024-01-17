@@ -1,0 +1,5 @@
+<package name="rfc-read" project="openSUSE:Factory">
+  <title>rfc-read</title>
+  <description></description>
+  <devel project="utilities" package="rfc-read"/>
+</package>

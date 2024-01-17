@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Wed May 11 06:43:07 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag 3.0.0 milestone M2
+  * port to maven 3
+- Added patches:
+  * 0001-MDEPLOY-291-Update-POM-parent-and-Maven-22.patch
+    + upstream patch to port tests to modern maven framework
+  * 0002-Fix-tests-with-Java-16.patch
+    + Add a profile to run tests with modular Java versions
+- Add with tests option
+
+-------------------------------------------------------------------
+Tue Mar 22 12:57:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Sun Nov 24 17:18:37 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
+Fri Apr  5 15:14:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-deploy-plugin 2.8.2

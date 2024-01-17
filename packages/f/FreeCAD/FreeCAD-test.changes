@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Mon Sep 11 10:55:03 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.21.1
+
+-------------------------------------------------------------------
+Thu May  4 11:39:34 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Tue Dec  6 19:57:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.20.2
+
+-------------------------------------------------------------------
+Tue Aug 16 00:33:06 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.20.1
+
+-------------------------------------------------------------------
+Tue Jun 14 17:12:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.20
+
+-------------------------------------------------------------------
+Sun Feb  6 17:33:16 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Run unittests manually, to make test failures visible between
+  noisy output
+- Bump version
+
+-------------------------------------------------------------------
+Wed May  6 07:02:41 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Only enable gmsh BuildRequires on Tumbleweed, it's not available
+  in Leap 15
+
+-------------------------------------------------------------------
+Sat Jul 27 03:34:10 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix inverted logic when evaluating test suite exit code
+- Add gmsh mesher to BuildRequires, increase FEM test coverage
+
+-------------------------------------------------------------------
+Tue Feb 12 21:10:12 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- disable builds for 32bit and s390x, test suite fails and it makes no
+  sense to use FreeCAD on small systems or mainframes...
+
+-------------------------------------------------------------------
+Wed Sep  5 14:50:23 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Aug 28 17:10:43 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- initial package of test package. Just for running the test suite
+  of installed FreeCAD rpm, so no binary rpm gets build on purpose.
+

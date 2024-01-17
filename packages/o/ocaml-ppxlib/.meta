@@ -1,0 +1,11 @@
+<package name="ocaml-ppxlib" project="openSUSE:Factory">
+  <title>Base library and tools for ppx rewriters</title>
+  <description>The ppxlib project provides the basis for the ppx system, which is
+currently the officially supported method for meta-programming in
+OCaml. It offers a principled way to generate code at compile time in
+OCaml projects.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppxlib"/>
+  <url>https://opam.ocaml.org/packages/ppxlib</url>
+</package>

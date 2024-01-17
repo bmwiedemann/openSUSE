@@ -1,0 +1,32 @@
+From 9eabe363db92c006d7542dca38619f2d0d65dd3a Mon Sep 17 00:00:00 2001
+From: llyyr <llyyr.public@gmail.com>
+Date: Tue, 7 Mar 2023 06:39:12 +0530
+Subject: [PATCH] Don't link against gumbo
+
+---
+ meson.build | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index c7b5a8b..1f628af 100644
+--- a/meson.build
++++ b/meson.build
+@@ -40,7 +40,6 @@ else
+   libjpeg = dependency('libjpeg')
+   libjbig2dec = cc.find_library('jbig2dec')
+   libopenjp2 = dependency('libopenjp2')
+-  gumbo = dependency('gumbo')
+   tesseract = dependency('tesseract')
+   leptonica = dependency('lept')
+   mujs = dependency('mujs')
+@@ -49,7 +48,6 @@ else
+     libjpeg,
+     libjbig2dec,
+     libopenjp2,
+-    gumbo,
+     tesseract,
+     leptonica,
+     mujs
+-- 
+2.39.2
+

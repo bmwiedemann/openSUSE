@@ -1,0 +1,32 @@
+From 8016c10e7216394bc66281f2d9be740140b6fad6 Mon Sep 17 00:00:00 2001
+From: Fabio Fantoni <fantonifabio@tiscali.it>
+Date: Tue, 21 Dec 2021 19:13:54 +0000
+Subject: [PATCH] meson: remove unknown arguments that cause fail to build
+
+The build was failing with:
+retro-gtk/meson.build:188:4:
+ERROR: Got unknown keyword arguments "export_packages", "namespace"
+
+Checking https://mesonbuild.com/Pkgconfig-module.html the arguments
+"export_packages" and "namespace" are not present in pkg.generate, so
+I removed them to make the build complete
+---
+ retro-gtk/meson.build | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/retro-gtk/meson.build b/retro-gtk/meson.build
+index 093523c..b93e007 100644
+--- a/retro-gtk/meson.build
++++ b/retro-gtk/meson.build
+@@ -189,8 +189,6 @@ pkg.generate(
+     description: 'A simple GObject game controller library',
+       libraries: retro_gtk_lib,
+            name: 'retro-gtk',
+-      namespace: 'Retro',
+-export_packages: 'retro-gtk',
+        filebase: 'retro-gtk-' + retro_gtk_api_version,
+         version: meson.project_version(),
+         subdirs: 'retro-gtk',
+-- 
+2.34.1
+

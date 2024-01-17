@@ -1,0 +1,20 @@
+Index: gpomme/gpomme-c.desktop
+===================================================================
+--- gpomme/gpomme-c.desktop.orig
++++ gpomme/gpomme-c.desktop
+@@ -6,4 +6,4 @@ Icon=gpomme
+ Exec=gpomme -c
+ StartupNotify=true
+ Type=Application
+-Categories=Utility
++Categories=System;Settings;HardwareSettings;
+Index: gpomme/gpomme.desktop
+===================================================================
+--- gpomme/gpomme.desktop.orig
++++ gpomme/gpomme.desktop
+@@ -6,4 +6,4 @@ Icon=gpomme
+ Exec=gpomme
+ StartupNotify=true
+ Type=Application
+-Categories=Utility
++Categories==System;Settings;HardwareSettings;

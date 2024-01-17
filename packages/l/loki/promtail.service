@@ -1,0 +1,27 @@
+[Unit]
+Description=promtail is the agent responsible for gathering logs and sending them to Loki.
+Documentation=https://github.com/grafana/loki/blob/master/docs/promtail.md
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Restart=always
+User=root
+EnvironmentFile=-/etc/sysconfig/promtail
+ExecStart=/usr/bin/promtail -config.file=${CONFIG_FILE}
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

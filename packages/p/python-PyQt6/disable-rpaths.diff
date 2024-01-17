@@ -1,0 +1,10 @@
+Index: PyQt5_gpl-5.12/designer/designer.pro-in
+===================================================================
+--- PyQt5_gpl-5.12.orig/designer/designer.pro-in
++++ PyQt5_gpl-5.12/designer/designer.pro-in
+@@ -1,4 +1,5 @@
+ CONFIG      += plugin @QTCONFIG@ warn_on
++CONFIG      -= rpath_libdirs
+ QT          += designer
+ 
+ # Work around QTBUG-39300.

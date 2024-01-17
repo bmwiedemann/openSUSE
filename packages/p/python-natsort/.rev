@@ -1,0 +1,222 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7f3c91d1bc33e5ad1004eb7f2836eb5</srcmd5>
+    <version>5.3.0</version>
+    <time>1526371969</time>
+    <user>dimstar_suse</user>
+    <comment>naturally sorting in python</comment>
+    <requestid>606004</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ef92306d83a39b9be0858ad6004903c</srcmd5>
+    <version>5.3.1</version>
+    <time>1526463651</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.3.1:
+  * No bugfixes or features, just infrastructure and installation
+    updates.
+  * Move to defining dependencies with Pipfile.
+  * Development layout is now src/natsort/ instead of natsort/.
+  * Add bumpversion infrastructure.
+  * Extras can be installed by &quot;[]&quot; notation.
+</comment>
+    <requestid>607414</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd7724a7d202737ca970df2703954236</srcmd5>
+    <version>5.3.2</version>
+    <time>1527583258</time>
+    <user>dimstar_suse</user>
+    <comment>- Version set the requires based on setup.py
+
+- specfile:
+  * added setuptools as a requirements
+
+- update to version 5.3.2:
+  * Fix bug that prevented install on old versions of setuptools.
+  * Revert layout from src/natsort/ back to natsort/ to make user
+    testing simpler.</comment>
+    <requestid>611489</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>208101e59e2d2211fa6cfae8e96d1efa</srcmd5>
+    <version>5.3.3</version>
+    <time>1531947168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621668</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>084bf1b6337190abb5782575c7516603</srcmd5>
+    <version>5.3.3</version>
+    <time>1535705191</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure tests pass in python 3.7</comment>
+    <requestid>632154</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>127f64283975bbf16aaf30d03e68e496</srcmd5>
+    <version>5.4.0</version>
+    <time>1536679100</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634497</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>deba97bbf49204e17339734310bcbf8c</srcmd5>
+    <version>5.4.1</version>
+    <time>1537263831</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636118</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a950588aa479cefb7d5f13331d6c6d9</srcmd5>
+    <version>5.5.0</version>
+    <time>1543224585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651335</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6dd6a9054f0409a6e1024cf29b0573f3</srcmd5>
+    <version>6.0.0</version>
+    <time>1551113462</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>673242</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fa760d728df62cebf7f147b3ff96d197</srcmd5>
+    <version>6.2.0</version>
+    <time>1574859189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749182</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b9ef3c3428793a2931532944f943c091</srcmd5>
+    <version>6.2.0</version>
+    <time>1577450949</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude failing tests due to gh#SethMMorton/natsort#107
+- Add too_slow.patch which switches off suppressing
+  hypothesis.HealthCheck.too_slow health check
+  (gh#SethMMorton/natsort#108).</comment>
+    <requestid>759229</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ece0a4a155fff65c79706280763f41e</srcmd5>
+    <version>7.0.0</version>
+    <time>1578606691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.0:
+  - Update testing dependency versions
+  - Support for Python 2
+
+- Upgrade to the preliminary version 6.2.0+3843c27, which fixes
+  our testing problems.
+- Remove too_slow.patch which is harmful now.</comment>
+    <requestid>762092</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>824952573585b229a3b661dfec314d75</srcmd5>
+    <version>7.0.1</version>
+    <time>1581456234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772536</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8d357fba717dbdc130520214ca890f25</srcmd5>
+    <version>7.0.1</version>
+    <time>1587659789</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop py2 dependency from py3 only package</comment>
+    <requestid>796490</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a5d3f876b58a548df7318e54df13b754</srcmd5>
+    <version>7.0.1</version>
+    <time>1591742697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809871</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>82d10af30738b2759a96c434669cf315</srcmd5>
+    <version>7.1.0</version>
+    <time>1606328980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850141</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f1fdfb1aa6a0cc37f06b3559508c7e79</srcmd5>
+    <version>7.1.0</version>
+    <time>1611163636</time>
+    <user>dimstar_suse</user>
+    <comment>- Set up alternatives correctly.
+</comment>
+    <requestid>864431</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>129bbfc1913bb532c79e64a68fa92044</srcmd5>
+    <version>7.1.1</version>
+    <time>1612272335</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.1:
+ - Use GitHub Actions instead of Travis-CI (issue #125)
+ - No longer pin testing dependencies (issue #126)
+ - Correct a minor typo</comment>
+    <requestid>868437</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2c5e8a59ca273240b2fba24d4066c618</srcmd5>
+    <version>8.0.2</version>
+    <time>1640876114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942711</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>24175d7d10c781ef4f032cb9be09ef39</srcmd5>
+    <version>8.1.0</version>
+    <time>1644188018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951387</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>17c03964d690b06a15ff9af6fccd67b4</srcmd5>
+    <version>8.1.0</version>
+    <time>1661020059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998083</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ef984d70a209bf1115534454706817f2</srcmd5>
+    <version>8.2.0</version>
+    <time>1663002498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002721</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>29aaf7182949a5f0efa84847f2ce31c5</srcmd5>
+    <version>8.2.0</version>
+    <time>1686753017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093039</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a60ca91bc70d56ad36b3f1cc670372cf</srcmd5>
+    <version>8.4.0</version>
+    <time>1690809845</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1098030</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6da763fc062e3689325651b05749d9d1</srcmd5>
+    <version>1.0.2</version>
+    <time>1515505084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561471</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>94623d1fe972d6493a015baa073eb0ad</srcmd5>
+    <version>1.0.3</version>
+    <time>1520502885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.0.3</comment>
+    <requestid>583124</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a51ab4e71c78dab756cd2c53cf07511f</srcmd5>
+    <version>1.0.3</version>
+    <time>1525425949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602948</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>69609cd35756a2736fcab9e6bc9b855d</srcmd5>
+    <version>1.0.5</version>
+    <time>1530567051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619840</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5d41b105503020288144f8aef98fa612</srcmd5>
+    <version>1.0.5</version>
+    <time>1532774314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625290</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>81914e57dd8e0398b49a4fc44fd9582b</srcmd5>
+    <version>1.0.7</version>
+    <time>1545866657</time>
+    <user>dimstar_suse</user>
+    <comment>- brotli 1.0.7</comment>
+    <requestid>658021</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e2934b472f3b78e4189529ab548fd651</srcmd5>
+    <version>1.0.7</version>
+    <time>1551468550</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679445</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>cabd56c0a7289492686a39f6f0a093e3</srcmd5>
+    <version>1.0.7</version>
+    <time>1574548401</time>
+    <user>dimstar_suse</user>
+    <comment>- %make_jobs is deprecated and replaced by %cmake_build</comment>
+    <requestid>749854</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>6f2a7a3e6568dbeb4f11c9dfcaac6414</srcmd5>
+    <version>1.0.7</version>
+    <time>1597390180</time>
+    <user>dimstar_suse</user>
+    <comment>Fix W: shared-lib-calls-exit /usr/lib64/libbrotlienc.so.1.0.7 
+  exit@GLIBC_2.2.5 by adding -DCMAKE_C_FLAGS=&quot;-DBROTLI_ENCODER_CLEANUP_ON_OOM&quot; (forwarded request 826074 from andythe_great)</comment>
+    <requestid>826092</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cd6d138c53a24968fad1c4a87395f1c7</srcmd5>
+    <version>1.0.9</version>
+    <time>1599342976</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Revert-Add-runtime-linker-path-to-pkg-config-files-7.patch
+- Update to 1.0.9</comment>
+    <requestid>831132</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>25c3eca9e82970172b04faec4ff49e6f</srcmd5>
+    <version>1.0.9</version>
+    <time>1677584898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067977</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3164248e5f4bb89a6291a20f41886957</srcmd5>
+    <version>1.0.9</version>
+    <time>1678380294</time>
+    <user>dimstar_suse</user>
+    <comment>- Build AVX2 enabled hwcaps library for x86_64-v3 (forwarded request 1070173 from pluskalm)</comment>
+    <requestid>1070177</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2380cad80efba89743c5c23b365d950c</srcmd5>
+    <version>1.1.0</version>
+    <time>1699478192</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118318</requestid>
+  </revision>
+</revisionlist>

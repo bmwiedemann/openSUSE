@@ -1,0 +1,90 @@
+---
+ configure.ac                    |    3 +--
+ libmu_scm/Makefile.am           |    1 -
+ libmu_scm/Makefile.in           |    2 --
+ libmu_scm/mailutils/Makefile.am |    4 ----
+ libmu_scm/mailutils/Makefile.in |    6 ++----
+ 5 files changed, 3 insertions(+), 13 deletions(-)
+
+--- configure.ac
++++ configure.ac	2021-10-20 07:42:21.724689930 +0000
+@@ -1191,7 +1191,7 @@ AC_SUBST([GUILE_BINDIR])
+ AC_SUBST([LIBMU_SCM])
+ AC_SUBST([LIBMU_SCM_DEPS])
+ AC_SUBST([MU_GUILE_SIEVE_MOD_DIR])
+-GINT_INIT([gint],[2.2.0 with-guile],
++GINT_INIT([gint],[2.0.0 with-guile],
+ 	  [useguile=yes
+  	   AC_DEFINE([WITH_GUILE],1,[Enable Guile support])
+            GUILE_BINDIR=`guile-config info bindir`
+@@ -1404,7 +1404,6 @@ MU_CONFIG_TESTSUITE(mh)
+ MU_CONFIG_TESTSUITE(comsat)
+ MU_CONFIG_TESTSUITE(imap4d)
+ MU_CONFIG_TESTSUITE(mimeview)
+-MU_CONFIG_TESTSUITE(libmu_scm)
+ MU_CONFIG_TESTSUITE(libproto/mbox)
+ MU_CONFIG_TESTSUITE(libproto/mailer)
+ 
+--- libmu_scm/Makefile.am
++++ libmu_scm/Makefile.am	2021-10-20 07:44:10.930783528 +0000
+@@ -44,7 +44,6 @@ libmu_scm_la_LIBADD = \
+  ${MU_LIB_MBOX}\
+  ${MU_LIB_IMAP}\
+  ${MU_LIB_POP}\
+- ${MU_LIB_NNTP}\
+  ${MU_LIB_MH}\
+  ${MU_LIB_MAILDIR}\
+  ${MU_LIB_MAILER}\
+--- libmu_scm/Makefile.in
++++ libmu_scm/Makefile.in	2021-10-20 07:43:53.363090217 +0000
+@@ -776,7 +776,6 @@ MU_LIB_MAILER = @MU_LIB_MAILER@
+ MU_LIB_MAILUTILS = @MU_LIB_MAILUTILS@
+ MU_LIB_MBOX = @MU_LIB_MBOX@
+ MU_LIB_MH = @MU_LIB_MH@
+-MU_LIB_NNTP = @MU_LIB_NNTP@
+ MU_LIB_POP = @MU_LIB_POP@
+ MU_LIB_PY = @MU_LIB_PY@
+ MU_LIB_SCM = @MU_LIB_SCM@
+@@ -1051,7 +1050,6 @@ libmu_scm_la_LIBADD = \
+  ${MU_LIB_MBOX}\
+  ${MU_LIB_IMAP}\
+  ${MU_LIB_POP}\
+- ${MU_LIB_NNTP}\
+  ${MU_LIB_MH}\
+  ${MU_LIB_MAILDIR}\
+  ${MU_LIB_MAILER}\
+--- libmu_scm/mailutils/Makefile.am
++++ libmu_scm/mailutils/Makefile.am	2021-10-20 07:45:09.293764629 +0000
+@@ -37,10 +37,6 @@ if MU_COND_SUPPORT_IMAP
+   MU_FEATURES += -DMU_SUPPORT_IMAP
+ endif
+ 
+-if MU_COND_SUPPORT_NNTP
+-  MU_FEATURES += -DMU_SUPPORT_NNTP
+-endif
+-
+ if MU_COND_SUPPORT_MH
+   MU_FEATURES += -DMU_SUPPORT_MH
+ endif
+--- libmu_scm/mailutils/Makefile.in
++++ libmu_scm/mailutils/Makefile.in	2021-10-20 07:44:47.302148559 +0000
+@@ -80,9 +80,8 @@ build_triplet = @build@
+ host_triplet = @host@
+ @MU_COND_SUPPORT_POP_TRUE@am__append_1 = -DMU_SUPPORT_POP
+ @MU_COND_SUPPORT_IMAP_TRUE@am__append_2 = -DMU_SUPPORT_IMAP
+-@MU_COND_SUPPORT_NNTP_TRUE@am__append_3 = -DMU_SUPPORT_NNTP
+-@MU_COND_SUPPORT_MH_TRUE@am__append_4 = -DMU_SUPPORT_MH
+-@MU_COND_SUPPORT_MAILDIR_TRUE@am__append_5 = -DMU_SUPPORT_MAILDIR
++@MU_COND_SUPPORT_MH_TRUE@am__append_3 = -DMU_SUPPORT_MH
++@MU_COND_SUPPORT_MAILDIR_TRUE@am__append_4 = -DMU_SUPPORT_MAILDIR
+ subdir = libmu_scm/mailutils
+ DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+@@ -657,7 +656,6 @@ MU_LIB_MAILER = @MU_LIB_MAILER@
+ MU_LIB_MAILUTILS = @MU_LIB_MAILUTILS@
+ MU_LIB_MBOX = @MU_LIB_MBOX@
+ MU_LIB_MH = @MU_LIB_MH@
+-MU_LIB_NNTP = @MU_LIB_NNTP@
+ MU_LIB_POP = @MU_LIB_POP@
+ MU_LIB_PY = @MU_LIB_PY@
+ MU_LIB_SCM = @MU_LIB_SCM@

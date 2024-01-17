@@ -1,0 +1,1459 @@
+-------------------------------------------------------------------
+Fri Nov 03 15:27:58 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.7.0:
+  * Monthly release (7.7.0)
+  * tpm_cert_store: add the Nationz TPM EK x509 cert
+  * codestyle: Have mypy ignore import of PoolManager
+  * codestyle: Suppress pyright errors on methods that do exist
+  * codestyle: Annotate some string constances (pyright)
+  * types: Fix a deprecation warning from recent cryptography
+  * create_policy: Set the generator value to LegacyAllowList
+  * verifier: Compare generator against enum rather than magic '1'
+  * Fix pylint C0103 (naming) errors in some files
+  * crypto: Fix a pyright issue
+  * test: Fix a pyright issue
+
+-------------------------------------------------------------------
+Mon Oct 02 07:46:01 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.6.0:
+  * Monthly release (7.6.0)
+  * test-requirements: remove types-atomicwrites
+  * Fixed an inappropriate test expression to remove a logical short circuit
+  * remove prov_db_filename from config
+  * Fix for key parse error in tpm2_objects
+  * Fix mapping.json path in the comments
+  * ima: Emit a warning when a file signature could not be parsed
+  * Initial PR to add support for IDevID and IAK
+  * Implement automatic agent API version bump
+  * tests: avoid fail when epel-release is installed
+
+-------------------------------------------------------------------
+Fri Sep 29 15:22:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- M2Crypto is not used anymore.
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Thu Aug 24 06:55:14 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.5.0 (CVE-2023-38201, bsc#1213314):
+  * Monthly release (7.5.0)
+  * Fix for CVE-2023-38201 (Security Advisory GHSA-f4r5-q63f-gcww)
+  * verifier: should read parameters from verifier.conf only
+  * tests: Correctly configure kernel IMA
+  * Handle session close using a session manager
+  * requirements.txt: update the need sqlalchemy version to 1.3.12 and above.
+  * elchecking/example: add ignores for EV_PLATFORM_CONFIG_FLAGS
+  * tpm_cert_store: add the Alibaba Cloud vTPM EK x509 cert
+  * installer.sh: use the -i parameter to set the default binding and listening IP about the agent, verifier, and registrar server is 127.0.0.1  or 0.0.0.0
+  * installer.sh: remove the unused command line params
+  * Update container build workflow actions
+  * mba: Manage the number of times measure boot attestation is done.
+  * codestyle: Fix access to possibly not available package 'rpm' (pyright)
+  * templates/2.0/mapping.json: fix the default registrar_port error in the verifier config
+
+-------------------------------------------------------------------
+Wed Aug 02 07:53:35 UTC 2023 - aplanas@suse.com
+
+- Add BSD-3-Clause license
+- Update to version v7.4.0 (CVE-2023-38200, bsc#1213310):
+  * Monthly release (7.4.0)
+  * codestyle: Fix tsa_rfc3161.py and have it pyright checked
+  * installer.sh: support Anolis OS whose ID is anolis
+  * tpm_util: Add the BSD license to the file due to functions from TPM 2 code
+  * codestyle: Have pyright check keylime/da directory
+  * docs: add missing options for verifier, remove vactivate
+  * codestyle: Have pyright check mba/elchecking/ except for example.py
+  * registrar_common: fix style complain
+  * registrar_common: fix missing select and sock
+  * Changes to script create_runtime_policy.sh, fixes #1426
+  * tenant: non-zero exit code in case of error
+  * mba: making MBA policy parser and checker pluggable
+  * create_runtime_policy: fix bash typo
+  * Extend Registrar SSL socket to be non-blocking
+  * Several improvements for the "create_runtime_policy.sh" script
+  * tpm_util: Replace a logger.error with an Exception in case of invalid signature
+  * tpm_util: Remove useless comparison of always identical hashes
+  * tests: Disable Packit CI on Rawhide due to infra issues
+  * adding kubectl to tenant docker image
+
+-------------------------------------------------------------------
+Wed Jul 12 14:14:35 UTC 2023 - aplanas@suse.com
+
+- Drop migrations_use_sa_text_for_raw_SQL.patch, merged upstream
+- Update to version v7.3.0:
+  * Monthly release (7.3.0)
+  * tenant: log cleanup and output improvements
+  * mba: moving the boot event log parsing to the MBA subdirectory
+  * Add secure mount sanity test to packit testing
+  * templates: Set empty string as default value for tpm_ownerpassword
+  * migrations: use sa.text for raw SQL
+  * ima: only log the accept list on validation failure
+  * ima: remove code used for reading the IMA log from disk
+  * tpm: Move functions from tpm_astract.py to tpm_util.py
+  * tpm: Move splitting of quote string into reusable function
+  * tpm: Change default value of Hash parameter to Hash.SHA256 from None
+  * [tests] Enable basic allowlist/excludelist test
+  * installer.sh: update TPM2TOOLS_VER to 5.5 and cherry-pick patches to fix the bug of parsing for most newer logs with the tpm2_eventlog command.
+  * web_util: Remove check for code being 'None' since it is always an int
+  * verifier: Remove possibility for agent to be None and remove error case
+  * verifier: Remove conversion of agent to dict
+  * verifier: Remove possibility for agent to be None and remove error case
+  * verifier: Remove check for agent is None since it cannot be None
+
+-------------------------------------------------------------------
+Tue Jun  6 14:51:55 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add migrations_use_sa_text_for_raw_SQL.patch to fix migrations in
+  new SQLAlchemy versions
+
+-------------------------------------------------------------------
+Mon Jun 05 08:39:23 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.2.5:
+  * bump version to 7.2.5
+  * installer.sh: remove unused codes
+  * tpm: Implement BigNum context creation and usage
+  * tpm: Implement int2bn and bn2int in our class
+  * tpm_util: Add EC key support for makecredential in python
+  * tpm: Replace tpm2_makecredential with python implementation
+  * tpm_util: Implement makecredential in python
+  * tpm2_objects: Return parameters when unmarshalling tpm2b_public
+  * The first of several PRs to clean up MBA
+  * verifier: Update agent dict values only after checking each value
+  * verifier: Remove assignment to variable overwritten immediately after
+  * registrar: Reformat initialization of dictionary
+  * registrar: Check for error case aik_enc being None first
+  * tpm_main: Remove unused run() method
+  * tpm_main: Remove unnecessary code for support of tpm2_quote
+  * tpm_main: Get rid of hashdigest() method
+  * tpm_main: Get rid of start_hash and use get_start_hash() of given Hash
+  * algorithms: Make get_START_HASH and get_FF_HASH methods of Hash
+  * Use <bytes>.hex() to create hex string
+  * Use bytes.fromhex() instead of codecs for parsing of string with hex number
+  * Tpm: Rename START_HASH to start_hash
+  * Tpm: Remove unused parameters of __run method
+  * tpm: Move EXIT_SUCCESS outside class scope
+  * tpm: Rename tpm class to Tpm
+  * tpm: Access agent_id directory from structure
+  * codestyle: Fix issues detected by older pylint 2.13.9
+  * tpm: Get rid of AbstractTPM class
+  * codestyle: Add missing annotations to test_ima_dm.py to pass pyright
+  * pypright: Remove ignored files that do not exist anymore
+  * ima: Replace usage of codec to parse hex string with bytes.fromhex()
+  * ima: Replace usage of codec with hex() method on bytes
+  * ima: Validate proper JSON before trying to convert from string to JSON
+  * tenant: fixes a (timing) issue whenever an agent is removed and re-added
+  * verifier: Simplify initialization of agent_data dict
+  * verifier: Use kwargs to pass ssl_context if it exists
+  * verifier: Return an Empty Dict rather than None in case of error
+  * verifier: Use get() on dict rather than catching an Exception
+  * cloud_verifier: AgentsHandler: Consolidate checking of input parameters
+  * registrar: Consolidate __validate_input() in BaseHandler
+  * registrar: ProtectedHandler: Refactor __validate_input
+  * registrar: UnprotectedHandler: Consolidate checking of input parameters
+  * registrar: ProtectedHandler: Consolidate checking of input parameters
+  * docs: remove Vagrant setup
+  * registrar: Move getting network parameters into own function
+  * [tests] Update test coverage task name regexp
+  * tenant: report when the keystore fails
+  * ca_util: fix captured exception
+  * [tests] Simply coverage file URL parsing
+  * tpm+ima: Convert tables to hold instances of hashers
+  * docs/rest_apis.rst: remove the comma at the end of the JSON string
+  * tpm: Activate tpm2_checkquote replacement code
+  * tests: Add test case for checkquote and parsing of tpms_attest
+  * tpm: Implement tpm2_checkquote in python
+  * README.md: fix the invalid URL about IMA stub service.
+  * README.md: fix the script name(./services/installer.sh) error
+  * installer.sh: support Alibaba Cloud Linux OS whose ID is alinux
+  * web_util: handle tls_dir default with cacerts correctly
+  * codestyle: Add pyright ignore annoatations due to pyright 1.1.306
+  * codestyle: Ignore import of NoResultFound from sqlalchemy 1.3 file
+  * CI/CD: Run pyright as part of tox
+  * agentstates: Reformat construction of returned dictionary
+  * docker: fix tpm2-tools build
+  * docker: upate to newer tpm2-tools version
+  * docs/installation.rst: add the missing popd command in the manual deployment.
+  * tpm: Implement function to extract clock info from TPMS_ATTEST
+  * [tests] Reduce duplication in packit-ci test plan
+  * Enable Packit CI again on all Fedora releases
+  * Redefine the list of maintainers taking into account activity on the last 12 months, proposing a few new names to be added (please feel free to decline)
+
+-------------------------------------------------------------------
+Wed May 17 11:34:35 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add missing jsonschema dependecy
+
+-------------------------------------------------------------------
+Wed Apr 26 08:08:04 UTC 2023 - aplanas@suse.com
+
+- Remove the agent subpackage
+- Remove keylime_ima_emulator binary
+- Add keylime_create_policy and keylime_sign_runtime_policy
+- Update to version v7.0.0:
+  * bump version to 7.0.0
+  * bump to version 6.8.0
+  * build-sys: Use comma-separated list for running multiple linters
+  * tenant: Add brackets to ipv6 addresses when used in URL
+  * registrar: Detect IPv6 addresses to bind to and set address_family
+  * setup.cfg: use license_files instead of license_file
+  * Do not run Packit tests on F38
+  * tests: Use Rust agent from COPR for e2e tests
+  * tenant: Raise a UserError on status_code != 200 returned from server
+  * Add missing test from keylime testsuite to e2e plan
+  * tests: remove tpm2-tss downgrade as Fedora bug got fixed
+  * da: non-zero exit code for attestation replay failures.
+  * ca:CLI utilities (keylime_ca,keylime_tenant) read password from ca.conf
+  * log: add a barebones log config in case configuration files not present
+  * Fix typo
+  * Use subtest in unittest.
+  * create_policy: Strip newline from file path read from measurement list
+  * create_policy: Validate policies against the JSON schema
+  * create_policy: Clarify help text for IMA measurement list
+  * create_policy: Add list of ignored keyrings after processing base policy
+  * create_policy: Add support for adding an IMA exclude list to the policy
+  * create_policy: Avoid duplicate entries in lists
+  * codestyle: Annotate with RuntimePolicyType and adapt code
+  * codestyle: Import urllib to make pyright happy
+  * Introduce PathLike_str for older python versions
+  * codestyle: Annotate create_policy.py and add to mypy
+  * docs: Update docs to reflect renaming of create_policy tool
+  * create_policy: Fix issues related to filelists-ext
+  * Move create_policy to keylime/cmd and install as keylime_create_policy
+  * Implement DSSE signature verification for runtime policies
+  * tenant: Raise UserError on (add/update)runtimepolicy status codes 401
+  * tests: Split unittests into two runs to avoid issue
+  * ima: Add a JSON schema for the runtime policy and use it on given policies
+  * Implement DSSE policy signing tool
+  * ima: Derive RUNTIME_POLICY_GENERATOR from enum.IntEnum
+  * packit: use rust agent for e2e tests
+  * services: remove agent systemd services
+  * tests: remove unused code
+  * tests: remove agent from config test
+  * tpm_ek_ca: remove check_tpm_cert_store(..) function
+  * tpm, measured boot: remove refrences to virtual TPMs
+  * tpm: remove unsed variables and some refactoring
+  * algorithms: remove unused from_algorithm method
+  * mpypy, pyright: remove refrences to agent in ignores
+  * config: remove refrences to agent
+  * crypto: remove unused functions
+  * secure_mount: removal
+  * tpm: remove unsed functions
+  * registar_client: remove functions only used by the agent
+  * user_utils: removal
+  * revocation notifier: remove zeroMQ client code
+  * ca_util: remove listen command and related functions
+  * revocation actions: remove all
+  * ima emulator: full removal
+  * agent: remove agent code
+  * agentstates: rename tpm_clocking to tpm_clockinfo
+
+-------------------------------------------------------------------
+Tue Mar 14 08:09:07 UTC 2023 - aplanas@suse.com
+
+- Update to version v6.7.0:
+  * codestyle: Define RuntimePolicyType and use it
+  * ima: Move type defitions from ima_dm.py to types.py
+  * docs: fix docs
+  * End of term for @mpeters + propose @maugustosilva
+  * verifier: Activate every m-th agent starting at the n-th agent on a worker
+  * verifier: Read list of agents early on
+  * create_policy: read the hashes from filelists-ext
+  * tests: remove restful test and simplify test scripts
+  * tests: config move agent config example to verifier
+  * Update source code mapping in codecov.yml
+  * ima: do not validate against the allowlist if signature was already validated
+  * Disable e2e on Rawhide due to RHBZ#2171376
+  * roadmap: update for 2023
+  * readme: remove installation instructions, update outdated information
+  * db: switch to pessimistic disconnect handling
+  * Add timestamp of last successful attestation to verifier API
+  * tpm: improve logging for tpm and measured boot policy
+  * da: fixes for breakages on durable Attestation
+  * codestyle: Fully annotate cloud_verifier_tornado and add to mypy
+  * create_policy: clarify IMA on links
+  * create_policy: be explicit on opening binary files
+  * create_policy: use public variants for RPM flags
+  * create_policy: remote repository IMA extraction
+  * create_policy: local RPM repository IMA extraction
+  * create_policy: remove the experimental status
+  * create_policy: print into stderr
+  * signing: small refactor on the code
+  * Add missing e2e tests and reordering tests based on alphabetical order
+  * verifier,tenant : fix IMA runtime policy bug (issue #1306)
+  * e2e tests: Fix test name (#1307)
+  * verifier: fixing type issues (#1272)
+  * config: improve support for (log-based) debugging
+  * Fix stray references to "IMA policies" in conversion script
+  * tests: only keep test specific packages in test-requirements.txt
+  * codestyle: Have pyright ignore assignments of values to DB columns
+  * codestyle: Call type conversion functions on agent's DB columns
+  * codestyle: Fully annotate cloud_verifier_common.py and add to mypy
+  * codestyle: Have pyright ignore the parameter passed to the update() function
+  * codestyle: Have pyright ignore fields used to select columns to load
+  * codestyle: Add an assert to the returned update_agent to avoid pyright errors
+  * codesyle: Fix annotations of notify functions in revocation_notifier.py
+
+-------------------------------------------------------------------
+Tue Mar  7 16:11:03 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add tenant.conf.diff path to do not require a valid EK certificate
+  (that is the case in TPM simulator)
+
+-------------------------------------------------------------------
+Fri Mar  3 13:58:55 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add python-typing_extensions requirement
+
+-------------------------------------------------------------------
+Sat Feb 11 16:32:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove completely unnecessary dependency on python-simplejson.
+
+-------------------------------------------------------------------
+Fri Feb 03 09:21:52 UTC 2023 - aplanas@suse.com
+
+- Update to version v6.6.0:
+  * bump version to 6.6.0
+  * codestyle: Annotate registrar_common.py and add to mypy
+  * codestyle: Type-annotate tenant.py
+  * codestyle: Type-annotate registrar_client.py and add to mypy
+  * black: Upgrade to new 23.1.0 and reformat some sources
+  * pylint: Fix an issue related to usage of dict R1735 (use-dict-literal)
+  * pylint: Fix two issues related to C0325 (superfluous-parens)
+  * pylint: Fix an unreachable-code issue
+  * pylintrc: Ignore W0719 (broad-exception-raised)
+  * codestyle: Type-annotate revocation_notifier.py and add to mypy
+  * CI/CD: Use later version of actions for style-checks
+  * pre-commit: Use isort v5.12 and black v22.12
+  * migrations: Move bind parameter from MetaData() to reflect() method
+  * pylint: Ignore newly reported too-many-ancestors issue
+  * docker/ci: Remove image used for TPM 1.2 tests
+  * docker/ci: Update ci image to base on Fedora 37
+  * docs: Update IMA instructions to new runtime policy format
+  * docs: point newcomers to the design document
+  * docs: add basic (m)TLS instructions to the installation guide
+  * docs: update REST APIs TLS documentation to match new default setup
+  * docs: remove old development instructions, move dev conainter section
+  * docs: update theme to min 1.1.0
+  * docs: fix formatting of example IMA-policy
+  * codestyle: Get rid of casts on return value from get_tpm_metadata()
+  * codestyle: Add missing type annotations to tpm_main.py and add to mypy
+  * codestyle: Add missing type annotations to tpm_abstract.py and add to mypy
+  * tenant: Implement updateallowlist command to update an existing allowlist
+  * verifier: Implement PUT method to update named allowlist
+  * verifier: AllowlistHandler: Move getting runtime policy in DB format to function
+  * verifier: AllowlistHandler: Deduplicate code validating REST API input
+  * verifier: proper support for listening on 0.0.0.0 (fixes #705)
+  * script: Remove unused argument argv
+  * pylintc: Remove outdated modules from list of ignore modules
+  * Rename keylime_agent_secure.mount to comply policy
+  * scripts: Also copy excluded files and verification keys from base policy
+  * scripts: Improve descriptions in create_policy tool
+  * scripts: Add user-provided keys to the policy
+  * scripts: update create_policy script to latest runtime policy JSON format
+  * Rename "create_allowlist.sh" to "create_runtime_policy.sh"
+  * Implement major Keylime policy overhaul
+
+-------------------------------------------------------------------
+Mon Jan 23 08:28:17 UTC 2023 - aplanas@suse.com
+
+- Update to version v6.5.3:
+  * Bump version number to 6.5.3
+  * durable attestation: a simple "attestation replay" CLI utility
+  * cmd_exec: Replace cast()s to bytes with asserts isinstance(..., bytes)
+  * codestyle: Add type annotations to db/keylime_db.py and add to mypy
+  * codestyle: Add type annotations to requests_client.py and add to mypy
+  * codestyle: Add type annotations to tornado_requests.py and add to mypy
+  * mypy: Change list of checked files to shorter list of unchecked files
+  * codestyle: Add missing annotations to cmd_exec.py and add to mypy
+  * codestyle: Have all files in ima directory checked by mypy
+  * pylint: ignore zmq Context abstract-class-instantiated warnings
+  * tenant: reliable and consistent add/delete operations (fixes #1158) (#1271)
+  * tenant: fix the exit code for `bulkinfo` operation
+  * config: support override via environment variables
+  * Extend test execution instructions in TESTING.md
+  * packit-ci: Add hotfix for tpm2-tss Fedora BZ#2158598
+  * tenant: Remove code hashing a public key and using hash as UUID
+  * linters: Exclude intentionally invalid python file
+  * config: Check for available config upgrade on startup
+  * Do not install keylime nor configuration files during tests
+  * .ci/test_wrapper: Add test user keylime:tss
+  * config: Support quoted strings for TOML compatibility
+  * gitignore: Do not use 'config' as a match pattern
+  * tests: Add test for convert_config script
+  * convert_config: Set version for each mapping processed
+  * cmd/convert_config: Remove quotes and spaces around version string
+  * convert_config: Set default output path as /etc/keylime for root
+  * convert_config: Do not use keys() to iterate on maps
+  * Install config upgrade script as keylime_upgrade_config
+  * templates: Remove log_destination option
+  * Fix default values in mappings
+  * Correctly strip elements of a list on config v2.0 adjust script
+  * setup: Don't use keylime.conf to generate the split configuration
+  * convert_config: Add --defaults option to use default values
+  * convert_config: Use str_to_version from common module
+  * Add keylime/common/version.py for version manipulation
+  * elchecking: load policy modules explicitly
+  * Revert "tpm_abstract: move import of measured_boot into check_pcrs(..)"
+  * codestyle: Add type-annotations to cli/policies.py and add to mypy
+  * codestyle: Add type-annotations to cli/options.py and add to mypy
+  * Introduce a RetDictType for return type of cmd_exec.run()
+  * requirements, docs: add typing-extensions as a dependency
+  * ima_dm: add type checks and hints
+  * Switch code coverage measurement to Fedora 37
+  * codestyle: Fix annotation of mb_measurement_data
+  * ima: Fix the ima_sign_verification_keys initial datatype
+  * elchecking: add support for MeasuredBoot when SecureBoot is disabled
+  * verifier: a (very simple) cache implementation for IMA policies (solves #1167)
+  * codestyle: Add type annotations to cmd/convert_ima_policy.py and add to mypy
+  * codestyle: Add type annotations to cmd/ima_emulator_adapter.py and add to mypy
+  * codestyle: Add type annotations to cmd/user_data_encrypt.py and add to mypy
+  * codestyle: Add type annotations to cmd/verifier.py and add to mypy
+  * codestyle: Add type annotations to cmd/tenant.py and add to mypy
+  * codestyle: Add type annotations to cmd/registrar.py and add to mypy
+  * codestyle: Add type annotations to cmd/ca.py and add to mypy
+  * codestyle: Add type annotations to cmd/agent.py and add to mypy
+  * CI tests: Do not remove Fedora tag repository
+  * tpm_abstract: move import of measured_boot into check_pcrs(..)
+  * docker: fix and improve build_locally.sh
+  * docker: use version 5.4 of tpm2-tools
+  * docker: update container to Fedora 37
+  * codestyle: Type-annotate files in revocation_actions & add to mypy
+  * Remove redundant parameter from enforce_pcrs()
+  * codestyle: Add missing type annotations to files in common & add to mypy
+  * api_version: Catch InvalidVersion for packaging v22.0
+  * verifier: fix for IMA policy checksum calculation
+  * codestyle: Type-annotate measured_boot.py and add to mypy
+  * codestyle: Fix variable assigments in tpm2_object_test.py and add to mypy
+  * codestyle: Fix and add type annotations to tpm2_objects.py and add to mypy
+  * codestyle: Cast the agent Dict to allow Any types to be assigned to it
+  * codestyle: Change verifier_port annotation from int to str
+  * codestyle: Avoid switching datatypes of agent by using differnt variable
+  * codestyle: Fix event parameter to be an Optional[Event]
+  * codestyle: Fix annotation of tosend parameter to be a Dict[str, Any]
+  * codestyle: add type hints to elchecking module
+  * codestyle: Type-annotate web_util.py and add to mypy
+  * codestyle: Add missing type annotations to ima.py and add to mypy
+  * codestyle: Add missing type annotations to ima_test.py and add to mypy
+  * codestyle: Add missing type annotations to file_signatures.py and add to mypy
+  * logging: remove option to log into separate file
+  * codestyle: Add type annotations to tpm classes and address issues
+  * codestyle: Add type-annotations to signing.py and add to mypy
+  * codestyle: Add missing type annotations to api_version.py and add to mypy
+  * codestyle: Add keylime_logging.py to mypy
+  * codestyle: Add missing type-annotations to agentstates and add to mypy
+  * codestyle: Add missing type annotations to failure.py and add to mypy
+  * codestyle: Type-annotate user_utils_test.py and add to mypy
+  * codestyle: Type-annotate user_utils.py and add to mypy
+  * codestyle: Type-annotate ca_util.py and add to mypy
+  * codestyle: Add missing annotations to cert_utils and add to mypy
+  * codestyle: Type-annotate ca_impl_openssl and add to mypy
+  * codestyle: Type-annotate tpm_ek_ca.py and add to mypy
+  * codestyle: Type-annotate fs_util.py and add to mypy
+  * codestyle: Add json.py to mypy.ini
+  * codestyle: Type-annotate secure_mount.py and add to mypy
+  * codestyle: Add missing annotations to crypto.py and add to mypy
+  * common: remove metrics
+  * cmd: removal of keylime_migrations_apply
+  * codestyle: Set type of trusted_server_ca to List[str] and initialize with list
+  * codestyle: Avoid switching of type of trusted_ca by using another variable
+  * codestyle: Enable test_tpm.py to be type-checked by pyright
+  * codestyle: Fix an issue detected by pyright in test_ca_impl_openssl
+  * codestyle: Fix typo in annotation
+  * codestyle: Relax some parameter type requirements due to test case
+  * codestyle: Fix an issue detected by pyright in test_ca_util.py
+  * ci: add mypy to CI
+  * config: add missing type hints
+  * ima/ast: add missing type hints
+  * json: allow ignore comment to be parsed by mypy
+  * tox: add mypy support
+  * tox: Add test directory to black and isort tools' command line
+  * codestyle: Add type annotations to test_ima_verification.py and fix issues
+  * codestyle: Add type annotations to test_validators and fix issues
+  * codestyle: Add type annotations to test_crypto.py
+  * tpm: Replace assert with Exception
+  * Fix incorrect generators in converted IMA policies (#1223)
+  * ima: Remove dead m2w function parameter
+  * ima: Remove 'main' function from ima.py
+  * codestyle: Add type annotations to cmd_exec.py
+  * tpm: Type-annotate tools_version and avoid switching data types
+  * codestyle: cmd: Type annotation ima_emulator_adapter.py
+  * codestyle: Add type annotations to various low-level functions
+  * pyproject: Add test directory for pyright and exclude some tests
+  * verifier: Calculates the checksum for the whole IMA policy on the verifier #1198
+  * codestyle: Add type annotations to crypto.py and address issues
+  * codestyle: Do not assign function parameter a new value in function
+  * codestyle: Avoid switching type of ek_handle from 'str' to int
+  * codestyle: Avoid switching type of pcrs variable from List[str] to dict
+  * codestyle: Avoid switching type of tpm_policy from possible 'str' to dict
+  * codestyle: Drop re.Pattern annotation due to pyright on python 3.6
+  * codestyle: Add missing type annotations to ima/ima.py and address issues
+  * ima: Always set algorithm in Digest class and require a string
+  * codestyle: Add type annotations to various files
+  * config: remove fallback config
+  * codestyle: Add missing type annotations to agentstates.py
+  * pyright: Fix a pyright issue in ca_impl_openssl
+  * cleaning up pyproject.toml
+  * fixing type issue
+  * tests: Switch to sha256 hashes for signatures
+  * The verifier can selectively load only a subset of columns from the `allowlist` table.
+  * pyright: Enable pyright on cmd/ima_emulator_adapter.py
+  * pyright: Add type annotations to cmd/convert_ima_policy.py
+  * pyright: Add type annotations to ima/file_signatures.py
+  * ima: Raise ValueError on unsupported key types
+  * pyright: Fix issue in keylime/revocation_notifier.py
+  * pyright: Fix issue in keylime/da/record.py
+  * pyright: Fix issues in keylime/ima/file_signatures.py
+  * pyright: Fix issue in keylime/json.py
+  * code-style: Make tox less verbose when running check tools
+  * code-style: Run isort as part of 'make check'
+  * code-style: Run black --diff as part of 'make check'
+  * pyright: Run pyright as part of 'make check'
+  * pyright: Fix an issue in ima/ima.py
+  * removing unnecessary entry from pyright ignore list
+  * addressing type issues related to IMA
+  * algorithms: simplify the Hash class
+  * CI/CD: Run pyright as part of PRs
+  * pyproject: Filter-out files with warnings in pyright
+  * Some fixes to validate_ima_policy_data (#1192)
+  * common: Raise ValueError in Hash constructor if hash not supported
+  * common: Add a test case for testing the Hash class
+  * ima: this PR adds checksums for allowlists as a separate column on the DB
+  * requirements.txt, docs: add gpg package and sync list in docs
+  * codestyle: Add codestyle checking for script/create_policy
+  * scripts: Fix pylint issue W1514 in scripts/create_policy
+  * scripts: Fix pylint issue C0209 in scripts/create_policy
+  * codestyle: Add codestyle checking for all .py files under scripts/
+  * scripts: Fix pylint issue W0612 in scripts/templates/2.0/adjust.py
+  * scripts: Fix pylint issue W0613 in scripts/templates/2.0/adjust.py
+  * scripts: Fix pylint issue C0201 in scripts/templates/2.0/adjust.py
+  * scripts: Fix pylint issue W1309 in scripts/templates/2.0/adjust.py
+  * scripts: Fix pylint issue W0707 in scripts/convert_config.py
+  * scripts: Fix pylint issue W1514 in scripts/convert_config.py
+  * scripts: Fix pylint issue W0621 in scripts/convert_config.py
+  * scripts: Fix pylint issue W0105 in scripts/convert_config.py
+  * scripts: Fix pylint issue W1309 in scripts/convert_config.py
+  * scripts: Fix pylint issue W0611 in scripts/convert_config.py
+  * scripts: Fix pylin R1705 in scipts/convert_config.py
+  * common: Remove redundant return parameter from validate_ima_policy_data
+  * common: Remove redundant return parameter from valid_exclude_list
+  * common: Remove redundant return parameter from valid_regex
+  * Do not use default values that need reading the config in methods
+  * non-obvious type fixes not concerning IMA (#1173)
+  * da: This commit implements most of the changes for #73 "Durable (Offline) Attestation". (#1129)
+  * verifier: Do not access agent["tpm_clockinfo"] if value is 'None'
+  * Enable e2e test functional/tpm-issuer-cert-using-ecc
+  * tpm_main: fix ek creation for tpm2-tools versions > 4.2
+
+-------------------------------------------------------------------
+Fri Nov 11 09:40:46 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.5.2:
+  * cloud_verifier: This is the first PR to address the scalability problems uncovered in #1167, starting with `agent` status.
+  * Bump version number
+  * Add --retry 5 parameter to curl
+  * create_mb_refstate: Check tpm2-tools version before running
+  * create_mb_refstate: Print error messages
+  * test_tpm: Skip event log parsing test if tpm2-tools is too old
+  * installer: Enable installation on RHEL-9
+  * Move the execution of external EK check script to cert_utils
+  * Move EK cert verification to cert_utils
+  * Make the tpm cert store path configurable
+  * ima-policy-converter: Implement a basic test suite for conversion script
+  * ima-policy-converter: Implement IMA policy conversion script
+  * ima-policy-converter: Add empty reference IMA policy
+  * ima: Accept x509 certificates if no Subject Key Identifier is available
+  * test_tpm: Use doc strings for tests description
+  * Test binary measured boot event log parsing
+  * alpha renaming
+  * shallow type fixes
+  * ima_emulator_adapter: Print readable error if reading a PCR fails
+  * tpm: Check whether hash_alg is in jsonout
+  * Very limited code fixup/cleanup on keylime_tenant CLI
+  * Set permissions of keylime_agent_secure.mount to 664
+  * Disable dnf-makecache.timer to save RAM
+  * tpm_bootlog_enrich: Get DevicePath length from LengthOfDevicePath
+  * Disable dnf-makecache.service to save RAM
+  * Fix for writing the same allow list twice during agent activation (#1150)
+  * Fix improper handling of IMA policy bundle when none is provided
+  * ima: Fix log evaluation on quick-succession execution of scripts
+  * Add new tests to packit CI
+  * Remove semantic-release action to stop erroneous releases
+  * crypto: Provide input as bytes to encrypt
+  * Revert "Revert "Revert "tenant: open file to send utf-8 encoded" (#1136)" (#1141)"
+  * Update runtime_ima.rst
+  * Back to 6.5.1
+  * This PR fixes a bug that prevented 6.5.x verifiers from interacting with 6.2. agents
+  * Revert "Revert "tenant: open file to send utf-8 encoded" (#1136)" (#1141)
+  * Revert "tenant: open file to send utf-8 encoded" (#1136)
+  * ca_util: allow users in the same group to read the created certificates and keys (#1138)
+  * Update sample ima-policy to exclude overlayfs
+  * installer: remove tarball option
+
+-------------------------------------------------------------------
+Thu Oct 13 09:15:04 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update requirement name to python-lark
+
+-------------------------------------------------------------------
+Wed Oct 12 06:50:54 UTC 2022 - aplanas@suse.com
+
+- Drop replace-use-of-cryptography.utils.register_interface.patch,
+  already upstream
+- Update to version v6.5.1:
+  * Bump version to 6.5.1
+  * Fix proper exception handling and impedance match in `tornado_requests` (#1128)
+  * elchecking/tests: fix type hints for Dispatcher
+  * tpm_main: unescape UEFI eventlog strings
+  * elchecking: fix standalone program
+  * elchecking/example: add support for MokListTrusted variable
+  * README, docs: remove reference to ipsec demo
+  * docs: fix typo and note box rendering
+  * docs: update installation instructions
+  * make Rust agent official, add depreacation warnings to Python agent
+  * GH first-interaction action is busted, workaround
+  * Replace use of cryptography.utils.register_interface
+  * Remove unnecessary config symbolic link
+  * Small changes required by enhancement #73 "Durable (Offline) Attestion"
+  * docs, README: add reference to official Docker containers
+  * Fix typo in ISSUE_TEMPLATE.md
+
+-------------------------------------------------------------------
+Mon Oct 10 13:55:15 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add replace-use-of-cryptography.utils.register_interface.patch to
+  support new cryptography 38.0
+
+-------------------------------------------------------------------
+Mon Sep 26 07:15:17 UTC 2022 - aplanas@suse.com
+
+- Remove keylime.conf.diff patch.  Now the configuration file is
+  generated during build time
+- The "config" subpackage shared only the logger configuration file
+- New "tenant" subpackage for the Tenant command line tool
+- Drop webapp service port in firewall XML service file
+- Update to version v6.5.0:
+  * Bump up versions to 6.5.0
+  * Enable testing of Rust agent as well as Python by default
+  * New readthedocs location for keylime
+  * test_restful: Add test for /keys/verify endpoint to rust tests
+  * test_restful: Fix testing with rust agent
+  * run_tests: Install rust agent when RUST_TEST is defined
+  * A fix for "per-agent verifier-issued epoch timestamp"
+  * Move SQLite ref integrity pragma to keylime_db
+  * Separate CA key store password from server key password
+  * Generate missing key and certificates
+  * verifier: Add a configuration option to set timeouts
+  * config: Change default value for getfloat() to -1.0
+  * tenant: Add request_timeout configuration option
+  * tpm_main: Move agent specific initialization to tpm_init()
+  * failure: Do not read the verifier config on load
+  * logging, verifier: Read configuration only when needed
+  * tpm_ek_ca: Access tenant config file when needed
+  * tpm_main: Only access agent configuration if needed
+  * keylime_agent: Use a single tpm instance
+  * config: Evaluate snippets in /usr/etc/keylime before /etc/keylime
+  * Remove ignore_hostname argument from RequestsClient() calls
+  * requests_client: Ignore hostname verification by default
+  * web_util: Remove unneeded checks for absolute paths before joining
+  * requests_client: remove RequestClient class variables
+  * elchecking/policies: Use config.getlist() for measured_boot_imports
+  * mappings: Add back missing option measured_boot_imports to verifier config
+  * verifier: Fail earlier if mTLS cert is missing when required
+  * crypto: Replace if block with conditional argument passing
+  * config: Drop unused getdict()
+  * config: Use python generator to strip strings in the list
+  * verifier: Drop 'cloud' from 'cloudverifier_' variables
+  * verifier: Always generate TLS context to contact the agent
+  * ca_util: Replace if block with conditional argument
+  * Drop broken auto-ipsec demos
+  * tenant: Do not disable TLS when enable_agent_mtls = False
+  * test_config: Reload configuration on tearDown
+  * Change the meaning of trusted_client_ca=default for the agent
+  * Install configuration files in test scripts
+  * Add jinja2 as requirement for building and testing
+  * tenant: Fix mention to old configuration section
+  * tenant, verifier: Fix mTLS disablement
+  * tenant: Do not try to verify EK cert when not required
+  * Adjust test_restful to use the new configuration file
+  * ima: Do not try to read excludelist if it is None
+  * tenant: Use empty tpm_policy by default
+  * Read measured boot configuration when needed
+  * Add support for password encrypted keys
+  * Change owner of config files and fix sed command in services installer
+  * installer: Build and install split configuration files
+  * Fix configuration unit tests
+  * Remove trailing and leading white spaces in config.get_list()
+  * Make changes to use the new configuration files
+  * Add script to convert old config to new config
+  * Ignore false positive for lints
+  * Implement additional test to cover in-use deletion case
+  * Enable referential integrity for foreign keys in Keylime DB
+  * Prevent deletion of in-use allowlists via tenant + better error handling
+  * Fixes #1046 by explicitly and carefully dealing with a corner case.
+  * Fixes #1072 by explicitly and carefully dealing with yet another corner case.
+  * Define context agent due to keylime-tests PR#193
+  * Adds two small utilities which are used by "Offline Attestation" (enhancement #73)
+  * This commit solves #1091 by adding a per-agent verifier-issued epoch timestamp
+  * Remove keylime-bot
+  * Verifier log message improvements for large-scale testing.
+  * Bump version to 6.4.3
+  * KEYLIME_DIR should not be clobbered in TEST_MODE
+  * registrar: parse EK cert with pyasn1
+  * Reject invalid hash algorithms passed as arguments
+  * Treat tpm_cert_store as absolute path
+  * Fix for cloudverifier_tornado: 408 ('timeout') errors are retried instead of causing immediate attestation failure
+  * Typo fix: the two certificates got copied over each other during the openssl process by mistake.
+  * I downloaded the certs from here:
+  * Remove cryptodome.py from keylime
+  * Refactor allowlist handling on verifier to prevent premature DB writes
+  * With this change, the `verifier` will now use the `tpm2_print` command to extract clock information from the quote. It will then uses this information to make decisions about the attestation of the agent (i.e., the quote timestamp has to monotonically grow in a TPM which wasn't restarted/reset). In order to make this comparison the clock information from the previous quote is stored on the database and then both timestamps are compared.
+  * tpm_ek_ca: remove atmel keys
+  * Throw an error if --exclude is used without --allowlist
+  * Complete implementation of the Allowlists API
+  * readme: minor fixes
+  * Handle output file and algo validation errors
+  * Fixes #1063 in a minimalistic way, by making log output configurable
+  * Fix spacing
+  * Update fmf plans to run test which checking tenant verify options
+  * Fixes #1057 ensuring that the verifier can be restarted cleanly when mTLS for agents is disabled
+  * Adds a per-agent counter for "successfull attestations" on Keylime.
+  * Replace tabs with spaces
+  * Keep original control structure, minimize change
+  * Update installer.sh for RHEL8, PowerTools
+  * Set swtpm context which is later used for test filtering
+  * Update fmf plans to run tests which checking ek_certs
+  * Minor fixes
+  * Expand documentation for Measured Boot with additional info/examples.
+  * Fix the project logo in the readme (#1049)
+  * Add docs status to README
+
+-------------------------------------------------------------------
+Fri Jul 15 08:31:50 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Replace python-gpg requirement
+- Fix consolidation for _distconfdir and _sysconfdir macro
+
+-------------------------------------------------------------------
+Wed Jul 13 13:43:12 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.4.2:
+  * Bump version # to 6.4.2
+  * Use python3-gpg instead of python3-gnupg
+  * Update Packit CI tests to test both agent and zeromq revocation notifiers
+  * ima_ast: Make entry parsing stricter
+  * ima_ast: Calculate length of "n" and "n-ng" in bytes
+  * Fix broken URLs in README (Additional Reading)
+  * Remove CFSSL leftovers
+  * signing: move exception handing to verify_signature()
+  * Set revocation_notifiers = agent as default in keylime.conf
+  * cloud_verifier: Support /notifications/revocation REST API
+  * keylime_agent: Support /notifications/revocation REST method
+  * revocation_notifier: Factor out revocation message processing
+  * keylime: initialize supplementary groups when dropping privileges
+  * Refactor allowlist processing to enable verifier-side signature checks
+  * Full removal of the tenant WebApp
+  * update roadmap for 2022 and 2023
+  * docs: make Python requirements less strict
+  * docs: update API documentation for 2.1, add missing fields for agent quote
+  * Add python3-alembic to distros
+  * Update fmf plans to run test with IMA policy
+  * Drop SPDX-License-Identifier header
+  * Adjust CI test name according to keylime-tests PR#125
+  * ci: Run lint with Python 3.6 as well
+  * [trivial]: fix style of recently added docs files
+  * Improve error handling when doing signature verification
+  * Fix coverage file paths in submit-HEAD-coverage workflow
+  * Adding files from keylime-docs into main repo
+- Fix keylime service home directory
+- Adjust the directory for the TPM certificates
+
+-------------------------------------------------------------------
+Wed Jun 29 11:05:08 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Conflict also rust-keylime for all the subpackages
+
+-------------------------------------------------------------------
+Thu Jun 23 14:50:05 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove user downgrade mechanism from the package (CVE-2022-31250, bsc#1200885)
+
+-------------------------------------------------------------------
+Thu Jun 23 08:49:30 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add logrotate configuration for the services
+- Create run directory as non-root user
+- Conflict with rust-keylime
+- Consolidate in _distconfdir when possible
+
+-------------------------------------------------------------------
+Mon Jun 13 14:15:49 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.4.1:
+  * Bump version for pypi
+  * verifier: ensure that execptions caused by the agent result in a failure
+  * tpm_main: add failure tagging to measured boot parsing
+  * tpm_main: fix temp file handling in parse_binary_bootlog(..)
+  * pylint: fix bad-option-value and implicit-str-concat warnings
+  * ca: drop support for using CFSSL as a backend
+  * ca_openssl_impl: add basic support for generating a CRL
+  * config: change libefivar.so to libefivar.so.1
+  * elchecking: add workaround for wrong GUID parsing
+  * Add test /functional/measured-boot-swtpm-sanity to Packit CI plan
+  * Fix order of parameters in an error message
+  * pylint: remove usage of distutils because it is deprecated
+  * ca_util: do not use deprecated setDeamon() call
+  * elchecking: error if policy name is invalid, change default to reject-all
+  * Simplify GitHub Actions used for code coverage processing
+  * ima_dm: enable support for dm_target_update events
+  * benchmark: remove benchmark code
+  * ima: remove read_unpack(..) function
+  * Fixes #996, by properly catching exceptions resulting from network problems on the verifier.
+  * List tests in Packit-CI plan explicitly
+  * contributing: add section about code style
+  * fix git blame ignore entry for code style changes
+  * Enable test /functional/basic-attestation-without-mtls
+  * Defer loading PyZMQ to avoid optional dependency
+  * Unify log messages about deleting agent from CV
+  * Ignore reformat commit for git blame
+  * Reformat Keylime with isort and black to new code style
+  * Introducing pre-commit hook to enforce code style with isort and black
+- Drop already merged patches:
+  * config-libefivars.diff
+- Drop cfssl dependency, as uses openssl only
+- Drop cfssl firewalld rule
+
+-------------------------------------------------------------------
+Mon May 23 12:52:23 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.4.0 (CVE-2022-1053, boo#1199253):
+  * general: bump Keylime version to 6.4.0
+  * tests: adjust tests to reflect latest API changes
+  * api: bump version to 2.1
+  * config: remove unused registrar mTLS options in cloud_verifier section
+  * tenant, verifier: let the tenant provide the AK and mTLS certificate
+  * Fix exit call in scripts/download_packit_coverage.sh
+  * Added codecov.io description to TESTING.md
+  * ci: only run CodeQL on the keylime directory and disable it for the webapp
+  * Enable GitHub workflow integrating codecov.io
+  * README: Fix and cleanup the install instructions
+  * ima: add backport for dataclasses support for Python 3.6
+  * ima: add info that device mapper validation is still experimental
+  * add lark as a dependency
+  * ima: integrate dm validator into gernal IMA validation
+  * agentstates: add the option to load and store dm validator state
+  * ima: add parser and validator for device mapper entries
+  * ima_file_signatures: rename to file_signatures
+  * ima_ast: rename to ast
+  * ima: move IMA components into their own module
+  * failure: add function to get current event ids
+  * config: add more details for tpm_cert_store option
+  * Deprecate API version 1.0
+  * config, webapp: remove tls_check_hostnames option
+  * ci: add CodeQL analysis
+  * agent, tpm: remove is_vtpm() check
+  * tests: update to reflect vTPM removal
+  * remove vTPM related helper files and documentation
+  * config: remove vTPM related options
+  * tenant: remove vtpm_policy
+  * verifier: remove vtpm_policy
+  * remove REQUIRE_ROOT environment option
+  * Remove Testing farm tag-repository
+  * Bump required packaging module version to 20.0
+  * Remove last traces of M2Crypto
+  * Workaround for mock_open not supporting iteration in Python 3.6
+
+-------------------------------------------------------------------
+Wed May 18 11:28:14 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix "run_as" configuration parameter and set it to keylime:tss
+- Improve downgrade user migration during package update
+
+-------------------------------------------------------------------
+Wed Apr 13 09:42:54 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.3.2:
+  * general: bump Keylime version to 6.3.2
+  * tpm_main: flush transient objects
+  * pypi: add notice that the Python API is unstable
+  * installer: use OpenSSL by default
+  * Avoid mounting secdir while unmounting it
+  * remove TPM, VTPM and IMA stubbing support
+  * archive: remove all archive files
+  * Change GH reviewers to be from developer group
+  * added suse / opensuse support with zypper
+  * Fix tpm import in test_tpm.py
+  * Fix cfssl configuration in run_tests.sh
+  * tpm_emulator: improve TPM emulator installation
+  * config: Add option to enable DB debugging via DEBUG_DB env var
+  * Enable SQL query cache for JSONPickleType
+  * tpm_emulator: move everything into systemd services
+  * Implement broader key support for Keylime's signing mechanisms
+  * tenant: Use exponential backoff on key verification retries
+  * tenant: Move JSON parsing to capture possible exceptions
+  * tenant: Move verifier stop from do_quote to do_verify
+  * pylint: Fix issues related to W0602 global-variable-not-assigned
+  * tenant: Handle 404 error from registrar gracefully
+  * pylint: Fix remaining code with issue R1732 consider-using-with
+  * pylint: Fix R1732 consider-using-with
+  * pylint: Fix issue detected by pylint-2.13.0
+  * pylint: Fix issue detected by pylint-2.13.0
+  * tenant: verify agent quote before adding to verifier
+  * README: remove tpm2-abrmd and OSX sections
+  * pylint: Fix issues related to W0102 dangerous-default-value
+  * pylint: Fix R0201 no-self-use
+  * pylint: remove W1203 logging-format-interpolation from ignore list
+  * pylint: remove R1729 use-a-generator from ignore list
+  * pylint: remove E1120 no-value-for-parameter from ignore list
+  * pylint: remove W1201 logging-not-lazy from ignore list
+  * pylint: fix C0209 consider-using-f-string
+  * pylint: fix C0201 consider-iterating-dictionary
+  * pylint: fix W1509 subprocess-popen-preexec-fn
+  * keylime_tenant non-zero exit code on error
+  * Fix prepare step adjustments in packit-ci.fmf plan
+  * failure: fix Pattern type hint
+  * mypy: add initial Mypy configuration
+  * ima_ast: add type hints
+  * failure: add type hints
+  * logging, config: add type hints for logging module
+  * algorithms: add type hints
+  * json: add type hints and add JSONType as custom type
+  * Full allowlist processing when not adding host
+  * provider, vTPM: remove vTPM manager and provider code
+  * tpm: fix that the set of missing PCRs is not serializable in failure
+  * Restores the option to use keylime agents without mTLS
+  * services: make the services run as keylime user instead of root
+  * State in --help that SHA-256 is used for --allowlist-checksum
+  * config: change cacert.pem to cacert.crt
+  * registrar_client: validate connections against registrar ca certificate
+  * tenant: validate connections against verifier ca certificate
+  * request_client: only add custom adapter if TLS is enabled
+  * setup: add static assets for webapp
+  * Add TESTING.md describing testing details
+  * Fix some remaining log format strings
+  * Fix for database_url parameter with sqlite
+  * Enable test basic-attestation-with-unpriviledged-agent in Packit CI
+  * Use lazy string formatting when logging (#535)
+  * Make Packit CI plan more resource-saving
+  * keylime.conf: Document setting ownership in WORK_DIR (/var/lib/keylime)
+  * agent: Make sure tmpfs is empty even if not mounted or cannot unmount
+  * agent: Drop privileges by switching to normal user and group
+  * agent: Move mounting of tmpfs towards beginning of main()
+  * agent: Read measured boot log near process start
+  * agent: Open file for IMA log file near process start
+  * ima: Refactor read_measurement_list() to take file as argument
+  * Add the policy name to failure event
+  * tpm_main: Check if tpm_cert_store exists (#553)
+  * Remove tag input from container build workflow
+  * Push container images to quay.io/keylime org
+  * Enable code coverage measurement for e2e tests in Packit CI
+  * config: fix config search order
+  * Add defaults for ephemeral keys for agent records
+  * Update outdated greetings Github messages
+  * services: add keylime_agent_secure.mount service
+  * installer.sh: updated tpm2-{tools, tss}, use system packages if possible
+  * revocation_notifier: convert the data to str in the notifiers
+  * revocation_notifier: mark webhook threads as daemon and add timeout
+  * Fix Packit CI test plan Summary
+  * Enable Packit CI testing on CentOS Stream 8
+  * Enable Packit CI testing on Fedora Rawhide
+  * Remove last trace of TPM 1.2 (hopefully)
+  * verifier: remove start_tornado() function
+  * verifier: wait for connections to be closed before stopping ioloop
+  * revocation_notifier: kill ZeroMQ broker if it blocks more than 5s
+  * Add more e2e tests to Packit CI
+  * Enable EPEL repo on CentOS Stream in packit.yaml
+- Drop already merged patches
+  * drop_privileges_of_agent_process_after_startup.patch
+  * config_fix_config_search_order.patch
+  * services_add_keylime_agent_secure_mount_service.patch
+
+-------------------------------------------------------------------
+Thu Feb 24 15:50:53 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add upstream patches:
+  * drop_privileges_of_agent_process_after_startup.patch
+  * config_fix_config_search_order.patch
+  * services_add_keylime_agent_secure_mount_service.patch
+- Configure the agent to run as non-root (via keylime.conf)
+- Add keylime sysuser conf file and deploy as part of the tpm
+  certificate subpackage
+- Prepare the systemd mount unit for /var/lib/keylime/secure
+
+-------------------------------------------------------------------
+Thu Feb 24 14:49:33 UTC 2022 - aplanas@suse.com
+
+- Drop patches beacuse merged upstream:
+  * version.diff
+  * cloud_verifier_tornado-use-fork_processes.patch
+- Drop binaries not used anymore:
+  * keylime_provider_platform_init
+  * keylime_provider_registrar
+  * keylime_provider_vtpm_add
+- Update to version v6.3.1:
+  * revocation_notifier: mark webhook threads as daemon and add timeout
+  * Fix Packit CI test plan Summary
+  * Enable Packit CI testing on CentOS Stream 8
+  * Enable Packit CI testing on Fedora Rawhide
+  * Remove last trace of TPM 1.2 (hopefully)
+  * verifier: remove start_tornado() function
+  * verifier: wait for connections to be closed before stopping ioloop
+  * revocation_notifier: kill ZeroMQ broker if it blocks more than 5s
+  * Add more e2e tests to Packit CI
+  * Enable EPEL repo on CentOS Stream in packit.yaml
+  * agent, crypto: add localhost, server and contact ip to agent certificate
+  * Add better default repo path for run_local.sh
+  * Fix incorrect variable name in test_restful
+  * Run existing agent tests against the rust-keylime agent
+  * Fix small wording mistakes caught while reading the code
+  * agent: move key and certificate logging levels from debug to info
+  * agent: allow absolute paths for rsa_keyname and mtls_cert
+  * Add missing backend parameter
+  * cloud_verifier_tornado: use fork_processes
+  * ci: automatically push release to PyPI
+  * setup.{py,cfg}: Move setup configuration to setup.cfg
+  * Add iproute tool to Dockerfile
+  * Pylint does not like single-line functions.
+  * A small beauty fix
+  * This is a small fix to proactively fix Issue #840 by identifying non-escaped double quotes in the tpm2-tools output
+  * setup.py: add version number and new Python versions, drop unsed binaries
+  * setup.py, config: install default configuration into package path
+  * ci: move old keylime.conf to keylime.conf.orig before running tests
+  * retry: fix pylint issue
+  * Adding Infineon Optiga 034 RSA and ECC certificates for Infineon SLB9675 devices.
+  * Ensure columns "mb_refstate" and "allowlist" are of type LONGTEXT in table "verifiermain"
+  * tenant: add exponential backoff option to retry timings
+  * cloud verifier: add exponential backoff option to retry timings
+  * tpm: add exponential backoff option to retry timings
+  * test, retry: add unit test for retry algorithm
+  * common: add algorithm for retry time calculation
+  * registrar, tpm_main: ensure that correct types are commited to DB.
+  * Fix typo for config param listen_notifications
+  * Lint is _really_ unhappy today.
+  * Linty fixes
+  * Adding a unit test file for tpm_main
+  * tpm_main: check if PCRs for the hash algorithm are available
+  * tpm_main: handle if tpm2_checkquote returns no PCRs for a hash algorithm
+  * agent: output supported_version as result not as a status
+  * Add missing subcommands to -c help message
+  * tests: fix mtls_cert generation in test_restful.py
+  * revocation_notifier: fix socket path permission check
+  * Remove unused database_query config param
+  * Move umask calls only on entry points
+  * config: move directory utilities to fs_util
+
+-------------------------------------------------------------------
+Mon Feb  7 16:28:22 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Change back agent_uuid to hostname
+- Set tpm_hash_alg to sha256 by default
+- Update version.diff patch to point to the correct version number
+- Fix issue with Tornado, when multiple workers are started
+  * Add cloud_verifier_tornado-use-fork_processes.patch (bsc#1195605)
+
+-------------------------------------------------------------------
+Thu Jan 27 16:16:19 UTC 2022 - aplanas@suse.com
+
+- Drop patches beacuse merged upstream:
+  * 0001-Drop-dataclasses-module-usage.patch
+  * 0001-config-support-merge-multiple-config-files.patch
+  * 0001-ca-support-back-old-cyptography-API.patch
+- Update to version v6.3.0:
+  * Coordinated update to fix:
+    + bsc#1193997 (CVE-2022-23948)
+    + bsc#1193998 (CVE-2021-43310)
+    + bsc#1194000 (CVE-2022-23949)
+    + bsc#1194002 (CVE-2022-23950)
+    + bsc#1194004 (CVE-2022-23951)
+    + bsc#1194005 (CVE-2022-23952)
+  * secure_mount: add umount function
+  * secure_mount: use /proc/self/mountinfo
+  * Validate user ID in all public interfaces
+  * validators: add uuid and agent_id validators
+  * validators: create validators module
+  * revocation_notifier: move zmq socket to /var/run/keylime
+  * Update API version from 1.0 to 2.0
+  * tpm: do not compress quote with zlib by default
+  * verifier: persist AK and mTLS certificate to DB
+  * verifier: use "supported_version" for agent connections
+  * tenant: add support for "supported_version" option for the verifier
+  * api_version: add the option for basic validation
+  * verifier: add supported_version field to DB and API
+  * agent: add /version to REST API
+  * verifier, tenant: allow agents to not use mTLS
+  * tenant, verifier: allow manual configuration of agent mTLS
+  * tests: migrate to mTLS
+  * tenant: connect to the agent via mTLS
+  * verifier: connect to the agent via mTLS
+  * tornado_requests: handle SSLError
+  * web_util: add mTLS context generation for agent
+  * agent: Enable mTLS for agent REST API
+  * crypto: add helper function for creating self signed certs
+  * registrar: Allow the agent to registrar with a mTLS certificate
+  * request_client: add workaround for handling certificates
+  * request_client: add the option to ignore hostname validation
+  * Better docs and errors about IMA hash mismatches
+  * tests: use JSON instead Python string for IMA tests
+  * verifier: use json.loads(..) instead of ast.literal_eval(..)
+  * Adding Nuvoton certificate for a post 2020 TPM device. The EK cert
+    of the device directs to the following download site:
+    'https://www.nuvoton.com/security/NTC-TPM-EK-Cert/Nuvoton TPM Root
+    CA 1111.cer' (yes, including the spaces)
+  * Improve revocation notifier IP description in keylime.conf
+  * tornado_requests: set Content-Type header correctly for JSON
+  * tenant: post U key to agent with correct Content-Type header
+  * Explicitly set permissions on new keylime.conf files installed
+  * tpm_main: close file descriptor for aik handle
+  * verifier: do not call finish() twice
+  * agent: fix payload execution
+  * tests: add initial tests for web_util module
+  * config, web_util: move get_restful_params(..) to web_util
+  * verifier: Also retry on HTTP 500 status code
+  * agent: improve startup and shutdown
+  * registrar: cleanup start function
+  * web_util: move echo_json_response(..) out of config.py
+  * verifier: fix failure generation for V key
+  * tornado_requests: cleanup TornadoResponse class
+  * web_util, verifier: move mTLS SSLContext generation into separate module
+  * ca: support back old cyptography API
+  * Fix test branch reference in packit.yaml
+  * ci: disable DeprecationWarning from pylint in tox
+  * Enable new test in Packit CI
+  * tenant: fix reactivate command
+  * config: support merge multiple config files
+  * ci: use only fedora-stable for packit
+  * elchecking: harden example policy against event type manipulation
+  * elchecking: add new tests
+  * tests: fix stdout formatting for agent and verifier
+  * Drop dataclasses module usage
+  * revocation notifier: handle shutdown of process gracefully
+  * verifier: handle SIGINT and SIGTERM correctly
+  * ima_emulator: fix IMA hash validation and add more options
+  * ima_ast: fix handling ToMToU errors
+  * Remove leftovers of TPM 1.2 support
+  * agent: improved validation for post function
+  * agent: better validation for mask and nonce
+  * config: add function to validate hex strings
+  * agent: keys/verify check if challenge was provided
+  * tpm_main: do not append /usr/local/{bin,lib} to default env
+  * db: only set length on Text type if supported
+  * json: do not make sqlalchemy a hard requirement
+  * Enable functional testing with Packit CI
+  * ima_emulator: specify sys.argv as the named parameter argv in main()
+  * elchecking example policy: make it work with Fedora 34
+  * elchecking example policy: initrd* might be also called initramfs*
+  * scripts: add mb_refstate generator for example policy
+  * config: change tpm_hash_alg to SHA1 by default
+  * parse_mb_bootlog: specify the used hash algorithm used for PCRs
+  * agent: add warning that on kernels <5.10 IMA only works with SHA1
+  * tpm: explicitly pass hash alg to sim_extend(..)
+  * ima emulator: use IMA AST and support multiple hash algorithms
+  * tests: update IMA allowlist version number
+  * ima: add option 'log_hash_alg' to IMA allowlist
+  * ima: remove hard requirement for SHA1 PCR 10
+  * algorithms: extend Hash class to simplify computing hash values
+  * config, tpm_main: explicitly handle YAML load errors
+  * config: private_key must be set to -private.pem not -public.pem
+  * agent: add UUID option environment
+  * agent: drop openstack uuid option
+
+-------------------------------------------------------------------
+Tue Jan 25 15:13:04 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Set /var/lib/keylime under the same permissions expected by the code
+
+-------------------------------------------------------------------
+Tue Jan 18 14:28:05 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add 0001-config-support-merge-multiple-config-files.patch
+  This will allow the merge of config files in /usr/etc and /etc.
+- Move the configuration file to /usr/etc in new distributions
+- Add 0001-ca-support-back-old-cyptography-API.patch
+  This is only required for SLE, but the API is compatible with new versions
+
+-------------------------------------------------------------------
+Tue Jan 11 13:38:19 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add 0001-Drop-dataclasses-module-usage.patch, to support Python 3.6
+
+-------------------------------------------------------------------
+Tue Jan 11 12:54:41 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix cfssl bcond logic in Tumbleweed / SLE
+
+-------------------------------------------------------------------
+Mon Jan 10 12:05:37 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.2.1:
+  * Another addition to gitignore
+  * Update .gitignore with more Keylime-specific files
+  * json: add support for sqlalchemy.engine.row.Row in newer sqlalchemy
+  * ima_ast: check if the PCR is the same as in the config
+  * Fix permissions issue on volume mount in run_local.sh
+  * Make run_local.sh use a local copy of the repo
+  * Small updates to GOVERNANCE.md
+  * Move cargo-tarpaulin install to separate command
+  * config: drop registrar_* TLS options in [registrar] section
+  * Fix missing && in Dockerfile
+  * Remove simplejson from scripts and docs
+  * Replace simplejson with built-in json module
+  * Add rust-keylime container dependencies
+  * config: fix getboolean with fallback
+  * Clean up CI scripts and rewrite run_local.sh
+  * ima: for ToMToU errors skip template content validation
+  * ima: Use a set of entry numbers and file offsets to remember multiple positions
+  * Rename CONTRIBUTORS.md to CONTRIBUTING.md
+  * Update GOVERNANCE.md to match MAINTAINERS.md rename
+  * Update MAINTAINERS
+  * Update README: remove Gitter, Travis CI
+  * ca: Use UTC when setting certificate validity
+  * Tenant commands return json
+  * scripts: Allow passing a base policy to create_policy tool
+  * ima: Handle the case of ima-sig with a path with spaces in them
+  * add length to string object
+  * scripts: Implement create_policy to create the JSON allowlist from files
+  * ima: Also add a sha256 default boot_aggregate hash with 64 '0's
+  * ima: Use seek() to get to the last known last entry
+  * ima: Extend allowlist to be able to handle generic ima-buf entries
+  * ima: Extend JSON allowlist with 'ima' entry and 'ignored_keyrings'
+  * ima: Populate verifier keyrings with keys taken from ima-buf log line
+  * ima: Remove methods from ImaKeyring that are now in ImaKeyrings
+  * ima: Start passing ima_keyrings through APIs replacing ima_keyring
+  * Extend AgentAttestState with ima_keyrings field and use it
+  * ima: Implement ImaKeyrings class to support multiple keyrings
+  * verifier: Extend verifier DB to persist learned keyrings
+  * Fix a couple of pylint errors
+  * ima: Fix spurious attestation failures
+  * ima: make ToMToU errors not a failure by default
+  * Simple fix for tenant error message printout.
+  * pylint: Fix errors related to R1714
+  * pylint: Suppress C0201, C0209 and W0602 newly reported errors
+  * installer: do not install tpm2-abrmd
+  * tpm: by default use /dev/tpmrm0 instead of tpm2-abrmd
+  * verifier: add option to send revocation messages via webhook
+
+-------------------------------------------------------------------
+Wed Dec 15 13:22:32 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix keylime configuration file attributes
+
+-------------------------------------------------------------------
+Tue Dec 14 17:07:39 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Requires python-psutil
+- Disable automatic execution of the payload by default
+- Use ramdom UUID by default
+
+-------------------------------------------------------------------
+Wed Dec  8 16:30:39 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Introduce a bcond for cfssl detection
+
+-------------------------------------------------------------------
+Wed Dec  1 10:07:10 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop cfssl if we are not in openSUSE
+
+-------------------------------------------------------------------
+Thu Sep 16 08:39:35 UTC 2021 - aplanas@suse.com
+
+- Update to version 6.2.0:
+  * Fix bug #757 where revoc cert was treated as text
+  * Code improvement: removal of extra dependencies in measured boot attestation (#755)
+  * Sanitize the exclude list while it is ingested at `tenant` by removing comments (^#) and empty lines.
+  * tenant: show severity level and last event id in status
+  * verifier: move to new failure architecture
+  * pcr validation: move to new failure architecture
+  * measured boot: move to new failure architecture
+  * ima: move to new failure architecture
+  * failure: add infrastructure to tag and collect revocation events in Keylime
+  * Simulating use of SSLContext.minimum_version on ssl v3.6
+  * verifier: fix minor typos
+  * Add tests for ca_impl_cfssl and ca_util
+  * Replace M2Crypto with python-cryptography
+  * tenant: status now shows if a agent was added to the registrar
+  * tenant: open file to send utf-8 encoded
+  * Correct some comments about and remove vestige in MB policy
+  * fixing a small bug that resulted in malformed refstates not failing MBA
+  * agent: ensure that EK is in PEM format when used as uuid
+  * Solves #703 by adding a "non-trivial" example of a "measured boot policy" (#734)
+  * ci: build and publish container images
+  * codestyle: fix W0612 and R1735 pylint errors
+  * codestyle: fix W1514 pylint error
+  * systemd: Add KillSignal=SIGINT to keylime_agent.service
+  * One-liner to set the minimum version of TLS to v1.2
+  * pylint fix
+  * Typo fix: return list order confusion between measured_boot.py and tpm_abstract.py
+  * Refactor keylime_logging module
+  * ima: Implement ima-buf validator and validate keys on keyrings (#725)
+  * Remove Python 2 leftovers
+  * Additional fix for the processing of "tpm_policy"
+  * ima: Return an empty allowlist rather than a plain empty list
+  * verifier: convert (v)tpm_policy in DB from string to JSONPickleType
+  * verifier: Create AgentAttestState objects from entries in the db
+  * verifier: Persist the IMA attestation state after running the log verification
+  * db: Add DB migration file for boottime, ima_pcrs, pcr10, and next_ima_ml_entries
+  * verifier: Skip attestation one time if agent's boottime changed
+  * test: Add test case simulating iterative attestation
+  * verifier: Delete an AgentAttestState when deleting an agent
+  * ima: Remember the number of lines successfully processed and last IMA PCR value(s)
+  * ima: Reset the attestation if processing the measurement list fails
+  * debug: Show line number when PCR match occurs
+  * verifier: Extend AgentAttestState with state of the IMA PCR
+  * Consult the AgentAttestState for the next measurement list entry
+  * Introduce an AgentAttestState class for passing state through the APIs
+  * verifier: Request IMA log at entry 0 for now
+  * agent: Get boottime and transfer to verifier
+  * agent: Add support for optional IMA log offset parameter
+  * tests: Add a unit test for the IMA function and run it
+  * agent: Move IMA measurement list reading function to ima.py
+  * Add default verifier-check value
+  * Use tox for pylint
+  * Use Fedora 34 as base image for CI container
+  * Run ci jobs only when needed
+  * config: merge convert and list_convert into the same function
+  * Versioned APIs
+  * Refacator of check_pcrs to parse then validate (#716)
+  * Automatically calculates the boot_aggregate from the measured boot log. (#713)
+  * Set default UUID as lowercase (#699)
+  * tenant: do_cvdelete wait until 404
+  * Ensures the output of `bulkinfo` command in `keylime_tenant` is JSON
+  * ima: Convert pcrval to bytes to increase efficiency
+  * tests: extend ima tests for signature validation and exclude lists
+  * Allow agents to specify a contact ip address and port for the tenant and CV  (#690)
+  * verifer: Fix signature and allowlist evaluation bahavior change
+  * ima: Fix runtime error due to wrong datatype
+  * tenant: add the option to specify the registrar ip and port
+  * measured_boot: drop process_refstate
+  * check_pcrs: match PCR if no mb_refstate is provided
+  * ci: make run_local.sh work with newer docker versions
+  * Fixing pylint errors (#698)
+  * tests: add IMA test where validation should be ignored
+  * ima: Use ima_ast for parsing and validation
+  * tests: Add test for ima AST parser
+  * ima: Introducing a AST for parsing and validation
+  * Make stalebot a bit nicer
+  * enable tenant to fetch all (or verifier specific) agents info in a single call from the verifier
+  * Flush all sessions from TPM device (#682)
+  * multiple named verifiers sharing a single database
+  * webapp: fix tls certs paths (#659)
+  * Corrects markdown to have proper rendering (#673)
+  * ima_file_signatures: Extract keyidv2 from x509 certs
+  * installer: Add '-r' option to cp to copy directory (issue #671)
+  * config: Add optional fallback parameter to get()
+  * agent: Fix the usage of dmidecode during the agent startup (issue #664)
+  * agent: Rename allowlist to ima_allowlist in keylime.conf
+  * Fix decoding error in user_data_encrypt
+  * agent: Fix issue #667 by testing for an empty ima_sign_verification_keys list
+  * Addresses issue #660 (database path while running local tests) (#665)
+  * ima: Return 'None' when ImaKeyring.from_string() called with emtpy string
+  * tests: Move unittests into files with suffix _test.py
+  * Fixes and improvements for database configuration (#654)
+  * Add signature verification support for local and remote IMA signature verification keys (#597)
+  * install: Remove TPM 1.2 support from installer and bundeling scripts
+  * CI/CD: Remove tpm1.2 testing support
+  * Remove duplicated calls to verifier
+  * Remove adding entropy to system rng
+  * Cleanup and fix error case in encryptAIK (#648)
+  * Move measured boot related code into functions to make check_pcrs readable (#642)
+  * Move code related to tpm2_checkquote into its own function (#639)
+  * scripts: Cleanup shell script formatting
+  * installer.sh: Do not delete the local copy of the certificates.
+  * Fix user_data_encrypt to UTF8 decode before print
+  * tpm_abstract: Fix adding of entropy
+  * codestyle: Ignore R1732 implemented by pylint >=2.8.0
+  * a fix for letting JSON encoding bytes correctly
+  * Adding back reglist to the list of commands that don't need a -t argument
+  * Invoke tpm2_evictcontrol for 4.0 and 4.2 tools if aik_handle exists (#624)
+  * Addresses #436 (#611)
+  * Fixes #620
+  * Include PCR16 in the quote only when needed
+  * Close leaking file descriptors (#622)
+  * installer.sh: Add missing spaces when efivar is added
+  * More ima_emulator_adapter cleanups (#616)
+  * installer: Add json-c-devel/json-c-dev to BUILD_TOOLS for tpm2-tss build
+  * Remove more commented code in ca_util.py
+  * installer: Only install efi library on x86_64 systems
+  * Create allowlist table and basic API support
+  * installer: Add libuuid-devel/uuid-dev to BUILD_TOOLS for tpm2_tools build
+  * WIP: Some cleanups (#612)
+  * Remove _cLime.c
+  * config: Document the measured boot PCRs and what is using them
+  * Very simple fix for the agent (re: measured boot) The agent code does not need to import "measured boot policies"
+  * ima_emulator_adapater: Remove unnecessary global statement
+  * webapp: Fix private key and certificate path (issue #604)
+  * Add support for keylime_webapp service to read intervals from keylime.conf
+
+-------------------------------------------------------------------
+Mon Jul 26 09:31:01 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to Keylime 6.1.1
+  + keylime_tenant add crash with TypeError: Object of type 'bytes' is
+    not JSON serializable
+  + Whenever Keylime agent starts and cannot contact the registrar, it
+    fails and quits without flushing create EK handles
+  + keylime_tenant -c reglist now requires a "-t" parameter for no
+    reason
+  + Duplicated API calls to verifier in webapp backend
+  + Installer deletes tpm_cert_store files
+  + agent_uuid set to dmidecode crashes Keylime
+  + Copying of tpm_cert_store fails during installation
+  + If the PCR belong to a measured boot list, it is not validated
+  + keylime_tenant --c update fails with a race condition
+- Drop patches already present in the new version
+  + webapp-fix-tls-certs-paths.patch
+  + check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch
+  + tenant-do_cvdelete-wait-until-404.patch
+
+-------------------------------------------------------------------
+Wed Jul 21 14:17:10 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add tenant-do_cvdelete-wait-until-404.patch to fix the update command
+
+-------------------------------------------------------------------
+Mon Jul 19 14:57:45 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Adjust the default revocation notifier binding IP
+- Default to CFSSL in keylime.conf
+
+-------------------------------------------------------------------
+Wed Jul 14 12:12:23 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add config-libefivars.diff to adjust the path of the library
+
+-------------------------------------------------------------------
+Thu Jul  8 14:45:24 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch
+  (gh#keylime/keylime!695)
+- Recommends CFSSL in the registrar (actually should be the CA)
+- Change default value for require_ek_cert to False
+- Reorder the patches to separate upstream fixes from openSUSE ones
+
+-------------------------------------------------------------------
+Thu Jun 10 09:41:00 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add webapp-fix-tls-certs-paths.patch (gh#keylime/keylime!659)
+- Recommend dmidecode for the agent
+- Require libtss2-tcti-{device0,tabrmd0} to use abrmd service
+- Add keylime.conf.diff patch to change the default config file
+- Add keylime.xml for firewalld service definition
+
+-------------------------------------------------------------------
+Tue Apr 27 14:41:42 UTC 2021 - aplanas@suse.com
+
+- Update to version 6.1.0:
+  * Update python cryptography lib to v3.3.2
+  * installer.sh improvments
+  * run_local.sh: Run unit tests in keylime/tpm/tpm2_objects.py
+  * Fourth and final PR to address #491 (#580)
+  * scripts: Also use pylint-3 if pylint is not installed
+  * agent: Fix the checking for a specific error returned by tpm2_quote
+  * Allowlist verification - Enhancement #16
+  * Forgot to remove the original, more crude solution (which caused pylint errors)
+  * New and improved code to fix issue #582
+  * Consistent formatting for logging strings

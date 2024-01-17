@@ -1,0 +1,8 @@
+<package name="Srain" project="openSUSE:Factory">
+  <title>An IRC client</title>
+  <description>IRC client written in GTK3+.
+
+</description>
+  <devel project="network" package="Srain"/>
+  <url>https://srain.im</url>
+</package>

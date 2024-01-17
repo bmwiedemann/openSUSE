@@ -1,0 +1,541 @@
+-------------------------------------------------------------------
+Thu Jan 26 08:27:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- version 2.8
+  * Changes:
+    + FOP-2839: Links to pdf files with no scheme should open in pdf
+      viewer
+    + FOP-2860: Add light weight line breaking option
+    + FOP-2861: Allow resource loading from jar
+    + FOP-2865: Stroke-opacity is not honored on svg:text while
+      conveting svg to pdf
+    + FOP-2897: Skip OOM during font OS scanning
+    + FOP-2910: Remove cidset for PDF/A-2
+    + FOP-2969: Reorder glyphs with no width
+    + FOP-2977: Array index out of bounds with glyph position
+      adjustments and surrogate pairs
+    + FOP-3015: Set text color for simulate-style
+    + FOP-3023: Simulated bold error in Adobe Reader
+    + FOP-3048: Resolve links across IF files
+    + FOP-3049: Align AFP SVG text in the middle
+    + FOP-3051: Upgrade to Commons IO 2.11
+    + FOP-3053: Remove Xerces
+    + FOP-3055: Use a event for a draw image error
+    + FOP-3057: Allow fallback to non svg glyphs
+    + FOP-3061: AFP invoke-medium-map missing when using
+      page-group=false
+    + FOP-3062: AssertionError with SFArabic.ttf
+    + FOP-3067: README file still refers to bugzilla
+    + FOP-3068: NPE when reading a invalid TTC file
+    + FOP-3070: Batik is setting load-external-dtd to false so this
+      example doesnt work
+    + FOP-3071: Write mediummap before pagegroup
+    + FOP-3072: Empty link url gives NPE
+    + FOP-3074: Reorder glyphs based on gpa value
+    + FOP-3077: Use all rulesets for glyph substitution
+    + FOP-3078: Fix position of macron glyph
+    + FOP-3080: Allow removing empty table elements from structure
+      tree
+    + FOP-3081: Fix change ipd for linefeed-treatment=preserve
+    + FOP-3082: NPE when using a link in a span with accessibility
+    + FOP-3085: Remove Xalan
+    + FOP-3091: Add transparency color support
+    + FOP-3092: PDF/UA NPE when using external pdf
+    + FOP-3093: Stop reading ttf if we hit last offset
+    + FOP-3094: Allow bookmarks before declarations
+    + FOP-3101: Don't break with hangul syllables
+    + FOP-3102: Move composite glyphs to the end
+    + FOP-3103: NPE when using a footnote on redo of layout
+    + FOP-3105: Infinite loop when using page break with changing
+      ipd
+    + XGC-130: Allow subproperties in XMP
+    + XGC-132: Fallback to raw png if ImageIO cannot read image
+- Removed patch:
+  * update-2.7.patch
+
+-------------------------------------------------------------------
+Fri Jan 28 12:52:15 UTC 2022 - Quang Tran <quang.tran@suse.com>
+
+- version 2.7
+  * Changes:
+    + FOP-2928: PDFDocumentGraphics2D does not clear content on
+      nextPage()
+    + FOP-2943: NPE when inline character is a white space
+    + FOP-2973: Cannot use custom schemes starting with "data" in
+      resource resolver
+    + FOP-2997: Double byte glyphs not working in SVG font
+    + FOP-2999: Rollback after checking next page
+    + FOP-3000: Absolute positioning wrong with AFP TTF
+    + FOP-3002: Optimise memory usage for data uri
+    + FOP-3006: XMP Metadata in created PDF/A-2 documents is not
+      valid
+    + FOP-3008: Table with linefeed-treatment may give
+      ClassCastException
+    + FOP-3014: ConcurrentModificationException for table cell
+    + FOP-3016: Reorder thai marks for zero width
+    + FOP-3017: Add option to disable positioning per char
+    + FOP-3018: Allow to disable AFP page group
+    + FOP-3019: Merge useragent encryption params with fop.xconf
+    + FOP-3021: Improve validation of border property
+    + FOP-3024: Make sure even number of bytes are output per trn
+      for AFP TTF
+    + FOP-3025: Keep table size on changing ipd which has graphics
+    + FOP-3026: Fix NPE with empty table header
+    + FOP-3027: Sections of text sometimes lost with span=all
+      multiple columns
+    + FOP-3028: Set values in fopFactoryBuilder setConfiguration
+    + FOP-3030: AFP page overlay was written twice
+    + FOP-3031: Add MCF before MDR in AFP
+    + FOP-3032: Allow to embed native PDF in AFP
+    + FOP-3033: Update PDFBox to 2.0.21
+    + FOP-3034: Update PDFBox to 2.0.24
+    + FOP-3038: Allow sections which need security permissions to
+      be run when AllPermission denied in caller code
+    + FOP-3039: AFP include-page-overlay missing X and Y via IF
+    + FOP-3046: Don't use page position only on redo of layout
+    + XGC-128: Remove image transparency for PS
+  * Allow to embed native PDF in AFP
+- Added patch:
+  * update-2.7.patch
+
+-------------------------------------------------------------------
+Sun Jan 24 18:01:22 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- version 2.6
+  * Changes:
+    + FOP-1648: Fix pdf internal named destinations
+    + FOP-2536: Allow overpaint of PDF border
+    + FOP-2889: Make JAI optional
+    + FOP-2919: NPE printing
+    + FOP-2935: Make servlet a compile only dependency
+    + FOP-2939: Upgrade ant to 1.9.15
+    + FOP-2941: SVG container with stroke=black has an unexpected
+      border
+    + FOP-2945: Don't use change ipd on columns where it won't fit
+    + FOP-2950: Display font error at top level exception
+    + FOP-2957: Don't change ipd on lastpage if column count changes
+    + FOP-2958: Error when using both AFP truetype and base14 font
+    + FOP-2960: Soft-Hyphen on Hyphenated words
+    + FOP-2975: Put composite glyphs to separate font
+    + FOP-2978: Include composite glyphs in otf subset
+    + FOP-2979: Update PDFBox to 2.0.19
+    + FOP-2980: Reduce filesize for AFP Graphics2D
+    + FOP-2981: Convert CFF CID to Type1
+    + FOP-2989: Missing text in AFP output when using high
+      resolution
+    + FOP-2990: Changing ipd doesn't handle table narrowing
+    + FOP-2992: List broken too early without change ipd
+    + FOP-2994: Support OTF/TTF SVG fonts
+    + XGC-123: Decode image at page load rather than document load
+  * Support OTF/TTF SVG fonts
+  * Allow overpaint of PDF border
+
+-------------------------------------------------------------------
+Sat Jan 23 18:39:32 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override build date (boo#1047218)
+
+-------------------------------------------------------------------
+Thu Jun  4 05:13:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- version 2.5
+  * Changes:
+    + FOP-1606: Incorrect border when using number-columns-spanned
+      in RTF
+    + FOP-2704: Don't fail on coverage set class table not
+      supported
+    + FOP-2889: Make JAI optional
+    + FOP-2892: Font substitutions not working
+    + FOP-2894: Fit table contents onto current page
+    + FOP-2895: Add missing classes to allinone jar
+    + FOP-2898: Only use zero glue for change ipd
+    + FOP-2901: NoSuchElementException on empty table footer
+    + FOP-2902: Ignore TTF reserved index range
+    + FOP-2907: Missing bounding box on repeated image for PDF/UA
+    + FOP-2908: Repeated image in header not shown in structure tree
+    + FOP-2909: Hide empty blocks from structure tree
+    + FOP-2911: Add endpage event for FO to IF
+    + FOP-2923: Allow to suppress fo:leader within empty paragaphs
+      from structure tree
+    + FOP-2924: Images not scaled or rotated in PCL
+    + FOP-2925: Change in IPD on empty block NPE
+    + FOP-2926: Add artifact type to PDF header/footer
+    + FOP-2934: Absolute element should not be removed
+  * Allow to hide empty blocks from structure tre
+  * Does not need avalon-framework to build or run
+  * Adapt the command-line scripts by removing avalon-framework
+    from classpath
+  * Build against fontbox from apache-pdfbox >= 2
+  * Use the included pom file instead of downloading the same
+    file from maven central
+- Removed patch:
+  * fop-2.1-batik-xmlconstants.patch
+    + Included directly in this version. Requires batik >= 1.11
+- Modified patches:
+  * fop-2.1-QDox-2.0.patch -> fop-2.5-QDox-2.0.patch
+  * fix-javadoc-java8.patch
+  * hyphenation-more-stack.patch
+  * java8-compatibility.patch
+  * reproducible-build-manifest.patch
+  * xmlgraphics-fop-cli.patch
+    + Port to fop 2.5
+
+-------------------------------------------------------------------
+Mon May 18 14:41:12 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Do not install the OFFO hyphenation files to datadir, but package
+  instead the xmlgraphics-fop-hyph.jar and
+  xmlgraphics-fop-sandbox.jar that we build anyway. This fixes
+  boo#1145693
+- Clean up the build a bit
+
+-------------------------------------------------------------------
+Fri Apr  3 10:50:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * fop-2.1-batik-xmlconstants.patch
+    + apply when building with batik >= 1.11
+    + batik 1.11 moved XMLConstants class from
+      org.apache.batik.util to org.apache.batik.constants
+
+-------------------------------------------------------------------
+Wed Aug 14 23:18:43 UTC 2019 - Frank H. Ellenberger <frank.h.ellenberger@gmail.com>
+
+- Add fontbox to classpath: (rh#1413340)
+
+-------------------------------------------------------------------
+Mon Apr 15 13:59:26 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against glassfish-servlet-api
+
+-------------------------------------------------------------------
+Mon Jan 21 16:37:54 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with new avalon-framework and batik
+- Install maven pom file
+
+-------------------------------------------------------------------
+Fri Jan  4 16:20:13 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * fop-2.1-QDox-2.0.patch
+    + Build against QDox >= 2
+
+-------------------------------------------------------------------
+Thu Dec  6 21:54:53 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Bring back the java-devel/java requirements to >= 1.8; we will
+  fix the ByteBuffer/CharBuffer compatibilities as they arise.
+- Modified patch:
+  * java8-compatibility.patch
+    + Fix fix ByteBuffer/CharBuffer incompatibilities with java8
+      Cast all the java.nio.ByteBuffer and java.nio.CharBuffer
+      instances to java.nio.Buffer before calling the clear(),
+      flip(), limit(int), mark(), reset() and rewind() methods.
+
+-------------------------------------------------------------------
+Thu Nov 15 11:45:21 UTC 2018 - thomas.schraitle@suse.com
+
+- version 2.1
+  Change requirement from java-devel-openjdk >= 1.8.0 to
+  java-devel-openjdk >= 9 to avoid tracebacks because of compatibility
+  issues with java.nio.Buffer, for example:
+  java.lang.NoSuchMethodError:
+  java.nio.CharBuffer.rewind()Ljava/nio/CharBuffer; 
+
+-------------------------------------------------------------------
+Wed Nov  7 20:48:57 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on a particular xml-commons-apis provider.
+
+-------------------------------------------------------------------
+Mon Oct 29 06:31:21 UTC 2018 - antoine.belvire@opensuse.org
+
+- Add reproducible-build-manifest.patch: Remove custom "Build-Id"
+  from manifests. It contains date and other information making the
+  build unreproducible (boo#1110024).
+
+-------------------------------------------------------------------
+Tue Aug 28 13:51:49 UTC 2018 - tchvatal@suse.com
+
+- Fix building with ant >= 1.9.12
+
+-------------------------------------------------------------------
+Thu Apr  5 10:13:02 UTC 2018 - fstrba@suse.com
+
+- Added patch:
+  * java8-compatibility.patch
+    + Fix compatibility with java8 and lower when built with java9
+      or higher
+
+-------------------------------------------------------------------
+Fri Sep 29 06:57:25 UTC 2017 - fstrba@suse.com
+
+- Don't condition the maven defines on release version, but on 
+  _maven_repository being defined
+
+-------------------------------------------------------------------
+Tue Sep 19 07:23:59 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6 and fix
+  javadoc build
+
+-------------------------------------------------------------------
+Fri May 19 09:16:13 UTC 2017 - vsistek@suse.com
+
+- Add BuildRequires: javapackages-local (for maven conversions)
+
+-------------------------------------------------------------------
+Mon Mar  6 11:47:06 UTC 2017 - sknorr@suse.com
+
+- Make sure to apply new file list for Tumbleweed only
+  (FATE#322405)
+
+-------------------------------------------------------------------
+Thu Mar  2 08:45:45 UTC 2017 - fvogt@suse.com
+
+- Add patch to fix build with stricter javadoc in version 8:
+  * fix-javadoc-java8.patch (boo#1027467)
+- Fix file list on SLE
+
+-------------------------------------------------------------------
+Tue Mar  8 08:52:41 UTC 2016 - fvogt@suse.com
+
+- Fix manpage for xmlgraphics-fop-fontmetrics
+
+-------------------------------------------------------------------
+Thu Mar  3 12:05:58 UTC 2016 - fvogt@suse.com
+
+- Update to fop 2.1
+    - https://xmlgraphics.apache.org/fop/changes.html#version_2.1
+- Remove upstreamed fop-commons-2.0.patch
+    and xmlgraphics-fop-xconf.patch
+- Add hyphenation-more-stack.patch to fix build with offo 2.2
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:25 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Mon Dec  8 12:57:49 UTC 2014 - tchvatal@suse.com
+
+- Spec-cleanify
+- Do not ever run tests, we lack quite packages to do so anyway
+- Drop fop-1.1-src.tar.gz.asc xmlgraphics-fop.keyring as upstream
+  does not provide those anymore
+- Apply patch to build with new xmlgraphics-commons:
+  * fop-commons-2.0.patch
+
+-------------------------------------------------------------------
+Tue Jul  8 10:30:59 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-trax
+
+-------------------------------------------------------------------
+Thu Sep 12 21:16:29 UTC 2013 - tchvatal@suse.com
+
+- Drop javadoc package so we build this package
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:30 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Sep  6 08:09:43 UTC 2013 - mvyskocil@suse.com
+
+- use new add_maven_depmap
+- add missing commons packages to BuildRequires
+- add gpg verification
+
+-------------------------------------------------------------------
+Thu Apr 25 12:10:30 UTC 2013 - mvyskocil@suse.com
+
+- fix a typo in a xmlgraphics-fop.script (bnc#817145)
+
+-------------------------------------------------------------------
+Mon Jan 28 14:45:12 UTC 2013 - mvyskocil@suse.com
+
+- (build) require xml-commons-apis, the org.w3c.svg are used inside fop
+  part of a fix for bnc#800694
+
+-------------------------------------------------------------------
+Thu Jan 10 11:26:27 UTC 2013 - mvyskocil@suse.com
+
+- drop excalibur usage from all classpaths, use avalon-framework instead 
+
+-------------------------------------------------------------------
+Mon Dec 17 10:21:55 UTC 2012 - mvyskocil@suse.com
+
+- drop excalibur-avalon from dependencies, fop now uses avalon-framework 
+
+-------------------------------------------------------------------
+Sun Dec  9 08:29:33 UTC 2012 - slavb18@gmail.com
+
+- patched fop.xconf
+  * added <auto-detect/> to pdf renderer section, so now possible to use system fonts like font-family="DejaVuSansMono"
+- fix the spec file to install a (default) fop.xconf file in /etc
+- patched scripts to use /etc/fop.xconf
+
+-------------------------------------------------------------------
+Tue Nov 20 12:53:08 UTC 2012 - mvyskocil@suse.com
+
+- add fo-formatter to provides upon a request of doc team 
+
+-------------------------------------------------------------------
+Wed Nov 14 13:23:34 UTC 2012 - slavb18@gmail.com
+
+- fixed "Class not found" errors in fop scripts
+
+-------------------------------------------------------------------
+Thu Oct 25 07:44:09 UTC 2012 - mvyskocil@suse.com
+
+- add commons-logging and commons-io to Requires and fop script 
+- removed uneeded xalan-j2, xmlcommons and xerces from dependencies
+
+-------------------------------------------------------------------
+Wed Oct 24 14:04:38 UTC 2012 - mvyskocil@suse.com
+
+- update to 1.1
+  * many bug fixes and a number of improvements
+  * support for Complex Scripts (e.g., Arabic, Hebrew, Indic, and Southeast
+  * Asian scripts)
+  * http://xmlgraphics.apache.org/fop/1.1/releaseNotes_1.1.html
+  * This release implements a substantial subset of the W3C
+  * XSL-FO 1.1 Recommendation. For a detailed overview of FOP's compliance with
+  * this recommendation, see Compliance.
+  * http://xmlgraphics.apache.org/fop/compliance.html
+- obsoleted xmlgraphics-fop-asf51789.patch
+- obsoleted xmlgraphics-fop-build.patch
+
+-------------------------------------------------------------------
+Fri Sep  9 16:20:40 UTC 2011 - giecrilj@stegny.2a.pl
+
+- restored gzipped archive to avoid HTTP 404
+- disabled tests (they take ages to build and they fail anyway, so do we really need them)?
+- added standard hyphenation from OFFO
+- told ant to use UTF-8
+- fix for asf#51789
+
+-------------------------------------------------------------------
+Fri May 13 08:25:38 UTC 2011 - toms@suse.de
+
+- Recompressed gzip archive to bz2 to avoid warning
+- Fixed non-conffile-in-etc warning for %{_mavendepmapfragdir}
+- Added new xmlgraphics-fontmetrics and xmlgraphics-fontlist scripts
+  to help for better FOP configuration
+- Added manpage and HTML for all scripts (xmlgraphics-fop, 
+  xmlgraphics-fop-fontmetrics, and xmlgraphics-fop-fontlist)
+- Created links without prefix xmlgraphics-fop for 
+  xmlgraphics-fop-fontmetrics and xmlgraphics-fop-fontlist
+- Created links for all manpages without prefix xmlgraphics-fop
+
+-------------------------------------------------------------------
+Wed May 11 14:43:06 UTC 2011 - toms@suse.de
+
+- Added two new scripts for creating font metrics and font lists
+
+-------------------------------------------------------------------
+Mon May  2 06:37:50 UTC 2011 - toms@suse.de
+
+- Fixed xmlgraphic-fop script:
+  * Added excalibur/avalon-framework-impl in BASE_JAR variable to
+    avoid exception in thread "main" java.lang.NoClassDefFoundError: 
+    org/apache/avalon/framework/configuration/DefaultConfigurationBuilder
+    Caused by: java.lang.ClassNotFoundException: 
+    org.apache.avalon.framework.configuration.DefaultConfigurationBuilder 
+  * Replaced xmlgraphics-batik/util in BASE_JAR variable to
+    avoid ClassNotFoundException: org.apache.batik.bridge.UserAgent 
+
+-------------------------------------------------------------------
+Tue Nov 16 15:11:29 UTC 2010 - mvyskocil@suse.cz
+
+- correct fop Provides: Obsolete: 
+
+-------------------------------------------------------------------
+Wed Nov  3 13:11:50 UTC 2010 - mvyskocil@suse.cz
+
+- fix bnc#650138 - fop update wanted
+  * fix memory leak in property cache
+  * change FONode.addCharacters() parameter to closer match the signature of the standard SAX characters() event
+  * new event handling framework
+  * support for font substitution
+  * support for addressing all glyphs available in a Type 1 font,
+    not just the ones in the font's primary encoding.
+  * limited support for pages of different inline-progression-dimensions within a page-sequence.
+  * minimal support for integer keep values on the various keep properties on block-level FOs.
+  * new AFPGraphics2D implementation which provides the ability to use Batik to
+    drive the production of AFP Graphics (GOCA) output from SVG.
+  * new Resource group leveling, external streaming, and de-duplication of images and
+   graphics using IncludeObject and ResourceGroup.
+  * new Native image embedding support (e.g. JPEG, GIF, TIFF) using ObjectContainer
+    and a MOD:CA Registry implementation.
+- merge with xmlgraphics-fop-0.95-6.jpp5.src.rpm 
+
+-------------------------------------------------------------------
+Thu Feb 26 13:52:34 CET 2009 - mvyskocil@suse.cz
+
+- fixed bnc#467866 - fop fails if JAVACMD_OPTS is set
+
+-------------------------------------------------------------------
+Wed Aug  6 15:23:11 CEST 2008 - skh@suse.de
+
+- update to version 0.95, list of changes at:
+  http://xmlgraphics.apache.org/fop/0.95/changes_0.95.html 
+- fop requires java 1.4 now
+- use unversioned Requires: jre
+
+-------------------------------------------------------------------
+Fri Jun 27 10:48:43 CEST 2008 - coolo@suse.de
+
+- avoid build cycle between fop and saxon
+
+-------------------------------------------------------------------
+Wed Jan 30 17:42:06 CET 2008 - skh@suse.de
+
+- update to version 0.94, major changes:
+
+  * Add support for font auto-detection (JM) Thanks to Adrian Cumiskey
+  * Add support for the border-collapsing model in tables (VH, JM)
+  * Add support for named destinations in PDF (JB)
+  * Add support for UAX#14 type line breaking (MM)
+
+  full list of changes at:
+
+  http://xmlgraphics.apache.org/fop/0.94/changes_0.94.html
+
+-------------------------------------------------------------------
+Tue Jul 10 12:23:48 CEST 2007 - skh@suse.de
+
+- update to version 0.93
+- build with gcj
+
+-------------------------------------------------------------------
+Sun May  6 22:50:12 CEST 2007 - ro@suse.de
+
+- added unzip to buildrequires 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:22 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Sep 17 19:53:40 CEST 2004 - skh@suse.de
+
+- do no longer use setJava
+
+-------------------------------------------------------------------
+Wed Apr 28 13:59:08 CEST 2004 - ke@suse.de
+
+- Provide wrapper scripts for fop.sh and xalan.sh to make it find the
+  java environment; reported by Thomas Schraitle; fix provided by Petr
+  Mladek [#39581].
+
+-------------------------------------------------------------------
+Mon Oct 27 13:56:38 CET 2003 - ke@suse.de
+
+- New package: version 0.20.5.
+
+

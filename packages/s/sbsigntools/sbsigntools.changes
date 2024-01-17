@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Sun Apr 02 14:29:25 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.9.5:
+  * Fix openssl-3.0 issue involving ASN1 xxx_it
+  * Add support for openssl-3
+  * sbsigntool: add support for RISC-V 64-bit PE/COFF images
+  * sbvarsign: do not include PKCS#7 attributes
+  * sbkeysync: Don't ignore errors from insert_new_keys()
+- Drop OpenSSL3.patch: Fixed upstream.
+- Drop -Wno-error=deprecated-declarations, no longer needed.
+- Add -Wno-error=maybe-uninitialized, needed when compiling with
+  GCC 13.
+- Use modern macros, list files explicitly, ensure we do not lose
+  any.
+
+-------------------------------------------------------------------
+Sat Feb  4 09:48:21 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- add -Wno-error=deprecated-declarations for openssl-3
+- OpenSSL3.patch: patch from Ubuntu to fix openssl 3 build.
+
+-------------------------------------------------------------------
+Wed Apr 28 16:11:39 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 0.9.4:
+  * docs: add man page for sbkeysync
+  * Fix errors on 32 bit
+  * sbverify: refer to unused function
+  * sbvarsign: remove unused global variable
+  * Fix some openssl 1.1.0 deprecated functions
+  * sbverify: fix verification with intermediate certificates
+  * sbsign: allow for adding intermediate certificates
+
+-------------------------------------------------------------------
+Mon Apr 27 11:50:40 UTC 2020 - Martin Loviska <mloviska@suse.com>
+
+- Remove GROUP from spec file 
+
+-------------------------------------------------------------------
+Fri Apr 24 12:47:49 UTC 2020 - fvogt@suse.com
+
+- Update to version 0.9.3:
+  * Version 0.9.3
+  * README: update git location and add mailing list information
+  * sbvarsign: fix "EFI_VARIABLE_AUTHENTICATION_2.TimeStamp.Year" assignment
+  * Fix PE/COFF checksum calculation
+  * Version 0.9.2
+  * src/image.c: remove alignment of regions
+  * sbvarsign: use SignedData instead of PKCS7 for authenticated updates
+  * Fix Fedora Build
+  * Version 0.9.1
+  * sbsign, sbvarsign: support engine based private keys
+

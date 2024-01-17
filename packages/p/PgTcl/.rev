@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>8e2e14a356854b2232c48fccff4723f5</srcmd5>
+    <version>1.5</version>
+    <time>1168901419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="179">
+    <srcmd5>8e2e14a356854b2232c48fccff4723f5</srcmd5>
+    <version>1.5</version>
+    <time>1168901419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="180">
+    <srcmd5>968ac086a5bb9ae847d3f1595933172a</srcmd5>
+    <version>1.5</version>
+    <time>1245338249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="182">
+    <srcmd5>968ac086a5bb9ae847d3f1595933172a</srcmd5>
+    <version>1.5</version>
+    <time>1245338249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="183">
+    <srcmd5>d37d7a52991acf43129122cd58e69a03</srcmd5>
+    <version>1.5</version>
+    <time>1268922804</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="185">
+    <srcmd5>d37d7a52991acf43129122cd58e69a03</srcmd5>
+    <version>1.5</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="186">
+    <srcmd5>d37d7a52991acf43129122cd58e69a03</srcmd5>
+    <version>1.5</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="189">
+    <srcmd5>d37d7a52991acf43129122cd58e69a03</srcmd5>
+    <version>1.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="190">
+    <srcmd5>5706ee6bcccf483aa5fecda49fb6d128</srcmd5>
+    <version>1.5</version>
+    <time>1317996368</time>
+    <user>lrupp</user>
+    <comment>specfile cleanup</comment>
+    <requestid>87031</requestid>
+  </revision>
+  <revision rev="10" vrev="192">
+    <srcmd5>5706ee6bcccf483aa5fecda49fb6d128</srcmd5>
+    <version>1.5</version>
+    <time>1319181755</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="193">
+    <srcmd5>d0ac1a4e993f64d5bd91da5fc79d1c4f</srcmd5>
+    <version>1.5</version>
+    <time>1323193823</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="194">
+    <srcmd5>241870f7501ac9e0424d0aa57cb729c0</srcmd5>
+    <version>1.5</version>
+    <time>1325231185</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>98359</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>18eae0e5e61096c4d430ec7c82b90518</srcmd5>
+    <version>1.7</version>
+    <time>1332616157</time>
+    <user>coolo</user>
+    <comment>Version 1.7</comment>
+    <requestid>110742</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>18eae0e5e61096c4d430ec7c82b90518</srcmd5>
+    <version>1.7</version>
+    <time>1340183155</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>18eae0e5e61096c4d430ec7c82b90518</srcmd5>
+    <version>1.7</version>
+    <time>1359108624</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>295280973d4458d695896728e2a3f3d2</srcmd5>
+    <version>1.7</version>
+    <time>1375365711</time>
+    <user>coolo</user>
+    <comment>- Set -DUSE_INTERP_ERRORLINE to fix build with Tcl 8.6.
+  (This does not affect building against 8.5)</comment>
+    <requestid>185208</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>295280973d4458d695896728e2a3f3d2</srcmd5>
+    <version>1.7</version>
+    <time>1379661921</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>54127be5af63cc08fa9d81033bf2c97e</srcmd5>
+    <version>1.7</version>
+    <time>1385043955</time>
+    <user>coolo</user>
+    <comment>- Avoid an unneeded explicit dependency on a certain version of
+  libtcl (pgtcl-stubs.patch).</comment>
+    <requestid>201887</requestid>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>54127be5af63cc08fa9d81033bf2c97e</srcmd5>
+    <version>1.7</version>
+    <time>1409300441</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>01660b69d5ae399354f9133b94b6be25</srcmd5>
+    <version>1.7</version>
+    <time>1573044587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739284</requestid>
+  </revision>
+</revisionlist>

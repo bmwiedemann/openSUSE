@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ffb00bcabd1c60f0893d4b96d6c80e46</srcmd5>
+    <version>1.0.1</version>
+    <time>1529066238</time>
+    <user>maxlin_factory</user>
+    <comment>Python sorted collections library</comment>
+    <requestid>613565</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c5b68ec31df8335af49b3c5284997b0</srcmd5>
+    <version>1.0.1</version>
+    <time>1545648245</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659679</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4de15add62d346c799e43e6f078af7f5</srcmd5>
+    <version>1.1.2</version>
+    <time>1558037175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702877</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>463115f46a0bc1de4673867157601b21</srcmd5>
+    <version>1.1.2</version>
+    <time>1595271906</time>
+    <user>dimstar_suse</user>
+    <comment>- Add method_item.patch to replace _del_item and _set_item methods
+  (gh#grantjenks/python-sortedcollections#12).</comment>
+    <requestid>821872</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d9b393cec81366e2675168f47a5038b</srcmd5>
+    <version>1.2.1</version>
+    <time>1595577730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  - Update self._dict_* methods to use dict.__* functions directly.</comment>
+    <requestid>822280</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef0e8d80bd4b8841e4b954e832131315</srcmd5>
+    <version>2.1.0</version>
+    <time>1612108324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867972</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7b1f8b5f203b8f235a1d33f8242b0164</srcmd5>
+    <version>2.1.0</version>
+    <time>1701533594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1130382</requestid>
+  </revision>
+</revisionlist>

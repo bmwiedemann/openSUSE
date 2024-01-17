@@ -1,0 +1,427 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d76a8bd6ceaeae1dc6c9c7c06525930</srcmd5>
+    <version>1.0</version>
+    <time>1386060656</time>
+    <user>coolo</user>
+    <comment>New package - for the ModemManager stack</comment>
+    <requestid>209059</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8977928221b10f9c58f8ed1b97c21dcb</srcmd5>
+    <version>1.8.0</version>
+    <time>1391322965</time>
+    <user>coolo</user>
+    <comment>Update to 1.8.0 (forwarded request 215424 from dimstar)</comment>
+    <requestid>220411</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8977928221b10f9c58f8ed1b97c21dcb</srcmd5>
+    <version>1.8.0</version>
+    <time>1409301674</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b9176ab3a2db44157fd18d256c844907</srcmd5>
+    <version>1.10.2</version>
+    <time>1413285871</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255038</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a786ffb184ac1be14ca5c74dd1d069f0</srcmd5>
+    <version>1.10.2</version>
+    <time>1417246771</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>263252</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>139530fdc4ecf169030cbed9d0264dd9</srcmd5>
+    <version>1.12.0</version>
+    <time>1422636250</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283298</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>afd3275afabccc88c65071f4df3c8472</srcmd5>
+    <version>1.12.2</version>
+    <time>1423215585</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283692</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f5a1e161b8e65df6a6d745c86f3f2f9e</srcmd5>
+    <version>1.12.4</version>
+    <time>1424068565</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>285768</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8fb22663d14cdce757ba503ea9e03edb</srcmd5>
+    <version>1.12.6</version>
+    <time>1425377490</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288053</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bd99e66e11edda9e4232238af8231c43</srcmd5>
+    <version>1.12.8</version>
+    <time>1456127762</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359556</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9add39aa7ddfbd2e05aa7295ba0c3c9e</srcmd5>
+    <version>1.12.8</version>
+    <time>1459237866</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>379188</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6285fbf0b1f40df31e285e4a72aa60bb</srcmd5>
+    <version>1.14.2</version>
+    <time>1462428712</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391426</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f03279b070fa9f88d0edb1a42820a745</srcmd5>
+    <version>1.16.0</version>
+    <time>1469742129</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412258</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b2a8082bcfbe52425221c4e462defd50</srcmd5>
+    <version>1.16.2</version>
+    <time>1480584287</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441932</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b25058367857d8e57d4350778b438938</srcmd5>
+    <version>1.18.0</version>
+    <time>1495883541</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496521</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>cbefc5da885cfb3227c5ad72f317b76e</srcmd5>
+    <version>1.18.0</version>
+    <time>1510232513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538324</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d8fb3a5eb2cc826d3ac77668cf126a69</srcmd5>
+    <version>1.20.0</version>
+    <time>1516880333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568080</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b7cba6ea359d4017d3ba228d2feb09ed</srcmd5>
+    <version>1.20.0</version>
+    <time>1520852927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584329</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1744a59a4350fc32db693898845d05aa</srcmd5>
+    <version>1.20.2</version>
+    <time>1535370338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629192</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7d0d2bc5efe5602cf03c5c8de7e9b767</srcmd5>
+    <version>1.22.0</version>
+    <time>1547539944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664278</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1219be8cd177cfa841f5d3d00eb73563</srcmd5>
+    <version>1.22.2</version>
+    <time>1552042705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681067</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>eaa5f2e53da5b42960d96727fd8e0da5</srcmd5>
+    <version>1.22.4</version>
+    <time>1555492936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694220</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>40f6e743727ffe8bbd1c2b169109839c</srcmd5>
+    <version>1.22.6</version>
+    <time>1568982947</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729299</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c7ed9c538a372357c6c84d2e676ddf2c</srcmd5>
+    <version>1.24.0</version>
+    <time>1573420071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746600</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>587fc30a84daf00cfa5204a9a785e2cc</srcmd5>
+    <version>1.24.2</version>
+    <time>1577137220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757263</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>96e5295f31c4716f03ec1cf3bf80007e</srcmd5>
+    <version>1.24.2</version>
+    <time>1578508334</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761063</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b0001cae6159fcf6513abf11dcc82637</srcmd5>
+    <version>1.24.4</version>
+    <time>1579463581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764879</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c8bb84c294495efc4eb17a98a15b7ae0</srcmd5>
+    <version>1.24.6</version>
+    <time>1583007628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779868</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e052e4ca868fcdf4d87aaf61c6ffe69a</srcmd5>
+    <version>1.24.8</version>
+    <time>1584643590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785634</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>769fcc08b0a1224ee38bc4981c2242ba</srcmd5>
+    <version>1.24.10</version>
+    <time>1587838077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795529</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>820f3ac274acb8de05331580668bbd81</srcmd5>
+    <version>1.24.12</version>
+    <time>1589491391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805077</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>20caadf4a4eb2bd3805c2ccecc5b8bbe</srcmd5>
+    <version>1.24.14</version>
+    <time>1591652614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811256</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8bdc48c39ce291ec32850f9fd389fc15</srcmd5>
+    <version>1.26.4</version>
+    <time>1599088174</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.4:
+ * Added new message collections support, so that users can select which
+   messages to include in the built library during configure with the
+   --enable-collection option. Three predefined sets are given:
+   ** minimal: the bare minimum messages required to control connectivity.
+   ** basic: all messages and indications that ModemManager requires.
+   ** full: all supported messages and indications.
+   Users can install custom collections under data/ and reference them in
+   the same way as the predefined sets. E.g. installing a new
+   data/qmi-collection-custom.json set can be enabled during configure with
+   --enable-collection=custom.
+ * Added new GObject Introspection support in the library
+ * Implemented new QRTR backend support, disabled by default. This new backend
+   allows to perform QMI operations on systems with the Qualcomm IPC router
+ * Added 5GNR radio access technology support, with new enum values in both the
+   DMS and NAS services.
+ * New services:
+   ** New 'GMS' (Telit General Modem Service) service, for now just implementing
+      basic test get/set value commands.
+   ** New 'DSD' (Data System Determination) service, implementing methods to get
+      and set default bearer APN settings.
+ * New request/response/indications:
+   ** dms: implement &quot;Get MAC Address&quot; request/response.
+   ** dms: renamed &quot;Dell Get Firmware Version&quot; to &quot;Foxconn Get Firmware Version&quot;
+      as the command applies not only to the Dell-branded variant, but also to
+      the generic Foxconn-branded models. The old APIs are kept available but
+      flagged as deprecated.
+   ** loc: implement &quot;Set NMEA Types&quot; request/response.
+   ** loc: implement &quot;Get NMEA Types&quot; request/response.
+   ** uim: implement &quot;Switch Slot&quot; request/response.</comment>
+    <requestid>829824</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d5e36ab65973baf134b3dececdf902c7</srcmd5>
+    <version>1.26.6</version>
+    <time>1602682593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841054</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b041bf84c7173096b1253acb81cc006a</srcmd5>
+    <version>1.26.8</version>
+    <time>1610965577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862827</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>41014eb51d1451713f31a193c2cf5c0d</srcmd5>
+    <version>1.28.2</version>
+    <time>1615362541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876406</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5bf7a05028777962c7b0e4f977247b8a</srcmd5>
+    <version>1.28.4</version>
+    <time>1621531392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893348</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ad6988f10369ba8d2d1a2d2dd26176f9</srcmd5>
+    <version>1.28.6</version>
+    <time>1623268488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897967</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ddfec2466cdc0a296002e70344eb4e3b</srcmd5>
+    <version>1.28.8</version>
+    <time>1630432498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914588</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d46e68d72d38973d123ac9f4fa5724aa</srcmd5>
+    <version>1.30.2</version>
+    <time>1640200664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941725</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>eeee46c9693c09adfeed62425a996182</srcmd5>
+    <version>1.30.4</version>
+    <time>1645054194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954464</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7b1deac28de10898f80eccdc9f3a316a</srcmd5>
+    <version>1.30.6</version>
+    <time>1652039537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975250</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>b58eba18312d32da4ae4097feaf51a46</srcmd5>
+    <version>1.30.6</version>
+    <time>1655493619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982364</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>bcf770aecbdf8f0e3d1ff63c30f62089</srcmd5>
+    <version>1.30.8</version>
+    <time>1658395954</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990037</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8a5e2d32e9ee6e843033a8a9bdcfab88</srcmd5>
+    <version>1.32.4</version>
+    <time>1681058346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077981</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3b5aa3ac616b23b5d14eb16908a954c2</srcmd5>
+    <version>1.34.0</version>
+    <time>1699910144</time>
+    <user>anag+factory</user>
+    <comment>- update to update to 1.34.0:
+  * New services:
+    ** New 'ATR' service to support AT commands over QMI,
+    defined by Telit, including &quot;Send&quot; request and &quot;Received&quot;
+    indication.
+    ** New 'IMS' service, including &quot;Get IMS Services Enabled
+    Setting&quot; request/response.
+    ** New 'IMSA' (IMS Application) service, including &quot;Get
+    IMS Registration Status&quot; and &quot;Get IMS Services Status&quot;
+    request/responses.
+    ** New 'IMSP' (IMS Presence) service, including &quot;Get
+    Enabler State&quot; request/response.
+    ** New 'SSC' service (Qualcomm Snapdragon Sensor Core),
+    including the &quot;Control&quot; request/response, and
+    &quot;Report Small&quot;/&quot;Report Large&quot; indications.
+    ** nas: added the &quot;WCDMA RSCP&quot; TLV in &quot;Get Signal Info&quot;
+    response and &quot;Signal Info&quot; indication.
+    ** wds: added the &quot;Report Profile Changes&quot; TLV in
+    ** Support for 16-bit service ids added, used in the QRTR
+    backend.
+    ** Response and indication parser messages are now
+    published in the API.
+    ** The library now allows connecting to a unix domain
+    socket named 'qmux_socket' instead of a device file.
+    ** Extended the 'QmiWdsProfileType' enum type with EPC and
+    ALL values.
+    ** Extended the
+    'QmiUimCardApplicationPersonalizationFeature' enum type with
+     additional GW-related values.
+    ** New 'QmiUimCardApplicationPersonalizationFeatureStatus'</comment>
+    <requestid>1124996</requestid>
+  </revision>
+</revisionlist>

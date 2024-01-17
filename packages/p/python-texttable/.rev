@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d35378e4e9a0f55cdee74d55ee4aaf2</srcmd5>
+    <version>0.8.3</version>
+    <time>1440576066</time>
+    <user>coolo</user>
+    <comment>needed for docker-compose
+
+https://build.opensuse.org/request/show/318310</comment>
+    <requestid>325050</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00ad54051ed59b4dc067d7df705615c8</srcmd5>
+    <version>1.1.1</version>
+    <time>1512734558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555176</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ef4a5e359205a253a891d8babf9a9fd5</srcmd5>
+    <version>1.4.0</version>
+    <time>1532161536</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.4.0:
+  * Add set_header_align() method (#45)
+  * Fix missing textwrapper command when cjkwrap is not used (#43)
+  * Remove redundant code for unsupported/EOL Python (#31)
+  * Use test_cjkwrap only when cjkwrap is available (#35)
+  * Use cjkwrap for better CJK text support (#34)
+- Enable tests</comment>
+    <requestid>624253</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1184ec4b0e8ff320371db90483f2059f</srcmd5>
+    <version>1.6.1</version>
+    <time>1550573878</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>676533</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>adb73344b32cd8fc0afc5d647e190950</srcmd5>
+    <version>1.6.2</version>
+    <time>1563808787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Fix auto-formatting NaN</comment>
+    <requestid>717574</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d9adf0bc689b40dd1240bf587d769012</srcmd5>
+    <version>1.6.3</version>
+    <time>1608542650</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.3:
+  * Improve int conversion</comment>
+    <requestid>857117</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c3a61053ce85be5593f4a49264953411</srcmd5>
+    <version>1.6.4</version>
+    <time>1644880257</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.4:
+  * Fix alignment bug when deco is modified</comment>
+    <requestid>954399</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8debef3cf9cb0a8663124f21ecb203ed</srcmd5>
+    <version>1.6.7</version>
+    <time>1670430908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040779</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>58301c8f56977327fe09bb91a9d72dfc</srcmd5>
+    <version>1.6.7</version>
+    <time>1687900680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095656</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b80aaa80191daade1eabb3e5164c89ea</srcmd5>
+    <version>1.7.0</version>
+    <time>1704281053</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Add boolean formatting option
+
+- Update to 1.6.5
+  * Fix alignment bug when deco is modified
+  * Improve int conversion
+  * Added texttable.pyi
+  * Create a method for redefining the max_width
+  * Update README.md
+- fix license to LGPL-3.0+ as in LICENSE file</comment>
+    <requestid>1135624</requestid>
+  </revision>
+</revisionlist>

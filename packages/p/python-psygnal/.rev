@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4dfac59b2b768f21f764ca3b70375e0c</srcmd5>
+    <version>0.9.3</version>
+    <time>1693860783</time>
+    <user>anag+factory</user>
+    <comment>- Initial release of 0.9.3.</comment>
+    <requestid>1108742</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>071d2db5a218600e6b35f4546c81713f</srcmd5>
+    <version>0.9.5</version>
+    <time>1702673306</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.5:
+  * feat: better repr for WeakCallback objects
+  * refactor: make EmitLoop error message clearer
+  * perf: don't compare before/after values in evented
+    dataclass/model when no signals connected
+  * fix: emission of events from root validators and extraneous
+    emission of dependent fields</comment>
+    <requestid>1133196</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">git://linuxtv.org/dtv-scan-tables.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">dtv-scan-tables</param>
+    <param name="versionformat">%cd</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

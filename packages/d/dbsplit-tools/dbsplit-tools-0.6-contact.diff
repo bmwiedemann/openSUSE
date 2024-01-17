@@ -1,0 +1,22 @@
+--- bin/dbautosplit
++++ bin/dbautosplit
+@@ -306,7 +306,7 @@
+ specification (for \%s in sprintf) and CMD is template command. Available
+ command are: Attribute, NodeName, Depth, Index, Text and PerlEval.
+  
+-Report bugs to <mlazar\@suse.cz>
++Report bugs to <anicka\@suse.cz>
+ EOHELP
+ 	exit 0;
+ }
+--- bin/dbmerge
++++ bin/dbmerge
+@@ -181,7 +181,7 @@
+ If output file name is not specified output file is dumped to standard
+ output.
+ 
+-Report bugs to <mlazar\@suse.cz>
++Report bugs to <anicka\@suse.cz>
+ EOHELP
+ 	exit 0;
+ }

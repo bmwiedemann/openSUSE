@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4bde8b1bffb9464cc1aaaa774b474d89</srcmd5>
+    <version>6.3.0</version>
+    <time>1650466583</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.0</comment>
+    <requestid>970818</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>80f6260d380cc9035a053ebbff8f46d6</srcmd5>
+    <version>6.3.1</version>
+    <time>1655732246</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.1 (forwarded request 983727 from cgiboudeaux)</comment>
+    <requestid>983737</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d800a2e026b7248770817bc84d6b7b69</srcmd5>
+    <version>6.3.2</version>
+    <time>1663275564</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.2 (forwarded request 1003797 from cgiboudeaux)</comment>
+    <requestid>1003807</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bedb1fe11b46fc40dec971386772f8ca</srcmd5>
+    <version>6.4.0</version>
+    <time>1664638987</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 6.4.0</comment>
+    <requestid>1007313</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cabb9c7d37625b8b9076d7ae0daf2d01</srcmd5>
+    <version>6.4.1</version>
+    <time>1669040938</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.4.1 (forwarded request 1036897 from cgiboudeaux)</comment>
+    <requestid>1036907</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad0f7e53c5a8362140a67fd5b96b75a1</srcmd5>
+    <version>6.4.2</version>
+    <time>1673444036</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.4.2 (forwarded request 1057253 from krop)</comment>
+    <requestid>1057263</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e7f1d77c89de5824260ac62b6c5007c6</srcmd5>
+    <version>6.4.3</version>
+    <time>1679068990</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
+    <requestid>1072402</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6631085f79e38ff6e338a5494d2f1a5b</srcmd5>
+    <version>6.5.0</version>
+    <time>1680723112</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
+    <requestid>1077327</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b0e886aad6b40334fdd583fb7c110def</srcmd5>
+    <version>6.5.1</version>
+    <time>1685294516</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.5.1 (forwarded request 1088916 from krop)</comment>
+    <requestid>1089088</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>85b6d082d09a1db757a78300c5df05d8</srcmd5>
+    <version>6.5.1</version>
+    <time>1688849230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1097544</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d0eddb9cbd4d238b244c380e143777dc</srcmd5>
+    <version>6.5.2</version>
+    <time>1690370557</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.2 (forwarded request 1099849 from krop)</comment>
+    <requestid>1099993</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b9c57a541011482fe82184e523fe3402</srcmd5>
+    <version>6.5.3</version>
+    <time>1696269932</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.3 (forwarded request 1114130 from krop)</comment>
+    <requestid>1114495</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c6fe3dd6aa7aeaf59379ce0906548a86</srcmd5>
+    <version>6.6.0</version>
+    <time>1697231655</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.0. Not built yet (forwarded request 1116657 from krop)</comment>
+    <requestid>1116936</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7be2cc9901bbe08f1e80e03cd0a9aa24</srcmd5>
+    <version>6.6.1</version>
+    <time>1701727190</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.1 (forwarded request 1129814 from krop)</comment>
+    <requestid>1130411</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="python-python-debian" project="openSUSE:Factory">
+  <title>Debian package related modules</title>
+  <description>This is a collection of modules that are for dealing with Debian related data. Currently handled are:
+
+* Debtags information (debian.debtags module)
+* debian/changelog (debian.changelog module)
+* Packages files, pdiffs (debian.debian_support module)
+* Control files of single or multiple RFC822-style paragraphs, e.g. debian/control, .changes, .dsc, Packages, Sources, Release, etc. (debian.deb822 module)
+* Raw .deb and .ar files, with (read-only) access to contained files and meta-information</description>
+  <devel project="devel:languages:python" package="python-python-debian"/>
+  <url>https://salsa.debian.org/python-debian-team/python-debian</url>
+</package>

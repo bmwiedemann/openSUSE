@@ -1,0 +1,41 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,6 +4,7 @@ project(Kamerka)
+ 
+ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+ 
++find_package(PkgConfig)
+ find_package(ECM 0.0.11 REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${PROJECT_SOURCE_DIR}/modules)
+ 
+@@ -21,7 +22,7 @@ include_directories(${KF5CoreAddons_INCL
+ find_package(Phonon4Qt5 REQUIRED)
+ include_directories(${PHONON_INCLUDE_DIR})
+ 
+-find_package(QImageBlitz 5.0.0 REQUIRED)
++pkg_check_modules(QIMAGEBLITZ REQUIRED qimageblitz5)
+ include_directories(${QIMAGEBLITZ_INCLUDE_DIR})
+ 
+ find_package(LibV4L2 REQUIRED)
+--- a/src/capturethread.cpp
++++ b/src/capturethread.cpp
+@@ -17,7 +17,7 @@
+  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+  */
+ 
+-#include <qimageblitz/qimageblitz.h>
++#include <qimageblitz5/qimageblitz.h>
+ #include "capturethread.h"
+ #include "settings.h"
+ #include "imageeffect.h"
+--- a/src/imageeffect.cpp
++++ b/src/imageeffect.cpp
+@@ -20,7 +20,7 @@
+ #include <Qt>
+ #include <QRgb>
+ #include "imageeffect.h"
+-#include <qimageblitz/qimageblitz.h>
++#include <qimageblitz5/qimageblitz.h>
+ 
+ void ImageEffect::grey(QImage &i) {
+     Blitz::grayscale(i, true);

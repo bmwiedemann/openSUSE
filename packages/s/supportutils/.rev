@@ -1,0 +1,325 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69af5b26d5a81a18948ba87b82626e20</srcmd5>
+    <version>3.1</version>
+    <time>1515505876</time>
+    <user>dimstar_suse</user>
+    <comment>Primarily for SLE15, this has a 3.1 version change</comment>
+    <requestid>558627</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de0b2e713d9d0b836409907bc9c087d4</srcmd5>
+    <version>3.1</version>
+    <time>1516359174</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>563938</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8b34fca20117b67eee6c27ab2772e296</srcmd5>
+    <version>3.1</version>
+    <time>1516634296</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed docker package detection (bsc#1069457) (forwarded request 567801 from jrecord)</comment>
+    <requestid>567802</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>88c44b30e17734e6e4a513cc9c1f4472</srcmd5>
+    <version>3.1</version>
+    <time>1516804327</time>
+    <user>dimstar_suse</user>
+    <comment>- Added transactional update with OPTION_TRANSACTIONAL=1
+- Updated supportconfig.conf.5 with OPTION_TRANSACTIONAL (forwarded request 568728 from jrecord)</comment>
+    <requestid>568729</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f54e0bf56972b6d90de7489128516c94</srcmd5>
+    <version>3.1</version>
+    <time>1517167941</time>
+    <user>dimstar_suse</user>
+    <comment>- Added os-release processing (bsc#1077758)
+- Removed invalid string tty string (bsc#1077681)
+- Added SLE15 taint values (bsc#1077683) (forwarded request 570002 from jrecord)</comment>
+    <requestid>570003</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1fd19f3287cd1739c4ee9baf9a372953</srcmd5>
+    <version>3.1</version>
+    <time>1517323456</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1077813 bsc#1071294 bsc#1077818 (forwarded request 570788 from jrecord)</comment>
+    <requestid>570789</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9a870867348fd345c3537ed739ef12f9</srcmd5>
+    <version>3.1</version>
+    <time>1517824346</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1079137 bsc#1071545 bsc#1078638 bsc#1078318 bsc#1078168 (forwarded request 572116 from jrecord)</comment>
+    <requestid>572117</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>6de3e67072f15175876e3d828297d77f</srcmd5>
+    <version>3.1</version>
+    <time>1522702201</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license instead of %doc [bsc#1082318] (forwarded request 591129 from kukuk)</comment>
+    <requestid>593009</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>64414800fce4e39500aa61666c7f3e77</srcmd5>
+    <version>3.1</version>
+    <time>1550049417</time>
+    <user>dimstar_suse</user>
+    <comment>Updated from github</comment>
+    <requestid>670159</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>18bf7867cfb5f6ac21193afe50080799</srcmd5>
+    <version>3.1</version>
+    <time>1551027796</time>
+    <user>coolo</user>
+    <comment>Updates with security fixes</comment>
+    <requestid>677321</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>0450c4c0de89a8426b5b6cf15337e715</srcmd5>
+    <version>3.1</version>
+    <time>1551784626</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1120049 bsc#1094225 bsc#1127063 bsc#1121043 bsc#1109664 bsc#1127069</comment>
+    <requestid>679589</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>03bfd0c161e7013e481cf0641f687197</srcmd5>
+    <version>3.1.1</version>
+    <time>1552464452</time>
+    <user>dimstar_suse</user>
+    <comment>update for 15 sp1</comment>
+    <requestid>682306</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>871c3516fd686d6d9298e56060e0a07f</srcmd5>
+    <version>3.1.8</version>
+    <time>1583526252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781274</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8ab37ef79b4c8f6970c41b432ec34817</srcmd5>
+    <version>3.1.9</version>
+    <time>1584350210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784716</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c02086ea1abb123091c54c5c004f55fe</srcmd5>
+    <version>3.1.13</version>
+    <time>1609619418</time>
+    <user>dimstar_suse</user>
+    <comment>Added GPL-2.0-only license (forwarded request 859629 from jrecord)</comment>
+    <requestid>859631</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6e3fd76440b46d2f69b1784edeebeb8f</srcmd5>
+    <version>3.1.13</version>
+    <time>1612182307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866571</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9a9a607e1ef4abb3dda3a8a0421de48e</srcmd5>
+    <version>3.1.14</version>
+    <time>1613044108</time>
+    <user>dimstar_suse</user>
+    <comment>GDPR and logs for power (forwarded request 870330 from jrecord)</comment>
+    <requestid>870331</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>896052f56589dd1bf522c5f229c796fb</srcmd5>
+    <version>3.1.14</version>
+    <time>1614000192</time>
+    <user>RBrownSUSE</user>
+    <comment>PAM and NVMe (forwarded request 873384 from jrecord)</comment>
+    <requestid>873385</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>e17ff57cd465c1aa79a8d5575179f717</srcmd5>
+    <version>3.1.14</version>
+    <time>1615212886</time>
+    <user>dimstar_suse</user>
+    <comment>Newest with NVMe and other tools (forwarded request 876569 from jrecord)</comment>
+    <requestid>876571</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>e52d391170a18b9279207b9f3fc85593</srcmd5>
+    <version>3.1.14</version>
+    <time>1615905803</time>
+    <user>RBrownSUSE</user>
+    <comment>Ready for Factory (forwarded request 878389 from jrecord)</comment>
+    <requestid>878390</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>4ac9f830782d005aa6ccd6fc03d3baf2</srcmd5>
+    <version>3.1.14</version>
+    <time>1617034860</time>
+    <user>RBrownSUSE</user>
+    <comment>Factory Ready (forwarded request 880580 from jrecord)</comment>
+    <requestid>880581</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f3fca92fccdec9e5130acc877f7853df</srcmd5>
+    <version>3.1.15</version>
+    <time>1619192978</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 886775 from jrecord)</comment>
+    <requestid>886776</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b316cfb6b87ce5cdd0e8f37e0f3e4ea7</srcmd5>
+    <version>3.1.15</version>
+    <time>1621113351</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 892582 from jrecord)</comment>
+    <requestid>892584</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>46636156bd7b6a3df992c2053d5089f7</srcmd5>
+    <version>3.1.15</version>
+    <time>1622536439</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 895605 from jrecord)</comment>
+    <requestid>895606</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>87a7ed2b3f8edf16da959992e4334162</srcmd5>
+    <version>3.1.16</version>
+    <time>1623618325</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 898167 from jrecord)</comment>
+    <requestid>898168</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b5a76d390071af93f3bb911c0b83f343</srcmd5>
+    <version>3.1.17</version>
+    <time>1624551726</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 900803 from jrecord)</comment>
+    <requestid>900804</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>0c8b75faf9c47f74e853778c96ca9c2c</srcmd5>
+    <version>3.1.17</version>
+    <time>1626208632</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 904419 from jrecord)</comment>
+    <requestid>904420</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>40892234b3e577fd609b1e84c3b34fd5</srcmd5>
+    <version>3.1.18</version>
+    <time>1634068160</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 923087 from jrecord)</comment>
+    <requestid>923088</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>65374f11757b1ff1f45670540bb8223f</srcmd5>
+    <version>3.1.19</version>
+    <time>1641932383</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 945431 from jrecord)</comment>
+    <requestid>945433</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>dbe210bc11ecde99c049e933a7da03eb</srcmd5>
+    <version>3.1.20</version>
+    <time>1646848046</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 960264 from jrecord)</comment>
+    <requestid>960265</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>fc7ee44b3cb87b5923770619cacf413a</srcmd5>
+    <version>3.1.20</version>
+    <time>1647367502</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 961973 from jrecord)</comment>
+    <requestid>961974</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6336d54d3e07937153a352c5131270fc</srcmd5>
+    <version>3.1.21</version>
+    <time>1666178269</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 1029875 from jrecord)</comment>
+    <requestid>1029876</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>a2f53e48a6bd611f30146e3118a36404</srcmd5>
+    <version>3.1.21</version>
+    <time>1668514727</time>
+    <user>dimstar_suse</user>
+    <comment>Missed clear text passwords for VUL-0 bsc#1203818 (forwarded request 1035668 from jrecord)</comment>
+    <requestid>1035669</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>40e938bf68b176dcab1ff755e993918b</srcmd5>
+    <version>3.1.25</version>
+    <time>1685632779</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2022-45154 and podman (forwarded request 1090119 from jrecord)</comment>
+    <requestid>1090120</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a7f7c2268797d6cc2b80ff4cc787cb45</srcmd5>
+    <version>3.1.26</version>
+    <time>1693685245</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1210950 CVE-2022-45154 bsc#1213127 pr#153, pr#154, pr#155 (forwarded request 1108454 from jrecord)</comment>
+    <requestid>1108455</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>319cec49eb638439e7b1530c7974b43b</srcmd5>
+    <version>3.2.0</version>
+    <time>1697390885</time>
+    <user>anag+factory</user>
+    <comment>Factory Ready (forwarded request 1117829 from jrecord)</comment>
+    <requestid>1117830</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7a2554a208139c65abb1335245fb6d5e</srcmd5>
+    <version>3.2.2</version>
+    <time>1697748532</time>
+    <user>anag+factory</user>
+    <comment>PED-4456 PED-4524 bsc#1216388 bsc#1216150 bsc#1216147 bsc#1216146 bsc#1216229 bsc#1216233 bsc#1216151 bsc#1216228 bsc#1216230 bsc#1216232 bsc#1216231 bsc#1216241 (forwarded request 1118654 from jrecord)</comment>
+    <requestid>1118655</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>59a99c25ae57853b0d97f630b2842d37</srcmd5>
+    <version>3.2.3</version>
+    <time>1700421335</time>
+    <user>anag+factory</user>
+    <comment>bsc#1217287 bsc#1216827 bsc#1216049 bsc#1216522 pr#168 pr#161 (forwarded request 1127372 from jrecord)</comment>
+    <requestid>1127373</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2747e58584a433ebe70be729479810c8</srcmd5>
+    <version>3.2.4</version>
+    <time>1702936648</time>
+    <user>anag+factory</user>
+    <comment>pr#174 pr#176 pr#177 pr#178 pr#180 pr#181 bsc#1193173 bsc#1211547 bsc#1183663 (forwarded request 1133913 from jrecord)</comment>
+    <requestid>1133914</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>5140c5bbcf44013841082ecde75d2461</srcmd5>
+    <version>3.2.5</version>
+    <time>1705003547</time>
+    <user>anag+factory</user>
+    <comment>bsc#1218324 bsc#1218282 bsc#1218201 (forwarded request 1138138 from jrecord)</comment>
+    <requestid>1138139</requestid>
+  </revision>
+</revisionlist>

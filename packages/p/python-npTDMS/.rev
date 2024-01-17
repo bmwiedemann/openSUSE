@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>460898f266920cb1d84e90ee4cb752bd</srcmd5>
+    <version>0.18.1</version>
+    <time>1576014110</time>
+    <user>dimstar_suse</user>
+    <comment>Python module for reading TDMS files produced by LabView</comment>
+    <requestid>755302</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff1d2dd9cad7d9598b91522dd41f102f</srcmd5>
+    <version>0.18.1</version>
+    <time>1590506425</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808045</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>27578c5898bfb61fc27e0f2ea48591df</srcmd5>
+    <version>1.2.0</version>
+    <time>1619107452</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Reduce memory usage when reading files in open mode
+  * Support files that use DAQmx format metadata without having DAQmx raw data
+  * Support different lengths of DAQmx buffers
+  * Support strain scaling with a full bridge type I configuration
+  * Support negative integer indexing in channels
+  * Improve performance reading many small interleaved data chunks
+  * Breaking change: Remove previously deprecated methods
+  * Correct the TDMS type used when writing floating point data
+  * Fix reading digital line scaler data with a non-zero offset
+  * Adds support for reading raw timestamps with full precision
+  * Fixes memory leaks caused by circular references
+  * Fix for reading tdms_index files with padding after metadata
+  * Add support for negative temperatures with RTD scaling
+  * Use tdms_index files when available
+  * Support indexing and slicing channels
+  * Support streaming data chunks
+  * Support iterating over files, groups and channels
+  * Deprecates many methods than will now warn when used
+  * Fixes inconsistent behaviour when exporting to Pandas dataframes
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887454</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab4799c71a51a63aa4d6ac077beaca92</srcmd5>
+    <version>1.7.1</version>
+    <time>1702405962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Minor release that fixes the API documentation not being
+    built correctly
+- update to 1.7.0:
+  * Ensure root and group objects required are written
+- update to 1.6.2:
+  * Fix deprecation warnings when installing
+  * Handle invalid UTF-8 encoded strings
+- update to 1.6.1:
+  * Fixes numpy bool8 deprecation warning.
+- update to 1.6.0:
+  * Support writing tdms_index files and directly reading
+    tdms_index files
+  * Add TdmsWriter.defragment method for rewriting a TDMS file
+  * Drop support for Python 2.7 and 3.6
+- update to 1.5.0:
+  * ## What's Changed
+  * Support all remaining strain gauge configurations
+  * Add option to specify the TDMS format version to write
+  * Fix reading files with truncated metadata in the final
+    segment
+  * Support IPython auto-completion for group and channel names
+- update to 1.4.0:
+  * Improve performance reading data into numpy arrays
+  * Fix getting channel time track when using raw timestamps
+  * Fix numpy deprecation warnings
+- update to 1.3.1:
+  * Bug fix to handle when the first segment does not have
+    kTocNewObjList set
+- update to 1.3.0:</comment>
+    <requestid>1132681</requestid>
+  </revision>
+</revisionlist>

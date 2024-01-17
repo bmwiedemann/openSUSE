@@ -1,0 +1,325 @@
+-------------------------------------------------------------------
+Sun Oct  8 21:51:23 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  * MPLS subsystem
+  * L3VPN: BGP/MPLS VPNs (RFC 4364)
+  * BGP: Access to unknown route attributes
+  * RAdv: Custom options
+  * Babel: RTT metric extension
+  * BMP: Refactored route monitoring
+  * BMP: Multiple instances of BMP protocol
+  * BMP: Both pre-policy and post-policy monitoring
+  * Experimental route aggregation
+  * Filter: Method framework
+  * Filter: Functions have return type statements
+  * Filter: New bytestring data type
+  * Kernel: Option to learn kernel routes
+  * Many bugfixes and improvements 
+
+-------------------------------------------------------------------
+Wed Sep 27 14:17:55 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
+
+- add 'shadow' to Requires(pre)
+
+-------------------------------------------------------------------
+Thu Jun 22 15:39:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13.1
+  Bugfix release:
+  * When a case statement in filter had an empty branch, it crashed
+    BIRD.
+  * fixed a bug in BGP Roles manifesting when the other party sent
+    no capabilities at all.
+
+-------------------------------------------------------------------
+Mon Apr 24 15:32:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13
+  * Babel: IPv4 via IPv6 extension (RFC 9229)
+  * Babel: Improve authentication on lossy networks
+  * BGP: New 'allow bgp_med' option
+  * BSD: Support for IPv4 routes with IPv6 nexthop on FreeBSD
+  * Experimental BMP protocol implementation
+  * Important bugfixes
+
+-------------------------------------------------------------------
+Mon Jan 23 19:51:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.12
+  * Filter: New 'onlink' route attribute.
+  * Compile-time option to use 4-way tries instead of 16-way ones.
+  * Important bugfixes.
+
+-------------------------------------------------------------------
+Sun Dec 11 23:58:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.11
+  * BGP roles (RFC 9234)
+  * BGP: Keepalive time scaling
+  * BGP: New 'min hold time' and 'min keepalive time' options
+  * BGP: New 'next hop prefer global' option
+  * Filter: For loops and direct recursion
+  * Filter: Mixed declarations of local variables
+  * Filter: Improved static type checks
+  * Filter: Literal [] for empty set
+  * Linux: Netlink KRT improvements
+  * Memory management improvements
+  * Many bugfixes
+
+-------------------------------------------------------------------
+Mon Jun 27 09:13:20 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.10
+  * BGP performance improvements
+  * BFD: New 'strict bind' option
+  * RPKI: VRF support
+  * Allow use of 240.0.0.0/4 as a private range
+  * BIRD client uses exit status to report errors
+  * Important bugfixes
+
+-------------------------------------------------------------------
+Thu Feb 24 20:50:25 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.9
+  * BGP: Flowspec validation procedure
+  * Babel: MAC authentication support
+  * Routing table configuration blocks
+  * Optional prefix trie in routing table for faster LPM/interval
+    queries
+  * CLI: New 'show route in <prefix>' command
+  * Filter: Faster (16-way) prefix sets
+  * Filter: MPLS label route attribute
+  * Filter: Operators to pick community components
+  * Filter: Operators to find minimum and maximum element of lists
+  * BGP: New 'free bind' option
+  * BGP: Log route updates that were changed to withdraws
+  * BGP: Improved 'invalid next hop' error reporting
+  * OSPF: Allow ifaces with host address as unnumbered PtP or PtMP
+    ifaces
+  * OSPF: All packets on PtP networks should be sent to
+    AllSPFRouters address
+  * Support for Blake2s and Blake2b hash functions
+  * Security keys / passwords can be entered in hexadecimal digits
+  * Memory statistics split into Effective and Overhead
+  * New option 'netlink rx buffer' to specify netlink socket buffer
+    size
+  * Many bugfixes
+
+-------------------------------------------------------------------
+Fri Oct 15 12:11:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
+Wed Aug 25 08:05:28 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * bird.service
+
+-------------------------------------------------------------------
+Mon Mar 22 09:12:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.8
+  Changes/Fixes:
+  * Automatic channel reloads based on RPKI changes
+  * Multiple static routes with the same network
+  * Use bitmaps to keep track of exported routes
+  * Per-channel debug flags
+  * CLI commands show info from multiple protocols
+  * Linux: IPv4 routes with IPv6 nexthops
+  * Filter: Optimized redesign of prefix sets
+  * Filter: Improved type checking of user filters
+  * Filter: New src/dst accessors for Flowspec and SADR
+  * Filter: New 'weight' route attribute
+  * Filter: BGP path mask loop operator
+  * Filter: Remove quitbird command
+  * RIP: Demand circuit support (RFC 2091)
+  * BGP: New 'allow as sets' and 'enforce first as' options
+  * BGP: Support for BGP hostname capability
+  * BGP: Support for MD5SIG with dynamic BGP
+  * BFD: Optional separation of IPv4 / IPv6 BFD instances
+  * BFD: Per-peer session options
+  * RPKI: Allow build without libSSH
+  * RPKI: New 'ignore max length' option
+  * OSPF: Redesign of handling of unnumbered PtPs
+  * OSPF: Allow key id 0 in authentication
+  * Babel: Use onlink flag for routes with unreachable next hop
+  * Many bugfixes
+  Notes:
+  * Automatic channel reloads based on RPKI changes are enabled
+    by default, but require import table enabled when used in
+    BGP import filter.
+  * BIRD now uses bitmaps to keep track of exported routes
+    instead of re-evaluation of export filters. That should
+    improve speed and accuracy in route export handling during
+    reconfiguration, but takes some more memory.
+  * Per-channel debug logging and some CLI commands (like 'show
+    ospf neighbors') defaulting to all protocol instances lead to
+    some minor changes in log and CLI output. Caution is
+    recommended when logs or CLI output are monitored by scripts.
+- Drop not longer needed patches:
+  * gcc10.patch
+  * fix_test_for_bigendian_arch.patch
+
+-------------------------------------------------------------------
+Mon Nov 16 12:45:29 UTC 2020 - Mark Stopka <mstopka@opensuse.org>
+
+- Add patch to fix test on Big Endian architectures
+  * fix_test_for_bigendian_arch.patch
+
+-------------------------------------------------------------------
+Fri Sep 11 07:16:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.2:
+  o Integrated IPv4 + IPv6 design
+  * many changes, see included NEWS for details
+  * obsoletes separate bird6/bird-common subpackages
+
+- remove bird-1.6.3_verbose.build.patch bufferoverflow.patch: obsolete
+- add gcc10.patch (fix build with gcc 10), disable -fcommon again
+- reenable fortify-source
+
+-------------------------------------------------------------------
+Wed Jun 17 11:26:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow building against GCC10
+
+-------------------------------------------------------------------
+Wed Sep 18 19:14:22 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.8
+  * Fix CVE-2019-16159:
+    BIRD Internet Routing Daemon 1.6.x through 1.6.7 and 2.x through
+    2.0.5 has a stack-based buffer overflow. The BGP daemon's
+    support for RFC 8203 administrative shutdown communication
+    messages included an incorrect logical expression when checking
+    the validity of an input message. Sending a shutdown
+    communication with a sufficient message length causes a four-byte
+    overflow to occur while processing the message, where two of the
+    overflow bytes are attacker-controlled and two are fixed.
+  * Several important bugfixes
+  * BFD: Support for VRFs
+
+-------------------------------------------------------------------
+Fri Mar  1 19:32:49 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.6
+  * Several bugfixes related to route propagation
+
+-------------------------------------------------------------------
+Sun Feb  3 09:45:27 UTC 2019 - mardnh@gmx.de
+
+- Update to version 1.6.5
+  * MRT table dumps (RFC 6396)
+  * BGP Long-lived graceful restart
+  * Filter: Make ifname attribute modifiable
+  * Improved keeping track of IPv6 link-local addresses
+  * Many bugfixes
+
+-------------------------------------------------------------------
+Sat Dec 15 17:51:41 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Kill off em dashes in summaries. Remove future
+  aims from descriptions.
+
+-------------------------------------------------------------------
+Thu Dec  6 20:30:33 UTC 2018 - mardnh@gmx.de
+
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Wed Nov 14 19:22:22 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.6.4
+  * Basic VRF support
+  * Simplified autoconf scripts
+  * BGP: Shutdown communication (RFC 8203)
+  * BGP: Allow exchanging LOCAL_PREF with eBGP peers
+  * BGP: Allow to specify interface for regular sessions
+  * BGP: New option 'disable after cease'
+  * RAdv: Support for more specific routes (RFC 4191)
+  * RAdv: Proper handling of prefix retraction
+  * Filter: Allow silent filter execution
+  * Filter: Fixed stack overflow in BGP mask expressions.
+  * Several bug fixes
+
+-------------------------------------------------------------------
+Fri Aug 18 16:41:04 UTC 2017 - mrueckert@suse.de
+
+- added potential fix for the bufferoverflow issue
+  bufferoverflow.patch
+
+  We will keep fortify_source 0 until the patch was discussed with
+  upstream.
+
+-------------------------------------------------------------------
+Fri Aug 18 15:42:27 UTC 2017 - mrueckert@suse.de
+
+- downgrade to _FORTIFY_SOURCE=0 as 1 still fails on TW
+
+-------------------------------------------------------------------
+Fri Aug 18 15:36:09 UTC 2017 - mrueckert@suse.de
+
+- ignore some warnings to make the output more readable
+
+-------------------------------------------------------------------
+Fri Aug 18 15:23:57 UTC 2017 - mrueckert@suse.de
+
+- added bird-1.6.3_verbose.build.patch:
+  - no longer print false CC lines
+  - print the actuall gcc calls instead
+- properly fix the FORTIFY_SOURCE fix from the earlier commit.
+  - we just replace the -D_FORTIFY_SOURCE value with what we want
+    instead of appending another value which leads to warnings
+
+-------------------------------------------------------------------
+Fri Aug 18 15:06:45 UTC 2017 - mrueckert@suse.de
+
+- update to 1.6.3
+  - Large BGP communities
+  - BFD authentication (MD5, SHA1)
+  - SHA1 and SHA2 authentication for RIP and OSPF
+  - Improved documentation
+  - Several bug fixes
+- changes from version 1.6.2
+  - Fixes serious bug introduced in the previous version
+- changes from version 1.6.1
+  - Support for IPv6 ECMP
+  - Better handling of IPv6 tentative addresses
+  - Several updates and fixes in Babel protocol
+  - Filter: New !~ operator
+  - Filter: ASN ranges in bgpmask
+  - KRT: New kernel protocol option 'metric'
+  - KRT: New route attribute 'krt_scope'
+  - Improved BIRD help messages
+  - Fixes memory leak in BGP multipath
+  - Fixes handling of empty path segments in BGP AS_PATH
+  - Several bug fixes
+- drop bird-1.5.0-rip_auth_bufferoverflow.patch
+
+-------------------------------------------------------------------
+Tue Jun 21 20:19:18 UTC 2016 - mardnh@gmx.de
+
+- update to version 1.6.0
+- if possible use /run instead of /var/run for the runtimedir
+- removed patch: bird-1.5.0-rip_auth_bufferoverflow.patch
+  A similar issue still exists but it's a false positive.
+
+-------------------------------------------------------------------
+Sat Oct 17 15:56:16 UTC 2015 - mrueckert@suse.de
+
+- add $BIRD_OPTIONS to the service files
+
+-------------------------------------------------------------------
+Sat Oct 17 15:42:42 UTC 2015 - mrueckert@suse.de
+
+- no longer run as root but as user/group bird.
+- add tmpfiles.d file for /var/run/bird
+- merged spec file from bird6 again
+
+-------------------------------------------------------------------
+Fri Oct 16 23:24:31 UTC 2015 - mrueckert@suse.de
+
+- initial package
+

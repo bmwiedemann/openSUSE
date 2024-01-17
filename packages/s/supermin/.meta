@@ -1,0 +1,10 @@
+<package name="supermin" project="openSUSE:Factory">
+  <title>Bootstrapping tool for creating supermin appliances</title>
+  <description>
+supermin is a tool for building supermin appliances. These are tiny
+appliances (similar to virtual machines), usually around 100KB in size,
+which get fully instantiated on-the-fly in a fraction of a second when
+you need to boot one of them.
+  </description>
+  <devel project="Virtualization" package="supermin"/>
+</package>

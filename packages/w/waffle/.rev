@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>036ef5add66b3bfb613cdf2427c3098b</srcmd5>
+    <version>1.5.2</version>
+    <time>1485939106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>452459</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b821e058014a8f2dfe3488a5351fc70</srcmd5>
+    <version>1.5.2</version>
+    <time>1511193950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542941</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7e4a9b6206d709633c95a16ff24e3456</srcmd5>
+    <version>1.5.2</version>
+    <time>1529402504</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616834</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05af46f27ad439e9e03bcefa54ce6d97</srcmd5>
+    <version>1.6.0</version>
+    <time>1560338246</time>
+    <user>dimstar_suse</user>
+    <comment>- version 1.6.0
+  * nacl support in cmake
+  * a shiny new meson build system
+  * json output from wflinfo
+  * EGL/GBM modifiers support
+  * Out of the box FreeBSD support when using meson
+  * Also included are a number of behind the scenes changes from
+    Emil, in particular a massive refactoring/improvement of the
+    unit tests.
+- no longer package LICENSE in every subpackage: instead let library
+  package require base package
+- improve description of devel package</comment>
+    <requestid>709109</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>013b24f32ca11ca902643ca093acdbb0</srcmd5>
+    <version>1.6.1</version>
+    <time>1585995886</time>
+    <user>dimstar_suse</user>
+    <comment>- bugfix release 1.6.1
+  * wflinfo: Correctly install the bash completion file
+  * GLX/WGL: Handle ARB_create_context appropriatelly
+  * Wayland: Build fix for -fno-common, default with GCC10
+  * Surfaceless: Implement window_resize
+- added  tests to cover above issues 
+- addressing the -fno-common build issue, required us to bump the
+  wayland-client requirement to v1.10</comment>
+    <requestid>791026</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3582d37b92f4be69001d649721c2999f</srcmd5>
+    <version>1.6.1</version>
+    <time>1611068633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864304</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>982f3b5183d9b6a464792e7231340e31</srcmd5>
+    <version>1.6.3</version>
+    <time>1614274209</time>
+    <user>RBrownSUSE</user>
+    <comment>- bugfix release 1.6.3 (changes since 1.6.1)
+  * docs: Add waffle 1.6.3 release notes
+  * docs: Add waffle 1.6.2 release notes
+  * meson: Fix meson build if bash-completion not found
+  * meson: always install bash-completion file
+  * meson: do not replace datadir for bash completion
+  * wflinfo: use glGetStringi() only when available
+  * gitlab-ci: update to latest ci-template
+  * apple: hide GL deprecation warnings
+  * tests/gl_basic_test: fix SURFACELESS_EGL only build
+  * gbm: don't pass invalid arguments to gbm_surface_create_with_modifiers
+  * cmocka: don't require librt, when it's not unavailable</comment>
+    <requestid>875071</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f73cfdcbeafef4796c1563e521721d1</srcmd5>
+    <version>1.7.0</version>
+    <time>1615213136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.0
+  * wayland: Support for the xdg-shell protocol.
+  * surfaceless: Implement window resize
+  * GLX/WGL: Behave correctly in the presence of ARB_create_context
+  * tests: Rework and extend test suite
+  * cmake: Bump requirement to 2.8.12
+  * man: Spelling and associated fixes.
+  * GBM: Pass valid arguments to gbm_surface_create_with_modifiers
+  * apple: Build fixes</comment>
+    <requestid>877573</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f782904330494f02de4d464194e76152</srcmd5>
+    <version>1.7.0</version>
+    <time>1643666243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950213</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1e3da9c517cea970f291e6775c0aa43d</srcmd5>
+    <version>1.7.1</version>
+    <time>1677794679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.1
+  * cmake: pass deps' cflags to the build
+  * gbm: fix crash when platform lacks modifier support
+  * gitlab-ci: stabilise CI runs under X
+  * gitlab-ci: add more warnings, make all warnings fatal
+  * gitlab-ci: update to bullseye
+  * meson: add override_* support, when using waffle as submodule
+  * meson: skip installing bash completion when custom prefix is used
+  * meson: silence deprecation warnings
+  * meson: generate cmake files only on Windows
+  * meson: find wayland.xml from wayland-scanner.pc
+  * misc: zsh completion
+  * misc: fix dozens of compiler warnings
+  * misc: update website references
+  * wayland: fix build against wayland 1.20
+- supersedes 106.patch</comment>
+    <requestid>1068965</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5728f8c12839d57ef5acd82c4ee5f07c</srcmd5>
+    <version>1.7.2</version>
+    <time>1678125315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.2
+  * all: use format(gnu_printf), enable in mingw
+  * meson: don't run TLS checks on mingw
+  * wgl: remove unused dummy wgl_error.[ch]</comment>
+    <requestid>1069489</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e328d00daae8ff700879d5841f3b741f</srcmd5>
+    <version>1.8.0</version>
+    <time>1695758505</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.8.0
+  * meson: require meson v0.53, various wayland-scanner fixes
+  * cmake: deprecate in favour of meson
+  * ci: add lint stage, resolve intermittent Xvfb failures
+  * nacl: remove the backend, error out if requested at build
+  * cgl: fix warnings and compilation issues
+  * wflinfo: add zsh completion, simplify the bash completion
+  * tests: rework and de-duplicate the per-platform handling
+- switched to meson for build
+
+- Update to release 1.7.3
+  * Use a static waffle.def
+  * meson: drop the libwaffle-1.dll lib prefix on windows
+  * Fix build on macOS by fixing a typo
+  * Add cflag to fix macOS build</comment>
+    <requestid>1113539</requestid>
+  </revision>
+</revisionlist>

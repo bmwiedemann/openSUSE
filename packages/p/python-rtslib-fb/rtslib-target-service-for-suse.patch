@@ -1,0 +1,18 @@
+--- a/systemd/target.service	2019-01-31 11:11:28.517558290 -0800
++++ b/systemd/target.service	2020-10-16 09:34:28.888091013 -0700
+@@ -6,10 +6,13 @@ After=sys-kernel-config.mount network.ta
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+-ExecStart=/usr/bin/targetctl restore
++Environment=CONFIG_FILE=/etc/target/saveconfig.json
++EnvironmentFile=-/etc/sysconfig/target
++ExecStart=/usr/bin/targetctl restore $CONFIG_FILE
++ExecStop=/usr/bin/targetctl save $CONFIG_FILE
+ ExecStop=/usr/bin/targetctl clear
+ SyslogIdentifier=target
+ 
+ [Install]
+ WantedBy=multi-user.target
+-
++Alias=targetcli.service

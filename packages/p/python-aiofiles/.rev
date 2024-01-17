@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>77f20eac1e7ffdfce5844ec744631247</srcmd5>
+    <version>0.5.0</version>
+    <time>1591742775</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>810945</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8a5580ba9e77612350faedd73a4787e9</srcmd5>
+    <version>0.6.0</version>
+    <time>1612378587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868952</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aee601e576d484894f68eeeabc8bb56b</srcmd5>
+    <version>0.7.0</version>
+    <time>1624462718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901498</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92c01b3bee49188d16ca007c19c77d02</srcmd5>
+    <version>0.8.0</version>
+    <time>1641765021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945151</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a91400a3205c870e0514f855bdd21e9b</srcmd5>
+    <version>22.1.0</version>
+    <time>1663935322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005520</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>07d7f94392645fe427ecba0601342594</srcmd5>
+    <version>23.1.0</version>
+    <time>1677258463</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.1.0:
+  * Added ``aiofiles.os.access``.
+  * Removed ``aiofiles.tempfile.temptypes.AsyncSpooledTemporaryFile.softspace``.
+  * Added ``aiofiles.stdin``, ``aiofiles.stdin_bytes``, and
+    other stdio streams.
+  * Transition to ``asyncio.get_running_loop``
+    (vs ``asyncio.get_event_loop``) internally.</comment>
+    <requestid>1067414</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d782d95d5b1e07a0766b1ff6ecf4a8a7</srcmd5>
+    <version>23.1.0</version>
+    <time>1686576386</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092389</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d6d9f3c32a517836a9158a4d7e2c4cad</srcmd5>
+    <version>23.2.1</version>
+    <time>1702673328</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133240</requestid>
+  </revision>
+</revisionlist>

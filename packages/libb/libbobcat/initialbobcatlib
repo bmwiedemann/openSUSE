@@ -1,0 +1,134 @@
+#!/bin/bash
+
+##############################################################################
+# This script must be run as root
+#
+# If icmake and the bobcat library haven't yet been installed on your system 
+# execute the folllowing steps to install them.
+# Once the following steps have been executed they don't need to be executed
+# again as from that point onward icmake and the bobcat library are available
+# on your system, and new versions can be constructed using the available 
+# icmake and bobcat versions.
+#   
+#   1. extract the bobcat tar to its construction directory
+#   2. copy this file to that directory
+#   3. chdir to bobcat's construction directory
+#   4. call ./initialbobcatlib
+#      this constructs /usr/lib/libicmake.a
+#      and installs the bobcat header files in 
+#      /usr/include/bobcat
+#   5. chdir to icmake's construction directory
+#   6. run ./icm_prepare ./icm_bootstrap, and ./icm_install as described in 
+#      icmake's QUICKINSTALL
+#
+#   Following this, icmake is available, using its dedicated bobcat library
+#   Next construct and install the bobcat (shared) library as described in
+#   bobcat's INSTALL file
+#   When the full library is installed, rebuild icmake so it'll use the 
+#   shared bobcat library by executing, in icmake's construction directory:
+#       ./build distclean
+#       ./icm_prepare /
+#       ./build                     (uses icmake, or use ./icm_bootstrap x)
+#       ./icm_install strip all
+#   as described in icmake's QUICKINSTALL file
+#
+# These steps only have to be performed once. Thereafter, with new versions of
+# either bobcat or icmake, the then available versions of bobcat and icmake
+# can be used.
+##############################################################################
+
+[[ -z "${CXX}" ]] && CXX="g++"
+[[ -z "${CXXFLAGS}" ]] && CXXFLAGS="-O2 -Wall"
+
+tools_list="ar ag cat g++"
+tools_missing=""
+for tool in $tools_list; do
+    $tool --version > /dev/null 2>&1
+    [[ $? -ne 0 ]] && tools_missing+="$tool"
+done
+if [ "$tools_missing" ]; then
+    echo "tools missing: $tools_missing"
+    exit 0
+fi
+
+# Check if used tools are installed
+
+if [ ! -e /usr/bin/find ]; then
+    echo -e "You need to install find"
+    exit 0
+fi
+
+dirs="arg glob level log mstream onekey exception pattern selector stat \
+    string tempstream datetime fork gs ifdbuf iostream log logbuf mbuf \
+    ofdbuf pipe processenums signal eoibuf fswap iobuf eoi \
+    iuo redirector process"
+
+if [ -e /usr/lib/libbobcat.a -o -e /usr/include/bobcat ] ; then
+    echo '
+/usr/lib/libbobcat.a and/or /usr/include/bobcat are already available
+executing this script should not be required.
+'
+    exit 0
+fi
+
+# construction destination directory
+mkdir -p tmp/bobcat
+
+# copy all necessary headers and replace all #include "file.h"
+for dir in $dirs
+do
+    if [ -e $dir/$dir ]; then
+        cp $dir/$dir tmp/bobcat
+        _f_files=$(grep -o "#include \".*.f\"" tmp/bobcat/$dir | cut -d\" -f2)
+        while [ "$_f_files" != "" ]; do
+            for file in $_f_files
+            do
+                if [ -e $dir/$file ]; then
+                    _contents_file=$(<$dir/$file)
+                    _contents_header=$(<tmp/bobcat/$dir)
+                    echo "${_contents_header//#include \"$file\"/"${_contents_file}"}" > tmp/bobcat/$dir
+                fi
+            done
+            _f_files=$(grep -o "#include \".*.f\"" tmp/bobcat/$dir | cut -d\" -f2)
+        done
+    fi
+done
+
+#for dir in $dirs
+#do
+#    cp $dir/$dir tmp/bobcat
+#done
+
+count=0     # use o-file numbers to avoid name collisions
+# all directories to process
+for dir in $dirs
+do
+    cd $dir
+
+    echo -e "\ncompiling files in $dir, count = $count"
+
+     for file in *.cc            # compile all .cc files in $dir
+     do
+        # define the object file's name
+        object=../tmp/$count`basename $file .cc`.o
+
+        if [ $file -nt $object ] ; then     #compile new(er) files
+            gcc_options="-isystem ../tmp"
+            # check classes required for specific classe
+            #deps=$(cat ../dependencies/required.classes | grep "^$dir ")
+            #for dep in $deps
+            #do
+            #    [[ "$dep" != "$dir" ]] && gcc_options+=" -iquote ../$dep"
+            #done
+            echo "$CXX $CXXFLAGS $gcc_options -o $object -c $file"
+            $CXX $CXXFLAGS  $gcc_options -o $object -c $file || exit 1
+            compiled=1
+        fi
+    done   
+    let count=$count+1          # next directory nr.
+   
+    cd ..
+done
+
+echo -e "\nar cr tmp/libbobcat.a \*.o > /tmp/ar.list"
+ar cr tmp/libbobcat.a tmp/*.o > tmp/ar.list          || exit 1

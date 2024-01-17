@@ -1,0 +1,8 @@
+<package name="libssh2_org" project="openSUSE:Factory">
+  <title>A library implementing the SSH2 protocol</title>
+  <description>libssh2 is a library implementing the SSH2 protocol as defined by
+Internet Drafts: SECSH-TRANS, SECSH-USERAUTH, SECSH-CONNECTION,
+SECSH-ARCH, SECSH-FILEXFER, SECSH-DHGEX, SECSH-NUMBERS, and
+SECSH-PUBLICKEY.</description>
+  <devel project="devel:libraries:c_c++" package="libssh2_org"/>
+</package>

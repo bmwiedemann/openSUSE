@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f58b250b24426499d6fc96b423d7104</srcmd5>
+    <version>0.15</version>
+    <time>1527933990</time>
+    <user>dimstar_suse</user>
+    <comment>Python graph (network) package</comment>
+    <requestid>612079</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9d9c71edc191345623783663e418c88</srcmd5>
+    <version>0.16.1</version>
+    <time>1542580318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649805</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>55d0f4e085baa2e8f4b31ddb8930cdbb</srcmd5>
+    <version>0.16.1</version>
+    <time>1544631883</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653907</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>044992a74ff5083ff67d75d884450509</srcmd5>
+    <version>0.16.1</version>
+    <time>1573647288</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746354</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3957a3056a6ac95c1050e944a79b6df0</srcmd5>
+    <version>0.17</version>
+    <time>1587162744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794883</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>781113f6151ed9ef1703aa411ef18e07</srcmd5>
+    <version>0.17</version>
+    <time>1621269907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893571</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5c9e3505f0425b43cda656a8c880f017</srcmd5>
+    <version>0.17.2</version>
+    <time>1651605555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974524</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e72619cb0e0b9c7f7d370e32a0bae3d2</srcmd5>
+    <version>0.17.3</version>
+    <time>1665591957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010154</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1e8d281429a8c1a0ee92b6a8e767e35c</srcmd5>
+    <version>0.17.3</version>
+    <time>1686576356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092270</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4a2437c96a1c413fa430bc3b1116ccff</srcmd5>
+    <version>0.17.4</version>
+    <time>1696529019</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.17.4:
+  * python 3.12 support
+
+- Update to version 0.17.3</comment>
+    <requestid>1115558</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,29 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/pegasus-isi/pegasus.git</param>
+    <param name="subdir">packages/pegasus-api</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="filename">pegasus-wms.api-gh</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">pegasus-wms.api-gh*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version">
+    <param name="basename">pegasus-wms.api-gh</param>
+  </service>
+  <service mode="disabled" name="tar_scm">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/pegasus-isi/pegasus.git</param>
+    <param name="subdir">share/pegasus/schema/yaml</param>
+    <param name="revision">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="filename">pegasus-schema-yaml</param>
+  </service>
+    <service mode="disabled" name="recompress">
+    <param name="file">pegasus-schema-yaml*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

@@ -1,0 +1,24 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: prelink update fsf address
+Date: Thu, 26 Nov 2015 17:07:22 +0100
+
+prelink update fsf address
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ COPYING |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8/COPYING
+===================================================================
+--- prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8.orig/COPYING
++++ prelink-4c79120bcdbde0616f592458ccde7035e92ca3d8/COPYING
+@@ -2,7 +2,7 @@
+ 		       Version 2, June 1991
+ 
+  Copyright (C) 1989, 1991 Free Software Foundation, Inc.
+-     59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed.
+ 

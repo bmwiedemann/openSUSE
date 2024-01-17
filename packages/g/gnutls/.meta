@@ -1,0 +1,7 @@
+<package name="gnutls" project="openSUSE:Factory">
+  <title>The GNU Transport Layer Security Library</title>
+  <description>The GnuTLS project aims to develop a library that provides a secure
+layer over a reliable transport layer. Currently the GnuTLS library
+implements the proposed standards of the IETF's TLS working group.</description>
+  <devel project="security:tls" package="gnutls"/>
+</package>

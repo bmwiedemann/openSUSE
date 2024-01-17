@@ -1,0 +1,13 @@
+Index: nagios-bind9-plugin-1.0.0/check_bind9.pl
+===================================================================
+--- nagios-bind9-plugin-1.0.0.orig/check_bind9.pl
++++ nagios-bind9-plugin-1.0.0/check_bind9.pl
+@@ -57,7 +57,7 @@ my %OPTIONS = (
+     q{rndc-args}  => q{},
+     q{sudo-path}  => q{},
+     q{stats-path} => q{/var/run/named.stats},
+-    q{stats-seek} => 20480,
++    q{stats-seek} => 64480,
+     q{timeout}    => 30,
+ );
+ 

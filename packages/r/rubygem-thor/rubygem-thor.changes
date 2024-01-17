@@ -1,0 +1,311 @@
+-------------------------------------------------------------------
+Tue Nov 14 18:41:25 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.3.0:
+
+## What's Changed
+* use the correct class for shared namespaces by @Gerst20051 in https://github.com/rails/thor/pull/754
+* Allow to Override Order of Commands in Help by @alessio-signorini in https://github.com/rails/thor/pull/642
+* Add support for providing http headers to get by @dnlgrv in https://github.com/rails/thor/pull/801
+* Don't document negative boolean option named `no_*` by @BrentWheeldon in https://github.com/rails/thor/pull/797
+* CreateFile#identical? fixed for files containing multi-byte UTF-8 codepoints by @tomclose in https://github.com/rails/thor/pull/786
+* Drop support to Ruby 2.6 by @rafaelfranca in https://github.com/rails/thor/pull/821
+* Fix dashless option usage info by @sambostock in https://github.com/rails/thor/pull/800
+* Support Range in enum option by @phene in https://github.com/rails/thor/pull/775
+* Check if `type: array` values are in `enum` by @movermeyer in https://github.com/rails/thor/pull/784
+* Fix inject into file warning by @nicolas-brousse in https://github.com/rails/thor/pull/709
+* Support `Thor::CoreExt::HashWithIndifferentAccess#slice` method by @shuuuuun in https://github.com/rails/thor/pull/812
+* 🌧️ long_desc: new option to disable wrapping by @igneus in https://github.com/rails/thor/pull/739
+* Print default in help when option type is :boolean and default is false by @nevesenin in https://github.com/rails/thor/pull/849
+* Silence encoding warnings in specs by @p8 in https://github.com/rails/thor/pull/857
+* Validate arguments for `method_option` and `class_option` by @p8 in https://github.com/rails/thor/pull/856
+* Fix help for file_collision method without block by @shuuuuun in https://github.com/rails/thor/pull/858
+* Extract print methods to seperate classes by @p8 in https://github.com/rails/thor/pull/854
+* Add support for printing tables with borders by @p8 in https://github.com/rails/thor/pull/855
+* Fix printing tables with borders and indentation by @p8 in https://github.com/rails/thor/pull/861
+
+## New Contributors
+* @Gerst20051 made their first contribution in https://github.com/rails/thor/pull/754
+* @alessio-signorini made their first contribution in https://github.com/rails/thor/pull/642
+* @dnlgrv made their first contribution in https://github.com/rails/thor/pull/801
+* @BrentWheeldon made their first contribution in https://github.com/rails/thor/pull/797
+* @tomclose made their first contribution in https://github.com/rails/thor/pull/786
+* @sambostock made their first contribution in https://github.com/rails/thor/pull/800
+* @phene made their first contribution in https://github.com/rails/thor/pull/775
+* @movermeyer made their first contribution in https://github.com/rails/thor/pull/784
+* @nicolas-brousse made their first contribution in https://github.com/rails/thor/pull/709
+* @shuuuuun made their first contribution in https://github.com/rails/thor/pull/812
+* @igneus made their first contribution in https://github.com/rails/thor/pull/739
+* @nevesenin made their first contribution in https://github.com/rails/thor/pull/849
+
+**Full Changelog**: https://github.com/rails/thor/compare/v1.2.2...v1.3.0
+
+1.2.2:
+
+## What's Changed
+* Respect implicit encoding of thorfiles by @timdiggins in https://github.com/rails/thor/pull/782
+* Switch hash from MD5 to SHA256 by @stanhu in https://github.com/rails/thor/pull/785
+* Respect the updated NO_COLOR specification by @coderjoe in https://github.com/rails/thor/pull/796
+* Remove support for deprecated OS by @peterzhu2118 in https://github.com/rails/thor/pull/798
+* Support `thor install <uri>` to install remote thor files by @deivid-rodriguez in https://github.com/rails/thor/pull/787
+* Update error message for content already exists case. by @jpgeek in https://github.com/rails/thor/pull/799
+* Allow setting file permissions with create_file by @skipkayhil in https://github.com/rails/thor/pull/820
+* Properly pad aliases for option usage by @p8 in https://github.com/rails/thor/pull/810
+
+## New Contributors
+* @ytkg made their first contribution in https://github.com/rails/thor/pull/767
+* @timdiggins made their first contribution in https://github.com/rails/thor/pull/780
+* @stanhu made their first contribution in https://github.com/rails/thor/pull/785
+* @jdufresne made their first contribution in https://github.com/rails/thor/pull/806
+* @peterzhu2118 made their first contribution in https://github.com/rails/thor/pull/798
+* @casperisfine made their first contribution in https://github.com/rails/thor/pull/807
+* @jpgeek made their first contribution in https://github.com/rails/thor/pull/799
+* @skipkayhil made their first contribution in https://github.com/rails/thor/pull/820
+* @p8 made their first contribution in https://github.com/rails/thor/pull/810
+
+**Full Changelog**: https://github.com/rails/thor/compare/v1.2.1...v1.2.2
+
+
+
+-------------------------------------------------------------------
+Tue Jan 25 07:39:18 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.2.1
+ CHANGELOG.md removed upstream
+
+-------------------------------------------------------------------
+Sat Feb  6 11:37:41 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.1.0
+
+  * Don't use ANSI colors when terminal is dumb.
+  * Ensure default option/argument is not erroneously aliased.
+  * Fixes a bug in the calculation of the print_wrapped method.
+  * Obey `:mute` and `options[:quiet]` in `Shell#say`.
+  * Support Ruby 3.0.
+  * Add force option to the `gsub_file` action.
+
+-------------------------------------------------------------------
+Fri Dec 20 04:28:59 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.0.1
+
+  * Fix thor when `thor/base` and `thor/group` are required without `thor.rb`.
+  * Handle relative source path in `create_link`.
+
+-------------------------------------------------------------------
+Sat Dec 14 00:31:01 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.0.0
+
+  * Drop support to Ruby 1.8 and 1.9.
+  * Deprecate relying on default `exit_on_failure?`.
+    In preparation to make Thor commands exit when there is a failure we are deprecating
+    defining a command without defining what behavior is expected when there is a failure.
+
+    To fix the deprecation you need to define a class method called `exit_on_failure?` returning
+
+    `false` if you want the current behavior or `true` if you want the new behavior.
+  * Deprecate defining an option with the default value using a different type as defined in the option.
+  * Allow options to be repeatable. See #674.
+
+-------------------------------------------------------------------
+Mon Nov 12 17:49:13 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 0.20.3
+
+  * Support old versions of `did_you_mean`.
+
+  # from version 0.20.2
+  * Fix `did_you_mean` support.
+
+  # from version 0.20.1
+  * Support new versions fo ERB.
+  * Fix `check_unknown_options!` to not check the content that was not parsed, i.e. after a `--` or after the first unknown with `stop_on_unknown_option!`
+  * Add `did_you_mean` support.
+
+-------------------------------------------------------------------
+Mon Aug 21 06:00:39 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 0.20.0
+  * Add check_default_type! to check if the default value of an option
+    matches the defined type. It removes the warning on usage and gives
+    the command authors the possibility to check for programming errors.
+  * Add disable_required_check! to disable check for required options in
+    some commands. It is a substitute of disable_class_options that was
+    not working as intended.
+  * Add inject_into_module. 
+
+-------------------------------------------------------------------
+Fri Dec  9 05:48:05 UTC 2016 - coolo@suse.com
+
+- updated to version 0.19.4
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Nov 27 05:50:09 UTC 2016 - coolo@suse.com
+
+- updated to version 0.19.3
+ see installed CHANGELOG.md
+
+  ## 0.19.1, release 2014-03-24
+  * Fix `say` non-String break regression
+  
+  ## 0.19.0, release 2014-03-22
+  * Add support for a default to #ask
+  * Avoid @namespace not initialized warning
+  * Avoid private attribute? warning
+  * Fix initializing with unknown options
+  * Loosen required_rubygems_version for compatibility with Ubuntu 10.04
+  * Shell#ask: support a noecho option for stdin
+  * Shell#ask: change API to be :echo => false
+  * Display a message without a stack trace for ambiguous commands
+  * Make say and say_status thread safe
+  * Dependency for console io version check
+  * Alias --help to help on subcommands
+  * Use mime-types 1.x for Ruby 1.8.7 compatibility for Ruby 1.8 only
+  * Accept .tt files as templates
+  * Check if numeric value is in enum
+  * Use Readline for user input
+  * Fix dispatching of subcommands (concerning :help and *args)
+  * Fix warnings when running specs with `$VERBOSE = true`
+  * Make subcommand help more consistent
+  * Make the current command chain accessible in command
+
+-------------------------------------------------------------------
+Thu Oct 23 09:30:11 UTC 2014 - tboerger@suse.com
+
+- Updated last pieces for new macros (fate#318281, boo#1041418)
+
+-------------------------------------------------------------------
+Mon Oct 13 07:20:00 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Mon Mar 24 18:59:30 UTC 2014 - coolo@suse.com
+
+- updated to version 0.19.1, no changelog
+
+-------------------------------------------------------------------
+Sun Mar 23 06:56:31 UTC 2014 - coolo@suse.com
+
+- updated to version 0.19.0, no changelog
+
+-------------------------------------------------------------------
+Sat Jul 20 11:10:45 UTC 2013 - coolo@suse.com
+
+- fix update-alternatives usage
+
+-------------------------------------------------------------------
+Fri Apr 12 09:20:53 UTC 2013 - coolo@suse.com
+
+- updated to version 0.18.1
+
+-------------------------------------------------------------------
+Thu Jan 24 06:37:33 UTC 2013 - coolo@suse.com
+
+- updated to version 0.17.0
+ * Add better support for tasks that accept arbitrary additional arguments (e.g. things like `bundle exec`)
+ * Add #stop_on_unknown_option!
+ * Only strip from stdin.gets if it wasn't ended with EOF
+ * Allow "send" as a task name
+ * Allow passing options as arguments after "--"
+ * Autoload Thor::Group
+
+-------------------------------------------------------------------
+Sun Aug 26 05:32:09 UTC 2012 - coolo@suse.com
+
+- updated to version 0.16.0
+  * Add enum to string arguments
+
+-------------------------------------------------------------------
+Wed Aug  1 04:55:59 UTC 2012 - coolo@suse.com
+
+- update to 0.15.4
+  * Fix regression when destination root contains reserved regexp characters
+  
+  == 0.15.3, release 2012-06-18
+  * Support strict_args_position! for backwards compatibility
+  * Escape Dir glob characters in paths
+  
+  == 0.15.2, released 2012-05-07
+  * Added print_in_columns
+  * Exposed terminal_width as a public API
+  
+  == 0.15.1, release 2012-05-06
+  * Fix Ruby 1.8 truncation bug with unicode chars
+  * Fix shell delegate methods to pass their block
+  * Don't output trailing spaces when printing the last column in a table
+  
+  == 0.15, released 2012-04-29
+  * Alias method_options to options
+  * Refactor say to allow multiple colors
+  * Exposed error as a public API
+  * Exposed file_collision as a public API
+  * Exposed print_wrapped as a public API
+  * Exposed set_color as a public API
+  * Fix number-formatting bugs in print_table
+  * Fix "indent" typo in print_table
+  * Fix Errno::EPIPE when piping tasks to `head`
+  * More friendly error messages
+
+-------------------------------------------------------------------
+Tue Jul 31 12:55:48 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide new provisions 
+
+-------------------------------------------------------------------
+Fri Mar 23 10:37:33 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Mon Feb 20 23:58:46 UTC 2012 - mrueckert@suse.de
+
+- added missing provides
+
+-------------------------------------------------------------------
+Tue Aug 16 12:27:46 UTC 2011 - mrueckert@suse.de
+
+- change license header to "MIT and Ruby" (bnc#712368)
+
+-------------------------------------------------------------------
+Wed Jul 20 16:45:15 UTC 2011 - mrueckert@suse.de
+
+- regenerate with latest gem2rpm
+  - split out doc and testsuite subpackages
+- add provides for the versioned name used in the requires
+
+-------------------------------------------------------------------
+Thu Dec  9 16:18:29 UTC 2010 - chris@computersalat.de
+
+- update to version 0.14.6
+  * Fix a load order bug and add rake as development dependency.
+
+-------------------------------------------------------------------
+Thu Nov 18 17:47:52 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.14.4
+
+-------------------------------------------------------------------
+Mon Aug 30 13:45:42 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.14.0
+
+-------------------------------------------------------------------
+Mon Jun 14 18:25:54 UTC 2010 - mrueckert@suse.de
+
+- update to version 0.13.6
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Thu Feb 18 22:24:06 UTC 2010 - prusnak@suse.cz
+
+- created package
+

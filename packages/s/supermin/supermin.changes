@@ -1,0 +1,219 @@
+-------------------------------------------------------------------
+Thu Jan  4 11:07:03 MST 2024 - carnold@suse.com
+
+- Update to version 5.3.3 (jsc#PED-6305)
+  * initrd: Support ztd-compressed modules
+  * pacman: Recognise Artix, an Arch derivative
+  * Add a separate variable to store link flags, and use that to
+    supply
+  * Add appropriate globs for arm based kernels. The file names end
+    in -arm64 but the architecture is named aarch64.
+  * Add support for OCaml 5.0
+  * Add LFS support for fts functions
+  * Numerous bug fixes
+- Upstream bug fixes and features
+  001-Improved-debugging-of-the-supermin-if-newer-calculation.patch
+  002-Fix-if-newer-copy-kernel.patch
+  003-Fix-kernel-filtering-for-aarch64-architecture.patch
+  004-Use-output-complete-exe-instead-of-custom.patch
+  005-Only-supply-output-complete-exe-to-final-link.patch
+  006-Rename-function-file-kernel.patch
+  007-Uncompress-kernel-on-RISC-V.patch
+  008-Fix-link-to-renamed-kernel-documentation.patch
+  009-New-mailing-list-email-address.patch
+- Dropped initrd_support_ztd-compressed_modules.patch
+
+-------------------------------------------------------------------
+Tue Dec 27 15:59:57 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
+Fri Dec  9 09:22:50 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Include sysconfig-netconfig only until SLE15, newer versions
+  don't use it anymore [jsc#PED-1734]
+
+-------------------------------------------------------------------
+Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
+
+- jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen
+  and KVM Management
+
+-------------------------------------------------------------------
+Mon Apr 25 13:03:38 MDT 2022 - carnold@suse.com
+
+- Update to 5.2.2 bug fix release
+  * Open Unix.LargeFile to avoid "lstat: Value too large for
+    defined data type"
+  * pacman: Skip over detached signatures when unpacking
+  * ext2, rpm: Don't redefine Val_none or Some_val.
+  * Don't attempt to build man page if perldoc is not available
+  * Ignore zfcpdump kernel on s390x
+  * Ignore unbootable kernels in /lib/modules
+  * Ignore debug kernels
+  * maintainer: Add our usual maintainer rules
+- Drop
+  Avoid-lstat-Value-too-large-for-defined-data-type.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 14:54:48 MST 2022 - carnold@suse.com
+
+- bsc#1187532 - virt-make-fs hangs forever
+  detect-aarch64-kernel.patch
+
+-------------------------------------------------------------------
+Tue Dec 21 15:33:22 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Add initrd_support_ztd-compressed_modules.patch:
+  backport of 4306a131c6cd to add support of zstd compressed kernel
+  modules.
+
+-------------------------------------------------------------------
+Sun Sep 12 10:20:30 UTC 2021 - ohering@suse.de
+
+- Restore ExclusiveArch, continue to follow libguestfs
+  The 'almost' below is the reason.
+
+-------------------------------------------------------------------
+Thu Sep  9 19:19:19 UTC 2021 - ohering@suse.de
+
+- arm32 may have a kernel named /boot/zImage
+
+-------------------------------------------------------------------
+Thu Sep  9 11:38:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove arch exclusion, almost all of them build.
+
+-------------------------------------------------------------------
+Tue Aug 31 08:08:08 UTC 2021 - ohering@suse.de
+
+- s390x may have a kernel named /boot/image
+
+-------------------------------------------------------------------
+Wed Aug 25 08:48:22 MDT 2021 - carnold@suse.com
+
+- Update to 5.2.1 bug fix release. Include post 5.2.1 upstream fix.
+  Avoid-lstat-Value-too-large-for-defined-data-type.patch
+  disable-test-if-newer-ext2.patch
+
+-------------------------------------------------------------------
+Thu Apr  1 13:56:13 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Fix typo risc64 -> riscv64
+
+-------------------------------------------------------------------
+Fri Feb  5 16:59:34 CET 2021 - ro@suse.de
+
+- add patch supermin-kernel_version_compressed.patch
+  find kernel module path even for compressed kernels
+  like on aarch64 and s390x (bsc#1182112, bsc#1138258)
+
+-------------------------------------------------------------------
+Fri Oct 23 18:45:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * rpm: extend the Multiple_matches exception
+  * Use external command mv to rename old output directory (RHBZ#1670191). 
+  * rpm: do not unpack parameters 
+  * rpm: fix version comparison 
+  * rpm: provide a dummy supermin_rpm_get_arch implementation
+  * ext2: Build symbolic links correctly (RHBZ#1770304).
+  *  Update gnulib to latest.
+- switch to release tarball, use keyring for gpg validation
+- run tests 
+
+-------------------------------------------------------------------
+Fri Nov  1 12:34:56 UTC 2019 - ohering@suse.de
+
+- Update to version 5.1.20, via _service file
+  No changelog provided by upstream
+
+-------------------------------------------------------------------
+Wed Jul 31 16:52:14 UTC 2019 - Larry Dewey <ldewey@suse.com>
+
+- Adding sysconfig-netconfig to list of required dependencie
+  (BSC#136878)
+
+-------------------------------------------------------------------
+Tue May  7 14:49:41 UTC 2019 - Larry Dewey <ldewey@suse.com>
+
+- Added tar as software dependency.
+  (BSC#1134334)
+
+-------------------------------------------------------------------
+Thu Aug 31 14:09:58 UTC 2017 - cbosdonnat@suse.com
+
+- Distro detection: also use ID_LIKE to catch suse distros
+  add patch: suse_release.patch
+
+-------------------------------------------------------------------
+Thu Jul 13 14:17:07 UTC 2017 - cbosdonnat@suse.com
+
+- Update to version 5.1.18
+
+-------------------------------------------------------------------
+Tue May 30 13:45:27 UTC 2017 - olaf@aepfle.de
+
+- Update to version 5.1.17
+  remove 0001-add_simple_handling_of_os-release.patch
+  remove 0002-use_os-release_to_detect_the_distro.patch
+  remove 0003-tests_use__etc_os-release_in_test-harder.patch
+
+-------------------------------------------------------------------
+Thu Sep  8 15:01:41 UTC 2016 - cbosdonnat@suse.com
+
+- Remove use of SuSE-release and use os-release instead. (bsc#997936)
+  0001-add_simple_handling_of_os-release.patch
+  0002-use_os-release_to_detect_the_distro.patch
+  0003-tests_use__etc_os-release_in_test-harder.patch
+
+-------------------------------------------------------------------
+Thu May 26 09:24:57 UTC 2016 - cbosdonnat@suse.com
+
+- fate#316274
+
+-------------------------------------------------------------------
+Wed May 25 14:26:48 UTC 2016 - olaf@aepfle.de
+
+- Preserve bytecode
+
+-------------------------------------------------------------------
+Fri Oct 23 15:16:31 UTC 2015 - olaf@aepfle.de
+
+- Update to version 5.1.13
+
+-------------------------------------------------------------------
+Mon Oct 20 10:08:25 UTC 2014 - ohering@suse.com
+
+- Update to version 5.1.10
+
+-------------------------------------------------------------------
+Tue May 13 15:54:34 CEST 2014 - ohering@suse.de
+
+- Update to version 5.1.8
+
+-------------------------------------------------------------------
+Mon Aug 19 18:58:20 CEST 2013 - ohering@suse.de
+
+- Update to version 4.1.3
+
+-------------------------------------------------------------------
+Tue Jun  4 16:59:21 CEST 2013 - ohering@suse.de
+
+- zypp: Only compile zypper support if OCaml inifiles module is found.
+- zypp: Trailing whitespace.
+- Handle --packager-config in zypp_rpm
+- helper: Add a note that cpio might not be able to read -f cpio files.
+- helper: Add megaraid drivers to the initrd.
+
+-------------------------------------------------------------------
+Tue Apr  9 19:21:47 CEST 2013 - ohering@suse.de
+
+- add changes to support zypper
+
+-------------------------------------------------------------------
+Sat Mar  9 17:44:29 CET 2013 - ohering@suse.de
+
+- initial package version 4.1.1
+

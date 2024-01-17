@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Fri Dec 29 13:30:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde1, rebased upstream:
+  * Fix memory leak when destroying View3D
+  * Add missing command deletes
+  * Add missing free
+  * Bump version to 5.15.12
+
+-------------------------------------------------------------------
+Fri Oct  6 06:41:49 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde1, rebased upstream:
+  * Apply texture parameters for fbo textures
+
+-------------------------------------------------------------------
+Tue Jun 13 12:59:10 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde1, rebased upstream:
+  * Drive-by doc fix
+  * Clear layer resources when scene gets destroyed
+
+-------------------------------------------------------------------
+Fri Apr 21 10:00:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde4, rebased upstream:
+  * QQuick3DNode: Fix application order of local/parent rotation matrices
+
+-------------------------------------------------------------------
+Mon Jan  9 09:22:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde1, rebased upstream:
+  * Clean dirty nodes when deleting resources
+  * Assimp: Don't use multi-arg QString::arg(..)
+
+-------------------------------------------------------------------
+Thu Nov  3 08:55:55 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde1, rebased upstream:
+  * Doc: Add qmltype so Quaternion functions are collected by qdoc
+
+-------------------------------------------------------------------
+Mon Sep 26 11:44:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde1, rebased upstream:
+   * PropertyEditor: Update designer specifics
+   * Doc: Fix application order of Node.eulerRotation
+   * QtQuic3D AssimpImporter: use quaternion by default
+
+-------------------------------------------------------------------
+Mon Jun 27 13:12:43 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde1, rebased upstream:
+  * Handle 1bpp images in texture loading
+  * Handle opacityMap with NoLighting
+  * Add more error checking for shader cache import
+  * Make IdComboBox compatible with both Qt6 and Qt5 creator
+  * Fix writing compressed shader cache data
+  * Introduce some civilization to QQuick3DShaderUtilsRenderPass::m_shaders
+  * Fix bounds for imported objects
+  * Check if sceneBounds is finite
+  * Revert "Update commercial license headers"
+  * Update designer light icons
+  * Update commercial license headers
+  * Remove shader cache export restriction
+  * Allow import/export of shader cache data
+  * Disable to use the system assimp when static-build
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+
+-------------------------------------------------------------------
+Wed Dec 15 08:18:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch from Archlinux to build with assimp 5.1:
+  * qt5-quick3d-assimp-5.1.patch
+
+-------------------------------------------------------------------
+Wed Jun 23 06:32:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde19:
+  * Fix build with system assimp
+  * Only try and use valid asset import plugins
+  * Designer support: Only show supported extension in Shader source field
+  * Fix render mode switch crash
+  * AssimpImporter : Fix the global scale value
+  * Add version 7 to supported UIP version in UipParser
+  * Fix crash on setting null camera to View3D
+  * Avoid using the inverse() method in GLSL for SkyBox shader
+  * Fix build with -no-gui configure flag
+  * Fix dynamically changing a sourceItem's size
+  * Fix transparency handling with QSGTexture
+  * Backport a number of Texture.sourceItem related changes from Qt 6
+  * Import enhanced sourceItem manual test from Qt 6
+  * Remove unused and obsolete designer files
+  * Change a default value of the assimpImporter
+  * Allow non-integer scale properties for Texture
+  * Designer: Add default shader files for CustomMaterial and Effect
+  * Add changes file for Qt 5.15.2
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+- Drop patches, now upstream:
+  * 0001-Fix-build-with-the-system-assimp.patch
+
+-------------------------------------------------------------------
+Fri Nov 20 12:09:29 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.2:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtquick3d.git/plain/dist/changes-5.15.2/?h=5.15.2
+
+-------------------------------------------------------------------
+Tue Sep 29 21:36:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use the system assimp package for openSUSE Tumbleweed.
+- Add patch suggested by upstream to fix build:
+  * 0001-Fix-build-with-the-system-assimp.patch
+
+-------------------------------------------------------------------
+Thu Sep 10 07:57:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtquick3d.git/plain/dist/changes-5.15.1/?h=5.15.1
+
+-------------------------------------------------------------------
+Tue May 26 10:14:30 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0:
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May 20 16:27:39 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0-rc2:
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May  6 11:37:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-rc:
+  * New bugfix release
+  * For the changes between 5.14.2 and 5.15.0 please see:
+    http://code.qt.io/cgit/qt/qtquick3d.git/plain/dist/changes-5.15.0/?h=5.15.0
+
+-------------------------------------------------------------------
+Fri Apr 24 07:11:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Apr 14 06:47:40 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 24 12:13:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Feb 28 09:59:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Feb 26 15:52:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Only needs Qt 5.12 to build
+- Fix private-headers-devel requires
+
+-------------------------------------------------------------------
+Thu Feb 20 12:36:42 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Initial commit

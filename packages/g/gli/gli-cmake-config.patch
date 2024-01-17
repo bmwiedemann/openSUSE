@@ -1,0 +1,21 @@
+--- CMakeLists.txt.orig	2019-04-25 09:14:38.702646524 +0300
++++ CMakeLists.txt	2019-04-25 09:15:22.178893772 +0300
+@@ -104,15 +104,15 @@
+ # install tree package config
+ configure_package_config_file(
+ 	cmake/gliConfig.cmake.in
+-	${GLI_INSTALL_CONFIGDIR}/gliConfig.cmake
+-	INSTALL_DESTINATION ${GLI_INSTALL_CONFIGDIR}
++	${CMAKE_CURRENT_BINARY_DIR}/gliConfig.cmake
++	INSTALL_DESTINATION ${CMAKE_CURRENT_BINARY_DIR}
+ 	PATH_VARS CMAKE_INSTALL_INCLUDEDIR
+ 	NO_CHECK_REQUIRED_COMPONENTS_MACRO
+ )
+ 
+ install(
+ 	FILES
+-		"${CMAKE_CURRENT_BINARY_DIR}/${GLI_INSTALL_CONFIGDIR}/gliConfig.cmake"
++		"${CMAKE_CURRENT_BINARY_DIR}/gliConfig.cmake"
+ 		"${CMAKE_CURRENT_BINARY_DIR}/gliVersion.cmake"
+ 	DESTINATION ${GLI_INSTALL_CONFIGDIR}
+ )

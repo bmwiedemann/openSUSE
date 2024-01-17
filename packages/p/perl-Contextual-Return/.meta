@@ -1,0 +1,51 @@
+<package name="perl-Contextual-Return" project="openSUSE:Factory">
+  <title>Create context-senstive return values</title>
+  <description>Usually, when you need to create a subroutine that returns different values
+in different contexts (list, scalar, or void), you write something like:
+
+    sub get_server_status {
+        my ($server_ID) = @_;
+
+        # Acquire server data somehow...
+        my %server_data = _ascertain_server_status($server_ID);
+
+        # Return different components of that data,
+        # depending on call context...
+        if (wantarray()) {
+            return @server_data{ qw(name uptime load users) };
+        }
+        if (defined wantarray()) {
+            return $server_data{load};
+        }
+        if (!defined wantarray()) {
+            carp 'Useless use of get_server_status() in void context';
+            return;
+        }
+        else {
+            croak q{Bad context! No biscuit!};
+        }
+    }
+
+That works okay, but the code could certainly be more readable. In its
+simplest usage, this module makes that code more readable by providing
+three subroutines--'LIST()', 'SCALAR()', 'VOID()'--that are true only when
+the current subroutine is called in the corresponding context:
+
+    use Contextual::Return;
+
+    sub get_server_status {
+        my ($server_ID) = @_;
+
+        # Acquire server data somehow...
+        my %server_data = _ascertain_server_status($server_ID);
+
+        # Return different components of that data
+        # depending on call context...
+        if (LIST)   { return @server_data{ qw(name uptime load users) } }
+        if (SCALAR) { return $server_data{load}                         }
+        if (VOID)   { print &quot;$server_data{load}\n&quot;                      }
+        else        { croak q{Bad context! No biscuit!}                 }
+    }</description>
+  <devel project="devel:languages:perl" package="perl-Contextual-Return"/>
+  <url>http://search.cpan.org/dist/Contextual-Return</url>
+</package>

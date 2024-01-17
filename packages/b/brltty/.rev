@@ -1,0 +1,617 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>225982be14e9c159c3ec4abbe44b5a8a</srcmd5>
+    <version>4.1</version>
+    <time>1272214642</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/brltty based on submit request 38398 from user prusnak
+</comment>
+    <requestid>38398</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4159fba638414e360921727189924129</srcmd5>
+    <version>4.1</version>
+    <time>1275495390</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/brltty based on submit request 41003 from user coolo
+</comment>
+    <requestid>41003</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4159fba638414e360921727189924129</srcmd5>
+    <version>4.1</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4159fba638414e360921727189924129</srcmd5>
+    <version>4.1</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>db03d70517f9decdb3ae72c61b8b12a3</srcmd5>
+    <version>unknown</version>
+    <time>1284124469</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/brltty based on submit request 47609 from user prusnak
+</comment>
+    <requestid>47609</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c75fb3c4fc059f4f2d8879538e26caab</srcmd5>
+    <version>4.2</version>
+    <time>1284990962</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/brltty based on submit request 48506 from user prusnak
+</comment>
+    <requestid>48506</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>c75fb3c4fc059f4f2d8879538e26caab</srcmd5>
+    <version>4.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>b67aab980b41f134fdd69a8f31468b63</srcmd5>
+    <version>4.2</version>
+    <time>1306308533</time>
+    <user>saschpe</user>
+    <comment>- remove timestamps from binaries, breaks build-compare (forwarded request 71200 from elvigia)</comment>
+    <requestid>71201</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>da83c9a34dc07269b801347110ed84d3</srcmd5>
+    <version>4.2</version>
+    <time>1306308546</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71201
+</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>3b541c551c9a2cf0a364f65e83f7d53c</srcmd5>
+    <version>4.2</version>
+    <time>1307370450</time>
+    <user>saschpe</user>
+    <comment>Fix build with newer glibc. (forwarded request 72732 from a_jaeger)</comment>
+    <requestid>72735</requestid>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>e252d7370ca6f19adaeb74d449fa772f</srcmd5>
+    <version>4.2</version>
+    <time>1307370458</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72735
+</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>abb83077299393b5155c5cfd8b752a94</srcmd5>
+    <version>4.2</version>
+    <time>1312809031</time>
+    <user>saschpe</user>
+    <comment>remove subversion buildreq (forwarded request 78241 from msmeissn)</comment>
+    <requestid>78244</requestid>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>1003d02fdedd9ac74bee19788237a7c2</srcmd5>
+    <version>4.2</version>
+    <time>1312809043</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78244
+</comment>
+  </revision>
+  <revision rev="14" vrev="17">
+    <srcmd5>1003d02fdedd9ac74bee19788237a7c2</srcmd5>
+    <version>4.2</version>
+    <time>1319181795</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>224f9c7cdd2d46d2008de54def4079e2</srcmd5>
+    <version>4.2</version>
+    <time>1323190904</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c9c5272d6b8205a1217eae6fda7d1606</srcmd5>
+    <version>4.3</version>
+    <time>1334641438</time>
+    <user>coolo</user>
+    <comment>Updated to 4.3 and fixed brp-tcl errors (forwarded request 113705 from simontol)</comment>
+    <requestid>113706</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c9c5272d6b8205a1217eae6fda7d1606</srcmd5>
+    <version>4.3</version>
+    <time>1340183213</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>c9c5272d6b8205a1217eae6fda7d1606</srcmd5>
+    <version>4.3</version>
+    <time>1359108716</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>03e8c0517ba30909193758eef37edc9e</srcmd5>
+    <version>4.3</version>
+    <time>1364158513</time>
+    <user>coolo</user>
+    <comment>- Don't build ocaml bindings on aarch64 (forwarded request 160779 from Andreas_Schwab)</comment>
+    <requestid>160796</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>e0d9ededaa42b9a2784182e51ab2119f</srcmd5>
+    <version>4.3</version>
+    <time>1372173204</time>
+    <user>coolo</user>
+    <comment>- Adjust the patch application to be same like with other patches.
+
+- Add brltty-speechd.diff to avert packaging failure and take
+  into account changed speechd location.
+- More robust make install call. Remove redundant %clean section.</comment>
+    <requestid>180824</requestid>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>e0d9ededaa42b9a2784182e51ab2119f</srcmd5>
+    <version>4.3</version>
+    <time>1379662056</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>18fef0cc7f70d1221773ac41b178d571</srcmd5>
+    <version>4.3</version>
+    <time>1383143057</time>
+    <user>scarabeus_factory</user>
+    <comment>- Fix build:+ no longer rely on deprecated function (-perm +...) in
+  find.
+- No longer use --disable-static, not supported in configure. (forwarded request 205097 from fcrozat)</comment>
+    <requestid>205203</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>73fafada1674b2d3410e53ea50ac3ece</srcmd5>
+    <version>4.3</version>
+    <time>1389606760</time>
+    <user>coolo</user>
+    <comment>- Remove AT-SPI 1 driver; superseded by AT-SPI 2 since GNOME 3.0. (forwarded request 213531 from mgorse)</comment>
+    <requestid>213583</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>93c14a7692288e558327ec91813945b3</srcmd5>
+    <version>5.0</version>
+    <time>1395295437</time>
+    <user>coolo</user>
+    <comment>Update and many improvements (forwarded request 224339 from posophe)</comment>
+    <requestid>225833</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>2b632af3acc9f5e4c855e9bcf1c0950b</srcmd5>
+    <version>5.0</version>
+    <time>1401685212</time>
+    <user>coolo</user>
+    <comment>- remove ocaml conditional, it is always available now
+- don't fail if brlapi.cmxa wasn't built (forwarded request 235352 from Andreas_Schwab)</comment>
+    <requestid>235588</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>189fe87b983d3011bb8bee7977bc3efb</srcmd5>
+    <version>5.1</version>
+    <time>1403176777</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237325</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>3e55c3c22ac0bdf295bd5991505614fa</srcmd5>
+    <version>5.1</version>
+    <time>1406366869</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242228</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>3e55c3c22ac0bdf295bd5991505614fa</srcmd5>
+    <version>5.1</version>
+    <time>1409300584</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>ab085b9c3b88de7421e995c8ccdd5f91</srcmd5>
+    <version>5.1</version>
+    <time>1414613350</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258290</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>bb27426eb4d27d508f0936e63c80d303</srcmd5>
+    <version>5.1</version>
+    <time>1418737848</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264758</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>384f28492a02b3013305acca041666e4</srcmd5>
+    <version>5.2</version>
+    <time>1420832979</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266496</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>616a46c27f2b6addb211959123aaaf3a</srcmd5>
+    <version>5.2</version>
+    <time>1424068581</time>
+    <user>coolo</user>
+    <comment>- Modify systemd service file to correct brltty path (boo#917176).</comment>
+    <requestid>285955</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f99e0b90024c23a2ccff4bafeb7f880d</srcmd5>
+    <version>5.3.1</version>
+    <time>1467205406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403706</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0dd1ad819fcf330f75daa1f0c4877874</srcmd5>
+    <version>5.4</version>
+    <time>1476113458</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431257</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>612abd15e31493d5ba88469a682098d0</srcmd5>
+    <version>5.4</version>
+    <time>1478625975</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix syntax error in rule files
+  brltty-udev-rule.patch</comment>
+    <requestid>438986</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>ec33e7d2057cac252d291965d7679552</srcmd5>
+    <version>5.4</version>
+    <time>1487680555</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457413</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>8d070535c4e82eec3c2bd311bccf6d8b</srcmd5>
+    <version>5.4</version>
+    <time>1491567476</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>481968</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>69dd28229decb66a6915c1f2616cda58</srcmd5>
+    <version>5.4</version>
+    <time>1497518312</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503282</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>f6c3f0ed8d0f4adacf912cc214e56781</srcmd5>
+    <version>5.4</version>
+    <time>1500669816</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511210</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>38076eacf0991da5c804315a3cb2aba8</srcmd5>
+    <version>5.5</version>
+    <time>1504981396</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521889</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>722b7c82fcadc8faae20a34f895c7908</srcmd5>
+    <version>5.5</version>
+    <time>1512734110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548566</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>c18bd30fccf94e00fa46e10dbd31b87d</srcmd5>
+    <version>5.5</version>
+    <time>1516091587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563065</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1bb38b8897629fd87109962d358be369</srcmd5>
+    <version>5.6</version>
+    <time>1521579085</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct license
+- Update to version 5.6
+  * General updates:
+    + BRLTTY has been relicensed to the LGPL (from the GPL).
+    + Better cursor routing handling of status line updates and
+      vertical scrolling.
+    + The Track Screen Scroll setting has been added.
+    + The Word Wrap setting has been added.
+    + Panning left when using a contraction table now word wraps.
+    + Typing dismisses an alert message.
+    + The test for when INFO does text maximization instead has
+      been fixed.
+    + Overrides are now applied when the preferences haven't yet
+      been saved.
+    + The Inceptor braille driver (from Innovision) has been added.
+  * The Baum braille driver:
+    + On models with B9 and B10 by the joystick, both are
+      interpreted as Space.
+    + Input packet handling for Pronto! V3 models has been fixed.
+  * The EuroBraille braille driver:
+    + Improved autodetection when using Bluetooth.
+    + The Esytime braille keyboard can be used over Bluetooth and
+      USB.
+    + For Esytime models, B5 has been renamed to B8.
+  * The HIMS braille driver:
+    + The Smart Beetle is now recognized when using Bluetooth.
+  * The HumanWare braille driver:
+    + The BrailleNote Touch is recognized when using USB.
+  * BrlAPI changes:
+    + The version is now 0.6.7 (it was 0.6.6).
+    + The brlapi_getModelIdentifier() function has been added to
+      the API.
+    + The default character set is now based on the user's locale.
+    + Sessions would occasionally hang when connecting.
+    + PolKit authentication is no longer attempted when it isn't
+      available.
+    + Reading raw key codes no longer uses key ranges.
+  * Text tables:
+    + The lt (Lithuanian) table has been updated.
+    + The uk (Ukrainian) table has been added.
+  * Contraction tables:
+    + The fr-abrege (French) table has been updated.
+    + The lt (Lithuanian) table has been added.
+    + Support has been added for LibLouis tables.
+    + brltty-ctb's output is now UTF-8 (rather than ASCII).
+  * Key tables:
+    + The ifPlatform and ifNotPlatform directives have been added.
+  * Systemd changes:
+    + Path (rather than target) units are now used to manage BRLTTY
+      instances.
+  * Build features:
+    + Add the reload target to the make files for Systemd and Udev.
+    + A make file for install/uninstall of the AppStream rules has
+      been added.
+    + Python 3.6 is supported.
+- Use espeak-ng when available
+</comment>
+    <requestid>586344</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>32950a7b936bba1ef20f03e7bd2912b5</srcmd5>
+    <version>5.6</version>
+    <time>1526737265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607457</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a18784fff385eac1d7bd6d155941aa82</srcmd5>
+    <version>6.0</version>
+    <time>1553611044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687728</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>c570007f686a8651889b68e8c33973eb</srcmd5>
+    <version>6.0</version>
+    <time>1553809597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689171</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>03ff3c90bd4101f1ab3a0308de780623</srcmd5>
+    <version>6.0</version>
+    <time>1561643546</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire pkgconfig(libsystemd) instead of systemd-devel:
+  allow OBS to shortcut by using systemd-devel-mini. (forwarded request 710882 from dimstar)</comment>
+    <requestid>710885</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>da8ed3d97280ecc80f2b811c3898daa7</srcmd5>
+    <version>6.0</version>
+    <time>1571751442</time>
+    <user>dimstar_suse</user>
+    <comment>- change udev rule again to also not automatically use the braille
+  driver for USB IDs 10c4:ea60 and 10c4:ea80 as these are generic
+  IDs of generic UART bridges and should not be used for higher
+  level devices (bsc#1093378, bsc#1093455, bsc#1007652) (forwarded request 736701 from oertel)</comment>
+    <requestid>736726</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f7d6fa2b1a13217a2caa9202118ac777</srcmd5>
+    <version>6.1</version>
+    <time>1588324067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.1:
+  + See ChangeLog for changes. 
+- Rebased brltty-5.5-systemd-install.patch
+- api_version is now 0.8.0, and sover is now 0_8
+- Add brltty-gcc10.patch: fix build with -fno-common.
+- Adjust line to remove xsession file.
+- Remove brltty-alsa.patch</comment>
+    <requestid>798836</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>3ba2ccb4c9e9b61a74533fbb0779efa0</srcmd5>
+    <version>6.1</version>
+    <time>1594805041</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (forwarded request 819150 from gmbr3)</comment>
+    <requestid>819253</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>a104fdb15757f67aca1fb97e629642e2</srcmd5>
+    <version>6.1</version>
+    <time>1603031154</time>
+    <user>dimstar_suse</user>
+    <comment>- Add coreutils and util-linux to post requires (boo#1177656). (forwarded request 841815 from mgorse)</comment>
+    <requestid>841816</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>2dcecb93c6d13f48209d471b7bfc910c</srcmd5>
+    <version>6.2</version>
+    <time>1610736334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.2:
+  + See ChangeLog for changes.
+- Update api_version: now 0.8.1.
+- Replace brltty-5.5-systemd-install.patch with
+  brltty-fix-install-dirs.patch: also adjust udev directory.
+- Drop brltty-gcc10.patch: fixed upstream.
+- Move udev rules patching to %build.
+- Use the Makefile to install udev and polkit rules and docs.
+- Brltty-config has been renamed to brltty-config.sh.
+- Remove polkit conditional: we always have it enabled.
+- Remove old espeak support: Leap prior to 15.0 is no longer
+  supported.
+- Add python3-setuptools to BuildRequires: required by rpm during
+  checks.
+- Add doxygen to BuildRequires: needed to build manual.
+- Create a brltty user on install: now expected by service.</comment>
+    <requestid>863078</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>5e3004bf571b730bb895dd0625b3c3a8</srcmd5>
+    <version>6.2</version>
+    <time>1611068304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864007</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2789ffe1b1d87be6ee70c13f24e07dbf</srcmd5>
+    <version>6.3</version>
+    <time>1615362506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875934</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>08cb16141938254c8b44d0613193aa3b</srcmd5>
+    <version>6.4</version>
+    <time>1634587412</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>925436</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>7f83b81ede6063fa48e891bc50b25741</srcmd5>
+    <version>6.4</version>
+    <time>1637970651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933509</requestid>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>79f6b97176cff3f40ec79010cedeaee0</srcmd5>
+    <version>6.4</version>
+    <time>1640876117</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942946</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>6be09860c164938a4f4e8ca4d17951b4</srcmd5>
+    <version>6.4</version>
+    <time>1644965829</time>
+    <user>dimstar_suse</user>
+    <comment>- Pass --with-tables-directory=%{_datadir}/%{name} to configure: do
+  not install the tables to /etc, as they are not supposed to be
+  modified by local admins. (forwarded request 953158 from dimstar)</comment>
+    <requestid>953980</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>46e0f815291d533b42cb3403d501228c</srcmd5>
+    <version>6.5</version>
+    <time>1655824516</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>983894</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>b2a9352abc0c2b7fe90cdd7abeef81f3</srcmd5>
+    <version>6.5</version>
+    <time>1671455273</time>
+    <user>dimstar_suse</user>
+    <comment>- Use tmpfiles_create_package
+- Use sysuser-tools unconditionally (bsc#1205161)</comment>
+    <requestid>1043600</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>7cff4a560c555eb1f9b3267f6f63b04a</srcmd5>
+    <version>6.5</version>
+    <time>1687469080</time>
+    <user>dimstar_suse</user>
+    <comment>- Use conditionals for sysusers_requires to allow quilt setup
+- Remove workarounds for old TCL
+- Enable parallel build again
+- Don't use %tmpfiles_create_package anymore.
+  This macro cannot work on transactional systems. However this macro was
+  supposed to be used only when the tmpfiles stuff was needed in advance, which
+  doesn't seem to be the case for brltty.</comment>
+    <requestid>1094353</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>1f6baad9f97dcc28e65d42cf6e840f9b</srcmd5>
+    <version>6.6</version>
+    <time>1692687305</time>
+    <user>anag+factory</user>
+    <comment>- Add e6707d5e.patch: brlapi: Fix python crash on connection error.
+  Cython 3.0 started using the new Python object finalization APIs
+  from PEP 442.
+
+- Update to version 6.6:
+  + Too many changes; please read ChangeLog
+- Update api_version.
+- Rebase brltty-udev-dir.patch.</comment>
+    <requestid>1105121</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>ef8af83887466d26d574a664f23626eb</srcmd5>
+    <version>6.6</version>
+    <time>1701462297</time>
+    <user>anag+factory</user>
+    <comment>- Disable parallel build again</comment>
+    <requestid>1130116</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>1b62b8e41f9a7e478340e35312dd6fb1</srcmd5>
+    <version>6.6</version>
+    <time>1702587754</time>
+    <user>anag+factory</user>
+    <comment>- README.SUSE: add documentation about the state of security of the brltty
+  daemon (bsc#1214158).
+
+- Use ocaml-rpm-macros to track OCaml ABI
+- Reduce amount of rpmlint warnings with brltty.rpmlintrc</comment>
+    <requestid>1132864</requestid>
+  </revision>
+</revisionlist>

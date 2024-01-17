@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c57a3be3f8e9e654d393620126a6471d</srcmd5>
+    <version>3.31</version>
+    <time>1604702678</time>
+    <user>dimstar_suse</user>
+    <comment>Required by https://build.opensuse.org/request/show/845927</comment>
+    <requestid>846173</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d6c1c74946b63b248dc8102d79d4e562</srcmd5>
+    <version>3.33</version>
+    <time>1627313892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908189</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>366b6ea199e4aa22ab5855a1b6024ebc</srcmd5>
+    <version>3.34</version>
+    <time>1628584068</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911146</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>637cd9f691be93a6305eadc1d0d58aaa</srcmd5>
+    <version>3.35</version>
+    <time>1634943089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926935</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3359eddb40ee98d5b12a7719dec11fcd</srcmd5>
+    <version>3.36</version>
+    <time>1662740874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002191</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>196a5e964f64ca6eb9b31c4bbedf0753</srcmd5>
+    <version>3.37</version>
+    <time>1664467965</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006665</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>02ad7e945acbc83de6270b6ddffffd3e</srcmd5>
+    <version>3.38</version>
+    <time>1678482526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070676</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bff32794a5f53365afb2c4d63281cd0d</srcmd5>
+    <version>3.390.0</version>
+    <time>1694630661</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110669</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c3b04c4ccd7be6998df060eef68dca0a</srcmd5>
+    <version>3.400.0</version>
+    <time>1698333313</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120575</requestid>
+  </revision>
+</revisionlist>

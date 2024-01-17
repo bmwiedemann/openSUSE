@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>virtualbox.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <name>VirtualBox</name>
+  <summary>Virtual Machine client</summary>
+  <description>
+    <p>
+      VirtualBox is a powerful x86 and AMD64/Intel64 virtualization product for enterprise as well as home use.
+    </p>
+  </description>
+  <url type="homepage">https://www.virtualbox.org/</url>
+  <url type="bugtracker">https://www.virtualbox.org/wiki/Bugtracker</url>
+  <url type="help">https://www.virtualbox.org/manual</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://www.virtualbox.org/attachment/wiki/Screenshots/OpenSuse13.2_on_Windows_7.png</image>
+    </screenshot>
+  </screenshots>
+</component>

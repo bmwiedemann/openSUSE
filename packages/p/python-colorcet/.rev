@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6281ab33002b9002f1417d42aca2732a</srcmd5>
+    <version>1.0.0</version>
+    <time>1528022040</time>
+    <user>dimstar_suse</user>
+    <comment>Used by a lot of python plotting tools for additional colormaps</comment>
+    <requestid>603735</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9ef73c446be8d1ff0b46743b7280034d</srcmd5>
+    <version>2.0.1</version>
+    <time>1564155210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717713</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df50f4c81aafc7a6e801230702471c9c</srcmd5>
+    <version>2.0.2</version>
+    <time>1569523597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.2:
+  * Typo fixes in metadata and small fixes only</comment>
+    <requestid>733457</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9061f3c10517bdbc6f8c7cac00df45c2</srcmd5>
+    <version>2.0.2</version>
+    <time>1590650406</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809610</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b69bd0f56d344a2abaa0a1f9891d953f</srcmd5>
+    <version>2.0.6</version>
+    <time>1612108327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867991</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b8cc6e3d35e9d9123441d631ea69698a</srcmd5>
+    <version>3.0.0</version>
+    <time>1663694635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004903</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e0cd569f9e00a2f1f001c664121767f6</srcmd5>
+    <version>3.0.1</version>
+    <time>1665504123</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008588</requestid>
+  </revision>
+</revisionlist>

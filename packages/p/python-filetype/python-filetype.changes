@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Mon Nov  7 23:01:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.2.0 
+  * Merge pull request #147 from sayanarijit/fix-146
+  * Add tests for m4a
+  * Try matching audio before video
+  * Merge pull request #145 from RSabet/master
+  * update README to include avif
+  * added image filetype avif
+  * Update __init__.py
+  * Merge pull request #141 from ferstar/master
+  * test: remove unused imported(F401)
+  * refactor: duck-typing reading magic string and try to restore the reader position if possible
+  * test: fix E275 missing whitespace after keyword
+  * test: Use tox pipeline instead of pytest
+  * test: ignore E501 error for flake8 check
+  * fix: CLI params parser
+  * Merge pull request #137 from ferstar/master
+  * fix: guess ".docx" func and add another doc file test case
+  * fix: guess ".doc" func and add another doc file test case
+  * test: skip benchmark test in tox config
+  * fix: restore reader position after retrieving signature bytes
+  * Merge pull request #136 from ferstar/master
+  * test: no need to skip zstd test case
+  * Merge pull request #135 from ferstar/master
+  * fix: regression for file-like obj file type detection
+  * Merge pull request #134 from babenek/actions
+  * Merge pull request #129 from ferstar/master
+
+- Update to 1.1.0
+  * Merge branch 'master' into master
+  * Merge pull request #133 from magbyr/master
+  * Merge pull request #131 from babenek/master
+  * CI workflow in github actions
+  * Changed to if statements in matching method
+  * Changed return method because of coverage calculation problems
+  * Apply suggestions from code review
+  * README changes
+  * Linter changes
+  * Added document filetypes for doc, docx, odt, xls, xlsx, ods, ppt, pptx and odp. Added tests and sample documents for document filetypes
+  * Fix undocumented exception
+  * style: Simplify binary to integer method
+  * feat: add zstd skippable frames support
+  * test: fix the tox config and missing test sample files
+  * test: fix the zst test sample file
+  * fix(readme): rst syntax wtf
+
+- Update to 1.0.13
+  * feat(history): update changes
+
+- Update to 1.0.12
+  * Merge pull request #127 from ferstar/master
+  * Merge pull request #123 from levrik/patch-1
+  * Merge pull request #126 from babenek/master
+  * docs: add zstd type
+  * fix: remove unnecessary duck-typing try
+  * feat: add zst(d) type
+  * chore: fix lint errors
+  * test: fix memoryview test cases
+  * BugFix for uncaught exceptions
+  * Support PDF with BOM
+
+- Update to 1.0.11
+  * chore(version): bump patch
+  * chore(version): bump patch
+  * refactor(apng)
+  * refactor(apng)
+  * Merge pull request #120 from CatKasha/apng
+  * fix typo
+  * add APNG support (part 3)
+  *  add APNG support (part 2)
+  * add APNG support (part 1)
+  * chore(history): version notes
+  * Merge branch 'master' of https://github.com/h2non/filetype.py
+  * feat: version bump
+  * Merge pull request #118 from smasty/woff-flavors-support
+  * fix(font): minimum length check (woff)
+  * Update __init__.py
+  * Update setup.py
+  * Merge pull request #109 from fraang/master
+  * Add support for more WOFF/WOFF2 flavors
+  * Merge pull request #114 from andersk/m4a
+  * fix(base): remove property decorator
+  * Use correct audio/mp4 type for m4a.
+
+
+-------------------------------------------------------------------
+Sat Mar 26 21:27:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.10:
+  * Merge pull request #113 from nottaw/master
+  * Use `==` for string comparisons
+  * Update __init__.py
+  * Merge pull request #111 from asfaltboy/patch-1
+  * Add python 3.9 to version classifiers
+  * Merge pull request #108 from hannesbraun/aiff-support
+  * Add AIFF support
+  * fix(Readme): rst syntax
+
+-------------------------------------------------------------------
+Mon Nov 22 17:51:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Restrict more which files are packaged.
+
+-------------------------------------------------------------------
+Mon Nov 22 13:19:36 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- update to 1.0.8:
+  * docs: fix typos: s/againts/against
+  * Support special video/3gp file.
+  * fix: small error in docs
+  * Fix for PEP8 styles
+  * Fix version
+  * Add command line
+  * Fix linter error.
+  * Add xcf type.
+  * Add application abstraction and wasm type.
+  * Add rpm and dcm type.
+  * Add 3gp type.
+  * Add aac type.
+  * Add dwg type.
+  * Add brotli support.
+  * Fix avi matcher.
+  * Fix cr2 handling.
+  * Add py39 to test environment.
+  * Add clean and doc target to tox.
+  * Add docs to .gitignore
+  * Switch to tox in travis CI.
+  * Add lint and test target to tox.ini
+  * Clean up .gitignore
+  * Update Readme.
+  * Extend mp3 matcher
+  * Added support for lzop.
+  * Added support for lz4.
+  * Accept os.PathLike objects.
+  * Added support for elf
+  * setup.py: Exclude 'examples' from being installed as a global pkg
+  * Create LICENSE
+  * Add sample.jpg fixture
+- Install new filetype command into %{_bindir}
+- Enable update-alternatives mechanism for filetype command
+
+-------------------------------------------------------------------
+Thu Sep 17 06:46:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * python 3.8 support
+
+-------------------------------------------------------------------
+Thu Jan  2 07:33:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not install generic examples directory in sitelib
+
+-------------------------------------------------------------------
+Fri Dec  6 20:53:47 UTC 2019 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Initial version.
+

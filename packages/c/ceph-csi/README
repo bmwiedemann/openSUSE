@@ -1,0 +1,8 @@
+To update the package:
+
+- update the revision field in _service
+- run "osc service dr"
+  * make sure you have the source services from _service installed locally
+  * this will also update the vendor.tar.gz tarball
+- update ceph-csi.changes
+- osc commit

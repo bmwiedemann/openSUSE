@@ -1,0 +1,8 @@
+<package name="bspwm" project="openSUSE:Factory">
+  <title>bspwm</title>
+  <description>A tiling window manager based on binary space partitioning.
+* It only responds to X events, and the messages it receives on a dedicated socket.
+* bspc is a program that writes messages on bspwm's socket.
+* bspwm doesn't handle any keyboard or pointer inputs: a third party program (e.g. sxhkd) is needed in order to translate keyboard and pointer events to bspc invocations.</description>
+  <devel project="X11:windowmanagers" package="bspwm"/>
+</package>

@@ -1,0 +1,351 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e75ceb3e3f43036c1e7c42d2bc657cc</srcmd5>
+    <version>2.1.0</version>
+    <time>1585484857</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2020-03/msg00221.html</comment>
+    <requestid>789349</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9173bd60df879ef7260800eb95067c67</srcmd5>
+    <version>2.2.1</version>
+    <time>1586973375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1:
+  + Fixed a bug that prevented andOTP backup encrypted using a long
+    password to be correctly imported.
+
+* Update to version 2.2.0:
+  + Add support for FreeOTPPlus.
+  + Fix first startup dialog wording.
+
+- run spec cleaner.
+* Update to v2.1.0:
+* Update to v2.0.1:</comment>
+    <requestid>794143</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f77cb6b5770f1fefee4a430afaa91fd</srcmd5>
+    <version>2.3.1</version>
+    <time>1589579537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1
+  * Fix possible memory leak in freeotp.c
+
+- Update to 2.3.0
+  + Add support for Aeigs backups (forwarded request 805337 from polslinux)</comment>
+    <requestid>805779</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6800bf799968d8f64383ce23177c3d65</srcmd5>
+    <version>2.3.2</version>
+    <time>1595864923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2
+  * Fix wrong code when entries are sorted
+  * new icon (forwarded request 822663 from polslinux)</comment>
+    <requestid>822967</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>730793cca9615e507ba57ae2a05f0822</srcmd5>
+    <version>2.4.1</version>
+    <time>1609866987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1
+  * allow user to specify an output folder in the CLI
+
+- Update to 2.4.0
+  * add export command to otpclient-cli (forwarded request 859574 from polslinux)</comment>
+    <requestid>860465</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>880a40db65ecfe29b8868297cb426d8a</srcmd5>
+    <version>2.4.2</version>
+    <time>1613427627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872518</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>24f22a77c35c873af10cb516332bc7ff</srcmd5>
+    <version>2.4.3</version>
+    <time>1616925329</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881499</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b7da086dbec7502597f84cf34a47c2ea</srcmd5>
+    <version>2.4.4</version>
+    <time>1618498639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.4
+  * Remove sorting feature, as it's bugged due to an issue with
+    GtkTreeView. This feature will come back with v3.0, because
+    GtkColumnView will replace GtkTreeView (forwarded request 882178 from polslinux)</comment>
+    <requestid>884641</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe119216227aa26f29d8f3b1ba246018</srcmd5>
+    <version>2.4.6</version>
+    <time>1637108027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931612</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>86f7b2f0a64fd6ef87a3e614d40f6a43</srcmd5>
+    <version>2.4.7</version>
+    <time>1637372365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932559</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6f7291d83c0a0883ed5e8f5f543db35b</srcmd5>
+    <version>2.4.8</version>
+    <time>1645221787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.8:
+  * Fix show next OTP.
+  * Correctly decode URIs from QR codes.
+</comment>
+    <requestid>955875</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e45dc9dba13ffbe1ea92dbe8fc97aba0</srcmd5>
+    <version>2.4.9.1</version>
+    <time>1646073827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.9.1:
+  * Fix a regression brought by the previous update (non-utf8 string
+    was incorrectly parsed). Now URIs are correctly parsed, whether
+    or not they contain utf-8 chars. 
+
+- Update to 2.4.9:
+ * fix an error when importing a QR code (issue #240)
+ * better error handling when importing a code
+</comment>
+    <requestid>958045</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>03e45c761cbdfd187e4ab26cf25b9379</srcmd5>
+    <version>2.5.0</version>
+    <time>1648841754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966341</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1e78a69362bd619c2a69b3296ea3a3f7</srcmd5>
+    <version>2.5.1</version>
+    <time>1649014258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.1:
+  * enable markup on change database dialog
+</comment>
+    <requestid>966602</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>46ebeb703d7b86ebc8bb799d65a488f3</srcmd5>
+    <version>2.6.0</version>
+    <time>1656768883</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0:
+  * It's now possible to import SVG tokens (in addition to PNG ones).
+  * Add support for importing and exporting encrypted Aegis backups.
+  * Add support for importing Google migration QR codes (hamburger menu -&gt; import -&gt; Google migration QR).
+    You need to provide the QR file (e.g. by taking a screenshot with the webcam or another phone).
+  * Fix andOTP import bug.
+  * Improve row deletion workflow.
+  * Add support for libsecret. By default, the password is saved into the secret service provider of your OS.
+    This means that you won't be required a password as long as you're logged in. You can disable this feature from the settings menu.
+  * Show a video feed when adding a QR using the webcam.
+</comment>
+    <requestid>986337</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f3fa3cad0b9a908ec69b38042ebb1e2c</srcmd5>
+    <version>2.6.2</version>
+    <time>1657114911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.2:
+  * Add info message about the new secret service behavior.
+- Update to 2.6.1:
+  * Add ability to import google migration QR also via webcam.
+  * Avoid double free on error while importing encrypted aegis.
+</comment>
+    <requestid>986970</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>153a23ca7a50ecfc11e65bf02824d582</srcmd5>
+    <version>2.6.3</version>
+    <time>1658396003</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 2.6.3:
+  * Fix ternary operator logic when setting the google_migration flag.
+</comment>
+    <requestid>990345</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>69403501cc4050db03eb02e5de40550d</srcmd5>
+    <version>2.6.4</version>
+    <time>1669830829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.4:
+  * fix issue when importing AEGIS encrypted backups.
+</comment>
+    <requestid>1039157</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>79cce920c3343a6c1d77ba970b40bb6c</srcmd5>
+    <version>3.0.0</version>
+    <time>1670703510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * NEW: OTPClient is now translatable (#263). If you wish to translate it in your language,
+    you can find two templates (.pot) in the po/ directory. When you are done translating, either open a PR or send me an email so I can add the translation.
+  * NEW: secret is now editable too (#258)
+  * NEW: an About dialog has been added in the settings menu.
+  * CHANGED: removed Authenticator Plus support (#257)
+</comment>
+    <requestid>1041889</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>abcd8d71fe3a0395b8de859366f1fae4</srcmd5>
+    <version>3.1.0</version>
+    <time>1671564017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * New feature (#258): entries can be displayed as a QR-Code
+  * All keyboard shortcuts have been revised, be sure to check them (Ctrl-k)
+  * Updated the artwork credits in the about dialog
+  * Code clean-up 
+</comment>
+    <requestid>1043766</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b87ab70b8426ab4bb66eaacfd851681c</srcmd5>
+    <version>3.1.1</version>
+    <time>1672394933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Fixed some memory leaks.
+  * Improved error handling.
+  * Use secure functions instead of standard ones .
+</comment>
+    <requestid>1045797</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1f01186ae37eb8cbcf9b0a592073b326</srcmd5>
+    <version>3.1.3</version>
+    <time>1673651007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.3:
+  * Fix Aegis import/export when using long pwds.
+  * Fix secret service cleanup
+  * Show the correct error message when import fails
+  * Use g_utf8_strlen instead of strlen
+  * Add libcotp &gt;= 2.0 compatibility
+</comment>
+    <requestid>1058252</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>52d8bc80e05dd82665a2e350a5f51657</srcmd5>
+    <version>3.1.4</version>
+    <time>1676036153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.4:
+  * make auto-lock and secret service mutually exclusive (#279)
+  * fix importing plain AEGIS (#281)
+  * fix importing encrypted AEGIS on some distros (#281)
+  * rename disable_secret_service setting to use_secret_service
+</comment>
+    <requestid>1064195</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fcff22bea16130a1463fd5af2c212318</srcmd5>
+    <version>3.1.5</version>
+    <time>1678902987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.5:
+  * allow db to be a symlink (fix #289)
+</comment>
+    <requestid>1072106</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8d6a90953b676b8b75e213a4d20620f9</srcmd5>
+    <version>3.1.6</version>
+    <time>1679520665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.6:
+  * Correctly quit the password dialog on export. This avoid dumping
+    the database in plaintext format if the user presses either the
+    cancel or close button. 
+</comment>
+    <requestid>1073715</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b0518c409cc2501cd0e09af7e5e9531d</srcmd5>
+    <version>3.1.7</version>
+    <time>1685124941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.7:
+  * Add new Database info dialog (Hamburger menu -&gt; Database info)
+  * Fix crash when no row is selected (#295)
+  * Fix UI when creating/changing a database
+  * Multiple fixes when creating a new database
+  * Use current db folder when creating/changing database
+  * Fix memory leak in case of error when opening the settings dialog 
+</comment>
+    <requestid>1089142</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e747582cecea600dc14892e839a669bb</srcmd5>
+    <version>3.1.8</version>
+    <time>1686927253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.8:
+  * Fix importing Aegis plain text json (#296).
+</comment>
+    <requestid>1093278</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>94cfd42a8414935aa3b443e3f700569d</srcmd5>
+    <version>3.1.9</version>
+    <time>1688399067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.9:
+  * Fix db corruption when symbols are used (#301).
+  * Fix crash when user changes db multiple times. 
+</comment>
+    <requestid>1096606</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b71ea1a5e1f649c9b08700854372739a</srcmd5>
+    <version>3.2.0</version>
+    <time>1698249831</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.0:
+  * NEW: add file chooser dialog on export (#305).
+  * FIX: overwrite exported file instead of appending it (#305).
+  * FIX: exported file will be accessible only by the current user (#305).
+  * FIX: multiple issues related to failed first launch (#303).
+  * FIX: couple of issues with secret-service.
+</comment>
+    <requestid>1120185</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>139321444fca7c3c5b9932033a165638</srcmd5>
+    <version>3.2.1</version>
+    <time>1699046443</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.2.1:
+  * FIX: increase secure memory pool to 64 MB, if possible
+  * FIX: parsing of big aegis encrypted json (#309)
+  * FIX: better memory management 
+</comment>
+    <requestid>1123143</requestid>
+  </revision>
+</revisionlist>

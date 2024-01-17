@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58bf6648fea16df7049e28dc1daf6931</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1562247760</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>712773</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d28d7a118dc6dc941ac7411d0880031</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1562591430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713585</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dce6b6091d49e4d142157088bad228e2</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1562591561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714001</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b95791bd5ebe2060cd9dd52cc4dc376d</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1569235585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732528</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>42d7270ea3b6adf2b416f1da130fa61d</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1573339186</time>
+    <user>dimstar_suse</user>
+    <comment>- fix unittests to pass on all architectures 
+  * fix-test-sg03ad.patch see upstream PR#82
+  * fix-test-td04ad.patch see upstream PR#83  
+</comment>
+    <requestid>746657</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>16af50139c4eb50b8e2fb52bd36a8970</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1575563642</time>
+    <user>dimstar_suse</user>
+    <comment>- mirror blas/lapack/openblas requirements from numpy-devel depending
+  on architecture and force CMake to find it.
+- reduce the required precision in the sg03ad test so that 
+  powerpc passes
+</comment>
+    <requestid>753976</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>56a616fd00fad2b63055b7c0ec7dc38d</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1586467041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791982</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3183a454b56a3cfb1997b05e5c45aee4</srcmd5>
+    <version>0.3.5.0</version>
+    <time>1587581521</time>
+    <user>dimstar_suse</user>
+    <comment>- python2 dependency only for python2 enabling repos
+</comment>
+    <requestid>795721</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>903d6f3a4b5fd8c6034f0844cf5fb7f0</srcmd5>
+    <version>0.4.0.0</version>
+    <time>1591101486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0.0 
+- switch testing to pytest
+- some new tests require scipy
+- remove obsolete patches fix-test-sg03ad.patch and fix-test-td04ad.patch</comment>
+    <requestid>810372</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>41fe0bfe4e1effea683e586d1a28b814</srcmd5>
+    <version>0.4.0.0</version>
+    <time>1593292956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817306</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>27e18638cd2b3f9460b17a3d7edfc9e4</srcmd5>
+    <version>0.4.0.0</version>
+    <time>1593606410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817900</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9632014d785c63022c28fa5730c4c216</srcmd5>
+    <version>0.4.0.0</version>
+    <time>1610977148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863998</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>4e2cf014074dd820df33743547b89d2a</srcmd5>
+    <version>0.4.0.0</version>
+    <time>1635539652</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the correct alternative for f2py during build</comment>
+    <requestid>928035</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>661ef0433a2174a7c14564958d5735c2</srcmd5>
+    <version>0.5.0.0</version>
+    <time>1657487725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988043</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9ef8009834d986723a5aa88097514b9b</srcmd5>
+    <version>0.5.0.0</version>
+    <time>1657559368</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore finding correctly flavored f2py during build (forwarded request 988213 from bnavigator)</comment>
+    <requestid>988214</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a0cb62068801f04e4b7719a956b39742</srcmd5>
+    <version>0.5.2</version>
+    <time>1669384575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037768</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>909470631ba15a322a32fda64d27c84a</srcmd5>
+    <version>0.5.3</version>
+    <time>1671635237</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.3
+  * This patch release updates the build system to be compatible
+    with NumPy 1.24.0 -- gh#python-control/Slycot#187
+- Drop rpmlintc: python-tests-in-package has been dropped
+</comment>
+    <requestid>1044040</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6b599e6268663df26d37a3a356fb0f3f</srcmd5>
+    <version>0.5.4</version>
+    <time>1682782084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083332</requestid>
+  </revision>
+</revisionlist>

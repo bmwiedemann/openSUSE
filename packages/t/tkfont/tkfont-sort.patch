@@ -1,0 +1,11 @@
+--- tkfont.orig
++++ tkfont
+@@ -18,7 +18,7 @@ proc GetFontList { } {
+ 	set TempFileName "/tmp/fonts.list.[pid]"
+ 	set TempFileName2 "/tmp/fonts.list.[pid]b"
+ 
+-	exec xlsfonts -u -fn "*" | grep "-" | sort -t "-" +2 | uniq > $TempFileName
++	exec xlsfonts -u -fn "*" | grep "-" | sort -t "-" -k +2 | uniq > $TempFileName
+ 	exec grep -v "0-0-75-75-" < $TempFileName > $TempFileName2
+ 	exec grep -v "0-0-100-100-" < $TempFileName2 > $TempFileName 
+ 	set Chan [open $TempFileName r]

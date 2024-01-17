@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>257430a269c50d92e74f029c28efc2a4</srcmd5>
+    <version>1.2.2</version>
+    <time>1489866640</time>
+    <user>dimstar_suse</user>
+    <comment>rename from python-lazy_object_proxy</comment>
+    <requestid>479708</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7601a40df810ca5a8c7938fd6717b518</srcmd5>
+    <version>1.2.2</version>
+    <time>1494088287</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493139</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7b6dd8db803e2b27eb33fbaf518af3f</srcmd5>
+    <version>1.3.1</version>
+    <time>1533292158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626578</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dd22333bd8b3af6b5b4699a1aa975e46</srcmd5>
+    <version>1.4.1</version>
+    <time>1561643617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711151</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dfecf620b5d71d3355423f60a591a425</srcmd5>
+    <version>1.4.2</version>
+    <time>1569233282</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.2:
+  * Included a pyproject.toml to allow users install the sdist with old
+    python/setuptools, as the setuptools-scm dep will be fetched by pip
+    instead of setuptools. Fixes #30.</comment>
+    <requestid>730142</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cf9717c5bb7f5d9380fd084dfb472d6</srcmd5>
+    <version>1.4.3</version>
+    <time>1587070759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794168</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>46226c4d9e13dcd497a32e6dfe3d649f</srcmd5>
+    <version>1.5.1</version>
+    <time>1603645726</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 1.5.1:
+  * Added ARM64 wheels (manylinux2014).
+  * Added support for ``__fspath__``.
+  * Dropped support for Python 3.4.</comment>
+    <requestid>835176</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eda9597bc7fb44c1f67283b1a923b6e3</srcmd5>
+    <version>1.5.2</version>
+    <time>1608729549</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2:
+  * Added Python 3.9 wheels.
+  * Removed Python 2.7 Windows wheels</comment>
+    <requestid>857112</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5170e8e8a3f386a9cf681b99e8a5b458</srcmd5>
+    <version>1.5.2</version>
+    <time>1614948263</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875445</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>314751518ea56695466d0b5c47816573</srcmd5>
+    <version>1.6.0</version>
+    <time>1628108900</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Added support for async special methods (``__aiter__``, ``__anext__``,
+    ``__await__``, ``__aenter__``, ``__aexit__``).
+    These are used in the ``async for``, ``await` and ``async with`` statements.
+    Note that ``__await__`` returns a wrapper that tries to emulate the crazy
+    stuff going on in the ceval loop, so there will be a small performance overhead.
+  * Added the ``__resolved__`` property. You can use it to check if the factory has
+    been called.</comment>
+    <requestid>909535</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>92a6803cc205159d2f5822c817a6518b</srcmd5>
+    <version>1.6.0</version>
+    <time>1635167821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925077</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef80517b2c3865011e5305f6b347e335</srcmd5>
+    <version>1.7.1</version>
+    <time>1648570435</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * Removed most of the Python 2 support code and fixed ``python_requires`` to
+    require at least Python 3.6.
+    * Note that 1.7.0 has been yanked because it could not install on Python 2.7.
+  * Switched CI to GitHub Actions, this has a couple consequences:
+  * Fixed ``__index__`` to fallback to ``int`` if the wrapped object doesn't
+    have an ``__index__`` method.  This prevents situations where code using a
+    proxy would otherwise likely just call ``int`` had the object not have an
+    ``__index__`` method.</comment>
+    <requestid>965084</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0f60cde2cd8ab312a8252a05fef0588d</srcmd5>
+    <version>1.7.1</version>
+    <time>1661020068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998095</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>20c6dfbb6f5ed3a8b5eb44028f31cb37</srcmd5>
+    <version>1.8.0</version>
+    <time>1670162253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039666</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>58c9e6fbabef99c2dcd43efc75b82576</srcmd5>
+    <version>1.8.0</version>
+    <time>1682193783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082051</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fb405eb0f197aa34e81f24c6a4e57c12</srcmd5>
+    <version>1.9.0</version>
+    <time>1683630412</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.0:
+  * Added support for matrix multiplication operator (``@``).
+  * Should have all the wheels now (including the manylinux
+    ones).
+  * Bumped minimum version requirements for setuptools and
+    setuptools-scm.
+  * Switched the default pure python fallback implementation to
+    the &quot;simple&quot; one (when you ``from lazy_object_proxy import
+    Proxy`` and the C extension is not available).
+    Previously the &quot;slots&quot; implementation was used but as it
+    turns out it is slower on Python 3.</comment>
+    <requestid>1085123</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5f1d115bf74371e5d18b7ca4812fcf32</srcmd5>
+    <version>1.10.0</version>
+    <time>1702845174</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.10.0:
+  * Added Python 3.12 wheels.
+  * Dropped support for Python 3.7.
+  * Applied some reformatting and lint fixes using ruff to the
+    codebase (mostly more Python 2 leftover cleanups).</comment>
+    <requestid>1133655</requestid>
+  </revision>
+</revisionlist>

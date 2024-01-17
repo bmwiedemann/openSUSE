@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sat Mar  6 14:13:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.31
+  * PyPi package had wrong license (MIT). Changed to GPLv3.
+  * Minor changes to variable parsing and applying.
+  * A fix for the "sql" template. A new reserved keyword has been
+    renamed.
+  * Minor changes and improvements to the "html_fancy" template.
+
+-------------------------------------------------------------------
+Sun Nov 24 18:26:05 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.30
+- Add patch:
+  * ansible-cmdb-dont-require-ushlex.patch
+    ushlex is only needed for the python2 version

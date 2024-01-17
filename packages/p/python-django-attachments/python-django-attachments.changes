@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Sun Apr 23 20:12:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11:
+  * Return form errors as JSON from ``add_attachment()`` view
+    when the ``X-Return-Form-Errors`` request header is present.
+    Response code is 400 - BAD REQUEST because this is a client
+    error. 
+
+-------------------------------------------------------------------
+Sun Apr 16 08:14:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10:
+  * Support custom form validators via
+    ``AppConfig.attachment_validators``
+  * Remove quotes from "attachment_list" (Aaron C. de Bruyn)
+  * Add a URL for matching objects with a UUID4 primary key. Fix
+  * `Issue #94 <https://github.com/bartTC/django-
+    attachments/issues/94>`_
+  * Document settings supported by django-attachments
+  * Document how to make a new release. Closes
+  * Add testing with Django 4.0 and 4.1, Python 3.9 and 3.10
+    and switch the default Python version used to 3.10
+  * Add testing w/ Python 3.11 - supported only on Django 4.1 for
+    now
+
+-------------------------------------------------------------------
+Tue Apr 19 12:44:03 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.9.1
+  * Configure PK explicitly to AutoField for Django 3.2+
+- do not use mock
+
+-------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
+Tue Apr  6 11:09:29 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Normalize pytest settings
+
+-------------------------------------------------------------------
+Mon Sep  7 02:57:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to v1.8
+
+-------------------------------------------------------------------
+Sun May  3 20:47:31 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.5
+
+-------------------------------------------------------------------
+Thu Aug 13 20:13:32 UTC 2009 - alexandre@exatati.com.br
+
+- Initial package (0.3.1) for openSUSE.
+

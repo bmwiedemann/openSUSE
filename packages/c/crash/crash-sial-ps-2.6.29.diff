@@ -1,0 +1,15 @@
+diff -Nurp sial-scripts-2008-02-08.orig//ps.c sial-scripts-2008-02-08/ps.c
+--- sial-scripts-2008-02-08.orig//ps.c	2010-03-12 19:59:03.227788951 +0100
++++ sial-scripts-2008-02-08/ps.c	2010-03-12 19:59:16.690665574 +0100
+@@ -192,7 +192,11 @@ string cmd;
+ 
+ 	printf("%p %7d %7d %7d 0x%02x 0x%08x %5d:%-5d %s\n"
+ 		, t
++#if LINUX_RELEASE > 0x02061d
++		, t->real_cred->uid
++#else
+ 		, t->uid
++#endif
+ 		, t->pid
+ #if LINUX_2_6_X
+ 		, t->parent->pid

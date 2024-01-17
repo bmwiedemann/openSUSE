@@ -1,0 +1,14 @@
+<package name="kora-icon-theme" project="openSUSE:Factory">
+  <title></title>
+  <description>Kora is an SVG icon theme with lots of new icons for GNU/Linux operating systems.
+
+To make them display properly, you may need to update the icon cache. A script is included.
+
+Different versions available:
+kora - for dark themes with dark panel
+kora-light - for light themes with dark panel (depends on Kora)
+kora-light-panel - for light themes with light panel (depends on Kora and Kora-light)
+kora-pgrey - theme with grey folder colors (depends on Kora)</description>
+  <devel project="X11:common:Factory" package="kora-icon-theme"/>
+  <url>https://github.com/bikass/kora</url>
+</package>

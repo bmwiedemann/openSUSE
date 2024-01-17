@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ai.h2o</groupId>
+  <artifactId>xgboost-predictor</artifactId>
+  <version>0.3.3</version>
+  <name>xgboost-predictor</name>
+  <description>Pure Java implementation of XGBoost predictor for online prediction tasks</description>
+  <url>https://github.com/h2oai/xgboost-predictor</url>
+  <inceptionYear>2018</inceptionYear>
+  <organization>
+    <name>H2O.ai</name>
+    <url>http://h2o.ai/</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>support</id>
+      <name>H2O.ai Support</name>
+      <email>support@h2o.ai</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:https://github.com/h2oai/xgboost-predictor.git</connection>
+    <developerConnection>scm:git:git@github.com:h2oai/xgboost-predictor.git</developerConnection>
+    <url>https://github.com/h2oai/xgboost-predictor</url>
+  </scm>
+  <issueManagement>
+    <system>Jira</system>
+    <url>http://jira.h2o.ai</url>
+  </issueManagement>
+  <dependencies>
+    <dependency>
+      <groupId>net.jafama</groupId>
+      <artifactId>jafama</artifactId>
+      <version>2.1.0</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>

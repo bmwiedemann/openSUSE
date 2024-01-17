@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu Oct  5 08:36:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0
+  * Create Convert processor and GaussianBlur processor
+  * Updating histogram entropy implementations
+  * Make processors.Resize more memory-efficient
+  * Added WebP as a transparency format
+  * Use pytest instead of nose
+  * Make it compatible with Pillow10
+  * test: use unittest.mock instead of mock
+- Drop merged patches:
+  * switch-to-pytest.patch
+  * python-pilkit-no-mock.patch
+  * pil-fix-test.patch
+
+-------------------------------------------------------------------
+Wed Apr  6 10:37:26 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/matthewwithanm/pilkit/issues/54
+  + python-pilkit-no-mock.patch
+
+-------------------------------------------------------------------
+Mon Sep  6 08:44:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add switch-to-pytest.patch:
+  * Switch to using pytest, rather than nose. 
+
+-------------------------------------------------------------------
+Tue Jun  1 08:51:39 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest rpm macro
+
+-------------------------------------------------------------------
+Fri Jan 18 10:15:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix tests with new PIL (due to ordering there were
+  2 png returns and randomly on py2 it could return apng instead
+  of just png:
+  * pil-fix-test.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:33 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Nov 18 12:05:03 UTC 2017 - tbechtold@suse.com
+
+- Initial packaging (version 2.0.0)

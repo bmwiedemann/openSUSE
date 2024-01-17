@@ -1,0 +1,31 @@
+From 2e6041b656fbd3db87109ea0c116e568c7c984e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 10 Aug 2023 15:48:55 +0200
+Subject: [PATCH] Implement math.comb fallback for Python 3.6
+
+---
+ src/Mod/PartDesign/fcgear/involute.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/Mod/PartDesign/fcgear/involute.py b/src/Mod/PartDesign/fcgear/involute.py
+index 15df79f..307ff6b 100644
+--- a/src/Mod/PartDesign/fcgear/involute.py
++++ b/src/Mod/PartDesign/fcgear/involute.py
+@@ -24,7 +24,13 @@
+ #   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+ 
+ from math import cos, sin, tan, pi, acos, asin, atan, sqrt, radians
+-from math import comb as binom
++try:
++    from math import comb as binom
++except ImportError:
++    from math import factorial
++    def binom(n, k):
++        return 0 if k > n else \
++            factorial(n) / (factorial(k) * factorial(n - k))
+ 
+ 
+ def CreateExternalGear(w, m, Z, phi,
+-- 
+2.41.0
+

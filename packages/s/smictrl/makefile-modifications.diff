@@ -1,0 +1,19 @@
+---
+ Makefile |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+Index: smictrl/Makefile
+===================================================================
+--- smictrl.orig/Makefile
++++ smictrl/Makefile
+@@ -1,8 +1,7 @@
+ 
+-CFLAGS = -O2 -Wall
+-PCILIB = /usr/lib/libpci.a
++CFLAGS += -O2 -Wall -I/usr/src/linux/include/
+ 
+-smictrl: smictrl.o $(PCILIB) -lz
++smictrl: smictrl.o -lpci -lz
+ 
+ clean:
+ 	rm -f smictrl smictrl.o

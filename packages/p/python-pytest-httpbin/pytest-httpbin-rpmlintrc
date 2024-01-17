@@ -1,0 +1,2 @@
+# These are test certificates and keys for localhost only
+addFilter("pem-certificate .*pytest_httpbin/certs")

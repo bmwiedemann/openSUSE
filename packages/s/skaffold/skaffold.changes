@@ -1,0 +1,1322 @@
+-------------------------------------------------------------------
+Tue Jan 09 20:16:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.0:
+  * docs: update changelog for v2.10.0 (#9247)
+  * chore: bump puma in /integration/examples/ruby/backend (#9244)
+  * fix: helm-deploy-chart-path-template (#9243)
+  * fix: apply-setter and transformer should ignore
+    non-k8s-resource for kustomize paramterization (#9240)
+  * chore: bump github/codeql-action from 3.22.12 to 3.23.0 (#9241)
+  * chore: bump golang.org/x/crypto from 0.12.0 to 0.17.0 (#9227)
+  * feat: Skaffold post renderer (#9203)
+  * fix: Scope Issue with the 'entry' variable when looking up
+    remote images and tests additions (#9211)
+  * chore: bump github/codeql-action from 2.22.9 to 3.22.12 (#9231)
+  * chore: bump github.com/go-git/go-git/v5 from 5.8.1 to 5.11.0
+    (#9234)
+  * chore: bump golang.org/x/crypto from 0.14.0 to 0.17.0 in
+    /hack/tools (#9228)
+  * chore: clean up example project deps (#9216)
+  * chore: bump actions/upload-artifact from 3.1.3 to 4.0.0 (#9226)
+  * chore: inject imageInfo when expanding templates for ko builder
+    (#9207)
+  * chore: change bazel example (#9218)
+  * fix: remove global helm flags from flags sent to `skaffold
+    filter` (#9212)
+  * chore: bump github/codeql-action from 2.22.8 to 2.22.9 (#9214)
+  * fix: add riscv64 to the install-golint.sh script (#9210)
+  * chore: generate schema v4beta9 (#9204)
+  * chore: bump github/codeql-action from 2.22.7 to 2.22.8 (#9193)
+  * fix: puling images when working with a remote repository
+    (#9177) (#9181)
+  * chore: bump github/codeql-action from 2.22.6 to 2.22.7 (#9180)
+  * docs: Add missing template field (#9186)
+  * fix: custom crd not printing streams logs (#9136)
+  * fix: non-crossplatform should not use cli (#9178)
+  * fix: panic in Logger.Stop (#9159)
+  * chore: bump github/codeql-action from 2.22.5 to 2.22.6 (#9173)
+  * fix: sync slow (#9167)
+
+-------------------------------------------------------------------
+Wed Nov 08 05:55:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.0:
+  * docs: update changelog for v2.9.0 (#9165)
+  * chore: add new skip-unreachable-dirs to not error on init
+    command when a dir can not be read (#9163)
+  * chore: bump golang.org/x/net from 0.7.0 to 0.17.0 in
+    /hack/tools (#9129)
+  * chore: bump golang.org/x/net in
+    /examples/grpc-e2e-tests/service (#9130)
+  * chore: bump golang.org/x/net (#9131)
+  * chore: bump golang.org/x/net (#9128)
+  * chore: bump google.golang.org/grpc from 1.55.0 to 1.56.3
+    (#9156)
+  * chore: bump google.golang.org/grpc (#9154)
+  * chore: bump google.golang.org/grpc in
+    /examples/grpc-e2e-tests/service (#9153)
+  * chore: bump google.golang.org/grpc (#9152)
+  * chore: bump google.golang.org/grpc (#9155)
+  * chore: bump github/codeql-action from 2.22.4 to 2.22.5 (#9157)
+  * chore: add new config to control the pull behaviour for verify
+    (#9150)
+  * fix: kpt force named "false" in schema (#9074)
+  * chore: change custom actions pull logic, to check if an image
+    exists locally first before triggering a pull (#9147)
+  * chore: bump ossf/scorecard-action from 2.3.0 to 2.3.1 (#9149)
+  * chore: bump schema version to v4beta8 (#9143)
+  * chore: bump peter-evans/create-or-update-comment from 3.0.2 to
+    3.1.0 (#9142)
+  * chore: bump github/codeql-action from 2.22.3 to 2.22.4 (#9146)
+  * chore: bump github/codeql-action from 2.22.2 to 2.22.3 (#9137)
+  * chore: bump golang.org/x/net (#9132)
+  * chore: bump github/codeql-action from 2.22.1 to 2.22.2 (#9133)
+  * docs: fix releaseNoteLink for v2.8.0 (#9125)
+  * chore: bump ossf/scorecard-action from 2.2.0 to 2.3.0 (#9122)
+  * chore: bump github/codeql-action from 2.22.0 to 2.22.1 (#9123)
+  * chore: bump github/codeql-action from 2.21.9 to 2.22.0 (#9115)
+  * chore: bump flask from 2.3.3 to 3.0.0 in /integration/examples
+    (#9107)
+  * chore: bump flask from 2.3.3 to 3.0.0 in /examples (#9106)
+
+-------------------------------------------------------------------
+Thu Oct 05 04:41:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version v2.8.0:
+  * docs: update changelog for v2.8.0 (#9109)
+  * feat: Support post-renderer for helm deployer. (#9100)
+  * chore: bump github/codeql-action from 2.21.8 to 2.21.9 (#9101)
+  * chore: bump github/codeql-action from 2.21.7 to 2.21.8 (#9097)
+  * docs: Fix document tutorials/skaffold-resource-selector.md
+    (#9083)
+  * chore: bump github/codeql-action from 2.21.6 to 2.21.7 (#9096)
+  * feat: inject namespace from rendered manifests in post deploy
+    hooks (#9090)
+  * chore: add set docker host by current context (#9094)
+  * chore: bump github/codeql-action from 2.21.5 to 2.21.6 (#9093)
+  * docs: add templatable field (#9088)
+  * chore: verify should preserve job manifest envs (#9087)
+  * feat: Add skaffold inspect command for adding config
+    dependencies (#9072)
+  * feat: Add global build pre- and post-hooks  (#9047)
+  * chore: bump actions/upload-artifact from 3.1.2 to 3.1.3 (#9075)
+  * chore: upgrade ko (#9043)
+  * feat: allow specifying a remote config dependency from Google
+    Cloud Storage (#9057)
+  * chore: bump actions/checkout from 3 to 4 (#9067)
+  * chore: update the release script (#9060)
+  * docs: Update changelog for 2.7.0 (#9059)
+  * feat: bazel oci rule support (#9048)
+  * chore: remove refs to deprecated io/ioutil (#9061)
+  * chore: Generate schema version v4beta7 as latest version.
+    (#9054)
+
+-------------------------------------------------------------------
+Thu Sep 14 04:53:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.7.1:
+  * chore: cherry-pick upgrade ko (#9043) to v2.7 (#9089)
+
+-------------------------------------------------------------------
+Tue Sep 05 11:08:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.7.0:
+  * fix: verify flaky tests (#9050)
+  * chore: bump github/codeql-action from 2.21.4 to 2.21.5 (#9053)
+  * fix: save runtime type in artifact json (#9052)
+  * feat: crd status check (#9016)
+  * chore: bump flask from 2.3.2 to 2.3.3 in /integration/examples
+    (#9041)
+  * chore: bump flask from 2.3.2 to 2.3.3 in /examples (#9042)
+  * chore: bump puma from 4.3.12 to 5.6.7 in /examples/ruby/backend
+    (#9036)
+  * chore: bump puma in /integration/examples/ruby/backend (#9037)
+  * feat: enable skaffold render to track telemetry (#9020)
+  * fix: use moby/patternmatcher for dockerignore (#9029)
+  * feat: support url as kustomize file path (#9023)
+  * fix: status check list all events (#9015)
+  * chore: bump github/codeql-action from 2.21.3 to 2.21.4 (#9022)
+  * feat: configure verify and exec commands to emit metrics
+    (#9013)
+  * feat: support overrides in helm renderer (#8966)
+  * fix: ignore unset variables from minikube docker-env (#9018)
+  * fix: Address #9006 (#9008)
+  * docs: update documentation (#9017)
+  * fix: documentation for Helm Template Value (#8991)
+  * chore: upgrade go to 1.21.0 (#8999)
+  * feat: Add Sprig template functions (#9005)
+  * chore: bump github/codeql-action from 2.21.2 to 2.21.3 (#9000)
+  * chore: upgrade go 1.19.10 -> 1.20.7 (#8992)
+  * docs: add example to use cloudrun deployer + local build
+    (#8983)
+  * chore: remove latest tagging from relase process (#8986)
+  * docs: add anchors to yaml paths (#8541)
+  * fix: status check connecting to the wrong context (#8981)
+  * chore: bump github/codeql-action from 2.21.1 to 2.21.2 (#8980)
+  * fix: remote kustomize manifest being watched (#8979)
+  * docs: schema version mapping (#8973)
+  * chore: bump github/codeql-action from 2.21.0 to 2.21.1 (#8975)
+  * fix: Add integration tests for helm namespace (#8965)
+  * fix: edit original file if the given skaffold path is a symlink
+    (#8955)
+  * chore: bump github/codeql-action from 2.20.4 to 2.21.0 (#8964)
+  * fix: verify hangs if event-logs-file does not exist (#8961)
+  * chore: update the way the LTS images are built (#8953) (#8957)
+  * chore: bump ossf/scorecard-action from 2.1.3 to 2.2.0 (#8915)
+  * chore: bump github.com/sigstore/rekor from 1.1.1 to 1.2.0
+    (#8829)
+  * feat: remove condition that checks if an image was built from
+    Skaffold (#8935)
+  * chore:  configure minikube to a static version in github ci
+    (#8951)
+  * chore: bump github/codeql-action from 2.20.3 to 2.20.4 (#8950)
+  * fix: Fix typo in Cloud Run log tailing (#8944)
+  * chore: disable edge image scanning (#8942)
+  * chore: remove duplicate page meta links (#8824)
+  * chore: bump github/codeql-action from 2.20.2 to 2.20.3 (#8937)
+  * chore: bump google.golang.org/grpc (#8932)
+  * chore: bump google.golang.org/grpc in
+    /examples/grpc-e2e-tests/service (#8933)
+  * chore: bump google.golang.org/grpc (#8934)
+  * chore: bump google.golang.org/grpc (#8931)
+  * docs: document cmd template function (#8929)
+  * chore: bump github/codeql-action from 2.20.1 to 2.20.2 (#8928)
+  * chore: push scanning marker tag to remote (#8917)
+
+-------------------------------------------------------------------
+Sun Aug 06 07:52:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.6.3:
+  * chore: remove latest tagging from relase process (#8988)
+
+-------------------------------------------------------------------
+Wed Jul 19 11:11:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.6.2:
+  * chore: update the way the LTS images are built (#8953)
+  * chore:  configure minikube to a static version in github ci
+    (#8951) (#8954)
+
+-------------------------------------------------------------------
+Thu Jul 06 06:56:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.6.1:
+  * chore: save public image tag (#8930)
+
+-------------------------------------------------------------------
+Wed Jun 28 06:12:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.6.0:
+  * release: v2.6.0 (#8921)
+  * feat: support tempalte parameterization for helm (#8911)
+  * feat: implement skaffold delete for docker deployer using
+    docker labels (#8885)
+  * chore: port apply-setter krm function over to skaffold (#8902)
+  * fix: Clean up dev images except the last (#8897)
+  * fix: add docker to the LTS container images (#8905)
+  * chore: bump github/codeql-action from 2.20.0 to 2.20.1 (#8903)
+  * chore: upgrade go version (#8893)
+  * feat: new verify timeout config feature (#8801)
+  * chore: bump github/codeql-action from 1.0.26 to 2.20.0 (#8888)
+  * fix: Go default template doesn't work for tagging (#8881)
+  * fix: #8870 manifest kustomize paths using env var with absolute
+    path (#8877)
+  * fix: condition to not update helm deployer hook patches, is not
+    needed (#8862)
+  * chore: bump schema version to v4beta6 (#8849)
+  * fix: logic to interrupt a k8sjob logs as soon as it fails
+    (#8847)
+  * chore: bump peter-evans/create-or-update-comment from 3.0.1 to
+    3.0.2 (#8865)
+  * fix: Always Pass skaffold binary in post-render to add labels
+    for status-check (#8826)
+  * chore: add lock to jib cache lookup (#8850)
+  * feat: logic to only emit the tags related with verify on
+    `skaffold verify` (#8851)
+  * fix: conditionally drain docker logs on stop to avoid docker
+    deployer to stay in infinite loop (#8838)
+  * fix(ko): Ko builder push vs load behavior (#8845)
+  * chore: update release build script to support internal scanning
+    (#8834)
+  * fix: Replace Kustomize field `patches` in examples (#8757)
+  * test: increase progressDeadlineSeconds timeout to make
+    TestRunUnstableChecked pass (#8833)
+
+-------------------------------------------------------------------
+Mon Jun 12 19:57:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.5.1:
+  * fix: logic to interrupt a k8sjob logs as soon as it fails
+    (#8847) (#8871)
+  * fix: increase progressDeadlineSeconds for TestRunUnstable test
+    and change in baseRef (#8878)
+
+-------------------------------------------------------------------
+Sat May 27 10:46:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.5.0:
+  * release: v2.5.0 (#8823)
+  * docs: doc page for Custom Actions and skaffold exec (#8809)
+  * docs: Fix reference to `dateTime` tagger (#8813)
+  * chore: update various container deps. (#8810)
+  * docs: update skaffold.yaml page to show latest schema version
+    (#8808)
+  * test: disable failing buildpacks tests (#8812)
+  * docs: first pass at adding overrides and jobManifestPath to
+    verify docs (#8762)
+  * chore: add script to update lts dependencies (#8773)
+  * chore: update go deps (#8789)
+  * feat: new k8s task and exec env for custom actions (#8755)
+  * chore: update Dockerfile bin deps (#8774)
+  * chore: bump github.com/cloudflare/circl from 1.1.0 to 1.3.3
+    (#8771)
+  * chore: bump github.com/docker/distribution (#8772)
+  * release: v2.4.1 (#8769)
+  * fix: discard standout from helm dep command to not have
+    corrupted data in output yaml file (#8756)
+  * fix: resolve issue where hack/release.sh wouldn't mark schema
+    as released (#8752)
+  * fix: resolve issues with hack/new-version.sh so it works w/ no
+    manual changes necessary (#8750)
+  * chore: include third_party deps licenses in repo and add check
+    (#8747)
+  * chore: updated examples/ to updated schema version (#8748)
+  * chore: bump flask from 2.3.1 to 2.3.2 in /integration/examples
+    (#8734)
+  * chore: bump flask from 2.3.1 to 2.3.2 in /examples (#8735)
+  * chore: bump flask from 1.0 to 2.2.5 in
+    /examples/hot-reload/python (#8744)
+  * fix: scanning filter not working properly due to version
+    sorting (#8727)
+  * chore: bump peter-evans/create-or-update-comment from 3.0.0 to
+    3.0.1 (#8736)
+  * chore: bump flask in /integration/examples/hot-reload/python
+    (#8738)
+  * chore: bump github.com/sigstore/rekor from 1.0.1 to 1.1.1
+    (#8741)
+  * release: v2.4.0 (#8739)
+
+-------------------------------------------------------------------
+Thu May 11 19:20:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.4.1:
+  * fix: discard standout from helm dep command to not have
+    corrupted data in output yaml file (#8756) (#8761)
+
+-------------------------------------------------------------------
+Thu May 04 04:39:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.4.0:
+  * fix: missing Sessionable ID in exported metrics (#8737)
+  * chore: vendor deps (#8725)
+  * test: comment last line of expected log due to issue #8728
+    (#8729)
+  * release: v2.4.0 (#8726)
+  * fix: new `remove` method in docker client to use in custom
+    actions and don't get the error related with prune (#8710)
+  * chore: increase vulns scanning window (#8723)
+  * docs: Tutorial: Go coverage profiles for e2e tests (#8558)
+  * fix: resolve issue where skaffold logger could hang
+    indefinitely if k8s job pod wasn't created (#8717)
+  * feat: change inspect executionMode list to list all actions
+    exec mode per default (#8719)
+  * chore: bump flask from 2.2.3 to 2.3.1 in /integration/examples
+    (#8706)
+  * chore: bump flask from 2.2.3 to 2.3.1 in /examples (#8707)
+  * feat: new exec command to execute a custom action (#8696)
+  * fix: delete does not working properly (#8702)
+  * feat: extend `inspect jobManifestPaths [list|modify]` to
+    include custom actions info (#8703)
+  * chore: bump google.golang.org/protobuf from 1.29.0 to 1.29.1
+    (#8705)
+  * chore: update go version and related deps to enhance security
+    (#8704)
+  * chore: Update ko builder to use ko v0.13.0 (#8699)
+  * feat: add wait group in docker and k8s job logger to avoid race
+    condition (#8695)
+  * feat: add custom actions execution modes to `inspect
+    executionModes list` (#8697)
+  * chore: remove kaniko NoPush field from skaffold schemas as it
+    does not work currently (#8591)
+  * fix: change util pkg import to use ParseEnvVariablesFromFile
+    (#8700)
+  * feat: support set value file for render (#8647)
+  * docs: update helm renderer docs to use correct manifests vs
+    deploy syntax (#8667)
+  * ci: Use Go 1.20 in GitHub Actions workflows (#8691)
+  * feat: logic to create a new ActionsRunner (#8681)
+  * chore: add v2.0.8 release to CHANGELOG.md (#8685)
+  * feat: new docker exec env and task (#8662)
+  * fix: add curl to skaffold docker image (#8669)
+  * chore: add v2.3.1 release to CHANGELOG.md (#8663)
+  * fix: create new docker network only when the --docker-network
+    flag is not set (#8649)
+  * docs: update templating.md to reflect chartPath addition +
+    minor field fixes (#8661)
+  * fix: update skaffold verify to respect deploy default namespace
+    field (#8660)
+  * feat: better Job support by allowing skaffold to re-apply Jobs
+    by removing child pod label transform (#8659)
+  * feat: custom actions interfaces and actions runner
+    implementation (#8563)
+  * feat: add template support for `chartPath` (#8645)
+  * feat: add new 'skaffold inspect executionModes' command (#8651)
+  * docs: fix typo in render page (#8638)
+  * feat: add support for deployment cancellation and error surface
+    when admission webhook blocks pod skaffold is waiting on
+    (#8624)
+  * feat: read firelog API key from embedded file (#8646)
+  * feat: standarize renders to inject namespace only if
+    --namespace or render specific config is set (#8561)
+  * fix: add the LOG_STREAM_RUN_GCLOUD_NOT_FOUND code in the proto
+    file and run of ./hack/generate-proto.sh (#8644)
+  * chore: bump peter-evans/create-or-update-comment from 2.1.1 to
+    3.0.0 (#8639)
+  * chore: bump github.com/docker/docker (#8636)
+  * feat: extend schema to support customActions stanza (#8616)
+  * fix: deploy to multiple namespaces (#8623)
+  * fix: fix issue where verify would panic if a jobManifestPath
+    with no spec.template.spec.metadata.labels existed (#8618)
+  * fix: remove printing errors from IsKubernetesManifest and
+    change doApply to not use this method but
+    ParseKubernetesObjects to retrieve the error (#8559)
+  * feat: set firelog API key (#8617)
+  * docs: update verify docs to reflect k8s job support (#8601)
+  * chore: bump image deps (#8612)
+  * chore: bump xt0rted/pull-request-comment-branch from 1.4.0 to
+    2.0.0 (#8613)
+  * chore: bump ossf/scorecard-action from 2.1.2 to 2.1.3 (#8614)
+  * fix: use active gcp account (#8584)
+  * docs: minor edits to Cloud Build docs (#8571)
+  * chore: upgrade docker and make integration-in-docker to use
+    docker dependencies from pr (#8596)
+  * chore: restore firelog exporter  (#8555) (#8599)
+  * chore: bump examples/ schema versions (#8607)
+  * feat: helm dependency build on render (#8486)
+  * chore: bump github.com/opencontainers/runc from 1.1.4 to 1.1.5
+    (#8602)
+
+-------------------------------------------------------------------
+Thu Apr 13 09:27:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.1:
+  * fix: update skaffold verify to respect deploy default namespace
+    field (#8660)
+  * chore: upgrade docker and make integration-in-docker to use
+    docker dependencies from pr (#8596)
+  * chore: bump image deps (#8612)
+  * feat: better Job support by allowing skaffold to re-apply Jobs
+    by removing child pod label transform (#8659)
+  * fix: fix issue where verify would panic if a jobManifestPath
+    with no spec.template.spec.metadata.labels existed (#8618)
+  * fix: deploy to multiple namespaces (#8623)
+  * feat: add support for deployment cancellation and error surface
+    when admission webhook blocks pod skaffold is waiting on
+    (#8624)
+  * feat: add new 'skaffold inspect executionModes' command (#8651)
+
+-------------------------------------------------------------------
+Wed Mar 29 05:16:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.0:
+  * release: v2.3.0 (#8593)
+  * Revert "chore: firelog exporter  (#8555)" (#8598)
+  * feat: add 'skaffold inspect jobManifestPath' and 'skaffold
+    transform-schema jobManifestPath' commands (#8575)
+  * Revert "chore: upgrade docker version in skaffold image
+    (#8583)" (#8590)
+  * chore: change verify schema from v1.Container to subset of
+    direct primitive types (#8577)
+  * chore: upgrade docker version in skaffold image (#8583)
+  * chore: fix transformer share configmap issues (#8582)
+  * fix: correctly rewrite /deploy/kubectl/manifests in patch
+    upgrades (#8585)
+  * chore: enhance vuln monitor (#8570)
+  * chore: firelog exporter  (#8555)
+  * fix: improve verify command s.t. os envs not passed through to
+    container envs and instead add a flag for this purpose (#8557)
+  * chore: update cloudbuild config to publish distroless-skaffold
+    image to artifact registry for vulns scanning (#8524)
+  * chore: bump actions/setup-go from 3 to 4 (#8554)
+  * chore: bump rack in /integration/examples/ruby/backend (#8552)
+  * chore: bump rack from 2.1.4.3 to 2.2.6.4 in
+    /examples/ruby/backend (#8553)
+  * Revert "fix: `kubectl create` with `dry-run` shouldn't pass the
+    namespace flag (#8543)" (#8551)
+  * fix: make it so tolerateFailuresUntilDeadline also handles
+    kubectl failures (vs. just parsing kubectl resource status
+    values). (#8549)
+  * chore: upgrade go version in skaffold image (#8540)
+  * fix: `kubectl create` with `dry-run` shouldn't pass the
+    namespace flag (#8543)
+  * chore: Add output flag for diagnose (#8546)
+  * fix: move verify schema changes to v4beta4 and remove it from
+    already released v4beta3 (#8514)
+  * chore: bump snakeyaml from 1.32 to 2.0 in /examples/jib (#8513)
+  * chore: bump snakeyaml in
+    /integration/examples/dev-journey-buildpacks (#8526)
+  * chore: bump snakeyaml from 1.32 to 2.0 in
+    /examples/jib-multimodule (#8531)
+  * chore: bump snakeyaml in /examples/dev-journey-buildpacks
+    (#8532)
+  * chore: bump snakeyaml from 1.32 to 2.0 in /examples/jib-sync
+    (#8528)
+  * chore: bump snakeyaml from 1.32 to 2.0 in
+    /examples/buildpacks-java (#8530)
+  * chore: bump snakeyaml in /integration/examples/buildpacks-java
+    (#8529)
+  * chore: bump snakeyaml in /integration/examples/jib-multimodule
+    (#8527)
+  * chore: bump rack in /integration/examples/ruby/backend (#8505)
+  * chore: bump rack from 2.1.4.2 to 2.1.4.3 in
+    /examples/ruby/backend (#8506)
+  * chore: bump snakeyaml from 1.32 to 2.0 in
+    /integration/examples/jib-sync (#8500)
+  * fix: can't use ctrl-c to terminate building with kaniko at
+    uploading build context stage (#8516)
+  * chore: bump github.com/rjeczalik/notify to get rid of
+    deprecation on darwin (#8502)
+  * chore: bump schema version to v4beta4. Also some misc fixes
+    (#8507)
+  * chore: bump snakeyaml from 1.32 to 2.0 in
+    /integration/examples/jib (#8511)
+  * chore: bump examples to latest released version v4beta3 (#8508)
+  * feat: Whitelist strimzi.io CRDs (#8491)
+  * docs: add tooltip with yaml path in Skaffold yaml reference
+    page (#8477)
+  * feat: add k8s Job support to verify and status check (#8415)
+  * dep: replace dockerignore.ReadAll with github.com/...
+    .../moby/buildkit/frontend/dockerfile/dockerignore.ReadAll
+    (#8488)
+  * fix: add upgrade logic to inject a kubectl deployer when an old
+    kustomize deployer is detected (#8457)
+  * chore: bump golang.org/x/net (#8498)
+  * chore: bump golang.org/x/net from 0.1.0 to 0.7.0 in /hack/tools
+    (#8497)
+
+-------------------------------------------------------------------
+Tue Mar 28 06:12:57 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add subpackages for shell completions
+
+-------------------------------------------------------------------
+Tue Mar 07 05:45:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.2.0:
+  * release: v2.2.0 (#8496)
+  * docs: update _index.md: add `minikube tunnel` command (#8490)
+  * fix: retag multiarch images (#8493)
+  * chore: update CHANGELOG.md with 3 patch releases (#8487)
+  * fix: skaffold render/apply namespace regression in v2 (#8482)
+  * docs: update _index.md (#8484)
+  * feat: support deploying to multiple clusters (#8459)
+  * fix: resolve issue in which skaffold + helm did not properly
+    handle ':' chars in go templating (#8464)
+  * chore: remove validation for kpt version (#8425)
+  * chore: bump golang.org/x/net (#8478)
+  * fix: expand home directory for docker secrets (#8476)
+  * chore: bump golang.org/x/net in
+    /examples/grpc-e2e-tests/service (#8473)
+  * chore: bump golang.org/x/crypto in /hack/tools (#8469)
+  * chore: upgrade kpt to support parameterization (#8470)
+  * chore: remove unnecessary code comments (#8350)
+  * chore: add docs to explain keep-running-on-failure (#8446)
+  * fix: output cause of kubernetes manifest parsing error vs
+    generic message (#8463)
+  * chore: delete unused helm fields and methods from v1 -> v2
+    migration (#8461)
+  * chore: bump golang.org/x/text in
+    /examples/grpc-e2e-tests/service (#8468)
+  * chore: bump golang.org/x/text (#8467)
+  * chore(deps): bump actions/upload-artifact from 3.1.1 to 3.1.2
+    (#8304)
+  * chore: bump golang.org/x/text (#8466)
+  * chore: bump golang.org/x/text (#8465)
+  * docs: follow-ups to builders page refactor (#8449)
+  * chore: Update skaffold base image (#8460)
+  * chore: golang.org/x/net from 0.6.0 to 0.7.0 (#8451)
+  * docs: add missing space (#8450)
+  * chore: change skaffold base image (#8433)
+  * chore: add more krm functions to allowList (#8445)
+  * chore(deps): bump github.com/containerd/containerd from 1.6.15
+    to 1.6.18 (#8444)
+  * docs: add Python 3.11 not currently supported but coming soon
+    info (#8435)
+  * chore(deps): bump flask from 2.2.2 to 2.2.3 in
+    /integration/examples (#8442)
+  * chore(deps): bump flask from 2.2.2 to 2.2.3 in
+    /examples (#8443)
+  * chore: upgrade dependencies (#8431)
+  * fix: not inject `metadata.namespace` in manifests rendered
+    with kustomize (#8409)
+  * fix: change log level to Info so
+    `skaffold render --output=render.yaml` produces same output as
+    `skaffold render &> render.yaml` for helm with OCI registry
+    (#8341)
+  * chore: upgrade go in dockerfile (#8420)
+  * docs: restructure builders docs (#8426)
+  * chore: bump pack version used in skaffold pack image (#8428)
+  * chore: bump schema version to v4beta3 (#8421)
+  * docs: update upgrade.md to reflect helm hooks support change
+    (#8419)
+  * feat: parameterization  (#8365)
+  * docs: fix issue where debug.md link was not rendered properly
+    (#8412)
+  * fix: prevent long startup time (#8376)
+  * refactor: replace 4d63.com/tz with time/tzdata (#8408)
+  * feat: define `skaffold.env` file for loading environment
+    variables (#8395)
+  * chore(deps): bump peter-evans/create-or-update-comment (#8404)
+  * fix: resolve issue where verify validation did not properly
+    validate uniqueness across all modules (#8373)
+  * docs: add IMAGE_DIGEST_* as well to *.tag docs examples (#8402)
+  * docs: add more detail to Cloud Run deployer page (#8381)
+  * fix: envTemplate is not working with command template and
+    output with spaces (#8393)
+  * docs: Upgrade hugo and docsy versions to enable collapsible nav
+    (#8398)
+  * fix: resolve issue where verify incorrectly failed when run
+    with multiple modules where any module didn't have verify test
+    cases (#8369)
+  * fix: resolve issue where kubectl Flags.Apply namespace flag
+    usage would fail (#8351)
+  * chore: bump examples to v4beta2 after v2.1.0 release (#8355)
+  * feat: add timeout for copying build context on kaniko (#8329)
+  * feat: add support for remote docker over ssh (#8349)
+  * chore(deps): bump rack from 2.1.4.1 to 2.1.4.2 in
+    /examples/ruby/backend (#8332)
+  * test: integration test for helm render with OCI repo (#8352)
+  * chore(deps): bump rack in /integration/examples/ruby/backend
+    (#8331)
+
+-------------------------------------------------------------------
+Tue Jan 24 08:43:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.1.0:
+  * fix: resolve issue where skaffold version would print nothing (#8353)
+  * release: v2.1.0 (#8343)
+  * chore: update skaffold image deps based on lts policy (#8347)
+  * docs: add status check documentation for new tolerateFailuresUntilDeadline config field (#8337)
+  * docs: remove `log tailing` from note of unsupported features for Cloud Run (#8344)
+  * chore: add v1.39.5 changelog info (#8346)
+  * chore: add v2.0.5 changelog info (#8345)
+  * feat: add ingore-path kaniko flag support (#8340)
+  * feat: add keep-running-on-failure-implementation (#8270)
+  * docs: update cloudrun docs to include log streaming and Job support (#8338)
+  * fix: Handle StatefulSets with an OnDelete update strategy (#8292)
+  * fix: add proper artifactOverrides->setValueTemplates conversion when upgrading from v2beta29 (#8335)
+  * chore: unskip TestFix* integration tests (#8334)
+  * doc: Updating installation link for Cloud Code in VSCode (#8326)
+  * fix: use new URL format for Google Cloud Build log (#8323)
+  * feat: add new inspect namespaces list command to skaffold (#8309)
+  * feat: include gcloud alpha and beta components in Docker images, needed for cloud run log steaming and port forward (#8314)
+  * fix: resolve issue where skaffold always added namespace to rendered manifests (#8312)
+  * fix: use release namespace in render when specified (#8259)
+  * chore: support-external-cmd-call-in-template (#8296)
+  * docs: update docs for new `runtimeType` field (#8298)
+  * docs: remove duplicate maturity entry for Cloud Run Deployer (#8280)
+  * feat: allow specifying debug runtime in `skaffold.yaml` for artifact (#8295)
+  * fix: write maximum of 200 metrics per session (#8294)
+  * docs: Update Quickstart and Tutorials pages with new Skaffold onboarding walkthrough (#8274)
+  * chore(deps): bump ossf/scorecard-action from 2.1.1 to 2.1.2 (#8278)
+  * feat: get image digest from container logs for kaniko builder (#8264)
+  * chore: make iterative status check default to true (#8212)
+  * chore: add v2.0.4 information to CHANGELOG.md (#8273)
+  * docs: remove extraneous 'F' in 'Depending' (#8271)
+  * feat: more meaningful error message for kustomize issues: #8218 (#8220)
+  * fix: resolve issue where skaffold would not add digest when using helm in v1 -> v2 migration case (#8269)
+  * fix: correct issue where skaffold setTemplateValues env vars were in some cases empty (#8261)
+  * chore(deps): bump ossf/scorecard-action from 2.1.0 to 2.1.1 (#8266)
+  * chore(deps): bump ossf/scorecard-action from 2.0.6 to 2.1.0 (#8238)
+  * fix: remove kubecontext check warning from kubectl deploy (#8256)
+  * test: use `T.Setenv` to set env vars in tests (#8258)
+  * fix: scanning ignored files in dev session (#8249)
+  * fix: always override `skaffold.dev/run-id` label. (#8236)
+  * feat: new `--auto` flag (#8202)
+  * docs: update `build-artifacts` flag description (#8211)
+  * chore: change integration test default repo to a dedicated testing repo (#8197)
+  * fix: add v2 to module path (#8169)
+  * docs: missing `}` in docs/environment/templating.md (#8232)
+  * chore: don't stop on failed cleanup (#8209)
+  * fix: validate whether kubeContext is blank or not (#8230)
+  * docs: how-to default values for template variables (#8229)
+  * chore: move docs to docs-v1 to make the dir contents more clear AND add some missing refs to docs-v2 in tests (#8215)
+  * fix: kpt validators link to render properly (#8217)
+  * fix: expand namespace with env variables (#8222)
+  * chore: updated github workflows to more gracefully handle cancel-in-progress (#8214)
+  * docs: Update _index.md (#8205)
+  * feat: add life cycle hooks to Cloud Run deployer (#8173)
+  * fix: `generate-man.sh` should update docs-v2 (#8213)
+  * feat: enable --tag flag in render command (#8199)
+  * feat: changing messages when no artifacts are detected to watch, generate tags, or to check if exist on local cache (#8208)
+  * Revert "chore: re-enable TestBuildKanikoInsecureRegistry gcp test (#8196)" (#8210)
+  * chore: fix latest label misplaced issue (#8195)
+  * chore: re-enable gcp tests (#8198)
+  * chore: update error message for build failure due to failed image push (#8201)
+  * chore: re-enable TestBuildKanikoInsecureRegistry gcp test (#8196)
+  * docs: update templated fields docs to reflect recent changes (#8176)
+  * feat: remove jdk from slim image deps (#8179)
+  * chore: bump schema version to v4beta2 (#8187)
+  * chore: update CHANGELOG.md to include v2.0.3 (#8184)
+  * fix: allow transformer values to contain ':' (#8178)
+  * fix: support alternative env var naming using support env variable + artifact-name (vs env variable + index) (#8175)
+  * chore: fix doc edit url (#8174)
+  * fix: integration-test cleanup (#8118)
+  * chore: optmize github action (#8171)
+  * docs: update helm docs to reflect new prioritization and changes to setValueTemplates (#8164)
+  * fix: support alternative env var naming using support env variable + artifact-name (vs env variable + index) (#8147)
+  * chore: add log-streaming and cloud-run-proxy gcloud components in release dockerfile (#8156)
+  * fix: properly wire deploy.kubectl.defaultNamespace field to be set in SKAFFOLD_NAMESPACES (#8129)
+  * fix: change to make buildFlatMap support arrays as YAML values (#8152)
+  * docs: remove TODOs from resource selector docs (#8165)
+  * fix: new condition to create hydrate-dir only if a kpt renderer or deployer (#8117)
+  * chore: remove pined python version when installing gcloud (#8153)
+  * chore: fix github workflow linux unit diagnostics tests run command (#8145)
+  * fix: correct recently released schemas to have correct schema field key (#8141)
+  * chore: fix profile patch validation against original config (#8138)
+  * fix: use http://json-schema.org/draft-07/schema# in JSONSchema v7 as value for $schema key (#7387)
+  * fix: bump skaffold slim image deps (#8132)
+  * fix: pin github actions to ubuntu 20.04 to avoid python + gcloud issues (#8136)
+  * chore: repartition integration test (#8106)
+  * fix: always add namespaces in generated manifests regardless of offline=[true|false] (#8124)
+  * docs: update docs with fixes for helm, quickstart and install pages (#8101)
+  * chore: remove resolved or obsolete TODO, etc. code comments (#8125)
+  * docs: Add code samples to v2 info sidebar (#8119)
+  * chore: bump skaffold image deps (#8113)
+  * fix: gcp jib-gradle test (#8112)
+  * feat: implement cleanup for Cloud Run Jobs (#8096)
+  * docs: add link to Cloud Run YAML reference in deployer doc (#8104)
+  * fix: examples schema check failing (#8108)
+  * feat: Add support for Cloud Run services to stream logs (#8012)
+  * chore: bump skaffold container images jdk version to JDK 17 (#8103)
+
+-------------------------------------------------------------------
+Sat Jan 21 07:41:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.5:
+  * fix: add proper artifactOverrides->setValueTemplates conversion when upgrading from v2beta29 (#8335)
+  * fix: use release namespace in render when specified (#8259)
+
+-------------------------------------------------------------------
+Wed Dec 21 19:13:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.4:
+  * fix: resolve issue where skaffold would not add digest when using helm in v1 -> v2 migration case
+  * fix: use python 3.9 in integration-linux.yml
+  * chore: remove hack/check-samples.sh and hack/check-schema-changes.sh from patch releases
+  * fix: remove python2.7 pin from integration-linux.yml
+  * fix: remove kubecontext check warning from kubectl deploy (#8256)
+  * fix: expand namespace with env variables (#8222)
+  * fix: properly wire deploy.kubectl.defaultNamespace field to be set in SKAFFOLD_NAMESPACES (#8129)
+  * fix: new condition to create hydrate-dir only if a kpt renderer or deployer (#8117)
+  * fix: correct issue where skaffold setTemplateValues env vars were in some cases empty (#8261)
+  * fix: support alternative env var naming using support env variable + artifact-name (vs env variable + index)
+  * release: v2.0.2 (#8102)
+  * docs: add detailed information on how to use helm rendering with v2.X.Y as well as how post-renderer usage works (#8093)
+  * fix: correct issues with current upgrade logic for artifactOverrides with helm imageStrategy + multiple-images (#8066)
+  * chore: reduce gcp integration test time (#8080)
+  * feat: completion for the Fish shell (#8097)
+  * refactor: use exclude directives instead of replace directives for pinning (#8056)
+  * chore: remove uncessary server bins (#8092)
+  * fix: add unique tag to test image to avoid collisions with other tests using the same image (#8087)
+  * fix: resolve issue where skaffold filter command did not properly configure the filter allow & deny lists (#8085)
+  * fix: override protocols argument pass to helm post-renderer (#8083)
+  * chore: update changelog.md to include v1.39.4 (#8078)
+  * chore: update examples/* repos to use v3 schema (revert 3f82f13b02117f823694125d7149bca06a8d64f3) (#8079)
+  * chore: update examples/* repos to use v4beta1 schema (#8065)
+
+-------------------------------------------------------------------
+Fri Dec 02 06:43:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.3:
+  * fix: support alternative env var naming using support env variable + artifact-name (vs env variable + index)
+
+-------------------------------------------------------------------
+Thu Nov 17 06:17:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.2:
+  * release: v2.0.2 (#8102)
+  * docs: add detailed information on how to use helm rendering with v2.X.Y as well as how post-renderer usage works (#8093)
+  * fix: correct issues with current upgrade logic for artifactOverrides with helm imageStrategy + multiple-images (#8066)
+  * chore: reduce gcp integration test time (#8080)
+  * feat: completion for the Fish shell (#8097)
+  * refactor: use exclude directives instead of replace directives for pinning (#8056)
+  * chore: remove uncessary server bins (#8092)
+  * fix: add unique tag to test image to avoid collisions with other tests using the same image (#8087)
+  * fix: resolve issue where skaffold filter command did not properly configure the filter allow & deny lists (#8085)
+  * fix: override protocols argument pass to helm post-renderer (#8083)
+  * chore: update changelog.md to include v1.39.4 (#8078)
+  * chore: update examples/* repos to use v3 schema (revert 3f82f13b02117f823694125d7149bca06a8d64f3) (#8079)
+  * chore: update examples/* repos to use v4beta1 schema (#8065)
+  * release: v2.0.2 (#8061)
+  * feat: add --tolerate-failures-until-deadline flag and deploy.tolerateFailuresUntilDeadline config for improved ci/cd usage (#8047)
+  * fix(sec): upgrade runc version v1.0.2 -> v1.1.2 (#8050)
+  * docs: update skaffold examples and documentation to properly reflect v1 ->v2 artifactOverrides changes - 2nd attempt (#8019)
+  * Linked to the Google Cloud Solutions Template (#8054)
+  * chore(deps): bump some .github/workflows deps (#8051)
+  * feat: add support for deploying Cloud Run Jobs. (#7915)
+  * fix: use default signal package over custom code and delete tests (#8046)
+  * chore: update examples/getting-started to go 1.19 (#8043)
+  * fix: docker image push to kind cluster (#8007)
+  * chore: update workflow files (#8001)
+  * fix: log duplications when using multiple deployers (#8042)
+  * fix: cleanup not called when using helm deployer alone (#8040)
+  * fix: Avoid nil context error (#8038)
+  * chore(doc): note that filesync works for debug (#8044)
+  * fix: preserve configs order when creating renderers and deployers (#8028)
+  * docs: update skaffold.gliffy diagram with updated information for skaffold v2 (#8035)
+  * fix: properly add RemoteManifests support to skaffold v2 (#8036)
+  * feat: add skipTests to ignore helm test directory on manifest generation (#8011)
+  * chore: bump skaffold schema version to v4beta1 (#8034)
+  * feat: context copy retry. If we add a for loop and execute the kubectlcli.Run method for copying context to kaniko pod , this makes more reliable and less prune to network failures (#7887)
+  * docs: migrate v2 docs -> skaffold.dev and v1 docs -> skaffold-v1.web.app (#7966)
+  * feat: Add an example e2e test environment / e2e tests for GRPC service. (#7932)
+  * fix: add description to StatusCheck TaskEvent (#8017)
+  * feat: new dockerfiles and cloudbuild config for slim image (#7996)
+  * chore: add v1.39.3 release CHANGELOG.md entry (#7991)
+  * fix: not print error message if it is empty (#8005)
+  * docs: update skaffold examples and documentation to properly reflect v1 ->v2 artifactOverrides changes (#8013)
+  * chore: upgrade jib plugin versions to 3.3.1 (#8003)
+  * chore: make syncstore generic (#8000)
+
+-------------------------------------------------------------------
+Sat Oct 29 07:07:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.1:
+  * release: v2.0.1 (#7999)
+  * fix: revert "fix: no longer pass os env vars through to verify as this can cause unexpected issues with PATH, GOPATH, etc (#7949)" (#7998)
+  * chore: set v3 schema as the first schema shown on v2 doc site (#7982)
+  * fix: stderr of "helm template" not printed (#7986)
+  * docs: Fix helm command (#7987)
+  * chore: bump version deps (#7969)
+  * docs: Add a copy of the buildpacks node tutorial without a skaffold.yaml (#7968)
+  * chore(deps): bump peter-evans/create-or-update-comment (#7974)
+  * chore(deps): bump actions/upload-artifact from 3.1.0 to 3.1.1 (#7973)
+  * chore: bump examples/* to apiVersion: skaffold/v3 (#7970)
+
+-------------------------------------------------------------------
+Fri Oct 21 10:55:28 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.0:
+  * release: v2.0.0 (#7963)
+  * fix: resolve regression where skaffold v2 would not respect configured kubectl context namespaces (#7965)
+  * chore: create skaffold/v3 schema (#7960)
+  * chore: add generic `util.Ptr` function (#7961)
+  * chore: update project to use go 1.19.1  (#7871)
+  * fix: reverse order of deployers during cleanup (#7284) (#7925)
+  * chore(deps): bump peter-evans/create-or-update-comment (#7946)
+  * chore: update skaffold verify to GA maturity (#7950)
+  * chore: update skaffold v2 docs to point reference v2.0.0 and not v2.0.0-beta* (#7948)
+  * fix: no longer pass os env vars through to verify as this can cause unexpected issues with PATH, GOPATH, etc (#7949)
+  * docs: update skaffold v2 intro text to have correct expanded scope (#7953)
+  * docs: update v1 and v2 docs to properly reflect recent tagger changes (#7952)
+  * docs: Update _index.md (#7951)
+  * fix: kpt render with subdirectories (#7909)
+  * docs: Fix v1 and v2 docs links (#7931)
+  * docs: Add new inputDigest tagger alias to customTemplate tagger (#7939)
+  * fix: Cloud Code log viewer shows render stage correctly (#7937)
+  * fix: allow `init` without `render` and `deploy` (#7936)
+  * docs(ko): Design proposal: Hot reloading in dev (#7888)
+  * fix: add inputDigest tagger alias to customTemplate tagger (#7867)
+  * chore: update skaffold Dockerfiles to pull from approved GCS buckets vs open internet (#7921)
+  * docs: Add banner to v1 and v2 docs indicating that v1 is archived (#7920)
+  * chore: update cross and multi-platform build maturity (#7928)
+  * docs: Add version menu label (#7917)
+  * chore: change survey prompt frequency (#7912)
+  * fix: ensure project descriptor in Pack Build (#7884)
+  * fix: resolve issue where helm render did not respect --namespace flag (#7907)
+  * docs: Add examples to the info sidebar (#7906)
+  * chore(deps): bump ossf/scorecard-action from 2.0.3 to 2.0.4 (#7898)
+  * chore: update Google API client libraries (#7903)
+  * chore: move deploy error codes to render error codes (#7893)
+  * fix: images being pushed with same tags overwriting each other (#7900)
+  * chore: use cmp.Diff to check for differences (#7896)
+  * chore(examples): update Spring Boot to 2.7.4 and SnakeYAML 1.32 (#7895)
+  * docs: use relref shortcode to fix links (#7890)
+  * docs: add cloud deploy info to skaffold ci-cd docs (#7880)
+  * chore: enable platform flag in render command and fix integration tests against arm cluster (#7885)
+  * fix: deploy integration test image builds need to be multi-platform since we're testing against 3 types of k8s clusters (#7882)
+  * docs: Add an example for helm chart with multiple images (#7874)
+  * test: Add multi platform integration tests (#7852)
+  * Beta3 docs (#7879)
+  * fix: copy dependencies to a new slice to prevent mutation affecting the cache value (#7875)
+  * release: v2.0.0-beta3 (#7878)
+  * fix: remove RenderConfig and fix manifests issues with multi-config (#7877)
+  * docs: add kpt manifest.transform|validate functionality examples (#7870)
+  * chore: skip buildpacks integration test if being run on arm cluster (#7869)
+  * chore: update `Ingress` manifests (#7861)
+  * chore(deps): bump ossf/scorecard-action from 2.0.0 to 2.0.3 (#7858)
+  * Fix incorrect default set for project for jib (#7857)
+  * add: added service account to cloud build config (#7843)
+  * fix: adjust set namespace logic (#7841)
+  * chore: remove unnecessary rerender from devloop, and use the pre-rendered result from r.DeployManifest instead (#7845)
+  * chore: change `jib.from.image` to multi-arch image (#7849)
+  * chore(deps): bump ossf/scorecard-action from 1.1.2 to 2.0.0 (#7853)
+  * fix: remove Cloud Run location validation for commands that do not connect to Cloud Run (#7847)
+  * chore: adding status check phase with v2 taskEvent (#7846)
+  * chore: transform installation of go-licenses from go-get to go install (#7794)
+  * fix: add remote image support to verify (#7835)
+  * docs: fix small typo in v2.0.0-beta2 release changelog (#7832)
+  * chore: upgrade jib versions to 3.3.0 (#7831)
+  * chore: add render lifecycle hook highlight to changelog (#7829)
+  * docs: update v2 docs to have up to date v2.0.0-beta2 links (#7828)
+  * release: v2.0.0-beta2 (#7826)
+  * fix: helm template warnings breaking yaml parsing (#7825)
+  * fix: Remove the flag from deploy command (#7823)
+  * fix: Fill IMAGE_TAG,etc on Docker builds (#7788)
+  * chore: add-arm-build-integration-test (#7818)
+  * fix: add host platform metric to platform type events (#7821)
+  * feat: upgrade profiles when running skaffold fix (#7800)
+  * fix: check platform values for known OS and Arch, and fail fast (#7817)
+  * feat: add profile support to skaffold verify (#7807)
+  * fix: add auth to image pull (#7814)
+  * feat: add hooks support to render schema and phase (#7785)
+  * added apply to --rpc-port and --rpc-http-port definedons (#7799)
+  * fix: make helm renderer to use manifest.ManifestList (#7795)
+  * fix: add node unschedulable to retriable errors (#7798)
+  * chore: raise error when there is a multiplatform build without container registry (#7786)
+  * feat: add toleration for GKE ARM nodes (#7789)
+  * chore: safe type assersions (#7770)
+  * fix: remove required tag from cloud run region (#7784)
+  * chore: add-render-event-in-runner (#7781)
+  * refactor: remove v1 runner interfaces and simplify code  (#7724)
+  * docs: add missing v1.39.0 and v1.39.1 changelog.md release info (#7777)
+  * fix: render should be online for `dev`, `deploy` and `run`. (#7768)
+  * fix: add error code for cross-platform build failure (#7765)
+  * fix: add flags for build platform selection heuristics (#7769)
+  * chore: unit test for CreateManifestList (#7772)
+  * feat(ko): Inferred file sync for ko static assets (#7728)
+  * fix: improve multi-arch docs (#7767)
+  * fix: `make preview-docs` failing due to missing v2 link (#7766)
+  * feat: implement creating `ManifestList` from single platform images (#7745)
+  * feat: cross-platform build support in GoogleCloudBuild (#7739)
+  * fix: enable node platform affinity definition for `dev`, (#7743)
+  * fix: skaffold build fails when attempting to COPY an empty dir (#6851)
+  * chore(deps): bump flask from 2.2.1 to 2.2.2 in /examples (#7760)
+  * chore(deps): bump flask from 2.2.1 to 2.2.2 in /integration/examples (#7761)
+  * docs: multi-platform docs (#7758)
+  * fix: remove typo in manifests error message (#7750)
+  * docs: add skaffold verify feature maturity (#7751)
+  * feat: Write out artifact cache with successful builds even on task failure #5892 (#7394)
+  * docs: update the skaffold v2 verify sample to have correct url (#7748)
+  * docs: update the skaffold v2 verify docs to have working sample (#7747)
+  * fix: render `offline` flag should disable image platform lookup (#7740)
+  * docs: update the skaffold v2 verify docs to explain only CLI available atm (#7746)
+  * docs: fix accidental windows and docker tab removal in v2 install docs (#7744)
+  * chore(deps): bump flask from 2.2.0 to 2.2.1 in /integration/examples (#7742)
+  * chore(deps): bump flask from 2.2.0 to 2.2.1 in /examples (#7741)
+  * docs: fix skaffold verify docs with proper image reference (#7738)
+  * release: v2.0.0-beta1 (#7736)
+  * docs: add new docs-v2 'upgrading from skaffold v1' docs section (#7737)
+  * docs: helm render docs and few fixes (#7734)
+  * docs: add initial docs for Cloud Run Deployer (#7733)
+  * chore: update skaffold-v2 docs site cb job endpoint and separate docs pipelines (#7735)
+  * chore: update skaffold-v2 docs site to be created per pr for beta->GA period (#7732)
+  * fix: Don't add kubectl deployer when cloud run deployer present.  (#7731)
+  * fix: fix v3alpha*.json generation, v3alpha1 schema and misc schemas fixes (#7730)
+  * fix: add cloud run deployer nil check (#7729)
+  * feat: fix render and deploy when using kustomize and helm deployer. (#7723)
+  * use absolute paths to the container_image.tar in bazel build. (#7671)
+  * docs: update docs-v2 'installing skaffold' to match skaffold v2.0.0-beta1 installation instructions (#7727)
+  * feat: respect CLI flag in skaffold render (#7664)
+  * feat: Remove duplicate kustomize config (#7719)
+  * docs: update skaffold render to reflect current skaffold v2 status (#7717)
+  * docs: add v3alpha1.json schema to docs-v2/ (#7720)
+  * chore(deps): bump flask from 2.1.3 to 2.2.0 in /integration/examples (#7722)
+  * chore(deps): bump flask from 2.1.3 to 2.2.0 in /examples (#7721)
+  * fix: update changelog generation code to support skaffold v2 (#7718)
+  * fix: retagging an image index (#7703)
+  * feat: Support multiple renderer render in skaffold dev and skaffold run (#7697)
+  * fix: disallow `tryImportMissing` for multi-arch images (#7706)
+  * chore: support artifactOverrides schema functionality from v2beta* in v3alpha* (#7707)
+  * feat: add flags for Cloud Run configuration (#7694)
+  * fix: update deployers documentation to match with current skaffold v2 behavior (#7713)
+  * fix: Remove duplicate config from latest skaffold config (#7658)
+  * fix: multiple renderers clean up isue (#7699)
+  * feat: add image platform `nodeAffinity` definition to render output (#7684)
+  * refactor: change ptr *manifest.ManifestByConfig to struct (#7698)
+  * fix: Artifact type not set for upgraded config (#7692)
+  * fix: Fix standalone pods and deployment health check pending. (#7691)
+  * chore: update skaffold deps digests (#7695)
+  * feat: add verify validation to check tests exist on standalone command usage (#7688)
+  * chore: update skaffold deps image dependencies to latest approved releases (#7689)
+  * fix: updated typo and links that weren't rendering correctly (#7682)
+  * feat: Log Cloud Run details in event log (#7679)
+  * feat(ko): Init support for the ko builder (#7666)
+  * fix: Properly clean up and restart port forwarding for Cloud Run (#7663)
+  * fix: examples/* to use go 1.18 (vs 1.15) to match integration/examples and fix breakages (#7665)
+  * fix: skaffold delete command and cleanup function (#7657)
+  * fix: default to builder supported platform with a warning instead of erroring. (#7659)
+  * fix: skaffold render correct output when using helm renderer (#7654)
+  * fix: group renderers and deployers per config file (#7572)
+  * feat(ko): GCB remote builds for ko builder (#7650)
+  * fix: support running multiple verify tests with same image (#7645)
+  * feat: Add `clearCache` option for buildpacks (#7641)
+  * feat: add validation to verify container names to mirror k8s deployment validation (#7646)
+  * chore(deps): bump flask from 2.1.2 to 2.1.3 in `/integration/examples/buildpacks-python` (#7642)
+  * feat: allow requiring all activations when auto-activating profiles (#7619)
+  * fix: handle skaffold label in Cloud Run revision template (#7630)
+  * fix: index out of range error (#7592)
+  * docs: fix broken skaffold.dev gRPC API link for v1 skaffold.proto (#7626)
+  * fix: make gcr.io/buildpacks/builder:v1 default buildpacks builder; (#7629)
+  * chore: remove opt.skipRender flag and update doc (#7625)
+  * fix: change log level of kaniko pod deletion error (#7621)
+  * docs: update grpc docs to include cloud run error codes (#7627)
+  * test: diag.ContainerError.Make method (#7598)
+  * fix: handle project id correctly for cloud run deploy (#7618)
+  * test: cover the case when diag.Run encounters error (#7599)
+  * chore: Replace deprecated ioutil pkg with os & io (#7590)
+  * feat: add MuteRender functionality (#7611)
+  * docs: add missing templatable field (#7612)
+  * chore: use rbac.authorization.k8s.io/v1 (#7588)
+  * chore: Remove render from deployer inteface (#7603)
+  * feat: adding support for supplying manifests with url (#7578)
+  * chore(deps): bump ossf/scorecard-action from 1.1.1 to 1.1.2 (#7601)
+  * fix: verify now supports fully qualified image names, would error prior (#7575)
+  * Trigger draft release flow on v1 branch
+  * fix: update code and examples to properly work with v2alpha29 (#7581)
+  * fix: switch cloud run deployer to prefer project in Skaffold manifest over Cloud Run manifest (#7579)
+  * chore: unskip `TestDeployCloudRun` (#7573)
+  * doc: remove image building from the render command decription (#7569)
+  * Feat: Implement Services Port Forwarding for Cloud Run (#7556)
+  * feat: add `hostPlatform` and `targetPlatforms` (#7550)
+  * chore: fix flaky test -TestDevAutoSyncAPITrigger (#7553)
+  * feat: skaffold Init with v2 skaffold config (#7515)
+  * fix: unskip tests in samples_test.go and get them passing (#7548)
+  * fix: unskip tests in apply_test.go and get them passing (#7547)
+  * chore: re-enable/integration/dev_test  (#7510)
+  * docs: include proper docs for api v2 (#7539)
+  * fix: plumb manifests through Apply to get functionality working (#7527)
+  * chore: revert "chore: re-enable-integration/build_cluster_test" (#7541)
+  * fix: unskip tests in render_test.go and get them passing (#7536)
+  * chore: re-enable-integration/build_cluster_test (#7529)
+  * feat: add helm renderer and update helm render integration tests (#7444)
+  * fix: get TestDev_WithDependencies passing and unskip the test (#7532)
+  * fix: unskip tests in versions_test.go and get them passing (#7535)
+  * fix: resolve windows TestDockerCLICheckCacheFromArgs error (#7534)
+  * chore: re-enable tests in integration/sync_test.go (#7511)
+  * chore: re-enable tests in port_forward_test.go (#7523)
+  * chore: re-enable integration/custom_test (#7509)
+  * chore: re-enable-integration/rpc_test (#7508)
+  * chore: re-enable integration/test_events_test.go (#7528)
+  * chore: re-enable integration/filter_test (#7512)
+  * chore: re-enable integration/diagonose test (#7507)
+  * chore: re-enable-integration/test_test.go (#7524)
+  * chore: re-enable-integration/housekeeping_messages_test.go (#7530)
+  * fix: delete and Cleanup now have manifests plumbed through (#7521)
+  * feat: add hidden flag --fast-fail-status-check to allow toggling on/off the fast-fail behavior for status checking (#7520)
+  * feat: add warning message when no pods are matched for an image doing sync (#7448)
+  * chore: skip failing tests until fixed for v2 (#7516)
+  * chore: re-enableintegration/deploy_test, update test config (#7468)
+  * feat: handle minikube exit code 89 (#7502)
+  * fix: partition GCP integration tests (#7501)
+  * chore: re-enable cache_test (#7500)
+  * chore: fix integration run test (#7467)
+  * chore(deps): bump ossf/scorecard-action from 1.1.0 to 1.1.1 (#7498)
+  * chore: reenable-build_gcb_test (#7499)
+  * chore: fix-TestRunRenderOnly test (#7470)
+  * chore(deps): bump actions/upload-artifact from 3.0.0 to 3.1.0 (#7435)
+  * fix: Fix broken markdown (#7463)
+  * chore: update CODEOWNERS (#7450)
+  * chore(deps): bump ossf/scorecard-action from 1.0.4 to 1.1.0 (#7445)
+  * chore(deps): bump rack from 2.1.4 to 2.1.4.1 in /examples/ruby/backend (#7452)
+  * chore(deps): bump rack in /integration/examples/ruby/backend (#7453)
+  * chore: remove debug logging from verify command (#7439)
+  * Fix broken link to anchor (#7433)
+  * feat: upgrade pack CLI dependency (#7438)
+  * chore: revert test runMode, uncomment debug_test/helm (#7432)
+  * feat: Add helm init images for multiple services project (#7421)
+  * fix: update helm label render logic and refactor test (#7359)
+  * fix: running skaffold from a directory other than repository root (#7430)
+  * fix: render v2 for multi-config projects (#7418)
+  * chore: rename folder testdata/gcb-with-location (#7422)
+  * chore: remove hydrationDir from kubectl renderer (#7426)
+  * feat: allow specifying args to be passed to kustomize build (#7414)
+  * fix: correct render output;  render func parameters (#7416)
+  * feat: Add region configuration for gcb (#7411)
+  * docs: use `image` instead of `imageKey` to improve consistency in Helm documentation (#7407) (#7420)
+  * fix: integration/sync_file tests (#7408)
+  * chore: disable TestDebugEventsRPC_StatusCheck (#7412)
+  * feat: Initial implementation of Cloud Run deployer (#7391)
+  * fix: `apply` not using config set `kubeContext` or `statusCheck` (#7403)
+  * chore: fix TestDockerDebug integration test (#7397)
+  * fix: update pkg/webhook to support previewing v2 docs site from github label (#7396)
+  * fix: TestModules integration tests (#7399)
+  * fix: change error to warning for build platform (#7402)
+  * fix: fetch images by platform tag when using` --platform` (#7393)
+  * feat: implement first round of `skaffold fix` for v2beta28 to v3alpha1 config (#7383)
+  * docs: Fix #can-images-be-debugged-without-the-runtime-support-images link (#7384)
+  * chore: update render and deploy documentation to properly reflect v2 functionality (#7377)
+  * docs: fix ko multi-platform example (#7389)
+  * fix: Update Golang-based examples to use go.mod (#7361)
+  * feat: helm init without artifact image overrides. (#7350)
+  * feat: support the contextSubPath param in the Kaniko Artifact (#7334)
+  * chore: include fs/assets/check.txt in .gitignore (#7372)
+  * chore(deps): bump flask from 2.1.1 to 2.1.2 in /examples (#7353)
+  * ci: introduce scorecard gh action for security scanning (#7373)
+  * chore: setup docs-v2 and webhook-v2 forks that deploy to skaffold-v2.web.app and skaffold-v2-latest.web.app (#7374)
+  * Update result.go (#7362)
+  * ci: fix and reenable `TestControlAPIManualTriggers` (#7371)
+  * ci: reenable TestRunTail integration test (#7370)
+  * ci: fix vulnerability in performance comparison script (#7365)
+  * feat: add new skaffold verify command and verify phase (#7328)
+  * chore: reenable TestDeployTailDefaultNamespace (#7363)
+  * release: v1.37.2 (#7360)
+  * chore(deps): bump flask from 2.1.1 to 2.1.2 in /integration/examples (#7352)
+  * fix: cloud build for using private workerpool (#7347)
+  * fix: properly update 'label' field for helm + render w/ -l flag (#7349)
+  * chore(deps): bump github/codeql-action from 1 to 2 (#7338)
+  * chore: Fix render and deploy  (#7329)
+  * refactor: replace statik with embed (#7339)
+  * fix: do not replace every string matching image names (#7282)
+  * fix: Update skaffold-kustomize-args.yaml (#7332)
+  * fix: default digest-source to tag for local clusters (#7333)
+  * feat: allow using env vars for deploy.helm.releases[].repo field (#7321)
+  * fix: find and prioritize WORKSPACE.bazel (#7308)
+  * fix: filters the containers that have already been processed instead of pods (#7323)
+  * fix: change type of BuildpackArtifact.Volumes (#7324)
+  * chore: Add test for filter command (#7317)
+  * fix: set build concurrency correctly for multi-config projects (#7314)
+  * chore: remove second v3 schema (#7313)
+  * chore: Add cluster type to exported metrics. (#7312)
+  * fix: make TestDevPortForwardDefaultNamespace pass (#7306)
+  * revert: "chore: PR to update pull request template" (#7303)
+  * chore: merge v2-v1.37.0 into main (#7242)
+
+-------------------------------------------------------------------
+Wed Sep 07 11:15:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.39.2:
+  * release: v1.39.2
+  * fix: do not replace every string matching image names (#7591)
+
+-------------------------------------------------------------------
+Tue Jun 28 06:25:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.39.1:
+  * release: v1.39.1 (#7596)
+  * fix: index out of range error (#7593)
+  * release: v1.39.1 (#7586)
+  * Revert helm 3.0 and 3.1 deployer changes. (#7585)
+
+-------------------------------------------------------------------
+Fri Jun 24 06:14:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.39.0:
+  * release: v1.39.0 (#7580)
+  * feat: add `hostPlatform` and `targetPlatforms` (#7550) (#7559)
+  * feat: Add privateWorkerPool and location configuration for gcb (#7440)
+  * chore: skip config in v2 package when generating new schema, add v2beta29 version schema (#7436)
+  * feat: [V1] Add helm3.1deployer no op (#7423)
+  * refactor: rename helm.Deployer to helm.Deployer3 to prepare for helm.Deployer31 (#7415)
+  * docs: use `image` instead of `imageKey` to improve consistency in Helm documentation (#7407)
+  * fix: change error to warning for build platform (#7402) (#7404)
+  * fix: fetch images by platform tag when using` --platform` (#7393)
+  * feat: add tests (#7319)
+  * chore: [v1] cherry pick the fix to collect cluster type on v1 branch (#7316)
+  * ci: update permissions for verify-examples GitHub actions (#7291)
+  * fix: fix kubectl result formatting for debug logs (#7293)
+  * chore: remove `v1` config package and move it to `latest` package. (#7290)
+  * chore(deps): bump actions/setup-go from 2 to 3 (#7283)
+  * fix: add default value for status-check flag when no value is specified (#7278)
+  * fix: add panic fix and recovery logic to reflection for yaml line number info (#7276)
+
+-------------------------------------------------------------------
+Thu Apr 14 20:14:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.0:
+  * release: v1.38.0
+  * chore: PR to update pull request template (#7268)
+  * fix: fix bazel-out path for `rules_docker-0.23.0` (#7251)
+  * chore: update go version in actions that weren't specifying go 1.17 (#7263)
+  * doc: document command-line restrictions for Go and Python (#7260)
+  * chore: bump jib plugin versions (#7256)
+  * docs: add skaffold config for init example in pipeline-stages (#7077)
+  * chore(deps): bump flask from 2.1.0 to 2.1.1 in /examples (#7253)
+  * chore(deps): bump flask from 2.1.0 to 2.1.1 in /integration/examples (#7252)
+  * chore(deps): bump puma from 4.3.11 to 4.3.12 in /examples/ruby/backend (#7245)
+  * chore(deps): bump puma from 4.3.11 to 4.3.12 in /integration/examples/ruby/backend (#7246)
+  * chore: add v1.37.1 release to github release page (#7244)
+  * chore(deps): bump flask from 2.0.3 to 2.1.0 in buildpacks-python example (#7239)
+  * ci: pass `IT_PARTITION` variable when running `make integration-in-docker` (#7226)
+  * fix: change GCB backoff check to use error code instead of checking the error (#7213)
+  * chore(ko): Upgrade `ko` dependency to v0.11.2 (#7224)
+  * fix: fix skaffold label setter to work properly for cnrm resources (#7221)
+  * fix(examples/typescript): use tsc-watch --noClear to keep previous logs (#7227)
+  * fix: Unmarshaling nested arrays of objects (#7217)
+  * fix: add missing Argo CronWorkflow to transforms (#7205)
+  * chore: remove maven-wrapper.jar and regenerate Maven wrappers (#7220)
+  * chore(deps): bump peter-evans/create-or-update-comment from 1.4.5 to 2 (#7215)
+  * chore(deps): bump actions/cache from 2 to 3 (#7210)
+
+-------------------------------------------------------------------
+Thu Mar 31 07:04:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.37.1:
+  * fix: fix skaffold label setter to work properly for cnrm resources (#7221)
+
+-------------------------------------------------------------------
+Fri Mar 18 10:30:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.37.0:
+  * fix: update helm binary digest to 3.8.0 digest (#7201)
+  * release: v1.37.0
+  * refactor: Use new logrus.Logger instead of default (#7193)
+  * fix: ignore concurrency if not specified (#7182)
+  * site: support nested tabs (#7195)
+  * feat: add basic metrics for resource selector usage (#7192)
+  * docs: fix skaffold resource selector docs (#7187)
+  * docs: fix bad link to docker deployer page (#7188)
+  * WIP: Update the default value of the parameters in the vulnerability monitoring CB job. (#7173)
+  * docs: Add Docker port-forwarding note (#7176)
+  * feat: Allow Confluent-for-Kubernetes types to be transformed (#7179)
+  * docs: add docs for new skaffold resourceSelector configuration (#7174)
+  * WIP: only report the vulnerability of the LTS images with last patch version. (#7167)
+  * feat: add metrics related to cross-platform build (#7172)
+  * feat: allow and deny list support for schema field overwriting (namely label and image fields atm) (#7056)
+  * fix: `make install` works for Mac M1 (#7159)
+  * chore(deps): bump github.com/containerd/containerd from 1.5.8 to 1.5.9 (#7151)
+  * fix: choose cli default-repo over config file (#7144)
+  * feat: add better support and messaging around using helm with skaffold apply (#7149)
+  * chore: cleanup default namespace deployment (#7148)
+  * chore(deps): bump actions/checkout from 2 to 3 (#7150)
+  * fix: warn instead of fail for multi-arch builds (#7145)
+  * chore: upgrade to helm 3.8.0 for experimental oci support (#7147)
+  * feat: cross-platform support with kaniko builder (#7142)
+  * docs: Remove references to XXenableJibInit and XXenableBuildpacksInit from init docs (#7108)
+  * docs: make noCache option more clear (#7141)
+  * docs: cross platform build support in GCB (#7140)
+  * fix: specifying platforms in ko builder (#7135)
+  * feat: implement cross-platform support for GCB build env (#7134)
+  * fix: `make preview-docs` should run on Mac M1 (#7136)
+  * docs: refresh DEVELOPMENT.md (#7129)
+  * Fix typo in warning message (#7138)
+  * chore: bump schema version to v2beta28 (#7130)
+  * feat(lsp): add validation checking to lsp (#7097)
+  * Revert "build: 30 min timeout for integration tests (#6684)" (#7128)
+  * feat: implement cross-platform support for jib builder (#7110)
+  * fix: correctly handle excluded profiles (#7107)
+  * fix: buildkit and custom output (#7024) (#7120)
+  * docs: Make explicit that user needs to change PROJECT_ID (#7068)
+  * fix: always reset cached repo if sync is true (#7069)
+  * chore(deps): bump github.com/docker/distribution (#7105)
+  * chore: Update ROADMAP.md (#7115)
+  * fix: parsing alternative config filename `skaffold.yml` by supporting absolute paths in `config.ReadConfiguration` (#7112)
+  * chore(deps): bump puma from 4.3.9 to 4.3.11 in ruby example (#7117)
+  * feat: add argo workflows kinds to transformable allow list (#7102)
+  * chore(deps): bump flask version from 2.0.2 to 2.0.3 in buildpacks-python example (#7116)
+  * fix: correctly set the default value of `StatusCheck` to nil (#7089)
+  * docs: add section on deactivating profiles (#7100)
+
+-------------------------------------------------------------------
+Thu Mar  3 08:21:17 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.36.1
+  Note: This is a patch release to v1.36.0 with some security fixes. Most users don't need to use this version, rather continue with the latest semantic version available.
+
+-------------------------------------------------------------------
+Thu Feb 10 10:07:57 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.36.0:
+  * release: v1.36.0 (#7093)
+  * docs: document cross-platform build support (#7090)
+  * fix: use go 1.17.x in verify-examples github action (#7088)
+  * fix: failing windows UT (#7091)
+  * fix: dont update last-prompted if check-update is false (#7067)
+  * feat(logs): allow user config for parsing json application logs when using kubernetes deployers (#7074)
+  * feat: implement cross-platform build support for local docker builder & custom builder
+  * chore: update go.mod go directive and go mod tidy (#7061)
+  * feat(kustomize): Template `paths` (#7049)
+  * chore: install gke-gcloud-auth-plugin in skaffold images (#7060)
+  * feat: update to buildpacks/pack v0.23.0 (#6979)
+  * feat(tag): validate generated/provided tag (#7042)
+  * fix: Helm: uninstall: Release not loaded #5414 (#7045)
+  * fix: include registry for `docker login` and `gcloud auth configure-docker` (#7037)
+  * ci: ensure build_deps:latest and build_deps:latest-lts are pushed on change (#7038)
+  * ci: use consistent go build paths caching (#7044)
+  * chore: update Jib versions to 3.2.0 in examples (#7040)
+  * fix: Allow apply of manifests without file name restrictions (#6871) (#6914)
+  * fix: integration test skaffold config (#7025)
+  * feat(validations): add line number output skaffold to validation errors (#7003)
+  * feat(deps): Update Skaffold images to Go 1.17.3 (#7028)
+  * fix: allow quotes on base image tags in Dockerfiles (#7027)
+  * feat: fetch default-repo from local cluster (#6985)
+  * fix(ko): Debug port forwarding for `ko://` images (#7009)
+  * feat: add 'branches' git tag variant (#7006)
+  * fix: unblock cloud build edge builds (#7014)
+  * fix(labelling): hotfix for issues related to deploy erroring due to nested yaml field overriding in StatefulSet w/ PVC (#7011)
+  * fix(ko): Default repo for pushing `ko://` images (#7010)
+  * ci: fix lts image build (#7000)
+  * fix: add godoc to Fs var in config.go (#7004)
+  * refactor(configlocations): make yamlinfos field private (#7005)
+  * feat(lsp): add virtual file system support to ReadConfiguration and use this in LSP for buffer files and lint (#6977)
+  * feat(lint): added lib for getting yaml line #s for a given schema struct, sub-element and sub-fields.  supports patches & profiles (#6955)
+  * feat: allow specifying hook command directory (#6982)
+  * doc: add some detail to local clusters and minikube docker (#6993)
+  * update: new config version v2beta27 (#6981)
+  * feat: monitor OS vulnerability in Skaffold LTS images. (#6964)
+  * fix: limit number of simultaneous taggers to GOMAXPROCS (#6976)
+  * fix:  correct $SKIP_TEST env for custom builder (#6984)
+  * fix: bugs for skaffold.yaml files read in via stdin (#6970)
+  * feat: add multi-level-repo support to arbitrary repositories beyond just GCR and AR (#6915)
+  * docs: small typo "Skaffold knows to build" (#6967)
+  * fix: report build failures inline for failed concurrent builds (#6911)
+  * doc(debug): add why breakpoints may fail and clean up manual configuration (#6893)
+  * fix: modify error handling of SyncerMux#Sync (#6934)
+  * fix: Log kaniko errors that happen during the tar phase (#6901)
+  * feat(ko): Enable templating of `labels` and `env` (#6944)
+  * fix: distinguish docker build errors from streaming errors (#6910)
+  * fix: don't send error in skaffoldLogEvent if error is nil (#6945)
+  * test: modules integration tests (#6899)
+  * ci: remove cross compilation step of cloud build job (#6956)
+  * feat(lint): add end line and col support to lint (#6926)
+  * ci: add kokoro scripts for releases (#6906)
+  * feat(lsp): add new command skaffold lsp and working lsp functionality w/ lint rules (#6873)
+  * fix(ko): Do not print image name to stdout (#6928)
+  * fix: s/kubeclt/kubectl/ typo in kubectl errors (#6938)
+  * fix: docker build for artifact with cliFlags should use docker CLI (#6930)
+  * refactor(lint): remove unused regexp linter (#6923)
+  * feat: allow caching from built artifact on local Docker build (#6904)
+  * refactor: remove vestiges of parsing release info text from helm deployment (#6913)
+  * feat: ignore vim *.swp files in hot-reload example (#6895)
+  * docs: address comments from #6898 (#6900)
+  * docs: update status-check supported resource types (#6898)
+  * docs: link Cloud Code `Run on Kubernetes` guide in `skaffold dev` guide page (#6897)
+  * docs: fix typo in file name (#6887)
+  * docs: reorder `skaffold debug` docs (#6894)
+  * fix: correct English wording in error message (#6890)
+  * docs: link Cloud Code how-to guides (#6879)
+  * doc: add details on tryImportMissing (#6880)
+  * doc: address newcomer confusion when joining k8s slack channel (#6881)
+  * chore(deps): bump containerd and opencontainers/images-spec (#6876)
+  * fix(ko): Do not add `-trimpath` when debugging (#6874)
+  * fix: apply cmd should run `kubectl create --dry-run` to get the `ManifestList` (#6875)
+  * docs: separate quickstart guides (#6869)
+  * docs: link cloud code support for updating skaffold.yaml files (#6866)
+  * ci: update draft release to caps
+
+-------------------------------------------------------------------
+Sat Jan 29 15:28:25 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use fixed build date for reproducible builds (boo#1047218)
+
+-------------------------------------------------------------------
+Wed Jan 26 08:07:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.35.2:
+  * patch release v1.35.2
+  * fix(labelling): hotfix for issues related to deploy erroring due to nested yaml field overriding in StatefulSet w/ PVC (#7011)
+  * fix: unblock cloud build edge builds (#7014)
+  * ci: fix lts image build (#7000)
+  * release v1.35.1 : patch release v1.35.1
+  * fix(ko): Do not add `-trimpath` when debugging (#6874)
+  * fix: apply cmd should run `kubectl create --dry-run` to get the `ManifestList` (#6875)
+  * release: v1.35.0 (#6868)
+  * chore(deps): update to kompose 1.26 (#6865)
+  * docs: link to Cloud Code in github README (#6864)
+
+-------------------------------------------------------------------
+Wed Jan 26 07:55:24 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package skaffold: Easy and Repeatable Kubernetes Development

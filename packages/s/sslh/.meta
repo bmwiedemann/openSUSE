@@ -1,0 +1,6 @@
+<package name="sslh" project="openSUSE:Factory">
+  <title>sslh - ssl/ssh multiplexer</title>
+  <description>sslh lets one accept both HTTPS and SSH connections on the same port. It makes it possible to connect to an SSH server on port 443 (e.g. from inside a corporate firewall) while still serving HTTPS on that port.</description>
+  <devel project="security" package="sslh"/>
+  <url>http://www.rutschle.net/tech/sslh.shtml</url>
+</package>

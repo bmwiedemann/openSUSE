@@ -1,0 +1,5 @@
+<package name="dwayland" project="openSUSE:Factory">
+  <title>Wayland library for DDE</title>
+  <description>DWayland is a Qt-style API to interact with the wayland-client and wayland-server API.</description>
+  <devel project="X11:Deepin" package="dwayland"/>
+</package>

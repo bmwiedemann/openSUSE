@@ -1,0 +1,5 @@
+<package name="osmo-sgsn" project="openSUSE:Factory">
+  <title>osmo-sgsn</title>
+  <description></description>
+  <devel project="network:telephony" package="osmo-sgsn"/>
+</package>

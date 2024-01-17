@@ -1,0 +1,5 @@
+<package name="perl-Linux-DesktopFiles" project="openSUSE:Factory">
+  <title>A very fast Perl module for parsing the Linux desktop files</title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Linux-DesktopFiles"/>
+</package>

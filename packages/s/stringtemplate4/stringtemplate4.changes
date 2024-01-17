@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue Sep 19 17:00:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.3.3
+  * Issues fixed
+    + Loading template group from STGroupDir in app running on
+      Tomcat 8 fails
+    + Trailing slash on the root dir leads to an IOException when
+      calling URL.openstream()
+  * Improvements, features
+    + Shift to Linux DCO
+    + Bazel support
+    + Fix for NPE when Thread.currentThread().getContextClassLoader()
+      is null
+    + Add license to pom.xml
+    + Fix escaping for closing angle brackets
+    + Correctly handle surrogate pairs in StringRenderer.encodeHTML
+    + Updating scala documentation to be more idiomatic and work
+      with ST4
+    + Add test for TypeRegistry
+- Modified patch:
+  * stringtemplate4-generated-sources.patch
+    + regenerate in cycle with antlr3 reproducible build changes
+
+-------------------------------------------------------------------
+Tue Mar 22 14:13:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Thu Jun  4 07:14:18 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Ugrade to version 4.3
+- Modified patch:
+  * stringtemplate4-generated-sources.patch
+    + regenerate
+
+-------------------------------------------------------------------
+Sun Nov 24 16:43:41 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify maven.compiler.release to fix build with jdk9+ and newer
+  maven-javadoc-plugin
+
+-------------------------------------------------------------------
+Sun Nov  3 12:01:10 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrede to version 4.2
+
+-------------------------------------------------------------------
+Thu Sep 12 06:17:29 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of stringtemplate4 4.0.8 as multibuild

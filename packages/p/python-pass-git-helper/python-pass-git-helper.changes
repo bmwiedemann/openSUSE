@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Sat Sep  2 19:21:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.4.0:
+  - added ${protocol} var
+  - enable defining password_store_dir per mapping
+
+-------------------------------------------------------------------
+Sat May 28 23:12:19 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.0:
+  - support Python 3.10 (292d9fc)
+  - don't leak Python exceptions to the user (4415d7e), closes
+    #38
+  - Adds an encoding configuration per pass entry (fixes #27 +
+    #29) and includes some code cleanup (#30).
+  - Adds support for the ${username} replacement in the
+    configuration file. For details, refer to #11. Thanks to
+    @somasis for the feature.
+  - This version adds more flexibility for selecting the username
+    from an entry. Different strategies have been implemented to
+    realize different needs such as searching for a line matching
+    a given regular expression. The readme file explains the
+    configuration in detail.
+  - The host of a request can now be used as a variable to
+    construct a the entry of the password store. This allows
+    wildcard entries dispatching to any number of file system
+    entries in the password store.
+
+-------------------------------------------------------------------
+Sat May 28 22:58:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for pass-git-helper 0.3.0.

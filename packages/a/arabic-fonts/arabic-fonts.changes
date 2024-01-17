@@ -1,0 +1,204 @@
+-------------------------------------------------------------------
+Mon Mar 18 21:50:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize $RPM_* shell vars and shell logic to generate BDFs.
+
+-------------------------------------------------------------------
+Sat Apr 29 15:08:06 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Mon Feb 20 23:07:30 UTC 2017 - jengelh@inai.de
+
+- Update amiri subpackage to 0.109
+  * New glyphs:
+  * A new stylistic set (ss06) to avoid automatically
+    adding ◌ّٰ above لله.
+  * A localised &.
+  * U+1EEF0 ARABIC MATHEMATICAL OPERATOR MEEM WITH HAH WITH
+    TATWEEL (𞻰).
+  * U+1EEF1 ARABIC MATHEMATICAL OPERATOR HAH WITH DAL (𞻱).
+  * Adding missing forms of U+06C2.
+
+-------------------------------------------------------------------
+Mon Sep 21 06:30:55 UTC 2015 - pgajdos@suse.com
+
+- updated to 0.108
+* New glyphs:
+    - New design of ﻩ in <200d>ﻪﻳ combination.
+    - Alternate numbers for use in fractions, accessible with the OpenType
+      features `numr` and `dnom`.
+    - The new Arabic Extended-A vowel marks, in the range U+08E4–08FE.
+    - Redesign the U+06C1 forms to make it distinctive from U+06BE.
+    - Add “ﺞﻟ ﺝﻼﻠﻫ” symbol, U+FDFB.
+
+* Fixes:
+    - No longer replace two successive *fatha*, *damma* or *kasra* with a
+      sequential *tanween* form, the characters U+08F0, U+08F1 and U+08F2
+      should be used instead.
+    - Many kerning improvements.
+    - Workaround a bug in Core Text (Mac OS X text layout engine) that break
+      the ﻞﻠﻫ ligature.
+    - All forms of U+06BA are now dotless, per Unicode standard.
+    - Initial and medial forms of U+063E, U+063F, U+077A and U+077B were
+      missing.
+    - The dots in initial and medial forms of U+06BD should be inverted.
+
+* New fonts:
+    - A coloured version of the Amiri Quran font that gives the vowels and
+      Quranic annotation marks distinctive colours. This font uses the new
+      `COLR`/`CPAL` font tables which are currently supported only by Firefox
+      (all platforms) and MS Internet Explorer/Edge (Windows 8.1 and above).
+    - The webfonts now include WOFF 2.0 files as well.
+
+-------------------------------------------------------------------
+Tue May 13 06:40:46 UTC 2014 - pgajdos@suse.com
+
+- fixed url for arabic-amiri-fonts package
+
+-------------------------------------------------------------------
+Mon May 12 05:50:19 UTC 2014 - pgajdos@suse.com
+
+- Amiri font updated to 0.107
+  * New glyphs:
+   - Arabic math letters from Arabic Mathematical Alphabetic Symbols block
+     (U+1EE00–U+1EEFF).
+   - Optional support for placing the kasra below the shadda, with “ss05”
+     feature.
+   - Missing proportional LTR digits in the slanted font.
+
+  * Fixes:
+   - Reverted the lowering of marks above wide isolated glyphs, it made the marks
+     look weird relative to other ones.
+   - Fixed the position of marks above qaf of ﻖﺣ.
+   - Dropped the special combination in ﺖﻤﺧ<200d> when it is follow vowelled as
+     it was too crowded.
+   - Fixed the position of sukun over shadda.
+   - Fixed the side bearings of ﺙﺭ, ﺚﻧ and sisters so that the dots do not clash
+     with preceding glyphs.
+   - Positive kerning between ﻡﺮﻴﻧ and likes.
+   - Slight kerning between the period and closing quotes.
+   - Made sure the italic European digits are really tabular.
+- package regular font instead of webfonts
+
+-------------------------------------------------------------------
+Wed Jun 26 08:56:48 UTC 2013 - pgajdos@suse.com
+
+- new font: Amiri 0.106 [bnc#825961]
+
+-------------------------------------------------------------------
+Mon Jun 24 14:44:04 UTC 2013 - pgajdos@suse.com
+
+- arabic-fonts splitted into subpackages [bnc#825954]
+- new font: KacstOne 5.0 [bnc#825955]
+- %if-0-out Haydar and Nesf2 family because of missing license
+  specification
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:49 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 15 10:42:16 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  See the license file. This is _not_ public domain. Also, use SPDX
+  (http://www.spdx.org) format
+
+-------------------------------------------------------------------
+Wed Feb  1 12:44:15 UTC 2012 - pgajdos@suse.com
+
+- renamed to arabic-fonts
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Thu Apr  8 18:27:31 CEST 2010 - tiwai@suse.de
+
+- remove unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Wed Jan 14 13:03:28 CET 2009 - mfabian@suse.de
+
+- bnc#465330: update also ae_fonts (ttf) to 2.0.
+
+-------------------------------------------------------------------
+Mon Jan 12 14:54:46 CET 2009 - mfabian@suse.de
+
+- bnc#465330: update kacst fonts to 2.0.
+
+-------------------------------------------------------------------
+Fri Aug 04 17:24:29 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts/ in STABLE (paths changed
+  because of the move to Xorg X11R7).
+
+-------------------------------------------------------------------
+Wed Mar 01 13:27:56 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(ar)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 13 15:09:35 CET 2005 - mfabian@suse.de
+
+- update Kacst fonts to 1.6.2.
+- add ae_fonts1_ttf_1.1
+
+-------------------------------------------------------------------
+Fri Dec 03 18:50:15 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts"
+
+-------------------------------------------------------------------
+Mon Sep 13 16:44:40 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45156: add "Provides: scalable-font-ar".
+
+-------------------------------------------------------------------
+Tue Aug 17 18:39:38 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #39451: run SuSEconfig.fonts only if it exists
+
+-------------------------------------------------------------------
+Tue Aug 17 18:18:19 CEST 2004 - mfabian@suse.de
+
+- add freetype2, freetype2-devel to neededforbuild
+  (bdftopcf needs libfreetype).
+
+-------------------------------------------------------------------
+Thu Mar 18 18:43:31 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+
+-------------------------------------------------------------------
+Tue Feb 17 12:29:24 CET 2004 - ro@suse.de
+
+- fix typo in specfile
+
+-------------------------------------------------------------------
+Sat Feb 14 04:13:53 CET 2004 - mfabian@suse.de
+
+- don't build as root
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Thu May 29 00:27:08 CEST 2003 - mfabian@suse.de
+
+- new package: fonts-arabic version 0.20030528

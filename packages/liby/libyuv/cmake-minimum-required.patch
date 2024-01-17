@@ -1,0 +1,18 @@
+Old cmake versions had bugs when linking executables
+(namely incorrectly adding -rdynamic on commandline)
+This adds runtime bloat and is bad packaging practice.
+Cmake defaults to this buggy behaviour for compatibility reasons
+if the script claims it is written for an old version.
+
+--- libyuv-20230517+a377993/CMakeLists.txt.old	2023-05-17 02:23:24.000000000 +0200
++++ libyuv-20230517+a377993/CMakeLists.txt	2023-05-21 00:13:39.072391800 +0200
+@@ -2,8 +2,8 @@
+ # Originally created for "roxlu build system" to compile libyuv on windows
+ # Run with -DTEST=ON to build unit tests
+ 
++CMAKE_MINIMUM_REQUIRED( VERSION 3.7.1 )
+ PROJECT ( YUV C CXX )	# "C" is required even for C++ projects
+-CMAKE_MINIMUM_REQUIRED( VERSION 2.8.12 )
+ OPTION( UNIT_TEST "Built unit tests" OFF )
+ 
+ SET ( ly_base_dir	${PROJECT_SOURCE_DIR} )

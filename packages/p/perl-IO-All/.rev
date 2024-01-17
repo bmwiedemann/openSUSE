@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4f2c6fcf58895cdc3604856032d382d4</srcmd5>
+    <version>0.44</version>
+    <time>1325006049</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97592</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4f2c6fcf58895cdc3604856032d382d4</srcmd5>
+    <version>0.44</version>
+    <time>1340183858</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>4f2c6fcf58895cdc3604856032d382d4</srcmd5>
+    <version>0.44</version>
+    <time>1359109703</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>abdef8b756a85de2154f7b5832b29b2d</srcmd5>
+    <version>0.46</version>
+    <time>1370517824</time>
+    <user>coolo</user>
+    <comment>- updated to 0.46
+ - Added an example for -&gt;assert and fixed the \E warnings on 5.16, courtesy shlomi fish</comment>
+    <requestid>177482</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>abdef8b756a85de2154f7b5832b29b2d</srcmd5>
+    <version>0.46</version>
+    <time>1379663709</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a438fc4716055c1d4f1304ab1118941c</srcmd5>
+    <version>0.59</version>
+    <time>1394451773</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225393</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e3d34dd409d0d87ead4ffa50c739cafc</srcmd5>
+    <version>0.60</version>
+    <time>1395750336</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227175</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e3d34dd409d0d87ead4ffa50c739cafc</srcmd5>
+    <version>0.60</version>
+    <time>1409302331</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>71db026b897f4b4029da1d874f6a1603</srcmd5>
+    <version>0.79</version>
+    <time>1410967510</time>
+    <user>coolo</user>
+    <comment>- updated to 0.79
+  - Doc enhancement. PR/51. @nheinric++
+ 
+ 0.78 Thu Aug 28 11:56:36 PDT 2014
+  - Release to steal indexing back from Alt::IO::All::new.
+ 
+ 0.77 Tue Aug 26 12:37:29 PDT 2014
+  - Add new overloads from PR/49 @ginzel++
+ 
+ 0.76 Tue Aug 19 16:21:05 PDT 2014
+  - Relplace tabs with spaces
+ 
+ 0.75 Sat Aug 16 16:41:13 PDT 2014
+  - Change testdir to t
+ 
+ 0.74 Sat Aug 16 16:03:33 PDT 2014
+  - Fix strict/warnings
+ 
+ 0.73 Sat Aug 16 15:35:55 PDT 2014
+  - Remove 'use 5.x.x' from code
+ 
+ 0.72 Sat Aug 16 11:19:00 PDT 2014
+  - Meta 0.0.2
+ 
+ 0.71 Sat Aug 16 03:45:11 PDT 2014
+  - Eliminate spurious trailing whitespace
+ 
+ 0.70 Sat Aug 16 02:08:08 PDT 2014
+  - Eliminate File::Basename from test/</comment>
+    <requestid>249276</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>65eec3aad939893427bab4c3fdbb671b</srcmd5>
+    <version>0.86</version>
+    <time>1429107953</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296649</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1e7e201d5ecf3ee21c247498c1b8c213</srcmd5>
+    <version>0.87</version>
+    <time>1503925479</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514097</requestid>
+  </revision>
+</revisionlist>

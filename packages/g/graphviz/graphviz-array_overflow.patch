@@ -1,0 +1,19 @@
+---
+ lib/common/htmltable.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: lib/common/htmltable.c
+===================================================================
+--- lib/common/htmltable.c.orig	2014-04-13 22:40:25.000000000 +0200
++++ lib/common/htmltable.c	2014-05-23 00:01:41.203062717 +0200
+@@ -300,8 +300,8 @@ static void doBorder(GVJ_t * job, htmlda
+ 	    gvrender_polyline(job, AF+2, 4);
+ 	    break;
+ 	case BORDER_TOP|BORDER_LEFT|BORDER_BOTTOM :
+-	    AF[5] = AF[1];
+-	    AF[6] = AF[2];
++	    AF[4] = AF[1];
++	    AF[5] = AF[2];
+ 	    gvrender_polyline(job, AF+3, 4);
+ 	    break;
+ 	case BORDER_LEFT|BORDER_BOTTOM|BORDER_RIGHT :

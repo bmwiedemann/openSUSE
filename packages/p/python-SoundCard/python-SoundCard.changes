@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Mon Aug 29 03:52:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.4.2: 
+  * adds compatibility with NixOS library naming (Thank you, shithead!)
+  * fixes deprecation for Python 3.10 (Thank you, Nekyo!)
+  * fixes deprecation in recent Numpy
+
+-------------------------------------------------------------------
+Wed Aug 25 08:51:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.1:
+  * fixes freezing bug on Linux during startup
+  * improves error reporting on Linux
+  * fixes crash due to use-after-free on Linux
+  * fixes unicode error on Windows
+
+-------------------------------------------------------------------
+Fri Feb 26 11:08:45 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build the python36 flavor on TW since numpy is a build
+  dependency and it doesn't support python 3.6 anymore.
+
+-------------------------------------------------------------------
+Thu Feb 25 11:38:10 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require the pulseaudio-daemon capability instead of the
+  pulseaudio package, so alternative implementations can be used
+  (boo#1182730).
+
+-------------------------------------------------------------------
+Tue Jul 21 05:39:41 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.0:
+  * fixes silent recordings on Windows
+  * get and set the pulseaudio program name on Linux
+  * fixes error with unicode soundcard names on Windows
+  * adds support for pyinstaller (v4)
+  * adds compatibility with Windows 7
+
+-------------------------------------------------------------------
+Mon Dec  2 17:11:34 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.3.3
+  * Fix attribute error when accessing stream state
+  * adds experimental support for exclusive mode on Windows
+  * adds latency hints to the documentation
+  * fix exception when monitor is default pulseaudio device
+  * fixes deprecation warning
+  * fixes missing dtype declaration
+  * fixes sample rate conversion on macOS
+  * fixes silence recording on macOS 
+  * makes mainloop a global singleton
+  * remove useless declaration and call to _pa_stream_get_buffer_attr()
+
+-------------------------------------------------------------------
+Thu Mar 28 14:09:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to source release
+- Update to 0.3.0:
+  * Various docu updates
+  * Support python 3.5
+
+-------------------------------------------------------------------
+Thu Jan  3 21:34:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- README not needed anymore, license is in wheel
+
+-------------------------------------------------------------------
+Sat Dec 22 20:53:21 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.2.2
+  * adds Sphinx/Readthedocs documentation
+- Update to 0.2.1
+  * adds bug fix for IPython on Windows (Thank you, Sebastian Michel!)
+
+-------------------------------------------------------------------
+Tue Nov  6 11:06:17 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove information from description that is subject to be out of
+  date anytime, as well as development process instructions.
+
+-------------------------------------------------------------------
+Mon Nov  5 15:11:47 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Some wording cleanups.
+
+-------------------------------------------------------------------
+Wed Oct 31 05:02:27 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

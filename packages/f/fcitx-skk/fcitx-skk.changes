@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sat Dec  2 05:43:18 UTC 2017 - i@marguerite.su
+
+- update version 0.1.4
+  * port to qt5
+- add patch qt5-version.patch
+
+-------------------------------------------------------------------
+Sat May 30 16:33:21 UTC 2015 - i@marguerite.su
+
+- update version 0.1.2
+  * candidate selection key config
+
+-------------------------------------------------------------------
+Mon Jun  9 05:08:26 UTC 2014 - i@marguerite.su
+
+- update version 0.1.1
+  * Fix github issues fcitx/fcitx-skk#2
+
+-------------------------------------------------------------------
+Sat Oct 26 15:30:14 UTC 2013 - i@marguerite.su
+
+- initial version 0.1.0
+  * inspired by Ubuntu users complaining IBus 1.5 is useless
+

@@ -1,0 +1,6 @@
+<package name="yast2-trans" project="openSUSE:Factory">
+  <title>YaST2 - Translation Container Package</title>
+  <description>This is a container package.  Its only purpose is to build the
+yast2-trans-LL and yast2-trans-LL_CC packages as subpackages.</description>
+  <devel project="YaST:Head" package="yast2-trans"/>
+</package>

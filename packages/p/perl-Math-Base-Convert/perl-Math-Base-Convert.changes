@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Tue Jan 17 13:59:26 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to allow for reproducible builds
+
+-------------------------------------------------------------------
+Mon Nov  9 09:53:25 UTC 2015 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Math-Base-Convert/Changes
+
+  0.11  Thu Oct 22 15:31:10 PDT 2015
+  	fix one more typo
+  
+  0.10  Wed Oct 21 19:56:19 PDT 2015
+  	finish the typo corrections started in 0.09, sigh...
+  
+  0.09  Wed Oct 21 18:53:44 PDT 2015
+  	corrected numerous typos thanks to patch by
+  	gregor herrmann <gregoa@debian.org>
+
+-------------------------------------------------------------------
+Tue Oct  6 11:29:17 UTC 2015 - coolo@suse.com
+
+- initial package 0.08
+ * created by cpanspec 1.78.08
+

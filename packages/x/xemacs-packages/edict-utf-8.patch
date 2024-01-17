@@ -1,0 +1,21 @@
+packages/mule-packages/edict/CVSだけに発見: Base
+packages/mule-packages/edict/CVSだけに発見: Baserev
+diff -ru packages.orig/mule-packages/edict/edict.el packages/mule-packages/edict/edict.el
+--- packages/mule-packages/edict/edict.el	2002-01-31 11:08:35.000000000 +0100
++++ packages/mule-packages/edict/edict.el	2003-08-23 23:57:05.000000000 +0200
+@@ -181,11 +181,12 @@
+  "The variable edict-version contains a string that describes
+  what version of the edict software that you are running.")
+ 
+-(defcustom edict-default-coding-system 'euc-jp
++(defcustom edict-default-coding-system 'utf-8
+   "Default coding system for reading dictionary files.
+ 
+-On Unix systems, EDICT is distributed as an EUC file.  For Windows systems
+-'shift_jis is may be preferable."
++On SuSE Linux >= 9.0, EDICT is distributed as an 'utf-8 encoded file.
++For SuSE Linux <= 8.2 or other Linux like systems, 'euc-jp may be used
++for EDICT. For Windows systems 'shift_jis is may be preferable."
+   :type 'symbol
+   :group 'edict)
+ 

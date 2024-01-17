@@ -1,0 +1,9 @@
+# confirmed - but standard
+addFilter("non-root-group-log-file /var/log/wtmp utmp")
+
+# aaa_base requires net-tools
+addFilter("dangling-symlink.*/usr/lib/restricted/bin/hostname.*/bin/hostname")
+
+# for /etc/init.d/*.local. To be removed at some point
+addFilter(".*suse-deprecated-init-script.*")
+addFilter(".*suse-deprecated-boot-script.*")

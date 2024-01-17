@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad75b0f04732383bd678ae69647a38b6</srcmd5>
+    <version>1.0.1</version>
+    <time>1496534390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>500055</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8b6df8344e0a87876f8000559b3d4c4d</srcmd5>
+    <version>1.0.1</version>
+    <time>1499067394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507668</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45564816be80980bf785e34a148bc472</srcmd5>
+    <version>1.0.2</version>
+    <time>1504102888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>511854</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>690255cd4b22cf1e3ba2dc752147ed46</srcmd5>
+    <version>4.3.1</version>
+    <time>1591742440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3.1.</comment>
+    <requestid>796718</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>be94a2d382e32cbb2e33cb212335d637</srcmd5>
+    <version>4.4.0</version>
+    <time>1596456898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0.</comment>
+    <requestid>823435</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0cb10f91332564af8c8b56fea8074532</srcmd5>
+    <version>4.4.0</version>
+    <time>1596703359</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>824543</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>254ce1558407e8445e1f41b4820dec78</srcmd5>
+    <version>4.5.3</version>
+    <time>1619031586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886879</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2ceb6bd128deca254e8b0c014c1024c2</srcmd5>
+    <version>4.5.20</version>
+    <time>1628282692</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>910447</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>11cb3330d0306a7cf8393198446f749e</srcmd5>
+    <version>5.0.36</version>
+    <time>1635366072</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927656</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61835ecf80edd4db5eb401e9a8e9f032</srcmd5>
+    <version>5.0.49</version>
+    <time>1637108009</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931475</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a277d7e8d5eb3aaa60dbd2b249087f8d</srcmd5>
+    <version>5.0.53</version>
+    <time>1638131409</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934337</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>988bd174fdc24b6ca1fb9bd124ed8070</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * no changes
+- fix license tag
+</comment>
+    <requestid>950584</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fa6ac719652d1f9f7ed2144ac929de46</srcmd5>
+    <version>5.1.12</version>
+    <time>1651669861</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974793</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d20ee9dfd6ba25b9b9b3d0c18e9ae436</srcmd5>
+    <version>5.1.32</version>
+    <time>1655396399</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982685</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d807f4526c4699076e7041639cbacddf</srcmd5>
+    <version>5.1.72</version>
+    <time>1670333095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040614</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>96daa0586af16bba6692ab8e84f59b10</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * Fix syntax error in Github issue template
+  * Added Github yml issue template
+</comment>
+    <requestid>1059001</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3a37bdb43938cefd94732283e688dcd3</srcmd5>
+    <version>5.2.16</version>
+    <time>1675177790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062180</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>20ab9dbc88d44c092122ce01f99441b5</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235826</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog).
+- Add set_current_version.patch.
+</comment>
+    <requestid>1106263</requestid>
+  </revision>
+</revisionlist>

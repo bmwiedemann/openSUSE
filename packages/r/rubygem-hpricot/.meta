@@ -1,0 +1,14 @@
+<package name="rubygem-hpricot" project="openSUSE:Factory">
+  <title>A fast, flexible HTML parser in C.</title>
+  <description>Hpricot is a fast, flexible HTML parser written in C.  It's designed to be very
+accomodating (like Tanaka Akira's HTree) and to have a very helpful library (like
+some JavaScript libs -- JQuery, Prototype -- give you.)
+
+
+Authors:
+--------
+    why the lucky stiff
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-hpricot"/>
+</package>

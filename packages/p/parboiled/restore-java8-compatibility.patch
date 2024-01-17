@@ -1,0 +1,268 @@
+--- parboiled-1.4.1/parboiled-java/src/main/java/org/parboiled/transform/AsmUtils.java	2023-10-11 09:54:38.742121727 +0200
++++ parboiled-1.4.1/parboiled-java/src/main/java/org/parboiled/transform/AsmUtils.java	2023-10-11 09:54:51.432202375 +0200
+@@ -35,7 +35,6 @@
+ 
+ import java.io.IOException;
+ import java.io.InputStream;
+-import java.lang.invoke.MethodHandles;
+ import java.lang.reflect.Array;
+ import java.lang.reflect.Constructor;
+ import java.lang.reflect.Field;
+@@ -47,8 +46,6 @@
+ 
+ class AsmUtils {
+ 
+-    private static final LookupFactory lookupFactory = new LookupFactory();
+-
+     public static ClassReader createClassReader(Class<?> clazz) throws IOException {
+         checkArgNotNull(clazz, "clazz");
+         String classFilename = clazz.getName().replace('.', '/') + ".class";
+@@ -199,17 +196,22 @@
+      * Otherwise the method returns null.
+      *
+      * @param className   the full name of the class to be loaded
+-     * @param parentClass the parent class of the class with the given className
++     * @param classLoader the class loader to use
+      * @return the class instance or null
+      */
+-    public static Class<?> loadClass(String className, Class<?> parentClass) {
++    public static Class<?> findLoadedClass(String className, ClassLoader classLoader) {
+         checkArgNotNull(className, "className");
+-        checkArgNotNull(parentClass, "parentClass");
++        checkArgNotNull(classLoader, "classLoader");
+         try {
++            Class<?> classLoaderBaseClass = Class.forName("java.lang.ClassLoader");
++            Method findLoadedClassMethod = classLoaderBaseClass.getDeclaredMethod("findLoadedClass", String.class);
++
++            // protected method invocation
++            findLoadedClassMethod.setAccessible(true);
+             try {
+-                return parentClass.getClassLoader().loadClass(className);
+-            } catch (ClassNotFoundException cnfe) {
+-                return null;
++                return (Class<?>) findLoadedClassMethod.invoke(classLoader, className);
++            } finally {
++                findLoadedClassMethod.setAccessible(false);
+             }
+         } catch (Exception e) {
+             throw new RuntimeException("Could not determine whether class '" + className +
+@@ -218,30 +220,22 @@
+     }
+ 
+     /**
+-     * Defines a new class with the given name and bytecode within the package of the given parent class.
+-     * Since package and class identity includes the ClassLoader instance used to load a class we use reflection
++     * Loads the class defined with the given name and bytecode using the given class loader.
++     * Since package and class idendity includes the ClassLoader instance used to load a class we use reflection
+      * on the given class loader to define generated classes. If we used our own class loader (in order to be able
+      * to access the protected "defineClass" method) we would likely still be able to load generated classes,
+      * however, they would not have access to package-private classes and members of their super classes.
+      *
+      * @param className   the full name of the class to be loaded
+      * @param code        the bytecode of the class to load
+-     * @param parentClass the parent class of the new class
++     * @param classLoader the class loader to use
+      * @return the class instance
+      */
+-    public static Class<?> defineClass(String className, byte[] code, Class<?> parentClass) {
++    public static Class<?> loadClass(String className, byte[] code, ClassLoader classLoader) {
+         checkArgNotNull(className, "className");
+         checkArgNotNull(code, "code");
+-        checkArgNotNull(parentClass, "parentClass");
+-
++        checkArgNotNull(classLoader, "classLoader");
+         try {
+-            if (lookupFactory != null) {
+-                MethodHandles.Lookup lookup = lookupFactory.lookupFor(parentClass);
+-                if (lookup != null) {
+-                    return lookup.defineClass(code);
+-                }
+-            }
+-
+             Class<?> classLoaderBaseClass = Class.forName("java.lang.ClassLoader");
+             Method defineClassMethod = classLoaderBaseClass.getDeclaredMethod("defineClass",
+                     String.class, byte[].class, int.class, int.class);
+@@ -249,7 +243,7 @@
+             // protected method invocation
+             defineClassMethod.setAccessible(true);
+             try {
+-                return (Class<?>) defineClassMethod.invoke(parentClass.getClassLoader(), className, code, 0, code.length);
++                return (Class<?>) defineClassMethod.invoke(classLoader, className, code, 0, code.length);
+             } finally {
+                 defineClassMethod.setAccessible(false);
+             }
+--- parboiled-1.4.1/parboiled-java/src/main/java/org/parboiled/transform/GroupClassGenerator.java	2023-10-11 09:54:38.758788500 +0200
++++ parboiled-1.4.1/parboiled-java/src/main/java/org/parboiled/transform/GroupClassGenerator.java	2023-10-11 09:58:14.413389233 +0200
+@@ -23,7 +23,8 @@
+ import org.objectweb.asm.tree.*;
+ 
+ import static org.objectweb.asm.Opcodes.*;
+-import static org.parboiled.transform.AsmUtils.defineClass;
++import static org.parboiled.transform.AsmUtils.findLoadedClass;
++import static org.parboiled.transform.AsmUtils.loadClass;
+ 
+ abstract class GroupClassGenerator implements RuleMethodProcessor {
+ 
+@@ -53,15 +54,16 @@
+     private void loadGroupClass(InstructionGroup group) {
+         createGroupClassType(group);
+         String className = group.getGroupClassType().getClassName();
++        ClassLoader classLoader = classNode.getParentClass().getClassLoader();
+ 
+         Class<?> groupClass;
+         synchronized (lock) {
+-            groupClass = AsmUtils.loadClass(className, classNode.getParentClass());
++            groupClass = findLoadedClass(className, classLoader);
+             if (groupClass == null || forceCodeBuilding) {
+                 byte[] groupClassCode = generateGroupClassCode(group);
+                 group.setGroupClassCode(groupClassCode);
+                 if (groupClass == null) {
+-                    AsmUtils.defineClass(className, groupClassCode, classNode.getParentClass());
++                    loadClass(className, groupClassCode, classLoader);
+                 }
+             }
+         }
+@@ -71,7 +73,7 @@
+         String s = classNode.name;
+         int lastSlash = classNode.name.lastIndexOf('/');
+         // do not prepend a slash if class is in the default package (lastSlash == -1)
+-        String groupClassInternalName = (lastSlash >= 0 ? s.substring(0, lastSlash) + '/' : "") + group.getName();
++        String groupClassInternalName = (lastSlash >= 0 ? s.substring(0, lastSlash) : s)+ '/' + group.getName();
+         group.setGroupClassType(Type.getObjectType(groupClassInternalName));
+     }
+ 
+--- parboiled-1.4.1/parboiled-java/src/main/java/org/parboiled/transform/LookupFactory.java	2023-10-11 09:54:38.758788500 +0200
++++ parboiled-1.4.1/parboiled-java/src/main/java/org/parboiled/transform/LookupFactory.java	1970-01-01 01:00:00.000000000 +0100
+@@ -1,105 +0,0 @@
+-/*
+- * Copyright (C) 2022 parboiled contributors
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- * http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-
+-package org.parboiled.transform;
+-
+-import java.lang.invoke.MethodHandles.Lookup;
+-import java.lang.reflect.Field;
+-import java.lang.reflect.Method;
+-import java.util.WeakHashMap;
+-
+-/**
+- * Helper that can be used to create {@link Lookup} instances for
+- * specific classes.
+- */
+-final class LookupFactory {
+-
+-	private WeakHashMap<Class<?>, Lookup> lookups = new WeakHashMap<>();
+-	private Lookup trustedLookup;
+-
+-	LookupFactory() {
+-		loadTrustedLookup();
+-	}
+-
+-	/**
+-	 * Tries to load a trusted {@link Lookup} instance.
+-	 *
+-	 * <p>
+-	 * Adapted from <a href="https://github.com/google/guice/blob/cf759d44c78e8490e3d54df6a27918e0811bbdf9/core/src/com/google/inject/internal/aop/HiddenClassDefiner.java#L40">HiddenClassDefiner</a>
+-	 * of Google Guice.
+-	 * </p>
+-	 */
+-	private void loadTrustedLookup() {
+-		try {
+-			Class<?> unsafeType = Class.forName("sun.misc.Unsafe");
+-			Field theUnsafeField = unsafeType.getDeclaredField("theUnsafe");
+-			theUnsafeField.setAccessible(true);
+-			Object unsafeInstance = theUnsafeField.get(null);
+-			Field trustedLookupField = Lookup.class.getDeclaredField("IMPL_LOOKUP");
+-			Method baseMethod = unsafeType.getMethod("staticFieldBase", Field.class);
+-			Object trustedLookupBase = baseMethod.invoke(unsafeInstance, trustedLookupField);
+-			Method offsetMethod = unsafeType.getMethod("staticFieldOffset", Field.class);
+-			Object trustedLookupOffset = offsetMethod.invoke(unsafeInstance, trustedLookupField);
+-			Method getObjectMethod = unsafeType.getMethod("getObject", Object.class, long.class);
+-			this.trustedLookup =
+-					(Lookup) getObjectMethod.invoke(unsafeInstance, trustedLookupBase, trustedLookupOffset);
+-		} catch (Exception e) {
+-			// Unsafe and trusted lookup is not available
+-		}
+-	}
+-
+-	/**
+-	 * Determines a {@link Lookup} instance for the given hostClass.
+-	 * <p>
+-	 * The method first tries to use a static method of the hostClass with the
+-	 * following signature:
+-	 * </p>
+-	 * <p>
+-	 * <code>
+-	 *     public static {@link Lookup} lookup();
+-	 * </code>
+-	 * </p>
+-	 * <p>
+-	 * If this fails then it tries to use a trusted lookup
+-	 * instance created via sun.misc.Unsafe.
+-	 * </p>
+-	 *
+-	 * @param hostClass The target class of the lookup instance
+-	 * @return a lookup instance or <code>null</code> if not found
+-	 */
+-	Lookup lookupFor(Class<?> hostClass) {
+-		Lookup lookup = lookups.get(hostClass);
+-		if (lookup == null) {
+-			try {
+-				// try to find a lookup() method first
+-				Method lookupMethod = hostClass.getMethod("lookup");
+-				lookup = (Lookup) lookupMethod.invoke(null);
+-			} catch (Exception e) {
+-				// failed to use lookup() method
+-			}
+-
+-			if (lookup == null && trustedLookup != null) {
+-				// use trusted lookup instance if available
+-				lookup = trustedLookup.in(hostClass);
+-			}
+-
+-			if (lookup != null) {
+-				lookups.put(hostClass, lookup);
+-			}
+-		}
+-		return lookup;
+-	}
+-}
+\ No newline at end of file
+--- parboiled-1.4.1/parboiled-java/src/main/java/org/parboiled/transform/ParserTransformer.java	2023-10-11 09:54:38.758788500 +0200
++++ parboiled-1.4.1/parboiled-java/src/main/java/org/parboiled/transform/ParserTransformer.java	2023-10-11 09:55:09.205648662 +0200
+@@ -32,8 +32,8 @@
+     public static synchronized <T> Class<? extends T> transformParser(Class<T> parserClass) throws Exception {
+         checkArgNotNull(parserClass, "parserClass");
+         // first check whether we did not already create and load the extension of the given parser class
+-        Class<?> extendedClass = AsmUtils.loadClass(
+-                getExtendedParserClassName(parserClass.getName()), parserClass
++        Class<?> extendedClass = findLoadedClass(
++                getExtendedParserClassName(parserClass.getName()), parserClass.getClassLoader()
+         );
+         return (Class<? extends T>)
+                 (extendedClass != null ? extendedClass : extendParserClass(parserClass).getExtendedClass());
+@@ -102,10 +102,10 @@
+         };
+         classNode.accept(classWriter);
+         classNode.setClassCode(classWriter.toByteArray());
+-        classNode.setExtendedClass(defineClass(
++        classNode.setExtendedClass(loadClass(
+                 classNode.name.replace('/', '.'),
+                 classNode.getClassCode(),
+-                classNode.getParentClass()
++                classNode.getParentClass().getClassLoader()
+         ));
+     }
+ 

@@ -1,0 +1,45 @@
+From de8c69c9312a6b88cb4c0395cf4c4d663bfaf1d2 Mon Sep 17 00:00:00 2001
+From: Peter Simons <simons@cryp.to>
+Date: Thu, 30 Mar 2023 09:15:55 +0200
+Subject: [PATCH] yesod-persistent: don't depend on persistent-template if we
+ don't have to
+
+If our version of 'persistent' is sufficiently new, then we don't need a
+dependency on the empty 'persistent-template' package.
+---
+ yesod-persistent/yesod-persistent.cabal | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/yesod-persistent/yesod-persistent.cabal b/yesod-persistent/yesod-persistent.cabal
+index 4416399b2..4071414e7 100644
+--- a/yesod-persistent/yesod-persistent.cabal
++++ b/yesod-persistent/yesod-persistent.cabal
+@@ -13,12 +13,13 @@ homepage:        http://www.yesodweb.com/
+ description:     API docs and the README are available at <http://www.stackage.org/package/yesod-persistent>
+ extra-source-files: README.md ChangeLog.md
+ 
++flag persistent_has_persistent_template
++  default: True
++
+ library
+     default-language: Haskell2010
+     build-depends:   base                      >= 4.10     && < 5
+                    , yesod-core                >= 1.6      && < 1.7
+-                   , persistent                >= 2.8
+-                   , persistent-template       >= 2.1
+                    , transformers              >= 0.2.2
+                    , blaze-builder
+                    , conduit
+@@ -28,6 +29,12 @@ library
+                      Yesod.Persist.Core
+     ghc-options:     -Wall
+ 
++    if flag(persistent_has_persistent_template)
++        build-depends:     persistent          >= 2.12.0.1
++    else
++        build-depends:     persistent          >= 2.8 && < 2.12.0.1
++                         , persistent-template >= 2.1 && < 2.12.0.0
++
+ test-suite test
+     default-language: Haskell2010
+     type: exitcode-stdio-1.0

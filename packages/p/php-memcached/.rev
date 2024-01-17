@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe2ac205680e62191517a8fa7c289a93</srcmd5>
+    <version>3.1.5</version>
+    <time>1613774958</time>
+    <user>dimstar_suse</user>
+    <comment>Rename php7-memcached to php-memcached</comment>
+    <requestid>873882</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>538e052a9d5e5f2f227435baae209159</srcmd5>
+    <version>3.1.5</version>
+    <time>1643228812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949132</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b0e60b1a2c637f611d49f6e9df69f2a</srcmd5>
+    <version>3.2.0</version>
+    <time>1648159127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0
+  * PHP 8.0 and 8.1 support
+  * store_retry_count is no more set explicitly (#452)
+  * fix MemcachedServer (libmemcached-awesome is recommended)
+  * code cleanup
+  * remove patches no longer needed
+    - fixup-unit-tests-broken-in-php8.patch
+    - fixup-unit-tests.patch
+    - fix-zend_dtoa-API-change.patch
+</comment>
+    <requestid>964720</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eb0dc5aea6c03739a3dcfa086a50b424</srcmd5>
+    <version>3.2.0</version>
+    <time>1669910325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039178</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>73872f988f74afbac8a4a8e69e204eff</srcmd5>
+    <version>3.2.0</version>
+    <time>1670954160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042518</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ac1fb8cbd2087adc4fca2e4cca592672</srcmd5>
+    <version>3.2.0</version>
+    <time>1681387843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078807</requestid>
+  </revision>
+</revisionlist>

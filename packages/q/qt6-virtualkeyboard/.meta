@@ -1,0 +1,9 @@
+<package name="qt6-virtualkeyboard" project="openSUSE:Factory">
+  <title>Framework for writing or integrating input methods and engines for Qt 6</title>
+  <description>Qt VirtualKeyboard provides an input framework and reference keyboard frontend
+for Qt 6.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-virtualkeyboard"/>
+  <url>https://www.qt.io</url>
+</package>

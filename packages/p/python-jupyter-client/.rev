@@ -1,0 +1,381 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>276464d0a44497111672a305ff0691ff</srcmd5>
+    <version>5.3.4</version>
+    <time>1574414606</time>
+    <user>dimstar_suse</user>
+    <comment>Rename to python-jupyter-client to follow python package naming guidelines since upstream was renamed.
+
+Update to 5.3.4</comment>
+    <requestid>747866</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d84c131df22ed0a94b9770b6f4d9cc7c</srcmd5>
+    <version>6.0.0</version>
+    <time>1587838265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0.0
+  + New Features:
+    * Added async API
+  + Changes:
+    * Python 3.8 testing and support added
+    * Session.msg_id optimization
+    * Only cache ports if the cache_ports flag is set to True
+    * Removed direct dependency on pywin32 as this is now in jupyter core
+  + Fixes:
+    * Prevent two kernels to have the same ports
+  + Docs:
+    * Document the handling of error in do_execute
+  + Breaking changes:
+    * Dropped support for Python 2.7!
+- Implement tests via multibuild
+- Drop doc subpackage.  This was only around to resolve dependency
+  cycles in testing, which the multibuild now does.  Keeping up
+  with rapid changes in readthedocs was becoming difficult.
+</comment>
+    <requestid>795894</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aac22634c9a646d1975e6e95238254f4</srcmd5>
+    <version>6.1.3</version>
+    <time>1588323911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797791</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a431c42aa52bc5914308debc1499d2ca</srcmd5>
+    <version>6.1.7</version>
+    <time>1599666404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832537</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ffddac5c69f0411568d6ddeff890834</srcmd5>
+    <version>6.1.12</version>
+    <time>1625225190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902851</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>240ab9ca680bff16c6fd7d260b7dda64</srcmd5>
+    <version>6.1.12</version>
+    <time>1629101312</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911579</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8fcc4a864b7e42277293660f6ae031d</srcmd5>
+    <version>7.0.6</version>
+    <time>1635167825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.6
+  * Fallback to the old ipykernel &quot;json_clean&quot; if we are not able
+    to serialize a JSON message #708 (@martinRenou)
+  * Add test for serializing bytes #707 (@martinRenou)
+- Release 7.0.5
+  * avoid use of deprecated zmq.utils.jsonapi #703 (@minrk)
+  * Use logger.warning instead of deprecated warn method #700
+    (@kevin-bates)
+- Release 7.0.4
+  * Fix json_default so that it's closer to what ipykernel had
+    before #698 (@martinRenou)
+  * Clean up the pending task #697 (@shingo78)
+  * fix kernel can only restart once issue #695 (@mofanke)
+  * Prevent failure if kernel is not found when shutting it down
+    #694 (@martinRenou)
+- Release 7.0.3
+  * Address missing local-provisioner scenario #692 (@kevin-bates)
+  * use load_connection_info(info) when constructing a blocking
+    client #688 (@minrk)
+- Release 7.0.2
+  * Don't set event loop policy on Windows at import time #686
+    (@minrk)
+  * Improve migration guide #685 (@davidbrochart)
+- Release 7.0.1
+  * Use formal method names when called internally #683
+    (@kevin-bates)
+- Release 7.0.0
+  * The 7.0 release brings a major feature in Kernel Provisioners,
+    which enable the ability for third parties to manage the
+    lifecycle of a kernel's runtime environment.
+  * Being a major release, there are some backward incompatible
+    changes. Please see the migration guide for further details.
+  * Enhancements made:
+  * Kernel Provisioning - initial implementation #612
+    (@kevin-bates)
+  * Fix up some async method aliases in KernelManager #670
+    (@kevin-bates)
+  * Support answer_yes when removing kernel specs #659
+    (@davidbrochart)
+  * Include process ID in message ID #655 (@takluyver)
+  * Fix qtconsole issues #638 (@davidbrochart)
+  * Added debugger key in kernel_info_reply #486 (@JohanMabille)
+  * Prepare for use with Jupyter Releaser #676 (@afshin)
+  * Force install jupyter_client master #675 (@davidbrochart)
+  * Fix project name #674 (@vidartf)
+  * Rename trait to allowed_kernelspecs #672 (@blink1073)
+  * Remove block parameter from get_msg() #671 (@davidbrochart)
+  * Only import nest_asyncio locally #665 (@SylvainCorlay)
+  * Use a default serializer that is not only for date types #664
+    (@martinRenou)
+  * Updated debug_info_response #657 (@JohanMabille)
+  * Do not block on exit #651 (@impact27)
+  * Update test kernel with native coroutine, remove
+    async_generator dependency #646 (@kevin-bates)
+  * setup.py and CI improvements #645 (@dolfinus)
+  * Test downstream projects #644 (@davidbrochart)
+  * Remove deprecations in kernel manager #643 (@kevin-bates)
+  * Add block=True back to get_msg() #641 (@davidbrochart)
+  * Pin python&gt;=3.6.1 #636 (@davidbrochart)
+  * Use pre-commit #631 (@davidbrochart)
+  * Attempt CI with ipykernel 6.0 prerelease #629 (@SylvainCorlay)
+  * Make KernelManager subclass tests DRY #628 (@davidbrochart)
+  * Add tests to ensure MultiKernelManager subclass methods are
+    called #627 (@kevin-bates)
+  * Add type annotations, refactor sync/async #623 (@davidbrochart)
+  * Create migration guide #681 (@blink1073)
+  * Update changelog for 7.0.0rc0 #673 (@blink1073)
+  * Added documentation for richInspectVariables request #654
+    (@JohanMabille)
+  * Change to edit_magic payload #652 (@yitzchak)
+  * Added missing documentation for the inspectVariables request
+    and resp… #649 (@JohanMabille)
+  * Add status field to other replies in documentation #648
+    (@yitzchak)
+- Drop jupyter_client-pr646-remove-async_generator.patch
+</comment>
+    <requestid>925995</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a67115d73de207e59d2b56a043d6678</srcmd5>
+    <version>7.1.1</version>
+    <time>1642455234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946714</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b24e3863354f2fc529005c6b04f8537e</srcmd5>
+    <version>7.1.2</version>
+    <time>1647282918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961409</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>20d897cd4862fdc85704b978e3e33986</srcmd5>
+    <version>7.3.1</version>
+    <time>1653907344</time>
+    <user>dimstar_suse</user>
+    <comment>- Add jupyter-client-fix787-kernelwarningsfilter.patch
+  * gh#jupyter/jupyter_client#787 
+- Disable pytest for signalkernel.py and problemkernel.py because
+  issue with newer ipykernel.
+  https://github.com/jupyter/jupyter_client/issues/787
+- Update to version 7.3.1.
+  * Bugs fixed
+    * Check that channels exist before asking if they are alive
+      #785 (@ccordoba12)
+    * Unicode error correction using Error Handler #779 (@hxawax)
+  * Maintenance and upkeep improvements
+    * Allow bot PRs to be automatically labeled #784 (@blink1073)
+- Update for version 7.3.0
+  * Bugs fixed
+    * Fix shutdown and cleanup behavior #772 (@blink1073)
+  * Maintenance and upkeep improvements
+    * Improve mypy config #769 (@blink1073)
+- Update for version 7.2.2
+  * Maintenance and upkeep improvements
+    * Include py.typed file #766 (@blink1073)
+    * More Cleanup #764 (@blink1073)
+- Update for version 7.2.1
+  * Maintenance and upkeep improvements
+    * Handle Warnings #760 (@blink1073)
+- Update for version 7.2.0
+  * Enhancements made
+    * Update consoleapp.py #733 (@you-n-g)
+  * Bugs fixed
+    * Json packer: handle TypeError and fallback to old json_clean
+      #752 (@martinRenou)
+    * Prefer sending signals to kernel process group #743
+      (@kevin-bates)
+  * Maintenance and upkeep improvements
+    * Mock is not needed #758 (@hroncok)
+    * Add pytest opts and clean up workflows #757 (@blink1073)
+    * Clean up dependency handling #750 (@blink1073)
+    * Use built in run cancellation #742 (@blink1073)
+</comment>
+    <requestid>979260</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>29b611fa5abe4e849915218dcb44f676</srcmd5>
+    <version>7.3.4</version>
+    <time>1657191361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986713</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e144dfd9bb260073d07ca96f955aa3fc</srcmd5>
+    <version>7.3.4</version>
+    <time>1670867953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update py3109-compat.patch to work with python 3.10.8 and lower.
+- Add py3109-compat.patch to make it work with python 3.10.9. 
+</comment>
+    <requestid>1042422</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bc01e4732c80c60c07389ec93924c188</srcmd5>
+    <version>7.4.8</version>
+    <time>1672482169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.4.8
+  * Make sure loop is marked with nest_asyncio #893 (@impact27)
+- Release 7.4.7
+  * Fix connection reconciliation to handle restarts #882
+    (@kevin-bates)
+- Release 7.4.6
+  * Reconcile connection information #879 (@kevin-bates)
+- Release 7.4.5
+  * [7.x] Handle Jupyter Core Warning #875 (@blink1073)
+- Release 7.4.4
+  * Workaround for launch bug #861 (@blink1073)
+- Release 7.4.3
+  * Defer creation of ready future #858 (@blink1073)
+- Release 7.4.2
+  * Fix ready promise and session send #852 (@blink1073)
+  * Fix pending kernels backported and reverted: #848 #851
+- Release 7.3.5
+  * add AsyncKernelClient to doc/api/client.rst #819 (@helioz11)
+  * Use tornado 6.2's PeriodicCallback in restarter #822 (@vidartf)
+  * Make _stdin_hook_default async #814 (@davidbrochart)
+- Replace py3109-compat.patch by py310-ignore-deprecation.patch
+  gh#jupyter/jupyter_client#713
+</comment>
+    <requestid>1045755</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9f8b9efcdbfa515a197b7cbbb1051ba6</srcmd5>
+    <version>7.4.9</version>
+    <time>1673973280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.4.9
+  * Make Qtconsole work with PyZMQ 25 #914 (@ccordoba12)
+  * [7.x] Remove deprecated zmq imports #916 (@blink1073)
+- Drop py310-ignore-deprecation.patch</comment>
+    <requestid>1058573</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>45d5577da6511320f10acbcce28f2ef2</srcmd5>
+    <version>8.1.0</version>
+    <time>1680370356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.1.0
+  * ThreadedZMQStream: close stream before socket #936 (@minrk)
+- Update to 8.0.3
+  * Fix kernelspec print output #933 (@minrk)
+  * Don't emit a trailng newline in base64-encoded data like
+    'image/png' #931 (@xl0)
+  * Improving jsonutil tests #929 (@andrehora)
+- Update to 8.0.2
+  * Add papermill downstream check and fix kernel client replies
+    #925 (@blink1073)
+- Release 8.0.1
+  * Fix json_output in kernelspec app #921 (@blink1073)
+- Release 8.0.0
+  * This release is primarily focused on improving asyncio support,
+    while aiming to have minimal API changes.
+  ## Enhancements made
+  * Remove nest-asyncio dependency #835 (@blink1073)
+  ## Bugs fixed
+  * Allow interrupt during restart of pending kernels #898
+    (@blink1073)
+  * Fix connection reconciliation to handle restarts #882
+    (@kevin-bates)
+  * Reconcile connection information #879 (@kevin-bates)
+  * Workaround for launch bug #861 (@blink1073)
+  * Defer creation of ready future #858 (@blink1073)
+  * Fix handling of initial ready promise #854 (@blink1073)
+  * Revert &quot;Fix pending kernels again&quot; #853 (@blink1073)
+  * Fix pending kernels again #845 (@blink1073)
+  * Use pytest_asyncio fixture #826 (@davidbrochart)
+  ## Maintenance and upkeep improvements
+  * Fix jupyter_core pinning #896 (@ophie200)
+  * Use pytest-jupyter #891 (@blink1073)
+  * Import ensure_async and run_sync from jupyter_core #889
+    (@davidbrochart)
+  * Support Python 3.8-3.11 #866 (@blink1073)
+  * Move tests to top level #834 (@blink1073)
+  * Fix nbconvert downstream test #827 (@blink1073)
+- Add jupyter-client-suse-remove-ifconfig-test.patch
+</comment>
+    <requestid>1075692</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ece2fdc4233f1b12a2f1f1ed3c918868</srcmd5>
+    <version>8.2.0</version>
+    <time>1681470824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079328</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>5a64749050d898182835ed6105c422a4</srcmd5>
+    <version>8.2.0</version>
+    <time>1686927336</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove entrypoints Requires, it was dropped in 8.0.</comment>
+    <requestid>1093445</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>14e98b2fd36386973f5fa40922842087</srcmd5>
+    <version>8.3.0</version>
+    <time>1688476920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.3.0
+  * Allow kwargs when writting connection_file #953 (@fecet)</comment>
+    <requestid>1096305</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a7f8765f690a3f48d74c9d79d2bf9533</srcmd5>
+    <version>8.3.1</version>
+    <time>1695664997</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.3.1
+  * Support external kernels #961 (@davidbrochart)
+  * Make cache_ports configurable with default value of False. #956
+    (@jkitchin)
+</comment>
+    <requestid>1113300</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5183e6fbbef39f7bc5d4d38ea04f3a1c</srcmd5>
+    <version>8.4.0</version>
+    <time>1697390847</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.4.0
+  * Test on python 3.12 #978 (@blink1073)
+  * Update typing for traitlets 5.11 #977 (@blink1073)
+  * Do not use datetime.utcnow() that is deprecated in Python 3.12
+    #972 (@ellert)
+</comment>
+    <requestid>1117786</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a9fddd2bf711ef0cc68f0b687819aff3</srcmd5>
+    <version>8.6.0</version>
+    <time>1701121373</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.6.0
+  * Fix possibly not defined tracker #991 (@davidbrochart)
+  * BUG: Fix Kwarg only in update_env #989 (@Carreau)
+- Release 8.5.0
+  * Allow to update kernels env in between restart. #987 (@Carreau)</comment>
+    <requestid>1128950</requestid>
+  </revision>
+</revisionlist>

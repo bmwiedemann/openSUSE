@@ -1,0 +1,9 @@
+# the following lines are for the cron job that is used to 
+# run administrative tasks in cacti
+addFilter("suse-missing-rclink cacti-cron");
+addFilter("systemd-service-without-service_add_post cacti-cron.service");
+addFilter("systemd-service-without-service_add_pre cacti-cron.service");
+addFilter("systemd-service-without-service_del_postun cacti-cron.service");
+addFilter("systemd-service-without-service_del_preun cacti-cron.service");
+# no lib: rpmlint false positive
+addFilter("explicit-lib-dependency php-zlib");

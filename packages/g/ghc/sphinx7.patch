@@ -1,0 +1,26 @@
+From 52d701b31dc4427b7e321a04be3f5f13a5fc271e Mon Sep 17 00:00:00 2001
+From: "mimi.vx" <mimi.vx@gmail.com>
+Date: Wed, 24 May 2023 12:42:15 +0000
+Subject: [PATCH] Fix for Sphinx 7 removed style key
+
+Fixes https://gitlab.haskell.org/ghc/ghc/-/issues/23444
+---
+ docs/users_guide/rtd-theme/layout.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/users_guide/rtd-theme/layout.html b/docs/users_guide/rtd-theme/layout.html
+index 2a61142514a..7ffeff7befc 100644
+--- a/docs/users_guide/rtd-theme/layout.html
++++ b/docs/users_guide/rtd-theme/layout.html
+@@ -64,7 +64,7 @@
+   {%- endif %}
+ 
+   {# CSS #}
+-  <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
++  <link rel="stylesheet" href="{{ pathto('_static/' + styles[-1], 1) }}" type="text/css" />
+   <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+   {%- for css in css_files %}
+     {%- if css|attr("rel") %}
+-- 
+GitLab
+

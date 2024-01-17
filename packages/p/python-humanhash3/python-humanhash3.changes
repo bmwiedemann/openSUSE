@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:49:00 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May  3 15:38:11 UTC 2018 - alarrosa@suse.com
+
+- Run spec_cleaner 
+
+-------------------------------------------------------------------
+Thu May  3 06:50:18 UTC 2018 - alarrosa@suse.com
+
+- Fix UNLICENSE link to point to the raw version of the file 
+
+-------------------------------------------------------------------
+Tue Feb 27 12:26:46 UTC 2018 - alarrosa@suse.com
+
+- Initial release of python-humanhash3 
+- Add convert-to-ascii.patch to convert the README file to ascii so
+  python3 doesn't complain when reading it in setup.py

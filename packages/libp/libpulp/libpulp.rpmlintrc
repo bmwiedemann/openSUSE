@@ -1,0 +1,14 @@
+# When a library is being live patched, the program using it is unaware
+# of the operation, so much so that it's not the application who starts
+# the live patching.  Instead, an external tool (__ulp_trigger) halts
+# the execution of every thread of the application and changes
+# trampolines to patched functions.  If some of these operations fail,
+# there's nothing the application could do to salvage the execution, so
+# it's mandatory that the live patching calls exit to kill the process.
+addFilter("W: shared-lib-calls-exit")
+
+# Libpulp is the upstream name of the project, so placing the tools
+# under libpulp-tools makes it more likely to show up on searches with
+# zypper. However, this package does not ship libraries, which cause a
+# lintian warning.
+addFilter("libpulp-tools.* shlib-policy-missing-lib");

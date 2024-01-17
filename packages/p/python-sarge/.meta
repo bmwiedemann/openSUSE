@@ -1,0 +1,6 @@
+<package name="python-sarge" project="openSUSE:Factory">
+  <title></title>
+  <description>A wrapper for subprocess which provides command pipeline functionality.
+</description>
+  <devel project="devel:languages:python" package="python-sarge"/>
+</package>

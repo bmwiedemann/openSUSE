@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Tue Sep 19 14:51:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove buildrequires that are not used on sle15
+
+-------------------------------------------------------------------
+Fri May  5 12:52:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * Supply the encoding, fixing EncodingWarnings.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Aug 29 13:59:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.1
+  * Packaging refresh.
+  + #12: Added locale stability for tests.
+- v2.3.0:
+  * #9: Fixed syntax errors in docs.
+  * Require Python 3.7 or later.
+- v2.2.0
+  * #8: Prefer author date to committer date when adding SCM
+    timestamps, reverting change in 2.1, and this time tracking the
+    motivation more carefully.
+- v2.1.1: Fix Github Actions badge.
+- v2.1.0 Prefer committer date to author date when adding SCM
+  timestamps.
+- Don't build the docs
+
+-------------------------------------------------------------------
+Sat Sep 26 11:26:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Replace python-patrh.py with python-path
+
+-------------------------------------------------------------------
+Fri Mar 27 10:59:06 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.0.0
+  * Drop support for Python 3.5 and earlier.
+
+-------------------------------------------------------------------
+Tue Mar 17 11:08:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix building on Leap
+
+-------------------------------------------------------------------
+Tue Sep 10 10:34:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.11:
+  * Now supply the version of the package during Sphinx setup.
+  * Also supply "parallel_read_safe=True"
+
+-------------------------------------------------------------------
+Fri Jun  7 11:56:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+- Run py3 only sphinx build as new sphinx does not provide py2
+  variant anymore
+
+-------------------------------------------------------------------
+Wed Feb 27 05:54:37 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LICENSE
+- Run Sphinx on Python 2 also
+- Update to v1.10
+  * Refreshed package metadata.
+  * Package now presents the ``rst`` package a pkg-util
+    namespace package (instead of pkg_resources).
+
+-------------------------------------------------------------------
+Sun Jul  9 08:21:24 UTC 2017 - aloisio@gmx.com
+
+- Fixed dateutil requires
+
+-------------------------------------------------------------------
+Tue Jul  4 09:35:47 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.9
+  * Replacer now adds the Sphinx config namespace to the
+    replacements, meaning that names like ``project``
+    or ``copyright`` may be referenced in the format
+    strings. This feature is particularly useful when
+    coupled with the `jaraco.packaging
+    <https://pypi.org/project/jaraco.packaging>`.sphinx
+    plugin, which supplies a ``package_url``.
+  1.8.2:
+  * Added project description and updated changelog.
+  1.8.1:
+  * Issue #4: Prefer public API of ``app.confdir`` to private
+    API.
+  1.8:
+  * Issue #4: Resolve deterministically the filenames relative to
+    the config file.
+  * *semver deviation*: This change is backward-incompatible
+    for projects that relied on paths relative to the cwd where
+    the cwd was not the directory of the config file.
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Sat Jul 30 18:24:12 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package.

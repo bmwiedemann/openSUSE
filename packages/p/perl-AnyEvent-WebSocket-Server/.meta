@@ -1,0 +1,5 @@
+<package name="perl-AnyEvent-WebSocket-Server" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-AnyEvent-WebSocket-Server"/>
+</package>

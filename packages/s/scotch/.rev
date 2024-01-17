@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c9b5e1ec5242eb2310a2640f969101af</srcmd5>
+    <version>6.0.6</version>
+    <time>1548537759</time>
+    <user>dimstar_suse</user>
+    <comment>- Add scotch to oS:Factory:
+  FATE#327141: [HPC Module] Add 'scotch' to the HPC Module</comment>
+    <requestid>668670</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7dff056d961269da1da3b5d82fe8a955</srcmd5>
+    <version>6.0.6</version>
+    <time>1562327315</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the package group fix.
+
+- Set default module version correctly when installing
+  master package, unset when deinstalling the default library
+  package.
+- Fix dependencies for HPC packages.
+- Fix HPC modulefile: library dir is always there when module file
+  is installed.
+- Fix package groups.
+- Cosmetic fixes to module file.
+- Consolidate use of openmpi1, openmpi2, openmpi3 for non-HPC builds.</comment>
+    <requestid>674944</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>40812f88d7e538db13e9fef48782cdd1</srcmd5>
+    <version>6.0.7</version>
+    <time>1567091984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726805</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1d7bf45592da78b8632b489fed51faed</srcmd5>
+    <version>6.0.7</version>
+    <time>1568190846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729700</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8b91e1ad6a55c5500d6bce629e8c1165</srcmd5>
+    <version>6.0.7</version>
+    <time>1570010276</time>
+    <user>dimstar_suse</user>
+    <comment>Add Jira feature ID</comment>
+    <requestid>734090</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>0dff34c0c19e12b6642cc27bd2f4888e</srcmd5>
+    <version>6.0.7</version>
+    <time>1574945487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751566</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc803e2cc098412e18e2cd9fbbdcd461</srcmd5>
+    <version>6.0.9</version>
+    <time>1575282580</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc7.
+- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8609).
+
+- Update to version 6.0.9:
+  * Scotch 6.0.7 is mostly a bugfix version. It provides some new minor
+    features, such as an extension of the target architecture API and
+    MeTiS v5 compatibility.
+- Disable openmpi1 builds for SLE/Leap &gt; 15.1.
+- Enable openmpi3 builds for Leap and SLE &gt; 15.1 (jsc#SLE-7773).</comment>
+    <requestid>752514</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ea74accae111017cc3f7d623e8c0d8ed</srcmd5>
+    <version>6.0.9</version>
+    <time>1575373411</time>
+    <user>dimstar_suse</user>
+    <comment>- Enabled non-HPC openmpi3 build.
+
+- Add support for non-HPC build with gcc7.
+- Add support for non-HPC build with gcc8 and gcc9 (jsc#SLE-7766 &amp;amp;
+  jsc#SLE-8609). (forwarded request 753146 from eeich)</comment>
+    <requestid>753147</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e1ce32ed909fdffeaf5b85df5e98e1aa</srcmd5>
+    <version>6.0.9</version>
+    <time>1575464109</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc7 builds for HPC.
+- Add support for gcc8 and gcc9 for HPC (jsc#SLE-7766 &amp;</comment>
+    <requestid>753891</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>4a606a64005e82a2fc147e81bb374cdb</srcmd5>
+    <version>6.0.9</version>
+    <time>1576189105</time>
+    <user>dimstar_suse</user>
+    <comment>  jsc#SLE-8604).</comment>
+    <requestid>755675</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>ec77bf8889ecca02ee80dc86eca9fff3</srcmd5>
+    <version>6.0.9</version>
+    <time>1580420238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768753</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>9e0f84020b3a882964978da644ed92af</srcmd5>
+    <version>6.0.9</version>
+    <time>1587162790</time>
+    <user>dimstar_suse</user>
+    <comment>- only serial scotch-metis-devel package should conflict with
+  metis-devel (boo#1169791).</comment>
+    <requestid>794965</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>abe640b66bdfdc2ecff4a3838ad324c8</srcmd5>
+    <version>6.1.0</version>
+    <time>1612011372</time>
+    <user>dimstar_suse</user>
+    <comment>- Sync SLE and openSUSE builds (jsc#SLE-12162).
+
+- Update to version 6.1.0. The change in release number reflects a change  
+  in behavior of the software, regarding two features:
+  * Algorithms for sparse matrix reordering now fully take into account vertex
+    weights. While the previous versions only accounted for them in the nested
+    dissection method to compute and  optimize separator size/weight, they are
+    now also accounted for in the minimum  degree and minimum fill algorithms.
+    Consequently,  vertex  amalgamation  can  be  tuned so  that  the  size of
+    (column-)blocks is tailored according to the real amount of computation to
+    be performed on supervariables.
+    The esmumps  interface  with MUMPS  has been  updated  so as to  take into
+    account this new feature. 
+  * The routines of the vertex  graph partitioning (with overlap)  module have
+   been redesigned, leading to much smaller  run time and, most often, higher
+   quality
+- Scotch development is moving to gitlab
+- Add support for gcc10 and build support for openmpi4.</comment>
+    <requestid>867464</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>fa427cd0668f8b28950bf8a8f1df48a4</srcmd5>
+    <version>6.1.0</version>
+    <time>1625338238</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix serial HPC build.
+- Fix: 'warning: File listed twice: /usr/lib64/libscotchmetis.so*' (forwarded request 903652 from eeich)</comment>
+    <requestid>903656</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>6ee11a667ad447053edada4f18f93d85</srcmd5>
+    <version>6.1.0</version>
+    <time>1698170893</time>
+    <user>anag+factory</user>
+    <comment>- Disable HPC flavors on i586
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+- Update to version 6.1.0. The change in release number reflects a change</comment>
+    <requestid>1119881</requestid>
+  </revision>
+</revisionlist>

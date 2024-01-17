@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Tue Jan  2 22:49:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- require setuptools
+
+-------------------------------------------------------------------
+Thu Jul 20 13:09:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+- Switch to %pyproject_* macros.
+
+-------------------------------------------------------------------
+Wed Jul 19 13:18:33 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed May  3 09:09:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.7:
+  * Fix inclusion of py.typed in pip packages - @sth
+  * Added pytest support with test file rename. Migrated to
+    assertEqual
+  * Parameter `rename_fields` in merge_record_extra is now
+    optional - @afallou
+  * Allow reserved attrs to be renamed - @henkhogan
+  * Support added for Python 3.11
+  * Now verifying builds in Pypy 3.9 as well
+  * Type annotations are now in the package - @louis-jaris
+  * Fix rename_fields for exc_info - @guilhermeferrari
+  * Cleaned up test file for PEP8 - @lopagela
+  * Cleaned up old Python 2 artifacts - @louis-jaris
+  * Dropped Python 3.5 support - @idomozes
+  * Moved type check via tox into 3.11 run only
+  * Added test run in Python3.6 (will keep for a little while
+    longer, but it's EOL so upgrade)
+
+-------------------------------------------------------------------
+Thu Oct  6 22:41:33 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.0.4 - 2022-07-11
+  Changed
+  Fix too strict regex for percentage style logging - @aberres
+
+- Update to 2.0.3 - 2022-07-08
+  Added
+  Add PEP 561 marker/basic mypy configuration. - @bringhurst
+  Workaround logging.LogRecord.msg type of string. - @bringhurst
+  Changed
+  Changed a link archive of the reference page in case it's down. - @ahonnecke
+  Removed unnecessary try-except around OrderedDict usage - @sozofaan
+  Update documentation link to json module + use https - @deronnax
+  Dropped 3.5 support. - @bringhurst
+
+-------------------------------------------------------------------
+Sat Nov  6 18:37:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * drop python 3.4 support
+
+-------------------------------------------------------------------
+Fri May 28 08:49:54 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Mon Dec 21 14:29:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Disable Python 2 builds
+- Add %doc README.md
+- Update to v2.0.1
+  * Support Pypi long descripton
+  * rename output fields
+- from v2.0.0
+  * New Changelog
+  * Added timezone support to timestamps - @lalten
+  * Refactored log record to function - @georgysavva
+  * Add python 3.8 support - @tommilligan
+  * Removed support for Python 2.7
+  * Removed Debian directory
+
+-------------------------------------------------------------------
+Thu May  9 08:26:21 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.1.11
+  * no upstream changelog
+- run testsuite
+- run spec cleaner
+- install LICENSE
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:05 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Aug  8 06:37:44 UTC 2017 - tbechtold@suse.com
+
+- fix Requires
+
+-------------------------------------------------------------------
+Fri Jul 28 14:53:26 UTC 2017 - tbechtold@suse.com
+
+- Initial packaging (version 0.1.7)

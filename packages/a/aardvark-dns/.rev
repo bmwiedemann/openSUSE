@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e151028cec56ebf0516168cefcf22165</srcmd5>
+    <version>1.5.0</version>
+    <time>1676562930</time>
+    <user>dimstar_suse</user>
+    <comment>First version of the aardvark-dns package</comment>
+    <requestid>1065929</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>786e64565222dfdeaddafefbd4ccb0d0</srcmd5>
+    <version>1.5.0</version>
+    <time>1679417068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073524</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b6612da37f7c59b38fc193debdcdbcdf</srcmd5>
+    <version>1.6.0</version>
+    <time>1681296747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078583</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d50513970d2d074e6a39e92cabbb30f8</srcmd5>
+    <version>1.7.0</version>
+    <time>1688476926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096567</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9bde4771003aa0a2f2b441d10f88698a</srcmd5>
+    <version>1.7.0</version>
+    <time>1689175647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098215</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d2ee3e96acf841cf46a2cd6eced27baf</srcmd5>
+    <version>1.8.0</version>
+    <time>1697567113</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.8.0 (forwarded request 1115737 from danishprakash)</comment>
+    <requestid>1115971</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2a0c02ae1b18b3c23e142389f1776650</srcmd5>
+    <version>1.9.0</version>
+    <time>1701378286</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.9.0 (forwarded request 1129915 from danishprakash)</comment>
+    <requestid>1130036</requestid>
+  </revision>
+</revisionlist>

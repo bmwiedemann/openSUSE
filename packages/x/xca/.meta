@@ -1,0 +1,8 @@
+<package name="xca" project="openSUSE:Factory">
+  <title>An RSA key and certificate management tool</title>
+  <description>Graphical certification authority is an interface for managing RSA keys and certificates, and the creation and signing of PKCS#10 requests. It uses the OpenSSL library and a Berkeley DB for key and certificate storage. It supports importing and exporting keys and PEM DER PKCS8 certificates, signing and revoking of PEM DER PKCS12, and the selection of x509v3 extensions. A tree view of certificates is presented.
+
+</description>
+  <devel project="security" package="xca"/>
+  <url>http://freshmeat.net/projects/xca/</url>
+</package>

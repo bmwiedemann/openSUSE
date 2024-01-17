@@ -1,0 +1,5 @@
+<package name="grml-zsh-config" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="shells" package="grml-zsh-config"/>
+</package>

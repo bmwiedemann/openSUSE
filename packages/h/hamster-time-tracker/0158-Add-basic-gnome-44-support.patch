@@ -1,0 +1,27 @@
+From 9a8a80acfb19b131ae13a01b80939448ae666fc5 Mon Sep 17 00:00:00 2001
+From: "J. Nathanael Philipp" <nathanael@philipp.land>
+Date: Tue, 14 Mar 2023 13:19:00 +0100
+Subject: [PATCH 158/161] Add basic gnome 44 support.
+
+(cherry picked from commit 4e8fdeaab6c79f0538e22be14f41d9237282f9fe)
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 78eef73..162a7cf 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -16,7 +16,8 @@
+         "40",
+         "41",
+         "42",
+-        "43"
++        "43",
++        "44"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.41.0
+

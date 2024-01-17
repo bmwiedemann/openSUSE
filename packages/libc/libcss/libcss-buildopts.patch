@@ -1,0 +1,22 @@
+Index: libcss-0.9.1/Makefile
+===================================================================
+--- libcss-0.9.1.orig/Makefile
++++ libcss-0.9.1/Makefile
+@@ -24,7 +24,7 @@ WARNFLAGS := -Wall -W -Wundef -Wpointer-
+ # BeOS/Haiku/AmigaOS4 standard library headers create warnings
+ ifneq ($(HOST),i586-pc-haiku)
+   ifneq ($(findstring amigaos,$(HOST)),amigaos)
+-    WARNFLAGS := $(WARNFLAGS) -Werror
++    WARNFLAGS := $(WARNFLAGS)
+   endif
+ endif
+ 
+@@ -32,7 +32,7 @@ CFLAGS := -D_BSD_SOURCE -D_DEFAULT_SOURC
+ 	-I$(CURDIR)/include/ -I$(CURDIR)/src \
+ 	$(WARNFLAGS) $(CFLAGS)
+ ifneq ($(GCCVER),2)
+-  CFLAGS := $(CFLAGS) -std=c99
++  CFLAGS := $(CFLAGS) -std=gnu99
+ else
+   # __inline__ is a GCCism
+   CFLAGS := $(CFLAGS) -Dinline="__inline__"

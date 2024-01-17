@@ -1,0 +1,1561 @@
+-------------------------------------------------------------------
+Wed Dec  6 11:47:50 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- Changes since 5.27.9:
+  * Adapt to plasma-framework being renamed to libplasma
+  * Adjust to KWayland moving to Plasma
+  * Fix plasma-framework dependency
+
+-------------------------------------------------------------------
+Tue Oct 24 14:27:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * remote desktop: Close streams on session exit
+  * data/kde-portals.conf: Fallback to GTK portals for Settings (kde#474746)
+  * Add missing KF5Service find_package call
+- Drop patches, now upstream:
+   * 0001-kde_portals.patch
+
+-------------------------------------------------------------------
+Fri Sep 29 19:02:21 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add: 0001-kde_portals.patch (kde#474746)
+  * Add a fallback to the GTK portal for settings. This makes sure
+    that GTK apps always get valid fonts and related settings. 
+
+-------------------------------------------------------------------
+Tue Sep 12 11:22:33 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * Fix data type for accent color
+  * settings: provide accent-color settings
+  * Install kde-portals.conf in datadir
+  * Install a portals.conf file for the plasma session
+  * RemoteDesktop: Fix relativity of absolute pointer motion
+  * RemoteDesktop: Use QScreen for starting multiple streams
+  * Add a method using QScreen to create a screencasting stream
+
+-------------------------------------------------------------------
+Tue Aug  1 11:19:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- No code changes since 5.27.6
+
+-------------------------------------------------------------------
+Tue Jun 20 17:15:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- Changes since 5.27.5:
+  * return correct user info (kde#469697)
+
+-------------------------------------------------------------------
+Tue May  9 13:44:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * [notifications] Set proper value for x-kde-xdgTokenAppId
+  * screenshot: fix flameshot #3164 by using native resolution
+  * screencast: Don't try to screencast nullptr
+
+-------------------------------------------------------------------
+Tue Apr  4 15:05:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- No code changes since 5.27.3
+
+-------------------------------------------------------------------
+Tue Mar 14 15:06:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * Fix cursor and borders selectors in screenshot dialog
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- No code changes since 5.27.1
+
+-------------------------------------------------------------------
+Tue Feb 21 14:09:28 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * Extract i18n from QML files
+  * appchooserdialog: show all apps while searching (kde#464521)
+
+-------------------------------------------------------------------
+Thu Feb  9 14:19:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * fix streams not being ended correctly (kde#465302)
+  * Fix segfault crash: capture QStringList variable by value
+  * notifications: Do not crash as notifications get removed (kde#464549)
+  * Fix condition for cmake feature
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:47 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jan  4 14:06:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * notifications: Properly communicate the triggered action (kde#462278)
+  * notification: Trigger org.freedesktop.Application.Activate* as spec'd
+
+-------------------------------------------------------------------
+Tue Nov 29 14:47:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- No code changes since 5.26.3
+
+-------------------------------------------------------------------
+Tue Nov  8 17:26:10 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- No code changes since 5.26.2
+
+-------------------------------------------------------------------
+Wed Oct 26 14:16:43 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- No code changes since 5.26.1
+
+-------------------------------------------------------------------
+Tue Oct 18 11:27:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * screenshare SNI: use monochrome-compatible icon (kde#460514)
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+  * Make sure the QuickDialog's localisation context has a domain
+  * RemoteDesktop: Decouple input streaming and video streaming
+  * ScreenCast: Make sure we close sessions when all streams are done
+  * ScreenCast: Drop global "streamingStopped" signal
+  * ScreenCast: Streams can be closed while interacted with (kde#459693)
+
+-------------------------------------------------------------------
+Thu Sep 15 20:48:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Sep  6 16:56:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * [screenchooser] Clip listviews
+
+-------------------------------------------------------------------
+Tue Aug  2 14:07:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- No code changes since 5.25.3
+
+-------------------------------------------------------------------
+Tue Jul 12 11:29:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * AppChooser: Address error message
+  * Screencast: fix window stream restoration
+
+-------------------------------------------------------------------
+Tue Jun 28 13:03:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * RemoteDesktopDialog: fix "withTouch" property mismatch
+
+-------------------------------------------------------------------
+Tue Jun 21 11:39:49 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- No code changes since 5.25.0
+
+-------------------------------------------------------------------
+Thu Jun  9 11:15:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * [filechooser] Make sure outgoing URIs are encoded (kde#454850)
+  * [screenshot] Encode result URI
+  * UserInfo: Fix initialization error
+  * screencast: Include valid windows in the list of streams to stream
+  * screencast: When we stop a stream, do it actively
+  * screencast: When closing a session, only close the streams from that session
+  * screencast: Do not provide every running stream
+  * screencast: Keep persisting if the user chose to persist (kde#454128)
+  * Add FreeBSD CI
+  * don't supply excess argument
+
+-------------------------------------------------------------------
+Thu May 19 19:46:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue May  3 13:00:28 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * Fix saving file dialog view options
+
+-------------------------------------------------------------------
+Tue Mar 29 16:04:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- No code changes since 5.24.3
+
+-------------------------------------------------------------------
+Tue Mar  8 18:10:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- No code changes since 5.24.2
+- Restore compatibility with older kf5-filesystem
+
+-------------------------------------------------------------------
+Mon Mar  7 11:07:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- No code changes since 5.24.1
+
+-------------------------------------------------------------------
+Tue Feb 15 19:18:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * [screencast] Fall back to monitor if no type is given (kde#450206)
+
+-------------------------------------------------------------------
+Sat Feb  5 19:51:05 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Use poll() when reading screenshot data
+  * Fix fullscreen and monitor screenshots
+  * Pre-select the only item in the list lists with single items
+  * Install systemd service file for portal
+  * ScreenCast portal: report correct version
+  * Show user-facing app name instead of app id in background notification
+  * Use QFileDialog for selecting directories (kde#437505)
+  * Show only local files
+  * Set desktop file name
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Add KAboutData (kde#448113)
+  * It compiles fine without deprecated methods
+  * Adopt SystemDialog for better mobile integration
+  * Close screencast session when we stop streaming
+  * Use QStringLiteral here
+  * AccessDialog: Fix errors
+  * Port ScreenshotDialog to QtQuick
+  * Port RemoteDesktopDialog to Plasma Dialogs
+  * Have SchreenChooserDialog use acceptable
+  * Split code out of ScreenChooser so it can be reused
+  * Port the AppChooserDialog to a Plasma Workspace Dialog
+  * Port AccessDialog to QML
+  * Port UserInfoDialog to QtQuick
+  * Split dialog handling code into a QuickDialog class
+  * Port the ScreenChooserDialog to QtQuick
+  * No need to change a string to compare it to "KDE"
+  * Save/restore file dialog window size (kde#443251)
+  * Actually determine light/dark from colorscheme
+  * Implement freedesktop colorscheme preference
+  * Add Linux CI
+  * Add .kde-ci.yml
+  * Print portal: cleanup and fix logic for setting QPageSize
+  * Email portal: add support for CC, BCC and more addresses
+  * Update dbus-advertised screencast source types
+  * Inhibit portal: send reply to the Close() request to release inhibition
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- Changes since 5.23.4:
+  * Close screencast session when we stop streaming
+
+-------------------------------------------------------------------
+Tue Nov 30 14:59:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * Save/restore file dialog window size (kde#443251)
+
+-------------------------------------------------------------------
+Tue Nov  9 15:43:29 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- No code changes since 5.23.2
+
+-------------------------------------------------------------------
+Tue Oct 26 14:56:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- No code changes since 5.23.1
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- No code changes since 5.23.0
+
+-------------------------------------------------------------------
+Thu Oct  7 13:50:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Update dbus-advertised screencast source types
+  * Inhibit portal: send reply to the Close() request to release inhibition
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Changes since 5.22.5:
+  * Fix crash when in X11
+  * Remove unnecessary attribute
+  * Now we are using Qt's internal connection, we should not set an eventqueue
+  * Remove unused output initialisation
+  * Explicitly set KDE_COMPILERSETTINGS_LEVEL
+  * Guard use of wayland connection
+  * Avoid second wayland connection in xdg-desktop-portal-kde
+  * Add missing properties for 2 dbus interfaces
+  * Background portal: avoid crash when allowing app to run in background (kde#438954)
+  * Fix compile with last ecm
+  * Pass the version to the project call
+  * Use version-less qt DBus macros
+  * Remove unused method
+  * Add a SNI for active screencasting sessions
+
+-------------------------------------------------------------------
+Tue Aug 31 19:08:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- No code changes since 5.22.4
+
+-------------------------------------------------------------------
+Tue Jul 27 12:35:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- No code changes since 5.22.3
+
+-------------------------------------------------------------------
+Tue Jul  6 12:01:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.3
+- Changes since 5.22.2.1:
+  * Background portal: avoid crash when allowing app to run in background (kde#438954)
+  * Pass the version to the project call
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- No code changes since 5.22.1
+
+-------------------------------------------------------------------
+Tue Jun 15 13:17:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- No code changes since 5.22.0
+
+-------------------------------------------------------------------
+Thu Jun  3 13:06:19 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Changes since 5.21.5:
+  * Migrate to KDECompilerSettings
+  * Use Q_EMIT to make it compile against kf5.82
+  * Convert author statements to SPDX
+  * Convert license headers to SPDX
+  * Restore same visibility of deprecated API for builds of tarball & checkout
+  * Do not display screenshot dialog if interactive is set to false BUG: 435781 (kde#435781)
+  * ScreenCast: Inhibit notifications when screen casting
+  * Add pre-commit hook for clang-format
+  * Add .git-blame-ignore-revs file
+  * Run clang-format
+  * Raise minimum CMake version to 3.16
+  * Add option to show hidden files on mobile
+  * Use versionless Qt cmake target
+
+-------------------------------------------------------------------
+Tue May  4 14:15:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- No code changes since 5.21.4
+
+-------------------------------------------------------------------
+Tue Apr  6 14:00:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- No code changes since 5.21.3
+
+-------------------------------------------------------------------
+Tue Mar 16 13:55:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- No code changes since 5.21.2
+
+-------------------------------------------------------------------
+Tue Mar  2 15:01:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- No code changes since 5.21.1
+
+-------------------------------------------------------------------
+Tue Feb 23 14:52:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- No code changes since 5.21.0
+
+-------------------------------------------------------------------
+Thu Feb 11 18:23:17 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- No code changes since 5.20.90
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Changes since 5.20.5:
+  * Add X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot to desktop file
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * FileChooser: escape slash character in user visible filter name (kde#427306)
+  * mobile filechooser: Make sure to also return the right folder when the folder wasn't changed
+  * Disable X11 session management
+  * screencast: Improve the screencasting process
+  * mobile filechooser: Use new required property API
+  * mobile filechooser: Don't accept empty titles
+
+-------------------------------------------------------------------
+Fri Jan 15 17:54:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+
+-------------------------------------------------------------------
+Tue Jan  5 14:40:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- No code changes since 5.20.4
+
+-------------------------------------------------------------------
+Tue Dec  1 15:22:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- No code changes since 5.20.3
+
+-------------------------------------------------------------------
+Wed Nov 11 11:08:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.3
+- No code changes since 5.20.2
+
+-------------------------------------------------------------------
+Tue Oct 27 20:43:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.2
+- Changes since 5.20.1:
+  * FileChooser: escape slash character in user visible filter name (kde#427306)
+
+-------------------------------------------------------------------
+Tue Oct 20 14:30:37 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- No code changes since 5.20.0
+
+-------------------------------------------------------------------
+Thu Oct  8 16:55:27 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * AppModel: Rename role names
+  * Port AppChooserDialog to Kirigami
+  * mobile filechooser: Allow to disable the mime type filter
+  * mobile filechooser: Move more logic to c++
+  * appchooserdialog: Replace context properties
+  * Portaway from obsolute methods in QPrinter
+  * mobile filechooser: Forward selectMultiple
+  * FileChooser: Properly preselect MIME filter passed as "current_filter"
+  * Add "Name" entry into the desktop file (kde#426004)
+  * Add "Name" entry into the desktop file
+  * port appchooserdialog's app list to load kservices
+  * use kirigami icon instead of plasma icon in appchooser
+  * Print: enable printing of multiple copies
+  * Fix clazy warnings
+  * Port away from deprecated API
+  * open discover with mimetype when app choosing (if available)
+  * mobile filechooser: Fix handling of title and initial folder
+  * screencasting: error out when kwin isn't providing the zkde_screencast_unstable_v1 (kde#424744)
+  * FileChooser: Properly handle mnemonics in 'accept_label' (kde#422340)
+  * mobile filechooser: Show inline message for errors
+  * mobile filechooser: Use an icon that is colorful even in small sizes
+  * Implement mobile filechooser interface.
+  * screencasting: Adoption of the zkde_screencast_v1 Wayland protocol
+  * FileChooser: Return selected filter
+  * FileChooser: Handle 'options' - 'choices'
+  * FileChooser portal: Handle 'current_filter'
+
+-------------------------------------------------------------------
+Tue Sep  1 11:38:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.5
+- Changes since 5.19.4:
+  * Add "Name" entry into the desktop file (kde#426004)
+  * Print: enable printing of multiple copies
+
+-------------------------------------------------------------------
+Tue Jul 28 13:45:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.4
+- No code changes since 5.19.3
+
+-------------------------------------------------------------------
+Tue Jul  7 13:58:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- No code changes since 5.19.2
+
+-------------------------------------------------------------------
+Tue Jun 23 13:26:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.2
+- No code changes since 5.19.1
+
+-------------------------------------------------------------------
+Tue Jun 16 14:34:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- No code changes since 5.19.0
+
+-------------------------------------------------------------------
+Thu Jun  4 13:27:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * Screencast: add information about the source type which is being shared
+  * Background portal: do not notify about apps in background when we don't track them
+  * Background portal: correctly send respond whether we allow application in the background
+
+-------------------------------------------------------------------
+Thu May 14 14:33:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * FileChooser portal: add support for opening directories
+  * Screensharing: support variable stride
+  * Make PipeWire, GBM and Epoxy libs as required dependencies
+  * Return buffer to pipewire when returning early from recordFrame
+  * Send notification when screencasting fails
+  * Add background portal
+  * ScreenSharing: close dialogs when session is closed
+  * Send notification when screencasting fails
+  * bump to require Qt 5.14
+  * Avoid copying buffer twice (kde#419209)
+  * Add new Account portal
+  * Make it possible to stream only input
+  * Return if the process couldn't be properly registered
+
+-------------------------------------------------------------------
+Tue May  5 13:01:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * ScreenSharing: close dialogs when session is closed
+
+-------------------------------------------------------------------
+Tue Mar 31 15:16:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * FileChooser: make all opened files automatically writable
+  * Screensharing: code cleanup
+  * Avoid copying buffer twice (kde#419209)
+  * Implement Keyboard Keycode support as suggested in the spec
+
+-------------------------------------------------------------------
+Tue Mar 10 14:55:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.3.php
+- Changes since 5.18.2:
+  * use content_type as fallback in appchooser dialog
+  * Only deprecate up to target frameworks
+  * FileChooser: do not return empty file list when no local file is selected BUG: 418155 (kde#418155)
+
+-------------------------------------------------------------------
+Tue Feb 25 14:07:20 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- No code changes since 5.18.1
+
+-------------------------------------------------------------------
+Tue Feb 18 14:05:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * PipeWire: set stream and offset information for the buffer
+  * Properly combine pipewire and spa includes
+  * Properly search for PipeWire libs
+
+-------------------------------------------------------------------
+Thu Feb  6 15:10:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * Make it possible to stream only input
+  * Update support for PipeWire 0.3
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * KF5_MIN_VERSION for plasma 5.18 is KF5 5.66.0
+  * Fix minor EBN issues
+  * Add KDEClangFormat cmake support
+  * Rewrite AppChooser dialog
+  * Port to non-deprecated KWindowSystem::setMainWindow overload
+  * Un-break remote input portal
+
+-------------------------------------------------------------------
+Tue Jan  7 16:24:38 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.5.php
+- Changes since 5.17.4:
+  * Print portal: xdg-desktop-portal assumes the pages to be used as indexes
+
+-------------------------------------------------------------------
+Wed Dec  4 08:37:03 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * Port away from deprecated API in KWindowSystem
+
+-------------------------------------------------------------------
+Tue Nov 12 11:01:09 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- Changes since 5.17.2:
+  * Un-break remote input portal
+
+-------------------------------------------------------------------
+Tue Oct 29 20:45:53 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.2.php
+- No code changes since 5.17.1
+
+-------------------------------------------------------------------
+Tue Oct 22 16:44:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.1.php
+- No code changes since 5.17.0
+
+-------------------------------------------------------------------
+Thu Oct 10 14:25:49 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:40 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * update to latest kf5 dependency
+  * PipeWire: use thread loop instead of watching a socket
+  * Make it compile without deprecated method
+  * GLIB2 shouldn't be required
+  * Remove unused includes
+  * Fix forward declaration
+  * Add a TODO list
+
+-------------------------------------------------------------------
+Tue Sep  3 12:44:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- No code changes since 5.16.4
+
+-------------------------------------------------------------------
+Tue Jul 30 12:40:20 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- No code changes since 5.16.3
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:09 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- No code changes since 5.16.2
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:20 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- No code changes since 5.16.1
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- No code changes since 5.16.0
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:11 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- Changes since 5.15.90:
+  * Fix potential build failure
+  * Allow some portals to run only on Plasma sessions
+
+-------------------------------------------------------------------
+Thu May 16 16:56:41 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * AppChooser: put list of applications into a scrollarea (kde#407559)
+  * bump Qt version to 5.12 as agreed at start of cycle
+  * Support default action, priority hints, set desktop-entry
+  * Implement mouse support
+
+-------------------------------------------------------------------
+Wed May 15 07:14:53 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend pipewire for screencasting
+
+-------------------------------------------------------------------
+Tue May  7 11:04:59 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- Changes since 5.15.4:
+  * Destroy gbm_device only when it's initialized (kde#407025)
+  * Settings portal: do not return QDBusVariant directly when calling Read() method (kde#406672)
+  * Remove additional call of items initialization
+  * AppChooser dialog: async loading of items
+  * Select application with a single click
+  * AppChooserDialog: make it more usable
+
+-------------------------------------------------------------------
+Tue Apr  2 12:41:01 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- No code changes since 5.15.3
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:25 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- Changes since 5.15.2:
+  * Use high dpi pixmaps (kde#405160)
+  * [File Chooser Portal] Confirm overwrite on saving (kde#404719)
+
+-------------------------------------------------------------------
+Tue Feb 26 14:06:14 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- Changes since 5.15.1:
+  * Fix selection of multiple files (kde#404739)
+  * Properly convert filename to string from bytearray (kde#404445)
+
+-------------------------------------------------------------------
+Tue Feb 19 12:27:06 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- No code changes since 5.15.0
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:55 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- No code changes since 5.14.90
+
+-------------------------------------------------------------------
+Thu Jan 17 18:49:51 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  8 13:37:45 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- Changes since 5.14.4:
+  * Set parent window for dialogs
+  * Add workaround for gtk file chooser filter patterns (kde#399889)
+  * FileChooser: make use of current_name property in Save dialog (kde#402077)
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:49 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- No code changes since 5.14.3
+
+-------------------------------------------------------------------
+Tue Nov  6 15:54:02 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- No code changes since 5.14.2
+
+-------------------------------------------------------------------
+Tue Oct 23 13:56:46 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- No code changes since 5.14.1
+
+-------------------------------------------------------------------
+Wed Oct 17 14:34:50 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use pipewire-devel and not pkgconfig to avoid unresolvable on version bumps
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:17 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- Changes since 5.14.0:
+  * Improve debug and don't leak gbm handle
+  * Make sure we don't process more frames then configured framerate
+  * ScreenCast: properly return failure when user cancel the dialog
+  * Make initialization of drm and egl non-fatal
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:14 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- Changes since 5.13.90:
+  * Use correct stream size
+  * Fix build condition for screencast portal
+  * We don't need to link against libspa
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:31 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:05 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * Fix build condition for screencast portal
+  * QT_MIN_VERSIONS is Qt 5.11 for Plasma 5.14. Agreed at kickoff meeting.  Set everywhere for clearity and consistency.
+  * We don't need to link against libspa
+  * Add support for PickColor method from Screenshot portal
+  * Merge branch 'Plasma/5.13'
+  * Use prefix ++operator for loop index increment
+  * Pass substiture args to i18n strings inside the i18n call
+  * Include own header first
+  * Use explicit
+  * NULL -> nullptr (this is C++, not C in the end)
+  * Use {} initializer instead of 0 for QFlags-based args
+  * Remove Qt module includes
+  * Properly find and link against Qt5::Concurrent
+  * Remove unneeded cmake macro includes
+  * Use KF5_MIN_VERSION also for ECM, now that it's part of KF
+  * Require KDE Frameworks 5.42 and Qt 5.9
+  * Bump min cmake version to 3.0, move cmake_minimum_required to begin
+  * Remove usage of dead QT_USE_FAST_CONCATENATION
+  * Use override, remove not necessary virtual keyword
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:43 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * Fix build condition for screencast portal
+  * We don't need to link against libspa
+  * Search also for libpipewire-0.2
+- Remove spa BuildReq
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:34 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * Minor changes to macros
+  * Support PipeWire 0.2.0
+
+-------------------------------------------------------------------
+Tue Jul 10 14:02:53 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * Create stream once we are supposed to start a stream
+
+-------------------------------------------------------------------
+Sun Jul  8 08:33:33 UTC 2018 - fabian@ritter-vogt.de
+
+- Enable screencast support for TW
+
+-------------------------------------------------------------------
+Tue Jun 26 16:01:37 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * Stop streaming when session is closed and allow some stream negotiation
+
+-------------------------------------------------------------------
+Tue Jun 19 14:47:11 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:52 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * Check cmake <foo>_FOUND variables for existance
+
+-------------------------------------------------------------------
+Sat May 19 14:16:38 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Changes since 5.12.5:
+  * Warning--
+  * Add Screenshot portal
+  * Improve app chooser dialog
+  * Avoid issues if pkgconfig cannot find the libraries.
+  * Update variables names.
+  * Look for pkgconfig quietly.
+  * Update the doc
+  * Simplify.
+  * Search properly for pipewire and other libs
+  * Make screencast support optional
+  * Add screen cast portal
+  * Fix build with Qt dev branch, where QCUPSSupport::cupsOptionsList was removed
+
+-------------------------------------------------------------------
+Wed May  2 09:26:03 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:49 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar  6 16:08:09 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * None
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:10 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * Fix build with Qt dev branch, where QCUPSSupport::cupsOptionsList was removed
+- Dropped patches, now upstream:
+  * 0001-Fix-build-with-Qt-dev-branch-where-QCUPSSupport-cups.patch
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:29 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb  6 15:45:03 UTC 2018 - alarrosa@suse.com
+
+- Add patch to fix build with latest Qt dev version where
+  QCUPSSupport::cupsOptionsList was removed from the private API
+  (kde#389825):
+  * 0001-Fix-build-with-Qt-dev-branch-where-QCUPSSupport-cups.patch
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:45 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * None
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:08 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Changes since 5.11.5:
+  * Email portal: add support for attachments
+  * Email portal: add support for attachments
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:09 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * None
+
+-------------------------------------------------------------------
+Thu Nov 30 10:47:52 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:56 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * Email portal: add support for attachments
+
+-------------------------------------------------------------------
+Tue Oct 24 18:14:33 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 17:20:10 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:19 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:08 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Changes since 5.10.5:
+  * Use CMAKE_INSTALL_FULL_LIBEXECDIR
+  * Use CMAKE_INSTALL_FULL_LIBEXECDIR
+  * Add arcconfig
+  * Massively simplify the class DesktopPortal
+  * Add missing files
+  * Add Access portal for requesting hardware access
+  * Restore previous version
+  * Fix description
+  * Update AppChooser portal
+  * Fix minor issues spotted by Lamarque
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:33 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:53 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * Use CMAKE_INSTALL_FULL_LIBEXECDIR
+
+-------------------------------------------------------------------
+Tue Jun 27 17:51:40 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:02 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:57 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * Add missing files
+  * Add Access portal for requesting hardware access
+  * Restore previous version
+  * Fix description
+  * Update AppChooser portal
+  * Fix minor issues spotted by Lamarque
+
+-------------------------------------------------------------------
+Fri May 26 14:10:35 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * Restore previous version
+  * Fix interface name
+  * Add email portal
+  * Fix logging category name
+  * Remove unused variable
+  * Add support for inhibit portal
+  * Fix description
+  * Update AppChooser portal
+  * Fix minor issues spotted by Lamarque
+  * Fix description
+  * Update AppChooser portal
+  * Fix minor issues spotted by Lamarque
+  * Set version to be identical with Plasma
+
+-------------------------------------------------------------------
+Thu May 11 20:26:36 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Changes since 5.9.5:
+  * None
+
+-------------------------------------------------------------------
+Mon May  1 10:31:56 UTC 2017 - fabian@ritter-vogt.de
+
+- Initial packaging

@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Apr  7 11:01:57 UTC 2015 - dimstar@opensuse.org
+
+- Add udev-browse-ListStore.patch: Fix ambiguous reference to
+  ListStore.
+
+-------------------------------------------------------------------
+Fri Apr 19 14:50:52 UTC 2013 - fcrozat@suse.com
+
+- Add fix-gee.patch: fix build with latest vala / libgee.
+
+-------------------------------------------------------------------
+Thu Oct 18 09:35:29 UTC 2012 - fcrozat@suse.com
+
+- Update to version 0.3:
+  + update to new vala
+  + ported to gtk3
+- license is LGPLv2.1+
+
+-------------------------------------------------------------------
+Sun Apr 15 16:59:16 UTC 2012 - manugupt1@gmail.com
+
+-License File Updated
+-install -D works
+-updated description
+
+-------------------------------------------------------------------
+Sun Apr 15 15:44:56 UTC 2012 - manugupt1@gmail.com
+
+- Udev-browse successfully packaged 
+

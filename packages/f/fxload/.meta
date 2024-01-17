@@ -1,0 +1,12 @@
+<package name="fxload" project="openSUSE:Factory">
+  <title>Download Firmware into USB FX and FX2 Devices</title>
+  <description>This program can download firmware into FX and FX2 EZ-USB devices as
+well as the original AnchorChips EZ-USB.  It is intended to be invoked
+by hotplug scripts when the unprogrammed device appears on the bus.
+
+Primarily as an aid for developers, this can also be used to update
+firmware on devices that boot from I2C serial EEPROMs.	For that use,
+as well as downloading firmware to all other off-chip memory, a second
+stage loader must first be downloaded.</description>
+  <devel project="Base:System" package="fxload"/>
+</package>

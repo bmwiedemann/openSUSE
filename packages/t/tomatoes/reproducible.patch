@@ -1,0 +1,22 @@
+sort input files (boo#1041090)
+
+when building packages (e.g. for openSUSE Linux)
+(random) filesystem order of input files
+influences ordering of functions in the output,
+thus without the patch, builds (in disposable VMs) would differ.
+
+See https://reproducible-builds.org/ for why this matters.
+
+Index: tomatoes-1.55/makefile
+===================================================================
+--- tomatoes-1.55.orig/makefile
++++ tomatoes-1.55/makefile
+@@ -53,7 +53,7 @@ endif
+ endif
+ 
+ # Source and object files
+-SOURCES = $(wildcard src/*.cpp)
++SOURCES = $(sort $(wildcard src/*.cpp))
+ OBJS = $(SOURCES:.cpp=.o)
+ OBJS := $(subst src/,obj/,$(OBJS))
+ 

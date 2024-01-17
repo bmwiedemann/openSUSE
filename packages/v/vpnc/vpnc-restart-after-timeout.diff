@@ -1,0 +1,59 @@
+Index: vpnc-nortel/tunip.c
+===================================================================
+--- vpnc-nortel.orig/tunip.c
++++ vpnc-nortel/tunip.c
+@@ -882,6 +882,9 @@ static void vpnc_main_loop(struct sa_blo
+ 				s->ipsec.life.rx/1024,
+ 				s->ipsec.life.tx/1024,
+ 				s->ipsec.life.kbytes));
++			if (s->ipsec.life.seconds &&
++			    (time(NULL) - s->ipsec.life.start + 1 >= s->ipsec.life.seconds))
++				do_kill = -3;
+ 		} while ((presult == 0 || (presult == -1 && errno == EINTR)) && !do_kill);
+ 		if (presult == -1) {
+ 			logmsg(LOG_ERR, "select: %m");
+@@ -943,6 +946,9 @@ static void vpnc_main_loop(struct sa_blo
+ 	}
+ 
+ 	switch (do_kill) {
++		case -3:
++			logmsg(LOG_NOTICE, "connection terminated by timeout -> restart");
++			break;
+ 		case -2:
+ 			logmsg(LOG_NOTICE, "connection terminated by dead peer detection");
+ 			break;
+Index: vpnc-nortel/vpnc.c
+===================================================================
+--- vpnc-nortel.orig/vpnc.c
++++ vpnc-nortel/vpnc.c
+@@ -3834,10 +3834,6 @@ int main(int argc, char **argv)
+ 	gcry_control(GCRYCTL_INIT_SECMEM, 16384, 0);
+ 	group_init();
+ 
+-	memset(s, 0, sizeof(*s));
+-	s->ipsec.encap_mode = IPSEC_ENCAP_TUNNEL;
+-	s->ike.timeout = 1000; /* 1 second */
+-
+ 	do_config(argc, argv);
+ 
+ 	if (opt_vendor == VENDOR_NORTEL)
+@@ -3848,6 +3844,11 @@ int main(int argc, char **argv)
+ 	DEBUG(1, printf("\nvpnc version " VERSION "\n"));
+ 	hex_dump("hex_test", hex_test, sizeof(hex_test), NULL);
+ 
++    do {
++	memset(s, 0, sizeof(*s));
++	s->ipsec.encap_mode = IPSEC_ENCAP_TUNNEL;
++	s->ike.timeout = 1000; /* 1 second */
++
+ 	DEBUGTOP(2, printf("S1 init_sockaddr\n"));
+ 	init_sockaddr(&s->dst, config[CONFIG_IPSEC_GATEWAY]);
+ 	init_sockaddr(&s->opt_src_ip, config[CONFIG_LOCAL_ADDR]);
+@@ -3903,6 +3904,7 @@ int main(int argc, char **argv)
+ 	/* Free resources */
+ 	DEBUGTOP(2, printf("S9 cleanup\n"));
+ 	cleanup(s);
++    } while (do_kill == -3);
+ 	if (opt_vendor == VENDOR_NORTEL)
+ 		free((void *)group_id);
+ 

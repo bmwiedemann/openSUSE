@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>109512b49352fce1bb46f7339b9bb3a7</srcmd5>
+    <version>2005_11_21</version>
+    <time>1192329830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="20">
+    <srcmd5>fbb7e8e9c78513b3729068eebda09744</srcmd5>
+    <version>2005_11_21</version>
+    <time>1197892740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="48">
+    <srcmd5>f11c6d37ef008e28305339b157cb1c32</srcmd5>
+    <version>2005_11_21</version>
+    <time>1205334669</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="117">
+    <srcmd5>f11c6d37ef008e28305339b157cb1c32</srcmd5>
+    <version>2005_11_21</version>
+    <time>1205334669</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="118">
+    <srcmd5>9f4c2ee8570e0ca77a6d7a40511a0893</srcmd5>
+    <version>2005_11_21</version>
+    <time>1245338323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="120">
+    <srcmd5>9f4c2ee8570e0ca77a6d7a40511a0893</srcmd5>
+    <version>2005_11_21</version>
+    <time>1245338323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="121">
+    <srcmd5>ce191b3b893f0ea2f21485cf29545467</srcmd5>
+    <version>2005_11_21</version>
+    <time>1263834457</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/postfish based on submit request 29850 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="122">
+    <srcmd5>9288ec32641e53dc5d7af66bd5a170a2</srcmd5>
+    <version>2005_11_21</version>
+    <time>1268925757</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="123">
+    <srcmd5>93314ee75c8da60bfe32ab1506e6eb29</srcmd5>
+    <version>2005_11_21</version>
+    <time>1269566779</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/postfish based on submit request 35612 from user coolo
+</comment>
+    <requestid>35612</requestid>
+  </revision>
+  <revision rev="10" vrev="125">
+    <srcmd5>93314ee75c8da60bfe32ab1506e6eb29</srcmd5>
+    <version>2005_11_21</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="126">
+    <srcmd5>93314ee75c8da60bfe32ab1506e6eb29</srcmd5>
+    <version>2005_11_21</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81764f84bad288d05b7b15fb4c83755d</srcmd5>
+    <version>svn17492</version>
+    <time>1286490671</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/postfish based on submit request 49995 from user plater
+</comment>
+    <requestid>49995</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>81764f84bad288d05b7b15fb4c83755d</srcmd5>
+    <version>svn17492</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>81764f84bad288d05b7b15fb4c83755d</srcmd5>
+    <version>svn17492</version>
+    <time>1319182365</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>5c79d39fb102ecd356604f6b0cb6c5d7</srcmd5>
+    <version>svn17492</version>
+    <time>1323193959</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>5c79d39fb102ecd356604f6b0cb6c5d7</srcmd5>
+    <version>svn17492</version>
+    <time>1340184013</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>5c79d39fb102ecd356604f6b0cb6c5d7</srcmd5>
+    <version>svn17492</version>
+    <time>1359109943</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>5c79d39fb102ecd356604f6b0cb6c5d7</srcmd5>
+    <version>svn17492</version>
+    <time>1379664053</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>5c79d39fb102ecd356604f6b0cb6c5d7</srcmd5>
+    <version>svn17492</version>
+    <time>1409302732</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="16">
+    <srcmd5>02415b34b5a793207110552f0fa71b54</srcmd5>
+    <version>svn17492</version>
+    <time>1413616148</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257316</requestid>
+  </revision>
+</revisionlist>

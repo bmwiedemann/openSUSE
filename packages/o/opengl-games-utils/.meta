@@ -1,0 +1,5 @@
+<package name="opengl-games-utils" project="openSUSE:Factory">
+  <title>Utilities to check proper 3d support before launching 3d games</title>
+  <description>This package contains various shell scripts which are intended for use by 3D games packages. These shell scripts can be used to check if direct rendering is available before launching an OpenGL game. This package is intended for use by other packages and is not intended for direct end user use!</description>
+  <devel project="games" package="opengl-games-utils"/>
+</package>

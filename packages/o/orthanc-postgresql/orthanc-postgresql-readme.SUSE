@@ -1,0 +1,36 @@
+README: Orthanc for openSUSE
+============================
+
+Orthanc is a RESTful DICOM server for healthcare and medical research.
+
+This package provides the PostgreSQL plugin for Orthanc.
+
+You need to have postgresql installed and running.
+
+You have to create a database dedicated to Orthanc. Please refer to the PostgreSQL documentation.
+
+Usually that means:
+* log in as user postgres (sudo su postgres)
+* create a role for usr orthanc (psql -c "CREATE USER orthanc WITH CREATEDB;")
+* make sure he can login (psql -c "ALTER ROLE orthanc WITH LOGIN;")
+* create a database (createdb orthanc --encoding='UTF-8' --owner=orthanc)
+
+Once Orthanc is installed and the database is created, you must add a section in the Orthanc configuration file that specifies the address of the PostgreSQL server together with your credentials. 
+
+You may use /usr/share/doc/packages/orthanc/postgresql.json as template and copy it to /etc/orthanc.
+(Hint: for local trusted connection you may use a login string like "ConnectionUri" : "postgresql:///orthanc" )
+
+You need to restart the Orthanc-Server to enable the configuration.
+
+Remark 1: When using the Storage PostgreSQL plugin, the DICOM files are stored as large objects in the database. This might actually consume more space than the DICOM file itself. We have observed overhead up to 40%. However, it seems this overhead is temporary and comes from Write-Ahead Logging. Check this discussion on the Orthanc Users group for more info).
+
+Remark 2: A typical usage of the PostgreSQL plugin is to enable only the Index, and to use the default filesystem storage for DICOM files (on a NAS with proper disaster recovery strategies). This setup provides best performance for large-scale databases.
+
+Remark 3: Setting the EnableSsl to true forces the use of SSL connections between Orthanc and the PostgreSQL server. It is a synonym for sslmode=require in connections URI (see below). Setting EnableSsl to false corresponds to sslmode=disable (i.e. SSL is not used, even if it is both available in Orthanc and PostgreSQL). To choose other values for the SSL mode (i.e. allow and prefer), please use connection URIs.
+
+Orthanc must of course be restarted after the modification of its configuration file. 
+
+Check out http://book.orthanc-server.com/plugins/postgresql.html for additional information!
+
+Have fun
+Axel Braun <DocB@openSUSE.org> Tue Aug 13 08:06:42 UTC 2019 

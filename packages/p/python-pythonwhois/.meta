@@ -1,0 +1,8 @@
+<package name="python-pythonwhois" project="openSUSE:Factory">
+  <title>Python whois library</title>
+  <description>Module for retrieving and parsing the WHOIS data for a domain.
+
+</description>
+  <devel project="devel:languages:python" package="python-pythonwhois"/>
+  <url>http://cryto.net/pythonwhois</url>
+</package>

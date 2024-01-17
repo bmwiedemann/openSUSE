@@ -1,0 +1,8 @@
+<package name="geotiff" project="openSUSE:Factory">
+  <title>GeoTIFF library</title>
+  <description>This library is designed to permit the extraction and parsing of the
+&quot;GeoTIFF&quot; Key directories, as well as definition and installation of
+GeoTIFF keys in new files.</description>
+  <devel project="Application:Geo" package="geotiff"/>
+  <url>ftp://ftp.remotesensing.org/pub/geotiff/libgeotiff</url>
+</package>

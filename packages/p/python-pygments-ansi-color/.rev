@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d85dcad4c08ffed047c55119af109222</srcmd5>
+    <version>0.0.2</version>
+    <time>1550402461</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676379</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d90ce682662ad3ccd9a1ac1ef7ac12f</srcmd5>
+    <version>0.0.3</version>
+    <time>1569232971</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.3:
+  * minor color tweaks</comment>
+    <requestid>729487</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc5b590caf7af3c0ab406bdd731b0dca</srcmd5>
+    <version>0.0.5</version>
+    <time>1585265276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786815</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>83ad95d6c037a24a383fd6d99f2122dd</srcmd5>
+    <version>0.1.0</version>
+    <time>1665754816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010380</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6fca9291b3421eedb57e67f7cf5d1c50</srcmd5>
+    <version>0.1.0</version>
+    <time>1682193475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081655</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>acb30b6a1cbb1f348aadcb7ca3ff20b8</srcmd5>
+    <version>0.2.0</version>
+    <time>1683801088</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.0:
+  * Implementation of bright colors
+  * documentation, CI, test fixes</comment>
+    <requestid>1085968</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>476a95e45805367eca0b6b84aa9d823f</srcmd5>
+    <version>0.3.0</version>
+    <time>1694200510</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.0:
+  * Set default style theme
+  * update tests
+
+  * documentation, CI, test fixes
+- Update to version 0.1.0</comment>
+    <requestid>1109534</requestid>
+  </revision>
+</revisionlist>

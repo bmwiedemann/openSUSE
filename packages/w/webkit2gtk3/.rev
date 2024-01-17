@@ -1,0 +1,1596 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>041f31a0e4f0d5aad9134a101edbdfe9</srcmd5>
+    <version>2.6.0</version>
+    <time>1412098794</time>
+    <user>coolo</user>
+    <comment>New package, stable release 2.6.0, dependency to GNOME; the questionable icons have been removed.</comment>
+    <requestid>252265</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5e15a2e991f2689b07d23471ccc17fb0</srcmd5>
+    <version>2.6.1</version>
+    <time>1413383234</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256571</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>598883111809b74c4191e84b5f99f361</srcmd5>
+    <version>2.6.2</version>
+    <time>1414744759</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258548</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3433940cf2168ddf6d740e7e96d463e7</srcmd5>
+    <version>2.6.3</version>
+    <time>1416347089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261566</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4741ca8e4f106d14a3c0e1c7cd510437</srcmd5>
+    <version>2.6.4</version>
+    <time>1419159649</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265686</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>49b8ff1e9a125f463ff43a148f50b41e</srcmd5>
+    <version>2.6.4</version>
+    <time>1421873653</time>
+    <user>coolo</user>
+    <comment>- Add webkitgtk-libatomic.patch: Check if libatomic is needed in
+  order to use std::atomic; fixes build on ppc.</comment>
+    <requestid>282116</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>31730778d888d4bb87aaa8c304aaab5c</srcmd5>
+    <version>2.6.5</version>
+    <time>1422216956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282642</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4ffa04fe6a4797c58819ff73db5f3ad6</srcmd5>
+    <version>2.8.0</version>
+    <time>1427736418</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292845 from dimstar)</comment>
+    <requestid>293029</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>03cc9986cbf553dc1984440a8fb02ef4</srcmd5>
+    <version>2.8.0</version>
+    <time>1428064406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293735</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a1f40a20138ee131b682e434fcd1dfb7</srcmd5>
+    <version>2.8.0</version>
+    <time>1428652175</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295139</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6f3f1d4c20775f429d6c691e557c8ff7</srcmd5>
+    <version>2.8.1</version>
+    <time>1429768926</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298471</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8bc1784c83b975bcd9f0855d577df799</srcmd5>
+    <version>2.8.3</version>
+    <time>1432377865</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308335</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2c8ed3e3b528935a962f3a9c1301303f</srcmd5>
+    <version>2.8.4</version>
+    <time>1437299104</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315906</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>709a1be29158721966fdd6a939e2e3b1</srcmd5>
+    <version>2.8.5</version>
+    <time>1439385001</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321641</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4e8c0e9096dba89064dc3f0de517a42e</srcmd5>
+    <version>2.10.0</version>
+    <time>1444141641</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 332762 from Zaitor)</comment>
+    <requestid>332876</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b0ecc9dd85bebdb49cdbf59cb079172d</srcmd5>
+    <version>2.10.2</version>
+    <time>1445796676</time>
+    <user>coolo</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 339450 from Zaitor)</comment>
+    <requestid>339868</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>76b48d2ef3632e2d326c0a7834a93887</srcmd5>
+    <version>2.10.3</version>
+    <time>1446219349</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 341129 from Zaitor)</comment>
+    <requestid>341334</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ad907f1e3071f7fdcfdcc616b731a7ae</srcmd5>
+    <version>2.10.4</version>
+    <time>1448186324</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343794</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>da8021e287bfb38010639774533795f5</srcmd5>
+    <version>2.10.4</version>
+    <time>1449687752</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346418</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>278153c824523d5ea5af95a841224157</srcmd5>
+    <version>2.10.7</version>
+    <time>1455021066</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357668</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b64bc247ce0953a1b1aaf4de4eba9953</srcmd5>
+    <version>2.12.0</version>
+    <time>1459255566</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 378372 from dimstar)</comment>
+    <requestid>378639</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bf7dfcfbb7fbcd39d2f8f2742c9ba5c2</srcmd5>
+    <version>2.12.1</version>
+    <time>1461854996</time>
+    <user>dimstar_suse</user>
+    <comment>Supersede due to fix for ppc (forwarded request 390284 from Zaitor)</comment>
+    <requestid>390582</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0a6894a0e110f913ad06f32726f2cd7e</srcmd5>
+    <version>2.12.2</version>
+    <time>1462443108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393292</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>81413021aaeee3d1fe4752f0ae1ccc76</srcmd5>
+    <version>2.12.2</version>
+    <time>1463124176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394533</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>23d8004272dcffc40a14b15d93715a6d</srcmd5>
+    <version>2.12.3</version>
+    <time>1467359579</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404169</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1b9c2ea7df7baced37f093c745740212</srcmd5>
+    <version>2.12.4</version>
+    <time>1472246130</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>422516</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b24933555b4a87058a7e25c3c5965135</srcmd5>
+    <version>2.12.5</version>
+    <time>1473409085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424919</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>595485fde1d6b3a03c429e47c9d86f75</srcmd5>
+    <version>2.13.92</version>
+    <time>1474476303</time>
+    <user>dimstar_suse</user>
+    <comment>Shall we go with 2.13.92 for now? (forwarded request 429193 from dimstar)</comment>
+    <requestid>429194</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3f9ee738ede4808f855f32800a32016c</srcmd5>
+    <version>2.14.0</version>
+    <time>1476113566</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>431525</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ccb862b756dfdb44a75e2e927e998c8d</srcmd5>
+    <version>2.14.1</version>
+    <time>1476779755</time>
+    <user>dimstar_suse</user>
+    <comment>Versionbump, resub with tweak for arm6</comment>
+    <requestid>435679</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>331d568f6f675eb3e9408ae8d605537b</srcmd5>
+    <version>2.14.2</version>
+    <time>1478521473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438693</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>8851c552465562b178454a554e42d653</srcmd5>
+    <version>2.14.2</version>
+    <time>1478958512</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend the -lang package with a version: it has close
+  to no effect anyway, as the solver could simply ignore it to
+  find a solution. (forwarded request 439185 from dimstar)</comment>
+    <requestid>439889</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7bf67377edfff92be5c4c3e61d5a897a</srcmd5>
+    <version>2.14.3</version>
+    <time>1485166856</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451204</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7bae3adcd6b1dd1db5ef2caa9bb0ed54</srcmd5>
+    <version>2.14.5</version>
+    <time>1487461211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457401</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1b358d548b0a05a855547e36e6dcb646</srcmd5>
+    <version>2.16.0</version>
+    <time>1490220415</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 481307 from Zaitor)</comment>
+    <requestid>481375</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3c64807a5da0727ce28a0ad12eb69e04</srcmd5>
+    <version>2.16.1</version>
+    <time>1493455705</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 488952 from Zaitor)</comment>
+    <requestid>490190</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9e365fb5042c8c4a8a1af3b2884d83a2</srcmd5>
+    <version>2.16.2</version>
+    <time>1495133039</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 494031 from Zaitor)</comment>
+    <requestid>494224</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2f4a521d8472f036a1c19b1cf0f04d84</srcmd5>
+    <version>2.16.3</version>
+    <time>1496225648</time>
+    <user>dimstar_suse</user>
+    <comment>Supersede, CVE fixes with remote exploits fixed. URGENT.</comment>
+    <requestid>498541</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>012e52de82f194063c6970cce26f087f</srcmd5>
+    <version>2.16.3</version>
+    <time>1496821987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500063</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7390e52915835974814418cd54bf3d14</srcmd5>
+    <version>2.16.4</version>
+    <time>1498202156</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505721</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9910dd271102a674e301965ff0e08c2b</srcmd5>
+    <version>2.16.5</version>
+    <time>1498840833</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 506563 from Zaitor)</comment>
+    <requestid>506745</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>288bcc1a9bd83fa298f761611557b691</srcmd5>
+    <version>2.16.6</version>
+    <time>1501227800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512325</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5c2ed765ffc19147ed3506f498428040</srcmd5>
+    <version>2.18.0</version>
+    <time>1505332258</time>
+    <user>dimstar_suse</user>
+    <comment>Add back patch.. Not fixed yet (forwarded request 523346 from Zaitor)</comment>
+    <requestid>523366</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>42ca4280077963b7760b2842ad89f5b0</srcmd5>
+    <version>2.18.0</version>
+    <time>1505502447</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop gcc6-c++ build conditionals for SLE12 / Leap42. (forwarded request 526245 from zhangxiaofei)</comment>
+    <requestid>526325</requestid>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>d4c6d0bc88504249ec22b97c2de81a59</srcmd5>
+    <version>2.18.0</version>
+    <time>1509104860</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable gold linker on s390/s390x on SLE15/Tumbleweed. (forwarded request 536472 from fcrozat)</comment>
+    <requestid>536618</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4a6eb21e6c47a533548ad6fc5069df03</srcmd5>
+    <version>2.18.2</version>
+    <time>1509614629</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2017-7120, CVE-2017-7142. (forwarded request 537209 from dimstar)</comment>
+    <requestid>537527</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e7a96ae81d999d009e88482efbb9264b</srcmd5>
+    <version>2.18.3</version>
+    <time>1510837011</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.18.3 (forwarded request 540639 from luc14n0)</comment>
+    <requestid>541266</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>416b660b206263da0dc7c7e9ae60f3ff</srcmd5>
+    <version>2.18.3</version>
+    <time>1512546666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>553293</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6307ce97ca27c253f2cbc665b047ed08</srcmd5>
+    <version>2.18.4</version>
+    <time>1514569682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560280</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>df489a609e31cfc30ffd884083200599</srcmd5>
+    <version>2.18.5</version>
+    <time>1516091373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563587</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>902b9d4da81245f35454ca586bbfd36c</srcmd5>
+    <version>2.18.6</version>
+    <time>1516970167</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream rel, not buildtested (forwarded request 569345 from iznogood)</comment>
+    <requestid>569491</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>2e7aac1e12716968b45049ae1e8bf588</srcmd5>
+    <version>2.18.6</version>
+    <time>1517516748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571158</requestid>
+  </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>7c23eade731705bf4b560994deeab848</srcmd5>
+    <version>2.18.6</version>
+    <time>1520502673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582974</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>66dd6f4aeb4aa0e1a6417cd18a731c8e</srcmd5>
+    <version>2.20.0</version>
+    <time>1521052136</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.20.0 (forwarded request 586015 from dimstar)</comment>
+    <requestid>586216</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>af7f05b8d4f861c7c65c1e614d4b1c63</srcmd5>
+    <version>2.20.0</version>
+    <time>1523029797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593940</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>cda80e701d61af8bfd7f0701e729e417</srcmd5>
+    <version>2.20.1</version>
+    <time>1523956405</time>
+    <user>dimstar_suse</user>
+    <comment>- Add webkit2gtk3-boo1088932-a11y-state-set.patch: fix crash when
+  atk_object_ref_state_set is called on an AtkObject that's being
+  destroyed (boo#1088932 webkit#184366). (forwarded request 596005 from mgorse)</comment>
+    <requestid>596172</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>78b78d533dd783563a056ec369e393da</srcmd5>
+    <version>2.20.2</version>
+    <time>1525960056</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable JIT on riscv64 (forwarded request 605454 from Andreas_Schwab)</comment>
+    <requestid>605468</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>98b7484165a960f727ee1afccafb6cd7</srcmd5>
+    <version>2.20.2</version>
+    <time>1527001217</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug reference for CVE-2018-4200 (forwarded request 607324 from mgorse)</comment>
+    <requestid>607330</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>0dac438be9e1b0c491463de4f7a2ab8c</srcmd5>
+    <version>2.20.3</version>
+    <time>1528895664</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616150</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>4c74ac20e7314b8bcb9e7a7bda9274fc</srcmd5>
+    <version>2.20.3</version>
+    <time>1532361468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624328</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>128db6b5d96a442e01e7f092a1e55e14</srcmd5>
+    <version>2.20.5</version>
+    <time>1534321973</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 628864 from iznogood)</comment>
+    <requestid>628898</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>ca7625b2a301170e20f90d6445fa8ba7</srcmd5>
+    <version>2.22.0</version>
+    <time>1536575399</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633228</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>845bc57352d295e7787471a028f176fd</srcmd5>
+    <version>2.22.2</version>
+    <time>1539757376</time>
+    <user>dimstar_suse</user>
+    <comment>- Integrate changes needed for SLE 12 / leap 42.3:
+  + depend on gcc7-c++, and pass appropriate executables to cmake.
+  + Disable web crypto API: libgcrypt is too old.
+  + Define USE_GSTREAMER_GL=FALSE: needs gstreamer 1.10.0 or newer.
+- disable libwoff2 for SLE 15/12 and Leap 15/42.3, since it is not
+  available there. (forwarded request 641080 from mgorse)</comment>
+    <requestid>641196</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>3d59eace38906cc38659276a35dc63cf</srcmd5>
+    <version>2.22.2</version>
+    <time>1540319649</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable building with python 3 for SLE/Leap 15 and Tumbleweed
+- Update webkit2gtk3-python3.patch. (forwarded request 641306 from mgorse)</comment>
+    <requestid>642591</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>4217c0cd977319bcac670cbd8f42c33f</srcmd5>
+    <version>2.22.3</version>
+    <time>1541666765</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, note not build tested (forwarded request 645237 from iznogood)</comment>
+    <requestid>645262</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>a193673c79fa51205fe8934c7ed68cae</srcmd5>
+    <version>2.22.3</version>
+    <time>1542579882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update _constraints to latest values to avoid OOM erros (forwarded request 648422 from Guillaume_G)</comment>
+    <requestid>648876</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>aaf25fa8efbf2d010b233bfe6b4ed81d</srcmd5>
+    <version>2.22.4</version>
+    <time>1543828165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653432</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>ccbaa14918e78e29e856da22d45b04b9</srcmd5>
+    <version>2.22.4</version>
+    <time>1544441020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656173</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>c2eb1eaa7c7ad72c5e32533782aa8e9f</srcmd5>
+    <version>2.22.5</version>
+    <time>1545223677</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 658887 from iznogood)</comment>
+    <requestid>659059</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>1e51b29231efc7be662c966a6be91ddb</srcmd5>
+    <version>2.22.5</version>
+    <time>1545647763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660291</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>545eb3dd1ae0f133e631a56677674f39</srcmd5>
+    <version>2.22.5</version>
+    <time>1546535004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661551</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>71c9e3aeb27ab7f7e1e72812f4767362</srcmd5>
+    <version>2.22.5</version>
+    <time>1547539796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664168</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>588773545d4c9f35ab427e89f69460bf</srcmd5>
+    <version>2.22.6</version>
+    <time>1551024132</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>674757</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>a34746f888d67d0679227f259b6aa4ca</srcmd5>
+    <version>2.22.7</version>
+    <time>1552042805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681422</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>473c1cd92ca7c1b21146c0ec4a79164a</srcmd5>
+    <version>2.24.0</version>
+    <time>1552990004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684880</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>44ff8fe295eb97a088f817ce4629a7c8</srcmd5>
+    <version>2.24.0</version>
+    <time>1553435887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687897</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>730a62e0f42f5a6648ea90eba9ad1e84</srcmd5>
+    <version>2.24.0</version>
+    <time>1554114673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689309</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>521d5c5ea27ff733d0187c10914ac93d</srcmd5>
+    <version>2.24.1</version>
+    <time>1556914794</time>
+    <user>dimstar_suse</user>
+    <comment>Disable LTO (boo#1133291). (forwarded request 697638 from marxin)</comment>
+    <requestid>699593</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>871cc5d66c5f9efd4cb7f95b8a6dab4b</srcmd5>
+    <version>2.24.2</version>
+    <time>1558938593</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 705187 from iznogood)</comment>
+    <requestid>705213</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>1e121392a2c4c2068a93bcc4985e360d</srcmd5>
+    <version>2.24.2</version>
+    <time>1561405557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711470</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>12d0a890d4890dbd5285dfa8d5305444</srcmd5>
+    <version>2.24.3</version>
+    <time>1562590964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713235</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>0702fd327fbdb9431fb71683723d6a9a</srcmd5>
+    <version>2.24.3</version>
+    <time>1563790644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714112</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>213eacd4b250e32b02fc770afb6a0e1d</srcmd5>
+    <version>2.24.3</version>
+    <time>1564135566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717985</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>315ccb880be8e656612fb667e5649973</srcmd5>
+    <version>2.24.4</version>
+    <time>1567580621</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release, resub with CVE tags</comment>
+    <requestid>727306</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>164acc96bde2502223916f9005a97359</srcmd5>
+    <version>2.26.0</version>
+    <time>1568189953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729425</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>5d90dc20469756d96f4ab32391b5f2ef</srcmd5>
+    <version>2.26.1</version>
+    <time>1571309655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733518</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>a93ff2711747dc1682914190c8636688</srcmd5>
+    <version>2.26.2</version>
+    <time>1573419433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.26.2:
+  + Improve performance of querying system fallback fonts.
+  + Don't use prgname in dbus-proxy socket path.
+  + Fix thread-safety issues in image decoders.
+  + Fix the build with WebDriver disabled.
+  + Disable accelerated compositing when we fail to initialize the
+    EGL dispaly under Wayland.
+  + Fill the objects category in emoji picker.
+  + Fix several crashes and rendering issues. (forwarded request 746047 from iznogood)</comment>
+    <requestid>746222</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>de75f3d48516a0f514550cb2092ee7f7</srcmd5>
+    <version>2.26.2</version>
+    <time>1573853453</time>
+    <user>dimstar_suse</user>
+    <comment>- Add webkit2gtk3-icu-build-fix.patch: fix build with icu 65.1. (forwarded request 747647 from mgorse)</comment>
+    <requestid>747649</requestid>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>4726b7a65b5773cfa8dfc457016f7daf</srcmd5>
+    <version>2.26.2</version>
+    <time>1577972390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758317</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>d39612ad4e75b4063019e2cfdddc27dc</srcmd5>
+    <version>2.26.3</version>
+    <time>1579867741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766391</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>98243d3a1d66c4d5c1bad16a1adef1c9</srcmd5>
+    <version>2.26.3</version>
+    <time>1579875491</time>
+    <user>dimstar_suse</user>
+    <comment>Add security fixes into changes (forwarded request 766686 from mgorse)</comment>
+    <requestid>766889</requestid>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>b4f7778d79b4c3904a5f6cbb7873b80f</srcmd5>
+    <version>2.26.3</version>
+    <time>1580205199</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767231 from dimstar)</comment>
+    <requestid>767491</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>8f6067bd3c84e08afcc9348b14cb4a0c</srcmd5>
+    <version>2.26.4</version>
+    <time>1582394521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777060</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>5e650b241dc07d761f6260b62fb805a9</srcmd5>
+    <version>2.28.0</version>
+    <time>1584350153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784411</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>7da1155922e23d9add44ec0c32a7a364</srcmd5>
+    <version>2.28.1</version>
+    <time>1587162546</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>794681</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>67d26b225ea69e0fa6cbc702583748f2</srcmd5>
+    <version>2.28.2</version>
+    <time>1588185782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798363</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>fbcaa21807a3432893251ac8acdd3b76</srcmd5>
+    <version>2.28.2</version>
+    <time>1588324118</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug ref and CVEs to changes (forwarded request 799041 from mgorse)</comment>
+    <requestid>799169</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>fce099401f91ac821d5461208777d08d</srcmd5>
+    <version>2.28.3</version>
+    <time>1595011542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.28.3:
+  + Enable kinetic scrolling with async scrolling.
+  + Fix web process hangs on large GitHub pages.
+  + Bubblewrap sandbox should not attempt to bind empty paths.
+  + Fix threading issues in the media player.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2020-9802, CVE-2020-9803, CVE-2020-9805,
+    CVE-2020-9806, CVE-2020-9807, CVE-2020-9843, CVE-2020-9850,
+    CVE-2020-13753.
+</comment>
+    <requestid>820991</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>166c967b2dbfc556e6c6f5ce6aecfa2e</srcmd5>
+    <version>2.28.4</version>
+    <time>1596727741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.28.4 (boo#1174662): (forwarded request 823473 from mgorse)</comment>
+    <requestid>823594</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>16e11d277911cc41f212906cfe1d56b1</srcmd5>
+    <version>2.28.4</version>
+    <time>1597955079</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-forced-sse.patch, cure execution of illegal instruction
+  in i586 firefox.</comment>
+    <requestid>827290</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>3ade3cf071c2a3fba70466dc83e88730</srcmd5>
+    <version>2.30.0</version>
+    <time>1601043892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.30.0:
+  + Fix NTLM authentication.
+  + Don't try to use SHM on wayland with older wpebackend-fdo.
+  + Fix the build due to seccomp.h header not found.
+- Drop seccomp-build-fix.patch and wpe-shm-check.patch: fixed
+  upstream.
+- Add wpe-shm-check.patch: make SHM initialization fail for
+  wpebackend-fdo &amp;lt; 1.7.0.
+- Add seccomp-build-fix.patch: pass seccomp include directory to
+    g++. 
+- Re-enable bubblewrap sandbox for SLE-15-SP2 and Tumbleweed.
+- Update to version 2.29.92:
+  + Fix user agent header after a redirect when a new quirk is
+    required.
+  + Stop using firefox user agent quirk for google docs.
+  + Fix rendering frames timeline panel in web inspector.
+  + Fix per-thread cpu usage in web inspector.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.91:
+  + Fix a web process crash introduced in 2.29.90.
+- Changes from version 2.29.90:
+  + Fix font variation settings when font smoothing setting is also
+    present.
+  + Fix HTML drag and drop operations.
+  + Fix argument order for clone syscall seccomp filter on s390x.
+  + Fix a crash when selecting text.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.4:
+  + Add support for backdrop filters.
+  + Add support for text-underline-offset and
+    text-decoration-thickness.
+  + Add OpenCDM and AV1 support to media backend.
+  + Add new API to get ITP data summary.
+  + Use mobile user-agent on tablets.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.3:
+  + Add webkit_authentication_request_get_security_origin.
+  + Change the cookies accept policy to always when no-third-party
+    is set and ITP is enabled.
+  + Fix web process hangs on large GitHub pages.
+  + Bubblewrap sandbox should not attempt to bind empty paths.
+  + Add support for sndio to bubblewrap sandbox.
+  + Also handle dark themes when the name ends with -Dark.
+  + Fix a race condition causing a crash in media player.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.2:
+  + Add Intelligent Tracking Prevention (ITP) support.
+  + Add support for video formats in img elements.
+  + Add API to handle video autoplay policy that now defaults to
+    disallow autoplay videos with audio.
+  + Add API to mute a web view.
+  + Add API to allow applications to handle the HTTP authentication
+    credential storage.
+  + Add a WebKitSetting to set the media content types requiring
+    hardware support.
+  + Fix a crash during drag an drop due to a bug introduced in
+    2.29.1.
+  + Do not start page load during animation in back/forward
+    gesture.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.29.1:
+  + Stop using GTK theming to render form controls.
+  + Add API to disable GTK theming for scrollbars too.
+  + Fix several race conditions and threading issues in the media
+    player.
+  + Add USER_AGENT_BRANDING build option.
+  + Add paste as plain text option to the context menu for rich
+    editable content.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Rebase webkit2gtk3-fdo-soname.patch.
+- Add pkgconfig(libsystemd) BuildRequires: new dependency. (forwarded request 834735 from iznogood)</comment>
+    <requestid>836033</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>b01409752f50a295f3d016b42dbdad88</srcmd5>
+    <version>2.30.1</version>
+    <time>1601296110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837832</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>20dae6b145a146969fec5c694aecfaa3</srcmd5>
+    <version>2.30.1</version>
+    <time>1602155437</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable c_loop on aarch64: currently needed for compilation to
+  succeed with JIT disabled. Also disable sampling profiler, since
+  it conflicts with c_loop (boo#1177087). (forwarded request 838863 from mgorse)</comment>
+    <requestid>839602</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>04cfba1afb5878441de21a45f2dda2ab</srcmd5>
+    <version>2.30.2</version>
+    <time>1604054757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844241</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>4c2b1dcc98dee2d39dedaf5f4d18d6b9</srcmd5>
+    <version>2.30.3</version>
+    <time>1606648978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.30.3 (boo#1179122): (forwarded request 850518 from mgorse)</comment>
+    <requestid>851051</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>e074d356b8b879ab637dd013fd474c61</srcmd5>
+    <version>2.30.3</version>
+    <time>1606917945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852625</requestid>
+  </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>128ced82918c780c7e2405f2cfa2298e</srcmd5>
+    <version>2.30.3</version>
+    <time>1607113624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852695</requestid>
+  </revision>
+  <revision rev="108" vrev="4">
+    <srcmd5>9256ca0bce8ed3f02f738b51a5d7d7d6</srcmd5>
+    <version>2.30.3</version>
+    <time>1607548321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853736</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>df83d1b1d1a5519fe591691c9bc5b633</srcmd5>
+    <version>2.30.4</version>
+    <time>1608317536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856370</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>7518f20cd201fe2ecebef875441eba1f</srcmd5>
+    <version>2.30.4</version>
+    <time>1611595380</time>
+    <user>dimstar_suse</user>
+    <comment>- Add webkit-font-scaling.patch: Fix system font scaling not
+  applied to 'font-size: XXXpt'; patch taken from upstream and
+  rebased to apply cleanly
+  (https://bugs.webkit.org/show_bug.cgi?id=218450).
+- Pass `-q` to setup to disable printing long list of files
+  extracted from source tarball. (forwarded request 864423 from iznogood)</comment>
+    <requestid>865372</requestid>
+  </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>1847513d4e2aa45f04c8b7a77d73c244</srcmd5>
+    <version>2.30.4</version>
+    <time>1612011344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866803</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>b3a3940bdc3191b5f32f266760b352bd</srcmd5>
+    <version>2.30.5</version>
+    <time>1613677124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872339</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>92308f69ae3c68df7a689b8d06608c2f</srcmd5>
+    <version>2.30.5</version>
+    <time>1614001184</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update _constraints for armv6/armv7 (forwarded request 873644 from Guillaume_G)</comment>
+    <requestid>873921</requestid>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>7e29c72686db0d572796fa26fd04a29b</srcmd5>
+    <version>2.30.5</version>
+    <time>1614792886</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876240</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>67f99c665f7ca1cecb257070035b2325</srcmd5>
+    <version>2.31.91</version>
+    <time>1618223753</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 881005 from dimstar)</comment>
+    <requestid>881173</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>5a2e0517e7e3bba4863ccdff9956a301</srcmd5>
+    <version>2.32.0</version>
+    <time>1618387769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.32.0 (boo#1184155): (forwarded request 882741 from mgorse)</comment>
+    <requestid>884649</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>7482d2ca3bcf1e4b9632a71790bd3e87</srcmd5>
+    <version>2.32.0</version>
+    <time>1619729084</time>
+    <user>dimstar_suse</user>
+    <comment>- Add webkit2gtk3-icu69.patch: Fix build with ICU 69:
+  + ICU 69 deprecates ubrk_safeClone in favor of ubrk_clone. (forwarded request 888968 from dimstar)</comment>
+    <requestid>888972</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>ae2b6e71099d68e0bf05e42f04230918</srcmd5>
+    <version>2.32.1</version>
+    <time>1621805435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.32.1 (forwarded request 894185 from mgorse)</comment>
+    <requestid>894780</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>e5a3a48a4be9751e00fe1be2e6003ea6</srcmd5>
+    <version>2.32.2</version>
+    <time>1626986584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.32.2 (forwarded request 907348 from mgorse)</comment>
+    <requestid>907575</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>93c561309a9c37e0708581568916384e</srcmd5>
+    <version>2.32.3</version>
+    <time>1627492770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.32.3 (boo#1188697) (forwarded request 908456 from mgorse)</comment>
+    <requestid>908551</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>21d637b2b8263cc141331ac1caca9087</srcmd5>
+    <version>2.32.3</version>
+    <time>1627898695</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires pkgconfig(glproto) for SLE and Leap which have
+  not included the new packaging of the relevant headers. (forwarded request 909027 from yfjiang)</comment>
+    <requestid>909085</requestid>
+  </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>0312f140d0f3c60386b7af69d430847f</srcmd5>
+    <version>2.32.3</version>
+    <time>1628584068</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 910277 from yfjiang)</comment>
+    <requestid>910288</requestid>
+  </revision>
+  <revision rev="123" vrev="4">
+    <srcmd5>7640f879f398be7cfd012cc68937246c</srcmd5>
+    <version>2.32.3</version>
+    <time>1629101318</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912017</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>b94b7d055435a2ee998ad42a411c6007</srcmd5>
+    <version>2.32.4</version>
+    <time>1632522922</time>
+    <user>dimstar_suse</user>
+    <comment>Tweak change log (forwarded request 920661 from mgorse)</comment>
+    <requestid>920816</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>456cd91d20b22bb5961a5dee97aec047</srcmd5>
+    <version>2.34.0</version>
+    <time>1632939498</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libjavascriptcoregtk-4_0-18 and llibwebkit2gtk-4_0-37 to
+  baselibs.conf: provide those libraries as multilib version. (forwarded request 922145 from dimstar)</comment>
+    <requestid>922149</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>5633a3811ea3166a667271d21038dc2b</srcmd5>
+    <version>2.34.1</version>
+    <time>1635023627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.34.1 (forwarded request 926830 from mgorse)</comment>
+    <requestid>926902</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>23bdd8fb35566a33c3f0e0c5cbd24d4e</srcmd5>
+    <version>2.34.1</version>
+    <time>1635628407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927912</requestid>
+  </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>b90b708eb72cf78af678d209ca00dfad</srcmd5>
+    <version>2.34.1</version>
+    <time>1636218925</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pkgconfig(libavif) BuildRequires and pass USE_AVIF=ON to
+  cmake, build avif decoding support.
+- Add wayland-protocols to BuildRequires. (forwarded request 928625 from iznogood)</comment>
+    <requestid>929594</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>b41c1a01d28a11f73d4aca59e1bf979e</srcmd5>
+    <version>2.34.2</version>
+    <time>1638388019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934593</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>bdaff5d2ac568e4e0897bb5b389c335a</srcmd5>
+    <version>2.34.2</version>
+    <time>1639340841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939441</requestid>
+  </revision>
+  <revision rev="131" vrev="3">
+    <srcmd5>ff7a7107a6709a0e37c7d0474e1c0386</srcmd5>
+    <version>2.34.2</version>
+    <time>1639685928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940489</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>551d1fcf3349c2fee5e8d4629e9dcd76</srcmd5>
+    <version>2.34.3</version>
+    <time>1640200674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941900</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>e42be7331635390131adfe66422897ae</srcmd5>
+    <version>2.34.3</version>
+    <time>1640278420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942253</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>a434fc94f79c7347aae2cbed832c042d</srcmd5>
+    <version>2.34.4</version>
+    <time>1642936521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947965</requestid>
+  </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>77969a631eba3138ff25a0d911a4a66f</srcmd5>
+    <version>2.34.4</version>
+    <time>1643321788</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with gcc12</comment>
+    <requestid>949126</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>ade340bf52b36784dcac67ff057c39a3</srcmd5>
+    <version>2.34.5</version>
+    <time>1644531107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953076</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>d2b92c3aed2d5c20d72011ada8d448a1</srcmd5>
+    <version>2.34.6</version>
+    <time>1645221765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955689</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>796c1be6d092c5bccbf447002b3db884</srcmd5>
+    <version>2.34.6</version>
+    <time>1645461992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956053</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>f33d9a9a328f6e30ac875f915bd4c646</srcmd5>
+    <version>2.36.0</version>
+    <time>1648063028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964034</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>63021363c46372781d1393e9a6848abe</srcmd5>
+    <version>2.36.0</version>
+    <time>1649093149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966180</requestid>
+  </revision>
+  <revision rev="141" vrev="3">
+    <srcmd5>188c23210a0084616f3494e9edd76f18</srcmd5>
+    <version>2.36.0</version>
+    <time>1649610320</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop webkit2gtk3-gcc12.patch. It isn't needed anymore, since the
+  relevant gcc change has been reverted for now.
+- Update some minimum version requirements to match cmake checks.
+- Remove build requirements on geoclue and libbrotlidec: they are
+  no longer build-time dependencies. Add geoclue2 to Recommends. (forwarded request 967369 from mgorse)</comment>
+    <requestid>967855</requestid>
+  </revision>
+  <revision rev="142" vrev="4">
+    <srcmd5>48546f45627ecc97f24675c755e3925f</srcmd5>
+    <version>2.36.0</version>
+    <time>1649793016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969238</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>a4b1a2a50ad8259f2c13b7a4a14d2df4</srcmd5>
+    <version>2.36.1</version>
+    <time>1650735902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.36.1 (forwarded request 971930 from mgorse)</comment>
+    <requestid>972029</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>d7a50e444b9037a124c9c170998d83ec</srcmd5>
+    <version>2.36.1</version>
+    <time>1651669832</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on binutils-gold as the package will be removed
+  in the future. Gold linker is unmaintained by the upstream project. (forwarded request 974345 from marxin)</comment>
+    <requestid>974348</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>6ea873c622f5275036cee9a859958a13</srcmd5>
+    <version>2.36.2</version>
+    <time>1653417050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.36.2 (forwarded request 978330 from mgorse)</comment>
+    <requestid>978664</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>d631724dfe2b8a76ac51afd77979cbb3</srcmd5>
+    <version>2.36.3</version>
+    <time>1654097629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.36.3 (forwarded request 979860 from mgorse)</comment>
+    <requestid>980019</requestid>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>427caac26106af3670fc0ee4be6f3417</srcmd5>
+    <version>2.36.3</version>
+    <time>1654099712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980385</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>9ad9204daf802154bdc7fffe3d1dd2cb</srcmd5>
+    <version>2.36.4</version>
+    <time>1657191378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987149</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>0bbb50c970ae939635a3242a15360a0e</srcmd5>
+    <version>2.36.5</version>
+    <time>1659470913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991753</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>99dc8a5afa23b68f90ead3ca0d818258</srcmd5>
+    <version>2.36.6</version>
+    <time>1660144364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993931</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>dce97f8b53c32ec5091b96340f8f2c2f</srcmd5>
+    <version>2.36.7</version>
+    <time>1661685133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999535</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>f315f8e0bb1822d960ed75d943052ebd</srcmd5>
+    <version>2.38.0</version>
+    <time>1663764010</time>
+    <user>dimstar_suse</user>
+    <comment>New stable</comment>
+    <requestid>1004770</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>a0d8ca1547f1f4475f6a2a0abb7fcbbc</srcmd5>
+    <version>2.38.1</version>
+    <time>1666871590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030949</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>fc4046943e5382027d8a15a725491a6c</srcmd5>
+    <version>2.38.2</version>
+    <time>1667994972</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, tweaked .changes from the past (forwarded request 1034358 from iznogood)</comment>
+    <requestid>1034432</requestid>
+  </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>3da23e4869fe0a6ee9a1f31929f6e2bd</srcmd5>
+    <version>2.38.2</version>
+    <time>1668702244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036474</requestid>
+  </revision>
+  <revision rev="156" vrev="3">
+    <srcmd5>def4bc889ef39f9937965bb8dad5d8c6</srcmd5>
+    <version>2.38.2</version>
+    <time>1671209467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043130</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>b9f26174180bb3c3567b8775d53f94e6</srcmd5>
+    <version>2.38.3</version>
+    <time>1671889871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.38.3 (boo#1206474) (forwarded request 1044338 from mgorse)</comment>
+    <requestid>1044372</requestid>
+  </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>0ea3213ccf0722590e675d4b85d29706</srcmd5>
+    <version>2.38.3</version>
+    <time>1672852223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046552</requestid>
+  </revision>
+  <revision rev="159" vrev="3">
+    <srcmd5>83a8103e571787211acda17dc2d9a757</srcmd5>
+    <version>2.38.3</version>
+    <time>1674932421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061605</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>24834eba171b9ded20ca74c3b550f228</srcmd5>
+    <version>2.38.4</version>
+    <time>1675792055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.38.4 (forwarded request 1062689 from mgorse)</comment>
+    <requestid>1063404</requestid>
+  </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>a921efab0f2a66a2198405a88331ba6d</srcmd5>
+    <version>2.38.4</version>
+    <time>1675873203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063684</requestid>
+  </revision>
+  <revision rev="162" vrev="3">
+    <srcmd5>d59d2ca2c5e2ccc174b35ac84ef74e6c</srcmd5>
+    <version>2.38.4</version>
+    <time>1676389382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065580</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>bec13e13947b092370b5e42a34a55bf2</srcmd5>
+    <version>2.38.5</version>
+    <time>1676648642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066215</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>9300e2bfe415751f89632461e88afbc3</srcmd5>
+    <version>2.40.0</version>
+    <time>1679667485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073476</requestid>
+  </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>30e8aab219f81dec2224ea0acc841d5c</srcmd5>
+    <version>2.40.0</version>
+    <time>1680125200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074655</requestid>
+  </revision>
+  <revision rev="166" vrev="3">
+    <srcmd5>33648b02420a52c7bf238e1c488f059c</srcmd5>
+    <version>2.40.0</version>
+    <time>1680635824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076879</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>45a6561f8e4d161fb48e626eb20eb221</srcmd5>
+    <version>2.40.1</version>
+    <time>1682193790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082105</requestid>
+  </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>f46fa186ee97ae20a16915faa959d760</srcmd5>
+    <version>2.40.2</version>
+    <time>1685830310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090276</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>5be5a8e67f8b389d55aaa206812039bb</srcmd5>
+    <version>2.40.3</version>
+    <time>1688147875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095866</requestid>
+  </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>bce666b0134553b56c1cce1db000ab74</srcmd5>
+    <version>2.40.3</version>
+    <time>1689175597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098193</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>afa35c02903a367e262e856d37846fe8</srcmd5>
+    <version>2.40.4</version>
+    <time>1690215114</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100037</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>49c1651cf384eb308b9cbfe0ff940951</srcmd5>
+    <version>2.40.5</version>
+    <time>1691332169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102480</requestid>
+  </revision>
+  <revision rev="173" vrev="2">
+    <srcmd5>765bb6c1d3d7a1822b8496e92004aa4f</srcmd5>
+    <version>2.40.5</version>
+    <time>1693570913</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108346</requestid>
+  </revision>
+  <revision rev="174" vrev="3">
+    <srcmd5>963b3e31b83817fd0ec42f856a24e307</srcmd5>
+    <version>2.40.5</version>
+    <time>1694019326</time>
+    <user>anag+factory</user>
+    <comment>Expand lang sub-packages unconditionally to handle previous name change of WebKit2GTK-lang to WebKitGTK-lang  (boo#1214835, boo#1214640)</comment>
+    <requestid>1108740</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>e720a243c4aff842d2d981be36de42d3</srcmd5>
+    <version>2.42.0</version>
+    <time>1695208914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111687</requestid>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>c058486bdff56ad90c610d10a90d2d94</srcmd5>
+    <version>2.42.1</version>
+    <time>1696356914</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114711</requestid>
+  </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>4868a2ea5c4cd169142a534f43bfc976</srcmd5>
+    <version>2.42.1</version>
+    <time>1697061227</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116551</requestid>
+  </revision>
+  <revision rev="178" vrev="3">
+    <srcmd5>29ae284fab797b51fd6b3be827bd176e</srcmd5>
+    <version>2.42.1</version>
+    <time>1698333102</time>
+    <user>anag+factory</user>
+    <comment>Resub with less whitespace
+
+- Add webkit2gtk3-create-destroy-egl-image.patch: fix &quot;No provider
+  of EglDestroyImage Found&quot; (boo#1216483). (forwarded request 1119870 from iznogood)</comment>
+    <requestid>1120255</requestid>
+  </revision>
+  <revision rev="179" vrev="4">
+    <srcmd5>fcef74526e32ddaefe448dd41732bdd5</srcmd5>
+    <version>2.42.1</version>
+    <time>1699183111</time>
+    <user>anag+factory</user>
+    <comment>- Add webkit2gtk3-disable-dmabuf-nvidia.patch: disable DMABuf
+  renderer for NVIDIA proprietary drivers (boo#1216778). (forwarded request 1121694 from mgorse)</comment>
+    <requestid>1123045</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>193c67217afd3d1e69fa781cfde29392</srcmd5>
+    <version>2.42.2</version>
+    <time>1700421249</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.42.2 (boo#1217210):
+  + Bump Safari version in user agent header. (forwarded request 1126960 from mgorse)</comment>
+    <requestid>1127343</requestid>
+  </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>1afceb03549829eb54a3b4e5bbc803ec</srcmd5>
+    <version>2.42.2</version>
+    <time>1700771927</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128051</requestid>
+  </revision>
+  <revision rev="182" vrev="3">
+    <srcmd5>5365a5ab0065cbfcf936f1bf6b4de843</srcmd5>
+    <version>2.42.2</version>
+    <time>1701289171</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129594</requestid>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>ac9ec4fa8b2e48e407ad13f935158b08</srcmd5>
+    <version>2.42.3</version>
+    <time>1702071084</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131636</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>120cf7223dcaa40b01ae7bb734a7827d</srcmd5>
+    <version>2.42.4</version>
+    <time>1702936528</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133816</requestid>
+  </revision>
+</revisionlist>

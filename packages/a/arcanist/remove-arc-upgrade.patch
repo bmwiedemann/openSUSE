@@ -1,0 +1,22 @@
+diff --git a/src/__phutil_library_map__.php b/src/__phutil_library_map__.php
+index 97fb2cdd..9a582a63 100644
+--- a/src/__phutil_library_map__.php
++++ b/src/__phutil_library_map__.php
+@@ -482,7 +482,7 @@ phutil_register_library_map(array(
+     'ArcanistUnnecessarySymbolAliasXHPASTLinterRuleTestCase' => 'lint/linter/xhpast/rules/__tests__/ArcanistUnnecessarySymbolAliasXHPASTLinterRuleTestCase.php',
+     'ArcanistUnsafeDynamicStringXHPASTLinterRule' => 'lint/linter/xhpast/rules/ArcanistUnsafeDynamicStringXHPASTLinterRule.php',
+     'ArcanistUnsafeDynamicStringXHPASTLinterRuleTestCase' => 'lint/linter/xhpast/rules/__tests__/ArcanistUnsafeDynamicStringXHPASTLinterRuleTestCase.php',
+-    'ArcanistUpgradeWorkflow' => 'workflow/ArcanistUpgradeWorkflow.php',
++    //'ArcanistUpgradeWorkflow' => 'workflow/ArcanistUpgradeWorkflow.php',
+     'ArcanistUploadWorkflow' => 'workflow/ArcanistUploadWorkflow.php',
+     'ArcanistUsageException' => 'exception/ArcanistUsageException.php',
+     'ArcanistUseStatementNamespacePrefixXHPASTLinterRule' => 'lint/linter/xhpast/rules/ArcanistUseStatementNamespacePrefixXHPASTLinterRule.php',
+@@ -1474,7 +1474,7 @@ phutil_register_library_map(array(
+     'ArcanistUnnecessarySymbolAliasXHPASTLinterRuleTestCase' => 'ArcanistXHPASTLinterRuleTestCase',
+     'ArcanistUnsafeDynamicStringXHPASTLinterRule' => 'ArcanistXHPASTLinterRule',
+     'ArcanistUnsafeDynamicStringXHPASTLinterRuleTestCase' => 'ArcanistXHPASTLinterRuleTestCase',
+-    'ArcanistUpgradeWorkflow' => 'ArcanistArcWorkflow',
++    //'ArcanistUpgradeWorkflow' => 'ArcanistArcWorkflow',
+     'ArcanistUploadWorkflow' => 'ArcanistArcWorkflow',
+     'ArcanistUsageException' => 'Exception',
+     'ArcanistUseStatementNamespacePrefixXHPASTLinterRule' => 'ArcanistXHPASTLinterRule',

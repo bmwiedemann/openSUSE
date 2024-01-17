@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Wed Oct 26 12:57:04 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gtkgreet-glib-2.74.patch: Fix build against glib 2.74.0.
+
+-------------------------------------------------------------------
+Sat Feb 20 17:05:05 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to 0.7 This release includes the ability to style gtkgreet with 
+stylesheets and background images, automatic gtk-layer-shell detection, 
+and a few other improvements.
+  * Fix --command argument for builds without layer-shell
+  * Use layer-shell anchors to fill the screen
+  * Add support for user CSS styles.
+  * man changes for --style option
+  * Convert -Dlayershell to 'feature'
+  * Remove action_quit
+  * Add support for background images
+  * man: Document the background image flag
+  * Remove gtk-application-prefer-dark-theme
+  * ci: Disable automatic github mirroring
+- workaround i586 build failure with CFLAGS for now (reported to author)
+
+-------------------------------------------------------------------
+Mon Sep  7 16:24:45 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- Initial package gtkgreet version 0.6

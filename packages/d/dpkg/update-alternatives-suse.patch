@@ -1,0 +1,70 @@
+From 8cad1e2d4d20f76383a424aa85ebd3bc3a51487a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Mon, 3 Jan 2022 13:19:00 +0100
+Subject: [PATCH 3/4] update-alternatives-suse
+
+---
+ man/update-alternatives.pod   |  8 ++++----
+ utils/Makefile.am             | 10 +++++-----
+ utils/t/update_alternatives.t |  4 ++--
+ utils/update-alternatives.c   |  2 +-
+ 4 files changed, 12 insertions(+), 12 deletions(-)
+
+Index: dpkg-1.22.1/man/update-alternatives.pod
+===================================================================
+--- dpkg-1.22.1.orig/man/update-alternatives.pod
++++ dpkg-1.22.1/man/update-alternatives.pod
+@@ -85,8 +85,8 @@ installed, changed or removed,
+ B<update-alternatives>
+ is called to update information about that file in the alternatives system.
+ B<update-alternatives>
+-is usually called from the following Debian package maintainer scripts,
+-B<postinst>
++is usually called from the following SUSE package maintainer scripts,
++B<post>
+ (configure) to install the alternative and from
+ B<prerm> and B<postrm>
+ (remove) to remove the alternative.
+Index: dpkg-1.22.1/utils/Makefile.am
+===================================================================
+--- dpkg-1.22.1.orig/utils/Makefile.am
++++ dpkg-1.22.1/utils/Makefile.am
+@@ -47,8 +47,8 @@ update_alternatives_SOURCES = \
+ 
+ update_alternatives_CPPFLAGS = \
+ 	-DALT_TMP_EXT=\".dpkg-tmp\" \
+-	-DADMINDIR_ENVVAR=\"DPKG_ADMINDIR\" \
+-	-DINSTDIR_ENVVAR=\"DPKG_ROOT\" \
++	-DADMINDIR_ENVVAR=\"RPM_ADMINDIR\" \
++	-DINSTDIR_ENVVAR=\"RPM_ROOT\" \
+ 	$(AM_CPPFLAGS) \
+ 	# EOL
+ 
+@@ -85,9 +85,9 @@ uninstall-local:
+ 	rm -f $(DESTDIR)$(sysconfdir)/alternatives/README
+ 
+ TEST_ENV_VARS = \
+-	DPKG_DATADIR=$(top_srcdir)/data \
+-	UA_ROOTDIR_ENVVAR=DPKG_ROOT \
+-	UA_ADMINDIR_ENVVAR=DPKG_ADMINDIR \
++	RPM_DATADIR=$(top_srcdir)/data \
++	UA_ROOTDIR_ENVVAR=RPM_ROOT \
++	UA_ADMINDIR_ENVVAR=RPM_ADMINDIR \
+ 	UA_ADMINDIR_DEFAULT=$(admindir) \
+ 	# EOL
+ 
+Index: dpkg-1.22.1/utils/t/update_alternatives.t
+===================================================================
+--- dpkg-1.22.1.orig/utils/t/update_alternatives.t
++++ dpkg-1.22.1/utils/t/update_alternatives.t
+@@ -32,8 +32,8 @@ my $bindir = File::Spec->rel2abs("$tmpdi
+ my @ua = ("$ENV{builddir}/update-alternatives", '--log', '/dev/null',
+           '--quiet', '--admindir', "$admindir", '--altdir', "$altdir");
+ 
+-my $rootdir_envvar = $ENV{UA_ROOTDIR_ENVVAR} // 'DPKG_ROOT';
+-my $admindir_envvar = $ENV{UA_ADMINDIR_ENVVAR} // 'DPKG_ADMINDIR';
++my $rootdir_envvar = $ENV{UA_ROOTDIR_ENVVAR} // 'RPM_ROOT';
++my $admindir_envvar = $ENV{UA_ADMINDIR_ENVVAR} // 'RPM_ADMINDIR';
+ 
+ delete $ENV{$rootdir_envvar};
+ delete $ENV{$admindir_envvar};

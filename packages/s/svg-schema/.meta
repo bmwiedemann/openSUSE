@@ -1,0 +1,11 @@
+<package name="svg-schema" project="openSUSE:Factory">
+  <title>SVG DTDs and Documentation</title>
+  <description>Contains the following DTDs:
+
+* &quot;Scalable Vector Graphics&quot; (SVG) 1.0 Specification, W3C
+   Recommendation 04 September 2001.
+
+* &quot;Scalable Vector Graphics&quot; (SVG) 1.1 Specification, W3C
+Recommendation 14 January 2003</description>
+  <devel project="Publishing" package="svg-schema"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="orthanc-dicomweb" project="openSUSE:Factory">
+  <title>DICOMweb plugin</title>
+  <description>DICOMweb plugin that introduces a basic, reference implementation of WADO-URI, WADO-RS, QIDO-RS and STOW-RS (for the DICOM web protocol today a standard in PACS)</description>
+  <devel project="graphics" package="orthanc-dicomweb"/>
+</package>

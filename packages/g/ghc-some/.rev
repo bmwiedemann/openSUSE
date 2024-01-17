@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15cfa24579a296140910b4509c84d2a9</srcmd5>
+    <version>1.0.3</version>
+    <time>1618061235</time>
+    <user>RBrownSUSE</user>
+    <comment>new haskell package</comment>
+    <requestid>883516</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c9b49e12e4a6212b6025870bb8443b9</srcmd5>
+    <version>1.0.3</version>
+    <time>1636663019</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930362</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>06793172c1e6fa57e0f34d0aff328b34</srcmd5>
+    <version>1.0.3</version>
+    <time>1639931689</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934291</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>effa0755eb3d3d5e209d0b707e082509</srcmd5>
+    <version>1.0.4</version>
+    <time>1659382233</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987092</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>304023329c6b6975e6037a6557f448b6</srcmd5>
+    <version>1.0.4.1</version>
+    <time>1665668653</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1009713</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2feab2c0a3ea1bb85d88af71a3118ca2</srcmd5>
+    <version>1.0.5</version>
+    <time>1680636201</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076049</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>73c96d041b611b45ead618586c35166e</srcmd5>
+    <version>1.0.5</version>
+    <time>1697657163</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118486</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ef211425105b373f7b004e5cc1ba79c1</srcmd5>
+    <version>1.0.6</version>
+    <time>1700772042</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1128084</requestid>
+  </revision>
+</revisionlist>

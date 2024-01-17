@@ -1,0 +1,6 @@
+<package name="libzapojit" project="openSUSE:Factory">
+  <title>libzapojit</title>
+  <description>GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs</description>
+  <devel project="GNOME:Factory" package="libzapojit"/>
+  <url>http://download.gnome.org/sources/libzapojit</url>
+</package>

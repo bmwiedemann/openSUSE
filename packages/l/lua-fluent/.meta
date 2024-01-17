@@ -1,0 +1,10 @@
+<package name="lua-fluent" project="openSUSE:Factory">
+  <title>Lua implementation of Project Fluent</title>
+  <description>A Lua implementation of Project Fluent, a localization paradigm designed
+to unleash the entire expressive power of natural language translations.
+Fluent is a family of localization specifications, implementations and
+good practices developed by Mozilla who extracted parts of their 'l20n'
+solution (used in Firefox and other apps) into a re-usable specification.</description>
+  <devel project="devel:languages:lua" package="lua-fluent"/>
+  <url>https://github.com/alerque/fluent-lua</url>
+</package>

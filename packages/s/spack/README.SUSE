@@ -1,0 +1,21 @@
+openSUSE/SUSE specific Settings =============================================
+
+The packages build by a regular user are stored in the home directory and so
+only available for this user.  When the packages should be available for all
+users on a system, the user who builds the packages, must be able to write to
+the global spack user directories under /usr/lib/spack/ Packages stored under
+this path are available for all user via lmod.
+
+To add a user to the group spack so that he can write to the global spack
+directory, execute (as root):
+
+ # usermod -a -G spack <user_login>
+
+and change the setting for 'install_tree:' to the global spack directory in the
+configuration '~/.spack/config.yaml' for this user.
+ 
+ 
+NOTE:
+
+As the recipes are contributed by the spack community and rely also on external
+packages, a signification part of the recipes may fail to create packages.

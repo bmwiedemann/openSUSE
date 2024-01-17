@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7866b8d1e27cbb9133531f558b279798</srcmd5>
+    <version>0.3_beta7</version>
+    <time>1503592903</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>512245</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d225293b673f3cfb2a8cf913920df231</srcmd5>
+    <version>0.3_beta7</version>
+    <time>1519902466</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner:
+  * Use spdx-3.0
+  * Mark license as such</comment>
+    <requestid>580981</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1cf390adb2c16d61ef074f721e5793be</srcmd5>
+    <version>0.5.1</version>
+    <time>1582899725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url
+- Drop no longer needed patches:
+  * netdiscover-fix-spelling-binary.patch
+  * netdiscover-fix-manpage.patch
+  * netdiscover-fix-makefile.patch
+  * netdiscover-update-oui.patch
+- Update to version 0.5.1:
+  * Added an official repository notice in README.
+  * Added dates of releases in ChangeLog.
+  * Added some copyright notices.
+  * Several important fixes and improvements in manpage and help page.
+- For changes for previous releses see provided Changelog</comment>
+    <requestid>780195</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>abafee7c9a34fc8477e6c084f8e34f29</srcmd5>
+    <version>0.6</version>
+    <time>1589315578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6:
+  * Fix build with GCC 10. (Jaime PeÃ±alba)</comment>
+    <requestid>802849</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>487c1bcf7af155ce66ffe5624031347c</srcmd5>
+    <version>0.7</version>
+    <time>1597390418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7:
+  * Updated create-man.sh to 2.0 version.
+  * Updated manpage dates.
+  * Updated update-oui-database.sh to be useful in macOS.
+  * Updated OUI table.</comment>
+    <requestid>826270</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9a3c9ed460b063b66683a1053a2c52b4</srcmd5>
+    <version>0.7</version>
+    <time>1608221154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update minimal requirement for libnet
+- Fix usage of hwdata oui</comment>
+    <requestid>856631</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4d083559958a481128033289975fdacf</srcmd5>
+    <version>0.8</version>
+    <time>1634331830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8:
+  * Changed PCAP_TOUT from 0 to 512 in src/ifaces.h, to avoid no
+    results whe scanning with CIDR /24 if netdiscover is being
+    built with libpcap &gt;= 1.10.</comment>
+    <requestid>925238</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>144395302ae7150a0e6a5796e271099a</srcmd5>
+    <version>0.8.1</version>
+    <time>1636577203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930641</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>06aca19ec82214e2a8c66b937b26dfc0</srcmd5>
+    <version>0.9</version>
+    <time>1647458492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9:
+  * ifaces: process_packet: Return if source MAC address matches
+    host MAC.</comment>
+    <requestid>962179</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>43d26580043c2c5cc4a931801396865f</srcmd5>
+    <version>0.10</version>
+    <time>1670333096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040604</requestid>
+  </revision>
+</revisionlist>

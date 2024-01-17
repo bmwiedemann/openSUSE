@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">hg</param>
+		<param name="url">http://hg.libsdl.org/SDL_image/</param>
+		<param name="revision">SDL-1.2</param>
+		<param name="versionformat">1.2.12+hg{rev}</param>
+		<!-- boo#508084 -->
+		<param name="exclude">VisualC*</param>
+		<param name="exclude">Xcode*</param>
+		<param name="exclude">Watcom*</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Mon Oct 31 11:14:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add streamz-pr455-ci-fixes.patch
+  *  gh#python-streamz/streamz#455
+- Drop support-new-distributed.patch
+
+-------------------------------------------------------------------
+Thu Aug 25 05:00:02 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.4:
+  * No upstream changelog.
+- Drop patch streamz-pr434-asyncdask.patch:
+  * Included upstream.
+- Add patch support-new-distributed.patch:
+  * Also import cleanup when using loop, since distributed forces
+    calling it in your own context now.
+- Ignore graph tests due to weird failures.
+
+-------------------------------------------------------------------
+Sun Mar 27 19:30:39 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
+
+- Reenable tests with dask on python310
+
+-------------------------------------------------------------------
+Sun Feb  6 18:06:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.3
+  * no release notes
+- Add streamz-pr434-asyncdask.patch
+  * gh#python-streamz/streamz#434
+  * gh#python-streamz/streamz#439
+- Don't test with dask on python310: not supported yet
+- Enable test suite: cannot use ifarch in noarch package
+- Add streamz-opensuse-python-exec.patch
+
+-------------------------------------------------------------------
+Sun Feb 14 14:07:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (no networkx anymore) 
+
+-------------------------------------------------------------------
+Sat Oct 10 19:21:44 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.6.0:
+  * Fixed outdated docstring
+  * Merge pull request #362 from jbednar/docfixes
+  * Merge pull request #363 from jbednar/periodicdataframe
+  * Update docs/source/dataframes.rst
+  * Replaced system time with Pandas Timestamp
+  * Replaced system time with Pandas Timestamp
+  * Update docs/source/dataframes.rst
+  * Fixed flakes
+  * Added test_periodic_dataframes
+  * Replaced Tornado references with asyncio
+  * Updated dataframe docs
+  * Switched callbacks to use kwargs
+  * Added PeriodicDataFrame to the API docs
+  * Reformatted .rst files for 80 characters
+  * Fixed typos and formatting
+  * Fixed outdated or missing docs conf
+  * flake
+  * Added PeriodicDataFrame
+  * Added plotting section to the user guide
+  * Fixed typos
+
+- changes from version 0.5.6:
+  * Merge pull request #360 from chinmaychandak/windowing_fix
+  * Add empty windowing index test and fix TODO
+  * Windowing fix conforming to Pandas
+  * Style fix
+  * Windowing over n fix
+  * Change delta to nanosecond
+  * Revert npartitions elimination
+  * Fix windowing over time operations
+  * Remove print statement
+  * Remove npartitions parameter for CK -- to do for custreamz.kafka
+  * Merge pull request #288 from jdye64/287
+  * Merge pull request #349 from
+    nils-braun/bugfix/336-problematic-dicts
+  * Merge pull request #350 from martindurant/fix_example_notebook
+  * Update for hvplot
+  * Use f-strings
+  * Fix typo
+  * Fix #336 by wrapping every object with a known key
+  * Add a test which fails on scattering dicts, as dask treats dicts
+    differently
+
+-------------------------------------------------------------------
+Sat Aug 15 17:02:26 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.5.5:
+  * Uniform indentation in pytest parameterize
+  * Remove test case with overlapping index
+  * Cleanup
+  * Update is_dataframe_like function
+  * Update docstring for custreamz accelerated Kafka reader
+
+- changes from version 0.5.4:
+  * CodeCov
+  * Cleanup
+  * Add flaky marker for tests
+  * Change variable to with_state, add doc strings
+  * Retrigger + Cleanup
+  * Additional tests for codecov
+  * Flake8 remove ambigious variable name
+  * Remove unnecessary timedelta cast
+  * Docs indentation fix
+  * Fix groupby-mean and add individual groupby-start state for
+    sdf.groupby.agg({}) patterns
+  * Add pd.Timedelta for cudf compatibility
+  * Cleanup unnecessary parameters for start state
+  * Fix flake8
+  * Fix placement of tests
+  * Add spaces
+  * Remove empty lines
+  * Remove print statement
+  * Remove dask-workerspaces
+  * Fix indent
+  * Uncomment rolling aggs tests
+  * Correct order of parameters in rolling SDF
+  * Windowed-groupby aggs with start parameter and a test
+  * Window aggs with start parameter and a test
+  * Simpler parameters — Rolling aggs with start stateand tests
+  * Rolling aggs with start stateand tests
+  * Tests for groupby-aggs and reductions with start state
+  * Groupby aggs & simple aggs SDF start parameter added
+  * Merge pull request #331 from chinmaychandak/kafka_cudf_ck
+  * Update doc string
+  * Elaborate temporary steps to install custreamz
+  * Update doc string for accelerated Kafka datasource (2)
+  * Update doc string links
+  * Add pragma no cover to .coveragerc
+  * Badge for gpuCI, elaborate doc string, no-coverage for GPU
+    branches
+  * Remove ValueError
+  * Revert async test changes
+  * updated Dockerfile based on feedback to use conda for wget and vim
+    installs instead of OS package manager
+  * Remove incorrect package from yml file
+  * Move to Python 3.7
+  * Cleanup dask workerspace
+  * Add pytest-tornasync to dependencies
+  * Fix new line
+  * Remove dask locks
+  * Add async def to Dask test with @gen_cluster
+  * Formatting
+  * Remove print statments and bare excepts
+  * Fix indent
+  * reuse metadata() util in test_unique_metadata test
+  * pass metadata when using LRU too, fixes #327
+
+-------------------------------------------------------------------
+Sat Apr 25 16:26:25 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * be more specific in %files section
+  * updated url
+  * use %pytest macro
+
+- update to version 0.5.3:
+  * fix some streams overwriting Stream.buffer method closes #317
+  * Fixed flake8 issue and added comments to metadata tests
+  * Created more elegant solution for getting the metadata out of the
+    stream for tests
+  * make sure collection functions emit metadata as a flat list added
+    tests for metadata output
+  * Use only auto.offset.reset for latest functionality; add doc links
+  * Fix key error in consumer configs
+  * Consider Kafka consumer configurations
+  * Revert multi-kafka changes
+  * Multi-kafka failover
+  * Fix test for latest parameter
+  * Add the latest parameter to from_kafka_batched
+  * Add max_batch_size test
+  * Add max_batch_size parameter to from_kafka_batched
+  * Fix key tests
+  * Adding keys PR code again
+  * Fix collections.abc deprecation warnings
+  * Added documentation for Metadata and reference counting.
+  * Removed keys parameter from Kafka code and fixed Kafka tests
+  * Added documentation and cleaned up reference counter code
+  * Added reference counting and Kafka checkpointing
+  * Add keys to from_kafka_batched doc string
+  * Make extracting Kafka keys optional
+  * Fix rolling aggregate test to increase coverage
+  * Make Kafka message key,value a dict output
+  * Removing deprecated usage of renaming columns with agg()
+  * Fix pandas warning for deprecated usage of pd.DatetimeIndex
+  * Correctly forming key, value tuples for Kafka messages
+  * Update Kafka tests to incorporate message key
+  * Read key along with value for messages from Kafka
+  * Add reference to cuDF DataFrames support
+  * Update links to rst format
+  * Add reference to cuDF DataFrames support
+  * Update dataframes.rst
+  * STREAMZ-293: Added vscode to list of gitignore directories. This
+    closes# 293
+  * Update core.rst
+  * Update core.py
+  * Configured Travis CI to use the new conda environment file instead
+    of manually installing them. Also added a few more dependencies to
+    the environment file that were missed
+  * Removed cython from conda environment file as it was left their by
+    mistake
+  * Added docs requirements to conda environment file
+  * Added base Conda environment yml file
+  * fix networkx error
+  * add installation docs
+  * fix stale docstring in `streamz.unique`.
+  * Remove cudf tests, since they would now live to
+    RAPIDS/cudf/custreamz.
+  * Fix directory structure for checkpointing (2)
+  * Added cleanup of old checkpoints
+  * Add directory structure for checkpointing
+  * Checkpointing feature added
+  * Add groupby aggregate tests, along with a few additons for cudf
+    integration for SDFs
+  * Update build status image url in readme
+  * update url in setup
+
+-------------------------------------------------------------------
+Fri Sep 13 15:04:15 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.2
+  * Remove unwanted Dask Dataframe test in dataframe utils tests.
+  * cudf tests for rolling aggregations
+  * More flexible _ipython_display_
+  * use _remove_downstream for slice
+  * add docs and fix buffered nodes
+  * FIX: connect doesn't break zip now
+  * proper link for spark streaming
+  * handle unique maxsize properly
+  * add history test and change history to maxsize
+  * use hashable kwarg
+  * allow non hashable data to be used in unique
+  * Remove xfail for a rolling test.
+- Drop python2 support due to dependencies dropping python2 support
+
+-------------------------------------------------------------------
+Mon Jan 21 03:55:19 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

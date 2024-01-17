@@ -1,0 +1,5 @@
+<package name="dfu-util" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="dfu-util"/>
+</package>

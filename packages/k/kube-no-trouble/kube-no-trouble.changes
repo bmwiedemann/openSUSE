@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Wed Dec 20 13:10:27 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.7.1:
+  * fix: Fix up pre-commit
+  * ci: Bump language-formatters-pre-commit-hooks to 2.11
+  * ci: Upgrade pre-commit action to v3
+  * dep: Go Bump helm.sh/helm/v3 from 3.12.3 to 3.13.1
+  * feat: Fix auth error, errors out properly closes #450 and
+    increased log level for silent resource failures
+  * dep: Go Bump helm.sh/helm/v3 from 3.11.1 to 3.12.3
+  * dep: Go Bump k8s.io/client-go from 0.27.1 to 0.28.1
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.51.0 to
+    0.56.0
+  * test: Add tests for new deprecations
+  * feat: Include new elements in cluster collector
+  * feat: Include new deprecations in rego files
+  * chore: Add brew installation method
+  * dep: Go Bump github.com/rs/zerolog from 1.29.0 to 1.30.0
+  * fix: Missing buildx added to ci
+  * dep: Docker Bump golang from 1.20-alpine3.17 to 1.21-alpine3.17
+  * fix: Move autoscaling/v2beta1 removal to Kubernetes 1.25
+  * chore: Add blurb to readme about creating a signed commit
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.48.0 to
+    0.51.0
+  * dep: Go Bump k8s.io/client-go from 0.26.1 to 0.27.1
+  * feat: Golang 1.20
+  * ci: Build Linux arm64 docker image
+  * dep: Go Bump helm.sh/helm/v3 from 3.10.3 to 3.11.1
+  * chore: Codespell wrongly flags go.sum
+  * dep: Go Bump k8s.io/client-go from 0.26.0 to 0.26.1
+  * dep: Go Bump k8s.io/klog/v2 from 2.80.1 to 2.90.0
+  * dep: Go Bump github.com/rs/zerolog from 1.28.0 to 1.29.0
+  * dep: Go Bump golang.org/x/net from 0.5.0 to 0.7.0
+  * dep: Go Bump helm.sh/helm/v3 from 3.10.2 to 3.10.3
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.47.2 to
+    0.48.0
+  * ref: Fix SonarCloud issues
+  * feat: Add CSV output
+  * ci: Tune stale issues/PRs workflow config to wait a bit longer
+    (60+30)
+
+-------------------------------------------------------------------
+Fri Dec 16 12:40:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.7.0:
+  * dep: Go Bump github.com/rs/zerolog from 1.26.1 to 1.28.0
+  * dep: Go Bump k8s.io/client-go from 0.25.4 to 0.26.0
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.47.1 to 0.47.2
+  * fix: Remove duplicated lines from pre-commit
+  * dep: Go bump github.com/hashicorp/go-version from 1.3.0 to 1.6.0
+  * ci: Closes stale issues and stale prs
+  * dep: Docker Bump golang from 1.19.3-alpine3.16 to 1.19.4-alpine3.16
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.46.1 to 0.47.1
+  * feat: Disable any logging from go-client's klog
+  * ci: Upgrade integration test versions to 1.19-1.25
+  * dep: Go Bump github.com/open-policy-agent/opa from 0.34.2 to 0.46.1
+  * docs: Fix missing newline in changelog w. breaking changes
+  * test: Fix tests after upgrading go-client
+  * docs: Remove Helm v2 references
+  * dep: Update client-go and apimachinery to v0.25.4 and helm to v3.10.2
+  * feat: Remove Helm v2 support
+  * build: Install bash so build script can run in alpine
+  * build: Fix shell selection for Makefile
+  * ci: Fix latest tag issue in nightly builds
+  * dep: Docker Bump golang from 1.19.2-alpine3.16 to 1.19.3-alpine3.16
+  * fix: Ignore empty documents from Helm collectors
+  * chore: Add debug-level logging to Helm collectors
+
+-------------------------------------------------------------------
+Mon Oct 10 06:11:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.6.0:
+  * ci: Fix latest tag and avoid rebuild
+  * dep: Docker bump golang from 1.19.1-alpine3.16 to 1.19.2-alpine3.16
+  * ci: Fix missing build info in docker images
+  * ci: Fix missing build info in docker images
+  * docs: Add Docker section to readme
+  * docs: Improve release note formatting
+  * fix: Full path of the docker registry and path to docker image
+  * feat: Cover deprecated autoscaling/v2beta1 and autoscaling/v2beta2 PI group - HPA
+  * fix: Name of repo now correctly expanded when pushing to docker registry
+  * ci: Notify users of the aarch64 option when installing
+  * fix: Helm - only default to release namespace for namespaced resources
+  * ci: Build and publish docker image
+  * fix: Collect Ingress via v1 API
+  * docs: Update help output in readme to include -O flag
+  * test: Add tests for -O flag
+  * feat: Add -O flag to configure output to file
+  * test: Refactor Main tests to pass arguments directly
+  * feat: Add OutputFile option to config
+  * test: Add tests for text printer
+  * feat: Add output file support to text printer
+  * test: Add tests for JSON printer
+  * feat: Add output file support to JSON printer
+  * feat: Add outputFile support to Printer/commonPrinter
+  * test: Ref TestParsePrinter to test the resp. function
+  * feat: Support for checking additional annotations
+  * dep: Docker bump golang from 1.19.0-alpine3.16 to 1.19.1-alpine3.16
+  * ci: Pre-commit to catch new spelling issues
+  * chore: Spelling fixes
+  * chore: Users can install latest nightly
+  * chore: Test empty output text/json, ensuring json returns empty array and text stdout is empty when no issues are found
+  * test: Reduce test noise level
+  * test: Add tests for snapshot.storage.k8s.io/v1beta1
+  * feat: Add support for detecting snapshot.storage.k8s.io/v1beta1
+  * feat: User agent and dryup tests
+  * docs: Add example of scanning all files in a directory
+  * build: Update to golang 19, go mod tidy too
+  * docs: Update link to blog
+  * ci: Update checkout action to lastest
+  * fix: Arch detection dectection for aarch64
+  * feat: Version flag
+  * chore: Pre-commit fixed versions and remove broken make linter
+  * fix: Resource name can be undefined in some cases
+  * test: Fix review* fixture manifests to contain metadata
+  * test: Fix rules tests to actually evaluate
+  * ci: Update checkout to v2
+  * fix: Fix CronJob rego
+  * dep: Go bump github.com/open-policy-agent/opa from 0.33.1 to 0.34.2
+  * fix: Fix unpopulated discovery client and add test for same
+  * feat: Add support for in-cluster auth
+  * test: Refactor out env variable setup
+  * test: Extract hardcoded fixtures path to const
+
+-------------------------------------------------------------------
+Wed Jan 05 13:21:29 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.5.1:
+  * This release fixes a few issues, most notably broken MacOS ARM binary (#220) and broken additional kind (-a) functionality (#209).
+  * Fixes:
+    - Fix additional filter (209 by stepanstipl)
+    - Fix since output format (225 by stepanstipl)
+    - Fix broken MacOS binary (via 220 by david-doit-intl)
+  * Internal/Other:
+    - Remove upx (220 by david-doit-intl)
+    - dep: Go bump github.com/open-policy-agent/opa from 0.28.0 to 0.31.0 (199 by dependabot)
+    - dep: Go bump github.com/open-policy-agent/opa from 0.31.0 to 0.33.1 (222 by dependabot)
+    - dep: Golang 1.17 (219 by david-doit-intl)
+    - docs: Add logos (203 by stepanstipl)
+
+-------------------------------------------------------------------
+Wed Jan 05 13:15:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.5.0:
+  * The main theme of this release is increased coverage - namely resources that will be removed in Kubernetes versions 1.22 and 1.25 (#156, #159, #160, #163, #165, #166, #168, #169, #170, #171, #172, #173, #174, #175).
+  * We also worked on making the tool more user friendly and useable out of the box:
+    - Detecting K8s version (#139) and display only relevant results (#182)
+    - Support for multiple kubeconfig files (#191) and selecting K8S context (#194)
+    - Building ARM binaries for Linux and Mac (#133)
+  * Fixed a few bugs too, and increased test coverage, sped up build process. And bIg clap to @david-doit-intl for laying out foundations for integration testing (#152).
+
+-------------------------------------------------------------------
+Wed May 26 19:05:10 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package kube-no-trouble

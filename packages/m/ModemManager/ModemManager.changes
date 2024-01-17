@@ -1,0 +1,2086 @@
+-------------------------------------------------------------------
+Fri Oct  6 17:30:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit /usr/bin/dbus-daemon BuildRequires: Needed for
+  tests.
+
+-------------------------------------------------------------------
+Sat Apr  8 20:18:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.6:
+  + build: New build option to allow disabling the installation of
+    examples.
+  + core:
+    - Fix crash when uninhibiting partially removed device.
+    - Fix crash when attempting to load an invalid shared utils
+      library.
+  + mmcli:
+    - Allow JSON and key/value output when creating SMS messages.
+    - Improved JSON output in network scan results.
+  + libmm-glib:
+    - Avoid using g_time_zone_new_offset() unless glib >= 2.58.
+    - Fix flags to string conversion utils to allow multiple flags.
+  + MBIM:
+    - Reset cached SIM info when SIM is unlocked.
+    - Fix synchronizing the state of the SIM hot swap configured
+      flag.
+    - Fix bug cleaning up the LTE attach info unsolicited message
+      handler.
+    - Fallback from QMI UIM service only if unsupported.
+    - Add missing support for 'emergency' APN type.
+  + QMI:
+    - Fix processing and exposing PCOs.
+    - Fix power up on modems that don't support power state change
+      indications.
+  + plugins:
+    - telit:
+      . add additional support for 5G modems.
+      . added port type hints for FN990 0x1070, 0x1071
+        compositions.
+      . increase allowed initial delay in AT ports.
+      . fallback to AT commands if loading revision via MBIM fails.
+    - quectel: add support for EC21-EUX usb modules.
+    - xmm: fix crash parsing XACT? response.
+- Changes from version 1.20.4:
+  + build:
+    - Don't hardcode building shared libraries, so that meson's
+      default_library option can be used properly,
+    - po: Added missing Georgian translation in LINGUAS.
+  + QMI:
+    - Fixed loading NR5G signal info.
+    - Fixed memory leaks when processing signal info.
+    - Correctly scaled the SNR value reported in NR5G.
+    - Fixed invalid use-after-free actions due to improper handling
+      of proxy removal events.
+  + MBIM:
+    - Fixed processing MbimSmsStatusFlag as flags, not as an enum.
+    - Fixed invalid use-after-free actions due to improper handling
+      of proxy removal events.
+    - Chained up device notifications through the MMPortMbim
+      object.
+  + Messaging: Allowed Delete operation during enabling/disabling.
+  + Core: Don't assume port tables always exist so that
+    long-standing operations holding an object reference can finish
+    cleanly even after the initial object disposal has already been
+    run.
+  + plugins:
+    - quectel: added new firehose/sahara support udev tags in new
+      models.
+    - broadmobi: added MM_PLUGIN_REQUIRED_QCDM flag.
+    - cinterion:
+      . added a delay to the ^SWWAN? command.
+      . added retry mechanism to the ^SWWAN? command.
+- Changes from version 1.20.2:
+  + build:
+    - Fixed building without MBIM support.
+    - Fixed building without tests support.
+    - Disabled test interface in base manager if building without
+      tests.
+    - Updated intel plugin dependencies to require XMM shared
+      utils.
+    - Fixed templates to make build reproducible.
+  + FCC unlock: Updated shell scripts to avoid requiring bash.
+  + MBIM:
+    - Ignored SIM related indications during a SIM slot switch
+      operation.
+    - Updated capabilities loading to use Microsoft Extensions if
+      available.
+    - Updated supported modes loading to use the CustomDataClass
+      field contents.
+  + SIM: Fixed length when reading GID1/GID2 using AT commands.
+  + Several other minor improvements and fixes.
+- Changes from version 1.20.0:
+  + API:
+    - New 'Modem.Sar' interface to allow the host to manage the SAR
+      power level.
+    - New 'Modem.GetCellInfo()' method, that allows querying
+      information about the current serving and neighboring cells.
+      Currently including 'cell-type' and 'serving' fields for all
+      cell types, plus additional type-specific fields:
+      . CDMA: 'nid', 'sid', 'base-station-id', 'ref-pn' and
+        'pilot-strength'.
+      . GSM: 'operator-id', 'lac', 'ci', 'timing-advance', 'arfcn',
+        'base-station-id' and 'rx-level'.
+      . UMTS: 'operator-id', 'lac', 'ci', 'frequency-fdd-ul',
+        'frequency-fdd-dl', 'frequency-tdd', 'uarfcn', 'psc',
+        'rscp', 'ecio' and 'path-loss'.
+      . TDSCDMA: 'operator-id', 'lac', 'ci', 'uarfcn',
+        'cell-parameter-id', 'timing-advance', 'rscp' and
+        'path-loss'.
+      . LTE: 'operator-id', 'tac', 'ci', 'physical-ci', 'earfcn',
+        'rsrp', 'rsrq' and 'timing-advance'.
+      . 5GNR: 'operator-id', 'tac', 'ci', 'physical-ci', 'nrarfcn',
+        'rsrp', 'rsrq', 'sinr' and 'timing-advance'.
+    - New 'access-type-preference', 'roaming-allowance',
+      'profile-name', 'profile-enabled' and 'profile-source'
+      fields in the 'Bearer.Properties' property, that can also be
+      used in both 'Modem.Simple.Connect()' and
+      'Modem.CreateBearer()'.
+    - New 'Modem.Modem3gpp.SetPacketServiceState()' method and
+      'Modem.Modem3gpp.PacketServiceState' property, which allow
+      management the explicit attach or detach to packet service on
+      the current registered network.
+    - New 'Modem.Modem3gpp.SetNr5gRegistrationSettings()' method
+      and 'Modem.Modem3gpp.Nr5gRegistrationSettings' property, to
+      allow management of 5G specific settings like 'mico-mode' or
+      'drx-cycle'.
+    - New 'start-date', 'uplink-speed' and 'downlnk-speed' fields
+      in the 'Bearer.Stats' property.
+    - New 'Bearer.ReloadStatsSupported' property to indicate
+      whether reloading ongoing stats is supported or not.
+    - New 'Modem.Modem3gppProfileManager.IndexField' property, to
+      indicate which field is to be used as unique index in the
+      profile management operations.
+    - New 'Sim.SimType', 'Sim.EsimStatus' and 'Sim.Removability'
+      properties to improve the management of eSIM related
+      operations.
+    - New 'Sim.Gid1' and 'Sim.Gid2' properties, which allow
+      identifying SIM cards that should have different settings
+      applied.
+    - New 'Modem.Signal.SetupThresholds() method,
+      'Modem.Signal.RssiThreshold' and
+      'Modem.Signal.ErrorRateThreshold' to allow configuring
+      thresholds so that the modem emits indications whenever the
+      signal quality values change based on those thresholds. For
+      RSSI a delta amount of dBm can be given, and for error rate
+      just a boolean to enable or disable the corresponding event.
+    - New 'error-rate' fields in the 'Modem.Signal.Cdma',
+      'Modem.Signal.Evdo', 'Modem.Signal.Gsm', 'Modem.Signal.Umts',
+      'Modem.Signal.Lte' and 'Modem.Signal.Nr5g' properties.
+  + Core:
+    - Detecting an eSIM without an active profile in the current
+      SIM slot will lead to the modem being in Failed state, in the
+      same way as if the slot was for a physical SIM and no SIM was
+      inserted.
+    - Default amount of AT probing attempts is updated to 6, to
+      cope with modems that are slower to boot.
+    - New '--test-mbimex-profile-management' option in the daemon,
+      to enable support for profile management operations using the
+      Microsoft extensions. This is an optional feature because it
+      requires using the 'apn-type' field as unique index, which
+      not all users of the profile management API may expect.
+    - Implemented some initial support to automatically hide
+      personal details (e.g. phone numbers, SMS contents...) from
+      logs, right now only applicable to QMI and MBIM logs. Updated
+      support for this feature will keep on being integrated in
+      future 1.20.x updates. The new '--log-personal-info' option
+      in the daemon allows to disable this feature completely.
+    - Added new filter match option for subsystem vendor id,
+      required in several PCI based Qualcomm modules.
+    - QCDM port probing will no longer automatically run for all
+      plugins, only in those that explicitly require it.
+    - Implemented support for suspend/resume detection based on
+      ChromeOS' powerd daemon.
+    - Added Cat-M and NB-IoT LPWA access technologies.
+  + Modem interface: On 3GPP+3GPP2 multimode devices, a missing SIM
+    card will now force the modem into Failed state, as if it was a
+    3GPP-only device.
+  + Simple interface: Explicitly wait for PS domain to be attached
+    during a connection attempt.
+  + 3GPP interface: Updated to report domain registration changes
+    altogether whenever possible (e.g. when using the QMI or MBIM
+    protocols).
+  + MBIM:
+    - Implemented support to use the Microsoft-defined MBIM
+      extensions v2 and v3 whenever supported by the device. The
+      ModemManager daemon will negotiate which version to use with
+      the modem, so that the highest version supported is enabled.
+      This negotiation applies to the whole device, so any other
+      user of the MBIM device will automatically start using the
+      newly agreed version.
+    - Implemented current modes switching using MBIMEx v2.0
+      extensions.
+    - Trigger explicit disconnection if a connection attempt fails.
+    - Modem will be flagged as unusable if 10 consecutive MBIM
+      requests timeout.
+    - Enabled multiplex support for devices in the WWAN subsystem.
+  + QMI:
+    - Updated logic to by default prefer 'Signal Info' over the
+      deprecated 'Signal Strength' operations.
+    - Updated logic to by default prefer 'System Info' over the
+      deprecated 'Serving System' operations.
+    - Updated power state transition logic to ensure the new state
+      is reached before returning success to the user.
+    - Implemented support for the 'Modem3gppProfileManager.Updated'
+      signal using PDC refresh notifications.
+    - Modem will be flagged as unusable if 10 consecutive QMI
+      requests timeout.
+    - Implemented DTMF support.
+    - Implemented support for automatic SIM IMSI switch detection
+      under certain roaming scenarios.
+    - Updated the logic to move the PS domain state to 'registered'
+      based on the DSD System Status indications.
+    - Updated endpoint type detection logic to be based on the net
+      driver.
+    - Updated endpoint number selection to be based on the data
+      port.
+    - Updated connection logic to allocate separate WDS clients per
+      endpoint.
+    - Added support for PCO reporting.
+  + plugins:
+    - quectel: Added FCC unlock support for the EM05-G.
+    - telit:
+      . Band management updated to prefer using QMI whenever
+        available, as well as to detect the #BND command format
+        automatically.
+      . Added support for LPWA modems.
+    - fibocom:
+      . Implemented optional support to power down and up the modem
+        during the update of the initial EPS bearer settings.
+      . Implemented initial EPS bearer settings management in the
+        MA510.
+    - intel: New generic plugin for Intel PCI devices with vid
+      0x8086.
+    - xmm: Prefer GNSS control ports explicitly tagged via udev
+      tags.
+    - foxconn: Use the new FOX QMI service to load firmware
+      version.
+    - cinterion: Added support for PCIe based devices.
+- Use ldconfig_scriptlets macro.
+- Switch to meson buildsystem, add meson BuildRequires and macros.
+- Add xsltproc and pkgconfig(bash-completion) BuildRequires: New
+  dependencies.
+
+-------------------------------------------------------------------
+Sat Oct  8 08:29:25 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.18.12:
+  + This release fixes a few very critical issues that happpen when
+    using a glib2 newer or equal than 2.73.2, plus numerous fixes
+    for the Core, MBIM, QMI, 3GPP profile manager interface, SMS,
+    libmm-glib, and mmcli.
+  + Plugins:
+    - sierra: disable +CPOL in the GL7600.
+    - telit: add LE910Cx MBIM composition port hints.
+    - telit: add port type hints for LN920 0x1060, 0x1061
+      compositions.
+    - icera: fix double free on %%IPSYS=? response processing
+    - mtk: fix task completion when loading supported modes.
+- Add new pkgconfig modules build requirements: gio-2.0, glib-2.0,
+  gmodule-2.0, and gobject-2.0.
+- Update ModemManager.keyring to the new upstream key:
+  A814D09B9C5BC01945A64308AECE0239C6606AD5. Found at
+  www.freedesktop.org/software/ModemManager/0xAECE0239C6606AD5.asc.
+
+-------------------------------------------------------------------
+Sat Aug 27 22:17:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable make_check call, tests currently fails due to our switch
+  to glib 2.73.2.
+  https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/merge_requests/870
+  https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/issues/601
+  https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/issues/621
+
+-------------------------------------------------------------------
+Sat Aug  6 13:40:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.10:
+  + Build: Require libqmi 1.30.8.
+  + FCC unlock: Updated SDX55 unlock script to handle the new
+    method introduced in the latest firmware releases.
+  + Modem interface:
+    - Set signal quality to 0% on shutdown.
+    - Set signal quality as recent on init.
+  + MBIM:
+    - Fix task completion when peeking device fails.
+    - Fix several GError double-frees.
+  + mmcli: Don't print signal quality until modem is enabled.
+  + Plugins: foxconn: remove carrier mapping table for T99W175.
+  + Several other minor improvements and fixes.
+- Changes from version 1.18.8:
+  + A new connection status dispatcher setup is provided, where
+    users can provide custom scripts that will be called on bearer
+    connect/disconnect events. This dispatcher will make the netifd
+    integration in openwrt work much better, as we'll be able to
+    report network-initiated disconnections cleanly to netifd.
+    There are no default connection status dispatcher scripts
+    installed, but it's suggested distributions make sure the
+    following directories exist:
+    - ${sysconfdir}/ModemManager/connection.d/
+    - ${libdir}/ModemManager/connection.d/
+  + API: Add missing Simple interface definitions in
+    ModemManager-names.h.
+  + Build:
+    - meson:
+      . fix daemon enums dependencies.
+      . fix port enums includes.
+      . fix 'export_packages' in GIR setup.
+      . fix simtech plugin module name.
+    - systemd: don't run ModemManager in containers.
+  + Core:
+    - serial: ensure the port object is valid after BUFFER_FULL
+      handling.
+    - netlink:
+      . use unaligned netlink attribute length.
+      . only change IFF_UP flag.
+    - bearer: match unknown auth to chap in loose comparisons.
+    - charsets: return error if UTF-8 validation fails.
+    - fcc-unlock: make scripts POSIX shell compatible.
+    - modem-helpers:
+      . consider minimum ID when choosing best profile.
+      . fix reading <Act> given in COPS=? responses.
+    - sms: prevent crash if date is out of range.
+    - profile-manager: fix copy-paste error on tags for quarks.
+  + QMI:
+    - Ignore slot status indications until initial status is known.
+    - Return error when loading capabilities if none is found.
+  + MBIM:
+    - Default initial EPS bearer's auth to chap when unknown.
+    - Update default error when network error is out of range.
+  + mmcli: Fix key length when printing list of items.
+  + Plugins:
+    - linktop: new port type hints.
+    - cinterion: add support for PLSx3w modems.
+    - huawei: disable +CPOL based features in Huawei E226.
+  + Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
+Wed Jun  8 11:01:59 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Enable QRTR support
+  * Add BR pkgconfig(qrtr-glib)
+
+-------------------------------------------------------------------
+Fri Feb 18 14:32:32 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.18.6:
+  + The ModemManager.service file for systemd integration provided
+    in the sources is updated as follows:
+    ++ 'CAP_NET_ADMIN' is now required in the
+       'CapabilityBoundingSet' field.
+    ++ 'AF_NETLINK' and 'AF_QIPCRTR' are now required in the
+       'RestrictAddressFamilies' field.
+  + The LEGACY and PARANOID filter types that were allowed
+    options in the '--filter-policy' option in the ModemManager
+    daemon were deprecated in version 1.16.0 and have now been
+    completely removed, along with the vid:pid blacklist of
+    devices and the vid:pid greylist of RS232<->USB adapters.
+  + The ModemManager daemon can run now in a 'quick suspend/resume'
+    mode, in which no explicit data disconnection is triggered on
+    suspend, and no explicit device re-probing from scratch is
+    launched on resume. Instead, the daemon will try to refresh
+    the state of all interfaces upon suspend, e.g. to see if the
+    module keeps registered to the same operator, to see if it is
+    still connected, and so on.
+  + core: added support for the new 'WWAN' subsystem in Linux kernel
+    5.13, enabling PCIe-only modules.
+  + core: The charset conversion methods rework, including the
+    avoiding of the iconv()
+  + qmi: the logic managing allowed/preferred modes was fixed for
+    multimode devices like the MC7304, making sure the acquisition
+    order preference always had the same items.
+  + serial: when modem is connected with AT+PPP, ignore forced
+    disconnections, so that we don't take ownership of the PPP
+    port before pppd has released it.
+  + foxconn: added support for the T99W175 (SDX55) module,
+    including built-in FCC unlock procedure.
+  + foxconn: added new MBIM QDU firmware update method.
+- Move the dbus-1 system.d file to /usr (bsc#1196170)
+- Use source verification
+- Update Supplements to new format
+- Add BRs needed for new tests:
+  * python3-gobject-Gdk
+  * python3-dbus-python
+
+-------------------------------------------------------------------
+Sat Aug 14 15:33:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch bash completion subpackage to noarch.
+
+-------------------------------------------------------------------
+Sun Dec  6 15:41:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.14.8:
+  + Build:
+    - Fixed distcheck with new gtk-doc releases.
+    - ModemManager-names.h was being included in the dist tarball,
+      but then removed on the 'clean' target. Fix that, by only
+      removing it on the 'maintainer-clean' target. Therefore,
+      'xsltproc' is now only needed in git builds, not needed when
+      building from a dist tarball.
+  + QMI:
+    - Fix daemon crash when the device is removed during the
+      initialization sequence.
+  + Several other minor improvements and fixes.
+- Drop libxslt-tools BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Mon Nov  2 08:50:31 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.14.6:
+  + Modem interface:
+    - Added support for AT-based and/or QMI-based 5G devices
+    - Deprecated the MM_MODEM_CAPABILITY_LTE_ADVANCED capability
+  + Bearer interface:
+    - Added additional 'attempts', 'failed-attempts', 'total-rx-bytes',
+      'total-tx-bytes' and 'total-duration' values in the 'Stats' property
+      exposed by the Bearer objects.
+  + Daemon:
+    - Switched to 'STRICT' filter mode by default.
+    - Added a new implicit whitelist rules applicable in 'STRICT' filter mode.
+    - Updated the probing logic to make sure we don't attempt a re-probe when
+    the device is gone.
+    - Updated daemon logging.
+  + AT:
+    - Moved the charset definition logic to the initialization phase instead
+      of the enabling phase.
+    - Updated manual registration operation
+  + QMI:
+    - Devices using the LOC service for GNSS will now also setup the list of
+      required NMEA traces before starting the engine.
+    - Update carrier code if registration changes from one roaming operator
+      to another.
+    - Explicitly disable autoconnect during modem enabling phase, because it
+      interferes with our connection management logic.
+    - Fallback to raw-ip if WDA Get Data Format requests arguments, as in most
+      new 5G devices.
+    - Updated to always use the asynchronous close() operation.
+    - Handle disconnection indications during connection attempts.
+  + MBIM:
+    - Update carrier code if registration changes from one roaming operator to
+      another.
+    - Implement reset in Intel-based and Qualcomm-based devices.
+    - Avoid LTE attach config/status if unsupported.
+    - Updated to make sure all allocated QMI CIDs are released during shutdown.
+  + SIM interface:
+    - Don't allow sending PIN/PUK if not required.
+  + 3GPP interface:
+    - Fixed manual re-registration to the same operator.
+  + CDMA interface:
+    - Don't allow multiple concurrent activation attempts.
+    - Disallow empty carrier code in automatic activation.
+  + Bearer interface:
+    - Updated to avoid connection checks or stats updates while disconnecting.
+  + libmm-glib:
+    - New 'mm_location_gps_nmea_get_traces()' method to retrieve a NULL
+      terminated array of strings with all cached NMEA traces.
+    - Deprecated the 'mm_location_gps_nmea_build_full()' method.
+  + mmcli:
+    - Added a new 'any' lookup keyword for the --modem and --sim options, useful
+      when the system is only expected to have one single device.
+  + Plugins:
+    - broadmobi: new plugin, right now just with port type hints for the BM818.
+    - foxconn: new plugin to support the T77W968 (both with and without eSIM).
+    - dell,dw5821e: added support for the DW5821e with eSIM variant.
+    - huawei: don't delay reporting network initiated disconnects.
+    - huawei: try to read port type hints from interface descriptions.
+    - huawei: avoid using the QCDM port during a voice call.
+    - cinterion: skip sim ready check for modules that don't support it.
+    - cinterion: implemented radio/band handling for LTE modems.
+    - cinterion: added Signal interface support bsaed on AT^SMONI.
+    - cinterion: added support for MBIM based devices like the PLS62-W.
+    - quectel: updated to detect SIM hot swap via +QUSIM URCs.
+    - fibocom: added support for QMI based devices like the FM150.
+    - ublox: ignore error when disconnecting last LTE bearer.
+    - ublox: implement support to enable and detect +UUDTMF URCs.
+    - ublox: added blacklist rules for GPS modules in the plugin itself.
+    - sierra: implement manual and automatic CDMA activation.
+    - novatel: implement manual and automatic CDMA activation.
+  + Build improvements
+  + Update dependencies (mbim: >= 1.24.0, qmi: >= 1.26.0)
+- Add BuildRequires libxslt-tools (xsltproc required)
+- Update config file path: mm-dell-dw5821e-carrier-mapping.conf
+  => mm-foxconn-t77w968-carrier-mapping.conf (see d7d2b910 ("foxconn: new
+  plugin to support the T77W968"))
+
+-------------------------------------------------------------------
+Sat May  9 13:16:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.10:
+  + mmcli:
+    - Add missing 'allowed-auth' bearer property in the output.
+    - Remove non-existent --list-bearers option from manpage.
+  + introspection: Use the correct node name for the ModemManager1
+    object.
+  + Modem interface: Allow Command() while in Failed state.
+  + MBIM: Fix segfault when loading capabilities.
+  + Plugins: huawei: updated HCSQ regex to match unquoted response.
+
+-------------------------------------------------------------------
+Sat Mar 14 09:26:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.8:
+  + Plugin manager:
+    - Updated logic to allow new ports added to a device up to
+      1500ms since last port was added.
+  + Voice interface:
+    - Match calls in call list by number.
+    - Don't report an empty list if +CLCC for any reason fails.
+    - Expect in-call URCs also in secondary port.
+    - Allow optional extra CR in in-call URCs.
+  + Kernel device:
+    - Fix looking up for interface details in udev-based builds.
+  + Huawei:
+    - Allow reading port type hints from USB interface descriptions.
+    - Fix segfault if device is removed while probing is ongoing.
+  + Several other minor fixes.
+
+-------------------------------------------------------------------
+Wed Feb 12 17:49:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.6:
+  + SIM: Updated logic to avoid sending PIN/PUK to the SIM card
+    when not required (e.g. if already unlocked).
+  + Simple interface: Avoid aborting connection if SIM-PUK2 locked,
+    as PIN2/PUK2 doesn't prevent us from getting connected.
+  + Location interface: Fixed memory leak happening as soon as a
+    position fix was obtained and gps-raw location source was
+    enabled.
+  + Core:
+    - Fixed handling of 0x00 bytes at the end of GSM encoded
+      strings.
+    - Fixed cleaning up 'timed-out' signal on the serial port
+      objects.
+    - Fixed logic that closes MBIM ports during cleanup.
+  + Several other minor fixes and memory leak plugs.
+- Changes from version 1.12.4:
+  + Core: Added missing ME error codes when building GError
+    variables for the MM_MOBILE_EQUIPMENT_ERROR domain.
+  + Bearer: Avoid connection checks or stats updates while
+    disconnecting.
+  + Serial port: Fix segfault when port flash operation gets
+    cancelled.
+  + Simple interface: Fix the ongoing connection cancellable
+    handling.
+  + Voice interface: Fix segfault when voice support check fails.
+  + QMI: Fixed several memory leaks, including a severe one
+    happening when multiple GPS sources (e.g. raw and nmea) were
+    enabled at the same time.
+  + Plugins: ublox: ignore errors when attempting to disconnect
+    last bearer.
+  + mmcli: Allow "yes" and "no" as boolean strings.
+  + Several other minor fixes and memory leak plugs.
+- Changes from version 1.12.2:
+  + Simple interface: Avoid assertion on the ongoing connect
+    cancellable.
+  + Plugin manager:
+    - Fix waiting the minimum probing time.
+    - Explicitly cancel timeouts when device probing is cancelled.
+    - Disable lazy plugin loading, we now require all missing
+      symbols to be resolved at loading time for a plugin to
+      correctly be loaded.
+  + Bearer: Avoid reporting disconnection error if trying to
+    disconnect a bearer that is already disconnected.
+  + MBIM: Completely skip LTE attach config/status if unsupported.
+  + QMI:
+    - Make current settings mandatory when using 'static'
+      addressing.
+    - Handle disconnection indications during connection attempt.
+    - Explicitly close QMI port during disconnection if it was
+      opened during a connection attempt.
+  + Plugins:
+    - huawei: avoid using QCDM port during a voice call.
+    - sierra: added port type hints for the EM7565.
+    - dell,dw5821e: added support for the DW5821e with eSIM
+      variant.
+  + mmcli: Fix printing empty value lists in human-friendly output.
+  + Several other minor fixes and memory leak plugs.
+
+-------------------------------------------------------------------
+Wed Nov  6 20:40:26 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.0
+  + Modem interface:
+    - Updated logic to avoid assuming that setting bands or modes
+      is immediate, the daemon will now actively monitor for those
+      updates to happen before returning success.
+  + 3GPP interface:
+    - libmm-glib: deprecated the mm_pco_list_free() helper method.
+  + Simple interface:
+    - api,libmm-glib: deprecated the 'subscription state' property.
+  + Location interface:
+    - Fixed 'unknown' lat/long/alt numeric values.
+    - Added support for MSB A-GPS in addition to MSA A-GPS.
+  + Voice interface:
+    - Improved voice call management with call id detection and
+      tracking.
+    - Improved detailed call state transitions on generic modems
+      that support call list polling.
+    - Added support for GSM supplementary services, including call
+      waiting, call transfer, call deflection, multiparty calls...
+    - Added emergency call support, allowing voice call to
+      emergency numbers even without SIM or with SIM-PIN locked.
+    - Deprecated all properties except for 'number' in the
+      CreateCall() method.
+  + Messaging interface:
+    - Updated to report SMS timestamps in correct ISO8601 format.
+  + Bearer:
+    - Improved unused CID lookup to allow selecting non-sequential
+      CIDs.
+    - Disabled all AT protocol based context monitoring when PPP
+      is used for the connection, in order to properly sync with
+      pppd, which should be the one detecting the disconnections
+  + QMI:
+    - Improved support to list stored firmware images in Sierra
+      devices.
+    - Added additional lock check retries on 'SIM not inserted'
+      errors.
+    - Updated explicit registration attempt to report success only
+      when the target requested network is registered.
+    - Added MSB A-GPS support.
+    - Implemented automatic carrier configuration selection using
+      PDC service (already in 1.10.2).
+  + mmcli:
+    - New machine-readable JSON output with '--output-json'.
+    - Updated to allow using the modem UID to specify SIM
+      operations.
+  + udev:
+    - New ID_MM_PORT_TYPE_AUDIO generic udev tag to identify ports
+      that should be used for in-band audio.
+    - Removed support for the ID_MM_PLATFORM_DRIVER_PROBE udev
+      tag, as it is no longer required given that the more generic
+      explicit whitelist may be used to flag which devices should
+      be probed.
+    - Renamed ID_MM_DEVICE_MANUAL_SCAN_ONLY to
+      ID_MM_TTY_MANUAL_SCAN_ONLY, given that the tag only applies
+      to TTYs.
+    - ID_MM_DEVICE_IGNORE is no longer used internally in
+      ModemManager, and is instead targeted to users that want to
+      explicitly ignore specific devices regardless of what filter
+      type is in use (already in 1.10.6).
+  + dbus:
+    - Updated to always report the registered
+      MM_CORE_ERROR_CANCELLED error instead of the implicit
+      G_IO_ERROR_CANCELLED ones generated by GLib.
+  + GObject introspection:
+    - Fixed setup to explicitly skip all non-API methods.
+  + Plugins:
+    - tplink: new plugin.
+    - dlink: new plugin.
+    - xmm: added MSB A-GPS support.
+    - dell,dw5821e: update to allow unmanaged GPS support on the
+      TTY even when raw/NMEA GPS is enabled via QMI/LOC.
+    - quectel: updated to allow TTY-only devices.
+    - telit: added GPS support.
+    - telit: improved band management with #BND.
+    - simtech: added improved voice call support.
+    - simtech: added support for LTE devices.
+    - simtech: improved signal quality reporting logic.
+    - simtech: added GPS support for the SIM7000/SIM7600 family.
+    - cinterion: added support for time updates.
+    - cinterion: added improved voice call support.
+    - ublox: added improved voice call support.
+    - ublox: improved band management with UBANDSEL.
+
+-------------------------------------------------------------------
+Fri Nov  1 14:10:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.8:
+  + Polkit policy:
+    + Added several missing methods to the policy rules.
+    + Use the explicit Firmware policy for all firmware operations.
+    + Updated USSD policy to require user authentication in strict
+      mode.
+  + systemd service:
+    - Always start after polkit service when policy control is
+      enabled.
+  + Broadband modem:
+    - Fixed signal quality reporting when +CSQ is used.
+  + 3GPP:
+    - Fixed reporting 'denied' registration state.
+  + QMI:
+    - Fixed NAS SSP support check during supported capability loading.
+  + Simple interface:
+    - Allow one single ongoing Connect() attempt.
+    - Fixed Disconnect() when an explicit bearer path is given.
+  + mmcli:
+    - Fixed key-value output when printing array with 10 elements.
+  + Plugins:
+    - simtech: added port type hints for the SIM7000/SIM7600 family.
+    - x22x: added support for the Alcatel X602D.
+    - telit: increased timeout for AT#REBOOT.
+    - quectel: fixed port type hints for the EG91.
+    - quectel: added port type hints for the BG96.
+- Update to version 1.10.6:
+  + Bearer: if connecting a bearer with PPP method, require upper layers
+    to disconnect the bearer explicitly and completely ignore the
+    connectivity checks performed by the modem itself. This makes sure
+    that the TTY is not reused by ModemManager before pppd has finished
+    using it.
+  + Serial port:
+    - Fix serial port flash cancellation logic to avoid assertion if the
+      device gets unplugged during the flash operation.
+    - Fix serial port reopen logic to flag the port as forced-closed if
+      the reopening fails, to avoid assertion if the device gets
+      unplugged during the reopen operation.
+    - Avoid warning when signals are disconnected automatically during
+      last object unref.
+  + SMS:
+    - Initialize common fields early for multipart messages, without
+      waiting for the last part to arrive.
+  + 3GPP:
+    - Report consolidated registration state as DENIED if all the other
+      ones are either idle or unknown.
+  + udev:
+    - Updated ID_MM_DEVICE_IGNORE to make it really a user-usable tag,
+      applicable not only to TTY devices but to any kind of device
+      (e.g. to blacklist MBIM modems); and also applicable under any
+      kind of filter mode (including 'strict' mode).
+  + Filter:
+    - Added new 'explicit blacklist' filter rule, by default enabled for
+      all filter modes and controlled with the
+      MM_FILTER_RULE_EXPLICIT_BLACKLIST envvar.
+    - Added new 'plugin whitelist' filter rule, enabled exclusively in
+      'strict' filter mode, which allows us to automatically flag for
+      probing those devices that are flagged with specific
+      plugin-selected udev tags or which have vid:pid pairs registered
+      as allowed in the plugins.
+    - Updated the 'AT-capable ttyACM' filter rule, so that we only
+      process and probe the serial port if the device also exposes other
+      ports (serial, cdc-wdm, net) that ModemManager may process. This
+      fix should allow us to automatically ignore Arduino devices that
+      wrongly report themselves as speaking AT protocol in the ttyACM
+      port.
+  + QMI:
+    - Fix segfault while updating bands and the device doesn't support
+      the 'extended LTE band preference' TLV.
+  + MBIM:
+    - Fix segfault while processing empty USSD responses.
+  + libmm-glib:
+    - Properly handle NULL pointer on MMFirmwareUpdateSettings.
+  + Plugins:
+    - sierra: added port type hints for the MC74xx family.
+    - telit: added port type hints for the ME910 and the EG91.
+    - cinterion: added port type hints for the PLS8.
+- Update to version 1.10.4:
+  + QMI:
+    - Fix assertion when cleaning up event report indications.
+  + MBIM:
+    - Fix detecting errors in "Register State Set" responses.
+  + 3GPP interface:
+    - Use correct finish() method to complete user registration.
+  + Plugins:
+    - u-blox: fix segfault when UACT? returns empty band list.
+- Update to version 1.10.2:
+  + Carrier configuration reporting and automatic selection.
+  + Manager interface:
+    - Fixed inhibition alloc/dealloc mixup.
+  + Modem interface:
+    - New 'CarrierConfiguration' property that shows which is the
+      currently selected carrier configuration in the device, if
+      known.
+    - New automatic carrier configuration selection logic, based
+      on per-device or per-vendor mapping.
+  + Messaging interface:
+    - Flush SMS list update before notifying added/removed signals.
+  + SMS:
+    - Fixed sending binary PDUs via AT commands when other AT command
+      operations are scheduled at the same time.
+  + QMI:
+    - Increased the number of open retries from 10 to 20, required
+      e.g. for the Telit LM940/960 modems.
+    - Implemented QMI PDC based carrier config loading and automatic
+      switching.
+  + Plugins:
+    - dell: added port type hints for the DW5820e.
+    - dell: use QMI DMS extension method to load properly formatted
+      firmware version strings.
+    - quectel: added port type hints for the EG06.
+    - ublox: added alternative port type hints for the LISA/SARA-U2.
+    - telit: added support for MBIM-based telit modems.
+  + mmcli:
+    - Updated --monitor-state to report modem removal.
+  + Several memory leak fixes in different modules.
+- Run testsuite
+
+-------------------------------------------------------------------
+Sun Mar 17 09:38:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce %systemd_requires to %systemd_ordering:
+  %service_* can handle its absence.
+- Rewrite summaries not to rely on em dash grammar.
+- Do build without requiring bash-completion.
+
+-------------------------------------------------------------------
+Sat Jan 26 10:04:30 UTC 2019 - bjorn.lie@gmail.com
+  
+- Update to version 1.10.0:
+  + udev:
+    - Consolidated common tag names among all the supported
+      plugins. E.g. ID_MM_PORT_TYPE_GPS, ID_MM_PORT_TYPE_AT_*,
+      ID_MM_PORT_TYPE_QCDM... All these generic tags are included
+      as symbols in the API, and compatibility will be maintained
+      for these. Custom setups of ModemManager relying on
+      previously available per-plugin udev tags may need to
+      manually port them to this new generic subset.
+    - New tag to allow specifying flow control settings to use in
+      serial ports.
+  + Core:
+    - Avoid probing other protocols on TTYs tagged in udev with
+      specific port type tags (e.g. avoid probing QCDM if a port is
+      tagged as AT). This allows faster port probing and modem
+      detection for known modem layouts.
+    - Implemented support to enable and handle +CGEV URCs for
+      asynchronous connection state updates in AT-controlled
+      devices.
+  + Manager interface:
+    - New runtime daemon version reporting.
+    - New support for requesting device inhibition, e.g. so that
+      ModemManager stops completely using a modem device until the
+      inhibition is released. This feature is implemented to allow
+      fwupd taking over of a device completely for as long as it
+      needs during a firmware update.
+  + Modem interface:
+    - All methods are always connected, even in Failed state.
+    - Allow parallel Enable()/Disable() calls.
+    - Deprecated redundant ListBearers() method, the read-only
+      Bearers property is already showing the same information.
+  + Bearer interface:
+    - New 'BearerType' property, e.g. to specify whether a bearer
+      is the initial LTE default bearer or not.
+    - Deprecated 'number' field in bearer settings. Applications do
+      not need to send the 'number' field in Bearer.Connect() or in
+      Modem.Simple.Connect(), as the setting is totally ignored.
+  + mmcli:
+    - New 'key-value' output, easier to parse by scripts than the
+      default.
+    - Removed redundant '--location-get-XXX' actions, as the
+      '--location-get' already reports the location information for
+      all sources.
+    - Removed redundant '--simple-status' action, as the same
+      information can be obtained through different mmcli
+      operations.
+    - New manager '--inhibit-device' action and modem-specific
+      '--inhibit', to allow requesting device inhibition.
+  + 3GPP interface:
+    - New support for exposing the network reported Protocol
+      Configuration Options (PCO), to be used instead of the new
+      deprecated Subscription State property.
+    - New support for exposing the initial LTE default bearer
+      status.
+    - New support for configuring the initial LTE default bearer
+      settings.
+  + Location interface:
+    - New LTE Tracking Area Code (TAC) in 3GPP location
+      information.
+    - New support for injecting assistance data (e.g. Qualcomm
+      XTRA) into the GNSS engine, useful when there is no mobile
+      connection to use MSA A-GPS.
+  + Firmware interface:
+    - Support for reporting firmware update support properties,
+      e.g. specifying which update methods are supported. This
+      information will be consumed by fwupd in order to allow
+      upgrading firmware in devices managed by ModemManager.
+  + Voice interface:
+    - Multiple improvements and fixes in the voice call management
+      logic implemented with generic AT commands.
+    - Added AudioPort and AudioFormat properties to the Call
+      object.
+    - Added new generic audio channel setup/cleanup handlers in the
+      Call object.
+  + QMI:
+    - New LOC service based GNSS support, including A-GPS setup via
+      SUPL server.
+    - New support for the "extended" LTE band list.
+    - New support for reading IMSI and ICCID with the UIM service.
+  + MBIM:
+    - Implemented support for processing Protocol Configuration
+      Options using Microsoft-defined Basic Connect Extensions.
+    - Implemented support for LTE attach status and configuration
+      using Microsoft-defined Basic Connect Extensions.
+    - Implemented support for the extended signal interface and for
+      3GPP location details using the AT&T specific service.
+    - Implemented support for 3GPP USSD operations using the
+      standard USSD service.
+    - For Qualcomm-based MBIM devices, those with QMI-over-MBIM
+      support, a whole new set of features is now available,
+      including: QMI LOC/PDS location support, allowed/preferred
+      mode management, frequency band selection, power management
+      operations...
+  + Plugins:
+    - xmm: new XMM plugin, with shared logic (allowed/preferred
+      mode management, frequency band selection, power management
+      operations, extended signal quality reporting, GPS/A-GPS...)
+      for Intel XMM based devices.
+    - fibocom: new plugin, with support for generic MBIM and
+      XMM-based devices.
+    - dell: added support for XMM-based devices, like the DW5820e.
+    - dell: added custom support for the DW5821e, including
+      'unmanaged' GPS and firmware update integration details.
+    - cinterion: new shared interface to include all logic shared
+      between Option and Option/HSO devices.
+    - sierra-legacy: implemented connection monitoring support.
+    - u-blox: added support for extended call state transitions.
+    - u-blox: added CDC-ECM support for SARA/LISA-U2xx modems.
+    - altair-lte: migrated from SubscriptionState to PCO.
+- Changes from version 1.8.0:
+  + New 'filter policy' setting in the ModemManager daemon to
+    decide which ports are probed and how. Currently these levels
+    are defined:
+    - WHITELIST-ONLY: Only devices or ports explicitly whitelisted
+      with the new 'ID_MM_DEVICE_PROCESS' udev tag are probed.
+    - DEFAULT: All ports are allowed to be probed except for the
+      ones explicitly greylisted as RS232 adapters or completely
+      blacklisted. This is the default approach that was used until
+      now, and the default as well in this release if a different
+      one isn't requested.
+    - STRICT: The daemon defines a set of heuristics to try to
+      detect modems and ports to probe. Only the TTY ports that are
+      very very likely to be modem ports are probed, therefore
+      completely avoiding the need of having a separate blacklist
+      or RS232 adapter greylist. But note that this policy may end
+      up ignoring some devices, like TTY controlled modems without
+      an associated network port.
+    - PARANOID: This is equivalent to running the STRICT mode but
+      also applying the blacklist and RS232 greylist filters
+      explicitly.
+  + Device 'naming'. This release includes logic to allow 'naming'
+    devices with the ID_MM_PHYSDEV_UID udev tag, so that the names
+    can then be used in e.g. mmcli and also exposed in the 'Device'
+    property in the Modem interface. This new setup makes it
+    possible to give the devices unique names that are kept across
+    reboots.
+  + Allow skipping the automatic scan for devices in the daemon
+    with the new '--no-auto-scan' daemon option. Instead, the
+    daemon may be called with the '--initial-kernel-events=[PATH]'
+    option including a predefined list of ports or otherwise get
+    the port additions reported during runtime with the mmcli
+    --report-kernel-event=[] command.
+  + Allow building and running without 'udev'. In this setup, the
+    previously explained '--no-auto-scan' is enabled by default, so
+    ports are not automatically detected .Note that this setup is
+    not suggested for standard distributions: if udev is available
+    in the system, it is the preferred method to manage the port
+    addition and removal.
+  + SIM hot swap. The core includes the needed logic to support SIM
+    hot swap in the different devices, although for now it's only
+    tested for Telit and MBIM modems. If a SIM hot swap is
+    detected, the modem is flagged as failed and reprobed from
+    scratch.
+  + Connection status monitoring logic. In order to try to detect
+    network initiated disconnections, a generic setup is provided
+    to plugins so that they can implement explicit connection
+    status checks that would be executed periodically.
+  + New support for 3GPP CSFB states and operation modes. We now
+    support registration states reported as "SMS only" or "CSFB not
+    preferred", and provide APIs to set and get the "UE mode of
+    operation for EPS".
+  + Build and system:
+    - Updated the systemd service file with additional security
+      related rules.
+    - Added support for systemd journal logging.
+    - Updated most of the code to use GTask instead of the
+      deprecated GSimpleAsyncResult based operations.
+    - ChangeLog is built from git during the dist tarball
+      generation.
+  + API:
+    - Defined additional GSM, UMTS and LTE frequency bands.
+    - The MMModemBand enumeration values (EUTRAN, UTRAN and CDMA)
+      have been renamed to consolidate how they are defined. A
+      compatibility layer has been provided to avoid breaking the
+      API.
+    - New 'HardwareRevision' property in the Modem interface.
+    - New 'EpsUeModeOperation' property and 'SetEpsUeModeOperation'
+      method in the Modem 3GPP interface.
+  + Core:
+    - Updated libqcdm to load signal strength from QCDM EVDO Pilot
+      Sets.
+    - Updated udev rules with new per-vendor rules for quicker
+      processing.
+    - Explicitly ignored ports are never probed now, but they will
+      be reported as owned by the device and exposed in the Ports
+      property.
+    - New 'ID_MM_TTY_BAUDRATE' udev tag to specify the baudrate to
+      use in RS232 TTY ports.
+    - If using UCS2, still assume that the operator name may be
+      given in ASCII.
+    - Explicitly open QCDM ports anytime it's needed, instead of
+      assuming they are open when enabled.
+    - Query supported ME event reporting options and automatically
+      set the best choice based on the supported ones.
+    - Query supported flow control modems and automatically set the
+      best choice based on the supported ones.
+    - Explicitly configure flow control settings on the TTY as soon
+      as it is connected, only applicable for RS232 devices.
+    - Implemented generic unlock retries loading.
+  + MBIM:
+    - Explicitly reprobe the modem when the mbim-proxy is detected
+      dead.
+    - Workaround implemented to keep track of the PIN1 unlock
+      retries as the protocol isn't very good allowing this.
+    - Load and expose HW revision.
+  + QMI:
+    - Explicitly reprobe the modem when the qmi-proxy is detected
+      dead.
+    - Load and expose HW revision.
+    - Detect port closed and forbid client allocation operations.
+    - New optional connection status monitoring support, enabled by
+      default for the Netgear AC341U.
+  + Location interface: Disabled by default for MBIM modems.
+  + Messaging interface: Try decoding with UTF-16BE when UCS-2
+    reported.
+  + Plugins:
+    - u-blox: new plugin, currently supporting the TOBY-L2,
+      TOBY-L4, TOBY-R2, LARA-R2 and LISA-R2.
+    - quectel: new plugin, supporting generic AT/QMI based modems.
+    - cinterion: implemented support for devices exposing a WWAN
+      network interface.
+    - cinterion: support changing modes in LTE capable devices.
+    - cinterion: added GPS support for devices controlled only with
+      AT^SGPSC.
+    - cinterion: use ^SIND unsolicited messages for access tech
+      reporting.
+    - huawei: implemented Signal interface.
+    - telit: added support for RS232, QMI and MBIM modems.
+    - novatel: cleaned up registration state and access tech
+      reporting.
+    - novatel-lte: implemented unlock retries loading.
+    - dell: speed probing time up and reduce udev dependency.
+    - mbm: added GPS support for the Dell DW5560.
+  + Updated translations.
+- Drop intltool BuildRequires, no longer needed.
+- Pass --with-systemd-journal to configure, ensure we use the new
+  journald support for logging.
+
+-------------------------------------------------------------------
+Mon Jul 30 21:21:42 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.6.14:
+  + Build: Avoid -Wincompatible-pointer-types for MM 1.6.x builds,
+    to skip the stricter checks in GObject.
+  + Introspection:
+    - Fixed bearer list annotations.
+    - Explicitly use ModemManager prefix to refer to introspected
+      types.
+  + Core:
+    - udev: add tags also on bind actions.
+    - 3GPP: don't force auto registration if already registered.
+    - Signal: fix reloading of detailed signal quality status on AT
+      modems.
+  + Plugins:
+    - QMI: update EPS registration state for LTE modems.
+    - MBIM:
+      . Check if IP session is active before trying to deactivate
+        it.
+      . Increase deactivation timeout to 60s.
+    - Huawei: Handle optional 0x prefix on hex numbers in ^DHCP
+      response.
+   + Several other minor fixes.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:37:17 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan 11 12:55:52 UTC 2018 - zaitor@opensuse.org
+
+- Update to version 1.6.12:
+  + Blacklist:
+    - Ignored Pycom devices.
+    - Added Microchip's VID to the greylist.
+  + QMI:
+    - Fixed connection state machine when built against libqmi <
+      1.18.
+    - Fixed connection state machine when an error is reported
+      setting up WDS indications.
+- Changes from version 1.6.10:
+  + Blacklist:
+    - Ignored Silicon Labs USB Zigbee dongles.
+    - Ignored Garmin ANT+ sticks.
+    - Ignored Intel coredump downloader device.
+  + QMI:
+    - Fixed potential user-after-free issues.
+    - Fixed missing handler cleanups on network-initiated
+      disconnects.
+  + MBIM:
+    - Fix invalid session_id and nw_error reads.
+    - Avoid calling mbim_message_unref() on NULL message.
+    - Fixed invalid object access due to handlers not being removed
+      correctly.
+    - Ensure session is disconnected before trying to connect.
+    - Fixed t crash when modem doesn't send gateways.
+  + udev:
+    - Removed default ID_MM_PLATFORM_DRIVER_PROBE whitelist.
+      Devices exposed via the 'atmel_usart' driver aren't probed
+      automatically any more.
+  + Core:
+    - Fixed running init sequence after port flashing in
+      disconnection.
+    - Fixed "forbidden product strings" check in plugins.
+    - Fixed multiple memory leaks and invalid memory read/writes.
+    - Fixed multiple async operation completions in event handlers.
+    - Fixed multiple potential NULL dereferences.
+    - Fixed deadlock when trying to disconnect cancellable.
+    - Fixed reporting TX/RX stats (numbers were swapped).
+    - Ignored USB interface removal events.
+  + libmm-glib: Fix NULL dereference on firmware unique_id checks.
+  + polkit: Added missing Location interface method rules.
+  + Plugins:
+    - MBM: set data port for Dell DW5560.
+    - Simtech: fix error reporting in 3gpp unsolicited events
+      enabling.
+    - Fixed multiple memory leaks.
+  + systemd: Drop After=syslog.target rule.
+- Drop post(un) handling of icon_theme_cache_post(un), no longer
+  needed, file-triggers takes care of this now.
+- Drop ModemManager-1.0.0-systemd-activation.patch: No longer
+  needed.
+
+-------------------------------------------------------------------
+Thu Nov  9 01:53:44 UTC 2017 - sckang@suse.com
+
+- Avoid using "systemctl enable" in spec file (bsc#1038402).
+
+-------------------------------------------------------------------
+Mon Jul 17 15:58:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.6.8:
+  + Blacklist: Ignored default Linux USB Serial Gadget.
+  + QMI:
+    - Fixed build with libqmi 1.16.
+    - Allow prefix match for modem images ending with '?'.
+  + Plugins:
+    - Telit: fix #PSNT values interpretation for HSDPA and LTE
+      modems.
+    - Telit: add LTE access technology reporting.
+    - Huawei: let the E3372 run NDISDUP via TTY.
+    - MBM: fix async method completion enabling unsolicited events.
+  + Core:
+    - AT+WS46=? response parser extended to support ranges.
+    - Fix setting up signal quality retrieval logic.
+- Changes from version 1.6.6:
+  + Blacklist:
+    - Ignored keyboard.io devices.
+    - Ignored Analog Devices EVAL-ADXL362Z-DB.
+    - Ignored promotion boards from Renesas.
+    - Ignored Analog PlutoSDR.
+    - Ignored Telit LE866 flashing device.
+  + Plugins:
+    - Telit: fix AT+SERVICE 3GPP2 access technology reporting.
+    - Telit: lock/unlock CSIM operations by default.
+    - Telit: don't ignore AT ports without an explicit port type
+      hint tag.
+    - Cinterion: improve ^SMONG and ^SCFG=? response parsers.
+    - Huawei: implement Signal interface based on ^HCSQ.
+    - QMI: require FCC auth if InvalidTransition error is detected.
+    - QMI: fix incorrect use of mm_base_bearer_get_status().
+    - QMI: add WDS event reporting support.
+    - MBIM: remove parent access tech loading.
+  + Core:
+    - Added RSCP item in the Signal interface.
+    - Implement Signal interface in the generic AT based modem
+      based on ^CESQ.
+    - Improve network registration checks for LTE devices.
+    - Handle SDIO devices.
+    - Fix QCDM access tech reporting for WCDMA system modes.
+    - Fix capabilities in 4G-only devices.
+    - Set TTY as connected as soon as ATD replies.
+  + And some other fixes.
+
+-------------------------------------------------------------------
+Sun Feb 26 10:26:10 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 1.6.4:
+  + Blacklist:
+    - Ignored new Infineon flashloader devices.
+    - Ignored Sigma Sport docking stations.
+  + Core:
+    - USSD: don't rely on lock status to allow actions.
+    - 3GPP: always use 300s by default in the network scan
+      operation.
+    - Build: limit the available glib functionality to the version
+      supported.
+  + Plugins:
+    - telit: add support for the Telit GE910.
+    - zte: fix SUBSYSTEMS and ATTRS{idVendor} checks.
+  + Other minor fixes.
+
+-------------------------------------------------------------------
+Mon Jan  2 12:06:17 UTC 2017 - mpluskal@suse.com
+
+- Recommend libmbim (boo#1017734)
+
+-------------------------------------------------------------------
+Fri Dec  9 08:43:40 UTC 2016 - dimstar@opensuse.org
+
+- Drop pkgconfig(libsystemd-login): Even though configure checks
+  for it, pkgconfig(libsystemd) is actually enough to enable the
+  needed features (resume support). libsystemd-login no longer
+  exists with systemd v232.
+
+-------------------------------------------------------------------
+Tue Nov  1 13:24:34 UTC 2016 - zaitor@opensuse.org
+
+- Drop obsolete automake BuildRequires: Leftover from past patches.
+
+-------------------------------------------------------------------
+Fri Oct 14 08:08:02 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.6.2:
+  + Huawei: Fix setting up unsolicited voice messages.
+  + Blacklist: ignored u-blox GPS/GLOSNASS USB dongle and some new
+    Arduinos.
+  + ZTE: avoid making udev rules tty-only.
+  + Some other minor fixes.
+- Drop ModemManager-core-use-MM-specific-logging-methods.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct 13 18:18:57 UTC 2016 - hpj@urpla.net
+
+- Add explicit pkgconfig(libsystemd) and
+  pkgconfig(libsystemd-login) BuildRequires: Align with what
+  configure looks for. These are needed for the new suspend/resume
+  detection that arrived in 1.6.0.
+
+-------------------------------------------------------------------
+Fri Aug 26 07:10:44 UTC 2016 - sckang@suse.com
+
+- Drop
+  bnc878066-serial-ports-on-the-IO-card-are-not-responding.patch:
+  No longer needed.
+
+-------------------------------------------------------------------
+Thu Aug 18 14:55:57 UTC 2016 - zaitor@opensuse.org
+
+- Add ModemManager-core-use-MM-specific-logging-methods.patch:core:
+  use MM-specific logging methods always instead of the generic
+  GLib ones. Patch from upstream stable git.
+
+-------------------------------------------------------------------
+Mon Aug 15 09:29:09 UTC 2016 - bruno@ioda-net.ch
+
+- Update to version 1.6.0 (boo#975211):
+  + New features:
+    - Core:
+      . Implemented support for suspend/resume detection, currently
+        working when systemd is in use. Whenever the system is
+        suspended, we'll flag the modems as invalid so that they
+        are re-probed from scratch when the system is resumed.
+      . Added cancellation support for the probing operations.
+      . Reworked and simplified the serial port response
+        processing.
+    - Location interface:
+      . Added A-GPS support, currently available only for QMI based
+        modems with PDS service.
+      . Added support for updating the default GPS refresh time.
+    - Time interface: New default implementation for all AT-based
+      modems.
+    - Voice interface: New DBus interface to allow the management
+      of voice calls, which currently assumes that the audio
+      channel is setup out of ModemManager.
+    - Bearer: New support for reporting statistics of the ongoing
+      connection with a new 'Stats' property, currently available
+      for QMI and MBIM based modems.
+    - QMI:
+      . Implemented support for devices which only work in "raw IP"
+        mode, like the Sierra MC7455.
+      . Implemented support for SIM related operations using the
+        UIM service, as newer modems with multi-SIM capabilities
+        don't support the legacy DMS UIM operations.
+      . Implemented support for detecting network-initiated
+        disconnections.
+    - MBIM: If online mode fails, try to use the 'DMS Set FCC
+      Authentication' QMI
+    - udev: Added new supported 'ID_MM_PORT_IGNORE' tag to allow
+      fully ignoring ports specified by the user.
+    - mmcli:
+      . Added command completion.
+      . Added new operations to use the Voice interface.
+    - Build: Added code coverage support.
+    - Plugins:
+      . haier: new plugin to support the Haier CE81B.
+      . thuraya: new plugin for Thuraya satellite modems.
+      . sierra-legacy,sierra: the implementation for Sierra modems
+        is now split into two different plugins: a 'legacy' one for
+        the old PPP and DirectIP based modems and the standard one
+        for the newer QMI and MBIM based ones.
+      . dell: new plugin for Dell rebranded devices from Novatel, 
+        Sierra or Ericsson.
+      . gobi: removed the plugin. All non-vendor specific QMI
+        devices should now be managed by the generic plugin.
+      . mbm: dynamically load the list of supported modes.
+      . mbm: fixed several connection/disconnection issues.
+      . simtech: support QMI devices.
+      . huawei: implemented Voice call management support.
+      . huawei: use static IP addressing in NDISDUP capable devices 
+        if the AT^DHCP response provides the IP details.
+  + Existing features backported to 1.4.x releases also present in 
+    in ModemManager 1.6.0:
+    - MBIM:
+      . The mbim-proxy is used by default.
+      . Implemented support for disconnection status notification 
+        while connected.
+      . Disabled CDMA capabilities, until properly supported.
+    - QMI:
+      . The qmi-proxy is used by default.
+      . If online mode fails, use 'DMS Set FCC Authentication', 
+        required by some rebranded Sierra modems (e.g. Dell branded 
+        ones).
+      . Implemented support for loading SIM operator id and name.
+      . Implemented power-cycle reset functionality.
+    - Plugins:
+      . telit:
+        . added support for new devices, like HE910, UE910 and 
+        . implemented dynamic port identification.
+        . implemented unlock retries loading.
+        . implemented supported/current bands management.
+        . implemented supported/current modes management.
+        . implemented modem reset and power down.
+      . mbm: implemented GPS support for Ericsson HS2350 and 
+        H5321gw modems.
+- Drop upstream fixed patches:
+  + ModemManager-cinterion_drop_unused_constants.patch.
+  + ModemManager-novatel_remove_unused_custom_AT_probe_array.patch.
+  + ModemManager-wmc_fix_typo.patch.
+  + ModemManager-fix-whitespaces.patch.
+- Added nmcli-bash-completion package.
+- Need last version of polkit-default-priv (bsc#976945).
+- build '--with-suspend-resume=systemd' argument.
+
+-------------------------------------------------------------------
+Mon May 23 14:58:36 UTC 2016 - dimstar@opensuse.org
+
+- Add three more patches from upstream to fix build with gcc6:
+  + ModemManager-cinterion_drop_unused_constants.patch.
+  + ModemManager-novatel_remove_unused_custom_AT_probe_array.patch.
+  + ModemManager-wmc_fix_typo.patch.
+
+-------------------------------------------------------------------
+Mon May 23 13:42:39 UTC 2016 - dimstar@opensuse.org
+
+- Add ModemManager-fix-whitespaces.patch: Fix whitespace usage.
+  While building with GCC 6, the indenting is taken as a warning
+  for the user likely making a mistake.
+
+-------------------------------------------------------------------
+Thu Apr 14 16:17:29 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+- Rebased
+  bnc878066-serial-ports-on-the-IO-card-are-not-responding.patch.
+
+-------------------------------------------------------------------
+Mon Apr 11 12:04:20 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.4.14:
+  + Core:
+    - Improved several AT response parsers (+CREG, +CGDCONT,
+      +CPMS...).
+    - Explicitly disconnect bearer before removing it.
+  + 3GPP: allow LAC/CID updates while registering.
+  + QMI:
+    - Don't assume LAC/CID updates are always given in system
+      indications.
+    - Don't add APN auth settings if user/pass not given.
+    - Load SIM operator id and name with "NAS home network"
+    - Power-cycle reset functionality implemented.
+  + Telit:
+    - Added udev rules for Telite LE910 V2.
+    - Implemented modem reset & power down.
+    - Implemented unlock retries loading.
+    - Implemented supported/current bands loading/setting.
+    - Implemented supported/current modes loading/setting.
+    - Ignored proxmark3.
+  + Some other minor fixes.
+
+-------------------------------------------------------------------
+Mon Nov  2 09:16:42 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.4.12:
+  + MBM:
+    - Implemented GPS support for Ericsson modems.
+    - Enabled GPS port for H5321gw and HS2350.
+   + Telit:
+     - Added udev rules for HE910/UE910/UL865.
+     - Implemented dynamic port identification.
+   + QMI:
+     - Expose IP config details in bearer object even if DHCP is
+       requested.
+     - Retrieve MM_MODEM_3GPP_FACILITY_SIM.
+   + MBIM: CDMA capabilities disabled by default (not yet
+     supported).
+   + libmm-glib:
+     - If empty path (/) given, no SIM object will be created.
+     - Added missing introspection annotations to disconnect().
+   + Core:
+     - Don't check the cache when explicitly asking for required
+       unlocks.
+     - Initialize SMS messaging support also in the secondary port.
+     - New +CGMR parser which covers the Telit HE910 specific
+       format.
+     - New AT-based generic implementation for the Time interface.
+     - Fix reporting DENIED state in 3GPP modems.
+   + Policy: remove rule which was preventing us from receiving
+     signals.
+   + Blacklist: ignored MediaTek preloader.
+   + Misc. other minor fixes
+
+-------------------------------------------------------------------
+Thu Aug  6 08:26:47 UTC 2015 - dimstar@opensuse.org
+
+- Add explicit pkgconfig(udev) BuildRequires: we need it to define
+  %{_udevdir}.
+
+-------------------------------------------------------------------
+Fri Jul 24 11:13:11 UTC 2015 - jweberhofer@weberhofer.at
+
+- Update to version 1.4.10:
+  + QMI: retry unlock check on 'UimUninitialized' errors.
+  + QMI: fix '0' prefixed IMEI/ESN/MEID.
+  + Huawei: fix secondary port unsolicited message handling.
+  + Huawei: ignore ^POSEND and ^POSITION unsolicited messages.
+  + Blacklist: ignore devices from Posnet Polska S.A.
+  + Blacklist: ignore Palm M5xx devices.
+
+- Cleaned up spec
+
+-------------------------------------------------------------------
+Thu Apr 23 12:26:45 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.4.8:
+  + Build: avoid building DBus tests with GLib 2.32.
+  + ZTE: support MF700.
+  + Huawei: extend ^NDISSTATQRY parser with new response formats.
+  + Blacklist: ignore devices from Access Interface Solutions.
+  + Core: added ModemManager --version action.
+  + Some other minor fixes.
+- Changes from version 1.4.6:
+  + MBIM: by default use the new mbim-proxy setup.
+  + Telit: new support for HE910, UE910 and UL865.
+  + Location: avoid printing location info in syslog with info
+    level.
+  + Greylist: add Cypress USB<->RS232 adapters
+  + QMI: avoid unref-ing arrays owned by the output bundles.
+  + Some other minor fixes.
+- Changes from version 1.4.4:
+  + Use 'DMS Set FCC Authentication' if online mode fails in QMI
+    modems. This change requires bumping the libqmi version to
+    1.12.4, which is the stable release including the change.
+  + Fix segfault when empty pdp type string is given.
+  + Fix segfault when port driver is unknown.
+  + Blacklist: ignore PalmOS devices driven by 'visor'
+
+-------------------------------------------------------------------
+Mon Feb  9 15:19:59 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.4.2:
+  + MBIM:
+    - Update to handle 'Function Error' responses as per libmbim
+      1.12.
+    - Handle network-notified connection status messages.
+  + Bluetooth: Keep track of devices as they are move across sysfs.
+  + Core: case insensitive matches in the APN list.
+  + ZTE: avoid using QMI in the MF60.
+  + Huawei: updated port type hint strings.
+  + Icera:
+    - Fix no IPv6 report response.
+    - Retry Icera probing several times.
+  + Altair: increase AT probe command timeout.
+  + Some other minor fixes.
+
+-------------------------------------------------------------------
+Mon Oct 20 11:57:19 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + This version comes with the following updates in the
+    interfaces:
+    - Updated the logic around the IP configuration properties in
+      the Bearer:
+      . Setting DHCP as IP method in the IPv6 settings means that
+        SLAAC should be used to retrieve correct addressing and
+        routing details.
+      . DHCP IP method may now be combined with an explicit static
+        IP address, as IPv6 SLAAC may require the link-local
+        address to be present.
+      . MTU is now also included in the IP configuration
+        properties, if specified by the modem, and applicable to
+        both DHCP and STATIC methods.
+    - New 'OFF' power state, which fully switches off the modem
+      device. After setting the modem in this state, no further use
+      of it can be done. Currently available in Wavecom and
+      Cinterion.
+    - Location interface: new 'unmanaged GPS' support, which allows
+      to start/stop the GPS module in the modem, while leaving the
+      location information retrieval to other processes. Currently
+      available in modems with independent GPS TTYs, like
+      Option/HSO, Cinterion and Huawei.
+    - New Test DBus interface: not to be installed, just for
+      internal system tests.
+  + Other notable changes include:
+    - MBIM: support for ZTE and Sequans Communications modems.
+    - Ericsson MBM: Support for AT-capable /dev/cdc-wdm ports.
+    - Huawei: improved support for Network time retrieval.
+    - Huawei: implemented GPS support.
+    - Huawei: support for /dev/cdc-wdm AT ports via the new
+      huawei-cdc-ncm driver.
+    - Cinterion: implemented GPS support.
+    - Cinterion: implemented unlock retries loading.
+    - Cinterion: gather port types for multi-tty devices.
+    - Cinterion: custom wait for SIM readiness after SIM-PIN
+      unlock.
+    - Wavecom: custom wait for SIM readiness after SIM-PIN unlock.
+    - Probing: new flag to identify hotplugged devices which don't
+      need full reset.
+    - Tests: internal refactor of the ports handling code, allowing
+      test-driven virtual ports and system tests run during
+      'make check'. This new feature also comes with a new internal
+      'Test' DBus interface, as well as new --test-[*] options in
+      the ModemManager program.
+    - and many more fixes...
+- Changes from version 1.2.0:
+  + Signal interface: new interface for extended signal quality
+    information.
+  + OMA interface: new interface to expose the Device Management
+    capabilities defined by the Open Mobile Alliance.
+  + Messaging interface: new 'Messages' property.
+  + Modem interface: new 'Bearers' property.
+  + 3GPP interface: new 'SubscriptionState' property.
+  + Other notable changes include:
+    - QMI: Implemented Manual CDMA activation logic.
+    - QMI: Implemented 3GPP2/CDMA SMS support.
+    - QMI: Added support for QMI modems in the ZTE, x22x and
+      Cinterion plugins.
+    - Huawei: multiple improvements and fixes for the ^NDISDUP
+      support.
+    - Huawei: new mode/switching logic with ^SYSCFGEX for
+      LTE-capable devices.
+    - Altair-LTE: set subscription state based on PCO.
+    - MediaTek: new 'mtk' plugin added for MediaTek devices.
+    - libmm-glib: Added GObject Introspection and Vala support.
+    - and many more fixes...
+- Add gobject-introspection-devel and vala BuildRequires: new build
+  dependencies.
+- Split new subpackage typelib-1_0-ModemManager-1_0.
+- Add rcModemManager symlink.
+
+-------------------------------------------------------------------
+Wed Aug 20 08:29:18 UTC 2014 - lnussel@suse.de
+
+- Add ModemManager-1.0.0-systemd-activation.patch: Fix systemd dbus
+  activation (bnc#892682). Systemd does not honor Alias= lines in
+  install sections; that only works if the service file in question
+  is actually enabled. So the dbus service file must refer to
+  ModemManager.service.
+
+-------------------------------------------------------------------
+Wed Jul 23 03:34:04 UTC 2014 - rlmu@suse.com
+
+- Added bnc878066-serial-ports-on-the-IO-card-are-not-responding.patch
+  Fixed bnc#878066:
+  4810-350 (Jaspar) and 4800-783 (Keystone Hi) serial ports on the IO card are not responding
+
+-------------------------------------------------------------------
+Wed Jan 22 11:59:13 UTC 2014 - dimstar@opensuse.org
+
+- As we enabled pkgconfig(qmi-glib) and pkgconfig(mbim-glib)
+  BuildRequires (last change), it's arguably also a good idea to
+  replace --without-qmi and --without-mbim configure parameters
+  with their --with-qmi and --with-mbim counterparts (and thus
+  actually really enable the support).
+
+-------------------------------------------------------------------
+Sun Dec  1 17:04:45 UTC 2013 - dimstar@opensuse.org
+
+- Enable pkgconfig(qmi-glib) and pkgconfig(mbim-glib)
+  BuildRequires, as we now have a package for it.
+
+-------------------------------------------------------------------
+Sat Nov 30 20:09:44 UTC 2013 - crrodriguez@opensuse.org
+
+- Run %udev_rules_update if such macro is defined.
+
+-------------------------------------------------------------------
+Tue Sep 10 12:26:41 UTC 2013 - dimstar@opensuse.org
+
+- Enable the ModemManager service. In essence, it's a D-Bus
+  service so enabling it in systemd only means to make it known
+  and activatable (bnc#839067).
+
+-------------------------------------------------------------------
+Fri Jul 19 14:46:25 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 1.0.0:
+  + More flexible D-Bus API that accounts for the capabilities of
+    modern devices.
+  + Native support for Gobi and QMI-based Qualcomm devices via
+    libqmi.
+  + Native support for MBIM-based devices via libmbim.
+  + Preliminary support for GPS-based Location Services with some
+    devices.
+  + More complete messaging API.
+  + New libmm-glib client library.
+  + New fully-featured command-line client (mmcli).
+  + Systemd integration.
+  + And various other changes.
+- Add pkgconfig(mbim-glib) BuildRequires: new dependency (disabled
+  for now).
+- Stop passing --with-pppd-plugin-dir=$pppddir to configure, not
+  reqcognized anymore.
+- Add pkgconfig(systemd) BuildRequires, new dependency.
+- Add systemd ModemManger.service to pre, preun, post and postun.
+
+-------------------------------------------------------------------
+Fri Jun 21 13:31:36 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.7.991:
+  + Bug fixes and improvements on the road to 0.8.0.
+
+-------------------------------------------------------------------
+Thu Jun  6 10:27:50 UTC 2013 - denicolo@suse.com
+
+- License update: GPL-2.0+ and GPL-3.0
+  Correct license is GPL-2.0+; see COPYING file.
+  The cli tool is licensed GPL-3.0+.
+
+-------------------------------------------------------------------
+Tue Apr 16 05:47:45 UTC 2013 - dimstar@opensuse.org
+
+- Drop rpmlintrc: the privileges are approved in Factory.
+
+-------------------------------------------------------------------
+Sat Jan 12 22:02:09 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.7.990:
+  + More flexible D-Bus API that accounts for the capabilities of
+    modern devices.
+  + Native support for Gobi and QMI-based Qualcomm devices via
+    libqmi.
+  + Preliminary support for GPS-based Location Services with some
+    devices.
+  + More complete messaging API.
+  + Fully-featured command-line client (mmcli).
+- Add pkgconfig(qmi-glib) BuildRequires: new dependency.
+- Create new subpackage libnm-glib0.
+
+-------------------------------------------------------------------
+Tue Nov 27 18:01:14 UTC 2012 - dimstar@opensuse.org
+
+- Move udev rules file to the folder specified by udev.pc by
+  passing --with-udev-base-dir to configure.
+
+-------------------------------------------------------------------
+Wed Aug 29 18:46:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.6.0.0:
+  + Minor bugfixes.
+
+-------------------------------------------------------------------
+Mon Aug 20 18:50:13 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.5.995.0:
+  + More flexible and reliable port probing and modem setup.
+  + New plugin for some Cinterion modems.
+  + New plugin for some Iridium satellite modems.
+  + New API for modem firmware management.
+  + New API for network-provided date and time.
+  + New API for indicating remaining PIN/PUK unlock retries.
+  + New API for indicating enabled facility locks.
+  + Plugins can now suggest and IP timeout value for connection
+    managers.
+- Drop ModemManager-unsupported-qmi_wwan-ports.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Mon Aug 20 10:08:13 UTC 2012 - vuntz@opensuse.org
+
+- Add ModemManager-unsupported-qmi_wwan-ports.patch: fix calls to
+  pppd when using the qmi_wwan. Fix bnc#776520.
+
+-------------------------------------------------------------------
+Wed Mar 14 17:13:02 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.5.2.0:
+  + Retry sending SMS messages in PDU mode if an error occurs in
+    text mode
+
+-------------------------------------------------------------------
+Sun Feb 26 14:10:33 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.5.1.97:
+  + Fix reading SMS messages in text mode
+  + Fix communication with some Nokia phones
+- Drop ModemManager-use-deprecated.patch: fixed upstream.
+- Remove libtool BuildRequires and call to autoreconf: those were
+  only needed for patch above.
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Wed Feb 15 11:51:04 UTC 2012 - vuntz@opensuse.org
+
+- Move dbus xml interface files from devel subpackage to main
+  subpackage: those files might be needed at runtime.
+
+-------------------------------------------------------------------
+Wed Feb  8 19:52:24 UTC 2012 - dimstar@opensuse.org
+
+- Add ModemManager-use-deprecated.patch: do not warn about using
+  deprecated methods. This allows to build against glib >= 2.31.14.
+- Add call to autoreconf in %%prep section, as the patch above
+  touches m4 files.
+
+-------------------------------------------------------------------
+Thu Jan 19 06:36:55 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.5.1.96:
+  + Fixed sending SMS messages with modems that only support PDU
+    mode
+
+-------------------------------------------------------------------
+Tue Jan 10 07:04:21 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.5.1.95:
+  + Better detection of registration state when connecting
+  + Added support for more Ericsson modems
+  + Many memory leak fixes
+  + Ensure Gobi devices are driven by the gobi plugin
+  + Added multi-part SMS message support
+  + Better handling of requests when modem is disabled
+  + USSD fixes for Huawei devices
+  + Added support for Nokia Internet Sticks
+  + Fixed quirky response handling on some Cinterion modems
+  + Fixed CREG response handling on modems that include the RAC
+  + Skip sending power-up command if modem is already powered up
+  + Added support for Sierra Wireless devices using Icera chips
+    (USB305, Lightning)
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+- Drop ModemManager-glib-2.31.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Nov 16 13:44:45 UTC 2011 - vuntz@opensuse.org
+
+- Add ModemManager-glib-2.31.patch: fix build with glib 2.31.
+
+-------------------------------------------------------------------
+Tue Nov 15 14:15:25 UTC 2011 - dimstar@opensuse.org
+
+- Really enable parallel build: fix typo smp_flags => smp_mflags.
+
+-------------------------------------------------------------------
+Sat Sep 17 09:43:38 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Aug  3 08:03:49 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.5:
+  + Improvements for Samsung modems
+  + Support access technology reporting for Qualcomm Gobi modems
+  + Fix communication with Nokia N900 devices
+  + Support multiple CDMA Rm protocols
+  + Fix handling of Option access technology reporting
+  + Fix handling of CDMA EVDO registration states
+  + Fix problems reconnecting Ericsson F5521gw modems
+  + Better handling of some Android handset modem
+  + Bugs fixed: rh#583691, lp#765516, bgo#641661, bgo#652682,
+    bgo#650740, bgo#652910, bgo#637327.
+
+-------------------------------------------------------------------
+Fri Jul  1 09:46:46 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.4.998:
+  + Handle udev 'change' events.
+  + gsm:
+    - set SMS storage location before enabling notifications
+    - handle case of entirely empty SPN correctly
+  + ussd: fix reception, network notifications, and network
+    requests
+  + serial: warn when open/close take longer than 7 seconds
+  + Add a DBus interface for setting the log level.
+  + Add support for Samsung Y3400.
+  + Improvements for Icera-based modems.
+  + Improve disabling of Samsung GSM modems.
+  + Fix leaks.
+
+-------------------------------------------------------------------
+Wed Jun 15 12:49:34 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 0.4.997:
+  + Add support for various Linktop devices (LW273, etc)
+  + Implement standard D-Bus Properties interface PropertiesChanged
+    signal
+  + Add support for Qualcomm SMD-connected modems
+  + Export modem state over D-Bus
+  + Add D-Bus API for CDMA modem activation
+  + Correctly report HSPA+ access technology
+  + Correctly report home vs. roaming state with basic Sprint CDMA
+    modems
+  + Add D-Bus API for power-cycling/resetting modems
+  + Add support for USSD responses
+  + Finer grained and more consistent logging
+  + Blacklist more usb-serial dongles unlikely to be modems
+  + Add support for platform serial ports
+  + Loosen permissions for reading device information
+  + Add support for Samsung Y3300 Icera-based modem
+  + Speed up probing process when ports support AT commands
+  + Better SMS reception and reporting
+  + Add support for some Wavecom modems
+  + Add support for Simtech-based Prolink PH-300
+  + Add support for Alcatel X200
+  + Fix various crashes when modem is removed
+  + Bigs fixed: bgo#636040, bgo#636438, bgo#637140, bgo#638038,
+    bnc#674022, kde#266807, lp#673457, rh#544121.
+
+-------------------------------------------------------------------
+Thu May  5 10:42:27 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 0.4.996:
+  - Add a mechanism to get remaining incorrect PIN attempts
+  - Add a mechanism to retrieve the equipment identifier
+    (MEID/ESN, IMEI)
+  - Added support for returning devices to factory settings
+  - Better compatibility with Blackberry GSM devices
+  - Added a Location Services API with support for GSM devices
+  - Fixes for Novatel CDMA devices (home/roaming status, better
+    signal quality reporting)
+  - Better detection of EVDO registration when device is in 1X mode
+  - Add support for newer Alcatel devices like X220D
+  - Support for more ZTE devices
+  - Fix modem detection failures with some Sierra devices
+  - Add support for newer Ericsson devices
+  - Add an SIM identifier for use when auto-unlocking modems
+  - Add an device identifier for use when MEID/IMEI is not yet
+    available
+  - Handle signal quality reporting for GSM modems that don't
+    support AT+CSQ
+  - Add preliminary USSD support
+  - Fix reconnection attempts with some Sierra devices
+  - Add support for pseudo-ethernet interface on newer Sierra
+    devices
+  + Fixed bugs: rh#597296, rh#583691, rh#597088, bgo#626421,
+    rh#585394, bgo#628105, bgo#627935, bgo#621815, rh#632516,
+    lp#682282, bgo#590798
+- Drop ModemManager-fix-new-glib.patch: fixed upstream.
+- Drop ModemManager-polkit-deprecated.patch: fixed upstream.
+- Create a devel subpackage for new development files.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:52:28 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Add hicolor-icon-theme BuildRequires and Requires since we need
+  to have those macros defined and we install hicolor icons, so we
+  need to have the theme installed.
+
+-------------------------------------------------------------------
+Wed Nov 10 12:39:23 UTC 2010 - coolo@novell.com
+
+- Remove zero-size files from documentation.
+
+-------------------------------------------------------------------
+Wed Nov 10 12:36:31 UTC 2010 - coolo@novell.com
+
+- Own parent directories.
+
+-------------------------------------------------------------------
+Fri Aug 27 12:13:02 CEST 2010 - vuntz@opensuse.org
+
+- Add ModemManager-polkit-deprecated.patch to fix build with a
+  recent polkit (>= 0.97). This is only needed on openSUSE 11.4 and
+  later.
+
+-------------------------------------------------------------------
+Mon Aug  9 12:46:41 CEST 2010 - vuntz@opensuse.org
+
+- Add ModemManager-fix-new-glib.patch to fix build with recent
+  glib.
+- Build PolicyKit support: add polkit-devel BuildRequires and pass
+  --with-polkit to configure.
+- Do not add -fno-strict-aliasing to CFLAGS: this is not needed
+  anymore.
+
+-------------------------------------------------------------------
+Mon Jul 26 11:56:15 UTC 2010 - dimstar@opensuse.org
+
+- Update to version 0.4:
+  + For the full list of changes, see
+    http://cgit.freedesktop.org/ModemManager/ModemManager/log/?id=0.4
+  + bgo#604551: add an unlockRequired property that provides lock
+                status, check modem PIN state before exporting it
+  + bgo#608668: tag ChineBird PL68 ports
+  + bgo#591047: only set auto registration if the modem isn't idle
+  + bgo#608022: allow blacklisting various devices
+  + bgo#617873: gsm: be more lenient in +CGDCONT parsing
+  + rh#553199: ignore CSS on EVD0-capable modems.
+  + rh#573510: assume +CPIN "READY" response indicates GSM
+               capability
+  + rh#579247: fix sypport check for last plugin
+  + rh#569067: cdma: fix subclass registration state checking in
+               error paths
+  + rh#571921: cdma: prevent crash on modem removal
+  + rh#587400: gsm/cdma: fix data port assignment
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 26 11:38:20 CEST 2010 - vuntz@opensuse.org
+
+- Remove hal-devel BuildRequires again.
+- Remove ozerocdoff Recommends: usb_modeswitch is the modern
+  solution, and it's already recommended. And ozerocdoff depends on
+  hal, which is bad.
+
+-------------------------------------------------------------------
+Thu Jan 21 18:05:51 UTC 2010 - tambet@novell.com
+
+- Upgrade to version 0.3. No new features, but includes a lot of
+  bug fixes and much broader hardware support.
+
+-------------------------------------------------------------------
+Thu Dec 10 20:43:23 UTC 2009 - aj@suse.de
+
+- Remove unused BuildRequires hal-devel
+- Add build require on udev for directory ownership.
+
+-------------------------------------------------------------------
+Tue Aug 11 11:46:42 UTC 2009 - tittiatcoke@gmail.com
+
+- Update to the latest upstream:
+  + Move device probing and detection to udev
+  + Add plugin for Motorola C-series phones and BUSlink scwi275u
+  + Add plugin for Qualcomm Gobi devices
+  + Updated Ericsson 'mbm' driver
+  + Better Huawei detection; don't drop BUSlink responses
+  + Several other fixes
+
+-------------------------------------------------------------------
+Tue Jun 16 10:43:16 EEST 2009 - tambet@novell.com
+
+- Update to the latest upstream:
+  + Some fixes to the public API to correctly implement the spec.
+  + Implement unsolicited registration for modems that support it.
+  + Implement new "Simple" interface.
+  + Implement cached commands.
+  + Implement 'V1 E1' parser to work with modems which refuse to
+    turn their echo off.
+  + Implement Nokia plugin.
+  + Implement a plugin for ZTE modems.
+  + Lots of minor bug fixes.
+
+-------------------------------------------------------------------
+Thu Feb 26 11:42:41 EET 2009 - tambet@novell.com
+
+- Probe HSO modems, don't trust (often incorrect) HAL modem
+  properties (bnc #468329).
+
+-------------------------------------------------------------------
+Fri Feb  6 09:19:14 EET 2009 - tambet@novell.com
+
+- Fix dbus permissions (bnc #468384).
+
+-------------------------------------------------------------------
+Mon Jan 26 15:24:20 EET 2009 - tambet@novell.com
+
+- Implement Novatel plugin (bnc #468323).
+
+-------------------------------------------------------------------
+Fri Jan 16 10:15:43 EET 2009 - tambet@novell.com
+
+- Check the registration state even after unsuccessful attempt,
+  some cards report error if they're already registered before
+  the attempt (bnc #430673).
+
+-------------------------------------------------------------------
+Tue Jan  6 12:35:58 EET 2009 - tambet@novell.com
+
+- Broaden the network device matching for HSO modems as some
+  (newer?) modems have only matching grandparent between serial
+  and ethernet device UDIs. Fix the Option driver to not steal
+  HSO modems. (bnc #462534).
+- Explicitly disable unsolicitied messages for generic GSM modems
+  (bnc #462536).
+- Not all serial devices have carrier detection. Add a property to
+  the serial base class to turn it off and make certain Huawei
+  modems turn it off (bnc #462567).
+- Suggest "ozerocdoff" (part of bnc #405178).
+
+-------------------------------------------------------------------
+Wed Dec  3 11:07:27 EET 2008 - tambet@novell.com
+
+- Fix the HSO modem plugin (bnc #449992).
+- Provide 'org.freedesktop.ModemManager' so that NetworkManager
+  could use alternative implementations.
+
+-------------------------------------------------------------------
+Mon Nov 24 17:07:35 EET 2008 - tambet@suse.de
+
+- Always log which modem plugin is used.
+
+-------------------------------------------------------------------
+Tue Nov 18 13:09:18 EET 2008 - tambet@suse.de
+
+- Don't require CDMA modems to implement verbose error reporting
+  (+CMEE command) (bnc #430502).
+- Add a Sierra Wireless plugin that waits a bit after enabling the
+  radio (bnc #430673).
+
+-------------------------------------------------------------------
+Fri Nov  7 15:44:06 EET 2008 - tambet@suse.de
+
+- Implement a plugin for Option devices.
+- Enable/disable plugging with SIGUSR1.
+- Recommend usb_modeswitch (bnc #442515).
+
+-------------------------------------------------------------------
+Fri Oct 24 12:39:05 EEST 2008 - tambet@suse.de
+
+- Add support for MBM modems.
+- Use only one serial port for Huawei modems.
+
+-------------------------------------------------------------------
+Mon Oct 20 14:41:26 EEST 2008 - tambet@suse.de
+
+- Fix a segfault which occured when scanning results could not be
+  parsed.
+- Register a correct response parser for generic CDMA
+  implementation.
+
+-------------------------------------------------------------------
+Fri Sep 19 13:56:21 EEST 2008 - tambet@suse.de
+
+- Make it build for openSUSE 11.0 as well.
+- Update from upstream:
+  + Implement smarter APN choosing.
+  + Implement PIN changing and enabling/disabling.
+  + Make sure the device is enabled before trying to send commands to it.
+  + Disconnect modem if it's connected while disabling.
+  + Fix the loadable module name checking.
+  + Document DBus error codes and messages.
+  + Get the monitoring device from HAL for Huawei modems.
+  + Add correct message to mobile (+CMEE) errors.
+  + Finish the non-verbose (V0) mode parser.
+  + Reduce the amount of power used to minimum when modem is disabled.
+  + Reset the CID when the modem is enabled/disabled and disconnected.
+  + Specify call mode in the modem init string.
+
+-------------------------------------------------------------------
+Fri Sep 12 15:50:16 EEST 2008 - tambet@suse.de
+
+- Remove the patch to not require dbus-glib-0.75, factory has it.
+- Update from upstream:
+  + Rewrite the serial port handling.
+  + Implement serial command queueing.
+  + Define and implement error reporting.
+  + Fix device added and removed signals.
+
+-------------------------------------------------------------------
+Sun Sep  7 11:45:30 CEST 2008 - schwab@suse.de
+
+- Use autoreconf -fi.
+
+-------------------------------------------------------------------
+Mon Sep  1 18:10:24 CEST 2008 - tambet@suse.de
+
+- Update from upstream:
+  + Fix upper case inconsistency in the public API (SetApn).
+  + Fix HSO modem plugin.
+  + Implement reading IMEI, IMSI, manufacturer, model, and version (revision).
+  + License ModemManager with GNU Lesser General Public License, version 2.1.
+
+-------------------------------------------------------------------
+Fri Aug 29 15:18:08 CEST 2008 - tambet@suse.de
+
+- Update from upstream to get the API redesign agreed on NetworkManager
+  mailing list.
+
+-------------------------------------------------------------------
+Thu Aug 28 16:40:00 EEST 2008 - tambet@suse.de
+
+- Initial checkin for autobuild.
+

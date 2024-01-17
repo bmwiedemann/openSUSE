@@ -1,0 +1,68 @@
+Index: less-643/filename.c
+===================================================================
+--- less-643.orig/filename.c
++++ less-643/filename.c
+@@ -550,7 +550,7 @@ static FILE * shellcmd(char *cmd)
+ #if HAVE_SHELL
+ 	char *shell;
+ 
+-	shell = lgetenv("SHELL");
++	shell = lgetenv("LESSSHELL");
+ 	if (!isnullenv(shell))
+ 	{
+ 		char *scmd;
+Index: less-643/less.hlp
+===================================================================
+--- less-643.orig/less.hlp
++++ less-643/less.hlp
+@@ -104,7 +104,7 @@
+   ___<_n_a_m_e_>             Display the setting of an option, by name.
+   +_c_m_d                 Execute the less cmd each time a new file is examined.
+ 
+-  !_c_o_m_m_a_n_d             Execute the shell command with $SHELL.
++  !_c_o_m_m_a_n_d             Execute the shell command with $LESSSHELL.
+   #_c_o_m_m_a_n_d             Execute the shell command, expanded like a prompt.
+   |XX_c_o_m_m_a_n_d            Pipe file between current pos & mark XX to shell command.
+   s _f_i_l_e               Save input to a file.
+Index: less-643/less.nro
+===================================================================
+--- less-643.orig/less.nro
++++ less-643/less.nro
+@@ -459,7 +459,7 @@ current file.
+ A pound sign (#) is replaced by the name of the previously examined file.
+ "!!" repeats the last shell command.
+ "!" with no shell command simply invokes a shell.
+-On Unix systems, the shell is taken from the environment variable SHELL,
++On Unix systems, the shell is taken from the environment variable LESSSHELL,
+ or defaults to "sh".
+ On MS-DOS and OS/2 systems, the shell is the normal command processor.
+ .IP "# shell-command"
+@@ -2281,7 +2281,7 @@ automatically when running in
+ .IP PATH
+ User's search path (used to find a lesskey file
+ on MS-DOS and OS/2 systems).
+-.IP SHELL
++.IP LESSSHELL
+ The shell used to execute the !\& command, as well as to expand filenames.
+ .IP TERM
+ The type of terminal on which
+Index: less-643/lsystem.c
+===================================================================
+--- less-643.orig/lsystem.c
++++ less-643/lsystem.c
+@@ -121,13 +121,13 @@ public void lsystem(char *cmd, char *don
+ 
+ 	/*
+ 	 * Pass the command to the system to be executed.
+-	 * If we have a SHELL environment variable, use
++	 * If we have a LESSSHELL environment variable, use
+ 	 * <$SHELL -c "command"> instead of just <command>.
+ 	 * If the command is empty, just invoke a shell.
+ 	 */
+ #if HAVE_SHELL
+ 	p = NULL;
+-	if ((shell = lgetenv("SHELL")) != NULL && *shell != '\0')
++	if ((shell = lgetenv("LESSSHELL")) != NULL && *shell != '\0')
+ 	{
+ 		if (*cmd == '\0')
+ 			p = save(shell);

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ee4f1861925fc7c4d382dd868135b01</srcmd5>
+    <version>2.0.5</version>
+    <time>1515623568</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of scrapy</comment>
+    <requestid>559200</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c96bae4d62f87e737784d901e33a8d2a</srcmd5>
+    <version>2.0.5</version>
+    <time>1548334958</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659282</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>22ee7614647de1131665046200add31f</srcmd5>
+    <version>2.0.5</version>
+    <time>1573223102</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746317</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>81ccf23e8d61d50dc236e187dbcc4856</srcmd5>
+    <version>2.0.6</version>
+    <time>1663002527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002778</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>15691a71ea8982601b08ab81d202e238</srcmd5>
+    <version>2.0.7</version>
+    <time>1685743643</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.7:
+  * packaging improvements, include pyproject.toml</comment>
+    <requestid>1090384</requestid>
+  </revision>
+</revisionlist>

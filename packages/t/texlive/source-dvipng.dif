@@ -1,0 +1,15 @@
+---
+ texk/dvipng/dvipng-src/vf.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- texk/dvipng/dvipng-src/vf.c
++++ texk/dvipng/dvipng-src/vf.c	2016-01-28 12:28:40.787060207 +0000
+@@ -115,7 +115,7 @@ void InitVF(struct font_entry * tfontp)
+     tcharptr->tfmw = (int32_t)
+       ((int64_t) tcharptr->tfmw * tfontp->s / (1 << 20));
+     DEBUG_PRINT(DEBUG_VF,(" (%d)",tcharptr->tfmw));
+-    if (c >= NFNTCHARS) /* Only positive for now */
++    if (c < 0 || c >= NFNTCHARS) /* Only positive for now */
+       Fatal("VF font %s exceeds char numbering limit",tfontp->name);
+     tfontp->chr[c] = tcharptr;
+     tcharptr->data=position;

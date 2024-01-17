@@ -1,0 +1,5 @@
+<package name="yomi-formula" project="openSUSE:Factory">
+  <title>Salt formula for the new installer</title>
+  <description>Yet one more installer - yomi, is an alternative to AutoYaST for unattended installation of the openSUSE family.</description>
+  <devel project="systemsmanagement:yomi" package="yomi-formula"/>
+</package>

@@ -1,0 +1,19 @@
+diff -ru jconvolver-1.1.0.orig/source/Makefile jconvolver-1.1.0/source/Makefile
+--- jconvolver-1.1.0.orig/source/Makefile	2021-06-29 10:43:51.000000000 +0200
++++ jconvolver-1.1.0/source/Makefile	2022-09-29 21:27:18.754266913 +0200
+@@ -25,14 +25,13 @@
+ VERSION = 1.1.0
+ CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\"
+ CXXFLAGS += -O2 -Wall
+-CXXFLAGS += -march=native
+ 
+ 
+ all:	jconvolver fconvolver makemulti
+ 
+ 
+ JCONVOLVER_O =	jconvolver.o config.o jconfig.o audiofile.o dither.o sstring.o jclient.o
+-jconvolver:	LDLIBS += -lzita-convolver -lfftw3f -lsndfile -lclthreads -ljack -lpthread -lrt
++jconvolver:	LDLIBS += -lzita-convolver -lfftw3f -lsndfile -ljack -lpthread -lrt
+ jconvolver:	$(JCONVOLVER_O)
+ 	$(CXX) $(LDFLAGS) -o $@ $(JCONVOLVER_O) $(LDLIBS)
+ $(JCONVOLVER_O):

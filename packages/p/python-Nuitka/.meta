@@ -1,0 +1,9 @@
+<package name="python-Nuitka" project="openSUSE:Factory">
+  <title></title>
+  <description>Python compiler with full language support and CPython compatibility.
+
+This Python compiler achieves full language compatibility and compiles Python
+code into compiled objects that are not second class at all. Instead they can be
+used in the same way as pure Python objects.</description>
+  <devel project="devel:languages:python" package="python-Nuitka"/>
+</package>

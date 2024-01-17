@@ -1,0 +1,260 @@
+-------------------------------------------------------------------
+Tue Oct 10 14:01:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.4.1:
+  * Fixed a change in behavior of normalize host brand string that breaks
+    Firecracker on external instances.
+  * Fixed the T2A CPU template not to unset the MMX bit (CPUID.80000001h:EDX[23])
+    and the FXSR bit (CPUID.80000001h:EDX[24]).
+  * Fixed the T2A CPU template to set the RstrFpErrPtrs bit
+    (CPUID.80000008h:EBX[2]).
+
+- Update to 1.4.0:
+  Added
+    * Added support for custom CPU templates allowing users to adjust vCPU features
+      exposed to the guest via CPUID, MSRs and ARM registers.
+    * Introduced V1N1 static CPU template for ARM to represent Neoverse V1 CPU
+      as Neoverse N1.
+    * Added support for the virtio-rng entropy device. The device is optional. A
+      single device can be enabled per VM using the /entropy endpoint.
+    * Added a cpu-template-helper tool for assisting with creating and managing
+      custom CPU templates.
+
+  Changed
+    * Set FDP_EXCPTN_ONLY bit (CPUID.7h.0:EBX[6]) and ZERO_FCS_FDS bit
+      (CPUID.7h.0:EBX[13]) in Intel's CPUID normalization process.
+
+  Fixed
+    * Fixed feature flags in T2S CPU template on Intel Ice Lake.
+    * Fixed CPUID leaf 0xb to be exposed to guests running on AMD host.
+    * Fixed a performance regression in the jailer logic for closing open file
+      descriptors. 
+    * A race condition that has been identified between the API thread and the VMM
+      thread due to a misconfiguration of the api_event_fd.
+    * Fixed CPUID leaf 0x1 to disable perfmon and debug feature on x86 host.
+    * Fixed passing through cache information from host in CPUID leaf 0x80000006.
+    * Fixed the T2S CPU template to set the RRSBA bit of the IA32_ARCH_CAPABILITIES
+      MSR to 1 in accordance with an Intel microcode update.
+    * Fixed the T2CL CPU template to pass through the RSBA and RRSBA bits of the
+      IA32_ARCH_CAPABILITIES MSR from the host in accordance with an Intel microcode
+      update.
+    * Fixed passing through cache information from host in CPUID leaf 0x80000005.
+    * Fixed the T2A CPU template to disable SVM (nested virtualization).
+    * Fixed the T2A CPU template to set EferLmsleUnsupported bit
+      (CPUID.80000008h:EBX[20]), which indicates that EFER[LMSLE] is not supported.
+
+- Update to 1.3.3:
+  * Fixed passing through cache information from host in CPUID leaf 0x80000006.
+
+-------------------------------------------------------------------
+Thu May 18 06:17:40 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.3.2:
+  Added
+    * Introduced T2CL (Intel) and T2A (AMD) CPU templates to provide
+      instruction set feature parity between Intel and AMD CPUs when using
+      these templates.
+    * Added Graviton3 support (c7g instance type).
+  Changed
+    * Improved error message when invalid network backend provided.
+    * Improved TCP throughput by between 5% and 15% (depending on CPU) by using
+    * scatter-gather I/O in the net device's TX path.
+    * Upgraded Rust toolchain from 1.64.0 to 1.66.0.
+    * Made seccompiler output bit-reproducible.
+  Fixed
+    * Fixed feature flags in T2 CPU template on Intel Ice Lake.
+    * A race condition that has been identified between the API thread and the VMM
+      thread due to a misconfiguration of the api_event_fd.
+
+-------------------------------------------------------------------
+Mon Dec 19 10:44:16 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.2.0
+  * Added a new CPU template called T2S
+  * Added a new CLI option --metrics-path PATH
+  * Added baselines for m6i.metal and m6a.metal
+  * Changed the jailer option --exec-file to fail if the filename does not
+    contain the string firecracker
+  * Updated Rust toolchain and all dependencies to their respective newest versions
+  * Made the T2 template more robust by explicitly disabling additional
+    CPUID flags that should be off
+  * Now MAC address is correctly displayed when queried with GET /vm/config
+  * Fixed a self-DoS scenario in the virtio-queue code 
+  * Fixed the bad handling of kernel cmdline parameters when init arguments were
+    provided via JSON PUT /boot-source request
+  * Fixed a bug on ARM64 hosts  where the upper 64bits of the V0-V31 FL/SIMD
+    registers were not saved correctly
+
+-------------------------------------------------------------------
+Sat Oct  1 17:55:05 UTC 2022 - Liang Yan <lyan@opensuse.org>
+
+- Update firecracker to version 1.1.1
+  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.1.1 
+  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.1.0
+- Add build depenceny clang
+- Update cargo_config based on new vendor
+
+-------------------------------------------------------------------
+Mon Jun 20 03:26:38 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Tue May 24 06:33:07 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+- Remove 0001-cargo-update-regex-dependency.patch due to update of
+  vendored dependencies
+
+-------------------------------------------------------------------
+Wed Mar 16 13:17:24 UTC 2022 - Liang Yan <lyan@opensuse.org>
+
+- Bump rust to 1.46.0 for vmm-sys-util building
+  https://blog.rust-lang.org/2020/08/27/Rust-1.46.0.html#const-fn-improvements
+- Bump Regex crate to 1.5.5
+  (CVE-2022-24713, boo#1196972)
+  0001-cargo-update-regex-dependency.patch
+
+-------------------------------------------------------------------
+Mon Feb 14 01:02:21 UTC 2022 - Liang Yan <ly@xryan.net>
+
+- Update firecracker to version 1.0.0
+  Detail could be found below:
+  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.0.0 
+  
+* Patches dropped:
+  0001-dependencies-Included-vm-fdt-crate.patch
+  0002-vm-fdt-Replace-libfdt-with-vm-fdt.patch
+  0003-libfdt-bindings-Deleted-libfdt-bindings-crate.patch
+  
+-------------------------------------------------------------------
+Tue Sep 14 23:45:26 UTC 2021 - Liang Yan <lyan@suse.com>
+
+- Replace libfdt with vm-fdt.
+  0001-dependencies-Included-vm-fdt-crate.patch
+  0002-vm-fdt-Replace-libfdt-with-vm-fdt.patch
+  0003-libfdt-bindings-Deleted-libfdt-bindings-crate.patch 
+
+-------------------------------------------------------------------
+Wed Sep  8 22:16:33 UTC 2021 - Liang Yan <lyan@suse.com>
+
+- Update firecracker to version 0.25.0
+  Add workspace to firecracker. The workspace has three packages, 
+  firecracker,jailer,seccompiler
+  
+  Detail could be found below:
+  https://github.com/firecracker-microvm/firecracker/blob/main/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon May 25 11:54:18 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Update firecracker to version 0.19.1:
+  Added:
+    * New device: virtio-vsock, backed by Unix domain sockets.
+    * New command-line parameter for firecracker, named --no-api, which
+      will disable the API server thread. Also, when API server is disabled,
+      MMDS is no longer available now.
+    * New command-line parameter for firecracker, named --config-file, which
+      represents the path to a file that contains a JSON which can be used for
+      configuring and starting a microVM without sending any API requests.
+    * The jailer adheres to the "end of command options" convention, meaning
+      all parameters specified after -- are forwarded verbatim to Firecracker.
+    * Added KVM_PTP support to the recommended guest kernel config.
+    * Added entry in FAQ.md for Firecracker Guest timekeeping.
+  Changed:
+    * Vsock API call: PUT /vsocks/{id} changed to PUT /vsock and no longer
+      appear to support multiple vsock devices. Any subsequent calls to this API
+      endpoint will override the previous vsock device configuration.
+  Removed:
+    * Removed experimental support for vhost-based vsock devices.
+    * Removed unused 'Halting' and 'Halted' instance states.
+ 
+-------------------------------------------------------------------
+Mon May 25 11:11:56 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Modify spec file:
+  * Change the group to "System/Emulators/PC" which is maintained by virt team.
+  * Use "rm -f " instead of "rm" to remove spurious files
+  * Remove macro "_missing_doc_files_terminate_build"
+
+-------------------------------------------------------------------
+Sun May 24 01:20:05 UTC 2020 - Liang Yan <lyan@suse.com>
+
+- Fix Tumbelweed builds by removing /usr/.crates2.json.
+
+-------------------------------------------------------------------
+Fri Sep 13 14:45:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing wording from description.
+
+-------------------------------------------------------------------
+Tue Sep 10 13:47:51 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Fix aarch64 builds
+- Bump min rust version to 1.35.0
+
+-------------------------------------------------------------------
+Mon Sep  9 16:51:51 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update firecracker to version 0.17.0:
+  Added:
+    * New API call: PATCH /machine-config/, used to update VM configuration,
+      before the microVM boots.
+    * Added an experimental swagger definition that includes the specification
+      for the vsock API call.
+    * Added a signal handler for SIGBUS and SIGSEGV that immediately terminates
+      the process upon intercepting the signal.
+    * Added documentation for signal handling utilities.
+    * Added [alpha] aarch64 support.
+    * Added metrics for successful read and write operations of MMDS, Net and
+      Block devices.
+  Changed:
+    * vcpu_count, mem_size_mib and ht_enabled have been changed to be mandatory
+      for PUT requests on /machine-config/.
+    * Disallow invalid seccomp levels by exiting with error.
+  Fixed:
+    * Incorrect handling of bind mounts within the jailed rootfs.
+    * Corrected the guide for Alpine guest setup.
+
+-------------------------------------------------------------------
+Wed May 29 11:25:08 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update firecracker to version 0.16.0:
+    + Added [alpha] AMD support.
+    * Corrected the seccomp filter when building with glibc.
+    - Removed the seccomp.bad_syscalls metric.
+    * Dropped the JSON-formatted context command-line parameter from Firecracker
+      in favor of individual classic command-line parameters.
+    * Improved multiple error messages.
+    * Removed all kernel modules from the recommended kernel config.
+
+-------------------------------------------------------------------
+Mon May  6 17:31:52 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Fixed vsock support (needed for katacontainers interoperability)
+   * Use `cargo install` to build and install build artifacts
+   during the build phase, to avoid building the crate twice.
+
+-------------------------------------------------------------------
+Sat Mar 23 08:13:35 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Added patches 0001-Fixed-basic-seccomp-filter-for-glibc.patch and
+  0002-Fixed-advanced-seccomp-filter-for-glibc.patch: change the
+  seccomp filtering rules to allow the execution of certain syscalls
+  that are used when the binary is built with glibc instead of musl.
+
+-------------------------------------------------------------------
+Fri Mar 22 21:25:39 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Ensure build happens only on supported architectures
+- Enable vsock experimental feature
+
+-------------------------------------------------------------------
+Fri Mar 15 08:18:36 UTC 2019 - opensuse Cloud User <fcastelli@suse.com>
+
+- Make spec file arch independent
+
+-------------------------------------------------------------------
+Thu Mar 14 23:36:02 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Initial package version 0.15.2

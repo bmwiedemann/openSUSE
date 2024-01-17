@@ -1,0 +1,40 @@
+From b512cd3cfdc47a9684ea3cf1208a0c7ac921d0dc Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 20 Jun 2022 14:14:34 +0200
+Subject: [PATCH] Add some library versioning
+Upstream: https://github.com/discord/discord-rpc/pull/367/
+
+discord-rpc silently changed ABI between v3.0.0 and v3.4.0.
+This requires DT_SONAME changes. Implement something that fulfills
+the tagging requirements for distributions.
+
+(SLPP §4.1 option 2;
+https://en.opensuse.org/openSUSE:Shared_library_packaging_policy#When_there_is_no_versioning)
+---
+ CMakeLists.txt     |    1 +
+ src/CMakeLists.txt |    1 +
+ 2 files changed, 2 insertions(+)
+
+Index: discord-rpc-3.4.0/CMakeLists.txt
+===================================================================
+--- discord-rpc-3.4.0.orig/CMakeLists.txt
++++ discord-rpc-3.4.0/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ cmake_minimum_required (VERSION 3.2.0)
+ project (DiscordRPC)
++set(DRPC_VERSION 3.4.0)
+ 
+ include(GNUInstallDirs)
+ 
+Index: discord-rpc-3.4.0/src/CMakeLists.txt
+===================================================================
+--- discord-rpc-3.4.0.orig/src/CMakeLists.txt
++++ discord-rpc-3.4.0/src/CMakeLists.txt
+@@ -71,6 +71,7 @@ if(UNIX)
+     endif(APPLE)
+ 
+     add_library(discord-rpc ${BASE_RPC_SRC})
++    set_target_properties(discord-rpc PROPERTIES SOVERSION ${DRPC_VERSION})
+     target_link_libraries(discord-rpc PUBLIC pthread)
+     target_compile_options(discord-rpc PRIVATE
+         -g

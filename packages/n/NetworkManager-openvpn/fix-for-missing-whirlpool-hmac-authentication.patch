@@ -1,0 +1,24 @@
+Index: NetworkManager-openvpn-1.10.0/properties/nm-openvpn-editor.c
+===================================================================
+--- NetworkManager-openvpn-1.10.0.orig/properties/nm-openvpn-editor.c
++++ NetworkManager-openvpn-1.10.0/properties/nm-openvpn-editor.c
+@@ -1020,6 +1020,7 @@ populate_hmacauth_combo (GtkComboBox *bo
+ 		{ NM_OPENVPN_AUTH_SHA384,    N_("SHA-384") },
+ 		{ NM_OPENVPN_AUTH_SHA512,    N_("SHA-512") },
+ 		{ NM_OPENVPN_AUTH_RIPEMD160, N_("RIPEMD-160") },
++		{ NM_OPENVPN_AUTH_WHIRLPOOL, N_("whirlpool") },
+ 	};
+ 
+ 	store = gtk_list_store_new (3, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_BOOLEAN);
+Index: NetworkManager-openvpn-1.10.0/shared/nm-service-defines.h
+===================================================================
+--- NetworkManager-openvpn-1.10.0.orig/shared/nm-service-defines.h
++++ NetworkManager-openvpn-1.10.0/shared/nm-service-defines.h
+@@ -112,6 +112,7 @@
+ #define NM_OPENVPN_AUTH_SHA256    "SHA256"
+ #define NM_OPENVPN_AUTH_SHA384    "SHA384"
+ #define NM_OPENVPN_AUTH_SHA512    "SHA512"
++#define NM_OPENVPN_AUTH_WHIRLPOOL "whirlpool"
+ 
+ #define NM_OPENVPN_CONTYPE_PASSWORD     "password"
+ #define NM_OPENVPN_CONTYPE_PASSWORD_TLS "password-tls"

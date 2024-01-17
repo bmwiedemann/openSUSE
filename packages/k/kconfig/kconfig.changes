@@ -1,0 +1,1478 @@
+-------------------------------------------------------------------
+Sat Jan 13 11:21:23 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- No code change since 5.113.0
+
+-------------------------------------------------------------------
+Tue Dec  5 11:17:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- Changes since 5.112.0:
+  * Make KConfigWatcher noop for in-memory configs
+
+-------------------------------------------------------------------
+Mon Nov  6 09:13:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- Changes since 5.111.0:
+  * kconfigwatcher: do not assert absolute paths
+  * dbussanitizer: do not allow trailing slashes
+  * dbussanitizer: qassertx to print the path
+  * notify: don't try to send or receive dbus notifications on absolute paths
+  * more aggressively sanitize dbus paths
+
+-------------------------------------------------------------------
+Mon Oct  9 20:20:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- No code change since 5.110.0
+
+-------------------------------------------------------------------
+Wed Sep  6 12:23:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- Changes since 5.109.0:
+  * Fix deadlock when KConfigIni fails to acquire a file lock
+
+-------------------------------------------------------------------
+Tue Aug  8 17:42:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * Add explicit moc includes to sources for moc-covered headers
+
+-------------------------------------------------------------------
+Mon Jul  3 07:01:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Remove qt6 CI builds
+
+-------------------------------------------------------------------
+Mon Jun  5 07:43:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- No code change since 5.106.0
+
+-------------------------------------------------------------------
+Sat May  6 14:01:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Add workaround to support config name with minus sign
+
+-------------------------------------------------------------------
+Sat Apr  1 17:00:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- No code change since 5.104.0
+
+-------------------------------------------------------------------
+Mon Mar  6 09:07:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- Changes since 5.103.0:
+  * Don't include screen connector names in screen position/size data
+  * Fix multimonitor window size restoration (kde#460260)
+  * Sort connector names for multi-screen size/position keys
+
+-------------------------------------------------------------------
+Wed Feb  8 09:12:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * kconf_update: use standard exit status code
+  * kconf_update: use CMAKE_INSTALL_FULL_LIBDIR
+  * KCoreConfigSkeleton::ItemEnum::Choice2: add deprecation warning markup
+  * KCoreConfigSkeleton::ItemEnum::choices2(): add deprecation markup
+  * Android: Fix a bug where new file wouldn't be created
+
+-------------------------------------------------------------------
+Thu Jan 12 08:18:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * fix safety issue of multiple threads use KConfig in the same process
+
+-------------------------------------------------------------------
+Tue Dec  6 20:10:27 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * Apply existing  QScreen::name() workaround for Windows to new code (kde#429943)
+  * Fix parser treating empty IntList default as a list of single zero element: [0]
+  * Add test for empty default IntList config entry
+
+-------------------------------------------------------------------
+Tue Nov  8 08:34:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * kconfig_compiler: switch away from bit mask for signal enum values
+  * kconfig_compiler: fix generation of bit masks enum items for signals
+  * kconfig_compiler: perform signals count check earlier
+  * .gitlab-ci.yml: enable static builds
+  * Fix KConfigGui initialization in case of static builds (kde#459337)
+  * Fix the translation folder name
+
+-------------------------------------------------------------------
+Sat Oct  1 15:55:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Only warn about a file being inaccessible if we know which file it is
+  * Add Qt6 windows CI support
+  * Fix size and position restoration on multimonitor setups (kde#427875)
+  * Warn when accessing an inaccessible config file
+  * Fix minValue/maxValue for KConfigCompilerSignallingItem
+
+-------------------------------------------------------------------
+Tue Sep  6 07:16:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * Add FreeBSD Qt6 CI support
+  * Add KServiceAction as a friend of KConfigGroup
+  * KConfigWatcher: initialize d->m_config in constructor
+
+-------------------------------------------------------------------
+Sun Aug  7 22:27:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Changes since 5.96.0:
+  * Add explicit option to disable QML support
+  * Don't inherit from containers
+
+-------------------------------------------------------------------
+Sun Jul  3 11:55:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- No code change since 5.95.0
+
+-------------------------------------------------------------------
+Fri Jun 10 14:12:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * Change "Actual Size" shortcut's text to "Zoom to Actual Size"
+  * remove unused includes
+  * Fix enum doc: close tags
+
+-------------------------------------------------------------------
+Tue May 10 08:17:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * KConfigGroup: fix writePathEntry/readPathEntry roundtrip for symlinks
+  * autotests: skip KStandardShortcutWatcherTest on Windows
+  * Support storing QUuid
+  * Add windows CI
+
+-------------------------------------------------------------------
+Sun Apr  3 10:47:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Require unittests to pass for CI jobs to pass
+  * Disable DBus support on Windows by default
+  * Make KConfig::mainConfigName() public.
+  * kconf_update: Fix checking for changes of update files
+
+-------------------------------------------------------------------
+Mon Mar  7 09:26:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * Remove broken Python bindings generation
+  * Add KWindowStateSaver
+  * Remove warning from kauthorized.h
+  * KConfigCompiler: support ItemAccessors=true with signalling items
+  * Add Qt6 Android CI
+  * Use our deprecation macros rather than Q_DECL_DEPRECATED directly
+  * KConfigPropertyMap: Clean up internal leftovers of autosave feature
+  * QMake pri files: fix missing new path to version header
+  * Support build without Qt session manager
+  * Add KConfig GUI logging category
+
+-------------------------------------------------------------------
+Sun Feb  6 10:16:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * Fix build on Windows
+  * Don't use saveShortcut for setting up tests
+  * Fix build on Windows
+  * Introduce StandardShortcutWatcher to watch for runtime changes
+  * Make singleton teardown work with Qt6 as well
+  * Utilize ECMDeprecationSettings to manage deprecate Qt/KF API
+  * Add CI qt6 support
+  * Add Samir variable fix too
+  * Use KDE_INSTALL_FULL_LIBEXECDIR_KF
+  * Extract isNonDeletedKey() helper function
+  * Look for entries with common group prefix in entryMap's subrange
+  * Improve the documentation of KConfigPrivate::allSubGroups()
+  * KConfigPrivate::copyGroup: remove redundant entryMap lookup
+  * groupList: convert each group name from UTF-8 once
+  * Exclude deleted groups from groupList() (kde#384039)
+  * groupList: don't copy unnecessarily; add const
+
+-------------------------------------------------------------------
+Mon Jan  3 12:47:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * kconfig_compiler/CMakeLists.txt - use CMAKE_CROSSCOMPILING
+  * Complete fixing the Windows CI
+  * WIP: Change the build system to enable building with Qt 6
+  * Allow kreadconfig/kwriteconfig to access the root group
+
+-------------------------------------------------------------------
+Sat Dec  4 22:56:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * Fix KDesktopFileTest::testIsAuthorizedDesktopFile running on gitlab CI
+  * KDesktopFile: deprecate resource()
+  * README.dox: GENERATE_MOC is required for signals
+  * Use innerVarStr instead of varStr for choices
+  * Add the enum group test to the kconfigcompiler_test
+  * Add a proper test for the enumms within groups
+  * Add missing changes
+  * unbreak kconfig with enums, mutators and properties.
+  * Demonstrate build failure with kconfig generated code
+  * Copy ConfigPropertyMap from KDeclarative to new KConfig QML module
+
+-------------------------------------------------------------------
+Sun Nov  7 09:13:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:07:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Changes since 5.87.0:
+  * Exclude new enum-overload from python bindings build
+  * Enforce KAuthorized enums being not 0
+  * Create enum to to authorize common keys
+  * Do not try to generate python bindings for KConfigGroup::moveValuesTo
+  * Create utility method for moving entries from one group to another
+  * Add FreeBSD CI
+  * Add Android CI
+- Rebase kconfig-desktop-translations.patch
+
+-------------------------------------------------------------------
+Sun Oct  3 20:33:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Android: Fix writing to config if path is a content:// Uri
+  * Add Gitlab CI configuration
+  * kconfigini: Only open the file once to write
+  * Allow KConfigXT to use KSharedConfig::openStateConfig
+
+-------------------------------------------------------------------
+Wed Sep 15 08:23:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:21:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * Add Ctrl+Alt+Comma shortcut for "Configure Keyboard Shortcuts" (kde#441537)
+  * Make enum value visible to QML when using GlobalEnum mode
+  * KDesktopFile::isAuthorizedDesktopFile: reduce warning to info a log
+
+-------------------------------------------------------------------
+Fri Aug  6 12:11:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * KConfig: sort keys in keyListImpl() so unittests can rely on it
+  * KConfig: fix deletion of an entry that is also in kdeglobals
+  * Update kconfig_compiler documentation with translation options
+  * Do not create a vector and a QByteArray just to discard it immediately
+  * Only query for existing config file when it's necessary
+  * Use specific API to compare QByteArrays
+  * Cache global config files
+
+-------------------------------------------------------------------
+Sun Jul  4 07:45:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * kconfigtest: save/restore XDG_CONFIG_DIRS
+- Only install the license files once
+
+-------------------------------------------------------------------
+Sat Jun  5 11:58:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * kconfig_add_kcfg_files: catch alias targets before failing internally
+  * fix deleted group is in listGroups
+  * Bump required CMake version to 3.16
+  * Don't write position data for maximized windows
+  * Fix cmake warning
+
+-------------------------------------------------------------------
+Sat May  1 16:40:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * Make the docs state that KConfig::reparseConfiguration() calls
+    sync() if needed
+  * Use new version-controlled enumerator deprecation warning macros
+  * Deprecate KDesktopFile::readDevice()
+  * Remove stray tick from readme
+  * KConfig: rename kconfigdata.h to kconfigdata_p.h
+  * Relicense to LGPL-2.0-or-later
+  * kconfig_compiler: add override to generated destructors
+  * autotests: look for cmd, not bash, on Windows
+- Rebase kconfig-desktop-translations.patch
+
+-------------------------------------------------------------------
+Mon Apr  5 07:12:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * Relicense file to LGPL-2.0-or-later
+  * [kconfig_compiler] Explicitly open input file for reading
+  * Remove old contact data from src/kconfig_compiler_README.dox
+  * kconfig_compiler: change how paramString() creates strings
+
+-------------------------------------------------------------------
+Sun Mar  7 09:26:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Changes since 5.79.0:
+  * Add missing QTextStream::setCodec ifdef
+  * Make QByteArray -> char* conversion explicit
+  * Add KEntryMap::constFindEntry() method
+  * Fix window positioning regression due to incorrect fallback in fallback (kde#432661)
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Changes since 5.78.0:
+  * Fix kconfig_compiler doxygen formatting
+  * Refactor window geometry save/restore code to be less fragile
+  * Fix restoring window size when closed while maximized (kde#430521)
+  * Remove dead cmake code
+  * KConfig: preserve the milliseconds component of QDateTime
+  * Adapt to Qt6 text codec changes
+  * Port to QRecursiveMutex
+  * Fix window positioning regression due to incorrect fallback in fallback
+
+-------------------------------------------------------------------
+Wed Jan  6 10:47:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Changes since 5.77.0:
+  * Remove ifdefs, we require Qt 5.14 now
+  * Make sure to use en language
+  * Don't include QtTest as it includes all QtCore includes
+  * Properly include QStringList
+  * Remove unused include
+  * Use | instead of + for combining keys
+  * Fix windows being inappropriately maximized on launch (kde#426813)
+  * Correct format of window maximized string
+  * Fix window sizing and positioning on Windows (kde#429943)
+
+-------------------------------------------------------------------
+Sat Dec  5 18:56:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Changes since 5.76.0:
+  * Add KF6 TODO to use the just-approved (*) XDG_STATE_HOME env var.
+  * Fix KConfigGroup::copyTo with KConfigBase::Notify
+
+-------------------------------------------------------------------
+Sat Nov  7 21:34:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Changes since 5.75.0:
+  * Find missing Qt5DBus dependency
+  * If include is define in .h remove it if it's defined in .cpp too (scripted)
+  * kconf_update: Allow repeated tests in --testmode by ignoring kconf_updaterc
+  * Port QRegExp to QRegularExpression
+
+-------------------------------------------------------------------
+Mon Oct  5 08:32:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * CMake: Also set SKIP_AUTOUIC on generated files
+  * Use reverse order in KDesktopFile::locateLocal to iterate over generic config paths.
+
+-------------------------------------------------------------------
+Sun Sep  6 12:48:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes since 5.73.0, only listing bugfixes:
+  * Make KWindowConfig::allConnectedScreens() static and internal (kde#425953)
+
+-------------------------------------------------------------------
+Sun Aug  2 07:13:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Changes since 5.72.0:
+  * Update sGlobalFileName when QStandardPaths TestMode is toggled
+  * API dox: state explicitly expected encoding for KConfig key & group names
+  * Fix test when build with EXCLUDE_DEPRECATED_BEFORE_AND_AT=CURRENT
+  * Use KF-standardized Qt logging categories
+  * Use camelcase include. (scripted)
+
+-------------------------------------------------------------------
+Sun Jul  5 07:55:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * Also pass locationType to KConfigSkeleton when construction from group
+  * Make "Switch Application Language..." text more consistent
+
+-------------------------------------------------------------------
+Sun Jun  7 08:06:24 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Don't try to initalize deprecated SaveOptions enum value
+  * Add KStandardShortcut::findByName(const QString&) and deprecate find(const char*)
+  * Fix KStandardShortcut::find(const char*)
+  * Adjust name of internally-exported method as suggested in D29347
+  * KAuthorized: export method to reload restrictions
+
+-------------------------------------------------------------------
+Sun May  3 09:39:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * kconfig_compiler : generate kconfig settings with subgroup
+  * Fix some compiler warnings
+  * Add force save behavior to KEntryMap
+  * Add standard shortcut for "Show/Hide Hidden Files"
+
+-------------------------------------------------------------------
+Sun Apr  5 19:45:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Changes since 5.68.0:
+  * QAtomicInteger::loadRelaxed/storeRelaxed() are available since Qt 5.14
+  * [KConfigGui] Check font weight when clearing styleName property
+  * KConfig: Convert to SPDX license statements
+  * Autotest file showing wrong File path
+  * KconfigXT: Add a value attribute to Enum field choices
+
+-------------------------------------------------------------------
+Sun Mar  8 09:17:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Too many changes since 5.67.0, only listing bugfixes:
+  * [KConfigGui] Clear styleName font property for Regular font styles (kde#378523)
+  * Fix code generation for entries with min/max (kde#418146)
+
+-------------------------------------------------------------------
+Sun Feb  2 18:06:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:32:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Jan  5 09:02:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * Remove endl at the end of qdebug
+  * Port deprecated methods
+  * kconfig EBN transport protocol cleanup
+  * update @since
+  * Expose getter to KConfigWatcher's config
+  * Fix writeFlags with KConfigCompilerSignallingItem
+  * Update the obsolete projects.kde.org URL
+  * Fix URL: use the stable redirect commits.kde.org
+  * Add a comment pointing to the history of Cut and Delete sharing a shortcut
+  * Fix Python bindings compilation
+
+-------------------------------------------------------------------
+Sun Dec  8 11:18:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * Don't use nullptr as flag. Make it compile against qt5.15
+  * Make sure to execute test with english lang
+  * Document Notifiers setting
+  * Only create a session config when actually restoring a session
+  * kwriteconfig: add delete option
+  * Add KPropertySkeletonItem
+  * Prepare KConfigSkeletonItem to allow inheriting its private class
+
+-------------------------------------------------------------------
+Sun Nov  3 15:46:52 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * These methods were adding in qt5.15
+  * kconfig_compiler: Move the KSharedConfig::Ptr when using them
+  * Make it compile against qt5.15 without deprecated method
+  * Use ECMGenerateExportHeader to manage deprecated API better
+  * Expose isImmutable to introspection (e.g. QML)
+  * Add convenience for defaults/dirty states to KCoreConfigSkeleton
+  * Make kconfig_compiler generate ctors with the optional parent arg
+  * Make preferences() a public function
+
+-------------------------------------------------------------------
+Sun Oct  6 13:26:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Changes since 5.62.0:
+  * Fix generating properties that start with an uppercase letter
+  * Rewrite ugly for with pointer arithmetic into range for
+  * Small performance enhacements
+  * [KConfig] port away from deprecated methods in Qt 5.14
+
+-------------------------------------------------------------------
+Sat Sep  7 20:36:34 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Fix memory leak in KConfigWatcher
+  * Add a logging category for logs warnings
+  * Disable KCONFIG_USE_DBUS on Android
+
+-------------------------------------------------------------------
+Wed Aug  7 17:51:12 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Include definition for class used in header
+  * Security: remove support for $(...) in config keys with [$e] marker. (CVE-2019-14744)
+- Drop 0001-Security-remove-support-for-.-in-config-keys-with-e-.patch
+
+-------------------------------------------------------------------
+Wed Aug  7 08:30:37 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to drop involuntary command execution (boo#1144600, CVE-2019-14744):
+  * 0001-Security-remove-support-for-.-in-config-keys-with-e-.patch
+
+-------------------------------------------------------------------
+Fri Jul 19 11:39:09 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:37 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- No code changes since 5.59.0
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * Replace qVariantFromValue with QVariant::fromValue
+
+-------------------------------------------------------------------
+Wed May 15 18:16:15 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Add Notify capability to KConfigXT
+  * Fix typo in KConfig documentation.
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:42 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Add Notify capability to revertToDefault
+  * point readme to the wiki page
+  * kconfig_compiler: new kcfgc args HeaderExtension & SourceExtension
+  * [kconf_update] move from custom logging tech to qCDebug
+  * Remove reference from const KConfigIniBackend::BufferFragment &
+  * KCONFIG_ADD_KCFG_FILES macro: ensure a change of File= in kcfg is picked up
+  * [Kconfig] Compile without foreach
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:35 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * improve documentation on global config cascading (kde#306923)
+  * KConfig: Assign documentation to correct enum value
+  * Write valid UTF8 characters without escaping. (kde#403557)
+  * KConfig: handle directory symlinks correctly.
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:02 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * [API dox] Include kconfig_compiler/README.dox for QCH generation
+  * kconfig_compiler: delete the assignment operator and copy constructor
+  * KEmailSettings: Delete copy constructor and assignment operator
+  * KonfUpdate: delete copy constructor and assignment operator
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:44 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Fix doxygen markup in KConfigWatcher
+  * Fix a regression introduced in 6a1852
+  * Fix build without D-Bus
+  * Deduplicate reference value
+  * Remove unneeded qWarning
+  * Escape bytes that are larger than or equal to 127 in config files
+  * Fix documentation, QValueList isn't a thing anymore
+
+-------------------------------------------------------------------
+Sat Dec 15 13:55:06 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summaries.
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:43 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * Use isEmpty()
+  * normalize signal/slot
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * Remove unused variable
+  * Fix logic error in NotifyFlag testing
+  * Set explicit arg type in QCOMPARE
+  * Fix compilation without D-Bus
+  * Add mechanism to notify other clients of config changes over DBus
+  * Expose getter method for KConfig::addConfigSources
+
+-------------------------------------------------------------------
+Tue Oct 16 08:01:56 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:51:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * Remove misleading use of KDE_INSTALL_PYTHONBINDINGSDIR
+  * Fix issue when reading path lists
+  * API dox: 0 -> nullptr
+  * kcfg_compiler now documents valid inputs for its 'Color' type
+  * whitespace cleanup
+  * Port deprecated method + use strict compile flags
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Remove warning about old kiosk feature that no longer applies.
+  * Set system default shortcut Ctrl+0 for "Actual Size" action
+  * Fix cleanup of kconfigtest kdeglobals
+
+-------------------------------------------------------------------
+Sun Aug 19 09:18:53 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:36 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Remove unused include
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:03 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * KConfigCompiler_Test: Update test_signal.h.ref to follow the generated file
+  * kcfg.xsd - do not require a kcfgfile element
+
+-------------------------------------------------------------------
+Sun May 13 21:03:00 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Use override
+  * Warning--
+- Refreshed patches:
+  * kconfig-desktop-translations.patch
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:02 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Fix autotest
+  * Remove useless QT_VERSION_CHECK
+  * Remove not necessary QtCore and co
+- Refreshed patches:
+  * kconfig-desktop-translations.patch
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:40 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Save some memory allocations by using the right API
+  * Export kconf_update with tooling
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Use Ctrl+Shift+, as the standard shortcut for "Configure <Program>"
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:15 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Remove obsolete reviewboardrc file
+  * Remove cmake warning about generating moc file
+  * API docs: Sergio suggested create(), more readable than winId()
+  * API docs: full working code, including workaround for Qt issue...
+  * API docs: explain how to use KWindowConfig from a dialog constructor.
+  * Deprecate KDesktopFile::sortOrder()
+  * Fix the result of KDesktopFile::sortOrder()
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * KConfig: fix autotest on CI with trailing slash in HOME.
+  * Repair broken test after commit ee2b394599.
+  * Fix some clazy warning
+  * Use Q_FALLTHROUGH
+  * Don't look for /etc/kderc every single time
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:13 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Don't build the kconfig_compiler tests when crosscompiling
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:38 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * [KConfigGroup] reserve() more and add some C++11
+  * Deprecate KStandardShortcut::SaveOptions
+  * Add apidox to KStandardShorcut::StandardShortcut
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:16 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Fix labels of DeleteFile/RenameFile actions
+  * kconfigini: Strip leading whitespace when reading entry values.
+  * KAuthorized: Fix API documentation for authorizeAction()
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:19 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Allow to build KConfig without Qt5Gui
+  * autotests: fix the failures I got here.
+  * Standard shortcuts: use Ctrl+PageUp/PageDown for prev/next tab.
+  * API dox: fix QT_*_HOME notes (typo, wrong enum type, markup)
+  * API dox: update url from kdelibs to kconfig
+  * API dox: use @param for normal parameter listing, not @arg
+
+-------------------------------------------------------------------
+Wed Jul 12 07:13:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Fix for CMake 3.9.
+  * [FEATURE] Option to build & install QCH file with the public API dox
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:42 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * tests: use QIODevice::Text in kconfigcompiler_test
+  * tests: use right QProcess API in kconfigcompiler_test
+  * API dox: note CamelCase includes by @class tag with more classes
+
+-------------------------------------------------------------------
+Tue May 30 13:05:29 UTC 2017 - lbeltrame@kde.org
+
+- Adjust license as pointed out during legal review
+
+-------------------------------------------------------------------
+Mon May 15 13:53:16 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Fix relativePath calculation in KDesktopFile::locateLocal() (kde#345100)
+- Remove patches, now upstream:
+  * fix-locateLocal.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 14:34:36 UTC 2017 - wbauer@tmo.at
+
+- Add fix-locateLocal.patch to fix saving changes to submenus in
+  kmenuedit (kde#345100)
+
+-------------------------------------------------------------------
+Sat Apr 15 10:11:45 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * explicitly set NO_CMAKE_FIND_ROOT_PATH
+  * Remove unused QDateTime in KConfigBackend.
+  * Now that kconfigbackend.h isn't installed anymore, rename it to _p.h for clarity.
+  * Upgrade KF5 version to 5.33.0.
+  * Sanitize shortcut list on read/write from kdeglobals
+  * avoid useless reallocs by removing squeeze call on temporary buffer
+
+-------------------------------------------------------------------
+Sun Mar 19 14:50:18 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * KConfig: stop exporting and installing KConfigBackend.
+  * Upgrade KF5 version to 5.32.0.
+
+-------------------------------------------------------------------
+Thu Feb  9 09:24:59 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Sun Jan  8 23:38:41 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:56:40 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * kconfig_compiler - generate code with overrides
+  * Properly parse function keywords (kde#371562)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Sat Nov  5 20:21:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.28.0
+  * Make sure we don't break compilation with past broken units
+  * Don't be fatal on File field not being properly parsed
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.28.0.php
+
+-------------------------------------------------------------------
+Sun Oct  2 12:51:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.27.0
+  * Fix memory leak in SignalsTestNoSingletonDpointer, found by ASAN
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.27.0.php
+
+-------------------------------------------------------------------
+Tue Sep  6 20:47:36 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.26.0
+  * Add Donate entry to KStandardShortcut
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.26.0.php
+
+-------------------------------------------------------------------
+Sun Aug  7 21:51:03 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.25.0
+  * Qt >= 5.5 is now required
+  * Add DeleteFile and RenameFile standard shortcut
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.25.0.php
+
+-------------------------------------------------------------------
+Wed Jul  6 15:02:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.24.0
+  * Deprecate authorizeKAction() in favor of authorizeAction()
+  * Fix reproducibility in builds by ensuring utf-8 encoding
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.24.0.php
+
+-------------------------------------------------------------------
+Mon Jun  6 21:23:56 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.23.0
+  * Avoid skipping KAuthorized check
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.23.0.php
+
+-------------------------------------------------------------------
+Sat May  7 18:30:23 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.22.0 (boo#980066)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.22.0.php
+
+-------------------------------------------------------------------
+Mon Apr  4 14:19:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.21.0 (boo#974793)
+  * Add support for get QStandardPaths locations inside desktop files
+  * Upgrade Qt version requirement to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.21.0.php
+
+-------------------------------------------------------------------
+Sun Mar  6 09:55:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.20.0 (boo#970856)
+  * KConfigIniBackend: Fix expensive detach in lookup
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.20.0.php
+
+-------------------------------------------------------------------
+Sat Feb  6 17:59:46 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.19.0 (boo#967668)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.19.0.php
+
+-------------------------------------------------------------------
+Sat Jan  2 17:42:11 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.18.0
+  * Ensure group is unescaped properly in kconf_update
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.18.0.php
+
+-------------------------------------------------------------------
+Thu Dec 10 23:03:35 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.17.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.17.0.php
+
+-------------------------------------------------------------------
+Sun Nov  8 16:58:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.16.0 (boo#955067)
+  * Fix usage of ecm_create_qm_loader.
+  * Fix include variable
+  * Use KDE_INSTALL_FULL_ variant, so there is no ambiguity
+  * Allow KConfig to use resources as fallback config files
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.16.0.php
+
+-------------------------------------------------------------------
+Mon Oct  5 17:37:04 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.15.0
+  * Mark kconfig-compiler as non-gui tool
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.15.0.php
+
+-------------------------------------------------------------------
+Tue Sep  8 17:12:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.14.0
+  * Optimize readEntryGui
+  * Avoid QString::fromLatin1() in generated code
+  * Minimize calls to expensive QStandardPaths::locateAll()
+  * Finish the port to QCommandLineParser
+    (it has addPositionalArgument now)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.14.0.php
+
+-------------------------------------------------------------------
+Sat Aug 15 16:43:25 UTC 2015 - wbauer@tmo.at
+
+- Add kconfig-desktop-translations.patch: read translations for
+  .desktop files from desktop-translations if they are not in the
+  file itself (boo#904524, boo#932158)
+
+-------------------------------------------------------------------
+Tue Aug  4 19:20:16 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.13.0
+  * The Qt version requirement has been bumped from 5.2 to 5.3
+  * Debug output has been ported to categorized output, for less
+    noise by default
+  * Docbook documentation has been reviewed and updated
+  * Don't recommend to use deprecated API
+  * Don't generate deprecated code
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.13.0.php
+
+-------------------------------------------------------------------
+Sun Jul  5 18:44:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.12.0
+  * Install kconfig_compiler into libexec
+  * New code generation option TranslationDomain=, for use with
+    TranslationSystem=kde; normally needed in libraries.
+  * Make it possible to use kconfig_compiler from different sources
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.12.0.php
+
+-------------------------------------------------------------------
+Sun Jun  7 19:07:14 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.11.0
+  * Prevent crash if QWindow::screen() is null
+  * Add KConfigGui::setSessionConfig() (kde#346768)
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.11.0.php
+- Drop 0001-ensure-platform-window-resize-processing.patch and
+  0001-Add-KConfigGui-setSessionConfig.patch, merged upstream
+- Delete 0001-ensure-platform-window-resize-processing.patch
+
+-------------------------------------------------------------------
+Sun May 17 18:54:53 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Comment out 0001-ensure-platform-window-resize-processing.patch,
+  causes bad side-effects (kde#344183,boo#931167)
+
+-------------------------------------------------------------------
+Tue May 12 13:17:01 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added 0001-Add-KConfigGui-setSessionConfig.patch (kde#346768)
+
+-------------------------------------------------------------------
+Sun May  3 19:43:49 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.10.0
+  * Generate QML-proof classes using the kconfigcompiler
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.10.0.php
+
+-------------------------------------------------------------------
+Sat Apr  4 14:40:36 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.9.0
+  * Fix assert when using KSharedConfig in a global object destructor.
+  * kconfig_compiler: add support for CategoryLoggingName in *.kcfgc
+    files, to generate qCDebug(category) calls.
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.9.0.php
+
+-------------------------------------------------------------------
+Sat Mar  7 16:58:38 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.8.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.8.0.php
+
+-------------------------------------------------------------------
+Sun Feb  8 18:15:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * kconf_update no longer processes *.upd file from KDE SC 4.
+    Add "Version=5" to top of the upd file for updates that should
+    be applied to Qt5/KF5 applications
+  * Fixed KCoreConfigSkeleton when toggling a value with
+    saves in between
+  * Fixed using KSharedConfig in global object destructor
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.7.0.php
+
+-------------------------------------------------------------------
+Sat Jan  3 18:03:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.6.0.php
+
+-------------------------------------------------------------------
+Sat Dec  6 12:53:33 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.5.0.php
+
+-------------------------------------------------------------------
+Sun Nov  2 17:46:44 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.4.0.php
+
+-------------------------------------------------------------------
+Sat Oct  4 17:59:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0
+  * KConfigLoader: fix sharing of KSharedConfig objects
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.3.0.php
+
+-------------------------------------------------------------------
+Tue Sep  9 09:49:17 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0
+  * For more details please see:
+    http://kde.org/announcements/kde-frameworks-5.2.php
+- Added 0001-ensure-platform-window-resize-processing.patch for
+  resolving https://bugreports.qt-project.org/browse/QTBUG-40584
+  within KConfig Framework
+
+-------------------------------------------------------------------
+Sat Aug  2 10:20:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.0
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.1.php
+- Harden required Qt5 libs versions
+- Pass the location of lconvert executable
+
+-------------------------------------------------------------------
+Tue Jul  1 21:35:39 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Final release of KDE Frameworks 5
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/kde-frameworks-5.0.php
+
+-------------------------------------------------------------------
+Sun Jun  1 18:02:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.100.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta3.php
+- Added libqt5-linguist-devel BuildRequires
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sun May  4 01:41:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.99.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta2.php
+
+-------------------------------------------------------------------
+Sat Mar 29 19:47:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * API improvements and cleanups
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-beta1.php
+- Droped 0001-Normalize-vars-to-avoid-odd-bugs-QT_REQUIRED_VERSION.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Tue Mar 25 17:37:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added 0001-Normalize-vars-to-avoid-odd-bugs-QT_REQUIRED_VERSION.patch,
+  fixes build with CMake 3.0 rc2 (find_dependency macro needs passing
+  of version)
+
+-------------------------------------------------------------------
+Tue Mar  4 16:38:07 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0:
+  * Buildsystem fixes
+  * For more details please see:
+    http://www.kde.org/announcements/announce-frameworks5-alpha2.php
+
+-------------------------------------------------------------------
+Wed Feb 19 23:09:02 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Split out kconf_update helper to kconf_update5 package
+
+-------------------------------------------------------------------
+Sat Feb  8 02:17:33 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Init kconfig package
+

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sat Dec 16 08:40:09 UTC 2023 - dead_mozay@opensuse.org
+
+- Update to version 0.git20210312.7f449bf:
+  * Add link to paper and demo to the README
+  * Correct #endif in rnn.h.
+  * Document the API
+  * Add rnnoise_get_frame_size()
+  * Drop unused arguments from README (#103)
+  * fix inclusion of rnnoise.h into C++ code
+  * Document in the README the authorative source for the code.
+  * docs: fix simple typo, delares -> declares
+  * rename TRAINING -> TRAINING-README for case insensitive file system
+  * Update celt_lpc.c
+
+-------------------------------------------------------------------
+Wed Jul 07 12:27:30 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.git20210122.1cbdbcf:
+  * Drop unused arguments from README (#103)
+  * docs: fix simple typo, delares -> declares
+  * rename TRAINING -> TRAINING-README for case insensitive file system
+  * Access files in binary mode
+
+-------------------------------------------------------------------
+Fri Sep  4 01:38:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

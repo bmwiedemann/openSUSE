@@ -1,0 +1,350 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a5fef6c7f095a505fee872020accefc</srcmd5>
+    <version>18.6b4</version>
+    <time>1535705120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632123</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f0e820bc581bbdf1f40100d1d43736f</srcmd5>
+    <version>18.9b0</version>
+    <time>1538672510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639818</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d10193581f42344ff8b48fbadb3370c2</srcmd5>
+    <version>19.3b0</version>
+    <time>1553263848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.3b0:
+   * No obvious changelog</comment>
+    <requestid>687397</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7350b7fc3d8243890a7dd99e211ef2ae</srcmd5>
+    <version>19.3b0</version>
+    <time>1560536667</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip randomly failing test (only in OBS)</comment>
+    <requestid>707610</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>439dca98113d97b64715db4d4756a39d</srcmd5>
+    <version>19.10b0</version>
+    <time>1573504524</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 19.10b0
+- add fix-tests.patch to avoid problem during test collection
+- dont distribute 'blackd' as missing deps
+ * no obvious changelog</comment>
+    <requestid>747363</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4a94e39e0db70cab70d7a118c0b6da19</srcmd5>
+    <version>19.10b0</version>
+    <time>1573771722</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Requires</comment>
+    <requestid>748168</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>9f6e82ba49ac87bea653783ad518481d</srcmd5>
+    <version>19.10b0</version>
+    <time>1591742529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809803</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>2bcd727b6194b7b12c9c2ae18e8abfa9</srcmd5>
+    <version>19.10b0</version>
+    <time>1599209849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829087</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f98f7210dd8008ec8dfd5d203e92235f</srcmd5>
+    <version>20.8b1</version>
+    <time>1599597952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832119</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a4a801683dc1ace1e166ef24abad3eb9</srcmd5>
+    <version>20.8b1</version>
+    <time>1607801320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853412</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6d7860956357fad4484073a844377a09</srcmd5>
+    <version>21.12b0</version>
+    <time>1642633907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.12.0b1:
+  * Fix determination of f-string expression spans (#2654)
+  * Fix bad formatting of error messages about EOF in multi-line statements (#2343)
+  * Functions and classes in blocks now have more consistent surrounding spacing (#2472)
+  * from __future__ import annotations statement now implies Python 3.7+ (#2690)
+  * Fix assignment to environment variables in Jupyter Notebooks (#2642)
+  * Point users to using --target-version py310 if we detect 3.10-only syntax (#2668)
+  * Fix match statements with open sequence subjects, like match a, b: or match a, *b: (#2639) (#2659)
+  * Fix match/case statements that contain match/case soft keywords multiple times, like match re.match() (#2661)
+  * Fix case statements with an inline body (#2665)
+  * Fix styling of starred expressions inside match subject (#2667)
+  * Fix parser error location on invalid syntax in a match statement (#2649)
+  * Fix Python 3.10 support on platforms without ProcessPoolExecutor (#2631)
+  * Improve parsing performance on code that uses match under --target-version py310 up to ~50% (#2670)
+  * Remove dependency on regex (#2644) (#2663)
+  * Warn about Python 2 deprecation in more cases by improving Python 2 only syntax detection (#2592)
+  * Add experimental PyPy support (#2559)
+  * Add partial support for the match statement. As it's experimental, it's only enabled when --target-version py310 is explicitly specified (#2586)
+  * Add support for parenthesized with (#2586)
+  * Declare support for Python 3.10 for running Black (#2562)
+  * Add new --workers parameter (#2514)
+  * Fixed feature detection for positional-only arguments in lambdas (#2532)
+  * Fixed a Python 3.10 compatibility issue where the loop argument was still being passed even though it has been removed (#2580)
+  * Deprecate Python 2 formatting support (#2523)
+  * Fix missing modules in self-contained binaries (#2466)
+  * Fix missing toml extra used during installation (#2475)
+  * Add support for formatting Jupyter Notebook files (#2357)
+  * Move from appdirs dependency to platformdirs (#2375)
+  * Present a more user-friendly error if .gitignore is invalid (#2414)
+  * Pin setuptools-scm build-time dependency version (#2457)</comment>
+    <requestid>945716</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>be63333aa195f62d38e5a39558c07841</srcmd5>
+    <version>21.12b0</version>
+    <time>1643926566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949594</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>abc53b869f55f0ca72aa11e279de3c1b</srcmd5>
+    <version>22.1.0</version>
+    <time>1648739889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965300</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ccc39dd28ff33999c064955eba672ab1</srcmd5>
+    <version>22.3.0</version>
+    <time>1649715227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967998</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3eb4b6680e6204b0ae5c7c5011b9840a</srcmd5>
+    <version>22.6.0</version>
+    <time>1660834128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997499</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9e70f76eef66555b40cfb4402b5251b7</srcmd5>
+    <version>22.8.0</version>
+    <time>1663275446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002716</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fcaf6c4cb6091fcc7885ba8f880d0089</srcmd5>
+    <version>23.3.0</version>
+    <time>1680722921</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.3.0:
+  * Import lines with `# fmt: skip` and `# fmt: off` no longer
+    have an extra blank line added when they are right after 
+    another import line (#3610)
+  * Added support for formatting files with invalid type comments
+  * Document that only the most recent release is supported for
+    security issues;
+  * Introduce the 2023 stable style, which incorporates most
+    aspects of last year's preview style (#3418).
+  * Enforce empty lines before classes and functions with sticky
+    leading comments
+  * Reformat empty and whitespace-only files as either an empty
+    file (if no newline is present) or as a single newline character
+    (if a newline is present) (#3348)
+  * Correctly handle trailing commas that are inside a line's
+    leading non-nested parens
+  * `--skip-string-normalization` / `-S` now prevents docstring
+    prefixes from being
+  * Details see https://github.com/psf/black/releases/tag/23.3.0</comment>
+    <requestid>1077524</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>109bc0102dd3acb4a4be8bf24174837f</srcmd5>
+    <version>23.3.0</version>
+    <time>1682095697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081980</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ada1a2c69e12de56ae2de6301e8d3995</srcmd5>
+    <version>23.3.0</version>
+    <time>1687469232</time>
+    <user>dimstar_suse</user>
+    <comment>- limit to newer python versions, older are no longer needed</comment>
+    <requestid>1094694</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0d9ee5476bd0c8915c642aaab7a86d3a</srcmd5>
+    <version>23.7.0</version>
+    <time>1689710066</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.7.0:
+  * Runtime support for Python 3.7 has been removed. Formatting
+    3.7 code will still be supported until further notice (#3765)
+  * Fix a bug where an illegal trailing comma was added to return
+    type annotations using PEP 604 unions (#3735)
+  * Fix several bugs and crashes where comments in stub files
+    were removed or mishandled under some circumstances (#3745)
+  * Fix a crash with multi-line magic comments like `type:
+    ignore` within parentheses
+  * Fix error in AST validation when _Black_ removes trailing
+    whitespace in a type comment
+  * Remove patching of Click that mitigated errors on Python 3.6
+    with `LANG=C` (#3768)
+  * Add support for the new PEP 695 syntax in Python 3.12 (#3703)
+  * Speed up _Black_ significantly when the cache is full (#3751)
+  * Avoid importing `IPython` in a case where we wouldn't need it
+    (#3748)
+  * Use aware UTC datetimes internally, avoids deprecation
+    warning on Python 3.12 (#3728)
+  * Change verbose logging to exactly mirror _Black_'s logic for
+    source discovery (#3749)</comment>
+    <requestid>1098965</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>321517f1a34458ded08064d6860865dd</srcmd5>
+    <version>23.9.1</version>
+    <time>1695209423</time>
+    <user>dimstar_suse</user>
+    <comment>- remove buildrequires that are not used on sle15
+
+- update to 23.9.1:
+  * Upgrade to mypy 1.5.1 (#3864)
+  * Store raw tuples instead of NamedTuples in Black's cache,
+    improving performance and decreasing the size of the cache
+  * More concise formatting for dummy implementations (#3796)
+  * In stub files, add a blank line between a statement with a
+    body (e.g an `if sys.version_info &gt; (3, x):`) and a
+    function definition on the same level (#3862)
+  * Fix a bug whereby spaces were removed from walrus operators
+    within subscript(#3823)
+  * Black now applies exclusion and ignore logic before resolving
+    symlinks (#3846)
+  * Avoid importing `IPython` if notebook cells do not contain
+    magics (#3782)
+  * Improve caching by comparing file hashes as fallback for
+    mtime and size (#3821)
+  * Fix an issue in `blackd` with single character input (#3558)
+
+    have an extra blank line added when they are right after
+- update to version 22.8.0:
+    + Immediate .gitignore files in source directories given on the command line are now also respected, previously only .gitignore files
+- python-aiohttp_cors is now available --&gt; install blackd
+- Add missing Requires
+    as it turned out to be a bad idea</comment>
+    <requestid>1112329</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>267b93bddfa1df43e6c98ed01ad08faa</srcmd5>
+    <version>23.10.1</version>
+    <time>1698249761</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.10.1:
+  * Maintanence release to get a fix out for GitHub Action edge
+    case (#3957)
+  * Fix merging implicit multiline strings that have inline
+    comments (#3956)
+  * Allow empty first line after block open before a comment or
+    compound statement (#3967)
+  * Fix comments getting removed from inside parenthesized
+    strings (#3909)
+  * Fix long lines with power operators getting split before the
+    line length (#3942)
+  * Long type hints are now wrapped in parentheses and properly
+    indented when split across multiple lines (#3899)
+  * Magic trailing commas are now respected in return types.
+  * Require one empty line after module-level docstrings. (#3932)
+  * Treat raw triple-quoted strings as docstrings (#3947)
+  * Fix bug where attributes named `type` were not accepted
+    inside `match` statements
+  * Add support for PEP 695 type aliases containing lambdas and
+    other unusual expressions
+  * Black no longer attempts to provide special errors for
+    attempting to format Python 2 code (#3933)
+  * Black will more consistently print stacktraces on internal
+    errors in verbose mode</comment>
+    <requestid>1120053</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d64d81a318d1063c2ead1d0d6eb3dcb5</srcmd5>
+    <version>23.11.0</version>
+    <time>1700163114</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.11.0:
+  * Support formatting ranges of lines with the new `--line-
+    ranges` command-line option
+  * Fix crash on formatting bytes strings that look like
+    docstrings (#4003)
+  * Fix crash when whitespace followed a backslash before newline
+    in a docstring (#4008)
+  * Fix standalone comments inside complex blocks crashing Black
+  * Fix crash on formatting code like `await (a ** b)` (#3994)
+  * No longer treat leading f-strings as docstrings. This matches
+    Python's behaviour and fixes a crash (#4019)
+  * Consistently apply force exclusion logic before resolving
+    symlinks (#4015)
+  * Fix a bug in the matching of absolute path names in
+    `--include` (#3976)</comment>
+    <requestid>1127150</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>46555699429404e8fb6387951ec271a1</srcmd5>
+    <version>23.12.1</version>
+    <time>1704491922</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.12.1:
+  * Fixed a bug that included dependencies from the `d` extra by
+    default
+  * This release (23.12.0) will still produce the 2023 style.
+    Most but not all of the changes in `--preview` mode will be
+    in the 2024 stable style.
+  * Fix bug where `# fmt: off` automatically dedents when used
+    with the `--line-ranges` option, even when it is not within
+    the specified line range.
+  * Fix feature detection for parenthesized context managers
+  * Prefer more equal signs before a break when splitting chained
+    assignments
+  * Standalone form feed characters at the module level are no
+    longer removed
+  * Additional cases of immediately nested tuples, lists, and
+    dictionaries are now indented less
+  * Allow empty lines at the beginning of all blocks, except
+    immediately before a docstring
+  * Fix crash in preview mode when using a short `--line-length`
+  * Keep suites consisting of only an ellipsis on their own lines
+    if they are not functions or class definitions
+  * `--line-ranges` now skips _Black_'s internal stability check
+    in `--safe` mode. This avoids a crash on rare inputs that have
+    many unformatted same-content lines.</comment>
+    <requestid>1136067</requestid>
+  </revision>
+</revisionlist>

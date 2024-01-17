@@ -1,0 +1,55 @@
+From 98b13f97bf0d1da938d56de5a95b69490f70d52d Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 8 Aug 2022 14:54:36 +1000
+Subject: [PATCH] Use pathlib directly
+
+Since this script runs in an environment where the minimal Python
+version is greater than 3.4, we can rely on pathlib being available.
+Remove pathlib2 from the requirements and just use pathlib.
+---
+ requirements/pypi.txt    | 1 -
+ setup.cfg                | 1 -
+ src/lib3to6/packaging.py | 2 +-
+ 3 files changed, 1 insertion(+), 3 deletions(-)
+
+Index: lib3to6-202107.1047/requirements/pypi.txt
+===================================================================
+--- lib3to6-202107.1047.orig/requirements/pypi.txt
++++ lib3to6-202107.1047/requirements/pypi.txt
+@@ -7,7 +7,6 @@
+ # Binary (non-pure) packages may also be listed here, but you
+ # should see if there is a conda package that suits your needs.
+ 
+-pathlib2
+ astor
+ typing;python_version<"3.5"
+ click<8.0; python_version < "3.6"
+Index: lib3to6-202107.1047/setup.cfg
+===================================================================
+--- lib3to6-202107.1047.orig/setup.cfg
++++ lib3to6-202107.1047/setup.cfg
+@@ -17,7 +17,6 @@ warn_unused_ignores = True
+ warn_redundant_casts = True
+ 
+ [tool:isort]
+-known_third_party = pathlib2
+ force_single_line = True
+ length_sort = True
+ 
+Index: lib3to6-202107.1047/src/lib3to6/packaging.py
+===================================================================
+--- lib3to6-202107.1047.orig/src/lib3to6/packaging.py
++++ lib3to6-202107.1047/src/lib3to6/packaging.py
+@@ -8,11 +8,10 @@ import os
+ import sys
+ import shutil
+ import typing as typ
++import pathlib as pl
+ import hashlib as hl
+ import tempfile
+ 
+-import pathlib2 as pl
+-
+ from . import common
+ from . import transpile
+ 

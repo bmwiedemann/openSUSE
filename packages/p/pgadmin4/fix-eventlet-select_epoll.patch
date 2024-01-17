@@ -1,0 +1,81 @@
+pgAdmin4 fails to build with eventlet 0.33.3, httpcore 0.17.1 and httpx 0.24.0
+with the error:
+
+[   12s] + python3 ../pkg/pip/setup_pip.py bdist_wheel
+[   13s] Traceback (most recent call last):
+[   13s]   File "/home/abuild/rpmbuild/BUILD/pgadmin4-7.6/pip-build/../pkg/pip/setup_pip.py", line 56, in <module>
+[   13s]     import config
+[   13s]   File "/home/abuild/rpmbuild/BUILD/pgadmin4-7.6/pip-build/../web/config.py", line 32, in <module>
+[   13s]     from pgadmin.utils import env, IS_WIN, fs_short_path
+[   13s]   File "/home/abuild/rpmbuild/BUILD/pgadmin4-7.6/web/pgadmin/__init__.py", line 25, in <module>
+[   13s]     from flask_socketio import SocketIO
+[   13s]   File "/usr/lib/python3.11/site-packages/flask_socketio/__init__.py", line 9, in <module>
+[   13s]     from socketio import socketio_manage  # noqa: F401
+[   13s]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[   13s]   File "/usr/lib/python3.11/site-packages/socketio/__init__.py", line 9, in <module>
+[   13s]     from .zmq_manager import ZmqManager
+[   13s]   File "/usr/lib/python3.11/site-packages/socketio/zmq_manager.py", line 5, in <module>
+[   13s]     import eventlet.green.zmq as zmq
+[   13s]   File "/usr/lib/python3.11/site-packages/eventlet/__init__.py", line 17, in <module>
+[   13s]     from eventlet import convenience
+[   13s]   File "/usr/lib/python3.11/site-packages/eventlet/convenience.py", line 7, in <module>
+[   13s]     from eventlet.green import socket
+[   13s]   File "/usr/lib/python3.11/site-packages/eventlet/green/socket.py", line 21, in <module>
+[   13s]     from eventlet.support import greendns
+[   13s]   File "/usr/lib/python3.11/site-packages/eventlet/support/greendns.py", line 79, in <module>
+[   13s]     setattr(dns, pkg, import_patched('dns.' + pkg))
+[   13s]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[   13s]   File "/usr/lib/python3.11/site-packages/eventlet/support/greendns.py", line 61, in import_patched
+[   13s]     return patcher.import_patched(module_name, **modules)
+[   13s]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[   13s]   File "/usr/lib/python3.11/site-packages/eventlet/patcher.py", line 132, in import_patched
+[   13s]     return inject(
+[   13s]            ^^^^^^^
+[   13s]   File "/usr/lib/python3.11/site-packages/eventlet/patcher.py", line 109, in inject
+[   13s]     module = __import__(module_name, {}, {}, module_name.split('.')[:-1])
+[   13s]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[   13s]   File "/usr/lib/python3.11/site-packages/dns/asyncquery.py", line 38, in <module>
+[   13s]     from dns.query import (
+[   13s]   File "/usr/lib/python3.11/site-packages/dns/query.py", line 63, in <module>
+[   13s]     import httpcore
+[   13s]   File "/usr/lib/python3.11/site-packages/httpcore/__init__.py", line 1, in <module>
+[   13s]     from ._api import request, stream
+[   13s]   File "/usr/lib/python3.11/site-packages/httpcore/_api.py", line 5, in <module>
+[   13s]     from ._sync.connection_pool import ConnectionPool
+[   13s]   File "/usr/lib/python3.11/site-packages/httpcore/_sync/__init__.py", line 1, in <module>
+[   13s]     from .connection import HTTPConnection
+[   13s]   File "/usr/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 12, in <module>
+[   13s]     from .._synchronization import Lock
+[   13s]   File "/usr/lib/python3.11/site-packages/httpcore/_synchronization.py", line 13, in <module>
+[   13s]     import trio
+[   13s]   File "/usr/lib/python3.11/site-packages/trio/__init__.py", line 18, in <module>
+[   13s]     from ._core import (
+[   13s]   File "/usr/lib/python3.11/site-packages/trio/_core/__init__.py", line 27, in <module>
+[   13s]     from ._run import (
+[   13s]   File "/usr/lib/python3.11/site-packages/trio/_core/_run.py", line 2452, in <module>
+[   13s]     from ._io_epoll import EpollIOManager as TheIOManager
+[   13s]   File "/usr/lib/python3.11/site-packages/trio/_core/_io_epoll.py", line 188, in <module>
+[   13s]     class EpollIOManager:
+[   13s]   File "/usr/lib/python3.11/site-packages/trio/_core/_io_epoll.py", line 189, in EpollIOManager
+[   13s]     _epoll = attr.ib(factory=select.epoll)
+[   13s]                              ^^^^^^^^^^^^
+[   13s] AttributeError: module 'eventlet.green.select' has no attribute 'epoll'
+[   13s] error: Bad exit status from /var/tmp/rpm-tmp.ElnKCg (%build)
+
+Setting the environment variable EVENTLET_NO_GREENDNS works around
+this while the upstream issue is fixed:
+
+https://github.com/eventlet/eventlet/issues/805
+
+Index: pgadmin4-7.8/web/pgAdmin4.py
+===================================================================
+--- pgadmin4-7.8.orig/web/pgAdmin4.py
++++ pgadmin4-7.8/web/pgAdmin4.py
+@@ -20,6 +20,7 @@ if sys.version_info < (3, 4):
+                        'or later.')
+ import builtins
+ import os
++os.environ['EVENTLET_NO_GREENDNS'] = 'yes'
+ 
+ # We need to include the root directory in sys.path to ensure that we can
+ # find everything we need when running in the standalone runtime.

@@ -1,0 +1,7 @@
+diff --git a/mod_usb3380/udev/50-xtrx-usb3380.rules b/mod_usb3380/udev/50-xtrx-usb3380.rules
+index cee3eb5..fabb16f 100644
+--- a/mod_usb3380/udev/50-xtrx-usb3380.rules
++++ b/mod_usb3380/udev/50-xtrx-usb3380.rules
+@@ -1 +1 @@
+-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0525", ATTRS{idProduct}=="3380", GROUP="usb", MODE="0666"
++SUBSYSTEMS=="usb", ATTRS{idVendor}=="0525", ATTRS{idProduct}=="3380", GROUP="xtrx", MODE="0660"

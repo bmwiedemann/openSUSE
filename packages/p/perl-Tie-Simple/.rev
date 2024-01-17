@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3bc84f462a30caf86c22be8959ba71b</srcmd5>
+    <version>1.03</version>
+    <time>1351537725</time>
+    <user>coolo</user>
+    <comment>Required for perl-SDL</comment>
+    <requestid>139405</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d3bc84f462a30caf86c22be8959ba71b</srcmd5>
+    <version>1.03</version>
+    <time>1359109832</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d3bc84f462a30caf86c22be8959ba71b</srcmd5>
+    <version>1.03</version>
+    <time>1379663900</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>d3bc84f462a30caf86c22be8959ba71b</srcmd5>
+    <version>1.03</version>
+    <time>1409302546</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa5ef5e6ece0fda37e668af62d009d6c</srcmd5>
+    <version>1.04</version>
+    <time>1449145904</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346869</requestid>
+  </revision>
+</revisionlist>

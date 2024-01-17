@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu Jan 19 19:50:57 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.005
+  * added pre-1945 Bulgarian orthography support
+- Remove the _service file
+
+-------------------------------------------------------------------
+Wed Jun 22 15:10:30 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.003
+  * No changelog available
+
+-------------------------------------------------------------------
+Sat Apr  9 12:47:28 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Fixed because upstream unexpectedly changed the layout
+  of the source archive
+
+-------------------------------------------------------------------
+Fri Apr  8 06:51:50 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.002
+  * added SemiBold to the full weight run
+  * Fixes Italic and Weight axes confusion in VF
+  * Includes Tabular Figures
+  * ttfautohinted
+  * Fixes naming scheme issue #30
+  * Fixes #25
+- Additionally package weights: Medium, SemiBold
+- Change source URLs
+
+-------------------------------------------------------------------
+Fri Aug 13 23:33:20 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v2.202
+  * Package OTF files instead of TTF
+  * Update URL, summary, description
+  * Package documentation
+  * Use spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jul  1 09:28:44 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 1.014.
+  * Add cyrillic glyphs.
+
+-------------------------------------------------------------------
+Tue Sep 25 06:42:53 UTC 2012 - lazy.kent@opensuse.org
+
+- New font packaging scheme.
+
+-------------------------------------------------------------------
+Fri Jul 20 19:39:37 UTC 2012 - lazy.kent@opensuse.org
+
+- Initial package created - 1.000.
+

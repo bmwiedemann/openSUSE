@@ -1,0 +1,7 @@
+<package name="killerd" project="openSUSE:Factory">
+  <title>Daemon for automatic killing of login shells</title>
+  <description>KillerD is a simple daemon for automatic killing of login shells with
+idle time exceeding given limits, runaway processes and other system
+hogs. Almost everything can be easily configured.</description>
+  <devel project="Base:System" package="killerd"/>
+</package>

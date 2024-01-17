@@ -1,0 +1,2041 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5b94c3a1356fbb76f43e171fe9753c5</srcmd5>
+    <version>3.3.106</version>
+    <time>1514679264</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>560615</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>658f4799c8c6c931d1084bb5c6789228</srcmd5>
+    <version>3.3.112</version>
+    <time>1516221874</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit rev 126 - this is the rev currently in Staging:E</comment>
+    <requestid>566978</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20ef870688885c4626f03a570bd8ddbf</srcmd5>
+    <version>3.3.140</version>
+    <time>1517096288</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>569843</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f648e6d7db01cdbd52e7ad8324f59ec0</srcmd5>
+    <version>3.3.145</version>
+    <time>1517606310</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>571044</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c276caac8a6db0f54f48eb591fd04800</srcmd5>
+    <version>3.3.149</version>
+    <time>1518025040</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>573632</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e6bd1b84326921f7f2ed1f079e91de15</srcmd5>
+    <version>3.3.156</version>
+    <time>1518426459</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>574845</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c35d343f2dfbf96941cddb9dbf9387a6</srcmd5>
+    <version>3.3.157</version>
+    <time>1518513842</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>575845</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>044564f71f2a3391294ca5aa08620278</srcmd5>
+    <version>3.3.158</version>
+    <time>1518596268</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>576226</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c3c7da3bbfb03ab0f55692528fcc3d58</srcmd5>
+    <version>3.3.164</version>
+    <time>1518813725</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>577291</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8234998c3ce7a92b14dd11543e02f51d</srcmd5>
+    <version>3.3.173</version>
+    <time>1519486591</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>579549</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>43503fbbf46f9585a809f4603c80516a</srcmd5>
+    <version>3.3.182</version>
+    <time>1520160618</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>580998</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>87339e3536a2b1b048997d740229cac5</srcmd5>
+    <version>3.3.185</version>
+    <time>1520414991</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>583317</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2df8afe970b29b463bdbd31758e61bb7</srcmd5>
+    <version>3.3.188</version>
+    <time>1520787751</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>584818</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>32ace1326ddaefe04490ad1ebde78917</srcmd5>
+    <version>3.3.191</version>
+    <time>1521052495</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>586720</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c1cfe5531a0a7e565287f4b3c2a9fa79</srcmd5>
+    <version>3.3.195</version>
+    <time>1521405827</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>587911</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>47a759b8a63732b2cbbe56a9ee11127a</srcmd5>
+    <version>3.3.200</version>
+    <time>1522059357</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>590606</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>84fb1a1a0c5c1aefb46dc3b722081734</srcmd5>
+    <version>3.3.207</version>
+    <time>1523127121</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>594009</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3070b34d156f80560248e51cc6044f63</srcmd5>
+    <version>3.3.253</version>
+    <time>1524742287</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>600804</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6c7f11d4c00942aa0dca793a5434e655</srcmd5>
+    <version>3.3.262</version>
+    <time>1525207579</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>602465</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f2d08b67eacacdee7a70b45114c2ab4a</srcmd5>
+    <version>3.3.269</version>
+    <time>1525611525</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>604530</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7a153e5fca4f1aa2e3270378940cff89</srcmd5>
+    <version>3.3.272</version>
+    <time>1526022783</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>605934</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d042555adf91fe1031e52c75476cfad4</srcmd5>
+    <version>3.3.283</version>
+    <time>1526578363</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>610073</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>93a5ec0a6d20bf76b0c146b93974aaf2</srcmd5>
+    <version>3.3.292</version>
+    <time>1527084500</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>611522</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4fd799f0753cac21957921021941384d</srcmd5>
+    <version>3.3.294</version>
+    <time>1527277092</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>612206</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>103376b6bfa4d2abdbeb3d02fed17e98</srcmd5>
+    <version>3.3.310</version>
+    <time>1529402006</time>
+    <user>maxlin_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>617515</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d14c98f4897ead527b9950b761b460bb</srcmd5>
+    <version>3.3.312</version>
+    <time>1530473091</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>619192</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4efe446a79f7c0c4c463aa315845b0bd</srcmd5>
+    <version>3.3.316</version>
+    <time>1531592127</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>622482</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b6f5ad70f196610dcf33d3d9cb11ef3c</srcmd5>
+    <version>4.1.0</version>
+    <time>1532446136</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>624759</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7ef1c409113ee5771c382d1bfb429e50</srcmd5>
+    <version>4.1.10</version>
+    <time>1533887277</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>628495</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4cada4de4d95a786178121556e479912</srcmd5>
+    <version>4.1.11</version>
+    <time>1534148963</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>628652</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d26bff2431c5409e703bf4109dc48dd1</srcmd5>
+    <version>4.1.15</version>
+    <time>1534774662</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>629266</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>41f885ddee96706fbfa9469199c0aed9</srcmd5>
+    <version>4.1.22</version>
+    <time>1536094289</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>632799</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>51842a9880c0c5db6d8e80cf5cadec97</srcmd5>
+    <version>4.1.24</version>
+    <time>1536575783</time>
+    <user>maxlin_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>633701</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e2855b9817cf6b52bd61b708f0df1d88</srcmd5>
+    <version>4.1.53</version>
+    <time>1541095868</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>645811</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9d66adba21a0f43d00555a133c9105bd</srcmd5>
+    <version>4.1.54</version>
+    <time>1541864903</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>646407</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c30bc0db1a927f833b80643b9bbed7ad</srcmd5>
+    <version>4.1.74</version>
+    <time>1546245923</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>660363</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9d058da50066c00f7ae3ccb965c35060</srcmd5>
+    <version>4.1.75</version>
+    <time>1547129753</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>663323</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2d58cc7608258b5785e53611ed9eb114</srcmd5>
+    <version>4.1.78</version>
+    <time>1548334877</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>668092</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f17de718c4c23ccdb35cdf63545de374</srcmd5>
+    <version>4.1.84</version>
+    <time>1549293005</time>
+    <user>coolo</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>670875</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>233bae65e44fd5edfc2db9d20124ff9b</srcmd5>
+    <version>4.1.86</version>
+    <time>1549630135</time>
+    <user>coolo</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>672545</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>02e2fd6d8f2c05d7ec665a0f4855c341</srcmd5>
+    <version>4.1.88</version>
+    <time>1550220821</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>674465</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>866fdaa90ea5e1373fba3f94d9489eb0</srcmd5>
+    <version>4.1.91</version>
+    <time>1551027822</time>
+    <user>coolo</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>677692</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>af2d06591c827e72cfe6256a7aa79aa0</srcmd5>
+    <version>4.1.95</version>
+    <time>1551386923</time>
+    <user>coolo</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>680070</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>090938a0dde8ced5bdc57efdf1d3c16e</srcmd5>
+    <version>4.1.96</version>
+    <time>1551895366</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>681800</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c91ed0f7ed4d5574ff6bf01fcefa41ef</srcmd5>
+    <version>4.1.98</version>
+    <time>1552464561</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>684334</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>bfa1fc2ba8ab4f118de36992f4f9c03a</srcmd5>
+    <version>4.1.101</version>
+    <time>1553158298</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>686102</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7999238e8cb21fe42b00c8efa4b79563</srcmd5>
+    <version>4.1.102</version>
+    <time>1553503662</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>687340</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c2d39905e7173bf3a4a79e9a26419477</srcmd5>
+    <version>4.1.103</version>
+    <time>1553809606</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>688899</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5eb734122b9757de31622cf223d64e94</srcmd5>
+    <version>4.1.106</version>
+    <time>1554712462</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>691686</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5ddf4ee68785ec5bd3e26635e904b140</srcmd5>
+    <version>4.1.107</version>
+    <time>1555321874</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>693349</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>316e8010bda0b0f4758df80658fc9441</srcmd5>
+    <version>4.1.110</version>
+    <time>1555574123</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>695110</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7a1a6c12bf43f9c8580f6ddbf0653992</srcmd5>
+    <version>4.1.112</version>
+    <time>1555928647</time>
+    <user>maxlin_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>695810</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ffc391fbe2feda389a29e3741aec5c33</srcmd5>
+    <version>4.1.117</version>
+    <time>1556474424</time>
+    <user>maxlin_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>698282</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>be0604ff8f1fa2f9a757e41b9b69afd5</srcmd5>
+    <version>4.1.119</version>
+    <time>1557083855</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>700487</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e349d4fffee76a3360df3be6ad3cf48d</srcmd5>
+    <version>4.1.120</version>
+    <time>1557472398</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>701802</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5f4174bf3eee7363c8d690f0bce9072a</srcmd5>
+    <version>4.1.121</version>
+    <time>1558532249</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>704469</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2591380b5d4f8d8a2ed029ad2e8dc36b</srcmd5>
+    <version>4.1.125</version>
+    <time>1559580361</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit already staged and tested rev</comment>
+    <requestid>707256</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>7652ae3cb88af219d09d0d1145a37aa7</srcmd5>
+    <version>4.1.127</version>
+    <time>1559902720</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>707673</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ec6ba94d5ea3548d05c116334da0ed09</srcmd5>
+    <version>4.1.143</version>
+    <time>1564576003</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>719872</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>0f3b488cc743e9c3fa9cdcdd91aa005e</srcmd5>
+    <version>4.1.144</version>
+    <time>1565362295</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>721542</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>0d0a0c6e6f39669aa114b3f581355771</srcmd5>
+    <version>4.1.145</version>
+    <time>1566241112</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>724253</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>cc649d8e3887f1cb95244b2c1af1e5ba</srcmd5>
+    <version>4.2.2</version>
+    <time>1567000963</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>725927</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>70457c68246c5b77ea1fb10616ec4613</srcmd5>
+    <version>4.2.11</version>
+    <time>1569237329</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>729926</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>01e0261082ce02815ebe282be2bd2f1a</srcmd5>
+    <version>4.2.14</version>
+    <time>1570104364</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>734059</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>081a941a11d0be2ccd480206b11e02a8</srcmd5>
+    <version>4.2.16</version>
+    <time>1571209824</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>737620</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d86bac0c54a21bb1fc75c4d4140fefa2</srcmd5>
+    <version>4.2.17</version>
+    <time>1571653645</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>741093</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>f23934fb3c7d9ba1acf9b57cfb78c83e</srcmd5>
+    <version>4.2.19</version>
+    <time>1572617614</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>744493</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a204d1551f600c1431fff42c66e063e4</srcmd5>
+    <version>4.2.27</version>
+    <time>1574241971</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>748300</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>7685585aafc8047d33bc08059e6915f8</srcmd5>
+    <version>4.2.40</version>
+    <time>1576321441</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>756042</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>867488dd83be4f46a88129c05b59dcaf</srcmd5>
+    <version>4.2.44</version>
+    <time>1578162057</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>760719</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>8fff51a60ac89cc1be5a43baa0208215</srcmd5>
+    <version>4.2.49</version>
+    <time>1578750450</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>762204</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>9cfa8c02be22e7933aaad7f9e33dd7f8</srcmd5>
+    <version>4.2.55</version>
+    <time>1579273401</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>764939</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>077f0d293c519403778a5b59b0d07ac0</srcmd5>
+    <version>4.2.56</version>
+    <time>1579556963</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>765312</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>1473017b3e68fff3c8c3b2933a25096a</srcmd5>
+    <version>4.2.57</version>
+    <time>1579871383</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>766042</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>714ebe90ce0dfdfeb38f3c3451378de3</srcmd5>
+    <version>4.2.65</version>
+    <time>1583094413</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>777793</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>563d4d80c6d7dbecd4821dd6dfc8e684</srcmd5>
+    <version>4.2.66</version>
+    <time>1583613421</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>781831</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>bd2750ec3edf8bf78e4b7f67a450ed01</srcmd5>
+    <version>4.2.68</version>
+    <time>1584350226</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>784643</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>cc40190e2da20fd7a068ccc562a97b58</srcmd5>
+    <version>4.2.71</version>
+    <time>1585342577</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>788224</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>076ece5855c765709b5acfd2938ebcb4</srcmd5>
+    <version>4.2.72</version>
+    <time>1586112688</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>790505</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>53a16bda3068e34588ff39e3b9c20bc7</srcmd5>
+    <version>4.3.2</version>
+    <time>1587838767</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>797155</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>9ca6d80a099d47b28f7ce969d698f839</srcmd5>
+    <version>4.3.3</version>
+    <time>1588185851</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>798677</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>be81aa39b0efcb79ac82d6a8816a8ab2</srcmd5>
+    <version>4.3.5</version>
+    <time>1588450543</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>799288</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>fe4c49d5e54b3533d0c89945280bb0b5</srcmd5>
+    <version>4.3.12</version>
+    <time>1589046684</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>801797</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>ac701f47452dc75b7931a3cd8ec6a641</srcmd5>
+    <version>4.3.20</version>
+    <time>1589579470</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>805752</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>0793737991091531b669a0e71cf161d0</srcmd5>
+    <version>4.3.26</version>
+    <time>1591742289</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>811863</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>2ca72eee324f1ae268b53c40fd456c71</srcmd5>
+    <version>4.3.28</version>
+    <time>1593292911</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>816283</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>7657086e889d18764bdb6f6f92a730af</srcmd5>
+    <version>4.3.32</version>
+    <time>1593606362</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>817872</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>d50788fe8c4e841d57e31de79a0b28a3</srcmd5>
+    <version>4.3.34</version>
+    <time>1594293378</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>819128</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>dc912e47cdc7f4c7d5768f5605309bee</srcmd5>
+    <version>4.3.35</version>
+    <time>1595339189</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>821450</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>c15b4165c008edddffaf6ee2ea9d81b2</srcmd5>
+    <version>4.3.37</version>
+    <time>1595577182</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>822214</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>3d557b73cf46047bd127d51774e80c74</srcmd5>
+    <version>4.3.39</version>
+    <time>1596096033</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>823395</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>10e02fc8452764f58038e3d5c90f010e</srcmd5>
+    <version>4.3.40</version>
+    <time>1599088191</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>829941</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>a8830db4cc87430b445df6a03ee91167</srcmd5>
+    <version>4.3.42</version>
+    <time>1600432054</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>834885</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>390e475eb693f1c39567ceb4fb18cfad</srcmd5>
+    <version>4.3.50</version>
+    <time>1603031009</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>841833</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>1b0dd508e73509c2b305386e605f512b</srcmd5>
+    <version>4.3.51</version>
+    <time>1603369314</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>842531</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>fabb5c4ba2e7bd1e44a961d41e07ee61</srcmd5>
+    <version>4.3.52</version>
+    <time>1603959682</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>843604</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>9194c92f52083d591ac911a13728a008</srcmd5>
+    <version>4.3.54</version>
+    <time>1604306454</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>845052</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>f902560343c825082d7fd89ae2bc0fd4</srcmd5>
+    <version>4.3.52</version>
+    <time>1604567396</time>
+    <user>dimstar_suse</user>
+    <comment>Revert - https://openqa.opensuse.org/tests/1460184#step/start_install/4</comment>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>e785651e905dcad79c995a24dac7a0d6</srcmd5>
+    <version>4.3.71</version>
+    <time>1605290244</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>848182</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>7839847f0ff40a5072ad46289b33d3f3</srcmd5>
+    <version>4.3.72</version>
+    <time>1607548279</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>853551</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>7971db4e0c66090ab9d4690034142730</srcmd5>
+    <version>4.3.75</version>
+    <time>1608317816</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>856474</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>daca65a9b87b8477724bd1beff515f6a</srcmd5>
+    <version>4.3.76</version>
+    <time>1609344744</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>859266</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>e7877ad01bb1f285340c12eec46aade6</srcmd5>
+    <version>4.3.78</version>
+    <time>1609959373</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>860514</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>455ae0a46c76cd100ca9179f8ac3bf8a</srcmd5>
+    <version>4.3.80</version>
+    <time>1610381409</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>861557</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>ee46d01960e95faab07fafe70a5d5875</srcmd5>
+    <version>4.3.82</version>
+    <time>1611068462</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>864063</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>9deb7d8760a00746b9bf2c9fd761903b</srcmd5>
+    <version>4.3.85</version>
+    <time>1611348607</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>865392</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>31f5f7a07f90732a5394ab6226401063</srcmd5>
+    <version>4.3.86</version>
+    <time>1612186907</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>867716</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>430eff040edf77977ffa55a73428df90</srcmd5>
+    <version>4.3.89</version>
+    <time>1614373136</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>875380</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>5ac6e427cac789d1f7b016c4898623b4</srcmd5>
+    <version>4.3.104</version>
+    <time>1617130273</time>
+    <user>RBrownSUSE</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>881831</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>e434b7807375b992dea16582533f1d1b</srcmd5>
+    <version>4.3.106</version>
+    <time>1618061165</time>
+    <user>RBrownSUSE</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>883628</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>829ab84c643c08aceb5adf6b0ea6e736</srcmd5>
+    <version>4.4.1</version>
+    <time>1619729081</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>888870</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>f2c3fdc30eeff1d6ddb25b08a023b351</srcmd5>
+    <version>4.4.4</version>
+    <time>1620398721</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>891097</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>4346f6f83e5a3a3056f4a1aa68da1234</srcmd5>
+    <version>4.4.5</version>
+    <time>1620653701</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>891619</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>ded8d533a1a8a1990740aa6cc51af9a1</srcmd5>
+    <version>4.4.6</version>
+    <time>1621113353</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>892606</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>1f2eca8dab9f9cf39843ff722037c818</srcmd5>
+    <version>4.4.8</version>
+    <time>1621531463</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>893903</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>586c5eb5a515855f1a1d58c651cf2f4d</srcmd5>
+    <version>4.4.9</version>
+    <time>1621805441</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>894829</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>ac88e9a95b4d27920f40a9561461f530</srcmd5>
+    <version>4.4.11</version>
+    <time>1622536427</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>896349</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>9e8ea98a688edef3985d0cb45a07ef6c</srcmd5>
+    <version>4.4.14</version>
+    <time>1623767824</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>899018</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>a93767e1c3f5d46ee1c898012cc2dd97</srcmd5>
+    <version>4.4.15</version>
+    <time>1624551733</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>901126</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>efe3e4a4c0bce811525a43113e332739</srcmd5>
+    <version>4.4.19</version>
+    <time>1625225192</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>903279</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>19f6154fa2ccfe12e608c608cac1aff1</srcmd5>
+    <version>4.4.21</version>
+    <time>1625429444</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>903761</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>55e1d01d163d7b29ee4396c399eeb07e</srcmd5>
+    <version>4.4.22</version>
+    <time>1625675379</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>904056</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>75c1e7525335de01c38fd237bec9927b</srcmd5>
+    <version>4.4.28</version>
+    <time>1626466360</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>906351</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>5b2c0af6a4a2feabbbb518005a601b03</srcmd5>
+    <version>4.4.30</version>
+    <time>1627587062</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>908358</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>0319d6400aa0037949fae90ced54298b</srcmd5>
+    <version>4.4.32</version>
+    <time>1628108923</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>910176</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>120f30e3142d8412507b0d30ffba1806</srcmd5>
+    <version>4.4.33</version>
+    <time>1628751661</time>
+    <user>RBrownSUSE</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>910783</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>ac56900da80b98183c5f267f3b23a190</srcmd5>
+    <version>4.4.35</version>
+    <time>1629371200</time>
+    <user>RBrownSUSE</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>912891</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>46c853e606a32399101ac7c75d2e8f72</srcmd5>
+    <version>4.4.36</version>
+    <time>1631129777</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>916855</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>b6322890da0b94e16f9c6c385b73982f</srcmd5>
+    <version>4.4.37</version>
+    <time>1632522909</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>920622</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>0ee3fad6131f8f4a9f7fc4d9ba4bd7e0</srcmd5>
+    <version>4.4.41</version>
+    <time>1633365552</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>922979</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>d78b3b3faedce80138888f0a54d3f5e2</srcmd5>
+    <version>4.4.43</version>
+    <time>1633723499</time>
+    <user>RBrownSUSE</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>923678</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>e1d0a3917400bdac408202b7e1b22cd8</srcmd5>
+    <version>4.4.44</version>
+    <time>1634068119</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>924646</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>3e318cc4f2ed868bb4f927c543aae3aa</srcmd5>
+    <version>4.4.51</version>
+    <time>1634943016</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>926414</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>60a3d71ec8b962ab768a757573db27f9</srcmd5>
+    <version>4.4.53</version>
+    <time>1635539618</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>927442</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>f94dd2d2cc276d8fddebd26fbed69ce4</srcmd5>
+    <version>4.4.56</version>
+    <time>1636840105</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>931138</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>9db941572d7c590e1762da3e918cb31b</srcmd5>
+    <version>4.4.57</version>
+    <time>1637444872</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>932246</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>ce18beec03ba69789adb78b9d4f4092f</srcmd5>
+    <version>4.4.58</version>
+    <time>1637970630</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>933271</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>29e80a280332627bb2b77964043b24b0</srcmd5>
+    <version>4.4.61</version>
+    <time>1638387991</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>934969</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>2389e56840d526b191b04e380df9e63d</srcmd5>
+    <version>4.4.63</version>
+    <time>1638560130</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>935445</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>a21dd3e12c7c465183796d30b9675220</srcmd5>
+    <version>4.4.65</version>
+    <time>1638997700</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>935610</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>87347f729413d474a54f0f5fe8ac9dc6</srcmd5>
+    <version>4.4.66</version>
+    <time>1639855764</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>941206</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>898025ed1f9b87d3443b5c13e4b379c4</srcmd5>
+    <version>4.4.68</version>
+    <time>1640108418</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>941641</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>6764e83a1377c9c55273e969b41aa4c6</srcmd5>
+    <version>4.4.70</version>
+    <time>1641555880</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>944020</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>2834122f68c510b5e2f1b2045f62a8e9</srcmd5>
+    <version>4.4.72</version>
+    <time>1641765008</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>945146</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>1d565eb3762209b606ac015c6bd528b6</srcmd5>
+    <version>4.4.73</version>
+    <time>1642198358</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>946146</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>a30c306e5fcc0d80b7f564f305661185</srcmd5>
+    <version>4.4.75</version>
+    <time>1642455235</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>946949</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>075968224ea201f1059639be97b46f1c</srcmd5>
+    <version>4.4.76</version>
+    <time>1643128548</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>947881</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>dc6203ad3339aeab491b5bf5dd34cc56</srcmd5>
+    <version>4.4.77</version>
+    <time>1643321803</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>949295</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>b4d1a74966e7a89c5cbb2a34ee48b6de</srcmd5>
+    <version>4.4.78</version>
+    <time>1643486248</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>949599</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>ff83f2a5410b233a7558d49175917a4b</srcmd5>
+    <version>4.4.79</version>
+    <time>1644188007</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>951008</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>87cd17fc6b3fe3db1de78f489a3f2b95</srcmd5>
+    <version>4.4.81</version>
+    <time>1644435504</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>952054</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>60fae828804ece6b5169c8140f954982</srcmd5>
+    <version>4.4.84</version>
+    <time>1645137602</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>955684</requestid>
+  </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>4d4294d6fd2c97203f0693c441cb1125</srcmd5>
+    <version>4.4.88</version>
+    <time>1645461964</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>956476</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>34c662db8efe2d14d771556769eae14b</srcmd5>
+    <version>4.4.92</version>
+    <time>1645723113</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>957144</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>2762a0c29a775aa3044cff0d33c8e7a5</srcmd5>
+    <version>4.4.93</version>
+    <time>1646767885</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>959852</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>60dc647a3e286f6d8f7d15156a5ceea3</srcmd5>
+    <version>4.4.94</version>
+    <time>1647806070</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>962528</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>92a711a5f88c7bdda4fbde2bc8c935cb</srcmd5>
+    <version>4.5.1</version>
+    <time>1648916403</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>966248</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>c19f1359faa94bd0752e01d27c21da48</srcmd5>
+    <version>4.5.2</version>
+    <time>1649461439</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>967547</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>87d147b54f4fcd218ec2a08604708ab3</srcmd5>
+    <version>4.5.3</version>
+    <time>1649876651</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>969194</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>0245a0a2670d2e6308520308766468f2</srcmd5>
+    <version>4.5.4</version>
+    <time>1650232191</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>970386</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>9a72367b80f955108ad6135a99d3527d</srcmd5>
+    <version>4.5.5</version>
+    <time>1650996913</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>972551</requestid>
+  </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>5f150b3d055bb60bdd32fd32693fcf30</srcmd5>
+    <version>4.5.6</version>
+    <time>1651272305</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>973242</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>9f42920e24fe379bf7cec861dd3e3694</srcmd5>
+    <version>4.5.9</version>
+    <time>1651784722</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>974944</requestid>
+  </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>45266312ccc5cb9e15439de8362276f9</srcmd5>
+    <version>4.5.10</version>
+    <time>1652114615</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>975335</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>1134872665c0fec4240bada1944a3a65</srcmd5>
+    <version>4.5.11</version>
+    <time>1652561546</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>976646</requestid>
+  </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>dd4f36222b19e0a73d7951b799877d13</srcmd5>
+    <version>4.5.14</version>
+    <time>1653503645</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>978985</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>78997aa084a778c15e97099e283635aa</srcmd5>
+    <version>4.5.16</version>
+    <time>1654004825</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>980044</requestid>
+  </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>834ddf89fa5a04ec6b304e4e94fe009a</srcmd5>
+    <version>4.5.17</version>
+    <time>1654097660</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>980139</requestid>
+  </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>94d5fc54793fce36c1def9afb5c1803d</srcmd5>
+    <version>4.5.20</version>
+    <time>1654378011</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>980690</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>9b70e3f28dc3997558ce208fa44f7623</srcmd5>
+    <version>4.5.21</version>
+    <time>1655582733</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>983421</requestid>
+  </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>a98c9bc0526042a2440120477e618509</srcmd5>
+    <version>4.5.23</version>
+    <time>1655972549</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>984483</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>7577875aac44516d52c760d00296ba9f</srcmd5>
+    <version>4.5.24</version>
+    <time>1656511258</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>985576</requestid>
+  </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>fe2976ad3ac5982acb33b6e2180d8bfa</srcmd5>
+    <version>4.5.25</version>
+    <time>1657016853</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>986636</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>8e757330bd3dcd5fb62802d99c75f2b4</srcmd5>
+    <version>4.5.27</version>
+    <time>1657559293</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>988334</requestid>
+  </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>ae6c23ee6c9e973a8c2ab115b64a692f</srcmd5>
+    <version>4.5.28</version>
+    <time>1658161971</time>
+    <user>RBrownFactory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>989094</requestid>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>74ca2ed61da5fc5d64a14d09b4c12280</srcmd5>
+    <version>4.5.30</version>
+    <time>1658510419</time>
+    <user>RBrownFactory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>990509</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>35a8457f058d2d8a6dd4c3477e54b321</srcmd5>
+    <version>4.5.31</version>
+    <time>1658857358</time>
+    <user>RBrownFactory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>991029</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>287729176fcea161449ca7b8646741c3</srcmd5>
+    <version>4.5.33</version>
+    <time>1659301251</time>
+    <user>favogt_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>991670</requestid>
+  </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>b3aea01d63d673f9e0ea827f5d297356</srcmd5>
+    <version>4.5.42</version>
+    <time>1661257556</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>994750</requestid>
+  </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>cceb6d17b45f655910cca8d771dc32af</srcmd5>
+    <version>4.5.43</version>
+    <time>1662322291</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1000934</requestid>
+  </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>fd6aeb5de416f4fe582e08eae20a7ce1</srcmd5>
+    <version>4.5.44</version>
+    <time>1663074459</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1002775</requestid>
+  </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>49d47a21c9ef2808816b91b7a2a0c04c</srcmd5>
+    <version>4.5.45</version>
+    <time>1663155881</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1003327</requestid>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>6391df4db9099c06757c018adca6ddad</srcmd5>
+    <version>4.5.46</version>
+    <time>1665844500</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1010931</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>a7df1acea720424a02423b75fd60a79c</srcmd5>
+    <version>4.5.47</version>
+    <time>1666440717</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1029764</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>4e2cf733506c6711bfa25014b2f41648</srcmd5>
+    <version>4.5.48</version>
+    <time>1666978185</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1031927</requestid>
+  </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>c9a9662ded680f8c7f99d38b1de292fc</srcmd5>
+    <version>4.5.50</version>
+    <time>1668086424</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1034885</requestid>
+  </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>275ff5f3df05aed860f328daa4d10a98</srcmd5>
+    <version>4.5.52</version>
+    <time>1668782562</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1035152</requestid>
+  </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>ad2ecf43b4fea74a6603fdc539b7bb71</srcmd5>
+    <version>4.5.53</version>
+    <time>1669484704</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1038185</requestid>
+  </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>41ae7898ccc9949a54db451c16d83eca</srcmd5>
+    <version>4.5.54</version>
+    <time>1670162288</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1039810</requestid>
+  </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>4ca7840950a63299745ec315c6de997d</srcmd5>
+    <version>4.5.56</version>
+    <time>1670430848</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1040906</requestid>
+  </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>e534c529fe63a6e4b20ec985d6ed9052</srcmd5>
+    <version>4.5.57</version>
+    <time>1671564004</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1043860</requestid>
+  </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>1267d301197a310d73a17dbf05a542a5</srcmd5>
+    <version>4.5.60</version>
+    <time>1672754677</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1046426</requestid>
+  </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>0871fc775c83d6ee769620015309c4a2</srcmd5>
+    <version>4.5.61</version>
+    <time>1672927190</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1046686</requestid>
+  </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>0d85e49f2e5b7b269158f1928086c3f3</srcmd5>
+    <version>4.5.62</version>
+    <time>1673209514</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1056825</requestid>
+  </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>cc28fcad5617891ce8cbf9d36786ddb3</srcmd5>
+    <version>4.5.63</version>
+    <time>1673724637</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1057780</requestid>
+  </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>df15bcc21535a481e6fdf725fd3d177f</srcmd5>
+    <version>4.5.64</version>
+    <time>1674043705</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1058911</requestid>
+  </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>008c375e63246d5c8f57d71f749492d0</srcmd5>
+    <version>4.5.65</version>
+    <time>1674737805</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1060723</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>de7bbd433ddf770520df8c8cc8123e8d</srcmd5>
+    <version>4.5.67</version>
+    <time>1674997837</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1061770</requestid>
+  </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>cbff4a6cb99a696693568ba00ce5fb06</srcmd5>
+    <version>4.5.68</version>
+    <time>1675458279</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1062621</requestid>
+  </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>c37da5cb42d4d0eb586666591c1f9c6a</srcmd5>
+    <version>4.5.69</version>
+    <time>1675621207</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1063202</requestid>
+  </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>047e51897b5d5f25c006ad2031169b45</srcmd5>
+    <version>4.5.71</version>
+    <time>1675873194</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1063757</requestid>
+  </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>57bb47880ae72ec6544059f32af3d31e</srcmd5>
+    <version>4.5.73</version>
+    <time>1675956140</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1063997</requestid>
+  </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>9f15bf15b276306a130e9ce173e7d366</srcmd5>
+    <version>4.5.74</version>
+    <time>1677966126</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1068992</requestid>
+  </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>7aa18626adec6d4d6112a3470d7f8388</srcmd5>
+    <version>4.5.76</version>
+    <time>1678125297</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1069606</requestid>
+  </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>e19e25cbbefd91ad1a95c49e48b7f672</srcmd5>
+    <version>4.5.82</version>
+    <time>1678555387</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1070711</requestid>
+  </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>d24799ceca5520eac4fcffca6a489490</srcmd5>
+    <version>4.5.83</version>
+    <time>1678707601</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1070987</requestid>
+  </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>a402782bb0b303d9c9bf21731e47421d</srcmd5>
+    <version>4.5.85</version>
+    <time>1678902849</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1071967</requestid>
+  </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>23ddf661e93242199d7317abe9e15091</srcmd5>
+    <version>4.5.86</version>
+    <time>1679238977</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1072657</requestid>
+  </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>a7b9fe5edd1cd459fcf1abd0ed53b23d</srcmd5>
+    <version>4.5.87</version>
+    <time>1679766901</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1074113</requestid>
+  </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>4822985cb29fa4d4238c7f8478c00954</srcmd5>
+    <version>4.5.88</version>
+    <time>1680125176</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1074522</requestid>
+  </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>480c97c8782f50e56ba80b9a8dfb4c68</srcmd5>
+    <version>4.5.91</version>
+    <time>1680290114</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1075587</requestid>
+  </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>2e11ad01cb7615dda7cf0e600beb23c5</srcmd5>
+    <version>4.5.92</version>
+    <time>1680455813</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1076558</requestid>
+  </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>a2786266d3f8daeef5074703e3d8e2f0</srcmd5>
+    <version>4.5.95</version>
+    <time>1680884187</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1077573</requestid>
+  </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>ea8cc5e28f46ced00cb5ac7c40c65b8e</srcmd5>
+    <version>4.5.96</version>
+    <time>1681996410</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1080061</requestid>
+  </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>3cc1857fe0ca7a38a2bdf68561d472e6</srcmd5>
+    <version>4.5.97</version>
+    <time>1682193442</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1081245</requestid>
+  </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>e087d34dcdbdcc1b954d6f598c95b3ca</srcmd5>
+    <version>4.5.100</version>
+    <time>1682691756</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1083231</requestid>
+  </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>3b3b88638337074050bcc269a86e0f52</srcmd5>
+    <version>4.5.101</version>
+    <time>1683111385</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1083996</requestid>
+  </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>e447ecb03c499c3c0b81cf76c747f8dd</srcmd5>
+    <version>4.5.103</version>
+    <time>1683991046</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1086856</requestid>
+  </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>b13bdb547eff5d71cc56e780c250f2a0</srcmd5>
+    <version>4.5.105</version>
+    <time>1684313563</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1087377</requestid>
+  </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>cc5746160da56cf8bb6785fac4a1c33d</srcmd5>
+    <version>4.5.106</version>
+    <time>1684415903</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1087560</requestid>
+  </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>bee20086dbc12793d6caec2af2e9444a</srcmd5>
+    <version>4.5.109</version>
+    <time>1684952538</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1088812</requestid>
+  </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>3e5017051f3dec826bfe46f9c57709bd</srcmd5>
+    <version>4.5.110</version>
+    <time>1685124897</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1088955</requestid>
+  </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>a24fed820f3d98c0544e037776114538</srcmd5>
+    <version>4.5.112</version>
+    <time>1685476905</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1089751</requestid>
+  </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>2b31dda09953ab19eb2c7f8b06b88277</srcmd5>
+    <version>4.5.113</version>
+    <time>1685743592</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1090046</requestid>
+  </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>3b3b795e56eac56aee9956eeacd83598</srcmd5>
+    <version>4.5.115</version>
+    <time>1685889704</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1090731</requestid>
+  </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>9f080888088174df5ce3d8fc927c98a7</srcmd5>
+    <version>4.5.116</version>
+    <time>1686171961</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1091041</requestid>
+  </revision>
+  <revision rev="227" vrev="1">
+    <srcmd5>7eb95d8a079f583a64f4764d4a93fe33</srcmd5>
+    <version>4.5.118</version>
+    <time>1686576324</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1092505</requestid>
+  </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>75997b83e2a4baf5c3c319a21d34d7cb</srcmd5>
+    <version>4.5.120</version>
+    <time>1687033203</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1093332</requestid>
+  </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>010d3eb4ac6956447e33813097030b19</srcmd5>
+    <version>4.5.121</version>
+    <time>1687549913</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1094587</requestid>
+  </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>c70542ffc87043bc1949240a0c6f412f</srcmd5>
+    <version>4.5.122</version>
+    <time>1688737562</time>
+    <user>favogt_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1097425</requestid>
+  </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>a8ac7c0cf5d1d78b812ad1b94636f214</srcmd5>
+    <version>4.5.123</version>
+    <time>1689083801</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1098018</requestid>
+  </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>6d42f0b3709bc71ecd89cc65ff50883f</srcmd5>
+    <version>4.5.127</version>
+    <time>1689786586</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1099440</requestid>
+  </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>7283b5d1f0eddee91223fef43669f13a</srcmd5>
+    <version>4.5.133</version>
+    <time>1690987677</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1101783</requestid>
+  </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>8242e13c6855bf786a41a2417a72730e</srcmd5>
+    <version>4.5.134</version>
+    <time>1691232831</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1102205</requestid>
+  </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>fa06a948d0dc5b66b061de556d6e9554</srcmd5>
+    <version>4.5.135</version>
+    <time>1691414926</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1102591</requestid>
+  </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>77138b3c0f37dcb6ab9085325bd4ced1</srcmd5>
+    <version>4.5.136</version>
+    <time>1691594663</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1102974</requestid>
+  </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>87d043a3a9524d8a5d726f2000e19663</srcmd5>
+    <version>4.5.139</version>
+    <time>1694019334</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1109243</requestid>
+  </revision>
+  <revision rev="238" vrev="1">
+    <srcmd5>29c2fb2c1fd960c4b0370f64f96c90e7</srcmd5>
+    <version>4.5.141</version>
+    <time>1694344177</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1109920</requestid>
+  </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>97065858330a36b24f2dfc470aba86a3</srcmd5>
+    <version>4.5.143</version>
+    <time>1695853476</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1113828</requestid>
+  </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>9f304f4e828a367eec8143b66f491e0e</srcmd5>
+    <version>4.5.149</version>
+    <time>1698001261</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1119265</requestid>
+  </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>014d4f86fdcadfc490e689e4b60195ad</srcmd5>
+    <version>4.5.151</version>
+    <time>1698170821</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1119612</requestid>
+  </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>6e5514f157d09eaf1785882424a4fcd0</srcmd5>
+    <version>4.5.154</version>
+    <time>1698438465</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1120829</requestid>
+  </revision>
+  <revision rev="243" vrev="1">
+    <srcmd5>3e2f0265195a92588160e251d98b7b4b</srcmd5>
+    <version>4.5.155</version>
+    <time>1698604787</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1120885</requestid>
+  </revision>
+  <revision rev="244" vrev="1">
+    <srcmd5>e4981b6eac88618924ab20e23c474174</srcmd5>
+    <version>4.5.156</version>
+    <time>1699994494</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1125444</requestid>
+  </revision>
+  <revision rev="245" vrev="1">
+    <srcmd5>9779c3a0680fd9e581083e817f0a9ae7</srcmd5>
+    <version>4.5.157</version>
+    <time>1700250554</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1127174</requestid>
+  </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>1bfcc34a3f90aa0102720d9035ae9086</srcmd5>
+    <version>4.5.158</version>
+    <time>1700771937</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1128151</requestid>
+  </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>a308bf1639dd47205b08aa4fec0a083a</srcmd5>
+    <version>4.5.161</version>
+    <time>1702071095</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1132096</requestid>
+  </revision>
+  <revision rev="248" vrev="1">
+    <srcmd5>36aaa56660e670496008b41fa9623d47</srcmd5>
+    <version>4.5.162</version>
+    <time>1702673191</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1133370</requestid>
+  </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>6651f57432d1ffe5bfba3df13174175f</srcmd5>
+    <version>4.5.163</version>
+    <time>1703102446</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1133995</requestid>
+  </revision>
+  <revision rev="250" vrev="1">
+    <srcmd5>91851bef2983c7430ffc4c2c7474d8bc</srcmd5>
+    <version>4.5.168</version>
+    <time>1703527485</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1134646</requestid>
+  </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>46232b3ec79fe9014364395b2a95b044</srcmd5>
+    <version>4.5.169</version>
+    <time>1704380200</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1136146</requestid>
+  </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>4f7eb769ae71ff347bc606079588d184</srcmd5>
+    <version>4.5.170</version>
+    <time>1704487238</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1136884</requestid>
+  </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>45a24389a99930e656f0b818b75da95a</srcmd5>
+    <version>4.5.171</version>
+    <time>1704919855</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1137710</requestid>
+  </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>1ac7d786ea4e12ec9a09dd935224c0ba</srcmd5>
+    <version>4.5.172</version>
+    <time>1705099494</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1138154</requestid>
+  </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>393b69e5883961aa1be1b85558c150a5</srcmd5>
+    <version>4.5.173</version>
+    <time>1705353093</time>
+    <user>anag+factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1138404</requestid>
+  </revision>
+</revisionlist>

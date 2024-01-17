@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>620023fbd04770856c9e8a01d4559e54</srcmd5>
+    <version>0.6.1</version>
+    <time>1527583334</time>
+    <user>dimstar_suse</user>
+    <comment>needed by python-CairoSVG and python-WeasyPrint</comment>
+    <requestid>611775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d0d64488a0b1f3143287b1d4aa780058</srcmd5>
+    <version>0.6.1</version>
+    <time>1548335658</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667868</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a6a3c8e025ee85ea78aaede089c58889</srcmd5>
+    <version>0.6.1</version>
+    <time>1555691840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694576</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8d0c6d4cb91fc8a443e96f55b4ae798a</srcmd5>
+    <version>1.0.2</version>
+    <time>1557083912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699150</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2494d68855f69d8894547f35fb1b3089</srcmd5>
+    <version>1.0.2</version>
+    <time>1590649633</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>805999</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e8f02fa9925ab36377331f0e66acd88f</srcmd5>
+    <version>1.0.2</version>
+    <time>1594807691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820506</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b06ca51daaa1c0c17ed634108b8b335</srcmd5>
+    <version>1.1.1</version>
+    <time>1637970634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933316</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6622fba35360f2b9f5b923aac42e71b3</srcmd5>
+    <version>1.1.1</version>
+    <time>1640108428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941335</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7ed10e57f38f1ac32e920444a3d52da7</srcmd5>
+    <version>1.1.1</version>
+    <time>1661020056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998079</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d89c21d4bf82c09f91c246db8a03e15a</srcmd5>
+    <version>1.2.1</version>
+    <time>1667306456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1 
+  * Fix tests included in the source tarball
+  * Drop support of Python 3.6
+  * Fix serialization of nested functions with no parameters
+  * Don’t use pytest plugins by default
+</comment>
+    <requestid>1032436</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>81a4571fd259f42a9cb77409bf8f274b</srcmd5>
+    <version>1.2.1</version>
+    <time>1669040922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036852</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c953bf2a05599d22a32f608753d87c16</srcmd5>
+    <version>1.2.1</version>
+    <time>1682193503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081741</requestid>
+  </revision>
+</revisionlist>

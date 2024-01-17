@@ -1,0 +1,191 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>903c345578c2d688dacd49e793c6f16b</srcmd5>
+    <version>0.5.0</version>
+    <time>1519396155</time>
+    <user>dimstar_suse</user>
+    <comment>Brought over from packman (2nd attempt)</comment>
+    <requestid>578378</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cfbc5eb8ff1b8b89bc58e1478913e4b0</srcmd5>
+    <version>0.5.2</version>
+    <time>1538374800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639130</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>01113e354efb188ac444e2f7878627bb</srcmd5>
+    <version>0.5.3</version>
+    <time>1539251964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641099</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae7ab742a89c8f8acb22ca44ce1f6087</srcmd5>
+    <version>0.5.4</version>
+    <time>1544095112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655372</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>775ce082cdfbaa89ff26f440f2895adc</srcmd5>
+    <version>0.5.5</version>
+    <time>1552380850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683755</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b2c47bb0e15046b215f983854fb0e39</srcmd5>
+    <version>0.5.6</version>
+    <time>1555053338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693191</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2dfb21df5a093c6dbba58c3d5b894ead</srcmd5>
+    <version>0.5.7</version>
+    <time>1563018620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714915</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d87eb244248c90da55e35ccdd0a58f8a</srcmd5>
+    <version>0.6.0</version>
+    <time>1571402186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739115</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>591ad3706369144e01b49e0741706b9a</srcmd5>
+    <version>0.6.1</version>
+    <time>1577137584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758970</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>abe26f3c691a35486fce955ea2657e81</srcmd5>
+    <version>0.6.2</version>
+    <time>1585176321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787945</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e0a5498e776d21b556fec32a24da5bf1</srcmd5>
+    <version>0.6.3</version>
+    <time>1596204148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823719</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dbc8239992a1d1ad11a7782a3d15b01c</srcmd5>
+    <version>0.9.0</version>
+    <time>1608221170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856685</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bcd7147c693646dc0b04d2ea670eedfd</srcmd5>
+    <version>0.9.2</version>
+    <time>1617130864</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.9.2
+  * Possible fix to the even number of audio channels not playing
+    back through JACK when audio group number is set to 2.
+- Update to version 0.9.1
+  * Fixed MIDI player to files that are drag and dropped
+    after a first time following engine re-initialization.
+  * Fix multi-channel support with JACK.
+  * Early preparations for the New Year develop(ment) cycle.
+- Drop qsynth-0.9.0_Qt512.patch (merged upstream)
+</comment>
+    <requestid>879419</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7b1d9013300736216ecb671cb88c23d4</srcmd5>
+    <version>0.9.3</version>
+    <time>1620767061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892213</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>461067a65b3e42d498bbe1a56cbc8c36</srcmd5>
+    <version>0.9.4</version>
+    <time>1625429456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903966</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5a117d15221b32917a325f24146bbef6</srcmd5>
+    <version>0.9.5</version>
+    <time>1641855177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945155</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ceff8f4723f50117fef46f94a8c170aa</srcmd5>
+    <version>0.9.6</version>
+    <time>1644707727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953903</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d26d3fa0e09e4edd8028f8a7591eaa3d</srcmd5>
+    <version>0.9.7</version>
+    <time>1659612236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992713</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>acbcc8525e0128814757bf4ddfcf21ad</srcmd5>
+    <version>0.9.8</version>
+    <time>1670333091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040593</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dc9eef723a9f659a8aa1150313dfd398</srcmd5>
+    <version>0.9.9</version>
+    <time>1672765241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046550</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1d9f39e4d0214008271dfff6497e621e</srcmd5>
+    <version>0.9.10</version>
+    <time>1681213888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078365</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b30803ea750bbffae93d9c5e10a66200</srcmd5>
+    <version>0.9.12</version>
+    <time>1702845117</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.12:
+  * Restore all MIDI channels synth-engine funcionality, when the
+    output peak-meters aren't opted in.
+  * Preppings to next development cycle (Qt &gt;= 6.6)
+  * Optimized audio output peak-meters.</comment>
+    <requestid>1133580</requestid>
+  </revision>
+</revisionlist>

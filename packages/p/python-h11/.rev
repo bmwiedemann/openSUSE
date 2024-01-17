@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bfa358e2f48223be21be28c10002bdb1</srcmd5>
+    <version>0.7.0</version>
+    <time>1519747130</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package (version 0.7.0)
+</comment>
+    <requestid>580067</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>58475f7c092fde315dd9194d5a774f90</srcmd5>
+    <version>0.8.1</version>
+    <time>1543999571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>654110</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c800c50dd0802b85757c9eeee503413b</srcmd5>
+    <version>0.8.1</version>
+    <time>1559837821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707793</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>033d6780b4f9da61a43b3103b42f6898</srcmd5>
+    <version>0.9.0</version>
+    <time>1566551268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  * no changelog
+- Restrict pytest5 for now</comment>
+    <requestid>725338</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>91c8a10b33808f8b4c39c4f6ecbdad6d</srcmd5>
+    <version>0.9.0</version>
+    <time>1588755900</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not restrict pytest anymore, seems working</comment>
+    <requestid>800592</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f8a087b4b1867546da2c579e0263cac7</srcmd5>
+    <version>0.10.0</version>
+    <time>1597390411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826282</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9a08df84c80aec46000d91d52a4d78d2</srcmd5>
+    <version>0.11.0</version>
+    <time>1605012396</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0:
+  * h11 now stores and makes available the raw header name as
+  received. In addition h11 will write out header names with the same
+  casing as passed to it. This allows compatibility with systems that
+  expect titlecased header names. See `#31
+  * Multiple content length headers are now merged into a single header
+  if all the values are equal, if any are unequal a LocalProtocol
+  error is raised (as before). See `#92</comment>
+    <requestid>847415</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b4af16d0a3594a5e2ed9ccf5edd6a482</srcmd5>
+    <version>0.12.0</version>
+    <time>1612707700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869819</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fa07ec487a57ea6eafe48bff2cf29618</srcmd5>
+    <version>0.13.0</version>
+    <time>1645221755</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.0:
+  * Clarify that the Headers class is a Sequence and inherit from the
+    collections Sequence abstract base class to also indicate this (and
+    gain the mixin methods).
+  * Switch event classes to dataclasses for easier typing and slightly
+    improved performance.
+  * Shorten traceback of protocol errors for easier readability
+  * Add typing including a PEP 561 marker for usage by type checkers
+  * Expand the allowed status codes to [0, 999] from [0, 600]
+  * Ensure request method is a valid token</comment>
+    <requestid>955498</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>297509390866986ddb7a2194540c0c01</srcmd5>
+    <version>0.14.0</version>
+    <time>1665754825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010139</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1698e7662feabd7620002ad8d98fc663</srcmd5>
+    <version>0.14.0</version>
+    <time>1682193639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081902</requestid>
+  </revision>
+</revisionlist>

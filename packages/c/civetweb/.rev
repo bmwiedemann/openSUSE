@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>568721b68d31869d1cc4f0e9ed27ac4c</srcmd5>
+    <version>1.11</version>
+    <time>1575463771</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission to Factory</comment>
+    <requestid>744544</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>afe1662e8be211195774cf5c68a02e88</srcmd5>
+    <version>1.12</version>
+    <time>1594894513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820904</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0a650a6ee513a97aefd5c478a6a5420</srcmd5>
+    <version>1.13</version>
+    <time>1604779381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846847</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dd86d7abe582e4bc3d0ff2cb9eaa950a</srcmd5>
+    <version>1.14</version>
+    <time>1620653954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891974</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6acd380bd01301a42cefd425d3b15a83</srcmd5>
+    <version>1.14</version>
+    <time>1620767043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892105</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f4298b30daad7c5ef1f553a9a9fdd5f1</srcmd5>
+    <version>1.15</version>
+    <time>1634943080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926908</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>617c86680ddefcff0891d17f9fa9f325</srcmd5>
+    <version>1.15</version>
+    <time>1651784854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975221</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>950dce5858c7d61f4b12b2e00bba30d1</srcmd5>
+    <version>1.16</version>
+    <time>1684415970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087704</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d17b8a328f1d1e8c61057ff20e6d3fc7</srcmd5>
+    <version>1.16</version>
+    <time>1703281342</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134627</requestid>
+  </revision>
+</revisionlist>

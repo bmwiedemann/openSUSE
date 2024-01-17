@@ -1,0 +1,53 @@
+--- libcrystalhd_if.h.orig
++++ libcrystalhd_if.h
+@@ -29,8 +29,8 @@
+ #ifndef _BCM_LDIL_IF_H_
+ #define _BCM_LDIL_IF_H_
+ 
+-#include "bc_dts_defs.h"
+ #include "bc_dts_types.h"
++#include "bc_dts_defs.h"
+ 
+ #define FLEA_MAX_TRICK_MODE_SPEED	6
+ 
+--- Makefile.orig
++++ Makefile
+@@ -16,13 +16,13 @@ BCGCC = g++
+ INCLUDES = -I./ -I/usr/include
+ 
+ 
+-CXXFLAGS = -D__LINUX_USER__
++CXXFLAGS += -D__LINUX_USER__
+ # -DLDIL_PRINTS_ON
+ # -D_USE_SHMEM_
+ 
+ CXXFLAGS += ${INCLUDES}
+-CXXFLAGS += -O2 -Wall -fPIC -shared -fstrict-aliasing -msse2
+-LDFLAGS = -Wl,-soname,${BCLIB_SL} -pthread
++CXXFLAGS += -pthread -O2 -Wall -fPIC -DPIC -fvisibility-inlines-hidden -shared -fstrict-aliasing -msse2
++LDFLAGS = -Wl,-soname,${BCLIB_SL}
+ 
+ SRCFILES = 	libcrystalhd_if.cpp \
+ 		libcrystalhd_int_if.cpp \
+--- libcrystalhd_fwdiag_if.cpp.orig
++++ libcrystalhd_fwdiag_if.cpp
+@@ -168,7 +168,7 @@ DtsDownloadFWDIAGToLINK(HANDLE hDevice,c
+ 	}
+ 
+ 	if(FwBinFile!=NULL){
+-		strncat(fwfile,(const char*)FwBinFile,sizeof(fwfile));
++		strncat(fwfile,(const char*)FwBinFile,sizeof(fwfile)-strlen(fwfile)-1);
+ 		DebugLog_Trace(LDIL_DBG,"1. fwfile is %s\n",FwBinFile);
+ 	}else{
+ 		strncat(fwfile,"/",sizeof(fwfile));
+--- libcrystalhd_if.cpp.orig
++++ libcrystalhd_if.cpp
+@@ -723,7 +723,7 @@ DtsGetFWVersionFromFile(
+ 	}
+ 
+ 	if(fname){
+-		strncat(fwfile,(const char*)fname,sizeof(fwfile));
++		strncat(fwfile,(const char*)fname, sizeof(fwfile)-strlen(fwfile)-1);
+ 	}else{
+         if(Ctx->DevId == BC_PCI_DEVID_FLEA)
+             strncat(fwfile,FWBINFILE_70015,sizeof(FWBINFILE_70015));

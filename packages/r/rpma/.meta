@@ -1,0 +1,5 @@
+<package name="rpma" project="openSUSE:Factory">
+  <title>remote persistent memory access library</title>
+  <description></description>
+  <devel project="hardware:nvdimm" package="rpma"/>
+</package>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">5</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <!-- relax constraints for qt6-datavis3d:docs -->
+  <overwrite>
+    <conditions>
+      <package>qt6-datavis3d:docs</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">2</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

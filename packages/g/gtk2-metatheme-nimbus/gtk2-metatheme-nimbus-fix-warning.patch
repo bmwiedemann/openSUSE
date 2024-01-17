@@ -1,0 +1,13 @@
+Index: nimbus-0.1.4/gtk-engine/nimbus_style.c
+===================================================================
+--- nimbus-0.1.4.orig/gtk-engine/nimbus_style.c
++++ nimbus-0.1.4/gtk-engine/nimbus_style.c
+@@ -156,7 +156,7 @@ get_clipping_gc (GdkWindow* window, GdkR
+   return gc;
+ }
+ 
+-static GtkWidget *print_ancestors (GtkWidget *widget)
++static void print_ancestors (GtkWidget *widget)
+ {
+   GtkWidget *tmp;
+ 

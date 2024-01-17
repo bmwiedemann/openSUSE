@@ -1,0 +1,61 @@
+--- groff/tmac.andb
++++ groff/tmac.andb	Fri Apr  6 19:08:58 2001
+@@ -0,0 +1,29 @@
++.\" tmac.(m)andb
++.\"
++.\" This is part of the man(db) package of SuSE Linux
++.\" Author: Werner Fink
++.\"
++.\" Load tmac.an
++.\"
++.mso tmac.an
++.\"
++.\" Remember the original macros for headers and footers
++.\" and Overwrite them. The original footers macros will
++.\" be called at the bitter end.
++.\"
++.rn an-header   db@header
++.de an-header
++.  if (\\n% == 1) \
++.    db@header
++..
++.rn an-footer   db@footer
++.de an-footer
++..
++.rn an-p-footer db@p-footer
++.de an-p-footer
++..
++.de db@end
++.  wh -1i  db@footer
++.  wh -.5i db@p-footer
++..
++.em db@end
+--- groff/tmac.andocdb
++++ groff/tmac.andocdb	Fri Apr  6 19:08:58 2001
+@@ -0,0 +1,26 @@
++.\" tmac.(m)andocdb
++.\"
++.\" This is part of the man(db) package of SuSE Linux
++.\" Author: Werner Fink
++.\"
++.\" Just like tmac.andoc but
++.\" load either tmac.andb or tmac.doc
++.\"
++.if !\n(.g .ab These macros require groff.
++.de Dd
++.rm Dd
++.do mso tmac.doc
++\\*(Dd\\
++..
++.de TH
++.rm TH
++.do mso tmac.andb
++\\*(TH\\
++..
++.if '\*[.T]'utf8' \{\
++.  char \- \N'45'
++.  char  - \N'45'
++.  char  ' \N'39'
++.  char  ` \N'96'
++.\}
++..

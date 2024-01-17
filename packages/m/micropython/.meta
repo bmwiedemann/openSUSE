@@ -1,0 +1,6 @@
+<package name="micropython" project="openSUSE:Factory">
+  <title>A lean and efficient Python implementation for microcontrollers and constrained systems</title>
+  <description></description>
+  <devel project="devel:languages:python" package="micropython"/>
+  <url>https://micropython.org/</url>
+</package>

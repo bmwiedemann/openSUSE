@@ -1,0 +1,300 @@
+-------------------------------------------------------------------
+Fri Mar 10 11:05:41 UTC 2017 - joop.boonen@opensuse.org
+
+- Build version 3.13.0
+  - important sounds like "attack alarm" are always played
+  - display build/morph/upgrade time
+  - new AI tag <ai-build-size> for units(buildings) which allows fake size for buildings while placing them
+  - much better error handling and messages especially for modders and xml-related problems
+  - fix unwanted double event for some keys ( like alt+enter )
+  - map filter option for game setup on headless server
+  - option to select/command multiple buildings of same type ( uniform-selection )
+  - major cross platform OOS fix which especially showed up quite often when playing without fog of war
+  - you must prove basic game knowledge before you can play online by winning a special scenario
+  - less visible parts of black squares while rendering cliffs
+  - possibility to let units spawn units on death
+  - improved AI behavior per faction ( mostly magic )
+
+-------------------------------------------------------------------
+Wed Feb  3 21:21:37 UTC 2016 - joop.boonen@opensuse.org
+
+- Update to version 3.12.0
+
+-------------------------------------------------------------------
+Sun Jun  7 06:54:05 UTC 2015 - dap.darkness@gmail.com
+
+- Update to version 3.11.1:
+  * new translations.
+- tarball → _service.
+
+-------------------------------------------------------------------
+Tue Jan 27 14:54:38 UTC 2015 - joop.boonen@opensuse.org
+
+- Update to version 3.11.0
+  * healthbars with a lot of options
+  * multi shot / multi-projectiles with different timings,sounds and particle systems
+  * several camera shake effects
+  * new tileset "pine rock"
+  * some new maps
+  * improve switching settings when connected to a headless server
+  * support for team unit sharing
+  * team resource sharing
+  * tags feature
+  * Attack boosts fixed in many ways
+  * Attack boosts and upgrades now support upgrading attack speed
+  * timed particles and mesh bound particles really work now.
+  * unit height independend particle positioning ( flat-particle-positions )
+  * CPU players multiplier are displayed in debug view
+  * You can have non commandable units
+  * Units spawned by an attack skill can get an attack command
+  * Unit and Splash particles can be speeded up ( accelerated )
+  * Looting https://github.com/MegaGlest/megaglest-source/pull/17
+  * HP and EP starting values
+  * <target-height> <burn-height> can be given https://docs.megaglest.org/XML/Unit#target-height
+  * +several bugfixes
+
+-------------------------------------------------------------------
+Fri Feb 28 14:57:11 UTC 2014 - joop.boonen@opensuse.org
+
+- Update to version 3.9.1
+
+-------------------------------------------------------------------
+Sat Nov 23 15:48:18 UTC 2013 - mailaender@opensuse.org
+
+- Update to version 3.9.0
+
+-------------------------------------------------------------------
+Mon Sep  2 17:44:42 UTC 2013 - joop.boonen@opensuse.org
+
+- Update to version 3.8.0-beta1
+
+-------------------------------------------------------------------
+Mon Mar 18 15:21:54 UTC 2013 - joop.boonen@opensuse.org
+
+- Corrected the license
+
+-------------------------------------------------------------------
+Tue Nov 27 23:35:26 UTC 2012 - joop.boonen@opensuse.org
+
+- Added a Corrected dutch.lng file as the other one
+  crashed MegaGlest
+
+-------------------------------------------------------------------
+Tue Nov 27 21:03:04 UTC 2012 - joop.boonen@opensuse.org
+
+- Build megaglest version 3.7.1
+
+-------------------------------------------------------------------
+Sun Nov 18 09:22:15 UTC 2012 - joop.boonen@opensuse.org
+
+- Build megaglest version 3.7.0 beta2
+
+-------------------------------------------------------------------
+Sat Jan 28 23:23:29 UTC 2012 - joop.boonen@opensuse.org
+
+- Build megaglest version 3.6.0.3
+- Got rid of Obsoletes glest-data and glest-megapack
+
+-------------------------------------------------------------------
+Thu Jan  5 23:15:49 UTC 2012 - joop.boonen@opensuse.org
+
+- Created megaglest-fontpath.diff so
+  megaglest-source-embedded-3.6.0.2.tar.xz doesn't need to be used
+
+-------------------------------------------------------------------
+Thu Jan  5 20:25:58 UTC 2012 - joop.boonen@opensuse.org
+
+- megaglest-source-embedded is a part of megaglest-data
+  data/core/fonts/ is needed
+
+-------------------------------------------------------------------
+Fri Dec 23 21:35:10 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Dec 23 13:09:23 UTC 2011 - joop.boonen@opensuse.org
+
+- Build version 3.6.0.2
+
+-------------------------------------------------------------------
+Fri Sep 23 07:39:49 UTC 2011 - joop.boonen@opensuse.org
+
+- Build version 3.5.2.4
+
+-------------------------------------------------------------------
+Fri May 27 18:03:52 UTC 2011 - joop.boonen@opensuse.org
+
+- build version 3.5.2
+
+-------------------------------------------------------------------
+Sat May 14 10:45:11 UTC 2011 - joop.boonen@opensuse.org
+
+- build version 3.5.1
+- corrected the spec file for the new data format
+
+-------------------------------------------------------------------
+Mon Apr 25 08:11:04 UTC 2011 - joop.boonen@opensuse.org
+
+- build version 3.5.0
+- added fdupes for smaller footprint
+
+-------------------------------------------------------------------
+Sun Mar  6 16:03:12 UTC 2011 - joop.boonen@opensuse.org
+
+- corrected provide and requires
+- added missing authors
+
+-------------------------------------------------------------------
+Tue Mar  1 15:35:08 UTC 2011 - prusnak@opensuse.org
+
+- spec cleanup
+- provide and obsolete glest-data
+
+-------------------------------------------------------------------
+Fri Feb 04 16:01:12 UTC 2011 - nick.schrader@iserv-gis.de
+
+- build megaglest 3.4.0
+- changed package name to megaglest
+
+-------------------------------------------------------------------
+Mon Oct 18 09:22:12 UTC 2010 - joop.boonen@opensuse.org
+
+- build megaglest 3.3.7.2
+
+-------------------------------------------------------------------
+Sat Oct 16 15:24:22 UTC 2010 - joop.boonen@opensuse.org
+
+- build megaglest 3.3.7
+    * Significant game play performance improvements.
+    * Added support for FreeBSD (thanks m0ellemeister) and Mac OS X (thanks GeoVah)!
+    * Players can now tell multiple units to build a new unit all at the same time (multi-build)
+    * Particle and Transparency improvements
+    * Map Preview in game lobby
+    * Added ability to pick a random faction in the game lobby
+    * Added ability to be a non-player and Observe a network game (becoming an Observer)
+    * Added ability to change playername in game lobby
+    * Added new map filter (to display maps with x players)
+    * AI Player improvements
+    * Added new LUA functions and events (see wiki for details).
+    * Added numerous new commandline options (use --help to see a detailed list)
+    * Improved network performance
+    * Masterserver PHP scripts will now run on a Microsoft Windows Server
+    * Added ability to move / size UI components in a custom manner
+    * Many bugfixes.
+
+-------------------------------------------------------------------
+Sun Aug 29 19:11:02 UTC 2010 - joop.boonen@opensuse.org
+
+- build megaglest data packages 3.3.6
+  - This package Obsoletes glest-megapack
+  - megaglest is an extended glest version with the
+    megapack included
+  - needed to add the missing icons via icons.tar
+
+-------------------------------------------------------------------
+Wed Nov 18 21:47:49 CET 2009 - joop.boonen@opensuse.org
+
+- building version 3.2.1 for glest 3.2.2
+
+-------------------------------------------------------------------
+Thu Mar  6 08:38:05 CET 2008 - sndirsch@suse.de
+
+- updated to glest 3.1.2
+
+-------------------------------------------------------------------
+Thu Feb 21 17:21:54 CET 2008 - prusnak@suse.cz
+
+- updated to glest 3.1.0
+
+-------------------------------------------------------------------
+Thu Jan 31 05:34:56 CET 2008 - sndirsch@suse.de
+
+- updated data files to final release 3.0.0
+
+-------------------------------------------------------------------
+Wed Jan 16 04:54:07 CET 2008 - sndirsch@suse.de
+
+- updated data files to release 3.0.0 Beta1
+
+-------------------------------------------------------------------
+Sat Nov 17 22:59:19 CET 2007 - sndirsch@suse.de
+
+- updated data files to release 2.0.1
+  * Scenarios: They are preset configurations for maps.
+  * More stats: Added more stats in the battle end screen
+  * Improved ISO C++ compliance: Now Glest compiles in GCC 4.X
+- data files for 3.0.0-alpha1 (experimental multiplayer support
+  for LAN/Internet)
+
+-------------------------------------------------------------------
+Wed Aug  8 12:34:18 CEST 2007 - sndirsch@suse.de
+
+- more tilesets
+
+-------------------------------------------------------------------
+Thu Mar 29 22:36:43 CEST 2007 - sndirsch@suse.de
+
+- added unzip to Buildrequires
+
+-------------------------------------------------------------------
+Sun Jun  4 14:23:59 CEST 2006 - sndirsch@suse.de
+
+- updated data files to final release 2.0
+  * tech unit rider is now called horseman
+
+-------------------------------------------------------------------
+Sat Apr 15 20:17:02 CEST 2006 - sndirsch@suse.de
+
+- updated to release 2.0-rc5
+- disabled savegame patch for now
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:28 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Nov 10 11:25:14 CET 2005 - sndirsch@suse.de
+
+- updated to release 2.0-rc1
+  * The version is not the complete 2.0 though, some incons are
+    missing and some animations will be improved. But it includes
+    most of the features that will be present in the final version.
+  * New Magic units:
+    - Tower of Souls: Air defense building, attacks air only
+    - Golem: Defensive unit, needs EP to walk, can't attack air
+    - Daemon giant: Heavy melee unit
+    - Drake rider: Light ranged unit
+  * New Tech units:
+    - Aerodrome: Building for producing air units
+    - Air ballista: Air defense building, attacks air only
+    - Horseman: Fast medium unit
+    - Ornithopter: Light air unit
+    - Airship: Heavy air unit, can't attack air
+  * New Magic upgrades
+  * New Tech upgrades
+  * New animations for existing units
+  * Loads of balance changes
+  * New units really change the way factions are played. Magic
+    faction has now a defensive unit, the golem, that makes them
+    stronger at the early stages of the game. Tech faction has air
+    units now, but they should be less powerfull because both
+    factions now have anti air defenses, that make towns very
+    difficult to attack with air units only.
+
+-------------------------------------------------------------------
+Sun Oct  9 05:09:12 CEST 2005 - sndirsch@suse.de
+
+- added savegame patch (#115199)
+
+-------------------------------------------------------------------
+Sat Oct  8 23:15:12 CEST 2005 - sndirsch@suse.de
+
+- updated to glest 1.2 RC1 data files (#115199)
+
+-------------------------------------------------------------------
+Tue Jul 12 21:14:02 CEST 2005 - sndirsch@suse.de
+
+- created package
+

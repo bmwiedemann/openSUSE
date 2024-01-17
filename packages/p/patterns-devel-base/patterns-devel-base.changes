@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Fri Aug 18 08:07:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require awk by devel_basis: the usage of awk inside
+  configure.ac/Makefile.am is quite common and we should provide
+  this basic tool together with autoconf/automake (boo#1214365).
+
+-------------------------------------------------------------------
+Wed Nov 30 13:59:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend gitk: this seems to be one of the most aged
+  versions of git frontends (using Tcl/Tk).
+
+-------------------------------------------------------------------
+Wed Nov 30 12:17:59 UTC 2022 - pgajdos@suse.com
+
+- suggests php8 instead of php7
+
+-------------------------------------------------------------------
+Thu Feb 24 04:02:56 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- The "devel_kernel" pattern is missing packages which are required
+  to compile a regular SUSE kernel (bsc#1147177)
+  - openssl-devel
+  - libelf-devel
+  - bc
+
+-------------------------------------------------------------------
+Tue Jan 26 12:14:19 UTC 2021 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Add sparse, smatch and coccinelle to pattern
+
+-------------------------------------------------------------------
+Wed Aug 28 06:51:01 UTC 2019 - Simon Lees <sflees@suse.de>
+
+- The following packages are required to build the kernel so add
+  them to the kernel development pattern. bsc#1147177
+  * bc
+  * libelf-devel
+  * openssl-devel
+
+-------------------------------------------------------------------
+Fri Dec  7 13:12:28 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Adjust icons to state of yast2-theme package
+
+-------------------------------------------------------------------
+Sun Sep 30 00:37:16 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Change icons for RPM and Web devel patterns. (boo#1039994)
+
+-------------------------------------------------------------------
+Thu Jul 19 12:07:25 UTC 2018 - sflees@suse.de
+
+- Merge with the version from SLE/Leap 15 full changes now below
+  in the changelog.
+
+-------------------------------------------------------------------
+Mon Dec 11 11:25:36 UTC 2017 - sflees@suse.de
+
+- correctly source the files for 32bit patterns
+
+-------------------------------------------------------------------
+Mon Dec  4 09:38:25 UTC 2017 - sflees@suse.de
+
+- obsolete old SLES/SLED development patterns (bsc#1070151)
+
+-------------------------------------------------------------------
+Thu Sep 21 10:52:11 UTC 2017 - sflees@suse.de
+
+- Swap web pattern from php5 to php7
+- Add 32bit patterns
+- Only build certain patterns for openSUSE
+
+-------------------------------------------------------------------
+Mon Jul 17 06:32:17 UTC 2017 - sflees@suse.de
+
+- Don't require cvs anymore (not common anymore).
+- Recommend git.
+
+-------------------------------------------------------------------
+Fri Apr 28 16:08:50 UTC 2017 - jengelh@inai.de
+
+- Compact %install routine; replace old RPM shell vars by macros.
+
+-------------------------------------------------------------------
+Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
+
+- Create new package from old unified patterns package

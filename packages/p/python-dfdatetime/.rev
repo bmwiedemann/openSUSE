@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>026160ef5f58c265926ed0e91b365255</srcmd5>
+    <version>0~20160323</version>
+    <time>1473798215</time>
+    <user>dimstar_suse</user>
+    <comment>a new dependency of python-dfVFS</comment>
+    <requestid>416124</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c5901c169f72a1643de3206d44f27e3</srcmd5>
+    <version>0~20170719</version>
+    <time>1507280705</time>
+    <user>dimstar_suse</user>
+    <comment>- implement python singlespec syntax
+- update to v0~20170719
+	* various improvements including 
+		new format support 
+		added sanity checks
+- remove the lines that delete *.pyc and *.pyo files, 
+	they no longer cause problems
+</comment>
+    <requestid>531874</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95e496ce712e0c2b5a71b21130a73053</srcmd5>
+    <version>0~20180110</version>
+    <time>1516092169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564363</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5fa4f87228b33aeaf8d6b88a25ef8960</srcmd5>
+    <version>0~20190517</version>
+    <time>1566291586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724640</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e8a9a7d2e98e6f1ff523db6d7945611a</srcmd5>
+    <version>0~20190517</version>
+    <time>1579867967</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to python3 only</comment>
+    <requestid>766731</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>326c922920acb26d8b6855f69195e6db</srcmd5>
+    <version>0~20200121</version>
+    <time>1586248175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791587</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17c4f0663f07fc446d32847f4dd6901e</srcmd5>
+    <version>0~20200824</version>
+    <time>1605290381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848235</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ec6837d24604c58a16215e3dc4ff9f82</srcmd5>
+    <version>0~20220131</version>
+    <time>1647532915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962377</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>de183e4153566ff0413cedda806fa5f1</srcmd5>
+    <version>0~20220131</version>
+    <time>1651605551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974485</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>22b7fb07efad135e30b2c913c9d6edf4</srcmd5>
+    <version>0~20220131</version>
+    <time>1654776709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981372</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>eea26172ae6924e2a2f7251a3dfa84eb</srcmd5>
+    <version>0~20220131</version>
+    <time>1664112893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005614</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5f95957f2cb4b5c098330c3056c992fb</srcmd5>
+    <version>0~20220925</version>
+    <time>1671128732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043019</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eebb19351e9b23e603bc07aec2b046d0</srcmd5>
+    <version>0~20230225</version>
+    <time>1678380328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070227</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>010c9e30e366e3131463543e33e70898</srcmd5>
+    <version>0~20230225</version>
+    <time>1690654218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101260</requestid>
+  </revision>
+</revisionlist>

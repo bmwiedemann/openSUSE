@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e19fa38d2ae6cef3188fc56abea31b53</srcmd5>
+    <version>1.1.5</version>
+    <time>1430165310</time>
+    <user>coolo</user>
+    <comment>New package</comment>
+    <requestid>298799</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6114aa8c17d267eff01ab4a5a39b172c</srcmd5>
+    <version>1.1.5</version>
+    <time>1435053401</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312490</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7029733bf94144f6cd0e0b963f412ab7</srcmd5>
+    <version>1.1.6</version>
+    <time>1530303919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616245</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>45e165480adc90a02d46a2de073b2662</srcmd5>
+    <version>1.1.6</version>
+    <time>1573044584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739256</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>717a5de7cd0f32474c88dfcde7b0b4fb</srcmd5>
+    <version>1.1.6</version>
+    <time>1592398504</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>815363</requestid>
+  </revision>
+</revisionlist>

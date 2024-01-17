@@ -1,0 +1,26 @@
+---
+ doc/support/latexdiff/contrib/latexchanges.py |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- texmf-dist/doc/support/latexdiff/contrib/latexchanges.py
++++ texmf-dist/doc/support/latexdiff/contrib/latexchanges.py	2021-06-30 04:53:47.018231060 +0000
+@@ -41,8 +41,8 @@ for i in range(1,len(argv)):
+         newarg.append(argv[i])
+ 
+ if name:
+-    print "Filename",name+".tex"
+-    print "Prefix is",basename
++    print("Filename",name+".tex")
++    print("Prefix is",basename)
+     # Find last archived version
+     mtime=stat(name+".tex").st_mtime
+     old_mtime=0
+@@ -57,7 +57,7 @@ if name:
+ 
+     # Archived version found?
+     if old_mtime>0:
+-        print "Comparing with",oldname
++        print("Comparing with",oldname)
+         system ("/bin/cp "+name+".aux "+name+".changes.aux")
+         system ("/bin/cp "+name+".bbl "+name+".changes.bbl")
+         system ("latexdiff "+oldname+" "+name+".tex > "+name+".changes.tex")

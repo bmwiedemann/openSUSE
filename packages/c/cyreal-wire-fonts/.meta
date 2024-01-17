@@ -1,0 +1,15 @@
+<package name="cyreal-wire-fonts" project="openSUSE:Factory">
+  <title>Wire Font</title>
+  <description>Wire is a condensed monoline sans. Its modular-based characters are
+flavored with a sense of art nouveau. Nearly hairline thickness suggests
+usage for body text above 12px. While at display sizes it reveals its
+tiny dot terminals to create a sharp mood in headlines.
+
+For web typesetting it is recommended to adjust letter-spacing for sizes
+below 30px to 0.033em and up. For 12 px we recommend the value of
+0.085em.
+
+</description>
+  <devel project="M17N:fonts" package="cyreal-wire-fonts"/>
+  <url>http://cyreal.org/archives/826</url>
+</package>

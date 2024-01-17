@@ -1,0 +1,7 @@
+<package name="simutrans" project="openSUSE:Factory">
+  <title>Transport and Economic Simulation Game</title>
+  <description>Simutrans is a transport and economic simulation with some ecological aspects. The goal of the game is to build an infrastructure which allows you to transport goods between the various industries and towns, and to support the towns with water and energy. A second goal is to become as rich as possible, but you will have to reinvest a good part of your earned money to expand your infrastructure network. Your competitors will not sleep!
+</description>
+  <devel project="games" package="simutrans"/>
+  <url>http://www.simutrans.com/en/</url>
+</package>

@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>076ce4fd9871c0e99a62d518888c88ad</srcmd5>
+    <version>2.3.0</version>
+    <time>1528111317</time>
+    <user>dimstar_suse</user>
+    <comment>Convenient utilities not included with the standard Python install</comment>
+    <requestid>613465</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>69e7a7762c555d8d1f48a3ef3e18ac77</srcmd5>
+    <version>2.3.0</version>
+    <time>1533045641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626372</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>98f99393beb14f9b2821bd92b5504148</srcmd5>
+    <version>2.3.0</version>
+    <time>1545648163</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659618</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b6befc6d4317fde49c22fdc7a882a5bc</srcmd5>
+    <version>2.4.0</version>
+    <time>1584745159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786827</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f7ba59062343d45ca3ecd071070f596</srcmd5>
+    <version>2.5.6</version>
+    <time>1639075530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937343</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>35cd919c519a6da475dc257f0fe19466</srcmd5>
+    <version>3.4.5</version>
+    <time>1670954131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042597</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e06cd3a92c7489b9c14c0ddcf1871900</srcmd5>
+    <version>3.8.1</version>
+    <time>1704919916</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.8.1:
+  * fixed silly typo
+- update to 3.8.0:
+  * Added slicabledeque
+- update to 3.7.0:
+  * Fixed several typing issues and added more thorough tests
+- update to 3.6.1:
+  * Increased `typing-extensions` version requirement to fix #38
+- update to 3.6.0:
+  * Added extra containers such as UniqueList and SlicableDeque.
+    Added full pyright strict and mypy type checks
+- update to 3.5.2:
+  * Added import shortcuts for container classes
+- update to 3.5.1:
+  * Improved type hinting thanks to @jorenham
+- update to 3.5.0:
+  * Added unique list container
+
+  https://github.com/wolph/python-utils/commits/develop
+  * added map/remap/scale/rescale function</comment>
+    <requestid>1137812</requestid>
+  </revision>
+</revisionlist>

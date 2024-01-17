@@ -1,0 +1,13 @@
+--- radvd-2.19/configure.ac.orig	2021-01-29 17:35:44.957137874 +0800
++++ radvd-2.19/configure.ac	2021-01-29 17:40:10.884531444 +0800
+@@ -47,7 +47,9 @@
+ esac
+ 
+ dnl Determine CC and preset CFLAGS
+-AC_PROG_CC_C99
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AC_PROG_RANLIB
+ 
+ AC_ARG_WITH([stack-protector], AS_HELP_STRING([--without-stack-protector], [Build without -fstack-protector]),[],[with_stack_protector=yes])

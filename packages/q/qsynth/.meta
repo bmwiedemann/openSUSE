@@ -1,0 +1,7 @@
+<package name="qsynth" project="openSUSE:Factory">
+  <title>Graphical User Interface for fluidsynth</title>
+  <description>Qsynth is a fluidsynth GUI front-end application written in C++ around the Qt5
+toolkit using Qt Designer.</description>
+  <devel project="multimedia:apps" package="qsynth"/>
+  <url>https://qsynth.sourceforge.io/qsynth-index.html</url>
+</package>

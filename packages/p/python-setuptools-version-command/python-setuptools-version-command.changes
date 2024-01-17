@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Oct  7 15:29:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 99.9 
+  * Add deprecation warning to code
+  * Add deprecation notice to README
+  * Final bump of version
+
+-------------------------------------------------------------------
+Sun Oct 11 06:38:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+
+-------------------------------------------------------------------
+Tue Jan  7 10:49:46 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.2

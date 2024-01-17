@@ -1,0 +1,17 @@
+---
+ src/modules/sound/lullaby/ModPlugDecoder.cpp |    2 --
+ 1 file changed, 2 deletions(-)
+
+Index: love-HEAD/src/modules/sound/lullaby/ModPlugDecoder.cpp
+===================================================================
+--- love-HEAD.orig/src/modules/sound/lullaby/ModPlugDecoder.cpp
++++ love-HEAD/src/modules/sound/lullaby/ModPlugDecoder.cpp
+@@ -42,8 +42,6 @@ namespace lullaby
+ 		// fill with modplug defaults (modplug _memsets_, so we could get
+ 		// garbage settings when the struct is only partially initialized)
+ 		// This does not exist yet on Windows.
+-		settings.mStereoSeparation = 128;
+-		settings.mMaxMixChannels = 32;
+ 		settings.mReverbDepth = 0;
+ 		settings.mReverbDelay = 0;
+ 		settings.mBassAmount = 0;

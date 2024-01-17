@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4656441db8127655dc8ec05d663eb41</srcmd5>
+    <version>0.5.6</version>
+    <time>1505334582</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-jellyfish</comment>
+    <requestid>522103</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84ed7aac041364ade75932b018d863fd</srcmd5>
+    <version>0.6.1</version>
+    <time>1533292663</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 0.6.1:
+  * Various unicode fixes</comment>
+    <requestid>627023</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>08cde6090678b7f2dd4186e9da7aaf72</srcmd5>
+    <version>0.7.1</version>
+    <time>1554372467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  * drop Python 2 compatibility &amp; legacy code
+  * add bugfix for NYSIIS for words starting with PF
+  * restrict install to Python &gt;= 3.4</comment>
+    <requestid>691021</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c027f7a61f8afb8582adda5361556894</srcmd5>
+    <version>0.7.2</version>
+    <time>1568379576</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 0.7.2:
+  * fix CJellyfish damerau_levenshtein w/ unicode, thanks to immerrr
+  * fix final H in NYSIIS
+  * fix issue w/ trailing W in metaphone</comment>
+    <requestid>730189</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4850f27c9e3a382db2d640e2296e32ea</srcmd5>
+    <version>0.8.2</version>
+    <time>1592398476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.2:
+  * fix jaro_winkler/jaro_winkler_similarity mix-up
+  * deprecate jaro_distance in favor of jaro_similarity
+    backwards compatible shim left in place, will be removed in 1.0
+  * rename jaro_winkler to jaro_winkler_similarity to match other functions
+    backwards compatible shim added, but will be removed in 1.0
+  * fix soundex bug with W/H cases, #83
+  * fix metaphone bug with WH prefix, #108
+  * fix C match rating codex bug with duplicate letters, #121
+  * fix metaphone bug with leading vowels and 'kn' pair, #123
+  * fix Python jaro_winkler bug #124
+  * fix Python 3.9 deprecation warning
+  * add manylinux wheels</comment>
+    <requestid>815338</requestid>
+  </revision>
+</revisionlist>

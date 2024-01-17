@@ -1,0 +1,100 @@
+---
+ lib/activate/devmapper.c |   80 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 80 insertions(+)
+
+--- 1.0.0.rc16.orig/lib/activate/devmapper.c
++++ 1.0.0.rc16/lib/activate/devmapper.c
+@@ -207,6 +207,82 @@ run_task(struct lib_context *lc, struct 
+ 	return ret;
+ }
+ 
++int get_edd_value(unsigned long *value, const char *path)
++{
++	FILE *file;
++	unsigned long v;
++
++	file = fopen(path, "r");
++	if (file == NULL)
++		return 0;
++
++	if (fscanf(file, "%lu", &v) == 0) {
++		fclose(file);
++		return 0;
++	}
++	fclose(file);
++
++	*value = v;
++	return 1;
++}
++
++#define EDD_PREFIX "/sys/firmware/edd/int13_dev80/"
++
++int getgeo_edd(unsigned long *cylinders,
++	       unsigned long *heads,
++	       unsigned long *sectors)
++{
++	int res;
++	unsigned long c, h, s;
++
++	res = get_edd_value(&c, EDD_PREFIX "legacy_max_cylinder") &&
++		get_edd_value(&h, EDD_PREFIX "legacy_max_head") &&
++		get_edd_value(&s, EDD_PREFIX "legacy_sectors_per_track");
++
++	if (!res)
++		return 0;
++
++	*cylinders = c;
++	*heads = h;
++	*sectors = s;
++
++	return 1;
++}
++
++/* Set the geometry of the device */
++int set_geometry(struct lib_context *lc, struct raid_set *rs)
++{
++	int ret;
++	struct dm_task *dmt;
++	unsigned long c, h, sec, st;
++	char cyl[10], heads[10], sectors[10], start[10];
++
++	st = 0;
++	if (!getgeo_edd(&c, &h, &sec)) {
++		/* default */
++		c = 16383;
++		h = 16;
++		sec = 63;
++	}
++
++	snprintf(cyl, 10, "%lu", c);
++	snprintf(heads, 10, "%lu", h);
++	snprintf(sectors, 10, "%lu", sec);
++	snprintf(start, 10, "%lu", st);
++
++	_init_dm();
++	ret = (dmt = dm_task_create(DM_DEVICE_SET_GEOMETRY)) &&
++		dm_task_set_name(dmt, rs->name) &&
++		dm_task_set_geometry(dmt, cyl, heads, sectors, start);
++
++	if (ret)
++		ret = dm_task_run(dmt);
++
++	_exit_dm(dmt);
++
++	return ret;
++}
++
+ /* Create a mapped device. */
+ int
+ dm_create(struct lib_context *lc, struct raid_set *rs, char *table, char *name)
+@@ -216,6 +292,10 @@ dm_create(struct lib_context *lc, struct
+ 	/* Create <dev_name> */
+ 	ret = run_task(lc, rs, table, DM_DEVICE_CREATE, name);
+ 
++	/* Set geometry */
++	if (ret)
++		set_geometry(lc, rs);
++
+ 	/*
+ 	 * In case device creation failed, check if target
+ 	 * isn't registered with the device-mapper core

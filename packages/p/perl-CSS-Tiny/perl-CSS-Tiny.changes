@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri Mar 11 09:50:13 UTC 2016 - coolo@suse.com
+
+- updated to 1.20
+   see /usr/share/doc/packages/perl-CSS-Tiny/Changes
+
+  1.20  2016-03-10 by Alexandr Ciornii
+  	- Require newer perl
+  	- RT#87261: Support properties that start with asterisk (MADDAVE)
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:08 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:03 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Nov 12 23:28:06 UTC 2010 - jw@novell.com
+
+- needed by PPI::HTML, publican
+- initial package 1.19
+  * created by cpanspec 1.78.02
+

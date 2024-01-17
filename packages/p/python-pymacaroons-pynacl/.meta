@@ -1,0 +1,6 @@
+<package name="python-pymacaroons-pynacl" project="openSUSE:Factory">
+  <title>python-pymacaroons-pynacl</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-pymacaroons-pynacl"/>
+  <url>https://github.com/matrix-org/pymacaroons</url>
+</package>

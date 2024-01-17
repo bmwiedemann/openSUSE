@@ -1,0 +1,5 @@
+<package name="callaudiod" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="callaudiod"/>
+</package>

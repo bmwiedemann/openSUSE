@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sun Nov 14 03:05:59 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-Archive-Peek/CHANGES
+
+  0.37 Fri Nov 12 22:23:12 EST 2021
+       - update repository metadata (Zakariyya Mughal)
+
+  0.36 Fri Nov 12 21:40:27 EST 2021
+       - add repository metadata (thanks David Steinbrunner)
+       - port from Moose to Moo and Type::Tiny (Zakariyya Mughal)
+       - make prereqs more specific with respect to phase (Zakariyya Mughal)
+       - add negative test (Zakariyya Mughal)
+
+-------------------------------------------------------------------
+Tue Dec 20 19:14:38 UTC 2011 - coolo@suse.com
+
+- initial package 0.35
+    * created by cpanspec 1.78.06
+

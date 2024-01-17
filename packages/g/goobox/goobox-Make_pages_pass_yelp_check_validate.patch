@@ -1,0 +1,47 @@
+From d71820aa5d746c3da1ced1cf6e288b1c67b1822c Mon Sep 17 00:00:00 2001
+From: Andre Klapper <a9016009@gmx.de>
+Date: Sun, 6 Dec 2020 15:07:07 +0100
+Subject: [PATCH] help: Make pages pass yelp-check validate
+
+---
+ help/C/preferences.page | 4 ++--
+ help/C/shortcuts.page   | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/help/C/preferences.page b/help/C/preferences.page
+index 5eb70ef..c405867 100644
+--- a/help/C/preferences.page
++++ b/help/C/preferences.page
+@@ -30,7 +30,7 @@
+     <gui style="button">Apply</gui> button.
+   </p>
+ 
+-  <section>
++  <section id="general">
+     <title>General Tab</title>
+     <p>This tab allows you to set the following options:</p>
+     <list>
+@@ -42,7 +42,7 @@
+   </section>
+ 
+ 
+-  <section>
++  <section id="extraction">
+     <title>Extraction Tab</title>
+     <p>This tab allows you to set the extraction options:</p>
+     <list>
+diff --git a/help/C/shortcuts.page b/help/C/shortcuts.page
+index 18963d2..3393966 100644
+--- a/help/C/shortcuts.page
++++ b/help/C/shortcuts.page
+@@ -1,6 +1,6 @@
+ <page xmlns="http://projectmallard.org/1.0/"
+       type="topic"
+-      id="goobox-keyboard-shortcuts">
++      id="shortcuts">
+   <info>
+     <link type="guide" xref="index" />
+     <title type="sort">1</title>
+-- 
+GitLab
+

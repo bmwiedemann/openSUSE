@@ -1,0 +1,508 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>59e51b4e2a50d720c2f3c80f63e20657</srcmd5>
+    <version>0.1.0</version>
+    <time>1236555079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>59e51b4e2a50d720c2f3c80f63e20657</srcmd5>
+    <version>0.1.0</version>
+    <time>1236555079</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>857e586b8a66b420f1f7ecca802a5081</srcmd5>
+    <version>0.1.0</version>
+    <time>1265280645</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/xfce4-notifyd based on submit request 31400 from user prusnak
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>30f8d98c82f15015525c9cf07c2f485c</srcmd5>
+    <version>0.1.0</version>
+    <time>1268926580</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>30f8d98c82f15015525c9cf07c2f485c</srcmd5>
+    <version>0.1.0</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>30f8d98c82f15015525c9cf07c2f485c</srcmd5>
+    <version>0.1.0</version>
+    <time>1278678626</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b522a9f5f8130c8cee55b0f6e1119a3b</srcmd5>
+    <version>0.2.0</version>
+    <time>1291585288</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54788 from user anubisg1
+</comment>
+    <requestid>54788</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>604ddf1ad6459ae762face070fa82678</srcmd5>
+    <version>0.2.0</version>
+    <time>1291585294</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54788
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>4c132f7942ac8813e5a06684f41a7942</srcmd5>
+    <version>0.2.0</version>
+    <time>1292856294</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56162 from user prusnak
+</comment>
+    <requestid>56162</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>0c964e303487b237a7281b4535fceaa2</srcmd5>
+    <version>0.2.0</version>
+    <time>1292856305</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56162
+</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>27d8ce8c2017c4b146e035cf55e33c8f</srcmd5>
+    <version>0.2.0</version>
+    <time>1295023317</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57400 from user gberh
+</comment>
+    <requestid>57400</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>94688bd1e18417777778bebcef685f8c</srcmd5>
+    <version>0.2.0</version>
+    <time>1295023327</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57400
+</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>205584d0038b00bf408377e52ca47ece</srcmd5>
+    <version>0.2.1</version>
+    <time>1296842896</time>
+    <user>darix</user>
+    <comment>Accepted submit request 60002 from user gberh
+</comment>
+    <requestid>60002</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a53747bb6b81a34ced2ee543fda9c5f1</srcmd5>
+    <version>0.2.1</version>
+    <time>1296842902</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 60002
+</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>a53747bb6b81a34ced2ee543fda9c5f1</srcmd5>
+    <version>0.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>c94c6aecbc4bf60625eefe968e6d4579</srcmd5>
+    <version>0.2.1</version>
+    <time>1298030647</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61711 from user gberh
+</comment>
+    <requestid>61711</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>5330301028f9ff954160a38a5e80a9a6</srcmd5>
+    <version>0.2.1</version>
+    <time>1298030653</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61711
+</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>68870aa81fa7c14be4e352c200cb94bb</srcmd5>
+    <version>0.2.1</version>
+    <time>1306846020</time>
+    <user>saschpe</user>
+    <comment>- added xfce4-notifyd-fix-dbus-service-filename.patch in order to
+  make the filename of the DBus service file unique and prevent a
+  conflict with notification-daemon</comment>
+    <requestid>71892</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>4ad03faedc0fb2a8a499b4cb3b013700</srcmd5>
+    <version>0.2.1</version>
+    <time>1306846029</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71892
+</comment>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>c3175d57c7a2cb20f05aa27659fdcd64</srcmd5>
+    <version>0.2.2</version>
+    <time>1312736504</time>
+    <user>saschpe</user>
+    <comment>- update to version 0.2.2
+  - new cleaner settings dialog with preview on theme change
+  - only initialize the close timeout when all notifications are
+    closed
+  - allow installation of the helpers in a custom location
+  - bugfixes
+  - translation updates
+- dropped obsolete xfce4-notifyd-fix-dbus-service-filename.patch</comment>
+    <requestid>78178</requestid>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>39abd9ca8826d8316adf91e656055180</srcmd5>
+    <version>0.2.2</version>
+    <time>1312736513</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78178
+</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>39abd9ca8826d8316adf91e656055180</srcmd5>
+    <version>0.2.2</version>
+    <time>1319182587</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>09ffc52bf57f7b9254eddcae097aa276</srcmd5>
+    <version>0.2.2</version>
+    <time>1323195276</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>06ab0093260184dd533110309f73c0b4</srcmd5>
+    <version>0.2.2</version>
+    <time>1334824879</time>
+    <user>coolo</user>
+    <comment>- split off -lang subpackage
+- specfile cleanup</comment>
+    <requestid>112523</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c63681eb8069b1ac65cbe7586cdea13b</srcmd5>
+    <version>0.2.2+git20120516</version>
+    <time>1337195475</time>
+    <user>coolo</user>
+    <comment>- update to current git snapshot
+  - show dialog in settings category
+  - emit closed signal on correct object
+  - avoid flickering of the window
+  - fixup type setting
+  - accept uri-image locations</comment>
+    <requestid>121203</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>c63681eb8069b1ac65cbe7586cdea13b</srcmd5>
+    <version>0.2.2+git20120516</version>
+    <time>1340184353</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>c63681eb8069b1ac65cbe7586cdea13b</srcmd5>
+    <version>0.2.2+git20120516</version>
+    <time>1359110622</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d2b9e90ebfe838e338b2d0eec647b83a</srcmd5>
+    <version>0.2.3</version>
+    <time>1366633479</time>
+    <user>coolo</user>
+    <comment>- update to version 0.2.3
+  - add widget names to summary (&quot;summary&quot;) and body (&quot;body&quot;)
+    widgets to allow easier theming; remove the redundant/buggy
+    summary-bold style property
+  - handle timeout correctly when smaller than fading time
+  - parse body with g_markup_escape_text which allows us to handle
+    span attributes misused by some clients and to parse strings
+    with &quot;unusual&quot; characters such as &amp;
+  - respect border-width when drawing the notification
+  - do not kill notification daemon to apply new theme, instead,
+    handle style updates of existing notifications
+  - show a button in the notification preview
+  - add an icon to the notification preview</comment>
+    <requestid>172676</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>31d1a5749c3951c4571190b1655ae6e4</srcmd5>
+    <version>0.2.4</version>
+    <time>1368454020</time>
+    <user>coolo</user>
+    <comment>- update to version 0.2.4
+  - fix border drawing when compositing is disabled
+  - translation updates</comment>
+    <requestid>174861</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>31d1a5749c3951c4571190b1655ae6e4</srcmd5>
+    <version>0.2.4</version>
+    <time>1379665040</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>31d1a5749c3951c4571190b1655ae6e4</srcmd5>
+    <version>0.2.4</version>
+    <time>1409303725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1626557ecce59f4bc844a7d883048e9d</srcmd5>
+    <version>0.3.6</version>
+    <time>1493456014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491786</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>271ffd685c7b0864a2d2dd71d483cb2d</srcmd5>
+    <version>0.4.0</version>
+    <time>1510837279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540724</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>24796fa13e43c5aecc6daf1a906251bb</srcmd5>
+    <version>0.4.1</version>
+    <time>1514569981</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.4.1 (09 December 2017): (forwarded request 560532 from seife)</comment>
+    <requestid>560533</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4969287d55c751345deb17090c8bfe43</srcmd5>
+    <version>0.4.2</version>
+    <time>1520415229</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.4.2 (forwarded request 582179 from seife)</comment>
+    <requestid>582272</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2542c30faa31de3b212a738374988468</srcmd5>
+    <version>0.4.3</version>
+    <time>1544441418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656748</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>203abbbb3108b2406e80cf5345fcae1e</srcmd5>
+    <version>0.4.4</version>
+    <time>1556107038</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697201</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>51fca844b6aa74b89d74c3cd72b4ad53</srcmd5>
+    <version>0.6.0</version>
+    <time>1586555646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792957</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e5de6550b44fe82e929fab528e056c48</srcmd5>
+    <version>0.6.1</version>
+    <time>1588755827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800443</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>620f2e4bf500915a4ec81b722977b7e2</srcmd5>
+    <version>0.6.2</version>
+    <time>1599088563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831279</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>92bf57e364406f86c2127a175bc4d743</srcmd5>
+    <version>0.6.3</version>
+    <time>1645629966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956914</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f8027adb825f8f74144dc1058816c237</srcmd5>
+    <version>0.6.4</version>
+    <time>1662239951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001023</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ddea9f8ac3ca5a42d82084dedab45e3d</srcmd5>
+    <version>0.6.5</version>
+    <time>1671564013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043754</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5475dbe4d72c21fab51e7b7bd02b359e</srcmd5>
+    <version>0.7.1</version>
+    <time>1674324761</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1060153 from tux93)</comment>
+    <requestid>1060156</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e038e711bddc08fd37d576106d4a9894</srcmd5>
+    <version>0.7.2</version>
+    <time>1674495088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * Fix sound proplist memleak when notification isn't shown
+  * Improve sorting in known apps list of settings
+  * Add extra margin in the known app settings
+  * Fix word casing in known app settings
+  * Add ability to exclude specific applications from log
+  * Better, non-quadratic algo for xfce_notify_count_apps_in_log()
+  * Plug memleak in notify_get_from_desktop_file()
+  * Redesign the known apps panel a bit
+  * Remove a few more GTK_CHECK_VERSION call sites
+  * Avoid use-after-free when deleting known app
+  * Improve algo for finding desktop file for known app name
+  * Improve icon loading for known apps list
+  * Don't set invalid icon name in known apps list
+  * Translation Updates (forwarded request 1060249 from manfred-h)</comment>
+    <requestid>1060259</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ffef58d6d502aa6faac9c1ed3b37758d</srcmd5>
+    <version>0.7.3</version>
+    <time>1675458345</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.3:
+  * Add timestamp to log entries in settings and plugin menu
+  * Update description text of apps panel in settings
+  * Change text of option to &quot;Allow urgent notifications&quot;
+  * Add panel plugin setting for log icon size in menu
+  * Make it easier to add things to the panel plugin settings
+  * Fix possible segfault when counting apps frequency in log
+  * Clean and DRY up the log population code
+  * Fix panel plugin menu icon blurriness when UI scale &gt; 1
+  * Update XfceNotifyDaemon header comment
+  * Translation Updates (forwarded request 1062605 from manfred-h)</comment>
+    <requestid>1062958</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c71d8fdf8d4db8087970f1af4b1477b8</srcmd5>
+    <version>0.8.0</version>
+    <time>1676225661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064406</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>44d13cb67437ba0f6774a5d3fc9b2bc7</srcmd5>
+    <version>0.8.1</version>
+    <time>1676911620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Set 1.5s timeouts for the log dbus proxy
+  * Move log dbus server to its own object/file
+  * Wrap queue item struct creation with a function
+  * Improve old log migration error reporting
+  * Delete old log file if it was empty
+  * Clean up old log action parsing loop
+  * Print a message if log db is busy or locked
+  * Plug memleak when not sending log changed signal
+  * Use GStrvBuilder instead of constructing one manually
+  * Handle empty strings from DBus
+  * Limit notification body to 2 lines in plugin menu
+  * Remove old legacy support options from configure
+  * Ensure gdbus-codegen doesn't generate too-new code
+  * Clean up generate code and deprecate Quit method
+  * Make all notification log access go through dbus
+  * Drop old gtk 3.0 themes (3.20 themes are always used)
+  * Clean up build system
+  * Add hidden setting to restore override-redirect behavior
+  * Remove ChangeLog make target
+  * Markdownify and update the readme
+  * Disconnect from GtkIconTheme::changed when plugin destroyed
+  * Load main panel icon with _load_symbolic() variant
+  * Restore log viewer's scrolled window shadow-type
+  * Update icon when icon-theme changes
+  * Fix incorrect signal handler connections in settings dialog
+  * Translation Updates (forwarded request 1066326 from manfred-h)</comment>
+    <requestid>1066848</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>353262477265744a48f7e9c1d5d2f14f</srcmd5>
+    <version>0.8.2</version>
+    <time>1677966224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069391</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a69455e0583c48f4e24aea1bfde9d96e</srcmd5>
+    <version>0.9.2</version>
+    <time>1696451495</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114995</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>f1c0fb5336bddc9c85789db91b9c4411</srcmd5>
+    <version>0.9.2</version>
+    <time>1698249903</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120282</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>543d3ce72054a518166ce3b6da175134</srcmd5>
+    <version>0.9.3</version>
+    <time>1699910467</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.3:
+  * Make the DELETE with LIMIT/OFFSET query work
+  * Make the text in the 'Clear log' dialog less crowded
+  * Set a transient parent on the 'Clear log' dialog if possible
+  * 'Clear log' dialog's initial focus should be on the 'Cancel'
+    button
+  * Drop required xdt-autogen version to 4.18.1
+  * Simplify markup sanitizing code a little
+  * Re-escape text in GMarkupParser text handler
+  * Sanitize instead of validating body text markup
+  * Translation Updates</comment>
+    <requestid>1125234</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>0240c6f59beab4d747c59a6132cdfd20</srcmd5>
+    <version>0.9.3</version>
+    <time>1700162937</time>
+    <user>anag+factory</user>
+    <comment>- relax branding requires (remove -version-release), so we can use 
+  xfce4-branding-openSUSE based branding. (bsc#1217193 bsc#1216470)
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut over systemd-mini.
+</comment>
+    <requestid>1126796</requestid>
+  </revision>
+</revisionlist>

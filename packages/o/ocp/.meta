@@ -1,0 +1,6 @@
+<package name="ocp" project="openSUSE:Factory">
+  <title>Open Cubic Player</title>
+  <description>Linux-port of the popular DOS mod player Cubic Player
+</description>
+  <devel project="multimedia:apps" package="ocp"/>
+</package>

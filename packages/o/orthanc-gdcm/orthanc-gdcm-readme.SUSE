@@ -1,0 +1,14 @@
+README: Orthanc for openSUSE
+============================
+
+Orthanc is a RESTful DICOM server for healthcare and medical research.
+
+This package provides the GDCM plugin for Orthanc.
+
+Once Orthanc is installed, you must add a section in the Orthanc configuration file that specifies the details of the GDCM plugin. 
+You need to restart the Orthanc-Server to enable the configuration.
+
+Check out http://book.orthanc-server.com/plugins/gdcm.html for additional information!
+
+Have fun
+Axel Braun <DocB@openSUSE.org> Tue May 26 16:48:34 UTC 2020

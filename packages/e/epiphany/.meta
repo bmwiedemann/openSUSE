@@ -1,0 +1,6 @@
+<package name="epiphany" project="openSUSE:Factory">
+  <title>GNOME Web Browser</title>
+  <description>Epiphany is a Web browser for the GNOME Desktop. Its principles are
+simplicity and standards compliance.</description>
+  <devel project="GNOME:Factory" package="epiphany"/>
+</package>

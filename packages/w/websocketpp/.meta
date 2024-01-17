@@ -1,0 +1,9 @@
+<package name="websocketpp" project="openSUSE:Factory">
+  <title></title>
+  <description>WebSocket++ is an open source (BSD license) header only C++ library
+that impliments RFC6455 The WebSocket Protocol. It allows integrating
+WebSocket client and server functionality into C++ programs. It uses
+interchangeable network transport modules including one based on C++
+iostreams and one based on Boost Asio.</description>
+  <devel project="devel:libraries:c_c++" package="websocketpp"/>
+</package>

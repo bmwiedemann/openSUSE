@@ -1,0 +1,11 @@
+<package name="xsd" project="openSUSE:Factory">
+  <title>W3C XML schema to C++ data binding compiler</title>
+  <description>CodeSynthesis XSD is an open-source, cross-platform W3C XML Schema to
+C++ data binding compiler. Provided with an XML instance specification
+(XML Schema), it generates C++ classes that represent the given
+vocabulary as well as parsing and serialization code.
+You can then access the data stored in XML using types and functions
+that semantically correspond to your application domain rather than
+dealing with intricacies of reading and writing XML.</description>
+  <devel project="devel:libraries:c_c++" package="xsd"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="speedcrunch" project="openSUSE:Factory">
+  <title>A calculator with history display</title>
+  <description>A calculator which shows results in a scrollable display</description>
+  <devel project="KDE:Extra" package="speedcrunch"/>
+</package>

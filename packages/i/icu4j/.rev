@@ -1,0 +1,198 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7f845a65c625fc7164ec3dcce6f5ff04</srcmd5>
+    <version>52.1</version>
+    <time>1405971586</time>
+    <user>coolo</user>
+    <comment>Another never submitted java pkg</comment>
+    <requestid>241424</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7f845a65c625fc7164ec3dcce6f5ff04</srcmd5>
+    <version>52.1</version>
+    <time>1409301213</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>650071d1096f2c78b83b4500bc2f7cd5</srcmd5>
+    <version>54.1.1</version>
+    <time>1422134442</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282582</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2f4a72efdc16ef4cc8fa0f8c9b1b6fa2</srcmd5>
+    <version>54.1.1</version>
+    <time>1427982970</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292616</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>caa5e954709632e33fc34572290dd988</srcmd5>
+    <version>55.1</version>
+    <time>1438421854</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 55.1:
+  * various bugfixes to match up regular icu-c
+- Add patch to build with jdk8:
+  * java8-compatibility.patch</comment>
+    <requestid>319098</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>be6bbacc81e7922ab63881cf37176d9c</srcmd5>
+    <version>55.1</version>
+    <time>1489345308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477246</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fc5fe942d53fc9acc875132a964e2739</srcmd5>
+    <version>55.1</version>
+    <time>1490133065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481383</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a03228ef4887ac676aba6ac675890253</srcmd5>
+    <version>58.1</version>
+    <time>1495442854</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 58.1:
+  * Changes to keep in line with regular icu release
+- Obsoleted patch:
+  * java8-compatibility.patch
+- Needed as a dependency for FOP 2.1 (fate#322405)
+  for SLE/openSUSE (fate#322405)</comment>
+    <requestid>496757</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e6b2ca963ad1f7bca1479bbae472d529</srcmd5>
+    <version>58.1</version>
+    <time>1505920125</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526989</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>62897cfa7ba09983f7b94d647ef17815</srcmd5>
+    <version>58.1</version>
+    <time>1506679060</time>
+    <user>dimstar_suse</user>
+    <comment>Solve the _mavendepmapfragdir the proper way</comment>
+    <requestid>529854</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>af79ded9eea63a870f35f418168fc00d</srcmd5>
+    <version>60.2</version>
+    <time>1515876019</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade + fix build with jdk10</comment>
+    <requestid>559365</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>989fdba06aea00bda55f54b169bde569</srcmd5>
+    <version>63.1</version>
+    <time>1544189549</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653883</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d398b7554a22089300786a2fc474ea21</srcmd5>
+    <version>63.1</version>
+    <time>1551276241</time>
+    <user>dimstar_suse</user>
+    <comment>Restore java 8 compatibility</comment>
+    <requestid>678583</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>c56516f12640693e944caaeb75d12e92</srcmd5>
+    <version>63.1</version>
+    <time>1580373070</time>
+    <user>dimstar_suse</user>
+    <comment>don't build-depend on java-javadoc</comment>
+    <requestid>766808</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c97669428a9db56cbce69437242481d0</srcmd5>
+    <version>66.1</version>
+    <time>1586112772</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 66.1
+- Changed patches:
+  * icu4j-jdk10plus.patch
+  * improve-osgi-manifest.patch
+  * icu4j-63.1-java8compat.patch -&gt; icu4j-66.1-java8compat.patch
+    + rediff to changed context
+</comment>
+    <requestid>791183</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ccb926e2de225b91640959e90af4ec8f</srcmd5>
+    <version>67.1</version>
+    <time>1588022991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 67.1
+  * Unicode 13 (ICU-20893, same as in ICU 66)
+    + Total of 5930 new characters
+    + 4 new scripts
+    + 55 new emoji characters, plus additional new sequences
+    + New CJK extension, first characters in plane 3: U+30000..U+3134A
+  * CLDR 37
+    + New language at Modern coverage: Nigerian Pidgin
+    + New languages at Basic coverage: Fulah (Adlam), Maithili,
+      Manipuri, Santali, Sindhi (Devanagari), Sundanese
+    + Region containment: EU no longer includes GB
+    + Unicode 13 root collation data and Chinese data for collation and transliteration
+  * DateTimePatternGenerator now obeys the &quot;hc&quot; preference in the locale identifier (ICU-20442)
+  * Various other improvements for ECMA-402 conformance
+  * Number skeletons have a new &quot;concise&quot; form that can be used in MessageFormat strings (ICU-20418)
+  * Currency formatting options for formal and other currency display name variants (ICU-20854)
+  * ListFormatter: new public API to select the style &amp; type (ICU-12863)
+  * ListFormatter now selects the proper “and”/“or” form for Spanish &amp; Hebrew (ICU-21016)
+  * Locale ID canonicalization upgraded to implement the complete CLDR spec (ICU-20834, ICU-20272)
+  * LocaleMatcher: New option to ignore one-way matches (ICU-20936),
+    and other tweaks to the code (ICU-20916, ICU-20917) and data (from CLDR)
+  * acceptLanguage() reimplemented via LocaleMatcher (ICU-20700)
+  * Data build tool: tzdbNames.res moved from the &quot;zone_tree&quot; category to the &quot;zone_supplemental&quot; category (ICU-21073)
+</comment>
+    <requestid>796522</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>398ecf6670185eea054960314c476dc7</srcmd5>
+    <version>70.1</version>
+    <time>1648159118</time>
+    <user>dimstar_suse</user>
+    <comment>70.1</comment>
+    <requestid>964691</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>51cab416f55e505dbba52ab9d5f289d4</srcmd5>
+    <version>71.1</version>
+    <time>1651351928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974086</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7dd2c78a73ffe711129b57f7ac3f06c5</srcmd5>
+    <version>73.1</version>
+    <time>1682618474</time>
+    <user>dimstar_suse</user>
+    <comment>73.1</comment>
+    <requestid>1083171</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dcf2b9116e1b2c9e71b8edc62ab5777f</srcmd5>
+    <version>73.1</version>
+    <time>1695412040</time>
+    <user>anag+factory</user>
+    <comment>fix build with java &gt;= 20</comment>
+    <requestid>1112745</requestid>
+  </revision>
+</revisionlist>

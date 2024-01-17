@@ -1,0 +1,15 @@
+<package name="netdiscover" project="openSUSE:Factory">
+  <title>A network address discovering/monitoring tool</title>
+  <description>Netdiscover is an active/passive address reconnaissance tool, mainly developed
+for those wireless networks without dhcp server, when you are wardriving. It
+can be also used on hub/switched networks.
+
+Built on top of libnet and libpcap, it can passively detect online hosts, or
+search for them, by actively sending arp requests, it can also be used to
+inspect your network arp traffic, and find network addresses using auto scan
+mode, which will scan for common local networks.
+
+</description>
+  <devel project="network:utilities" package="netdiscover"/>
+  <url>https://sourceforge.net/projects/netdiscover/?source=directory</url>
+</package>

@@ -1,0 +1,402 @@
+-------------------------------------------------------------------
+Tue Jan 16 11:01:20 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.12.14.0:
+  - Correctly document that our Cuda minimum is 9.0. #1737
+  - Fixes to build and test against OpenImageIO 2.5 #1742
+  - Fix default fmt logic changing in latest openimageio release
+    #1725
+
+-------------------------------------------------------------------
+Mon Sep  4 08:11:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.13.0:
+  * Fix constant float values being converted to ints
+  * Changes to support fmt 10.0
+  * Switch deprecated oiio simd names to modern
+  * Improve documentation of `trace` function
+  * README.md: added filmography and Siggraph OSL course
+    info.
+  * *docs* Amend the filmography
+  * *docs* Fix incorrect links in CONTRIBUTING
+- update to 1.12.12.0:
+  * New ShadingSystem getattribute query for shader groups:
+    "attribute_types" retrieves a pointer to the array of
+    TypeDesc values describing the * attributes retrieved by
+    existing "attributes_needed" and
+    "attribute_scopes".
+  * Fix a bug with binding userdata when it's used by more than
+    one shader within the group and they disagree about whether
+    derivatives are needed when retrieving the attribute.
+
+-------------------------------------------------------------------
+Wed May 31 08:33:44 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- plugin-osl search path is in %{_libdir} now
+
+-------------------------------------------------------------------
+Sat Apr  1 09:50:52 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to 1.12.10.0:
+  + feat(testrender): Modify testrender so that it correctly sets
+    raytype to "camera" for camera rays, "shadow" for shadow rays,
+    and "diffuse" for all secondary rays. Also rerun the shades for
+    background shader group on the camera rays rather than use the
+    cached map. This helps the MaterialX project use testrender for
+    certain unit tests and verification. #1648 #1649
+  + feat: Expose llvm groupdata size as a shadergroup attribute
+    "llvm_groupdata_size". #1642
+  + fix: Crash could result from uncaught exception in OpenColorIO
+    when calling transformc with derivatives for color spaces that
+    require OCIO.  #1646
+  + fix: certain uses of fmod() in shaders could fail to generate
+    LLVM code correctly, due to a missing implementation for the
+    fmod(triple,float) varieties. #1643
+  + build: Change snprintf formatting to satisfy some compilers.
+    #1640
+  + CI: Fix broken Mac ci. #1647
+- Force build with LLVM 15 on TW
+- Add a BuildIgnore for clang-tools, that would render the llvm15
+  containment ineffective otherwise (by depending on clang16).
+
+-------------------------------------------------------------------
+Wed Feb 15 12:58:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.9.0:
+  * Remove unnecessary setting of locale::global. #1630
+  * Batch shading: Fix bug with masked wide glosure generation.
+  * Make sure ReParameter() has the same relaxed type checking
+    rules as Parameter(). Before, it was stricter about type
+    conversion.
+
+-------------------------------------------------------------------
+Mon Jan 16 07:05:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.8.0:
+  * Remove dependency on OptiX SDK for building core OSL with OptiX support.
+    You can now build OSL with OptiX support enabled even if you don't have the
+    OptiX SDK headers present at build time. But you will still need them to
+    build your OptiX-based application that uses OSL for GPU rendering.
+  * Batch mode: fix issue with closure keyword parameters.
+  * Batch mode: fix crash when adding a default initialized closure.
+  * Batch mode: Fix support for closures with array types.
+  * testshade: better testing of all closure parameter types.
+  * Fix various CI breaks as dependencies shifted.
+ 
+-------------------------------------------------------------------
+Sat Dec 10 21:04:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.7.1:
+  * Add clangSupport library as dependency to fix linker error on some
+  platforms. #1613
+  * Test against OpenColorIO 2.2. #1616
+  * Build: Fix how version overrides work to reduce the chance of user
+    mistakes.
+
+-------------------------------------------------------------------
+Sat Dec  3 11:21:09 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add 4G memory _constraints
+
+-------------------------------------------------------------------
+Fri Nov  4 16:54:56 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to 1.12.7.0 -- 1 Nov 2022:
+  * Optix: Change naming of certain compiler-generated constants in
+    a way that improves use of the PTX cache. #1570
+  * Batch: Fix uninitialized members in ReadEvent internals. #1575
+  * testshade --help now prints TextureSystem options and hardware
+    info. #1584
+  * oslc: Fix memory leak in ASTvariable_declaration. #1576
+  * Fix memory leaks in light path expression code. #1593 #1594
+  * Include the immintrin.h header only when needed. #1605
+  * icx: Improvements to fix problems exposed by new icx 2022.2
+    compiler. #1601
+  * Testing: CMake cache variables to control the testing timeout
+    length. #1571
+  * CI: Add a dynamic analysis test using address and leak
+    sanitizers. #1581
+  * CI: Now using SonarCloud static analysis. #1551
+  * CI: Many improvements in testing code coverage #1607
+  * CI: Make sure to run pointcloud tests when partio is found.
+    #1611
+  * Developers: platform.h now defines OSL_ALLOCA macro. #1589
+  * Developers: platform.h now defines OSL::bitcast utility. #1610
+- Remove 1605.patch: included in release
+
+-------------------------------------------------------------------
+Mon Oct 24 11:31:08 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build on Arm:
+  * 1605.patch
+
+-------------------------------------------------------------------
+Wed Oct 19 15:16:37 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 1.12.6.2:
+  For details see
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases/tag/v1.12.6.2
+  * Batch shading: A fully operational "batch shading" support when
+    using CPUs supporting the Intel AVX2 or AVX512 instruction set
+    architectures, allows shading 8 or 16 points at a time,
+    accelerated by using SIMD instructions. (Changes contributed
+    by Intel.)
+  * OptiX: A reasonable subset of the OSL language can run on
+    NVIDIA GPUs for Cuda or OptiX-based renderers.
+  * Standardized material closures: Synchronize with MaterialX on
+    a minimum standard set of material closures. This is reflected
+    in both the OSL spec as well as reference implementations of
+    those closures in testrender.
+- Remove subpackage with MaterialX shaders. These were already
+  deprecated for some time, instead ones from upstream
+  MaterialX project should be used.
+- Drop upstream 0001-Fix-compatibility-with-LLVM-14.patch
+
+-------------------------------------------------------------------
+Tue Apr 26 01:04:09 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix compatibility with LLVM >= 14.0, add
+  0001-Fix-compatibility-with-LLVM-14.patch
+
+-------------------------------------------------------------------
+Sun Apr 24 17:13:32 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix build by requiring llvm and clang 12 versions
+
+-------------------------------------------------------------------
+Sun Apr 10 10:06:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.17.0:
+  * Fix in runtime optimizer where tracking of messages and unknown messages
+    relied on uninitialized variables. 
+  * Minor changes related to OpenColorIO changing their master branch name to
+    "main". #1431
+  * Testing: Get texture3d tests operational again. #1437
+  * Docs: Fix missing "errormessage" explanation for environment() and
+    texture3d().
+  * Build/cmake fixes: Make PROJECT_VERSION_RELEASE_TYPE and
+    OSL_SUPPORTED_RELEASE be cache strings, so they can be overridden; change
+    OSL_IS_SUBPROJECT to PROJECT_IS_TOP_LEVEL (and change its sense) to match
+    CMake 21+ behavior; add a TIME_COMMANDS option to help debug performance of
+    the build. #1443 
+- drop 8682211d0bfe5c4be63a4a003d06037ff9721e66.diff, 1420.diff (upstream)
+
+-------------------------------------------------------------------
+Fri Apr  8 07:42:38 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable partio on armv6/armv7 since it fails to build
+
+-------------------------------------------------------------------
+Wed Dec 22 09:32:50 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable %ix86 because of build failures
+
+-------------------------------------------------------------------
+Sun Oct 17 15:57:25 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.11.15.0
+  + Changes for compatibility with OpenImageIO 2.3. #1393 #1388
+  + Fix potential crashes (or at least undefined behavior) due to
+    missing
+  + virtual destructor of internal Symbol type. #1397
+- Apply 8682211d0bfe5c4be63a4a003d06037ff9721e66.diff and 1420.diff
+  in order to build with LLVM 13.
+- Add partio library dependency
+
+-------------------------------------------------------------------
+Tue Aug 31 14:36:55 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Mon Aug 30 15:24:21 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.11.14.2
+  + Fix warnings that occur when compiling with clang and C++17 mode. #1379
+  + CI/testing: Additional CI tests for clang+c++17 (#1379), gcc11 (#1381),
+    llvm 12 (#1381), speed up CI builds by not building the testing components
+    of OIIO (#1380).
+
+- Update to version 1.11.14.1
+  + Fix library setup for LLVM installations consisting of static libraries.
+    This fixes a build problem that can crop up on MacOS using
+    Homebrew-installed LLVM 12. #1375
+
+- Update to version 1.11.14.0
+  + oslc/OSLCompiler: Check for errors when when writing oso (for example,
+    disk volume full). #1360
+  + Fix crash generating closure function calls with LLVM 11. #1361
+  + Build: LLVM 12 compatibility. #1351
+  + Build: Support for CMake 3.20 #1354
+  + Build: Be robust to certain OpenEXR 2.x config fies. #1356
+  + Build: Fixes to deal with newer OIIO builds that are C++14.
+
+- Remove 0001-LLVM-12-compatibility-fixes.patch
+  fixed upstream
+- Add build dependency on OpenImageIO (executables)
+
+-------------------------------------------------------------------
+Sun May  2 05:54:38 UTC 2021 - munix9@googlemail.com
+
+- Update to version 1.11.13
+  + Updated vector2.h with a mod(vector2,vector2) function. #1312
+  + Fix unnecesary error messages to stderr when encountering
+    broken point clouds. #1333
+
+- Add 0001-LLVM-12-compatibility-fixes.patch
+
+-------------------------------------------------------------------
+Wed Apr  7 22:16:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- do not list pkgconfig directory - provided by filesystem package 
+
+-------------------------------------------------------------------
+Sun Mar 21 15:50:36 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.11.12
+  + Build: Changes for smooth compile against upcoming Imath 3.0.
+    #1332 #1341
+  + Build: We weren't properly hiding non-public symbols. #1337
+  + CI: Cleanup and get rid of the last Travis vestiges. #1334
+  + CI: Speed up CI runs by using GHA cache + ccache. #1335
+  + CI: Separate CI process into several individual "steps." #1338
+
+- Update to version 1.11.11
+  + Build: Make the CMake build system more friendly to being a
+    subproject.
+  + #1304
+  + Build: Improve dependency on Imath/OpenEXR include files.
+  + CI: Fixes to Mac CI. #1315
+  + Docs: Update CLAs, Charter, GOVERNANCE, particularly after
+    acceptance of
+  + new CLAs and moving the repo to the ASWF GitHub account. #1308
+    #1240 #1314
+  + Internals: Switch from deprecated call to OIIO::parallel_image
+    to the new
+  + version. #1317
+
+- Update to version 1.11.10
+  + Bug fix: optimizer interaction with output param that also is
+    userdata.
+  + #1295
+  + Ensure that LoadMemoryCompiledShader returns false upon parse
+    failure.
+  + #1302
+  + Work to ensure that OIIO will build correctly against the
+    upcoming
+  + Imath 3.0 and OpenEXR 3.0. #1299
+
+- Disable lto
+
+-------------------------------------------------------------------
+Sat Nov  7 11:35:53 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to v1.11.9.0, see included CHANGES.md or
+  https://github.com/imageworks/OpenShadingLanguage/blob/Release-1.11.9.0/CHANGES.md
+- Add new build dependency python3-pybind11
+- Remove stray python3 oslquery module
+- Add loplevel markdown documents to doc package
+
+-------------------------------------------------------------------
+Tue Jul 28 20:19:30 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- disable RPATH handling - fixes 15.1 build
+
+-------------------------------------------------------------------
+Sun Jul  5 17:41:36 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to v1.11.6.0, see included CHANGES.md or
+  https://github.com/imageworks/OpenShadingLanguage/blob/Release-1.11.6.0-dev/CHANGES.md
+- Drop obsolete patches:
+  + 0001-Fix-typo-in-the-.pc.in-files-that-botched-the-versio.patch
+  + 0001-LLVM-10-odds-and-ends-1135.patch
+  + 0001-Some-SPI-build-fixes-for-finding-the-right-llvm.patch
+  + 0001-Use-single-shared-clang-cpp-library-starting-with-LL.patch
+- Renamed legalcode.txt to CC-BY-3.0.txt
+
+-------------------------------------------------------------------
+Wed May 13 19:11:41 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use the correct CMake variable to set the shader install location.
+- Replace osl-pkgconfig-versions.patch with correct upstream
+  0001-Fix-typo-in-the-.pc.in-files-that-botched-the-versio.patch
+- Adapt to LLVM 9/10 changes defaulting to single clang-cpp library,
+  add 0001-Use-single-shared-clang-cpp-library-starting-with-LL.patch
+  instead of mangling CMake output.
+- Dropped osl-oslimageio-soname.patch, which erroneously adds a
+  version to the OpenImageIO plugin, voiding any chance for
+  OIIO to find and load the plugin.
+- Rename the osl.imageio package to OpenImageIO-plugin-osl, to
+  better reflect its purpose, install the plugin to the default
+  OpenImageIO plugin directory.
+- Use python3 for the build process.
+
+-------------------------------------------------------------------
+Tue Apr 21 09:54:50 UTC 2020 - Dave Plater <davejplater@gmail.com>
+
+- Update to v1.11.4.1 to fix build with LLVM10.
+- Remove incorporated patch:
+  0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch
+- Added patches from git:
+  0001-Some-SPI-build-fixes-for-finding-the-right-llvm.patch and
+  0001-LLVM-10-odds-and-ends-1135.patch.
+- Created osl-pkgconfig-versions.patch to fix pc file's version
+  fields. Upstreamed along with workaround for new libclang-cpp in
+  issue #1155
+- Created osl-oslimageio-soname.patch to keep the library build in
+  line with v1.x.
+- For many upstream changes since v1.10.7 see:
+  /usr/share/doc/packages/OpenShadingLanguage/CHANGES.md
+
+-------------------------------------------------------------------
+Wed Nov  6 15:45:59 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Properly rebase 0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch
+  avoid workarounds in the spec file.
+- Remove conditional code for Leap 42.x
+- Reflect required versions of OpenIIO and Clang in the spec file.
+
+-------------------------------------------------------------------
+Wed Nov  6 11:38:51 UTC 2019 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 1.10.7 which fixes build with new llvm.
+- Rebased:
+  0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch
+- Recent upstream changes:
+  *Adjust for deprecated material in more recent Qt releases. #1043
+  *Fixes for MinGW compiler. #1047
+  *Texture "missingalpha" optional parameter generated incorrect
+   code and crashed. #1044
+  *Fix incorrect optimizations surrounding 'exit()' calls in the
+   middle of certain shader code blocks. #1051
+  *LLVM 9 / clang 9 compatibility. #1058
+  *Fixes to Travis CI system to keep up with OIIO master recently
+   upgrading its minimum required CMake. #1065
+
+-------------------------------------------------------------------
+Sun Jan 13 02:21:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix lookup of stdosl.h from oslc (bnc#1123254):
+  Dropped OpenShadingLanguage-shaderinstalldir.patch
+  Added 0001-Generalize-lookup-of-stdosl.h-in-install-directory-a.patch
+- Cleaned up spec file (defattr)
+- Correct LLVM_MCJIT_LIBRARY value, add comment
+- Use current LLVM for building (bnc#1123252)
+- Split shaders in common-headers, MaterialX-shaders and example-shaders
+  subpackages. stdosl.h in common-headers is required by oslc in
+  the main package (bnc#1123254).
+- Correct clang-devel package name for Leap 42.3
+
+-------------------------------------------------------------------
+Tue Jan  8 16:39:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Spruce up descriptions a bit.
+
+-------------------------------------------------------------------
+Mon Dec 31 11:35:09 UTC 2018 - davejplater@gmail.com
+
+- Initial version 1.9.13 created for blender see boo#1120406
+- Blender fails to build with 1.10.x versions
+- Added OpenShadingLanguage-shaderinstalldir.patch shaders are
+  installed directly under /usr see:
+  https://github.com/imageworks/OpenShadingLanguage/issues/955

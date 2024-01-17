@@ -1,0 +1,132 @@
+-------------------------------------------------------------------
+Thu Dec 14 09:12:51 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 23.2.1:
+  * Import `os.statvfs` conditionally to fix importing on non-
+    UNIX systems.
+  * #171 #172
+  * aiofiles is now also tested on Windows.
+update to 23.2.0:
+  * # 23.2.0
+
+  * aiofiles is now tested on Python 3.12 too.
+  * #166 #168
+  * On Python 3.12, `aiofiles.tempfile.NamedTemporaryFile` now
+    accepts a `delete_on_close` argument, just like the stdlib
+    version.
+  * On Python 3.12, `aiofiles.tempfile.NamedTemporaryFile` no
+    longer exposes a `delete` attribute, just like the stdlib
+    version.
+  * Added `aiofiles.os.statvfs` and `aiofiles.os.path.ismount`.
+  * #162
+  * Use PDM instead of Poetry.
+  * #169
+
+-------------------------------------------------------------------
+Sun Jun 11 13:37:03 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Feb 23 14:10:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.1.0:
+  * Added ``aiofiles.os.access``.
+  * Removed ``aiofiles.tempfile.temptypes.AsyncSpooledTemporaryFile.softspace``.
+  * Added ``aiofiles.stdin``, ``aiofiles.stdin_bytes``, and
+    other stdio streams.
+  * Transition to ``asyncio.get_running_loop``
+    (vs ``asyncio.get_event_loop``) internally. 
+
+-------------------------------------------------------------------
+Thu Sep 22 22:41:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 22.1.0
+  * Update README
+  * Update test deps
+  * Min Python to 3.7
+  * Bump poetry to 1.2.0
+  * Add missing comma
+  * CI tweaks
+  * Update README.rst
+  * Added os scantdir with is't tests and improved the tests for listdir
+  * Added os listdir function with it's tests
+  * Add notice file
+  * make test skipped below py3.7
+  * add test for `newlines`
+  * move SpooledTempFile.newlines from delegation to property
+  * update docs
+  * Add aiofiles.os.path.islink function
+  * remove symlink file at end of test
+  * Add aiofiles.os.readlink function
+  * Fix typo
+  * Add aiofiles.os.symlink
+  * Add aiofiles.os.unlink
+  * Add aiofiles.os.link function
+  * Add aiofiles.os.renames function
+  * Missing closing quote
+  * Add repo link to pyproject.toml
+- Update to 0.8.0
+  * Tweak README
+  * Update README
+  * Use os.sep
+  * Add prefix, suffix, dir args to TemporaryDirectory
+  * Fix ospath.exists test
+  * Fix typo: aiofiles.ospath.exists
+  * Update Readme with os.makedirs and os.removedirs
+  * Merge branch 'patch-2'
+  * Fix README
+  * Bump poetry
+  * Fix tox.ini
+  * Update README
+  * Black reformat
+  * Skip test on mac
+  * Fixes
+  * Add more os functions
+  * Test for path.sameopenfile
+  * Update README.rst
+  * Provide some async version functions for os.path
+  * Add several async os functions
+  * Add async remove function
+  * Update README
+  * added aiofiles.os.replace
+  * Enable testing on 3.10
+  * Correct license string 
+
+-------------------------------------------------------------------
+Sun Jan  9 15:24:11 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to 0.8.0
+  * Added aiofiles.os.replace. #107
+  * Added aiofiles.os.{makedirs, removedirs}.
+  * Added aiofiles.os.path.{exists, isfile, isdir, getsize, getatime,
+    getctime, samefile, sameopenfile}. #63
+  * Added suffix, prefix, dir args to aiofiles.tempfile.TemporaryDirectory. #116
+
+-------------------------------------------------------------------
+Wed Jun 16 15:13:33 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.0
+  * Added the aiofiles.tempfile module for async temporary files. #56
+  * Switched to Poetry and GitHub actions.
+  * Dropped 3.5 support.
+- Switch Python packaging from setuptools to poetry
+  * Add python-pip to BuildRequires
+  * Add python-poetry-core to BuildRequires
+  * Remove python-setuptools from BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
+Wed Feb  3 10:57:36 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.6.0
+  * aiofiles is now tested on ppc64le.
+  * Added name and mode properties to async file objects. #82
+  * Fixed a DeprecationWarning internally. #75
+  * Python 3.9 support and tests.
+
+-------------------------------------------------------------------
+Tue Jun  2 16:44:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.5.0

@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9dab1edf2500aaca655309a471754f7c</srcmd5>
+    <version>0.4.0</version>
+    <time>1504981627</time>
+    <user>dimstar_suse</user>
+    <comment>needed by the latest version of python3-raven</comment>
+    <requestid>522421</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4e4e1ab972fd3d773023ff28888b60f</srcmd5>
+    <version>0.4.1</version>
+    <time>1512386207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548014</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a24e714a90e7d5b7efcee896ccfe149a</srcmd5>
+    <version>0.5.0</version>
+    <time>1582394383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774992</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>246f25eb504a927660c0cd37c090b77c</srcmd5>
+    <version>0.6.0</version>
+    <time>1649544123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967943</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c156cd940703fb876c3b74fc4023e67</srcmd5>
+    <version>0.6.1</version>
+    <time>1654457308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980840</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c97033735b6ebcbd5e2907e3f4c002c</srcmd5>
+    <version>0.6.2</version>
+    <time>1664553497</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.6.2:
+  * Fix compatibility with Werkzeug 2.2 and Flask 2.2. #691
+  * Revert change to expand_login_view that attempted to preserve a dynamic
+    subdomain value. Such values should be handled using
+    app.url_value_preprocessor and app.url_defaults. #691
+  * Ensure deprecation warnings are present for deprecated features that will be removed in the next feature release.
+    + Use request_loader instead of header_loader.
+    + Use user_loaded_from_request instead of user_loaded_from_header.
+    + Use app.config[&quot;LOGIN_DISABLED&quot;] instead of _login_disabled.
+    + Use init_app instead of setup_app</comment>
+    <requestid>1007134</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>470c8ca334f7f44a029ff75a959e2b46</srcmd5>
+    <version>0.6.2</version>
+    <time>1698700210</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121150</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0ae118e29891745bd23ef6f05846c8ec</srcmd5>
+    <version>0.6.2</version>
+    <time>1704281415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136190</requestid>
+  </revision>
+</revisionlist>

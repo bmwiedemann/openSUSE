@@ -1,0 +1,11 @@
+--- uisp-20050207/src/Stk500.C.orig	2007-10-01 12:09:51.000000000 +0200
++++ uisp-20050207/src/Stk500.C	2007-10-01 12:27:47.282341000 +0200
+@@ -424,7 +424,7 @@
+   }
+ 
+   pgsz = prg_part[desired_part].params.pagesize;
+-  pagesize = (pgsz[0]) << 8 + pgsz[1];
++  pagesize = (pgsz[0] << 8) + pgsz[1];
+ 
+   if (pagesize == 0) {
+     pagesize = 128;

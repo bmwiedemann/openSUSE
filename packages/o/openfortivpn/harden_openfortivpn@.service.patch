@@ -1,0 +1,22 @@
+diff --git a/lib/systemd/system/openfortivpn@.service.in b/lib/systemd/system/openfortivpn@.service.in
+index 1249037..741ae07 100644
+--- a/lib/systemd/system/openfortivpn@.service.in
++++ b/lib/systemd/system/openfortivpn@.service.in
+@@ -9,6 +9,17 @@ Documentation=https://github.com/adrienverge/openfortivpn/wiki
+ [Service]
+ Type=notify
+ PrivateTmp=true
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=@BINDIR@/openfortivpn -c @SYSCONFDIR@/openfortivpn/%I.conf
+ Restart=on-failure
+ OOMScoreAdjust=-100

@@ -1,0 +1,8 @@
+<package name="ca-certificates-steamtricks" project="openSUSE:Factory">
+  <title>ca-certificates-steamtricks</title>
+  <description>Provides /etc/ssl/certs/ca-certificates.crt as required by certain proprietary
+software.
+
+This package was created as part of a workaround by steamtricks.</description>
+  <devel project="games:tools" package="ca-certificates-steamtricks"/>
+</package>

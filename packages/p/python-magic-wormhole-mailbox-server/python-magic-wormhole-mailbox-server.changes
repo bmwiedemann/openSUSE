@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue Mar 28 10:00:03 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Tue Jun 21 20:32:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Actually requires twisted[tls]: python-Twisted-tls on Tumbleweed
+
+-------------------------------------------------------------------
+Wed May 18 19:55:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Wed May 18 09:51:20 UTC 2022 - pgajdos@suse.com
+
+- do not require python-mock for build
+- added patches
+  fix https://github.com/magic-wormhole/magic-wormhole/issues/439
+  + python-magic-wormhole-mailbox-server-no-mock.patch
+
+-------------------------------------------------------------------
+Wed Jul 14 10:41:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer build for python 3.6: not all dependencies are
+  supported (e.g autobahn).
+
+-------------------------------------------------------------------
+Tue Oct  8 14:13:43 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 0.4.1
+  * listen on IPv4+IPv6 socket by default
+  * deallocate AppNamespace objects when empty
+  * add client-version-uptake munin plugin
+  * drop support for py3.3 and py3.4
+
+-------------------------------------------------------------------
+Sun Jun  2 19:43:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Describe the package not the repository.
+
+-------------------------------------------------------------------
+Fri May 17 13:08:03 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Initial packaging (0.3.1)

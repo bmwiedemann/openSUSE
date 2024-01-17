@@ -1,0 +1,110 @@
+diff -urN telnet-bsd-1.2/telnet/commands.c telnet-bsd-1.2_patched/telnet/commands.c
+--- telnet-bsd-1.2/telnet/commands.c	2005-06-02 10:12:51.000000000 +0200
++++ telnet-bsd-1.2_patched/telnet/commands.c	2014-09-30 16:07:39.772644812 +0200
+@@ -2534,8 +2534,7 @@
+       env_export ((unsigned char *) "USER");
+     }
+   call (status, "status", "notmuch", 0);
+-  if (sigsetjmp (peerdied, 1) == 0)
+-    telnet (user);
++  telnet (user);
+   NetClose (net);
+   ExitString ("Connection closed by foreign host.\r\n", 1);
+    /*NOTREACHED*/ return 0;
+diff -urN telnet-bsd-1.2/telnet/externs.h telnet-bsd-1.2_patched/telnet/externs.h
+--- telnet-bsd-1.2/telnet/externs.h	2005-06-01 13:42:23.000000000 +0200
++++ telnet-bsd-1.2_patched/telnet/externs.h	2014-09-30 16:09:03.141437234 +0200
+@@ -174,7 +174,6 @@
+     SetNetTrace (char *);	/* Function to change where debugging goes */
+ 
+ extern sigjmp_buf
+-    peerdied,
+     toplevel;		/* For error conditions. */
+ 
+ /* authenc.c */
+diff -urN telnet-bsd-1.2/telnet/network.c telnet-bsd-1.2_patched/telnet/network.c
+--- telnet-bsd-1.2/telnet/network.c	2004-02-13 22:52:24.000000000 +0100
++++ telnet-bsd-1.2_patched/telnet/network.c	2014-09-30 16:10:05.365071096 +0200
+@@ -142,7 +142,7 @@
+ 	    perror(hostname);
+ 	    (void)NetClose(net);
+ 	    ring_clear_mark(&netoring);
+-	    siglongjmp(peerdied, -1);
++	    ExitString("Connection closed by foreign host.\n", 1);
+ 	    /*NOTREACHED*/
+ 	}
+ 	n = 0;
+diff -urN telnet-bsd-1.2/telnet/sys_bsd.c telnet-bsd-1.2_patched/telnet/sys_bsd.c
+--- telnet-bsd-1.2/telnet/sys_bsd.c	2004-02-14 14:20:04.000000000 +0100
++++ telnet-bsd-1.2_patched/telnet/sys_bsd.c	2014-09-30 16:30:14.601380247 +0200
+@@ -778,15 +778,6 @@
+ 
+     /* ARGSUSED */
+ static void
+-deadpeer (int sig)
+-{
+-  (void) sig;
+-  setcommandmode ();
+-  siglongjmp (peerdied, -1);
+-}
+-
+-    /* ARGSUSED */
+-static void
+ intr (int sig)
+ {
+   (void) sig;
+@@ -856,7 +847,7 @@
+ {
+   (void) signal (SIGINT, intr);
+   (void) signal (SIGQUIT, intr2);
+-  (void) signal (SIGPIPE, deadpeer);
++  (void) signal(SIGPIPE, SIG_IGN);
+ #ifdef	SIGWINCH
+   (void) signal (SIGWINCH, sendwin);
+ #endif
+diff -urN telnet-bsd-1.2/telnet/telnet.c telnet-bsd-1.2_patched/telnet/telnet.c
+--- telnet-bsd-1.2/telnet/telnet.c	2005-06-02 10:09:46.000000000 +0200
++++ telnet-bsd-1.2_patched/telnet/telnet.c	2014-09-30 16:13:57.158453184 +0200
+@@ -107,7 +107,6 @@
+ static int telrcv_state;
+ 
+ sigjmp_buf toplevel;
+-sigjmp_buf peerdied;
+ 
+ int flushline;
+ int linemode;
+diff -urN telnet-bsd-1.2/telnet/terminal.c telnet-bsd-1.2_patched/telnet/terminal.c
+--- telnet-bsd-1.2/telnet/terminal.c	2005-06-01 17:33:09.000000000 +0200
++++ telnet-bsd-1.2_patched/telnet/terminal.c	2014-09-30 16:17:52.934863547 +0200
+@@ -88,7 +88,8 @@
+ 
+ 
+ /*
+- *		Send as much data as possible to the terminal.
++ *		Send as much data as possible to the terminal, else exits if
++ *		it encounters a permanent failure when writing to the tty.
+  *
+  *		Return value:
+  *			-1: No useful work done, data waiting to go out.
+@@ -130,8 +131,19 @@
+ 	}
+ 	ring_consumed(&ttyoring, n);
+     }
+-    if (n < 0)
+-	return -1;
++     if (n < 0) {
++	if (errno == EAGAIN || errno == EINTR) {
++	    return -1;
++	} else {
++	    ring_consumed(&ttyoring, ring_full_count(&ttyoring));
++	    setconnmode(0);
++	    setcommandmode();
++	    NetClose(net);
++	    fprintf(stderr, "Write error on local output.\n");
++	    exit(1);
++	}
++ 	return -1;
++    }
+     if (n == n0) {
+ 	if (n0)
+ 	    return -1;

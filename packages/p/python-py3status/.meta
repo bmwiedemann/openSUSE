@@ -1,0 +1,5 @@
+<package name="python-py3status" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:windowmanagers" package="python-py3status"/>
+</package>

@@ -1,0 +1,61 @@
+--- xgboost-2.0.0/CMakeLists.txt	2023-10-07 11:33:17.298102827 +0200
++++ xgboost-2.0.0/CMakeLists.txt	2023-10-07 12:15:05.755584934 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+ project(xgboost LANGUAGES CXX C VERSION 2.0.0)
+ include(cmake/Utils.cmake)
+ list(APPEND CMAKE_MODULE_PATH "${xgboost_SOURCE_DIR}/cmake/modules")
+@@ -180,6 +180,9 @@
+ 
+ if (USE_OPENMP)
+   if (APPLE)
++    # Require CMake 3.16+ on Mac OSX, as previous versions of CMake had trouble locating
++    # OpenMP on Mac. See https://github.com/dmlc/xgboost/pull/5146#issuecomment-568312706
++    cmake_minimum_required(VERSION 3.16)
+     find_package(OpenMP)
+     if (NOT OpenMP_FOUND)
+       # Try again with extra path info; required for libomp 15+ from Homebrew
+--- xgboost-2.0.0/demo/c-api/CMakeLists.txt	2023-10-07 11:33:17.398103617 +0200
++++ xgboost-2.0.0/demo/c-api/CMakeLists.txt	2023-10-07 12:15:05.755584934 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.18)
++cmake_minimum_required(VERSION 3.13)
+ project(xgboost-c-examples)
+ 
+ add_subdirectory(basic)
+--- xgboost-2.0.0/demo/c-api/external-memory/CMakeLists.txt	2023-10-07 11:33:17.401436976 +0200
++++ xgboost-2.0.0/demo/c-api/external-memory/CMakeLists.txt	2023-10-07 12:15:05.758918291 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.18)
++cmake_minimum_required(VERSION 3.13)
+ project(external-memory-demo LANGUAGES C VERSION 0.0.1)
+ 
+ find_package(xgboost REQUIRED)
+--- xgboost-2.0.0/demo/c-api/inference/CMakeLists.txt	2023-10-07 11:33:17.401436976 +0200
++++ xgboost-2.0.0/demo/c-api/inference/CMakeLists.txt	2023-10-07 12:15:05.758918291 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.18)
++cmake_minimum_required(VERSION 3.13)
+ project(inference-demo LANGUAGES C VERSION 0.0.1)
+ find_package(xgboost REQUIRED)
+ 
+--- xgboost-2.0.0/doc/tutorials/c_api_tutorial.rst	2023-10-07 11:33:17.514771205 +0200
++++ xgboost-2.0.0/doc/tutorials/c_api_tutorial.rst	2023-10-07 12:15:05.758918291 +0200
+@@ -45,7 +45,7 @@
+ 
+ .. code-block:: cmake
+ 
+-    cmake_minimum_required(VERSION 3.18)
++    cmake_minimum_required(VERSION 3.13)
+     project(your_project_name LANGUAGES C CXX VERSION your_project_version)
+     find_package(xgboost REQUIRED)
+     add_executable(your_project_name /path/to/project_file.c)
+--- xgboost-2.0.0/rabit/CMakeLists.txt	2023-10-07 11:33:17.724772863 +0200
++++ xgboost-2.0.0/rabit/CMakeLists.txt	2023-10-07 12:15:05.758918291 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.18)
++cmake_minimum_required(VERSION 3.3)
+ 
+ find_package(Threads REQUIRED)
+ 

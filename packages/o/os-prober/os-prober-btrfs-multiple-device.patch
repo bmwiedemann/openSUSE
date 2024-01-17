@@ -1,0 +1,35 @@
+Index: os-prober-1.76/os-prober
+===================================================================
+--- os-prober-1.76.orig/os-prober
++++ os-prober-1.76/os-prober
+@@ -161,6 +161,15 @@ fi
+ 
+ : >"$OS_PROBER_TMP/btrfs-vols"
+ 
++btrfsrootdev=$(sed -n -e 's!\([^\s]\+\)\s\+\(/\|/target/boot\|/target\)\s\+btrfs!\1!p;ta;b;:a;q' "$OS_PROBER_TMP/mounted-map")
++if [ -n "$btrfsrootdev" ] ; then
++	if btrfsrootdev="$(mapdevfs "$btrfsrootdev")"; then
++		btrfsrootdevuuid=$(blkid -o value -s UUID "$btrfsrootdev")
++		debug "btrfs is mounted as root, uuid: $btrfsrootdevuuid"
++		echo "$btrfsrootdevuuid" >>"$OS_PROBER_TMP/btrfs-vols"
++	fi
++fi
++
+ for partition in $(partitions); do
+ 	if ! mapped="$(mapdevfs "$partition")"; then
+ 		log "Device '$partition' does not exist; skipping"
+@@ -183,13 +192,9 @@ for partition in $(partitions); do
+ 	# be handled by 50mounted-tests so we can do a subvol only once.
+ 	type=$(blkid -o value -s TYPE $mapped || true)
+ 	if [ "$type" = btrfs ]; then
+-		mpoint=$(grep "^$mapped " "$OS_PROBER_TMP/mounted-map" | head -n1 | cut -d " " -f 2)
+-		mpoint="$(unescape_mount "$mpoint")"
+-		if [ "$mpoint" = "/target/boot" ] || [ "$mpoint" = "/target" ] || [ "$mpoint" = "/" ]; then
+-			continue
+-		fi
+ 		uuid=$(blkid -o value -s UUID $mapped)
+ 		if grep -q "^$uuid" "$OS_PROBER_TMP/btrfs-vols" ; then
++			debug "skipped btrfs partition=$partition uuid=$uuid"
+ 			continue
+ 		fi
+ 		debug "btrfs volume uuid=$uuid partition=$partition"

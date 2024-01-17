@@ -1,0 +1,8 @@
+<package name="rubygem-google-protobuf" project="openSUSE:Factory">
+  <title>Protocol Buffers</title>
+  <description>Protocol Buffers are Google's data interchange format.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-google-protobuf"/>
+  <url>https://developers.google.com/protocol-buffers</url>
+</package>

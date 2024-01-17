@@ -1,0 +1,7 @@
+<package name="gopls" project="openSUSE:Factory">
+  <title>gopls</title>
+  <description>gopls (pronounced &quot;Go please&quot;) is the official Go language server developed by the Go team. It provides IDE features to any LSP-compatible editor.
+</description>
+  <devel project="devel:languages:go" package="gopls"/>
+  <url>https://pkg.go.dev/golang.org/x/tools/gopls</url>
+</package>

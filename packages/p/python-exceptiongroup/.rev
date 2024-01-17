@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f444a28b364e25a3c47b2beda883a9d</srcmd5>
+    <version>1.0.0~rc9</version>
+    <time>1665591819</time>
+    <user>dimstar_suse</user>
+    <comment>Pre-release version required by hypothesis</comment>
+    <requestid>1009421</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd69176507bf53865b4899e80e9c8553</srcmd5>
+    <version>1.0.0~rc9</version>
+    <time>1666978133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031409</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dcdc578d6117b74488be8a9dc444c5ce</srcmd5>
+    <version>1.1.0</version>
+    <time>1673021080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045050</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c2d0c0caa376920f49f936a4683da78</srcmd5>
+    <version>1.1.1</version>
+    <time>1679068925</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Worked around `CPython issue #98778
+    ``urllib.error.HTTPError(..., fp=None)`` raises
+    ``KeyError`` on unknown attribute access, on affected
+    Python versions.</comment>
+    <requestid>1071876</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>74d3cd1f39e9224fba0351a93f82df6a</srcmd5>
+    <version>1.1.1</version>
+    <time>1682193668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081932</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>551a0cdf199271149f09f08d12385e7c</srcmd5>
+    <version>1.1.2</version>
+    <time>1688660869</time>
+    <user>favogt_factory</user>
+    <comment>- Update to 1.1.2:
+  - Changed handling of exceptions in exception group handler
+    callbacks to not wrap a single exception in an exception
+    group, as per CPython issue gh#python/cpython#103590.
+- Add skip-test_catch_handler_raises-for-older-311.patch 
+  (gh#agronholm/exceptiongroup#64).
+</comment>
+    <requestid>1096944</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>25406785ec4f2567376e2057844bb526</srcmd5>
+    <version>1.2.0</version>
+    <time>1701206306</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * Added special monkeypatching if `Apport
+    &lt;https://github.com/canonical/apport&gt;`_ has
+    overridden ``sys.excepthook`` so it will format exception
+    groups correctly
+  * Added a backport of ``contextlib.suppress()`` from Python
+    3.12.1 which also handles suppressing exceptions inside
+    exception groups
+  * Fixed bare ``raise`` in a handler reraising the original
+    naked exception rather than an exception group which is what
+    is raised when you do a ``raise`` in an ``except*`` handler
+  * ``catch()`` now raises a ``TypeError`` if passed an async
+    exception handler instead of just giving a ``RuntimeWarning``
+    about the coroutine never being awaited.
+  * Fixed plain ``raise`` statement in an exception handler
+    callback to work like a ``raise`` in an ``except*`` block
+  * Fixed new exception group not being chained to the original
+    exception when raising an exception group from exceptions
+    raised in handler callbacks
+  * Fixed type annotations of the ``derive()``, ``subgroup()``
+    and ``split()`` methods to match the ones in typeshed
+- drop skip-test_catch_handler_raises-for-older-311.patch
+  (upstream)
+
+- Add skip-test_catch_handler_raises-for-older-311.patch</comment>
+    <requestid>1129176</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Jul 18 15:07:45 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Revise packaging to align with Go application package patterns
+  * Drop dependency on golang-packaging obsolete macros use GOPATH
+  * Use obs-service-go_modules for dependency vendoring
+  * Drop go build ldflags version info as go1.18+ embeds metadata
+  * Drop separate package installing shfmt application source
+
+-------------------------------------------------------------------
+Tue Jun  7 11:57:00 UTC 2022 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.5.0
+ * Fix the Docker publishing script bug which broke 3.5.0 - #860
+  check CHANGELOG.md for more detail
+- Update spec
+
+-------------------------------------------------------------------
+Wed May 11 13:10:22 UTC 2022 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.5.0
+  * drops support for Go 1.16
+  * Switch to -ln=auto by default to detect the shell language
+  * Add support for long flags, like --indent for -i
+
+-------------------------------------------------------------------
+Sun Feb 20 13:58:33 UTC 2022 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.4.3
+ * New Docker v3 tag to track the latest stable version
+ * Don't duplicate errors when walking directories
+
+-------------------------------------------------------------------
+Sat Dec 25 07:27:38 UTC 2021 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.4.2
+
+-------------------------------------------------------------------
+Wed Nov 24 15:16:21 UTC 2021 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.4.1
+
+-------------------------------------------------------------------
+Sun Oct  3 04:56:21 UTC 2021 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.4.0
+  – Walks directories ~10% faster thanks to filepath.WalkDir
+
+-------------------------------------------------------------------
+Thu Aug  5 04:51:42 UTC 2021 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.3.1
+
+-------------------------------------------------------------------
+Mon May 17 14:35:10 UTC 2021 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.3.0
+ * Document the FORCE_COLOR env var to always use colors in diffs
+
+-------------------------------------------------------------------
+Mon Apr  5 02:09:33 UTC 2021 - Erefd X <zzndb001@gmail.com>
+
+- initial packaging shfmt v3.2.4

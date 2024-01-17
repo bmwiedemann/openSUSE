@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Jan  2 08:26:58 UTC 2024 - Dirk Mueller <dmueller@suse.com>
+
+- update year to 2024
+
+-------------------------------------------------------------------
+Thu Sep 28 14:29:10 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- add copyright and description header
+
+-------------------------------------------------------------------
+Tue Jul 11 09:31:28 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Build only on 64 bit arches as JAVA_HOME is hard coded to /usr/lib64
+
+-------------------------------------------------------------------
+Fri Jun 23 15:33:33 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- label capitalization and related cleanups
+
+-------------------------------------------------------------------
+Tue May 30 06:52:56 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add release stage and lifecycle url
+
+-------------------------------------------------------------------
+Fri Mar  3 07:24:36 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add org.opencontainers.image.source label set to %SOURCEURL%
+
+-------------------------------------------------------------------
+Wed Dec  7 15:14:20 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Switch latest to java 17 and fix environment variables (bsc#1206128)
+
+-------------------------------------------------------------------
+Fri Jul 15 11:07:44 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Increase compatibility with openSUSE
+
+-------------------------------------------------------------------
+Tue May  3 09:09:21 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Use set -euo pipefail in every RUN command, use ; instead of && to prevent masking failures

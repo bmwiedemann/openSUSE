@@ -1,0 +1,66 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Feb 11 13:54:17 2023 +0100
+Subject: Check for overflow when calculating on-disk attribute data size (#2459)
+Patch-mainline: Not yet
+Git-repo: https://github.com/HDFGroup/hdf5
+Git-commit: 0d026daa13a81be72495872f651c036fdc84ae5e
+References: 
+
+A bogus hdf5 file may contain dataspace messages with sizes
+which lead to the on-disk data sizes to exceed what is addressable.
+When calculating the size, make sure, the multiplication does not
+overflow.
+The test case was crafted in a way that the overflow caused the
+size to be 0.
+
+This fixes CVE-2021-37501 / Bug #2458.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5Oattr.c   |  3 +++
+ src/H5private.h | 18 ++++++++++++++++++
+ 2 files changed, 21 insertions(+)
+diff --git a/src/H5Oattr.c b/src/H5Oattr.c
+index 4dee7aa187..3ef0b99aa4 100644
+--- a/src/H5Oattr.c
++++ b/src/H5Oattr.c
+@@ -235,6 +235,9 @@ H5O_attr_decode(H5F_t *f, H5O_t *open_oh, unsigned H5_ATTR_UNUSED mesg_flags, un
+ 
+     /* Compute the size of the data */
+     H5_CHECKED_ASSIGN(attr->shared->data_size, size_t, ds_size * (hsize_t)dt_size, hsize_t);
++    H5_CHECK_MUL_OVERFLOW(attr->shared->data_size, ds_size, dt_size,
++			  HGOTO_ERROR(H5E_RESOURCE, H5E_OVERFLOW, NULL,
++				      "data size exceeds addressable range"))
+ 
+     /* Go get the data */
+     if (attr->shared->data_size) {
+diff --git a/src/H5private.h b/src/H5private.h
+index 931d7b9046..a115aee1a4 100644
+--- a/src/H5private.h
++++ b/src/H5private.h
+@@ -1605,6 +1605,24 @@ H5_DLL int     HDvasprintf(char **bufp, const char *fmt, va_list _ap);
+ #define H5_CHECK_OVERFLOW(var, vartype, casttype)
+ #endif /* NDEBUG */
+ 
++/*
++ * A macro for checking whether a multiplication has overflown
++ * r is assumed to be the result of a prior multiplication of a and b
++ */
++#define H5_CHECK_MUL_OVERFLOW(r, a, b, err)                                                                  \
++    {                                                                                                        \
++        bool mul_overflow = false;                                                                           \
++        if (r != 0) {                                                                                        \
++            if (r / a != b)                                                                                  \
++                mul_overflow = true;                                                                         \
++        } else {                                                                                             \
++            if (a != 0 && b != 0)                                                                            \
++                mul_overflow = true;                                                                         \
++        }                                                                                                    \
++        if (mul_overflow)                                                                                    \
++            err                                                                                              \
++    }
++
+ /*
+  * A macro for detecting over/under-flow when assigning between types
+  */

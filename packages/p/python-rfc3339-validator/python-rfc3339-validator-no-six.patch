@@ -1,0 +1,68 @@
+Index: rfc3339_validator-0.1.4/rfc3339_validator.egg-info/requires.txt
+===================================================================
+--- rfc3339_validator-0.1.4.orig/rfc3339_validator.egg-info/requires.txt
++++ rfc3339_validator-0.1.4/rfc3339_validator.egg-info/requires.txt
+@@ -1 +0,0 @@
+-six
+Index: rfc3339_validator-0.1.4/rfc3339_validator.py
+===================================================================
+--- rfc3339_validator-0.1.4.orig/rfc3339_validator.py
++++ rfc3339_validator-0.1.4/rfc3339_validator.py
+@@ -6,11 +6,9 @@ __version__ = '0.1.4'
+ 
+ import re
+ import calendar
+-import six
+ 
+ RFC3339_REGEX_FLAGS = 0
+-if six.PY3:
+-    RFC3339_REGEX_FLAGS |= re.ASCII
++RFC3339_REGEX_FLAGS |= re.ASCII
+ 
+ RFC3339_REGEX = re.compile(r"""
+     ^
+Index: rfc3339_validator-0.1.4/setup.py
+===================================================================
+--- rfc3339_validator-0.1.4.orig/setup.py
++++ rfc3339_validator-0.1.4/setup.py
+@@ -8,9 +8,7 @@ from setuptools import setup, find_packa
+ with open('README.md') as readme_file:
+     readme = readme_file.read()
+ 
+-requirements = [
+-    'six',
+-]
++requirements = []
+ 
+ setup_requirements = []
+ 
+Index: rfc3339_validator-0.1.4/tests/test_rfc3339_validator.py
+===================================================================
+--- rfc3339_validator-0.1.4.orig/tests/test_rfc3339_validator.py
++++ rfc3339_validator-0.1.4/tests/test_rfc3339_validator.py
+@@ -8,7 +8,6 @@ from rfc3339_validator import validate_r
+ import strict_rfc3339
+ from hypothesis import given, settings, example
+ import hypothesis.strategies as st
+-import six
+ 
+ # It is supposed to be used to generate both valid and invalid dates
+ RFC3339_REGEX = r"""
+@@ -30,16 +29,11 @@ RFC3339_REGEX = r"""
+     )
+     $
+ """
+-if six.PY3:
+-    RFC3339_REGEX_FLAG = re.X | re.A
+-else:
+-    RFC3339_REGEX_FLAG = re.X
++RFC3339_REGEX_FLAG = re.X | re.A
+ RFC3339_REGEX_ASCII = re.compile(RFC3339_REGEX, RFC3339_REGEX_FLAG)
+ RFC3339_REGEX_UNICODE = re.compile(RFC3339_REGEX, re.X)
+ 
+ 
+-@pytest.mark.skipif(six.PY2, reason="Requires python3 or higher, because strftime on python 2 only supports dates "
+-                                    "newer than 1900")
+ @given(datetime_str=st.datetimes().filter(lambda d: d.year > 1000).map(lambda d: d.strftime("%Y-%m-%dT%H:%M:%SZ")))
+ def test_valid_dates(datetime_str):
+     assert validate_rfc3339(datetime_str)

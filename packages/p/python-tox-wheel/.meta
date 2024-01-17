@@ -1,0 +1,5 @@
+<package name="python-tox-wheel" project="openSUSE:Factory">
+  <title></title>
+  <description>A Tox plugin that builds and installs wheels instead of sdist</description>
+  <devel project="devel:languages:python" package="python-tox-wheel"/>
+</package>

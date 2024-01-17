@@ -1,0 +1,19 @@
+<package name="perl-Pango" project="openSUSE:Factory">
+  <title>Pango Perl module</title>
+  <description>Pango is a library for laying out and rendering text, with an emphasis on
+internationalization. Pango can be used anywhere that text layout is
+needed, but using Pango in conjunction with L&lt;Cairo&gt; and/or L&lt;Gtk2&gt;
+provides a complete solution with high quality text handling and graphics
+rendering.
+
+Dynamically loaded modules handle text layout for particular
+combinations of script and font backend. Pango provides a wide selection
+of modules, including modules for Hebrew, Arabic, Hangul, Thai, and a
+number of Indic scripts. Virtually all of the world's major scripts are
+supported.
+
+In addition to the low level layout rendering routines, Pango includes
+Pango::Layout, a high level driver for laying out entire blocks of text,
+and routines to assist in editing internationalized text.</description>
+  <devel project="devel:languages:perl" package="perl-Pango"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="perl-Class-C3-Componentised" project="openSUSE:Factory">
+  <title>Load mix-ins or components to your C3-based class.</title>
+  <description>Load mix-ins or components to your C3-based class.</description>
+  <devel project="devel:languages:perl" package="perl-Class-C3-Componentised"/>
+</package>

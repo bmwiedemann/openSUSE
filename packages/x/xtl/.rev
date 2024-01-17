@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bf46781a773b13302c7ac779bc4fe63</srcmd5>
+    <version>0.6.13</version>
+    <time>1588023469</time>
+    <user>dimstar_suse</user>
+    <comment>Needecd by xeus, which is an implementation of the jupyter protocol in c++, which in turn is needed by various jupyter extensions.</comment>
+    <requestid>798064</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47c80621b59cdd0b358acdeae9dba8a5</srcmd5>
+    <version>0.6.16</version>
+    <time>1597744841</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.16:
+  - Fixed mpark variant inclusion guards
+  - Add a serialiser for xvariant to json
+  - Removed capture all by reference
+  - Renamed mpark variant header inclusion guard
+  - Implemented value iterator for map containers</comment>
+    <requestid>827395</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e10e53b959fc6f0d068cc8d879f2a26c</srcmd5>
+    <version>0.6.18</version>
+    <time>1600277929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834832</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>82ed04e2af931fcb2e8e10091a011669</srcmd5>
+    <version>0.7.4</version>
+    <time>1659470963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992173</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1b9591561ffce84828da684c0e7b4c47</srcmd5>
+    <version>0.7.4</version>
+    <time>1668609796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035885</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dce3ab953f2d895d0e16671560c1d161</srcmd5>
+    <version>0.7.5</version>
+    <time>1675956211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063986</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>738ffd9c3ad5ff22d3f011267b936198</srcmd5>
+    <version>0.7.6</version>
+    <time>1702845255</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.6:
+  * Add missing #include &lt;exception&gt;
+  * Fix promote_type with two complex floats and one double
+  * test/CMakeLists.txt: remove extra find_package(Threads)
+  * Fixed half errhandling throw except
+  * Resolve issue promoting multiple std::complex</comment>
+    <requestid>1133733</requestid>
+  </revision>
+</revisionlist>

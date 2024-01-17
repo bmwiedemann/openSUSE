@@ -1,0 +1,11 @@
+		;;
+	*x86_64* | *ppc64* | *s390x* | *aarch64* )
+		ac_config_site_64bit_host=YES
+		;;
+	esac
+
+	if test "x$ac_config_site_64bit_host" = xYES; then
+		libdir='${exec_prefix}/lib64'
+	fi
+fi
+

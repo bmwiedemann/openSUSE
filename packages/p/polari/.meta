@@ -1,0 +1,5 @@
+<package name="polari" project="openSUSE:Factory">
+  <title>polari</title>
+  <description>Polari is a simple IRC Client that is designed to integrate seamlessly with GNOME 3.</description>
+  <devel project="GNOME:Factory" package="polari"/>
+</package>

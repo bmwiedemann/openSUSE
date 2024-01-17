@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Sun Aug 13 21:39:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Fix with new version of typing_extensions
+  * Handle non-indexed generics 
+
+-------------------------------------------------------------------
+Fri Apr 21 12:38:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:45:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Sat Jan  7 16:17:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Python 3.9 support
+  * support PEO 591
+  * Require newer typing extension
+  * Python 3.10 support
+  * Add support for UnionType in get_args 
+- drop typing_inspect-pr69-py39-GenericAlias.patch (upstream)
+
+-------------------------------------------------------------------
+Sun Mar 21 13:52:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add typing_inspect-pr69-py39-GenericAlias.patch to support
+  Python 3.9 -- gh#ilevkivskyi/typing_inspect#69 
+
+-------------------------------------------------------------------
+Sat Jul  4 03:54:20 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.6.0

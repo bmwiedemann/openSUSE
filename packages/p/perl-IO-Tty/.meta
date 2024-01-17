@@ -1,0 +1,32 @@
+<package name="perl-IO-Tty" project="openSUSE:Factory">
+  <title>Low-level allocate a pseudo-Tty, import constants.</title>
+  <description>'IO::Tty' is used internally by 'IO::Pty' to create a pseudo-tty. You
+wouldn't want to use it directly except to import constants, use 'IO::Pty'.
+For a list of importable constants, see the IO::Tty::Constant manpage.
+
+Windows is now supported, but ONLY under the Cygwin environment, see the
+http://sources.redhat.com/cygwin/ manpage.
+
+Please note that pty creation is very system-dependend. From my experience,
+any modern POSIX system should be fine. Find below a list of systems that
+'IO::Tty' should work on. A more detailed table (which is slowly getting
+out-of-date) is available from the project pages document manager at
+SourceForge the http://sourceforge.net/projects/expectperl/ manpage.
+
+If you have problems on your system and your system is listed in the
+&quot;verified&quot; list, you probably have some non-standard setup, e.g. you
+compiled your Linux-kernel yourself and disabled ptys (bummer!). Please ask
+your friendly sysadmin for help.
+
+If your system is not listed, unpack the latest version of 'IO::Tty', do a
+''perl Makefile.PL; make; make test; uname -a'' and send me
+(_RGiersig@cpan.org_) the results and I'll see what I can deduce from that.
+There are chances that it will work right out-of-the-box...
+
+If it's working on your system, please send me a short note with details
+(version number, distribution, etc. 'uname -a' and 'perl -V' is a good
+start; also, the output from &quot;perl Makefile.PL&quot; contains a lot of
+interesting info, so please include that as well) so I can get an overview.
+Thanks!</description>
+  <devel project="devel:languages:perl" package="perl-IO-Tty"/>
+</package>

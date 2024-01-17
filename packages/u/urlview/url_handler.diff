@@ -1,0 +1,71 @@
+--- url_handler.sh.suse
++++ url_handler.sh.suse	2007-11-23 13:03:27.058431091 +0100
+@@ -2,12 +2,15 @@
+ #
+ # url_handler.sh for SuSE Linux
+ #
+-# Copyright (c) 2000  SuSE GmbH  Nuernberg, Germany.
++# Copyright (c) 2000 SuSE GmbH Nuernberg, Germany.
++# Copyright (c) 2007 SuSE LINUX Products GmbH, Nuernberg, Germany
+ #
+ # Author: Werner Fink <werner@suse.de>
+ #
+    url="$1"
+ method="${1%%:*}"
++ttybrowser="lynx links w3m"
++x11browser="firefox Mozilla mozilla konqueror opera amaya Netscape netscape Mosaic mosaic"
+ 
+ if test "$url" = "$method" ; then
+     case "${url%%.*}" in
+@@ -44,7 +47,7 @@ shift
+ case "$method" in
+     ftp)
+ 	ftp=ftp
+-	if type -p ncftp >& /dev/null ; then
++	if type -p ncftp &> /dev/null ; then
+ 	    ftp=ncftp
+ 	else
+ 	    url="${url#ftp://}"
+@@ -56,22 +59,30 @@ case "$method" in
+ 	;;
+     file|http|https|gopher)
+ 	http=
+-	type -p lynx >& /dev/null && http=lynx
+-	test -n "$DISPLAY" && type -p netscape >& /dev/null && http=netscape
+-	test -n "$DISPLAY" && type -p Netscape >& /dev/null && http=Netscape
+-	case "$http" in
+-	    [nN]etscape) $http -remote "openURL($url)" || $netscape "$url" ;;
+-	    lynx)	 exec $http "$url" ;;
+-	    *)
+-		echo "No HTTP browser found."
+-		read -p "Press return to continue: "
+-		exit 0  # No error return
+-		;;
++	browser="${ttybrowser}"
++	if test -n "$DISPLAY" ; then
++	    browser="${x11browser} ${browser}"
++	fi
++	for p in ${browser} ; do
++	    http=$(type -p $p 2> /dev/null) && break
++	done
++	if test -z "$http" ; then
++	    echo "No HTTP browser found."
++	    read -p "Press return to continue: "
++	    exit 0  # No error return
++	fi
++	case "${http##*/}" in
++	    firefox)	$http -remote "openURL(${url},new-window)" || exec $http "${url}" ;;
++	    [nN]etscape|[mM]ozilla)
++			$http -noraise -remote "xfeDoCommand(openBrowser)" &> /dev/null && \
++			$http -remote "openURL(${url})" || \
++			exec $http "${url}" ;;
++	    *)		exec $http "${url}" ;;
+ 	esac
+ 	;;
+     mailto)
+ 	: ${MAILER:=mutt}
+-	if type -p ${MAILER} >& /dev/null ; then
++	if type -p ${MAILER} &> /dev/null ; then
+ 	    exec ${MAILER} "${url#mailto:}"
+ 	else
+ 	    echo "No mailer ${MAILER} found in path."

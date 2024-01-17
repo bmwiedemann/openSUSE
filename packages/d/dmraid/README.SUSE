@@ -1,0 +1,11 @@
+Note about some pdc card:
+
+  Model: "Promise FastTrak100 TX2"
+  Vendor: pci 0x105a "Promise Technology, Inc."
+  Device: pci 0x6268 "PDC20270 (FastTrak100 LP/TX2/TX4)"
+  SubVendor: pci 0x105a "Promise Technology, Inc."
+  SubDevice: pci 0x4d68 "FastTrak100 TX2"
+
+This card detects only devices to 128 GB. If you are running dmraid
+with this card you will only be able to use the space up to this limit.
+

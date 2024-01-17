@@ -1,0 +1,8 @@
+<package name="dracut-sshd" project="openSUSE:Factory">
+  <title>dracut-sshd</title>
+  <description>This Dracut module integrates the OpenSSH sshd into your
+initramfs. It allows for remote unlocking of a fully encrypted
+root filesystem and remote access to the Dracut emergency shell
+(i.e. early userspace).</description>
+  <devel project="Base:System" package="dracut-sshd"/>
+</package>

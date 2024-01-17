@@ -1,0 +1,13 @@
+--- incubator-tvm-0.7.0.orig/python/tvm/_ffi/libinfo.py	2020-11-02 15:40:42.406929865 +0100
++++ incubator-tvm-0.7.0/python/tvm/_ffi/libinfo.py	2020-11-02 15:41:07.187143915 +0100
+@@ -82,8 +82,8 @@ def find_lib_path(name=None, search_path
+     # Pip lib directory
+     dll_path.append(os.path.join(ffi_dir, ".."))
+     # Default cmake build directory
+-    dll_path.append(os.path.join(source_dir, "build"))
+-    dll_path.append(os.path.join(source_dir, "build", "Release"))
++    dll_path.append(os.path.join(source_dir, "build_cmake"))
++    dll_path.append(os.path.join(source_dir, "build_cmake", "Release"))
+     # Default make build directory
+     dll_path.append(os.path.join(source_dir, "lib"))
+ 

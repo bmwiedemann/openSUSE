@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sat Sep  2 13:23:51 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- fixed a bug where the sftp connection scheme was unusable (issue 4755)
+
+-------------------------------------------------------------------
+Sat Mar 26 10:51:50 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.4.1
+  * fixed bug where the sftp event type was registered twice (issue 4389) 
+
+-------------------------------------------------------------------
+Fri Jan 21 13:24:08 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.4
+  * added support for the data provider API
+  * fixed a core dump when a SFTPClient disconnection occurs with 
+    open SSH2Channel objects (issue 3943)
+  * implemented support for serializing connection objects (issue 3696)
+  * implemented support for auto-reconnecting lost connections in the 
+    SftpPoller module (issue 1846)
+- Remove cmake-fix-missing-pthread.patch because it is not required any more
+
+-------------------------------------------------------------------
+Thu Jul 29 07:54:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.3.0 for qore release 0.9.15
+  (version can be found inside the CMakeLists.txt, the git tag
+  describes only the compatible qore release)
+  * added the Ssh2Connections user module
+  * added the get() and put() SFTPClient methods supporting streams
+  * fixed bugs retrieving zero-length text files with SFTPClient
+    getFile, getTextFile, get, and retrieveFile
+  * fixed bugs streaming data with SFTPClient transferFile, and put
+- Use cmake and modernized the spec file
+- Make module compatible with current qore package
+- Add cmake-fix-missing-pthread.patch
+
+-------------------------------------------------------------------
+Wed Apr 14 09:53:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop -m64/-m32 flags on Arm
+- Fix build on aarch64
+
+-------------------------------------------------------------------
+Fri Aug  1 21:54:53 UTC 2014 - dvlaeev@suse.com
+
+- Fix ppc64le build 
+
+-------------------------------------------------------------------
+Tue Jul 30 14:20:50 UTC 2014 - petr@yarpen.cz
+
+- migrated to OBS file layout
+
+-------------------------------------------------------------------
+Fri Dez 11 16:35:40 UTC 2020 - sarah.kriesch@ibm.com
+
+- Fix s390x build

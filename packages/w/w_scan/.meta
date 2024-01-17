@@ -1,0 +1,16 @@
+<package name="w_scan" project="openSUSE:Factory">
+  <title>Tool for scanning DVB transponders</title>
+  <description>w_scan is a small command line utility used to perform frequency
+scans for DVB and ATSC transmissions.
+It is capable of creating channels.conf files (in different output formats !)
+as well as initial tuning data for scan.
+It's based on the utility scan from linuxtv-dvb-apps,
+but meanwhile it was heavily changed and has different features:
+
+1. no need for &quot;initial transponders&quot;, and such no need for a config file
+2. w_scan finds automatically the best matching dvb card
+3. complete different command line options
+4. a different default output format as well as bunch of output formats
+   (if you feel, that some format is missing - contact me)</description>
+  <devel project="hardware" package="w_scan"/>
+</package>

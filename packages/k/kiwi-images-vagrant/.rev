@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>009721490d1e3292a3f87cc9e9f000c5</srcmd5>
+    <version>1.0</version>
+    <time>1569851889</time>
+    <user>dimstar_suse</user>
+    <comment>Re-submission of the Tumbleweed vagrant box, now with a simpler name matching the Leap images, too.</comment>
+    <requestid>733652</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>154353a0a2b339dccf015e3357626920</srcmd5>
+    <version>1.0</version>
+    <time>1572776176</time>
+    <user>dimstar_suse</user>
+    <comment>Add bootstrap package openSUSE-release-appliance-vagrant</comment>
+    <requestid>743851</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>85e44fab39a5dd23463d1dcefc4eebf3</srcmd5>
+    <version>1.0</version>
+    <time>1578867518</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop required package ifplugd
+</comment>
+    <requestid>762894</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1689bc384c676bd758bdd0f86e9197cc</srcmd5>
+    <version>1.0</version>
+    <time>1584744938</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix boo#1167232: use the virtio driver on aarch64 for the mouse
+</comment>
+    <requestid>786922</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8b7a5aedf5fecabdbe54bf1f7093e4e6</srcmd5>
+    <version>1.0</version>
+    <time>1591862309</time>
+    <user>dimstar_suse</user>
+    <comment>Only modify /etc/vimrc in config.sh if it exists</comment>
+    <requestid>813159</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>60e2d510807543dc50e7fa1013e67509</srcmd5>
+    <version>1.0</version>
+    <time>1597955017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827253</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>6fdf0d744ae89404b38effebdcc3a005</srcmd5>
+    <version>1.0</version>
+    <time>1609147783</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>858497</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>7e419fbf334dced469ca7294ff9952af</srcmd5>
+    <version>1.0</version>
+    <time>1625675384</time>
+    <user>dimstar_suse</user>
+    <comment>Enable I/O APIC for Virtualbox vagrant box</comment>
+    <requestid>904155</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>085a37c05721cbe83c1a0f18ecc2947b</srcmd5>
+    <version>1.0</version>
+    <time>1630012460</time>
+    <user>dimstar_suse</user>
+    <comment>Fix modification of the sshd config when /usr/etc/ is used</comment>
+    <requestid>913996</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>52602d653cad22c776ff1523670741c1</srcmd5>
+    <version>1.0</version>
+    <time>1633963723</time>
+    <user>dimstar_suse</user>
+    <comment>Don't use rsync for synchronized folders for virtualbox</comment>
+    <requestid>924213</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e2cd905394d9c0492145a73b5a29f86a</srcmd5>
+    <version>1.0</version>
+    <time>1660485324</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop virtualbox-guest-x11 dependency from virtualbox flavor: this
+  package is no longer being built. (forwarded request 994753 from dimstar)</comment>
+    <requestid>994756</requestid>
+  </revision>
+</revisionlist>

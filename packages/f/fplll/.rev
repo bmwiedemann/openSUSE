@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>60a124150242c9dee2ec0cea400cda9b</srcmd5>
+    <version>5.1.0</version>
+    <time>1505334817</time>
+    <user>dimstar_suse</user>
+    <comment>rename from libfplll</comment>
+    <requestid>523381</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9bdcca7df13aa73b03e3623f04bc20da</srcmd5>
+    <version>5.2.0</version>
+    <time>1516711625</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.2.0</comment>
+    <requestid>559896</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e68272d745270ca500dbba702d900614</srcmd5>
+    <version>5.2.1</version>
+    <time>1540200343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 5.2.1</comment>
+    <requestid>643480</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>18a6de1653fccf76d2493e97faaf1c2c</srcmd5>
+    <version>5.3.0</version>
+    <time>1574677508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.0</comment>
+    <requestid>750567</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9348f2536204a4678d91b006e377987f</srcmd5>
+    <version>5.3.1</version>
+    <time>1576585782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.1</comment>
+    <requestid>757378</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ae124639fc9de6513de5ed2801f18c73</srcmd5>
+    <version>5.3.2</version>
+    <time>1591381481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.2</comment>
+    <requestid>811814</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c667f9858becab451070b37bca9b6321</srcmd5>
+    <version>5.3.3</version>
+    <time>1593458334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.3</comment>
+    <requestid>817747</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9aa0e362c7b28cb8ea2678c3de69d236</srcmd5>
+    <version>5.4.0</version>
+    <time>1607197016</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.4.0</comment>
+    <requestid>853174</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f944effa2bb7280164c8d52fcae5d82a</srcmd5>
+    <version>5.4.1</version>
+    <time>1621034683</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.4.1</comment>
+    <requestid>893227</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e07cbd0796dce80f461581a6bd239b8d</srcmd5>
+    <version>5.4.2</version>
+    <time>1653503712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.4.2</comment>
+    <requestid>979163</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ed40d536a6fa465e909ffe7872b6bc17</srcmd5>
+    <version>5.4.2</version>
+    <time>1670703518</time>
+    <user>dimstar_suse</user>
+    <comment>- Limit build parallelism with limit_build macro to avoid
+  occasional build failure due to OOM. (forwarded request 1041919 from StefanBruens)</comment>
+    <requestid>1041938</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>416a5c804d41b95109bda3ff5d7d0533</srcmd5>
+    <version>5.4.3</version>
+    <time>1671635202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.4.3</comment>
+    <requestid>1043990</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f4e8f0a17321e4e81da91c27c31751e</srcmd5>
+    <version>5.4.4</version>
+    <time>1673021140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.4.4</comment>
+    <requestid>1056249</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ed89ebd7f096e7869f44001ebe805dd8</srcmd5>
+    <version>5.4.5</version>
+    <time>1697657144</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 5.4.5</comment>
+    <requestid>1118394</requestid>
+  </revision>
+</revisionlist>

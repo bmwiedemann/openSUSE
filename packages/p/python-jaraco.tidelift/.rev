@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7448f5e93b08729940cf207601b4c248</srcmd5>
+    <version>1.5.0</version>
+    <time>1661257791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998720</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>105c9069892874cb95860dccba51ef23</srcmd5>
+    <version>1.5.0</version>
+    <time>1661497693</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires as this package contains no tests.</comment>
+    <requestid>999307</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0d3e35cbeb128a90b9b346027cdb79d9</srcmd5>
+    <version>1.5.0</version>
+    <time>1661593789</time>
+    <user>dimstar_suse</user>
+    <comment> - Remove unneeded BuildRequires as this package contains no tests.</comment>
+    <requestid>999352</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e42ed9528d19862ee2cd94e9406d94fc</srcmd5>
+    <version>1.5.0</version>
+    <time>1662016845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000124</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>29d2001527ba4bb1eeb81d60c0aca5e1</srcmd5>
+    <version>1.5.1</version>
+    <time>1683728339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+  * Fixed EncodingWarning in ReferralBanner.</comment>
+    <requestid>1085843</requestid>
+  </revision>
+</revisionlist>

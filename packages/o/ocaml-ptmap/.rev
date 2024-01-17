@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d150f730c4652d512aa627dd02eb34a0</srcmd5>
+    <version>2.0.3</version>
+    <time>1531947188</time>
+    <user>dimstar_suse</user>
+    <comment>OCaml implementation of an efficient maps over integers,
+from a paper by Chris Okasaki.
+
+It is a dependency of the next version of Haxe (4.0.0).</comment>
+    <requestid>621785</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b57b57744d67104919fcc2ada37bbfd</srcmd5>
+    <version>2.0.4</version>
+    <time>1583763768</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current dune macros
+- Update to version 2.04, via _service file
+  add new Map methods introduced in OCaml 4.07
+- Remove 97849cd31363ac80306d714915d76dc5a06672cb.patch</comment>
+    <requestid>777978</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9e4506365994846dde791dceb2e139e9</srcmd5>
+    <version>2.0.4</version>
+    <time>1598274418</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle OCaml 4.11 with ptmap-ocaml-4.11.patch</comment>
+    <requestid>828690</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d491ce25f2a32bd10f8b2d5420568f0a</srcmd5>
+    <version>2.0.5</version>
+    <time>1600079409</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>834213</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c72acacfa0aa55ebe96c6ab4f2d311bf</srcmd5>
+    <version>2.0.5</version>
+    <time>1685632754</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089872</requestid>
+  </revision>
+</revisionlist>

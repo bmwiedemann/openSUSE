@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e59a53a3ef1338fe7d9ad543ebc82394</srcmd5>
+    <version>6.8</version>
+    <time>1420833015</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM.</comment>
+    <requestid>266214</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>627cad24077f489417a0c69fe4f260fd</srcmd5>
+    <version>6.9</version>
+    <time>1426680272</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept these changes.</comment>
+    <requestid>290806</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36d8ffcd07593a61588dfca2e93d092a</srcmd5>
+    <version>6.10</version>
+    <time>1454352977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356740</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10bfca5ee8eb1a7bffc9cb34549e6290</srcmd5>
+    <version>6.11</version>
+    <time>1456320348</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361168</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1360da6134c6a8eaa1bed55ab6c481b6</srcmd5>
+    <version>6.13</version>
+    <time>1585602463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789840</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3c96a74e1a0fe4aec860f39d1858f7e</srcmd5>
+    <version>6.14</version>
+    <time>1690278631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099766</requestid>
+  </revision>
+</revisionlist>

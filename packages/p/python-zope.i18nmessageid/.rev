@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8730b34ee226c1eb9ee180bb99b1b2d</srcmd5>
+    <version>4.0.2</version>
+    <time>1391376224</time>
+    <user>coolo</user>
+    <comment>Zope Location
+
+New dependecy of python-Pyramid</comment>
+    <requestid>212340</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f8730b34ee226c1eb9ee180bb99b1b2d</srcmd5>
+    <version>4.0.2</version>
+    <time>1409303032</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a644486bd824d2089bb6a729abe3bb7</srcmd5>
+    <version>4.0.3</version>
+    <time>1431980550</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.3
+- rename CHANGES.txt to CHANGES.rst: changed upstream
+- rename README.txt to README.rst: changed upstream (forwarded request 307324 from benoit_monin)</comment>
+    <requestid>307500</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6129357cf4862b4bfc99e498d362a660</srcmd5>
+    <version>4.1.0</version>
+    <time>1499754357</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 508895 from alois)</comment>
+    <requestid>508927</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eaff59c966b47471eafd32951ffc70ba</srcmd5>
+    <version>4.3.1</version>
+    <time>1554749591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691796</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>907b6ae0c6efe21b3d6f55d711844c64</srcmd5>
+    <version>4.3.1</version>
+    <time>1571210235</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738425</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54b4d46712199fc9e110c6c3562ba127</srcmd5>
+    <version>5.0.0</version>
+    <time>1579792262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766057</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>16a4505f83451943fab1be998b296285</srcmd5>
+    <version>5.0.1</version>
+    <time>1585265180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785673</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f4f766bd7eb2e4baaadcd6d97d355033</srcmd5>
+    <version>5.0.1</version>
+    <time>1586973891</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in python2 pkg in doc subpkg</comment>
+    <requestid>792450</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>e0a2186c4cc5594ec1c33569124ecfe3</srcmd5>
+    <version>5.0.1</version>
+    <time>1634754204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925648</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>627c0ada91c7b1ff46e891759e184a53</srcmd5>
+    <version>5.1.0</version>
+    <time>1667994969</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file, make rpmlint happy.
+- -doc subpackage should be noarch.
+- update to version 5.1.0
+  * Added support for Python 3.9, 3.10 and 3.11.
+</comment>
+    <requestid>1034426</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a9d46ddc167cb93a9f523206a2318866</srcmd5>
+    <version>5.1.1</version>
+    <time>1670430838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040339</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>eeb2fd809572682ddf66f20efd8fb4ab</srcmd5>
+    <version>5.1.1</version>
+    <time>1675357663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062480</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>6eb7dab38e30a12c250fbef6c4e79f7f</srcmd5>
+    <version>5.1.1</version>
+    <time>1683212988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084330</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>407e65ac56d7adcb3b441f19af338b4b</srcmd5>
+    <version>6.0.1</version>
+    <time>1683630416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.1:
+  * Drop dependency on ``six``.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add preliminary support for Python 3.12a5.</comment>
+    <requestid>1085137</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c0d54536bdf743562f67b7f13b4e1c5d</srcmd5>
+    <version>6.0.1</version>
+    <time>1690469401</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100793</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>826e48f02f7a69b0ddf227bde4d740d8</srcmd5>
+    <version>6.1.0</version>
+    <time>1704491952</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.0:
+  * Add support for Python 3.12.
+
+- Update to version 5.1.1
+  * Fix the possibility of a rare crash in the C extension when
+  * Add attributes to support pluralization on a Message and update
+  * Fix a regression copying Message objects in the Python</comment>
+    <requestid>1136297</requestid>
+  </revision>
+</revisionlist>

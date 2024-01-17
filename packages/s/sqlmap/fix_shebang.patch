@@ -1,0 +1,40 @@
+Only in sqlmap-1.5.ori/extra/icmpsh: icmpsh-m.c
+Only in sqlmap-1.5/extra/icmpsh: icmpsh-m.c.txt
+Only in sqlmap-1.5.ori/extra/icmpsh: icmpsh-s.c
+Only in sqlmap-1.5/extra/icmpsh: icmpsh-s.c.txt
+Only in sqlmap-1.5.ori/extra/runcmd/src/runcmd: runcmd.cpp
+Only in sqlmap-1.5/extra/runcmd/src/runcmd: runcmd.cpp.txt
+Only in sqlmap-1.5.ori/extra/runcmd/src/runcmd: stdafx.cpp
+Only in sqlmap-1.5/extra/runcmd/src/runcmd: stdafx.cpp.txt
+Only in sqlmap-1.5.ori/extra/runcmd/src/runcmd: stdafx.h
+Only in sqlmap-1.5/extra/runcmd/src/runcmd: stdafx.h.txt
+Index: sqlmap-1.8/extra/shutils/autocompletion.sh
+===================================================================
+--- sqlmap-1.8.orig/extra/shutils/autocompletion.sh
++++ sqlmap-1.8/extra/shutils/autocompletion.sh
+@@ -1,4 +1,4 @@
+-#/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ # source ./extra/shutils/autocompletion.sh
+ 
+Index: sqlmap-1.8/sqlmapapi.py
+===================================================================
+--- sqlmap-1.8.orig/sqlmapapi.py
++++ sqlmap-1.8/sqlmapapi.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ """
+ Copyright (c) 2006-2024 sqlmap developers (https://sqlmap.org/)
+Index: sqlmap-1.8/sqlmap.py
+===================================================================
+--- sqlmap-1.8.orig/sqlmap.py
++++ sqlmap-1.8/sqlmap.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ """
+ Copyright (c) 2006-2024 sqlmap developers (https://sqlmap.org/)

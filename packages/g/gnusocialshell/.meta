@@ -1,0 +1,5 @@
+<package name="gnusocialshell" project="openSUSE:Factory">
+  <title>Simple text-based GNU social client</title>
+  <description>GnuSocialShell is a simple FOSS useful text-based GNU social client for UNIX-like operating systems written in C.</description>
+  <devel project="network" package="gnusocialshell"/>
+</package>

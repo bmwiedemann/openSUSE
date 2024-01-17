@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a0d822f27bab3c1d5bbdcdbe1a5539d</srcmd5>
+    <version>19.2b1</version>
+    <time>1568623787</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730654</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>645cdc20100087b040897d2dbb7d4420</srcmd5>
+    <version>20.5.1</version>
+    <time>1593606430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.5.1:
+  * No upstream changelog.</comment>
+    <requestid>818032</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2cfdc271482624f0e926d62c7918aeff</srcmd5>
+    <version>20.8.0</version>
+    <time>1603645728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835550</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16db14e4ee128920818d03a4085ad826</srcmd5>
+    <version>21.11.13</version>
+    <time>1640617638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942723</requestid>
+  </revision>
+</revisionlist>

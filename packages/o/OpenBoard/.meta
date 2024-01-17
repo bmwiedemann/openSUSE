@@ -1,0 +1,6 @@
+<package name="OpenBoard" project="openSUSE:Factory">
+  <title>OpenBoard</title>
+  <description>Interactive whiteboard for schools and universities</description>
+  <devel project="Education" package="OpenBoard"/>
+  <url>http://openboard.ch/</url>
+</package>

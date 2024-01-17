@@ -1,0 +1,34 @@
+From e69da980c1bc3d6096db6446a5e14cac924146fa Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Mon, 19 Jun 2023 23:05:27 +0200
+Subject: [PATCH] Increase key expiry seconds in tests from 10s to 60s
+
+---
+ src/tests/cli_tests.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/tests/cli_tests.py b/src/tests/cli_tests.py
+index e6f5ed76..f0bcc757 100755
+--- a/src/tests/cli_tests.py
++++ b/src/tests/cli_tests.py
+@@ -1997,14 +1997,14 @@ class Keystore(unittest.TestCase):
+         matches = re.findall(r'(key expiration time: 63072000 seconds \(730 days\))', out)
+         self.assertEqual(len(matches), 1)
+ 
+-        # Expires in 10 seconds
+-        ret, out, _ = run_proc(RNPK, ['--homedir', RNPDIR, '--edit-key', '--set-expire', '10', 'primary_with_empty_password@rnp'])
++        # Expires in 60 seconds
++        ret, out, _ = run_proc(RNPK, ['--homedir', RNPDIR, '--edit-key', '--set-expire', '60', 'primary_with_empty_password@rnp'])
+         self.assertEqual(ret, 0)
+         self.assertRegex(out, r'(?s)^.*\[EXPIRES .*')
+ 
+         ret, out, _ = run_proc(RNP, ['--list-packets', kpath])
+         self.assertEqual(ret, 0)
+-        self.assertRegex(out, r'(?s)^.*key expiration time: 10 seconds \(0 days\).*')
++        self.assertRegex(out, r'(?s)^.*key expiration time: 60 seconds \(0 days\).*')
+ 
+         # Expires in 10 hours
+         ret, out, _ = run_proc(RNPK, ['--homedir', RNPDIR, '--edit-key', '--set-expire', '10h', 'primary_with_empty_password@rnp'])
+-- 
+2.41.0
+

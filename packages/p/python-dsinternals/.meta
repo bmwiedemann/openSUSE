@@ -1,0 +1,9 @@
+<package name="python-dsinternals" project="openSUSE:Factory">
+  <title>Directory Services Internals Library</title>
+  <description>A Python native library containing necessary classes, functions and
+structures to interact with Windows Active Directory.
+
+</description>
+  <devel project="devel:languages:python" package="python-dsinternals"/>
+  <url>http://github.com/p0dalirius/pydsinternals</url>
+</package>

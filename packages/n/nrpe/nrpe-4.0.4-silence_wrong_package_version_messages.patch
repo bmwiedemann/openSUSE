@@ -1,0 +1,31 @@
+Index: nrpe-4.0.3/src/nrpe.c
+===================================================================
+--- nrpe-4.0.3.orig/src/nrpe.c
++++ nrpe-4.0.3/src/nrpe.c
+@@ -1764,7 +1764,7 @@ void handle_connection(int sock)
+ 	/* recv() error or client disconnect */
+ 	if (rc <= 0) {
+ 		/* log error */
+-		logit(LOG_ERR, "Could not read request from client %s, bailing out...", remote_host);
++		logit(LOG_INFO, "Could not read request from client %s, bailing out...", remote_host);
+ 		if (v3_receive_packet)
+ 			free(v3_receive_packet);
+ #ifdef HAVE_SSL
+@@ -2114,7 +2114,7 @@ int read_packet(int sock, void *ssl_ptr,
+ 
+ 		packet_ver = ntohs(v2_pkt->packet_version);
+ 		if (packet_ver != NRPE_PACKET_VERSION_2 && packet_ver != NRPE_PACKET_VERSION_4) {
+-			logit(LOG_ERR, "Error: (use_ssl == false): Request packet version was invalid!");
++			logit(LOG_INFO, "Error: (use_ssl == false): Request packet version was invalid!");
+ 			return -1;
+ 		}
+ 
+@@ -2198,7 +2198,7 @@ int read_packet(int sock, void *ssl_ptr,
+ 
+ 		packet_ver = ntohs(v2_pkt->packet_version);
+ 		if (packet_ver != NRPE_PACKET_VERSION_2 && packet_ver != NRPE_PACKET_VERSION_4) {
+-			logit(LOG_ERR, "Error: (use_ssl == true): Request packet version was invalid!");
++			logit(LOG_INFO, "Error: (use_ssl == true): Request packet version was invalid!");
+ 			return -1;
+ 		}
+ 

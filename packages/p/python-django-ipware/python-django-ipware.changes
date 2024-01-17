@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Fri Nov 10 13:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.2:
+  * Enhancement:
+  * Drop Python 3.7 support
+  * Add support for Django 4.2
+  * Drop support for Django 4.0
+  * Drop support for PyPy
+  * Readme updates to encourage users to use `python-ipware`
+    instead of `django-ipware` (thx: rposborne)
+
+-------------------------------------------------------------------
+Thu Oct  5 09:20:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Add HTTP_X_CLIENT_IP to defaults.py
+  * feat: support for python/django versions
+  * Add Missing Comma and Extend Private IPv6 Prefix List
+  * add deprecation notice
+
+-------------------------------------------------------------------
+Sun May  7 18:43:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Added support for Python 3.11
+  * Drop support for Python 3.6, Django 2.2
+
+-------------------------------------------------------------------
+Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Tumbleweed Python 3.6 incompatible with Django 4
+
+-------------------------------------------------------------------
+Sun Dec 26 10:44:22 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v4.0.2
+  * Added support for Python 3.10
+- from v4.0.1
+  * Added test for django 4.0
+- from v4.0.0
+  * Added test to cover more proxy scenarios
+- from v3.0.3-3.0.7
+  * Clean ups
+- from v3.0.2
+  * Add support for ppc64le
+
+-------------------------------------------------------------------
+Sun Sep 13 12:42:46 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to v3.0.1
+
+-------------------------------------------------------------------
+Tue Mar 31 08:27:54 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.1.0

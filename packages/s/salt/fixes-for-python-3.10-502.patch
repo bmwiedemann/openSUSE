@@ -1,0 +1,44 @@
+From 4996f423f14369fad14a9e6d2d3b8bd750c77fc7 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Tue, 5 Apr 2022 12:04:46 +0300
+Subject: [PATCH] Fixes for Python 3.10 (#502)
+
+* Use collections.abc.Mapping instead collections.Mapping in state
+---
+ salt/state.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/salt/state.py b/salt/state.py
+index ab84cb8b4d..489424a083 100644
+--- a/salt/state.py
++++ b/salt/state.py
+@@ -12,7 +12,6 @@ The data sent to the state calls is as follows:
+ """
+ 
+ 
+-import collections
+ import copy
+ import datetime
+ import fnmatch
+@@ -27,6 +26,8 @@ import sys
+ import time
+ import traceback
+ 
++from collections.abc import Mapping
++
+ import salt.channel.client
+ import salt.fileclient
+ import salt.loader
+@@ -3513,7 +3514,7 @@ class State:
+         """
+         for chunk in high:
+             state = high[chunk]
+-            if not isinstance(state, collections.Mapping):
++            if not isinstance(state, Mapping):
+                 continue
+             for state_ref in state:
+                 needs_default = True
+-- 
+2.39.2
+
+

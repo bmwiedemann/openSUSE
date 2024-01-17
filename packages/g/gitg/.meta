@@ -1,0 +1,7 @@
+<package name="gitg" project="openSUSE:Factory">
+  <title>Git repository viewer</title>
+  <description>gitg is a GitX clone for GNOME/gtk+. It aims at being a small, fast and
+convenient tool to visualize git history and actions that benefit from a
+graphical presentation.</description>
+  <devel project="GNOME:Factory" package="gitg"/>
+</package>

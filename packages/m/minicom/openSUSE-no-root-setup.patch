@@ -1,0 +1,21 @@
+diff -Nur minicom-2.8/src/config.c new/src/config.c
+--- minicom-2.8/src/config.c	2021-01-01 18:45:55.000000000 +0100
++++ new/src/config.c	2022-05-23 15:22:59.218799729 +0200
+@@ -1372,7 +1372,7 @@
+ int dodflsave(void)
+ {
+   FILE *fp;
+-  char *fname = dosetup ? parfile : pparfile;
++  char *fname = getuid() == 0 ? parfile : pparfile;
+ 
+   if ((fp = fopen(fname, "w")) == NULL) {
+     werror(_("Cannot write to %s"), fname);
+@@ -1427,7 +1427,7 @@
+   s = input(_("Give name to save this configuration?"), ifile, sizeof(ifile));
+   if (s != (char *)0 && *s != 0) {
+     if (dosetup) {
+-      snprintf(parfile, sizeof(parfile), "%s/minirc.%s", CONFDIR, s);
++      snprintf(pparfile, sizeof(pparfile), "%s/.minirc.%s", homedir, s);
+     } else {
+       snprintf(pparfile, sizeof(pparfile), "%s/.minirc.%s", homedir, s);
+     }

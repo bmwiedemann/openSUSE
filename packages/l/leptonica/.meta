@@ -1,0 +1,9 @@
+<package name="leptonica" project="openSUSE:Factory">
+  <title>Leptonica Library</title>
+  <description>Library for efficient image processing and image analysis
+ operations.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="leptonica"/>
+  <url>http://code.google.com/p/leptonica/</url>
+</package>

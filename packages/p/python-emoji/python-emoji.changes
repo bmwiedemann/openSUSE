@@ -1,0 +1,212 @@
+-------------------------------------------------------------------
+Wed Dec  6 20:35:57 UTC 2023 - Matthias Bach <marix@marix.org> - 2.9.0
+
+- Update to 2.9.0
+  * Added Russian translation.
+- On Leap also package this for newer Python versions.
+
+-------------------------------------------------------------------
+Thu Aug 17 15:59:47 UTC 2023 - Matthias Bach <marix@marix.org> - 2.8.0
+
+- Update to 2.8.0
+  * Update translations to unicode release-43-1
+  * Include "derived annotations"-translations from unicode CLDR
+  * Fix translations for emoji that have multiple forms with/out \uFE0F
+  * Remove multiple underscores __, ___, ____ and - from translations
+
+-------------------------------------------------------------------
+Tue Jul 25 19:12:49 UTC 2023 - Matthias Bach <marix@marix.org> - 2.7.0
+
+- Update to 2.7.0
+  * Extract aliases from cheat sheet and youtube
+  * Fix extracting translations from emojiterra
+  * Update EMOJI_DATA with new aliases and translations
+
+-------------------------------------------------------------------
+Wed Jun 28 09:38:08 UTC 2023 - Matthias Bach <marix@marix.org> - 2.6.0
+
+- Update to 2.6.0
+  * New function purely_emoji() | Check if a string contains only
+    emojis
+- Switch package to modern Python package build instead of legacy
+  setup.py invocation.
+
+-------------------------------------------------------------------
+Sat Jun 17 10:09:50 UTC 2023 - Matthias Bach <marix@marix.org> - 2.5.1
+
+- Update to 2.5.1
+  * Fix Malformed zero width joiner (\u200d) causing IndexError
+
+-------------------------------------------------------------------
+Thu Jun  8 09:15:09 UTC 2023 - Matthias Bach <marix@marix.org> - 2.5.0
+
+- Update to 2.5.0
+  * Added support for Multi-person skintones.
+  * The logic from demojize() is moved to two separate private
+    function tokenize() and filter_tokens() in a new file
+    emoji/tokenizer.py.
+- Include the list of supported langauges in the package
+  description.
+
+-------------------------------------------------------------------
+Wed May 24 15:41:07 UTC 2023 - Matthias Bach <marix@marix.org> - 2.4.0
+
+- Updated to 2.4.0
+  * Added Japanese, Korean, Indonesian, and Simplified Chinese.
+
+-------------------------------------------------------------------
+Mon Oct 31 20:44:01 UTC 2022 - Matthias Bach <marix@marix.org> - 2.2.0
+
+- Update to 2.2.0
+  *  Add support for Unicode Version 15
+
+-------------------------------------------------------------------
+Thu Sep 22 19:47:27 UTC 2022 - Matthias Bach <marix@marix.org> - 2.1.0
+
+- Update to 2.1.0
+  * Added Farsi support
+
+-------------------------------------------------------------------
+Mon Jul 18 17:16:56 UTC 2022 - Matthias Bach <marix@marix.org> - 2.0.0
+
+- Update to 2.0.0
+  * Removed the old dicts EMOJI_UNICODE_, UNICODE_EMOJI_
+  * Removed unused language=None parameters
+  * Removed use_alias parameter
+  * Removed the get_regexp method
+  * Removed emoji_lis
+  * Removed distinct_emoji_lis
+  * Made the list of languages public:
+    emoji.LANGUAGES = ['en','es','pt','it','fr','de']
+- Run all tests during packaging
+
+-------------------------------------------------------------------
+Fri Mar 11 10:28:54 UTC 2022 - Matthias Bach <marix@marix.org> - 1.7.0
+
+- Update to 1.7.0
+  * New functions emoji_list() and distinct_emoji_list() added.
+  * Added deprecation warnings for several functions and variables
+    that will be removed in version 2.0.0.
+
+-------------------------------------------------------------------
+Sat Jan 15 15:47:10 UTC 2022 - Matthias Bach <marix@marix.org> - 1.6.3
+
+- Update to 1.6.3
+  * Added support for counting unique emojis
+  * Improved performance of demojize()
+
+-------------------------------------------------------------------
+Fri Oct 15 18:03:55 UTC 2021 - Matthias Bach <marix@marix.org> - 1.6.1
+
+- Update to 1.6.1
+  * New is_emoji function
+  * Allow multiple aliases
+  * Fix unicode of some emoji in the langauge files
+
+-------------------------------------------------------------------
+Sat Sep 18 10:19:22 UTC 2021 - Matthias Bach <marix@marix.org> - 1.5.0
+
+- Update to 1.5.0
+  * Emojis of English version updated to the Emoji Charts v14.0
+- Drop obsolete `fix-python2.patch` that has been merged upstream.
+
+-------------------------------------------------------------------
+Wed Aug  4 19:23:18 UTC 2021 - Matthias Bach <marix@marix.org> - 1.4.2
+
+- Update to 1.4.2
+  * Added support for German naming of emojis.
+  * Added support for French naming of emojis.
+  * Added new function `replace_emoji` which strips emojis from
+    output.
+- Add patch `fix-python2.patch`: Fixes unicode emoji names on Python
+  2.
+
+-------------------------------------------------------------------
+Wed Jan 27 19:45:51 UTC 2021 - Matthias Bach <marix@marix.org> - 1.2.0
+
+- Update to 1.2.0
+  * Emojis of English version updated to the Emoji Charts v.13.1
+  * Added all emoji modifiers (skin tones).
+  * Added support for Italian naming of emojis.
+
+-------------------------------------------------------------------
+Sat Jan 23 15:18:12 UTC 2021 - Matthias Bach <marix@marix.org> - 1.0.1
+
+- Update to 1.0.1
+  * Added support of Spanish naming of emojis.
+  * Added support of Portuguese naming of emojis.
+
+-------------------------------------------------------------------
+Mon Aug 10 18:54:15 UTC 2020 - Matthias Bach <marix@marix.org>
+
+- Update to 0.6.0:
+  * Add variant selector for "emojize" function allowing to choose
+    between "base"(None), VS-15 ("text_type") and VS-16
+    ("emoji_type")
+  * Add new emoji (Added to Unicode 2019-01-27)
+- Drop obsolete remove_nose.patch
+
+-------------------------------------------------------------------
+Mon Mar 30 13:09:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add remove_nose.patch
+
+-------------------------------------------------------------------
+Sat Sep 14 09:39:45 UTC 2019 - Matthias Bach <marix@marix.org>
+
+- Update to 0.5.4:
+  * :robot: has been added as an alias for :robot_face:
+  * Package now officially supports Python 3.7
+
+-------------------------------------------------------------------
+Fri Sep 13 07:59:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.3:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Wed Apr 24 08:52:16 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.5.2
+  * no upstream changelog, see git log
+- run the test suite
+
+-------------------------------------------------------------------
+Fri Mar  1 10:57:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.1:
+  * Various small fixes
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:38 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Apr 15 13:58:05 UTC 2018 - tchvatal@suse.com
+
+- Fix source URL to use pythonhosted without hashes
+
+-------------------------------------------------------------------
+Sun Apr 15 09:14:15 UTC 2018 - marix@marix.org
+
+- Updated to upstream version 0.5.0.
+  + Updated emoji set.
+  + New function to count emojis in a string.
+- Fixed example in package description.
+
+-------------------------------------------------------------------
+Sun Apr 15 09:05:06 UTC 2018 - marix@marix.org
+
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed Mar 14 19:24:33 UTC 2018 - marix@marix.org
+
+- Adjust test execution to single-spec format.
+- Properly declare the license file in the files section.
+
+-------------------------------------------------------------------
+Tue Mar 13 20:17:05 UTC 2018 - marix@marix.org
+
+- Initial package release.

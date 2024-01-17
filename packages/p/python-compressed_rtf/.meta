@@ -1,0 +1,8 @@
+<package name="python-compressed_rtf" project="openSUSE:Factory">
+  <title>Compressed Rich Text Format (RTF) compression and decompression package</title>
+  <description>Compressed Rich Text Format (RTF) compression and decompression package
+
+</description>
+  <devel project="devel:languages:python" package="python-compressed_rtf"/>
+  <url>https://github.com/delimitry/compressed_rtf</url>
+</package>

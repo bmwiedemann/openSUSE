@@ -1,0 +1,11 @@
+<package name="flite" project="openSUSE:Factory">
+  <title>Small, fast speech synthesis engine (text-to-speech)</title>
+  <description>Flite (festival-lite) is a small, fast run-time speech synthesis engine
+developed at CMU and primarily designed for small embedded machines and/or
+large servers. Flite is designed as an alternative synthesis engine to
+Festival for voices built using the FestVox suite of voice building tools.
+
+</description>
+  <devel project="network:telephony" package="flite"/>
+  <url>http://www.speech.cs.cmu.edu/flite</url>
+</package>

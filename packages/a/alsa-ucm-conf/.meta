@@ -1,0 +1,5 @@
+<package name="alsa-ucm-conf" project="openSUSE:Factory">
+  <title>ALSA UCM configurations</title>
+  <description></description>
+  <devel project="multimedia:libs" package="alsa-ucm-conf"/>
+</package>

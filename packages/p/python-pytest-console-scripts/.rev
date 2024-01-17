@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dcbc87574e77e9994d29cb2bc1c905ae</srcmd5>
+    <version>0.1.9</version>
+    <time>1566479113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725243</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>176c68687ac59c47579c4a94f73114e3</srcmd5>
+    <version>0.1.10</version>
+    <time>1568623866</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.1.10:
+  * Print out return code, stdout and stderr output</comment>
+    <requestid>730736</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2dd75e88364cecfa7dc582474d89d106</srcmd5>
+    <version>0.1.10</version>
+    <time>1569523236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the pytest requirement to &gt; 4 as per setup.py</comment>
+    <requestid>733104</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3f119eaf744a0011997c71f299c4252</srcmd5>
+    <version>0.2.0</version>
+    <time>1573853909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0:
+  * no upstream changelog</comment>
+    <requestid>748852</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ea139cbdb9223a3dac5496cc3134710f</srcmd5>
+    <version>0.2.0</version>
+    <time>1587467098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>793540</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b1ad79ec63f06be4bf97c2c2741061a1</srcmd5>
+    <version>0.2.0</version>
+    <time>1589579535</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in pytest twice</comment>
+    <requestid>805767</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>58bbf7d574e119576f5a4d5445ed162a</srcmd5>
+    <version>1.2.1</version>
+    <time>1639075536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>937342</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>58ec19d8d0461b4d2ed19c9e1c2ead27</srcmd5>
+    <version>1.2.1</version>
+    <time>1639855810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941307</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de6e578d93acf739d59481cc581cc244</srcmd5>
+    <version>1.3</version>
+    <time>1647618137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3:
+  * Add a note on manual result printing to README - #50
+  * Bump Python version to 3.6 - fix #51 
+- Add patch remove-mock.patch:
+  * Remove use of mock.</comment>
+    <requestid>962569</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d12f35cede6ffb333e642f9ef2a7f91</srcmd5>
+    <version>1.3.1</version>
+    <time>1647889869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * Remove use of mock.
+- Drop patch remove-mock.patch, included upstream.</comment>
+    <requestid>963380</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>045734765992791f0d802273d59e8473</srcmd5>
+    <version>1.4.1</version>
+    <time>1685632877</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * Dropped support for Python 3.7
+  * Fix loading scripts with non-UTF-8 encodings.
+  * Print output when a subprocess runner with `check=True` fails
+    was missing.
+  * Added type-hinting for all types,
+    `pytest_console_scripts.ScriptRunner`
+    can now be used to hint the `script_runner` fixture.
+  * Added support for the `shell` and `check` keywords for in-
+    process mode.
+  * Passing command arguments in `*args` is now deprecated and
+    will raise warnings.
+  * Dropped support for Python 3.6
+  * Install-time dependencies have been fixed.</comment>
+    <requestid>1090270</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>78fab410c3dfbc93fd344650b0e63969</srcmd5>
+    <version>1.4.1</version>
+    <time>1690215886</time>
+    <user>anag+factory</user>
+    <comment>- Fix build error for Leap.
+</comment>
+    <requestid>1099550</requestid>
+  </revision>
+</revisionlist>

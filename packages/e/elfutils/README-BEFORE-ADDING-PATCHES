@@ -1,0 +1,16 @@
+All patches need to have a patch description header similar to what is used in 
+SUSE kernel git tree. 
+
+Patches added without this will be reverted.
+
+From: Name <email>
+Subject: Summary of fix
+Date: date
+References: bnc#xxxxxx (bugzilla reference)
+Upstream: upstream revision or a description of why it is not upstream
+Signed-Off-by: Name <email> (same as From: if committer is patch author)
+
+Short paragraph describing problem/fix.
+
+References to upstream repo/commit-id if applicable.
+

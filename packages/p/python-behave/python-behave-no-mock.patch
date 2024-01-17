@@ -1,0 +1,143 @@
+diff -upr behave-1.2.6.orig/test/reporters/test_summary.py behave-1.2.6/test/reporters/test_summary.py
+--- behave-1.2.6.orig/test/reporters/test_summary.py	2022-05-17 16:51:03.364286060 +0200
++++ behave-1.2.6/test/reporters/test_summary.py	2022-05-17 16:51:03.432286489 +0200
+@@ -2,7 +2,7 @@
+ 
+ from __future__ import absolute_import, division
+ import sys
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from nose.tools import *
+ from behave.model import ScenarioOutline, Scenario
+ from behave.model_core import Status
+diff -upr behave-1.2.6.orig/test/test_formatter.py behave-1.2.6/test/test_formatter.py
+--- behave-1.2.6.orig/test/test_formatter.py	2022-05-17 16:51:03.364286060 +0200
++++ behave-1.2.6/test/test_formatter.py	2022-05-17 16:51:03.432286489 +0200
+@@ -6,7 +6,7 @@ import sys
+ import tempfile
+ import unittest
+ import six
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from nose.tools import *    # pylint: disable=wildcard-import, unused-wildcard-import
+ 
+ from behave.formatter._registry import make_formatters
+diff -upr behave-1.2.6.orig/test/test_log_capture.py behave-1.2.6/test/test_log_capture.py
+--- behave-1.2.6.orig/test/test_log_capture.py	2022-05-17 16:51:03.364286060 +0200
++++ behave-1.2.6/test/test_log_capture.py	2022-05-17 16:51:03.436286514 +0200
+@@ -1,7 +1,7 @@
+ from __future__ import absolute_import, with_statement
+ 
+ from nose.tools import *
+-from mock import patch
++from unittest.mock import patch
+ 
+ from behave.log_capture import LoggingCapture
+ from six.moves import range
+diff -upr behave-1.2.6.orig/test/test_matchers.py behave-1.2.6/test/test_matchers.py
+--- behave-1.2.6.orig/test/test_matchers.py	2022-05-17 16:51:03.364286060 +0200
++++ behave-1.2.6/test/test_matchers.py	2022-05-17 16:51:03.436286514 +0200
+@@ -1,6 +1,6 @@
+ # -*- coding: UTF-8 -*-
+ from __future__ import absolute_import, with_statement
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from nose.tools import *  # pylint: disable=wildcard-import, unused-wildcard-import
+ import parse
+ from behave.matchers import Match, Matcher, ParseMatcher, RegexMatcher, \
+diff -upr behave-1.2.6.orig/test/test_model.py behave-1.2.6/test/test_model.py
+--- behave-1.2.6.orig/test/test_model.py	2022-05-17 16:51:03.364286060 +0200
++++ behave-1.2.6/test/test_model.py	2022-05-17 16:51:03.436286514 +0200
+@@ -3,7 +3,7 @@
+ 
+ from __future__ import absolute_import, print_function, with_statement
+ import unittest
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from nose.tools import *  # pylint: disable=wildcard-import, unused-wildcard-import
+ import six
+ from six.moves import range     # pylint: disable=redefined-builtin
+diff -upr behave-1.2.6.orig/test/test_runner.py behave-1.2.6/test/test_runner.py
+--- behave-1.2.6.orig/test/test_runner.py	2022-05-17 16:51:03.364286060 +0200
++++ behave-1.2.6/test/test_runner.py	2022-05-17 16:51:03.436286514 +0200
+@@ -12,7 +12,7 @@ import unittest
+ import six
+ from six import StringIO
+ 
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from nose.tools import *  # pylint: disable=wildcard-import, unused-wildcard-import
+ 
+ from behave import runner_util
+diff -upr behave-1.2.6.orig/test/test_step_registry.py behave-1.2.6/test/test_step_registry.py
+--- behave-1.2.6.orig/test/test_step_registry.py	2022-05-17 16:51:03.364286060 +0200
++++ behave-1.2.6/test/test_step_registry.py	2022-05-17 16:51:03.436286514 +0200
+@@ -1,7 +1,7 @@
+ # -*- coding: UTF-8 -*-
+ # pylint: disable=unused-wildcard-import
+ from __future__ import absolute_import, with_statement
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ from nose.tools import *        # pylint: disable=wildcard-import
+ from six.moves import range     # pylint: disable=redefined-builtin
+ from behave import step_registry
+diff -upr behave-1.2.6.orig/test/test_tag_matcher.py behave-1.2.6/test/test_tag_matcher.py
+--- behave-1.2.6.orig/test/test_tag_matcher.py	2022-05-17 16:51:03.364286060 +0200
++++ behave-1.2.6/test/test_tag_matcher.py	2022-05-17 16:51:03.436286514 +0200
+@@ -2,7 +2,7 @@
+ 
+ from __future__ import absolute_import
+ from behave.tag_matcher import *
+-from mock import Mock
++from unittest.mock import Mock
+ from unittest import TestCase
+ import warnings
+ # -- REQUIRES: pytest
+diff -upr behave-1.2.6.orig/tests/api/_test_async_step34.py behave-1.2.6/tests/api/_test_async_step34.py
+--- behave-1.2.6.orig/tests/api/_test_async_step34.py	2022-05-17 16:51:03.412286363 +0200
++++ behave-1.2.6/tests/api/_test_async_step34.py	2022-05-17 16:51:03.436286514 +0200
+@@ -9,7 +9,7 @@ from behave.api.async_step import AsyncC
+ from behave._stepimport import use_step_import_modules
+ from behave.runner import Context, Runner
+ import sys
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ from .testing_support import StopWatch, SimpleStepContainer
+diff -upr behave-1.2.6.orig/tests/unit/test_capture.py behave-1.2.6/tests/unit/test_capture.py
+--- behave-1.2.6.orig/tests/unit/test_capture.py	2022-05-17 16:51:03.412286363 +0200
++++ behave-1.2.6/tests/unit/test_capture.py	2022-05-17 16:51:03.440286539 +0200
+@@ -6,7 +6,7 @@ Unittests for :mod:`behave.capture` modu
+ from __future__ import absolute_import, print_function
+ import sys
+ from behave.capture import Captured, CaptureController
+-from mock import Mock
++from unittest.mock import Mock
+ import pytest
+ 
+ # -----------------------------------------------------------------------------
+diff -upr behave-1.2.6.orig/tests/unit/test_context_cleanups.py behave-1.2.6/tests/unit/test_context_cleanups.py
+--- behave-1.2.6.orig/tests/unit/test_context_cleanups.py	2022-05-17 16:51:03.412286363 +0200
++++ behave-1.2.6/tests/unit/test_context_cleanups.py	2022-05-17 16:51:03.440286539 +0200
+@@ -13,7 +13,7 @@ OPEN ISSUES:
+ from __future__ import print_function
+ from behave.runner import Context, scoped_context_layer
+ from contextlib import contextmanager
+-from mock import Mock, NonCallableMock
++from unittest.mock import Mock, NonCallableMock
+ import pytest
+ 
+ 
+diff -upr behave-1.2.6.orig/tests/unit/test_fixture.py behave-1.2.6/tests/unit/test_fixture.py
+--- behave-1.2.6.orig/tests/unit/test_fixture.py	2022-05-17 16:51:03.412286363 +0200
++++ behave-1.2.6/tests/unit/test_fixture.py	2022-05-17 16:51:03.440286539 +0200
+@@ -12,7 +12,7 @@ from behave.fixture import \
+ from behave.runner import Context, CleanupError, scoped_context_layer
+ from behave._types import Unknown
+ import pytest
+-from mock import Mock
++from unittest.mock import Mock
+ import six
+ 
+ 

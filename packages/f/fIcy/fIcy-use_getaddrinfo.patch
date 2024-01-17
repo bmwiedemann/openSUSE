@@ -1,0 +1,417 @@
+From 759ccef40fb82b5dc7b1f0800208557cc2024aea Mon Sep 17 00:00:00 2001
+From: Yuri D'Elia <wavexx@thregr.org>
+Date: Sat, 3 Feb 2018 15:07:16 +0100
+Subject: [PATCH] Use getaddrinfo to resolve hostnames
+
+- Use getaddrinfo also to resolve service names
+- Get rid of getSrvName as a result
+- Accept service names everywhere
+- Print correct port name/service on connect
+---
+ Makefile    | 12 ++++++------
+ htfollow.cc | 11 +++++++----
+ http.cc     | 18 ++++--------------
+ http.hh     |  8 +++-----
+ resolver.cc | 37 -------------------------------------
+ resolver.hh | 22 ----------------------
+ socket.cc   | 41 ++++++++++++++++++++++++-----------------
+ socket.hh   | 12 ++++++------
+ urlparse.cc |  6 +++---
+ urlparse.hh |  8 ++++----
+ 10 files changed, 57 insertions(+), 118 deletions(-)
+ delete mode 100644 resolver.cc
+ delete mode 100644 resolver.hh
+
+diff --git a/Makefile b/Makefile
+index 786d05e..e3a50f7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ # Copyright(c) 2004-2017 by wave++ (Yuri D'Elia) <wavexx@thregr.org>
+ 
+ # Flags
+-CWARN += -Wall -Wextra -Wno-unused-parameter
++CWARN += -Wall -Wextra -Wno-unused-parameter -Wno-shadow
+ CXXFLAGS += -std=c++03 $(CWARN)
+ CPPFLAGS += -MD -D_FILE_OFFSET_BITS=64
+ 
+@@ -12,12 +12,12 @@ PREFIX := /usr/local
+ 
+ # Objects/targets
+ TARGETS := fIcy fResync fPls
+-fIcy_OBJECTS := msg.o resolver.o socket.o http.o tmparse.o urlencode.o \
+-	base64.o urlparse.o hdrparse.o sanitize.o htfollow.o authparse.o \
+-	match.o icy.o rewrite.o fIcy.o
++fIcy_OBJECTS := msg.o socket.o http.o tmparse.o urlencode.o base64.o \
++	urlparse.o hdrparse.o sanitize.o htfollow.o authparse.o match.o \
++	icy.o rewrite.o fIcy.o
+ fResync_OBJECTS := msg.o mpeg.o copy.o fResync.o
+-fPls_OBJECTS := msg.o resolver.o socket.o http.o tmparse.o urlencode.o \
+-	base64.o urlparse.o hdrparse.o sanitize.o htfollow.o authparse.o \
++fPls_OBJECTS := msg.o socket.o http.o tmparse.o urlencode.o base64.o \
++	urlparse.o hdrparse.o sanitize.o htfollow.o authparse.o \
+ 	plsparse.o fPls.o
+ 
+ 
+diff --git a/htfollow.cc b/htfollow.cc
+index c65ec5f..4b18f3b 100644
+--- a/htfollow.cc
++++ b/htfollow.cc
+@@ -51,11 +51,14 @@ htFollow(map<string, string>& pReply, const URL& url, const Http::Header qHeader
+   auto_ptr<Socket> s;
+   for(size_t level = limit, retry = retries;;)
+   {
+-    msg("connecting to (%s %d)", sanitize_esc(buf.server).c_str(), buf.port);
+-    Http::Http httpc(sanitize_esc(buf.server).c_str(),
+-	buf.port, (timeout? &tmBuf: NULL));
++    // display the correct port name/number
++    if(!buf.port.size())
++      buf.port = Http::Proto::port;
+ 
+-    msg("requesting data on (%s)", sanitize_esc(buf.path).c_str());
++    msg("connecting to %s:%s", sanitize_esc(buf.server).c_str(), buf.port.c_str());
++    Http::Http httpc(buf.server.c_str(), buf.port.c_str(), (timeout? &tmBuf: NULL));
++
++    msg("requesting data on %s", sanitize_esc(buf.path).c_str());
+     Http::Header aHeaders;
+     Http::Reply reply(&aHeaders);
+     try
+diff --git a/http.cc b/http.cc
+index 5603f60..00474ac 100644
+--- a/http.cc
++++ b/http.cc
+@@ -33,6 +33,7 @@ namespace Http
+   {
+     // definitions
+     const char* proto = "http";
++    const char* port = "80";
+     const char* protoTy = "tcp";
+     const char* version = "HTTP/1.0";
+     const char* endl = "\r\n";
+@@ -51,10 +52,10 @@ namespace Http
+   }
+ 
+ 
+-  Http::Http(const char* host, const int port, const timeval* timeout)
++  Http::Http(const char* host, const char* port, const timeval* timeout)
+   {
+     this->host = strdup(host);
+-    this->port = (port? port: getSrvPort());
++    this->port = strdup(port? port: Proto::port);
+ 
+     if(!timeout)
+       this->timeout = NULL;
+@@ -69,23 +70,12 @@ namespace Http
+   Http::~Http()
+   {
+     delete []host;
++    delete []port;
+     if(timeout)
+       delete timeout;
+   }
+ 
+ 
+-  int
+-  Http::getSrvPort()
+-  {
+-    servent* se(getservbyname(Proto::proto, Proto::protoTy));
+-    if(!se)
+-      throw
+-	std::runtime_error("error while trying to identify http port number");
+-
+-    return ntohs(se->s_port);
+-  }
+-
+-
+   void
+   Http::readReply(Socket& s, Reply& reply)
+   {
+diff --git a/http.hh b/http.hh
+index 0b75cf0..1e94cdd 100644
+--- a/http.hh
++++ b/http.hh
+@@ -22,6 +22,7 @@ namespace Http
+   {
+     // parameters
+     const extern char* proto;
++    const extern char* port;
+     const extern char* protoTy;
+     const extern char* version;
+     const size_t hdrLen = 1024;
+@@ -77,13 +78,10 @@ namespace Http
+   class Http
+   {
+     char* host;
+-    int port;
++    char* port;
+     timeval* timeout;
+ 
+     // http functions
+-    int
+-    getSrvPort();
+-
+     void
+     readReply(Socket& s, Reply& reply);
+ 
+@@ -97,7 +95,7 @@ namespace Http
+ 
+   public:
+     // de/constructors
+-    Http(const char* host, const int port = 0, const timeval* timeout = NULL);
++    Http(const char* host, const char* port = NULL, const timeval* timeout = NULL);
+     ~Http();
+ 
+     // basic functionality
+diff --git a/resolver.cc b/resolver.cc
+deleted file mode 100644
+index 5e8aa24..0000000
+--- a/resolver.cc
++++ /dev/null
+@@ -1,37 +0,0 @@
+-/*
+- * resolver - IN4/6 address resolver - implementation
+- * Copyright(c) 2003-2008 of wave++ (Yuri D'Elia)
+- * Distributed under GNU LGPL without ANY warranty.
+- */
+-
+-// local headers
+-#include "resolver.hh"
+-
+-// system headers
+-#include <stdexcept>
+-
+-// c system headers
+-#include <sys/types.h>
+-#include <sys/socket.h>
+-#include <netinet/in.h>
+-#include <netdb.h>
+-#include <string.h>
+-
+-
+-// implementation
+-in_addr_t
+-resolve(const char* host, in_addr_t* addr)
+-{
+-  // call the native gethostbyname
+-  hostent* he(gethostbyname(host));
+-  if(!he)
+-    throw std::runtime_error(hstrerror(h_errno));
+-
+-  in_addr_t r;
+-  memcpy(&r, *he->h_addr_list, sizeof(r));
+-  if(addr)
+-    *addr = r;
+-
+-  return r;
+-}
+-
+diff --git a/resolver.hh b/resolver.hh
+deleted file mode 100644
+index df6e265..0000000
+--- a/resolver.hh
++++ /dev/null
+@@ -1,22 +0,0 @@
+-/*
+- * resolver - IN4/6 address resolver
+- * Copyright(c) 2003-2008 of wave++ (Yuri D'Elia)
+- * Distributed under GNU LGPL without ANY warranty.
+- */
+-
+-#ifndef resolver_hh
+-#define resolver_hh
+-
+-// system headers
+-#include <cstddef>
+-
+-// c system headers
+-#include <arpa/inet.h>
+-
+-
+-// resolve use gethostbyname internally, which is not reentrant
+-in_addr_t
+-resolve(const char* host, in_addr_t* addr = NULL);
+-
+-#endif
+-
+diff --git a/socket.cc b/socket.cc
+index f58eaa2..db2bd40 100644
+--- a/socket.cc
++++ b/socket.cc
+@@ -6,13 +6,11 @@
+ 
+ // local headers
+ #include "socket.hh"
+-#include "resolver.hh"
+ 
+ // system headers
+ #include <stdexcept>
+ 
+ // c system headers
+-#include <netinet/in.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <errno.h>
+@@ -31,26 +29,16 @@ Socket::~Socket() throw()
+ 
+ 
+ void
+-Socket::open(const in_addr_t& host, const int port, const timeval* timeout)
++Socket::open(const addrinfo& ai, const timeval* timeout)
+ {
+   if(conn)
+     close();
+ 
+-  fd = socket(AF_INET, SOCK_STREAM, 0);
++  fd = socket(ai.ai_family, ai.ai_socktype, ai.ai_protocol);
+   if(fd == -1)
+     throw std::runtime_error(strerror(errno));
+ 
+-  // bind the socket
+-  sockaddr_in addr;
+-  addr.sin_family = AF_INET;
+-
+-  // fetch the port number
+-  addr.sin_port = htons(port);
+-  addr.sin_addr.s_addr = host;
+-  memset(&(addr.sin_zero), 0, sizeof(addr.sin_zero));
+-
+-  if(::connect(fd, reinterpret_cast<struct sockaddr*>(&addr),
+-	 sizeof(struct sockaddr)) == -1)
++  if(::connect(fd, ai.ai_addr, ai.ai_addrlen) == -1)
+     throw std::runtime_error(strerror(errno));
+ 
+   if(!timeout)
+@@ -66,9 +54,28 @@ Socket::open(const in_addr_t& host, const int port, const timeval* timeout)
+ 
+ 
+ void
+-Socket::open(const char* host, const int port, const timeval* timeout)
++Socket::open(const char* host, const char* port, const timeval* timeout)
+ {
+-  open(resolve(host), port, timeout);
++  // resolve the hostname
++  addrinfo hints;
++  memset(&hints, 0, sizeof(hints));
++  hints.ai_family = AF_UNSPEC;
++  hints.ai_socktype = SOCK_STREAM;
++
++  addrinfo* ai;
++  int r = getaddrinfo(host, port, &hints, &ai);
++  if(r)
++    throw std::runtime_error(gai_strerror(r));
++
++  // connect
++  try { open(*ai, timeout); }
++  catch(...)
++  {
++    freeaddrinfo(ai);
++    throw;
++  }
++
++  freeaddrinfo(ai);
+ }
+ 
+ 
+diff --git a/socket.hh b/socket.hh
+index 33a4003..d810de3 100644
+--- a/socket.hh
++++ b/socket.hh
+@@ -11,8 +11,8 @@
+ #include <cstddef>
+ 
+ // c system headers
+-#include <arpa/inet.h>
+ #include <sys/socket.h>
++#include <netdb.h>
+ #include <sys/time.h>
+ 
+ // not all systems define sock_t
+@@ -31,13 +31,13 @@ protected:
+   sock_t fd;
+ 
+ public:
+-  Socket(const in_addr_t& host, const int port, const timeval* timeout = NULL)
++  Socket(const addrinfo& ai, const timeval* timeout = NULL)
+   : conn(false)
+   {
+-    open(host, port, timeout);
++    open(ai, timeout);
+   }
+ 
+-  Socket(const char* host, const int port, const timeval* timeout = NULL)
++  Socket(const char* host, const char* port, const timeval* timeout = NULL)
+   : conn(false)
+   {
+     open(host, port, timeout);
+@@ -50,10 +50,10 @@ public:
+   ~Socket() throw();
+ 
+   void
+-  open(const char* host, const int port, const timeval* timeout = NULL);
++  open(const char* host, const char* port, const timeval* timeout = NULL);
+ 
+   void
+-  open(const in_addr_t& host, const int port, const timeval* timeout = NULL);
++  open(const addrinfo& ai, const timeval* timeout = NULL);
+ 
+   void
+   close(const int how = 0);
+diff --git a/urlparse.cc b/urlparse.cc
+index 3fd04b6..d28c593 100644
+--- a/urlparse.cc
++++ b/urlparse.cc
+@@ -16,7 +16,7 @@ using std::string;
+ 
+ // implementation
+ void
+-urlParse(string& proto, string& server, int& port, string& path,
++urlParse(string& proto, string& server, string& port, string& path,
+     const string& url)
+ {
+   // check for proto
+@@ -44,10 +44,10 @@ urlParse(string& proto, string& server, int& port, string& path,
+   if(colon == string::npos || colon > slash)
+   {
+     colon = slash;
+-    port = 0;
++    port.clear();
+   }
+   else
+-    port = atoi(url.substr(colon + 1, slash).c_str());
++    port = url.substr(colon + 1, slash - colon - 1);
+ 
+   // finally, the server
+   server = url.substr(protoEnd,
+diff --git a/urlparse.hh b/urlparse.hh
+index 9c171dc..09d3a1b 100644
+--- a/urlparse.hh
++++ b/urlparse.hh
+@@ -13,8 +13,8 @@
+ 
+ // underlying parsers
+ void
+-urlParse(std::string& proto, std::string& server, int& port, std::string& path,
+-    const std::string& url);
++urlParse(std::string& proto, std::string& server, std::string& port,
++	 std::string& path, const std::string& url);
+ 
+ 
+ // common structures
+@@ -25,7 +25,7 @@ struct URL
+   {}
+ 
+   URL(const std::string& proto, const std::string& server,
+-      const int port, const std::string& path)
++      const std::string& port, const std::string& path)
+   : proto(proto), server(server), port(port), path(path)
+   {}
+ 
+@@ -47,7 +47,7 @@ struct URL
+   // data
+   std::string proto;
+   std::string server;
+-  int port;
++  std::string port;
+   std::string path;
+ };
+ 

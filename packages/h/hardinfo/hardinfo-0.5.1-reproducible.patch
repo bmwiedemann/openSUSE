@@ -1,0 +1,27 @@
+From: Chris Lamb <lamby debian.org>
+Subject: Make the build reproducible
+Date: 2016-08-03
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=833379
+
+--- a/configure	2016-08-03 12:09:24.359183765 -0400
+--- b/configure	2016-08-03 12:13:50.725579223 -0400
+@@ -186,9 +186,15 @@
+ echo "#define $ARCH" >> config.h
+ echo "#define ARCH     \"$ARCH\"" >> config.h
+ 
+-echo "#define PLATFORM \"`uname`\"" >> config.h
+-echo "#define KERNEL   \"`uname -r`\"" >> config.h
+-echo "#define HOSTNAME \"`hostname`\"" >> config.h
++if [ "$SOURCE_DATE_EPOCH" = "" ]; then
++	echo "#define PLATFORM \"`uname`\"" >> config.h
++	echo "#define KERNEL   \"`uname -r`\"" >> config.h
++	echo "#define HOSTNAME \"`hostname`\"" >> config.h
++else
++	echo "#define PLATFORM \"-\"" >> config.h
++	echo "#define KERNEL   \"-\"" >> config.h
++	echo "#define HOSTNAME \"-\"" >> config.h
++fi
+ 
+ echo "#define PREFIX \"/usr/share/hardinfo/\"" >> config.h
+ echo "#define LIBPREFIX \"/usr/lib/hardinfo/\"" >> config.h

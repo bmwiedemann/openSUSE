@@ -1,0 +1,24 @@
+<package name="psutils" project="openSUSE:Factory">
+  <title>Tools for Manipulating PostScript Files</title>
+  <description>This archive contains utilities for manipulating PostScript documents.
+Page selection and rearrangement are supported, including arrangement
+into signatures for booklet printing, and page merging for n-up
+printing.
+
+psbook		rearranges pages into signatures
+
+psselect	selects pages and page ranges
+
+pstops		performs general page rearrangement and selection
+
+psnup		put multiple pages per physical sheet of paper
+
+psresize	alter document paper size
+
+epsffit 	fits an EPSF file to a given bounding box
+
+You will find a README in /usr/share/doc/packages/psutils/ which also
+describes several Perl scripts for importing PostScript files. A manual
+page for each ps utility is also included.</description>
+  <devel project="Publishing" package="psutils"/>
+</package>

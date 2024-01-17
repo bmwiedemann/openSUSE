@@ -1,0 +1,5 @@
+<package name="python-pypandoc" project="openSUSE:Factory">
+  <title></title>
+  <description>Provides a thin wrapper for pandoc, a universal document converter.</description>
+  <devel project="devel:languages:python" package="python-pypandoc"/>
+</package>

@@ -1,0 +1,56 @@
+From 88adb2f59137213119f1da2b6dbf6fce859fc12f Mon Sep 17 00:00:00 2001
+From: Vladimir Nadvornik <nadvornik@suse.cz>
+Date: Mon, 27 Jun 2022 17:00:58 +0200
+Subject: [PATCH] Save log to logfile with docker.build
+
+---
+ salt/modules/dockermod.py | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/salt/modules/dockermod.py b/salt/modules/dockermod.py
+index 8b6ab8058e..f7344b66ac 100644
+--- a/salt/modules/dockermod.py
++++ b/salt/modules/dockermod.py
+@@ -4006,6 +4006,7 @@ def build(
+     fileobj=None,
+     dockerfile=None,
+     buildargs=None,
++    logfile=None,
+ ):
+     """
+     .. versionchanged:: 2018.3.0
+@@ -4059,6 +4060,9 @@ def build(
+     buildargs
+         A dictionary of build arguments provided to the docker build process.
+ 
++    logfile
++        Path to log file. Output from build is written to this file if not None.
++
+ 
+     **RETURN DATA**
+ 
+@@ -4133,6 +4137,20 @@ def build(
+     stream_data = []
+     for line in response:
+         stream_data.extend(salt.utils.json.loads(line, cls=DockerJSONDecoder))
++
++    if logfile:
++        try:
++            with salt.utils.files.fopen(logfile, "a") as f:
++                for item in stream_data:
++                    try:
++                        item_type = next(iter(item))
++                    except StopIteration:
++                        continue
++                    if item_type == "stream":
++                        f.write(item[item_type])
++        except OSError:
++            log.error("Unable to write logfile '%s'", logfile)
++
+     errors = []
+     # Iterate through API response and collect information
+     for item in stream_data:
+-- 
+2.39.2
+
+

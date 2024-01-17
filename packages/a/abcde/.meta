@@ -1,0 +1,8 @@
+<package name="abcde" project="openSUSE:Factory">
+  <title>A Better CD Encoder</title>
+  <description>A front-end program to cdparanoia, wget, cd-discid, id3, and your
+favorite Ogg or MP3 encoder (defaults to oggenc). Grabs an entire CD
+and converts each track to Ogg or MP3 then comments or ID3 tags each
+file with one command.</description>
+  <devel project="multimedia:apps" package="abcde"/>
+</package>

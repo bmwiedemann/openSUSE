@@ -1,0 +1,284 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>191ec5f961fb5fa0dbd8da2d9be01fa0</srcmd5>
+    <version>0.3.4</version>
+    <time>1394387084</time>
+    <user>coolo</user>
+    <comment>new OpenStack dep</comment>
+    <requestid>225023</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>191ec5f961fb5fa0dbd8da2d9be01fa0</srcmd5>
+    <version>0.3.4</version>
+    <time>1409302838</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c196d3fcf66ed8ded7e52ba85c5595d4</srcmd5>
+    <version>0.3.5</version>
+    <time>1410967521</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249305</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a229e85f57b763adb6ea1f2062c865fa</srcmd5>
+    <version>0.3.5</version>
+    <time>1461855308</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390772</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>44af15590e3dd965d66054f5c94f412f</srcmd5>
+    <version>0.3.12</version>
+    <time>1481153374</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441346</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e22bd12e79d5830c2fd92a8aa7c8629c</srcmd5>
+    <version>0.3.17</version>
+    <time>1503926157</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518656</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a43007ace56aed508781af5b1b6dd43c</srcmd5>
+    <version>0.3.20</version>
+    <time>1539869945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642790</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4804cfbb0b2c7d35f8847379f92354c8</srcmd5>
+    <version>0.3.27</version>
+    <time>1552206935</time>
+    <user>coolo</user>
+    <comment>- Update to 0.3.27:
+  * Handle -Sun notation
+  * Handle invalid ranges correctly
+  * Pypi hygiene
+  * fix get_next while perserving the fix of get_prev
+  * Don't count previous minute if now is dynamic If the code is triggered from 5-asterisk based cron get_prev based on datetime.now() is expected to return current cron iteration and not previous execution.</comment>
+    <requestid>682472</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ccfd905b9e28bff3964b22b65eb6b030</srcmd5>
+    <version>0.3.28</version>
+    <time>1553809703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.28:
+  * Update credits</comment>
+    <requestid>688728</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cc8a8bf5dbdd466e5f8f85e1442376c3</srcmd5>
+    <version>0.3.30</version>
+    <time>1558690312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704955</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>699a8d20529c8e8c7d9ccfdb4a436c6c</srcmd5>
+    <version>0.3.31</version>
+    <time>1584350313</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.31:
+  - Fix get_next() when start_time less then 1s before next instant</comment>
+    <requestid>785068</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>31b827ee844261b6dedd28c4d4ff8c7d</srcmd5>
+    <version>0.3.32</version>
+    <time>1591742840</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.32:
+  - document seconds repeats, fixes #122
+  - Implement match method, fixes #54
+  - Adding tests for #127 (test more DSTs and croniter behavior around)
+  - Changed lag_hours comparison to absolute to manage dst boundary when getting previous</comment>
+    <requestid>812619</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b85497aab761a8051d5e4c4b6aadf382</srcmd5>
+    <version>0.3.34</version>
+    <time>1595011864</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.34:
+  - Feat croniter_range(start, stop, cron)
+  - Optimization for poorly written cron expression
+  - Make dateutil tz support more official
+  - Feat/support for day or</comment>
+    <requestid>821436</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fd2e4d9c1f9f7a3706e586e1c9fb7925</srcmd5>
+    <version>0.3.36</version>
+    <time>1606428917</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.36:
+- Updated docs section regarding ``max_years_between_matches`` to be more shorter and hopefully more relevant.
+- Add a new initialization parameter ``max_years_between_matches`` to support finding the next/previous date beyond the default 1 year window, if so desired.  Updated README to include additional notes and example of this usage.  Fixes #145.
+- The ``croniter_range()`` function was updated to automatically determines the appropriate ``max_years_between_matches`` value, this preventing handling of the ``CroniterBadDateError`` exception.
+- Updated exception handling classes:  ``CroniterBadDateError`` now only
+  applies during date finding operations (next/prev), and all parsing errors can now be caught using ``CroniterBadCronError``.  The ``CroniterNotAlphaError`` exception is now a subclass of ``CroniterBadCronError``.  A brief description of each exception class was added as an inline docstring.
+- Updated iterable interfaces to replace the ``CroniterBadDateError`` with ``StopIteration`` if (and only if) the ``max_years_between_matches`` argument is provided.  The rationale here is that if the user has specified the max tolerance between matches, then there's no need to further inform them of no additional matches.  Just stop the iteration.  This also keeps backwards compatibility.
+- Minor docs update</comment>
+    <requestid>850942</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7a6280ecfa8a15ae9508b3691b139abc</srcmd5>
+    <version>1.0.8</version>
+    <time>1615552407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.8:
+  * Update `_expand` to lowercase each component of the expression.
+  * Fix _expand to reject int literals with underscores
+  * Fix combination of star and invalid expression bugs
+  * Security fix: fix overflow when using cron ranges
+  * Fix #155: raise CroniterBadCronError when error syntax
+  * Fix match when datetime has microseconds
+  * Added Python 3.8 and 3.9 support</comment>
+    <requestid>878436</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c8b3f48b780b51fdb8c39b73a249ea48</srcmd5>
+    <version>1.0.9</version>
+    <time>1616680365</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881276</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>978404460a54d8957d574583807a3e03</srcmd5>
+    <version>1.0.13</version>
+    <time>1624136585</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.13:
+  * Fix ZeroDivisionError with ``* * R/0 * *``
+  * Add support for hashed/random/keyword expressions
+  * Review support support for hashed/random/keyword expression and add expanders reactor
+  * fix bug: bad case:``0 6 30 3 *``
+  * Create ``CroniterUnsupportedSyntaxError`` exception for situations where CRON syntax may be valid but some combinations of features is not supported.
+    This *may* impact existing cron expressions in prior releases, because ``0 0 * * 15,sat#1`` was previously allowed but incorrectly handled.
+  * Update ``croniter_range()`` to allow an alternate ``croniter`` class to be used.  Helpful when using a custom class derived from croniter.
+  * Remove external library ``natsort``.</comment>
+    <requestid>900659</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8eac024534b6c547c6ad9a23fa87000c</srcmd5>
+    <version>1.0.15</version>
+    <time>1634587146</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.15:
+  * restore py2
+  * better type checks</comment>
+    <requestid>925755</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f7d99dbc98c208b18f9dcd4d48463a19</srcmd5>
+    <version>1.1.0</version>
+    <time>1638831632</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Enforce validation for month=1. Before this release we used to support
+    month=0 and it was silently glided to month=1 to support having both day in
+    month in 4th field when it came to have 6fields cron forms</comment>
+    <requestid>936119</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3451fa69b07c88da82208368960cbca5</srcmd5>
+    <version>1.2.0</version>
+    <time>1642273522</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Enforce validation for day=1. Before this release we used to support day=0
+    and it was silently glided to day=1 to support having both day in day in
+    4th field when it came to have 6fields cron forms (second repeat). It will
+    now raises a CroniterBadDateError.</comment>
+    <requestid>946664</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>17ee1c47ced9da558e046e3669fa556d</srcmd5>
+    <version>1.3.7</version>
+    <time>1664302571</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006466</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>544c19b93479e133e6d677f99543c78e</srcmd5>
+    <version>1.3.7</version>
+    <time>1665754892</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010394</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2659ab49de02ff0af08eab1a2e428185</srcmd5>
+    <version>1.3.14</version>
+    <time>1683111470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.14:
+  * Add check for range begin/end
+  * restore py2 compat
+  *  Do not expose `i` into global namespace
+  * Fix DOW hash parsing [kiorky]
+  * better error handling on py3 [kiorky]
+  * Add Python 3.11 support and move docs files to main folder</comment>
+    <requestid>1084215</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a49a02336e0c58b6d9739b62acbf247c</srcmd5>
+    <version>1.3.15</version>
+    <time>1685393288</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.15:
+  * Fix hashed expressions omitting some entries
+  * Enhance .match() precision for 6 position expressions</comment>
+    <requestid>1089607</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>5e3b19b19c2aa0c75c9e55db99deaf1d</srcmd5>
+    <version>1.3.15</version>
+    <time>1687796199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095394</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a54cf42249e2f6fca32af4d597f2ba1f</srcmd5>
+    <version>1.4.1</version>
+    <time>1693570764</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.1:
+  * Make a retrocompatible version of 1.4.0 change about supporting
+    VIXIECRON bug.
+  * Added &quot;implement_cron_bug&quot; flag to make the cron parser compatible
+    with a bug in Vixie/ISC Cron.
+- Switch to pyproject macros.
+- Actually drop future requirement.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1108278</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>62b74ec69c3d1383984addfe99a63ac2</srcmd5>
+    <version>2.0.1</version>
+    <time>1701023818</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.1:
+  * Fix release issue
+  * Add Python 3.12 support
+  * Make major release instructions
+
+  * Add a way to make next() easier to use. This fixes #11 [kiorky]
+    now raises a CroniterBadDateError.</comment>
+    <requestid>1128731</requestid>
+  </revision>
+</revisionlist>

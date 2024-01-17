@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac7cdb34e1852319583df443361c8ce3</srcmd5>
+    <version>0.20.0</version>
+    <time>1667499275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033021</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4ef6f8d8b2cf6bb36c92fb543cf7d617</srcmd5>
+    <version>0.20.0</version>
+    <time>1668970027</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1036850</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cf5bcc5897bb08d920d8d7a27c5ff083</srcmd5>
+    <version>0.20.1</version>
+    <time>1672927267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056094</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4f60ba5fc747ef5b04857a8a304e3639</srcmd5>
+    <version>0.20.2</version>
+    <time>1673651004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058222</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cfd40678b7055a026de7683aa8a7c9a3</srcmd5>
+    <version>0.20.2</version>
+    <time>1677498948</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067871</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>474a37416e53a268705cc23289a4d24d</srcmd5>
+    <version>0.21.1</version>
+    <time>1684239390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.1:
+  * SelectAll and ToggleSelectAll (i.e. ctrl-a) in a new directory 
+    will extend, instead of replace, the existing selected paths.
+  * Fixed a UI bug causing random characters to turn bold.
+</comment>
+    <requestid>1087297</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e91c55715c5777c79e236778448b85f9</srcmd5>
+    <version>0.21.2</version>
+    <time>1685743683</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable update of vendored deps
+- Update to version 0.21.2:
+  * Added CustomLayout, a new custom panel type to allow nesting other layouts inside a static or dynamic 
+    layout. This will allow switching between different layouts dynamically, without having to switch modes.
+  * $LS_COLORS will have lesser priority than xplr.config.node_types.*.style.
+  * Now, there's no default color set in xplr.config.node_types.*.style, so xplr will default to $LS_COLORS.
+  * xplr -m now uses jf to render and pass messages. This allows for a more flexible template syntax.
+  * xplr will now ask before delete.
+  * For copy, move or symlink operations, xplr will ask what to do if a file with the same name exists.
+  * CLI help menu improvements
+  * Several fixes and improvements in documentation
+</comment>
+    <requestid>1090465</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5fe60afd5ba8585f0f685f703c81b45a</srcmd5>
+    <version>0.21.3</version>
+    <time>1692611076</time>
+    <user>anag+factory</user>
+    <comment>- Replace obsoleted `disabled` option with `manual`
+- Update vendored dependencies.
+- Always update vendored deps in _service.
+- Add signature xplr-0.21.3.tar.gz.asc
+- Update to version 0.21.3:
+  * Fixed &quot;Illegal format character q&quot; error seen on non GNU (including macOS and BSD) systems
+  * Fixed a UI issue causing lower priority styles being fully ignored
+  * Press f1 to see the global help menu from any mode, without leaving the mode.
+  * Current mode help menu will be displayed on top of the global help menu.
+  * Added hook: on_selection_change.
+  * Documentation improvements.
+  
+</comment>
+    <requestid>1104876</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>306d808be3b3ea1bfd53b3838cc6a5d6</srcmd5>
+    <version>0.21.3</version>
+    <time>1701533613</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable updates. Seems crates are not happy with updating
+- Revendor dependencies
+- Update vendored dependencies.
+- Remove cargo_config. cargo_config file is now part of vendored tarball.
+</comment>
+    <requestid>1130450</requestid>
+  </revision>
+</revisionlist>

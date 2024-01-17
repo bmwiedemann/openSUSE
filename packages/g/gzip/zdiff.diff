@@ -1,0 +1,17 @@
+Index: zdiff.in
+===================================================================
+--- zdiff.in.orig
++++ zdiff.in
+@@ -133,9 +133,9 @@ case $file2 in
+                                 5<&0
+                     then
+                         gzip_status=$(
+-                          exec 4>&1
+-                          ('gzip' -cdfq -- "$file1" 4>&-; echo $? >&4) 3>&- |
+-                              (('gzip' -cdfq -- "$file2" 4>&-
++                          exec 4>&1 6<&0
++                          ('gzip' -cdfq -- "$file1" 4>&-; echo $? >&4) 3>&- 6<&- |
++                              (('gzip' -cdfq -- "$file2" 4>&- 0<&6 6<&-
+                                 echo $? >&4) 3>&- 5<&- </dev/null |
+                                eval "$cmp" /dev/fd/5 - >&3) 5<&0
+                         )

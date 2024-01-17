@@ -1,0 +1,5 @@
+<package name="cabal-install" project="openSUSE:Factory">
+  <title>Command-line program for cabal</title>
+  <description>The 'cabal' command-line program simplifies the process of managing Haskell software by automating the fetching, configuration, compilation and installation of Haskell libraries and programs.</description>
+  <devel project="devel:languages:haskell" package="cabal-install"/>
+</package>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>658f0e9c0c1f05214bc17384ff8d2c99</srcmd5>
+    <version>21.0.0.0</version>
+    <time>1695209426</time>
+    <user>dimstar_suse</user>
+    <comment>Official OpenJDK 21 release</comment>
+    <requestid>1112350</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bd0041bebe1318cc4d8c486847e722e9</srcmd5>
+    <version>21.0.0.0</version>
+    <time>1695327817</time>
+    <user>anag+factory</user>
+    <comment>reproducible timestamp in properties</comment>
+    <requestid>1112807</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9055b8e686c7f737b35b18403747c473</srcmd5>
+    <version>21.0.1.0</version>
+    <time>1698249870</time>
+    <user>anag+factory</user>
+    <comment>October 2023 CPU</comment>
+    <requestid>1120223</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0b9178cb62c2a2c2af137a471b8826e4</srcmd5>
+    <version>21.0.1.0</version>
+    <time>1698780272</time>
+    <user>anag+factory</user>
+    <comment>Make this preferred JDK</comment>
+    <requestid>1120846</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3ebfb7fdcfae6ad98272e784c30a9cb9</srcmd5>
+    <version>21.0.1.0</version>
+    <time>1702673223</time>
+    <user>anag+factory</user>
+    <comment>fix fips mode</comment>
+    <requestid>1133105</requestid>
+  </revision>
+</revisionlist>

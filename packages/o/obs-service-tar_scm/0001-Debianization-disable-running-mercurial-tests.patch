@@ -1,0 +1,32 @@
+From c2c2e7bbaea6d224ad5742f47fb4baab63365e6d Mon Sep 17 00:00:00 2001
+From: Hib Eris <hib@hiberis.nl>
+Date: Mon, 22 Jun 2015 15:23:30 +0200
+Subject: [PATCH] Debianization: disable running mercurial tests
+
+This is needed to make this package build on the Ubuntu
+distributions at build.opensuse.org. These distributions
+provide only Ubuntu's main repository, which does not contain
+the mercurial package. The mercurial package is only needed
+to run mercurial tests, thus disabeling mercurial tests allows
+building the package.
+---
+ debian/control | 2 +-
+ tests/test.py  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test.py b/tests/test.py
+index 3814e71..ca480b7 100755
+--- a/tests/test.py
++++ b/tests/test.py
+@@ -23,7 +23,7 @@ if __name__ == '__main__':
+         # temporarily comment out any of these:
+         SvnTests,
+         GitTests,
+-        HgTests,
++        #HgTests,
+         BzrTests,
+         UnitTestCases
+     ]
+-- 
+2.1.4
+

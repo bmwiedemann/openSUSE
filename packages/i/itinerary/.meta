@@ -1,0 +1,8 @@
+<package name="itinerary" project="openSUSE:Factory">
+  <title>Itinerary and boarding pass management application</title>
+  <description>Itinerary and boarding pass management application.
+
+</description>
+  <devel project="KDE:Applications" package="itinerary"/>
+  <url>https://www.kde.org</url>
+</package>

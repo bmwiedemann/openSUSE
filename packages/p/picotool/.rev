@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5a98dd5812b9693129dd1195f5553a2</srcmd5>
+    <version>0.0~git20210305.21d5eb9</version>
+    <time>1617131638</time>
+    <user>RBrownSUSE</user>
+    <comment>Initial submission</comment>
+    <requestid>877647</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d0379447634a23b386a0e05dbe02a83</srcmd5>
+    <version>0.0~git20210305.21d5eb9</version>
+    <time>1617723064</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883178</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>782966a00d77f52ccd4eca875d4b24dc</srcmd5>
+    <version>0.0~git20210305.21d5eb9</version>
+    <time>1618061254</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883896</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f437132bd0a10f3755c0fd5c9dccf75</srcmd5>
+    <version>0.0~git20210424.a49dc0b</version>
+    <time>1620840738</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>892433</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>016cd8317c99215740e03e4edcdeeb14</srcmd5>
+    <version>1.0.1</version>
+    <time>1622759597</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with GCC11:
+  * picotool-gh30.patch
+- Upstream started to tag versions so drop _service and change
+  source to upstream tarball 
+</comment>
+    <requestid>897118</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>76a5b5e5d5ca7f41ba7ba79859d7a6ca</srcmd5>
+    <version>1.0.1</version>
+    <time>1627076481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907977</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>87496170ff2e97c4444e9148d54ad9cd</srcmd5>
+    <version>1.0.1</version>
+    <time>1634754247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926563</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d5f095771afa3a8a4696755ddda95218</srcmd5>
+    <version>1.1.0</version>
+    <time>1639169579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Add version command
+  * Fix parsing of ELF where the program header does not directly follow the file header
+  * Add install-ability via `cmake install`
+  * Incorporate slightly modified Win32 libusb find helpers
+  * Add ability to access device using stdio_usb
+  * Add -n option to load to avoid overwriting existing program
+  * Add -f/-F option to force reset a cooperative RP2040 board that isnt in BOOTSEL mode
+  * Add a sudo suggestion when can't connect on linux/macos
+- Drop upstreamed patches:
+  * picotool-ce76970.patch
+  * picotool-gh30.patch
+- Update SDK version to 1.3.0
+</comment>
+    <requestid>939165</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>63fe26715a70e5a5c6210a9bbb3d82c0</srcmd5>
+    <version>1.1.1</version>
+    <time>1676911569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066719</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>69ac3601e9c3da103054ec32709e6d61</srcmd5>
+    <version>1.1.2</version>
+    <time>1690370647</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100630</requestid>
+  </revision>
+</revisionlist>

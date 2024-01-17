@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0c01787811efc67bd0db109934b7382</srcmd5>
+    <version>3.3.1</version>
+    <time>1597658732</time>
+    <user>dimstar_suse</user>
+    <comment>A python wrapper around CASACORE, the radio astronomy library (depends on sr#826881).
+</comment>
+    <requestid>826882</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>962202a92c8b36ef136334d9d3e05781</srcmd5>
+    <version>3.4.0</version>
+    <time>1620072503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890109</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bf19c96b8ec860a3de5a7deeb80e1f99</srcmd5>
+    <version>3.4.0</version>
+    <time>1626386446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906469</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cb723c680031e3774259aa29bfe285fc</srcmd5>
+    <version>3.5.1</version>
+    <time>1671977705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045251</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9cd89b61ce09bb9c5d2a3841abd1fdab</srcmd5>
+    <version>3.5.2</version>
+    <time>1673888388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058675</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>60854a37047f4c786bb7170839b3213b</srcmd5>
+    <version>3.5.2</version>
+    <time>1693860839</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108883</requestid>
+  </revision>
+</revisionlist>

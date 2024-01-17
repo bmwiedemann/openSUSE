@@ -1,0 +1,9 @@
+<package name="python-cmapfile" project="openSUSE:Factory">
+  <title>python-cmapfile</title>
+  <description>Cmapfile is a Python library and console script to write Chimera Map (CMAP) files, HDF5 files containing series of 3D XYZ datasets.
+
+CMAP files can be created from numpy arrays and various file formats containing volume data, e.g. BIN, TIFF, LSM, OIF, and OIB.
+
+CMAP files can be visualized using UCSF Chimera [2], a highly extensible program for interactive visualization and analysis of molecular structures and related data.</description>
+  <devel project="devel:languages:python:numeric" package="python-cmapfile"/>
+</package>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a265d43b8ebfc736ca5fb15033dcfd21</srcmd5>
+    <version>0.6.0</version>
+    <time>1554379998</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain osmo-pcu in Factory</comment>
+    <requestid>688753</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b023a6af8967a97e7cea7e41bc2a3cb</srcmd5>
+    <version>0.6.0</version>
+    <time>1559375413</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706056</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3712b77577f7961d56a94373e2d52fe</srcmd5>
+    <version>0.8.0</version>
+    <time>1578606605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761696</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ecb9644331cac33d9fb97e3204ea85ef</srcmd5>
+    <version>0.8.0</version>
+    <time>1634587160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925829</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d3ab5c94810418234e534ff4257c919d</srcmd5>
+    <version>1.0.0</version>
+    <time>1637535120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932638</requestid>
+  </revision>
+</revisionlist>

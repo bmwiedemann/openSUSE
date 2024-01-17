@@ -1,0 +1,3 @@
+# Filter out warnings about hidden files in pulseaudio-gdm-hooks -- they are ok/expected
+addFilter("hidden-file-or-dir .*/usr/share/factory/var/lib/gdm/.pulse")
+addFilter("hidden-file-or-dir .*/var/lib/gdm/.pulse")

@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db2a1bb49e3cb9e83529f95de8fea8e0</srcmd5>
+    <version>5.12</version>
+    <time>1551883726</time>
+    <user>dimstar_suse</user>
+    <comment>Python bindings for the Qt5 3D framework </comment>
+    <requestid>681763</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb8744df06d802001e9bb28eeefb674a</srcmd5>
+    <version>5.13.0</version>
+    <time>1563259231</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.13.0</comment>
+    <requestid>714851</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7c2a24a28afdf4e4a4246fd76a0f6d6</srcmd5>
+    <version>5.13.1</version>
+    <time>1574783590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748563</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7310fde3ac4feff563184576813a8167</srcmd5>
+    <version>5.15.0</version>
+    <time>1599210568</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the superfluous Tumbleweed python2 hack
+- Update to 5.15.0 
+  * Added support for Qt v5.15.0.
+- v5.14.0 added support for Qt v5.14.0 in December 2019
+- The source location has changed to PyPI
+- Stop building the python2 package for openSUSE Tumbleweed.
+</comment>
+    <requestid>831619</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85e547373bc697d5fd15512c1d5d3105</srcmd5>
+    <version>5.15.1</version>
+    <time>1600180129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.15.1
+  * A bug-fix release.
+</comment>
+    <requestid>834341</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3b7583ba7b2a655562bb16384c424823</srcmd5>
+    <version>5.15.1</version>
+    <time>1602073024</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix openSUSE:Leap:15.1:Update failure: Qt3DAnimation is only 
+  built for Qt &gt;= 5.10
+
+This is for backports derived from Factory. No effect on Tumbleweed.</comment>
+    <requestid>839653</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>828f6bb0ec7fd1372812ad77c7a475d4</srcmd5>
+    <version>5.15.1</version>
+    <time>1605290263</time>
+    <user>dimstar_suse</user>
+    <comment>- Use sip5 where available 
+
+(fix changelog entry)
+</comment>
+    <requestid>846248</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a712ec931cf9a2ee0262ae0c760ff892</srcmd5>
+    <version>5.15.3</version>
+    <time>1615061916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875745</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>72c71392f52cb937be1e2d675b8ff383</srcmd5>
+    <version>5.15.4</version>
+    <time>1616008499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878417</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9402ba49bc73f758ddac21ff646047aa</srcmd5>
+    <version>5.15.4</version>
+    <time>1624136658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900823</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b3cafcd741377c84a0126085b6c262ad</srcmd5>
+    <version>5.15.4</version>
+    <time>1631646879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918868</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e171b8fa720accb5023d45934525aae</srcmd5>
+    <version>5.15.5</version>
+    <time>1673650954</time>
+    <user>dimstar_suse</user>
+    <comment>fix the fix</comment>
+    <requestid>1058201</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>32bbb866818cf46d1e4c3ee5eeb4d266</srcmd5>
+    <version>5.15.6</version>
+    <time>1675177762</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed building against Qt v5.15.8 and later.</comment>
+    <requestid>1062119</requestid>
+  </revision>
+</revisionlist>

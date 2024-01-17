@@ -1,0 +1,23 @@
+Index: bctoolbox-5.1.64/src/logging/logging.c
+===================================================================
+--- bctoolbox-5.1.64.orig/src/logging/logging.c
++++ bctoolbox-5.1.64/src/logging/logging.c
+@@ -422,6 +422,9 @@ char *bctbx_strdup_printf(const char *fm
+ 	return ret;
+ }
+ 
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wstringop-truncation"
++
+ char * bctbx_strcat_vprintf(char* dst, const char *fmt, va_list ap){
+ 	char *ret;
+ 	size_t dstlen, retlen;
+@@ -442,6 +445,8 @@ char * bctbx_strcat_vprintf(char* dst, c
+ 	}
+ }
+ 
++#pragma GCC diagnostic pop
++
+ char *bctbx_strcat_printf(char* dst, const char *fmt,...){
+ 	char *ret;
+ 	va_list args;

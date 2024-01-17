@@ -1,0 +1,7 @@
+<package name="fs_mark" project="openSUSE:Factory">
+  <title>Filesystem benchmark</title>
+  <description>The fs_mark benchmark tests synchronous write workloads. It can vary the number
+of files, directory depth, etc. It has detailed timings for reads, writes,
+unlinks and fsyncs that make it good for simulating mail servers and other</description>
+  <devel project="benchmark" package="fs_mark"/>
+</package>

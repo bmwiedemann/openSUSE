@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Jul  8 05:31:51 UTC 2016 - coolo@suse.com
+
+- updated to 0.56
+   see /usr/share/doc/packages/perl-Memoize-ExpireLRU/Changes
+
+-------------------------------------------------------------------
+Wed Dec  3 09:51:56 UTC 2014 - coolo@suse.com
+
+- redo packaging
+
+-------------------------------------------------------------------
+Mon Jan 17 16:28:08 UTC 2011 - coolo@novell.com
+
+- initial package 0.55
+  * created by cpanspec 1.78.03
+

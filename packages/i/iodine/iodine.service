@@ -1,0 +1,34 @@
+# /lib/systemd/system/iodine.service
+#
+# Copyright (c) 2012-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
+#
+
+[Unit]
+Description=iodine lets you tunnel IPv4 data through a DNS server
+After=network.target syslog.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+# PrivateDevices=true see boo#1216238
+ProtectHostname=true
+# ProtectClock=true see boo#1206835
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=simple
+EnvironmentFile=-/etc/sysconfig/iodine
+Environment=TERM=linux
+ExecStart=/bin/sh -c "/usr/sbin/iodine ${IODINE_PASS} ${IODINE_OPTIONS}"
+StandardOutput=syslog
+Restart=always
+RestartSec=0
+KillSignal=SIGHUP
+
+[Install]
+WantedBy=multi-user.target

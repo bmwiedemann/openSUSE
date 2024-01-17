@@ -1,0 +1,138 @@
+From 4f459d670886a8f4a410fdbd1ec595477d45e4e2 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 17:10:37 +0100
+Subject: [PATCH] Include aliases in the fqdns grains
+
+Add UT for "is_fqdn"
+
+Add "is_fqdn" check to the network utils
+
+Bugfix: include FQDNs aliases
+
+Deprecate UnitTest assertion in favour of built-in assert keyword
+
+Add UT for fqdns aliases
+
+Leverage cached interfaces, if any.
+
+Implement network.fqdns module function (bsc#1134860) (#172)
+
+* Duplicate fqdns logic in module.network
+* Move _get_interfaces to utils.network
+* Reuse network.fqdns in grains.core.fqdns
+* Return empty list when fqdns grains is disabled
+
+Co-authored-by: Eric Siebigteroth <eric.siebigteroth@suse.de>
+---
+ salt/modules/network.py                    |  5 +++-
+ salt/utils/network.py                      | 16 +++++++++++
+ tests/pytests/unit/modules/test_network.py |  4 +--
+ tests/unit/utils/test_network.py           | 32 ++++++++++++++++++++++
+ 4 files changed, 54 insertions(+), 3 deletions(-)
+
+diff --git a/salt/modules/network.py b/salt/modules/network.py
+index 524b1b74fa..f959dbf97b 100644
+--- a/salt/modules/network.py
++++ b/salt/modules/network.py
+@@ -2096,7 +2096,10 @@ def fqdns():
+         #   https://sourceware.org/bugzilla/show_bug.cgi?id=19329
+         time.sleep(random.randint(5, 25) / 1000)
+         try:
+-            return [socket.getfqdn(socket.gethostbyaddr(ip)[0])]
++            name, aliaslist, addresslist = socket.gethostbyaddr(ip)
++            return [socket.getfqdn(name)] + [
++                als for als in aliaslist if salt.utils.network.is_fqdn(als)
++            ]
+         except socket.herror as err:
+             if err.errno in (0, HOST_NOT_FOUND, NO_DATA):
+                 # No FQDN for this IP address, so we don't need to know this all the time.
+diff --git a/salt/utils/network.py b/salt/utils/network.py
+index 2bea2cf129..6ec993a678 100644
+--- a/salt/utils/network.py
++++ b/salt/utils/network.py
+@@ -2372,3 +2372,19 @@ def ip_bracket(addr, strip=False):
+     addr = addr.rstrip("]")
+     addr = ipaddress.ip_address(addr)
+     return ("[{}]" if addr.version == 6 and not strip else "{}").format(addr)
++
++
++def is_fqdn(hostname):
++    """
++    Verify if hostname conforms to be a FQDN.
++
++    :param hostname: text string with the name of the host
++    :return: bool, True if hostname is correct FQDN, False otherwise
++    """
++
++    compliant = re.compile(r"(?!-)[A-Z\d\-\_]{1,63}(?<!-)$", re.IGNORECASE)
++    return (
++        "." in hostname
++        and len(hostname) < 0xFF
++        and all(compliant.match(x) for x in hostname.rstrip(".").split("."))
++    )
+diff --git a/tests/pytests/unit/modules/test_network.py b/tests/pytests/unit/modules/test_network.py
+index 81035434b6..3f31391f44 100644
+--- a/tests/pytests/unit/modules/test_network.py
++++ b/tests/pytests/unit/modules/test_network.py
+@@ -29,7 +29,7 @@ def fake_fqdn():
+     with patch("socket.getfqdn", autospec=True, return_value=fqdn), patch(
+         "socket.gethostbyaddr",
+         autospec=True,
+-        return_value=("fnord", "fnord fnord"),
++        return_value=("fnord", ["fnord fnord"], []),
+     ):
+         yield fqdn
+ 
+@@ -89,7 +89,7 @@ def test_fqdns_should_return_sorted_unique_domains(fake_ips):
+     with patch("socket.getfqdn", autospec=True, side_effect=fake_domains), patch(
+         "socket.gethostbyaddr",
+         autospec=True,
+-        return_value=("fnord", "fnord fnord"),
++        return_value=("fnord", ["fnord fnord"], []),
+     ):
+         actual_fqdns = networkmod.fqdns()
+         assert actual_fqdns == {
+diff --git a/tests/unit/utils/test_network.py b/tests/unit/utils/test_network.py
+index f7d3972930..cdb1ca19ca 100644
+--- a/tests/unit/utils/test_network.py
++++ b/tests/unit/utils/test_network.py
+@@ -1311,3 +1311,35 @@ class NetworkTestCase(TestCase):
+ 
+         ip_addr_obj = ipaddress.ip_address(test_ipv4)
+         self.assertEqual(test_ipv4, network.ip_bracket(ip_addr_obj))
++
++    def test_is_fqdn(self):
++        """
++        Test is_fqdn function passes possible FQDN names.
++
++        :return: None
++        """
++        for fqdn in [
++            "host.domain.com",
++            "something.with.the.dots.still.ok",
++            "UPPERCASE.ALSO.SHOULD.WORK",
++            "MiXeD.CaSe.AcCePtAbLe",
++            "123.host.com",
++            "host123.com",
++            "some_underscore.com",
++            "host-here.com",
++        ]:
++            assert network.is_fqdn(fqdn)
++
++    def test_is_not_fqdn(self):
++        """
++        Test is_fqdn function rejects FQDN names.
++
++        :return: None
++        """
++        for fqdn in [
++            "hostname",
++            "/some/path",
++            "$variable.here",
++            "verylonghostname.{}".format("domain" * 45),
++        ]:
++            assert not network.is_fqdn(fqdn)
+-- 
+2.39.2
+
+

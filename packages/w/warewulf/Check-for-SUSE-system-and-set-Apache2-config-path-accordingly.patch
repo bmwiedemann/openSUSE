@@ -1,0 +1,52 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Aug 13 22:49:37 2018 +0200
+Subject: Check for SUSE system and set Apache2 config path accordingly
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 82792985ded7d9d02c242fe74b940ef9be16d955
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ provision/configure.ac    | 9 +++++++++
+ provision/etc/Makefile.am | 4 ++++
+ 2 files changed, 13 insertions(+)
+diff --git a/provision/configure.ac b/provision/configure.ac
+index 0bd319e..cd5e985 100644
+--- a/provision/configure.ac
++++ b/provision/configure.ac
+@@ -37,6 +37,15 @@ AC_SUBST(WAREWULF_STATEDIR)
+ AC_MSG_CHECKING([for Debian based system])
+ AM_CONDITIONAL(ISDEB, [test -f /etc/debian_version])
+ 
++AC_MSG_CHECKING([for SUSE based system])
++AM_CONDITIONAL(ISSUSE, [test -e /etc/SUSEConfig ||
++		       { test -e /etc/os-release &&
++		       grep -q "ID_LIKE=\".*suse.*\"" /etc/os-release; }])
++AM_COND_IF([ISSUSE],
++    AC_MSG_RESULT([yes]),
++    AC_MSG_RESULT([no])
++)
++
+ AC_PATH_PROG(PERLBIN, perl)
+ if test -z "$PERLBIN"; then
+    AC_MSG_ERROR([perl not found])
+diff --git a/provision/etc/Makefile.am b/provision/etc/Makefile.am
+index 99aadda..a60033e 100644
+--- a/provision/etc/Makefile.am
++++ b/provision/etc/Makefile.am
+@@ -7,9 +7,13 @@ bash_completiondir = $(sysconfdir)/bash_completion.d/
+ if ISDEB
+ httpdir = $(sysconfdir)/apache2/conf.d/
+ else
++if ISSUSE
++httpdir = $(sysconfdir)/apache2/conf.d/
++else
+ # Assume RHEL Layout
+ httpdir = $(sysconfdir)/httpd/conf.d/
+ endif
++endif
+ 
+ httpdconfdir = $(httpdir)
+ 

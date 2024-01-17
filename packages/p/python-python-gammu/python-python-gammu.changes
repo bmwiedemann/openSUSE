@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Sun Jan 16 12:42:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.4:
+  * python 3.10 support 
+
+-------------------------------------------------------------------
+Thu Aug 19 19:34:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.3
+  * Fixed uninitalized memory usage in DeleteSMS.
+- Update to version 3.2.2
+  * Fixed metadata in published wheels.
+  * Avoid using some of deprecated Python APIs.
+- Update to version 3.2
+  * Add support for polling on the async worker
+  * Modernize codebase using pyupgrade, isort and black
+
+-------------------------------------------------------------------
+Fri May 28 09:08:37 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro 
+
+-------------------------------------------------------------------
+Sat Jul 25 16:29:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1
+  * Fix an issue where the gammu worker thread could be brought
+    down if a callback throws an exception
+
+-------------------------------------------------------------------
+Tue Jul  7 09:29:13 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0
+  - Add support for asyncio in the gammu worker
+  - Dropped support for Python 2.
+- Fix rpmlint errors.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Thu May  9 07:55:14 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.12
+  * meta and doc changes
+- convert to singlespec
+
+-------------------------------------------------------------------
+Sun Jan  7 10:42:13 UTC 2018 - ecsos@opensuse.org
+
+- Update to 2.11
+  * Add support for the USSD in SMSD.
+- Update to 2.10
+  * Testsuite compatibility with Gammu 1.38.5.
+- Update to 2.8
+  * Make parameters to CancelCall and AnswerCall optional.
+  * Added support for UTF-16 Unicode chars (emojis).
+
+-------------------------------------------------------------------
+Fri Nov 25 22:16:36 UTC 2016 - ecsos@opensuse.org
+
+- Update to 2.7
+  * Compatibility with Gammu >= 1.37.90
+- change source url to url that work
+
+-------------------------------------------------------------------
+Sat May 28 10:23:27 UTC 2016 - ecsos@opensuse.org
+
+- Update to 2.5:
+  * Compatibility with Gammu >= 1.36.7
+
+-------------------------------------------------------------------
+Wed Sep  2 11:54:54 UTC 2015 - mcihar@suse.cz
+
+- Update to 2.4:
+    * Fixed possible crash when initializing SMSD with invalid parameters.
+    * Fixed crash on handling diverts on certain architectures.
+
+-------------------------------------------------------------------
+Wed Jun  3 13:38:27 UTC 2015 - mcihar@suse.cz
+
+- Update to 2.3:
+    * License changed tp GPL version 2 or later.
+    * Documentation improvements.
+
+-------------------------------------------------------------------
+Tue May 12 21:50:40 UTC 2015 - ecsos@opensuse.org
+
+- update to 2.2
+  * Documentation improvements.
+  * Code cleanups.
+
+-------------------------------------------------------------------
+Wed Apr 15 10:11:11 UTC 2015 - mcihar@suse.cz
+
+- Add Obsoletes/Provides to handle upgrade path for python-gammu
+
+-------------------------------------------------------------------
+Wed Apr 15 07:36:48 UTC 2015 - mcihar@suse.cz
+
+- Update to 2.1:
+  * Include data required for tests in tarball.
+  * Include NEWS.rst in tarball.
+  * Fixed possible crash when changing debug file.
+  * Fixed various errors found by coverity.
+- Enabled testsuite
+
+-------------------------------------------------------------------
+Tue Apr 14 09:46:13 UTC 2015 - mcihar@suse.cz
+
+- Initial packaging, upstream has split Python module from Gammu sources

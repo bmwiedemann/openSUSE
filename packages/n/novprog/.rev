@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e48ede4b13ef2112b9ff00b943a7bba3</srcmd5>
+    <version>3.1.0</version>
+    <time>1464964712</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull tool</comment>
+    <requestid>395510</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>346c488b2a23c77fda80e92f77aa3a97</srcmd5>
+    <version>3.1.1</version>
+    <time>1482785189</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 3.1.1:
+  * Generate binary translations at build time.
+  * FIXED: Was not properly loading Qt translations.
+  * Translation updates: Dutch, Lithuanian.</comment>
+    <requestid>447497</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02a8cc8bc626f60bf6ade97d86a9ebd1</srcmd5>
+    <version>3.1.2</version>
+    <time>1509105652</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>536860</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>abdf91e78eb06bcf9e2db3acd96a559c</srcmd5>
+    <version>3.1.3</version>
+    <time>1515506075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to verion 3.1.3:
+  * FIXED: Could not compile with Qt 5.10.
+  * Translation updates: French.
+- Do not run post scriplets on Tumbleweed where they are not needed
+- Split lang subpackage</comment>
+    <requestid>562422</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa7b989fbb5d1011979dba2afc59cd4d</srcmd5>
+    <version>3.1.5</version>
+    <time>1542889565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650616</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9c1070977f2a6b994f71a4db89d79201</srcmd5>
+    <version>3.1.5</version>
+    <time>1543528837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652427</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3bb031c55410c457ae39beb8408bd00d</srcmd5>
+    <version>3.1.7</version>
+    <time>1587839477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.7:
+  * FIXED: Did not load locales with underscores
+  * Improved Windows deployment
+  * Replaced deprecated code
+- Changes in version 3.1.6:
+  * FIXED: Window icon didn't work in Wayland
+  * Improved loading locales
+  * Improved Windows deployment
+  * Replaced deprecated code</comment>
+    <requestid>796896</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>255d047d5d19d175ab332881094868e7</srcmd5>
+    <version>3.2.0</version>
+    <time>1639075544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.0:
+  * Added setting words written for current day
+  * Added support for Qt 6
+  * Refactored code
+  * Removed XPM icon
+  * Translation updates: Dutch, Lithuanian</comment>
+    <requestid>937753</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>842eb4cf22e6e884caf50ba2bcb190c3</srcmd5>
+    <version>3.2.2</version>
+    <time>1687272587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.2:
+  *Improved Linux deployment
+  * Replaced deprecated code
+- Changes for version 3.2.1:
+  * Switched to Qt 6</comment>
+    <requestid>1094095</requestid>
+  </revision>
+</revisionlist>

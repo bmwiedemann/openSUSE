@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sat May 11 05:07:39 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.03
+   see /usr/share/doc/packages/perl-Data-Page/Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:31 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Sep  6 11:39:58 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- fix deps
+  o no need for Module::Build >= 0.35
+
+-------------------------------------------------------------------
+Tue Aug 31 21:58:00 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 2.02:
+  * fix SQL documentation
+  * added change_entries_per_page
+  * run perltidy on the modules
+- changes from 2.01:
+  * add human-readable license to the documentation
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new package
+

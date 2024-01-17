@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb01fc06443624a8af2edd5714100a99</srcmd5>
+    <version>1.30</version>
+    <time>1643838036</time>
+    <user>dimstar_suse</user>
+    <comment>new package: https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/A6ZWZ37DUENCCW3PPLKZRU73QESGGRZL/</comment>
+    <requestid>950521</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>092897d8a37b96917b0c180f21de2f54</srcmd5>
+    <version>1.31</version>
+    <time>1652389106</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.31
+   * No user-visible changes
+- Update change-command-name.patch (upstream files were converted to
+  dos line endings)
+</comment>
+    <requestid>976129</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>97f4d232f3b35d4a5601bedd5d251523</srcmd5>
+    <version>2.10.0</version>
+    <time>1691845606</time>
+    <user>dimstar_suse</user>
+    <comment>- new version format, see https://github.com/openSUSE/cpanspec/issues/47
+- updated to 2.01
+   see /usr/share/doc/packages/perl-File-Rename/Changes
+- Update change-command-name.patch
+</comment>
+    <requestid>1103547</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb860f08b672e83238e9c85fa483510d</srcmd5>
+    <version>2.20.0</version>
+    <time>1704380325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136652</requestid>
+  </revision>
+</revisionlist>

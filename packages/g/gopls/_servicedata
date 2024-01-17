@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/golang/tools.git</param>
+              <param name="changesrevision">1bf163756eb2d2b83518dfd62a35644c98a9ce9d</param></service></servicedata>

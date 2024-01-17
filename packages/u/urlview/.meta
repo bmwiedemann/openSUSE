@@ -1,0 +1,6 @@
+<package name="urlview" project="openSUSE:Factory">
+  <title>An URL extractor/viewer</title>
+  <description>urlview presents a menu of all URLs from a given text file (e.g., a
+mail). The user may then view the information located on those URLs.</description>
+  <devel project="utilities" package="urlview"/>
+</package>

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Mar 30 09:46:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules inconditionally
+
+-------------------------------------------------------------------
+Tue Mar 22 15:57:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Added patch:
+  * obantoo-no-hard-source-target.patch
+    + Don't hardcode source and target levels in the build files,
+      but allow them to be specified on ant invocation
+
+-------------------------------------------------------------------
+Thu Mar 17 09:38:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the system libraries
+- Added patch:
+  * obantoo-classpath.patch
+    + do not hardcode jar names, but build against all jars that
+      we link into the lib directory
+
+-------------------------------------------------------------------
+Sun Dec 25 19:58:37 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 2.1.12
+

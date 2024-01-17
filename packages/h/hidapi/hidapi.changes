@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Thu Jul 20 09:37:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * general: add `hid_get_report_descriptor` API function (#451)
+  * libusb: fix crash in hid_enumerate() caused by a stale device
+    handle (#526)
+  * fixes (mostly error handling) of issues found by
+    Coverity Scan (#552/#554/#555/#559/#560/#561)
+  * various fixes and improvements
+
+-------------------------------------------------------------------
+Sat Jan 21 10:04:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * hidraw: fix invalid read past the UDEV buffer
+
+-------------------------------------------------------------------
+Sun Jan  8 17:51:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * general: add hid_get_device_info (#432);
+  * general: Meson build script (as a wrapper over CMake) (#410);
+  * general: add HID Bus Type in hid_device_info (#308);
+  * libusb: primary usage_page/usage is now available with hid_get_device_info
+    regardless of the compilation flags;
+  * hidraw: Open files with O_CLOEXEC to not leak fds to child processes (#446);
+  * hidraw: add support for HID over SPI (#486);
+  * cmake: libusb: Ensure Iconv is found when provided via CFLAGS/LDFLAGS (#430);
+
+-------------------------------------------------------------------
+Mon Jul 11 07:52:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * libusb: improved CMake dependency on Iconv (#405) - as a result, better support for NetBSD;
+  * general: documentation improvements;
+  * general: small code cleanups/improvements;
+  * many windows specific fixes
+- spec-cleaner cleanups
+
+-------------------------------------------------------------------
+Sun Dec  5 19:02:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * hidraw: (explicit) workaround to allow build with kernels older than 2.6.39
+  * libusb: stabilize device path (uses same semantic as Linux kernel)
+  * libusb: add platform-specific hid_libusb_wrap_sys_device
+  * general: lots of documentation improvements
+  * general: (Windows) DDK build files are obsolete
+  * general: add CMake build system
+  * general: deprecated Autotools build scripts
+  * lots of other small fixes and improvements
+- remove 0001-configure.ac-remove-duplicate-AC_CONFIG_MACRO_DIR-22.patch (obsolete)
+
+-------------------------------------------------------------------
+Wed Jun  9 09:19:42 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add 0001-configure.ac-remove-duplicate-AC_CONFIG_MACRO_DIR-22.patch:
+  fix boo#1187056
+
+-------------------------------------------------------------------
+Mon Jan 11 04:35:27 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 0.10.1
+  * Add FreeBSD/macOS/MinGW/Alpine/Arch Linux/Windows CI
+  * Add hid_version/hid_version_str API (#192)
+  * Add podspec to support releases via cocoapods
+  * Add support for HID over I2C and uhid devices (#166)
+  * Fix small casting issue
+  * Fix race condition on device close (#189)
+  * Fix API prototype for gcc flag -Wstrict-prototypes (#207)
+  * Fix strict typecast (#206)
+  * Fix -Wall -Wextra -pedantic -Werror compilation (#214) ￼…
+  * Drop workaround for kernel < 2.6.34
+  * Use pkg-config to find libusb on *freebsd
+  * Reattach kernel driver in hidapi-libusb
+  * Move local variable declaration to the beginning of the function
+
+-------------------------------------------------------------------
+Mon Feb  3 13:53:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Mon Jul 22 08:54:03 UTC 2019 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Use disabled services to follow Factory guidelines. 
+
+-------------------------------------------------------------------
+Mon Jul 22 07:02:32 UTC 2019 - luca@z3ntu.xyz
+
+- Update to 0.9.0
+- Switch upstream to libusb/hidapi because the original maintainer is not active anymore
+
+-------------------------------------------------------------------
+Mon Mar 24 15:41:58 UTC 2014 - matwey.kornilov@gmail.com
+
+- Supply LICENSE files with libraries
+
+-------------------------------------------------------------------
+Fri Mar 14 16:07:45 UTC 2014 - matwey.kornilov@gmail.com
+
+- Add do_not_install_docs.patch: don't let make install docs
+
+-------------------------------------------------------------------
+Mon Jan 27 08:28:30 UTC 2014 - matwey.kornilov@gmail.com
+
+- Initial version
+

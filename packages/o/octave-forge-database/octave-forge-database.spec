@@ -1,0 +1,72 @@
+#
+# spec file
+#
+# Copyright (c) 2023 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define octpkg  database
+Name:           octave-forge-%{octpkg}
+Version:        2.4.4
+Release:        0
+Summary:        Octave plugin interfacing PostgreSQL
+License:        GPL-3.0-or-later
+Group:          Productivity/Scientific/Math
+URL:            https://octave.sourceforge.io
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         add_missing_iostream_include.patch
+# PATCH-FIX-OPENSUSE -- boo#1120035, pg_config is no longer in the postgresql-devel package, use pkg-config instead
+Patch1:         0001-Use-pkg-config-instead-of-pg_config.patch
+# PATCH-FIX-UPSTREAM database-drop-error_state.patch badshah400@gmail.com -- Drop error_state for octave >= 8 compatibility (https://savannah.gnu.org/bugs/index.php?61567)
+Patch2:         database-drop-error_state.patch
+BuildRequires:  gcc-c++
+BuildRequires:  hdf5-devel
+BuildRequires:  octave-devel >= 4.0.0
+BuildRequires:  pkg-config
+BuildRequires:  postgresql-devel >= 8.3
+Requires:       octave-cli >= 4.0.0
+Requires:       octave-forge-struct >= 1.0.12
+
+%description
+Interface to PostgreSQL databases.
+This is part of Octave-Forge project.
+
+%prep
+%setup -q -c %{name}-%{version}
+pushd %{octpkg}-%{version}
+%autopatch -p1
+popd
+%octave_pkg_src
+
+%build
+%octave_pkg_build
+
+%install
+%octave_pkg_install
+
+%check
+%octave_pkg_test
+
+%post
+%octave --eval "pkg rebuild"
+
+%postun
+%octave --eval "pkg rebuild"
+
+%files
+%{octpackages_dir}/%{octpkg}-%{version}
+%{octlib_dir}/%{octpkg}-%{version}
+
+%changelog

@@ -1,0 +1,24 @@
+Index: VirtualBox-7.0.12/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
+===================================================================
+--- VirtualBox-7.0.12.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
++++ VirtualBox-7.0.12/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.cpp
+@@ -28,6 +28,7 @@
+ /* Qt includes: */
+ #include <QApplication>
+ #include <QLabel>
++#include <QPainterPath>
+ #include <QPaintEvent>
+ #include <QStyle>
+ #include <QVBoxLayout>
+Index: VirtualBox-7.0.12/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
+===================================================================
+--- VirtualBox-7.0.12.orig/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
++++ VirtualBox-7.0.12/src/VBox/Frontends/VirtualBox/src/widgets/UIPopupBox.h
+@@ -47,7 +47,6 @@ class QIcon;
+ class QLabel;
+ class QMouseEvent;
+ class QObject;
+-class QPainterPath;
+ class QPaintEvent;
+ class QResizeEvent;
+ class QString;

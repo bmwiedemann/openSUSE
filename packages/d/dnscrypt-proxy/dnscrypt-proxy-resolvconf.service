@@ -1,0 +1,25 @@
+[Unit]
+Description=DNSCrypt proxy resolvconf support
+Documentation=https://github.com/DNSCrypt/dnscrypt-proxy/wiki/systemd
+# with openSUSE changes
+Documentation=file:/usr/share/doc/packages/dnscrypt-proxy/README.openSUSE
+Before=nss-lookup.target
+Wants=nss-lookup.target
+After=dnscrypt-proxy.socket
+BindsTo=dnscrypt-proxy.socket
+# available in package openresolv
+ConditionFileIsExecutable=/usr/sbin/resolvconf
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/bin/sh -c 'systemctl show dnscrypt-proxy.socket \
+                    | grep "Listen.*Datagram" \
+                    | cut -d "=" -f 2 \
+                    | cut -d ":" -f 1 \
+                    | awk \'{ print "nameserver " $1 }\' \
+                    | /usr/sbin/resolvconf -a lo.dnscrypt-proxy'
+ExecStop=/usr/sbin/resolvconf -d lo.dnscrypt-proxy
+
+[Install]
+WantedBy=multi-user.target

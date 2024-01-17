@@ -1,0 +1,2244 @@
+-------------------------------------------------------------------
+Wed Dec  6 11:45:56 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- No code changes since 5.27.9
+
+-------------------------------------------------------------------
+Tue Oct 24 14:23:28 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- No code changes since 5.27.8
+
+-------------------------------------------------------------------
+Tue Sep 12 11:22:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * Decoration: remove extra 1px padding
+  * toolarea: Fix separator position on hi dpi
+
+-------------------------------------------------------------------
+Tue Aug  1 11:18:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- No code changes since 5.27.6
+
+-------------------------------------------------------------------
+Tue Jun 20 17:14:58 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- No code changes since 5.27.5
+
+-------------------------------------------------------------------
+Tue May  9 13:44:05 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * ProgressBar: Stop emitting polish requests when item becomes invisible (kde#468903)
+  * ToolButton: Fix subcontrol menu buttons outline in RTL mode
+  * Remove unused methods
+  * ToolButton: Fix text & icon position in textUnderIcon RTL mode
+- Drop patches, now upstream:
+  * 0001-ProgressBar-Stop-emitting-polish-requests-when-item-.patch
+
+-------------------------------------------------------------------
+Wed Apr 26 06:25:30 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid CPU use in idle apps (boo#1210747, kde#468903):
+  * 0001-ProgressBar-Stop-emitting-polish-requests-when-item-.patch
+
+-------------------------------------------------------------------
+Tue Apr  4 15:05:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * CheckBox,RadioButton: Fix RTL icon alignment
+  * CheckBox,RadioButton: Fix RTL focus frame positioning
+  * CheckBox,RadioButton: Extend focus line to cover an icon too (kde#467824)
+  * Fix RTL for SP_ToolBarHorizontalExtensionButton
+  * KStyle: make painted arrows more scalable, fix RTL delay menu arrows
+
+-------------------------------------------------------------------
+Thu Mar 16 20:52:25 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to make the window outline configurable (kde#465948):
+  * 0001-Outline-intensity-setting.patch
+  * 0002-Undo-some-string-changes-from-the-preceding-commit.patch
+
+-------------------------------------------------------------------
+Tue Mar 14 15:05:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * Setting height before adding margins
+  * Calling expandSize in flat comboboxes too
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:14 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- No code changes since 5.27.1
+
+-------------------------------------------------------------------
+Tue Feb 21 14:09:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- No code changes since 5.27.0
+
+-------------------------------------------------------------------
+Thu Feb  9 14:19:35 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * MenuItem,TitleBar: Don't stretch icons, instead scale them down to fit and center inside their rect
+  * Revert "MenuItem: Don't stretch icons, instead scale them down to fit rect"
+  * MenuItem: Don't stretch icons, instead scale them down to fit rect
+  * Factor out 3 pixelMetric calls in MenuItemControl drawing
+  * Moved old wallpaper, added new one, updated previews
+  * ToolButton: Fix text position in text-with-menu-but-no-icon RTL mode
+  * ToolButton: Fix drop-down menu arrow in RTL layouts
+  * ScrollBar: Fix pixel alignment in RTL mode
+  * kdecoration: Fix outline gap with fractional scale (kde#461358)
+  * Only use frameworkintegration on Linux/BSD
+
+-------------------------------------------------------------------
+Thu Jan 19 14:42:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jan  4 14:06:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- No code changes since 5.26.4
+
+-------------------------------------------------------------------
+Tue Nov 29 14:47:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- No code changes since 5.26.3
+
+-------------------------------------------------------------------
+Tue Nov  8 17:24:34 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- No code changes since 5.26.2
+
+-------------------------------------------------------------------
+Wed Oct 26 14:15:25 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- No code changes since 5.26.1
+
+-------------------------------------------------------------------
+Tue Oct 18 11:27:28 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- No code changes since 5.26.0
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * wallpapers/Next: Update Dark Kay to latest version from the author
+  * wallpapers/Next: add Dark Kay
+  * wallpapers/Next: update vertical wallpapers
+  * wallpapers/Next: add Kay
+  * KStyle: fix hasIcon calculation for toolbutton labels
+  * kstyle: don't blindly fill contentsRect when calculating textRect (kde#459444)
+  * KStyle: re-add centering of toolbutton icons
+  * KStyle: fix text-only toolbuttons, check icon/text rects accurately
+  * Remove animated wallpapers used in beta testing
+
+-------------------------------------------------------------------
+Thu Sep 15 20:46:10 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Do not query an unexisting kconfig file
+  * Make inactive tab color lighter for dark color schemes
+  * wallpapers: add animated wallpaper for beta testing
+  * Add pressed appearance for checked checkboxes and radio buttons (kde#451428)
+  * make sure _eventInQQuickWidget is false when needed (kde#453692)
+  * CMake: Fix condition to also handle Qt6Quick
+  * Add FreeBSD Qt6 CI support
+  * kstyle: Fix class name to fix indeterminate progress bars animations
+  * Add missing license file
+  * Look at QStyleOptionProgressBar::orientation again
+  * Consider small icon size from system (kde#455513)
+  * kstyle: make shortcuts in menus look visually subdued (kde#456254)
+  * kstyle: Use menuTitle font metrics for size calculation (kde#443805)
+  * Add cursor 'tcross' -> crosshair (kde#452102)
+  * kstyle: Remove superfluous null pointer check of painter
+  * kstyle: Draw explicitly added focus frames
+  * kstyle: Fix build with KF 5.90
+  * Request passing unit tests on Linux and BSD
+  * KStyle: Fix QQC2 ProgressBar desktop style in RTL layout direction (kde#430101)
+  * kstyle: remove button gradients
+  * KStyle: Reuse existing local const variable
+  * kstyle: fix qqc2 desktop style sliders in RtL (kde#430101)
+  * Fix mixup of PM_ToolBarItemMargin & PM_ToolBarFrameWidth
+  * Added Landing
+
+-------------------------------------------------------------------
+Tue Sep  6 16:55:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * kstyle: Fix class name to fix indeterminate progress bars animations
+  * Look at QStyleOptionProgressBar::orientation again
+- Drop patches, now upstream:
+  * 0001-Look-at-QStyleOptionProgressBar-orientation-again.patch
+
+-------------------------------------------------------------------
+Tue Aug 23 12:33:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix progress bars in some applications:
+  * 0001-Look-at-QStyleOptionProgressBar-orientation-again.patch
+
+-------------------------------------------------------------------
+Tue Aug  2 14:07:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- Changes since 5.25.3:
+  * kstyle: Use menuTitle font metrics for size calculation (kde#443805)
+
+-------------------------------------------------------------------
+Tue Jul 12 11:28:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- No code changes since 5.25.2
+
+-------------------------------------------------------------------
+Tue Jun 28 13:03:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * Add cursor 'tcross' -> crosshair (kde#452102)
+
+-------------------------------------------------------------------
+Tue Jun 21 11:39:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- No code changes since 5.25.0
+
+-------------------------------------------------------------------
+Tue Jun 14 07:12:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- 5.25.0 tarball got respun. Changes:
+  * Added Landing
+  * KStyle: Fix QQC2 ProgressBar desktop style in RTL layout direction (kde#430101)
+
+-------------------------------------------------------------------
+Thu Jun  9 11:14:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * kstyle: fix qqc2 desktop style sliders in RtL (kde#430101)
+  * Fix mixup of PM_ToolBarItemMargin & PM_ToolBarFrameWidth
+
+-------------------------------------------------------------------
+Thu May 19 19:45:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue May  3 13:00:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * Add Windows CI
+  * Disable decoration on Windows and mac
+  * Add missing kcoreaddons dep
+
+-------------------------------------------------------------------
+Tue Mar 29 16:04:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- Changes since 5.24.3:
+  * Fix build without QtQuick and QtX11Extras
+
+-------------------------------------------------------------------
+Tue Mar  8 18:09:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- Changes since 5.24.2:
+  * KStyle: center QTabBar custom tab buttons vertically in vertical tabs (kde#447315)
+
+-------------------------------------------------------------------
+Tue Feb 22 16:20:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * kstyle: make MDI title buttons legible (kde#438964)
+  * Make sure the size of the menu title is big enough (kde#450333)
+
+-------------------------------------------------------------------
+Tue Feb 15 19:18:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * Fix "Blue Ocean" styling of QCommandLinkButtons
+
+-------------------------------------------------------------------
+Sat Feb  5 19:50:54 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Fix headerview height when the text contains '\n'
+  * kdecoration: Use proper easing curves for shadow animations
+  * kstyle: Make scrollbar handles slightly skinnier
+  * Don't install base_size wallpaper source files
+  * breezestyle: Remove extra margin for InstantPopup (kde#447288)
+  * Fix OutlineCloseButton default for close tab buttons (kde#448122)
+  * plasma 5.24 wallpaper
+  * New wallpaper for Plasma 5.24
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:05 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- Changes since 5.23.4:
+  * [kstyle] Fix logic error in drawIndicatorButtonDropDownPrimitive
+
+-------------------------------------------------------------------
+Tue Nov 30 14:59:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * Reduce groove opacity for greater contrast with scrollbar/slider/etc. (kde#444203)
+
+-------------------------------------------------------------------
+Tue Nov  9 15:43:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- Changes since 5.23.2:
+  * kstyle: Add QFocusFrame to non-view/delegate interactive widget (kde#443469)
+
+-------------------------------------------------------------------
+Tue Oct 26 14:55:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * fix paint for standalone buttons with dynamic size
+  * Update version number for 5.23.1
+- Drop patches, now upstream:
+  * 0001-Update-version-number-for-5.23.1.patch
+
+-------------------------------------------------------------------
+Wed Oct 20 17:37:32 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix the version number:
+  * 0001-Update-version-number-for-5.23.1.patch
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * Don't set alignment for spinboxes (kde#443769)
+
+-------------------------------------------------------------------
+Mon Oct 11 17:48:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * kstyle: Limit what kinds of QPushButtons can use autoDefault
+  * Revert accidental revert of f763f27ebf3bbb21235ab3df0f7b9ef035cc71b5
+  * kstyle: Clean up tab painting and tweak tab highlight
+  * Don't reserve room for spinbox buttons if buttons disabled (kde#440718)
+  * kstyle: use checked color consistent with button down color for checkboxes and radiobuttons
+  * kstyle: visible neutral highlight on not hovered checkboxes and radio buttons
+  * KTitleWidget: Make background transparent again (kde#442860)
+  * Revert "kstyle: make spinboxes look like qqc2-breeze-style"
+  * Revert "kstyle: centre spinbox text"
+  * Revert "Don't reserve room for spinbox buttons if buttons disabled"
+  * Revert "Center all QAbstractSpinBox, not just integer QSpinBox"
+  * Revert "kstyle: make spinbox buttons consistently widthed"
+  * Revert "kstyle: fix misalignment of spinbox item sizes"
+  * Darken hard-to-read positive, negative, and neutral selection colors (kde#406239)
+  * Fix incorrect link selection color in Breeze Light color scheme (kde#419960)
+  * Fix incorrect active selection color in Breeze Light color scheme (kde#442478)
+  * Restore auto default button behavior (kde#438994)
+  * kstyle: use antialiasing on combobox items
+- Add new key + signature to plasma.keyring
+- Drop patches, now upstream:
+  * 0001-Restore-auto-default-button-behavior.patch
+
+-------------------------------------------------------------------
+Sun Sep 26 12:12:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to automatically set a default button again (kde#438994):
+  * 0001-Restore-auto-default-button-behavior.patch
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:44 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Aug 31 19:08:37 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * kstyle: consider activeSubControls when deciding arrow colour (kde#434884)
+
+-------------------------------------------------------------------
+Tue Jul 27 12:34:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- No code changes since 5.22.3
+
+-------------------------------------------------------------------
+Tue Jul  6 12:01:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.3
+- No code changes since 5.22.2.1
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- No code changes since 5.22.1
+
+-------------------------------------------------------------------
+Tue Jun 15 13:17:21 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- No code changes since 5.22.0
+
+-------------------------------------------------------------------
+Thu Jun  3 13:06:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * Update new wallpaper name and breeze dark and twilight previews
+  * Add new default wallpaper
+  * Fix informing the underlying widget when leaving SplitterProxy (kde#436473)
+- Drop patches, now upstream:
+  * 0001-Fix-informing-the-underlying-widget-when-leaving-Spl.patch
+
+-------------------------------------------------------------------
+Fri May 28 06:47:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix misbehaving cursor after passing splitters (kde#436473):
+  * 0001-Fix-informing-the-underlying-widget-when-leaving-Spl.patch
+
+-------------------------------------------------------------------
+Thu May 13 18:15:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue May  4 14:15:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- Changes since 5.21.4:
+  * Fix SplitterProxy not clearing when above another QSplitterHandle (kde#431921)
+  * Fix logic error in SplitterProxy::setEnabled
+
+-------------------------------------------------------------------
+Tue Apr  6 14:00:36 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- No code changes since 5.21.3
+
+-------------------------------------------------------------------
+Tue Mar 16 13:55:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * Correct global theme metadata (kde#414417)
+
+-------------------------------------------------------------------
+Tue Mar  2 15:01:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * Revert "[kstyle]: Add double-ringed focus for text fields" (kde#430944,kde#430943,kde#433421)
+  * Start the window drag from the QStyle (kde#433178)
+
+-------------------------------------------------------------------
+Tue Feb 23 14:52:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * Revert "Revert "Do not draw background or line in toolbars if the color scheme has no headers group"" (kde#433118)
+
+-------------------------------------------------------------------
+Sun Feb 14 17:23:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable the migration from the breeze color scheme to breeze.
+  On fresh installations, the LNF is applied afterwards and so it
+  has no effect. Switching the color scheme in the LNF would need
+  an almost complete reneedling, so don't do that just yet.
+
+-------------------------------------------------------------------
+Thu Feb 11 18:23:10 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Clean up listener (kde#432660)
+  * Update users that have Breeze as colorscheme to BreezeLight (kde#432470)
+  * Fix colors files
+  * Don't waste a space in menus
+  * [kstyle]: Don't attempt to adjust contentsMargins on QDialogs
+  * [kstyle]: Don't attempt to adjust contentsMargins on QMainWindows (kde#432246)
+  * kstyle: expand tools area 1px downwards if present (kde#431540)
+  * [kstyle]: Don't draw line when no toolbars are present in fullscreen (kde#431969)
+  * hotfix: remove hasHeaderColors call from ::polish
+  * Revert "Do not draw background or line in toolbars if the color scheme has no headers group"
+  * kde4breeze: Breeze Light is the new default (kde#431917)
+
+-------------------------------------------------------------------
+Mon Jan 25 09:25:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Only Recommend breeze5-wallpapers, it's fairly big and by default
+  (openSUSE look-and-feel) not used
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  5 14:40:01 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- No code changes since 5.20.4
+
+-------------------------------------------------------------------
+Tue Dec  1 15:22:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- Changes since 5.20.3:
+  * Notify on color scheme changes (kde#428771)
+
+-------------------------------------------------------------------
+Wed Nov 11 11:08:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.3
+- No code changes since 5.20.2
+
+-------------------------------------------------------------------
+Tue Oct 27 22:23:20 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.2
+- Changes since 5.20.1:
+  * Remove the shadow in widgetDestroyed()
+
+-------------------------------------------------------------------
+Tue Oct 20 14:30:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Regenerate wallpaper sizes
+  * generate_wallpaper_sizes.py: Properly compress wallpapers
+  * Fix for occasional background glitches behind transparent Menus, especially when hovering over menu elements.
+- Drop patches, now upstream:
+  * 0001-generate_wallpaper_sizes.py-Properly-compress-wallpa.patch
+
+-------------------------------------------------------------------
+Wed Oct 14 09:15:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch and regenerate wallpapers to significantly reduce the size:
+  * 0001-generate_wallpaper_sizes.py-Properly-compress-wallpa.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 16:55:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * [kstyle] Remove #if BREEZE_HAVE_X11 around code that uses KWindowSystem
+  * Use correct colors for arrows in checked toolbuttons in toolbars
+  * [kstyle]: Make buttons use KColorScheme::Button for hover and focus colours (kde#426651)
+  * [kstyle] Ensure that shadows are destroyed after decorated windows
+  * [kstyle] Require Qt 5.15
+
+-------------------------------------------------------------------
+Thu Sep 17 20:02:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * [kstyle] Port to QWindow::startSystemMove()
+  * Update Breeze Dark preview images for new Flow wallpaper
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * Replace Flow with Shell
+  * Also enable highlighting Buttons
+  * Convert copyright statements to SPDX expressions
+  * Port away from deprecated Qt::MidButton
+  * [kstyle] Reverse default sort order indicator arrow direction
+  * Add comments to clarify hidden ViewInvertSortIndicator option
+  * Use semi-transparent menu separators
+  * Draw the separator for toolbuttons with separte popup menu on hover or focus
+  * Draw arrows on toolbuttons with menus and no popup delay (kde#344746)
+  * Add _kde_highlight_neutral property to allow widgets highlight with neutral color
+  * use global animation values
+  * Load and use global animation settings
+  * Remove breezemetrics.cpp and put values back into breezemetrics.h
+  * Clean up the appearance of breezemetrics.cpp
+  * Refactor metrics into their own C++ file
+  * Move Breeze::Metrics into breezemetrics.h to reduce recompilations
+  * Notify about the decoration button's appearance change
+  * [kstyle] Ensure that shadows are destroyed after decorated windows
+  * [kstyle] Increase tab height to 30px
+  * [QStyle] Make menu titles look less like menu items
+
+-------------------------------------------------------------------
+Tue Sep  1 11:38:47 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.5
+- No code changes since 5.19.4
+
+-------------------------------------------------------------------
+Tue Jul 28 13:45:47 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.4
+- No code changes since 5.19.3
+
+-------------------------------------------------------------------
+Tue Jul  7 12:38:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- No code changes since 5.19.2
+
+-------------------------------------------------------------------
+Tue Jun 23 13:26:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.2
+- No code changes since 5.19.1
+
+-------------------------------------------------------------------
+Tue Jun 16 14:34:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- No code changes since 5.19.0
+
+-------------------------------------------------------------------
+Thu Jun  4 13:27:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * [kstyle] Ensure that shadows are destroyed after decorated windows
+  * [style] Reparent window shadows to widgets
+
+-------------------------------------------------------------------
+Thu May 14 14:33:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Add mobile-friendly versions
+  * Revert unnecessary wallpaper plugin name change
+  * Use "Flow" wallpaper for Plasma 5.19
+  * Phrase active window titlebar separator option more accurately (kde#420753)
+  * Use the same icon mode calculation for comboboxes as for buttons
+  * Fix variable mixup
+  * Don't set a custom palette if we have the same palette as the currently active one
+  * Drop QWindow and explicit devicePixelRatio usage for ComboBox
+  * Color icons in titlebar if possible
+  * Apply the correct palette to icons
+  * Remove unused methods
+  * Add missing includes
+  * [kstyle] Properly unregister widgets in ShadowHelper
+  * [kstyle] Use QX11Info::isCompositingManagerRunning()
+  * [kstyle] Drop Helper::connection()
+  * [kstyle] Unregister a shadow when it's destroyed (kde#416854)
+  * Update my last name
+  * Delete unused property name
+  * Port connections to new syntax
+  * now that qt4 was dropped we can use specific ECM/Qt/KF5 version
+  * [kstyle] Port to KWindowSystem shadows API
+  * [kstyle] Drop Qt 4 style plugin
+  * Center only during drawing, not the hit rects (kde#416348)
+- Drop Qt4 support:
+  * breeze4-style.spec
+  * breeze4-style.changes
+  * add-support-for-Q3ListView-to-the-KDE4-style.patch
+
+-------------------------------------------------------------------
+Tue May  5 13:01:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- No code changes since 5.18.4.1
+
+-------------------------------------------------------------------
+Tue Mar 31 15:16:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:39 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * Fix build with Qt 5.15
+  * Fix Defaults not being set properly in Breeze window decoration settings for 'Draw a circle around close button'
+
+-------------------------------------------------------------------
+Tue Mar 10 14:55:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.3.php
+- No code changes since 5.18.2
+
+-------------------------------------------------------------------
+Tue Feb 25 14:07:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- No code changes since 5.18.1
+
+-------------------------------------------------------------------
+Tue Feb 18 14:05:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * Add missing cursors for Chromium-based apps
+
+-------------------------------------------------------------------
+Tue Feb 11 10:33:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update tarball, with new preview image
+
+-------------------------------------------------------------------
+Thu Feb  6 15:10:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [wallpapers] Use more high-quality JPEGs for Next
+  * Revert "Work around an issue with changing the wallpaper's filetype"
+  * Work around an issue with changing the wallpaper's filetype
+  * Replace Ice Cold with Volna for Plasma 5.18
+  * [Breeze Cursors] Add some more cursor names
+  * Center only during drawing, not the hit rects (kde#416348)
+
+-------------------------------------------------------------------
+Thu Jan 23 11:19:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  7 16:24:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.5.php
+- Changes since 5.17.4:
+  * Add item spacing to size hint
+
+-------------------------------------------------------------------
+Wed Dec  4 08:36:58 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- No code changes since 5.17.3
+
+-------------------------------------------------------------------
+Tue Nov 12 11:01:06 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- No code changes since 5.17.2
+
+-------------------------------------------------------------------
+Tue Oct 29 20:45:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.2.php
+- No code changes since 5.17.1
+
+-------------------------------------------------------------------
+Tue Oct 22 16:44:42 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.1.php
+- No code changes since 5.17.0
+
+-------------------------------------------------------------------
+Thu Oct 10 14:25:45 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:32 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * Make renderDialGroove() area match the maximum renderDialContents() area
+  * Fix colors from KStatefulBrushes not using application colorschemes
+  * Move drawIndicatorButtonDropDownPrimitive separator when sunken
+  * Fix width and separator of ToolButtonComplexControl outline w/ dropdown menu
+  * Revert "Fix width and separator of ToolButtonComplexControl outline w/ dropdown menu"
+  * Fix width and separator of ToolButtonComplexControl outline w/ dropdown menu
+  * Removed GlobalPos from QMouseEvent constructor
+  * Remove unneeded 1 pixel margin around side panels
+  * Remove qtquickcontrols dir
+  * - fixed "missing override" warnings - removed useless "virtual" specifications - removed useless destructors - cleanup variable initializations - moved protected methods as private when possible for better encapsulation
+  * re-read color palettes when application color changes (kde#408416)
+  * Set default border value in all places
+  * Recommend window border size "None"
+  * Disable extended resize borders for maximized windows CCBUG: 407989
+
+-------------------------------------------------------------------
+Tue Sep  3 12:44:11 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- Changes since 5.16.4:
+  * [SplitterProxy] Don't manually mapToGlobal
+
+-------------------------------------------------------------------
+Tue Jul 30 12:40:17 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- No code changes since 5.16.3
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:04 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- No code changes since 5.16.2
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:16 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- No code changes since 5.16.1
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:13 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- Changes since 5.16.0:
+  * re-read color palettes when application color changes (kde#408416)
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:07 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- Changes since 5.15.90:
+  * Fix cropped versions of the Next wallpaper
+  * [LnF] Update Breeze Dark preview
+  * Add new Next wallpaper
+
+-------------------------------------------------------------------
+Thu May 16 16:56:35 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * Revert "Reduce the indicator arrow size for press-and-hold menus in QToolButtons"
+  * Add missing link
+  * Reduce the indicator arrow size for press-and-hold menus in QToolButtons
+  * Sharpen ApplicationMenu, Shade, ContextHelp icons
+  * Make shadow sizes linear
+  * Multiply radius by 0.5 in calculateBlurStdDev()
+  * Change shadow color to 0,0,0 for KStyle
+  * Change shadow color to 0,0,0
+  * Fix Breeze Light color scheme to match regular Breeze version, where appropriate
+  * Make Breeze theme tooltip texts consistent and rename Breeze Snow cursors to Breeze Light
+
+-------------------------------------------------------------------
+Tue May  7 11:04:55 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- Changes since 5.15.4:
+  * Fix build with Qt 4
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:56 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- Changes since 5.15.3:
+  * Compute correct position of drag button press on X11
+
+-------------------------------------------------------------------
+Thu Mar 14 09:12:34 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop breeze-gtk requirement, it does not make sense, it's now
+  handled by Supplements in breeze-gtk instead
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:20 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- No code changes since 5.15.2
+
+-------------------------------------------------------------------
+Tue Feb 26 14:04:34 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- No code changes since 5.15.1
+
+-------------------------------------------------------------------
+Tue Feb 19 12:25:04 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- No code changes since 5.15.0
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:49 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- Changes since 5.14.90:
+  * Use correct window for getting ComboBox current icon pixmap
+  * Update Breeze Dark Look and Feel theme previews
+
+-------------------------------------------------------------------
+Thu Jan 17 18:45:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Changes since 5.14.5:
+  * Export path of installed color-schemes in BreezeConfig cmake
+  * Translate color scheme names
+  * Fix typo
+  * enable animations for standalone created buttons
+  * Fix build of libbreezecommon with USE_KDE4
+  * [libbreezecommon] Use box blur instead of FFT blur
+  * Improve accuracy of some window decoration options' labels BUG: 399602 FIXED-IN: 5.15.0 (kde#399602)
+  * Fix logic typo
+  * Add KDE4 guard round mouse synthesised test
+  * Don't drag windows in empty areas from touch/pen events
+  * Link *-resize to the right icons
+  * [cursors] Also link for Breeze Snow
+  * [Cursors] link *-resize to *_corner cursor (kde#399194)
+- Does not use FFTW anymore
+
+-------------------------------------------------------------------
+Tue Jan  8 13:36:35 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- No code changes since 5.14.4
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:44 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- Changes since 5.14.3:
+  * Fix uncentered crosshairs
+  * Improve contrast for crosshair cursors (kde#400110)
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:04 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- Changes since 5.14.2:
+  * Link *-resize to the right icons
+  * [cursors] Also link for Breeze Snow
+  * [Cursors] link *-resize to *_corner cursor (kde#399194)
+
+-------------------------------------------------------------------
+Tue Oct 23 13:54:52 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- No code changes since 5.14.1
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- No code changes since 5.14.0
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:08 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- Changes since 5.13.90:
+  * Allow to disable installation of wallpapers with breeze
+  * Fix finding QtQuick (kde#398663)
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:26 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:24:58 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * Disable the title bar separator by default
+  * [kstyle] Fix deprecation warnings
+  * Properly use kpackage_install_package
+  * Set complete vectors instead of creting them at runtime
+  * Invert shade button by same logic as keep-above button
+  * [kstyle] Create shadow tiles on demand
+  * Rename libbreezecommon to libbreezecommon5 and don't install .so links
+  * Only include QtQuick support in Breeze KStyle if QtQuick is available
+  * Optimised 5.14 wallpaper filesizes and corrected banding issues.
+  * Plasma 5.14 "Cluster" Wallpaper
+  * [kdecoration] Delete unused includes
+  * [libbreezecommon] Fix build when qreal is float
+  * [kdecoration] Make shadows lighter
+  * [kstyle] Refine shadows
+  * [kdecoration] Refine shadows
+  * [libbreezecommon] Add box shadow helper
+  * Fixed detection of horizontal progressbar by re-introducing check on QStyleOptionProgressBar::orientation. Using option->state only even for Qt5 breaks ktorrent.
+  * [kstyle] Don't suppress deprecation warnings
+  * [kstyle] Drop QStyleOptionViewItemV4 in Qt 5 style plugin
+  * [kstyle] Drop QStyleOptionTabWidgetFrameV2 in Qt 5 style plugin
+  * [kstyle] Drop QStyleOptionTabV3 in Qt 5 style plugin
+  * [kstyle] Drop QStyleOptionProgressBarV2 in Qt 5 style plugin
+  * [kstyle] Drop QStyleOptionFrameV3 in Qt 5 style plugin
+  * [kstyle] Drop QStyleOptionFrameV2 in Qt 5 style plugin
+  * [kstyle] Drop QStyleOptionDockWidgetV2 in Qt 5 style plugin
+  * Turn off the extended resize handle/black triangle when there are no borders
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:40 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:32 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 10 14:01:16 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 26 16:00:04 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 19 14:43:42 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:50 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * Check for option->styleObject before accessing it (kde#395028)
+
+-------------------------------------------------------------------
+Sat May 19 14:16:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Changes since 5.12.5:
+  * Draw mouse-over rect over the full toolbutton even if it has a menu
+  * Plasma 5.13 "Kokkini" Wallpaper
+  * Fix build with Qt 4
+  * [kstyle] create shadow tiles more explicitly
+  * [kstyle] use Q_FALLTHROUGH in breezesplitterproxy
+  * [kdecoration] delete unused m_buttons field
+  * [colors] add corresponding CMakeLists.txt
+  * modernize: delete redundant return statements
+  * modernize: delete redundant void args
+  * modernize: use nullptr
+  * delete COPYING-ICONS
+  * [cursors] Add arrow cursor symlinks
+  * - Moved shadowSize from anonymous namespace to static member function - calculate proper shadow size for Mdi windows - fix mdi windows shadow renderning.
+  * Remove long-time deprecated Encoding=UTF-8 from desktop format file
+  * fix double spacing bug
+  * Fixed kde4 compilation. Fixed warning about blurhelper initialization.
+  * Added optional transparency/blur to menu frames
+  * Revert "Added option to set transparency and blur behind menu frames such as right click context menu, toolbar menu, etc."
+  * align checkable widgets in menu items
+  * Added option to set transparency and blur behind menu frames such as right click context menu, toolbar menu, etc. Transparency and blur is disabled by default. Submitted on behalf of Alex Nemeth
+  * Revert "reserve space for checkable widgets in menu items"
+  * reserve space for checkable widgets in menu items
+  * Add the marking gcc likes to silence -Wimplicit-fallthrough= warning
+  * fixed KDE4 compîlation (missing header)
+  * ensure the rounded rectangle of scrollbard stays round
+  * Fixed qt4 compilation.
+  * even slimmer scrollbars
+
+-------------------------------------------------------------------
+Wed May  2 09:05:34 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:47 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * - Moved shadowSize from anonymous namespace to static member function - calculate proper shadow size for Mdi windows - fix mdi windows shadow renderning.
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:05 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * Render application icon at paintdevice DPR (kde#390639)
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:07 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:27 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * Fix LnF theme data for window decoration
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:42 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * None
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:02 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Changes since 5.11.5:
+  * Use combobox to choose shadow size and use more appropriate values for menu & tooltip shadow sizes
+  * Remove obsolete reviewboardrc file
+  * Adjusted range and default value for shadowsize and shadowcolor, to match the decoration settings. CCMAIL: pointedstick@zoho.com
+  * Horizontally center shadows and make them bigger
+  * Make it obvious what "Display window borders for maximized windows" is for
+  * Fix indentation of icon for left aligned toolbuttons
+  * Fix indentation of icon for left aligned toolbuttons
+  * fixed comments
+  * fixed icon state
+  * When an icon is set to a QMenuBar Item, render the icon only, and ignore the text, when set, as this is what qmenubar expects. BUG: 387539 (kde#387539)
+  * fixed comments
+  * fixed icon state
+  * When an icon is set to a QMenuBar Item, render the icon only, and ignore the text, when set, as this is what qmenubar expects. BUG: 387539 (kde#387539)
+  * [Breeze window decoration] Use intersects instead of contains
+  * [Breeze window decoration] Don't repaint title bar if not damaged
+  * Removed heuristics for not drawing separator between titlebar and window since there is now a user configurable settings to achieve this
+  * Set bottom border to zero for shaded windows
+  * Implement SH_Widget_Animation_Duration style hint
+  * Cleanup merge conflict
+  * Very slightly increase text contrast for the default Breeze color scheme (kde#381288)
+  * Added setting to toggle drawing of title bar separator
+  * Add space in front of spinbox suffix "ms"
+  * better contrast for Complementary areas
+  * add license to .desktop file
+  * use proper color for toolbutton text in some edge cases (thanks Kay for reporting! )
+  * fixed icon mode in some toolbutton corner cases (explicitly: sunken but not on and not mouse over)
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:07 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * Fix indentation of icon for left aligned toolbuttons
+  * fixed comments
+  * fixed icon state
+  * When an icon is set to a QMenuBar Item, render the icon only, and ignore the text, when set, as this is what qmenubar expects. BUG: 387539 (kde#387539)
+
+-------------------------------------------------------------------
+Thu Nov 30 10:41:57 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:11 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 24 18:12:21 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 17:18:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * [kstyle] Use KWindowSystem to determine on which platform we are
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:17 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * None
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:03 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:30 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:47 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 27 17:49:35 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * - hide shadow when mask is empty - properly handle creating shadow when mdi window is already visible at registration - added some "auto" declarations CCBUG: 379790
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:00 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * use fontMetrics.height() rather than boundingRect(...).height() the height of the title bar should not depend on the caption content.
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:55 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * None
+
+-------------------------------------------------------------------
+Fri May 26 14:10:29 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * set a mask to shadow widget to make sure that it does not overlap with the mdi window. BUG:379790 (kde#379790)
+
+-------------------------------------------------------------------
+Thu May 11 20:26:19 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Changes since 5.9.5:
+  * fixed warning about unused variable
+  * bump version for 5.9.5
+  * Fix progress bar color
+  * [cursors] Add 36px (1.5 scaling) size for Breeze and Breeze Snow Cursors (kde#348603)
+  * Added new resolutions: 1366x768 and 1920x1200 Differential Revision: https://phabricator.kde.org/D4400
+  * Fix header content size when sorting is disabled
+- Use plasma-framework instead of plasma5-workspace to break a
+  build cycle. This causes a harmless warning to appear.
+
+-------------------------------------------------------------------
+Sat Apr 29 13:30:20 UTC 2017 - wbauer@tmo.at
+
+- BuildRequire plasma5-workspace instead of plasma-framework, that
+  one is actually needed to fix the appdata file generation
+  (kde#367923)
+
+-------------------------------------------------------------------
+Tue Apr 25 18:57:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * bump version for 5.9.5
+
+-------------------------------------------------------------------
+Fri Apr  7 09:57:10 UTC 2017 - fabian@ritter-vogt.de
+
+- Add BuildRequires: plasma-framework to allow appdata file to be built
+- Add appdata file to %files
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:42 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * None
+-------------------------------------------------------------------
+Tue Feb 28 19:54:02 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * Use QPalette::Shadow instead of QPalette::Text to darken inactive tabs BUG:373088
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:12 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb  7 18:51:19 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * [KStyle] Don't draw focus indicator on ComboBox entries
+
+-------------------------------------------------------------------
+Thu Jan 26 19:57:59 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * [lookandfeel] Breeze window decoration
+
+-------------------------------------------------------------------
+Sat Jan 14 19:40:10 UTC 2017 - herbert@graeber-clan.de
+
+- Remove recommendation of breeze4-style, replaced by a supplement
+  of packagand(breeze5-style:libqt4) in breeze4-style itself
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * Draw scrollbar as focused when scrollbar itself have focus.
+  * Plasma 5.9 wallpaper "Canopee".
+  * Implement drag from free space also for QtQuickControls.
+  * Default to no arrows.
+  * Make scrollbar size configurable.
+  * Removed unnecessary ifdef.
+  * Fix flickering arrows.
+  * Fixed warning about unused variable.
+  * Fixed warning about unused variables.
+  * Fixed compilation for KDE4.
+  * The combobox needs to be 2 pixels wider for contents to fit.
+  * Show full scrollbar only on mouse over.
+  * Fix broken kcfgc files.
+  * [kstyle] Implement window moving on Wayland.
+  * Fix crash on exit.
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Wed Nov  9 13:42:39 UTC 2016 - fabian@ritter-vogt.de
+
+- Introduce new _plasma5_bugfix global for more fine-tuned dependencies
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+
+-------------------------------------------------------------------
+Wed Sep 21 09:15:37 UTC 2016 - fabian@ritter-vogt.de
+
+- Use %{_plasma5_version} again, define it if needed
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Tue Aug  2 11:35:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:14 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Mon Jul 18 08:38:22 UTC 2016 - jengelh@inai.de
+
+- Add fdupes by recommendation of rpmlint
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Tue Jul  5 11:11:55 UTC 2016 - wbauer@tmo.at
+
+- Use the new %kf5_find_lang macro to create the file list for the
+  lang package
+- Remove rpmlintrc file, it is not needed any more now
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:17 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Sun May 15 16:50:10 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:45:25 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:41 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:20:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar 20 09:19:46 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Tue Mar  1 17:31:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 15 17:49:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+
+-------------------------------------------------------------------
+Sat Dec 12 17:31:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+- Drop set-breezyGTK-as-default-gtk-theme.patch, no longer needed
+
+-------------------------------------------------------------------
+Sun Nov  8 18:09:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.3 (boo#955068):
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.3.php
+- Drop Use-NETRootInfo-to-initiate-wm-move-operation.patch and
+  Install-emotes-and-mimtetypes-directories-of-the-dark-icon-theme.patch,
+  upstreamed
+
+-------------------------------------------------------------------
+Sun Oct 18 14:50:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add set-breezyGTK-as-default-gtk-theme.patch and install gtkbreeze
+  kconf update script, so the GTK theme is correctly set (boo#950897)
+- Make sure we require breeze-gtk so the change makes sense
+
+-------------------------------------------------------------------
+Sat Oct 10 13:52:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Create GTK icon cache
+- Added Use-NETRootInfo-to-initiate-wm-move-operation.patch
+  (kde#353749)
+- Added Install-emotes-and-mimtetypes-directories-of-the-dark-icon-theme.patch
+
+-------------------------------------------------------------------
+Sun Oct  4 10:43:28 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.2.php
+
+-------------------------------------------------------------------
+Tue Sep  8 18:39:33 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.1.php
+
+-------------------------------------------------------------------
+Mon Aug 24 17:48:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.0.php
+- Drop 0001-Add-missing-symlink-to-fix-build.patch and
+  0002-Another-buildfix.patch from upstream
+
+-------------------------------------------------------------------
+Sun Aug 16 10:17:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.95 aka 5.4 beta:
+  This release of Plasma brings many nice touches for our users
+  such as much improved high DPI support, KRunner auto-completion
+  and many new beautiful Breeze icons. It also lays the ground for
+  the future with a tech preview of Wayland session available.
+  We're shipping a few new components such as an Audio Volume
+  Plasma Widget, monitor calibration tool and the User Manager
+  tool comes out beta.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.95.php
+- Added 0001-Add-missing-symlink-to-fix-build.patch and
+  0002-Another-buildfix.patch from upstream
+
+-------------------------------------------------------------------
+Sun Jun 28 18:31:41 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+
+-------------------------------------------------------------------
+Fri May 22 15:30:28 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:18 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:30 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+- Added kcmutils-devel BuildRequires
+- Drop kservice-devel BuildRequires
+- Drop patches merged upstream:
+  0001-Cleanup-code-to-align-with-master.patch,
+  0002-set-button-s-visibility-depending-on-the-availabilit.patch,
+  0003-Properly-update-size-grip-visibility-on-maximizedCha.patch
+  and 0004-Fixed-foreground-color-for-pressed-buttons.patch
+
+-------------------------------------------------------------------
+Thu Mar 19 17:42:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.2.php
+- Drop patches merged upstream:
+  0003-return-parent-style-method-when-option-passed-to-tab.patch,
+  0002-Check-scrollbar-policy-before-forwarding-events.patch,
+  0004-check-widget-validity-before-calling-deleteLater.patch and
+  0001-Added-an-explicit-flag-as-output-from-captionRect-to.patch
+- Added patches from upstream:
+  0001-Cleanup-code-to-align-with-master.patch (kde#345424),
+  0002-set-button-s-visibility-depending-on-the-availabilit.patch
+  (kde#343641),
+  0003-Properly-update-size-grip-visibility-on-maximizedCha.patch
+  and 0004-Fixed-foreground-color-for-pressed-buttons.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 11:53:48 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add explicit kguiaddons-devel BuildRequires
+
+-------------------------------------------------------------------
+Tue Mar 10 18:49:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  0001-Added-an-explicit-flag-as-output-from-captionRect-to.patch,
+  0002-Check-scrollbar-policy-before-forwarding-events.patch,
+  0003-return-parent-style-method-when-option-passed-to-tab.patch
+  and 0004-check-widget-validity-before-calling-deleteLater.patch
+
+-------------------------------------------------------------------
+Fri Feb 20 02:43:47 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.1.php
+
+-------------------------------------------------------------------
+Mon Jan 26 19:49:12 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.0.php
+
+-------------------------------------------------------------------
+Tue Jan 13 16:34:51 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Beta aka 5.1.95:
+  * Undo changes to Plasma desktop layout
+  * Smarter sorting of results in KRunner
+  * Breeze window decoration theme adds a new look to your
+    desktop and is now used by default
+  * New white mouse cursor theme for Breeze.
+  * New plasma widgets: 15 puzzle, web browser, show desktop
+  * Over 300 bugs fixed throughout Plasma modules.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.95.php
+- Added kservice-devel and libkdecoration2-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Dec 11 17:59:10 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.2:
+  * Bugfix release
+  * Fix ui files
+  * Fixed color role for accelerator
+  * Added inputWidgetEngine, for abstract item views, line editors,
+    spinboxes and comboboxes it is needed to avoid animation
+    conflicts between lists and buttons (when, e.g. there is a
+    checkbox inside a list)
+  * Removed Q3ListView support
+  * Manually calculate viewport update rect on header hover change
+    kde#340343
+  * Fixed KDE4 compilation. kde#341006
+  * Remove mnemonic underlines when alt-tabbing
+  * Removed unused members
+  * Fixed uninitialized member _value
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.2.php
+
+-------------------------------------------------------------------
+Thu Nov  6 20:14:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.1:
+  * Bugfix release
+  * Do not clip away vertical margins for headers, kde#340150
+  * Properly handle RTL for corner rects and tabbar, kde#340155
+  * Center icon in tabs when there is no text and no buttons, kde#340257
+  * Do not takeout margins from toolbutton before rendering text,
+    unless they have inline indicator, kde#340341
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.1.php
+
+-------------------------------------------------------------------
+Sat Oct 25 17:25:08 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Let style subpackage recommends style-lang subpackage
+
+-------------------------------------------------------------------
+Thu Oct  9 21:24:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1 Final:
+  * Bugfixes since RC1
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.0.php
+- Added dark colorscheme and icontheme
+
+-------------------------------------------------------------------
+Thu Sep 25 22:45:25 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95:
+   * Minor tweaks to breeze style since previous update
+- Install locale to %{_kf5_localedir} (../locale/kf5/ directory)
+- Add rpmlintrc file for file-not-in-%lang warnings: we don't use
+  find_lang macro as it doesn't searches in subdirectories
+
+-------------------------------------------------------------------
+Wed Sep 24 12:15:17 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95~git20140924
+   * Many improvements for the Breeze style
+   * Honor look-n-feel setting in kdeglobals (needed for openSUSE
+     branding)
+- Drop pkgconfig(x11) BuildRequires
+
+-------------------------------------------------------------------
+Tue Aug 26 08:13:31 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95~git20140826
+   * new C++ Qt5 style (with option to build kde4 style also)
+   * updated icons
+- Split the main package to icons, cursors, wallpapers, decoration
+  and style packages
+- Added frameworkintegration-devel, kcompletion-devel, ki18n-devel,
+  kwindowsystem-devel, pkgconfig(Qt5DBus), pkgconfig(Qt5Widgets),
+  pkgconfig(Qt5X11Extras), pkgconfig(x11), pkgconfig(x11-xcb) and
+  pkgconfig(xcb)
+- Drop qtcurve-(qt4,qt5) Recommends and Requires due to switch of
+  default to new style
+- Create breeze4-style package
+- Comment out Source URL temporarily
+
+-------------------------------------------------------------------
+Mon Aug 11 21:22:54 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1
+   * Bugfix release
+
+-------------------------------------------------------------------
+Fri Jul 11 18:24:54 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+  * Plasma 5.0 Final
+- Update license
+- Add Source URL
+
+-------------------------------------------------------------------
+Thu Jul  3 17:35:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * Plasma 5 RC release
+
+-------------------------------------------------------------------
+Thu Jun  5 16:03:52 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate breeze package
+

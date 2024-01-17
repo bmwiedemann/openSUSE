@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Oct 20 20:30:01 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 1.7.0
+ * rss_client: fix syntax error
+ * client: Make sure aexpect_helper file descriptors are closed
+ * astring: Add bracketed paste console codes
+ * Simpler ns daemon and current linter fixes
+ * Drop unexpected and unwanted re.sub string postprocessing
+ * Remove six dependency
+ * Fix remote_door set_subcontrol_* handling of no matches
+ * Add session ops utility with some facilitator functions (v2)
+ * Fill setup.py license and metadata
+ * Allow to calculate hashes on parts of files
+ * Provide the session prefix when logging sent commands
+ * Implement a reusable subcommand output and status processing routine
+ * Add a generic ops module for windows platforms
+ * Add remote linux glob behavior to expand paths from patterns
+ * Avoid printing line when output_func not set
+- drop helper-version-in-cmdline.patch
+- drop 0001-Remove-six-dependency.patch
+
+-------------------------------------------------------------------
+Wed Oct 19 16:18:45 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add 0001-Remove-six-dependency.patch upstream patch to remove python-six
+  dependency gh#avocado-framework/aexpect#102
+- More specific python_sitelib in files
+- Use autosetup instead of setup and autopatch
+
+-------------------------------------------------------------------
+Mon Jan 10 01:14:20 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.4:
+  * No changelog available.
+- Refresh helper-version-in-cmdline.patch.
+- Add missing {Build,}Requires on six. 
+
+-------------------------------------------------------------------
+Mon Aug 16 08:53:00 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.2:
+  * No changelog available
+- Add patch helper-version-in-cmdline.patch:
+  * Always call the correct version of the helper script.
+- Drop {Build,}Requires on Python 3 subprocess backport module.
+- Switch to pytest, and skip two truculent tests
+
+-------------------------------------------------------------------
+Fri Jul 27 11:07:10 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.5.1:
+  * No changelog available
+- Correct dependencies
+- Run tests
+
+-------------------------------------------------------------------
+Thu Oct 12 13:04:56 UTC 2017 - jengelh@inai.de
+
+- Update package descriptions.
+
+-------------------------------------------------------------------
+Thu Oct  5 10:41:21 UTC 2017 - mpluskal@suse.com
+
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Fri Jul  7 16:53:12 UTC 2017 - brogers@suse.com
+
+- Initial check-in

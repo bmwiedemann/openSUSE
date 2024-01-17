@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb1a17845daa9ec9dacbddd2482b9f7c</srcmd5>
+    <version>0.29</version>
+    <time>1395218462</time>
+    <user>scarabeus_factory</user>
+    <comment>required for another perl timeout foobar ;(</comment>
+    <requestid>226571</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cb1a17845daa9ec9dacbddd2482b9f7c</srcmd5>
+    <version>0.29</version>
+    <time>1409302453</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6f46f8c28d9427022289120c3a1e1120</srcmd5>
+    <version>0.30</version>
+    <time>1431668669</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307138</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bf6095a8b88e025b0a5688ff6eac4f1d</srcmd5>
+    <version>0.31</version>
+    <time>1438421884</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319230</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>405fff8553894aa01d35c26633b62185</srcmd5>
+    <version>0.32</version>
+    <time>1438548379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319968</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,417 @@
+-------------------------------------------------------------------
+Tue Jan  2 13:09:35 UTC 2024 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.30
+  * All: Extend depth test overlay to correctly report pass/fail
+    with shader exported depth.
+  * UI: Improve tooltips for settings determining Android SDK/JDK.
+  * UI: Improve buffer formatter help and link properly to help
+    documentation from UI.
+  * UI: Improve D3D12 line anti-aliasing on AMD.
+  * Vulkan: Add support for VK_EXT_extended_dynamic_state3
+    extension.
+  * Vulkan: Improve display of output parameters to strip
+    unnecessary gl_PerVertex noise.
+  * Android: Fade logo every 45 minutes to alleviate burn-in if
+    server is left running long term.
+  * Android: Add handling of limited devices that only support
+    64-bit ARM and not also 32-bit ARM.
+  * D3D12 & Vulkan: Implement support for mesh shading.
+    Interactions with multiview are not supported, and currently
+    there is no mesh input visualisation option and shader
+    debugging is disabled. NOTE: Currently there are known issues
+    both with mesa radv and with dxc's SPIR-V output which are both
+    being investigated.
+ 
+
+-------------------------------------------------------------------
+Tue Nov 28 12:54:48 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.29 
+  * Refactored handling of ExecuteIndirect to more reliably replay
+    the application's work even in the face of non-deterministic
+    work. Executes with non-deterministic parameters will still not
+    function properly anywhere that the draw parameters are
+    referenced like the event browser, mesh viewer, etc. But
+    selecting subsequent events in the command buffer will now
+    replay the ExecuteIndirect faithfully.
+  * The pixel history events still show background colours in part
+    when the row is selected.
+  * When editing SPIR-V shaders and recompiling them, wherever
+    possible the same SPIR-V version will be used to recompile
+    them. This is necessary when using features that target a
+    minimum SPIR-V version.
+
+-------------------------------------------------------------------
+Mon Aug 14 08:13:08 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.28
+  * Improved capture writing process for larger captures especially
+    on Vulkan & D3D12 to improve the time taken to write a capture to disk.
+  * Added a 'soft memory limit' capture option to reduce the chance
+    of out-of-memory errors during capture, currently implemented
+    only for Vulkan due to Linux and Android being platforms prone to OOM.
+  * Tweaked the display of checkboxes with RenderDoc's style to
+    display with an X, for the sake of the low contrast dark theme
+    where checkbox fills were not as clear as the normal light theme.
+  * Add support for glCopyImageSubData on GLES copying from
+    uncompressed to compressed textures.
+  * Add support for several vulkan extensions:
+    - VK_EXT_provoking_vertex
+    - VK_EXT_attachment_feedback_loop_dynamic_state
+    - VK_EXT_image_2d_view_of_3d 
+
+-------------------------------------------------------------------
+Wed Jun  7 08:07:05 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.27
+  * Security fixes:
+    - CVE-2023-33863: renderdoc: integer overflow to heap-based buffer overflow
+    - CVE-2023-33864: renderdoc: integer underflow to heap-based buffer overflow
+    - CVE-2023-33865: renderdoc: symlink vulnerability in /tmp/RenderDoc
+  * D3D12: Add support for new SDK 1.610.1:
+  * New state functionality
+  * New sampler creation parameters and PSO chunks
+  * New barrier API
+  * All: Show explicit dropdown arrow for tool buttons with menus.
+  * All: Report Windows 11 separately in analytics.
+  * Vulkan & D3D12: Optimisations to capture time overhead and GPU Syncs.
+  * D3D11: Disable query for undocumented internal D3D interface in composition API.
+
+-------------------------------------------------------------------
+Tue Apr 11 07:07:15 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.26
+  * OpenGL: Pixel history is now supported on OpenGL.
+  * Vulkan: Improve the heuristic for when to use a GPU readback for
+    reading mapped memory over CPU reads.
+  * D3D12: Enable that same heuristic that was accidentally disabled in
+    a previous release.
+  * D3D12: DXIL handling refactored once again, to more closely clone
+    LLVM's codebase and be more reliable at editing/patching.
+
+-------------------------------------------------------------------
+Fri Mar 24 14:50:34 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.25
+  * All: nvidia counters can now be obtained via the performance counter
+    viewer. This requires the manual installation of the nvidia SDK 
+    obtained separately.
+  * Python: The bindings now report not-equal instead of throwing an
+    exception when comparing between incompatible types.
+  * Android: Change listing of Android packages for new Android version
+    that requires different parameters.
+  * D3D12: Resource usage depends less on root signatures and more on
+    shader reflection, which should reduce false positives of resources
+    being reported as used on events when they are bound but unused.
+  * Vulkan: Display depth resolve textures in texture viewer thumbnails.
+  * Vulkan: Add support for several extensions:
+    - VK_EXT_rasterization_order_attachment_access
+    - VK_EXT_acquire_drm_display
+    - VK_EXT_surface_maintenance1
+    - VK_EXT_swapchain_maintenance1
+    - VK_EXT_border_color_swizzle
+    - VK_EXT_non_seamless_cube_map
+    - VK_EXT_depth_clamp_zero_one
+    - VK_EXT_image_view_min_lod 
+
+-------------------------------------------------------------------
+Mon Dec 19 09:11:29 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.24
+  * This is a hotfix release, containing a fix for a common D3D12
+    crash that could happen when analysing a capture using bindless
+    resource access. 
+
+-------------------------------------------------------------------
+Mon Dec  5 11:46:40 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.23
+- UI: When trying to connect to a remote host using an incompatible
+  version, display the version it is running. This is only
+  supported as of v1.23 and newer, older versions will all report
+  as 'older than v1.23'.
+- UI: The buffer formatted allows stdint types like uint8_t or
+  int32_t.
+- All: Add an in-application API function to set a title for an
+  ongoing capture.
+- Linux: Use $HOME as a backup if getpwuid fails.
+- Vulkan/D3D12: Add a number of optimisations to D3D12 and Vulkan
+  both during capture and on replay, to improve performance. This
+  would affect programs using bindless and large number of
+  resources most.
+- Vulkan/D3D12: When doing feedback on bindless resources, if a
+  pixel shader is never invoked due to being offscreen/clipped,
+  treat that as valid and display no resources as used instead of
+  falling back to showing all resources.
+- Vulkan: Give a default name to un-named children in constant
+  buffer structs.
+- Vulkan: Add support for extensions:
+  * VK_EXT_mutable_descriptor_type
+  * VK_AMD_memory_overallocation_behavior
+  * VK_EXT_pageable_device_local_memory
+- D3D12: Relax the requirement for D3D12Core.dll to be signed by
+  microsoft on trusted captures. This works around an issue where
+  UE5.1 re-signed D3D12Core.dll as coming from epic, causing it to
+  be rejected. The signature check will still be applied on files
+  marked as untrusted e.g. downloaded from the internet.
+- OpenGL: Allow use of OVR extensions on desktop GL.
+- OpenGL: In the case that two different incompatibly-typed shader
+  variables are both bound to the same texture slot, display this
+  as an error in the pipeline state view.
+
+-------------------------------------------------------------------
+Mon Oct 10 06:59:27 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.22
+  * UI: Improved the highlighting of changed variables when
+    stepping/running in the shader debugger.
+  * OpenGL: When capture is unsupported on a running program,
+    display the reason why in the connection window as well as in
+    the overlay text.
+  * OpenGL: Show bicubic filtering functions in pipeline state
+    viewer.
+  * OpenGL: Replay multisampled backbuffers on OpenGL ES.
+  * D3D: Display magic quality values better in texture viewer
+    status bar.
+  * D3D12: Improve performance for adding patterns into discarded
+    resources.
+  * Vulkan: On fastest replay optimisation level don't override
+    renderpass load ops.
+  * Vulkan: Optimise contiguous bindings of sparse pages in buffers
+    before passing to the driver.
+  * Vulkan: Add support for extensions:
+    - VK_EXT_attachment_feedback_loop_layout
+    - VK_EXT_primitive_topology_list_restart
+    - VK_EXT_primitives_generated_query
+    - VK_EXT_depth_clip_control
+    - VK_EXT_multisampled_render_to_single_sampled 
+
+-------------------------------------------------------------------
+Wed Aug 24 07:15:54 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.21
+  * UI: Highlight the current event in the texture viewer context
+    menu that shows resource usage.
+  * UI: Improve handling of source-level shader debugging
+    breakpoints.
+  * All: Show status in mesh viewer when geometry data is not
+    available, e.g. when using multiview and geometry/tessellation
+    on vulkan.
+  * All: Tweaked the in-program overlay to be more readable and
+    better organised, especially around multiple windows.
+  * All: Handle applications that don't create any
+    graphics-compatible queues on Vulkan or D3D12 to still be able to
+    capture and replay correctly.
+  * Vulkan: Improve the clarity of error messages for incompatible
+    captures, showing the reason for the incompatibility and what
+    device was captured on and replayed on.
+  * Vulkan: Implemented tracking of printf statements from geometry
+    shaders.
+  * Vulkan: Allow buffer format re-interpreting of push constants.
+  * OpenGL: Display the 'intuitive' state of face culling winding,
+    rather than strictly following enums (e.g. when clip origin is
+    non-default, GL_CCW frontface means that clockwise wound
+    polygons are front-facing). 
+
+-------------------------------------------------------------------
+Tue Aug 16 12:12:44 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Added patch file 0001-Fix-install-rpaths.patch 
+
+-------------------------------------------------------------------
+Mon Aug 15 09:31:57 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Remove install rpaths from binaries. Factory no longer allows them. 
+
+-------------------------------------------------------------------
+Tue May 31 09:32:33 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.20
+  * Views of buffers, either storage/raw buffers or constant buffers,
+    have been refactored and improved. 
+  * Most complex error messages (particularly those that reference some
+    error replaying or problem with the API like a fatal error) now
+    contain better explanations of what problem has happened.
+  * UI: Tweak behaviour around closing all captures on shutdown to be
+    more consistent.
+  * D3D12: Support the encoded color in obfuscated PIX-style markers.
+  * ARM: Update hardware counter library.
+  * Vulkan: Add support for some extensions:
+    - VK_KHR_pipeline_library
+    - VK_EXT_graphics_pipeline_library
+    - VK_QCOM_render_pass_store_ops
+    - VK_GOOGLE_surfaceless_query
+
+-------------------------------------------------------------------
+Sat Apr 16 13:02:39 UTC 2022 - Mark Nefedov <mark_nefedov@runbox.com>
+
+- Update to version 1.19
+  * Custom visualisation shaders have been refactored to be more
+  portable and re-usable between APIs.
+  * The location breadcrumbs in the event browser now has an
+  edit button to edit the 'path' as a text string.
+
+-------------------------------------------------------------------
+Thu Jan 27 15:59:49 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.18
+  * Full support for Vulkan 1.3 as well as the Roadmap 2022 profile
+    including the new VK_KHR_global_priority promoted extension.
+  * The primary font used in the UI can now be customised, as well
+    as the secondary monospaced font. 
+
+-------------------------------------------------------------------
+Tue Nov 30 16:04:14 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.17
+  * Support for the new Vulkan extension VK_KHR_dynamic_rendering.
+  * The resource inspector has some sorting options now.
+  * Compute shader debugging can now be launched either by split
+    workgroup & thread ID, or by global thread ID. 
+  * The mesh viewer now allows you to select the axis convention of
+    input vertex data for e.g. Z-up instead of Y-up or
+    left/right-handed.
+
+-------------------------------------------------------------------
+Mon Oct 11 18:14:53 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.16
+  * The bindless feedback for D3D12 which was added in v1.15 now supports
+    DXIL SM6.x shaders, via DXIL patching. 
+  * The API backends have been hardened to handle the majority of cases
+    where an API fatal error happens during replay while analysing a
+    capture - device lost/TDR, out of GPU memory, or when using
+    remote-replay if the remote server crashes or disconnects.
+- osc build apparently auto-cleans your spec-file now (without even asking)
+
+-------------------------------------------------------------------
+Wed Sep  8 13:23:52 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Use pcre-devel instead of pcre-devel-static 
+
+-------------------------------------------------------------------
+Wed Sep  8 13:18:02 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundant metadata from description.
+
+-------------------------------------------------------------------
+Wed Sep  8 10:43:22 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Remove unused LIB_INSTALL_DIR 
+
+-------------------------------------------------------------------
+Wed Sep  8 10:11:45 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Use %autosetup during %prep
+- Update source0 to get proper filename
+- Use %cmake_build instead of %make_build for consistency 
+
+-------------------------------------------------------------------
+Wed Sep  1 19:03:14 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Use correct LIB_SUFFIX 
+
+-------------------------------------------------------------------
+Tue Aug  3 09:01:52 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.15
+  * Highlights
+    - The Event Browser has been significantly refactored.
+    - Bindless feedback is available on D3D12 for DXBC shaders (SM5.1). 
+    - Python API changes
+    - Bug fixes 
+
+-------------------------------------------------------------------
+Mon May 31 08:29:40 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.14
+  * Highlights
+    - RenderDoc can now display print statements from shaders in
+      Vulkan.
+    - The pipeline state view will now show thumbnail previews of
+      textures on hover to help quickly identify which texture is
+      bound to a given slot
+
+-------------------------------------------------------------------
+Fri Feb 12 09:49:06 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.12
+  * Highlights
+    - Qt version updated to Qt 5.15.2.
+    - Python docstrings improved
+
+-------------------------------------------------------------------
+Mon Sep 21 10:44:42 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.10 
+  * Highlights
+    - Reduced idle overhead while injected into programs, while not
+      actively capturing a frame.
+    - All APIs have seen improvements, though some will see greater
+      savings than others especially depending on API usage
+      patterns. Modern APIs (D3D12/Vulkan) with high frequency API
+      calls and command buffer recording will likely see bigger
+      savings.
+    - Improved speed of capturing a frame on Vulkan when GPU-local
+      host-visible uncached memory is mapped.
+    - Improved application startup time from cold.
+    - Improved replay time for switching events for Vulkan
+      captures with large numbers of descriptors bound with few
+      actually used (i.e. 'bindless' type workflows).
+
+-------------------------------------------------------------------
+Wed Aug 26 13:47:48 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Explicitly enable build for xcb and xlib 
+- Build as stable version
+
+-------------------------------------------------------------------
+Fri Aug 14 14:30:35 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Forgot to remove unneeded qpainterpath patch 
+
+-------------------------------------------------------------------
+Fri Aug 14 14:24:43 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.9 
+
+-------------------------------------------------------------------
+Thu Jun 25 08:58:04 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Increase %limit_build to 1750 
+
+-------------------------------------------------------------------
+Wed Jun 24 15:35:01 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Add %limit_build -m 1400
+- Changed devel description to description to silence rpmlint
+  warning
+- Exclude duplicate of LICENSE.md
+
+-------------------------------------------------------------------
+Tue Jun 23 10:53:13 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Clean specfile with spec-cleaner 
+
+-------------------------------------------------------------------
+Wed Jun 17 16:48:48 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Add group specification
+- Patch desktop menu file to add debugger to category
+
+-------------------------------------------------------------------
+Tue Jun 16 13:59:05 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Remove vulkan-devel from build requirements
+- Add correct release type for the build 
+
+-------------------------------------------------------------------
+Tue Jun 16 06:57:15 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Fix directories and summary errors
+
+-------------------------------------------------------------------
+Mon Jun 15 17:57:24 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Initial version 1.8

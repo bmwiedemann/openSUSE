@@ -1,0 +1,7 @@
+<package name="OpenRGB" project="openSUSE:Factory">
+  <title>OpenRGB</title>
+  <description>The purpose of this tool is to control RGB lights on different peripherals.
+Accessing the SMBus is a potentially dangerous operation, so exercise caution.</description>
+  <devel project="hardware" package="OpenRGB"/>
+  <url>https://gitlab.com/CalcProgrammer1/OpenRGB</url>
+</package>

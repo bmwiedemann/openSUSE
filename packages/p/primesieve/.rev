@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f61efca69f92be62330902805f32f629</srcmd5>
+    <version>7.4</version>
+    <time>1560337849</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim subjective parts from description.
+
+
+primesieve is a new package, it's a command-line program and C/C++ library that generates prime numbers using a highly optimized sieve of Eratosthenes implementation. primesieve is primarily used by students who learn about prime numbers in school, by research scientists and by benchmark enthusiasts e.g. for benchmarking CPUs. primesieve is quite popular on GitHub, it currently has 453 stars which is more than any other program for computing prime numbers. primesieve is already included in Debian/Ubuntu, Fedora, Homebrew, Chocolatey and the Phoronix Test Suite.</comment>
+    <requestid>699883</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7b1f5301e552f3574e040221453650ee</srcmd5>
+    <version>7.5</version>
+    <time>1578320645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to primesieve-7.5
+</comment>
+    <requestid>761109</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d858edb619b804155e40560bd989989d</srcmd5>
+    <version>7.6</version>
+    <time>1610558352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to primesieve-7.6
+</comment>
+    <requestid>861742</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>105eb47b6198609babdc8e0e4aa107c7</srcmd5>
+    <version>7.7</version>
+    <time>1638918010</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues with big.LITTLE CPUs e.g. Intel Alder Lake
+- Improved C API error messages
+- Improved C/C++ API documentation
+</comment>
+    <requestid>936293</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d36366547fd6fd41b859b949185dcca6</srcmd5>
+    <version>7.8</version>
+    <time>1643666223</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primesieve-7.8</comment>
+    <requestid>949982</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>47b156502f4806a16085148edf906d4b</srcmd5>
+    <version>7.9</version>
+    <time>1651605568</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primesieve-7.9</comment>
+    <requestid>974650</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a49c1ef3ce59d89b49ca3368b6202979</srcmd5>
+    <version>8.0</version>
+    <time>1657191465</time>
+    <user>dimstar_suse</user>
+    <comment>Update to primesieve-8.0</comment>
+    <requestid>987389</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e4ec79fb9bc546386ce61801a927a75</srcmd5>
+    <version>11.0</version>
+    <time>1670430945</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest primesieve</comment>
+    <requestid>1040921</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8fe6ef280e5b4507d16875c18b6a925c</srcmd5>
+    <version>11.1</version>
+    <time>1683991085</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest primesieve-11.1</comment>
+    <requestid>1086888</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>42e2be1e8b193621578bc9d6935dfea9</srcmd5>
+    <version>11.2</version>
+    <time>1705003554</time>
+    <user>anag+factory</user>
+    <comment>Update to latest primesieve-11.2 release</comment>
+    <requestid>1138164</requestid>
+  </revision>
+</revisionlist>

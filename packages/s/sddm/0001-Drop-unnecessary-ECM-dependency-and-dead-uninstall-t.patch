@@ -1,0 +1,78 @@
+From f0e1b77d3e652c35dcbbcb23e9ca95faad32db92 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 14 Sep 2023 18:09:34 +0200
+Subject: [PATCH 1/3] Drop unnecessary ECM dependency and dead uninstall target
+
+ECM was added by 6ef91b0b because of some potential dependency needed for
+Wayland, which was not added until now.
+
+The commit also changed the "uninstall" target to not be created if
+ECM >= 1.7.0. ECM itself doesn't register an uninstall target automatically
+either, which means this is dead code. Just remove it.
+---
+ CMakeLists.txt                 | 12 +-----------
+ cmake/cmake_uninstall.cmake.in | 22 ----------------------
+ 2 files changed, 1 insertion(+), 33 deletions(-)
+ delete mode 100644 cmake/cmake_uninstall.cmake.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 44956e5..e333839 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -23,9 +23,7 @@ option(BUILD_WITH_QT6 "Build with Qt 6" OFF)
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+-# ECM
+-find_package(ECM 1.4.0 REQUIRED NO_MODULE)
+-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH};${ECM_MODULE_PATH}")
++set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
+ 
+ # Definitions
+ add_definitions(-Wall -Wextra -DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_FOREACH)
+@@ -92,14 +90,6 @@ if(NOT QT_IMPORTS_DIR)
+     execute_process(COMMAND ${QMAKE_EXECUTABLE} -query QT_INSTALL_QML OUTPUT_VARIABLE QT_IMPORTS_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
+ endif()
+ 
+-# Uninstall target
+-if ("${ECM_VERSION}" VERSION_LESS "1.7.0")
+-    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+-                   "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+-                   IMMEDIATE @ONLY)
+-    add_custom_target(uninstall COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+-endif()
+-
+ # systemd
+ if(NOT NO_SYSTEMD AND NOT USE_ELOGIND)
+     pkg_check_modules(SYSTEMD "systemd")
+diff --git a/cmake/cmake_uninstall.cmake.in b/cmake/cmake_uninstall.cmake.in
+deleted file mode 100644
+index c6d8094..0000000
+--- a/cmake/cmake_uninstall.cmake.in
++++ /dev/null
+@@ -1,22 +0,0 @@
+-if (NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
+-    message(FATAL_ERROR "Cannot find install manifest: \"@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt\"")
+-endif(NOT EXISTS "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt")
+-
+-file(READ "@CMAKE_CURRENT_BINARY_DIR@/install_manifest.txt" files)
+-string(REGEX REPLACE "\n" ";" files "${files}")
+-list(REVERSE files)
+-foreach (file ${files})
+-    message(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")
+-    if (EXISTS "$ENV{DESTDIR}${file}")
+-        execute_process(
+-            COMMAND @CMAKE_COMMAND@ -E remove "$ENV{DESTDIR}${file}"
+-            OUTPUT_VARIABLE rm_out
+-            RESULT_VARIABLE rm_retval
+-        )
+-        if(NOT ${rm_retval} EQUAL 0)
+-            message(FATAL_ERROR "Problem when removing \"$ENV{DESTDIR}${file}\"")
+-        endif (NOT ${rm_retval} EQUAL 0)
+-    else (EXISTS "$ENV{DESTDIR}${file}")
+-        message(STATUS "File \"$ENV{DESTDIR}${file}\" does not exist.")
+-    endif (EXISTS "$ENV{DESTDIR}${file}")
+-endforeach(file)
+-- 
+2.42.0
+

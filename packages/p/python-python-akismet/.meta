@@ -1,0 +1,6 @@
+<package name="python-python-akismet" project="openSUSE:Factory">
+  <title>Python Akismet</title>
+  <description>Pykismet3 fork. Support older versions of Python and improvements.</description>
+  <devel project="devel:languages:python" package="python-python-akismet"/>
+  <url>https://github.com/Nekmo/python-akismet</url>
+</package>

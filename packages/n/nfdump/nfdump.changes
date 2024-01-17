@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Sat Sep  2 11:35:54 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versin 1.7.3
+  * Add zstd compression speeds compression (multi threading)
+  * Add compression levels.
+  * Fix some nfprofile issues.
+- Update to versin 1.7.2
+  * Update nfcapd/sfcapd man pages for erspan data link.
+  * Implement erspan protocol in nfpcapd packet processing.
+  * Sync ipfix and netflow_v9 for option field processing.
+  * Handle buggy option data(!) from exporter.
+  * Fixes compile warnings for Linux(es) and *BSDs.
+  * Fix v9 option template processing.
+  * Fix option record processing for multiple records.
+  * Fix ipfix nbar processing.
+  * Update pcap reader with erspan device.
+  * Fix fmt argument parsing.
+  * Add IPv4 in IPv6 special cases in geolookup.
+  * Fix IP version check in geolookup.
+  * Disable signals in threads. Different OS handle signals
+    differently.
+  * Recongnize old sampler with missing algorithm tag.
+  * Fix memory leaks.
+  * Update pcap_reader and add CISCO application performance
+    monitor tags.
+  * Add ERSPAN decoding to pcap_reader.
+  * Check uid root for src spoofing option.
+  * Fix valgrind error for uninitalised memory.
+  * Update lz4 code.
+  * Update number of enabled tags in v9 and ipfix.
+  * Add collector option -X to limit stored data.
+  * Implement %sasn, %dasn organisation name printing tags.
+  * Improve geoDB handling. Needs rebuild of the geoDB.
+  * Wire sampling extension for individual sampling.
+  * Update ICMP type/code handling.
+  * Fix #415. ICMP decoding in netflow v9.
+  * Pimp pcap_reader
+  * Added source address support for nfreplay
+  * Fix dst tos bug in output_raw.
+  * Add geo info in JSON output when using GeoDB.
+  * Fix 408. Interchanged time stamps.
+  * Add icmp type/code elements 176, 177, 178, 179.
+  * Add unique version string.
+  * Add Linux nflog in nfpcapd.
+  * Replace old packet repeater code with more modern privsep code
+  * Replace old launcher startup code with more modern privsep code
+
+-------------------------------------------------------------------
+Wed Jan 11 09:59:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.1
+  * Fix #394. Event labeling
+  * Implement #393 consistent logging
+  * Add feature #391. Add country code aggregation
+  * Fix #392. Fix format options with IPv6
+  * Implement #390. Aggregation for GeoDB's enriched AS data
+  * Add OpenBSD pflog decoding in nfpcapd and nfdump
+  * Fix #389 receiving IPv4 on IPv6 socket in sfcapd
+  * Fix #385 bug when compiled on i386 arch - 32bit alignment
+  * Fix #384 bug when compile with --enable-nsel
+  * Implement #366 Linux NFLOG link layer protocol in nfpcapd
+  * Fix #381 pcap overwrite in nfpcapd fixed
+  * Implement #377. Rework sampling code in general. Switch to
+    packet interval/space notation. Map older sampling to new
+    notation.
+  * Fix #375 relative timestamps with sysUptime id 160
+  * Rework nbar code. Use new array records and fix nbar bug in
+    older versions.
+  * Fix #370. Help shows correct option -A
+  * Fix #369. Legacy -M for NfSen works again
+  * Improve nbar handling. Add private enterprise number decoding
+
+-------------------------------------------------------------------
+Fri Sep 30 13:46:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0.1
+  * Fix build issues in nfdump-1.7.0
+- Drop patches:
+  * 0001-Add-missing-variable-initialization.patch
+  * 0002-Handle-fscanf-return-value-in-pidfile.c.patch
+  * 0003-Fix-snprintf-length-argument.patch
+  * fix-build.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 08:08:34 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * nfdump is now a multi-threaded program and uses parallel
+    threads mainly for reading, writing and processing flows as
+    well as for sorting. This may result in a 2 to 3 times faster
+    flow processing, depending on the tasks. The speed improvement
+    also heavily depends on the hardware (SSD/HD) and flow
+    compression option.
+  * For netflow v9 and IPFIX, nfdump now supports flexible length
+    fields. This improves compatibility with some exporters such
+    as yaf and others. The netflow v9 decoder is more flexible in
+    decoding.
+  * Support for Cisco Network Based Application Recognition (NBAR).
+  * Supports Maxmind geo location information to tag/geolocate IP
+    addresses and AS numbers.
+  * nfpcapd automatically uses TPACKET_V3 for Linux. This improves
+    packet processing. It adds new options to collect MAC and VLAN
+    information as well as the first packet of the payload.
+  * Metric exports: By default, every 60s a flow summary statistics
+    can be sent to a UNIX socket. The corresponding program may be
+    nfinflux to insert these metrics into an influxDB or nfexporter
+    for Prometheus monitoring.
+- Add patches:
+  * 0001-Add-missing-variable-initialization.patch
+  * 0002-Handle-fscanf-return-value-in-pidfile.c.patch
+  * 0003-Fix-snprintf-length-argument.patch
+- Build with support for influxdb
+- Build libnfdump as shared library
+
+-------------------------------------------------------------------
+Sun May 22 10:12:50 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * fix-build.patch (fix build on TW)
+
+-------------------------------------------------------------------
+Sat Mar 26 12:24:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.24
+  * Fix cmd line processinf in nfanon. #328
+  * Make configure.ac autoconf 2.69 compatible
+  * Cleanup automake files. Fixes #304.
+  * Fix link handling in nfpcapd
+  * Fix compile flags #304
+  * Add NAT event record support for IPFIX. #298
+  * Fix issue #296 - broken json format with option -q
+  * Fix json msec formating
+  * Silence short packet logs due to small snaplen in pcaproc.c #221
+  * Fix minor bugs
+
+-------------------------------------------------------------------
+Thu May  6 18:30:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.23
+  * Fix potential FreeNode without valid Node in nfpcapd.
+  * Add all non TCP/UDP IP protocols as streams in nfpcapd
+  * Add mpls unwrap in nfpcapd. Skip MPLS labels
+  * Add ESP to processed protocols in nfpcapd.
+  * Some Code cleanup
+  * Change spin lock to native C11 lock
+  * Cleanup code for issue #283
+  * Fix minor nfpcapd issues
+  * Add mpls unwrap in sflow code - adds mpls labels if available
+  * Update rbtree.
+  * Fix potential deadlock in nfpcapd if it terminates.
+  * Add packet capture buffer size to nfpcapd
+  * Fix sflow code extended field parsing. #262 and #273
+  * Fix endless loop of nfexpire, if it does not find files
+  * Fix processing deoding error for yaf exporter
+  * Zero out tcp flags for non TCP records
+  * Add reverse element enterprise ID 29305 for counter values
+  * Add biFlow direction element 239
+  * Add flow end reason element 136
+  * Make -Tall the default for nfcapd to collect extensions
+  * Code cleanup and boundary checks in option template processing
+  * Implement element 160 (SystemInitTime) in option template
+  * Add Element 160 (SystemInitTime) in flow record used by Huawei
+  * Fix path handling for -l
+  * Fix print plain numbers #263
+
+-------------------------------------------------------------------
+Sun Nov 29 11:36:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.22
+  * Fix nfreplay v5 time shift bug
+  * add support for >=, <= comparators.
+  * Fix yacc/bison warnings. Cleanup unused tokens
+  * Fix syntax error 'flags AS' as AS is a reserved word.
+  * Add element 139 for ICMP type/code in IPv6.
+  * Fix IPv4/IPv6 statistics representation.
+  * Cleanup nip/xip filter syntax. Add filter syntax 'nip in
+    [ <iplist>]'.
+  * Add nfversion to nfpcapd
+  * Add collected netflow/sflow version in nfdump record.
+  * Fix GuessDir bug.
+  * Re-address issue #231 - remove strict rule rfc 7011.
+
+-------------------------------------------------------------------
+Sun Aug  2 10:01:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.21
+  * Implement rfc 7011 and include sender UDP port into unique
+    template identification.
+  * Add token 'dir' equivalent to 'flowdir' in filter syntax.
+  * Add optional print direction ascending or descending to output
+    of statistics -s and ordered printing -O.
+  * Avoid use_syslog name clash on certain OS.
+  * Honor -n flag when printing sorted flow cache.
+  * Fix uninitialized variable printPlain.
+  * Fix bug #223 limit matchig flows -c
+  * Restore old behaviour unlimiting output flows unless in -s stat
+  * Fix ft2nfdump nexthop fields
+  * Fix ft2nfdump extension map size
+  * internal: put output parameters in a single struct
+  * Fix GuessDir bug - issue #215
+
+-------------------------------------------------------------------
+Sun Mar 29 10:33:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.20
+ - More cleanup on plain number printing
+ - Fix plain numbers bug #213
+ - Fix profiler filer bug
+
+-------------------------------------------------------------------
+Wed Feb 26 14:45:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.19
+  * This release is mainly a bug fix release and improves stability.
+    Lot's of historical code cleanup - spring cleaning.
+  * For a complete list of changes see the ChangeLog file:
+    /usr/share/doc/packages/nfdump/ChangeLog
+
+-------------------------------------------------------------------
+Thu Aug  8 12:57:03 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.18
+  * This release mainly Improves stability.
+  * It adds nfpcapd to generate nfdump netflow records directly
+    from interfaces/pcaps.
+  * The old COMPAT15 mode has been removed. All old 1.5.x files
+    should have been converted so far.
+  * For a complete list of changes see the ChangeLog file:
+    /usr/share/doc/packages/nfdump/ChangeLog
+
+-------------------------------------------------------------------
+Mon Apr 23 07:28:24 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.6.17
+  * Fix bug in sorting when guessing flow direction.
+  * Update nfdump.1 man page for xsrcport & xdstport aggregations.
+  * Fix definition for InfluxDB in configure.ac
+  * Add program exit in nfx.c after panic with correupt data file
+  * Add missing size check when reading nfdump 1.5.x common record blocks
+  * Add missing option -M in man page.
+  * Add Fix processing of influx URL in nfprofile
+  * Add missing json output format in nfdump help text
+  * Add missing -v option in nfreplay help text
+  * Merge pull request #51 Influxdb from Luca. Thx for the patch
+  * IPFIX time stamps - Fix elements #21,#22 offset calculation, but
+    timestamps not yet evaluated.
+  * IPFIX add fwd status tag #89 compatible to v9 (1byte)
+  * IPFIX sampling - sampling algorithm no longer required for tag #34
+  * IPFIX sampling add tags #305 and #304 - set them identical to #34, #35
+  * Add new output format json. Print each record as individual json object
+  * Add sampling elements ID 302,304,305. put them identical to ID 48,49,50
+  * Add option to label filter terms. syntax: (<filter>) %labelname.
+  * Add %lbl option to print flow label in output
+  * Update nfdump(1) man page for flowlabels
+  * Add ipfix delta timestamp elements 158/159.
+  * Update sflow code to commit 7322984 of https://github.com/sflow/sflowtool
+  * Cleanup sflow code - uncomment unnecessary code
+  * Fix header includes"
+  * Fix 64bit fts compat issue in fts_compat.c
+  * Add more detailed autogen.sh - softlink bootstrap
+  * Fix potential memory leaks in nfpcapd
+  * Fix wrong offset calculation if unknown options are found
+  * Add x-late src/dst ip aggregation, if compiled with NSEL support
+  * Add ipfix sampling. Process option template/record with sampling elements 34 and 35
+  * Report updates on existing samplers in v9 only if values change. issue 84
+
+-------------------------------------------------------------------
+Sun Nov  5 15:34:27 UTC 2017 - mardnh@gmx.de
+
+- Fix URL
+- Update to version 1.6.16
+  * Add support for CISCO IOS 8 bytes timestamps ID 21/22
+  * Fix issue #72 - multiple stat output
+  * Change -B behaviour as proposed in issue #59.
+    Should not impact with previous use, but is more flexible
+  * Add bzip compress switch in usage output of nfpcapd
+  * Fix compile issues on some platforms
+  * nfpcapd improvements - still beta software.
+  * Minor bug fixes
+
+- Version 1.6.15
+  * Fix Security issue
+  * http://www.security-assessment.com/files/documents/advisory/Nfdump%20nfcapd%201.6.14%20-%20Multiple%20Vulnerabilities.pdf
+  * Fix obyte, opps and obps output records
+  * Fix wrong bps type case in cvs output. Fix opbs ipbs typos
+
+- Version 1.6.14
+  * Create libnfdump for dynamic linking
+  * Add -R to ModifyCompression
+  * Add std sampler ID 4 Bytes and allow random sampler (tag 50)
+  * Add BZ2 compression along existing LZ0
+  * Add direct write to flowtools converter ft2nfdump
+  * Fix CentOS compile issues with flow-tools converter
+  * Fix FreeBSD,OpenBSD build problems
+  * Fix timestamp overflow in sflow.c
+  * Fix IP Fragmentation in sflow collector
+  * Fix compile errors on other platforms
+  * Fix zero alignment bug, if only half of an extension is sent
+  * Fix nfanon time window bug in subsequent files in -R list
+  * Fix CommonRecordV0Type conversion bug
+  * Fix nfexport bug, if only one single map exists
+
+-------------------------------------------------------------------
+Mon Dec  1 19:24:58 UTC 2014 - mardnh@gmx.de
+
+- update to version 1.6.13
+
+  * 2014-11-16 v1.6.13
+  - Fix v1 extension size bug
+  - Add htonll check for autoconf
+  - Fix AddExtensionMap compare bug
+  - Fix ipfix templare withdraw problems - free all maps correctly
+  - Add minilzo 2.08 - fixes CVE-2014-4607
+  - Cleanup some stat code. more needs to be done ..
+  - Cleanup man pages for -O -n
+  - Remove SunPro test in configure - no longer supported anyway
+  - Cleanup NAT/NSEL filter differences
+  
+  * 2014-06-15 v1.6.12p1
+  - Add pblock compare functions
+  - Update extended filter: Allow modification left/right values
+
+- removed duplicate files BSD-license.txt and NEWS
+
+-------------------------------------------------------------------
+Tue Jun 10 18:30:15 UTC 2014 - mrueckert@suse.de
+
+- initial package
+

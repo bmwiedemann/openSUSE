@@ -1,0 +1,5 @@
+<package name="python-django-braces" project="openSUSE:Factory">
+  <title></title>
+  <description>Reusable, generic mixins for Django</description>
+  <devel project="devel:languages:python:django" package="python-django-braces"/>
+</package>

@@ -1,0 +1,27 @@
+Index: tftp-hpa-git-0.48/tftp/tftp.c
+===================================================================
+--- tftp-hpa-git-0.48.orig/tftp/tftp.c	2008-07-31 12:46:57.000000000 +0200
++++ tftp-hpa-git-0.48/tftp/tftp.c	2010-06-29 12:14:48.000000000 +0200
+@@ -279,15 +279,16 @@ makerequest(int request, const char *nam
+             struct tftphdr *tp, const char *mode)
+ {
+     char *cp;
++    size_t len;
+ 
+     tp->th_opcode = htons((u_short) request);
+     cp = (char *)&(tp->th_stuff);
+-    strcpy(cp, name);
+-    cp += strlen(name);
+-    *cp++ = '\0';
+-    strcpy(cp, mode);
+-    cp += strlen(mode);
+-    *cp++ = '\0';
++    len = strlen(name) + 1;
++    memcpy(cp, name, len);
++    cp += len;
++    len = strlen(mode) + 1;
++    memcpy(cp, mode, len);
++    cp += len;
+     return (cp - (char *)tp);
+ }
+ 

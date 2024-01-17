@@ -1,0 +1,7 @@
+<package name="xemacs-packages" project="openSUSE:Factory">
+  <title>XEmacs Packages</title>
+  <description>A collection of additional lisp packages for XEmacs. You must install
+this package when you want to use the XEmacs package, they are needed
+for most non-trivial XEmacs functions.</description>
+  <devel project="M17N" package="xemacs-packages"/>
+</package>

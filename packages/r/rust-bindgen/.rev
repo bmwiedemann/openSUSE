@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>07b2f8d61615d17e65088c3db6137a0f</srcmd5>
+    <version>0.63.0</version>
+    <time>1673973317</time>
+    <user>dimstar_suse</user>
+    <comment>Submit new package rust-bindgen</comment>
+    <requestid>1058793</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d407c054f675f14c329ccd9b3274dcb</srcmd5>
+    <version>0.69.1</version>
+    <time>1700250480</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126742</requestid>
+  </revision>
+</revisionlist>

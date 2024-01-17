@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36163f1b36d56c50ce06ed255c3c1483</srcmd5>
+    <version>0.49.1</version>
+    <time>1684415949</time>
+    <user>dimstar_suse</user>
+    <comment>New package dnsproxy is a simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support. Suggested by submitter as a straightforward way to use DoH.</comment>
+    <requestid>1087716</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18e001206e5c9e780e41e9b3721c3f1b</srcmd5>
+    <version>0.50.0</version>
+    <time>1686172051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.50.0:
+  * Pull request 257: 331-upd-quic-go
+  * Pull request 256: fix-poisoning
+  * Pull request: proxy: fix edns cache
+  * Pull request 254: depr-more-util (forwarded request 1091165 from VaiTon)</comment>
+    <requestid>1091168</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>718de93a65a64719356839c86eefd4e7</srcmd5>
+    <version>0.50.2</version>
+    <time>1686927321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.50.2:
+  * Pull request 260: 5872-fix-dnscrypt-reset
+  * Pull request 259: 5874-fix-fallback
+  * Pull request 258: 5874-openwrt-setsockopt
+
+- Use zstd for vendored dependencies (forwarded request 1093386 from VaiTon)</comment>
+    <requestid>1093398</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9783f82ab0b4c0e270513a2dbcb93f4e</srcmd5>
+    <version>0.51.0</version>
+    <time>1689261512</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.51.0:
+  * Pull request 264: AGDNS-1528 fallback ups conf
+  * Pull request: 5285-doq-errors
+  * Pull request 261: 333-opt-timeout
+- Allow ppc64 to compile by not using pie
+- Remove %{go_nostrip} macro which is no longer recommended
+- Drop Requires: golang-packaging. The original macros for file
+  movements into GOPATH are obsolete with Go modules. Macro
+  go_nostrip is no longer needed with current binutils and Go.
+- Add BuildRequires: golang(API) &gt;= 1.19 (min version per go.mod)
+  This or metapackage BuildRequires: go are recommended to pull in
+  the Go toolchain. (forwarded request 1098450 from jfkw)</comment>
+    <requestid>1098451</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>890e8880e8b57b34459fee8899d43ace</srcmd5>
+    <version>0.52.0</version>
+    <time>1689710958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.52.0:
+  * Pull request 269: Retry request for stale H3 clients.
+  * Pull request 268: AG-23887-upd-quic-go
+  * all: imp header setting
+  * add https-server-name option to usage output
+  * change default Server header of HTTPS server to 'dnsproxy'
+  * make Server header for DoH server configurable
+  * Pull request 266: fix-golangci-lint
+  * Pull request 265: upd-specs (forwarded request 1099324 from VaiTon)</comment>
+    <requestid>1099326</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>632590533042dc9f190a1bda71784d25</srcmd5>
+    <version>0.53.1</version>
+    <time>1691674407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.53.1:
+  * Pull request 276: Sort hotfix
+  * Pull request 275: Upd Go
+  * Fix review comments
+  * Update Dockerfile: fix wrong path
+  * Update Dockerfile: fix wrong path
+  * Update Docker README.md
+  * Update Dockerfile
+  * Pull request 272: AG-24087-global-root-cas
+  * Pull request 271: Fix 208 (forwarded request 1103169 from VaiTon)</comment>
+    <requestid>1103194</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>08dbf5abd5e117dd0612be8d59ddde77</srcmd5>
+    <version>0.54.0</version>
+    <time>1692379721</time>
+    <user>anag+factory</user>
+    <comment>- Revert Use make for building as specified in the upstream
+  README.md. Go applications typically need only a few lines for
+  their go build command. Keeping that listing in the .spec makes
+  it easier for mainainers to review relevant changes and normalize
+  to our build conventions. Makefiles for Go applications are often
+  building docker images and other steps not relevant to distro
+  packaging, or that may not work inside OBS e.g. network access. (forwarded request 1104486 from jfkw)</comment>
+    <requestid>1104487</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>932cedb06b29746a2bbf81c103cb2d0c</srcmd5>
+    <version>0.55.0</version>
+    <time>1695853523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.55.0:
+  * Pull request 283: upd quic-go and golibs
+  * Pull request 281: use hostsfile
+  * Pull request 282: 350 fix dns64 validation
+  * Pull request: AG-24891: lint code imp
+  * Pull request: AG-24891: skel-scripts
+  * Pull request 278: Log upstream error
+  * Pull request 277: upd quic-go (forwarded request 1112876 from VaiTon)</comment>
+    <requestid>1113766</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a698e3a617e8b1ef4e8dc09b755277a8</srcmd5>
+    <version>0.56.1</version>
+    <time>1697390874</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.56.1
+- Update to version 0.56.0 (forwarded request 1117814 from VaiTon)</comment>
+    <requestid>1117824</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>da235d70fb43d0b8abe0fa345e9a66a0</srcmd5>
+    <version>0.56.2</version>
+    <time>1697748459</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.56.2:
+  * Fixed: quic-go has been updated to fix QUIC issues on FreeBSD. (Pull request 291)
+  * Pull request 289: updated dependencies
+  * Pull request 288: close bootstraps (forwarded request 1118628 from VaiTon)</comment>
+    <requestid>1118638</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a2f7a52353933ea495262b89996f57d0</srcmd5>
+    <version>0.56.3</version>
+    <time>1698097293</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.56.3:
+  * Pull request 287: 4977-proxy-multiple-reserved-upstreams (forwarded request 1119705 from VaiTon)</comment>
+    <requestid>1119708</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>785b4e8b35c6ef60181a9170738e1762</srcmd5>
+    <version>0.59.0</version>
+    <time>1700421404</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.59.0. Revise recent changelog entries per Factory review comments. (forwarded request 1127474 from jfkw)</comment>
+    <requestid>1127475</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>61fa888bb90003cce9b16928d2bcd966</srcmd5>
+    <version>0.59.1</version>
+    <time>1701023846</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.59.1:
+  * Pull request 301: 6438-fix-leak (forwarded request 1128750 from VaiTon)</comment>
+    <requestid>1128783</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ddc4e10fe717c0893a0a4fd28c96ee08</srcmd5>
+    <version>0.60.0</version>
+    <time>1702158827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.60.0:
+  * Pull request 302: AG-27796 upd golibs
+  * Pull request: imp code: net.IP to netip.Addr
+  * Pull request 300: AG-27616-ratelimit-whitelist-netip-addr (forwarded request 1132169 from VaiTon)</comment>
+    <requestid>1132180</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a498b53d154205f8165c540edba82bb1</srcmd5>
+    <version>0.60.1</version>
+    <time>1702405921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.60.1:
+  * Fixed: Incorrect handling of IPv4-in-IPv6 addresses when
+    listening to an unspecified address. (forwarded request 1132512 from VaiTon)</comment>
+    <requestid>1132561</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0b1cf53a49d99f0a39c04e30a323013a</srcmd5>
+    <version>0.61.0</version>
+    <time>1703102482</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.61.0:
+  * Pull request 309: 6480 imp load balance
+  * Pull request: all: upd golibs (forwarded request 1133919 from VaiTon)</comment>
+    <requestid>1133950</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d125f90688a5b24dc137043df3c7ad27</srcmd5>
+    <version>0.61.1</version>
+    <time>1704281424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.61.1:
+  * Pull request 311: 6574 timeout log level (forwarded request 1136210 from jfkw)</comment>
+    <requestid>1136211</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bee369cb28a8c85f232ef525ba48763e</srcmd5>
+    <version>0.62.0</version>
+    <time>1705353685</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.62.0:
+  * Pull request 314: 6321 boot ttl vol.2
+  * Pull request 312: 6321 boot ttl vol.1 (forwarded request 1138879 from VaiTon)</comment>
+    <requestid>1138973</requestid>
+  </revision>
+</revisionlist>

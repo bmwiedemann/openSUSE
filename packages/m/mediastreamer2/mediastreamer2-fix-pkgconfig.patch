@@ -1,0 +1,11 @@
+--- mediastreamer2-5.2.6/CMakeLists.txt.orig	2023-01-04 13:43:30.797983393 +0100
++++ mediastreamer2-5.2.6/CMakeLists.txt	2023-01-04 13:44:42.302354270 +0100
+@@ -136,6 +136,8 @@
+ # * DISABLE_BC_PACKAGE_SEARCH: skip find_package() for every BC package (bctoolbox, ortp, etc.)
+ # * DISABLE_SRTP_SEARCH: skip find_package() for SRTP.
+ 
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mediastreamer.pc.in ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mediastreamer.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
+ 
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_EXTENSIONS NO)

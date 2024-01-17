@@ -1,0 +1,5 @@
+<package name="libeXosip2" project="openSUSE:Factory">
+  <title>Extended osip2 library</title>
+  <description>Extended library for the osip2 protocol.</description>
+  <devel project="network:telephony" package="libeXosip2"/>
+</package>

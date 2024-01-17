@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>494e64558d890f5fd96c6ed1d03a27b1</srcmd5>
+    <version>1.0.1</version>
+    <time>1520853093</time>
+    <user>dimstar_suse</user>
+    <comment>guile-bytestructures, guile module for accessing C-like structures as guile vectors
+dependency for guix</comment>
+    <requestid>585135</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a540ce96cac4883097fa96613da38657</srcmd5>
+    <version>1.0.3</version>
+    <time>1529501431</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617557</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4fa6f431b1b4199512aca3560076b2b</srcmd5>
+    <version>1.0.5</version>
+    <time>1551276463</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679502</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e37f73a1269a19fc000a305ef264712</srcmd5>
+    <version>1.0.6</version>
+    <time>1567091893</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for upcoming Guile 3.0 :)</comment>
+    <requestid>726774</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58714f63f080df4cda960696cc2a3b1f</srcmd5>
+    <version>1.0.7</version>
+    <time>1579032698</time>
+    <user>dimstar_suse</user>
+    <comment>Update and make ready for Guile 3.0</comment>
+    <requestid>764387</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0dee226ac3e5e5a6630f3783a911858f</srcmd5>
+    <version>1.0.9</version>
+    <time>1606428878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9 for guix 1.2.0
+</comment>
+    <requestid>850984</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6248090dbd6c1208e9db8c8d392ce483</srcmd5>
+    <version>1.0.10</version>
+    <time>1687796138</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095208</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,21 @@
+Index: setuptools-68.0.0/setuptools/_distutils/sysconfig.py
+===================================================================
+--- setuptools-68.0.0.orig/setuptools/_distutils/sysconfig.py
++++ setuptools-68.0.0/setuptools/_distutils/sysconfig.py
+@@ -246,9 +246,13 @@ def get_python_lib(plat_specific=0, stan
+ 
+     if os.name == "posix":
+         if plat_specific or standard_lib:
+-            # Platform-specific modules (any module from a non-pure-Python
+-            # module distribution) or standard Python library modules.
+-            libdir = getattr(sys, "platlibdir", "lib")
++            # Python 3.8 doesn't have sys.platlibdir
++            if sys.version_info < (3, 9):
++                libdir = get_config_var("platsubdir") or "lib"
++            else:
++                # Platform-specific modules (any module from a non-pure-Python
++                # module distribution) or standard Python library modules.
++                libdir = getattr(sys, "platlibdir", "lib")
+         else:
+             # Pure Python
+             libdir = "lib"

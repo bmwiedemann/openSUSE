@@ -1,0 +1,5 @@
+<package name="myxer" project="openSUSE:Factory">
+  <title>myxer</title>
+  <description> A modern Volume Mixer for PulseAudio.</description>
+  <devel project="multimedia:apps" package="myxer"/>
+</package>

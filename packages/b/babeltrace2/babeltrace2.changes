@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Thu Aug  3 20:41:04 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 2.0.5:
+  * bt2: honor build system compiler/linker preferences
+  * Fix: clear_string_field(): set first character to 0
+  * Fix: src.ctf.fs: Not resolving event common ctx
+  * debug-info: fix -Wenum-int-mismatch problem in copy_field_class_content_internal
+  * fix: pass exec-prefix to python bindings install
+  * fix: document proper Bison version requirement
+  * cli: use return value of g_string_free
+  * babeltrace2-query(1): erroneous parameter used in example
+  * Fix: tests: print real values in a fixed format
+  * Fix: bt2: autodisc: remove thread error while inserting status in map
+  * tests: src.ctf.fs: add test for metadata with invalid syntax
+  * tests: shorten names of session-rotation trace
+  * bt2: ignore -Wredundant-decls warning
+  * ctf: fix -Wformat-overflow error in ctf-meta-resolve.cpp
+  * ctf-writer: fix -Wformat-overflow errors in resolve.c
+  * Fix: src.text.details: use write_uint_prop_value to handle unsigned values in write_int_range
+  * Add dev-requirements.txt for pip
+  * Fix: src.ctf.lttng-live: consider empty metadata packet as retry
+  * Fix: ctf: wrongfully requiring CTF metadata signature for every section
+  * Fix: src.ctf.lttng-live: session closed before any metadata is received
+  * fix: obsolete warnings with autoconf >= 2.71
+  * fix: explicitly disable '-Wsuggest-attribute=format'
+  * fix: set stable branch in gitreview config
+  * Fix: ctf-writer: list of reserved keywords
+  * compiler warning cleanup: is_signed_type: compare -1 to 1
+  * Update working version to Babeltrace 2.0.5
+
+-------------------------------------------------------------------
+Sun Apr 18 14:39:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.0.4:
+  * Fix: macro name for "get supported mip versions method"
+    attribute descriptor
+  * Fix: disable deprecation warnings for SWIG generated code
+  * Fix: sink.ctf.fs: fix logic of make_unique_stream_file_name
+  * Fix: sink.ctf.fs: remove spurious directory level when using assume-single-trace
+  * Fix: bt2: _trim_docstring(): docstring can have 0 or 1 line
+  * Fix: `ctf` plugin: use element FC's alignment as array/seq. FC alignment
+  * Fix: source.ctf.lttng-live: muxing failure on clear (unit conversion)
+  * Fix: src.ctf.lttng-live: incomplete metadata packet is an error
+  * Fix: source.ctf.lttng-live: muxing failure on clear
+  * Fix: source.ctf.fs: 0-length packet index length causes SIGFPE
+
+-------------------------------------------------------------------
+Mon Aug 31 13:07:52 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add riscv64 to ExclusiveArch
+
+-------------------------------------------------------------------
+Tue Aug 18 20:32:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * Fix: lib: use appropriate format specifier to print message iterator class
+  * Fix: sink.text.pretty: check that port is connected before creating message iterator
+  * Add initial Python bindings documentation
+  * Fix: bt2: read properties on _DiscardedEventsMessage
+  * tests: add tests for discarded events/packets creation
+  * Fix: bt2: add precond. check, for stream class supporting discarded msgs with clock snapshot without clock class
+  * Fix: flt-utils.muxer: reference leak in muxer_msg_iter_add_upstream_msg_iter error path
+  * Fix: sink.text.details: goto error when failing to add input port
+  * Fix: src.text.dmesg: add missing assignment of `status` on error path
+  * Revert "bt2: _EventConst.__getitem__(): use a single temporary variable"
+  * Fix: src.ctf.fs: initialize the other_entry variable
+  * bt2: _EventConst.__getitem__(): use a single temporary variable
+  * Fix: _EventConst.__getitem__(): check if event has a packet
+  * doc: bt_field_class...get_mapping_labels...(): clarify RV's validity
+  * doc/api/libbabeltrace2/style.css: make font weight of `.intertd` normal
+  * common: cast arguments to character classification functions to unsigned char
+  * flt.utils.muxer: initialize variable to silence -Wmaybe-uninitialized warning
+  * Fix: configure.ac: silently accepting invalid Python configuration
+  * Cleanup: configure.ac: remove redundant `AC_ARG_ENABLE` parameters
+  * Fix: plugin-dev.h: Disable address sanitizer on pointer array section variables
+  * Fix: cli: use BT_CLI_LOGE_APPEND_CAUSE instead of printf to print errors
+  * tests: improve flt.utils.trimmer/test_trimming to test streams without packets
+  * Fix: flt-utils.trimmer: accept streams without packet support
+  * Fix: lib: don't assume that streams have packets in auto seek
+  * Fix: correct typo in README
+  
+-------------------------------------------------------------------
+Wed Feb 26 14:29:32 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Initial package.

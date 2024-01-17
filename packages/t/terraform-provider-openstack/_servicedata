@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/terraform-providers/terraform-provider-openstack.git</param>
+              <param name="changesrevision">1835cbefa52a2406adaa16279c973976e9118be9</param></service><service name="tar_scm">
+                <param name="url">https://github.com/terraform-provider-openstack/terraform-provider-openstack.git</param>
+              <param name="changesrevision">51fcb0f49644143b008bf006ed8cb7f86bbd6666</param></service></servicedata>

@@ -1,0 +1,19 @@
+<package name="perl-XSLoader" project="openSUSE:Factory">
+  <title>Dynamically load C libraries into Perl code</title>
+  <description>This module defines a standard simplified interface to the dynamic linking
+mechanisms available on many platforms. Its primary purpose is to implement
+cheap automatic dynamic loading of Perl modules.
+
+For a more complicated interface, see DynaLoader. Many (most) features of
+DynaLoader are not implemented in XSLoader, like for example the dl_load_flags,
+not honored by XSLoader.
+
+Author:
+-------
+    Sebastien Aperghis-Tramoni &lt;sebastien@aperghis.net&gt;
+
+
+</description>
+  <devel project="devel:languages:perl" package="perl-XSLoader"/>
+  <url>http://search.cpan.org/perldoc?XSLoader</url>
+</package>

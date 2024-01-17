@@ -1,0 +1,460 @@
+-------------------------------------------------------------------
+Thu Jan  4 12:24:10 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20231219.00
+  * Bump golang.org/x/crypto from 0.14.0 to 0.17.0 (#524)
+- from version 20231207.01
+  * Some change to create an agent release (#523)
+- from version 20231207.00
+  * Some change to create an agent release (#522)
+- from version 20231205.00
+  * Some change to create an agent release (#521)
+- from version 20231130.02
+  * Merge pull request #519 from Gulio/just-release
+  * Merge branch 'master' into just-release
+  * Some change to create an agent release
+  * Some change to create an agent release
+- from version 20231130.00
+  * Some change to create an agent release (#518)
+- from version 20231129.00
+  * Fix parse yum updates to consider the packages under
+    installing-dependencies keyword (#502)
+  * Update feature names in the README file (#517)
+- from version 20231128.00
+  * Updating owners (#508)
+- from version 20231127.00
+  * Move OS policy CIS examples under the console folder (#514)
+- from version 20231123.01
+  * Adds three more OS Policy examples to CIS folder (#509)
+  * Added ekrementeskii and MahmoudNada0 to OWNERS (#505)
+- from version 20231123.00
+  * docs(osconfig):add OS policy examples for CIS scanning (#503)
+- from version 20231121.02
+  * Added SCODE to Windows error description (#504)
+- from version 20231121.01
+  * Update OWNERS (#501)
+  * Update go version to 1.21 (#507)
+- from version 20231121.00
+  * Call fqdn (#481)
+- from version 20231116.00
+  * Removing obsolete MS Windows 2019 images (#500)
+- from version 20231107.00
+  * Update owners. (#498)
+- from version 20231103.02
+  * Increasing test timeouts (#499)
+  * Update OWNERS (#497)
+- from version 20231103.01
+  * Bump google.golang.org/grpc from 1.53.0 to 1.56.3 in /e2e_tests (#493)
+  * Bump google.golang.org/grpc from 1.53.0 to 1.56.3 (#494)
+- from version 20231103.00
+  * Removing deprecated Win for containers OSs (#496)
+- from version 20231027.00
+  * Shortening the reported image names (#495)
+- from version 20231025.00
+  * Merge pull request #492 from GoogleCloudPlatform/michaljankowiak-patch-1
+  * Merge branch 'master' into michaljankowiak-patch-1
+  * Fixing name changes
+  * Fixing rename issue
+  * Fixed formatting
+  * Fixed formatting
+  * Fixing formatting
+  * Removing support for RHEL 6, adding RHEL 9
+  * Removing support for RHEL 6, adding for RHEL 9
+  * Removing support for RHEL 6 and adding for RHEL 9
+  * Removing step needed for RHEL 6
+  * Fixing build issues
+  * Removing nonexistent images and adding new ones
+- from version 20231024.00
+  * Removing obsolete OS images and adding new ones (#491)
+- from version 20231020.00
+  * Change debug messages when parsing zypper patch output (#490)
+- from version 20231013.00
+  * Bump golang.org/x/net from 0.7.0 to 0.17.0 (#489)
+- from version 20231010.00
+  * Revert "Added [main] section with gpgcheck to
+    the agent-managed repo file (#484)" (#488)
+- from version 20231003.00
+  * Bump google.golang.org/grpc from 1.42.0 to 1.53.0 in /e2e_tests (#478)
+- from version 20230920.00
+  * Update OWNERS (#485)
+- from version 20230912.00
+  * Added [main] section with gpgcheck to the agent-managed repo file (#484)
+  * Migrate empty interface to any (#483)
+
+-------------------------------------------------------------------
+Fri Oct 20 06:50:11 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Bump the golang compiler version to 1.21 (bsc#1216546)
+
+-------------------------------------------------------------------
+Thu Aug 31 12:31:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230829.00
+  * Added burov, dowgird, paulinakania and Gulio to OWNERS (#482)
+
+-------------------------------------------------------------------
+>>>>>>> ./google-osconfig-agent.changes.new
+Fri Jul  7 09:33:36 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230706.02 (bsc#1212418, bsc#1212759)
+  * Update go version in go.mod (#479)
+- from version 20230706.01
+  * Fix condition to have 10 attempts rather than 11. (#477)
+- from version 20230706.00
+  * Remove tests for Ubuntu 18.04 (EOL) (#476)
+- from version 20230605.00
+  * Update old SLES images paths (#475)
+- from version 20230602.00
+  * Adding what exit codes mean for OS Config policy (#474)
+- from version 20230504.00
+  * Set DEBIAN_FRONTEND=noninteractive for apt-get (#472)
+- from version 20230403.00
+  * Disable repos clean-up (#471)
+- from version 20230330.00
+  * Revert "Call FQDN (#454)" (#470)
+- from version 20230327.00
+  * support new format of zypper patch (#469)
+  * Fix comparing exec.Cmd in mock on Go1.20
+- from version 20230316.00
+  * Remove old images from e2e tests image list
+- from version 20230227.01
+  * Update dependencies (#466)
+- from version 20230227.00
+  * Bump golang.org/x/sys from 0.0.0-20210923061019-b8560ed6a9b7 to 0.1.0 (#463)
+
+-------------------------------------------------------------------
+Mon Feb 27 20:12:59 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Bump go API version to 1.18 (bsc#1208723)
+  + Address CVE-2021-38297 and CVE-2022-23806
+
+-------------------------------------------------------------------
+Mon Feb 27 10:59:46 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230222.00
+  * Remove Debian 9 from e2e tests image list (#460)
+- from version 20230217.00
+  * Update OWNERS (#458)
+- from version 20230208.00
+  * Fix the error in the `copy_file_from_bucket.yaml` example. (#456)
+- from version 20230202.00
+  * Update owners file. (#455)
+- from version 20230123.00
+  * Call FQDN (#454)
+
+-------------------------------------------------------------------
+Wed Jan 18 10:19:55 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20221214.00
+  * Close clients that are not passed anywhere (#450)
+
+-------------------------------------------------------------------
+Fri Oct 21 13:12:03 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20221013.01
+  * Don't print raw pointer data. (#446)
+- from version 20221013.00
+  * Delete yum transaction files if created. (#445)
+
+-------------------------------------------------------------------
+Mon Oct 10 13:08:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220829.00
+  * Fix exclude packages field processing (#440)
+- from version 20220824.00
+  * Check for exclusive patches. (#442)
+
+-------------------------------------------------------------------
+Wed Sep  7 10:46:32 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Use install command in %post section to create state file (bsc#1202826)
+- Remove useless creation of state file directory in /var/lib
+
+-------------------------------------------------------------------
+Mon Aug 15 19:22:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashim in post install scripts (bsc#1195391)
+
+-------------------------------------------------------------------
+Wed Aug  3 10:25:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220801.00 (bsc#1202100, bsc#1202101)
+  * update OWNERS (#438)
+  * Close client when RegisterAgent fails. (#436)
+- from version 20220714.00
+  * Add timeouts for pip/gem updates. (#433)
+- from version 20220623.00
+  * upgrade to golang 1.16 and override deb build settings for compatibility (#432)
+- from version 20220606.00
+  * new example policy to ensure sshd is running on windows VMs (#430)
+- from version 20220531.00
+  * Add default timeout for pip and gem list commands (#429)
+- Don't restart daemon on package upgrade, create a state file instead (bsc#1194319)
+
+-------------------------------------------------------------------
+Thu Mar 17 08:49:05 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220314.01
+  * Support COS on arm64 (#426)
+- from version 20220314.00
+  * Fix previous PR: exec.CommandContext cannot be reused (#425)
+- from version 20220304.00
+  * Update the error message when an exec task is run on Windows
+    without an interpreter (#423)
+  * Fix string that apt-get returns when requiring downgrade (#422)
+  * e2e_tests: fix patch test rerun (#421)
+  * Add --allow-downgrades flag to apt-get calls when it
+    fails because of wanting to downgrade a package (#418)
+  * Create e2e test that runs apt-get in a state that makes
+    it downgrade a package (#420)
+  * e2e_tests: update OS targets, adjust retries (#419)
+  * Create change_group.yaml (#416)
+- from version 20220215.00
+  * Add regex support to package exclusion in OS Patch (#415)
+
+-------------------------------------------------------------------
+Mon Feb 14 12:48:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220209.00 (bsc#1195437, bsc#1195438)
+  * Update licences, remove deprecated centos-8 tests (#414)
+
+-------------------------------------------------------------------
+Tue Feb  8 15:48:20 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220204.00
+  * Add DisableLocalLogging option (#413)
+- from version 20220107.00
+  * OS assignment example: Copy file from bucket
+
+-------------------------------------------------------------------
+Tue Nov 30 19:50:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211117.00 (bsc#1193257, bsc#1193258)
+  * Add retry logic for RegisterAgent (#404)
+- from version 20211111.01
+  * e2e_test: drop ubuntu 1604 image as its EOL (#403)
+- from version 20211111.00
+  * e2e_test: move to V1 api for OSPolicies (#397)
+- from version 20211102.00
+  * Fix context logging and fix label names (#400)
+- from version 20211028.00
+  * Add cloudops example for gcloud (#399)
+
+-------------------------------------------------------------------
+Fri Oct 22 11:45:34 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20211021.00
+  * Added patch report logging for Zypper. (#395)
+- from version 20211012.00
+  * Replace deprecated instance filters with the new filters (#394)
+- from version 20211006.00
+  * Added patch report log messages for Yum and Apt (#392)
+- from version 20210930.00
+  * Config: Add package info caching (#391)
+- from version 20210928.00
+  * Fixed the runWithPty function to set ctty to child's filedesc (#389)
+- from version 20210927.00
+  * e2e_tests: fix a test output mismatch (#390)
+- from version 20210924.00
+  * Fix some e2e test failures (#388)
+- from version 20210923.02
+  * Correctly check for folder existance in package upgrade (#387)
+- from version 20210923.01
+  * ReportInventory: Fix bug in deb/rpm inventory, reduce calls to append (#386)
+- from version 20210923.00
+  * Deprecate old config directory in favor of new cache directory (#385)
+- from version 20210922.02
+  * Fix rpm/deb package formating for inventory reporting (#384)
+- from version 20210922.01
+  * Add centos stream rocky linux and available package tests (#383)
+- from version 20210922.00
+  * Add more info logs, actually cleanup unmanaged repos (#382)
+- from version 20210901.00
+  * Add E2E tests for Windows Application (#379)
+  * Return lower-case package name (#377)
+  * Update Terraform scripts for multi-project deployments tutorial. (#378)
+- from version 20210811.00
+  * Support Windows Application Inventory (#371)
+- from version 20210723.00
+  * Send basic inventory with RegisterAgent (#373)
+- from version 20210722.1
+  * e2e_tests: move to manually generated osconfig library (#372)
+- from version 20210722.00
+  * Create OWNERS file for examples directory (#368)
+- from version 20210719.00
+  * Update Zypper patch info parsing (#370)
+
+-------------------------------------------------------------------
+Tue Jul 27 10:01:30 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build with go1.15 for reproducible build results (boo#1102408)
+
+-------------------------------------------------------------------
+Mon Jul 19 16:11:38 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210712.1
+  * Skip getting patch info when no patches are found. (#369)
+- from version 20210712.00
+  * Add Terraform scripts for multi-project deployments (#367)
+- from version 20210709.00
+  * Add examples/Terraform directory. (#366)
+- from version 20210707.00
+  * Fix bug in printing packages to update,
+    return error for zypper patch (#365)
+- from version 20210629.00
+  * Add CloudOps examples for CentOS (#364)
+
+-------------------------------------------------------------------
+Wed Jun 23 11:39:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210621.00
+  * chore: Fixing a comment. (#363)
+- from version 20210617.00
+  * Use exec.CommandContext so that canceling the context also
+    kills any running processes (#362)
+- from version 20210608.1
+  * e2e_tests: point to official osconfig client library (#359)
+- from version 20210608.00
+  * e2e_tests: deflake tests (#358)
+- from version 20210607.00
+  * Fix build on some architectures (#357)
+- from version 20210603.00
+  * Create win-validation-powershell.yaml (#356)
+- from version 20210602.00
+  * Agent efficiency improvements/bugfixes/logging updates (#355)
+  * e2e_tests: add tests for ExecResource output (#354)
+- from version 20210525.00
+  * Run fieldalignment on all structs (#353)
+- from version 20210521.00
+  * Config Task: add error message and ExecResource output recording (#350)
+  * e2e_tests: remove Windows server 1909 and add server 20h2 (#352)
+  * Added a method for logging structured data (#349)
+
+-------------------------------------------------------------------
+Tue May 11 08:29:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210506.00 (bsc#1185848, bsc#1185849)
+  * Add more os policy assignment examples (#348)
+  * e2e_tests: enable stable tests for OSPolicies (#347)
+  * Align start and end task logs (#346)
+  * ConfigTask: add additional info logs (#345)
+  * e2e_tests: add validation tests (#344)
+  * Config Task: make sure agent respects policy mode (#343)
+  * update
+  * e2e_tests: readd retries to OSPolicies
+  * Set minWaitDuration as a string instead of object (#341)
+  * e2e_tests: Fix a few SUSE tests (#339)
+  * Remove pre-release flag from config (#340)
+  * e2e_tests: fixup OSPolicy tests (#338)
+  * e2e_tests: unlock mutex for CreatePolicies as soon as create finishes (#337)
+  * e2e_tests: Don't retry failed OSPolicy tests, fix msi test (#336)
+  * Examples for os policy assignments (#334)
+  * e2e_tests: increase the deadline for OSPolicy tests and only start after a zone has been secured (#335)
+  * Fix panic when installing MSI (#332)
+  * e2e_tests: Add test cases of installing dbe, rpm and msi packages (#333)
+  * e2e_tests: add more logging
+  * e2e_tests: (#330)
+  * e2e_test: Add timouts to OSPolicy tests so we don't wait forever (#329)
+  * Create top level directories for gcloud and console for os policy assignment examples (#328)
+  * e2e_tests: Move api from an internal directory (#327)
+  * Make sure we use the same test name for reruns (#326)
+  * Add CONFIG_V1 capability (#325)
+  * e2e_tests: reduce size of instances, use pd-balanced, rerun failed tests once (#324)
+  * Only report installed packages for dpkg (#322)
+  * e2e_tests: fix windows package and repository tests (#323)
+  * Add top level directories for os policy examples (#321)
+  * e2e_tests: move to using inventory api for inventory reporting (#320)
+  * e2e_tests: add ExecResource tests (#319)
+  * ExecResource: make sure we set permissions correctly for downloaded files (#318)
+  * Config task: only run post check on resources that have already been evaluated (#317)
+  * e2e_test: reorganize OSPolicy tests to be per Resource type (#316)
+  * Set custom user agent (#299)
+  * e2e_tests: check InstanceOSPoliciesCompliance for each test case, add LocalPath FileResource test (#314)
+  * PackageResource: make sure to run AptUpdate prior to package install (#315)
+  * Fix bugs/add more logging for OSPolicies (#313)
+  * Change metadata http client to ignore http proxies (#312)
+  * e2e_test: add tests for FileResource (#311)
+  * Add task_type context logging (#310)
+  * Fix e2e_test typo (#309)
+  * Fix e2e_tests (#308)
+  * Disable OSPolicies by default since it is an unreleased feature (#307)
+  * e2e_tests: Add more OSPolicies package and repo tests (#306)
+  * Do not enforce repo_gpgcheck in guestpolicies (#305)
+  * Gather inventory 3-5min after agent start (#303)
+  * e2e_tests: add OSPolicies tests for package install (#302)
+  * Add helpful error log if a service account is missing (#304)
+  * OSPolicies: correct apt repo extension, remove yum/zypper gpgcheck override (#301)
+  * Update cos library to parse new version of packages file (#300)
+  * config_task: Rework config step logic (#296)
+  * e2e_test: enable serial logs in cos to support ReportInventory test (#297)
+
+-------------------------------------------------------------------
+Wed Mar 31 12:57:28 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210316.00 (bsc#1183414, bsc#1183415)
+  * ExecResource: fix bug in return code handling (#295)
+  * Fix ExecResource permissions, add logs to fetcher (#294)
+  * e2e_tests: Fix ubuntu proposed family (#293)
+  * e2e_tests: add proposed debian images to head tests (#292)
+  * Fix exec_resource for config task, add minimal unit test (#291)
+  * Change util.WriteFile to AtomicWriteFileStream (#289)
+  * Merge development branch into master (#288)
+  * Create util.TempFile to work nicely with Windows (#287)
+  * Fix copy step write (#286)
+  * Fix error on linux lock (#285)
+  * Ensure we cleanup on error in AtomicWrite (#284)
+  * Make writes atomic, add unused "allowDowngrades" option
+    to apt, fix a few recipe issues (#283)
+  * update reviewers (#282)
+  * update apt package lists before running installs (#281)
+  * Simplify build tags for COS package (#280)
+
+-------------------------------------------------------------------
+Tue Jan 12 01:04:39 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210112.00
+  * Fix builds for ppc and s390x (#274)
+  * Minor updates to tests and additional debug logging (#272)
+  * Add Ubuntu 2004 to tests (#271)
+  * Make sure we stop tickers (#270)
+  * Drop Windows 1903 and CentOS 6 from tests (#269)
+  * Pin el6 tests to last published image as it is EOL (#267)
+  * support cos (#266)
+
+-------------------------------------------------------------------
+Tue Nov 24 13:18:46 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20201117.00 (bsc#1179031, bsc#1179032)
+  * Ignore Unavailable erros on stream receive (#260)
+  * Update test Windows images (#259)
+  * update ReportInventory e2e test regexes (#255)
+  * Don't return on a windows update error (#254)
+  * use retryutil for ReportInventory calls (#253)
+  * add additional debug logging for ReportInventory request payload for e2e tests (#252)
+  * stop logging instance identity token as part of ReportInventory request and remove
+    feature-flag setting in OSInventoryReporting e2e tests (#251)
+  * complete ExecTask as no-op when the ExecStepConfig doesn't match the OS (#250)
+  * Add software recipe tests for COS (#249)
+  * remove feature flag for inventory reporting (#243)
+  * Force yum to never colorize output (#247)
+  * Add sleep after Unavailable errors for agentendpoint (#241)
+  * Ensure we record epoch for rpm packages (#242)
+  * Make inventory WUAUpdates call spawn a new process,
+    retry on metadata unmarshal error (#239)
+  * add debug logging for report inventory response (#240)
+  * add initial e2e tests for inventory reporting (#237)
+  * Report installed packages on COS (#236)
+
+-------------------------------------------------------------------
+Thu Oct  8 09:19:12 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200929.00
+  * Merge inventory feature from development (#235)
+  * Set full version during Windows build (#234)
+- Remove Provides/Obsoletes for google-compute-engine-init
+
+-------------------------------------------------------------------
+Tue Sep 15 13:11:45 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build (bsc#1176427, bsc#1178249, jsc#ECO-2702, jsc#PM-2203)
+  + Version 20200908.00

@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13e1ad0df8970cfbeee0a5308925a345</srcmd5>
+    <version>0.7</version>
+    <time>1433920538</time>
+    <user>dimstar_suse</user>
+    <comment>Chunk of memory, polymorphic byte array management and manipulation
+
+new dep of securemem lib</comment>
+    <requestid>310859</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0b8f832e708ebfd7bfc0d9a1503f4e6</srcmd5>
+    <version>0.10</version>
+    <time>1452122705</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10
+* make memConstEqual more constant not using boolean comparaison
+* memConstEqual was comparing length times the first byte instead of comparing 
+    all the bytes one to one
+* Add Base64 variants (forwarded request 352143 from mimi_vx)</comment>
+    <requestid>352185</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>834710228e55ea012db0e7bea1fbdd75</srcmd5>
+    <version>0.11</version>
+    <time>1453998238</time>
+    <user>dimstar_suse</user>
+    <comment>- update 0.11 (forwarded request 355974 from mimi_vx)</comment>
+    <requestid>355975</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b514d416de96be2990443f3e1c9b0c6</srcmd5>
+    <version>0.13</version>
+    <time>1464690266</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13
+
+- update to 0.12
+* Fix compilation with mkWeak and latest GHC (forwarded request 398231 from mimi_vx)</comment>
+    <requestid>398232</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1cf91c3e5af73e2bcf77276cfbe5d739</srcmd5>
+    <version>0.13</version>
+    <time>1468999426</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411807</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff13f9aa56858aa70210c8cbff333a82</srcmd5>
+    <version>0.14.1</version>
+    <time>1489482330</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461657</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f73c4f37cf1e9eec6250ee1e071510a0</srcmd5>
+    <version>0.14.5</version>
+    <time>1497274083</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494175</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aed621fe9723ccbc0c29d638c84913f8</srcmd5>
+    <version>0.14.6</version>
+    <time>1497944464</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504775</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8fc8ca0539237f0ccd7c5d02cfe9de47</srcmd5>
+    <version>0.14.6</version>
+    <time>1505505439</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524988</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>968f0ea584c43717d4fa9a6b1aab0551</srcmd5>
+    <version>0.14.16</version>
+    <time>1527675036</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-memory to the latest version.</comment>
+    <requestid>607834</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>96ae3fbdeaacec7aaf2ba1b668db6448</srcmd5>
+    <version>0.14.16</version>
+    <time>1532161247</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update 0.11
+* memConstEqual was comparing length times the first byte instead of comparing
+* Fix fixed sized scrubber written too hastily, that would zero out memory, as
+- initial commit</comment>
+    <requestid>623805</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>63998d77dc1e06cd61b939260aec0b77</srcmd5>
+    <version>0.14.16</version>
+    <time>1534774833</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Cabal build information to prevent build attempts with
+  GHC 8.6.x.</comment>
+    <requestid>630369</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>84cbfbf48a9b28d57de6e5d7c621c897</srcmd5>
+    <version>0.14.18</version>
+    <time>1540448251</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642880</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5c6202ff93a07378d851d3bf235d352d</srcmd5>
+    <version>0.15.0</version>
+    <time>1571402059</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737204</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1e5194a575dc2431a05ebd071a7fad28</srcmd5>
+    <version>0.15.0</version>
+    <time>1577451299</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759445</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>aee4d4e5505aa43bfcc09feef4dc47a2</srcmd5>
+    <version>0.15.0</version>
+    <time>1592579722</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815130</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>a9ab971fa2002252ca89d4c69d617b65</srcmd5>
+    <version>0.15.0</version>
+    <time>1598643289</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829344</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>13185d40f3e5755d0d137a4392a48118</srcmd5>
+    <version>0.15.0</version>
+    <time>1599508981</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832294</requestid>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>805b6bff8ad8120889ba59a1f0160bd1</srcmd5>
+    <version>0.15.0</version>
+    <time>1608633754</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857451</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>c36416c651f2af1da0660532e0b53ad4</srcmd5>
+    <version>0.15.0</version>
+    <time>1620240008</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>890318</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b08ec684e966794d4db53ae4f376d000</srcmd5>
+    <version>0.16.0</version>
+    <time>1620767049</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>892188</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7d0c666ef36a5ceb335662d369347538</srcmd5>
+    <version>0.16.0</version>
+    <time>1639931687</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934286</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>353e6b1201017415e6f30407f78ad5a3</srcmd5>
+    <version>0.17.0</version>
+    <time>1659382132</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985822</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>fd163c1cbb78f738f7ce14abf2d9194e</srcmd5>
+    <version>0.18.0</version>
+    <time>1665668549</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008488</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>a80715b23eab6af2aec60a6297c0ea6d</srcmd5>
+    <version>0.18.0</version>
+    <time>1680636078</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075953</requestid>
+  </revision>
+</revisionlist>

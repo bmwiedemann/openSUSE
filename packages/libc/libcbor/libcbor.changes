@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Mon Feb 27 10:43:10 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.2:
+  * Fixed minor test bug causing failures for x86 Linux
+  * Made tests platform-independent
+
+-------------------------------------------------------------------
+Wed Feb 22 09:27:59 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Merge change from SLE15 SP4 made by pgajdos@suse.com on
+  Tue Apr  5 14:36:56 UTC 2022:
+- do not build manual page for 15sp4, it does not succeed
+  [bsc#1197743]
+- added sources
+  + libcbor.3
+
+-------------------------------------------------------------------
+Mon Jan 16 15:32:07 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.1: 
+  * BREAKING: Fix cbor_copy leaking memory and creating invalid items when the allocator fails.
+  * BREAKING: Improved half-float encoding for denormalized numbers. [#208]
+  * Make the buffer_size optional in cbor_serialize_alloc [#205]
+  * Fix a potential memory leak when the allocator fails during array or map decoding [#224]
+  * Fix a memory leak when the allocator fails when adding chunks to indefinite bytestrings.
+  * Fix a memory leak when the allocator fails when adding chunks to indefinite strings
+  * Fix cbor_build_tag illegal memory behavior when the allocator fails
+  * Add a new cbor_serialized_size API
+  * Reworked cbor_serialize_alloc to allocate the exact amount of memory necessary upfront
+
+-------------------------------------------------------------------
+Fri Aug 26 05:23:10 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Install manual page in the correct man section
+
+-------------------------------------------------------------------
+Tue Dec  7 15:27:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix duplicate src package name issue on multibuild 
+
+-------------------------------------------------------------------
+Sun Dec  5 09:42:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Improved pkg-config paths handling
+  * Use explicit math.h linkage
+  * BREAKING: Fixed handling of items that exceed the host size_t range
+  * cbor_decode explicitly checks size to avoid overflows (previously broken,
+    potentially resulting in erroneous decoding on affected systems)
+- split docs into multibuild flavor to avoid build cycle via openssh<->
+  python-pyOpenSSL <-> python-cryptography
+
+-------------------------------------------------------------------
+Tue Sep 22 11:42:03 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.8.0
+  * BREAKING: Fix cbor_tag_item not increasing the reference count
+    on the tagged item reference it returns
+  * BREAKING: CBOR_DECODER_EBUFFER removed from cbor_decoder_status
+    + cbor_stream_decode will set CBOR_DECODER_NEDATA instead if the
+      input buffer is empty
+  * Fix cbor_stream_decode to set cbor_decoder_result.required to
+    the minimum number of input bytes necessary to receive the next
+    callback (as long as at least one byte was passed)
+  * Fixed several minor manpage issue
+
+-------------------------------------------------------------------
+Mon May 25 08:15:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.7.0
+  * Too many changes to list, see included CHANGELOG.md file
+- 0.6.0 includes patch by bwiedemann@suse.com to not build shared
+  lib twice and make package build reproducible (boo#1102408,
+  gh#PJK/libcbor#72)
+
+-------------------------------------------------------------------
+Thu Jan  2 22:06:08 UTC 2020 - Torsten Gruner <t.gruner@katodev.de>
+
+- remove documentation build with doxygen
+
+-------------------------------------------------------------------
+Fri Sep 28 18:57:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename %SONAME to %sover to better reflect its use.
+- Expand summary, compact and trim bias from description.
+
+-------------------------------------------------------------------
+Thu Apr 26 08:55:27 UTC 2018 - t.gruner@katodev.de
+
+- Initial release 0.5.0
+ 

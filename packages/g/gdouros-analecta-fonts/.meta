@@ -1,0 +1,5 @@
+<package name="gdouros-analecta-fonts" project="openSUSE:Factory">
+  <title>An ecclesiastic scripts font, covering Basic Latin, Greek and Coptic, Coptic, Gothic and Deseret</title>
+  <description>Analecta is an ecclesiastic scripts font, covering Basic Latin, Greek and Coptic, some Punctuation and other Symbols, Coptic, typographica varia, Specials, Gothic and Deseret.</description>
+  <devel project="M17N:fonts" package="gdouros-analecta-fonts"/>
+</package>

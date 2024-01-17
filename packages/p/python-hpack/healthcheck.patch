@@ -1,0 +1,27 @@
+--- a/test/test_hpack.py
++++ b/test/test_hpack.py
+@@ -2,7 +2,7 @@
+ import itertools
+ import pytest
+ 
+-from hypothesis import given
++from hypothesis import given, settings, HealthCheck
+ from hypothesis.strategies import text, binary, sets, one_of
+ 
+ from hpack import (
+@@ -760,6 +760,7 @@ class TestDictToIterable:
+         binary().filter(lambda k: k and not k.startswith(b':'))
+     )
+ 
++    @settings(suppress_health_check=[HealthCheck.too_slow])
+     @given(
+         special_keys=sets(keys),
+         boring_keys=sets(keys),
+@@ -797,6 +798,7 @@ class TestDictToIterable:
+         assert special_keys == received_special
+         assert boring_keys == received_boring
+ 
++    @settings(suppress_health_check=[HealthCheck.too_slow])
+     @given(
+         special_keys=sets(keys),
+         boring_keys=sets(keys),

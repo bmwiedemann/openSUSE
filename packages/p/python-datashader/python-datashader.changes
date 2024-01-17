@@ -1,0 +1,504 @@
+-------------------------------------------------------------------
+Mon Oct 30 12:17:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * Support rendering of GeoPandas GeoDataFrames as lines, points
+    and polygons
+  * Implement lines using 2D xarray with common x coordinates
+  * Add debug logging to compiler module (#1280)
+  * Vendor DataShape (#1284)
+  * Don't use object as base class (#1286)
+  * Fix typos using codespell (#1288)
+  * Fix float16 being a floating type. (#1290)
+  * Simplify line _internal_build_extend (#1294)
+  * Update to latest holoviz_tasks (#1281)
+  * Support Pandas 2.1 (#1276, #1287)
+  * Replace np.NaN with np.nan (#1289)
+  * Drop support for Python 3.8 (#1291)
+- drop pd21.patch (upstream)
+
+-------------------------------------------------------------------
+Wed Sep 20 14:38:25 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add pd21.patch to support Pandas 2.1
+
+-------------------------------------------------------------------
+Mon Sep 18 10:05:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.2:
+  * This release adds antialiased line support for inspection
+    reductions such as max_n and where, including within
+    categorical by reductions. It also improves support
+    for summary reductions and adds CUDA implementations
+    of std and var reductions
+
+-------------------------------------------------------------------
+Sun Aug 13 19:34:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * Fix single category reductions
+  * Ensure categorical column order is the same across dask partitions
+  * see https://github.com/holoviz/datashader/releases/tag/v0.15.1
+
+-------------------------------------------------------------------
+Fri Jun  2 11:49:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Mention dropped patches:
+  * Do-not-use-warnings-from-numpy.patch
+  * numpy-1.24.patch
+
+-------------------------------------------------------------------
+Thu Jun  1 09:25:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.0
+  * This release provides significant improvements for inspection
+    reductions by adding new first_n, last_n, max_n and min_n
+    reductions, and providing Dask and CUDA support for all
+    existing and new inspection reductions including where. It also
+    provides support for Numba 0.57, NumPy 1.24 and Python 3.11,
+    and drops support for Python 3.7.
+  ## Enhancements:
+  ### Inspection reductions:
+  * Reduction append functions return index not boolean (#1180)
+  * first_n, last_n, max_n and min_n reductions (#1184)
+  * Add cuda argument to _build_combine (#1194)
+  * Support max_n and min_n reductions on GPU (#1196)
+  * Use fast cuda mutex available in numba 0.57 (#1212)
+  * Dask support for first, last, first_n and last_n reductions
+    (#1214)
+  * Wrap use of cuda mutex in where reductions (#1217)
+  * Cuda and cuda-with-dask support for inspection reductions
+    (#1219)
+  ### Other:
+  * x and y range attributes on returned aggregations (#1198)
+  * Make datashader.composite imports lazy for faster import time
+    (#1222)
+  ## Bug fixes
+  * Fix conversion from cupy in categorical rescale_discrete_levels
+    (#1179)
+  * Validate canvas width, height (#1183)
+  * Support antialiasing in pipeline API (#1213)
+- Add pyarrow to tests, run tests in parallel with xdist
+- Fix dependencies
+
+-------------------------------------------------------------------
+Mon May 29 13:40:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reenable python311 (dask available)
+
+-------------------------------------------------------------------
+Wed Mar 22 15:16:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip python38: No xarray anymore
+- Skip python311: No dask-all and numba yet
+
+-------------------------------------------------------------------
+Tue Feb  7 09:00:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add Do-not-use-warnings-from-numpy.patch and numpy-1.24.patch to fix issues
+  with latest numpy gh#holoviz/datashader#1176 gh#holoviz/datashader#1158
+- Update to 0.14.4
+  * This release adds a new where reduction that provides improved inspection
+    capabilities and adds support for colormaps that are tuples of hex values.
+    There are also various bug fixes and compatibility improvements.
+    Thanks to @ianthomas23, @maximlt and @Hoxbro.
+  ## Enhancements:
+  * New where reduction to provide improved inspection functionality:
+    - Add new where reduction (#1155)
+    - Where reduction using dataframe row index (#1164)
+    - CUDA support for where reduction (#1167)
+    - User guide page for where reduction (#1172)
+  * Support colormaps that are tuples of hex values (#1173)
+  * Add governance docs (#1165)
+  * Improve documentation build system (#1170, #1171)
+  * Improvements to CI:
+    - Rename default branch from master to main (#1156)
+    - Use holoviz_task install action (#1163)
+  ## Bug fixes:
+  * Validate calculated log canvas range (#1154)
+  * Better validate canvas.line() coordinate lengths (#1160)
+  * Return early in eq_hist() if all data masked out (#1168)
+  ## Compatibility:
+  * Follow recommended numba best practice.
+    - Ensure cuda functions are correctly jitted (#1153)
+    - nopython=True everywhere (#1162)
+  * Update dependencies:
+    - Pip pyarrow in tests dependencies (#1174)
+
+-------------------------------------------------------------------
+Mon Nov 21 19:58:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.3
+  * This release fixes a bug related to spatial indexing of
+    spatialpandas.GeoDataFrames, and introduces enhancements to
+    antialiased lines, benchmarking and GPU support.
+  ## Enhancements:
+  * Improvements to antialiased lines:
+    - Fit antialiased line code within usual numba/dask framework
+      (#1142)
+    - Refactor stage 2 aggregation for antialiased lines (#1145)
+    - Support compound reductions for antialiased lines on the CPU
+      (#1146)
+  * New benchmark framework:
+    - Add benchmarking framework using asv (#1120)
+    - Add cudf, dask and dask-cudf Canvas.line benchmarks (#1140)
+  * Improvements to GPU support:
+    - Cupy implementation of eq_hist (#1129)
+  * Improvements to dependency management (#1111, #1116)
+  * Improvements to CI (#1132, #1135, #1136, #1137, #1143)
+  ## Bug fixes:
+  * Ensure spatial index _sindex is retained on dataframe copy
+    (#1122)
+- Version 0.14.2
+  * This is a bug fix release to fix an important divide by zero
+    bug in antialiased lines, along with improvements to
+    documentation and handling of dependencies.
+  ## Enhancements:
+  * Improvements to handling of dependencies:
+    - Correct dask and bokeh dependencies (#1104)
+    - Add requests as an install dependency (#1105)
+    - Better handle returned dask npartitions in tests (#1107)
+  ## Bug fixes:
+  * Fix antialiased line divide by zero bug (#1099)
+- Version 0.14.1
+  * This release provides a number of important bug fixes and small
+    enhancements from Ian Thomas along with infrastructure
+    improvements from Maxime Liquet and new reductions from
+    @tselea.
+  ## Enhancements:
+  * Improvements to antialiased lines:
+    - Support antialiased lines for categorical aggregates (#1081,
+      #1083)
+    - Correctly handle NaNs in antialiased line coordinates (#1097)
+  * Improvements to rescale_discrete_levels for how='eq_hist':
+    * Correct implementation of rescale_discrete_levels (#1078)
+    * Check before calling rescale_discrete_levels (#1085)
+    * Remove empty histogram bins in eq_hist (#1094)
+  * Implementation of first and last reduction (#1093) for data
+    types other than raster.
+  ## Bug fixes:
+  * Do not snap trimesh vertices to pixel grid (#1092)
+  * Correctly orient (y, x) arrays for xarray (#1095)
+  * Infrastructure/build fixes (#1080, #1089, #1096)
+- Version 0.14.0
+  * This release has been nearly a year in the making, with major
+    new contributions from Ian Thomas, Thuy Do Thi Minh, Simon
+    Høxbro Hansen, Maxime Liquet, and James Bednar, and additional
+    support from Andrii Oriekhov, Philipp Rudiger, and Ajay Thorve.
+  ## Enhancements:
+  * Full support for antialiased lines of specified width (#1048,
+    #1072). Previous antialiasing support was limited to
+    single-pixel lines and certain floating-point reduction
+    functions. Now supports arbitrary widths and arbitrary
+    reduction functions, making antialiasing fully supported.
+    Performance ranges from 1.3x to 14x slower than the simplest
+    zero-width implementation; see benchmarks.
+  * Fixed an issue with visibility on zoomed-in points plots and on
+    overlapping line plots that was first reported in 2017, with a
+    new option rescale_discrete_levels for how='eq_hist' (#1055)
+  * Added a categorical color_key for 2D (unstacked) aggregates
+    (#1020), for producing plots where each pixel has at most one
+    category value
+  ## Bugfixes:
+  * Fixed details of the raster coordinate calculations to match
+    other primitives, making it simpler to overlay separately
+    rendered results (#959, #1046)
+  * Various fixes and extensions for cupy/CUDA, e.g. to use cuda
+    for category_binning, spread, and dynspread, including
+    cupy.interp where appropriate (#1015, #1016, #1044, #1050,
+    #1060)
+  * Infrastructure/build/ecosystem fixes (#1022, #1025, #1027,
+    #1036, #1045, #1049, #1050, #1057, #1061, #1062, #1063, #1064)
+  ## Compatibility:
+  * Canvas.line() option antialias=True is now deprecated; use
+    line_width=1 (or another nonzero value) instead. (#1048)
+  * Removed long-deprecated bokeh_ext.py (#1059)
+  * Dropped support for Python 2.7 (actually already dropped from
+    the tests in Datashader 0.12) and 3.6 (no longer supported by
+    many downstream libraries like rioxarray, but several of them
+    are not properly declaring that restriction, making 3.6 much
+    more difficult to support.) (#1033)
+- Drop upstreamed fixes
+  * datashader-pr1022-RaggedTests.patch
+  * datashader-pr1025-testfixes.patch
+
+-------------------------------------------------------------------
+Tue Apr 26 08:11:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove skip_python310, it is not needed anymore.
+
+-------------------------------------------------------------------
+Mon Jan 31 21:47:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.0
+  * Defined new dynspread metric based on counting the fraction of
+    non-empty pixels that have non-empty pixels within a given
+    radius. The resulting dynspread behavior is much more intuitive
+    than the old behavior, which counted already-spread pixels as
+    if they were neighbors (#1001)
+  * Added ds.count() as the default reduction for ds.by (#1004)
+  * Fixed array-bounds reading error in dynspread (#1001)
+  * Fix color_key argument for dsshow (#986)
+  * Added Matplotlib output to the 3_Interactivity getting started
+    page. (#1009)
+  * Misc docs fixes (#1007)
+  * Fix nan assignment to integer array in RaggedArray (#1008)
+  * Any usage of dynspread with datatypes other than points should
+    be replaced with spread(), which will do what was probably
+    intended by the original dynspread call, i.e. to make isolated
+    lines and shapes visible. Strictly speaking, dynspread could
+    still be useful for other glyph types if that glyph is
+    contained entirely in a pixel, e.g. if a polygon or line
+    segment is located within the pixel bounds, but that seems
+    unlikely.
+  * Dynspread may need to have the threshold or max_px arguments
+    updated to achieve the same spreading as in previous releases,
+    though the new behavior is normally going to be more useful
+    than the old.
+- Drop datashader-pr996-numpy-ragged.patch
+- Add datashader-pr1022-RaggedTests.patch
+- Add datashader-pr1025-testfixes.patch
+- Skip remaining failing ragged tests gh#holoviz/datashader#1043
+
+-------------------------------------------------------------------
+Thu Apr  1 12:57:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add datashader-pr996-numpy-ragged.patch in order to fix
+  failures with NumPy 1.20 -- gh#holoviz/datashader#995 and
+  gh#holoviz/datashader#996
+
+-------------------------------------------------------------------
+Thu Mar 18 20:53:08 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.12.1:
+  * Fix for xarray 0.17 raster files, supporting various nodata
+    conventions (gh#holoviz/datashader#991)
+  * Fix RaggedArray groupby test
+  * Disable the interactivity warning on the homepage
+    (gh#holoviz/datashader#983)
+- Add BuildRequires: python-numpy now needed for building.
+
+-------------------------------------------------------------------
+Fri Feb 12 14:23:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36
+
+-------------------------------------------------------------------
+Sat Jan  2 23:30:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Test in _multibuild flavor in order to avoid build dependency
+  cycle with holoviews
+
+-------------------------------------------------------------------
+Sun Aug 16 20:55:28 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.11.1:
+  * Fixes support for cuDF 0.13 and Numba 0.48 (#933)
+  * Fixes for cuDF support on Numba>=0.51 (#934, #947)
+  * Fixes tile generation using aggregators with output of boolean
+    dtype (#949)
+  * Fixes for CI and build infrastructure (#935, #948, #951)
+  * Updates to docstrings (b1349e3, #950)
+
+-------------------------------------------------------------------
+Wed May 27 07:06:34 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.11.0
+  New features (see getting_started/2_Pipeline.ipynb for examples):
+    New by() categorical aggregator, extending count_cat to work with other reduction functions, no longer just count. Allows binning of aggregates separately per category value, so that you can compare how that aggregate is affected by category value. (#875, #902, #904, #906)
+    Support for negative and zero values in tf.shade for categorical aggregates. (#896, #909, #910, #908)
+    Support for span in _colorize(). (#875, #910)
+    Support for Dask-based quadmesh rendering for rectilinear and curvilinear mesh types (#885, #913)
+    Support for Dask-based raster mesh rendering (via Canvas.quadmesh) (#872)
+    Faster TMS tileset generation (#886)
+    Expanded performance guide (#868)
+  Bugfixes:
+    Misc bugfixes and improvements (#874, #882, #888, #889, #890, #891)
+  Compatibility (breaking changes and deprecations):
+    To allow negative-valued aggregates, count_cat now weights categories according to how far they are from the minimum aggregate value observed, while previously they were referenced to zero. Previous behavior can be restored by passing color_baseline=0 to count_cat or by.
+    count_cat is now deprecated and removed from the docs; use by(..., count()) instead.
+    Result of a count() aggregation is now uint32, not int32, to distinguish counts from other aggregation types (#910).
+    tf.shade now only treats zero values as missing for count aggregates (uint); zero is otherwise a valid value distinct from NaN (#910).
+    alpha is now respected as the upper end of the alpha range for both _colorize() and _interpolate() in tf.shade; previously only _interpolate respected it.
+    Added new nansum_missing utility for working with Numpy>1.9, where nansum no longer returns NaN for all-NaN values.
+    ds.geo and ds.spatial modules are now deprecated; their contents have moved to xarray_spatial and spatialpandas, respectively. (#894)
+
+-------------------------------------------------------------------
+Tue May 26 07:22:31 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Fri Feb 21 12:47:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.0:
+  * Compatibility with new pandas, numba and llvm
+
+-------------------------------------------------------------------
+Fri Dec 13 00:23:38 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.9.0:
+  * New features:
+    + Support for CUDA GPU dataframes (cudf and dask_cudf) (#794,
+      #793, #821, #841, #842)
+    + Documented new quadmesh support (renaming user guide section
+      5_Rasters to 5_Grids to reflect the more-general grid support)
+      (#805)
+  * Bugfixes and compatibility:
+    + Avoid double-counting line segments that fit entirely into a
+      single rendered pixel (#839)
+    + Improved geospatial toolbox, including 75X speedups to viewshed
+      algorithm (#811, #824, #844)
+
+-------------------------------------------------------------------
+Thu Oct 24 17:10:37 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix build dependencies.
+
+-------------------------------------------------------------------
+Fri Oct 11 08:24:42 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.0:
+  * Compatibility with latest Numba, Intake, Pandas, and Xarray (#763, #768, #791)
+  * Improved datetime support (#803)
+  * Simplified docs (now built on Travis, and no longer requiring GeoViews) and examples (now on examples.pyviz.org)
+  * Skip rendering of empty tiles (#760)
+  * Improved performance for point, area, and line glyphs (#780)
+  * InteractiveImage and Pipeline are now deprecated; removed from examples (#751)
+
+-------------------------------------------------------------------
+Mon Apr 29 20:58:26 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 builds.
+  This requires xarray, which requires python3 now.
+
+-------------------------------------------------------------------
+Mon Apr 22 19:26:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.7.0
+  + New features:
+    * Simplified Panel-based dashboard using new Param features; now only 48 lines with fewer new concepts (#707)
+    * Added pandas ExtensionArray and Dask support for storing homogeneous ragged arrays (#687)
+    * Added SpatialPointsFrame and updated census, osm-1billion, and osm examples to use it (#702, #706, #708)
+    * Expanded 8_Geography.ipynb to document other geo-related functions
+    * Added Dask support for trimesh rendering, though computing the mesh initially still requires vertices and simplicies to fit into memory (#696)
+    * Add zero-copy rendering of row-oriented line coordinates, using a new axis argument (#694)
+  + Bugfixes and compatibility:
+    * Added lnglat_to_meters to geo module; new code should import it from there (#708)
+
+-------------------------------------------------------------------
+Wed Feb 13 18:34:28 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.6.9
+  + New features:
+    * Replaced outdated 536-line Bokeh dashboard.py with 71-line Panel+HoloViews dashboard.ipynb (#676)
+    * Allow aggregating xarray objects (in addition to Pandas and Dask DataFrames) (#675)
+    * Create WMTS tiles from Datashader data (#636)
+    * Added various geographic utility functions (ndvi, slope, aspect, hillshade, mean, bump map, Perlin noise) (#661)
+    * Made OpenSky data public (#691)
+  + Bugfixes and compatibility:
+    * Fix array bounds error on line glyph (#683)
+    * Fixed the span argument to tf.shade (#680)
+    * Fixed composite.add (for use in spreading) to clip colors rather than overflow (#689)
+    * Fixed gerrymandering shape file (#688)
+    * Updated to match Bokeh (#656), Dask (#681, #667), Pandas/Numpy (#697)
+- Remove upstream included python-datashader-dask-api-change-fix.patch
+
+-------------------------------------------------------------------
+Thu Nov 22 12:52:29 UTC 2018 - Enno Gotthold <egotthold@suse.com>
+
+- Added patch to fix broken test_dask tests.
+  * python-datashader-dask-api-change-fix.patch
+  Upstream URL: https://github.com/pyviz/datashader/pull/667
+
+-------------------------------------------------------------------
+Fri Oct 26 19:49:29 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.6.8
+  + New features:
+    * Added Strange Attractors example (#632)
+    * Major speedup: optimized dask datashape detection (#634)
+  + Bugfixes and compatibility:
+    * Silenced inappropriate warnings (#631)
+    * Fixed various other bugs, including #644
+    * Added handling for zero data and zero range (#612, #648)
+- Switch to pypi sources
+
+-------------------------------------------------------------------
+Mon Aug 13 15:53:23 UTC 2018 - toddrme2178@gmail.com
+
+- Fix dependencies.
+
+-------------------------------------------------------------------
+Fri Jul 20 15:09:30 UTC 2018 - mcepl@suse.com
+
+- Rebuilt with the new numba
+
+-------------------------------------------------------------------
+Thu Jul 19 13:26:46 UTC 2018 - mcepl@suse.com
+
+- Update to 0.6.7:
+    - Supports dask >= 0.18.
+    - InteractiveImage is now deprecated; please use the Datashader
+      support in HoloViews instead.
+    - Updated installation and example instructions to use new
+      datashader command.
+    - Ensured transparent (not black) image is returned when there is no
+      data to plot (thanks to Nick Xie)
+    - Simplified getting-started example (thanks to David Jones)
+
+-------------------------------------------------------------------
+Thu Jun  7 20:30:20 UTC 2018 - jengelh@inai.de
+
+- Fix some grammar issues.
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Thu Mar  1 18:28:58 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.6.5
+  + New features:
+    - Trimesh support: Rendering of irregular triangular meshes
+      using Canvas.trimesh() (see user guide) (#525,#552)
+    - Added a new website at datashader.org, with new Getting
+      Started pages and an extensive User Guide, with about 50%
+      new material not previously in example notebooks. Built
+      entirely from Jupyter notebooks, which can be run in the
+      examples/ directory. Website is now complete except for
+      sections on points (see the nyc_taxi example in the
+      meantime).
+    - Canvas.raster() now accepts xarray Dataset types, not just
+      DataArrays, with the specific DataArray selectable from the
+      Dataset using the column= argument of a supplied
+      aggregation function.
+    - tf.Images() now displays anything with an HTML
+      representation, to allow laying out Pandas dataframes
+      alongside datashader output.
+  + Bugfixes and compatibility:
+    - Changed Raster API to match other glyph types:
+      > Now accepts a reduction function via an agg= argument
+        like Canvas.line(), Canvas.points(), etc. The previous
+        downsample_method is still accepted for this release, but
+        is now deprecated.
+      > upsample_method is now interpolate, accepting linear=True
+        or linear=False; the previous spelling is now deprecated.
+      > The layer= argument previously accepted a 1-based integer
+        index, which was confusing given the standard Python
+        0-based indexing elsewhere. Changed to accept an xarray
+        coordinate, which can be a 1-based index if that's what is
+        defined on the array, but also works with arbitrary
+        floating-point coordinates (e.g. for a depth parameter in
+        an image stack).
+      > Now auto-ranges in x and y when not given explicit ranges,
+        instead of raising an error.
+    - Fixed various bugs, including one generating incorrect output
+      in Canvas.raster(agg='mode')
+
+-------------------------------------------------------------------
+Fri Oct 20 16:14:29 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

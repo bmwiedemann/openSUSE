@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Mar  1 18:11:34 UTC 2018 - dimstar@opensuse.org
+
+- Handle glibc installing LICENSES to /usr/share/licenses (new
+  location, when using %license) or /usr/share/doc (%doc).
+
+-------------------------------------------------------------------
+Mon Jan 22 10:12:14 CET 2018 - kukuk@suse.de
+
+- Add C.UTF-8 locale
+  (https://github.com/openSUSE/docker-containers-build/issues/26)
+
+-------------------------------------------------------------------
+Mon Dec 18 11:33:31 CET 2017 - kukuk@suse.de
+
+- Initial version
+

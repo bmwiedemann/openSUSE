@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08090a0d81a947c9daf702e30d3bf075</srcmd5>
+    <version>2.2.3</version>
+    <time>1408957456</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>245811</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>08090a0d81a947c9daf702e30d3bf075</srcmd5>
+    <version>2.2.3</version>
+    <time>1409300735</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a71063a00c0d74c9c76ed7f1a0be43e6</srcmd5>
+    <version>2.2.5</version>
+    <time>1619729225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889394</requestid>
+  </revision>
+</revisionlist>

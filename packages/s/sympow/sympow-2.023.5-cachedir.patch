@@ -1,0 +1,17 @@
+References: https://src.fedoraproject.org/rpms/sympow/blob/master/f/sympow-2.023.5-cachedir.patch
+
+--- sympow-v2.023.5/main.c.orig	2018-11-24 00:38:19.000000000 -0700
++++ sympow-v2.023.5/main.c	2019-06-26 13:03:21.425514068 -0600
+@@ -112,11 +112,7 @@ static void prepare_main(char *argv0)
+  if (stat(pkgdatafilesdir,&infod)) {free(pkgdatafilesdir); pkgdatafilesdir=NULL;}
+  asprintf(&pkgdatafilesbindir,"%s/datafiles/"ENDIANTUPLE,pkgcachedir);
+  if (stat(pkgdatafilesbindir,&infodb)) {mode_t mask=umask(0);
+-  if (mkdir(pkgdatafilesbindir,(S_IRWXU|S_IRWXG|S_IRWXO|S_ISVTX)))
+-	{if (VERBOSE>=1) fprintf(stderr,"**WARNING** failed to create data bin package cache folder %s\n",pkgdatafilesbindir);
+-   free(pkgdatafilesbindir); pkgdatafilesbindir=NULL;}
+-  else
+-  {stat(pkgdatafilesbindir,&infodb); pkgdatamode= infodb.st_mode & ~MASK;}
++	pkgdatamode= infodb.st_mode & ~MASK;
+ 	umask(mask);}
+  else
+  {if (!S_ISDIR(infodb.st_mode))

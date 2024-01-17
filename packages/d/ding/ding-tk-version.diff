@@ -1,0 +1,15 @@
+---
+ ding |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- ding-1.5.orig/ding
++++ ding-1.5/ding
+@@ -1469,7 +1469,7 @@ xb0luDlMBEbDddDU1dRg1tmVMjIpm9/g4eLO5MAJ
+ image create photo windowicon -data $logo
+ 
+ wm title . $pinfo(pname)
+-if {$tk_version >= 8.5} {
++if {$tk_version >= 8.4} {
+     wm iconphoto . windowicon
+ }
+ wm iconname . $pinfo(pname)

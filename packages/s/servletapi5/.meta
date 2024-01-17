@@ -1,0 +1,6 @@
+<package name="servletapi5" project="openSUSE:Factory">
+  <title>Java servlet and JSP implementation classes</title>
+  <description>This subproject contains the source code for the implementation classes
+of the Java Servlet and JSP APIs (packages javax.servlet).</description>
+  <devel project="Java:packages" package="servletapi5"/>
+</package>

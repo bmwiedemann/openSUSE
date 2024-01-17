@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c3515a8967b26ce0f81dd9673bc4aee</srcmd5>
+    <version>0.1.0</version>
+    <time>1606252634</time>
+    <user>dimstar_suse</user>
+    <comment>dependency of python-check-manifest, and general replacement for most tasks python-pep517 was doing</comment>
+    <requestid>850551</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>48fe27ac39d275a93ed28532f06fedfb</srcmd5>
+    <version>0.1.0</version>
+    <time>1608550506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856769</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a5761ddf515af9fe7e52786ccc10595</srcmd5>
+    <version>0.7.0</version>
+    <time>1634417251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925705</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4694d4138ca5438431f55b760b562d0</srcmd5>
+    <version>0.8.0</version>
+    <time>1657809257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989018</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>91a052b0db166fb3086e62f46c588c82</srcmd5>
+    <version>0.9.0</version>
+    <time>1667994963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034384</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b92d019648d8c3345276c2ab10cffb04</srcmd5>
+    <version>0.9.0</version>
+    <time>1672754654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046084</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b522e5e4bee223957668419feb36eb4f</srcmd5>
+    <version>0.10.0</version>
+    <time>1680290044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0
+  * Replace pep517 dependency with pyproject_hooks, into which
+    pep517 has been renamed (PR #539, Fixes #529)
+  * Change build backend from setuptools to flit (PR #470, Fixes
+    #394)
+  * Dropped support for Python 3.6 (PR #532)
+- Avoid namespace clashes with build/ directory
+  * gh#openSUSE/python-rpm-macros#157
+- Drop build-pr550-packaging22.patch
+</comment>
+    <requestid>1073633</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0751f98ca359ba6230d80cb90930f691</srcmd5>
+    <version>0.10.0</version>
+    <time>1682193703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081973</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e9492ccd1f3bf09e87b432b88d3e99f0</srcmd5>
+    <version>0.10.0</version>
+    <time>1684490108</time>
+    <user>dimstar_suse</user>
+    <comment>- Renamed patches support-pip-23.patch and
+  support-tarfile-data-filter.patch to 589-colorized-pip23.patch
+  (gh#pypa/build#589) and 609-filter-out-malicious.patch
+  (gh#pypa/build#609), respectively.
+- Add patch support-pip-23.patch:
+  * pip 23 also colorizes output, confusing the test.
+- Add patch support-tarfile-data-filter.patch:
+  * Set tarfile.data_filter if available.</comment>
+    <requestid>1085246</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>585eac1a40681d70b7315dfe5965cd51</srcmd5>
+    <version>1.0.3</version>
+    <time>1695412027</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.3:
+  * Avoid CPython 3.8.17, 3.9.17, 3.10.12, and 3.11.4 tarfile symlink bug
+    triggered by adding data_filter in 1.0.0.
+  * Removed the toml library fallback; toml can no longer be used as a
+    substitute for tomli
+  * Added runner parameter to util.project_wheel_metadata
+  * Modified ProjectBuilder constructor signature, added alternative
+    ProjectBuilder.from_env constructor, redefined env.IsolatedEnv interface,
+    and exposed env.DefaultIsolatedEnv, replacing env.IsolatedEnvBuilder.
+  * virtualenv is no longer imported when using -n, for faster builds
+  * The SDist now contains the repository contents, including tests.
+    Flit-core 3.8+ required.
+  * The minimum version of importlib-metadata has been increased to 4.6 and
+    Python 3.10 due to a bug in the standard library version with URL
+    requirements in extras.
+  * Tests now contain a network marker
+  * Config-settings are now passed to get_requires* hooks, fixing a long
+    standing bug.
+  * Test on Python 3.12 betas/RCs
+  * Filter out malicious files when extracting tar archives when Python
+    supports it
+  * Specify encoding, fixing issues when PYTHONWARNDEFAULTENCODING is set.
+- Drop patches 589-colorized-pip23.patch, 609-filter-out-malicious.patch:
+  * Included upstream.
+- Add runtests.py which chdirs before running tests, but after the macros
+  have polluted the current working directory, avoiding test failures.</comment>
+    <requestid>1112478</requestid>
+  </revision>
+</revisionlist>

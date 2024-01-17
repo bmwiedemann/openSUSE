@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18f8d49a8adc7702287bf0dd0d3c29bd</srcmd5>
+    <version>0.2.5.43</version>
+    <time>1545141576</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain ndppd in Factory</comment>
+    <requestid>658971</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c23ba5c9c96e82ee5f7ec6320d6915b9</srcmd5>
+    <version>0.2.5.43</version>
+    <time>1548335514</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand summary.
+- Initial package, version 0.2.5.43
+</comment>
+    <requestid>667395</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>53b70ae704c13d94bc0832c3f4410d1e</srcmd5>
+    <version>0.2.5.43</version>
+    <time>1634071666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924937</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1ab9fe52cd021da6d2be6b47350e9e51</srcmd5>
+    <version>0.2.5.43</version>
+    <time>1634331873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925501</requestid>
+  </revision>
+</revisionlist>

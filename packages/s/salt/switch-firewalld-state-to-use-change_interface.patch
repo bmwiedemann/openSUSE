@@ -1,0 +1,72 @@
+From 57626d8eb77d2c559365d1df974100e474671fef Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 17:12:04 +0100
+Subject: [PATCH] Switch firewalld state to use change_interface
+
+firewalld.present state allows to bind interface to given zone.
+However if the interface is already bound to some other zone, call-
+ing `add_interface` will not change rebind the interface but report
+error.
+Option `change_interface` however can rebind the interface from one
+zone to another.
+
+This PR adds `firewalld.change_interface` call to firewalld module
+and updates `firewalld.present` state to use this call.
+---
+ salt/modules/firewalld.py | 23 +++++++++++++++++++++++
+ salt/states/firewalld.py  |  4 +++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/firewalld.py b/salt/modules/firewalld.py
+index 135713d851..70bc738240 100644
+--- a/salt/modules/firewalld.py
++++ b/salt/modules/firewalld.py
+@@ -918,6 +918,29 @@ def remove_interface(zone, interface, permanent=True):
+     return __firewall_cmd(cmd)
+ 
+ 
++def change_interface(zone, interface, permanent=True):
++    """
++    Change zone the interface bound to
++
++    .. versionadded:: 2019.?.?
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt '*' firewalld.change_interface zone eth0
++    """
++    if interface in get_interfaces(zone, permanent):
++        log.info("Interface is already bound to zone.")
++
++    cmd = "--zone={} --change-interface={}".format(zone, interface)
++
++    if permanent:
++        cmd += " --permanent"
++
++    return __firewall_cmd(cmd)
++
++
+ def get_sources(zone, permanent=True):
+     """
+     List sources bound to a zone
+diff --git a/salt/states/firewalld.py b/salt/states/firewalld.py
+index cc6eaba5c3..534b9dd62d 100644
+--- a/salt/states/firewalld.py
++++ b/salt/states/firewalld.py
+@@ -691,7 +691,9 @@ def _present(
+         for interface in new_interfaces:
+             if not __opts__["test"]:
+                 try:
+-                    __salt__["firewalld.add_interface"](name, interface, permanent=True)
++                    __salt__["firewalld.change_interface"](
++                        name, interface, permanent=True
++                    )
+                 except CommandExecutionError as err:
+                     ret["comment"] = "Error: {}".format(err)
+                     return ret
+-- 
+2.39.2
+
+

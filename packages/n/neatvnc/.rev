@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e94718b1e71bcfce1fdffe60fb9fd74c</srcmd5>
+    <version>0.1.0</version>
+    <time>1591479631</time>
+    <user>dimstar_suse</user>
+    <comment>neatvnc</comment>
+    <requestid>812028</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1021e31fbc8285bdb98a8ed1215030da</srcmd5>
+    <version>0.1.0</version>
+    <time>1591653913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812453</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34add1a3641b785c7679692f733df71e</srcmd5>
+    <version>0.2.0</version>
+    <time>1596802552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824825</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84248e21b4b97314799cae338951ee06</srcmd5>
+    <version>0.3.2</version>
+    <time>1601919708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839498</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90302ee1bfb96508aba228831938792f</srcmd5>
+    <version>0.4.0</version>
+    <time>1614684864</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875904</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e07059d91f34317181e5fd8924341e84</srcmd5>
+    <version>0.5.4</version>
+    <time>1667901297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.4:
+  * This fixes stalling during h264 encoding. The FFmpeg devs
+    seem to think that it's normal to change the default behaviour
+    of their code, so this needs to be fixed here instead.
+
+- Update to 0.5.3:
+  * Revert &quot;h264-encoder: Add 30 bit color depth formats&quot;
+  * server: Fix encoding selection for sw frames
+
+- Update to 0.5.2:
+  * stream: Remove stray ampersand in tls handshake failure code path
+  * resampler: Use transformed width as destination stride
+
+- Update to 0.5.1:
+  * meson: Use partial_dependency() for libdrm cflags
+  * test: meson: Add missing libdrm_inc dependency
+  * server: add missing header after f20ffb5e1efe
+
+- Update to 0.5.0:
+  * H.264 Encoding
+  * UNIX Sockets
+  * New framebuffer submission API
+  * Automatic buffer transforms
+  * Client side cursor rendering
+  * Now accepts DMA-BUFs
+  * Presentation time stamps
+  * New internal encoder abstraction layer</comment>
+    <requestid>1034388</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5132cc924ef2b84ba2e77557bcf7a012</srcmd5>
+    <version>0.5.4</version>
+    <time>1670863210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042356</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0343d1a22bae446280908657cf5c6f11</srcmd5>
+    <version>0.6.0</version>
+    <time>1674927765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  Highlights:
+  * The client now has control over h264 quality settings
+  * Left &amp; right scrolling is now supported
+  * A custom framebuffer allocator function can now be assigned
+  * The following functions have been added
+    + A function for querying client side cursor support
+    + A function to get the hostname of a connected client
+    + A function to get the credentials of an authenticated client
+    + A function for listing connected clients
+    + A function for disconnecting a client
+  Bug fixes:
+  * A race condition when a client tries to resize the display before it has an encoder
+  * Cursor buffers are now freed on close
+  * Various race conditions in encoders
+  * Spurious exits due to SIGPIPE
+  * Occasional leaked buffers when clients disconnect
+  * Clients no longer linger on exit with TLS</comment>
+    <requestid>1060477</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f0122395f0b43a5ab85cd3fffbd18a3b</srcmd5>
+    <version>0.7.0</version>
+    <time>1696529086</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0:
+  * Desktop resizing
+  * Software pixel buffers with less than 32 bits per pixel are now supported
+  * The server may now choose to open a websocket instead of a regular TCP socket
+  * The RSA-AES and RSA-AES-256 security types have now been implemented
+  * A Diffie-Hellman based security type frame Apple is also implemented,
+    although not recommended
+  * Murmurhash in the damage refinery has been replaced with xxHash,
+    which performs much better in my tests so far
+  * Users should now get proper feedback when authentication fails</comment>
+    <requestid>1115753</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec482fed82c326d5eb27352bb6ea1b47</srcmd5>
+    <version>0.7.1</version>
+    <time>1699301650</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.1:
+  * Apple's Diffie-Hellman authentication (security type 30) has been fixed.
+  * A new client connection no longer causes a DNS lookup.</comment>
+    <requestid>1123502</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,102 @@
+From 4240f0d5ffbc46c557885c5a28d1f2fd0b4c5e48 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
+Date: Mon, 8 Nov 2021 17:42:36 +0300
+Subject: [PATCH] Prevent pkg plugins errors on missing cookie path
+ (bsc#1186738) - 3002.2 (#415)
+
+* Prevent pkg plugins errors on missing cookie path (bsc#1186738)
+
+* Narrowing down exception handling
+
+* Modify for Python 3 only
+
+* Fix yumnotify
+---
+ scripts/suse/yum/plugins/README.md            |  2 +-
+ scripts/suse/yum/plugins/yumnotify.py         | 17 +++++++++++++----
+ scripts/suse/zypper/plugins/commit/zyppnotify | 18 ++++++++++++------
+ 3 files changed, 26 insertions(+), 11 deletions(-)
+
+diff --git a/scripts/suse/yum/plugins/README.md b/scripts/suse/yum/plugins/README.md
+index cb3abd2260..3515845b31 100644
+--- a/scripts/suse/yum/plugins/README.md
++++ b/scripts/suse/yum/plugins/README.md
+@@ -11,7 +11,7 @@ Configuration files are going to:
+ 
+ Plugin itself goes to:
+ 
+-	`/usr/share/yum-plugins/[name].conf`
++	`/usr/share/yum-plugins/[name].py`
+ 
+ ## Permissions
+ 
+diff --git a/scripts/suse/yum/plugins/yumnotify.py b/scripts/suse/yum/plugins/yumnotify.py
+index 4e137191a0..0d117e8946 100644
+--- a/scripts/suse/yum/plugins/yumnotify.py
++++ b/scripts/suse/yum/plugins/yumnotify.py
+@@ -5,6 +5,7 @@
+ 
+ import hashlib
+ import os
++import sys
+ 
+ from yum.plugins import TYPE_CORE
+ 
+@@ -51,7 +52,15 @@ def posttrans_hook(conduit):
+     """
+     # Integrate Yum with Salt
+     if "SALT_RUNNING" not in os.environ:
+-        with open(CK_PATH, "w") as ck_fh:
+-            ck_fh.write(
+-                "{chksum} {mtime}\n".format(chksum=_get_checksum(), mtime=_get_mtime())
+-            )
++        try:
++            ck_dir = os.path.dirname(CK_PATH)
++            if not os.path.exists(ck_dir):
++                os.makedirs(ck_dir)
++            with open(CK_PATH, "w") as ck_fh:
++                ck_fh.write(
++                    "{chksum} {mtime}\n".format(
++                        chksum=_get_checksum(), mtime=_get_mtime()
++                    )
++                )
++        except OSError as e:
++            print("Unable to save the cookie file: %s" % (e), file=sys.stderr)
+diff --git a/scripts/suse/zypper/plugins/commit/zyppnotify b/scripts/suse/zypper/plugins/commit/zyppnotify
+index bacbc8b97e..e3528e87a9 100755
+--- a/scripts/suse/zypper/plugins/commit/zyppnotify
++++ b/scripts/suse/zypper/plugins/commit/zyppnotify
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ #
+ # Copyright (c) 2016 SUSE Linux LLC
+ # All Rights Reserved.
+@@ -55,12 +55,18 @@ class DriftDetector(Plugin):
+         Hook when plugin closes Zypper's transaction.
+         """
+         if "SALT_RUNNING" not in os.environ:
+-            with open(self.ck_path, "w") as ck_fh:
+-                ck_fh.write(
+-                    "{chksum} {mtime}\n".format(
+-                        chksum=self._get_checksum(), mtime=self._get_mtime()
++            try:
++                ck_dir = os.path.dirname(self.ck_path)
++                if not os.path.exists(ck_dir):
++                    os.makedirs(ck_dir)
++                with open(self.ck_path, "w") as ck_fh:
++                    ck_fh.write(
++                        "{chksum} {mtime}\n".format(
++                            chksum=self._get_checksum(), mtime=self._get_mtime()
++                        )
+                     )
+-                )
++            except OSError as e:
++                print("Unable to save the cookie file: %s" % (e), file=sys.stderr)
+ 
+         self.ack()
+ 
+-- 
+2.39.2
+
+

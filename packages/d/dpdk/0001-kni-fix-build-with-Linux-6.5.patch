@@ -1,0 +1,50 @@
+From: Ferruh Yigit <ferruh.yigit@amd.com>
+Date: Tue, 11 Jul 2023 11:09:41 +0100
+Subject: kni: fix build with Linux 6.5
+Git-repo: https://dpdk.org/git/dpdk
+Git-commit: dd33d53b9a032d7376aa04a28a1235338e1fd78f
+Patch-mainline: yes
+References: kernel 6.5
+
+The get_user_pages_remote() API has been modified in Linux kernel v6.5
+[1], "struct vm_area_struct **vmas" parameter removed from the API.
+
+To fix KNI build with Linux kernel v6.5, version check added around the
+get_user_pages_remote() API.
+
+[1]
+ca5e863233e8 ("mm/gup: remove vmas parameter from get_user_pages_remote()")
+
+Cc: stable@dpdk.org
+
+Signed-off-by: Ferruh Yigit <ferruh.yigit@amd.com>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ kernel/linux/kni/compat.h  |    4 ++++
+ kernel/linux/kni/kni_dev.h |    4 ++++
+ 2 files changed, 8 insertions(+)
+
+--- a/kernel/linux/kni/compat.h
++++ b/kernel/linux/kni/compat.h
+@@ -153,3 +153,7 @@
+ #if KERNEL_VERSION(5, 18, 0) > LINUX_VERSION_CODE
+ #define HAVE_NETIF_RX_NI
+ #endif
++
++#if KERNEL_VERSION(6, 5, 0) > LINUX_VERSION_CODE
++#define HAVE_VMA_IN_GUP
++#endif
+--- a/kernel/linux/kni/kni_dev.h
++++ b/kernel/linux/kni/kni_dev.h
+@@ -107,7 +107,11 @@ static inline phys_addr_t iova_to_phys(s
+ #ifdef HAVE_TSK_IN_GUP
+ 	ret = get_user_pages_remote(tsk, tsk->mm, iova, 1, 0, &page, NULL, NULL);
+ #else
++  #ifdef HAVE_VMA_IN_GUP
+ 	ret = get_user_pages_remote(tsk->mm, iova, 1, 0, &page, NULL, NULL);
++  #else
++	ret = get_user_pages_remote(tsk->mm, iova, 1, 0, &page, NULL);
++  #endif
+ #endif
+ 	if (ret < 0)
+ 		return 0;

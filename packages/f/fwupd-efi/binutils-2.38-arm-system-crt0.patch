@@ -1,0 +1,23 @@
+From 3d4b2b8f60a17dae311dc92d97b3ae120fe71e67 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Tue, 13 Dec 2022 21:16:30 +0000
+Subject: [PATCH] Don't check ARM crt0 with binutils 2.38
+
+If we have binutils 2.38, then the system crt0 doesn't need to contain the .sbat section as this will be handled by objcopy
+---
+ efi/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/efi/meson.build b/efi/meson.build
+index e2446f3..145c8a1 100644
+--- a/efi/meson.build
++++ b/efi/meson.build
+@@ -81,7 +81,7 @@ if get_option('efi_sbat_distro_id') != ''
+ endif
+ 
+ # is the system crt0 for arm and aarch64 new enough to know about SBAT?
+-if host_cpu == 'aarch64' or host_cpu == 'arm'
++if objcopy_version.version_compare ('< 2.38') and (host_cpu == 'aarch64' or host_cpu == 'arm')
+   if get_option('efi_sbat_distro_id') != ''
+     arch_crt_source = 'crt0-efi-@0@.S'.format(gnu_efi_path_arch)
+     cmd = run_command('grep', '-q', 'sbat', join_paths(efi_crtdir, arch_crt))

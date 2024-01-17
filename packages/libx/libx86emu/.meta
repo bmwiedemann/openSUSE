@@ -1,0 +1,6 @@
+<package name="libx86emu" project="openSUSE:Factory">
+  <title>A small x86 emulation library.</title>
+  <description>Small x86 emulation library with focus of easy usage and extended
+execution logging functions.</description>
+  <devel project="system:install:head" package="libx86emu"/>
+</package>

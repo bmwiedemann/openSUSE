@@ -1,0 +1,9 @@
+<package name="perl-Email-Sender" project="openSUSE:Factory">
+  <title>Library for sending Email</title>
+  <description>Email::Sender replaces the old and sometimes problematic Email::Send library,
+which did a decent job at handling very simple email sending tasks, but was not
+suitable for serious use, for a variety of reasons.
+</description>
+  <devel project="devel:languages:perl" package="perl-Email-Sender"/>
+  <url>http://search.cpan.org/dist/Email-Sender/</url>
+</package>

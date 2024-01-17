@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Sun Jan 29 19:47:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to PyQt3D 5.15.6
+  * Fixed building against Qt v5.15.8 and later.
+- Drop qt3d-geometry-equals.patch
+
+-------------------------------------------------------------------
+Thu Jan 12 20:35:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix Timeline generation for qt3d-geometry-equals.patch
+
+-------------------------------------------------------------------
+Thu Jan 12 19:07:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Merge -api and -sip packages into -devel
+- Add qt3d-geometry-equals.patch
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2023-January/045097.html
+
+-------------------------------------------------------------------
+Wed Jan 11 09:14:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to PyQt3D 5.15.5
+  * Added support for Python v3.10.
+
+-------------------------------------------------------------------
+Mon Sep 13 15:58:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Remove the Supplements for python-sip -- boo#1190441
+
+-------------------------------------------------------------------
+Fri Jun 18 21:44:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Provide the PyPI name
+
+-------------------------------------------------------------------
+Thu Mar 11 19:36:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.15.4
+  * Packaging bug fixes.
+- Fixes problems with packages checking the package metadata like 
+  boo#1183144
+
+-------------------------------------------------------------------
+Fri Feb 26 09:50:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.15.3
+  * Sync release with PyQt5
+- Switch all distros to SIP v5+ 
+- Disable Python 2 build
+
+-------------------------------------------------------------------
+Tue Nov 24 17:26:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.15.2
+  * Build system changes
+
+-------------------------------------------------------------------
+Sat Sep 26 18:09:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix openSUSE:Leap:15.1:Update failure: Qt3DAnimation is only 
+  built for Qt >= 5.10
+
+-------------------------------------------------------------------
+Mon Sep 14 17:16:18 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use sip5 where available 
+
+-------------------------------------------------------------------
+Mon Sep 14 15:53:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 5.15.1
+  * A bug-fix release.
+
+-------------------------------------------------------------------
+Wed Sep  2 16:00:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove the superfluous Tumbleweed python2 hack
+
+-------------------------------------------------------------------
+Thu Aug 27 20:09:03 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 5.15.0 
+  * Added support for Qt v5.15.0.
+- v5.14.0 added support for Qt v5.14.0 in December 2019
+- The source location has changed to PyPI
+
+-------------------------------------------------------------------
+Fri Mar 13 12:44:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop building the python2 package for openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
+Wed Nov 13 15:17:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.13.1
+  * Added support for SIP v5.
+
+-------------------------------------------------------------------
+Fri Jul 12 10:16:17 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.13.0
+  Update bindings for Qt3D 5.13.
+
+-------------------------------------------------------------------
+Thu Feb 21 21:59:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version (5.12)
+

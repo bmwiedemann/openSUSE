@@ -1,0 +1,13 @@
+diff --git a/ocp.ini.in b/ocp.ini.in
+index 52d3530..4927fb8 100644
+--- a/ocp.ini.in
++++ b/ocp.ini.in
+@@ -27,7 +27,7 @@
+ ; you can also add new devices by copying the section and renaming it.
+ ; (8 chars only)
+ ; note: the first device found in each list will be uses as default
+-  playerdevices=devpALSA devpOSS devpCA devpSDL2 devpSDL devpNone devpDisk
++  playerdevices=devpALSA devpSDL2 devpNone devpDisk
+   wavetabledevices=devwMixF devwMixQ devwMix devwNone
+   mixrate=44100           ; -sr44100
+   mixprocrate=4096000     ; max channels*rate (for slow cpus) (4096000==64*64000)

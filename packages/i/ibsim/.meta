@@ -1,0 +1,5 @@
+<package name="ibsim" project="openSUSE:Factory">
+  <title>InfiniBand fabric simulator for management</title>
+  <description>ibsim provides simulation of infiniband fabric for using with OFA OpenSM, diagnostic and management tools.</description>
+  <devel project="science:HPC" package="ibsim"/>
+</package>

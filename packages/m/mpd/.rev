@@ -1,0 +1,752 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9c7d80d8a5cd637ff84c9da19b108fee</srcmd5>
+    <version>0.20.14</version>
+    <time>1516359113</time>
+    <user>dimstar_suse</user>
+    <comment>Brought over from packman</comment>
+    <requestid>561092</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68a86fdc3b6b74f1ee45069622afc320</srcmd5>
+    <version>0.20.16</version>
+    <time>1517824405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572421</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee5833e1ba5d3e0481374fb7972af32d</srcmd5>
+    <version>0.20.17</version>
+    <time>1518426942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575392</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dce05b8b5ebca87ad746c959d82648cc</srcmd5>
+    <version>0.20.18</version>
+    <time>1519683966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580063</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>058367882656afa3a8dffa5c06088a0d</srcmd5>
+    <version>0.20.21</version>
+    <time>1539869708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ver 0.20.21 (2018/08/17)
+  * database
+    - proxy: add &quot;password&quot; setting
+    - proxy: support tags &quot;ArtistSort&quot;, &quot;AlbumArtistSort&quot;, &quot;AlbumSort&quot;
+    - simple: allow .mpdignore comments only at start of line
+    - proxy: fix &quot;search already in progress&quot; errors
+    - proxy: implement &quot;list ... group&quot;
+  * decoder
+    - dsdiff, dsf: support more MIME types
+    - dsdiff, dsf: allow 4 MB ID3 tags
+    - opus: support R128_ALBUM_GAIN tag
+    - ffmpeg: fix av_register_all() deprecation warning (FFmpeg 4.0)
+  * input
+    - mms: fix lockup bug and a crash bug
+  * output
+    - httpd: remove broken DLNA support code
+    - pulse: cork stream when paused due to &quot;single&quot; mode
+  * playlist
+    - cue: support file type declaration &quot;FLAC&quot; (non-standard)
+  * player
+    - fix spurious &quot;Not seekable&quot; error when switching radio streams
+  * protocol
+    - fix &quot;modified-since&quot; filter regression
+    - validate absolute seek time, reject negative values
+  * URI schemes are case insensitive
+- deal with API change in fluidsynth with mpd-fluidsynth.patch
+- use autosetup</comment>
+    <requestid>642641</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd0fd57ddf5df832c3d0a8ebb15e5985</srcmd5>
+    <version>0.20.22</version>
+    <time>1540451468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644120</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2bd3b680074ddfa952e2414fd7551867</srcmd5>
+    <version>0.21.2</version>
+    <time>1542750190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.2
+  * protocol
+    - operator &quot;=~&quot; matches a regular expression
+    - operator &quot;contains&quot; matches substrings
+  * decoder
+    - ffmpeg: require FFmpeg 3.1 or later
+    - ffmpeg: fix broken sound with certain codecs
+  * output
+    - alsa: fix high CPU usage with dmix
+    - httpd: fix three crash bugs
+  * mixer
+    - alsa: fix more rounding errors
+  * fix zlib support
+- Remove mpd-zlib.patch which was already merged upstream.
+- Add systemd pre(un)/post(un) macros for mpd.socket
+
+- buildrequire libgcrypt-devel to fix build
+
+- Update to version 0.21.1, fixes (boo#1114607)
+  * protocol
+    + allow escaping quotes in filter expressions
+    + operator &quot;==&quot; never searches substrings in filter
+      expressions
+  * decoder
+    + ffmpeg: fix build failure with non-standard FFmpeg
+      installation path
+    + flac: fix linker failure when building without FLAC support
+  * encoder
+    + vorbis: fix linker failure when building without Vorbis
+      decoder
+  * fix build failure on Linux-PowerPC
+  * add warning about buggy Boost version 1.67
+  * require Meson 0.47.2 because a Meson 0.47.1 bug breaks our
+    build
+  version 0.21
+  * configuration
+    + add &quot;include&quot; directive, allows including config files
+    + incremental &quot;metadata_to_use&quot; setting
+  * protocol
+    + &quot;tagtypes&quot; can be used to hide tags
+    + &quot;find&quot; and &quot;search&quot; can sort
+    + &quot;outputs&quot; prints the plugin name
+    + &quot;outputset&quot; sets runtime attributes
+    + close connection when client sends HTTP request
+    + new filter syntax for &quot;find&quot;/&quot;search&quot; etc. with negation
+  * database
+    + simple: scan audio formats
+    + proxy: require libmpdclient 2.9
+    + proxy: forward `sort` and `window` to server
+  * player
+    + hard-code &quot;buffer_before_play&quot; to 1 second, independent of
+      audio format
+    + &quot;one-shot&quot; single mode
+  * input
+    + curl: download to buffer instead of throttling transfer
+    + qobuz: new plugin to play Qobuz streams
+    + tidal: new plugin to play Tidal streams
+  * tags
+    + new tags &quot;OriginalDate&quot;, &quot;MUSICBRAINZ_WORKID&quot;
+  * decoder
+    + ffmpeg: require at least version 11.12
+    + gme: try loading m3u sidecar files
+    + hybrid_dsd: new decoder plugin
+    + mad: move &quot;gapless_mp3_playback&quot; setting to &quot;decoder&quot; block
+    + mikmod: require at least version 3.2
+    + pcm: support audio/L24 (RFC 3190)
+    + sidplay: support basic and kernal rom (libsidplayfp)
+  * resampler
+    + soxr: flush resampler at end of song
+  * output
+    + alsa: non-blocking mode
+    + alsa: change &quot;dop&quot; and &quot;allowed_formats&quot; settings at
+      runtime
+    + ao: fix crash bug due to partial frames
+    + shout: support the Shine encoder plugin
+    + sndio: remove support for the broken RoarAudio sndio
+      emulation
+    + roar: removed
+    + httpd_output: support for unix sockets
+  * mixer
+    + sndio: new mixer plugin
+  * encoder
+    + opus: support for sending metadata using ogg stream
+      chaining
+  * listen on $XDG_RUNTIME_DIR/mpd/socket by default
+  * append hostname to Zeroconf service name
+  * systemd watchdog support
+  * require GCC 6
+  * build with Meson instead of autotools
+  * use GTest instead of cppunit
+  version 0.20.23
+  * protocol
+    + emit &quot;player&quot; idle event when restarting the current song
+  * fix broken float to s32 conversion
+  * new clang crash bug workaround
+- Dropped mpd-configh.patch (no longer necessary)
+- Added mpd-zlib.patch, mpd-docs.patch and mpd-sndfile.patch
+- Switched build to meson
+
+- Make iso9660 support optional (gh#173)</comment>
+    <requestid>650289</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9ba0224f6d6854ff5b87848064e6145b</srcmd5>
+    <version>0.21.2</version>
+    <time>1553158370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686913</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>1c7f99811fbcd39233cad79a4ac631b2</srcmd5>
+    <version>0.21.2</version>
+    <time>1559375503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706207</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d544505ae9ba103a7184abfaa3bc7ec</srcmd5>
+    <version>0.21.9</version>
+    <time>1559375910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706649</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>efb6841b03dc592f42d22bc1fc146b68</srcmd5>
+    <version>0.21.9</version>
+    <time>1563914247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717785</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5953e73e2ff45234745b84410ebe66fa</srcmd5>
+    <version>0.21.15</version>
+    <time>1571057671</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh spec-file via spec-cleaner and manual optimizations
+  * specified the correct license GPL-2.0-or-later
+  * remove openSUSE Leap 42.3 support
+  * remove obsolete version limitation in BuildRequire macros
+  * renumber Source and Patch
+- Update to 0.21.15
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.15/NEWS
+  * fix crash bug (0.21.9 regression)
+  * decoder
+    * opus: fix duplicate tags
+    * wildmidi: log error if library initialization fails
+    * mad: update bit rate after seeking
+    * mad: fix several bugs preventing the plugin from decoding the last frame
+    * opus: ignore case in replay gain tag names
+    * opus, vorbis: decode the &quot;end of stream&quot; packet
+    * mad: fix crackling sound (0.21.12 regression)
+    * sidplay: show track durations in database
+    * sidplay: convert tag values from Windows-1252 charset
+    * sidplay: strip text from &quot;Date&quot; tag
+    * dsdiff, dsf: fix displayed bit rate
+    * mpcdec: fix bogus ReplayGain values
+  * input
+    * tidal: deprecated because Tidal has changed the protocol
+    * cdio_paranoia: require libcdio-paranoia 10.2+0.93+1
+  * output
+    * httpd: reject some well-known URIs
+    * alsa: fix busy loop while draining
+    * alsa: fix missing drain call
+    * alsa: improve xrun-avoiding silence generator
+    * alsa: log when generating silence due to slow decoder
+    * alsa, osx: fix distortions with DSD_U32 and DoP on 32 bit CPUs
+    * jack: fix mono-to-stereo conversion
+    * jack: improved Windows compatibility
+  * player
+    * don't restart unseekable song after failed seek attempt
+    * fix crash after song change
+    * fix seek position after restarting the decoder
+  * protocol
+    * fix &quot;list&quot; with multiple &quot;group&quot; levels
+    * include command name in error responses 
+</comment>
+    <requestid>736047</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd7771f51373f9ffc3f8202d170d0412</srcmd5>
+    <version>0.21.16</version>
+    <time>1571307735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738869</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bdfc84796b9963c220c475b5af7110cd</srcmd5>
+    <version>0.21.17</version>
+    <time>1576927788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757896</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>62ab24117240106c6b24dbeff8948297</srcmd5>
+    <version>0.21.18</version>
+    <time>1577536846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759768</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a2d85e7577e133bf538e66242573da4c</srcmd5>
+    <version>0.21.19</version>
+    <time>1579557205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765688</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a31d890e298b62725fe0f87689238b3d</srcmd5>
+    <version>0.21.20</version>
+    <time>1582810754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779783</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>279ac99c10f21fcda1a9422f8eab34b1</srcmd5>
+    <version>0.21.21</version>
+    <time>1585342946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789099</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>11311ed5d0a9b7076781e53c70fc6518</srcmd5>
+    <version>0.21.22</version>
+    <time>1586112951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791436</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>33bffd74e47a6cf3feca4cde5bce4723</srcmd5>
+    <version>0.21.23</version>
+    <time>1588023264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.23
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.21.23/NEWS
+  * protocol: add tag fallback for AlbumSort
+  * storage
+    * curl: fix corrupt &quot;href&quot; values in the presence of XML entities
+    * curl: unescape &quot;href&quot; values
+  * input
+    * nfs: fix crash bug
+    * nfs: fix freeze bug on reconnect
+  * decoder: gme: adapt to API change in the upcoming version 0.7.0
+  * output: alsa: implement channel mapping for 5.0 and 7.0
+  * player: drain: outputs at end of song in &quot;single&quot; mode
+</comment>
+    <requestid>797726</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b0f81c94b27f3814f8b90f656f6d534f</srcmd5>
+    <version>0.21.24</version>
+    <time>1592840800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816315</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1edbf700961d0f29dcfad7b18f096013</srcmd5>
+    <version>0.21.25</version>
+    <time>1594228557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819184</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>66868fc9a1d1f7e85aa370556ca293af</srcmd5>
+    <version>0.21.25</version>
+    <time>1597856293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827892</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>79ad05626029abe5383e4b8a100cdc55</srcmd5>
+    <version>0.21.26</version>
+    <time>1600879483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836224</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>62f5f14b646f90879746c0facc6e21f5</srcmd5>
+    <version>0.22</version>
+    <time>1601488495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838624</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c01f56806eda387976b6d2985bfb33bf</srcmd5>
+    <version>0.22.2</version>
+    <time>1603959813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844681</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>28239a1d518344ca9a6f9489170a4060</srcmd5>
+    <version>0.22.3</version>
+    <time>1604926684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847042</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>02ba20909a0b42f7c957f31e23fe5956</srcmd5>
+    <version>0.22.4</version>
+    <time>1611595419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866237</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c55901e079884939aef5cec3f4c01cc9</srcmd5>
+    <version>0.22.6</version>
+    <time>1613855563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873980</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>62f240835c5a5df51b398b09f7e2e18d</srcmd5>
+    <version>0.22.7</version>
+    <time>1621626601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894725</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b0d3c4bf028c01d5f7772ed609421fdd</srcmd5>
+    <version>0.22.8</version>
+    <time>1622536724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896179</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cb84fba95292353ba98a65ba9efa88c0</srcmd5>
+    <version>0.22.9</version>
+    <time>1624813163</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.22.9
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.9/NEWS
+  * database: simple: load all .mpdignore files of all parent directories
+  * tags: fix: &quot;readcomments&quot; and &quot;readpicture&quot; on remote files with ID3 tags
+  * decoder: ffmpeg:
+    * support the tags &quot;sort_album&quot;, &quot;album-sort&quot;, &quot;artist-sort&quot;
+    * fix build failure with FFmpeg 3.4</comment>
+    <requestid>902616</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>25365a48a079aeddce268c0381039270</srcmd5>
+    <version>0.22.10</version>
+    <time>1629269770</time>
+    <user>RBrownSUSE</user>
+    <comment>- Updated to 0.22.10
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.10/NEWS
+  * protocol: support &quot;albumart&quot; for virtual tracks in CUE sheets
+  * database: simple:
+    * fix crash bug
+    * fix absolute paths in CUE &quot;as_directory&quot; entries
+    * prune CUE entries from database for non-existent songs
+  * input:
+    * curl: fix crash bug after stream with Icy metadata was closed
+      by peer
+    * tidal: remove defunct unmaintained plugin
+  * tags: fix crash caused by bug in TagBuilder and a few potential
+    reference leaks
+  * output
+    * httpd: fix missing tag after seeking into a new song
+    * oss: fix channel order of multi-channel files
+  * mixer: alsa: fix yet more rounding errors.</comment>
+    <requestid>912566</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>cc2a50b929f21813bb33550f264bd762</srcmd5>
+    <version>0.22.11</version>
+    <time>1630525027</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.22.11
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.11/NEWS
+  * protocol: fix &quot;albumart&quot; crash.
+  * filter: ffmpeg:
+    * pass &quot;channel_layout&quot; instead of &quot;channels&quot; to buffersrc
+    * fix &quot;av_buffersink_get_frame() failed: Resource temporarily unavailable&quot;
+    * support double-precision samples (by converting to single precision)</comment>
+    <requestid>915422</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f3b1654108f7dbd8bace9656d11f0293</srcmd5>
+    <version>0.23.3</version>
+    <time>1636219090</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.3
+  * Add patch mpd-service.patch.
+  * Add BuildRequires for fmt, libopenmpt, libpipewire-0.3.
+  * Increased the minimum version for meson to 0.56.0.
+  * Changed meson option -Dupnp from enabled to pupnp.
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.3/NEWS
+  * split permission &quot;player&quot; from &quot;control&quot;
+  * add option &quot;host_permissions&quot;
+  * protocol:
+    * new command &quot;getvol&quot;
+    * show the audio format in &quot;playlistinfo&quot;
+    * support &quot;listfiles&quot; with arbitrary storage plugins
+    * support relative positions in &quot;addid&quot;
+    * fix relative positions in &quot;move&quot; and &quot;moveid&quot;
+    * add &quot;position&quot; parameter to &quot;findadd&quot; and &quot;searchadd&quot;
+    * add position parameter to &quot;load&quot;
+    * use decimal notation instead of scientific notation
+    * &quot;load&quot; supports relative positions
+    * add optional position parameter to &quot;add&quot; and &quot;playlistadd&quot;
+    * allow range in &quot;playlistdelete&quot;
+  * database:
+    * proxy: require MPD 0.20 or later
+    * proxy: require libmpdclient 2.11 or later
+    * proxy: split search into chunks to avoid exceeding the output buffer
+    * simple: add option to hide CUE target songs
+    * upnp: support libnpupnp instead of libupnp
+    * fix scanning files with question mark in the name
+    * inotify: fix use-after-free bug
+  * archive:
+    * zzip, iso9660: ignore file names which are invalid UTF-8
+  * decoder:
+    * openmpt: new plugin
+    * wavpack: fix WVC file support
+  * input: nfs: fix playback bug
+  * neighbor: mention: failed plugin name in error message
+  * output:
+    * emit &quot;mixer&quot; idle event when replay gain changes volume
+    * alsa: add option &quot;stop_dsd_silence&quot; to work around DSD DAC noise
+    * oss: support DSD over PCM
+    * pipewire: new plugin
+    * pipewire: emit &quot;mixer&quot; idle events on external volume change
+    * pipewire: attempt to change the graph sample rate
+    * pipewire: send artist and title to PipeWire
+    * pipewire: DSD support
+    * snapcast: new plugin
+    * snapcast: fix time stamp bug which caused &quot;Failed to get chunk&quot;
+  * player:
+    * do not cross-fade songs shorter than 20 seconds
+    * fix &quot;albumart&quot; timeout bug
+  * systemd: add &quot;RuntimeDirectory&quot; directive
+  * tags:
+    * new tags &quot;ComposerSort&quot;, &quot;Ensemble&quot;, &quot;Movement&quot;, &quot;MovementNumber&quot;,
+      and &quot;Location&quot;</comment>
+    <requestid>929891</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b982b48207a6895a6b4f4b5db723c6b1</srcmd5>
+    <version>0.23.4</version>
+    <time>1636840117</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.4
+  * Changed file mpd-user.conf​ (disabled pid_file).
+  * Refreshed patch mpd-conf.patch.
+  * Removed patch mpd-service.patch.
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.4/NEWS
+  * protocol: add optional position parameter to &quot;searchaddpl&quot;
+  * decoder: ffmpeg: support libavcodec 59
+  * output: alsa: add option &quot;thesycon_dsd_workaround&quot; to work around device bug
+  * fix crash on debug builds if startup fails
+  * systemd:
+    * remove &quot;RuntimeDirectory&quot; directive because it caused problems
+    * ignore the &quot;pid_file&quot; setting if started as systemd service</comment>
+    <requestid>931211</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4b6aa10981c802523e2e86917d054889</srcmd5>
+    <version>0.23.5</version>
+    <time>1638560139</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.5
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.5/NEWS
+  * protocol:
+    * support relative offsets for &quot;searchadd&quot;
+    * fix &quot;searchaddpl&quot; bug (bogus error &quot;Bad position&quot;)
+  * database: upnp: fix crash bug
+  * tags: fix MixRamp support
+  * migrate to PCRE2
+  * GCC 12 build fixes</comment>
+    <requestid>935317</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>5d50575ad0bbae2bf7ae959204eff498</srcmd5>
+    <version>0.23.5</version>
+    <time>1641932419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945578</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6ef13f6ded065cc2769e83d15ba92357</srcmd5>
+    <version>0.23.6</version>
+    <time>1648665357</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.6
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.6/NEWS
+  * protocol:
+    * support filename &quot;cover.webp&quot; for &quot;albumart&quot; command
+    * support &quot;readcomments&quot; and &quot;readpicture&quot; on CUE tracks
+  * decoder:
+    * ffmpeg: fix end-of-file check (update stuck at empty files)
+    * opus: fix &quot;readpicture&quot; on Opus files
+  * output:
+    * pipewire: fix crash bug if setting volume before playback starts
+    * wasapi: fix resume after pause</comment>
+    <requestid>965775</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3c5347dcc5b90db19b6e543510eda656</srcmd5>
+    <version>0.23.7</version>
+    <time>1654199648</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.7
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.7/NEWS
+  * decoder:
+    * ffmpeg: fix HLS seeking
+    * opus: fix missing song length on high-latency files
+  * mixer:
+    * pipewire: fix volume restore
+    * software: update volume of disabled outputs</comment>
+    <requestid>980373</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8d89788f4ae07004e9fdeb55b258d688</srcmd5>
+    <version>0.23.8</version>
+    <time>1659382406</time>
+    <user>RBrownFactory</user>
+    <comment>- Updated to 0.23.8
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.8/NEWS
+  * support libfmt 9
+  * storage: curl: fix crash if web server does not understand WebDAV
+  * input:
+    * cdio_paranoia:
+      * fix crash if no drive was found
+      * faster cancellation
+      * don't scan for replay gain tags
+    * pipewire:
+      * fix playback of very short tracks
+      * drop all buffers before manual song change
+      * fix stuttering after manual song change
+    * snapcast:
+      * fix busy loop while paused
+      * fix stuttering after resuming playback
+  * mixer
+    * better error messages
+    * alsa: fix setting volume before playback starts
+    * pipewire:
+      * fix crash bug
+      * fix volume change events with PipeWire 0.3.53
+      * don't force initial volume=100%</comment>
+    <requestid>992071</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>18f104abd3ce5d905c6bbdedf7952dac</srcmd5>
+    <version>0.23.8</version>
+    <time>1659951782</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-build-ffmpeg5.patch to fix build with ffmpeg 5.1</comment>
+    <requestid>993718</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>92b2a431f87f43b435d94c67b0c08657</srcmd5>
+    <version>0.23.9</version>
+    <time>1661346691</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.9
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.9/NEWS
+  * input: cdio_paranoia: added options &quot;mode&quot; and &quot;skip&quot;
+  * decoder: ffmpeg: added support FFmpeg 5.1
+  * filter: replay gain: fixed delayed volume display with handler=mixer
+  * output: pipewire: set app icon
+  * fixed bogus volume levels with multiple partitions
+  * improved iconv detection
+- Removed fix-build-ffmpeg5.patch.</comment>
+    <requestid>998961</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ea8a4974b855bb4914b78101db5be990</srcmd5>
+    <version>0.23.10</version>
+    <time>1666011490</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.10
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.10/NEWS
+  * storage: curl: fixed file time stamps
+  * decoder: ffmpeg: fixed libfmt 9 compiler warning
+  * encoder: flac: fixed failure when libFLAC is built without Ogg support
+  * output: alsa: fixed crash bug</comment>
+    <requestid>1011997</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a89655cbb972be2be88881a1e69f940f</srcmd5>
+    <version>0.23.11</version>
+    <time>1670162337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23.11:
+  - simple: move default database to ~/.cache/mpd/db from ~/.cache/mpd.db
+  - simple: default &quot;cache_directory&quot; to ~/.cache/mpd/mounts
+- add keyring</comment>
+    <requestid>1039907</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6af710b168cca39f5563fb972512698a</srcmd5>
+    <version>0.23.12</version>
+    <time>1674058285</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.12
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.12/NEWS
+  * input: curl: require CURL 7.55.0 or later
+  * decoder: mad: fixed integer underflow with very small files
+  * tags: fixed crash bug due to race condition
+  * output: pipewire: adjust to PipeWire 0.3.64 API change
+  * fixed build failures with GCC 13</comment>
+    <requestid>1059359</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b284d22db2b8eda7925e336450026721</srcmd5>
+    <version>0.23.13</version>
+    <time>1684952559</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.13
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.13/NEWS
+  * input: curl: fixed busy loop after connection failed
+  * input: curl: hided &quot;404&quot; log messages for non-existent &quot;.mpdignore&quot; files
+  * archive: zzip: fixed crash bug
+  * database: simple: revealed hidden songs after deleting containing CUE
+  * decoder: ffmpeg: reordered to a lower priority than &quot;gme&quot;
+  * decoder: gme: required GME 0.6 or later
+  * output: pipewire: fixed corruption bug due to missing lock
+  * linux: shut down if parent process dies in --no-daemon mode
+  * linux: determine systemd unit directories via pkg-config
+  * supported libfmt 10</comment>
+    <requestid>1088738</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>392856e357db2061dbf55c4101b356e1</srcmd5>
+    <version>0.23.13</version>
+    <time>1693383671</time>
+    <user>anag+factory</user>
+    <comment>- Disable libchromaprint requirement and disable feature. This would
+  cause mpd to pull in ffmpeg-4 on installation.</comment>
+    <requestid>1107984</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>fd8c42df1e3b7a409eecbb17ed512ce5</srcmd5>
+    <version>0.23.15</version>
+    <time>1703801047</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.23.15:
+  * ffmpeg: fix build failure with FFmpeg 6.1
+  * alsa: limit buffer time to 2 seconds
+  * flac: fix scanning files with non-ASCII names on Windows
+  * mad: fix calculation of LAME peak values
+  * wasapi: fix problem setting volume
+  * more libfmt 10 fixes
+  * fix auto-detected systemd unit directory
+- Disable libchromaprint requirement and disable feature. This would
+  cause mpd to pull in ffmpeg-4 on installation.</comment>
+    <requestid>1135538</requestid>
+  </revision>
+</revisionlist>

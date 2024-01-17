@@ -1,0 +1,9 @@
+<package name="tn5250" project="openSUSE:Factory">
+  <title>5250 Emulator</title>
+  <description>The 5250 is most commonly used for connecting to IBM's AS/400.	While
+one can connect to an AS/400 with a VT100 emulator, it is not ideal. 
+The problem is that the 5250 is a screen at a time terminal, whereas
+the VT100 is a character at a time device.  The emulator uses telnet's
+binary mode to transfer the 5250 data stream.</description>
+  <devel project="Base:System" package="tn5250"/>
+</package>

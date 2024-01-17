@@ -1,0 +1,5 @@
+<package name="grafana-piechart-panel" project="openSUSE:Factory">
+  <title>Grafana Pie Chart panel</title>
+  <description>A Pie Chart panel for Grafana.</description>
+  <devel project="server:monitoring" package="grafana-piechart-panel"/>
+</package>

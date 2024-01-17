@@ -1,0 +1,252 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e003a6ffcc3928308d2b8a2f516825f</srcmd5>
+    <version>1.16</version>
+    <time>1168903798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b949131eca0c4d2e8e58f8caca45bb57</srcmd5>
+    <version>1.18</version>
+    <time>1195567139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="59">
+    <srcmd5>b949131eca0c4d2e8e58f8caca45bb57</srcmd5>
+    <version>1.18</version>
+    <time>1195567139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e4ca84fd8563ec5e95a453bceb5559f9</srcmd5>
+    <version>1.23</version>
+    <time>1232556735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e4ca84fd8563ec5e95a453bceb5559f9</srcmd5>
+    <version>1.23</version>
+    <time>1232556735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0d64421a62c4580bdef5d4200d93bea8</srcmd5>
+    <version>1.24</version>
+    <time>1263302319</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Inspector based on submit request 28381 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4f193ddbfc26ea4d4dc8ec28253f36b2</srcmd5>
+    <version>1.24</version>
+    <time>1263395963</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Inspector based on submit request 29435 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>060ad3df023134fa95d74001b9b11add</srcmd5>
+    <version>1.24</version>
+    <time>1263463865</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Inspector based on submit request 29450 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8a4677bab92c1beb7a347fedb2de18eb</srcmd5>
+    <version>1.24</version>
+    <time>1263469090</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Inspector based on submit request 29568 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>2af130a2edbc67a8c9cf5ed8599545b1</srcmd5>
+    <version>1.24</version>
+    <time>1263469264</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Inspector based on submit request 29450 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>950a81cf42819f72c50ec5d90d72146a</srcmd5>
+    <version>1.24</version>
+    <time>1263469895</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Inspector based on submit request 29570 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>7c3035bd2300b93bde1c0632d8ea010b</srcmd5>
+    <version>1.24</version>
+    <time>1263470755</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Inspector based on submit request 29450 from user coolo
+</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>edd683d980cb02dee15ce6836c131839</srcmd5>
+    <version>1.24</version>
+    <time>1263474997</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-Inspector based on submit request 29571 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>4a56137443334b67925f6c6276dfaa41</srcmd5>
+    <version>1.24</version>
+    <time>1268925386</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>4a56137443334b67925f6c6276dfaa41</srcmd5>
+    <version>1.24</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>4a56137443334b67925f6c6276dfaa41</srcmd5>
+    <version>1.24</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>533b841a3a8eb2a6cc238914a2815be0</srcmd5>
+    <version>1.24</version>
+    <time>1292242084</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55701 from user coolo
+</comment>
+    <requestid>55701</requestid>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>18a4d00c00f3c7b2f91c512978e017f1</srcmd5>
+    <version>1.24</version>
+    <time>1292242092</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55701
+</comment>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>18a4d00c00f3c7b2f91c512978e017f1</srcmd5>
+    <version>1.24</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c37b413d579626da284b75a6d8d49806</srcmd5>
+    <version>1.25</version>
+    <time>1300268685</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64155 from user coolo
+</comment>
+    <requestid>64155</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3e88f14db679a48ef28b7639b3eede22</srcmd5>
+    <version>1.25</version>
+    <time>1300268693</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64155
+</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>3e88f14db679a48ef28b7639b3eede22</srcmd5>
+    <version>1.25</version>
+    <time>1319182248</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>e5cf5415e01627b0a68608924b8dbc90</srcmd5>
+    <version>1.25</version>
+    <time>1323193120</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c4b3fd3a7c3c3a18ed6a9c094805b174</srcmd5>
+    <version>1.27</version>
+    <time>1329823391</time>
+    <user>coolo</user>
+    <comment>- updated to 1.27
+    - Updating to Module::Install::DSL 1.04
+    - Updating copyright year
+    - Remove usage of defined @{&quot;X::ISA&quot;} to avoid warnings in 5.15.7
+      and later Perl 5.16 (Tom Wyant)</comment>
+    <requestid>106265</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>c4b3fd3a7c3c3a18ed6a9c094805b174</srcmd5>
+    <version>1.27</version>
+    <time>1340183808</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>c4b3fd3a7c3c3a18ed6a9c094805b174</srcmd5>
+    <version>1.27</version>
+    <time>1359109617</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9c3148c3f1a8a497ab6ac5e3fc81e4df</srcmd5>
+    <version>1.28</version>
+    <time>1370447315</time>
+    <user>coolo</user>
+    <comment>- updated to 1.28
+    - No functional changes
+    - Updating to Module::Install::DSL 1.06 (forwarded request 177279 from coolo)</comment>
+    <requestid>177361</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>9c3148c3f1a8a497ab6ac5e3fc81e4df</srcmd5>
+    <version>1.28</version>
+    <time>1379663583</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>9c3148c3f1a8a497ab6ac5e3fc81e4df</srcmd5>
+    <version>1.28</version>
+    <time>1409302199</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cb5d207a4a48c8a568a7775284ef71e5</srcmd5>
+    <version>1.31</version>
+    <time>1480692988</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442340</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3d7c0a98827e37648cde17012119834f</srcmd5>
+    <version>1.32</version>
+    <time>1503132934</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516832</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a402a8656cf08b6658a7596d757fac31</srcmd5>
+    <version>1.34</version>
+    <time>1554189454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689720</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>00be77756920230ba899af279b561dce</srcmd5>
+    <version>1.36</version>
+    <time>1564413768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717449</requestid>
+  </revision>
+</revisionlist>

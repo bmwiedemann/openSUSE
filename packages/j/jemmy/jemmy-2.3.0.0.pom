@@ -1,0 +1,24 @@
+<project>
+<modelVersion>4.0.0</modelVersion>
+<groupId>org.netbeans</groupId>
+<artifactId>jemmy</artifactId>
+<version>2.3.0.0</version>
+<packaging>jar</packaging>
+<name>Jemmy</name>
+<description>Jemmy is a Java UI testing library. Jemmy represents the most natural way to test Java UI - perform the
+		testing right from the Java code. Jemmy is a Java library which provides clear and straightforward API to access
+		Java UI (AWT and Swing).
+	</description>
+<url>http://jemmy.netbeans.org/</url>
+<licenses>
+		<license>
+			<name>Sun Public License 1.0</name>
+			<url>http://www.netbeans.org/about/legal/spl.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+<scm>
+		<connection>scm:cvs:pserver:anoncvs@cvs.netbeans.org:/cvs:jemmy</connection>
+		<url>http://jemmy.netbeans.org/source/browse/jemmy/</url>
+	</scm>
+</project>

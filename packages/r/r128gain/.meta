@@ -1,0 +1,8 @@
+<package name="r128gain" project="openSUSE:Factory">
+  <title>Fast audio loudness (ReplayGain / R128) scanner &amp; tagger</title>
+  <description>Fast audio loudness (ReplayGain / R128) scanner &amp; tagger.
+
+</description>
+  <devel project="multimedia:apps" package="r128gain"/>
+  <url>https://github.com/desbma/r128gain</url>
+</package>

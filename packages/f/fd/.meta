@@ -1,0 +1,6 @@
+<package name="fd" project="openSUSE:Factory">
+  <title>fd is a fast alternative to find with a focus on usability</title>
+  <description>While fd does not seek to mirror all of find's powerful functionality,
+it provides opinionated defaults for 80% of the use cases.</description>
+  <devel project="utilities" package="fd"/>
+</package>

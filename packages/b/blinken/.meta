@@ -1,0 +1,5 @@
+<package name="blinken" project="openSUSE:Factory">
+  <title>Simon Says Game</title>
+  <description>A memory enhancement game</description>
+  <devel project="KDE:Applications" package="blinken"/>
+</package>

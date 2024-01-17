@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Apr 19 18:29:54 UTC 2021 - kukuk@suse.com
+
+- Update to version 1618856916.9a3d2a4:
+  * Add more php8 modules
+
+-------------------------------------------------------------------
+Thu Apr 15 12:43:51 UTC 2021 - kukuk@suse.com
+
+- Update to version 1618490136.b375fc1:
+  * Import php8-nginx container image description
+
+-------------------------------------------------------------------
+Thu Apr 15 12:43:36 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version

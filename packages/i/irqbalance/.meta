@@ -1,0 +1,6 @@
+<package name="irqbalance" project="openSUSE:Factory">
+  <title>Balance IRQs on SMP Machines</title>
+  <description>irqbalance dynamically switches the CPUs for IRQs to prevent cpu0 from
+being used for all IRQs.</description>
+  <devel project="Base:System" package="irqbalance"/>
+</package>

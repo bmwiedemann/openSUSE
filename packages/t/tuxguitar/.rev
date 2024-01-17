@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ffce4633142b048669d475a6851ca58</srcmd5>
+    <version>1.4</version>
+    <time>1503593020</time>
+    <user>dimstar_suse</user>
+    <comment>Tuxguitar 1.4 released half year ago</comment>
+    <requestid>513718</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ba8b5acb1503e3bb9db127a58f1de6a9</srcmd5>
+    <version>1.4</version>
+    <time>1506195341</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tuxguitar-do-not-force-java-1.5.patch: Don't force JAVA 1.5</comment>
+    <requestid>528171</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2c3385ef8b41c0a6b47ba4d86a17808e</srcmd5>
+    <version>1.4</version>
+    <time>1508770341</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with java and source target levels 1.6
+  * Solves one of the issues raised in boo#1062807
+</comment>
+    <requestid>535793</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>caa8141d20acab5cab041a33b730a30b</srcmd5>
+    <version>1.4</version>
+    <time>1539013477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640073</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ffc14f6361d05bc24bcbb869b3eac26</srcmd5>
+    <version>1.5.4</version>
+    <time>1595577249</time>
+    <user>dimstar_suse</user>
+    <comment>1.5.4</comment>
+    <requestid>821257</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b5667fe2dcf3d250aece60166b1950bb</srcmd5>
+    <version>1.5.4</version>
+    <time>1627847506</time>
+    <user>dimstar_suse</user>
+    <comment>Fix arm6 build</comment>
+    <requestid>909611</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>86bed08f2c505bd0f753938fc4526acf</srcmd5>
+    <version>1.5.4</version>
+    <time>1645561104</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on sle12-sp5</comment>
+    <requestid>956685</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>00d7070bb8cb4aa310c10f8ca0cb5b7b</srcmd5>
+    <version>1.5.4</version>
+    <time>1648063148</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964285</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>fa892dfb51508e25ca8b8ee2824d6031</srcmd5>
+    <version>1.5.4</version>
+    <time>1665844653</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i386 build breakages by requiring java 11</comment>
+    <requestid>1010952</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46e6d1ccafebcad1b1f479872b39b43c</srcmd5>
+    <version>1.6.0</version>
+    <time>1696964420</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116518</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f9a63421e0aad047c3b9a532197deb10</srcmd5>
+    <version>1.6.0</version>
+    <time>1697061279</time>
+    <user>anag+factory</user>
+    <comment>allow buiding on all supported architectures</comment>
+    <requestid>1116776</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b2f56a8ab891a30f88e4abd732e44d5c</srcmd5>
+    <version>1.6.0</version>
+    <time>1697146906</time>
+    <user>anag+factory</user>
+    <comment>bsc#1173633 (CVE-2020-14940)</comment>
+    <requestid>1117171</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>917afdac2beb9de34db7e32d67bc0614</srcmd5>
+    <version>1.6.0</version>
+    <time>1698001321</time>
+    <user>anag+factory</user>
+    <comment>add commons-compress to the classpath</comment>
+    <requestid>1119345</requestid>
+  </revision>
+</revisionlist>

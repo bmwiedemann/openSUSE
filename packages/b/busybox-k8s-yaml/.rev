@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a0bda04827b97163157f0579ebd689e</srcmd5>
+    <version>1.0</version>
+    <time>1582555864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778265</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>929a846a0fe9ffa2bd2921ca2ea64cab</srcmd5>
+    <version>1.0</version>
+    <time>1599088170</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pause command instead of sleep, else the container will
+  always quit hard after 1 hour.</comment>
+    <requestid>829813</requestid>
+  </revision>
+</revisionlist>

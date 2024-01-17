@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ff854559c4f9395b6fa55e84c83174c</srcmd5>
+    <version>unknown</version>
+    <time>1595339287</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging of repository definition for dnf, so that dnf gets a comparable out of the box experience to zypper</comment>
+    <requestid>822097</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1687d3120b0c089282c44b03aa51ad0c</srcmd5>
+    <version>unknown</version>
+    <time>1596036011</time>
+    <user>dimstar_suse</user>
+    <comment>- Install repo files for 64-bit RISC-V</comment>
+    <requestid>823285</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>848619c11b05606f339169efdab4cc66</srcmd5>
+    <version>unknown</version>
+    <time>1600277677</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix openSUSE Leap update repo paths</comment>
+    <requestid>834682</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f2119253095db03f01ac8781137c73ba</srcmd5>
+    <version>unknown</version>
+    <time>1613774664</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt openSUSE Leap repositories to new layout for 15.3+</comment>
+    <requestid>873590</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>aad8c0e938c5a282248de2c7a444fb62</srcmd5>
+    <version>unknown</version>
+    <time>1622928707</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing GPG key references to Leap base repositories
+- Add missing SLE and Backports repositories for Leap 15.3+ (boo#1186593)
+- Rework GPG key file setup to use files from openSUSE-build-key</comment>
+    <requestid>897704</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>57f7356e0258820645d725469a608176</srcmd5>
+    <version>unknown</version>
+    <time>1630093454</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix GPG key references for updates from openSUSE backports (boo#1189892)</comment>
+    <requestid>914636</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f469378278ec2addf5b8824b2521b9f2</srcmd5>
+    <version>unknown</version>
+    <time>1642633943</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh GPG key link for openSUSE Backports (boo#1194871)
+- Add GPG key link for 15.5</comment>
+    <requestid>947405</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>1b78332b21f2b82d72b5441781fa3478</srcmd5>
+    <version>unknown</version>
+    <time>1649544134</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from MirrorBrain to MirrorCache based repositories to improve
+  reliability</comment>
+    <requestid>968036</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>d1a67521b1df1c37924e5102cff6fdbf</srcmd5>
+    <version>unknown</version>
+    <time>1676911610</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh GPG key link for Tumbleweed and add 2022 key for Leap (boo#1199184)</comment>
+    <requestid>1066811</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>28651cc86478d86593a5d1bba5ad0fc9</srcmd5>
+    <version>unknown</version>
+    <time>1687549988</time>
+    <user>dimstar_suse</user>
+    <comment>Correct the openSUSE Tumbleweed key id</comment>
+    <requestid>1094819</requestid>
+  </revision>
+</revisionlist>

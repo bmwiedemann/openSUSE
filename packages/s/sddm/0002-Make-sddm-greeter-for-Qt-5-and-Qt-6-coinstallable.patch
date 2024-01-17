@@ -1,0 +1,71 @@
+From 4043f1c81851d15213082c93ccc5256a2ccbda8f Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 9 Sep 2023 15:30:35 +0200
+Subject: [PATCH 2/3] Make sddm-greeter for Qt 5 and Qt 6 coinstallable
+
+When not building for Qt 5, give the sddm-greeter binary a Qt version suffix.
+Also version the translation directory.
+---
+ CMakeLists.txt             |  2 +-
+ src/greeter/CMakeLists.txt | 22 ++++++++++++++++------
+ 2 files changed, 17 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e333839..3107c7a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -185,7 +185,7 @@ set(ACCOUNTSSERVICE_DATA_DIR    "/var/lib/AccountsService"
+ set(SYSTEM_CONFIG_DIR           "${CMAKE_INSTALL_PREFIX}/lib/sddm/sddm.conf.d"      CACHE PATH      "Path of the system sddm config directory")
+ set(LOG_FILE                    "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/log/sddm.log"  CACHE PATH      "Path of the sddm log file")
+ set(DBUS_CONFIG_FILENAME        "org.freedesktop.DisplayManager.conf"               CACHE STRING    "Name of the sddm config file")
+-set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations"                  CACHE PATH      "Components translations directory")
++set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations-qt${QT_MAJOR_VERSION}" CACHE PATH      "Components translations directory")
+ set(SDDM_INITIAL_VT             "1"                                                 CACHE STRING    "Initial tty to use")
+ 
+ 
+diff --git a/src/greeter/CMakeLists.txt b/src/greeter/CMakeLists.txt
+index 7718afc..72769e4 100644
+--- a/src/greeter/CMakeLists.txt
++++ b/src/greeter/CMakeLists.txt
+@@ -1,3 +1,14 @@
++if(QT_MAJOR_VERSION EQUAL "5")
++    # Keep the unversioned name for Qt5. When upgrading SDDM, the old daemon
++    # might still be running and only know about "sddm-greeter". Keeping the
++    # previous name around also helps users calling it directly.
++    set(GREETER_TARGET sddm-greeter)
++else()
++    set(GREETER_TARGET sddm-greeter-qt${QT_MAJOR_VERSION})
++endif()
++
++message(STATUS "Building greeter for Qt ${QT_MAJOR_VERSION} as ${GREETER_TARGET}")
++
+ include_directories(
+     "${CMAKE_SOURCE_DIR}/src/common"
+     "${CMAKE_BINARY_DIR}/src/common"
+@@ -28,18 +39,17 @@ configure_file("theme.qrc" "theme.qrc")
+ 
+ qt_add_resources(RESOURCES ${CMAKE_CURRENT_BINARY_DIR}/theme.qrc)
+ 
+-add_executable(sddm-greeter ${GREETER_SOURCES} ${RESOURCES})
+-target_link_libraries(sddm-greeter
++add_executable(${GREETER_TARGET} ${GREETER_SOURCES} ${RESOURCES})
++target_link_libraries(${GREETER_TARGET}
+                       Qt${QT_MAJOR_VERSION}::Quick
+                       ${LIBXCB_LIBRARIES}
+                       ${LIBXKB_LIBRARIES})
+ 
+ if(JOURNALD_FOUND)
+-    target_link_libraries(sddm-greeter ${JOURNALD_LIBRARIES})
++    target_link_libraries(${GREETER_TARGET} ${JOURNALD_LIBRARIES})
+ endif()
+ 
+ # Translations
+-add_dependencies(sddm-greeter components-translation)
+-add_dependencies(sddm-greeter themes-translation)
++add_dependencies(${GREETER_TARGET} components-translation themes-translation)
+ 
+-install(TARGETS sddm-greeter DESTINATION "${CMAKE_INSTALL_BINDIR}")
++install(TARGETS ${GREETER_TARGET} DESTINATION "${CMAKE_INSTALL_BINDIR}")
+-- 
+2.42.0
+

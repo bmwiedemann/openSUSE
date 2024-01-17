@@ -1,0 +1,800 @@
+-------------------------------------------------------------------
+Mon Dec 18 13:42:32 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.21.0:
+  * v6.21.0
+  * v6.21.0-dev
+  * Zephyr solo mining: handle multiple outputs
+  * Updated pricing record size for Zephyr solo mining
+  * Update sse2neon.h
+  * ARM64 JIT: don't use `x18` register
+  * Update cn_main_loop.asm
+  * Update cn_main_loop.asm
+  * Added SNI option for TLS connections
+  * Add "built for OS/architecture/bits" to "ABOUT"
+  * Fixed huge pages availability info on Linux.
+  * Make Platform::hasKeepalive() constexpr where always supported and code cleanup.
+  * Disable TCP keepalive before closing socket
+  * Enabled keepalive for Windows (>= Vista)
+  * v6.20.1-dev
+
+-------------------------------------------------------------------
+Mon Jul 10 08:05:13 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.20.0:
+  * v6.20.0
+  * v6.20.0-dev
+  * Zephyr solo mining: fix for blocks with transactions
+  * Zephyr coin support
+  * KawPow: fixed data race when building programs
+  * Code cleanup.
+  * Disallow direct use of HwlocCpuInfo class.
+  * Code cleanup.
+  * Fixed compatibility with hwloc 1.11.
+  * Added new CMake options ARM_V8 and ARM_V7.
+  * Added new ARM CPU names.
+  * v6.19.4-dev
+  * Add API rebind polling
+  * fix(cuda): receive CUDA loader error on linux too.
+  * Add x86 to README
+
+-------------------------------------------------------------------
+Wed Jun  7 08:35:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.19.3:
+  * v6.19.3
+  * Update CHANGELOG.md
+  * Updated example scripts
+  * Fixed `jccErratum` list
+  * RandomX: fixed undefined behavior
+  * RandomX: optimized program generation
+  * Tweaked auto-tuning for Intel CPUs
+  * #3245 Improved algorithm negotiation for donation rounds by sending extra information about current mining job.
+  * v6.19.3-dev
+
+-------------------------------------------------------------------
+Tue Apr 18 07:40:55 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.19.2:
+  * v6.19.2
+  * Update CHANGELOG.md
+  * Sync with changes from proxy
+  * Improve .cmd files when run by shortcuts on another drive
+  * Code style cleanup.
+  * DaemonClient: new X-Hash-Difficulty HTTP header optimization
+  * Fixed parsing of TX_EXTRA_MERGE_MINING_TAG
+  * v6.19.2-dev
+
+-------------------------------------------------------------------
+Fri Mar 24 07:43:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.19.1:
+  * v6.19.1
+  * Update CHANGELOG.md
+  * Fix build with gcc 13
+  * Resolved deprecated methods warnings with OpenSSL 3.0.
+  * Fix: `--randomx-wrmsr=-1` worked only on Intel
+  * Fix for 32-bit clang 15
+  * Fixed DnsUvBackend storage cleanup.
+  * Revert changes to fix MSVC build.
+  * Cleanup.
+  * Fix warning.
+  * Partially resolved deprecated methods warnings in OpenSSL 3.0.
+  * v6.19.1-dev
+
+-------------------------------------------------------------------
+Mon Mar  6 07:59:57 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.19.0:
+  * v6.19.0
+  * Update scripts/build.*.sh.
+  * v6.19.0-dev (new config options added).
+  * Update CHANGELOG.md
+  * Solo mining: added job timeout (default is 15 seconds)
+  * Update hwloc for MSVC builds to 2.9.0.
+  * Update CHANGELOG.md
+  * Update to latest sse2neon.h.
+  * Fixed broken RandomX light mode mining
+  * #3185 Fixed macOS DMI reader.
+  * Show IP address for failed connections
+  * DragonflyBSD compilation fixes
+  * Added ifdefs for DragonflyBSD
+  * Bump the minimum CMake version in other places too.
+  * Update cmake required version to 3.1
+  * Improved Zen 3 MSR mod
+  * MSVC build: enabled parallel compilation
+  * #2869
+  * Update to latest sse2neon.h from github:DLTcollab/sse2neon
+  * v6.18.2-dev
+
+-------------------------------------------------------------------
+Wed Nov  2 08:52:18 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.18.1:
+  * v6.18.1
+  * Update CHANGELOG.md
+  * Added Zen4 to randomx_boost.sh
+  * RandomX: added MSR mod for Zen 4
+  * Update CHANGELOG.md
+  * Fix: protectRX flushed CPU cache only on MacOS/iOS
+  * Update m_size only if blob was set successfully
+  * Don't reset when pool sends the same job blob
+  * RandomX: optimized CFROUND elimination more
+  * RandomX: optimized CFROUND elimination
+  * RandomX: added Blake2 AVX2 version
+  * Fixed GCC 12 warnings
+  * Update README.md
+  * v6.18.1-dev
+  * Recognize armv7ve as valid ARMv7 target.
+
+-------------------------------------------------------------------
+Mon Jul 18 14:42:35 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.18.0:
+  * v6.18.0
+  * v6.18.0-dev
+  * Update hwloc for msvc.
+  * Update deps.
+  * Better fix for daemon solo mining with ZMQ
+  * Improved daemon ZMQ mining stability
+  * Fixed ZMQ debug log
+  * Monero v15 network upgrade support
+  * Fixed debug GhostRider build
+  * Removed deprecated AstroBWTv1 and v2
+  * Fixes for 32-bit ARM
+  * Fixed unaligned memory read in DMI
+  * Fixed being unable to resume from pause-on-battery
+  * Fixed --cpu-priority not working sometimes
+  * Removed old AstroBWT algorithm
+  * v6.17.1-dev
+
+-------------------------------------------------------------------
+Tue Jun 14 06:55:33 UTC 2022 - mpluskal@suse.com
+
+- Update to version 6.17.0:
+  * Add armv7 to supported architectures
+
+-------------------------------------------------------------------
+Fri Apr  8 14:36:54 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.17.0:
+  * v6.17.0
+  * Disable donate for astrobwt/v2.
+  * Update CHANGELOG.md
+  * v6.17.0-dev
+  * Fixed compilation error
+  * Optimized keccak
+  * Fixed AstroBWT OpenCL config generation
+  * Dero HE (astrobwt/v2) OpenCL support
+  * Dero HE (astrobwt/v2) CUDA config generator
+  * Fixed out of bounds access in astrobwt/v2
+  * Update hwloc for MSVC builds.
+  * #2941 Update deps scripts.
+  * Added alternative algo names for Dero HE
+  * Show block/miniblock counters more often
+  * DaemonClient: fixed broken `coin` setting
+  * Dero HE fork support (astrobwt/v2 algorithm)
+  * Fixed displayed DMI memory information for empty slots.
+  * Fixed GhostRider with hwloc disabled
+  * v6.16.5-dev
+
+-------------------------------------------------------------------
+Tue Feb  8 14:30:05 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.16.4:
+  * v6.16.4
+  * Update CHANGELOG.md
+  * #2910 Fixed donation for GhostRider/RTM.
+  * Add MSVC/2022 to version.h
+  * Fixed unaligned memory accesses
+  * v6.16.4-dev
+  * Fixed armv7 compilation
+
+-------------------------------------------------------------------
+Wed Jan 26 07:44:48 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.16.3:
+  * v6.16.3
+  * Update CHANGELOG.md
+  * KawPow OpenCL: build next period only when it's not in cache
+  * KawPow OpenCL: use separate UV loop for building programs
+  * Update CHANGELOG.md
+  * Add missing DNS options to config example.
+  * Fixed GhostRider benchmark on single-core systems
+  * Fix for short responses from some Raptoreum pools
+  * Add support for client.reconnect method
+  * RandomX: don't restart mining threads when the seed changes
+  * GhostRidere: set correct priority for helper threads
+  * Update README.md
+  * Fixed cn-heavy in 32-bit builds
+  * Updated GhostRider documentation
+  * Fixed "READY threads X/X" display after algo switching
+  * v6.16.3-dev
+  * armv7 compilation fix
+
+-------------------------------------------------------------------
+Fri Dec  3 06:57:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.16.2:
+  * v6.16.2
+  * Update CHANGELOG.md
+  * #2771 Fixed environment variables support in EthStratumClient.
+  * Compilationn fixes
+  * GhostRider benchmark: added 20 more possible rounds
+  * Updated changelog and GhostRider readme
+  * Compiler fix
+  * Refactored Chrono::highResolutionMSecs()
+  * Explicitly use QueryPerformanceCounter() on Windows
+  * VAES crash fixes
+  * v6.16.2-dev
+  * v6.16.1
+  * Fixed Clang build.
+  * Check compiler support for VAES
+  * Disable VAES in 32-bit builds
+  * Fix compile for VAES support with GCC<10
+  * v6.16.1-dev
+  * Added VAES support for Cryptonight variants
+  * More GhostRider fixes
+  * Slash and burn EOL whitespace everywhere
+  * GhostRider hotfixes
+  * v6.16.0
+  * Update CHANGELOG.md
+  * Added GhostRider release notes
+  * Add GhostRider support for AutoClient.
+  * Only initGhostRider() when job is in the family
+  * Benchmark support for GhostRider (offline only)
+  * v6.16.0-dev
+  * GhostRider: fixed invalid hashes on ARMv8
+  * Optimized quad hash for Ryzens
+  * Faster quad hash for GhostRider algos (Ryzen CPUs)
+  * Fixed broken difficulty adjustment on some Raptoreum pools
+  * Fixed compilation error
+  * GhostRider algorithm (Raptoreum) support
+  * MSR mod: fix for error 183
+  * Fix: use cn-heavy optimization only for Vermeer CPUs
+  * v6.15.4-dev
+
+-------------------------------------------------------------------
+Thu Nov 11 14:08:23 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.3:
+  * v6.15.3
+  * Update CHANGELOG.md
+  * Fix various memory leaks
+  * Fix MSVC compilation error
+  * AstroBWT: fixed rare incorrect hashes
+  * AstroBWT even bigger speedup
+  * AstroBWT speedup
+  * Code cleanup.
+  * fix: expand validation of tx_extra for merge mining tag
+  * Cap max threads to 4096 with nVidia OpenCL
+  * Adjust API version logic
+  * Adjust definitions and replace literal 0x4038
+  * Revert amd_bitalign/amd_bfe polyfills
+  * Apply "no-static-without-amd" fixes
+  * Attempt repair of cn/r output-array access problem
+  * Second try at fixing cn/r atomic_inc() call
+  * Attempt fix for cn/r on Apple-AMD
+  * Add Ellesmere correctly (still just a Polaris alias)
+  * Add every Apple AMD GPU type
+  * Possibly fix problem with clGetProgramInfo crash
+  * Readjust OclDevice logic and add OCL_VENDOR_APPLE
+  * Fix #2583 compiling without kawpow (string ref is nonexistent then)
+  * v6.15.3-dev
+
+-------------------------------------------------------------------
+Wed Oct  6 08:49:50 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.2:
+  * v6.15.2
+  * Update CHANGELOG.md
+  * Added "--versions" alias.
+  * Removed uv_os_gethostname call for all OS.
+  * Fix: AstroBWT auto-config ignored max-threads-hint
+  * v6.15.2-dev
+
+-------------------------------------------------------------------
+Fri Sep 24 06:55:36 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.1:
+  * v6.15.1
+  * Update CHANGELOG.md
+  * Added Windows taskbar icon colors
+  * Remove unnecessary string.
+  * Fix --threads generates "*" profile without "kawpow":false to negate it.
+  * Fix compile warning when WITH_RANDOMX=OFF
+  * Fixed Windows 7 compatibility
+  * Fixup RandomX naming consistency
+  * v6.15.1-dev
+
+-------------------------------------------------------------------
+Thu Sep  2 07:57:05 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.0:
+  * v6.15.0
+  * Fixed class/struct inconsistency.
+  * Update CHANGELOG.md
+  * Fixed clang build.
+  * AstroBWT: add AVX2 Salsa20 implementation
+  * Added support for new CUDA plugin API.
+  * v6.15.0-dev
+  * #2555 Update deps.
+  * Increase RANDOMX_PROGRAM_MAX_SIZE
+  * Update hwloc for MSVC.
+  * Fixed Algorithm id
+  * Added Graft RandonX
+  * Update rapidjson.
+  * Cleanup ARM code.
+  * Fixed build on Linux.
+  * Code cleanup based on Clang-Tidy.
+  * Add missing files.
+  * Update BlockTemplate class.
+  * Add global wallet address parser for DaemonClient.
+  * Update Coin, BlobReader and WalletAddress.
+  * v6.14.2-dev
+
+-------------------------------------------------------------------
+Wed Aug 25 10:53:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.14.1:
+  * v6.14.1
+  * Update CHANGELOG.md
+  * Fix algorithms order.
+  * Cleanup.
+  * Update CnHash.cpp
+  * Fixed Termux build
+  * Fix Job::getNumTransactions.
+  * Fix cn-pico name.
+  * Removed shortName.
+  * Removed duplicate strings.
+  * Fix typo.
+  * Implemented stable algorithm ids.
+  * Optimize CnHash storage.
+  * #2527 Fix narrowing conversion.
+  * namespace cleanup.
+  * v6.14.1-dev
+  * v6.14.0
+  * v6.14.0-dev
+  * Show the number of transactions in pool job
+  * #2492 Add missing --huge-pages-jit command line option.
+  * ZeroMQ support for solo mining
+  * #2476 Fixed crash in DMI memory reader.
+  * Updates from xmrig-proxy
+  * Sync with proxy.
+  * v6.13.2-dev
+- Drop disable-forced-donation.patch
+
+-------------------------------------------------------------------
+Wed Jul  7 07:57:52 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.13.1:
+  * v6.13.1
+  * Update CHANGELOG.md
+  * v6.13.1-dev
+  * Fix: don't send miner signature during regular mining
+  * v6.13.0
+  * Update CHANGELOG.md
+  * v6.13.0-dev
+  * Correct handling of block submit responses for Dero
+  * Update signing algorithm
+  * Add token support for online benchmark.
+  * Added profiling
+  * Fixed GCC warnings
+  * Fix Wownero hardfork version
+  * Proxy miner signature support
+  * Proxy miner signature support (WIP)
+  * More sanity checks
+  * More error handling in DaemonClient::parseJob
+  * Fixed CalculateMerkleTreeHash
+  * BlockTemplate: miner tx and root hash updating
+  * Fix buffer size in generateMinerSignature
+  * Added support for solo mining with miner signatures (Wownero)
+  * Cleanup
+  * Fixed random32_unbiased
+  * Secret key derivation
+  * Added signature functions
+  * Cryptonote tools WIP
+  * v6.12.3-dev
+
+-------------------------------------------------------------------
+Mon Jun 21 07:22:43 UTC 2021 - mpluskal@suse.com
+
+- Update to version 6.12.2:
+  * Fix shellcheck warnings in randomx_boost.sh
+
+-------------------------------------------------------------------
+Mon May 31 07:43:16 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.12.2:
+  * v6.12.2
+  * Update CHANGELOG.md
+  * RandomX: fix broken light mode mining
+  * Add "argon2/ninja" algorithm alias.
+  * RandomX ARMv8: optimized dataset read
+  * RandomX: rewrote dataset read code
+  * RandomX: added BMI2 version for scratchpad prefetch
+  * Enabled IMUL_RCP optimization for light mode mining
+  * Regenerate OpenCL headers.
+  * Fix CL code for KawPow where it assumes everything is AMD
+  * Fixed broken light mode mining on x86
+  * Fixup MacOS CUDA backend default loader name
+  * Update openssl version to 1.1.1k
+  * ...and --cpu-affinity.
+  * #2351 Fixed help output for --cpu-priority option.
+  * Update sse2neon.h
+  * Fix AES detection on FreeBSD on ARM
+  * Update randomx_boost.sh
+  * Add  missing allow_writes=on to randomx_boost.sh
+  * #2280 Disable GPU backends in benchmark mode.
+  * Removed unnecessary system call.
+  * v6.12.2-dev
+  * support builtin msr
+
+-------------------------------------------------------------------
+Mon Apr 26 08:02:48 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.12.1:
+  * v6.12.1
+  * Update CHANGELOG.md
+  * v6.12.1-dev
+  * Fixed Zen3 asm for cn/upx2
+
+-------------------------------------------------------------------
+Thu Apr 22 05:56:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.12.0:
+  * v6.12.0
+  * Update CHANGELOG.md
+  * RandomX: optimized IMUL_RCP instruction
+  * Update CHANGELOG.md
+  * Optimized cn/upx for Zen3
+  * Fix dvision by zero check in percent()
+  * Fixed rounding mode after running cn/upx
+  * v6.12.0-dev
+  * Optimized cn/upx2 for Ryzen CPUs
+  * Update CnHash.cpp
+  * Added support for Uplexa (cn/upx2 algorithm)
+  * Added support for --user command line option for the benchmark.
+  * Show total hashrate if compiled without OpenCL
+  * v6.11.3-dev
+
+-------------------------------------------------------------------
+Tue Apr 13 08:53:24 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.11.2:
+  * v6.11.2
+  * Update CHANGELOG.md
+  * Update llhttp to v5.1.0
+  * #2207 Fixed regression in HTTP parser.
+  * v6.11.2-dev
+  * v6.11.1
+  * Update CHANGELOG.md
+  * Fixed broken "coin" setting functionality
+  * v6.11.0
+  * Update CHANGELOG.md
+  * #2234 Use const_cast.
+  * Fixed cn-heavy for GCC-8
+  * fix build error on gcc 9.3.0
+  * Update randomx.cmake
+  * Fixed compilation for ARM
+  * Don't use RandomX JIT if WITH_ASM=OFF
+  * remove useless v4_random_math_init if algo is not cn/r
+  * Add missing include
+  * setBlob should run after setAlgorithm
+  * Optimize cn-heavy in GCC builds
+  * Optimized cn-heavy
+  * Fixed use-after-free bug when exiting
+  * v6.11.0-dev
+  * Added command line options --dns-ipv6 and --dns-ttl.
+  * Added DNS config.
+  * New DNS implementation.
+  * Added DnsRecords class.
+  * Improved DnsRecord class.
+  * Fix `vld1q_u8_x4` compilation error with GCC 10.2
+  * Added reference to limits.h in AdlLib_linux.cpp
+  * Fix wrong type in Handle::deleteLater()
+  * v6.10.1-dev
+
+-------------------------------------------------------------------
+Mon Mar  8 08:57:37 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.10.0:
+  * v6.10.0
+  * 6.10.0-dev
+  * Update CPU.md
+  * Sync with the proxy.
+  * Fixed build without TLS support.
+  * http-parser replaced to llhttp.
+  * Fix GCC compilation
+  * Add note about CPU affinity.
+  * Fix crash in cn-heavy on Zen3 with manual thread count
+  * Update hwloc for MSVC.
+  * Update build scripts.
+  * Update sse2neon.h to the latest master. Fixes build on armv7.
+  * Fixed many "new job" messages when solo mining
+  * Code cleanup.
+  * Fixed possible out of order write to log file.
+  * #2123 Ignore regex exception.
+  * Correct a typo in doc/CPU.md
+  * Minor verbiage tweak
+  * Fixed pause logic when both pause on battery and user activity are enabled
+  * v6.9.1-dev
+
+-------------------------------------------------------------------
+Mon Feb 22 07:34:12 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.9.0:
+  * v6.9.0
+  * Update CPU.md
+  * v6.9.0-dev
+  * Added idle time detection for macOS.
+  * #2104 Added user configurable idle time.
+  * Simplified code, fixed broken pause.
+  * Fixed crash when GPU mining cn-heavy on Zen3 system
+  * Fixed macOS build.
+  * Code and copyright cleanup.
+  * Allow result submission to origin daemon with self-select
+  * Added `pause-on-active` option
+  * v6.8.3
+
+-------------------------------------------------------------------
+Tue Feb 16 09:46:33 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.2:
+  * v6.8.2
+  * Update CHANGELOG.md
+  * Cryptonight: add prefetching to interleaved mode
+  * Optimized cn-heavy for Zen3
+  * Always disable kawpow for CPU backend.
+  * Add missing option to config example.
+  * Fix compile error in Termux
+  * v6.8.2-dev
+
+-------------------------------------------------------------------
+Thu Feb  4 07:40:02 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.1:
+  * v6.8.1
+  * Update CHANGELOG.md
+  * Fixed macOS build and compile warning.
+  * Update jit_compiler_a64.cpp
+  * ARM JIT: added missing cache flush
+  * Fixed code allocation for ARM
+  * Fixed crashes on ARM
+  * Added "--hugepage-size" command line option.
+  * Added support for flexible huge page sizes on Linux.
+  * Detect Apple M1 on Linux.
+  * Update ARM CPUs names.
+  * #2066 Fixed AMD GPUs health data readings.
+  * Extend normalization rules.
+  * Normalize DMI memory slot name.
+  * #2066 Quick fix for AMD GPUs health data.
+  * Fix compilation error when RandomX and Argon2 are disabled
+  * Added documentation for config.json CPU options
+  * Don't print empty memory slots if the total count above 8.
+  * v6.8.1-dev
+
+-------------------------------------------------------------------
+Thu Jan 28 08:37:43 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.0:
+  * v6.8.0
+  * Update default config example.
+  * Update CHANGELOG.md
+  * Code cleanup
+  * Fixed DMI memory speed.
+  * Code cleanup.
+  * RandomX JIT x86: remove unnecessary instructions
+  * Fixed Cache QoS restore on exit where it not supported.
+  * Added RxMsr class.
+  * Move Ryzen related fixes to RxFix class.
+  * Added new class Msr.
+  * Add missing "cstdio" library
+  * v6.8.0-dev
+  * Enable DMI reader by default.
+  * Added DMI data to online benchmark.
+  * Added "GET /2/dmi" API endpoint.
+  * Spelling Check
+  * Added config option "dmi" and command line option "--no-dmi".
+  * Fix summary.
+  * Added basic system reader.
+  * Added DMI reader for macOS.
+  * Enable FreeBSD support.
+  * Added legacy DMI readers for Linux.
+  * Add support for older DMI formats on Linux.
+  * Added basic Linux support.
+  * Added DMI reader (Windows only).
+  * #2043 Fix compile warning.
+  * fixed grammar in a couple of awkward error messages
+  * v6.7.3-dev
+
+-------------------------------------------------------------------
+Mon Jan 18 12:02:03 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.2:
+  * v6.7.2
+  * Update CHANGELOG.md
+  * Sync changes.
+  * Always use cvt_bin2hex
+  * Fixed solo mining
+  * v6.7.2-dev
+
+-------------------------------------------------------------------
+Mon Jan 11 14:44:19 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.1:
+  * v6.7.1
+  * Fixed HOSTNAME environment variable.
+  * Update CHANGELOG.md
+  * RandomX x86 JIT: remove redundant CFROUND
+  * AstroBWT OpenCL fixes
+  * Added scripts/{build, deps} into .gitignore
+  * Show hashrate in the benchmark finished message
+  * #1995 Fixed log initialization.
+  * v6.7.1-dev
+
+-------------------------------------------------------------------
+Tue Dec 22 10:32:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.7.0:
+  * v6.7.0
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * Fixed broken Dero solo mining
+  * Fix GCC warning
+  * Another dataset AVX2 init speedup (+3.8% faster on Zen3)
+  * Added config option for AVX2 dataset init
+  * Auto-detect the fastest code for dataset init
+  * Fixed Windows scripts
+  * Dataset initialization with AVX2 (WIP)
+  * Huge pages not supported by macOS ARM.
+  * Fixed Xcode generator.
+  * Fix build on GCC 11
+  * Don't use team 'x64' for '64-bit'
+  * Reduce JIT memory for ARM.
+  * Fix alignment for Linux
+  * Fix: secure JIT and huge pages are incompatible on Windows
+  * Update hwloc for MSVC to 2.4.0.
+  * Update build scripts.
+  * Hardcode L2 cache size for Apple M1.
+  * Update user agent for macOS and fix compile warnings
+  * More correct CPU affinity support for macOS.
+  * Fixed JIT on macOS.
+  * Fixed macOS build.
+  * Alternative secure JIT for macOS.
+  * Fixed secure JIT on Linux and code cleanup.
+  * Remove duplicated code.
+  * Added generic secure JIT support for RandomX.
+  * More static analysis fixes
+  * Fixed errors found by static analysis
+  * Added virtual machine detection
+  * Removed libcpuid support.
+  * v6.7.0-dev
+  * Restore Hashrate class interface.
+  * Added GpuWorker class.
+  * Cleanup
+  * Move Profiler and more cleanup.
+  * Fixed Linux build.
+  * Cleanup
+  * Update Json.
+  * Update Signals and Console.
+  * Update HTTP
+  * Added Cvt class.
+  * Update net
+  * Update log.
+  * v6.6.3-dev
+- Drop xmrig user and switch service to run as root - its needed for
+  optimal performance anyways
+
+-------------------------------------------------------------------
+Mon Dec 14 08:56:14 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Build only on supported architectures
+- Install example scripts as doc
+- Supress some warning
+- Install config and systemd service from arch linux
+- Switch to systemwide config json
+
+-------------------------------------------------------------------
+Sat Dec 12 08:55:48 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Correct filename in OpenCL library loader with patch correct-opencl-file.patch
+- Add recommended package libOpenCL1 for OpenCL support
+
+-------------------------------------------------------------------
+Thu Dec 10 10:51:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Install license and some documentation
+
+-------------------------------------------------------------------
+Wed Dec 02 06:12:55 UTC 2020 - nopeinomicon@posteo.net
+
+- Update to version 6.6.2:
+  * v6.6.2
+  * Update CHANGELOG.md
+  * Fix RandomX init when switching to other algo and back
+  * Optimized JIT compiler
+  * Update base
+  * Example mining scripts to help new miners
+  * v6.6.2-dev
+
+-------------------------------------------------------------------
+Wed Nov 25 18:46:11 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 6.6.1:
+  * Fixed, benchmark validation on NUMA hardware produced incorrect results in some conditions.
+
+-------------------------------------------------------------------
+Wed Nov 25 10:05:17 UTC 2020 - 
+
+- Transition from tar_scm service to obs_scm service
+- Update to version 6.6.0:
+    * Online benchmark protocol upgraded to v2, validation not compatible with previous versions.
+        + Single thread benchmark now is cheat-resistant, not possible speedup it with multiple threads.
+        + RandomX dataset is now always initialized with static seed, to prevent time cheat by report slow dataset initialization.
+        + Zero delay online submission, to make time validation much more precise and strict.
+        + DNS cache for online benchmark to prevent unexpected delays.
+
+
+-------------------------------------------------------------------
+Sun Nov 15 09:08:51 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Removed unnecessary "mkdir" function from .spec file
+- Update to version 6.5.3:
+  * v6.5.3
+  * Update CHANGELOG.md
+  * Added warning about libcpuid deprecation.
+  * Add static_assert
+  * Fixed MSR mod names in JSON API
+  * v6.5.3-dev
+
+-------------------------------------------------------------------
+Sat Nov 14 06:49:10 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 6.5.2:
+  * v6.5.2
+  * Fixed build without benchmark.
+  * Update CHANGELOG.md
+  * Add support for benchmark in generated config.
+  * #1937 Print path to existing WinRing0 service without verbose option.
+  * Update randomx_boost.sh
+  * Added 250K and 500K offline benchmarks.
+  * MemoryPool: fix alignment modification
+  * Added --token command line option.
+  * Added CPUID info to JSON report
+  * CompiledVm: define default constructor
+  * Separate MSR mod for Zen/Zen2 and Zen3
+  * v6.5.2-dev
+
+-------------------------------------------------------------------
+Tue Nov 10 06:47:36 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Added _service file for version updates
+- Ensure proper installation of executable
+- Update to version 6.5.1:
+  * v6.5.1
+  * Update CHANGELOG.md
+  * Update README.md
+  * Update RxConfig.cpp
+  * New MSR mod for Ryzen
+  * Fixed build without HTTP.
+  * #1918 Fixed check for 1GB huge pages on ARM Linux.
+  * Fix compilation on ARMv8 with GCC 9.3.0
+
+-------------------------------------------------------------------
+Tue Nov  3 07:47:18 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Cleaned up .spec file
+- Removed home-folder-config.patch as this patch was implemented upstream
+- Updated to version 6.5.0
+    * Added a new online benchmark mode to share results
+    * Fixed MSR Kernel module warning with new Linux kernels
+    * Added checking for config files in user home directory
+    * Added vendor to ARM CPUs name and added "arch" field to API
+    * Removed legacy CUDA plugin API
+
+-------------------------------------------------------------------
+Mon Nov  2 00:02:59 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Added patch disable-forced-donation.patch to remove forced donation feature
+- Added patch home-folder-config.patch to scan for configuration files at ~/.xmrig.json and ~/.config/xmrig.json for better ease of use. 

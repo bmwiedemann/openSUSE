@@ -1,0 +1,400 @@
+-------------------------------------------------------------------
+Sun Aug 20 00:25:03 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Conditionalize config(debuginfod-profile) Requires tag in the
+  debuginfod-client sub-package, with the help of the %sle_version
+  macro, so only Tumbleweed (currently the only distro supported by
+  debuginfod.opensuse.org) sets it.
+
+-------------------------------------------------------------------
+Wed Jul 12 01:05:48 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Replace libdebuginfo1 sub-package's debuginfod-profile Recommends
+  with config(debuginfod-profile) Requires, but on the debuginfod-\
+  client sub-package, instead. And add binutils, bpftrace-tools,
+  elfutils, gdb, perf, systemd-coredump, and valgrind Supplements
+  to debuginfod-client sub-package. This should make installation
+  of debuginfod-client more consistent, along with debuginfod-\
+  profile, with software/packages that have debuginfod support.
+
+-------------------------------------------------------------------
+Tue Mar  7 12:36:01 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Fix file listing for 15.x builds.
+
+-------------------------------------------------------------------
+Fri Mar  3 16:52:50 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.189:
+  * configure: eu-nm, eu-addr2line and eu-stack can provide demangled symbols
+           when linked with libstdc++. Use --disable-demangler to disable.
+           A new option --enable-sanitize-memory has been added for msan
+           sanitizer support.
+  * libelf: elf_compress now supports ELFCOMPRESS_ZSTD when build against
+        libzstd
+  * libdwfl: dwfl_module_return_value_location now returns 0 (no return type)
+         for DIEs that point to a DW_TAG_unspecified_type.
+  * elfcompress: -t, --type= now support zstd if libelf has been build with
+             ELFCOMPRESS_ZSTD support.
+  * backends: Add support for LoongArch and Synopsys ARCv2 processors.
+- drop upsteam patches:
+  * elfutils-0.188-CURLOPT_PROTOCOLS_STR.patch
+  * elfutils-0.188-CURL_AT_LEAST_VERSION.patch
+  * elfutils-0.188-deprecated-CURLINFO.patch
+  * support-DW_TAG_unspecified_type.patch
+- Enable -Werror=use-after-free again.
+
+-------------------------------------------------------------------
+Thu Feb 23 09:29:20 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Disable a false-positive -Werror=use-after-free warning.
+
+-------------------------------------------------------------------
+Thu Feb 16 13:00:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with libcurl version 7.88.0 for various deprecated
+  constants. Add patches:
+  * elfutils-0.188-CURLOPT_PROTOCOLS_STR.patch
+  * elfutils-0.188-CURL_AT_LEAST_VERSION.patch
+  * elfutils-0.188-deprecated-CURLINFO.patch
+
+-------------------------------------------------------------------
+Tue Feb 14 09:46:19 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Add support-DW_TAG_unspecified_type.patch that fixes PR30047.
+
+-------------------------------------------------------------------
+Fri Dec  9 08:34:19 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove dependency to not used sysconfig package
+- Weaken systemd dependency, no hard requires necessary 
+
+-------------------------------------------------------------------
+Wed Nov  9 15:31:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- align patches section
+- remove date/time handling weirdness, elfutils does no longer
+  use __DATE__ or __TIME__ (as proven by the newly added -Werror=date-time) 
+
+-------------------------------------------------------------------
+Mon Nov  7 08:38:51 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.188:
+  * readelf: Add -D, --use-dynamic option.
+  * debuginfod-client: Add $DEBUGINFOD_HEADERS_FILE setting to supply
+    outgoing debuginfod_find_section.
+  * debuginfod: Add --disable-source-scan option.
+  * libdwfl: Add new function dwfl_get_debuginfod_client.
+             Add new function dwfl_frame_reg.
+             Add new function dwfl_report_offline_memory.
+- Remove upstreamed patches:
+  * 0001-libelf-Sync-elf.h-from-glibc.patch
+  * 0002-backends-Handle-new-RISC-V-specific-definitions.patch
+  * 0003-elflint-Allow-zero-p_memsz-for-PT_RISCV_ATTRIBUTES.patch
+  * 0004-readelf-Handle-SHT_RISCV_ATTRIBUTES-like-SHT_GNU_ATT.patch
+  * PR29474-debuginfod.patch
+  * config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
+  * support-nullglob-in-profile.-.in-files.patch
+
+-------------------------------------------------------------------
+Wed Aug 17 11:42:11 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use %ghost for debuginfod.sqlite file.
+
+-------------------------------------------------------------------
+Tue Aug 16 13:29:30 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add support-nullglob-in-profile.-.in-files.patch
+  fixes boo#1202440.
+
+-------------------------------------------------------------------
+Mon Aug 15 11:04:57 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add PR29474-debuginfod.patch in order to fix PR29474.
+
+-------------------------------------------------------------------
+Fri Aug 12 12:35:57 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add Recommends for libdebuginfod1 so that debuginfod-profile
+  sets the DEBUGINFOD_URLS.
+
+-------------------------------------------------------------------
+Wed Jun 15 11:28:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add debuginfod-profile subpackage that collects settings
+  files (boo#1200100).
+
+-------------------------------------------------------------------
+Fri May 13 12:16:45 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
+  in order to fix boo#1199265.
+
+-------------------------------------------------------------------
+Mon May  2 07:30:54 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Do not set DEBUGINFOD_URLS for anything older than Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Apr 26 07:16:29 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.187:
+  * debuginfod: Support -C option for connection thread pooling.
+  * debuginfod-client: Negative cache file are now zero sized instead of
+                     no-permission files.
+  * addr2line: The -A, --absolute option, which shows file names including
+             the full compilation directory is now the default.  To get the
+             old behavior use the new option --relative.
+  * readelf, elflint: Recognize FDO Packaging Metadata ELF notes
+  * libdw, debuginfo-client: Load libcurl lazily only when files need to
+                           be fetched remotely. libcurl is now never
+                           loaded when DEBUGINFOD_URLS is unset. And when
+                           DEBUGINFOD_URLS is set, libcurl is only loaded
+                           when the debuginfod_begin function is called.
+
+-------------------------------------------------------------------
+Wed Apr 13 15:15:25 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to systemd-sysusers
+  * Add elfutils-debuginfod.sysusers
+
+-------------------------------------------------------------------
+Fri Feb 25 19:36:08 UTC 2022 - Tony Jones <tonyj@suse.com>
+
+- Add support for zstd, needed to inspect kernel modules (bsc#1196510)
+
+-------------------------------------------------------------------
+Thu Nov 11 08:56:25 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.186:
+  debuginfod-client: Default $DEBUGINFOD_URLS is computed from drop-in files
+                     etc/debuginfod*.urls rather than hardcoded into the
+                     /etc/profile.d/debuginfod* scripts.
+                     Add $DEBUGINFOD_MAXSIZE and $DEBUGINFOD_MAXTIME settings
+                     for skipping large/slow transfers.
+                     Add $DEBUGINFOD_RETRY for retrying aborted lookups.
+
+  debuginfod: Supply extra HTTP response headers, describing archive/file
+              names that satisfy the requested buildid content.
+              Support -d :memory: option for in-memory databases.
+              Protect against loops in federated server configurations.
+              Add -r option to use -I/-X regexes for grooming stale files.
+              Protect against wasted CPU from duplicate concurrent requests.
+              Limit the duration of groom ops roughly to rescan (-t) times.
+              Add --passive mode for serving from read-only database.
+              Several other performance improvements & prometheus metrics.
+
+  libdw: Support for the NVIDIA Cuda line map extensions.
+         DW_LNE_NVIDIA_inlined_call and DW_LNE_NVIDIA_set_function_name
+         are defined in dwarf.h. New functions dwarf_linecontext and
+         dwarf_linefunctionname
+
+- Remove tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
+  and disable-run-readelf-self-test.patch.
+- Remove -flto-partition=none -Wno-error=stack-usage= from _lto_flags
+
+-------------------------------------------------------------------
+Tue Oct  5 06:02:09 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Enhance license fields: all the libraries actually have a different
+  license to the tools. While the tools are GPL-3.0-or-later, the
+  libraries are (LGPL-3.0-or-later OR GPL-2.0-or-later)
+
+-------------------------------------------------------------------
+Tue Sep 14 14:14:57 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add harden_debuginfod.service.patch as
+  Automatic systemd hardening effort by the security team.
+
+-------------------------------------------------------------------
+Thu Aug  5 18:12:21 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
+  in order to fix boo#1189083.
+
+-------------------------------------------------------------------
+Mon May 24 07:39:53 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.185:
+  debuginfod-client: Simplify curl handle reuse so downloads which
+                     return an error are retried.
+
+  elfcompress: Always exit with code 0 when the operation succeeds (even
+               when nothing was done). On error the exit code is now always 1.
+
+-------------------------------------------------------------------
+Mon May 10 19:39:44 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.184:
+  debuginfod: Use libarchive's bsdtar as the .deb-family file unpacker.
+  debuginfod-client: Client caches negative results. If a query for a
+                     file failed with 404, an empty 000 permission
+                     file is created in the cache. This will prevent
+                     requesting the same file for the next 10 minutes.
+
+                     Client objects now carry long-lived curl handles
+                     for outgoing connections.  This makes it more
+                     efficient for multiple sequential queries, because
+                     the TCP connections and/or TLS state info are kept
+                     around awhile, avoiding O(100ms) setup latencies.
+
+  libdw: handle DW_FORM_indirect when reading attributes
+  translations: Update Polish translation.
+- Add 2 build dependences for tests.
+
+-------------------------------------------------------------------
+Tue Mar 16 15:40:31 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Enable https://debuginfod.opensuse.org/ debuginfod server
+  by default now.
+- Add disable-run-readelf-self-test.patch in order to disable
+  a failing test-case with GCC 11 (PR27367).
+
+-------------------------------------------------------------------
+Mon Feb  8 10:59:08 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.183:
+  debuginfod: New thread-busy metric and more detailed error metrics.
+              New --fdcache-mintmp and tracking of filesystem freespace.
+              New increased webapi concurrency while grooming.
+
+  debuginfod-client: DEBUGINFOD_SONAME macro added to debuginfod.h which
+                     can be used to dlopen the libdebuginfod.so library.
+                     New function debuginfod_set_verbose_fd and
+                     DEBUGINFOD_VERBOSE environment variable.
+
+  config: profile.sh and profile.csh won't export DEBUGINFOD_URLS unless
+          configured --enable-debuginfod-urls[=URLS]
+
+  elflint, readelf: Recognize SHF_GNU_RETAIN.
+                    Handle SHT_X86_64_UNWIND as valid relocation target.
+- Remove config-do-not-define-DEBUGINFOD_URLS-environment-var.patch patch.
+
+-------------------------------------------------------------------
+Mon Jan  4 12:01:02 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add upstream config-do-not-define-DEBUGINFOD_URLS-environment-var.patch
+  in order to fix boo#1180306.
+
+-------------------------------------------------------------------
+Thu Dec 10 12:21:29 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Move profile files to libdebuginfod1 sub-package.
+- Silent 2 rpmlint issues.
+
+-------------------------------------------------------------------
+Thu Nov  5 09:15:00 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add new /etc/profile.d/debuginfod.{,c}sh files.
+- Update to version 0.182:
+
+  backends: Support for tilegx has been removed.
+
+  config: New /etc/profile.d files to provide default $DEBUGINFOD_URLS.
+
+  debuginfod: More efficient package traversal, tolerate various errors
+              during scanning, grooming progress is more visible and
+              interruptible, more prometheus metrics.
+
+  debuginfod-client: Now supports compressed (kernel) ELF images.
+
+  libdwfl: Add ZSTD compression support.
+
+-------------------------------------------------------------------
+Tue Sep 22 07:59:56 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add Conflicts for dummy packages.
+
+-------------------------------------------------------------------
+Tue Sep 15 11:50:27 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO again - boo#1138796
+  Adding -flto-partition=none and -Wno-error=stack-usage were
+  not enough: 
+    [  123s] libasm-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libasm.a
+    [  123s] libdw-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libdw.a
+    [  123s] libelf-devel.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libelf.a
+    [  123s] This archive does not contain a non-empty .text section.  The archive was not
+    [  123s] created with -ffat-lto-objects option.
+  And adding -ffat-lto-objects breaks run-show-die-info.sh test.
+
+-------------------------------------------------------------------
+Tue Sep  8 15:18:57 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 0.181:
+  libelf: elf_update now compensates (fixes up) a bad sh_addralign for
+          SHF_COMPRESSED sections.
+  libdebuginfod: configure now takes --enable-libdebuginfod=dummy or
+                 --disable-libdebuginfod for bootstrapping.
+                 DEBUGINFOD_URLS now accepts "scheme-free" urls
+                 (guessing at what the user meant, either http:// or file://)
+  readelf, elflint: Handle aarch64 bti, pac bits in dynamic table and gnu
+                    property notes.
+  libdw, readelf: Recognize DW_CFA_AARCH64_negate_ra_state. Allows unwinding
+                  on arm64 for code that is compiled for PAC (Pointer
+                  Authentication Code) as long as it isn't enabled
+- Drop upstream patch:
+  * 0001-tests-Add-GCOV-flags-when-necessary.patch
+
+-------------------------------------------------------------------
+Mon Jun 15 07:12:57 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Remove remove-run-large-elf-file.sh.patch as it now checks for memory
+  size.
+- Use autosetup.
+
+-------------------------------------------------------------------
+Thu Jun 11 18:19:10 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.180:
+  elflint: Allow SHF_EXCLUDE as generic section flag when --gnu is given.
+  libdw, readelf: Handle GCC LTO .gnu.debuglto_ prefix.
+  libdw: Use correct CU to resolve file names in dwarf_decl_file.
+  libdwfl: Handle debugaltlink in dwfl_standard_find_debuginfo.
+  size: Also obey radix printing for bsd format.
+  nm: Explicitly print weak 'V' or 'T' and common 'C' symbols.
+- Add 0001-tests-Add-GCOV-flags-when-necessary.patch in order to fix
+  an unresolved symbol.
+- Enable LTO: boo#1138796 by adding -flto-partition=none and -Wno-error=stack-usage.
+
+-------------------------------------------------------------------
+Mon Mar 30 12:07:18 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.179:
+  debuginfod-client: When DEBUGINFOD_PROGRESS is set and the program doesn't
+                     install its own debuginfod_progressfn_t show download
+                     progress on stderr.
+                     DEBUGINFOD_TIMEOUT is now defined as seconds to get at
+                     least 100K, defaults to 90 seconds.
+                     Default to $XDG_CACHE_HOME/debuginfod_client.
+                     New functions debuginfod_set_user_data,
+                     debuginfod_get_user_data, debuginfod_get_url and
+                     debuginfod_add_http_header.
+                     Support for file:// URLs.
+
+  debuginfod: Uses libarchive directly for reading rpm archives.
+              Support for indexing .deb/.ddeb archives through dpkg-deb
+              or bsdtar.
+              Generic archive support through -Z EXT[=CMD]. Which can be
+              used for example for arch-linux pacman files by using
+              -Z '.tar.zst=zstdcat'.
+              Better logging using User-Agent and X-Forwarded-For headers.
+              More prometheus metrics.
+              Support for eliding dots or extraneous slashes in path names.
+
+  debuginfod-find: Accept /path/names in place of buildid hex.
+
+  libelf: Handle PN_XNUM in elf_getphdrnum before shdr 0 is cached
+          Ensure zlib resource cleanup on failure.
+
+  libdwfl: dwfl_linux_kernel_find_elf and dwfl_linux_kernel_report_offline
+           now find and handle a compressed vmlinuz image.
+
+  readelf, elflint: Handle PT_GNU_PROPERTY.
+
+  translations: Updated Ukrainian translation.
+
+-------------------------------------------------------------------
+Tue Feb  4 09:06:00 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Package debuginfod of elfutils for version 0.178.

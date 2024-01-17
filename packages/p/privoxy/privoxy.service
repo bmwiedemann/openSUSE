@@ -1,0 +1,27 @@
+[Unit]
+Description=Privoxy Web Proxy With Advanced Filtering Capabilities
+After=network.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=forking
+PIDFile=/run/privoxy.pid
+ExecStartPre=-/usr/bin/cp -upf /etc/resolv.conf /etc/host.conf /etc/hosts /etc/localtime /var/lib/privoxy/etc/
+ExecStartPre=-/usr/bin/cp -upf /@lib@/libresolv.so.2 /@lib@/libnss_dns.so.2 /var/lib/privoxy/@lib@/
+ExecStart=/usr/sbin/privoxy --chroot --pidfile /run/privoxy.pid --user privoxy /etc/config
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

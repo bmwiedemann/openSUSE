@@ -1,0 +1,257 @@
+-------------------------------------------------------------------
+Thu Apr 07 22:44:11 UTC 2022 - perry.werneck@gmail.com
+
+- Update to version 5.4:
+  * Fixing lgtm analisys.
+  * Adding librsvg on modules list.
+  * Adjustments in translation files.
+  * Fixing LGTM warnings.
+  * Using only standard icons in the toolbar.
+  * Adding jhbuild info and modules.
+  * Fixing build/install on separated folder.
+  * Updating build methods.
+  * Fixing lgtm alerts.
+  * Adjustments on autogen.sh to allow use from another path.
+  * Fixing linux package.
+  * Fixing error reported by LGTM
+  * Updating lgtm control file.
+  * Updating lgtm.yml
+  * Adding macos targets.
+  * Fixing library name on mac.
+  * Fixing macos build.
+  * Moving _fire_copy and _fire_past to static in the action table source.
+  * Adding required macos sources.
+  * Fixing Makefile.
+  * Fixing configure.ac
+  * Updating autogen for brew
+  * Fixing url-open on windows platform.
+  * Fixing auto-open URL and adjustments in the host settings popup dialog.
+  * Adding font settings dialog action (for classic menu).
+  * Fixing build.
+  * Color settings dialog is now an standard action.
+  * Updating translations.
+  * Adjustment in the selection and clipboard settings dialog.
+  * Opening URL myself if no one answers to the open-url signal.
+  * Adding settings dialog for the 'open-url' attribute.
+  * Implementing the 'open-url' property.
+  * Implementing signal 'open-url'.
+  * Adding icons on host and keyboard dialog actions.
+  * Updating default accelerators.
+  * Working on accelerators dialog.
+  * Adding action for keyboard accelerators dialog.
+  * Implementing settings popup dialog.
+  * Changing default accelerator for 'copy-append' back to '<shift><ctrl>C'
+  * Working on lgtm configuration.
+  * Adding lgtm configuration file.
+  * Update README.md
+  * Fixing program message changes.
+  * Fixing warnings.
+  * Updating translation
+  * Updating cross-compilers install.
+  * Fixing pt-br translation.
+  * Small adjustment in popup dialog.
+  * Fixing warning.
+  * Updating win32 package.
+  * Updating trace handler, resetting trace states when trace window closes.
+  * Persisting trace file name.
+  * Loading/saving logfile from properties.
+  * Fixing windows build.
+  * Fixing url editor.
+  * Adding method to vinculate dialog with toplevel, preserving the icon.
+  * Updating translation.
+  * Refactoring URL input component.
+  * Refactoring host settings dialog.
+  * Refactoring hostselect dialog.
+  * Hide cursor position when offline.
+  * Improving accelerator error log.
+  * Fixing 'save-settings' on non realized terminal widget.
+  * Fixing translation file conflicts.
+  * Fixing arch build.
+  * Update README.md
+  * Visual adjustments.
+  * Fixing load 'dialog'.
+  * Adjustments on 'load' dialog.
+  * Adjustments on 'save' dialog.
+  * Fixing dialog boxes.
+  * Visual style adjustments.
+  * Cross-hair was too white in the selenized theme.
+  * Styling dialog section.
+  * Selecting first sensitive page on settings notebook.
+  * Fixing exit hang.
+  * Delaying reconnect action.
+  * Toggle should be the last options to load from key file to avoid triger of autostart without host info.
+  * Waiting for background tasks before finalize.
+  * Adjusting description.
+  * Adding default title bar on dialogs.
+
+-------------------------------------------------------------------
+Sun Nov 01 15:18:44 UTC 2020 - perry.werneck@gmail.com
+
+- Update to version 5.3+git20201027:
+  * Fixing code scanning alerts.
+  * Removing unnecessary dependencies.
+  * Adding codeql analysis
+  * Adjustments for KP_ALTERNATIVE option.
+  * Fixing 'kpalternative' option.
+  * Adjustments in the file dialog.
+  * Adding usefull gtk extension methods from pw3270 application.
+  * Enabling copy-as-image action.
+  * Adding "copy-as-html" action.
+  * Refactoring error popup.
+  * Adding signal for customized action fire.
+  * Checking for invalid key-file.
+  * Adding styles to popup dialog.
+  * Adding dynamic font spacing option on settings.
+  * Blinking SSL indicator while downloadin CRL.
+  * Fixing default keycode for "PF-12".
+  * Fixing warnings.
+  * Refactoring PFkey engine to allow remapping from accelerator dialog.
+  * Working on load/save settings engine.
+  * Changing SSL toggle to dropdown to allow more options.
+  * Fixing load/save popup return signals.
+  * Refactoring popup engine.
+  * Delaying "has_timer" signal to avoid thread issues.
+  * Adding property with the OIA-Timer state.
+  * Enabling keytable search.
+  * Allowing image formats on clipboard.
+  * Updating filename extension based on file type.
+  * Auto selecting format from file extension.
+  * Implementing "save as image".
+  * Allow to override build date with SOURCE_DATE_EPOCH
+
+-------------------------------------------------------------------
+Thu Jun 04 18:30:11 UTC 2020 - perry.werneck@gmail.com
+
+- Update to version 5.3:
+  * Signal tables are now static.
+  * Updating README.
+  * Fixing build in newest gcc.
+  * Changing type of the PACKAGE_RELEASE macro to allow non numeric values.
+  * Updating version info.
+  * Adding release info when trace window starts.
+  * Refactoring accelerator engine.
+  * Build instructions for macOS
+  * Refactoring keytable management.
+  * Sets Courier New as default print font for macOS
+  * Change default font for macOS
+  * Add support to macosx
+  * Disabling "apply" button when host & service name are not set on host properties widget.
+  * Show host properties when terminal widget is activated without any host info.
+  * Refactoring actions.
+  * Adding group on property action (required for screen-model property actions).
+  * Fixing security dialog layout on windows.
+  * Implementing copy with center button.
+  * Adding smart copy options.
+  * Fixing toggle actions.
+  * Fixing tooltip for screen paste options.
+  * Implementing configuration for the "paste screen" option.
+  * Implementing clipboard settings dialog.
+  * Adding convenience method for comboboxes.
+  * Implementing cut&paste settings dialog.
+  * Settings dialog should destroy with parent.
+  * Moving property based actions to terminal library.
+  * Adding signal for OIA clicks.
+  * libv3270 now uses his own translation domain.
+  * Fixing v3270 state methods.
+  * Adding PF/PA Actions.
+  * The toggle action now lives in lib3270.
+  * Implementing GActions for v3270 terminal.
+  * Adding print and save actions in a more standard format.
+  * Adding key-file save & load on print operation object. 
+  * Adding signal for keyfile load on terminal widget.
+  * Removing deprecated signals.
+  * Implementing accelerator edit widget.
+  * CG character 0x20 should be blank.
+  * Loading accelerators from keyfile.
+  * Isolating CG translation table.
+  * Fixing CG char 0x00.
+  * Color theme are now standard widget properties. 
+  * Saving color & host-type properties to settings files.
+  * Implementing the "save to keyfile" method.
+  * Improving the "can't paste formatted data" popup dialog. It can be disabled now.
+  * Fixing "\n" at the end of text copy.
+  * Adding default action for the "click" on the OIA's security state icon.
+  * Disabling traces when the trace widget is destroyed.
+  * The "trace" widget can now be create/destroyed changing a terminal property.
+  * "keep-alive" is a network setting, then, it should be in the connection dialog.
+  * Refactoring clipboard methods.
+  * Fixing charset reset issue.
+  * Refactoring configuration dialogs to a more standard and consistent behavior.
+  * Adding property for dynamic font space for compatibility with the previous version.
+  * Adjustments in the model_number property.
+  * Host select widget is now sensible to connection state.
+  * Changing the default session name from "application name" to "product name".
+  * Fix based on comment from OBS request https://build.opensuse.org/request/show/736258
+  * Adjusments base of the comments on OBS Request 735904 (https://build.opensuse.org/request/show/735904)
+  * Fixing as requested on review of https://build.opensuse.org/request/show/731972:
+  * Trigerring reconfigure event when terminal size changes.
+  * Moving charset translation to main library.
+  * Getting product name from lib3270 configuration.
+  * Refactoring build process.
+  * Refactoring "paste from file" method.
+  * Refactoring print settings dialog.
+  * Adding popup asking for user intervention when the SSL negotiation fails.
+  * Removing lib3270 log redirection.
+  * Implementing the new smart paste feature.
+  * Refactoring clipboard manager.
+  * Moving selection management methods to protocol library.
+  * Moving terminal definitions to separated include file.
+  * Adding signal when session name changes (required for the HLLAPI plugin module).
+  * Updating package to follow naming guidelines.
+
+-------------------------------------------------------------------
+Mon Oct  7 15:20:18 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
+
+- Cleanup spec file
+- Drop support for <= SLE12-SP2
+
+-------------------------------------------------------------------
+Tue Oct  1 07:37:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop unnecessary build requirements. Own all produced glade
+  directories instead.
+- Enable parallel build.
+- Rectify descriptions.
+
+-------------------------------------------------------------------
+Tue Sep 10 19:41:33 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
+Fri May 31 13:10:15 UTC 2019 - perry.werneck@gmail.com
+
+- Update to version 5.2:
+  * Fixing package gen.
+  * Updating read me.
+  * Updating build info.
+  * Windows native file dialog is hanging sometimes, replacing it.
+  * Updating package info.
+  * Adjustments in the V5.1 ft dialog.
+  * Working on the new FT dialog.
+  * Working on drag & drop for activity list.
+
+-------------------------------------------------------------------
+Tue Mar 26 12:24:57 UTC 2019 - Perry Werneck <perry.werneck@gmail.com>
+
+- Fixing osc source_validator errors.
+
+-------------------------------------------------------------------
+Thu Feb 28 15:06:15 UTC 2019 - Perry Werneck <perry.werneck@gmail.com>
+
+  * Fixing centos build.
+  * Adding drag&drop support in the activity list component.
+  * Implementing drag&drop on the file settings widget.
+  * Updating old (V5.1) transfer dialogs to follow gnome visual layout.
+  * Fixing old FT dialog.
+  * Updating transfer settings dialog.
+  * Refactoring single file transfer dialog.
+  * Refactoring simple file transfer dialog.
+  * Adding compatibility FT dialog.
+  * Fixing RHEL-7 build.
+
+-------------------------------------------------------------------
+Tue Dec  4 19:20:54 UTC 2018 - Perry Werneck <perry.werneck@gmail.com>
+
+  * Refactoring build process.
+  * Spliting gtk library from pw3270 main project.

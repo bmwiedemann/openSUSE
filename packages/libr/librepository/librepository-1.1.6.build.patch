@@ -1,0 +1,45 @@
+Index: librepository-1.1.6/build.properties
+===================================================================
+--- librepository-1.1.6.orig/build.properties
++++ librepository-1.1.6/build.properties
+@@ -1,7 +1,10 @@
+-project.revision=1.1-SNAPSHOT
++project.revision=1.1.6
+ ivy.artifact.group=pentaho-library
+ ivy.artifact.id=librepository
+ impl.title=LibRepository
+ impl.productID=librepository
+ src.dir=${basedir}/source
+ dependency.libbase.revision=1.1.6
++
++antcontrib.available=true
++build.cache.dir=lib
+Index: librepository-1.1.6/common_build.xml
+===================================================================
+--- librepository-1.1.6.orig/common_build.xml
++++ librepository-1.1.6/common_build.xml
+@@ -1071,6 +1071,7 @@ TYPICAL TARGET SEQUENCE
+         <path refid="classpath" />
+       </classpath>
+       <src path="${src.dir}" />
++      <exclude name="org/pentaho/reporting/libraries/repository/email/**"/>
+     </javac>
+   </target>
+ 
+@@ -1356,6 +1357,9 @@ TYPICAL TARGET SEQUENCE
+              doctitle="${impl.title} documentation">
+       <link href="http://java.sun.com/j2se/${javac.source}.0/docs/api/" />
+       <classpath refid="classpath" />
++      <packageset dir="source">
++        <exclude name="org/pentaho/reporting/libraries/repository/email/**"/>
++      </packageset>
+     </javadoc>
+   </target>
+ 
+@@ -1648,4 +1652,4 @@ TYPICAL TARGET SEQUENCE
+     </dot-classpath>
+   </target>
+ 
+-</project>
+\ No newline at end of file
++</project>

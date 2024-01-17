@@ -1,0 +1,246 @@
+-------------------------------------------------------------------
+Thu Aug  3 06:29:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-pkg_resources.patch:
+  * Stop using pkg_resources.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Tue May  9 13:39:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Fri Jan 28 12:36:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- The disaster of falling tests (see previous record in this
+  changelog for URL) just continues with test_02_handler_wrapper.
+
+-------------------------------------------------------------------
+Fri Aug  6 14:01:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests and ask upstream for investigation
+  (https://foss.heptapod.net/python-libs/passlib/-/issues/135).
+
+-------------------------------------------------------------------
+Thu Jan 28 13:47:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- OpenLeap is not SLE
+
+-------------------------------------------------------------------
+Thu Jan 28 08:50:11 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use _multibuild to only have the test dependencies as
+  buildrequires of the test build.
+- Have optional test dependencies (Django and scrypt) that are not
+  available in SLE only be buildrequired in TW.
+
+-------------------------------------------------------------------
+Sat Nov 21 00:01:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update URL to https://foss.heptapod.net/python-libs/passlib
+- Add optional dependencies: Django, apache2-utils
+- Update %check to report skipped tests
+- Update to v0.7.4
+  * updated tests to pass for Django 1.8 - 3.1
+  * CryptContext will now throw UnknownHashError when it can't
+    identify a hash provided to methods such as CryptContext.verify
+    Previously it would throw a generic :exc:`ValueError`.
+- from v1.7.3
+  * ldap_salted_sha512 LDAP "salted hash" support added for SHA-256
+    and SHA-512
+  * bcrypt: Fixed Python 3 OS native backend detection on BSD platforms
+  * safe_crypt added support for crypt.crypt unexpectedly returning
+    bytes under Python 3
+  * safe_crypt added support for crypt.crypt throwing OSError
+    which can happen as of Python 3.9
+  * passlib.ext.django fixed lru_cache import for Django 3 compatibility
+  * bcrypt_sha256 Internal algorithm has been changed to use HMAC-SHA256
+    instead of plain SHA256
+  * bcrypt OS native backend ("os_crypt") now raises the new
+    PasswordValueError if password is provided as non-UTF8 bytes
+  * lookup_hash's required=False kwd was modified to report unsupported
+    hashes via the HashInfo.supported attribute; rather than letting
+    ValueErrors through uncaught.
+  * Various Python 3.9 compatibility fixes
+
+-------------------------------------------------------------------
+Thu Sep 24 17:34:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add optional dependencies: bcrypt, argon2_cffi, cryptography
+  and scrypt.
+
+-------------------------------------------------------------------
+Tue Jun  9 06:39:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
+Wed Jan  1 22:15:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Removed obsolete patches:
+  * python-passlib-1.7.1-libxcrypt-compat.patch
+  * pr_9_1.patch and pr_9_2.patch
+- Update to 1.7.2
+  * New Features
+    - argon2: Now supports Argon2 “ID” and “D” hashes
+      (assuming new enough backend library).
+    - scrypt: Now uses python 3.6 stdlib’s hashlib.scrypt() as backend,
+      if present (issue 86).
+
+  * Bugfixes
+    - Python 3.8 compatibility fixes
+    - passlib.apache.HtpasswdFile:
+      Now generates bcrypt hashes using the "$2y$" prefix, which should work 
+      properly with Apache 2.4’s htpasswd tool.
+    - passlib.totp: The TOTP.to_uri() method now prepends the issuer to URI label,
+      (per the KeyURI spec). This should fix some compatibility issues with 
+      older TOTP clients (issue 92)
+    - Fixed error in argon2.parsehash() (issue 97)
+    - unittests: crypt() unittests now account for linux systems running
+      libxcrypt (such as recent Fedora releases)
+
+-------------------------------------------------------------------
+Thu Oct  3 15:09:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add two patches to fix Python 3.8 compatibility
+  * pr_9_1.patch and pr_9_2.patch
+
+-------------------------------------------------------------------
+Mon Mar 18 10:46:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix libxcrypt compatibility:
+  * python-passlib-1.7.1-libxcrypt-compat.patch
+
+-------------------------------------------------------------------
+Sat Mar  2 15:20:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use symlinks when creating fdupes
+
+-------------------------------------------------------------------
+Wed Dec 19 00:03:58 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Trim filler wording from description.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:16 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Apr 22 16:44:52 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Enabled tests
+
+-------------------------------------------------------------------
+Tue Jan 31 15:08:14 UTC 2017 - michael@stroeder.com
+
+- Update to 1.7.1
+
+-------------------------------------------------------------------
+Sun Jan 22 11:18:59 UTC 2017 - michael@stroeder.com
+
+- updated project and source URLs
+
+-------------------------------------------------------------------
+Sat Nov 26 15:40:04 UTC 2016 - michael@stroeder.com
+
+- Update to 1.7.0 with very many changes:
+  http://passlib.readthedocs.io/en/stable/history/1.7.html#id1
+- CHANGES not in upstream source anymore
+
+-------------------------------------------------------------------
+Sun Feb 21 10:06:22 UTC 2016 - mardnh@gmx.de
+
+- Update to 1.6.5:
+  * Fixed some minor bugs in the test suite which were causing erroneous
+    test failures
+
+- Update to 1.6.4:
+  * bugfix: Correctly detect bcrypt 2.0.
+  * bugfix: CryptContext now accepts scheme names as unicode
+  * bugfix: :mod:`passlib.ext.django` now works correctly with Django 1.7-1.8.
+  * bugfix: :class:`passlib.apache.HtpasswdFile` now recognizes bcrypt,
+    sha256_crypt, sha512_crypt hashes
+
+  * A few changes have been made to the :class:`~passlib.hash.bcrypt` hash:
+    + It now supports the ``$2b$`` hash format.
+    + It will now issue a :exc:`~passlib.exc.PasslibSecurityWarning` if the active
+      backend is vulnerable to the :ref:`wraparound bug <bsd-wraparound-bug>`,
+      and automatically enable a workaround(py-bcrypt is known to be vulnerableas of v0.4).
+    + It will throw a :exc:`~passlib.exc.PasslibSecurityError` if the active backend
+      is vulnerable to the :ref:`8-bit bug <crypt-blowfish-bug>` (none of Passlib's
+      backends are known to be vulnerable as of 2015-07).
+    + Updated documentation to indicate the cffi-based
+      `bcrypt <https://pypi.python.org/pypi/bcrypt>`_ library is now the recommended
+      bcrypt backend.
+    + Backend capability detection code refactored to rely on runtime detection
+      rather than hardcoded information.
+    + Release **1.6.3** was skipped due to upload issues.
+
+-------------------------------------------------------------------
+Mon Jan 13 14:00:00 UTC 2014 - dmueller@suse.com
+
+- update to 1.6.2:
+ * Re-tuned the :attr:`~passlib.ifc.PasswordHash.default_rounds` values for all of the hashes.
+ * Added the new :doc:`bcrypt_sha256 <lib/passlib.hash.bcrypt_sha256>` hash,
+   which wraps BCrypt using SHA256 in order to work around BCrypt's password size limitations
+ * :doc:`passlib.hash.bcrypt <lib/passlib.hash.bcrypt>`:
+   Added support for the `bcrypt <https://pypi.python.org/pypi/bcrypt>`_
+
+-------------------------------------------------------------------
+Thu Oct 24 11:09:44 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Feb  5 13:10:42 UTC 2013 - saschpe@suse.de
+
+- Drop testsuite again, has strange issues
+
+-------------------------------------------------------------------
+Sat Sep  8 21:58:41 UTC 2012 - os-dev@jacraig.com
+
+- Update to 1.6.1:
+  * bugfix: Various CryptContext methods would incorrectly raise TypeError
+    if passed a unicode user category under Python 2. For consistency,
+    unicode user category values are now encoded to ``utf-8`` bytes under
+    Python 2.
+  * bugfix: Reworked internals of the CryptContext config compiler to fix a
+    couple of border cases (issue 39), see CHANGES for details.
+  * bugfix: FreeBSD 8.3 added native support for hash.sha256_crypt -- updated
+    Passlib's unittests and documentation accordingly (issue 35).
+  * bugfix: Fixed bug which caused passlib.apache unittest to fail if mtime
+    resolution >= 1 second (issue 35).
+  * Various bugfixes for Python 3.3 compatibility.
+  * Various documentation updates and corrections.
+
+-------------------------------------------------------------------
+Fri Jun 15 04:57:41 UTC 2012 - os-dev@jacraig.com
+
+- Update to 1.6: tons of changes including deprecated API, features and fixes;
+  see CHANGES.
+
+-------------------------------------------------------------------
+Thu Mar  8 11:34:03 UTC 2012 - saschpe@suse.de
+
+- Don't run testsuite on SLE, fixes build
+
+-------------------------------------------------------------------
+Tue Jan 31 10:38:52 UTC 2012 - saschpe@suse.de
+
+- Fix macro usage and remove reST from description
+
+-------------------------------------------------------------------
+Tue Nov 29 09:26:22 UTC 2011 - saschpe@suse.de
+
+- SPDX-style license string (BSD-3-Clause)
+- Package CHANGES, README, LICENSE
+- Run testsuite
+
+-------------------------------------------------------------------
+Mon Oct 24 12:26:26 UTC 2011 - cthiel@suse.com
+
+- initial package  (version 1.5.3)
+

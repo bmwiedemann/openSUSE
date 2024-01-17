@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Tue Dec  6 15:15:03 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 15.1:
+  * Elo gain and competition results:
+    With this release, version 5 of the NNUE neural net architecture
+    has been introduced, and the training data has been extended to
+    include Fischer random chess (FRC) positions. As a result, Elo
+    gains are largest for FRC, reaching up to 50 Elo for doubly
+    randomized FRC (DFRC). More importantly, also for standard chess
+    this release progressed and will win two times more game pairs than
+    it loses against Stockfish 15. 
+  * New evaluation:
+    This release also introduces a new convention for the evaluation
+    that is reported by search. An evaluation of +1 is now no longer
+    tied to the value of one pawn, but to the likelihood of winning the
+    game. With a +1 evaluation, Stockfish has now a 50% chance of winning
+    the game against an equally strong opponent. This convention scales
+    down evaluations a bit compared to Stockfish 15 and allows for
+    consistent evaluations in the future.
+- Refresh:
+  * date.patch
+  * stockfish-remove-net.patch
+- Remove nn-6877cd24400e.nnue
+- Add nn-ad9b42354671.nnue
+- Keep man page and stockfish-interface.txt but remove URL from
+  Source. Because not available anymore.
+
+-------------------------------------------------------------------
+Wed Apr 20 19:17:58 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 15:
+  Stockfish 15 continues to push the boundaries of chess, providing
+  unrivalled analysis and playing strength. In our testing, Stockfish
+  15 is ahead of Stockfish 14 by 36 Elo points and wins nine times
+  more game pairs than it loses.
+- Add stockfish-remove-net.patch: Don't try to donwload nnue
+  we already have it.
+
+-------------------------------------------------------------------
+Sun Mar 27 18:37:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.1:
+  Compared to Stockfish 14, this release introduces a more advanced NNUE
+  architecture and various search improvements. In self play testing, using a
+  book of balanced openings, Stockfish 14.1 wins three times more game pairs than
+  it loses. At this high level, draws are very common, so the Elo difference to
+  Stockfish 14 is about 17 Elo
+
+-------------------------------------------------------------------
+Fri Jul  9 08:34:14 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Update to version 14:
+  The engine is now significantly stronger than just a few months
+  ago, and wins four times more game pairs than it loses against 
+  the previous release version. 
+ 
+  Stockfish 14 is now at least 400 Elo ahead of Stockfish 7, a 
+  top engine in 2016. During the last five years, Stockfish has thus 
+  gained about 80 Elo per year.
+- Refresh date.patch
+
+-------------------------------------------------------------------
+Thu Apr 29 09:44:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 13:
+  * Significantly stronger than any of its predecessors:
+    Stockfish 13 outperforms Stockfish 12 by at least 35 Elo
+  * When playing against a one-year-old Stockfish, it wins 60 times
+    more game pairs than it loses
+  * An NNUE network retrained on billions of positions
+  * Much faster network evaluation code
+  * Significantly improved search heuristics
+  * Additional evaluation tweaks
+- Drop update-nnue.patch in favor of the release one
+- Use SourceUrl for nnue
+
+-------------------------------------------------------------------
+Sat Oct 10 00:00:00 CEST 2020 - dsterba@suse.cz
+
+- Update to version 12:
+ * 130 Elo stronger than version 11
+ * powered by NNUE (nn-baeb9ef2d183.nnue)
+ * More at https://github.com/official-stockfish/Stockfish/commit/c306d838697011da0a960758dde3f7ede6849060
+ * Added patch: update-nnue.patch
+
+-------------------------------------------------------------------
+Mon Jan 20 08:12:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 11:
+  * 50 Elo stronger than the last version
+  * For detail see:
+  https://github.com/official-stockfish/Stockfish/commit/c3483fa9a7d7c0ffa9fcc32b467ca844cfb63790
+
+-------------------------------------------------------------------
+Tue Dec 11 14:04:17 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundant wording.
+
+-------------------------------------------------------------------
+Fri Nov 30 09:46:12 UTC 2018 - mvetter@suse.com
+
+- Update to version 10
+  * Upstream does not provide a change log. Please see the git
+    history at https://github.com/official-stockfish/Stockfish/
+    for more details.
+
+-------------------------------------------------------------------
+Mon Jul 16 14:24:48 UTC 2018 - msuchanek@suse.com
+
+- gcc-c++-32bit is needed to build 32bit code (boo#1101338).
+
+-------------------------------------------------------------------
+Mon Feb  5 12:23:05 UTC 2018 - mvetter@suse.com
+
+- Update to version 9
+  * Simplify away redundant SEE pruning condition
+  * Limit the king distance factor when evaluating passed pawns
+  * Simplify verification search
+  * Many other improvements
+
+-------------------------------------------------------------------
+Sun Nov 20 14:52:27 UTC 2016 - rpm@fthiessen.de
+
+- Fixed architecture detection in spec file.
+
+-------------------------------------------------------------------
+Fri Nov  4 15:56:52 UTC 2016 - mvetter@suse.com
+
+- Update to version 8
+
+-------------------------------------------------------------------
+Mon Jun 13 10:20:17 UTC 2016 - psimons@suse.com
+
+- Install license file as part of the documentation.
+
+-------------------------------------------------------------------
+Fri Jun  3 08:22:46 UTC 2016 - psimons@suse.com
+
+- Drop Stockfish-CMakeLists.txt and stockfish-polyglot.ini. These
+  files aren't necessary for building (or running) Stockfish.
+
+-------------------------------------------------------------------
+Thu Apr 28 09:39:23 UTC 2016 - mvetter@suse.com
+
+- Update to version 7
+- Added date.patch: Get rid of __DATE__
+
+-------------------------------------------------------------------
+Tue Sep  1 16:40:38 UTC 2015 - mvetter@suse.com
+
+- Initial package for version 6

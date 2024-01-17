@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>597d07d0710befce91892e09c4fb9bb3</srcmd5>
+    <version>0.22.1</version>
+    <time>1673108261</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain gitui in openSUSE:Factory
+</comment>
+    <requestid>1056744</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1db251d73b10ea73b7895e915d512d94</srcmd5>
+    <version>0.22.1</version>
+    <time>1678555449</time>
+    <user>dimstar_suse</user>
+    <comment>- Set worker disk size to 4GB to fix &quot;No space left on device&quot; on pp64.
+- Update vendored dependencies
+- Use zstd compression for tarballs.
+- Remove gitui-v0.22.1.obscpio file. Forgot to delete
+</comment>
+    <requestid>1070836</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6ae99e9c3c5d83dc739597bf8c17bc3f</srcmd5>
+    <version>0.23.0</version>
+    <time>1687550030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.23.0
+  - Breaking Change
+      * focus_XYZ key bindings are merged into the move_XYZ set, so only one way to bind arrow-like keys from now on
+  - Added
+      * allow reset (soft,mixed,hard) from commit log
+      * support reword of commit from log
+      * fuzzy find branch
+      * list changes in commit message inside external editor
+      * allow detaching HEAD and checking out specific commit from log view
+      * add no-verify option on commits to not run hooks
+      * allow fetch on status tab
+      * allow copy file path on revision files and status tree
+      * print message of where log will be written if -l is set
+      * show remote branches in log
+  - Fixes
+      * fixed side effect of crossterm 0.26 on windows that caused double input of all keys
+      * commit msg history ordered the wrong way
+      * improve help documentation for amend cmd
+      * lag issue when showing files tab
+      * fix key binding shown in bottom bar for stash_open
+      * --bugreport does not require param
+      * edit-file command shown on commits msg
+      * crash on branches popup in small terminal
+      * edit command duplication
+      * syntax errors in key_bindings.ron will be logged
+      * Fix UI freeze when copying with xclip installed on Linux
+      * Fix UI freeze when copying with wl-copy installed on Linux
+      * commit hooks report &quot;command not found&quot; on Windows with wsl2 installed
+      * crashes on entering submodules
+      * fix race issue: revlog messages sometimes appear empty
+      * default to tick-based updates
+      * add support for options handling in log and stashes views
+  - Changed
+      * minimum supported rust version bumped to 1.65 (thank you time crate)
+</comment>
+    <requestid>1094940</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>939c7fc650601c712af290716f15cf2a</srcmd5>
+    <version>0.23.0</version>
+    <time>1692611120</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104910</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>809deec0ca2acc8307d0185b9b63d5fe</srcmd5>
+    <version>0.24.3</version>
+    <time>1695209021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112393</requestid>
+  </revision>
+</revisionlist>

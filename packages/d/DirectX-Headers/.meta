@@ -1,0 +1,10 @@
+<package name="DirectX-Headers" project="openSUSE:Factory">
+  <title></title>
+  <description>This repository hosts the official Direct3D 12 headers. These headers are made available under the MIT license rather than the traditional Windows SDK license.
+
+Additionally, this repository hosts several helpers for using these headers.
+
+Make sure that you visit the DirectX Landing Page for more resources for DirectX developers.</description>
+  <devel project="X11:XOrg" package="DirectX-Headers"/>
+  <url>https://github.com/microsoft/DirectX-Headers</url>
+</package>

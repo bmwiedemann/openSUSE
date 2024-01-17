@@ -1,0 +1,5 @@
+<package name="kvm_stat" project="openSUSE:Factory">
+  <title>kvm_stat</title>
+  <description>Tool for gathering and displaying kvm statistics, useful for analyzing how kvm guests are running.</description>
+  <devel project="Virtualization" package="kvm_stat"/>
+</package>

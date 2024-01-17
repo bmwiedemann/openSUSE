@@ -1,0 +1,22 @@
+Index: bin/autoreconf.in
+===================================================================
+--- bin/autoreconf.in.orig
++++ bin/autoreconf.in
+@@ -595,6 +595,8 @@ sub autoreconf_current_directory ($)
+                'AC_CONFIG_AUX_DIR',
+                'AC_CONFIG_HEADERS',
+                'AC_CONFIG_SUBDIRS',
++               'AC_LIBLTDL_CONVENIENCE',
++               'AC_LIBLTDL_INSTALLABLE',
+                'AC_INIT',
+                'AC_REQUIRE_AUX_FILE',
+                'AC_PROG_LIBTOOL',
+@@ -620,6 +622,8 @@ sub autoreconf_current_directory ($)
+                                        || $macro eq "AM_PROG_LIBTOOL"
+                                        || $macro eq "LT_INIT";
+       $uses_libltdl = 1             if $macro eq "LT_CONFIG_LTDL_DIR";
++      $uses_libltdl = 1             if $macro eq "AC_LIBLTDL_CONVENIENCE";
++      $uses_libltdl = 1             if $macro eq "AC_LIBLTDL_INSTALLABLE";
+       $uses_autoheader = 1          if $macro eq "AC_CONFIG_HEADERS";
+       $uses_automake = 1            if $macro eq "AM_INIT_AUTOMAKE";
+       $uses_intltool = 1            if $macro eq "IT_PROG_INTLTOOL";

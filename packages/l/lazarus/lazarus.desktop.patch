@@ -1,0 +1,18 @@
+Index: lazarus/install/lazarus.desktop
+===================================================================
+--- lazarus.orig/install/lazarus.desktop
++++ lazarus/install/lazarus.desktop
+@@ -1,11 +1,12 @@
+ [Desktop Entry]
+ Name=Lazarus
++GenericName=Integrated Development Environment
+ Comment=Lazarus IDE
+ Exec=startlazarus %f
+ Terminal=false
+ Type=Application
+ Icon=lazarus
+-Categories=IDE;Development;GTK;GUIDesigner;
++Categories=Development;IDE;
+ StartupWMClass=Lazarus
+ MimeType=text/x-pascal;text/lazarus-project-source;text/lazarus-project-information;text/lazarus-form;text/lazarus-resource;text/lazarus-package;text/lazarus-package-link;text/lazarus-code-inlay;
+ Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;

@@ -1,0 +1,9 @@
+<package name="lash" project="openSUSE:Factory">
+  <title>Linux Audio Session Handler</title>
+  <description>LASH (formerly LADCCA) is a session management system for JACK and ALSA
+audio applications on GNU/Linux. Its aim is to allow you to have many
+different audio programs running at once and to save the setup, close
+them down, then reload the setup at some other time.
+</description>
+  <devel project="multimedia:libs" package="lash"/>
+</package>

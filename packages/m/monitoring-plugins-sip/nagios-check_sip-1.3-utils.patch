@@ -1,0 +1,13 @@
+Index: check_sip
+===================================================================
+--- check_sip.orig
++++ check_sip
+@@ -26,7 +26,7 @@
+ #   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+ use strict;
+-use lib "/usr/lib64/nagios/plugins";
++use lib "/usr/lib/nagios/plugins";
+ use utils qw($TIMEOUT %ERRORS &print_revision &support);
+ use vars qw($PROGNAME);
+ use IO::Socket::INET;

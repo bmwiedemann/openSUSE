@@ -1,0 +1,284 @@
+-------------------------------------------------------------------
+Wed Aug 30 05:06:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.16:
+  * docs: add missing option #344
+  * docs: Add missing items to manpage #345
+  * Add option to exit bemenu using esc in vim binds normal mode #348
+  * Evaluate filter first #350
+
+-------------------------------------------------------------------
+Tue May  9 06:26:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.15:
+  * Add rounded corners/Border radius #319
+  * Add Match/Page Counter #204
+  * docs: add missing options #331
+  * Add fixed height option #270
+  * Fix Makefile to support submodule setups #329
+  * Fix: invisible right border #333
+  * Fix: select last entry if pointer/touch above last index #332
+  * ESC have no effect under Wayland while enabled Vim binding #334
+  * Small fixes #340
+
+-------------------------------------------------------------------
+Fri Dec 16 10:12:42 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.14:
+  * Add basic vim bindings #314
+  * Make pkg-config configurable #316
+  * improve exit code docs #320
+  * Fix --filter #322
+
+-------------------------------------------------------------------
+Tue Oct 11 07:56:02 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.13:
+  * Add support to disable pointer, touch and keyboard events #311
+
+-------------------------------------------------------------------
+Mon Oct 10 06:21:48 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.12:
+  * fix dangling pointer state on wayland #310
+
+-------------------------------------------------------------------
+Fri Oct  7 07:25:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.11:
+  * Trigger pointer selection on button release instead #281
+  * Do not highlight entry with initial mouse position #282
+  * Document alternating color argument in man page as well #283
+  * Fix exiting when an unexpected Wayland error occurs. #287
+  * wayland: Damage using buffer coordinates #293
+  * wayland: Bump version #296
+  * fix ignored --monitor in BEMENU_OPTS env var #303
+  * Add --accept-single flag #304
+  * Document feedback color argument in man page as well #307
+
+-------------------------------------------------------------------
+Wed Jul  6 10:21:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.10:
+  * Add options to set cursor bg/fg color #278
+  * Don't alternate colors by default (let ALTERNATE color be
+    same as ITEM) #280
+
+-------------------------------------------------------------------
+Tue Jul  5 04:46:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.9:
+  * Fix Wayland event loop order to avoid missed renders (fixes
+    regressions on #274, #275) #279
+
+-------------------------------------------------------------------
+Tue Jul  5 04:45:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.8:
+  * Fix --ch cursor height option parsing #253
+  * Add option to specify cursor width #268
+  * Add option to specify alternating background/foreground colors for entries #267
+  * Add option to specify horizontal padding in single line mode #266
+  * Add option to define a border and border color #265
+  * Fix missed rendering regressions on Wayland (fixes --grab flag) #273
+
+-------------------------------------------------------------------
+Tue Feb 22 06:46:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.7:
+  * Symbol validation #247
+  * wayland: various fixes #249
+
+-------------------------------------------------------------------
+Mon Feb 21 08:25:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.6:
+  * makefile: Add uninstall target #226
+  * Restore run with key and symbol visibility #246
+
+-------------------------------------------------------------------
+Fri Feb 11 07:41:40 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.5:
+  * Add relative width option in #220
+  * mouse and touch support on wayland in #200
+
+-------------------------------------------------------------------
+Mon Dec  6 10:49:27 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.4:
+  * fix scaling caused issue on window redimension on wayland #197
+  * add -c center mode on wayland #198
+  * Add option to configure cursor height #201
+  * Add -s to disable title spacing on entries #203
+  * Fix incorrect line height #207
+  * lib/renderers/curses/curses.c: always use "%s"-style
+    format for printf()-style functions #211
+  * Add horizontal alignment and improve center alignment #209
+  * Add paste functionality #210
+  * Instruction for installing dependencies #214
+
+-------------------------------------------------------------------
+Thu Jul 22 04:21:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.3:
+  * Fixes key repeat rate in wayland
+  * Ctrl-c now exits bemenu in x11 and wayland
+  * Hidden files (dot files) are now ignored in bemenu-run
+
+-------------------------------------------------------------------
+Wed Jun  9 09:00:48 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.2:
+  * Handle multiple seats (more) correctly
+
+-------------------------------------------------------------------
+Tue May 25 06:48:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Makes it possible to show bemenu on focused monitor on
+    wayland #174
+
+-------------------------------------------------------------------
+Thu May 20 07:32:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Add custom key support
+  * Add key_pending field to sync wayland keyboard event loops 
+  * Add --filter option. 
+  * Support hiding filter input (#150) 
+  * Use -m option for setting monitor name and monitor
+  * Various fixes
+
+-------------------------------------------------------------------
+Sun Jul  5 07:58:26 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * This release fixes rendering issues under HiDPI configuraitons
+  Notable new features:
+  * --scrollbar none
+  * BEMENU_SCALE env variable which can be used to force scaling
+    factor
+
+-------------------------------------------------------------------
+Tue Apr 14 10:29:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Use %{_lib} macro
+
+-------------------------------------------------------------------
+Mon Apr 13 09:48:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * This bug fix release fixes a build problem with missing
+    wayland headers on some systems. #106
+- Remove bemenu-pkgconfig.patch: contained in upstream
+
+-------------------------------------------------------------------
+Sun Apr 12 21:03:13 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  This release includes various bug fixes and some minor new features.
+  Following behavior has changed by default:
+  * The vertical UI now resembles vanilla dmenu more with the left
+    padding added.
+  * Scrollbar thickness has changed to 1 character thick instead 1
+    pixel, to make it more visible on hidpi displays.
+  * X11 should now contain windows class and name
+  * Wayland shows bemenu only on single monitor now, to have the
+    old behavior back you can use the -m all option. Note that there
+    seems to be input bugs in Wayland backend currently, and I would
+    appreciate if some Wayland developer could help figure those
+    out! #98 #102
+  * bemenu-run under curses won't fork anymore by default, to make
+    bemenu-run under curses fork, use the --fork option, this option
+    is no-op for any other backend.
+  Notable new features:
+  * BEMENU_OPTS env variable can be now used as a alternative way of specifying command line options for bemenu.
+- Remove because upstreamed:
+  * bemenu-0.3.0-boo1165235-ncurses.patch
+  * bemenu-0.3.0-curses.patch
+- Remove bemenu-0.3.0-wayland.patch: switch to makefile
+- Add bemenu-pkgconfig.patch: https://github.com/Cloudef/bemenu/issues/106
+
+-------------------------------------------------------------------
+Fri Feb 28 12:44:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add bemenu-0.3.0-wayland.patch: enable wayland renderer
+
+-------------------------------------------------------------------
+Fri Feb 28 11:05:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- boo#1165235: Undefined symbol get_wch
+  * Add bemenu-0.3.0-boo1165235-ncurses.patch:
+    Search for ncursesw instead of ncurses
+
+-------------------------------------------------------------------
+Fri Dec 27 13:37:31 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * Uses default the monospace 10 font now to match dmenu
+    and to be more robust
+  * Hidpi support for wayland
+- Add bemenu-0.3.0-curses.patch:
+  See https://github.com/Cloudef/bemenu/pull/77
+
+-------------------------------------------------------------------
+Wed Oct 30 13:15:01 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * wayland: implement a proper repaint cycle 
+  * Add options for renderers
+  * Add option to respect panel position
+  * x11: add pango as dependency of the x11 rendere
+  * bemenu: add --line-height / -H option
+  * Add C-g shortcut to x11 and wayland
+  * Add manpage
+
+-------------------------------------------------------------------
+Mon Mar  4 08:23:32 UTC 2019 - mvetter@suse.com
+
+- Update to first official release 0.1.0
+- Remove service file
+
+-------------------------------------------------------------------
+Tue Feb  7 21:07:49 UTC 2017 - callumjfarmer13@gmail.com
+
+- update to 0.0.20161206
+- dropped ncurses-fix.patch
+
+------------------------------------------------------------------
+Mon May  9 19:44:02 UTC 2016 - sleep_walker@opensuse.org
+
+- bump to new git snapshot 0.0.20160412
+- cleanup
+
+-------------------------------------------------------------------
+Thu Oct  8 19:42:40 UTC 2015 - sleep_walker@opensuse.org
+
+- fix whitespace inconsistency
+- cleanup changelog to match reviewer's taste
+- define patch unconditionaly (remove %ifs around it)
+- fix RPM group
+- reformat description
+- require only libxkbcommon 0.3.2 or higher
+- remove 4th argument of defattr to match reviewer's taste
+
+-------------------------------------------------------------------
+Wed Oct  7 21:56:39 UTC 2015 - sleep_walker@opensuse.org
+
+- disable ncurses build for now as I can't locate library with
+  wget_wch 
+
+-------------------------------------------------------------------
+Sat Sep 26 19:55:22 UTC 2015 - sleep_walker@opensuse.org
+
+- updated snapshot (20150923)
+- remove patches accepted by upstream
+- enable curses backed again and fix it (ncurses-fix.patch and sed)
+- clean up spec
+
+-------------------------------------------------------------------
+Mon Sep 21 18:14:15 UTC 2015 - sleep_walker@opensuse.org
+
+- let there be bemenu!
+

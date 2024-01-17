@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Tue Mar 28 07:11:03 UTC 2023 - lnussel@suse.de
+
+- Update to version 6+git20230220.2a49e32:
+  * Fix build with GCC 13
+  * Fix MFC-7460DN PPD file name
+
+-------------------------------------------------------------------
+Wed Aug 19 10:42:16 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
+Sat Jul 11 09:56:15 UTC 2020 - seife+obs@b1-systems.com
+
+- Update to version 6+git20200420.9d7ddda:
+  * Arrange blocks in bands of 128 lines
+    - this is more similar to what the Brother driver does and
+      fixes #52, #40 etc
+  * Tweak compiler flags
+  * Be tolerant of zero-page jobs
+  * Add some new printer definitions
+    - HL-2375DW, HL-2390DW, MFC-7420, MFC-7460DN, DCP-L2520DW
+  * Update README.md
+
+-------------------------------------------------------------------
+Tue Jun  2 14:38:16 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use cups-rpm-helper to have automatic printer driver provides (boo#1172407)
+
+-------------------------------------------------------------------
+Thu Apr 16 14:59:45 UTC 2020 - i@xuzhao.net
+
+- Update to version 6+git20191118.2f63d0a:
+  * Package available on guix, too
+  * Bump version number
+  * Version 6
+  * Add Brother HL-2270DW
+  * add gedit backup file to .gitignore (*~)
+  * Add a bunch of printers
+  * Don't compress across bands (#39)
+  * Version 5
+  * Brother HL-1110
+  * Add a bunch of printer stanzas
+
+-------------------------------------------------------------------
+Sat Apr 11 11:55:12 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 6:
+  * Added support for some more Brother HL-series printers.
+    Brother HL-2030 series
+    Brother HL-2140 series
+    Brother HL-2220 series
+    Brother HL-2270DW series
+    Brother HL-5030 series
+    Brother DCP-L2520D series
+- Update from version 5:
+  * Fixed problems with Brother HL-series printers in 600 dpi mode.
+  * Added brlaser.drv stanzas for several new printers.
+- Update from version 4:
+  * Added several printers
+  * Merged duplex printing support
+  * Switched to a CMake build system
+- Removed patches as they are already merged:
+  0001-mark-DCP-7055W-as-supported.diff
+  0002-Add-Brother-DCP1510.diff
+  0003-Add-missing-include-string.diff
+
+-------------------------------------------------------------------
+Fri Jun 17 06:36:23 UTC 2016 - lnussel@suse.de
+
+- Update to version 3+git20160302.03bb366:
+  * Kill a harmless dead store
+  * Fix lest.hpp dependency for the tests.
+  * Add Brother DCP-7055
+  * Misc cleanups, mostly in the test code
+  * Reject unexpected raster formats
+  * Use cups-config --ldflags
+  * Refuse to build without a C++11 compiler
+- fetch patches from pull requests:
+  0001-mark-DCP-7055W-as-supported.diff (was brlaser-br7055w.diff)
+  0002-Add-Brother-DCP1510.diff
+  0003-Add-missing-include-string.diff (fixes boo#985119)
+- remove SLE11 and SLE10 noise from spec file again, doesn't build there
+  anyways.
+
+-------------------------------------------------------------------
+Thu Jan 28 15:24:15 CET 2016 - jsmeix@suse.de
+
+- Make it build for SLE12 with traditional CUPS 1.5.4 to ensure
+  it works on SLE12 both with CUPS 1.7.5 and CUPS 1.5.4 because
+  for SLE12 by default CUPS 1.7.5 is provided and alternatively
+  CUPS 1.5.4 is provided in the "legacy" module, cf.
+  https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12/
+- Prepare building it for SLE11 via "BuildRequires cupsddk"
+  because on SLE11 with its CUPS 1.3.9 there is the separated
+  package cupsddk (otherwise use cups-ddk a sub-package of cups).
+- For SLE11 redefine _libexecdir to be "/usr/lib" in any case
+  because on SLE11 x86_64 it evaluates to "/usr/lib64" which
+  is wrong in particular for CUPS filters and backends, cf.
+  https://bugzilla.opensuse.org/show_bug.cgi?id=575544#c2
+- Prepare building it for SLE10 (cf. "SLE10" spec file comments).
+- Have Source0 as .tar.gz (instead .tar.xz) because .tar.gz
+  "just works" on SLE11 and SLE10 and the .tar.gz is only 2K
+  bigger than the .tar.xz (25K versus 23K as of this writing).
+- Regardless that it is prepared for building on SLE11 and SLE10
+  (see gutenprint.spec and hplip.spec how to do that)
+  currently it cannot build for SLE11 and SLE10
+  because "autoreconf -fi" fails with
+  "error: Autoconf version 2.68 or higher is required".
+  On SLE11 there is autoconf-2.63 and on SLE10 there is
+  autoconf-2.59 so that currently building for SLE11 and SLE10
+  is still disabled.
+
+-------------------------------------------------------------------
+Thu Jan 28 10:51:32 UTC 2016 - lnussel@suse.de
+
+- require python-cups to get automatic printer driver provides
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan 27 21:08:08 UTC 2016 - lnussel@suse.de
+
+- install compiled ppds
+
+-------------------------------------------------------------------
+Fri Nov 27 12:51:45 UTC 2015 - lnussel@suse.de
+
+- new package
+

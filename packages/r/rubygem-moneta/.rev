@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99025c1610cd55735ca4d5cd77dea564</srcmd5>
+    <version>0.7.20</version>
+    <time>1390482660</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>214558</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f763abc4b4d4263a091c9843f2237a4</srcmd5>
+    <version>0.8.0</version>
+    <time>1406557271</time>
+    <user>coolo</user>
+    <comment>- updated to version 0.8.0
+ * Rename Moneta::Adapters::Mongo to Moneta::Adapters::MongoOfficial
+ * Add Moneta::Adapters::MongoMoped
+ * Drop Ruby 1.8 support</comment>
+    <requestid>242696</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1f763abc4b4d4263a091c9843f2237a4</srcmd5>
+    <version>0.8.0</version>
+    <time>1409303255</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b1b52c45864dcfae3d8c82cfd723d9e3</srcmd5>
+    <version>0.8.0</version>
+    <time>1413263549</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255839</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f6360aa775e292cfdb325aabd1dbe99a</srcmd5>
+    <version>0.8.1</version>
+    <time>1483047940</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447122</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3a2a30ef8f3a9b366e589235e7c342be</srcmd5>
+    <version>1.0.0</version>
+    <time>1490132956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479653</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bf170ebc8cd21b7df0d75b44ddeb5536</srcmd5>
+    <version>1.1.0</version>
+    <time>1554114998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689704</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c4a389340fa8f55836a0e96a9ded1c18</srcmd5>
+    <version>1.1.1</version>
+    <time>1560970834</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706009</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>10f34db5cdabc501836e3d4e573c3fcd</srcmd5>
+    <version>1.2.1</version>
+    <time>1583613541</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773794</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6db29e7463f64f6225d73f4b82d7ccd5</srcmd5>
+    <version>1.3.0</version>
+    <time>1589197297</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802348</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8178497ebc5756d637b452878994cb5e</srcmd5>
+    <version>1.4.0</version>
+    <time>1601919129</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838055</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c97d5fe3bbae0e3f6fcde95fe4441462</srcmd5>
+    <version>1.4.1</version>
+    <time>1611262559</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.4.1
+ see installed CHANGES
+  1.4.1
+  
+  * Adapters::Mongo - deprecate :db option, document :database option (#194)
+  * Adapters::Mongo - add retries to increment operation
+  
+</comment>
+    <requestid>865209</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>11cc09892a64f990010b954a5f5813da</srcmd5>
+    <version>1.4.2</version>
+    <time>1625225263</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>903518</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>44780b2fb7073ed6680ced72c9d7f8b3</srcmd5>
+    <version>1.5.1</version>
+    <time>1651351954</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974057</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9d8c00fe775efdd9c04613a29bb2a45a</srcmd5>
+    <version>1.5.2</version>
+    <time>1670954209</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042648</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cebe1cf033eefe41ff679986583dcb12</srcmd5>
+    <version>1.6.0</version>
+    <time>1692611160</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104977</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc5f1ba0678b3cb7fc747732f44b70c9</srcmd5>
+    <version>3.8.1</version>
+    <time>1526371761</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-SpeechRecognition required by mycroft-core</comment>
+    <requestid>603824</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>929dbf7a80f4e198dacd839b8c725141</srcmd5>
+    <version>3.8.1</version>
+    <time>1545223936</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659362</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>de40afb33c0d079b4d60920a9286e866</srcmd5>
+    <version>3.8.1</version>
+    <time>1573223160</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746335</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3a5d231f98a31e58a1ebb7b346f59dd1</srcmd5>
+    <version>3.8.1</version>
+    <time>1657712718</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 406-google-cloud-speech.patch
+  (gh#Uberi/speech_recognition#406) to switch dependency from
+  oauth2client and googleclient to google-cloud-speech.
+</comment>
+    <requestid>988736</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1d894200728fca5f4b1d2664d6b25edd</srcmd5>
+    <version>3.8.1</version>
+    <time>1657809273</time>
+    <user>dimstar_suse</user>
+    <comment>- Actually do what you have promised in changelog.</comment>
+    <requestid>989112</requestid>
+  </revision>
+</revisionlist>

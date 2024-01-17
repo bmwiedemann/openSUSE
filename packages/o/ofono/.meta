@@ -1,0 +1,8 @@
+<package name="ofono" project="openSUSE:Factory">
+  <title>ofono</title>
+  <description>Description
+
+
+</description>
+  <devel project="hardware" package="ofono"/>
+</package>

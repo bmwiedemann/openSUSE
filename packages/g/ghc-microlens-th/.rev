@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39884b9d564078a7343dba18812641e6</srcmd5>
+    <version>0.4.3.5</version>
+    <time>1592578961</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814947</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f6f255f9216ea044f3cc54f6947a0b66</srcmd5>
+    <version>0.4.3.5</version>
+    <time>1598643297</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829349</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6984ceed16ccfef19a5cc596f9b46f9f</srcmd5>
+    <version>0.4.3.6</version>
+    <time>1603458858</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842755</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37a5a338d36c3a0e5ee10b5116539915</srcmd5>
+    <version>0.4.3.7</version>
+    <time>1605783533</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>849161</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>95b573118be6ea0cf64008e2b901d76c</srcmd5>
+    <version>0.4.3.8</version>
+    <time>1606252483</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update</comment>
+    <requestid>850496</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>69c4d2a08b3fb110fab7f3024eb9e665</srcmd5>
+    <version>0.4.3.8</version>
+    <time>1608633764</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857457</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>43a9c11c917371680cd6322befee2a66</srcmd5>
+    <version>0.4.3.9</version>
+    <time>1611163526</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>863271</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1f705c98c91f80a982896253c2369a5e</srcmd5>
+    <version>0.4.3.10</version>
+    <time>1622536733</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>896195</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1ebff9abd5a56637a04500029a0267e4</srcmd5>
+    <version>0.4.3.10</version>
+    <time>1665668551</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008489</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>309ba8d7035c7ff39c2368d32a8d9bec</srcmd5>
+    <version>0.4.3.11</version>
+    <time>1674043809</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059087</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7556fa15cbc1558c1eb97b30343a6846</srcmd5>
+    <version>0.4.3.11</version>
+    <time>1680636083</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075958</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>16b860f853bc0252d956341084017006</srcmd5>
+    <version>0.4.3.12</version>
+    <time>1680884204</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1077768</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4fc4ef703a8b8f9f1089e2f2647c4841</srcmd5>
+    <version>0.4.3.13</version>
+    <time>1687469127</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094437</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6bea3d5c0fd27cfa53b87448fbbaec43</srcmd5>
+    <version>0.4.3.14</version>
+    <time>1695327796</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1112765</requestid>
+  </revision>
+</revisionlist>

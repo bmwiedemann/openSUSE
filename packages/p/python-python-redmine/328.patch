@@ -1,0 +1,22 @@
+From 5b5918e5b8a02f7e84df3884a365b13fd575ee50 Mon Sep 17 00:00:00 2001
+From: Tom Misilo <1446856+misilot@users.noreply.github.com>
+Date: Thu, 10 Aug 2023 16:00:47 -0500
+Subject: [PATCH] Change the key from a query paramter to a HEADER
+
+---
+ redminelib/engines/base.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/redminelib/engines/base.py b/redminelib/engines/base.py
+index f9785be..c0122f4 100644
+--- a/redminelib/engines/base.py
++++ b/redminelib/engines/base.py
+@@ -34,7 +34,7 @@ def __init__(self, **options):
+ 
+         # We would like to be authenticated by API key by default
+         if options.get('key') is not None:
+-            self.requests['params']['key'] = options['key']
++            self.requests['headers']['X-Redmine-API-Key'] = options['key']
+         elif options.get('username') is not None and options.get('password') is not None:
+             self.requests['auth'] = (options['username'], options['password'])
+ 

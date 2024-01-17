@@ -1,0 +1,41 @@
+From 9fce2c1f83b89ce8cbef585ccfc3c19c55cc16f6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 19 Jul 2022 03:30:09 +0200
+Subject: [PATCH 1/3] Disambiguate UNKNOWN EXCEPTION
+
+minizinc.cpp and solns2out.cpp have the exact same error message in case of
+an unhandled/unknown exception, add a suffix to notify where it is catched.
+---
+ lib/solns2out.cpp | 2 +-
+ minizinc.cpp      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/solns2out.cpp b/lib/solns2out.cpp
+index 1e0ec4c6..6f9fdfe5 100644
+--- a/lib/solns2out.cpp
++++ b/lib/solns2out.cpp
+@@ -403,7 +403,7 @@ void Solns2Out::checkSolution(std::ostream& oss) {
+   } catch (const exception& e) {
+     oss << e.what() << std::endl;
+   } catch (...) {
+-    oss << "  UNKNOWN EXCEPTION." << std::endl;
++    oss << "  UNKNOWN EXCEPTION in checker." << std::endl;
+   }
+ 
+ #else
+diff --git a/minizinc.cpp b/minizinc.cpp
+index 0cb11667..a62478e9 100644
+--- a/minizinc.cpp
++++ b/minizinc.cpp
+@@ -72,7 +72,7 @@ int run(const std::string& exe, const std::vector<std::string>& args, bool jsonS
+       if (slv.getFlagVerbose()) {
+         std::cerr << std::endl;
+       }
+-      std::cerr << "  UNKNOWN EXCEPTION." << std::endl;
++      std::cerr << "  UNKNOWN EXCEPTION in solver." << std::endl;
+     }
+ 
+     if (slv.getFlagVerbose()) {
+-- 
+2.37.0
+

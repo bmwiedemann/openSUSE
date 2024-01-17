@@ -1,0 +1,65 @@
+Index: traceroute-2.1.5/traceroute/traceroute.h
+===================================================================
+--- traceroute-2.1.5.orig/traceroute/traceroute.h
++++ traceroute-2.1.5/traceroute/traceroute.h
+@@ -57,6 +57,13 @@ typedef struct tr_module_struct tr_modul
+ #define DEF_DCCP_PORT	DEF_START_PORT	/*  is it a good choice?...  */
+ #define DEF_RAW_PROT	253	/*  for experimentation and testing, rfc3692  */
+ 
++#ifndef HAVE_SECURE_GETENV
++#  ifdef HAVE___SECURE_GETENV
++#    define secure_getenv __secure_getenv
++#  else
++#    error neither secure_getenv nor __secure_getenv is available
++#  endif
++#endif
+ 
+ void error (const char *str) __attribute__ ((noreturn));
+ void error_or_perm (const char *str) __attribute__ ((noreturn));
+Index: traceroute-2.1.5/traceroute/as_lookups.c
+===================================================================
+--- traceroute-2.1.5.orig/traceroute/as_lookups.c
++++ traceroute-2.1.5/traceroute/as_lookups.c
+@@ -39,10 +39,10 @@ const char *get_as_path (const char *que
+ 	    struct addrinfo *res;
+ 	    int ret;
+ 
+-	    server = getenv ("RA_SERVER");
++	    server = secure_getenv ("RA_SERVER");
+ 	    if (!server)  server = DEF_RADB_SERVER;
+ 
+-	    service = getenv ("RA_SERVICE");
++	    service = secure_getenv ("RA_SERVICE");
+ 	    if (!service)  service = DEF_RADB_SERVICE;
+ 
+ 
+Index: traceroute-2.1.5/libsupp/clif.c
+===================================================================
+--- traceroute-2.1.5.orig/libsupp/clif.c
++++ traceroute-2.1.5/libsupp/clif.c
+@@ -398,7 +398,7 @@ int CLIF_parse_cmdline (int argc, char *
+ 	unsigned int dirty_flags = 0;
+ 	int dirty_plus = 0;
+ 	int exclusive_cnt = 0;
+-	int posix = getenv ("POSIXLY_CORRECT") != NULL ||
++	int posix = secure_getenv ("POSIXLY_CORRECT") != NULL ||
+ 					    (parse_flags & CLIF_POSIX);
+ 
+ 	curr.argc = argc;
+Index: traceroute-2.1.5/libsupp/clif.h
+===================================================================
+--- traceroute-2.1.5.orig/libsupp/clif.h
++++ traceroute-2.1.5/libsupp/clif.h
+@@ -118,4 +118,12 @@ extern int CLIF_arg_func (CLIF_argument
+ 	{ "V", "version", 0, "Print version info and exit",	\
+ 		CLIF_version_handler, STR, 0, CLIF_EXTRA | CLIF_EXIT }
+ 
++#ifndef HAVE_SECURE_GETENV
++#  ifdef HAVE___SECURE_GETENV
++#    define secure_getenv __secure_getenv
++#  else
++#    error neither secure_getenv nor __secure_getenv is available
++#  endif
++#endif
++
+ #endif	/*  _CLIF_H   */

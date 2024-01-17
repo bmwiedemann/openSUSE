@@ -1,0 +1,556 @@
+-------------------------------------------------------------------
+Mon Jan  1 00:46:54 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.21.2:
+  * Bugfix release, for details see
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.21.2
+
+-------------------------------------------------------------------
+Sun Dec 31 01:05:56 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with VTK 9.3.0, add fix_vtk_9_3_compat.patch
+
+-------------------------------------------------------------------
+Mon Sep 11 10:52:51 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.21.1:
+  * Bugfix release, for details see
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.21.1
+
+-------------------------------------------------------------------
+Wed Aug 10 15:42:59 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable AddonManager extension on Leap 15.x, as it requires
+  Python >= 3.8
+- Add 0001-Implement-math.comb-fallback-for-Python-3.6.patch
+- Minor packaging cleanups
+
+-------------------------------------------------------------------
+Tue Aug  8 15:49:02 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.21.0:
+  * Lots of bugfixes and new features, for details see
+    https://wiki.freecad.org/Release_notes_0.21 and
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.21.0
+- Drop upstream patches:
+  * 0001-Fix-build-with-NG-6.2.2201-include-BRepMesh_Incremen.patch
+  * 0001-Part-OCCError.h-remove-unneeded-includes.patch
+  * 0001-Drawing-add-missing-include.patch
+  * 0001-FEM-add-missing-include.patch
+  * 0001-Revert-unused-parameter-warning-change.patch
+  * 0001-FEM-femmesh-fix-AttributeError-module-numpy-has-no-a.patch
+  * 0001-Fix-build-with-gcc13.patch
+
+-------------------------------------------------------------------
+Tue Aug  8 12:01:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build on aarch64, correctly link OpenGL, add
+  0001-Fix-variable-name-for-OpenGL-library.patch
+
+-------------------------------------------------------------------
+Mon Mar 27 09:49:49 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- Fix build with gcc 13
+  0001-Fix-build-with-gcc13.patch
+
+-------------------------------------------------------------------
+Thu Jan 26 00:01:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build after numpy 1.24 API changes, add
+  0001-FEM-femmesh-fix-AttributeError-module-numpy-has-no-a.patch
+
+-------------------------------------------------------------------
+Fri Dec 30 00:55:38 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with OpenCASCADE 7.7.0, add
+  * 0001-Part-OCCError.h-remove-unneeded-includes.patch
+  * 0001-Drawing-add-missing-include.patch
+  * 0001-FEM-add-missing-include.patch
+  * 0001-Revert-unused-parameter-warning-change.patch
+
+-------------------------------------------------------------------
+Tue Dec  6 19:57:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.20.2:
+  * Lots of bugfixes and new features, for details see
+    https://wiki.freecad.org/Release_notes_0.20.2 and
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.20.2
+
+-------------------------------------------------------------------
+Tue Aug 16 00:33:06 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.20.1:
+  * Lots of bugfixes and new features, for details see
+    https://wiki.freecad.org/Release_notes_0.20.1 and
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.20.1
+
+-------------------------------------------------------------------
+Mon Aug 15 22:06:33 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Netgen 6.2.2201 and later, add
+  0001-Fix-build-with-NG-6.2.2201-include-BRepMesh_Incremen.patch
+
+-------------------------------------------------------------------
+Tue Jun 14 17:12:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.20:
+  * Lots of bugfixes and new features, for details see
+    https://wiki.freecad.org/Release_notes_0.20 and
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.20
+- Drop upstream patches:
+  * fix_unittestgui_tkinter_py3.patch
+  * fix-smesh-vtk9.patch
+  * 0001-Test-remove-not-needed-u-before-py3-unicode-string.patch
+  * 0001-Test-fix-exception-handling-in-tests-for-units.patch
+  * 0001-Test-Provide-more-useful-information-when-unit-trans.patch
+  * 0002-Base-Fix-wrong-character-encoding-for-micro-siemens.patch
+  * 0001-improve-search-for-VTK-9.patch
+- Add 0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
+- Add 0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
+
+-------------------------------------------------------------------
+Wed Mar 16 18:15:57 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove VTK::Java/java-devel dependency, add
+  0001-improve-search-for-VTK-9.patch
+
+-------------------------------------------------------------------
+Thu Mar 10 20:13:02 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use current Coin4 instead of Coin (3).
+
+-------------------------------------------------------------------
+Fri Mar  4 18:16:46 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add some unit test fixes:
+  * 0001-Test-remove-not-needed-u-before-py3-unicode-string.patch
+  * 0001-Test-fix-exception-handling-in-tests-for-units.patch
+  * 0001-Test-Provide-more-useful-information-when-unit-trans.patch
+  * 0002-Base-Fix-wrong-character-encoding-for-micro-siemens.patch
+
+-------------------------------------------------------------------
+Thu Mar  3 17:42:20 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.19.4:
+  * Lots of bugfixes, for details see
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.19.4
+
+-------------------------------------------------------------------
+Sun Feb  6 17:31:23 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Pre-generate parsetab.py for ply.yacc in OpenSCAD and FEM Mods:
+  https://tracker.freecadweb.org/view.php?id=4840
+
+-------------------------------------------------------------------
+Fri Jan 14 17:27:24 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.19.3:
+  * Lots of bugfixes, for details see
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.19.3
+
+-------------------------------------------------------------------
+Sun Jun 27 21:27:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace the QtWebKit build dependency with QtWebEngine.
+
+-------------------------------------------------------------------
+Tue Apr 27 23:14:50 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.19.2:
+  * Various bug fixes, no changelog provided
+
+-------------------------------------------------------------------
+Mon Mar 22 11:57:09 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.19.1:
+  * Lots of new features, bug fixes and improvements, see
+    https://wiki.freecadweb.org/Release_notes_0.19
+- Drop upstream patches:
+  * 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch
+  * 0003-qt-5.14.patch
+  * update-swigpyrunin-for-python-3.8.patch
+  * 0001-fem-use-time.process_time-instead-of-removed-time.cl.patch
+  * fix_qt_5.15_build.patch
+  * 0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+  * 0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
+  * 0001-Gui-skip-ci-fix-Wodr.patch
+  * 0001-Part-Import-skip-ci-disable-use-of-Message_ProgressI.patch
+  * 0001-import-Hotfix-for-build-failure-from-bad-debug-code.patch
+  * 0001-partdesign-fix-failing-tapered-hole-test.patch
+  * 0001-add-missing-std-namespace-to-build-on-Debian-10.patch
+- Rebase fix-smesh-vtk9.patch
+
+-------------------------------------------------------------------
+Tue Feb 23 19:05:09 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build and tests with OCCT 7.5, add
+  0001-Part-Import-skip-ci-disable-use-of-Message_ProgressI.patch
+  0001-import-Hotfix-for-build-failure-from-bad-debug-code.patch
+  0001-partdesign-fix-failing-tapered-hole-test.patch
+- Add 0001-add-missing-std-namespace-to-build-on-Debian-10.patch
+- Cleanup specfile:
+  * Use system PyCXX, drop unused libboost_python3
+  * Drop some unused dependencies
+  * Remove ChangeLog.txt, not updated since version 0.14
+
+-------------------------------------------------------------------
+Mon Jan  4 22:02:50 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with latest GCC, add 0001-Gui-skip-ci-fix-Wodr.patch
+- Force-enable C++17, Boost 1.75 requires C++14 at least
+
+-------------------------------------------------------------------
+Sat Nov 28 14:08:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.18.5:
+  * Fix addon manager to adapt to GitHub infrastructure changes.
+  * Add 0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
+  * Rebase 0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+- Reenable workbenches dependent on Mesher (e.g. Path, FEM):
+  * Add fix-smesh-vtk9.patch
+
+-------------------------------------------------------------------
+Sat Sep 19 01:37:12 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with boost 1.73 and later, add
+  0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+- Cleanup some build dependencies.
+
+-------------------------------------------------------------------
+Thu Jul 23 11:43:21 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- temporary disable FEM module until VTK 9 support arrives
+
+-------------------------------------------------------------------
+Sun Jun  7 15:48:17 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Qt 5.15, add fix_qt_5.15_build.patch
+
+-------------------------------------------------------------------
+Wed Mar 18 09:34:33 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Allow install with lowercase package name: zypper install freecad
+
+-------------------------------------------------------------------
+Mon Mar 16 22:24:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- More spec file cleanup, removed duplicate files
+- Use upstream provided desktop files, mimeinfo, etc
+
+-------------------------------------------------------------------
+Sun Mar 15 18:13:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix runtime errors with Python 3.8:
+  * 0001-fem-use-time.process_time-instead-of-removed-time.cl.patch
+- Fix last python2 she-bang remainders, fix imports:
+  * fix_unittestgui_tkinter_py3.patch
+- Remove unnecessary opencv build dependency
+- update to current 0.18 branch:
+  * Fem: fix segmentation fault when opening contraint transform
+    panel. Fix Python code
+  * Part: the number of domains returned by TopoShape::getDomains
+    must match with number of faces
+  * apply fixes from master when building with occt 7.4
+    + Drop 0002-fix-compile.patch
+
+-------------------------------------------------------------------
+Sat Mar 14 15:12:29 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Python 3.8:
+  Add update-swigpyrunin-for-python-3.8.patch
+- Spec file cleanup
+  * Drop xpm FreeCAD icon
+  * Install PNGs/SVG icons in correct paths
+  * Remove obsolete update_mime_database calls in %post
+  * Remove obsolete conditionals for Leap 42.x
+
+-------------------------------------------------------------------
+Sat Jan 25 11:03:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- make 0003-qt-5.14.patch do what it is advertising
+  * fix conditional in order to locate rcc/uic properly
+
+-------------------------------------------------------------------
+Fri Jan 24 09:02:08 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- update to current 0.18 branch:
+  * fixes #0004182: Segfault when clicking constraints from a
+    different viewport [skip ci]
+  * [Draft] ImportDXF 0.18 Bug upgrading from 0.16. See discussion
+    https://forum.freecadweb.org/viewtopic.php?f=3&t=41879
+  * fixes #0004233: Access violation and file corruption on undo
+    duplicate sketch
+  * FEM: py3 fix in selection widget
+  * FEM: selection widgets, add some error prints
+  * FEM: equations, fix reset edit mode
+  * [AddonManager] 0.18 Improve Non GitPython Error Handling.
+    Previous output when clicking Macros tab caused errors in
+    Report View with no Macros loaded at all.
+  * fix encoding problem when clicking a link on StartPage if
+    application is installed into a directory with non-ASCII characters
+  * [Arch] ArchMaterial 0.18 Fix Crash
+
+-------------------------------------------------------------------
+Thu Jan 23 16:41:29 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- fix build with new gcc and Qt 5.14
+  (0002-fix-compile.patch 0003-qt-5.14.patch)
+
+-------------------------------------------------------------------
+Wed Oct 30 16:06:43 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to final 0.18.4
+  * pre-select name filter in import/export file dialog
+
+-------------------------------------------------------------------
+Tue Oct 22 06:46:22 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to current 0.18 branch, esp for Qt >= 5.9 fixes
+  * [TD]Fix slow GC of QGIPrimPath
+  * [Spreadsheet] Excel File Import fix Py3 bug
+  * [Path] Fix xrange bug with Py3
+  * fix print preview function for >= Qt 5.9
+  * Backport: startwb files restored in 0.18.3 to display thumbs correctly
+  * 0.18.x displays the example files within in the Start WB without their
+     respective thumbs. This PR restores that functionality
+  * Fixed problems with 'pythonopen'
+  * Correction of drill speed calculation
+  * Material: py2 fix in depreciated mat file parser (back port from 0.19)
+  * [TD]Fix #4017 Crash on bad hatch scale
+
+-------------------------------------------------------------------
+Thu Jul 18 11:01:30 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.18.3
+  * AddonManager: Skip non-github addons
+  * Sketcher: Fix Carbon copy leads to unsolvable sketch
+  * Sketcher: Fix carbon copy construction points
+  * fixes #0003993: Memory leak with Python3
+  * code simplification in PythonWrapper
+  * issue #0003984: Creating a Path Job object fails with 'PySide2.QtWidgets.QDialog' object has no attribute 'templateGroup'
+  * Fixes bug #4008: removes phantom path cause
+  * Fix crash in case encoding of Python paths fails
+  * [Material] Respect unicode filenames Fixes #4027
+  * BrowserView: fix QWebEngine crash
+  * Py3: no __builtin__ module available
+  * fixes 0004010: Box Selection + Part -> MakeCompound will crash FreeCAD
+  * FEM: solver elmer tasks, Py3 decode fix
+  * make OpenSCAD utilities working again with Py2
+
+-------------------------------------------------------------------
+Fri Jul 12 22:23:09 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove MPI dependencies, as these are not used for the built package,
+  but adversely affect build times and rebuilds.
+  Proper MPI integration needs more work and has to ensure the base version
+  of FreeCAD can be used without prior manual setup of an MPI environment.
+  Remove 0001-find-openmpi2-include-files.patch, mpicc/mpicxx would
+  pick up the correct include path by themselfs.
+- Sort BuildRequires: again
+
+-------------------------------------------------------------------
+Thu Jun 13 12:25:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch to fix
+  build with recent shiboken2/pyside2 releases.
+
+-------------------------------------------------------------------
+Sun May 12 07:21:14 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.18.2
+  * replace insecure use of eval() with proper use of units
+  * py3/py2: use exec as function
+  * Arch: Fixed error in roof - Fixes #3864
+  * Draft: Fixed 0.18.1 bug in DXF importer
+  * Py3 fix: correctly convert a Python str to const char*
+  * Py3 fix reading/writing from/to OBJ file
+  * fixes 0003913: libspnav crash on linux wayland during startup
+
+-------------------------------------------------------------------
+Fri Apr  5 11:56:11 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.18.1
+  * FEM module fixes
+  * crash fixes
+  * Qt5 bugs with external display
+
+-------------------------------------------------------------------
+Mon Mar 25 08:01:35 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- add missing requires to six and vtk python modules (found via test suite)
+
+-------------------------------------------------------------------
+Mon Mar 18 12:34:53 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Update to release 0.18
+  * NetGen FEM enabled
+  * 0001-find-openmpi2-include-files.patch added for openmpi2 support
+- Obsolete patches:
+  * 0001-Convert-deprecated-boost-signal-to-signals2.patch
+  * 0001-Use-GL_RGB32F-instead-of-GL_RGB32F_ARB.patch
+  * 0002-move-from-deprecated-boost.signals-to-boost.signals2.patch
+  * 0003-fix-blocking-of-SelectionObserver.patch
+  * fix-build-with-Qt5_11.diff
+  * fix-build.diff
+  * fix-draft-module-with-python3.patch
+  * fix-gcc8-build-failure.patch
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-FreeCAD-and-FreeCADGui-modules.patch
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-__FreeCADBase__-module.patch
+
+
+-------------------------------------------------------------------
+Thu Mar 14 03:36:03 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add support for Boost::Signals2, Boost::Signals has been deprecated
+  since Boost 1.54 and removed in 1.69:
+  * 0001-Convert-deprecated-boost-signal-to-signals2.patch
+  * 0002-move-from-deprecated-boost.signals-to-boost.signals2.patch
+  * 0003-fix-blocking-of-SelectionObserver.patch
+- Add explicit double-conversion-devel BuildRequires
+
+-------------------------------------------------------------------
+Sat Mar  9 15:10:24 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update URL: to use https://
+- Reorder BuildRequires alphabetically, remove duplicates
+
+-------------------------------------------------------------------
+Fri Feb 15 09:48:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Generalize description, and strip info that is already in
+  the metadata.
+
+-------------------------------------------------------------------
+Thu Feb 14 23:21:01 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with GCC 8, add fix-gcc8-build-failure.patch
+- Add 0001-Use-GL_RGB32F-instead-of-GL_RGB32F_ARB.patch, fix building
+  on AArch64.
+- Remove openmpi build dependencies, erroneously required for VTK
+  previously.
+  Drop 0001-find-openmpi2-include-files.patch
+
+-------------------------------------------------------------------
+Tue Feb 12 21:10:12 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- enable FEM module
+- disable builds for 32bit and s390x, test suite fails and it makes no
+  sense to use FreeCAD on small systems or mainframes...
+
+-------------------------------------------------------------------
+Mon Feb  4 08:28:22 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to current branch:
+  - Spreadsheet: Fixed issue #3361.
+
+-------------------------------------------------------------------
+Fri Feb  1 09:42:55 UTC 2019 - wbauer@tmo.at
+
+- Add upstream patches to fix build with python 3.7:
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-__FreeCADBase__-module.patch
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-FreeCAD-and-FreeCADGui-modules.patch
+
+-------------------------------------------------------------------
+Wed Sep  5 14:50:23 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Aug 28 11:56:17 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- fix missing dependency to numpy, found via the..
+- added testsuite run via extra spec file
+
+-------------------------------------------------------------------
+Sat Aug 11 12:29:12 UTC 2018 - adrian@suse.de
+
+- update branch again
+- fix dependencies of Qt4 build (Leap 42.3)
+
+-------------------------------------------------------------------
+Thu Jul 26 07:42:15 UTC 2018 - adrian@suse.de
+
+- update to current branch, obsoletes branch_update.patch
+
+-------------------------------------------------------------------
+Mon Jun 18 19:36:22 UTC 2018 - stefan.bruens@rwth-aachen.de
+
+- Fix BuildRequires, TW no longer has libboost_python-devel but
+  libboost_python3-devel, and for Leap 15.0 this linked libpython3.6m
+  and libboost_python-py2_7 into the same binary.
+
+-------------------------------------------------------------------
+Sun May 20 08:12:30 UTC 2018 - christophe@krop.fr
+
+- Add fix-build-with-Qt5_11.diff. Fixes build with the upcoming
+  Qt 5.11.
+- Switch to %autosetup
+
+-------------------------------------------------------------------
+Tue May  8 06:33:56 UTC 2018 - adrian@suse.de
+
+- temporary disable FEM module
+  * it works fine, but requires hdf5 version 1.8 via med-tools,
+    which currently conflicts in openSUSE distro.
+- Fix draft module crash
+  (got merged upstream for 0.18 fix-draft-module-with-python3.patch)
+
+-------------------------------------------------------------------
+Fri Apr 27 12:55:30 UTC 2018 - adrian@suse.de
+
+- apply current 0.17 branch (branch_update.patch)
+  In first place for occt 7.2 fixes
+
+-------------------------------------------------------------------
+Tue Apr 17 06:46:23 UTC 2018 - adrian@suse.de
+
+- fix crash in Draft module with python 3
+
+-------------------------------------------------------------------
+Mon Apr 16 06:51:06 UTC 2018 - adrian@suse.de
+
+- cleanup python qt deps (pyside2 only now)
+
+-------------------------------------------------------------------
+Tue Apr 10 11:33:35 UTC 2018 - adrian@suse.de
+
+- update to version 0.17
+  2 years of work: https://www.freecadweb.org/wiki/Release_notes_0.17
+- switching to Qt5
+  (fix-build.diff 0001-find-openmpi2-include-files.patch)
+  (the old 0.16 fork had obsolete temporary patches remove-qtwebkit.patch and
+   remove-webgui.patch)
+
+-------------------------------------------------------------------
+Thu Jan  4 15:36:57 UTC 2018 - wbauer@tmo.at
+
+- Add remove-qtwebkit.patch and remove-webgui.patch (taken from
+  Arch Linux) to fix build without QtWebKit
+- Build without QtWebKit on Tumbleweed and SLE/Leap 15 as
+  libQtWebKit4 is about to be dropped (boo#1070901)
+
+-------------------------------------------------------------------
+Fri Dec 15 07:13:05 UTC 2017 - adrian@suse.de
+
+- fix build for factory (boost dependencies)
+
+-------------------------------------------------------------------
+Wed Nov  8 08:09:39 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.16.6712 (contains backports from trunk)
+- Some cleanup
+
+-------------------------------------------------------------------
+Sun Sep 10 08:23:34 UTC 2017 - rbrown@suse.com
+
+- Correct python-CXX requires
+- add python-pyside requires, needed for welcome splash 
+
+-------------------------------------------------------------------
+Mon Jun 13 06:46:23 UTC 2016 - adrian@suse.de
+
+- FreeCAD 0.16
+- create on the base of the work from various home projects
+  (esp by wkazubski and torhans)
+- use rpath instead of modifying ldconfig for our own libs
+

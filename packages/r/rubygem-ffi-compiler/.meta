@@ -1,0 +1,9 @@
+<package name="rubygem-ffi-compiler" project="openSUSE:Factory">
+  <title>Ruby FFI Rakefile generator</title>
+  <description>A ruby library for automating compilation of native libraries for
+use with ffi.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-ffi-compiler"/>
+  <url>http://github.com/ffi/ffi</url>
+</package>

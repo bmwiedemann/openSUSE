@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SDL Bomber
+GenericName=Bomberman
+Comment=SDL Bomberman clone
+Icon=sdl_bomber
+Exec=sdl_bomber
+Type=Application
+Categories=Game;ActionGame;
+StartupNotify=false

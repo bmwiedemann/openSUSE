@@ -1,0 +1,9 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("libservicelog.* shlib-policy-nonversioned-dir")
+addFilter("libservicelog.* shlib-policy-missing-lib")
+addFilter("libservicelog.* explicit-lib-dependency")
+addFilter("libservicelog.* devel-file-in-non-devel-package")
+addFilter("libservicelog.* zero-length")
+addFilter("libservicelog.* no-binary")

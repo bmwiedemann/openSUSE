@@ -1,0 +1,41 @@
+From 52093add7b3f38156e632fa81fcf1c0b6ad4d549 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Tue, 3 Dec 2013 15:11:14 +0100
+Subject: [PATCH] Pass compilation with -Wformat-security
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ diff/diff3.c |  2 +-
+ src/main.c   |  2 +-
+ src/subr.c   | 12 ++++--------
+ 3 files changed, 6 insertions(+), 10 deletions(-)
+
+Index: cvs-1.12.13/diff/diff3.c
+===================================================================
+--- cvs-1.12.13.orig/diff/diff3.c
++++ cvs-1.12.13/diff/diff3.c
+@@ -1503,7 +1503,7 @@ output_diff3 (diff, mapping, rev_mapping
+ 	      line = 0;
+ 	      do
+ 		{
+-		  printf_output (line_prefix);
++		  printf_output ("%s", line_prefix);
+ 		  cp = D_RELNUM (ptr, realfile, line);
+ 		  length = D_RELLEN (ptr, realfile, line);
+ 		  write_output (cp, length);
+Index: cvs-1.12.13/src/main.c
+===================================================================
+--- cvs-1.12.13.orig/src/main.c
++++ cvs-1.12.13/src/main.c
+@@ -1459,7 +1459,7 @@ usage (register const char *const *cpp)
+ {
+     (void) fprintf (stderr, *cpp++, program_name, cvs_cmd_name);
+     for (; *cpp; cpp++)
+-	(void) fprintf (stderr, *cpp);
++	(void) fprintf (stderr, "%s", *cpp);
+     exit (EXIT_FAILURE);
+ }
+ 

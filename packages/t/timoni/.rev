@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abc646c18dd021b2f15e7e95c8d4d680</srcmd5>
+    <version>0.10.0</version>
+    <time>1688928059</time>
+    <user>dimstar_suse</user>
+    <comment>new package timoni: package manager for Kubernetes, powered by CUE and inspired by Helm</comment>
+    <requestid>1097765</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4af6331bf832001e7c7f8badd551d3e0</srcmd5>
+    <version>0.11.0</version>
+    <time>1690278649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1100230</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f352891de2297fe3d5df5b5ba7d927cf</srcmd5>
+    <version>0.11.1</version>
+    <time>1690897104</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101683</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>42408b54751eecc716777ec9045b26a8</srcmd5>
+    <version>0.12.1</version>
+    <time>1694019481</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109093</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2643fc5d761239d2df1f25c694946623</srcmd5>
+    <version>0.13.1</version>
+    <time>1694460116</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110194</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c30da6b05db4299d9c486d13565f584a</srcmd5>
+    <version>0.14.0</version>
+    <time>1696270034</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114780</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7a4b1ae00f6a1a12b1f0d7e96e8ab584</srcmd5>
+    <version>0.14.1</version>
+    <time>1696760309</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116161</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bcc63be50bb99c0193d5d0fb162d0c7f</srcmd5>
+    <version>0.14.2</version>
+    <time>1696964333</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116322</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ffca59ec071fb9c2a27a8164e315830b</srcmd5>
+    <version>0.15.0</version>
+    <time>1698700244</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121090</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>270e6053f68b2238f21472043a928ac2</srcmd5>
+    <version>0.16.0</version>
+    <time>1699910494</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125393</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>54c1a36d68d265daeacc8e8fcef4cf1b</srcmd5>
+    <version>0.17.0</version>
+    <time>1701378067</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129711</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e5c58d55170fb9611c51d1b20b3a4ec</srcmd5>
+    <version>0.18.0</version>
+    <time>1704487358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136918</requestid>
+  </revision>
+</revisionlist>

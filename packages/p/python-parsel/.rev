@@ -1,0 +1,129 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c1d65c9ad0cb69360db096b7dc3f417</srcmd5>
+    <version>1.2.0</version>
+    <time>1515623573</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of scrapy</comment>
+    <requestid>559202</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca3f2d26ec1b20e60f4df6ba02f1b025</srcmd5>
+    <version>1.4.0</version>
+    <time>1524144511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0:
+  * has-class XPath extension function;
+  * parsel.xpathfuncs.set_xpathfunc is a simplified way to register
+    XPath extensions;
+  * Selector.remove_namespaces now removes namespace declarations;
+  * Python 3.3 support is dropped;
+  * make htmlview command for easier Parsel docs development.</comment>
+    <requestid>593919</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0fade437f185c179f294d4df367d36ec</srcmd5>
+    <version>1.5.1</version>
+    <time>1542580347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649919</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f39451e6b32ebaa00b3fbec6c842e5ef</srcmd5>
+    <version>1.5.1</version>
+    <time>1545648048</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659536</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a7b09028c023f8303ca8fe5c599eee9a</srcmd5>
+    <version>1.5.2</version>
+    <time>1568379467</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 1.5.2:
+  * ``Selector.remove_namespaces`` received a significant performance improvement
+  * The value of ``data`` within the printable representation of a selector
+    (``repr(selector)``) now ends in ``...`` when truncated, to make the
+    truncation obvious.</comment>
+    <requestid>730059</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>290835f630c7fc7870aca05c3b8ca4a6</srcmd5>
+    <version>1.5.2</version>
+    <time>1587467419</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795798</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>58b04ac5c4fe7dd04ad16ca965b013d4</srcmd5>
+    <version>1.5.2</version>
+    <time>1615905877</time>
+    <user>RBrownSUSE</user>
+    <comment>- fix build requires syntax error on expanding multiple python flavors</comment>
+    <requestid>879099</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>933066af0224960ba966e208eeea38d9</srcmd5>
+    <version>1.6.0</version>
+    <time>1629917907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914220</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e292813b89e0715181ada10e8fbdce6c</srcmd5>
+    <version>1.6.0</version>
+    <time>1666257101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030077</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a4e59b7e7475bdab6b1c788045feb6ca</srcmd5>
+    <version>1.7.0</version>
+    <time>1673209537</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Add PEP 561-style type information
+  * Support for Python 2.7, 3.5 and 3.6 is removed
+  * Support for Python 3.9-3.11 is added
+  * Very large documents (with deep nesting or long tag content) can now be
+  parsed, and ``Selector`` now takes a new argument ``huge_tree`` to disable
+  this
+  * Support for new features of cssselect 1.2.0 is added
+  * The ``Selector.remove()`` and ``SelectorList.remove()`` methods are
+  deprecated and replaced with the new ``Selector.drop()`` and
+  ``SelectorList.drop()`` methods which don't delete text after the dropped
+  elements when used in the HTML mode.
+- drop python-parsel-drop-python-2.patch (upstream)</comment>
+    <requestid>1056833</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>108a9fc89cecafe218cd6b3f9e98fbfd</srcmd5>
+    <version>1.8.1</version>
+    <time>1703198309</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.1:
+  * Remove a Sphinx reference from NEWS to fix the PyPI
+    description
+  * Add support for JMESPath: you can now create a selector for a
+    JSON document and call ``Selector.jmespath()``.
+  * Selectors can now be constructed from ``bytes`` (using the
+    ``body`` and ``encoding`` arguments) instead of ``str``
+    (using the ``text`` argument), so that there is no internal
+    conversion from ``str`` to ``bytes`` and the memory
+    usage is lower.
+  * Typing improvements
+  * The ``pkg_resources`` module (which was absent from the
+    requirements) is no longer used
+  * New requirements:
+  * ``jmespath``
+  * ``typing_extensions`` (on Python 3.7)
+
+- Initial package build.</comment>
+    <requestid>1134335</requestid>
+  </revision>
+</revisionlist>

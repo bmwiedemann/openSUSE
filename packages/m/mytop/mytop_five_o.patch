@@ -1,0 +1,40 @@
+--- mytop	2003-08-04 10:31:14.000000000 -0700
++++ mytop.bak	2006-12-08 22:14:08.000000000 -0800
+@@ -252,18 +252,21 @@
+ 
+ ## Get static data
+ 
+-my $db_version;
+ my $have_query_cache;
+ 
+-my @variables = Hashes("show variables");
++my @ver = Hashes("select version() as ver");
++my $db_version = $ver[0]->{ver};
++my $global = '';
++
++if ($db_version =~ /^5/)
++{
++	$global = 'global';
++}		
++
++my @variables = Hashes("show $global variables");
+ 
+ foreach (@variables)
+ {
+-    if ($_->{Variable_name} eq "version")
+-    {
+-        $db_version = $_->{Value};
+-        next;
+-    }
+     if ($_->{Variable_name} eq "have_query_cache")
+     {
+         if ($_->{Value} eq 'YES')
+@@ -669,7 +672,7 @@
+     ##
+     if ($config{header})
+     {
+-        my @recs = Hashes("show status");
++        my @recs = Hashes("show $global status");
+ 
+         ## if the server died or we lost connectivity
+         if (not @recs)

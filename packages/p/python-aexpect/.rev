@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2453fd7f9eb8e4ed61196cebc5837dcb</srcmd5>
+    <version>1.4.0</version>
+    <time>1508316651</time>
+    <user>dimstar_suse</user>
+    <comment>new package, dependency of avocado</comment>
+    <requestid>533672</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ed72e3b569ddb2ec412673a030524ccc</srcmd5>
+    <version>1.5.1</version>
+    <time>1532774705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1:
+  * No changelog available
+- Correct dependencies
+- Run tests</comment>
+    <requestid>625772</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>60437e85c1ff0a9a7bae65724cc5fdbd</srcmd5>
+    <version>1.6.2</version>
+    <time>1629269760</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.6.2:
+  * No changelog available
+- Add patch helper-version-in-cmdline.patch:
+  * Always call the correct version of the helper script.
+- Drop {Build,}Requires on Python 3 subprocess backport module.
+- Switch to pytest, and skip two truculent tests</comment>
+    <requestid>912370</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fd426bf9baf8cc0cd66d4b4c123b3bfc</srcmd5>
+    <version>1.6.4</version>
+    <time>1641855180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.4:
+  * No changelog available.
+- Refresh helper-version-in-cmdline.patch.
+- Add missing {Build,}Requires on six.</comment>
+    <requestid>945165</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8093f932633efb521000bf7f489b4c3f</srcmd5>
+    <version>1.6.4</version>
+    <time>1666257090</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Remove-six-dependency.patch upstream patch to remove python-six
+  dependency gh#avocado-framework/aexpect#102
+- More specific python_sitelib in files
+- Use autosetup instead of setup and autopatch
+</comment>
+    <requestid>1030032</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1783165aaa229d14c0c6aeb4042e0de</srcmd5>
+    <version>1.7.0</version>
+    <time>1698001303</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.0
+ * rss_client: fix syntax error
+ * client: Make sure aexpect_helper file descriptors are closed
+ * astring: Add bracketed paste console codes
+ * Simpler ns daemon and current linter fixes
+ * Drop unexpected and unwanted re.sub string postprocessing
+ * Remove six dependency
+ * Fix remote_door set_subcontrol_* handling of no matches
+ * Add session ops utility with some facilitator functions (v2)
+ * Fill setup.py license and metadata
+ * Allow to calculate hashes on parts of files
+ * Provide the session prefix when logging sent commands
+ * Implement a reusable subcommand output and status processing routine
+ * Add a generic ops module for windows platforms
+ * Add remote linux glob behavior to expand paths from patterns
+ * Avoid printing line when output_func not set
+- drop helper-version-in-cmdline.patch
+- drop 0001-Remove-six-dependency.patch (forwarded request 1119278 from mimi_vx)</comment>
+    <requestid>1119279</requestid>
+  </revision>
+</revisionlist>

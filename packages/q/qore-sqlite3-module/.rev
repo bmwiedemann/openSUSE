@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>969ddbdd549d4e126ad337fb4ba24541</srcmd5>
+    <version>1.0.1</version>
+    <time>1408957418</time>
+    <user>coolo</user>
+    <comment>license fixed
+
+new module for Qore programming language as described in: http://lists.opensuse.org/opensuse-factory/2013-01/msg00105.html</comment>
+    <requestid>245611</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>969ddbdd549d4e126ad337fb4ba24541</srcmd5>
+    <version>1.0.1</version>
+    <time>1409303136</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2256e96d51254dc92058fa1852f05ebf</srcmd5>
+    <version>1.0.1</version>
+    <time>1441054784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328131</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f534c1b443c413d975a235287c410e86</srcmd5>
+    <version>1.0.1</version>
+    <time>1608542640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857088</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>228938823781cb7c4dffa21c212e453b</srcmd5>
+    <version>1.0.1</version>
+    <time>1619107448</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on armv7 and aarch64:
+  * Drop -m32/-m64 flags for %arm and aarch64
+  * Add missing aarch64 support in config.guess:
+    - qore_sqlite3_module_add_aarch64_to_config_guess.patch (forwarded request 885295 from Guillaume_G)</comment>
+    <requestid>887448</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6c5a24d1623304f611ef0b106b670437</srcmd5>
+    <version>1.0.2</version>
+    <time>1627850480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909612</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1f3dc1e32686e34dc80e1058dc2323a3</srcmd5>
+    <version>1.0.2</version>
+    <time>1675458380</time>
+    <user>dimstar_suse</user>
+    <comment>- Change documentation to noarch
+- Add qore-modules as a directory to files
+</comment>
+    <requestid>1063057</requestid>
+  </revision>
+</revisionlist>

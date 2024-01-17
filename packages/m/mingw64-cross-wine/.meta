@@ -1,0 +1,5 @@
+<package name="mingw64-cross-wine" project="openSUSE:Factory">
+  <title>mingw64-cross-wine</title>
+  <description>Allows to run Windows executable files under obs</description>
+  <devel project="windows:mingw:win64" package="mingw64-cross-wine"/>
+</package>

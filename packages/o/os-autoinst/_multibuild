@@ -1,0 +1,5 @@
+<multibuild>
+  <flavor>os-autoinst-test</flavor>
+  <flavor>os-autoinst-devel-test</flavor>
+  <flavor>os-autoinst-openvswitch-test</flavor>
+</multibuild>

@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu Jul 16 18:32:07 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.2.4:
+  * Merge branch 'master' of github.com:robertsanseries/ciano
+  * Minor fixes and changes
+  * update file gitignore
+  * Merge pull request #105 from NathanBnm/patch-5
+  * Fix README app icon
+  * Merge pull request #102 from NathanBnm/master
+  * Make post_install.py scrip executable
+  * Merge pull request #100 from NathanBnm/improvements
+  * Improvements
+  * Merge pull request #99 from NathanBnm/fix-typo
+  * Merge pull request #98 from NathanBnm/update-fr
+  * Fix typo
+  * Merge pull request #96 from NathanBnm/patch-4
+  * Add missing OARS metadata making build fail
+  * Merge pull request #93 from NathanBnm/patch-3
+  * Update .travis.yml
+  * Merge pull request #83 from meisenzahl/master
+  * Merge pull request #89 from safak45x/patch-1
+  * Merge branch 'master' into patch-1
+  * Merge pull request #78 from libreajans/Turkish
+  * Merge branch 'master' into Turkish
+  * Merge pull request #72 from NathanBnm/patch-1
+  * commit partial
+  * Update LINGUAS
+  * updated .gitignore to ignore *~
+  * Downgrade Node.js to fix builds on Travis CI
+  * Merge pull request #76 from nedrichards/patch-1
+  * Add OARS tag
+  * Merge pull request #1 from NathanBnm/patch-2
+  * Added fr
+
+-------------------------------------------------------------------
+Mon Nov  5 17:12:24 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.2.1:
+  * Fix accels deprecation
+  * Fix margin deprecations
+  * Merge pull request #66 from drom98/master
+  * Update issue templates
+  * update readme
+  * remoção do arquivo com.github.robertsanseries.ciano.json
+  * Update com.github.robertsanseries.ciano.desktop.in
+  * Update .desktop comment to be consistent with HIG
+  * moving the settings class to the services package
+
+-------------------------------------------------------------------
+Sat Jan  6 01:56:39 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.9:
+  * Update README.md
+  * Creating Flatpak
+  * Update Manifest Flatpak
+  * Manifest Flatpak
+  * Fixes for version 0.1.7
+  * Correcting the tag in the appdata.xml file
+  * Update com.github.robertsanseries.ciano.appdata.xml.in
+  * Update LINGUAS
+  * Create zh_CN.po
+  * Update lt.po
+  * Made the icon follow the HIG colors and geometry
+
+-------------------------------------------------------------------
+Tue Dec 19 10:03:23 UTC 2017 - jengelh@inai.de
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Tue Nov  7 20:54:18 UTC 2017 - avvissu@yandex.by
+
+- Initial package
+

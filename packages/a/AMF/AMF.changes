@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Nov 13 09:46:08 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 1.4.30:
+  * AMF v1.4.30 release
+  * Fix missing enum value in AMF_Video_Encode_HEVC_API docs
+  * Fix VulkanAMF.h compile when using C (#388)
+  * Fix typo in profile level string (#371)
+  * Encode API doc corrections
+  * Add SmartAccess Video documentation
+  * Update Linux distro prereqs for AMF v1.4.29
+
+-------------------------------------------------------------------
+Fri Mar 10 09:46:10 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- Exclude pdf and images
+
+-------------------------------------------------------------------
+Wed Mar 08 16:29:08 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 1.4.29:
+  * Added Smart Access Video for decoder and AVC / HEVC / AV1 encoders
+  * New options for VQEnhancer and AV1 encoder components
+  * Switched to Markdown based API docs which enable easier open source
+    developer contributions
+  * Added AV1 encoding support
+  * Added 12-bit AV1 decoding
+  * New VQEnhancer component
+  * New AVC / HEVC encoder rate control methods
+
+-------------------------------------------------------------------
+Thu Jul 28 20:07:25 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 1.4.26:
+  * New perceptual (PAQ) and temporal (TAQ) adaptive quantization modes
+    for PreAnalysis
+  * New high motion quality boost mode for PreAnalysis
+  * New sharpness option for HQScaler
+  * New low latency decoding option
+  * New temporal SVC encoding options
+
+-------------------------------------------------------------------
+Wed Mar 23 10:54:50 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- initial package

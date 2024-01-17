@@ -1,0 +1,6 @@
+<package name="jisp2" project="openSUSE:Factory">
+  <title>The Java Indexed Serialization Package</title>
+  <description>Jisp uses B-Tree and hash indexes for keyed access to variable-length
+serialized objects stored in files.</description>
+  <devel project="Java:packages" package="jisp2"/>
+</package>

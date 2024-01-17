@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Sat Feb  4 22:37:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for habanero 1.2.3.
+- Add mark-vcr-tests.patch (gh#sckott/habanero#114).

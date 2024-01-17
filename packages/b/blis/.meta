@@ -1,0 +1,12 @@
+<package name="blis" project="openSUSE:Factory">
+  <title>BLAS-like Library Instantiation Software Framework</title>
+  <description>BLIS is a portable software framework for instantiating high-performance
+BLAS-like dense linear algebra libraries. The framework was designed to isolate
+essential kernels of computation that, when optimized, immediately enable
+optimized implementations of most of its commonly used and computationally
+intensive operations. BLIS is written in ISO C99.
+
+</description>
+  <devel project="science" package="blis"/>
+  <url>https://github.com/flame/blis</url>
+</package>

@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23858236247f53775e2829a0f137d919</srcmd5>
+    <version>0~20130319</version>
+    <time>1366358504</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>163818</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>78b81894456928bf22d31d41bc7d570b</srcmd5>
+    <version>0~20130319</version>
+    <time>1366730406</time>
+    <user>coolo</user>
+    <comment>Specfile cleanup - no functional changes - now using libcnotify from the factory package, not an internal copy
+</comment>
+    <requestid>172943</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>78b81894456928bf22d31d41bc7d570b</srcmd5>
+    <version>0~20130319</version>
+    <time>1379663133</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5d7f340def1b5ea2df40120277084833</srcmd5>
+    <version>0~20131017</version>
+    <time>1383810051</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205883</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>136580dc15c311c80bbaf2768e4a8333</srcmd5>
+    <version>0~20140803</version>
+    <time>1408021105</time>
+    <user>lnussel</user>
+    <comment>Update to 0~20140803</comment>
+    <requestid>244660</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>136580dc15c311c80bbaf2768e4a8333</srcmd5>
+    <version>0~20140803</version>
+    <time>1409301763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>baf21acc3a73a15815b7050411dbc000</srcmd5>
+    <version>0~20150105</version>
+    <time>1422626487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280965</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dd347f60ebfd29dd087aae01b869f2ca</srcmd5>
+    <version>0~20160111</version>
+    <time>1454628698</time>
+    <user>dimstar_suse</user>
+    <comment>update to v0~20160111</comment>
+    <requestid>357436</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f8bff0cbbe9e82f2c9cc1e06a711888e</srcmd5>
+    <version>0~20181203</version>
+    <time>1560337783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696090</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a7efd30490a767c6e47baa9e5dc72733</srcmd5>
+    <version>0~20191221</version>
+    <time>1609344820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859353</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>44e138f3755e79ef30471324013dad1e</srcmd5>
+    <version>20210425</version>
+    <time>1623363498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898737</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>92bb4859a845907a39b6aed13204700c</srcmd5>
+    <version>20220104</version>
+    <time>1641680645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220104</comment>
+    <requestid>944881</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7e5f88a51243dcc8f1696d718008306f</srcmd5>
+    <version>20220104</version>
+    <time>1642835923</time>
+    <user>dimstar_suse</user>
+    <comment>- Edit specfile to do multipython builds.</comment>
+    <requestid>948034</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c9d186b1c46169c1656e0f2b95b71dc8</srcmd5>
+    <version>20220720</version>
+    <time>1659034679</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 20220720</comment>
+    <requestid>990881</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>15e207de0a57f952e1f4b7bf23346fb1</srcmd5>
+    <version>20220720</version>
+    <time>1660051749</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994035</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b52f55c6e113137ef5d20375bb13d728</srcmd5>
+    <version>20220720</version>
+    <time>1661863776</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999962</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5e409edfa5bafbd473b79e6bb2c4da28</srcmd5>
+    <version>20221009</version>
+    <time>1667734944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221009</comment>
+    <requestid>1033753</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5a3f96c64c8e4a897be67aeb368357a0</srcmd5>
+    <version>20221009</version>
+    <time>1669630014</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038500</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>e5bd534fc7e6a0e26750c4cbdfab1bfb</srcmd5>
+    <version>20221009</version>
+    <time>1672851137</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046614</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2a6fc6673a3cddf08e55462bb913f000</srcmd5>
+    <version>20230214</version>
+    <time>1676464851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to reelease 20230214</comment>
+    <requestid>1065865</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>63032072e542d6a583018bc0aabbba9a</srcmd5>
+    <version>20230318</version>
+    <time>1679667664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230318</comment>
+    <requestid>1073904</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f54ff573e4903f184ee7fb5ae6e4d27f</srcmd5>
+    <version>20230318</version>
+    <time>1691594723</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103005</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c0ac8078c5c613eaad167e88c7cf1d55</srcmd5>
+    <version>20231202</version>
+    <time>1701632958</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231202</comment>
+    <requestid>1130522</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8093c0a243b5dbf38b3f1a3f2716c11c</srcmd5>
+    <version>20231228</version>
+    <time>1704487394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1136938</requestid>
+  </revision>
+</revisionlist>

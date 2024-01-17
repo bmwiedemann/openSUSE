@@ -1,0 +1,8 @@
+<package name="libfixposix" project="openSUSE:Factory">
+  <title></title>
+  <description>Thin wrapper over POSIX syscalls.
+
+The purpose of libfixposix is to offer replacements for parts of POSIX whose behaviour is inconsistent across *NIX flavours.</description>
+  <devel project="devel:libraries:c_c++" package="libfixposix"/>
+  <url>https://github.com/sionescu/libfixposix</url>
+</package>

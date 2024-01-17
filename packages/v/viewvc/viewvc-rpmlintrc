@@ -1,0 +1,6 @@
+addFilter("W: non-etc-or-var-file-marked-as-conffile /srv/viewvc/.*")
+addFilter("W: script-without-shebang /srv/viewvc/bin/mod_python/.*")
+addFilter("W: files-duplicate /srv/viewvc/templates/.*")
+addFilter("W: files-duplicate /srv/viewvc/templates-contrib/.*")
+addFilter("W: files-duplicate /srv/viewvc/mimetypes.conf.*")
+addFilter("W: htaccess-file /srv/viewvc/bin/mod_python/.*")

@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58659e2a1a163aec97a4d030d89cedc3</srcmd5>
+    <version>0.08</version>
+    <time>1302767092</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66730 from user babelworx
+</comment>
+    <requestid>66730</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b80218e537c2d0d0d6bd98a3b53c57de</srcmd5>
+    <version>0.08</version>
+    <time>1302767104</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66730
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b80218e537c2d0d0d6bd98a3b53c57de</srcmd5>
+    <version>0.08</version>
+    <time>1319182277</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c38e68aed81cd8ad12f3616cfafa4235</srcmd5>
+    <version>0.10</version>
+    <time>1321627632</time>
+    <user>coolo</user>
+    <comment>- update to 0.10
+    - Implemented set (aristotle)
+    - Implemented thread safety (chansen)</comment>
+    <requestid>92072</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>345fd32a4d10d8df4bc853e746adc1d9</srcmd5>
+    <version>0.10</version>
+    <time>1323193338</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08e09bd37a6bc470a0f4cf3e97190449</srcmd5>
+    <version>0.12</version>
+    <time>1329476857</time>
+    <user>coolo</user>
+    <comment>- updated to 0.12
+    - Reapply set method optimisation that was lost in 0.11
+    - *really* fix uninitialized warnings in tests (RT#74096)
+    - Add support for Storable serialization
+    - Fix segfaulting splice invocation on perls</comment>
+    <requestid>105590</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>08e09bd37a6bc470a0f4cf3e97190449</srcmd5>
+    <version>0.12</version>
+    <time>1340183857</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>08e09bd37a6bc470a0f4cf3e97190449</srcmd5>
+    <version>0.12</version>
+    <time>1359109702</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5006370ea30c03c05be3b074666b47f2</srcmd5>
+    <version>0.15</version>
+    <time>1370514026</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 177651 from coolo)</comment>
+    <requestid>177682</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5006370ea30c03c05be3b074666b47f2</srcmd5>
+    <version>0.15</version>
+    <time>1379663708</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>5006370ea30c03c05be3b074666b47f2</srcmd5>
+    <version>0.15</version>
+    <time>1409302330</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf3aac24a125cc1926ffb8142a641e40</srcmd5>
+    <version>0.16</version>
+    <time>1429107930</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296635</requestid>
+  </revision>
+</revisionlist>

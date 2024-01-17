@@ -1,0 +1,25 @@
+From 16e70f84cf9c5a72607efe86f0e030ac05fdd7f9 Mon Sep 17 00:00:00 2001
+From: Richard Brown <rbrownccb@opensuse.org>
+Date: Wed, 14 Apr 2021 17:04:02 +0200
+Subject: [PATCH] Use kubic.opensuse.org for kubeadm version checks
+
+---
+ cmd/kubeadm/app/util/version.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmd/kubeadm/app/util/version.go b/cmd/kubeadm/app/util/version.go
+index a0e9b08bf2b..c693b11ed18 100644
+--- a/cmd/kubeadm/app/util/version.go
++++ b/cmd/kubeadm/app/util/version.go
+@@ -38,7 +38,7 @@ const (
+ )
+ 
+ var (
+-	kubeReleaseBucketURL  = "https://dl.k8s.io"
++	kubeReleaseBucketURL  = "https://kubic.opensuse.org"
+ 	kubeCIBucketURL       = "https://storage.googleapis.com/k8s-release-dev"
+ 	kubeReleaseRegex      = regexp.MustCompile(`^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)([-0-9a-zA-Z_\.+]*)?$`)
+ 	kubeReleaseLabelRegex = regexp.MustCompile(`^((latest|stable)+(-[1-9](\.[1-9]([0-9])?)?)?)\z`)
+-- 
+2.31.1
+

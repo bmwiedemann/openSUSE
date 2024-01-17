@@ -1,0 +1,25 @@
+--- a/coloredlogs/tests.py
++++ b/coloredlogs/tests.py
+@@ -82,6 +82,7 @@ PATTERN_INCLUDING_MILLISECONDS = re.comp
+     \s (?P<message> .* )
+ ''', re.VERBOSE)
+ 
++pyver = '.'.join(str(x) for x in sys.version_info[:2])
+ 
+ def setUpModule():
+     """Speed up the tests by disabling the demo's artificial delay."""
+@@ -505,7 +506,8 @@ class ColoredLogsTestCase(TestCase):
+ 
+     def test_cli_conversion(self):
+         """Test the command line HTML conversion."""
+-        output = main('coloredlogs', '--convert', 'coloredlogs', '--demo', capture=True)
++        output = main('coloredlogs-{}'.format(pyver), '--convert',
++                      'coloredlogs-{}'.format(pyver), '--demo', capture=True)
+         # Make sure the output is encoded as HTML.
+         assert '<span' in output
+ 
+@@ -588,3 +590,4 @@ def cleanup_handlers():
+         handler, logger = find_handler(logging.getLogger(), match_func)
+         if handler and logger:
+             logger.removeHandler(handler)
++

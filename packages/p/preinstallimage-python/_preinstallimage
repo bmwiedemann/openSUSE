@@ -1,0 +1,3 @@
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
+#!BuildIgnore:  cputype-armv6

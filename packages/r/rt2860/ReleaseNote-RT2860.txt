@@ -1,0 +1,75 @@
+[1.8.0.0]
+	1. Fixed compile error when CARRIER_DETECTION_SUPPORT is enabled.
+	2. Add "iwpriv ra0 set CarrierDetect=0(or 1)"
+	3. Add new WSC hardware push button function
+	4. Add Ad-Hoc to support N rate.
+	5. Migrate Mesh supporting to Draft-2.0.
+	6. Support WAPI functionality
+	7. Fixed suspend/resume error when ra0 down, ra0 up.
+	8. Support Linux Kernel 2.6.27
+	9. Fixed WPS failed when AP is not in scan table or AP's channel changing after user sets "iwpriv ra0 wsc_start"
+	10. Fixed DLS A-MPDU established failed.
+
+[1.7.0.0]
+	1. Support SIOCSIWGENIE, SIOCGIWGENIE, SIOCSIWMLME, SIOCGIWENCODEEXT, and SIOCSIWPMKSA.
+	2. Support IWEVGENIE in iwlist ra0 scan.
+	3. Support DLS
+	4. Fixed connection failed with Range Maximizer - 515 AP (Marvell Chip) when security is WPAPSK/TKIP.
+	5. Fixed length error of RSN/SSN IE for WpaSupplicant.
+	6. Fixed WPAPSK rekey problem when A-MSDU is enabled.
+	7. Fixed NetworkManager cannot detect ra0 when ra0 is not up.
+	8. Add IEEE802.11d Client Mode: None, Flexible, Strcit.
+	9. Add Station N only mode. (Only connects to N-AP)
+	10. Add Global country domain(ch1-11:active scan, ch12-14 passive scan)
+	11. Enhance PCIe advance power saving
+	12. Modified iwpriv ra0 get_site_survey: When security of AP is OPEN/WEP or SHARED/WEP, show UNKNOW/WEP in scan list.
+	13. When the secondary channel of AP exceeds the country region's range, station will auto fallback to 20MHz. i.e. need both control and secondary channel are both
+	      in country region's channel list.
+	14. Fixed crash in LinkDown when there are >64 APs exists.
+
+[V1.6.0.0]
+	1. Fixed issue of Radar Channel flag building with HAS_EXT_BUILD_CHANNEL_LIST=n.
+	2. Fixed issue of Adhoc-STA would create in radar channel.
+	3. Support Linux Kernel 2.6.24
+	4. Support SNMP
+	5. Support Debug Diagnose
+	6. Add Makefile.NonLoadableModule for non-loadable module
+	7. Add two ioctl commands to change tx long/short retry limit.
+
+[V1.5.0.0]
+	1. Add BaSmartHardTransmit mechanism.
+	2. Support Linux Kernel 2.6 suspend and resume.
+	3. Support extened channel list.
+	4. Add "iwconfig rate" setting for legacy rate.
+	5. Add make install/uninstall to Makfile.
+	6. Fixed issue of showing SNR1 information.
+	7. ATE: Add command "iwpriv ra0 set ATELDE2P=1" to overwrite all EEPROM contents from a .bin file.
+	8. Change IRQ LOCK to SEM LOCK
+	9. Fixed extened channel list checking issue on RT28xx.
+
+[V1.4.0.0]]
+	1. Fixed "iwconfig ra0 essid"
+	2. Send DIS-ASSOC request to AP when ra0 down.
+	3. Support 5-GHz band ATE.
+	4. Fixed fixed rate issue in N mode and fixed rate ioctl.
+	5. Add Legacy Power Saving Mode.
+	6. Support custom wireless event.
+
+[V1.3.0.0]
+	1. Support Monitor Mode with WireShark.(Usage: iwconfig ra0 mode monitor)
+	2. Support ATE function for EMI.
+	3. Support NetworkManager, wpa_supplicant by using wext.
+
+[V1.2.0.0]
+	1. Add AP's wireless mode info to iwpriv ra0 get_site_survey.
+	2. Modify bitrate info in iwlist ra0 scan.
+	3. Fixed compile error in non-DBG mode.
+
+[V1.1.0.0]
+	1. Fxied iwpriv security setting issue.
+	2. Support Big-Endian.
+
+[V1.0.0.0]
+	1. Driver security support: Open/Shared WEP, WPA-PSK, WPA2-PSK, WPA-NONE.
+	2. Support 32/64-bit OS
+	3. Support A-MPDU and A-MSDU

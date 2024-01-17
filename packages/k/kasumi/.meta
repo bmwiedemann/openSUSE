@@ -1,0 +1,5 @@
+<package name="kasumi" project="openSUSE:Factory">
+  <title>Dictionary Tool for Anthy</title>
+  <description>A graphical tool to edit the personal dictionary for Anthy.</description>
+  <devel project="M17N" package="kasumi"/>
+</package>

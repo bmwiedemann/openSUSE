@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Wed Aug 17 09:53:07 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220817.7d0bf3a:
+  * Fix ignoring of SIGTERM (replace pause with sleep)
+
+-------------------------------------------------------------------
+Wed Jul 13 07:01:43 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220713.c55a107:
+  * Document ENABLE_SUBMISSIONS variable
+  * Add smtps port
+  * Add support for smtps
+  * Add support for submission port 587
+
+-------------------------------------------------------------------
+Mon Aug  2 10:07:36 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Re-add busybox-findutils
+
+-------------------------------------------------------------------
+Fri Jan 22 12:34:54 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make sure LMDB is used for /etc/aliases by newaliases
+
+-------------------------------------------------------------------
+Fri Jan  8 14:35:00 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use LMDB instead of BDB in preparation of obsoleting BDB
+
+-------------------------------------------------------------------
+Thu Jan  7 15:26:43 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add "SMTP_TLS_SECURITY_LEVEL" confguration variable
+
+-------------------------------------------------------------------
+Tue Jan  5 14:40:45 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add "NULLCLIENT" support for pure relayhosts 
+
+-------------------------------------------------------------------
+Tue Dec 22 07:46:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use mailLocalAddress (LDAP) for mail aliases, too.
+
+-------------------------------------------------------------------
+Mon Dec 21 11:57:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Rework container description
+- Fix virtual domain handling: don't use environment variable and
+  LDAP at the same time.
+
+-------------------------------------------------------------------
+Sun Dec 20 21:24:32 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add support for spamassassin
+
+-------------------------------------------------------------------
+Sun Dec 20 10:49:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set local_header_rewrite_clients to static:all if domain
+  masquerading is requested (required for postfix >= 2.2)
+
+-------------------------------------------------------------------
+Fri Dec 18 21:12:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix error caused by uninitialized DEBUG variable 
+
+-------------------------------------------------------------------
+Wed Nov 18 17:59:37 UTC 2020 - Thorsten Kukuk <kukuk@thkukuk.de>
+
+- Enhance documentation
+
+-------------------------------------------------------------------
+Tue Nov 17 15:16:47 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add support for LMTP
+
+-------------------------------------------------------------------
+Wed Nov  4 14:53:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Only use username in vmail path
+
+-------------------------------------------------------------------
+Wed Nov  4 10:36:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Unify and fix ldap bind_dn/bind_pw handling
+
+-------------------------------------------------------------------
+Tue Oct 27 13:16:38 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add support for /etc/pki
+
+-------------------------------------------------------------------
+Thu Aug 27 15:03:12 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add postfix-ldap to package list
+
+-------------------------------------------------------------------
+Sat Aug 22 05:33:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add LDAP support
+
+-------------------------------------------------------------------
+Mon Jul 20 08:36:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Implement and document virtual mailbox support
+
+-------------------------------------------------------------------
+Mon Jul 13 07:27:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set timezone if necessary
+
+-------------------------------------------------------------------
+Sat Jul 11 10:54:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- entrypoint.sh uses bash syntax, so make sure bash is there
+
+-------------------------------------------------------------------
+Sat Jul 11 07:11:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use syslogd to print postfix messages on stdout
+- Create all missing db files for maps
+
+-------------------------------------------------------------------
+Wed Jul  8 12:05:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add ca-certificates-mozilla to verify certificates of remote
+  smtp server 
+- Add cyrus-sasl and cyrus-sasl-plain for authentication against
+  the smtp server
+- Set correct options to authenticate with user/password (smtp_sasl_*)
+- Add netcfg, we need services and aliases file
+
+-------------------------------------------------------------------
+Mon May 11 19:11:49 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version
+

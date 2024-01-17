@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ff827a001cda847aa64d6a6b35de48d</srcmd5>
+    <version>0.7.6~0</version>
+    <time>1651784848</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain sd in openSUSE:Factory</comment>
+    <requestid>975201</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>36b9db42157ef83374f980d8bb33f61d</srcmd5>
+    <version>0.7.6~0</version>
+    <time>1655732292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983822</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5edf9acfb5fb2f116d8634e14b1d1adb</srcmd5>
+    <version>0.7.6+g33</version>
+    <time>1671564056</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1043876</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>099cdcb4901f8c8a330928da948fc151</srcmd5>
+    <version>0.7.6+g33</version>
+    <time>1677075688</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067036</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4fb7c983fdf8633b049fc1654e958350</srcmd5>
+    <version>0.7.6+g33</version>
+    <time>1692611123</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104911</requestid>
+  </revision>
+</revisionlist>

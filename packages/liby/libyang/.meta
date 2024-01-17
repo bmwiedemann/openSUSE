@@ -1,0 +1,17 @@
+<package name="libyang" project="openSUSE:Factory">
+  <title>Parser toolkit for IETF YANG data modeling</title>
+  <description>Libyang implements functions to process schemas expressed in the
+YANG data modeling language defined by the IETF in RFCs 6020/7950.
+Schemas expressed in this language primarily describe configuration
+used by larger network equipment like routers and switches.
+
+In addition to handling the schemas itself, the library also provides
+functions to process data described by the schemas.
+
+The library is implemented in C and provides an API for other software
+to use in processing configurations.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libyang"/>
+  <url>https://github.com/CESNET/libyang</url>
+</package>

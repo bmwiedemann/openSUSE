@@ -1,0 +1,12 @@
+diff -ruN a/gwyfile/objects.py b/gwyfile/objects.py
+--- a/gwyfile/objects.py	2017-02-20 02:36:19.000000000 +0700
++++ b/gwyfile/objects.py	2020-08-16 16:39:00.455203869 +0700
+@@ -348,7 +348,7 @@
+         }
+         dtype = typelookup[typecode]
+         pos, endpos = endpos, endpos + dtype.itemsize * numitems
+-        data = np.fromstring(buf[pos:endpos], dtype=dtype)
++        data = np.frombuffer(buf[pos:endpos], dtype=dtype)
+     elif typecode == 'S':
+         numitems = struct.unpack('<I', buf[pos:pos + 4])[0]
+         endpos += 4

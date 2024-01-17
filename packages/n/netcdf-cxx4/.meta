@@ -1,0 +1,11 @@
+<package name="netcdf-cxx4" project="openSUSE:Factory">
+  <title>Old C++ library for the Unidata network Common Data Form</title>
+  <description>NetCDF (network Common Data Form) is a set of software libraries and
+machine-independent data formats that support the creation, access, and sharing
+of array-oriented scientific data.
+This package provides the old C++ API. It's not recommended for new projects,
+but it still works.
+
+</description>
+  <devel project="science" package="netcdf-cxx4"/>
+</package>

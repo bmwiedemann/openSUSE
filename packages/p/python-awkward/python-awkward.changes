@@ -1,0 +1,875 @@
+-------------------------------------------------------------------
+Mon Jan 15 10:10:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.2:
+  * feat: add some simpler cuda_kernels
+    (gh#scikit-hep/awkward#2880).
+  * feat: add recursive flag to Content.to_packed
+    (gh#scikit-hep/awkward#2933).
+  * feat: configure Julia version and required packages
+    (gh#scikit-hep/awkward#2896).
+  * fix: include header-only files in sdist
+    (gh#scikit-hep/awkward#2909).
+  * fix: touching of unions (gh#scikit-hep/awkward#2906).
+  * fix: lazily project union contents
+    (gh#scikit-hep/awkward#2913).
+  * fix: support typetracer in to_packed for IndexedOptionArray
+    (gh#scikit-hep/awkward#2912).
+  * fix: cartesian nested record (gh#scikit-hep/awkward#2929).
+  * fix: cast bool_ to int8 for positional reducers
+    (gh#scikit-hep/awkward#2935).
+  * fix: ak.std and ak.var for axis != -1.
+    (gh#scikit-hep/awkward#2918).
+- Bump required version of awkward-cpp to 28.
+
+-------------------------------------------------------------------
+Fri Dec 15 16:14:10 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.1:
+  * feat: add enforce_concatenated_form
+    (gh#scikit-hep/awkward#2860).
+  * feat: add Form.is_equal_to (gh#scikit-hep/awkward#2862).
+  * feat: Implement Indexed builder (gh#scikit-hep/awkward#2883).
+  * fix: ufunc handling of attrs (gh#scikit-hep/awkward#2837).
+  * fix: only compare scalars in full_like
+    (gh#scikit-hep/awkward#2857).
+  * fix: Array.__getitem__ should set attrs on result
+    (gh#scikit-hep/awkward#2866).
+  * fix: errors in existing cuda_kernels
+    (gh#scikit-hep/awkward#2877).
+  * fix: register Numba in test (gh#scikit-hep/awkward#2879).
+  * fix: failing tests after #2877 (gh#scikit-hep/awkward#2886).
+  * fix: support revertable for concatenate in pyarrow logic
+    (gh#scikit-hep/awkward#2889).
+- Bump required version of python-awkward-cpp to 27.
+
+-------------------------------------------------------------------
+Wed Nov 22 13:44:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update required version for python-awkward-cpp to 26.
+
+-------------------------------------------------------------------
+Sun Oct  8 01:12:07 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.5:
+  - feat: add recursive argument to expected_from_buffers
+    (gh#scikit-hep/awkward#2724).
+  - feat: infer unknown lengths from context in from_buffers
+    (gh#scikit-hep/awkward#2732).
+  - fix: don't use np.asarray on Index or Content objects
+    (gh#scikit-hep/awkward#2740).
+  - fix: swap names for __dlpack__ (gh#scikit-hep/awkward#2741).
+  - fix: __array__ accepts positional arguments
+    (gh#scikit-hep/awkward#2744).
+
+-------------------------------------------------------------------
+Sun Sep 17 15:20:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.2:
+  * fix: support placeholder arrays in
+    ArrayModuleNumpyLike.frombuffer (gh#scikit-hep/awkward#2693).
+  * fix: drop zero-cost views of ak.Array
+    (gh#scikit-hep/awkward#2697).
+- Changes from version 2.4.1:
+  * Fix docs version selector
+- Changes from version 2.4.0:
+  * New features:
+    - Form.expected_from_buffers for names/dtypes ak.from_buffers
+      needs (gh#scikit-hep/awkward#2660).
+    - support out-of-band buffers in pickling
+      (gh#scikit-hep/awkward#2665).
+    - add touch_data to ak.typetracer
+      (gh#scikit-hep/awkward#2672).
+    - add support for custom picklers
+      (gh#scikit-hep/awkward#2682).
+    - deprecate forget_length, add parameters to
+      typetracer_with_report (gh#scikit-hep/awkward#2671).
+    - remove deprecations for 1.4.0 release
+      (gh#scikit-hep/awkward#2688).
+  * Bug fixes:
+    - support placeholders in shape-only routines
+      (gh#scikit-hep/awkward#2652).
+    - multiple-output ufuncs e.g. divmod
+      (gh#scikit-hep/awkward#2654).
+    - support unflattening a typetracer-backed array at axis != 0
+      (gh#scikit-hep/awkward#2657).
+    - fix IPython inspection (gh#scikit-hep/awkward#2658).
+    - using numba.core.errors.Numba<Error> instead of Error in a
+      Numba typing context. (gh#scikit-hep/awkward#2659).
+    - raise error for invalid object in from_dlpack
+      (gh#scikit-hep/awkward#2662).
+    - fix/harden broadcasting through tuples
+      (gh#scikit-hep/awkward#2663).
+    - update string to search for in determing parquet column list
+      separator (gh#scikit-hep/awkward#2670).
+    - guard broadcast_and_apply from mixed backends
+      (gh#scikit-hep/awkward#2678).
+    - support typetracer in ak.str. operations
+      (gh#scikit-hep/awkward#2679).
+- Requires python-awkward-cpp = 23.
+
+-------------------------------------------------------------------
+Mon Sep 11 21:23:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.3:
+  * feat: add support for expected termination of transform functions
+  * feat: export error classes
+  * feat: unpickle arrays made in Awkward v1 (as v2).
+  * feat: use pyarrow for string functions
+  * feat: add support for dictionary encoding from Arrow
+  * feat: add CPU kernel for to_numpy support for strings/bytestrings
+  * feat: add support for __arrow_array__
+  * feat: add __dlpack__, from_dlpack support
+
+-------------------------------------------------------------------
+Mon Jul 10 18:30:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.1:
+  * Bug fix: Added kernel specializations for
+    awkward_ListOffsetArray_reduce_local_nextparents_64
+    [gh#scikit-hep/awkward#2572].
+- Changes from version 2.3.0:
+  * New features:
+    - LayoutBuilder in Numba [gh#scikit-hep/awkward#2408].
+    - Move string features into core [gh#scikit-hep/awkward#2547].
+    - Add new __list__ parameter for list-based array types
+      [gh#scikit-hep/awkward#2549].
+    - Deprecate string behavior classes
+      [gh#scikit-hep/awkward#2528].
+    - Apply retroactive deprecations [gh#scikit-hep/awkward#2566].
+  * Bug fixes and performance
+    - support dict-likes in form.from_dict, convert fields to list
+      [gh#scikit-hep/awkward#2548].
+    - check validity error properly [gh#scikit-hep/awkward#2550].
+    - string broadcasting [gh#scikit-hep/awkward#2552].
+    - make C++ LayoutBuilder API consistent with the Numba's
+      [gh#scikit-hep/awkward#2553].
+    - convert unknown-length to index in
+      ListOffsetArray.to_RegularArray
+      [gh#scikit-hep/awkward#2560].
+    - prefer known to unknown lengths in broadcasting
+      [gh#scikit-hep/awkward#2561].
+    - broadcasting of regular strings
+      [gh#scikit-hep/awkward#2564].
+    - restore NEP-18 overloads for concatenate and where
+      [gh#scikit-hep/awkward#2567].
+- Require python-awkward-cpp >= 21, python >= 3.8
+
+-------------------------------------------------------------------
+Sat Jul  1 20:49:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.4:
+  * feat!: canonicalise union of indexed
+  * feat: add array dispatcher (inline)
+  * fix: patch NDArrayOperatorsMixin
+  * fix: improve performance of Form.select_columns
+  * refactor: add internal with_operation_context
+
+-------------------------------------------------------------------
+Tue Jun 20 16:41:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * feat!: deprecate to_NumpyForm's ``dtype` argument
+  * feat!: deprecate the time __unit__ parameter
+  * fix: don't project records during broadcasting; push index down
+  * fix: protect ak.to_parquet against memory explosion when args are swapped.
+  * fix: str of KeyError for <3.11
+  * fix: support axis != -1 for record reduction
+
+-------------------------------------------------------------------
+Sun Jun 11 08:21:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * drop string broadcasting overloading
+  * add Index._touch_XXX methods
+  * add ak.typetracer.length_one_if_typetracer
+  * add placeholder array
+  * bugfixes and other changes see https://github.com/scikit-hep/awkward/releases/tag/v2.2.2
+
+-------------------------------------------------------------------
+Mon May 29 16:43:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * feat: add validity error for duplicate record field
+  * feat: add empty_if_typetracer & expose more of typetracer to L2
+  * feat!: remove use of typestr in ak.types.Type
+  * feat: improve performance of behavior lookups
+  * feat: support record reducer overloads
+  * fix: ak.to_numpy does not properly convert lists of empty string
+  * fix: handle indexed nodes in ak.almost_equal
+  * feat: canonicalise union[?X, Y] into union[?X, ?Y]
+  * feat: add ak.forms.from_type
+  * feat: add ak.enforce_type
+  * feat!: deprecate length_zero_array highlevel argument
+  * Bug-fixes and performance
+  * fix: avoid reference cycles with the error-handling machinery
+  * fix: proper unknown size broadcasting for all-regular
+
+-------------------------------------------------------------------
+Sat May 27 20:59:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu May  4 16:29:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update required version for python-awkward-cpp to 15.
+
+-------------------------------------------------------------------
+Fri Apr 28 06:48:19 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.4:
+  * feat: raise error for out-of-bounds axis in ak.cartesian
+    (gh#scikit-hep/awkward#2411).
+  * feat: make ak.numba.GrowableBuffer visible
+    (gh#scikit-hep/awkward#2403).
+  * fix: unify C++ and Python GrowableBuffer::extend algorithm
+    (gh#scikit-hep/awkward#2396).
+  * fix: return empty list if broadcasting no arrays
+    (gh#scikit-hep/awkward#2407).
+  * fix: only convert NEP18 arguments to layouts if required
+    (gh#scikit-hep/awkward#2409).
+  * fix: partially fix string broadcasting
+    (gh#scikit-hep/awkward#2410).
+  * fix: correctly convert unknown scalar from kernel to a length
+    (gh#scikit-hep/awkward#2417).
+  * fix: support unknown lengths when broadcasting unions
+    (gh#scikit-hep/awkward#2418).
+  * fix: consistently set a resize default value to 8 - that is
+    passed to GrowableBuffer (gh#scikit-hep/awkward#2421).
+  * fix: is_equal_to bug in UnionArray
+    (gh#scikit-hep/awkward#2426).
+  * fix: handle reordered contents in ak.almost_equal
+    (gh#scikit-hep/awkward#2424).
+  * fix: typetracer nplike.repeat & ak.with_field
+    (gh#scikit-hep/awkward#2429).
+  * refactor: add custom axis error (gh#scikit-hep/awkward#2412).
+
+-------------------------------------------------------------------
+Sun Apr 23 20:26:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.3:
+  * fix: support empty records in ak.with_field by @agoose77 in #2387
+  * fix: only format exception for primary context
+  * fix: only touch data in nplike.asarray if copy is required
+  * fix: update GrowableBuffer::move_to algorithm
+  * fix: don't touch for ascontiguousarray
+  * feat: use cppyy for JIT
+  * feat!: rename cpptype
+  * feat: implemented GrowableBuffer in Numba as a start toward LayoutBuilder
+  * feat: add to_backend to ak.record.Record
+  * feat: add type equality is_equal_to member
+  * fix: expose array interface for CUDA
+  * fix: test untested path in ak.cartesian & broadcasting
+  * fix: ak.cartesian for typetracer
+  * fix: Numba string reference count memory leak.
+  * fix: generate an array view when an Array C++ type is requested
+  * fix: do not expose an rdfentry_ column
+  * fix: generate RDataSource API based on ROOT attribute
+  * fix: simplify depth limit test to support bigger-than-depth values
+  * fix: use cppyy include
+  * fix: convert ufunc arguments to same backend
+  * fix: support N-d sequences in TypeTracer.asarray
+  * fix: make from_iter require iterables!
+  * fix: avoid stack overflow with std::unique_ptr linked list
+  * fix: ak.unzip visits all contents
+  * fix: remove spurious typetracer conversion
+  * feat: add support for arrays in from_buffers
+  * feat: validate axis in L1
+  * feat: add examples to header-only module
+  * fix: support typetracer in ak.unflatten
+  * fix: view for unknown scalar
+  * fix: common backend in functions accepting multiple arrays
+  * fix: support unknown scalars in __getitem__
+  * fix: fail early if index is too dimensional
+  * fix: uneccessary use of nplike_of
+  * fix: jupyterlite dependency changes
+
+-------------------------------------------------------------------
+Tue Mar 14 22:34:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * bump numpy to 1.17.0
+
+-------------------------------------------------------------------
+Tue Mar  7 12:25:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.9:
+  * feat: keep column order after filtering flag
+  * feat: Awkward Arrays in Numba's CUDA target
+  * feat: add 'highlevel' and 'behavior' arguments to
+    'ak.from_rdataframe' function
+  * fix: set dtype in full_like
+  * fix: use simplified in ak._do.merge_as_union
+  * fix: support unknown content length in to_packed
+  * fix: run-lengths with typetracer
+  * fix: add trivial nan_to_num impl
+  * fix: add ak.broadcast_fields
+  * fix: keep column order in all tests
+
+-------------------------------------------------------------------
+Wed Mar  1 14:04:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.8:
+  * allow awkward type arrays filtering based on rdfentry
+  * feat!: re-introduce unknown-length
+  * fix: keep EmptyArray in remove_structure
+  * fix: add is_c_contiguous method to Cupy
+  * fix: boolean indexing with non-zero starting offsets
+  * fix: add license to _backends
+  * fix: use of size in to_RegularArray
+  * fix: indexing into RegularArray with typetracer
+  * fix: support length-zero outer arrays in almost_equal
+  * fix: support options in ak.merge_union_of_records
+  * fix: don't merge non-union parameters
+  * fix: boolean slicing with non-packed arrays
+  * refactor: add type hints for Content._getitem_XXX
+  * refactor: drop NumpyLike.known_shape
+  * refactor: change Content._getitem_range to use explicit indices
+  * docs: fix example for merge_union_of_records
+  * docs: add 1.10 legacy docs to switcher.json
+  * docs: reintroduce Content documentation from v1 reST files.
+  * docs: add how-to-examine-type.md
+  * docs: improve ragged indexing docs
+  * chore: include cuda kernel tests in sdist
+  * chore(deps): bump amannn/action-semantic-pull-request
+    from 5.0.2 to 5.1.0
+  * chore: update pre-commit hooks
+
+-------------------------------------------------------------------
+Mon Feb 13 02:01:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- awkward 2.0.7 actually requires awkward-cpp 8.
+
+-------------------------------------------------------------------
+Fri Feb 10 12:33:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.7
+  * feat: add ability to forget length of typetracer created with
+    typetracer_from_report
+  * feat: start hardening nplike signatures
+  * feat: implement all ufuncs on TypeTracer.
+  * feat: use None for unknown lengths (1 of 2)
+  * feat: coerce backends to same zero-copy type (2 of 2)
+  * feat: growable buffer move_to method
+  * feat: add ak.merge_union_of_records
+  * feat: add support for histogram module
+  * feat: add ak.approx_equal
+  * fix: re-order cases to handle NumPy scalar types properly
+  * fix: specify dtype for buffers in from_rdataframe.
+  * fix: unify typestr with _repr
+  * fix: update type_to_name for Layout builder cxx_14 target
+  * fix: Layout builders clean and length bug fixes
+  * fix: support mask_identity=True for axis=None in ptp, std, etc.
+  * fix: preserve dimensions for keepdims=True, axis=None
+    reductions
+  * fix: some usages of len(layout) under typetracer
+  * fix: rdataframe memory check
+  * fix: rework parameter merging rules
+  * fix: don't raise NotImplementedError when reading empty array
+    from Parquet
+  * fix: ignore object arrays
+  * fix: ak.values_astype now turns 'unknown' type into the
+    requested type.
+
+-------------------------------------------------------------------
+Fri Jan 27 21:34:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.6
+  * feat: expose typetracer in public backend API by @agoose77 in #2066
+  * feat: add byteorder argument to to_buffers by @agoose77 in #2095
+  * feat: add exception for missing field by @agoose77 in #2120
+- Release 2.0.3 and 2.0.4
+ * The flatten_records argument of all reducers (ak.all, ak.any,
+   ..., ak.var) has effectively been removed: setting it now raises
+   an error (PR #2020). This argument applies a reducer to all
+   contents of a record, merging fields, and it had to be removed
+   to properly implement axis=None. The old default,
+   flatten_records=False, is now the only behavior, and to get the
+   equivalent of flatten_records=True, you can use ak.ravel:
+        ak.sum(array, flatten_records=True)
+   becomes
+       ak.sum(ak.ravel(array))
+  * Removing the feature is still the right thing to do, but the
+    function argument needs to go through a deprecation cycle,
+    since libraries like dask-awkward pass arguments through to
+    Awkward. Removing flatten_records as an argument introduces an
+    error, even if the surviving case of flatten_records=False is
+    desired.
+- Release 2.0.2
+  * feat: add ak.drop_none() by @ioanaif in #1904
+- Release 2.0.1
+  * feat: add ak.without_field by @agoose77 in #1963
+- Release 2.0.0
+  * The Awkward Array version 2 project started in June of 2021 and
+    has been developed alongside version 1 updates. For most of
+    that time, it was available as a submodule, awkward._v2, so
+    that it could be tested with the same tests as version 1 and
+    could be experimented upon by early adopters.
+  * Despite the long list of PRs, the high-level interface changes
+    from version 1 to version 2 were kept at a minimum. For the
+    most part, the Awkward 1.x API is fine, but the internal
+    implementation needed an overhaul to prevent technical debt.
+  ## Summary of changes
+  * Nearly all of the code is written in Python now. Exceptions are
+    the "kernel" functions, GrowableBuffer, LayoutBuilder,
+    ArrayBuilder, AwkwardForth, and dynamically generated C++ code
+    for RDataFrame.
+  * Maintains performance because any algorithms that scale with
+    the size of an array are implemented in compiled "kernel"
+    functions.
+  * Split into two packages: awkward-cpp for the C++ part
+    (infrequently updated, binary distribution for most platforms
+    and Python versions) and awkward, the Python part (frequently
+    updated).
+  * Virtual arrays and Partitions (collectively, "lazy arrays")
+    have been removed in favor of dask-awkward.
+  * Awkward Arrays can be converted to and from RDataFrame,
+    generating C++ for ROOT to JIT-compile so that iteration over
+    Awkward Array input is fast (adapted from the Numba
+    implementation).
+  * Auto-differentiation of functions on Awkward Arrays using JAX.
+    (But not JAX JIT-compilation.)
+  * Suite of header-only C++ that does not depend on Awkward
+    Arrays, but can be used to produce them and quickly get them
+    from C++ to Python. The header-only suite includes
+    GrowableBuffer and LayoutBuilder.
+  * New documentation website (https://awkward-array.org/), based
+    on JupyterBooks, the NumPy/SciPy/Pandas style and organization,
+    as well as a notebook that can be executed in your web browser.
+  * More expressive error-messages, highlighting the ak.* function
+    that was in progress when the error occurred, with its
+    arguments. (That is, highlighting ak.* functions as the
+    granularity of feedback to users of Awkward Array, rather than
+    making you search through the stack trace to the hand-off from
+    your code to ours.)
+  * Brackets are always balanced in the console representation of
+    an array:
+
+        >>> ak.Array([
+        ...     [{"x": 1.1, "y": [1]}, {"x": 2.2, "y": [1, 2]}],
+        ...     [],
+        ...     [{"x": 3.3, "y": [1, 2, 3]}],
+        ... ])
+        <Array [[{x: 1.1, y: [1]}, {...}], ...] type='3 * var * {x: float64, y: var...'>
+
+    as opposed to
+
+        <Array [[{x: 1.1, y: [1]}, ... y: [1, 2, 3]}]] type='3 * var * {"x": float64, "y...'>
+
+    in version 1. Also, show methods for values
+
+        [[{x: 1.1, y: [1]}, {x: 2.2, y: [1, 2]}],
+         [],
+         [{x: 3.3, y: [1, 2, 3]}]]
+
+    and types
+
+        3 * var * {
+            x: float64,
+            y: var * int64
+        }
+
+    This extended show output is the default representation in Jupyter.
+  * Round-trip fidelity in ak.to_arrow/ak.from_arrow: no Awkward
+    Array metadata is lost. Same for ak.to_parquet/ak.from_parquet,
+    to the extent that pyarrow can read and write Parquet.
+  * Parquet column selection using wildcards.
+  * Data exported with version 1 ak.to_buffers can be imported by
+    version 2 ak.from_buffers, with custom buffer_keys.
+  * The majority of version 1 tests have been ported to version 2,
+    to ensure that the interface and functionality doesn't change,
+    except where intended (e.g. organizing naming conventions).
+  * Consistent handling of date-time and time-delta types (matches
+    NumPy's system).
+  * Improved ak.to_json/ak.from_json arguments (for converting
+    non-JSON types NaN, infinity, complex numbers) and using a
+    known JSONSchema to accelerate ak.from_json. Removed
+    ambiguities about newline-delimited JSON (requires explicit
+    argument).
+  * The world's fastest Avro file reader in Python,
+    ak.from_avro_file (uses AwkwardForth).
+  * "nan" versions of NumPy functions, such as np.nansum,
+    np.nanmean, np.nanstd.
+  * Renamed ak.to_pandas → ak.to_dataframe, to clarify distinction
+    from awkward-pandas.
+  * Organized Type and Form objects better, more consistent.
+  * Clear specification of NumPy dtypes that can be used in Awkward
+    Arrays (bool, numbers, including complex, and
+    date-time/time-delta).
+  * Organized naming conventions throughout the codebase, such as
+    keys versus fields versus recordlookup.
+  * Carefully examined the public API (all modules, functions,
+    classes, and methods that don't start with an underscore) to be
+    sure that we can support it going forward. Any removal or
+    change of an interface will require a minor version number
+    increase and a deprecation cycle, on the order of months. (New
+    features and bug-fixes can be immediate, on patch releases.)
+  * Flags and "configuration" function arguments are now
+    keyword-only (order independent).
+  * Started adding Python type hints (nowhere near complete, but
+    started).
+  * Removed the Identities from array nodes. They were never fully
+    implemented—a placeholder for a feature that won't be developed
+    within Awkward Array (SQL-style JOINs).
+  * TypeTracerArray does a "dry run" of a calculation to predict
+    its type at the end. Used to build a computation graph for
+    dask-awkward.
+  * Equivalent but ungainly type combinations, such as "option-type
+    of option-type of X" or "union-type containing union-types,"
+    have been outlawed with tools to squash them into a canonical
+    layout. Operations on the data now have fewer possibilities to
+    worry about.
+  * Simplified the semantics of nbytes.
+  * Clarified ak.ravel and ak.flatten's treatments of missing data.
+  * Added missing ArrayBuilder methods in Numba.
+  * Set up framework for performing ak.* operations in CUDA, using
+    CuPy JIT-compilation to get the right interface, with error
+    message passing through asynchronous GPU computations. The CUDA
+    implementation is not complete, but the groundwork has been
+    laid.
+  * Parquet reading/writing uses fsspec for remote connections and
+    handles the dataset protocol correctly.
+  * Public interface to our power-tools: ak.transform unifies our
+    internal recursively_apply and broadcast_and_apply.
+  * All ak.* functions were rewritten; some were redesigned in a
+    simpler way using the above-mentioned power tools. There are
+    likely fewer undiscovered bugs in these functions now.
+  * Use of records in numerical functions is more restricted, to
+    prevent misapplication of ufuncs like + and reducers like
+    np.sum on meaningful records such as Vectors.
+  * All docstrings updated for version 2, including the code
+    examples.
+- Drop awkward-cmake-build-with-RelWithDebInfo.patch: No longer
+  compiling here
+- Remove the devel package: The header-only files are now provided
+  by awkward-devel built from python-awkward-cpp
+
+-------------------------------------------------------------------
+Fri Nov 11 08:52:09 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Rvert the devel package requirement, python-awkward is not provided by any of
+  subpackages, the real package provided is python3-awkward.
+
+-------------------------------------------------------------------
+Thu Nov 10 09:04:56 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed tests filter
+- Improve devel package requirement to use the package name variable instead of
+  python3-awkward
+- Update to 1.10.2:
+  # New features
+   * feat: add RegularArray._reduce_next implementation (backport) by @agoose77
+     in #1813
+
+  # Bug-fixes and performance
+   * fix: don't assume trailing . for module name in is_XXX_buffer (backport)
+     by @agoose77 in #1746
+   * fix: use proper lengths in ByteMaskedArray.mergemany (backport) by
+     @agoose77 in #1750
+   * fix: simplify ListOffsetArray_reduce_nonlocal_outstartsstops (backport) by
+     @agoose77 in #1797
+
+  # Other
+   * chore: remove v2 Python highlevel LayoutBuilder from main-v1. by
+     @jpivarski in #1863
+
+-------------------------------------------------------------------
+Fri Nov  4 09:10:44 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update tests to skip broken tests in i586. gh#scikit-hep/awkward#1862
+- Remove python_module macro definition
+
+-------------------------------------------------------------------
+Mon Oct 17 01:58:31 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.10.1:
+  * fix: support non-hashable parameter values in broadcasting
+  * feat: raise Error for Record.setattr
+  * fix: allow string arrays to merge without unions
+  * fix: carry parameters through broadcasting
+  * fix: don't project categorical in ak._v2.packed
+  * fix: reduce runtime dependency from setuptools to just packaging
+  * fix: ensure that __copy__ and __deepcopy__ are enabled.
+  * fix: pass memo to deepcopy
+  * perf: improve Array initialisation performance
+  * fix: Removed bytemask() in favour of mask_as_bool()
+- Add importlib-resources to BuildRequires.
+- Drop patches:
+  * awkward-correct-includedir.patch
+  * awkward-import-packging-not-setuptools_external.patch
+- No longer attempt to skip 3.6.
+
+-------------------------------------------------------------------
+Wed Aug 24 03:17:19 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Copy the heaers ourselves now that setuptools does not.
+
+-------------------------------------------------------------------
+Sat Mar  5 15:25:15 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.0:
+  * Bumped pybind11 to 2.9.1 [gh#scikit-hep/awkward-1.0#1316].
+  * Added optiontype_outside_record option to ak.zip
+    [gh#scikit-hep/awkward-1.0#1308].
+  * Fixed typo in ArrayBuilder documentation
+    [gh#scikit-hep/awkward-1.0#1326].
+  * Many more changes through various 1.8.0rc versions, see
+    https://awkward-array.readthedocs.io/en/latest/_auto/changelog.html.
+- Add awkward-import-packging-not-setuptools_external.patch:
+  Directly use packaging module instead of setuptools.extern; the
+  latter is used by upstream to keep dependencies to a minimum,
+  but importing setuptools and trying to then use
+  setuptools.external does not work on openSUSE.
+- Add python-packaging BuildRequires, needed for tests in light of
+  above patch, and Requires.
+
+-------------------------------------------------------------------
+Wed Dec  8 22:58:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.0:
+  * Fixed a division-by-zero bug: [gh#scikit-hep/awkward-1.0#1168,
+    gh#scikit-hep/awkward-1.0#1169].
+  * Applied the 1.7.0 deprecation (see Roadmap):
+    [gh#scikit-hep/awkward-1.0#1118].
+  * Enabled codecov: [gh#scikit-hep/awkward-1.0#1120].
+  * Updated Azure's Windows VM: [gh#scikit-hep/awkward-1.0#1129].
+  * Fixed order in RecordForm.contents property:
+    [gh#scikit-hep/awkward-1.0#1166].
+  * Fixed Parquet reading for files with zero RecordBatches:
+    [gh#scikit-hep/awkward-1.0#1170].
+
+-------------------------------------------------------------------
+Sat Sep 18 20:15:02 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.0:
+  * Reverting the spelling of ak.nplike.NumPy → ak.nplike.Numpy,
+    etc. (including CuPy → Cupy) to avoid needlessly breaking
+    interfaces.
+  * Unrestricted the jaxlib version bounds, thanks to a fix that
+    he prompted in JAX: PR gh#scikit-hep/awkward#988.
+  * Added support for n-dimensional NumpyArrays in ak.where: PR
+    gh#scikit-hep/awkward#980.
+  * Added axis parameter to ak.fill_none: PR
+    gh#scikit-hep/awkward#917. Added np.ravel: PR
+    gh#scikit-hep/awkward#985.
+  * Fixed ak.from_buffers to support empty buffers: PR
+    gh#scikit-hep/awkward#1009.
+  * Fixed ak.packed for RegularArrays with size=0: PR
+    gh#scikit-hep/awkward#1008.
+  * Fixed ak.zip to not convert regular to jagged:
+    gh#scikit-hep/awkward#1013.
+  * Clarified the documentation of left and right broadcasting: PR
+    gh#scikit-hep/awkward#1016.
+  * Fixed ak.broadcast_arrays by setting numpy_to_regular=True: PR
+    gh#scikit-hep/awkward#1019.
+  * Added support for ak.Record in ak.packed: PR
+    gh#scikit-hep/awkward#1021.
+  * Fixed gh#scikit-hep/awkward#1026, jagged slicing of a
+    multidimensional NumpyArray: PR gh#scikit-hep/awkward#1029.
+  * Added a name parameter to ak.mixin_class: PR
+    gh#scikit-hep/awkward#1030.
+  * Added a spell-checker in pre-commit that fixed a lot of
+    spelling mistakes in comments and documentation: PR
+    gh#scikit-hep/awkward#1003.
+  * Fixed the stack level of the deprecation warning: PR
+    gh#scikit-hep/awkward#1058.
+  * Made the source code reproducible by allowing the build date
+    to be overridden by SOURCE_DATE_EPOCH: PR
+    gh#scikit-hep/awkward#1050.
+  * Optimized common array slice ("take") operations: PR
+    gh#scikit-hep/awkward#1062.
+  * Added a better set of kernel unit tests to continuous
+    integration, which will be important for testing GPU kernels:
+    PRs gh#scikit-hep/awkward#1065 and gh#scikit-hep/awkward#1081.
+  * Added a default for NEP-18, so now any NumPy function can be
+    used with Awkward Arrays, as long as the Awkward Array can be
+    cast as NumPy (i.e. is rectilinear):
+    gh#scikit-hep/awkward#1005.
+  * Reverted the ill-conceived gh#scikit-hep/awkward#694,
+    SliceVarNewAxis: PR gh#scikit-hep/awkward#1028.
+  * Made ak.Record iterable (iterates over field names, like
+    dict): PR gh#scikit-hep/awkward#1061.
+  * Fixed the UnionForm bug described in gh#scikit-hep/awkward#770
+    and gh#scikit-hep/awkward#930: PR gh#scikit-hep/awkward#991.
+  * Fixed gh#scikit-hep/awkward#546, ak.fill_none losing the
+    replacement's dtype: PR gh#scikit-hep/awkward#995.
+  * Fixed double-masking of reducers and unmasking of ak.ptp: PR
+    gh#scikit-hep/awkward#994.
+  * Fixed ak.Array.__dir__ to include methods/properties of
+    overridden classees: PR gh#scikit-hep/awkward#993.
+  * Fixed gh#scikit-hep/awkward#982 by accounting for another kind
+    of "gap" in nonlocal reducers: PR gh#scikit-hep/awkward#997.
+  * Fixed gh#scikit-hep/awkward#998 and
+    gh#scikit-hep/awkward#1000, ak.argmax for ListOffsetArray with
+    nonzero start: PR gh#scikit-hep/awkward#1001.
+  * Fixed ak.fill_none fill value's handling of NumPy dimension:
+    PR gh#scikit-hep/awkward#1056.
+  * Fixed ak.to_numpy for structured arrays that are also masked
+    arrays: PR gh#scikit-hep/awkward#1067.
+  * Finished __getitem__ for all array types: PRs
+    gh#scikit-hep/awkward#959, gh#scikit-hep/awkward#1031,
+    gh#scikit-hep/awkward#1036, and gh#scikit-hep/awkward#1073.
+  * Refactored ArrayBuilder to not depend on C++ that will be
+    removed in v2: PRs gh#scikit-hep/awkward#977,
+    gh#scikit-hep/awkward#1045, and gh#scikit-hep/awkward#1063.
+  * Implemented _localindex in v2: PR gh#scikit-hep/awkward#1059.
+    And combinations: PR gh#scikit-hep/awkward#1074.
+  * Renamed _getitem_array as _carry and made it take an Index: PR
+    gh#scikit-hep/awkward#1025. Added VirtualArray: PR
+    gh#scikit-hep/awkward#1079.
+- Disable python2 builds explicitly by setting skip_python2 in
+  specfile; otherwise builds for openSUSE <= 1550 fail.
+
+-------------------------------------------------------------------
+Sat Jul  3 00:39:43 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.0:
+  * Long list of changes since last packaged version, see
+    https://awkward-array.readthedocs.io/en/latest/_auto/changelog.html.
+- Adapt symlinks and file-list for changes to shared object
+  locations (directly in python_sitearch instead of
+  python_sitearch/awkward/).
+- Skip a test on 32-bit that uses float128, since float32 is not
+  available.
+
+-------------------------------------------------------------------
+Sun Feb 21 14:25:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.2
+  * The fix that motivates this patch release is @henryiii’s repair
+    of the SDist distribution: PR #720. The addition of dlpack
+    wasn’t included in the source distribution, so pip install
+    awkward without an available wheel was failing due to not
+    having all the headers it needed to compile.
+  * Also fixed jagged slices: issue #723, PRs #725 and #729, as
+    well as a segfault in ak.flatten: issue #724, PR #726.
+- Release 1.1.1
+  * New patch release motivated by a bug discovered in Uproot’s
+    tests: PR #719. (From now on, Uproot will test Awkward release
+    candidates.)
+  * Also, #717 adds an optional behavior argument to every function
+    that takes a highlevel=True/False.
+  * Also from now on, only critical bug-fixes (like this one) will
+    be patch releases and other updates will all go into release
+    candidates for the next non-patch release (e.g. 1.2.0,
+    [scheduled for 2021-04-01](https://github.com/scikit-hep/
+    awkward-1.0#roadmap)).
+- Release 1.1.0
+  * Updates to Arrow 3.0. PR #709.
+  * Can now read and write Parquet datasets (conventions for sets
+    of multiple files): PR #706, fixes #368 (old!).
+  * Also, Python 2 can use ellipsis because we have pybind11 2.6
+    now: PR #707, fixes #705.
+  * remove deprecated features
+  * Fixed #689, the dimension of arrays returned by empty slices:
+    PR #691.
+  * @ianna fixed tuple-building in ArrayBuilder to guard against
+    specifying a nonexistent slot and segfaulting: #697.
+  * Added [ak.materialized](https://awkward-array.readthedocs.io/
+    en/latest/_auto/ak.materialized.html) to force-materialize
+    arrays (opposite of [ak.virtual](https://awkward-array.
+    readthedocs.io/en/latest/_auto/ak.virtual.html)) because
+    debugging very lazy deferments is hard.
+  * Can now use np.newaxis to give one array the same number of
+    dimensions as another for slicing (which closes #492).
+  * Fixed ak.min/ak.max with axis != None for partitioned data.
+  * Fixed a bug that affected boolean-masking of partitioned data.
+  * Reducing over-materialization of virtual arrays: PRs #643,
+    #644, #657, added Form-aware lazy Parquet: #688
+  * Fixed ak.from_buffers to allow unreachable elements: PR #673
+  * Developed the AwkwardForth VM: PRs #683, #648, #653, #661,
+    #664, #672
+  * Removed right-broadcasting from all operations except those
+    that require it for NumPy compliance: #656, #680
+  * @ianna improved sorting: PRs #639, #687, added complex numbers
+    support: PRs #652
+  * @trickarcher generalized CuPy interop to JAX: PRs #645, #662
+  * @reikdas cleaned up developer scripts: PRs #665, #666, #667
+  * @henryiii added more code quality tests: PRs #675, #681, #682,
+    #677, #676, #685, #683
+- Somehow the missing python-devel BuildRequires was okay until
+  recently.
+
+-------------------------------------------------------------------
+Sun Feb 14 14:10:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (numbas requires scipy)
+
+-------------------------------------------------------------------
+Mon Jan 25 23:10:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.2
+  * @nsmith- fixed virtual arrays in ak.to_arrow (PR #642).
+  * Fixed #628, allowing np.int64(N) to be used in a slice like
+    integer N (PR #636).
+  * Added the ability to select fields inside of nested
+    records with syntax like array[[“pt”, “eta”, “phi”],
+    “nominal”] (#619).
+  * Fixed Apache Arrow → Awkward Array (ak.from_arrow) for
+    sliced Arrow arrays: it has an offset attribute we had
+    been ignoring (#625). Thanks to @trickarcher for the
+    extensive tests!
+  * Ensured that an ak.Array’s behavior always gets passed to
+    output of any operation (#626), even if the input is a
+    dict (#627, affected ak.zip, ak.cartesian, and
+    ak.argcartesian).
+  * Fixed #629, ak.with_field dropping parameters (#631),
+    and #634, ak.fill_none not accepting a Record as a fill
+    value (#635).
+  * Added a roadmap and upvote/thumbs up instructions to the
+    README.
+  * @jpivarski revised the ak.concatenate implementation
+    (#610), fixed a bug related to axis handling (#612), and
+    made ak.concatenate friendlier to lazy arrays (#613;
+    “friendlier” = “materializes arrays in fewer cases”).
+  * @chrisburr added setuptools as a requirement because it
+    is used for pkg_resources.
+  * @ianna added validity-checking for strings, bytestrings,
+    and categorical (#571), including some revisions of
+    sorting and a partial implementation of checking for
+    uniqueness and identifying unique elements from arrays
+    that can later be used to implement np.unique.
+  * Updated Awkward <–> Arrow conversion to preserve nullability
+    in type (PRs #602, #606). Preemptively avoiding warnings
+    from NumPy 1.20 (#599) and fixed 32-bit Linux cases in the
+    tests (#604).
+  * @henryiii fixed hardcoded threads in MacOS compilation
+    target (for deploying to conda-forge).
+- Drop awkward-tests-on-32bit.patch merged upstream
+- Fix python_expand for primary flavor check
+
+-------------------------------------------------------------------
+Wed Dec 16 00:13:41 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add awkward-tests-on-32bit.patch: Fix tests on 32 bit systems;
+  patch taken from upstream PR [gh#scikit-hep/awkward-1.0#600].
+
+-------------------------------------------------------------------
+Tue Dec 15 00:31:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable tests making use of 64 bit data types on i586
+  (gh#scikit-hep#awkward-1.0#600).
+
+-------------------------------------------------------------------
+Mon Dec 14 23:23:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Move header files to standard header dir and package them plus
+  symlink to shared lib as part of awkward-devel package (for use
+  by C/C++ coders).
+
+-------------------------------------------------------------------
+Sun Dec 13 19:06:50 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add awkward-correct-includedir.patch: Make awkward.config return
+  the correct includedir (/usr/include/awkward) where we move the
+  header files to (default installation is to
+  python_sitearch/awkward/include, which is non-std).
+- Add awkward-cmake-build-with-RelWithDebInfo.patch: Set
+  CMAKE_BUILD_TYPE to RelWithDebInfo by default instead of
+  Release.
+
+-------------------------------------------------------------------
+Sun Dec 13 14:33:55 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

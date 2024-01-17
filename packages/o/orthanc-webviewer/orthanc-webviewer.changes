@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Sep 27 10:55:07 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.8
+  * Fix XSS inside DICOM in Orthanc Web Viewer (as reported by Stuart
+    Kurutac, NCC Group)
+  * framework190.diff removed (covered in actual version)  
+
+-------------------------------------------------------------------
+Fri Jan 29 18:25:58 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- framework190.diff added for compatibility with framework 1.9.0
+
+-------------------------------------------------------------------
+Tue Dec 15 16:51:24 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 2.7 
+* Support of dynamic linking against the system-wide Orthanc framework library
+* Upgrade to Orthanc framework 1.8.1
+
+-------------------------------------------------------------------
+Thu Oct 22 08:58:42 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- switched to orthanc-framework (static orthanc version)
+
+-------------------------------------------------------------------
+Wed May 27 15:10:14 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.6
+* cachemngr.diff removed 
+* DecodedImageAdapter.cpp removed
+* Move the GDCM decoder out of the Orthanc Web viewer plugin as a
+  separate plugin: https://book.orthanc-server.com/plugins/gdcm.html
+* Performance: Replaced "OrthancPluginRegisterRestCallback" by
+  "OrthancPluginRegisterRestCallbackNoLock"
+* Authorization tokens passed as url search params in Orthanc Explorer
+  are now transmitted to the viewer and included as headers in every
+  HTTP request to the Rest API easing the usage of the Authorization
+  plugin
+* Upgrade to Orthanc framework to 1.7.0 
+
+-------------------------------------------------------------------
+Sun Apr 19 08:59:58 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- webjierwer.json & README adapted 
+
+-------------------------------------------------------------------
+Thu Nov 28 14:21:55 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- cachmngr.diff fixes missing include 
+
+-------------------------------------------------------------------
+Fri Nov  8 16:55:53 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.5
+  Initial build on OBS 

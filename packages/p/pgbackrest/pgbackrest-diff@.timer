@@ -1,0 +1,14 @@
+[Unit]
+Description=Weekly pgbackrest diff backup (sun)
+Documentation=https://pgbackrest.org/configuration.html
+Documentation=man:pgbackrest(1) man:pgbackrest.conf(5)
+PartOf=pgbackrest.target
+
+[Timer]
+#OnCalendar=Sun *-*-8..31 05:05:05
+OnCalendar=Wed *-*-* 05:05:05
+AccuracySec=1h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

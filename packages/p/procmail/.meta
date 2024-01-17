@@ -1,0 +1,6 @@
+<package name="procmail" project="openSUSE:Factory">
+  <title>A program for local e-mail delivery</title>
+  <description>Sendmail calls procmail to deliver email into a local folder. Procmail
+can be configured to store e-mail in different folders.</description>
+  <devel project="server:mail" package="procmail"/>
+</package>

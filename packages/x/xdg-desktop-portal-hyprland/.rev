@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2455f45427d37ec67298e51696ed9d8e</srcmd5>
+    <version>unknown</version>
+    <time>1684846473</time>
+    <user>dimstar_suse</user>
+    <comment>I want to add XDPH to openSUSE:Factory</comment>
+    <requestid>1088492</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8a7e3a22ec787a94b0f7a432df01d07f</srcmd5>
+    <version>unknown</version>
+    <time>1685562864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0:
+  * screencast: restore window by class
+  * some nix stuff
+</comment>
+    <requestid>1089888</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>77754dc26a8f9a8d9ba603fe1900bf1d</srcmd5>
+    <version>unknown</version>
+    <time>1692294253</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.5.0:
+   * pw: guard output in transform checks
+   * toplevelexport: remove _done call from _buffer
+   * screencast: correct array size
+</comment>
+    <requestid>1104275</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>904c83e0bcb7141e76f921f21f998377</srcmd5>
+    <version>unknown</version>
+    <time>1694114002</time>
+    <user>anag+factory</user>
+    <comment>- Fix build and install for hyprland protocol and the portal
+- Use sdb-c++ from system instead of subproject through cmake patch:
+  0000-sdbus-c++-cmake-lists.patch
+- Add libjpeg, cairo, pango(cairo) as deps
+- Use cmake instead of meson.
+- Update to version 1.0.0:
+  * added sdbus-c++ as dependency
+  * this release is a full rewrite from C to C++
+</comment>
+    <requestid>1109424</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>914ca6c789cabb4a1b838da5e6bb0988</srcmd5>
+    <version>unknown</version>
+    <time>1694344276</time>
+    <user>anag+factory</user>
+    <comment>- Add back cmake. Seems they forgotten share picker on the meson.build
+- Further correct mistake by installing of systemd services properly.</comment>
+    <requestid>1109938</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>70846effabdbdf4ae609cec5fa005759</srcmd5>
+    <version>unknown</version>
+    <time>1695758507</time>
+    <user>anag+factory</user>
+    <comment>- Remove 0000-sdbus-c++-cmake-lists.patch
+- Remove conflicts with XDG-wlr. XDP 0.18.0 introduces flexible
+  configuration of portals.
+- Update to version 1.1.0:
+  * core: rework event loop for polling and C++-style awaits
+  * internal: make frame callbacks log a trace
+  * internal: add a notification on missing qt-wayland packages
+  * drop unused dependencies
+  * fix build system
+  * add double escaping
+</comment>
+    <requestid>1113549</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>ad62424b75063811a14df7a9b6c8c31d</srcmd5>
+    <version>unknown</version>
+    <time>1697567130</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118309</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>79396306b9c73883f577c2b6707667c3</srcmd5>
+    <version>unknown</version>
+    <time>1698170884</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.3:
+  * Small update still fixing more edge cases causing a CPU core spike after exit.
+</comment>
+    <requestid>1119722</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>c984039b25cba8b1101f2f2e81c8c64e</srcmd5>
+    <version>unknown</version>
+    <time>1701462343</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130112</requestid>
+  </revision>
+</revisionlist>

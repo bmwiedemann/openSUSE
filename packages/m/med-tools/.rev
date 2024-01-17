@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cdfee24e9b8654628335b1dab69b4b1b</srcmd5>
+    <version>4.0.0</version>
+    <time>1551025043</time>
+    <user>coolo</user>
+    <comment>needed for upcomming FreeCAD submission</comment>
+    <requestid>677775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>36d30e51d70ae14b2ed01b23ce6511db</srcmd5>
+    <version>4.0.0</version>
+    <time>1573164974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745559</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>15431f6be75c5641fd355a5d8c4a1ee1</srcmd5>
+    <version>4.1.0</version>
+    <time>1609959409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860600</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d58ca91e81d04a9ad2d43f5523297cbb</srcmd5>
+    <version>4.1.0</version>
+    <time>1648841740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966441</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7b6e316af70393c812c4e8dac10774ec</srcmd5>
+    <version>4.1.0</version>
+    <time>1649610849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968264</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5d00acf55d9e0c6374a3d681f2eb0cf3</srcmd5>
+    <version>4.1.1</version>
+    <time>1660834149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997628</requestid>
+  </revision>
+</revisionlist>

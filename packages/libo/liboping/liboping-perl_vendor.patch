@@ -1,0 +1,11 @@
+--- bindings/Makefile.am.orig	2009-02-18 23:51:37.000000000 +0100
++++ bindings/Makefile.am	2009-02-18 23:51:51.000000000 +0100
+@@ -6,7 +6,7 @@
+ 	[ ! -f perl/Makefile ] || ( cd perl && $(MAKE) all )
+ 
+ install-exec-local:
+-	[ ! -f perl/Makefile ] || ( cd perl && $(MAKE) install )
++	[ ! -f perl/Makefile ] || ( cd perl && $(MAKE) install_vendor )
+ 
+ clean-local:
+ 	[ ! -f perl/Makefile ] || ( cd perl && $(MAKE) realclean )

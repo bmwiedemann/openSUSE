@@ -1,0 +1,253 @@
+Index: rssguard-4.6.0/src/librssguard/CMakeLists.txt
+===================================================================
+--- rssguard-4.6.0.orig/src/librssguard/CMakeLists.txt
++++ rssguard-4.6.0/src/librssguard/CMakeLists.txt
+@@ -661,11 +661,11 @@ if(WIN32)
+   list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
+ endif()
+ 
+-add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
++add_library(rssguard-${APP_VERSION} SHARED ${SOURCES} ${QM_FILES})
+ 
+ # Bundle icons on some platforms which do not provide system-wide icon themes.
+ if(FORCE_BUNDLE_ICONS)
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     FORCE_BUNDLE_ICONS
+@@ -676,7 +676,7 @@ endif()
+ 
+ # Add OAuth services definitions.
+ if(NOT FEEDLY_CLIENT_ID STREQUAL "" AND NOT FEEDLY_CLIENT_SECRET STREQUAL "")
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     FEEDLY_OFFICIAL_SUPPORT
+@@ -690,7 +690,7 @@ else()
+ endif()
+ 
+ if(NOT GMAIL_CLIENT_ID STREQUAL "" AND NOT GMAIL_CLIENT_SECRET STREQUAL "")
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     GMAIL_OFFICIAL_SUPPORT
+@@ -704,7 +704,7 @@ else()
+ endif()
+ 
+ if(NOT INOREADER_CLIENT_ID STREQUAL "" AND NOT INOREADER_CLIENT_SECRET STREQUAL "")
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     INOREADER_OFFICIAL_SUPPORT
+@@ -718,7 +718,7 @@ else()
+ endif()
+ 
+ # Add specific definitions.
+-target_compile_definitions(rssguard
++target_compile_definitions(rssguard-${APP_VERSION}
+   PRIVATE
+   RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+ 
+@@ -734,7 +734,7 @@ target_compile_definitions(rssguard
+   APP_URL_ISSUES_NEW="${APP_URL_ISSUES_NEW}"
+   APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}")
+ 
+-target_include_directories(rssguard
++target_include_directories(rssguard-${APP_VERSION}
+   PUBLIC
+   ${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_CURRENT_SOURCE_DIR}/gui
+@@ -750,41 +750,41 @@ target_include_directories(rssguard
+ )
+ 
+ if(SQLite3_FOUND)
+-  target_include_directories(rssguard AFTER
++  target_include_directories(rssguard-${APP_VERSION} AFTER
+     PRIVATE
+     ${SQLite3_INCLUDE_DIRS}
+   )
+ 
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     SYSTEM_SQLITE3
+   )
+ 
+-  target_link_libraries(rssguard PRIVATE
++  target_link_libraries(rssguard-${APP_VERSION} PRIVATE
+     ${SQLite3_LIBRARIES}
+   )
+ endif()
+ 
+ if(ZLIB_FOUND)
+-  target_include_directories(rssguard AFTER
++  target_include_directories(rssguard-${APP_VERSION} AFTER
+     PRIVATE
+     ${ZLIB_INCLUDE_DIRS}
+   )
+ 
+-  target_compile_definitions(rssguard
++  target_compile_definitions(rssguard-${APP_VERSION}
+     PRIVATE
+ 
+     ENABLE_COMPRESSED_SITEMAP
+   )
+ 
+-  target_link_libraries(rssguard PRIVATE
++  target_link_libraries(rssguard-${APP_VERSION} PRIVATE
+     ${ZLIB_LIBRARIES}
+   )
+ endif(ZLIB_FOUND)
+ 
+ # Qt.
+-target_link_libraries(rssguard PUBLIC
++target_link_libraries(rssguard-${APP_VERSION}  PUBLIC
+   Qt${QT_VERSION_MAJOR}::Core
+   Qt${QT_VERSION_MAJOR}::Gui
+   Qt${QT_VERSION_MAJOR}::Network
+@@ -796,68 +796,68 @@ target_link_libraries(rssguard PUBLIC
+ )
+ 
+ if(QT_VERSION_MAJOR EQUAL 6)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::Core5Compat
+   )
+ endif()
+ 
+ if(WIN32)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::GuiPrivate
+   )
+ endif()
+ 
+ if(NO_LITE)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::WebEngineWidgets
+   )
+ endif()
+ 
+ if(WIN32 AND NOT BUILD_WITH_QT6)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::WinExtras
+   )
+ endif()
+ 
+ if(NOT OS2)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::Multimedia
+   )
+ endif()
+ 
+ if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::MultimediaWidgets
+   )
+ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
+-  target_include_directories(rssguard AFTER
++    target_include_directories(rssguard-${APP_VERSION} AFTER
+     PRIVATE
+     ${LibMPV_INCLUDE_DIRS}
+   )
+-  target_link_libraries(rssguard PUBLIC
++  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     ${LibMPV_LIBRARIES}
+   )
+ endif()
+ 
+ if(UNIX AND NOT APPLE AND NOT ANDROID)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Qt${QT_VERSION_MAJOR}::DBus
+   )
+ endif()
+ 
+ if(APPLE)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     "-framework AppKit"
+   )
+ elseif(WIN32)
+-  target_link_libraries(rssguard PUBLIC
++    target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     Shell32.lib
+     odbc32
+   )
+ endif()
+ 
+ if(WIN32 OR OS2)
+-  install(TARGETS rssguard DESTINATION .)
++    install(TARGETS rssguard-${APP_VERSION} DESTINATION .)
+   install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+     DESTINATION include
+     FILES_MATCHING PATTERN "services/abstract/*.h"
+@@ -868,7 +868,7 @@ if(WIN32 OR OS2)
+   )
+ elseif(UNIX AND NOT APPLE AND NOT ANDROID)
+   include (GNUInstallDirs)
+-  install(TARGETS rssguard
++  install(TARGETS rssguard-${APP_VERSION}
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   )
+   install(DIRECTORY services/abstract
+@@ -876,7 +876,7 @@ elseif(UNIX AND NOT APPLE AND NOT ANDROI
+     FILES_MATCHING PATTERN "*.h"
+   )
+ elseif(APPLE)
+-  install(TARGETS rssguard
++  install(TARGETS rssguard-${APP_VERSION}
+     DESTINATION Contents/MacOS
+   )
+   install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+Index: rssguard-4.6.0/localization/CMakeLists.txt
+===================================================================
+--- rssguard-4.6.0.orig/localization/CMakeLists.txt
++++ rssguard-4.6.0/localization/CMakeLists.txt
+@@ -8,7 +8,7 @@ if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT
+     "${CMAKE_SOURCE_DIR}/src/librssguard/*.h"
+     "${CMAKE_SOURCE_DIR}/src/librssguard/*.ui")
+ 
+-  qt_add_lupdate(rssguard
++  qt_add_lupdate(rssguard-${APP_VERSION}
+     TS_FILES "${CMAKE_CURRENT_SOURCE_DIR}/rssguard_en.ts"
+     SOURCES ${ALL_SOURCES}
+     INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/src/librssguard"
+@@ -21,7 +21,7 @@ FILE(GLOB TS_FILES  ${CMAKE_CURRENT_SOUR
+ set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}")
+ 
+ if(BUILD_WITH_QT6)
+-  qt_add_lrelease(rssguard
++  qt_add_lrelease(rssguard-${APP_VERSION}
+     TS_FILES ${TS_FILES}
+     QM_FILES_OUTPUT_VARIABLE QM_FILES
+     OPTIONS "-compress"
+@@ -33,5 +33,5 @@ else()
+   )
+ 
+   add_custom_target(rssguard_lrelease DEPENDS ${QM_FILES})
+-  add_dependencies(rssguard rssguard_lrelease)
++  add_dependencies(rssguard-${APP_VERSION} rssguard_lrelease)
+ endif()
+Index: rssguard-4.6.0/src/rssguard/CMakeLists.txt
+===================================================================
+--- rssguard-4.6.0.orig/src/rssguard/CMakeLists.txt
++++ rssguard-4.6.0/src/rssguard/CMakeLists.txt
+@@ -21,7 +21,7 @@ target_link_libraries(app PUBLIC
+   Qt${QT_VERSION_MAJOR}::Core
+   Qt${QT_VERSION_MAJOR}::Gui
+   Qt${QT_VERSION_MAJOR}::Widgets
+-  rssguard
++  rssguard-${APP_VERSION}
+ )
+ 
+ if(QT_VERSION_MAJOR EQUAL 6)

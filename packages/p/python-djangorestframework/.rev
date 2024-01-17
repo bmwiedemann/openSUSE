@@ -1,0 +1,310 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc2bec9c3ed803a702171052a7fa48a7</srcmd5>
+    <version>3.8.2</version>
+    <time>1533292592</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by weblate</comment>
+    <requestid>626895</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6995537aa2dc98ff5390dc4a943114f</srcmd5>
+    <version>3.8.2</version>
+    <time>1533887372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>040719eca63d42fdf81ba2a0ab4179e1</srcmd5>
+    <version>3.9.0</version>
+    <time>1542202964</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.9.0:
+  * (fix) link to disqus article on cursor pagination (#6020)
+  * Add kloudless as a new premium sponsor (#6241)
+  * Add building with drf book (#6102)
+  * Documentation fix for django-admin commands (#6232)
+  * Remove unnecessary models.py file (#6142)
+  * Add Oct 18 release date
+  * Clean up unnecessary if statement (#6163)
+  * codecov: enable status for patch/changes, comment: diff (#6080)
+  * Add &quot;optionals not required&quot; build (#6047)
+  * Fix typo in docs (#6212)
+  * Update JWT docs. (#6138)
+  * Fix dist build (#6139)
+  * Add Django 2.1 to classifiers (#6099)
+  * Correct schema parsing for JSONField (#5878)
+  * Ensure that html forms (multipart form data) respect optional fields (#5927)
+  * Render markdown readme on PyPI (#6004)
+  * requirements-testing: update pytest and pytest-django (#5972)
+  * tox/pytest: move posargs, use -ra (#6039)
+  * Fixed instance being overwritten in pk-only optimization try/except block (#5747)
+  * Update to Django 2.0 Routing Syntax (#6049)
+  * requirements-optionals: use psycopg2-binary (#5969)
+  * [DOCS] python print syntax
+  * Added djangorestframework-datatables to third-party packages (#5931)
+  * Fix upload parser test (#6044)
+  * Allow nullable BooleanField in Django 2.1 (#6183)
+  * Simplify job matrix on Travis (#6174)
+  * tests: fix skipping with TestPosgresFieldsMapping (#5965)
+  * Add docs link to Caching API Guide. (#6012)
+  * Allow hashing of ErrorDetail to fix #5919 (#5932)</comment>
+    <requestid>648256</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dd8176518328377fb1231f1e592d7480</srcmd5>
+    <version>3.9.1</version>
+    <time>1551455409</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to avoid buildcycle with django-filter
+
+- Activate test suite
+- Add Recommends and Suggests for optional runtime dependencies
+- Update to v3.9.1
+  * Resolve XSS issue in browsable API
+  * Resolve issues with composable permissions
+  * Respect `limit_choices_to` on foreign keys</comment>
+    <requestid>680460</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>055fd48a21ccb404ee4af28719e4e5e1</srcmd5>
+    <version>3.9.2</version>
+    <time>1551883867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682053</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cd452804b2b2be4314d7f1dafb82bff</srcmd5>
+    <version>3.9.3</version>
+    <time>1557170252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.3:
+  * This is the last Django REST Framework release that will support Python 2.
+  * Adjusted the compat check for django-guardian to allow the last guardian
+    version (v1.4.9) compatible with Python 2. #6613</comment>
+    <requestid>701068</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c2127b15035da3c6067b61a6f9029c14</srcmd5>
+    <version>3.10.3</version>
+    <time>1569588503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.3:
+  * Drop python2 support
+  * Various bugfixes</comment>
+    <requestid>731201</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b6d346ccc38c04a4fe5573f76fda4b1d</srcmd5>
+    <version>3.11.0</version>
+    <time>1578437631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.0:
+  * various minor updates
+  * django 3.x compatibility</comment>
+    <requestid>761156</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1168b192528c113d90ec16753fad784b</srcmd5>
+    <version>3.11.1</version>
+    <time>1599210675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.1
+  * update Django for APIs book to 3.0 edition
+  * decode base64 credentials as utf8; adjust tests
+  * Remove compat urls for Django &lt; 2.0
+</comment>
+    <requestid>831632</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a7101fe97862a7d2ea9cccd6bdc77111</srcmd5>
+    <version>3.11.2</version>
+    <time>1613427375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871397</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>266bed619e12d0a22a6faea053a48cc5</srcmd5>
+    <version>3.11.2</version>
+    <time>1613677201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873447</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1ff33f9bd6734ee51d3a76d717c1ceac</srcmd5>
+    <version>3.12.4</version>
+    <time>1631310087</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.12.4:
+  - Properly handle ATOMIC_REQUESTS when multiple database
+    configurations are used. [#7739]
+  - Bypass COUNT query when LimitOffsetPagination is configured
+    but pagination params are not included on the request.
+    [#6098]
+  - Respect allow_null=True on DecimalField. [#7718]
+  - Allow title cased &quot;Yes&quot;/&quot;No&quot; values with BooleanField.
+    [#7739]
+  - Add PageNumberPagination.get_page_number() method for
+    overriding behavior. [#7652]
+  - Fixed rendering of timedelta values in OpenAPI schemas, when
+    present as default, min, or max fields. [#7641]
+  - Render JSONFields with indentation in browsable API forms.
+    [#6243]
+  - Remove unnecessary database query in admin Token views.
+    [#7852]
+  - Raise validation errors when bools are passed to
+    PrimaryKeyRelatedField fields, instead of casting to ints.
+    [#7597]
+  - Don't include model properties as automatically generated
+    ordering fields with OrderingFilter. [#7609]
+  - Use deque instead of list for tracking throttling .history.
+    [#7849]
+  - Fix issue if rest_framework.authtoken.models is imported, but
+    rest_framework.authtoken is not in INSTALLED_APPS. [#7571]
+  - Ignore subclasses of BrowsableAPIRenderer in OpenAPI schema.
+    [#7497]
+  - Narrower exception catching in serilizer fields, to ensure
+    that any errors in broken get_queryset() methods are not
+    masked. [#7480]
+  - Add TokenProxy migration. [#7557]
+  - Add --file option to generateschema command. [#7130]
+  - Support tags for OpenAPI schema generation. See the schema
+    docs. [#7184]
+  - Support customising the operation ID for schema generation.
+    See the schema docs. [#7190]
+  - Support OpenAPI components for schema generation. See the
+    schema docs. [#7124]
+  - The following methods on AutoSchema become public API:
+    get_path_parameters, get_pagination_parameters,
+    get_filter_parameters, get_request_body, get_responses,
+    get_serializer, get_paginator, map_serializer, map_field,
+    map_choice_field, map_field_validators, allows_filters. See
+    the schema docs
+  - Add support for Django 3.1's database-agnositic JSONField.
+    [#7467]
+  - SearchFilter now supports nested search on JSONField and
+    HStoreField model fields. [#7121]
+  - SearchFilter now supports searching on annotate() fields.
+    [#6240]
+  - The authtoken model no longer exposes the pk in the admin
+    URL. [#7341]
+  - Add __repr__ for Request instances. [#7239]
+  - UTF-8 decoding with Latin-1 fallback for basic auth
+    credentials. [#7193]
+  - CharField treats surrogate characters as a validation
+    failure. [#7026]
+  - Don't include callables as default values in schemas. [#7105]
+  - Improve ListField schema output to include all available
+    child information. [#7137]
+  - Allow default=False to be included for BooleanField schema
+    outputs. [#7165]
+  - Include &quot;type&quot; information in ChoiceField schema outputs.
+    [#7161]
+  - Include &quot;type&quot;: &quot;object&quot; on schema objects. [#7169]
+  - Don't include component in schema output for DELETE requests.
+    [#7229]
+  - Fix schema types for DecimalField. [#7254]
+  - Fix schema generation for ObtainAuthToken view. [#7211]
+  - Support passing context=... to view .get_serializer()
+    methods. [#7298]
+  - Pass custom code to PermissionDenied if permission class has
+    one set. [#7306]
+  - Include &quot;example&quot; in schema pagination output. [#7275]
+  - Default status code of 201 on schema output for POST
+    requests. [#7206]
+  - Use camelCase for operation IDs in schema output. [#7208]
+  - Warn if duplicate operation IDs exist in schema output.
+    [#7207]
+  - Improve handling of decimal type when mapping ChoiceField to
+    a schema output. [#7264]
+  - Disable YAML aliases for OpenAPI schema outputs. [#7131]
+  - Fix action URL names for APIs included under a namespaced
+    URL. [#7287]
+  - Update jQuery version from 3.4 to 3.5. [#7313]
+  - Fix UniqueTogether handling when serializer fields use
+    source=.... [#7143]
+  - HTTP HEAD requests now set self.action correctly on a ViewSet
+    instance. [#7223]
+  - Return a valid OpenAPI schema for the case where no API
+    schema paths exist. [#7125]
+  - Include tests in package distribution. [#7145]
+  - Allow type checkers to support annotations like
+    ModelSerializer[Author]. [#7385]
+  - Don't include invalid charset=None portion in the request
+    Content-Type header when using APIClient. [#7400]
+  - Fix \Z/\z tokens in OpenAPI regexs. [#7389]
+  - Fix PrimaryKeyRelatedField and HyperlinkedRelatedField when
+    source field is actually a property. [#7142]
+  - Token.generate_key is now a class method. [#7502]
+  - @action warns if method is wrapped in a decorator that does
+    not preserve information using @functools.wraps. [#7098]
+- Skip TestNaiveDayLightSavingTimeTimeZoneDateTimeField.test_invalid_inputs
+  (gh#encode/django-rest-framework#8159)
+- Skip TestViewNamesAndDescriptions.test_markdown
+  (gh#encode/django-rest-framework#8160).
+</comment>
+    <requestid>917905</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9492e03ae2fe19c1c5688f20ac9b359c</srcmd5>
+    <version>3.13.1</version>
+    <time>1640459809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942457</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>099f37bdb33f61d90a2aebf68f8ec047</srcmd5>
+    <version>3.13.1</version>
+    <time>1641555993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944605</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5e876322e80cfac613a29dd3ce75dc89</srcmd5>
+    <version>3.13.1</version>
+    <time>1655732324</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 8530-update-tests-new-Pygments.patch to allow working with
+  the current Pygments (gh#encode/django-rest-framework#8160).
+</comment>
+    <requestid>983909</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>2d17b975eac742d0f10b8df377236654</srcmd5>
+    <version>3.13.1</version>
+    <time>1661432945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999146</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8fcfe6600ffb8ef63324342b7df50f12</srcmd5>
+    <version>3.14.0</version>
+    <time>1664112933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005789</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>84b672963e0ff349358472aabcf9c01b</srcmd5>
+    <version>3.14.0</version>
+    <time>1674737929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061103</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>069dc03a546e0e1f6abe6890790bc7ba</srcmd5>
+    <version>3.14.0</version>
+    <time>1687980814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095766</requestid>
+  </revision>
+</revisionlist>

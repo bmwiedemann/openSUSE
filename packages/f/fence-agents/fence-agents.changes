@@ -1,0 +1,1155 @@
+-------------------------------------------------------------------
+Tue Jan  9 16:44:32 UTC 2024 - Peter Varkoly <varkoly@suse.com>
+
+- Remove python3-oauth2. This is not needed to build.
+
+-------------------------------------------------------------------
+Tue Nov 14 18:57:33 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.13.1+git.1698672892.6f7e4327:
+  * fence_ovm: Replace all_opt "ssl_client_cert_file" with "ssl_client_certificate_file"
+  * fence_ovm: new fence agent for Oracle VM
+  * fence_cisco_mds: undo metadata change, as it is an I/O agent
+  * all agents: update metadata from I/O to e.g. Power, Network, etc for non-I/O agents
+  * fence_azure_arm: fix get virtual machines call
+  * README: update IRC info to link to ClusterLabs wiki IRC page
+  * configure: require 3.6 or higher
+  * build: add test-fencing rule and make it part of "make check"
+  * fence_zvmip: Update longdesc to document all required functions
+  * fence_scsi: fix registration handling in device 'off' workflows
+  * fa-dev-guide: improve fail()/error code description
+  * fa-dev-guide: add reboot_cycle() section
+  * fa-dev-guide: add General git section
+
+-------------------------------------------------------------------
+Tue Jul 25 09:21:24 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.12.1+git.1690196437.64f62dbb:
+  * fencing: use EC_OK
+  * fencing: add error message for EC_GENERIC_ERROR
+  * fence_ipmilan: fix typo in description (#553)
+  * doc: add fa-dev-guide to README
+  * doc: add fa-dev-guide
+  * spec: remove rhel7/centos7 specific Reqs/BuildReqs and BR for python-novaclient and python-keystoneclient which arent needed anymore
+  * fence_eaton_ssh: new fence agent for Eaton ePDU G3 over SSH (#549)
+  * azure_fence: use correct credential_scope and profile for stack hub
+  * fence_azure_arm: add stack cloud support
+  * fence_ibm_powervs: improved performance (#542)
+  * Revert "fence_scsi: fail monitor action when it's unable to change state of device"
+  * spec: Migrate to SPDX license
+  * fence_scsi: fail monitor action when it's unable to change state of device
+  * Revert "Adds earlyexit parameter to power_cycle_instance for fence_gce"
+  * fence_scsi: Add support for space-separated devices and update in meta-data
+
+-------------------------------------------------------------------
+Tue May  9 14:37:59 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- Include IBM Cloud VPC fence agent (jsc#PED-3626)
+  Adapt agent_list in spec file
+
+-------------------------------------------------------------------
+Mon May 01 12:23:24 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.12.1+git.1682325255.86f77326:
+  * fence_aliyun: support filter for list-action
+  * fence_scsi: Automatically detect devices for shared VGs
+  * Adds earlyexit parameter to power_cycle_instance for fence_gce
+  * fence_aws: fail when power action request fails
+  * fence_aws: fixes to allow running outside of AWS network
+
+-------------------------------------------------------------------
+Thu Mar 16 21:59:57 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.12.1+git.1677142927.bf55c675:
+  Include IBM Cloud VPC fence agent (jsc#PED-3626)
+  * fence_scsi: fix registration handling if ISID conflicts ISID (Initiator Session ID) belonging to I_T Nexus changes for RHEL based on the session ID. This means that the connection to the device can be set up with different ISID on reconnects.
+  * fence_amt/fence_ipmilan/fence_ironic: use shlex instead of pipes when available, as pipes is deprecated and will be removed in Python 3.13
+  * fence_vmware_soap: set login_timeout lower than default pcmk_monitor_timeout (20s) to remove tmp dirs on fail
+  * fencing: add plug_separator to default DEPENDENCY_OPT
+  * fence_virt: fix man page spelling (#522)
+  * fence_scsi: skip key generation during validate-all action
+  * [virt] fix clang build
+  * [virt] fix cpg plugin build
+  * [virt] update man page to cover all serial listener configs
+  * [virt] update man page for serial listener in serial mode
+  * [virt] fix serial debug output
+  * [virt] add debug print for static map check
+  * [virt] Clarify usage of ip= for vsock listener
+  * [virt] fix tcp plugin to properly pass info to acl check
+  * [virt] drop last qmf bits (rhel6 era)
+  * [virt] allow groups to only specify vm_name without UUID
+  * [virtd] add support for named groups
+  * fence_virtd: add info about using multiple uuid/ip entries for groups
+  * fence_wti: increase login timeout to avoid random timeouts
+  * fence_virtd: set secure file permissions for fence_virtd.conf and key file if they are not mode 600
+  * fencing: add plug_separator parameter to be able to specify one that isnt part of the plug name(s)
+  * build: dont rm PKG_CHECK_VAR.m4 when running maintainer-clean
+  * fence_vmware_soap: set default login timeout less than Pacemakers default timeout to remove tmp dirs
+  * fence_virtd: add link and non-user socket example to man page
+  * fence_ibm_powervs: improve defaults based on testing
+  * fence_lpar: only output additional error output on DEBUG level
+  * fence_virt: add note that reboot-action doesnt power on nodes that are powered off
+  * fencing: source_env(): dont process empty lines
+  * fence_ecloud: new fence agent
+  * fence_sbd: improve error handling
+  * configure: check for google-auth instead of deprecated oauth2client
+  * fence_ibm_vpc: add token cache support
+  * build: add FENCETMPDIR for state files
+  * build: make xml-check: ignore detected paths in *_file parameters not matching saved metadata
+  * fence_gce: add httplib2 to try/except: pass
+  * configure/spec: cleanup and fixes
+  * fence_gce: Add user agent to API requests (#491)
+  * fence_ibm_powervs: add support for proxy, private API servers and get token via API key (#490)
+  * fence_ibm_vpc: add proxy support
+  * fence_zvmip: show unable to connect error instead of full stacktrace, e.g. when not using --ssl for SSL devices
+  * Mid: fence_scsi,fence_mpath: Add suppress-errors option. (#484)
+  * fence_gce: Make zone optional for get_nodes_list (#487)
+  * fence_apc/fence_ilo_moonshot: add missing "import logging"
+  * fence_gce: inform that SSLError might be caused by old versions of httplib2
+  * fence_ibm_vpc: remove unused instance parameter and make limit optional
+  * all agents: unify ssl parameters to avoid having to use --ssl when using --ssl-secure/--ssl-insecure for some agents
+  * fence_apc.py compatibility for Firmware major release 7 workaround #475
+  * fence_lpar: fix missing import logging, use fail_usage
+  * fence_raritan: Also allow pure port number, not only system1/outletX string (#473)
+  * fence_cdu: add 8i support (#471)
+  * fence_zvmip: add --disable-ssl
+  * fencing: add ability to set bool parameters to 0 or false
+  * Fix typo in fence_virtd.service
+  * fence_gce: Add timeouts and failure options (#458)
+  * fence_zvm: deprecate agent
+  * fence_openstack: fix issues with new clouds.yaml/openrc parameters - hardcoded clouds.yaml paths to work like the openstack cli client   (used by the resource agents)
+  * fence_openstack: add support for reading config from clouds.yaml and openrc
+  * fencing: add source_env()
+  * fence_kubevirt: take default namespace from context
+  * build: fix parallel build of lib/
+  * fence_openstack: relax ssl cacert default
+  * - spec: dont use commas in license
+  * fence_lpar: Support comanaged LPARs
+  * fence_ibmz: add option --load-on-activate
+  * fence_openstack: add --ssl-insecure
+  * spec: fix python3-suds dependency having changed name on opensuse 16+
+  * fencing: encode instead of failing for chinese or other non-utf8 character sets
+  * fence_aliyun: Optimize log output (#449)
+  * fence_zvmip: use ssl by default
+  * fence_zvmip: add ssl/tls support
+  * configure: fix --with-agents to not match *virt in regex
+  * fence_vmware_soap: Use --login-timeout option (#447)
+  * fence_kubevirt: set default power-timeout to 40s
+  * fence_kubevirt: Fix kubevirt VM status
+  * fence_kdump: fix typo
+  * fence_raritan_px3: new fence agent (#425)
+  * fence_amt_ws: fix --boot-option (choices are uppercased while getting parsed)
+  * fence_gce: add plugzonemap parameter
+  * fence_gce: Adds existing operation checks and multiple plug support (#400)
+  * azure_fence: fix support for sovereign clouds and MSI for new versions of azure libraries (#439)
+  * fence_cyberpower_ssh: new fence agent (#437)
+  * fence_amt_ws: fix "or" causing dead code
+  * fence_kubevirt: make apiversion a parameter
+  * fence_ibm_vpc/fence_ibm_powervs: new fence agents
+  * fence_kdump: properly support -v[X] and -vvv (and combinations)
+  * fence_mpath/fence_scsi: use store path detected by configure
+  * fence_kubevirt: add --ssl-insecure parameter
+  * fence_kdump: accept message from multiple addresses (useful for RRP clusters) (#374)
+  * fence_pve: Replace `nodename` with `pmx-node` in fence_pve.py (matching original intent) (#424)
+  * spec: add dependency to new split packages for Fedora 35+
+  * log exceptions to be more detailed when failing
+  * Mid: fence_sbd: A warning message is output when disable-timeout is enabled.
+  * spec: export PYTHON to avoid configure ignoring it
+  * build: expose delay-check to be able to skip the other tests when debugging
+  * fence-kubevirt: Add fence-kubevirt declaration for rpm creation
+  * fence_kubevirt: Fix accept header param to openshift client
+- Don’t use python-oauth2client, which is deprecated
+  (gh#ClusterLabs/fence-agents#495).
+- Remove python2 stuff from spec file
+- remove patches included by update:
+  * 0001-fence_gce-Add-timeouts-and-failure-options-458.patch
+  * 0001-fence_gce-Make-zone-optional-for-get_nodes_list-487.patch
+  * 0001-fix_support_for_sovereign_clouds_and_MSI-439.patch
+
+-------------------------------------------------------------------
+Thu Jun 23 13:47:45 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Azure fence agent doesn’t work correctly on SLES15 SP3 - fence_azure_arm
+  fails with error 'MSIAuthentication' object has no attribute 'get_token' - SFSC00334437
+  (bsc#1195891)
+  - Apply proposed patch
+    0001-fix_support_for_sovereign_clouds_and_MSI-439.patch
+
+-------------------------------------------------------------------
+Tue May 17 05:11:00 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- fence-agents-4.9.0+git.1624456340.8d746be9-150300.3.8.1 broken in
+  GCP due to missing "--zone" parameter (bsc#1198872)
+  - Apply proposed patch
+    0001-fence_gce-Make-zone-optional-for-get_nodes_list-487.patch
+
+-------------------------------------------------------------------
+Wed May  4 11:08:48 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- fence-agents-4.9.0+git.1624456340.8d746be9-150300.3.8.1 broken in GCP due to missing "--zone" parameter
+  (bsc#1198872) 
+
+-------------------------------------------------------------------
+Thu Feb 24 13:16:51 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- (bsc#1196350) fence_gce updates pull from Clusterlabs repo
+  - Apply proposed upstream patch
+    0001-fence_gce-Add-timeouts-and-failure-options-458.patch 
+
+-------------------------------------------------------------------
+Thu Jun 24 07:59:27 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.9.0+git.1624456340.8d746be9:
+  * fence_azure_arm: corrections to support Azure SDK >= 15 - including backward compatibility (#415)
+  (bsc#1185058)
+  * fence_gce: make serviceaccount work with new libraries
+  * fence_kubevirt: new fence agent
+  * fence_virt*: simple_auth: use %zu for sizeof to avoid failing verbose builds on some archs
+  * configure: dont fail when --with-agents contains virt
+  * fence_mpath: watchdog retries support
+  * fencing: add multi plug support for reboot-action
+  * fence_redfish: add missing diag logic
+  * fencing: fix issue with hardcoded help text length for metadata
+  * fence_lindypdu: update metadata
+  * fence_lindypdu: new fence agent
+  * fencing: add stonith_status_sleep parameter for sleep between status calls during a STONITH action
+  * fence_openstack: code formatting fixes per: https://github.com/ClusterLabs/fence-agents/pull/397#pullrequestreview-634281798
+  * Proper try-except for connection exception.
+  * Fix CI.
+  * Do not wrap as many values.
+  * Restore port metadata.
+  * Update xml metadata.
+  * Use standard logging.
+  * Revert change to __all__
+  * Major rework of the original agent:
+  (bsc#1182701) [0.9.10-GCE-Build1.6] fence_gce doesn't restart the node as expected
+  * fence_virt: fix required=1 parameters that used to not be required and add deprecated=1 for old deprecated params
+  * fence_gce: default method moved back to powercycle (#389)
+  * fence_aws: add filter parameter to be able to limit which nodes are listed
+  * virt: fix a bunch of coverity scan errors in ip_lookup
+  * virt: make sure to provide an empty default to strncpy
+  * virt: make sure buffers are big enough for 0 byte end string
+  * virt: increase buffer size to avoid overruns
+  * virt: check return code in virt-sockets
+  * virt: fix error code checking
+  * virt: fix plugin (minor) memory leak and plug in load race
+  * virt: attempt to open file directly and avoid race condition
+  * virt: fix different coverity scan errors in common/tcp
+  * virt: cleanup deadcode in client/vsock
+  * virt: cleanup deadcode in client/tcp
+  * virt: fix potential buffer overrun
+  * virt: fix mcast coverity scan errors
+  * virt: drop pm-fence plugin
+  * virt: drop libvirt-qmf plugin
+  * virt: drop null plugin
+  * build: enable fence_virtd cpg plugin by default
+  * virt: drop fence_virtd non-modular build
+  * virt: fix plugin installation regression on upgrades
+  * fence_virt: metadata fixes, implement manpage generation and metadata/delay/rng checks
+  * virt: make sure variable is initialized
+  * Revert "virt: drop -Werror to avoid unnecessary failures"
+  * zvm: reformat fence_zvm to avoid gcc warnings
+  * Ignore fence-virt man pages
+  * Move fence_virt to the correct location
+  * Ignore unknown options on stdin
+  * fence_gce: support google-auth and oauthlib and fallback to deprecated libs when not available
+  * spec:
+     add aliyun subpackage and fence_mpath_check* to mpath subpackage
+     add libxml2-devel to BuildRequires
+  (jsc#SLE-18182) ECO: Update fence-agents
+  (jsc#SLE-17998) Add upstream PR to aws-vpc-move-ip and apply required resource & fence agent patches
+
+-------------------------------------------------------------------
+Wed Feb 10 20:25:29 UTC 2021 - trenn@suse.de
+
+- Update to version 4.7.1+git.1612974063.9e01fc92:
+  * fence_gce: Adds cloud-platform scope for bare metal API and optional proxy flags (#382)
+
+-------------------------------------------------------------------
+Wed Feb 10 13:33:34 UTC 2021 - trenn@suse.de
+
+- Update to version 4.7.1+git.1612946165.05fa9b4e:
+  * fence_gce: update module reqs for SLES 15 (#383)
+  * fence_redfish: Add diag action
+- Fixed by previous versions already, but for the records...
+  These sources include fixes for these bugs:
+  bsc#1169485 (git commit 020f48a309bcad659dc493960d2b39e8e1243085)
+  bsc#1169852 (git commit 5c182c4018728e3cdcc6846d74d373cc5b0639dd)
+  bsc#1178343 (git commit 877be689d75892fe069154cf3bc02909f3edaf50)
+
+-------------------------------------------------------------------
+Thu Feb 04 10:02:29 UTC 2021 - trenn@suse.de
+
+- This update has one part (fence-agents part) of a fix for bsc#1178294
+  It still needs cobbler adjustings
+- Update to version 4.7.0+git.1612425309.e4f51e44:
+  * Add fence_ipmilanplus as fence_ipmilan wrapper always enabling lanplus (bsc#1178294)
+  * fence_vbox: updated metadata file
+  * fence_vbox: do not flood host account with vboxmanage calls
+  * fence_aws/fence_gce: allow building without cloud libs
+  * fence_gce: default to onoff
+  * fence_lpar: Make --managed a required option
+  * fence_zvmip: fix shell-timeout when using new disable-timeout parameter
+  * Adds service account authentication to GCE fence agent
+  * spec: dont build -all subpackage as noarch
+- Patch that went mainline and got deleted:
+D 0001-Adds-service-account-authentication-to-GCE-fence-age.patch
+
+-------------------------------------------------------------------
+Wed Feb  3 09:41:25 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Quote strings in specfile (originally by Olaf Hering, ohering@suse.de)
+
+-------------------------------------------------------------------
+Tue Jan 26 19:12:05 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- bsc#1180518 [15sp3 FEAT] Product-HA / High Availability Extension:
+  Add IBM Z LPAR fence agent fence_ibmz to Pacemaker (kvm) (fence-agents) 
+
+-------------------------------------------------------------------
+Thu Jan 21 15:13:20 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- Adds service account authentication to GCE fence agent 
+
+-------------------------------------------------------------------
+Thu Jan 21 15:05:26 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.7.0+git.1607346448.17bd8552:
+  * fence_mpath, fence_scsi: Improve logging for failed res/key get
+  * fence_mpath, fence_scsi: Capture stderr in run_cmd()
+  * build: depend on config changes to rebuild when running make after running ./configure
+  * fence_redfish: Fix typo in help.
+  * fence_aws: add support for IMDSv2
+  * spec: add pkg-config file, and set version for obsoletes to avoid failing to build on Fedora 33
+  * Add pkg-config file
+  * fence_scsi: dont write key to device if it's already registered, and open file correctly to avoid using regex against end-of-file
+  * fencing: fix run_command() to allow timeout=0 to mean forever
+  * fencing: fix to make timeout(s)=0 be treated as forever for agents using pexpect
+
+-------------------------------------------------------------------
+Thu Oct 29 13:39:38 UTC 2020 - varkoly@suse.com
+
+- Update to version 4.6.0+git.1603723121.a17eb9d4:
+  * Add a fence_crosslink agent
+  * fencing: fix power-timeout when using new disable-timeout parameter
+  * metadata: update for disable_timeout parameter
+  * fencing: add disable-timeout parameter, and make it default when run from Pacemaker (at least 2.0+)
+  * spec: make telnet a weak dependency
+  * Adds baremetal support to GCE fence agent and API call retries (#355)
+  * spec: add -aws and -gce dependency to -all subpackage
+  * spec: fix ibmz subpackage referring to fence_z instead of fence_ibmz
+  * fence_lpar: Reduce code duplication in get_lpar_list
+
+-------------------------------------------------------------------
+Fri Jun 19 14:34:32 UTC 2020 - dakechi@suse.com
+
+- Update to version 4.5.2+git.1592573838.1eee0863:
+  * fence_azure_arm: fixes to make MSI support work
+  * fence_azure_arm: log metadata when debugging
+  * fence_vmware_soap: log exception message for SSLError exception
+  * build: add PHONY target to use directory dependencies for parallel builds
+  * fence_aws: improve boto3_debug boolean handling
+  * fence_aws: catch ConnectionError and suppress traceback for caught exceptions
+  * fence_vmware_rest: support UTF-8 VM names
+  * fence_openstack: import novaclient and keystone only when needed
+  * build: add directory dependencies to avoid edge-case where generating manpages could happen before fencing.py was generated
+  * fence_vmware_rest: dont fail when receiving more than 1000 VM error during monitor-action
+  * fence_scsi: add readonly parameter
+  * fence_vmware_rest: fix exception and remove default value for filter parameter (which was shown in the manpage)
+  * fence_compute/fence_evacuate: fix --insecure parameter
+  * fence_vmware_rest: add filter parameter
+  * fence_vmware_cloud: improve exception handling in send_command()
+  * fence_vmware_rest: improve exception handling in send_command()
+  * Disable google api cache discovery
+  * fence_aws: fix Python 3 encoding issue
+  * fence_aws: Fix fence race, logging improvement and new debug option (#323)
+  * fence_aws: improve connect parameter logic, so region can be specified as parameter, while using role or keys from ~/.aws/config
+  * configure: fix agent filtering
+  * fence_mpath: fix --reserve parameter typo
+  * fence_vmware_rest: fix encoding to avoid issues with UTF-8 encoded comments
+  * fence_aws: improve logging and metadata/usage text
+  * fence_redfish/fence_vmware_soap: suppress warnings correctly with new python-requests
+  * fence_scsi use clusterwide nodeID instead of local nodelist ID of node (#289)
+  * fencing: only use inetX_only parameters for SSH based agents and fence_zvmip, and fixed syntax issue for Gawk v5+
+  * spec: fix openstack BuildRequires for distros without Python 3
+  * fence_virsh: fix status-based actions
+  * fence_vbox: fix status-based actions
+  * fix shortopt in fence-compute / fence_evacuate help messages
+  * spec: add missing BuildRequires found when backporting to Fedora
+  * fence_rhevm: added cookie file management (#304)
+  * fence_compute: Invert the force-down/service disable order
+  * fence_vmware_rest: improve logging
+  * spec: only build OpenStack agents on x86_64/ppc64le, and avoid pulling in openstack via ironic from all subpackage
+  * spec: add openstack subpackage
+  * fence_openstack: fix fail_usage() issue and a couple of other minor issues w/the newly added plug/port parameter
+  * fence_mpath: fix fail_usage() issue and a couple of other minor issues w/the newly added plug/port parameter
+  * fence_sbd: support errors on stderr
+  * CI: improve metadata check/update dependencies
+  * fence_mpath: use -n/--plug/port parameter to be able to use pcmk_host_map
+  * High: mpath: Correction of failure detection behavior from watchdog service.
+  * fence_zvmip: fix Python 3 issues
+
+-------------------------------------------------------------------
+Thu Sep 12 10:04:23 UTC 2019 - dakechi@suse.com
+
+- Update to version 4.4.0+git.1568100905.307de6f2:
+  * fence_openstack: use -n/--plug/port parameter to be able to use pcmk_host_map
+  * fence_apc_snmp: Add Tripplite WEBCARDLX PDU support
+  * Update fence_aliyun.xml (bsc#1150504)
+  * Fix argument parsing for region_name
+  * fence_ilo_ssh*: add timeout warning in metadata/manpage
+  * remove 'man' page formating strings to improve '-o metadata' output
+  * filter out 'man' formating strings from 'longdesc' field
+  * Update fence_aliyun.py (#279) (bsc#1150504)
+  * Fixed issue with SUSPENDED VMs
+  * Changed encoding for the raritan telnet connection to latin1
+  * fence_scsi watchdog: dont exit when command fails using retry parameter
+
+-------------------------------------------------------------------
+Mon Jul  1 11:27:59 UTC 2019 - Diego Vinicius Akechi <dakechi@suse.com>
+
+- White list the aliyun fence agent to get it included and provided
+  by the fence-agent package (bsc#1139913) 
+
+-------------------------------------------------------------------
+Wed Jun 12 07:57:14 UTC 2019 - kgronlund@suse.com
+
+- Split fence_amt_ws into separate package due to licence incompatibility:
+   * Apache-2.0 is not compatible with GPL-2.0
+
+- Update to version 4.4.0+git.1558595666.5f79f9e9:
+  * fence_scsi: detect node ID using new format, and fallback to old format before failing
+  * fence_rhevm: fix debug encoding issues (bsc#1137314) (CVE-2019-10153)
+  * fence_mpath: import ctypes to fix watchdog hardreboot
+  * fence_rhevm: add RHEV v4 API support and auto-detection
+  * fence_azure_arm: use skip_shutdown feature when available
+  * fence_ipmilan: Add ipmitool timeout option
+  * fence_redfish: add headers to HTTP methods
+  * fence_gce: fix Python 3 encoding issue
+  * fence_pve: add support for sending reset command to qemu machines (#261)
+  * fencing: improve stdin parse function
+  * fence_redfish: backwards compatibility for <ip>:<port>
+
+-------------------------------------------------------------------
+Mon Feb 18 13:22:05 UTC 2019 - dakechi@suse.com
+
+- Update to version 4.2.1+git.1550476590.98767d24:
+  * fence_redfish: use "ipport" parameter and improve logging (fate#320898)
+  * Changed Encoding to UTF-8 (bsc#1137314) (CVE-2019-10153)
+  * fence_redfish: fail when using invalid cert without --ssl-insecure (fate#320898)
+  * Removed unnecessary variable assignments to simplify code
+  * fence_scsi: watchdog retries support
+  * Renamed variable to avoid reusing variable name
+  * Replaced default port 443 with default ssl enabled option
+  * Changed reboot type to ForceRestart
+  * Modify power status check
+  * Added run_delay()
+  * Updated fence_redfish.xml with make xml-upload (fate#320898)
+  * Add new fence agent for Redfish (fate#320898)
+  * build: fix issues with newer autoconf versions
+  * build: fix if-redirection to make check_used_options run for the agents as intended
+  * Fix 'log_expect' in fence_hpblade.py
+  * fence_scsi: fix incorrect SCSI key when node ID is 10 or higher
+  * fence_openstack: add detection of keystoneauth1 library
+  * check_used_options: add Python 3 support, and detect unsupported has_key()-calls
+  * fence_openstack: Migrate from keystoneclient to keystoneauth1
+  * fence_openstack: fix missing version parameter in novaclient.Client() call
+  * fence_openstack: fix configure library detection and add try/except for imports
+  * fence_kdump: add validate-all action
+  * fence_compute/fence_evacuate: domain parameter fixes to avoid regressions
+
+-------------------------------------------------------------------
+Wed Sep 26 06:54:47 UTC 2018 - kgronlund@suse.com
+
+- Update to version 4.2.1+git.1537269352.7b1fd536:
+  * fence_vmware_soap: cleanup when receiving SIGTERM
+  * fence_cisco_ucs: encode POSTFIELDS
+  * Update fence_rcd_serial to correct vendor URL
+  * fence_aliyun: correct indentation for *key in help
+  * fence_aliyun: list instance names and show up to 100 instances (fate#326557)
+  * fence-rhevm: improve error reporting.
+  * fence_impilan/fence_ilo_ssh: iLO5-support
+  * fence_rhevm: improve indentation and metadata
+  * fence_compute/fence_evacuate/fence_rhevm: dont use has_key (not supported in Python 3)
+  * fence_rhevm fixing help for plug param
+  * fence_kdump: fix strncpy issue
+  * fence_evacuate: fix evacuable tag mix issue
+
+-------------------------------------------------------------------
+Thu Aug 09 13:25:09 UTC 2018 - kgronlund@suse.com
+
+- Update to version 4.2.1+git.1532964592.3ae5b58e:
+  * fence_aliyun: Add Aliyun fence agent. (fate#326557)
+  * fence_gce: add power cycle as default method
+  * fence_gce: set project and zone as not required
+  * fence_gce: add support for stackdriver logging
+  * fence_ilo3/fence_ipmilan: show correct default method (onoff) in help
+  * fence_mpath: add watchdog support
+  * fence_amt_ws: create metadata without agent specific libs
+- Drop obsolete patch:
+  * Remove 0002-Build-without-openwsman-installed.patch 
+
+-------------------------------------------------------------------
+Wed Jun 27 07:38:02 UTC 2018 - kgronlund@suse.com
+
+- Unify source package with SLE 12 and Leap 42:
+  * fencing: include timestamps when logging to STDERR and debug file (bsc#1049852)
+
+- Obsoletes the following patches (SLE 12 and Leap 42):
+  * 0001-fence_compute-Only-list-nova-compute-services-when-g.patch
+  * 0002-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  * 0003-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  * 0004-fence_compute-Fix-handling-of-domain-None.patch
+  * 0005-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  * 0006-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  * 0007-fence_compute-Remove-duplicate-check-for-binary-name.patch
+  * 0009-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+  * 0010-Make-pywsman-dependency-optional.patch
+  * 0011-fencing-include-timestamps-when-logging-to-STDERR-an.patch
+
+-------------------------------------------------------------------
+Mon Jun 25 14:44:46 UTC 2018 - kgronlund@suse.com
+
+- Unify spec file for python 2 and 3
+- Enable build for python 2
+  * Add 0002-Build-without-openwsman-installed.patch 
+
+-------------------------------------------------------------------
+Wed Jun 20 09:06:43 UTC 2018 - kgronlund@suse.com
+
+- Update to version 4.2.1+git.1529316875.1a39345b:
+  * fence_vmware_soap: fix Python 3 suds issue
+  * Added python-novaclient and python-keystoneclient in configure.ac
+  * novaclient 1.1 depcrecated, so making changes for novaclient
+  * Python keystoneclient also included to pacify CI
+  * Changed travis to include pythomn-novaclient
+  * Fencing Agent for Openstack
+  * fence_scsi: fix python3 encoding error #206
+  * fence_ipmilan: add missing fence_ilo3 and fence_ilo4 metadata
+  * fence_scsi: match device names using re.MULTILINE to avoid duplicating names in /var/run/cluster/fence_scsi.dev
+  * fence_gce: use default credentials from googleapiclient
+  * run_command: fix Python 3 encoding issue
+
+- Drop merged patches:
+  * Remove 0002-fence_gce-fix-regression-missing-import-googleapicli.patch
+  * Remove 0003-fence_gce-fix-regression-missing-import-oauth2client.patch
+  * Remove 0004-fence_gce-use-default-credentials-from-googleapiclie.patch
+  * Remove 0005-run_command-fix-Python-3-encoding-issue.patch
+
+- Enable GCE fence agent for all targets (fate#325539) (bsc#1088358)
+- Enable fence_openstack agent (bsc#1097803)
+
+-------------------------------------------------------------------
+Thu May 17 16:19:11 UTC 2018 - kgronlund@suse.com
+
+- run_command: fix Python 3 encoding issue (bsc#1082871)
+- fence_gce: use default credentials from googleapiclient
+- fence_gce: fix regression - missing import oauth2client.client
+- fence_gce: fix regression - missing import googleapiclient.discovery
+- Add 0002-fence_gce-fix-regression-missing-import-googleapicli.patch
+- Add 0003-fence_gce-fix-regression-missing-import-oauth2client.patch
+- Add 0004-fence_gce-use-default-credentials-from-googleapiclie.patch
+- Add 0005-run_command-fix-Python-3-encoding-issue.patch 
+
+-------------------------------------------------------------------
+Thu Apr 26 05:37:33 UTC 2018 - kgronlund@suse.com
+
+- Update to version 4.0.25+git.1524215631.8f9c770a:
+  * fence_gce: Write error messages to log (fate#325539) (bsc#1088358)
+  * fence_azure_arm: fix subscriptionId from metadata (bsc#1090995)
+  * fence_scsi: fix plug-parameter and keep support for nodename to avoid regressions
+
+-------------------------------------------------------------------
+Wed Apr 25 20:28:19 UTC 2018 - kgronlund@suse.com
+
+- Disable Google Compute Engine support unless openSUSE (fate#325539) (bsc#1088358)
+
+-------------------------------------------------------------------
+Wed Apr 11 19:57:13 UTC 2018 - kgronlund@suse.com
+
+- Update to version 4.0.25+git.1523367910.7473fab7:
+  * Add fence_gce: Google Compute Engine fence support (fate#325539) (bsc#1088358)
+  * Low: fence_scsi: Remove period from cmd string
+  * fence_compute/fence_evacuate: revert to old parameters
+  * fence_azure_arm: implement network-fencing (w/library from @MSSedusch)
+  * fence_mpath: Correction of command line which argument is not correctly recognized
+  * Mid: fence_docker: Exclude slashes from the list.
+  * fence_pve : choose vm type either lxc or qemu
+
+-------------------------------------------------------------------
+Mon Feb 12 06:57:01 UTC 2018 - kgronlund@suse.com
+
+- Update to version 4.0.25+git.1518188333.853850c3:
+  * heuristics_ping: fix for python3 TypeError
+
+-------------------------------------------------------------------
+Wed Feb 07 13:38:15 UTC 2018 - kgronlund@suse.com
+
+- Update to version 4.0.25+git.1516265527.7ab202cf (bsc#1074000):
+  * fence_ilo3: default to onoff
+  * fence_compute: Add support for keystone v3 authentication
+  * fence_ilo_ssh: fix hard reset
+  * fence_vmware_rest: new agent
+
+-------------------------------------------------------------------
+Tue Nov 21 08:57:16 UTC 2017 - kgronlund@suse.com
+
+- Recommend openwsman-python3, not python-openwsman (bsc#1069137) 
+
+-------------------------------------------------------------------
+Wed Nov 01 08:59:33 UTC 2017 - kgronlund@suse.com
+
+- Update to version 4.0.25+git.1509350522.8d6f8530 (bsc#1065966):
+  * Use Python 3 for all scripts
+  * compute: Fix unfencing and ensure fencing occurs in partial up/down states
+  * compute: Split out evacation functionality
+  * compute: Handle differences in Nova API argument passing
+  * fence_zvm: fix "uintptr_t" undeclared
+  * fence_ifmib: fix README typo(s)
+
+- Add patch:
+  * 0001-Use-Python-3-for-all-scripts-bsc-1065966.patch
+
+- Remove merged patches:
+  * 0001-fence_compute-Only-list-nova-compute-services-when-g.patch
+  * 0002-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  * 0003-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  * 0004-fence_compute-Fix-handling-of-domain-None.patch
+  * 0005-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  * 0006-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  * 0007-fence_compute-Remove-duplicate-check-for-binary-name.patch
+  * 0009-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+
+-------------------------------------------------------------------
+Sat Sep  9 16:53:49 UTC 2017 - kgronlund@suse.com
+
+- Move to python3 
+
+-------------------------------------------------------------------
+Tue Aug 29 14:08:30 UTC 2017 - kgronlund@suse.com
+
+- Remove deprecated agents
+  * Remove fence_ovh
+  * Remove fence_drac
+  * Remove fence_vmware_soap
+
+- Drop build dependency on python-suds
+- Update package description
+
+-------------------------------------------------------------------
+Mon Aug 28 09:02:42 UTC 2017 - kgronlund@suse.com
+
+- Update to version 4.0.25+git.1501671877.7bae40a0:
+  * fence_ipmilan: add target support
+  * Explicitly use version 3 of the oVirt API
+  * fence_rhevm: fix "--api-path must not have an argument" issue
+  * Convert URLs passed to pycurl to ASCII
+  * fence_vbox: Add support for host on MacOS
+  * fence_vbox: Add support for Windows host
+  * fence_compute: fix to avoid breaking nova
+  * fence_ipmilan: fix target support
+  * fence_vmware_soap: fix for selfsigned certificate
+  * fence_ipmilan: Add support for hexadecimal format of Kg key
+  * fence_azure_arm: fix hardcoded path
+  * fence_azure_arm: remove release/build info
+  * fence_ipmilan: Fix inconsistency between help and manual page (defalt for --method)
+  * fence_scsi: add FIPS support
+  * fence_ipmilan: fix indentation
+  * fencing_snmp: fix timemout typo
+
+- Drop outdated patch:
+  * 0010-Make-pywsman-dependency-optional.patch
+
+-------------------------------------------------------------------
+Tue Feb 14 14:21:12 UTC 2017 - kgronlund@suse.com
+
+- Downgrade some agent-specific dependencies to recommends (bsc#1025149)
+  * Add 0010-Make-pywsman-dependency-optional.patch
+
+-------------------------------------------------------------------
+Wed Feb 01 16:49:43 UTC 2017 - kgronlund@suse.com
+
+- Update to version 4.0.25+git.1485179354.eb43835:
+  * Ironic fence agent
+  * fencing: Add --quiet option to disable logging to stderr
+  * fence_powerman: fix typo in option powerman-path
+  * fence_cisco_ucs: Commands sent to Cisco UCS are changed to
+
+- Drop merged patch:
+  * Remove 0008-Fix-travis.patch
+
+-------------------------------------------------------------------
+Thu Dec 01 11:38:47 UTC 2016 - kgronlund@suse.com
+
+- Update to version 4.0.24+git.1480563949.e67fcd4:
+  * fence_azure_arm: add fencing agent for Azure Resource Manager
+  * fence_lpar: Add support for IVM
+  * fence_lpar: Handle exceptions when invalid output is read
+  * fence_zvmip: Update XML metadata
+  * fence_compute: fix ConnectionError by using full module name
+  * fence_powerman: add fence agent for powerman
+  * Suppress InsecureRequestWarning when ssl_insecure is given
+  * compute: Correctly handle installations without tagged flavours
+  * compute: Use the best available nova API version
+  * compute: correctly implement 'on' when the force-down API call is available
+  * compute: Correctly identify when the nodename already includes the supplied domain
+  * compute: Ensure we can connect to nova when fixing the plug name
+  * compute: Simpler check for nova force down compatibility
+
+- Rebase and remove merged patches:
+  * Remove 0001-fence_compute-Create-nova-client-with-API-2.11.patch
+  * Remove 0002-fence_compute-Keep-compatibility-with-python-novacli.patch
+  * Remove 0003-fence_compute-Only-list-nova-compute-services-when-g.patch
+  * Remove 0004-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  * Remove 0005-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  * Remove 0006-fence_compute-Fix-use-of-undefined-variable.patch
+  * Remove 0007-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  * Remove 0008-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  * Add 0001-fence_compute-Only-list-nova-compute-services-when-g.patch
+  * Add 0002-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  * Add 0003-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  * Add 0004-fence_compute-Fix-handling-of-domain-None.patch
+  * Add 0005-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  * Add 0006-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  * Add 0007-fence_compute-Remove-duplicate-check-for-binary-name.patch
+  * Add 0008-Fix-travis.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 10:52:01 UTC 2016 - kgronlund@suse.com
+
+- Update to version 4.0.24:
+  * Improve obtaining status on Cisco UCS devices
+  * Fix issues with symlink installations
+  * Fix documentation for fence_scsi and fence_mpath
+
+-------------------------------------------------------------------
+Thu Jun 30 09:46:45 UTC 2016 - kgronlund@suse.com
+
+- Update to version 4.0.23:
+  * A lot of changes in fence_compute (OpenStack compute instance)
+  * Obtain status of nodes from Cisco UCS correctly
+  * New fence agent for AMT using openwsman
+  * Python3 support
+  * Fence agent for PVE can be used by non-root users
+  * Parallel building and testing of fence agents
+  * Fix occasional failures of APC fence agent
+
+- Updated fence_compute patch set:
+  - Add 0001-fence_compute-Create-nova-client-with-API-2.11.patch
+  - Add 0002-fence_compute-Keep-compatibility-with-python-novacli.patch
+  - Add 0003-fence_compute-Only-list-nova-compute-services-when-g.patch
+  - Add 0004-fence_compute-Don-t-list-hypervisors-but-nova-comput.patch
+  - Add 0005-fence_compute-Do-not-override-domain-if-it-is-alread.patch
+  - Add 0006-fence_compute-Fix-use-of-undefined-variable.patch
+  - Add 0007-fence_compute-Fix-fix_domain-to-not-return-too-early.patch
+  - Add 0008-fence_compute-Fix-fix_plug_name-when-looking-if-plug.patch
+  - Add 0009-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+  - Remove 0001-fence_compute-Add-insecure-command-line-argument.patch
+  - Remove 0002-fence_compute-Add-region-name-command-line-argument.patch
+  - Remove 0003-fence_compute-Create-nova-client-with-API-2.11.patch
+  - Remove 0004-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+  - Remove 0005-fence_compute-Evacuate-instances-on-all-tenants.patch
+  - Remove 0006-fence_compute-On-list-don-t-list-hypervisors-but-nov.patch
+  - Remove 0007-fence_compute-Only-list-nova-compute-services-when-g.patch
+  - Remove 0008-fence_compute-Deprecate-the-domain-option.patch
+
+-------------------------------------------------------------------
+Mon Feb 22 09:18:30 UTC 2016 - kgronlund@suse.com
+
+- Update to version 4.0.22+git.1455008135.15c5e92:
+  + fence_cisco_ucs: Obtain status of device from different endpoint
+  + fence_cisco_ucs: Add --missing-as-off
+
+- Backport fence_compute (fate#320346) (bsc#964748)
+
+- Patches for fence_compute (fate#320346) (bsc#964748)
+  - fence_compute: Add --insecure command line argument
+  - fence_compute: Add --region-name command line argument
+  - fence_compute: Create nova client with API 2.11
+  - fence_compute: Fix disabling force_down on node when action is on
+  - fence_compute: Evacuate instances on all tenants
+  - fence_compute: On list, don't list hypervisors but nova-compute services
+  - fence_compute: Only list nova-compute services when getting status
+  - fence_compute: Deprecate the domain option
+
+- Add 0001-fence_compute-Add-insecure-command-line-argument.patch
+- Add 0002-fence_compute-Add-region-name-command-line-argument.patch
+- Add 0003-fence_compute-Create-nova-client-with-API-2.11.patch
+- Add 0004-fence_compute-Fix-disabling-force_down-on-node-when-.patch
+- Add 0005-fence_compute-Evacuate-instances-on-all-tenants.patch
+- Add 0006-fence_compute-On-list-don-t-list-hypervisors-but-nov.patch
+- Add 0007-fence_compute-Only-list-nova-compute-services-when-g.patch
+- Add 0008-fence_compute-Deprecate-the-domain-option.patch
+
+-------------------------------------------------------------------
+Wed Jan 27 10:27:41 UTC 2016 - kgronlund@suse.com
+
+- Package fence_dummy in fence-agents-devel package
+- Clean up package 
+
+-------------------------------------------------------------------
+Wed Jan 13 14:06:20 UTC 2016 - kgronlund@suse.com
+
+- Update to 4.0.22:
+  * New fence agent for VirtualBox
+  * A lot of changes in fence_compute (OpenStack)
+  * Re-enable fence_zvm
+  * Support for APC firmware v6.x
+  * Add hard-reboot option for fence_scsi_check script
+  * Add option for setting Docker Remote API version
+  * Fix HP Brocade fence agent (timeout settings, deprecated options)
+  * New action 'diag' for fence_ipmi
+
+-------------------------------------------------------------------
+Mon Oct 12 22:56:43 BST 2015 - aspiers@suse.com
+
+- Update to 4.0.21:
+  * Documentation of new actions in manual pages is improved
+  * Tests were improved and Travis CI is now used for every push
+  * fence_virsh has new option --missing-as-off to support older XEN hosts
+  * fence_ilo(2) now automatically attempts to use TLS1.0 if it is not 
+    possible to connect via SSLv3
+  * fence_mpath re-create SCSI keys after reboot, monitoring of devices 
+    were improved too
+
+-------------------------------------------------------------------
+Tue Aug 11 12:49:58 UTC 2015 - kgronlund@suse.com
+
+- Update to 4.0.20:
+  * In some cases password string was expected twice what lead to 'Unable 
+    to login'
+  * New fence agent fence_rcd_serial for DYI fence device (look at 
+    https://smcleod.net/rcd-stonith/ ; thanks to Sam McLeod)
+  * Fence_pve should default to SSL (thanks to Thomas Lamprecht)
+  * Fixes nroff error for fence_virsh (thanks to Adrian Vondendriesch)
+  * Improve monitoring for fence_scsi
+  * Fixes for devices which do not have port and obtaining status is not 
+    possible
+  * fence_ipmilan no longer print password to debug info
+  * Possibility to do force-ON even if device is already ON
+  * Possibility to declare that device does not have ON or OFF (usually 
+    only reboot works)
+
+-------------------------------------------------------------------
+Wed Jul  1 14:13:51 UTC 2015 - kgronlund@suse.com
+
+- Update to 4.0.19:
+  * New fence agent for Nova compute machines (thanks to Andrew 
+    Beekhof and Fabio)
+  * Fixed issues with whitespaces in few fence agents (thanks to 
+    Christoph Berg)
+  * User of RHEV-M can have less privileges with updated 
+    fence_rhevm (thanks to Rik Theys)
+  * Verbose output now captures also text before command prompt is 
+    found
+  * Support for HP Integrity Superdome X was added to fence_hpblade 
+    (thanks to Han Pilmeyer)
+  * Fence agent for IBM z/VM now uses API that require less resource 
+    of device
+
+-------------------------------------------------------------------
+Wed Jun 10 20:01:45 UTC 2015 - kgronlund@suse.com
+
+- Update to 4.0.18:
+  * fence_scsi has now implemented action 'monitor'
+    (thanks to John Ruemker)
+  * fence_scsi is now able to unfence devices added later
+    (thanks to John Ruemker)
+  * simplification of code thanks to auto-generation of help texts
+  * when 'name' is entered on STDIN instead of 'name=value', warning
+    is generated
+
+-------------------------------------------------------------------
+Tue Apr  7 09:34:26 UTC 2015 - kgronlund@suse.com
+
+- Update to 4.0.17:
+  * HP iLO2 with firmware 2.27 has broken implementation of TLS negotation 
+    and SSLv3 is disabled by default (POODLE attack). Options --tls1.0 
+    (tls1.0 on stdin) was added to force using TLS v1.0. This options allows 
+    users to use that firmware with fence agents.
+  * Fence agent for AMT password was not put correctly into environment.
+  * Fix login process on bladecenter where 'last login' can occur in 
+    message of the day what mislead fence agent.
+  * Cipher for fence_ipmilan was previously set to 0. It was found out 
+    that this not good default value, we will use default value (3) of 
+    ipmitool instead.
+
+-------------------------------------------------------------------
+Mon Mar  9 13:21:53 UTC 2015 - kgronlund@suse.com
+
+- Update to 4.0.16:
+  * fence_kdump has implemented 'monitor' action that check if local node 
+    is capable of working with kdump
+  * path to smnp(walk|get|set) can be set at runtime
+  * new operation 'validate-all' for majority of agents that checks if 
+    entered parameters are sufficient without connecting to fence 
+    device. Be aware that some checks can be done only after we receive 
+    information from fence device, so these are not tested.
+  * new operation 'list-status' that present CSV output (plug_number, 
+    plug_alias, plug_status) where status is ON/OFF/UNKNOWN
+
+-------------------------------------------------------------------
+Mon Feb  9 15:23:23 UTC 2015 - kgronlund@suse.com
+
+- Update to 4.0.15:
+  * Tripp Lite PDUs are now supported by fence_tripplite_snmp (symlink to 
+    fence_apc_snmp)
+  * Default values in metadata sometimes differ to those actually used, 
+    this is fixed now
+  * improvements in testing
+- Remove patch: 0001-Avoid-problem-with-broken-make-variable-expansion.patch
+
+-------------------------------------------------------------------
+Wed Jan  7 14:56:59 UTC 2015 - kgronlund@suse.com
+
+- Update to 4.0.14:
+  * fence_zvmip for IBM z/VM is rewritten to Python
+  * new fence agent for Emerson devices
+
+  * fix invalid default ports for fence_eps and fence_amt
+  * properly escape XML in other fields of metadata
+  * a lot of refactoring and cleaning
+
+-------------------------------------------------------------------
+Mon Dec 15 12:04:13 UTC 2014 - kgronlund@suse.com
+
+- Update to 4.0.13:
+  * new fence agent based on mpathpersist that offers better handling of 
+    multipath devices
+  * improve support of fence_ilo_ssh on older firmwares
+
+  * required packages are also required by autoconf during build time
+  * fence_zvm now supports action 'monitor' (thanks to Neale Ferguson)
+  * introduce --gnutlscli-path --sudo-path --ssh-path and --telnet-path; 
+    they are no longer hard-coded
+  * order of XML parameters or options in --help is more stable now
+  * fence_cisco_ucs did not set protocol prefix correctly with 
+    --ssl-(in)secure
+  * logging to syslog now works correctly also with \x00 as input
+
+- Add patch: 0001-Avoid-problem-with-broken-make-variable-expansion.patch
+
+-------------------------------------------------------------------
+Thu Oct 16 13:42:38 UTC 2014 - kgronlund@suse.com
+
+- Update to 4.0.12: 
+  * new up-to-date wiki page with STDIN / command line arguments
+    http://fedorahosted.org/cluster/wiki/FenceArguments
+  * Fence agent fence_pve now supports --ssl-secure and --ssl-insecure 
+  (check certificate or not)
+  * Fence agent for RHEV-M supports cookie based authentication 
+  (--use-cookies)
+  * improvements in build system
+
+  * Fix issue with regular expression in fence_rsb
+  * Fix uninitialized EOL in fence_wti
+
+- Remove backported patches:
+  - 0001-fence_brocade-Add-support-for-list-action.patch
+  - 0002-fencing-Monitor-is-not-working-correctly-without-lis.patch
+  - 0003-fence_apc_snmp-Add-support-for-firmware-6.x.patch
+  - 0004-fence_zvm-Add-support-for-on-and-status.patch
+  - 0005-fence_zvm-Add-current-XML-metadata-to-test-suite.patch
+  - 0006-build-Fix-automake-files-so-make-distcheck-works.patch
+  - 0007-fencing-Add-new-options-ssl-secure-and-ssl-insecure.patch
+  - 0008-tests-Update-XML-metadata-of-fence-agents.patch
+  - 0009-fence_cisco_ucs-fence_vmware_soap-Logout-has-to-be-p.patch
+  - 0010-fence_zvm-Fixes-for-better-upstream-inclusion.patch
+  - 0011-fence_zvm-Add-support-for-on-improve-documentation.patch
+  - 0012-fence_rhevm-Use-https-prefix-also-with-ssl-secure-an.patch
+  - 0013-fence_apc-shell-timeout-was-used-instead-of-power-ti.patch
+  - 0014-fence_rsb-Fix-62d90e3a0827fcdc5be632bdf4103d3c08b396.patch
+  - 0015-fence_wti-Fix-invalid-eol.patch
+  - 0016-fence_pve-Add-support-for-ssl-secure-and-ssl-insecur.patch
+
+--------------------------------------------------------------------
+Mon Oct 13 11:06:22 UTC 2014 - kgronlund@suse.com
+
+- Backport security and bug fixes (bnc#900879) (CVE-2014-0104)
+  - fence_rhevm: Use https:// prefix also with --ssl-secure and --ssl-insecure
+  - fence_apc: --shell-timeout was used instead of --power-timeout
+  - fence_rsb: Fix 62d90e3a0827fcdc5be632bdf4103d3c08b39622
+  - fence_wti: Fix invalid "eol"
+  - fence_pve: Add support for --ssl-secure and --ssl-insecure
+
+- Added patches:
+  - 0012-fence_rhevm-Use-https-prefix-also-with-ssl-secure-an.patch
+  - 0013-fence_apc-shell-timeout-was-used-instead-of-power-ti.patch
+  - 0014-fence_rsb-Fix-62d90e3a0827fcdc5be632bdf4103d3c08b396.patch
+  - 0015-fence_wti-Fix-invalid-eol.patch
+  - 0016-fence_pve-Add-support-for-ssl-secure-and-ssl-insecur.patch 
+
+-------------------------------------------------------------------
+Fri Oct  3 17:43:37 UTC 2014 - kgronlund@suse.com
+
+- Add requirement for python-suds (bnc#899664) 
+
+------------------------------------------------------------------- 
+Tue Sep 16 07:15:30 UTC 2014 - kgronlund@suse.com
+
+- Backport fixes from upstream (bnc#896833):
+  + fence_brocade: Add support for 'list' action
+  + fencing: Monitor is not working correctly without 'list' or 'status'
+  + fence_apc_snmp: Add support for firmware 6.x
+  + fence_zvm: Add support for "on" and "status"
+  + fence_zvm: Add current XML metadata to test suite
+  + [build] Fix automake files, so 'make distcheck' works
+  + fencing: Add new options --ssl-secure and --ssl-insecure
+  + [tests] Update XML metadata of fence agents
+  + fence_cisco_ucs & fence_vmware_soap: Logout has to be performed even when fencing fails
+  + fence_zvm: Fixes for better upstream inclusion
+  + fence_zvm: Add support for 'on', improve documentation
+- Added patches:
+  + 0001-fence_brocade-Add-support-for-list-action.patch
+  + 0002-fencing-Monitor-is-not-working-correctly-without-lis.patch
+  + 0003-fence_apc_snmp-Add-support-for-firmware-6.x.patch
+  + 0004-fence_zvm-Add-support-for-on-and-status.patch
+  + 0005-fence_zvm-Add-current-XML-metadata-to-test-suite.patch
+  + 0006-build-Fix-automake-files-so-make-distcheck-works.patch
+  + 0007-fencing-Add-new-options-ssl-secure-and-ssl-insecure.patch
+  + 0008-tests-Update-XML-metadata-of-fence-agents.patch
+  + 0009-fence_cisco_ucs-fence_vmware_soap-Logout-has-to-be-p.patch
+  + 0010-fence_zvm-Fixes-for-better-upstream-inclusion.patch
+  + 0011-fence_zvm-Add-support-for-on-improve-documentation.patch
+- Add dependency on python-requests
+
+-------------------------------------------------------------------
+Tue Jul  1 12:32:09 UTC 2014 - kgronlund@suse.com
+
+- Update to 4.0.10:
+  * fence_scsi is reimplemented on top of fencing library
+  * fence_zvm support distributed z/VM systems
+  * support for --delay was added to fence_zvm
+  * unmaintained fence agents were removed:
+    * fence_baytech, fence_bullpap, fence_cpint, fence_mcdata,
+    * fence_rackswitch, fence_vixel, fence_xcat
+    * we do not plan to remove other agents
+  * update fence_rsb to work with new firmware 
+
+-------------------------------------------------------------------
+Tue Jul  1 12:32:09 UTC 2014 - kgronlund@suse.com
+
+- Update to 4.0.10:
+  * fence_scsi is reimplemented on top of fencing library
+  * fence_zvm support distributed z/VM systems
+  * support for --delay was added to fence_zvm
+  * unmaintained fence agents were removed:
+    * fence_baytech, fence_bullpap, fence_cpint, fence_mcdata,
+    * fence_rackswitch, fence_vixel, fence_xcat
+    * we do not plan to remove other agents
+  * update fence_rsb to work with new firmware 
+
+-------------------------------------------------------------------
+Mon May 19 12:03:38 UTC 2014 - kgronlund@suse.com
+
+- Don't build in parallell (bnc#878580) 
+
+-------------------------------------------------------------------
+Thu May 15 08:58:47 UTC 2014 - kgronlund@suse.com
+
+- Update to version 4.0.9 (bnc#877996)
+  + Allow ssl connections to fallback to SSL3.0 negotiation
+  + fence_vmware_soap: fix short/long option parsing traceback
+  + fence_raritan: new fence agent for Raritan Dominion PX
+  + fencing: Replace printing to stderr with proper logging solution
+  + fence_wti: Action 'list' prints also named groups
+  + fence_ipmilan: send empty password, if password is not entered
+  + fence_vmware: Invalid arguments for vmware_get_outlets_vi()
+  + fence_amt: sending password over env
+  + fencing: Introduce new device option 'no_status'
+  + fence_pve: new fence-agent for Proxmox VE
+  + fence_ovh: --delay should be applied before attempt to login
+
+- Exclude dummy fence agent fence_dummy (bnc#877950)
+
+- Remove obsolete fence-agents-add-longdesc.patch
+
+-------------------------------------------------------------------
+Tue Feb 18 10:00:55 UTC 2014 - kgronlund@suse.com
+
+- Update to version 4.0.7
+
+  + support for firmware v1.40 for WTI (MPC series)
+  
+  + nss_wrapper used for fence_ilo was replaced by gnutls-cli
+
+  + --delay was not respected in fence_vmware_soap
+
+  + fabric fence agents have 'off' as default action
+
+  + fence_scsi now generates correct key on corosync clusters
+
+  + regression was found in fence_ipmilan where -P and -L were 
+    interchanged on command line
+    (there was no problem with long options and input from STDIN)
+  
+  + fence_vmware_soap now fails with proper error message when user does 
+    not have enough privileges 
+
+-------------------------------------------------------------------
+Sat Jan 11 13:48:04 UTC 2014 - kgronlund@suse.com
+
+- Update to version 4.0.6
+
+  + support for Dell Drac MC was added to fence_drac5
+
+  + support for Tripplite PDU was added to fence_apc 
+    (thanks to Bogdan Dobrelya)
+
+  + support for AMT was added as new fence agent fence_amt 
+    (thanks to Ondrej Mular)
+
+  + support for identification of  virtual machine using UUID was 
+    added to fence_virsh (thanks to Bogdan)
+
+  + fence_ipmilan was ported from C to Python using standard 
+    fencing library (thanks to Ondrej)
+
+-------------------------------------------------------------------
+Thu Oct 31 13:55:12 UTC 2013 - kgronlund@suse.com
+
+- Update to version 4.0.5
+
+  + fence agent for RSB now works correctly also with newer 
+    firmware
+
+  + fence agent for WTI now supports not only port numbers but also
+    named port groups 
+
+  + fence agent for VMWare SOAP now report if user does not have 
+    enough privileges 
+
+  + add a Relax NG for XML metadata of fence agents and require 
+    them to be correct in order to build a fence agent
+
+  + fix problems found thanks to previous Relax NG
+
+-------------------------------------------------------------------
+Mon Sep  9 08:37:08 UTC 2013 - ygao@suse.com
+
+- Update to version 4.0.3 
+
+-------------------------------------------------------------------
+Thu Jul  5 17:13:10 UTC 2012 - dmuhamedagic@suse.com
+
+- add longdesc as copy of shortdesc to produce valid XML (bnc#770043)
+
+-------------------------------------------------------------------
+Tue Jun 26 16:08:30 UTC 2012 - dmuhamedagic@suse.com
+
+- remove fence-ack-manual from supported, it has effect only with
+  fenced
+- add links to /usr/lib64/stonith/plugins/rhcs
+
+-------------------------------------------------------------------
+Thu Jun 21 08:41:33 UTC 2012 - lmb@novell.com
+
+- Rename two packages to SUSE package names in Requires
+- Split into fence-agents and fence-agents-unsupported
+- SUSE-fy spec file
+
+-------------------------------------------------------------------
+Thu Nov  3 20:00:13 UTC 2011 - msvec@suse.com
+
+- Initial version 3.1.6
+

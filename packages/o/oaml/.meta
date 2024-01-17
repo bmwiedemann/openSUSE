@@ -1,0 +1,5 @@
+<package name="oaml" project="openSUSE:Factory">
+  <title>Open Adaptive Music Library</title>
+  <description>OAML is a library the makes it easy to implement adaptive music in games.</description>
+  <devel project="games" package="oaml"/>
+</package>

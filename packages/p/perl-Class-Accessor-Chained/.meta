@@ -1,0 +1,13 @@
+<package name="perl-Class-Accessor-Chained" project="openSUSE:Factory">
+  <title>Make chained accessors</title>
+  <description>#-------------------------------------------------------------------------------
+A chained accessor is one that always returns the object when called with
+parameters (to set), and the value of the field when called with no arguments.
+
+This module subclasses Class::Accessor in order to provide the same
+mk_accessors interface.
+
+  </description>
+  <devel project="devel:languages:perl" package="perl-Class-Accessor-Chained"/>
+  <url>http://search.cpan.org/dist/Class-Accessor-Chained</url>
+</package>

@@ -1,0 +1,10 @@
+<package name="libzip" project="openSUSE:Factory">
+  <title>C library for reading, creating, and modifying zip archives</title>
+  <description>libzip is a C library for reading, creating, and modifying zip
+archives. Files can be added from data buffers, files, or compressed. This
+package contains a set of small utilities built using libzip
+ * zipmerge - merge source zip archives into the target one
+ * zipcmp - compares the zip archives and check if they contains same files
+ * ziptorrent - manipulate with a restricted file format used for using bittorrent on zip files.</description>
+  <devel project="devel:libraries:c_c++" package="libzip"/>
+</package>

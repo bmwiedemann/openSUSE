@@ -1,0 +1,5 @@
+<package name="rovasiras-roga-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description>Roga is the ligatureless version of the Kende font.</description>
+  <devel project="M17N:fonts" package="rovasiras-roga-fonts"/>
+</package>

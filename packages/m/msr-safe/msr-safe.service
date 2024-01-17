@@ -1,0 +1,20 @@
+# /etc/systemd/system/llnl-allowlist.service
+# (C) 2015 Steve Sylvester (steve.s.sylvester <at> intel.com)
+#
+# msr-safe systemd unit file:
+#	 Set a default MSR allowlist via /dev/cpu/msr_allowlist.
+
+[Unit]
+Description=Sets default MSR allowlist
+After=nss-user-lookup.target nslcd.service network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=root
+ExecStart=/usr/sbin/msr-safe start
+ExecStop=/usr/sbin/msr-safe stop
+
+[Install]
+WantedBy=multi-user.target
+

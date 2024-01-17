@@ -1,0 +1,15 @@
+<package name="python-pyflakes" project="openSUSE:Factory">
+  <title>Passive checker of Python programs</title>
+  <description>Pyflakes is program to analyze Python programs and detect various errors. It works by
+parsing the source file, not importing it, so it is safe to use on modules with side
+effects. It's also much faster.
+
+Author:
+--------
+    Moe Aboulkheir &lt;moe@divmod.com&gt;
+
+
+</description>
+  <devel project="devel:languages:python" package="python-pyflakes"/>
+  <url>http://www.divmod.org/trac/wiki/DivmodPyflakes</url>
+</package>

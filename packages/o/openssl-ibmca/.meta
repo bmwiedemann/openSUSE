@@ -1,0 +1,6 @@
+<package name="openssl-ibmca" project="openSUSE:Factory">
+  <title>The IBMCA OpenSSL dynamic engine</title>
+  <description>This package contains a shared object OpenSSL dynamic engine for the
+IBM eServer Cryptographic Accelerator (ICA).</description>
+  <devel project="security:tls" package="openssl-ibmca"/>
+</package>

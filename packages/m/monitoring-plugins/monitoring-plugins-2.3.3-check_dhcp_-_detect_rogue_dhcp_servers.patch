@@ -1,0 +1,320 @@
+Index: monitoring-plugins-2.3.3/plugins-root/check_dhcp.c
+===================================================================
+--- monitoring-plugins-2.3.3.orig/plugins-root/check_dhcp.c
++++ monitoring-plugins-2.3.3/plugins-root/check_dhcp.c
+@@ -156,6 +156,7 @@ typedef struct dhcp_offer_struct{
+ 	u_int32_t lease_time;            /* lease time in seconds */
+ 	u_int32_t renewal_time;          /* renewal time in seconds */
+ 	u_int32_t rebinding_time;        /* rebinding time in seconds */
++	u_int8_t desired;                 /* is this offer desired (necessary in exclusive mode) */
+ 	struct dhcp_offer_struct *next;
+         }dhcp_offer;
+ 
+@@ -199,6 +200,7 @@ typedef struct requested_server_struct{
+ #define ETHERNET_HARDWARE_ADDRESS_LENGTH     6     /* length of Ethernet hardware addresses */
+ 
+ u_int8_t unicast = 0;        /* unicast mode: mimic a DHCP relay */
++u_int8_t exclusive = 0;      /* exclusive mode aka "rogue DHCP server detection" */
+ struct in_addr my_ip;        /* our address (required for relay) */
+ struct in_addr dhcp_ip;      /* server to query (if in unicast mode) */
+ unsigned char client_hardware_address[MAX_DHCP_CHADDR_LENGTH]="";
+@@ -229,7 +231,7 @@ struct in_addr requested_address;
+ 
+ int process_arguments(int, char **);
+ int call_getopt(int, char **);
+-int validate_arguments(int, int);
++int validate_arguments(void);
+ void print_usage(void);
+ void print_help(void);
+ 
+@@ -323,8 +325,7 @@ int get_hardware_address(int sock,char *
+ #elif defined(__bsd__)
+ 						/* King 2004	see ACKNOWLEDGEMENTS */
+ 
+-        size_t                  len;
+-        int                     mib[6];
++        int                     mib[6], len;
+         char                    *buf;
+         unsigned char           *ptr;
+         struct if_msghdr        *ifm;
+@@ -464,9 +465,10 @@ int send_dhcp_discover(int sock){
+ 	discover_packet.hlen=ETHERNET_HARDWARE_ADDRESS_LENGTH;
+ 
+ 	/*
+-	 * transaction ID is supposed to be random.
++	 * transaction ID is supposed to be random.  We won't use the address so
++	 * we don't care about high entropy here.  time(2) is good enough.
+ 	 */
+-	srand(time(NULL)^getpid());
++	srand(time(NULL));
+ 	packet_xid=random();
+ 	discover_packet.xid=htonl(packet_xid);
+ 
+@@ -692,11 +694,17 @@ int receive_dhcp_packet(void *buffer, in
+                 }
+ 
+         else{
++
++		/* why do we need to peek first?  i don't know, its a hack.  without it, the source address of the first packet received was
++		   not being interpreted correctly.  sigh... */
+ 		bzero(&source_address,sizeof(source_address));
+ 		address_size=sizeof(source_address);
++                recv_result=recvfrom(sock,(char *)buffer,buffer_size,MSG_PEEK,(struct sockaddr *)&source_address,&address_size);
++		if(verbose)
++			printf("recv_result_1: %d\n",recv_result);
+                 recv_result=recvfrom(sock,(char *)buffer,buffer_size,0,(struct sockaddr *)&source_address,&address_size);
+ 		if(verbose)
+-			printf("recv_result: %d\n",recv_result);
++			printf("recv_result_2: %d\n",recv_result);
+ 
+                 if(recv_result==-1){
+ 			if(verbose){
+@@ -904,6 +912,7 @@ int add_dhcp_offer(struct in_addr source
+ 	new_offer->lease_time=dhcp_lease_time;
+ 	new_offer->renewal_time=dhcp_renewal_time;
+ 	new_offer->rebinding_time=dhcp_rebinding_time;
++	new_offer->desired=FALSE; /* exclusive mode: we'll check that in get_results */
+ 
+ 
+ 	if(verbose){
+@@ -949,7 +958,7 @@ int free_requested_server_list(void){
+ 
+ /* gets state and plugin output to return */
+ int get_results(void){
+-	dhcp_offer *temp_offer;
++	dhcp_offer *temp_offer, *undesired_offer=NULL;
+ 	requested_server *temp_server;
+ 	int result;
+ 	u_int32_t max_lease_time=0;
+@@ -980,16 +989,24 @@ int get_results(void){
+ 						if(temp_server->answered)
+ 							printf(_(" (duplicate)"));
+ 						printf(_("\n"));
+-						}
++					}
+ 					if(temp_server->answered == FALSE){
+ 						requested_responses++;
+ 						temp_server->answered=TRUE;
+-						}
+-				        }
+-		                }
+-		        }
+-
+-	        }
++						temp_offer->desired=TRUE;
++					}
++		        	}
++                	}
++        	}
++
++		/* exclusive mode: check for undesired offers */
++		for(temp_offer=dhcp_offer_list;temp_offer!=NULL;temp_offer=temp_offer->next) {
++			if (temp_offer->desired == FALSE) {
++				undesired_offer=temp_offer; /* Checks only for the first undesired offer */
++				break; /* no further checks needed */
++			}
++		}
++	}
+ 
+ 	/* else check and see if we got our requested address from any server */
+ 	else{
+@@ -1003,8 +1020,8 @@ int get_results(void){
+ 			/* see if we got the address we requested */
+ 			if(!memcmp(&requested_address,&temp_offer->offered_address,sizeof(requested_address)))
+ 				received_requested_address=TRUE;
+-	                }
+-	        }
++		}
++	}
+ 
+ 	result=STATE_OK;
+ 	if(valid_responses==0)
+@@ -1016,6 +1033,9 @@ int get_results(void){
+ 	else if(request_specific_address==TRUE && received_requested_address==FALSE)
+ 		result=STATE_WARNING;
+ 
++	if(exclusive && undesired_offer)
++		result=STATE_CRITICAL;
++
+ 	if(result==0)               /* garrett honeycutt 2005 */
+ 		printf("OK: ");
+ 	else if(result==1)
+@@ -1033,6 +1053,13 @@ int get_results(void){
+ 
+ 	printf(_("Received %d DHCPOFFER(s)"),valid_responses);
+ 
++
++	if(exclusive && undesired_offer){
++		printf(_(", Rogue DHCP Server detected! Server %s"),inet_ntoa(undesired_offer->server_address));
++		printf(_(" offered %s \n"),inet_ntoa(undesired_offer->offered_address));
++		return result;
++	}
++
+ 	if(requested_servers>0)
+ 		printf(_(", %s%d of %d requested servers responded"),((requested_responses<requested_servers) && requested_responses>0)?"only ":"",requested_responses,requested_servers);
+ 
+@@ -1053,19 +1080,29 @@ int get_results(void){
+ 
+ /* process command-line arguments */
+ int process_arguments(int argc, char **argv){
+-	int arg_index;
++	int c;
+ 
+ 	if(argc<1)
+ 		return ERROR;
+ 
+-	arg_index = call_getopt(argc,argv);
+-	return validate_arguments(argc,arg_index);
++	c=0;
++	while((c+=(call_getopt(argc-c,&argv[c])))<argc){
++
++		/*
++		if(is_option(argv[c]))
++			continue;
++		*/
++		}
++
++	return validate_arguments();
+         }
+ 
+ 
+ 
+ int call_getopt(int argc, char **argv){
+-	extern int optind;
++	int c=0;
++	int i=0;
++
+ 	int option_index = 0;
+ 	static struct option long_options[] =
+ 	{
+@@ -1075,6 +1112,7 @@ int call_getopt(int argc, char **argv){
+ 		{"interface",      required_argument,0,'i'},
+ 		{"mac",            required_argument,0,'m'},
+ 		{"unicast",        no_argument,      0,'u'},
++		{"exclusive",      no_argument,      0,'x'},
+ 		{"verbose",        no_argument,      0,'v'},
+ 		{"version",        no_argument,      0,'V'},
+ 		{"help",           no_argument,      0,'h'},
+@@ -1082,14 +1120,25 @@ int call_getopt(int argc, char **argv){
+ 	};
+ 
+ 	while(1){
+-		int c=0;
++		c=getopt_long(argc,argv,"+hVvxt:s:r:t:i:m:u",long_options,&option_index);
+ 
+-		c=getopt_long(argc,argv,"+hVvt:s:r:t:i:m:u",long_options,&option_index);
++		i++;
+ 
+ 		if(c==-1||c==EOF||c==1)
+ 			break;
+ 
+ 		switch(c){
++		case 'w':
++		case 'r':
++		case 't':
++		case 'i':
++			i++;
++			break;
++		default:
++			break;
++		        }
++
++		switch(c){
+ 
+ 		case 's': /* DHCP server address */
+ 			resolve_host(optarg,&dhcp_ip);
+@@ -1133,6 +1182,9 @@ int call_getopt(int argc, char **argv){
+ 		case 'u': /* unicast testing */
+ 			unicast=1;
+ 			break;
++		case 'x': /* exclusive testing aka "rogue DHCP server detection" */
++			exclusive=1;
++			break;
+ 
+ 		case 'V': /* version */
+ 			print_revision(progname, NP_VERSION);
+@@ -1146,22 +1198,16 @@ int call_getopt(int argc, char **argv){
+ 			verbose=1;
+ 			break;
+ 
+-		case '?': /* help */
+-			usage5 ();
+-			break;
+-
+ 		default:
+ 			break;
+ 		        }
+ 	        }
+-	return optind;
+-        }
+ 
++	return i;
++        }
+ 
+-int validate_arguments(int argc, int arg_index){
+ 
+-	if(argc-optind > 0)
+-		usage(_("Got unexpected non-option argument"));
++int validate_arguments(void){
+ 
+ 	return OK;
+         }
+@@ -1361,7 +1407,7 @@ void print_help(void){
+ 
+ 	printf("%s\n", _("This plugin tests the availability of DHCP servers on a network."));
+ 
+-  printf ("\n\n");
++	printf ("\n\n");
+ 
+ 	print_usage();
+ 
+@@ -1371,19 +1417,21 @@ void print_help(void){
+ 	printf (UT_VERBOSE);
+ 
+ 	printf (" %s\n", "-s, --serverip=IPADDRESS");
+-  printf ("    %s\n", _("IP address of DHCP server that we must hear from"));
+-  printf (" %s\n", "-r, --requestedip=IPADDRESS");
+-  printf ("    %s\n", _("IP address that should be offered by at least one DHCP server"));
+-  printf (" %s\n", "-t, --timeout=INTEGER");
+-  printf ("    %s\n", _("Seconds to wait for DHCPOFFER before timeout occurs"));
+-  printf (" %s\n", "-i, --interface=STRING");
+-  printf ("    %s\n", _("Interface to to use for listening (i.e. eth0)"));
+-  printf (" %s\n", "-m, --mac=STRING");
+-  printf ("    %s\n", _("MAC address to use in the DHCP request"));
+-  printf (" %s\n", "-u, --unicast");
+-  printf ("    %s\n", _("Unicast testing: mimic a DHCP relay, requires -s"));
++	printf ("    %s\n", _("IP address of DHCP server that we must hear from"));
++	printf (" %s\n", "-r, --requestedip=IPADDRESS");
++	printf ("    %s\n", _("IP address that should be offered by at least one DHCP server"));
++	printf (" %s\n", "-t, --timeout=INTEGER");
++	printf ("    %s\n", _("Seconds to wait for DHCPOFFER before timeout occurs"));
++	printf (" %s\n", "-i, --interface=STRING");
++	printf ("    %s\n", _("Interface to to use for listening (i.e. eth0)"));
++	printf (" %s\n", "-m, --mac=STRING");
++	printf ("    %s\n", _("MAC address to use in the DHCP request"));
++	printf (" %s\n", "-u, --unicast");
++	printf ("    %s\n", _("Unicast testing: mimic a DHCP relay, requires -s"));
++	printf (" %s\n", "-x, --exclusive");
++	printf ("    %s\n", _("Only requested DHCP server may response (rogue DHCP server detection), requires -s"));
+ 
+-  printf (UT_SUPPORT);
++	printf (UT_SUPPORT);
+ 	return;
+ 	}
+ 
+@@ -1391,12 +1439,10 @@ void print_help(void){
+ void
+ print_usage(void){
+ 
+-  printf ("%s\n", _("Usage:"));
+-  printf (" %s [-v] [-u] [-s serverip] [-r requestedip] [-t timeout]\n",progname);
+-  printf ("                  [-i interface] [-m mac]\n");
++	printf ("%s\n", _("Usage:"));
++	printf (" %s [-v] [-u] [-x] [-s serverip] [-r requestedip] [-t timeout]\n",progname);
++	printf ("                  [-i interface] [-m mac]\n");
+ 
+ 	return;
+ 	}
+ 
+-
+-

@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Feb 22 21:45:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.3:
+  - Drop python2 compat glue
+  - Drop external mock dependency
+  - Use USER_NAME instead of HOSTBASED_SERVICE for user
+    principals
+  - Remove unused imports in example code
+  - Fix typo in explicit mech example
+
+-------------------------------------------------------------------
+Mon Aug  3 10:24:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.2.1
+  * Include tests in sdist tarball
+  * Don't limit contexts to a single server name
+
+-------------------------------------------------------------------
+Mon Mar 30 15:20:56 UTC 2020 - pgajdos@suse.com
+
+- test package
+- added sources
+  + test_requests_gssapi.py
+
+-------------------------------------------------------------------
+Mon Mar  9 11:18:19 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.2.0

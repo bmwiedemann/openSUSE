@@ -1,0 +1,501 @@
+-------------------------------------------------------------------
+Mon Nov 27 09:13:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1.0:
+  * Add more tests for `zip_broadcast()`
+  * Added takewhile_inclusive
+  * Speed up `zip_broadcast()` by pre-filling the scalar elements
+  * Added outer_product.
+  * Simplify `zip_broadcast`
+  * Simplify `_zip_equal`
+  * fix consume() type annotation
+  * Update recipes.iter_index to match CPython PR 102360
+  * fixup - add missing commas to the readme function table
+  * fixup remove 3.6 from tox
+  * seekable: Add relative_seek
+  * Optimize _chunked_even_finite()
+  * Indexing of combinations with replacement
+  * Add notes for transposing empty inputs
+  * Add the polynomial_eval recipe
+  * Add nth_combination_with_replacement
+  * Add sum_of_squares, sync with itertools
+  * Issue #707: fix ``iterate()`` to enable ``func`` to raise
+    StopIteration + 3 unittests
+  * Update polynomial_from roots and convolve
+  * Issue #677: Improve `partition`
+  * Issue #713: Fix `partial_product` (also simplify and clean
+    up)
+  * Issue #711: Optimize `pairwise`
+  * Issue #715: Simplify/optimize `partial_product`
+  * Issue #717: Improve `duplicates_justseen`
+  * Fix unique_in_window to match described behavior
+  * Add polynomial_derivative recipe
+  * Update recipes with CPython PRs: 105403 and 106371
+  * Changes for version 10.0.0
+  * Delay computation of numeric_range len until needed
+
+-------------------------------------------------------------------
+Fri Apr 21 12:28:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Mar  7 12:12:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.0:
+  * See PR #678 for details.
+
+-------------------------------------------------------------------
+Fri Oct 28 18:32:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 9.0.0
+  * Potentially breaking changes
+   grouper() no longer accepts an integer as its first argument. Previously this raised a DeprecationWarning.
+   collate() has been removed. Use the built-in heapq.merge() instead.
+   windowed() now yields nothing when its iterable is empty.
+   This library now advertises support for Python 3.7+.
+  * New functions
+   constrained_batches()
+   batched() (from the Python itertools docs)
+   polynomial_from_roots() (from the Python itertools docs)
+   sieve() (from the Python itertools docs)
+  * Other changes
+   Some documentation issues were fixed (thanks to nanouasyn)
+
+-------------------------------------------------------------------
+Fri Sep 16 18:26:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.14.0:
+  * :func:`longest_common_prefix` (thanks to nanouasyn)
+  * :func:`iequals` (thanks to nanouasyn)
+  * `concurrent.futures.ThreadPoolExecutor` is now imported lazily in :func:`callback_iter`.
+  * :func:`tail` is now optimized for iterables with a fixed length.
+  * Some documentation issues were fixed (thanks to pochmann and timgates42)
+  * This library is now marked for Python 3.10 compatibility in PyPI (thanks to chayim)
+
+-------------------------------------------------------------------
+Mon Jun 13 13:15:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean up specfile, only requires flit-core (flit not in Ring1)
+
+-------------------------------------------------------------------
+Sun Jun  5 14:27:12 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * build with flit
+
+- update to version 8.13.0:
+  * New functions
+    + The :func:`subslices` recipe from the itertools docs was added
+      (thanks to rhettinger)
+  * Changes to existing functions
+    + The :func:`ichunked` function is now more efficient (thanks to
+      hjtran0 and seanmacavaney)
+    + The :func:`difference` function is now more efficient (thanks to
+      Masynchin)
+    + The :func:`grouper` recipe now has more features, mirroring the
+      one in the itertools docs (thanks to rhettinger)
+  * Other changes
+    + Some documentation issues were fixed (thanks to medvied and
+      Freed-Wu)
+    + The more_itertools package is now built with flit (thanks to
+      mgorny)
+
+-------------------------------------------------------------------
+Tue Mar 15 08:49:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use python_expand for fdupes
+
+-------------------------------------------------------------------
+Thu Feb  3 20:13:01 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 8.12.0:
+  * Bug fixes
+    + Some documentation issues were fixed (thanks to Masynchin,
+      spookylukey, astrojuanlu, and stephengmatthews)
+    + Python 3.5 support was temporarily restored (thanks to
+      mattbonnell)
+
+- changes from version 8.11.0:
+  * New functions
+    + The before_and_after, sliding_window, and triplewise recipes
+      from the Python 3.10 docs were added
+    + duplicates_everseen and duplicates_justseen (thanks to OrBin and
+      DavidPratt512)
+    + minmax (thanks to Ricocotam, MSeifert04, and ruancomelli)
+    + strictly_n (thanks to hwalinga and NotWearingPants)
+    + unique_in_window
+  * Changes to existing functions
+    + groupby_transform had its type stub improved (thanks to mjk4 and
+      ruancomelli)
+    + is_sorted now accepts a strict parameter (thanks to Dutcho and
+      ruancomelli)
+    + zip_broadcast was updated to fix a bug (thanks to kalekundert)
+
+-------------------------------------------------------------------
+Sat Oct 16 19:09:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.10.0:
+    * The type stub for :func:`iter_except` was improved (thanks to  MarcinKonowalczyk)
+    *  Type stubs now ship with the source release (thanks to saaketp)
+    *  The Sphinx docs were improved (thanks to MarcinKonowalczyk)
+    * New functions
+      * :func:`interleave_evenly` (thanks to mbugert)
+      * :func:`repeat_each` (thanks to FinalSh4re)
+      * :func:`chunked_even` (thanks to valtron)
+      * :func:`map_if` (thanks to sassbalint)
+      * :func:`zip_broadcast` (thanks to kalekundert)
+    * Changes to existing functions
+      * The type stub for :func:`chunked` was improved (thanks to  PhilMacKay)
+      * The type stubs for :func:`zip_equal` and `zip_offset` were improved (thanks to maffoo)
+      * Building Sphinx docs locally was improved (thanks to MarcinKonowalczyk)
+
+-------------------------------------------------------------------
+Sun Jun  6 12:43:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.8.0:
+  * :func:`countable` (thanks to krzysieq)
+  * :func:`split_before` was updated to handle empy collections (thanks to TiunovNN)
+  * :func:`unique_everseen` got a performance boost (thanks to Numerlor)
+  * The type hint for :func:`value_chain` was corrected (thanks to vr2262)
+
+-------------------------------------------------------------------
+Thu Jun  3 11:51:31 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Thu Mar  4 21:03:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.7.0:
+  * New functions
+    * :func:`convolve`
+    * :func:`product_index`, :func:`combination_index`, and :func:`permutation_index`
+    * :func:`value_chain`
+  * Changes to existing functions
+    * :func:`distinct_combinations` now uses a non-recursive algorithm
+    * :func:`pad_none` is now the preferred name for :func:`padnone`, though the latter remains available.
+    * :func:`pairwise` will now use the Python standard library implementation on Python 3.10+
+    * :func:`sort_together` now accepts a ``key`` argument
+    * :func:`seekable` now has a ``peek`` method, and can indicate whether the iterator it's wrapping is exhausted
+    * :func:`time_limited` can now indicate whether its iterator has expired
+    * The implementation of :func:`unique_everseen` was improved
+  * Other changes:
+    * Various documentation updates
+
+-------------------------------------------------------------------
+Sat Dec 19 10:51:38 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.6.0:
+  * :func:`all_unique` (thanks to brianmaissy)
+  * :func:`nth_product` and :func:`nth_permutation` (thanks to N8Brooks)
+  * :func:`chunked` and :func:`sliced` now accept a ``strict`` parameter (thanks to shlomif and jtwool)
+  * Python 3.5 has reached its end of life and is no longer supported.
+  * Python 3.9 is officially supported.
+
+-------------------------------------------------------------------
+Wed Sep 16 11:13:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.5.0:
+  * windowed_complete() (thanks to MarcinKonowalczyk)
+  Changes to existing itertools:
+  * The is_sorted() implementation was improved (thanks to cool-RR)
+  * The groupby_transform() now accepts a reducefunc parameter.
+  * The last() implementation was improved (thanks to brianmaissy)
+  * Various documentation fixes (thanks to craigrosie, samuelstjean, PiCT0)
+  * The tests for distinct_combinations() were improved (thanks to Minabsapi)
+
+-------------------------------------------------------------------
+Thu Aug  6 08:16:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.4.0:
+ * New itertools
+ * :func:`mark_ends` (thanks to kalekundert)
+ * :func:`is_sorted`
+ * Changes to existing itertools:
+   * :func:`islice_extended` can now be used with real slices (thanks to cool-RR)
+   * The implementations for :func:`filter_except` and :func:`map_except` were improved (thanks to SergBobrovsky)
+ * Other changes
+   * Automated tests now enforce code style (using `black <https://github.com/psf/black>`__)
+   * The various signatures of :func:`islice_extended` and :func:`numeric_range` now appear in the docs (thanks to dsfulf)
+   * The test configuration for mypy was updated (thanks to blueyed)
+
+-------------------------------------------------------------------
+Tue Jun  2 16:30:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.3.0:
+  * New itertools
+    * :func:`zip_equal` (thanks to frankier and alexmojaki)
+    * :func:`split_at`, :func:`split_before`, :func:`split_after`, and :func:`split_when` all got a ``maxsplit`` paramter (thanks to jferard and ilai-deutel)
+    * :func:`split_at` now accepts a ``keep_separator`` parameter (thanks to jferard)
+    * :func:`distinct_permutations` can now generate ``r``-length permutations (thanks to SergBobrovsky and ilai-deutel)
+    * The :func:`windowed` implementation was improved  (thanks to SergBobrovsky)
+    * The :func:`spy` implementation was improved (thanks to has2k1)
+    * Type stubs are now tested with ``stubtest`` (thankjs to ilai-deutel)
+    * Tests now run with ``python -m unittest`` instead of ``python setup.py test`` (thanks to jdufresne)
+
+-------------------------------------------------------------------
+Fri Feb 28 21:37:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.2.0:
+   * The .pyi files for typing were updated. (thanks to blueyed and ilai-deutel)
+   * :func:`numeric_range` now behaves more like the built-in :func:`range`. (thanks to jferard)
+   * :func:`bucket` now allows for enumerating keys. (thanks to alexchandel)
+   * :func:`sliced` now should now work for numpy arrays. (thanks to sswingle)
+   * :func:`seekable` now has a ``maxlen`` parameter.
+
+-------------------------------------------------------------------
+Wed Jan 22 15:56:53 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to 8.1.0:
+    * Bug fixes
+        :func:`partition` works with pred=None again. (thanks
+        to MSeifert04)
+    * New itertools
+        :func:`sample` (thanks to tommyod)
+        :func:`nth_or_last` (thanks to d-ryzhikov)
+    * Changes to existing itertools:
+        The implementation for :func:`divide` was improved.
+
+-------------------------------------------------------------------
+Fri Dec 20 19:18:54 UTC 2019 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.0.2:
+  * Bug fixes
+      * The type stub files are now part of the wheel distribution (thanks to keisheiled)
+      * The type stub files now work for functions imported from the
+        root package (thanks to keisheiled)
+  * New itertools and other additions
+      * This library now ships type hints for use with mypy.
+        (thanks to ilai-deutel for the implementation, and to gabbard and fmagin for assistance)
+      * :func:`split_when` (thanks to jferard)
+      * :func:`repeat_last` (thanks to d-ryzhikov)
+  * Changes to existing itertools:
+      * The implementation for :func:`set_partitions` was improved. (thanks to jferard)
+      * :func:`partition` was optimized for expensive predicates. (thanks to stevecj)
+      * :func:`unique_everseen` and :func:`groupby_transform` were re-factored. (thanks to SergBobrovsky)
+      * The implementation for :func:`difference` was improved. (thanks to Jabbey92)
+
+-------------------------------------------------------------------
+Thu Aug 29 15:01:51 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Place a mildly useful text in the %description section.
+
+-------------------------------------------------------------------
+Tue Aug 27 12:15:12 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 7.2.0
+  * new itertools: distinct_combinations, set_partitions, filter_except,
+    map_except, ichunked, only, time_limited, partitions, substrings_indexes
+  * Python 2.7 is no longer supported. All future releases will target
+    the active versions of Python 3.
+  * The six library is no longer a dependency.
+  * collapse now treats bytes objects the same as str objects.
+  * numeric_range now supports ranges specified by datetime.datetime
+    and datetime.timedelta objects
+
+-------------------------------------------------------------------
+Fri May 24 12:20:33 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 5.0.0
+  * new itertools: split_into, unzip, substrings
+  * first_true now returns None by default.
+  * Some code for old Python versions was removed
+  * Tests now run properly on 32-bit versions of Python
+  * Newer versions of CPython and PyPy are now tested against
+  4.3.0
+  * new itertools: last, replace, rlocate
+  * locate can now search for multiple items
+  * The docs now include a nice table of tools
+
+- There are newer versions of more-itertools but this is the last
+  version which supports Python 2.7
+
+-------------------------------------------------------------------
+Thu May 31 04:34:12 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 4.2.0
+  + New itertools:
+    * map_reduce (thanks to pylang)
+    * prepend (from the `Python 3.7 docs <https://docs.python.org/3.7/library/itertools.html#itertools-recipes>`_)
+  + Improvements to existing itertools:
+    * :func:`bucket` now complies with PEP 479 (thanks to irmen)
+  + Other changes:
+    * Python 3.7 is now supported (thanks to irmen)
+    * Python 3.3 is no longer supported
+    * The test suite no longer requires third-party modules to run
+    * The API docs now include links to source code
+
+-------------------------------------------------------------------
+Thu Mar 29 13:32:39 UTC 2018 - mimi.vx@gmail.com
+
+- spec-cleaned
+- use of %license macro
+- removed unneded dependency
+
+-------------------------------------------------------------------
+Sat Mar 24 19:55:52 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 4.1.0:
+  * New itertools:
+    + split_at (thanks to michael-celani)
+    + circular_shifts (thanks to hiqua)
+    + make_decorator - see the blog post Yo, I heard you like
+      decorators for a tour (thanks to pylang)
+    + always_reversible (thanks to michael-celani)
+    + nth_combination (from the Python 3.7 docs)
+  * Improvements to existing itertools:
+    + seekable now has an elements method to return cached items.
+    + The performance tradeoffs between roundrobin and
+      interleave_longest are now documented (thanks michael-celani,
+      pylang, and MSeifert04)
+
+- changes from version 4.0.1:
+  * No code changes - this release fixes how the docs display on PyPI.
+
+- changes from version 4.0.0:
+  * New itertools:
+    + consecutive_groups (Based on the example in the Python 2.4 docs)
+    + seekable (If you’re looking for how to “reset” an iterator,
+      you’re in luck!)
+    + exactly_n (thanks to michael-celani)
+    + run_length.encode and run_length.decode
+    + difference
+  * Improvements to existing itertools:
+    + The number of items between filler elements in intersperse can
+      now be specified (thanks to pylang)
+    + distinct_permutations and peekable got some minor adjustments
+      (thanks to MSeifert04)
+    + always_iterable now returns an iterator object. It also now
+      allows different types to be considered iterable (thanks to
+      jaraco)
+    + bucket can now limit the keys it stores in memory one now allows
+      for custom exceptions (thanks to kalekundert)
+  * Other changes:
+    + A few typos were fixed (thanks to EdwardBetts)
+    + All tests can now be run with python setup.py test
+
+-------------------------------------------------------------------
+Tue Jul  4 17:15:27 UTC 2017 - aloisio@gmx.com
+
+- Update to version 3.2.0
+  * New itertools:
+      + :func:`lstrip`, :func:`rstrip`, and :func:`strip`
+        (thanks to MSeifert04 and pylang)
+      + :func:`islice_extended`
+  * Improvements to existing itertools:
+      + Some bugs with slicing :func:`peekable`-wrapped iterables
+        were fixed
+  3.1.0:
+  * New itertools:
+      + :func:`numeric_range` (Thanks to BebeSparkelSparkel and
+        MSeifert04)
+      + :func:`count_cycle` (Thanks to BebeSparkelSparkel)
+      + :func:`locate` (Thanks to pylang and MSeifert04)
+  * Improvements to existing itertools:
+      + A few itertools are now slightly faster due to some
+        function optimizations. (Thanks to MSeifert04)
+  * The docs have been substantially revised with installation
+    notes, categories for library functions, links, and more.
+    (Thanks to pylang)
+  3.0.0:
+  * Removed itertools:
+      + ``context`` has been removed due to a design flaw - see
+        below for replacement options. (thanks to NeilGirdhar)
+  * Improvements to existing itertools:
+      + ``side_effect`` now supports ``before`` and ``after``
+        keyword arguments. (Thanks to yardsale8)
+  * PyPy and PyPy3 are now supported.
+    The major version change is due to the removal of the
+    ``context`` function.
+
+    Replace it with standard ``with`` statement context management:
+    .. code-block:: python
+
+      # Don't use context() anymore
+      file_obj = StringIO()
+      consume(print(x, file=f) for f in context(file_obj) for x in
+      u'123')
+
+      # Use a with statement instead
+      file_obj = StringIO()
+      with file_obj as f:
+          consume(print(x, file=f) for x in u'123')
+  2.6.0:
+  * New itertools:
+      + ``adjacent`` and ``groupby_transform`` (Thanks to diazona)
+      + ``always_iterable`` (Thanks to jaraco)
+      + (Removed in 3.0.0) ``context`` (Thanks to yardsale8)
+      + ``divide`` (Thanks to mozbhearsum)
+  * Improvements to existing itertools:
+      + ``ilen`` is now slightly faster. (Thanks to wbolster)
+      + ``peekable`` can now prepend items to an iterable. (Thanks
+        to diazona)
+  2.5.0:
+  * New itertools:
+      + ``distribute`` (Thanks to mozbhearsum and coady)
+      + ``sort_together`` (Thanks to clintval)
+      + ``stagger`` and ``zip_offset`` (Thanks to joshbode)
+      + ``padded``
+  * Improvements to existing itertools:
+      + ``peekable`` now handles negative indexes and slices with
+        negative components properly.
+      + ``intersperse`` is now slightly faster. (Thanks to pylang)
+      + ``windowed`` now accepts a ``step`` keyword argument.
+        (Thanks to pylang)
+  * Python 3.6 is now supported.
+  2.4.1:
+  * Move docs 100% to readthedocs.io.
+  2.4:
+  * New itertools:
+      + ``accumulate``, ``all_equal``, ``first_true``,
+        ``partition``, and
+        ``tail`` from the itertools documentation.
+      + ``bucket`` (Thanks to Rosuav and cvrebert)
+      + ``collapse`` (Thanks to abarnet)
+      + ``interleave`` and ``interleave_longest`` (Thanks to
+        abarnet)
+      + ``side_effect`` (Thanks to nvie)
+      + ``sliced`` (Thanks to j4mie and coady)
+      + ``split_before`` and ``split_after`` (Thanks to
+        astronouth7303)
+      + ``spy`` (Thanks to themiurgo and mathieulongtin)
+  * Improvements to existing itertools:
+      + ``chunked`` is now simpler and more friendly to garbage
+        collection.
+        (Contributed by coady, with thanks to piskvorky)
+      + ``collate`` now delegates to ``heapq.merge`` when possible.
+        (Thanks to kmike and julianpistorius)
+      + ``peekable``-wrapped iterables are now indexable and
+        sliceable. Iterating through ``peekable``-wrapped iterables
+        is also faster.
+      + ``one`` and ``unique_to_each`` have been simplified.
+        (Thanks to coady)
+  2.3:
+  * Added ``one`` from ``jaraco.util.itertools``. (Thanks, jaraco!)
+  * Added ``distinct_permutations`` and ``unique_to_each``.
+    (Contributed by bbayles)
+  * Added ``windowed``. (Contributed by bbayles, with thanks to
+    buchanae, jaraco, and abarnert)
+  * Simplified the implementation of ``chunked``. (Thanks, nvie!)
+  * Python 3.5 is now supported. Python 2.6 is no longer supported.
+  * Python 3 is now supported directly; there is no 2to3 step.
+
+- Converted to single-spec
+
+-------------------------------------------------------------------
+Fri May 30 14:11:03 UTC 2014 - toddrme2178@gmail.com
+
+- initial version
+

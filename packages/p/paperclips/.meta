@@ -1,0 +1,5 @@
+<package name="paperclips" project="openSUSE:Factory">
+  <title>PaperClips</title>
+  <description>Simplified Java Printing Support for SWT</description>
+  <devel project="Java:packages" package="paperclips"/>
+</package>

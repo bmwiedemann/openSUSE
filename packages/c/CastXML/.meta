@@ -1,0 +1,8 @@
+<package name="CastXML" project="openSUSE:Factory">
+  <title>C-family Abstract Syntax Tree XML Output</title>
+  <description>CastXML is a C-family abstract syntax tree XML output tool.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="CastXML"/>
+  <url>https://github.com/CastXML/CastXML</url>
+</package>

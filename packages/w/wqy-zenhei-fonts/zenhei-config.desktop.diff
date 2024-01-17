@@ -1,0 +1,33 @@
+--- zenhei-config.desktop-orig	2013-01-21 12:57:31.000000000 +0800
++++ zenhei-config.desktop	2013-01-21 14:37:50.000000000 +0800
+@@ -1,18 +1,23 @@
+ [Desktop Entry]
+-Name=WenQuanYi Font Preference Setup
+-Name[ja]=WenQuanYiフォントの設定
+-Name[ko]=WenQuanYi 글꼴설정
+-Name[zh_CN]=文泉驿字体偏好设置
+-Name[zh_TW]=文泉驛字體偏好設置
++Name=Zenhei Font Configuration
++Name[ja]=フォントの設定
++Name[ko]=글꼴설정
++Name[zh_CN]=正黑字体设置
++Name[zh_TW]=正黑字體設定
++GenericName=WenQuanYi Font Preference Setup
++GenericName[ja]=WenQuanYiフォントの設定
++GenericName[ko]=WenQuanYi 글꼴설정
++GenericName[zh_CN]=文泉驿字体偏好设置
++GenericName[zh_TW]=文泉驛字體偏好設定
+ Comment=Configure the default WenQuanYi Zen Hei font for your Chinese desktop
+ Comment[ja]=中国語フォントを優先WenQuanYi Zen Hei ツール用のデスクトップ設定
+ Comment[ko]=중국의 글꼴을 최우선 WenQuanYi Zen Hei  도구를위한 데스크톱 환경 설정
+ Comment[zh_CN]=为中文桌面设定文泉驿字体优先级的工具
+ Comment[zh_TW]=為中文桌面設定文泉驛字體優先級的工具
+-Exec=gksu wqy-zenhei-cfg
++Exec=xdg-su -c wqy-zenhei-cfg
+ Icon=wqy-zenhei-cfg
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=Settings;
++Categories=System;SystemSetup;Settings;
+ #X-Ubuntu-Gettext-Domain=wqy-zenhei

@@ -1,0 +1,9 @@
+<package name="rash" project="openSUSE:Factory">
+  <title>The Reckless rAcket SHell</title>
+  <description>Rash is a shell language, library, and REPL(Read–Eval–Print-Loop) for Racket.
+
+Use as a REPL that is as convenient for pipelining programs as Bash is, but has all the power of Racket. Use as a scripting language with #lang rash. Embed in normal Racket files with (require rash), and mix freely with any other Racket language or library.
+
+Rash is in active development, but it is largely stable (and the parts that aren't are marked as such). It can be used as an interactive shell. It currently lacks the interactive polish of Zsh or Fish, but it is so much better as a language.</description>
+  <devel project="shells" package="rash"/>
+</package>

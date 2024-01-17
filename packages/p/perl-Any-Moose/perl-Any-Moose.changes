@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Wed Nov  9 06:01:32 UTC 2016 - coolo@suse.com
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-Any-Moose/Changes
+
+  0.27      2016-11-08 03:37:04Z
+    - add deprecation warning when this module is used
+
+-------------------------------------------------------------------
+Mon Apr 13 15:50:29 UTC 2015 - coolo@suse.com
+
+- updated to 0.26
+   see /usr/share/doc/packages/perl-Any-Moose/Changes
+
+  0.26      2015-01-24 07:52:46Z
+    - change Mouse $VERSION check to avoid dying on bad 'v2.4.0' version
+  
+  0.25      2015-01-21 04:31:32Z
+    - mark module as deprecated in metadata
+    - add additional checks for too-old Mouse
+
+-------------------------------------------------------------------
+Wed Nov 19 16:53:57 UTC 2014 - lars@linux-schulserver.de
+
+- update to 0.24:
+  * now always prefers Moose if Moo is loaded, to overcome some
+    incompatibility issues in subclasses (github #1, Graham Knop)
+  * fix missing =encoding directive in pod
+  * canonical repository moved to https://github.com/moose/Any-Moose
+
+-------------------------------------------------------------------
+Mon Jun  3 11:22:24 UTC 2013 - coolo@suse.com
+
+- updated to 0.21
+ * Add tokuhirom's translation of the deprecation notice
+ * Documentation fixes
+ * Deprecated in favor of Moo. Good night, sweet prince.
+
+-------------------------------------------------------------------
+Wed Mar 28 19:41:54 UTC 2012 - joop.boonen@opensuse.org
+
+- Solved bnc#752049
+  Added missing Requires:       perl(Moose)
+
+-------------------------------------------------------------------
+Thu Dec  1 17:18:53 UTC 2011 - coolo@suse.com
+
+- let it require Mouse, even though it's not technically correct
+
+-------------------------------------------------------------------
+Fri Nov 18 11:42:31 UTC 2011 - coolo@suse.com
+
+- update to 0.18
+  * Try to cope with broken smokers better by recording a Moose
+    prereq when it is used. (Chris Williams)
+    - see https://rt.cpan.org/Public/Bug/Display.html?id=72043
+
+-------------------------------------------------------------------
+Mon Sep 19 07:39:30 UTC 2011 - coolo@suse.com
+
+- updated to 0.17
+  * Better indicate that this module is dynamically configured.
+    - fixes [rt.cpan.org #70996]
+  * If you have Moose installed you no longer get the Mouse dependency (rjbs, reported by andk)
+     Any::Moose has long had both runtime and test support for Moose
+     without Mouse, but the toolchain has not, until recently, been
+     good enough to handle alternatives. This change is designed
+     to affect very few people.
+    - fixes [rt.cpan.org #70597]
+
+-------------------------------------------------------------------
+Sat Jun 11 00:28:50 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.15:
+  * Standardize the tests' Mouse/Moose loading eval/skip code
+    (Sartak, reported by Daniel Macks)
+    - fixes [rt.cpan.org #68657]
+
+-------------------------------------------------------------------
+Mon May 30 15:11:11 UTC 2011 - coolo@novell.com
+
+- updated to 0.14
+  * fixes in test cases
+
+-------------------------------------------------------------------
+Sun Feb  6 10:02:39 UTC 2011 - coolo@novell.com
+
+- take out dependency on Mouse to avoid huge dependency list
+
+-------------------------------------------------------------------
+Sat Jan 22 19:46:28 UTC 2011 - coolo@novell.com
+
+- update to 0.13:
+ * Add load_first_existing_class (gfx)
+
+-------------------------------------------------------------------
+Wed Dec  1 11:45:45 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Apr  9 23:55:52 UTC 2010 - lars@linux-schulserver.de
+
+- update to 0.12:
+  + Slight performance improvements for is_class_loaded,
+    lazily loading Carp, etc
+  + Document $ENV{ANY_MOOSE}
+  + Alias class_of and more functions
+
+-------------------------------------------------------------------
+Sat Dec 26 19:27:48 UTC 2009 - lars@linux-schulserver.de
+
+- initial version 0.11
+

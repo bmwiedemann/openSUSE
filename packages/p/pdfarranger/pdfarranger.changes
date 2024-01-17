@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Sun Dec 24 13:49:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.1
+  * Fix for Python 3.12
+
+-------------------------------------------------------------------
+Mon Sep  4 21:57:01 BST 2023 - Cimbali <me@cimba.li>
+
+- Update to 1.10.0
+
+  * No longer use python-distutils-extra (#853, #859)
+  * Add support for merging pages (#847, #440)
+  * Add support for pasting a page as overlay & underlay (#832,
+    #530, #839)
+  * Scroll the view after deleting pages (#501, #821)
+  * Scroll horizontally with shift + mouse scroll wheel (#816,
+    #811)
+  * Fix unit/scaling issue when printing on Windows (#809, #806)
+  * Show config file location in preferences dialog (#852)
+  * Add a dialog where language can be selected (#706, #779, #849,
+    #852)
+  * Allow to force dark or light theme in the preferences (#788)
+  * No longer forget file name to save when closing window (#744)
+  * Improve multi-export workflow (#758, #760, #782, #794)
+
+-------------------------------------------------------------------
+Tue Nov 29 09:21:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.9.2
+
+  * Fix "export all to individual files" overwrite
+  * Fix unexpected application close and quit
+  * Fix buggy export when CropBox is larger than MediaBox
+  * Fix equal page size test in generate booklet
+  * Fix NAME in man page
+  * Some translation fixes
+
+-------------------------------------------------------------------
+Wed Oct 12 04:05:37 UTC 2022 - C J <c.j@tuta.io>
+
+- Update to 1.9.1:
+  * Support for PikePDF 6 and so qpdf 11 (#716)
+  * Fix a bug in booklet creation (#720)
+  * Some translation update
+
+- Version 1.9.0
+  * Many improvements and fixes in the icon view (#505, #506, #612,
+    #629, #632, #637, #654, #670)
+  * Remember previous file chooser location (#508)
+  * Add close and open actions (#581, #593, #597)
+  * Increase I/O performance and responsiveness (#542, #623)
+  * Add option to set language in Windows (#578)
+  * Add support for pasting an image from clipboard (#675)
+  * Pan the view when pressing mouse wheel and moving mouse (#677)
+  * Add fullscreen mode (#665)
+  * Allow to print the document (#647)
+  * Require GTK >= 3.20 because of a new file chooser on Windows
+    (#704)
+  * State that pikepdf 6 is not yet supported (#716)
+
+-------------------------------------------------------------------
+Tue Sep 13 17:17:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add missing typelib-1_0-Gtk-3_0 requirement
+
+-------------------------------------------------------------------
+Sun Mar 20 08:33:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.8.2:
+  * Fix 2 bugs in scaled pages export
+
+-------------------------------------------------------------------
+Mon Dec 13 10:08:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.8.1
+  * Fix transformation (rotation, crop, split, ...) of duplicated
+    pages
+  * Fix some UI glitches
+  * Update some translations
+  * Set minimum pikepdf version to 1.17.0
+  * Fix import of PDF with CropBox
+  * Fix clipboard on Wayland
+  * Remember window position on screen
+  * Fix error with annotations on duplicated pages
+
+-------------------------------------------------------------------
+Mon Apr 12 10:30:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.7.1
+  * Fix "TypeError: only pages can be inserted" with
+    libqpdf >= 10.2.0 & pikepdf < 2.7.0
+  * Display imported files in alphabetical order
+  * Release memory after rendering and deleting pages
+  * Installation instructions for FreeBSD
+  * Fix a segfault on "crop white borders" while rendering thumbnails
+  * Allow PDF Arranger to be recognized as a handler for all image
+    MIME type that it can handle
+  * Fix min & max zoom level limits
+  * Fix issue with pages copied with ctrl + dnd
+  * Fix displayed page range when using paste before
+
+-------------------------------------------------------------------
+Mon Feb  1 09:10:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.7.0
+  * Allow to edit Keywords, Subjects and dates in document info
+  * Ctrl+click now remove a single page from the selection
+  * Allow selection of odd or even pages
+  * Add option to crop white borders
+  * Allow export to individual files
+  * Enable autoscroll when rubberband selecting
+  * Display the current selection in the status bar
+  * Fix import of images with alpha channel
+  * Allow to scroll the view with up/down & page up/down keys
+  * Allow to zoom to full page
+  * Add option to select all pages from same file
+  * Fix visual issue in dialogs
+  * Improve responsiveness when scrolling zoom levels
+  * Change behavior when selecting with shift + click
+  * Select a continuous range when drag-selecting
+  * Add page scaling
+  * Allow to customize keyboard shortcut from the configuration file
+  * Add option to select all pages with the same page format
+  * Add 'new' button to open new document
+  * Support import of encrypted PDF file
+  * Allow to insert blank pages
+  * Split Page now support n x m split instead of just 1 x 2
+  * Reduce memory usage
+  * Fix the shortcut created by the Windows MSI installer
+  * Problems with editing if not saving after each operation
+  * Fix slow paste-interleave-odd/even
+
+-------------------------------------------------------------------
+Fri Aug 28 07:12:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.6.2. Changes since version 1.5.3:
+  * Remove an invalid key from the .desktop file
+  * Fix empty string support in the property editor
+  * Grey out paste actions if nothing is in the clipboard
+  * Improve iconview look and feel
+  * Support image file import
+  * Ask user confirmation before quit
+  * New application icon
+  * Insert pages of a PDF at drop location
+  * Support page drag and drop on Windows
+  * Support Copy/Paste from a file explorer
+  * Recommend pikepdf >= 1.15.1
+  * Update some translations
+- Update description
+
+-------------------------------------------------------------------
+Sun Apr 19 14:32:48 UTC 2020 - Karl Cheng <qantas94heavy@gmail.com>
+
+- Initial build of version 1.5.3

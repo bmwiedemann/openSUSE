@@ -1,0 +1,21 @@
+<package name="perl-Text-Levenshtein" project="openSUSE:Factory">
+  <title>An implementation of the Levenshtein edit distance</title>
+  <description>This module implements the Levenshtein edit distance. The Levenshtein edit
+distance is a measure of the degree of proximity between two strings. This
+distance is the number of substitutions, deletions or insertions (&quot;edits&quot;)
+needed to transform one string into the other one (and vice versa). When two
+strings have distance 0, they are the same. A good point to start is:
+&lt;http://www.merriampark.com/ld.htm&gt;
+
+&amp;fastdistance can be called with two scalars and is faster in most cases.
+
+See also Text::LevenshteinXS on CPAN if you do not require a perl-only
+implementation. It is extremely faster in nearly all cases.
+
+See also Text::WagnerFischer on CPAN for a configurable edit distance, i.e. for
+configurable costs (weights) for the edits.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Text-Levenshtein"/>
+  <url>http://search.cpan.org/dist/Text-Levenshtein</url>
+</package>

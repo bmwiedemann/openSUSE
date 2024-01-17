@@ -1,0 +1,201 @@
+-------------------------------------------------------------------
+Mon May 22 21:51:10 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Use _service mode manual as better alias name than disabled
+
+-------------------------------------------------------------------
+Mon May 22 20:39:51 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.8.1+git64.24c3369:
+  * Add installation instructions for Gentoo Linux
+  * build(deps): bump golang.org/x/term from 0.6.0 to 0.7.0
+  * build(deps): bump golang.org/x/sys from 0.6.0 to 0.7.0
+  * build(deps): bump actions/setup-go from 3.5.0 to 4.0.0
+  * fix readme build badge
+  * build(deps): bump github.com/muesli/termenv from 0.14.0 to 0.15.1
+  * build(deps): bump golang.org/x/term
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.4.3 to 6.4.6
+  * chore: bump Go to 1.17
+  * build(deps): bump goreleaser/goreleaser-action from 3 to 4
+  * build(deps): bump actions/setup-go from 3.4.0 to 3.5.0
+  * build(deps): bump github.com/muesli/termenv from 0.13.0 to 0.14.0
+  * build(deps): bump actions/setup-go from 3.3.1 to 3.4.0
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.4.2 to 6.4.3
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.4.0 to 6.4.2
+  * run code through gofumpt and correct gopls warnings
+  * Bump actions/setup-go from 3.3.0 to 3.3.1
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.3.9 to 6.4.0
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.3.8 to 6.3.9
+  * chore: bump required Go version
+  * chore: x/sys API change
+  * Bump github.com/muesli/termenv from 0.12.0 to 0.13.0
+  * Bump github.com/muesli/mango from 0.1.0 to 0.2.0
+  * Bump github.com/muesli/termenv from 0.11.0 to 0.12.0
+  * Bump actions/setup-go from 3.2.0 to 3.3.0
+  * Bump github.com/mattn/go-runewidth from 0.0.13 to 0.0.14
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.3.4 to 6.3.8
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.3.3 to 6.3.4
+  * docs: update ubuntu and debian versions
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.3.2 to 6.3.3
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.3.1 to 6.3.2
+  * Bump actions/setup-go from 3.1.0 to 3.2.0
+  * Bump goreleaser/goreleaser-action from 2 to 3
+  * Bump actions/setup-go from 2 to 3.1.0
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.2.5 to 6.3.1
+  * Bump actions/checkout from 2 to 3
+  * Bump golangci/golangci-lint-action from 2 to 3
+
+-------------------------------------------------------------------
+Mon Feb 07 23:50:25 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.8.1:
+  * Update README badges
+  * Add godoc comments and fix linter warnings
+  * Add separate sets of hard- and soft-enforced linters
+  * docs: update man page
+  * Unalias term package
+  * Fix mountinfo parsing #153 (#154)
+  * docs: update man page
+  * Add Debian & Ubuntu installation instructions
+  * docs: update man page
+  * Bump go-wildcard to v1.0.3
+  * docs: update man page
+  * Bump mango to v0.1.0
+
+-------------------------------------------------------------------
+Sun Feb 06 22:45:32 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version 0.8.0:
+  * docs: update man page
+  * Bump go-wildcard to v1.0.3
+  * docs: update man page
+  * Bump mango to v0.1.0
+
+-------------------------------------------------------------------
+Wed Feb 02 14:58:25 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version 0.8.0:
+  * docs: update man page
+  * Fix manpage workflow branch
+  * Add 'ansi' theme that uses the terminal's native 4-bit ANSI colors
+  * Add Go 1.17 build tags
+  * Bump github.com/jedib0t/go-pretty/v6 from 6.2.4 to 6.2.5
+  * table: rename inode-related columns to clarify difference between bytes and inodes. Fixes #94
+  * Add dependabot config
+  * Generate man page when built with 'mango' build-tag
+  * Add mango-generated man page
+  * Bump termenv to v0.11.0
+
+-------------------------------------------------------------------
+Sun Jan 23 15:28:20 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version 0.7.0:
+  * Update go-wilcard lib #156
+
+-------------------------------------------------------------------
+Sun Jan 09 13:50:29 UTC 2022 - pousaduarte@gmail.com
+
+- Update to version 0.7.0:
+  * Add feedback paragraph to README
+
+-------------------------------------------------------------------
+Sun Dec 26 12:38:09 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 0.6.2:
+  * Document color-coding/threshold options in README
+  * add availability and usage threhold option
+  * Add install instructions on OpenBSD
+  * Remove unmaintained snap package
+  * Bump go-pretty to v6.2.4
+
+-------------------------------------------------------------------
+Sun Oct 31 00:04:39 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 0.6.2:
+  * Add installation instructions for Void Linux
+
+-------------------------------------------------------------------
+Fri Oct 08 19:21:36 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 0.6.2:
+  * Update Arch Linux install, in official repos now
+  * Bump termenv & go-runewidth deps
+  * Fix goreportcard badge
+  * Replace deprecated terminal package (#126)
+  * Hide/show mount points (#107)
+  * Add manpage
+
+-------------------------------------------------------------------
+Sun May 16 16:58:38 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 0.6.2:
+  * Bump termenv to v0.8.1
+  * Create snapcraft cache dirs
+  * Only login to snapcraft when secret is available in goreleaser workflow
+  * Always use latest version of golangci-lint
+  * Mark arch-specific conversions as nolint
+  * Update README
+  * Update linter config
+  * Use a classic confinement for snap builds
+  * Add FUSECTL_SUPER_MAGIC to special devices map
+  * Build snaps with goreleaser
+  * Ignore snaps by default on Linux
+  * Add gopsutil's LICENSE
+  * Add snap to README
+  * gofmt style.go
+  * Bump termenv dependency
+
+-------------------------------------------------------------------
+Sun Feb 07 00:31:15 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 0.6.0:
+  * Bump go-runewidth to v0.0.10
+  * Build binary for ppc64le architecture
+  * duf gets packaged by Homebrew now
+  * README: add instructions for installing via scoop (#96)
+  * Feat recognize ramdisk (#91)
+  * Check rune width for all supported system to prevent broken table
+  * Evaluate symlinks in paths passed in as user arguments
+
+-------------------------------------------------------------------
+Sun Nov 01 14:08:05 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 0.5.0:
+  * Move group consts to groups.go
+  * Validate --only & --hide parameters
+  * Add support for path arguments to filter output
+  * Add nsfs to special devices
+  * Hide overlay/shm filesystems per default
+  * Structure all filter & table options in separate structs
+  * Fix order of mount tables
+  * Add only* flags to show only specified devices (#80)
+  * Automatically pick go version in GitHub workflow
+  * Use EnvColorProfile
+  * Remove unnecessary type coversions
+  * Remove always nil error handling
+  * warning option
+  * [Linux] fix escaped type & filesystem
+  * Mention Alpine packages in README
+  * Update screenshot
+  * Improve version string display
+
+-------------------------------------------------------------------
+Fri Oct 23 23:28:32 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 0.4.0:
+  * Automatically pick go version in GitHub workflow
+
+-------------------------------------------------------------------
+Mon Oct 19 16:41:30 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version 0.4.0~git20201018:
+  * Use EnvColorProfile
+  * Remove unnecessary type coversions
+  * Remove always nil error handling
+  * warning option
+  * [Linux] fix escaped type & filesystem
+  * Mention Alpine packages in README
+  * Update screenshot
+  * Improve version string display
+  * Builds apk packages with goreleaser
+  * Disable CGO and enable trimpath for goreleaser builds

@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Oct  3 08:29:17 UTC 2017 - jengelh@inai.de
+
+- Update summaries. Replace ancient RPM macros by new constructs.
+
+-------------------------------------------------------------------
+Sat Aug 19 10:48:42 UTC 2017 - seife+obs@b1-systems.com
+
+- update to version 0.3.2:
+  * Fix ``keybinder_bind`` and others to not crash on non-X11
+    displays. It simply returns FALSE, failing to bind the key.
+  * Add new API:
+    gboolean keybinder_supported()
+    Return TRUE if on key bindings are implemented for this
+    configuration.
+  * Fix deprecated directives in build system
+
+-------------------------------------------------------------------
+Sun Dec 25 14:24:04 UTC 2016 - seife+obs@b1-systems.com
+
+- update to vesion 0.3.1
+- rename package to keybinder-3.0
+- fix version number (it's 0.3.1, not 3.0)
+- ugly obsoletes hacks to fix that versioning error
+
+-------------------------------------------------------------------
+Fri Aug  8 14:02:08 UTC 2014 - malcolmlewis@opensuse.org
+
+- Clean up spec file for inclusion into factory.
+
+-------------------------------------------------------------------
+Wed Oct 30 17:41:55 UTC 2013 - rsalevsky@suse.com
+
+- Create package.
+

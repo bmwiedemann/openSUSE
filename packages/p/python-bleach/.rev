@@ -1,0 +1,241 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ae5b6f8bbbd5d015a342d2a6a7e7a02</srcmd5>
+    <version>2.0.0</version>
+    <time>1494345837</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-jupyter_nbconvert, which is already in openSUSE:Factory.</comment>
+    <requestid>493464</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21b56f8ea9157af84663a37701cb2a20</srcmd5>
+    <version>2.1.1</version>
+    <time>1510761469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541217</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1618ff5740838828ab5ccaa24c98c2bb</srcmd5>
+    <version>2.1.2</version>
+    <time>1513014992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555534</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e803ac7534e2e3471a5d975b316bd79</srcmd5>
+    <version>2.1.3</version>
+    <time>1521579671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589030</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>dcd262f7b58f7e7de15de943ca1492a4</srcmd5>
+    <version>2.1.3</version>
+    <time>1544726835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655395</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a15a01f2a87656193a610a6e0dbb4fb0</srcmd5>
+    <version>3.1.0</version>
+    <time>1551687824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681085</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>172e2a20ef68f1244b04c93a38628202</srcmd5>
+    <version>3.1.0</version>
+    <time>1564484563</time>
+    <user>dimstar_suse</user>
+    <comment>- Restrict pytest to &lt;5.0; upstream has an issue already reported</comment>
+    <requestid>717075</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9d91ff4a56493a320b428c71a65ecd31</srcmd5>
+    <version>3.1.1</version>
+    <time>1583702520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780475</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>110286515b5ec32dbf5101bef42d332c</srcmd5>
+    <version>3.1.3</version>
+    <time>1585265299</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.3 (bsc#1167379):
+  * Add relative link to code of conduct. (#442)
+  * Drop deprecated 'setup.py test' support. (#507)
+  * Fix typo: curren -&gt; current in tests/test_clean.py (#504)
+  * Test on PyPy 7
+  * Drop test support for end of life Python 3.4
+  * ``bleach.clean`` behavior parsing embedded MathML and SVG content
+    with RCDATA tags did not match browser behavior and could result in
+    a mutation XSS.
+    Calls to ``bleach.clean`` with ``strip=False`` and ``math`` or
+    ``svg`` tags and one or more of the RCDATA tags ``script``,
+    ``noscript``, ``style``, ``noframes``, ``iframe``, ``noembed``, or
+    ``xmp`` in the allowed tags whitelist were vulnerable to a mutation
+    XSS.
+    This security issue was confirmed in Bleach version v3.1.1. Earlier
+    versions are likely affected too.</comment>
+    <requestid>787398</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fcb7dfca20cabcae1464f3b1ff484b98</srcmd5>
+    <version>3.1.4</version>
+    <time>1586112707</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.4 (bsc#1168280, CVE-2020-6817):
+  * ``bleach.clean`` behavior parsing style attributes could result in a
+    regular expression denial of service (ReDoS).
+    Calls to ``bleach.clean`` with an allowed tag with an allowed
+    ``style`` attribute were vulnerable to ReDoS. For example,
+    ``bleach.clean(..., attributes={'a': ['style']})``.
+  * Style attributes with dashes, or single or double quoted values are
+    cleaned instead of passed through.
+
+- update to 3.1.3 (bsc#1167379, CVE-2020-6816):</comment>
+    <requestid>790549</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8f8fbfce6fecde2ab345c00323d1bdca</srcmd5>
+    <version>3.1.5</version>
+    <time>1588971724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.5:
+  * * replace missing ``setuptools`` dependency with ``packaging``. Thank you Benjamin Peterson.</comment>
+    <requestid>800583</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ca4cccccfc4e7cc7d70a428f8c2638f1</srcmd5>
+    <version>3.1.5</version>
+    <time>1599210175</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests that fail with html5lib 1.1 ref the upstream ticket
+
+  * replace missing ``setuptools`` dependency with ``packaging``. Thank you Benjamin Peterson.</comment>
+    <requestid>830713</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>768ab1012d81730dc6e3b30d2977e429</srcmd5>
+    <version>3.3.0</version>
+    <time>1618398310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884911</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>73dff6d334d5848e9faef741009df8e9</srcmd5>
+    <version>5.0.1</version>
+    <time>1664638958</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 5.0.1:
+  * Add missing comma to tinycss2 require. Thank you, @shadchin!
+  * Add url parse tests based on wpt url tests. (#688)
+  * Support scheme-less urls if &quot;https&quot; is in allow list. (#662)
+  * Handle escaping ``&lt;`` in edge cases where it doesn't start a tag. (#544)
+  * Correctly urlencode email address parts. Thank you, @larseggert! (#659)
+  * ``clean`` and ``linkify`` now preserve the order of HTML attributes.
+  * Drop support for Python 3.6. Thank you, @hugovk! (#629)
+  * CSS sanitization in style tags is completely different now.
+  * Python 3.9 support
+  * Drop support for unsupported Python versions &lt;3.6. (#520)
+  * add more tests for CVE-2021-23980 / GHSA-vv2x-vrpj-qqpq
+- Refresh de-vendor.patch, and convert to patch level 1</comment>
+    <requestid>1006839</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0c4aeabe1e57d91031d9e38b2988d300</srcmd5>
+    <version>5.0.1</version>
+    <time>1667579500</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed python-six dependency
+- Remove python_module macro definition
+- More specific python_sitelib in files
+</comment>
+    <requestid>1033010</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e03d54a09be085e488110b6be428baaf</srcmd5>
+    <version>5.0.1</version>
+    <time>1679766913</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed dependency python-packaging</comment>
+    <requestid>1074154</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>a9355d1af32df9a1dae71e956eb52db7</srcmd5>
+    <version>5.0.1</version>
+    <time>1682193707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081979</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4798421898f12aeee37a35d7e2ba7766</srcmd5>
+    <version>6.0.0</version>
+    <time>1683630483</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.0:
+  * bleach.clean, bleach.sanitizer.Cleaner,
+    bleach.html5lib_shim.BleachHTMLParser: the tags and protocols
+    arguments were changed from lists to sets.
+  * bleach.linkify, bleach.linkifier.Linker: the skip_tags and
+    recognized_tags arguments were changed from lists to sets.
+  * bleach.sanitizer.BleachSanitizerFilter: strip_allowed_elements is
+    now strip_allowed_tags. We now use “tags” everywhere rather than a
+    mishmash of “tags” in some places and “elements” in others.
+  # Bug fixes
+  * Add support for Python 3.11. (#675)
+  * Fix API weirness in BleachSanitizerFilter. (#649)
+  * We’re using “tags” instead of “elements” everywhere–no more weird
+    overloading of “elements” anymore.
+  * Also, it no longer calls the superclass constructor.
+  * Add warning when css_sanitizer isn’t set, but the style attribute
+    is allowed. (#676)
+  * Fix linkify handling of character entities. (#501)
+  * Rework dev dependencies to use requirements-dev.txt and
+    requirements-flake8.txt instead of extras.
+  * Fix project infrastructure to be tox-based so it’s easier to have
+    CI run the same things we’re running in development and with
+    flake8 in an isolated environment.
+  * Update action versions in CI.
+  * Switch to f-strings where possible. Make tests parametrized to be
+    easier to read/maintain.
+</comment>
+    <requestid>1085516</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>93205a0fb0b42cec4f1c26621cb73896</srcmd5>
+    <version>6.0.0</version>
+    <time>1688147906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096012</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e4972bbd7401b13257d31cf08b5b0738</srcmd5>
+    <version>6.1.0</version>
+    <time>1698604788</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.0:
+  * Dropped support for Python 3.7.
+  * Add support for Python 3.12.
+  * Fix linkify with arrays in querystring
+  * Handle more cases with &lt; followed by character data
+  * Fix entities inside a tags in linkification
+  * Update cap for tinycss2 to &lt;1.3
+  * Updated Sphinx requirement
+  * Add dependabot for github actions and update github actions
+
+- Update to V3.1.1: Security update for CVE-2020-6802
+  * CVE-2020-6802: Fixed mutation XSS vulnerabilities (bsc#1165303).</comment>
+    <requestid>1120892</requestid>
+  </revision>
+</revisionlist>

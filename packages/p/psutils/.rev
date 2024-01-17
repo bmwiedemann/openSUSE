@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="869">
+    <srcmd5>212469ab6865668c7ed8515771fda12c</srcmd5>
+    <version>p17</version>
+    <time>1168904016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1001">
+    <srcmd5>212469ab6865668c7ed8515771fda12c</srcmd5>
+    <version>p17</version>
+    <time>1168904016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1002">
+    <srcmd5>1ea503c0a7b8a326cb55a5c36f66f637</srcmd5>
+    <version>p17</version>
+    <time>1224729891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1004">
+    <srcmd5>1ea503c0a7b8a326cb55a5c36f66f637</srcmd5>
+    <version>p17</version>
+    <time>1224729891</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1005">
+    <srcmd5>5101de4798fa6d2a980fba9e5719494b</srcmd5>
+    <version>p17</version>
+    <time>1263223360</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/psutils based on submit request 29037 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="6" vrev="1006">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1268925805</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1008">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1009">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1012">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="1014">
+    <srcmd5>9c5a4e75ecf230af67b9f88138c579b4</srcmd5>
+    <version>p17</version>
+    <time>1319182373</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="1015">
+    <srcmd5>966491bd4d8f504881ad63ba0df7d518</srcmd5>
+    <version>p17</version>
+    <time>1323194022</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="1017">
+    <srcmd5>966491bd4d8f504881ad63ba0df7d518</srcmd5>
+    <version>p17</version>
+    <time>1340184022</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1019">
+    <srcmd5>966491bd4d8f504881ad63ba0df7d518</srcmd5>
+    <version>p17</version>
+    <time>1359109963</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1020">
+    <srcmd5>d88a1001ba09d3cc0bdc185b8157dfb9</srcmd5>
+    <version>p17</version>
+    <time>1365928637</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162852 from namtrac)</comment>
+    <requestid>162889</requestid>
+  </revision>
+  <revision rev="15" vrev="1022">
+    <srcmd5>d88a1001ba09d3cc0bdc185b8157dfb9</srcmd5>
+    <version>p17</version>
+    <time>1379664083</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1024">
+    <srcmd5>d88a1001ba09d3cc0bdc185b8157dfb9</srcmd5>
+    <version>p17</version>
+    <time>1409302763</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>47cfa7909b299e84a119909fa445ff6d</srcmd5>
+    <version>2.03</version>
+    <time>1601043860</time>
+    <user>dimstar_suse</user>
+    <comment>- The previous update makes trhe patches
+  * psutils-flip.dif (is part of upstream now)
+  * psutils-p17.dif (does not apply due move from C to perl)
+  * psutils-pserror.dif (does not apply due move from C to perl)
+  obsolete
+
+- Update to v2.03 (no changelog)</comment>
+    <requestid>836008</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a43e2f05b29a945a9d24cb02eaea6973</srcmd5>
+    <version>2.04</version>
+    <time>1612466531</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.04:
+  * pstops: fix ability to use paper size in x/y offsets
+  * pstops: fix a warning (forwarded request 867999 from dirkmueller)</comment>
+    <requestid>868294</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>079259d953a9e47bfd6c83f69c37862e</srcmd5>
+    <version>2.08</version>
+    <time>1647199498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.08:
+  * man pages: names of programs should always start with
+    lower-case letter
+  * PSUtils.pm: update invocation of paper, and improve parsing of
+    output
+- Changes from 2.07:
+  * PSUtils.pm: add trailing colon to certain DSC keywords
+- Changes from 2.06:
+  * Fix normalization of rotations in pagespecs
+  * PSUtils.pm: in parsepaper, don’t pass empty string to
+    singledimension
+- Changes from 2.05:
+  * PSUtils.pm: print the culprit when we get a bad dimension
+  * Make programs use bindir prefix when running each other
+  * Fix a bug in test harness: don’t distribute built file
+    pre-inst-env
+  * tests: remove accidentally-added file
+  * Makefile.am: don’t echo an echo command in “make loc”
+- Use current macros. (forwarded request 960755 from iznogood)</comment>
+    <requestid>960767</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>14f50800df2895fc4a359cc8caba6a8c</srcmd5>
+    <version>2.08</version>
+    <time>1661432928</time>
+    <user>dimstar_suse</user>
+    <comment>Depends on SR#998580</comment>
+    <requestid>998598</requestid>
+  </revision>
+</revisionlist>

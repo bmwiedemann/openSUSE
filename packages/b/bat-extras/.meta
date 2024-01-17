@@ -1,0 +1,6 @@
+<package name="bat-extras" project="openSUSE:Factory">
+  <title></title>
+  <description> Bash scripts that integrate &lt;tt&gt;bat&lt;/tt&gt; with various command line tools.</description>
+  <devel project="utilities" package="bat-extras"/>
+  <url>https://github.com/eth-p/bat-extras</url>
+</package>

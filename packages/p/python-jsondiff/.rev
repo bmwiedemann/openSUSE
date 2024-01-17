@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f22ea043eeb3c8338ecc71f87b64191b</srcmd5>
+    <version>1.1.1</version>
+    <time>1526488515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607074</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3056657a30ec62aa5e7c97a39ae47615</srcmd5>
+    <version>1.1.2</version>
+    <time>1558532379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703808</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>05d41d00787963ef20313a59bd107642</srcmd5>
+    <version>1.1.2</version>
+    <time>1559580966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707064</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>70bc381cff02812f0c821a8274c751d3</srcmd5>
+    <version>1.2.0</version>
+    <time>1570557432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735642</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6e588c2a9e9fb396a8fbf3b4490630d5</srcmd5>
+    <version>1.2.0</version>
+    <time>1590508131</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808778</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>85b0b1bb8aed63377451504f602aefce</srcmd5>
+    <version>1.2.0</version>
+    <time>1600079442</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_nose.patch to remove requirement for nose.
+</comment>
+    <requestid>834153</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b12e0f8ed5df0d08d0899e963d7b7d3c</srcmd5>
+    <version>1.3.0</version>
+    <time>1638918007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936286</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>da25ea89afba547d1be2892f5c376679</srcmd5>
+    <version>2.0.0</version>
+    <time>1653417215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0
+  * Removed deprecated function
+  * Remove deprecated jsondiff entry point
+- from version 1.3.1
+  * Optionally allow different escape_str than '$'
+  * Clarified the readme, closes #23
+  * Fixed readme
+- Remove jsondiff command from %install, %post, %postun and %files sections (forwarded request 978966 from glaubitz)</comment>
+    <requestid>978978</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d2445cce861f5eb249f713eb45ca30de</srcmd5>
+    <version>2.0.0</version>
+    <time>1686753014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093032</requestid>
+  </revision>
+</revisionlist>

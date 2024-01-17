@@ -1,0 +1,5 @@
+<package name="iml" project="openSUSE:Factory">
+  <title></title>
+  <description>IML package provides efficient routines to solve nonsingular systems of linear equations, certified solve any shape systems of linear equations, and perform mod p matrix operations, such as computing row-echelon form, determinant, rank profile, inverse of a mod p matrix.</description>
+  <devel project="science" package="iml"/>
+</package>

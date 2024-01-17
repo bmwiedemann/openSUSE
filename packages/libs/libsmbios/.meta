@@ -1,0 +1,6 @@
+<package name="libsmbios" project="openSUSE:Factory">
+  <title>Libraries to get information from standard BIOS tables</title>
+  <description>Libsmbios is a library and utilities that can be used by client programs
+to get information from standard BIOS tables, such as the SMBIOS table.</description>
+  <devel project="Base:System" package="libsmbios"/>
+</package>

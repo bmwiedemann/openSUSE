@@ -1,0 +1,232 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08b158b292c9a4c05d29a8f443fab109</srcmd5>
+    <version>0.9.902</version>
+    <time>1533732752</time>
+    <user>dimstar_suse</user>
+    <comment>Hi,
+
+I would like to re-add the libratbag package to Factory. For details see the mail I send to the Factory mailing list: https://lists.opensuse.org/opensuse-factory/2018-07/msg00200.html.
+
+The DBus-Service of the package has been whitelisted via boo#1076467.
+
+Kind Regards,
+Matthias</comment>
+    <requestid>627184</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a065b9591586f16b0b16f52d4d2a6b89</srcmd5>
+    <version>0.9.903</version>
+    <time>1539758603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.903:
+  * Adds GetSvgFd() function on D-BUS required by Piper
+  * Add a --version commandline argument ratbagd
+  * Added support for the Steelseries Sensei Raw
+  * Added support for the Logitech G600
+  * Added support for the Logitech G302</comment>
+    <requestid>642494</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d8e286388e3441d2cc7a4acfe5d231f3</srcmd5>
+    <version>0.9.904</version>
+    <time>1549018002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.904:
+  * Added Devices:
+    + Logitech G PowerPlay
+    + Logitech G Pro
+    + Logitech G402
+    + Logitech G502 HERO
+    + Logitech MX Anywhere 2
+    + Logitech MX Anywhere 2S
+    + Logitech MX Master 2S
+    + Steelseries Rival 600
+  * Improved Devices:
+    + All supported Roccat Devices
+    + Logitech G102/203
+    + Logitech G502
+    + Logitech G600
+    + Logitech G603
+    + Logitech G903
+    + Logitech MX Master
+  * Improved error messages provided by the command line tools.</comment>
+    <requestid>670155</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>592bbb8b5ea5fa19d0ad3c841cce203c</srcmd5>
+    <version>0.9.905</version>
+    <time>1554115182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690173</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df6a2f721b1d3df1162c221c1fe2ed94</srcmd5>
+    <version>0.10</version>
+    <time>1565694881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10:
+  * Switched back to &quot;normal&quot; version numbering
+  * Added APIVersion field to the DBus API
+  * Added Devices:
+    + Logitech MX Vertical
+  * G700s is now handled as G700. This may have side effects and
+    will be addressed in future versions.
+- Dropped no longer required patch no-git.diff.
+- Updated shebang-env.diff.
+- Updated install-daemon-into-sbindir.patch.
+- Dropped fix-broken-log-invocation.patch which is now fixed
+  upstream.
+
+- Update to version 0.9.906:
+  * Added Devices:
+    + Logitech G403 Wireless
+    + Logitech G403 Hero
+    + Logitech G703 Hero
+    + Logitech G903 Hero
+    + Logitech Marathon M705
+    + Logitech MX Anyhwere 2S Bluetooth
+    + Logitech MX Ergo
+    + Logitech MX518
+  * Improved Devices:
+    + Logitech G Pro
+    + Logitech G602
+    + Logitech G603
+    + Logitech G900
+    + Logitech MX Anyhwere 2
+  * Renamed Devices</comment>
+    <requestid>720731</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d7ce985634f4079c1601fbc94753c22c</srcmd5>
+    <version>0.11</version>
+    <time>1573556173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11:
+  * Added and improved devices:
+    + Logitech MX Master, MX Master 3, MX Master AMZ
+    + Logitech G305
+    + Logitech G502 Hero wireless
+    + Logitech G602, G604
+    + Steelseries Kinzu v3</comment>
+    <requestid>747443</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8539de71ed0bc26bfd33218c1f46db5a</srcmd5>
+    <version>0.12</version>
+    <time>1577705742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760020</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5a81bf889a3147f266432efd4db77201</srcmd5>
+    <version>0.13</version>
+    <time>1581801936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13:
+  * Fixed bug that was preventing users from changing the settings
+    of  devices from Logitech's productivity line.
+  * Give a more specific error message if user cannot reach ratbagd
+    via D-BUS [boo#1150413]
+  * Added support for keyboards:
+    + Logitech G513
+    + Logitech G815
+    + Logitech G910
+    + Logitech G915
+  * Other added and improved devices:
+    + Logitech G Powerplay
+    * Logitech M590
+- Updated shebang-env.diff to properly apply to the new version.
+</comment>
+    <requestid>774551</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fc472a89dbb3a489419590d5c5d18c9e</srcmd5>
+    <version>0.14</version>
+    <time>1590506527</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.14:
+  * A few bugfixes and some improvements in the log messages.
+  * Added and improved devices:
+    + Logitech G305
+    + Logitech G402
+    + Logitech G935
+    + Logitech M720
+    + Logitech MX Anywhere 2
+    + Logitech M590</comment>
+    <requestid>808524</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>21361a5dcc2a06018e0e8fe46402546c</srcmd5>
+    <version>0.15</version>
+    <time>1601296125</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15:
+  * Added or improved devices:
+    + Logitech G5
+    + Logitech G203
+    + Logitech G300
+    + Logitech G9x
+    + Logitech MX Vertical
+    + Nubwo X7 Spectrum
+    + Roccat Kone Pure
+    + Sinowealth</comment>
+    <requestid>837934</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>63768fc8951a81a2984a67799bb1bc8a</srcmd5>
+    <version>0.15</version>
+    <time>1609532025</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859594</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9c4fbcaa8398312d02602108fb3d81e1</srcmd5>
+    <version>0.16</version>
+    <time>1624626086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.16:
+  * Events are now scheduled as soon as possible
+  * Improvements to the sinowealth driver
+  * Added support for a few devices:
+    + Logitech G915 TKL
+    + Logitech G Pro X Wireless (only via USB connection)
+    + Logitech M545
+    + Logitech M500s
+    + SteelSeries Kinzu V2 Pro Edition
+    + Roccat Kone Pure SEL
+    + openinput devices</comment>
+    <requestid>902204</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0d548ff86ada9aafa320d6d31a66fab9</srcmd5>
+    <version>0.16</version>
+    <time>1634331877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925532</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9ed58e205644b00b45826980ca982715</srcmd5>
+    <version>0.17</version>
+    <time>1668086582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034951</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7fe62229047660ed1548584fb9d4a830</srcmd5>
+    <version>0.17</version>
+    <time>1683916629</time>
+    <user>dimstar_suse</user>
+    <comment>- Document the need for users of ratbagd to be a member of the
+  group games (bsc#1210669)
+  * In description of ratbagd package
+  * In the new README.SUSE file of the ratbagd package.
+- Switch package to using %autosetup</comment>
+    <requestid>1086539</requestid>
+  </revision>
+</revisionlist>

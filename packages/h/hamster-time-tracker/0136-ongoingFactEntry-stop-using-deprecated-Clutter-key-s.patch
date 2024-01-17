@@ -1,0 +1,28 @@
+From ae52cc8c30cb36bdf28b3a5ead54914483156f1a Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 28 Apr 2020 16:56:00 +0200
+Subject: [PATCH 136/147] ongoingFactEntry: stop using deprecated Clutter key
+ symbols
+
+"Clutter.Backspace" must be replaced by "Clutter.KEY_BackSpace", etc.
+See https://github.com/GNOME/gnome-shell/commit/d3d165243c8457cc65e8864cee493f27fca15d59/
+---
+ extension/widgets/ongoingFactEntry.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/extension/widgets/ongoingFactEntry.js b/extension/widgets/ongoingFactEntry.js
+index 688aa6b..00d24ac 100644
+--- a/extension/widgets/ongoingFactEntry.js
++++ b/extension/widgets/ongoingFactEntry.js
+@@ -88,7 +88,7 @@ class OngoingFactEntry extends St.Entry {
+          * Check if the passed key is on our list of keys to be ignored.
+          */
+         function checkIfIgnoredKey(key) {
+-            let ignoreKeys = [Clutter.BackSpace, Clutter.Delete, Clutter.Escape];
++            let ignoreKeys = [Clutter.KEY_BackSpace, Clutter.KEY_Delete, Clutter.KEY_Escape];
+             // Looks like there is realy no ``Array.includes()`` available as
+             // of now.
+             let result = ignoreKeys.indexOf(key);
+-- 
+2.31.1
+

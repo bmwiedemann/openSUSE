@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Thu Dec  8 16:26:54 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.12.0:
+  * add tunnels (like SSH local forwarding)
+  * fix fake ip pool offset calculated 
+  * migration to go1.19
+  * reduce dhcp dns client cost
+  * fix: query string parse on ws-opts
+  * fix: handle parse socks5 udp address correctly
+  * satisfy RFC4343 - DNS case insensitivity
+  * custom-specific interface can be set on nameserver
+  * support snell v3
+  * ignore empty dns server error
+
+-------------------------------------------------------------------
+Mon Jan 03 14:54:25 UTC 2022 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 1.9.0:
+  * Chore: update dependencies
+  * Fix: multiple port string parsing overflow (#1868)
+  * Chore: remove forward compatible code
+  * Chore: ReCreate* do side effect job (#1849)
+  * Chore: remove reduce regex compile (#1855)
+  * Fix: when both providers and proxies are present, use the health check configuration for proxies (#1821)
+  * Chore: builtin right mime of .js (#1808)
+  * Feature: add linux/arm/v6 for the container image (#1771)
+  * Fix: fakeip pool cycle used
+  * Fix: provider filter potential panic
+  * Feature: add filter on proxy provider (#1511)
+  * Fix: should return io.EOF immediately
+  * Change: use nop packet conn for reject
+  * Fix: revert ssr udp fix
+  * Fix: bind iface should throw control error
+
+-------------------------------------------------------------------
+Sun Dec 05 10:55:19 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 1.8.0:
+  * Fix: windows arm7 build
+  * Chore: update dependencies and rename profile props
+  * Feature: mark on socket (#1705)
+  * Fix: parse dial interface option
+  * Fix: codeql alerts
+  * Feature: dial different NIC for all proxies (#1714)
+  * Chore: adjust all udp alloc size
+  * Chore: use uber max procs
+  * Fix: remove ResponseHeaderTimeout limitation (#1690)
+  * Chore: use alpn http 1.1 only on trojan websocket by default
+
+-------------------------------------------------------------------
+Wed Aug 26 00:29:23 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 1.1.0 (20200815)
+  * Features
+    - support PROCESS-NAME
+    - add ssr support
+    - dns server could lookup hosts
+  * Changes
+    - optimized DNS cache logic
+    - add rule payload in log
+    - fix go test race detect
+    - protect alive with atomic value
+  * Bugfixes
+    - ss simple-obfs host should not have 80 port
+    - ticker leak
+    - should not write file on file provider
+    - handle snell server reported error message properly
+
+- Update to version 1.0.0 (20200627)
+  * Features
+    - add Mixed(http+socks5) proxy (#685)
+    - domain trie support wildcard alias
+    - add tolerance for utl-test
+  * Changes
+    - `mode` use lower case
+    - API for connections add rule payload
+    - dns ipv6 logic
+  * Bugfixes
+    - provider initial return the current error
+    - panic of socks5 client when missing auth
+
+-------------------------------------------------------------------
+Fri Jun 12 01:29:47 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 0.20.0 (20200507)
+  * Features
+    - add vmess http network
+    - `hosts` `fake-ip-filter` support dot dot wildcard
+    - add basic auth support for provider URL (#645)
+  * Changes
+    - recycle buffer after packet used
+    - verify mmdb on initial
+    - improve pool buffer alloc
+  * Bugfixes
+    - dns request panic
+    - udp traffic track
+    - set SO_REUSEADDR for UDP listeners on linux
+    - dns tcp-tls correctly sni
+
+-------------------------------------------------------------------
+Fri Mar  6 16:22:30 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 0.18.0 (20200221)
+  * Features
+    - improve udp NAT type
+    - add default-nameserver and outbound interface 
+  * Changes
+    - increase DNS timeout (#464)
+    - initial config with port
+    - make ping api GET / under authentication
+  * Bugfixes
+    - log display in DIRECT or GLOBAL
+    - provider should fallback to reading remote when local 
+      file invalid
+    - vmessUDPConn should return a correctly address
+    - socks5 inbound return remote udp addr for identity
+
+-------------------------------------------------------------------
+Sun Oct 13 19:57:22 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 0.16.0
+  * Features
+    - Logs and traffic API support websocket
+    - Support custom hosts
+    - Support customizing bind-address when allow-Ian is true (#255)
+    - Trace adapters when dialing (#170)
+    - Allow arbitrary order in proxy group (#89)
+    - Add read clash version API
+    - Add DNS fallback filters (#105)
+    - V2ray-plugin support disable mux
+    - Proxy group use correctly last speed test record
+    - Experimental support shell
+  * Changes
+    - Use lru cache-store fake-ip to avoid outdate
+    - Set servername to vmess with providing host in wss
+    - Speedtest with HEAD instead of GET (#259)
+    - URL-test retry behavior (#283)
+    - Throw error when CONNECT return 5xx
+  * Bugfixes
+    - Fully udp associate support (#233)
+    - Don't read yml if yaml exist and yml not exist (#253)
+    - Some udp issue (#265)
+    - Socks5 small-probability crash
+    - HTTP handle 100 Continue request correctly (#288)
+    - TCP dual-stack dial behavior (#307 #311 #325)
+    - API cors config
+    - Fakeip small-probability missing record
+
+-------------------------------------------------------------------
+Thu Jul 25 14:00:30 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- Features
+  * make the proxies order the same as the order in the config file
+  * local socks5/http(s) auth
+  * support DoH
+  * custom dns use ipv4/ipv6 dual stack when ipv6: true 
+  * improve the directly connect experience for someone who has ipv6 network
+- Changes
+  * use recommend extension .yaml and forward compatibility before 1.0 release
+  * proxy server host now resolve ip through custom dns
+  * check target is valid in rules
+  * adjust fake-ip ttl
+  * add mutex for fake-ip pool
+  * use dns for ALPN in tcp-tls nameserver
+  * log output to stdout
+- Bugfixes
+  * UDP crash in tunnel
+  * incorrect fake-ip dns ttl
+  * DNS server not recreate correctly
+  * strict ss obfs config check
+

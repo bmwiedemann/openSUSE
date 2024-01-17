@@ -1,0 +1,16 @@
+<package name="xtexit" project="openSUSE:Factory">
+  <title>Prompt on exiting X</title>
+  <description>`xtexit` sends an request to all clients to shut down. If the
+application still needs an user interaction (e.g., if a file should be
+saved) this is possible.
+
+If you answer by the affirmative, all applications will be closed. This
+method is not fully waterproof, but better than killing each and every
+client without being able to interfere.
+
+xterm applications anyway are killed immediately!
+
+If this package is installed, it will be automatically integrated into
+the sample user fvwm menu.</description>
+  <devel project="X11:Utilities" package="xtexit"/>
+</package>

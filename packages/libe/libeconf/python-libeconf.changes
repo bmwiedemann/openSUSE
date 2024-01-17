@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Nov 13 07:55:36 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Do not requires the library for the documentation
+
+------------------------------------------------------------------
+Wed Nov  8 12:45:07 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix version comparison operator
+- Remove explicit python3-base requirement
+
+-------------------------------------------------------------------
+Fri Nov 03 16:44:38 UTC 2023 - schubi@suse.com
+
+- Update to version 1.1.1:
+  * Supporting Linux Userspace API (UAPI) Group
+    chapter "Configuration Files Specification".
+    See: https://uapi-group.org/specifications/specs/
+                 configuration_files_specification/
+		 
+-------------------------------------------------------------------
+Fri Nov  3 10:12:29 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Support only Python >= 3.10. PEP 604 is used for union types
+
+-------------------------------------------------------------------
+Fri Oct 27 08:42:26 UTC 2023 - Nico Krapp <nico.krapp@suse.com>
+
+- Version 1.1.0
+  * Added tests
+  * Support all functions form libeconf 0.5.2
+  * Bug fixes

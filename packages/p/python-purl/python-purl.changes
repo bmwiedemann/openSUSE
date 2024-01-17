@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:30:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:43:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Oct 17 10:46:23 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.6
+  * Use `pytest` insteed of `nose`.
+  * Fix warning around regex string.
+- deleted patches
+  - use_pytest.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon May  4 12:41:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use pytest instead of nose
+- Add use_pytest.patch
+
+-------------------------------------------------------------------
+Sun Jun  9 15:12:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Fri Jun  7 11:51:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball for tests
+
+-------------------------------------------------------------------
+Fri Apr 12 01:13:06 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.5

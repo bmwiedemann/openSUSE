@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ae2f2ce9406e1fbb7e97abda79ad67f</srcmd5>
+    <version>20230621.5f8828b</version>
+    <time>1687722167</time>
+    <user>dimstar_suse</user>
+    <comment>New package tpm-fido is FIDO token implementation for Linux that protects the token keys by using your system's TPM. Upstream fix included to build on 32-bit systems including i586.</comment>
+    <requestid>1095220</requestid>
+  </revision>
+</revisionlist>

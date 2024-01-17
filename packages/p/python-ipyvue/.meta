@@ -1,0 +1,5 @@
+<package name="python-ipyvue" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:jupyter" package="python-ipyvue"/>
+</package>

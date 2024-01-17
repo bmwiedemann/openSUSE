@@ -1,0 +1,11 @@
+<package name="ppc64-diag" project="openSUSE:Factory">
+  <title>Linux for Power Platform Diagnostics</title>
+  <description>Platform diagnostics for Linux for Power writes events reported by the
+System p or System i platform firmware to the servicelog, provides
+automated reponses to urgent events such as environmental conditions
+and predictive failures, and provides notifications of the event to
+system administrators or connected service frameworks.	Some error log
+analysis parameters can be configured in
+/etc/ppc64-diag/ppc64-diag.config.</description>
+  <devel project="hardware" package="ppc64-diag"/>
+</package>

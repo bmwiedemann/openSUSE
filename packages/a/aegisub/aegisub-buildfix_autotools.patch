@@ -1,0 +1,11 @@
+--- Aegisub-3.3.3/build/version.sh.orig	2022-08-21 04:36:22.130688059 +0100
++++ Aegisub-3.3.3/build/version.sh	2022-08-21 04:36:30.535680238 +0100
+@@ -12,7 +12,7 @@ if ! test -d "${srcdir}/.git"; then
+     done < "${version_h_path}"
+     if test x$BUILD_GIT_VERSION_NUMBER != x -a x$BUILD_GIT_VERSION_STRING != x; then
+       export VERSION_SOURCE="from cached git_version.h"
+-      exit 0
++      return 0
+     else
+       echo "invalid git_version.h"
+       exit 2

@@ -1,0 +1,10 @@
+Index: chest-0.2.3/chest/core.py
+===================================================================
+--- chest-0.2.3.orig/chest/core.py
++++ chest-0.2.3/chest/core.py
+@@ -1,4 +1,4 @@
+-from collections import MutableMapping
++from collections.abc import MutableMapping
+ from functools import partial
+ from threading import Lock
+ from contextlib import contextmanager

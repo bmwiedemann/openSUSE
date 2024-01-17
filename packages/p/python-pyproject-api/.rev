@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f25bb3f8c4967a27f4fdb3a4a0b4d34</srcmd5>
+    <version>1.5.1</version>
+    <time>1683403783</time>
+    <user>dimstar_suse</user>
+    <comment>New dependency of python-tox</comment>
+    <requestid>1085159</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c91567cf30d8a2a7494a70c8906c2e99</srcmd5>
+    <version>1.5.4</version>
+    <time>1693383640</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.4:
+  - Exclude dependabot and pre-commit ci from release notes
+  - Bump tools and deps
+  - Make sure that the order of Requires-Dist does not matter
+- Update to 1.5.3:
+  - Bump pypa/gh-action-pypi-publish from 1.8.6 to 1.8.7
+  - Fix read_line to raise EOFError if nothing was read
+- Update to 1.5.2:
+  - Add pyproject-fmt
+  - docs: remove (dynamic) years from copyright
+  - Drop 2.7 test
+  - Add trusted-publish
+  - Add 3.12 support
+  - Bump pypa/gh-action-pypi-publish from 1.8.5 to 1.8.6
+    git ls-files -z -- .github/workflows/check.yml \
+        | xargs -0 sed -i 's|3.12.0-alpha.7|3.12.0-beta.1|g'
+  - Add ruff
+</comment>
+    <requestid>1107822</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2501f5fa05cab5929570a1733f05008d</srcmd5>
+    <version>1.6.1</version>
+    <time>1699562159</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1124388 from ecsos
+
+- Update to 1.6.1:
+    - Fix metadata_from_built only extracts one of the dist info files
+      in #100
+  - Update to 1.6.0:
+    - Extrat build_&lt;wheel|editable&gt; from 
+      prepare_metadata_for_build_&lt;wheel|editable&gt; in #99</comment>
+    <requestid>1124420</requestid>
+  </revision>
+</revisionlist>

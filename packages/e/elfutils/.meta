@@ -1,0 +1,6 @@
+<package name="elfutils" project="openSUSE:Factory">
+  <title>Higher-level library to access ELF</title>
+  <description>This package provides a higher-level library to access ELF files. This
+is a part of elfutils package.</description>
+  <devel project="Base:System" package="elfutils"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="virtualbox" project="openSUSE:Factory">
+  <title>VirtualBox is an Emulator</title>
+  <description>VirtualBox is an extremely feature rich, high performance product
+for enterprise customers, it is also the only professional solution
+that is freely available as Open Source Software under the terms of the
+GNU Public License (GPL).
+##########################################</description>
+  <devel project="Virtualization" package="virtualbox"/>
+</package>

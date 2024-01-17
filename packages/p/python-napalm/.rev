@@ -1,0 +1,178 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb43dfe09c1a0d7e767d1dc303e8265b</srcmd5>
+    <version>2.4.0</version>
+    <time>1572278137</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>738197</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>667bb1c06ad108b5a530b38a274cbedb</srcmd5>
+    <version>2.5.0</version>
+    <time>1585667644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789772</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7cca4a5fb7d30f79a4f63cc99c52028</srcmd5>
+    <version>3.0.0</version>
+    <time>1588856091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800797</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba25b8c55e38bc0d4a87c1a2ab1e8115</srcmd5>
+    <version>3.0.1</version>
+    <time>1589579540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805798</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5e8c040cf9ce4a8e18264e5a1e6bd781</srcmd5>
+    <version>3.0.1</version>
+    <time>1590649856</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808037</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3dfdab21d29135ead4c4130045492c02</srcmd5>
+    <version>3.1.0</version>
+    <time>1595949939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823035</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da1e24f92e71d16bc61f140e33ab152d</srcmd5>
+    <version>3.2.0</version>
+    <time>1599210766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831976</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e3b946d17a0a0270dc695e71a32023c5</srcmd5>
+    <version>3.3.1</version>
+    <time>1629706084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913350</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d79bbf99f0e412df8d4c2d9d45488c48</srcmd5>
+    <version>3.3.1</version>
+    <time>1634331839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925267</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8bd1d9aba231f6a5c3ffdd6378e7adcc</srcmd5>
+    <version>3.3.1</version>
+    <time>1642112481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946134</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>23a4ae4cd8c96c4f51f3a7dd24e67379</srcmd5>
+    <version>3.4.0</version>
+    <time>1648159116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964675</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>40be579dfac7bcab774fa91d25c8e2b2</srcmd5>
+    <version>3.4.0</version>
+    <time>1659721888</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch netmiko-4-support.patch:
+  * Support netmiko &gt;= 4
+  * As a consequence, bump {Build,}Requires on netmiko to &gt;= 4.
+- Remove unneeded BuildRequires on mock</comment>
+    <requestid>993200</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>60ab32afd005503c2a61c3e2aa1e1f5b</srcmd5>
+    <version>4.0.0</version>
+    <time>1666780297</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove empty netmiko-4-support.patch
+- Update to 4.0.0
+  Type Hinting
+  ============
+  - After months of work, @Kircheneer added type hinting support in #1412 and
+    #1476.
+  New features
+  ============
+  - Add Commit-Confirm support for Cisco IOS #1691
+  - New encoding argument added to the cli method to return the output of
+    operational / show commands in the desired format. Currently supported on
+    Junos and EOS. #1637 &amp; #1663
+  - Added ttp_parse helper function to codebase #1563
+  - Replaced ciscoconfparse with netutils #1565
+  - New SSH transport available for Arista EOS - thanks @thomasbridge74 #1502
+  Improvements
+  ============
+  - Adds mac and ip checks for getters #1560
+  - The uptime field in the get_facts return is now float type: #1651
+  - [NX-OS] Improve compare_config for NXOS partial merging #1567
+  - [EOS] support arbitrary transport class #1643 &amp; #1647
+  - [EOS] move config lock check to _load_config #1642
+  - [EOS] Handle modern memory output from Arista EOS 4.27+ #1673
+  - [IOS-XR] Improving get_facts behavior to handle XML changes in newer OS
+    versions #1667
+  - [Junos] make sure we don't duplicate LLDP neighbor entries #1640
+  Bug fixes
+  =========
+  - [Junos] find for system uptime element #1675
+  - [IOS-XR] get_lldp_neighbor_details does not support 'N/A' capabilities
+    #1681
+  - [IOS-XR] get_lldp_neighbor_details add alternative lldp local interface key
+    #1682
+  - [NX-OS] get_interfaces fix description on SVI interfaces #1571
+  - [IOS] get_vlans does not return all interfaces if they wrap around in the
+    config #1569
+  - [Junos] Fix #1549: Check peer admin status from the BGP options #1566
+  - [EOS] get_bgp_neighbors_detail only returns back a single peer for a
+    certain EOS platform #1573
+- Update to 3.4.1
+  * Pinning to junos-eznc&gt;=2.6.3
+</comment>
+    <requestid>1031189</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4acd0eda9b2efe9ba239afc94a64e6d2</srcmd5>
+    <version>4.0.0</version>
+    <time>1672668157</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing requirements
+</comment>
+    <requestid>1046173</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2a634fe8d180045b44a03587068177ae</srcmd5>
+    <version>4.1.0</version>
+    <time>1692795531</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105467</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5b1253b2dfe4c55c73cec30ca2354239</srcmd5>
+    <version>4.1.0</version>
+    <time>1694019503</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-future-requirement.patch, remove requirement of
+  future module.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1109156</requestid>
+  </revision>
+</revisionlist>

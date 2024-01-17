@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb180484925868322e95c720c2fc6f34</srcmd5>
+    <version>0.4</version>
+    <time>1336492947</time>
+    <user>coolo</user>
+    <comment>needed for x11 stack</comment>
+    <requestid>116765</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cb180484925868322e95c720c2fc6f34</srcmd5>
+    <version>0.4</version>
+    <time>1340184383</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>cb180484925868322e95c720c2fc6f34</srcmd5>
+    <version>0.4</version>
+    <time>1359110688</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>cb180484925868322e95c720c2fc6f34</srcmd5>
+    <version>0.4</version>
+    <time>1379665114</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>cb180484925868322e95c720c2fc6f34</srcmd5>
+    <version>0.4</version>
+    <time>1409303801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4ec69f2a1b7592dea2c38e0d56e10ae5</srcmd5>
+    <version>0.5</version>
+    <time>1628023741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5
+  * bugfix release</comment>
+    <requestid>909985</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>57299eef5a9d31f9e440f8b61ab19e3f</srcmd5>
+    <version>0.6</version>
+    <time>1682691828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6
+  * gitlab CI: add a basic build test
+  * Use AC_CONFIG_FILES to replace the deprecated AC_OUTPUT with parameters
+  * configure: remove unnecessary checks
+  * configure: remove fallback for pre-pkg-config systems
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Fix builds on Solaris
+  * Add --version option
+  * man page: stop saying the X-Resource extension is &quot;very new&quot;
+  * Link with libtinfo if available
+  * Fixes -Wformat warning in xrestop_display</comment>
+    <requestid>1083411</requestid>
+  </revision>
+</revisionlist>

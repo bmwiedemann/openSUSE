@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48b62b47ae75a8c87819dd16edbfaa7d</srcmd5>
+    <version>4.0.1.0</version>
+    <time>1613774697</time>
+    <user>dimstar_suse</user>
+    <comment>- New package, needed by krita 4.4.2 (SR#865091)</comment>
+    <requestid>865243</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8a268f4abee0b58b8549b7d59b679173</srcmd5>
+    <version>4.0.1.0</version>
+    <time>1622664729</time>
+    <user>dimstar_suse</user>
+    <comment>- Add GCC 11 build fix (kde#437890):
+  * 0001-Fix-charconv-support-with-MSVC-GCC11.patch</comment>
+    <requestid>896821</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>25486363c8f3eda4cb629894f8a9e473</srcmd5>
+    <version>4.0.2.0</version>
+    <time>1623363556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899343</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5cc873593906936172f84518aaae6649</srcmd5>
+    <version>4.0.3.0</version>
+    <time>1626466378</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906651</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ac68e6ec4f36a59f5241854a069ba7c9</srcmd5>
+    <version>4.0.4.0</version>
+    <time>1640200678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941980</requestid>
+  </revision>
+</revisionlist>

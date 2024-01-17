@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Sep 11 10:47:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Thu Jan 26 14:04:02 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of verion 1.5.0
+

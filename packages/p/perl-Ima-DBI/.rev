@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0454d41eb5c663862deeb524f03b9141</srcmd5>
+    <version>0.35</version>
+    <time>1372413138</time>
+    <user>coolo</user>
+    <comment>one more for DBIx</comment>
+    <requestid>181058</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0454d41eb5c663862deeb524f03b9141</srcmd5>
+    <version>0.35</version>
+    <time>1379663717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0454d41eb5c663862deeb524f03b9141</srcmd5>
+    <version>0.35</version>
+    <time>1409302341</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

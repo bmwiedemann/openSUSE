@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Oct  7 16:24:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.8.0 
+  * GH-59 Fix external links on sidetoc
+  * GH-60 Include LICENSE and CHANGES in dist package
+
+-------------------------------------------------------------------
+Mon Jul  5 14:33:19 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Version 0.7.3: initial build

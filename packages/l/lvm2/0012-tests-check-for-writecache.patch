@@ -1,0 +1,49 @@
+From 950edf73781807b07d97717b460ae682edb38fdf Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Mon, 4 Sep 2023 17:32:26 +0200
+Subject: [PATCH 12/24] tests: check for writecache
+
+Writecache needs writecache kernel target to be present.
+---
+ test/shell/caching-snapshot.sh | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/test/shell/caching-snapshot.sh b/test/shell/caching-snapshot.sh
+index d73f4ad06..854d8bad7 100644
+--- a/test/shell/caching-snapshot.sh
++++ b/test/shell/caching-snapshot.sh
+@@ -22,6 +22,9 @@ lvm segtypes 2>/dev/null | grep writecache$ >/dev/null || {
+ aux have_cache 1 10 0 || skip
+ which mkfs.ext4 || skip
+ 
++HAVE_WRITECACHE=1
++aux have_writecache 1 0 0 || HAVE_WRITECACHE=0
++
+ mount_dir="mnt"
+ mkdir -p "$mount_dir"
+ 
+@@ -105,7 +108,10 @@ test_snap_remove() {
+ 
+ test_snap_remove cache --cachepool
+ test_snap_remove cache --cachevol
++
++if [ "$HAVE_WRITECACHE" = "1" ]; then
+ test_snap_remove writecache --cachevol
++fi
+ 
+ # adding cache|writecache to an LV that has a snapshot
+ 
+@@ -143,7 +149,10 @@ test_caching_with_snap() {
+ 
+ test_caching_with_snap cache --cachepool
+ test_caching_with_snap cache --cachevol
++
++if [ "$HAVE_WRITECACHE" = "1" ]; then
+ test_caching_with_snap writecache --cachevol
++fi
+ 
+ # adding cache|writecache to a snapshot is not allowed
+ 
+-- 
+2.35.3
+

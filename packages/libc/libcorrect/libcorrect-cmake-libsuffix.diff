@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8de9197..e73e2a3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,7 +62,7 @@ add_subdirectory(tools)
+ # add_subdirectory(benchmarks)
+ 
+ install(TARGETS correct correct_static
+-        DESTINATION lib)
++        DESTINATION lib${LIB_SUFFIX})
+ install(FILES ${INSTALL_HEADERS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include")
+ 
+ add_library(fec_shim_static EXCLUDE_FROM_ALL src/fec_shim.c ${correct_obj_files})
+@@ -73,6 +73,6 @@ add_custom_target(fec-shim-h COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR
+ add_custom_target(shim DEPENDS fec_shim_static fec_shim_shared fec-shim-h)
+ 
+ install(TARGETS fec_shim_static fec_shim_shared
+-        DESTINATION lib
++        DESTINATION lib${LIB_SUFFIX}
+         OPTIONAL)
+ install(FILES ${CMAKE_BINARY_DIR}/include/fec.h DESTINATION "${CMAKE_INSTALL_PREFIX}/include" OPTIONAL)

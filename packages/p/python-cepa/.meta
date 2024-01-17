@@ -1,0 +1,5 @@
+<package name="python-cepa" project="openSUSE:Factory">
+  <title>Python controller library for Tor</title>
+  <description>this is the successor of python-stem</description>
+  <devel project="devel:languages:python" package="python-cepa"/>
+</package>

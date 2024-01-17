@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>555515fdeabe84ef6376d27c6bcab192</srcmd5>
+    <version>1.15.6</version>
+    <time>1590506162</time>
+    <user>maxlin_factory</user>
+    <comment>New package: python-PyCBC - A core library to analyze gravitational-wave data in python</comment>
+    <requestid>807035</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>81cd2e7212750162f965df089e2fb567</srcmd5>
+    <version>1.16.1</version>
+    <time>1591653534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810052</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9233bbd09c30c154388e680adc17078</srcmd5>
+    <version>1.16.4</version>
+    <time>1594228610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819293</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cfbc2d1b73f07ab6d0381cb8b3d4e8a4</srcmd5>
+    <version>1.16.7</version>
+    <time>1596652080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824366</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a6ea7f6f10e51dc1bddf712d021e453</srcmd5>
+    <version>1.16.8</version>
+    <time>1597860196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827921</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d08b09cc7b268c7700af5554cb18a5b</srcmd5>
+    <version>1.16.9</version>
+    <time>1601044446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836167</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>994110ff1e8d7b862535cc9dee0ec590</srcmd5>
+    <version>1.16.11</version>
+    <time>1603545469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843542</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ebd31ef51328a24be0beed0b046baff3</srcmd5>
+    <version>1.17.0</version>
+    <time>1609147811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858399</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>23acb2c90783d2f20c395937989b2d89</srcmd5>
+    <version>1.18.0</version>
+    <time>1620334390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.0:
+  * update dependencies (require lalsuite, no longer require
+    emcee).
+  * build wheels and update build infrastructure.
+- Drop usage of python singlespec macros and switch to supporting
+  just the default python3 environment. The large number of
+  binaries installed to _bindir and the lack of a reasonable way
+  to use python_clone for all the binaries forces this change.
+- Promote lal* to Requires and drop BuildRequires/Recommends on
+  python-emcee in keeping with upstream changes.
+- Drop additional source utils.py: not needed any more.
+- Enable tests after deleting broken test cases.
+- Add BuildRequires/Requires on lalpulsar, python-ligo-lw,
+  python-lscsoft-glue: new upstream dependencies.
+- Switch source tarball to GitHub since PyPI tarball does not
+  carry the helper scripts and data files for test suite.
+</comment>
+    <requestid>891120</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>38694913e56b8141d2872b0e3d24c722</srcmd5>
+    <version>1.18.0</version>
+    <time>1637228017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931952</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>45c40a5d42f7e2f608ae97edc71d1f5a</srcmd5>
+    <version>2.0.1</version>
+    <time>1644273489</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Obsoletes: python-PyCBC &lt;= 1.18.0 to PyCBC-utils package to avoid conflicts during updates.
+- Disable builds for python &lt;= 3.6 by requiring python-devel &gt;=
+  3.7 in keeping with setup.py.
+- Update to version 2.0.1:
+- Split out utilities into new package called PyCBC-utils, which
+  requires the default py3 flavour.
+- Build the python module itself for all supported python
+  flavours; disable python2 which is no longer supported by PyCBC
+  or its dependencies.
+- Run tests using pytest; note that using the pytest_arch macro
+  leads to errors, so we largely replicate its behaviour except
+  for running pytest itself without any options passed to it.
+- Re-check which tests work and rm those which do not to avoid
+  module import errors.
+- New BuildRequires: python-pyFFTW.
+</comment>
+    <requestid>952233</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f61316c74b5e457dee75bf0249d4c50b</srcmd5>
+    <version>2.0.2</version>
+    <time>1646767943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960208</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f349a7f0bc6bad25d43cf2bc42d7105</srcmd5>
+    <version>2.0.4</version>
+    <time>1657712724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.4
+  * Add Multisignal models and fix issue where loading MKLblibs
+    before FFTW can in some cases cause a segfault.
+- Release 2.0.3
+  * Adds support for hierarchical inference models and astropy 5.1
+    release.
+- Update requirements
+- Test in multibuild flavor in order to verify requirements.
+</comment>
+    <requestid>988738</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>babce032ac2147f63f9c494b2f318851</srcmd5>
+    <version>2.0.5</version>
+    <time>1661685155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999602</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9fa3ce08dfe84d009a719f95a3fcd9c5</srcmd5>
+    <version>2.2.0</version>
+    <time>1685141464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089168</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d35e72d5b24cee596c18e6384e850306</srcmd5>
+    <version>2.3.0</version>
+    <time>1697748545</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118759</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>24d1e76130b77a3ff147f24b30bf58a8</srcmd5>
+    <version>2.4.0</version>
+    <time>1698604891</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120900</requestid>
+  </revision>
+</revisionlist>

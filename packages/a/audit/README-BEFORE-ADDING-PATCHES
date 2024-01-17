@@ -1,0 +1,16 @@
+All patches need to have a kernel-style patch description header.
+
+PATCHES LACKING THIS OR NOT CORRECTLY FOLLOWING DESCRIPTION BELOW WILL BE
+REJECTED OR REVERTED
+
+From: Joe Smoe <joe@smoe.com>
+Subject: Summary of fix
+Date: Date of fix
+References: Bugzilla reference [bsc#xxxx]
+References: URL of relevant discussion thread, opensuse or upstream ML etc
+Git-commit: Full SHA of upstream commit [if applicable]
+Git-repo: [if different from https://github.com/linux-audit/audit-userspace.git]
+Patch-mainline: revision of audit package or explanation if not [i.e v2.8.1 or "queued with maintainer" or "never; because ...." ]
+Signed-Off-by: Joe Smoe <joe@smoe.com>
+
+Short paragraph describing problem/fix.

@@ -1,0 +1,13 @@
+Index: distributed-2023.9.1/distributed/utils_test.py
+===================================================================
+--- distributed-2023.9.1.orig/distributed/utils_test.py
++++ distributed-2023.9.1/distributed/utils_test.py
+@@ -1631,7 +1631,7 @@ def check_thread_leak():
+     yield
+ 
+     start = time()
+-    while True:
++    while False:
+         bad_threads = [
+             thread
+             for thread in threading.enumerate()

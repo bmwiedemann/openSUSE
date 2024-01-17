@@ -1,0 +1,9 @@
+--- xdg_menu_su.orig	2003-09-17 11:23:38.000000000 +0300
++++ xdg_menu_su	2013-02-27 21:01:07.457209243 +0200
+@@ -2,5 +2,5 @@
+ 
+ xterm -bg LightGoldenRod -fn 9x15 -geometry 34x4 \
+       -vb +sb -T "root permission" \
+-      -e sh -c "echo \"Run command with root privileges\"; echo \"Command: $*\"; sux -c \"/usr/bin/env LANG=${LANG} $*\""
++      -e sh -c "echo \"Run command with root privileges\"; echo \"Command: $*\"; su -c \"/usr/bin/env LANG=${LANG} $*\""
+ 

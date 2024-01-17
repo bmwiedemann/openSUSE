@@ -1,0 +1,215 @@
+From: Adam Mizerski <adam@mizerski.pl>
+Date: 2019-02-12 20:48:31
+Upstream: no
+References: https://github.com/scipr-lab/libff/issues/22
+Subject: disable BN128
+
+BN128 uses internally bundled dependencies, which would require more work to
+package properly.
+
+Index: libff-1.0.0/CMakeLists.txt
+===================================================================
+--- libff-1.0.0.orig/CMakeLists.txt
++++ libff-1.0.0/CMakeLists.txt
+@@ -9,10 +9,10 @@ endif()
+ 
+ set(
+   CURVE
+-  "BN128"
++  "ALT_BN128"
+   CACHE
+   STRING
+-  "Default curve: one of ALT_BN128, BN128, EDWARDS, MNT4, MNT6"
++  "Default curve: one of ALT_BN128, EDWARDS, MNT4, MNT6"
+ )
+ 
+ option(
+@@ -135,12 +135,6 @@ add_definitions(
+ 
+ enable_testing()
+ 
+-if(${CURVE} STREQUAL "BN128")
+-  add_definitions(
+-    -DBN_SUPPORT_SNARK=1
+-  )
+-endif()
+-
+ if("${DEBUG}")
+   add_definitions(-DDEBUG=1)
+ endif()
+@@ -226,7 +220,5 @@ if ("${IS_LIBFF_PARENT}")
+     COMMAND ${CMAKE_COMMAND}
+      -E echo 'Built target finished'
+   )
+-
+-  add_subdirectory(depends)
+ endif()
+ add_subdirectory(libff)
+Index: libff-1.0.0/libff/CMakeLists.txt
+===================================================================
+--- libff-1.0.0.orig/libff/CMakeLists.txt
++++ libff-1.0.0/libff/CMakeLists.txt
+@@ -1,25 +1,3 @@
+-set(FF_EXTRASRCS)
+-set(FF_EXTRALIBS)
+-if(${CURVE} STREQUAL "BN128")
+-  set(
+-    FF_EXTRASRCS
+-
+-    ${FF_EXTRASRCS}
+-    algebra/curves/bn128/bn128_g1.cpp
+-    algebra/curves/bn128/bn128_g2.cpp
+-    algebra/curves/bn128/bn128_gt.cpp
+-    algebra/curves/bn128/bn128_init.cpp
+-    algebra/curves/bn128/bn128_pairing.cpp
+-    algebra/curves/bn128/bn128_pp.cpp
+-  )
+-  set(
+-    FF_EXTRALIBS
+-
+-    ${FF_EXTRALIBS}
+-    zm
+-  )
+-endif()
+-
+ add_library(
+   ff
+   STATIC
+@@ -48,15 +26,12 @@ add_library(
+   common/double.cpp
+   common/profiling.cpp
+   common/utils.cpp
+-
+-  ${FF_EXTRASRCS}
+ )
+ target_link_libraries(
+   ff
+ 
+   GMP::gmp
+   ${PROCPS_LIBRARIES}
+-  ${FF_EXTRALIBS}
+ )
+ target_include_directories(
+   ff
+@@ -131,19 +106,4 @@ if ("${IS_LIBFF_PARENT}")
+   add_dependencies(check algebra_bilinearity_test)
+   add_dependencies(check algebra_groups_test)
+   add_dependencies(check algebra_fields_test)
+-
+-  add_executable(
+-    multiexp_profile
+-    EXCLUDE_FROM_ALL
+-
+-    algebra/scalar_multiplication/multiexp_profile.cpp
+-  )
+-  target_link_libraries(
+-    multiexp_profile
+-
+-    ${OPENSSL_LIBRARIES}
+-    ff
+-  )
+-
+-  add_dependencies(profile multiexp_profile)
+ endif()
+Index: libff-1.0.0/libff/algebra/curves/tests/test_bilinearity.cpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/tests/test_bilinearity.cpp
++++ libff-1.0.0/libff/algebra/curves/tests/test_bilinearity.cpp
+@@ -6,9 +6,6 @@
+  *****************************************************************************/
+ #include <libff/algebra/curves/edwards/edwards_pp.hpp>
+ #include <libff/common/profiling.hpp>
+-#ifdef CURVE_BN128
+-#include <libff/algebra/curves/bn128/bn128_pp.hpp>
+-#endif
+ #include <libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp>
+ #include <libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp>
+ #include <libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp>
+@@ -128,12 +125,6 @@ int main(void)
+     alt_bn128_pp::init_public_params();
+     pairing_test<alt_bn128_pp>();
+     double_miller_loop_test<alt_bn128_pp>();
+-
+-#ifdef CURVE_BN128       // BN128 has fancy dependencies so it may be disabled
+-    bn128_pp::init_public_params();
+-    pairing_test<bn128_pp>();
+-    double_miller_loop_test<bn128_pp>();
+-#endif
+ }
+ 
+ #else // NDEBUG
+Index: libff-1.0.0/libff/algebra/curves/tests/test_groups.cpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/curves/tests/test_groups.cpp
++++ libff-1.0.0/libff/algebra/curves/tests/test_groups.cpp
+@@ -8,9 +8,6 @@
+ #include <libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp>
+ #include <libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp>
+ #include <libff/common/profiling.hpp>
+-#ifdef CURVE_BN128
+-#include <libff/algebra/curves/bn128/bn128_pp.hpp>
+-#endif
+ #include <sstream>
+ 
+ #include <libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp>
+@@ -166,14 +163,6 @@ int main(void)
+     test_group<G2<alt_bn128_pp> >();
+     test_output<G2<alt_bn128_pp> >();
+     test_mul_by_q<G2<alt_bn128_pp> >();
+-
+-#ifdef CURVE_BN128       // BN128 has fancy dependencies so it may be disabled
+-    bn128_pp::init_public_params();
+-    test_group<G1<bn128_pp> >();
+-    test_output<G1<bn128_pp> >();
+-    test_group<G2<bn128_pp> >();
+-    test_output<G2<bn128_pp> >();
+-#endif
+ }
+ 
+ #else // NDEBUG
+Index: libff-1.0.0/libff/algebra/fields/tests/test_fields.cpp
+===================================================================
+--- libff-1.0.0.orig/libff/algebra/fields/tests/test_fields.cpp
++++ libff-1.0.0/libff/algebra/fields/tests/test_fields.cpp
+@@ -8,9 +8,6 @@
+ #include <libff/algebra/curves/mnt/mnt4/mnt4_pp.hpp>
+ #include <libff/algebra/curves/mnt/mnt6/mnt6_pp.hpp>
+ #include <libff/common/profiling.hpp>
+-#ifdef CURVE_BN128
+-#include <libff/algebra/curves/bn128/bn128_pp.hpp>
+-#endif
+ #include <libff/algebra/curves/alt_bn128/alt_bn128_pp.hpp>
+ #include <libff/algebra/fields/fp12_2over3over2.hpp>
+ #include <libff/algebra/fields/fp6_3over2.hpp>
+@@ -237,12 +234,6 @@ int main()
+     test_field<alt_bn128_Fq6>();
+     test_Frobenius<alt_bn128_Fq6>();
+     test_all_fields<alt_bn128_pp>();
+-
+-#ifdef CURVE_BN128       // BN128 has fancy dependencies so it may be disabled
+-    bn128_pp::init_public_params();
+-    test_field<Fr<bn128_pp> >();
+-    test_field<Fq<bn128_pp> >();
+-#endif
+ }
+ 
+ #else // NDEBUG
+Index: libff-1.0.0/libff/common/default_types/ec_pp.hpp
+===================================================================
+--- libff-1.0.0.orig/libff/common/default_types/ec_pp.hpp
++++ libff-1.0.0/libff/common/default_types/ec_pp.hpp
+@@ -23,14 +23,6 @@ typedef alt_bn128_pp default_ec_pp;
+ } // libff
+ #endif
+ 
+-#ifdef CURVE_BN128
+-#define LIBFF_DEFAULT_EC_PP_DEFINED
+-#include <libff/algebra/curves/bn128/bn128_pp.hpp>
+-namespace libff {
+-typedef bn128_pp default_ec_pp;
+-} // libff
+-#endif
+-
+ #ifdef CURVE_EDWARDS
+ #define LIBFF_DEFAULT_EC_PP_DEFINED
+ #include <libff/algebra/curves/edwards/edwards_pp.hpp>

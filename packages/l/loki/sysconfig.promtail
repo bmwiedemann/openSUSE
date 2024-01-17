@@ -1,0 +1,10 @@
+## Path:        System/Monitoring/Promtail
+## Description: Promtail logging agent settings
+
+## Type:        string
+## Default:     "/etc/loki/promtail.yaml"
+## ServiceRestart: promtail
+#
+# Command line options for promtail
+#
+CONFIG_FILE="/etc/loki/promtail.yaml"

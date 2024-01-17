@@ -1,0 +1,35 @@
+From 8f0a98dd4b8db4bd39a8df599b64391a78357775 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 16 May 2022 17:39:53 +0200
+Subject: [PATCH] pmsnap: SUSE-fy pmsnap control path
+
+Acked-by: David Disseldorp <ddiss@suse.de>
+---
+ src/pmsnap/pmsnap.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/pmsnap/pmsnap.sh b/src/pmsnap/pmsnap.sh
+index 95ac61b90..c1a32de07 100755
+--- a/src/pmsnap/pmsnap.sh
++++ b/src/pmsnap/pmsnap.sh
+@@ -26,7 +26,7 @@ prog=`basename $0`
+ 
+ LOCALHOST=`pmhostname`
+ CONFIGDIR=$PCP_VAR_DIR/config/pmsnap
+-CONTROL=$CONFIGDIR/control
++CONTROL=/etc/pcp/pmsnap/control
+ [ -z "$PCP_PMSNAPCONTROL_PATH" ] || CONTROL="$PCP_PMSNAPCONTROL_PATH"
+ 
+ _usage()
+@@ -179,7 +179,7 @@ then
+ fi
+ commonargs="$commonargs $@"
+ 
+-CONTROL=$CONFIGDIR/control
++CONTROL=/etc/pcp/pmsnap/control
+ if [ ! -f "$CONTROL" ]
+ then
+     echo "$prog: Error: cannot find control file \"$CONTROL\""
+-- 
+2.35.3
+

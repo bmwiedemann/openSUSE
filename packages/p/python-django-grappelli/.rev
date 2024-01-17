@@ -1,0 +1,259 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>576dbd7518c234d7c3fab83383326461</srcmd5>
+    <version>2.3.7</version>
+    <time>1330434926</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>107139</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b6456ba2314843c0c3cb882d4c973a5</srcmd5>
+    <version>2.3.8</version>
+    <time>1334641712</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113765</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0b6456ba2314843c0c3cb882d4c973a5</srcmd5>
+    <version>2.3.8</version>
+    <time>1340184046</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19a72dea1011c216c616886ca673b5f9</srcmd5>
+    <version>2.4.0</version>
+    <time>1342866673</time>
+    <user>namtrac</user>
+    <comment>Update to 2.4.0, which is required for Django 1.4 (forwarded request 128505 from jimfunk)</comment>
+    <requestid>128512</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6fa4b99540f0dd8cc90b6f3d4d1efba1</srcmd5>
+    <version>2.4.2</version>
+    <time>1349632532</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137360</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3ea8f079834e061245b69175017d2f9</srcmd5>
+    <version>2.4.3</version>
+    <time>1353133641</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>141560</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b3ea8f079834e061245b69175017d2f9</srcmd5>
+    <version>2.4.3</version>
+    <time>1359110017</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8b9faf71440c4bf2573058347c5cfc63</srcmd5>
+    <version>2.4.4</version>
+    <time>1362745588</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157722</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>8b9faf71440c4bf2573058347c5cfc63</srcmd5>
+    <version>2.4.4</version>
+    <time>1379664159</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e8513abaf05817c9af925cd964c5892b</srcmd5>
+    <version>2.4.6</version>
+    <time>1380608858</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201199 from posophe)</comment>
+    <requestid>201421</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e8513abaf05817c9af925cd964c5892b</srcmd5>
+    <version>2.4.6</version>
+    <time>1409302850</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>558ecd8af41ec33c23f0ffcf7d470e93</srcmd5>
+    <version>2.6.4</version>
+    <time>1430983339</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305651</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d0f1aea27484c7d826ae5b060e96a943</srcmd5>
+    <version>2.12.1</version>
+    <time>1544726923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.1:
+  * Many changes to enumerate
+  * Support for new djangos
+- Switch to singlespec
+- Run tests</comment>
+    <requestid>657114</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b3d97a28d6713838f5c533426e6a7dd0</srcmd5>
+    <version>2.12.2</version>
+    <time>1551455224</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.2:
+  * New: edit and delete links with related objects.
+  * New: Templates in order to allow integration with django-import-export.
+  * Improved: Use admin site_header as title (if given and not default).
+  * Improved: compass/sass setup.
+  * Fixed: view permissions.
+  * Fixed: last inline form with non-editable inlines.</comment>
+    <requestid>679818</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b42fcb22e7cbe2791a24923d43c2d6f8</srcmd5>
+    <version>2.12.3</version>
+    <time>1557170243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.3:
+  * Improved: use get_username with object history.
+  * Improved: trigger change event in dismissChangeRelatedObjectPopup.
+  * Improved: honor cl.show_full_result_count with pagination.
+  * Fixed: using a div.grp-related-widget to wrap all possible widgets.</comment>
+    <requestid>701062</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f70fd52e8029ef9b6ccac79144e15560</srcmd5>
+    <version>2.13.1</version>
+    <time>1568720255</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.13.1:
+  * First release of Grappelli which is compatible with Django 2.2.</comment>
+    <requestid>731219</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1199a319bb5be0a9f2e8d2b67d3c19f4</srcmd5>
+    <version>2.13.3</version>
+    <time>1578437658</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.3:
+  * Fixed: Horizontal scrolling.
+  * Fixed: Changelist with custom filters.
+  * Fixed: Form select icons (Chrome).
+  * Fixed: added Django autocomplete JS files.
+  * Fixed: added minified jQuery 3.3.1 file.
+  * Fixed: added request to formfield_for_dbfield.
+  * Fixed: use safe label with autocompletes.
+  * Improved: added separate file for documentation URLs.
+  * Improved: removed Python 2 support.
+  * Improved: CSS footer and submit-row fixes.
+  * Improved: CSS field width with inline tabular.</comment>
+    <requestid>761484</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>02f4719c17a1e751ab4a94065544e6c5</srcmd5>
+    <version>2.14.1</version>
+    <time>1582207132</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1:
+  * First release of Grappelli which is compatible with Django 3.0.</comment>
+    <requestid>777584</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>be0a4682626ef119e3cb8d5feafa722b</srcmd5>
+    <version>2.14.2</version>
+    <time>1591743088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.2
+ * Fixed: Django version (3.0) with docs and quickstart.
+ * Fixed: Dashboard with metaclass.
+ * Fixed: Missing variable in RelatedObjectLookups.
+ * Fixed: Sortables with tuples when using StackedInlines.
+ * Improved: Removed six dependency.
+ * Improved: Changed bodyclass in order to allow adding more attributes.</comment>
+    <requestid>812886</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0c07a9b5421c0a016d421098aa16ec96</srcmd5>
+    <version>2.14.2</version>
+    <time>1598885605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830722</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9260c5c111b802b9bb14778cc8627bc0</srcmd5>
+    <version>3.0.1</version>
+    <time>1642112461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946103</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cd187f66ef83bc99344416cdcbf3844e</srcmd5>
+    <version>3.0.4</version>
+    <time>1672851223</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.4:
+  * Fixed race condition issue with Grunt.
+  * Fixed readonly ID field.
+  * Fixed utf-8 characters in TinyMCE staticfiles.
+  * Fixed changelist actions.</comment>
+    <requestid>1055868</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>947a3455522531e354178b1e5bb86a8c</srcmd5>
+    <version>3.0.5</version>
+    <time>1681654056</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.5:
+  * Removed package.json from jquery-ui.
+  * Fixed change_list_filter_confirm peoduces wrong url
+    parameters.
+  * Fixed change_list_filter_confirm is using
+    admin_list.admin_list_filter instead of
+    grp_tags.admin_list_filter.
+  * Added default for dummy template with dahboard (because of
+    django-compressor offline compression).</comment>
+    <requestid>1079738</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8171d9c890f771bfc92365401524c8ef</srcmd5>
+    <version>3.0.6</version>
+    <time>1683559451</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.6:
+  * Fixed incorrect label of option returned by RelatedLookup
+    view.</comment>
+    <requestid>1085332</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b1fa44fa524db87075dd9138500f29e6</srcmd5>
+    <version>3.0.7</version>
+    <time>1695209165</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.7:
+  * Updated jQueryUI to 1.13.2.
+  * Added readthedocs yaml file.</comment>
+    <requestid>1111924</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ad4fcd4c429eb0d44d237a4835d2f2a9</srcmd5>
+    <version>3.0.8</version>
+    <time>1699910278</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.8:
+  * Fixed collectstatic with ManifestStaticFilesStorage.
+  * Fixed removing text with DateTime Shortcuts.
+  * Fixed autocomplete inlines with new rows.
+  * Improved CSS (removed compass).</comment>
+    <requestid>1124870</requestid>
+  </revision>
+</revisionlist>

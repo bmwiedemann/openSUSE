@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7fff4e6ba98b31ef523320811e61287</srcmd5>
+    <version>1.6.0</version>
+    <time>1520415184</time>
+    <user>dimstar_suse</user>
+    <comment>-  update to version 1.6.0:
+ * Include template path or template URL in cookiecutter context under _template
+ * Add a URL abbreviation for GitLab template projects
+ * Add option to use templates from Zip files or Zip URLs
+ * bugfixes
+- update to version 1.5.1:
+ * bugfixes
+- remove fix-caplog-tests.diff, it broke the tests
+- remove separate specfile for docs, use one combined
+- version 1.5.0: initial build
+</comment>
+    <requestid>580905</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>852577e0e6d3f9e5ee7c4aa54576d9f3</srcmd5>
+    <version>1.6.0</version>
+    <time>1548062936</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with new click cookiecutter-click7.patch</comment>
+    <requestid>662403</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72e25030b912997ee4a32e4f460cba06</srcmd5>
+    <version>1.7.0</version>
+    <time>1578320674</time>
+    <user>dimstar_suse</user>
+    <comment>- remove obsolete patch fix-python-invocation-tests.diff
+- remove obsolete patch cookiecutter-click7.patch
+- update to version 1.7.0:
+ * Important Changes:
+  * Drop support for EOL Python 3.4, thanks to [@jamescurtin](https://github.com/jamescurtin) and [@insspb](https://github.com/insspb) (#1024)
+  * Drop support for EOL Python 3.3, thanks to [@hugovk](https://github.com/hugovk) (#1024)
+  * Increase the minimum click version to 7.0, thanks to [@rly](https://github.com/rly) and [@luzfcb](https://github.com/luzfcb) (#1168)
+ * Other Changes:
+  * PEP257 fixing docstrings in exceptions.py. Thanks to [@MinchinWeb](https://github.com/MinchinWeb) (#1237)
+  * PEP257 fixing docstrings in replay.py. Thanks to [@kishan](https://github.com/kishan3) (#1234)
+  * PEP257 fixing docstrings in test_unzip.py. Thanks to [@tonytheleg](https://github.com/tonytheleg) and [@insspb](https://github.com/insspb) (#1236, #1262)
+  * Fixed tests sequence for appveyor, to exclude file not found bug. Thanks to [@insspb](https://github.com/insspb) (#1257)
+  * Updates REAMDE.md with svg badge for appveyor. Thanks to [@sobolevn](https://github.com/sobolevn) (#1254)
+  * Add missing {% endif %} to Choice Variables example. Thanks to [@mattstibbs](https://github.com/mattstibbs) (#1249)
+  * Core documentation converted to Markdown format thanks to [@wagnernegrao](https://github.com/wagnernegrao), [@insspb](https://github.com/insspb) (#1216)
+  * Tests update: use sys.executable when invoking python in python 3 only environment thanks to [@vincentbernat](https://github.com/vincentbernat) (#1221)
+  * Prevent `click` API v7.0 from showing choices when already shown, thanks to [@rly](https://github.com/rly) and [@luzfcb](https://github.com/luzfcb) (#1168)
+  * Test the codebase with python3.8 beta on tox and travis-ci (#1206), thanks to [@mihrab34](https://github.com/mihrab34)
+  * Add a [CODE\_OF\_CONDUCT.md](https://github.com/audreyr/cookiecutter/blob/master/CODE_OF_CONDUCT.md) file to the project, thanks to [@andreagrandi](https://github.com/andreagrandi) (#1009)
+  * Update docstrings in `cookiecutter/main.py`, `cookiecutter/__init__.py`, and `cookiecutter/log.py` to follow the PEP 257 style guide, thanks to [@meahow](https://github.com/meahow) (#998, #999, #1000)
+  * Update docstrings in `cookiecutter/utils.py` to follow the PEP 257 style guide, thanks to [@dornheimer](https://github.com/dornheimer)(#1026)
+  * Fix grammar in *Choice Variables* documentation, thanks to [@jubrilissa](https://github.com/jubrilissa) (#1011)
+  * Update installation docs with links to the Windows Subsystem and GNU utilities, thanks to [@Nythiennzo](https://github.com/Nythiennzo) for the PR and [@BruceEckel](https://github.com/BruceEckel) for the review (#1016)
+  * Upgrade flake8 to version 3.5.0, thanks to [@cclauss](https://github.com/cclauss) (#1038)
+  * Update tutorial with explanation for how cookiecutter finds the template file, thanks to [@accraze](https://github.com/accraze)(#1025)
+  * Update CI config files to use `TOXENV` environment variable, thanks to [@asottile](https://github.com/asottile) (#1019)
+  * Improve user documentation for writing hooks, thanks to [@jonathansick](https://github.com/jonathansick) (#1057)
+  * Make sure to preserve the order of items in the generated cookiecutter context, thanks to [@hackebrot](https://github.com/hackebrot) (#1074)
+  * Fixed DeprecationWarning for a regular expression on python 3.6, thanks to [@reinout](https://github.com/reinout) (#1124)
+  * Document use of cookiecutter-template topic on GitHub, thanks to [@ssbarnea](https://github.com/ssbarnea) (#1189)</comment>
+    <requestid>761131</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e1a9a6a70942c03d4e1a06ad352db9dd</srcmd5>
+    <version>1.7.0</version>
+    <time>1587467524</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>792984</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39e1c31cdc25d4d5423ba48bb579c95d</srcmd5>
+    <version>1.7.2</version>
+    <time>1588324219</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>799017</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7e595e93cefaca392b4ed91f1f83cb62</srcmd5>
+    <version>1.7.2</version>
+    <time>1611163743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864998</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a422d3251cfc735f4e0e26b7257c4c7b</srcmd5>
+    <version>1.7.3</version>
+    <time>1621355219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893844</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e546082748d914d4e4a503e03250e5ae</srcmd5>
+    <version>2.0.2</version>
+    <time>1649880927</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>969173</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a9105d36773d00219636af4503f7cf40</srcmd5>
+    <version>2.0.2</version>
+    <time>1650825461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972407</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c1f51a78f76f1f9c41de53cf5b33ea68</srcmd5>
+    <version>2.1.1</version>
+    <time>1656422578</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>985549</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>14fe93c9a3ec6fb081f6790f8fc5d0fa</srcmd5>
+    <version>2.1.1</version>
+    <time>1683916626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086536</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5d15fb48a145689bc41156e4fbe755f8</srcmd5>
+    <version>2.2.3</version>
+    <time>1690370603</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1100171</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d97d94d9bc661e46929b7fe38d463a53</srcmd5>
+    <version>2.3.0</version>
+    <time>1694113997</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.3.0:
+  * Improve style of prompts using `rich` (#1901) @vemonet
+  * Fix replay (#1904) @vemonet
+  * Support multichoice overwrite (#1903) @Meepit
+- Switch to pyproject macro.</comment>
+    <requestid>1109385</requestid>
+  </revision>
+</revisionlist>

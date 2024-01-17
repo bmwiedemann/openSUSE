@@ -1,0 +1,6 @@
+<package name="dlt-daemon" project="openSUSE:Factory">
+  <title>DLT daemon</title>
+  <description>GENIVI DLT provides a log and trace interface, based on the standardised protocol specified in the AUTOSAR standard 4.0 DLT. It is used by other GENIVI components but can serve as logging framework for other applications without relation to GENIVI.
+  </description>
+  <devel project="devel:automotive" package="dlt-daemon"/>
+</package>

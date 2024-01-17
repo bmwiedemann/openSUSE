@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61bdbd54ede27123a51f6d08c36d66d3</srcmd5>
+    <version>0.1</version>
+    <time>1567010300</time>
+    <user>dimstar_suse</user>
+    <comment>Fix spelling of coreutils</comment>
+    <requestid>726735</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e167e4af92ffd3cfac37fdbe51b551c</srcmd5>
+    <version>0.1</version>
+    <time>1578674976</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle relative paths more gracefully 
+
+- Allow %stdout as well as %stdout% for -sOutputFile=</comment>
+    <requestid>762787</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e11a91c55c676bdbc17f2d1f66b51e7e</srcmd5>
+    <version>0.1</version>
+    <time>1590247630</time>
+    <user>maxlin_factory</user>
+    <comment>- Allow option files as well</comment>
+    <requestid>807779</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>83aa0bf44adc3c3825b079041d89bfab</srcmd5>
+    <version>0.1</version>
+    <time>1602155610</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle gv and gsview</comment>
+    <requestid>840066</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>512e41a93cc3606e48c273a259fb032d</srcmd5>
+    <version>0.1</version>
+    <time>1632173599</time>
+    <user>dimstar_suse</user>
+    <comment>- Map -o with its argument to -sOutputFile= (boo#1190614)</comment>
+    <requestid>920263</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>85f471539da4255e2b84e6d9c7277559</srcmd5>
+    <version>0.1</version>
+    <time>1634068192</time>
+    <user>dimstar_suse</user>
+    <comment>- Use TERM instead of KILL to let bwrap do its work
+- Enable bwrap to execute its option --die-with-parent</comment>
+    <requestid>924872</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a92d9c5f5f9e7dd6f367e51a5d3683dd</srcmd5>
+    <version>0.1</version>
+    <time>1634331853</time>
+    <user>dimstar_suse</user>
+    <comment>- Quote all variable which might include space 
+
+- Allow spaces in path, file, and user names
+  as well as check if all used programs are found.</comment>
+    <requestid>925405</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>50dc3b37ce69977b766310ff1eba8985</srcmd5>
+    <version>0.1</version>
+    <time>1637372364</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bugs introduced by last change
+  which was ad646933d3b9ec6d767842535414b4af1020c2f7 (boo#1191683)</comment>
+    <requestid>932546</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>21293c658a063cf9628272e83d0fb2f0</srcmd5>
+    <version>0.1</version>
+    <time>1639616447</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940648</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>7cb6eba7e1f21afe5ea8ed3206677d9b</srcmd5>
+    <version>0.1</version>
+    <time>1694701570</time>
+    <user>anag+factory</user>
+    <comment>- Make it work even with different hwcaps versions</comment>
+    <requestid>1111326</requestid>
+  </revision>
+</revisionlist>

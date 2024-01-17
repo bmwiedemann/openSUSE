@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>66957d3c1a026608c76cbb24f1951ece</srcmd5>
+    <version>0.3.1</version>
+    <time>1569588488</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>731195</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc5d51cc0a0e49a0ad6ad228eec1ff81</srcmd5>
+    <version>0.3.2</version>
+    <time>1570701187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.2:
+  * Fixed handling of KeyboardInterrupt exceptions.</comment>
+    <requestid>736693</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fb8de3fe1d005e10fb314f05e8fbdf33</srcmd5>
+    <version>0.4.0</version>
+    <time>1575282439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  - Changed the way event names are stored and exposed.
+  - Fixed parsing of options after a -- token. (forwarded request 751627 from mcepl)</comment>
+    <requestid>751628</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d3edf49b09821152e263169b8baef4f</srcmd5>
+    <version>0.4.1</version>
+    <time>1579032548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * minor fixes</comment>
+    <requestid>764231</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07f4690700c1be9ffd7424061bb36b3f</srcmd5>
+    <version>0.4.2</version>
+    <time>1584350402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  * Fixed the terminal width being set to 0 in some circumstances (#15).
+  * Fixed the comptibility with the latest version of pastel (#10).</comment>
+    <requestid>785249</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b22e7a5276c57771249ce3e528aeae38</srcmd5>
+    <version>0.4.2</version>
+    <time>1585176297</time>
+    <user>dimstar_suse</user>
+    <comment>- Add macro %dephell_genspec to generate setup.py</comment>
+    <requestid>787820</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>146eca6f295ffdeb1f2ed9600f9a1a89</srcmd5>
+    <version>0.6.2</version>
+    <time>1594706315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820531</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d4e20a28f9388c70677088337076b3af</srcmd5>
+    <version>0.6.2</version>
+    <time>1603961316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843189</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c787f3302cfabeb22acee53d5f9aa90a</srcmd5>
+    <version>0.6.2</version>
+    <time>1688661009</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097120</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9859aa95291584ca2f01b7bed049818e</srcmd5>
+    <version>3.1.2</version>
+    <time>1629706080</time>
+    <user>dimstar_suse</user>
+    <comment>new dependency of openexr</comment>
+    <requestid>913053</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dd930cb3ee9519d07dbbb5cb6b992995</srcmd5>
+    <version>3.1.3</version>
+    <time>1639685962</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.1.3
+  * Patch release with miscellaneous fixes
+  * Fix undefined access of a vector when empty
+  * Require sphinx 4.0.3
+  * Build sphinx/doxygen docs with CMake
+  * Use PYIMATH_OVERRIDE_PYTHON_INSTALL_DIR to specify destination python modules
+  * Guard `__has_attribute` for compilers that don't support it
+  * Cuda safety fixes
+  * Replace stray Imath:: with IMATH_INTERNAL_NAMESPACE::</comment>
+    <requestid>940214</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c0ecebd42e13c07258b397aeda8dec8</srcmd5>
+    <version>3.1.5</version>
+    <time>1656053114</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.5:
+  * Update CI workflow matrix for VFX-CY2022
+  * Use _WIN32 instead of _MSC_VER to fix mingw build
+  * Fix 32-bit x86 build failure with 16c instructions
+  * Move numeric_limits specializations into half.h
+  * Change references to &quot;master&quot; branch to &quot;main&quot;
+  * Remove some simple typos in the code
+  * Added missing check _M_IX86 or _M_X64 when using __lzcnt.
+  * SolveNormalizedCubic fix to return proper real root
+  * Add docs target only if not a subproject
+  * Fix docs race condition and make installation optional
+  * Remove dead PyImath code and references to ilmbase
+  * Use equalWithAbsError instead of equal operator for float
+  * Fix sphinx warnings and man page filenames
+  * Adding missing stdexcept header
+  * for better SIMD auto-vectorization
+  * Remove extra project layer for the pyimath code
+  * Successor/predecessor functions use isnan() and isinf()
+  * Fix python imath export
+  * Cuda safety fixes
+  * Sort Imath source files
+  * Fix formatting in release notes (forwarded request 984250 from dirkmueller)</comment>
+    <requestid>984410</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>90c9a4259b6a5fd0ecca614b1ad99869</srcmd5>
+    <version>3.1.6</version>
+    <time>1670588185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.6:
+  * Patch release with miscellaneous bug/doc/build fixes.
+  * [#269] fix memory leak in V3fArrayFromBuffer
+  * [#268] Add &lt;cstdint&gt; for int64_t
+  * [#263] Initialize x in testRoots.cpp:solve() to suppress compiler
+    warning
+  * [#262] Fix gcc compiler warning in testFun.cpp
+  * [#261] Test return value of extractSHRT to avoid uninitialized reference
+  * [#260] Fix example code so it compiles as is
+  * [#259] Cuda safety in several headers
+  * [#256] Fix markdown and typos in README.md
+  * [#255] Do not warn if half.h has already being included
+  * [#250] Fix compiler warnings on windows
+  * [#249] Remove irrelevant cvs ignore files
+  * [#248] Update sphinx version (forwarded request 1040797 from dirkmueller)</comment>
+    <requestid>1041319</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5a815f7456c58362c6e8aaf40de20a03</srcmd5>
+    <version>3.1.9</version>
+    <time>1688398893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096355</requestid>
+  </revision>
+</revisionlist>

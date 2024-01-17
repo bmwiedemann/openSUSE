@@ -1,0 +1,72 @@
+Index: fabric-3.2.2/tests/conftest.py
+===================================================================
+--- fabric-3.2.2.orig/tests/conftest.py
++++ fabric-3.2.2/tests/conftest.py
+@@ -4,15 +4,9 @@ from unittest.mock import patch
+ 
+ from pytest import fixture
+ 
+-# Set up icecream globally for convenience.
+-from icecream import install as install_icecream
+-
+ from fabric.testing.fixtures import client, remote, sftp, sftp_objs, transfer
+ 
+ 
+-install_icecream()
+-
+-
+ # TODO: does this want to end up in the public fixtures module too?
+ @fixture(autouse=True)
+ def no_user_ssh_config():
+Index: fabric-3.2.2/tests/_util.py
+===================================================================
+--- fabric-3.2.2.orig/tests/_util.py
++++ fabric-3.2.2/tests/_util.py
+@@ -3,7 +3,7 @@ import os
+ import re
+ import sys
+ 
+-from invoke.vendor.lexicon import Lexicon
++from lexicon import Lexicon
+ from pytest_relaxed import trap
+ 
+ from fabric.main import make_program
+Index: fabric-3.2.2/tests/auth.py
+===================================================================
+--- fabric-3.2.2.orig/tests/auth.py
++++ fabric-3.2.2/tests/auth.py
+@@ -2,7 +2,7 @@ from getpass import getpass
+ from pathlib import Path
+ from unittest.mock import Mock, patch
+ 
+-from invoke.vendor.lexicon import Lexicon
++from lexicon import Lexicon
+ from pytest import raises, fixture
+ from paramiko import (
+     AgentKey,
+Index: fabric-3.2.2/tests/config.py
+===================================================================
+--- fabric-3.2.2.orig/tests/config.py
++++ fabric-3.2.2/tests/config.py
+@@ -3,7 +3,7 @@ from os.path import join, expanduser
+ 
+ from paramiko.config import SSHConfig
+ from invoke import Local
+-from invoke.vendor.lexicon import Lexicon
++from lexicon import Lexicon
+ 
+ from fabric import Config, Remote, RemoteShell
+ from fabric.util import get_local_user
+Index: fabric-3.2.2/tests/connection.py
+===================================================================
+--- fabric-3.2.2.orig/tests/connection.py
++++ fabric-3.2.2/tests/connection.py
+@@ -13,7 +13,7 @@ from paramiko import SSHConfig
+ import pytest  # for mark, internal raises
+ from pytest import skip, param
+ from pytest_relaxed import raises
+-from invoke.vendor.lexicon import Lexicon
++from lexicon import Lexicon
+ 
+ from invoke.config import Config as InvokeConfig
+ from invoke.exceptions import ThreadException

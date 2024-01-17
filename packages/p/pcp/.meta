@@ -1,0 +1,14 @@
+<package name="pcp" project="openSUSE:Factory">
+  <title>System-level performance monitoring and performance management</title>
+  <description>Performance Co-Pilot (PCP) provides a framework and services to support
+system-level performance monitoring and performance management. 
+
+The PCP open source release provides a unifying abstraction for all of
+the interesting performance data in a system, and allows client
+applications to easily retrieve and process any subset of that data. 
+
+#
+# libpcp
+#</description>
+  <devel project="Base:System" package="pcp"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="splix" project="openSUSE:Factory">
+  <title>Driver for Samsung Printer Language printers</title>
+  <description>SpliX is a set of CUPS printer drivers for SPL (Samsung Printer
+Language) printers. Some Samsung, Xerox and Dell printers use that
+language.</description>
+  <devel project="Printing" package="splix"/>
+</package>

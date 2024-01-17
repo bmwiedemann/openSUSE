@@ -1,0 +1,16 @@
+--- libfixmath-master/tests/tests.cmake	2023-08-08 13:51:26.281477312 +0200
++++ libfixmath-master/tests/tests.cmake	2023-08-08 14:00:31.281701768 +0200
+@@ -26,13 +26,11 @@
+         ${CMAKE_CURRENT_SOURCE_DIR})
+     target_compile_definitions(libfixmath_${name} PRIVATE ${defs})
+     target_compile_options(libfixmath_${name} PRIVATE ${sanitizer_opts})
+-    target_link_options(libfixmath_${name} PRIVATE ${sanitizer_opts})
+     add_executable(tests_${name} ${tests-srcs})
+     target_link_libraries(tests_${name} PRIVATE libfixmath_${name} m)
+     target_include_directories(tests_${name} PRIVATE ${CMAKE_SOURCE_DIR})
+     target_compile_definitions(tests_${name} PRIVATE ${defs})
+     target_compile_options(tests_${name} PRIVATE ${sanitizer_opts})
+-    target_link_options(tests_${name} PRIVATE ${sanitizer_opts})
+     add_dependencies(make_tests tests_${name})
+     add_test(NAME tests_${name} COMMAND tests_${name})
+ endfunction()

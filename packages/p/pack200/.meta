@@ -1,0 +1,5 @@
+<package name="pack200" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="pack200"/>
+</package>

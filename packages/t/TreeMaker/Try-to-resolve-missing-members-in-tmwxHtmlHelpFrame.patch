@@ -1,0 +1,68 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 01:03:22 +0200
+Subject: [PATCH 11/20] Try to resolve missing members in tmwxHtmlHelpFrame
+
+Both m_Printer and m_HtmlWin are nowhere to be found. The printer seems
+to come in via the setter, so we can probably just put it in our class.
+Presumably it was previously in some base.
+
+As for m_HtmlWin I hope I got the right one. A method GetOpenedPage
+exists for exactly one class in wxWidgets: wxHtmlWindow. That seems to
+be obtained by these calls. I can't test it yet, let's see.
+---
+ Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.cpp | 13 ++++++++-----
+ Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.h   |  3 +++
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.cpp b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.cpp
+index 4c96b5f..6feddf8 100644
+--- a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.cpp
++++ b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.cpp
+@@ -15,7 +15,8 @@ Copyright:    
+ Constructor
+ *****/
+ tmwxHtmlHelpFrame::tmwxHtmlHelpFrame(wxHtmlHelpData* data) : 
+-  wxHtmlHelpFrame(data)
++  wxHtmlHelpFrame(data),
++  m_Printer(NULL)
+ {
+ }
+ 
+@@ -58,8 +59,9 @@ Perform the File->Print... command
+ void tmwxHtmlHelpFrame::OnPrint(wxCommandEvent& event)
+ {
+   TMASSERT(m_Printer);
+-  TMASSERT(!!m_HtmlWin->GetOpenedPage());
+-  m_Printer->PrintFile(m_HtmlWin->GetOpenedPage());
++  const wxHtmlWindow* htmlWin = GetHelpWindow()->GetHtmlWindow();
++  TMASSERT(!!htmlWin->GetOpenedPage());
++  m_Printer->PrintFile(htmlWin->GetOpenedPage());
+ }
+ 
+ 
+@@ -78,8 +80,9 @@ Perform the File->Print Preview... command
+ void tmwxHtmlHelpFrame::OnPrintPreview(wxCommandEvent& event)
+ {
+   TMASSERT(m_Printer);
+-  TMASSERT(!!m_HtmlWin->GetOpenedPage());
+-  m_Printer->PreviewFile(m_HtmlWin->GetOpenedPage());
++  const wxHtmlWindow* htmlWin = GetHelpWindow()->GetHtmlWindow();
++  TMASSERT(!!htmlWin->GetOpenedPage());
++  m_Printer->PreviewFile(htmlWin->GetOpenedPage());
+ }
+ 
+ 
+diff --git a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.h b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.h
+index a6b42ce..6814d7d 100644
+--- a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.h
++++ b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpFrame.h
+@@ -34,6 +34,9 @@ public:
+   void OnPrintPreviewUpdateUI(wxUpdateUIEvent& event);
+   void OnPrintPreview(wxCommandEvent& event);
+   DECLARE_EVENT_TABLE()
++
++private:
++  wxHtmlEasyPrinting* m_Printer;
+ };
+ 
+ 

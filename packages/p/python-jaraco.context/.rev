@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5852305c02c87a8db1e0a1e2999b8fe</srcmd5>
+    <version>3.0.0</version>
+    <time>1616104500</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package for 3.0.0</comment>
+    <requestid>879768</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9bcd64f32f8f48aa744c9222ca26c8eb</srcmd5>
+    <version>4.0.0</version>
+    <time>1617279446</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882148</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>80ebd7f742adbfa0c5d10ba5f8ff549b</srcmd5>
+    <version>4.1.1</version>
+    <time>1657016844</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.1
+  * Fixed some docs rendering issues.
+  * To the ``ExceptionTrap``, added ``.raises()`` and ``.passes``
+    decorators.
+</comment>
+    <requestid>986611</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>68a1a27c127524b8944ce6566c933fa2</srcmd5>
+    <version>4.1.2</version>
+    <time>1684162442</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.2:
+  * Packaging refresh.
+  * Enrolled with Tidelift.</comment>
+    <requestid>1087120</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>311fdfbbfd552972e3d316e19cdc13b0</srcmd5>
+    <version>4.1.2</version>
+    <time>1684313558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087340</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fa46d1c8966b0e170b0f190dfdd4ca6d</srcmd5>
+    <version>4.3.0</version>
+    <time>1684952495</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.0:
+  * Deprecated ``runner`` parameter to ``tarball_context``.
+  * Added test for ``pushd``.
+  * Added ``on_interrupt`` decorator.</comment>
+    <requestid>1088462</requestid>
+  </revision>
+</revisionlist>

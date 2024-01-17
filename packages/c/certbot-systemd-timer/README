@@ -1,0 +1,16 @@
+# Automated renewal of certificates
+
+This package includes an optional systemd timer to handle certbot certificate renewals.
+
+This timer is set to run daily, with a random fudge factor of a 6 hours applied.
+
+To enable the timer based renewals:
+
+```
+systemctl enable --now certbot-renew.timer
+```
+
+The timer makes use of /etc/sysconfig/certbot to customise the behaviour.
+
+Unless there is a plugin that automates restarts (eg the apache plugin) it is
+important to configure a command to restart anything that uses the certificates

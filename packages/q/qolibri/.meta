@@ -1,0 +1,6 @@
+<package name="qolibri" project="openSUSE:Factory">
+  <title></title>
+  <description>qolibri is a dictionary viewer for the proprietary EPWING dictionary format (primarily used by monolingual Japanese dictionaries).</description>
+  <devel project="M17N" package="qolibri"/>
+  <url>https://github.com/ludios/qolibri</url>
+</package>

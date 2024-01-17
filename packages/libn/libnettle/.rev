@@ -1,0 +1,445 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afed5475508f99cadb9698d32b083b09</srcmd5>
+    <version>2.2</version>
+    <time>1313652974</time>
+    <user>saschpe</user>
+    <comment>Fixed licenses</comment>
+    <requestid>79152</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c1d6b1925ddcbed5625b73276d1abb88</srcmd5>
+    <version>2.2</version>
+    <time>1313652989</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79152
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fae13e0c729eaa713a089baeae668b8b</srcmd5>
+    <version>2.2</version>
+    <time>1314625406</time>
+    <user>saschpe</user>
+    <comment>- use original source
+- add baselibs.conf
+- drop licenses</comment>
+    <requestid>80029</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>beb68d15a598df03a77f434f6a8cefc1</srcmd5>
+    <version>2.2</version>
+    <time>1314625415</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80029
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e88daa9ad00f346523d6d37eac68470f</srcmd5>
+    <version>2.4</version>
+    <time>1316681242</time>
+    <user>saschpe</user>
+    <comment>- Update to version 2.4 only two important changes
+* ripemd160 was broken on all big endian machines
+* add pkgconfig files (forwarded request 83651 from elvigia)</comment>
+    <requestid>83652</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>265dc86cf752af1ddad68e210b79c8c1</srcmd5>
+    <version>2.4</version>
+    <time>1317024468</time>
+    <user>saschpe</user>
+    <comment>- BuildRequire pkgconfig to fix rpmlint warning (forwarded request 84667 from elvigia)</comment>
+    <requestid>84675</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>265dc86cf752af1ddad68e210b79c8c1</srcmd5>
+    <version>2.4</version>
+    <time>1319182114</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>f5f6a305987348cc3f4486581a72c55f</srcmd5>
+    <version>2.4</version>
+    <time>1328890619</time>
+    <user>coolo</user>
+    <comment>spec cleanup</comment>
+    <requestid>103259</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>f5f6a305987348cc3f4486581a72c55f</srcmd5>
+    <version>2.4</version>
+    <time>1340183611</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b51d9e120cb2f552e91c769f6e91affb</srcmd5>
+    <version>2.5</version>
+    <time>1353952690</time>
+    <user>coolo</user>
+    <comment>upgrade to 2.5 (forwarded request 142834 from AndreasStieger)</comment>
+    <requestid>142925</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b51d9e120cb2f552e91c769f6e91affb</srcmd5>
+    <version>2.5</version>
+    <time>1359109312</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>330c9ae1932017634d1041e63e016e4c</srcmd5>
+    <version>2.7</version>
+    <time>1368713557</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.7
+  * Support for the GOST R 34.11-94 hash algorithm
+  * Support for SHA3
+  * Support for PKCS #5 PBKDF2
+  * Fixed a small memory leak in nettle_realloc and
+    nettle_xrealloc.
+  * x86_64 assembly for SHA256, SHA512, and SHA3
+  * ARM assembly code for several additional algorithms,
+    including AES, Salsa20, and the SHA family of hash
+    functions.
+  * Support for 12-round salsa20, &quot;salsa20r12&quot;, as specified by
+    eSTREAM.
+  * Support for UMAC, including x86_64 and ARM assembly.
+  * Support for ECDSA signatures. Elliptic curve operations over
+    the following curves: secp192r1, secp224r1, secp256r1,
+    secp384r1 and secp521r1, including x86_64 and ARM assembly
+    for the most important primitives.
+- Depend on makeinfo for info file generation.
+- Don't disable static libs, they are needed at build time.</comment>
+    <requestid>175855</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e65cde84e9a26fee96ee7ed717567a83</srcmd5>
+    <version>2.7.1</version>
+    <time>1372173261</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.7.1
+  * Fixed ecc_modp_mul call, to avoid invalid overlap of arguments to
+    mpn_mul_n. Problem tracked down by Magnus Holmgren.
+  * ARM fixes.
+- reference gpg signatures and keyring. checking not enabled as to
+  avoid cycles.</comment>
+    <requestid>180886</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e65cde84e9a26fee96ee7ed717567a83</srcmd5>
+    <version>2.7.1</version>
+    <time>1379663019</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>88301302cf8febd1d26390737805370a</srcmd5>
+    <version>2.7.1</version>
+    <time>1387485494</time>
+    <user>coolo</user>
+    <comment>- also build baselibs for libnettle-devel (for wine 32bit development)</comment>
+    <requestid>211699</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>ed9e084a01be045e7c4088221a36a1c6</srcmd5>
+    <version>2.7.1</version>
+    <time>1400255783</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner
+- Paralelize test run</comment>
+    <requestid>233729</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>ed9e084a01be045e7c4088221a36a1c6</srcmd5>
+    <version>2.7.1</version>
+    <time>1409301638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>3f687a3d1b0b355010d0be3e9c14534e</srcmd5>
+    <version>2.7.1</version>
+    <time>1426485259</time>
+    <user>dimstar_suse</user>
+    <comment>- Add url to the spec
+
+- Revert back to 2.7</comment>
+    <requestid>290659</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>31f40674e01f7ad9f04d92a5570168b0</srcmd5>
+    <version>3.1</version>
+    <time>1429346304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295660</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>044f00f5164dc64d154a389337a96eb3</srcmd5>
+    <version>3.1</version>
+    <time>1429973229</time>
+    <user>coolo</user>
+    <comment>added patch: off-by-one-test-suite.patch
+- Address Sanitizer, found a off-by-one error in the test suite (bnc#928328)</comment>
+    <requestid>298783</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b382876c6acbd5c94511a216e2192d71</srcmd5>
+    <version>3.1.1</version>
+    <time>1430246591</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>304121</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>eb20fa6872847d2e1dd0dcd2c5164ae5</srcmd5>
+    <version>3.1.1</version>
+    <time>1436111614</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>314335</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f09a76c3e8db2c6a0a403484f80b19c7</srcmd5>
+    <version>3.2</version>
+    <time>1454833364</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.2 release bnc#964849 CVE-2015-8805 bnc#964847
+  CVE-2015-8804 bnc#964845 CVE-2015-8803:
+  * New functions for RSA private key operations, identified by
+    the &quot;_tr&quot; suffix, with better resistance to side channel
+    attacks and to hardware or software failures which could
+    break the CRT optimization
+  * SHA3 implementation is updated according to the FIPS 202 standard
+  * New ARM Neon implementation of the chacha stream cipher
+  * Should be compatible binary with 3.1 series
+- Add patch to fix build with cflags:
+  * nettle-respect-cflags.patch</comment>
+    <requestid>357899</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ab190939f4a4c9cde1fc0bf0ba980593</srcmd5>
+    <version>3.2</version>
+    <time>1456433081</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix postun-&gt;preun on info packages regenerating</comment>
+    <requestid>361107</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>df9613e5b371d836ea5054460cf21489</srcmd5>
+    <version>3.3</version>
+    <time>1478174264</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437662</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9c0cd5abbb019987d78fd14c2adeddb1</srcmd5>
+    <version>3.3</version>
+    <time>1487592765</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455836</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>7906cbdda4f97a6e209f78c2f99ed231</srcmd5>
+    <version>3.3</version>
+    <time>1504815051</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build of fat-arm:
+  * nettle-3.3-fix-fat-arm.patch
+
+- Build nettle with AES-NI support (bsc#1056980)</comment>
+    <requestid>520649</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>87e15ad906437239762c97c69ee421ac</srcmd5>
+    <version>3.4</version>
+    <time>1511426208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542964</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>0e084b18baa39b338490620396405185</srcmd5>
+    <version>3.4</version>
+    <time>1519902357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580136</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>481f9c66e86cda68e43aa57a9a0c0565</srcmd5>
+    <version>3.4.1~rc1</version>
+    <time>1544539475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655651</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dbfb46b13477a4c51f4efc4b0f6fb082</srcmd5>
+    <version>3.4.1</version>
+    <time>1546946299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662470</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>80420c3e87a145a4f55cfbefddb9f861</srcmd5>
+    <version>3.5.1</version>
+    <time>1568189978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720187</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>33ee92161dbc3c522f84b8b9586c4ec1</srcmd5>
+    <version>3.5.1</version>
+    <time>1570285113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734381</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a8daa52e15649580797b9319f490f9d4</srcmd5>
+    <version>3.6</version>
+    <time>1589315196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802550</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f88f2f9d9d4c7058ff5fafcdcede2cd8</srcmd5>
+    <version>3.7</version>
+    <time>1610303921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860568</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>85b5ef8f4e7f9fe7922b2811d5c67824</srcmd5>
+    <version>3.7.1</version>
+    <time>1614000176</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>873333</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>786909d9a80a2e2fcd6a541ada2f799a</srcmd5>
+    <version>3.7.2</version>
+    <time>1616598618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880401</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>3f518e27a0c1dc57b3248cad3f43a04f</srcmd5>
+    <version>3.7.2</version>
+    <time>1619107416</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887818</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ef67fcc744273ab4ef2693d171713e91</srcmd5>
+    <version>3.7.3</version>
+    <time>1623521138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899065</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>08c7570026b107e19cc0bf9cd62d1612</srcmd5>
+    <version>3.7.3</version>
+    <time>1642724692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947074</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>5809242c014373b32fbc31c04e611b32</srcmd5>
+    <version>3.7.3</version>
+    <time>1655493511</time>
+    <user>dimstar_suse</user>
+    <comment>- Make shared libraries executable (forwarded request 982825 from gmbr3)</comment>
+    <requestid>982832</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e9b89108e4311394868ba7d10ef11d80</srcmd5>
+    <version>3.8</version>
+    <time>1657715511</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8:
+  This release includes a couple of new features, and many
+  performance improvements. It adds assembly code for two more
+  architectures: ARM64 and S390x.
+  The new version is intended to be fully source and binary
+  compatible with Nettle-3.6. The shared library names are
+  libnettle.so.8.5 and libhogweed.so.6.5, with sonames
+  libnettle.so.8 and libhogweed.so.6.
+  New features:
+  * AES keywrap (RFC 3394), contributed by Nicolas Mora.
+  * SM3 hash function, contributed by Tianjia Zhang.
+  * New functions cbc_aes128_encrypt, cbc_aes192_encrypt,
+    cbc_aes256_encrypt.
+    On processors where AES is fast enough, e.g., x86_64 with
+    aesni instructions, the overhead of using Nettle's general
+    cbc_encrypt can be significant. The new functions can be
+    implemented in assembly, to do multiple blocks with reduced
+    per-block overhead.
+    Note that there's no corresponding new decrypt functions,
+    since the general cbc_decrypt doesn't suffer from the same
+    performance problem.
+  Bug fixes:
+  * Fix fat builds for x86_64 windows, these appear to never
+    have worked.
+  Optimizations:
+  * New ARM64 implementation of AES, GCM, Chacha, SHA1 and
+    SHA256, for processors supporting crypto extensions. Great
+    speedups, and fat builds are supported. Contributed by
+    Mamone Tarsha.
+  * New s390x implementation of AES, GCM, Chacha, memxor, SHA1,</comment>
+    <requestid>988627</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>ba8116ad7135fd081538b0f2c5715399</srcmd5>
+    <version>3.8.1</version>
+    <time>1659301254</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>991715</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>5b9457da559183b3300ee5cb045ebcea</srcmd5>
+    <version>3.8.1</version>
+    <time>1678555321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070247</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>62ea4d6daefd53c4dfae3ebcec61e477</srcmd5>
+    <version>3.9</version>
+    <time>1684313559</time>
+    <user>dimstar_suse</user>
+    <comment>libnettle 3.9 (forwarded request 1087283 from AndreasStieger)</comment>
+    <requestid>1087351</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f6e908b2273e908aafa1371a718e9e30</srcmd5>
+    <version>3.9.1</version>
+    <time>1686253320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091398</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>d002a2d5a9fec818a845a979218fbf19</srcmd5>
+    <version>3.9.1</version>
+    <time>1687900540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095348</requestid>
+  </revision>
+</revisionlist>

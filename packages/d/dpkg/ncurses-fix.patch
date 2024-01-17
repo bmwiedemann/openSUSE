@@ -1,0 +1,21 @@
+From 9b94694e59fa442b96ddf30a33782647cdda9b70 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Mon, 3 Jan 2022 13:18:35 +0100
+Subject: [PATCH 2/4] ncurses fix
+
+---
+ dselect/keyoverride | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/dselect/keyoverride b/dselect/keyoverride
+index 35967ffec..91a8c0cec 100644
+--- a/dselect/keyoverride
++++ b/dselect/keyoverride
+@@ -56,3 +56,4 @@ KEY_SRIGHT	Shift Right
+ KEY_SPREVIOUS	Shift Previous
+ KEY_MAX		[elide]
+ KEY_MIN		[elide]
++KEY_EVENT	[elide]
+-- 
+2.33.1
+

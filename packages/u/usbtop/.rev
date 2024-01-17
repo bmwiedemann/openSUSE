@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a65398552bc5b1982ea5554d84470dd8</srcmd5>
+    <version>0.2</version>
+    <time>1516222623</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 0.2
+</comment>
+    <requestid>565883</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e33364a0ca05790a16fbb1a9d2eef3cc</srcmd5>
+    <version>0.2</version>
+    <time>1531813313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622941</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>803b167b7d1660479501632d19898f7b</srcmd5>
+    <version>0.2</version>
+    <time>1532774559</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>625332</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8af3766ced44db6bdd471323fc94a88b</srcmd5>
+    <version>1.0</version>
+    <time>1553809824</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0:
+ * Add support for FreeBSD (thanks to https://github.com/yurivict !)
+ * Clean old code to proper C++11
+ * Remove boost::thread and system dependency (use C++11 thread support)
+ * Add headers for boost::circular_buffer if boost isn't found on the system.
+- remove usbtop-fix-build-boost.patch as it has been merged upstream
+</comment>
+    <requestid>689433</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>afd5ef3e4fe57b494d6d1e8e58fb5199</srcmd5>
+    <version>1.0</version>
+    <time>1554115035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689751</requestid>
+  </revision>
+</revisionlist>

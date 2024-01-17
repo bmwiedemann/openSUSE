@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:29:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Apr 18 23:00:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Switch to single spec version build for PSP
+
+-------------------------------------------------------------------
+Tue Dec  6 04:22:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version v8.8.2 
+  * Packaging refresh.
+  * Merge https://github.com/jaraco/skeleton
+
+-------------------------------------------------------------------
+Fri Aug  5 09:14:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add pip-run-suse-ring1-no-nbformat.patch for removal of nbformat
+  from Ring1 (pip-run will be in Ring1 for setuptools:test)
+
+-------------------------------------------------------------------
+Wed Jul 13 14:27:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v8.8.1
+- Required by setuptools 63 test suite
+- Tests use wheels for path and path.py for testing -- not packaged

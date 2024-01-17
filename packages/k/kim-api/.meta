@@ -1,0 +1,5 @@
+<package name="kim-api" project="openSUSE:Factory">
+  <title>Open Knowledgebase of Interatomic Models (OpenKIM)</title>
+  <description>The Open Knowledgebase of Interatomic Models (OpenKIM) aims to be an online resource for standardized testing, long-term warehousing and easy retrieval of interatomic models and data. </description>
+  <devel project="science" package="kim-api"/>
+</package>

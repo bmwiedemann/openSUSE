@@ -1,0 +1,18 @@
+<package name="translate-toolkit" project="openSUSE:Factory">
+  <title>Tools to assist with translation and software localization</title>
+  <description>A set of tools for managing translation and software localization via Gettext PO or XLIFF format files.
+
+Including:
+  * Convertors: convert from various formats to PO or XLIFF
+  * Formats:
+  * Core localization formats - XLIFF and Gettext PO
+  * Other localization formats - TMX, TBX, Qt Linguist (.ts), Java .properties, Wordfast TM, OmegaT glossary
+  * Compiled formats: Gettext MO, Qt .qm
+  * Other formats - OpenDocument Format (ODF), text, HTML, CSV, INI, wiki (MediaWiki, DokuWiki), iCal
+  * Specialised - OpenOffice.org GSI/SDF, PHP, Mozilla (.dtd, .properties, etc), Symbian, Innosetup, tikiwiki, subtitles
+  * Tools: count, search, debug, segment and pretranslate localization files. Extract terminology. Pseudo-localize
+  * Checkers: validate translations with over 45 checks 
+</description>
+  <devel project="M17N" package="translate-toolkit"/>
+  <url>http://translate.sourceforge.net/wiki/toolkit/index</url>
+</package>

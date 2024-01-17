@@ -1,0 +1,5 @@
+<package name="belr" project="openSUSE:Factory">
+  <title>Language recognition library</title>
+  <description>Belr aims at parsing any input formatted according to a language defined by an ABNF grammar, such as the protocols standardised at IETF.</description>
+  <devel project="network:telephony" package="belr"/>
+</package>

@@ -1,0 +1,57 @@
+From fea7159b7cc50deb7298b2858e125fb623012549 Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Tue, 13 Jun 2017 18:28:28 +0200
+Subject: [PATCH] Use gettext as fallback for translations
+
+Upstream polkit action files do not necessarily contain translations for
+all languages a distribution supports. And even if all translations are
+contained in the head branch, distributions sometimes need to ship older
+versions of packages. In order to allow retrofitting translations and
+shipping language packs for polkit actions without having to patch and
+rebuild packages gettext could be used as fallback. That way only
+additional .mo files have to be installed.
+So this patch makes polkit call into gettext with the domain
+'polkit-action-distro-translations' if an xml doesn't contain
+translations for the requested language.
+---
+ src/polkitbackend/polkitbackendactionpool.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/src/polkitbackend/polkitbackendactionpool.c b/src/polkitbackend/polkitbackendactionpool.c
+index 3894fe9..9252788 100644
+--- a/src/polkitbackend/polkitbackendactionpool.c
++++ b/src/polkitbackend/polkitbackendactionpool.c
+@@ -24,6 +24,7 @@
+ #include <pwd.h>
+ #include <string.h>
+ #include <expat.h>
++#include <locale.h>
+ 
+ #include <polkit/polkit.h>
+ #include <polkit/polkitprivate.h>
+@@ -1132,8 +1133,20 @@ _localize (GHashTable *translations,
+   if (result != NULL)
+     goto out;
+ 
+-  /* fall back to untranslated */
+-  result = untranslated;
++  /* try distro provided language bundle via gettext */
++
++  /* Set LANG and locale so g_dgettext() + friends work below */
++  if (setlocale (LC_ALL, lang) == NULL)
++    {
++      g_printerr ("Invalid locale '%s'\n", lang);
++    }
++  g_setenv ("LANG", lang, TRUE);
++
++  result = g_dgettext ("polkit-action-distro-translations", untranslated);
++
++  /* Back to C! */
++  setlocale (LC_ALL, "C");
++  g_setenv ("LANG", "C", TRUE);
+ 
+ out:
+   return result;
+-- 
+2.12.2
+

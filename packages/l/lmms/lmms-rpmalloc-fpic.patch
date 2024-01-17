@@ -1,0 +1,16 @@
+From: Plater <davejplater@gmail.com>
+Date: Sat 28 Mar 13:58:16 SAST 2020
+Subject: rpmalloc needs to build with -fPIC
+
+Add -fPIC to rpmalloc's CMakeLists.txt CFLAGS
+
+Index: b/src/3rdparty/rpmalloc/CMakeLists.txt
+===================================================================
+--- a/src/3rdparty/rpmalloc/CMakeLists.txt	2020-07-18 09:30:56.395198971 +0200
++++ b/src/3rdparty/rpmalloc/CMakeLists.txt	2020-07-18 09:33:20.424503126 +0200
+@@ -1,4 +1,4 @@
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -Wno-unused-variable")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -fPIC -Wno-unused-variable")
+ 
+ add_library(rpmalloc STATIC
+ 	rpmalloc/rpmalloc/rpmalloc.c

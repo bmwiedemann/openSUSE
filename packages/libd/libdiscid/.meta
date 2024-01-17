@@ -1,0 +1,14 @@
+<package name="libdiscid" project="openSUSE:Factory">
+  <title>Library for creating MusicBrainz DiscIDs from audio CDs</title>
+  <description>libdiscid is a C library for creating MusicBrainz DiscIDs from audio
+CDs. It reads a CD's table of contents (TOC) and generates an
+identifier which can be used to lookup the CD at MusicBrainz.
+Additionally, it provides a submission URL for adding the DiscID to the
+database.
+
+The interface of this library is new, but the DiscID algorithm and the
+operating system dependent CD-ROM/DVD-ROM access code have been ported
+from libmusicbrainz version 2. For more info about the interface read
+the [WWW] API documentation.</description>
+  <devel project="multimedia:libs" package="libdiscid"/>
+</package>

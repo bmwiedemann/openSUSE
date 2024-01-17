@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55e5daa44901e71bd20f4ca4ecc06e14</srcmd5>
+    <version>0.5.1</version>
+    <time>1500669993</time>
+    <user>dimstar_suse</user>
+    <comment>replaces python3-clint</comment>
+    <requestid>507860</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>45809385f3aba41c1d9c0edd1c2f8806</srcmd5>
+    <version>0.5.1</version>
+    <time>1545648458</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+- Add enable-setup-test.patch which enables support for `python3 setup.py test`,
+  see gh#kennethreitz/clint#167</comment>
+    <requestid>660690</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>72efada792dafa00a0a1708fa9dbd840</srcmd5>
+    <version>0.5.1</version>
+    <time>1621439371</time>
+    <user>dimstar_suse</user>
+    <comment>- remove enable-setup-test.patch as pytest is used now
+- use %pytest macro in %check
+</comment>
+    <requestid>894263</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>87e689a80ef98bd875b884df568e0b6d</srcmd5>
+    <version>0.5.1</version>
+    <time>1631646869</time>
+    <user>dimstar_suse</user>
+    <comment>- remove executable bits from examples
+</comment>
+    <requestid>918819</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4dfd6d021e5851f39cfb49769f612283</srcmd5>
+    <version>0.5.1</version>
+    <time>1660662477</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>996312</requestid>
+  </revision>
+</revisionlist>

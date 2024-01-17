@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>33a51e800a84fc4cb561cd9ddcbb092c</srcmd5>
+    <version>1.0.3</version>
+    <time>1503592527</time>
+    <user>dimstar_suse</user>
+    <comment>This tool is a dependency of FireHOL (request follows).</comment>
+    <requestid>508808</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2427115d92187a67252f8a621ce8bb1f</srcmd5>
+    <version>1.0.4</version>
+    <time>1505920026</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.0.4
+  * fix invalid size of ipset while reducing non-optimized ipsets
+</comment>
+    <requestid>526525</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>56966aa39ce1b7a271192605aa82a480</srcmd5>
+    <version>1.0.4</version>
+    <time>1560338068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708852</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,479 @@
+-------------------------------------------------------------------
+Fri Sep 29 08:24:47 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- add python3-minidb minimal requirement
+
+-------------------------------------------------------------------
+Wed May  3 09:05:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.28:
+  * Browser jobs: Migrate from Pyppeteer to Playwright (#761, #751)
+
+-------------------------------------------------------------------
+Wed May  3 09:04:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.27:
+  Added:
+  * css and xpath filters now accept a sort subfilter to sort matched elements lexicographically
+  Fixed:
+  * Rework handling of running from a source checkout, fixes issues with example
+    files when urlwatch was run as /usr/sbin/urlwatch, e.g. on Void Linux (fixes #755)
+  * Add support for docutils >= 0.18, which deprecated frontend.OptionParser (fixes #754)
+  * Browser jobs: Fix support for Python 3.11 with @asyncio.coroutine removal (#759)
+
+-------------------------------------------------------------------
+Tue Apr 11 13:22:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.26:
+  Added:
+  * browser job: Add support for specifying useragent (#700)
+  * Document how to ignore whitespace changes (PR#707)
+  * shell reporter: Call a script or program when chanegs are detected (fixes #650)
+  * New separate configuration option for reporters to split reports into one-per-job
+  * --change-location option allowing job location to be changed without losing job history (#739)
+  Changed:
+  * Docs: Re-group diff-related topics and improve wording (PR#712)
+  * Improved HTML e-mail diff style, including Dark Mode support (#730)
+  * Require Python >= 3.7, as Python 3.6 was EOL'd on 2021-12-23
+  * Dockerfile: Shrink image by switching to an Alpine-based Python 3.11
+    base image, this reduces the container size from 1 GiB to 151 MiB (#731)
+  * --gc-cache can now take a parameter to keep more than 1 historical snapshot (#732)
+  Fixed:
+  * Limit e-mail header length to 78 characters to avoid issues with some SMTP servers (PR#703, fixes #702)
+  * Fix a ResourceWarning for unclosed files when running unit tests (PR#698)
+  * Add support for html2text 2.1.1 and newer by feature-checking -utf8 support via -help (fixes #718)
+  * html2text options were only applied to the first job when using job_defaults (PR#726, fixes #588)
+  * Update Github tags watch filter documentation with new XPath (fixes #723)
+  * Fix --gc-cache to clear unknown keys when using Redis storage (fixes #743)
+
+-------------------------------------------------------------------
+Fri Mar 18 09:23:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.25:
+  Added:
+  * Add a colored setting for the Discord reporter, enabled by
+    default (PR#683)
+  * Add a splitlines filter for trimming leading/trailing whitespace
+    in each line (PR#693)
+  * If a shell job fails, the job's stdout and stderr are added to
+    the error message (fixes #689)
+  * shell job: Add optional stderr key to customize how output on
+    stderr is treated
+  * Add --dump-history JOB command-line option to print historic
+    job outputs (fixes #681)
+  * Add display / empty-diff configuration option to skip reports when
+    diffs are empty due to diff_filter (fixes #692)
+  * New man pages: urlwatch-intro(7), urlwatch-deprecated(7),
+    urlwatch-cookbook(7), urlwatch-jobs(5), urlwatch-filters(5),
+    urlwatch-config(5) and urlwatch-reporters(5).
+  Changed:
+  * Require minidb 2.0.6; issue VACUUM only with --gc-cache (fixes #690)
+  * For shell jobs, stderr output isn't sent to urlwatch's stdout anymore;
+    add stdout: urlwatch to your shell job definition if you depend on
+    the old default behavior
+  Fixed:
+  * pytest command-line arguments are not wrongly interpreted by
+    CommandConfig anymore (fixes #677)
+
+-------------------------------------------------------------------
+Mon Dec 13 16:06:55 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.24:
+  Added:
+  * The Telegram reporter has gained two new options:
+    silent: Receive message notification without sound
+    monospace: Format message in monospace style
+  * Support for running a subset of jobs by specifying their index
+    on the command line
+  Changed:
+  * Migrated CI pipeline from Travis CI to Github Actions
+  * user_visible_url can now be specified for all job types (#654)
+  * Added a remove-duplicate-lines filter.
+  * Added a csv2text filter.
+  * Set envelope from (-f option) when sending emails using sendmail
+  * It is now possible to override the HTTP method when data is set
+    on a URL job
+  Fixed:
+  * Fix UnboundLocalError when SMTP auth is enabled, but keyring
+    is not installed (#667)
+
+-------------------------------------------------------------------
+Tue Apr 13 12:37:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.23:
+  Added:
+  * New filter: pretty-xml to indent/pretty-print XML documents
+  * New filter: jq to parse, transform, and extract JSON data
+  * New reporter: prowl
+  Fixed:
+  * Proper multi-line highlighting for wdiff (PR#615)
+  * Fix command-line generation for html2text (PR#619)
+
+-------------------------------------------------------------------
+Mon Jan  4 10:59:57 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.22:
+  Added:
+  * Added 'wait_until' option to browser jobs to configure how long
+    the headless browser will wait for pages to load.
+  * Jobs now have an optional treat_new_as_changed (default false)
+    key that can be set, and will treat newly-found pages as changed,
+	and display a diff from the empty string (useful for diff_tool
+	or diff_filter with side effects)
+  * New reporters: discord, mattermost
+  * New key user_visible_url for URL jobs that can be used to show a
+    different URL in reports (useful if the watched URL is a REST API
+	endpoint, but the report should link to the corresponding web page)
+  * The Markdown reporter now supports limiting the report length via
+    the max_length parameter of the submit method. The length limiting
+	logic is smart in the sense that it will try trimming the details first,
+	followed by omitting them completely, followed by omitting the summary.
+	If a part of the report is omitted, a note about this is added to the
+	report. (PR#572, by Denis Kasak)
+  Changed:
+  * Diff output is now generated more uniformly, independent of whether
+    the input data has a trailing newline or not; if this behavior is not
+	intended, use an external diff_tool (PR#550, by Adam Goldsmith)
+  * The --test-diff-filter output now properly reports timestamps from the
+    history entry instead of the current date and time (Fixes #573)
+  * Unique GUIDs for jobs are now enforced at load time, append "#1",
+    "#2", ... to the URLs to make them unique if you have multiple different
+	jobs that share the same request URL (Fixes #586)
+  * When a config, urls file or hooks file does not exist and should be
+    edited or inited, its parent folders will be created (previously only
+	the urlwatch configuration folder was created; Fixes #594)
+  * Auto-matched filters now always get None supplied as subfilter; any
+    custom filters must accept a subfilter parameter after the existing
+	data parameter
+  * Drop support for Python 3.5
+  Fixed:
+  * Make imports thread-safe: This might increase startup times a bit,
+    as dependencies are imported on bootup instead of when first used.
+	Importing in Python is not (yet) thread-safe, so we cannot import
+	new modules from the worker threads reliably (Fixes #559, #601)
+  * The Matrix reporter was improved in several ways (PR#572, by Denis Kasak):
+    - The maximum length of the report was increase from 4096 to 16384.
+    - The report length limiting is now implemented via the new length
+	  limiting functionality of the Markdown reporter. Previously, the
+	  report was simply trimmed at the end which could break the diff
+	  blocks and make them render incorrectly.
+    - The diff code blocks are now tagged as diffs which will allow the
+	  diffs to be syntax highlighted as such. This doesn't yet work in
+	  Element, pending on the resolution of trentm/python-markdown2#370.
+
+-------------------------------------------------------------------
+Fri Jul 31 06:40:19 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.21:
+  Added:
+  * Added --test-reporter REPORTER command-line option to send an
+    example report using any configured notification service
+  * JobBase now has main_thread_enter() and main_thread_exit() functions
+    that can be overridden by subclasses to run code in the main thread
+    before and after processing of a job
+  Removed:
+  * The --test-slack command line option has been removed, you can test
+    your Slack reporter configuration using --test-reporter slack
+  Changed:
+  * The browser job now uses Pyppeteer instead of Requests-HTML for
+    rendering pages while executing JavaScript; this makes JavaScript
+    execution work properly
+  Fixed:
+  * Applying legacy hooks.py filters 
+
+-------------------------------------------------------------------
+Thu Jul 30 06:21:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.20:
+  Added:
+  * A job can now have a diff_filter set, which works the same way as
+    the normal filter (and has the same filters available), but applies
+    to the diff output instead of the page content (can be tested with
+    --test-diff-filter, needs 2 or more historic snapshots in the cache)
+  * Documentation now has a section on the configuration settings
+    (--edit-config)
+  * New filter: ocr to convert text in images to plaintext
+    (using Tesseract OCR)
+  * New reporters:
+    - ifttt to send an event to If This Then That (ifttt.com)
+      (#512, by Florian Gaultier)
+    - xmpp to send a message using the XMPP (Jabber)
+      protocol (#533, by Thorben Günther)
+  Changed:
+  * The urlwatch script (Git only) now works when run from different paths
+  * Chunking of strings (e.g. for Slack and Telegram) now adds
+    numbering (e.g. (1/2)) to the messages (only if a message is split
+    into multiple parts)
+  * Unit tests have been migrated from nose to pytest and moved from
+    test/ to lib/urlwatch/tests/
+  * The css and xpath filters now accept skip and maxitems as subfilter
+  * The shellpipe filter now inherits all environment variables
+    (e.g. $PATH) of the urlwatch process
+  Fixed:
+  * The html2text method lynx now treats any subfilters with a
+    non-null value as command-line argument -key value (previously
+    only the value true was treated like this, and any other values
+    were silently dropped)
+
+-------------------------------------------------------------------
+Sat Jul 18 08:41:33 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.19:
+  Added:
+  * Documentation is now available at urlwatch.readthedocs.io and
+    shipped in the source tarball under docs/; filter examples in
+    the docs are unit-tested
+  New filters:
+  * reverse: Reverse input items (default: line-based) with optional separator
+  * pdf2text: Convert PDF files to plaintext (must be first filter in chain)
+  * shellpipe: Filter text with arbitrary command-line utilities / shell scripts
+  * FilterBase API improvements for specifying subfilters:
+    - Add __supported_subfilters__ for sub filter checking and --features output
+    - Add __default_subfilter__ to map value-only parameters to
+      dict parameters, for example the grep filter now has a default
+      subfilter named re
+  * Support for using Redis as a cache backend via --cache=redis://localhost:6379/
+  Fixed:
+  * Declare updated Python 3.5 dependency in setup.py
+  Changed:
+  * Filter improvements:
+    - sort: Add reverse option to reverse the sorting order
+    - sort: Add separator option to specify item separator (default is still line-based)
+    - beautify: The jsbeautifier (for <script> tags) and cssbeautifier
+      (for <style> tags) module dependencies are now optional
+      if they are not installed, beautify only works on the HTML
+    - Most filters that only had unnamed subfilters (e.g. grep)
+      now have a named default subfilter
+  * Reporter improvements:
+    - pushover: The message priority can now be configured
+    - Travis CI: Set pycodestyle version to 2.6.0 to avoid CI breakage
+      when new style checks are added
+    - Diff results are now runtime cached on a per-job basis, which shouldn't
+      affect behavior, but could be observed by an external diff_tool
+      running at most once per job instead of multiple times
+    - Jobs with a custom diff_tool or a shellpipe filter are now ignored
+      if jobs.yaml has the world-writable bit (o+w) set or is not owned by
+      the current user (does not apply to Windows); previously only shell
+      jobs were ignored if the permissions/owners were wrong
+  Deprecated:
+  * String-based filter definitions (e.g. html2text,grep:Current.*version,strip)
+    are now deprecated, it is recommended to use YAML-based dictionary-style listing
+    of filters, which is more flexible, easier to read and write and more structured
+
+-------------------------------------------------------------------
+Mon May  4 06:46:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.18:
+  Added:
+  * New filter: re.sub that can replace/remove strings using regular
+    expressions
+  * Support ignore_timeout_errors and ignore_too_many_redirects for
+    URL jobs (#423, by Josh aka Zevlag)
+  * HTML reporter: Add viewport meta tag for improved viewing on
+    mobile devices (#432, by Mike Borsetti)
+  * Optional support for insecure SMTP password storage in the
+    config; use with caution (#431)
+  Fixed:
+  * Fix --test-filter when the specified job is not found
+  * Fix another YAMLLoadWarning in unit tests (#382, by Louis Sautier)
+  * Documentation updates and typo fixes (by Nate Eagleson)
+  * Pushover: Fix default device config (Fixes #409 and #372,
+    documented by Richard Goodwin)
+  Changed:
+  * Nicer formatting of --features for jobs with no docstring
+    or many keys
+  * The XPath and CSS filters now support XML namespaces
+    (#404, by Chenfeng Bao)
+  * Drop support for Python 3.3 and Python 3.4 (new minimum
+    requirement is Python 3.5)
+  * Use html.escape instead of cgi.escape (which was removed
+    in Python 3.8; #424, by Chenfeng Bao)
+  * Allow non-ASCII characters in format-json output filter
+    (#433, by Mike Borsetti)
+
+-------------------------------------------------------------------
+Wed Mar  4 09:29:31 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- This is a python3 application, so there's no need to require python2
+  packages. Also, add a missing python3-cssselect dependency and make
+  python3-keyring a recommndation since it's not really required
+  (it seems to be used only to store the smtp password when enabled)
+
+-------------------------------------------------------------------
+Mon Apr 15 08:29:05 UTC 2019 - mvetter@suse.com
+
+- Update to 2.17:
+  Added:
+  * XPath/CSS: Support for excluding elements (#333, by Chenfeng Bao)
+  * Add support for using external diff_tool on Windows (#373, by Chenfeng Bao)
+  * Document how to use Amazon Simple E-Mail Service "SES" (by mborsetti)
+  * Compare data with multiple old versions (compared_versions, #328, by Chenfeng Bao)
+  Fixed:
+  * YAML: Fix deprecation warnings (#367, by Florent Aide)
+  * Updated manpage with new options: Authentication, filter tests (Fixes #351)
+  * Text formatter: Do not emit empty lines for line_length=0 (Fixes #357)
+  Changed:
+  * SMTP configuration fix: Only use smtp.user config if it's a non-empty value
+
+-------------------------------------------------------------------
+Mon Jan 28 08:31:53 UTC 2019 - mvetter@suse.com
+
+- Update to 2.16:
+  * Added XPath: Handle /text() selector (#282)
+  * Added document how to specify cookies to README.md (#264)
+  * Added text Reporter: minimal config option to only print a summary (PR#304, fixes #147)
+  * Added README.md: Document how to watch Github releases via XPath (#266)
+  * Added jupport for parsing XML/RSS with XPath (Fixes #281)
+  * Allow explicit setting of encoding for URL jobs (PR#313, contributes to #306)
+  * Added Slack Channel Reporter (PR#309)
+  * Added ANSI color output on the Windows console via colorama (PR#296, closes #295)
+  * Added support for using CSS selectors via the cssselect module (PR#321, closes 273)
+  * ignore_http_error_codes is now an option for URL jobs (PR#325, fixes #203)
+  * Added job_defaults in the config for globally specifying settings (PR#345, closes #253)
+  * Added Optional timeout (in seconds) for URL jobs to specify socket timeout (PR#348, closes #340)
+  * Remvoed support for JSON storage (dead code that was never used in production; PR#336)
+  * HtmlReporter now also highlights links for browser jobs (PR#303)
+  * Allow --features and --edit-* to run without urls.yaml (PR#301)
+  * When a previous run had errors, do not use conditional GETs (PR#313, fixes #292)
+  * Explicitly specify JSON pretty print separators for consistency (PR#343)
+  * Use data-driven unit tests/fixtures for easier unit test maintenance (PR#344)
+  * Fix migration issues with case-insensitive filesystems (#223)
+  * Correctly reset retry counter when job is added or unchanged (PR#291, PR#314)
+  * Fix a FutureWarning on Python 3.7 with regard to regular expressions (PR#299)
+  * If the filter list is empty, do not process the filter list (PR#308)
+  * Fix parsing/sanity-checking of urls.yaml after editing (PR#317, fixes #316)
+  * Fix Python 3.3 compatibility by depending on enum34 there (PR#311)
+  * Fix migration issues introduced by PR#180 and #256 (PR#323, fixes #267)
+
+-------------------------------------------------------------------
+Wed Oct 24 07:43:03 UTC 2018 - mvetter@suse.com
+
+- Update to 2.15:
+  * Added support for Mailgun regions (by Daniel Peukert, PR#280)
+  * Added allowing multiple occurences of 'filter' when adding jobs in CLI (PR#278)
+  * Fixed incorrect name for chat_id config in the default config (by Robin B, PR#276)
+
+-------------------------------------------------------------------
+Mon Oct 15 08:26:23 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Added missing runtime dependency: python3-lxml (bsc#1111796)
+
+-------------------------------------------------------------------
+Tue Sep  4 06:34:45 UTC 2018 - mvetter@suse.com
+
+- Update to 2.14:
+  * Added filter to pretty-print JSON data: format-json (by Niko Böckerman, PR#250)
+  * Added list active Telegram chats using --telegram-chats (with fixes by Georg Pichler, PR#270)
+  * Added support for HTTP ETag header in URL jobs and If-None-Match (by Karol Babioch, PR#256)
+  * Added xupport for filtering HTML using XPath expressions, with lxml (PR#274, Fixes #226)
+  * Added install_dependencies to setup.py commands for easy installing of dependencies
+  * Added ignore_connection_errors per-job configuration option (by Karol Babioch, PR#261)
+  * Improved code (HTTP status codes, by Karol Babioch PR#258)
+  * Improved documentation for setting up Telegram chat bots
+  * Allow multiple chats for Telegram reporting (by Georg Pichler, PR#271)
+
+-------------------------------------------------------------------
+Wed Jun  6 11:14:19 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.13:
+  * Added support for specifying a `diff_tool` (e.g. `wdiff`) for each job
+  * Added support for testing filters via `--test-filter JOB`
+  * Remove default parameter from internal `html2text` module (Fixes #239)
+  * Better error/exception reporting in `--verbose` mode (Fixes #164)
+
+- Update to 2.12:
+  * Bugfix: Do not 'forget' old data if an exception occurs
+
+-------------------------------------------------------------------
+Tue May 22 09:10:01 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.11:
+  * Retry: Make sure "tries" is initialized to zero on load
+  * html2text: Make sure the bs4 method strips HTML tags (by Louis Sautier)
+- Marked COPYING file as %license
+
+-------------------------------------------------------------------
+Fri May 18 07:33:54 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.10:
+  * File editing: Fix issue when $EDITOR contains spaces
+  * Browser: Add support for browser jobs using requests-html
+  * Retry: Add support for optional retry count in job list
+  * HTTP: Add support for specifying optional headers
+
+-------------------------------------------------------------------
+Mon Mar 26 06:48:01 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.9:
+  * Pushover: Device and sound attribute
+  * XDG: Move cache file to XDG_CACHE_DIR
+  * E-Mail: Add support for --smtp-login and document GMail SMTP usage
+  * Unconditionally migrate urlwatch 1.x cache dirs
+
+-------------------------------------------------------------------
+Wed Jan 31 08:58:58 UTC 2018 - kbabioch@suse.com
+
+- Update to 2.8, please see 
+  
+  /usr/share/doc/packages/urlwatch/ChangeLog
+
+- Added python3-appdirs as dependency
+
+-------------------------------------------------------------------
+Thu Jan 12 19:38:03 UTC 2017 - mardnh@gmx.de
+
+- Update to 2.6
+  * New filters: sha1sum, hexdump, element-by-class
+  * New reporters: pushbullet; mailgun
+  * Improved filters: BeautifulSoup support for html2txt
+  * Improved handlers: HTTP Proxy; support for file:// URIs
+  * CI Integration: Build configuration for Travis CI
+  * Consistency: Feature list is now sorted by name
+  * Issue #108: Fix creation of example files on first startup
+  * Issue #118: Fix match filters for missing keys
+  * Small fixes
+
+-------------------------------------------------------------------
+Tue Jul 12 20:55:15 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 2.5, please see
+
+  /usr/share/doc/packages/urlwatch/ChangeLog
+
+-------------------------------------------------------------------
+Fri Feb 26 13:51:18 UTC 2016 - nemysis@openSUSE.org
+
+- Change Requires use python3-minidb instead of minidb
+
+-------------------------------------------------------------------
+Wed Feb 24 23:06:22 UTC 2016 - nemysis@openSUSE.org
+
+- Update to 2.1, please see
+
+  /usr/share/doc/packages/urlwatch/ChangeLog
+
+- Change BuildRequires, changed by Upstream for python3-devel
+- Remove BuildRequires for fdupes, not need for it
+- Add BuildRequires for python3-setuptools
+- Add Requires for minidb, python-keyring, python3-PyYAML and
+  python3-requests
+- Change Description
+- Add README.md to Documentation
+
+-------------------------------------------------------------------
+Tue Dec  1 23:39:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.18
+  * Fallback to using pwd if os.getlogin() fails (fixes #2)
+  * Handle HTTP compression (Content-encoding: gzip/deflate)
+  * Add option to suppress output on stdout (-q/--quiet)
+  * Allow customizing subject when sending e-mail (-S/--subject)
+  * Added support for TLS and SMTP auth (-p/--pass, -T/--tls, -A/--auth)
+  * Added support for specifying cache directory (-c/--cache)
+  * Add support for HTTP Auth to urlwatch.handler (fixes #10)
+
+-------------------------------------------------------------------
+Sat Aug  2 20:43:43 UTC 2014 - dmitry_r@opensuse.org
+
+- Initial package, version 1.17
+

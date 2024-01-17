@@ -1,0 +1,20 @@
+--- mysql-connector-j-8.1.0/src/main/core-api/java/com/mysql/cj/conf/PropertyDefinitions.java	2023-09-26 06:49:03.580772166 +0200
++++ mysql-connector-j-8.1.0/src/main/core-api/java/com/mysql/cj/conf/PropertyDefinitions.java	2023-09-26 06:53:10.775563886 +0200
+@@ -30,7 +30,7 @@
+ package com.mysql.cj.conf;
+ 
+ import java.util.Collections;
+-import java.util.HashMap;
++import java.util.TreeMap;
+ import java.util.Map;
+ 
+ import com.mysql.cj.Messages;
+@@ -895,7 +895,7 @@
+                 //
+         };
+ 
+-        HashMap<PropertyKey, PropertyDefinition<?>> propertyKeyToPropertyDefinitionMap = new HashMap<>();
++        TreeMap<PropertyKey, PropertyDefinition<?>> propertyKeyToPropertyDefinitionMap = new TreeMap<>();
+         for (PropertyDefinition<?> pdef : pdefs) {
+             propertyKeyToPropertyDefinitionMap.put(pdef.getPropertyKey(), pdef);
+         }

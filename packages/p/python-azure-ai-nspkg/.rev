@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6dffb5cb4318e11ee8cc257af50bea7</srcmd5>
+    <version>1.0.0</version>
+    <time>1582899565</time>
+    <user>dimstar_suse</user>
+    <comment>- New azure-sdk component</comment>
+    <requestid>768420</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf0f72cfaac1714bcd9d44b94bab2a2b</srcmd5>
+    <version>1.0.0</version>
+    <time>1607548404</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853825</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cbec5a07ab074c8ca1e435f2f638891c</srcmd5>
+    <version>1.0.0</version>
+    <time>1611348653</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix issues with Python multi-flavor builds
+  + Create directories using %pythond_expand in %install section
+  + Use canonical %{python_sitelib} path in %files section (forwarded request 864339 from glaubitz)</comment>
+    <requestid>864386</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,15 @@
+Fix build with recent carla versions
+Adapted from upstream change (commit 9c49a774)
+
+diff --git a/plugins/carlabase/carla.h b/plugins/carlabase/carla.h
+index fb54e22..6f1971e 100644
+--- a/plugins/carlabase/carla.h
++++ b/plugins/carlabase/carla.h
+@@ -28,6 +28,7 @@
+ #include <QtCore/QMutex>
+ 
+ #define REAL_BUILD // FIXME this shouldn't be needed
++#include "CarlaDefines.h"
+ #if CARLA_VERSION_HEX >= 0x010911
+     #include "CarlaNativePlugin.h"
+ #else

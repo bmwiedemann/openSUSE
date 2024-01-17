@@ -1,0 +1,8 @@
+<package name="iwd" project="openSUSE:Factory">
+  <title>Wireless daemon for Linux</title>
+  <description>The iNet Wireless Daemon (iwd) project aims to provide a comprehensive wireless connectivity solution for Linux based devices.
+The core goal of the project is to optimise resource utilisation: storage, runtime memory and link-time costs.
+
+This is accomplished by not depending on any external libraries and utilising features provided by the Linux Kernel to the maximum extent possible.</description>
+  <devel project="hardware" package="iwd"/>
+</package>

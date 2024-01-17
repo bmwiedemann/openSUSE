@@ -1,0 +1,91 @@
+From d5ac48eaed1c0303df8b983d55fde064e7474c57 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 18 Mar 2023 04:43:44 +0100
+Subject: [PATCH] Use native fig2dev pdf output instead of epstopdf
+
+---
+ fig2dev/dev/genpstex.c |  5 +----
+ fig2mpdf/fig2mpdf      | 35 +++++++++--------------------------
+ 2 files changed, 10 insertions(+), 30 deletions(-)
+
+diff --git a/fig2dev/dev/genpstex.c b/fig2dev/dev/genpstex.c
+index bb081fd..5999e03 100644
+--- a/fig2dev/dev/genpstex.c
++++ b/fig2dev/dev/genpstex.c
+@@ -279,10 +279,7 @@ int depth;
+ 	sprintf(szFileName + iLength, "%03d", iObjectsFileNumber++);
+ 	fprintf(ptCreateFile, "if [ \"$iOptRemove\" == \"\" ]; then\n");
+ 	if (iPdfOutputs)
+-	{
+-		fprintf(ptCreateFile, "  %s -L pstex -D +%d:%d %s", prog, depth, iStartDepth, from);
+-		fprintf(ptCreateFile, " | epstopdf -f > %s.pdf\n", szFileName);
+-	}
++		fprintf(ptCreateFile, "%s -L pdftex -D +%d:%d %s %s.pdf\n", prog, depth, iStartDepth, from, szFileName);
+ 	else
+ 		fprintf(ptCreateFile, "%s -L pstex -D +%d:%d %s %s.eps\n", prog, depth, iStartDepth, from, szFileName);
+ 	fprintf(ptCreateFile, "else\n  rm -f %s.", szFileName);
+diff --git a/fig2mpdf/fig2mpdf b/fig2mpdf/fig2mpdf
+index 39cc4aa..db6727b 100644
+--- a/fig2mpdf/fig2mpdf
++++ b/fig2mpdf/fig2mpdf
+@@ -14,7 +14,6 @@ BEGIN {
+   cmdMv		= "mv"
+   cmdLatex	= "latex";
+   cmdPdftex	= "pdflatex";
+-  cmdEpsToPdf	= "epstopdf";
+   cmdDvips	= "dvips";
+   cmdFig2dev	= "fig2dev";
+   cmdTouch	= "touch";
+@@ -374,40 +373,24 @@ function fnGetDepth (iControl)
+ #########################################################################
+ #########################################################################
+ function fnDoNormalFig(szFileNameBase, szFigFile, szRangeList, iPdf,
+-                         szEpsFile, szPdfFile, szTargetFile, szCommand)
++                         szOutFile, szTargetFile, szCommand)
+ {
+ 
+   debug("FileNameBase >%s< FigFile >%s< Pdf:%d\n", szFileNameBase, szFigFile, iPdf);
+ 
+   if (iPdf)
+-    szEpsFile = sprintf("%s%s.eps", szTmpPrefix, szFileNameBase);
++    szOutFile = sprintf("%s.pdf", szFileNameBase);
+   else
+-  {
+-    szEpsFile = sprintf("%s.eps", szFileNameBase);
+-    szTargetFile = szEpsFile;
+-  }
+-
+-  szCommand = sprintf("%s -L eps %s %s %s 2> /dev/null", cmdFig2dev, szRangeList, szFigFile, szEpsFile);
+-  debug("%s\n", szCommand);
+-  system(szCommand);
++    szOutFile = sprintf("%s.eps", szFileNameBase);
++  szTargetFile = szOutFile;
+ 
+   if (iPdf)
+-  {
+-    szPdfFile = sprintf("%s.pdf", szFileNameBase);
+-    szTargetFile = szPdfFile;
+-    szCommand = sprintf("%s --outfile=%s %s", cmdEpsToPdf, szPdfFile, szEpsFile);
+-    debug("%s\n", szCommand);
+-    system(szCommand);
+-
+-
+-    if ( ! aOptions["d"])
+-    {
+-      szCommand = sprintf("%s -f %s", cmdRm, szEpsFile);
+-      debug("%s\n", szCommand);
+-      system(szCommand);
+-    }
+-  }
++    szCommand = sprintf("%s -L pdf %s %s %s 2> /dev/null", cmdFig2dev, szRangeList, szFigFile, szOutFile);
++  else
++    szCommand = sprintf("%s -L eps %s %s %s 2> /dev/null", cmdFig2dev, szRangeList, szFigFile, szOutFile);
+ 
++  debug("%s\n", szCommand);
++  system(szCommand);
+ 
+   return (szTargetFile);
+ }
+-- 
+2.39.2
+

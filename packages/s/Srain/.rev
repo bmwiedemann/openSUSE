@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc544a55616027aaf8dac40410d1f59b</srcmd5>
+    <version>1.0.0</version>
+    <time>1582643232</time>
+    <user>dimstar_suse</user>
+    <comment>new package (2nd attempt)</comment>
+    <requestid>778988</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>974d56d97c9e9b099277b44410a7cf74</srcmd5>
+    <version>1.0.1</version>
+    <time>1584350274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784835</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>647a9d021528f9813f5b09478faf770f</srcmd5>
+    <version>1.0.2</version>
+    <time>1586641697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793208</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e2816376c6b208c4305bc1e8332279d</srcmd5>
+    <version>1.1.0</version>
+    <time>1590506535</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808528</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d2dd9147934ecf8b1c2faf26e9556a12</srcmd5>
+    <version>1.1.1</version>
+    <time>1593292983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817379</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d305c5885747c56afe8002a488c9c187</srcmd5>
+    <version>1.1.3</version>
+    <time>1601919659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839392</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dbedff92b440eebc7b13cad0fa45534e</srcmd5>
+    <version>1.2.0</version>
+    <time>1614684815</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875757</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b946da6b148decd4032c79c036bad278</srcmd5>
+    <version>1.2.1</version>
+    <time>1618223816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884192</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>be6ba44878ea1a66d6eb78808a09ce36</srcmd5>
+    <version>1.3.0</version>
+    <time>1635272063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927567</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>17039eaeed9513d039f5e1a9fafdbf23</srcmd5>
+    <version>1.3.1</version>
+    <time>1639855818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941389</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bbd6a0a483cc434e19d0b15a79550c62</srcmd5>
+    <version>1.3.2</version>
+    <time>1644617259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953334</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5ac59859191526dbc30106fca11165a0</srcmd5>
+    <version>1.5.0</version>
+    <time>1673801895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058450</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c986cd9b3e57877bbb39dc8496cc8f8a</srcmd5>
+    <version>1.5.1</version>
+    <time>1699994508</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.1:
+  * Fix the problem that the URL cannot be opened on MS Windows
+    (:issue:`391`)
+
+  * Able to identify Nordic GTK Theme as dark theme
+  * Suppress error message when connection keeps failing
+  * Add conf item server-visibility for setting default server visiblity
+  * Fix case sensitivity issue for IRC messages (#202), thanks
+  * Fix missing dependences in documentation (#216), thanks to
+- Update to version 1.0.0rc3 (no changelog supplied)</comment>
+    <requestid>1125007</requestid>
+  </revision>
+</revisionlist>

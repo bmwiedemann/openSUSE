@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9659d5ad7d8578668854fc13aea94db</srcmd5>
+    <version>1.4</version>
+    <time>1496926680</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain bandwidth in Factory</comment>
+    <requestid>494725</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>433cbf1157e27bebf8c077256e2c7ca1</srcmd5>
+    <version>1.4.2</version>
+    <time>1497871423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504530</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>78702dc5843e1843d21bd4e03f9507eb</srcmd5>
+    <version>1.5</version>
+    <time>1510322262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540200</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ad47eb7c5b31698d3a2ba985c03710a9</srcmd5>
+    <version>1.5.1</version>
+    <time>1515876425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563491</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a6c6f3720307c5283f081a32c58277d</srcmd5>
+    <version>1.9.3</version>
+    <time>1574551402</time>
+    <user>dimstar_suse</user>
+    <comment>- Enforce usage of CFLAGS
+
+- Update to version 1.9.3
+  * no changes, bugfix release only
+
+- Update to version 1.9.1
+  * More object-oriented improvements.
+  * Separated object-oriented C (OOC) from bandwidth app.
+- Use HTTPS URL
+- Drop patch:
+  * bandwidth-fix-cflags.diff</comment>
+    <requestid>741835</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15f579865f7df71c0bd2d1147e56eddc</srcmd5>
+    <version>1.9.4</version>
+    <time>1600180061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834285</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80f2c8c2f5e75eebd5cd570fbf41ca78</srcmd5>
+    <version>1.11.2</version>
+    <time>1651088487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973089</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>68f45fc46dae714d0d5e8643c04ed513</srcmd5>
+    <version>1.11.2b</version>
+    <time>1651272376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973959</requestid>
+  </revision>
+</revisionlist>

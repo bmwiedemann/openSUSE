@@ -1,0 +1,65 @@
+From a55b215427daffb082518545a4617bf04ce013bf Mon Sep 17 00:00:00 2001
+From: Martin Vidner <mvidner@suse.com>
+Date: Wed, 7 Dec 2022 11:05:25 +0100
+Subject: [PATCH 33/33] Use File.exist? instead of File.exists? which was
+ removed in Ruby 3.2
+
+https://www.ruby-lang.org/en/news/2022/12/06/ruby-3-2-0-rc1-released/
+
+> Removed methods
+>
+> The following deprecated methods are removed.
+> - ...
+> - File.exists? [Feature 17391]
+---
+ bin/gem2rpm                     | 6 +++---
+ templates/gem_packages.spec.erb | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/bin/gem2rpm b/bin/gem2rpm
+index 1298798..059e953 100755
+--- a/bin/gem2rpm
++++ b/bin/gem2rpm
+@@ -74,7 +74,7 @@ rest = opts.permute(ARGV)
+ 
+ template = nil
+ if template_file.nil?
+-  f = open("/etc/os-release", "r") if File.exists?("/etc/os-release")
++  f = open("/etc/os-release", "r") if File.exist?("/etc/os-release")
+   if f
+     f.read.split('\n').each do |line|
+       line.match(%r{^ID=(.*)$}) { |m| template_file=m[1] }
+@@ -91,7 +91,7 @@ if template_file.nil?
+   template = Gem2Rpm::TEMPLATE
+ else
+   begin
+-      f = open(template_file, "r") if File.exists?(template_file)
++      f = open(template_file, "r") if File.exist?(template_file)
+       f = open(File.join(Gem2Rpm.template_dir, template_file + '.spec.erb'), "r") unless f
+   rescue Errno::ENOENT
+       $stderr.puts "Could not open template #{template_file}. Aborting"
+@@ -154,7 +154,7 @@ if output_file.nil?
+     Gem2Rpm::convert(gemfile, template, $stdout, nongem, local, doc_subpackage, oldlicense, config) unless deps
+ else
+     begin
+-        if File.exists?(output_file)
++        if File.exist?(output_file)
+           File.open(output_file, 'r') do |oldfile|
+             oldfile.each_line do |line|
+               m = line.match(%r{^License:\s*(\w.*)$})
+diff --git a/templates/gem_packages.spec.erb b/templates/gem_packages.spec.erb
+index 257c719..4f9447c 100644
+--- a/templates/gem_packages.spec.erb
++++ b/templates/gem_packages.spec.erb
+@@ -39,7 +39,7 @@
+   end
+ 
+   def self.filecontent_or_value(path)
+-    (path and File.exists?(path)) ? File.read(path) : path
++    (path and File.exist?(path)) ? File.read(path) : path
+   end
+ 
+   def self.parse_custom_pkgs(env_value)
+-- 
+2.26.2
+

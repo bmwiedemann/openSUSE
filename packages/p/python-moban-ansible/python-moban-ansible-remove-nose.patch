@@ -1,0 +1,113 @@
+Index: moban-ansible-0.0.2/setup.py
+===================================================================
+--- moban-ansible-0.0.2.orig/setup.py	2020-09-05 01:50:13.000000000 +0200
++++ moban-ansible-0.0.2/setup.py	2020-09-24 10:18:17.514736263 +0200
+@@ -193,7 +193,7 @@ if __name__ == "__main__":
+         license=LICENSE,
+         keywords=KEYWORDS,
+         extras_require=EXTRAS_REQUIRE,
+-        tests_require=["nose"],
++        tests_require=["pytest"],
+         install_requires=INSTALL_REQUIRES,
+         packages=PACKAGES,
+         include_package_data=True,
+Index: moban-ansible-0.0.2/tests/requirements.txt
+===================================================================
+--- moban-ansible-0.0.2.orig/tests/requirements.txt	2020-09-05 01:50:13.000000000 +0200
++++ moban-ansible-0.0.2/tests/requirements.txt	2020-09-24 10:18:03.614651213 +0200
+@@ -1,4 +1,4 @@
+-nose
++pytest
+ mock;python_version<"3"
+ codecov
+ coverage
+Index: moban-ansible-0.0.2/tests/test_files.py
+===================================================================
+--- moban-ansible-0.0.2.orig/tests/test_files.py	2020-09-05 01:50:13.000000000 +0200
++++ moban-ansible-0.0.2/tests/test_files.py	2020-09-24 13:48:31.163963695 +0200
+@@ -2,8 +2,6 @@ import sys
+ from io import StringIO
+ from unittest.mock import patch
+ 
+-from nose.tools import eq_
+-
+ 
+ def test_stdout():
+     test_args = ["moban", "-t", "{{'tests' is directory}}"]
+@@ -12,4 +10,4 @@ def test_stdout():
+             from moban.main import main
+ 
+             main()
+-            eq_(fake_stdout.getvalue(), "True\n")
++            assert fake_stdout.getvalue() == "True\n"
+Index: moban-ansible-0.0.2/tests/test_line_in_file.py
+===================================================================
+--- moban-ansible-0.0.2.orig/tests/test_line_in_file.py	2020-09-05 01:50:13.000000000 +0200
++++ moban-ansible-0.0.2/tests/test_line_in_file.py	2020-09-24 13:49:03.328160551 +0200
+@@ -1,5 +1,3 @@
+-from nose.tools import eq_
+-
+ from moban_ansible.engines.line_in_file import line_in_file
+ 
+ 
+@@ -11,7 +9,7 @@ def test_append_a_line():
+     new_content = line_in_file(content, options)
+     expected = "\n".join([content.decode(), options["line"]])
+ 
+-    eq_(new_content, expected.encode())
++    assert new_content == expected.encode()
+ 
+ 
+ def test_absent():
+@@ -23,7 +21,7 @@ def test_absent():
+     new_content = line_in_file(content, options)
+     expected = "127.0.0.1 localhost"
+ 
+-    eq_(new_content, expected.encode())
++    assert new_content == expected.encode()
+ 
+ 
+ def test_present():
+@@ -35,4 +33,4 @@ def test_present():
+     new_content = line_in_file(content, options)
+     expected = ["127.0.0.1 localhost", present_line]
+ 
+-    eq_(new_content, "\n".join(expected).encode())
++    assert new_content == "\n".join(expected).encode()
+Index: moban-ansible-0.0.2/tests/utils.py
+===================================================================
+--- moban-ansible-0.0.2.orig/tests/utils.py	2020-09-05 01:50:13.000000000 +0200
++++ moban-ansible-0.0.2/tests/utils.py	2020-09-24 13:49:33.744346702 +0200
+@@ -3,7 +3,7 @@ import sys
+ from textwrap import dedent
+ 
+ from mock import patch
+-from nose.tools import eq_
++import unittest
+ 
+ from moban.main import main
+ from fs.opener.parse import parse_fs_url
+@@ -13,12 +13,12 @@ from moban.externals import file_system
+ def verify_content(file_name, expected):
+     with open(file_name, "r") as f:
+         content = f.read()
+-        eq_(content, expected)
++        assert content == expected
+ 
+ 
+ def verify_content_with_fs(file_name, expected):
+     content = file_system.read_unicode(file_name)
+-    eq_(content, expected)
++    assert content == expected
+ 
+ 
+ def run_moban(args, folder, criterias):
+@@ -39,7 +39,7 @@ def run_moban_with_fs(args, folder, crit
+     os.unlink(result.resource)  # delete the zip file
+ 
+ 
+-class Docs(object):
++class Docs(unittest.TestCase):
+     def setUp(self):
+         self.current = os.getcwd()
+         self.base_folder = "docs"

@@ -1,0 +1,25 @@
+<package name="webcamoid" project="openSUSE:Factory">
+  <title>Webcam plasmoid for KDE</title>
+  <description>Webcam plasmoid for KDE desktop environment.
+
+Features:
+* Take pictures with the webcam.
+* Record videos.
+* Manages multiple webcams.
+* Play/Stop capture, this saves resources while the plasmoid is not in use.
+* Written in C++.
+* 100% Qt based software, for KDE/Qt purists.
+* Custom controls for each webcam.
+* Popup applet support (you can embed Webcamoid in the panel).
+* Add funny effects to the webcam (requires Frei0r plugins and QImageBlitz).
+* +50 effects available.
+* Effects with live previews.
+* Translated to many languages.
+* Stand alone installation mode (use it as a normal program).
+* Use custom network and local files as capture devices.
+* Capture from desktop.
+
+</description>
+  <devel project="multimedia:apps" package="webcamoid"/>
+  <url>https://webcamoid.github.io/</url>
+</package>

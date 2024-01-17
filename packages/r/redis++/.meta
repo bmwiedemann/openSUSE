@@ -1,0 +1,8 @@
+<package name="redis++" project="openSUSE:Factory">
+  <title>C++ client for Redis</title>
+  <description>Redis-plus-plus, a C++ client for Redis based on hiredis and written in C++11/C++17.
+
+</description>
+  <devel project="server:database" package="redis++"/>
+  <url>https://github.com/sewenew/redis-plus-plus</url>
+</package>

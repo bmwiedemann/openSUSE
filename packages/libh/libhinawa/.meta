@@ -1,0 +1,5 @@
+<package name="libhinawa" project="openSUSE:Factory">
+  <title>I/O library for IEEE 1394 asynchronous transactions</title>
+  <description></description>
+  <devel project="multimedia:libs" package="libhinawa"/>
+</package>

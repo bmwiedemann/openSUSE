@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Tue Feb  7 10:08:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.3
+  * Fixed tags memory leak in Opus music handling
+
+-------------------------------------------------------------------
+Sat Aug 20 08:17:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.2
+  * Build updates for non-Linux platforms
+
+-------------------------------------------------------------------
+Mon Jul 18 10:33:06 UTC 2022 - munix9@googlemail.com
+
+- Update to release 2.6.1
+  * This is a minor bug-fix release, fixing a packaging issue
+    on Linux.
+
+-------------------------------------------------------------------
+Sat Jul  9 13:14:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * Added Mix_MasterVolume() for additional volume control over
+    all channels
+  * Update Mix_Init() return value to match documentation,
+    including MIXER_INIT_* flags for already-initialized modules
+  * Added Mix_HasMusicDecoder()
+  * Memory leak fixes and F32 format support to fluidsynth player
+  * Fixed distorted MIDI playback with FluidSynth if sample rate
+    is out of library's limits
+  * Added Mix_ModMusicJumpToOrder() for mod music formats
+  * Fixes to ogg playback on big-endian devices
+  * Added functions to get metadata information and loop point
+    information (Mix_GetMusic*)
+  * Extended support for WAV files
+  * Allow rmid files be opened by native midi
+  * Prevent clipping due to volume settings in modplug music
+  * Added looping support for Opus, FLAC files
+  * Improved OGG looping support
+- Switch from libmodplug to libxmp as backend for tracker files
+- Rename -devel subpackage based on SRPM name
+- Drop 0001-use-after-free-fluidsynth.patch (merged)
+- Drop baselibs.conf (no SDL2_ttf-dependent Tumbleweed packages
+  themselves have baselibs).
+
+-------------------------------------------------------------------
+Thu Jan 21 17:14:18 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Add 0001-use-after-free-fluidsynth.patch to prevent
+  fluidsynth >= 2.1.6 from crashing:
+  https://hg.libsdl.org/SDL_mixer/rev/b0afe341a91d
+
+-------------------------------------------------------------------
+Tue Sep 15 22:56:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Demote Recommends to Suggests.
+
+-------------------------------------------------------------------
+Tue Mar  5 09:30:50 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.4
+  * Removed smpeg support for mp3 music, now that it's replaced
+    by libmpg123.
+  * Fixed mp3 mad decoder to skip tags, which otherwise would lead
+    to crashes.
+  * Added support for Opus music playback using opusfile library.
+- Update to version 2.0.3
+  * Fixed regression where Mix_Init() would return 0 for available
+    music formats.
+- Remove patch:
+  * SDL2_mixer-only-load-required-interfaces.patch (fixed by upstream)
+
+-------------------------------------------------------------------
+Sat Dec 23 04:21:51 UTC 2017 - 9@cirno.systems
+
+- update to version 2.0.2
+
+  * 24-bit and surround sound support for FLAC audio files
+  * Updated for SDL 2.0.6 and newer
+  * Support for MP3 playback using mpg123
+  * Added Mix_OpenAudioDevice() to specify the audio device to open
+- Add SDL2_mixer-only-load-required-interfaces.patch
+  Prevents initializing decoders unnecessarily.
+  Fixes an issue with applications that use the API incorrectly
+  (due to misleading documentation).
+- Build with libmpg123 where available
+- Fix fluidsynth linking
+
+-------------------------------------------------------------------
+Sun Jan 10 17:06:57 UTC 2016 - mailaender@opensuse.org
+
+- update to version 2.0.1
+  * Added support for 'smpl' format loop points in music WAV files
+  * Fixed floating point exception in Mix_Volume()
+  * Added support for loading MP3 files as sound chunks
+
+-------------------------------------------------------------------
+Thu Jan  8 09:33:53 UTC 2015 - jengelh@inai.de
+
+- Improve package summary and description. Drop --with-pic which
+  is enabled implicitly anyway, remove redundant Requires.
+
+-------------------------------------------------------------------
+Wed Aug 28 18:34:49 UTC 2013 - jengelh@inai.de
+
+- Abstain from providing playmus and playwave in SDL2_mixer
+  (they are already available through SDL(1)_mixer)
+
+-------------------------------------------------------------------
+Tue Aug 13 12:04:26 UTC 2013 - jengelh@inai.de
+
+- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list
+
+-------------------------------------------------------------------
+Tue Aug 13 11:27:54 UTC 2013 - prusnak@opensuse.org
+
+- created package (version 2.0.0) - based on SDL_mixer package
+

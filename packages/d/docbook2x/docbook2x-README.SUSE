@@ -1,0 +1,7 @@
+To avoid filename conflicts with files from the docbook-utils package
+/usr/bin/docbook2man and /usr/bin/docbook2texi are installed as:
+
+    /usr/bin/docbook-to-man
+    /usr/bin/docbook-to-texi
+
+                                        2004-02-19 16:40:17 CET -ke-

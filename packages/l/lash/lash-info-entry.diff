@@ -1,0 +1,13 @@
+--- lash-0.5.4/docs/lash-manual.texi.in-orig	2010-09-12 10:05:59.000000000 +0200
++++ lash-0.5.4/docs/lash-manual.texi.in	2010-09-12 10:06:08.000000000 +0200
+@@ -4,6 +4,10 @@
+ @settitle LASH Audio Session Handler
+ @c %**end of header
+ 
++@dircategory Sound
++@direntry
++* LASH: (lash-manual).     Linux Audio Sesion Handler.
++@end direntry
+ 
+ @ifinfo
+ This is the LASH Audio Session Handler Reference Manual,

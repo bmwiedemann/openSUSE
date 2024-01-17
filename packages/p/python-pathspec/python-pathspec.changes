@@ -1,0 +1,233 @@
+-------------------------------------------------------------------
+Tue Dec 12 13:14:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * `Issue #84`_: PathSpec.match_file() returns None since
+    0.12.0.
+  * Major changes:
+  * Dropped support of EOL Python 3.7. See `Pull #82`_.
+  * API changes:
+  * Signature of protected method
+    `pathspec.pathspec.PathSpec._match_file()` (with a leading
+    underscore) has been changed from `def _match_file(patterns:
+    Iterable[Pattern], file: str) -> bool` to `def
+    _match_file(patterns: Iterable[Tuple[int, Pattern]], file:
+    str) -> Tuple[Optional[bool], Optional[int]]`.
+  * Added `pathspec.pathspec.PathSpec.check_*()` methods. These
+    methods behave similarly to `.match_*()` but return
+    additional information in the `pathspec.util.CheckResult`
+    objects (e.g., `CheckResult.index` indicates the index of the
+    last pattern that matched the file).
+  * Added `pathspec.pattern.RegexPattern.pattern` attribute which
+    stores the original, uncompiled pattern.
+  * Mark Python 3.12 as supported.
+  * Improve test debugging.
+  * Improve type hint on *on_error* parameter on
+    `pathspec.pathspec.PathSpec.match_tree_entries()`.
+  * Improve type hint on *on_error* parameter on
+    `pathspec.util.iter_tree_entries()`.
+
+-------------------------------------------------------------------
+Thu Sep  7 11:27:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.2:
+  * `Issue #80`_: match_files with negated path spec.
+    `pathspec.PathSpec.match_*()` now have a `negate` parameter
+    to make using *.gitignore* logic easier and more efficient.
+  * Add edge case: patterns that end with an escaped
+    space
+  * Negate with caret symbol as with the exclamation mark.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:29:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Sun Mar 26 19:50:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.1:
+  * `Issue #74`_: Include directory should override exclude file.
+  * `Pull #75`_: Fix partially unknown PathLike type.
+  * Convert `os.PathLike` to a string properly using `os.fspath`.
+  * Major changes:
+  * Changed build backend to `flit_core.buildapi`_ from
+    `setuptools.build_meta`_. Building with `setuptools` through
+    `setup.py` is still supported for distributions that need it.
+  * `Issue #72`_/`Pull #73`_: Please consider switching the
+    build-system to flit_core to ease setuptools bootstrap.
+
+-------------------------------------------------------------------
+Tue Dec 13 15:46:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.10.3
+  * New features:
+  Added utility function pathspec.util.append_dir_sep() to aid in distinguishing between directories and files on the file-system. See Issue #65.
+  * Bug fixes:
+  Issue #66/Pull #67: Package not marked as py.typed.
+  Issue #68: Exports are considered private.
+  Issue #70/Pull #71: 'Self' string literal type is Unknown in pyright.
+  * Improvements:
+  Issue #65: Checking directories via match_file() does not work on Path objects.
+
+-------------------------------------------------------------------
+Sat Dec  3 19:55:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.10.2:
+  Bug fixes:
+  * Fix failing tests on Windows.
+  * Type hint on root parameter on pathspec.pathspec.PathSpec.match_tree_entries().
+  * Type hint on root parameter on pathspec.pathspec.PathSpec.match_tree_files().
+  * Type hint on root parameter on pathspec.util.iter_tree_entries().
+  * Type hint on root parameter on pathspec.util.iter_tree_files().
+  * Issue #64: IndexError with my .gitignore file when trying to build a Python package.
+  Improvements:
+  * Issue #58: CI: add GitHub Actions test workflow.
+
+-------------------------------------------------------------------
+Mon Sep 12 20:36:41 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 0.10.1:
+  * Bug fixes:
+    + Fix documentation on pathspec.pattern.RegexPattern.match_file().
+    + Issue #60: Remove redundant wheel dep from pyproject.toml.
+    + Issue #61: Dist failure for Fedora, CentOS, EPEL.
+    + Issue #62: Since version 0.10.0 pure wildcard does not work
+      in some cases.
+  * Improvements:
+    + Restore support for legacy installations using setup.py. See
+      Issue #61.
+- additional changes from 0.10.0:
+  * Major changes:
+    + Dropped support of EOL Python 2.7, 3.5, 3.6. See Issue #47
+    + The gitwildmatch pattern dir/* is now handled the same as
+      dir/
+    + Added pathspec.GitIgnoreSpec class (see new features)
+    + Changed build system to pyproject.toml and build backend to
+      setuptools.build_meta which may have unforeseen consequences
+    + Renamed GitHub project from python-path-specification to
+      python-pathspec. See Issue #35.
+  * API changes:
+    + Deprecated: pathspec.util.match_files() is an old function no
+      longer used.
+    + Deprecated: pathspec.match_files() is an old function no
+      longer used.
+    + Deprecated: pathspec.util.normalize_files() is no longer used
+    + Deprecated: pathspec.util.iter_tree() is an alias for
+      pathspec.util.iter_tree_files().
+    + Deprecated: pathspec.iter_tree() is an alias for
+      pathspec.util.iter_tree_files().
+    + Deprecated: pathspec.pattern.Pattern.match() is no longer
+      used. Use or implement pathspec.pattern.Pattern.match_file().
+  * New features:
+    + Added class pathspec.gitignore.GitIgnoreSpec (with alias
+      pathspec.GitIgnoreSpec) to implement gitignore behavior not
+      possible with standard PathSpec class
+  * Bug fixes:
+    + Issue #19: Files inside an ignored sub-directory are not
+      matched.
+    + Issue #41: Incorrectly (?) matches files inside directories
+      that do match.
+    + Issue #51: Refactor deprecated unittest aliases for Python
+      3.11 compatibility.
+    + Issue #53: Symlink pathspec_meta.py breaks Windows.
+    + Issue #54: test_util.py uses os.symlink which can fail on
+      Windows.
+    + Issue #55: Backslashes at start of pattern not handled
+      correctly.
+    + Issue #56: pyproject.toml: include subpackages in setuptools
+      config
+    + Issue #57: ! doesn't exclude files in directories if the
+      pattern doesn't have a trailing slash.
+  * Improvements:
+    + Support Python 3.10, 3.11.
+    + Modernize code to Python 3.7.
+    + Issue #52: match_files() is not a pure generator function,
+      and it impacts tree_*() gravely.
+- add BuildRequires for python >= 3.7
+
+-------------------------------------------------------------------
+Wed Jan  5 10:29:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Raise `GitWildMatchPatternError` for invalid git patterns.
+  * Fix for duplicate leading double-asterisk, and edge cases.
+  * Fix matching absolute paths.
+  * API change: `util.normalize_files()` now returns a
+    `Dict[str, List[pathlike]]` instead of a `Dict[str, pathlike]`.
+  * Added type hinting.
+
+-------------------------------------------------------------------
+Tue Jun  1 07:24:28 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Sat Dec 19 10:49:21 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * `Issue #43`_: Add support for addition operator
+
+-------------------------------------------------------------------
+Wed Oct  7 03:51:16 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.8.0
+  * Expose what patterns matched paths. Added `util.detailed_match_files()`
+  * `match_tree()` doesn't return symlinks
+    - Add `PathSpec.match_tree_entries` and `util.iter_tree_entries()` to
+      support directories and symlinks
+    - API change: `match_tree()` has been renamed to `match_tree_files()`
+      The old name `match_tree()` is still available as an alias
+    - API change: `match_tree_files()` now returns symlinks
+
+-------------------------------------------------------------------
+Wed Mar 11 15:51:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.7.0
+  * Add support for Python 3.8, and drop Python 3.4.
+  * Publish bdist wheel.
+
+-------------------------------------------------------------------
+Thu Oct 10 08:25:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.6.0:
+  * Issue #24: Drop support for Python 2.6, 3.2, and 3.3.
+  * Issue #25: Update README.rst.
+  * Issue #26: Method to escape gitwildmatch.
+
+-------------------------------------------------------------------
+Thu Feb 14 07:08:42 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.5.9
+  * Fixed file system error handling.
+- from v0.5.8
+  * Improved type checking.
+  * Created scripts to test Python 2.6 because Tox removed support for it.
+  * Improved byte string handling in Python 3.
+  * Handle dangling symlinks.
+- from v0.5.7
+  * Fix collections deprecation warning.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:19 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 10 00:06:44 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 0.5.6
+  * Improved unit tests.
+  * Improved type checking.
+  * `Issue #20`_: Support current directory prefix.
+- Use license tag
+
+-------------------------------------------------------------------
+Wed Jan 17 02:36:25 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

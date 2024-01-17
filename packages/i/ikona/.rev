@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9c7aa669c85e756ca82dbeb82f3b1d9d</srcmd5>
+    <version>0.6.1.1</version>
+    <time>1566242862</time>
+    <user>dimstar_suse</user>
+    <comment>Supersedes 722106, bugfix for program</comment>
+    <requestid>722107</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84ffe1ed2cc891639964ce3e7836023c</srcmd5>
+    <version>0.7.1</version>
+    <time>1570448792</time>
+    <user>dimstar_suse</user>
+    <comment>Disable services so version won't get changed, allowing local build to work</comment>
+    <requestid>735466</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ded551ca46e32436c2f1b1f6918a7326</srcmd5>
+    <version>0.7.1</version>
+    <time>1702845084</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133537</requestid>
+  </revision>
+</revisionlist>

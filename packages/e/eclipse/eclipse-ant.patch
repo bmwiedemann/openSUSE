@@ -1,0 +1,11 @@
+--- a/eclipse.platform/ant/org.eclipse.ant.launching/loggers/org/eclipse/ant/internal/launching/runtime/logger/NullBuildLogger.java	2022-10-20 08:40:19.803133825 +0200
++++ b/eclipse.platform/ant/org.eclipse.ant.launching/loggers/org/eclipse/ant/internal/launching/runtime/logger/NullBuildLogger.java	2023-01-26 19:58:50.129486376 +0100
+@@ -41,7 +41,7 @@
+ 		fMessageOutputLevel = level;
+ 	}
+ 
+-	protected int getMessageOutputLevel() {
++	public int getMessageOutputLevel() {
+ 		return fMessageOutputLevel;
+ 	}
+ 

@@ -1,0 +1,17 @@
+---
+ source/libraries/decnumber/decNumber.h |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- source/libraries/decnumber/decNumber.h
++++ source/libraries/decnumber/decNumber.h	2023-03-28 09:48:50.820268040 +0000
+@@ -40,8 +40,10 @@
+   /* constant.  This must not be changed without recompiling the      */
+   /* decNumber library modules. */
+ 
++  #ifndef DECDPUN
+   #define DECDPUN 3           /* DECimal Digits Per UNit [must be >0  */
+                               /* and <10; 3 or powers of 2 are best]. */
++  #endif
+ 
+   /* DECNUMDIGITS is the default number of digits that can be held in */
+   /* the structure.  If undefined, 1 is assumed and it is assumed     */

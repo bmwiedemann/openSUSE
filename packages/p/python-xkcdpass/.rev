@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>19fc42dd53220eb603a9908d600e9c3c</srcmd5>
+    <version>1.17.3</version>
+    <time>1574859211</time>
+    <user>dimstar_suse</user>
+    <comment>New package, providing a xkcdpass tool to generate XKCD style passwords.</comment>
+    <requestid>750134</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>40cba02f9dc7465e20ed7fb5d4035812</srcmd5>
+    <version>1.17.3</version>
+    <time>1589403404</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires on python-setuptools</comment>
+    <requestid>805338</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>231dc9481b4382b2301c87b840fb2903</srcmd5>
+    <version>1.17.6</version>
+    <time>1608542613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.6
+  * No changelog upstream</comment>
+    <requestid>856960</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>355ff585fee240b668e7ee5e7be3cab6</srcmd5>
+    <version>1.17.6</version>
+    <time>1613677190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867742</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1fc7a5d74e80e960e4eef1512f44bc70</srcmd5>
+    <version>1.19.2</version>
+    <time>1621805448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.2
+  * Added randomised delimiters
+  * Initial support for multiple wordfiles
+
+- Update to version 1.17.6</comment>
+    <requestid>895041</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>30d3a81fef55c0743728c8c3c5466d6f</srcmd5>
+    <version>1.19.2</version>
+    <time>1642029757</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test (gh#redacted/XKCD-password-generator#138).
+
+- add python-rpm-macros</comment>
+    <requestid>945902</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b01349599ad268a53faf686764303b0</srcmd5>
+    <version>1.19.3</version>
+    <time>1646671699</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.19.3:
+  * Restore a randomly sampled version of eff_large_de wordlist</comment>
+    <requestid>959998</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ce64eb6e3e5d73f0d78c44f59db267da</srcmd5>
+    <version>1.19.3</version>
+    <time>1677498933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067897</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b42808a743b26c1017aa10f0a8fbf82f</srcmd5>
+    <version>1.19.8</version>
+    <time>1702488962</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.19.8:
+  * Enables `python -m xkcdpass` usage
+  * Adds Swedish wordlist, improvements to test suite,
+    improvements to setup.py (excludes examples from install)
+  * Fixes randomly failing unit test
+  * Adds &quot;as-is&quot; option for case
+  * Makes randomised delimiters behavior consistent with fixed
+    delimeters
+
+  * Restore a randomly sampled version of eff_large_de wordlist
+- add python-rpm-macros
+- Add Requires on python-setuptools
+- Initial release for build.opensuse.org</comment>
+    <requestid>1132836</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="orthanc-indexer" project="openSUSE:Factory">
+  <title>Folder indexer plugin for Orthanc</title>
+  <description></description>
+  <devel project="graphics" package="orthanc-indexer"/>
+</package>

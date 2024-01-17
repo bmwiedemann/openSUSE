@@ -1,0 +1,10 @@
+<package name="zim" project="openSUSE:Factory">
+  <title>zim </title>
+  <description>Zim aims at bringing the concept of a wiki to your desktop. For example
+every page is saved as a text file with wiki markup. Pages can contain
+links to other pages, and are saved automatically. Creating a new page
+is as easy as linking to a non-exiting page. This tool is intended to
+keep track of TODO lists or serve as a personal scratch book.
+</description>
+  <devel project="devel:openSUSE:Factory:Apps" package="zim"/>
+</package>

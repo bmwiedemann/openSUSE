@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Thu Dec 21 17:16:32 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.11.2:
+  * Update release deps
+  * Maintenance release v0.11.2
+  * Bump golang.org/x/net from 0.3.1-0.20221206200815-1e63c2f08a10
+    to 0.7.0
+  * fix typo in README.md
+  * chore: remove refs to deprecated io/ioutil
+  * fix typo in README.md
+  * fix: check metrics before version in cluster sanitizer
+  * fix: call AddErr() when nodes list fails
+  * fix: call AddErr() when namespaces list fails
+  * fix: call AddErr() when clusterrolebindings list fails
+  * fix: call AddErr() when clusterroles list fails
+  * fix: call AddErr() when clusterroles list fails
+  * fix: call AddErr() when clusterrolebindings list fails
+  * feat: update POP-402 message
+  * feat: check metrics server in cluster sanitizer
+  * Bump golang.org/x/net from 0.3.1-0.20221206200815-1e63c2f08a10
+    to 0.7.0
+  * Fix README fred* namespaces exclusion
+
+-------------------------------------------------------------------
+Tue Feb 21 09:27:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.1:
+  * fix #245
+  * deprecated cronjob api
+
+-------------------------------------------------------------------
+Mon Feb 13 05:49:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.0:
+  * Release v0.11.0
+  * Add check for pods that are managed by multiple pdbs
+  * Update README.md
+  * invalid value for --force-exit-zero
+  * add a non-root user in docker image
+  * optimize README documents
+  * 📦 Add arm64 Darwin releases to krew-index
+  * Add go install option to readme
+  * Fixing CVE issue for client_golang 1.11.0 to 1.12.2
+  * Fixing CVE issue for client_golang 1.11.0 to 1.12.1. Reverting from 1.12.2
+  * Fixing CVE issue for client_golang 1.11.0 to 1.12.2
+  * Add check for pods that are managed by multiple pdbs
+  * fix RBAC rules in README.md
+
+-------------------------------------------------------------------
+Tue Jun 28 14:59:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.10.1:
+  * fix issue with 2x pdb
+  * fix docker build
+
+-------------------------------------------------------------------
+Thu Apr 14 19:42:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.10.0:
+  * update rel notes
+  * update docs
+  * fix: remove useless if/then
+  * bump k8s version
+  * fix: s3-endpoint flag description
+  * Fix HPA API version derailed#207
+  * feat: add other S3 object storage compatible support
+  * feat: add GitPod for better UX for contributors
+  * Fixes #211 (but might break backward compatilbility)
+  * Update codes.md
+  * Update codes.yml
+  * Sets default registry as a constant. Only sanitizes registries if a registry list is provided.
+  * Adds rule 113 which makes possible to add a list of allowed registries to pull images from. Otherwise, all images are allowed.
+- BuildRequire go1.17
+
+-------------------------------------------------------------------
+Wed Jan 05 15:03:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.8:
+  * NOTE: Fix'n brew deprecation warnings
+
+-------------------------------------------------------------------
+Wed Jan 05 15:00:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.7:
+  * Issue #190 Popeye docker image tag 0.9.6 not available on quay.io
+  * Issue #163 popeye 0.9.0 with K8S 1.21.0 bug on PodDisruptionBudget - Wrong default API. With Feelings!
+
+-------------------------------------------------------------------
+Wed Jan 05 14:56:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.6:
+  * Issue #188 Can't run Popeye: No resource meta found for networking.k8s.io/v1/ingresses. With Feelings!
+  * Issue #178 Custom handling of client-go/rest warnings. Sending to logger instead
+
+-------------------------------------------------------------------
+Wed Jan 05 14:54:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.5:
+  * Issue #163 popeye 0.9.0 with K8S 1.21.0 bug on PodDisruptionBudget - Wrong default API - With Feelings!
+
+-------------------------------------------------------------------
+Wed Jan 05 14:47:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.4:
+  * Issue #163 popeye 0.9.0 with K8S 1.21.0 bug on PodDisruptionBudget - Wrong default API
+  * Issue #712 [POP-712] Found only one master node not flag on the right node
+  * Issue #181 [POP-404] Deprecation check failed
+
+-------------------------------------------------------------------
+Wed Jan 05 14:45:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.3:
+  * Issue #170 Can't run popeye when kubernetes has networking.k8s.io/v1/ingresses
+  * PR #1102 Load codes with embed:fs and fix code 1102 format. Big Thanks to GoodWine for this excellent PR!!
+
+-------------------------------------------------------------------
+Wed May 26 18:34:19 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package popeye

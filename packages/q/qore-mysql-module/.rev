@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ad4f9796d22fa6abf83b09cb96bc3af</srcmd5>
+    <version>2.0.1</version>
+    <time>1408957431</time>
+    <user>coolo</user>
+    <comment>real fix for the license (thanks cdenicolo, I really apologise for the mess)</comment>
+    <requestid>245690</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7ad4f9796d22fa6abf83b09cb96bc3af</srcmd5>
+    <version>2.0.1</version>
+    <time>1409303135</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ccce44c5a60805c1ec4541b7230be271</srcmd5>
+    <version>2.0.1</version>
+    <time>1441054764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328058</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b7be08e3a0ee8b0f012c361a4a9bfcf</srcmd5>
+    <version>2.0.2.1</version>
+    <time>1535122770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621381</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5fc493359cfc8fdc4c6f172c8a2c6630</srcmd5>
+    <version>2.0.2.1</version>
+    <time>1608542646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857091</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>724c809756b57f8efb3bedb2a183075a</srcmd5>
+    <version>2.0.2.1+qore0.9.15</version>
+    <time>1627847496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.2.1 for qore 0.9.15
+ 
+Requires SR#908927</comment>
+    <requestid>908928</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb16601e18435ef55a16a33458772101</srcmd5>
+    <version>2.0.2.1+qore1.0.10</version>
+    <time>1637701825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928310</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ce7658276506d8308813852f2d7d18a8</srcmd5>
+    <version>2.1</version>
+    <time>1653769013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979581</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+Index: valgrind-3.17.0/dhat/Makefile.am
+===================================================================
+--- valgrind-3.17.0.orig/dhat/Makefile.am
++++ valgrind-3.17.0/dhat/Makefile.am
+@@ -10,7 +10,7 @@ pkginclude_HEADERS = \
+ 	dhat.h
+ 
+ # Ensure the viewer components get copied into the install tree.
+-dhatdir = $(pkglibexecdir)
++dhatdir = $(pkgdatadir)
+ dhat_DATA = dh_view.html dh_view.css dh_view.js
+ 
+ #----------------------------------------------------------------------------

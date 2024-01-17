@@ -1,0 +1,7 @@
+[Unit]
+Description=Automated poller.php call for cacti
+
+[Service]
+Type=oneshot
+User=__APACHEUSER__
+ExecStart=/bin/bash -ce "/usr/bin/php -f  __CACTIDIR__/poller.php 1>/dev/null 2>&1"

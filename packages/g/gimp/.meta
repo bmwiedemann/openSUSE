@@ -1,0 +1,14 @@
+<package name="gimp" project="openSUSE:Factory">
+  <title>The GNU Image Manipulation Program</title>
+  <description>The GIMP (GNU Image Manipulation Program) is a powerful image
+composition and editing program, which can be extremely useful for
+creating logos and other graphics for Web pages.  The GIMP offers many
+of the tools and filters you would expect to find in similar commercial
+offerings and contains some interesting extras as well. The GIMP
+provides a large image manipulation toolbox, including channel
+operations and layers, effects, subpixel imaging and antialiasing, and
+conversions- all including multilevel undo. The GIMP offers a scripting
+facility, but many of the included scripts rely on fonts that we cannot
+distribute.</description>
+  <devel project="graphics" package="gimp"/>
+</package>

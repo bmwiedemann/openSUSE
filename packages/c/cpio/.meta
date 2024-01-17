@@ -1,0 +1,14 @@
+<package name="cpio" project="openSUSE:Factory">
+  <title>A Backup and Archiving Utility</title>
+  <description>GNU cpio is a program to manage archives of files. This package also
+includes 'mt', a tape drive control program. Cpio copies files into or
+out of a cpio or tar archive. An archive is a file that contains other
+files plus information about them, such as their pathname, owner, time
+stamps, and access permissions. The archive can be another file on the
+disk, a magnetic tape, or a pipe. This package normally includes the
+program 'rmt', which provides remote tape drive control. Because there
+is a compatible 'rmt' in the 'dump' package, 'rmt' is not included in
+this package. If you are planning to use the remote tape features
+provided by cpio, install the 'dump' package as well.</description>
+  <devel project="Archiving" package="cpio"/>
+</package>

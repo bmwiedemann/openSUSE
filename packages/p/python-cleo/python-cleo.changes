@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Thu Dec  7 20:09:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Added support for Python 3.12 #379
+  * Added `CONTRIBUTING.md` document #331
+  * Fixed subcommand completions for Fish #359
+  * Removed deprecated `-A` option from Fish completions #366
+  * Fixed program name discovery in completions script when
+    running as module #231
+  * Fixed ANSI coloring detection in virtual terminal
+    environments (Windows, PyCharm) #104
+  * Fixed terminal size detection #299
+
+-------------------------------------------------------------------
+Mon May  8 06:39:12 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Wed Dec 14 12:52:55 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.0.1
+  - Relax poetry-core requirement for PEP 517 builds (#291).
+- 2.0.0 - 2022-11-21
+  - No source code changes.
+  - This is a version-only release to replace 1.0.0, which was yanked on the
+    grounds that it was incompatible with real dependents (i.e. Poetry) based
+    on their version specifiers, which explicitly included 1.0.0 pre-releases.
+
+-------------------------------------------------------------------
+Sun Oct  9 13:05:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.0a5
+  * no release notes
+  * pre-release version required by poetry 1.2
+    gh#python-poetry/poetry#3618
+
+-------------------------------------------------------------------
+Thu Feb 24 07:47:59 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Disable python2 which doesn't build
+
+-------------------------------------------------------------------
+Mon Oct 26 21:42:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.8.1
+  * Upgraded clikit to version ^0.6.0
+- Kill dephell dependency
+
+-------------------------------------------------------------------
+Tue Mar 31 11:45:54 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.8.0
+  * Errors are now rendered in a nicer way for Python 3.6+.
+
+-------------------------------------------------------------------
+Tue Mar 24 10:19:03 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.7.6
+  * Upgraded `clikit` to fix issues in option parsing.
+
+-------------------------------------------------------------------
+Mon Mar 23 18:13:43 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add macro %dephell_genspec to generate setup.py
+
+-------------------------------------------------------------------
+Tue Sep 17 11:15:12 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Trim filler wording from
+  descriptions.
+
+-------------------------------------------------------------------
+Mon Sep 16 08:39:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use the upstream tarball
+
+-------------------------------------------------------------------
+Sun Jan 20 19:52:56 UTC 2019 - Niels Abspoel <aboe76@gmail.com>
+
+- initial packaging

@@ -1,0 +1,609 @@
+-------------------------------------------------------------------
+Tue Sep 19 08:26:26 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 1.11.1:
+  * Revert “plugin/forward: Continue waiting after receiving malformed responses
+  * plugin/dnstap: add support for “extra” field in payload
+  * plugin/cache: fix keepttl parsing
+
+- Update to version 1.11.0:
+  * Adds support for accepting DNS connections over QUIC (doq).
+  * Adds CNAME target rewrites to the rewrite plugin.
+  * Plus many bug fixes, and some security improvements.
+
+  * This release introduces the following backward incompatible changes:
+   + In the kubernetes plugin, we have dropped support for watching Endpoint and Endpointslice v1beta, 
+     since all supported K8s versions now use Endpointslice.
+   + The bufsize plugin changed its default size limit value to 1232
+   + Some changes to forward plugin metrics.
+
+- Update to version 1.10.1:
+  * Corrected architecture labels in multi-arch image manifest
+  * A new plugin timeouts that allows configuration of server listener timeout durations
+  * acl can drop queries as an action
+  * template supports creating responses with extended DNS errors
+  * New weighted policy in loadbalance
+  * Option to serve original record TTLs from cache
+
+-------------------------------------------------------------------
+Tue Nov  1 10:37:02 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.10.0:
+
+	* core: add log listeners for k8s_event plugin (#5451)
+	* core: log DoH HTTP server error logs in CoreDNS format (#5457)
+	* core: warn when domain names are not in RFC1035 preferred syntax (#5414)
+	* plugin/acl: add support for extended DNS errors (#5532)
+	* plugin/bufsize: do not expand query UDP buffer size if already set to a smaller value (#5602)
+	* plugin/cache: add cache disable option (#5540)
+	* plugin/cache: add metadata for wildcard record responses (#5308)
+	* plugin/cache: add option to adjust SERVFAIL response cache TTL (#5320)
+	* plugin/cache: correct responses to Authenticated Data requests (#5191)
+	* plugin/dnstap: add identity and version support for the dnstap plugin (#5555)
+	* plugin/file: add metadata for wildcard record responses (#5308)
+	* plugin/forward: enable multiple forward declarations (#5127)
+	* plugin/forward: health_check needs to normalize a specified domain name (#5543)
+	* plugin/forward: remove unused coredns_forward_sockets_open metric (#5431)
+	* plugin/header: add support for query modification (#5556)
+	* plugin/health: bypass proxy in self health check (#5401)
+	* plugin/health: don't go lameduck when reloading (#5472)
+	* plugin/k8s_external: add support for PTR requests (#5435)
+	* plugin/k8s_external: resolve headless services (#5505)
+	* plugin/kubernetes: make kubernetes client log in CoreDNS format (#5461)
+	* plugin/ready: reset list of readiness plugins on startup (#5492)
+	* plugin/rewrite: add PTR records to supported types (#5565)
+	* plugin/rewrite: fix a crash in rewrite plugin when rule type is missing (#5459)
+	* plugin/rewrite: fix out-of-index issue in rewrite plugin (#5462)
+	* plugin/rewrite: support min and max TTL values (#5508)
+	* plugin/trace : make zipkin HTTP reporter more configurable using Corefile (#5460)
+	* plugin/trace: read trace context info from headers for DOH (#5439)
+	* plugin/tsig: add new plugin TSIG for validating TSIG requests and signing responses (#4957)
+	* core: update gopkg.in/yaml.v3 to fix CVE-2022-28948 
+	* core: update golang.org/x/crypto to fix CVE-2022-27191 
+	* plugin/acl: adding a check to parse out zone info 
+	* plugin/dnstap: support FQDN TCP endpoint 
+	* plugin/errors: add stacktrace option to log a stacktrace during panic recovery 
+	* plugin/template: return SERVFAIL for zone-match regex-no-match case 
+
+-------------------------------------------------------------------
+Fri Jan 08 12:19:37 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.8.0:
+  * release: up version to 1.8.0 (#4225)
+  * add default reviewers for circleci config (#4222)
+  * auto go mod tidy
+  * build(deps): bump github.com/miekg/dns from 1.1.33 to 1.1.34 (#4217)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.35.7 to 1.35.9 (#4213)
+  * build(deps): bump github.com/prometheus/client_golang (#4214)
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.27.0 to 1.27.1 (#4212)
+  * auto make -f Makefile.doc
+  * plugin/autopath: slightly tweaks the docs (#4188)
+  * cache: do the msg copy right (#4207)
+  * reduce sleeps (#4205)
+  * Add #4171 in notes (#4204)
+  * notes: update with latest (#4203)
+  * deps: bump miekg/dns to new version (#4201)
+  * plugin/transfer: remove duplicate code (#4200)
+  * plugin/cache: fix removing OPT (#4190)
+  * notes: add dnstap PR (#4197)
+  * [plugin][trace] - Have a consistent spanName (#4171)
+  * auto make -f Makefile.doc
+  * plugin/dnstap: various cleanups (#4179)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest/azure/auth (#4195)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.35.2 to 1.35.7 (#4191)
+  * auto go mod tidy
+  * build(deps): bump github.com/cenkalti/backoff/v4 from 4.0.2 to 4.1.0 (#4192)
+  * build(deps): bump github.com/miekg/dns from 1.1.31 to 1.1.32 (#4193)
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4194)
+  * notes: more PR and clarify backwards incompat changes (#4185)
+  * core: fix crash with no plugins (#4184)
+  * fix alpn for http/2 upgrade when using DoH (#4182)
+  * auto go mod tidy
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.26.0 to 1.27.0 (#4177)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4176)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.32 to 1.35.2 (#4175)
+  * build(deps): bump github.com/dnstap/golang-dnstap from 0.2.1 to 0.2.2 (#4174)
+  * fix lameduck docs (#4169)
+  * More 1.8.0 notes updates: add latest merged PRs (#4168)
+  * dont return 200 during shutdown (#4167)
+  * plugins/auto: allow fallthrough if no zone match (#4166)
+  * update README examples to use transfer plugins (#4163)
+  * doh support: make no TLS config fatal (#4162)
+  * Add proto and remote tags to trace plugin (#4159)
+  * update 1.8.0 notes (#4156)
+  * plugin/cache: Fix filtering (#4148)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.22 to 1.34.32 (#4153)
+  * build(deps): bump k8s.io/client-go from 0.19.1 to 0.19.2 (#4150)
+  * build(deps): bump github.com/prometheus/common from 0.13.0 to 0.14.0 (#4149)
+  * Add notes for next 1.8.0 release (#4143)
+  * auto make -f Makefile.doc
+  * Cherry-pick: Implement notifies for transfer plugin (#3972) (#4142)
+  * auto go mod tidy
+  * For caddy v1 in our org (#4018)
+  * goreport card fixes (#4139)
+  * coredns: bump version to 1.7.1 (#4136)
+  * plugin/hosts: make hosts plugin cursive (#4131)
+  * cache: default to DNSSEC (#4085)
+  * notes: update 1.7.1 (#4128)
+  * auto go mod tidy
+  * bump prometheus with zipkin (#4109)
+  * plugin/forward: fix panic when `expire` is configured as 0s (#4115)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.18 to 1.34.22 (#4118)
+  * auto make -f Makefile.doc
+  * plugin/forward: add hit/miss metrics for connection cache (#4114)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.19.0 to 0.19.1 (#4120)
+  * auto go mod tidy
+  * build(deps): bump github.com/farsightsec/golang-framestream (#4117)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest/azure/auth (#4124)
+  * plugin/trace: fix struct allignment (#4112)
+  * plugin/forward: init ClientSessionCache in tls.Config (#4108)
+  * auto go mod tidy
+  * build(deps): bump github.com/dnstap/golang-dnstap from 0.2.0 to 0.2.1 (#4107)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.13 to 1.34.18 (#4105)
+  * Fix trailing whitespace (#4103)
+  * Fix some typos in comments. (#4100)
+  * clouddns,route53: fix lingering goroutines after restart (#4096)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.5 to 1.34.13 (#4092)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.8 to 0.19.0 (#4095)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4090)
+  * Update the 1.7.1 notes (#4086)
+  * auto make -f Makefile.doc
+  * Enable debug globally if enabled in any server config (#4007)
+  * cleanup tempfiles for erratic_autopath_test (#4080)
+  * fix misspell (#4081)
+  * Update README.md (#4068)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.34.0 to 1.34.5 (#4072)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.6 to 0.18.8 (#4074)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/api from 0.18.6 to 0.18.8 (#4073)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest/azure/auth (#4070)
+  * pkg/upstream: set edns0 and Do when required (#4055)
+  * Bump to golang 1.15 (#4064)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4052)
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.25.0 to 1.26.0 (#4050)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.17 to 1.34.0 (#4054)
+  * auto make -f Makefile.doc
+  * plugin/etcd: update documention (#4049)
+  * auto make -f Makefile.doc
+  * plugin/template: Add client IP data (#4034)
+  * auto go mod tidy
+  * build(deps): bump github.com/miekg/dns from 1.1.30 to 1.1.31 (#4043)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.12 to 1.33.17 (#4041)
+  * backend: fix root zone usage (#4039)
+  * Fix wildcard records issue in rout53 plugin (#4038)
+  * 1.7.x note fixes (#4033)
+  * Update coredns-1.6.9.md (#4031)
+  * Update coredns-1.7.0.md (#4030)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.7 to 1.33.12 (#4027)
+  * Add initial notes for 1.7.1 (#4026)
+  * auto go mod tidy
+  * using promauto package to ensure all created metrics are properly registered (#4025)
+  * register HealthcheckBrokenCount (#4021)
+  * auto make -f Makefile.doc
+  * Disable debug mode for tracing - removes extra logging (#4016)
+  * ignore vendor when presubmit test (#3999)
+  * fix metric naming test (#4017)
+  * Manually update client-go to v0.18.6 (#4015)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.5 to 1.33.7 (#4011)
+  * build(deps): bump k8s.io/apimachinery from 0.18.5 to 0.18.6 (#4012)
+  * Improve gRPC Plugin when backend is not available (#3966)
+  * Add DCO requirement in Contributing guidelines (#4008)
+  * auto go mod tidy
+  * build(deps): bump github.com/miekg/dns from 1.1.29 to 1.1.30 (#4004)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.33.1 to 1.33.5 (#4003)
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#4002)
+  * build(deps): bump google.golang.org/api from 0.28.0 to 0.29.0 (#4001)
+  * remove TestProxyClose (#4005)
+  * Minor grammatical fixes to release notes (#3998)
+  * Revert "Implement notifies for transfer plugin (#3972)" (#3995)
+  * Implement notifies for transfer plugin (#3972)
+  * auto go mod tidy
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.24.1 to 1.25.0 (#3991)
+  * build(deps): bump github.com/opentracing/opentracing-go (#3990)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.32.11 to 1.33.1 (#3992)
+  * Add timeouts for http server (#3920)
+  * Cleanup tempfiles (#3986)
+  * complete nsid plugin test case (#3981)
+  * complete transfer plugin  test case (#3967)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.4 to 0.18.5 (#3975)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.32.6 to 1.32.11 (#3976)
+  * auto go mod tidy
+  * build(deps): bump github.com/prometheus/client_golang (#3979)
+  * build(deps): bump github.com/Azure/go-autorest/autorest/azure/auth (#3980)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/apimachinery from 0.18.4 to 0.18.5 (#3978)
+  * plugin/cache/forward: Clean up grammar/wording in forward & cache metrics descriptions. (#3971)
+  * plugin/forward: remove exp backoff stuff (#3970)
+  * format and add newline (#3969)
+  * auto make -f Makefile.doc
+  * completed metrics of cache and forward (#3962)
+  * add test case of remote ip (#3964)
+  * auto go mod tidy
+  * build(deps): bump google.golang.org/api from 0.26.0 to 0.28.0 (#3960)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.3 to 0.18.4 (#3956)
+  * build(deps): bump github.com/prometheus/client_golang (#3957)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.32.1 to 1.32.6 (#3961)
+  * Update dns64 plugin bugs list (#3955)
+
+-------------------------------------------------------------------
+Mon Aug 31 14:29:45 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.7.0:
+  * Update release note date for 1.7.0 (#3950)
+  * Bump version to 1.7.0 (#3782)
+  * plugin/kubernetes: fix tombstone unwrapping (#3924)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.31.12 to 1.32.1 (#3948)
+  * transfer deferred (#3949)
+  * Update release note of 1.7.0 (#3947)
+  * Regenerate man page (#3946)
+  * weight for SRV records should be at least 1 (#3931)
+  * update k8s version u=in circleci (#3942)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.31.7 to 1.31.12 (#3933)
+  * build(deps): bump google.golang.org/api from 0.25.0 to 0.26.0 (#3932)
+  * plugin/azure: Fix environment option (#3922)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.31.4 to 1.31.7 (#3921)
+  * k8s_external can now resolve CNAME returned by AWS ELB/NLB (#3916)
+  * plugin/forward/grpc: Revert forward/grpc policy dedup (#3919)
+  * auto go mod tidy
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.24.0 to 1.24.1 (#3914)
+  * build(deps): bump google.golang.org/api from 0.24.0 to 0.25.0 (#3912)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#3910)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.2 to 0.18.3 (#3909)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.30.29 to 1.31.4 (#3908)
+  * Improvements in the documentation (README.md) (#3907)
+  * auto go mod tidy
+  * build(deps): bump github.com/prometheus/common from 0.9.1 to 0.10.0 (#3894)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.30.24 to 1.30.29 (#3895)
+  * build(deps): bump google.golang.org/api from 0.23.0 to 0.24.0 (#3896)
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.23.2 to 1.24.0 (#3897)
+  * build(deps): bump github.com/golang/protobuf from 1.4.1 to 1.4.2 (#3893)
+  * plugin/kubernetes: handle tombstones in default processor (#3890)
+  * plugin/kubernetes: Handle endpoint tombstones (#3887)
+  * fix readme (#3889)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#3884)
+  * build(deps): bump github.com/golang/protobuf from 1.4.0 to 1.4.1 (#3883)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.30.19 to 1.30.24 (#3882)
+  * build(deps): bump google.golang.org/api from 0.22.0 to 0.23.0 (#3881)
+  * Fix query for SOA record for delegated zone (#3875)
+  * Fix plugin forward fuzz target (#3877)
+  * plugin/kubernetes: Mention remote IP requirement for autopath and metadata in README (#3876)
+  * always add client metadata (#3874)
+  * fix description of bufsize plugin (#3873)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.30.14 to 1.30.19 (#3872)
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.23.1 to 1.23.2 (#3871)
+  * build(deps): bump github.com/prometheus/client_golang (#3870)
+  * plugin/kubernetes: Don't panic with metadata enabled and pods mode not verified (#3869)
+  * Fix CIDR in example (#3864)
+  * Fix NSID not being set on cached responses (#3822)
+  * auto go mod tidy
+  * build(deps): bump google.golang.org/api from 0.20.0 to 0.22.0 (#3859)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.30.9 to 1.30.14 (#3858)
+  * build(deps): bump google.golang.org/grpc from 1.28.1 to 1.29.1 (#3857)
+  * Run go generate (#3856)
+  * Fix mixed indentation within tests (#3855)
+  * not implemented yet (#3851)
+  * Fix readme test by removing extra `~` (#3850)
+  * auto make -f Makefile.doc
+  * plugin/dns64: update readme and owners (#3848)
+  * Fix to: (#3840)
+  * auto go mod tidy
+  * build(deps): bump github.com/golang/protobuf from 1.3.5 to 1.4.0 (#3845)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.30.7 to 1.30.9 (#3843)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.1 to 0.18.2 (#3841)
+  * Remove grobie from maintainers (#3833)
+  * introduce myself to some components (#3831)
+  * remove ignored option at kubernetes plugin (#3737)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.18.0 to 0.18.1 (#3827)
+  * auto go mod tidy
+  * build(deps): bump google.golang.org/grpc from 1.28.0 to 1.28.1 (#3825)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/apimachinery from 0.18.0 to 0.18.1 (#3826)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.30.4 to 1.30.7 (#3828)
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.22.0 to 1.23.1 (#3829)
+  * plugin/forward: crash if using https (#3817)
+  * Remove all editor stuff from .gitignore (#3820)
+  * auto go mod tidy
+  * build(deps): bump github.com/cenkalti/backoff/v4 from 4.0.0 to 4.0.2 (#3813)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.29.33 to 1.30.4 (#3814)
+  * correct metrics name of cache size (#3805)
+  * Detail metrics name changes (#3798)
+  * auto make -f Makefile.doc
+  * Update more metrics names (#3799)
+  * Change the recommened version to 1.14 (as we use 1.14 by default) (#3801)
+  * auto make -f Makefile.doc
+  * Move doc test to workflow (#3800)
+  * auto go mod tidy
+  * Update various vendor dependencies (#3785)
+  * introduce metric naming test (#3789)
+  * auto go mod tidy
+  * Update k8s.io/[api|apimachinery|client-go] to v0.18.0 (#3796)
+  * remove federation (#3794)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.29.29 to 1.29.34 (#3790)
+  * Remove top level clutter: move fixup_file_mtime (#3786)
+  * regitry reload metrics (#3784)
+  * Fix plugin name in project README  (#3683)
+  * Fix 1.7.0 notes. (#3781)
+  * Add 1.7.0 notes already (#3779)
+  * Add CI test for man page updates (#3729)
+  * Documentation improvements for dns64 plugin (#3777)
+  * Cleanup metrics (#3776)
+  * add known issue (#3770)
+  * Add dns64 plugin (#3534)
+  * export config file hash in a metric (#3768)
+  * Bump to version 1.6.9 (#3773)
+  * release: up the version to 1.6.8 (#3772)
+  * 1.6.8 release notes: set date to today (#3771)
+  * Bumb travis Go version to 1.14 (#3716)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.29.24 to 1.29.29 (#3763)
+  * build(deps): bump github.com/miekg/dns from 1.1.28 to 1.1.29 (#3762)
+  * send token in the header instead of api call (#3764)
+  * plugin/cache: fix negative cache masking cases (#3744)
+  * register missing metric (#3756)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.17.3 to 0.17.4 (#3750)
+  * auto go mod tidy
+  * build(deps): bump github.com/miekg/dns from 1.1.27 to 1.1.28 (#3748)
+  * auto go mod tidy
+  * build(deps): bump github.com/golang/protobuf from 1.3.4 to 1.3.5 (#3753)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.29.19 to 1.29.24 (#3752)
+  * build(deps): bump github.com/prometheus/client_golang (#3749)
+  * build(deps): bump google.golang.org/grpc from 1.27.1 to 1.28.0 (#3747)
+  * build(deps): bump k8s.io/apimachinery from 0.17.3 to 0.17.4 (#3746)
+  * parse.HostPortorFile: return error when 0 found (#3742)
+  * Add missing PR to release notes (#3743)
+  * Add private DNS support for azure plugin (#3516)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.29.14 to 1.29.19 (#3740)
+  * build(deps): bump github.com/prometheus/client_golang (#3739)
+  * build(deps): bump google.golang.org/api from 0.15.0 to 0.20.0 (#3738)
+  * auto go mod tidy
+  * Update etcd and grpc to latest version (#3733)
+  * Initial set of release notes for 1.6.8 (#3728)
+  * doc: regen man-pages (#3725)
+  * Add configuration flag to set if RecursionDesired should be set on health checkers in Forward-plugin (#3679)
+  * validate object implements the corresponding interface (#3724)
+  * Update README.md (#3721)
+  * fix link (#3719)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.29.8 to 1.29.14 (#3714)
+  * auto go mod tidy
+  * build(deps): bump github.com/golang/protobuf from 1.3.3 to 1.3.4 (#3713)
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#3711)
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.21.0 to 1.22.0 (#3710)
+  * auto go mod tidy
+  * build(deps): bump github.com/caddyserver/caddy from 1.0.4 to 1.0.5 (#3712)
+  * Fix placeholders in LICENSE (#3707)
+  * explain drop metric (#3706)
+  * auto go mod tidy
+  * bump client-go and api (#3694)
+  * plugin/hosts: Modifies NODATA handling (#3536)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#3691)
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.29.3 to 1.29.8 (#3692)
+  * return all records with matching ip (#3687)
+  * metrics: add type to latency as well (#3685)
+  * Replacing 'HTTP' by 'HTTPS' for securing links (#3682)
+  * auto go mod tidy
+  * build(deps): bump gopkg.in/DataDog/dd-trace-go.v1 from 1.20.1 to 1.21.0 (#3675)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.28.13 to 1.29.3 (#3676)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/apimachinery from 0.17.2 to 0.17.3 (#3674)
+  * plugin/template: fix panic when missing next handler (#3672)
+  * auto go mod tidy
+  * build(deps): bump github.com/Azure/go-autorest/autorest (#3666)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.28.9 to 1.28.13 (#3667)
+  * build(deps): bump github.com/prometheus/client_golang (#3665)
+  * plugin/pkg/up: make default intervals shorter (#3651)
+  * Update README.md (#3655)
+  * Add exponential backoff to healthcheck (#3643)
+  * plugins/forward: Add max_concurrent option (#3640)
+  * auto go mod tidy
+  * build(deps): bump github.com/prometheus/client_golang (#3647)
+  * build(deps): bump github.com/golang/protobuf from 1.3.2 to 1.3.3 (#3646)
+  * plugin/kubernetes: fix metadata (#3642)
+  * presubmit: test README.md sections (#3644)
+  * presubmit: improve output (#3641)
+  * presubmit: check import path ordering (#3636)
+  * fix error formatting (#3639)
+
+-------------------------------------------------------------------
+Tue Jul 14 20:58:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- fix vendoring to build against go 1.13+
+
+-------------------------------------------------------------------
+Wed Mar 25 13:51:22 UTC 2020 - Michal Jura <mjura@suse.com>
+
+- Update to version 1.6.7:
+  * Required by Kubernetes 1.18
+  * make -f Makefile.doc (#3633)
+  * Update date on notes (#3632)
+  * Remove all shell presubmits (#3631)
+  * presubmit tests (#3630)
+  * presubmit: add whitespace test in go (#3629)
+  * auto go mod tidy
+  * build(deps): bump k8s.io/client-go from 0.17.1 to 0.17.2 (#3621)
+  * auto go mod tidy
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.28.5 to 1.28.9 (#3625)
+  * build(deps): bump github.com/prometheus/common from 0.7.0 to 0.9.1 (#3622)
+
+-------------------------------------------------------------------
+Mon Dec 16 10:46:00 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.6.5:
+  * Required by Kubernetes 1.17
+  * Three new plugins: kubernetes, foreward, file 
+
+-------------------------------------------------------------------
+Thu Oct 10 09:47:44 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.6.2:
+  * Required by Kubernetes 1.16
+  * Three new plugins: azure, route53 and forward
+
+-------------------------------------------------------------------
+Tue Sep 10 07:19:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix summary of coredns-extras.
+
+-------------------------------------------------------------------
+Mon Sep  2 10:19:48 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update to version 1.6.3:
+  * Spelling corrections and other minor improvements and polish.
+  * Two new plugins: clouddns and sign.
+
+- Changed included from version 1.6.1:
+  * Fix a panic in the hosts plugin.
+  * The reload now detects changes in files imported from the main Corefile.
+  * route53 increases the paging size when talking to the AWS API, this
+    decreases the chances of getting throttled.
+
+- Changed included from version 1.6.0:
+  * The -cpu flag is removed from this version.
+  * This release sports changes in the file plugin.
+    A speed up in the log plugin and fixes in the cache and hosts plugins.
+  * Upcoming deprecation: the kubernetes federation plugin will be moved to
+    github.com/coredns/federation. This is likely to happen in CoreDNS 1.7.0.
+
+- Changed included from version 1.5.2:
+  * Small bugfixes and a change to Caddy’s import path
+    (mholt/caddy -> caddyserver/caddy).
+  * Doing a release helps plugins deal with the change better.
+
+- Changed included from version 1.5.1:
+  * Various bugfixes, better documentation and cleanups.
+  * The -cpu flag is somewhat redundant (cgroups/systemd/GOMAXPROCS are better
+    ways to deal with this) and we want to remove it; if you depend on it in
+    some way please voice that in this PR otherwise we’ll remove it in the next
+    release.
+
+- Changed included from version 1.5.0:
+  * Two new plugins in this release: grpc, and ready. And some polish and 
+    simplifications in the core server code.
+  * The use of TIMEOUT and no_reload in file and auto have been fully deprecated. 
+    As is the proxy plugin.
+  * And a update on two important and active bugs:
+    - 2593 seems to hone in on Docker and/or the container environment being a 
+      contributing factor.
+    - 2624 is because of TLS session negotiating in the forward plugin.
+
+- Changed included from version 1.4.0:
+  * Our first release after we became a graduated project in CNCF.
+  * Deprecation notice for the next release:
+    - auto will deprecate TIMEOUT and recommends the use of RELOAD (2516).
+    - auto and file will deprecate NO_RELOAD and recommends the use of RELOAD 
+      set to 0 (2536).
+    - health will revert back to report process level health without plugin status. 
+      A new ready plugin will make sure plugins have at least completed their 
+      startup sequence.
+    - The proxy will be moved to an external repository and as such be 
+      deprecated from the default set of plugin; use the forward as a replacement.
+    - The previous announced deprecations have been enacted.
+    - The (unused) gRPC watch functionally was removed from the server.
+
+-------------------------------------------------------------------
+Wed Jul 24 13:26:10 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Add coredns-extras package to allow use of coredns in a non-containerized
+  environment
+
+-------------------------------------------------------------------
+Mon Jul 22 18:58:18 CEST 2019 - kukuk@suse.de
+
+- Remove systemd support, not needed on openSUSE Kubic
+- Build with pie (security policy)
+
+-------------------------------------------------------------------
+Tue Jul  2 23:55:24 UTC 2019 - Daniel Orf <dorf@suse.com>
+
+- Update to version 1.3.1:
+  * log now allows multiple names to be specified
+  * import was added to give it a README.md to make it’s documentation more discoverable
+  * kubernetes TTL is also applied to negative responses (NXDOMAIN, etc)
+
+- Changed included from version 1.3.0:
+  * EDNS0 handling in the server and make it compliant with https://dnsflagday.net/
+  * k8s_external a new plugin that allows external zones to point to Kubernetes in-cluster services.
+  * rewrite fixes a bug where a rule would eat the first character of a name
+  * log now supported the metadata labels. It also fixes a bug in the formatting of a plugin logging a info/failure/warning
+  * forward removes the dynamic read timeout and uses a fixed value now.
+  * kubernetes now checks if a zone transfer is allowed. Also allow a TTL of 0 to avoid caching in the cache plugin.
+
+-------------------------------------------------------------------
+Wed Jun  5 15:33:00 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  make the build dep chain cheaper by using systemd-mini.
+
+-------------------------------------------------------------------
+Tue Mar 26 03:45:07 UTC 2019 - Daniel Orf <dorf@suse.com>
+
+- Update spec file BuildRequires golang(API) >= 1.11
+
+-------------------------------------------------------------------
+Tue Dec 11 14:37:15 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias and rhetorics from descriptions.
+- Use a single %setup statement.
+
+-------------------------------------------------------------------
+Tue Dec 11 09:34:54 UTC 2018 - Marco Vedovati <mvedovati@suse.com>
+
+- Include source tarballs for each of the used golang packages created with 
+  _service.
+  + beorn7-perks.tar.xz
+  + golang-protobuf.tar.xz
+  + matttproud-golang_protobuf_extensions.tar.xz
+  + mholt-caddy.tar.xz
+  + miekg-dns.tar.xz
+  + prometheus-client_golang.tar.xz
+  + prometheus-client_model.tar.xz
+  + prometheus-common.tar.xz
+  + prometheus-procfs.tar.xz
+- Remove makearchive script, previously used to create a single source tarball.
+  - makearchive.sh
+
+-------------------------------------------------------------------
+Mon Dec 10 09:45:41 UTC 2018 - Marco Vedovati <mvedovati@suse.com>
+
+- Initial package creation version 1.2.6

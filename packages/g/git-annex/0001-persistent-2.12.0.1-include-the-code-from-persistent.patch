@@ -1,0 +1,121 @@
+From f2b75ec2d27a671d5074136bf3b1bab25e3562fb Mon Sep 17 00:00:00 2001
+From: Peter Simons <simons@cryp.to>
+Date: Thu, 10 Aug 2023 15:39:56 +0200
+Subject: [PATCH] persistent >= 2.12.0.1 includes the code from
+ persistent-template
+
+persistent-template has been deprecated.
+---
+ Database/ContentIdentifier.hs | 3 ---
+ Database/Export.hs            | 3 ---
+ Database/Fsck.hs              | 3 ---
+ Database/Keys/SQL.hs          | 3 ---
+ git-annex.cabal               | 3 +--
+ 5 files changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/Database/ContentIdentifier.hs b/Database/ContentIdentifier.hs
+index e847c00cce..be7673facc 100644
+--- a/Database/ContentIdentifier.hs
++++ b/Database/ContentIdentifier.hs
+@@ -5,17 +5,14 @@
+  - Licensed under the GNU AGPL version 3 or higher.
+  -}
+ 
+-{-# LANGUAGE CPP #-}
+ {-# LANGUAGE QuasiQuotes, TypeFamilies, TypeOperators, TemplateHaskell #-}
+ {-# LANGUAGE OverloadedStrings, GADTs, FlexibleContexts, EmptyDataDecls #-}
+ {-# LANGUAGE MultiParamTypeClasses, GeneralizedNewtypeDeriving #-}
+ {-# LANGUAGE RankNTypes #-}
+ {-# LANGUAGE DataKinds, FlexibleInstances #-}
+ {-# LANGUAGE UndecidableInstances #-}
+-#if MIN_VERSION_persistent_template(2,8,0)
+ {-# LANGUAGE DerivingStrategies #-}
+ {-# LANGUAGE StandaloneDeriving #-}
+-#endif
+ 
+ module Database.ContentIdentifier (
+ 	ContentIdentifierHandle,
+diff --git a/Database/Export.hs b/Database/Export.hs
+index b9d9879da0..e51d852024 100644
+--- a/Database/Export.hs
++++ b/Database/Export.hs
+@@ -5,17 +5,14 @@
+  - Licensed under the GNU AGPL version 3 or higher.
+  -}
+ 
+-{-# LANGUAGE CPP #-}
+ {-# LANGUAGE QuasiQuotes, TypeFamilies, TypeOperators, TemplateHaskell #-}
+ {-# LANGUAGE OverloadedStrings, GADTs, FlexibleContexts #-}
+ {-# LANGUAGE MultiParamTypeClasses, GeneralizedNewtypeDeriving #-}
+ {-# LANGUAGE RankNTypes #-}
+ {-# LANGUAGE DataKinds, FlexibleInstances #-}
+ {-# LANGUAGE UndecidableInstances #-}
+-#if MIN_VERSION_persistent_template(2,8,0)
+ {-# LANGUAGE DerivingStrategies #-}
+ {-# LANGUAGE StandaloneDeriving #-}
+-#endif
+ 
+ module Database.Export (
+ 	ExportHandle,
+diff --git a/Database/Fsck.hs b/Database/Fsck.hs
+index cce5528100..2ff4eb6bb5 100644
+--- a/Database/Fsck.hs
++++ b/Database/Fsck.hs
+@@ -5,7 +5,6 @@
+  - Licensed under the GNU AGPL version 3 or higher.
+  -}
+ 
+-{-# LANGUAGE CPP #-}
+ {-# LANGUAGE QuasiQuotes, TypeFamilies, TemplateHaskell #-}
+ {-# LANGUAGE OverloadedStrings, GADTs, FlexibleContexts #-}
+ {-# LANGUAGE MultiParamTypeClasses, GeneralizedNewtypeDeriving #-}
+@@ -13,10 +12,8 @@
+ {-# LANGUAGE RankNTypes #-}
+ {-# LANGUAGE UndecidableInstances #-}
+ {-# LANGUAGE TypeOperators #-}
+-#if MIN_VERSION_persistent_template(2,8,0)
+ {-# LANGUAGE DerivingStrategies #-}
+ {-# LANGUAGE StandaloneDeriving #-}
+-#endif
+ 
+ module Database.Fsck (
+ 	FsckHandle,
+diff --git a/Database/Keys/SQL.hs b/Database/Keys/SQL.hs
+index 7fea5cf2bb..c9c7e020c1 100644
+--- a/Database/Keys/SQL.hs
++++ b/Database/Keys/SQL.hs
+@@ -5,17 +5,14 @@
+  - Licensed under the GNU AGPL version 3 or higher.
+  -}
+ 
+-{-# LANGUAGE CPP #-}
+ {-# LANGUAGE QuasiQuotes, TypeFamilies, TypeOperators, TemplateHaskell #-}
+ {-# LANGUAGE OverloadedStrings, GADTs, FlexibleContexts #-}
+ {-# LANGUAGE MultiParamTypeClasses, GeneralizedNewtypeDeriving #-}
+ {-# LANGUAGE RankNTypes, ScopedTypeVariables #-}
+ {-# LANGUAGE DataKinds, FlexibleInstances #-}
+ {-# LANGUAGE UndecidableInstances #-}
+-#if MIN_VERSION_persistent_template(2,8,0)
+ {-# LANGUAGE DerivingStrategies #-}
+ {-# LANGUAGE StandaloneDeriving #-}
+-#endif
+ 
+ module Database.Keys.SQL where
+ 
+diff --git a/git-annex.cabal b/git-annex.cabal
+index 837680cbd5..893b816068 100644
+--- a/git-annex.cabal
++++ b/git-annex.cabal
+@@ -358,8 +358,7 @@ Executable git-annex
+    time (>= 1.5.0),
+    old-locale,
+    persistent-sqlite (>= 2.8.1),
+-   persistent (>= 2.8.1),
+-   persistent-template,
++   persistent (>= 2.12.0.2),
+    unliftio-core,
+    microlens,
+    aeson,
+-- 
+2.41.0
+

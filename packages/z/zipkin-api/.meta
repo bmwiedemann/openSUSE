@@ -1,0 +1,5 @@
+<package name="zipkin-api" project="openSUSE:Factory">
+  <title>Zipkin API</title>
+  <description>Zipkin API includes service and model definitions used for Zipkin-compatible services</description>
+  <devel project="devel:kubic" package="zipkin-api"/>
+</package>

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Wed Dec  2 09:40:52 UTC 2015 - coolo@suse.com
+
+- updated to 1.204
+   see /usr/share/doc/packages/perl-Email-Reply/Changes
+
+  1.204     2015-11-29 22:28:08-05:00 America/New_York
+            update repo and bugtracker
+
+-------------------------------------------------------------------
+Tue Apr 14 15:44:00 UTC 2015 - coolo@suse.com
+
+- updated to 1.203
+   see /usr/share/doc/packages/perl-Email-Reply/Changes
+
+  Revision history for Email-Reply
+  
+  1.203     2013-08-16 22:23:32 America/New_York
+            update repo and bugtracker
+  
+            reformat docs a bit
+
+-------------------------------------------------------------------
+Wed Dec  1 13:32:09 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sun Jul 11 17:27:19 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- added bcond_with
+- changelog to changes file
+
+-------------------------------------------------------------------
+Fri Sep 14 17:26:03 CEST 2007 - jfunk@funktronics.ca
+
+- Initial release
+

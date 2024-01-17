@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Thu Jan 11 08:57:10 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add %{?sle15_python_module_pythons} to build for python 3.11 in Leap
+
+-------------------------------------------------------------------
+Tue Jan  9 22:15:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * Store Path objects instead of strings in LANGUAGE.
+  * Use importlib.resources instead of deprecated pkg_resources.
+  * Add Thai dictionary.
+  * Update Italian dictionary.
+  * Make language parameter case-insensitive.
+  * Add Catalan dictionary.
+  * Update French dictionary.
+  * Update script upgrading dictionaries.
+  * Support Python 3.10, drop Python 3.6 support.
+  * Add documentation.
+  * Update Belarusian dictionary.
+  * Update dictionaries (add Albanian, Belarusian, Esperanto,
+    Mongolian; update Italian, Portuguese of Brazil, Russian).
+  * Use Flit for packaging. You can now build packages using pip
+    install flit, flit build.
+
+-------------------------------------------------------------------
+Thu Mar 11 04:58:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.10.0:
+  * Ignore *HYPHENMIN options in dictionaries
+  * Improve dictionaries update script
+  * Drop Python 3.5 and add Python 3.9 support
+
+-------------------------------------------------------------------
+Fri Feb 22 10:46:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball for the test.py so source_validators
+  actually works
+
+-------------------------------------------------------------------
+Thu Feb 21 16:16:53 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 0.9.5
+  + Update Bulgarian and Spanish dictionaries, add Indonesian
+
+- Add test.py from GH, missing in tarball, enable checks
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:39 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 24 04:28:57 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,144 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2021-04-13 15:36:58 +0200
+Subject: Use system libraries when possible
+
+Praat includes a number of external libraries that then builds
+internally.
+Some (gsl, glpk, vorbis, ogg, opus) can be replaced by system ones,
+other like espeak, and FLAC are too heavily patched for the program
+to be compatible with upstream ones.
+Praat also supplies an unstable upstream portaudio version that's
+not recommendable for distro inclusion.
+
+Index: praat-6.4.02/melder/NUMlinprog.cpp
+===================================================================
+--- praat-6.4.02.orig/melder/NUMlinprog.cpp
++++ praat-6.4.02/melder/NUMlinprog.cpp
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "melder.h"
+-#include "../external/glpk/glpk.h"
++#include <glpk.h>
+ 
+ struct structNUMlinprog {
+ 	glp_prob *linearProgram;
+Index: praat-6.4.02/melder/NUMspecfunc.cpp
+===================================================================
+--- praat-6.4.02.orig/melder/NUMspecfunc.cpp
++++ praat-6.4.02/melder/NUMspecfunc.cpp
+@@ -31,10 +31,10 @@
+ #include "melder.h"
+ #include "../dwsys/NUM2.h"   // NUMridders
+ 
+-#include "../external/gsl/gsl_errno.h"
+-#include "../external/gsl/gsl_sf_bessel.h"
+-#include "../external/gsl/gsl_sf_gamma.h"
+-#include "../external/gsl/gsl_sf_erf.h"
++#include <gsl/gsl_errno.h>
++#include <gsl/gsl_sf_bessel.h>
++#include <gsl/gsl_sf_gamma.h>
++#include <gsl/gsl_sf_erf.h>
+ 
+ double NUMlnGamma (double x) {
+ 	gsl_sf_result result;
+Index: praat-6.4.02/melder/melder.cpp
+===================================================================
+--- praat-6.4.02.orig/melder/melder.cpp
++++ praat-6.4.02/melder/melder.cpp
+@@ -24,7 +24,7 @@
+ #include "melder_enums.h"
+ 
+ #include "../dwsys/NUMmachar.h"
+-#include "../external/gsl/gsl_errno.h"
++#include <gsl/gsl_errno.h>
+ #ifdef macintosh
+ 	#include <Carbon/Carbon.h>   // Gestalt
+ #endif
+Index: praat-6.4.02/dwsys/Makefile
+===================================================================
+--- praat-6.4.02.orig/dwsys/Makefile
++++ praat-6.4.02/dwsys/Makefile
+@@ -4,7 +4,7 @@
+ 
+ include ../makefile.defs
+ 
+-CPPFLAGS = -I ../melder -I ../stat -I ../sys -I ../fon -I ../external/gsl -I ../external/clapack -I ../kar -I ../dwtools
++CPPFLAGS = -I ../melder -I ../stat -I ../sys -I ../fon -I /usr/include/gsl -I ../external/clapack -I ../kar -I ../dwtools
+ 
+ all: libdwsys.a
+ 
+@@ -37,5 +37,5 @@ libdwsys.a: $(OBJECTS) NUMmachar.o
+ 	$(AR) cq libdwsys.a $(OBJECTS)
+ 	$(RANLIB) libdwsys.a
+ 
+-$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h ../external/gsl/*.h ../dwsys/*.h ../kar/*.h
++$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h /usr/include/gsl/*.h ../dwsys/*.h ../kar/*.h
+ 
+Index: praat-6.4.02/Makefile
+===================================================================
+--- praat-6.4.02.orig/Makefile
++++ praat-6.4.02/Makefile
+@@ -21,25 +21,20 @@ all: all-external all-self
+ 		dwsys/libdwsys.a sys/libsys.a melder/libmelder.a kar/libkar.a \
+ 		external/espeak/libespeak.a \
+ 		external/portaudio/libportaudio.a \
+-		external/flac/libflac.a external/lame/liblame.a external/mp3/libmp3.a \
+-		external/glpk/libglpk.a \
++		external/flac/libflac.a external/mp3/libmp3.a \
++		`pkg-config --libs libpulse` -lglpk \
++		`pkg-config --libs gsl` \
++		`pkg-config --libs lame` \
+ 		external/clapack/libclapack.a \
+-		external/gsl/libgsl.a \
+-		external/vorbis/libvorbis.a \
+-		external/opusfile/libopusfile.a \
++ 		`pkg-config --libs vorbis vorbisfile ogg opusfile` \
+ 		$(LIBS)
+ 
+ all-external:
+ 	$(MAKE) -C external/clapack
+-	$(MAKE) -C external/gsl
+-	$(MAKE) -C external/glpk
+-	$(MAKE) -C external/lame
+ 	$(MAKE) -C external/mp3
+ 	$(MAKE) -C external/flac
+ 	$(MAKE) -C external/portaudio
+ 	$(MAKE) -C external/espeak
+-	$(MAKE) -C external/vorbis
+-	$(MAKE) -C external/opusfile
+ 
+ all-self:
+ 	$(MAKE) -C kar
+Index: praat-6.4.02/dwtools/Makefile
+===================================================================
+--- praat-6.4.02.orig/dwtools/Makefile
++++ praat-6.4.02/dwtools/Makefile
+@@ -4,7 +4,7 @@
+ 
+ include ../makefile.defs
+ 
+-CPPFLAGS = -I . -I ../kar -I ../melder -I ../LPC -I ../fon -I ../foned -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I ../external/vorbis -I ../external/opusfile
++CPPFLAGS = -I . -I ../kar -I ../melder -I ../LPC -I ../fon -I ../foned -I ../sys -I ../stat -I ../dwsys -I ../external/portaudio -I ../external/espeak -I ../external/clapack -I ../EEG -I /usr/include/opus
+ 
+ OBJECTS = ActivationList.o AffineTransform.o AnalyticSound.o \
+ 	Categories.o CategoriesEditor.o \
+Index: praat-6.4.02/dwtools/Sound_extensions.cpp
+===================================================================
+--- praat-6.4.02.orig/dwtools/Sound_extensions.cpp
++++ praat-6.4.02/dwtools/Sound_extensions.cpp
+@@ -37,10 +37,10 @@
+ #include "Manipulation.h"
+ #include "NUMcomplex.h"
+ #include "melder.h"
+-#include "../external/vorbis/vorbis_codec.h"
+-#include "../external/vorbis/vorbisfile.h"
+-#include "../external/opusfile/opusfile.h"
+-#include "../external/lame/lame.h"
++#include <vorbis/codec.h>
++#include <vorbis/vorbisfile.h>
++#include <opusfile.h>
++#include <lame/lame.h>
+ 
+ #include "enums_getText.h"
+ #include "Sound_extensions_enums.h"

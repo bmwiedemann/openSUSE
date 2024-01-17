@@ -1,0 +1,11 @@
+--- velocity-1.7/src/java/org/apache/velocity/runtime/defaults/velocity.properties	2023-09-27 00:55:09.976941285 +0200
++++ velocity-1.7/src/java/org/apache/velocity/runtime/defaults/velocity.properties	2023-09-27 00:57:58.884707172 +0200
+@@ -23,7 +23,7 @@
+ #  default LogChute to use: default: AvalonLogChute, Log4JLogChute, CommonsLogLogChute, ServletLogChute, JdkLogChute
+ # ----------------------------------------------------------------------------
+ 
+-runtime.log.logsystem.class = org.apache.velocity.runtime.log.AvalonLogChute,org.apache.velocity.runtime.log.Log4JLogChute,org.apache.velocity.runtime.log.CommonsLogLogChute,org.apache.velocity.runtime.log.ServletLogChute,org.apache.velocity.runtime.log.JdkLogChute
++runtime.log.logsystem.class = org.apache.velocity.runtime.log.JdkLogChute
+ 
+ # ---------------------------------------------------------------------------
+ # This is the location of the Velocity Runtime log.

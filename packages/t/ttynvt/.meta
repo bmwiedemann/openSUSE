@@ -1,0 +1,9 @@
+<package name="ttynvt" project="openSUSE:Factory">
+  <title>Virtual Network Terminal supporting the Com Port Control Option (RFC2217)</title>
+  <description>ttynvt makes a virtual serial device (tty) and connects
+the device to a Network Virtual Terminal (NVT).
+
+</description>
+  <devel project="utilities" package="ttynvt"/>
+  <url>https://gitlab.com/lars-thrane-as/ttynvt</url>
+</package>

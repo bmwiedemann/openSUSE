@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu Dec  7 22:29:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16:
+  * Add ``allow_unknown_load_commands`` option to ``MachO`` and
+    ```macholib.MachOHeader``.
+
+-------------------------------------------------------------------
+Sat Jun 10 09:35:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Fri Dec  2 20:27:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.16.1
+  * Added some new CPU subtype definitions
+
+-------------------------------------------------------------------
+Thu Sep 29 15:42:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 1.16
+  * Add allow_unknown_load_commands option to MachO and ```macholib.MachOHeader``.
+
+-------------------------------------------------------------------
+Mon May 25 06:50:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Apr  1 10:32:23 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.14
+  * Repository moved to GitHub
+  * #32: Update the LC_NAMES table
+  * #31: Add two new load commands introduced in macOS 10.15
+  * #27: Missing describe method for build_version_command
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:14 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 16 19:06:28 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 1.11
+  * Add very hacky limited support for @loader_path. This is just
+    enough to deal with extensions and dylibs found in Python
+    binary wheels.
+- Update to 1.10
+  * #25: Add support for LC_NOTE and LC_BUILD_VERSION
+
+-------------------------------------------------------------------
+Thu May 24 17:35:17 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 1.9
+  + Features:
+    * Add definition for ``macholib.mach_o.reloc_type_generic``, which
+      was used in code but never defined.
+    * #22: Add LICENSE file
+    * #23: Added "--help" option for "python -m macholib"
+    * Added function ``macholib.MachO.lc_str_value`` which should
+      help in decoding value of ``macholib.mach_o.lc_str``. Those
+      values are offsets in the data of a load command, the function
+      will return the actually value as a byte string.
+  + Bug fixes:
+    * Pull request #15: Fix typo in thread_command class
+- Spec file cleanups
+- Fix rpmlint issues
+
+-------------------------------------------------------------------
+Thu Oct 19 00:50:50 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

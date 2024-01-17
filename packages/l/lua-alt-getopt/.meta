@@ -1,0 +1,5 @@
+<package name="lua-alt-getopt" project="openSUSE:Factory">
+  <title>Process application arguments the same way as getopt_long</title>
+  <description>alt-getopt is a module for Lua programming language for processing application's arguments the same way BSD/GNU getopt_long(3) functions do. The main goal is compatibility with SUS &quot;Utility Syntax Guidelines&quot; guidelines 3-13.</description>
+  <devel project="devel:languages:lua" package="lua-alt-getopt"/>
+</package>

@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>c7a4753eaff00e5517e157279c318bde</srcmd5>
+    <version>11.0.5</version>
+    <time>1211337548</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22fc5cd39193343a5ad90e629838d2d9</srcmd5>
+    <version>0.6.5</version>
+    <time>1211400304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="48">
+    <srcmd5>22fc5cd39193343a5ad90e629838d2d9</srcmd5>
+    <version>0.6.5</version>
+    <time>1211400304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="49">
+    <srcmd5>583364f91f6153bf7f7f1ac95ea1e769</srcmd5>
+    <version>0.6.5</version>
+    <time>1243480117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="51">
+    <srcmd5>583364f91f6153bf7f7f1ac95ea1e769</srcmd5>
+    <version>0.6.5</version>
+    <time>1243480117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="52">
+    <srcmd5>511deb25d5016fdfdc2dbd1ac4421e73</srcmd5>
+    <version>0.6.5</version>
+    <time>1268923899</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="54">
+    <srcmd5>511deb25d5016fdfdc2dbd1ac4421e73</srcmd5>
+    <version>0.6.5</version>
+    <time>1278667349</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="55">
+    <srcmd5>511deb25d5016fdfdc2dbd1ac4421e73</srcmd5>
+    <version>0.6.5</version>
+    <time>1278678580</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="58">
+    <srcmd5>511deb25d5016fdfdc2dbd1ac4421e73</srcmd5>
+    <version>0.6.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="60">
+    <srcmd5>511deb25d5016fdfdc2dbd1ac4421e73</srcmd5>
+    <version>0.6.5</version>
+    <time>1319181952</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="61">
+    <srcmd5>8ced2b4a65021dd8e8135a8d2c1a6d0a</srcmd5>
+    <version>0.6.5</version>
+    <time>1323191813</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="62">
+    <srcmd5>b8cbbb5c0ac58eeb8e06fdc1201ecaa3</srcmd5>
+    <version>0.6.5</version>
+    <time>1326118640</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99065</requestid>
+  </revision>
+  <revision rev="13" vrev="63">
+    <srcmd5>17f1333fc6aa5b1625a59c2c339794fa</srcmd5>
+    <version>0.6.5</version>
+    <time>1327484232</time>
+    <user>coolo</user>
+    <comment>Pushing bits of G:F that are fine (mostly update to 3.3.4)</comment>
+    <requestid>101177</requestid>
+  </revision>
+  <revision rev="14" vrev="65">
+    <srcmd5>17f1333fc6aa5b1625a59c2c339794fa</srcmd5>
+    <version>0.6.5</version>
+    <time>1340183421</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="67">
+    <srcmd5>17f1333fc6aa5b1625a59c2c339794fa</srcmd5>
+    <version>0.6.5</version>
+    <time>1359109020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="69">
+    <srcmd5>17f1333fc6aa5b1625a59c2c339794fa</srcmd5>
+    <version>0.6.5</version>
+    <time>1379662579</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="71">
+    <srcmd5>17f1333fc6aa5b1625a59c2c339794fa</srcmd5>
+    <version>0.6.5</version>
+    <time>1409301126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="72">
+    <srcmd5>f7b6825c721a197b2abfa2ee993ef53c</srcmd5>
+    <version>0.6.5</version>
+    <time>1520588365</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581164 from dimstar)</comment>
+    <requestid>582766</requestid>
+  </revision>
+</revisionlist>

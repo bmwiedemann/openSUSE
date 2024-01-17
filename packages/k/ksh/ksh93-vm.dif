@@ -1,0 +1,45 @@
+--- src/lib/libast/vmalloc/vmhdr.h
++++ src/lib/libast/vmalloc/vmhdr.h	2012-01-19 09:45:14.000000000 +0000
+@@ -152,6 +152,9 @@ extern void		_vmmessage _ARG_((const cha
+ #endif /*DEBUG*/
+ 
+ #define VMPAGESIZE	8192
++#if defined(__linux__) && !defined(_lib_getpagesize)
++#define _lib_getpagesize	1
++#endif
+ #if _lib_getpagesize
+ #define GETPAGESIZE(x)	((x) ? (x) : ((x)=getpagesize()) )
+ #else
+--- src/lib/libast/vmalloc/vmmopen.c
++++ src/lib/libast/vmalloc/vmmopen.c	2012-01-20 11:13:12.000000000 +0000
+@@ -63,8 +63,10 @@ void _STUB_vmmapopen(){}
+ /* magic word signaling file/segment is ready */
+ #define	MM_MAGIC	((unsigned int)(('P'<<24) | ('&'<<16) | ('N'<<8) | ('8')) )
+ 
++#ifndef __linux__
+ /* default mimimum region size */
+ #define MM_MINSIZE	(64*_Vmpagesize)
++#endif
+ 
+ /* macros to get the data section and size */
+ #define MMHEAD(file)	ROUND(sizeof(Mmvm_t)+strlen(file), ALIGN)
+@@ -166,10 +168,18 @@ static int mminit(Mmdisc_t* mmdc)
+ 
+ 	if(mmdc->mmvm) /* already done this */
+ 		return 0;
+-
++#ifdef MM_MINSIZE
+ 	/* fixed size region so make it reasonably large */
+ 	if((size = mmdc->size) < MM_MINSIZE )
+ 		size =  MM_MINSIZE;
++#else
++	if (sizeof(void*) > 32)
++		extent = ROUND(0x80000,_Vmpagesize);
++	else
++		extent = ROUND(0x40000,_Vmpagesize);
++	if((size = mmdc->size) < extent)
++		size = extent;
++#endif
+ 	size += MMHEAD(mmdc->file) + ALIGN;
+ 	size  = ROUND(size, _Vmpagesize);
+ 

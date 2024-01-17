@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Jun 24 13:47:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 2.1b1+g132 (21bfdb5)
+  * Avoid a use-after-free
+
+-------------------------------------------------------------------
+Mon Apr 25 22:30:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 2.1b1.g131) (fd0b757) for build.opensuse.org

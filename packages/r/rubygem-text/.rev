@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cdf7b39900d9f1a0e642739eb268e8b8</srcmd5>
+    <version>1.2.1</version>
+    <time>1368714021</time>
+    <user>coolo</user>
+    <comment>needed for gettext gem</comment>
+    <requestid>175677</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>cdf7b39900d9f1a0e642739eb268e8b8</srcmd5>
+    <version>1.2.1</version>
+    <time>1379664581</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>abd0a94a4cc81e1d0ab5c86d0f011848</srcmd5>
+    <version>1.2.3</version>
+    <time>1382353482</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to version 1.2.3, no changelog
+- license changed to MIT
+
+- updated to version 1.2.2</comment>
+    <requestid>202205</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>abd0a94a4cc81e1d0ab5c86d0f011848</srcmd5>
+    <version>1.2.3</version>
+    <time>1409303293</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>455671d2806653f798b6f72459f6bcdc</srcmd5>
+    <version>1.2.3</version>
+    <time>1413263540</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255762</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef780709f31d47c5169733156878a034</srcmd5>
+    <version>1.3.0</version>
+    <time>1423669542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285523</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4d5463b8d4de084378dff5e963ab0b7</srcmd5>
+    <version>1.3.1</version>
+    <time>1429107857</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296088</requestid>
+  </revision>
+</revisionlist>

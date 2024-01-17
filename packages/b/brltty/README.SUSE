@@ -1,0 +1,39 @@
+Some notes on SUSE-specific configuration of brltty
+========================================================================
+
+USB:
+------------------------------------------------------------------------
+Most USB Braille displays should be autodetected by udev, starting brltty.
+However, some Braille displays have the same product IDs as generic
+USB-to-serial adapters, and, in order to avoid a conflict with these
+adapters, the brltty udev rules for them are not installed by default. If
+you have an Albatross, Cebra, Hims, HandyTech, or MDV display and connect it
+via USB, then you may want to install the brltty-udev-generic package.
+
+Alternatively, you can have systemd automatically start brltty at boot. Run
+chkconfig brltty on
+as the superuser.
+
+
+Authentication:
+------------------------------------------------------------------------
+By default, brltty authenticates with clients (such as orca) via a key
+file. However, SUSE enables polkit-based authentication instead.
+This eliminates the need to, ie, add users to the brlapi group in order
+to be able to have orca interact with the Braille display. It also
+disallows remote users from interacting with the display. If you would
+like to change this behavior, then you can edit the api-parameters
+directive in /etc/brltty.conf.
+
+Notes on Security
+========================================================================
+
+The brltty daemon runs as a dedicated service user and group account named
+"brltty". While this looks got from afar, the daemon actually keeps a lot of
+privileges, most notably among them:
+
+- root group membership.
+- Linux capabilities CAP_SYS_ADMIN and CAP_MKNOD.
+
+Therefore the SUSE security team currently considers the brltty service to be
+equivalent to root.

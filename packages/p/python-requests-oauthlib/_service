@@ -1,0 +1,7 @@
+<services>
+ <service name="download_files" mode="localonly">
+    <param name="enforceupstream">yes</param>
+    <param name="changesgenerate">enable</param>
+ </service>
+ <service name="set_version" mode="localonly"/>
+</services>

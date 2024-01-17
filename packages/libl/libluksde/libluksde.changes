@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Tue Dec  5 06:57:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231205
+  * No user-relevant changes
+
+-------------------------------------------------------------------
+Wed Nov 29 10:56:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231128
+  * Improved Python Unicode handling
+
+-------------------------------------------------------------------
+Tue Aug  1 15:58:43 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
+
+-------------------------------------------------------------------
+Tue Jan  3 15:57:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing Require on libbfio-devel.
+
+-------------------------------------------------------------------
+Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (not needed - system libs are
+  autodetected)
+
+-------------------------------------------------------------------
+Thu Nov  3 10:37:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221103
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Mon Aug 29 09:30:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update build requirement on libcfile
+
+-------------------------------------------------------------------
+Mon Aug  8 15:20:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220807
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Fri Jan 21 13:08:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220121
+  * Unspecified changes to volume unlocking.
+
+-------------------------------------------------------------------
+Wed Jun 30 08:46:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unnecessary BuildRequires on python-devel 
+
+-------------------------------------------------------------------
+Thu May 13 23:47:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 20210419 (7b40e4b7)
+  * No changelog was provided
+- Add system-libs.patch
+
+-------------------------------------------------------------------
+Thu Apr 30 02:20:26 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- remove python2 submodule 
+
+-------------------------------------------------------------------
+Sun Apr  5 20:59:06 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- initial package version v0~20200205 in opensuse build service

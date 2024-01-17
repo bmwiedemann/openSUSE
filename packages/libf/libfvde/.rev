@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5a4ebee27181b7db34085c53dc7bf7a</srcmd5>
+    <version>0~20160918</version>
+    <time>1475242293</time>
+    <user>dimstar_suse</user>
+    <comment>A new dependency of python-plaso</comment>
+    <requestid>428875</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff27abab9ffb8608fdcd1f9ebdc81fe5</srcmd5>
+    <version>0~20160918</version>
+    <time>1509722598</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535311</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd93db38a38dea82de030051dfdd1ead</srcmd5>
+    <version>0~20190104</version>
+    <time>1560337705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695357</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3e2fc162200d1add3f93e0373bd647a9</srcmd5>
+    <version>0~20190104</version>
+    <time>1588324300</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799057</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>48095bf6c78b83a119f394d27bb82af0</srcmd5>
+    <version>0~20191221</version>
+    <time>1608918656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858548</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dd39772fc954f3f6bb2a95dc65a2a7ce</srcmd5>
+    <version>20210425</version>
+    <time>1623363495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898717</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d5bec6045b90793650d2dcb9f4919fbb</srcmd5>
+    <version>20220121</version>
+    <time>1642838705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220121</comment>
+    <requestid>947941</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6fb2d71551e81b3fd950fa4f9149c9b1</srcmd5>
+    <version>20220125</version>
+    <time>1654199675</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980466</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>73d8c0531340ff88c1f64cb89dc86aa8</srcmd5>
+    <version>20220807</version>
+    <time>1660051724</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220807
+  * Format support</comment>
+    <requestid>994003</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a73e3a263f14e713019b4be9addc4b00</srcmd5>
+    <version>20220807</version>
+    <time>1661863770</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999955</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0849764a8797618fa5b56a8289864ae9</srcmd5>
+    <version>20220915</version>
+    <time>1663596234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220915</comment>
+    <requestid>1004578</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>07fa08f00124a14d181c29ff8fe559a1</srcmd5>
+    <version>20220915</version>
+    <time>1669629988</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038474</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3063e87a63a6844a452ac83146392f4f</srcmd5>
+    <version>20220915</version>
+    <time>1672851103</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046589</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>287e1fbed24872bc551c1bf1b816b48e</srcmd5>
+    <version>20220915</version>
+    <time>1691594712</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102993</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>85ab98ef34eb9490d8a63d0a0ae470c2</srcmd5>
+    <version>20231128</version>
+    <time>1701378028</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2023118</comment>
+    <requestid>1129477</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="ortp" project="openSUSE:Factory">
+  <title>Real-time Transport Protocol Stack</title>
+  <description>oRTP is a LGPL licensed C library implementing the RTP protocol (rfc1889).</description>
+  <devel project="network:telephony" package="ortp"/>
+  <url>http://www.linphone.org/eng/documentation/dev/ortp.html</url>
+</package>

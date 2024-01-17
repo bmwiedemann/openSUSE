@@ -1,0 +1,110 @@
+README.SUSE for monitoring-plugins-dhcp
+
+== check_cups  ==
+
+Plugin for checking cups service
+
+This plug-in will check the status of a remote CUPS print service for the printer status, 
+It is able to check all available printers configured on the cups daemon, or just one of them.
+It can also check only the queue status. It will provide the size of the queue and
+optionally the age of the queue.
+
+Generally we sugesst to create separate checks for each printer and one additional check for
+the queue itself.
+
+Usage: check_cups -H <hostname> -P -p<The CUPS printer name> | -Q <s|b>  -w <size warning level> -c <size critical level> -a <max age>
+
+Notes:
+-H: Hostname - Can be a hostname or IP address.
+-P: Check only the printers status.
+-p: It will check only one specific printer. 
+-Q: Type of check - Can be queue size (s) or both queu size and queue age (b)
+-w: WARNING level for queue size
+-c: CRITICAL level for queue size
+-a: Max age of queue. Returns CRITICAL if jobs exists older than <max age> days
+
+Example of test run usage:
+----------------
+Test all available printers and the queue. 
+(queue size warning is 3, critical 10 and max age 3 days):
+  
+nagios@nagios:~> /usr/lib/nagios/plugins/check_cups -H cups.server.org -P -Q s -w 3 -c 10 -a 3
+
+Checking all printers...
+OK - CUPS printer  is idle.
+Testing queue on the CUPS...
+OK: CUPS queue size - 0| print_jobs=0;3;10;0
+
+Test one printer only : 
+nagios@nagios:~> /usr/lib/nagios/plugins/check_cups  -H cups.suse.cz -P -p myprinter
+
+Checking only the printer myprinter.
+OK - CUPS printer myprinter is idle.
+
+Test only the queue, do not test any printer  
+(queue size warning is 3, critical 5 and max age 2 days):
+
+nagios@nagios:~> /usr/lib/nagios/plugins/check_cups  -H cups.suse.cz -Q b -w 3 -c 5 -a 2
+No printer check is require. Checking the queue ...
+Testing queue on the CUPS...
+
+OK: CUPS queue size - 0| print_jobs=0;3;5;0
+
+Example of Nagios/Icinga command settings:
+----------------------------------
+
+Example commands/check_cups.cfg:
+
+# Check all printers in cups and queue size and queue age
+define command{
+        command_name check_cups_all_queue
+        command_line $USER1$/check_cups -H $ARG1$ -P -Q b -w $ARG2$ -c $ARG3$ -a $ARG4$
+}
+
+# Check one printer in cups and queue size and queue age
+define command{
+        command_name check_cups_one_queue
+        command_line $USER1$/check_cups -H $ARG1$ -P -p $ARG2$ -Q b -w $ARG3$ -c $ARG4$ -a $ARG5$
+}
+
+# Check all printers in cups and queue size and queue age
+define command{
+        command_name check_cups_all
+        command_line $USER1$/check_cups -H $ARG1$ -P 
+}
+
+# Check one printer in cups.
+define command{
+        command_name check_cups_one
+        command_line $USER1$/check_cups -H $ARG1$ -P -p $ARG2$ 
+}
+
+# Check only the queue
+define command{
+        command_name check_cups_queue
+        command_line $USER1$/check_cups -H $ARG1$ -Q b -w $ARG2$ -c $ARG3$ -a $ARG4$
+}
+
+
+Security:
+---------
+In the version 0.2 I added an Apparmor profile for the script usr.lib.nagios.plugins.check_cups 
+into /etc/apparmor.d
+
+
+Autor notes:
+------------
+I`d like to thank to John E. Vincent (nagios-plugs@lusis.org)
+I learn a lof from his check CUPS print queue plugin.
+Then I`d like to thank to Mark Shirley for his check_cups_printer.sh
+script, which was also inspiration for me.
+Both of them you can find on http://exchange.nagios.org/ web site.
+Martin Caj 31/01/2013 <mcaj@suse.cz>
+
+
+Bugs:
+------
+Please report bugs to me mcaj@suse.cz
+
+Thanks and have lot printers online ;-)
+Martin

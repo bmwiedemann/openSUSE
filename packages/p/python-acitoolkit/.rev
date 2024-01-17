@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a05d7d8a2cf51ef0a52c23972f9b0e24</srcmd5>
+    <version>0.4</version>
+    <time>1541865505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645730</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d4f2f75222e97fdd96abbfdb9db0eef</srcmd5>
+    <version>0.4</version>
+    <time>1542889615</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix RAS syndrome. Expand &quot;APIC&quot;.</comment>
+    <requestid>650731</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8243ae52a1c4e39b7a49a4c9a4b5cfe1</srcmd5>
+    <version>0.4</version>
+    <time>1554114933</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require python-deepdiff, such package does not exist
+
+- Remove runtime dependencies from the library:
+  * remove-app-dependency.patch
+- Add NOTICE to %license
+- Create sub-packages -doc, -doc-applications and -doc-samples</comment>
+    <requestid>689282</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>674cf21d45d41ccbaae94416732c4a87</srcmd5>
+    <version>0.4</version>
+    <time>1643926596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951350</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4047d630d3f7595b85e2909e2bb63ada</srcmd5>
+    <version>0.4</version>
+    <time>1651605577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974753</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a633cd7e4a252bce1ce8d16848cf3185</srcmd5>
+    <version>0.4</version>
+    <time>1687380030</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094340 from mcalabkova
+
+- Drop unneeded six dependency</comment>
+    <requestid>1094466</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f7d3e3487b75a0177fb093455f3ff171</srcmd5>
+    <version>0.4</version>
+    <time>1698604796</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+</comment>
+    <requestid>1117697</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,41 @@
+From 5fd57b7d79344fe6e99a5d9d28bf42712f1a05dc Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Thu, 17 Aug 2017 16:13:31 +0200
+Subject: [PATCH] Use qdbus-qt5 and qdbusviewer-qt5
+
+The Qt4 version might not be installed any more, and it's needed for
+D-BUS actions like spectacle's "Print Screen" shortcuts.
+---
+ kcm_hotkeys/actions/dbus_action_widget.cpp | 2 +-
+ libkhotkeysprivate/actions/dbus_action.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kcm_hotkeys/actions/dbus_action_widget.cpp b/kcm_hotkeys/actions/dbus_action_widget.cpp
+index a8a4571..8c032ea 100644
+--- a/kcm_hotkeys/actions/dbus_action_widget.cpp
++++ b/kcm_hotkeys/actions/dbus_action_widget.cpp
+@@ -79,7 +79,7 @@ bool DbusActionWidget::isChanged() const
+ 
+ void DbusActionWidget::launchDbusBrowser() const
+ {
+-    auto *job = new KIO::CommandLauncherJob("qdbusviewer");
++    auto *job = new KIO::CommandLauncherJob("qdbusviewer-qt5");
+     job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, window()));
+     job->start();
+ }
+diff --git a/libkhotkeysprivate/actions/dbus_action.cpp b/libkhotkeysprivate/actions/dbus_action.cpp
+index 69d5d5f..3bbb38b 100644
+--- a/libkhotkeysprivate/actions/dbus_action.cpp
++++ b/libkhotkeysprivate/actions/dbus_action.cpp
+@@ -106,7 +106,7 @@ void DBusAction::execute()
+     }
+     qDebug() << "D-Bus call:" << _application << ":" << _object << ":" << _function << ":" << args_list;
+     KProcess proc;
+-    proc << "qdbus" << _application << _object << _function << args_list;
++    proc << "qdbus-qt5" << _application << _object << _function << args_list;
+     proc.startDetached();
+ }
+ 
+-- 
+2.25.1
+

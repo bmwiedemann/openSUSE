@@ -1,0 +1,1060 @@
+-------------------------------------------------------------------
+Mon Jan 15 20:40:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240113T084448Z:
+  * mirror: --preserve should not activate --overwrite (#4821)
+  * Fixing PR template format (#4820)
+  * Arranging command help menu alphabetically  (#4817)
+
+-------------------------------------------------------------------
+Mon Jan 15 20:35:26 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240111T054932Z:
+  * Added option `--exclude-folders` (#4566)
+  * Workflow to add issues to tracking project (#4815)
+  * allow aliases with single character strings (#4812)
+
+-------------------------------------------------------------------
+Sun Jan 07 15:59:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20240105T050432Z:
+  * ILM rule type filter flags should work with --json (#4814)
+  * Add missing space between 'at' and filename (#4813)
+  * honor correct content-type for any files when passed via SQL
+    query (#4809)
+  * feat: support summary for mc mirror (#4811)
+
+-------------------------------------------------------------------
+Sun Jan 07 15:58:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20231229T201529Z:
+  * Use correct target path during mirroring objects (#4807)
+  * fix: tree traversal issue with empty folders (#4810)
+  * properly ignore permission denied error with mirror (#4803)
+
+-------------------------------------------------------------------
+Sun Jan 07 15:56:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20231223T084721Z:
+  * Add `ldap accesskey create`, update `accesskey list` with new
+    endpoint (#4760)
+  * Accept --license flag in `mc license register` (#4795)
+
+-------------------------------------------------------------------
+Wed Dec 20 12:54:16 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 20231220T071422Z:
+  * Set exitcode on copy/mirror source failure (#4798)
+  * update dependencies to address new CVE (#4799)
+  * tier: Support AWS web identity token file for MinIO EKS pods
+    (#4789)
+  * use explicit operation handling for anonymous operations to
+    prevent undesirable checks (#4791)
+  * decom: status clearly shows that the it is about raw disk usage
+    (#4792)
+  * Read new key license_v2 from SUBNET response (#4788)
+
+-------------------------------------------------------------------
+Thu Dec 14 10:49:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231214T003741Z:
+  * tier: Add support of service principal auth for Azure (#4787)
+  * support: --debug flag will print http requests for easier
+    debugging (#4776)
+  * fix: broken 'anonymous get-json'
+  * Use subnet package in pkg for license validation (#4784)
+
+-------------------------------------------------------------------
+Sat Dec 09 19:55:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231207T221317Z:
+  * Fix a panic for bucket heal (#4781)
+  * ready: Do not quit when the target server is offline or any
+    other error (#4783)
+
+-------------------------------------------------------------------
+Wed Dec 06 12:06:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231202T112410Z:
+  * Add support to batch-expire jobs (#4677)
+
+-------------------------------------------------------------------
+Sun Dec 03 18:52:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231202T020328Z:
+  * do not auto-decompress objects with content-encoding (#4777)
+  * Update minio-go to incl ilm fix (#4779)
+  * chore update minio/pkg and madmin-go (#4774)
+  * set-json to fail on custom policies without .json (#4745)
+  * make STS support for 'mc' alias specific (#4771)
+  * ilm: Add support for size based filters (#4770)
+  * Option to enable disable ILM expiry for site replication
+    (#4698)
+
+-------------------------------------------------------------------
+Tue Nov 21 05:45:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231120T163059Z:
+  * Do not fail if deployment id not found in license (#4767)
+  * fix: docker container builds with proper container name
+  * fix: avoid crash with --stats -a (#4765)
+
+-------------------------------------------------------------------
+Thu Nov 16 14:47:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231115T224558Z:
+  * support missing role-arn and role-session-name (#4763)
+  * Refactor methods that initialize client to reuse code blocks
+    (#4755)
+  * fix: Incorrect batch status Throughput entry (#4758)
+  * add 'alias export' command (#4759)
+  * trace statistics add MaxTTFB column (#4757)
+  * add STS support for `mc admin` command (#4754)
+  * Transition doesn't support NewerNoncurrentVersions (#4750)
+
+-------------------------------------------------------------------
+Mon Nov 13 06:17:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231110T213717Z:
+  * Updating example with correct flag (#4751)
+  * Change go version to 1.21.4 to fix vulncheck failures (#4749)
+  * fix: broken docker builds for microdnf command (#4746)
+  * Add anonymize flag to support-diag (#4742)
+
+-------------------------------------------------------------------
+Thu Nov 09 06:29:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231106T041923Z:
+  * Add support for STS credentials (#4744)
+  * Show net info spinner in health diagnostics (#4741)
+
+-------------------------------------------------------------------
+Wed Nov 01 12:24:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231030T184332Z:
+  * upgrade madmin-go/v3 (#4738)
+  * Removing un-used variables and fixing an error condition
+    (#4737)
+  * upgrade madmin-go/v3 (#4735)
+  * Add `idp ldap accesskey` (#4686)
+  * Bump google.golang.org/grpc from 1.58.0 to 1.58.3 (#4731)
+  * add top locks owner as well (#4733)
+  * update container base image to ubi9 (#4730)
+
+-------------------------------------------------------------------
+Wed Oct 25 08:44:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231024T214222Z:
+  * fix: print updates/merge multiple policy for a user (#4691)
+  * revamp spinner in `mc support diag` (#4727)
+  * use Dockerfile ADD feature deprecate curl (#4728)
+
+-------------------------------------------------------------------
+Tue Oct 24 09:24:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231024T051828Z:
+  * Add average TTFB for statistics (#4726)
+  * use ubi-micro instead of ubi-minimal (#4725)
+  * Add --bucket-bandwidth flag to `mc admin replicate update`
+    (#4687)
+  * Created a retry mechanism and added a --retry flag to mc mirror
+    (#4715)
+  * Fix missing colours on windows (#4721)
+  * add support for min/max time in 'trace --stats' (#4723)
+  * allow 'mc' flags to have ENV equivalent (#4720)
+  * Preventing duplicate transfers during cp and mv when prefixes
+    overlap (#4719)
+  * chore: update docs to indicate where is present  (#4718)
+
+-------------------------------------------------------------------
+Sat Oct 14 18:52:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231014T015703Z:
+  * prom: Allow insecure TLS connections if --insecure is provided
+    (#4716)
+  * Bump golang.org/x/net from 0.15.0 to 0.17.0 (#4713)
+  * Validation optimization - reduce HEAD calls during cp and mv
+    operations (#4710)
+  * Use the new golang version 1.21.3 (#4714)
+  * Add --stats to traces (#4669)
+
+-------------------------------------------------------------------
+Sun Oct 08 16:04:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231004T065256Z:
+  * Add support for resource metrics (#4689)
+  * scanner: Limit the active disks if no enough term space (#4705)
+  * Fix mirror stats with --quiet flag (#4703)
+  * add 'mc admin trace' filtering based on request queries (#4704)
+
+-------------------------------------------------------------------
+Mon Oct 02 05:29:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230929T164122Z:
+  * Add min, max and total request time to top api command (#4702)
+  * Use latest madmin-go (v3.0.21) (#4701)
+  * perf net: Do not show Err: tag if there is no error (#4700)
+
+-------------------------------------------------------------------
+Fri Sep 29 08:46:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230928T174830Z:
+  * change 6->3 decimal resolution, to conserve terminal realestate
+  * Add ART and ATP to 'support top api' command (#4699)
+  * broaden reach of `--no-color` flag (#4697)
+  * Show heal checks performed on missing (#4692)
+
+-------------------------------------------------------------------
+Mon Sep 25 05:52:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230922T050746Z:
+  * upgrade minio/pkg v2.0.2 (#4694)
+
+-------------------------------------------------------------------
+Thu Sep 21 04:46:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230920T152231Z:
+  * perf net: Show the error with the bandwidth results (#4688)
+  * add exclude-storageclass flag for mirror (#4684)
+  * Support multiple policies in 'mc admin user policy' command
+    (#4685)
+  * hide all old deprecate heal options (#4682)
+  * Add download links (#4681)
+
+-------------------------------------------------------------------
+Mon Sep 18 05:36:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230913T230858Z:
+  * update all dependencies (#4679)
+
+-------------------------------------------------------------------
+Fri Sep 08 04:42:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230907T224855Z:
+  * fix: alignment issues in help for svacct sub-commands (#4676)
+  * fix: alignment in 'replicate status' help (#4675)
+
+-------------------------------------------------------------------
+Tue Sep 05 14:05:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230902T212803Z:
+  * Update to minio/pkg v2 (#4674)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:40:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230830T080226Z:
+  * Change replicate status metrics to show additional info (#4582)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:32:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230829T225506Z:
+  * support all scanner events to be reported for excessive
+    versions (#4672)
+  * Added `mc admin kms key list ALIAS` command (#4663)
+  * update contribution license PR template
+
+-------------------------------------------------------------------
+Tue Sep 05 13:27:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230818T215755Z:
+  * fix: bandwidth displayed in `mc replicate status` (#4664)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:23:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230815T230309Z:
+  * add new PR template license terms and go1.21.x build (#4662)
+  * fix: batch status responsiveness (#4661)
+  * kms-status: Show unknown for decryption when encryption fails
+    (#4659)
+  * mv: Do not error out when a bucket has an object lock config
+    (#4654)
+  * fix license register error in airgap mode (#4653)
+  * feat: support perf client to show `TX` from client to server
+    (#4645)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:17:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230808T172359Z:
+  * fix: provide an option for Prometheus config for node and
+    bucket endpoints (#4652)
+  * update go1.20.7 for vulncheck
+
+-------------------------------------------------------------------
+Sun Aug 06 08:00:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230801T233057Z:
+  * update deps to latest packages and update CREDITS (#4649)
+  * add TTFB as part of 'mc admin trace' in pretty form (#4648)
+  * Do not allow registration of play cluster (#4647)
+
+-------------------------------------------------------------------
+Mon Jul 24 04:59:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230721T204427Z:
+  * Enabled option to show node and bucket metrics (#4632)
+  * admin-info: Include delete markers count (#4642)
+  * fix replicate update to check for older role ARN (#4640)
+  * properly report bandwidth if not configured (#4641)
+  * fix: remove count flag and show the byteRate for support top
+    net (#4639)
+  * fix: Enable byHost filtering by supplying server host list
+    (#4637)
+
+-------------------------------------------------------------------
+Wed Jul 19 04:26:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230718T210538Z:
+  * fix: with --purge flag ignore path validation errors (#4636)
+  * Support mc top net (#4626)
+  * Fixing misleading usage help for mc anonymous set-json (#4621)
+  * run gofumpt -extra on all source files (#4634)
+  * Ensure `--airgap` is available on all support commands (#4633)
+  * Added `endpoint` and `version` attributes to KMS details
+    (#4591)
+  * Rename mc replicate diff as mc replicate backlog  (#4568)
+  * allow purge to happen on quorum lost objects (#4629)
+
+-------------------------------------------------------------------
+Wed Jul 12 06:39:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230711T233044Z:
+  * This release contains a security fix in the Golang `net/http`
+    standard library - it is built with Go 1.19.11.
+  * add update UBI image to 8.8 (#4625)
+
+-------------------------------------------------------------------
+Sat Jul 08 19:38:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230707T052551Z:
+  * Enhance user info output with authentication info (#4613)
+  * admin replicate update: rename --sync flag to --mode (#4623)
+  * fix: miss count for 'mc support top drive' (#4624)
+  * support site perf replication (#4608)
+
+-------------------------------------------------------------------
+Thu Jun 29 08:35:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230628T215417Z:
+  * Upgrade madmin-go/v3 to 3.0.4 (#4618)
+  * Fix issues related to 'mc admin svcacct list --json' cmd
+    (#4619)
+  * improve user messaging in 'support perf' and 'mc rm --dry-run'
+    (#4617)
+  *  fix: allow cluster bucket export to export single bucket
+     (#4614)
+  * Improve consistency in mc cmds (#4609)
+  * Update minio dependencies (#4610)
+
+-------------------------------------------------------------------
+Tue Jun 20 04:55:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230619T193119Z:
+  * Add response details for policy attach/detach cmd (#4602)
+
+-------------------------------------------------------------------
+Fri Jun 16 06:14:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230615T150826Z:
+  * resync status: show current status (#4604)
+  * Bump github.com/lestrrat-go/jwx from 1.2.25 to 1.2.26 (#4601)
+  * Improve output readability for `mc stat` command (#4597)
+  * Fix unconfigured IDP output in `idp info` command (#4600)
+  * Set theme color for `mc admin user svcacct set` output (#4599)
+  * remove unnecessary newline and contextualize the success
+    (#4598)
+  * fix: copy progress crash (#4596)
+
+-------------------------------------------------------------------
+Tue Jun 13 06:12:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230606T134856Z:
+  * add ftp trace support (#4590)
+  * print in tabular form for callhome status (#4588)
+
+-------------------------------------------------------------------
+Tue Jun 13 06:09:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230530T224138Z:
+  * Implement '--expiry' flag for 'mc admin user svcacct add &
+    edit' (#4570)
+  * Make mc ping useful for startup checks (#4584)
+  * fix proxy not being used to test connectivity (#4583)
+
+-------------------------------------------------------------------
+Sun May 28 08:46:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230526T233154Z:
+  * Corrected message to align with other messages (#4577)
+  * List expiration dates for 'mc admin user svcacct list' command
+    (#4576)
+  * Add updatedAt for ilm-rule-ls (#4579)
+  * fix: limit manual GC to bigger objects (#4581)
+  * Show groups with their policy details while listing users
+    (#4578)
+  * Move `mc admin idp` to `mc idp` (#4574)
+  * Add sorting order to top drive command (#4575)
+
+-------------------------------------------------------------------
+Fri May 19 04:59:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230518T165900Z:
+  * Deprecate older idp commands (#4572)
+  * Add name and description for service accounts (#4569)
+  * bug: panic on nil pointer dereference for "mc admin heal" when
+    disk i… (#4571)
+  * Load Subnet proxy and API key from the env if found (#4557)
+  * randomly generate AK and SK on mc client (#4565)
+  * info: Correctly show pool config with offline node(s) (#4567)
+  * Support setting subnet url via env var in dev mode (#4564)
+- BuildRequire go1.19
+
+-------------------------------------------------------------------
+Mon May 08 04:37:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230504T181016Z:
+  * mirror: Fix removal of FS target without a trailing slash
+    (#4560)
+  * Remove tags for object versions (#4563)
+  * mirror: Honor --fake for target bucket removal (#4561)
+  * Ensure perf results file has an extension (#4551)
+  * info: Show nodes in initializing state (#4556)
+  * allow aliases to be `/` at the end and handle such cases
+    (#4554)
+  * Consistent subcommand naming for list and remove with shortname
+    (#4548)
+  * Fix dry run message crash (#4546)
+  * doc: Update mc admin doc (#4529)
+  * build: support loong64 (#4549)
+
+-------------------------------------------------------------------
+Thu Apr 13 07:55:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230412T022151Z:
+  * Remove diskInfo structure in heal report (#4545)
+  * heal: Fix summary ETA with multiple disks healing in one set
+    (#4543)
+  * update minio-go/v7 -> v7.0.52 (#4544)
+  * stat: fix printing bucket usage info (#4542)
+  * fix: remove replace directive merged incorrectly
+  * perf: Add --noclear flag to avoid doing cleanup (#4473)
+  * Add trace for ilm call type (#4538)
+  * do not crash on zero values (#4536)
+  * Add metadata and tags to mc find (#4531)
+  * Add flag to `admin replicate update` to toggle synchronous
+    replication (#4514)
+  * Improve errInvalidAlias (#4532)
+  * Dont send blank perf report to SUBNET (#4533)
+  * print RestoreInfo to check status of restored objects (#4534)
+
+-------------------------------------------------------------------
+Thu Apr 13 07:43:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230406T165110Z:
+  * Add errors for deprecated commands (#4498)
+  * Add trace options for batch key rotation (#4507)
+  * Upgrade madmin-go to 2.0.18 (#4535)
+  * fix: redact secretKey from printed on screen (#4526)
+
+-------------------------------------------------------------------
+Sun Mar 26 08:25:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230323T200304Z:
+  * stat: Fix output when stat a prefix which has other prefixes
+    (#4501)
+  * honor context cancellation on long-running lists (#4519)
+  * Revert query parameter `src` while diag upload to SUBNET
+    (#4516)
+  * cp: Descriptive error about why unable to locate the source
+    (#4517)
+  * add Expiration: info if present for sts/svc accounts (#4515)
+
+-------------------------------------------------------------------
+Wed Mar 22 12:00:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230320T171753Z:
+  * Incl. rules with NewerNoncurrentVersions > 0 (#4505)
+  * Add `batch cancel` command (#4506)
+  * Fix decommission status crash (#4510)
+  * update functional tests for admin_users with 'policy commands'
+    (#4508)
+  * heal: Summary output based on disks utilization (#4474)
+  * Restructure adding and removing policies from users and groups
+    (#4428)
+  * rm: --dry-run with --versions to print versions modtime (#4495)
+  * fix: ldap commands don't accept config name (#4499)
+  * fix: windows stat command (#4503)
+  * Added query parameter `src` while diag upload to SUBNET (#4504)
+  * replicate ls: fix panic (#4497)
+  * replicate status - drop stale ARNs from stats (#4494)
+  * Allow `support proxy set|remove` without registration (#4488)
+  * Skip subnet config get while `--airgap` mode of license
+    register (#4479)
+  * upgrade dependencies and move to go1.20.x (#4490)
+
+-------------------------------------------------------------------
+Tue Feb 28 09:20:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230228T001259Z:
+  * tier-add:  --force flag to ignore in use check (#4481)
+  * subnet: Avoid general hard timeout for requests (#4478)
+  * inspect: Avoid memory usage in subnet upload (#4477)
+  * Print custom info in trace (#4476)
+
+-------------------------------------------------------------------
+Wed Feb 22 12:33:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230216T192011Z:
+  * support unix-pipes with bigger buffers for performance (#4472)
+  * add more debugging tools to 'mc' container (#4475)
+  * Update madmin-go library (#4471)
+  * fix: do not print empty logs on screen (#4470)
+  * Implement 'mc admin user sts info' command (#4377)
+  * Remove `mc admin bucket remote bandwidth` command and introduce (#4430)
+  * Added code to print the copy resume information (#4454)
+  * mc rm: disallow --purge with flags other than --force (#4467)
+  * Fix parsing --response-duration in trace command (#4466)
+  * remove replace flag for go-ieproxy to allow go install
+  * update to newer libraries (#4464)
+  * mc admin user list --json output doesn't include user groups (#4433) (#4463)
+  * locks: Use timestamp when elapsed is zero (#4462)
+  * Improve `replicate ls` output (#4460)
+  * Fix replicate add/update cmds to allow prefix in rule (#4459)
+
+-------------------------------------------------------------------
+Thu Feb 02 07:22:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230128T202938Z:
+  * Use --api-key flag on register when provided (#4458)
+  * fix: hide duration flag its not useful for users (#4457)
+  * Add support for restoring SSE-C encrypted objects (#4456)
+  * use humanize.IBytes instead of humanize.Bytes (#4455)
+  * cleanup mc to use 'go' errs to be 'e' (#4450)
+  * Corrected the logic for calculating the expiration no of days (#4451)
+  * Corrected output for command `mc admin info` (#4448)
+  * Support --airgap in unregister command (#4441)
+  * Add support of giving a comment to service accounts (#4438)
+  * Improve message when profile upload fails (#4443)
+  * Simplify/speedup container image publishing script (#4442)
+
+-------------------------------------------------------------------
+Fri Jan 13 06:10:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230111T031416Z:
+  * Add confirm flag to `mc admin update --yes` (#4439)
+  * Renew license online if license file not passed (#4429)
+  * Rename admin replicate subcommands (#4383)
+  * support concurrent uploads for 'mc pipe' (#4435)
+  * rb: avoid throwing error for force delete of prefix (#4436)
+  * Upload inspect data to SUBNET (#4420)
+  * trace: Add bootstrap tracing type (#4416)
+  * Allow mirror to continue syncing after an object fails to sync (#4427)
+
+-------------------------------------------------------------------
+Wed Jan 04 15:48:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20221224T152138Z:
+  * trace: Add input and output filters options (#4353)
+  * upgrade UBI image to 8.7 (#4425)
+  * avoid converting API types to local forms in 'mc' (#4424)
+  * Change formatting of `mc stat` (#4397)
+  * Change `mc replicate add|update` to integrate create remote targets (#4403)
+  * admin-trace: Fix support for tracing scanner calls (#4417)
+  * fix: Correctly print svc accounts list (#4422)
+  * fix: replicate remove show partial operations if any (#4418)
+  * reorganize ILM tier commands (#4385)
+  * Print 'Cancel upon user request' when the global context is cancelled (#4406)
+  * fix: improve the information on retention config (#4411)
+  * show endpoint in the replication status (#4412)
+  * heal: Reword new disks healing summary (#4413)
+  * fix: IDP enable/disable command (#4410)
+  * Upgrade golang.org/x/net (#4405)
+
+-------------------------------------------------------------------
+Fri Dec 16 13:11:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221213T002328Z:
+  * Add LDAP policy attach/detach commands (#4390)
+  * mirror: continue operations even if source object goes missing (#4402)
+  * Add full list of call types. (#4401)
+  * trace: Add two validations for passed arguments (#4399)
+  * admin update: Add a prompt for confirmation (#4400)
+  * stat: avoid unix epoch time when printing date (#4398)
+  * Stat: Do not append a slash when --rewind is specified (#4396)
+  * find: Add support of --versions flag (#4394)
+  * Report data usage in `mc stat` of bucket (#4392)
+  * Add staticheck to make lint (#4395)
+  * add HiddenAliases to avoid printing aliases when deprecated (#4393)
+  * Move `mc admin bucket quota` to `mc quota` (#4389)
+  * add support for upload/download limits (#4388)
+  * rename force-delete to purge hidden flag (#4387)
+  * Add staticcheck to CI (#4386)
+
+-------------------------------------------------------------------
+Mon Dec 05 10:20:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221202T234847Z:
+  * fix: IDP remove commands (#4384)
+  * Bump up madmin-go to v2 (#4382)
+  * Use NewArnFromString when parsing user-provided ARN string (#4378)
+  * Move `support logs` to `admin logs` (#4381)
+  * Add commands to set, show and remove proxy (#4375)
+  * Restructure `mc support callhome` command (#4372)
+  * top-locks: Include lock duration in --json output (#4366)
+  * fix: stat --json output for single alias (#4376)
+  * Add site resync commands (#4269)
+
+-------------------------------------------------------------------
+Fri Nov 18 13:37:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221117T212039Z:
+  * ilm-ls: report ExpiredObjectDeleteMarker correctly (#4373)
+  * fix `cp --zip` so it copies to given destination name (#4358)
+  * fix: mc stat for filesystem items (#4371)
+  * ls: Fix listing versions when the system clock is off (#4370)
+  * du: Do not count directories in FS mode (#4369)
+  * fix: examples for `mc admin idp` commands (#4368)
+  * update license headers to 2022 (#4360)
+  * fix: 'du' clean the input path to avoid extra counting (#4361)
+  * encrypt: remove sse-s3 example (#4357)
+  * Improve ilm-add flags and ilm-ls output (#4262)
+  * Add LDAP Policy Entities command (#4318)
+
+-------------------------------------------------------------------
+Tue Nov 15 15:44:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221107T234739Z:
+  * Bump up madmin-go for IDP API client bugfix (#4351)
+  * Replicate-update instead of replicate-edit (#4346)
+  * replicate diff: change ui (#4347)
+  * Handling newerNoncurrentVersions Expiry and Transition in validation (#4348)
+  * More improvements in format of perf test results (#4350)
+  * Update admin IDP commands with new design (#4310)
+  * Update version of madmin-go to v1.7.3 (#4344)
+  * add help menu for cmd 'mc admin user add' (#4337)
+  * modify operation type in message (#4339)
+  * fix: stat command with a directory marker (#4341)
+  * generalize input for ctx.Command.Name (#4338)
+  * Fix typo in rebalance-stop output (#4336)
+  * fix up rebalance commands for 'mc' error conventions and usage (#4333)
+  * feat: admin-rebalance subcommands (#4186)
+  * Add support for inspect data v2 (#4185)
+
+-------------------------------------------------------------------
+Sat Oct 29 15:39:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221029T100923Z:
+  * Add new healing summary (#4323)
+  * support inspect: bump up metadata version (#4331)
+  * Improve format of perf tests output (#4330)
+  * Updating usage for mc replicate edit (#4328)
+
+-------------------------------------------------------------------
+Tue Oct 25 04:44:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221022T033929Z:
+  * improve retention CLI errors and comply with 'mc' style (#4321)
+  * Fixing typo in MC (#4320)
+
+-------------------------------------------------------------------
+Fri Oct 21 10:57:25 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221020T232633Z:
+  * make sure to pass jobType to GenerateBatchJob() (#4319)
+  * replication diff: add header (#4288)
+  * Add command to unregister a cluster (#4314)
+  * Add LDAP support for IDP Config commands (#4296)
+  * Improve help text for `support profile|perf` (#4311)
+  * update new deps (#4303)
+  * change example bucket names to simple names (#4308)
+  * Add number of offline disks in heal info summary (#4305)
+  * avoid unnecessary tea program for 'license info' (#4306)
+  * Print license info table with solid lines (#4301)
+- BuildRequire go1.18
+
+-------------------------------------------------------------------
+Mon Oct 17 05:14:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221012T181250Z:
+  * list jobTypes currently supported (#4298)
+  * use showAppAndExit() for pager help (#4292)
+
+-------------------------------------------------------------------
+Mon Oct 10 06:16:28 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221009T211059Z:
+  * feat: Introduce 'mc batch' command (#4225)
+  * Support `--dev` flag in license info|update (#4281)
+  * Keep help output after quitting (#4289)
+  * Replace 'policy' with 'anonymous' in readme (#4287)
+  * Show airgapped registration link in different color (#4282)
+
+-------------------------------------------------------------------
+Mon Oct 10 06:12:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221006T012006Z:
+  * upgrade pkg and madmin-go deps
+  * Upgrade minio/pkg dependency (#4280)
+  * fix: updateURL when customURL is not passed (#4279)
+  * upgrade minio/pkg v1.4.3
+
+-------------------------------------------------------------------
+Tue Oct 04 08:26:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221001T075614Z:
+  * update minio-go/v7 master
+  * remove 'mc policy' command (#4276)
+  * Remove perf tests from support diagnostics (#4277)
+  * convert tabs to spaces in all commands (#4275)
+  * Save API key if present in the license (#4266)
+  * re-order the support perf UI (#4268)
+  * error out from support commands if not registered (#4271)
+  * Use a pager for help output (#4245)
+  * avoid expensive threads profile by default (#4270)
+  * Upload results of perf tests to SUBNET (#4254)
+  * update minio-go to address missing userMetadata (#4263)
+  * Fix mc admin scanner info --json (#4264)
+  * Update documentation links with new URLs (#4261)
+  * Print supported flags only if there is at least one flag defined (#4259)
+  * rename disks -> drives almost everywhere (#4257)
+
+-------------------------------------------------------------------
+Wed Sep 21 08:29:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220916T091647Z:
+  * disks must be renamed to drives everywhere for display (#4255)
+  * Upload profile zip to SUBNET (#4226)
+  * Export perf test result related types (#4246)
+  * ilm-add: update flags related to tiering (#4250)
+  * fix: use deadlineconn properly (#4249)
+  * Remove duplicate key in .golangci.yml (#4247)
+  * Do Go vulncheck directly (#4248)
+  * allow support for airgapped 'mc update' URL (#4244)
+  * Add --request-header to trace cmd to filter http requests (#4238)
+  * add vulncheck action to CI (#4243)
+  * add hotfix build support (#4240)
+  * allow terminal control back for 'top api/disk' (#4239)
+  * Avoid cutting policy name in admin policy list command (#4241)
+  * allow terminal control back after bubbletea UI (#4237)
+  * fix: alignment issue in mc ping. (#4218)
+  * Add a pull request github template (#4234)
+  * Add objects sizes histogram to bucket info (#4236)
+  * Update minio-go to for recent pkg/lifecycle fixes (#4235)
+  * ls: Fix ls exit code related to some errors in FS (#4233)
+  * cleanup commands to use Go 'err' as 'e' (#4232)
+  * Add mc admin trace --call=healing (#4229)
+  * use go1.18 alpine image (#4228)
+  * fix: use DurationFlag to response-threshold (#4227)
+
+-------------------------------------------------------------------
+Wed Sep 07 13:03:34 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220828T200811Z:
+  * Fix `support callhome status` command (#4222)
+  * change progress unicode style, simplify progress bar init() (#4224)
+  * Fix mb with-versioning (#4223)
+  * Fix `support logs status` command (#4221)
+  * Fix config parsing with updated madmin helper (#4220)
+  * feat: support head with --zip (#4219)
+  * trim response to two-decimal places in ping command (#4214)
+
+-------------------------------------------------------------------
+Wed Sep 07 13:01:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220823T054520Z:
+  * Enhancements in registration and diagnostics (#4200)
+  * remove 'mc mb' short flag to avoid confusion
+  * Add `od` command (#4180)
+  * feat: --with-versioning flag to create bucket as versioned (#4216)
+  * Introduce disk IO statistics UI (#4201)
+  * Update madmin dep to fix a crash (#4215)
+  * Move config parsing logic to madmin (#4212)
+  * Add --disable, --enable and --prefix to ilm commands (#4209)
+  * fix: ping must call AdminInfo only with '--distributed' (#4208)
+  *  Update github.com/minio/cli version (#4192)
+  * Update config output JSON format (#4207)
+  * Clarify error when user has no policy (#4206)
+
+-------------------------------------------------------------------
+Wed Sep 07 12:59:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220811T003048Z:
+  * Make environment variables output highlighted (#4205)
+  * rename mc admin top to mc support top  (#4191)
+  * update minio-go/v7 v7.0.34 (#4203)
+  * Add trace support for decommissioning (#4195)
+  * upgrade CI/CD go1.19 (#4204)
+  *  Change the JSON output of mc support perf (#4198)
+  * Print a better error msg when net perf is unsupported (#4194)
+  * restart: Use health check instead of service info API (#4190)
+  * Fix example description for `mc support perf` (#4193)
+  * apply --status-code only for HTTP traces if present (#4189)
+  * update ping command with new terminal UI (#4163)
+  * rename Remove -> Removed in 'mc rm' (#4187)
+  * Update examples for admin-config-reset (#4160)
+
+-------------------------------------------------------------------
+Wed Sep 07 12:57:18 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220805T080128Z:
+  * Change ui for admin cluster bucket import (#4184)
+  * rb: Better error message when the user passes an object name (#4183)
+  * rm: Fix successful message for operations on the filesystem (#4182)
+  * support in-place rewrite of objects in heal and convert the format (#4175)
+  * remove sysinfo from errorIf with globalDebug (#4178)
+  * add errors to admin top api command (#4176)
+  * Save api key passed as argument in config (#4157)
+
+-------------------------------------------------------------------
+Mon Aug 01 11:13:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220729T191716Z:
+  * change rm color on the terminal (#4171)
+  * rm: add fake message with --fake (#4170)
+  * Remove isURLPrefixExists() call (#4173)
+  * Use madmin-go version 1.4.9 (#4169)
+  * Validate license against deployment id (#4161)
+  * introduce net.Conn deadlines to avoid hung connections (#4164)
+  * New offline registration flow (#4156)
+  * Add admin bucket info command (#4109)
+  * Add `mc replicate diff` cmd to show unreplicated objects (#4127)
+  * support perf to execute all speed tests (#4158)
+  * remove sysinfo from --json mode without --debug (#4159)
+  * Add support for NewerNoncurrentVersions (#4153)
+  * info: Show pools summary of a erasure cluster (#4162)
+  * Add mc cat --tail and --offset (#4149)
+  * Add `license update` command (#4155)
+
+-------------------------------------------------------------------
+Tue Jul 19 08:21:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220715T092055Z:
+  * Move mc admin top scanner -> mc admin scanner info (#4151)
+  * update madmin-go to v1.4.5 (#4154)
+  * Move `support register` to `license register` (#4150)
+
+-------------------------------------------------------------------
+Sat Jul 16 19:29:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220711T161612Z:
+  * add mc ping command (#4074)
+  * update minio-go to v7.0.31
+  * fix: tier-add help (#4148)
+
+-------------------------------------------------------------------
+Thu Jul 07 06:40:09 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220706T145436Z:
+  * Add `--api-key` flag to `mc support register` (#4144)
+  * Add commands to manage external IDPs (#4131)
+  * Upgrade madmin (#4145)
+  * reset timer after the function body is finished  (#4143)
+  * Add admin top scanner & trace --call=scanner (#4130)
+  * Implement `mc ready` to check if the cluster is ready or not (#4101)
+  * Add `support status` command (#4140)
+  * update minio-go/v7 to v7.0.30 (#4136)
+  * refactor: replace strings.Replace with strings.ReplaceAll (#4135)
+  * update to RedHat UBI 8.6
+
+-------------------------------------------------------------------
+Mon Jun 27 13:22:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220626T185148Z:
+  * change admin console to support logs show (#4132)
+  * admin: add admin cluster iam import/export cmd (#4102)
+  * Save license at the time of registration (#4123)
+  * add further license banners in default 'help' output (#4129)
+  * Switch to last commit time based release (#4128)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:50:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220617T025250Z:
+  * Update version printing to include more information (#4125)
+  * filter out hidden flags from error printing (#4122)
+  * Healing finish estimation time relies on disk usage space (#4124)
+  * fix: help output formatting for cluster bucket export/import
+  * add unfreeze command to 'unfreeze' S3 API calls (#4121)
+  * Add commands to enable/disable callhome and logs (#4107)
+  * improve UI for driveperf inspired from object perf test (#4118)
+  * add import/export bucket metadata command (#4087)
+  * extend Go's time.ParseDuration to support days, weeks and years (#4116)
+  * improve UI for netperf inspired from object perf test (#4117)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:44:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220611T211036Z:
+  * fix: 'mc admin top api' IOPs, RX/TX remove them (#4115)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:39:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220610T222912Z:
+  * Improve success message in `support register` cmd (#4108)
+  * ignore remove errors for WORM protected objects (#4111)
+  * Bump up linter version (#4114)
+  * update help for 'mc admin top api'
+  * feat: Add 'mc admin top api' for realtime view (#4112)
+  * heal: Fix single disk healing ETA reporting (#4113)
+  * fix: callhome get error when subnet hook not set (#4089)
+  * Fix replicate status detail summary (#4104)
+  * add hidden force-delete option (#4097)
+  * cleanup print message for 'support profile' (#4099)
+  * update go deps for yaml.v3 and minio-go
+  * regression: update golang.org/x/crypto (#4096)
+  * Hide `mc support callhome` command (#4091)
+  * alias: Enable self signed TLS prompt in darwin platforms (#4094)
+  * fix: SubKeyId may not be same AuthorityKeyId for self-signed CA (#4093)
+  * Deprecate --name flag from `support diag` (#4092)
+  * add JSON flag support for decom status (#4086)
+  * modify support profile command (#4061)
+  * trace: Show milliseconds in trace output (#4083)
+
+-------------------------------------------------------------------
+Sat May 14 18:38:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220509T040826Z:
+  * Prefix version suspension (#4064)
+  * doc: Fix broken link (#4072)
+  * avoid cascading deletes for active-active setups (#4079)
+  * Fix example for `mc admin replicate edit` (#4080)
+  * Add admin prometheus metrics (#4049)
+  * Use latest version of madmin-go (1.3.13) (#4075)
+  * Add support for minio warm tier (#4009)
+
+-------------------------------------------------------------------
+Fri May 06 06:19:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220504T060755Z:
+  * update golang.org/x/crypto (#4068)
+  * fix: support autocompletion for command aliases (#4070)
+  * Document setting multiple policies (#4065)
+  * Fix client-s3 Stat() for prefix with parallel lower prefixes (#4069)
+  * fix: README.md rename config to alias (#4062)
+
+-------------------------------------------------------------------
+Wed Apr 27 12:41:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220426T180022Z:
+  * Error message when update failing due to permissions (#4057)
+  * info: Add the count of total versions details (#4060)
+  * update minio/pkg to v1.1.22
+  * Remove cpuio as default in profiling (#4056)
+
+-------------------------------------------------------------------
+Wed Apr 20 05:50:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220416T211121Z:
+  * Update documentation for --older/newer-than flags (#4039)
+  * update minio/pkg deps
+  * Load proxy config when probing for server TLS certificate (#4052)
+  * mirror: Do not create remote bucket with --dry-run (#4054)
+  * mirror: Stop minio-go bucket listen when watch is cancelled (#4053)
+  * update minio-go/v7, minio/pkg deps
+  * Replace fake with dry-run (#4050)
+  * fix usage message wording (#4048)
+  * Add mutex, threads and cpuio as default in profiling (#4046)
+  * Error handling for remove alias request if alias not found  (#4017)
+  * update to latest madmin-go v1.3.11
+
+-------------------------------------------------------------------
+Sat Apr 16 09:07:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220407T214327Z:
+  * Do not rely on contentCh to print removal messages (#4041)
+  * Get speedtest results as part of `support diag` (#4034)
+  * Simplify `mc ilm ls` (#4042)
+  * Compute bucket/object correctly for some endpoints (#4040)
+  * mirror: Do not exit upon errors when --watch is passed (#4032)
+  * rm: Fix sending an object/version to removal with --no-current flag (#4038)
+
+-------------------------------------------------------------------
+Sat Apr 02 11:39:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220401T234448Z:
+  * `mc rm --non-current should remove top level deletemarker (#4037)
+  * Make sure to print `mc rm` dry run message (#4033)
+
+-------------------------------------------------------------------
+Thu Mar 31 07:19:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220331T045530Z:
+  * Fix mc rm --non-current to use --older-than filter if specified (#4030)
+  * Fix message in `admin subnet health` (#4019)
+  * Typo: Fix error messages on service account operations (#4026)
+  * admin trace: convert trace type to string in json fmt (#4029)
+
+-------------------------------------------------------------------
+Fri Mar 18 10:30:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220317T202506Z:
+  * use globalRootCAs always do not initialize new certPools
+  * Fix alias add when --insecure is passed in a non tty (#4025)
+  * replicate add should enable all replication types by default (#4021)
+  * alias: fetch peer certificate when adding an alias (#4010)
+
+-------------------------------------------------------------------
+Mon Mar 14 08:22:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220313T223400Z:
+  * mv: Fix regression when checking lock in target bucket (#4015)
+  * svcacct: Show successful message after deletion (#4016)
+
+-------------------------------------------------------------------
+Wed Mar  9 12:58:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- change executable name to minio-client; remove Conflicts to mc
+
+-------------------------------------------------------------------
+Wed Mar 09 12:44:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220309T020836Z:
+  * Allow remote target endpoint to point to different host (#4012)
+  * Implement "mc support perf net" for network throughput test (#3998)
+
+-------------------------------------------------------------------
+Fri Mar 04 08:54:09 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220303T211224Z:
+  * update some wording and docs under tier commands (#4007)
+  * Remove --schedule flag from `support diag` command (#4003)
+  * more validation for retention commands (#4004)
+  * Add support for tier-rm/tier-verify (#3996)
+  * Fix arm FreeBSD build (#4006)
+  * Quote special characters in share curl command (#4000)
+  * watch: Clean up watch when restarting mirror after an error (#3993)
+
+-------------------------------------------------------------------
+Sat Feb 26 09:58:39 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220226T035831Z:
+  * remove trimming of top level path
+  * Add cpuio profile type (#3988)
+  * Updated help text to clarify alias (#4001)
+  * mirror: Proper cleanup after exit (#3994)
+  * update wording of svacct command line
+  * update CREDITs file for new deps
+  * update go mod tidy -compat=1.17
+  * tier-info: Add bar charts for 24hr dailys tier-stats (#3928)
+
+-------------------------------------------------------------------
+Wed Feb 23 08:59:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20220223T031559Z:
+  * update minio-go/v7 to v7.0.23
+  * fix: rename 'perf drives' to 'perf drive' (#3991)
+  * Add `mc support callhome get` command (#3986)
+  * Refactor profiling and add goroutines (#3992)
+  * fix: rm should reject --non-current with --recursive (#3987)
+  * Remove cli flag `subnet-proxy` (#3989)
+  * update minio-go to v7.0.22
+  * fix: admin info output for multiple pools (#3985)
+
+-------------------------------------------------------------------
+Mon Feb 21 12:42:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package minio-client (executable name: mc): MinIO Client is a replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage

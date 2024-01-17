@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec8d88673ba1d3dc34258659e5a5c2aa</srcmd5>
+    <version>0.31</version>
+    <time>1394386969</time>
+    <user>coolo</user>
+    <comment>needed for apache-log</comment>
+    <requestid>224966</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ec8d88673ba1d3dc34258659e5a5c2aa</srcmd5>
+    <version>0.31</version>
+    <time>1409302440</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>727b31c7a36abef46b083464459ae281</srcmd5>
+    <version>0.40</version>
+    <time>1410204541</time>
+    <user>coolo</user>
+    <comment>- updated to 0.40
+    - fix test. accept ACST as Australia/Darwin's timezone
+      Because Australian eastern time zone abbr changed in tzdata 2014f
+      ref http://mm.icann.org/pipermail/tz-announce/2014-August/000023.html
+ 
+ 0.32 2014-06-09T01:53:19Z
+ 
+     - change perl version requirements to 5.8.1</comment>
+    <requestid>247968</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>402ed2b0fcbc84d849085b5a5be4ecff</srcmd5>
+    <version>0.41</version>
+    <time>1423392159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>284639</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>010c25062dea4d29f04c077bf7795154</srcmd5>
+    <version>0.42</version>
+    <time>1575106712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751737</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f038175ab304351b956bc930f629eb72</srcmd5>
+    <version>0.43</version>
+    <time>1595950182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823163</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5a7b3871215e96ccbde748f09eb980e7</srcmd5>
+    <version>0.44</version>
+    <time>1597306802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826131</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f3125094c9f4d4ac43d1caca93074b8e</srcmd5>
+    <version>0.450.0</version>
+    <time>1700163083</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126986</requestid>
+  </revision>
+</revisionlist>

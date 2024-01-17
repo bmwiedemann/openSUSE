@@ -1,0 +1,29 @@
+From 584a077bca8c989789a70d47c7ead1f9083490cd Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Fri, 11 Jun 2021 10:47:39 +0200
+Subject: [PATCH] fix param order in test
+
+---
+ tests/gmagick-003-resize_variations.phpt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/gmagick-003-resize_variations.phpt b/tests/gmagick-003-resize_variations.phpt
+index a701d23..12f5518 100644
+--- a/tests/gmagick-003-resize_variations.phpt
++++ b/tests/gmagick-003-resize_variations.phpt
+@@ -8,10 +8,10 @@ if(!extension_loaded('gmagick')) die('skip');
+ --FILE--
+ <?php
+ $gm = new Gmagick("magick:rose");
+-$gm->resizeImage(10, 10, 0.5, Gmagick::FILTER_LANCZOS);
+-$gm->resizeImage(10, 10, 0.5, Gmagick::FILTER_UNDEFINED, true);
+-$gm->resizeImage(10, 10, 0.5, Gmagick::FILTER_GAUSSIAN, false);
++$gm->resizeImage(10, 10, Gmagick::FILTER_LANCZOS, 0.5);
++$gm->resizeImage(10, 10, Gmagick::FILTER_UNDEFINED, 0.5, true);
++$gm->resizeImage(10, 10, Gmagick::FILTER_GAUSSIAN, 0.5, false);
+ echo "ok";
+ ?>
+ --EXPECTF--
+-ok
+\ No newline at end of file
++ok

@@ -1,0 +1,34 @@
+https://github.com/apache/xmlgraphics-fop/pull/65
+partial fix for
+https://issues.apache.org/jira/browse/FOP-2854
+https://github.com/openSUSE/daps/issues/482
+
+commit 0d3f0f9a473aad6f315fd60cc6ed1447afb791ef
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Wed Dec 23 13:53:56 2020 +0100
+
+    FOP-2854: Allow to override CreationDate
+    
+    Allow to override build date with SOURCE_DATE_EPOCH
+    in order to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good
+    and https://reproducible-builds.org/specs/source-date-epoch/
+    for the definition of this variable.
+    
+    This patch was done while working on reproducible builds for openSUSE.
+
+diff --git a/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java b/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java
+index 3af9af606..ff708e371 100644
+--- a/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java
++++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java
+@@ -134,7 +134,9 @@ public class PDFMetadata extends PDFStream {
+ 
+         //Set creation date if not available, yet
+         if (info.getCreationDate() == null) {
+-            Date d = new Date();
++            Date d = System.getenv("SOURCE_DATE_EPOCH") == null ?
++                new Date() :
++                new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
+             info.setCreationDate(d);
+         }
+ 

@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed56f8b7cb9ee72552619f94955b7e7e</srcmd5>
+    <version>1.3.1</version>
+    <time>1553888196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687562</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4e7730ba9d55ce580a680a54693f8d3</srcmd5>
+    <version>1.3.1</version>
+    <time>1583702449</time>
+    <user>dimstar_suse</user>
+    <comment>- skip test test_cookielib_compatibility as it is borked upstream</comment>
+    <requestid>764250</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb691842090cc052b54bcc0f5d09bb6c</srcmd5>
+    <version>1.4.4</version>
+    <time>1598351948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828407</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>75c95ec49dcf10fa5d9ea12b3656a40a</srcmd5>
+    <version>1.4.4</version>
+    <time>1608112783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855668</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>72c92ed19f116e8abde4e24122035c44</srcmd5>
+    <version>1.4.5</version>
+    <time>1613511286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872871</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6330d8624633399364e46cfe7ee262c1</srcmd5>
+    <version>2.0.8</version>
+    <time>1667655989</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.0.8
+  * lot of changes, see
+    https://github.com/geventhttpclient/geventhttpclient/releases
+- do not require python-six
+- deleted patches
+  - remove_mock.patch (upstreamed)</comment>
+    <requestid>1033551</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>339995d7c797dbeb510d23b05ae354cb</srcmd5>
+    <version>2.0.9</version>
+    <time>1683916694</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086630</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3fced62907186066c108db5d079cdfa4</srcmd5>
+    <version>2.0.9</version>
+    <time>1693235645</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105955</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e44be83e4114ae623ec09a8436a7731f</srcmd5>
+    <version>2.0.11</version>
+    <time>1702071134</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.11:
+  * Support Python 3.12
+  * Disable unit tests for no ssl module + fixes for build</comment>
+    <requestid>1131746</requestid>
+  </revision>
+</revisionlist>

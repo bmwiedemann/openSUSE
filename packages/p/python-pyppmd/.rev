@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78820e79b3fa6228f59aeeeb4535e02c</srcmd5>
+    <version>1.0.0</version>
+    <time>1671889885</time>
+    <user>dimstar_suse</user>
+    <comment>required for py7zr update</comment>
+    <requestid>1044219</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44ff0f29b4e9fae43faa68de70df4510</srcmd5>
+    <version>1.0.0</version>
+    <time>1687900680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095657</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d2e0fee48ac7643bb12a3a1770ce8e1</srcmd5>
+    <version>1.1.0</version>
+    <time>1702673370</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * Add Python 3.12 support
+  * Minimum required python to be 3.8
+  * Export PPMD8_RESTORE_METHOD_* constants
+  * Drop github actions workflows
+  * README: Add SPDX identifier</comment>
+    <requestid>1133184</requestid>
+  </revision>
+</revisionlist>

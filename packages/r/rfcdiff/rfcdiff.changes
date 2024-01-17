@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Dec 12 11:19:21 UTC 2018 - astieger@suse.com
+
+- update to 1.47:
+  * Add a --fold <column> argument, to apply line wrapping before
+    comparison
+  * Add normalization of the scheme of provided URLs, to avoid
+    complaints for redirects from https to http
+  * Add display of more error messages, and added validation and
+    error messages for unexpected query parameters
+  * Add stripping of query parameters from upload source urls
+  * Change http:// schemes to https:// in the .pyht script file
+
+-------------------------------------------------------------------
+Fri Feb  2 13:37:54 UTC 2018 - astieger@suse.com
+
+- update to 1.46:
+  * navigate chunks without adding the navigation to history
+
+-------------------------------------------------------------------
+Fri May 26 13:02:29 UTC 2017 - jengelh@inai.de
+
+- Typographical fixes to the description.
+
+-------------------------------------------------------------------
+Sat May 20 17:43:04 UTC 2017 - astieger@suse.com
+
+- initial package (1.45)

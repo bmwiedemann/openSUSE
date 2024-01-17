@@ -1,0 +1,9 @@
+<package name="acarsdec" project="openSUSE:Factory">
+  <title>ACARS SDR decoder</title>
+  <description>A multi-channels acars decoder with built-in rtl_sdr front end.
+It comes with a database backend : acarsserv to store receved acars messages.
+
+</description>
+  <devel project="hardware:sdr" package="acarsdec"/>
+  <url>https://github.com/TLeconte/acarsdec</url>
+</package>

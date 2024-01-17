@@ -1,0 +1,28 @@
+Index: xemacs-packages-20130822/xemacs-packages/psgml/psgml-dtd.el
+===================================================================
+--- xemacs-packages-20130822.orig/xemacs-packages/psgml/psgml-dtd.el
++++ xemacs-packages-20130822/xemacs-packages/psgml/psgml-dtd.el
+@@ -1006,7 +1006,7 @@ FORMS should produce the binary coding o
+ Construct the binary coded DTD (bdtd) in the current buffer."
+   (sgml-set-buffer-multibyte nil)
+   (insert
+-   ";;; This file was created by psgml on " (current-time-string)
++   ";;; This file was created by psgml"
+    " -*-coding:binary-*-\n"
+    "(sgml-saved-dtd-version 7)\n")
+   (let ((print-escape-multibyte t))
+Index: xemacs-packages-20130822/xemacs-packages/calc/calc-macs.el
+===================================================================
+--- xemacs-packages-20130822.orig/xemacs-packages/calc/calc-macs.el
++++ xemacs-packages-20130822/xemacs-packages/calc/calc-macs.el
+@@ -26,9 +26,7 @@
+ 
+ 
+ (defmacro calc-record-compilation-date-macro ()
+-  (` (setq calc-installed-date (, (concat (current-time-string)
+-					  " by "
+-					  (user-full-name)))))
++  (` (setq calc-installed-date "reproducible" ))
+ )
+ 
+ 

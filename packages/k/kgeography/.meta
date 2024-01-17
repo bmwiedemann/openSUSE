@@ -1,0 +1,5 @@
+<package name="kgeography" project="openSUSE:Factory">
+  <title>Geography Trainer</title>
+  <description>KGeography is a geography learning program</description>
+  <devel project="KDE:Applications" package="kgeography"/>
+</package>

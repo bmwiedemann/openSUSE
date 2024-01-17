@@ -1,0 +1,6 @@
+<package name="clhep" project="openSUSE:Factory">
+  <title>CLHEP</title>
+  <description>CLHEP is intended to be a set of high energy physics specific foundation and utility classes such as random generators, physics vectors, geometry and linear algebra. CLHEP is structured in a set of packages independent of any external package interdependencies within CLHEP are allowed under certain conditions).</description>
+  <devel project="science" package="clhep"/>
+  <url>http://proj-clhep.web.cern.ch/proj-clhep/</url>
+</package>

@@ -1,0 +1,69 @@
+---
+ doc/gpg.texi |   18 ++++++++++++++++++
+ g10/gpg.c    |    9 +++++++++
+ 2 files changed, 27 insertions(+)
+
+Index: gnupg-2.4.2/doc/gpg.texi
+===================================================================
+--- gnupg-2.4.2.orig/doc/gpg.texi
++++ gnupg-2.4.2/doc/gpg.texi
+@@ -2285,6 +2285,24 @@ implies, this option is for experts only
+ understand the implications of what it allows you to do, leave this
+ off. @option{--no-expert} disables this option.
+ 
++@item --set-legacy-fips
++@itemx --set-legacy-fips
++@opindex set-legacy-fips
++Enable legacy support even when the libgcrypt library is in FIPS 140-2
++mode. The legacy mode of libgcrypt allows the use of all ciphers,
++including non-approved ciphers. This mode is needed when for legacy
++reasons a message must be encrypted or decrypted. Legacy reasons for
++decryptions include the decryption of old messages created with a
++public key that use cipher settings which do not meet FIPS 140-2
++requirements. Legacy reasons for encryption include the encryption
++of messages with a recipients public key where the recipient is not
++bound to FIPS 140-2 regulation and therefore provided a key using
++non-approved ciphers. Although the legacy mode is a violation of strict
++FIPS 140-2 rule interpretations, it is wise to use this mode or
++either not being able to access old messages or not being able
++to create encrypted messages to a recipient that is not adhering
++to FIPS 140-2 rules.
++
+ @end table
+ 
+ 
+Index: gnupg-2.4.2/g10/gpg.c
+===================================================================
+--- gnupg-2.4.2.orig/g10/gpg.c
++++ gnupg-2.4.2/g10/gpg.c
+@@ -446,6 +446,7 @@ enum cmd_and_opt_values
+     oForceSignKey,
+     oForbidGenKey,
+     oRequireCompliance,
++    oSetLegacyFips,
+     oCompatibilityFlags,
+     oAddDesigRevoker,
+     oAssertSigner,
+@@ -886,6 +887,7 @@ static gpgrt_opt_t opts[] = {
+   ARGPARSE_s_s (oCipherAlgo, "cipher-algo", "@"),
+   ARGPARSE_s_s (oDigestAlgo, "digest-algo", "@"),
+   ARGPARSE_s_s (oCertDigestAlgo, "cert-digest-algo", "@"),
++  ARGPARSE_s_n (oSetLegacyFips, "set-legacy-fips", "@"),
+ 
+ 
+   ARGPARSE_header (NULL, N_("Options for unattended use")),
+@@ -3756,6 +3758,14 @@ main (int argc, char **argv)
+             keybox_set_buffersize (pargs.r.ret_ulong, 0);
+             break;
+ 
++         case oSetLegacyFips:
++           if(gcry_fips_mode_active())
++             gcry_control (GCRYCTL_INACTIVATE_FIPS_FLAG,
++                           "Enable legacy support in FIPS 140-2 mode");
++           else
++             log_info ("Command set-legacy-fips ignored as libgcrypt is not in FIPS mode\n");
++           break;
++
+ 	  case oNoop: break;
+ 
+ 	  default:

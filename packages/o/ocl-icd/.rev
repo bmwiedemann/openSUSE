@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ca55b608cb8748f038be3ab3a19a853</srcmd5>
+    <version>2.1.3</version>
+    <time>1435870093</time>
+    <user>dimstar_suse</user>
+    <comment>Part of OpenCL stack</comment>
+    <requestid>314091</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>864849f7bcf50039ffa8df2cbf74cd71</srcmd5>
+    <version>2.2.7</version>
+    <time>1441727041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329368</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e79791e02a2a3e913173e488f7da2fda</srcmd5>
+    <version>2.2.8</version>
+    <time>1453998258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356045</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>456a85d2e63c0e573f56f90b54fe65f0</srcmd5>
+    <version>2.2.8</version>
+    <time>1455701168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359471</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8be4432bfe489ddd77a67f49448caec4</srcmd5>
+    <version>2.2.11</version>
+    <time>1485250738</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451806</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d00dd8f46fb4c4019c355a03db0cd746</srcmd5>
+    <version>2.2.11</version>
+    <time>1499880993</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509642</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>127390bd1509cc3de9afd00b89f9f412</srcmd5>
+    <version>2.2.11</version>
+    <time>1548335496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667197</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>177d8433ec5bb6dcb68d1c774bc7a4e7</srcmd5>
+    <version>2.2.12</version>
+    <time>1567001091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726255</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0acef6df25c8ad7e87d52a7ee4faaa93</srcmd5>
+    <version>2.2.12</version>
+    <time>1582810608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779470</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ce58c35867a3153a97170fa7dfa0073c</srcmd5>
+    <version>2.2.12</version>
+    <time>1591209299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811111</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>dcad79fb013ca23f9d82859cade6f9e1</srcmd5>
+    <version>2.2.12</version>
+    <time>1592939230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816579</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>0e00d00681834b8c8dd5c84819e475bf</srcmd5>
+    <version>2.2.12</version>
+    <time>1593006537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816703</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>0544217cd3e5f976780b1f2a88c3a2ee</srcmd5>
+    <version>2.2.12</version>
+    <time>1598983822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830979</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b9345566b782f36ca8b9f027fd264812</srcmd5>
+    <version>2.2.13</version>
+    <time>1603725577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843812</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>14b5bba92f90759211f682c62045a7aa</srcmd5>
+    <version>2.2.14</version>
+    <time>1609783835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860302</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f93eb8c2b88477cff949392874190574</srcmd5>
+    <version>2.3.0</version>
+    <time>1619031595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886924</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>4c0a17460b803807bdfa864965d94d75</srcmd5>
+    <version>2.3.0</version>
+    <time>1624136582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900646</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>3aa709f39369af5487fe0dcbe32cc48f</srcmd5>
+    <version>2.3.0</version>
+    <time>1629269778</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912695</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cc8b438cd35b6ee431f98ac51a570ef1</srcmd5>
+    <version>2.3.1</version>
+    <time>1629706092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913456</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>aeb1d35d54781d6464f442f496501efa</srcmd5>
+    <version>2.3.1</version>
+    <time>1684846451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088404</requestid>
+  </revision>
+</revisionlist>

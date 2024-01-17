@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>742a01da5bcf315c83afd5ecb554db81</srcmd5>
+    <version>2.9.1</version>
+    <time>1358418074</time>
+    <user>coolo</user>
+    <comment>An easy to use Bible study tool</comment>
+    <requestid>148228</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>742a01da5bcf315c83afd5ecb554db81</srcmd5>
+    <version>2.9.1</version>
+    <time>1359108699</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4b1de3afb1038d760a524ad15cfad5b2</srcmd5>
+    <version>2.9.1</version>
+    <time>1368448975</time>
+    <user>coolo</user>
+    <comment>- Added fix-movetoanchor-for-qt5.patch, fixes non visible text when
+  used with libQtWebkit 2.3 (forwarded request 174477 from sumski)</comment>
+    <requestid>174823</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>927c8e819583d5fa3e21ad42f0f51031</srcmd5>
+    <version>2.9.2</version>
+    <time>1370513227</time>
+    <user>coolo</user>
+    <comment>- update to 2.9.2:
+  + Fixed settings dialog tab contents not being translated
+  + Fix crash when closing window with tab
+  + Fix bug 14 - Headers displayed as plain text in some modules
+  + Fix problem with text not displaying when using QtWebKit 2.3
+  + added changes needed for Qt5
+  + Fix multi-arch path issue in FindCLucene.cmake
+- removed fix-movetoanchor-for-qt5.patch (upstream)</comment>
+    <requestid>177536</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>927c8e819583d5fa3e21ad42f0f51031</srcmd5>
+    <version>2.9.2</version>
+    <time>1379662033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>043300ea425283d12727c69c9e1002b4</srcmd5>
+    <version>2.10.0</version>
+    <time>1389334568</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213054</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42ae66f63d86debcebf0dff4eb3c0175</srcmd5>
+    <version>2.10.1</version>
+    <time>1405404070</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>240959</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>42ae66f63d86debcebf0dff4eb3c0175</srcmd5>
+    <version>2.10.1</version>
+    <time>1409300560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>cbd6c5c53fc7c0b8052b8c29b1cbf16e</srcmd5>
+    <version>2.10.1</version>
+    <time>1429606257</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294970</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>dfb671a1b188e07c39d6ef5a5bfb7003</srcmd5>
+    <version>2.10.1</version>
+    <time>1486046796</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454052</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e05a7c866e1c1060bc1754352bad5ba4</srcmd5>
+    <version>2.11.1</version>
+    <time>1513245287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555045</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cd60bee7828226b3c330ad837cf69952</srcmd5>
+    <version>2.11.2</version>
+    <time>1537436547</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636620</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>253e4b75c0a4de6985d5dd3c8bfd815a</srcmd5>
+    <version>2.11.2</version>
+    <time>1537787622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637188</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b02308a3bf69d472891165cc3c49b6c9</srcmd5>
+    <version>2.11.2</version>
+    <time>1568804976</time>
+    <user>maxlin_factory</user>
+    <comment>updated desktop categories to fix build</comment>
+    <requestid>731084</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>f869c9150e273bdfd6d2224e13a656a8</srcmd5>
+    <version>2.11.2</version>
+    <time>1574164751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749407</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5e29dd9bb3c458335f97554df7b36de8</srcmd5>
+    <version>3.0</version>
+    <time>1599507296</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>832678</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>89acb6d698eb90f6b399e85cd1b8c702</srcmd5>
+    <version>3.0</version>
+    <time>1611163678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864547</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>e5ee0f0298503c1258224d67fcff175a</srcmd5>
+    <version>3.0</version>
+    <time>1624887211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902651</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>adf5b8b83f8e428661de3681ce54bd6a</srcmd5>
+    <version>3.0.1</version>
+    <time>1628584051</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 3.0.1:
+  * Improved tuning of scrolling speed.
+  * Improved handling of fonts to fix many bugs, including a switch to Qt's
+    native font chooser widget in settings dialog, because of many serious bugs
+    in our legacy implementation.
+  * Improved sample text in settings dialog.
+  * Improved behavior of the mag view to be more similar to pre-3.0 behavior.
+  * Increased maximum column count from 4 to 10.
+  * Removed the orphaned and broken tests for BibleTime.
+  * Updated translations, including a new user interface translations to
+    Japanese and Ukrainian, a new Handbook translation to Russian, and a new
+    Howto translation to Ukrainian.
+  * Fixed DisplayView.qml getting incorrectly installed under /usr/bin/ on some
+    platforms.
+  * Fixed some compatibility issues with different Qt versions.
+  * Fixed a crash when editing personal commentary.
+  * Fixed highlighting of selected text.
+  * Fixed dragging of links.
+  * Fixed modules rearranging themselves.
+  * Fixed logic related to clicking on verse numbers.
+  * Fixed custom font of first column being incorrectly applied to all columns.
+  * Fixed preview in settings dialog displaying text in red.
+  * Fixed lexicons not being displayed.
+  * Fixed drag and drop in mag view and search dialog.
+  * Fixed no text being displayed for some ThML modules.
+  * Fixed undefined behavior and crashes from opening menus to select works by
+    working around a broken QMenu interface (QTBUG-77273).
+  * Fixes to handling of languages, including a caching discrepancy which
+    caused some settings not being properly applied before restarting
+    BibleTime.
+  * Fixed saving of chapters not working properly.
+  * Fixed handling of nested tags for OSIS works.
+  * Fixes to handling of PageUp/PageDown keys when scrolling out of bounds.
+    Note that when BibleTime is compiled against Qt 5.9, one might still
+    experience a trivial glitch where only part of the module is displayed.
+    Pressing PageUp/PageDown again may help to work around this.
+- Remove displayview.patch
+</comment>
+    <requestid>910849</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f63b8e72c44631791a27e32cb2b02c8d</srcmd5>
+    <version>3.0.2</version>
+    <time>1630432537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Fixed a build-error caused by an C++11 incompatibility (bug #332)
+  * Fixed copying of text disabled with Qt versions earlier than than
+    5.13 (bug #334)
+  * Fixed some undefined behavior and out-of-bounds memory errors
+  * Fixed missing documentation in Windows
+  * Updated translations
+  * Added ability to copy docs into build during install and packaging</comment>
+    <requestid>915208</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e5b4807ebffb5c6c2ac385f546f30f7d</srcmd5>
+    <version>3.0.3</version>
+    <time>1652717302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977394</requestid>
+  </revision>
+</revisionlist>

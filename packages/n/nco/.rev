@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55040048172aac1da5d3502864e338ee</srcmd5>
+    <version>4.9.7</version>
+    <time>1617130349</time>
+    <user>RBrownSUSE</user>
+    <comment>nco is popular tool for manipulating netcdf data. It is widely-used in environmental sciences. So it would be great to have it in factory.</comment>
+    <requestid>863761</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bc65cf1db5ca54b3e289f1cfadd314c</srcmd5>
+    <version>4.9.8</version>
+    <time>1620504473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891583</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc8d3a949a71f5cbe0e46169844a555f</srcmd5>
+    <version>5.0.0</version>
+    <time>1625338252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903786</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f3b909922e21974102ad90fb1d08c2aa</srcmd5>
+    <version>5.0.3</version>
+    <time>1636149526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929623</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ca6af09b3a63ccba30d1c085bb6a975</srcmd5>
+    <version>5.0.6</version>
+    <time>1645629971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957005</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>edf9bb7d6800cac9088d7cc9325d9bf1</srcmd5>
+    <version>5.1.0</version>
+    <time>1662639732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001673</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9220937239a307d5317be1a57c99b2f0</srcmd5>
+    <version>5.1.3</version>
+    <time>1672482189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045855</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2d8e06c4c33f5f98d054ba74e83d416b</srcmd5>
+    <version>5.1.4</version>
+    <time>1674927934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061739</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>528e593b3e68b46b8b748c0e10e3b6a6</srcmd5>
+    <version>5.1.7</version>
+    <time>1691504325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102889</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>57235b0e4c018946fbfacb11413f0507</srcmd5>
+    <version>5.1.9</version>
+    <time>1704281140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135761</requestid>
+  </revision>
+</revisionlist>

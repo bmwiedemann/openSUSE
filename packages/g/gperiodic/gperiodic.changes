@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Dec 24 12:15:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Specfile modernization
+
+-------------------------------------------------------------------
+Mon Dec 16 23:32:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.3
+  * Build fixes only
+
+-------------------------------------------------------------------
+Tue Feb 21 00:03:37 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.0.2
+  * Update info about elements with numbers 113, 115, 117, 118
+- Remove all.diff (fixed upstream)
+
+-------------------------------------------------------------------
+Sun Mar 13 10:08:00 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 3.0.1
+* Update desktop file
+
+-------------------------------------------------------------------
+Sun Mar 15 14:26:39 UTC 2015 - jengelh@inai.de
+
+- Initial package (version 3.0.0) for build.opensuse.org

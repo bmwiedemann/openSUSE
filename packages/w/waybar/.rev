@@ -1,0 +1,881 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e5f89357d66c4d399aec0af9959e0d6</srcmd5>
+    <version>0.2.3</version>
+    <time>1551024591</time>
+    <user>coolo</user>
+    <comment>- Package waybar 0.2.3 for openSUSE
+</comment>
+    <requestid>669032</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1dd45cce57100ab93d60c2cbcf3c23ec</srcmd5>
+    <version>0.5.0</version>
+    <time>1553611424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  Added:
+  * Add temperature module 7ae549d
+  * Add option to show only current workspace in sway/workspaces module #206
+  * Add custom tooltip format for network module a9f680b
+  * Add status class to idle_inhibitor 973cec1
+  * Add pkill signals to custom modules #228
+  Changed:
+  * Improving mouse button support d0f56b7
+  * Fixed idle_inhibitor, handles click events correctly 80ef637
+  * Fixed clock seconds ef88f0a
+  * Fixed sway ipc crash when compiled with -D_GLIBCXX_ASSERTIONS 00176c9
+  * Fixed network skipped changes
+  * Workspaces scroll is now output aware except when all-outputs is set
+
+- Update to 0.4.0:
+  Added:
+  * Output configuration
+  * Backlight module, thanks to @ianhattendorf
+  * Idle inhibitor, thanks to @jonfin
+  * Option to disable tooltip
+  * Option to escape custom module script output
+  Changed:
+  * Fixed workspace button order
+  * Fixed tray big icons
+  * Fixed scroll with touchpad
+- Changes from 0.3.0:
+  Added:
+  * Signal strength icons range, thx @Robinhuett
+  * Add format-icons to custom modules, again @Robinhuett smile</comment>
+    <requestid>687137</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4d4c7dbd8b79b0f23c174103c4947366</srcmd5>
+    <version>0.5.1</version>
+    <time>1554458690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  Added:
+  * Tray: Handle icons updates #252
+  * Allow waybar to be positioned on left/right 47142a6
+  * Custom: Allow icon selection based on json alt attribute #245
+  Changed:
+  * Network: Escape ESSID #241
+  * Workspace: Reversed scrolling direction to reflect swaybar
+    behavior 5144426
+  * Script: mediaplayer script is now generic and return json
+    data with player name for icon matching #249
+  * Network: Fixed multiple networking module regression 1f6f443</comment>
+    <requestid>691469</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9816e2b83c2d2b02bb5e85ad552e6de8</srcmd5>
+    <version>0.6.0</version>
+    <time>1556312096</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.6.0:
+  Added:
+  * MPD Module
+  * Manage the style of the bar according to the window in the workspace bb8ff5a
+  * Custom modules: Allow to toggle multiple classes 6aee514
+  * Partially hide Waybar with the .hidded class on toggle (SIGUSR1) ecc5f48
+  * Multiple bars on the same screen with one file 79a5e9e
+  Changed:
+  * Handle widgets size changes for auto height/width management 311c34e
+  * Tray: Icons update fixed
+  * Tray: Icons size 3273ee8
+  * Workspace: Pango markup now supported bc9a497
+  * Custom: Kill scripts on bar destroy 90d89fe
+  * Some screens output/unplug fixed</comment>
+    <requestid>698119</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d561d1951bf7289aaefcaaca3abaec2a</srcmd5>
+    <version>0.6.1</version>
+    <time>1556916449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  Added:
+  * Labels rotation #287
+  Changed:
+  * s/hidded/hidden/ typo fixed 4d4562a
+  * JSON parser threads concurrence fixed d027243
+  * Custom modules with once interval fixed e8f31a0</comment>
+    <requestid>700319</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb59cbf93c73400fa85c896f03f895f8</srcmd5>
+    <version>0.6.6</version>
+    <time>1559375451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706081</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>520879ff8fe531140c06bd9f9c03e9a9</srcmd5>
+    <version>0.6.7</version>
+    <time>1559580995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.7:
+  * Better network events handler ecec02c
+  * Hide custom module on empty text be2fa74
+  * Code cleaning and Some optimizations</comment>
+    <requestid>707076</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6983b3492c63462c1947075185ecd819</srcmd5>
+    <version>0.6.8</version>
+    <time>1560338154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.8:
+  * Fixed window app class 1962caf
+  * Fixed static custom module 9dbf057
+  * Only watch pulseaudio change events 0b01b35</comment>
+    <requestid>709001</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>053294373b56de65bd21abdc76e394c3</srcmd5>
+    <version>0.6.9</version>
+    <time>1560760505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.9:
+  Added:
+  * Added monitor name as bar class 46e5dd9
+  * Added class for persistant workspaces c2e9ed6
+  Changed:
+  * Fixed custom module exit status 564fdcb
+  * Avoid expand sway/window width 3c9b533</comment>
+    <requestid>710283</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3539a5251529da619d7b90d11cadf31</srcmd5>
+    <version>0.7.0</version>
+    <time>1561405992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  Added:
+  * Scrolling threshold #381
+  * Total memory #385
+  Changed:
+  * Improved scroll behavior
+  * Fixed sway/window not showing window title sometimes 486b5a5
+  * Fixed sway/window not showing floating window title dabe2be</comment>
+    <requestid>711644</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>404acd22d94501e13ceb60f15c913536</srcmd5>
+    <version>0.7.1</version>
+    <time>1563018591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  Added:
+  * Added css class for window name and position #397
+  Changed:
+  * Fixed workspaces scroll deadlock #403
+  * Fixed pulseaudio scroll #405</comment>
+    <requestid>714773</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8db69d097cf6104f10a55c27f104df56</srcmd5>
+    <version>0.7.2</version>
+    <time>1566291607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * Fixed crash on output unplug bb99e6c
+  * MediaPlayer script: Ignore selected player if not defined #421</comment>
+    <requestid>724706</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>11f412de77c98c8b130597ea4b0416a1</srcmd5>
+    <version>0.8.0</version>
+    <time>1567168947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  Added:
+  * Manual #431
+  * Muted bluetooth format #429
+  * Support sway/mode pango markup #442
+  Changed:
+  * Fixed fmt 6.0.0 breakup #439
+  * Fixed stack-use-after-return8f9e6c1
+  * Fixed Tray dbusmenu delay and initial render #438</comment>
+    <requestid>727168</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4e545cda117cb19fba345c72ef6ca56e</srcmd5>
+    <version>0.8.0</version>
+    <time>1567581355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727984</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a0d7c56b628e1f29360403cbdf3f9c16</srcmd5>
+    <version>0.8.0</version>
+    <time>1569393382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732853</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>bfe8acb4900f13c99ba986c513461bee</srcmd5>
+    <version>0.8.0</version>
+    <time>1577137529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758871</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f90aac979b7848c70f7f2413279dc507</srcmd5>
+    <version>0.9.0</version>
+    <time>1578162067</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dependency on systemd and new gtk-layer-shell-devel
+- Update to 0.9.0:
+  Added:
+  * Use GTK Layer Shell for working Popups #441
+  * Disk module #471
+  * Man pages option #443
+  * Battery: format time #455
+  * Systemd user unit #460
+  * Detect timezone changes #480
+  * Pulseaudio: export desc as a format #507
+  * Toggle opacity #510
+  Changed:
+  * Fix man memory description #444
+  * Fix output typo #445
+  * Fix typo: persistant -&gt; persistent #446
+  * Fix exclusive zone #447
+  * Network: clamp signal strength 334bc1e
+  * MPD: take lock in waitForEvent to prevent SIGABORT #467
+  * Pulseaudio: audio scroll bound #475
+</comment>
+    <requestid>759783</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8bb1f17408d0976b66e7d3b1d7c4f6b1</srcmd5>
+    <version>0.9.1</version>
+    <time>1585484744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788920</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ac848a3b1f9b666cc40be0e658344c77</srcmd5>
+    <version>0.9.2</version>
+    <time>1586775257</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2:
+  Added:
+  * Battery: full-at config, define the max percentage of
+    the battery #649
+  Changed:
+  * Support libc++ &gt;=9.0.0 #583
+  * Sway: add missing unordered_map include #584
+  * Network: fix label text not updated properly when formats
+    contain Unicode characters #589
+  * Pulseaudio: Fix alt #592
+  * Pulseaudio: track default source/sink changes #599
+  * Tray: Use the same StatusNotifierWatcher for all trays #598
+  * Pulseaudio: track only the default sink and source #603
+  * Systemd service: fix start up ordering #612
+  * Fix: set exclusive zone early for gtk-layer-shell #613
+  * Readme: ubuntu dependencies #615
+  * Temperature: Added support for absolute device paths #624
+  * Switch default Makefile rule from run to build #625
+  * Memory: provide better free memory approximation on old kernel #629
+  * Pulseaudio: fallback to default muted format 9acf558
+  * Custom: restore SIGCHLD settings to SIG_DFL #636
+  * Custom: check WIFEXITED ec451b5
+  * Pulseaudio: Start wait for server #651
+  * Sway/Workspaces: default value unstripped, add value format option 27fbea2</comment>
+    <requestid>793446</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1ae95de37c460ec4cb3695a55d4cf0e7</srcmd5>
+    <version>0.9.2</version>
+    <time>1591653927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812493</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>b26b6ab1040c2ebe2350e59e19ca4d06</srcmd5>
+    <version>0.9.2</version>
+    <time>1592939088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816415</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7d4dbba34f58d5893db5b4a4aca05523</srcmd5>
+    <version>0.9.3</version>
+    <time>1596703178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3:
+  Added:
+  * FreeBSD support tada #425
+  * Taskbar module tada #692
+  * Added an on-update option to all modules #402
+  * Network: Added Rfkill status #568
+  * Bluetooth: Basic new module #568
+  * Added a way to exclude specific output #596
+  * Temperature: Add kelvin-scale #683
+  * sway/workspaces: Added current_output CSS class #693
+  * River status module #745
+  Changed:
+  * Fixed AMD brightness e01a081
+  * Fixed full-at #680
+  * sway/workspaces: sort by the &quot;num&quot; property provided by sway #696
+  * Clock: prefer default fmt format when not using a timezone #715
+  * Fixed exec-if hidding 3b16946
+  * Fixed SIGSEV/BLOCKING bar while changing/removing output 6e7f22a
+  * Battery: add check for battery type 401ea05
+  * Fixed Workspace back and forth unwanted behavior 0080feb
+  * Fixed persistent workspace position #783
+  * Network: make nl80211 dep optional fb8cda9
+  * Updated date, gtk-layer-shell subproject #797, Fixes #776 #780 #530 #750</comment>
+    <requestid>824593</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>440f52f81250da570d8b8378407688ca</srcmd5>
+    <version>0.9.4</version>
+    <time>1601044367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.4:
+  Added:
+  * Add option for no workspace switch on click #817
+  * Add IDs to sway workspace buttons for CSS styling #819
+  * Add ability to switch timezones on scroll #821
+  * MPD: Add song position and queue length
+  * Add an &quot;exec-on-event&quot; config for the custom module #851
+  * Add format for memory tooltip #847
+  Changed:
+  * Fixed a signal issue with custom modules #778
+  * Switch workspace on mouse-down to match swaybar #800
+  * Taskbar string fixes #798
+  * Systemd now using standard targets #801
+  * Fixed fmt crash after update #813
+  * Rfkill is now optional #823
+  * Fixed network status update #861
+  * Fix resizing of the bar with gtk-layer-shell #824
+  * Fix, prevent line breaks in ellipsized labels #828
+  * Fix &quot;restart-interval&quot; in the custom module #840
+  * Allow enabing pango markup in the taskbar string #814</comment>
+    <requestid>835932</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4c2d039437f666d02c80658d2e218ac8</srcmd5>
+    <version>0.9.5</version>
+    <time>1609959460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.5:
+  https://github.com/Alexays/Waybar/compare/0.9.4...0.9.5</comment>
+    <requestid>860803</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>922b4e4dc3d5d535e22fbcc5d07f5ac0</srcmd5>
+    <version>0.9.5</version>
+    <time>1615905909</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879180</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dff7c4cd7c43114173f0279f5bcbbe9d</srcmd5>
+    <version>0.9.7</version>
+    <time>1618859187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.7:
+  Changed:
+  * Improve Pulseaudio sink/source separation
+  * [Module CPU] fix crash due to empty frequencies
+
+- Update to 0.9.6:
+  Added:
+  * Implement support for reloading of config files. #842
+  * Add simpleclock as fallback when hhdate is not available #903
+  * Add option 'tag-labels' to river/tags #980
+  * Add &quot;tooltip-format&quot; to temperature module #891
+  * Support format-{state} for cpu/disk/memory #881
+  * Allow customization of battery module tooltip #830
+  * Add an option to use battery design capacity #964
+  * Add power formatter to battery module #996
+  * Add a way to configure auto_back_and_forth on Sway workspaces #1014
+  * Terminate custom module scripts on exit #1032
+  * Add length limits for MPD module tags #1002
+  * Add style for battery state &quot;plugged&quot; #1056
+  * Add default styling for disk module #1051
+  * Add cpu min/max/avg frequencies #1037
+  Changed:
+  * Fix Sway #waybar.solo CSS rule applying on split #946
+  * Fix for group module selectors when bar is vertical #959
+  * Added waybar_output.identifier support. #956
+  * Fixing logic in getIcon #965
+  * Fix issues in wlr/taskbar #969
+  * Fix duplicate bars on xdg_output property changes #992
+  * Update waybar-bluetooth.5.scd #1003
+  * Improved wlr/taskbar icon search. #1006</comment>
+    <requestid>886684</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e104ada6efa1c0422d6847d31fba51d7</srcmd5>
+    <version>0.9.7</version>
+    <time>1626208656</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1188200 - waybar undefined symbol:
+  Add waybar-0.9.7-fmt-compat.patch</comment>
+    <requestid>906064</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>52106db4b181222e050bf7f5fb479077</srcmd5>
+    <version>0.9.8</version>
+    <time>1629269754</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.9.8:
+  * Fix incorrect tray icon scaling
+  * Don't start if graphical-session is not running
+  * feat(tray): handle Status property
+  * feat(tray): handle scroll events
+  * feat(tray): fallback to Title for items without ToolTip
+  * feat(tray): implement tooltips (text only) for tray items
+  * refactor(tray): infer changed properties from signal name
+  * fix(tray): ignore unused WindowId property
+  * Fix blurry tray icons for HiDPI displays
+  * Remove unused variable
+  * Add man page for keyboard_state module
+  * Search for device automatically if none given
+  * Add default style
+  * Update css class when locked/unlocked
+  * Add more configuaration
+  * Basic keyboard state module
+  * Fix pulseaudio icon name compilation error
+  * pulseaudio: Control currently running sink
+  * Support per-device icon in pulseaudio
+  * Improve sway/language
+  * Do not fail to parse a multi-bar config
+  * libfmt &gt;=8.0.0 compatibility
+  * Add include man section
+  * Workaround for circular imports
+  * Proper formatting
+  * Add recursive config includes
+  * fix(util): protect std::condition_variable methods from pthread_cancel
+  * network: Fix mix use of default and state specific format
+  * network: Fix one case where default route is deleted without notification</comment>
+    <requestid>912430</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5b47b093d02f4495e4451e799eac08d7</srcmd5>
+    <version>0.9.8</version>
+    <time>1639075554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938150</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>31acd5515a874309e4aa4639324be4f2</srcmd5>
+    <version>0.9.9</version>
+    <time>1642198402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.9:
+  * resources: don't break tray icon checkboxes via CSS
+  * chore: add `tzdata` to the alpine builder
+  * fix(util): make waybar_time formatter compatible with fmt 8.1.0
+  * chore: bump supported fmt ver to 7.0.0
+  * fix: match sway workspace order with sway one
+  * fix: Missing tasks
+  * Add `fixed-center` option
+  * add to network module - signalStrengthApp shows what applications can run at current signal strength
+  * change frequency to GHz
+  * change signal strength to penalize overly strong signals
+  * man: Add waybar-inhibitor man page
+  * Add logind feature, with its 'inhibitor' module
+  * bar: Fix crash when unplugging HDMI
+  * Adjust max wifi strength that is possible
+  * Allow sink in addition to source for pulse icon
+  * feat(bar): allow customization of bar modes
+  * fix(swaybar-ipc): avoid unnecessary copy of struct swaybar_config
+  * mediaplayer.py: Exit properly on SIGPIPE
+  * Checking if emoji byte doesn't get out of bounds
+  * Add {flag} format replacement
+  * fix(bar): handle ipc connection errors.
+  * Fix sort
+  * fix(swaybar-ipc): better logs
+  * doc: document swaybar ipc options, `ipc` and `id`
+  * river/tags: Add possibility for mouse clicks
+  * Ensure MPD volume is not negative
+  * Fix divide by zero (#1303)
+  * Fix Clock crash on empty string in timezones field
+  * sway/window: include floating_nodes when considering window count for class
+  * fix(tray): fix visibility of Passive items
+  * Update catch2 dependency 2.13.3 -&gt; 2.13.7
+  * Add cpu usage for every core
+  * sway/language: remove tabs, indent with 2 spaces
+  * Revert &quot;Add CPU usage for every core&quot;
+  * fixed wrong dependency for make target
+  * Add CPU usage for every core
+  * fix(config): preserve explicit null when merging objects
+  * added support for the {gwaddr} variable
+  * round brightness
+  * Only use g_memdup2 for glib &gt;= 2.68
+  * Switch network module to read /proc/net/dev
+  * Fix memory leak and data race
+  * Fix tray icon scaling on multi-display setups
+  * Fix leak
+  * Add shortDescription
+  * feat(swaybar-ipc): handle visibility_by_modifier update
+  * feat(swaybar-ipc): handle mode update
+  * feat(swaybar-ipc): add swaybar IPC client
+  * feat(client): store bar_id argument
+  * feat(bar): attach CSS class `mode-{mode}` to window when setting mode
+  * feat(bar): use &quot;default&quot; mode to store global options
+  * feat(bar): store modes as a map of presets
+  * feat(bar): support swaybar `mode` for configuring window
+  * test(util): add tests for SafeSignal
+  * feat(util): optimize SafeSignal for events from the main thread
+  * fix(util): avoid creating temporary functor for each event
+  * feat(util): SafeSignal class for cross-thread signals with arguments
+  * Fix docs typos Add removing buttons Adjust handling multiple outputs.
+  * Add docs and adjust sorting
+  * Finish base implementation
+  * Add formatting and states handling
+  * Add base name representation
+  * disk: make used calculation match df(1) output
+</comment>
+    <requestid>946362</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>6d47e0a2a70ce62b22eb49cdcbc2ed42</srcmd5>
+    <version>0.9.9</version>
+    <time>1645137616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955586</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>737966fe5cf33e367295cb1bc34afdb8</srcmd5>
+    <version>0.9.10</version>
+    <time>1646671616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.10:
+  * avoid use-after-free in lambda
+  * style.css: add fontawesome to beginning of font list
+  * Fix remaining posix compatability issues in keyboard_state
+  * Don't use gnu extensions which are too new for debian and ubuntu
+  * Make error messages portable
+  * Improve keyboard_state error messages
+  * limit cpu load figure to 2 points
+  * Add 1 to songPosition in the MPD module
+  * fix #1431: audio output does not update on unplug
+  * move Glib ustring format helper to utils
+  * remove duplicated string manipulation methods
+  * ltrim and rtrim take argument by const-ref
+  * make functions in header file inline
+  * Update man page clock module - tooltip
+  * Fix disabled tooltip on clock module
+  * Update spotify example to work on copy paste
+  * Properly initialize distance_scrolled members.
+  * Fix Typo in Example for sway/mode
+  * Add config option &quot;reverse-direction&quot;
+  * use pack_end instead of pack_start
+  * sway/language: fix segmentation fault for layouts not found in XKBContext
+  * Show application icon when using sway window module
+  * battery: read status with spaces
+  * Use locale when formatting clock
+  * fix(man): add missing newlines to wlr docs.
+  * created a hotfix for libfmt-8.1.0 and above
+  * removed commented useless runtime errors
+  * changing want_route_dump to default to true, since we say we have gwaddr support
+  * maybe we shouldn't actually runtime error, but still doing a check</comment>
+    <requestid>959817</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fbda4be042a7df6156fe3eeeef24a1c6</srcmd5>
+    <version>0.9.12</version>
+    <time>1646948719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.12:
+  * Update network.cpp
+  * Fixed English mechanics: grammar, punctuation, and styling.
+
+- Update to 0.9.11:
+  * Update waybar-sway-window.5.scd
+  * refactor: disable icon by default
+  * man: document icon in sway/window module
+  * Feature Clock: show list of time in other timezones in a tooltip</comment>
+    <requestid>960704</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2759c958f8ecfedb0c6502d97b575de6</srcmd5>
+    <version>0.9.13</version>
+    <time>1653417107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978941</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>94390708eeec07cf7ffcdabdd79ccb89</srcmd5>
+    <version>0.9.13</version>
+    <time>1654595119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981093</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>5b46d03abd46aae475973a506a429bb7</srcmd5>
+    <version>0.9.13</version>
+    <time>1666102371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029716</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>76ff6c2f8e11c435f9ef530ff4a57d80</srcmd5>
+    <version>0.9.14</version>
+    <time>1667389638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032797</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ea67c1cc6a8830c7a07fe5cda4bfc907</srcmd5>
+    <version>0.9.15</version>
+    <time>1667499278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.15:
+  * Added gamemode man file to meson #1566
+  * upower: unbreak build on libc++ systems (FreeBSD, OpenBSD, Chimera) #1567
+  * fix: vertical bar not anchored when width is set #1571
+  * fixes bluetooth module #1576
+  * Advertise river modules #1578
+  * river/mode: new module in #1579
+  * README.md: add river/mode to feature list in #1580
+  * Add total bandwidth formatting options #1575
+  * Retain instance name css class for custom modules #1588
+  * pulseaudio: avoid retaining outdated form factor #1590
+  * Last weekday applies Unix fmt #1599
+  * New Gentoo CI #1612
+  * CI: upgrade FreeBSD version to avoid future breakage #1621
+  * battery: fix wrong definition for &quot;format&quot; #1624
+  * Language: Add layout as class name #1628
+  * fix: adapt to fmt 9.0.0 breaking changes #1617
+  * CI: prevent FreeBSD breakage in future #1637
+  * Added UPower to README #1638
+  * sni: Use the pixmap if for the given icon name an icon could not be found #1627
+  * mpd: add filename formatter #1631
+  * Added a Hyprland backend and a Window module #1656
+  * Feature: sway/window can show 'shell' parameter #1651
+  * #1591 river escape window and mode #1668
+  * fix(network): dont escape essid in tooltip #1669
+  * scale icons for HiDPI monitor #1670
+  * style(lint): fix some files lint #1672
+  * add JACK module #1653
+  * Added a basic hyprland/language module #1657
+  * Add 'max-volume' option to pulseaudio #1659</comment>
+    <requestid>1033009</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>30000692d81b25f8c230045e325b3d24</srcmd5>
+    <version>0.9.16</version>
+    <time>1669816807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039030</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>a36b8c826b4654e3d16309bb322e9b81</srcmd5>
+    <version>0.9.16</version>
+    <time>1670333030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040461</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>e0ed5f49486691f29b0f6ea72ab2f921</srcmd5>
+    <version>0.9.16</version>
+    <time>1671209496</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix: actually use the date library dependency provided by hhdate
+  * add 0001-require-date-dependency.patch
+</comment>
+    <requestid>1043178</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0cd6da4e522d5c8f818bdc8f9e75f051</srcmd5>
+    <version>0.9.17</version>
+    <time>1673888380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058640</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>ddfa55791e46c220e60c85bf4f77055a</srcmd5>
+    <version>0.9.17</version>
+    <time>1681058458</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1078128</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>109ab132dcc016a4497bbd97606a66d6</srcmd5>
+    <version>0.9.18</version>
+    <time>1685476946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.18:
+  * fix: battery time remaining
+  * Sway window newstyles
+  * fix(wireplumber): waybar crashes when default node changes
+  * get_desktop_app_info: fix crash on failed DesktopAppInfo::create
+  * hyprland/submap: run initial render on startup
+  * GCC 13 and C++20 support
+  * Allow any module to implement signal handling
+  * modules/custom: Added percentage rounding
+  * Sanitize hyprland language string only instead of the whole format
+  * Year calendar
+  * Clock. Proper handletoggle propagation
+  * Clock. Formating simplify
+  * Image module CSS fix
+  * Fix kbName initialization
+  * fix(wireplumber): free(): invalid pointer
+  * When no one timezone is provided use system's TZ
+  * Fixing memory leak on update UPower tooltip
+  * Clock. Calendar. Avoid of unnecessary string transformation
+  * Backlight: add brightness control
+  * Set Image path from executable file (Image Module)
+  * Remove repeated &quot;the&quot; and fix some typos
+  * AModule implements module actions call
+  * add river/layout
+  * feat(sway): add workspace css class
+  * Revert &quot;feat(sway): add workspace css class&quot;
+  * AModule enable_click &amp; enable_scroll
+  * Clock tz try catch
+  * group module: configurable orientation
+  * Happy clang
+  * fix: mpd bug paused with no song.
+  * Wireplumber: Free the default node name
+  * refactor: make linter happy.
+  * config:output:Allow multiple exclusions &amp; wildcard
+  * custom module: free memory returned by libc's getline
+  * modules/clock: fix calendar shift in months with 31 days
+  * mpris: add tooltip, length limits, position tag
+  * wlr-taskbar: allow sorting by app_id
+  * [hyprland/language] Add more format replacements.
+  * sway/window: Rewrite entire format output instead of just the title
+  * mpris: fix css class application
+  * Generate wireplumber module man page
+  * Made use of node_id_
+  * today style not applied to new date 1 day after starting waybar
+  * Cava module
+  * pulseaudio apply states
+  * backlight: support tooltip
+  * mpris: fix non-dynamic tags not being html escaped
+  * Persistent workspaces for [wlr/workspaces]
+  * Add DWL tags module
+  * fix: use getaddrinfo() instead of gethostbyname()
+  * river/tags: refactor to support special purpose tags
+  * Fix hyprland language initialization problem
+  * network: detect if link is p2p and use local addr
+  * cava: shared library is not found
+  * [wlr/workspaces] Separate CSS class for empty persistent workspaces
+  * Add persistent format-icon to wlr/workspaces
+  * mpris: Hide label if empty
+  * mpris: Fix incorrect format replacement names
+  * File descriptor handling bugs
+  * Fix SEGFAULT in battery module
+  * Update to new ipc version
+- Disable cava module due to missing libcava
+- Drop 0000-replace-gethostbyname-getaddrinfo.patch (fixed upstream)
+- Drop 0001-require-date-dependency.patch (changed upstream)
+- Drop ca9d237b00b4d01f341b0d7bc938afb10a4f8cad.patch (fixed upstream)
+</comment>
+    <requestid>1089663</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>4fdbf281edff8f331ec91f6baf0401a3</srcmd5>
+    <version>0.9.18</version>
+    <time>1687272496</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fontawesome font as recommended
+</comment>
+    <requestid>1093771</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b91fec102821b4370ec625cfce60e6c8</srcmd5>
+    <version>0.9.19</version>
+    <time>1688563871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096866</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d134bff0e1a564626487b02654199533</srcmd5>
+    <version>0.9.20</version>
+    <time>1690370667</time>
+    <user>anag+factory</user>
+    <comment>- Use upstream tarball. Remove service files.
+- Update to 0.9.20:
+  * Fixed build warnings #2282
+  * hyprland/window: Add .hidden CSS class, account for hidden &amp; fullscreen windows #2270
+  * Unbreak modules without DBus #2284
+  * hyprland/window: Fix no info with separate-outputs=true #2286
+  * fix, default to true, sway/workspaces: warp-on-scroll #2293
+  * clock: handle timezone changes (again) #2296
+  * hyprland/window expose more data #2294
+  * App Icons for hyprland/window #2303
+  * hyprland/window: Fix overlap with .hidden class from default style #2307
+  * hyprland/window: rename .hidden to .swallowing (and fix grouped windows) #2308
+  * backlight: do not convert percent to string in fmt #2317
+  * hyprland/backend: Fix JSON parser runtime error #2321
+  * Fix wrong name for {name} #2306
+  * Ensure signal is disconnected in destructor #2324
+  * hyprland/language: Differentiating keyboard layout variants #2326
+  * hyprland/window remove duplicate empty css #2318
+</comment>
+    <requestid>1100748</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>db095d2329e2e544769c07a22aad9a37</srcmd5>
+    <version>0.9.21</version>
+    <time>1692110399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.21:
+  * sway/window: app_id on unfocused workspaces #2234
+  * cava bump #2328
+  * cava man page #2333
+  * [sway/workspaces] feat: add high-priority-named optiion #2336
+  * Mediaplayer improvements #2323
+  * time conversion between time zones #2340
+  * Use C++20 #2322
+  * hyprland/workspaces improvements #2316
+  * Clock. Narrow seconds precision #2345
+  * hyprland/workspaces fix typo #2347
+  * hyprland/window start behavior fix #2352
+  * tooltip-format spaces breaks pango format #2360
+  * Manpage fixes #2365
+  * Fixed sway IPC compile warnings #2366
+  * man: Fix several whitespace formatting issues #2367
+  * Persistent workspaces in hyprland/workspaces #2341
+  * Fix logical errors, formatting error #2373
+  * flake: fix infrec in package overlay #2370
+  * Change default workspace format #2377
+  * Updated hyprland-workspaces manpage #2401
+  * Button release action #2399
+  * Hyprland/workspaces: use named icons instead of searching #2393
+  * docs: fix Arch repository name #2402</comment>
+    <requestid>1103978</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>736dceedbc352418234a7e105057615f</srcmd5>
+    <version>0.9.22</version>
+    <time>1692294269</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.22:
+  * Explicitly cast ustring to string when passing to fmt #2409
+  * fix: typo in taskbar.cpp #2404</comment>
+    <requestid>1104309</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>959001f9c65a14ea7db48776fbf38cfb</srcmd5>
+    <version>0.9.24</version>
+    <time>1699046455</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123246</requestid>
+  </revision>
+</revisionlist>

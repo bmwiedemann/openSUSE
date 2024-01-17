@@ -1,0 +1,8 @@
+<package name="nginx-module-njs" project="openSUSE:Factory">
+  <title>njs scripting language</title>
+  <description>
+    njs is a subset of the JavaScript language that allows extending nginx functionality.
+    njs is created in compliance with ECMAScript 5.1 (strict mode) with some ECMAScript 6 and later extensions.</description>
+  <devel project="server:http" package="nginx-module-njs"/>
+  <url>https://nginx.org/en/docs/njs/</url>
+</package>

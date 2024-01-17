@@ -1,0 +1,5 @@
+<package name="ktextwidgets" project="openSUSE:Factory">
+  <title>ktextwidgets</title>
+  <description>KTextWidgets</description>
+  <devel project="KDE:Frameworks5" package="ktextwidgets"/>
+</package>

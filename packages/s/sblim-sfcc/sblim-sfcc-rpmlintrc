@@ -1,0 +1,2 @@
+addFilter("shared-lib-calls-exit .*\.so")
+addFilter("devel-file-in-non-devel-package.*libcimcClientXML.so")

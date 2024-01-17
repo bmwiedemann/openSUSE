@@ -1,0 +1,27 @@
+Index: sunpy-5.0.0/sunpy/conftest.py
+===================================================================
+--- sunpy-5.0.0.orig/sunpy/conftest.py
++++ sunpy-5.0.0/sunpy/conftest.py
+@@ -4,6 +4,7 @@ import pathlib
+ import tempfile
+ import importlib
+ 
++import hypothesis
+ import pytest
+ 
+ import astropy
+@@ -34,6 +35,14 @@ collect_ignore = ["data/sample.py"]
+ console_logger = logging.getLogger()
+ console_logger.setLevel('INFO')
+ 
++hypothesis.settings.register_profile(
++    'obs',
++    deadline=5000,
++    suppress_health_check=[hypothesis.HealthCheck.too_slow]
++)
++# this loads the profile after the pytest header printout, so don't be confused by the
++# 'default' there.
++hypothesis.settings.load_profile('obs')
+ 
+ @pytest.fixture
+ def jsoc_test_email():

@@ -1,0 +1,128 @@
+diff --git src/paps.1 src/paps.1
+index 52c528f..d32b1cf 100644
+--- src/paps.1
++++ src/paps.1
+@@ -284,6 +284,16 @@ is not printed by default.
+ Use \fItext\fR as the title string for page header. By default the input
+ filename or "stdin" is used.
+ .TP
++.B \-\-header\-font=desc
++Set the header font description. Default is Monospace Bold 12.
++.TP
++.B \-\-header\-date\-format=fmt
++Set the header date format. Default is %c (see 
++.BR strftime (3)).
++.TP
++.B \-\-header\-rule\-thickness=val
++Set the thickness of the header separation rule. Default is 0 (i.e. as thin as possible).
++.TP
+ .B \-\-markup
+ Interpret input as pango markup. Pango Text Attribute Markup Language allows
+ marking parts of the text with tags defining additional attributes such as font
+diff --git src/paps.c src/paps.c
+index d8105eb..3d99f11 100644
+--- src/paps.c
++++ src/paps.c
+@@ -58,6 +58,8 @@
+ #define DEFAULT_FONT_SIZE       "12"
+ #define HEADER_FONT_FAMILY      "Monospace Bold"
+ #define HEADER_FONT_SCALE       "12"
++#define HEADER_DATE_FORMAT      "%c"
++#define HEADER_RULE_THICKNESS   0.1
+ #define MAKE_FONT_NAME(f,s)     f " " s
+ 
+ /*
+@@ -129,6 +131,8 @@ typedef struct {
+   PangoDirection pango_dir;
+   const gchar *title;
+   const gchar *header_font_desc;
++  const gchar *header_date_format;
++  gdouble header_rule_thickness;
+   gdouble lpi;
+   gdouble cpi;
+ } page_layout_t;
+@@ -458,6 +462,9 @@ int main(int argc, char *argv[])
+   int gutter_width = 40;
+   gboolean do_fatal_warnings = FALSE;
+   const gchar *font = MAKE_FONT_NAME (DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE);
++  const gchar *header_font_desc = MAKE_FONT_NAME (HEADER_FONT_FAMILY, HEADER_FONT_SCALE);
++  const gchar *header_date_format = HEADER_DATE_FORMAT;
++  gdouble header_rule_thickness = HEADER_RULE_THICKNESS;
+   gchar *encoding = NULL;
+   gchar *output = NULL;
+   gchar *htitle = NULL;
+@@ -468,6 +475,12 @@ int main(int argc, char *argv[])
+      N_("Landscape output. (Default: portrait)"), NULL},
+     {"columns", 0, 0, G_OPTION_ARG_INT, &num_columns,
+      N_("Number of columns output. (Default: 1)"), "NUM"},
++    {"header-font", 0, 0, G_OPTION_ARG_STRING, &header_font_desc,
++     N_("Set the header font description. (Default: Monospace Bold 12)"), "DESC"},
++    {"header-date-format", 0, 0, G_OPTION_ARG_STRING, &header_date_format,
++     N_("Set the header date format. (Default: %%c)"), "DESC"},
++    {"header-rule-thickness", 0, 0, G_OPTION_ARG_DOUBLE, &header_rule_thickness,
++     N_("Set the thickness of the header separation rule. (Default: 0 (i.e. as thin as possible))"), "DESC"},
+     {"font", 0, 0, G_OPTION_ARG_STRING, &font,
+      N_("Set font. (Default: Monospace 12)"), "DESC"},
+     {"output", 'o', 0, G_OPTION_ARG_STRING, &output,
+@@ -539,7 +552,6 @@ int main(int argc, char *argv[])
+   double page_height = paper_sizes[0].height;
+   int do_tumble = -1;   /* -1 means not initialized */
+   int do_duplex = -1;
+-  const gchar *header_font_desc = MAKE_FONT_NAME (HEADER_FONT_FAMILY, HEADER_FONT_SCALE);
+   const gchar *filename_in;
+   gchar *text;
+   int header_sep = 20;
+@@ -745,6 +757,8 @@ int main(int argc, char *argv[])
+   else
+      page_layout.title = basename((char *)filename_in);
+   page_layout.header_font_desc = header_font_desc;
++  page_layout.header_date_format = header_date_format;
++  page_layout.header_rule_thickness = header_rule_thickness;
+ 
+   /* calculate x-coordinate scale */
+   if (page_layout.cpi > 0.0L)
+@@ -1400,7 +1414,7 @@ draw_line_to_page(cairo_t *cr,
+  * Provide date string from current locale converted to UTF-8.
+  */
+ char *
+-get_date(char *date, int maxlen)
++get_date(page_layout_t *page_layout, char *date, int maxlen)
+ {
+   time_t t;
+   GIConv cvh = NULL;
+@@ -1411,7 +1425,7 @@ get_date(char *date, int maxlen)
+ 
+   if (date_utf8 == NULL) {
+     t = time(NULL);
+-    strftime(date, maxlen, "%c", localtime(&t));
++    strftime(date, maxlen, page_layout->header_date_format, localtime(&t));
+ 
+     cvh = g_iconv_open("UTF-8", get_encoding());
+     if (cvh == (GIConv)-1) {
+@@ -1467,7 +1481,7 @@ draw_page_header_line_to_page(cairo_t         *cr,
+ 			     page_layout->header_font_desc,
+ 			     page_layout->title,
+ 			     page_layout->header_font_desc,
+-			     get_date(date, 255));
++			     get_date(page_layout, date, 255));
+   else
+     header = g_strdup_printf("<span font_desc=\"%s\">%s</span>\n"
+ 			     "<span font_desc=\"%s\">%s</span>\n"
+@@ -1475,7 +1489,7 @@ draw_page_header_line_to_page(cairo_t         *cr,
+ 			     page_layout->header_font_desc,
+ 			     page_layout->title,
+ 			     page_layout->header_font_desc,
+-			     get_date(date, 255),
++			     get_date(page_layout, date, 255),
+ 			     page_layout->header_font_desc,
+ 			     page);
+ 
+@@ -1537,7 +1551,7 @@ draw_page_header_line_to_page(cairo_t         *cr,
+   line_pos = page_layout->top_margin + page_layout->header_height + page_layout->header_sep / 2;
+   cairo_move_to(cr, page_layout->left_margin, line_pos);
+   cairo_line_to(cr,page_layout->page_width - page_layout->right_margin, line_pos);
+-  cairo_set_line_width(cr,0.1); // TBD
++  cairo_set_line_width(cr, page_layout->header_rule_thickness); // TBD
+   cairo_stroke(cr);
+ 
+   return logical_rect.height;

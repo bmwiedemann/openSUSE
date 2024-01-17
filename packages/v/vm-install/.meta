@@ -1,0 +1,19 @@
+<package name="vm-install" project="openSUSE:Factory">
+  <title>Tool to Define a Virtual Machine and Install Its Operating System</title>
+  <description>vm-install can define a Xen virtual machine, and cause an operating
+system to begin installing within that virtual machine.
+
+vm-install can be used in a variety of ways:
+
+* It can be used interactively or non-interactively.
+
+* It can automatically pick reasonable VM defaults for a given type
+   of operating system.
+
+* It can perform completely non-interactive installs, driven via XML
+   files and/or command line parameters.
+
+* The  supporting  Python  modules  can  be 'import'-ed into other
+Python programs, to create VMs programmatically.</description>
+  <devel project="Virtualization" package="vm-install"/>
+</package>

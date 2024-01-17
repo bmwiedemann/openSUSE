@@ -1,0 +1,61 @@
+This is the README.kerberos file
+to have squid negotiate/authenticate via kerberos
+
+any addons are very welcome 
+comments could be posted to <chris(at)computersalat.de>
+
+
+1) you need to add a "USER" inside your "Domain-Computers" Container
+   called "squid".  Yes a "USER" and not a Computer.
+   You may use another name, but why ?
+
+2) After having successfully created the user, you need to create a 
+   keytab file on your WIN box.
+
+Example: !! This is all in one line !!
+
+  ktpass -princ HTTP/squid@DOMAIN.REALM -pType KRB5_NT_PRINCIPAL \
+  -mapuser squid -pass * -out HTTP.keytab
+
+3) copy over HTTP.keytab to /etc/squid/ on your linux box
+
+4) you have to tell your browsers to negotiate via kerberos
+
+  Have a look at:
+
+  a) Internet Explorer does not support Kerberos authentication with proxy servers
+     http://support.microsoft.com/?scid=kb%3Ben-us%3B321728&x=19&y=14
+
+	This limitation was removed in Windows Internet Explorer 7.
+
+	If Integrated Windows Authentication is turned on in Internet Explorer
+	for Windows 2000 and Windows XP, you can complete Kerberos authentication
+	with Web servers either directly or through a proxy server. However,
+	Internet Explorer cannot use Kerberos to authenticate with the proxy
+	server itself.
+
+  b) Unable to negotiate Kerberos authentication after upgrading to Internet Explorer 6
+     http://support.microsoft.com/kb/299838/EN-US/
+
+	To resolve this issue, enable Internet Explorer 6 to respond to
+	a negotiate challenge and perform Kerberos authentication:
+
+	1. In Internet Explorer, click Internet Options on the Tools menu.
+	2. Click the Advanced tab, click to select the Enable
+	   Integrated Windows Authentication (requires restart) check box
+	   in the Security section, and then click OK.
+	3. Restart Internet Explorer.
+
+	Administrators can enable Integrated Windows Authentication by
+	setting the EnableNegotiate DWORD value to 1 in the following registry key:
+
+	HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings
+
+	Note Internet Explorer 6, when used with Microsoft Windows 98,
+	Microsoft Windows 98 Second Edition, Microsoft Windows Millennium Edition,
+	and Microsoft Windows NT 4.0 does not respond to a negotiate challenge and
+	default to NTLM (or Windows NT Challenge/Response) authentication even if
+	the Enable Integrated Windows Authentication (requires restart) check
+	box is selected because Kerberos authentication is not available on
+	these operating systems.
+

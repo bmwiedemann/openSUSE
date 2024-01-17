@@ -1,0 +1,8 @@
+<package name="libv3270" project="openSUSE:Factory">
+  <title>3270 Virtual Terminal for GTK</title>
+  <description>TN3270 GTK Virtual terminal Widget originally designed as part of the pw3270 application.
+
+See more details at https://softwarepublico.gov.br/social/pw3270/
+</description>
+  <devel project="X11:terminals" package="libv3270"/>
+</package>

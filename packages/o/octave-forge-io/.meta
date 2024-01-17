@@ -1,0 +1,6 @@
+<package name="octave-forge-io" project="openSUSE:Factory">
+  <title></title>
+  <description>Input/Output in external formats.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-io"/>
+</package>

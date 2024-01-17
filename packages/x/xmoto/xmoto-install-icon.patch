@@ -1,0 +1,12 @@
+diff -Nur xmoto-0.6.2-orig/extra/CMakeLists.txt xmoto-0.6.2/extra/CMakeLists.txt
+--- xmoto-0.6.2-orig/extra/CMakeLists.txt	2023-03-05 11:10:34.000000000 +0100
++++ xmoto-0.6.2/extra/CMakeLists.txt	2023-03-12 07:47:37.728455269 +0100
+@@ -6,7 +6,7 @@
+ 
+   install(
+     FILES xmoto.png
+-    DESTINATION share/pixmaps
++    DESTINATION share/icons/hicolor/256x256/apps
+   )
+ 
+   install(

@@ -1,0 +1,46 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec81f86..05963aa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -146,6 +146,7 @@ endif()
+ # add SDL
+ #########
+ find_package( SDL2 REQUIRED )
++include_directories(${SDL2_INCLUDE_DIRS})
+ 
+ #set(Boost_USE_STATIC_LIBS FALSE)
+ set( Boost_USE_MULTITHREADED TRUE )
+@@ -180,7 +181,7 @@ elseif( COMPILER_IS_CLANG )
+     target_link_libraries( ppplay stdc++ )
+ endif()
+ 
+-target_link_libraries( ppplay ppplay_core ppplay_module_base ppplay_ppg ppplay_output_sdl ppplay_output_wav ${Boost_PROGRAM_OPTIONS_LIBRARY} SDL2::SDL2 SDL2::SDL2main )
++target_link_libraries( ppplay ppplay_core ppplay_module_base ppplay_ppg ppplay_output_sdl ppplay_output_wav ${Boost_PROGRAM_OPTIONS_LIBRARY} ${SDL2_LIBRARIES} )
+ 
+ #########
+ # link libraries
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 2a09942..4032a9f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -57,7 +57,7 @@ add_library(ppplay_core STATIC
+     output/volumeobserver.h
+ )
+ 
+-target_link_libraries(ppplay_core PUBLIC ppplay_stream ${SDL2_LIBRARY} ${Boost_SYSTEM_LIBRARY} SDL2::SDL2)
++target_link_libraries(ppplay_core PUBLIC ppplay_stream ${Boost_SYSTEM_LIBRARY} ${SDL2_LIBRARIES} pthread)
+ if(WITH_MP3LAME)
+ 	target_link_libraries(ppplay_core PUBLIC ${mp3lame_LIB})
+ endif()
+diff --git a/src/adplug/CMakeLists.txt b/src/adplug/CMakeLists.txt
+index ef56686..e10d2b9 100644
+--- a/src/adplug/CMakeLists.txt
++++ b/src/adplug/CMakeLists.txt
+@@ -108,6 +108,6 @@ set(BADPLAY_SRCS
+ add_executable(badplay ${BADPLAY_SRCS})
+ add_subdirectory(bankgen)
+ 
+-target_link_libraries(badplay PUBLIC ${Boost_PROGRAM_OPTIONS_LIBRARY} ppplay_core ppplay_opl ppplay_bankdb badplay_compression SDL2::SDL2 SDL2::SDL2main)
++target_link_libraries(badplay PUBLIC ${Boost_PROGRAM_OPTIONS_LIBRARY} ppplay_core ppplay_opl ppplay_bankdb badplay_compression ${SDL2_LIBRARIES})
+ 
+ install(TARGETS badplay DESTINATION bin COMPONENT application)

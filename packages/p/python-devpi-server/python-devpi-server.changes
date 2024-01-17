@@ -1,0 +1,238 @@
+-------------------------------------------------------------------
+Thu Oct 19 01:15:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Clean up skipping tests, packaging >22 is now required
+
+-------------------------------------------------------------------
+Thu Aug 10 11:53:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 6.9.2:
+  * Prevent duplicates when adding values to lists in index
+    configuration with ``+=`` operator.
+- Changes from version 6.9.1:
+  * Prevent error in find_pre_existing_file in case of incomplete
+    metadata.
+  * Remove long deprecated backward compatibility for old pluggy
+    versions to fix error with pluggy 1.1.0.
+- Changes from version 6.9.0:
+  * Features
+    - Support export directory layout for
+      ``--replica-file-search-path`` option.
+    - Fix #931: Add ``mirror_no_project_list`` setting for mirror
+      indexes that have no full project list like google cloud
+      artifacts or if you want to prevent downloading the full list
+      for huge indexes like PyPI.
+  * Bug Fixes
+    - Keep a reference to async tasks to avoid their removal mid
+      execution.
+    - Support changed default of ``enforce_content_length`` in
+      urllib3 >= 2.
+    - Fix #934: Properly set PATH_INFO when outside URL is used
+      with sub-path.
+    - Fix #945: Adapt FatalError to be usable as an async HTTP
+      response when updating a project on a mirror.
+    - Fix wrong hash metadata introduced in 6.5.0 for toxresults
+      which prevents replication. The metadata can be fixed by an
+      export/import cycle.
+
+-------------------------------------------------------------------
+Fri Jun  9 07:35:18 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Apr 10 07:28:50 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable broken tests with latest version of python-packaging. gh#devpi/devpi#948
+
+-------------------------------------------------------------------
+Tue Dec 13 04:54:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.8.0 
+  * Features
+  - Fix #929: Cache normalized project names per transaction on mirror index instances.
+  * Bug Fixes
+  - Fix #914: add locking to list_projects_perstage of mirror indexes to
+    prevent multiple slow concurrent updates of the full project name list.
+  - Catch exceptions in async_httpget analog to httpget.
+  - Add locking to mirror name cache to prevent race condition on updates.
+
+-------------------------------------------------------------------
+Fri Oct 21 07:47:48 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Version update to 6.7.0
+  6.7.0 (2022-09-28)
+  ==================
+  Features
+  --------
+  - Add nginx example to devpi-gen-config with caching of simple pages for
+    installers like pip.
+  - Automatically check for +files when using --replica-file-search-path.
+  - Set headers to prevent caching for simple links with stale results.
+  Bug Fixes
+  ---------
+  - Fix #840: Correct url scheme in config if nginx is behind another proxy.
+
+  6.6.1 (2022-09-12)
+  ==================
+  Bug Fixes
+  ---------
+  - Fix slowdown introduced in 6.6.0 when simple links for mirrors are
+    requested more than once in the same thread.
+  - Removed preservation of original server uuid during import. Imported state
+    is different from the original server. Replicas could not detect the change
+    and get into an inconsistent state.
+  - Prevent cache trashing when updating simple links on mirrors for projects
+    with huge number of releases.
+  - Preserve toxresult filenames during import to keep them being accessible on
+    the same URLs after the fix for #686 in 5.2.0.
+
+  6.6.0 (2022-08-16)
+  ==================
+  Features
+  --------
+  - Fix #592: return dict from list_projects_perstage of mirrors where the
+    values contain the un-normalized project name. This allows support in
+    devpi-web 4.1.0 to index them correctly.
+  - Check name in project list instead of fetching project page for mirrors.
+    This improves response times and avoids leaking typos of private package
+    names upstream.
+  - Use ETag header if provided by mirror to reduce bandwidth usage and
+    latency.
+  - Prevent concurrent updates of simple links on mirrors with a short lived
+    lock.
+  - Support PEP-691 conformant fetching for mirrors, and requests with JSON
+    result for installers. Proxy servers should add compression support for the
+    application/vnd.pypi.simple.v1+json content type (gzip_types for nginx).
+  Bug Fixes
+  ---------
+  - Fix #743: support PEP427 escaped wheels with local version, where the + is
+    replaced by _.
+  - Fix #895: store and return content of data-yanked.
+  - Fix #908: include basic auth from mirror_url when fetching packages.
+  - Fix #914: switch to write transaction as late as possible when streaming a
+    file from a mirror.
+
+-------------------------------------------------------------------
+Mon May  2 09:29:09 UTC 2022 - pgajdos@suse.com
+
+- version update to 6.5.1
+  6.5.1 (2022-04-25)
+  ==================
+  Bug Fixes
+  ---------
+  - Fix traceback when trying to delete already deleted release or toxresult.
+  - Preserve index config settings of plugins during import instead of aborting, even if the plugin isn't installed during import.
+  6.5.0 (2022-03-18)
+  ==================
+  Features
+  --------
+  - Added ``--no-checksum`` option to ``devpi-fsck`` to skip checksum validation and only check for file existence.
+  - Split keyfs cache into a small changelog cache and a relpath cache, this lowers overall memory usage and prevents cache trashing.
+  - Lower memory usage by avoiding to read release files into memory and instead use existing file objects.
+  - Switch to ``platformdirs`` from ``appdirs``.
+  - Add streaming replica protocol, which is faster and uses less memory, especially when rebuilding a replica.
+  - Better logging and handling if a thread unexpectedly dies.
+  Bug Fixes
+  ---------
+  - Fix #871: authentication info in ``mirror_url`` wasn't passed on to release links anymore.
+  - Open database connection after file was downloaded during replication to avoid conflicts and locking.
+  - Avoid hashing data twice when writing to storage.
+  - Close HTTP responses and sessions when done to free resources as early as possible instead of waiting for garbage collection.
+  6.4.0 (2022-01-24)
+  ==================
+  Deprecations and Removals
+  -------------------------
+  - As announced with 6.0.0, support for Python 3.6 has been dropped, because it has reached its end of life.
+  Features
+  --------
+  - When an installer user agent is detected the full list of projects is returned unsorted and with less info to improve performance and reduce memory usage.
+  Bug Fixes
+  ---------
+  - Use ``__slots__`` for some classes to reduce memory usage.
+  - Fix exceptions related to logging for some edge cases.
+  6.3.1 (2021-12-07)
+  ==================
+  Bug Fixes
+  ---------
+  - Fix #864: enable settings from ``~/.netrc`` and ``HTTP_PROXY``/``HTTPS_PROXY`` env vars for aiohttp.
+  6.3.0 (2021-11-19)
+  ==================
+  Features
+  --------
+  - Use aiohttp (asyncio) for fetching release links from mirrors to return stale links immediately in case of a timeout, but update the database in the background for the next request.
+  Bug Fixes
+  ---------
+  - fix #853: prevent duplicate mirror indexes in sro method when there are multiple inheritance chains to the same mirror
+  - fix #860: don't check for existing files and validate them during mirror links update, the operation is way to expensive and there is a low possibility for errors.
+  - Add missing `lazy` package dependency. Previously this was only a transitive dependency coming from the devpi-common package.
+
+-------------------------------------------------------------------
+Mon Nov  8 11:58:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * Optimized some database access patterns. A new index is added to the
+    database on first startup. For large databases that can take a while.
+  * Improved performance of loads from database.
+  * Optimized memory and cache use for database access.
+  * Use frozenset for project name cache of mirror indexes. This mitigates
+    memory fragmentation on some Linux distributions.
+
+-------------------------------------------------------------------
+Tue Aug  3 09:11:58 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.1.0
+  * Proxy requests from replica to master are now streamed if possible.
+  * Dropped support for Python 2.7, 3.4 and 3.5. Python 3.x versions 
+    will be supported until their EOL.
+  * Remove deprecated command line options which were replaced by 
+    separate scripts.
+  * The user creation and modification time is now stored.
+  * add explicit ruamel.yaml dependency declaration after strictyaml 
+    vendored it
+  * Allow user and index URLs to work with a trailing slash.
+
+-------------------------------------------------------------------
+Tue May 26 07:22:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Apr  2 11:26:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 5.4.1
+  * This is the last feature release with Python 2.7 support!
+  * Import won't abort anymore when a base index was removed. 
+    The bases setting will be imported as is.
+  * The ``requires_python`` metadata is now included in version 
+    data on mirror indexes.
+  * Downloaded files from mirrors can be included in exports with 
+    the ``--include-mirrored-files`` option.
+  * On import files for mirror indexes are now imported when they 
+    were included in the dump (see ``--include-mirrored-files``).
+  * Fix ``--no-root-pypi`` option when importing devpi data.
+  * Fix pushing from mirror to an index when the file was removed 
+    and ``mirror_use_external_urls`` is active.
+- Drop Python2 anyway because of pyramid dropping Python2
+
+-------------------------------------------------------------------
+Sun Jan 12 00:25:31 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update from 5.1.0 to 5.3.1:
+  see
+  https://devpi.net/docs/devpi/devpi/stable/+d/changelog.html#devpi-server
+  for detailed changelog.
+  Many options to devpi (e.g., devpi --export) were replaced by
+  the dedicated commands (e.g., devpi-export).
+
+-------------------------------------------------------------------
+Tue Sep 17 11:16:44 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Fri Dec 12 19:29:23 UTC 2014 - tbechtold@suse.com
+
+- Initial version

@@ -1,0 +1,8 @@
+[Unit]
+Description=Notify list owners/moderators of pending requests.
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mailman notify
+User=mailman
+Group=mailman

@@ -1,0 +1,57 @@
+Name:                cryptonite-conduit
+version:             0.2.2
+x-revision: 1
+Synopsis:            cryptonite conduit
+Description:
+  Conduit bridge for cryptonite
+  .
+  For now only provide a conduit version for hash and hmac, but
+  with contribution, this could provide cipher conduits too,
+  and probably other things.
+License:             BSD3
+License-file:        LICENSE
+Copyright:           Vincent Hanquez <vincent@snarc.org>
+Author:              Vincent Hanquez <vincent@snarc.org>
+Maintainer:          vincent@snarc.org
+Category:            Cryptography, Conduit
+Stability:           experimental
+Build-Type:          Simple
+Homepage:            https://github.com/haskell-crypto/cryptonite-conduit
+Cabal-Version:       >=1.8
+Extra-source-files:  README.md CHANGELOG.md
+
+Library
+  Exposed-modules:   Crypto.Cipher.ChaChaPoly1305.Conduit
+                     Crypto.MAC.HMAC.Conduit
+                     Crypto.Hash.Conduit
+                     Crypto.PubKey.ECIES.Conduit
+  Build-depends:     base >= 4.8 && < 5
+                   , bytestring
+                   , conduit
+                   , conduit-extra
+                   , cryptonite
+                   , exceptions
+                   , memory
+                   , resourcet
+                   , transformers
+  ghc-options:       -Wall -fwarn-tabs
+
+test-suite cryptonite-conduit-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , bytestring
+                     , conduit
+                     , conduit-combinators
+                     , cryptonite
+                     , cryptonite-conduit
+                     , memory
+                     , tasty
+                     , tasty-hunit
+                     , tasty-quickcheck
+  ghc-options:       -Wall
+
+source-repository head
+  type: git
+  location: https://github.com/haskell-crypto/cryptonite-conduit

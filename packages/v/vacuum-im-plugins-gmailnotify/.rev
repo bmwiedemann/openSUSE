@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3fc7f20be9c56bdfdd80fb65d6e4a1ba</srcmd5>
+    <version>1.0.5+git1518929179.2d687c8</version>
+    <time>1519555622</time>
+    <user>dimstar_suse</user>
+    <comment>- port to Qt5
+- update source
+  * support Vacuum-SDK v37
+- update source
+  * support Vacuum-SDK v35
+- update source
+  * sync with last changes in vacuum-im
+- update to 1.0.5
+- fix in show mail list if subject is empty
+- sync source to changes in vacuum-sdk
+- update to 1.0.4
+  * sync source to changes in vacuum-sdk
+- update source
+  * deleted fix_cmake_rules.patch: its now not needen
+- update to 1.0.2
+  * sync changes in INotifications (vacuum-im r1706)
+- update to 1.0.1
+  * sync to repository files
+- update
+  * sync changes in UI settings interface
+- update
+  * sync changes in IRostersView
+- update
+  * sync changes in INotifications
+- initial release for openSUSE
+</comment>
+    <requestid>579776</requestid>
+  </revision>
+</revisionlist>

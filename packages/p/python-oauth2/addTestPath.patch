@@ -1,0 +1,13 @@
+--- tests/test_oauth.py.orig
++++ tests/test_oauth.py
+@@ -31,6 +31,10 @@ import unittest
+ import httplib2
+ import mock
+ 
++import os
++this_path = os.path.dirname(os.path.abspath(__file__))
++sys.path.insert(0, this_path + '/../..')
++
+ from oauth2._compat import b
+ from oauth2._compat import unquote
+ from oauth2._compat import urlencode

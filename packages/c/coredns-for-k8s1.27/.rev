@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9fe4d44f5fe660fb50bd23828aca08fe</srcmd5>
+    <version>1.10.1</version>
+    <time>1683403743</time>
+    <user>dimstar_suse</user>
+    <comment>coredns-for-k8s1.27 package for sufficing:
+
+```
+can't install kubernetes-coredns-1.10.1-1.3.x86_64:
+nothing provides coredns-for-k8s1.27 needed by kubernetes-coredns-1.10.1.x86_64
+```</comment>
+    <requestid>1085102</requestid>
+  </revision>
+</revisionlist>

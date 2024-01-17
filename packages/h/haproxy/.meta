@@ -1,0 +1,21 @@
+<package name="haproxy" project="openSUSE:Factory">
+  <title>The Reliable, High Performance TCP/HTTP Load Balancer</title>
+  <description>HAProxy implements an event-driven, mono-process model which enables support
+for very high number of simultaneous connections at very high speeds.
+Multi-process or multi-threaded models can rarely cope with thousands of
+connections because of memory limits, system scheduler limits, and lock
+contention everywhere. Event-driven models do not have these problems because
+implementing all the tasks in user-space allows a finer resource and time
+management. The down side is that those programs generally don't scale well on
+multi-processor systems. That's the reason why they must be optimized to get
+the most work done from every CPU cycle.
+
+
+Authors:
+--------
+   w@1wt.eu
+
+
+</description>
+  <devel project="server:http" package="haproxy"/>
+</package>

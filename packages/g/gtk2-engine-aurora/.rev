@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb1e974c83e71f9b36eff3f00cf4b417</srcmd5>
+    <version>1.5.1</version>
+    <time>1292246146</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55628 from user anubisg1
+</comment>
+    <requestid>55628</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>afa74d0de80716f3819c86db4a2a4fda</srcmd5>
+    <version>1.5.1</version>
+    <time>1292246158</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55628
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>afa74d0de80716f3819c86db4a2a4fda</srcmd5>
+    <version>1.5.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>afa74d0de80716f3819c86db4a2a4fda</srcmd5>
+    <version>1.5.1</version>
+    <time>1319181950</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>d1dc307d3c4233ffd996bbfad28b968b</srcmd5>
+    <version>1.5.1</version>
+    <time>1329221156</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103886</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>d1dc307d3c4233ffd996bbfad28b968b</srcmd5>
+    <version>1.5.1</version>
+    <time>1340183420</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>d1dc307d3c4233ffd996bbfad28b968b</srcmd5>
+    <version>1.5.1</version>
+    <time>1359109018</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>d1dc307d3c4233ffd996bbfad28b968b</srcmd5>
+    <version>1.5.1</version>
+    <time>1379662577</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>d1dc307d3c4233ffd996bbfad28b968b</srcmd5>
+    <version>1.5.1</version>
+    <time>1409301124</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

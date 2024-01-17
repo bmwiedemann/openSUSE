@@ -1,0 +1,9 @@
+<package name="python-enrich" project="openSUSE:Factory">
+  <title>Extends the python-rich library functionality.</title>
+  <description>Extends the python-rich library functionality
+with a set of changes that were not accepted to rich itself.
+
+</description>
+  <devel project="devel:languages:python" package="python-enrich"/>
+  <url>https://github.com/pycontribs/enrich</url>
+</package>

@@ -1,0 +1,10 @@
+--- xmlgraphics-commons-2.1/build.xml	2016-01-07 14:46:18.000000000 +0100
++++ xmlgraphics-commons-2.1/build.xml	2017-12-22 14:35:12.045945039 +0100
+@@ -402,7 +402,6 @@
+         source="${javac.source}">
+       <header><![CDATA[${name} ${version}]]></header>
+       <footer><![CDATA[${name} ${version}]]></footer>
+-      <link offline="false" href="http://java.sun.com/j2se/1.5.0/docs/api/"/>
+       <classpath>
+         <path refid="libs-build-classpath"/>
+         <pathelement path="${java.class.path}"/>

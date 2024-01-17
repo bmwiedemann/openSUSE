@@ -1,0 +1,17 @@
+Index: toluapp-1.0.93/SConstruct
+===================================================================
+--- toluapp-1.0.93.orig/SConstruct
++++ toluapp-1.0.93/SConstruct
+@@ -16,7 +16,11 @@ elif 'msvc' in env['TOOLS']:
+ else:
+ 	options_file = "posix"
+ 
+-opts = Options(["config_"+options_file+".py", "custom.py", "custom_"+options_file+".py"], ARGUMENTS)
++try:
++  opts = Variables(["config_"+options_file+".py", "custom.py", "custom_"+options_file+".py"], ARGUMENTS)
++except NameError:
++  opts = Options(["config_"+options_file+".py", "custom.py", "custom_"+options_file+".py"], ARGUMENTS)
++
+ opts.Add('CC', 'The C compiler.')
+ opts.Add('CXX', 'The C++ compiler (for the tests)')
+ opts.Add('CCFLAGS', 'Flags for the compiler.', ['-O2', '-Wall'])

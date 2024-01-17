@@ -1,0 +1,5 @@
+<package name="libertinus-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N:fonts" package="libertinus-fonts"/>
+</package>

@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8c1aacbcd76a256d5f667e136bd1afb</srcmd5>
+    <version>43.0</version>
+    <time>1663764156</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>1005054</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17af8f8565347eebf534da71f55dd89b</srcmd5>
+    <version>43.2</version>
+    <time>1670259739</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1040309 from iznogood)</comment>
+    <requestid>1040322</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3600c7549b5ef15b532418b037d03461</srcmd5>
+    <version>43.3</version>
+    <time>1673888363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.3:
+  + **Really** fix endless ringing bug.
+  + Fixed a crash.
+  + Database closed correctly on shutdown.
+  + Allow building without GStreamer debugging API.
+  + Updated translations. (forwarded request 1058056 from iznogood)</comment>
+    <requestid>1058615</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>597e8b405bb8e1b6e089e52c8a6b7041</srcmd5>
+    <version>44.0</version>
+    <time>1679667564</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072712 from iznogood)</comment>
+    <requestid>1073173</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f42bbe6a972a3bb5eb3e78d768184d5c</srcmd5>
+    <version>44.1</version>
+    <time>1682368287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082374</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>90fa6b21ffe1a3261e6f39d36907aabb</srcmd5>
+    <version>44.2</version>
+    <time>1686665455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092846</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>009b1c60a248b3db0a6bb68d2cf70e4e</srcmd5>
+    <version>45.rc.0</version>
+    <time>1695208973</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1109795 from iznogood
+
+Pushing GNOME 45.rc packages</comment>
+    <requestid>1110399</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a07187244d59ea419a4d0f685c593aad</srcmd5>
+    <version>45.0</version>
+    <time>1696270026</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114703</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1556a202da29b3e71d99ab9fe0f597e3</srcmd5>
+    <version>45.0</version>
+    <time>1705437580</time>
+    <user>anag+factory</user>
+    <comment>- Convert to source service for easier updating. (forwarded request 1139270 from dimstar)</comment>
+    <requestid>1139286</requestid>
+  </revision>
+</revisionlist>

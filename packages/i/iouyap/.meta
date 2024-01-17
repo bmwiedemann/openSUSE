@@ -1,0 +1,5 @@
+<package name="iouyap" project="openSUSE:Factory">
+  <title>Bridge IOU to UDP, TAP and Ethernet.</title>
+  <description>Bridge IOU to UDP, TAP and Ethernet. Mainly used by gns3server</description>
+  <devel project="Education" package="iouyap"/>
+</package>

@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Thu Jul  1 14:07:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.1.1
+  * Only build system related changes
+
+-------------------------------------------------------------------
+Fri Sep 11 21:09:32 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.0:
+  - Makefile: use "-f" with prove always (to show failed tests) (#13)
+  - Stop searching in further dirs on errors except ENOENT #12
+  - Makefile: do not rebuild t/static_%.c with updated gen-static-test
+  - Add CMakeLists.txt and support for MSVC (#3)
+  - Relax checks for extended capability to support new format (#5)
+  - Makefile: use -Og with DEBUG=1 (#7)
+  - unibi_from_mem: fix [clang-analyzer-deadcode.DeadStores] (#8)
+  - Makefile: revisit regenerate-tests rule (#6)
+  - unibi_from_term: handle $TERMINFO as curses does #2 
+
+-------------------------------------------------------------------
+Tue Mar 27 00:10:35 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Update summaries. Use %make_install macro.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:46:19 UTC 2018 - ronisbr@gmail.com
+
+- Run spec-cleaner.
+- Version bump to 2.0.0.
+  Upstream changelog:
+
+  Version 2.0.0
+  -------------
+
+  - rewrite unibi_var_t internals (now the only official access is
+    via the helper functions)
+  - numeric capabilities are stored as ints now (used to be shorts)
+  - add support for the ncurses 6.1 "wide integer" 32-bit file
+    format
+  - try ncursesw6-config, ncurses6-config, ncursesw5-config, and
+    ncurses5-config to get the list of terminfo directories
+    (TERMINFO_DIRS) when building
+  - improve README.md with build instructions and prerequisites
+
+  Version 1.2.1
+  -------------
+
+    - deprecate direct access to unibi_var_t members
+    - better support for building on Windows
+
+-------------------------------------------------------------------
+Fri Dec 11 13:56:25 UTC 2015 - ronisbr@gmail.com
+
+- Change package name to unibilium as per DimStar request.
+
+-------------------------------------------------------------------
+Sat Dec  5 14:27:45 UTC 2015 - ronisbr@gmail.com
+
+- Change %{soname} to %{sover}.
+
+-------------------------------------------------------------------
+Sat Dec  5 14:05:44 UTC 2015 - ronisbr@gmail.com
+
+- Fix group for libunibilium and libunibilium0 packages.
+
+-------------------------------------------------------------------
+Sat Dec  5 14:02:59 UTC 2015 - ronisbr@gmail.com
+
+- Remove libtool files.
+
+-------------------------------------------------------------------
+Sat Dec  5 12:34:38 UTC 2015 - ronisbr@gmail.com
+
+- Change package name to libunibilium.
+
+-------------------------------------------------------------------
+Wed Dec  2 13:19:14 UTC 2015 - ronisbr@gmail.com
+
+- Version bump to 1.2.0.
+- Clean spec file.
+
+-------------------------------------------------------------------
+Fri Apr 17 22:51:57 UTC 2015 - mrueckert@suse.de
+
+- initial package
+

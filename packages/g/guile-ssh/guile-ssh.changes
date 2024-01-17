@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Sun Jun 18 20:43:12 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.16.3:
+  * Fix Guile-SSH/libssh channel leak
+  * Bugfix in test "string->public-key, ECDSA"
+  * Disable the tests that require DSA algorithm by default
+  * Add '--enable-dsa' Autoconf option
+  * (ssh version): 'dsa-support?': New procedure 
+
+-------------------------------------------------------------------
+Fri Sep 30 16:28:30 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.16.0:
+  * Fix cross-compilation
+  * New API: SFTP directory traversal
+  * Fix session garbage collecting errors
+  * Fix segfaults that occur on session closing
+  * Add GNU Guix package definition to the repository
+  * Bump library version to 14:0:0 according to libtool rules
+  * Remove requirement for whereis command
+  * API change: OpenSSH agent procedures are now in (ssh agent)
+  * API change: Remove 'sftp-init' from (ssh sftp)
+  * Guile-SSH channels are now explicilty blocking by default
+  * Fix random segfaults due to libssh logging
+  * Fix "random" erorrs and segfaults in channels
+  * Fix test failures due to 'primitive-fork-calls
+  * Fix the tests for Guile 3.0.7 & 3.0.5
+  * Guile-SSH builing process now less verbose
+- Update library (soname) to 14
+
+-------------------------------------------------------------------
+Fri Nov  6 17:51:15 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.13.1:
+  * API change: 'call-with-ssh-forward' does not start a thread
+  * API change: add 'nodelay' option for Guile-SSH sessions
+  * Fix some random segfaults in the channel and session code
+  * Add support for macOS
+  * Disable libguile-ssh static library
+  * Don't use deprecated libssh procedures
+  * Fix segfaults on GC'ing
+  * Channels procedures now check if the parent session is alive
+  * Changes in documentation
+- Update library to 13
+
+-------------------------------------------------------------------
+Tue Jan  7 14:54:46 UTC 2020 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to version 0.12.0:
+  * API change: Implement new version of the RREPL API
+  * New module: (ssh agent)
+  * Make build with Guile 3.0 possible
+  * Remove bundled SRFI-64, as it's include in Guile since 2.0.12.
+  * Guile-SSH should allow cross-compilation
+  * New procedure 'userauth-gssapi!' in (ssh auth)
+  * Fix a segfault in 'libguile-ssh'
+  * Fix building with libssh 0.8
+  * Fix failing tests and some generic compilation fixes
+- Increase libsoname to 12
+- Remove patches:
+  * 0001-libguile-ssh-Remove-ssh_threads-from-LDFLAGS.patch: included
+    in the release.
+
+-------------------------------------------------------------------
+Mon Feb 25 08:54:01 UTC 2019 - jbrielmaier@suse.de
+
+- set libssh minimum version to 0.6.4 
+
+-------------------------------------------------------------------
+Mon Feb 25 08:43:14 UTC 2019 - jbrielmaier@suse.de
+
+- enable the libssh_threads patch also on Leap/SLE 15.1, as
+  libssh_threads is there also in libssh
+
+-------------------------------------------------------------------
+Wed Sep 12 08:16:34 UTC 2018 - jbrielmaier@suse.de
+
+- don't link against libssh_threads anymore, as it gots removed in
+  libssh 0.8. gh#artyom-poptsov/guile-ssh#9
+  Add and use it on Tumbleweed and Factory:
+  * 0001-libguile-ssh-Remove-ssh_threads-from-LDFLAGS.patch
+
+-------------------------------------------------------------------
+Mon Jul 16 08:36:38 UTC 2018 - jbrielmaier@suse.de
+
+- correct installation of info files 
+
+-------------------------------------------------------------------
+Sat Jul 14 06:27:25 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Thu Jun 28 11:10:27 UTC 2018 - jbrielmaier@suse.de
+
+- libguile-ssh subpackage for shared libraries
+- devel depend on libguile-ssh
+- improve descriptions
+- install example scripts to correct place and make them executable
+- don't install static library
+- install info file 
+
+-------------------------------------------------------------------
+Wed May 30 08:42:02 UTC 2018 - jbrielmaier@suse.de
+
+- inital version of guile-ssh 0.11.3 

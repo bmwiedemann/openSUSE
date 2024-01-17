@@ -1,0 +1,302 @@
+# Rewritten from upstream .patch to avoid fuzzing
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/base.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/base.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/base.html
+@@ -24,6 +24,11 @@
+         {% block additional_stylesheets %} {% endblock %}
+         {% block head_feed %}{% endblock %}
+         {% include 'hyperkitty/headers.html' %}
++        <meta property="og:site_name" content="{{ site_name }}">
++        {% block additional_og %}{% endblock %}
++        <meta property="og:url" content="{{ request.get_full_path }}">
++        <meta name="twitter:card" content="summary">
++        <meta name="twitter:url" content="{{ request.get_full_path }}">
+     </head>
+ 
+     <body>
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/errors/notimplemented.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/errors/notimplemented.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/errors/notimplemented.html
+@@ -7,6 +7,11 @@
+ {% trans "Not implemented yet" %} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans "Not implemented yet" %}">
++<meta name="twitter:title" content="{% trans "Not implemented yet" %}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <h1>{% trans "Not implemented" %}</h1>
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/errors/private.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/errors/private.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/errors/private.html
+@@ -7,6 +7,11 @@
+ {% trans "Error: private list" %} - {{ mlist.display_name|default:mlist.name }} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans "Error: private list" %} - {{ mlist.display_name|default:mlist.name }}">
++<meta name="twitter:title" content="{% trans "Error: private list" %} - {{ mlist.display_name|default:mlist.name }}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="row">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/index.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/index.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/index.html
+@@ -9,6 +9,11 @@
+ {% trans 'Available lists' %} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans 'Available lists' %}">
++<meta name="twitter:title" content="{% trans 'Available lists' %}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="all-lists">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/message.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/message.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/message.html
+@@ -1,12 +1,29 @@
+ {% extends "hyperkitty/base.html" %}
+ {% load i18n %}
+ {% load hk_generic %}
++{% load gravatar %}
+ 
+ 
+ {% block head_title %}
+ {{ message.subject }} - {{ mlist.display_name|default:mlist.name }} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{{ message.subject }} - {{ mlist.display_name|default:mlist.name }}">
++<meta property="og:type" content="article">
++<meta property="og:image" content="{% gravatar_url message.sender.address 200 %}">
++<meta property="og:description" content="{{ message.content|escapeemail|truncatechars:199 }}…">
++<meta property="og:article:author" content="{{ message.sender_name|default:message.sender.address|escapeemail }}">
++<meta property="og:article:published_time" content="{{ message.date|date:'c' }}">
++<meta property="og:article:section" content="{{ mlist.display_name|default:mlist.name }}">
++{% for tag in message.thread.tags.distinct %}
++<meta property="og:article:tag" content="{{ tag.name }}">
++{% endfor %}
++<meta name="twitter:title" content="{{ message.subject }} - {{ mlist.display_name|default:mlist.name }}">
++<meta name="twitter:description" content="{{ message.content|escapeemail|truncatechars:199 }}…">
++<meta name="twitter:image" content="{% gravatar_url message.sender.address 200 %}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="row">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/message_new.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/message_new.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/message_new.html
+@@ -8,6 +8,11 @@
+ {% trans "Create a new thread" %} - {{ mlist.display_name|default:mlist.name }} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans "Create a new thread" %} - {{ mlist.display_name|default:mlist.name }}">
++<meta name="twitter:title" content="{% trans "Create a new thread" %} - {{ mlist.display_name|default:mlist.name }}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="row">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/overview.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/overview.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/overview.html
+@@ -4,6 +4,13 @@
+ {% load static %}
+ {% load cache %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{{ mlist.display_name|default:mlist.name }}">
++<meta property="og:description" content="{{ mlist.description|default_if_none:''|truncatechars:199 }}…">
++<meta name="twitter:title" content="{{ mlist.display_name|default:mlist.name }}">
++<meta name="twitter:description" content="{{ mlist.description|default_if_none:''|truncatechars:199 }}…">
++{% endblock %}
++
+ {% block head_title %}
+     {{ mlist.display_name|default:mlist.name }} - {{ block.super }}
+ {% endblock %}
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/reattach.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/reattach.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/reattach.html
+@@ -9,6 +9,11 @@
+ {% trans "Reattach a thread" %} - {{ mlist.display_name|default:mlist.name }} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans "Reattach a thread" %} - {{ mlist.display_name|default:mlist.name }}">
++<meta name="twitter:title" content="{% trans "Reattach a thread" %} - {{ mlist.display_name|default:mlist.name }}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="row reattach-thread">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/search_results.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/search_results.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/search_results.html
+@@ -8,6 +8,11 @@
+ {% trans "Search results for" %} "{{ query }}"{% if mlist %} - {{ mlist.display_name|default:mlist.name }} {% endif %} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans "Search results for" %} "{{ query }}"{% if mlist %} - {{ mlist.display_name|default:mlist.name }} {% endif %}">
++<meta name="twitter:title" content="{% trans "Search results for" %} "{{ query }}"{% if mlist %} - {{ mlist.display_name|default:mlist.name }} {% endif %}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="row">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/thread.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/thread.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/thread.html
+@@ -3,12 +3,29 @@
+ {% load i18n %}
+ {% load hk_generic %}
+ {% load static %}
++{% load gravatar %}
+ 
+ 
+ {% block head_title %}
+ {{ subject }} - {{ mlist.display_name|default:mlist.name }} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{{ subject }} - {{ mlist.display_name|default:mlist.name }}">
++<meta property="og:type" content="article">
++<meta property="og:image" content="{% gravatar_url starting_email.sender.address 200 %}">
++<meta property="og:description" content="{{ starting_email.content|escapeemail|truncatechars:199 }}…">
++<meta property="og:article:author" content="{{ starting_email.sender_name|default:starting_email.sender.address|escapeemail }}">
++<meta property="og:article:published_time" content="{{ starting_email.date|date:'c' }}">
++<meta property="og:article:section" content="{{ mlist.display_name|default:mlist.name }}">
++{% for tag in thread.tags.distinct %}
++<meta property="og:article:tag" content="{{ tag.name }}">
++{% endfor %}
++<meta name="twitter:title" content="{{ subject }} - {{ mlist.display_name|default:mlist.name }}">
++<meta name="twitter:description" content="{{ starting_email.content|escapeemail|truncatechars:199 }}…">
++<meta name="twitter:image" content="{% gravatar_url starting_email.sender.address 200 %}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="row view-thread d-flex">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/thread_list.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/thread_list.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/thread_list.html
+@@ -13,6 +13,13 @@
+ <link rel="alternate" type="application/rss+xml" title="{{ mlist.display_name }}" href="{% url 'hk_list_feed' mlist_fqdn=mlist.name %}"/>
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{{ list_title }} - {{ mlist.display_name|default:mlist.name }}">
++<meta property="og:description" content="{{ mlist.description|default_if_none:''|truncatechars:199 }}…">
++<meta name="twitter:title" content="{{ list_title }} - {{ mlist.display_name|default:mlist.name }}">
++<meta name="twitter:description" content="{{ mlist.description|default_if_none:''|truncatechars:199 }}…">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="row">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/user_posts.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/user_posts.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/user_posts.html
+@@ -8,6 +8,11 @@
+ {% trans "Messages by" %} {{ fullname }}{% if mlist %} - {{ mlist.display_name|default:mlist.name }} {% endif %} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans "Messages by" %} {{ fullname }}{% if mlist %} - {{ mlist.display_name|default:mlist.name }} {% endif %}">
++<meta name="twitter:title" content="{% trans "Messages by" %} {{ fullname }}{% if mlist %} - {{ mlist.display_name|default:mlist.name }} {% endif %}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="row">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/user_profile/base.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/user_profile/base.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/user_profile/base.html
+@@ -5,6 +5,11 @@
+ {% trans "User posting activity" %} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans "User posting activity" %}">
++<meta name="twitter:title" content="{% trans "User posting activity" %}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="user-profile">
+Index: HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/user_public_profile.html
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/templates/hyperkitty/user_public_profile.html
++++ HyperKitty-1.3.8/hyperkitty/templates/hyperkitty/user_public_profile.html
+@@ -1,12 +1,20 @@
+ {% extends "hyperkitty/base.html" %}
+ {% load i18n %}
+ {% load hk_generic %}
++{% load gravatar %}
+ 
+ 
+ {% block head_title %}
+ {% trans 'User Profile' %} {% trans "for" %} {{ fullname }} - {{ block.super }}
+ {% endblock %}
+ 
++{% block additional_og %}
++<meta property="og:title" content="{% trans 'User Profile' %} {% trans "for" %} {{ fullname }}">
++<meta property="og:image" content="{% gravatar_url addresses.0 200 %}">
++<meta name="twitter:title" content="{% trans 'User Profile' %} {% trans "for" %} {{ fullname }}">
++<meta name="twitter:image" content="{% gravatar_url addresses.0 200 %}">
++{% endblock %}
++
+ {% block content %}
+ 
+ <div class="user-profile user-public-profile">
+Index: HyperKitty-1.3.8/hyperkitty/tests/views/test_accounts.py
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/tests/views/test_accounts.py
++++ HyperKitty-1.3.8/hyperkitty/tests/views/test_accounts.py
+@@ -197,7 +197,7 @@ class AccountViewsTestCase(TestCase):
+             "?list=list@example.com")
+         self.assertEqual(response.status_code, 200)
+         self.assertContains(response, "Dummy content", count=1, html=False)
+-        self.assertContains(response, "Dummy Sender", count=5, html=False)
++        self.assertContains(response, "Dummy Sender", count=7, html=False)
+         self.assertContains(
+             response,
+             '<a name="{}" href="{}">Dummy message</a>'.format(
+Index: HyperKitty-1.3.8/hyperkitty/tests/views/test_message.py
+===================================================================
+--- HyperKitty-1.3.8.orig/hyperkitty/tests/views/test_message.py
++++ HyperKitty-1.3.8/hyperkitty/tests/views/test_message.py
+@@ -124,8 +124,8 @@ class MessageViewsTestCase(TestCase):
+                 response = self.client.get(url)
+         self.assertEqual(response.status_code, 200)
+         self.assertContains(response, "Dummy message")
+-        self.assertContains(response, "Dummy Sender", count=1)
+-        self.assertContains(response, "Dummy Subject", count=2)
++        self.assertContains(response, "Dummy Sender", count=2)
++        self.assertContains(response, "Dummy Subject", count=4)
+         self.assertNotContains(response, "dummy@example.com")
+         self.assertContains(
+             response,

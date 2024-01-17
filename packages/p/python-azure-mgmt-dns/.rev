@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4124af7fdee9411c99c27dab044976de</srcmd5>
+    <version>1.0.1</version>
+    <time>1507755538</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531832</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>235841431f45334caa08514783eb08cf</srcmd5>
+    <version>1.2.0</version>
+    <time>1518596801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571108</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f85fe691cf83b4cceb3fb7e2a8b104b</srcmd5>
+    <version>2.0.0rc1</version>
+    <time>1526219988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599349</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1dbbe88b3120850720cafaf3e0a18cfc</srcmd5>
+    <version>2.0.0</version>
+    <time>1537971243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637959</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>69eb2968914654a0b698ed90a9f0db05</srcmd5>
+    <version>2.1.0</version>
+    <time>1557833614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694291 from glaubitz)</comment>
+    <requestid>694409</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>94e6796c4909bbe557cb6354f93fe948</srcmd5>
+    <version>3.0.0</version>
+    <time>1570710598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735199 from glaubitz)</comment>
+    <requestid>735705</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>335743fb02f90fb2591c57efcf7247fe</srcmd5>
+    <version>3.0.0</version>
+    <time>1607548686</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853924</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6811a006b5b2bd6d1363ef2e091caf6</srcmd5>
+    <version>8.0.0b1</version>
+    <time>1618235353</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py (forwarded request 881875 from glaubitz)</comment>
+    <requestid>881955</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4f4ce3940e8eeefd4bfcf11d933e53b9</srcmd5>
+    <version>8.0.0.0</version>
+    <time>1669715619</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 8.0.0.0 to ensure
+  proper upgrade from previous version 8.0.0b1
+- Update Requires from setup.py (forwarded request 1037977 from glaubitz)</comment>
+    <requestid>1038700</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b7658289c70e3b4e44b17bf95c856744</srcmd5>
+    <version>8.1.0</version>
+    <time>1687379906</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 1093252 from glaubitz)</comment>
+    <requestid>1093274</requestid>
+  </revision>
+</revisionlist>

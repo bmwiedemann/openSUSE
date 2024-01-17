@@ -1,0 +1,7 @@
+<package name="scsires" project="openSUSE:Factory">
+  <title>A SCSI reservation tool</title>
+  <description>This tool is for issuing SCSI-2 reservation and release commands, for
+controlling exclusive access to a SCSI device that is shared between
+more than one SCSI host adapter.</description>
+  <devel project="Base:System" package="scsires"/>
+</package>

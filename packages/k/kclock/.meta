@@ -1,0 +1,8 @@
+<package name="kclock" project="openSUSE:Factory">
+  <title>Convergent KDE clock application</title>
+  <description>A convergent clock application for Plasma.
+
+</description>
+  <devel project="KDE:Applications" package="kclock"/>
+  <url>https://apps.kde.org/kclock</url>
+</package>

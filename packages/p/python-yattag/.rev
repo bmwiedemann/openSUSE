@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fac91152b79e25804839ca178879890c</srcmd5>
+    <version>1.15.1</version>
+    <time>1683213024</time>
+    <user>dimstar_suse</user>
+    <comment>dependency of (hamradio)/chirp </comment>
+    <requestid>1084333</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7b9c71ae4b4a389652aa6ea20b0a6153</srcmd5>
+    <version>1.15.2</version>
+    <time>1704281049</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.2:
+  * Add exports to _all__</comment>
+    <requestid>1135622</requestid>
+  </revision>
+</revisionlist>

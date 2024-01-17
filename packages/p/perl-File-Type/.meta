@@ -1,0 +1,6 @@
+<package name="perl-File-Type" project="openSUSE:Factory">
+  <title>determine file type using magic</title>
+  <description>File::Type uses magic numbers (typically at the start of a file) to
+determine the MIME type of that file.</description>
+  <devel project="devel:languages:perl" package="perl-File-Type"/>
+</package>

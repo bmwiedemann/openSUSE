@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="98">
+    <srcmd5>62edd8330288ef6e136482f5548d6639</srcmd5>
+    <version>0.12</version>
+    <time>1168903926</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="282">
+    <srcmd5>62edd8330288ef6e136482f5548d6639</srcmd5>
+    <version>0.12</version>
+    <time>1168903926</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="283">
+    <srcmd5>9ef9af5b03b7f2e70ab78fc13db2a6fe</srcmd5>
+    <version>0.12</version>
+    <time>1245338112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="285">
+    <srcmd5>9ef9af5b03b7f2e70ab78fc13db2a6fe</srcmd5>
+    <version>0.12</version>
+    <time>1245338112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="286">
+    <srcmd5>9b3d4e83e8d77c8c216968fc4e54d382</srcmd5>
+    <version>0.12</version>
+    <time>1263297591</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Unicode-Map8 based on submit request 28937 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>69eaae7dccd366339b5c5fc10bac52dc</srcmd5>
+    <version>0.13</version>
+    <time>1264613630</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Unicode-Map8 based on submit request 30401 from user anicka
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5c6694b41ed4f0e0e9a5657df3ce6e3b</srcmd5>
+    <version>0.13</version>
+    <time>1268925649</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5c6694b41ed4f0e0e9a5657df3ce6e3b</srcmd5>
+    <version>0.13</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>5c6694b41ed4f0e0e9a5657df3ce6e3b</srcmd5>
+    <version>0.13</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>e7acae417cdd9d018f9d3062417efdb9</srcmd5>
+    <version>0.13</version>
+    <time>1291584393</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54685 from user coolo
+</comment>
+    <requestid>54685</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>046e0266e078ea759651aaa42d2bb21d</srcmd5>
+    <version>0.13</version>
+    <time>1291584399</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54685
+</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>046e0266e078ea759651aaa42d2bb21d</srcmd5>
+    <version>0.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>c09f86c712e08c474e45abb0f5ec5bd6</srcmd5>
+    <version>0.13</version>
+    <time>1316447944</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82400</requestid>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>c09f86c712e08c474e45abb0f5ec5bd6</srcmd5>
+    <version>0.13</version>
+    <time>1319182320</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>e636569ba26e2767dcc611e86820b140</srcmd5>
+    <version>0.13</version>
+    <time>1321876190</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92206</requestid>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>27ebee1cf8ee6a5f4c90f27c10addc16</srcmd5>
+    <version>0.13</version>
+    <time>1323193761</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>27ebee1cf8ee6a5f4c90f27c10addc16</srcmd5>
+    <version>0.13</version>
+    <time>1340183948</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>27ebee1cf8ee6a5f4c90f27c10addc16</srcmd5>
+    <version>0.13</version>
+    <time>1359109841</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>27ebee1cf8ee6a5f4c90f27c10addc16</srcmd5>
+    <version>0.13</version>
+    <time>1379663909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="22">
+    <srcmd5>9046761ec2090ce6f37405d85254ab3e</srcmd5>
+    <version>0.13</version>
+    <time>1390429629</time>
+    <user>coolo</user>
+    <comment>- use new perl template, fix license</comment>
+    <requestid>214322</requestid>
+  </revision>
+  <revision rev="21" vrev="24">
+    <srcmd5>9046761ec2090ce6f37405d85254ab3e</srcmd5>
+    <version>0.13</version>
+    <time>1409302558</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

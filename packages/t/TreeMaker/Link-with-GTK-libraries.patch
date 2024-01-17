@@ -1,0 +1,35 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 01:57:41 +0200
+Subject: [PATCH 15/20] Link with GTK libraries
+
+Otherwise the link fails with:
+
+    build/release/tmwxGUI/tmwxOptimizerDialog/tmwxOptimizerDialog_gtk.o:
+      undefined reference to symbol 'gtk_window_set_transient_for'
+    .../libgtk-3.so.0: error adding symbols: DSO missing from command line
+---
+ linux/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/linux/Makefile b/linux/Makefile
+index 20662e4..d29dd3a 100644
+--- a/linux/Makefile
++++ b/linux/Makefile
+@@ -86,7 +86,7 @@ INCCFLAGS = \
+ 	-I$(H2S)/tmwxGUI/tmwxLogFrame \
+ 	-I$(H2S)/tmwxGUI/tmwxOptimizerDialog \
+ 	-I$(H2S)/tmwxGUI/tmwxHtmlHelp \
+-	`pkg-config gtk+-2.0 --cflags`
++	`pkg-config gtk+-3.0 --cflags`
+ 
+ #--- Source files (not all binaries need all of them)
+ PTRSRC =$(H2S)/tmModel/tmPtrClasses/tmDpptrTarget.cpp
+@@ -259,7 +259,7 @@ APP = $(BUILDROOT)/$(PROGRAM)
+ $(APP): $(OBJS)
+ 	@echo Linking TreeMaker \($(PROGRAM)\)
+ 	@$(CXX) -o $(APP) -L../tmModel $(OBJS) $(CFLAGS) \
+-	$(H2S)/tmHeader.cpp `$(WXCONFIG) --libs`
++	$(H2S)/tmHeader.cpp `$(WXCONFIG) --libs` `pkg-config gtk+-3.0 --libs`
+ 
+ #--- Auxiliary and optional targets
+ 

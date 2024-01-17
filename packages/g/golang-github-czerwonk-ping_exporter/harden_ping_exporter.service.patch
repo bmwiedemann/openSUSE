@@ -1,0 +1,15 @@
+Index: golang-github-czerwonk-ping_exporter-0.4.5/dist/ping_exporter.service
+===================================================================
+--- golang-github-czerwonk-ping_exporter-0.4.5.orig/dist/ping_exporter.service
++++ golang-github-czerwonk-ping_exporter-0.4.5/dist/ping_exporter.service
+@@ -21,6 +21,10 @@ DevicePolicy=closed
+ RestrictNamespaces=yes
+ RestrictRealtime=yes
+ RestrictSUIDSGID=yes
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectKernelLogs=true
++# end of automatic additions 
+ MemoryDenyWriteExecute=yes
+ LockPersonality=yes
+ 

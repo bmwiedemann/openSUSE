@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="250">
+    <srcmd5>8e852b22237ef9137e76f4cba3a8a072</srcmd5>
+    <version>1.2.5</version>
+    <time>1168901425</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5135caa018fe0d45b386af99593094aa</srcmd5>
+    <version>1.2.6</version>
+    <time>1172928999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="36">
+    <srcmd5>0105899f27a295ce7750b5f5c9cf662c</srcmd5>
+    <version>1.2.6</version>
+    <time>1185149984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>190650071a558fdaf0b38202d71f1ad1</srcmd5>
+    <version>1.2.7</version>
+    <time>1185494973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="150">
+    <srcmd5>190650071a558fdaf0b38202d71f1ad1</srcmd5>
+    <version>1.2.7</version>
+    <time>1185494973</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="151">
+    <srcmd5>022bfcde74bbac82d40e75468fb366b4</srcmd5>
+    <version>1.2.7</version>
+    <time>1235953821</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="152">
+    <srcmd5>b4cf09ef378f625ba52a7a4af4e35b98</srcmd5>
+    <version>1.2.7</version>
+    <time>1243547496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="153">
+    <srcmd5>6dc169e7cb5f442571a644e552a9fb02</srcmd5>
+    <version>1.2.7</version>
+    <time>1254961084</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_net based on submit request 22003 from user prusnak
+</comment>
+  </revision>
+  <revision rev="9" vrev="155">
+    <srcmd5>6dc169e7cb5f442571a644e552a9fb02</srcmd5>
+    <version>1.2.7</version>
+    <time>1254961084</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_net based on submit request 22003 from user prusnak
+</comment>
+  </revision>
+  <revision rev="10" vrev="156">
+    <srcmd5>9555d2838a5361d540ae1a42b103c67c</srcmd5>
+    <version>1.2.7</version>
+    <time>1261824239</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_net based on submit request 27598 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="157">
+    <srcmd5>c9796c93a8336e84c2471097f0cce464</srcmd5>
+    <version>1.2.7</version>
+    <time>1268922819</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="159">
+    <srcmd5>c9796c93a8336e84c2471097f0cce464</srcmd5>
+    <version>1.2.7</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="160">
+    <srcmd5>c9796c93a8336e84c2471097f0cce464</srcmd5>
+    <version>1.2.7</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="163">
+    <srcmd5>c9796c93a8336e84c2471097f0cce464</srcmd5>
+    <version>1.2.7</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="164">
+    <srcmd5>7a5e836bac91ef8ca706c1bd66dfc3a1</srcmd5>
+    <version>1.2.7</version>
+    <time>1316438980</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+
+- Update baselibs.conf to also ship libSDL_net-devel-32bit
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)</comment>
+    <requestid>83186</requestid>
+  </revision>
+  <revision rev="16" vrev="166">
+    <srcmd5>7a5e836bac91ef8ca706c1bd66dfc3a1</srcmd5>
+    <version>1.2.7</version>
+    <time>1319181757</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="167">
+    <srcmd5>3a8a673b5fda31957a9a4c4f1f9d3e89</srcmd5>
+    <version>1.2.7</version>
+    <time>1323194581</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="169">
+    <srcmd5>3a8a673b5fda31957a9a4c4f1f9d3e89</srcmd5>
+    <version>1.2.7</version>
+    <time>1340183157</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="171">
+    <srcmd5>3a8a673b5fda31957a9a4c4f1f9d3e89</srcmd5>
+    <version>1.2.7</version>
+    <time>1359108627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>09845e1a3408a98e268b5c39cf714008</srcmd5>
+    <version>1.2.8</version>
+    <time>1376402142</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 1.2.8</comment>
+    <requestid>186942</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9abcde75a3939ace475079a6e5eb55f8</srcmd5>
+    <version>1.2.8</version>
+    <time>1376903586</time>
+    <user>scarabeus_factory</user>
+    <comment>- Some metadata spruce-up: add current URLs, softer wildcarding
+  in the files list, more robust make install call (forwarded request 188151 from jengelh)</comment>
+    <requestid>195364</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>9abcde75a3939ace475079a6e5eb55f8</srcmd5>
+    <version>1.2.8</version>
+    <time>1379661927</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>9abcde75a3939ace475079a6e5eb55f8</srcmd5>
+    <version>1.2.8</version>
+    <time>1409300448</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>9a602cb69e9efebdebddcdbe0c7207db</srcmd5>
+    <version>1.2.8</version>
+    <time>1420754598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>280334</requestid>
+  </revision>
+</revisionlist>

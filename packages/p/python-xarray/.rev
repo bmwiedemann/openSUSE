@@ -1,0 +1,1446 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d16b342c66fbbbbe85f4f8d2c9db4d9</srcmd5>
+    <version>0.10.3</version>
+    <time>1524576685</time>
+    <user>dimstar_suse</user>
+    <comment>for openSUSE:Factory:Staging:adi:14 fixing build there</comment>
+    <requestid>596516</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc3b8a875831af23d88f4662c09a2308</srcmd5>
+    <version>0.10.4</version>
+    <time>1527582897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610879</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a77533e8919a790f4bf5b1ab1937cbbe</srcmd5>
+    <version>0.10.7</version>
+    <time>1530304032</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.10.7:
+ * Enhancements:
+  * Plot labels now make use of metadata that follow CF conventions (:issue:`2135`). By Deepak Cherian and Ryan Abernathey.
+  * Line plots now support facetting with row and col arguments (:issue:`2107`). By Yohai Bar Sinai.
+  * :py:meth:`~xarray.DataArray.interp` and :py:meth:`~xarray.Dataset.interp` methods are newly added. See :ref:`interpolating values with interp` for the detail. (:issue:`2079`) By Keisuke Fujii.
+ * Bug fixes:
+  * Fixed a bug in rasterio backend which prevented use with distributed. The rasterio backend now returns pickleable objects (:issue:`2021`).
+- update to version 0.10.6:
+ * Enhancements:
+  * New PseudoNetCDF backend for many Atmospheric data formats including GEOS-Chem, CAMx, NOAA arlpacked bit and many others. See :ref:`io.PseudoNetCDF` for more details. By Barron Henderson.
+  * The :py:class:`Dataset` constructor now aligns :py:class:`DataArray` arguments in data_vars to indexes set explicitly in coords, where previously an error would be raised. (:issue:`674`) By Maximilian Roos.
+  * :py:meth:`~DataArray.sel`, :py:meth:`~DataArray.isel` &amp; :py:meth:`~DataArray.reindex`, (and their :py:class:`Dataset` counterparts) now support supplying a dict as a first argument, as an alternative to the existing approach of supplying kwargs. This allows for more robust behavior of dimension names which conflict with other keyword names, or are not strings. By Maximilian Roos.
+  * :py:meth:`~DataArray.rename` now supports supplying **kwargs, as an alternative to the existing approach of supplying a dict as the first argument. By Maximilian Roos.
+  * :py:meth:`~DataArray.cumsum` and :py:meth:`~DataArray.cumprod` now support aggregation over multiple dimensions at the same time. This is the default behavior when dimensions are not specified (previously this raised an error). By Stephan Hoyer
+  * :py:meth:`DataArray.dot` and :py:func:`dot` are partly supported with older dask&lt;0.17.4. (related to :issue:`2203`) By Keisuke Fujii.
+  * Xarray now uses Versioneer to manage its version strings. (:issue:`1300`). By Joe Hamman.
+ * Bug fixes:
+  * Fixed a regression in 0.10.4, where explicitly specifying dtype='S1' or dtype=str in encoding with to_netcdf() raised an error (:issue:`2149`). Stephan Hoyer
+  * :py:func:`apply_ufunc` now directly validates output variables (:issue:`1931`). By Stephan Hoyer.
+  * Fixed a bug where to_netcdf(..., unlimited_dims='bar') yielded NetCDF files with spurious 0-length dimensions (i.e. b, a, and r) (:issue:`2134`). By Joe Hamman.
+  * Removed spurious warnings with Dataset.update(Dataset) (:issue:`2161`) and array.equals(array) when array contains NaT (:issue:`2162`). By Stephan Hoyer.
+  * Aggregations with :py:meth:`Dataset.reduce` (including mean, sum, etc) no longer drop unrelated coordinates (:issue:`1470`). Also fixed a bug where non-scalar data-variables that did not include the aggregation dimension were improperly skipped. By Stephan Hoyer
+  * Fix :meth:`~DataArray.stack` with non-unique coordinates on pandas 0.23 (:issue:`2160`). By Stephan Hoyer
+  * Selecting data indexed by a length-1 CFTimeIndex with a slice of strings now behaves as it does when using a length-1 DatetimeIndex (i.e. it no longer falsely returns an empty array when the slice includes the value in the index) (:issue:`2165`). By Spencer Clark.
+  * Fix DataArray.groupby().reduce() mutating coordinates on the input array when grouping over dimension coordinates with duplicated entries (:issue:`2153`). By Stephan Hoyer
+  * Fix Dataset.to_netcdf() cannot create group with engine=&quot;h5netcdf&quot; (:issue:`2177`). By Stephan Hoyer
+- update to version 0.10.4:
+  * Documentation
+    + New FAQ entry, What other projects leverage xarray?. By Deepak
+      Cherian.
+    + Assigning values with indexing now includes examples on how to
+      select and assign values to a DataArray with .loc. By Chiara
+      Lepore.
+  * Enhancements
+    + Add an option for using a CFTimeIndex for indexing times with
+      non-standard calendars and/or outside the Timestamp-valid range;
+      this index enables a subset of the functionality of a standard
+      pandas.DatetimeIndex. See Non-standard calendars and dates
+      outside the Timestamp-valid range for full details. (GH789,
+      GH1084, GH1252) By Spencer Clark with help from Stephan Hoyer.
+    + Allow for serialization of cftime.datetime objects (GH789,
+      GH1084, GH2008, GH1252) using the standalone cftime library. By
+      Spencer Clark.
+    + Support writing lists of strings as netCDF attributes
+      (GH2044). By Dan Nowacki.
+    + to_netcdf() with engine='h5netcdf' now accepts h5py encoding
+      settings compression and compression_opts, along with the
+      NetCDF4-Python style settings gzip=True and complevel. This
+      allows using any compression plugin installed in hdf5, e.g. LZF
+      (GH1536). By Guido Imperiale.
+    + dot() on dask-backed data will now call
+      dask.array.einsum(). This greatly boosts speed and allows
+      chunking on the core dims. The function now requires dask &gt;=
+      0.17.3 to work on dask-backed data (GH2074). By Guido Imperiale.
+    + plot.line() learned new kwargs: xincrease, yincrease that change
+      the direction of the respective axes. By Deepak Cherian.
+    + Added the parallel option to open_mfdataset(). This option uses
+      dask.delayed to parallelize the open and preprocessing steps
+      within open_mfdataset. This is expected to provide performance
+      improvements when opening many files, particularly when used in
+      conjunction with dask’s multiprocessing or distributed
+      schedulers (GH1981). By Joe Hamman.
+    + New compute option in to_netcdf(), to_zarr(), and
+      save_mfdataset() to allow for the lazy computation of netCDF and
+      zarr stores. This feature is currently only supported by the
+      netCDF4 and zarr backends. (GH1784). By Joe Hamman.
+  * Bug fixes
+    + ValueError is raised when coordinates with the wrong size are
+      assigned to a DataArray. (GH2112) By Keisuke Fujii.
+    + Fixed a bug in rolling() with bottleneck. Also, fixed a bug in
+      rolling an integer dask array. (GH2113) By Keisuke Fujii.
+    + Fixed a bug where keep_attrs=True flag was neglected if
+      apply_ufunc() was used with Variable. (GH2114) By Keisuke Fujii.
+    + When assigning a DataArray to Dataset, any conflicted
+      non-dimensional coordinates of the DataArray are now
+      dropped. (GH2068) By Keisuke Fujii.
+    + Better error handling in open_mfdataset (GH2077). By Stephan
+      Hoyer.
+    + plot.line() does not call autofmt_xdate() anymore. Instead it
+      changes the rotation and horizontal alignment of labels without
+      removing the x-axes of any other subplots in the figure (if
+      any). By Deepak Cherian.
+    + Colorbar limits are now determined by excluding ±Infs too. By
+      Deepak Cherian.
+    + Fixed to_iris to maintain lazy dask array after conversion
+      (GH2046). By Alex Hilson and Stephan Hoyer.
+- changes from version 0.10.3:
+  * Enhancements
+    + isin() and isin() methods, which test each value in the array
+      for whether it is contained in the supplied list, returning a
+      bool array. See Selecting values with isin for full
+      details. Similar to the np.isin function. By Maximilian Roos.
+    + Some speed improvement to construct DataArrayRolling object
+      (GH1993) By Keisuke Fujii.
+    + Handle variables with different values for missing_value and
+      _FillValue by masking values for both attributes; previously
+      this resulted in a ValueError. (GH2016) By Ryan May.
+  * Bug fixes
+    + Fixed decode_cf function to operate lazily on dask arrays
+      (GH1372). By Ryan Abernathey.
+    + Fixed labeled indexing with slice bounds given by xarray objects
+      with datetime64 or timedelta64 dtypes (GH1240). By Stephan
+      Hoyer.
+    + Attempting to convert an xarray.Dataset into a numpy array now
+      raises an informative error message. By Stephan Hoyer.
+    + Fixed a bug in decode_cf_datetime where int32 arrays weren’t
+      parsed correctly (GH2002). By Fabien Maussion.
+    + When calling xr.auto_combine() or xr.open_mfdataset() with a
+      concat_dim, the resulting dataset will have that one-element
+      dimension (it was silently dropped, previously) (GH1988). By Ben
+      Root.
+- temporarily deactivated tests because of minor issues with netCDF library
+  see https://github.com/pydata/xarray/issues/2050
+- update to version 0.10.3:
+ * Enhancements
+  - :py:meth:`~xarray.DataArray.isin` and :py:meth:`~xarray.Dataset.isin` methods,
+    which test each value in the array for whether it is contained in the
+    supplied list, returning a bool array. See :ref:`selecting values with isin`
+    for full details. Similar to the ``np.isin`` function.
+    By `Maximilian Roos &lt;https://github.com/maxim-lian&gt;`_.
+  - Some speed improvement to construct :py:class:`~xarray.DataArrayRolling`
+    object (:issue:`1993`)
+    By `Keisuke Fujii &lt;https://github.com/fujiisoup&gt;`_.
+  - Handle variables with different values for ``missing_value`` and
+    ``_FillValue`` by masking values for both attributes; previously this
+    resulted in a ``ValueError``. (:issue:`2016`)
+    By `Ryan May &lt;https://github.com/dopplershift&gt;`_.
+ * Bug fixes
+  - Fixed ``decode_cf`` function to operate lazily on dask arrays
+    (:issue:`1372`). By `Ryan Abernathey &lt;https://github.com/rabernat&gt;`_.
+  - Fixed labeled indexing with slice bounds given by xarray objects with
+    datetime64 or timedelta64 dtypes (:issue:`1240`).
+    By `Stephan Hoyer &lt;https://github.com/shoyer&gt;`_.
+  - Attempting to convert an xarray.Dataset into a numpy array now raises an
+    informative error message.
+    By `Stephan Hoyer &lt;https://github.com/shoyer&gt;`_.
+  - Fixed a bug in decode_cf_datetime where ``int32`` arrays weren't parsed
+    correctly (:issue:`2002`).
+    By `Fabien Maussion &lt;https://github.com/fmaussion&gt;`_.
+  - When calling `xr.auto_combine()` or `xr.open_mfdataset()` with a `concat_dim`,
+    the resulting dataset will have that one-element dimension (it was
+    silently dropped, previously) (:issue:`1988`).
+    By `Ben Root &lt;https://github.com/WeatherGod&gt;`_.
+- update to version 0.10.2:
+  * Backwards incompatible changes
+    + The addition of __array_ufunc__ for xarray objects (see below)
+      means that NumPy ufunc methods (e.g., np.add.reduce) that
+      previously worked on xarray.DataArray objects by converting them
+      into NumPy arrays will now raise NotImplementedError instead. In
+      all cases, the work-around is simple: convert your objects
+      explicitly into NumPy arrays before calling the ufunc (e.g.,
+      with .values).
+  * Enhancements
+    + Added dot(), equivalent to np.einsum(). Also, dot() now supports
+      dims option, which specifies the dimensions to sum
+      over. (GH1951) By Keisuke Fujii.
+    + Support for writing xarray datasets to netCDF files (netcdf4
+      backend only) when using the dask.distributed scheduler
+      (GH1464). By Joe Hamman.
+    + Support lazy vectorized-indexing. After this change, flexible
+      indexing such as orthogonal/vectorized indexing, becomes
+      possible for all the backend arrays. Also, lazy transpose is now
+      also supported. (GH1897) By Keisuke Fujii.
+    + Implemented NumPy’s __array_ufunc__ protocol for all xarray
+      objects (GH1617). This enables using NumPy ufuncs directly on
+      xarray.Dataset objects with recent versions of NumPy (v1.13 and
+      newer):
+         In [1]: ds = xr.Dataset({'a': 1})
+         In [2]: np.sin(ds)
+         Out[2]:
+         &lt;xarray.Dataset&gt;
+         Dimensions:  ()
+         Data variables:
+             a        float64 0.8415
+      This obliviates the need for the xarray.ufuncs module, which
+      will be deprecated in the future when xarray drops support for
+      older versions of NumPy. By Stephan Hoyer.
+    + Improve rolling() logic. DataArrayRolling() object now supports
+      construct() method that returns a view of the DataArray /
+      Dataset object with the rolling-window dimension added to the
+      last axis. This enables more flexible operation, such as strided
+      rolling, windowed rolling, ND-rolling, short-time FFT and
+      convolution. (GH1831, GH1142, GH819) By Keisuke Fujii.
+    + line() learned to make plots with data on x-axis if so
+      specified. (GH575) By Deepak Cherian.
+  * Bug fixes
+    + Raise an informative error message when using apply_ufunc with
+      numpy v1.11 (GH1956). By Stephan Hoyer.
+    + Fix the precision drop after indexing datetime64 arrays
+      (GH1932). By Keisuke Fujii.
+    + Silenced irrelevant warnings issued by open_rasterio
+      (GH1964). By Stephan Hoyer.
+    + Fix kwarg colors clashing with auto-inferred cmap (GH1461) By
+      Deepak Cherian.
+    + Fix imshow() error when passed an RGB array with size one in a
+      spatial dimension. By Zac Hatfield-Dodds.
+- Replace future goals and aims by present capabilities.
+- update to version 0.10.1:
+ * please see upstream changelog at: https://github.com/pydata/xarray/blob/v0.10.1/doc/whats-new.rst
+- remove check boundary condition
+- run spec-cleaner
+- use %license for license
+- Implement single-spec version
+- Update to 0.9.6
+  * Please see changelog at:
+    https://github.com/pydata/xarray/blob/v0.9.6/doc/whats-new.rst
+- Rename package to python3-xray to match upstream naming.
+- update to version 0.7.0:
+  * The project formerly known as &quot;xray&quot; is now &quot;xarray&quot;, pronounced &quot;x-array&quot;!
+    This avoids a namespace conflict with the entire field of x-ray science. Renaming
+    our project seemed like the right thing to do, especially because some
+    scientists who work with actual x-rays are interested in using this project in
+    their work. Thanks for your understanding and patience in this transition. 
+  * Breaking changes
+    - The internal data model used by :py:class:`~xray.DataArray` has been
+      rewritten to fix several outstanding issues. Internally, ``DataArray``
+      is now implemented in terms of ``._variable`` and ``._coords`` 
+      attributes instead of holding variables in a ``Dataset`` object.
+    - It is no longer possible to convert a DataArray to a Dataset with
+      :py:meth:`xray.DataArray.to_dataset` if it is unnamed. This will now
+      raise ``ValueError``. If the array is unnamed, you need to supply the
+      ``name`` argument.
+  * Enhancements
+    - Basic support for :py:class:`~pandas.MultiIndex` coordinates on xray objects, including
+      indexing, :py:meth:`~DataArray.stack` and :py:meth:`~DataArray.unstack`:
+    - Support for reading GRIB, HDF4 and other file formats via PyNIO_. See
+      :ref:`io.pynio` for more details.
+    - Better error message when a variable is supplied with the same name as
+      one of its dimensions.
+    - Plotting: more control on colormap parameters (:issue:`642`). ``vmin`` and
+      ``vmax`` will not be silently ignored anymore. Setting ``center=False``
+      prevents automatic selection of a divergent colormap.
+    - New :py:meth:`~xray.Dataset.shift` and :py:meth:`~xray.Dataset.roll` methods
+      for shifting/rotating datasets or arrays along a dimension
+    - Assigning a ``pandas`` object directly as a ``Dataset`` variable is now permitted. Its
+      index names correspond to the ``dims`` of the ``Dataset``, and its data is aligned.
+    - Passing a :py:class:`pandas.DataFrame` or :py:class:`pandas.Panel` to a Dataset constructor
+      is now permitted.
+    - New function :py:func:`~xray.broadcast` for explicitly broadcasting
+      ``DataArray`` and ``Dataset`` objects against each other. 
+  * Bug fixes
+    - Fixes for several issues found on ``DataArray`` objects with the same name
+      as one of their coordinates (see :ref:`v0.7.0.breaking` for more details).
+    - ``DataArray.to_masked_array`` always returns masked array with mask being an
+      array (not a scalar value) (:issue:`684`)
+    - Allows for (imperfect) repr of Coords when underlying index is PeriodIndex (:issue:`645`).
+    - Fixes for several issues found on ``DataArray`` objects with the same name
+      as one of their coordinates (see :ref:`v0.7.0.breaking` for more details).
+    - Attempting to assign a ``Dataset`` or ``DataArray`` variable/attribute using
+      attribute-style syntax (e.g., ``ds.foo = 42``) now raises an error rather
+      than silently failing (:issue:`656`, :issue:`714`).
+    - You can now pass pandas objects with non-numpy dtypes (e.g., ``categorical``
+      or ``datetime64`` with a timezone) into xray without an error
+      (:issue:`716`).
+- update to version 0.6.1:
+  * The handling of colormaps and discrete color lists for 2D plots in
+    :py:meth:`~xray.DataArray.plot` was changed to provide more
+    compatibility with matplotlib's contour and contourf functions
+    (:issue:`538`). Now discrete lists of colors should be specified
+    using colors keyword, rather than cmap.
+  * Faceted plotting through :py:class:`~xray.plot.FacetGrid` and the
+    :py:meth:`~xray.plot.plot` method. See :ref:`plotting.faceting`
+    for more details and examples.
+  * :py:meth:`~xray.Dataset.sel` and :py:meth:`~xray.Dataset.reindex`
+    now support the tolerance argument for controlling
+    nearest-neighbor selection (:issue:`629`):
+    This feature requires pandas v0.17 or newer.
+  * New encoding argument in :py:meth:`~xray.Dataset.to_netcdf` for
+    writing netCDF files with compression, as described in the new
+    documentation section on :ref:`io.netcdf.writing_encoded`.
+  * Add :py:attr:`~xray.Dataset.real` and
+    :py:attr:`~xray.Dataset.imag` attributes to Dataset and DataArray
+    (:issue:`553`).
+  * More informative error message with
+    :py:meth:`~xray.Dataset.from_dataframe` if the frame has duplicate
+    columns.
+  * xray now uses deterministic names for dask arrays it creates or
+    opens from disk. This allows xray users to take advantage of
+    dask's nascent support for caching intermediate computation
+    results. See :issue:`555` for an example.
+  * Forwards compatibility with the latest pandas release
+    (v0.17.0). We were using some internal pandas routines for
+    datetime conversion, which unfortunately have now changed upstream
+    (:issue:`569`).
+  * Aggregation functions now correctly skip NaN for data for
+    complex128 dtype (:issue:`554`).
+  * Fixed indexing 0d arrays with unicode dtype (:issue:`568`).
+  * :py:meth:`~xray.DataArray.name` and Dataset keys must be a string
+    or None to be written to netCDF (:issue:`533`).
+  * :py:meth:`~xray.DataArray.where` now uses dask instead of numpy if
+    either the array or other is a dask array. Previously, if other
+    was a numpy array the method was evaluated eagerly.
+  * Global attributes are now handled more consistently when loading
+    remote datasets using engine='pydap' (:issue:`574`).
+  * It is now possible to assign to the .data attribute of DataArray
+    objects.
+  * coordinates attribute is now kept in the encoding dictionary after
+    decoding (:issue:`610`).
+  * Compatibility with numpy 1.10 (:issue:`617
+- update to version 0.6.0:
+  * Plotting methods have been implemented on DataArray objects
+    :py:meth:`~xray.DataArray.plot` through integration with matplotlib
+    (:issue:`185`). For an introduction, see :ref:`plotting`.
+  * Variables in netCDF files with multiple missing values are now decoded as
+    NaN after issuing a warning if open_dataset is called with
+    mask_and_scale=True.
+  * We clarified our rules for when the result from an xray operation is a copy
+    vs. a view (see :ref:`copies vs views` for more details).
+  * Dataset variables are now written to netCDF files in order of appearance
+    when using the netcdf4 backend (:issue:`479`).
+  * Added :py:meth:`~xray.Dataset.isel_points` and
+    :py:meth:`~xray.Dataset.sel_points` to support pointwise indexing of
+    Datasets and DataArrays (:issue:`475`).
+  * New :py:meth:`~xray.Dataset.where` method for masking xray objects
+    according to some criteria. This works particularly well with
+    multi-dimensional data:
+  * Added new methods :py:meth:`DataArray.diff &lt;xray.DataArray.diff&gt;` and
+    :py:meth:`Dataset.diff &lt;xray.Dataset.diff&gt;` for finite difference
+    calculations along a given axis.
+  * New :py:meth:`~xray.DataArray.to_masked_array` convenience method for
+    returning a numpy.ma.MaskedArray.
+  * Added new flag &quot;drop_variables&quot; to :py:meth:`~xray.open_dataset` for
+    excluding variables from being parsed. This may be useful to drop variables
+    with problems or inconsistent values.
+  * Fixed aggregation functions (e.g., sum and mean) on big-endian arrays when
+    bottleneck is installed (:issue:`489`).
+  * Dataset aggregation functions dropped variables with unsigned integer dtype
+    (:issue:`505`).
+  * .any() and .all() were not lazy when used on xray objects containing dask
+    arrays.
+  * Fixed an error when attempting to saving datetime64 variables to netCDF
+    files when the first element is NaT (:issue:`528`).
+  * Fix pickle on DataArray objects (:issue:`515`).
+  * Fixed unnecessary coercion of float64 to float32 when using netcdf3 and
+    netcdf4_classic formats (:issue:`526`).
+- Initial version
+</comment>
+    <requestid>617154</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>62f2b25bd1d9eb42b46c2617533f88fb</srcmd5>
+    <version>0.10.8</version>
+    <time>1532361670</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * updated dependencies according to setup.py
+  * removed devel dependency (noarch)
+  * be more specific in %files section
+- update to version 0.10.8:
+  * Xarray no longer supports python 3.4. Additionally, the minimum
+    supported versions of the following dependencies has been updated
+    and/or clarified:
+    + Pandas: 0.18 -&gt; 0.19
+    + NumPy: 1.11 -&gt; 1.12
+    + Dask: 0.9 -&gt; 0.16
+    + Matplotlib: unspecified -&gt; 1.5
+    (:issue:`2204`). By Joe Hamman.
+  * Enhancements
+    + :py:meth:`~xarray.DataArray.interp_like` and
+      :py:meth:`~xarray.Dataset.interp_like` methods are newly
+      added. (:issue:`2218`) By Keisuke Fujii.
+    + Added support for curvilinear and unstructured generic grids to
+      :py:meth:`~xarray.DataArray.to_cdms2` and
+      :py:meth:`~xarray.DataArray.from_cdms2` (:issue:`2262`). By
+      Stephane Raynaud.
+  * Bug fixes
+    + Fixed a bug in zarr backend which prevented use with datasets
+      with incomplete chunks in multiple dimensions
+      (:issue:`2225`). By Joe Hamman.
+    + Fixed a bug in :py:meth:`~Dataset.to_netcdf` which prevented
+      writing datasets when the arrays had different chunk sizes
+      (:issue:`2254`). By Mike Neish.
+    + Fixed masking during the conversion to cdms2 objects by
+      :py:meth:`~xarray.DataArray.to_cdms2` (:issue:`2262`). By</comment>
+    <requestid>624539</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>43098a3b236767a1e1031fcb42653180</srcmd5>
+    <version>0.10.9</version>
+    <time>1538374626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.10.9:
+  * Enhancements
+    + differentiate() and differentiate() are newly added. (GH1332) By
+      Keisuke Fujii.
+    + Default colormap for sequential and divergent data can now be
+      set via set_options() (GH2394) By Julius Busecke.
+    + min_count option is newly supported in sum(), prod() and sum(),
+      and prod(). (GH2230) By Keisuke Fujii.
+    + plot() now accepts the kwargs xscale, yscale, xlim, ylim,
+      xticks, yticks just like Pandas. Also xincrease=False,
+      yincrease=False now use matplotlib’s axis inverting methods
+      instead of setting limits. By Deepak Cherian. (GH2224)
+    + DataArray coordinates and Dataset coordinates and data variables
+      are now displayed as a b … y z rather than a b c d …. (GH1186)
+      By Seth P.
+    + A new CFTimeIndex-enabled cftime_range() function for use in
+      generating dates from standard or non-standard calendars. By
+      Spencer Clark.
+    + When interpolating over a datetime64 axis, you can now provide a
+      datetime string instead of a datetime64
+      object. E.g. da.interp(time='1991-02-01') (GH2284) By Deepak
+      Cherian.
+    + A clear error message is now displayed if a set or dict is
+      passed in place of an array (GH2331) By Maximilian Roos.
+    + Applying unstack to a large DataArray or Dataset is now much
+      faster if the MultiIndex has not been modified after stacking
+      the indices. (GH1560) By Maximilian Maahn.
+    + You can now control whether or not to offset the coordinates
+      when using the roll method and the current behavior, coordinates
+      rolled by default, raises a deprecation warning unless</comment>
+    <requestid>638355</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4bbac38472bbe987d4404a883d10772d</srcmd5>
+    <version>0.11.0</version>
+    <time>1542202998</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.11.0
+  * Enhancements
+    + xarray.DataArray.plot.line() can now accept multidimensional 
+      coordinate variables as input. hue must be a dimension name 
+      in this case. (GH2407) By Deepak Cherian.
+    + Added support for Python 3.7. (GH2271). By Joe Hamman.
+    + Added support for plotting data with pandas.Interval coordinates, 
+      such as those created by groupby_bins() By Maximilian Maahn.
+    + Added shift() for shifting the values of a CFTimeIndex by a 
+      specified frequency. (GH2244). By Spencer Clark.
+    + Added support for using cftime.datetime coordinates with 
+      differentiate(), differentiate(), interp(), and interp(). 
+      By Spencer Clark
+    + There is now a global option to either always keep or always 
+      discard dataset and dataarray attrs upon operations. The option 
+      is set with xarray.set_options(keep_attrs=True), and the default 
+      is to use the old behaviour. By Tom Nicholas.
+    + Added a new backend for the GRIB file format based on ECMWF 
+      cfgrib python driver and ecCodes C-library. (GH2475) By 
+      Alessandro Amici, sponsored by ECMWF.
+    + Resample now supports a dictionary mapping from dimension to 
+      frequency as its first argument, e.g., 
+      data.resample({'time': '1D'}).mean(). This is consistent with 
+      other xarray functions that accept either dictionaries or 
+      keyword arguments. By Stephan Hoyer.
+    + The preferred way to access tutorial data is now to load it 
+      lazily with xarray.tutorial.open_dataset(). 
+      xarray.tutorial.load_dataset() calls Dataset.load() prior to 
+      returning (and is now deprecated). This was changed in order 
+      to facilitate using tutorial datasets with dask. By Joe Hamman. (forwarded request 648746 from mcalabkova)</comment>
+    <requestid>648780</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c879882eb1852113b8cc0fbac77760d7</srcmd5>
+    <version>0.11.2</version>
+    <time>1548335681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.11.2:
+ - Removes inadvertently introduced setup dependency on pytest-runner (:issue:`2641`). Otherwise, this release is exactly equivalent to 0.11.1.
+ - Warning:
+  - This is the last xarray release that will support Python 2.7. Future releases will be Python 3 only, but older versions of xarray will always be available for Python 2.7 users. For the more details, see:
+- update to version 0.11.1:
+ - Breaking changes
+  - Minimum rasterio version increased from 0.36 to 1.0 (for open_rasterio)
+  - Time bounds variables are now also decoded according to CF conventions (:issue:`2565`). The previous behavior was to decode them only if they had specific time attributes, now these attributes are copied automatically from the corresponding time coordinate. This might brake downstream code that was relying on these variables to be not decoded. By Fabien Maussion.
+ - Enhancements
+  - Ability to read and write consolidated metadata in zarr stores (:issue:`2558`). By Ryan Abernathey.
+  - :py:class:`CFTimeIndex` uses slicing for string indexing when possible (like :py:class:`pandas.DatetimeIndex`), which avoids unnecessary copies. By Stephan Hoyer
+  - Enable passing rasterio.io.DatasetReader or rasterio.vrt.WarpedVRT to open_rasterio instead of file path string. Allows for in-memory reprojection, see (:issue:`2588`). By Scott Henderson.
+  - Like :py:class:`pandas.DatetimeIndex`, :py:class:`CFTimeIndex` now supports &quot;dayofyear&quot; and &quot;dayofweek&quot; accessors (:issue:`2597`). Note this requires a version of cftime greater than 1.0.2. By Spencer Clark.
+  - The option 'warn_for_unclosed_files' (False by default) has been added to allow users to enable a warning when files opened by xarray are deallocated but were not explicitly closed. This is mostly useful for debugging; we recommend enabling it in your test suites if you use xarray for IO. By Stephan Hoyer
+  - Support Dask HighLevelGraphs by Matthew Rocklin.
+  - :py:meth:`DataArray.resample` and :py:meth:`Dataset.resample` now supports the loffset kwarg just like Pandas. By Deepak Cherian
+  - Datasets are now guaranteed to have a 'source' encoding, so the source file name is always stored (:issue:`2550`). By Tom Nicholas.
+  - The apply methods for DatasetGroupBy, DataArrayGroupBy, DatasetResample and DataArrayResample now support passing positional arguments to the applied function as a tuple to the args argument. By Matti Eskelinen.
+  - 0d slices of ndarrays are now obtained directly through indexing, rather than extracting and wrapping a scalar, avoiding unnecessary copying. By Daniel Wennberg.
+  - Added support for fill_value with :py:meth:`~xarray.DataArray.shift` and :py:meth:`~xarray.Dataset.shift` By Maximilian Roos
+ - Bug fixes
+  - Ensure files are automatically closed, if possible, when no longer referenced by a Python variable (:issue:`2560`). By Stephan Hoyer
+  - Fixed possible race conditions when reading/writing to disk in parallel (:issue:`2595`). By Stephan Hoyer
+  - Fix h5netcdf saving scalars with filters or chunks (:issue:`2563`). By Martin Raspaud.
+  - Fix parsing of _Unsigned attribute set by OPENDAP servers. (:issue:`2583`). By Deepak Cherian
+  - Fix failure in time encoding when exporting to netCDF with versions of pandas less than 0.21.1 (:issue:`2623`). By Spencer Clark.
+  - Fix MultiIndex selection to update label and level (:issue:`2619`). By Keisuke Fujii.
+</comment>
+    <requestid>667881</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e7ff23c25d1f2e777ab3747a261616d8</srcmd5>
+    <version>0.11.3</version>
+    <time>1550151346</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.11.3
+- Fix build errors (forwarded request 674693 from TheBlackCat)</comment>
+    <requestid>674708</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8d8eeb7a55d5f11b5f340b7b3a3e16b7</srcmd5>
+    <version>0.12.0</version>
+    <time>1552902168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685723</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f5f751707cbf2986de83b394843c2a25</srcmd5>
+    <version>0.12.1</version>
+    <time>1557751718</time>
+    <user>dimstar_suse</user>
+    <comment>- Just use %pytest macro
+
+- Update to version 0.12.1:
+ - Enhancements
+  - Allow ``expand_dims`` method to support inserting/broadcasting dimensions
+    with size &gt; 1. (:issue:`2710`)
+ - Bug fixes
+  - Dataset.copy(deep=True) now creates a deep copy of the attrs (:issue:`2835`).
+  - Fix incorrect ``indexes`` resulting from various ``Dataset`` operations
+    (e.g., ``swap_dims``, ``isel``, ``reindex``, ``[]``) (:issue:`2842`,
+    :issue:`2856`).</comment>
+    <requestid>697053</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>583012943c41a6e97533b734224f0adf</srcmd5>
+    <version>0.12.1</version>
+    <time>1559375197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705797</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>572d33218210b2112ddb12a33b6bed2d</srcmd5>
+    <version>0.12.2</version>
+    <time>1562591495</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>713835</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0512fc6118cde6e72e9c2e5a2e7eaaf8</srcmd5>
+    <version>0.12.3</version>
+    <time>1563701626</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.12.3:
+ - New functions/methods:
+  - New methods :py:meth:`Dataset.to_stacked_array` and
+    :py:meth:`DataArray.to_unstacked_dataset` for reshaping Datasets of variables
+    with different dimensions
+    (:issue:`1317`).
+    This is useful for feeding data from xarray into machine learning models,
+    as described in :ref:`reshape.stacking_different`.
+ - Enhancements:
+  - Support for renaming ``Dataset`` variables and dimensions independently
+    with :py:meth:`~Dataset.rename_vars` and :py:meth:`~Dataset.rename_dims`
+    (:issue:`3026`).
+  - Add ``scales``, ``offsets``, ``units`` and ``descriptions``
+    attributes to :py:class:`~xarray.DataArray` returned by
+    :py:func:`~xarray.open_rasterio`. (:issue:`3013`)
+ - Bug fixes:
+  - Resolved deprecation warnings from newer versions of matplotlib and dask.
+  - Compatibility fixes for the upcoming pandas 0.25 and NumPy 1.17 releases.
+  - Fix summaries for multiindex coordinates (:issue:`3079`).
+  - Fix HDF5 error that could arise when reading multiple groups from a file at
+    once (:issue:`2954`).</comment>
+    <requestid>716615</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>662d253634a000e59507fc8e7106a7e0</srcmd5>
+    <version>0.12.3</version>
+    <time>1565097122</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>721128</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>01727a046895ebfe9bd2dedab5150a0f</srcmd5>
+    <version>0.13.0</version>
+    <time>1569851982</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>733869</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>93cfd0e874aad7f37a34f255828d310d</srcmd5>
+    <version>0.14.0</version>
+    <time>1571951498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742735</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>54aa50aabb0d015d634d9487f7fcd563</srcmd5>
+    <version>0.14.1</version>
+    <time>1574932395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750235</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c9c2dfd94459b8d07df152f8055a9f1e</srcmd5>
+    <version>0.15.0</version>
+    <time>1580990892</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.15.0:
+ - This release brings many improvements to xarray's documentation: our examples are now binderized notebooks (`click here &lt;https://mybinder.org/v2/gh/pydata/xarray/master?urlpath=lab/tree/doc/examples/weather-data.ipynb&gt;`_):
+ - and we have new example notebooks from our SciPy 2019 sprint (many thanks to our contributors!).:
+ - This release also features many API improvements such as a new:
+:py:class:`~core.accessor_dt.TimedeltaAccessor` and support for :py:class:`CFTimeIndex` in
+:py:meth:`~DataArray.interpolate_na`); as well as many bug fixes.
+ - Breaking changes:
+  - Bumped minimum tested versions for dependencies:
+    - numpy 1.15
+    - pandas 0.25
+    - dask 2.2
+    - distributed 2.2
+    - scipy 1.3
+  - Remove ``compat`` and ``encoding`` kwargs from ``DataArray``, which
+    have been deprecated since 0.12. (:pull:`3650`).
+    Instead, specify the ``encoding`` kwarg when writing to disk or set
+    the :py:attr:`DataArray.encoding` attribute directly.
+    By `Maximilian Roos &lt;https://github.com/max-sixty&gt;`_.
+  - :py:func:`xarray.dot`, :py:meth:`DataArray.dot`, and the ``@`` operator now
+    use ``align=&quot;inner&quot;`` (except when ``xarray.set_options(arithmetic_join=&quot;exact&quot;)``;
+    :issue:`3694`) by `Mathias Hauser &lt;https://github.com/mathause&gt;`_.
+ - New Features:
+  - :py:meth:`DataArray.sel` and :py:meth:`Dataset.sel` now support :py:class:`pandas.CategoricalIndex`. (:issue:`3669`)
+    By `Keisuke Fujii &lt;https://github.com/fujiisoup&gt;`_.
+  - Support using an existing, opened h5netcdf ``File`` with
+    :py:class:`~xarray.backends.H5NetCDFStore`. This permits creating an
+    :py:class:`~xarray.Dataset` from a h5netcdf ``File`` that has been opened
+    using other means (:issue:`3618`).
+    By `Kai Mühlbauer &lt;https://github.com/kmuehlbauer&gt;`_.
+  - Implement ``median`` and ``nanmedian`` for dask arrays. This works by rechunking
+    to a single chunk along all reduction axes. (:issue:`2999`).
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - :py:func:`~xarray.concat` now preserves attributes from the first Variable.
+    (:issue:`2575`, :issue:`2060`, :issue:`1614`)
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - :py:meth:`Dataset.quantile`, :py:meth:`DataArray.quantile` and ``GroupBy.quantile``
+    now work with dask Variables.
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Added the ``count`` reduction method to both :py:class:`~core.rolling.DatasetCoarsen`
+    and :py:class:`~core.rolling.DataArrayCoarsen` objects. (:pull:`3500`)
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_
+  - Add ``meta`` kwarg to :py:func:`~xarray.apply_ufunc`;
+    this is passed on to :py:func:`dask.array.blockwise`. (:pull:`3660`)
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Add ``attrs_file`` option in :py:func:`~xarray.open_mfdataset` to choose the
+    source file for global attributes in a multi-file dataset (:issue:`2382`,
+    :pull:`3498`). By `Julien Seguinot &lt;https://github.com/juseg&gt;`_.
+  - :py:meth:`Dataset.swap_dims` and :py:meth:`DataArray.swap_dims`
+    now allow swapping to dimension names that don't exist yet. (:pull:`3636`)
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Extend :py:class:`~core.accessor_dt.DatetimeAccessor` properties
+    and support ``.dt`` accessor for timedeltas
+    via :py:class:`~core.accessor_dt.TimedeltaAccessor` (:pull:`3612`)
+    By `Anderson Banihirwe &lt;https://github.com/andersy005&gt;`_.
+  - Improvements to interpolating along time axes (:issue:`3641`, :pull:`3631`).
+    By `David Huard &lt;https://github.com/huard&gt;`_.
+    - Support :py:class:`CFTimeIndex` in :py:meth:`DataArray.interpolate_na`
+    - define 1970-01-01 as the default offset for the interpolation index for both
+      :py:class:`pandas.DatetimeIndex` and :py:class:`CFTimeIndex`,
+    - use microseconds in the conversion from timedelta objects to floats to avoid
+      overflow errors.
+ - Bug fixes:
+  - Applying a user-defined function that adds new dimensions using :py:func:`apply_ufunc`
+    and ``vectorize=True`` now works with ``dask &gt; 2.0``. (:issue:`3574`, :pull:`3660`).
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Fix :py:meth:`~xarray.combine_by_coords` to allow for combining incomplete
+    hypercubes of Datasets (:issue:`3648`).  By `Ian Bolliger
+    &lt;https://github.com/bolliger32&gt;`_.
+  - Fix :py:func:`~xarray.combine_by_coords` when combining cftime coordinates
+    which span long time intervals (:issue:`3535`).  By `Spencer Clark
+    &lt;https://github.com/spencerkclark&gt;`_.
+  - Fix plotting with transposed 2D non-dimensional coordinates. (:issue:`3138`, :pull:`3441`)
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - :py:meth:`plot.FacetGrid.set_titles` can now replace existing row titles of a
+    :py:class:`~xarray.plot.FacetGrid` plot. In addition :py:class:`~xarray.plot.FacetGrid` gained
+    two new attributes: :py:attr:`~xarray.plot.FacetGrid.col_labels` and
+    :py:attr:`~xarray.plot.FacetGrid.row_labels` contain :py:class:`matplotlib.text.Text` handles for both column and
+    row labels. These can be used to manually change the labels.
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Fix issue with Dask-backed datasets raising a ``KeyError`` on some computations involving :py:func:`map_blocks` (:pull:`3598`).
+    By `Tom Augspurger &lt;https://github.com/TomAugspurger&gt;`_.
+  - Ensure :py:meth:`Dataset.quantile`, :py:meth:`DataArray.quantile` issue the correct error
+    when ``q`` is out of bounds (:issue:`3634`) by `Mathias Hauser &lt;https://github.com/mathause&gt;`_.
+  - Fix regression in xarray 0.14.1 that prevented encoding times with certain
+    ``dtype``, ``_FillValue``, and ``missing_value`` encodings (:issue:`3624`).
+    By `Spencer Clark &lt;https://github.com/spencerkclark&gt;`_
+  - Raise an error when trying to use :py:meth:`Dataset.rename_dims` to
+    rename to an existing name (:issue:`3438`, :pull:`3645`)
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - :py:meth:`Dataset.rename`, :py:meth:`DataArray.rename` now check for conflicts with
+    MultiIndex level names.
+  - :py:meth:`Dataset.merge` no longer fails when passed a :py:class:`DataArray` instead of a :py:class:`Dataset`.
+    By `Tom Nicholas &lt;https://github.com/TomNicholas&gt;`_.
+  - Fix a regression in :py:meth:`Dataset.drop`: allow passing any
+    iterable when dropping variables (:issue:`3552`, :pull:`3693`)
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Fixed errors emitted by ``mypy --strict`` in modules that import xarray.
+    (:issue:`3695`) by `Guido Imperiale &lt;https://github.com/crusaderky&gt;`_.
+  - Allow plotting of binned coordinates on the y axis in :py:meth:`plot.line`
+    and :py:meth:`plot.step` plots (:issue:`3571`,
+    :pull:`3685`) by `Julien Seguinot &lt;https://github.com/juseg&gt;`_.
+ - Documentation:
+  - Switch doc examples to use `nbsphinx &lt;https://nbsphinx.readthedocs.io&gt;`_ and replace
+    ``sphinx_gallery`` scripts with Jupyter notebooks. (:pull:`3105`, :pull:`3106`, :pull:`3121`)
+    By `Ryan Abernathey &lt;https://github.com/rabernat&gt;`_.
+  - Added :doc:`example notebook &lt;examples/ROMS_ocean_model&gt;` demonstrating use of xarray with
+    Regional Ocean Modeling System (ROMS) ocean hydrodynamic model output. (:pull:`3116`)
+    By `Robert Hetland &lt;https://github.com/hetland&gt;`_.
+  - Added :doc:`example notebook &lt;examples/ERA5-GRIB-example&gt;` demonstrating the visualization of
+    ERA5 GRIB data. (:pull:`3199`)
+    By `Zach Bruick &lt;https://github.com/zbruick&gt;`_ and
+    `Stephan Siemen &lt;https://github.com/StephanSiemen&gt;`_.
+  - Added examples for :py:meth:`DataArray.quantile`, :py:meth:`Dataset.quantile` and
+    ``GroupBy.quantile``. (:pull:`3576`)
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Add new :doc:`example notebook &lt;examples/apply_ufunc_vectorize_1d&gt;` example notebook demonstrating
+    vectorization of a 1D function using :py:func:`apply_ufunc` , dask and numba.
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Added example for :py:func:`~xarray.map_blocks`. (:pull:`3667`)
+    By `Riley X. Brady &lt;https://github.com/bradyrx&gt;`_.
+ - Internal Changes:
+  - Make sure dask names change when rechunking by different chunk sizes. Conversely, make sure they
+    stay the same when rechunking by the same chunk size. (:issue:`3350`)
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - 2x to 5x speed boost (on small arrays) for :py:meth:`Dataset.isel`,
+    :py:meth:`DataArray.isel`, and :py:meth:`DataArray.__getitem__` when indexing by int,
+    slice, list of int, scalar ndarray, or 1-dimensional ndarray.
+    (:pull:`3533`) by `Guido Imperiale &lt;https://github.com/crusaderky&gt;`_.
+  - Removed internal method ``Dataset._from_vars_and_coord_names``,
+    which was dominated by ``Dataset._construct_direct``. (:pull:`3565`)
+    By `Maximilian Roos &lt;https://github.com/max-sixty&gt;`_.
+  - Replaced versioneer with setuptools-scm. Moved contents of setup.py to setup.cfg.
+    Removed pytest-runner from setup.py, as per deprecation notice on the pytest-runner
+    project. (:pull:`3714`) by `Guido Imperiale &lt;https://github.com/crusaderky&gt;`_.
+  - Use of isort is now enforced by CI.
+    (:pull:`3721`) by `Guido Imperiale &lt;https://github.com/crusaderky&gt;`_
+</comment>
+    <requestid>770348</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b73c555ccb0d1357f194fd13432a3ad2</srcmd5>
+    <version>0.15.1</version>
+    <time>1585484899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789448</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0c31e2a47e2b66de32faf09b3ea0be0e</srcmd5>
+    <version>0.15.1</version>
+    <time>1587467238</time>
+    <user>dimstar_suse</user>
+    <comment>- Package is py3 only -&gt; drop py2 dependency</comment>
+    <requestid>795672</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>03a594bdfa640c6174ffb59e6a320c5d</srcmd5>
+    <version>0.16.0</version>
+    <time>1595011832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821410</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8cdd3356b1cf506cba46365192bdf268</srcmd5>
+    <version>0.16.1</version>
+    <time>1601488470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838685</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>738b634dac7f9fb330e417bdde30ecca</srcmd5>
+    <version>0.16.2</version>
+    <time>1609111726</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>858872</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>98d2cc2894ff5b62e29566699c6bb5fc</srcmd5>
+    <version>0.16.2</version>
+    <time>1613427640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872502</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ea07c7091af59e558a7412005c71a93e</srcmd5>
+    <version>0.17.0</version>
+    <time>1615061980</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.17.0:
+ - This release brings a few important performance improvements, a wide range of:
+ - usability upgrades, lots of bug fixes, and some new features. These include:
+ - better ``cftime`` support, a new quiver plot, better ``unstack`` performance,:
+ - more efficient memory use in rolling operations, and some python packaging:
+ - improvements. We also have a few documentation improvements (and more planned!).:
+ - Many thanks to the 36 contributors to this release: Alessandro Amici, Anderson:
+ - Banihirwe, Aureliana Barghini, Ayrton Bourn, Benjamin Bean, Blair Bonnett, Chun:
+ - Ho Chow, DWesl, Daniel Mesejo-León, Deepak Cherian, Eric Keenan, Illviljan, Jens:
+ - Hedegaard Nielsen, Jody Klymak, Julien Seguinot, Julius Busecke, Kai Mühlbauer,:
+ - Leif Denby, Martin Durant, Mathias Hauser, Maximilian Roos, Michael Mann, Ray:
+ - Bell, RichardScottOZ, Spencer Clark, Tim Gates, Tom Nicholas, Yunus Sevinchan,:
+ - alexamici, aurghs, crusaderky, dcherian, ghislainp, keewis, rhkleijn:
+ - Breaking changes:
+  - xarray no longer supports python 3.6
+    The minimum version policy was changed to also apply to projects with irregular
+    releases. As a result, the minimum versions of some dependencies have changed:
+    ============ ====== ====
+    Package      Old    New
+    ============ ====== ====
+    Python       3.6    3.7
+    setuptools   38.4   40.4
+    numpy        1.15   1.17
+    pandas       0.25   1.0
+    dask         2.9    2.11
+    distributed  2.9    2.11
+    bottleneck   1.2    1.3
+    h5netcdf     0.7    0.8
+    iris         2.2    2.4
+    netcdf4      1.4    1.5
+    pseudonetcdf 3.0    3.1
+    rasterio     1.0    1.1
+    scipy        1.3    1.4
+    seaborn      0.9    0.10
+    zarr         2.3    2.4
+    ============ ====== ====
+    (:issue:`4688`, :pull:`4720`, :pull:`4907`, :pull:`4942`)
+  - As a result of :pull:`4684` the default units encoding for
+    datetime-like values (``np.datetime64[ns]`` or ``cftime.datetime``) will now
+    always be set such that ``int64`` values can be used.  In the past, no units
+    finer than &quot;seconds&quot; were chosen, which would sometimes mean that ``float64``
+    values were required, which would lead to inaccurate I/O round-trips.
+  - Variables referred to in attributes like ``bounds`` and ``grid_mapping``
+    can be set as coordinate variables. These attributes are moved to
+    :py:attr:`DataArray.encoding` from :py:attr:`DataArray.attrs`. This behaviour
+    is controlled by the ``decode_coords`` kwarg to :py:func:`open_dataset` and
+    :py:func:`open_mfdataset`.  The full list of decoded attributes is in
+    :ref:`weather-climate` (:pull:`2844`, :issue:`3689`)
+  - As a result of :pull:`4911` the output from calling :py:meth:`DataArray.sum`
+    or :py:meth:`DataArray.prod` on an integer array with ``skipna=True`` and a
+    non-None value for ``min_count`` will now be a float array rather than an
+    integer array.
+ - Deprecations:
+  - ``dim`` argument to :py:meth:`DataArray.integrate` is being deprecated in
+    favour of a ``coord`` argument, for consistency with :py:meth:`Dataset.integrate`.
+    For now using ``dim`` issues a ``FutureWarning``. It will be removed in
+    version 0.19.0 (:pull:`3993`).
+    By `Tom Nicholas &lt;https://github.com/TomNicholas&gt;`_.
+  - Deprecated ``autoclose`` kwargs from :py:func:`open_dataset` are removed (:pull:`4725`).
+    By `Aureliana Barghini &lt;https://github.com/aurghs&gt;`_.
+  - the return value of :py:meth:`Dataset.update` is being deprecated to make it work more
+    like :py:meth:`dict.update`. It will be removed in version 0.19.0 (:pull:`4932`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+ - New Features:
+  - :py:meth:`~xarray.cftime_range` and :py:meth:`DataArray.resample` now support
+    millisecond (``&quot;L&quot;`` or ``&quot;ms&quot;``) and microsecond (``&quot;U&quot;`` or ``&quot;us&quot;``) frequencies
+    for ``cftime.datetime`` coordinates (:issue:`4097`, :pull:`4758`).
+    By `Spencer Clark &lt;https://github.com/spencerkclark&gt;`_.
+  - Significantly higher ``unstack`` performance on numpy-backed arrays which
+    contain missing values; 8x faster than previous versions in our benchmark, and
+    now 2x faster than pandas (:pull:`4746`).
+    By `Maximilian Roos &lt;https://github.com/max-sixty&gt;`_.
+  - Add :py:meth:`Dataset.plot.quiver` for quiver plots with :py:class:`Dataset` variables.
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Add ``&quot;drop_conflicts&quot;`` to the strategies supported by the ``combine_attrs`` kwarg
+    (:issue:`4749`, :pull:`4827`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Allow installing from git archives (:pull:`4897`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - :py:class:`DataArrayCoarsen` and :py:class:`DatasetCoarsen` now implement a
+    ``reduce`` method, enabling coarsening operations with custom reduction
+    functions (:issue:`3741`, :pull:`4939`).  By `Spencer Clark
+    &lt;https://github.com/spencerkclark&gt;`_.
+  - Most rolling operations use significantly less memory. (:issue:`4325`).
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Add :py:meth:`Dataset.drop_isel` and :py:meth:`DataArray.drop_isel`
+    (:issue:`4658`, :pull:`4819`).
+    By `Daniel Mesejo &lt;https://github.com/mesejo&gt;`_.
+  - Xarray now leverages updates as of cftime version 1.4.1, which enable exact I/O
+    roundtripping of ``cftime.datetime`` objects (:pull:`4758`).
+    By `Spencer Clark &lt;https://github.com/spencerkclark&gt;`_.
+  - :py:func:`open_dataset` and :py:func:`open_mfdataset` now accept ``fsspec`` URLs
+    (including globs for the latter) for ``engine=&quot;zarr&quot;``, and so allow reading from
+    many remote and other file systems (:pull:`4461`)
+    By `Martin Durant &lt;https://github.com/martindurant&gt;`_
+  - :py:meth:`DataArray.swap_dims` &amp; :py:meth:`Dataset.swap_dims` now accept dims
+    in the form of kwargs as well as a dict, like most similar methods.
+    By `Maximilian Roos &lt;https://github.com/max-sixty&gt;`_.
+ - Bug fixes:
+  - Use specific type checks in
+    :py:func:`~xarray.core.variable.as_compatible_data` instead of blanket
+    access to ``values`` attribute (:issue:`2097`)
+    By `Yunus Sevinchan &lt;https://github.com/blsqr&gt;`_.
+  - :py:meth:`DataArray.resample` and :py:meth:`Dataset.resample` do not trigger
+    computations anymore if :py:meth:`Dataset.weighted` or
+    :py:meth:`DataArray.weighted` are applied (:issue:`4625`, :pull:`4668`). By
+    `Julius Busecke &lt;https://github.com/jbusecke&gt;`_.
+  - :py:func:`merge` with ``combine_attrs='override'`` makes a copy of the attrs
+    (:issue:`4627`).
+  - By default, when possible, xarray will now always use values of
+    type ``int64`` when encoding and decoding ``numpy.datetime64[ns]`` datetimes.  This
+    ensures that maximum precision and accuracy are maintained in the round-tripping
+    process (:issue:`4045`, :pull:`4684`). It also enables encoding and decoding standard
+    calendar dates with time units of nanoseconds (:pull:`4400`).
+    By `Spencer Clark &lt;https://github.com/spencerkclark&gt;`_ and `Mark Harfouche
+    &lt;http://github.com/hmaarrfk&gt;`_.
+  - :py:meth:`DataArray.astype`, :py:meth:`Dataset.astype` and :py:meth:`Variable.astype` support
+    the ``order`` and ``subok`` parameters again. This fixes a regression introduced in version 0.16.1
+    (:issue:`4644`, :pull:`4683`).
+    By `Richard Kleijn &lt;https://github.com/rhkleijn&gt;`_ .
+  - Remove dictionary unpacking when using ``.loc`` to avoid collision with ``.sel`` parameters (:pull:`4695`).
+    By `Anderson Banihirwe &lt;https://github.com/andersy005&gt;`_.
+  - Fix the legend created by :py:meth:`Dataset.plot.scatter` (:issue:`4641`, :pull:`4723`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Fix a crash in orthogonal indexing on geographic coordinates with ``engine='cfgrib'``
+    (:issue:`4733` :pull:`4737`).
+    By `Alessandro Amici &lt;https://github.com/alexamici&gt;`_.
+  - Coordinates with dtype ``str`` or ``bytes`` now retain their dtype on many operations,
+    e.g. ``reindex``, ``align``, ``concat``, ``assign``, previously they were cast to an object dtype
+    (:issue:`2658` and :issue:`4543`).
+    By `Mathias Hauser &lt;https://github.com/mathause&gt;`_.
+  - Limit number of data rows when printing large datasets. (:issue:`4736`, :pull:`4750`).
+    By `Jimmy Westling &lt;https://github.com/illviljan&gt;`_.
+  - Add ``missing_dims`` parameter to transpose (:issue:`4647`, :pull:`4767`).
+    By `Daniel Mesejo &lt;https://github.com/mesejo&gt;`_.
+  - Resolve intervals before appending other metadata to labels when plotting (:issue:`4322`, :pull:`4794`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Fix regression when decoding a variable with a ``scale_factor`` and ``add_offset`` given
+    as a list of length one (:issue:`4631`) by `Mathias Hauser &lt;https://github.com/mathause&gt;`_.
+  - Expand user directory paths (e.g. ``~/``) in :py:func:`open_mfdataset` and
+    :py:meth:`Dataset.to_zarr` (:issue:`4783`, :pull:`4795`).
+    By `Julien Seguinot &lt;https://github.com/juseg&gt;`_.
+  - Raise DeprecationWarning when trying to typecast a tuple containing a :py:class:`DataArray`.
+    User now prompted to first call `.data` on it (:issue:`4483`).
+    By `Chun Ho Chow &lt;https://github.com/chunhochow&gt;`_.
+  - Ensure that :py:meth:`Dataset.interp` raises ``ValueError`` when interpolating
+    outside coordinate range and ``bounds_error=True`` (:issue:`4854`,
+    :pull:`4855`).
+    By `Leif Denby &lt;https://github.com/leifdenby&gt;`_.
+  - Fix time encoding bug associated with using cftime versions greater than
+    1.4.0 with xarray (:issue:`4870`, :pull:`4871`). By `Spencer Clark &lt;https://github.com/spencerkclark&gt;`_.
+  - Stop :py:meth:`DataArray.sum` and :py:meth:`DataArray.prod` computing lazy
+    arrays when called with a ``min_count`` parameter (:issue:`4898`, :pull:`4911`).
+    By `Blair Bonnett &lt;https://github.com/bcbnz&gt;`_.
+  - Fix bug preventing the ``min_count`` parameter to :py:meth:`DataArray.sum` and
+    :py:meth:`DataArray.prod` working correctly when calculating over all axes of
+    a float64 array (:issue:`4898`, :pull:`4911`). By `Blair Bonnett &lt;https://github.com/bcbnz&gt;`_.
+  - Fix decoding of vlen strings using h5py versions greater than 3.0.0 with h5netcdf backend (:issue:`4570`, :pull:`4893`).
+    By `Kai Mühlbauer &lt;https://github.com/kmuehlbauer&gt;`_.
+  - Allow converting :py:class:`Dataset` or :py:class:`DataArray` objects with a ``MultiIndex``
+    and at least one other dimension to a ``pandas`` object (:issue:`3008`, :pull:`4442`).
+    By `ghislainp &lt;https://github.com/ghislainp&gt;`_.
+ - Documentation:
+  - Add information about requirements for accessor classes (:issue:`2788`, :pull:`4657`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Start a list of external I/O integrating with ``xarray`` (:issue:`683`, :pull:`4566`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Add concat examples and improve combining documentation (:issue:`4620`, :pull:`4645`).
+    By `Ray Bell &lt;https://github.com/raybellwaves&gt;`_ and
+    `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - explicitly mention that :py:meth:`Dataset.update` updates inplace (:issue:`2951`, :pull:`4932`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Added docs on vectorized indexing (:pull:`4711`).
+    By `Eric Keenan &lt;https://github.com/EricKeenan&gt;`_.
+ - Internal Changes:
+  - Speed up of the continuous integration tests on azure.
+    - Switched to mamba and use matplotlib-base for a faster installation of all dependencies (:pull:`4672`).
+    - Use ``pytest.mark.skip`` instead of ``pytest.mark.xfail`` for some tests that can currently not
+      succeed (:pull:`4685`).
+    - Run the tests in parallel using pytest-xdist (:pull:`4694`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_ and `Mathias Hauser &lt;https://github.com/mathause&gt;`_.
+  - Use ``pyproject.toml`` instead of the ``setup_requires`` option for
+    ``setuptools`` (:pull:`4897`).
+    By `Justus Magin &lt;https://github.com/keewis&gt;`_.
+  - Replace all usages of ``assert x.identical(y)`` with ``assert_identical(x,  y)``
+    for clearer error messages (:pull:`4752`).
+    By `Maximilian Roos &lt;https://github.com/max-sixty&gt;`_.
+  - Speed up attribute style access (e.g. ``ds.somevar`` instead of ``ds[&quot;somevar&quot;]``) and
+    tab completion in IPython (:issue:`4741`, :pull:`4742`).
+    By `Richard Kleijn &lt;https://github.com/rhkleijn&gt;`_.
+  - Added the ``set_close`` method to ``Dataset`` and ``DataArray`` for backends
+    to specify how to voluntary release all resources. (:pull:`#4809`)
+    By `Alessandro Amici &lt;https://github.com/alexamici&gt;`_.
+  - Update type hints to work with numpy v1.20 (:pull:`4878`).
+    By `Mathias Hauser &lt;https://github.com/mathause&gt;`_.
+  - Ensure warnings cannot be turned into exceptions in :py:func:`testing.assert_equal` and
+    the other ``assert_*`` functions (:pull:`4864`).
+    By `Mathias Hauser &lt;https://github.com/mathause&gt;`_.
+  - Performance improvement when constructing DataArrays. Significantly speeds up
+    repr for Datasets with large number of variables.
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+- remove xarray-pr4884-dask2021.patch, was never applied and is included upstream.
+</comment>
+    <requestid>877405</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a837a04649a7b66853f7414bf4aced38</srcmd5>
+    <version>0.18.0</version>
+    <time>1621201318</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>893451</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>15a6a6f2bbcb76f8cda24158a03cfaf4</srcmd5>
+    <version>0.18.2</version>
+    <time>1622536500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895658</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a5375434b23a4eef48f509e41e1d443f</srcmd5>
+    <version>0.18.2</version>
+    <time>1626557803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906784</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>85ff490a52c0c286f0743eaab5eaa0e2</srcmd5>
+    <version>0.19.0</version>
+    <time>1629706087</time>
+    <user>dimstar_suse</user>
+    <comment>- remove xarray-pr5449-dask-meta.patch, merged upstream.
+- remove test_resample_loffset.patch, merged upstream.
+- update to version 0.19.0:
+ - This release brings improvements to plotting of categorical data, the ability to specify how attributes:
+ - are combined in xarray operations, a new high-level :py:func:`unify_chunks` function, as well as various:
+ - deprecations, bug fixes, and minor improvements.:
+ - Many thanks to the 29 contributors to this release!:
+ - Andrew Williams, Augustus, Aureliana Barghini, Benoit Bovy, crusaderky, Deepak Cherian, ellesmith88,:
+ - Elliott Sales de Andrade, Giacomo Caria, github-actions[bot], Illviljan, Joeperdefloep, joooeey, Julia Kent,:
+ - Julius Busecke, keewis, Mathias Hauser, Matthias Göbel, Mattia Almansi, Maximilian Roos, Peter Andreas Entschev,:
+ - Ray Bell, Sander, Santiago Soler, Sebastian, Spencer Clark, Stephan Hoyer, Thomas Hirtz, Thomas Nicholas.:
+ - New Features:
+  - Allow passing argument ``missing_dims`` to :py:meth:`Variable.transpose` and :py:meth:`Dataset.transpose`
+    (:issue:`5550`, :pull:`5586`)
+    By `Giacomo Caria &lt;https://github.com/gcaria&gt;`_.
+  - Allow passing a dictionary as coords to a :py:class:`DataArray` (:issue:`5527`,
+    reverts :pull:`1539`, which had deprecated this due to python's inconsistent ordering in earlier versions).
+    By `Sander van Rijn &lt;https://github.com/sjvrijn&gt;`_.
+  - Added :py:meth:`Dataset.coarsen.construct`, :py:meth:`DataArray.coarsen.construct` (:issue:`5454`, :pull:`5475`).
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Xarray now uses consolidated metadata by default when writing and reading Zarr
+    stores (:issue:`5251`).
+    By `Stephan Hoyer &lt;https://github.com/shoyer&gt;`_.
+  - New top-level function :py:func:`unify_chunks`.
+    By `Mattia Almansi &lt;https://github.com/malmans2&gt;`_.
+  - Allow assigning values to a subset of a dataset using positional or label-based
+    indexing (:issue:`3015`, :pull:`5362`).
+    By `Matthias Göbel &lt;https://github.com/matzegoebel&gt;`_.
+  - Attempting to reduce a weighted object over missing dimensions now raises an error (:pull:`5362`).
+    By `Mattia Almansi &lt;https://github.com/malmans2&gt;`_.</comment>
+    <requestid>913397</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>58a7bc871f7c61803178b5667c5f00fc</srcmd5>
+    <version>0.19.0</version>
+    <time>1632431036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921048</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4ff68410d0c2d90a70c96545660f5f6a</srcmd5>
+    <version>0.20.0</version>
+    <time>1636577187</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930552</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>97ead9fc48d2e561b32d36d135c3de93</srcmd5>
+    <version>0.20.1</version>
+    <time>1637618671</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>933115</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>55a0ebbe43951d38bfd0f0cc47db4706</srcmd5>
+    <version>0.20.2</version>
+    <time>1639781667</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>941018</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>1e607c730ecfdbada9502be4e47d155a</srcmd5>
+    <version>0.20.2</version>
+    <time>1643228811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949122</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cdbc42310bbde807a721af4ede85ce71</srcmd5>
+    <version>0.21.1</version>
+    <time>1644531131</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>953061</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7d53646391989f2191172118e14d7265</srcmd5>
+    <version>2022.3.0</version>
+    <time>1647031304</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>961121</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0b36dcdfadfb8586f6caad0c75f252aa</srcmd5>
+    <version>2022.6.0</version>
+    <time>1660924567</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * updated requirements versions
+  * added new requirements: packaging and flox (recommends)
+  * require python &gt;= 3.8
+  * update line numbers in patches
+  * changed README.rst-&gt;README.md
+- update to version 2022.6.0:
+  * This release brings a number of bug fixes and improvements, most
+    notably a major internal refactor of the indexing functionality,
+    the use of flox in groupby operations, and experimental support
+    for the new Python Array API standard. It also stops testing
+    support for the abandoned PyNIO.
+  * Much effort has been made to preserve backwards compatibility as
+    part of the indexing refactor. We are aware of one unfixed issue.
+  * New Features
+    + Add Dataset.dtypes, core.coordinates.DatasetCoordinates.dtypes,
+      core.coordinates.DataArrayCoordinates.dtypes properties: Mapping
+      from variable names to dtypes. (PR6706) By Michael Niklas.
+    + Initial typing support for groupby(), rolling(), rolling_exp(),
+      coarsen(), weighted(), resample(), (PR6702) By Michael Niklas.
+    + Experimental support for wrapping any array type that conforms
+      to the python array api standard. (PR6804) By Tom White.
+  * Bug fixes
+    + save_mfdataset() now passes **kwargs on to Dataset.to_netcdf(),
+      allowing the encoding and unlimited_dims options with
+      save_mfdataset(). (GH6684) By Travis A. O’Brien.
+    + Fix backend support of pydap versions &lt;3.3.0 (GH6648,
+      PR6656). By Hauke Schulz.
+    + Dataset.where() with drop=True now behaves correctly with mixed
+      dimensions. (GH6227, PR6690) By Michael Niklas.
+    + Accommodate newly raised OutOfBoundsTimedelta error in the
+      development version of pandas when decoding times outside the
+      range that can be represented with nanosecond-precision values
+      (GH6716, PR6717). By Spencer Clark.
+    + open_dataset() with dask and ~ in the path now resolves the home
+      directory instead of raising an error. (GH6707, PR6710) By
+      Michael Niklas.
+    + DataArrayRolling.__iter__() with center=True now works
+      correctly. (GH6739, PR6744) By Michael Niklas.
+  * Internal Changes
+    + xarray.core.groupby, xarray.core.rolling,
+      xarray.core.rolling_exp, xarray.core.weighted and
+      xarray.core.resample modules are no longer imported by
+      default. (PR6702)
+- changes from version 2022.06.0rc0:
+  * This pre-release brings a number of bug fixes and improvements,
+    most notably a major internal refactor of the indexing
+    functionality and the use of flox in groupby operations. It also
+    stops testing support for the abandoned PyNIO.
+  * Known Regressions
+    + reset_coords(drop=True) does not create indexes (GH6607)
+  * New Features
+    + The zarr backend is now able to read NCZarr. By Mattia Almansi.
+    + Add a weighted quantile method to DatasetWeighted and
+      DataArrayWeighted (PR6059). By Christian Jauvin and David Huard.
+    + Add a create_index=True parameter to Dataset.stack() and
+      DataArray.stack() so that the creation of multi-indexes is
+      optional (PR5692). By Benoît Bovy.
+    + Multi-index levels are now accessible through their own, regular
+      coordinates instead of virtual coordinates (PR5692). By Benoît
+      Bovy.
+    + Add a display_values_threshold option to control the total
+      number of array elements which trigger summarization rather than
+      full repr in (numpy) array detailed views of the html repr
+      (PR6400). By Benoît Bovy.
+    + Allow passing chunks in kwargs form to Dataset.chunk(),
+      DataArray.chunk(), and Variable.chunk(). (PR6471) By Tom
+      Nicholas.
+    + Add core.groupby.DatasetGroupBy.cumsum() and
+      core.groupby.DataArrayGroupBy.cumsum(). By Vladislav Skripniuk
+      and Deepak Cherian. (PR3147, PR6525, GH3141)
+    + Expose inline_array kwarg from dask.array.from_array in
+      open_dataset(), Dataset.chunk(), DataArray.chunk(), and
+      Variable.chunk(). (PR6471)
+    + Expose the inline_array kwarg from dask.array.from_array() in
+      open_dataset(), Dataset.chunk(), DataArray.chunk(), and
+      Variable.chunk(). (PR6471) By Tom Nicholas.
+    + polyval() now supports Dataset and DataArray args of any shape,
+      is faster and requires less memory. (PR6548) By Michael Niklas.
+    + Improved overall typing.
+    + Dataset.to_dict() and DataArray.to_dict() may now optionally
+      include encoding attributes. (PR6635) By Joe Hamman.
+    + Upload development versions to TestPyPI. By Justus Magin.
+  * Breaking changes
+    + PyNIO support is now untested.
+    + The Dataset and DataArray rename&quot; methods do not implicitly add
+      or drop indexes. (PR5692). By Benoît Bovy.
+    + Many arguments like keep_attrs, axis, and skipna are now keyword
+      only for all reduction operations like .mean. By Deepak Cherian,
+      Jimmy Westling.
+    + Xarray’s ufuncs have been removed, now that they can be replaced
+      by numpy’s ufuncs in all supported versions of numpy. By
+      Maximilian Roos.
+    + xr.polyval() now uses the coord argument directly instead of its
+      index coordinate. (PR6548) By Michael Niklas.
+  * Bug fixes
+    + Dataset.to_zarr() now allows to write all attribute types
+      supported by zarr-python. By Mattia Almansi.
+    + Set skipna=None for all quantile methods
+      (e.g. Dataset.quantile()) and ensure it skips missing values for
+      float dtypes (consistent with other methods). This should not
+      change the behavior (PR6303). By Mathias Hauser.
+    + Many bugs fixed by the explicit indexes refactor, mainly related
+      to multi-index (virtual) coordinates. See the corresponding
+      pull-request on GitHub for more details. (PR5692). By Benoît
+      Bovy.
+    + Fixed “unhashable type” error trying to read NetCDF file with
+      variable having its ‘units’ attribute not str
+      (e.g. numpy.ndarray) (GH6368). By Oleh Khoma.
+    + Omit warning about specified dask chunks separating chunks on
+      disk when the underlying array is empty (e.g., because of an
+      empty dimension) (GH6401). By Joseph K Aicher.
+    + Fixed the poor html repr performance on large multi-indexes
+      (PR6400). By Benoît Bovy.
+    + Allow fancy indexing of duck dask arrays along multiple
+      dimensions. (PR6414) By Justus Magin.
+    + In the API for backends, support dimensions that express their
+      preferred chunk sizes as a tuple of integers. (GH6333, PR6334)
+      By Stan West.
+    + Fix bug in where() when passing non-xarray objects with
+      keep_attrs=True. (GH6444, PR6461) By Sam Levang.
+    + Allow passing both other and drop=True arguments to
+      DataArray.where() and Dataset.where() (PR6466, PR6467). By
+      Michael Delgado.
+    + Ensure dtype encoding attributes are not added or modified on
+      variables that contain datetime-like values prior to being
+      passed to xarray.conventions.decode_cf_variable() (GH6453,
+      PR6489). By Spencer Clark.
+    + Dark themes are now properly detected in Furo-themed Sphinx
+      documents (GH6500, PR6501). By Kevin Paul.
+    + Dataset.isel(), DataArray.isel() with drop=True works as
+      intended with scalar DataArray indexers. (GH6554, PR6579) By
+      Michael Niklas.
+    + Fixed silent overflow issue when decoding times encoded with
+      32-bit and below unsigned integer data types (GH6589,
+      PR6598). By Spencer Clark.
+    + Fixed .chunks loading lazy data (GH6538). By Deepak Cherian.
+  * Documentation
+    + Revise the documentation for developers on specifying a
+      backend’s preferred chunk sizes. In particular, correct the
+      syntax and replace lists with tuples in the examples. (GH6333,
+      PR6334) By Stan West.
+    + Mention that DataArray.rename() can rename coordinates. (GH5458,
+      PR6665) By Michael Niklas.
+    + Added examples to Dataset.thin() and DataArray.thin() By Emma
+      Marshall.
+  * Performance
+    + GroupBy binary operations are now vectorized. Previously this
+      involved looping over all groups. (GH5804, PR6160) By Deepak
+      Cherian.
+    + Substantially improved GroupBy operations using flox. This is
+      auto-enabled when flox is installed. Use
+      xr.set_options(use_flox=False) to use the old
+      algorithm. (GH4473, GH4498, GH659, GH2237, PR271). By Deepak
+      Cherian, Anderson Banihirwe, Jimmy Westling.
+  * Internal Changes
+    + Many internal changes due to the explicit indexes refactor. See
+      the corresponding pull-request on GitHub for more
+      details. (PR5692). By Benoît Bovy.
+</comment>
+    <requestid>997996</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4b369ab5a11f4c3a9b18a7b4478a6bb1</srcmd5>
+    <version>2022.10.0</version>
+    <time>1666178271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.10.0:
+  - This release brings numerous bugfixes, a change in minimum
+    supported versions, and a new scatter plot method for
+    DataArrays.
+  - Also, temporarily import loop_in_thread fixture from
+    distributed.
+- Update to 2022.9.0:
+  - This release brings a large number of bugfixes and
+    documentation improvements, as well as an external interface
+    for setting custom indexes!</comment>
+    <requestid>1029886</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>127964cc38e463c5fab6fa8aee613f0b</srcmd5>
+    <version>2022.11.0</version>
+    <time>1669193285</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037357</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ad630155dbbf02dde1c491037022c5e3</srcmd5>
+    <version>2022.12.0</version>
+    <time>1673209520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056777</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>12ca43b5d205c9178192b1542600acf0</srcmd5>
+    <version>2023.2.0</version>
+    <time>1678482449</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2023.02.0:
+ - This release brings a major upgrade to :py:func:`xarray.concat`, many bug fixes,:
+ - and a bump in supported dependency versions. Thanks to our 11 contributors:
+ - Aron Gergely, Deepak Cherian, Illviljan, James Bourbeau, Joe Hamman,:
+ - Justus Magin, Hauke Schulz, Kai Mühlbauer, Ken Mankoff, Spencer Clark, Tom Nicholas.:
+ - Breaking changes:
+  - Support for ``python 3.8`` has been dropped and the minimum versions of some
+    dependencies were changed (:pull:`7461`):
+    ===================== =========  ========
+     Package                    Old      New
+    ===================== =========  ========
+     python                     3.8      3.9
+     numpy                     1.20     1.21
+     pandas                     1.3      1.4
+     dask                   2021.11   2022.1
+     distributed            2021.11   2022.1
+     h5netcdf                  0.11     0.13
+     lxml                       4.6      4.7
+     numba                      5.4      5.5
+    ===================== =========  ========
+ - Deprecations:
+  - Following pandas, the `closed` parameters of :py:func:`cftime_range` and
+    :py:func:`date_range` are deprecated in favor of the `inclusive` parameters,
+    and will be removed in a future version of xarray (:issue:`6985`:,
+    :pull:`7373`).
+ - Bug fixes:
+  - :py:func:`xarray.concat` can now concatenate variables present in some datasets but
+    not others (:issue:`508`, :pull:`7400`).
+  - Handle ``keep_attrs`` option in binary operators of :py:meth:`Dataset` (:issue:`7390`, :pull:`7391`).
+  - Improve error message when using dask in :py:func:`apply_ufunc` with ``output_sizes`` not supplied. (:pull:`7509`)
+  - :py:func:`xarray.Dataset.to_zarr` now drops variable encodings that have been added by xarray during reading
+    a dataset. (:issue:`7129`, :pull:`7500`).
+ - Documentation:
+  - Mention the `flox package &lt;https://flox.readthedocs.io&gt;`_ in GroupBy documentation and docstrings.
+- update to version 2023.01.0:
+ - This release includes a number of bug fixes. Thanks to the 14 contributors to this release:
+ - Aron Gergely, Benoit Bovy, Deepak Cherian, Ian Carroll, Illviljan, Joe Hamman, Justus Magin, Mark Harfouche,:
+ - Matthew Roeschke, Paige Martin, Pierre, Sam Levang, Tom White,  stefank0.:
+ - Breaking changes:
+  - :py:meth:`CFTimeIndex.get_loc` has removed the ``method`` and ``tolerance`` keyword arguments.
+    Use ``.get_indexer([key], method=..., tolerance=...)`` instead (:pull:`7361`).
+ - Bug fixes:
+  - Avoid in-memory broadcasting when converting to a dask dataframe
+    using ``.to_dask_dataframe.`` (:issue:`6811`, :pull:`7472`).
+  - Accessing the property ``.nbytes`` of a DataArray, or Variable no longer
+    accidentally triggers loading the variable into memory.
+  - Allow numpy-only objects in :py:func:`where` when ``keep_attrs=True`` (:issue:`7362`, :pull:`7364`).
+  - add a ``keep_attrs`` parameter to :py:meth:`Dataset.pad`, :py:meth:`DataArray.pad`,
+    and :py:meth:`Variable.pad` (:pull:`7267`).
+  - Fixed performance regression in alignment between indexed and non-indexed objects
+    of the same shape (:pull:`7382`).
+  - Preserve original dtype on accessing MultiIndex levels (:issue:`7250`,
+    :pull:`7393`).
+ - Internal Changes:
+  - Add the pre-commit hook `absolufy-imports` to convert relative xarray imports to
+    absolute imports (:pull:`7204`, :pull:`7370`).</comment>
+    <requestid>1070561</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8c85485d52b804faad0d0bc741b5e0c2</srcmd5>
+    <version>2023.5.0</version>
+    <time>1685562887</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.05.0:
+  * This release adds some new methods and operators, updates our
+    deprecation policy for python versions, fixes some bugs with
+    groupby, and introduces experimental support for alternative
+    chunked parallel array computation backends via a new plugin
+    system!
+  * Docstrings examples for string methods
+  * Fix groupby_bins when labels are specified
+  * Fix binning by unsorted array
+  * This release includes support for pandas v2, allows
+    refreshing of backend engines in a session, and removes
+    deprecated backends for ``rasterio`` and ``cfgrib``.</comment>
+    <requestid>1089954</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b8f0f40ce5432645e4d1940043cf846c</srcmd5>
+    <version>2023.8.0</version>
+    <time>1694630744</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110839</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>80336d4c13597eac469275bf7771227c</srcmd5>
+    <version>2023.12.0</version>
+    <time>1703198334</time>
+    <user>anag+factory</user>
+    <comment>- remove obsolete patch file xarray-pr8139-pandas-fill_value.patch
+- update to version 2023.12.0:</comment>
+    <requestid>1134379</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>7bc329e9d01897983c628327dac65004</srcmd5>
+    <version>2023.12.0</version>
+    <time>1704390078</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ROS3 tests, because hdf5 library was built without ROS3 support.
+</comment>
+    <requestid>1136895</requestid>
+  </revision>
+</revisionlist>

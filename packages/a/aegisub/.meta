@@ -1,0 +1,13 @@
+<package name="aegisub" project="openSUSE:Factory">
+  <title>Subtitle editor</title>
+  <description>Aegisub is an advanced subtitle editor for Windows, and UNIX-like systems, such as
+Linux, Mac OS X and BSD. It is open source software and free for any use.
+
+Aegisub natively works with the Advanced SubStation Alpha format (aptly abbreviated
+ASS) which allows for many advanced effects in the subtitles, apart from just basic
+timed text. Aegisub's goal is to support using these advanced functions with ease.
+
+</description>
+  <devel project="multimedia:apps" package="aegisub"/>
+  <url>http://www.aegisub.net/</url>
+</package>

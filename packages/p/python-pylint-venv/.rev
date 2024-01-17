@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c738b95aa8acde3113dee3f3ea0700df</srcmd5>
+    <version>2.3.0</version>
+    <time>1667825524</time>
+    <user>dimstar_suse</user>
+    <comment>Make pylint respect virtualenvs.</comment>
+    <requestid>1034133</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>61a38e61081eec7326d23148f5f3b85b</srcmd5>
+    <version>3.0.2</version>
+    <time>1693235564</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105908</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>838c7aabbf82a2834bb95171ece15509</srcmd5>
+    <version>3.0.3</version>
+    <time>1702845099</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.3:
+  * Official support for Pylint 3.
+  * Official support for Python 3.12.
+  * Documentation for configuration within `pyproject.toml`</comment>
+    <requestid>1133533</requestid>
+  </revision>
+</revisionlist>

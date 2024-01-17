@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Apr 25 07:38:49 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Use the security patched fork at
+  https://github.com/sparklemotion/nekohtml
+- Upgrade to version 1.9.22.neko2
+  * fixes bsc#1198739, CVE-2022-28366, bsc#1198404, CVE-2022-24839
+- Fetch tarball using source service
+- Modified patches:
+  * 0002-Jar-paths.patch -> 0001-Jar-paths.patch
+  * 0003-Add-OSGi-attributes.patch -> 0002-Add-OSGi-attributes.patch
+    + rebase to changed context
+
+-------------------------------------------------------------------
+Wed Mar 23 07:42:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Tue Nov 12 17:56:43 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of nekohtml 1.9.22

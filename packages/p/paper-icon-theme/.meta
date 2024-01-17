@@ -1,0 +1,5 @@
+<package name="paper-icon-theme" project="openSUSE:Factory">
+  <title>Paper Icon Theme</title>
+  <description>Paper is simple and modern icon theme with material design influences.</description>
+  <devel project="X11:common:Factory" package="paper-icon-theme"/>
+</package>

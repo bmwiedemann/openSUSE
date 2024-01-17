@@ -1,0 +1,20 @@
+<package name="python-pyinotify" project="openSUSE:Factory">
+  <title>Python module for watching filesystems changes</title>
+  <description>pyinotify is a Python module for watching filesystems changes. By its design
+pyinotify can be used for any kind of fs monitoring.
+
+pyinotify relies on a recent Linux Kernel feature (merged in kernel 2.6.13)
+called inotify. inotify is an event-driven notifier, its notifications are
+exported from kernel space to user space. The raw interface of inotify is
+compounded of three system calls. pyinotify binds these system calls and
+provides an implementation on top of them offering a generic and abstract way
+to use inotify with Python. Pyinotify doesn't requires much detailed knowledge
+of inotify. Moreover, it only needs few statements for initializing, watching,
+handling (eventually trough a new separate thread), and processing events
+notifications through subclassing. The only things to know is the path of items
+to watch, the kind of events to monitor and the actions to execute on these
+notifications.
+
+Note: pyinotify requires Python 2.3 and above, and Linux 2.6.13 at least.</description>
+  <devel project="devel:languages:python" package="python-pyinotify"/>
+</package>

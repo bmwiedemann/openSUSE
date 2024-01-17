@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Sun Jan  7 18:17:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.1.0:
+  The last release [broke
+  _scikit-build-core_](https://github.com/scikit-build/scikit-build-core/issues/592)
+  so this one adds a default argument value. No user-visible
+  changes.
+  *  Added a default to an internal API that is used by
+     *scikit-build-core*.
+
+-------------------------------------------------------------------
+Sun Jan  7 18:15:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 23.2.0:
+  There's only one change but I think it's really cool: you can now
+  add the package version into your PyPI readme by adding the
+  string `$HFPR_VERSION` to it!
+    * `$HFPR_VERSION` is now replaced by the package version in the
+    PyPI readme. The version is not available in CLI mode, therefore
+    it's replaced by the dummy value of `42.0`.
+
+-------------------------------------------------------------------
+Mon May 22 07:30:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 23.1.0 (there is no 23.0.0):
+  The only change is that our CLI now also takes the presence of an
+  hatch.toml file into account.
+  The packaging side always supported it.
+
+-------------------------------------------------------------------
+Tue May 16 14:27:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- break dependency cycle between attrs (pulled by pytest) and pytest-hatch-fancy-pypi-readme
+
+-------------------------------------------------------------------
+Fri Apr 21 12:26:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:46 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Oct 11 20:51:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean up specfile: remove hatch from BuildRequires footprint
+- Enable testsuite except for end-to-end which would need extra
+  wheelfiles
+
+-------------------------------------------------------------------
+Tue Oct  4 05:20:35 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 22.8.0:
+  * The only change is a new feature for file fragments:
+    start-at which behaves like start-after, but preserves the string that
+    is searched for.
+    Here's a real-world example of how it can simplify your configuration.
+
+-------------------------------------------------------------------
+Mon Sep 26 05:40:36 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-hatch-fancy-pypi-readme

@@ -1,0 +1,7 @@
+<package name="perl-Test-Unit-Lite" project="openSUSE:Factory">
+  <title>Unit testing without external dependencies</title>
+  <description>This framework provides lighter version of Test::Unit framework. It implements some of the Test::Unit classes and methods needed to run test units. The Test::Unit::Lite tries to be compatible with public API of Test::Unit. It doesn't implement all classes and methods at 100% and only those necessary to run tests are available.
+
+The Test::Unit::Lite can be distributed as a part of package distribution, so the package can be distributed without dependency on modules outside standard Perl distribution. The Test::Unit::Lite is provided as a single file.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Unit-Lite"/>
+</package>

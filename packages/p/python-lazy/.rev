@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acc8048956921c91a3647598b561de63</srcmd5>
+    <version>1.3</version>
+    <time>1526371982</time>
+    <user>dimstar_suse</user>
+    <comment>Lazy attributes</comment>
+    <requestid>606013</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7ce524190a1ec22f0700a04e207163e7</srcmd5>
+    <version>1.3</version>
+    <time>1548335643</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667860</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e6d5fb59f0f9491f1eb3028a052e590</srcmd5>
+    <version>1.4</version>
+    <time>1551468651</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4:
+  * Add MANIFEST.in. [stefan]
+  * Release as universal wheel. [stefan]</comment>
+    <requestid>680150</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5eb407b82e0281e8c1b076a3d35e6559</srcmd5>
+    <version>1.4</version>
+    <time>1622536651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895735</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1ee32e24156c1ac867fcd8b4c669b8b2</srcmd5>
+    <version>1.5</version>
+    <time>1674143050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5
+  * Allow type checkers to infer the type of a lazy attribute 
+  * Add Python 3.8-3.11 to tox.ini. Remove old Python versions
+  * Replace deprecated python setup.py test in tox.ini 
+  * Remove deprecated test_suite from setup.py 
+  * Move metadata to setup.cfg and add a pyproject.toml file 
+  * Include tests in sdist but not in wheel 
+- use .tar.gz instead of .zip for better compression ratio</comment>
+    <requestid>1059500</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e1de725f5863bb4577ada83994b2cf21</srcmd5>
+    <version>1.5</version>
+    <time>1686576349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092249</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c35c1a8b92d217323b2eb56505c9d989</srcmd5>
+    <version>1.6</version>
+    <time>1702071127</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.6:
+  * Implement ``lazy.__set_name__()`` which helps in cases like
+  * ``foo=lazy(_foo)``.
+  * Pin sphinx and sphinx-rtd-theme versions in docs extra.
+  * Fix stray characters in keywords.
+
+  * Allow type checkers to infer the type of a lazy attribute
+  * Replace deprecated python setup.py test in tox.ini
+  * Remove deprecated test_suite from setup.py
+  * Move metadata to setup.cfg and add a pyproject.toml file
+  * Include tests in sdist but not in wheel</comment>
+    <requestid>1131731</requestid>
+  </revision>
+</revisionlist>

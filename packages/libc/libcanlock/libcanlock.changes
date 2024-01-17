@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Sat May 28 15:56:33 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.0
+  * Bugfixes:
+    + canlock-mhp utility no longer hangs if field name was not
+      found.
+    + Potential NULL-pointer dereference fixed in canlock utility.
+    + Two memory leaks fixed in canlock-hfp utility.j
+    + Multiple bugs in test suite fixed, where return values from
+    + library functions were not handled correctly.
+    + Two memory leaks fixed in test suite for legacy API
+    + NAME sections of cl_clear_secret(), cl_get_lock(), cl_split()
+      and cl_verify() man pages fixed.
+  * Separate library libcanlock-hp added to execute the header
+    parsers (for operating systems with POSIX API).
+  * New libcanlock-hp API function to unfold header fields added
+  * Test suite extended for the new library. Tests for parser.
+    functions are skipped by default (because they require the
+    installed parser utilities).
+  * New libcanlock API function cl_verify_multi() added to check
+    multiple keys against multiple locks.
+  * Library API and ABI are backward compatible
+  * Test suite extended: It now tests cl_verify_multi() too
+  * canlock utility now supports the option "-m" to check multiple
+    keys against multiple locks.
+  * Option "-m" added to SYNOPSIS section of canlock man page.
+  * Example programs added to the "examples" and "hp/examples"
+    subdirectories.
+
+-------------------------------------------------------------------
+Fri Jan  8 11:11:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.2
+  * Bugfix: Header field name is not found by canlock-mhp if there
+    is another header field for which only the prefix differs (and
+    that other field is processed first)
+  * Test suite for canlock-mhp parser extended: It now tests headers
+    larger than 4 KiByte and for the field prefix bug fixed in this
+    version
+  * Test suite for canlock-hfp parser extended to test comments harder
+  * Namespace clash of internal library functions with libc on NetBSD
+    + Changed internal API function names hmac* to RFC2104Hmac*
+    + Changed internal API function names hkdf* to RFC5869Hkdf*
+    + Library API and ABI are fully compatible if no undocumented
+      functions are used
+  * libcanlock-3.pc: Changed protocol in URL from http to https
+
+-------------------------------------------------------------------
+Sun Nov 29 14:32:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.1
+  * Bugfix: off-by-one heap buffer overflow fixed in canlock-mhp
+  * Bugfix: canlock-mhp end of header detection fixed
+- Drop patch:
+  * libcanlock-fix-testsuite.patch (fixed by upstream)
+
+-------------------------------------------------------------------
+Sat Nov 28 11:23:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Run testsuite
+- Add patch:
+  * libcanlock-fix-testsuite.patch
+
+-------------------------------------------------------------------
+Fri Nov 27 20:19:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 3.2.0

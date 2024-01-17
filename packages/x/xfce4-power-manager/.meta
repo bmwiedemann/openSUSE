@@ -1,0 +1,12 @@
+<package name="xfce4-power-manager" project="openSUSE:Factory">
+  <title>Power Management for the Xfce Desktop Environment</title>
+  <description>xfce4-power-manager is a tool for the Xfce desktop environment for managing
+profiles of policies which affect power consumption, such as the display
+brightness level, display sleep times, or CPU frequency scaling. It can also
+trigger actions on certain events such as closing the lid or reaching low
+battery levels and provides a set of interfaces to inform other applications
+about current power level so that they can adjust their power consumption.
+Furthermore, it provides a standardized inhibit interface which allows
+applications to prevent automatic sleep actions via the power manager.</description>
+  <devel project="X11:xfce" package="xfce4-power-manager"/>
+</package>

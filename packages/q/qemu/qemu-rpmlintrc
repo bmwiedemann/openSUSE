@@ -1,0 +1,7 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("arch-dependent-file-in-usr-share")
+addFilter("obsolete-not-provided")
+addFilter("summary-not-capitalized")
+addFilter("executable-stack")

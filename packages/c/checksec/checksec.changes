@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Sat Sep 24 08:58:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * fix missing sysctl on fedora
+  * remove extra parenthesis
+  * add missing libc on LoongArch-64
+
+-------------------------------------------------------------------
+Wed Mar 16 10:57:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add procps dependency for sysctl 
+
+-------------------------------------------------------------------
+Mon Dec 20 10:41:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * split checksec into multiple files for easier maintenance and debugging
+  * remove space between options and only support `=` until refactor can happen
+  * update License.txt to include BSD license
+  * Check journalctl -k for NX protection
+  * improve debug formatting
+  * Fix shellcheck warnings and style issues
+  * Make --dir option follow symlinks
+
+-------------------------------------------------------------------
+Wed Jun  9 15:36:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing gawk dependency 
+
+-------------------------------------------------------------------
+Thu Mar 25 19:28:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (derived from Fedora spec) 

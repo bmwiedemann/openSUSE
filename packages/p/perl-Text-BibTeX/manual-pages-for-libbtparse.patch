@@ -1,0 +1,13 @@
+--- Text-BibTeX-0.80/inc/MyBuilder.pm	2017-03-25 20:41:12.000000000 +0000
++++ Text-BibTeX-0.80/inc/MyBuilder.pm	2017-05-31 09:58:18.898289185 +0000
+@@ -172,8 +172,8 @@ sub ACTION_create_manpages {
+     my $version = $self->notes('btparse_version');
+     for my $pod (@$pods) {
+         my $man = $pod;
+-        $man =~ s!.pod!.1!;
+-        $man =~ s!btparse/doc!blib/bindoc!;   ## FIXME - path
++        $man =~ s!.pod!.3!;
++        $man =~ s!btparse/doc!blib/libdoc!;
+         next if $self->up_to_date($pod, $man);
+         ## FIXME
+         `pod2man --section=1 --center="btparse" --release="btparse, version $version" $pod $man`;

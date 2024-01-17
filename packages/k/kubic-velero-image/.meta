@@ -1,0 +1,5 @@
+<package name="kubic-velero-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic:containers" package="kubic-velero-image"/>
+</package>

@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Sat Apr  1 19:21:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.10.2:
+  * Fix portability to GNU Hurd.
+- Add noson-fix-missing-include.patch: Add missing include
+  <cstdint> exposed by gcc 13.
+- Rebase noson-include-time.h.patch with quilt.
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:51 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.10.1. No changelog.
+  * fix skip of id3 extended header
+  * full fix for empty namespace
+  * handle null namespace
+  * add helper to create or destroy radio station
+
+-------------------------------------------------------------------
+Thu Aug 11 09:50:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add noson-include-time.h.patch: fix build with recent gcc12
+  branch. time.h is no longer implicit included.
+
+-------------------------------------------------------------------
+Mon May  9 18:16:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.8.6. No changelog.
+  * c++-11 compliance
+  * security: peer could return valid result on out of range
+  * code cleanup
+
+-------------------------------------------------------------------
+Thu Dec 30 11:23:50 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 2.6.0
+  * add support for changing sub gain
+  * The SetEQ/GetEQ actually use i2
+  * Add support for volume in decibel
+  * add github workflows to test the build on ubuntu-latest
+  * show the badge of build status
+  * Update build-ubuntu-latest.yml
+  * implement the move constructor for the shared pointer
+  * fix const qualifier of returned shared_ptr
+- Change source URL according to upstream
+
+-------------------------------------------------------------------
+Tue Apr 13 19:46:06 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 2.4.1
+  * Fallback when presentation map is invalid for the service
+  * Includes improvements for pulse streamer
+
+-------------------------------------------------------------------
+Fri Jun 26 11:44:37 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 2.3.1:
+  * Fix build for SunOS
+
+-------------------------------------------------------------------
+Thu Jan 16 20:38:36 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 2.3.0
+  * Discard any obsolete event according to the last stamped. 
+    That fixes some cases when rendering update events are caught
+    out of order (i.e swiping the volume up/down).
+  * Discard some device models during discovery
+
+-------------------------------------------------------------------
+Sun Dec 15 07:44:44 UTC 2019 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 2.2.0
+  * Stream all audio files using the transfer by range
+  * Allow to stream M4A and M4B files
+  * Bug fixing
+  * Manage failure of renewable subscription
+  * Cache the response of AVTransport::GetPositionInfo
+  * New API to handle the global system.
+  * Pooling of event subscriptions.
+  * Pooling of available zone players.
+  * Allow to bypass the SSDP discovery by passing the url of a
+    SONOS device
+  * Fix missing search categories for the services without
+    presentation map
+  * Fix a bug in service registration (PocketCasts and problaly few
+    others)
+  * Support actions to control loudness
+  * Workaround Spotify BUG using locale en_GB
+  * Support for output fixed
+  * Improvements
+  * Improves the extractor of cover art from ogg files
+  * Minor fixes
+  * Allow to stream media file OGG/Vorbis
+  * Fix language range to be compliant with RFC-4647 (Issue with
+    Spotify services)
+  * Improvements
+  * Fix the build with MSVC 2017
+  * Refactor inet socket
+  * Use multicast UDP packet as fallback when discovering
+  * Fix to work around multicast filtering when discovering devices
+    (i.e Google WIFI and probably many others)
+  * Fix MSVC build
+  * Minor improvements
+- Add %license and %doc to spec file
+
+-------------------------------------------------------------------
+Sat Apr  6 07:00:16 UTC 2019 - bosim@opensuse.org
+
+- Pulseaudio support
+
+-------------------------------------------------------------------
+Sat Apr  6 06:18:23 UTC 2019 - bosim@opensuse.org
+
+- Update to 1.12.4
+  * Fix Sonos API changes in build 49263270 (10.1)
+  * Allows to stream local files including artworks
+  * Allows to stream from the pulseaudio output
+  * Minor fixes and improvements
+
+-------------------------------------------------------------------
+Mon Jan 21 17:14:29 UTC 2019 - bosim@opensuse.org
+
+- Update to 1.10.4
+  * Add fallback to parse malformed xml
+  * Refactor secure socket and fix SNI issue
+  * Add functions to handles bass and treble levels
+  * Add functions to provides the protocol identifier from an URI
+  * Fix the parse of alarm recurrence
+  * Remove unused builtin functions since standard C++98 is no 
+    longer supported
+  * Improve SMAPI interoperability
+  * Improve OAuth registration for third part services
+
+-------------------------------------------------------------------
+Fri Aug  3 19:01:55 UTC 2018 - bosim@opensuse.org
+
+- Update to 1.8.2
+
+-------------------------------------------------------------------
+Fri Jul 27 06:45:07 UTC 2018 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Sat Jul 21 07:55:08 UTC 2018 - bosim@opensuse.org
+
+- Updated to 1.8.1
+- Ran spec-cleaner
+- Use source url, removed _service file
+
+-------------------------------------------------------------------
+Sun Jul  8 07:49:54 UTC 2018 - bosim@opensuse.org
+
+- Rectified URL
+
+-------------------------------------------------------------------
+Sat Jul  7 08:51:55 UTC 2018 - bosim@opensuse.org
+
+- Initial package
+
+

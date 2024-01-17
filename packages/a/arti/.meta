@@ -1,0 +1,6 @@
+<package name="arti" project="openSUSE:Factory">
+  <title>arti</title>
+  <description>A minimal command line program for connecting to the Tor network</description>
+  <devel project="network" package="arti"/>
+  <url>https://gitlab.torproject.org/tpo/core/arti</url>
+</package>

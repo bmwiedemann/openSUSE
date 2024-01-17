@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Fri Sep 22 06:44:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.10.2:
+  * loads configuration file asynchronously
+  * keeps going upon configuration file errors
+  * The ‘service’ form supports a new #:respawn-limit parameter to specify per-service respawn limits.
+  * Fix: Disabled services are truly disabled
+  * Signals are properly handled after ‘daemonize’
+  * New ‘unregister-services’ procedure
+  * A Bash completion file is now installed, providing tab completion for the ‘herd’ command.
+  * ‘herd’ shows a hint when the service and action are likely swapped
+  * Updated translations: de, ro, sv, uk
+
+- added bash completion package
+
+-------------------------------------------------------------------
+Sun Jun 18 09:33:20 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.10.1:
+  * Major internal overhaul (in 0.9.x): usage of Guile Fibers to
+    allow concurrency, which enables a lot of new features around
+    services
+  Changes in 0.10.1:
+  * Configurable number of ‘bind’ attempts for endpoints
+  * New ‘default-respawn-limit’ parameter
+  * ‘herd restart SERVICE’ starts the replacement, not the original service
+  * ‘herd restart SERVICE’ does not restart transient services
+- remove no longer needed shepherd-rpmlintrc
+- add shepherd.keyring for signature check
+- dependent on guile-fibers
+- support for Guile 2.0 was dropped (because of fibers requirements)
+
+-------------------------------------------------------------------
+Tue Nov 24 22:08:42 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.8.1:
+  * Fix race condition that could lead shepherd to stop itself
+  * Use ‘signalfd’ on GNU/Linux to improve efficiency and simplify code
+  * Outdated bits have been removed from the manual
+  * Updated translation: sv
+
+-------------------------------------------------------------------
+Wed Apr 22 10:49:38 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.8.0:
+  Changes since 0.7.0:
+  * Kill the whole process group when the PID file doesn’t show up
+  * ‘make-kill-destructor’ kills the process group
+  * New ‘default-pid-file-timeout’ SRFI-39 parameter
+  * New #:file-creation-mask parameter for ‘make-forkexec-constructor’
+  * ‘make-forkexec-constructor’ creates log files as #o640
+  * Improve documentation and examples
+  * Ensure man pages are up to date
+  * Fix compilation on systems without ‘prctl’ such as GNU/Hurd
+  * Remove kludge that would send SIGALRM every second
+  * Address “error in finalization thread” warning
+  * ‘make-forkexec-constructor’ no longer supports old calling convention 
+- Adapt rpmlintrc to Guile 3.0 and remove no longer needed rule
+
+-------------------------------------------------------------------
+Sun Feb 16 22:57:21 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.7.0
+  Changes since 0.6.1:
+  * New crash handler allows shepherd as PID 1 to dump core on GNU/Linux
+  * (shepherd service) now exports ‘default-environment-variables’
+  * ‘make-forkexec-constructor’ no longer removes log file
+  * Disable reboot on ctrl-alt-del before loading the config file
+  * Exception handling adjusted for Guile 3.0.0 
+- Install .so file for crash handler
+
+-------------------------------------------------------------------
+Mon May 13 09:03:32 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to 0.6.1
+  Changes since 0.6.0:
+  * ‘herd status’ distinguishes between “stopped” and “one-shot” services
+  * ‘read-pid-file’ gracefully handles PID files not created atomically
+  * ‘shepherd’ no longer crashes when asked to load files with syntax errors
+  * Updated and new translations
+
+-------------------------------------------------------------------
+Tue Apr 23 13:06:25 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
+
+- Update to 0.6.0
+  Changes since 0.5.0:
+  * Services can now be “one-shot” (see the manual for details)
+  * ‘shepherd’ deletes its socket file upon termination
+  * ‘herd stop S’ is no longer an error when S is already stopped
+  * ‘herd’ exits with non-zero when executing an action that fails
+  * ‘shepherd’ ignores reboot(2) errors when running in a container
+  * Translation of error messages has been fixed
+  * Updated and new translations
+- add rpmlintrc to filter out false positives for .go files
+- change source location to ftp.gnu.org from alpha.gnu.org
+- make spec-cleaner happy: mostly missing brackets
+- adjust description to renaming of GuixSD to Guix (System)
+
+-------------------------------------------------------------------
+Tue Oct  2 10:57:11 UTC 2018 - jbrielmaier@suse.de
+
+- bump to 0.5.0
+  Changes since 0.4.0
+  ** Services now have a ‘replacement’ slot
+  ** Restarting a service now restarts its dependent services as well
+  ** Gracefully halt upon ctrl-alt-del when running as PID 1 on GNU/Linux
+  ** Actions can now be invoked on services not currently running
+  ** Guile >= 2.0.13 is now required; Guile 3.0 is supported
+  ** Unused runlevel code has been removed
+  ** Updated translations: es, fr, pt_BR, sv
+- require guile-devel >= 2.0.13
+ 
+-------------------------------------------------------------------
+Fri Mar 23 15:16:41 UTC 2018 - sleep_walker@opensuse.org
+
+- bump to 0.4.0
+  changes since 0.3.2
+  ** When running as non-root, keep track of forked processes
+  ** When running as root, log to /dev/log (syslogd) or /dev/kmsg by default
+  ** ‘exec-command’ opens log file in append mode
+  ** Add native language support (5 languages currently supported)
+  ** ‘log-output-port’ is now a SRFI-39 parameter
+  ** New ‘make-shepherd-output-port’ in lieu of ‘shepherd-output-port’
+  ** Fix non-deterministic test suite issues
+
+-------------------------------------------------------------------
+Sat Mar 10 09:51:50 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Fri Mar  9 18:02:53 UTC 2018 - sleep_walker@opensuse.org
+
+- put conflicting man pages into shepherd-bins which conflicts with
+  systemd-sysvinit providing the same manpages
+
+-------------------------------------------------------------------
+Tue May 23 07:46:00 UTC 2017 - sleep_walker@opensuse.org
+
+- let there be shepherd init
+- make shepherd-bins conflicting with systemd-sysvinit

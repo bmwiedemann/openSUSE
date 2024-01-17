@@ -1,0 +1,192 @@
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/ant/AntWorkspaceResolver.java	2023-09-19 08:19:56.002999512 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/ant/AntWorkspaceResolver.java	2023-09-19 09:00:48.163799846 +0200
+@@ -197,7 +197,7 @@
+                     throw new RuntimeException("Unsupported file path : " + artifactFile, e);
+                 }
+ 
+-                res.add(new DefaultArtifact(md.getModuleRevisionId(), new Date(), name, type, ext,
++                res.add(new DefaultArtifact(md.getModuleRevisionId(), System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date(), name, type, ext,
+                         url, null));
+             }
+ 
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/ant/IvyDeliver.java	2023-09-19 08:19:56.002999512 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/ant/IvyDeliver.java	2023-09-19 09:01:57.027624096 +0200
+@@ -374,7 +374,7 @@
+         if (revision == null) {
+             revision = Ivy.getWorkingRevision();
+         }
+-        Date pubdate = getPubDate(this.pubdate, new Date());
++        Date pubdate = getPubDate(this.pubdate, System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date());
+         if (pubRevision == null) {
+             if (revision.startsWith("working@")) {
+                 pubRevision = DateUtil.format(pubdate);
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/ant/IvyPublish.java	2023-09-19 08:19:56.006332869 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/ant/IvyPublish.java	2023-09-19 09:02:18.827779503 +0200
+@@ -273,7 +273,7 @@
+         if ("working".equals(revision)) {
+             revision = Ivy.getWorkingRevision();
+         }
+-        Date pubdate = getPubDate(this.pubdate, new Date());
++        Date pubdate = getPubDate(this.pubdate, System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date());
+         if (pubRevision == null) {
+             if (revision.startsWith("working@")) {
+                 pubRevision = DateUtil.format(pubdate);
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/ant/IvyTask.java	2023-09-19 08:19:56.006332869 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/ant/IvyTask.java	2023-09-19 09:01:36.900813938 +0200
+@@ -177,7 +177,7 @@
+             return def;
+         }
+         if ("now".equals(date.toLowerCase(Locale.US))) {
+-            return new Date();
++            return System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date();
+         }
+         try {
+             return DateUtil.parse(date);
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/core/cache/DefaultRepositoryCacheManager.java	2023-09-19 08:19:56.006332869 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/core/cache/DefaultRepositoryCacheManager.java	2023-09-19 08:20:15.856475360 +0200
+@@ -1472,7 +1472,7 @@
+     }
+ 
+     private Artifact getDefaultMetadataArtifact(ModuleRevisionId mrid) {
+-        return new DefaultArtifact(mrid, new Date(), "metadata", "metadata", "ivy", true);
++        return new DefaultArtifact(mrid, System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date(), "metadata", "metadata", "ivy", true);
+     }
+ 
+     // not used any more, but may be useful for finer grained locking when downloading artifacts
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/core/deliver/DeliverOptions.java	2023-09-19 08:19:56.006332869 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/core/deliver/DeliverOptions.java	2023-09-19 09:02:47.901319704 +0200
+@@ -61,7 +61,7 @@
+      * @return a DeliverOptions instance ready to be used or customized
+      */
+     public static DeliverOptions newInstance(IvySettings settings) {
+-        return new DeliverOptions(null, new Date(), new DefaultPublishingDRResolver(),
++        return new DeliverOptions(null, System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date(), new DefaultPublishingDRResolver(),
+                 settings.doValidate(), true, null);
+     }
+ 
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/core/install/InstallEngine.java	2023-09-19 08:19:56.006332869 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/core/install/InstallEngine.java	2023-09-19 09:04:45.372153072 +0200
+@@ -86,7 +86,7 @@
+ 
+             DefaultModuleDescriptor md = new DefaultModuleDescriptor(ModuleRevisionId.newInstance(
+                 "apache", "ivy-install", "1.0"), settings.getStatusManager().getDefaultStatus(),
+-                    new Date());
++                    System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date());
+             String resolveId = ResolveOptions.getDefaultResolveId(md);
+             md.addConfiguration(new Configuration("default"));
+             md.addConflictManager(new ModuleId(ExactPatternMatcher.ANY_EXPRESSION,
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/core/module/descriptor/DefaultArtifact.java	2023-09-19 08:19:56.009666226 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/core/module/descriptor/DefaultArtifact.java	2023-09-19 08:20:27.823227936 +0200
+@@ -100,7 +100,7 @@
+             throw new NullPointerException("null arid not allowed");
+         }
+         if (publicationDate == null) {
+-            publicationDate = new Date();
++            publicationDate = System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date();
+         }
+         this.publicationDate = publicationDate;
+         this.arid = arid;
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/core/module/descriptor/DefaultModuleDescriptor.java	2023-09-19 08:19:56.009666226 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/core/module/descriptor/DefaultModuleDescriptor.java	2023-09-19 08:21:12.330214087 +0200
+@@ -272,7 +272,7 @@
+         this.resolvedRevId = id;
+         this.status = status;
+         this.publicationDate = pubDate;
+-        this.resolvedPublicationDate = publicationDate == null ? new Date() : publicationDate;
++        this.resolvedPublicationDate = publicationDate == null ? (System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date()) : publicationDate;
+         this.isDefault = isDefault;
+         this.parser = XmlModuleDescriptorParser.getInstance();
+     }
+@@ -308,7 +308,7 @@
+     public void setPublicationDate(Date publicationDate) {
+         this.publicationDate = publicationDate;
+         if (resolvedPublicationDate == null) {
+-            resolvedPublicationDate = publicationDate == null ? new Date() : publicationDate;
++            resolvedPublicationDate = publicationDate == null ? (System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date()) : publicationDate;
+         }
+     }
+ 
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/core/publish/PublishEngine.java	2023-09-19 08:19:56.009666226 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/core/publish/PublishEngine.java	2023-09-19 09:03:21.054888232 +0200
+@@ -102,7 +102,7 @@
+         ModuleDescriptor md = null;
+         if (options.getSrcIvyPattern() != null) {
+             File ivyFile = settings.resolveFile(IvyPatternHelper.substitute(
+-                options.getSrcIvyPattern(), DefaultArtifact.newIvyArtifact(pubmrid, new Date())));
++                options.getSrcIvyPattern(), DefaultArtifact.newIvyArtifact(pubmrid, System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date())));
+             if (!ivyFile.exists()) {
+                 throw new IllegalArgumentException("ivy file to publish not found for " + mrid
+                         + ": call deliver before (" + ivyFile + ")");
+@@ -132,7 +132,7 @@
+                                             : options.getStatus())
+                                     .setRevision(options.getPubrevision())
+                                     .setBranch(options.getPubBranch())
+-                                    .setPubdate(options.getPubdate() == null ? new Date()
++                                    .setPubdate(options.getPubdate() == null ? (System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date())
+                                             : options.getPubdate())
+                                     .setMerge(options.isMerge())
+                                     .setMergedDescriptor(md)
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/core/report/ResolveReport.java	2023-09-19 08:19:56.009666226 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/core/report/ResolveReport.java	2023-09-19 09:04:29.478706979 +0200
+@@ -360,7 +360,7 @@
+ 
+     public ModuleDescriptor toFixedModuleDescriptor(IvySettings settings, List<ModuleId> midToKeep) {
+         DefaultModuleDescriptor fixedmd = new DefaultModuleDescriptor(md.getModuleRevisionId(),
+-                md.getStatus(), new Date());
++                md.getStatus(), System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date());
+ 
+         // copy namespaces
+         for (Map.Entry<String, String> ns : md.getExtraAttributesNamespaces().entrySet()) {
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/core/resolve/ResolveEngine.java	2023-09-19 08:19:56.009666226 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/core/resolve/ResolveEngine.java	2023-09-19 09:04:13.531927183 +0200
+@@ -572,7 +572,7 @@
+         try {
+             options.setConfs(confs);
+ 
+-            Date reportDate = new Date();
++            Date reportDate = System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date();
+             ResolveData data = context.getResolveData();
+             if (data == null) {
+                 data = new ResolveData(this, options);
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/osgi/core/BundleInfoAdapter.java	2023-09-19 08:19:56.012999584 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/osgi/core/BundleInfoAdapter.java	2023-09-19 09:06:16.799468326 +0200
+@@ -93,7 +93,7 @@
+         md.addExtraAttributeNamespace("o", Ivy.getIvyHomeURL() + "osgi");
+         ModuleRevisionId mrid = asMrid(BundleInfo.BUNDLE_TYPE, bundle.getSymbolicName(),
+             bundle.getVersion());
+-        md.setResolvedPublicationDate(new Date());
++        md.setResolvedPublicationDate(System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date());
+         md.setModuleRevisionId(mrid);
+ 
+         md.addConfiguration(CONF_DEFAULT);
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/osgi/repo/AbstractOSGiResolver.java	2023-09-19 08:19:56.012999584 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/osgi/repo/AbstractOSGiResolver.java	2023-09-19 09:06:27.589544872 +0200
+@@ -201,7 +201,7 @@
+             Collections.singletonMap(CAPABILITY_EXTRA_ATTR, md.getModuleRevisionId().toString()));
+ 
+         DefaultModuleDescriptor capabilityMd = new DefaultModuleDescriptor(capabilityRev,
+-                getSettings().getStatusManager().getDefaultStatus(), new Date());
++                getSettings().getStatusManager().getDefaultStatus(), System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date());
+ 
+         String useConf = BundleInfoAdapter.CONF_USE_PREFIX + dd.getDependencyRevisionId().getName();
+ 
+--- apache-ivy-2.5.2/src/java/org/apache/ivy/plugins/parser/m2/PomModuleDescriptorBuilder.java	2023-09-19 08:19:56.016332941 +0200
++++ apache-ivy-2.5.2/src/java/org/apache/ivy/plugins/parser/m2/PomModuleDescriptorBuilder.java	2023-09-19 09:05:45.949249470 +0200
+@@ -249,7 +249,7 @@
+             DependencyResolver resolver = parserSettings.getResolver(mrid);
+ 
+             if (resolver != null) {
+-                DefaultArtifact artifact = new DefaultArtifact(mrid, new Date(), artifactId, "jar",
++                DefaultArtifact artifact = new DefaultArtifact(mrid, System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date(), artifactId, "jar",
+                         "jar");
+                 ArtifactOrigin artifactOrigin = resolver.locate(artifact);
+ 
+@@ -268,7 +268,7 @@
+             ext = packaging;
+         }
+ 
+-        mainArtifact = new DefaultArtifact(mrid, new Date(), artifactId, packaging, ext);
++        mainArtifact = new DefaultArtifact(mrid, System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date(), artifactId, packaging, ext);
+         ivyModuleDescriptor.addArtifact("master", mainArtifact);
+     }
+ 

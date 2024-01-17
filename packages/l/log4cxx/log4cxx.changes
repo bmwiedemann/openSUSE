@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Sat Jan  6 10:35:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * LOG4CXX_XXXX macros now support logging of QStrings directly
+  * log4cxx::hexdump function that returns a string of hexadecimal
+    byte values
+  * Ability to remove a HierarchyEventListener [#233]
+  * Less string copying when sending a logging event to an appender
+  * Less frequent mutex contention when logging from multiple
+    threads concurrently [#320]
+  * Allow thread information to be included in JSON formatted output
+  * Optional support for logging during process termination [#271]
+  * A cmake option to place Log4cxx functions in a different
+    namespace [#277]
+  * Optionally use std::format in LOG4CXX_XXXX_FMT macros instead
+    of fmt::format [#291]
+  * Support for per object enabling/disabling of logging requests
+    (see log4cxx::LoggerInstancePtr)
+  * * https://logging.apache.org/log4cxx/latest_stable/changelog.html#rel_1_2_0
+
+-------------------------------------------------------------------
+Sat Dec 30 20:59:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0 (bsc#1211173, CVE-2023-31038):
+  * Fix CVE-2023-31038
+  * Fix to build on Windows Server 2016
+  * Fix compiling errors with older compilers
+  * Make ODBC and SMTP opt-in instead of automatic
+  * Parameterize statements for ODBC inserts. Add new generic
+    DBAppender class that uses APR for database support
+  * Fix Qt support
+- update to 1.0.0:
+  * This is a major release that fixes a number of long-standing
+    issues and is desinged to make Log4cxx ABI stable moving
+    forward.
+  * Removed log4j style Java serialization. Due to Java's inherent
+    problems with serialization, and the fact that Chainsaw no
+    longer supports it, it has been completely removed.
+  * A number of obsolete classes have been removed
+  * Removal of TTCCLayout. If you still want this layout, use a
+    PatternLayout with a format similar to the following: %r [%t] %-5p
+    - %m%n
+  * Removal of DateLayout. Use PatternLayout instead.
+  * Classes now use an internal private class to store member
+    variables in order to make them ABI stable
+  * Multiprocess support is available, but Log4cxx must be
+    explicitly compiled with this option
+- implement gpg validation
+
+-------------------------------------------------------------------
+Sun Oct  2 13:13:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * switch to cmake
+  * Add macros to utilize libfmt formatting for messages
+  * Allow distribution log4j to be used for socketservertest
+  * Allow for hiding of location data
+  * Add ability to get thread name not just ID
+  * Doxygen documentation is not reproducible
+  * Bugfixes see https://logging.apache.org/log4cxx/latest_stable/changelog.html#0.13.0
+
+-------------------------------------------------------------------
+Sun Sep 27 20:11:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * maintenance release, see https://logging.apache.org/log4cxx/latest_stable/changes-report.html#a0.11.0
+- drop gcc6.patch, log4cxx-fix_duplicate_entries.patch: obsolete
+
+-------------------------------------------------------------------
+Wed Dec 27 23:44:58 UTC 2017 - sleep_walker@opensuse.org
+
+- fix license to SPDX form
+
+-------------------------------------------------------------------
+Sun Oct 30 18:07:20 UTC 2016 - cbosdonnat@suse.com
+
+- Fix build with GCC6. gcc6.patch.
+  https://issues.apache.org/jira/browse/LOGCXX-463
+
+-------------------------------------------------------------------
+Fri Jan 20 14:09:43 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant sections (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Fri Jan 20 13:13:40 UTC 2012 - toddrme2178@gmail.com
+
+- Fixed building on openSUSE:Factory
+- Cleaned up spec file formatting
+- Moved to .changes file
+- Added pkg-config buildrequires (fix for RMPLINT warning)
+- Changed license naming to conform to SPDX convention (fix for RMPLINT warning)
+- Fixed group (fix for RMPLINT warning)
+
+-------------------------------------------------------------------
+Wed Apr 22 00:00:00 UTC 2009 - bitshuffler #suse@irc.freenode.org
+
+- Fixed broken builds
+

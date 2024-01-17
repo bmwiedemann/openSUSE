@@ -1,0 +1,18 @@
+Author: Adam Majer <adam.majer@suse.de>
+Summary: SUSE OpenSSL version scheme does not follow upstream.
+ Relax, breathe, apply.
+
+Index: freeradius-server-3.0.20/src/main/version.c
+===================================================================
+--- freeradius-server-3.0.20.orig/src/main/version.c
++++ freeradius-server-3.0.20/src/main/version.c
+@@ -52,6 +52,9 @@ static long ssl_built = OPENSSL_VERSION_
+  */
+ int ssl_check_consistency(void)
+ {
++    // noop, since ABI is compatible for SUSE OpenSSL
++    return 0;
++
+ 	long ssl_linked;
+ 
+ 	ssl_linked = SSLeay();

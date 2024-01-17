@@ -1,0 +1,13 @@
+Index: apache-tomcat-9.0.35-src/build.xml
+===================================================================
+--- apache-tomcat-9.0.35-src.orig/build.xml
++++ apache-tomcat-9.0.35-src/build.xml
+@@ -2038,8 +2039,6 @@ Apache Tomcat ${version} native binaries
+       <link href="../elapi"/>
+       <link href="../websocketapi"/>
+       <link href="../jaspicapi"/>
+-      <link href="https://docs.oracle.com/javase/8/docs/api/"/>
+-      <link href="https://javaee.github.io/javaee-spec/javadocs/"/>
+       <packageset dir="${tomcat.dist}/src/java/">
+         <include name="org/**"/>
+         <exclude name="org/apache/el/parser/**"/>

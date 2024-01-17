@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bc845e60855156f8d186694b8d02151</srcmd5>
+    <version>0.90</version>
+    <time>1583526524</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>782085</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>324315222443e904f9cbd58cf381af10</srcmd5>
+    <version>0.90</version>
+    <time>1588023351</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on big endian architectures</comment>
+    <requestid>798130</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c4b3548a02574350639c34e608347fcb</srcmd5>
+    <version>0.90</version>
+    <time>1669715629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038653</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>07f7af83acd39c49f0525aea8afdf36c</srcmd5>
+    <version>0.90</version>
+    <time>1696451447</time>
+    <user>anag+factory</user>
+    <comment>Build with ant to avoid dependency on scala-maven-plugin</comment>
+    <requestid>1114849</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>93be167b8407abf6f7548fda58be6170</srcmd5>
+    <version>2.0.0</version>
+    <time>1697147056</time>
+    <user>anag+factory</user>
+    <comment>Upgrading the scala stack</comment>
+    <requestid>1117471</requestid>
+  </revision>
+</revisionlist>

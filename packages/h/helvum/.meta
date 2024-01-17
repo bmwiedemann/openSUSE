@@ -1,0 +1,6 @@
+<package name="helvum" project="openSUSE:Factory">
+  <title>A GTK patchbay for pipewire</title>
+  <description>Helvum is a GTK-based patchbay for pipewire, inspired by the JACK tool catia.</description>
+  <devel project="multimedia:apps" package="helvum"/>
+  <url>https://gitlab.freedesktop.org/ryuukyu/helvum</url>
+</package>

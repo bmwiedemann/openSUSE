@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fabf991abba968db55b228ecdb03c1aa</srcmd5>
+    <version>0.93.2</version>
+    <time>1357828236</time>
+    <user>coolo</user>
+    <comment>New package for Haskell Platform. See: http://lists.opensuse.org/opensuse-factory/2012-12/msg00178.html.</comment>
+    <requestid>147574</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fabf991abba968db55b228ecdb03c1aa</srcmd5>
+    <version>0.93.2</version>
+    <time>1359108929</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>523e4f585b38cc5f150d97c17cd6ab22</srcmd5>
+    <version>0.93.2</version>
+    <time>1375363988</time>
+    <user>coolo</user>
+    <comment>Update to Haskell Platform 2013.2.0.0 (forwarded request 185264 from ptrommler)</comment>
+    <requestid>185394</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>523e4f585b38cc5f150d97c17cd6ab22</srcmd5>
+    <version>0.93.2</version>
+    <time>1379662435</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>3e1a881311569a11ffb08d0a6ff1654d</srcmd5>
+    <version>0.93.2</version>
+    <time>1408957484</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>246011</requestid>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>3e1a881311569a11ffb08d0a6ff1654d</srcmd5>
+    <version>0.93.2</version>
+    <time>1409300970</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>dd3e8cf7feda1b5a9c01f1288feda762</srcmd5>
+    <version>0.93.2</version>
+    <time>1417031699</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260165</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>80cbae2b86ff86a68a7f0b3edd0cd01f</srcmd5>
+    <version>0.93.2</version>
+    <time>1468999583</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411868</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>cb7254091683bdd9f1eb2a9c240381a7</srcmd5>
+    <version>0.93.2</version>
+    <time>1505506147</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525286</requestid>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>08314a17056f44323d2ed67ec48894f0</srcmd5>
+    <version>0.93.2</version>
+    <time>1527675624</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609814</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>6990003ed0ffef1563d1d31da587e1f7</srcmd5>
+    <version>0.93.2</version>
+    <time>1532445684</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- regenerate spec file
+- more transparent packaging (fewer macros)
+- expand macro in name tag to help source validator
+- make service localonly for Factory submission
+- use cabal2spec 0.25.5 template for spec file
+- Initial packaging.</comment>
+    <requestid>623840</requestid>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>e897d1259ae895571ce99350bc2859a5</srcmd5>
+    <version>0.93.2</version>
+    <time>1540450987</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643446</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a3f1ec562aa1f2d3f11d81bba874b2c2</srcmd5>
+    <version>0.94.0.0</version>
+    <time>1571402075</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>737211</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>8bb50fce12b85c763a2bb5a44b49164e</srcmd5>
+    <version>0.94.0.0</version>
+    <time>1577451389</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759486</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c8d87404e44f2ffbecaabf6c1f783bf0</srcmd5>
+    <version>0.94.0.0</version>
+    <time>1589196944</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801042</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>d56b59fa4498db9ceba3116167adfb69</srcmd5>
+    <version>0.94.0.0</version>
+    <time>1592579838</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815158</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>2e991c2dfc6137d89d5c4860a34791f0</srcmd5>
+    <version>0.94.0.0</version>
+    <time>1598643411</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829397</requestid>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>91bd01dbcd734722624d658f14bbd47a</srcmd5>
+    <version>0.94.0.0</version>
+    <time>1599509010</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832310</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>7ccc257dcb7f63cf0564b21045a834dc</srcmd5>
+    <version>0.94.0.0</version>
+    <time>1608633915</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857529</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>de2da67168e4127f82074b31084e3a16</srcmd5>
+    <version>0.94.0.1</version>
+    <time>1615362928</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>877667</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>69da2d36e281b89c88975954b79903be</srcmd5>
+    <version>0.94.0.1</version>
+    <time>1629917852</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>912752</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7ad623cc0b12c97e2a0b76e27c8ab0de</srcmd5>
+    <version>0.94.0.2</version>
+    <time>1639931672</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>933329</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>ea11a267900f9b75ef91bcf61d03be64</srcmd5>
+    <version>0.94.0.2</version>
+    <time>1659382221</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987078</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>e08a8a1a673cdf4f3a757b48ec80aa9f</srcmd5>
+    <version>0.94.0.2</version>
+    <time>1680636163</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076014</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>36ee5f1db2c6de02c47ea10f35de0d0a</srcmd5>
+    <version>0.94.0.2</version>
+    <time>1689710031</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1098732</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>d23621742179ee2d175d3fd32c9ca9fa</srcmd5>
+    <version>0.94.0.2</version>
+    <time>1696619652</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1115927</requestid>
+  </revision>
+</revisionlist>

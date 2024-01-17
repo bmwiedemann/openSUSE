@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc613ad63482113aed7a545808050276</srcmd5>
+    <version>2.4.0</version>
+    <time>1574859186</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>749181</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e31d38fcf8484dfffa9102eebb167c51</srcmd5>
+    <version>2.4.2</version>
+    <time>1577137620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758983</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f966fd061b9cef3addf3c856ec2fad24</srcmd5>
+    <version>2.4.6</version>
+    <time>1584745164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786850</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dd513f56f13b826658d334ad7decba1e</srcmd5>
+    <version>2.4.6</version>
+    <time>1590247620</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807709</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>06f2bb24cc4a8cfd34b18644b71a7f16</srcmd5>
+    <version>2.4.9</version>
+    <time>1597403451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824898</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>883f2ecc514a06789660557c9d995bfb</srcmd5>
+    <version>2.4.15</version>
+    <time>1619653107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889017</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a78b8b1adc79ae29e60fc8a582d4185b</srcmd5>
+    <version>2.4.17</version>
+    <time>1634677439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926298</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>777269a6a0b654aaf3e1367a2e491683</srcmd5>
+    <version>2.4.35</version>
+    <time>1665034906</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008125</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2aaebc8ac188dd85acb1ca13bc2f8e22</srcmd5>
+    <version>2.4.40</version>
+    <time>1694545370</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.40:
+  * Generator: Lua: update to generate script that passes AP's luacheck
+  * mavutil.py: add vtol mode mapping
+  * add close method to binary reader
+  * Split off MissionItemProtocol from WPLoader, use it for fence and rally
+  * mavutil: add RTL mode for Blimp
+  * generator: add support for relative path to lua mavlink module
+  * WLUA - add new port for WSL 18570
+  * Fix mavlink Lua Generator for ardupilot lua comments and add it to test
+    script
+  * mavextra: added earth_accel for bin logs
+  * XSD: MAV_CMD missionOnly attribute
+  * mavgen_python: Add python3 target with type annotations
+  * Use strings for char array mavlink fields again
+  * Improve to_string and x25crc
+  * gpslag: cope with GPS instances
+  * mavextra: updated mag field tables
+  * Fix mavutil.mavtcpin not closing the accept()ed port on close()
+  * Generator for Ada language
+  * mavutil: add force option to reboot_autopilot method
+  * mavutil: do not consider MAV_AUTOPILOT_INVALID to be a vehicle heartbeat
+  * generator-C: added last_status field for signing
+  * Generator C: remove set but not used variable
+  * Fix for when signing disabled
+  * Fix the format of the output result of mavgen_cs.py
+  * mavutil: Return mode as 'Mode(msg.custom_mode)' for high-latency streams
+  * mavextra: cope with more Lat/Lon/Lng combinations
+  * mavutil: fixed MavlinkSerialPort wrapper for python3
+  * generator: lua generator for ardupilot lua scripting
+  * tools: add mavmerge to merge two tlogs</comment>
+    <requestid>1110409</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ddb000c9edfc26d8aab2d557cfce8e68</srcmd5>
+    <version>2.4.41</version>
+    <time>1704562864</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.41:
+  * mavfft_pid: allow PID target and error frequencies to be
+    visualized
+  * Fix Wireshark dissector and add snapshot tests
+  * tools: added extract_batch_imu.py
+  * examples: added dup_samples.py
+  * Fix bitshifting issue on 8bit AVR boards when using msgid &gt;
+    255 with generated C libs
+  * mavgen_c: added XXX_encode_status bindings
+  * mavextra: added RotateMag
+  * mavutil: Add circle mode for rover
+  * DFReader: recognise VER.BU for build type
+  * Generator: Lua: allow strings
+  * rotmat: added more euler 321 and 312 functions
+  * generators: js: fix sinon dependency to 15.2.0, add node
+    tests
+  * mavutil: fixed multicast on windows
+  * tools: fix mavplayback.py
+  * sertotcp: auto-reopen serial port
+  * Mavgen WLua: Support 64-bit flag fields
+  * mavschema - Typo 10E5 should be 1E5
+  * tools: Add option to mavgen.py to return exit code if
+    generation fails
+  * github: test against Python 3.11
+  * fixed mavplayback and split
+
+- Update to version 2.4.35
+- Update to version 2.4.34</comment>
+    <requestid>1137112</requestid>
+  </revision>
+</revisionlist>

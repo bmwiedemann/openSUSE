@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sun Jun  9 15:25:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing words to descriptions.
+
+-------------------------------------------------------------------
+Sat Sep 16 17:41:20 UTC 2017 - 9@cirno.systems
+
+- 1.0.4
+  * fix invalid size of ipset while reducing non-optimized ipsets
+
+-------------------------------------------------------------------
+Thu Feb  2 09:55:07 UTC 2017 - 9@cirno.systems
+
+- 1.0.3
+

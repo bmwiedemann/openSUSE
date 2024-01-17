@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20e96277522e1a057b1074f801399d91</srcmd5>
+    <version>0.1.0+225a49a</version>
+    <time>1633959076</time>
+    <user>dimstar_suse</user>
+    <comment>Hi,
+
+This is a new package I would like to maintain. It ships an out-of-tree kernel module which allows to use VFIO for passing through devices which have so called &quot;reset bug&quot; (which means - a device becoming non-functional after the VM, to which it got passed through, shuts down or reboots).
+
+That module is required i.e. for GPUs like Radeon RX 5xxx to be passed through to VMs.
+
+See more on the repo: https://github.com/gnif/vendor-reset</comment>
+    <requestid>924229</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>710452fccc6f8de2c63dd5c35e54662d</srcmd5>
+    <version>0.1.0+225a49a</version>
+    <time>1634331851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925392</requestid>
+  </revision>
+</revisionlist>

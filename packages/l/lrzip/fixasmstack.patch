@@ -1,0 +1,28 @@
+https://github.com/ckolivas/lrzip/pull/243
+
+Author: Bernhard M. Wiedemann
+Date: 2023-04-27
+
+fix problem with executable stack
+based on https://wiki.gentoo.org/wiki/Hardened/GNU_stack_quickstart
+
+    Avoid executable stack
+    
+    without this patch, the rpmlint check for executable stack
+    failed the build on openSUSE.
+
+Index: lrzip-0.641/lzma/ASM/x86/7zCrcOpt_asm.asm
+===================================================================
+--- lrzip-0.641.orig/lzma/ASM/x86/7zCrcOpt_asm.asm
++++ lrzip-0.641/lzma/ASM/x86/7zCrcOpt_asm.asm
+@@ -138,4 +138,10 @@ MY_ENDP
+ %ifidn __OUTPUT_FORMAT__,elf
+ section .note.GNU-stack noalloc noexec nowrite progbits
+ %endif
++%ifidn __OUTPUT_FORMAT__,elf32
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf64
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+ 

@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Thu Jun  1 03:06:19 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.3.0
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  2.3.0   Tue May 30 21:52:20 CDT 2023
+          [ENHANCEMENTS]
+          Added assert_arrayref_of() to verify that all of the elements
+          in an arrayref are of a given type. For example:
+
+              my $users = get_users();
+              assert_arrayref_of( $users, 'My::User' );
+
+-------------------------------------------------------------------
+Tue Jan 31 03:06:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.2.0
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  2.2.0   Sun Jan 29 20:23:59 CST 2023
+          [ENHANCEMENTS]
+          Added assert_cmp( $x, $op, $y [, $msg] ), analogous to cmp_ok in Test::More, so you can do
+              assert_cmp( $n, '>', 10 );
+          which will give better diagnostics than just
+              assert( $n > 10 );
+          Operators supported are: lt le gt ge == != > >= < <=
+
+          assert_all_keys_in() now lists all key failures in the message, not just the first one.
+
+          assert_keys_are() now lists all key failures in the message, not just the first one.
+
+-------------------------------------------------------------------
+Wed Aug 17 03:07:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.1.0
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+
+  2.1.0   Mon Aug 15 19:54:27 CDT 2022
+          [ENHANCEMENTS]
+          Add diagnostic strings to the failures. For example:
+              assert_nonblank( [ 'foo' ], 'This should be nonblank' );
+          would fail with:
+              Assertion (This should be nonblank) failed!
+          but now fails with:
+              Assertion (This should be nonblank) failed!
+              Value is a reference to ARRAY.
+          Similar changes have been made to:
+          * assert_all_keys_in
+          * assert_keys_are
+          * assert_empty
+          * assert_nonempty
+
+-------------------------------------------------------------------
+Sat Aug 14 03:06:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0.1
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  2.0.1   Fri Aug 13 11:57:15 CDT 2021
+          [FIXES]
+          assert_all_keys_in() mistakenly required a non-empty list of
+          keys to check.
+          [ENHANCEMENTS]
+          Sped up assert_isa_in(), assert_is().
+  2.0.0   Thu Aug 12 23:00::00 CDT 2021
+          [DIFFERENCES]
+          Now requires Perl 5.10 or higher.  No longer requires Carp::Assert.
+          The numeric functions are more stringent now.  If it expects
+          a number, then you need to pass a number.  For example,
+          assert_nonnegative($x) would pass if $x was a non-numeric
+          string. Now it must be numeric.
+          assert_empty() and assert_nonempty() no longer gives a message
+          of "Not an array or hash reference".  If you don't pass an array
+          or hash reference, the assertion will just fail with the message
+          passe3d in.
+          assert_aoh() and assert_datetime() no longer provide a default
+          message.
+          assert_in() is more strict. Each element of the target array
+          is checked to not be a reference.
+          assert_exists() and assert_lacks() are more strict.  The list
+          of keys to check cannot be empty.
+          [ENHANCEMENTS]
+          Most of the functions are about twice as fast because of reduced
+          number of function calls internally.
+          Added assert_context_nonvoid() and assert_context_scalar()
+          to assert on how the executing function has been called.
+          assert_in() now lets you use undef as both the needle and one
+          of the values in the haystack.
+
+-------------------------------------------------------------------
+Sun Dec 27 03:06:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+
+  1.26    Sat Dec 26 00:26:23 CST 2020
+          [ENHANCEMENTS]
+          Add assert_arrayref_nonempty().
+
+          Add assert_hashref_nonempty().
+
+-------------------------------------------------------------------
+Thu Oct  8 03:07:06 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  1.24    Tue Oct  6 22:37:06 CDT 2020
+          [ENHANCEMENTS]
+          The requirement for Perl 5.10 has been reverted to 5.6.1.
+
+  1.22    Tue Oct  6 22:03:55 CDT 2020
+          [ENHANCEMENTS]
+          Add assert_keys_are() for asserting an exact list of keys.
+
+-------------------------------------------------------------------
+Sat Aug 10 05:03:19 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.20
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  1.20    Fri Aug  9 10:10:06 CDT 2019
+          [ENHANCEMENTS]
+          Add assert_datetime() for asserting DateTime objects.
+
+-------------------------------------------------------------------
+Sun Jul 21 11:10:54 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  1.18    Fri Jul 19 17:12:32 CDT 2019
+          [ENHANCEMENTS]
+          Added assert_aoh() for asserting an array of hashrefs.
+
+-------------------------------------------------------------------
+Sat Aug  5 05:10:50 UTC 2017 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  1.16    Fri Aug  4 14:18:51 CDT 2017
+          [ENHANCEMENTS]
+          Added the following functions:
+          * assert_numeric( $n )
+          * assert_all_keys_in( \%hash, \@keylist )
+          * assert_empty( [\%hash|\@list] )
+          * assert_coderef( $ref )
+          * assert_isa_in( $ref, \@class_list )
+          Thanks to Eric A. Zarko for some of them.  The rest were migrated
+          from a private code project.
+  
+          Renamed assert_listref() to assert_arrayref(), but keep
+          assert_listref() as backward compatibility.  assert_listref()
+          may go away in the future.
+  
+          [DOCUMENTATION]
+          Fixed a goof in the assert_integer() docs.  Thanks, Randy Lauen.
+
+-------------------------------------------------------------------
+Mon Jun  3 11:54:13 UTC 2013 - coolo@suse.com
+
+- updated to 1.14
+       [ENHANCEMENTS]
+       Added assert_undefined() for Ben Hengst.
+
+       Added assert_unlike().
+
+       [FIXES]
+       assert_nonblank() wasn't using the correct message.  Thanks to
+       Leland Johnson.
+
+       assert_nonempty() wouldn't work on blessed arrays and refs.
+       Now it will.
+
+-------------------------------------------------------------------
+Mon Jan 17 16:25:22 UTC 2011 - coolo@novell.com
+
+- initial package 1.12
+  * created by cpanspec 1.78.03
+

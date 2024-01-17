@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed May 19 10:29:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Use a more sophisticated approach in order to find the correct
+  runtime dependency for libspatialindex
+
+-------------------------------------------------------------------
+Mon May 17 22:22:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for 0.9.7
+- New requirement for spyder 5.0.3
+- add Rtree-opensuse-noarch.patch: we don't put spatialindex into a
+  wheel, so the module is kept pure.

@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Fri Apr  6 13:32:12 UTC 2018 - fcrozat@suse.com
+
+- Build package for SLE and openSUSE using multibuild.
+
+-------------------------------------------------------------------
+Wed May  4 07:46:58 UTC 2016 - zaitor@opensuse.org
+
+- Update gtk2-branding-gtkrc to have Adwaita as
+  gtk-icon-theme-name and hicolor as gtk-fallback-icon-theme
+  values.
+
+-------------------------------------------------------------------
+Mon Oct 12 14:51:25 UTC 2015 - zaitor@opensuse.org
+
+- Bump version to 42.1, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Tue Jul 15 22:49:01 UTC 2014 - dimstar@opensuse.org
+
+- Do not require gnome-icon-theme: GTK2 actually never depended
+  on this icon theme; GTK2 always used theme based icons, without
+  any fallback to gnome theme iconsets.
+- Bump version to 13.2.
+
+-------------------------------------------------------------------
+Sun Sep 22 16:29:17 UTC 2013 - dimstar@opensuse.org
+
+- Run pre_checkin.sh to actually have the version propagated to
+  the used .spec files.
+
+-------------------------------------------------------------------
+Sun Sep 8 07:46:11 UTC 2013 - zaitor@opensuse.org
+
+- Bump version to 13.1, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Wed May 23 07:52:51 UTC 2012 - vuntz@opensuse.org
+
+- Bump version to 12.2, to prepare for next version of openSUSE.
+
+-------------------------------------------------------------------
+Thu Oct 13 12:59:36 UTC 2011 - vuntz@opensuse.org
+
+- Remove %{release} from the gtk2 versioned Requires, to not have
+  to rebuild this package each time gtk2 rebuilds to keep it
+  installable.
+
+-------------------------------------------------------------------
+Wed Jul  6 16:14:11 CEST 2011 - vuntz@opensuse.org
+
+- Bump version to 12.1.
+- Change default theme to use Adwaita engine and gnome icon theme,
+  as we do not have any other good theme for GNOME 3 right now:
+  + Update gtk2-branding-gtkrc accordingly.
+  + Change gtk2-metatheme-sonar Requires to gtk3-metatheme-adwaita.
+  + Change sonar-icon-theme Requires to gnome-icon-theme.
+- Change gtk2-devel BuildRequires to gtk2, since this is enough.
+- Add a Requires for the package providing gtk2, since the branding
+  package is useless without it.
+- Update summary and description.
+
+-------------------------------------------------------------------
+Tue Nov  2 11:02:00 UTC 2010 - coolo@novell.com
+
+- remove the changes.in as it makes it complicated to use osc vc
+
+-------------------------------------------------------------------
+Tue Nov  2 11:00:01 UTC 2010 - coolo@novell.com
+
+- do not provide "gtk2", "not" and "installed"
+
+-------------------------------------------------------------------
+Fri Oct  8 11:49:41 CEST 2010 - vuntz@opensuse.org
+
+- Bump version to 11.4.
+
+-------------------------------------------------------------------
+Sun Aug  8 00:56:42 CEST 2010 - vuntz@opensuse.org
+
+- Use Sonar icon theme by default instead of Gilouche. Change
+  gtk2-metatheme-gilouche Requires to sonar-icon-theme to reflect
+  this.
+
+-------------------------------------------------------------------
+Sat Jan 16 02:37:10 CET 2010 - vuntz@opensuse.org
+
+- Merge openSUSE and SLED branding packaging, and generate the
+  packages from the same sources.
+- Change version to 11.3.
+- Rename gtk2-branding-openSUSE-COPYING to
+  gtk2-branding-COPYING and gtk2-branding-openSUSE-gtkrc to
+  gtk2-branding-gtkrc.
+- Make sure to provide the right version of gtk2-branding, based on
+  the version of the gtk2 package.
+
+-------------------------------------------------------------------
+Sun May 24 17:18:44 CEST 2009 - vuntz@novell.com
+
+- Replace gtk2-theme-openSUSE with gtk2-metatheme-gilouche.
+
+-------------------------------------------------------------------
+Tue May 19 16:22:47 CEST 2009 - vuntz@novell.com
+
+- Change default GTK+ theme to Sonar.
+- Add Requires on gtk2-metatheme-sonar.
+- Add missing build section.
+- Bump version to 11.2.
+- Fix order of supplements to remove rpmlint warning.
+
+-------------------------------------------------------------------
+Tue Nov  4 11:24:10 CET 2008 - vuntz@novell.com
+
+- Bump version to 11.1. Part of bnc#440849.
+
+-------------------------------------------------------------------
+Mon Oct  6 16:04:41 CEST 2008 - sbrabec@suse.cz
+
+- Conflict with other branding providers (FATE#304881).
+
+-------------------------------------------------------------------
+Fri Jun  6 10:40:43 CEST 2008 - sbrabec@suse.cz
+
+- Bump to correct version (bnc#372091#c6).
+
+-------------------------------------------------------------------
+Thu May 29 17:05:54 CEST 2008 - sbrabec@suse.cz
+
+- Use Gilouche theme as default instead of Tango (bnc#391865).
+
+-------------------------------------------------------------------
+Wed May 14 15:12:06 CEST 2008 - dmueller@suse.de
+
+- add missing provides
+
+-------------------------------------------------------------------
+Mon Apr 14 19:13:43 CEST 2008 - sbrabec@suse.cz
+
+- Use packageand form of branding supplement.
+
+-------------------------------------------------------------------
+Wed Apr  9 14:52:36 CEST 2008 - sbrabec@suse.cz
+
+- Added COPYING file (bnc#368603).
+
+-------------------------------------------------------------------
+Mon Apr  7 13:37:00 CEST 2008 - sbrabec@suse.cz
+
+- Reflect renaming of gtk2-theme-openSUSE package.
+
+-------------------------------------------------------------------
+Fri Mar  7 17:03:14 CET 2008 - sbrabec@suse.cz
+
+- Split gtk2 default branding definition out from gtk2 as a
+  separate package.
+

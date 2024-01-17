@@ -1,0 +1,8 @@
+<package name="python-transip" project="openSUSE:Factory">
+  <title>TransIP API Connector</title>
+  <description>This library aims to implement the TransIP API in Python.
+
+</description>
+  <devel project="devel:languages:python" package="python-transip"/>
+  <url>https://github.com/benkonrath/transip-api</url>
+</package>

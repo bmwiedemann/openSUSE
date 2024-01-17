@@ -1,0 +1,387 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc38ba5e1c1090577058a4173a04a88e</srcmd5>
+    <version>0.5</version>
+    <time>1343661201</time>
+    <user>namtrac</user>
+    <comment></comment>
+    <requestid>129074</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c3aea349316cb16490ab28d5b7b42ed</srcmd5>
+    <version>0.7</version>
+    <time>1353847340</time>
+    <user>coolo</user>
+    <comment>Dependency for python-warlock</comment>
+    <requestid>142496</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8c3aea349316cb16490ab28d5b7b42ed</srcmd5>
+    <version>0.7</version>
+    <time>1359110058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d71ebf41a309ae09e74e00efbd93511</srcmd5>
+    <version>1.0.0</version>
+    <time>1361821304</time>
+    <user>coolo</user>
+    <comment>Update and python3 (forwarded request 156304 from posophe)</comment>
+    <requestid>156322</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>caca04af2019c8e4356f00f8db954c9d</srcmd5>
+    <version>1.0.0</version>
+    <time>1365928695</time>
+    <user>coolo</user>
+    <comment>- Remove pre_checkin.sh since the two packages are not the same
+- Added requires and buildrequires python3.  It will not work properly without them on openSUSE &lt; 12.3 (forwarded request 163872 from TheBlackCat)</comment>
+    <requestid>163873</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>844d9295f2f28ad2b5d967445c817230</srcmd5>
+    <version>2.0.0</version>
+    <time>1371654103</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179870</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>844d9295f2f28ad2b5d967445c817230</srcmd5>
+    <version>2.0.0</version>
+    <time>1379664203</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ee5eec39917f391c8620b1df241f083a</srcmd5>
+    <version>2.2.0</version>
+    <time>1383578390</time>
+    <user>coolo</user>
+    <comment>- update to 2.2.0:
+  * Compile the host name regex (#127)
+  * Allow arbitrary objects to be types (#129)
+  * Support RFC 3339 datetimes in conformance with the spec
+  * Fixed error paths for additionalItems + items (#122)
+  * Fixed wording for min / maxProperties (#117) (forwarded request 205477 from dirkmueller)</comment>
+    <requestid>205480</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0811ba1fd1320ab9d5f3f5c6e029cca9</srcmd5>
+    <version>2.2.0</version>
+    <time>1393394104</time>
+    <user>coolo</user>
+    <comment>- remove dependency on unittest2 (forwarded request 222148 from dirkmueller)</comment>
+    <requestid>222168</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>0811ba1fd1320ab9d5f3f5c6e029cca9</srcmd5>
+    <version>2.2.0</version>
+    <time>1409302900</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ba9c83a55bf3da7e4092a790e756f60e</srcmd5>
+    <version>2.4.0</version>
+    <time>1410967513</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249297</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b2e229b2193d98aea433f839d1d43a27</srcmd5>
+    <version>2.4.0</version>
+    <time>1415866645</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260908</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>12a7770c261480c42bd1f16db9e1c8e1</srcmd5>
+    <version>2.5.1</version>
+    <time>1443584948</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>322413</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e8afd501f02c7fe655ad04cbc7516236</srcmd5>
+    <version>2.5.1</version>
+    <time>1445287712</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336545</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bdc09864f2b9664cdc94b448de88137a</srcmd5>
+    <version>2.6.0</version>
+    <time>1493368973</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0
+- Implement single-spec version</comment>
+    <requestid>489482</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0b883cd858fdd67cabf33c1b002f6be1</srcmd5>
+    <version>2.6.0</version>
+    <time>1516970321</time>
+    <user>dimstar_suse</user>
+    <comment>- Add condition around the python2 code to make sure we can build
+  in python3 only enviroment</comment>
+    <requestid>568851</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>f8cdf525def3ed9f864b5fab3400cb9d</srcmd5>
+    <version>2.6.0</version>
+    <time>1548064427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665995</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2835116495be0e4a81ccda27ebefa8ce</srcmd5>
+    <version>3.0.1</version>
+    <time>1553888336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Support for Draft 6 and Draft 7
+  * Draft 7 is now the default
+  * New TypeChecker object for more complex type definitions (and overrides)
+  * Falling back to isodate for the date-time format checker is no longer attempted, in accordance with the specification</comment>
+    <requestid>689397</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>f37859bf19b5feaa8c86a7bfff12cb2d</srcmd5>
+    <version>2.6.0</version>
+    <time>1554930527</time>
+    <user>dimstar_suse</user>
+    <comment>- downgrade to &lt; 3.0.0 again to fix all openstack clients</comment>
+    <requestid>692367</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>bcaa481b43349d06bdebec79e89d69c0</srcmd5>
+    <version>2.6.0</version>
+    <time>1555773156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695484</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>801d462f8b0448edc38f7a1a98e9f6c4</srcmd5>
+    <version>3.0.2</version>
+    <time>1569389923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732149</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>31b8587ce8f90859b07a2a203cff3bad</srcmd5>
+    <version>3.0.2</version>
+    <time>1572883703</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>741565</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>aa2bad0d825b9b05ff6e464583c07e77</srcmd5>
+    <version>3.2.0</version>
+    <time>1574677411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750236</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5bc21fd8b720c121d50881c1debe0f51</srcmd5>
+    <version>3.2.0</version>
+    <time>1585264865</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with new webcolors:
+  * webcolors.patch</comment>
+    <requestid>784158</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>15cb76f957d2aa824d36bdd2b7847210</srcmd5>
+    <version>3.2.0</version>
+    <time>1611068364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863348</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>c33724f161d43a40294d3ace6399d5c9</srcmd5>
+    <version>3.2.0</version>
+    <time>1622536379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895334</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>773dd351796c76909fa220ff5215862c</srcmd5>
+    <version>3.2.0</version>
+    <time>1636498436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929847</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9100164cb213c3da0c148f5a55ef19a1</srcmd5>
+    <version>4.4.0</version>
+    <time>1651272304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973210</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6e2b50fb6e6ae39658daeb5121be31ca</srcmd5>
+    <version>4.5.1</version>
+    <time>1654506595</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.5.1:
+  * Revert changes to ``$dynamicRef`` which caused a performance regression
+    in v4.5.0
+  * Validator classes for each version now maintain references to the correct
+    corresponding format checker (#905)
+  * Development has moved to a `GitHub organization
+    &lt;https://github.com/python-jsonschema/&gt;`_.
+    No functional behavior changes are expected from the change.</comment>
+    <requestid>980820</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0c57df9b1c3297f982a66e2fc6936795</srcmd5>
+    <version>4.8.0</version>
+    <time>1659612201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>991690</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a0df504714f3a6161068f8f7a616f3ec</srcmd5>
+    <version>4.10.3</version>
+    <time>1664302391</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006033</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>56f66e96cd4dc24867968dd82f785779</srcmd5>
+    <version>4.16.0</version>
+    <time>1665754821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010441</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1bccc9ab8267e8c87173e924db2c9f18</srcmd5>
+    <version>4.17.0</version>
+    <time>1668702221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035979</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>197eb06c822bfe075df1387314cb4f0f</srcmd5>
+    <version>4.17.1</version>
+    <time>1669288928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037460</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>bf9d4e9f188468f2bd75d424bfc5cb2b</srcmd5>
+    <version>4.17.3</version>
+    <time>1669983120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039224</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>c6ec3557d5fc47d4cd60c2f42ac98c5a</srcmd5>
+    <version>4.17.3</version>
+    <time>1672562292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045544</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>04f01d206ea755154bc3b0da632d11b6</srcmd5>
+    <version>4.17.3</version>
+    <time>1682193652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081913</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2a35eb21e722269c80ded3fedbf97f2d</srcmd5>
+    <version>4.18.0</version>
+    <time>1688737560</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097125</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>09daca628ebbdfe59f8c741a5ee87418</srcmd5>
+    <version>4.18.3</version>
+    <time>1689341746</time>
+    <user>dimstar_suse</user>
+    <comment>patch version bump</comment>
+    <requestid>1098666</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>60835c82b18552754b11e6511032b0a9</srcmd5>
+    <version>4.18.4</version>
+    <time>1689786589</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099226</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7c49342150f1d035c6a8edeafab50b7e</srcmd5>
+    <version>4.18.6</version>
+    <time>1691232896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102347</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4a8293e787336584a08a66a049d63af1</srcmd5>
+    <version>4.19.0</version>
+    <time>1694113933</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109430</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>e305fa1e14ff4f4f7778f09f1efc242d</srcmd5>
+    <version>4.18.6</version>
+    <time>1694113972</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.2.0 (jsc#SLE-18756):</comment>
+    <requestid>1109350</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>aa9fda56339eb974065d2f6cf6583e3c</srcmd5>
+    <version>4.19.1</version>
+    <time>1695758421</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112882</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5c3a9a0943bdb02d952dbc776f4d1f4e</srcmd5>
+    <version>4.19.2</version>
+    <time>1698780309</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121295</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b8cebf245b84edf5533d7f17abbc8eae</srcmd5>
+    <version>4.20.0</version>
+    <time>1701023787</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1128485</requestid>
+  </revision>
+</revisionlist>

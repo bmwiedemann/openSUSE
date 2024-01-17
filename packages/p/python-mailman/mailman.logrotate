@@ -1,0 +1,9 @@
+@LOGDIR@/*.log {
+    missingok
+    sharedscripts
+    su mailman mailman
+    postrotate
+        /bin/kill -HUP $(</run/mailman/master.pid) 2>/dev/null || true
+        @BINDIR@/mailman reopen >/dev/null 2>&1 || true
+    endscript
+}

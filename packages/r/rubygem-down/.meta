@@ -1,0 +1,8 @@
+<package name="rubygem-down" project="openSUSE:Factory">
+  <title>Robust streaming downloads using Net::HTTP, HTTP.rb or wget</title>
+  <description>Robust streaming downloads using Net::HTTP, HTTP.rb or wget.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-down"/>
+  <url>https://github.com/janko/down</url>
+</package>

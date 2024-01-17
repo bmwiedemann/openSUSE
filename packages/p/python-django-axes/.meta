@@ -1,0 +1,5 @@
+<package name="python-django-axes" project="openSUSE:Factory">
+  <title></title>
+  <description>Keep track of failed login attempts in Django-powered sites</description>
+  <devel project="devel:languages:python:django" package="python-django-axes"/>
+</package>

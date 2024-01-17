@@ -1,0 +1,16 @@
+Index: accountsservice-22.08.8/data/accounts-daemon.service.in
+===================================================================
+--- accountsservice-22.08.8.orig/data/accounts-daemon.service.in	2022-02-23 16:27:48.000000000 +0100
++++ accountsservice-22.08.8/data/accounts-daemon.service.in	2022-08-02 09:17:14.424438207 +0200
+@@ -8,6 +8,11 @@
+ Wants=nss-user-lookup.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelLogs=true
+ Type=dbus
+ BusName=org.freedesktop.Accounts
+ ExecStart=@libexecdir@/accounts-daemon

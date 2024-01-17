@@ -1,0 +1,317 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4efad6b905aabf50865de1a6422d4035</srcmd5>
+    <version>2.4.2</version>
+    <time>1592245980</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of version 2.4.2</comment>
+    <requestid>814697</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0bd39dd4e007eba68556df469a5dbd0c</srcmd5>
+    <version>2.4.3</version>
+    <time>1594228578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819159</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b936cd59e0211166968cc7b57a641d43</srcmd5>
+    <version>2.4.3</version>
+    <time>1598341239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829088</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4bf94616701e3a1a42d3a8cf31186e3e</srcmd5>
+    <version>2.4.5</version>
+    <time>1601296116</time>
+    <user>dimstar_suse</user>
+    <comment>- Changed from obs_scm to tar_scm to unstuck legaldb
+- Added:
+  * onedrive-2.4.5.tar
+- Removed:
+  * onedrive-2.4.5.obscpio
+  * onedrive-2.4.5.tar.gz 
+- Add fish completition to specfile
+- Update to version 2.4.5:
+  * Release files for 2.4.5 (#1018)
+  * Fix installation of fish, enable autoconf configure argument (#1016)
+  * Release 2.4.5 Development Prep (#1017)
+  * Release files for 2.4.4 (#1015)
+  * Update --single-directory handling of parent path matching (#1014)
+  * Update how available free space is tracked when uploading files to OneDrive (#1011)
+  * Fix 'Skipping uploading this new file as parent path is not in the database' when uploading to a Personal Shared Folder (#1009)
+  * Update Office365 / SharePoint site search query (#1006)
+  * Check shared folder DB entries for matching skip_dir items (#1003)
+  * Update Docker.md (#1002)
+  * Update when 'Sync with OneDrive is ..' is outputted when in --monitor mode (#999)
+  * Fix segfault when moving file when using --monitor (#997)
+  * Improve --single-directory sync performance (#992)
+  * Fish Tab Auto-completions (#991)
+  * Update the 'Processing XXXX' output to display the full path (#987)
+  * Increase maximum file size to 100GB (#989)
+  * Resolve client 'hang' when attempting to sync a Unix pipe file (#985)
+  * Update 'skip_dir' and 'skip_file' pattern matching and handling for --monitor (#986)
+  * Update 'skip_dir' and 'skip_file' pattern matching and handling (Issue #982) (#983)
+  * Update installation instructions for NixOS (#981)
+  * Update docker md (#977)
+  * Update Dockerfiles (#980)
+  * Update bug_report.md
+  * Release 2.4.4 Development Prep (#974)
+</comment>
+    <requestid>837998</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8996dd53db258e04cb649f84922701e6</srcmd5>
+    <version>2.4.7</version>
+    <time>1604926699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847060</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8357bdd9ea316cffe3f270afe8025d6a</srcmd5>
+    <version>2.4.8</version>
+    <time>1606829008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852024</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea88da3bba83d244c4e4d56feffddf2d</srcmd5>
+    <version>2.4.10</version>
+    <time>1614684859</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875897</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>293438caffaf8af10da04ed76acdf477</srcmd5>
+    <version>2.4.11</version>
+    <time>1617910330</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883588</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0bdf4d91191ed8477834d42e4cbed4cb</srcmd5>
+    <version>2.4.12</version>
+    <time>1622664738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896847</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9789b46b38978b790a3072c3c861db13</srcmd5>
+    <version>2.4.12</version>
+    <time>1624813162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902613</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f24dc6bcadf107501a0e30ac2848a81</srcmd5>
+    <version>2.4.13</version>
+    <time>1626386431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906406</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1b6622476287fb51d1d73f33d2b7357d</srcmd5>
+    <version>2.4.13</version>
+    <time>1634587193</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926003</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8bb6c7facbad53d478aa3662bbe4aa84</srcmd5>
+    <version>2.4.13</version>
+    <time>1637372353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932438</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>47dc7468725b45523f337d4ddaa6a57a</srcmd5>
+    <version>2.4.14</version>
+    <time>1638918005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936265</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2b1807d106c283f7b47eefcae7d732f9</srcmd5>
+    <version>2.4.15</version>
+    <time>1642724725</time>
+    <user>dimstar_suse</user>
+    <comment>- rebuild manually tar file to pass Factory legal reqs... 
+- Update to version 2.4.15:
+  * Release files for 2.4.15 (#1767)
+  * Update fixing edge case with OneDrive Personal Shared Folders and --resync --upload-only (#1762)
+  * Add --operation-timeout argument (#1759)
+  * Updated Dockerfile-alpine to 3.14 (#1722)
+  * Fix unable to upload to OneDrive Business Shared Folders due to API restricting quota information (#1725)
+  * Add SystemD hardening (#1720)
+  * Update INSTALL.md
+  * Update minimum compiler versions to dmd-2.087.0 and ldc-1.17.0 (#1724)
+  * Release 2.4.15 Dev Prep (#1723)
+  * Release files for 2.4.14 (#1719)
+- Update to version 2.4.15
+  * Add SystemD hardening (#1720)
+  * Updated Dockerfile-alpine to use Apline 3.14 (#1722)
+  * Update minimum compiler versions to dmd-2.087.0 and ldc-1.17.0
+    (#1724)
+  * Fix unable to upload to OneDrive Business Shared Folders due to
+  * API restricting quota information (#1725)
+  * Add --operation-timeout argument (#1759)
+  * Update fixing edge case with OneDrive Personal Shared Folders
+    and --resync --upload-only (#1762)
+  * Updated documentation (various)
+- Apply dmd and ldc minimum version requirements to spec
+- Remove harden_onedrive.service.patch and
+  harden_onedrive@.service.patch: applied upstream
+</comment>
+    <requestid>947776</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c89b7b0ed7da3d5b62a49685a726068c</srcmd5>
+    <version>2.4.16</version>
+    <time>1647889852</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.16:
+  * Release files for 2.4.16 (#1879)
+  * Add documentation for Podman support (#1871)
+  * Update bug_report.yml (#1877)
+  * Implement feature request to mark partially-downloaded files as .partial (#1868)
+  * Implement feature request --modified-by (#1869)
+  * Update YAML forms (#1875)
+  * Use GitHub YAML forms (#1873)
+  * Update USAGE.md
+  * Add --reauth to allow easy re-authentication of the client (#1867)
+  * Enhance error handling of GitHub version check (#1866)
+  * Improved Dockerfiles (#1795)
+  * Extend GitHub version check (#1863)
+  * Add function to check client version vs latest GitHub release (#1862)
+  * Update ubuntu-package-install.md
+  * Catch errors from OneDrive when initialising subscriptions (#1846)
+  * Update Docker.md (#1841)
+  * Update entrypoint.sh (#1861)
+  * Add config.yml to configure issue templates (#1845)
+  * Update README.md (#1838)
+  * Fix typo in the Ubuntu installation docs (#1830)
+  * Update USAGE.md (#1829)
+  * Split children query into a separate function which can be self-referred (#1828)
+  * Fixes in order to compile on an Android host (#1823)
+  * If a sync_list exclusion is matched, the item needs to be excluded when using --resync (#1820)
+  * Document risk regarding using --resync (#1816)
+  * Enable GitHub Sponsors (#1811)
+  * Update ubuntu-package-install.md (#1807)
+  * Update advanced-usage.md (#1806)
+  * Update build-rpm-howto.md (#1799)
+  * Update ubuntu-package-install.md (#1794)
+  * Explicitly set libcurl options (#1789)
+  * Update ubuntu-package-install.md (#1786)
+  * Update application file logging error handling (#1776)
+  * Update Ubuntu Docs (#1769)
+  * Release 2.4.16 Dev Prep (#1768)
+</comment>
+    <requestid>963724</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1621ac079042ef963160ef7aac838201</srcmd5>
+    <version>2.4.17</version>
+    <time>1651669875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974887</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>88f85aa7788e7c044a28082b354a9c01</srcmd5>
+    <version>2.4.18</version>
+    <time>1654595126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981106</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2d9f28932cceff7f1a59e21456cd56a5</srcmd5>
+    <version>2.4.19</version>
+    <time>1655732299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983857</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b2495981f86fcc5ef16ee1be79f79928</srcmd5>
+    <version>2.4.20</version>
+    <time>1660662489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>996842</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>464846b47d7f7da62873172735af205f</srcmd5>
+    <version>2.4.21</version>
+    <time>1664797621</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.21:
+  * Release files for 2.4.21 (#2157)
+  * Update INSTALL.md
+  * Add option to create a read-write shareable link (#2154)
+  * Fix DMD 2.100.2 depreciation warning (#2156)
+  * Update database access exclusivity test for --resync (#2155)
+  * Update notification handling for specific skipped scenarios (#2153)
+  * Update national-cloud-deployments.md (#2152)
+  * Minor update to rpm build docs to match versions (#2146)
+  * Update onedrive.spec.in to fix error building RPM (#2145)
+  * Update ubuntu-package-install.md
+  * Update documentation to document skip_size (#2132)
+  * Add option to cleanup local files regardless of sync state when using --download-only (#2113)
+  * Resolve segfault when running 'onedrive --display-sync-status' when run as 2nd process (#2105)
+  * Fix where --resync is enforced for non-sync operations (#2111)
+  * Fix to allow non-sync tasks while sync is running (#2112)
+  * Update Docker and Podman documentation (#2109)
+  * Improve application logging output for error messages (#2100)
+  * Correct a typo in docs/INSTALL.md (#2097)
+  * Update INSTALL.md (#2095)
+  * Change the exit code of the application when a --resync is required (#2096)
+  * Fix that logging output for skipped uploaded files is missing (#2094)
+  * Update INSTALL.md
+  * Update application-security.md and USAGE.md (#2088)
+  * Update Podman.md to align to Docker.md
+  * Update INSTALL.md
+  * Update documentation in relation to configuring SharePoint Libraries (#2084)
+  * Update what application options require an argument (#2082)
+  * Add option to request readonly access in oauth authorization step (#2065)
+  * Implement --display-running-config (#2064)</comment>
+    <requestid>1007659</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e7c21401c6de863c381dc87be4a85772</srcmd5>
+    <version>2.4.22</version>
+    <time>1670430888</time>
+    <user>dimstar_suse</user>
+    <comment>supply correct &quot;tarball&quot; (forwarded request 1040760 from frispete)</comment>
+    <requestid>1041115</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ba9ba9826fab9e0775df35770aa6cf6a</srcmd5>
+    <version>2.4.23</version>
+    <time>1673281450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057019</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6ef2837b62caacec980df5abcc0483cc</srcmd5>
+    <version>2.4.25</version>
+    <time>1687469198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094632</requestid>
+  </revision>
+</revisionlist>

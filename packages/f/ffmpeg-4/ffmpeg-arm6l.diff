@@ -1,0 +1,17 @@
+---
+ libavutil/arm/timer.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ffmpeg-4.4.1/libavutil/arm/timer.h
+===================================================================
+--- ffmpeg-4.4.1.orig/libavutil/arm/timer.h
++++ ffmpeg-4.4.1/libavutil/arm/timer.h
+@@ -30,7 +30,7 @@
+ 
+ #define AV_READ_TIME mach_absolute_time
+ 
+-#elif HAVE_INLINE_ASM && defined(__ARM_ARCH_7A__)
++#elif HAVE_INLINE_ASM && defined(__ARM_ARCH_7A__) || defined(__ARM_ARCH_6ZK__)
+ 
+ #define AV_READ_TIME read_time
+ 

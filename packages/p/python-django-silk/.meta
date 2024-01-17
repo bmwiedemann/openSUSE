@@ -1,0 +1,5 @@
+<package name="python-django-silk" project="openSUSE:Factory">
+  <title></title>
+  <description>Silky smooth profiling for the Django Framework.</description>
+  <devel project="devel:languages:python:django" package="python-django-silk"/>
+</package>

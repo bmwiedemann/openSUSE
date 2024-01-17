@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Sun Nov 19 19:59:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.7.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug  1 13:28:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.7.0.0.
+  ### Version 0.7.0.0 (2023-07-31)
+
+    * Remove Eq Null instance. (Future `base` may break it, we remove it profilacticly).
+    * Use `postgresql-libpq >=0.10.0.0`. It includes critical fixes,
+      by using `postgresql-simple >=0.7` you won't get older `postgresql-libpq`.
+    * Drop support for GHC prior 8.6
+    * Added a class for `postgresql-simple` exceptions: `SomePostgreSqlException`.
+      This allows to catch all `postgresql-simple` exceptions at once.
+      (c.f. `AsyncException` in `base).
+
+- Drop obsolete "dont-depend-on-obsolete-bytestring-builder.patch".
+
+-------------------------------------------------------------------
+Sun Jul  9 20:01:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.6.5.1.
+  ### Version 0.6.5.1 (2023-07-09)
+
+    * Support `aeson-2.2.0.0`
+
+-------------------------------------------------------------------
+Tue Apr 11 17:18:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.6.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+- Apply "dont-depend-on-obsolete-bytestring-builder.patch" to avoid
+  depending on the obsolete bytestring-builder package.
+
+-------------------------------------------------------------------
+Sun Oct 30 16:49:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.6.5.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/postgresql-simple-0.6.5/src/CHANGES.md
+
+-------------------------------------------------------------------
+Mon Jun 20 13:30:22 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.6.4 revision 8.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jan  1 19:10:05 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.6.4 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Nov 20 17:31:37 UTC 2021 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.4 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Nov 15 06:59:41 UTC 2021 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.4 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Oct 10 14:17:22 UTC 2021 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.4 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Mar 23 15:12:00 UTC 2021 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.4 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Feb 21 12:47:43 UTC 2021 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Jan  8 08:27:10 UTC 2021 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.4.
+  ### Version 0.6.4 (2021-01-06)
+
+    * Add foldCopyData helper function
+      Thanks to Sebastián Estrella for the implementation
+      https://github.com/haskellari/postgresql-simple/pull/56
+    * Implement support for postgresql 'interval' type
+      Thanks to Andre Marques Lee for the implementation
+      https://github.com/haskellari/postgresql-simple/pull/60
+    * Depend on `time-compat` to provide uniform `time` related interface.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- disable %{ix86} build
+
+-------------------------------------------------------------------
+Sun Nov 15 22:11:18 UTC 2020 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.3.
+  ### Version 0.6.3 (2020-11-15)
+
+    * Add `fromFieldJSONByteString`
+      Thanks to tomjaguarpaw for the implementation
+      https://github.com/haskellari/postgresql-simple/pull/47
+    * Add `attoFieldParser`
+      Thanks to Victor Nawothnig for the implementation
+      https://github.com/haskellari/postgresql-simple/pull/45
+    * Add `Identity` and `Const` instance
+      Thanks to Cary Robbins for the implementation
+      https://github.com/haskellari/postgresql-simple/pull/46
+    * Add `withTransactionModeRetry'`, a variant of `withTransactionModeRetry`
+      for all exception types.
+      Thanks to Elliot Cameron for the implementation
+      https://github.com/haskellari/postgresql-simple/pull/42
+    * Fix spurious aborts when retrying transactions
+      Thanks to Elliot Cameron for the implementation
+      https://github.com/haskellari/postgresql-simple/pull/34
+    * Add `Database.PostgreSQL.Simple.Newtypes` module
+      with `Aeson` newtype.
+      https://github.com/haskellari/postgresql-simple/pull/55
+
+-------------------------------------------------------------------
+Mon Aug 31 09:34:37 UTC 2020 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.2 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug 19 07:15:21 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:44 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Fri May 29 14:21:29 UTC 2020 - psimons@suse.com
+
+- Add postgresql-simple at version 0.6.2.

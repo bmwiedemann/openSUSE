@@ -1,0 +1,6 @@
+<package name="diffmk" project="openSUSE:Factory">
+  <title>Compute Differences between XML Documents</title>
+  <description>Using DiffMk, you can build an automated comparison of two XML
+documents. The output format for viewing is HTML.</description>
+  <devel project="Publishing" package="diffmk"/>
+</package>

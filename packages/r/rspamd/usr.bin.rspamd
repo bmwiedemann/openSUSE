@@ -1,0 +1,35 @@
+# Last Modified: Mon Oct  5 10:19:40 2020
+#include <tunables/global>
+
+# based on https://github.com/progmaticltd/homebox/blob/master/install/playbooks/roles/rspamd/templates/apparmor.d/usr.bin.rspamd
+
+profile rspamd /usr/bin/rspamd {
+  #include <abstractions/base>
+  #include <abstractions/nameservice>
+  #include <abstractions/openssl>
+  #include <abstractions/ssl_certs>
+
+  /usr/bin/rspamd mr,
+
+  /etc/rspamd/** r,
+
+  /srv/www/webapps/rspamd/ r,
+  /srv/www/webapps/rspamd/** r,
+  /usr/share/rspamd/ r,
+  /usr/share/rspamd/** r,
+
+  /var/lib/rspamd/ r,
+  /var/lib/rspamd/** rwk,
+
+  /var/log/rspamd/rspamd.log* rwk,
+  /{var/,}run/rspamd/* rwk,
+
+  /dev/shm/rhm.* rw,
+  /etc/magic r,
+  /proc/sys/kernel/random/uuid r,
+
+  /usr/share/icu/*/icu*.dat r,
+
+  #include if exists <local/usr.bin.rspamd>
+  #include if exists <local/rspamd>
+}

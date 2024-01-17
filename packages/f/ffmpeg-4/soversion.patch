@@ -1,0 +1,43 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-07-04 23:56:54.411950316 +0200
+
+User frispete wrote on 2020-6-26 22:13+0000 at
+https://build.opensuse.org/package/show/multimedia:libs/ffmpeg-4#comment-1257440
+: """Unfortunately, this version is binary incompatible to 4.2.3 in some
+aspects. [...]"""
+
+Further discussion on the mailing list explored this topic, and
+revealed that ELF symbol versioning is lacklusterly implemented in
+ffmpeg, which can cause inadvertent mixing of library versions on
+openSUSE, and precompiled Linux distributions in general. It is
+unclear when upstream will have implemented a solution. Until then,
+we will need to tighten the requirements between packages, to which
+end we stretch the SOVERSION to include MINOR.
+
+Programs linking to libavcodec get the right DT_NEEDED field with value
+libavcodec.so.58.91, and so they do not request libavcodec.so.58 (which could
+potentially lead to libavcodec.so.58.54).
+Programs dlopening libavcodec.so.58 will get something random, that's
+what dlopening programs have to deal with.
+
+---
+ configure |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: ffmpeg-4.4.1/configure
+===================================================================
+--- ffmpeg-4.4.1.orig/configure
++++ ffmpeg-4.4.1/configure
+@@ -3834,10 +3834,10 @@ SLIBPREF="lib"
+ SLIBSUF=".so"
+ SLIBNAME='$(SLIBPREF)$(FULLNAME)$(SLIBSUF)'
+ SLIBNAME_WITH_VERSION='$(SLIBNAME).$(LIBVERSION)'
+-SLIBNAME_WITH_MAJOR='$(SLIBNAME).$(LIBMAJOR)'
++SLIBNAME_WITH_MAJOR='$(SLIBNAME).$(LIBMAJOR).$(LIBMINOR)'
+ LIB_INSTALL_EXTRA_CMD='$$(RANLIB) "$(LIBDIR)/$(LIBNAME)"'
+ SLIB_INSTALL_NAME='$(SLIBNAME_WITH_VERSION)'
+-SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME)'
++SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME) $(SLIBNAME).$(LIBMAJOR)'
+ VERSION_SCRIPT_POSTPROCESS_CMD="cat"
+ 
+ asflags_filter=echo

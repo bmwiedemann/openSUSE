@@ -1,0 +1,229 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ccfc1a3355d481d148589064af504ab</srcmd5>
+    <version>2017.06.07</version>
+    <time>1499152160</time>
+    <user>dimstar_suse</user>
+    <comment>Package need for upcomming calibre.</comment>
+    <requestid>504565</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>839c4b161a8e34278df35394032d405b</srcmd5>
+    <version>2017.07.28</version>
+    <time>1504617381</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520560</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d8058823bae67a91a841d9b54cb9a3a</srcmd5>
+    <version>2018.06.21</version>
+    <time>1530866428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620101</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>58729a3b3b9c139a4d97c76eddc77c71</srcmd5>
+    <version>2019.04.14</version>
+    <time>1557916454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019.04.14:
+  * no upstream changelog provided</comment>
+    <requestid>702916</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd415ba432549142a54d81985c73ba97</srcmd5>
+    <version>2019.06.05</version>
+    <time>1559837835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707816</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6fb911c707c939d36583ff2ae3101a9e</srcmd5>
+    <version>2019.06.08</version>
+    <time>1563808804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019.06.08:
+  * minor fixes</comment>
+    <requestid>717583</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e823999e75f9d1ab19a32b9ef28d6e46</srcmd5>
+    <version>2019.08.19</version>
+    <time>1568190952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019.08.19:
+  * minor fixes</comment>
+    <requestid>729801</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>74b435d782f7605b9bcf0b8dcfa0aab4</srcmd5>
+    <version>2020.2.20</version>
+    <time>1585265251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786436</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6b75b19f535b73c1d50bd43faf4bdbe5</srcmd5>
+    <version>2020.4.4</version>
+    <time>1592758217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813501</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2749e2d3e49bed677b3b6d4433efba12</srcmd5>
+    <version>2020.9.27</version>
+    <time>1603961203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839939</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>059c5db824585abcbfe372129a1bdd8e</srcmd5>
+    <version>2020.11.13</version>
+    <time>1615905741</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2020.11.13:
+  * Fix Unexpected behavior in fuzzy matching with limited character set
+  * clock() calls for timeout cause slowdown in Docker
+  * Update lis of supported Python versions
+  * licensing change to Apache-2.0</comment>
+    <requestid>878762</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>60ee9588743afdca56b8f5603aeb2b78</srcmd5>
+    <version>2021.4.4</version>
+    <time>1620840678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.4.4:
+  * Wheels for arm64 mac os
+  * Fix fuzzy matching with wrong distance
+  * Fix regex fails with a quantified backreference</comment>
+    <requestid>891881</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>340b320780cd70d8ba9b55b9c87c165d</srcmd5>
+    <version>2021.7.6</version>
+    <time>1628108901</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.7.6:
+  * drop-in replacement for python re
+  * fix fuzzy character restrictions not applying to insertions</comment>
+    <requestid>909591</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0acc0783abea194dc730d212e5aa8b54</srcmd5>
+    <version>2022.4.24</version>
+    <time>1654691043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978935</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>32e1d66df9ad9db24a3f655469a2e78a</srcmd5>
+    <version>2022.6.2</version>
+    <time>1655493504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982667</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>150d402b26e8d76407f287c0dd22bb85</srcmd5>
+    <version>2022.7.9</version>
+    <time>1659612187</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.7.9:
+  * Fix Emoji classified as letter
+  * Revisit compilation flag to prevent adding a single explicitly compiled regex to cache
+  * Fix Scoped inline flags 'a', 'u', and 'L' affecting global flags</comment>
+    <requestid>989685</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>884ea3a56c784223a7bfa4cd1d412658</srcmd5>
+    <version>2022.9.11</version>
+    <time>1663275454</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.9.11:
+  * fix issue 474: regex has no equivalent to re.Match.groups() for captures 
+  * fix segmentation fault when using conditional pattern (issue 479)
+  * use \v for vertical spacing</comment>
+    <requestid>1003049</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0356279e400f89948ddc1c3d78df8b60</srcmd5>
+    <version>2022.9.13</version>
+    <time>1663515130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.9.13:
+  * update to unicode 15.0</comment>
+    <requestid>1004180</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c1941af83c1d3ff44049d76ba19fb9b2</srcmd5>
+    <version>2022.10.31</version>
+    <time>1668271216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035247</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0c5bff176368515e46a49442336e9827</srcmd5>
+    <version>2023.3.23</version>
+    <time>1680125185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.3.23:
+  * Backtracking failure matching regex
+  * Limit running time for failing fullmatch</comment>
+    <requestid>1074592</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>716b0f5522821f7fb3308a324b3d6c04</srcmd5>
+    <version>2023.3.23</version>
+    <time>1682193539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081781</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4a7c4f8dd1fad9e3f8a26859fd4b642d</srcmd5>
+    <version>2023.5.5</version>
+    <time>1684162441</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.5.5:
+  * Removed semicolon after 'else' in 'munge_name'.
+  * Fixed pyproject.toml and setup.py.
+  * pyproject.toml was missing.
+  * Added pyproject.toml.</comment>
+    <requestid>1087113</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9f551756ffc406c8e1af2166237c0c34</srcmd5>
+    <version>2023.8.8</version>
+    <time>1694113940</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109486</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cd9d77e9a771a2b86af0983cb976a79c</srcmd5>
+    <version>2023.10.3</version>
+    <time>1701792066</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.10.10:
+  * Updated to Unicode 15.1.0.
+
+  * Limit running time for failing fullmatch
+- update to 2022.10.31
+  * update to unicode 15.0
+  * fix issue 474: regex has no equivalent to re.Match.groups() for captures
+  * fix fuzzy character restrictions not applying to insertions
+  * licensing change to Apache-2.0
+  * Fix Memory Error in regex.findall
+  * For fullmatch, added check for end/start of string for</comment>
+    <requestid>1130727</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+site-config: Site Paths Configuration for autoconf Based configure Scripts
+==========================================================================
+
+Site configuration for autoconf based configure scripts provides smart
+defaults for paths that are not specified.
+
+All autoconf based configure scripts will automatically resource site
+script using CONFIG_SITE environment variable. It works without any
+explicit user interaction.
+
+Currently implemented features:
+
+
+Automatic libdir setup to $exec_prefix/lib or $exec_prefix/lib64
+----------------------------------------------------------------
+
+Depending on architecture, site script should correctly and
+automatically switch between lib and lib64 libdir.

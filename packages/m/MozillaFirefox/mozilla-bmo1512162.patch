@@ -1,0 +1,35 @@
+# HG changeset patch
+# Parent  f9f5af4c88f2f3172a4f30d7e42bd2131bf24146
+This fixes a broken build for gcc < 9 on ppc64le.
+This patch can be removed for newer gcc-versions.
+
+Index: firefox-115.0/js/xpconnect/src/XPCWrappedNative.cpp
+===================================================================
+--- firefox-115.0.orig/js/xpconnect/src/XPCWrappedNative.cpp
++++ firefox-115.0/js/xpconnect/src/XPCWrappedNative.cpp
+@@ -1061,7 +1061,11 @@ class MOZ_STACK_CLASS CallMethodHelper f
+   MOZ_ALWAYS_INLINE bool GetOutParamSource(uint8_t paramIndex,
+                                            MutableHandleValue srcp) const;
+ 
+-  MOZ_ALWAYS_INLINE bool GatherAndConvertResults();
++#if !(__GNUC__ && __linux__ && __PPC64__ && _LITTLE_ENDIAN)
++// Work around a compiler bug on ppc64le (bug 1512162).
++  MOZ_ALWAYS_INLINE
++#endif
++  bool GatherAndConvertResults();
+ 
+   MOZ_ALWAYS_INLINE bool QueryInterfaceFastPath();
+ 
+@@ -1108,7 +1112,11 @@ class MOZ_STACK_CLASS CallMethodHelper f
+ 
+   ~CallMethodHelper();
+ 
+-  MOZ_ALWAYS_INLINE bool Call();
++#if !(__GNUC__ && __linux__ && __PPC64__ && _LITTLE_ENDIAN)
++// Work around a compiler bug on ppc64le (bug 1512162).
++  MOZ_ALWAYS_INLINE
++#endif
++  bool Call();
+ 
+   // Trace implementation so we can put our CallMethodHelper in a Rooted<T>.
+   void trace(JSTracer* aTrc);

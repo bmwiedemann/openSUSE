@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb2ccb502db65d6827b42d653aeb8954</srcmd5>
+    <version>1.0.0b2</version>
+    <time>1625868042</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of Azure SDK</comment>
+    <requestid>905292</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>476497be187ad41841ca0f5fb7906f09</srcmd5>
+    <version>1.0.0b3</version>
+    <time>1631913943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919101</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a49b98f154ae4b8f9f1482f8be98e59</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1635877147</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b3 (forwarded request 928766 from glaubitz)</comment>
+    <requestid>928768</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4edfbcfda29e695aeb114c407d6c4523</srcmd5>
+    <version>1.0.1</version>
+    <time>1636577210</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 930634 from glaubitz)</comment>
+    <requestid>930651</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af3cb1eb293ba407d117425b6fe29e1b</srcmd5>
+    <version>1.0.3</version>
+    <time>1657378993</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 987808 from glaubitz)</comment>
+    <requestid>987927</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>28a232ba699eb65aab79c0078b164cfb</srcmd5>
+    <version>1.1.0</version>
+    <time>1675956145</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1063755 from glaubitz)</comment>
+    <requestid>1063878</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f564e2c966ee879483a1f3fd6a87c32</srcmd5>
+    <version>1.1.1</version>
+    <time>1676464809</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1065711 from glaubitz)</comment>
+    <requestid>1065807</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2222c6873951def92c856a7eae41baac</srcmd5>
+    <version>1.2.0</version>
+    <time>1683808924</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1086183 from glaubitz)</comment>
+    <requestid>1086498</requestid>
+  </revision>
+</revisionlist>

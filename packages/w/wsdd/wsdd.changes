@@ -1,0 +1,217 @@
+-------------------------------------------------------------------
+Wed Oct 18 15:36:03 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Leap 15.6 has no python 3.10 anymore, use 3.11 instead
+
+-------------------------------------------------------------------
+Thu Apr  6 08:34:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix previous change: really limit the forced change to python
+  3.10 on suse_version <= 1500 (up to SLE/Leap 15); newer products
+  already use python 3.10 (or newer) as default.
+
+-------------------------------------------------------------------
+Mon Apr  3 15:09:07 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Force the use of python 3.10 for openSUSE Leap
+
+-------------------------------------------------------------------
+Mon Apr  3 10:14:25 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 0.7.1
+  * GitHub workflow for static analyses added (syntax, format, and type checks are performed).
+  * Added EnvironmentFile and according example for systemd-based distros.
+  * Make wsdd work (again) on MacOS (#139). Thanks to Eugene Gershnik.
+  * Application profile for UFW has been added (#169)
+  * Use of implicitly present async I/O loop instead created one for API servers. Fixes regression due
+    to changed API in Python 3.10 (see #162)
+  * Source code is spiced with type hints now.
+  * man page moved to section 8.
+
+-------------------------------------------------------------------
+Wed Jun 29 20:07:14 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Include ws-discovey-udp service from firewalld 1.0 as part of wsdd.xml
+
+-------------------------------------------------------------------
+Thu Feb 24 16:36:40 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+
+-------------------------------------------------------------------
+Thu Nov 25 21:36:20 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update sources
+
+-------------------------------------------------------------------
+Wed Nov 24 22:42:35 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Version 0.7.0
+  * Using the server interface it is now possible to start and stop the
+    host functionality (discoverable device) without terminating and
+    restarting the daemon.
+  * Support multiple IP addresses in 'hello' messages from other hosts (#89)
+  * Support interfaces with IPv6-only configuration (#94)
+  * Re-enable 'probe' command of API (#116)
+  * Removed code marked as deprecated starting with Python 3.10.
+  * The example systemd unit file now uses DynamicUser instead of the unsafe
+    nobody:nobody combination. It also employs the rundir as chroot directory.
+  * Code changed to use asyncio instead of selector-based
+  * The server interface does not close connections after each command anymore.
+  * For the 'list' command of the server interface, the list of discovered
+    devices is terminated with a line containing only a single dot ('.')
+  * Log device discovery only once per address and interface
+- Some systemd hardening
+
+-------------------------------------------------------------------
+Tue May 11 08:00:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem rpm (bsc#1184786)
+
+-------------------------------------------------------------------
+Wed Apr  7 18:42:01 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Remove unneccessary (and deprecated) PermissionsStartOnly=true
+  (boo#1184446).
+
+-------------------------------------------------------------------
+Thu Mar  4 15:29:33 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add %sysusers_requires: we are creating users in pre, thus need
+  to ensure to have the tooling ready prior to package installation
+  (boo#1183047).
+
+-------------------------------------------------------------------
+Mon Mar  1 11:04:37 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Use sysuser-tools for creation of the wsdd user and group
+- Do not hijack the /run/sysconfig folder anymore
+
+-------------------------------------------------------------------
+Sun Feb 28 17:26:00 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Add missing '/'
+
+-------------------------------------------------------------------
+Sun Feb 28 16:11:58 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Fix a missed place for use of %{_tmpfilesdir}
+
+-------------------------------------------------------------------
+Sun Feb 28 10:53:10 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Cleanup spec file
+  * Use %{_tmpfilesdir} instead of explicit path
+  * Fix requirements for %fillup_only
+
+-------------------------------------------------------------------
+Sun Feb  7 10:44:20 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Version 0.6.4
+  * send proper HTTP status codes in case of server side errors
+  * send unicast and multicast UDP traffic in a standard-compliant fashion
+  * add -V/--version option
+  * copyright year update
+
+-------------------------------------------------------------------
+Thu Jan 14 21:51:07 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Version 0.6.3
+  * Skip Netlink messages smaller than 4 bytes correctly (#77, and maybe #59).
+  * Messages are sent via the correct socket to comply with the intended/specified
+    message flow. This also eases the firewall configuration (#72).
+  * Include instructions for adding repository keys under Debian/Ubuntu in README.
+
+-------------------------------------------------------------------
+Wed Oct 21 16:01:05 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Oct 20 18:11:22 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Version 0.6.2
+  * Lowered priority of non-essential, protocol-related and internal log
+    messages (#53).
+  * Do not use PID in Netlink sockets in order to avoid issues with duplicated
+    PIDs, e.g., when Docker is used.
+  * Prevent exceptions due to invalid incoming messages.
+  * HTTP server address family wrong when interface address is added (#62)
+  * Fixed error when interface address is removed (#62) 
+
+-------------------------------------------------------------------
+Sat Aug 29 13:41:40 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Fix use of /usr/lib and /usr/libexec
+
+-------------------------------------------------------------------
+Mon Jul  6 20:09:48 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Version 0.6.1
+  * ignore unknown interface indexes from Netlink message on Linux (caused
+    "error in main loop")
+  * prevent hosts from not being discovered due to misplaced socket registration
+    at selector
+
+-------------------------------------------------------------------
+Sun Jun 14 10:49:28 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Version 0.6
+  * new operation 'discovery' operation mode to scan for other hosts,
+    exposed via minimalistic socket-based API
+  * improved handling of address changes (prevents termination when
+    system is currently starting up but no IP address has been assigned)
+  * usage of tentative IPv6 addresses is avoided on Linux
+  * chroot now works also an machines with international domain/host name
+  * fixed handling of invalid messages
+  * improved FreeBSD rc.d script
+  * code heavily refactored
+
+-------------------------------------------------------------------
+Thu May  7 18:54:30 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Fix handling of WSDD_WORKGROUP
+- Let WSDD_DOMAIN override WSDD_WORKGROUP
+
+-------------------------------------------------------------------
+Sun Apr 26 20:24:03 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Use wsdd for user and group of the ghost directories
+
+-------------------------------------------------------------------
+Sun Apr 26 18:19:24 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Replace wsdd-wrapper by an ExecStartPre script
+- Change the "WSD_" variable prefix by "WSDD_"
+- Run wsdd as user and group wsdd
+- Run wsdd in a chroot folder
+- Merge firewall files into one
+
+-------------------------------------------------------------------
+Tue Mar 31 16:05:23 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 0.5
+- Remove unneeded _service file
+
+-------------------------------------------------------------------
+Mon Nov 18 19:41:19 UTC 2019 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Remove debug output
+- Respect libexecdir in systemd service file
+
+-------------------------------------------------------------------
+Fri Nov 15 21:31:43 UTC 2019 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Determine domain, and/or hostname
+- Move wssd back to /usr/bin
+
+-------------------------------------------------------------------
+Fri Nov 15 20:56:34 UTC 2019 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Reload firewalld services
+- Remove fillup_prereq post requires
+
+-------------------------------------------------------------------
+Wed Nov 13 18:30:00 UTC 2019 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Initial package

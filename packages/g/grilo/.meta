@@ -1,0 +1,7 @@
+<package name="grilo" project="openSUSE:Factory">
+  <title>Framework for browsing and searching media content</title>
+  <description>Grilo is a framework for browsing and searching media content from
+various sources using a single API.</description>
+  <devel project="GNOME:Factory" package="grilo"/>
+  <url>https://live.gnome.org/Grilo</url>
+</package>

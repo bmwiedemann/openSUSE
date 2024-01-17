@@ -1,0 +1,12 @@
+<package name="yate-bts" project="openSUSE:Factory">
+  <title>GSM BTS based on Yet Another Telephony Engine</title>
+  <description>Yate is a telephony engine designed to implement PBX and IVR solutions
+for small to large scale projects.
+This module implements a 2G GSM BTS for Yate.
+At least one transceiver package must also be installed for
+interfacing with the hardware.
+
+</description>
+  <devel project="network:telephony" package="yate-bts"/>
+  <url>http://yatebts.com</url>
+</package>

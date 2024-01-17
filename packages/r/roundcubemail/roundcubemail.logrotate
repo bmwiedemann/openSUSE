@@ -1,0 +1,18 @@
+/var/log/roundcubemail/console 
+/var/log/roundcubemail/errors 
+/var/log/roundcubemail/imap 
+/var/log/roundcubemail/ldap 
+/var/log/roundcubemail/sendmail 
+/var/log/roundcubemail/sieve 
+/var/log/roundcubemail/smtp 
+/var/log/roundcubemail/sql 
+/var/log/roundcubemail/userlogins 
+/var/log/roundcubemail/*.log 
+{
+    missingok
+    compress
+    notifempty
+    size 30k
+    su wwwrun www
+    create 0660 wwwrun www
+}

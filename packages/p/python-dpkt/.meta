@@ -1,0 +1,6 @@
+<package name="python-dpkt" project="openSUSE:Factory">
+  <title>Fast, simple packet creation and parsing</title>
+  <description>Fast, simple packet creation / parsing, with definitions for the basic TCP/IP
+protocols.</description>
+  <devel project="devel:languages:python" package="python-dpkt"/>
+</package>

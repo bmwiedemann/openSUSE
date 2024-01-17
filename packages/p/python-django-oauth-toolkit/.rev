@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b091268975871108c8d09a8e4fdc539</srcmd5>
+    <version>1.1.3</version>
+    <time>1553635846</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase minimum Django to 1.11
+- Add %doc and %license
+- Add %check and use test-response-401.patch to workaround test failures
+- Update URLs to new repository
+- Drop unnecessary build dependency on devel
+- Fix %fdupes
+- Update to v1.1.3
+  * Fix a concurrency issue with Refresh Tokens
+  * Fix Refresh Token revocation when the Access Token does not exist
+- from 1.1.2
+  * Return state with Authorization Denied error (RFC6749 section 4.1.2.1)
+  * Fix a crash with malformed base64 authentication headers
+  * Fix a crash with malformed IPv6 redirect URIs
+- from 1.1.1
+  * **Critical**: v1.1.0 contained a migration that would revoke all
+    existing RefreshTokens (`0006_auto_20171214_2232`). This release
+    corrects the migration.   If you have already ran it in production,
+    please see the following issue for more details:
+    https://github.com/jazzband/django-oauth-toolkit/issues/589
+- Add version 1.0.0 for python2 and 3 
+- Add for #85: API authentication
+- Add latest version 1.0.0 
+</comment>
+    <requestid>683540</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aacfb7853aa0c209e3b122ba566d15e9</srcmd5>
+    <version>1.2.0</version>
+    <time>1568720251</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.2.0:
+  * Compatibility: Python 3.4 is the new minimum required version.
+  * Compatibility: Django 2.0 is the new minimum required version.
+  * New feature: Added TokenMatchesOASRequirements Permissions.
+  * validators.URIValidator has been updated to match URLValidator behaviour more closely.
+  * Moved redirect_uris validation to the application clean() method.</comment>
+    <requestid>731217</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6dc30258606257fc3cbfcaa7c5de63bb</srcmd5>
+    <version>1.2.0</version>
+    <time>1570104585</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests that return 200 instead of 400, even in upstream git
+  * recheck with the next release</comment>
+    <requestid>734739</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>adb8cf412bc5f6bb622d8ef8c45267fb</srcmd5>
+    <version>1.3.2</version>
+    <time>1585995978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2:
+  * #725: HTTP Basic Auth support for introspection (Fix issue #709)
+  * #812: Reverts #643 pass wrong request object to authenticate function.
+  * Fix concurrency issue with refresh token requests (#810)
+  * #817: Reverts #734 tutorial documentation error.
+  * Add support for Python 3.7 &amp; 3.8
+  * Add support for Django&gt;=2.1,&lt;3.1
+  * Add requirement for oauthlib&gt;=3.0.1
+  * Add support for Proof Key for Code Exchange (PKCE, RFC 7636).
+  * Add support for custom token generators (e.g. to create JWT tokens).
+  * Add new OAUTH2_PROVIDER settings:
+    * ACCESS_TOKEN_GENERATOR to override the default access token generator.
+    * REFRESH_TOKEN_GENERATOR to override the default refresh token generator.
+    * EXTRA_SERVER_KWARGS options dictionary for oauthlib's Server class.
+  * Add id in toolkit admin console applications list.
+  * Add nonstandard Google support for [urn:ietf:wg:oauth:2.0:oob] redirect_uri
+    for Google OAuth2 &quot;manual copy/paste&quot;.
+- Remove no longer needed test-response-401.patch</comment>
+    <requestid>791166</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>57197bebb974bdcc4d5a7888c77a176b</srcmd5>
+    <version>1.7.0</version>
+    <time>1643926607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * #969 Add batching of expired token deletions in cleartokens management command and models.clear_expired() to improve performance for removal of large numers of expired tokens.
+  * #1070 Add a Celery task for clearing expired tokens, e.g. to be scheduled as a periodic task.
+  * #1062 Add Brazilian Portuguese (pt-BR) translations.
+  * #1069 OIDC: Add an alternate form of get_additional_claims()
+  * #1012 Return 200 status code with {&quot;active&quot;: false} when introspecting a nonexistent token per RFC 7662. It had been incorrectly returning 401.
+  * #1085 Fix for #1083 admin UI search for idtoken results in django.core.exceptions.FieldError: Cannot resolve keyword 'token' into field.
+  * #1085 Add admin UI search fields for additional models.
+  * #1056 Add missing migration triggered by Django 4.0 changes to the migrations autodetector.
+  * #1068 Revert #967 which incorrectly changed an API. See #1066.
+  * #949 Provide django.contrib.auth.authenticate() with a request for compatibiity with more backends (like django-axes).
+  * #968, #1039 Add support for Django 3.2 and 4.0.
+  * #953 Allow loopback redirect URIs using random ports as described in RFC8252 section 7.3.
+  * #972 Add Farsi/fa language support.
+  * #978 OIDC: Add support for rotating multiple RSA private keys.
+  * #978 OIDC: Add new OIDC_JWKS_MAX_AGE_SECONDS to improve jwks_uri caching.
+  * #967 OIDC: Add additional claims beyond sub to the id_token.
+  * #1041 Add a search field to the Admin UI (e.g. for search for tokens by email address).
+  * #981 Require redirect_uri if multiple URIs are registered per RFC6749 section 3.1.2.3
+  * #991 Update documentation of REFRESH_TOKEN_EXPIRE_SECONDS to indicate it may be int or datetime.timedelta.
+  * #977 Update Tutorial to show required include.
+  * #968 Remove support for Django 3.0 &amp; 3.1 and Python 3.6
+  * #1035 Removes default_app_config for Django Deprecation Warning
+  * #1023 six should be dropped
+  * #963 Fix handling invalid hex values in client query strings with a 400 error rather than 500.
+  * #973 Tutorial updated to use django-cors-headers.
+  * #956 OIDC: Update documentation of get_userinfo_claims to add the missing argument.
+  * Adding support for OPENID 
+- Add patch stop-using-pk-to-reference-tokens.patch:
+  * Use direct object references to fix a truculent test.</comment>
+    <requestid>950877</requestid>
+  </revision>
+</revisionlist>

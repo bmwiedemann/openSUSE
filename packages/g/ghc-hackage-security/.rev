@@ -1,0 +1,277 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>321c26e8c36818c701d3bc7e3a58e0c8</srcmd5>
+    <version>0.5.1.0</version>
+    <time>1465336044</time>
+    <user>dimstar_suse</user>
+    <comment>hackage-security: Hackage security library</comment>
+    <requestid>399921</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3169ec779e20565ceb91dfe41d64d7cd</srcmd5>
+    <version>0.5.2.1</version>
+    <time>1469081536</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411595</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36253def092287286fa2bdd5c6ff8973</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1476875052</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433391</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>490f62c721a389ad9084739dc45b8a0e</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1490026022</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477448</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>eb7b96ae98565c4d9810756109b57405</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1494088114</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491469</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>280dc85f6a5867d677218e618a420e6c</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1496534253</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499702</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>9ecd390de08ea4183adec3cce6497f7e</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1505504793</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524705</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>62bdfd1b1a4297f58d533aeed1fc3ea8</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1527674892</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-hackage-security to the latest version.</comment>
+    <requestid>607805</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d85d55b2260f4f76aee0ecbe9261eb59</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1532445548</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Revise cabal build file to specify more accurate dependencies.</comment>
+    <requestid>623779</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>43695c4b3864bc4369e641cc38d1696f</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1534774815</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Cabal build information to support Cabal 2.4.x.</comment>
+    <requestid>630365</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>287caf62494fc96224b0ef30f52d85e5</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1540448495</time>
+    <user>dimstar_suse</user>
+    <comment>minor version update, needed for adi:11</comment>
+    <requestid>643246</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>86c52407d2213bd3aaf2cad7fde2597b</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1560971440</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710627</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>87373e7fabdc91d741a7fc99f016ee74</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1577451223</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759404</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>3efc9652d6f7edcb06d40ddd6ddcc6f2</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1578069319</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>760284</requestid>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>b5cb90722f837c3329d4086979e118d1</srcmd5>
+    <version>0.5.3.0</version>
+    <time>1583759843</time>
+    <user>dimstar_suse</user>
+    <comment>missing version updates for openSUSE:Factory:Staging:adi:22</comment>
+    <requestid>780174</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>460f9f7d7c18a928e6b9049fb6c11659</srcmd5>
+    <version>0.6.0.1</version>
+    <time>1589197050</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801077</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9adb6e16e0c673efd1cf9fb88fd9f2bc</srcmd5>
+    <version>0.6.0.1</version>
+    <time>1592579579</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815096</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8c83112c65eab98fca3974ee83cdd68d</srcmd5>
+    <version>0.6.0.1</version>
+    <time>1598643176</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829288</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>13d2586e566bb8fdf4526dc3dfdb65cf</srcmd5>
+    <version>0.6.0.1</version>
+    <time>1599506991</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832279</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>e9fb072f90172e248ecc518093a904b5</srcmd5>
+    <version>0.6.0.1</version>
+    <time>1601200166</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>837243</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>631015d90f33f4078b06d504619f25d1</srcmd5>
+    <version>0.6.0.1</version>
+    <time>1608633606</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857378</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>66b55eab691af74e237a420c1d6f7aa8</srcmd5>
+    <version>0.6.0.1</version>
+    <time>1616008531</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update of haskell stack</comment>
+    <requestid>879159</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>8886958560f9926adfec62116c0f99c7</srcmd5>
+    <version>0.6.0.1</version>
+    <time>1629917813</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>912602</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c27d40259b3299875f77582ea97d001d</srcmd5>
+    <version>0.6.2.0</version>
+    <time>1644617339</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953465</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>888a0310632cf5904c48ecdee9321587</srcmd5>
+    <version>0.6.2.1</version>
+    <time>1645891333</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>957679</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>afc0771b3a9210e6ad35953ca8e397ef</srcmd5>
+    <version>0.6.2.1</version>
+    <time>1659382188</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987038</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f5d12bcbc47ab3adfb119a2ade706665</srcmd5>
+    <version>0.6.1.0</version>
+    <time>1665668524</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008468</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>74ad546294e04f128e83d38bf11901a4</srcmd5>
+    <version>0.6.2.3</version>
+    <time>1680636013</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075888</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>dc481d68dfb8d52e9f044c63a623014a</srcmd5>
+    <version>0.6.2.3</version>
+    <time>1688849267</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1097643</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>0a36975fb7d8c76f062a85e81a244853</srcmd5>
+    <version>0.6.2.3</version>
+    <time>1689710061</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1098951</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>b2c65b71456e7b651e139f4ae9624192</srcmd5>
+    <version>0.6.2.3</version>
+    <time>1695327795</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1112763</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>f3cc7da652fa9b1f9e69e687cbf7e778</srcmd5>
+    <version>0.6.2.3</version>
+    <time>1697231694</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117077</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>00aa9141baeafcdbaa0d2d46e893f9f3</srcmd5>
+    <version>0.6.2.3</version>
+    <time>1697657153</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1118473</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0ea6ab79244a32e97908a813010b564a</srcmd5>
+    <version>0.6.2.4</version>
+    <time>1703801009</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135330</requestid>
+  </revision>
+</revisionlist>

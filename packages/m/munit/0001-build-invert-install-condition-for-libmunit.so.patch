@@ -1,0 +1,28 @@
+From 884a8f16fcbc90eb21ce8848b3a924fa0c144161 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 1 Aug 2020 10:19:34 +0200
+Subject: [PATCH] build: invert install condition for libmunit.so
+Upstream: https://github.com/nemequ/munit/pull/63
+
+When munit is built standalone, the .so file will not get copied on `ninja
+install`, which goes counter to the idea of a standalone installation.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index c15b405..44ee737 100644
+--- a/meson.build
++++ b/meson.build
+@@ -11,7 +11,7 @@ root_include = include_directories('.')
+ 
+ munit = library('munit',
+     ['munit.c'],
+-    install: meson.is_subproject())
++    install: not meson.is_subproject())
+ 
+ if meson.is_subproject()
+   munit_dep = declare_dependency(
+-- 
+2.27.0
+

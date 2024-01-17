@@ -1,0 +1,36 @@
+From 67cf33fcaec922669d025adbafcb7b46b53a91e5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 24 Sep 2021 14:07:23 +0200
+Subject: [PATCH] Use same paths for shader/plugin lookup as used for
+ installation
+
+Install directories are fixed, absolute directories, set in
+src/CMakeLists.txt. As the plugin directory is relative to the architecture
+dependent libdir, substitute the paths from the spec file.
+---
+ src/common/globals.cpp | 27 ++------------------------
+ 1 file changed, 3 insertions(+), 24 deletions(-)
+
+diff --git a/src/common/globals.cpp b/src/common/globals.cpp
+index aeaa47f..8b18b74 100644
+--- a/src/common/globals.cpp
++++ b/src/common/globals.cpp
+@@ -57,6 +57,7 @@ QString basePath()
+ 
+ QString meshlab::defaultPluginPath()
+ {
++	return PLUGIN_DIR;
+ 	QDir pluginsDir(basePath());
+ #ifdef Q_OS_WIN
+ 	QString d      = pluginsDir.dirName();
+@@ -104,6 +105,7 @@ QString meshlab::defaultPluginPath()
+ 
+ QString meshlab::defaultShadersPath()
+ {
++	return SHADER_DIR;
+ 	QDir dir(basePath());
+ #ifdef Q_OS_MAC // TODO: check that this works as expected
+ 	return dir.path() + "/shaders";
+-- 
+2.33.0
+

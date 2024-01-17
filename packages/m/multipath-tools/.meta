@@ -1,0 +1,17 @@
+<package name="multipath-tools" project="openSUSE:Factory">
+  <title>Tools to Manage Multipathed Devices with the device-mapper</title>
+  <description>This package provides the tools to manage multipathed devices by
+instructing the device-mapper multipath module what to do. The tools
+are:
+
+- multipath: scans the system for multipathed devices, assembles
+   them, and updates the device-mapper's maps
+
+- multipathd: waits for maps events then execs multipath
+
+- devmap-name: provides a meaningful device name to udev for devmaps
+
+- kpartx: maps linear devmaps to device partitions, which makes
+multipath maps partionable</description>
+  <devel project="Base:System" package="multipath-tools"/>
+</package>

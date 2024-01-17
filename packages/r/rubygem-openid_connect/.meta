@@ -1,0 +1,5 @@
+<package name="rubygem-openid_connect" project="openSUSE:Factory">
+  <title>openid_connect</title>
+  <description>OpenID Connect Server &amp; Client Library</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-openid_connect"/>
+</package>

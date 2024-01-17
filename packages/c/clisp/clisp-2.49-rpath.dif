@@ -1,0 +1,16 @@
+---
+ src/aclocal.m4 |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/aclocal.m4 b/src/aclocal.m4
+--- a/src/aclocal.m4
++++ b/src/aclocal.m4
+@@ -7723,7 +7723,7 @@ AC_DEFUN([AC_LIB_LINKFLAGS_BODY],
+     dnl When using libtool, the option that works for both libraries and
+     dnl executables is -R. The -R options are cumulative.
+     for found_dir in $ltrpathdirs; do
+-      LTLIB[]NAME="${LTLIB[]NAME}${LTLIB[]NAME:+ }-R$found_dir"
++      LTLIB[]NAME="${LTLIB[]NAME}${LTLIB[]NAME:+ }-Wl,-rpath-link$found_dir"
+     done
+   fi
+   popdef([P_A_C_K])

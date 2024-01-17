@@ -1,0 +1,16 @@
+--- memprof-0.6.2/lib/stack-frame.h.orig	2011-10-30 13:33:48.000000000 -0500
++++ memprof-0.6.2/lib/stack-frame.h	2011-10-30 13:33:50.000000000 -0500
+@@ -34,11 +34,11 @@
+ #define __STACK_FRAME_H__
+ 
+ /* STACKPOINTER macros to access the right regs on different ARCHs */
+-#if defined (__i386__)
++#if __WORDSIZE == 32
+ #define EIPRIP eip
+ #define EBPRBP ebp
+ #define ESPRSP esp
+-#elif defined (__x86_64__)
++#elif __WORDSIZE == 64
+ #define EIPRIP rip
+ #define EBPRBP rbp
+ #define ESPRSP rsp

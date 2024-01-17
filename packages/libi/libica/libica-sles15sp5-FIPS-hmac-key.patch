@@ -1,0 +1,15 @@
+--- libica-4.3.0/src/fips.c	2020-05-04 17:01:23.238805001 -0400
++++ libica-4.3.0/src/fips.c	2020-05-04 16:58:51.352241763 -0400
+@@ -65,10 +65,9 @@
+  * integrity test. The recommended key size for HMAC-SHA256 is 64 bytes.
+  * The known HMAC is supposed to be provided as hex string in a file
+  * .libica.so.VERSION.hmac in the same directory as the .so module.
+- */
++ /* HMAC key is hexidecimal for: "orboDeJITITejsirpADONivirpUkvarP" */
+ static const char hmackey[] =
+-	"0000000000000000000000000000000000000000000000000000000000000000"
+-	"0000000000000000000000000000000000000000000000000000000000000000";
++	"6f72626f44654a49544954656a7369727041444f4e6976697270556b76617250";
+ 
+ #endif /* ICA_INTERNAL_TEST */
+ 

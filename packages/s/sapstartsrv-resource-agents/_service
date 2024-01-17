@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/SAPStartSrv-resourceAgent.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="filename">sapstartsrv-resource-agents</param>
+    <param name="versionformat">0.9.4+git.%ct.%h</param>
+    <param name="revision">1758e33df5c6a79b3b47dde45f49b8c57b6d1675</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">sapstartsrv-resource-agents</param>
+  </service>
+</services>

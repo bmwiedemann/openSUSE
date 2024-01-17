@@ -1,0 +1,267 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e32dcd9d1d4b061d7e4f2cce984f67ac</srcmd5>
+    <version>0.3.15</version>
+    <time>1448553760</time>
+    <user>dimstar_suse</user>
+    <comment>monad-logger: A class of monads which can log messages.</comment>
+    <requestid>345707</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d47d2628f7398e6853ab136281f49c63</srcmd5>
+    <version>0.3.16</version>
+    <time>1450856962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.16
+* Provide default monadLoggerLog implementation</comment>
+    <requestid>348699</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>52e2a2fa587a843e645ce50d8d7689d7</srcmd5>
+    <version>0.3.17</version>
+    <time>1453416205</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.17 
+* log to a chan (forwarded request 354514 from mimi_vx)</comment>
+    <requestid>354565</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>58cd79bb8708e5062d0766cf89a630a6</srcmd5>
+    <version>0.3.18</version>
+    <time>1455190649</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.18
+* Added logTHShow and logDebugSH, logInfoSH, etc. Accepts an argument of 
+    Show a =&amp;gt; a instead of just Text. (forwarded request 358310 from mimi_vx)</comment>
+    <requestid>358311</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>edfb189fe31a5dcb18daffad51a98257</srcmd5>
+    <version>0.3.19</version>
+    <time>1468360370</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.1.9
+* Add CallStack-based functions and Control.Monad.Logger.CallStack module</comment>
+    <requestid>407633</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5a4bd3c303124d89bcfce896831abf51</srcmd5>
+    <version>0.3.19</version>
+    <time>1468999664</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411927</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7653c42ab9c222f73b6ff016444f98b1</srcmd5>
+    <version>0.3.20</version>
+    <time>1478289681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.20 with cabal2obs.</comment>
+    <requestid>438574</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cd926d80a3c445fb1129cfb8714f55dc</srcmd5>
+    <version>0.3.20.1</version>
+    <time>1481272663</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442865</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>565c260989d24c00674ecfa31a216f24</srcmd5>
+    <version>0.3.20.2</version>
+    <time>1488559876</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461664</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>603f4410f8b3d0fa461702fda91fee97</srcmd5>
+    <version>0.3.21</version>
+    <time>1491896575</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485144</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>48cea9eb9cec0aaa0641b5e7897deeb8</srcmd5>
+    <version>0.3.22</version>
+    <time>1492516254</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>489017</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8000023a704b66a4f1fc501f471ae920</srcmd5>
+    <version>0.3.24</version>
+    <time>1496534273</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499713</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b830d11d5707b7a26eccdabdb22bffdb</srcmd5>
+    <version>0.3.28.5</version>
+    <time>1527675056</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-monad-logger to the latest version.</comment>
+    <requestid>607840</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>542fbd447eed7e17c047565ef9f16ea7</srcmd5>
+    <version>0.3.28.5</version>
+    <time>1532161275</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+* Added logTHShow and logDebugSH, logInfoSH, etc. Accepts an argument of
+- update to 0.3.17</comment>
+    <requestid>623811</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4df4d3f3f48e025ab8c9b1328d90cd58</srcmd5>
+    <version>0.3.29</version>
+    <time>1533412442</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627277</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>22b143b9b777e50496ba994ebbb52e2f</srcmd5>
+    <version>0.3.29</version>
+    <time>1540448839</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643422</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>af124f2472f810f0cc6427c19409657e</srcmd5>
+    <version>0.3.30</version>
+    <time>1541746365</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646359</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>efd829143919c47e411493b92bcbe220</srcmd5>
+    <version>0.3.30</version>
+    <time>1570912429</time>
+    <user>dimstar_suse</user>
+    <comment>minor version update</comment>
+    <requestid>737503</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6fdfbb6066a0f51042a128d00c35b95c</srcmd5>
+    <version>0.3.31</version>
+    <time>1577451318</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759451</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c81dd618e10894d7401347316f95d4a9</srcmd5>
+    <version>0.3.32</version>
+    <time>1589196931</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801035</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6d52cbd5e51f50d18ef99e6cc07a94dc</srcmd5>
+    <version>0.3.32</version>
+    <time>1592579736</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815134</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a3ef43878358c33ae65e64413036a3aa</srcmd5>
+    <version>0.3.34</version>
+    <time>1594293566</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>819582</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>41a22fe3d631882514aaa56b5da31609</srcmd5>
+    <version>0.3.35</version>
+    <time>1598643305</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829353</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e737c6c832e7f2821cad470d3bda6efc</srcmd5>
+    <version>0.3.36</version>
+    <time>1608634234</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUSE</comment>
+    <requestid>857711</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>69e5b0659f97b248cd0947c4f28c1e0e</srcmd5>
+    <version>0.3.36</version>
+    <time>1644617361</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953500</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>dc2f99eef96b3fc84579bebd3f7d0891</srcmd5>
+    <version>0.3.36</version>
+    <time>1659382211</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>987065</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>619da4045c5bba1e5b1f1f73e919d413</srcmd5>
+    <version>0.3.37</version>
+    <time>1665668555</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008493</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4b52ebdbfc45f146496086375a63270a</srcmd5>
+    <version>0.3.37</version>
+    <time>1665844689</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1011048</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>76c5905d4008498bcf883379b7fbdb03</srcmd5>
+    <version>0.3.37</version>
+    <time>1674043811</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059089</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>764e1ef42d685624b842b54a1042ebc1</srcmd5>
+    <version>0.3.39</version>
+    <time>1674927872</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1061633</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>19f37e709a06efc5af5baacdb6a9bd32</srcmd5>
+    <version>0.3.39</version>
+    <time>1680636088</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075963</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>cb528ba6bd5fe466da7fe73645395958</srcmd5>
+    <version>0.3.40</version>
+    <time>1687469128</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094438</requestid>
+  </revision>
+</revisionlist>

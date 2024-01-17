@@ -1,0 +1,54 @@
+--- configure.ac
++++ configure.ac	2013-02-26 17:06:18.609444764 +0000
+@@ -73,6 +73,14 @@ AC_CHECK_HEADER(bzlib.h,[
+   do
+     AC_CHECK_LIB($lib, BZ2_bzopen, [LIBS="$LIBS -l$lib" ; break])
+   done])
++AC_CHECK_HEADER(lzmadec.h, [
++  for lib in lzma lzmadec; do
++    AC_CHECK_LIB($lib, lzmadec_open, [LIBS="$LIBS -l$lib"; break])
++  done])
++ AC_CHECK_HEADER(lzma.h, [
++  for lib in lzma; do
++    AC_CHECK_LIB($lib, lzma_easy_encoder, [LIBS="$LIBS -l$lib"; break])
++  done])
+ AC_CHECK_HEADER(zio.h,[
+     AC_CHECK_LIB(zio, fzopen, [LIBS="$LIBS -lzio" ; AC_DEFINE(HAVE_ZIO, 1, [Have ZIO Library])],[LIBS=$savedLIBS])
+   ],[LIBS=$savedLIBS])
+--- src/ps.c
++++ src/ps.c	2013-02-26 16:58:04.321444640 +0000
+@@ -385,10 +385,11 @@ psscan(fileP,filename,filename_raw,filen
+     int ignore_dsc;             /* Derived from scanstyle.
+ 				   If set the document structure will be ignored.
+ 				*/
+-    unsigned char b[3];         /* The first 3 bytes of the input file */
++    unsigned char b[5];         /* The first 3 bytes of the input file */
+ 
+     BEGINMESSAGE(psscan)
+ 
++#ifndef HAVE_ZIO
+     if (cmd_uncompress) {
+       if ( fread(b, sizeof(char), 3, *fileP) != 3  ||   /* If ((read error) OR */
+            ( memcmp(b, "\037\235", 2) != 0  &&          /*   (not compress AND */
+@@ -398,6 +399,21 @@ psscan(fileP,filename,filename_raw,filen
+ 	cmd_uncompress=NULL;
+       }
+     }
++#else
++    if (cmd_uncompress) {
++      if ( fread(b, sizeof(char), 5, *fileP) != 5  ||   /* If read error OR */
++           ( memcmp(b, "\037\235", 2) != 0  &&          /*   not compress */
++             memcmp(b, "\037\236", 2) != 0  &&
++             memcmp(b, "\037\213", 2) != 0  &&          /*   not gzip */
++             memcmp(b, "BZh",      3) != 0  &&          /*   not bzip2 */
++             memcmp(b, "]\0\0\200",5) != 0  &&
++             memcmp(b, "\377LZMA", 5) != 0  &&
++             memcmp(b, "\3757zXZ", 5) != 0  )) {
++        rewind(*fileP);
++	cmd_uncompress=NULL;
++      }
++    }
++#endif
+ #ifndef HAVE_ZIO
+     if (cmd_uncompress) {
+       struct document *retval = NULL;

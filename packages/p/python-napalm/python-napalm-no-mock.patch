@@ -1,0 +1,36 @@
+Index: napalm-4.0.0/test/nxos/test_getters.py
+===================================================================
+--- napalm-4.0.0.orig/test/nxos/test_getters.py
++++ napalm-4.0.0/test/nxos/test_getters.py
+@@ -5,7 +5,7 @@ from napalm.base.test import helpers
+ from napalm.base import models
+ 
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ 
+ 
+ def mock_time():
+Index: napalm-4.0.0/test/nxos_ssh/test_getters.py
+===================================================================
+--- napalm-4.0.0.orig/test/nxos_ssh/test_getters.py
++++ napalm-4.0.0/test/nxos_ssh/test_getters.py
+@@ -5,7 +5,7 @@ from napalm.base.test import helpers
+ from napalm.base import models
+ 
+ import pytest
+-from mock import patch
++from unittest.mock import patch
+ 
+ 
+ def mock_time():
+Index: napalm-4.0.0/test/eos/test_heredoc.py
+===================================================================
+--- napalm-4.0.0.orig/test/eos/test_heredoc.py
++++ napalm-4.0.0/test/eos/test_heredoc.py
+@@ -1,4 +1,4 @@
+-import mock
++import unittest.mock as mock
+ import pytest
+ from textwrap import dedent
+ 

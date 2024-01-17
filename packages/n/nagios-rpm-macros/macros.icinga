@@ -1,0 +1,98 @@
+# macros.icinga file
+# macros for Icinga (sub-)package building - handle with care
+#
+
+#
+# directories
+#
+
+# install all plugins into this directory
+# Please note: we use the old Nagios directory here, as plugins are
+# currently compatible
+%icinga_plugindir       %{_prefix}/lib/nagios/plugins
+# install all event handler scripts into this directory
+%icinga_eventhandlerdir %{_prefix}/lib/icinga/eventhandler
+# files like p1.pl are located directly in this directory
+%icinga_libdir          %{_prefix}/lib/icinga
+# Icinga uses this directory for status files
+%icinga_localstatedir   %{_var}/lib/icinga
+# Icinga configuration should be stored here
+%icinga_sysconfdir      %{_sysconfdir}/icinga
+# Icinga static webpages, stylesheets and theme(s), online documentation
+%icinga_datadir         %{_datadir}/icinga
+# Icinga spool dir
+%icinga_spooldir        %{_var}/spool/icinga
+# Icinga run dir
+%icinga_rundir          %{_rundir}/icinga
+# Icinga logfile dir
+%icinga_logdir          %{_var}/log/icinga
+# Icinga cgi directory
+%icinga_cgidir          %{_prefix}/lib/icinga/cgi
+# Icinga cgi logging directory
+%icinga_cgi_logdir      %{icinga_logdir}/www
+# Icinga check results spool directory
+%icinga_checkresultdir  %{icinga_spooldir}/checkresults
+# Icinga external command file directory
+%icinga_cmd_filedir     %{icinga_rundir}
+# Icinga temp directory
+%icinga_tempdir			%{icinga_rundir}/tmp
+
+#
+# files
+#
+
+# This is where the current status of all monitored services and
+# hosts is stored
+%icinga_status_file         %{icinga_spooldir}/status.dat
+# This is the file that Icinga should use to store host and
+# service state information before it shuts down.
+%icinga_state_retention_file %{icinga_spooldir}/retention.dat
+# Icinga lock file
+%icinga_lockfile            %{icinga_rundir}/icinga.pid
+# Icinga ido2db lock file
+%icinga_ido2db_lockfile     %{icinga_rundir}/ido2db.pid
+# Icinga external command file - the name icinga.cmd is static, only the
+# directory is configurable
+%icinga_cmdfile             %{icinga_cmd_filedir}/icinga.cmd
+%icinga_command_file        %{icinga_cmdfile}
+# Icinga ido2db socket file
+%icinga_ido2db_socketfile   %{icinga_rundir}/ido2db.sock
+# Icinga initscript error file
+%icinga_chkfile             %{icinga_spooldir}/icinga.chk
+# Icinga idomod tmp file
+%icinga_idomod_tmpfile      %{icinga_spooldir}/idomod.tmp
+# Icinga HTTP auth file
+%icinga_http_authfile       %{icinga_sysconfdir}/htpasswd.users
+# Icinga logrotate file
+%icinga_logrotatefile       %{_sysconfdir}/logrotate.d/icinga
+# Icinga temp file
+%icinga_tempfile            %{icinga_rundir}/icinga.tmp
+
+#
+# users and groups
+#
+
+# User, Icinga runs under
+%icinga2_user    icinga
+# Group, Icinga runs under
+%icinga2_group   icinga
+# User, that can execute commands via %{icinga_command_file}
+%icinga2_command_user   wwwrun
+# Group, that can execute commands via %{icinga_command_file}
+%icinga2_command_group  icingacmd
+
+# Add Icinga user and groups
+%icinga2_user_group_add() \
+ /usr/sbin/groupadd -r %{icinga2_group} 2>/dev/null || :\
+ /usr/sbin/useradd  -r -g %{icinga2_group} -d %{icinga2_localstatedir} -s /bin/false -c "User for Icinga" %{icinga2_user} 2>/dev/null || :\
+ %{nil}
+
+%icinga2_command_user_group_add() \
+ /usr/sbin/groupadd -r %{icinga2_command_group} 2>/dev/null || :\
+ %if 0%{?suse_version} > 01220 \
+ /usr/sbin/usermod -a -G %{icinga2_command_group} %{icinga2_user} || :\
+ %else \
+ /usr/sbin/groupmod -A %{icinga2_user} %{icinga2_command_group} 2>/dev/null || :\
+ %endif \
+ %{nil}
+

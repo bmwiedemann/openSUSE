@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b24b03f81bcfebc7a1c864157067c705</srcmd5>
+    <version>2.1.5</version>
+    <time>1577137397</time>
+    <user>dimstar_suse</user>
+    <comment>python-cchardet</comment>
+    <requestid>758737</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bfe535e75d45560dabedf7c47d6576cd</srcmd5>
+    <version>2.1.5</version>
+    <time>1591742669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809825</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>37dee2b53a9aa9cd9ac829ee7ae5eab6</srcmd5>
+    <version>2.1.6</version>
+    <time>1600180163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.6:
+  * drop support for Python 2.7
+  * support Github Actions
+  * update dev-dependencies</comment>
+    <requestid>834516</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>42cba99596f27bdcea361942724ece1e</srcmd5>
+    <version>2.1.7</version>
+    <time>1614948251</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875285</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f9ad8bbcc990daec8b66c437423f654c</srcmd5>
+    <version>2.1.7</version>
+    <time>1676827196</time>
+    <user>dimstar_suse</user>
+    <comment>- build with cythonize to have working code for python 3.11</comment>
+    <requestid>1066619</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f254dcfb30225846c36edc58703dd00b</srcmd5>
+    <version>2.1.18</version>
+    <time>1677498929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067843</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5c7f015895c6f0e09d9386217538fce2</srcmd5>
+    <version>2.1.18</version>
+    <time>1687380032</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094349 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1094472</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e391cba4c0fc4118df4e86d1bbb7b60b</srcmd5>
+    <version>2.1.19</version>
+    <time>1696270021</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.19:
+  * Update pyproject.toml to try building wheels for every Python
+    implementation
+
+- build with cythonize to have working code for python 3.11
+- initial commit</comment>
+    <requestid>1114692</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,47 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+patches:
+ perl-DBD-SQLite-use-external-sqlite3.patch: -p1 PATCH-FIX-OPENSUSE use system sqlite
+preamble: |-
+ %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
+ %else
+ BuildRequires: sqlite3-devel >= 3.35
+ Recommends: sqlite3-devel
+ %endif
+post_prep: |-
+ %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
+ patch -p1 --reverse <%{PATCH0}
+ %endif
+#post_build: |-
+# rm unused.files
+post_install: |-
+ %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
+ %else
+ ln -fs %{_includedir}/sqlite3ext.h %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/
+ ln -fs %{_includedir}/sqlite3.h %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/
+ rm %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
+ echo >%{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
+ chmod 444 %{buildroot}%{perl_vendorarch}/auto/share/dist/%{cpan_name}/sqlite3.c
+ %endif
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
+#skip_doc: regexp_to_skip_for_doc.*
+#add_doc: files to add to docs
+misc: |-
+ # the links are ignored by perl_gen_filelist, so we need to add them manually again
+ %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
+ %else
+ %{perl_vendorarch}/auto/share/dist/%{cpan_name}/*.h
+ %endif

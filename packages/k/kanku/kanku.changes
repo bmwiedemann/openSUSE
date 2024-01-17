@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Mon Dec 04 12:00:07 UTC 2023 - FSchreiner@suse.com
+
+- fixes for 0.16.0 in spec file
+  * [dist] added Kanku/Config dir to spec
+  * [dist] added K::Config::Defaults to spec
+
+-------------------------------------------------------------------
+Mon Dec  4 06:40:07 UTC 2023 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.16.0
+  * FEATURES
+    * [feature] Implemented HTTP Signature Authentication
+    * [feature] Defaults handling migrated to K::Config::Defaults
+  * BUGFIXES
+    * [cli] cleanup unused packages in urlwrapper
+
+- Update to version 0.15.0
+  * FEATURES
+    * [cli] configurable apiurl for init and lsi
+    * initial version of worker setup
+    * [core] waitpid when stopping dispatcher
+    * [web] improved login page
+    * [web] show error message if user is not logged in
+    * [handler] CreateDomain: added vcpu/memory to gui_config
+    * [handler] GIT: new option 'recursive' for recursive clones
+  * BUGFIXES
+    * [handler] OBSServerFrontendTests: fix cleanup temp and logfiles if succeeded
+    * [handler] ImageDownload: always set vm_image_file if found vm_image_url
+    * [handler] OBSServerFrontendTests: fix stuck test runs
+    * [core] fix for rabbitmq reconnect
+    * [worker] fixed routing key used for sending job_aborted
+    * [handler] GIT: fixed mirror mode
+    * [handler] SetupNetwork: fixed pod
+    * [core] set job_group start_time before dispatching
+    * [core] fixing rabbit retry time
+    * [util] VM: changed default accessmode_9p to 'squash'
+    * [handler] OBSServerFrontendTests: changed to user kanku and use local path
+    * [handler] OBSServerFrontendTests: split commands
+    * [dist] set timeout for kanku-worker.service to 90sec
+    * [dispatcher] kill dispatcher process running dead jobs
+    * [dispatcher] clean up dead job groups on dispatcher startup/shutdown
+    * [worker] send aborted_job to correct job queue
+    * [web] return error if data for job_group rest call is HASH
+    * [worker] do not return before destroying queue
+    * [examples] updated KankuFile.openQA
+    * [handler] SetupNetwork: added timeout
+
+-------------------------------------------------------------------
+Tue Jan 10 06:53:59 UTC 2023 - FSchreiner@suse.com
+
+- Update to version 0.14.0:
+  * FEATURES
+    * [web] first working version of job_group triggers via token auth
+    * [web] creation time in job info
+    * [core] configurable git parameters for job groups
+    * [dispatcher] locking for job groups
+    * [cli] rtrigger: added trigger for job_group's
+    * [dist] added GitLab::WebHook example to dancer config template
+    * [core] replaced Net::SSH2 with Libssh::Session
+    * [examples] install job group examples in sostw job in KankuFile
+    * [handler] PreparSSH: global config for 'public_key_files' in kanku-config.yml
+    * [core] dispatcher cleanup jobs waiting for recursivly
+  * BUGFIXES
+    * [core] catch rabbitmq connection error and reconnect
+    * [dispatcher] fix data caching issues with job groups
+    * [core] fix 'uninitialized value' issues
+    * [web] skipped jobs showed as warnings
+    * [setup] copy certs only if dest does not exists
+    * [web] automatically enable all jobs in job_group which are not exlicitly disabled
+    * [core] added timeout_nodata for SSH
+    * [handler] OBSServerFrontendTests: fix timeout problem
+    * [handler] CreateDomain: die if no vm_image_file in ctx
+    * [cli] avoid 'uninitialized' warnings in rjob when no filter is set
+
+-------------------------------------------------------------------
+Mon Dec  5 08:12:28 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build only for supported arch.
+  See 'etc/templates/default-vm.tt2.$ARCH'
+
+-------------------------------------------------------------------
+Thu Oct 13 06:56:40 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.13.0:
+  * [doc] updated changelog ver: 0.13.0
+  * [doc] updated release notes 0.13.0
+  * [core] recreate queues named 'amq.*' without a dedicate queue name
+  * [core] refactored rabbmitmq handling in worker and dispatcher
+  * [handler] Reboot: new option 'login_timeout' to wait for console
+  * [dist] change copy in Makefile from '-av' to '-rv'
+  * [handler] SaltSSH: added multiple attributes
+  * [dist] changed 'cp -av' to 'cp -rv'
+  * [dist] added RELEASE-NOTES and CHANGELOG to spec file
+  * [doc] updated changelog
+  * [doc] updated release notes 0.12.7
+  * [doc] updated release notes 0.12.6
+  * [doc] updated release notes 0.12.5
+  * [doc] updated release notes 0.12.4
+  * [doc] updated release notes 0.12.3
+  * [doc] updated release notes 0.12.2
+  * [doc] updated release notes 0.12.1
+  * [doc] updated release notes 0.12.0
+  * [contrib] removed p2h - already in branch gh-pages-src
+  * [dist] added .statocles to .gitignore
+  * [dist] removed kanku-web.log from default logging conf
+  * [dist] remove logrotate config - now done with journald
+  * [cli] ssh: new parameter --x11_forward/-X to enable ssh x11 forwarding
+
+-------------------------------------------------------------------
+Thu Jun 23 16:55:29 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.7:
+  * [handler] fixing users
+  * [cli] up: fixed __ALL__
+
+-------------------------------------------------------------------
+Wed Jun 22 07:54:03 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.6:
+  * [dist] updated KankuFile.ubuntu to jammy
+  * [dist] updated KankuFile.ubuntu to focal
+  * [examples] new KankuFile for vmdk
+  * [cli] up: removed debug output
+  * [core] fixed kanku job sostw
+  * [core] updated TODO
+  * [cli] up: new job handling
+  * [handler] added K::H::CopyProfile
+  * added changelog to kanku-common and kanku-cli
+
+-------------------------------------------------------------------
+Thu Jun 09 14:14:00 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.5:
+  * [cli] up: new alias for '--skip_check_domain' -> '-S'
+  * [cli] ssh: new option '--agent_forward' aliase '-A'
+  * [cli] new option '--skip_check_domain' for 'kanku up'
+  * [util] use cache='unsafe' only for vmdk
+  * [dist] fixed order of iptables rules when using multiple networks
+  * [handler] changed get_ipaddress in SetupNetwork to console
+
+-------------------------------------------------------------------
+Mon May 09 13:19:00 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.4:
+  * [util] enable cache=unsafe for all disk images
+  * [web] fixed 'scroll to top' button
+
+-------------------------------------------------------------------
+Mon Mar 14 08:38:10 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.3:
+  * [web] fix outdated cached settings in "Job Groups"
+  * [cli] added job_groups to check_configs command
+  * [core] fixed config read
+  * [core] improvments for config file handling
+  * [core] improved iptables/ss/netstat handling
+    * Fixes #boo 1196604
+  * [setup] removed backup of sudoers file
+  * removed ssh_user from KankuFile
+  * [dist] change default logging to stderr/journald
+  * [util] VM::Image - use new buffer size while uncompressing
+  * [common] fixed x-scheme-handler_kanku
+  * [handler][bugfix] central config for host_interfaces in PortForward
+
+-------------------------------------------------------------------
+Fri Feb 18 08:49:08 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.2:
+  * [web][bugfix] filter iptable rules by domain name
+
+-------------------------------------------------------------------
+Wed Feb 16 08:04:53 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.12.1:
+  * [core][feature] new systemd service kanku-iptables for master server
+
+-------------------------------------------------------------------
+Wed Feb  9 07:29:34 UTC 2022 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.12.0:
+  * see RELEASE-NOTES-0.12.0.md in the doc dir
+
+-------------------------------------------------------------------
+Thu Nov 18 09:26:27 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.11.0:
+  * see RELEASE-NOTES-0.11.0.md in the doc dir of your packages
+  * PATCH removed 0001_dancer-config.patch - included in new 
+    release
+
+-------------------------------------------------------------------
+Sun Oct 24 12:55:08 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- fix dancer config template - removed duplicate session key
+  * PATCH added 0001_dancer-config.patch 
+
+-------------------------------------------------------------------
+Sun Jul 11 00:22:24 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.4:
+  * [dist] spec file cleanup
+
+-------------------------------------------------------------------
+Sat Jun 12 09:23:57 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.4:
+  * [handler] PrepareSSH - added all known default pub key file used by ssh
+  * [handler] OBSCheck changed default for use_oscrc to 0
+  * [notifier] new notifier NSCAng
+  * [notifier] removed unused variable in NSCA
+  * [dist] fixed duplicate key in kanku-config.yml.tt2
+  * [cli] basic version of check_configs command
+  * [core] switched logging to trace
+
+-------------------------------------------------------------------
+Thu Apr 15 10:46:53 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.3:
+  * [dist] bind "Requires: kanku*" to specific version
+  * [web] fix 'Subroutine redefined' in Kanku::REST
+  * [web] help for guest page
+  * [dist] removed help from views
+  * [web] help page as modal window
+  * [dist] added help page to spec
+  * [web] help page for job_history
+  * [web] fix tooltips in job page
+  * [web] more explainations in guest.js
+  * [web] fix for showDetails in common.js
+  * [handler] fixed ssh for Fedora 33
+  * [util] fix for Fedora login behavior
+  * [web] job id in comment title
+  * [web] improved tooltips
+  * [web] fix closeModal in common.js
+  * [web] fix route handling when retrigger a job
+  * [web] refresh button in jobs_results page
+
+-------------------------------------------------------------------
+Sat Feb 13 12:18:01 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.2:
+  * [dist] fixed typo in spec
+  * [dist] fixed spec for i686
+  * [dist] added default-vm.tt2.i686
+  * [util] improved terminal handling in VM::Console for Debian Unstable
+  * [dist] added debian files to extract via service
+  * [dist] removed debian files - use DEBTRANSFORM
+  * [dist] updated debian changelog
+  * [setup] fixed network_name in distributed setup
+  * [dist] fixed missing quotes for _arch
+  * removed TODOs and added req for qemu
+  * [dist] imported changes in spec file from jengelh
+
+-------------------------------------------------------------------
+Thu Jan 28 10:03:59 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- removed TODO's from spec file 
+
+-------------------------------------------------------------------
+Mon Jan 25 11:37:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing wording from descriptions.
+- Remove old build recipe constructs.
+
+-------------------------------------------------------------------
+Thu Jan 14 14:54:38 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- initial version of kanku rpm package (0.10.0) 

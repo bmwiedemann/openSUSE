@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Sep 11 10:01:59 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Tue Mar 22 08:08:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+- Added patches:
+  * 0001-EdDSAEngine.initVerify-Handle-any-non-EdDSAPublicKey.patch
+  * 0002-Disable-test-that-relies-on-internal-sun-JDK-classes.patch
+    + Remove use of internal sun JDK classes
+
+-------------------------------------------------------------------
+Mon Jun 29 11:08:23 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of ed25519 0.3.0

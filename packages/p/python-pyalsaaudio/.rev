@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9265ee4eac026339423a6b7abc7a0ac8</srcmd5>
+    <version>0.8.4</version>
+    <time>1516804239</time>
+    <user>dimstar_suse</user>
+    <comment>New package, needed by mycroft-core</comment>
+    <requestid>568477</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>831adc3f5caa34eb616e495c55a299bc</srcmd5>
+    <version>0.9.0</version>
+    <time>1648330327</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * 'getformats()' returns a dictionary of name / value pairs, one for each of the card's
+    supported formats - e.g. '{&quot;U8&quot;: 1, &quot;S16_LE&quot;: 2}',
+  * 'getchannels()' returns a list of the supported channel numbers, e.g. '[1, 2]',
+  * 'getrates()' returns supported sample rates for the device, e.g. '[48000]',
+  * 'getratebounds()' returns the device's official minimum and maximum supported 
+     sample rates as a tuple, e.g. '(4000, 48000)'.
+  * Prevent hang on close after capturing audio
+  * Return an empty string/bytestring when 'read()' detects an 
+    overrun. Previously the returned data was undefined
+  * Unlimited setperiod buffer size when reading frames</comment>
+    <requestid>965068</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfb965817d89c9ce4989e39270683995</srcmd5>
+    <version>0.9.1</version>
+    <time>1651669863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * Support decibel, percentage, and raw volumes in getvolume, setvolume,
+    and getrange (#109 from @chrisdiamand):
+- Use pytest for running the testsuite, and skip tests that require a
+  sound card. Remove the bcond so the testsuite runs. 
+- Update docs shipped to be more documentation-like.</comment>
+    <requestid>974811</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ad12dd99b59949ab63cf32447dabd2f4</srcmd5>
+    <version>0.9.2</version>
+    <time>1665034953</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008242</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ccb405d50a2c03d9995468302e95f1f</srcmd5>
+    <version>0.10.0</version>
+    <time>1683295097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * support for periods in the PCM constructor.
+  * new functions PCM.state(), PCM.drop() and PCM.drain()
+  * improved underrun/overrun handling
+  * documentation improvements/consolidation
+  * more sampling rates
+  * bug fixes</comment>
+    <requestid>1084882</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,127 @@
+--- libsmi-0.4.8.orig/lib/Makefile.am
++++ libsmi-0.4.8/lib/Makefile.am
+@@ -11,6 +11,7 @@
+ # @(#) $Id: Makefile.am 7735 2008-02-15 08:09:17Z schoenw $
+ #
+ 
++AM_CFLAGS = -fvisibility=hidden
+ EXTRA_DIST		= parser-sming.y parser-smi.y \
+ 			  scanner-sming.l scanner-smi.l \
+ 			  errormacros.h data.h check.h error.h util.h \
+@@ -29,10 +30,14 @@ man_MANS		= libsmi.3 smi_config.3 smi_mo
+ 			  smi_class.3 smi_attribute.3 smi_identity.3 \
+ 			  smi_event.3
+ lib_LTLIBRARIES		= libsmi.la
+-libsmi_la_SOURCES	= data.c check.c error.c util.c snprintf.c smi.c \
++noinst_LTLIBRARIES = libsmi-internal.la
++
++libsmi_la_SOURCES	= data.c check.c error.c util.c smi.c \
+ 		  	  parser-smi.c scanner-smi.c \
+ 		  	  parser-sming.c scanner-sming.c
+-libsmi_la_LDFLAGS	= -version-info @VERSION_LIBTOOL@
++libsmi_la_LDFLAGS	= -no-undefined -version-info @VERSION_LIBTOOL@
++
++libsmi_internal_la_SOURCES = $(libsmi_la_SOURCES)
+ 
+ parser-smi.c parser-smi.tab.h: parser-smi.y scanner-smi.h parser-smi.h
+ 	$(BISON) --defines=parser-smi.tab.h -t -psmi -o parser-smi.c parser-smi.y
+--- libsmi-0.4.8.orig/lib/smi.h
++++ libsmi-0.4.8/lib/smi.h
+@@ -16,14 +16,11 @@
+ 
+ #include <stdlib.h>
+ #include <stdarg.h>
+-#ifdef HAVE_STDINT_H
+ #include <stdint.h>
+-#endif
+-#ifdef HAVE_LIMITS_H
+-#include "limits.h"
+-#endif
++#include <limits.h>
+ #include <time.h>
+ 
++#pragma GCC visibility push(default)
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -623,9 +620,9 @@ extern int smiPack(SmiNode *row, SmiValu
+  * to free the allocated memory.
+  */
+ 
+-extern int smiAsprintf(char **strp, const char *format, ...);
++extern int smiAsprintf(char **strp, const char *format, ...)  __attribute__ ((format (printf, 2, 3)));
+ 
+-extern int smiVasprintf(char **strp, const char *format, va_list ap);
++extern int smiVasprintf(char **strp, const char *format, va_list ap)  __attribute__ ((format (printf, 2, 0)));
+ 
+ 
+ /*
+@@ -653,8 +650,8 @@ extern void _smiFree(char *, int, void *
+ #define	smiFree(p)	_smiFree(__FILE__, __LINE__, p)
+ 
+ #else
+-extern void *smiMalloc(size_t size);
+-extern void *smiRealloc(void *ptr, size_t size);
++extern void *smiMalloc(size_t size) __attribute((malloc, alloc_size(2)));
++extern void *smiRealloc(void *ptr, size_t size) __attribute((alloc_size(2)));
+ extern char *smiStrdup(const char *s1);
+ extern char *smiStrndup(const char *s1, size_t n);
+ extern void smiFree(void *ptr);
+@@ -664,5 +661,6 @@ extern void smiFree(void *ptr);
+ }
+ #endif
+ 
++#pragma GCC visibility pop
+ 
+ #endif /* _SMI_H */
+--- libsmi-0.4.8.orig/lib/smi.h.in
++++ libsmi-0.4.8/lib/smi.h.in
+@@ -24,6 +24,7 @@
+ #endif
+ #include <time.h>
+ 
++#pragma GCC visibility push(default)
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -663,6 +664,6 @@ extern void smiFree(void *ptr);
+ #ifdef __cplusplus
+ }
+ #endif
+-
++#pragma GCC visibility pop
+ 
+ #endif /* _SMI_H */
+--- libsmi-0.4.8.orig/lib/smi.c
++++ libsmi-0.4.8/lib/smi.c
+@@ -30,7 +30,6 @@
+ #include "data.h"
+ #include "error.h"
+ #include "util.h"
+-#include "snprintf.h"
+ 
+ #ifdef BACKEND_SMI
+ #include "scanner-smi.h"
+--- libsmi-0.4.8.orig/lib/util.c
++++ libsmi-0.4.8/lib/util.c
+@@ -19,8 +19,8 @@
+ #include <string.h>
+ #include <time.h>
+ 
++#include "smi.h"
+ #include "util.h"
+-#include "snprintf.h"
+ 
+ #ifdef HAVE_DMALLOC_H
+ #include <dmalloc.h>
+--- libsmi-0.4.8.orig/tools/Makefile.am
++++ libsmi-0.4.8/tools/Makefile.am
+@@ -29,7 +29,7 @@ smiquery_SOURCES	= smiquery.c shhopt.c
+ smiquery_LDADD		= ../lib/libsmi.la
+ 
+ smilint_SOURCES		= smilint.c shhopt.c
+-smilint_LDADD		= ../lib/libsmi.la
++smilint_LDADD		= ../lib/libsmi.la ../lib/libsmi-internal.la
+ 
+ smixlate_SOURCES	= smixlate.c shhopt.c dstring.h dstring.c
+ smixlate_LDADD		= ../lib/libsmi.la

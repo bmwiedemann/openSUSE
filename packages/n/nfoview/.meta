@@ -1,0 +1,5 @@
+<package name="nfoview" project="openSUSE:Factory">
+  <title>NFO Viewer</title>
+  <description>A simple viewer for NFO files</description>
+  <devel project="editors" package="nfoview"/>
+</package>

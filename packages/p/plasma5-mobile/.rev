@@ -1,0 +1,186 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed103e4df02b199f27da73a3f65ebaab</srcmd5>
+    <version>5.25.0</version>
+    <time>1655118161</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.25.0</comment>
+    <requestid>981927</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7060e9f6ab382a2ab472f6d1a4b72e2e</srcmd5>
+    <version>5.25.1</version>
+    <time>1655972629</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.1. As usual, completely untested. (forwarded request 984192 from Vogtinator)</comment>
+    <requestid>984357</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76e4f2f5ab04413ccc539a4176fc7400</srcmd5>
+    <version>5.25.2</version>
+    <time>1656675885</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.2 (forwarded request 985627 from Vogtinator)</comment>
+    <requestid>985919</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>285b2e3faad1b3c5af4806f00012a36c</srcmd5>
+    <version>5.25.3</version>
+    <time>1657809242</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.3, with fixed lockscreen (forwarded request 988718 from Vogtinator)</comment>
+    <requestid>988865</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c29af62f4dc314047e7919a9e1c8969d</srcmd5>
+    <version>5.25.4</version>
+    <time>1659721843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993286</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1444e3e7ac3e4919e636a48dc33eac60</srcmd5>
+    <version>5.25.5</version>
+    <time>1662639716</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
+    <requestid>1001631</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4f761c8d656a1a9eac69ec907eea456a</srcmd5>
+    <version>5.26.0</version>
+    <time>1665504119</time>
+    <user>RBrownFactory</user>
+    <comment>Plasma 5.26.0</comment>
+    <requestid>1009141</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d804d79f6228c47c177c16328d5167b7</srcmd5>
+    <version>5.26.1</version>
+    <time>1666257064</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.1, untested. (forwarded request 1029774 from Vogtinator)</comment>
+    <requestid>1029854</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>28d2b95a58ef914259c653dee082f6cc</srcmd5>
+    <version>5.26.2</version>
+    <time>1667067378</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.2, untested but now with kwin scaling fix (forwarded request 1031457 from Vogtinator)</comment>
+    <requestid>1031885</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61d5979f6f9c60968c1d1525e222e7a0</srcmd5>
+    <version>5.26.3</version>
+    <time>1668086497</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.3(.1), untested as usual (forwarded request 1034741 from Vogtinator)</comment>
+    <requestid>1034783</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff869bf18a42c3f538101f62cdeb0bab</srcmd5>
+    <version>5.26.4</version>
+    <time>1669816791</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.4(.1). (forwarded request 1038954 from Vogtinator)</comment>
+    <requestid>1039008</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7f50d653d7389ee4cdb931f7bea3aea</srcmd5>
+    <version>5.26.5</version>
+    <time>1673021112</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.5 - untested (forwarded request 1055974 from Vogtinator)</comment>
+    <requestid>1056042</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>597282e2fdebc712fb2e36062cb08374</srcmd5>
+    <version>5.27.0</version>
+    <time>1676302830</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.0, preliminary tarballs</comment>
+    <requestid>1064547</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7acc59fc1ba12620b3c88c720b4caf60</srcmd5>
+    <version>5.27.1</version>
+    <time>1677258452</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.1 (forwarded request 1067115 from Vogtinator)</comment>
+    <requestid>1067251</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e77cd013012d2630a080628d4113cfcd</srcmd5>
+    <version>5.27.2</version>
+    <time>1677794591</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.2 (forwarded request 1068244 from Vogtinator)</comment>
+    <requestid>1068286</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>021fc3716cad23703656cb4b370eebac</srcmd5>
+    <version>5.27.3</version>
+    <time>1679068968</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.3 (forwarded request 1071929 from Vogtinator)</comment>
+    <requestid>1072015</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1cd9e0f4d7ef2abbaa6a2c999f57165f</srcmd5>
+    <version>5.27.4</version>
+    <time>1680722832</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.4(.1) (forwarded request 1077257 from Vogtinator)</comment>
+    <requestid>1077307</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>07c8c75f60eba288d3e45eed501995ba</srcmd5>
+    <version>5.27.5</version>
+    <time>1683801167</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.5. Not built yet. (forwarded request 1085751 from Vogtinator)</comment>
+    <requestid>1085910</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>91eb0b2690d3dd8c7abfa51cd5e53166</srcmd5>
+    <version>5.27.6</version>
+    <time>1687379947</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
+    <requestid>1094205</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>24bdbd04e4af6d0dc59a9b44f4fb1d8f</srcmd5>
+    <version>5.27.7</version>
+    <time>1690987791</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.7(.1)</comment>
+    <requestid>1101842</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7df7c9288ab6f8a038deca6f68e6d95a</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701517</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110737</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ff07ac79b0bb4f087e4807dccafdf3db</srcmd5>
+    <version>5.27.9</version>
+    <time>1698249769</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.9, untested as usual. I'd also submit this as maintenance update to 15.5, thoughts? (forwarded request 1120046 from Vogtinator)</comment>
+    <requestid>1120096</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2a77b1b5020066bfc9a5ad9b915dd1e7</srcmd5>
+    <version>5.27.10</version>
+    <time>1701972620</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.10 (forwarded request 1131390 from Vogtinator)</comment>
+    <requestid>1131437</requestid>
+  </revision>
+</revisionlist>

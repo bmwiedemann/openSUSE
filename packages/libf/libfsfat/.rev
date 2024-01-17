@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f34949449e9f227505f1110c813623f2</srcmd5>
+    <version>20220925</version>
+    <time>1669289011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037571</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fa9d08e58d12455d03ddbc7f832811a0</srcmd5>
+    <version>20220925</version>
+    <time>1669629980</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038466</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ca11872fbc91ec4ec5290f40e2c2ad23</srcmd5>
+    <version>20220925</version>
+    <time>1672851095</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046582</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0c2f72054108e88d66bacb7a61d98df9</srcmd5>
+    <version>20220925</version>
+    <time>1691762160</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103387</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f0db4e9278920219bb1768465b86e8bc</srcmd5>
+    <version>20231122</version>
+    <time>1700772057</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231122</comment>
+    <requestid>1128157</requestid>
+  </revision>
+</revisionlist>

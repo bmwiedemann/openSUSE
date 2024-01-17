@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0333944d1528536bd1d4730e7d206299</srcmd5>
+    <version>1.3.0</version>
+    <time>1487680750</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>456026</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc6b236b72157358c2c6cad6e8b9b906</srcmd5>
+    <version>1.4.0</version>
+    <time>1492714210</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.4.0:
+  - Fix docs for child templates
+  - Introduce context variable 'pypi_name'
+  - Updated from global requirements
+  - Add dynamic version detection from archive files</comment>
+    <requestid>485853</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fe4e652458f79352b296ad823d741e8d</srcmd5>
+    <version>1.6.0</version>
+    <time>1493020163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.6.0
+  - Return the full path when searching for archive files
+  - Add 'basename' filter
+
+- update to version 1.5.0:
+  - Look in 'output_dir' when searching archives
+  - Enable and fix more tests
+  - Updated from global requirements
+  - Make output dir available in the context
+  - Add new function fetch_source() to download files</comment>
+    <requestid>489763</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57fae82fcf28bdde0a94bcdc806eb46d</srcmd5>
+    <version>1.6.1</version>
+    <time>1496226062</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.6.1
+  - Sort found archives by mtime for version detection
+  - Updated from global requirements</comment>
+    <requestid>499767</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>80ff5ac2b95323182b2e996552081ef8</srcmd5>
+    <version>1.7.0</version>
+    <time>1505507522</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0
+  - Support different py versions in py2name() and py2pkg()
+  - Clarify variable name
+  - Add context function `url_pypi`
+  - Introduce a new --input-template-format switch
+  - Semantically determine lowest version number, not lexigraphically
+  - Move context related functions to extra file
+  - Fix rc version handling on SUSE
+  - Updated from global requirements</comment>
+    <requestid>526334</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab3124a41f1d5c224ab9ee41583d1a55</srcmd5>
+    <version>1.9.0</version>
+    <time>1507628554</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.9.0
+  - Add option to skip certain python version
+
+- update to version 1.8.0
+  - Fix SUSE detection on Tumbleweed and SLE15</comment>
+    <requestid>532808</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1783f9867a4fe9aab1d873e902a7a98a</srcmd5>
+    <version>1.9.1</version>
+    <time>1507897087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.9.1
+  - Remove python_module definition from suse template</comment>
+    <requestid>533295</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>786aaaf4c370c7cd8d313ac6be6a0322</srcmd5>
+    <version>1.12.0</version>
+    <time>1569235036</time>
+    <user>dimstar_suse</user>
+    <comment>- add conflict for the impossible to workaround staging failures
+
+- update to version 1.12.0
+  - Add contextfunctions 'py2' and 'py3'
+
+- switch to python 3.x only package
+
+- update to version 1.11.1
+  - Switch to TOX_CONSTRAINTS_FILE
+  - Update flake8 version to latest release
+  - Switch to openstackdocstheme
+  - OpenDev Migration Patch
+  - Preserve list order in _pymod2pkg_translate
+  - Fix _pymod2pkg_translate when skip_pyversion is None
+  - Follow opendev rebranding
+
+- update to version 1.10.0
+  - fix tox python3 overrides
+  - Update home-page
+  - Update links in README
+  - Switch to stestr
+  - Change openstack-dev to openstack-discuss
+  - Move linter dependencies out of test-requirements
+  - Removed older version of python added 3.5
+  - Avoid tox_install.sh for constraints support
+  - switch documentation job to new PTI
+  - Update to a somewhat recent flake8 version
+  - add python 3.6 unit test job
+  - Updated from global requirements
+  - import zuul job settings from project-config</comment>
+    <requestid>732093</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65ba875afa6e3f0d144d16f87c900ab5</srcmd5>
+    <version>2.0.0</version>
+    <time>1584447099</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.0.0
+  - Set ignore_basepython_conflict in tox
+  - Add Python 3 Train unit tests
+  - Drop py27 support
+  - Fix urllib.urlopen for python3
+  - Drop use of unittest2
+  - Remove usage of platform.linux_distribution</comment>
+    <requestid>785863</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6c12193ae2d3f63a8874a04104635fd3</srcmd5>
+    <version>2.0.0</version>
+    <time>1594805256</time>
+    <user>dimstar_suse</user>
+    <comment>- update urls to opendev</comment>
+    <requestid>812566</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f92e5c4156cae47df434db6d772b00c1</srcmd5>
+    <version>2.1.0</version>
+    <time>1606428869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850979</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e6f49033b7b7da7207213e3aa6a3425c</srcmd5>
+    <version>2.2.0</version>
+    <time>1652475789</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.2.0
+  - Correct a typo in the document
+  - [community goal] Update contributor documentation
+  - Use py3 as the default runtime for tox
+  - drop mock from lower-constraints and requirements
+  - Add support for Jinja2 3.x filters
+  - Switch to OFTC</comment>
+    <requestid>976982</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4079e2acdb6a5ad80126f7b0809a5eb4</srcmd5>
+    <version>2.2.0</version>
+    <time>1669912642</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unused dependencies</comment>
+    <requestid>1039271</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>46bb4fc9ca56203db3e299b36e91a4d2</srcmd5>
+    <version>2.2.0</version>
+    <time>1694200527</time>
+    <user>anag+factory</user>
+    <comment>- added 0001-Allow-selecting-suse_39-template.patch</comment>
+    <requestid>1109584</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d5e2d036f1fea4bde3669ec8705338e4</srcmd5>
+    <version>2.3.0</version>
+    <time>1704660160</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-Allow-selecting-suse_39-template.patch
+- update to version 2.3.0
+  - Allow selecting suse_39 template
+  - Allow suse_py311 to be selected as template
+  - setup.cfg: Replace dashes with underscores
+  - Switch to Python3 zed unit test jobs</comment>
+    <requestid>1137434</requestid>
+  </revision>
+</revisionlist>

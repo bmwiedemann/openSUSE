@@ -1,0 +1,7 @@
+<package name="libdmapsharing3" project="openSUSE:Factory">
+  <title>Library implementing the DMAP family of protocols</title>
+  <description>libdmapsharing is a library you may use to access and share DMAP (DAAP &amp; DPAP) content. The library is written in C using GObject and libsoup. The DMAP family of protocols are used by products such as iTunes(TM), iPhoto(TM) and the Roku SoundBridge(TM) family to share content such as music and photos.
+
+ </description>
+  <devel project="multimedia:libs" package="libdmapsharing3"/>
+</package>

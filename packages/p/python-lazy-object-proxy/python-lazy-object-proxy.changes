@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Sat Dec 16 21:01:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Added Python 3.12 wheels.
+  * Dropped support for Python 3.7.
+  * Applied some reformatting and lint fixes using ruff to the
+    codebase (mostly more Python 2 leftover cleanups).
+
+-------------------------------------------------------------------
+Fri May  5 13:42:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * Added support for matrix multiplication operator (``@``).
+  * Should have all the wheels now (including the manylinux
+    ones).
+  * Bumped minimum version requirements for setuptools and
+    setuptools-scm.
+  * Switched the default pure python fallback implementation to
+    the "simple" one (when you ``from lazy_object_proxy import
+    Proxy`` and the C extension is not available).
+    Previously the "slots" implementation was used but as it
+    turns out it is slower on Python 3.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:27:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:26 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Fri Dec  2 18:25:54 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.8.0 
+  Cleaned up use of cPickle. Contributed by Sandro Tosi in #62.
+  Cleaned up more dead Python 2 code.
+  Added Python 3.11 wheels.
+  Dropped support for Python 3.6.
+
+-------------------------------------------------------------------
+Thu Aug 18 19:27:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile, remove code coverage check and travis-fold
+
+-------------------------------------------------------------------
+Sat Mar 26 20:03:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * Removed most of the Python 2 support code and fixed ``python_requires`` to
+    require at least Python 3.6.
+    * Note that 1.7.0 has been yanked because it could not install on Python 2.7.
+  * Switched CI to GitHub Actions, this has a couple consequences:
+  * Fixed ``__index__`` to fallback to ``int`` if the wrapped object doesn't
+    have an ``__index__`` method.  This prevents situations where code using a
+    proxy would otherwise likely just call ``int`` had the object not have an
+    ``__index__`` method.
+ 
+-------------------------------------------------------------------
+Wed Oct 13 09:02:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Unpin setuptools_scm<6.0 limit
+
+-------------------------------------------------------------------
+Sat Jul 31 15:58:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Added support for async special methods (``__aiter__``, ``__anext__``,
+    ``__await__``, ``__aenter__``, ``__aexit__``).
+    These are used in the ``async for``, ``await` and ``async with`` statements.
+
+    Note that ``__await__`` returns a wrapper that tries to emulate the crazy
+    stuff going on in the ceval loop, so there will be a small performance overhead.
+  * Added the ``__resolved__`` property. You can use it to check if the factory has
+    been called.
+
+-------------------------------------------------------------------
+Fri Feb 26 08:46:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Drop broken %ifpython3 macro
+
+-------------------------------------------------------------------
+Sun Dec 20 09:34:39 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Added Python 3.9 wheels.
+  * Removed Python 2.7 Windows wheels
+
+-------------------------------------------------------------------
+Thu Sep 17 11:39:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 1.5.1:
+  * Added ARM64 wheels (manylinux2014).
+  * Added support for ``__fspath__``.
+  * Dropped support for Python 3.4.
+
+-------------------------------------------------------------------
+Wed Apr 15 11:16:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.4.3
+  * Added binary wheels for Python 3.8.
+  * Fixed license metadata.
+
+-------------------------------------------------------------------
+Wed Sep 11 13:02:47 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4.2:
+  * Included a pyproject.toml to allow users install the sdist with old
+    python/setuptools, as the setuptools-scm dep will be fetched by pip
+    instead of setuptools. Fixes #30.
+
+-------------------------------------------------------------------
+Thu Jun 20 12:53:22 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.4.1
+  * Fixed __mod__ for the slots backend.
+  * Dropped support for Python 2.6 and 3.3.
+  * Fixed wheels being built with -coverage cflags. No more issues 
+    about bogus cext.gcda files.
+  * Removed useless C file from wheels.
+  * Changed setup.py to use setuptools-scm.
+- launch tests using multibuild
+
+-------------------------------------------------------------------
+Mon Jul 30 15:55:47 UTC 2018 - sean.marlow@suse.com
+
+- Update to v1.3.1
+  + Fix broken release (sdist had a broken MANIFEST.in).
+- Update to v1.3.0
+  + Speed up arithmetic operations involving cext.Proxy subclasses.
+
+-------------------------------------------------------------------
+Sat May  6 03:31:54 UTC 2017 - toddrme2178@gmail.com
+
+- Don't provide python2-lazy_object_proxy, singlespec packages
+  should use correct name.
+
+-------------------------------------------------------------------
+Mon Feb 27 14:04:16 UTC 2017 - jmatejek@suse.com
+
+- update for singlespec
+- renamed to lazy-object-proxy for PyPI consistency
+- updated download url
+
+-------------------------------------------------------------------
+Mon Jul  4 16:36:47 UTC 2016 - arun@gmx.de
+
+- update to version 1.2.2:
+  * Added `manylinux <https://www.python.org/dev/peps/pep-0513/>`_
+    wheels.
+  * Minor cleanup in readme.
+
+-------------------------------------------------------------------
+Sun May 15 09:47:00 UTC 2016 - tchvatal@suse.com
+
+- Move from python2 to work with python3-astrid
+
+-------------------------------------------------------------------
+Tue Feb 23 09:56:47 UTC 2016 - bwiedemann@suse.com
+
+- fix license string
+
+-------------------------------------------------------------------
+Wed Feb 10 14:56:16 UTC 2016 - michael@stroeder.com
+
+- initial packaging of upstream release 1.2.1
+

@@ -1,0 +1,20 @@
+--- jogl-v2.3.2/src/jogl/classes/com/jogamp/opengl/awt/GLCanvas.java	2017-10-06 09:06:05.281467238 +0200
++++ jogl-v2.3.2/src/jogl/classes/com/jogamp/opengl/awt/GLCanvas.java	2017-10-06 09:55:08.454952024 +0200
+@@ -629,7 +629,7 @@
+         awtWindowClosingProtocol.addClosingListener();
+ 
+         if(DEBUG) {
+-            System.err.println(getThreadName()+": Info: addNotify - end: peer: "+getPeer());
++            System.err.println(getThreadName()+": Info: addNotify - end");
+         }
+     } finally {
+         _lock.unlock();
+@@ -806,7 +806,7 @@
+       }
+     }
+     if(DEBUG) {
+-        System.err.println(getThreadName()+": Info: removeNotify - end, peer: "+getPeer());
++        System.err.println(getThreadName()+": Info: removeNotify - end");
+     }
+   }
+ 

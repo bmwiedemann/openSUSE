@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd6d7e85d75a8d0b6efd2f5f623c7b0d</srcmd5>
+    <version>1.6.3</version>
+    <time>1578502481</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>755311</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>702370c26a170a264d189a4084fb0b39</srcmd5>
+    <version>1.6.3</version>
+    <time>1578674934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>761922</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f3028942b84f439678cd937988901d92</srcmd5>
+    <version>1.6.3</version>
+    <time>1669041007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037040</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>00fba52397ae1a63ffb841cff51fde30</srcmd5>
+    <version>1.6.3</version>
+    <time>1681654061</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop tag BuildRoot: (boo#1207289)
+- Cleanup spec file (name, year, url protocol)</comment>
+    <requestid>1079748</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8b9b964ebe8089a83c5c853e5bf0ba82</srcmd5>
+    <version>1.6.3</version>
+    <time>1683295069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084839</requestid>
+  </revision>
+</revisionlist>

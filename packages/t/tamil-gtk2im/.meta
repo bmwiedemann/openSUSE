@@ -1,0 +1,5 @@
+<package name="tamil-gtk2im" project="openSUSE:Factory">
+  <title>Tamil99 Keyboard Input module for GTK2</title>
+  <description>Tamil99 Keyboard Input module for GTK2</description>
+  <devel project="M17N" package="tamil-gtk2im"/>
+</package>

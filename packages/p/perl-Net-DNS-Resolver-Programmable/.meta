@@ -1,0 +1,8 @@
+<package name="perl-Net-DNS-Resolver-Programmable" project="openSUSE:Factory">
+  <title>Programmable DNS resolver class for offline emulation of DNS</title>
+  <description>Net::DNS::Resolver::Programmable is a Net::DNS::Resolver descendant class that
+allows a virtual DNS to be emulated instead of querying the real DNS.  A set of
+static DNS records may be supplied, or arbitrary code may be specified as a
+means for retrieving DNS records, or even generating them on the fly.</description>
+  <devel project="devel:languages:perl" package="perl-Net-DNS-Resolver-Programmable"/>
+</package>

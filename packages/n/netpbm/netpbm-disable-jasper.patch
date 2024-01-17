@@ -1,0 +1,13 @@
+Index: netpbm-10.93.0/config.mk.in
+===================================================================
+--- netpbm-10.93.0.orig/config.mk.in	2020-12-29 10:52:17.176428400 +0100
++++ netpbm-10.93.0/config.mk.in	2020-12-29 10:52:17.328429333 +0100
+@@ -482,7 +482,7 @@ JBIGLIB = $(INTERNAL_JBIGLIB)
+ JBIGHDR_DIR = $(INTERNAL_JBIGHDR_DIR)
+ 
+ # The Jasper JPEG-2000 image compression library (aka JasPer):
+-JASPERLIB = -ljasper
++JASPERLIB = NONE
+ JASPERHDR_DIR = /usr/include/jasper
+ # JASPERDEPLIBS is the libraries (-l options or file names) on which
+ # The Jasper library depends -- i.e. what you have to link into any

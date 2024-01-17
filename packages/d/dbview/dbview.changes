@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Apr 21 16:04:38 UTC 2015 - mpluskal@suse.com
+
+- Update download url
+- Add gpg signature
+- Cleanup spec file with spec-clenaner
+
+-------------------------------------------------------------------
+Mon Feb 13 10:45:37 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Apr  6 17:02:10 CEST 2007 - lmichnovic@suse.cz
+
+- update to version 1.0.4 
+  - Support for deleted records
+    Added --deleted|-D to display deleted records as well. 
+  - Improved handling of differences between dBase III and 
+    dBase III+ files.
+  - Improved error handling
+- obsoletes patch gcc-warning 
+- patch %name-%version.diff renamed to *makefile.patch
+
+-------------------------------------------------------------------
+Mon May 22 17:30:15 CEST 2006 - schwab@suse.de
+
+- Don't build as root.
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:23 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 19 10:04:43 CEST 2005 - pnemec@suse.cz
+
+- fix gcc warning
+
+-------------------------------------------------------------------
+Thu May 12 17:37:31 CEST 2005 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Jul 17 15:39:34 CEST 2001 - rvasice@suse.cz
+
+- initial release (version 1.0.3)
+

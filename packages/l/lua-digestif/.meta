@@ -1,0 +1,6 @@
+<package name="lua-digestif" project="openSUSE:Factory">
+  <title>Language server for TeX and friends </title>
+  <description>Digestif is a code analyzer, and a language server, for LaTeX, ConTeXt et caterva. It provides context-sensitive completion, documentation, code navigation, and related functionality to any text editor that speaks the LSP protocol.</description>
+  <devel project="Publishing:TeXLive" package="lua-digestif"/>
+  <url>https://github.com/astoff/digestif</url>
+</package>

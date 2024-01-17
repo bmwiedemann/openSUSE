@@ -1,0 +1,11 @@
+Index: b/contrib/dvdisaster.desktop
+===================================================================
+--- a/contrib/dvdisaster.desktop	2021-09-24 11:20:04.000000000 +0200
++++ b/contrib/dvdisaster.desktop	2023-06-25 12:39:38.566540667 +0200
+@@ -9,5 +9,5 @@ Exec=dvdisaster
+ Icon=dvdisaster
+ Terminal=false
+ Type=Application
+-Categories=Application;System;
++Categories=AudioVideo;DiscBurning;
+ Keywords=CD;DVD;media;data loss;scratch;aging;error;protection;recovery;

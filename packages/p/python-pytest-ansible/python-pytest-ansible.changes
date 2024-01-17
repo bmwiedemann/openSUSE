@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Wed Jan 10 19:35:29 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.1.1:
+  * Bugfixes
+    - Added missing ansible-compat runtime dependency
+      (#246) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Jan 10 19:31:22 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 24.1.0 (using new version scheme):
+  * Minor Changes
+    - Require python 3.10 or newer (#231) @ssbarnea
+    - Require ansible-core 2.14 or newer (#206) @ssbarnea
+  * Bugfixes
+    - Fix duplicated host bug with extra_inventory (#180) @CFSNM
+    - Avoid use of deprecated pkg_resources (#220) @ssbarnea
+    - Add getting started and installation steps to docs (#214)
+      @cristianonicolai
+    - Remove outdated-version-block (UP036) (#213)
+      @cristianonicolai
+    - Remove dead-code related to unsupported ansible versions
+      (#208) @ssbarnea
+    - Avoid early molecule importing (#210) @ssbarnea
+    - Avoid accidental plugin activation (#202) @ssbarnea
+    - Enable Ruff doc validation (#209) @cristianonicolai
+    - Initial mkdocs setup (#199) @cristianonicolai
+    - Add pydoclint to pre-commit config (#198) @cristianonicolai
+    - Add Python 3.12 to project classifiers (#192)
+      @cristianonicolai
+    - Fix codecov configuration (#190) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Oct 12 05:36:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.1:
+  * Bugfixes
+    - Enable CSpell check (#188) @cristianonicolai
+    - Move coverage to `pyproject.toml` (#179) @Ruchip16
+    - Add Python 3.12 to test matrix (#185) @cristianonicolai
+    - Remove Flake8 and revisit initial config for Ruff (#186)
+      @cristianonicolai
+
+-------------------------------------------------------------------
+Thu Sep 14 04:55:23 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.0:
+  * Minor Changes
+    - Add config option for ANSIBLE_COLLECTIONS_PATH (#163)
+      @Ruchip16
+    - Add tests for inventory (#164) @Ruchip16
+    - Handle test markers (#167) @Ruchip16
+    - todo fixes & __getattr__ method fix (#162) @Ruchip16
+  * Bugfixes
+    - Precommit update reqs (#172) @cidrblock
+    - Handle test markers (#167) @Ruchip16
+
+-------------------------------------------------------------------
+Thu Sep  7 10:26:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-pytest-ansible: A pytest plugin that enables
+  the use of ansible in tests, enables the use of pytest as a
+  collection unit test runner, and exposes molecule scnearios
+  through a pytest fixture

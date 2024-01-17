@@ -1,0 +1,41 @@
+From 97f754ab54fb07d5dce4e55eb9e996f6e238107f Mon Sep 17 00:00:00 2001
+From: Matthijs Kooijman <matthijs@stdin.nl>
+Date: Sat, 8 May 2021 10:56:28 +0200
+Subject: [PATCH 145/147] panelWidget: Rename toggle() to toggle_menu()
+
+This makes it a bit more clear that it does not toggle the widget
+itself, but the popup menu.
+---
+ extension/extension.js           | 2 +-
+ extension/widgets/panelWidget.js | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/extension/extension.js b/extension/extension.js
+index 4956c47..3414ecf 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -183,7 +183,7 @@ class Controller {
+ 			      Meta.KeyBindingFlags.NONE,
+ 			      // Since Gnome 3.16, Shell.KeyBindingMode is replaced by Shell.ActionMode
+ 			      Shell.KeyBindingMode ? Shell.KeyBindingMode.ALL : Shell.ActionMode.ALL,
+-			      this.panelWidget.toggle.bind(this.panelWidget)
++			      this.panelWidget.toggle_menu.bind(this.panelWidget)
+ 			     );
+     }
+ 
+diff --git a/extension/widgets/panelWidget.js b/extension/widgets/panelWidget.js
+index 549a241..41d9bf1 100644
+--- a/extension/widgets/panelWidget.js
++++ b/extension/widgets/panelWidget.js
+@@ -203,7 +203,7 @@ class PanelWidget extends PanelMenu.Button {
+     /**
+      * Close/Open the 'popup menu' depending on previous state.
+      */
+-    toggle() {
++    toggle_menu() {
+         this.menu.toggle();
+     }
+ 
+-- 
+2.31.1
+

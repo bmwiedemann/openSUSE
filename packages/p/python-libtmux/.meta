@@ -1,0 +1,6 @@
+<package name="python-libtmux" project="openSUSE:Factory">
+  <title>Python API / wrapper for tmux</title>
+  <description>libtmux is a typed python scripting library for tmux. You can use it to command and control tmux servers, sessions, windows, and panes. It is the tool powering tmuxp, a tmux workspace manager.</description>
+  <devel project="devel:languages:python" package="python-libtmux"/>
+  <url>https://github.com/tmux-python/libtmux/</url>
+</package>

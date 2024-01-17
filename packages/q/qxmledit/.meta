@@ -1,0 +1,9 @@
+<package name="qxmledit" project="openSUSE:Factory">
+  <title>Simple XML Editor</title>
+  <description>QXmlEdit is a simple XML editor written in qt4. It uses a tree based interface
+to ease the edit of long files.
+
+</description>
+  <devel project="editors" package="qxmledit"/>
+  <url>http://code.google.com/p/qxmledit/</url>
+</package>

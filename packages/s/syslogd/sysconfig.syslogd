@@ -1,0 +1,12 @@
+## Path:		System/Logging
+## Description:		System logging
+
+## Type:		string
+## Default:		""
+## Config:		""
+## ServiceRestart:	syslog
+#
+# if not empty: parameters for syslogd
+# for example SYSLOGD_PARAMS="-r -s my.dom.ain"
+#
+SYSLOGD_PARAMS=""

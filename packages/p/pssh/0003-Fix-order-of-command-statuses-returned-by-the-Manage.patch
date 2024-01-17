@@ -1,0 +1,46 @@
+From ffa067b469d00d3f6c054252690cd894a7551312 Mon Sep 17 00:00:00 2001
+From: Dejan Muhamedagic <dejan@suse.de>
+Date: Wed, 26 Jun 2013 17:11:46 +0200
+Subject: [PATCH 3/8] Fix order of command statuses returned by the Manager
+
+---
+ psshlib/manager.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/psshlib/manager.py b/psshlib/manager.py
+index 7dbf4e377116..06e1cf31a010 100644
+--- a/psshlib/manager.py
++++ b/psshlib/manager.py
+@@ -8,6 +8,7 @@
+ import sys
+ import threading
+ import queue
++import copy
+ 
+ from psshlib.askpass_server import PasswordServer
+ from psshlib import psshutil
+@@ -42,6 +43,7 @@
+         self.next_nodenum = 0
+         self.numnodes = 0
+         self.tasks = []
++        self.save_tasks = []
+         self.running = []
+         self.done = []
+ 
+@@ -49,6 +51,7 @@
+ 
+     def run(self):
+         """Processes tasks previously added with add_task."""
++        self.save_tasks = copy.copy(self.tasks)
+         try:
+             if self.outdir or self.errdir:
+                 writer = Writer(self.outdir, self.errdir, self.fileappend)
+@@ -87,7 +90,7 @@
+             writer.signal_quit()
+             writer.join()
+ 
+-        statuses = [task.exitstatus for task in self.done]
++        statuses = [task.exitstatus for task in self.save_tasks if task in self.done]
+         return statuses
+ 
+     def set_sigchld_handler(self):

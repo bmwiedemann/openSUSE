@@ -1,0 +1,259 @@
+<revisionlist>
+  <revision rev="1" vrev="12">
+    <srcmd5>776b69fff8cd342ccc9abe8347cfb079</srcmd5>
+    <version>2.6</version>
+    <time>1168903138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d113c1514294f041fe5049e95f1ecef0</srcmd5>
+    <version>2.7</version>
+    <time>1186429701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e80766ca9de048899b7d898278851e0f</srcmd5>
+    <version>2.8</version>
+    <time>1195218501</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2038247fbd0678130eec0139252d4f2f</srcmd5>
+    <version>2.82</version>
+    <time>1207564438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="35">
+    <srcmd5>2038247fbd0678130eec0139252d4f2f</srcmd5>
+    <version>2.82</version>
+    <time>1207564438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef92b460a8e7bc12e6d6ace76095862c</srcmd5>
+    <version>2.84</version>
+    <time>1224160067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9dd7734be59f133e6845679f8ea1ae68</srcmd5>
+    <version>2.84</version>
+    <time>1231508633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>79e14e4fce26bd9bb491391043293a0e</srcmd5>
+    <version>2.87</version>
+    <time>1249513499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>79e14e4fce26bd9bb491391043293a0e</srcmd5>
+    <version>2.87</version>
+    <time>1249513499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>db49b26b7dddc0cef7885224ba70fcc2</srcmd5>
+    <version>2.87</version>
+    <time>1268924136</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>db49b26b7dddc0cef7885224ba70fcc2</srcmd5>
+    <version>2.87</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>db49b26b7dddc0cef7885224ba70fcc2</srcmd5>
+    <version>2.87</version>
+    <time>1278678585</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>db49b26b7dddc0cef7885224ba70fcc2</srcmd5>
+    <version>2.87</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>db49b26b7dddc0cef7885224ba70fcc2</srcmd5>
+    <version>2.87</version>
+    <time>1319182012</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>84c3e41c4ac12419389963314ddf0999</srcmd5>
+    <version>2.95</version>
+    <time>1332415996</time>
+    <user>coolo</user>
+    <comment>- Updated to version 2.95
+  * Handle very large unsigned rational numbers in exif header (forwarded request 110120 from toganm)</comment>
+    <requestid>110121</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>84c3e41c4ac12419389963314ddf0999</srcmd5>
+    <version>2.95</version>
+    <time>1340183487</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>784f94f8657e377620548e2f84a0ec66</srcmd5>
+    <version>2.96</version>
+    <time>1341256966</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.96
+  * Fix printing file info when -ft option is used
+  * Do not skip readonle files with -st option (forwarded request 126879 from toganm)</comment>
+    <requestid>126881</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>784f94f8657e377620548e2f84a0ec66</srcmd5>
+    <version>2.96</version>
+    <time>1359109125</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>529b2a9ec5473e4bb11b29bc0c7bc3c1</srcmd5>
+    <version>2.97</version>
+    <time>1362992980</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.97
+  * Add feature to show quality of jpeg, (by Andy Spiegel)
+  * Fix crash on some corrupt files bug, clarify time adjustment
+    syntax in help (forwarded request 158207 from toganm)</comment>
+    <requestid>158208</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>529b2a9ec5473e4bb11b29bc0c7bc3c1</srcmd5>
+    <version>2.97</version>
+    <time>1379662717</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>529b2a9ec5473e4bb11b29bc0c7bc3c1</srcmd5>
+    <version>2.97</version>
+    <time>1409301285</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>67aaffa9e85c938173313edf91bce07c</srcmd5>
+    <version>3.00</version>
+    <time>1430246887</time>
+    <user>coolo</user>
+    <comment>- Update to version 3.00
+  * Make max comment size 16000
+  * Added &quot;-zt&quot; option to trim 32k of trailing zeroes from Nikon 1 
+    J2 and J3 images.
+  * Add ability to reset invalid rotation tag (from Moultrie 
+    game cameras)
+- Use url for source
+- Cleanup spec file with spec-cleaner (forwarded request 304222 from pluskalm)</comment>
+    <requestid>304278</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d94f0a5a4f3e742a5fc2bd6a59bbb04c</srcmd5>
+    <version>3.00</version>
+    <time>1517932236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573268</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>d9526cd299f230588099bffc740abfb3</srcmd5>
+    <version>3.00</version>
+    <time>1537018886</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635812</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>0215581c2d9a29f3d7b743b5083050a7</srcmd5>
+    <version>3.00</version>
+    <time>1540451494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644204</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2b620ae26412ea20347f6c46d3551aae</srcmd5>
+    <version>3.04</version>
+    <time>1611770320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867250</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>176040fd442f3358501d301a6491de5a</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1619298556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888169</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a4733c96713d34cdce5002a39d9ebdbd</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1667306549</time>
+    <user>dimstar_suse</user>
+    <comment>- security fix [bsc#1204409, CVE-2022-41751]
+  * arbitrary OS commands by placing them in a JPEG filename
+  * Added patch jhead-CVE-2022-41751-1.patch
+  * Added patch jhead-CVE-2022-41751-2.patch (forwarded request 1031580 from david.anes)</comment>
+    <requestid>1032523</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>c6d9fe816f0810ce7eb9a3db71b7d1ed</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1668271276</time>
+    <user>dimstar_suse</user>
+    <comment>CVE fix! Enjoy. (forwarded request 1034639 from jsikes)</comment>
+    <requestid>1035276</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>abb7e475eb151478586747a55ee0ae92</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1676389656</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix [bsc#1207150]
+  https://github.com/Matthias-Wandel/jhead/commit/2a237d866581b3774ebe63d6c312e76459bd0866
+  + jhead-CVE-2022-41751-3.patch</comment>
+    <requestid>1065728</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>3e94b3e985bbd44695432cee0950f647</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1676648735</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove hunk that enables -fsanitize=address (bsc#1208386), note it's
+  already removed in the upstream project:
+  https://github.com/Matthias-Wandel/jhead/commit/34f61c3f1408e6b00f6f65dd3d7832f4f8e9318b (forwarded request 1066207 from marxin)</comment>
+    <requestid>1066328</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1ff1248c8195877a68fe3c43f94915f8</srcmd5>
+    <version>3.08</version>
+    <time>1687549984</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.08
+  * Fix various &quot;issues&quot; people have found with fuzz testing.
+    These can only be produced when running jhead in some memory access testing setup
+    such as ASAN and throwing carefully crafted garbage at it, causing jhead to read
+    some bytes past memory it malloced.  no real life consequences.
+- deleted patches
+  - jhead-CVE-2021-34055.patch (upstreamed)
+  - jhead-CVE-2022-41751-1.patch (upstreamed)
+  - jhead-CVE-2022-41751-2.patch (upstreamed)
+  - jhead-CVE-2022-41751-3.patch (upstreamed)</comment>
+    <requestid>1094797</requestid>
+  </revision>
+</revisionlist>

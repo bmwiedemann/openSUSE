@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d91d1306dd49ba69738ba851b11c4d2</srcmd5>
+    <version>0.4.1</version>
+    <time>1506340675</time>
+    <user>dimstar_suse</user>
+    <comment>Required by the latest version of python-pyramid</comment>
+    <requestid>527066</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b7f372a9574f475bedd2859225d85e98</srcmd5>
+    <version>0.7</version>
+    <time>1559837754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7:
+  * distribute tests/license/documentation
+  * Many bugfixes around</comment>
+    <requestid>707131</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db4b9a362036de4a4e9c168b290beb8f</srcmd5>
+    <version>1.0.1</version>
+    <time>1670162331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039908</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8dc745850da1a423356018c3e1749c34</srcmd5>
+    <version>1.0.1</version>
+    <time>1686576344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092231</requestid>
+  </revision>
+</revisionlist>

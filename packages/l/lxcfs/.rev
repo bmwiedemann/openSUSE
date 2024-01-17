@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93d22a54175921ba07b3ae73b1e0da18</srcmd5>
+    <version>2.0.2</version>
+    <time>1470217387</time>
+    <user>dimstar_suse</user>
+    <comment>lxcfs is a required dependency of lxc. The lxc package that got accepted into Factory depends on it.</comment>
+    <requestid>415108</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37dbdeb8630f1c04af58e40c7ece300c</srcmd5>
+    <version>2.0.3</version>
+    <time>1473103310</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424246</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ca1c5c2cfdb5dfebb31584b4e1950bc8</srcmd5>
+    <version>2.0.7</version>
+    <time>1496225987</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 2.0.7</comment>
+    <requestid>499619</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>592f9e6a7ac41e566e04c4835ee368af</srcmd5>
+    <version>2.0.8</version>
+    <time>1509531006</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 2.0.8</comment>
+    <requestid>537976</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0f6227f82450600c915b0c944a5cb918</srcmd5>
+    <version>2.0.8</version>
+    <time>1531379952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621949</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c78e4bb9da9652e1bef32aeb31f108c3</srcmd5>
+    <version>3.0.3</version>
+    <time>1553809733</time>
+    <user>dimstar_suse</user>
+    <comment>Should be staged with 689178.
+
+- Update to version 3.0.3. The changelog is fairly significant from 2.x, but
+  the main difference is tha the PAM module has been moved to the LXC project,
+  and is no longer hosted in lxcfs.
+- Rework packaging to be a more modern openSUSE-style.</comment>
+    <requestid>689181</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d1bf1514b3edcf939ea80f7398db95c7</srcmd5>
+    <version>3.0.3</version>
+    <time>1554833982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692670</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>04dc611008efc2e31f8789a547f8633a</srcmd5>
+    <version>3.0.3</version>
+    <time>1560338065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708825</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d4bb1d7ca48c6308f3cf102b54810005</srcmd5>
+    <version>3.1.2</version>
+    <time>1568984065</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731929</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f6156113be5f20f8c9447e38342c807d</srcmd5>
+    <version>3.1.2</version>
+    <time>1580842409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769663</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>66bd3f618af424afea6c464e1d073702</srcmd5>
+    <version>4.0.1</version>
+    <time>1585842214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790727</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1f4ac2dac7e4d227fa0c32874fd9a0a9</srcmd5>
+    <version>4.0.1</version>
+    <time>1588023742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798276</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>62e71a580e65b9369bac2064d9f3e9c3</srcmd5>
+    <version>4.0.3</version>
+    <time>1589197407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802545</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>58608a5829966403c3478fddad420fe6</srcmd5>
+    <version>4.0.4</version>
+    <time>1593727879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818192</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>74b5e5c2cf28eca5aa7df7e6cbb2d6d9</srcmd5>
+    <version>4.0.5</version>
+    <time>1598029564</time>
+    <user>dimstar_suse</user>
+    <comment>- update to LXCFS 4.0.5 
+  detailed changelog:
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-5-lts-has-been-released/8602</comment>
+    <requestid>828327</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4a82a9c4753e59791c2eb8bab7a69e79</srcmd5>
+    <version>4.0.8</version>
+    <time>1622536663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895789</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0da5e8ef496479c1879c3b231ca3ce6e</srcmd5>
+    <version>4.0.12</version>
+    <time>1645723254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957224</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>49f738e2f8bd4c4a43f6acbc57f59d0f</srcmd5>
+    <version>4.0.12</version>
+    <time>1664638970</time>
+    <user>RBrownFactory</user>
+    <comment>- add include-fixes.patch
+- reenable FORTIFY_SOURCE=3 
+
+- fix build by using FORTIFY_SOURCE=2
+- fix Supplements syntax</comment>
+    <requestid>1007348</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a3b09afa7dfbf5b0e85047539b763630</srcmd5>
+    <version>5.0.2</version>
+    <time>1667067413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032079</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dc3608ba62b8cb0c3b56dffbc1a331cd</srcmd5>
+    <version>5.0.2</version>
+    <time>1677683651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068302</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>badc1e0b1bbb197a138aa75ef1b34085</srcmd5>
+    <version>5.0.4</version>
+    <time>1690892144</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 5.0.4:
+  * Fixed the output format of /proc/diskstats
+  * Fixed an issue with cpuset path tracking when used with containerd</comment>
+    <requestid>1101531</requestid>
+  </revision>
+</revisionlist>

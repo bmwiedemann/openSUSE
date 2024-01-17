@@ -1,0 +1,37 @@
+From: zhangqiumiao <zhangqiumiao1@huawei.com>
+Subject: lanserv: Add the judgment on the validity of length in emu_cmd.c and session in lanserv_ipmi.c
+References: 
+Patch-Mainline: 
+Git-commit: 35525f7903bdbfe98c1b101f2c30afd78fbdda98
+Git-repo: https://git.code.sf.net/p/openipmi/code.git
+
+
+
+Signed-off-by:  <trenn@suse.com>
+diff --git a/lanserv/emu_cmd.c b/lanserv/emu_cmd.c
+index ea3f8685..727bb0c8 100644
+--- a/lanserv/emu_cmd.c
++++ b/lanserv/emu_cmd.c
+@@ -913,6 +913,9 @@ mc_add_fru_data(emu_out_t *out, emu_data_t *emu, lmc_data_t *mc, char **toks)
+     if (rv)
+ 	return rv;
+ 
++    if (length > MAX_FRU_SIZE)
++	return EINVAL;
++
+     tok = mystrtok(NULL, " \t\n", toks);
+     if (!tok) {
+ 	out->eprintf(out, "**No FRU data type given");
+diff --git a/lanserv/lanserv_ipmi.c b/lanserv/lanserv_ipmi.c
+index 4005bcba..ccd60015 100644
+--- a/lanserv/lanserv_ipmi.c
++++ b/lanserv/lanserv_ipmi.c
+@@ -3143,7 +3143,7 @@ get_associated_mc(channel_t *chan, uint32_t session_id, unsigned int payload)
+     lanserv_data_t *lan = chan->chan_info;
+     session_t *session = sid_to_session(lan, session_id);
+ 
+-    if (payload >= LANSERV_NUM_CLOSERS)
++    if (payload >= LANSERV_NUM_CLOSERS || session == NULL)
+ 	return NULL;
+ 
+     return session->closers[payload].mc;

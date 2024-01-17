@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Sun Feb 13 12:09:15 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Build only for supported architectures
+
+-------------------------------------------------------------------
+Thu Jul 15 15:21:28 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Builds with SoapySDR 0.8
+- Patch 0001-Fix-test_xtrx_soapy-build-issue.patch removed (not 
+  needed for build now)
+
+-------------------------------------------------------------------
+Thu Dec 10 16:21:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.0.0+git.20201202:
+  * xtrx_open_string: properly terminate 4096-byte paramstrings
+  * soapy: Fix RX stream activation by avoiding unintended
+    runtime error.
+  * Fix test_xtrx_soapy build issue
+  * soapy: Fix the timestamp calculation of the first sample in
+    the burst
+  * soapy: Implement support of special mode for simultaneous Rx
+    and Tx streams activation
+  * soapy: add the option for setting antenna in auto mode using
+    the function setAntenna()
+  * soapy: set antenna in auto mode during setup stream procedure
+  * soapy: Explain an internal variable purpose.
+  * Fix typos in the log output.
+  * add RCVEX_REPORT_GTIME to report global time on recv()
+  * Set reference clock at all levels when needed.
+  * Set _actual_masterclock in the SoapySDR module.
+  * Remove xtrx_fe_lms7.c - we no longer support libLMS7002M.
+  * Add API flags to work with time sync without seconds recovery
+  * Fix compilation due to xtrx_api.h not being found
+  * octoCAL: add ability to switch A/B channels in GUI
+  * add new octo version
+  * fix GPIO xonfiguration
+  * xtrx_fe_octorx0.c: don't use absolute include paths for
+    external libraries
+  * build and install example
+  * fix include for proper build
+  * add octoRFX6 support
+  * fix uninitialized variables
+- Drop not longer needed patch
+  * libxtrx-fix-include.patch
+- Rebase and rename patch
+  * libxtrx-fix-xtrx_fft.patch -> 0001-Fix-CMake-FindQCustomPlot.patch
+- Add patch:
+  * 0001-Fix-test_xtrx_soapy-build-issue.patch
+
+-------------------------------------------------------------------
+Thu Dec 27 09:41:38 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.0.0+git.20181227:
+  * gpio & sync API
+  * lms7_fe: fix initialization of LMS7
+  * test_xtrx: fix samplerate output
+  * refactor test_xtrx
+  * more refactor of test_xtrx utility; fix previous compilation problem
+  * add '-o' option to write data to file
+  * fix logging for multidev mode
+  * fix include directory for xtrx_fft
+  * rework logging system
+  * soapy: setMasterClockRate isn't for refclk
+  * check refclk if it was set manually
+  * fix test_xtrx utility to report the correct samplerate
+  * fix minor problems in test_xtrx
+  * fix test utility for PCIe
+  * initial multidev support
+  * use new LMS7 frontend by default
+  * use old FE just for now
+  * update for rev4
+  * fix incorrect interpolation settings
+  * add ability to set NCO independently
+  * fix div by 0
+  * add clock selection API
+  * soapy: use getSampleRateRange instead of old function
+  * soapy: setupStream options
+  * soapy: hide warnings
+  * soapy: setSampleRate in case it was never called befor running the
+    RX stream (fixes some program).
+  * adopt for new ll-library
+  * new lml phy code adoptiion
+  * Fix failed VCO tuning on fast PCs.
+  * fix crashing when stream wasn'r initialized
+  * more transcoding 8 to 16 bits
+  * better description in CGEN selection
+  * add AUTO lna selection based on LO
+  * Fix RefClk selection on machines with imprecise PCIe clock.
+  * xtrx_tune: fix crashing when actualfreq wasn't provided
+- Remove patch:
+  * libxtrx-cmake-disable-test.patch
+- Add patches:
+  * libxtrx-fix-include.patch
+  * libxtrx-fix-xtrx_fft.patch
+
+-------------------------------------------------------------------
+Thu Apr 26 19:58:05 UTC 2018 - mardnh@gmx.de
+
+- Fix soapysdr subpackage name (This is xtrx and not bladeRF)
+
+-------------------------------------------------------------------
+Sun Dec 31 01:26:00 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups.
+
+-------------------------------------------------------------------
+Wed Dec 13 20:24:41 UTC 2017 - mardnh@gmx.de
+
+- Initial package, version 0.0.0+git.20171213

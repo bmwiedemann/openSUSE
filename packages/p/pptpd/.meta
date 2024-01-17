@@ -1,0 +1,8 @@
+<package name="pptpd" project="openSUSE:Factory">
+  <title>PoPToP - PPTP Daemon, Linux as Microsoft VPN Server</title>
+  <description>PoPToP is a PPTP(Point-to-Point Tunneling Protocol) server solution for
+Linux, it allows Linux servers to function seamlessly in the PPTP VPN
+environment. This release supports Windows 95/98/NT/2000 PPTP clients
+and PPTP Linux clients.</description>
+  <devel project="network" package="pptpd"/>
+</package>

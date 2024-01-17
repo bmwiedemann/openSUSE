@@ -1,0 +1,15 @@
+diff -rup configure.in configure.in
+--- configure.in	2015-01-01 06:15:54.000000000 +0100
++++ configure.in	2015-01-01 10:20:53.754574826 +0100
+@@ -13,9 +13,9 @@ if test "x$sv_curses" = xno; then
+ fi
+ ])
+ 
+-AC_INIT(squidview.cpp)
++AC_INIT([squidview], [0.86])
+ AM_CONFIG_HEADER(config.h)
+-AM_INIT_AUTOMAKE(squidview,0.86)
++AM_INIT_AUTOMAKE
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+ 

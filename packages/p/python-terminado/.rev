@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c70f30b2ce2247a97d71df25bea91684</srcmd5>
+    <version>0.5</version>
+    <time>1440135635</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed by the newest version of IPython, which is already in openSUSE:Factory</comment>
+    <requestid>323076</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b9057738a5d3f3f2f5dfe4fc04834af</srcmd5>
+    <version>0.6</version>
+    <time>1494262946</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>490870</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a077c81c2afa94c7303713643c657325</srcmd5>
+    <version>0.7</version>
+    <time>1511426697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544491</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ee02647faf7aa97bf4c6c766af24259</srcmd5>
+    <version>0.8.1</version>
+    <time>1514502172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546697</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aecc61f04c899b741851a583ad272d02</srcmd5>
+    <version>0.8.1</version>
+    <time>1518601956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576403</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>31ae719b45628939ba0c1f6a6a37eed2</srcmd5>
+    <version>0.8.2</version>
+    <time>1560459817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709550</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d292e615ad0540921340e99d7d4b9ef4</srcmd5>
+    <version>0.8.2</version>
+    <time>1565695180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722222</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>672fd385d46d611ff8154ce8e9e3c315</srcmd5>
+    <version>0.8.3</version>
+    <time>1574551614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749334</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aa12d720e7b6b6ea86f314a17ee2d35e</srcmd5>
+    <version>0.9.1</version>
+    <time>1608221057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856323</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1325fb0eefcf7ae99877e878b7d2ac48</srcmd5>
+    <version>0.9.2</version>
+    <time>1610381607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862131</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c2c7429697ef0628d756096b490d19ec</srcmd5>
+    <version>0.9.5</version>
+    <time>1621034641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893053</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7192a690687da76ee0537d1d79154237</srcmd5>
+    <version>0.12.1</version>
+    <time>1633959115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.12.1
+  * correctly set the TERM variable
+  * Replace deprecated unittest aliases
+  * Clean up tests
+  * Log terminal output
+  * Switch select() to poll() in pty_read()
+  * Fix blocking of pty_read when there isn't pty data ready to
+    read
+  * Support creating terminal given name in kwargs.
+  * avoid persistent handle on IOLoop instance
+  * async/await syntax (forwarded request 924565 from bnavigator)</comment>
+    <requestid>924566</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fb2ea963a490e3ecf256f1f9a04be30a</srcmd5>
+    <version>0.13.1</version>
+    <time>1643486385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949899</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b74460571e316e591fe200c5b9280997</srcmd5>
+    <version>0.13.2</version>
+    <time>1646586941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959668</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fb37c37a4d1c81491d759fff907a3c60</srcmd5>
+    <version>0.13.3</version>
+    <time>1646948725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960706</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3eda0d7543658416fb2e878dd4840d3d</srcmd5>
+    <version>0.15.0</version>
+    <time>1657712737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update build and test requirements
+
+- specfile:
+  * require pip, hatchling, swtich to pyproject build
+- update to version 0.15.0:
+  * no changelog available
+- changes from version 0.14.0:
+  * Add pre-commit
+  * add mypy support
+  * Switch to flit build backend
+  * Switch to hatch backend</comment>
+    <requestid>988932</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fb4297dc5387740bc2a32363d66686a4</srcmd5>
+    <version>0.16.0</version>
+    <time>1664639023</time>
+    <user>RBrownFactory</user>
+    <comment>- update to version 0.16.0:
+  * Bugs fixed
+    + Fix issue where large stdin writes can cause Tornado to hang
+      #189 (@KoopaKing)
+  * Maintenance and upkeep improvements
+    + Switch to using hatch version #186 (@blink1073)
+    + Fix flake8 v5 compat #179 (@blink1073)
+</comment>
+    <requestid>1007303</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1b98f43fa54510cda5c2c7ec9e3c9b88</srcmd5>
+    <version>0.17.0</version>
+    <time>1669378335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037965</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0486d03b988410c9a38c496947b74c08</srcmd5>
+    <version>0.17.1</version>
+    <time>1673209553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.1
+  * Don't split manually on linebreaks #209 (@incase)
+</comment>
+    <requestid>1056890</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b68e3764bd0f6e9667d151af003b9351</srcmd5>
+    <version>0.18.0</version>
+    <time>1703801025</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.18.0
+  * code maintenance updates: typing, linting
+  * drop Python 3.7</comment>
+    <requestid>1135501</requestid>
+  </revision>
+</revisionlist>

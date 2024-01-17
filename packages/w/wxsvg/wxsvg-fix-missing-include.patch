@@ -1,0 +1,11 @@
+diff -Nur wxsvg-1.5.23-orig/src/cairo/SVGCanvasCairo.cpp wxsvg-1.5.23/src/cairo/SVGCanvasCairo.cpp
+--- wxsvg-1.5.23-orig/src/cairo/SVGCanvasCairo.cpp	2021-11-02 17:31:39.000000000 +0100
++++ wxsvg-1.5.23/src/cairo/SVGCanvasCairo.cpp	2023-03-30 09:22:25.077402046 +0200
+@@ -14,6 +14,7 @@
+ #include "SVGCanvasImageCairo.h"
+ #include <wx/log.h>
+ #include <wx/file.h>
++#include <cstdint>
+ 
+ wxSVGCanvasCairo::~wxSVGCanvasCairo() {
+ 	Destroy();

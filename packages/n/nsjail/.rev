@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3459111103fb260c567dc9371631a811</srcmd5>
+    <version>2.8</version>
+    <time>1551024737</time>
+    <user>coolo</user>
+    <comment>@jengelh: didn't see your submit it earlier, is now in conflict. I added your changes, thank you</comment>
+    <requestid>671901</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9c2f6970c536bf77ff0a6b632f85d221</srcmd5>
+    <version>2.8</version>
+    <time>1551784805</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure build only on 64 bit machines (forwarded request 681205 from jsegitz)</comment>
+    <requestid>681206</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6ff94a1683c015445336e3919ac8fc80</srcmd5>
+    <version>2.8</version>
+    <time>1552380950</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed ExclusiveArch: to correct architecture (forwarded request 684097 from jsegitz)</comment>
+    <requestid>684098</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1a859e88cc7e1672505ab1e8e9ee4304</srcmd5>
+    <version>2.8</version>
+    <time>1578069494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760584</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a57107a94a90f37bbc65aaae7c96eec</srcmd5>
+    <version>2.9</version>
+    <time>1580842401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769582</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b283207e9fcc960c44ad2cd7eda6edce</srcmd5>
+    <version>2.9</version>
+    <time>1592580232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815759</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e06b2c2431b3fad281020b320600af88</srcmd5>
+    <version>3.0</version>
+    <time>1596036116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823401</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>23e9d1c92a3fffc60f4bb351ce7192ef</srcmd5>
+    <version>3.0+git72.dccf911</version>
+    <time>1641480655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943929</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3783d930136f1bc710903be25e1443e6</srcmd5>
+    <version>3.3+git1.5b48117</version>
+    <time>1673281422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056979</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>20674d8c0907a4b11648870e657bb66d</srcmd5>
+    <version>3.3+git14.8308b91</version>
+    <time>1692795528</time>
+    <user>anag+factory</user>
+    <comment>- Fixed Tumbleweed build error caused by an incompatible libprotobuf.
+- Restore build on Leap 15.4 and older.
+- Update to version 3.3+git14.8308b91:
+  * subproc: mark cloneFunc as [[noreturn]]
+  * subproc: support CLONE_CLEAR_SIGHAND
+  * subproc: display additional clone3 flags
+  * configs/: formatting
+  * configs/telegram: telegram is 64 bit only
+  * configs/telegram: a new config for the telegram-desktop
+  * formatting fix
+  * Better output formatting for --help
+  * cgroup2.cc: improve note about using Docker
+  * logs: respect getenv(NO_COLOR)
+  * configs/hexchat: new config based on xchat
+  * Mount read-only directly if mounting rw fails (forwarded request 1105443 from wfrisch)</comment>
+    <requestid>1105446</requestid>
+  </revision>
+</revisionlist>

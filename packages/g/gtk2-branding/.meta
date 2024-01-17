@@ -1,0 +1,17 @@
+<package name="gtk2-branding" project="openSUSE:Factory">
+  <title>Library for Creation of Graphical User Interfaces (version 2)</title>
+  <description>This fast and versatile library is used all over the world for all
+libgnome (GNOME) applications, gimp (The GIMP), and several others.
+Originally, version 1 was written for the GIMP and hence has the name
+GIMP ToolKit. Many people like it because it is small, efficient, and
+very configurable.
+
+Most applications which used gtk (GTK1) have since switched to GTK2.
+Besides a more flexible API, it provides improved text rendering using
+pango (Pango) and many other goodies, but GTK+ 2 lacks compatibility
+with GTK1, so to switch, programmers have to port applications to it.
+
+To develop applications with gtk, you need the package gtk2-devel.
+</description>
+  <devel project="GNOME:Factory" package="gtk2-branding"/>
+</package>

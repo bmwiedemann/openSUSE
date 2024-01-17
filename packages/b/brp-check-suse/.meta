@@ -1,0 +1,5 @@
+<package name="brp-check-suse" project="openSUSE:Factory">
+  <title>build root policy check scripts</title>
+  <description>build root policy check scripts</description>
+  <devel project="Base:System" package="brp-check-suse"/>
+</package>

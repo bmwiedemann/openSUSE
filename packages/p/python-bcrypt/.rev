@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af0b3ec8370058c16e53894fbe619db5</srcmd5>
+    <version>3.1.3</version>
+    <time>1494345771</time>
+    <user>dimstar_suse</user>
+    <comment>Up-to-date replacement for ancient, unmaintained python-py-bcrypt. This is a singlespec package.</comment>
+    <requestid>492678</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d203e682d9d87d5f92dbc65ccbe74386</srcmd5>
+    <version>3.1.3</version>
+    <time>1495011337</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>495449</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d65fc86e8364dac55b8023e8d2039991</srcmd5>
+    <version>3.1.4</version>
+    <time>1510232464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538112</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>07c57600afab5438f6b1e46ca64dee52</srcmd5>
+    <version>3.1.4</version>
+    <time>1535701911</time>
+    <user>dimstar_suse</user>
+    <comment>- Raise pytest requirement based on setup.py</comment>
+    <requestid>632121</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fcf95314888d6eacf1bb46aa1bb6ce53</srcmd5>
+    <version>3.1.6</version>
+    <time>1551687058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.5:
+  * Added support for compilation on Haiku.
+  * Added support for compilation on AIX.
+  * Dropped Python 2.6 and 3.3 support.
+  * Switched to using ``abi3`` wheels for Python 3. If you are not getting a
+    wheel on a compatible platform please upgrade your ``pip`` version.</comment>
+    <requestid>680464</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e4b1644c67deeb2f2e31a25e0c500ee1</srcmd5>
+    <version>3.1.7</version>
+    <time>1565178806</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * update copyright year
+  * changed setuptools min version
+- update to version 3.1.7:
+  * Set a setuptools lower bound for PEP517 wheel building.
+  * We no longer distribute 32-bit manylinux1 wheels. Continuing to
+    produce them was a maintenance burden.
+- changes from version 3.1.6:
+  * Added support for compilation on Haiku.</comment>
+    <requestid>720013</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6730e29d01539661668eae26ea230bbd</srcmd5>
+    <version>3.1.7</version>
+    <time>1590649539</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>805265</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f528213e98c2a0fea0d6b09659be29a9</srcmd5>
+    <version>3.2.0</version>
+    <time>1598351938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0
+ * add type hints to top level functions
+ * drop support for python 3.5 and older
+ * drop legacy code</comment>
+    <requestid>828187</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>75bd9ee0e21b646b176392c72291ea80</srcmd5>
+    <version>3.2.0</version>
+    <time>1599210036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830197</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8180fe2f3ecaedf7bee2713cd41d2729</srcmd5>
+    <version>3.2.0</version>
+    <time>1603961226</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use deprecated 'python setup.py test', use pytest directly.
+</comment>
+    <requestid>840262</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cb5b5629d50f3038e07dd535fc523ed8</srcmd5>
+    <version>3.2.2</version>
+    <time>1651856289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.2:
+  * Fixed packaging of ``py.typed`` files in wheels so that ``mypy`` works.
+  * Added support for compilation on z/OS
+  * The next release of ``bcrypt`` with be 4.0 and it will require Rust at
+    compile time, for users building from source. There will be no additional
+    requirement for users who are installing from wheels. Users on most
+    platforms will be able to obtain a wheel by making sure they have an up to
+    date ``pip``. The minimum supported Rust version will be 1.56.0.</comment>
+    <requestid>974991</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>734a081704d6a38d421e90770640a752</srcmd5>
+    <version>4.0.1</version>
+    <time>1667579498</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed not needed C build dependencies
+- Enable for all archs by default
+- Update to 4.0.1:
+  * We now build PyPy manylinux wheels.
+  * Fixed a bug where passing an invalid salt to checkpw could result in a
+    pyo3_runtime.PanicException. It now correctly raises a ValueError.
+- 4.0.0:
+  * bcrypt is now implemented in Rust. Users building from source will need to
+    have a Rust compiler available. Nothing will change for users downloading
+    wheels.
+  * We no longer ship manylinux2010 wheels. Users should upgrade to the latest
+    pip to ensure this doesn’t cause issues downloading wheels on their
+    platform. We now ship manylinux_2_28 wheels for users on new enough
+    platforms.
+  * NUL bytes are now allowed in inputs.
+- Remove not needed python-six dependency
+</comment>
+    <requestid>1032996</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>27fe23c2e3672f2d4870ff261670ce25</srcmd5>
+    <version>4.0.1</version>
+    <time>1682193710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081985</requestid>
+  </revision>
+</revisionlist>

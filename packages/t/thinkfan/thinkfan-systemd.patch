@@ -1,0 +1,12 @@
+Index: thinkfan-1.2.2/rcscripts/systemd/thinkfan.service.cmake
+===================================================================
+--- thinkfan-1.2.2.orig/rcscripts/systemd/thinkfan.service.cmake
++++ thinkfan-1.2.2/rcscripts/systemd/thinkfan.service.cmake
+@@ -4,6 +4,7 @@ After=sysinit.target
+ After=systemd-modules-load.service
+ 
+ [Service]
++EnvironmentFile=-/etc/sysconfig/thinkfan
+ Type=forking
+ ExecStart=@CMAKE_INSTALL_PREFIX@/sbin/thinkfan $THINKFAN_ARGS
+ PIDFile=/run/thinkfan.pid

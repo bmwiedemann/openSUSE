@@ -1,0 +1,432 @@
+-------------------------------------------------------------------
+Tue Jul 18 08:47:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.1.4.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed May 24 23:57:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.1.4.0.
+  ## Version 3.1.4.0
+
+  * Install and use afunix_compat.h header.
+    [#556](https://github.com/haskell/network/pull/556)
+  * Supporting SO_SNDTIMEO and SO_RCVTIMEO.
+    [#555](https://github.com/haskell/network/pull/555)
+  * Emulating socketPair on Windows.
+    [#554](https://github.com/haskell/network/pull/554)
+
+-------------------------------------------------------------------
+Tue May 16 04:28:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.1.3.0.
+  ## Version 3.1.3.0
+
+  * Supporting AF_UNIX on Windows
+    [#553](https://github.com/haskell/network/issues/553)
+
+-------------------------------------------------------------------
+Mon May  1 13:54:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.1.2.9.
+  ## Version 3.1.2.9
+
+  * Resolving the runtime linker problem on Windows.
+    [#552](https://github.com/haskell/network/issues/552)
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Fri Mar  3 05:21:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.1.2.8.
+  ## Version 3.1.2.8
+
+  * Ignoring error from shutdown in gracefulClose
+  * Fix bitsize of some msghdr and cmsghdr fields on Linux
+    [#535](https://github.com/haskell/network/issues/535)
+  * Add SO_ACCEPTCONN SocketOption
+    [#524](https://github.com/haskell/network/issues/524)
+
+-------------------------------------------------------------------
+Thu Jan 20 13:31:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.1.2.7.
+  ## Version 3.1.2.7
+
+  * No change from 3.1.2.6 but to take a right procedure to upload "network"
+    to Hackage for Windows.
+
+  ## Version 3.1.2.6
+
+  * Making IPv4PktInfo on Win the same as that on Posix
+    [#522](https://github.com/haskell/network/issues/522)
+  * Add support for nix/ghcjs
+    [#517](https://github.com/haskell/network/issues/517)
+
+-------------------------------------------------------------------
+Sun Oct 10 14:51:22 UTC 2021 - psimons@suse.com
+
+- Update network to version 3.1.2.5.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/network-3.1.2.5/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Oct  8 07:37:52 UTC 2021 - psimons@suse.com
+
+- Update network to version 3.1.2.4.
+  ## Version 3.1.2.4
+
+  * Regenerate `configure` script with autoconf-2.69 to temporarily fix broken cabal-3.4.0.0 on Windows. Note that the old one was generated with autoconf-2.71.
+    [#513](https://github.com/haskell/network/issues/513)
+
+-------------------------------------------------------------------
+Thu Oct  7 07:57:19 UTC 2021 - psimons@suse.com
+
+- Update network to version 3.1.2.3.
+  ## Version 3.1.2.3
+
+  * Supporting M1 Mac
+    [#510](https://github.com/haskell/network/pull/510)
+  * Workaround for autoconf on Windows
+    [#508](https://github.com/haskell/network/pull/508)
+  * Fixing building failure on SmartOS
+    [#507](https://github.com/haskell/network/pull/507)
+  * HsNet.h: remove unused fn hsnet_inet_ntoa definition
+    [#504](https://github.com/haskell/network/pull/504)
+  * Use a working define for OpenBSD detection
+    [#503](https://github.com/haskell/network/pull/503)
+
+-------------------------------------------------------------------
+Wed Jun 16 08:26:55 UTC 2021 - psimons@suse.com
+
+- Update network to version 3.1.2.2.
+  ## Version 3.1.2.2
+
+  * Allow bytestring 0.11
+    [#490](https://github.com/haskell/network/pull/490)
+  * Export StructLinger
+    [#491](https://github.com/haskell/network/pull/491)
+  * Fix a couple of broken tests on OpenBSD
+    [#498](https://github.com/haskell/network/pull/498)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Fri Dec  4 10:51:26 UTC 2020 - psimons@suse.com
+
+- Update network to version 3.1.2.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Nov 27 09:27:38 UTC 2020 - psimons@suse.com
+
+- Update network to version 3.1.2.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/network-3.1.2.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
+
+- Update network to version 3.1.2.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:32 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Mon Aug 10 08:46:46 UTC 2020 - psimons@suse.com
+
+- Update network to version 3.1.2.0.
+  ## Unreleased
+
+  ## Version 3.1.2.0
+
+  * Added `-f devel` for test cases that are known to fail.
+    [#471](https://github.com/haskell/network/pull/471)
+  * Improved precedence-compliant Read/Show instances. Verified via QuickCheck.
+    [#465](https://github.com/haskell/network/pull/465)
+    [#466](https://github.com/haskell/network/pull/466)
+  * Removed the racing graceful close implementation to avoid issues with `CLOSE_WAIT`.
+    [#460](https://github.com/haskell/network/pull/438)
+  * Gracefully handle binding of UNIX domain sockets.
+    [#460](https://github.com/haskell/network/pull/460)
+  * Replace Socket type and family with extensible `CInt` pattern and synonyms.
+    [#459](https://github.com/haskell/network/pull/459)
+  * Fixed race conditions in tests.
+    [#458](https://github.com/haskell/network/pull/458)
+  * Removed many legacy uses of `undefined`.
+    [#456](https://github.com/haskell/network/pull/456)
+  * Defined extensible `CustomSockOpt` via `ViewPatterns`.
+    [#455](https://github.com/haskell/network/pull/455)
+  * Defined `openSocket` in terms of `AddrInfo`.
+    [5b0987197fe2ed7beddd7b2096522d624e71151e](https://github.com/haskell/network/commit/5b0987197fe2ed7beddd7b2096522d624e71151e)
+  * Improved FreeBSD portability for Control Messages and tests
+    [#452](https://github.com/haskell/network/pull/452)
+  * Support `sendMsg` and `recvMsg`
+    [#433](https://github.com/haskell/network/pull/433)
+    [#445](https://github.com/haskell/network/pull/445)
+    [#451](https://github.com/haskell/network/pull/451)
+      * Added `sendMsg` and `recvMsg` APIs
+      * Redefined `SocketOption` as pattern synonym
+  * Implement total Show functions for SockAddr
+    [#441](https://github.com/haskell/network/pull/441)
+  * Improve portability changing `u_int32_t` to `uint32_t`.
+    [#442](https://github.com/haskell/network/pull/442)
+  * Removed obsolete CPP statements.
+    [d1f4ee60ce6a4a85abb79532f64d4a4e71e2b1ce](https://github.com/haskell/network/commit/d1f4ee60ce6a4a85abb79532f64d4a4e71e2b1ce)
+  * Loads of improved test coverage.
+    [cbd67cc50a37770432eb978ac8b8eb6da3664817](https://github.com/haskell/network/commit/cbd67cc50a37770432eb978ac8b8eb6da3664817)
+    [fcc2d86d53a6bec793f6a979a9e8fdf7fe3f4c22](https://github.com/haskell/network/commit/fcc2d86d53a6bec793f6a979a9e8fdf7fe3f4c22)
+    [6db96969b3e8974abbfd50a7f073baa57376fd5e](https://github.com/haskell/network/commit/6db96969b3e8974abbfd50a7f073baa57376fd5e)
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:23 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Dec 29 10:27:14 UTC 2019 - psimons@suse.com
+
+- Update network to version 3.1.1.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/network-3.1.1.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Nov  8 16:14:17 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Tue Apr 30 09:23:15 UTC 2019 - psimons@suse.com
+
+- Update network to version 2.8.0.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/network-2.8.0.1/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Nov 19 16:02:57 UTC 2018 - psimons@suse.com
+
+- Update network to version 2.8.0.0.
+  ## Version 2.8.0.0
+
+  * Breaking change: PortNumber originally contained Word32 in network
+    byte order and used "deriving Ord". This results in strange behavior
+    on the Ord instance. Now PortNumber holds Word32 in host byte order.
+    [#347](https://github.com/haskell/network/pull/347)
+  * Breaking change: stopping the export of the PortNum constructor in
+    PortNumber.
+  * Use bytestring == 0.10.* only.
+  * Use base >= 4.7 && < 5.
+
+-------------------------------------------------------------------
+Thu Oct  4 09:42:52 UTC 2018 - psimons@suse.com
+
+- Update network to version 2.7.0.2.
+  * Removing withMVar to avoid the deadlock between "accept" and "close"
+     [#330](https://github.com/haskell/network/pull/330)
+  * "close" does not throw exceptions. A new API: "close'" throws
+     exceptions when necessary.
+     [#337](https://github.com/haskell/network/pull/337)
+  * Fixing the hang of lazy sendAll.
+     [#340](https://github.com/haskell/network/pull/340)
+  * Installing NetDef.h (#334)
+     [#334](https://github.com/haskell/network/pull/334)
+   * A new API: socketPortSafe.
+     [#319](https://github.com/haskell/network/pull/319)
+   * Fixing a drain bug of sendAll.
+     [#320](https://github.com/haskell/network/pull/320)
+   * Porting the new CALLCONV convention from master.
+     [#313](https://github.com/haskell/network/pull/313)
+   * Withdrawing the deprecations of packFamily and unpackFamily.
+     [#324](https://github.com/haskell/network/pull/324)
+   * Obsoleting the Network module.
+   * Obsoleting the Network.BSD module.
+   * Obsoleting APIs: MkSocket, htonl, ntohl,
+		getPeerCred, getPeerEid,
+		send, sendTo, recv, recvFrom, recvLen,
+		inet_addr, inet_ntoa,
+		isConnected, isBound, isListening, isReadable, isWritable,
+		aNY_PORT, iNADDR_ANY, iN6ADDR_ANY, sOMAXCONN,
+		sOL_SOCKET, sCM_RIGHTS,
+		packFamily, unpackFamily, packSocketType
+   * Do not closeFd within sendFd.
+     [#271](https://github.com/haskell/network/pull/271)
+   * Exporting ifNameToIndex and ifIndexToName from Network.Socket.
+   * New APIs: setCloseOnExecIfNeeded, getCloseOnExec and getNonBlock
+   * New APIs: isUnixDomainSocketAvailable and getPeerCredential
+   * socketPair, sendFd and recvFd are exported even on Windows.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:33 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:28 UTC 2018 - psimons@suse.com
+
+- Update network to version 2.6.3.6.
+  ## Version 2.6.3.6
+   * Removed unnecessary withMVar, which caused locking on close.
+     [#330](https://github.com/haskell/network/pull/330)
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update network to version 2.6.3.5.
+ * Reverting "Do not closeFd within sendFd"
+   [#271](https://github.com/haskell/network/pull/271)
+ * Don't touch IPv6Only when running on OpenBSD
+   [#227](https://github.com/haskell/network/pull/227)
+ * Do not closeFd within sendFd
+   [#271](https://github.com/haskell/network/pull/271)
+ * Updating examples and docs.
+ * Adds a function to show the defaultHints without reading their undefined fields
+   [#291](https://github.com/haskell/network/pull/291)
+ * Improve exception error messages for getAddrInfo and getNameInfo
+   [#289](https://github.com/haskell/network/pull/289)
+ * Deprecating SockAddrCan.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu Jun  8 11:08:22 UTC 2017 - psimons@suse.com
+
+- Update to version 2.6.3.2 revision 1.
+
+-------------------------------------------------------------------
+Wed Aug 17 18:31:55 UTC 2016 - psimons@suse.com
+
+- Update to version 2.6.3.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:30:20 UTC 2016 - psimons@suse.com
+
+- Update to version 2.6.2.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Mon Jul 13 05:45:23 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.6.2.1
+* Regenerate configure and HsNetworkConfig.h.in.
+* Better detection of CAN sockets.
+* Add support for TCP_USER_TIMEOUT.
+* Don't conditionally export the SockAddr constructors.
+* Add isSupportSockAddr to allow checking for supported
+   address types at runtime.
+
+-------------------------------------------------------------------
+Sun May 31 20:06:52 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.6.2.0
+* no upstream changelog
+
+-------------------------------------------------------------------
+Sun May 10 18:20:22 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.6.1.0
+* no upstream changelog
+
+-------------------------------------------------------------------
+Fri Apr 10 15:43:13 UTC 2015 - mimi.vx@gmail.com
+
+- update to 2.6.0.2
+* split to network and network-uri packages
+
+-------------------------------------------------------------------
+Fri Sep 12 06:31:03 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- update to 2.4.2.3
+* no changelog
+* Haskell Platform 2014.2.0.0
+
+-------------------------------------------------------------------
+Tue Sep  2 09:37:14 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- regenerate spec file
+
+-------------------------------------------------------------------
+Sat Aug 23 00:15:19 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- enable PowerPC builds
+
+-------------------------------------------------------------------
+Mon May  6 17:41:10 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 2.4.1.2 from upstream
+* no changelog
+* see https://github.com/haskell/network for commit messages
+- update needed for Haskell Platform 2013.2
+- more transparent packaging (fewer macros)
+
+-------------------------------------------------------------------
+Mon Jan  7 15:22:09 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- expand macro in name tag to help source validator
+
+-------------------------------------------------------------------
+Sat Nov 17 14:30:41 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- make service localonly for Factory submission
+
+-------------------------------------------------------------------
+Wed Oct  3 06:47:57 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- downgrade to 2.3.1.0 for Haskell Platform 2012.4.0.0
+* cabal-install requires < 2.4
+
+-------------------------------------------------------------------
+Mon Oct  1 19:46:56 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 2.4.0.1 from upstream
+- required by Haskell Platform 2012.4.0.0
+
+-------------------------------------------------------------------
+Sun Jun  3 17:13:04 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- update to 2.3.0.13 from upstream
+* Add Num constraint to packBits, unpackBits
+* Turn off some build warnings
+* Network.URI: remove dropHead, use 'drop 1'
+- spec file template generated by cabal2spec-0.25.5
+
+-------------------------------------------------------------------
+Wed Dec 28 20:13:41 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Adjusted version for platform 2011.4
+
+-------------------------------------------------------------------
+Wed Dec 14 09:09:58 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Fix defattr
+
+-------------------------------------------------------------------
+Wed Dec 14 08:57:49 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Added rpmlintrc and BR ghc libraries
+
+-------------------------------------------------------------------
+Tue Nov  1 14:03:07 UTC 2011 - peter.trommler@ohm-hochschule.de
+
+- Initial packaging.

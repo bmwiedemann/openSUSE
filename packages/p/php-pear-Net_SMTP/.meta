@@ -1,0 +1,6 @@
+<package name="php-pear-Net_SMTP" project="openSUSE:Factory">
+  <title>Library wrapping the SMTP protocol</title>
+  <description>Library wrapping the SMTP protocol using PEAR's Net_Socket class.</description>
+  <devel project="server:php:applications" package="php-pear-Net_SMTP"/>
+  <url>Net_SMTP</url>
+</package>

@@ -1,0 +1,40 @@
+Index: tiobench-0.4.1/tiotest.c
+===================================================================
+--- tiobench-0.4.1.orig/tiotest.c
++++ tiobench-0.4.1/tiotest.c
+@@ -50,7 +50,7 @@ static void update_latency_info(Latencie
+ 	return;
+ }
+ 
+-static void * aligned_alloc(const ssize_t size)
++static void * tiobench_aligned_alloc(const ssize_t size)
+ {
+ 	caddr_t a;
+ 
+@@ -63,7 +63,7 @@ static void * aligned_alloc(const ssize_
+ 	return a;
+ }
+ 
+-static int aligned_free(caddr_t a, const ssize_t size)
++static int tiobench_aligned_free(caddr_t a, const ssize_t size)
+ {
+ 	return munmap(a, size);
+ }
+@@ -314,7 +314,7 @@ static void initialize_test( ThreadTest
+ 		pthread_attr_setscope(&(d->threads[i].thread_attr),
+ 							  PTHREAD_SCOPE_SYSTEM);
+ 
+-		d->threads[i].buffer = aligned_alloc( d->threads[i].blockSize );
++		d->threads[i].buffer = tiobench_aligned_alloc( d->threads[i].blockSize );
+ 
+ 		if( args.consistencyCheckData )
+ 		{
+@@ -415,7 +415,7 @@ static void cleanup_test( ThreadTest *d
+ 	{
+ 		if (!args.rawDrives)
+ 			unlink(d->threads[i].fileName);
+-		aligned_free( (char *)d->threads[i].buffer, d->threads[i].blockSize );
++		tiobench_aligned_free( (char *)d->threads[i].buffer, d->threads[i].blockSize );
+ 		d->threads[i].buffer = 0;
+ 	
+ 		pthread_attr_destroy( &(d->threads[i].thread_attr) );

@@ -1,0 +1,21 @@
+diff -Naur ebook-tools-0.2.2.orig/CMakeLists.txt ebook-tools-0.2.2/CMakeLists.txt
+--- ebook-tools-0.2.2.orig/CMakeLists.txt	2012-09-04 16:32:32.000000000 +0200
++++ ebook-tools-0.2.2/CMakeLists.txt	2013-10-13 00:16:47.779199221 +0200
+@@ -2,6 +2,8 @@
+ 
+ cmake_minimum_required(VERSION 2.4.0)
+ 
++find_package(PkgConfig)
++pkg_check_modules(ZIP libzip)
+ #set(CMAKE_CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+ set(LIBRARY_OUTPUT_PATH ${EBOOK-TOOLS_BINARY_DIR}/libs)
+ set(EXECUTABLE_OUTPUT_PATH ${EBOOK-TOOLS_BINARY_DIR}/bin)
+diff -Naur ebook-tools-0.2.2.orig/src/libepub/CMakeLists.txt ebook-tools-0.2.2/src/libepub/CMakeLists.txt
+--- ebook-tools-0.2.2.orig/src/libepub/CMakeLists.txt	2012-09-04 16:32:32.000000000 +0200
++++ ebook-tools-0.2.2/src/libepub/CMakeLists.txt	2013-10-13 00:11:35.694100822 +0200
+@@ -1,4 +1,4 @@
+-include_directories (${EBOOK-TOOLS_SOURCE_DIR}/src/libepub ${LIBXML2_INCLUDE_DIR} ${LIBZIP_INCLUDE_DIR})
++include_directories (${EBOOK-TOOLS_SOURCE_DIR}/src/libepub ${LIBXML2_INCLUDE_DIR} ${LIBZIP_INCLUDE_DIR} ${ZIP_INCLUDE_DIRS} )
+ add_library (epub SHARED epub.c ocf.c opf.c linklist.c list.c)
+ target_link_libraries (epub ${LIBZIP_LIBRARY} ${LIBXML2_LIBRARIES})
+ 

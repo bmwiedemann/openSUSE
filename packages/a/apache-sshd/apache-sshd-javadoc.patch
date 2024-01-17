@@ -1,0 +1,241 @@
+--- apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/client/auth/password/PasswordIdentityProvider.java	2022-11-16 09:50:02.519293210 +0100
++++ apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/client/auth/password/PasswordIdentityProvider.java	2022-11-16 10:29:30.819501234 +0100
+@@ -36,7 +36,7 @@
+ public interface PasswordIdentityProvider {
+ 
+     /**
+-     * An &quot;empty&quot implementation of {@link PasswordIdentityProvider} that returns an empty group of passwords
++     * An &quot;empty&quot; implementation of {@link PasswordIdentityProvider} that returns an empty group of passwords
+      */
+     PasswordIdentityProvider EMPTY_PASSWORDS_PROVIDER = new PasswordIdentityProvider() {
+         @Override
+--- apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/config/keys/KeyUtils.java	2022-11-16 09:50:02.523293237 +0100
++++ apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/config/keys/KeyUtils.java	2022-11-16 10:21:06.704044979 +0100
+@@ -754,7 +754,7 @@
+      * @param  expected The expected fingerprint if {@code null} or empty then returns a failure with the default
+      *                  fingerprint.
+      * @param  key      the {@link PublicKey} - if {@code null} then returns null.
+-     * @return          SimpleImmutableEntry<Boolean, String> - key is success indicator, value is actual fingerprint,
++     * @return          SimpleImmutableEntry&lt;Boolean, String&gt; - key is success indicator, value is actual fingerprint,
+      *                  {@code null} if no key.
+      * @see             #getDefaultFingerPrintFactory()
+      * @see             #checkFingerPrint(String, Factory, PublicKey)
+@@ -768,7 +768,7 @@
+      *                  fingerprint.
+      * @param  f        The {@link Factory} to be used to generate the default {@link Digest} for the key
+      * @param  key      the {@link PublicKey} - if {@code null} then returns null.
+-     * @return          SimpleImmutableEntry<Boolean, String> - key is success indicator, value is actual fingerprint,
++     * @return          SimpleImmutableEntry&lt;Boolean, String&gt; - key is success indicator, value is actual fingerprint,
+      *                  {@code null} if no key.
+      */
+     public static SimpleImmutableEntry<Boolean, String> checkFingerPrint(
+@@ -781,7 +781,7 @@
+      *                  fingerprint.
+      * @param  d        The {@link Digest} to be used to generate the default fingerprint for the key
+      * @param  key      the {@link PublicKey} - if {@code null} then returns null.
+-     * @return          SimpleImmutableEntry<Boolean, String> - key is success indicator, value is actual fingerprint,
++     * @return          SimpleImmutableEntry&lt;Boolean, String&gt; - key is success indicator, value is actual fingerprint,
+      *                  {@code null} if no key.
+      */
+     public static SimpleImmutableEntry<Boolean, String> checkFingerPrint(String expected, Digest d, PublicKey key) {
+--- apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/config/keys/loader/openssh/OpenSSHKeyPairResourceParser.java	2022-11-16 09:50:02.523293237 +0100
++++ apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/config/keys/loader/openssh/OpenSSHKeyPairResourceParser.java	2022-11-16 10:27:11.094543153 +0100
+@@ -63,9 +63,7 @@
+ import org.apache.sshd.common.util.security.SecurityUtils;
+ 
+ /**
+- * Basic support for <A HREF=
+- * "http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/PROTOCOL.key?rev=1.1&content-type=text/x-cvsweb-markup">OpenSSH
+- * key file(s)</A>
++ * Basic support for <A HREF="http://cvsweb.openbsd.org/cgi-bin/cvsweb/src/usr.bin/ssh/PROTOCOL.key?rev=1.1&amp;content-type=text/x-cvsweb-markup">OpenSSH key file(s)</A>
+  *
+  * @author <a href="mailto:dev@mina.apache.org">Apache MINA SSHD Project</a>
+  */
+--- apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/buffer/keys/BufferPublicKeyParser.java	2022-11-16 09:50:02.531293291 +0100
++++ apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/buffer/keys/BufferPublicKeyParser.java	2022-11-16 10:07:03.290271908 +0100
+@@ -64,13 +64,13 @@
+                     SkED25519BufferPublicKeyParser.INSTANCE));
+ 
+     /**
+-     * @param  keyType The key type - e.g., &quot;ssh-rsa&quot, &quot;ssh-dss&quot;
++     * @param  keyType The key type - e.g., &quot;ssh-rsa&quot;, &quot;ssh-dss&quot;
+      * @return         {@code true} if this key type is supported by the parser
+      */
+     boolean isKeyTypeSupported(String keyType);
+ 
+     /**
+-     * @param  keyType                  The key type - e.g., &quot;ssh-rsa&quot, &quot;ssh-dss&quot;
++     * @param  keyType                  The key type - e.g., &quot;ssh-rsa&quot;, &quot;ssh-dss&quot;
+      * @param  buffer                   The {@link Buffer} containing the encoded raw public key
+      * @return                          The decoded {@link PublicKey}
+      * @throws GeneralSecurityException If failed to generate the key
+--- apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/GenericUtils.java	2022-11-16 09:50:02.527293266 +0100
++++ apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/GenericUtils.java	2022-11-16 10:17:14.006452121 +0100
+@@ -112,10 +112,11 @@
+      * @param  with String to replace with
+      * @param  max  maximum number of values to replace, or <code>-1</code> if no maximum
+      * @return      the text with any replacements processed
+-     * @author      Arnout J. Kuiper <a href="mailto:ajkuiper@wxs.nl">ajkuiper@wxs.nl</a>
+-     * @author      Magesh Umasankar
+-     * @author      <a href="mailto:bruce@callenish.com">Bruce Atherton</a>
+-     * @author      <a href="mailto:levylambert@tiscali-dsl.de">Antoine Levy-Lambert</a>
++     *
++     * author      Arnout J. Kuiper <a href="mailto:ajkuiper@wxs.nl">ajkuiper@wxs.nl</a>
++     * author      Magesh Umasankar
++     * author      <a href="mailto:bruce@callenish.com">Bruce Atherton</a>
++     * author      <a href="mailto:levylambert@tiscali-dsl.de">Antoine Levy-Lambert</a>
+      */
+     @SuppressWarnings("PMD.AssignmentInOperand")
+     public static String replace(String text, String repl, String with, int max) {
+--- apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/io/der/DERWriter.java	2022-11-16 09:50:02.531293291 +0100
++++ apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/io/der/DERWriter.java	2022-11-16 10:09:10.435142161 +0100
+@@ -76,7 +76,7 @@
+     }
+ 
+     /**
+-     * The integer is always considered to be positive, so if the first byte is < 0, we pad with a zero to make it
++     * The integer is always considered to be positive, so if the first byte is &lt; 0, we pad with a zero to make it
+      * positive
+      *
+      * @param  bytes       {@link BigInteger} bytes
+@@ -87,7 +87,7 @@
+     }
+ 
+     /**
+-     * The integer is always considered to be positive, so if the first byte is < 0, we pad with a zero to make it
++     * The integer is always considered to be positive, so if the first byte is &lt; 0, we pad with a zero to make it
+      * positive
+      *
+      * @param  bytes       {@link BigInteger} bytes
+--- apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/OsUtils.java	2022-11-16 09:50:02.527293266 +0100
++++ apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/OsUtils.java	2022-11-16 10:28:23.527039819 +0100
+@@ -165,7 +165,7 @@
+     }
+ 
+     /**
+-     * Remove {@code Windows} domain and/or group prefix as well as &quot;(User);&quot suffix
++     * Remove {@code Windows} domain and/or group prefix as well as &quot;(User);&quot; suffix
+      *
+      * @param  user The original username - ignored if {@code null}/empty
+      * @return      The canonical user - unchanged if {@code Unix} O/S
+--- apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/security/SecurityUtils.java	2022-11-16 09:50:02.535293319 +0100
++++ apache-sshd-2.9.2/sshd-common/src/main/java/org/apache/sshd/common/util/security/SecurityUtils.java	2022-11-16 10:31:13.564205742 +0100
+@@ -119,7 +119,7 @@
+     /**
+      * The min. key size value used for testing whether Diffie-Hellman Group Exchange is supported or not. According to
+      * <A HREF="https://tools.ietf.org/html/rfc4419">RFC 4419</A> section 3: &quot;Servers and clients SHOULD support
+-     * groups with a modulus length of k bits, where 1024 <= k <= 8192&quot;. </code>
++     * groups with a modulus length of k bits, where 1024 &lt;= k &lt;= 8192&quot;. </code>
+      *
+      * <B>Note: this has been amended by <A HREF="https://tools.ietf.org/html/rfc8270">RFC 8270</A>
+      */
+--- apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/client/session/ClientProxyConnector.java	2022-11-16 09:50:02.571293565 +0100
++++ apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/client/session/ClientProxyConnector.java	2022-11-16 10:28:51.175229400 +0100
+@@ -23,8 +23,8 @@
+ 
+ /**
+  * Provides a way to implement proxied connections where some metadata about the client is sent <U>before</U> the actual
+- * SSH protocol is executed - e.g., the <A HREF=@http://www.haproxy.org/download/1.6/doc/proxy-protocol.txt">PROXY
+- * protocol</A>. The implementor should use the {@code IoSession#write(Buffer)} method to send any packets with the
++ * SSH protocol is executed - e.g., the <A HREF="http://www.haproxy.org/download/1.6/doc/proxy-protocol.txt">PROXY protocol</A>. 
++ * The implementor should use the {@code IoSession#write(Buffer)} method to send any packets with the
+  * meta-data.
+  *
+  * @author <a href="mailto:dev@mina.apache.org">Apache MINA SSHD Project</a>
+--- apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/common/BaseBuilder.java	2022-11-16 09:50:02.575293593 +0100
++++ apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/common/BaseBuilder.java	2022-11-16 10:04:31.529233186 +0100
+@@ -67,7 +67,7 @@
+ 
+     /**
+      * The default {@link BuiltinCiphers} setup in order of preference as specified by
+-     * <A HREF="https://www.freebsd.org/cgi/man.cgi?query=ssh_config&sektion=5">ssh_config(5)</A>
++     * <A HREF="https://www.freebsd.org/cgi/man.cgi?query=ssh_config&amp;sektion=5">ssh_config(5)</A>
+      */
+     public static final List<BuiltinCiphers> DEFAULT_CIPHERS_PREFERENCE = Collections.unmodifiableList(
+             Arrays.asList(
+@@ -83,7 +83,7 @@
+ 
+     /**
+      * The default {@link BuiltinDHFactories} setup in order of preference as specified by
+-     * <A HREF="https://www.freebsd.org/cgi/man.cgi?query=ssh_config&sektion=5"> ssh_config(5)</A>
++     * <A HREF="https://www.freebsd.org/cgi/man.cgi?query=ssh_config&amp;sektion=5"> ssh_config(5)</A>
+      */
+     public static final List<BuiltinDHFactories> DEFAULT_KEX_PREFERENCE = Collections.unmodifiableList(
+             Arrays.asList(
+@@ -104,7 +104,7 @@
+ 
+     /**
+      * The default {@link BuiltinMacs} setup in order of preference as specified by
+-     * <A HREF="https://www.freebsd.org/cgi/man.cgi?query=ssh_config&sektion=5"> ssh_config(5)</A>
++     * <A HREF="https://www.freebsd.org/cgi/man.cgi?query=ssh_config&amp;sektion=5"> ssh_config(5)</A>
+      */
+     public static final List<BuiltinMacs> DEFAULT_MAC_PREFERENCE = Collections.unmodifiableList(
+             Arrays.asList(
+--- apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/common/channel/LocalWindow.java	2022-11-16 09:50:02.575293593 +0100
++++ apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/common/channel/LocalWindow.java	2022-11-16 10:22:11.968492069 +0100
+@@ -51,8 +51,6 @@
+     /**
+      * Initializes the {@link LocalWindow} with the packet and window sizes from the {@code resolver}.
+      *
+-     * @param size       the initial window size
+-     * @param packetSize the peer's advertised maximum packet size
+      * @param resolver   {@PropertyResolver} to access properties
+      */
+     public void init(PropertyResolver resolver) {
+--- apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/common/session/helpers/KeyExchangeMessageHandler.java	2022-11-16 09:50:02.579293619 +0100
++++ apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/common/session/helpers/KeyExchangeMessageHandler.java	2022-11-16 10:49:31.567743605 +0100
+@@ -46,7 +46,7 @@
+ /**
+  * Manages SSH message sending during a key exchange. RFC 4253 specifies that during a key exchange, no high-level
+  * messages are to be sent, but a receiver must be able to deal with messages "in flight" until the peer's
+- * {@link SshConstants#SSH_MSG_KEX_INIT} message is received.
++ * {@link SshConstants#SSH_MSG_KEXINIT} message is received.
+  * <p>
+  * Apache MINA sshd queues up high-level messages that threads try to send while a key exchange is ongoing, and sends
+  * them once the key exchange is done. Sending queued messages may make the peer re-trigger a new key exchange, in which
+@@ -154,7 +154,7 @@
+     }
+ 
+     /**
+-     * Initializes the state for a new key exchange. {@link #allPacketsFlushed()} will be {@code false}, and a new
++     * Initializes the state for a new key exchange. <code>kexFlushed</code> will be {@code false}, and a new
+      * future to be fulfilled when all queued packets will be flushed once the key exchange is done is set. The
+      * currently set future from an earlier key exchange is returned. The returned future may or may not be fulfilled;
+      * if it isn't, there are still left-over pending packets to write from the previous key exchange, which will be
+@@ -406,7 +406,7 @@
+      * exchange, flushing is stopped and is to be resumed by another call to this method when the new key exchange is
+      * done.
+      *
+-     * @param flushDone the future obtained from {@link #getFlushedFuture()}; will be fulfilled once all pending packets
++     * @param flushDone the future obtained from {@link #terminateKeyExchange()}; will be fulfilled once all pending packets
+      *                  have been written
+      */
+     protected void flushQueue(DefaultKeyExchangeFuture flushDone) {
+--- apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/common/session/Session.java	2022-11-16 09:50:02.579293619 +0100
++++ apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/common/session/Session.java	2022-11-16 10:02:05.032231651 +0100
+@@ -224,11 +224,11 @@
+      * {@link Buffer} to the given {@link ReplyHandler}, which may execute in a different thread.
+      *
+      * <dl>
+-     * <dt>want-reply == true && replyHandler != null</dt>
++     * <dt>want-reply == true &amp;&amp; replyHandler != null</dt>
+      * <dd>The returned future is fulfilled with {@code null} when the request was sent, or with an exception if the
+      * request could not be sent. The {@code replyHandler} is invoked once the reply is received, with the SSH reply
+      * code and the data received.</dd>
+-     * <dt>want-reply == true && replyHandler == null</dt>
++     * <dt>want-reply == true &amp;&amp; replyHandler == null</dt>
+      * <dd>The returned future is fulfilled with an exception if the request could not be sent, or a failure reply was
+      * received. If a success reply was received, the future is fulfilled with the received data buffer.</dd>
+      * <dt>want-reply == false</dt>
+--- apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/server/session/ServerProxyAcceptor.java	2022-11-16 09:50:02.583293646 +0100
++++ apache-sshd-2.9.2/sshd-core/src/main/java/org/apache/sshd/server/session/ServerProxyAcceptor.java	2022-11-16 10:33:44.345239622 +0100
+@@ -23,8 +23,7 @@
+ 
+ /**
+  * Provides a way to implement proxied connections where some metadata about the client is sent <U>before</U> the actual
+- * SSH protocol is executed - e.g., the <A HREF=@http://www.haproxy.org/download/1.6/doc/proxy-protocol.txt">PROXY
+- * protocol</A>.
++ * SSH protocol is executed - e.g., the <A HREF="http://www.haproxy.org/download/1.6/doc/proxy-protocol.txt">PROXY protocol</A>.
+  *
+  * @author <a href="mailto:dev@mina.apache.org">Apache MINA SSHD Project</a>
+  */

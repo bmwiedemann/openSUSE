@@ -1,0 +1,5 @@
+<package name="python-typogrify" project="openSUSE:Factory">
+  <title>Typography related template filters for Django &amp; Jinja2 applications</title>
+  <description>This application provides a set of custom filters for the Django template system which automatically apply various transformations to plain text in order to yield typographically-improved HTML.</description>
+  <devel project="devel:languages:python" package="python-typogrify"/>
+</package>

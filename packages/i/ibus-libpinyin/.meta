@@ -1,0 +1,11 @@
+<package name="ibus-libpinyin" project="openSUSE:Factory">
+  <title>ibus-libpinyin</title>
+  <description>ibus-libpinyin
+
+Intelligent Pinyin engine based on libpinyin for IBus
+
+Description
+It includes a Chinese Pinyin input method and a Chinese ZhuYin (Bopomofo) input method based on libpinyin for IBus.
+</description>
+  <devel project="M17N" package="ibus-libpinyin"/>
+</package>

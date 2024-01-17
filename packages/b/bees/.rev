@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f2383777b2531bbaf793049d5b051c5</srcmd5>
+    <version>0.6.5</version>
+    <time>1622839387</time>
+    <user>dimstar_suse</user>
+    <comment>Deduplication tool for btrfs.</comment>
+    <requestid>897427</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>39be0a4d7c706cbd3f25b6d26a913df9</srcmd5>
+    <version>0.7</version>
+    <time>1633542604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7 (forwarded request 923546 from dsterba)</comment>
+    <requestid>923550</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bb01363c0738302b83735988bade9d1f</srcmd5>
+    <version>0.7</version>
+    <time>1662405735</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on ppc64le (forwarded request 1001258 from dsterba)</comment>
+    <requestid>1001259</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9aca2210a1e2563bd03d16d0d6f74a4</srcmd5>
+    <version>0.7.20221025</version>
+    <time>1666793319</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7 git 5953ea6d3c5646 (20221025)
+- build fixes
+- Removed patch: 0001-fs-fix-FIEMAP_MAX_OFFSET-type-silliness-in-fiemap.h.patch (forwarded request 1031345 from dsterba)</comment>
+    <requestid>1031346</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8685f1920376871fff694c756c50c4b2</srcmd5>
+    <version>0.8</version>
+    <time>1670259733</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8:
+  * fs: make dedupe work again after a really unfortunate build fix</comment>
+    <requestid>1040264</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b702d0bdd1de57d10f20a1205ff627a</srcmd5>
+    <version>0.9.1</version>
+    <time>1676464811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065809</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d241f284d8b96bbaef558688fcc809b6</srcmd5>
+    <version>0.9.1</version>
+    <time>1678902867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071831</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1297c143d341f29be178fb2e24de4196</srcmd5>
+    <version>0.9.3</version>
+    <time>1680636381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.3:
+  * roots: don't share a RootFetcher between threads
+  * seeker: fix the test for ILP32 platforms
+  * reduce memory usage with long-running work items
+  * allow BtrfsIoctlLogicalInoArgs to be reused, remove virtual methods
+  * create a Pool of BtrfsIoctlLogicalInoArgs objects 
+- add avoid-swap.patch to fix build with gcc 13</comment>
+    <requestid>1077138</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3c051e45b6986eaa88eb07e5ba4b1312</srcmd5>
+    <version>0.10</version>
+    <time>1690278673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1100400</requestid>
+  </revision>
+</revisionlist>

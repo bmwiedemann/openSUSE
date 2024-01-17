@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Tue Dec  5 20:52:11 UTC 2017 - crrodriguez@opensuse.org
+
+- BuildRequire pkgconfig(x11) and pkgconfig(xext) not 
+  xorg-x11-devel
+
+-------------------------------------------------------------------
+Sun Aug  6 14:34:23 CEST 2006 - cthiel@suse.de
+
+- fix build with X.org 7.1
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:12 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  9 11:27:18 CEST 2004 - mmj@suse.de
+
+- Update to 1.2 including:
+  o replaced default font by "*" to "ensure" some font is found.
+  o accept hexadecimal window ids, as does everybody else(?).
+  o made it compile with ansi-89-based compilers again.
+  o add hack to support nautilus (not very stable, nautilus should
+    either use extended window manager hints or __SWM_VROOT, as everybody
+    else does).
+  o do not initialize the window twice (fixes problems with multiple
+    visuals).
+  o new option: -minspace.
+  o fixed seg fault if geometry is too short to fit a single line
+  o fix bug which became apparent if -no-filename or null
+
+-------------------------------------------------------------------
+Mon May 31 14:52:01 CEST 2004 - mmj@suse.de
+
+- Add patch to make shading customizable
+
+-------------------------------------------------------------------
+Tue Apr 13 17:30:11 CEST 2004 - mfabian@suse.de
+
+- don't use just "fixed" as the default fontset, specify a proper
+  fontset by default (keeping the size and style of "fixed").
+
+-------------------------------------------------------------------
+Tue Apr 13 09:58:31 CEST 2004 - mmj@suse.de
+
+- Update to 1.1 with lots of improvements
+
+-------------------------------------------------------------------
+Wed Feb 25 16:13:13 CET 2004 - mmj@suse.de
+
+- Update to 0.9:
+ o unsigned/fseek bug
+ o (root_window): New function. Return the real
+                  root window, or the virtual one if any.
+    (InitWindow): Use it.
+  force_refresh): Clear the root-tail area, not the whole window.
+  (blank_window): Ditto.
+     (main_loop): Don't forget to redraw () the initial contents.
+- Fix type-punning
+
+-------------------------------------------------------------------
+Thu Oct 16 15:12:03 CEST 2003 - mmj@suse.de
+
+- Don't build as root
+- Better fix for the fseek unsignedness bug
+- Rename to root-tail
+
+-------------------------------------------------------------------
+Mon Oct  6 15:43:39 CEST 2003 - mmj@suse.de
+
+- Cast unsigned int to long before calling fseek, fixing root-tail
+  on 64 bit platforms.
+
+-------------------------------------------------------------------
+Mon Sep 16 10:21:56 CEST 2002 - mmj@suse.de
+
+- Update to 0.2
+
+-------------------------------------------------------------------
+Wed Sep  4 23:53:13 CEST 2002 - mmj@suse.de
+
+- Remove Provides: roottail
+
+-------------------------------------------------------------------
+Wed Feb 14 12:40:46 CET 2001 - mmj@suse.de
+
+- Added a patch to exchange TAB with space (#6338)
+
+-------------------------------------------------------------------
+Tue Jan  2 12:40:58 CET 2001 - mmj@suse.de
+
+- updated to newest version, 0.0.10
+
+-------------------------------------------------------------------
+Mon Nov 13 16:34:59 CET 2000 - mmj@suse.de
+
+- updated to newest version, 0.0.9
+
+-------------------------------------------------------------------
+Sun Nov 12 23:38:09 CET 2000 - mmj@suse.de
+
+- updated to newest version, 0.0.8
+
+-------------------------------------------------------------------
+Wed May 17 16:21:42 CEST 2000 - cihlar@suse.cz
+
+- Group sorted 
+
+-------------------------------------------------------------------
+Fri Apr  7 14:55:55 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot 
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue Sep  1 17:51:41 MEST 1998 - ro@suse.de
+
+- added cleanup on SIGINT and SIGTERM
+  fixed race between update & expose
+
+-------------------------------------------------------------------
+Mon Aug 31 09:51:21 MEST 1998 - ro@suse.de
+
+- updated to use .c from mjb vers. 0.0.4B
+
+-------------------------------------------------------------------
+Tue Aug 25 09:32:35 MEST 1998 - ro@suse.de
+
+- updated .c file and man-page / created Imakefile
+
+-------------------------------------------------------------------
+Thu Jun 18 16:22:28 MEST 1998 - ro@suse.de
+
+- initial version 
+

@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Sat Jan  6 20:15:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.23.0:
+  * redhat-ish platforms: refactor simplification of interface
+    writing
+  * tests: stub out fields
+  * testing: add vexxhost sample config
+  * redhat-ish platforms: handle ipv6\_slaac metadata
+  * redhat-ish platforms: use IPV6\_DEFAULTGW
+  * redhat-ish platforms: write out ipv6 configuration
+  * tests: symlink same files together
+  * \_network\_info: refactor to add ipv4 info at the end
+  * \_network\_info: Clean up TYPE=Ethernet handling
+  * write\_redhat\_interfaces: pass multiple networks to output
+    functions
+  * write\_redhat\_interfaces: refactor to walk interfaces first
+  * Revert "Add option to ignore config drive interfaces info"
+  * Handle udev move events in addition to add events
+  * Install older voluptuous on py27 due to import error
+  * Remove rebuild-test-output.sh
+  * Add Rocky Linux support
+  * distro: sync to 3.6
+  * testing: drop centos-8, add 8-stream and 9-stream
+  * Remove debian-stable, add focal/bullseye testing
+  * Remove Fedora 32 job
+  * Cleanup glean.sh variable names
+  * Run a glean-early service to mount configdrive
+  * Create "legacy" script path
+  * Stop requiring /usr/local/bin links for glean.sh
+  * Move to Zuul standard hacking rules
+  * Update hacking and fix pep8 violations
+  * Fix Gentoo "is" comparisons
+
+-------------------------------------------------------------------
+Wed Aug 25 10:08:30 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19.0
+  * Fix a typo in a log message
+  * Do not require external mock on Python 3
+  * Add Python 3.6 to supported versions
+  * Allow disabling DHCP fallback
+  * Override NetworkManager to wait for udev-settle
+  * Reduce metadata read/parsing overhead
+  * Run glean fewer times in glean.sh
+- Update homepage in URL field
+
+-------------------------------------------------------------------
+Thu Feb  4 18:39:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.18.2
+  * add hosts entries and ssh keys only once
+  * Do not fail if routes are missing from a network
+- Changes in 1.18.1
+  * Add container build jobs
+  * Drop release test
+  * Update functional tests
+- Only test on python3: OpenStack oslotest only available there
+
+-------------------------------------------------------------------
+Thu Jun  4 16:13:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.18.0:
+  * write one resolv config
+  * Switch to Fedora 30 jobs
+  * Fix a handful of bugs in config-drive processing
+  * Remove trusty job
+  * Move opensuse jobs to experimental for now
+  * Add support for SLES
+  * Do not bring up udev assigned interfaces
+  * Update testing to opensuse 15
+
+-------------------------------------------------------------------
+Tue May 26 06:34:26 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Apr 30 07:48:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Fri Oct  4 14:22:46 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.15.0
+  * Sync when writing the file
+
+-------------------------------------------------------------------
+Fri Jul 26 13:34:02 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.14.1
+  * Enable RAs with gentoo when using dhcpv6-stateless
+  * network-manager: add network-pre dependencies
+  * Replace nodepool func jobs
+  * Add .zuul.yaml
+  * Pin sphinx
+  * OpenDev Migration Patch
+
+-------------------------------------------------------------------
+Fri Apr 26 06:45:10 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.14.0
+  * Ignore Wireguard interfaces
+  * Use openstackdocstheme
+
+-------------------------------------------------------------------
+Wed Jan  9 13:31:20 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 1.13.0)

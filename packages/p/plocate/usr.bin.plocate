@@ -1,0 +1,11 @@
+# Last Modified: Sun Aug 27 12:14:13 2023
+include <tunables/global>
+
+/usr/bin/{p,}locate {
+  include <abstractions/base>
+  include <abstractions/nameservice>
+
+  /usr/bin/{p,}locate mr,
+  /var/lib/plocate/plocate.db r,
+
+}

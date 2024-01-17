@@ -1,0 +1,23 @@
+Index: xplanet-1.3.1/configure.ac
+===================================================================
+--- xplanet-1.3.1.orig/configure.ac
++++ xplanet-1.3.1/configure.ac
+@@ -58,6 +58,8 @@ AC_FIND_XSS
+ AC_FIND_FREETYPE
+ AC_FIND_PANGO
+ 
++PKG_CHECK_MODULES(GOBJ, gobject-2.0)
++
+ AC_SUBST(xplanet_ARFLAGS)
+ AC_SUBST(xplanet_LDFLAGS)
+ AC_SUBST(separator)
+Index: xplanet-1.3.1/src/Makefile.am
+===================================================================
+--- xplanet-1.3.1.orig/src/Makefile.am
++++ xplanet-1.3.1/src/Makefile.am
+@@ -73,4 +73,4 @@ xplanet_LDADD =	libannotate/libannotate.
+ 		libsgp4sdp4/libsgp4sdp4.a		\
+ 		@GRAPHICS_LIBS@ @CSPICE_LIBS@ @X_LIBS@ 	\
+ 		@XSS_LIBS@ @FREETYPE_LIBS@ @AQUA_LIBS@ 	\
+-		@LIBICONV@ @LIBCHARSET@
++		@LIBICONV@ @LIBCHARSET@ @GOBJ_LIBS@

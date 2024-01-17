@@ -1,0 +1,8 @@
+<package name="rust-bindgen" project="openSUSE:Factory">
+  <title>Automatically generates Rust FFI bindings to C and C++ libraries</title>
+  <description>Automatically generates Rust FFI bindings to C (and some C++) libraries.
+
+</description>
+  <devel project="devel:languages:rust" package="rust-bindgen"/>
+  <url>https://rust-lang.github.io/rust-bindgen/</url>
+</package>

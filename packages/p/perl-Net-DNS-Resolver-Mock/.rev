@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8657f44e6164ba7ebeb4d8a40e7e498</srcmd5>
+    <version>1.20171219</version>
+    <time>1554458135</time>
+    <user>dimstar_suse</user>
+    <comment>needed for F</comment>
+    <requestid>691339</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7233645d46f2f444919ea1b1ba006f34</srcmd5>
+    <version>1.20200215</version>
+    <time>1582394365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774954</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>82359f893a23ce7c9f4f29c4936ba76f</srcmd5>
+    <version>1.20220817</version>
+    <time>1661434384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998968</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eee7d5b77229a16b94ddc755f1be98cb</srcmd5>
+    <version>1.20230216</version>
+    <time>1676990142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066841</requestid>
+  </revision>
+</revisionlist>

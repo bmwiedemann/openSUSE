@@ -1,0 +1,10 @@
+README.SUSE for monitoring-plugins-ntp_time
+
+== Apparmor profile ==
+
+Please check /etc/apparmor.d/usr.lib.nagios.plugins.check_ntp_time if you are
+using the --extra-opts option. The Apparmor profile allows to open every file
+below the /etc/monitoring-plugins/ directory read only for this. All files in
+other directories are not allowed.
+
+

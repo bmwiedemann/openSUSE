@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11d4960e429d4831fb6005744af348bb</srcmd5>
+    <version>0.4.1</version>
+    <time>1485167703</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1019074 FATE#322329</comment>
+    <requestid>449853</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aa869aebb066730b82e3a5b2c0b2e0b7</srcmd5>
+    <version>0.4.1</version>
+    <time>1486046489</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453628</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>66f64b7dfa5e93f22e3409bcff2b890a</srcmd5>
+    <version>0.5.0</version>
+    <time>1493819712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0
+- Implement single-spec version.</comment>
+    <requestid>489490</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>99527f53043729537b64a9d10277307d</srcmd5>
+    <version>0.5.0</version>
+    <time>1544726561</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654008</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0e5926fcbc012ea6a3a5bfd645ef3e6d</srcmd5>
+    <version>0.6.0</version>
+    <time>1559481387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706490</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f7a33273f3cc1844fc16bb0939d7c46</srcmd5>
+    <version>0.7.0</version>
+    <time>1615552253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  - Re-add and deprecate ``defusedxml.cElementTree``
+  - Use GitHub Actions instead of TravisCI
+  - Restore ``ElementTree`` attribute of ``xml.etree`` module after patching
+  - Add support for Python 3.9
+  - ``defusedxml.cElementTree`` is not available with Python 3.9.
+  - Python 2 is deprecate. Support for Python 2 will be removed in 0.8.0.</comment>
+    <requestid>877571</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0bb6f2c99e9d371cc4ff06e349348a4d</srcmd5>
+    <version>0.7.1</version>
+    <time>1617279351</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 0.7.1:
+  - Fix regression ``defusedxml.ElementTree.ParseError`` (#63)
+    The ``ParseError`` exception is now the same class object as
+    ``xml.etree.ElementTree.ParseError`` again.</comment>
+    <requestid>880820</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c8b83fc46b68eb73ef45313bda94c01c</srcmd5>
+    <version>0.7.1</version>
+    <time>1621531479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893999</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>320542da331ef1e55034d49c6c9c6a2e</srcmd5>
+    <version>0.7.1</version>
+    <time>1682193683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081947</requestid>
+  </revision>
+</revisionlist>

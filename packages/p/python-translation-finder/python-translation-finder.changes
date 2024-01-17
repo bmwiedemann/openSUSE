@@ -1,0 +1,148 @@
+-------------------------------------------------------------------
+Fri Dec 29 10:10:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16:
+  * Fixed detection UTF-16 Strings files.
+  * Fixed detection of files with some special chars.
+  * Added support for Mobile Kotlin resources.
+
+-------------------------------------------------------------------
+Tue Mar 21 15:28:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15:
+  * Added support for gotext JSON.
+  * Added support for i18next JSON v4.
+  * REUSE 3.0 compliance.
+
+-------------------------------------------------------------------
+Tue Oct 11 16:06:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.14
+  * Released on 11th August 2022.
+  * Added detection of XLIFF format variants.
+  * Added support for TXT format.
+  * Added support for adding hint via API.
+
+-------------------------------------------------------------------
+Tue Mar 16 18:38:29 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 2.9
+  * Fixed discovery execution in standalone environments.
+- Update to 2.8
+  * Added detection of RC files.
+  * Added detection of TBX files.
+- Update to 2.7
+  * Fixed support for CSV files.
+  * Added eager detection mode.
+  * Added type hints.
+- Update to 2.6
+  * Added support for CSV files.
+  * Improved detection of PHP files.
+  * Removed filtering of test files.
+  * Finder now skips non accessible directories.
+
+-------------------------------------------------------------------
+Thu Feb 11 14:07:01 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 2.5:
+  * Improved POT detection in some cases.
+  * Tested with Python 3.9.
+- Update to 2.4:
+  * Fixed build of wheel packages.
+- Update to 2.3:
+  * New dependency on weblate-language-data module.
+  * Reduced amount of false positives on language codes inside a filename.
+  * Improved iOS strings encoding detection.
+  * Removed charamel dependency.
+- Update to 2.2:
+  * Added detection of Golang i18n json files.
+  * Added detection of TOML files.
+  * Improved charset detection by switching to charamel.
+  * Dropped support for Python 3.5.
+  * Added detection of ARB files.
+
+-------------------------------------------------------------------
+Tue Jun 16 12:13:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.1:
+  * Added discovery support for formats newly supported by Weblate (HTML, IDML, OpenDocument, InnoSetup and INI).
+
+-------------------------------------------------------------------
+Wed Apr 15 09:43:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.0:
+  * Dropped support for Python 2.
+  * Improved i18next detection.
+  * Improved detection of monolingual templates.
+
+-------------------------------------------------------------------
+Wed Mar 11 10:14:30 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.8
+  * Fixed discovery of filenames with digits.
+  * Fixed crash on invalid YAML files.
+
+-------------------------------------------------------------------
+Fri Nov  8 07:49:45 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.7 bsc#1142582:
+  * Improved handling of invalid JSON files.
+  * Improved detection of flat JSON files.
+  * Improved compatibility with OSX.
+  * Improved detection of new base with gettext PO files.
+
+-------------------------------------------------------------------
+Mon Jul 22 12:32:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.6 bsc#1142582:
+  * Improved discovery of POT files.
+  * Added support for subtitle files supported in Weblate 3.7.
+  * Improved detection of actual JSON formats.
+  * Added support for detecting PHP files.
+  * Improved detection of YAML formats.
+
+-------------------------------------------------------------------
+Mon Jun  3 10:03:49 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5:
+  * Various performance improvements.
+  * Added detection of Fluent translations.
+  * Improved detection of language code within filename.
+  * Added detection of YAML translations.
+
+-------------------------------------------------------------------
+Mon May  6 08:46:03 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.4
+  * Improved detection in Perl code.
+  * Extended skip list for language codes.
+  * Improved detection of nested language codes with country suffix.
+  * Improved processing of Transifex .tx/config files.
+  * Include discovery metadata in API results.
+  * Improve detection of files in source directory.
+  * Fixed discovery of monolingual files in root.
+  * Improved detection of non language paths.
+
+-------------------------------------------------------------------
+Wed Apr  3 09:05:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not use %pytest macro for now to get this in Leap faster
+
+-------------------------------------------------------------------
+Tue Apr  2 10:58:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.1:
+  * Improved detection of translation with full language code.
+  * Improved detection of language code in directory and file name.
+  * Improved detection of language code separated by full stop.
+  * Added detection for app store metadata files.
+  * Added detection for JSON files.
+  * Ignore symlinks during discovery.
+  * Improved detection of matching pot files in several corner cases.
+  * Improved detection of monolingual Gettext.
+- Fix the deps to not pull coverage things
+
+-------------------------------------------------------------------
+Wed Mar 20 09:00:37 UTC 2019 - Matthias Fehring <buschmann23@opensuse.org>
+
+- initial package version 1.0

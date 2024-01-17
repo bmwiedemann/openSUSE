@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc053cc82a82b4b1f4098fa11193f0c7</srcmd5>
+    <version>0.3.0</version>
+    <time>1332415925</time>
+    <user>coolo</user>
+    <comment>New file recovery tool for recovering deleted files from a ext4 volume.</comment>
+    <requestid>109359</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd10b335487648ed1ad8873af26c1b6d</srcmd5>
+    <version>0.3.0</version>
+    <time>1333021859</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111820</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>cd10b335487648ed1ad8873af26c1b6d</srcmd5>
+    <version>0.3.0</version>
+    <time>1340183318</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>cd10b335487648ed1ad8873af26c1b6d</srcmd5>
+    <version>0.3.0</version>
+    <time>1359108863</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c5489d868a8d953a64ae7868d0b7903</srcmd5>
+    <version>0.3.1</version>
+    <time>1370425841</time>
+    <user>coolo</user>
+    <comment>Update to version 0.3.1, Enable configure option --enable-file-attr (restore also file attributes) (forwarded request 176779 from adra)</comment>
+    <requestid>176787</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5c5489d868a8d953a64ae7868d0b7903</srcmd5>
+    <version>0.3.1</version>
+    <time>1379662320</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>5c5489d868a8d953a64ae7868d0b7903</srcmd5>
+    <version>0.3.1</version>
+    <time>1409300852</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>24e0897e2a8943a78be8228e2a41cc12</srcmd5>
+    <version>0.3.2</version>
+    <time>1410967612</time>
+    <user>coolo</user>
+    <comment>Update to v0.3.2
+Correct usage of Source0: field</comment>
+    <requestid>249852</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ea39012fb0a56d4839746c8381274b36</srcmd5>
+    <version>0.3.2</version>
+    <time>1542281981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648852</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8ac6d7c71c543737aec0844c0223bbc1</srcmd5>
+    <version>0.3.2</version>
+    <time>1542666685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649822</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>ebf01c61d343cb54da11a4906ac77f5b</srcmd5>
+    <version>0.3.2</version>
+    <time>1555237404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693814</requestid>
+  </revision>
+</revisionlist>

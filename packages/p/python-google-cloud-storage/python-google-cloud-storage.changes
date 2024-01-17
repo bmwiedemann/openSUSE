@@ -1,0 +1,490 @@
+-------------------------------------------------------------------
+Tue Dec 19 17:05:18 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests, setting GOOGLE_CLOUD_PROJECT environment variable.
+- Add fake default credentials to fix tests
+
+-------------------------------------------------------------------
+Sat Dec 16 19:22:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * Add support for Python 3.12
+  * Support object retention lock
+  * Clarify error message and docstrings in Blob class method
+  * Propagate timeout in BlobWriter
+  * Use native namespace to avoid pkg_resources warnings
+
+-------------------------------------------------------------------
+Fri Nov 24 13:54:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.13.0
+  * Add Autoclass v2.1 support (#1117)
+  * Add support for custom headers (#1121)
+  * Blob.from_string parse storage uri with regex (#1170)
+  * Bucket.delete(force=True) now works with version-enabled buckets (#1172)
+  * Fix typo in Bucket.clear_lifecycle_rules() (#1169)
+  * Fix exception field in tm reference docs (#1164)
+- from version 2.12.0
+  * Add additional_blob_attributes to upload_many_from_filenames (#1162)
+  * Add crc32c_checksum argument to download_chunks_concurrently (#1138)
+  * Add skip_if_exists to download_many (#1161)
+  * Launch transfer manager to GA (#1159)
+  * Bump python-auth version to fix issue and remove workaround (#1158)
+  * Mark _deprecate_threads_param as a wrapper to unblock introspection and docs (#1122)
+  * Add snippets for upload_chunks_concurrently and add chunk_size (#1135)
+  * Update formatting and wording in transfer_manager docstrings (#1163)
+- from version 2.11.0
+  * Add gccl-gcs-cmd field to X-Goog-API-Client header for Transfer Manager calls (#1119)
+  * Add transfer_manager.upload_chunks_concurrently using the XML MPU API (#1115)
+  * Support configurable retries in upload_chunks_concurrently (#1120)
+  * Split retention period tests due to caching change (#1068)
+  * Add Transfer Manager documentation in c.g.c (#1109)
+- Refresh patches for new version
+  * demock.patch
+- Update BuildRequires and Require from setup.py
+
+-------------------------------------------------------------------
+Wed Jun 28 12:25:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.10.0
+  * Add matchGlob parameter to list_blobs (#1055)
+  * Allow exceptions to be included in batch responses (#1043)
+  * Extend wait for bucket metadata consistency in system tests (#1053)
+  * Add clarification to batch module (#1045)
+
+-------------------------------------------------------------------
+Wed May 10 09:15:20 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.9.0:
+  - Un-deprecate blob.download_to_file(), bucket.create(), and bucket.list_blobs()
+  - Avoid pickling processed credentials
+  - Improve test error message for missing credentials
+  - Add sample and sample test for transfer manager
+  - Remove threads in transfer manager samples
+
+-------------------------------------------------------------------
+Thu Mar 30 10:04:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.8.0
+  * Add multiprocessing and chunked downloading to transfer manager (#1002)
+  * Add trove classifier for python 3.11 (#971)
+  * Remove use of deprecated cgi module (#1006)
+  * Add clarifications to read timeout (#873)
+  * Fix c.g.c structure (#982)
+  * Update c.g.c docs and guides  (#994)
+- Refresh patches for new upstream version
+  * demock.patch
+
+-------------------------------------------------------------------
+Fri Jan  6 10:59:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.0
+  * Add "transfer_manager" module for concurrent uploads and
+    downloads, as a preview feature (#943)
+  * Add use_auth_w_custom_endpoint support (#941)
+  * Implement closed property on fileio.py classes (#907)
+
+-------------------------------------------------------------------
+Wed Nov 16 15:38:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.0
+  Features
+  * Add Autoclass support and samples (#791), closes (#797)
+  * Add predefined_acl to create_resumable_upload_session (#878)
+  * Enable delete_blobs() to preserve generation (#840), closes (#814)
+  * Make tests run against environments other than prod (#883)
+  Bug Fixes
+  * Align bucket bound hostname url builder consistency (#875)
+  * BlobWriter.close() will do nothing if already closed (#887)
+  * Remove client side validations (#868)
+  Documentation
+  * Update comments in list_blobs sample (#866)
+  * Clarify prefixes entity in list_blobs usage (#837)
+  * Streamline docs for migration (#876)
+  * Update docstring for lifecycle_rules to match generator behavior (#841)
+
+-------------------------------------------------------------------
+Tue Sep 13 09:50:40 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.0
+  * Custom Placement Config Dual Region Support (#819)
+  * open file-like objects in byte mode for uploads (#824)
+
+-------------------------------------------------------------------
+Thu Jun  9 10:17:20 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.4.0
+  Features
+    * add AbortIncompleteMultipartUpload lifecycle rule (#765) (b2e5150)
+    * support OLM Prefix/Suffix (#773) (187cf50)
+  Bug Fixes
+    * fix rewrite object in CMEK enabled bucket (#807) (9b3cbf3)
+  Documentation
+    * fix changelog header to consistent size (#802) (4dd0907)
+    * samples: Update the Recovery Point Objective (RPO) sample output (#725) (b0bf411)
+    * Update generation_metageneration.rst with a missing space (#798) (1e7cdb6)
+    * update retry docs (#808) (c365d5b)
+- test in _multibuild
+- modified patches
+  % demock.patch (rebased)
+- deleted patches
+  - no-relative-imports.patch (upstreamed)
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
+Sat Apr 23 09:49:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Limit %files list a bit tighter.
+
+-------------------------------------------------------------------
+Fri Apr 15 08:55:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.3.0:
+  - add dual region bucket support and sample
+  - track invocation id for retry metrics
+  - deps: drop pkg_resources
+  - fix links in blob module
+- Add patches:
+  - no-relative-imports.patch to allow running the test suite
+    with pytest (gh#googleapis/python-storage#772)
+  - demock.patch to remove dependency on the external package
+    mock (gh#googleapis/python-storage#770)
+
+-------------------------------------------------------------------
+Wed Apr 13 10:13:58 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.1
+  Bug Fixes
+  * remove py.typed marker file for PEP 561 (#735), closes (#734)
+- from version 2.2.0
+  Features
+  * allow no project in client methods using storage emulator (#703)
+  Bug Fixes
+  * add user agent in python-storage when calling resumable media (c7bf615)
+  * **deps:** require google-api-core>=1.31.5, >=2.3.2 (#722) (e9aab38)
+  * Fix BlobReader handling of interleaved reads and seeks (#721) (5d1cfd2)
+  * retry client side requests timeout (#727) (e0b3b35)
+  Documentation
+  * fixed download_blob_to_file example (#704) (2c94d98)
+- from 2.1.0
+  Features
+  * add turbo replication support and samples (#622) (4dafc81)
+  * avoid authentication with storage emulator (#679) (8789afa)
+  * remove python 3.6 support (#689) (8aa4130)
+- from version 2.0.0
+  BREAKING CHANGES
+  * Remove Python 2 support (#657)
+  Features
+  * Remove Python 2 support (#657) (b611670)
+- from version 1.44.0
+  Features
+  * add raw_download kwarg to BlobReader (#668) (10cdad6)
+  Documentation
+  * Describe code sample more specifically (#660) (0459cb4)
+  * refresh readme instructions (#667) (ceb9314)
+  * This is just a simple PR to better describe what the code
+    is doing in the comments. (0459cb4)
+  * use writeable streamin example for 'download_blob_to_file' (#676) (96092d4)
+- from version 1.43.0
+  Features
+  * add ignore_flush parameter to BlobWriter (#644) (af9c9dc)
+  * add support for Python 3.10 (#615) (f81a2d0)
+  Bug Fixes
+  * raise a ValueError in BucketNotification.create() if a topic
+    name is not set (#617) (9dd78df)
+  Documentation
+  * add contributing and authoring guides under samples/ (#633) (420591a)
+  * add links to samples and how to guides (#641) (49f78b0)
+  * add README to samples subdirectory (#639) (58af882)
+  * update samples readme with cli args (#651) (75dda81)
+- from 1.42.3
+  Bug Fixes
+  * changeover unspecified to inherited (#603) (283a419)
+  * check response code in batch.finish (#609) (318a286)
+  * skip tests that use unspecified pap until we get the change in (#600) (38b9b55)
+- from version 1.42.2
+  Bug Fixes
+  * add preconditions and retry config support to ACL patch operationss (#586) (4333caf)
+  * add unpinned protobuf for python3 (#592) (53f7ad0)
+  * pin six as a required dependency (#589) (9ca97bf)
+- from version 1.42.1
+  Bug Fixes
+  * do not append duplicates to user agent string (#570) (57cf3a1)
+  Documentation
+  * pass explicit 'client' in '{Blob.Bucket}.from_string' examples (#545) (6eff22d)
+- from version 1.42.0
+  Features
+  * add 'page_size' parameter to 'Bucket.list_blobs, list_buckets (#520) (c5f4ad8)
+  Bug Fixes
+  * **deps:** add explicit ranges for 'google-api-core' and 'google-auth' (#530) (310f207)
+  * downloading no longer marks metadata fields as 'changed' (#523) (160d1ec)
+  * make 'requests.exceptions.ChunkedEncodingError retryable by default (#526) (4abb403)
+  Documentation
+  * update supported / removed Python versions in README (#519) (1f1b138)
+- from version 1.41.1
+  Bug Fixes
+  * **deps:** pin `{api,cloud}-core`, `auth` to allow 2.x versions on Python 3 (#512) (4d7500e)
+  * remove trailing commas from error message constants (#505) (d4a86ce)
+  Documentation
+  * replace usage of deprecated function `download_as_string` in docs (#508) (8dfa4d4)
+- from version 1.41.0
+  Features
+  * add support for Etag headers on reads (#489) (741d3fd)
+  Bug Fixes
+  * **deps:** update minimum dependency versions to pick up bugfixes (#496) (92251a5)
+  * populate etag / generation / metageneration properties during download (#488) (49ba14c)
+  * revise and rename is_etag_in_json(data) (#483) (0a52546)
+- from version 1.40.0
+  Features
+  * add preconditions and retry configuration to blob.create_resumable_upload_session (#484) (0ae35ee)
+  * add public access prevention to bucket IAM configuration (#304) (e3e57a9)
+  Bug Fixes
+  * replace default retry for upload operations (#480) (c027ccf)
+- from version 1.39.0
+  Features
+  * media operation retries can be configured using the same interface
+    as with non-media operation (#447) (0dbbb8a)
+  Bug Fixes
+  * add ConnectionError to default retry (#445) (8344253)
+  * apply idempotency policies for ACLs (#458) (2232f38)
+  * replace python lifecycle action parsing ValueError with warning (#437) (2532d50)
+  * revise blob.compose query parameters `if_generation_match` (#454) (70d19e7)
+  Documentation
+  * streamline 'timeout' / 'retry' docs in docstrings (#461) (78b2eba)
+  * streamline docstrings for conditional parmas (#464) (6999370)
+- Drop patches for issues fixed upstream
+  * no-network.patch
+  * no-sic.patch
+- Refresh patches for new upstream version
+  * no-relative-imports.patch
+- Update BuildRequires and Require from setup.py
+
+-------------------------------------------------------------------
+Thu Sep 30 09:19:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add no-relative-imports.patch to fix relative imports.
+
+-------------------------------------------------------------------
+Thu Sep 30 09:04:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Copy the testsuite before we run it to avoid import problems.
+- Remove horrible workarounds creating __init__.py and then removing them.
+- Drop Requires on python-google-filesystem.
+
+-------------------------------------------------------------------
+Tue Jun 22 06:34:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct Requires to googleapis-common-protos.
+- Add Requires on python-google-filesystem, and stop including a file it
+  now ships.
+
+-------------------------------------------------------------------
+Fri Jun  4 07:09:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.38.0:
+  - add getters and setters for encryption_key and kms_key_name
+  - retry auth.TransportError errors
+  - revise docstrings for generate_signed_url
+  - Ensure consistency check in test runs even if expected error
+    occurs
+  - silence expected errors for routine operations on BlobReader
+  - add blob.open() for file-like I/O
+  - update user_project usage and documentation in bucket/client
+    class methods
+  - update batch connection to request api endpoint info from
+    client
+  - allow metadata keys to be cleared
+  - allow signed url version v4 without signed credentials
+  - correctly encode bytes for V2 signature
+  - add mtls support
+  - correctly decode times without microseconds
+  - expose num_retries parameter for blob upload methods
+  - pass the unused parameter
+  - set custom_time on uploads
+  - address incorrect usage of request preconditions
+  - Amend default retry behavior for bucket operations on client
+  - support ConnectionError retries for media operations
+  - make retry parameter public and added in other methods
+  - avoid triggering global logging config
+  - fall back to 'charset' of 'content_type' in
+    'download_as_text'
+  - fix conditional retry handling of camelCase query params
+  - retry uploads only conditionally
+  - update 'custom_time' setter to record change
+  - add testing support for Python 3.9, drop Python 3.5
+  - use passed-in client within Blob.from_string and helpers
+  - preserve metadata value when uploading new file content
+  - retry API calls with exponential backoff
+  - field policy return string
+  - self-upload files for Unicode system test
+  - use version.py for versioning, avoid issues with discovering
+    version via get_distribution
+  - preserve existing blob hashes when 'X-Goog-Hash header' is
+    not present
+  - blob: base64 includes additional characters
+  - add configurable checksumming for blob uploads and downloads
+  - add support for 'Blob.custom_time' and lifecycle rules
+  - error message return from api
+  - storage: add support of daysSinceNoncurrentTime and
+    noncurrentTimeBefore
+  - pass 'client_options' to base class ctor
+  - rename 'Blob.download_as_{string,bytes}', add
+    'Blob.download_as_text'
+  - change datetime.now to utcnow
+  - extract hashes correctly during download
+  - add timeouts to Blob methods where missing
+  - auto-populate standard headers for non-chunked downloads
+  - migrate to Service Account Credentials API
+  - add multiprocessing.rst to synthool excludes
+- Fix URL to the correct https://github.com/googleapis/python-storage
+- Add no-network.patch marking tests requiring network access
+  (gh#googleapis/python-storage#457).
+- Add no-sic.patch to work even with old setuptools and packaging
+  packages.
+
+-------------------------------------------------------------------
+Tue Apr 13 19:30:16 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Skip Python 2 build as dependencies are no longer built for Python 2 either
+
+-------------------------------------------------------------------
+Mon Jun 29 15:55:00 UTC 2020 - Sean Marlow <sean.marlow@suse.com>
+
+- Update version requirement for mock package.
+  + The tests require at least version 3.0.0.
+
+-------------------------------------------------------------------
+Thu Jun 18 10:41:05 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.29.0
+  + Features
+    * add *generation*match args into Blob.compose() (#122)
+    * add Bucket.reload() and Bucket.update() wrappers to restrict
+      generation match args (#153), closes (#127)
+    * add helper for bucket bound hostname URLs (#137), closes (#121)
+    * add if*generation*match support for Bucket.rename_blob() (#141)
+    * add if*generation*Match support, pt1 (#123)
+    * add offset and includeTrailingPrefix options to list_blobs (#125)
+    * Create CODEOWNERS (#135)
+  + Bug Fixes
+    * **storage:** add documentaion of list_blobs with user project (#147)
+    * **storage:** add projection parameter to blob.reload method (#146)
+    * **storage:** add unused variables to method generation match (#152)
+    * **storage:** change the method names in snippets file (#161)
+    * **storage:** fix upload object with bucket cmek enabled (#158)
+    * set default POST policy scheme to "http" (#172)
+- from version 1.28.0
+  + Bug Fixes
+    * **storage:** anonymous credentials for private bucket (#107)
+    * add bucket name into POST policy conditions (#118)
+
+-------------------------------------------------------------------
+Tue Apr 28 07:48:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.28.0:
+  * Many various bugfixes all around
+  * Updated dependency requirements
+
+-------------------------------------------------------------------
+Thu Sep 26 13:51:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.19.1:
+  * Minor bugfix over previous release
+
+-------------------------------------------------------------------
+Thu Sep 12 10:18:12 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.19.0:
+  * Huge range of updates and tweaks, mostly bugfixing
+
+-------------------------------------------------------------------
+Thu May 16 23:24:53 UTC 2019 - Guang Yee <gyee@suse.com>
+
+- Update to version 1.15.1
+  * Widen range for 'google-cloud-core'
+
+- Update to version 1.15.0
+  * New Features
+    - Add support for V4 signed URLs
+    - Add generation arguments to bucket / blob methods
+  * Implementation Changes
+    - Remove classifier for Python 3.4 for end-of-life
+    - Ensure that 'Blob.reload' passes encryption headers
+  * Documentation
+    - Update client library documentation URLs
+  * Iternal / Testing Changes
+    - Fix failing system tests
+    - Increase number of retries for 429 errors
+    - Un-flake KMS integration tests expecting empty bucket
+
+-------------------------------------------------------------------
+Mon Feb 18 08:05:01 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Increase minimum versions:
+  * google-api-core >= 0.6.1
+  * google-cloud-core >= 0.29.0
+- Adds new dependency google-cloud-kms
+- Update to version 1.14.0
+  * New Features
+    - Add 'Bucket.iam_configuration' property, enabling Bucket-Policy-Only.
+  * Documentation
+    - Improve docs for 'generate_signed_url'
+- from 1.13.2
+  * Implementation Changes
+    - Update Blob.update_storage_class to support rewrite tokens.
+  * Internal / Testing Changes
+    - Skip signing tests for insufficient credentials
+    - Document Python 2 deprecation
+    - Normalize docs for page_size / max_results / page_token.
+- from 1.13.1
+  * Implementation Changes
+    - Import iam.policy from google.api_core.
+    - Accomodate new back-end restriction on retention period.
+    - Avoid deleting a blob renamed to itself
+  * Dependencies
+    - Update dependency to google-cloud-core
+    - Bump minimum api_core version for all GAPIC libs to 1.4.1.
+  * Documentation
+    - Normalize use of support level badges
+  * Internal / Testing Changes
+    - Blacken libraries
+    - Add templates for flake8, coveragerc, noxfile, and black.
+    - Harden teardown in system tests.
+    - Harden create_bucket call in systests vs. 429 TooManyRequests.
+    - Skip public bucket test in VPC Service Controls
+    - Fix lint failure.
+    - Disable test running in VPC Service Controls restricted environment
+    - Use new Nox
+- from 1.13.0
+  * New Features
+    - Add support for bucket retention policies
+    - Allow destination.content_type to be None in Blob.compose.
+  * Implementation Changes
+    - Ensure that method for Blob.generate_signed_url is uppercase.
+  * Documentation
+    - Clarify GCS URL signing limitations on GCE
+    - Redirect renamed 'usage.html'/'client.html' -> 'index.html'.
+- from 1.12.0
+  * New Features
+    - Add support for Python 3.7, drop support for Python 3.4.
+    - Add lifecycle rules helpers to bucket.
+  * Implementation Changes
+    - Add 'stacklevel=2' to deprecation warnings.
+  * Documentation
+    - Storage docs: fix typos.
+    - Prep storage docs for repo split.
+  * Internal / Testing Changes
+    - Harden systest teardown further.
+    - Nox: use inplace installs
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:39 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri May 18 04:42:37 UTC 2018 - tbechtold@suse.com
+
+- Initial packaging (version 1.11.0)

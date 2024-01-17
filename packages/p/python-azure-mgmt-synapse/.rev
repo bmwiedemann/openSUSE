@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d8d43f5f9229741d330d2aac0bf10d4</srcmd5>
+    <version>0.2.0</version>
+    <time>1588971939</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of the Azure SDK</comment>
+    <requestid>801194</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f169f9455f21c4208150ae5440afda77</srcmd5>
+    <version>0.3.0</version>
+    <time>1601652215</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 831109 from glaubitz)</comment>
+    <requestid>831110</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ef26d7fe548cc9f945db85becb45b02</srcmd5>
+    <version>0.4.0</version>
+    <time>1602155562</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 839800 from glaubitz)</comment>
+    <requestid>839862</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bf01410533055113e21b73727ba8fa32</srcmd5>
+    <version>0.4.0</version>
+    <time>1607548839</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853992</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b3e6c26647d30552108f02701c4bf7c</srcmd5>
+    <version>0.6.0</version>
+    <time>1611348615</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 861576 from glaubitz)</comment>
+    <requestid>861630</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71befb4f350ee4f38992292b6241085d</srcmd5>
+    <version>1.0.0</version>
+    <time>1618235363</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 881891 from glaubitz)</comment>
+    <requestid>881972</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2eb790207fd644b037d0f3fefd331336</srcmd5>
+    <version>2.0.0</version>
+    <time>1620400528</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 891067 from glaubitz)</comment>
+    <requestid>891071</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d3c683d58c3d5e1f8012178e9641390a</srcmd5>
+    <version>2.1.0b2</version>
+    <time>1636388694</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.1.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 930135 from glaubitz)</comment>
+    <requestid>930174</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dde503b0ada9dedf1c9c35f0ec7bd5a2</srcmd5>
+    <version>2.1.0b5</version>
+    <time>1668086601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035009</requestid>
+  </revision>
+</revisionlist>

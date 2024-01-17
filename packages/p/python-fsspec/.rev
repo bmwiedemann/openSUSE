@@ -1,0 +1,405 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57443043d650d04b9176cd5f205a246d</srcmd5>
+    <version>0.3.3</version>
+    <time>1563914585</time>
+    <user>dimstar_suse</user>
+    <comment>Filesystem specification package.
+
+Required by the latest version of python-gcsfs</comment>
+    <requestid>717932</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0115526eed2569333ed6b6b7657b0f47</srcmd5>
+    <version>0.3.6</version>
+    <time>1564576176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719840</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd885786a8bd4f950a23c21725f342e8</srcmd5>
+    <version>0.4.0</version>
+    <time>1564994214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * No upstream changelog</comment>
+    <requestid>720167</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f43f940d8213379317821a206205d266</srcmd5>
+    <version>0.5.1</version>
+    <time>1569588659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * no upstream changelog
+
+- Update to 0.4.4:
+  * no upstream changelog</comment>
+    <requestid>732921</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>04206d94fb8ca15c1455ac005918d0ea</srcmd5>
+    <version>0.5.2</version>
+    <time>1571307739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2:
+  * no upstream changelog</comment>
+    <requestid>738891</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8de836c984c10929a300949425c65f23</srcmd5>
+    <version>0.6.0</version>
+    <time>1574337541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Fixed issues with filesystem instance caching. This was causing authorization errors in downstream libraries like gcsfs and s3fs in multi-threaded code (:pr:`155`, :pr:`181`)
+  * Changed the default file caching strategy to :class:`fsspec.caching.ReadAheadCache` (:pr:`193`)
+  * Moved file caches to the new fsspec.caching module. They're still available from their old location in fsspec.core, but we recommend using the new location for new code (:pr:`195`)
+  * Added a new file caching strategy, :class:`fsspec.caching.BlockCache` for fetching and caching file reads in blocks (:pr:`191`).
+  * Fixed equality checks for file system instance to return False when compared to objects other than file systems (:pr:`192`)
+  * Fixed a bug in :meth:`fsspec.FSMap.keys` returning a generator, which was consumed upon iteration (:pr:`189`).
+  * Removed the magic addition of aliases in AbstractFileSystem.__init__. Now alias methods are always present (:pr:`177`)
+  * Deprecated passing trim to :class:`fsspec.spec.AbstractBufferedFile`. Pass it in storage_options instead (:pr:`188`)
+  * Improved handling of requests for :class:`fsspec.implementations.http.HTTPFileSystem` when the HTTP server responds with an (incorrect) content-length of 0 (:pr:`163`)
+  * Added a detail=True parameter to :meth:`fsspec.spec.AbstractFileSystem.ls` (:pr:`168`)
+  * Fixed handling of UNC/DFS paths (:issue:`154`)</comment>
+    <requestid>749933</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b17651baab44e697ba7835057269bd16</srcmd5>
+    <version>0.7.4</version>
+    <time>1593006567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.4:
+  * No upstream changelog. 
+- Add numpy to BuildRequires.</comment>
+    <requestid>816749</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>77c684153f363bb744377cc840a95dad</srcmd5>
+    <version>0.8.0</version>
+    <time>1599598039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832844</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a6c83cef62a3ea97c501eaad53dc8493</srcmd5>
+    <version>0.8.5</version>
+    <time>1609344767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859278</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0c4445cb532983843159b7f62f1496cf</srcmd5>
+    <version>0.8.5</version>
+    <time>1610304278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862045</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b4e3e5cee6c0f4e28c0090b8fc37742e</srcmd5>
+    <version>0.8.5</version>
+    <time>1614274020</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874528</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f5f865fe89355f073756b89b4f208cff</srcmd5>
+    <version>2021.5.0</version>
+    <time>1621626593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894676</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f095e44af273cb46eb7d1447c7280e5b</srcmd5>
+    <version>2021.7.0</version>
+    <time>1628675227</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911012</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>286ed3c2cfc5bff454d6b369e1c7b114</srcmd5>
+    <version>2021.7.0</version>
+    <time>1630182574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914766</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ae8ff7d830cdbff02a6f8f57f206c424</srcmd5>
+    <version>2021.8.1</version>
+    <time>1632341579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920851</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6428daeda98963ab5b7eede1623f8cbd</srcmd5>
+    <version>2021.11.1</version>
+    <time>1640617637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942710</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8f2c33eaf59a3f5ea33bb0162ec3998c</srcmd5>
+    <version>2022.1.0</version>
+    <time>1643720569</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.1.0
+  * Fix blocks cache metadata (#746)
+  * Fix default SMB port (#853)
+  * Fix caching fixes (#856, 855)
+  * Fix explicit close for http files (#866)
+  * Fix put_file to continue when no bytes (#869, 870)
+  * temporary files location (#851, 871)
+  * async abstract methods (#858, 859, 860)
+  * md5 for FIPS (#872)
+  * remove deprecated pyarrow/distutils (#880, 881)
+- Update flavored requirements: python36 no longer exists,
+  python-distributed does not support python310 yet.
+</comment>
+    <requestid>949718</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2f2417819ab0ffd0b48984af9567c745</srcmd5>
+    <version>2022.2.0</version>
+    <time>1645723244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957036</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>58802798e2356d4b35886af401feb9b8</srcmd5>
+    <version>2022.3.0</version>
+    <time>1651180067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973298</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>906a840efc890e801c06c03dcd66e089</srcmd5>
+    <version>2022.5.0</version>
+    <time>1656927161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986382</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>31ca9f3bd04fa577b5a7b52fabc3ef80</srcmd5>
+    <version>2022.8.2</version>
+    <time>1666011450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010953</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0fbc9e46dae8494e20c453697081c9fc</srcmd5>
+    <version>2022.10.0</version>
+    <time>1667306609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.10.0 
+  Enhancements
+  * referenceFS consolidates reads in the same remote file (#1063)
+  * localfs: add link/symlink/islink (#1059)
+  * asyncfs: make mirroring methods optional (#1054)
+  * local: info: provide st_ino and st_nlink from stat (#1053)
+  * arrow_hdfs replaces hdfs (#1051)
+  * Add read/write_text (#1047)
+  * Add pipe/cat to genericFS (#1038)
+  Fixes
+  * SSH write doesn’t return number of bytes (#1072)
+  * wrap flush method for LocalFileOpened (#1070)
+  * localfs: fix support for pathlib/os.PathLike objects in rm (#1058)
+  * don’t get_file remote FTP directory (#1056)
+  * fix zip write to remote (#1046)
+  * fix zip del following failed init (#1040)
+  Other
+  * add asynclocalfs to the registry (#1060)
+  * add DVCFileSystem to the registry (#1049)
+  * add downstream tests (#1037)
+  * Don’t auto-close OpenFiles (#1035)
+</comment>
+    <requestid>1032652</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>11ea9850dcc40239fea2116fe7657272</srcmd5>
+    <version>2022.11.0</version>
+    <time>1669043976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036969</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>03d4dae37d3f6737c302dfa85bd5ec7a</srcmd5>
+    <version>2023.3.0</version>
+    <time>1679933736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074477</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>8034edc7f4587fb9f3b23e52c5e6d2bd</srcmd5>
+    <version>2023.3.0</version>
+    <time>1680536768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076836</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6dcac40ae0bede47b75027d16e1055e8</srcmd5>
+    <version>2023.5.0</version>
+    <time>1686171993</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.5.0:
+  * #1236, allow writing ReferenceFS references directly to
+    parquet
+  * #1255, copy of glob to single output directory
+  * #1254, non-recursive copy of directory (no-op)
+  * #1253, cleanup fix on close of ZIP FS
+  * #1250, ignore dirs when copying list of files
+  * #1249, don't error on register without clobber is registering
+    same thing again
+  * #1245, special case for other_files and relative path
+  * Other
+  * #1248, add test harness into released wheel package
+  * #1247, docs and tests around common bulk file operations
+  * 2023.4.0
+  * #1225, comprehensive docs of expected behaviour of cp/get/put
+    and tests
+  * #1216, test harness for any backend
+  * #1224, small fixes in reference and dask FSs
+  * #1218, mv is no-op when origin and destination are the same
+  * #1217, await in AbstractStreamedFile
+  * #1215, docbuild fixes
+  * #1214, unneeded maxdepth manipulation in expand_path
+  * #1213, pyarros and posixpath related test fixes
+  * #1211, BackgroundBlockCache: keep a block longer if not yet
+    used
+  * #1210, webHDFS: location parameter
+  * Other
+  * #1241, add HfFileSystem to registry
+  * #1237, register_implementation clobber default changes to
+    False</comment>
+    <requestid>1089793</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0eb7afa0883c4ee2628633ef190e4155</srcmd5>
+    <version>2023.6.0</version>
+    <time>1688737651</time>
+    <user>favogt_factory</user>
+    <comment>- Update to 2023.6.0
+  # Enhancements
+  * #1259, add maxdepth fo cp/get/put
+  * #1263, allow dir modification during walk()
+  * #1264, add boxfs to registry
+  * #1266, optimise referenceFS lazy lookups, especially for
+    writing parquet
+  * #1287, 1288 &quot;encoding&quot; for FTP
+  # Fixes
+  * #1273, (re)allow reading .zstd reference sets
+  * #1275, resource.error for win32
+  * #1278, range reads in dbfs
+  * #1282, create parent directories in get_file
+  * #1283, off-by-one in reference block writing
+  * #1286, strip protocol in local rm_file
+  # Other
+  * #1267, async bulk tests
+  * #1268, types and mypy
+  * #1277, 1279, drop outdated forms io.open, IOError
+</comment>
+    <requestid>1097061</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f2cf91552678d30a734cb7253a4ee9fb</srcmd5>
+    <version>2023.9.2</version>
+    <time>1697147046</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.9.2:
+  * revert #1358: auto_mkdir in open() (#1365)
+  * code style updates (#1373, 1372, 1371, 1370, 1369, 1364)
+  * update CI setup (#1386)
+- 2023.9.1
+  * #1353, save file cache metadata in JSON
+  * #1352, remove some unnecessary list iterations
+  * #1361, re-allow None for default port for SMB
+  * #1360, initialising GUI widget FS with kwargs
+  * #1358, pass auto_mkdir vi url_to_fs again
+  * #1354, auto delete temp cache directory
+- 2023.9.0
+  * #1346, add ocilake protocol
+  * #1345, implement async-sync and async-async generic cp and
+    rsync
+  * #1344, add lakefs protocol
+  * #1337 add goatcounter to docs
+  * #1323, 1328, add xethub protocol
+  * #1320, in HTTP, check content-encoding when getting length
+  * #1303, add on_error in walk
+  * #1302, add dirfs attribute to mappers
+  * #1293, configure port for smb
+  * #1349, don't reorder paths in bulk ops if source and dest are
+    both lists
+  * #1333, allow mode=&quot;x&quot; in get_fs_token_paths
+  * #1324, allow generic to work with complex URLs
+  * #1316, exclude bytes-cache kwargs in url_to_fs
+  * #1314, remote utcnow/utcfromtimestamp
+  * #1311, dirFS's protocol
+  * #1305, use get_file rather than get in file caching</comment>
+    <requestid>1115766</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d8337656999d531aba46150416339253</srcmd5>
+    <version>2023.10.0</version>
+    <time>1700078922</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126463</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>13f3cf3981f4b2d82be8be70b779c44f</srcmd5>
+    <version>2023.12.2</version>
+    <time>1702845121</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.12.2:
+  * top-level glob in ZIP (#1454)
+  * append mode on local ZIP files/truncate (#1449)
+  * restrict &quot;:&quot; as protocol marker to data: (#1452)
+  * sftp relative paths (#1451)
+  * http encoding in HTTP FS put_file (#1450)
+
+- update to 2023.12.1:
+  * Remove trailing &quot;/&quot; from directory names in zipFS (#1445)
+  * allow HTTP size guess in more circumstances (#1440)
+  * allow kwargs passed to GUI to be dict (#1437)
+  * transaction support for writing via a cache FS (#1434)
+  * make cached FSs work better with async backends (#1429)
+  * allow FSs to set their transaction implementation (#1424)
+  * add dataFS (#1421, 1415)
+  * allow basic auth in webHDFS (#1409)
+  * in referenceFS, maintain order when some keys are omitted in
+    cat (#1436)
+  * nested subdirectory listing in referenceFS (#1433)
+  * allow &quot;=&quot; in webHDF paths (#1428)
+  * fix file mode to consistent &quot;r+b&quot; format (#1426)
+  * pass on kwargs in HTTP glob (#1422)
+  * allow Path in can_be_local and open_local (#1419, #1418)
+  * fix parent for cachedFS (#1413)
+  * &quot;ends&quot; list in _cat_ranges was incorrect (#1402)</comment>
+    <requestid>1133605</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>6b80b4fc3062807703525d5cd2dfb751</srcmd5>
+    <version>2023.12.2</version>
+    <time>1705353662</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138849</requestid>
+  </revision>
+</revisionlist>

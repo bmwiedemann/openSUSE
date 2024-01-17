@@ -1,0 +1,12 @@
+--- dolphin-emu-5.0.17269.orig/Source/Core/UICommon/DiscordPresence.cpp	2022-09-03 09:21:58.000000000 +0200
++++ dolphin-emu-5.0.17269/Source/Core/UICommon/DiscordPresence.cpp	2022-10-14 18:56:51.461270659 +0200
+@@ -259,6 +259,9 @@
+ 
+   return true;
+ #endif
++#ifndef USE_DISCORD_PRESENCE
++  return false;
++#endif
+ }
+ 
+ void UpdateDiscordPresence(int party_size, SecretType type, const std::string& secret,

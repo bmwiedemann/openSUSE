@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Wed Oct  6 04:57:31 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove nose BuildRequires. 
+
+-------------------------------------------------------------------
+Sun Feb 14 14:06:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 (no scipy anymore) 
+
+-------------------------------------------------------------------
+Wed Jul 15 11:53:13 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 1.2.0
+  * New pulse shaping
+  * Print statements changed to logging and warnings
+
+-------------------------------------------------------------------
+Mon Jun 29 18:52:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.1.0
+  * Added imports to examples
+  * Adding FIR and IIR filter design notebook
+  * Adding FIR csv file
+  * Adding a device check inside pyaudio_helper before going to pyaudio;
+  * Adding audio resources for Real-Time ipynb
+  * Adding base stripped ipynb for pyaudio example
+  * Adding block diagram figure and updated notebook
+  * Adding final images to notebook
+  * Adding full name for music buffer plot image
+  * Adding images to manifest so they will show up on pypi docs next time.
+  * Adding ipykernel; missing requirement for jupyter notebooks
+  * Adding ipynb with changes for paths to files; first widget image added
+  * Adding jupyter notebook and toctree setup
+  * Adding mic noise file
+  * Adding multirate processing notebook
+  * Adding music buffer capture plot to notebook
+  * Adding nb examples to a toctree
+  * Adding nbsphinx setup
+  * Adding new cell for random seed
+  * Adding path change for three band equalizer csv
+  * Adding readme file to docs
+  * Adding reqs for widget building
+  * Adding spaces for proper latex parsing
+  * Adding the Convolutional Codes notebook to the docs
+  * Adding three band equalizer csv file
+  * Adds a check for integer values of M only for downsample; Fixes: #16
+  * Also need ipywidgets
+  * Bumping version for new releaes with viterbi rate 1/3
+  * FIR and IIR Filter Design gets its own section
+  * Fixing doc strings for viterbi
+  * Fixing in out check function and warning text
+  * Include license in sdists
+  * Include license in wheels
+  * Initializing class elements to blank for accessors
+  * Making changes to PLL_cbb docstring
+  * Making return string doc more explicit, refs: #12
+  * Minimum matplotlib requirement added for rtd
+  * Modifying PLL doc string
+  * Modifying doc string to remove indents
+  * Modifying phase step doc string
+  * Modifying time step doc string
+  * Moving print lines to logging output at debug level
+  * New file to hold jupyter notebook example links
+  * Now using one file for versioning project; setup and docs
+  * Optfir module functionality was rewritten into fir_design_helper
+  * Raising warnings to errors to force correct usage of devices
+  * Refactoring test to deconflict naming for rate 1/3
+  * Remove if statement from viterbi_decoder. Get length from rate denomi…
+  * Remove rate if statements from bm_calc. Get length from rate denomina… 
+  * Removed optfir from __init__.py.
+  * Removing optfir dependency and fix mlab.find warnings.
+  * Removing optfir from docs
+  * Require 0/1 integers for hard decision Viterbi decoding, add examples…
+  * Test for saturation limit in simpleQuant.
+  * Use a ValueError to raise an error instead of exiting a users process
+  * Use fraction for rate instead of string
+  * Using dc MPSK_bb which has fixes for Ns
+  * Using markdown long description instead of converting with pandoc
+  * extend to rate 1/3 convolutional codes
+  * from future needs to be moved to first line
+  * ignore vs code JSON file.
+  * implement two channel (stereo) in loop_audio class
+  * only_directive is builtin now so removing from extensions list
+  * using Regexp for 2.7 compat
+
+-------------------------------------------------------------------
+Fri Nov  2 02:35:10 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

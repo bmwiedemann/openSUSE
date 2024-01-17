@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Sep 25 09:35:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on maven2
+
+-------------------------------------------------------------------
+Tue Mar 22 06:44:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Fri Jul 10 07:41:13 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of buildnumber-maven-plugin 1.3

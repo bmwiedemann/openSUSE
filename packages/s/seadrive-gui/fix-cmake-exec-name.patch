@@ -1,0 +1,22 @@
+Index: seadrive-gui-2.0.24/CMakeLists.txt
+===================================================================
+--- seadrive-gui-2.0.24.orig/CMakeLists.txt
++++ seadrive-gui-2.0.24/CMakeLists.txt
+@@ -128,7 +128,7 @@ ENDIF()
+ ###### BEGIN: QT configuration
+ ####################
+ 
+-FIND_PROGRAM(qmake_executable NAMES qmake qmake.exe)
++FIND_PROGRAM(qmake_executable NAMES qmake qmake.exe qmake-qt5)
+ EXECUTE_PROCESS(COMMAND
+     bash -c "${qmake_executable} --version | grep -iE '^using qt version [0-9.]+' | awk '{print $4}'"
+     OUTPUT_VARIABLE DETECTED_QT_VERSION
+@@ -136,7 +136,7 @@ EXECUTE_PROCESS(COMMAND
+ MESSAGE("Qt version: ${DETECTED_QT_VERSION}")
+ 
+ EXECUTE_PROCESS(COMMAND
+-    bash -c "qmake --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
++    bash -c "qmake-qt5 --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
+     OUTPUT_VARIABLE QT_VERSION_MAJOR
+     OUTPUT_STRIP_TRAILING_WHITESPACE)
+ MESSAGE("QT_VERSION_MAJOR: ${QT_VERSION_MAJOR}")

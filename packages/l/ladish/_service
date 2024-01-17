@@ -1,0 +1,14 @@
+<services>
+	<service name="obs_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://git.nedk.org/lad/ladish.git</param>
+		<param name="versionprefix">1+git</param>
+		<param name="versionformat">%cd</param>
+	</service>
+	<service name="set_version" mode="buildtime" />
+	<service name="tar" mode="buildtime" />
+	<service name="recompress" mode="buildtime">
+		<param name="file">*git*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+</services>

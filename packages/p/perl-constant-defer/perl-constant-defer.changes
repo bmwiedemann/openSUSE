@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Apr 23 17:54:26 UTC 2015 - coolo@suse.com
+
+- add the license to cpanspec.yml
+
+-------------------------------------------------------------------
+Thu Apr 23 09:07:46 UTC 2015 - cdenicolo@suse.com
+
+- license update: GPL-3.0+
+  license version is 3.0
+
+-------------------------------------------------------------------
+Tue Apr 14 20:23:03 UTC 2015 - coolo@suse.com
+
+- updated to 6
+   see /usr/share/doc/packages/perl-constant-defer/Changes
+
+-------------------------------------------------------------------
+Mon Jun 16 12:03:50 UTC 2014 - coolo@suse.com
+
+- fix license - GPL-3.0+
+
+-------------------------------------------------------------------
+Thu Apr 14 08:00:18 UTC 2011 - coolo@opensuse.org
+
+- initial package 5
+    * created by cpanspec 1.78.04
+

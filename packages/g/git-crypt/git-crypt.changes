@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Feb 11 11:10:29 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- fixed building with openssl-3
+
+-------------------------------------------------------------------
+Sat Apr 23 08:58:51 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.7.0
+  - Fix handling of "-" arguments.
+  - Minor documentation improvements.
+
+-------------------------------------------------------------------
+Thu Feb  1 10:21:43 UTC 2018 - adam@mizerski.pl
+
+- new package, version 0.6.0

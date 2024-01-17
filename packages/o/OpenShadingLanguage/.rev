@@ -1,0 +1,229 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c9101a974b3a3f96dcf63c777f99fb9</srcmd5>
+    <version>1.9.13</version>
+    <time>1548064100</time>
+    <user>dimstar_suse</user>
+    <comment>Spruce up descriptions a bit.
+Initial version 1.9.13 created for blender see boo#1120406</comment>
+    <requestid>664023</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1cf104e5a69f92bb0dd8fa5e17bbf2f5</srcmd5>
+    <version>1.9.13</version>
+    <time>1549361924</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9ade5485c3137d22e88e3f842c40f665</srcmd5>
+    <version>1.10.7</version>
+    <time>1573165120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746038</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3da95be679601416285b9afeb04bf4ff</srcmd5>
+    <version>1.11.4.1</version>
+    <time>1591653503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806175</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7dfdf97e42c797fe44b46791bdde4974</srcmd5>
+    <version>1.11.6.0</version>
+    <time>1594045943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818941</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a82d124ce3dbd1698022c96c9e2cff7a</srcmd5>
+    <version>1.11.9.0</version>
+    <time>1605124088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847789</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8665be34123a7e87a2095d7509e5b776</srcmd5>
+    <version>1.11.12.0</version>
+    <time>1617279409</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881217</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ea90ed21885879a4d521d4390bddefbb</srcmd5>
+    <version>1.11.12.0</version>
+    <time>1617910347</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883760</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da3edc1ebab946328616f5ee7778a692</srcmd5>
+    <version>1.11.13.0</version>
+    <time>1619973374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889809</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c0260b24d3427661d8130ff7a5f5d56b</srcmd5>
+    <version>1.11.14.2</version>
+    <time>1631129797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915286</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>420bd731612b970ec5f17837b2ebc2ad</srcmd5>
+    <version>1.11.15.0</version>
+    <time>1635438676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926039</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>14c9e2829df01d0a9470852bb8fa7cdf</srcmd5>
+    <version>1.11.15.0</version>
+    <time>1640200693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942083</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>9eced9d66b3b902e6077d85b8f09d16c</srcmd5>
+    <version>1.11.15.0</version>
+    <time>1649450742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967711</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>99460a7bcec3c44a947d45c447d20011</srcmd5>
+    <version>1.11.17.0</version>
+    <time>1649610844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968242</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d732f529c1925c05771b57a035c9f58d</srcmd5>
+    <version>1.11.17.0</version>
+    <time>1650825264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972401</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>29636e2029ea295d9b2d762220783186</srcmd5>
+    <version>1.11.17.0</version>
+    <time>1662322314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001124</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0751c84e8f12d544b64653fed0e19abc</srcmd5>
+    <version>1.12.6.2</version>
+    <time>1666361951</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.6.2:
+  For details see
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases/tag/v1.12.6.2
+  * Batch shading: A fully operational &quot;batch shading&quot; support when
+    using CPUs supporting the Intel AVX2 or AVX512 instruction set
+    architectures, allows shading 8 or 16 points at a time,
+    accelerated by using SIMD instructions. (Changes contributed
+    by Intel.)
+  * OptiX: A reasonable subset of the OSL language can run on
+    NVIDIA GPUs for Cuda or OptiX-based renderers.
+  * Standardized material closures: Synchronize with MaterialX on
+    a minimum standard set of material closures. This is reflected
+    in both the OSL spec as well as reference implementations of
+    those closures in testrender.
+- Remove subpackage with MaterialX shaders. These were already
+  deprecated for some time, instead ones from upstream
+  MaterialX project should be used.
+- Drop upstream 0001-Fix-compatibility-with-LLVM-14.patch
+</comment>
+    <requestid>1030214</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>85e74a42fbd2ae4a4529c837a84e878d</srcmd5>
+    <version>1.12.6.2</version>
+    <time>1666699156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031108</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>30970a24eb60ae4ebd76aca23080b336</srcmd5>
+    <version>1.12.7.0</version>
+    <time>1668271286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035305</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f5024d53ba2131ac9f8cb7944a7605b5</srcmd5>
+    <version>1.12.7.1</version>
+    <time>1670775420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042078</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ece5fc1b6a9cae5757dbdab831c33ad0</srcmd5>
+    <version>1.12.8.0</version>
+    <time>1673888372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058628</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>143e9b39f674eac95e816aed6d2d5ec4</srcmd5>
+    <version>1.12.9.0</version>
+    <time>1676562950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065978</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e41fad6163aaa8ff790f6953125b4941</srcmd5>
+    <version>1.12.10.0</version>
+    <time>1682618486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083168</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>df7d19c85a0179e3c53dc0324f231ad3</srcmd5>
+    <version>1.12.10.0</version>
+    <time>1685830381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090548</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>07549ff5e5c9c1d37125dc90be9fee02</srcmd5>
+    <version>1.12.13.0</version>
+    <time>1694630665</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110678</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>77e21cc0481f7dfffc1af6cebe03a216</srcmd5>
+    <version>1.12.14.0</version>
+    <time>1705437547</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1139157</requestid>
+  </revision>
+</revisionlist>

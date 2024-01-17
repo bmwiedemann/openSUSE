@@ -1,0 +1,35 @@
+diff --git a/ovsdb/automake.mk b/ovsdb/automake.mk
+index eba713bb6..f1c40d019 100644
+--- a/ovsdb/automake.mk
++++ b/ovsdb/automake.mk
+@@ -88,8 +88,9 @@ CLEANFILES += ovsdb/ovsdb-server.1
+ MAN_ROOTS += ovsdb/ovsdb-server.1.in
+ 
+ # ovsdb-idlc
+-noinst_SCRIPTS += ovsdb/ovsdb-idlc
++bin_SCRIPTS += ovsdb/ovsdb-idlc
+ EXTRA_DIST += ovsdb/ovsdb-idlc.in
++man_MANS += ovsdb/ovsdb-idlc.1
+ MAN_ROOTS += ovsdb/ovsdb-idlc.1
+ CLEANFILES += ovsdb/ovsdb-idlc
+ SUFFIXES += .ovsidl .ovsschema
+@@ -112,14 +113,18 @@ CLEANFILES += $(OVSIDL_BUILT)
+ # at least for now.
+ $(OVSIDL_BUILT): ovsdb/ovsdb-idlc.in python/ovs/dirs.py
+ 
++# Some internal tools, but installed for e.g. depending projects like OVN
++ovsdbdir = $(pkgdatadir)/ovsdb
++ovsdb_SCRIPTS =
+ # ovsdb-doc
++ovsdb_SCRIPTS += ovsdb/ovsdb-doc
+ EXTRA_DIST += ovsdb/ovsdb-doc
+ OVSDB_DOC = $(run_python) $(srcdir)/ovsdb/ovsdb-doc
+ ovsdb/ovsdb-doc: python/ovs/dirs.py
+ 
+ # ovsdb-dot
+ EXTRA_DIST += ovsdb/ovsdb-dot.in ovsdb/dot2pic
+-noinst_SCRIPTS += ovsdb/ovsdb-dot
++ovsdb_SCRIPTS += ovsdb/ovsdb-dot
+ CLEANFILES += ovsdb/ovsdb-dot
+ OVSDB_DOT = $(run_python) $(srcdir)/ovsdb/ovsdb-dot.in
+ 

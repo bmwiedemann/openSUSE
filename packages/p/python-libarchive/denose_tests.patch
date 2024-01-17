@@ -1,0 +1,46 @@
+--- /dev/null
++++ b/tests/__init__.py
+@@ -0,0 +1 @@
++# This file intentionally left blank.
+--- a/tests/adapters/test_archive_read.py
++++ b/tests/adapters/test_archive_read.py
+@@ -86,4 +86,4 @@ class TestArchiveRead(unittest.TestCase)
+                     u'README.rst': u'libarchive/resources/README.rst',
+                 }
+ 
+-                self.assertEquals(index, expected)
++                self.assertEqual(index, expected)
+--- a/tests/adapters/test_archive_write.py
++++ b/tests/adapters/test_archive_write.py
+@@ -51,7 +51,7 @@ class TestArchiveWrite(unittest.TestCase
+                 'libarchive/resources/requirements.txt',
+             ]
+ 
+-            self.assertEquals(actual, expected)
++            self.assertEqual(actual, expected)
+ 
+     def test_create_file__unicode(self):
+         with libarchive.test_support.chdir(_APP_PATH):
+@@ -101,4 +101,4 @@ class TestArchiveWrite(unittest.TestCase
+                 unicode_test_filepath.lstrip(os.sep),
+             ]
+ 
+-            self.assertEquals(actual, expected)
++            self.assertEqual(actual, expected)
+--- a/tests/types/test_archive_entry.py
++++ b/tests/types/test_archive_entry.py
+@@ -29,7 +29,7 @@ class TestArchiveEntry(unittest.TestCase
+             libarchive.constants.archive_entry.AE_IFBLK | \
+             libarchive.constants.archive_entry.AE_IFMT
+ 
+-        self.assertEquals(n, expected_n)
++        self.assertEqual(n, expected_n)
+ 
+         recovered = libarchive.types.archive_entry.int_to_ef(n)
+ 
+@@ -43,4 +43,4 @@ class TestArchiveEntry(unittest.TestCase
+                 IFDIR=True,
+                 IFIFO=True)
+ 
+-        self.assertEquals(recovered, expected_ef)
++        self.assertEqual(recovered, expected_ef)

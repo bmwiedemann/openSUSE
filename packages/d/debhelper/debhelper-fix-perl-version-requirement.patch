@@ -1,0 +1,65 @@
+diff --git lib/Debian/Debhelper/Dh_Lib.pm lib/Debian/Debhelper/Dh_Lib.pm
+index 7cf59e0..1656c9b 100644
+--- lib/Debian/Debhelper/Dh_Lib.pm
++++ lib/Debian/Debhelper/Dh_Lib.pm
+@@ -2088,6 +2088,8 @@ sub _parse_debian_control {
+ # - Takes an optional keyword; if passed, this will return true if the keyword is listed in R^3 (Rules-Requires-Root)
+ # - If the optional keyword is omitted or not present in R^3 and R^3 is not 'binary-targets', then returns false
+ # - Returns true otherwise (i.e. keyword is in R^3 or R^3 is 'binary-targets')
++{
++my %rrr;
+ sub should_use_root {
+ 	my ($keyword) = @_;
+ 	my $rrr_env = $ENV{'DEB_RULES_REQUIRES_ROOT'} // 'binary-targets';
+@@ -2097,10 +2099,11 @@ sub should_use_root {
+ 	return 1 if $rrr_env eq 'binary-targets';
+ 	return 0 if not defined($keyword);
+ 
+-	state %rrr = map { $_ => 1 } split(' ', $rrr_env);
++	%rrr = map { $_ => 1 } split(' ', $rrr_env) if not %rrr;
+ 	return 1 if exists($rrr{$keyword});
+ 	return 0;
+ }
++}
+ 
+ # Returns the "gain root command" as a list suitable for passing as a part of the command to "doit()"
+ sub gain_root_cmd {
+@@ -2219,12 +2222,16 @@ sub is_udeb {
+ 	return package_type($package) eq 'udeb';
+ }
+ 
+-
++{
++my %packages_to_process;
+ sub process_pkg {
+ 	my ($package) = @_;
+-	state %packages_to_process = map { $_ => 1 } @{$dh{DOPACKAGES}};
++	if (not %packages_to_process) {
++		%packages_to_process = map { $_ => 1 } @{$dh{DOPACKAGES}};
++	}
+ 	return $packages_to_process{$package} // 0;
+ }
++}
+ 
+ # Only useful for dh(1)
+ sub bd_dh_sequences {
+@@ -3075,12 +3082,15 @@ sub perl_cross_incdir {
+ 	return $incdir;
+ }
+ 
++{
++my %known_packages;
+ sub is_known_package {
+ 	my ($package) = @_;
+-	state %known_packages = map { $_ => 1 } getpackages();
++	%known_packages = map { $_ => 1 } getpackages() if not %known_packages;
+ 	return 1 if exists($known_packages{$package});
+ 	return 0
+ }
++}
+ 
+ sub assert_opt_is_known_package {
+ 	my ($package, $method) = @_;
+-- 
+2.35.3
+

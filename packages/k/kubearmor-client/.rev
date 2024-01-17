@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e047d898dbf78b96ace540ab92efcf4e</srcmd5>
+    <version>0.13.16</version>
+    <time>1696964393</time>
+    <user>anag+factory</user>
+    <comment>new package kubearmor-client: CLI for the Kubernetes KubeArmor Cloud-native Runtime Security Enforcement System</comment>
+    <requestid>1116458</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d6aa87b1f43f21c53839f114d70c9e83</srcmd5>
+    <version>0.14.1</version>
+    <time>1697061278</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116988</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0fefe1435f4ca6a16b1fbbbdc9734e2c</srcmd5>
+    <version>0.14.2</version>
+    <time>1698333206</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120307</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>363b98a1d9e10ea68d9a753d88b69d3a</srcmd5>
+    <version>0.14.3</version>
+    <time>1700421330</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127355</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>81b4d9c1d4af8fd75d773097efa6f641</srcmd5>
+    <version>1.0.0</version>
+    <time>1701727280</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130660</requestid>
+  </revision>
+</revisionlist>

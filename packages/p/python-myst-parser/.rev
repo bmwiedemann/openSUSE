@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8c3f7234453a4e28d23537afc9cb392</srcmd5>
+    <version>0.17.2</version>
+    <time>1650922540</time>
+    <user>dimstar_suse</user>
+    <comment>package is required for update of xonsh (docs)</comment>
+    <requestid>972554</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ff202585a9037a4715d294c366955a0</srcmd5>
+    <version>0.17.2</version>
+    <time>1651501571</time>
+    <user>dimstar_suse</user>
+    <comment>- activate tests
+- fix requires
+</comment>
+    <requestid>974413</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2145a4f4d289aacc2a35718f1ffe9e93</srcmd5>
+    <version>0.17.2</version>
+    <time>1686576282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092243</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea5cf91d10ff3312a2725a84df833f71</srcmd5>
+    <version>2.0.0</version>
+    <time>1700771914</time>
+    <user>anag+factory</user>
+    <comment>Should be staged with sr#1128267, sr#1128266
+
+- Update to version 2.0.0:
+  - This release primarily updates core myst-parser dependencies, with
+    some minor changes to parsing behaviour:
+    - UPGRADE: markdown-it-py to v3 (#773)
+      - This is mainly a non-breaking change, fixing some edge cases in parsing
+      - See: https://github.com/executablebooks/markdown-it-py/releases/tag/v3.0.0
+      - and https://github.com/executablebooks/mdit-py-plugins/releases/tag/v0.4.0
+    - UPGRADE: linkify-it-py to v2 (#675)
+      - Also fixes some edge cases in parsing
+      - See: https://github.com/tsutsu3/linkify-it-py/blob/main/CHANGELOG.md
+    - UPGRADE: Add support for docutils v0.20 (#775)
+      - No significant changes, see https://docutils.sourceforge.io/RELEASE-NOTES.html#release-0-20-2023-05-04
+    - UPGRADE: Add support for sphinx v7, and remove v5 support (#776)
+      - No significant changes, see https://www.sphinx-doc.org/en/master/changes.html
+    - UPGRADE: Remove Python 3.7 support and add testing for Python
+      3.11 (#772)
+    - Improve default slug generation for heading anchors, thanks to
+      @Cimbali (#777)
+      - This change makes the slug generation closer to GitHub, in
+        that, starting/ending whitespace will not be stripped.
+      - For example, # ` a` b `c ` will now correctly create the slug
+        -a-b-c- and not a-b-c
+    - IMPROVE: Substitution extension (#777)
+      - Allow any value type (including dict, list, datetime) and emit
+        a myst.substitution warning for errors in resolving the
+        substitution content.
+    - Introduce a gate/check GHA job, thanks to @webknjaz (#635)
+- v1.0.0:
+  - This changes absolutely nothing in the code, or about the
+    maintenance/release policy of this project.  But it does feel</comment>
+    <requestid>1128268</requestid>
+  </revision>
+</revisionlist>

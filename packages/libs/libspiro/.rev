@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1328712003</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>102907</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1340183640</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1359109359</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1379663098</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>461f3f1728960b904c74c191e8eea98d</srcmd5>
+    <version>0.0.1</version>
+    <time>1409301725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>637cf3a2c22e2f4af78a0a4e7d6e1a82</srcmd5>
+    <version>0.3.20150131</version>
+    <time>1424255868</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286203</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>92edd66843a52dbcecc71f89ffd7d7dd</srcmd5>
+    <version>0.5.20150702</version>
+    <time>1450605136</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.20150702
+  * Important bug fix issue #11 (missing file not included in 0v4).
+  * 2 Minor bug fixes caught on Coverity scan, free() and if c=3.
+  * Re-edit lib and tests to be more accommodating of older compilers.
+  * Verify libspiro output data is correct for test curves {0,1,2,4}.</comment>
+    <requestid>349191</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a461826ff71afad55a20db7b0cca6c4f</srcmd5>
+    <version>20190731</version>
+    <time>1577886987</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20190731
+  * Scaling bug fixed. This allows libspiro to scale, and move spiro
+    paths, therefore allowing users and/or programs the ability of
+    using/making templates.
+  * Additional spiro controls 'anchor' and 'handle' added.
+  * Toggle switch ncq added, to allow further control of output results.</comment>
+    <requestid>758168</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ff8862b4bcdb5d06dc03856c380dfd48</srcmd5>
+    <version>20200505</version>
+    <time>1599088325</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830130</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ebf76b68fd998676d747961311156766</srcmd5>
+    <version>20221101</version>
+    <time>1674585724</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20221101:
+  * Bugfix - removed forgotten if-then code used with scaling tests.
+    Majority of users won't notice a difference since most FontForge
+    fonts are created in the +x,+y quadrant. Users that might see a
+    change/difference are users drawing only in the -x, -y quadrant.
+  * Enhanced libspiro to allow closed-loop spiros starting with '['
+    or 'a' by seeking the first available 'v', 'c', or 'o' as start,
+    which may be found later in the spiro curve. This was the least
+    modification needed to allow call-test10 or call-test11 to pass.
+  * Due to confusion created when ppedit was also re-licensed as MIT
+    APACHE and GPL2+, it's necessary to re-clarify libspiro is GPL3+.
+    In summary, GPL can include MIT code, MIT code cannot accept GPL.
+    Please note code not in ppedit like libspiro's java is GNU GPL2+.
+    Please note that libspiro's improvements or patches are also GPL.
+  * Thanks to orbea for bugfixes concerning linking and linker flags,
+    and removing .libs from linker path (some linkers don't like it).
+  * Added more commenting in spiroentrypoints.h to clarify functions.
+  * Reconfigured code to avoid exporting bezctx_intf.h since this is
+    supposed to be internal to libspiro and not for external calling.
+  * Also added https://gcc.gnu.org/wiki/Visibility to reduce exports.
+  * SPIRO_INTERNAL_BEZCTX and call-test21.c added for simpler method
+    of accessing libspiro for programs that only need the end result.
+  * Test added for 'a','h' to ensure points don't overlap, else exit. (forwarded request 1060006 from dirkmueller)</comment>
+    <requestid>1060348</requestid>
+  </revision>
+</revisionlist>

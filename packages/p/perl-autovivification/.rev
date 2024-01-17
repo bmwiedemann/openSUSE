@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f193d1629f9f99a42bb3d564efcc6fb</srcmd5>
+    <version>0.11</version>
+    <time>1378238750</time>
+    <user>coolo</user>
+    <comment>Update from 0.09 to 0.11
+Please _NOTE_ that www.cpam may hang at verification
+of the download URL</comment>
+    <requestid>197233</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0f193d1629f9f99a42bb3d564efcc6fb</srcmd5>
+    <version>0.11</version>
+    <time>1379663933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6242c17c3ab1b0253ff8fc112540b391</srcmd5>
+    <version>0.12</version>
+    <time>1382035087</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202240</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6242c17c3ab1b0253ff8fc112540b391</srcmd5>
+    <version>0.12</version>
+    <time>1409302584</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>240b2457a9e8ee38a32c32b1c1be0c48</srcmd5>
+    <version>0.14</version>
+    <time>1429186301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296013</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0fea33ef027864a585633c57759c4cfc</srcmd5>
+    <version>0.15</version>
+    <time>1431799622</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307317</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1bbf70f7545bc6b82cbc04b28f3ed959</srcmd5>
+    <version>0.16</version>
+    <time>1437477822</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314880</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>998236c6a77425221544ef119b5aeedf</srcmd5>
+    <version>0.17</version>
+    <time>1503308058</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515875</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>90dee23c2b3c1bb0af8eb5f2e8273367</srcmd5>
+    <version>0.18</version>
+    <time>1510505770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539949</requestid>
+  </revision>
+</revisionlist>

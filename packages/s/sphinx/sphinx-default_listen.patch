@@ -1,0 +1,24 @@
+diff -r -U3 sphinx-2.0.3-release.orig/sphinx.conf.in sphinx-2.0.3-release/sphinx.conf.in
+--- sphinx-2.0.3-release.orig/sphinx.conf.in	2011-04-18 09:39:40.000000000 -0500
++++ sphinx-2.0.3-release/sphinx.conf.in	2012-02-14 13:49:19.660872549 -0600
+@@ -716,7 +716,7 @@
+ 	# listen			= 192.168.0.1:9312
+ 	# listen			= 9312
+ 	# listen			= /var/run/searchd.sock
+-	listen			= 9312
++        listen                  = 127.0.0.1:9312
+ 	listen			= 9306:mysql41
+ 
+ 	# log file, searchd run info is logged here
+diff -r -U3 sphinx-2.0.3-release.orig/sphinx-min.conf.in sphinx-2.0.3-release/sphinx-min.conf.in
+--- sphinx-2.0.3-release.orig/sphinx-min.conf.in	2011-04-18 09:39:40.000000000 -0500
++++ sphinx-2.0.3-release/sphinx-min.conf.in	2012-02-14 13:49:55.682449012 -0600
+@@ -54,7 +54,7 @@
+ 
+ searchd
+ {
+-	listen			= 9312
++        listen                  = localhost:9312
+ 	listen			= 9306:mysql41
+ 	log			= @CONFDIR@/log/searchd.log
+ 	query_log		= @CONFDIR@/log/query.log

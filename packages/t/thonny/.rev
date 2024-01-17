@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a91bd570dc071f051f2f1e1906d9dbb2</srcmd5>
+    <version>3.3.3</version>
+    <time>1617130333</time>
+    <user>RBrownSUSE</user>
+    <comment>New package submission</comment>
+    <requestid>868687</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>df9842cc6755c65b76affc2d1770dda1</srcmd5>
+    <version>3.3.14</version>
+    <time>1637372370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932580</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8cb3def87a4c5fe265989f689d9e2c3a</srcmd5>
+    <version>3.3.14</version>
+    <time>1641203380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943408</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>34d63dfb4ffda5ac26212d36b3d5f004</srcmd5>
+    <version>4.0.1</version>
+    <time>1672670846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046182</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>15b0b73f876b7cfdfe02d9c185656e18</srcmd5>
+    <version>4.0.2</version>
+    <time>1674495107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060312</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9db3d2a5fd34efd6002de05463991e8b</srcmd5>
+    <version>4.1.1</version>
+    <time>1691674477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103244</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>093a0e62f1a3b4cdb615b8736029efd2</srcmd5>
+    <version>4.1.1</version>
+    <time>1700598784</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127922</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,3 @@
+# All .so files are in the main package as many ext apps
+# dlopen those so you need these on regular package.
+addFilter("devel-file-in-non-devel-package")

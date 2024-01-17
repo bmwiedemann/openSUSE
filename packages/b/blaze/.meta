@@ -1,0 +1,9 @@
+<package name="blaze" project="openSUSE:Factory">
+  <title>A high performance C++ math library</title>
+  <description>Blaze is an open-source, high-performance C++ math library for dense and sparse
+arithmetic.
+
+</description>
+  <devel project="science" package="blaze"/>
+  <url>https://bitbucket.org/blaze-lib/blaze</url>
+</package>

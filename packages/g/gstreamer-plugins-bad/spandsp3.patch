@@ -1,0 +1,21 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2022-04-10 13:08:44.803090340 +0200
+
+Make the build with spandsp-3.x succeed again.
+
+---
+ ext/spandsp/gstspanplc.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: gst-plugins-bad-1.20.1/ext/spandsp/gstspanplc.c
+===================================================================
+--- gst-plugins-bad-1.20.1.orig/ext/spandsp/gstspanplc.c
++++ gst-plugins-bad-1.20.1/ext/spandsp/gstspanplc.c
+@@ -36,6 +36,7 @@
+ #include "gstspanplc.h"
+ 
+ #include <gst/audio/audio.h>
++#include <spandsp/private/plc.h>
+ 
+ G_DEFINE_TYPE (GstSpanPlc, gst_span_plc, GST_TYPE_ELEMENT);
+ GST_ELEMENT_REGISTER_DEFINE (spanplc, "spanplc", GST_RANK_PRIMARY,

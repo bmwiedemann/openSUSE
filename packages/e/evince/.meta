@@ -1,0 +1,6 @@
+<package name="evince" project="openSUSE:Factory">
+  <title>GNOME Document Viewer</title>
+  <description>Evince is a document viewer capable of displaying multiple and
+singlepage document formats like PDF and PostScript.</description>
+  <devel project="GNOME:Factory" package="evince"/>
+</package>

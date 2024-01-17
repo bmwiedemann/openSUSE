@@ -1,0 +1,58 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Nov 28 18:55:42 2018 +0100
+Subject: provision: Add build configuration to allow for use of local arm ipxe images
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: b0cddcec83ece79c7a3d1077e0daad42464e5b70
+References: 
+
+Following
+    e07cff3a604c6b90b341cf0df150ef36df493243
+    Suse prov config local binary copy (#140)
+add the same for arm as well.
+Furthermore, do not hard code the default path but use the
+appropriate configurable setting.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ provision/3rd_party/Makefile.am | 8 +++++++-
+ provision/configure.ac          | 7 ++++---
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+diff --git a/provision/3rd_party/Makefile.am b/provision/3rd_party/Makefile.am
+index 05af8e8..30f4ffb 100644
+--- a/provision/3rd_party/Makefile.am
++++ b/provision/3rd_party/Makefile.am
+@@ -57,7 +57,13 @@ endif
+ bin-arm64-efi/snp.efi: prep
+ 
+ if BUILD_ARM64
+-	$(MAKE) -C _work/$(IPXE_DIR)/src CROSS_COMPILE=$(CROSS_COMPILE_ARM64) bin-arm64-efi/snp.efi
++	@ if [ -n "@local_ipxe_snp_arm64_path@" -a -f "@local_ipxe_snp_arm64_path@" ]; then \
++		echo "Detected local install of arm64 snp.efi boot image. Bypassing build process." ;\
++		mkdir -p _work/$(IPXE_DIR)/src/bin-arm64-efi ;\
++		cp "@local_ipxe_snp_arm64_path@" _work/$(IPXE_DIR)/src/bin-arm64-efi/snp.efi ;\
++	else \
++	$(MAKE) -C _work/$(IPXE_DIR)/src CROSS_COMPILE=$(CROSS_COMPILE_ARM64) bin-arm64-efi/snp.efi; \
++        fi
+ endif
+ 
+ install-data-local: $(IPXETARGETS)
+diff --git a/provision/configure.ac b/provision/configure.ac
+index 4e950c4..4ee0c64 100644
+--- a/provision/configure.ac
++++ b/provision/configure.ac
+@@ -140,9 +140,10 @@ AS_IF([test -n "$local_busybox_path"],
+ AC_SUBST(busybox_links_path)
+ 
+ FIND_LOCAL(e2fsprogs, mkfs.ext4)
+-FIND_LOCAL(ipxe_undionly, /usr/share/ipxe/undionly.kpxe)
+-FIND_LOCAL(ipxe_snp_i386, /usr/share/ipxe/snp-i386.efi)
+-FIND_LOCAL(ipxe_snp_x86_64, /usr/share/ipxe/snp-x86_64.efi)
++FIND_LOCAL(ipxe_undionly, ${datadir}/ipxe/undionly.kpxe)
++FIND_LOCAL(ipxe_snp_i386, ${datadir}/ipxe/snp-i386.efi)
++FIND_LOCAL(ipxe_snp_x86_64, ${datadir}/ipxe/snp-x86_64.efi)
++FIND_LOCAL(ipxe_snp_arm64, ${datadir}/ipxe/snp-arm64.efi)
+ FIND_LOCAL(libarchive, bsdtar)
+ FIND_LOCAL(parted, parted)
+ FIND_LOCAL(partprobe, partprobe)

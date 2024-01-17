@@ -1,0 +1,135 @@
+-------------------------------------------------------------------
+Mon Jun 26 20:21:55 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- build with system sexpp library (renamed)
+
+-------------------------------------------------------------------
+Mon Jun 19 21:10:24 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- fix s390x tests - add rnp-v0.17.0-tests.patch
+
+-------------------------------------------------------------------
+Wed Jun 14 21:01:38 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- build with system sexp library
+  (add rnp-v0.17.0-system-sexp.patch)
+- drop rnp-v0.17.0-gcc13.patch no longer needed
+
+-------------------------------------------------------------------
+Wed Jun 14 20:57:32 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- fix build on Leap (json-c)
+
+-------------------------------------------------------------------
+Mon Jun 12 20:32:19 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- rnp 0.17.0:
+  * Add support for hidden recipient during decryption
+  * Improve support for offline secret keys during default key
+     selection
+  * Support for GnuPG 2
+  * SExp parsing code is moved to separate library
+  * Mark subkeys as expired instead of invalid if primary key is
+    expired
+  * AEAD: use OCB by default instead of EAX
+  * Do not attempt to validate signatures of unexpected types
+  * Use thread-safe time and date handling functions
+  * Added ENABLE_BLOWFISH, ENABLE_CAST5 and ENABLE_RIPEMD160 build
+    time options
+  * Corrected usage of CEK/KEK algorithms if those differs
+  * Add default armor message type for --enarmor command
+  * Add command --set-filename to specify which file name should be stored in message
+  * Add --add-subkey subcommand to the --edit-key
+  * Add set-expire subcommand to the --edit-key
+  * Add --s2k-iterations and --s2k-msec options to the rnp
+  * dd --allow-weak-hash command to allow usage of weak hash algorithms
+  * Report number of new/updated keys during the key import
+- add rnp-v0.17.0-disable-static.patch
+- add rnp-v0.17.0-gcc13.patch
+- uses bundled libsexp
+
+-------------------------------------------------------------------
+Mon Jun 12 17:16:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.16.3:
+  * CVE-2023-29479: Fix issue with possible hang on malformed
+    inputs (boo#1212253)
+  * CVE-2023-29480: Fix issue where in some cases, secret keys
+    remain unlocked after use (boo#1212254)
+
+-------------------------------------------------------------------
+Mon Sep 26 04:36:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.16.2:
+  * Support a number of additional key and encryption operations
+  * Now uses separate security rules for the data and key signatures,
+    extending SHA1 key signature support till the Jan, 19 2024.
+  * The default key expiration time was set to 2 years.
+  * The library got a number of developer visible updates, 
+    and the command-line interface gained a number of additional
+    knobs, switches, and output improvements
+
+-------------------------------------------------------------------
+Sun May 22 08:14:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
+Sun Feb 13 18:12:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.16.0:
+  * Ability to disable certain features via compile-time switches
+    (ENABLE_AEAD, ENABLE_SM2, etc.)
+  * Mark signatures with SHA1/MD5 hash, produced after the specific
+    date (2019-01-19 and 2012-01-01) as invalid
+  * Fixed possible incompatibility with GnuPG on x25519 secret key
+    export
+  * Fixed export of non-FFI symbols from rnp.so/rnp.dylib
+  * Fixed key expiration time calculation in some edge cases
+  * Added security profile manipulation functions to the FFI
+  * Improved CLI tools help messages
+  * Improved CLI: stdin/stdout/env input/output specifiers, --notty
+    for batch processing, etc.
+
+-------------------------------------------------------------------
+Sat Jan 15 08:14:17 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- disable tests
+
+-------------------------------------------------------------------
+Mon Aug  9 20:44:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.15.2:
+  * Be less strict in userid validation: allow to use userids with
+    self-signature, which has key expiration in the past
+  * Do not mark signature as invalid if key which produced it is
+    expired now, but was valid during signing
+  * Fix incorrect key expiration calculation in some cases
+  * rnp: Show error message if encryption failed
+  * rnpkeys: Add --expiration option to specify expiration time
+    during key generation
+- run tests
+
+-------------------------------------------------------------------
+Mon Jun 28 20:17:02 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.15.1:
+  * Fix updating of expiration time for a key with multiple user
+    IDs
+  * Fixed key expiry check for keys valid after the year 2038
+  * Pick up key expiration time from direct-key signature or primary
+    userid certification if available
+  * CVE-2021-33589: issue with cleartext key data after the
+    rnp_key_unprotect()/rnp_key_protect() calls (boo#1187759)
+- includes changes from 0.15.0:
+  * Improve handling of cleartext signatures, when empty line
+    between headers and contents contains some whitespace
+  * Relax requirements for the armored messages CRC (allow absence
+    of the CRC, and issue warning instead of complete failure)
+  * documentation updates
+  * rnpkeys: add --remove-key command
+
+-------------------------------------------------------------------
+Sun Feb 21 21:44:24 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- initial package, 0.14.0

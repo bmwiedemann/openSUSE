@@ -1,0 +1,11 @@
+--- swingx-core/src/test/java/org/jdesktop/swingx/JXPanelVisualCheck.java.orig	2013-02-26 17:37:02.000000000 +0000
++++ swingx-core/src/test/java/org/jdesktop/swingx/JXPanelVisualCheck.java	2013-07-30 15:14:02.892623394 +0100
+@@ -50,7 +50,7 @@
+ import org.jdesktop.swingx.test.XTestUtils;
+ import org.jdesktop.swingx.util.PaintUtils;
+ 
+-import com.sun.java.swing.Painter;
++import javax.swing.Painter;
+ 
+ /**
+  * Contains methods to visually test JXPanel.

@@ -1,0 +1,11 @@
+<package name="atftp" project="openSUSE:Factory">
+  <title>Advanced TFTP Server and Client</title>
+  <description>atftp stands for Advanced Trivial File Transfer Protocol. It is called
+&quot;advanced&quot;, in contrast to others TFTP servers, for two reasons. First,
+it is intended to be fully compliant with all related RFCs. This
+includes RFC1350, RFC2090, RFC2347, RFC2348, and RFC2349. Second, atftp
+is intended for serving boot files to large clusters. It is
+multithreaded and will eventually support multicast, allowing faster
+boot of hundreds of machines simultaneously.</description>
+  <devel project="network" package="atftp"/>
+</package>

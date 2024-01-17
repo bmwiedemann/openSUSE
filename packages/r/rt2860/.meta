@@ -1,0 +1,7 @@
+<package name="rt2860" project="openSUSE:Factory">
+  <title>Userspace configuration files for rt2860 driver</title>
+  <description>This package contains a small configuration file of the rt2860 driver,
+currently read by the kernel module. In later versions this will go
+away.</description>
+  <devel project="network" package="rt2860"/>
+</package>

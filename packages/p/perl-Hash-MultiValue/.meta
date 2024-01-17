@@ -1,0 +1,6 @@
+<package name="perl-Hash-MultiValue" project="openSUSE:Factory">
+  <title>Store multiple values per key</title>
+  <description>Hash::MultiValue is an object (and a plain hash reference) that may contain
+multiple values per key, inspired by MultiDict of WebOb.</description>
+  <devel project="devel:languages:perl" package="perl-Hash-MultiValue"/>
+</package>

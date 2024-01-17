@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Tue Jan  9 21:32:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.1:
+  * fixed silly typo
+- update to 3.8.0:
+  * Added slicabledeque
+- update to 3.7.0:
+  * Fixed several typing issues and added more thorough tests
+- update to 3.6.1:
+  * Increased `typing-extensions` version requirement to fix #38
+- update to 3.6.0:
+  * Added extra containers such as UniqueList and SlicableDeque.
+    Added full pyright strict and mypy type checks
+- update to 3.5.2:
+  * Added import shortcuts for container classes
+- update to 3.5.1:
+  * Improved type hinting thanks to @jorenham
+- update to 3.5.0:
+  * Added unique list container
+
+-------------------------------------------------------------------
+Tue Dec 13 07:43:32 UTC 2022 - pgajdos@suse.com
+
+- disable flaky test_timeout_generator
+
+-------------------------------------------------------------------
+Mon Dec 12 15:15:16 UTC 2022 - pgajdos@suse.com
+
+- version update to 3.4.5
+  * no upstream changelog, see
+  https://github.com/wolph/python-utils/commits/develop
+- python-six is not required
+
+-------------------------------------------------------------------
+Wed Dec  8 09:03:34 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
+Sat Oct 23 16:28:04 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.5.6
+
+-------------------------------------------------------------------
+Fri Mar 20 11:00:23 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.4.0
+  * added map/remap/scale/rescale function
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 11:23:17 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality/relevance of description.
+
+-------------------------------------------------------------------
+Thu May 24 17:40:45 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 2.3.0
+  * Added several time methods and terminal size detection
+- Fix tests
+- spec file cleanups
+
+-------------------------------------------------------------------
+Tue Nov  7 18:25:29 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

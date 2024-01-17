@@ -1,0 +1,330 @@
+-------------------------------------------------------------------
+Mon Nov  6 11:47:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easy to run a build without testsuite
+  osc build --without=testsuite
+
+-------------------------------------------------------------------
+Mon Nov  6 00:11:33 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make it easier to notice to keep buildrequires and runtime
+  requires version limits in sync. This will also help us to notice
+  early when the version of other libraries do not match the
+  requires encoded in the source code.
+
+-------------------------------------------------------------------
+Thu Nov  2 10:42:19 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.10
+  * See https://gitlab.com/mailman/postorius/-/blob/v1.3.10/src/postorius/doc/news.rst
+    or the file news.rst in the postorius package
+
+-------------------------------------------------------------------
+Sun Jul  2 06:30:47 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix uwsgi requirement
+
+-------------------------------------------------------------------
+Sat Jul  1 08:17:01 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Fri Jun 30 07:27:48 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building on Leap
+
+-------------------------------------------------------------------
+Sun Jun 25 08:12:39 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.8
+  * The buttons and confirmation page for removing members have been revised in
+    an attempt to reduce accidental removal of all members. (Fixes #545)
+  * Add bounce score for members in the Members table (See #12)
+  * Add support for Python 3.11.
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu Nov 17 15:07:07 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.7
+  *  Fix a bug where various form(s) allowed setting empty values for
+     delivery_mode and language. (Fixes #540, #522)
+  *  Rename labels description and info fields as 'Short Description' and 'Long
+     Description' to signify what they mean. (Fixes #510)
+  *  Use date to format the dates in 'List Metrics' section in the List summary
+     page. (Fixes #508)
+  *  Sort the list of languages in all Select elements alphabetically so they
+     are easier to naviate with screen readers. (Fixes #498)
+  *  Add support for Django 4.0
+  *  A couple of unit tests are now marked expectedFailure due to
+     https://gitlab.com/mailman/mailman/-/merge_requests/997. (See #548)
+  *  Translate template names in the “New Templates” page (See #547)
+  *  Translate the section names in the MailingList->"Settings" tab. (See #550)
+  *  Add support for Django 4.1
+  *  Add support for Python 3.10
+  *  Remove support for Django < 3.2
+  *  Remove support for Python < 3.7
+  *  Replace the use of mock with unittest.mock
+  *  Change the way role is selector in the List index page to allow use of the
+  *  filtering without javascript enabled dropdowns. It also enhances usability
+     by enabling the roles that are currently active by default. (See #544)
+  *  Show the number of files in each Mailman queue under 'System Information'
+     tab for Admins. (Fixes #480)
+- Removed postorius-fix-django-4.0-compatibility.patch
+- Add BR for django debug toolbar
+
+-------------------------------------------------------------------
+Wed Jul  6 14:30:03 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add missing makemigritions on update
+
+-------------------------------------------------------------------
+Wed Jul  6 13:19:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix Requires for %{mypython}-uwsgi-python3 on Tumbleweed vs.
+  uwsgi-python3 on 15.x
+
+-------------------------------------------------------------------
+Tue Jul  5 07:29:07 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix Requires for uwsgi-python3
+
+-------------------------------------------------------------------
+Mon Jul  4 15:18:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Use Python 3.9 like the rest of mailman3
+
+-------------------------------------------------------------------
+Thu Jun  9 17:23:56 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix BR for mailman3 (package has been renamed)
+
+-------------------------------------------------------------------
+Thu May 26 07:56:37 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Mon Feb 21 07:31:26 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Make compatible with django 4.0
+  * Added postorius-fix-django-4.0-compatibility.patch
+
+-------------------------------------------------------------------
+Thu Nov 18 18:03:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix missing minimal requirements on Django.
+
+-------------------------------------------------------------------
+Thu Nov 18 08:02:22 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.6
+  - Security:
+    - Check that a user owns the email address they are trying
+      to unsubscribe. This fixes a bug in which any logged-in
+      user could unsubscribe any email address from any mailing
+      list, leaking whether that address was subscribed
+      originally. (CVE-2021-40347)
+  - UI:
+    - Add 'Delivery Mode' and 'Moderation Action' columns to
+    - List members page.  Add support to list and handle pending
+      un-subscription requests.
+    - Add support to specify a reason when handling
+      (un)subscription requests
+    - Success messages to mass subscribes now properly
+      distinguish subscription from invitation and indicate
+      possible pending confirmation or approval.
+    - User profile dropdown no longer is too far right.
+    - Expose archive_rendering_mode in Archiver settings to
+      choose between plaintext and rich text rendering of emails
+      in Hyperkitty.
+    - Allow choosing delivery_mode and delivery_status when
+      subscribing to a List.
+    - Redirect to domain_index after domain_edit succeeds.
+    - Expose new bounce_notify_owner_on_bounce_increment list
+      setting on Bounce Processing settings, and expose the
+      corresponding template.
+    - Expose the forward_unrecognized_bounces_to setting on
+      Bounce Processing settings.
+    - Clarified the description of Maximum number of recipients.
+    - List summary view will now display a table for all
+      subscriptions with delivery_mode and delivery_status.
+    - Add a new user management interface for superusrs.
+    - Allow searching for users in list user views.
+    - Show both display name and email in user management
+      interface if available,
+    - Allow list:admin:notice:pending template to be set in
+      Postorius.
+  - Other:
+    - Use mass-subscription API in core for Mass Removal of
+      Members.
+    - Fix a bug where users with multiple subscriptions to a List
+      couldn't view their Preferences for all addresses.
+    - Check for pending unsubscription requests and notify user
+      when the request is pending approval.
+    - Improve the performance of Members' page by skipping an API
+      call.
+    - Improve the performance of List index page for Superuser.
+    - Skip looking up choosable_domains for non-superuser to
+      reduce API calls.
+    - Improve the performance of List owner access checks.
+    - Add a new APICountingMiddleware to performance testing
+      purposes.
+    - Use user_id as subscriber instead of addresses to improve
+      the efficiency of list index page.
+    - AUTOCREATE_MAILMAN_USER setting is now removed and
+      a Mailman user is always created when a User object in
+      created in Django. Also remove duplicate implementation of
+      get_mailman_user from MailmanUserManager so that we can use
+      a single implementation that uses caching for efficient
+      lookups. Bump bundled jQuery to 3.6.0.slim version.
+    - Use the full jQuery not the slim version.
+    - Do not show Ownerships and Moderator roles in the
+      'Subscriptions' page under mange new user interface.
+  - Ascessibility:
+    - Move the focus to the textarea in mass subscribe page if
+      there are errors in the form.
+
+-------------------------------------------------------------------
+Wed Jun  2 06:33:53 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Remove the postorius-admin user
+
+-------------------------------------------------------------------
+Tue May 25 19:29:40 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create static files as part of the build process
+- Fixed CVE-2021-31997
+
+-------------------------------------------------------------------
+Tue May  4 09:34:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- restrict to primary python3 flavor due to mailman 
+
+-------------------------------------------------------------------
+Fri Feb 12 10:54:02 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.4
+  * Update the default Site when creating a domain to match the domain if it is
+    example.com. (Closes #427)
+  * Add the ability to subscribe via Primary Address instead of specific
+    address. (See !516)
+  * Fix a bug where the user's display name would be ignore when
+    subscribing. (Closes #429)
+  * Display a user's name in the pending subscription request list. (Closes #430)
+  * Set a user's preferrred_address in Core if it isn't already set and the user
+    has a Primary Address that is verified.
+  * Use the new APIs in Core to get the count of held messages and pending
+    subscriptions to improve peroformance of settings page for list
+    owners. (Fixes #417)
+  * Show held message is local time of the User. (Closes #434)
+  * Fix a bug where non-member options page would show an owner's options if the
+    same email was subscribed as owner and non-member in a list. (Closes #436)
+  * Switching subscription from one email address to other or Primary Address now
+    preserves preferences and does not require Moderator approval. (Closes #425)
+  * Make 'Archives' and 'List Options' urls more prominently visible in the
+    list summary page as buttons. (Closes #439)
+  * Added the ability to issue invitations from the mass subscribe view.
+  * Expose emergency moderation setting for MailingList.
+  * Fixed some minor HTML errors. (Closes #442)
+  * Fix the bug where ListOfStringsField couldn't be unset in Postorius. (Closes
+    #444)
+  * Allow list:user:action:invite template to be set in Postorius. (Closes
+    #454)
+  * Fix a bug where the Bans form would always use default language instead of
+    current request's language. (Closes #441)
+  * Fix the URL on cancel buttons in template's confirm delete page. (Closes
+    #458)
+  * Use server side filtering for pending subscription requests for moderator
+    approval. (See !559)
+  * Allow setting moderation action for a nonmember from Held Message modal. (
+    Closes #448)
+  * Add a new view to confirm subscriptions or new emails for Users using
+    Postorius. (Fixes #459)
+  * Fix a bug where membership check compared email addresses in different
+    cases. (Closes #457)
+  * Mass removal now accepts address formats with display names and/or angle
+    brackets. (Closes #455)
+  * Add support to override send_welcome_message when mass subscribing to
+    suppress welcome messages. (Closes #99)
+  * Add support for Django 3.1.x. (See !574)
+  * The list's send_goodbye_message is now settable on the Automatic
+    Responses view.  (Closes #466)
+  * Support HYPERKITTY_ENABLE_GRAVATAR setting to control the user gravatar.
+    (Closes #467)
+- Fix building on tumbleweed
+
+-------------------------------------------------------------------
+Sun Dec 20 14:35:33 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Improve documentation (README.SUSE.md)
+
+-------------------------------------------------------------------
+Sat Dec 12 19:19:35 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix chdir path in uwsgi config
+- Update README.SUSE.md
+
+-------------------------------------------------------------------
+Sat Oct  3 07:55:13 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create a postorius-web package with webroot files
+- Create a postorius-web-uwsgi with uwsgi configuration
+- Added postorius-settings.patch
+  * Sets the FHS default paths
+
+-------------------------------------------------------------------
+Tue Aug  4 02:03:24 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Update to 1.3.3
+  * Expose additional list settings.
+  * Correct description of Digest Frequency.
+  * Added links to Reply-To munging articles.
+  * Fix "Show Headers" button to show the held message headers in the
+    held message popup.
+  * Fix the held message popup structure and increase the max width of the popup
+    to be 800px(modal-lg) for larger screens.
+  * Fix FILTER_VHOST = True option to try to find the email host corresponding
+    to the requesting web host.
+  * Allow specifying a reason when rejecting a held message.
+  * Allow users to set their preferred language in their preferences.
+  * Add support to ban addresses for the entire Mailman installation.
+  * Un-handled HTTPError exception raised from MailmanClient now results in an
+    error page and proper logging instead of mysterious KeyError in logs.
+  * Change List settings navigation to be vertical instead of horizontal.
+  * Move bounce processing settings into a new vertical tab for better
+    visibility.
+  * Add URL to edit the Web host for each domain in Domain Index page. Also, show
+    the SITE_ID for each webhost.
+
+-------------------------------------------------------------------
+Tue Apr 14 08:12:34 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.3.2 (no changelog)
+
+-------------------------------------------------------------------
+Thu Jan 23 15:44:42 UTC 2020 - pgajdos@suse.com
+
+- the pytest issue in 15 will be fixed on python rpm macros level
+
+-------------------------------------------------------------------
+Fri Jan 17 11:03:31 UTC 2020 - pgajdos@suse.com
+
+- %check correctly also for 15
+
+-------------------------------------------------------------------
+Mon Dec  2 10:47:16 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov 27 08:20:57 UTC 2019 - pgajdos@suse.com
+
+- package example_project in doc
+
+-------------------------------------------------------------------
+Fri Nov 15 08:58:29 UTC 2019 - pgajdos@suse.com
+
+- initial version 1.3.0 [SLE-7686]
+

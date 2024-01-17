@@ -1,0 +1,35 @@
+--- ./src/lib/libast/features/stdio.orig	2017-12-20 12:15:45.571650029 +0000
++++ ./src/lib/libast/features/stdio	2017-12-20 12:16:26.250531883 +0000
+@@ -6,6 +6,8 @@ cat{
+ 	#define _FILE_DEFINED	1
+ 	#define _FILE_defined	1
+ 	#define _FILEDEFED	1
++	#define __FILE_defined	1
++       #define ____FILE_defined	1
+ 
+ 	#ifndef __FILE_TAG
+ 	#define __FILE_TAG	_sfio_s
+--- ./src/lib/libast/include/ast.h.orig	2017-12-20 12:16:37.212500201 +0000
++++ ./src/lib/libast/include/ast.h	2017-12-20 12:17:25.635360669 +0000
+@@ -58,9 +58,21 @@ struct _sfio_s;
+ #ifndef	__FILE_typedef
+ #define __FILE_typedef	1
+ #endif
++#ifndef	_FILE_DEFINED
++#define _FILE_DEFINED   1
++#endif
++#ifndef	_FILE_defined
++#define _FILE_defined   1
++#endif
+ #ifndef _FILEDEFED
+ #define _FILEDEFED	1
+ #endif
++#ifndef __FILE_defined
++#define __FILE_defined  1
++#endif
++#ifndef ____FILE_defined
++#define ____FILE_defined  1
++#endif
+ #endif
+ 
+ /*

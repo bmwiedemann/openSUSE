@@ -1,0 +1,12 @@
+{
+  /**
+   * Configuration of the Webviewer plugin
+   * Axel Braun <docb@openSUSE.org>
+   **/
+  "WebViewer" : {
+    "CachePath" : "/var/lib/orthanc/OrthancStorage/WebViewerCache",
+    "CacheSize" : 10,
+    "Threads" : 4,
+    "EnableGdcm" : true
+  }
+}

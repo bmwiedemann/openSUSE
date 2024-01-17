@@ -1,0 +1,12 @@
+<package name="python-python3-saml" project="openSUSE:Factory">
+  <title>Python3 SAML</title>
+  <description>Add SAML support to your Python softwares using this library. Forget
+those complicated libraries and use that open source library provided
+and supported by OneLogin Inc.
+
+SAML is an XML-based standard for web browser single sign-on and is
+defined by the OASIS Security Services Technical Committee.
+
+This package supports Python 2 and 3.</description>
+  <devel project="devel:languages:python" package="python-python3-saml"/>
+</package>

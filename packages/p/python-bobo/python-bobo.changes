@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Nov 11 08:38:20 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove test BuildRequires, a different package runs the tests. 
+
+-------------------------------------------------------------------
+Wed May 27 09:36:30 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Tue Dec  4 12:46:16 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue Sep  5 23:52:23 UTC 2017 - jengelh@inai.de
+
+- Ensure neutral description.
+
+-------------------------------------------------------------------
+Sat Aug 19 08:00:21 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial version

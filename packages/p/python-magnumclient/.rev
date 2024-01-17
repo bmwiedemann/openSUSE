@@ -1,0 +1,224 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>506c5f13d87aecc5634c9e64fc4aa753</srcmd5>
+    <version>2.3.0</version>
+    <time>1475242132</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425256</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24d399a55472f77258a6f8cd4544b92c</srcmd5>
+    <version>2.6.0</version>
+    <time>1503927061</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.0
+  - Add magnum client support for resource quotas
+  - Correct mistake from OSprofiler help
+  - Update .gitignore to ignore .eggs
+  - The python 3.4 support is removed
+  - Fix wrong path reference.
+  - Magnum client suport insecure_registry
+  - Simplify magnumclient.shell.OpenStackMagnumShell.main()
+  - Fix UT for duplicate name args test case
+  - Update test requirement
+  - Add ca-rotate command to magnumclient
+  - Replace assertRaisesRegexp with assertRaisesRegex
+  - Compare test coverage with the master branch
+  - Move cover.sh to the tools directory
+  - Make --cluster option required for ca-rotate
+  - Print exception details on update failure
+  - Allow name as positional argument
+  - Remove support for keyapir UUID
+  - Use assertIsNone(...) instead of assertEqual(None, ...).
+  - Increase Test coverage
+  - Updated from global requirements
+  - Add the support for 'detail' flag
+
+- update to version 2.5.0
+  - Add the OSC 'cluster template list' command
+  - Add osc-lib to requirements.txt
+  - Increase UT Coverage
+  - Updated from global requirements
+  - Add usage docs for magnum client</comment>
+    <requestid>514949</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d2bc513f8351eb4298ae59995e1fd9a9</srcmd5>
+    <version>2.7.0</version>
+    <time>1516804019</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.7.0
+  - Make cluster name positional in ca-show
+  - Add --docker-volume-size for cluster-create
+  - Change assertTrue(isinstance()) by optimal assert
+  - Remove log translations
+  - Make --profile load from environment variables
+  - remove slash from kubernetes cluster context name
+  - Don't set a default for docker_volume_size
+  - Update the documentation link for doc migration
+  - OSC: Add cluster config command
+  - OSC 2/4 Add Cluster Create and List
+  - switch to openstackdocstheme
+  - OSC 3/4 Add remaining CT commands
+  - OSC 1/4 Add CT create and UT framework
+  - Remove docker-volume-size from cluster-list
+  - Updated from global requirements
+  - OSC 4/4 Add remaining cluster commands</comment>
+    <requestid>567264</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1c594b4eb8f3a8b2edce90d9828a23a0</srcmd5>
+    <version>2.9.0</version>
+    <time>1520329737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.9.0
+  - Add deprecation warnings to magnum client commands
+  - Now cluster-template-update works for &quot;labels&quot;
+  - Update UPPER_CONSTRAINTS_FILE for stable/queens
+  - OSC command for ca-show, ca-sign, ca-roatate and stats-list
+  - Update .gitreview for stable/queens
+  - Make cluster-config rbac compatible for kubebernetes
+  - OSC command for magnum quota's
+
+- Switch to stable/queens spec template
+
+- update to version 2.8.0 (bsc#1078607)
+  - Add oslo.log as requirement
+  - Replace six.iteritems() with .items()
+  - OSC: Add --labels to coe cluster create
+  - OSC: Add --flavor to coe cluster create
+  - OSC: Add magnum service-list command
+  - Add missing master_flavor_id in cluster attributes
+  - Make cluster config --force a boolean
+  - Add disable floating ip parameter
+  - OSC: Remove unused files
+  - inline comment typo fix
+  - Now `name` is a positional argument in cluster creation
+  - Add --labels for cluster-create
+  - OSC: Add --master-flavor to coe cluster create
+  - Cleanup test-requirements
+  - Set --labels default to None on cluster create
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support</comment>
+    <requestid>583221</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2576857e435a138dfa13b1372d0dcb72</srcmd5>
+    <version>2.10.0</version>
+    <time>1536327465</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633077</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3396745128d94a4d6e796177240d6db1</srcmd5>
+    <version>2.12.0</version>
+    <time>1556916067</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.12.0
+  - Add Python 3.6 classifier to setup.cfg
+  - Fix py37 compatibility
+  - Trivial: Update pypi url to new url
+  - [k8s] Add embed certs to config
+  - osc: Don't pass parameters with null value
+  - Use oslo_serialization instead of the json module directly
+  - switch documentation job to new PTI
+  - Fix crash on Service catalog empty 403 response
+  - add python 3.6 unit test job
+  - Use template for lower-constraints
+  - import zuul job settings from project-config
+  - Keystone auth support
+  - Add release notes for magnum client</comment>
+    <requestid>692834</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5be73667bcf56540ad0b7026b940459e</srcmd5>
+    <version>2.15.0</version>
+    <time>1575463719</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.15.0
+  - Add nodegroup list/show commands
+  - Support upgrade API
+  - Fix coverage test
+  - Update master for stable/stein
+  - Support resize api
+  - Add Python 3 Train unit tests
+  - python3 fixes
+  - Conditional hidden arg for backward compatibility
+  - Add hidden property to cluster template
+  - OpenDev Migration Patch
+  - Display project_id for cluster show
+  - Dropping the py35 testing
+  - add python 3.7 unit test job
+  - Change openstack-dev to openstack-discuss
+  - Support health_status on client side
+  - Blacklist bandit 1.6.0 and cap Sphinx on Python2
+  - Support network, subnet and FIP when creating cluster</comment>
+    <requestid>736657</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bf4851e9205e5fda0a7b8c50c41c2f1c</srcmd5>
+    <version>2.15.0</version>
+    <time>1585085591</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only</comment>
+    <requestid>787455</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0b01a7fc28d390abb778a58082f41345</srcmd5>
+    <version>3.0.0</version>
+    <time>1591380652</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803569</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f10c3c78d783f2cd94339b0ba65b6717</srcmd5>
+    <version>3.0.1</version>
+    <time>1597064750</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.1
+  - Rename variables to address pep8 error
+  - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri
+  - Labels override
+  - Update .gitreview for stable/ussuri</comment>
+    <requestid>825321</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9a0713acb83e4453af96b2bd8eac4f70</srcmd5>
+    <version>3.2.1</version>
+    <time>1603725334</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841186</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>97e0af210f3515bf46ffc89388965864</srcmd5>
+    <version>3.4.0</version>
+    <time>1620653847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889973</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ceda2f7c5f60f6544deff3f18f987587</srcmd5>
+    <version>3.6.0</version>
+    <time>1655665896</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Fix-test_help_on_subcommand-on-Python-3.10.patch
+
+- update to version 3.6.0
+  - Update master for stable/victoria
+  - Update master for stable/wallaby
+  - Add Python3 wallaby unit tests
+  - Update master for stable/xena
+
+- update to version 3.5.0
+  - Fix failing to parse json error msg
+  - Fix master_lb_enabled for cluster creation</comment>
+    <requestid>983720</requestid>
+  </revision>
+</revisionlist>

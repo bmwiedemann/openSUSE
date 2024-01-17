@@ -1,0 +1,35 @@
+commit 217b7a78ac8ec4c4c1b05df549b7c1c8bb6e9bbd
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Thu Jun 23 12:42:06 2022 +0200
+
+    opae: disable FORTIFY_SOURCE
+    
+    This is already set by the RPM flags and causes build to fail:
+    [   11s] <command-line>: error: "_FORTIFY_SOURCE" redefined [-Werror]
+    [   11s] <command-line>: note: this is the location of the previous definition
+    [   11s] cc1plus: all warnings being treated as errors
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git opae-libs/cmake/modules/OPAECompiler.cmake opae-libs/cmake/modules/OPAECompiler.cmake
+index 224f3026de9a..2e928bee82f5 100644
+--- opae-libs/cmake/modules/OPAECompiler.cmake
++++ opae-libs/cmake/modules/OPAECompiler.cmake
+@@ -99,7 +99,7 @@ set(CMAKE_CXX_FLAGS_MINSIZEREL     "-Os -Wall -Wextra -Werror -pthread")
+ if(CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+     # C options
+     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wformat -Wformat-security")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC -D_FORTIFY_SOURCE=2")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+     if(GCC_VERSION VERSION_GREATER 4.9 OR GCC_VERSION VERSION_EQUAL 4.9)
+         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fstack-protector-strong")
+         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -z noexecstack -z relro -z now")
+@@ -109,7 +109,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebI
+ 
+     # C++ options
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wformat -Wformat-security")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -D_FORTIFY_SOURCE=2")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+     if(GCC_VERSION VERSION_GREATER 4.9 OR GCC_VERSION VERSION_EQUAL 4.9)
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fstack-protector-strong")
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -z noexecstack -z relro -z now")

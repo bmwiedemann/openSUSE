@@ -1,0 +1,14 @@
+<package name="mpiP" project="openSUSE:Factory">
+  <title>mpiP: a lightweight profiling library for MPI applications.</title>
+  <description>
+    mpiP is a lightweight profiling library for MPI applications. Because
+    it only collects statistical information about MPI functions, mpiP
+    generates considerably less overhead and much less data than tracing
+    tools. All the information captured by mpiP is task-local. It only
+    uses communication during report generation, typically at the end of
+    the experiment, to merge results from all of the tasks into one output
+    file.
+  </description>
+  <devel project="science:HPC" package="mpiP"/>
+  <url>http://mpip.sourceforge.net/</url>
+</package>

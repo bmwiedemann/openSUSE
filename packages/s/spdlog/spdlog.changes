@@ -1,0 +1,948 @@
+-------------------------------------------------------------------
+Sat Dec 30 16:58:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update symbol versioning pattern to actually match symbols
+
+-------------------------------------------------------------------
+Thu Dec 14 09:47:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add some symbol versions to ease rebuilds and transition on
+  user systems when fmt changes [boo#1217820]
+
+-------------------------------------------------------------------
+Thu Nov 16 13:08:02 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- download 2823.patch from upstream again to fix metadata
+  mismatch
+
+-------------------------------------------------------------------
+Wed Aug  2 12:48:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 2827.patch: Added missing square bracket to fix the
+  level_to_string_view.
+
+-------------------------------------------------------------------
+Sun Jul  9 12:02:44 UTC 2023 - Bernd Ritter <comrad@posteo.de>
+
+- Update to version 1.12.0
+  * Support for external fmtlib versions 10.x (#2694). Thanks @H1X4Dev and @mguludag.
+  * Better support for std::format (#2359, #2544, #2680, #2688). Thanks @eli-b , @sylveon and @bachittle.
+  * Added new qt color sink. Logs to QTextEdit widget with some nice colors.
+  * Update #include to a deprecated fmt header (#2545) .Thanks @kromain.
+  * Fixes and impovements to dup_filter_sink (#2549, #2563). Thanks @zydxhs and @zhuyadong.
+  * Fix unnecessary empty backtrace begin/end logs (#2568). Thanks @koldi.
+  * Fixed variable name in msvc_sink (#2573). Thanks @naddu77.
+  * Add system includes (SPDLOG_SYSTEM_INCLUDES) cmake option (#2575). Thanks @dpayne.
+  * Improve dequeue of the async queue (@2587, #2588 ). Thanks @alokpr.
+  * Fix tcp_client sink for FreeBSD (#2590). Thanks @segoon.
+  * Support linux/musl libc (#2589). Thanks @kraj.
+  * Support newlib C library configurations without tm_gmtoff field (#2600). Thanks @igrr.
+  * Fix type of event id in win_eventlog_sink (#2598). Thanks @Tagl.
+  * Fix -Wshadow warnings in spdlog::sinks::dist_sink (#2599). Thanks @robinlinden.
+  * Spelling corrections (#2606, #2732). Thanks @albert-github and @zencatalyst.
+  * Add sync() function to file_helper (#2343). Thanks @espkk.
+  * Add a trivial callback_sink (#2610). Thanks @maghorbani.
+  * Fix unexpected delimiter at start of line in to_hex formatter (#2627). Thanks @starsunyzl.
+  * Fix MinGW build issue on example (#2642). Thanks @zEuS0390.
+  * Add optional TID definition to the systemd sink (#2619). Thanks @chardin-cpi.
+  * Added apply_logger_env_levels() (#2648, #2649). Thanks @afshinpir.
+  * Support utf8 in msvc_sink (#2651). Thanks @Demonese.
+  * Better handling of utf to wchar (66407f5).
+  * Use catch v3 for tests (#2656, (#2659). Thanks @xvitaly and @seker.
+  * New kafka sink (#2655). Thanks @vbirds and @SpriteOvO.
+  * Fix os namespace in systemd_sink.h (#2668). Thanks @MyNameIsLame.
+  * Enable systemd_sink tests in linux pipeline (#2669). Thanks @MyNameIsLame.
+  * Fix stdout_sink_base::log's fflush() behaviour inconsistency (#2646). Thanks @25077667.
+  * Fix for missing pthread_threadid_np in macOS < 10.6 and PowerPC (#2715). Thanks @barracuda156.
+  * Fix ringbuffer_sink moving warning (#2722). Thanks @jamesruan.
+  * Update INSTALL doc (#2775). Thanks @7starsea.
+  * Fix warning in qt_sinks.h (#2781). Thanks @dayfixer.
+  * Remove IPv4 limitation from tcp_client (#2790). Thanks @Simon-Janos.
+  * Fix android sink when message is not loggable (#2801). Thanks @lucasrangit.
+- Removed three patches after update update to 1.12.0 includes these
+  * patch 0ca574ae168820da0268b3ec7607ca7b33024d05.patch removed
+  * patch v1.11.0_removed_brackets_for_fmt_10.diff removed
+  * patch tt4g-fix-2735.diff removed
+
+
+
+-------------------------------------------------------------------
+Sat May 20 12:51:48 UTC 2023 - Bernd Ritter <comrad@posteo.de>
+
+- Applied three patches from upstream after update to dependency fmt 1.10 broke test in daily_file_sink #2735
+  * patch 0ca574ae168820da0268b3ec7607ca7b33024d05.patch add support for a changed symbol in fmt 1.10.0
+  * patch v1.11.0_removed_brackets_for_fmt_10.diff removes duplicate brackets from unit tests
+  * patch tt4g-fix-2735.diff solves the failing tests due to a now redundant workaround
+
+-------------------------------------------------------------------
+Wed Nov  2 22:51:57 UTC 2022 - Bernd Ritter <comrad@posteo.de>
+
+- Update to version 1.11.0
+  * Update to fmt lib version 9.1.0 #2346, #2485, #2512, #2517 . Thanks @sylveon, @YunchengLiu, @tt4g, @tycho and @vitaut
+  * Fix template instantiation warning #2336 . Thanks @aengusjiang
+  * Event handlers improvements #2342, #2375 . Thanks @espkk and @kslattery
+  * Allow modifying the used Android buffer ID #2358. Thanks @tiolan
+  * Fix clone in async test #2364. Thanks @stkw0
+  * Custom formatter optimization #2365. Thanks @conr2d
+  * Fix C++14 builds for gcc 4.x (#2333) #2372 . Thanks @kslattery
+  * Add minor version to CMake's SOVERSION #2376
+  * Allow compilation with FMT_ENFORCE_COMPILE_STRING #2381. Thanks @john4744
+  * Fix pkg-config generation #2383. Thanks @alexshpilkin
+  * Remove unused code from null_mutex #2385. Thanks @panzhongxian
+  * Fix redundant std::move #2396. Thanks @polesapart
+  * Remove the empty file if in first period in hourly logger #2386. Thanks @panzhongxian
+  * Add reset_overrun_counter() function to the async logging #2399 Thanks @bergen4
+  * Set C++20 in CMake when SPDLOG_USE_STD_FORMAT option is turned on #2402. Thanks @cookcocck
+  * Fix mingw test #2415. Thanks @neheb
+  * Support for any std::chrono::duration type in flush_every(..) #2439. Thanks @LucasChollet
+  * Fix implicit casting of level_enum #2443. Thanks @ibmibmibm
+  * Comment fix #2445. Thanks @Hish15
+  * Fix gcc 4.x build #2449. Thanks @Simon-Janos
+  * Add openSUSE installation instructions #2468. Thanks @LorenDB
+  * Fixed missing include file in stopwatch.h #2434. Thanks @fabianbuettner
+  * Support for omitting source info by defining SPDLOG_NO_SOURCE_LOC #2476. Thanks @nigels-com
+  * Added SPDLOG_BUILD_PIC build option to CMake #2475. Thanks @nigels-com
+  * Fix include windows.h #2495. Thanks @panicgh
+  * Workaround gcc 12 warnings #2498, #2499 . Thanks @offa
+  * Migrate to Github Actions CI #2500. Thanks @offa
+  * Replace iterator difference with std::distance #2509 Thanks @kin4stat
+  * Export targets file to build directory at configure time #2514, #2515. Thanks @puneetmatharu
+  * MongoDB sink improvements #2519. Thanks @sandorzm
+  * Fix shadow warning in dist_sink #2431. Thanks @MohammadKanan for reporting.
+  * Fixed msvc warning C4800 in win_eventlog_sink
+  * Check IsDebuggerPresent() in msvc_sink before doing actual work #2408. To use old behavior pass false to the msvc_sink constructor. Thanks @DominikGrabiec and @sylveon
+- Removed e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch as [boo#1199306] is now integrated.
+  * Updated baselibs.conf accordingly.
+
+-------------------------------------------------------------------
+Mon Oct 24 22:04:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust baselibs.conf for #1199306 patch.
+- Update descriptions.
+
+-------------------------------------------------------------------
+Thu Oct 20 20:00:13 UTC 2022 - Bernd Ritter <comrad@posteo.de>
+
+- Add e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch
+  [boo#1199306]; changes SONAME to be more distinct
+
+-------------------------------------------------------------------
+Wed Oct 19 21:16:08 UTC 2022 - Bernd Ritter <comrad@posteo.de>
+
+- Limit build choices on catch2-dependency to catch2 2.13.4 and
+  lower than (new) 3
+
+-------------------------------------------------------------------
+Mon Apr 18 19:47:37 UTC 2022 - Bernd Ritter <comrad@posteo.de>
+
+- Update to version 1.10.0
+  * Bump fmt to version 8.1.1.
+  * Added file event handlers.
+  * Fixed rotating file sink: when disk is full log rotation resulted zero size log files.
+  * Added new udp_sink.
+  * Improved file name for hourly file sink.
+  * Added code location information for error handler.
+  * Fixed qt_sinks ctor.
+  * List Debian instructions in the README.
+  * Updated to latest Travis CI Build Status.
+  * Fixed unhandled errors in udp sink.
+  * CMake improvement regarding cmake_minimum_required and policy.
+  * Fixed mongo_sink compile in older gcc versions.
+  * Remove mutable keyword from mutex_ member in of sinks.
+  * Fix typos.
+  * Fixed udp sink build on FreeBSD
+  * Avoid c-style casting in stdout sinks.
+  * Fixed tweakme.h compile error under msvcs when SPDLOG_FUNCTION is defined #2182. Thanks @Light3039 .
+  * Fixed compiling errors on AIX #2181. Thanks @lisr .
+  * Fixed runtime when build with -fsanitize=cfi #1972. Thanks @bansan85 .
+  * Remove extraneous semicolon #2190. Thanks @sylveon.
+  * Added example how to replace default logger.
+  * Fixed usage of ranges and to_hex in the same compile unit.
+  * Reduce warnings with pedantic compiler -Wuseless-cast.
+  * Support using std::span in to_hex.
+  * Reset current size if rotated files on open #2234.
+  * Allow forward-declaration of level_enum.
+  * Call localtime() only if pattern_formatter really needs it.
+  * Removed unneeded spaces from code.
+  * Added a few missing files/directories to the gitignore.
+  * Fixed issue #2201 (Pattern width is not applied for missing source information).
+  * Limit max number of rotating files to 200000.
+  * pattern_formatter: fix reorder-ctor warning.
+  * Fixed spdlogConfig.cmake when built with SPDLOG_FMT_EXTERNAL_HO.
+  * Fixed fopen_s(..) error handling when PREVENT_CHILD_FD is defined.
+  * Fixed compiler error when building on Windows with #define UNICODE.
+  * Added option to enable formatting of systemd sink.
+  * Added optional "ident" argument to systemd sink constructor.
+  * Removed spdlog-1.9.1-use_system_catch2.patch, as it is no longer necessary (after consultation with Luigi Baldoni on this issue).
+
+-------------------------------------------------------------------
+Tue Nov  2 16:05:55 UTC 2021 - Imo Hester <vortex@z-ray.de>
+
+- Added baselibs.conf for bi-arch support
+
+-------------------------------------------------------------------
+Fri Aug 13 06:18:26 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.9.2
+  * Fixed clang compiler errors when using spdlog in c++20.
+  * Fixed the Qt sinks to accurately trim the newline chars.
+  * Improved and simplified Qt sinks implementation.
+  * Fixed macro SPDLOG_LEVEL_NAME_xxx to always translate to the
+    spdlog namespace.
+  * Fixed typo in readme.
+  * Fixed the MongoDB sink compilation in c++11.
+  * Fixed double include of same file in thread_pool.h .
+  * Ensure that the CMake exported package is relocatable.
+  * Remove std::distance usage for possible performance gain.
+  * Support of inclusion of bin_to_hex.h in any order with
+    spdlog.h.
+  * Fixed install instructions for "header only" dir.
+
+-------------------------------------------------------------------
+Fri Aug  6 09:42:32 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add spdlog-1.9.1-use_system_catch2.patch (fixes boo#1189103)
+
+-------------------------------------------------------------------
+Tue Jul 27 13:31:38 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.9.1
+  * Support for {fmt}'s compile time validation of format strings.
+  * In C++14/17 - format string can be validated at compile time
+    using FMT_STRING.
+  * Fixed compilation error in Clang 13 with C++20.
+
+-------------------------------------------------------------------
+Wed Jul 21 06:42:27 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.9.0
+  What's new:
+  * Support for {fmt} lib version 8.x.
+  * New MongoDB sink.
+  * New QTextEdit and QPlainTextEdit sinks.
+  Fixes and Improvements:
+  * Made mutex member variable mutable.
+  * Changed c-style casts to reinterpret casts in tcp_client.
+  * Rethrnow non std exceptions.
+  * Small code improvement (std::find).
+  * Added support for CMake policy CMP0077.
+  * Allow compilation with nvc++ (and possibly PGI).
+  * Fixed C++20 build resulting in deprecated implicit copy
+    assignment operator warning.
+  * Use std::function for the global error handler.
+  * Fixed dup sink compile warnings in older compilers with
+    back_inserter.
+  * Added a color-terminal type to the color terminals list - to
+    show colors in in RISC-V64 machines.
+- Drop spdlog-1.8.5-fmt8.patch and spdlog-1.8.5-fmt8_tests.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
+Thu Jun 24 16:26:12 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add spdlog-1.8.5-fmt8.patch and spdlog-1.8.5-fmt8_tests.patch
+  to fix compatibility with fmt 8
+
+-------------------------------------------------------------------
+Thu Mar 25 19:43:50 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.8.5
+  * Fix compiling with C++17: remove constexpr on
+    level_string_views.
+
+-------------------------------------------------------------------
+Thu Mar 25 18:58:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.8.4
+  * Remove version requirement from find_package when searching
+    external fmt.
+
+-------------------------------------------------------------------
+Wed Mar 24 21:58:14 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.8.3
+  * New hourly file sink . Creates new file every hour. Can be
+    limited to retain only the last N files.
+  * New daily sink filename custom formatting. Users now can
+    pass custom strftime pattern to the log filename. For
+     example: daily_logger_format_mt.
+  * Add SPDLOG_DISABLE_DEFAULT_LOGGER as a CMake option.
+  * Improve color terminal detection.
+  * Ensure SPDLOG_FMT_EXTERNAL is honored in the bench program.
+  * Skip CMake module mode when finding fmt.
+  * Open files with "ab" mode even if truncating to better
+    support logrotate.
+  * Fix compiling error and typo in hourly file sink.
+  * Add constexpr to SPDLOG_LEVEL_NAMES declaration.
+  * Initializer list style consistency.
+  * Fix call to non-constexpr function.
+  * Better numeric_limits<>::max/min fix when
+    SPDLOG_WCHAR_TO_UTF8_SUPPORT is defined.
+  * Simplified wincolor sink code and intensify the red and
+    yellow colors.
+  * Set default value to registry::err_handler_ to resolve
+    Klocwork warning.
+  * Formatter bench: Fix compilation by avoiding function name
+    decay mechanics.
+  * Fix warning whe the compilation flag -Wswitch-default is
+    present.
+
+-------------------------------------------------------------------
+Fri Dec 11 15:16:25 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.8.2
+  * Perfect forwarding fmt arguments.
+  * Fix dup_filter_sink to log current log call's level, instead
+    of the filtered log call's level.
+  * Ability to get size of messages queue of async thread pool.
+  * Add missing include.
+  * Updated bin_to_hex example in the readme.
+  * Fix async periodic flush test.
+
+-------------------------------------------------------------------
+Thu Oct  1 10:11:26 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.8.1
+  * Fixed load_env_levels() and load_argv_levels()
+  * Fixed stopwatch's clock to use chrono::steady_clock
+  * Added support for Rcpp (R cpp compiler)
+
+-------------------------------------------------------------------
+Tue Sep  1 12:36:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.8.0
+  * Bumped bundled fmt version to 7.0.3.
+  * New stopwatch utility for quick & easy logging of elapsed
+    time.
+  * Raised CMake requirement to 3.10 and cleanup CMakeLists.txt.
+  * Added get_level() and should_log() functions to the
+    spdlog:: namespace.
+  * Fixed cfg::load_env_levels() function declaration.
+  * Fixed broken aligned function pattern flag.
+
+-------------------------------------------------------------------
+Thu Jul  9 19:59:07 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.7.0
+  * Support fmt version 7.x.
+  * Fixed to_hex segmentation fault
+  * Support for FMT_STRING compile time checking.
+  * Clean CMakeLists.txt.
+- Drop spdlog-1.6.1-fmt7_build.patch and
+  spdlog-1.6.1-fmt7_tests.patch (merged upstream)
+
+-------------------------------------------------------------------
+Wed Jul  8 11:05:02 UTC 2020 - aloisio@gmx.com
+
+- Add spdlog-1.6.1-fmt7_build.patch and
+  spdlog-1.6.1-fmt7_tests.patch to fix build with fmt 7.x
+
+-------------------------------------------------------------------
+Wed May 27 07:38:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.6.1
+  * Fixed deadlock in daily_file_sink that happened while
+    cleaning older files.
+  * Fixed ringbuffer_sink::last_raw() and
+    ringbuffer_sink::last_formatted() that didn't return latest
+    elements.
+
+-------------------------------------------------------------------
+Fri May 15 14:03:27 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.6.0
+  What's new:
+  * Load log levels from environment variable SPDLOG_LEVEL
+  * New windows eventlog sink.
+  * New tcp sink that sends log messages in tcp to a remote
+    server.
+  * Extend spdlog with your own flags in the log pattern. See
+    wiki for details.
+  * Bump the bundled fmt version to 6.2.0 .
+  Fixes and improvements:
+  * Prevent race condition when SPDLOG_PREVENT_CHILD_FD is
+    defined.
+  * Fix race condition in the filename() function in the file
+    sinks.
+  * Fix ansicolor_sink::set_color(..) - can cause memory
+    violation if user provides a custom color code that points to
+    stack memory.
+  * Optimize cases when string_view is passed to the logger to
+    avoid unnecessary fmt::format.
+  * Support for max files in daily logger.
+  * Fix deprecated warning with C++14 and external fmt lib.
+  * Optimize colos sinks to use std::array instead of map to
+    find color codes.
+  * Fix potential buffer overflow in color_sinks when one of
+    them has a pattern without colors.
+  * Don't include windows.h in common.h.
+  * Resolve erroneous clang-tidy warning about using a moved
+    from pointer.
+  * Fixed numerous clang-tidy warnings.
+  * Added options to to_hex to output hex like hexdump.
+  * Removed the 'SPDLOG_NO_NAME` macro in tweakme.h and cmake.
+  * Added a forward declaration header spdlog\fwd.h .
+  * Moved throw to dedicated function to optimize compile-time
+    and runtime-performance.
+  * Fix a build issue when SPDLOG_PREVENT_CHILD_FD is defined.
+  * Fix issue with using external fmt.
+  * Minor performance optimizations in pattern formatter.
+  * Add log function to the logger API to allow logging with
+    custom timepoint.
+  * Removed meson support.
+  * Fix typos and tabs in the code.
+  * CMake: Fix GNUInstallDirs include location.
+  * CMake: workaround for Unknown extension ".c" for file issue.
+  * CMake: Disabled extra warnings generation by default. Use
+    SPDLOG_BUILD_WARNINGS=ON to enable again.
+  * CMake: Support for precompiled headers with
+    SPDLOG_ENABLE_PCH flag.
+  * CMake: Set minimum version of fmt to 5.3.0.
+  * CMake: Fix tabs, whitespaces and eol.
+  * Tests: removed duplicate entry for count_lines().
+  * Tests: don't run spdlog-utests and spdlog-utests-ho in
+    parallel.
+  * Tests: Enable running the tests against an installed copy of
+    spdlog.
+  * Tests: Support empty SPDLOG_EOL.
+
+-------------------------------------------------------------------
+Mon Jan 13 19:58:43 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.0
+  New features:
+  * Added ringbuffer sink. Thanks @eudoxos (#1307).
+  * Auto create the required logging directories if they not
+    exist (9b7812a).
+  * Update bundled fmt to version 6.1.2.
+  * Addded the ! modifier to truncate the result if the field
+    size exceeds the specified width (see wiki for details)
+  Fixes and improvements:
+  * Fix build failure on clang 7 with libc++. Thanks @jktjkt
+    (a03f9eb).
+  * Fix some spelling errors. Thanks @flopp .
+  * Fix - compilation when using external fmt library. Thanks
+    @dvhwgumby for reporting (#1273).
+  * Fix location of CMake config info. Thanks @dvhwgumby for
+    reporting (#1274)
+  * Fix missing include (9a68bd8).
+  * CMake code duplication improvement. Thanks @bencsikandrei
+    (#1283)
+  * CMake improvments in tests . Thanks @Andrei-Florin BENCSIK
+    (2cc620e)
+  * Remove unused variable. Thanks @masmullin2000 (#1285)
+  * Fix tests to Use _FILE_OFFSET_BITS=64 when building on Linux
+    32-bit systems. Thanks @yipdw (#1288).
+  * Improve systemd journald support. Thanks @jktjkt (#1292).
+  * Improve log macros. Thanks @pck (#1294).
+  * Removed lazy argument evaluation from macros (#163).
+  * Some micro optimizations (79468cf, 3ee4f28, bf40855).
+  * Correctly guard SetHandleInformation API call to better
+    support compiling for UWP. Thanks @sylveon (#1296).
+  * Exclude from compilation prevent_child_fd() if
+    SPDLOG_PREVENT_CHILD_FD not defined (57085c8)
+  * CMake - Added tweakme options to CMakeLists.txt (18edb8b).
+  * Removed SPDLOG_NO_DATETIME option.
+  * Fix meson tests build . Thanks vedranmiletic fore reporting
+    (#1295, c081919, 4a4f13b, 436ce16).
+  * Use #include" <spdlog/.*> instead of spdlog/.* across the
+    codebase. Thanks @RedDwarf69 (#1304).
+  * Fix struct tm doesn't have tm_gmtoff in ISO C. Thanks
+    @lancesun (ff3e6c7, #1306)
+  * Always cache gmt offset (de2c07a).
+  * Optimize backtracer operator= (255f7f2).
+  * Fix some clang-tidy warnings (93008b2, bff8572, 3999613).
+  * Fix compiler error in os-inl.h min/max on Windows (#1302).
+  * Remove redundant semicolon. Thanks @inhzus (#1311).
+  * Fix compiler warnings. Thanks @0x8000-0000 (#1331).
+  * Fix missing include header in
+    `spdlog/sinks/daily_file_sink.h. Thanks @afoolsbag for
+    reporting (#1332).
+  * Fix elapsed time larger than 6 digits ignores alignment
+    width. Thanks @ivan236634452 for reporting (#1327).
+  * Set version for shared library in meson build. Thanks
+    @lgbaldoni (#1337).
+  * Improved dist_sink ctor. Thanks @mmakhalaf for reporting
+    (#1298).
+  * Fix #1325. Added SPDLOG_FMT_EXTERNAL_HO option. Thanks
+    @steffenb7333 for reporting.
+  * Fix #1340 (missing include). Thanks @jeanga for reporting.
+  * Fix compile on Win10 with Cygwin. Thanks @frfrankkopp and
+    @tt4g (#1347).
+  * Fixed #1348. Thanks @ficzerepeti for reporting.
+  * CMakeLists.txt allow overriding the cpp standard to higher
+    than 11
+  * Fix a small problem in the basic example. Thanks @mike239x
+    (#1367).
+  * Fix invalid meson option. Thanks @segfault-magnet (#1370).
+  * meson: add fallback to fmt dependency #1378. Thanks @idanko
+  * Update docs: spdlog now available in conan center,
+    bincrafters repo is deprecated #1387. Thanks @gocarlos .
+
+- Dropped spdlog-fmt_610.patch (merged upstream) and
+  spdlog-external_fmt.patch (no longer necessary)
+
+-------------------------------------------------------------------
+Wed Dec  4 20:45:21 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added spdlog-fmt_610.patch to fix build with fmt 6.1.0
+
+-------------------------------------------------------------------
+Fri Nov 29 08:12:42 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.2
+  * Set additional CPACK variables for RPM generator (#1246).
+    Thanks @tcraigtyler.
+  * Fix compile when SPDLOG_WCHAR_FILENAMES is defined (#1249 ).
+  * Fix stdout color sink under Windows to better handle cases
+    when no console available (#1250).
+  * Fix windows compile error where std::max is overriden by a
+    macro. (#1251, #1252). Thanks @bsergean.
+  * CMakeLists.txt: Moved the installed lib to
+    CMAKE_INSTALL_LIBDIR (#1253). Thanks @DasRoteSkelett.
+  * CMakeLists.txt: Fixed pkg-config generation (cf2bf48,
+    fb70eca). Thanks @SammyEnigma.
+  version 1.4.1:
+  * Added pkgconfig file to CMake install - Thanks @orbea for
+    reporting and fixing (#1237 #1238).
+  * Fix regression in wchar support under windows. Thanks
+    @Bak-Jin-Hyeong for reporting and fixing (#1239 #1240).
+  * CMake: Do not install bundled fmt if SPDLOG_FMT_EXTERNAL is
+    defined. Thanks @orbea (#1241).
+  version 1.4.0:
+  Improvements
+  * spdlog can now be compiled as a static or shared lib (thanks
+    @DavidZemon for the help).
+  * Using the compiled lib improves greatly compile times when
+    using spdlog and is very recommended.
+      $ cd spdlog && mkdir build && cd build
+      # Build is static lib (pass -DCMAKE_BUILD_TYPE=shared for building as shared lib)
+      $ cmake .. && make -j
+  * Upgraded to the latest and greatest fmt library version
+    6.0.0. Thanks @tgpfeiffer (and to @vitaut for fmt!).
+  * Support for -fno-exceptions (disabled by default). Enabling
+    this will replace all throw() statements in spdlog with
+    std::abort(). To enable, pass -DSPDLOG_NO_EXCEPTIONS=ON to CMake
+    before building spdlog.
+  * support for building spdlog with meson. Thanks @mensinda
+  * Backtrace support - store debug/trace messages in a ring
+    buffer to display later on demand. Very useful (thanks
+    @MathijsV for the idea):
+      spdlog::enable_backtrace(32); // create ring buffer with capacity of 32  messages
+      // or my_logger->enable_backtrace(32)..
+      for(int i = 0; i < 100; i++)
+      {
+         spdlog::debug("Backtrace message {}", i); // not logged yet..
+      }
+      // e.g. if some error happened:
+      spdlog::dump_backtrace(); // log them now! show the last 32 messages
+      // or my_logger->dump_backtrace(32)..
+  * Systemd support. Thanks @WarShoe (#1027)
+  * Support for cleaning old files in daily_logger.
+  * Numerous CMake build improvements. Thanks @DavidZemon ,
+    @jktjkt , @ksergey , @mnemotic , @cneumann , @dpacbach ,
+    @FrancoisChabot , @myd7349 , @matt77hias
+  * Better support for various Unix BSDs (DragonFly, NetBSD,
+    FreeBSD, OpenBSD). Thanks @jbeich (#1234)
+  * Provide source location support for systemd sink. Thanks
+    @jbelloncastro (#1122)
+  * Added fmt::(w)string_view support. Thanks @matt77hias (#1139)
+  * Add option to force color output without TTY . Thanks @psalz
+    (#1175)
+  * Add more overloads to spdlog::log and spdlog::logger::log.
+    Thanks @sylveon (@1169)
+  * Add public API spdlog::initialize_logger for create loggers
+    manually. Thanks @tt4g (#1035)
+  * Expose should_do_colors_ in ansicolor_sink.h. Thanks Florian
+    Wörter (#1022)
+  * Add tweak support for user short level names. Thanks
+    @MFornander (#996)
+  * Add method to filesinks to return filename. Thanks
+    @markniebur (#978)
+  * rotating_sink: Add option to rotate on open. Thanks @pwm1234
+    (#958)
+  * Allow filename/line number at all levels. Add function name
+    %! support. Thanks @possiblyhuman (#956)
+  * New dups_filter sink -duplicate message removal sink. It
+    will skip a message if previous one is identical and less
+    than "max_skip_duration" old.
+  * New '%o', '%i', '%u', '%O' format flags - Display elapsed
+    time in mills/micros/nanos/seconds since previous message.
+  * Some minor pattern formatter performance improvements.
+  Fixes
+  * Fix Wundef in os-inl.h. Thanks @AMS21 (#1189)
+  * Fix use of old style cast in os-inl.h. Thanks @AMS21 (#1164)
+  * Prevent NEAR and FAR macro definitions from leaking on
+    Windows platforms. Thanks @PeterTh (#1142)
+  * Fix syslog output. Thanks @mattiasj-axis (#1140)
+  * Fix msg.time in daily_file_sink. Thanks @s-shin (#1129)
+  * Fix missing include for null_mutex in rotating_file_sink.h.
+    Thanks @casperevan (#1120)
+  * Fix warning: redundant move in return statement. Thanks
+    @MarkKoester (#1119)
+  * Fix use of incomplete type in stdout sinks. Thanks
+    @DanielChabrowski (#1118)
+  * Fix deprecation warnings in filename_to_str and improve
+    performance of wbuf_to_utf8buf. Thanks @sylveon (#1127)
+  * Update README.md. Thanks @martinkrammer (#1057)
+  * Remove extra semicolon. Thanks @Jerry-Ma (#1202)
+  * Fix unexpected log macro expansion. Thanks @db-panda (#1055)
+  * Namespace qualify stat functions. Thanks @p-po (#1045)
+  * Fix typo in Android logger. Thanks @romainthomas (#994)
+  * Remove unnecessary log function. Thanks @DanielChabrowski
+    (#988)
+  * Allow custom formatter in sink's ctor. Thanks
+    @DanielChabrowski (#986)
+  * Fix shadowed parameter. Thanks @ZGCDDoo (#984)
+  * Update log_msg.h. Thanks @scribam (#969)
+  * Fix #benchmark link error. Thanks @myd7349 (#962)
+  * Fix typo in file_helper.h. Thanks @brridder (#955)
+
+- Build as shared library and added pertinent subpackage
+
+- Add systemd as build requirement
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon May 27 06:11:03 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Added additional building options
+
+-------------------------------------------------------------------
+Tue Apr 16 13:33:41 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fixed build on targets where gcc8 is available
+
+-------------------------------------------------------------------
+Mon Feb 18 09:33:36 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.3.1
+  * Fix google benchmark link error when compiling the
+    bechmarks. Thanks @myd7349 (#961, f4c737e)
+  * Fix spdlog not printing message if SPDLOG_NO_THREAD_ID is
+    defined. Thanks @scribam (#970, f4c737e)
+  * Fix depending on the order of inclusion of spdlog.h. Thanks
+    @gocarlos (#959, 23fdc0e)
+  Version 1.3.0
+  Improvements:
+  * Upgraded to the latest and greatest fmt library version
+    5.3.0.
+  * New API for default logger spdlog::trace(..),
+    spdlog::debug(..), spdlog::info(..), etc.
+    For convenience, spdlog now creates a default global logger
+    (to stdout, colored and multithreaded).
+    It can be used easily by calling spdlog::info(..),
+    spdlog::debug(..), etc directly without any preparations.
+    Its instance can be replaced to any other logger
+    (shared_ptr):
+      spdlog::set_default_logger(some_other_logger);
+      spdlog::info("Use the new default logger");
+  * Alignment support in log patterns.
+    Each pattern flag can be aligned by prepending a width
+    number(upto 128).
+    Use-(left align) or = (center align) to control the align
+    side:
+      align            meaning               example result
+      %<width><flag>   Align to the right    %8l     "    info"
+      %-<width><flag>  Align to the left     %-8l    "info    "
+      %=<width><flag>  Align to the center   %=8l    "  info  "
+  * Support for logging source filename, line number, and
+    function name (thanks @possiblyhuman for contributing to this
+    effort)
+    flag  meaning                                  example
+    %@    Source file and line (use
+          SPDLOG_TRACE(..),SPDLOG_INFO(...) etc.)  my_file.cpp:123
+    %s    Source file (use SPDLOG_TRACE(..),
+          SPDLOG_INFO(...) etc.)                   my_file.cpp
+    %#    Source line (use SPDLOG_TRACE(..),
+          SPDLOG_INFO(...) etc.)                   123
+    %!    Source function (use SPDLOG_TRACE(..),
+          SPDLOG_INFO(...) etc. see tweakme for
+          pretty-print)                            my_func
+  * Support for compile time check of log levels using
+    #define SPDLOG_ACTIVE_LEVEL <level>.
+    Use LOG_TRACE(..), LOG_DEBUG(..), LOG_INFO(..), etc. to
+    enable.
+    Those macros check at compile time the log level and
+    translate to empty statement if the log level is not high
+    enough. Even if a log macro evaluate to a log call, the
+    macro will check at runtime the level before evaluating
+    its arguments.
+    So for example the following won't evaluate
+    some_costly_function() because the logger's level is error:
+      #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_DEBUG
+      #include "spdlog/spdlog.h"
+       ..
+       spdlog::set_level(error);
+       SPDLOG_DEBUG("Some costly arg: {}",
+        some_costly_function());
+  * CMake improvements. Thanks @dpacbach (85b4d7c, f5dc166 ).
+  * Numerous small performance optimizations.
+  * Global option that disables global registration of loggers
+    set_automatic_registration(bool). Thanks @pabloariasal
+    (#892).
+  * Optimize logging of C strings by using string_view to avoid
+    unnecessary copy. Thanks @peergynt (cb71fea).
+  * Use google benchmark to test latencies.
+  Fixes:
+  * logger::error_handler() should be const (#881, thanks
+    @shoreadmin for reporting)
+  * Cleanup header file: remove log_msg.h include from
+    fmt_helper.h. Thanks @peergynt (1b391cc)
+  * Fix log_msg constructor doesn't initialize all fields (#888.
+    Thanks @curiouserrandy for reporting).
+  * Change log_msg&& to log_msg& params. Thanks @rwen2012
+    (794a636)
+  * Fix typo in Android example. Thanks @ZaMaZaN4iK (f5a2725)
+  * Fix Compiling error VS2017 #902 (Thanks @JaNurz for
+    reporting).
+  * Fix thread id is prefixed with zeros #908 (Thanks
+    @klrakiranpradeep for reporting).
+  * Fix and optimize usage of fmt::internal::count_digits(..)
+    for better support 32/64 bits. Thanks @DanielChabrowski
+    (c7f42d1, f1ab6fe).
+  * Better handling of rotation errors (b64e446).
+  * Do not attempt to default operator= when it is implicitly
+    deleted. Thanks @dpacbach (63a475d).
+  * Make an implicit cast from int --> uint32_t explicit. Thanks
+    @dpacbach (a6152eb).
+  * Enable testing in the Travis config file. Thanks @dpacbach
+    (f5dc166).
+  * Fix the text alignment in the example. Thanks @bzindovic
+    (d6086da4856df510657ffe4ef6b894e902b4b83).
+  * Fix typos. Thanks @peergynt (ce8cf1e).
+  * Fix handling of external fmt lib in cmake. Thanks @cneumann
+    (084bc72).
+  * Fix typo in file_helper.h. Thanks @brridder (fb702f9).
+
+- Use system fmt library
+
+-------------------------------------------------------------------
+Mon Dec  3 12:03:20 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Update to version 1.2.1:
+  * Fix a compilation error of dist_sink.h
+
+-------------------------------------------------------------------
+Sat Nov 17 10:27:21 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.1
+  * This fixes a compilation error of dist_sink.h (#864) .
+    Thanks @DimRochette !
+  Version 1.2.0
+  Improvements:
+  * Upgraded to latest fmt version 5.2.1.
+  * Binary data logging using spdlog::to_hex(binary_data). Many
+    types of std::container<char> can be logged in hex. See usage
+    examples.
+  * Added logger->clone() to ease the creation of new loggers
+    from an existing one.
+  * Numerous micro optimizations across the lib.
+  * Added set_sinks method to dist_sink for atomic updating set
+    of sinks in dist_sink. Thanks @jwnimmer-tri .
+  * Improved CmakeLists.txt to better handle third-party usage.
+    Thanks @taketwo .
+  Fixes:
+  * Fixed wchar logging (supported only in windows. #851 , #764).
+  * Fixed registry test. Thanks @DanielChabrowski .
+  * Removed invalid files from tests.sln. Thanks @yhchen .
+  * Some fixes to console_globals.h includes. Thanks
+    @DanielChabrowski
+  * Don't deny access to log files from other processes under
+    windows. Thanks @eruiz.
+  * Pessimizing move remove. Thanks @maciekgajewski
+  * ansicolor_sink.h - add missing sink include. Thanks
+    @AlexanderDalshov .
+  * Improved rotating sink error handling.
+  * Fixed Readme. Thanks @blackball .
+  * Fixed some clang tidy warnings.
+
+-------------------------------------------------------------------
+Thu Aug 16 11:22:45 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.1.0:
+  * Bug fixes:
+    + Fixed race condition in async-factory.
+    + Fixed bug in spdlog_ex implementation.
+    + Fixed race condition in the unit tests.
+  * Improvements:
+    + Some micro optimizations.
+    + Improve and fix CMake issues.
+    + Added overrun_counter() to the async thread pool queue
+    + Fixed some clang tidy warnings.
+- Cleanup spec file from clutter
+
+-------------------------------------------------------------------
+Mon Aug 13 08:32:18 UTC 2018 - windowskaput@gmail.com
+
+- Update to version 1.0.0
+- Highlights
+  * Include what you need: Reduce compilation times by including
+    only the minimum required. Users can now to include only
+    the actual sinks/features they need from spdlog/sinks folder.
+  * Upgrade to fmt lib version 5.1
+  * Support for custom formatting per sink - each sink can have
+    it's own formatting and level using sink->set_pattern(..) or
+    sink->set_formatter(..).
+  * async logging - thread pool - async loggers now share a global
+    thread pool by default.
+  * periodic flusher: spdlog::flush_every(seconds) to periodically
+    flush all registered loggers.
+  * Improved performance - by caching some recently used values in
+    the pattern formatter.
+  * Ability to add sinks to a logger after its creation
+    (but it is not thread safe to do so - so use with caution).
+
+- Breaking changes
+  * Include what you need. For example to use basic_logger add
+    #include "spdlog/sinks/basic_file_sink.h"
+  * To use async loggers - include "spdlog/async.h"
+  * Replaced set_async_mode(..) with factory template.
+  * Removed printf support.
+  * Removed warmup/teardown functions from async.
+  * Custom sinks inheriting from sinks::base_sink need to format
+    (if needed) the message before sending to their target.
+  * Added clone() virtual function to the formatter interface.
+  * Removed support for #define SPDLOG_NO_REGISTRY_MUTEX
+
+-------------------------------------------------------------------
+Tue Apr 17 12:41:25 UTC 2018 - jengelh@inai.de
+
+- Remove excess hyping from description.
+
+-------------------------------------------------------------------
+Mon Apr 16 08:54:14 UTC 2018 - adam.majer@suse.de
+
+- run unit tests in the %check target
+- install LICENSE as a %license, not a %doc
+
+-------------------------------------------------------------------
+Sat Apr 14 11:36:10 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.16.3
+  * Fix sleep issue (#609) under MSVC that happens when changing
+    the clock backwards (pull #610) - Thanks @joaomoreno
+  * Ensure that marcos always expand to expressions (pull #604) -
+    Thanks @sam-lunt
+  * Add global flush_on function (pull #605) - Thanks @sam-lunt
+  * Fix conversion warning (#595, pull #596) - Thanks @Broekman
+  version 0.16.2
+  * Fixed a bug in extracting log files extension (#589) - Thanks
+    @fcharlie
+  version 0.16.1
+  * Fixed the version strings to 0.16.1 in spdlog.h and
+    CMakeLists.txt
+  * Fixed compiler warning in tests - Thanks @horar
+  version 0.16.0
+  * Rotating and daily log files keep their extension (e.g
+    "mylog.3.txt" and not "mylog.txt.3")
+  * Optional support for printf formatting (enabled using #define
+    SPDLOG_FMT_PRINTF) - Thanks @fogo
+  * Async log: increased sleep to to 500ms the worker in loop
+    when the queue is empty
+  * Fixed thread safety bug in flush() - added lock on flush in
+    base_sink
+  * Breaking change: Removed all *_if functions (trace_if,
+    debug_if, info_if,..) because they are redundant and
+    confusing way to preform simple if
+  * Swallow only std::exceptions. report about, and re-throw
+    other, unexpected exception types.
+  * Support msvc_sink on all windows compiler (windebug-sink) -
+    Thanks @jpcima
+  * Added facilty param for syslog - Thanks @adubovikov
+  * correct include path for sink/syslog_sink.h - Thanks @jpcima
+  * Fix include paths - Thanks @daylanKifky
+  * Some fixes in the async queue size estimation - Thanks
+    @Subenle
+  * Fixed cygwin support
+  * Adding additional build environments for AppVeyor- Thanks
+    @rkollataj
+  * Fix warnings which are caused by C style cast - Thanks
+    @knowledge4igor
+  * Make short month names match in length - Thanks @berkus
+  * Fix typos in code and comments - Thanks @berkus
+  * Fixed missing i_formatter implementation
+  * Fix SPDLOG_WCHAR_TO_UTF8_SUPPORT wchar_t logging - Thanks
+    @hestad
+  * Added formatter for unix epoch time in seconds (%E format
+    flag) - Thanks @jasonbeach
+  * Compiler-dependent line numbering in SPDLOG_TRACE - Thanks
+    @elelel
+  * Improved cmake and CMakeLists.txt - Thanks @mrpelotazo and
+    @Lectem
+  version 0.14.0
+  * Upgraded the bundled fmt lib to version 4.0.0
+  * Fixed crash in async logger in older gcc version 4.8.5
+    (268222e).
+  * Fixed various sanitizer warnings.
+  * Improved Android support (#422, #427).
+  * Add an optional final qualifier to types (#425) for potential
+    compiler optimisations.
+  * Support for Alpine Linux (#435, #436).
+  * Add wide string to utf8 string support (#442).
+  * Don't use color escape codes if terminal doesn't support them
+    bd25f59 .
+  * Optional message counter feature (#445).
+  * Fix OSX builds of details/os.h (#447).
+  * Fix vs 2015 build error (#449).
+  * UTC support (#451).
+  * MinGw build fix (#456).
+  * Add create_async factory functions for async loggers (#459).
+  * Conditional logging implementation (#460).
+  * More meaningful thread id for OSX (#463).
+  * Add set_color to ansicolor_sink (#465).
+  * Ability to override log level names in the log messages
+    (#473).
+  * Added TRACE_IF and DEBUG_IF macro definitions when TRACE_ON
+    and DEBUG.
+  * Fixed background color bug in windows terminal (#484).
+  * Gentoo support (#502).
+  * Fixed warning for missing enumeration value in tests (#488,
+    #490).
+  * Fixed numerous typos in code and comments.
+  version 0.13.0
+  * Bumped the bundled fmt library to version 3.0.1.
+  * Fixed issue #333 (unexpected appending of "txt" at the end of
+    a log filename).
+  * Fixed issue #396 (custom error handler not called in async
+    loggers).
+  * Fixed issue #403 (ambiguous warnings on some compilers).
+  * Use double-braces in std::array initialisation.
+  version 0.12.0
+  * Added %P (process Id) to format string
+  * Exposed logger sinks via logger->sinks().
+  * Windows native console color support.
+  * Fixed vc warning on x64 build
+  * Better support for for older win32 targets (WinXP/Win2003)
+  * Fixed issue #300
+  * Fix issue #315
+  * Fix issue #317 (Build error on raspberry pi)
+  * Better cmake support : list spdlog's content in IDEs
+  * Fix compilation error C2664 on VS2013
+  * Store thread_id in tls for better performance
+  * Use the feature checking macros to detect thread_local
+    support in clang.
+  * Added option to prevent child processes from inheriting log
+    file desciptors
+  * Added SPDLOG_VERSION` macro to spdlog.h
+  * Replaced static global std::string arrays by Meyer singletons
+    for better thread safety
+  version 0.11.0
+  * sink log levels
+  * various bug fixes
+  version 0.10.0
+  * No exceptions will be thrown while logging (with optional
+    error handlers).
+  * FreeBSD support.
+  * Solaris support.
+  * syslog disabled by default for faster compilation.
+  * Bug fixes and improvements.
+  version 0.9.0
+  * cosmetic fix in utc_minutes_offset when throwing
+
+-------------------------------------------------------------------
+Mon Feb  1 08:02:12 UTC 2016 - meissner@suse.com
+
+- a c++ header only logging library
+

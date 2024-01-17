@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9704b30d5979ae1fb5f48d8107cf7895</srcmd5>
+    <version>2023.3.6</version>
+    <time>1680125215</time>
+    <user>dimstar_suse</user>
+    <comment>new package, required by jsonschema 0.18.x</comment>
+    <requestid>1074962</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01c41f5b9c51140cf2704ba847ae9816</srcmd5>
+    <version>2023.3.6</version>
+    <time>1683916715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086701</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae5958188ebcf2a004877bb1bc4d9482</srcmd5>
+    <version>2023.5.1</version>
+    <time>1684416004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087787</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bffd2cac969220058c78f4674ab23da9</srcmd5>
+    <version>2023.5.2</version>
+    <time>1685562921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090045</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5943d4d02a4c603eb106159cfc245991</srcmd5>
+    <version>2023.6.1</version>
+    <time>1687796193</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095302 from ojkastl_buildservice
+
+update to 2023.6.1</comment>
+    <requestid>1095371</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6fc655022f2ae4fbc49d00d0d05682fe</srcmd5>
+    <version>2023.7.1</version>
+    <time>1690215144</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099484</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c5368c1f990659bcce699770161ec1ce</srcmd5>
+    <version>2023.11.1</version>
+    <time>1700250531</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127262</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e28fb9539abf7439eb85be8a47bc4e61</srcmd5>
+    <version>2023.11.2</version>
+    <time>1701462306</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130174</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>25aff5358de40980d20f9d57b5222ca4</srcmd5>
+    <version>2023.12.1</version>
+    <time>1703800487</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.12.1:
+  * Ignore dotfiles when collectimg schemas</comment>
+    <requestid>1135282</requestid>
+  </revision>
+</revisionlist>

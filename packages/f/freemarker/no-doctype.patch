@@ -1,0 +1,57 @@
+--- freemarker-2.3.31/ivy.xml	2023-08-22 00:07:13.406451581 +0200
++++ freemarker-2.3.31/ivy.xml	2023-08-22 00:08:27.933659685 +0200
+@@ -20,11 +20,6 @@
+ <!--
+   AFTER CHANGING THIS FILE don't forget to issue: ant update-deps
+ -->
+-<!DOCTYPE ivy-module [
+-    <!ENTITY jetty.version "7.6.21.v20160908">
+-    <!ENTITY slf4j.version "1.6.1">
+-    <!ENTITY spring.version "2.5.6.SEC03">
+-]>
+ <ivy-module version="2.0">
+   <info organisation="org.freemarker" module="freemarker">
+     <license name="Apache License, Version 2.0" url="https://freemarker.apache.org/docs/app_license.html" />
+@@ -112,9 +107,9 @@
+     <dependency org="org.python" name="jython" rev="2.5.0" conf="build.jython2.5->default" />
+     
+     <dependency org="avalon-logkit" name="avalon-logkit" rev="2.0" conf="build.base->default" />
+-    <dependency org="org.slf4j" name="slf4j-api" rev="&slf4j.version;" conf="build.base->default" />
+-    <dependency org="org.slf4j" name="log4j-over-slf4j" rev="&slf4j.version;" conf="build.base->default" />
+-    <dependency org="org.slf4j" name="jcl-over-slf4j" rev="&slf4j.version;" conf="build.base->default" />
++    <dependency org="org.slf4j" name="slf4j-api" rev="1.6.1" conf="build.base->default" />
++    <dependency org="org.slf4j" name="log4j-over-slf4j" rev="1.6.1" conf="build.base->default" />
++    <dependency org="org.slf4j" name="jcl-over-slf4j" rev="1.6.1" conf="build.base->default" />
+     <dependency org="commons-logging" name="commons-logging" rev="1.1.1" conf="build.base->default" />
+     
+     <!-- Not for build.base, as @SuppressFBWarnings causes compilation warnings in dependent Gradle projects -->
+@@ -134,10 +129,10 @@
+     <dependency org="commons-io" name="commons-io" rev="2.7" conf="test->default" />
+     <dependency org="com.google.guava" name="guava" rev="29.0-jre" conf="test->default" />
+ 
+-    <dependency org="org.eclipse.jetty" name="jetty-server" rev="&jetty.version;" conf="test->default" />
+-    <dependency org="org.eclipse.jetty" name="jetty-webapp" rev="&jetty.version;" conf="test->default" />
+-    <dependency org="org.eclipse.jetty" name="jetty-jsp" rev="&jetty.version;" conf="test->default" />
+-    <dependency org="org.eclipse.jetty" name="jetty-util" rev="&jetty.version;" conf="test->default" />
++    <dependency org="org.eclipse.jetty" name="jetty-server" rev="7.6.21.v20160908" conf="test->default" />
++    <dependency org="org.eclipse.jetty" name="jetty-webapp" rev="7.6.21.v20160908" conf="test->default" />
++    <dependency org="org.eclipse.jetty" name="jetty-jsp" rev="7.6.21.v20160908" conf="test->default" />
++    <dependency org="org.eclipse.jetty" name="jetty-util" rev="7.6.21.v20160908" conf="test->default" />
+     
+     <dependency org="displaytag" name="displaytag" rev="1.2" conf="test->default">
+       <exclude org="com.lowagie" name="itext" />
+@@ -148,10 +143,10 @@
+     <!-- Override Java 9 incompatible version (coming from displaytag): -->
+     <dependency org="commons-lang" name="commons-lang" rev="2.6" conf="test->default" />
+ 
+-    <dependency org="org.springframework" name="spring-core" rev="&spring.version;" conf="test->default">
++    <dependency org="org.springframework" name="spring-core" rev="2.5.6.SEC03" conf="test->default">
+       <exclude org="commons-logging" name="commons-logging" />
+     </dependency>
+-    <dependency org="org.springframework" name="spring-test" rev="&spring.version;" conf="test->default">
++    <dependency org="org.springframework" name="spring-test" rev="2.5.6.SEC03" conf="test->default">
+       <exclude org="commons-logging" name="commons-logging" />
+     </dependency>
+ 
+Only in freemarker-2.3.31: ivy.xml.orig
+Only in freemarker-2.3.31: ivy.xml.rej

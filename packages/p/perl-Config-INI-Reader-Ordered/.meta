@@ -1,0 +1,5 @@
+<package name="perl-Config-INI-Reader-Ordered" project="openSUSE:Factory">
+  <title>perl-Config-INI-Reader-Ordered - .ini-file parser that returns sections in order</title>
+  <description>Config::INI::Reader::Ordered is a subclass of Config::INI::Reader which preserves section order. See Config::INI::Reader for all documentation; the only difference is as presented in the SYNOPSIS.</description>
+  <devel project="devel:languages:perl" package="perl-Config-INI-Reader-Ordered"/>
+</package>

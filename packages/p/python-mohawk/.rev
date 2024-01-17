@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb61b9d0fffbbce5bbc5738c10b039a0</srcmd5>
+    <version>0.3.4</version>
+    <time>1525121931</time>
+    <user>dimstar_suse</user>
+    <comment>misc accidental remove</comment>
+    <requestid>602560</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c8cc36be561bdc7b4ccd48d2c5be4f5</srcmd5>
+    <version>0.3.4</version>
+    <time>1545647987</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659497</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>292a16f849caabcc1bc385c44ab746e2</srcmd5>
+    <version>1.0.0</version>
+    <time>1547211967</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0:
+  * Security related: Bewit MACs were not compared in constant time
+    and were thus possibly circumventable by an attacker.
+  * Breaking change: Escape characters in header values (such as a
+    back slash) are no longer allowed, potentially breaking clients
+    that depended on this behavior.
+  * A sender is allowed to omit the content hash as long as their
+    request has no content. The `mohawk.Receiver` will skip the
+    content hash check in this situation, regardless of the value
+    of accept_untrusted_content.
+  * Introduced max limit of 4096 characters in the Authorization
+    header.
+  * Changed default values of content and content_type arguments to
+    `mohawk.base.EmptyValue` in order to differentiate between
+    misconfiguration and cases where these arguments are explicitly
+    given as None (as with some web frameworks).
+  * Failing to pass content and content_type arguments to
+    `mohawk.Receiver` or `mohawk.Sender.accept_response` without
+    specifying accept_untrusted_content=True will now raise
+    `mohawk.exc.MissingContent` instead of `ValueError`.</comment>
+    <requestid>664544</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16ee6956c3c38c4e36ad57b409f236f7</srcmd5>
+    <version>1.1.0</version>
+    <time>1572442989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * Support passing file-like objects (those implementing .read(n))
+    as the content parameter for Resources. See mohawk.Sender for
+    details.</comment>
+    <requestid>743605</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>779d922f1c8a19ea4a847903e41830f8</srcmd5>
+    <version>1.1.0</version>
+    <time>1613855544</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace call to 'python setup.py test' by pyunittest macro: This
+  prevents a DeprecationWarning turned into an error from failing
+  the build.</comment>
+    <requestid>873931</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f059c715d8638e27f57b704285e866b0</srcmd5>
+    <version>1.1.0</version>
+    <time>1632431038</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-nose.patch:
+  * Use unittest assert methods rather than requiring nose.</comment>
+    <requestid>921090</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>0e95cfb021a183905760027619f902f8</srcmd5>
+    <version>1.1.0</version>
+    <time>1648241709</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend remove-nose.patch: Use unittest.mock instead of
+  python-mock (https://trello.com/c/S6eADbii/64-remove-python-mock)
+</comment>
+    <requestid>964932</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>3ff59eb97644d1eb606d2b5ccf3818ec</srcmd5>
+    <version>1.1.0</version>
+    <time>1659470948</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on mock.
+- Remove bcond for running tests.</comment>
+    <requestid>992127</requestid>
+  </revision>
+</revisionlist>

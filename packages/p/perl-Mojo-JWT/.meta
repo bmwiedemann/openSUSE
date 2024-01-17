@@ -1,0 +1,6 @@
+<package name="perl-Mojo-JWT" project="openSUSE:Factory">
+  <title>JSON Web Token the Mojo way</title>
+  <description>JSON Web Token is described in https://tools.ietf.org/html/rfc7519. Mojo::JWT implements that standard with an API that should feel familiar to Mojolicious users (though of course it is useful elsewhere). Indeed, JWT is much like Mojolicious::Sessions</description>
+  <devel project="devel:languages:perl" package="perl-Mojo-JWT"/>
+  <url>https://metacpan.org/pod/Mojo::JWT</url>
+</package>

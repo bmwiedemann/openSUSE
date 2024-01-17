@@ -1,0 +1,546 @@
+-------------------------------------------------------------------
+Thu Nov 16 00:17:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.23.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Aug  6 18:14:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.23.1.
+  [1.23.1]
+
+    * Restore toJSONFilter instance for pure `a -> [a]`.
+      This went missing after my ill-considered revision to #105,
+      commit 183af9d9f1066be974ac55fd23a4c985999d3ce8 . See jgm/pandoc#8976.
+
+    * Generalize ToJSONFilter instance. Previously a pure function `a -> a`
+      could only be promoted to a filter in IO. Now we allow it to work with
+      any instance of MonadIO.  (This adds to #105.)
+
+    * Allow bytestring 0.12.
+
+-------------------------------------------------------------------
+Fri Jul  7 05:47:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.23.0.1.
+  [1.23.0.1]
+
+    * Allow aeson 2.2.
+
+    * Remove dependency on string-qq (recbecca skinner).
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Jan 18 16:31:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.23.
+  [1.23]
+
+    * Remove Null constructor from Block (#91) [API change].
+
+    * ToJSONFilter: Add instance for MonadIO (#105, Willem Van Onsem)
+      [API change].
+
+    * Add `Figure` block constructor (Albert Krewinkel, Aner Lucero,
+      and Christian Despres) [API change]. The new Figure block represents
+      a figure with attributes, caption, and arbitrary block content.
+
+-------------------------------------------------------------------
+Sat Aug 13 18:36:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.22.2.1.
+  [1.22.2.1]
+
+    * Allow aeson 2.1.* and criterion 1.6.
+
+-------------------------------------------------------------------
+Sat Apr  2 17:12:09 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.22.2.
+  [1.22.2]
+
+    * Use StrictData in Text.Pandoc.Definition.
+
+    * Add Walkable Meta(Value) Pandoc instances (Travis Cardwell).
+
+-------------------------------------------------------------------
+Mon Nov  1 08:29:45 UTC 2021 - psimons@suse.com
+
+- Update pandoc-types to version 1.22.1.
+  [1.22.1]
+
+    * Text.Pandoc.Builder: add simpleFigure, simpleFigureWith,
+      and the SimpleFigure bidirectional pattern synonym
+      (Aner Lucero) [API change].
+
+    * Allow bytestring 0.11 (Alexander Batischev).
+
+    * Update stack resolver to lts-18.10
+
+    * Allow aeson 2+.  Tested with aeson 2.0.1.0.
+
+    * Allow transformers 0.6.
+
+    * Fix incorrect table ColWidth documentation (#85, Nils Carlson).
+      The documentation stated that the ColWidth represented the width
+      of the column as a fraction of the table width when in represents
+      a percentage of the text width.
+
+-------------------------------------------------------------------
+Thu Oct  7 07:57:36 UTC 2021 - psimons@suse.com
+
+- Update pandoc-types to version 1.22 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Oct 13 07:05:30 UTC 2020 - psimons@suse.com
+
+- Update pandoc-types to version 1.22.
+  [1.22]
+
+    * Deprecate isNull from Builder:  null can serve just as well (#67).
+      Use null instead of isNull in Arbitrary (Christian Despres, #84).
+
+    * Use untagged JSON encoding for single-constructor types (#75, #76,
+      Christian Despres).  All of the single constructor types related
+      to Table are now represented in JSON either as arrays (for
+      multi-argument constructors) or as the representation of the
+      inner type (for single argument constructors). This behaviour
+      for newtype-defined and multi-argument non-record types is now
+      consistent across the entire JSON interface, with the exception
+      of Pandoc itself (which is represented as a JSON object with
+      additional metadata). Multi-argument records (of which Citation
+      is the only example) are still represented as objects with the
+      record accessors as keys.
+
+    * The Meta and Citation types now use derived JSON serialization (newtype
+      and generic, respectively). The format remains the same as before
+      (Christian Despres).
+
+    * New serialization tests now test that Meta and the Table types are
+      encoded properly in JSON (Christian Despres).
+
+    * Use TH To/FromJSON instances (Christian Despres).
+
+    * Remove unused Legacy modules (#80, Despres).
+      They are not exported, and are not used internally.
+
+    * Change the table builder to permit looser intermediate table heads (#77,
+      Christian Despres).
+
+      The table builder (and the normalizeTableBody function) now permit
+      cells in the intermediate head of a TableBody to extend past the
+      RowHeadColumns. This allows for intermediate tables to have
+      subheadings that extend across the entire table.
+
+      Formerly the table builder would treat the intermediate head like the
+      intermediate body, and clip or drop cells that extended past the row
+      head.
+
+    * Update QuickCheck lower bound.
+
+    * Fix redundant pattern match.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:38 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 23 09:15:18 UTC 2020 - psimons@suse.com
+
+- Update pandoc-types to version 1.21.
+  [1.21]
+
+    * Add Underline constructor (#68, Vaibhav Sagar).
+
+    * Improve table types to allow col, rowspans and more (#65, Christian
+      Despres).  The additions include modification of the Block type, some
+      newtypes related to tables, and changes to the table builders.  The table
+      builder is now aware of the new Table constructor, and normalizes the
+      input table appropriately, so that when laid onto a grid the resulting
+      table has no empty spaces, overlapping cells, or cells that extend beyond
+      their section boundary.
+
+      Three properties of normalization are checked:
+
+      - Normalization is idempotent.
+      - Each row of a normalized table is an initial segment of the
+        corresponding row in the unnormalized table, modulo changed cell
+        dimensions, dropped cells, and padding with empty cells. This is only
+        checked for the first row of the TableBody, however, due to row head
+        difficulties.
+      - The sum of the cell lengths in the first row of every
+        normalized table section is always equal to the total table width.
+
+      `simpleTable` has been changed so that a null header list becomes a
+      TableHead with a null body, not a TableHead with a single empty row.
+
+    * Bump QuickCheck upper bound.
+
+    * Change lower bound for QuickCheck to 2.10 (needed for `liftShrink2`).
+
+    * Small code quality improvements (Joseph C. Sible, #69).
+
+    * Allow aeson 1.5 (#72, Felix Yan).
+
+    * Fixed documentation typo (Merlin Göttlinger).
+
+    * Add COMPLETE pragmas to the pattern definitions (Christian Despres).
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:26 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Thu May  7 07:48:19 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete %setup hack to work around a missing Setup.hs file.
+  New ghc-rpm-macros do this automatically.
+
+-------------------------------------------------------------------
+Wed Nov 13 03:02:28 UTC 2019 - psimons@suse.com
+
+- Update pandoc-types to version 1.20.
+  [1.20]
+
+    * Change all uses of String in type definitions to strict Text
+      (Christian Despres) [API change].  The MetaValue instances using String
+      have been kept, and parallel ones using Text were added.
+
+    * Remove the Arbitrary Text orphan instance (Christian Despres).
+      This instance should not have been in the Text.Pandoc.Arbitrary, since
+      it would have been exported with the rest of the instances in that
+      module. Instead, more shrink* functions were added to compensate for
+      the absence of this instance.
+
+    * Add Text.Pandoc.Legacy.Definition (Christian Despres).
+      To ease the transition to Text, this module provides an interface
+      compatible with the String one, so that any unqualified imports of
+      Text.Pandoc.Definition in other packages can be replaced by
+      Text.Pandoc.Legacy.Definition without other code changes. This is done
+      with PatternSynonyms.
+
+      Some of the constructors of the types Meta, MetaValue, Block, Inline,
+      Format, and Citation required PatternSynonym handling. The Attr and
+      Target types had to be redefined, and certain functions had to be
+      rewritten to handle String or the old Attr and Target types in this
+      module. This module otherwise exports the definitions in
+      Text.Pandoc.Definition unchanged.
+
+      This is not a perfect drop-in replacement, since some imports like
+      Inline(..) will no longer work. This may also cause incomplete pattern
+      warnings when used, since the coverage checker does not seem to be
+      aware of PatternSynonyms.
+
+    * Add Text.Pandoc.Legacy.Builder (Christian Despres).
+      Like Text.Pandoc.Legacy.Definition, this modules provides a
+      compatibility interface while the transition to Text takes
+      place. Unlike that module, this module only requires redefining the
+      ToMetaValue and HasMeta classes and a few functions so that they use
+      the old types. No PatternSynonyms are required.
+
+    * Change Semigroup/Monoid instance for Meta.
+      Previously `<>` was left-biased, so if meta1 and meta2 both
+      contained a field 'foo', the value from meta1 would be retained
+      in `meta1 <> meta2`, and the value from meta2 ignored.
+      This is counterintuitive and doesn't work well with pandoc;
+      for example, we want to be able to override a value in an
+      earlier `--metadata-file` with a later one on the command line.
+
+      It also makes the behavior of metadata more like other
+      things (such as reference links, where later definitions
+      take precedence over earlier ones).
+
+      Note that this change may break some current workflows,
+      if one is relying on metadata fields that occur later in
+      a document to be overridden by those occurring earlier.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:14:21 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Wed Sep 25 02:02:22 UTC 2019 - psimons@suse.com
+
+- Update pandoc-types to version 1.17.6.1.
+  [1.17.6.1]
+
+    * Relax version bound for string-qq.
+
+-------------------------------------------------------------------
+Sat Aug 24 02:01:25 UTC 2019 - psimons@suse.com
+
+- Update pandoc-types to version 1.17.6.
+  [1.17.6]
+
+    * Walk: export walk and query helpers (Albert Krewinkel) [API change].
+      The `walk*M` and `query*` functions are helpful when defining new
+      `Walkable` instances.
+    * Allow QuickCheck 2.13.
+    * Document meaning of Int in ListAttributes (#45).
+    * Update copyright year spans to include 2019 (Albert Krewinkel).
+    * Remove CPP instructions for GHC versions < 7.10 (Albert Krewinkel).
+    *  update list of GHC versions used for testing (Albert Krewinkel).
+    * Fix compiler and hlint warnings (Pete Ryland).
+
+-------------------------------------------------------------------
+Tue Jun 11 14:29:15 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Sun Mar 31 16:39:18 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update build instructions to allow latest version of QuickCheck.
+
+-------------------------------------------------------------------
+Mon Oct 29 09:03:16 UTC 2018 - psimons@suse.com
+
+- Update pandoc-types to version 1.17.5.4.
+  [1.17.5.4]
+
+    * Put NFData in scope for ghc < 7.10.
+    * Reduce deepseq lower bound for ghc < 7.10.
+
+-------------------------------------------------------------------
+Mon Oct 22 10:35:50 UTC 2018 - psimons@suse.com
+
+- Update pandoc-types to version 1.17.5.3.
+  [1.17.5.3]
+
+    * For ghc < 7.10, constrain deepseq-generics to >= 0.2, which no
+      longer exprots NFData from deepseq. Add deepseq dependency.
+
+-------------------------------------------------------------------
+Sat Oct 20 02:01:51 UTC 2018 - psimons@suse.com
+
+- Update pandoc-types to version 1.17.5.2.
+  [1.17.5.2]
+
+    * Bump upper bound for deepseq-generics, QuickCheck, criterion.
+    * Implement QuickCheck shrinking for Inlines and Blocks (Alexander Krotov).
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:35 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:32:07 UTC 2018 - psimons@suse.com
+
+- Update pandoc-types to version 1.17.5.1.
+  [1.17.5.1]
+
+    * Declare the ToMetaValue instance for String as OVERLAPPING (#46).
+
+  [1.17.5]
+
+    * Bump upper bounds for aeson, base.
+    * Allow building on older ghc versions (George Wilson).
+    * Text.Pandoc.Arbitrary: generate SoftBreaks and LineBreaks
+      (Alexander Krotov).
+    * Pad table rows up to maximum row length, to guarantee that
+      all rows have the same number of columns
+      (see jgm/pandoc#4059, Francesco Occhipinti).
+    * Make String an instance of ToMetaValue (Alexander Krotov).
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update pandoc-types to version 1.17.4.2 revision 1.
+  * Import Semigroups when needed rather than using CPP.
+  * Bump criterion upper bound.
+  * Add Semigroup instances for Pandoc, Meta, Inlines, Blocks
+    (if base >= 4.9).  This is needed for the library to compile
+    with ghc 8.4.
+  * Bumped criterion upper bound.
+  * Bumped upper bounds for criterion and QuickCheck.
+  * Added Walkable instances for `[Inline] Inline` and `[Block] Block`.
+  * Provide default implementation for walk (Albert Krewinkel).
+    The implementations for `walk` and `walkM` are very similar, so a
+    default method is provided which implements the former in terms of the
+    latter. This change should not affect performance, as the `Identity`
+    functor, which is used in the default definition, is a newtype that
+    should be eliminated at compile time.  (This requires a dependency
+    on transformers for ghc 7.8.x.)
+  * Force optimizations when compiling Walk module (Albert Krewinkel).
+  * Add `Applicative m` to the context of walkM (Albert Krewinkel).
+    The acceptance of AMP makes this a natural change.
+  * Add `Walkable [Block]` and `Walkable [Inline]` instances (Albert
+    Krewinkel).
+  * Factored out duplicate code in Walk.
+  * Added benchmark.
+  * Text.Pandoc.JSON: Use `walk` instead of `bottomUp` in the
+    `ToJSONFilter` instance for `a -> [a]`.  Note that behavior will be
+    slightly different, since bottomUp's treatment of a function `[a] -> [a]`
+    is to apply it to each sublist of a list, while walk applies it only to
+    maximal sublists.  Usually the latter behavior is what is wanted, and the
+    former can be simulated when needed.  But there may be existing filters
+    that need to be rewritten in light of the new behavior.
+  * Better consistency in simpleTable and table (jgm/pandoc#3648).
+    If `headers` is empty, we populate it with empty cells, using the rows
+    to determine number of columns.  We also ensure that there are numcols
+    alignments and column widths.
+  * Make sure Div and Span occur in Arbitrary instances.
+  * Bump dependency upper bounds.
+  * Removed unused mapConst.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Mon Jun 19 20:51:53 UTC 2017 - psimons@suse.com
+
+- Update to version 1.17.0.5 revision 4.
+
+-------------------------------------------------------------------
+Mon Apr 24 12:33:34 UTC 2017 - psimons@suse.com
+
+- Update to version 1.17.0.5 revision 3 with cabal2obs.
+
+-------------------------------------------------------------------
+Wed Mar 22 09:10:32 UTC 2017 - psimons@suse.com
+
+- Update to version 1.17.0.5 revision 2 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Mar  2 10:44:37 UTC 2017 - psimons@suse.com
+
+- Update to version 1.17.0.5 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Feb 12 14:17:22 UTC 2017 - psimons@suse.com
+
+- Update to version 1.17.0.5 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Aug 21 17:25:39 UTC 2016 - psimons@suse.com
+
+- Update to version 1.16.1.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:27:24 UTC 2016 - psimons@suse.com
+
+- Update to version 1.16.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Feb 11 08:45:43 UTC 2016 - mimi.vx@gmail.com
+
+-  update to 1.16.1
+* Export pandocTypesVersion from Text.Pandoc.Definition.
+
+-------------------------------------------------------------------
+Sat Jan 23 09:29:37 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.16.0.1
+* Added Attr field to Image and Link.
+* Added SoftBreak constructor to Inline
+
+-------------------------------------------------------------------
+Sun Sep 27 10:11:48 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.12.4.7
+
+-------------------------------------------------------------------
+Sun Jul 19 17:00:25 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.12.4.5
+
+-------------------------------------------------------------------
+Mon Jun  8 06:39:22 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.12.4.4
+
+-------------------------------------------------------------------
+Sun May 31 20:49:16 UTC 2015 - mimi.vx@gmail.com
+
+- change license file to COPYING
+
+-------------------------------------------------------------------
+Sun May 31 19:58:12 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.12.4.3
+
+-------------------------------------------------------------------
+Thu Apr 23 19:10:59 UTC 2015 - mimi.vx@gmail.com
+
+- update to 1.12.4.2
+
+-------------------------------------------------------------------
+Thu Mar 27 13:59:32 UTC 2014 - sbahling@suse.com
+
+- Correct package license
+
+-------------------------------------------------------------------
+Thu Mar 13 21:51:35 UTC 2014 - sbahling@suse.com
+
+- update to 1.12.3.2
+
+-------------------------------------------------------------------
+Tue Dec 31 16:30:30 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 1.12.3
+- needed for pandoc 1.12.2.1
+
+-------------------------------------------------------------------
+Sun Dec 29 16:37:52 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- merged d:l:haskell changes
+
+-------------------------------------------------------------------
+Mon Oct 21 17:14:45 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- merged defattr change from d:l:h
+
+-------------------------------------------------------------------
+Sun Sep 29 19:48:14 UTC 2013 - sbahling@suse.com
+
+- update to 1.12.1
+
+-------------------------------------------------------------------
+Tue May 14 13:22:09 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- new cabal-rpm spec file template
+* macros not spanning multiple spec file sections
+
+-------------------------------------------------------------------
+Fri Jan 25 13:23:53 UTC 2013 - peter.trommler@ohm-hochschule.de
+
+- update to 1.10 from upstream
+- part of pandoc 1.10 release
+
+-------------------------------------------------------------------
+Tue Jun  5 16:42:19 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- cabal2spec 0.25.5 template for spec file
+
+-------------------------------------------------------------------
+Tue Mar 13 16:20:59 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- rpmlint: filter debuginfo warning
+
+-------------------------------------------------------------------
+Mon Mar 12 14:55:45 UTC 2012 - peter.trommler@ohm-hochschule.de
+
+- upgrade to 1.9.1 from upstream
+
+-------------------------------------------------------------------
+Fri Jan 18 15:35:11 UTC 2012 - herbert@graeber-clan.de
+
+- initial packaging for Fedora automatically generated by cabal2spec-0.24.1

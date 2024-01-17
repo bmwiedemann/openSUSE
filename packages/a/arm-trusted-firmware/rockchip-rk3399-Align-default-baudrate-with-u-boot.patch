@@ -1,0 +1,26 @@
+From ee9848497117f2d2b6a643be6744330402725b72 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 1 Jul 2022 16:39:50 +0200
+Subject: [PATCH] rockchip: rk3399: Align default baudrate with u-boot.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ plat/rockchip/rk3399/rk3399_def.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plat/rockchip/rk3399/rk3399_def.h b/plat/rockchip/rk3399/rk3399_def.h
+index ba83242eb..8d6ecfbe6 100644
+--- a/plat/rockchip/rk3399/rk3399_def.h
++++ b/plat/rockchip/rk3399/rk3399_def.h
+@@ -17,7 +17,7 @@
+ /**************************************************************************
+  * UART related constants
+  **************************************************************************/
+-#define RK3399_BAUDRATE			115200
++#define RK3399_BAUDRATE			1500000
+ #define RK3399_UART_CLOCK		24000000
+ 
+ /******************************************************************************
+-- 
+2.36.1
+

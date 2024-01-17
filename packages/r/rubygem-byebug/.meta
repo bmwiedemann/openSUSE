@@ -1,0 +1,10 @@
+<package name="rubygem-byebug" project="openSUSE:Factory">
+  <title>byebug</title>
+  <description>Byebug is a Ruby 2 debugger. It's implemented using the
+Ruby 2 TracePoint C API for execution control and the Debug Inspector C API
+for call stack navigation.  The core component provides support that
+front-ends can build on. It provides breakpoint handling and bindings for
+stack frames among other things and it comes with an easy to use command
+line interface.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-byebug"/>
+</package>

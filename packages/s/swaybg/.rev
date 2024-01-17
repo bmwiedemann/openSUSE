@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afa8c2a690b6e369010d334188302cce</srcmd5>
+    <version>1.0</version>
+    <time>1560338047</time>
+    <user>dimstar_suse</user>
+    <comment>backgroundsetter for sway</comment>
+    <requestid>708735</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>434772e92e5bc3ecb3b4019004647130</srcmd5>
+    <version>1.0</version>
+    <time>1588856150</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency on wlc. It is long deprecated and actually                                                                                                                           
+  wlroots is used.</comment>
+    <requestid>800873</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a5aa92b8d7a628fb76e2fc95db3767f</srcmd5>
+    <version>1.1</version>
+    <time>1626788375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1:
+  * This release contains performance improvements: swaybg should use less
+    memory and load faster.</comment>
+    <requestid>907254</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dad0718e56f3ab13c9a2c74880b24617</srcmd5>
+    <version>1.1.1</version>
+    <time>1646948719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Add editorconfig
+  * Only render a new frame when the buffer size changes
+  * Fix memory leak when using image tile mode</comment>
+    <requestid>960698</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77a338a60b0afab50256fa6c168084b4</srcmd5>
+    <version>1.2.0</version>
+    <time>1673973339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058860</requestid>
+  </revision>
+</revisionlist>

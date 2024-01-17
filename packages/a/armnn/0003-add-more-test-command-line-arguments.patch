@@ -1,0 +1,76 @@
+From 964cb82f3b811aec6663255ab0aa589f0a3be0ee Mon Sep 17 00:00:00 2001
+From: Qin Su <qsu@ti.com>
+Date: Fri, 22 Feb 2019 14:10:07 -0500
+Subject: [PATCH] add more test command line arguments
+
+Updated by Guillaume_G to apply properly (s/BOOST_ASSERT/ARMNN_ASSERT/)
+
+Upstream-Status: Inappropriate [TI only test code]
+Signed-off-by: Qin Su <qsu@ti.com>
+---
+ tests/InferenceTest.inl | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+
+diff --git a/tests/InferenceTest.inl b/tests/InferenceTest.inl
+index 538720b..6fd21b8 100644
+--- a/tests/InferenceTest.inl
++++ b/tests/InferenceTest.inl
+@@ -326,6 +326,55 @@ int ClassifierInferenceTestMain(int argc,
+     ARMNN_ASSERT(modelFilename);
+     ARMNN_ASSERT(inputBindingName);
+     ARMNN_ASSERT(outputBindingName);
++    int count;
++    const char *p_input;
++    char inmodelname[500];
++    char outtensorname[500];
++
++    /* parse command line */
++    for (count = 1; count < argc; count++)
++    {
++        if (*(argv[count]) == '+')
++        {
++            p_input = argv[count] + 1;
++            switch (*(p_input))
++            {
++                case 'i':
++                case 'I':
++                    strcpy(inmodelname, p_input + 2);
++                    modelFilename = &inmodelname[0];
++                    std::cout << "Input model = " << modelFilename << std::endl;
++                    break;
++                case 'o':
++                case 'O':
++                    strcpy(outtensorname, p_input + 2);
++                    outputBindingName = &outtensorname[0];
++                    std::cout << "out tensor name = " << outputBindingName << std::endl;
++                    break;
++                default:
++                    break;
++            }
++        }
++        else if (*(argv[count]) == '-')
++        {
++            p_input = argv[count] + 1;
++            switch (*(p_input))
++            {
++                case '-':
++                    p_input = argv[count] + 2;
++                case 'h':
++                case 'H':
++                    std::cout <<"\nAdditional Options: " << std::endl;
++                    std::cout <<"  +i                                    Set user specified inference model name." << std::endl;
++                    std::cout <<"                                        If not set, default name is used." << std::endl;
++                    std::cout <<"  +o                                    Set user specified output tensor name." << std::endl;
++                    std::cout <<"                                        If not set, default name is used.\n" << std::endl;
++                    break;
++                default:
++                    break;
++            }
++        }
++    }
+ 
+     return InferenceTestMain(argc, argv, defaultTestCaseIds,
+         [=]
+-- 
+1.9.1
+

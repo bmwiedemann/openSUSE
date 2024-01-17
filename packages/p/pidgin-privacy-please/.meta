@@ -1,0 +1,18 @@
+<package name="pidgin-privacy-please" project="openSUSE:Factory">
+  <title>Anti-spam plugin for Pidgin</title>
+  <description>Pidgin Privacy Please is an anti-spam plugin for the Pidgin instant messenger.
+
+It offers the following features:
+ * Block individual users.
+ * Auto-reply to blocked messages.
+ * Block messages from people who are not on your contact list (with an optional auto-reply).
+ * Block messages using regular expressions, either against the message sender, the message content, or both.
+ * Suppress repeated/all authorisation requests.
+ * Suppress ICQ/AIM authorisation requests.
+ * Suppress authorisation requests that contain hyperlinks.
+ * Automatically show user info on authorisation requests.
+ * Block XMPP headline messages.
+ * Block AOL system messages.
+ * Challenge-response bot-check.</description>
+  <devel project="network:pidgin" package="pidgin-privacy-please"/>
+</package>

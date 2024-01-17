@@ -1,0 +1,8 @@
+<package name="mairix" project="openSUSE:Factory">
+  <title>A maildir indexer and searcher</title>
+  <description>mairix is a tool for indexing email messages stored in maildir format
+folders and performing fast searches on the resulting index.  The
+output is a new maildir folder containing symbolic links to the matched
+messages.</description>
+  <devel project="server:mail" package="mairix"/>
+</package>

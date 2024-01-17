@@ -1,0 +1,27 @@
+--- com32/lib/sys/entry.S
++++ com32/lib/sys/entry.S
+@@ -92,8 +92,8 @@
+ 		pushl %eax				# Save argc
+ 
+ 		/* Look for library initialization functions */
+-		leal __ctors_start@GOTOFF(%ebx),%esi
+-		leal __ctors_end@GOTOFF(%ebx),%edi
++		leal __init_array_start@GOTOFF(%ebx),%esi
++		leal __init_array_end@GOTOFF(%ebx),%edi
+ 6:
+ 		cmpl %edi,%esi
+ 		jae 7f
+--- com32/lib/sys/exit.S
++++ com32/lib/sys/exit.S
+@@ -17,9 +17,9 @@
+ #endif
+ 
+ 	/* Run any destructors */
+-	movl $__dtors_start, %esi
++	movl $__fini_array_start, %esi
+ 2:
+-	cmpl $__dtors_end, %esi
++	cmpl $__fini_array_end, %esi
+ 	jae 1f
+ 	call *(%esi)
+ 	addl $4,%esi

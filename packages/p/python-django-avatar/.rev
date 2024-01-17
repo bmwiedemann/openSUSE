@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93baa85c19e97968fccf726f54188630</srcmd5>
+    <version>1.0.5</version>
+    <time>1331900535</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109059</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>93baa85c19e97968fccf726f54188630</srcmd5>
+    <version>1.0.5</version>
+    <time>1340184045</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>93baa85c19e97968fccf726f54188630</srcmd5>
+    <version>1.0.5</version>
+    <time>1359110014</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>93baa85c19e97968fccf726f54188630</srcmd5>
+    <version>1.0.5</version>
+    <time>1379664157</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b473a21e43ec32dcbca8c60001c02a37</srcmd5>
+    <version>2.0</version>
+    <time>1380475711</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201118 from posophe)</comment>
+    <requestid>201122</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>b473a21e43ec32dcbca8c60001c02a37</srcmd5>
+    <version>2.0</version>
+    <time>1409302847</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b21896d496728cb0009b433780eb18a4</srcmd5>
+    <version>4.1.0</version>
+    <time>1546535372</time>
+    <user>dimstar_suse</user>
+    <comment>- Sadly the tests are working only under django 1.11 thus
+  skip them on py3
+
+- Update to 4.1.0:
+  * py3 support
+  * new django 1.11 and 2.0 support</comment>
+    <requestid>662607</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0d2d1b0c618c0e0cb53c3433b864eb37</srcmd5>
+    <version>4.1.0</version>
+    <time>1568805093</time>
+    <user>maxlin_factory</user>
+    <comment>- Skip the check if flavor python2 is not being built</comment>
+    <requestid>731304</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2fe4bb2870e9c45e682dec9627b42e3f</srcmd5>
+    <version>5.0.0</version>
+    <time>1578437677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0:
+  * Added Django 2.1, 2.2, and 3.0 support.
+  * Added Python 3.7 and 3.8 support.
+  * Fixed bug where avatars couldn't be deleted if file was already deleted.</comment>
+    <requestid>761499</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>eafc3ee429c96de84b1527624138c262</srcmd5>
+    <version>5.0.0</version>
+    <time>1643926604</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-django-40.patch:
+  * Support Django 4.0.</comment>
+    <requestid>950837</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d96042d26bc98b0184ff030b9e7711ee</srcmd5>
+    <version>7.1.1</version>
+    <time>1680290143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.1:
+  * Switch to setuptools for building
+  * Add LibRavatar support
+  * Faster admin when many users are present
+  * Check for corrupted image during upload
+  * Switch Pillow Resize method from Image.ANTIALIAS to Image.LANCZOS
+  * Removed Python 3.6 testing
+  * Added Python 3.11 support
+  * Remove height requirement for providers (broke 6 to 7 upgrades)
+  * Allowed for rectangular avatars. Custom avatar tag templates now require
+    the specification of both a width and height attribute instead of size.
+  * Made True the default value of AVATAR_CLEANUP_DELETED.
+  * Fix invalidate_cache for on-the-fly created thumbnails.
+  * New setting AVATAR_ALLOWED_MIMETYPES. If enabled, it checks mimetypes of
+    uploaded files using python-magic. Default is None.
+  * Fix thumbnail transposing for Safari.
+  * Added Django 3.2, 4.0 and 4.1 support.
+  * Removed Django 1.9, 1.10, 1.11, 2.0, 2.1, 2.2 and 3.0 support.
+  * Added Python 3.9 and 3.10 support.
+  * Removed Python 2.7, 3.4 and 3.5 support.
+  * Made &quot;PNG&quot; the default value for AVATAR_THUMB_FORMAT.
+  * Made False the default value for AVATAR_EXPOSE_USERNAMES.
+  * Don't leak usernames through image alt-tags when AVATAR_EXPOSE_USERNAMES
+    is False.
+  * Use original image as thumbnail if thumbnail creation failed but image
+    saving succeeds. 
+- Remove patch support-django-40.patch, no longer required.</comment>
+    <requestid>1075723</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6b3daee5c3744c8fe543f3d45539ffb1</srcmd5>
+    <version>8.0.0</version>
+    <time>1699910277</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.0:
+  * Add Django 4.2 support
+  * Remove Python 3.7 support
+  * Use path and path converters (changes all url names from
+    prefix `avatar_` to `avatar:`.)
+  * Add support for Django STORAGES (Django 4.2)
+  * Add optional api app (requires djangorestframework)
+  * Use ``Image.Resampling.LANCZOS`` instead of ``Image.LANCZOS``
+    that was removed in Pillow 10.0.0</comment>
+    <requestid>1124865</requestid>
+  </revision>
+</revisionlist>

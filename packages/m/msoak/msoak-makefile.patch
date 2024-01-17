@@ -1,0 +1,23 @@
+diff --git a/Makefile b/Makefile
+index 6e08b80..a556c91 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ OS.exec = ./ostype
+ OS = $(shell $(OS.exec))$(OS.exec:sh)
+ 
+-CFLAGS=-Wall -Werror -I.
++CFLAGS+=-Wall -Werror -I.
+ LDFLAGS=-L /usr/local/lib -lmosquitto -lconfig
+ 
+ detect:
+@@ -19,6 +19,9 @@ debian:
+ ubuntu:
+ 	@$(MAKE) TARGET=$(TARGET) debian
+ 
++linux:
++	@$(MAKE) $(TARGET) CFLAGS="$(CFLAGS) `pkg-config --cflags lua5.3`" \
++		LDFLAGS="$(LDFLAGS) `pkg-config --libs lua5.3` `pkg-config --libs libbsd`"
+ 
+ alpine:
+ 	@$(MAKE) $(TARGET) CFLAGS="-I/usr/include/lua5.3 -Wall -I." \

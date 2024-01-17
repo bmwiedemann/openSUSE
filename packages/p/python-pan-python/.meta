@@ -1,0 +1,13 @@
+<package name="python-pan-python" project="openSUSE:Factory">
+  <title>Multi-tool set for Palo Alto Networks PAN-OS, Panorama, WildFire and AutoFocus</title>
+  <description>pan-python is a Python package for Palo Alto Networks' Next-Generation
+Firewalls, WildFire and AutoFocus.  It provides:
+ - a Python and command line interface to the PAN-OS and Panorama XML API
+ - a command line program for managing PAN-OS XML configurations
+ - a Python and command line interface to the WildFire API
+ - a Python and command line interface to the AutoFocus API
+
+</description>
+  <devel project="devel:languages:python" package="python-pan-python"/>
+  <url>https://github.com/kevinsteves/pan-python</url>
+</package>

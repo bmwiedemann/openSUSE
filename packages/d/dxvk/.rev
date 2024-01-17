@@ -1,0 +1,144 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf50da8c7ac8145a845b124ceba67ddd</srcmd5>
+    <version>1.9</version>
+    <time>1624210677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900889</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5e7308719e6e9649cbd07867b0eb360d</srcmd5>
+    <version>1.9</version>
+    <time>1624387508</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only on x86* (forwarded request 901299 from Guillaume_G)</comment>
+    <requestid>901302</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>61b4bde1937262c164b19a237b9bbbb8</srcmd5>
+    <version>1.9.2</version>
+    <time>1632173623</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.9.2
+  - Reduced overall CPU overhead in D3D9.
+  - Fixed various failures in wine's D3D9 tests.
+  - Fixed various issues when the `d3d9.evictManagedTexturesOnUnlock` option is enabled.
+  - Fixed various issues when the `d3d11.relaxedBarriers` option is enabled.
+  - **Call of Cthulhu**: Fixed reflection rendering (#2248)
+  - **Crysis 3**, **Homefront The Revolution**: Worked around poor performance (#2256) (#2241)
+  - **GODS**: Fixed gamma curve (#2250)
+  - **Total War Medieval 2**: Fixed black lines on the world map (#2258) and settings text (#2247)
+    The game still crashes when loading battles due to running out of address space.
+  - **Fantasy Grounds**: Fix incorrect rendering (#2251)
+  - **Need For Speed Heat**: Fixed ground textures rendering incorrectly (#1764).
+  - **Paranormal Files**: Fix black screen (#2192)
+  - **Pathfinder: Wrath of the Rightous**: Fixed GPU hang in loading screen.
+     Note that the game itself has further issues loading certain parts
+     of the game, which do not appear to be related to wine or DXVK in
+     any way.
+  - **Payday**: Fix flickering reflections (#2259)
+  - **Shin Megami Tensei 3**: Fixed hang when entering save room (#2161)
+  - **Sine Mora EX**: Added 60 FPS lock (#2261)
+- updated to 1.9.1
+  - Fixed a number of performance and stability issues introduced with the D3D9 locking rewrite in 1.9 (#2142, #2149, #2150, #2164, #2168).
+  - Rewrote the way staging textures are handled in D3D11. This can reduce memory usage and the number of image copies necessary to move data between the CPU and GPU, and fixes severe performance issues in Roblox on Nvidia GPUs.
+  - Removed some workarounds for very old Mesa versions (19.0 and older).
+  - Reimplemented locking primitives based on Windows SRW locks. This may be more efficient compared to the winpthreads implementation in mingw builds.
+  - Earth Defense Force 5: Work around performance issues caused by the game frequently turning vertical synchronization on and off between frames (#2127)
+  - Far Cry 1: Spoof Nvidia GPU in order to enable higher-quality water rendering.
+  - Far Cry 5 and other Dunia Engine games: Fixed various issues due to uninitialized memory (PR #2137).
+  - GTA IV: Fixed broken app profile that would break the game on Nvidia GPUs.
+  - Risen 3: Fixed crash on Nvidia GPUs (#2154).</comment>
+    <requestid>920342</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a0c5347e3ba8ff4914109a83d9097011</srcmd5>
+    <version>1.9.3</version>
+    <time>1642029755</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.9.3
+  - DLSS should now work in supported games in combination with [dxvk-nvapi](https://github.com/jp7677/dxvk-nvapi).
+  - Optimized D3D9 shader constants by relying on `VK_EXT_robustness2` and removed the old app options for games using software vertex processing. (#2282)
+  - Added an option for more accurate emulation of D3D9 floating point behaviour and enabled that by default for a bunch of games. (#2294, #2359). This fixes issues in **Red Orchestra 2**, **Dark Souls 2** (original version), **Dog Fight 1942**, **Bayonetta**, **Rayman Origins**, **Guilty Gear Xrd** and **Richard Burns Rally**.
+  - Fixed a DXGI issue which would sometimes cause games to fail to enter fullscreen mode on some displays that do not support low rates across all resolutions (#2395).
+  - **Black Mesa**: Fixed a regression with shadows. (#2317)
+  - **Crysis 3 Remastered**: Worked around poor performance. (#2339)
+  - **Euro Truck Simulator**: Fixed a shading issue resulting in black geometry (#2312)
+  - **Injustice Gods Among Us**: Fixed missing characters on the character selection screen. (#2332)
+  - **Rocksmith 2014**: Fixed white screen on startup. (#2383)
+  - **Spliter Cell: Chaos Theory**: Fixed brightness with the shader model 3 option. (#2340)
+  - **Sim City 2013**: Fixed rendering.
+  - **The Guild 3**: Fixed artifacts in overview map.</comment>
+    <requestid>945886</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88538a81f5c8950d05b49b47d8315186</srcmd5>
+    <version>1.10</version>
+    <time>1646586937</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.10
+  ## Performance improvements
+  - Reduced unnecessary worker thread synchronization around resource readbacks for both D3D11 and D3D9. This can significantly increase CPU-bound performance in games like **Assassin's Creed: Origins** and other titles built on the same engine, with smaller improvements seen in **Elex II**, **God of War**, **GTA IV** and others.
+  - When using [D3D11_MAP_WRITE](https://docs.microsoft.com/en-us/windows/win32/api/d3d11/ne-d3d11-d3d11_map) on a staging resource that's currently being read by the GPU, DXVK will now attempt to create a copy of that resource in order to avoid GPU synchronization. This improves performance in **Quantum Break** and potentially other games. This behaviour can be tweaked using the `d3d11.maxImplicitDiscardSize` option.
+  - Optimized [UpdateSubresource](https://docs.microsoft.com/en-us/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-updatesubresource) for small constant buffer updates. This further improves performance in **God of War** and potentially other games.
+  - Improved the way resource uploads and staging buffers are handled in D3D11. This may reduce memory usage and CPU overhead in some - Added more information to the HUD that can be useful for troubleshooting performance issues: GPU synchronizations per frame, worker thread synchronizations per frame, and pipeline barrier count.
+  - GPU synchronization, when necessary, no longer uses busy-waiting, which may reduce power consumption on portable devices in some games.
+  ## Bug fixes and Improvements
+  - Added a `D3D11On12CreateDevice` stub so applications using this don't immediately crash (PR #2278).
+  **Note** that supporting D3D11on12 is currently not viable.
+  - Version numbers for Intel's Windows driver should now be reported properly.
+  **Note** that using DXVK on this driver is highly discouraged and will likely not work.
+  - **ArmA 2**: Fixed texture-related issues (PR #2477).
+  - **Black Mesa**: Fixed 
+  - **Resident Evil 0**, **5**, **6**, **Resident Evil: Revelations 2**: Improved performance (PR #2466).
+  - **Total War: Warhammer III**: Significantly improved GPU-bound performance on setups with a dedicated GPU.
+  ## Per-game workarounds
+  Replaced the previous `d3d11.apitraceMode` option with  `d3d11.cachedDynamicResources`, which provides a more granular way to specify resource types to allocate in cached system memory. Refer to the example `dxvk.conf` for details. This change was not made for the equivalent D3D9 option yet.
+  Normally, [D3D11_USAGE_DYNAMIC](https://docs.microsoft.com/en-us/windows/win32/api/d3d11/ne-d3d11-d3d11_usage) resources are expected to be write-only from the CPU and read-only from the GPU, but despite this, some games perform CPU-side reads on the mapped memory, which can cause severe performance degradation since those reads would have to go over PCI-E, or at least uncached write-combined memory. This is especially problematic on systems with Resizeable BAR and can cause issues even on Windows D3D11 drivers.
+  Games that will use this option by default include **Age of Empires 2: Definitive Edition** (#2491), **Anno 1800**, **Final Fantasy XIV**, **Nier Replicant**, **The Evil Within** (PR #2522), and all games that previously had `d3d11.apitraceMode` enabled by default.
+- updated to 1.9.4
+  Bug fixes and Improvements:
+  - Fixed an issue that would cause VRAM to not be utilized on RBAR-enabled Nvidia GPUs if the `dxvk.shrinkNvidiaHvvHeap`option is enabled (#2438).
+  - Enabled strict D3D9 float emulation by default on future versions of RADV. This may improve both accuracy and GPU-bound performance (PR #2448)..
+  - Improved memory allocation behaviour. This may reduce memory usage especially in games that create multiple processes or D3D devices.
+  - Removed obsolete options to disable OpenVR support.
+  - **God of War**: Enabled performance optimizations and DLSS support. *Note that these changes are already included in Proton Experimental.* (forwarded request 959619 from msmeissn)</comment>
+    <requestid>959620</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>405357026d40e12f8dcc600a327916c4</srcmd5>
+    <version>1.10.2</version>
+    <time>1658396114</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990433</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00c5147a400d504cfffc7e29b399a1c2</srcmd5>
+    <version>2.0</version>
+    <time>1683403792</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix empty -32bit package, don't include winedxvk in it.
+- Generate package sources using _service so that submodule sources are included too.
+  DXVK uses vendored Vulkan headed contained in a submodule.
+  Fixes build. (forwarded request 1085180 from Thaodan)</comment>
+    <requestid>1085227</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39f31bc445543133e84ce93f09b5ba28</srcmd5>
+    <version>2.1</version>
+    <time>1684162484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087211</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>85b3e3aeef1b2b9a71584b08714444de</srcmd5>
+    <version>2.2</version>
+    <time>1688398969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096362</requestid>
+  </revision>
+</revisionlist>

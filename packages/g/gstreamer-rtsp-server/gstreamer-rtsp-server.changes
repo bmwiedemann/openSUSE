@@ -1,0 +1,784 @@
+-------------------------------------------------------------------
+Thu Jan  4 08:00:21 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.8:
+  + No changes, stable bump only.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
+Wed Nov 15 09:36:27 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.22.7:
+  + rtspclientsink: Don't leak previous server_ip
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
+Fri Sep 22 16:46:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.6:
+  + No changes, stable bump only.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
+Tue Jul 25 11:21:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.5:
+  + No changes
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
+Mon Jun 26 14:57:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.4:
+  + No changes.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
+Wed May 24 15:29:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.3:
+  + No changes.
+- Rebase patch.
+
+-------------------------------------------------------------------
+Wed Apr 12 13:51:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.2:
+  + rtsp-server: fix deadlock on shutdown with non-live pipeline if
+    media isn't playing/prerolled yet and eos-shutdown is enabled
+    for the media
+- Rebase patch.
+
+-------------------------------------------------------------------
+Thu Mar  9 18:32:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.1:
+  + No changes.
+- Rebase patch with quilt.
+
+-------------------------------------------------------------------
+Wed Mar  1 13:01:19 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to reduce the required meson version to 0.61.0 since
+  that's what we have in SLE 15:
+  * reduce-required-meson.patch
+
+-------------------------------------------------------------------
+Wed Jan 25 22:33:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.0:
+  + Please see changes in gstreamer main package, major version
+    bump.
+
+-------------------------------------------------------------------
+Fri Dec 23 19:33:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.5:
+  + rtsp-server: Free client if no connection could be created
+
+-------------------------------------------------------------------
+Sat Oct 22 09:10:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + gst-rtsp-server: Fix pushing backlog to client.
+  + rtsp-server: stream: Don't loop forever if binding to the
+    multicast address fails.
+
+-------------------------------------------------------------------
+Wed Jun 22 10:44:53 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 1.20.3:
+  + No changes.
+
+-------------------------------------------------------------------
+Mon May  9 11:06:24 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.2:
+  + rtspclientsink: fix possible shutdown deadlock in
+    collect_streams()
+  + Minor spelling fixes
+
+-------------------------------------------------------------------
+Wed Apr  6 07:06:41 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove BuildRequires: hotdoc and disable the doc generation. 
+  It's really not used at all.
+
+-------------------------------------------------------------------
+Fri Mar 18 07:46:41 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.20.1:
+  + Fix race in rtsp-client when tunneling over HTTP
+
+-------------------------------------------------------------------
+Wed Feb  9 22:38:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + GstRTSPMediaFactory gained API to disable RTCP
+    (gst_rtsp_media_factory_set_enable_rtcp(), "enable-rtcp"
+    property). Previously RTCP was always allowed for all RTSP
+    medias. With this change it is possible to disable RTCP
+    completely, irrespective of whether the client wants to do RTCP
+    or not.
+  + Make a mount point of / work correctly. While not allowed by
+    the RTSP 2 spec, the RTSP 1 spec is silent on this and it is
+    used in the wild. It is now possible to use / as a mount path
+    in gst-rtsp-server, e.g. rtsp://example.com/ would work with
+    this now. Note that query/fragment parts of the URI are not
+    necessarily correctly handled, and behaviour will differ
+    between various client/server implementations; so use it if you
+    must but don't bug us if it doesn't work with third party
+    clients as you'd hoped.
+  + multithreading fixes (races, refcounting issues, deadlocks).
+  + ONVIF audio backchannel fixes.
+  + ONVIF trick mode optimisations.
+  + rtspclientsink: new "update-sdp" signal that allows updating
+    the SDP before sending it to the server via ANNOUNCE. This can
+    be used to add additional metadata to the SDP, for example. The
+    order and number of medias must not be changed, however.
+
+-------------------------------------------------------------------
+Fri Feb  4 19:45:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.6:
+  + rtsp-stream: fix get_rates raciness
+  + rtsp-media: Only unprepare a media if it was not already
+    unpreparing anyway
+  + rtsp-media: Unprepare suspended medias too
+  + rtsp-client: make sure sessmedia will not get freed while used
+  + rtsp-media: Also mark receive-only (RECORD) medias as prepared
+    when unsuspending
+  + rtsp-session: Don't unref medias twice if it is removed inside
+  + examples: Fix leak in appsrc2 example
+- Drop service, use source url, upstream changes in git.
+
+-------------------------------------------------------------------
+Thu Jan 20 16:59:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix parameters passed to meson: with meson 60, the parameters are
+  strictly checked, which helps in identifying those wrong
+  parameters.
+
+-------------------------------------------------------------------
+Wed Sep 15 10:02:59 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.5:
+  + rtsp-media:
+    - Ensure the bus watch is removed during unprepare
+    - Add one more case to seek avoidance
+    - Improve skipping trickmode seek
+  + Fix a few memory leaks
+
+-------------------------------------------------------------------
+Wed Mar 31 16:21:16 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.18.4:
+  + rtspclientsink: fix deadlock on shutdown if no data has been
+    received yet
+  + rtspclientsink: fix leaks in unit tests
+  + rtsp-stream: avoid deadlock in send_func
+  + rtsp-client: cleanup transports during TEARDOWN
+
+-------------------------------------------------------------------
+Sat Jan 16 20:00:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.3:
+  + rtsp-media: Only count senders when counting blocked streams
+  + rtsp-client: Only unref client watch context on finalize, to
+    avoid deadlock
+
+-------------------------------------------------------------------
+Thu Dec 10 08:41:39 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.2:
+  + stream: collect a clock_rate when blocking
+  + media:
+    - Ignore GstRTSPStreamBlocking from incomplete streams, to
+      prevent cases with prerolling when the inactive stream
+      prerolls first and the server proceeds without waiting for
+      the active stream. When there are no complete streams (during
+      DESCRIBE), we will listen to all streams.
+    - Use guint64 for setting the size-time property on rtpstorage,
+      fixes potential crashes or memory corruption.
+    - Get rates only on sender streams, fixing issue with ONVIF
+      audio backchannel streams
+    - Plug memory leak
+- Fix the _service file and spec to really use the tarball
+  generated by service.
+
+-------------------------------------------------------------------
+Wed Oct 28 10:34:58 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.1:
+  + Highlighted bugfixes in 1.18.1
+    - important security fixes
+    - bug fixes and memory leak fixes
+    - various stability and reliability improvements
+  + gst-rtsp-server changes:
+    - rtsp-stream: collect rtp info when blocking
+    - rtsp-media: set a 0 storage size for TCP receivers
+    - rtsp-stream: preroll on gap events
+    - rtsp-media: do not unblock on unsuspend
+
+-------------------------------------------------------------------
+Thu Sep 17 15:09:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.0:
+  + Highlights:
+    - GstTranscoder: new high level API for applications to
+      transcode media files from one format to another
+    - High Dynamic Range (HDR) video information representation
+      and signalling enhancements
+    - Instant playback rate change support
+    - Active Format Description (AFD) and Bar Data support
+    - RTSP server and client implementations gained ONVIF trick
+      modes support
+    - Hardware-accelerated video decoding on Windows via
+      DXVA2/Direct3D11
+    - Microsoft Media Foundation plugin for video capture and
+      hardware-accelerated video encoding on Windows
+    - qmlgloverlay: New overlay element that renders a QtQuick
+      scene over the top of an input video stream
+    - imagesequencesrc: New element to easily create a video
+      stream from a sequence of jpeg or png images
+    - dashsink: New sink to produce DASH content
+    - dvbsubenc: New DVB Subtitle encoder element
+    - MPEG-TS muxing now also supports TV broadcast compliant
+      muxing with constant bitrate muxing and SCTE-35 support
+    - rtmp2: New RTMP client source and sink element from-scratch
+      implementation
+    - svthevcenc: New SVT-HEVC-based H.265 video encoder
+    - vaapioverlay: New compositor element using VA-API
+    - rtpmanager gained support for Google's Transport-Wide
+      Congestion Control (twcc) RTP extension
+    - splitmuxsink and splitmuxsrc gained support for auxiliary
+      video streams
+    - webrtcbin now contains some initial support for
+      renegotiation involving stream addition and removal
+    - RTP support was enhanced with new RTP source and sink
+      elements to easily set up RTP streaming via rtp:// URIs
+    - avtp: New Audio Video Transport Protocol (AVTP) plugin for
+      Time-Sensitive Applications
+    - Support for the Video Services Forum's Reliable Internet
+      Stream Transport (RIST) TR-06-1 Simple Profile
+    - Universal Windows Platform (UWP) support
+    - rpicamsrc: New element for capturing from the Raspberry Pi
+      camera
+    - RTSP Server TCP interleaved backpressure handling
+      improvements as well as support for Scale/Speed headers
+    - GStreamer Editing Services gained support for nested
+      timelines, per-clip speed rate control and the OpenTimelineIO
+      format.
+    - Autotools build system has been removed in favour of Meson
+- Drop patches already included upstream:
+  * gst-rtsp-Fix-NULL-pointer.patch
+  * gst-rtsp-fix-token-leak.patch
+  * gst-rtsp-replace-G_TYPE_INSTANCE_GET_PRIVATE.patch
+
+-------------------------------------------------------------------
+Sun Apr 12 18:40:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix boo#1168026, CVE-2020-6095 and TALOS-2020-1018:
+  + Add gst-rtsp-Fix-NULL-pointer.patch: rtsp-auth: Fix NULL
+    pointer dereference when handling an invalid basic
+    Authorization header.
+- Add upstream bug fix patches:
+  + Add gst-rtsp-fix-token-leak.patch: rtsp-auth: Fix default token
+    leak.
+  + Add gst-rtsp-replace-G_TYPE_INSTANCE_GET_PRIVATE.patch:
+    rtsp-latency-bin: replace G_TYPE_INSTANCE_GET_PRIVATE as it's
+    been deprecated.
+
+
+-------------------------------------------------------------------
+Wed Dec  4 13:21:03 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.2:
+  + rtsp-media: Use lock in gst_rtsp_media_is_receive_only
+  + rtsp-client:
+    - RTP Info when completed_sender
+    - Fix location uri-format by getting uri directly from context
+      instead
+
+-------------------------------------------------------------------
+Tue Sep 24 15:01:29 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.1:
+  + See main gstreamer package for changelog.
+
+-------------------------------------------------------------------
+Tue Jun 25 11:47:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.0:
+  + Highlights:
+    - GStreamer WebRTC stack gained support for data channels for
+      peer-to-peer communication based on SCTP, BUNDLE support,
+      as well as support for multiple TURN servers.
+    - AV1 video codec support for Matroska and QuickTime/MP4
+      containers and more configuration options and supported
+      input formats for the AOMedia AV1 encoder
+    - Support for Closed Captions and other Ancillary Data in video
+   -  Support for planar (non-interleaved) raw audio
+    - GstVideoAggregator, compositor and OpenGL mixer elements are
+      now in -base
+    - New alternate fields interlace mode where each buffer carries
+      a single field
+    - WebM and Matroska ContentEncryption support in the Matroska
+      demuxer
+    - new WebKit WPE-based web browser source element
+    - Video4Linux: HEVC encoding and decoding, JPEG encoding, and
+      improved dmabuf import/export
+    - Hardware-accelerated Nvidia video decoder gained support for
+      VP8/VP9 decoding, whilst the encoder gained support for
+      H.265/HEVC encoding.
+    - Many improvements to the Intel Media SDK based
+      hardware-accelerated video decoder and encoder plugin
+      (msdk): dmabuf import/export for zero-copy integration with
+      other components; VP9 decoding; 10-bit HEVC encoding; video
+      post-processing (vpp) support including deinterlacing; and
+      the video decoder now handles dynamic resolution changes.
+    - The ASS/SSA subtitle overlay renderer can now handle multiple
+      subtitles that overlap in time and will show them on screen
+      simultaneously
+    - The Meson build is now feature-complete (*) and it is now the
+      recommended build system on all platforms. The Autotools
+      build is scheduled to be removed in the next cycle.
+    - The GStreamer Rust bindings and Rust plugins module are now
+      officially part of upstream GStreamer.
+    - The GStreamer Editing Services gained a gesdemux element
+      that allows directly playing back serialized edit list with
+      playbin or (uri)decodebin
+    - Many performance improvements.
+- Updated options passed to meson following upstream changes.
+
+-------------------------------------------------------------------
+Fri May 31 22:28:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + rtsp-client: Fix crash in close handler and remove timeout
+    GSource on cleanup.
+  + rtsp-media:
+    - Handle set state when preparing.
+    - Fix race condition in finish_unprepare.
+  + rtsp-stream:
+    - Use cached address when allocating sockets.
+    - Use seqnum-offset for rtpinfo.
+    - Add source elements to the pipeline before activation for
+      stream-status create message.
+
+-------------------------------------------------------------------
+Wed Oct  3 16:01:19 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.4:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Wed Sep 26 20:33:14 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.3:
+  + Bugfix release, please see .changes in gstreamer main package.
+
+-------------------------------------------------------------------
+Tue Jul 24 08:25:37 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.2:
+  + rtsp-media:
+    - unref clock (if set) when finalizing.
+    - add gst_rtsp_media_*_set_clock to docs.
+  + media-factory:
+    - unref old clock when setting new clock.
+    - unref clock in finalize.
+  + rtsp-onvif-media:
+    - fix g-ir-scanner warnings.
+    - export gst_rtsp_onvif_media_factory_requires_backchannel.
+  + client: Strip transport parts as whitespaces could be around
+    commas.
+  + rtsp-stream: avoid pushing data on unlinked udpsrc pad during
+    setup.
+  + rtspclientsink: fix waiting for multiple streams.
+
+-------------------------------------------------------------------
+Sat Jun 23 09:55:55 UTC 2018 - bjorn.lie@gmail.com
+
+- Switch to meson build system:
+  + Add meson, pkgconfig(glib-2.0),pkgconfig(gstreamer-app-1.0),
+    pkgconfig(gstreamer-net-1.0), pkgconfig(gstreamer-rtp-1.0),
+    pkgconfig(gstreamer-rtsp-1.0) and pkgconfig(gstreamer-sdp-1.0)
+    BuildRequires.
+  + Add meson macros, replacing autotools ones.
+  + Pass disable_introspection=false,
+    with-package-name='openSUSE GStreamer-rtsp-server package',
+    with-package-origin='http://download.opensuse.org' and
+    tests=false and examples=false to meson, ensure we build the
+    features we want. Tests have always been disabled, be explicit
+    about it, as they need a working network connection.
+  + Drop pkgconfig(gstreamer-plugins-base-1.0) BuildRequires.
+  + No longer rm la files, not needed when building with meson.
+
+-------------------------------------------------------------------
+Fri Jun 22 11:17:45 UTC 2018 - bjorn.lie@gmail.com
+
+- Drop gstreamer-plugins-good and
+  pkgconfig(gstreamer-plugins-bad-1.0) BuildRequires: Only needed
+  for unit tests and we do not build or run those tests.
+
+-------------------------------------------------------------------
+Sun May 20 09:58:11 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.1:
+  + GstPad: Fix race condition causing the same probe to be called
+    multiple times
+  + Fix occasional deadlocks on windows when outputting debug
+    logging
+  + Fix debug levels being applied in the wrong order
+  + GIR annotation fixes for bindings
+  + audiomixer, audioaggregator: fix some negotiation issues
+  + gst-play-1.0: fix leaving stdin in non-blocking mode after exit
+  + flvmux: wait for caps on all input pads before writing header
+    even if source is live
+  + flvmux: don't wake up the muxer unless there is data, fixes
+    busy looping if there's no input data
+  + flvmux: fix major leak of input buffers
+  + rtspsrc, rtsp-server: revert to RTSP RFC handling of
+    sendonly/recvonly attributes
+  + rtpvrawpay: fix payloading with very large mtu sizes where
+    everything fits into a single RTP packet
+  + v4l2: Fix hard-coded enabled v4l2 probe on Linux/ARM
+  + v4l2: Disable DMABuf for emulated formats when using libv4l2
+  + v4l2: Always set colorimetry in S_FMT
+  + asfdemux: Set stream-format field for H264 streams and handle
+    H.264 in bytestream format
+  + x265enc: Fix tagging of keyframes on output buffers
+  + ladspa: Fix critical during plugin load on Windows
+  + decklink: Fix COM initialisation on Windows
+  + h264parse: fix re-use across pipeline stop/restart
+  + mpegtsmux: fix force-keyframe event handling and PCR/PMT
+    changes that would confuse some players with generated HLS
+    streams
+  + adaptivedemux: Support period change in live playlist
+  + rfbsrc: Fix support for applevncserver and support NULL pool in
+    decide_allocation
+  + jpegparse: Fix APP1 marker segment parsing
+  + h265parse: Make caps writable before modifying them, fixes
+    criticals
+  + fakevideosink: request an extra buffer if enable-last-sample is
+    enabled
+  + wasapisrc: Don't provide a clock based on WASAPI's clock
+  + wasapi: Only use audioclient3 when low-latency, as it might
+    otherwise glitch with slow CPUs or VMs
+  + wasapi: Don't derive device period from latency time, should
+    make it more robust against glitches
+  + audiolatency: Fix wave detection in buffers and avoid bogus pts
+    values while starting
+  + msdk: fix plugin load on implementations with only HW support
+  + msdk: dec: set framerate to the driver only if provided, not in
+    0/1 case
+  + msdk: Don't set extended coding options for JPEG encode
+  + rtponviftimestamp: fix state change function init/reset causing
+    races/crashes on shutdown
+  + decklink: fix initialization failure in windows binary
+  + ladspa: Fix critical warnings during plugin load on Windows and
+    fix dependencies in meson build
+  + gl: fix cross-compilation error with viv-fb
+  + qmlglsink: make work with eglfs_kms
+  + rtspclientsink: Don't deadlock in preroll on early close
+  + rtspclientsink: Fix client ports for the RTCP backchannel
+  + rtsp-server: Fix session timeout when streaming data to client
+    over TCP
+  + vaapiencode: h264: find best profile in those available, fixing
+    negotiation errors
+  + vaapi: remove custom GstGL context handling, use GstGL instead.
+    Fixes GL Context sharing with WebkitGtk on wayland
+  + gst-editing-services: various fixes
+  + gst-python: bump pygobject req to 3.8;
+    fix GstPad.set_query_function(); dist autogen.sh and
+    configure.ac in tarball
+  + g-i: pick up GstVideo-1.0.gir from local build directory in
+    GstGL build
+  + g-i: update constant values for bindings
+  + avoid duplicate symbols in plugins across modules in static
+    builds
+  + ... and many, many more!
+
+-------------------------------------------------------------------
+Tue Apr 17 10:56:41 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.14.0:
+  + Highlights:
+    - WebRTC support: real-time audio/video streaming to and from
+      web browsers;
+    - Experimental support for the next-gen royalty-free AV1 video
+      codec
+    - Video4Linux: encoding support, stable element names and
+      faster device probing;
+    - Support for the Secure Reliable Transport (SRT) video
+      streaming protocol;
+    - RTP Forward Error Correction (FEC) support (ULPFEC);
+    - RTSP 2.0 support in rtspsrc and gst-rtsp-server;
+    - ONVIF audio backchannel support in gst-rtsp-server and
+      rtspsrc;
+    - playbin3 gapless playback and pre-buffering support;
+    - Tee, our stream splitter/duplication element, now does
+      allocation query aggregation which is important for efficient
+      data handling and zero-copy;
+    - QuickTime muxer has a new prefill recording mode that allows
+      file import in Adobe Premiere and FinalCut Pro while the file
+      is still being written;
+    - rtpjitterbuffer fast-start mode and timestamp offset
+      adjustment smoothing;
+    - souphttpsrc connection sharing, which allows for connection
+      reuse, cookie sharing, etc;
+    - nvdec: new plugin for hardware-accelerated video decoding
+      using the NVIDIA NVDEC API;
+    - Adaptive DASH trick play support;
+    - ipcpipeline: new plugin that allows splitting a pipeline
+      across multiple processes;
+    - Major gobject-introspection annotation improvements for large
+      parts of the library API;
+    - GStreamer C# bindings have been revived and seen many updates
+      and fixes;
+    - The externally maintained GStreamer Rust bindings had many
+      usability improvements and cover most of the API now.
+      Coinciding with the 1.14 release, a new release with the 1.14
+      API additions is happening.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 30 12:13:18 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 1.12.5:
+  + Bugs fixed: bgo#789646, bgo#791743.
+- Drop upstream fixed patches:
+  + gst-rtsp-server-add-annotations-and-API-guards.patch.
+  + gst-rtsp-server-gst_rtsp_context_get_current.patch.
+  + gst-rtsp-server-rtsp-client-add-type-annotations.patch.
+  + gst-rtsp-server-Set-udpsink_out-ttl-mc-property.patch.
+
+-------------------------------------------------------------------
+Mon Mar 26 13:32:35 UTC 2018 - dimstar@opensuse.org
+
+- Drop pkgconfig(libcgroup) BuildRequires: libcgroup's
+  functionality is largely deprecated by systemd and the two
+  actually clash in some ways which cause bug reports.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:31:55 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 12 22:32:46 UTC 2018 - bjorn.lie@gmail.com
+
+- Add upstream bug fix patches:
+  + gst-rtsp-server-rtsp-client-add-type-annotations.patch.
+  + gst-rtsp-server-gst_rtsp_context_get_current.patch.
+  + gst-rtsp-server-add-annotations-and-API-guards.patch.
+
+-------------------------------------------------------------------
+Tue Jan  9 11:39:09 UTC 2018 - zaitor@opensuse.org
+
+- Add gst-rtsp-server-Set-udpsink_out-ttl-mc-property.patch: rtsp:
+  Set udpsink_out ttl-mc property on creation (bgo#791743).
+- Clean up spec, silence some rpmlint warnings.
+- Drop explicit libgstrtspserver-1_0-0 and
+  typelib-1_0-GstRtspServer-1_0 Obsoletes and Provides: Not needed
+  and only leads to a rpmlint warning.
+- Add gstreamer-rtsp-server-rpmlintrc: Filter out bogus warning
+  about missing dependencies in devel package.
+
+-------------------------------------------------------------------
+Mon Dec 11 20:24:14 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.4:
+  + Bugs fixed: bgo#789646, bgo#769521.
+
+-------------------------------------------------------------------
+Mon Sep 18 21:56:48 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.3:
+  + Bugs fixed: bgo#784094, bgo#786457.
+
+-------------------------------------------------------------------
+Fri Jul 14 12:01:51 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.2:
+  + No changes, stable version bump only.
+
+-------------------------------------------------------------------
+Wed Jun 21 08:57:36 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.1:
+  + No changes, stable version bump only.
+
+-------------------------------------------------------------------
+Wed May 10 12:38:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.12.0:
+  + No changes, stable version bump only.
+- Changes from version 1.11.91:
+  + gi: Fix some annotations and docstrings.
+  + Automatic update of common submodule.
+- Changes from version 1.11.90:
+  + examples: make test-launch pipeline shared by default as well.
+  + gstreamer-rtsp-server: Add both srcdir and builddir to the
+    include path.
+
+-------------------------------------------------------------------
+Sat Feb 25 00:29:34 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.2:
+  + Meson build fixes.
+  + Minor changes and fixes.
+
+-------------------------------------------------------------------
+Thu Feb 23 20:25:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.11.1:
+  + Bugs fixed: bgo#758062, bgo#771830, bgo#774173, bgo#774640,
+    bgo#776867, bgo#777037, bgo#774416.
+
+-------------------------------------------------------------------
+Thu Feb 23 20:25:05 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.4:
+  + Minor tweaks and fixes.
+
+-------------------------------------------------------------------
+Mon Jan 30 16:48:37 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.10.3:
+  + Bugs fixed: bgo#755329, bgo#776343, bgo#776345.
+
+-------------------------------------------------------------------
+Sun Jan  1 13:31:30 UTC 2017 - jengelh@inai.de
+
+- Summary updates.
+
+-------------------------------------------------------------------
+Sat Dec  3 19:07:31 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.2:
+  + Bugs fixed: bgo#765673, bgo#770239.
+
+-------------------------------------------------------------------
+Sun Nov 27 12:42:14 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.10.1:
+  + Meson update.
+- Changes from version 1.10.0:
+  + Bugs fixed: bgo#771983, bgo#772478, bgo#773640.
+
+-------------------------------------------------------------------
+Fri Aug 19 19:45:29 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.3 (boo#996937):
+  + g-i: pass compiler env to g-ir-scanner.
+- Changes from version 1.8.2:
+  + rtsp-session: RFC2326 does not allow a space between ; and
+    timeout in the Session header.
+  + rtsp-stream:
+    - Fix crash on cleanup with shared media and multiple udpsrc.
+    - Always bind to ANY when address is a multicast address and
+      not only on Windows.
+- Rename package to gstreamer-rtsp-server. Align with the other
+  gstreamer packages. Also obsolete and provide the previous ones
+  to ease updates.
+
+-------------------------------------------------------------------
+Wed Jun 15 14:27:03 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + bgo#764744: Crashes when multiple udpsrc are created for each
+    client on a shared media, misses tracking and cleanup.
+  + bgo#766619: Space between ; and timeout= in session header is
+    not RFC2326 compliant.
+
+-------------------------------------------------------------------
+Thu Apr 21 08:48:19 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.1:
+  + No changes, version bump only.
+
+-------------------------------------------------------------------
+Sat Mar 26 20:52:00 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.8.0:
+  + Hardware-accelerated zero-copy video decoding on Android
+  + New video capture source for Android using the
+    android.hardware.Camera API.
+  + Windows Media reverse playback support (ASF/WMV/WMA).
+  + New tracing system provides support for more sophisticated
+    debugging tools.
+  + New high-level GstPlayer playback convenience API.
+  + Initial support for the new Vulkan API, see Matthew Waters'
+    blog post for more details.
+  + Improved Opus audio codec support: Support for more than two
+    channels; MPEG-TS demuxer/muxer can now handle Opus;
+    sample-accurate encoding/decoding/transmuxing with Ogg,
+    Matroska, ISOBMFF (Quicktime/MP4), and MPEG-TS as container;
+    new codec utility functions for Opus header and caps handling
+    in pbutils library. The Opus encoder/decoder elements were
+    also moved to gst-plugins-base (from -bad), and the opus RTP
+    depayloader/payloader to -good.
+  + GStreamer VAAPI module now released and maintained as part of
+    the GStreamer project.
+  + Asset proxy support in the GStreamer Editing Services.
+  + Bugs fixed: bgo#740509.
+
+-------------------------------------------------------------------
+Tue Dec 15 11:40:41 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.2:
+  + rtsp-server: Change the logic so we don't pop a NULL context.
+
+-------------------------------------------------------------------
+Sun Nov  1 08:23:57 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.6.1:
+  + gst-rtsp-server: Retain reference to rtsp-media when preparing.
+  + rtsp-stream: GstBin leak in udp-mcast case.
+- Changes from version 1.6.0:
+  + For changelog, see mainpackage changes, everything is condensed
+    there.
+- Drop grs-rtsp-fix-double-unlock-in_get_buffer_size.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Wed Aug  5 13:59:12 UTC 2015 - zaitor@opensuse.org
+
+- Add grs-rtsp-fix-double-unlock-in_get_buffer_size.patch: Fixes an
+  abort when calling gst_rtsp_media_get_buffer_size() because of
+  double g_mutex_unlock () usage (bgo#745434).
+
+-------------------------------------------------------------------
+Fri Dec 26 11:15:05 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.5:
+  + rtsp-stream: leaks srtp decoder when leaving rtpbin
+    (bgo#739481).
+
+-------------------------------------------------------------------
+Fri Nov 14 11:33:10 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + rtsp-client: mikey memory leaks (bgo#739383).
+- Changes from version 1.4.3:
+  + No changes.
+- Changes from version 1.4.2:
+  + rtsp-media: Make sure that sequence numbers are monotonic after
+    pause (bgo#736017).
+  + rtsp-client: Protect saved clients watch with a mutex
+    (bgo#735570).
+
+-------------------------------------------------------------------
+Thu Aug 28 20:15:57 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + RTSP PLAY with specified range replies with wrong range
+    (bgo#732644).
+
+-------------------------------------------------------------------
+Fri Mar 14 10:15:18 UTC 2014 - zaitor@opensuse.org
+
+- Initial packaging, version 1.4.0.
+

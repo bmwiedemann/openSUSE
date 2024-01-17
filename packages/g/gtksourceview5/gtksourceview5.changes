@@ -1,0 +1,388 @@
+-------------------------------------------------------------------
+Sun Sep 17 01:20:12 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 5.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  3 00:17:57 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 5.9.0:
+  + This is a release candidate for GNOME 45.
+  + Documentation improvements.
+  + Various introspection improvements.
+  + New languages: Blueprint.
+  + Updated languages: C, C++, Rust, Python3, Shell, Java, OCaml.
+  + Updated style schemes: cobalt.
+  + GtkSourceBuffer gained a "loading" property which is toggled
+    when GtkSourceFileLoader is loading the buffer from storage.
+  + More defensiveness improvements in GtkSourceBufferOutputStream.
+  + A leak in Vim emulation has been fixed.
+  + Vim emulation now supports visual replace.
+  + Scheduling of batched workers has been improved with
+    gtk_source_scheduler_add().
+  + Snippets are now initialized from GtkSourceView.constructed()
+    to allow for applications to hook buffer creation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 17 19:39:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.8.0:
+  + vim: avoid large numbers of small deletions in filter command.
+  + adwaita.xml: add missing def:deletion style.
+  + todotxt.lang: add support for todo.txt format.
+
+-------------------------------------------------------------------
+Mon Mar  6 16:55:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.7.2:
+  + Documentation improvements
+  + Updated languages: java.lang, html.lang
+  + Fix Y offset calculation when GtkTextView:top-margin is set
+  + Completion now requeries providers upon manual activation
+  + CSS updates for completion popover to reduce allocation jitter
+  + Assistants will more aggresively update positioning. It is
+    heavily suggested that you have GNOME/gtk!5564 in whatever GTK
+    you are linking against to reduce the potential for frames
+    rendered with missing allocations/text
+
+-------------------------------------------------------------------
+Sun Feb 26 20:23:04 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Replace python3-gi-docgen build requirement with the more
+  reliable pkgconfig(gi-docgen).
+
+-------------------------------------------------------------------
+Fri Feb 24 18:49:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.7.1:
+  + Updated languages: c.lang, docker.lang, nix.lang
+  + Add missing version functions to GIR generation.
+  + Moving through snippets now retires the completion popover.
+  + Documentation updates.
+- Changes from version 5.7.0:
+  + gutterrenderermarks: avoid potential infinite loop with marks
+  + build: drop unnecessary vapigen check
+  + cpp.lang: add constinit keyword
+  + java.lang: fix escaped characters
+  + lean.lang: strings may contain line breaks
+  + nix.lang: Add Nix syntax highlighting
+  + reasonml.lang: add ReasonML language
+
+-------------------------------------------------------------------
+Wed Jan 11 11:09:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.6.2:
+  + Add styling for 'def:note' to Adwaita and Adwaita-dark
+  + Adwaita-dark.xml: soften match color a bit
+  + Adwaita.xml:
+    - add def:statement
+    - soften search highlight
+  + Docs: Fix RegexError reference
+  + completion:
+    - add note about what when is_trigger can activate
+    - fix typo in documentation
+  + completionlistbox: lock listmodel items during snapshot
+  + completionprovider: fix documentation for get_priority()
+  + docs: add note about library initialization
+  + glsl.lang: set no-spell-check on default context
+  + kate: use italic for def:emphasis
+  + listsnapshot:
+    - add snapshotting listmodel
+    - allow mismatched hold()/release()
+  + llvm.lang: Add missing 'sge' keyword
+  + map: defer adjustment changes to next frame
+  + regex: Fix incorrect bitflag operations
+  + snippets: fix GtkSourceView:enable-snippets use without
+    completion
+  + testsuite/regex: walk subject as utf8 unless G_REGEX_RAW
+  + testsuite: use G_REGEX_RAW with invalid UTF-8
+  + vim: implement rudimentary search through previous commands
+
+-------------------------------------------------------------------
+Thu Sep 22 07:55:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.6.1:
+  + Improve resilience of GtkSourceHover assistants to prevent
+    unbreakable grabs by application added widgets.
+  + Hide all assistants when unmapping GtkSourceViews.
+  + Don't dismiss hover delay timeout from pointer clicks, allow
+    them to click through to display hover information.
+  + Don't show new assistants unless parent GtkSourceView is
+    mapped. This can improve situations with tabbed editors and
+    asynchronous operations to load completion, hover data, etc.
+  + Additional Vim commands.
+  + Updated languages: go.lang.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 10:38:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.6.0:
+  + Updated languages: awk.lang, lean.lang
+  + Updated style schemes: Adwaita.xml, Adwaita-dark.xml,
+    solarized-light.xml, solarized-dark.xml, cobalt.xml.
+  + A bug with input grabs has been fixed when using GtkSourceHover
+    to create interactive tooltips in a stack or notebook.
+  + highlight-current-line is only rendered when the toplevel is
+    active.
+  + Merging of snippet bundles handles tooltips now.
+  + The snippet manager now delays snippet parsing until needed.
+  + Completion of snippets is now lazier resulting in less memory
+    and CPU usage.
+  + Informative tooltips for snippets are now more aggressively
+    dismissed.
+  + Scrolling now dismisses interactive hover tooltips.
+  + Use of Escape now dismisses the completion list and forwards
+    the event to the GtkSourceView, improving integration of Vim
+    emulation.
+  + Snippet filtering correctness has been improved when
+    adding/removing characters from the filter text.
+  + Assistants such as the completion list defer repositioning to
+    the next frame tick which improves some situations with
+    widgetry not having an allocation when snapshotted.
+  + A new GtkSourceCompletion::provider-model-changed signal has
+    been added which allows observation of providers by external
+    tooling. This can be used to implement features like
+    "top matches" from various completion providers.
+  + Testsuite improvements.
+  + GtkSourceView now uses GSignalGroup and GBindingGroup from
+    GLib, and therefore bumps our GLib dependency as it would be
+    necessary with updated GTK releases anyway.
+  + GtkSourceHoverDisplay now specifies a CSS element name for use
+    by applications in styling.
+  + GtkSourceCompletion now uses PANGO_UNDERLINE_SINGLE_LINE and
+    PANGO_WEIGHT_BOLD Pango attributes for highlighting fuzzy
+    matches. This improves visibility when used with certain
+    character sets.
+  + Splicing of Pango attributes has been improved for completion
+    which ensures the merging does not result in missing
+    attributes.
+  + Some methods have been marked as virtual for Vala.
+  + Updated translations.
+- Add optional pkgconfig(fontconfig) and pkgconfig(pangoft2)
+  BuildRequires: build fonconfig support.
+
+-------------------------------------------------------------------
+Thu Aug 11 16:04:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.5.1:
+  + Many fixes to GtkSourceSnippet parsing and expaction.
+  + Various test-suite fixes.
+  + The snippet completion provider now avoids inflating snippet
+    objects until they are inserted.
+  + Input-method integration improvements for custom indenters.
+  + Performance improvements to GtkSourceBuffer.
+  + Performance improvements when translating improperly encoded
+    documents to fallback hexadecimal characters.
+  + Disable GtkSourceBuffer::cursor-moved signal while loading
+    buffers with GtkSourceFileLoader.
+  + Adwaita.xml styling fixes for def:error.
+  + More profiling integration with sysprof.
+  + Updated languages: lean, latex, chdr, cpphdr.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 18 07:49:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.5.0:
+  + Build fixes for deprecated meson features and MSVC
+    improvements.
+  + Fixes for hover assistant placement and display.
+  + A number of improvements to Vim emulation.
+  + The overview map can now avoid redrawing in a number of
+    scenarios.
+  + The completion popover can now avoid repositioning in a number
+    of scenarios.
+  + The completion popover now hides before resetting grid content.
+  + Language specifications can now provide a suggested suffix or
+    name for new files. GNOME Text Editor has examples for using
+    this new opt-in metadata.
+  + Various fixes display of snippet assistants.
+  + New languages: twig.lang.
+  + Updated translations.
+- Add explicit pkgconfig(libpcre2-8) BuildRequires as meson checks
+  for it, already pulled in by other dependencies.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Mon Jun 13 11:26:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.4.2:
+  + Updated languages: c.lang, perl.lang.
+  + Updated style-schemes: Adwaita-dark, solarized-light,
+    solarized-dark.
+  + Gutter renderers are now provided a prelight quark for lines
+    when the pointer is over the gutter.
+  + Hover assistants now avoid synthesized motion which is used
+    much more often in GTK 4 when dealing with crossing-events.
+  + Hover assistants will now dismiss themselves when the cursor
+    moves.
+  + GtkSourceMap has reduced how often it needs to do allocation by
+    ignoring spurious notify::upper and value-changed signals from
+    GtkTextView's vertical GtkAdjustment.
+  + The testsuite has gained some correctness improvements.
+  + The Vim emulation's register implementation is now shared
+    between buffers as it would be expected in Vim.
+  + Snippets have gained some robustness improvements including the
+    ability to simplify results from the snippet parser, more
+    defensive behavior, and being lazier when possible.
+  + Tabbing through focus-positions in snippets will now
+    immediately jump to the new position if scrolling is required
+    instead of animating as it results in better placement of
+    tooltip assistants.
+  + Assistants including completion, hover, and interactive
+    tooltips now reduce how often they request presentation and
+    position calculation from GDK and ultimately display servers
+    such as Wayland.
+  + Completion windows now take the size of the gutter into account
+    when calculating their position relative to the parent
+    GtkWindow so that the typed-text column remains aligned with
+    typed text in the source view.
+  + Completion has gained robustness improvements to do less work
+    when possible and avoid spinning the frame-clock which could
+    happen in certain scenarios.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Apr 22 10:06:46 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 5.4.1:
+  + Improved styling for style scheme preview widgets. 
+  + Improved styling and positioning of completion windows.
+  + Improved styling for various style schemes.
+  + Unit test fixes.
+  + Hover assistants will no longer be showed if no providers
+    completed successfully to add widgets.
+  + GtkSourceVimIMContext tries to handle various corner cases
+    better with regards to reuse and being removed from an
+    event controller or widget.
+  + GtkSourceCompletionCell has improved fast-paths for resetting
+    cells to empty state when already empty.
+  + Improved sizing and placement of assistants including hover
+    popovers, interactive tooltips, and completion windows.
+  + The overview map has improved it's fallback styling.
+  + The overview map will now properly update when the sourceview's
+    right-margin-position changes.
+  + Fixes to vala.lang for regex detection.
+  + Translation updates.
+
+-------------------------------------------------------------------
+Sun Mar 20 09:22:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.4.0:
+  + Style updates for Adwaita, Adwaita-dark, solarized-light,
+    solarized-dark, Classic, and a new Cobalt-light variant.
+  + Language improvements for C, C++, GTK-DOC, and JSON.
+  + Various header fixes.
+  + Additional API to append/prepend search paths for language
+    manager.
+  + Allow loading language specifications via GResources.
+  + A new "weight" attribute for style schemes which allows more
+    control than just bold="true".
+  + Various Vim emulation fixes.
+  + GtkSourceView now requires GTK 4.6 for various CSS improv.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jan 10 12:07:39 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.3.2:
+  + Support ctrl+shift+v in Vim insert mode to paste similar to
+    terminal.
+  + Improve placement of H/L movements in Vim emulation.
+  + Various build system improvements.
+  + Fix running testsuite before installation.
+  + Bump GTK required version to match actual requirements in code.
+  + Remove CSS line-height usage until we can depend on GTK 4.6.
+
+-------------------------------------------------------------------
+Fri Jan  7 14:59:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.3.1:
+  + python3.lang: add support for .pyi glob and f-strings.
+  + c.lang: Hightlight _t and _T types.
+  + rust.lang: You can now style lifetime and self in style
+    schemes.
+  + javascript.lang: Support for shebang's have been added.
+  + GObject Introspection improvements.
+  + Fixes to work around improper selections in some style-schemes.
+  + Vim: many improvements to and compatibility fixes in emulation.
+  + Tracing: More modules now use sysprof for tracing information.
+  + Ctrl+shift+u works again when auto-indent is enabled, which was
+    stealing input before ctrl+shift+u could process the unicode
+    input.
+  + Gutter renderers now more aggresively cache color information
+    for drawing highlights and more.
+  + GtkSourceGutterRendererLines avoids using GMarkup just for bold
+    attributes as using a single referenced PangoAttrList is
+    faster.
+  + Adwaita and Adwaita-dark have been updated and improved along
+    with more specific highlighting for a number of languages.
+  + You can now set `bold="false"` on current-line-number to
+    disable bold weight on the current line number.
+  + Drawing of background grids have been improved when margins are
+    used as well as trying harder to align to the character grid
+    and taking CSS line-height into account when possible.
+  + Current line number is no longer drawn specially when
+    selections are active. The highlight-current-line is also
+    disabled during selections.
+  + GtkSourceFileLoader now tries to use aligned pages when loading
+    buffers from storage and reads in a multiple of the page size.
+  + Build fixes for macOS.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jan  5 20:33:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.3.0:
+  + Documentation has been updated to use gi-docgen.
+  + Style schemes now support the <metadata> tag similar to
+    languages.
+  + Selections for most style schemes bundled with GtkSourceView
+    are now translucent and do not modify the foreground color.
+  + The Vala bindings have moved from the Gtk namespace to the
+    GtkSource namespace to match the bindings in all other
+    languages.
+  + A new Vim emulator in the form of GtkSourceVimIMContext. This
+    can emulate basic features such as Normal, Insert, Replace,
+    Visual, Visual Line, and Command Bar modes. Additionally, many
+    Vim-style motions and text-objects are supported.
+  + Updated language specs: rst.lang, c.lang, cpp.lang, vala.lang,
+    spice.lang, lean.lang, and yara.lang.
+  + Updated style schemes which improve the quality of output when
+    used with non-standard GTK themes.
+  + A new GtkSourceStyleSchemePreview widget.
+  + The GtkSourceStyleSchemeChooserWidget now uses
+    GtkSourceStyleSchemePreview to display style schemes.
+  + Improve autocompletion styling when used with libadwaita.
+  + Improvements to cell alignment in the gutter particularly
+    useful when the CSS line-height attribute is used.
+  + Many fit-n-finish improvements to GtkSourceMap.
+  + The gutter line renderer now adapts to more situations where it
+    will need to redraw based on highlight-current-line.
+  + Build system improvements.
+  + Updated translations.
+- Replace gtk-doc BuildRequires with python3-gi-docgen: follow
+  upstreams port to gi-docgen.
+- Fix rpmlint warning: use explicit dependency on
+  libgtksourceview-5-0 from -devel package instead of relying on
+  the virtual %{name} provides.
+
+-------------------------------------------------------------------
+Fri Sep  3 19:38:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.2.0:
+  + Add support for drawing a highlight line between the gutter and
+    text area. kate.xml uses this to more closely match Kate.
+  + Python 3 is now preferred over Python 2.
+  + Fixes for moving words.
+  + A new scheduler API to help with background buffer work
+  + Improvements to YARA syntax.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  1 16:53:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial package for openSUSE, version 5.1.0.

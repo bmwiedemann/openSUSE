@@ -1,0 +1,34 @@
+--- configure.ac.orig	2023-06-01 16:12:26.009999917 +0200
++++ configure.ac	2023-06-01 16:13:31.109471335 +0200
+@@ -447,11 +447,11 @@
+ AC_SUBST(FFTW_CFLAGS)
+ AC_SUBST(FFTW_LIBS)
+ 
+-PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.56.0])
++PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.54.0])
+ AC_SUBST(GLIB_CFLAGS)
+ AC_SUBST(GLIB_LIBS)
+ 
+-PKG_CHECK_MODULES([GOBJECT], [gobject-2.0 >= 2.56.0 glib-2.0 >= 2.56.0 gmodule-2.0 >= 2.56.0 gthread-2.0 >= 2.56.0])
++PKG_CHECK_MODULES([GOBJECT], [gobject-2.0 >= 2.54.0 glib-2.0 >= 2.54.0 gmodule-2.0 >= 2.54.0 gthread-2.0 >= 2.54.0])
+ AC_SUBST(GOBJECT_CFLAGS)
+ AC_SUBST(GOBJECT_LIBS)
+ 
+@@ -459,7 +459,7 @@
+ AC_DEFINE([HAVE_GLIB_2_44], [1], [GLib 2.44 available])
+ AC_DEFINE([HAVE_GLIB_2_52], [1], [GLib 2.52 available])
+ AC_DEFINE([HAVE_GLIB_2_54], [1], [GLib 2.54 available])
+-AC_DEFINE([HAVE_GLIB_2_56], [1], [GLib 2.56 available])
++AC_DEFINE([HAVE_GLIB_2_56], [0], [GLib 2.56 available])
+ AC_DEFINE([HAVE_GLIB_2_62], [0], [GLib 2.62 available])
+ AC_DEFINE([HAVE_GLIB_2_68], [0], [GLib 2.68 available])
+ 
+@@ -469,7 +469,7 @@
+ AM_CONDITIONAL([HAVE_INTROSPECTION], [test "x$enable_introspection" == xyes])
+ # GOBJECT_INTROSPECTION_CHECK([1.30.0])
+ 
+-PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.56.0])
++PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.54.0])
+ AC_SUBST(GIO_CFLAGS)
+ AC_SUBST(GIO_LIBS)
+ 

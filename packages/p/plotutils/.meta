@@ -1,0 +1,11 @@
+<package name="plotutils" project="openSUSE:Factory">
+  <title>GNU Plotting Utilities</title>
+  <description>The GNU plotting utilities consist of seven command line programs: the
+graphics programs `graph', `plot', `tek2plot', and `plotfont', and the
+mathematical programs `spline', `ode', and `double'.  GNU `libplot' is
+distributed with these programs; it is the library on which the
+graphics programs are based. `Libplot' is a function library for
+device-independent two-dimensional vector graphics, including vector
+graphics animations under the X Window System.</description>
+  <devel project="Publishing" package="plotutils"/>
+</package>

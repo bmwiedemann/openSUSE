@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>786b19344c9bee76b4167f6fde05d323</srcmd5>
+    <version>0.30.0</version>
+    <time>1507755481</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531816</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4040500649654edf19e8a8c9fa04957d</srcmd5>
+    <version>0.30.0</version>
+    <time>1518596730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571093</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d437d7720d238d4c8c6ba1cab647294f</srcmd5>
+    <version>0.40.0</version>
+    <time>1526220035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599360</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9f0527d3dc3353cfa1746339c4ce6d65</srcmd5>
+    <version>0.50.0</version>
+    <time>1537971207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637943</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>072711b7b609485dae370fab9b18d451</srcmd5>
+    <version>0.51.1</version>
+    <time>1557833506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694270 from glaubitz)</comment>
+    <requestid>694391</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>612a58e703ab4f22183544359fcf1e14</srcmd5>
+    <version>0.60.0</version>
+    <time>1570710535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735175 from glaubitz)</comment>
+    <requestid>735684</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b3e1fefe23ee73d75b7d986f84bbed3</srcmd5>
+    <version>0.61.0</version>
+    <time>1601652033</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.61.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 830753 from glaubitz)</comment>
+    <requestid>830894</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d1252c983dbf1b99e9a33f4606e5fffd</srcmd5>
+    <version>0.61.0</version>
+    <time>1607548595</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853891</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e6db805884335fcad2833aae4cdb2d3e</srcmd5>
+    <version>1.0.0</version>
+    <time>1610051141</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 861058 from glaubitz)</comment>
+    <requestid>861072</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>67faaef8a5d02f9cd306e97ebfb8cfb5</srcmd5>
+    <version>2.0.0</version>
+    <time>1633365638</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 922973 from glaubitz)</comment>
+    <requestid>922990</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5d9bd4b5b2a354802caa7c07450bb2be</srcmd5>
+    <version>3.0.0</version>
+    <time>1665504208</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1009729 from glaubitz)</comment>
+    <requestid>1009769</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3eea9b888954397a705a5ac6c9bb1415</srcmd5>
+    <version>4.0.0</version>
+    <time>1692110432</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1104014 from glaubitz)</comment>
+    <requestid>1104030</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="kube-no-trouble" project="openSUSE:Factory">
+  <title>kube-no-trouble</title>
+  <description>Easily check your cluster for use of deprecated APIs </description>
+  <devel project="devel:kubic" package="kube-no-trouble"/>
+  <url>https://github.com/doitintl/kube-no-trouble</url>
+</package>

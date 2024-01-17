@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Jan  1 10:05:36 UTC 2024 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.0
+  * Added filter curve switch plus recommended 6581 filter setting.
+
+-------------------------------------------------------------------
+Sat Dec 23 11:31:16 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.1
+  * Get rid of PATH_MAX (#24).
+
+-------------------------------------------------------------------
+Thu Jul  6 20:50:59 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.5.0
+  * Correctly detect notes (fixes #21)
+  * display config file location in high verbose mode
+  * stilview: handle character conversion
+  * some work toward making playback exact to millisecond (#4)
+
+-------------------------------------------------------------------
+Sun Mar 19 15:43:14 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.1
+  * A few iconv fixes
+
+-------------------------------------------------------------------
+Tue Feb 14 13:02:39 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 2.4.0

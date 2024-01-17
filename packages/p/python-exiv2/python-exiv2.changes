@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Oct 11 15:14:43 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- fix files section 
+
+-------------------------------------------------------------------
+Wed Oct 11 09:53:14 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.14.1:
+  - Added enums for XmpStruct and XmpArrayType
+  - Added method for copy-free access to XmpTextValue raw data.
+  - Fix occasional segfault with Image.io() of in-memory image
+    data.
+  - Add data() method to access Exiv2::StringValueBase raw bytes.
+  - Enable video support in binary wheels.
+  - Automatically cast Exiv2::Value return values to correct
+    type.
+  - Exiv2::byte* return values are converted to a simple buffer
+    object.
+  - Deprecated some superseded features. Use 'python -Wd' when
+    testing.
+  - Exiv2's Date & Time structs can be used from Python.
+  - Removed Value.downCast methods deprecated in v0.7.0.
+  - Reduced probability of segfaults by keeping references to
+    other objects.
+  - Fix iterator bug introduced in v0.10.0. (Issue #7.)
+- Remove now superfluous py3exiv2-link-boost.patch
+
+-------------------------------------------------------------------
+Thu Oct  5 11:22:05 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.12.0
+  -  Fix bug #2027823 (Compilation errors with exiv2-0.28)
+- Remove the exiv2_0-28-0.patch patch again.
+
+-------------------------------------------------------------------
+Thu Aug 10 21:33:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.12.3:
+  - upstream doesn't release proper changelog
+
+-------------------------------------------------------------------
+Fri Aug  4 23:06:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add exiv2_0-28-0.patch making the package compatible with the
+  latest exiv2 0.28 (lp#2027823).
+
+-------------------------------------------------------------------
+Thu Oct 13 17:56:29 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.11.0
+  no changelog
+
+-------------------------------------------------------------------
+Thu Jul  8 17:14:26 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.3
+  * Add support for tag Xmp.mwg-rs.Regions/mwg-rs:
+
+-------------------------------------------------------------------
+Tue Oct 20 06:39:52 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.8.0
+  * Add XmpSeq support
+  * Add a datetime conversion to Python with iso format, update some unittests
+- Added py3exiv2-link-boost.patch
+
+-------------------------------------------------------------------
+Tue Jul  2 14:47:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.1:
+  * Various fixes to work with new exiv releases
+
+-------------------------------------------------------------------
+Mon Apr  8 19:10:25 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.6.1
+  * Add the streaming of the preview data
+
+-------------------------------------------------------------------
+Thu Jan 31 14:57:44 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.5.0
+  * Several fixes for exiv2-0.27
+- Removed exiv2-1.0.27.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Jan 29 11:22:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to build with latest exiv2 releases:
+  * exiv2-1.0.27.patch
+
+-------------------------------------------------------------------
+Thu Jun 28 09:38:11 UTC 2018 - asn@cryptomilk.org
+
+- Update to version 0.3.0
+  * Add some convenient functions
+
+-------------------------------------------------------------------
+Sun May  6 07:55:37 UTC 2018 - asn@cryptomilk.org
+
+- Initial package

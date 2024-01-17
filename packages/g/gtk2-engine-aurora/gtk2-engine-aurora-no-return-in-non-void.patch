@@ -1,0 +1,12 @@
+diff -uNr old-aurora-1.5.1//src/animation.c aurora-1.5.1/src/animation.c
+--- old-aurora-1.5.1//src/animation.c	2008-05-04 21:59:36.000000000 +0200
++++ aurora-1.5.1/src/animation.c	2010-06-29 11:59:23.197402075 +0200
+@@ -40,6 +40,8 @@
+ 		gtk_widget_queue_resize (widget);
+ 	else
+ 		gtk_widget_queue_draw (widget);
++
++	return TRUE;
+ }
+ 
+ /* ensures that the timer is running */

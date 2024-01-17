@@ -1,0 +1,24 @@
+--- isight-firmware-tools-1.6.orig/configure.ac
++++ isight-firmware-tools-1.6/configure.ac
+@@ -24,8 +24,8 @@ AC_SUBST(IFT_LIBS)
+ PKG_CHECK_MODULES(LOAD, [libusb])
+ AC_SUBST(LOAD_CFLAGS)
+ AC_SUBST(LOAD_LIBS)
+-
+-udevdir=${libdir}/udev
++PKG_PROG_PKG_CONFIG
++udevdir=$($PKG_CONFIG --variable=udevdir udev)
+ AC_SUBST(udevdir)
+ 
+ dnl GETTEXT
+--- isight-firmware-tools-1.6.orig/src/Makefile.am
++++ isight-firmware-tools-1.6/src/Makefile.am
+@@ -21,7 +21,7 @@ ift_load_SOURCES = udev.c load.c load.h
+ ift_load_CFLAGS = $(IFT_CFLAGS) $(LOAD_CFLAGS) $(AM_CFLAGS)
+ ift_load_LDADD = $(IFT_LIBS) $(LOAD_LIBS)
+ 
+-rulesdir = ${sysconfdir}/udev/rules.d
++rulesdir = ${udevdir}/rules.d
+ rules_DATA = isight.rules
+ 
+ # AC_SUBST sucks

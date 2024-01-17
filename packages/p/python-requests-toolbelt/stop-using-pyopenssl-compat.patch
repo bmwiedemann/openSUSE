@@ -1,0 +1,66 @@
+---
+ requests_toolbelt/adapters/x509.py |   27 ++++-----------------------
+ 1 file changed, 4 insertions(+), 23 deletions(-)
+
+--- a/requests_toolbelt/adapters/x509.py
++++ b/requests_toolbelt/adapters/x509.py
+@@ -8,6 +8,7 @@ X.509 certificate without needing to con
+ """
+ 
+ from OpenSSL.crypto import PKey, X509
++from OpenSSL.SSL import Context, TLS_CLIENT_METHOD
+ from cryptography import x509
+ from cryptography.hazmat.primitives.serialization import (load_pem_private_key,
+                                                           load_der_private_key)
+@@ -20,16 +21,6 @@ import requests
+ 
+ from .. import exceptions as exc
+ 
+-"""
+-importing the protocol constants from _ssl instead of ssl because only the
+-constants are needed and to handle issues caused by importing from ssl on
+-the 2.7.x line.
+-"""
+-try:
+-    from _ssl import PROTOCOL_TLS as PROTOCOL
+-except ImportError:
+-    from _ssl import PROTOCOL_SSLv23 as PROTOCOL
+-
+ 
+ PyOpenSSLContext = None
+ 
+@@ -84,7 +75,6 @@ class X509Adapter(HTTPAdapter):
+ 
+     def __init__(self, *args, **kwargs):
+         self._import_pyopensslcontext()
+-        self._check_version()
+         cert_bytes = kwargs.pop('cert_bytes', None)
+         pk_bytes = kwargs.pop('pk_bytes', None)
+         password = kwargs.pop('password', None)
+@@ -136,15 +126,6 @@ class X509Adapter(HTTPAdapter):
+                 except ImportError:
+                     PyOpenSSLContext = None
+ 
+-    def _check_version(self):
+-        if PyOpenSSLContext is None:
+-            raise exc.VersionMismatchError(
+-                "The X509Adapter requires at least Requests 2.12.0 to be "
+-                "installed. Version {} was found instead.".format(
+-                    requests.__version__
+-                )
+-            )
+-
+ 
+ def check_cert_dates(cert):
+     """Verify that the supplied client cert is not invalid."""
+@@ -190,7 +171,7 @@ def create_ssl_context(cert_byes, pk_byt
+         raise ValueError('Cert and key could not be parsed from '
+                          'provided data')
+     check_cert_dates(cert)
+-    ssl_context = PyOpenSSLContext(PROTOCOL)
+-    ssl_context._ctx.use_certificate(X509.from_cryptography(cert))
+-    ssl_context._ctx.use_privatekey(PKey.from_cryptography_key(key))
++    ssl_context = Context(TLS_CLIENT_METHOD)
++    ssl_context.use_certificate(X509.from_cryptography(cert))
++    ssl_context.use_privatekey(PKey.from_cryptography_key(key))
+     return ssl_context

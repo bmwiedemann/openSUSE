@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0be0b19464886014bdd40a054f3703f0</srcmd5>
+    <version>0.1.4.20190105T165320.c163d19</version>
+    <time>1554189678</time>
+    <user>dimstar_suse</user>
+    <comment>required by kodi.tv</comment>
+    <requestid>689336</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>12d381f92a816fac37a2f60c459c3172</srcmd5>
+    <version>0.2.0</version>
+    <time>1588972147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0, no code changes
+  refresh cpluff.patch</comment>
+    <requestid>801844</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1a83e7c3bdc779985625d0b1de6cfade</srcmd5>
+    <version>0.2.0</version>
+    <time>1622759630</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897121</requestid>
+  </revision>
+</revisionlist>

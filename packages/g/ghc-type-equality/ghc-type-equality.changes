@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Oct 10 15:27:07 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update type-equality to version 1 revision 6.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Mar 12 15:56:04 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update type-equality to version 1 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug 10 17:14:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update type-equality to version 1 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:21:43 UTC 2021 - psimons@suse.com
+
+- Update type-equality to version 1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jan 11 10:06:17 UTC 2021 - psimons@suse.com
+
+- Update type-equality to version 1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:31 UTC 2020 - psimons@suse.com
+
+- Update type-equality to version 1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:23 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:15 UTC 2020 - psimons@suse.com
+
+- Add type-equality at version 1.
+

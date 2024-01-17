@@ -1,0 +1,6 @@
+<package name="emacs" project="openSUSE:Factory">
+  <title>GNU Emacs Base Package</title>
+  <description>Basic package for the GNU Emacs editor. Requires emacs-x11 or
+emacs-nox.</description>
+  <devel project="editors" package="emacs"/>
+</package>

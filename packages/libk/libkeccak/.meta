@@ -1,0 +1,13 @@
+<package name="libkeccak" project="openSUSE:Factory">
+  <title>Keccak-family hashing library, including SHA-3</title>
+  <description>libkeccak is a bit-oriented lanewise implementation of the Keccak-
+family with support for extend output size, state marshalling,
+algorithm tuning with implicit parameters, secure erasure of
+sensitive data, and HMAC.
+
+A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libkeccak"/>
+  <url>https://github.com/maandree/libkeccak</url>
+</package>

@@ -1,0 +1,6 @@
+addFilter(".*name-repeated-in-summary.*")
+addFilter(".*binary-or-shlib-calls-gethostbyname.*")
+addFilter(".*dangling-symlink.*/usr/libexec/mktex/public.*")
+addFilter(".*obsolete-not-provided.*")
+addFilter(".*macro-in-comment.*")
+addFilter(".*no-binary.*")

@@ -1,0 +1,8 @@
+<package name="perl-ExtUtils-XSpp" project="openSUSE:Factory">
+  <title>XS for C++</title>
+  <description>XS++ preprocessor, for C++.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-ExtUtils-XSpp"/>
+  <url>http://search.cpan.org/dist/ExtUtils-XSpp</url>
+</package>

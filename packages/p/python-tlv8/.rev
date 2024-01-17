@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0becf06a470f10833d9c70cd1ba96ad4</srcmd5>
+    <version>0.10.0</version>
+    <time>1688052521</time>
+    <user>dimstar_suse</user>
+    <comment>required by nitropy aka pynitrokey, which is a management utility for Nitrokeys</comment>
+    <requestid>1095809</requestid>
+  </revision>
+</revisionlist>

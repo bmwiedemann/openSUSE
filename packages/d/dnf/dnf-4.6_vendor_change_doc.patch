@@ -1,0 +1,28 @@
+From 2b4c1e8a6e9970a8a6b8030e0ed4c7fda59c9be5 Mon Sep 17 00:00:00 2001
+From: Christian Voegl <cvoegl@suse.com>
+Date: Thu, 11 Mar 2021 14:51:59 +0100
+Subject: [PATCH] Document Fals as default for allow_vendor_change
+
+allow_vendor_change defaults to False due to
+ libdnf-0.55.0-Switch-allow_vendor_change-off.patch in libdnf,
+so the documentation has to be changed here
+---
+ doc/conf_ref.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/conf_ref.rst b/doc/conf_ref.rst
+index 9a939d8b..4b9059da 100644
+--- a/doc/conf_ref.rst
++++ b/doc/conf_ref.rst
+@@ -65,7 +65,7 @@ configuration file by your distribution to override the DNF defaults.
+     :ref:`boolean <boolean-label>`
+ 
+     If disabled dnf will stick to vendor when upgrading or downgrading rpms.
+-    Default is ``True``
++    Default is ``False``
+ 
+     .. WARNING:: This option is currently not supported for `downgrade` and `distro-sync` commands
+ 
+-- 
+2.26.2
+

@@ -1,0 +1,5 @@
+<package name="mktorrent" project="openSUSE:Factory">
+  <title>Command line utility to create BitTorrent metainfo files</title>
+  <description></description>
+  <devel project="filesharing" package="mktorrent"/>
+</package>

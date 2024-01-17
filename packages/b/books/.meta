@@ -1,0 +1,23 @@
+<package name="books" project="openSUSE:Factory">
+  <title>Several Linux Books</title>
+  <description>This package contains some books, which are installed under
+/usr/share/doc/Books.
+
+The books are:
+
+&quot;Linux Installation and getting started&quot; by Matt Welsh
+
+&quot;Linux Programmers Guide&quot; by Sven Goldt and Sven van der Meer
+
+&quot;Linux Network Administrators Guide, Second Edition&quot; by Olaf Kirch and
+Terry Dawson
+
+&quot;Linux System Administrators Guide&quot; by Lars Wirzenius
+
+&quot;Linux Users Guide&quot; by Larry Greenfield
+
+&quot;Linux Kernel 2.4 Internals&quot; by Tigran Aivazian
+
+&quot;The Linux Kernel Module Programming Guide&quot; by Ori Pomerantz</description>
+  <devel project="Documentation" package="books"/>
+</package>

@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Wed Nov  8 10:23:50 UTC 2017 - mardnh@gmx.de
+
+- Split udev rules to separate package
+
+-------------------------------------------------------------------
+Wed Nov  8 08:33:45 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups and broken %post line
+
+-------------------------------------------------------------------
+Mon May  8 17:57:39 UTC 2017 - mardnh@gmx.de
+
+- Use package-meta for tar_scm service and add git-core
+  to BuildRequires
+
+-------------------------------------------------------------------
+Sun Apr 23 15:51:17 UTC 2017 - mardnh@gmx.de
+
+- add patch for fixing issues with pkgconfig on 64bit platforms
+  * libmirisdr-cmake-libsuffix.diff
+- fix naming of the changes file
+  * bmirisdr.changes -> libmirisdr.changes
+- use some specfiles variables to ease maintenance
+
+-------------------------------------------------------------------
+Wed Mar  8 18:26:06 UTC 2017 - mpluskal@suse.com
+
+- Packaging cleanup:
+  * Run spec-cleaner
+  * Add _service
+
+-------------------------------------------------------------------
+Fri Feb 19 12:06:52 UTC 2016 - dl8fcl@t-online.de
+
+- udev_rules_update added for openSUSE
+
+-------------------------------------------------------------------
+Mon Jan 11 22:56:19 UTC 2016 - wk@ire.pw.edu.pl - 0.0.20130608-9.1
+
+- fixed build for Tumbleweed
+
+-------------------------------------------------------------------
+Sun Feb 15 10:54:28 UTC 2015 - wk@ire.pw.edu.pl - 0.0.20130608-8.1
+
+- fixed build for Tumbleweed
+- some mods to specfile
+
+-------------------------------------------------------------------
+Fri Oct 31 22:38:04 UTC 2014 - wk@ire.pw.edu.pl - 0.0.20130608-7.1
+
+- fixed build for SLE 12
+
+-------------------------------------------------------------------
+Sat Sep 27 22:30:13 UTC 2014 - wk@ire.pw.edu.pl - 0.0.20130608-6.1
+
+- fixed build for openSUSE 13.2
+- removed timestamp from html docs
+
+-------------------------------------------------------------------
+Mon Mar 24 23:41:55 UTC 2014 - wk@ire.pw.edu.pl - 0.0.20130608-5.1
+
+- fixed udev rules location for openSUSE 13.1+ and Fedora 19+
+
+-------------------------------------------------------------------
+Sun Oct 20 18:24:34 UTC 2013 - wk@ire.pw.edu.pl - 0.0.20130608-4.1
+
+- updated to git 20130608
+
+-------------------------------------------------------------------
+Mon Apr 15 00:00:00 UTC 2013 - wk@ire.pw.edu.pl - 0.0.20130113-3.1
+
+- fixed some rpmlimt warnings
+
+-------------------------------------------------------------------
+Sat Feb 2 00:00:00 UTC 2013 - wk@ire.pw.edu.pl - 0.0.20130113-2.1
+
+- git 20130113
+- initial spec file.
+
+

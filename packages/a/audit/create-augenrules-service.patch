@@ -1,0 +1,97 @@
+Index: audit-3.1.1/init.d/augenrules.service
+===================================================================
+--- /dev/null
++++ audit-3.1.1/init.d/augenrules.service
+@@ -0,0 +1,29 @@
++[Unit]
++Description=auditd rules generation
++After=auditd.service
++Documentation=man:augenrules(8)
++
++[Service]
++Type=oneshot
++## NOTE: augenrules expect any rules to be added to /etc/audit/rules.d/
++ExecStart=/sbin/augenrules --load
++# We need RemainAfterExit=true so augenrules is called again
++# in case auditd.service is restarted.
++RemainAfterExit=true
++
++### Security Settings ###
++MemoryDenyWriteExecute=true
++LockPersonality=true
++ProtectControlGroups=true
++ProtectKernelModules=true
++ProtectHome=true
++RestrictRealtime=true
++# for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelLogs=true
++ReadWritePaths=/etc/audit
+Index: audit-3.1.1/init.d/auditd.service
+===================================================================
+--- audit-3.1.1.orig/init.d/auditd.service
++++ audit-3.1.1/init.d/auditd.service
+@@ -15,15 +15,16 @@ ConditionKernelCommandLine=!audit=0
+ ConditionKernelCommandLine=!audit=off
+ 
+ Documentation=man:auditd(8) https://github.com/linux-audit/audit-documentation
++Requires=augenrules.service
++# This unit clears rules on stop, so make sure that augenrules runs again
++PropagatesStopTo=augenrules.service
+ 
+ [Service]
+ Type=forking
+ PIDFile=/run/auditd.pid
+ ExecStart=/sbin/auditd
+-## To not use augenrules, copy this file to /etc/systemd/system/auditd.service
+-## and comment/delete the next line and uncomment the auditctl line.
+-## NOTE: augenrules expect any rules to be added to /etc/audit/rules.d/
+-ExecStartPost=-/sbin/augenrules --load
++## To not use augenrules: copy this file to /etc/systemd/system/auditd.service,
++## uncomment the next line, and comment the Requires=augenrules.service above.
+ #ExecStartPost=-/sbin/auditctl -R /etc/audit/audit.rules
+ # By default we clear the rules on exit. To disable this, comment
+ # the next line after copying the file to /etc/systemd/system/auditd.service
+@@ -47,7 +48,6 @@ ProtectClock=true
+ ProtectKernelTunables=true
+ ProtectKernelLogs=true
+ # end of automatic additions 
+-ReadWritePaths=/etc/audit
+ 
+ [Install]
+ WantedBy=multi-user.target
+Index: audit-3.1.1/init.d/Makefile.am
+===================================================================
+--- audit-3.1.1.orig/init.d/Makefile.am
++++ audit-3.1.1/init.d/Makefile.am
+@@ -26,7 +26,8 @@ EXTRA_DIST = auditd.init auditd.service
+ 	auditd.cron libaudit.conf auditd.condrestart \
+ 	auditd.reload auditd.restart auditd.resume \
+ 	auditd.rotate auditd.state auditd.stop \
+-	audit-stop.rules augenrules audit-functions
++	audit-stop.rules augenrules audit-functions \
++	augenrules.service
+ libconfig = libaudit.conf
+ if ENABLE_SYSTEMD
+ initdir = /usr/lib/systemd/system
+@@ -54,6 +55,7 @@ if ENABLE_SYSTEMD
+ 	mkdir -p ${DESTDIR}${legacydir}
+ 	mkdir -p ${DESTDIR}${libexecdir}
+ 	$(INSTALL_SCRIPT) -D -m 644 ${srcdir}/auditd.service ${DESTDIR}${initdir}
++	$(INSTALL_SCRIPT) -D -m 644 ${srcdir}/augenrules.service ${DESTDIR}${initdir}
+ 	$(INSTALL_SCRIPT) -D -m 750 ${srcdir}/auditd.rotate ${DESTDIR}${legacydir}/rotate
+ 	$(INSTALL_SCRIPT) -D -m 750 ${srcdir}/auditd.resume ${DESTDIR}${legacydir}/resume
+ 	$(INSTALL_SCRIPT) -D -m 750 ${srcdir}/auditd.reload ${DESTDIR}${legacydir}/reload
+@@ -72,6 +74,7 @@ uninstall-hook:
+ 	rm ${DESTDIR}${sysconfdir}/${libconfig}
+ if ENABLE_SYSTEMD
+ 	rm ${DESTDIR}${initdir}/auditd.service
++	rm ${DESTDIR}${initdir}/augenrules.service
+ 	rm ${DESTDIR}${legacydir}/rotate
+ 	rm ${DESTDIR}${legacydir}/resume
+ 	rm ${DESTDIR}${legacydir}/reload

@@ -1,0 +1,39 @@
+From 0968afbfb809a05b2b95e3c7a8ad3d9e614583d2 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 9 May 2019 23:54:48 +0200
+Subject: [PATCH 110/130] Mark GNOME 3.32 as supported, all others as
+ unsupported
+
+The class syntax is unsupported in pre-ES6 versions, and
+using ExtensionUtils instead of convenience.js is only possible
+in 3.32.
+---
+ data/metadata.json | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
+
+diff --git a/data/metadata.json b/data/metadata.json
+index 27b0a75..fbe5740 100644
+--- a/data/metadata.json
++++ b/data/metadata.json
+@@ -10,17 +10,7 @@
+     "gettext-domain": "hamster-shell-extension",
+     "settings-schema": "org.gnome.shell.extensions.project-hamster",
+     "shell-version": [
+-        "3.10",
+-        "3.12",
+-        "3.14",
+-        "3.16",
+-        "3.18",
+-        "3.20",
+-        "3.22",
+-        "3.24",
+-        "3.26",
+-        "3.28",
+-        "3.30"
++        "3.32"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": "contact@projecthamster.org"
+-- 
+2.26.1
+

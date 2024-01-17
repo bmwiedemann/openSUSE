@@ -1,0 +1,23 @@
+---
+ texmf-dist/scripts/latex2man/latex2man |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- texmf-dist/scripts/latex2man/latex2man
++++ texmf-dist/scripts/latex2man/latex2man	2019-05-10 09:09:23.080680391 +0000
+@@ -21,6 +21,7 @@ require 5.0004_03;
+ 
+ use Getopt::Std;
+ use File::Basename;
++use File::Temp qw/tempfile/;
+ no warnings 'once';
+ # use strict 'vars';
+ 
+@@ -31,7 +32,7 @@ sub date2str;
+ $VERSION = "1.29";
+ $DATE    = date2str ('$Date: 2018/11/25 13:05:37 $' =~ m|(\d+/\d+/\d+)|);
+ 
+-$tmp = "/tmp/$CMD.$$";
++(undef, $tmp) = tempfile();
+ 
+ ##################################################################
+ # check option and arguments

@@ -1,0 +1,243 @@
+-------------------------------------------------------------------
+Mon Jul 31 06:17:56 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.60.1:
+  New features:
+  * Add data histogram tool (#140).
+  * Monitor for open files being externally modified and allow
+    reloading (#124).
+  * Add "Delete comment and children" context menu command to
+    delete a comment and any comments encapsulated by it (#198).
+  * Allow dragging tabs between windows or out to new ones.
+  Quality of life improvements:
+  * Use virtual offsets in "Select range" dialog.
+  * Don't re-open files to save when there are no changes (#193).
+  * Improve performance when large numbers of comments are defined.
+  * Open original file when passed a rehex-meta file on the command line (#207).
+  Character set handling:
+  * Add <charset = "XXX"> syntax to templates (#184).
+  * Add character set option to text search (#182, #200).
+  * Add IBM codepage 866 and Windows-1251 (#208).
+  Binary templates:
+  * Expose current array index as ArrayIndex when expanding arrays
+    of structs in templates (#191).
+  * Fix true/false not being usable inside template functions/structs (#197).
+  * Add new ReadString(), SPrintf(), SetComment(), StringLengthBytes(),
+    ArrayPush(), ArrayPop() and OffsetOf() template function.
+  * Fix repeated execution of the same switch() block in a template (#202).
+  * Add 'private' variables to template language.
+  * Fix template format strings that expand to further format tokens.
+  * Fix template error when converting a float to an int.
+  * Remember recently selected templates (#183).
+  * Implement lexical variable scoping in templates and allow functions
+    to access global variables defined above them (#190).
+  * Add "Apply template from cursor" option to binary template tool.
+  Bug fixes:
+  * Fix crash when running rehex for the first time on some systems (#194).
+  * Correctly draw insert cursor over highlighted data and at the end of the file (#196).
+  * Fix cases where the strings tool would appear to run forever with an empty file.
+  * Remove strings from the strings panel when they are deleted from the file.
+  * Fix crash when attempting to open a directory/bundle on macOS.
+
+-------------------------------------------------------------------
+Fri Nov  4 13:21:23 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+- Use the default lua version (currently 5.4): buildrequire
+  lua-busted instead of lua53-busted, which then fails to run
+  against the default lua interpreter.
+  See also boo#1199151
+
+-------------------------------------------------------------------
+Mon Oct 24 10:40:15 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.4:
+  * Allow passing arguments to structs created via ArrayResize()
+    and ArrayExtend() template functions.
+  * Fix parsing of whitespace in template array dereference (#175).
+  * Display offsets in comments panel (#165).
+  * Improve performance of templates that declare many (thousands+)
+    of variables in the file.
+  * Add Error() function for templates (#186).
+  * Fix crash when attempting to use string as a file variable
+    in templates (#185).
+  * Add plugin for annotating pcap files.
+
+-------------------------------------------------------------------
+Sun Jun 26 09:42:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.3:
+  * Correctly nest comments when updating comments panel (#169).
+  * Update text in comments panel when a comment is modified.
+  * Fix display of >4GiB virtual offsets in files that are <=4GiB (#170).
+  * Add support for code page 437 (IBM) and 932/936/949/950 (Microsoft).
+  * Fix handling of multibyte character boundaries in document view.
+  * Draw wide characters in document view (#173).
+  * Move forwards/backwards and select whole instructions from disassembly in document view.
+  * Don't capture tab key press in text area of document view.
+  * Add missing error checks.
+  * Add number base option to "Jump to offset" dialog.
+  * Drawing optimisations (improves responsiveness), particularly on macOS.
+  * Fix some undefined behaviour issues.
+
+-------------------------------------------------------------------
+Sat Jun 25 10:14:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.2:
+  * Fix integer overflow issue.
+
+-------------------------------------------------------------------
+Fri Apr 29 19:13:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  * Only macOS related changes
+
+-------------------------------------------------------------------
+Mon Apr 25 08:16:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * Added "x86 disassembly syntax" to "View" menu to allow selecting
+    between Intel or AT&T notation for x86 disassembly (#142).
+  * Handle file open message used for "Open With" on macOS (#144).
+  * Added --compare switch to jump straight into comparing two files (#141).
+  * Fix timer leak that can cause a crash when closing the compare
+    window or strings panel.
+  * Add import and export functions for Intel Hex files (#102).
+  * Add online help (#147).
+  * Add Bitmap Data Visualisation tool (#29).
+  * Add Binary Template support (#138).
+  * Save new files without the execute bit set (#154
+  * Include highlight colour names in context menu (#153
+  * Save write protect setting in rehex-meta.json (#143).
+  * Fix several occasional crashes.
+
+-------------------------------------------------------------------
+Fri Jan  7 14:01:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.1:
+  * Fix text rendering glitches that can occur when displaying
+    control characters and some Unicode ones, depending which font
+    is in use (worst affected is the default Windows font).
+
+-------------------------------------------------------------------
+Fri Jan  7 14:00:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Add data types for common text encodings (Unicode, ISO-8859)
+    text displayed or typed into the text view on the right will
+    be decoded or encoded appropriately (#10).
+  * Treat pasted text as text rather than a string of raw bytes.
+  * Add 8-bit integer data types.
+  * Don't mark new files as unsaved.
+  * Store cursor position history and allow jumping backwards/forwards (#81).
+  * Allow jumping to previous/next difference in data compare window (#131).
+  * Collapse long ranges of identical data in data compare window (#85).
+  * Added "Jump to offset in main window" to data compare window context menu.
+  * Added shortcuts for comparing data (#103).
+  * Add support for other encodings to strings tool (#106).
+  * Add write protect flag to prevent accidental changes to file
+    data during analysis (#130).
+  * Respect system cursor blink speed setting (#112).
+
+-------------------------------------------------------------------
+Thu Aug 26 16:28:32 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.92:
+  * Reduce persistent memory usage (#52).
+  * Fully undo virtual mapping changes in one step (#126).
+  * Fix build dependency errors (#129).
+  * Add "Find previous" button to search dialogs (#111).
+  * Fix hard-to-see colours in "Decode values" panel on some
+    systems (#127).
+  * Fix build errors on FreeBSD (#133).
+  * Prevent document from jumping around when the window is resized
+    or disassembly is in progress (#132).
+  * Fix build errors when using wxWidgets 3.1.5 and newer.
+  * Refactor selection handling to make sense in virtual
+    section view (#125).
+  * Add font face setting to "View" menu (#128).
+  * Correctly track whether files have been modified
+    since saving (#122).
+
+-------------------------------------------------------------------
+Thu Jun 24 11:06:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Fix Factory build
+
+-------------------------------------------------------------------
+Fri May  7 11:46:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.3.91
+  * Show disassembly of machine code in the main document view
+  * Add float/double types to "Set data type" menu
+  * Initial support for Lua plugins.
+  * Process sections from PE EXE/DLL headers
+  * Virtual segment mapping and display
+- Use optflags
+
+-------------------------------------------------------------------
+Fri Nov 13 22:41:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.1 (2020-11-13)
+  * Correctly display signed 16-bit values in "Decode values" panel.
+  * Fix status bar offset going out of sync.
+  * Move cursor when a row in the "Comments" panel is double clicked.
+  * Focus document after updating position/selection via "Comments"
+    panel.
+
+-------------------------------------------------------------------
+Wed Nov 11 15:04:28 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+ Version 0.3.0 (2020-11-10)
+  * Use byte grouping setting from main window in diff window.
+  * Use Capstone disassembler rather than LLVM.
+  * Support disassembling 16-bit x86 machine code.
+  * Don't update tools which aren't visible.
+  * Unhardcode linux launcher icon file type.
+  * Fix an uncommon use-after-free crash when closing tabs in
+    diff window.
+   * Support for disassembling 6800/68000 and MOS6502 instruction
+     sets (requires recent Capstone version).
+  * Close document when tab is clicked with middle mouse button.
+  * Don't create .rehex-meta files when there is nothing to save.
+  * Implement Strings tool to find and list ASCII strings in the
+    file.
+  * Add option to calculate automatic bytes per line in whole
+    byte groups.
+  * Add "Fill range" tool for overwriting ranges of bytes with a
+    pattern.
+  * Preserve column alignment after comments.
+  * Mark a document dirty if highlighting is changed.
+  * Add data type annotations.
+  * Show ranges marked as integers in their decoded form in the
+    hex view.
+  * Performance improvements for documents with large numbers of
+    comments.
+  version 0.2.0:
+  * Allow copying comments from a document and pasting them
+    elsewhere in the same document or into another one.
+  * Fixed bounds check when clicking on nested comments in a
+    document.
+  * Added context menu when right clicking on a comment in a
+    document.
+  * Optionally highlight byte sequences which match the current
+    selection. ("Highlight data matching selection" or
+    "PatternMatchHighlight").
+  * Allow copying cursor offset from document context menu.
+  * Correctly display offsets over 4GiB in the status bar.
+  * Display offsets as XXXX:XXXX rather than XXXXXXXX:XXXXXXXX
+    when the file size is under 4GiB.
+  * Add per-document option for dec/hex offset display.
+  * When first byte after a comment is deleted, show that the
+    comment was deleted rather than leaving phantom comment on
+    screen until regions are repopulated.
+   * Add side-by-side comparison of chunks of data from files.
+     Select data and choose "Compare..." from context menu to
+     open diff window.
+  * Clean up search threads when a tab is closed while a search
+    is running.
+  * Display bytes which have been modified since the file was
+    saved in red.
+
+-------------------------------------------------------------------
+Fri Mar 13 12:58:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v0.1.0)

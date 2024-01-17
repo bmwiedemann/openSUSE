@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Fri Jul 14 05:26:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.5:
+  * Release v0.9.5
+  * k8s.io & go version bump (#393)
+  * Modify oh-my-zsh example (#346)
+  * fix go.sum tidy
+  * Fix README.md "alias" to "rename" (#375)
+  * Windows installation instructions (winget) (#365) (#381)
+  * Add prerequisite for completion to work after brew install
+    (#368)
+  * Bump golang.org/x/sys to fix compilation on M1 macs (#360)
+  * Windows installation instructions (Chocolatey) (#350)
+  * Run Go 1.17 mod tiny (#336)
+  * Fix typo on README.md (#341)
+  * add build cache to actions (#339)
+  * README.md: HTTP => HTTPS (#337)
+  * go mod tidy
+  * Bump Go to 1.17 in GHA (#335)
+  * overhaul the readme
+  * Make Completions Installable with Antibody (#263)
+  * Update README.md
+  * Wrap context names in single quotes to prevent completion
+    script to fail (#316)
+  * docs: fix starchart url (#306)
+  * Add s390x build (#270)
+  * Add interactive delete op (#304)
+  * Release v0.9.4
+
+-------------------------------------------------------------------
+Fri Jan 07 14:23:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.9.4:
+  * stop using XDG_CACHE_HOME as home directory (#299)
+  * add -V/--version flag to go implementations (#295)
+
+-------------------------------------------------------------------
+Wed May 26 17:37:45 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec with recommendations from SR#895481
+
+-------------------------------------------------------------------
+Tue May 18 20:28:41 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of kubectx 

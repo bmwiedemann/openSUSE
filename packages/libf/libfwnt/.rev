@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea30508edddf817a98e129e513c3f1c5</srcmd5>
+    <version>0~20150104</version>
+    <time>1422626389</time>
+    <user>dimstar_suse</user>
+    <comment>new package - part of libyal 2015 refresh</comment>
+    <requestid>280823</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24755cadd627f4c0ba2944df4fcab244</srcmd5>
+    <version>0~20151206</version>
+    <time>1454628722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357454</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aa009559e2b4f039dcc769b6f540eb5c</srcmd5>
+    <version>0~20160418</version>
+    <time>1475359635</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427426</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b82ee93feef07e1e1b6ee400cfcbbc7</srcmd5>
+    <version>0~20170115</version>
+    <time>1487681226</time>
+    <user>dimstar_suse</user>
+    <comment>2017 update</comment>
+    <requestid>458538</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6347011bab5ab129a6d5e124d7bcfc90</srcmd5>
+    <version>0~20170115</version>
+    <time>1509722600</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535312</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0b82a663a6743594b37339dfa774608c</srcmd5>
+    <version>0~20181227</version>
+    <time>1560337709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695358</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ad7709b10acffa9216c64a2aa6d65a1f</srcmd5>
+    <version>0~20181227</version>
+    <time>1588324287</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799055</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dac5ecd86b17759d51354036fd91ef1d</srcmd5>
+    <version>0~20200723</version>
+    <time>1608221129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856524</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f39b4e60813c530e15ecf54de66325ed</srcmd5>
+    <version>20210421</version>
+    <time>1623363491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898711</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b9ebdad508e28ce152544c559694e630</srcmd5>
+    <version>20210717</version>
+    <time>1626986605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907611</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>511fa905c17fc1cbe036322e6530cae6</srcmd5>
+    <version>20210906</version>
+    <time>1637970677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210906</comment>
+    <requestid>933961</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f66af2e9d13ff8fbb3ebaf5d45304689</srcmd5>
+    <version>20210906</version>
+    <time>1654199677</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>980467</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3c0fee0a96b9bcc067977da3ca377fc5</srcmd5>
+    <version>20210906</version>
+    <time>1660051726</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994005</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>18601e7afadd7c49b9b1174d6cf1d77d</srcmd5>
+    <version>20220922</version>
+    <time>1666602785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220922</comment>
+    <requestid>1030601</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>72859d16e6f5cd9d7c36bb7cba762fe2</srcmd5>
+    <version>20220922</version>
+    <time>1669629990</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038476</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>a1c8d902eb7ee3179dab7b8364d5d0c8</srcmd5>
+    <version>20220922</version>
+    <time>1691594735</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103019</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1ae10f118a245763facac76fc8e88f47</srcmd5>
+    <version>20231124</version>
+    <time>1700865283</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231124</comment>
+    <requestid>1128511</requestid>
+  </revision>
+</revisionlist>

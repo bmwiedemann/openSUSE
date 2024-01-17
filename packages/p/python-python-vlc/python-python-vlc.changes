@@ -1,0 +1,97 @@
+-------------------------------------------------------------------
+Sat Nov  4 18:05:18 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.20123 (no changelog)
+
+-------------------------------------------------------------------
+Wed Apr 19 16:13:56 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.18122 (no changelog)
+
+-------------------------------------------------------------------
+Sat Dec  3 21:50:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.0.18121 
+  No Changelog
+
+-------------------------------------------------------------------
+Tue Mar  1 07:07:11 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.16120 (no changelog supplied)
+
+-------------------------------------------------------------------
+Wed Apr 21 07:33:38 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.12118 (no changelog supplied)
+
+-------------------------------------------------------------------
+Thu Apr  8 15:43:24 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.12117 (no changelog supplied)
+
+-------------------------------------------------------------------
+Sat Jul 25 14:10:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.11115 (no changelog supplied)
+
+-------------------------------------------------------------------
+Wed Apr 29 13:34:40 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.9113 (no changelog supplied)
+
+-------------------------------------------------------------------
+Sat Aug  3 18:38:14 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.7110 (no changelog supplied)
+
+-------------------------------------------------------------------
+Fri Apr 19 07:20:27 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.0.6109 (no changelog supplied)
+
+-------------------------------------------------------------------
+Wed Dec 19 18:44:18 UTC 2018 - aloisio@gmx.com
+
+- Update to version 3.0.4106 (no changelog supplied)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:53:11 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue May  8 15:52:15 UTC 2018 - aloisio@gmx.com
+
+- Update to version 3.0.102 (no changelog supplied)
+
+-------------------------------------------------------------------
+Mon Feb 12 17:43:07 UTC 2018 - aloisio@gmx.com
+
+- Update to version 3.0.101
+
+- Refreshed fix-docs.patch
+
+-------------------------------------------------------------------
+Sun Dec  3 06:21:09 UTC 2017 - aloisio@gmx.com
+
+- Added libvlc5 as runtime requirement
+
+-------------------------------------------------------------------
+Fri Nov 10 17:09:33 UTC 2017 - alarrosa@suse.com
+
+- Update to version 2.2.6100:
+  * Python bindings: fix regexp to handle deprecated APIs
+  * Rename gtkvlc.py to gtk2vlc.py (using old pygtk2 version)
+  * Gtk3 example
+  * python bindings generator: handle bitshifted chars in enums
+  * python-vlc: allow to specify lib and plugin path
+  * python bindings: update generator version number
+  * Python bindings: update generated bindings for 2.2 and dev. versions
+  * python bindings: configure logging module when running standalone
+  * python bindings: refactor, move template files to their own directory
+  * Generate an appropriate PyPI installer package for the generated module
+
+-------------------------------------------------------------------
+Tue Sep  5 17:29:09 UTC 2017 - alarrosa@suse.com
+
+- Initial release of python-python-vlc 1.1.2 

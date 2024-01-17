@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Fri Apr 20 06:04:11 UTC 2018 - coolo@suse.com
+
+- updated to 1.52
+   see /usr/share/doc/packages/perl-Test-Pod/Changes
+
+  1.52  2018-04-19
+      * *.psgi files are now recognized as pod-containing files (thanks, Tom
+        Hukins!)
+      * explicit perl 5.8 dependency removed
+
+-------------------------------------------------------------------
+Tue Jul  7 09:24:43 UTC 2015 - coolo@suse.com
+
+- updated to 1.51
+   see /usr/share/doc/packages/perl-Test-Pod/Changes
+
+  1.51  2015-07-04 20:36:53Z
+      * convert tooling from Module::Build to ExtUtils::MakeMaker (resolves
+        circular dependency with MB on perl 5.21+)
+
+-------------------------------------------------------------------
+Sun Jun  7 09:07:27 UTC 2015 - coolo@suse.com
+
+- updated to 1.50
+   see /usr/share/doc/packages/perl-Test-Pod/Changes
+
+  1.50  2015-05-28T21:42:48Z
+      * Restored support for ignoring directories listed in
+        `%Test::Pod::ignore_dirs`, inadvertently dropped by the switch to
+        File::Find in v1.46. Thanks to Julien ÉLIE for the report and diagnosis!
+
+-------------------------------------------------------------------
+Wed May 13 12:59:29 UTC 2015 - coolo@suse.com
+
+- updated to 1.49
+   see /usr/share/doc/packages/perl-Test-Pod/Changes
+
+  1.49  2015-05-12T17:30:58Z
+      * Changed license in the README to "Same as Perl" to match the license
+        listed in `META.yml`, and in the POD as of v1.42.
+      * Tightened up the heuristic for matching Perl batch files to require
+        that the file end in `.bat`, as described in the documentation.
+        Patch from Luca Ferrari.
+      * Simplified some of the matching code. Patch from Luca Ferrari.
+      * Transferred ownership of the repository to the perl-pod organization on
+        GitHub.
+      * Removed the Pod testing test from the distribution. Seems silly for a
+        module designed for testing Pod, right? But it's considered best
+        practice to do Pod testing in development only, not in a release.
+
+-------------------------------------------------------------------
+Tue Jun  4 15:06:39 UTC 2013 - coolo@suse.com
+
+- updated to 1.48
+   * Fixed test failure with versions of Pod::Simple lower than 3.24. Thanks
+     to Martin Holste and Tatsuhiko Miyagawa for the reports.
+
+   * Fixed failing test on Pod::Simple 3.27 and higher.
+
+   * Fixed a crash when `all_pod_files_ok()` finds no files to test. Thanks
+     to H.Merijn Brand.
+   * Switched from custom file searching code to File::Find. Suggested by
+     H.Merijn Brand.
+   * Fixed failing test on Pod::Simple 3.24.
+
+-------------------------------------------------------------------
+Wed Aug 17 09:26:44 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  * BuildReq: Pod::Simple, Test::More
+  * Req: Test::Builder::Tester
+
+-------------------------------------------------------------------
+Thu Mar 31 12:33:48 UTC 2011 - coolo@novell.com
+
+- update to 1.45
+ * Removed Module::Build from `build_requires`, since it does nothing
+   out-of-the ordinary, and this keeps it out of the `Makefile.PL`'s
+   `PM_PREREQ`. Per gripe from Peter Scott.
+
+-------------------------------------------------------------------
+Tue Mar 15 08:16:07 UTC 2011 - cfarrell@novell.com
+
+- license update: Artistic 2.0 or GPLv2
+  The README states that the package is under either Artistic 2 (_not_ the
+  standard Perl dual license choice) and GPLv2 (also not the standard Perl
+  dual license choice). Changed in the PDB and LDB already)
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:50 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug 16 15:22:49 UTC 2010 - chris@computersalat.de
+
+- update to 1.44
+  * Restored the `Makefile.PL` by using Module::Build::Compat's
+    "traditional" configuration.
+- recreated by cpanspec 1.78
+- added Author
+
+-------------------------------------------------------------------
+Wed Apr 21 12:34:30 UTC 2010 - chris@computersalat.de
+
+- update to 1.43
+    * Reduced prereq for Test::More to 0.62, prereq for Pod::Simple to 3.05,
+      and added File::Spec to the list of prereqs. The prerequisites were
+      needlessly high, and by reducing them Test::Pod can rely on the core
+      versions of those modules in on Perl 5.8.8. Thanks to Chris Wittmer for
+      the patch.
+- 1.42 - 2010-03-10T19:41:20
+    * Fixed invalid Pod link. Thanks to Markus Sonderegger.
+    * Changed license in the POD to "Same as Perl" to match the license listed in
+      `META.yml`.
+    * Changed `Build.PL` to require Module::Build 0.30. It already does in
+      `configure_requires`, but also doing so on the `use` line helps provide
+      a more useful error message in older toolchain tools that don't use
+      `configure_requires`.
+    * Updated `MANIFEST` so that the `README` is actually included in the
+      distribution.
+    * Now recognizes `.bat` files as Perl files when they contain
+      "--*-Perl-*--" on the first line. Thanks to Olivier 'dolmen' MenguÃ© for
+      the patch (RT #46973).
+    * `all_pod_files_ok()` now operates on directories as well as files.
+      Thanks to Adriano Ferreira for the patch (RT #33025).
+    * Files with no POD now have " (no pod)" added to test name. Thanks to
+      Adriano Ferreira for the patch (RT #34955).
+    * Updated documentation to note that `.PL` files are considered Perl
+      files. Thanks to Adriano Ferreira for the spot (RT #34955).
+    * `all_pod_files_ok()` now lets `pod_file_ok()` set the default test name,
+      rather than doing so itself. Thanks to Adriano Ferreira for the spot (RT
+      #34955).
+- remove obsolete 1.41-deps patch
+- updated License
+- fixed README and added to doc
+
+-------------------------------------------------------------------
+Thu Mar  4 17:12:33 UTC 2010 - chris@computersalat.de
+
+- cleanup spec
+  o fixed deps
+- added deps patch
+  o there is no really need to have Test::More >= 0.70
+  o Pod::Simple is needed for Build
+    but not really >= 3.07, changed to >= 3.05
+
+-------------------------------------------------------------------
+Tue Feb 16 14:28:47 UTC 2010 - coolo@novell.com
+
+- update to 1.41
+   * Maintenance transfered to David Wheeler.
+   * Test::Pod no longer complains about the construct L<text|url>, as it is
+      no longer illegal (as of Perl 5.11.3).
+   * Switched to Module::Build.
+   * Test::Pod now requires Perl 5.8.0.
+
+-------------------------------------------------------------------
+Sun Dec 20 16:42:51 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Sat Jul 25 19:44:45 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Fri Jun 19 01:09:50 CEST 2009 - chris@computersalat.de
+
+- spec fix for perl-macros
+
+-------------------------------------------------------------------
+Tue Jun 16 14:58:13 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+
+-------------------------------------------------------------------
+Sat Jun 13 00:48:58 CEST 2009 - chris@computersalat.de
+
+- some spec mods
+  o updated header
+  o autogen filelist
+
+-------------------------------------------------------------------
+Wed Oct 17 15:05:17 CEST 2007 - pth@suse.de
+
+- Add perl-Pod-Simple to Requires
+- Run testsuite and BuildRequire everything needed to do this.
+- Add perl-Pod-Simple perl-Pod-Escapes to Requires.
+
+-------------------------------------------------------------------
+Mon Sep 18 04:34:30 CEST 2006 - lmuelle@suse.de
+
+- Update to version 0.26.
+  No new functionality in this version.
+  [FIXES]
+  * Fixed a Win32 build bug.
+  * Fixed a bug in the SYNOPSIS.
+  [THINGS THAT MAY BREAK YOUR CODE]
+  * The long-deprecated pod_ok() is now gone, along with all its
+    constants.
+  [ENHANCEMENTS]
+  * Now runs properly under VMS.  Thanks to Peter Edwards.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct 26 15:23:39 CEST 2005 - lmuelle@suse.de
+
+- Update to 1.22.
+- bzip2 source tar ball.
+
+-------------------------------------------------------------------
+Wed Feb 16 22:35:58 CET 2005 - schwab@suse.de
+
+- Don't remove BuildRoot in %install.
+
+-------------------------------------------------------------------
+Wed Feb 16 15:59:25 CET 2005 - lmuelle@suse.de
+
+- Initial SuSE package.

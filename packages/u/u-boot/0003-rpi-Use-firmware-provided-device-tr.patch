@@ -1,0 +1,94 @@
+From d9a7053db3ab0b4dfe26f9a4ea73d0f5ad0c7301 Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <guillaume.gardet@arm.com>
+Date: Fri, 18 Sep 2020 15:27:37 +0200
+Subject: [PATCH] rpi: Use firmware provided device tree
+
+Currently the firmware generates a device tree for us that we could
+just use to adjust ourselves. We then on boot throw that away and
+use our own built-in device tree to configure device access.
+
+This is bad for a multitude of reasons. For starters, it breaks
+overlay support in config.txt, confusing users. Much worse however
+is that we are stuck with individual U-Boot builds per board.
+The firmware can easily give us the right DT depending on the
+target board and revision though.
+
+So let's use the firmware provided device tree instead. That way
+U-Boot as well as payloads loaded by it can automatically adapt
+to variants of RPi hardware.
+
+Signed-off-by: Alexander Graf <agraf@suse.de>
+Signed-off-by: Guillaume Gardet <guillaume.gardet@free.fr>
+---
+ configs/rpi_0_w_defconfig   | 2 +-
+ configs/rpi_2_defconfig     | 2 +-
+ configs/rpi_3_32b_defconfig | 2 +-
+ configs/rpi_3_defconfig     | 2 +-
+ configs/rpi_defconfig       | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
+index ac3b40c1c1..e6765878d1 100644
+--- a/configs/rpi_0_w_defconfig
++++ b/configs/rpi_0_w_defconfig
+@@ -24,7 +24,7 @@ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_MMC=y
+ CONFIG_CMD_USB=y
+ CONFIG_CMD_FS_UUID=y
+-CONFIG_OF_EMBED=y
++CONFIG_OF_BOARD=y
+ CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
+diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
+index b6e06cfe20..0650344526 100644
+--- a/configs/rpi_2_defconfig
++++ b/configs/rpi_2_defconfig
+@@ -25,7 +25,7 @@ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_MMC=y
+ CONFIG_CMD_USB=y
+ CONFIG_CMD_FS_UUID=y
+-CONFIG_OF_EMBED=y
++CONFIG_OF_BOARD=y
+ CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
+diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
+index eadc418927..7f52b508c4 100644
+--- a/configs/rpi_3_32b_defconfig
++++ b/configs/rpi_3_32b_defconfig
+@@ -24,7 +24,7 @@ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_MMC=y
+ CONFIG_CMD_USB=y
+ CONFIG_CMD_FS_UUID=y
+-CONFIG_OF_EMBED=y
++CONFIG_OF_BOARD=y
+ CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
+diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
+index 6890af4d1d..0767518279 100644
+--- a/configs/rpi_3_defconfig
++++ b/configs/rpi_3_defconfig
+@@ -23,7 +23,7 @@ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_MMC=y
+ CONFIG_CMD_USB=y
+ CONFIG_CMD_FS_UUID=y
+-CONFIG_OF_EMBED=y
++CONFIG_OF_BOARD=y
+ CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
+diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
+index 29c10060cf..79b507405d 100644
+--- a/configs/rpi_defconfig
++++ b/configs/rpi_defconfig
+@@ -24,7 +24,7 @@ CONFIG_CMD_GPIO=y
+ CONFIG_CMD_MMC=y
+ CONFIG_CMD_USB=y
+ CONFIG_CMD_FS_UUID=y
+-CONFIG_OF_EMBED=y
++CONFIG_OF_BOARD=y
+ CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y

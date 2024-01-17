@@ -1,0 +1,9 @@
+<package name="compleat" project="openSUSE:Factory">
+  <title>Generate command-line completions using a simple DSL</title>
+  <description>
+Generate tab completion for any shell command by specifying its usage in a familiar manpage-like format.
+
+</description>
+  <devel project="shells" package="compleat"/>
+  <url>https://github.com/mbrubeck/compleat</url>
+</package>

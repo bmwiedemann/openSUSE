@@ -1,0 +1,5 @@
+<package name="kalgebra" project="openSUSE:Factory">
+  <title>Math Expression Solver and Plotter</title>
+  <description>KAlgebra is a math expression solver and plotter.</description>
+  <devel project="KDE:Applications" package="kalgebra"/>
+</package>

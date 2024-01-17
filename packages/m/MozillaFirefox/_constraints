@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <jobs>4</jobs>
+    <disk>
+      <size unit="G">26</size>
+    </disk>
+    <physicalmemory>
+      <size unit="G">15</size>
+    </physicalmemory>
+  </hardware>
+  <hostlabel exclude="true">SLOW_CPU</hostlabel>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">12</size>
+      </disk>
+      <physicalmemory>
+        <size unit="G">5</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+  <!-- LTO disabled - less RAM -->
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <cpu>
+        <flag>asimdrdm</flag>
+      </cpu>
+      <physicalmemory>
+        <size unit="G">14</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

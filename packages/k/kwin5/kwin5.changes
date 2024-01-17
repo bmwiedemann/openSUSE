@@ -1,0 +1,3229 @@
+-------------------------------------------------------------------
+Wed Dec  6 11:46:33 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- Changes since 5.27.9:
+  * plugins/magnifier: Add missing "Zoom In" alt. shortcut
+  * plugins/zoom: Add missing "Zoom In" default alt. shortcut
+  * Adapt CI to renamed plasma-framework and kactivities
+  * Preserve relative order of transient siblings (kde#477262)
+  * Allow running kwin5 windowed in kwin6
+  * layershellv1window: Check isDeleted before activating it
+  * effects: Fix type of X-KDE-Ordering
+  * screencast: Make nvidia use the GLES path
+  * screencast: Fix GLES path
+  * xdgshellwindow: enforce a minimum size for clients (kde#469237)
+  * Actually adjust to KWayland moving to Plasma
+  * Adjust to KWayland moving to Plasma
+  * Adapt to plasma-framework moving to Plasma
+  * Reflect move of KActivities out of Frameworks to Plasma
+
+-------------------------------------------------------------------
+Tue Oct 24 14:24:50 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- Changes since 5.27.8:
+  * platformsupport/scenes/opengl: don't release egl resources from the thread (kde#466174)
+  * kcms/screenedges: Fix listing of effects
+  * Fix misgenerated QHoverEvent
+  * Add QKeySequence to VirtualDesktopManager::addAction overload (kde#475748)
+  * kcms/screenedges: Fix buttons overlap on a too narrow vertical screen (kde#475579)
+  * kcms/screenedges: Slightly refactor monitor size calculation
+  * kcms/screenedges: Remove commented out dead code
+  * Use itemChange instead of a connect to windowChanged
+  *  plugins/slide: add special case for instant animations (kde#472901)
+  * plugins/screencast: Remove "frame dropped" log messages
+  * fix segfault in  EglGbmBackend::textureForOutput
+  * Drop unused kitemviews dependency
+  * Add missing QtNetwork dependency
+  * plugins/qpa: implement platform accessibility (kde#472643)
+  * backends/drm: check activePending instead of active for when applying a new gamma ramp is allowed (kde#471562)
+
+-------------------------------------------------------------------
+Tue Sep 12 11:22:23 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * XdgToplevelWindow: Consider app responsive only if sent ping was received
+  * wayland: Fix high-resolution scroll wheel discrete step calculation
+  * wayland: Refactor the high-resolution scroll wheel step accumulator
+  * wayland: Send data device selections to data control on bind even if null
+  * backends/drm: check explicit gpu paths for symlinks
+  * effects/screenshot: Fix screen screenshot infinite loop on X11
+  * input: add special handling for tabbox modifiers (kde#473099)
+  * backends/drm: don't assume we never get new subpixel types
+  * internalwindow: don't crash on pointer leave when m_handle is nullptr (kde#472922)
+  * backends/drm: allow modesets with atomic tests if a modeset is already pending (kde#461657)
+  * input: use modifiersRelevantForGlobalShortcuts for tabbox events (kde#453918)
+
+-------------------------------------------------------------------
+Tue Aug  1 11:18:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * Add closed window checks in restacking requests
+  * Add closed window checks in some window activation code paths
+  * x11: Sync frame extents in X11 native pixels (kde#471132)
+  * backends/drm: handle mismatching stride with CPU copying (kde#471517)
+  * scene: Pad damage if scale factor is fractional
+  * locale1: fix use-after-free in xkb_keymap creation
+  * effects: Make OpenGL context current before deleting framebuffer (kde#444665,kde#471139)
+  * plugins/backgroundcontrast,blur: ensure the effect is only applied behind the window (kde#469625)
+  * input: don't crash if the internal handle is nullptr (kde#471285)
+
+-------------------------------------------------------------------
+Tue Jun 20 17:15:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- Changes since 5.27.5:
+  * xwayland: Remove cursor definition (kde#442839,kde#459468)
+  * screencast: Discard pending buffer and fence if stream state changes
+  * screen edge: Emit cleanup signals if needed on teardown (kde#403354)
+  * effects/magiclamp: Make it look good with hidden panels
+  * XdgPopupWindow: Allow position to be set by Plasma (kde#463272)
+  * plugins/qpa: initialize buffer in backingstore (kde#437062)
+  * tiles: Adjust padding between windows (kde#469720)
+  * Refine order of previous/next screens in Workspace::findOutput (kde#467996)
+  * effects/magiclamp: Improve code readability
+  * effects/magiclamp: Make it look good with floating panels (kde#361121,kde#466177)
+  * effects/magiclamp: Improve animation direction heuristic (kde#463581)
+  * Revert "wayland: Avoid pointer warp if constraint region is invalid" (kde#469555)
+  * xcbutils: fix nativeFloor (kde#459373)
+- Drop patches, now upstream:
+  * 0001-xcbutils-fix-nativeFloor.patch
+  * revert-avoid-pointer-warp.patch
+
+-------------------------------------------------------------------
+Sun May 14 06:52:38 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add patch to fix pointer constraint region handling (kde#469555):
+  * revert-avoid-pointer-warp.patch
+
+-------------------------------------------------------------------
+Wed May 10 18:58:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix a rounding error with scaling (kde#459373):
+  * 0001-xcbutils-fix-nativeFloor.patch
+
+-------------------------------------------------------------------
+Tue May  9 13:44:09 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * wayland: Avoid pointer warp if constraint region is invalid (kde#457021)
+  * cmake: Correct gbm version check
+  * kwineffects: Initialize m_reason
+  * screencast: Disable screencasting when a window closes (kde#469055)
+  * screencast: Do not push frames when not in a streaming state
+  * Use non-rotated physical size of an output when required
+  * ci: Pass --repeat until-pass to ctest
+  * platformsupport/scenes/opengl: filter out external formats properly
+  * effects/screenshot: Fix potentially leaking screenshot fds to child processes
+  * backends/drm: fix buffer orientation check for direct scanout
+  * plugins/screencast: Provide absolute timestamps
+  * Don't create Plasma activation feedback if StartupNotify is false
+  * effects/screenshot: Provide screenshot scale information
+  * effects/screenshot: Provide information about captured window or screen
+  * effects/screenshot: Introduce CaptureWorkspace
+  * screencast: Base the frame skippin on max_framerate
+  * screencast: Ensure we respect the negotiated framerate
+  * screencast: Offer the real framerate range we have available
+  * Blacklist Spectacle for all window open/close effects (kde#467890,kde#463105)
+  * backends/drm: set the scaling mode to none (kde#468235)
+  * screencast: Still set the size to 0 for cursor-only frames
+  * screencast: Improve how we communicate that a frame has just cursor info
+  * kcms/rules: fix invalid tooltip visible condition in rule items
+- Drop patches, now upstream:
+  * 0001-backends-drm-set-the-scaling-mode-to-none.patch
+
+-------------------------------------------------------------------
+Tue Apr 11 12:03:50 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix monitor settings issue on amdgpu (kde#468235):
+  * 0001-backends-drm-set-the-scaling-mode-to-none.patch
+
+-------------------------------------------------------------------
+Tue Apr  4 15:05:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * Revert "backends/libinput: don't multiply v120 value by scroll speed" (kde#464592)
+  * Improve Workspace::outputAt()
+  * workspace: prevent dangling pointers in output order list
+  * dpms: Make sure we are not calling the interface after the output is gone (kde#466346)
+  * backends/drm: restrict common mode generation to drivers that support scaling
+  * kcms/rules: Make Comboboxes bordered again
+  * backends/drm: consider color property changes as failed when the output is off
+  * wayland: Handle xdg_wm_base being destroyed before surface role
+  * Avoid accidental creation of backing stores for offscreen surfaces (kde#465790)
+  * inputmethod: Properly report that it's not visible
+  * wayland: Truncate strings sent via plasmawindowmanager interface (kde#465775)
+  * Simplify tile dismissal (kde#465740)
+  * Fix picking drag target
+  * Screencast: avoid using DMABufs exclusively to allow renegotiation
+
+-------------------------------------------------------------------
+Tue Mar 14 15:05:55 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- Changes since 5.27.2:
+  * colordevice: default the simple transformations to 1
+  * backends/drm: fail commits if nonexistent properties would be set
+  * backends/drm: ignore opaque formats for the cursor plane
+  * Forward keymap and modifier change to input method keyboard grab when changed.
+  * inputmethod: Show the input method even if it was dismissed (kde#466969)
+  * backends/drm: support CTM for simple color transformations (kde#455720)
+  * xwayland: Prevent potential file descriptor leak
+  * wayland: Prevent leaking --wayland-fd and --xwayland-fd to child processes
+  * helper: Don't leak lock file to kwin_wayland
+  * backends/wayland: Don't leak renderD128 fd
+  * backends/wayland: Don't leak WaylandEventThread's pipe fds
+  * Fix text-input-v1 compatibility with 111.0.5563.64-1
+  * input: Make sure input backends are initialised when the workspace is set up (kde#466721)
+  * Tabbox: Fix grouping windows by application
+  * scene: Use correct scale when computing world transform
+  * wayland: Fix interactive resize of debug console
+  * kscreenintegration: read global output data
+  * workspace: move kscreen integration into separate files
+  * screencast: Try harder to be compatible with the pipewire buffer format
+  * screencasting: on memfd, skip the QImage step (kde#466655)
+  * TabBox: Avoid unnecesary resets of the client model (kde#466660)
+  * wayland: Cancel selections if set without focus
+  * windowitem: properly handle sub-subsurfaces (kde#466747)
+  * tabletmodemanager: properly export properties
+  * Enable GLSL for Mali (Lima) / PinePhone devices
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- Changes since 5.27.1:
+  * x11: Fix client area lookup with pending move resize
+  * wayland: Fix xdg-toplevel and xdg-popup window initialization (kde#466530)
+  * screencasting: Choose the correct GL type to download into an image (kde#466299)
+  * screencasting: Close streams when the output is disabled
+  * wayland: Setup compositing for internal window when it's mapped (kde#466313)
+  * Remove no longer relevant case in Workspace::replaceInStack()
+  * effects/zoom: Fix crash on X11 (kde#466376)
+  * Fix edid serial parsing (kde#466136)
+  * effects/zoom: Fix rendering with mixed scale factors
+  * effects/magnifier: Reduce the number of heap allocations
+  * effects/magnifier: Fix rendering on multi screen setups
+  * backends/drm: Make sure attributes are always initialized
+  * backends/wayland: fall back to qpainter when there's no render node (kde#466302)
+  * backends/x11: explicitly free the outputs (kde#466183)
+  * backends/libinput: Fix crash upon receiving motion absolute events (kde#449317,kde#465456)
+  * pointer input: always confine pointer to screens (kde#461911)
+  * effects: Fix selecting hidden windows using keyboard (kde#466120)
+  * feat: allow VT switching even with global shortcuts disabled
+  * scene: Ensure there's current opengl context when DecorationItem is repainted for last time (kde#466186)
+
+-------------------------------------------------------------------
+Tue Feb 21 14:09:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- Changes since 5.27.0:
+  * effects/glide: Fix transform (kde#465849)
+  * Aurorae: Add dummy window for working device pixel ratio (kde#452730,kde#465790)
+  * tiling: Make child tiles inherit padding from parent tile (kde#465842)
+  * effects/contrast: Round device coordinates when creating geometry (kde#464526)
+  * cursorsource: fix scaling with Xwayland (kde#466094)
+  * cursordelgate: round cursor position when rendering
+  * outputchangeset: Round passed scale (kde#465850)
+  * Mark Window as damaged when decoration or shadow changes (kde#464417)
+  * Add missing cerrno include.
+  * effects/tileseditor: Set translation domain in QML files (kde#464572)
+  * wayland: Remove SeatInterfacePrivate::accumulatedCapabilities
+  * Match pointer/keyboard/touch lifespan to Seat lifespan
+  * add support for Lima, V3D, VC4 (based on https://github.com/OpenMandrivaAssociation/kwin/blob/master/kwin-5.21.4-add-support-for-panfrost-driver.patch made by  Bernhard Rosenkraenzer) and update list of supported devices for Panfrost
+  * x11: Drop xv-related workaround
+  * XWayland: Don't dispatch xwayland events in QAbstractEventDispatcher sleeps
+  * tiling: Evacuate tiled windows from custom & quick tiling on output removal (kde#465522)
+  * wayland: Fix a typo in DataControlDeviceV1Interface::sendPrimarySelection()
+  * wayland: Version check before send_primary_selection calls (kde#465657)
+  * Set CXX standard for crossbuilding utility
+  * Include missing header for std::round
+  * Fix button to Qt::MouseButton mapping (kde#465463)
+  * backends/drm: set cursor again after it was hidden (kde#461181)
+  * screencast: Fix region screencasts top coordinate
+
+-------------------------------------------------------------------
+Thu Feb  9 14:19:41 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Jan 19 14:42:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jan  4 14:06:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * Include missing cmath header for std::round
+  * backends/drm: extend connector lifetime to match their outputs (kde#463334)
+  * Ignore critical notifications in window heap effects (kde#463437)
+  * workspace: don't make the placeholder output too big
+  * kwinglutils: Restore the default FB when the last FBO is unbound
+  * dmabuf: Create buffers without the SCANOUT flag
+  * screencast: Don't skip the last valid modifier
+  * wayland: Fix updating pixel data from translucent client buffers when using qpainter backend
+  * backends/drm: fix VRR detection (kde#463172)
+  * backends/drm: fix error in finding the best plane
+  * wayland: Require to reboot computer after changing primary selection option
+  * Revert "Disable PrimarySelection in seat setPrimarySelection" (kde#461498)
+  * scene: Fix a typo in WindowItem::updateShadowItem()
+  * workspace: handle duplicate output hashes correctly
+  * core/outputconfiguration: use std::weak_ptr for storing the mode
+  * workspace: match KScreen when computing the hash without an edid
+  * backends/drm: don't break crtc<->plane connections (kde#462214)
+  * effects/blendchanges: ignore fullscreen windows
+  * wayland/outputmanagement: reject configurations if outputs change (kde#460953)
+  * backends/drm: don't leak gbm surface if creating egl surface fails
+
+-------------------------------------------------------------------
+Tue Nov 29 14:47:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- Changes since 5.26.3:
+  * Install translated documentation from po/ too
+  * utils/serviceutils: Improve Exec key parsing
+  * effects/kscreen: don't stop effect when fade out animation is done (kde#460902)
+  * backends/libinput: update screens on Workspace::outputsChanged (kde#461901)
+  * Update defiintion of customised Gitlab CI job to include appropriate flags to keep Git happy
+  * screencast: Don't scale the cursor
+  * x11: Reset SurfaceItemX11::m_isDamaged when the damage handle is destroyed
+  * activation: Guard against not having any active window
+  * wayland: Make debug console placeable (kde#453920)
+  * screencast: Fix how we tell pipewire that the stream has been resized (kde#461590)
+  * backends/drm: generate modes even if some common modes are available
+
+-------------------------------------------------------------------
+Tue Nov  8 17:25:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- Changes since 5.26.2.1:
+  * wayland: Prevent matching dnd actions after drop
+  * Screencast: Fix inverted screencast on OpenGLES and memfd
+  * screencasting: Make sure we are reporting properly scaled damage values
+  * plugins/screencast: centralize format querying into the RenderBackend (kde#460563)
+  * backends/drm: fix format sorting
+  * Fix blur/contrast for X11 window if Xwayland is not scaled. (kde#461021)
+  * [effects/windowview] Don't allow setting non-global shortcuts
+  * [effects/overview] Don't allow setting non-global shortcuts
+  * backends/drm: fix common mode generation
+  * nightcolormanager: Emit timing change only when they have actually changed
+  * x11: Don't force QT_NO_GLIB=1 (kde#460980)
+  * x11: Don't force QT_QPA_PLATFORM=xcb
+  * x11window: revert more from 3a28c02f (kde#461032)
+- Drop patches, now upstream:
+  * 0001-x11window-revert-more-from-3a28c02f.patch
+
+-------------------------------------------------------------------
+Thu Oct 27 06:53:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix redraw issues with window scaling (kde#461032):
+  * 0001-x11window-revert-more-from-3a28c02f.patch
+
+-------------------------------------------------------------------
+Wed Oct 26 14:15:52 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- Changes since 5.26.1:
+  * fix compile
+  * x11window: partially revert 3a28c02f
+  * Replace some manual floored QPointF->QPoint conversion with flooredPoint calls
+  * DecorationInputFilter: Use QPointF instead of QPoint for events
+  * Window: Floor rather than round when doing hitTest for the decoration (kde#460686)
+  * Add a helper function to convert QPointF to QPoint using floor instead of round
+  * wayland: Fix missing relative motion events (kde#444510)
+  * Implement a enableRequested signal for text-input-v3
+  * kcmkwin/kwindecoration: use Kirigami.ActionToolBar for the footer actions (kde#460793)
+  * autotests/integration: make inputmethodtest more realstic
+  * inputpanelv1window: never hide overlay panels
+  * inputmethod: reset m_shouldShowPanel when the tracked window changes
+  * inputpanelv1window: show window when client maps it after setting the mode (kde#460537)
+  * x11window: don't change size for centering windows with maximization
+  * output: don't round geometry as often
+  * effects/blur: Fix clipping when sliding virtual desktops (kde#460382)
+  * Fix potential race condition when text input state change and focus change happened at the same time
+  * Fix wording in action 'Switch to Screen'
+  * backends/drm: don't crash if connector has no modes
+
+-------------------------------------------------------------------
+Tue Oct 18 11:27:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * effects: Make WindowHeap try to fill gaps
+  * Handle scale override in locked and confined pointers (kde#460532)
+  * Move installPointerConstraint calls into the constraint handlers
+  * screencast: Don't report damage on the full screen every time
+  * Guard against reconfiguring wayland specific input on X11
+  * Make Workspace::outputAt() more robust to extreme values (kde#460446)
+  * Fix resizing by dragging top-right window corner (kde#460501)
+  * wayland: Fix handling of removed outputs in DpmsInterface
+  * wayland: Sync output device's enabled property (kde#460247)
+  * backends/drm: Fix leaving dangling dpms input event filter (kde#460322)
+  * effects/screenshot: Avoid capturing hidden cursor (kde#460358)
+  * Make "switch to screen" and "window to screen" code less error-prone
+  * Fix "window to screen" and "switch to screen" shortcuts (kde#460337)
+  * Fix scripted shader effect animations (kde#460277)
+  * Drop shaderTrait adjustment on crossfade
+  * Wayland: don't allow minimizing applet popups either
+  * wayland: don't allow maximization of applet popups
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Fix-build-with-older-libgbm.patch
+
+-------------------------------------------------------------------
+Thu Sep 15 20:46:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+- Add patch to fix build on Leap 15.3:
+  * 0001-Fix-build-with-older-libgbm.patch
+
+-------------------------------------------------------------------
+Tue Sep  6 16:55:51 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * backends/drm: Fix software cursor fallback in DrmOutput::renderCursorOpengl() (kde#458036)
+  * Fix loading xcursor themes with invalid Inherits field (kde#457926)
+  * wayland: Prevent sending xdg_output properties if wl_output is removed
+  * xwayland: Remove text/x-moz-url and _NETSCAPE_URL mime converters (kde#458226)
+  * plugins/nightcolor: fix wrong transition time update in location mode (kde#412211)
+  * plugins/nightcolor: change time handling to allow for arbitrary morning and evening times (kde#445758)
+  * wayland: Fix lease termination in wp_lease_v1_destroy()
+  * effects/desktopgrid: Fix grid's size and scale w.r.t. row/column spacing
+  * effects/desktopgrid: Replace PlasmaCore.Units.largeSpacing with gridUnit
+  * drm_gpu: don't bother trying to assign a crtc to a connector that isn't connected (kde#457002)
+  * plugins/qpa: Assume there's current context when swapBuffers() is called
+  * backends/drm: add stricter checks for direct scanout (kde#457851)
+  * window: expose "output" property
+  * wayland: Setup window management when starting to manage X11 window
+  * backends/drm: don't crash if beginFrame fails
+  * effects/colorpicker: Fix off-by-one error during coordinates conversion
+  * effects/colorpicker: Factor out effects->renderTargetRect() constant
+  * wayland: Remove surface() check in Window::setupWindowManagement() (kde#444325)
+  * wayland: Fix touch event delivery to subsurfaces (kde#452967)
+  * wayland: Do not allocate a full list just to check if there's values
+  * effects/private: Fix ExpoLayout reflowing in Desktop Grid while dragging
+  * backends/drm: fix blob updating (kde#449285)
+  * effects/private: Prevent fading windows from moving downward in WindowView effect
+  * effects/desktopgrid: Fix panel opacity animation during transition
+
+-------------------------------------------------------------------
+Tue Aug  2 14:07:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- Changes since 5.25.3:
+  * Update QtQuick views at the start of the frame
+  * xkb: Use Ctrl+Mrys+Zenkaku_Hankaku to toggle the touchpad
+  * input: don't forward gestures used by KWin to applications (kde#455952)
+  * effects/private: Raise currently dragged window higher than anything (kde#456936)
+  * Fix activity swtiching through UserActions menu (kde#456873)
+  * backends/drm: fix build
+  * backends/drm: fix memory leak
+  * backends/drm: explicitly initialize all fields of drmModeModeInfo
+  * effects/colorpicker: Fix picking colors (kde#454974)
+  * wayland/tablet_v2: Keep also the pad surface in a QPointer (kde#456817)
+  * Support keyboard navigation between windows across desktops (kde#456068)
+  * Make DesktopView a FocusScope
+  * Accept keys in windowheap conditionally
+  * activation: Be liberal about the StartupWMClass
+  * activation: Fix activation notification of Xwayland clients (kde#455265)
+  * activation: Simplify icon loading logic
+  * x11: Fix shading with non-zero border (kde#450582)
+  * backends/drm: don't crash if importing a texture fails
+  * Swapping desktops: only swap windows on current activity. (kde#386769)
+  * Don't use Plasma-themed icons in Present Windows (kde#455368)
+  * TabBox: Fix loading a different switcher after one has failed (kde#445455)
+  * backends/drm: handle broken legacy drivers better (kde#453860)
+  * wayland/drmlease: split up DrmLeaseV1Interface::deny
+  * wayland/drmlease: correct DrmLeaseDeviceV1Interface::setDrmMaster
+  * drmlease: send device done event correctly
+
+-------------------------------------------------------------------
+Tue Jul 12 11:29:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * [kcm/kwindesktop] Emit rowsChanged signal to fix default state highlighting
+  * backends/drm: also check for properties in DrmPipeline::needsModeset (kde#455814)
+  * backends/drm: handle disconnected but not removed connector objects properly
+  * windowview: handle windows from other virtual desktops better
+  * Map XdgSurface to XdgWMBase instances properly (kde#456349)
+  * Fix flickering in slide effect with multi screen
+  * backends/drm: don't create a new output every time
+  * wayland: Send drm-lease-device::done event to the correct resource
+  * backends/drm: don't remove connectors the kernel doesn't consider removed (kde#456298)
+  * xdgactivation: Properly prevent disabled activation notifications (kde#454937)
+  * TabBox: Do not highlight selected window for fullscreen switchers (kde#449180)
+  * Ship kconf update script to clean animation factor from kwinrc
+  * Fix apply button with animation slider speed
+  * Write animation speed to kdeglobals (kde#431259)
+  * xdgactivation: Do not notify when applications try to activate themselves
+  * Set all timestamps for all touch events (kde#456133)
+  * backends/drm: fix common mode generation (kde#455477)
+  * screencast: Do not send events when moving the cursor outside the viewport
+  * screencasting: Have cursor move frames also send damage information
+  * screencast: Also send the header when we just send the cursor update
+  * backends/drm: suppress logging for direct scanout (kde#456089)
+
+-------------------------------------------------------------------
+Tue Jun 28 13:03:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * backends/drm: fix flicker with rotation on mobile
+  * tablet: Leave the surface we were previously on, not the one we are going to
+  * backends/drm: ensure modeset properties are reset properly
+  * effects/slide: Save correct current position
+  * effects: Set timestamp for input events (kde#454275,kde#449907)
+  * Internal tracking for quick effect item focus (kde#455807,kde#455783)
+  * Move WindowHeap delegate to own file
+  * Delegate updateShadow to event loop.
+  * Fix flaky testTextInputV3Interface
+  * Windowview: Fix broken keyboard navigation while filtering (kde#455633,kde#455764,kde#455099,kde#455586,kde#455753)
+  * screencasting: No need to adjust the scale on the cursor
+  * screencasting: Properly disable the cursor when it exits the viewport
+  * backends/drm: fix enabled+inactive check
+
+-------------------------------------------------------------------
+Tue Jun 21 11:39:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * effects/desktopgrid: Allow switching between desktops using digit and function keys (kde#455292)
+  * Unvirtualize Scene::paintWindow()
+  * Fix computation of effective opaque region of SurfaceItemX11 (kde#455617)
+  * Fix dragging especially by touch (kde#455268)
+  * Fix typo in qml margin
+  * backends/drm: do cross-gpu imports again for test commits (kde#454086)
+  * effects/windowview: Search on all screens (kde#455353)
+  * effects: Improve gesture handling in some effects
+  * qpa: Fix a crash in EGLPlatformContext::swapBuffers() (kde#455435)
+  * backends/drm: use GBM_BO_USE_SCANOUT when importing buffers for multi gpu
+  * Don't use  the plasma theme for icons in overview (kde#455368)
+  * fix windows dragging in desktop grid (kde#455268)
+  * effects/windowview: Redirect key events to search field (kde#455100)
+  * [xwl] Restart xwayland regardless of exit value
+  * effects/slide: Ensure that there's only one visibility ref per window (kde#455237)
+  * Remove redundant initializeX11() in Compositor
+  * Always send a done after commit for text input v3.
+  * core: Make screen area safer in Workspace::clientArea()
+  * scripting: Handle bad output and desktop ids gracefully
+  * effects/windowview: do close animation after gesture ended
+  * Disable screen edge approach area if the edge is blocked (kde#454503)
+  * wayland: Explicitly initialize surface size to 0 (kde#454535)
+  * Fix KWin scripts KCM not writing it's pending states to config (kde#455015)
+- Drop patches, now upstream:
+  * 0001-fix-windows-dragging-in-desktop-grid.patch
+
+-------------------------------------------------------------------
+Fri Jun 17 13:21:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix dragging windows in grid view (kde#455268):
+  * 0001-fix-windows-dragging-in-desktop-grid.patch
+
+-------------------------------------------------------------------
+Thu Jun  9 11:15:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Thu May 19 19:45:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+- Refresh 0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+
+-------------------------------------------------------------------
+Tue May  3 13:00:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * backends/drm: reduce "max bpc" to what is actually used (kde#449906)
+  * Fix unlocking wayland sessions (kde#447705)
+  * effects/kscreen: don't use xcb on Wayland (kde#450564)
+  * AbstractClient: Fix the current VD being always added to the plasma interface (kde#452171)
+  * Do not send overlay geometry to text input.
+  * backends/drm: don't permanently disable VRR when the test commit fails
+  * backends/drm: fetch immutable blobs in DrmProperty
+  * waylandserver: move LockScreenPresentationWatcher to the correct place
+  * xdgactivation: Demand attention when a process fails to resolve its token
+  * waylandserver: only signal lockScreenShown once it has actually been shown
+  * Add a way to ignore devices for tablet mode
+
+-------------------------------------------------------------------
+Tue Mar 29 16:04:38 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- Changes since 5.24.3:
+  * backends/drm: attempt a modeset on output disabling (kde#449878)
+  * plugins/screencast: Fix a glitch in cursor bitmap
+  * backends/drm: set max bpc in DrmPipeline
+  * backends/drm: fall back to legacy mode in virtual machines (kde#427060)
+  * backends/drm: only allow ARGB8888 as the cursor format
+  * effects/blur: Fix window flickering when the clip intersected with the current blur region. (kde#421135)
+  * screencast: better solution for missing context on cursor move
+  * Revert "screencast: make context current in tryEnqueue"
+  * src/kcmkwin: fix botched indentation code for final checkbox
+  * backends/drm: don't do direct scanout with software rotation
+  * screencast: make context current in tryEnqueue
+  * effects/desktopgrid: don't forget to schedule repaints when timeline is running (kde#444678)
+  * effects/desktopgrid: register down gesture (kde#444694)
+  * inputmethod: Do not reset when hiding
+  * inputmethod: Listen to text-input enablement changes when starting disabled
+- Drop patches, now upstream:
+  * 0001-backends-drm-fall-back-to-legacy-mode-in-virtual-mac.patch
+
+-------------------------------------------------------------------
+Thu Mar 24 16:08:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix client cursor offset in VMs (kde#427060):
+  * 0001-backends-drm-fall-back-to-legacy-mode-in-virtual-mac.patch
+
+-------------------------------------------------------------------
+Tue Mar  8 18:09:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- Changes since 5.24.2:
+  * backends/drm: don't change the configuration while KWin is terminating
+  * backends/drm: wait for pending pageflips before doing a modeset
+  * output changes: handle to-be-enabled outputs first
+  * platform: check all outputs, not only enabled ones for the enabled flag
+  * backends/drm: fix recording with direct scanout (kde#450943)
+  * backends/drm: fix multi gpu (kde#450737)
+  * backends/drm: fix format choosing (kde#450779)
+  * inputmethod: fix placing the virtual keyboard at the bottom
+  * Revert "Remove mysterious s_cursorUpdateBlocking boolean flag in pointer_input.cpp" (kde#449273)
+- Drop patches, now upstream:
+  * 0001-Revert-Remove-mysterious-s_cursorUpdateBlocking-bool.patch
+- Restore compatibility with older kf5-filesystem
+
+-------------------------------------------------------------------
+Mon Mar  7 10:58:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %_libdir/libexec with %_libexecdir (boo#1174075)
+
+-------------------------------------------------------------------
+Wed Feb 23 20:39:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix mouse event issues in openQA (kde#449273):
+  * 0001-Revert-Remove-mysterious-s_cursorUpdateBlocking-bool.patch
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- Changes since 5.24.1:
+  * backends/drm: block input with the placeholder output
+  * effects/blur: Avoid shrinking unrelated opaque regions
+  * effects/contrast: Remove paint area tracking
+  * backends/drm: ignore enabled state of outputs for the lifetime of surfaces (kde#450501)
+  * backends/drm: fix overscan
+  * inputmethod: Fix read setting (kde#450430)
+  * Use the minimum of workspace area size and panel size for input method placement
+  * Check lockscreen status for fullscreen effects (kde#450331)
+  * xwayland: Guard  against offers arriving after leaving surface (kde#449644)
+
+-------------------------------------------------------------------
+Tue Feb 15 19:18:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * backends/drm: fix legacy dpms
+  * utils/serviceutils: compare executablePath against canonical path of exec fields in .desktops
+  * x11: Fix shrinking window size after toggling no border multiple times (kde#449988)
+  * wayland: Fix maximize mode propagation to decoration (kde#450053)
+  * effects/overview: Add translation domain
+  * effects: Extract messages from QML files
+  * inputmethod: Also open the inputm method panel with a pen (kde#449888)
+  * Implement services in our QPA (kde#446144)
+  * Don't force QT_QPA_PLATFORM=wayland (kde#450000)
+  * Schedule workspace repaint when window leaves current desktop (kde#444172)
+  * Initialize the KSldApp after we connect
+  * Fix loading of effect if plugin defined X-KDE-Library (kde#449881)
+  * wayland: Fix mispositioned decoration tooltips (kde#432860)
+  * Make openGL context current when recording frame triggered by cursor move (kde#448162)
+  * effects/DesktopGrid: use delta, not absolute time for MotionManager (kde#443971)
+  * Fix window decoration quads in OpenGL scene
+  * wayland: Make the launcher not restart kwin_wayland if it crashes at shutdown
+  * Add missing errno.h include
+  * Avoid mixing current and next state (kde#449541)
+  * effects/overview: Hide selection rect during dnd (kde#448573)
+  * effects/overview: Don't show minimized windows in desktop thumbnails (kde#448850)
+  * Fix mouse pointer disappearing after using zoom effect on X11 (kde#448537)
+  * effects/fallapart: Avoid animating windows while there's a fullscreen effect (kde#449844)
+  * effects/scale: Make it not grab open and close roles (kde#449832)
+  * backends/drm: ignore modifier env var if modifiers are not supported
+  * kcm/screenedge: Fix default value for TabBox.BorderActivate option (kde#449720)
+- Drop patches, now upstream:
+  * 43caf2539357a1f9d5b2668a8eff151517377a7e.patch
+
+-------------------------------------------------------------------
+Sat Feb 12 19:50:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 43caf2539357a1f9d5b2668a8eff151517377a7e.patch: Fix mouse
+  pointer disappearing after using zoom effect on X11 (kde#448537,
+  boo#1195865)
+
+-------------------------------------------------------------------
+Mon Feb  7 11:27:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Force PIE when building with gcc-10 (boo#1195628)
+
+-------------------------------------------------------------------
+Sat Feb  5 19:50:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-backends-drm-only-accept-xrgb-with-legacy.patch
+  * 0002-backends-drm-don-t-assume-we-shouldn-t-use-modifiers.patch
+
+-------------------------------------------------------------------
+Fri Jan 28 15:26:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix KMS without AMS with certain devices:
+  * 0001-backends-drm-only-accept-xrgb-with-legacy.patch
+- Add patch to fix the hardware cursor with AMS on certain devices:
+  * 0002-backends-drm-don-t-assume-we-shouldn-t-use-modifiers.patch
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Too many changes to list here
+- Replace patch with sed:
+  * 0001-Use-fixed-absolute-path-instead-of-usr-bin-env-in-sh.patch
+- Drop patch, should be adjusted everywhere meanwhile that the downstream
+  diff isn't worth it:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+- Rebase 0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+- Add _constraints to fix build on PowerPC
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:17 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- Changes since 5.23.4:
+  * Fix memory leak in some plasma components (kde#444429,kde#444381,kde#444077,kde#444306)
+  * XDGShellClient: Protect from invalid frameGeometry on updateDecoration (kde#445140)
+  * input: set tablet cursor hotspot
+  * platforms/drm: remove the dpms filter when outputs are added (kde#446699)
+  * scripting: Fix type of KWinComponents.Workspace
+  * autotests: Add a test that checks one possible corner case during xdg-toplevel initialization
+  * wayland: Resize the client to last requested client size if decoration is destroyed (kde#444962)
+
+-------------------------------------------------------------------
+Tue Nov 30 14:59:21 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * wayland: Enable window rules for all xdg-toplevel
+  * Revert "wayland: Check workspace position when preferred deco mode changes" (kde#445444)
+  * Fix XWayland abstract socket address. (kde#442362)
+
+-------------------------------------------------------------------
+Tue Nov  9 15:43:24 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- Changes since 5.23.2:
+  * wayland: Check workspace position when preferred deco mode changes
+  * DecorationItem: Prevent crash
+  * fixup! [wayland] fix ignored keyboard RepeatRate (kde#443721)
+  * RenderLoop: restrict repaint scheduling with fullscreen windows (kde#443872)
+  * wayland: Fix wayland windows growing after toggling decorations (kde#444119)
+  * Use QScopedPointer to store decoration object
+  * scripts/minimizeall: Try to preserve last active window
+  * screencasting: Do not crash when the platform cannot provide textures (kde#442711)
+  * effects/slidingpopups: Reload slide data after restarting compositing
+  * effects/slidingpopups: Schedule workspace repaints (kde#444502)
+  * platforms/drm: only use glDrawBuffer with desktop GL
+  * [keyboard kcm] fix lost Locks state on keymap reconfigure (kde#443739)
+- Drop patches, now upstream:
+  * 0001-platforms-drm-only-use-glDrawBuffer-with-desktop-GL.patch
+
+-------------------------------------------------------------------
+Mon Nov  8 09:27:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix kwin_wayland on GLES:
+  * 0001-platforms-drm-only-use-glDrawBuffer-with-desktop-GL.patch
+
+-------------------------------------------------------------------
+Tue Oct 26 14:55:59 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * [wayland] fix ignored keyboard RepeatRate (kde#443721)
+  * kwineffects: Fix destruction of s_fbo with shared GLTexture objects (kde#443951)
+  * WaylandOutput: schedule update on mode change (kde#444303)
+  * platforms/drm: fix direct scanout check
+  * Fix focus loss on decoration destruction (kde#411884)
+  * input: fix crash on touch quicktile
+  * platforms/drm: fix init with explicit modifiers
+  * platforms/drm: allow overriding eglstream choice
+  * platforms/drm: set draw buffer for gbm
+  * platforms/drm: use gbm with NVidia driver 495+
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- Changes since 5.23.0:
+  * platforms/drm: fix disabled outputs with legacy drivers
+  * platforms/drm: reverse output creation order
+  * x11: Properly unredirect windows if compositing is not possible (kde#443953)
+  * Restore old behavior of Workspace::clientArea(clientOpt, Toplevel) (kde#443787)
+  * Do not ask for decoration settings without guarding
+  * scripting: Guard against nullptr m_client in WindowThumbnailItem (kde#443765)
+  * Properly update parent item's bounding rect when moving item (kde#443756)
+  * Fix AbstractClient::adjustedSize() for wayland windows with no committed buffer (kde#443705)
+  * Set KDE_COMPILERSETTINGS_LEVEL
+  * pipewire: Fix downloading software-rotated textures
+  * [wayland] fix crash on startup with lv3:ralt_alt XKB option (kde#440027)
+- Drop patches, now upstream:
+  * kde443953.patch
+
+-------------------------------------------------------------------
+Mon Oct 18 10:01:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix black screen when compositing fails to initialize
+  (kde#443953):
+  * kde443953.patch
+
+-------------------------------------------------------------------
+Fri Oct 15 09:02:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Make pipewire-devel BR versioned
+
+-------------------------------------------------------------------
+Thu Oct  7 13:50:07 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Fix-build-on-32bit-platforms.patch
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:04:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+- Adjust 0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+- Add patch to fix build on 32bit:
+  * 0001-Fix-build-on-32bit-platforms.patch
+
+-------------------------------------------------------------------
+Tue Aug 31 19:08:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * fix drag and drop raise with Xwayland windows (kde#440534)
+  * platforms/drm: check wl_eglstream buffers before attaching (kde#440852)
+  * platforms/drm: fix gpu removal
+  * kcm/kwindecoration: Fix window thumbnail sizes
+  * platforms/drm: consider KWIN_DRM_DEVICES for hotplugged gpus
+  * platforms/drm: fix crashing debug operator
+  * Copy shape region to Deleted (kde#440001,kde#438458,kde#435378)
+  * Avoid discarding previous pixmap (kde#439689)
+- Drop patches, now upstream:
+  * 0001-platforms-drm-check-wl_eglstream-buffers-before-atta.patch
+
+-------------------------------------------------------------------
+Tue Jul 27 12:34:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- Changes since 5.22.3:
+  * wayland: Force decoration update
+  * scripting: Make QTimer constructible (kde#439630)
+  * platforms/drm: don't delete connectors in DrmGpu::removeOutput (kde#438789)
+  * platforms/drm: always populate atomic req with connector props
+  * platforms/drm: only show cursor on dpms on if not hidden
+
+-------------------------------------------------------------------
+Tue Jul 20 07:03:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix issues with EGLStream clients:
+  * 0001-platforms-drm-check-wl_eglstream-buffers-before-atta.patch
+
+-------------------------------------------------------------------
+Tue Jul  6 12:01:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.3
+- Changes since 5.22.2.1:
+  * platforms/drm: Port away from gbm_format_get_name() (kde#439152)
+  * xdgshellclient: fix moveresize with touch and CSD (kde#438283)
+  * input: fix touch input getting borked on quick tile
+  * Fix build
+  * platforms/drm: don't crash if drmModeGetConnector fails
+  * platforms/drm: don't create modeset dumb buffer for import gpu
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.1:
+  * Wayland: Implement activities window rule (kde#439022)
+  * scenes/opengl: Update unstyled EffectFrame texture only when rendering
+  * platforms/drm: some improvements for logging
+  * XdgSurfaceClient: set to current activity and desktop in constructors (kde#435745)
+  * platforms/drm: fix mistake in DrmGbmBuffer
+  * platforms/drm: show cursor when exiting dpms (kde#438824)
+  * [kcmkwin/kwindesktop] Drop local back for Formlayout label width (kde#438504)
+  * Guard gbm and eglstreams parts for non-gbm or non-eglstreams systems
+  * effects: Fix interpolated values for redirected animations (kde#438368)
+
+-------------------------------------------------------------------
+Tue Jun 15 13:17:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- Changes since 5.22.0:
+  * platforms/drm: on NVidia do pageflips with QPainter
+  * platforms/drm: support NVidia as secondary GPU with CPU copy (kde#431062)
+  * kcm/kwinrules: Adapt spinbox width to actual text (kde#438193)
+  * [xwl] Create a new datasource on offer changes
+  * platforms/drm: only allocate two dumb buffers for the swapchain
+  * Remove unused include
+  * platforms/drm: fix modifiers detection
+  * [tabbox] fix non-working global shortcuts overrides (kde#359141)
+
+-------------------------------------------------------------------
+Mon Jun 14 20:32:31 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Recommend hwdata explicitly
+
+-------------------------------------------------------------------
+Tue Jun  8 06:52:55 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to new 5.22.0 tarball:
+  * scripting: Add clientArea() overload that takes mutable client (kde#437507)
+  * screencast: only use glGetTextureImage where supported
+  * platforms/drm: make context current for direct scanout
+  * effects/backgroundcontrast: Properly handle empty regions set by internal windows
+  * effects/blur: Properly handle empty blur regions set by internal windows (kde#433131)
+  * Move X11Client::wantsShadowToBeRendered to AbstractClient (kde#434213)
+  * scenes/opengl: Properly destroy backend if initialization fails
+  * AbstractEglBackend: only clean up OpenGL context if primary
+
+-------------------------------------------------------------------
+Thu Jun  3 13:06:14 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- Changes since 5.21.90:
+  * platforms/drm: log when direct scanout starts and stops
+  * Fix weird decoration glitch when using a scaled display
+  * platforms/drm: CPU copy for multi-gpu (kde#432707)
+  * Discard SurfaceItemXwayland's quads when shape changes
+  * screencasting: do not attempt to copy a null texture
+  * [kcmkwin/kwindesktop] Implement valueFromText in a spinbox (kde#437472)
+  * [kcms/virtualdesktops] Change delete icon
+  * [xwl] Notify wayland that our data offer is accepted (kde#437406)
+  * platforms/drm: Make context current before EGLStreams calls (kde#437573)
+  * inputmethod: Also update the trackingClient when there's none set
+  * inputmethod: Use the inputmethod's context as the isActive measure
+  * inputmethod: Make sure we send a state commit
+  * [kcms/virtualdesktop] Don't offer to remove the last desktop (kde#437561)
+  * [kcms/virtualdesktops] Properly track synchronizing state (kde#437466)
+  * [kcms/virtualdesktops] Enable apply button when typing desktop name (kde#435014)
+  * [kcms/virtualdesktops] Clip ListView
+  * screencasting: Make sure we don't stream after we've stopped a stream
+  * Support High DPI Aurorae decorations (kde#422342)
+  * Fix build
+  * platforms/drm: replace pointer to egl backend with QPointer
+  * effects: Fix EffectWindow::shape() for X11 windows (kde#437138,kde#435862)
+  * wayland: Signal about finished move/resize in destroyClient() (kde#409376)
+  * autotests: Stabilize tests that create Xwayland windows
+  * wayland: Make some animations less glitchy
+  * inputmethod: deactivate the input method when we textinputv3 is committed as disabled
+  * wayland: Fix internal connection teardown
+
+-------------------------------------------------------------------
+Thu May 13 18:15:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+  * 0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+
+-------------------------------------------------------------------
+Tue May  4 14:15:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- Changes since 5.21.4:
+  * effects: Properly reset present times in coverswitch and flipswitch effects (kde#433471)
+  * Fix crash when stopping PipeWire streaming (kde#428268,kde#435588)
+  * lockscreen: also activate lock screen windows (kde#427882)
+  * wayland: Check workspace position after creating decoration (kde#432326)
+  * platforms/drm: Fix crash in EglGbmBackend::presentOnOutput()
+
+-------------------------------------------------------------------
+Tue Apr  6 14:00:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- Changes since 5.21.3:
+  * Fix crash on hotplugging displays while switched to another TTY (kde#435388)
+
+-------------------------------------------------------------------
+Tue Mar 16 13:55:24 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * inputmethod: Use the object to connect to slots
+  * wayland: Do not force qtvirtualkeyboard
+  * inputmethod: If the client hides itself, act accordingly
+
+-------------------------------------------------------------------
+Tue Mar  2 15:01:36 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- Changes since 5.21.1:
+  * DrmGpu: add gbm device nullptr check (kde#433145)
+  * wayland: Fix PrepareForSleep dbus connection
+  * ftrace: use quint32 for context counter
+  * 3rdparty/xcursor: build with _DEFAULT_SOURCE
+  * helper: wl-socket: fix build for musl
+  * wayland: Honor NoPlugin option
+  * wayland: Track already existing subsurfaces in SubSurfaceMonitor (kde#433511)
+
+-------------------------------------------------------------------
+Tue Feb 23 14:52:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- Changes since 5.21.0:
+  * [platforms/drm] accept both keypress and keyrelease event in filter
+  * Fix build
+  * [platforms/drm] only enable output on key press not release
+  * Create Xcursor sprites with correct format
+  * Fix crash on pasting too soon after copying from XWayland
+  * effects/wobblywindows: Allow model geometry and real geometry get out of sync (kde#433187)
+  * effects/wobblywindows: Refactor the update loop
+  * x11: Introduce an envvar to force software vsync (kde#433094)
+  * x11: Introduce an envvar to prevent sync'ing to vblanks
+  * Properly clean up DrmGpu
+  * inputmethod: honour SNI disabled state
+  * Sprinkle static keywords
+  * x11: Properly detect whether swap events have to disabled
+  * inputmethod: toggle the inputmethod if we get second show request
+
+-------------------------------------------------------------------
+Mon Feb 15 14:02:50 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Too many changes to list here
+- Most parts of 0001-Use-Xauthority-for-Xwayland.patch are now
+  upstream, replace it with just
+  0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+
+-------------------------------------------------------------------
+Thu Jan 28 18:46:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable accessibility integration
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:37 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 08:40:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+
+-------------------------------------------------------------------
+Tue Jan  5 14:40:03 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- Changes since 5.20.4:
+  * scene: Fix window pixmap traversal order
+  * screencasting: fix build
+  * Screencast: support BGRx format for backwards compatibility with WebRTC
+
+-------------------------------------------------------------------
+Tue Dec  1 15:22:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- Changes since 5.20.3:
+  * xwl: No need to delete the source immediately
+  * xwl: No need to create createX11Source twice consecutively
+  * xwl: Do not refresh the x11 Clipboard while fetching (kde#424754)
+  * xwl: Include errors and warnings
+  * screencating: query for dmabuf availability before we start streaming
+  * wayland: Fix clipped thumbnails of client-side decorated apps (kde#428595)
+  * Fixed Toggle Night Color global shortcut, which used i18n in object name, leading to erratic behavior e.g. when system locale or translations changed. (kde#428024)
+  * Set setMoveResize(true) after stopping fullscreen and quick tiling (kde#427848)
+  * screencasting: don't crash if the cursor is too big for our buffer
+  * fix: magiclamp effect wrong direction.
+  * kcm/decorations: Fix border size updating for thumbnails
+
+-------------------------------------------------------------------
+Wed Nov 11 11:08:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.3
+- Changes since 5.20.2:
+  * Restore empty filename check (kde#427979)
+  * drm: Make sure the screens are turned on when we come from suspend (kde#428424)
+  * Move some connects from Scene::addToplevel() to Window constructor
+  * scene: Stop monitoring changes for unmapped surfaces
+  * effects/screenshot: fix the screenshot on GLES
+  * [scene] Fix segfault in KWin::WindowPixmap::shape (kde#426567)
+  * kwinrules: Limit hightlight scrolling duration (kde#428139)
+  * Transform a pending repaint into a workspace repaint before destroying Deleted
+
+-------------------------------------------------------------------
+Tue Oct 27 22:23:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.2
+- Changes since 5.20.1:
+  * Provide cursor geometry in device-independent pixels
+  * platform/drm: Fix clipped HiDPI hardware cursors
+  * Clip software cursors
+  * Mark the cursor as rendered after performing compositing
+  * [kwinrules] Allow negative numbers in position (kde#428083)
+  * screencast: Handle the case where pipewire is not installed (kde#427949)
+  * scenes/opengl: Properly render cursors with hidpi
+  * wayland: Fix drag-and-drop cursors with hidpi
+  * platforms/drm: Use a heuristic to determine if EGLDevice backend can be used
+  * ScreenshotEffect: don't expect authorization for interactive screenshots
+- Drop patches, now upstream:
+  * 0001-screencast-Handle-the-case-where-pipewire-is-not-ins.patch
+
+-------------------------------------------------------------------
+Mon Oct 26 09:40:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash if pipewire fails to initialize (boo#1178101, kde#427949):
+  * 0001-screencast-Handle-the-case-where-pipewire-is-not-ins.patch
+
+-------------------------------------------------------------------
+Sat Oct 24 09:43:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add XAUTHLOCALHOSTNAME back to 0001-Use-Xauthority-for-Xwayland.patch
+  (boo#1177835)
+
+-------------------------------------------------------------------
+Fri Oct 23 19:28:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix Xauthority generation (boo#1177875) by modifying
+  0001-Use-Xauthority-for-Xwayland-authorization.patch:
+  * DISPLAY is not in the environment at that point, use m_displayName
+  * Drop XAUTHLOCALHOSTNAME, FamilyWild takes care of that
+  * FamilyWild doesn't need an address
+
+-------------------------------------------------------------------
+Tue Oct 20 14:30:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Introduce persistent global share context (kde#415798)
+  * Fix a potential SIGSEGV
+  * qpa: Create a pbuffer for internal windows
+  * core: Use less confusing name for Platform::supportsQpaContext()
+  * qpa: Merge OpenGL platform context classes
+  * scene: Reduce the call cost of Platform::supportsQpaContext()
+  * Fix pipewire stream double free
+  * Detect softpipe and llvmpipe on Mesa 20.2+
+  * wayland: Introduce logicalToNativeMatrix() helper
+  * platforms/drm: Fix software flip output transforms
+  * platforms/drm: Compute correct cursor transform matrix (kde#427605)
+  * wayland: Fix Qt clients not being maximized initially
+  * xwayland: Avoid creating a tree query on crash (kde#427688)
+  * wayland: Block geometry updates while placing popups
+  * Fix KWIN_EFFECT_FACTORY macros
+- Drop patches, now upstream:
+  * 0001-Detect-softpipe-and-llvmpipe-on-Mesa-20.2.patch
+
+-------------------------------------------------------------------
+Mon Oct 19 14:14:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix software rendering detection with Mesa 20.2+
+  (boo#1179845):
+  * 0001-Detect-softpipe-and-llvmpipe-on-Mesa-20.2.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 16:55:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * wayland: Fix initialization of dmabuf textures
+  * 3rdparty: Synchronize xcursor.{c,h}
+  * Fix kwin_rules_dialog not showing translated strings
+  * scripting: Fix initialization of WorkspaceWrapper
+  * scripting: Make ClientFilterModel work for Wayland windows
+  * scripting: Properly initialize clients model for Wayland windows
+  * scene: prefer calling mapToGlobal just once
+  * Place internal osd windows according to placement policies (kde#400675)
+  * Properly test internal window flags
+  * Use better window placement heuristics for internal clients
+  * screencast: Replace EGLFence with a glFinish()
+  * Allow calling setFrameGeometry() while the client is being resized (kde#426988)
+  * Fix ghost shadows left by context menus (kde#425294)
+  * Schedule workspace repaint for destroyed clients
+  * x11: Make removal of X11 event filters safe (kde#423319)
+  * Enable shadow protocol support for all Wayland clients
+  * screencast: Ensure that there is current OpenGL context when recording a window (kde#425869)
+  * Expose KWIN_XWL logging category to kdebugsettings
+  * Revert "[effects/slidingpopups] Start the animation on only windowAdded or windowClosed" (kde#426686)
+  * Fix invalidation of cached x stacking order in wayland only mode
+  * Fix for PlasmaSurfaceTest broken in a3b50500
+  * Fix for potential use-after-free introduced in a3b50500
+  * effects/flipswitch: Port away from deprecated QTimeline curve shape prop
+  * effects/cubeslide: Port away from deprecated QTimeline curve shape prop
+  * effects/desktopgrid: Port away from deprecated QTimeline curve shape prop
+  * Fix use-after-free when the user hovers over an auto-hide plasma panel in wayland...
+  * libkwineffects: Bump API version
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Sep 17 19:26:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Refresh patches:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+  * 0001-Use-Xauthority-for-Xwayland.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 11:38:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.5
+- Changes since 5.19.4:
+  * effects/slidingpopups: Properly clip windows
+
+-------------------------------------------------------------------
+Tue Jul 28 13:45:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.4
+- Changes since 5.19.3:
+  * Check if we successfully restored input focus
+  * Grab all possible keyboard modifiers for window commands (kde#424272)
+  * KCM KWin Options setting ActiveMouseScreen set proper default value (kde#424389)
+  * Resize maximised windows upon workspace change (kde#423596)
+  * Partially revert a0c4a8e766a2160 (kde#424223)
+  * Don't perform MouseActivateRaiseAndPassClick for topmost windows
+  * [virtualkeyboard] Fix the qtvirtualkeyboard with Qt 5.15
+  * [scripts/videowall] Reenable the config dialog
+
+-------------------------------------------------------------------
+Tue Jul  7 13:57:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- Changes since 5.19.2:
+  * Make sure tablet coordinates take decorations into account (kde#423833)
+  * Provide a mask for flag-type properties (window types)
+  * [kcm/kwinrules] Fix types property for NET::AllTypesMask (kde#423214)
+  * [x11] Force FocusIn events for already focused windows
+  * [kcm/kwinrules] Fix detection of wmclass property (kde#423138)
+  * [x11] Hold a passive grab on buttons only when needed (kde#394772)
+  * KCM KWin Decoration : kcfgc File attribute should point to kcfg file (kde#423398)
+
+-------------------------------------------------------------------
+Tue Jun 23 13:26:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.2
+- Changes since 5.19.1:
+  * Fix build with loadThemeCursor templates (kde#423052)
+  * KCM Compositing: Fix save state (kde#423223)
+  * KCMoptions: delay initialization after QObject creation in standalone (kde#423111)
+  * [x11] Create egl scene textures with right size
+  * [x11] Provide physical dimensions for outputs (kde#422816)
+
+-------------------------------------------------------------------
+Tue Jun 16 14:34:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- Changes since 5.19.0:
+  * [kcm/kwinrules] Fix slow scrolling through rules list (kde#421537)
+  * Fix the Plastik decoration with Qt 5.15
+- Drop patches, now upstream:
+  * 0001-Fix-the-Plastik-decoration-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
+Sun Jun  7 19:57:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix loading the Plastik window decoration (boo#1172615):
+  * 0001-Fix-the-Plastik-decoration-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
+Thu Jun  4 13:27:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * [KCM] Fix label in Screen Edges system settings
+  * Capstone commit to prevent force push reversed commits returning accidentally.
+  * [scene] Avoid a crash when currentPixmap is invalid and previousPixmap is null or invalid
+  * [kcm/kwinrules] Fix "window role" combo not showing up (kde#422302)
+  * [kcm/kwinrules] Fix first item position on property list (kde#421583)
+  * [wayland] Fix misuse of EGL/eglmesaext.h (kde#422131)
+  * [effects/blur] Don't blur outside the frame rect (kde#422202)
+  * [kwinrules] Add kconf_update script to fix placement rule
+  * fix compilation, remove extra parenthesis
+  * Wayland: avoid binding disabled outputs to surfaces (kde#419749)
+  * Correctly align natural layout in present windows
+  * [kcm/kwinrules] Extend upper limit of position and size spinners (kde#421892)
+  * [decoration] Fix propagation of client size (kde#419080)
+  * [platforms/drm] show cursor only when it is enabled (kde#418977)
+  * [scene] Re-build window quads after creating a WindowPixmap
+  * [kcm/kwinrules] Detect virtual desktops in Wayland (kde#416165)
+  * [kcm/kwinrules] Fix Placement setting (kde#421586)
+  * [kcm/kwinrules] Fix size properties not being stored (kde#421055)
+  * [kcm/kwinrules] Fix placeholder message in RulesEditor
+- Remove patches, now upstream:
+  * 0001-scene-Re-build-window-quads-after-creating-a-WindowP.patch
+
+-------------------------------------------------------------------
+Fri May 22 17:51:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Reintroduce patch, apparently still needed:
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+
+-------------------------------------------------------------------
+Tue May 19 18:39:34 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix initial rendering of Xwayland windows:
+  * 0001-scene-Re-build-window-quads-after-creating-a-WindowP.patch
+
+-------------------------------------------------------------------
+Thu May 14 14:33:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+  * 0001-Use-Xauthority-for-Xwayland.patch
+- Drop patch, upstream changes made it unnecessary:
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+
+-------------------------------------------------------------------
+Tue May  5 13:01:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * Make Compositor more verbose
+  * [scripting] Re-evaluate exclusions after switching between virtual desktops or activities
+  * Avoid crash in KWin::DrmOutput::updateCursor (kde#420077)
+  * [wayland] Fix teardown order
+  * [wayland] avoid potential crash when checking for window inhibitions on desktop change (kde#420039)
+  * [kcmkwin] Make dialog non blocking (kde#419118)
+
+-------------------------------------------------------------------
+Tue Mar 31 15:16:32 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:41 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- Changes since 5.18.3:
+  * [kcmkwin/kwindesktop] Fix inability to create more than one row on the "Virtual Desktops" settings page (kde#419141)
+  * [wayland] Recursively destroy WindowPixmap objects
+  * [scenes/opengl] Print a debug message when viewport limits aren't met
+
+-------------------------------------------------------------------
+Fri Mar 13 10:28:38 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Replace the Requires: xorg-x11-server-wayland dependency with a
+  Recommends so we can install kwin5 in X11 only systems.
+
+-------------------------------------------------------------------
+Tue Mar 10 14:55:32 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.3.php
+- Changes since 5.18.2:
+  * Notify about decorations button order change
+
+-------------------------------------------------------------------
+Tue Feb 25 14:07:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- Changes since 5.18.1:
+  * [kcm/effects] Clip ListView
+  * Schedule a workspace repaint in AbstractClient::minimize()
+  * [plastik] Disable problematic text hints (kde#417699,kde#413179)
+
+-------------------------------------------------------------------
+Tue Feb 18 14:05:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * Fix misplaced client windows (kde#417584)
+  * [autotests] Make XWaylandInputTest more robust
+  * Provide input geometry and input transformation matrix for Xwayland clients (kde#417444)
+  * Return early if close button accepts input event (kde#415155)
+  * [libkwineffects] Detect more AMD GPUs with GFX9 (Vega) chips
+  * Require kdecoration >= 5.18.0
+
+-------------------------------------------------------------------
+Mon Feb 10 16:01:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- The devel subpackage needs libepoxy-devel (boo#1163286)
+- Remove conditions for Leap 42
+
+-------------------------------------------------------------------
+Thu Feb  6 15:10:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [libkwineffects] Detect AMD Navi GPUs
+  * [x11] Fix visual artifacts during interactive resize (kde#415839)
+  * ScreenEdge: Do not use localtime for measuring duration
+  * [scripting] Expose Workspace::sendClientToDesktop() (kde#416093)
+  * Fix minor issues in XdgShellClient::updateClientOutputs
+  * Drop Toplevel::decorationRect()
+  * s/m_xdgShellSurface/m_xdgShellToplevel/g
+  * [wayland] Get rid of some duplicated code
+  * Document AbstractClient::isResize() and AbstractClient::isMove()
+  * Move definition of X11Client::damageNotifyEvent() to x11client.cpp
+  * Rename X11Client::getSyncRequest() to X11Client::syncRequest()
+  * Schedule a decoration repaint when client is resized
+  * [decoration] Implement the size property
+  * Fix kwin.upd not running if python 2 not installed
+  * Port away from a deprecated signal
+  * [wayland] Keep the opposite corner still when resizing a window
+  * [wayland] Provide correct input geometry for client-side decorated clients (kde#416346)
+  * [effects/morphingpopups] Don't animate popups when only shape changes (kde#416531)
+  * [kcms/kwindecoration] Fix saving of window decoration plugin (kde#416525)
+  * [nightcolor] Check whether Night Color is inhibited by a D-Bus service more efficiently
+  * [plugins/windowsystem] Use upstream KWINDOWSYSTEM_BUILD_DEPRECATED_SINCE
+  * [x11] Apply "Block compositing" rule right away (kde#415903)
+- Refresh 0001-Use-Xauthority-for-Xwayland.patch
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+  * 0001-Use-Xauthority-for-Xwayland.patch
+- Drop patch, fallout apparently fixed:
+  * 0001-Revert-platforms-x11-Force-glXSwapBuffers-to-block-w.patch
+- Add patch to avoid env in shebang:
+  * 0001-Use-fixed-absolute-path-instead-of-usr-bin-env-in-sh.patch
+
+-------------------------------------------------------------------
+Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.5.php
+- Changes since 5.17.4:
+  * [nightcolor] Fix division by zero (kde#415359)
+  * Possible fix for KDecoration crash in systemsettings (kde#411166)
+- Remove patches, now upstream:
+  * 0001-Possible-fix-for-KDecoration-crash-in-systemsettings.patch
+
+-------------------------------------------------------------------
+Mon Dec 23 14:34:58 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash in systemsettings (kde#411166):
+  * 0001-Possible-fix-for-KDecoration-crash-in-systemsettings.patch
+
+-------------------------------------------------------------------
+Wed Dec  4 08:37:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * Destroy dmabuf implementation on EGL backend going down (kde#413637)
+  * [kcmkwin/kwindecoration] Better presentation of tabs
+  * fix compilation with no-deprecated build of kwindowsystem
+  * Fix the order of arguments passed to changeMaximize method (kde#413424,kde#412888,kde#413554)
+  * [libkwineffects] Restore GL_DRAW_FRAMEBUFFER binding in GLTexture::clear
+
+-------------------------------------------------------------------
+Tue Nov 12 11:01:07 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- Changes since 5.17.2:
+  * [wayland] Fix sha check of filtered applications
+  * [effects/startupfeedback] Fallback to small icon size when no cursor size is configured (kde#413605)
+- Add patch to disarm wayland interface filter:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+
+-------------------------------------------------------------------
+Tue Oct 29 20:45:51 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.2.php
+- Changes since 5.17.1:
+  * Dmabuf recovery on EGL reset (kde#411980)
+  * [kcmkwin/kwindecoration] Fix default window size in KCMShell This also fixes a binding loop. (kde#413557)
+  * [kcmkwin/desktop] Elide "Show animation when switching" checkbox text (kde#403151)
+  * [kcmkwin/kwinvirtualdesktops] Improve default window size when opened in kcmshell
+  * [scripting] Provide conversion functions for AbstractClient (kde#413044)
+  * Don't use MESA_EGL_NO_X11_HEADERS
+  * [kcmkwin/kwindecoration] Elide "theme default border size" CheckBox
+
+-------------------------------------------------------------------
+Tue Oct 22 16:44:44 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.1.php
+- Changes since 5.17.0:
+  * Fix non-atomic output init (kde#412684)
+  * [aurorae] Fix visibility of Context Help button (kde#413145)
+  * [effects/startupfeedback] Scale application icon size with cursor size
+  * glx: Don't use sRGB configs on llvmpipe with depth 16
+  * [aurorae] Fix crash on KCM teardown with Qt5.14
+  * [tabbox] Correctly set global short on kwin tabbox (kde#407000)
+
+-------------------------------------------------------------------
+Thu Oct 10 14:25:46 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- Changes since 5.16.90:
+  * [platforms/drm] Disable transformations
+  * don't allow to resize or move fullscreen windows
+  * [platforms/hwcomposer] Fix build failure after D23495
+  * Use lambdas for queued invocation of composition suspending (kde#412353)
+  * [nightcolor] Print a debug message upon receiving new location from kded module
+  * [nightcolor] Add missing const qualifiers
+  * [nightcolor] Use local time in Automatic and Location mode
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:36 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Too many changes to list here
+- Refresh 0001-Use-Xauthority-for-Xwayland.patch
+
+-------------------------------------------------------------------
+Tue Sep  3 12:44:12 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- Changes since 5.16.4:
+  * [effects/desktopgrid] Don't change activities (kde#301447)
+  * Remove slideWindow(QWidget*) overload with recent KWindowSystem
+
+-------------------------------------------------------------------
+Tue Jul 30 12:40:18 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- Changes since 5.16.3:
+  * [kcmkwin/kwindesktop] Make SpinBox editable (kde#410368)
+  * Fix Qt warnings when rect is invalid, e.g. QRect(0,2111 3840x0)
+  * Don't crash when highlighted tabbox client is closed (kde#406784)
+  * Fix case-sensitivity typo in libinput configuration function (kde#408943)
+  * Fix creation of kdeglobals if /etc/xdg/kdeglobals present
+
+-------------------------------------------------------------------
+Thu Jul 18 19:53:51 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %_kf5_debugdir to install logging categories files.
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:07 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- Changes since 5.16.2:
+  * Fix check for SCHED_RESET_ON_FORK feature in clean build
+  * [effects/blur] Disable sRGB when the framebuffer is linear (kde#408594)
+  * Fix maximize Apply Now rule
+  * [tabbox] Properly determine depressed modifiers on X11 (kde#407720)
+  * glx: Prefer an sRGB capable fbconfig
+  * Decorate only toplevel internal clients (kde#407612)
+- Remove patches, now upstream:
+  * 0001-Fix-for-the-blur-effect-on-Intel-on-X.patch
+
+-------------------------------------------------------------------
+Fri Jun 28 10:06:14 UTC 2019 - Tranter Madi <trmdi@yandex.com>
+
+- Backport "fix for the blur effect on Intel on X"
+  * 0001-Fix-for-the-blur-effect-on-Intel-on-X.patch (kde#408594, D21908)
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- Changes since 5.16.1:
+  * [placement] Avoid smart placement strategy with invalid client sizes (kde#408754)
+  * Make sure we don't resize clients before they've been set up
+  * Avoid crash without XWayland
+  * [wayland] Obey m_requestGeometryBlockCounter inside updateDecoration
+  * [platforms/X11] Disable VSync for QtQuick Windows (kde#406180)
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:14 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- Changes since 5.16.0:
+  * Really use the translations. Patch by Victor Ryzhykh <victorr2007@yandex.ru>
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:08 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- Changes since 5.15.90:
+  * Avoid again invalid geometry of internal clients (kde#386304)
+  * [effects/screenshot] Upload data to xpixmap in chunks
+  * Move knsrc files to the new location
+  * Avoid potential assert in SM saving (kde#395712)
+
+-------------------------------------------------------------------
+Sun Jun  2 19:51:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use the right require type for permissions.
+
+-------------------------------------------------------------------
+Fri May 17 19:18:45 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Mention Qt plugins and QML modules explicitly
+- Move htmldoc translations to -lang subpackage
+
+-------------------------------------------------------------------
+Thu May 16 16:56:38 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Too many changes to list here
+- Adjust 0001-Use-Xauthority-for-Xwayland.patch for upstream changes
+
+-------------------------------------------------------------------
+Tue May  7 11:04:56 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- Changes since 5.15.4:
+  * Fix captions with non-BMP characters (kde#376813)
+  * [libkwineffects] Use fully qualified type name for signal
+  * [effects/fallapart] Don't animate popups
+  * Fix plugins/qpa build with Qt 5.13 (kde#406056)
+  * Also unset QT_SCALE_FACTOR (kde#406195)
+
+-------------------------------------------------------------------
+Mon Apr 15 06:54:01 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Revert upstream commit to avoid issues with NVIDIA optimus (kde#406180):
+  * 0001-Revert-platforms-x11-Force-glXSwapBuffers-to-block-w.patch
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:58 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- Changes since 5.15.3:
+  * Force server-side decoration if no borders are forced by user (kde#405385)
+  * [platforms/x11] Force glXSwapBuffers to block with NVIDIA driver
+  * Properly restore current desktop from session (kde#390295)
+  * [platforms/fbdev] Use a better way to correct activating framebuffer devices
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:21 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- Changes since 5.15.2:
+  * [platforms/x11] Properly unload effects on X11 (kde#399572)
+  * Properly restore current desktop from session (kde#390295)
+  * [effects/screenshot] Set m_windowMode in screenshotWindowUnderCursor (kde#374864)
+- Remove patches, now upstream:
+  * Set-m_windowmode-in-screenshotWindowUnderCursor.patch
+- Workaround doc translation needing a newer kdoctools
+
+-------------------------------------------------------------------
+Wed Mar  6 09:10:58 UTC 2019 - wbauer@tmo.at
+
+- Add Set-m_windowmode-in-screenshotWindowUnderCursor.patch to fix
+  "Capture the current pop-up only" mode in spectacle (boo#1123638,
+  kde#374864)
+
+-------------------------------------------------------------------
+Wed Feb 27 15:25:25 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add "AND GPL-3.0-or-later" to the license
+
+-------------------------------------------------------------------
+Tue Feb 26 14:05:28 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- Changes since 5.15.1:
+  * Don't destroy DecorationRenderer in setup/finish compositing
+
+-------------------------------------------------------------------
+Tue Feb 19 13:03:27 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- Changes since 5.15.0:
+  * [effects/desktopgrid] Don't copy windows on X11 (kde#404442)
+  * Enable -DQT_NO_URL_CAST_FROM_STRING and fix compilation
+  * Make the new Window Decoration KCM translatable
+  * Copy layer repaints to Deleted
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:51 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- Changes since 5.14.90:
+  * [effects/screenedge] Use correct blend function (kde#403570)
+  * Fix --no-global-shortcuts option
+  * [effects/startupfeedback] Fix shader
+  * Save the correct value of noborder property (kde#403948)
+  * [kcmkwin/compositing] Fix effect video previews
+  * [wayland] Send VirtualDesktop::done after editing a property
+  * Keep _NET_DESKTOP_NAMES in sync
+  * Fix flickering with Qt 5.12
+  * Fix "context objects" in VirtualDesktopManager::setVirtualDesktopManagement
+  * Set desktop name "atomically" when using the plasma virtual desktop protocol
+  * Generate desktop ids without curly braces
+  * Make sure that new virtual desktops can be activated by using plasma virtual desktop protocol
+  * Fix VirtualDesktopManager::createVirtualDesktop (kde#403312)
+  * Delete names of removed desktops from kwinrc
+  * [scenes/opengl] Destroy the lanczos filter when the backend is still alive (kde#403370)
+  * [build] Search for kirigami as a runtime dependency
+  * Compile the virtual backend with older Mesa (kde#403326)
+  * Fix DesktopGrid drag on X11
+- Remove patches, now upstream:
+  * 0001-Fix-flickering-with-Qt-5.12.patch
+  * 0001-Compile-the-virtual-backend-with-older-Mesa.patch
+
+-------------------------------------------------------------------
+Fri Jan 18 19:48:25 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to force initialization of OpenGL to fix flickering
+  (boo#1120090, QTBUG-73122):
+  * 0001-Fix-flickering-with-Qt-5.12.patch
+
+-------------------------------------------------------------------
+Thu Jan 17 18:47:21 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Too many changes to list here
+- Add patch to fix build on 42.3:
+  * 0001-Compile-the-virtual-backend-with-older-Mesa.patch
+
+-------------------------------------------------------------------
+Tue Jan  8 13:37:04 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- Changes since 5.14.4:
+  * [platforms/x11/standalone] Pass kxkbconfig to Xkb prior to reconfigure (kde#402764)
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:46 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- Changes since 5.14.3:
+  * actually initialize kcrash for xclipboardsync
+  * [wayland] Don't crash when resizing windows (kde#397577)
+  * [effects/slidingpopups] Don't crash when sliding virtual desktops (kde#400170)
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:24 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- Changes since 5.14.2:
+  * Flush kwinrulesrc in RuleBook::save (kde#399778)
+  * [effects/desktopgrid] Don't display the close button from Present Windows (kde#364710)
+  * [effects/presentwindows] Avoid potential freeze during fill-gaps (kde#364709,kde#380865,kde#368811)
+  * [effects/thumbnailaside] Save shortcuts (kde#400351)
+  * [effects/desktopgrid] Specify screen projection matrix when drawing moving window (kde#361371,kde#364509)
+  * [effects/invert] Don't block blur and background contrast effect (kde#279076,kde#359583)
+
+-------------------------------------------------------------------
+Tue Oct 23 13:55:36 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- No code changes since 5.14.1
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:14 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- Changes since 5.14.0:
+  * [kcmkwin/ruleswidget] Disable "Detect" button when countdown is running (kde#399644)
+  * [effects/diminactive] Delete active transitions when window is deleted (kde#399612)
+  * [activities] Fix logic error in user menu blocking activity updates
+  * [qpa] Always keep a at least one screen (kde#399564)
+  * [effects/wobblywindows] Fix visual artifacts caused by maximize effect (kde#370612)
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:11 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- Changes since 5.13.90:
+  * [effects/zoom] Set wrap mode for cursor texture (kde#338254)
+  * fixuifiles
+  * Fix untranslatable strings in debug_console.ui shortcutdialog.ui (kde#398703)
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:28 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:01 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:41 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * Avoid global static for effects
+  * [effects] Use more effectData() in BuiltInEffects
+  * [kcmkwin] Use QtQuick.Controls 2.0 for Label and TextField (kde#366451)
+  * Update kwindecoration docbook
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * [kcmkwin/kwindecoration] Add missing QT include
+  * Don't remove outputs during page flip (kde#396272)
+  * [wayland] Confine pointer to screen geometry (kde#374867)
+  * [effects/desktopgrid] Don't change activities (kde#301447)
+
+-------------------------------------------------------------------
+Tue Jul 10 14:01:56 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * Link clipboard sync helper to kcrash
+  * Avoid potential assert in SM saving (kde#395712)
+
+-------------------------------------------------------------------
+Tue Jun 26 16:00:46 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * Revert "Workaround crash in Aurorae destruction" (kde#395732)
+  * Workaround crash in Aurorae destruction (kde#395346)
+
+-------------------------------------------------------------------
+Tue Jun 19 14:44:37 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * [libkwineffects/kwinglutils] Calculate correct srcY0 and srcY1 in GLRenderTarget::blitFromFramebuffer
+  * Fix multimonitor blur (kde#393723)
+  * [effects/blur] Check for blitting support
+  * Fix blur on Wayland when scaling is used (kde#391387)
+  * Hide decoration tooltip when the decoration gets destroyed (kde#394977)
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:51 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * Don't scale resolution dependent cursor size twice
+  * Reparse rules config prior to update (kde#393788)
+  * Do not save kwinrulesrc on every window opening/closing (kde#393911)
+  * Update seat's timestamp after waking up screen through double tap (kde#392754)
+  * Use XdgShell Unstable V6 in nested wayland platform
+  * Ensure the QToolTip on the deocration does not steal key events (kde#393253)
+  * Do not unset cursor image when cursor enters a surface
+
+-------------------------------------------------------------------
+Sat May 19 14:16:36 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed May  2 09:07:20 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * Convert JS files to UTF-8 (from ISO-8859-15)
+  * [KScreen Effect] Fix fade to black (kde#388384)
+  * Reparse the input configuration when we are notified that it changed
+  * Don't try to filter null key combinations (kde#390110)
+  * drm backend: choose correct EGL config with mesa-18
+  * Ensure _NET_CURRENT_DESKTOP is set on startup (kde#391034)
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * [colorcorrection] Apply current color temperature on screen hot plug (kde#391623)
+  * [effects/coverswitch] Fix broken reflection on multi-monitor setup (kde#378688)
+  * [AppMenu] Ignore show request when application menu isn't configured (kde#392012)
+
+-------------------------------------------------------------------
+Mon Mar 19 10:01:34 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to create Xauthority on wayland, to support connections
+  as different user (boo#1084737):
+  * 0001-Use-Xauthority-for-Xwayland.patch
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:36 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * Fix the build on armhf/aarch64
+  * Convert EffectView to a QQuickWidget
+  * Sanity check WindowQuad before trying to create a grid out of it (kde#390953)
+  * Fix typo in config group name
+  * [kcmkwin/rules] Disable detect button on Wayland
+  * Don't crash if the cursor theme fails to create (kde#390314)
+  * Support modifier mouse/scroll action on internal decorated windows (kde#374880)
+  * Explicitly include <QAction> to fix build with Qt 5.11
+  * [autotests] Set breeze icon theme name in integration tests
+  * Send hoverLeave or hoverMotion after touch up on decoration (kde#386231)
+  * Init the icon in ShellClient::init
+  * Disable window rule configuration for Wayland
+  * Properly handle move during touch events (kde#390113)
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:28 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * Fix compilation without libinput
+  * Make it possible to compile 5.12 branch with a kdecoration from master
+  * [x11] Fix interactive point selection (kde#387720)
+  * Block geometry updates on move resize finish and don't configure xdg shell surfaces while blocked (kde#388072)
+  * Enable blending if a subsurface has an alpha channel
+
+-------------------------------------------------------------------
+Sun Feb  4 21:45:33 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * [libinput] Ensure Event::device returns a proper Device (kde#389674)
+  * Acknowledge the server side deco mode in WaylandServer not ShellClient (kde#389117)
+  * From 22% of cpu in hasTransientInternal to 0.2x%
+  * [autotests/integration] Add test for broken quick tiling for xdg_shell
+  * [effects/blur] Disable texture cache on Wayland
+
+-------------------------------------------------------------------
+Wed Jan 24 09:57:14 UTC 2018 - wbauer@tmo.at
+
+- Build with gcc7 on Leap 42.3, gcc6 no longer works because of a
+  change to the default compiler flags in openSUSE:Leap:42.3:Update
+  (boo#1077345)
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:05 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:09 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * Add missing include
+
+-------------------------------------------------------------------
+Sun Dec 10 08:24:01 UTC 2017 - fabian@ritter-vogt.de
+
+- Add parens to fix build for 42.x
+
+-------------------------------------------------------------------
+Sat Dec  9 10:55:47 UTC 2017 - fabian@ritter-vogt.de
+
+- As permissions now has CAP_SYS_NICE for kwin_wayland,
+  enable support here
+
+-------------------------------------------------------------------
+Thu Nov 30 10:43:50 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * Allow glXChooseFBConfig to return sRGB capable fbconfig (kde#387159)
+  * Fix leaking of FDs requested from logind
+  * Fix race condition with libinput events on startup
+  * Fix build with a KWindowSystem framework that doesn't pull QWidget
+  * Allow a cross-process check for same applications (kde#386043)
+  * Don't use XDGv6 in stable
+  * Support modifier+mouse button on window decoration (kde#386708)
+  * Remove unnecessary QString::arg call
+  * fix occassional crash caused by needlessly delayed signals (bko#363224)
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:32 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * Don't use the global KConfig object on the OpenGL freeze detection thread (kde#372114)
+  * Fix rendering issues of subsurfaces by using proper clipping (kde#385924)
+  * Fix viewport for screenshot on multiple screens
+  * Set scale on glScissor calls
+  * Fix glScissor calls with y-offset screens
+  * Fix viewport on vertically stacked monitors (kde#386099,kde#385655)
+
+-------------------------------------------------------------------
+Tue Oct 24 18:13:08 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 17:18:44 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * Ensure leave event is send to decoration when a window maximizes (kde#385140)
+  * Update pointer position whenever a window gets (un)minimized (kde#378704)
+  * Fix DRM EGL crash regression
+  * [autotests] Fix typo
+  * [platforms/drm] Use a shared pointer for gbm_surface (kde#385372)
+  * Ensure internal Wayland connection is properly setup before creating LockScreen integration (kde#385397)
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * Fix: Missing dependencies for kwin autotests
+  * remove xdgv6 use from 5.11 branch
+  * Also send Wayland clients to a new desktop if their desktop was removed
+  * Don't recreate kwayland blurmanager on screen size changes
+  * Don't reload background contrast effect on screen resize
+  * [tabbox] Create X11Filter on establishKeyboardGrab (kde#385032)
+  * Restore cursors across multiple screens (kde#385003)
+  * Properly update the visible (icon) name when the caption changes (kde#384760)
+  * Make sure OpenGL Context is valid before deleting shader (kde#384884)
+  * Don't scale cursor hotspot differently to cursor (kde#384769)
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:05 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Aug 29 10:02:42 UTC 2017 - fabian@ritter-vogt.de
+
+- Require kdialog
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:30 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * Print plugin name in case of a loading error.
+  * Update KNS providers to https
+  * Call Platform::setupActionForGlobalAccel on the Client shortcut
+  * [effects] Exclude OSD windows from desktop grid (kde#376987)
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:48 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * [aurorae] Add support for shaded windows (kde#373319)
+  * Properly swap the quick tile side when pressing the shortcut again (kde#382313)
+  * [aurorae] Mark the render QQuickWindow as frameless
+  * [platforms/x11] Quit the OpenGL Freeze protection thread on shutdown (kde#382283)
+  * [qpa] Prevent crash due to Surface getting null (kde#382063)
+  * [platforms/x11] Fix incorrect screen edge approaching with switch desktop on window move (kde#381849)
+  * [effects/slideback] Ignore windows which are not in visible area (kde#381402)
+  * Prevent endless loop in checkGLError due to GL_CONTEXT_LOST (kde#381870)
+  * Restore active client after ending showing desktop (kde#375993)
+  * Skip Shader self test for Mesa >= 17 (kde#376801)
+
+-------------------------------------------------------------------
+Mon Jul 10 20:30:10 UTC 2017 - fabian@ritter-vogt.de
+
+- Readd patch to revert upstream commit, the upstream "fix" is
+  not enough:
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+
+-------------------------------------------------------------------
+Mon Jul  3 20:47:18 UTC 2017 - wbauer@tmo.at
+
+- Update to 5.10.3.1
+  * Fix freeze in KWin::checkGLError on startup which affects
+    machines with an NVidia card (kde#381870)
+
+-------------------------------------------------------------------
+Tue Jun 27 17:50:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * Properly block the edge also for touch screen edges (kde#380476)
+  * [platforms/x11] Add support for GLX_NV_robustness_video_memory_purge (kde#344326)
+  * Fix double click on window deco if tripple clicked (kde#361241)
+  * Make shadows work for windows 100% width or height (kde#380825)
+  * [tabbox] Fix casts to Client where it should be AbstractClient
+  * Fix switch desktop on screenedge while resizing a Wayland window
+  * Fix switch desktop through edge when moving window (kde#380440)
+  * Workaround Qt regression of no longer delivering events for the root window (kde#360841)
+  * Better handle cases when the xkb keymap fails to be created (kde#381210)
+- Remove patches, now upstream:
+  * 0001-Force-creation-of-platform-window-for-the-desktop.patch
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+
+-------------------------------------------------------------------
+Sat Jun 17 16:37:21 UTC 2017 - fabian@ritter-vogt.de
+
+- Add workaround to fix input for fullscreen effects with Qt 5.9:
+  * 0001-Force-creation-of-platform-window-for-the-desktop.patch
+
+-------------------------------------------------------------------
+Tue Jun 13 19:36:04 UTC 2017 - fabian@ritter-vogt.de
+
+- Revert upstream commit to disable a 1px window obstructing the
+  left edge of the screen (kde#380476):
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:55 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * Fix Aurorae decorations with non integer DPI (kde#380524)
+
+-------------------------------------------------------------------
+Fri May 26 14:10:31 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * Fix compilation without libinput. #if is used everywhere else, #ifdef is wrong.
+  * Improve the escape key handling for breaking constrained pointers (kde#378452)
+  * [DRM plugin] No forward declare of DrmSurfaceBuffer without GBM (kde#379732)
+  * Use resourceClass as fallback for XWayland clients instead of resourceName.
+- Remove patches, now upstream:
+  * 0001-DRM-plugin-No-forward-declare-of-DrmSurfaceBuffer-wi.patch
+  * 0001-Improve-the-escape-key-handling-for-breaking-constra.patch
+
+-------------------------------------------------------------------
+Thu May 11 20:26:25 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Too many changes to list here
+- Add upstream patches from Plasma/5.10:
+  * 0001-DRM-plugin-No-forward-declare-of-DrmSurfaceBuffer-wi.patch
+  * 0001-Improve-the-escape-key-handling-for-breaking-constra.patch
+
+-------------------------------------------------------------------
+Tue Apr 25 18:58:03 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * Sort the themes in decoration KCM
+  * Fix KWin decoration KCM showing correct index at startup
+  * [platforms/drm] Explicitly request event context version 2
+  * Fix crash on dragging titlebar buttons in System Settings (kde#374153)
+  * [kcm_kwindecoration] Respect theme colors in buttons
+  * [platforms/drm] Explicitly request event context version 2
+  * [kcmkwin/compositing] Do not write GLPlatformInterface config (kde#378114)
+  * [slidingpopups] Only remove WindowClosedGrabRole if the effect owns the grab (kde#376609)
+  * Fix crash on dragging titlebar buttons in System Settings (kde#374153)
+  * [Aurorae AppMenuButton] Show if client has app menu
+  * [Plastik Decoration] Show application menu button if client has one
+  * [Aurorae DecorationButton] Hook up app menu button (kde#375862)
+  * [kcm_kwindecoration] Respect theme colors in buttons
+  * [kcm_kwindecoration] Respect theme colors in buttons
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:45 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * move the view at the correct index at startup
+
+-------------------------------------------------------------------
+Tue Feb 28 19:54:52 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * move the view at the correct index at startup
+  * We need Breeze 5.9
+  * Find minimum required Breeze version instead of current version
+  * Avoid a crash on Kwin decoration KCM teardown
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:12 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * [autotests] Add test case for quick tiling on X11
+  * Avoid a crash on Kwin decoration KCM teardown
+  * Support creation of PlasmaShellSurface prior to ShellSurface
+
+-------------------------------------------------------------------
+Tue Feb  7 18:53:22 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * Call performMoveResize when we got a new geoemtry during resize
+  * [autotests] Add test case for resizing window manually
+
+-------------------------------------------------------------------
+Thu Jan 26 19:58:32 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * Add workaround for touch input offset for decorated windows
+  * Add support for skip close animation to OnScreenMessage
+  * Support modifier-only-shortcuts when capslock is on
+  * Translate the layout name when passing to layout change OSD
+  * [autotests] Add test case for modifier only trigger when capslock enabled
+  * [autotests] Add test case for modifier only trigger when capslock enabled
+  * Fixed initial graying out options in Cube Effect settings
+  * use proper packagestructures
+  * Parse minimise all borders on the JS side
+  * [TabBox] Remember current model index on SwitcherItem model set
+  * Add support for skipCloseAnimation for internal windows
+  * Correct inital loading of BorderActivate
+  * Add minimize all to screen edges KCM
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * See https://www.kde.org/announcements/plasma-5.8.5-5.8.95-changelog.php#kwin
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Sat Nov 12 16:03:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Build with optional wayland components only on Tumbleweed (KWin's
+  Wayland integration is useless w/o XWayland which we have only in
+  Tumbleweed)
+
+-------------------------------------------------------------------
+Thu Nov  3 17:41:24 UTC 2016 - fabian@ritter-vogt.de
+
+- Introduce new _plasma5_bugfix global for more fine-tuned dependencies
+- Update BuildRequires accordingly
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+- Remove upstream patches:
+  * 0001-platformx-x11-Add-a-freeze-protection-against-OpenGL.patch
+  * 0002-platformx-x11-Add-a-freeze-protection-against-OpenGL.patch
+  * 0003-Remove-most-overhead-caused-by-the-freeze-detection-.patch
+  * 0004-Do-a-count-down-of-framesToTestForSafety.patch
+  * 0005-Use-only-one-timer-to-detect-freezes-and-other-optim.patch
+  * 0006-Test-3-frames-for-freezes-by-default.patch
+  * 0007-Only-call-PostLastGuardedFrame-when-OpenGLCompositin.patch
+
+-------------------------------------------------------------------
+Mon Oct 24 15:36:48 UTC 2016 - alarrosa@suse.com
+
+- Add 0001-platformx-x11-Add-a-freeze-protection-against-OpenGL.patch,
+  0002-platformx-x11-Add-a-freeze-protection-against-OpenGL.patch,
+  0003-Remove-most-overhead-caused-by-the-freeze-detection-.patch,
+  0004-Do-a-count-down-of-framesToTestForSafety.patch,
+  0005-Use-only-one-timer-to-detect-freezes-and-other-optim.patch,
+  0006-Test-3-frames-for-freezes-by-default.patch and
+  0007-Only-call-PostLastGuardedFrame-when-OpenGLCompositin.patch
+  to detect freezes caused by broken nouveau opengl drivers and
+  recover from that situation (boo#1003402, boo#1005323)
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:47 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+- Removed patch (upstream): fix-build.patch
+
+-------------------------------------------------------------------
+Wed Sep 21 14:22:07 UTC 2016 - wbauer@tmo.at
+
+- kwin5 requires xkbcommon >= 0.5.0 now for building
+
+-------------------------------------------------------------------
+Tue Sep 20 09:25:18 UTC 2016 - fabian@ritter-vogt.de
+
+- Revert usage of %{version} and define %{_plasma5_version} if needed
+  to make the same spec usable in KUF
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+- Added patch: fix-build.patch
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Tue Aug  2 11:35:58 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:30 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Tue Jul  5 11:39:09 UTC 2016 - wbauer@tmo.at
+
+- Use the new %kf5_find_lang macro to create the file list for the
+  lang package
+- Remove rpmlintrc file, it is not needed any more now
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:25 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Sun May 15 16:50:18 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:45:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:49 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:20:57 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+- Drop upstreamed 0001-use-a-global-static-for-animation-ids.patch
+
+-------------------------------------------------------------------
+Thu Mar 24 16:52:39 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added 0001-use-a-global-static-for-animation-ids.patch
+  (kde#360068, kde#352254)
+
+-------------------------------------------------------------------
+Sun Mar 20 09:19:54 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Tue Mar  1 17:32:38 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:12 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 15 17:49:55 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+
+-------------------------------------------------------------------
+Sat Dec 12 17:31:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+
+-------------------------------------------------------------------
+Sun Nov  8 18:37:21 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.3 (boo#955068):
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.3.php
+
+-------------------------------------------------------------------
+Sun Oct  4 10:43:45 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.2.php
+
+-------------------------------------------------------------------
+Wed Sep 16 13:23:40 UTC 2015 - alarrosa@suse.com
+
+- Remove the waylang-egl dependency in SLE-12 where the package
+  is not available
+- Use %fdupes to link duplicated files and fix one rpmlint error
+  and 16 warnings
+
+-------------------------------------------------------------------
+Thu Sep 10 17:17:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.1.php
+
+-------------------------------------------------------------------
+Mon Aug 24 17:51:54 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.0.php
+
+-------------------------------------------------------------------
+Sun Aug 16 10:17:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.95 aka 5.4 beta:
+  This release of Plasma brings many nice touches for our users
+  such as much improved high DPI support, KRunner auto-completion
+  and many new beautiful Breeze icons. It also lays the ground for
+  the future with a tech preview of Wayland session available.
+  We're shipping a few new components such as an Audio Volume
+  Plasma Widget, monitor calibration tool and the User Manager
+  tool comes out beta.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.95.php
+- Drop geometry_fix.diff and port-session-management.diff, upstreamed
+- Enable wayland integration unconditionally
+
+-------------------------------------------------------------------
+Sun Jul 26 15:51:03 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Fix version checks regarding Leap versioning
+
+-------------------------------------------------------------------
+Thu Jul 16 07:40:33 UTC 2015 - jos@opensuse.org
+
+- Added geometry_fix.diff: fixes a resizing bug, see
+  kde#348640 and also helps with
+  https://github.com/Flupp/sticky-window-snapping/issues/1
+
+-------------------------------------------------------------------
+Sun Jun 28 18:31:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+- Drop set-still-required-xcb-properties-in-findRule.patch, merged
+  upstream
+
+-------------------------------------------------------------------
+Fri Jun  5 22:11:43 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add set-still-required-xcb-properties-in-findRule.patch (kde#348472)
+
+-------------------------------------------------------------------
+Fri May 22 15:29:52 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Wed May 20 22:46:50 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update port-session-management.diff to latest version, and reapply it
+
+-------------------------------------------------------------------
+Sat May 16 15:44:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update port-session-management.diff, but comment it out - it has
+  the desired effect for kdelibs4-based applications, but KF5-based
+  ones aren't restored at all
+
+-------------------------------------------------------------------
+Wed May  6 18:05:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added port-session-management.diff: ports KWin part in the session
+  management for Plasma 5 (kde#341930).
+  There are still per application bugs.
+  See https://git.reviewboard.kde.org/r/123580/
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+- Update required KF5 version to 5.8.0
+- Added libQt5Core-private-headers-devel, pkgconfig(x11-xcb) and
+  pkgconfig(xcb-cursor) BuildRequires
+- Drop pkgconfig(xcursor) BuildRequires
+- Hardcode required libQt5Core5 due to usage of Qt5Core private
+  headers (which don't guarantee ABI/API stability even in point
+  releases)
+- Drop the Obsoletes to oxygen5-decoration, the decoration is again
+  part of 5.3 release
+
+-------------------------------------------------------------------
+Sat Apr  4 17:27:57 UTC 2015 - auxsvr@gmail.com
+
+- Added fix_nvidia.patch from upstrem to resolve kde#343551
+
+-------------------------------------------------------------------
+Thu Mar 19 17:42:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.2.php
+
+-------------------------------------------------------------------
+Thu Mar 19 01:56:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add explicit kiconthemes-devel BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb 20 02:43:57 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.1.php
+- Drop patches merged upstream:
+  0001-Trigger-rebuilding-of-quads-after-creating-a-new-Dec.patch,
+  0001-use-xembed-for-the-qml-view-of-window-decorations-mo.patch,
+  0002-Avoid-deleting-an-engine-whilst-components-from-our-.patch
+  and 0003-Disable-libinput-integration-if-0.8-is-found.patch
+
+-------------------------------------------------------------------
+Thu Jan 29 20:07:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added patches from upstream:
+  0001-Trigger-rebuilding-of-quads-after-creating-a-new-Dec.patch,
+  0001-use-xembed-for-the-qml-view-of-window-decorations-mo.patch (kde#341971),
+  0002-Avoid-deleting-an-engine-whilst-components-from-our-.patch and
+  0003-Disable-libinput-integration-if-0.8-is-found.patch (kde#342893)
+
+-------------------------------------------------------------------
+Mon Jan 26 19:49:23 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.0.php
+
+-------------------------------------------------------------------
+Tue Jan 13 16:35:04 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Beta aka 5.1.95:
+  * Undo changes to Plasma desktop layout
+  * Smarter sorting of results in KRunner
+  * Breeze window decoration theme adds a new look to your
+    desktop and is now used by default
+  * New white mouse cursor theme for Breeze.
+  * New plasma widgets: 15 puzzle, web browser, show desktop
+  * Over 300 bugs fixed throughout Plasma modules.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.95.php
+- BuildRequire Frameworks >= 5.6.0
+- Drop fixed-data-type-for_KDE_NET_WM_BLUR_BEHIND_REGION.patch,
+  merged upstream
+- Add pkgconfig(libinput) and pkgconfig(libudev) BuildRequires on
+  openSUSE >= 13.2
+- Drop egl, gl and glesv2 BuildRequires, they are now only runtime
+  requirements
+- Require breeze5-decoration, new default decoration
+- (Build)Require libkdecoration2-devel
+- Drop libkdecorations5(-devel), obsoleted by new external library
+- Drop baselibs.conf, there are no more relevant shlibs provided by
+  kwin5
+- Require Mesa-libEGL1, libQt5Gui5, libKF5WindowSystem5 and
+  plasma-framework with minimal version kwin5 was compiled against
+- Obsolete oxygen5-decoration
+
+-------------------------------------------------------------------
+Thu Dec 11 17:59:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.2:
+  * Bugfix release
+  * Drop check whether Compositing is enabled
+  * Cleanup electric border handling in leaveMoveResize, kde#341673
+  * Fix ui files
+  * Require OpenGL 2.0 in the SceneOpenGL2 constructor, kde#340254
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.2.php
+- Added fixed-data-type-for_KDE_NET_WM_BLUR_BEHIND_REGION.patch,
+  kde#328817
+
+-------------------------------------------------------------------
+Thu Nov  6 20:14:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.1:
+  * Bugfix release
+  * Correcting Exec command in kwinscripts.desktop, kde#334177
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.1.php
+
+-------------------------------------------------------------------
+Sat Oct 25 17:36:15 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Recommend lang subpackage
+- BuildRequire components used for wayland backend only for >= 13.2
+
+-------------------------------------------------------------------
+Sun Oct 19 21:51:23 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Adjust Qt5 buildrequires in the way they are explicitly searched
+  in CMakeLists: add pkgconfig(Qt5Core) >= 5.3.0, drop
+  pkgconfig(Qt5Gui) >= 5.3.0, pkgconfig(Qt5Network) >= 5.3.0 and
+  pkgconfig(Qt5Qml) >= 5.3.0
+
+-------------------------------------------------------------------
+Thu Oct  9 21:24:32 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1 Final:
+  * Bugfixes since RC1
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.0.php
+- Drop the sed version workaround from %prep, and raise KF5
+  BuildRequires to 5.3.0
+- Raise KWayland BuildRequires to 5.1.0
+
+-------------------------------------------------------------------
+Fri Sep 26 08:52:28 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95:
+   * Minor changes in internal kwayland usage
+- Install translations
+- BuildRequire kwayland-devel >= 5.0.95
+- Raise BuildRequired KF5 versions to 5.2.0
+- Install translations
+- Add rpmlintrc file for file-not-in-%lang warnings: we don't use
+  find_lang macro as it doesn't searches in subdirectories
+
+-------------------------------------------------------------------
+Tue Sep 23 17:45:46 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95~git20140923 (rb8837b6):
+   * Add support for explicit command stream synchronization
+   * Add support for EGL_EXT_platform_x11
+   * Add support for EGL_EXT_platform_wayland
+   * Fix misaligned combo box in window rules kcm
+   * Remove Client::getWMHints in favor of functionality in NETWinInfo
+   * Add WM2Activities to supported properties
+   * Refactor the swap completion interface
+   * Add an X11EventFilter class
+   * Add support for GLX in Xcb::Extensions
+   * Add support for GLX_INTEL_swap_event
+   * wayland_client and wayland_server moved to kwayland
+- Add kwayland-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep 11 16:28:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.95~git20140911 (r8a620e7):
+   * Use libepoxy to resolve GL functions instead of manual resolving
+   * Wayland backend improvements, and a new kwin_wayland binary
+   * Various other bugfixes, improvements and cleanups
+- Add libepoxy-devel BuildRequires
+- BuildRequire pkgconfig(xkbcommon) only for openSUSE >= 1315
+- Simplify filelists
+
+-------------------------------------------------------------------
+Mon Aug 11 20:49:32 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.1
+   * Bugfix release
+- Drop 0001-Drop-explicit-Qt5Widgets_EXECUTABLE_COMPILE_FLAGS.patch,
+  upstreamed
+
+-------------------------------------------------------------------
+Fri Jul 11 19:17:01 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.0.0
+   * Plasma 5.0 Final
+- Adjust BuildRequires depending whether Qt is built with openGL or open GL ES2
+- Added 0001-Drop-explicit-Qt5Widgets_EXECUTABLE_COMPILE_FLAGS.patch
+
+-------------------------------------------------------------------
+Thu Jul  3 17:35:40 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.98.0
+  * Plasma 5 RC release
+- Drop adjust_kwin_name.diff, merged upstream
+
+-------------------------------------------------------------------
+Fri Jun 20 10:24:27 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Install license
+
+-------------------------------------------------------------------
+Thu Jun  5 16:23:26 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 4.97.0 - second beta of Plasma 5 release
+- Drop update_to_latest_head.patch, contained in new release
+
+-------------------------------------------------------------------
+Tue Jun  3 22:36:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add baselibs.conf
+- Add Source URL
+- Added update_to_latest_head.patch, to sync with latest KF5 API
+- Added adjust_kwin_name.diff,  use kwin_x11 for binary name, r118266
+
+-------------------------------------------------------------------
+Sun May 18 00:18:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate kwin5 package
+

@@ -1,0 +1,263 @@
+-------------------------------------------------------------------
+Thu Jul  6 08:16:09 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 23.1.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 23.1.0~b2
+
+-------------------------------------------------------------------
+Mon May 22 08:42:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 23.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Tue Mar 28 08:33:00 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 23.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Mon Dec 19 21:10:40 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 22.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Oct 20 09:06:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 21.2.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Tue Oct 11 09:13:01 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 21.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Fri May  6 09:10:50 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 21.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Wed Mar 23 08:26:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 21.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Wed Jan 26 10:27:17 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 20.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Sep  7 13:31:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 20.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Thu Jul 22 13:09:06 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 19.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Wed Jun  9 14:33:55 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 18.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Mon May 10 07:40:25 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 16.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Jan 21 10:03:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Downgrade to previous upstream release
+  + Version 12.0.0
+  + Required to unbreak Azure CLI packages
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Mon Oct  5 12:54:47 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 15.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Aug 18 13:51:52 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 10.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Mon Jul 20 14:28:16 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 10.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
+Mon May  4 14:17:24 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 9.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+
+-------------------------------------------------------------------
+Mon Feb 24 12:57:00 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 8.0.1
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+
+-------------------------------------------------------------------
+Mon Jan  6 15:57:05 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+
+-------------------------------------------------------------------
+Fri Oct  4 12:19:35 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Drop patches to support older versions of setuptools as
+  SLE-12 is now shipping with a recent enough version
+  + amr_drop-compatible-releases-operator.patch
+  + amr_drop-extras-require.patch
+- Update %description from setup.py
+
+-------------------------------------------------------------------
+Fri Apr 12 13:19:18 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.1.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Add patch to drop extras_require field from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + amr_drop-extras-require.patch
+- Bump minimum version for namespace packages
+  to 3.0.0 in BuildRequires and Requires
+- Remove python-devel package from BuildRequires
+- Refresh patches for new version
+  + amr_drop-compatible-releases-operator.patch
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+- Update %description from setup.py
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Sep  4 17:58:19 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release 2.0.0
+  * For detailed information about changes, see the
+    HISTORY.txt file provided with this package
+- Move LICENSE.txt from %doc to %license section
+- Refresh patches for new version
+  + amr_drop-compatible-releases-operator.patch
+- Update Requires from setup.py
+- Update %description from setup.py
+
+-------------------------------------------------------------------
+Fri Jan 19 13:34:01 UTC 2018 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 1.2.2
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Install HISTORY.rst into doc directory
+
+-------------------------------------------------------------------
+Wed Oct  4 15:24:29 UTC 2017 - adrian.glaubitz@suse.com
+
+- Add namespace packages to BuildRequires
+- Remove namespace files in %install target
+- Explicitly specify Python files of the package in %files
+
+-------------------------------------------------------------------
+Mon Oct  2 07:16:41 UTC 2017 - adrian.glaubitz@suse.com
+
+- New upstream release
+  + Version 1.2.0rc3
+- Remove versioning for namespace packages in Requires
+- Update Requires from setup.py
+- Update %description from README.rst
+- Refresh patches for new version
+  + amr_drop-compatible-releases-operator.patch
+
+-------------------------------------------------------------------
+Fri Jul 14 11:32:43 UTC 2017 - adrian.glaubitz@suse.com
+
+- Add python-azure-nspkg to Requires
+- Add python-azure-mgmt-nspkg to Requires
+
+-------------------------------------------------------------------
+Tue Jun 27 15:53:21 UTC 2017 - adrian.glaubitz@suse.com
+
+- Initial build
+  + Version 1.1.0
+- Add patch to drop compatible releases operator from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + amr_drop-compatible-releases-operator.patch

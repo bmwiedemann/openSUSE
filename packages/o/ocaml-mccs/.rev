@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>432ab977a7cf6ab5f88e69c30094d984</srcmd5>
+    <version>1.1+5</version>
+    <time>1520503023</time>
+    <user>dimstar_suse</user>
+    <comment>Multi Criteria CUDF Solver with OCaml bindings.
+
+It is a dependency of jbuilder, which is used for building some dependencies of the next version of Haxe (v4.0.0).
+
+Update: Package LICENSE files as %license.</comment>
+    <requestid>582459</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>abefe65740a81a94b5ff1579c9fa9bdb</srcmd5>
+    <version>1.1+8</version>
+    <time>1530303846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1+8:
+  * No changelog provided.
+- Add _service file to retrieve sources.
+</comment>
+    <requestid>615392</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>203a9bb61e34da61d4971d926aeb893b</srcmd5>
+    <version>1.1+9</version>
+    <time>1550668366</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.1+9:
+  * No changelog provided.
+- Fix license to be proper SPDX.
+- Fix build with ocaml-dune 1.7.1.  
+</comment>
+    <requestid>677429</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>01f8f473ade0dc5f55bb8d701e9682b8</srcmd5>
+    <version>1.1+9</version>
+    <time>1571950913</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735913</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e82595a2d5d8e78eaf645122b2962fb</srcmd5>
+    <version>1.1+10</version>
+    <time>1573503976</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746704</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a98c6ec3223019f3cf36e339e5c068cc</srcmd5>
+    <version>1.1+13</version>
+    <time>1619653058</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888079</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f75631e3e16ed8b11fccd58eb7241ea0</srcmd5>
+    <version>1.1+14</version>
+    <time>1655821980</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>984132</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>05246b93633648af4bf89e2078603161</srcmd5>
+    <version>1.1+16</version>
+    <time>1689614598</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1098784</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a1d73a775dff8a0ceaf4ed02d402daed</srcmd5>
+    <version>1.1+17</version>
+    <time>1703801002</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135460</requestid>
+  </revision>
+</revisionlist>

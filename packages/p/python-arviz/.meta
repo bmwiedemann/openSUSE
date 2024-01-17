@@ -1,0 +1,10 @@
+<package name="python-arviz" project="openSUSE:Factory">
+  <title>Exploratory analysis of Bayesian models</title>
+  <description>ArviZ is a Python package for exploratory analysis of Bayesian models. Includes
+functions for posterior analysis, data storage, model checking, comparison and
+diagnostics.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-arviz"/>
+  <url>http://github.com/arviz-devs/arviz</url>
+</package>

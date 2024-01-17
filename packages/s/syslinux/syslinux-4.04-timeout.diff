@@ -1,0 +1,61 @@
+diff --git a/core/ui.inc b/core/ui.inc
+index 0a4bb56..97945c9 100644
+--- a/core/ui.inc
++++ b/core/ui.inc
+@@ -529,30 +529,36 @@ kernel_corrupt: mov si,err_notkernel
+ ; which can be adjusted by the caller based on the corresponding
+ ; master variables; on return they're updated.
+ ;
+-; This cheats.  If we say "no timeout" we actually get a timeout of
+-; 7.5 years.
+-;
+ getchar_timeout:
+ 		call vgashowcursor
+ 		call reset_idle
+ 
+ .loop:
+-		push word [__jiffies]
++		push dword [__jiffies]
+ 		call pollchar
+ 		jnz .got_char
+ 		call do_idle
+-		pop ax
+-		cmp ax,[__jiffies]		; Has the timer advanced?
++		pop eax
++		sub eax,[__jiffies]		; Has the timer advanced?
+ 		je .loop
+ 
+-		dec dword [ThisKbdTo]
+-		jz .timeout
+-		dec dword [ThisTotalTo]
+-		jnz .loop
++		; more than one tick may have passed, keep the diff in eax
++		neg eax
++
++		cmp dword [ThisKbdTo],0
++		jz .chk_total
++		sub [ThisKbdTo],eax
++		jbe .timeout
++
++.chk_total:
++		cmp dword [ThisTotalTo],0
++		jz .loop
++		sub [ThisTotalTo],eax
++		ja .loop
+ 
+ .timeout:
+ 		; Timeout!!!!
+-		pop cx				; Discard return address
++		pop ecx				; Discard return address
+ 		call vgahidecursor
+ 		mov si,Ontimeout		; Copy ontimeout command
+ 		mov di,command_line
+@@ -561,7 +567,7 @@ getchar_timeout:
+ 		jmp command_done
+ 
+ .got_char:
+-		pop cx				; Discard
++		pop ecx				; Discard
+ 		call getchar
+ 		call vgahidecursor
+ 		ret

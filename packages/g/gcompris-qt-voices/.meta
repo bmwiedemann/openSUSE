@@ -1,0 +1,6 @@
+<package name="gcompris-qt-voices" project="openSUSE:Factory">
+  <title>Additionnal voices for gcompris-qt</title>
+  <description>This package (noarch) add offline voices for gcompris-qt.
+</description>
+  <devel project="Education" package="gcompris-qt-voices"/>
+</package>

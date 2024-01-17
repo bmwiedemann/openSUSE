@@ -1,0 +1,29 @@
+From: Christian Goll <cgoll@suse.com>
+Date: Fri Mar 1 17:44:32 2019 +0100
+Subject: common: Check for package 'mariadb' as well
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 564eea2573aa78d227ed4aabf759f8113cdc0250
+References: 
+
+When checking for the installed database package, check for for the package
+'mariadb' - which is the package on SUSE.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ common/libexec/wwinit/10-database.init | 2 ++
+ 1 file changed, 2 insertions(+)
+diff --git a/common/libexec/wwinit/10-database.init b/common/libexec/wwinit/10-database.init
+index 516d573..5d0626b 100644
+--- a/common/libexec/wwinit/10-database.init
++++ b/common/libexec/wwinit/10-database.init
+@@ -145,6 +145,8 @@ if [ "$DATASTORE" = "mysql" ]; then
+         wwservice_activate mysqld mysql
+     elif wwpackage_check mariadb-server; then
+         wwservice_activate mariadb
++    elif wwpackage_check mariadb; then
++        wwservice_activate mariadb
+     else
+         wwprint "No database package seems to exist for mysql!\n" error
+         exit 255

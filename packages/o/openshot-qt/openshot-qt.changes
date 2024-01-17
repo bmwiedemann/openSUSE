@@ -1,0 +1,1089 @@
+-------------------------------------------------------------------
+Wed Jul 05 10:58:59 UTC 2023 - adrian@suse.de
+
+- Update to version 3.1.1:
+  * Adding back in "layers", "markers" to webview changes - since we accidentally filtered them out.
+  * Allow "duration" to be sent to the webview, to allow auto-increase project duration / auto resize the timeline
+  * Protect setWindowTitle from being called by a different thread (preview_thread - if sample_rate is updated). Protect preview_thread::update() method from triggering with 'sample_rate' update.
+  * Protecting timeline webview from unrelated changes - which can sometimes happen prior to the webview being fully loaded (causing a freeze on launch of OpenShot)
+  * On launch of OpenShot, convert float sample_rate into Integer (if needed), and update settings::sample_rate if needed. This causes our audio device to freeze
+  * Bumping version to 3.1.1, min libopenshot dependency to 0.3.2
+  * Updating donors and supporters
+  * Updating translations for 3.1.1 release
+  * Protect from generating a waveform for a NULL clip (we should skip clips that we can't find or query). Reported in Sentry: OPENSHOT-1WJ5
+  * Show friendly error to user when Export dialog fails to parse project JSON data: Reported in Sentry: OPENSHOT-6X
+  * Refactor some logic in Parent / Child property context menus - to be simpler, and more efficient. This solves a bug on Windows also, where file paths were not matching correctly.
+  * Adding debug logs to property widget context menus
+  * Removing items from "Parent" and "Child Clip ID" and "Parent Effect" context menus in the Property dialog - for example, clips with no effects, or clips with no tracking data, etc... Also, making things more consistent with parent folders in context menus (None, Clips, Tracked Objects)
+  * Fix object detector and tracker effects when using context menus, color pickers, and other property dialog editors - to correctly update the JSON without destroying certain data or "objects"
+  * Allow clearing the "Parent" and "Child Clip ID" properties of a clip / effect, and allow setting of the initial value to work correctly.
+  * Extending objects protections to color_update and remove_keyframe methods - to ignore when an object_id is not found, or a clip has no 'objects' dict
+  * Updating timeline `changed` callback to always reset the current value of ENABLE_PLAYBACK_CACHING. For example, sometimes we have already disabled this setting before changing the timeline data - and we would like it to stay disabled until further notice. This method was accidentally re-enabling the caching when we were not expecting it to.
+  * Protecting property widget exception when a label returns an invalid data tuple for the current selected property label: Sentry reported this error: OPENSHOT-43. This also fixes a regression related to updating ObjectDetector and Tracker objects.
+  * Protecting property widget exception when a label returns an invalid data tuple for the current selected property label: Setnry reported this error: OPENSHOT-43.
+  * Protecting timeline args from non-Integer values. Detected on Sentry: OPENSHOT-245G
+  * Fix for editing a title and trying to update a thumbnail on the timeline - was missing a required arg
+  * Removing freeze from github actions - too difficult to maintain compatibility with all the different builders
+  * Fixing issue where we still had many duplicate profile descriptions causing issues. Adding `- width x height | DAR` suffix for only the duplicate ones.
+  * Removing old ubuntu 18.04 github builder, adding 22.04
+  * Ignore profile folders on Export dialog init - removes warning log about "failed to process" profile folder
+  * Adding Profile search button to Preferences for easier filtering and searching for a default profile
+  * Updating duplicate profile names to use unique name (with DAR appended onto the end)
+
+-------------------------------------------------------------------
+Tue Apr 11 07:13:41 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.0:
+  * Improved Profiles (400+ Export Profiles, New Profile UI, and more)
+  * Improved Undo / Redo system, includes grouping actions (i.e. single undo for split-clips and similar multi-step edits)
+  * Improved Preview & Split Clip dialog (correct aspect ratio, correct sample rate)
+  * Improved Keyboard Bindings (arrow keys)
+  * Bug fix for Blender Animated Titles using high FPS (incorrect duration)
+  * Bug fix for Mac Chroma Key effect (babl color methods)
+  * Bug fix for video preview widget resizing, to correctly clear cache
+  * Bug fix for Automatic Transition Direction logic (i.e. correctly fade in/out based on where the transition is dropped)
+  * Fixing many bugs reported via Sentry.io
+  * Fixed issue with AppImage to support newer distros (related to glibc compatibility)
+  * Improved About dialog (release notes link, remove "candidate" for official releases)
+  * Expanded default Emojis (adding in Arrows, Shapes, and Brands)
+  * Improved File Properties Dialog, to handle replacing files and thumbnails, and better support for changing FPS
+
+-------------------------------------------------------------------
+Tue Dec  6 14:13:54 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0:
+  * Part of the OpenShot Video Editor v3.0.0 Release
+  * Huge improvements to User-Guide
+  * Fix to About->Changelog dialog (correctly parse logs)
+  * Updated AppStream XML metadata
+  * Many fixes to translations and our entire translation pipeline
+  * Support for many new languages
+  * Huge caching improvements (and new cache preferences)
+  * New Location preferences (for default folders - recent vs project)
+  * Added support for Blender 3.3.x (and many other blender-related improvements)
+  * Fixes to the build-in tutorial system (when hiding/showing widgets)
+  * Many fixes to sorting, including ability to manually sort lists (especially useful when using translations)
+  * Huge improvement to audio waveform support (faster waveforms, improved algorithm, more accurate, caching, and optimizations)
+
+-------------------------------------------------------------------
+Sun Jul 10 09:49:05 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add openshot-qt-disable-sending-metrics.patch: disable the use
+  of Google Analytics by default,
+  https://github.com/OpenShot/openshot-qt/issues/4735
+
+-------------------------------------------------------------------
+Mon Nov 01 13:41:42 UTC 2021 - code@bnavigator.de
+
+- Update to version 2.6.1:
+  * Auto migration of Crop keyframes from 2.5.1 projects (adds a
+    crop effect and sets the equivellent keyframes). 100% backwards
+    compatibility.
+  * Title Editor: TAB between fields
+  * Fix Windows drive letter regression, where saving projects on a
+    different drive than the assets would cause corruption. 2.6.1
+    will also repairs any corruption detected in *.osp project
+    files.
+  * Fix many broken language translations (pt_BR, sk, lt, ko)
+  * Updating many language translations to 100%:
+    Afrikaans
+    Chinese (Simplified)
+    Danish
+    Dutch
+    English (United Kingdom)
+    Gaelic; Scottish
+    German
+    Japanese
+    Polish
+    Russian
+    Spanish
+    Chinese (Traditional)
+    Turkish
+    French
+  * Improved language translation testing scripts, and adding
+    automated tests to fail GitHub PRs loudly if translations are
+    broken
+  * Protection against many uninitialized variable errors, reported
+    by Sentry.io
+  * Silenced a loud thumbnail server warning
+  * Prevent a divide by zero error on video preview resizing
+  * Updated credits and contributors
+  * Bumping version to 2.6.1 (minimum libopenshot 0.2.7, SO 21)
+- Enable python tests
+- httplib2 requirement has long been removed
+
+-------------------------------------------------------------------
+Fri Aug 27 09:03:55 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 2.6.0:
+  * Adding check for empty $REQUEST_UUID on Mac builds
+  * Removing unneeded digest (i think), to prevent an Angular error when we have subsequent applyJsonDiff calls very close together (i.e. slice a clip)
+  * Fix a regression from https://github.com/OpenShot/openshot-qt/pull/4230, which broke multi-select drag and drop for clips and transitions.
+  * Fixing spelling error and changing Blender log to warning instead of error, since this is a perfectly valid outcome (with the wrong version of blender)
+  * Fixing invalid default step value for QSpinBox widgets (sentry)
+  * Trying to prevent the accessing of 2 occasionally uninitialized vars (sentry issue)
+  * Adding a "Select a Color" context menu for color keyframes, so it's still possible to change animation interpolations, remove keyframes, etc... on a color keyframe. Double clicking the color still works the same though.
+  * Adding some protection around certain timeline JS bounding box operations (Sentry.io errors)
+  * Fixing a bug when detecting libopenshot version mismatch. We can't access app.show_errors in the exception handler, since app fails to initialize.
+  * Update version to 2.6.0; Requires libopenshot 0.2.6 SO 20
+  * Adding a few more updated translations
+  * Making the ZMQ logger better protected, and more able to shut down itself... so we don't get stuck on program exit waiting forever for a ZMQ polling event.
+  * Setting a new default simple layout
+  * Optimising the opt-in / opt-out process, so we can capture the initial launch anonymously, and then opt-out the user and prompt them to opt back in. Essentially this is the same as before, except we get the initial launch analytic (to help us better report on our usage and market share). All subsequent tracking is disabled until the user opts in.
+  * Fixing tutorial positioning (which sometimes doesn't work correctly, leaving the tutorial window in the upper right corner)
+  * Adding sentry error rates on our openshot.org version request... so we can adjust them dynamically (stable vs unstable versions).
+  * formatting if statement
+  * fixed scroll direction
+  * codacy comparison
+  * codacy changes
+  * codacy, and redraw on resize
+  * Ruler show correct frame number
+  * Fix middle click drag, and ruler jitter
+  * Allow mousewheel zoom on webengine
+  * Bug fix. Prevent adding the same clip as child in the Tracker and Object Detection Effects
+  * Updating supporters json
+  * Adding more context around effect parameters, and updating the POT template (a few new strings)
+  * Adding translations to context menus on about / credits dialogs. Added context menu to contributors dialog, for copying email and viewing websites.
+  * Updated contributors json with some new ones
+  * Updated POT translation templates with missing strings
+  * Updated POT translation templates with missing strings
+  * Fixing missing translations on new effect init dialogs (effect preprocessing data), and error on translator credits (which contain some unexpected text)
+  * Updating object detection effect icons to include "BETA". I also updated the wiki instructions for this effect.
+  * Fixing a regression on Export dialog, where we were not correctly applying FrameMapper's to all the clips.. causing audio desync, timing issues with Clips, audio pitch issues
+  * Add a new link widget to our preprocessing effect dialog, so we can give further instructions/link to users who want to download the object detector dependencies.
+  * Fixing High DPI widget mode (which is not ready yet), and replacing a few effect icons.
+  * Cleanup
+  * force ruler to draw
+  * Fixed treating adding y_offset to x
+  * get correct timeline length
+  * Time marks stay when you scroll
+  * Save primes as they're found
+  * Generating new translations (for new audio effects, and any other recent translatable)
+  * Well tested prime factoring
+  * Updating expander icon, and adding new cache images
+  * draw tick marks but overlaps sometimes
+  * Fixing race condition on Export dialog, which would invoke timeline.ApplyMapperToClips() after the export had begun... usually introducing a glitch into the 1st 10 frames written to the video file (when exporting to a different framerate)
+  * Updating effect icons (also including @2x versions for high DPI screens)
+  * WIP saving
+  * first try drawing on frames
+  * removed minimum zoom factor
+  * show frame numbers if scrolled in less than 1
+  * Tried matching shades, and showing preview bar
+  * fixed webkit compatability
+  * Formatting
+  * Fixed an error that caused the times to be off by 50px
+  * Changed 'tick_time' to 'ruler_time'
+  * removed a console.log
+  * Cleaned up leftover code for PR
+  * Coppied changes from playhead-bug branch
+  * Tried matching shades, and showing preview bar
+  * fixed webkit compatability
+  * Formatting
+  * Fixed an error that caused the times to be off by 50px
+  * Changed 'tick_time' to 'ruler_time'
+  * removed a console.log
+  * Cleaned up leftover code for PR
+  * Coppied changes from playhead-bug branch
+  * listen for mouseleave to end dragging
+  * Updating effect icons
+  * Updating all translations and supporters
+  * Fixing more Codacy issues
+  * Fixing some Codacy issues
+  * Adding snapping support for Playhead dragging + SHIFT, Clip/Transitions trimming, and refactoring some snapping related code. Also adjusting CSS styles for Clips and Transitions, to provide no left/right borders.
+  * Mirrored changes on transitions
+  * Add default case form move_clips
+  * added guards where we were getting exceptions (#4210)
+  * Fixing thumbnail image size which can be larger than the grid size. Noticable on audio thumbnails.
+  * Added audio effect icons
+  * Don't kill the WebView on aboutToQuit (#4174)
+  * Update json_data.py
+  * Don't go past min distance on shift-zoom
+  * Removing some previous optimizations that are no longer needed, refactoring the zoom slider handle logic a bit. Removing a processEvents() call that was experimental.
+  * strictly move slider with mouse
+  * Removed executable permissions from the xdg desktop file
+  * Removing dockAudioEffects which is unused
+  * Adding effect UI filtering, for audio and video effects, and a show all button.
+  * Check for windows drives after covering other cases
+  * default ignore_ids to an empty object
+  * Default to empty list
+  * Don't make paths to other drives relative
+  * unit tests: Rename test class, use inheritance
+  * src/classes/query.py: Fix indentation
+  * AppStream metadata: update content ratings (#4105)
+  * Downgrading map for angular-animate
+  * Bump actions/upload-artifact from 2.2.3 to 2.2.4 (#4201)
+  * Updating protection of timeline_sync.timeline
+  * Fixing a few sentry.io related issues: 1) undefined variable 2) accessing null objects 3) matching angular-animate version to angular
+  * launch: Fix --list-languages
+  * classes.sentry: Restrict distro use to Linux
+  * README: Update libopenshot instructions
+  * Added audio effects tab
+  * Use HTTPS for Google Analytics
+  * Don't fail on unavailable sentry_sdk, distro
+  * Add classes.sentry to manage sentry_sdk
+  * Experimental freeze changes to exclude django
+  * Experimental freeze changes to exclude django
+  * Experimental freeze changes to include all sentry_sdk modules (they seem to be missing on Windows builds)
+  * Prevent feedback loop when scrolling timeline on web engine backend, triggered by ZoomSlider widget. Also, it appears that we might be invoking run_js too often, and it gets queued up in blocks and processed in chunks. Not very happy with the performance on web engine.
+  * Logging overhaul, to solve issues caused by stdout/stderr redirection (#4175)
+  * Adding sentry_sdk
+  * Initial integration of Sentry tracing, to better track stack-traces and bugs in OpenShot. Removing the old hooks and HTTP posts to openshot.org, since they would be redundant. Sentry is still gated behind our 'send_metrics' setting, just like before.
+  * Unit tests: Import query classes at top of file
+  * classes.query: Don't hold reference to app.project
+  * Unit tests: Add test for filter(intersect=)
+  * Missed a line
+  * Removed a redundant blank line
+  * Comments for clarity
+  * use path not folder name
+  * Changed move to Copy
+  * doesn't look for abbreviated folder until it looks for long version
+  * commented for future reference
+  * Use full length project names, and update shortened if exists
+  * Reverting dictionary optimizations
+  * Keeping compatibility with older python versions
+  * Changed method name to set_property
+  * Apply suggestions from code review
+  * removed broken index
+  * Simplified if statements
+  * Improved speed when interacting with transform handlers
+  * Fixed dict update
+  * Changed JSON communication for detected objects
+  * Adding snapping logic to ruler dragging (similar to playhead movement). Also fixing a few Codacy issues.
+  * Fixing comment english
+  * Don't check event.shiftKey if event doesn't exist
+  * Fixing a regression caused by renaming .env files with version_info.  This caused the version.json file to not be created, and thus, all version info to vanish from all builds.
+  * Playhead snapping support, when SHIFT is pressed. Improved timeline styling: Removed left+right borders on clips/transitions to fix invalid width and jitter while trimming/moving items. Added brightness to selected clips, and flipped gradient on tracks (to make clips pop more).
+  * Revert "CI: Ignore Ubuntu 20.04 failures (#4076)" (#4121)
+  * Ignoring openshot_qt
+  * Removed Debug Statements
+  * Removed openshot_qt folder
+  * Fixed. Removing Debug Statements
+  * Fixing race condition on double calls to setScale() on project load/launch. This caused the Ruler to be rendered blank.
+  * Adding parent widgets to all QTimers, for proper cleanup. Fixing a regression where it wasn't possible to unselect a clip, transition, or effect.
+  * Removing horizontal_factor, due to it always being 1.0. Adding selection timer, to prevent mass selections from recalculating zoom slider geometry. Resized scrollbars on timeline, and added more constraints onto zoom slider (min/max zoom).
+  * Enforce min/max values on zoom slider handles, and prevent overlapping handles, or invalid values. Remove some duplicated code.
+  * Implementing some code cleanup suggestions
+  * Reverting experimental launch.py changes
+  * ui_util: Code cleanup
+  * Don't redefine 'min'
+  * classes.timeline: Remove unused settings ref
+  * CI: Switch to -platform minimal
+  * CI: Run unit tests without xrdb
+  * Eliminate settings.get_settings
+  * app: Move dark palette generation to ui_utils.py
+  * Experimental launch.py changes, to remove our main() function and add some additional protection for render_cache_json() timer during shutdown.
+  * Replacing literal value with a more accurate one (Codacy), and removing unused imports
+  * Removing a few unused variables / imports
+  * Initial commit of new Zoom Slider widget, to replace the previous +/- buttons and simple zoom slider. This new widget draws a mini timeline preview, allows the user to select any portion of the timeline, and also pan/scroll around the timeline with great accuracy.
+  * Gitlab builders: work around github3 API differences (#4109)
+  * Freeze: Include OpenGL/OpenGL_accelerate on Win32
+  * Fix env-file parsing
+  * Rename version_info files to NAME.env
+  * Handle multiple github3 versions
+  * Fix editbit command
+  * Munge command strings with shlex
+  * deploy.py: Reformat long lines
+  * Small change to github3 API
+  * Bump actions/upload-artifact from v2.2.2 to v2.2.3 (#4089)
+  * Don't set fractional values for int properties (#4068)
+  * Gitlab-CI: Add PyQt5 back to PYTHONPATH, crazily
+  * Gitlab-CI: Fix use of PowerShell variables
+  * Gitlab-ci: Make PY_ABI an envvar on Windows
+  * Look up Python ABI version, instead of hardcoding
+  * Windows builder: mingw32\mingw32\ => mingw64\mingw32
+  * build_server: Code-formatting/readability fixes
+  * Code review
+  * Prevent crash when no object was detected on a clip
+  * keyboard shortcut "R" to toogle the razor tool (#4007)
+  * App: Consume error queue to avoid repeats
+  * CI: Ignore Ubuntu 20.04 failures (#4076)
+  * README: Add repo name to workflow job title
+  * README: Add Github Actions status badges
+  * README: Remove Travis build shields
+  * Pass standard Qt args through to QApplication
+  * Changed default ObjectDetection default path for required files
+  * Removed the single "Clips" menu level
+  * Fix traditional logging calls
+  * Streamline dict access patterns (#4017)
+  * tests/query_tests: Run unit tests without GUI
+  * App: re-work launching, detach GUI from app
+  * Settings: getter -> cl.app; housekeeping
+  * Fix metrics/exceptions/settings circ. dependency
+  * Fixed Transforming handler shape mismatch for Tracker effect
+  * Protecting from missing attributes
+  * Using normalized initial bounding box for Tracker effect
+  * Fixed bounding box selection on portrait videos
+  * Fixed cache delay when moving the Tracker Transform Handler
+  * Fixed bounding box offset when selecting an object to be tracked
+  * Protecting from missing attributes and checking for Null values
+  * Fixing video_widget to allow an override, which ignores the project aspect ratio. When selecting regions from a Clip, the aspact ratio can be different than the project, and thus, we need to only show coordinates that match our clip image data.
+  * Revert "Test bumping the version (for gitlab-ci deployment testing)"
+  * Fixing some codacy issues
+  * Fixing exceptions where no JSON is returned.
+  * Fixing publish string replace issues
+  * Fixing URL validation to come after the publish step
+  * Adding more validations during the publish step, to verify openshot.org/download has correct URLs, which include the new version, and that all URLs are valid (no 404s).
+  * Fixing regex to match file pattern (was excluding the x86 trailing pattern)
+  * Fixing regex to match file pattern (was excluding the x86 trailing pattern)
+  * Fixing duplicate upload issue during deploy
+  * Handling .torrent file differently, since the URL was invalid
+  * Handling .torrent file differently, since the URL was invalid
+  * Handling .torrent file differently, since the URL was invalid
+  * Handling .torrent file differently, since the URL was invalid
+  * Renaming release candidate files before uploading artifacts
+  * Adding exception to requests to openshot.org
+  * Adding exception to requests to openshot.org
+  * Test bumping the version (for gitlab-ci deployment testing)
+  * Adding new deploy and publish scripts for GitLab CI to manually support deploying files/installers, creating GitHub release objects, creating blog entries, and creating new versions on the website.
+  * Fixing args to build_server.py (which have changed a bit)
+  * Renaming build_server script, so certain functions can be imported elsewhere (coming soon)
+  * Updating git log format to be consistent across all 3 repos (for final release publishing reasons)
+  * Stubbing out publish gitlab job
+  * Fixing regex for release branch restriction
+  * Adding new deployment task to gitlab ci (to prevent rebuilding installers on deploy step)
+  * removing deployment features from build-server.py, and moving them to deploy.py (coming soon)
+  * Updating caption effect icon
+  * Fixing initial state of caption dock
+  * Updating effect icons and effect cache images
+  * Updating translation templates
+  * Removing some unused settings
+  * Added support to set an effect's properties by it's parent effect
+  * Added support to insert the image of a clip inside a Tracked Object
+  * Added support to set the visibility of a Tracked Object
+  * Fixing path to build folder
+  * Fixing path to build folder
+  * Removing unused files from linux freeze.py script. It includes many hundred MB of unused files or duplicate files.
+  * Adding frozen version to About and launch logs, to make it very clear when and what build version is running on a user's computer (in cases where they are running the frozen version).
+  * Fixing some missing imports on video widget
+  * Fixing resize of video widget to support both height and width resizing, and being always divisible by 2 on both dimensions.
+  * Check for version info on launch and print to stdout/log.
+  * Fixing import of parent classes file
+  * Adding optional version.json to /settings/ folder during build. This is a dump of all 3 repos version info used in this build, including the current date/time. Also, some refactoring of build url naming and version parsing (used by both freeze and build-server.py now.
+  * Fixing some codacy issue with unused imports, etc...
+  * Removing unused signals from a previous merge that left them behind.
+  * Copy *.log files into new lib/settings/ folder (on Mac OS). Fixing syntax.
+  * Updated variable names
+  * Added support to attach a clip to another clip
+  * ObjectDetection: updated object selection and transform handler
+  * Added support to show the transform handler for the selected object
+  * Copy *.log files into new lib/settings/ folder (on Mac OS)
+  * Add improved min Mac OS detection and improved summary.
+  * Add minimum os version to Info.plist, so we don't attempt to install on an older system which will fail.
+  * Add minimum os version to Info.plist, so we don't attempt to install on an older system which will fail.
+  * Exclude a few more files from the mac build. Trying to avoid a crash related to tesseract and libgif dependencies
+  * Exclude a few more files from the mac build. Trying to avoid a crash related to tesseract and libgif dependencies
+  * Fix the Qt gif dependency on the mac build server. The build server has 2 competing libraries with different SO compatibilities. The invalid one needs to be ignored.
+  * Fix the Qt gif dependency on the mac build server. The build server has 2 competing libraries with different SO compatibilities. The invalid one needs to be ignored.
+  * Fix mac frozen dependencies (@rpath, /usr/local/) to use @executable_path, and repair the broken cx_Freeze folder and *.app folder. Also fix various dmg building errors due to new file path locations.
+  * Fix mac frozen dependencies (@rpath, /usr/local/) to use @executable_path, and repair the broken cx_Freeze folder and *.app folder. Also fix various dmg building errors due to new file path locations.
+  * ObjectDetection: show object's icons and transform handlers per frame
+  * Added support to update the detected bounding-boxes keyframes
+  * Added support to attach clip to detected object (ObjectDetection) effect
+  * Fixed clip transform handler when attached to object
+  * Minor fixes to the attached object property
+  * Update copyright in README
+  * Added mini-GUI to attach a clip to a tracked object
+  * Bump actions/upload-artifact from v2.2.1 to v2.2.2 (#3959)
+  * STY: Use enumerate, avoid Yoda conditions
+  * Preferences: Don't filter file dialog
+  * Fixing mac builder CI path to Python3
+  * Eliminate Ubuntu Unity integration
+  * Remove signal cxn causing double unsaved prompts
+  * Bump actions/upload-artifact from v1 to v2.2.1 (#3936)
+  * main_window: Separate model/view init (#3911)
+  * Add Dependabot checking for Actions (#3935)
+  * Small fix - print removed
+  * developers.rst: fixed "many bugs...can be added" (#3931)
+  * clip.rst: "it's" --> "its" (#3930)
+  * Added support for rotation to the transform handler for the tracker effect
+  * Credits: Fix data model
+  * Added support for rotation transform to the bounding-box and to the transform handler for the tracker effect
+  * Restrict label-conflicts to branch pushes (#3921)
+  * TimelineWebView: Log WebKit import fail reason (#3883)
+  * Github Actions CI building (#3901)
+  * Add .css files to .editorconfig (#3919)
+  * Changed Json interface that updates the Tracker effect
+  * Resolve Credits not popping up bug: minor changes
+  * Solved bug: Credits window (Help > About OpenShot > Credits) was not popping out
+  * "Copy Keyframes > All" includes "Crop *" settings
+  * Blender: Tweak dissolve.py parameters
+  * doc/clips.rst: Update image path
+  * Improve Documentation
+  * Timeline: Add some keyframes to debugger clips
+  * Drop keyframe points down into track gutter
+  * Disabling region selection after closing window Initialize Effect
+  * Added transform handler for Tracker effect
+  * webkit: No f-strings with Python 3.5 (Xenial)
+  * horizontal scroll using shift+scroll works with webkit backend
+  * Webview: Show menus with exec_()
+  * Revert "horizontal scrolling with SHIFT+scroll functional"
+  * Revert "added comments"
+  * Blender: Rename source scripts to .py.in
+  * Add __init__.py to parent paths as well
+  * Add __init__.py files to all python paths
+  * added comments
+  * horizontal scrolling with SHIFT+scroll functional
+  * TitleEd: Use style-tools more, drop find_in_list
+  * Title Editor: Model & program flow tweaks
+  * Label merge conflicts: lower retry delay, raise retry count (#3852)
+  * Upgrade label-merge-conflicts action to version 2.0.1 (#3851)
+  * Create label-merge-conflicts.yml (#3850)
+  * Timeline CSS: More visible keyframe marks
+  * Relocate libopenshot.log recovery to exceptions.py
+  * CONTRIBUTING: Fix Windows paths (backslash)
+  * Use CI_PIPELINE_ID in package filenames
+  * build-server: Update metadata file parsing
+  * Add CI_PIPELINE_ID to metadata file
+  * freeze.py: Exclude remaining glib2 libs
+  * keyframe_scaler: Rename to _scale_x_value
+  * project_data: Remove unused function
+  * Restore translated strings
+  * Dumb typo in the menu code (#3829)
+  * CONTRIBUTING: Style cleanup
+  * ISSUE_TEMPLATES: Fix wrapping
+  * Remove title text from report templates
+  * CONTRIBUTING: Update instructions/details
+  * Improved error handling for effect pre-processing
+  * Title templates: Make all transparent bgs black (#3814)
+  * Add ColorPicker dialog with checkerboard alpha (#3813)
+  * Properties model: Use new effect.ParentClip()
+  * Cutting: Don't accept() close event
+  * Make sure font family is single-quoted in HTML
+  * Titles: Rewrite XML parsing/mods, add style_tools
+  * Title editor: Use ColorPicker
+  * Properties: Use ColorPicker
+  * Animated titles: Use ColorPicker
+  * Animated titles: Add *args, **kwargs
+  * Export: some init cleanup, add *args, **kwargs
+  * Add ColorPicker dialog with checkerboard alpha
+  * Updating icons and cache icons for new opencv effects
+  * Fixing regression with opencv branch, and commented out lines we need
+  * Fix MainWindow inheritance (#3809)
+  * Blender: Make color-picker dialog non-modal
+  * Fixing regression causing an *.osp file dropped into the main window to break
+  * Renaming the .desktop file == the AppImage app name (which is required for desktopintegration to work)
+  * Removing unneeded mdir -p
+  * Fixed icon path
+  * Fixed icon path
+  * Copying all icons into AppImage... into correct XDG Freedesktop icon paths
+  * Another experimental AppImage icon change... for better support of AppImage desktopintegration
+  * Another experimental AppImage icon change... for better support of AppImage desktopintegration
+  * Adding .DirIcon to root of AppImage (a 256x256 PNG icon), used by Chrome OS and some distros
+  * Fixing import regression after merge... and removing Codacy complaint about unneeded else
+  * Fix string formatting on yml stale message (instead of folded style, use a literal string)
+  * Profile: Seek to first frame on change
+  * Enable auto transform for selections.
+  * Testing a new wrapper approach for AppImage
+  * Try and use original linux launch script, which calls real AppRun (renamed AppRun.64)
+  * Change name of desktop file
+  * Blender: Always show error msg, close window after (#3790)
+  * Properties: Fix transition property lookup (#3789)
+  * New AppRun test, to use the build in one from the build server
+  * main_window: actionJump logs => debug
+  * webview: cache logging, drop local settings ref
+  * Settings: Move QMessageBox, get_settings() to app
+  * app: Cleanup w/o relying on return from exec_()
+  * thumbnail: Add some logging
+  * webview: Swap parents, connect aboutToQuit signal
+  * webengine backend: Fix dumb mistake
+  * Address Codacy flags
+  * main_window: Correct webview import path
+  * Incorporate changes from 'develop'
+  * Remove unnecessary openshot_rc imports
+  * properties_tableview: Fix imports
+  * Housekeeping: Eliminate all star imports, etc.
+  * main_window: '[get_]app.window.…' => 'self.…'
+  * Updating effect icons, to some experimental ones. I might change these again soon.
+  * properties: Remove context menu lock, speedups
+  * preview_thread: Fix up logging
+  * Playback: Fix bug with starting play in reverse
+  * files_model: import better, progress in statusbar - Some small improvements to the file-model-insertion code - Whenever importing more than 15 files, the statusbar will show a   localized ("Imported N / M") count of the progress to completion
+  * Explicitly accept() more events, use menu.popup()
+  * Fix lots of action signatures (no 'event' param)
+  * Added a new "font" property editor, and a new "caption" editor, for effects which need them. Caption editor is a dockable widget, which accepts VTT format text and draws captions on a Clip. I've also reworked the "Simple View" and "Advanced View" to contain the caption widget's dock location (when it's needed).
+  * files views: Accept drop event before processing
+  * project_data: New keyframe scaler implementation
+  * Revert "Fix loading Unicode paths from 2.4 (#3624)"
+  * app.py: Remove distutils import (#3778)
+  * Work around PyQt5 bug with argument types (#3777)
+  * Work around PyQt5 bug with argument types (#3776)
+  * main_window: Add missing QUrl import (#3775)
+  * Add missing QUrl, so import file works
+  * Variables have now more readable names
+  * Fix dumb typo
+  * Formatting tweaks
+  * Update due to changes in 'develop'
+  * Add stale plugin with custom message to openshot-qt repo
+  * Updating logo image with simplified color version
+  * No longer trigger an event, but directly delete a clip which is no longer needed during drag/drop. This solves a nasty asny issue where a clip would "stick" on the timeline, due to out of order JS and Python calls
+  * Blender: Protect embedded params
+  * Blender: Use JSON serialization to inject params
+  * Simplify code by combining 'or' statements
+  * Tweak doc/titles.rst
+  * Correction to the title template directory.
+  * files_model: Fix any() call (#3753)
+  * blender: Script updates for colors.py
+  * blender: Script updates for earth.py
+  * blender: Script updates for neon_curve.py
+  * blender: Script updates for magic_wand.py
+  * dissolve.py: Correct end_frame value
+  * blender_listview: Fix Codacy issues
+  * Blender: Create thread/worker per-transaction
+  * dissolve/explode titles: streamline, update code
+  * Blender: Add inter-frame progress display
+  * Blender: Eliminate initial script copy, make preview timer single-shot
+  * Move Blender version check to separate function, rework subprocessing
+  * Animated titles: Source/imports cleanup
+  * Blender files: Update physics templates
+  * Blender: Trigger rendering from command line
+  * Blender: Pass preview_frame, fps values to scripts
+  * Blender: Misc cleanup
+  * Blender: Animation-Length fixes
+  * Fix large canvas rendering (at closest zoom levels), with WebEngine (#3711)
+  * windows installer: Expand firewall-rule option (#3736)
+  * Early return
+  * Apply suggestions from code review
+  * Properties model: Make most logs debug
+  * video_widget: Fix typo, unused vars
+  * STY: Simplify the code
+  * Adjust log levels (#3724)
+  * logger: Save original stdout/stderr
+  * Fixing a few issues with the title editor. 1) font-size was not being initialized on the font dialog, and 2) font-size was not being set (even though it can clobber our template settings 3) Not all text colors were being found when loading an SVG and setting the 'text-color' button.
+  * Change of name of library
+  * Teach Prev/Next Marker to jump to 0, end
+  * Make use of new Timeline lookup APIs
+  * Adapting https://github.com/OpenShot/openshot-qt/pull/3317 PR to enable CTRL to allow for adding to the current selection (for clips and transitions)
+  * Always remove existing keyframe points for a colliding X coordinate. For example, if there is already a Point with coordinate X=1, remove that, and then add the new preset Point. Fixes bug where first preset keyframe was uneditable.
+  * WebKit backend: Fix LoggingWebKitPage call
+  * timeline: Eliminate playheadOffset
+  * AudioThumbnail.png => AudioThumbnail.svg
+  * Delete unused timeline/media/images files
+  * WebKit: Don't inject mainWindow into JS (not used)
+  * Create Python threads as .daemon = True
+  * Load QtWebChannel JS from Qt resource system
+  * tab=>spaces
+  * Travis: Re-enable QtWebKit for Xenial builds (#3701)
+  * Don't call setInterval() with float args
+  * timeline: Fix HTML source processing
+  * controllers.js: Don't dereference unknown objects
+  * add_track: Fix track number lookup
+  * COPYING: Fix line wrapping in Exceptions section (#3692)
+  * Removing Intel QSV decoding from Preferences for all OSes. This does not work on any OS, and it causes a crash on some Windows machines.
+  * webengine backend: Import logging levels
+  * TIL that QMainWindow's parent must be a QWidget
+  * Fix MainWindow parenting
+  * Set up JS logging for both backends
+  * Misc code cleanup
+  * Stupid typo
+  * Fix thread shutdown
+  * Rename timeline view modules
+  * Rework backend importing for timeline
+  * Raise an exception if neither backend found
+  * Update timeline_mixins.py
+  * timeline-mixins: Enable WebEngine JS logging
+  * timeline-mixins: Enable WebEngine JS logging
+  * Add libvdpau.so.2 to mangled libs
+  * Fix lib mangling for real
+  * Fix mangle-hw-libs workdir path (#3679)
+  * Fix mangle-hw-libs workdir path
+  * Fixing Mac notarization to wait until --notarization-history contains the record...
+  * Fixing crash on Windows launch (with no WebEngineView)
+  * title editor: Fix name-duplication regex (#3637)
+  * Add libselinux.so.1 to package allow list (#3661)
+  * Updating output with some more context
+  * small webengine fix
+  * Use fmod for remainders and don't round BAD cases (just truncate string to 2 decimal places)
+  * opencv path added for windows 32 build
+  * Adding additional logging for Preference hardware decoder testing
+  * opencv path added for windows 64 build
+  * Fixing some code quality warnings
+  * Fixing some code quality warnings
+  * Prevent error if webkit not availble
+  * Adding JS mixin support for QtWebEngine and QtWebKit (so either one will be found and will work)
+  * Fix loading Unicode paths from 2.4 (#3624)
+  *  Prevent inheritance errors if imports fail
+  * Creating a mixin class to support both WebKit and WebEngine
+  * properties_tableview: Format, unused vars
+  * Use action-delay QTimers right
+  * Fix lockfile logic (#3648)
+  * removed unnecessary file
+  * Fixed file that was changed after merging with webengine branch
+  * Correction bad path in pre-processing effects
+  * Updating some troubleshooting code snippets for Mac builds
+  * Fix debug log for changelog parsing
+  * About: Support new changelog format
+  * Removing dangerous os.path.split, replacing with os.path.dirname
+  * Remove certain qt plugins from mac packaging
+  * Package all Qt plugins for Mac build, and added some debug/troubleshooting code to find the min sdk version for all packaged files.
+  * Use resource file for curves, cursors
+  * Update icon resource file
+  * Put back some icon dependencies
+  * query_tests: Remove openshot.png dependency
+  * Update .qrc file paths in .ui files
+  * Import openshot_rc before loading UI files
+  * Move images in resource file out of src/
+  * Move openshot_rc.py to classes/
+  * Update compiled resource file
+  * Moving qtWebEngine resources into the application folder (for mac) instead of a 'resources' sub-folder.
+  * Fixing freeze path for qtwebengine_locale folder, and adding a shared opengl context for QtWebEngine.
+  * Adding custom code signing step for QtWebEngineProcess with custom entitlements for Apple, to stop a memory V8 crash.
+  * Fixing bash syntax on mac build script
+  * Fixing issue with QtWebEngineCore file on mac builder
+  * Adding additional notarization logic to protect against failed or slow Apple API
+  * Fixing paths for Qt 5.15 (mac builder)
+  * timeline_webview: Make a lot of logs debug-level
+  * run_js: Increase timer to 200ms, better logging
+  * add_selection: Only log clears when debugging
+  * Updating mac builder to qt 5.15
+  * New formats for the logging instances
+  * minor fixes
+  * Error handler for OpenCV effect not compiled with library
+  * More Mac freeze/build fixes for PyQt5.12
+  * fixed bug with effects when cutting a clip
+  * Fixed objectDetection wrong file path
+  * Revert "freeze.py: `del` unused variable"
+  * Fix path of QtWebEngine process
+  * Adding new QtWebEngine files to Mac freeze
+  * Updating qt5 rpath script to work with latest Qt version on Mac build server
+  * File import: Don't abort on existing file
+  * Drag-and-drop: Recursive folder imports
+  * Updating region widget selection, and fixing cancel effect which broke QDragManager
+  * Added integration with Object Detector effect
+  * Update emojis model first
+  * timeline: Rename qt_log2() to qt_log()
+  * Added interval to apply OpenCV effects
+  * Main Window: Add View > Docks submenu
+  * Fix qt_log2 callable
+  * main_window: Code fixup
+  * Travis: Add Ubuntu Focal (Python 3.8) build (#3621)
+  * freeze.py: `del` unused variable
+  * Fix issues flagged by Codacy
+  * build-server: Fix Codacy issues
+  * Reindent Timeline-HTML HEAD
+  * Timeline: Sprinkle "DEBUG" log level liberally
+  * app.js: Pass event object to keyup handler
+  * Updating background color of the QtWebEnginePage, to prevent white flash while loading
+  * Add --debug flag(s) to launch.py (#3539)
+  * timeline: Add qt_log2, now with log levels
+  * Adding libpcre.so.3 to freeze.py (for qtwebengine support)
+  * timeline: Don't interpolate getThumbPath in ng-show
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * timeline css: Fix bad color value (#3606)
+  * Merged with dynamic effects UI dialog
+  * added comunication with CV processing effects
+  * Revert "Updating travis cx_Freeze to 5.1.1, to match build server"
+  * Allow Travis failures on Xenial
+  * Added better integration with stabilizer effect
+  * Add libxcb-xinerama.so.0 to AppImage
+  * Fixing relative symlink syntax
+  * Experimenting with relative AppRun symlinks
+  * Updating travis cx_Freeze to 5.1.1, to match build server
+  * Replace AppRun with symlink to openshot-qt-launch
+  * Travis: Downgrade to cx_Freeze 6.1 (#3607)
+  * Tweaking launcher bash file, to correctly add the current folder to LD_LIBRARY_PATH
+  * added preprocessing dialog window
+  * Add xcbglintegrations to freeze
+  * Fixed path to webengine resources
+  * Adding missing QtWebEngine locale and resource files
+  * Add resource paks for QtWebEngine
+  * Fix path for QtWebEngineProcess executable
+  * Fixing LD_LIBRARY_PATH and logic to find QtWebEngineProcess executable
+  * Trying to find work-around for idna error on new cx_Freeze exe
+  * Adding idna package to cx_Freeze
+  * Removing glib freezing for linux
+  * Testing new libc dependency (test 3)
+  * Testing new libc dependency
+  * Testing new libc dependency
+  * Updating gitlab tag to linux-bionic, to use out new build server
+  * Initial support for QtWebEngine and Async callbacks for timeline/Qt integration.  - Requires QtWebEngine and Qt 5.6+  - Requires OpenGL python module (to fix black screens on some systems)  - Enables smooth scrolling on timeline
+  * About: Use BOM to decode UTF-16 changelog file (#3601)
+  * Removed trailing spaces
+  * Added some comments
+  * Fix bash regex take 3
+  * Fix bash syntax for mac (a bit tricky)
+  * Improve bash syntax for waiting for notarization
+  * Use the right variable to show the elaped time
+  * Remove unused bash varible
+  * Experiment renaming launch-mac.sh to launch-mac, to get rid of an error
+  * Trying to fix "sh" would like to control your computer message
+  * Another entitlements syntax change
+  * Copying entitlements file to build folder before codesign
+  * Fixing symbolic link for emojis, and adding custom entitlements (trying to get past some errors with @rpath and @executablepath caused by the hardened runtime)
+  * Tweak error detection logic during code signing on Mac
+  * Refactor notarization to only notarize the DMG (no more zip file or app upload)
+  * Fix notarization status regex
+  * Fix notarization regex syntax issue
+  * Integrating notarization bash scripting, to wait until status detected
+  * Fix codesign syntax issue
+  * Experimental MacOS Catalina app notarization code
+  * Compose the export windows title with a local function to make the code easier to read
+  * To handle the unlikely situation that the program jumps to Emit final exported frame (with elapsed time) and seconds_run would not be set
+  * The precision (digits after decimal point) is now adjusted automatically
+  * Change the display (precision) of the progress bar during export depending on how long the last display ago was done. Also display at least every second. This should help users to recognise that the export is still ongoing when the ecoder is slow and the clip is long. Needs more fine tuning and a method that combines the output that is now done at various locations in the code
+  * Updating translations, including a 100% complete Scottish Gaelic translation!
+  * Make the interface for interlace more consistent
+  * New preset file for h265 codec in an mkv container. Interlace is only supported in a view codec in some containers and as far as I could see the mov container only supports it with mpeg2. The mkv container supports more resent codecs like mpeg4, h264 and h265.
+  * Include an option to chose between top field first and bottom field first in interlace mode. Much more work needed.
+  * This is so far the only preset that exports interlace. It may be that only mpeg2 in a mov container can do this in this version of ffmpeg.
+  * Honour the interlace setting
+  * Update src/windows/export.py
+  * Updating translations, including a 100% complete Tamil translation!
+  * Ability to not store the history in the project
+  * Removing setWindowIcon() from our main window, as it has a crazy side effect on Windows and prevents our QtImageReader from being able to open certain types of files, such as JPEG. Or at least, that is what appears to be happening.
+  * Trying more eslint variations
+  * Change export windows title at the end of the export
+  * Improved presets for libaom-av1
+  * Trying more eslint variations
+  * Trying more eslint variations
+  * Trying more eslint variations
+  * eslint hints
+  * Renaming duplicate variable declarations (probably should split this out into functions at some point... too much duplicate code)
+  * Adding more eslint comments, and fixing duplicate declarations
+  * Adding more eslint comments
+  * Fixing many == to ===, != to !==
+  * Renaming JS functions with lowercase first letter. A few small syntax tweaks.
+  * Fixing some semicolons
+  * Adding some additional eslint flags, and adding base 10 to all parseFloat calls
+  * Adding some additional eslint flags
+  * Renaming some methods to use lower-case first letter.  Adding some eslint comments.
+  * windows/tutorial: Codacy, positioning
+  * Major reformatting of timeline's JS files (removing unused variables, consistent indents, brackets around logic sections, etc...)
+  * Adding JS declaration for some undefined variables
+  * Updating single quotes in JS to double quotes
+  * Move imports back into try/except block
+  * Improving "rotate" exception handling with more detailed log output
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * Replacing TABs with spaces, and adding some { } around if conditions
+  * Replacing JS equality conditions with === / !==, to avoid casting types, and avoid certain types of issues.
+  * Adding logging for empty exception handlers, such as `Except: pass`
+  * Fixing additional missing double quotes
+  * Adding double quotes to some shell script variables, flagged by Codacy
+  * Add support for cqp setting in Export dialog
+  * Update models only once on init
+  * export: Actually import ExpatError (#3529)
+  * Fix hide tutorial QAction syntax for older Qt versions
+  * Disabling "No Recent Projects" menu item
+  * Updating all translation files with updated naming/file name (with underscores). This is from our automated LaunchPad process.
+  * Updating icon to edit-delete for 'Clear Recent Projects' menu
+  * Small refactor to reduce indents
+  * Add new OSP icon, install & use
+  * Titles: Don't pollute temp dir with title previews
+  * Tutorial: Process Esc key as a QAction
+  * Forgot current tutorial dialog when hiding (so we don't resurrect the final one accidentally)
+  * Apply suggestions from code review
+  * Removing logic to prevent tutorials from going offscreen (it was too glitchy). Added ability to click tutorial anywhere to move on to the next one. Added ability to hit ESC to hide all tutorials. With these 2 features, partially hidden tutorial messages will be an issue no more!
+  * Adjust position of tutorial message for smaller screens, or when OpenShot is moved past the edge of the screen.
+  * Adding "Clear Recent Projects" to recent project list, and a new "No Recent Projects" menu (and updating translations)
+  * transitions model: Look up groups via sibling() (#3511)
+  * translations: Use OpenShot_locale.qm file names
+  * main_win: Remove actionImportImageSequence_trigger
+  * Titles: Use files model add_files(), new counter
+  * Blender: Use files model add_files()
+  * Toggle fullscreen without losing other state (#3501)
+  * Add --test-models flag to launcher
+  * Properties: Use main data models for context menu
+  * Fix "Edit Title" action
+  * Fix dragging for all views
+  * Files: Move add_file, get_image_seq() into model
+  * Eliminate main_window's self.selected_files list
+  * Models: Persistence enhancements
+  * files_treeview: Fix context menu view switching (#3495)
+  * Removing CTRL modify from scrollwheel support on video widget. Making it very easy to discover the ability to zoom in/out of the video preview widget. Added cursor logic for "resize" button.
+  * Fix unity import
+  * Fixing regresion from https://github.com/OpenShot/openshot-qt/commit/41e7a354dc1c333c7bcaf5df560d6f67211219e3, where a comma turned into a period, breaking our ability drop a file on the timeline and move it.
+  * Add new signal for updating a file (such as editing a title), that results in the files_model updating the thumbnail, updating the name, and/or updating the tags.
+  * Adding no-cache paramater support for thumbnail HTTP server, so it will ignore cache and re-generate a thumbnail image
+  * Prevent crash on launch during a backup.osp recovery
+  * files views: Reconcile common code, use super()
+  * export: Correct PyQt5 imports (#3480)
+  * files views: Fix updateSelection()
+  * json_data: Fix path_regex
+  * Fix saving/loading selected emoji filter group
+  * Fix Qt warning message, code cleanup
+  * Replacing tooltip labels to Next|Previous Key Point
+  * File Properties: Raise profile of JSON data dump (#3441)
+  * Add Actions workflow to build docs with Sphinx
+  * classes.info: Handle missing PyQt5
+  * main_window: SPEL WURDZ RITE
+  * Implement "Slice Selected" shortcut bindings
+  * Add SliceSelected shortcuts to settings
+  * README: Update copyright to 2020 (#3400)
+  * Picture Frames: Remove "Path" from file labels
+  * Blender: Fix filename join
+  * Blender: Use self.process consistently
+  * Docs: Add Sphinx directive for youtube embeds (#3394)
+  * Free xml.dom.mindom parsers when finished
+  * Blender: Go back to bytes, for command output
+  * Blender: Streamline XML parsing, free dom object
+  * Blender: Clean up imports, fix class init
+  * Blender: Don't silently discard exceptions
+  * appdata: add <provides> (#3398)
+  * [#1363] Updated ui tooltip name (suggested by @SuslikV)
+  * [#1363] Navigating effect keyframes & copy/paste mistake fix
+  * [#1363] Code style & transitions keyframes
+  * [#1363] (Corrections) IMplementing fixes & style improvements recommended by @ferdnyc
+  * [#1363] (Code style) Added keyframes of currently selected clips as markers for easy navigation
+  * [#1363] (Fix) Added keyframes of currently selected clips as markers for easy navigation
+  * [#1363] Added keyframes of currently selected clips as markers for easy navigation
+  * freeze.py: Add paths to moved Windows DLLs (#3390)
+  * Updating translation tester script for multiple POT templates
+  * Adding filter group to emoji tooltip
+  * Adding 'translator-credits' to additional POT template files
+  * Updating all 4 translation templates
+  * Fixed rotation transform logic to correctly adjust around the origin point (in viewport coordinates). Fixed shear transform logic to correctly scale 1 to 1, as user moves mouse
+  * Split out blender translations into it's own POT template
+  * Shortening 'group filter' name for emojis to 1-word, updating translations to match
+  * Updating cache, removing many cached emoji
+  * Added script to "optimize emojis" and remove extra/unused ones, and updated translations to only use optimized emojis. This results in 936 emojis shipped with OpenShot, and less translations, faster loading, etc...
+  * Removing extra emojis for performance reasons
+  * Adding auto-transform selection feature, where selected clips automatically enable the transform tool. Defaults to 'false' for now.
+  * Titles: Re-establish user template location (#3376)
+  * Adding new hand cursor for the origin point
+  * Linux/setup.py: install 128x128 icon (#3374)
+  * Remove debug logging
+  * Restore drag pixmap
+  * emojis: A bunch of model/view tweaks
+  * Updated shear and rotation logic to use Keyframable origin point (x,y). Both shear and rotation need to know the origin, and share the origin point. Updated center origin display to a circle with a cross through it.
+  * Protect cursor when transform is happening, so it doesn't keep switching cursors during a drag. Fix shear_left and shear_top to take scale into account.
+  * Updated emoji model proxy filter to be waaay faster, using Qt regex.
+  * Hack to fix Travis failure
+  * Fixing emoji listview currentIndexChanged connection, since it passes an INT also
+  * Create 8 custom cursors, white middles with black stroke, for Transform tool. Added custom cursor rotation, as the transform is happening in real-time. Feel great, very polished.
+  * HUGE overhaul of the transform tool.   - Rotation added   - Shear added   - Improved paint logic   - Improved update logic   - Ability to zoom in and out of the video preview widget!
+  * classes.app: Set icon, desktop file (#3354)
+  * dissolve.py: Keep track of particles for duration (#3353)
+  * Adding cache for emojis (for fast loading of icons)
+  * Adding cache for emojis (for fast loading of icons)
+  * Integrated proxy class into models, and only refresh proxy on ListViews (since treeviews share the proxy model, they already get the updates)
+  * Title editor: Convert opacity to QColor alpha level (#3331)
+  * mangle-hw-libs.sh: Remove math expression (#3344)
+  * Added error handling to Preset and Profile file reading operations
+  * Adding emojis from open-moji project.
+  * Adding emojis to translation template. Splitting "transitions" and "emojis" into separate templates though, since there are thousands of them, and they are not critical for OpenShot to be usefully translated.
+  * Adding @emojis path replacement, when saving and loading *.osp files. This allows them to be cross-platform paths, and relative/magic paths for OpenShot which always work.
+  * Added emoji group drop-down filter, to better sort and filter, and a custom Proxy class for filtering. Also enabled locale aware sorting on listview and treeviews.
+  * Process qt events every 2 files added (so emoji doesn't glitch when adding to timeline)
+  * Convert effects to no longer delete widgets, but rather share a model, and toggle between list and tree view.
+  * Convert transitions to no longer delete widgets, but rather create both with a shared model, and toggle visibility to the user.
+  * Convert files to use new proxy class, and a global shared model. No longer delete the tree/list view widgets either. They both always exist, and share the same data, and toggle visibility back and forth. Added wait cursor when adding/importing files.
+  * Convert effects model to use proxy class for sorting and filtering.
+  * Convert transitions model to use proxy filter and sort class, with custom sort and filter function (which takes into account the group: common, extra, user) and the filter text. Also, moved the models outside of the widgets for Effects, Transitions, and Emojis.
+  * Initial checkin of emojis in OpenShot! Added new model/view/ui elements, and a handful of test emojis from OpenMoji.
+  * mangle-hw-libs: No realpath command on builder
+  * Update Python module paths on Win builder
+  * Move manual logo to xdg dir (#3320)
+  * Use mangle-hw-libs script on Linux builder
+  * Add script to modify HW libs in AppImage
+  * Use security-patched defusedxml, if available
+  * main_win: Drop thumbnail code, expand bare logs
+  * Fix shortcuts: Edit Title, Duplicate Title
+  * classes.info: Use current year in COPYRIGHT
+  * Changes to build-server for new AppRun
+  * New AppRun linux binary with OPENSSL_CONF
+  * Second attempt at AppImage fix (#3304)
+  * AppImage: Set OPENSSL_CONF for newer openssl compat (#3283)
+  * Filter properties using localized label (#3292)
+  * timeline-webview: Rewrap lots of long lines
+  * timeline_webview: .format() JS calls
+  * timeline_webview: Reduce indirection
+  * timeline_webview: Formatting & cleanup
+  * Sync add_file() in file views
+  * Allow *.osp project files to be imported as a Clip. Better handle unknown "media_type"'s.  Trigger "has unsaved changes" when clearing history from a Project, so the user can immediately save the *.osp file without history.
+  * Docs: Don't default-enable Google Analytics
+  * Fixing syntax error
+  * Bump version to -dev2 (merge master back to develop)
+  * Blender: Capture stderr, log output
+  * json_data: Correct for lost slashes, pre-repair (#3267)
+  * Minor improvements
+  * Include new codecs
+  * WIP: New add/remove track implementation
+  * launch.py: Add a --path arg to set PYTHONPATH
+  * Secure the NoDockWidgetArea docks from changes
+  * Use unified function for Docks searching
+  * Unify the getDocks searching algorithm
+  * Simplify Unity Launcher logic
+
+-------------------------------------------------------------------
+Sun Nov  1 00:14:34 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Change python-xdg to python-pyxdg requirement
+
+-------------------------------------------------------------------
+Thu Mar 12 07:21:56 UTC 2020 - hpj@urpla.net
+
+- Update to version 2.5.1:
+  * json_data: Correct for lost slashes, pre-repair
+  * Release branch for 2.5.1 (min libopenshot version 0.2.5)
+  * Fix formatting of repaired JSON data (#3262)
+  * Add thumbnail to the audio only clip (#3249)
+  * Updating release date and appdata.xml entry
+  * Bumping version to 2.5.1-dev (for upcoming release)
+  * classes/updates: Add pending_acton tracking
+  * classes/updates: Code style, unused imports
+  * Protect filter() against damaged projects
+
+- clean up spec
+- relocated app data
+
+-------------------------------------------------------------------
+Fri May  3 08:14:07 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.4.4
+   * Scale keyframe coordinates when changing Profile or Exporting using a different FPS (#2620)
+   * Large performance improvements on AngularJS Timeline (and solved some Async issues) (#2533)
+   * Integration of resvg SVG library (gitlab and freeze updates) (#2540)
+   * Improved Tracks (simpler numbering, faster inserting, prevent deletion of locked tracks) (#2491)
+   * Improved Docking (Timeline widget is now dockable and Properties works in pillar mode) (#2490)
+   * Use libopenshot to generate preview images for our Title editor, and no longer use Qt's SVG parsing by default. (#2544)
+   * Improving UTF-8 path detection and conversion (#2525)
+   * Rewrite conversion of relative and absolute path support in OpenShot (#2477)
+   * Fixing many Python issues reported in our automatic exception tracking (#2482)
+   * Fixing regressions to Split Audio (#2660)
+   * Integrate Constant Rate Factor (CRF) into Export Dialog (#2543)
+   * Separating PrepareStreams() from Open(), to allow SetOption() to correctly function (#2568)
+   * Adding h265 export preset (thanks Peter) (#2680)
+   * Adding ~/.openshot_qt/presets/ User-defined Presets, so users can easily install custom export presets (devices and formats) (#2555)
+   * Dragging an OSP file into the Project Files widget will open the entire project file (and prompt to save unsaved changes) (#2616)
+   * Persist undo/redo history correctly across OpenShot sessions (#2474)
+   * Fix audio waveform display when slicing clips or resizing/trimming clips
+   * Color picker: Never use native dialog (#2425)
+   * Adding Git Changelog screen (#2566)
+   * Converting to new Settings class, instead of the old ENV VAR method (#2520)
+   * Reverting Angular from 1.7.2 to 1.6.0 (for stability reasons) (#2479)
+   * Completed Arabic, Hindi, Chinese (Simplified and Traditional) translations (#2594)
+   * Update messaging integration on build server (#2426)
+   * Add init.py file for installed module (#2419)
+   * launch.py: Path-detect via openshot_qt init (#2419)
+   * Exit using sys.exit() (#2409)
+   * preferences: Tweak item layout (#2401)
+   * Widen export window (#2373)
+   * Pass remaining command line args to Qt (#2355)
+   * Copy (cleaned up) xdg icon to src/images (#2316)
+   * Add strings to be translated and fix tuple error (#2275)
+   * added browse button in file properties dialog, to allow relinking of individual media files (#2275)
+   * fix for automatic relinking of missing media files during project open (#2275)
+   * Add the same browse type for inkscape and blender field (#2255)
+   * Remove CRLF line endings from chromebook preset (#2204)
+   * Convert language.py line endings (#2204)
+   * Missing files are now automatically deleted from the recent menu (#2202)
+   * Append correct extension to snapshot frames (#2196)
+   * Update Contributors & Translations (#2679)
+
+-------------------------------------------------------------------
+Mon Jan 14 07:02:30 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- add python3-requests dependency (boo#1105262)
+
+-------------------------------------------------------------------
+Mon Sep 24 09:51:28 UTC 2018 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.4.3
+  * Animated Masks: New "reader" property type, initially used by the Mask effect to change the image/video used by transitions and the Mask effect
+  * Disable OMP thread concurrency during Export, to make exports as safe as possible
+  * Nudge clips when holding SHIFT + Left or Right arrow (Richard Alloway - N3WWN)
+  * Add Save Current Frame button (Richard Alloway - N3WWN)
+  * New translation & language infrastructure and logic (better logic for determining current language) (Frank Dana - ferdnyc)
+  * Fixed split keep both sides (right side position was incorrect)
+  * Application icon updates (Frank Dana - ferdnyc)
+  * Zoom fixes (lots of issues relating to zooming fixed)
+  * Undo/Redo fixes (fixing and preventing giant .osp project files)
+  * New tutorial system, better child window management (Frank Dana - ferdnyc)
+  * Travis CI Integration
+  * Improve Title filename duplication naming/counting (DerGenaue)
+  * Use track names in "Add To Timeline" window (Frank Dana - ferdnyc)
+  * Improve waveform display rendering (DerGenaue)
+  * Fix audio wave not rendered after completion (DylanC)
+  * Add instagram and twitter presets (DylanC)
+  * Add AppStream metadata to setup.py (Peter Eszlari)
+  * Timeline JavaScript Bug Fixes (DylanC)
+  * Timeline cleanup and performance, upgrade Angular.js (DylanC)
+  * Removing libdrm.so.2 from AppImage
+  * Add src/language path to Mac DMG builder (Frank Dana - ferdnyc)
+  * Add language override on command line using --lang (Frank Dana - ferdnyc)
+  * Add explanatory text for --list-lang (Frank Dana - ferdnyc)
+  * Some fixes for the timeline debugger (Frank Dana - ferdnyc)
+  * Update edit-clear icon in Humanity (Frank Dana - ferdnyc)
+  * Correct variable name typo to initialize properly (DylanC)
+  * Convert all nonessential logs to .debug() (Frank Dana - ferdnyc)
+  * Remove unused effects filters (Frank Dana - ferdnyc)
+  * Add "Ask a Question" template (Frank Dana - ferdnyc)
+  * Preventing libopenshot version check on unittests
+  * More framerates for YouTube HD and Vimeo HD presets (Frank Dana - ferdnyc)
+  * Convert (most) files with DOS line-endings to Unix (Frank Dana - ferdnyc)
+  * Remove debug.js from index.html (Frank Dana - ferdnyc)
+  * Square the PNG icon file (Frank Dana - ferdnyc)
+  * App metadata updates for easier packaging (Frank Dana - ferdnyc)
+  * Move Slice All shortcuts to correct menu (Frank Dana - ferdnyc)
+  * launch-linux.sh: Don't set QT_DEBUG_PLUGINS=1 (Frank Dana - ferdnyc)
+  * Updating default project type to 720p 30 FPS, and sample rate 44100
+  * Fix retention of export path (Richard Alloway - N3WWN)
+  * Fixing GitLab to no longer run CI for tags, and fixing version # for daily and release builds
+  * Add "release-candidate" to filename for daily RC builds, so they don't look so official on the website
+  * Misc Typos and text fixes (luzpaz)
+  * Updating contributors and supporters (Thank You!)
+  * Updating translations
+
+-------------------------------------------------------------------
+Mon Jul 30 13:10:35 UTC 2018 - adrian@suse.de
+
+- fix symlink of file
+
+-------------------------------------------------------------------
+Mon Jul  2 12:59:40 UTC 2018 - adrian@suse.de
+
+- update to version 2.4.2
+  * ACC is default codec now
+  * New effects via libopenshot
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Mar  6 13:17:43 UTC 2018 - adrian@suse.de
+
+- update to version 2.4.1
+
+-------------------------------------------------------------------
+Thu Sep 21 16:50:27 UTC 2017 - draht@schaltsekun.de
+
+- fix filelist for build
+
+-------------------------------------------------------------------
+Mon Sep 11 09:36:11 UTC 2017 - adrian@suse.de
+
+- update to 2.4.0
+
+-------------------------------------------------------------------
+Mon Apr  3 09:25:47 UTC 2017 - adrian@suse.de
+
+- Update to 2.3.1
+
+-------------------------------------------------------------------
+Fri Jan 13 10:20:59 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from description.
+
+-------------------------------------------------------------------
+Thu Jan 12 08:41:24 UTC 2017 - adrian@suse.de
+
+- adapt for openSUSE Factory
+
+-------------------------------------------------------------------
+Thu Jan  5 17:39:01 UTC 2017 - avvissu@yandex.by
+
+- Update to 2.2.O:
+  * Performance / Caching
+  * Improved Stability
+  * Keyframe Enhancements
+  * Error Handling / Reporting
+  * New Title Templates
+  * Infrastructure Improvements
+  * Misc / Bug Fixes
+  * More info: http://www.openshotvideo.com/
+
+-------------------------------------------------------------------
+Thu Oct 20 23:12:57 UTC 2016 - avvissu@yandex.by
+
+- Initial package
+
+

@@ -1,0 +1,6 @@
+<package name="ytree" project="openSUSE:Factory">
+  <title>ytree</title>
+  <description>A curses-based file manager similar to DOS Xtree(tm).</description>
+  <devel project="utilities" package="ytree"/>
+  <url>http://www.han.de/~werner/ytree.html</url>
+</package>

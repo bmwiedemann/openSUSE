@@ -1,0 +1,6 @@
+<package name="barrier" project="openSUSE:Factory">
+  <title>barrier</title>
+  <description>Barrier is KVM software forked from Symless's synergy 1.9 codebase. Synergy was a commercialized reimplementation of the original CosmoSynergy written by Chris Schoeneman.</description>
+  <devel project="X11:Utilities" package="barrier"/>
+  <url>https://github.com/debauchee/barrier</url>
+</package>

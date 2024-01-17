@@ -1,0 +1,18 @@
+--- Makefile
++++ Makefile
+@@ -1,11 +1,12 @@
++
+ JispDemo : JispDemo.java
+ 	-rm com/coyotegulch/jisp/*.class
+-	javac -O com/coyotegulch/jisp/*.java
++	javac $(JAVAC_FLAGS) -O com/coyotegulch/jisp/*.java
+ 	-rm *.class
+-	javac -O JispDemo.java
++	javac $(JAVAC_FLAGS) -O JispDemo.java
+ 	
+ JispLoadTest : JispLoadTest.java
+-	javac -O JispLoadTest.java
++	javac $(JAVAC_FLAGS) -O JispLoadTest.java
+         
+ profile: JispLoadTest
+ 	java -Xrunhprof:cpu=samples,file=JispLoadTest.profile JispLoadTest

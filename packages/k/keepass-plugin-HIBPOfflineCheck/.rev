@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8dd40efa757e529ef6cd6a6785f8827f</srcmd5>
+    <version>1.7.4</version>
+    <time>1613044168</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/7RD6D7ECJ75IV72UJWN4S5O3AJGQWVHL/</comment>
+    <requestid>870988</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eac0651fefe9aff6fa0138335a4fca6e</srcmd5>
+    <version>1.7.5</version>
+    <time>1628023748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.5
+  * You can now view all your pwned passwords by using the Find menu</comment>
+    <requestid>910039</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2e9859b493650afef87dd730e122fc3</srcmd5>
+    <version>1.7.6</version>
+    <time>1630432527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.6
+  * You can exclude recycle bin and expired entries from find
+    results by selecting the two new options in the plugin settings</comment>
+    <requestid>915138</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>18c8de50b8eba530218b38f4662e6bc9</srcmd5>
+    <version>1.7.7</version>
+    <time>1653244079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978520</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f658edce057af51152d7098d2bcf2ece</srcmd5>
+    <version>1.7.8</version>
+    <time>1662063070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.8
+  * No longer display &quot;HIBP API error&quot; for some passwords in online
+    mode</comment>
+    <requestid>1000515</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>87ff457b71436cbe9bffddbb24266f4e</srcmd5>
+    <version>1.7.9</version>
+    <time>1672402874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.9
+  * Fixed some incorrect results for online mode.</comment>
+    <requestid>1045816</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5904e1995055d9ef1021dbadf71173c5</srcmd5>
+    <version>1.7.10</version>
+    <time>1684074727</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.10
+  * Minor fixes and updated documentation.</comment>
+    <requestid>1087098</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d9e946d260628c2ae4ef26b2bf8cc5e</srcmd5>
+    <version>0.1.1</version>
+    <time>1602596758</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>841454</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6b5790abab084e592812e92844d869f7</srcmd5>
+    <version>0.3.0</version>
+    <time>1641855240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945406</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf257fa1344e1db165cb41e5220c2d17</srcmd5>
+    <version>0.4.0</version>
+    <time>1659612200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>990438</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>12460ea14f877e78daa8a387229652c5</srcmd5>
+    <version>0.5.0</version>
+    <time>1665754824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010137</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ef9d7f8840800d9cda3d951f8e618982</srcmd5>
+    <version>0.5.0</version>
+    <time>1682193634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081897</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f773b091733619b6b17c87fe2d34ed2a</srcmd5>
+    <version>0.5.0</version>
+    <time>1692379646</time>
+    <user>anag+factory</user>
+    <comment>- restrict to older Cython</comment>
+    <requestid>1103715</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36d5ded916bec7b50a01fa42535e5a49</srcmd5>
+    <version>0.6.1</version>
+    <time>1704659933</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * Explicit Python 3.12 support and build wheels, change min
+    version to 3.8
+  * Do not install the *.c sources in wheels
+- update to 0.6.0 (bsc#1212582, CVE-2023-30589):
+  * Bump bundled llhttp to 8.1.1
+  * Fixes CVE-2023-30589
+
+- restrict to older Cython
+- Update to version 0.5.0</comment>
+    <requestid>1137303</requestid>
+  </revision>
+</revisionlist>

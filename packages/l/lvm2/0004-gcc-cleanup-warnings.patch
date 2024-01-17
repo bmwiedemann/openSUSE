@@ -1,0 +1,103 @@
+From 2cd58bb4c9ef063c5283daf0e618c2ed0c77eb89 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Wed, 16 Aug 2023 15:12:36 +0200
+Subject: [PATCH 04/24] gcc: cleanup warnings
+
+Correcting signess comparation.
+Also use standalone /* fall through */ comment as that's
+the only one supported by gcc to quiet warning.
+---
+ daemons/cmirrord/local.c  | 2 +-
+ lib/metadata/metadata.c   | 2 +-
+ libdm/datastruct/bitset.c | 3 ++-
+ tools/lvconvert.c         | 2 +-
+ tools/lvmcmdline.c        | 6 +++---
+ 5 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/daemons/cmirrord/local.c b/daemons/cmirrord/local.c
+index d0a25e105..27396ad98 100644
+--- a/daemons/cmirrord/local.c
++++ b/daemons/cmirrord/local.c
+@@ -266,7 +266,7 @@ static int do_local_work(void *data __attribute__((unused)))
+ 					  RQ_TYPE(u_rq->request_type));
+ 			break;
+ 		}
+-		/* ELSE, fall through */
++		/* ELSE */ /* fall through */
+ 	case DM_ULOG_IS_CLEAN:
+ 	case DM_ULOG_FLUSH:
+ 	case DM_ULOG_MARK_REGION:
+diff --git a/lib/metadata/metadata.c b/lib/metadata/metadata.c
+index 819c6fd9a..f56b5002d 100644
+--- a/lib/metadata/metadata.c
++++ b/lib/metadata/metadata.c
+@@ -1133,7 +1133,7 @@ uint32_t extents_from_percent_size(struct volume_group *vg, const struct dm_list
+ 			}
+ 			break;
+ 		}
+-		/* fall through to use all PVs in VG like %FREE */
++		/* fall through */ /* to use all PVs in VG like %FREE */
+ 	case PERCENT_FREE:
+ 		if (!(extents = vg->free_count)) {
+ 			log_error("No free extents in Volume group %s.", vg->name);
+diff --git a/libdm/datastruct/bitset.c b/libdm/datastruct/bitset.c
+index 220ea2f26..25407f521 100644
+--- a/libdm/datastruct/bitset.c
++++ b/libdm/datastruct/bitset.c
+@@ -149,7 +149,8 @@ dm_bitset_t dm_bitset_parse_list(const char *str, struct dm_pool *mem,
+ 				 size_t min_num_bits)
+ {
+ 	unsigned a, b;
+-	int c, old_c, totaldigits, ndigits, nmaskbits;
++	int c, old_c, totaldigits, ndigits;
++	size_t nmaskbits;
+ 	int at_start, in_range;
+ 	dm_bitset_t mask = NULL;
+ 	const char *start = str;
+diff --git a/tools/lvconvert.c b/tools/lvconvert.c
+index 6d2abb2e7..d98d34ce0 100644
+--- a/tools/lvconvert.c
++++ b/tools/lvconvert.c
+@@ -1352,7 +1352,7 @@ static int _lvconvert_raid(struct logical_volume *lv, struct lvconvert_params *l
+ 		else
+ 			image_count = lp->mirrors + 1;
+ 
+-		images_reduced = (image_count < lv_raid_image_count(lv));
++		images_reduced = (image_count < (int) lv_raid_image_count(lv));
+ 
+ 		if (image_count < 1) {
+ 			log_error("Unable to %s images by specified amount.",
+diff --git a/tools/lvmcmdline.c b/tools/lvmcmdline.c
+index 57f9f2651..87f829f19 100644
+--- a/tools/lvmcmdline.c
++++ b/tools/lvmcmdline.c
+@@ -1456,7 +1456,7 @@ static int _command_optional_opt_matches(struct cmd_context *cmd, int ci, int oo
+ 	}
+ 
+ 	if (val_bit_is_set(commands[ci].optional_opt_args[oo].def.val_bits, constnum_VAL)) {
+-		if (commands[ci].optional_opt_args[oo].def.num == arg_int_value(cmd, opt_enum, 0))
++		if (commands[ci].optional_opt_args[oo].def.num == arg_uint64_value(cmd, opt_enum, 0))
+ 			return 1;
+ 		return 0;
+ 	}
+@@ -1475,7 +1475,7 @@ static int _command_ignore_opt_matches(struct cmd_context *cmd, int ci, int io)
+ 	}
+ 
+ 	if (val_bit_is_set(commands[ci].ignore_opt_args[io].def.val_bits, constnum_VAL)) {
+-		if (commands[ci].ignore_opt_args[io].def.num == arg_int_value(cmd, opt_enum, 0))
++		if (commands[ci].ignore_opt_args[io].def.num == arg_uint64_value(cmd, opt_enum, 0))
+ 			return 1;
+ 		return 0;
+ 	}
+@@ -1519,7 +1519,7 @@ check_val:
+ 	}
+ 
+ 	if (val_bit_is_set(commands[ci].required_opt_args[ro].def.val_bits, constnum_VAL)) {
+-		if (commands[ci].required_opt_args[ro].def.num == arg_int_value(cmd, opt_enum, 0))
++		if (commands[ci].required_opt_args[ro].def.num == arg_uint64_value(cmd, opt_enum, 0))
+ 			return 1;
+ 		return 0;
+ 	}
+-- 
+2.35.3
+

@@ -1,0 +1,8 @@
+<services>
+ <service name="download_url" mode="disabled">
+   <param name="protocol">https</param>
+   <param name="host">github.com</param>
+   <param name="filename">sysfsutils-2_1_1.tar.gz</param>
+   <param name="path">linux-ras/sysfsutils/archive/refs/tags/v2.1.1.tar.gz</param>
+ </service>
+</services>

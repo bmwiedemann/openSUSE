@@ -1,0 +1,108 @@
+--- xdg_menu
++++ xdg_menu
+@@ -1482,6 +1482,94 @@
+ 	return $output;
+ }
+ 
++sub prepare_exec_xfce4 ($$)
++{
++	my ($exec, $desktop) = @_;
++	
++	$exec =~ s/%f//g;
++	$exec =~ s/%F//g;
++	$exec =~ s/%u//g;
++	$exec =~ s/%U//g;
++	$exec =~ s/%d//g;
++	$exec =~ s/%D//g;
++	$exec =~ s/%n//g;
++	$exec =~ s/%N//g;
++	$exec =~ s/%i//g;
++	$exec =~ s/%k//g;
++	$exec =~ s/%v//g;
++	$exec =~ s/%m//g;
++	
++	my $caption = $desktop->{Name};
++	
++	$exec =~ s/%c/$caption/g;
++
++	$exec =~ s/%%/%/g;
++	
++	$exec =~ s/\"/&quot;/g;
++
++	$exec = "$root_cmd $exec" if $desktop->{'X-KDE-SubstituteUID'} eq '1' || $desktop->{'X-KDE-SubstituteUID'} eq 'true';
++	return $exec;
++}
++
++
++
++sub output_xfce4_menu ($;$)
++{
++	my ($menu, $indent) = @_;
++	
++	my $output = '';
++	
++	$indent = 0 unless defined $indent;
++	
++	if ($indent == 0) {
++		$output .= '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
++		$output .= '<!DOCTYPE xfdesktop-menu [' . "\n";
++    		$output .= '	<!ENTITY menu2 SYSTEM "menu2.xml">' . "\n";
++		$output .= ']>' . "\n\n";
++	}
++	
++	my $menu_name = $menu->{'PrepName'};
++	
++	$output .= ' ' x $indent;
++	
++	if ($indent == 0) {
++		$output .= "<xfdesktop-menu>\n"
++	}
++	else {
++		$output .= "<menu name=\"" . quote_xml($menu_name) ."\" visible=\"yes\">\n";
++	}
++	
++	foreach my $entry (@{$menu->{'entries'}}) {
++		if ($entry->{type} eq 'desktop') {
++			my $desktop = $entry->{desktop};
++			
++			my $name = $desktop->{'PrepName'};
++			my $exec = prepare_exec_xfce4($desktop->{Exec}, $desktop);
++			my $term = ($desktop->{Terminal} eq '1' || $desktop->{Terminal} eq 'true') ? "yes" : "no";
++			
++			$output .= ' ' x $indent;
++			$output .= " <app name=\"" . quote_xml($name) ."\" cmd=\"$exec\" term=\"$term\"/>\n";
++		} 
++		elsif ($entry->{type} eq 'menu') {
++			$output .= output_xfce4_menu ($entry->{'menu'}, $indent + 1);
++		}
++		else {
++			print STDERR "wrong menu entry type: $entry->{type}";
++		}
++		
++	}
++	$output .= ' ' x $indent;
++	
++	if ($indent == 0) {
++		$output .= "</xfdesktop-menu>\n";
++	}
++	else {
++		$output .= "</menu>\n";
++	}
++	
++	return $output;
++}
++
+ sub output_readable ($;$)
+ {
+ 	my ($menu, $indent) = @_;
+@@ -1862,6 +1950,10 @@
+ 
+ 	$output = output_icewm_menu($menu)
+ }
++elsif ($format eq 'xfce4') {
++
++	$output = output_xfce4_menu($menu)
++}
+ elsif ($format eq 'readable') {
+ 
+ 	$output = output_readable($menu) 

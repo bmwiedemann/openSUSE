@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8001423a8097d53b99150f9fc59f52d8</srcmd5>
+    <version>2.0.10</version>
+    <time>1609866779</time>
+    <user>dimstar_suse</user>
+    <comment>GUI part of seadrive-fuse, an alternative to seafile-client</comment>
+    <requestid>860391</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>48c45f056711c10489da93dd34d82a8d</srcmd5>
+    <version>2.0.12</version>
+    <time>1611865754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.12 (no changelog) 
+</comment>
+    <requestid>867504</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c3b667649a565837c401da110cbb231</srcmd5>
+    <version>2.0.13</version>
+    <time>1617279495</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>882532</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>25af52566a0acc7812923550e4eb2e2d</srcmd5>
+    <version>2.0.13</version>
+    <time>1619653081</time>
+    <user>dimstar_suse</user>
+    <comment>- Add seadrive-gui_fix-compilation-glib2_68.patch
+</comment>
+    <requestid>888929</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7a3bf81abeb9bbcf7ae10b34f1574b93</srcmd5>
+    <version>2.0.14</version>
+    <time>1622536613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.14:
+  * Report nicer error message when a library is too large to sync
+</comment>
+    <requestid>895447</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d750d67d65f99d2212564f1b9b48efb6</srcmd5>
+    <version>2.0.14</version>
+    <time>1624999370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902683</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1dcfd6fff804257b93cb2bc614236b8b</srcmd5>
+    <version>2.0.16</version>
+    <time>1631042499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.16 (no changelog)
+</comment>
+    <requestid>917255</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3147c7c56d2fff6c84c2be5f24489399</srcmd5>
+    <version>2.0.18</version>
+    <time>1636577192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.18 (no changelog)
+</comment>
+    <requestid>930604</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>905c8b6200376b236120da591fd243a0</srcmd5>
+    <version>2.0.19</version>
+    <time>1640876183</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.0.19 (no changelog)</comment>
+    <requestid>943231</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>687cda5b3dd4a1d2be72cf58737de214</srcmd5>
+    <version>2.0.21</version>
+    <time>1649793044</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.0.21</comment>
+    <requestid>969407</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1259ec2351b446aecd5a8f0f075b49ad</srcmd5>
+    <version>2.0.23</version>
+    <time>1661432975</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999227</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>954168551e0bc5de122d2388a74b97a5</srcmd5>
+    <version>2.0.24</version>
+    <time>1667995007</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.0.24</comment>
+    <requestid>1034488</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1398052fa37c13ab8fe4ef7301054a03</srcmd5>
+    <version>2.0.25</version>
+    <time>1670259692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040149</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90cee57d3d90b65f69a7bdbd67de998e</srcmd5>
+    <version>2.0.28</version>
+    <time>1700162975</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126896</requestid>
+  </revision>
+</revisionlist>

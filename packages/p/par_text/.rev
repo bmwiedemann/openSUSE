@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>620d999584fb7cb8d0054e78a6228185</srcmd5>
+    <version>1.53.0+git.1584347654.eb0590f</version>
+    <time>1600801794</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of the package.</comment>
+    <requestid>835820</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b118ae3993eea62dd2c2b2d51d6e929</srcmd5>
+    <version>1.53.0+git.1584347654.eb0590f</version>
+    <time>1656511279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985599</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>94771f9fd9f9e9fde9873c73879d2351</srcmd5>
+    <version>1.53.0+git.1584347654.eb0590f</version>
+    <time>1657015775</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not unset various variables when calling make (only CFLAGS
+  should be set).
+</comment>
+    <requestid>986720</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5b024c26dc26f42f43972e2011362a6b</srcmd5>
+    <version>1.53.0+git.1584347654.eb0590f</version>
+    <time>1688476917</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: Submission of par_text via https://src.opensuse.org/pool/par_text/pulls/1 by scm-staging-bot</comment>
+    <requestid>1096556</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8491c5f6fdc6188286a5cb8ddd7e6b49</srcmd5>
+    <version>1.53.0+git.1584347654.eb0590f</version>
+    <time>1690892166</time>
+    <user>maxlin_factory</user>
+    <comment>Use 'manual' keyword in the _service file instead of deprecated 'disabled'.
+
+
+
+(🤖: Submission of par_text via https://src.opensuse.org/pool/par_text/pulls/2 by mcepl)</comment>
+    <requestid>1101559</requestid>
+  </revision>
+</revisionlist>

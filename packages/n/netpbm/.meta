@@ -1,0 +1,13 @@
+<package name="netpbm" project="openSUSE:Factory">
+  <title>A Powerful Graphics Conversion Package</title>
+  <description>The latest version of the Portable Bitmap Plus Utilities. This large
+package, which is by now available for all hardware platforms, provides
+tools for graphics conversion. Using these tools, images can be
+converted from virtually any format into any other format. A few of the
+supported formats include: GIF, PC-Paintbrush, IFF ILBM, Gould Scanner
+file, MTV ray tracer, Atari Degas .pi1 and .pi3, Macintosh PICT, HP
+Paintjet file, QRT raytracer, AUTOCAD slide, Atari Spectrum (compressed
+and uncompressed), Andrew Toolkit raster object, and many more. On top
+of that, man pages are included for all tools.</description>
+  <devel project="graphics" package="netpbm"/>
+</package>

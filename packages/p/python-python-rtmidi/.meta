@@ -1,0 +1,7 @@
+<package name="python-python-rtmidi" project="openSUSE:Factory">
+  <title>Python binding for the RtMidi C++ library</title>
+  <description>RtMidi is a set of C++ classes which provides an API for realtime MIDI I/O across Linux (ALSA &amp; JACK), macOS (CoreMIDI &amp; JACK), and Windows (MultiMedia System) operating systems. 
+
+python-rtmidi is a Python binding for RtMidi implemented using Cython and provides a thin wrapper around the RtMidi C++ interface. The API is basically the same as the C++ one but with the naming scheme of classes, methods and parameters adapted to the Python PEP-8 conventions and requirements of the Python package naming structure.</description>
+  <devel project="devel:languages:python" package="python-python-rtmidi"/>
+</package>

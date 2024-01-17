@@ -1,0 +1,10 @@
+Index: netpbm-10.80.1/buildtools/makeman
+===================================================================
+--- netpbm-10.80.1.orig/buildtools/makeman
++++ netpbm-10.80.1/buildtools/makeman
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ #
+ # makeman -- compile netpbm's stereotyped HTML to troff markup
+ #

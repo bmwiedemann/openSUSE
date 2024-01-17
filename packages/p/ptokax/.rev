@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5df9bbb79f7d1bd947582d19dd126ef2</srcmd5>
+    <version>0.5.2.1</version>
+    <time>1488560154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>461959</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6afa333db65080d6958ce74e4ccb1c3a</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1493580208</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491538</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d830176f6666681cae141376fa2fc53d</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1496927071</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc7.diff</comment>
+    <requestid>501829</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a7ed148d6e255c35559fa9d570ab55b2</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1550402489</time>
+    <user>coolo</user>
+    <comment>- Align getent/useradd error hiding with the other Factory packages.</comment>
+    <requestid>676607</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1086b5423433a469f950c36e0c04aa68</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1595271676</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>821753</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>af76bbfe314bd115f838cc103f308b90</srcmd5>
+    <version>0.5.2.2</version>
+    <time>1613427489</time>
+    <user>dimstar_suse</user>
+    <comment>- Cure build failure with Lua 5.4 by adding pkg-config results
+  to the makefile.</comment>
+    <requestid>871622</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ce6040db8e4532a2c954dbcc5427aec5</srcmd5>
+    <version>0.5.3</version>
+    <time>1687550001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094820</requestid>
+  </revision>
+</revisionlist>

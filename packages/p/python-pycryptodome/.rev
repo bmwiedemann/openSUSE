@@ -1,0 +1,407 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef329a7328794d01352dab13da006351</srcmd5>
+    <version>3.4.7</version>
+    <time>1506453267</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-Beaker, which is already in openSUSE:Factory.</comment>
+    <requestid>522090</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9ebaad2afe06c98fe756af7e344bd5db</srcmd5>
+    <version>3.6.1</version>
+    <time>1526030861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605242</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5dd4da4cd840a544477f999bc24d55d5</srcmd5>
+    <version>3.6.1</version>
+    <time>1526473703</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide/obsolete also python-crypto for py2 package</comment>
+    <requestid>609135</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e75b48c7b165db374b38ac128448cc8</srcmd5>
+    <version>3.6.3</version>
+    <time>1530741284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620468</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>32e8aa64171e2dfaaf79d7ebf8df896a</srcmd5>
+    <version>3.6.6</version>
+    <time>1536575776</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633517</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>189d0547715be9f86a687b51057e9e56</srcmd5>
+    <version>3.6.6</version>
+    <time>1540447826</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pycryptodomex copy in this package container</comment>
+    <requestid>643190</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e9947f603d6e7f8a2bab4e949be97fe4</srcmd5>
+    <version>3.7.2</version>
+    <time>1545866977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.2
+  - Resolved issues
+    * GH#242: Fixed compilation problem on ARM platforms.
+- Update to 3.7.1
+  - New features
+    * Added type stubs to enable static type checking with mypy.
+      Thanks to Michael Nix.
+    * New ``update_after_digest`` flag for CMAC.
+  - Resolved issues
+    * GH#232: Fixed problem with gcc 4.x when compiling
+      ``ghash_clmul.c``.
+    * GH#238: Incorrect digest value produced by CMAC after cloning
+      the object.
+    * Method ``update()`` of an EAX cipher object was returning the
+      underlying CMAC object, instead of the EAX object itself.
+    * Method ``update()`` of a CMAC object was not throwing an
+      exception after the digest was computed (with ``digest()`` or
+      ``verify()``).
+
+- checked in python-pycrytodomex as separate package on request of
+  Dirk Müller
+
+- fixed source url
+
+- Update to 3.7.0
+  - New features
+    * Added support for Poly1305 MAC (with AES and ChaCha20 ciphers
+      for key derivation).
+    * Added support for ChaCha20-Poly1305 AEAD cipher.
+    * New parameter output for Crypto.Util.strxor.strxor,</comment>
+    <requestid>660002</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0ac8fe4df7dd6cfd25436dd081b403a3</srcmd5>
+    <version>3.7.2</version>
+    <time>1548704749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664990</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47c366bf11e833d04211087cd0ec307d</srcmd5>
+    <version>3.8.1</version>
+    <time>1558340693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702874</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>91efa08961718a04fb595f84159da0f7</srcmd5>
+    <version>3.8.1</version>
+    <time>1558783025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705218</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4892fc3925ad7aca3524e7b3475eb13e</srcmd5>
+    <version>3.8.2</version>
+    <time>1560861879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706523</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e44e7c873939870260ff76faa79593d3</srcmd5>
+    <version>3.9.0</version>
+    <time>1569233122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.0:
+  * Add support for loading PEM files encrypted with AES256-CBC.
+  * Add support for XChaCha20 and XChaCha20-Poly1305 ciphers.
+  * Add support for bcrypt key derivation function (Crypto.Protocol.KDF.bcrypt).
+  * Add support for left multiplication of an EC point by a scalar.
+  * Add support for importing ECC and RSA keys in the new OpenSSH format.</comment>
+    <requestid>729873</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f2267135c05a588f6afb663800be8691</srcmd5>
+    <version>3.9.2</version>
+    <time>1574414515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747336</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4704e9b91ff4f7532b0794395ce2eb26</srcmd5>
+    <version>3.9.7</version>
+    <time>1585265254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786476</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f911f579a1eb5c4a2d0d0eebf3900cb3</srcmd5>
+    <version>3.9.8</version>
+    <time>1596727910</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.8:
+  * GH#426: The Shamir's secret sharing implementation is not actually compatible with ``ssss``.
+  Added an optional parameter to enable interoperability.
+  * GH#427: Skip altogether loading of ``gmp.dll`` on Windows.
+  * GH#420: Fix incorrect CFB decryption when the input and the output are the same buffer.
+  * Speed up Shamir's secret sharing routines. Thanks to ncarve.</comment>
+    <requestid>824348</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8f9c8800ebafa08c52055aa4604884e6</srcmd5>
+    <version>3.9.9</version>
+    <time>1607017283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852357</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ddf5852d879bc857643de633749cc7da</srcmd5>
+    <version>3.10.1</version>
+    <time>1615905806</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>878405</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>77f0d7f8e88cd3b9140873d3de04a897</srcmd5>
+    <version>3.11.0</version>
+    <time>1634754218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.0:
+  * GH#512: Especially for very small bit sizes, ``Crypto.Util.number.getPrime()`` was
+    occasionally generating primes larger than given the bit size.
+  * GH#552: Correct typing annotations for ``PKCS115_Cipher.decrypt()``.
+  * GH#555: ``decrypt()`` method of a PKCS#1v1.5 cipher returned a ``bytearray`` instead of ``bytes``.
+  * GH#557: External DSA domain parameters were accepted even when the modulus (``p``) was not prime.
+    This affected ``Crypto.PublicKey.DSA.generate()`` and ``Crypto.PublicKey.DSA.construct()``.
+  * Added cSHAKE128 and cSHAKE256 (of SHA-3 family).
+  * GH#558: The flag RTLD_DEEPBIND passed to ``dlopen()`` is not well supported by
+    `address sanitizers &lt;https://github.com/google/sanitizers/issues/611&gt;`_.
+    It is now possible to set the environment variable ``PYCRYPTDOME_DISABLE_DEEPBIND``
+    to drop that flag and allow security testing.</comment>
+    <requestid>925769</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>49efbb1c3713a93120166165cce0dc3d</srcmd5>
+    <version>3.12.0</version>
+    <time>1639424501</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.0:
+  * ECC keys in the SEC1 format can be exported and imported.
+  * Add support for KMAC128, KMAC256, TupleHash128, and TupleHash256 (NIST SP-800 185).
+  * Add support for KangarooTwelve.
+  * GH#563: An asymmetric key could not be imported as a ``memoryview``.
+  * GH#566: cSHAKE128/256 generated a wrong output for customization strings
+  * GH#582: CBC decryption generated the wrong plaintext when the input and the output were the same buffer.</comment>
+    <requestid>939588</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>35f70d1dc9ea3947a9721c013a0f9072</srcmd5>
+    <version>3.14.1</version>
+    <time>1645054198</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.14.1:
+  * GH#595: Fixed memory leak for GMP integers.
+  * Add support for curve NIST P-192.
+  * Add support for curve NIST P-224.
+  * GH#590: Fixed typing info for ``Crypto.PublicKey.ECC``.
+  * Relaxed ECDSA requirements for FIPS 186 signatures and accept any SHA-2 or
+  * SHA-3 hash.  ``sign()`` and ``verify()`` will be performed even if the hash is stronger
+    than the ECC key.</comment>
+    <requestid>954656</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a97356cb4cd764b700c1eeeb2b58efdd</srcmd5>
+    <version>3.14.1</version>
+    <time>1647101673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961035</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>19a1dbbf7d6cdc794822d4e57d9134a2</srcmd5>
+    <version>3.15.0</version>
+    <time>1656587871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985709</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>24714daa40249d8eb0910551e10651c8</srcmd5>
+    <version>3.16.0</version>
+    <time>1670430882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040742</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a6b1b2dfef0a705f5d9ff535e5105ac7</srcmd5>
+    <version>3.17.0</version>
+    <time>1683630419</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix %%files to work with %pyproject_ style building.
+- update to 3.17.0:
+  * Added support for the Counter Mode KDF defined in SP 800-108
+    Rev 1.
+  * Reduce the minimum tag length for the EAX cipher to 2 bytes.
+  * An RSA object has 4 new properties for the CRT coefficients:
+    ``dp``, ``dq``, ``invq`` and ``invq`` (``invp`` is the same
+    value  as the existing ``u``).
+  * GH#526: improved typing for ``RSA.construct``.
+  * GH#534: reduced memory consumption when using a large number
+    of cipher objects.
+  * GH#598: fixed missing error handling for
+    ``Util.number.inverse``.
+  * GH#629: improved typing for ``AES.new`` and the various
+    mode-specific types it returns. Thanks to Greg Werbin.
+  * GH#653: added workaround for an alleged GCC compiler bug
+    that affected Ed25519 code compiled for AVX2.
+  * GH#658: attribute ``curve`` of an ECC key was not always
+    the preferred curve name, as it used to be in v3.15.0
+    (independently of the curve name specified when generating
+    the key).
+  * GH#637: fixed typing for legacy modules ``PKCS1_v1_5`` and
+    ``PKCS1_PSS``, as their ``verify()`` returned a boolean.
+  * GH#664: with OCB mode, nonces of maximum length (15 bytes)
+    were actually used as 14 bytes nonces.
+    After this fix, data that was encrypted in past using the
+    (default) nonce length of 15 bytes can still be decrypted
+    by reducing the nonce to its first 14 bytes.
+  * GH#705: improved typing for ``nonce``, ``iv``, and ``IV``
+    parameters of cipher objects.
+- update to 3.17.0:
+  * ++++++++++++++++++++++++++
+  * New features
+  * Added support for the Counter Mode KDF defined in SP 800-108
+    Rev 1.
+  * Reduce the minimum tag length for the EAX cipher to 2 bytes.
+  * An RSA object has 4 new properties for the CRT coefficients
+  * ``dp``, ``dq``, ``invq`` and ``invq`` (``invp`` is the same
+    value
+  * as the existing ``u``).
+  * Resolved issues
+  * GH#526: improved typing for ``RSA.construct``.
+  * GH#534: reduced memory consumption when using a large number
+  * of cipher objects.
+  * GH#598: fixed missing error handling for
+    ``Util.number.inverse``.
+  * GH#629: improved typing for ``AES.new`` and the various
+  * mode-specific types it returns. Thanks to Greg Werbin.
+  * GH#653: added workaround for an alleged GCC compiler bug
+  * hat affected Ed25519 code compiled for AVX2.
+  * GH#658: attribute ``curve`` of an ECC key was not always
+  * he preferred curve name, as it used to be in v3.15.0
+  * independently of the curve name specified when generating
+  * he key).
+  * GH#637: fixed typing for legacy modules ``PKCS1_v1_5`` and
+    ``PKCS1_PSS``,
+  * as their ``verify()`` returned a boolean.
+  * GH#664: with OCB mode, nonces of maximum length (15 bytes
+  * were actually used as 14 bytes nonces.
+  * After this fix, data that was encrypted in past using the
+  * default) nonce length of 15 bytes can still be decrypted
+  * by reducing the nonce to its first 14 bytes.
+  * GH#705: improved typing for ``nonce``, ``iv``, and ``IV``
+    parameters
+  * of cipher objects.
+  * Other changes
+  * Build PyPy wheels only for versions 3.8 and 3.9, and not for
+    3.7 anymore.
+</comment>
+    <requestid>1085158</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5087564117a257101b95e2bb7cbf937b</srcmd5>
+    <version>3.18.0</version>
+    <time>1685830298</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.18.0:
+  * Added support for DER BOOLEAN encodings.
+  * The library now compiles on Windows ARM64. Thanks to Niyas
+    Sait.
+  * GH#722: ``nonce`` attribute was not correctly set for
+    XChaCha20_Poly1305 ciphers. Thanks to Liam Haber.
+  * GH#728: Workaround for a possible x86 emulator bug in Windows
+    for ARM64.
+  * GH#739: OID encoding for arc 2 didn't accept children larger
+    than 39. Thanks to James.
+  * Correctly check that the scalar matches the point when
+    importing an ECC private key.</comment>
+    <requestid>1090246</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>56e1cc29eac8f22b96aff70c16c15a3c</srcmd5>
+    <version>3.18.0</version>
+    <time>1688147890</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1096020</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>603ae392c6947766ef15cabc13c23994</srcmd5>
+    <version>3.19.0</version>
+    <time>1701206319</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.19.0:
+  * The ``update()`` methods of TupleHash128 and TupleHash256
+    objects can now hash multiple items (byte strings) at once.
+  * Added support for ECDH, with ``Crypto.Protocol.DH``.
+  * GH#754: due to a bug in ``cffi``, do not use it on Windows
+    with Python 3.12+.
+
+- Update to version 3.16.0
+  * Align stack of functions using SSE2 intrinsics to avoid crashes,
+  * fixed memory leak for operations that use memoryviews when cffi
+  fix the build on older distros
+  * Add support for loading PEM files encrypted with AES192-CBC,
+  * When importing ECC keys, ignore EC PARAMS section that was
+  * Speed-up ECC performance. ECDSA is 33 times faster on the
+  * Support HMAC-SHA224, HMAC-SHA256, HMAC-SHA384, and HMAC-SHA512
+  * DER objects were not rejected if their length field had
+  * point_at_infinity() becomes an instance method for
+  * GH#258: False positive on PSS signatures when externally
+    * New parameter output for Crypto.Util.strxor.strxor,
+      Crypto.Util.strxor.strxor_c, encrypt and decrypt methods in
+      symmetric ciphers (Crypto.Cipher package). output is a
+      pre-allocated buffer (a bytearray or a writeable memoryview)
+      where the result must be stored. This requires less memory for
+      very large payloads; it is also more efficient when encrypting
+    * Fix vulnerability on AESNI ECB with payloads smaller than
+    * Fixed incorrect AES encryption/decryption with AES
+      acceleration on x86 due to gcc’s optimization and strict
+    * More prime number candidates than necessary where discarded
+      as composite due to the limited way D values were searched
+    * More meaningful exceptions in case of mismatch in IV length</comment>
+    <requestid>1129188</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4bb02177425fe2457f068ad521dd10a4</srcmd5>
+    <version>3.19.1</version>
+    <time>1704491939</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.19.1:
+  * Fixed a side-channel leakage with OAEP decryption that could be
+    exploited to carry out a Manger attack</comment>
+    <requestid>1136275</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>bbb0cfe98edc24b336841fb4c97820e4</srcmd5>
+    <version>3.19.1</version>
+    <time>1704829766</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.19.1 (bsc#1218564, CVE-2023-52323):</comment>
+    <requestid>1137745</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,3772 @@
+-------------------------------------------------------------------
+Mon Dec 18 12:14:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.1:
+  * see corresponding dask update:
+  https://docs.dask.org/en/stable/changelog.html#v2023-12-1
+
+-------------------------------------------------------------------
+Sat Dec  2 14:14:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.12.0:
+  * see corresponding dask update:
+  * https://docs.dask.org/en/stable/changelog.html#v2023-12-0
+  * Bokeh 3.3.0 compatibility
+
+-------------------------------------------------------------------
+Thu Nov 16 21:20:48 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 2023.11.0
+- add distributed-ignore-rerun.patch to ignore pytest runners during
+  test code introspection
+ * Zero-copy P2P Array Rechunking
+ * Deprecating PyArrow <14.0.1
+ * Improved PyArrow filesystem for Parquet
+ * Improve Type Reconciliation in P2P Shuffling
+ * official support for Python 3.12
+ * Reduced memory pressure for multi array reductions
+ * improved P2P shuffling robustness
+ * Reduced scheduler CPU load for large graphs
+
+-------------------------------------------------------------------
+Sun Sep 10 13:45:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.9.1
+  ## Enhancements
+  Raise in P2P if column dtype is wrong (GH#8167) Hendrik Makait
+  * Auto-fail tasks with deps larger than the worker memory (GH#8135) crusaderky
+  * Make workers table sortable (GH#8153) Jacob Tomlinson
+  * Support for unsetting environment variables (GH#8144) crusaderky
+  ## Deprecations
+  * Deprecate asynchronous Listener.stop() (GH#8151) Hendrik Makait
+- Release 2023.9.0
+  ## Enhancements
+  Don’t capture functools frames in code (GH#8146) crusaderky
+  * Ignore asyncio when scraping code (GH#8122) Matthew Rocklin
+  * Remove stringification (GH#8083) Florian Jetter
+  ## Bug Fixes
+  * Ensure NannyPlugin are always installed (GH#8107) Florian Jetter
+  * Don’t use exception hooks to shorten tracebacks (GH#8127) crusaderky
+  * Fix P2P shuffle with LocalCluster(..., processes=False) (GH#8125) Hendrik Makait
+  * Merge with P2P shuffle fails if left_index or right_index is True (GH#8121) Patrick Hoefler
+- Release 2023.8.1
+  ## New Features
+  * Add memray integration (GH#8044) Florian Jetter
+  ## Enhancements
+  * Await async listener.stop in Worker.close (GH#8118) Hendrik Makait
+  * Minor fixes in memray (GH#8113) Florian Jetter
+  * Enable basic p2p shuffle for dask-cudf (GH#7743) Richard (Rick) Zamora
+  * Don’t shut down unresponsive workers on gather() (GH#8101) crusaderky
+  * Propagate CancelledError in gather_from_workers (GH#8089) crusaderky
+  * Better logging for anomalous task termination (GH#8082) crusaderky
+  ## Bug Fixes
+  * Handle null partitions in P2P shuffling (GH#8116) Hendrik Makait
+  * Handle CancelledError properly in ConnectionPool (GH#8110) Florian Jetter
+  * Fix additional race condition that can cause P2P restart to deadlock (GH#8094) Hendrik Makait
+  * Ensure x-axis is uniform when plotting (GH#8093) Florian Jetter
+  * Fix deadlock in P2P restarts (GH#8091) Hendrik Makait
+- Release 2023.8.0
+  ## Enhancements
+  * Offload CPU intensive sections of update graph to unblock event loop (GH#8049) Florian Jetter
+  * Log worker close reason in events (GH#8042) Florian Jetter
+  * Exclude comm handshake from connect timeout (GH#7698) Florian Jetter
+  * Automatically restart P2P shuffles when output worker leaves (GH#7970) Hendrik Makait
+  * Add Client.unregister_scheduler_plugin method (GH#7968) Brian Phillips
+  * Fix log message (GH#8029) Hendrik Makait
+  * Send shards grouped by input chunk in P2P rechunking (GH#8010) Hendrik Makait
+  ## Bug Fixes
+  * Close state machine and add-ins first in Worker.close (GH#8066) Hendrik Makait
+  * Fix decide_worker picking a closing worker (GH#8032) crusaderky
+  * Raise CommClosedError in get_stream_address (GH#8020) jochenott
+  * Respect average nthreads in adaptive (GH#8041) Matthew Rocklin
+  * Use queued tasks in adaptive target (GH#8037) Matthew Rocklin
+  * Restore support for yield unsafe Client context managers and deprecate that support (GH#7987) Thomas Grainger
+- Release 2023.7.1
+  ## Enhancements
+  * gather_dep should handle CancelledError (GH#8013) crusaderky
+  * Pass stimulus_id to SchedulerPlugin.remove_worker and SchedulerPlugin.transition (GH#7974) Hendrik Makait
+  * Log stimulus_id in retire_worker (GH#8003) crusaderky
+  * Use BufferOutputStream in P2P (GH#7991) Florian Jetter
+  * Add Coiled to ignored modules for code sniffing (GH#7986) Matthew Rocklin
+  * Progress bar can group tasks by span (GH#7952) Irina Truong
+  * Improved error messages for P2P shuffling (GH#7979) Hendrik Makait
+  * Reduce removing comms log to debug level (GH#7972) Florian Jetter
+  ## Bug Fixes
+  * Fix for TypeError: '<' not supported in graph dashboard (GH#8017) Irina Truong
+  * Fix shuffle code to work with pyarrow 13 (GH#8009) Joris Van den Bossche
+- Release 2023.7.0
+  ## Enhancements
+  * Propagate spans to tasks (GH#7898) crusaderky
+  * Make Fine Performance Metrics bar graph horizontal (GH#7966) crusaderky
+  * Don’t pile up context_meter callbacks (GH#7961) crusaderky
+  * Polish Fine Performance Metrics plot (GH#7963) crusaderky
+  * Sign task-erred with run_id and reject outdated responses (GH#7933) Hendrik Makait
+  * Set Client.as_current when entering ctx (GH#6527) Florian Jetter
+  * Re-run erred task on ComputeTaskEvent (GH#7967) Hendrik Makait
+  ## Bug Fixes
+  * Fix crash in spans when time() is not monotonic (GH#7960) crusaderky
+- Release 2023.6.1
+  ## Enhancements
+  * Add idle time to fine performance metrics (GH#7938) crusaderky
+  * Spans: capture code snippets (GH#7930) crusaderky
+  * Improve memory footprint of P2P rechunking (GH#7897) Hendrik Makait
+  * Improve error message on invalid state in _handle_remove_replicas (GH#7920) Hendrik Makait
+  * Make ShuffleSchedulerExtension.remove_worker more robust (GH#7921) Hendrik Makait
+  * Provide more information if occupancy drops below zero (GH#7924) Hendrik Makait
+  * Improved conversion between pyarrow and pandas in P2P shuffling (GH#7896) Hendrik Makait
+  ## Bug Fixes
+  Add Cluster.called_from_running_loop and fix Cluster.asynchronous (GH#7941) Jacob Tomlinson
+  * Fix annotations and spans leaking between threads (GH#7935) Irina Truong
+  * Handle null partitions in P2P shuffling (GH#7922) Jonathan De Troye
+  * Fix race condition in Fine Performance Metrics sync (GH#7927) crusaderky
+  * Avoid (GH#7923) by starting run_id at 1 (GH#7925) Hendrik Makait
+  * Fix glitches in Fine Performance Metrics stacked graph (GH#7919) crusaderky
+- Release 2023.6.0
+  ## Enhancements
+  * Post fine performance metrics to spans (GH#7885) crusaderky
+  * Unique Spans (GH#7882) crusaderky
+  * Add a timeout to client.as_completed that mirrors concurrent.futures.as_completed timeout (GH#7811) Thomas Grainger
+  * Enforce dtypes in P2P shuffle (GH#7879) Hendrik Makait
+  * Support load= keyword for Client.upload_file (GH#7873) James Bourbeau
+  * Support get_worker() and worker_client() in async tasks (GH#7844) Thomas Grainger
+  * Capture line number for code frames (GH#7786) Miles
+  ## Bug Fixes
+  * Avoid meta roundtrip in P2P shuffle (GH#7895) Hendrik Makait
+  * Fix Fine Performance Metrics mis-aligned ColumnData lengths (GH#7893) Miles
+  * Fix Fine Performance Metrics spilling crash (GH#7878) Miles
+  * Fix spans bug when scatter or client_desires_new_key creates a task (GH#7886) crusaderky
+  * Fix Fine Performance Metrics w/ Bokeh 3 (GH#7874) Miles
+  * TaskGroup.start can move backwards (GH#7867) crusaderky
+  * Use properly imported MatDescriptor for cupy dispatch registration (GH#7868) Charles Blackmon-Luca
+  * Ensure retire_workers works if AMM extension hasn’t been loaded (GH#7863) crusaderky
+
+-------------------------------------------------------------------
+Mon Jun  5 02:14:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Ratchet up bokeh to >= 3.1, since upstream supports it.
+- Also BuildRequire sparse for Python 3.11.
+
+-------------------------------------------------------------------
+Fri May 26 20:27:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.5.1
+  * This release drops support for Python 3.8
+  ## Enhancements
+  * Exclude IPython code from computations (GH#7788) Miles
+  * Drop Python 3.8 support (GH#7840) Thomas Grainger
+  * Add storage_options to performance_report (GH#7636) ypogorelova
+  * Don’t warn about mismatched msgpack (GH#7839) Irina Truong
+  * Clean up sys.path on Server shutdown (GH#7838) James Bourbeau
+  * Dashboard: Fine Performance Metrics (GH#7725) Miles
+  ## Bug Fixes
+  * Properly handle unknown chunk sizes in P2P rechunking (GH#7856)
+    Hendrik Makait
+  * Minimal change to work around (GH#7726) / support for UCX
+    (GH#7851) Benjamin Zaitlen
+  * Don’t end computations until cluster is truly idle (GH#7790)
+    crusaderky
+- Release 2023.5.0
+  ## Enhancements
+  * Client.upload_file send to both Workers and Scheduler and
+    rename scratch directory (GH#7802) Miles
+  * Allow dashboard to be used with bokeh prereleases (GH#7814)
+    James Bourbeau
+  ## Bug Fixes
+  * Ensure log_event of non-msgpack serializable object do not kill
+    servers (GH#7472) Florian Jetter
+  * Fix test_nanny.py duplicated pytestmark definitions (GH#7819)
+    Thomas Grainger
+  * Fix flaky
+    test_dask_worker.py::test_single_executable_deprecated
+    (GH#7817) Thomas Grainger
+- Release 2023.4.2
+  ## Enhancements
+  * Enable GIL monitoring when gilknocker installed (GH#7730) Miles
+  * By default only set logging handler if no other handler has
+    been set to avoid double logging (GH#7750) Thomas Grainger
+  * Cluster wait (GH#6700) Iain Dorrington
+  * Add Prometheus counter for SystemMonitor.last_time (GH#7785)
+    Miles
+  ## Bug Fixes
+  * Partial revert defaultclient config setting (GH#7803) Florian
+    Jetter
+  * Delay awaiting async SchedulerPlugin.{add|remove}_worker hooks
+    in order to immediately execute all sync ones (GH#7799) Hendrik
+    Makait
+  * Fix check_idle not returning the correct value if no change to
+    idleness (GH#7781) Jacob Tomlinson
+- Release 2023.4.0
+  * With this release we are making a change which will require the
+    Dask scheduler to have consistent software and hardware
+    capabilities as the client and workers.
+  * It’s always been recommended that your client and workers have
+    a consistent software and hardware environment so that data
+    structures and dependencies can be pickled and passed between
+    them. However recent changes to the Dask scheduler mean that we
+    now also require your scheduler to have the same consistent
+    environment as everything else
+  ## Enhancements
+  * Meter queue time to the offload executor (GH#7758) crusaderky
+  * Add GIL contention metric to Prometheus (GH#7651) Miles
+  * Add methods Client.forward_logging() and
+    Client.unforward_logging(). (GH#7276) Max Bane
+  * Optionally capture more frames in computations (GH#7656) Gabe
+    Joseph
+  * Consider Jupyter activity in idle timeout (GH#7687) Gabe Joseph
+  * Add a dashboard component that displays RMM memory (GH#7718)
+    Peter Andreas Entschev
+  * Improve error message if shuffle/rechunk lost annotations
+    (GH#7707) Hendrik Makait
+  * Exception chaining in P2P shuffling (GH#7706) Hendrik Makait
+  * Use pickle for graph submissions from client to scheduler
+    (GH#7564) Florian Jetter
+  ## Bug Fixes
+  * Fix crash on missing env var in dashboard link formatting
+    (GH#7729) Miles
+  * Fix randbytes() on Python 3.8 (GH#7771) crusaderky
+  * Run scheduler of SubprocessCluster in subprocess (GH#7727)
+    Hendrik Makait
+  * Drop id from RMM dashboard component (GH#7739) James Bourbeau
+
+-------------------------------------------------------------------
+Tue Apr  4 20:47:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Drop python38 test flavor
+
+-------------------------------------------------------------------
+Mon Mar 27 16:41:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.2
+  ## Enhancements
+  * Enhanced thread-safety in zict.File (GH#7691) crusaderky
+  * Future deserialization without available client (GH#7580)
+    Florian Jetter
+  * Support adjusting GIL monitoring interval (GH#7650) Miles
+  * Gracefully stop GIL monitoring if running (GH#7652) Miles
+  * Fine performance metrics for execute, gather_dep, etc.
+    (GH#7586) crusaderky
+  * Add GIL metric to dashboard (GH#7646) Miles
+  * Expose scheduler idle via RPC and HTTP API (GH#7642) Jacob
+    Tomlinson
+  * Add full dashboard link in scheduler logs (GH#7631) Miles
+  ## Bug Fixes
+  * Tell workers when their peers have left (so they don’t hang
+    fetching data from them) (GH#7574) Thomas Grainger
+  * Fix regression in dashboard after (GH#7586) (GH#7683)
+    crusaderky
+  * Fix OverflowError in Cluster._sync_cluster_info() (GH#7648)
+    Hendrik Makait
+  * Ensure that serialized data is measured correctly (GH#7593)
+    Florian Jetter
+  ## Maintenance
+  * Avoid bool object has no attribute close in @gen_cluster
+    (GH#7657) Thomas Grainger
+  * Fix failing test_server_close_stops_gil_monitoring (GH#7659)
+    James Bourbeau
+  * Remove weakref finalizer for Offload Executor (GH#7644) Florian
+    Jetter
+- Enable python311 build and test: numba not a strict requirement
+  of dask
+
+-------------------------------------------------------------------
+Tue Mar 14 03:42:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip more flaky tests
+
+-------------------------------------------------------------------
+Sat Mar 11 23:58:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.3.1
+  ## Enhancements
+  * Add Jupyter link to dashboard menu if --jupyter flag is set
+    (GH#7638) Jacob Tomlinson
+  * Bump minimum click version from 7.0 to 8.0 (GH#7637) Miles
+  * Extend dask metapackage dependencies (GH#7630) James Bourbeau
+  * Further improvements to Client.restart_workers (GH#7620) Miles
+  * P2P offload get_output_partition (GH#7587) Florian Jetter
+  * Initial integration of GIL contention metric (GH#7624) Miles
+  * Add dashboard documentation links (GH#7610) Miles
+  * Rename shuffle/rechunk config option/kwarg to method (GH#7623)
+    Hendrik Makait
+  * Return results in restart_workers (GH#7606) Miles
+  * Ensure client key cancellation uses ordered messages (GH#7583)
+    Florian Jetter
+  ## Bug Fixes
+  * Fix undefined async_wait_for -> async_poll_for (GH#7627) Miles
+  * Don’t send client heartbeat without a scheduler_comm (GH#7612)
+    James Bourbeau
+  * Do not unspill on free-keys (GH#7607) crusaderky
+  ## Documentation
+  * Add notes to Client.submit, Client.map, and Client.scatter with
+    the description of the current task graph resolution algorithm
+    limitations (GH#7588) Eugene Druzhynin
+  ## Maintenance
+  * Use range with pickle protocol versions (GH#7635) jakirkham
+  * Share thread pool among P2P shuffle runs (GH#7621) Hendrik
+    Makait
+  * Replace psutil suspend with BlockedGatherDep in
+    test_failing_worker_with_additional_replicas_on_cluster
+    (GH#7633) Thomas Grainger
+  * Ignore pkg_resources DeprecationWarning for mindeps (GH#7626)
+    Miles
+  * Implement wait_for using asyncio.timeout() on 3.11 (GH#7571)
+    Thomas Grainger
+  * Use tmp_path fixture instead of outdated tmpdir fixture
+    (GH#7582) ypogorelova
+  * Only one crick callback (GH#7614) crusaderky
+  * Add mindeps + numpy job to tests CI (GH#7609) Miles
+  * Do not xfail whole tests due to (GH#6705) (GH#7611) crusaderky
+
+-------------------------------------------------------------------
+Wed Mar  8 09:41:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.3.0:
+  * Remove pyarrow dependency for rechunking
+  * Update rechunk_transfer and rechunk_unpack errors
+  * Remove dead code and document arguments to ShardBuffer
+    constructors
+  * Fix tests for p2p by default
+  * Remove obsolete cast
+
+-------------------------------------------------------------------
+Sun Feb 26 00:09:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Prepare test multiflavors for python311, but skip python311
+  * Numba is not ready for python 3.11 yet gh#numba/numba#8304
+
+-------------------------------------------------------------------
+Fri Feb 17 09:05:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.2.0
+  ## Enhancements
+  * Rate limit the worker memory logs (GH#7529) Florian Jetter
+  * Move P2P barrier logic to scheduler extension (GH#7519) Hendrik
+    Makait
+
+-------------------------------------------------------------------
+Sun Feb  5 13:22:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.1.1
+  ## Enhancements
+  * P2P shuffle deduplicates data and can be run several times
+    (GH#7486) Hendrik Makait
+  * Reverse order of get_logs() and get_worker_logs() (GH#7475)
+    Nicholas R. Knezek
+  * Add prometheus metric for time and memory used per task prefix
+    (GH#7406) Thomas Grainger
+  * Additive worker counts in Prometheus (GH#7468) crusaderky
+  * Add help tool for taskstream (GH#7478) Florian Jetter
+  ## Bug Fixes
+  * Do not allow for a worker to reject a drop replica request
+    (GH#7490) Hendrik Makait
+  * Fix un/packing for namedtuples with custom constructors
+    (GH#7465) antonymayi
+  * Documentation
+  * Remove timeout= from docstring example for worker_client
+    (GH#7497) Florian Jetter
+  ## Maintenance
+  * Ignore get_default_shuffle_algorithm linting issue (GH#7506)
+    Florian Jetter
+  * Remove set_config when using default client (GH#7482) Florian
+    Jetter
+  * Update gpuCI RAPIDS_VER to 23.04 (GH#7501)
+  * Fix test_balance_expensive_tasks and improve helper functions
+    in test_steal.py (GH#7253) Hendrik Makait
+  * Sign every compute task with run ID to correlate response
+    (GH#7463) Hendrik Makait
+- Release 2023.1.0
+  ## New Features
+  * Add local SubprocessCluster that runs workers in separate
+    processes (GH#7431) Hendrik Makait
+  ## Enhancements
+  * Ensure client session is quiet after cluster.close() or
+    client.shutdown() (GH#7429) James Bourbeau
+  * Set lifetime-stagger default value to None (GH#7445)
+    bstadlbauer
+  * Memory thresholds should never be exactly 0.0 (GH#7458) Stuart
+    Berg
+  * Remove the Incorrect-Sizeof-Warning (GH#7450) Mads R. B.
+    Kristensen
+  * Log exceptions in P2P shuffle tasks (GH#7442) Hendrik Makait
+  * Add support for packing namedtuple and add test for future
+    resolution in submit (GH#7292) Andrew
+  * Avoid deep copy on lz4 decompression (GH#7437) crusaderky
+  * Avoid deep copy of numpy buffers on unspill (GH#7435)
+    crusaderky
+  * Don’t error when clicking on empty task stream plot (GH#7432)
+    James Bourbeau
+  * Do not count spilled memory when comparing vs. process memory
+    (GH#7430) crusaderky
+  * Stop Client periodic callbacks during shutdown() (GH#7428)
+    James Bourbeau
+  * Add dask spec CLI (GH#7427) Matthew Rocklin
+  * Create new zstd (de)compressor for each compression call
+    (GH#7404) Dylan Wragge
+  * Rename managed_in_memory etc. to match GUI (GH#7418) crusaderky
+  * Warn users when sizeof() returns inflated output (GH#7419)
+    crusaderky
+  ## Bug Fixes
+  * Ensure dicts are properly recognized as msgpack serializable
+    (GH#7473) Florian Jetter
+  * Reset state of ShuffleSchedulerExtension on restart (GH#7446)
+    Hendrik Makait
+  * Reject non-string column names in P2P shuffle (GH#7447) Hendrik
+    Makait
+  * Avoid int32 in dashboard (GH#7443) Matthew Rocklin
+  * Fix P2PShuffle serialization for categorical data (GH#7410)
+    Hendrik Makait
+  * WorkerPorcess blocks on kill if still starting (GH#7424)
+    Matthew Rocklin
+  ## Documentation
+  * Move Prometheus docs from dask/dask (GH#7405) crusaderky
+  ## Maintenance
+  * Various cleanups in semaphore (GH#5885) Florian Jetter
+  * test_rlimit fails on MacOSX (GH#7457) crusaderky
+  * Bump actions/checkout from 3.2.0 to 3.3.0 (GH#7464)
+  * Remove conditional imports of psutil (GH#7462) crusaderky
+  * Drop support for zict < 2.1.0 (GH#7456) crusaderky
+  * Fix flaky test_digests (GH#7454) crusaderky
+  * Add minimum dependency testing to CI (GH#7285) Charles
+    Blackmon-Luca
+  * Avoid overflow in statitics.mean (GH#7426) Matthew Rocklin
+  * Ignore numpy bool8 deprecation (GH#7423) Matthew Rocklin
+  * Add missing skips for pyarrow (GH#7416) Elliott Sales de
+    Andrade
+  * Be more permissive about expected ciphers in tests (GH#7417)
+    Elliott Sales de Andrade
+  * Revert “TST: Fetch executables from build root (GH#2551)”
+    (GH#7415) Elliott Sales de Andrade
+
+-------------------------------------------------------------------
+Mon Jan  2 21:03:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.12.1
+  ## Enhancements
+  * SpillBuffer metrics (GH#7368) crusaderky
+  * Prometheus: measure how much spilling blocks the event loop (GH#7370) crusaderky
+  * Add transfer_outgoing_bytes_total metric (GH#7388) Gabe Joseph
+  * Fail P2PShuffle gracefully upon worker failure (GH#7326) Hendrik Makait
+  ## Bug Fixes
+  * Select queued tasks in stimuli, not transitions (GH#7402) Gabe Joseph
+  * Check ContextVar in default_client (GH#7369) Matthew Rocklin
+  * Fix sending event messages to non-subscribers (GH#7014) Laurence Watts
+  * Set sizing mode on Tabs to avoid layout collapse (GH#7365) Mateusz Paprocki
+  ## Maintenance
+  * Restructure P2PShuffle extensions (GH#7390) Hendrik Makait
+  * Add Python 3.11 classifier (GH#7408) James Bourbeau
+  * Add support for Python 3.11 (GH#7249) Thomas Grainger
+  * Add test for using annotations with client.submit and client.map (GH#7399) James Bourbeau
+  * Bump actions/checkout from 3.1.0 to 3.2.0 (GH#7393)
+  * Remove superfluous ShuffleSchedulerExtension.barriers (GH#7389) Hendrik Makait
+  * Remove ignore annotation-unchecked (GH#7379) crusaderky
+  * Remove tornado max version from nightly recipe (GH#7376) Charles Blackmon-Luca
+  * Remove the experimental feature warning for Semaphore (GH#7373) Florian Jetter
+- Release 2022.12.0
+  ## Enhancements
+  * Expose event loop health metrics in Prometheus (GH#7360) Hendrik Makait
+  * Allow log propagation by default (GH#5669) Florian Jetter
+  * Clean up of unpack_remotedata() (GH#7322) Mads R. B. Kristensen
+  * Upgrade to tornado 6.2 (GH#7286) Thomas Grainger
+  * Introduce Server level comm counters (GH#7332) Florian Jetter
+  * Prometheus debug log (GH#7302) Florian Jetter
+  ## Bug Fixes
+  * Catch BaseException s from user tasks (GH#5997) Gabe Joseph
+  * Impossible use case of erred deps in transition to waiting (GH#7354) crusaderky
+  * Fix a deadlock when queued tasks are resubmitted quickly in succession (GH#7348) Florian Jetter
+  ## Maintenance
+  * Fetch all artifacts (GH#7355) Enrico Minack
+  * Delay fsspec and urllib3 import time (GH#6659) Florian Jetter
+  * Bump mypy (GH#7349) crusaderky
+  * Bump mypy and remove win specific run (GH#7344) Florian Jetter
+  * Finish overhaul of SchedulerState annotations (GH#7333) crusaderky
+  * Fix flaky test_pause_while_spilling (GH#7334) Gabe Joseph
+  * Update gpuCI RAPIDS_VER to 23.02 (GH#7337)
+- Drop distributed-pr7286-tornado-6-2.patch
+- Move to PEP517 build
+
+-------------------------------------------------------------------
+Mon Nov 21 19:00:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove allow-bokeh3.patch
+  * gh#dask/distributed#7329, gh#dask/dask#9659
+  * we provide a legacy bokeh2 instead
+
+-------------------------------------------------------------------
+Sun Nov 20 10:38:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.11.1
+  ## Enhancements
+  * Restrict bokeh=3 support (GH#7329) Gabe Joseph (ignored in rpm
+    fixed by bokek 3.0.2, see gh#dask/dask#9659)
+  * Respect death timeout when waiting for scheduler file (GH#7296)
+    Florian Jetter
+  * Always raise exception if P2PShuffle s send fails (GH#7317)
+    Hendrik Makait
+  ## Maintenance
+  * Remove exception handling from transitions (GH#7316) crusaderky
+  * Turn private functions into private SchedulerState methods
+    (GH#7260) Hendrik Makait
+  * Bump toolz minimum version to 0.10.0 (GH#7309) Sam Grayson
+- Release 2022.11.0
+  ## Note
+  * This release changes the default scheduling mode to use
+    queuing. This will significantly reduce cluster memory use in
+    most cases, and generally improve stability and performance.
+    Learn more here and please provide any feedback on this
+    discussion.
+  * In rare cases, this could make some workloads slower. See the
+    documentation for more information, and how to switch back to
+    the old mode.
+  ## New Features
+  * Add ForwardOutput worker plugin to forward stdout and stderr to
+    client. (GH#7297) Hendrik Makait
+  * Duration counters on prefix level (GH#7288) Florian Jetter
+  * Include button for launching JupyterLab layout in repr
+    (GH#7218) Ian Rose
+  ## Enhancements
+  * Support MIG parsing during CUDA context creation in UCX
+    initialization (GH#6720) Peter Andreas Entschev
+  * Handle /metrics endpoint without prometheus-client installed
+    (GH#7234) Hendrik Makait
+  * Add support for unpacking namedtuples in remote data (GH#7282)
+    Andrew
+  * Enable queuing by default (GH#7279) Florian Jetter
+  * Fix exists->``exist`` typo in scheduler error messages
+    (GH#7281) Matthew Plough
+  * If there’s an exception in the Client async context manager
+    body then close fast (GH#6920) Thomas Grainger
+  ## Bug Fixes
+  * Ensure category is optional when logging "warn" events
+    (GH#7169) James Bourbeau
+  * Edge and impossible transitions to memory (GH#7205) crusaderky
+  ## Maintenance
+  * Allow bokeh=3 (GH#5648) James Bourbeau
+  * Fix typos in P2P shuffle code (GH#7304) Hendrik Makait
+  * Reenable test_bad_disk (GH#7300) Florian Jetter
+  * Reduce max-runs in test reports (GH#7299) Florian Jetter
+  * Revert idle classification when worker-saturation is set
+    (GH#7278) Florian Jetter
+  * Fix flaky deadline_expiration (GH#7287) Florian Jetter
+  * Rewrite of P2P control flow (GH#7268) Florian Jetter
+  * Bump minimum bokeh version to 2.4.2 (GH#7271) James Bourbeau
+  * Remove deprecated code calls to IOLoop.make_current() (GH#7240)
+    Thomas Grainger
+  * Improved test for balancing expensive tasks (GH#7272) Hendrik
+    Makait
+  * Refactor semaphore._Watch into general-purpose Deadline utility
+    (GH#7238) Hendrik Makait
+  * Require Click 7.0+ (GH#7226) jakirkham
+  * Drop tests (GH#7269) Hendrik Makait
+  * Replace test_(do_not_)steal_communication_heavy_tasks tests
+    with more robust versions (GH#7243) Hendrik Makait
+  * xfail test_bad_disk (GH#7265) crusaderky
+  * Move transition_log from Scheduler to SchedulerState (GH#7254)
+    crusaderky
+  * Remove Scheduler.log (GH#7258) crusaderky
+  * Use latest pickle (GH#5826) jakirkham
+  * Polish parsing of worker-saturation from config (GH#7255)
+    crusaderky
+  * Avoid expensive occupancy calculation when unused (GH#7257)
+    Gabe Joseph
+  * Un-skip test_nested_compute (GH#7247) Gabe Joseph
+  * Review test_do_not_steal_communication_heavy_tasks (GH#7250)
+    crusaderky
+  * Fix test_stress_creation_and_deletion (GH#7215) crusaderky
+  * Raise exceptions in Server.handle_stream instead of
+    swallowing/logging (GH#7162) Hendrik Makait
+  * Fix _update_scheduler_info hanging failed tests (GH#7225) Gabe
+    Joseph
+  * Bump xarray-contrib/ci-trigger from 1.1 to 1.2 (GH#7232)
+- Release 2022.10.2
+  * Reverted a bug where Bokeh was accidentally made non-optional
+    (GH#7230) Oliver Holworthy
+  * Schedule a queued task when a task secedes (GH#7224) Gabe
+    Joseph
+  * This was a hotfix release
+- Release 2022.10.1
+  ## New Features
+  * Add Client.restart_workers method (GH#7154) James Bourbeau
+  * Implement PackageInstall plugin for pip and conda (GH#7126)
+    Hendrik Makait
+  ## Enhancements
+  * Add prometheus collector for work-stealing (GH#7206) Hendrik
+    Makait
+  * Track reason of workers closing and restarting (GH#7166)
+    Hendrik Makait
+  * Show no-worker on task progress bar (GH#7171) Florian Jetter
+  * Set OPENBLAS_NUM_THREADS by default (GH#7177) James Bourbeau
+  * Optionally provide local directory to data constructor
+    (GH#7153) Lawrence Mitchell
+  * Introduce distributed.comm.ucx.environment config slot
+    (GH#7164) Lawrence Mitchell
+  * Log information about memory limit (GH#7160) Florian Jetter
+  * Improve log messages on scheduler for restart (GH#7150) Florian
+    Jetter
+  * More comprehensive WorkerState task counters (GH#7167)
+    crusaderky
+  ## Bug Fixes
+  * Update minimum bokeh version message (GH#7172) James Bourbeau
+  * Revamped implementations of remote print() and warn(), fixing
+    #7095 (GH#7129) Max Bane
+  ## Maintenance
+  * Temporarily restrict bokeh<3 (GH#7219) James Bourbeau
+  * Make Scheduler.reschedule private (GH#7216) crusaderky
+  * Fix decide_worker_rootish_queuing_disabled assert (GH#7065)
+    Gabe Joseph
+  * Fix flaky test_include_communication_in_occupancy (GH#7212)
+    Gabe Joseph
+  * Do not raise on leaked websockets (GH#7199) Florian Jetter
+  * Update nightly recipes with CLI tests, dependency changes
+    (GH#7201) Charles Blackmon-Luca
+  * Make p2p shuffle submodules private (GH#7186) Florian Jetter
+  * Backport tornado PeriodicCallback (GH#7165) Florian Jetter
+  * Fix mypy failure on CI (GH#7198) Florian Jetter
+  * User a layer for p2p shuffle (GH#7180) Florian Jetter
+  * Type annotations for shuffle (GH#7185) Florian Jetter
+  * Do not close worker on comm error in heartbeat (GH#7163)
+    Hendrik Makait
+  * Errors when setting TCP timeouts log as error (GH#7161) Florian
+    Jetter
+  * Remove incorrect advice from pre-commit config (GH#7159)
+    crusaderky
+  * Use functionalities network for codecov uploader (GH#7148)
+    Florian Jetter
+  * Use counter metric type where appropriate, incoming_count was
+    reporting bytes (GH#7125) Nat Tabris
+- Add allow-bokeh3.patch -- raise upper bokeh version, reverts part
+  of gh#dask/distributed#7329, see also gh#dask/dask#9659
+- Replace support-tornado-6-2.patch with
+  distributed-pr7286-tornado-6-2.patch -- gh#dask/distributed#7286
+
+-------------------------------------------------------------------
+Fri Oct 21 13:22:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.10.0
+  * Use of new dask CLI (GH#6735) Doug Davis
+  * Refactor occupancy (GH#7075) Hendrik Makait
+  * Expose managed/unmanaged/spilled memory to Prometheus (GH#7112)
+    crusaderky
+  * Round up saturation-factor (GH#7116) Gabe Joseph
+  * Return default on KeyError at any level in get_metadata
+    (GH#7109) Hendrik Makait
+  * Count task states per task prefix and expose to Prometheus
+    (GH#7088) Nat Tabris
+  * Add scheduler-sni option for dask workers (GH#6290) Burt
+    Holzman
+  * Improve exception catching in UCX communication (GH#7132) Peter
+    Andreas Entschev
+  * Improve robustness of PipInstall plugin (GH#7111) Hendrik
+    Makait
+  * Fix dependencies that should point to dask/dask (GH#7138) James
+    Bourbeau
+  * Hold on to z.sum() until test completes (GH#7136) Lawrence
+    Mitchell
+  * Update typing for system_monitor after python/typeshed#8829
+    (GH#7131) Lawrence Mitchell
+  * Fix two potentially flaky queuing tests (GH#7124) Gabe Joseph
+  * Revamp SystemMonitor (GH#7097) crusaderky
+  * Adjust hardware benchmarks bokeh test (GH#7096) Florian Jetter
+  * Multi-platform mypy checks (GH#7094) crusaderky
+
+-------------------------------------------------------------------
+Fri Sep 30 23:19:52 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2022.9.2:
+  * Enhancements
+    + Smarter stealing with dependencies (GH#7024) Hendrik Makait
+    + Enable Active Memory Manager by default (GH#7042) crusaderky
+    + Allow timeout strings in distributed.wait (GH#7081) James
+      Bourbeau
+    + Make AMM memory measure configurable (GH#7062) crusaderky
+    + AMM support for actors (GH#7072) crusaderky
+    + Expose message-bytes-limit in config (GH#7074) Hendrik Makait
+    + Detect mismatching Python version in scheduler (GH#7018) Hendrik
+      Makait
+    + Improve KilledWorker message users see (GH#7043) James Bourbeau
+    + Support for cgroups v2 and respect soft limits (GH#7051)
+      Samantha Hughes
+  * Bug Fixes
+    + Catch BaseException on UCX read error (GH#6996) Peter Andreas
+      Entschev
+    + Fix transfer limiting in _select_keys_for_gather (GH#7071)
+      Hendrik Makait
+    + Parse worker-saturation if a string (GH#7064) Gabe Joseph
+    + Nanny(config=...) parameter overlays global dask config
+      (GH#7069) crusaderky
+    + Ensure default clients don’t propagate to subprocesses (GH#7028)
+      Florian Jetter
+  * Documentation
+    + Improve documentation of message-bytes-limit (GH#7077) Hendrik
+      Makait
+    + Minor tweaks to Sphinx documentation (GH#7041) crusaderky
+    + Improve upload_file API documentation (GH#7040) Florian Jetter
+  * Maintenance
+    + test_serialize_numba: Workaround issue with np.empty_like in NP
+      1.23 (GH#7089) Graham Markall
+    + Type platform constants for mypy (GH#7091) jakirkham
+    + dask-worker-space (GH#7054) crusaderky
+    + Remove failing test case (GH#7087) Hendrik Makait
+    + test_default_client (GH#7058) crusaderky
+    + Fix pre-commit fails with recent versions of mypy and pandas
+      (GH#7068) crusaderky
+    + Add factorization utility (GH#7048) James Bourbeau
+
+-------------------------------------------------------------------
+Fri Sep 16 19:55:34 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2022.9.1:
+  * Enhancements
+    + Add dashboard component for size of open data transfers
+      (GH#6982) Hendrik Makait
+    + Allow very fast keys and very expensive transfers as stealing
+      candidates (GH#7022) Florian Jetter
+  * Bug Fixes
+    + No longer double count transfer cost in stealing (GH#7036)
+      Hendrik Makait
+  * Maintenance
+    + Make test_wait_first_completed robust (GH#7039) Florian Jetter
+    + Partial annotations for SchedulerState (GH#7023) crusaderky
+    + Add more type annotations to stealing.py (GH#7009) Florian
+      Jetter
+    + Update codecov settings (GH#7015) Florian Jetter
+    + Speed up test_balance (GH#7008) Florian Jetter
+    + Fix test report after queuing job added (GH#7012) Gabe Joseph
+    + Clean up env variables in Gihub Actions (GH#7001) crusaderky
+    + Make test_steal_reschedule_reset_in_flight_occupancy non timing
+      dependent (GH#7010) Florian Jetter
+    + Replaced distributed.utils.key_split with dask.utils.key_split
+      (GH#7005) Luke Conibear
+    + Revert “Revert “Limit incoming data transfers by amount of data”
+      (GH#6994)” (:pr:`7007) Florian Jetter
+    + CI job running tests with queuing on (GH#6989) Gabe Joseph
+    + Fix distributed/tests/test_client_executor.py::test_wait
+      (GH#6990) Florian Jetter
+
+-------------------------------------------------------------------
+Sat Sep 10 15:18:16 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2022.9.0:
+  * Enhancements
+    + Limit incoming data transfers by amount of data (GH#6975)
+      Hendrik Makait
+    + Expose transfer-related metrics in Worker.get_metrics and
+      WorkerMetricCollector (GH#6936) Hendrik Makait
+    + Withhold root tasks (no co assignment) (GH#6614) Gabe Joseph
+    + Improve differentiation between incoming/outgoing connections
+      and transfers (GH#6933) Hendrik Makait
+    + Change memory bars color on spilling/paused status (GH#6959)
+      crusaderky
+    + Ensure restart clears taskgroups et al (GH#6944) Florian Jetter
+    + Optimise scheduler.get_comm_cost set difference (GH#6931)
+      Lawrence Mitchell
+    + Expose setting multiple protocols and ports via the
+      dask-scheduler CLI (GH#6898) Jacob Tomlinson
+    + Make TextProgressBar clear the line when finished (GH#5968)
+      Vincenzo Eduardo Padulano
+  * Bug Fixes
+    + Revert getaddrinfo fast path for Python 3.8 (GH#6978) Florian
+      Jetter
+    + cancelled/resumed->long-running transitions (GH#6916) crusaderky
+  * Deprecations
+    + Deprecate default value for Client.wait_for_workers (GH#6942)
+      Florian Jetter
+  * Documentation
+    + Document Scheduler and Worker state machine (GH#6948) crusaderky
+    + Insert memory_limit parameter into LocalCluster docstring
+      (GH#6839) Crislana Rafael
+  * Maintenance
+    + Revert “Limit incoming data transfers by amount of data”
+      (GH#6994) Florian Jetter
+    + Cache conda environment between CI test runs (GH#6855) Charles
+      Blackmon-Luca
+    + Revert “Fix co-assignment for binary operations” (GH#6985) Gabe
+      Joseph
+    + Cache test_report shelves in CI (GH#6937) Florian Jetter
+    + Cleanup ipywidgets mocking (GH#6918) Thomas Grainger
+    + Improve testing of {Scheduler|Worker}MetricCollector (GH#6945)
+      Hendrik Makait
+    + Clean up nanny WorkerProcess.kill (GH#6972) Gabe Joseph
+    + Rewrite test_reconnect to use subprocess to kill scheduler
+      reliably (GH#6967) Florian Jetter
+    + Task state domain on the scheduler side (GH#6929) crusaderky
+    + Remove @avoid_ci from test_steal (GH#6872) crusaderky
+    + Use async with Worker in tests (GH#6958) crusaderky
+    + Ignore spurious warnings in test_quiet_close_process (GH#6955)
+      crusaderky
+    + Fix tests on Windows (GH#6954) Hendrik Makait
+    + Prevent duplicates in HeapSet.sorted() (GH#6952) crusaderky
+    + Propagate worker address and improve _remove_from_processing
+      behavior (GH#6946) Hendrik Makait
+    + Add HeapSet._sorted internal flag (GH#6949) Gabe Joseph
+    + Add HeapSet.peekn (GH#6947) Gabe Joseph
+    + Fix pyright error when importing from distributed (GH#6904) Ian
+      Liu Rodrigues
+    + Always return ws.address from _remove_from_processing (GH#6884)
+      Hendrik Makait
+    + Use async with Client: in tests (GH#6921) Thomas Grainger
+    + Ensure relative memory limits work as percentage of system
+      memory (GH#6923) Florian Jetter
+
+-------------------------------------------------------------------
+Thu Sep  1 06:53:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2022.8.1:
+  * Display unexpected state in Worker.execute validation (:pr:`6856`)
+    James Bourbeau
+  * cancelled / resumed -> rescheduled transition (:pr:`6913`) crusaderky
+  * Fix resource deallocation for resumed tasks (:pr:`6914`) crusaderky
+  * Only close scheduler in SpecCluster if it exists (:pr:`6888`)
+    Matthew Rocklin
+  * Always close BatchedSend write coroutines (:pr:`6865`) Gabe Joseph
+  * Harden preamble of Worker.execute against race conditions (:pr:`6878`)
+    crusaderky
+  * Duplicated code: in_flight_tasks validation (:pr:`6917`) crusaderky
+  * Overhaul transitions for the resumed state (:pr:`6699`) crusaderky
+  * Clean up cluster process reaping (:pr:`6840`) Gabe Joseph
+  * Don't use bokeh Figure in tests (:pr:`6721`) Bryan Van de Ven
+  * Work around incompatibility of crick with setuptools 65 (:pr:`6887`)
+    crusaderky
+  * Replace port = random.randint( with port = d.utils.open_port (:pr:`6883`)
+    Thomas Grainger
+  * Fix flaky test_wall_clock (:pr:`6879`) crusaderky
+  * Add descriptive error message to assert (:pr:`6871`) Hendrik Makait
+  * Increase timeout in test_quiet_process (:pr:`6857`) Florian Jetter
+  * Remove redundant use of with clean(): (:pr:`6852`) Thomas Grainger
+  * Update pre-commit dependencies (:pr:`6851`) Hendrik Makait
+  * Call exit callback even if AsyncProcess is reaped elsewhere (:pr:`6684`)
+    Thomas Grainger
+  * Avoid function calls in argument defaults (:pr:`6812`) Hendrik Makait
+  * Add Cluster.get_client() method (:pr:`6745`) Julia Signell
+  * Start bokeh app to activate bokeh's clean session callbacks (:pr:`6728`)
+    Martí Zamora
+  * Don't connect to cluster subprocesses at shutdown (:pr:`6829`) Gabe Joseph
+  * Fix restart wait for workers edge case (:pr:`6823`) Gabe Joseph
+  * Fix spilled size calculation in Slow (:pr:`6789`) Hendrik Makait
+  * Deprecate passing stopped loops to LoopRunner (and therefore
+    Client/Cluster) (:pr:`6680`) Thomas Grainger
+  * Only set 5s connect timeout in gen_cluster tests (:pr:`6822`) Gabe Joseph
+  * Fix flaky test_worker_who_has_clears_after_failed_connection (:pr:`6832`)
+    Gabe Joseph
+  * Assert otherwise pointless comparisons (B015) (:pr:`6811`) Hendrik Makait
+  * Fix Jupyter security note (:pr:`6818`) Jacob Tomlinson
+  * Improve check_thread_leak output (:pr:`6797`) Gabe Joseph
+  * Use contextmanager to ensure clients are closed and do not leak
+    (:pr:`6817`) Hendrik Makait
+  * Robust thread termination in test_watch and
+    test_watch_requires_lock_to_run (:pr:`6788`) Hendrik Makait
+  * Avoid unused loop control variable or name them _ (:pr:`6813`)
+    Hendrik Makait
+  * Avoid mutable argument defaults in tests (:pr:`6810`) Hendrik Makait
+  * Avoid mutable argument defaults outside of tests (:pr:`6665`)
+    Hendrik Makait
+  * Wait for workers to return in Client.restart (:pr:`6714`) Gabe Joseph
+  * Remove global mutable Cluster._cluster_info (:pr:`6487`) Thomas Grainger
+  * Fix: nvml no early init (:pr:`6678`) Lawrence Mitchell
+  * Fix bug when restarting client (:pr:`6654`) Iain Dorrington
+  * Failure to spill breaks available resources (:pr:`6703`) crusaderky
+  * Fix resource allocation for tasks with dependencies (:pr:`6676`)
+    Hendrik Makait
+  * Remove test_restart_fast_sync, test_fast_kill (:pr:`6750`) Gabe Joseph
+  * Fix flaky test_async_task_group_call_later_executes_delayed_task_in_background
+    (:pr:`6744`) Hendrik Makait
+  * Store ready and constrained tasks in heapsets (:pr:`6711`) crusaderky
+  * Future-proof Bokeh value import (:pr:`6707`) Bryan Van de Ven
+  * Validate constrained tasks (:pr:`6698`) crusaderky
+  * Minor quality-of-life tweaks to cancelled state (:pr:`6701`) crusaderky
+  * Pickle worker state machine exceptions (:pr:`6702`) crusaderky
+  * Partial matches for worker state machine instructions (:pr:`6704`)
+    crusaderky
+  * Automatically mark all WorkerState tests (:pr:`6706`) crusaderky
+- Add patch support-tornado-6-2.patch:
+  * Ignore two new deprecation warnings from Tornado 6.2.
+- Stop pining tornado to <6.2
+- Refreshed patches.
+
+-------------------------------------------------------------------
+Tue Jul 12 18:25:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix runtime requirement with tornado <6.2
+- Move one more test to notparallel
+- Skip failing test on Python 3.10 i586 gh#dask/distributed#6718
+
+-------------------------------------------------------------------
+Mon Jul 11 02:50:03 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2022.7.0:
+  * Enhancements
+    + Use a tempdir path by default instead of cwd for the worker
+      scratch dir (GH#6658) Florian Jetter
+    + Add WorkerState.all_running_tasks (GH#6690) Hendrik Makait
+    + Scheduler.reschedule() works only by accident (GH#6339)
+      crusaderky
+    + Remove spurious UnpauseEvent at worker start (GH#6652)
+      crusaderky
+    + Log if closing an executor is not possible in thread (GH#6644)
+      Florian Jetter
+    + Cloudpickle register by value (GH#6466) Ian Rose
+    + Adding replicas to a task in fetch now sends it to flight
+      immediately (GH#6594) crusaderky
+  * Bug Fixes
+    + Fix dump output of parameter-less events (GH#6695) crusaderky
+    + Set MALLOC_TRIM_THRESHOLD_ before interpreter start (GH#6681)
+      crusaderky
+    + Fix deadlocks around rescheduled and resumed states (GH#6673)
+      crusaderky
+    + has_arg returns True for keyword-only arguments (GH#6648)
+      Lawrence Mitchell
+    + Transitions caused by worker death use old ‘worker-connect’
+      stimulus_id (GH#6657) crusaderky
+    + A key is forgotten while acquire-replicas is running (GH#6638)
+      crusaderky
+  * Maintenance
+    + Revisit WorkerState.long_running set (GH#6697) crusaderky
+    + WorkerState unit tests for resumed state (GH#6688) crusaderky
+    + Bump version of pandas-stubs (GH#6691) crusaderky
+    + Add dummy factory methods for ExecuteSuccessEvent and
+      ExecuteFailureEvent (GH#6687) Hendrik Makait
+    + Pin tornado<6.2 in nightly conda recipes (GH#6675) Peter Andreas
+      Entschev
+    + Refactor resource restriction handling in WorkerState (GH#6672)
+      Hendrik Makait
+    + test_signal and test_terminate occasionally return SIGKILL on
+      MacOS (GH#6671) crusaderky
+    + Use the loop fixture in even more tests (GH#6674) Thomas
+      Grainger
+    + Inconditionally import ssl (GH#6670) Thomas Grainger
+    + Use the loop fixture in more tests (GH#6642) Thomas Grainger
+    + Pin tornado to <6.2 (GH#6668) Florian Jetter
+    + Handle AsyncTaskGroupClosedError (GH#6664) Hendrik Makait
+    + Replace occurences of large delay slowinc with locks (GH#6656)
+      Florian Jetter
+    + Merge extend-ignore and ignore values for flake8 (GH#6660)
+      Hendrik Makait
+    + Remove server close background task grace period (GH#6633)
+      Thomas Grainger
+    + Do not use tempfile in utils_test (GH#6651) Florian Jetter
+    + close_worker cleanup (GH#6650) crusaderky
+    + Rewrite test_cancelled_resumed_after_flight_with_dependencies
+      using WorkerState (GH#6645) crusaderky
+    + Log the actual duration to create a directory (GH#6647) Florian
+      Jetter
+    + pandas type stubs (GH#6635) crusaderky
+    + Remove unused __started Event in Server (GH#6615) Florian Jetter
+    + Use safe temp directory in gen_cluster (GH#6628) Florian Jetter
+    + Print CI host info (GH#6629) crusaderky
+    + Deduplicate data_needed (GH#6587) crusaderky
+    + Remove EnsureCommunicatingAfterTransitions (GH#6462) crusaderky
+    + Pickle WorkerState (GH#6623) crusaderky
+    + Harden vs. TaskState collisions (GH#6593) crusaderky
+    + Do not interact with the event loop when the cluster is garbage
+      collected (GH#6627) Thomas Grainger
+
+-------------------------------------------------------------------
+Fri Jun 24 20:21:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.6.1
+  * Highlights
+    - This release includes the Worker State Machine refactor. The
+      expectation should be that the worker state is its own
+      synchronous subclass. Pulling all the state out into its own
+      class allows us to write targeted unit tests without invoking
+      any concurrent or asynchronous code.
+  * Enhancements
+    - Make worker state machine methods private (GH#6564)
+      crusaderky
+    - Yank state machine out of Worker class (GH#6566) crusaderky
+    - Track worker_state_machine.TaskState instances (GH#6525)
+      Hendrik Makait
+    - Trivial tweaks to the Worker State Machine (GH#6586)
+      crusaderky
+    - Replace loop.call_later and loop.add_callback with background
+      tasks added to Server. (GH#6603) Thomas Grainger
+    - Support for neater WorkerState tests (GH#6609) crusaderky
+    - Limit TCP writes with Tornado to 2GB (GH#6557) hhuuggoo
+    - Enable no_implicit_optional for scheduler (GH#6622) Thomas
+      Grainger
+  * Bug Fixes
+    - Partial revert of compute-task message format (GH#6626)
+      Florian Jetter
+    - Restore log message about received signals in CLI (GH#6618)
+      Florian Jetter
+    - Handle empty memoryviews of bytearrays when (de)serializing
+      (GH#6576) Benjamin Zaitlen
+    - Ensure steal requests from same-IP but distinct workers are
+      rejected (GH#6585) Florian Jetter
+    - Fix tls_(min|max)_ version having no effect on openssl 1.1.0g
+      or lower (GH#6562) Thomas Grainger
+    - Fix idle_timeout and unxfail test (GH#6563) Matthew Rocklin
+    - Fix crashing debug statement in _purge_state (GH#6589)
+      crusaderky
+    - Abort connections on CancelledError (GH#6574) Thomas Grainger
+    - Fix Active Memory Manager ignores nbytes thresholds (GH#6583)
+      crusaderky
+  * Deprecations
+    - Deprecate WorkerState accessors (GH#6579)
+      crusaderky
+- Release 2022.6.0
+  * Enhancements
+    - Make disk access in system monitor configurable (GH#6537)
+      Matthew Rocklin
+    - Log and except errors on preload start (GH#6553) Matthew
+      Rocklin
+    - Fix Scheduler.restart logic (GH#6504) Gabe Joseph
+    - Don’t heartbeat while Worker is closing (GH#6543) Gabe Joseph
+    - No longer retry LocalCluster on errno.EADDRINUSE (GH#6369)
+      Thomas Grainger
+    - Don’t invoke log_event from state machine (GH#6512)
+      crusaderky
+    - Add config option to disable profiling and disable it in many
+      tests per default (GH#6490) Hendrik Makait
+    - Encapsulate Worker.batched_stream.send() (GH#6475) crusaderky
+  * Bug Fixes
+    - refresh-who-has can break the worker state machine (GH#6529)
+      crusaderky
+    - Restart worker if it’s unrecognized by scheduler (GH#6505)
+      Gabe Joseph
+    - Fix import error when distributed.rmm.pool-size is set
+      (GH#6482) KoyamaSohei
+  * Deprecations
+    - Restore signature compatibility for dask-gateway (GH#6561)
+      Tom Augspurger
+    - Deprecate the io_loop and loop kwarg to Server, Worker, and
+      Nanny (GH#6473) Thomas Grainger
+    - Deprecate the loop kwarg to Scheduler (GH#6443) Thomas
+      Grainger
+- Release 2022.05.2
+  * Enhancements
+    - Add a lock to distributed.profile for better concurrency
+      control (GH#6421) Hendrik Makait
+    - Send SIGKILL after SIGTERM when passing 95% memory (GH#6419)
+      crusaderky
+  * Bug Fixes
+    - Log rather than raise exceptions in preload.teardown()
+      (GH#6458) Matthew Rocklin
+    - Handle failing plugin.close() calls during scheduler shutdown
+      (GH#6450) Matthew Rocklin
+    - Fix slicing bug in ensure_memoryview (GH#6449) jakirkham
+    - Generalize UCX errors on connect() and correct pytest
+      fixtures (GH#6434) Peter Andreas Entschev
+    - Run cluster widget periodic callbacks on the correct event
+      loop (GH#6444) Thomas Grainger
+- Release 2022.05.1
+  * New Features
+    - Add HTTP API to scheduler (GH#6270) Matthew Murray
+    - Shuffle Service with Scheduler Logic (GH#6007) Matthew
+      Rocklin
+  * Enhancements
+    - Follow-up on removing report and safe from Worker.close
+      (GH#6423) Gabe Joseph
+    - Server close faster (GH#6415) Florian Jetter
+    - Disable HTTP API by default (GH#6420) Jacob Tomlinson
+    - Remove report and safe from Worker.close (GH#6363) Florian
+      Jetter
+    - Allow deserialized plugins in register_scheduler_plugin
+      (GH#6401) Matthew Rocklin
+    - WorkerState are different for different addresses (GH#6398)
+      Florian Jetter
+    - Do not filter tasks before gathering data (GH#6371)
+      crusaderky
+    - Remove worker reconnect (GH#6361) Gabe Joseph
+    - Add SchedulerPlugin.log_event handler (GH#6381) Matthew
+      Rocklin
+    - Ensure occupancy tracking works as expected for long running
+      tasks (GH#6351) Florian Jetter
+    - stimulus_id for all Instructions (GH#6347) crusaderky
+    - Refactor missing-data command (GH#6332) crusaderky
+    - Add idempotent to register_scheduler_plugin client (GH#6328)
+      Alex Ford
+    - Add option to specify a scheduler address for workers to use
+      (GH#5944) Enric Tejedor
+  * Bug Fixes
+    - Remove stray breakpoint (GH#6417) Thomas Grainger
+    - Fix API JSON MIME type (GH#6397) Jacob Tomlinson
+    - Remove wrong assert in handle compute (GH#6370) Florian
+      Jetter
+    - Ensure multiple clients can cancel their key without
+      interference (GH#6016) Florian Jetter
+    - Fix Nanny shutdown assertion (GH#6357) Gabe Joseph
+    - Fix fail_hard for sync functions (GH#6269) Gabe Joseph
+    - Prevent infinite transition loops; more aggressive
+      validate_state() (GH#6318) crusaderky
+    - Ensure cleanup of many GBs of spilled data on terminate
+      (GH#6280) crusaderky
+    - Fix WORKER_ANY_RUNNING regression (GH#6297) Florian Jetter
+    - Race conditions from fetch to compute while AMM requests
+      replica (GH#6248) Florian Jetter
+    - Ensure resumed tasks are not accidentally forgotten (GH#6217)
+      Florian Jetter
+    - Do not allow closing workers to be awaited again (GH#5910)
+      Florian Jetter
+  * Deprecations
+    - Move wait_for_signals to private module and deprecate
+      distributed.cli.utils (GH#6367) Hendrik Makait
+- Release 2022.05.0
+  * Highlights
+    - This is a bugfix release for this issue.
+  * Enhancements
+    - Handle writeable in buffer_callback (GH#6238) jakirkham
+    - Use .data with NumPy array allocation (GH#6242) jakirkham
+  * Bug Fixes
+    - Close executor in event loop if interpreter is closing
+      (GH#6256) Matthew Rocklin
+- Release 2022.04.2
+  * Enhancements
+    - Unblock event loop while waiting for ThreadpoolExecutor to
+      shut down (GH#6091) Florian Jetter
+    - RetireWorker policy is done if removed (GH#6234) Gabe Joseph
+    - Pause to disable dependency gathering (GH#6195) crusaderky
+    - Add EOFError to nanny multiprocessing.queue except list
+      (GH#6213) Matthew Rocklin
+    - Re-interpret error in lost worker scenario (GH#6193) Matthew
+      Rocklin
+    - Add Stimulus IDs to Scheduler (GH#6161) Florian Jetter
+    - Set a five minute TTL for Dask workers (GH#6200) Matthew
+      Rocklin
+    - Add distributed.metrics.monotonic (GH#6181) crusaderky
+    - Send worker validation errors to scheduler and err on test
+      completion (GH#6192) Matthew Rocklin
+    - Redesign worker exponential backoff on busy-gather (GH#6173)
+      crusaderky
+    - Log all invalid worker transitions to scheduler (GH#6134)
+      Matthew Rocklin
+    - Make Graph dashboard plot have invisible axes (GH#6149)
+      Matthew Rocklin
+    - Remove Nanny auto_restart state (GH#6138) Matthew Rocklin
+  * Bug Fixes
+    - Ensure scheduler events do not hold on to TaskState objects
+      (GH#6226) Florian Jetter
+    - Allow pausing and choke event loop while spilling (GH#6189)
+      crusaderky
+    - Do not use UUID in stealing (GH#6179) Florian Jetter
+    - Handle int worker names in info page (GH#6158) Brett Naul
+    - Fix psutil dio counters none (GH#6093) ungarj
+    - Join Nanny watch thread (GH#6146) Matthew Rocklin
+    - Improve logging when closing workers (GH#6129) Matthew
+      Rocklin
+    - Avoid stack overflow in profiling (GH#6141) Matthew Rocklin
+    - Clean up SSHCluster if failure to start (GH#6130) Matthew
+      Rocklin
+  * Deprecations
+    - Deprecate rpc synchronous context manager (GH#6171) Thomas
+      Grainger
+- Release 2022.04.1
+  * New Features
+    - Add KillWorker Plugin (GH#6126) Matthew Rocklin
+  * Enhancements
+    - Sort worker list in info pages (GH#6135) Matthew Rocklin
+    - Add back Worker.transition_fetch_missing (GH#6112) Matthew
+      Rocklin
+    - Log state machine events (GH#6092) crusaderky
+    - Migrate ensure_executing transitions to new WorkerState event
+      mechanism - part 1 (GH#6003) crusaderky
+    - Migrate ensure_executing transitions to new WorkerState event
+      mechanism - part 2 (GH#6062) crusaderky
+    - Annotate worker transitions to error (GH#6012) crusaderky
+  * Bug Fixes
+    - Avoid transitioning from memory/released to missing in worker
+      (GH#6123) Matthew Rocklin
+    - Don’t try to reconnect client on interpreter shutdown
+      (GH#6120) Matthew Rocklin
+    - Wrap UCX init warnings in importable functions (GH#6121)
+      Charles Blackmon-Luca
+    - Cancel asyncio tasks on worker close (GH#6098) crusaderky
+    - Avoid port collisions when defining port ranges (GH#6054)
+      crusaderky
+- Release 2022.04.0
+  * This is the first release with support for Python 3.10
+  * New Features
+    - Add Python 3.10 support (GH#5952) Thomas Grainger
+    - New cluster dump utilities (GH#5920) Simon Perkins
+    - New ClusterDump SchedulerPlugin for dumping cluster state on
+      close (GH#5983) Simon Perkins
+    - Track Event Loop intervals in dashboard plot (GH#5964)
+      Matthew Rocklin
+    - ToPickle - Unpickle on the Scheduler (GH#5728) Mads R. B.
+      Kristensen
+  * Enhancements
+    - Retry on transient error codes in preload (GH#5982) Matthew
+      Rocklin
+    - More idiomatic mypy configuration (GH#6022) crusaderky
+    - Name extensions and enable extension heartbeats (GH#5957)
+      Matthew Rocklin
+    - Better error message on misspelled executor annotation
+      (GH#6009) crusaderky
+    - Clarify that SchedulerPlugin must be subclassed (GH#6008)
+      crusaderky
+    - Remove duplication from stealing (GH#5787) Duncan McGregor
+    - Remove cache in iscoroutinefunction to avoid holding on to
+      refs (GH#5985) Florian Jetter
+    - Add title to individual plots (GH#5967) Matthew Rocklin
+    - Specify average in timeseries titles (GH#5974) Matthew
+      Rocklin
+  * Bug Fixes
+    - Do not catch CancelledError in CommPool (GH#6005) Florian
+      Jetter
+  * Deprecations
+    - Remove distributed._ipython_utils and dependents (GH#6036)
+      Thomas Grainger
+    - Remove support for PyPy (GH#6029) James Bourbeau
+    - Drop runtime dependency to setuptools (GH#6017) crusaderky
+    - Remove heartbeats from events (GH#5989) Matthew Rocklin
+- Cythonization has been abandoned upstream: Back to noarch.
+- Add distributed-ignore-offline.patch
+- Drop distributed-pr5952-py310.patch
+
+-------------------------------------------------------------------
+Fri Mar 25 19:18:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.03.0
+  * Support dumping cluster state to URL (GH#5863) Gabe Joseph
+  * Prevent data duplication on unspill (GH#5936) crusaderky
+  * Encapsulate spill buffer and memory_monitor (GH#5904)
+    crusaderky
+  * Drop pkg_resources in favour of importlib.metadata (GH#5923)
+    Thomas Grainger
+  * Worker State Machine refactor: redesign TaskState and scheduler
+    messages (GH#5922) crusaderky
+  * Tidying of OpenSSL 1.0.2/Python 3.9 (and earlier) handling
+    (GH#5854) jakirkham
+  * zict type annotations (GH#5905) crusaderky
+  * Add key to compute failed message (GH#5928) Florian Jetter
+  * Change default log format to include timestamp (GH#5897)
+    Florian Jetter
+  * Improve type annotations in worker.py (GH#5814) crusaderky
+- Add distributed-pr5952-py310.patch -- gh#dask/distributed#5952
+- Add distributed-ignore-thread-leaks.patch
+- Make the distributed/dask update sync requirement even more
+  obvious.
+
+-------------------------------------------------------------------
+Tue Mar  8 07:46:52 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2022.02.1:
+    Add the ability for Client to run preload code
+    Optionally use NumPy to allocate buffers
+    Add git hash to distributed-impl version
+    Immediately raise exception when trying to connect to a closed cluster
+    Lazily get dask version information
+    Remove the requirements to add comm to every handler
+    Raise on unclosed comms in check_instances
+    Constrained spill
+    Remove redundant str() conversions
+    Cluster dump now excludes run_spec by default
+    Dump more objects with dump_cluster_state
+    Do not connect to any sockets on import
+    Avoid deadlock when two tasks are concurrently waiting for an unresolved ActorFuture
+    Drop Python 3.7
+    Remove support for UCX < 1.11.1
+    Document and test spill->target hysteresis cycle
+    Fix flaky test_remove_replicas_while_computing
+    Fix time based test_assert_worker_story_malformed_story parameterize
+    Remove xfail from test_no_unnecessary_imports_on_worker
+    Start building pre-releases with cythonized scheduler
+    Do not mark tests xfail if they don't come up in time
+    Use gen_cluster where possible in test_dask_worker.py
+    Generate junit report when pytest-timeout kills pytest
+    Decrease timeout-minutes for GHA jobs
+    Bump pre-release version to be greater than stable releases
+    Do not run schedule jobs on forks
+    Remove pillow<9 pin in CI
+    Show scheduled test runs in report
+    Add obvious exclusions with pragma statement
+    Add coverage exclusions for cli files
+    Add pragma statements
+    Remove pragma: no cover from distributed.cli.dask_ssh
+    Add pragma - worker.py, client.py, stealing.py
+    Relax distributed / dask-core dependencies for pre-releases
+    Remove test_ucx_config_w_env_var flaky condition
+- Update to 2022.02.0:
+    Update client.scheduler_info in wait_for_workers
+    Increase robustness to TimeoutError during connect
+    Respect KeyboardInterrupt in sync
+    Add workflow / recipe to generate Dask/distributed pre-releases
+    Review Scheduler / Worker display repr
+    AMM: Graceful Worker Retirement
+    AMM: tentatively stabilize flaky tests around worker pause
+    AMM: speed up and stabilize test_memory
+    Defer pandas import on worker in P2P shuffle
+    Fix for distributed.worker.memory.target=False and spill=0.7
+    Transition flight to missing if no who_has
+    Remove deprecated ncores
+    Deprecate registering plugins by class
+    Deprecate --nprocs option for dask-worker CLI
+    Fix imbalanced backticks
+    xfail test_worker_reconnects_mid_compute
+    Fix linting CI build
+    Update pre-commit versions
+    Reactivate pytest_resourceleaks
+    Set test assumption for test_client_timeout
+    Remove client timeout from test_ucx_config_w_env_var
+    Remove test_failed_worker_without_warning
+    Fix longitudinal report
+    Fix flaky test_robust_to_bad_sizeof_estimates
+    Revert "Pin coverage to 6.2
+    Trigger test runs periodically to increases failure statistics
+    More fault tolerant test report
+    Pin pillow<9 to work around torch incompatability
+    Overhaul check_process_leak
+    Fix flaky test_exit_callback test
+    Generate tests summary
+    Upload different architectured pre-releases separately
+    Ignore non-test directories
+    Bump gpuCI PYTHON_VER to 3.9
+    Regression: threads noted down before they start
+- Remove upstreamed patches:
+  - 5709-avoid-deadlock-ActorFuture.patch
+
+-------------------------------------------------------------------
+Mon Feb 14 15:12:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 5709-avoid-deadlock-ActorFuture.patch to avoid deadlock in
+  ActorFuture (gh#dask/distributed#5709).
+
+-------------------------------------------------------------------
+Sat Jan 29 17:34:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.1.1
+  * P2P shuffle skeleton
+  * Fix <Task pending name='...' coro=<Client._handle_report()>
+  * Add distributed.client.security-loader config
+  * Avoid Client._handle_report cancelling itself on Client._close
+  * Paused workers shouldn't steal tasks
+  * Add option for timestamps from output of Node.get_logs
+  * Don't use time.time() or IOLoop.time()
+  * Raise plugin exceptions on Worker.start()
+  * Fixing docstrings
+  * Fix typo in Client.run docstring
+  * Update client.py docstrings
+  * Skip shuffle tests if pandas / dask.dataframe not installed
+  * Improve test coverage
+  * Test report improvements
+  * P2P shuffle: ignore row order in tests
+  * Fix flaky test_no_reconnect[--no-nanny]
+  * Pin coverage to 6.2
+  * Check for new name of timeouts artifact and be more fault
+    tolerant
+  * Revisit rebalance unit tests
+  * Update comment in rearrange_by_column_p2p
+  * Update gpuCI RAPIDS_VER to 22.04
+  * Fix groupby test after meta requirements got stricter in Dask
+    PR#8563
+  * Fix flaky test_close_gracefully and test_lifetime
+  * Fix flaky test_workspace_concurrency
+  * Fix flaky test_shuffle_extension.py::test_get_partition
+  * Fix flaky test_dump_cluster_unresponsive_remote_worker
+  * Dump cluster state on all test failures
+  * Update license format
+  * Fix flaky test_drop_with_paused_workers_with_running_tasks_3_4
+  * Do not raise an exception if the GitHub token cannot be found
+
+-------------------------------------------------------------------
+Tue Jan 25 18:29:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert distributed-fix-python310.patch addition
+- The patch is gh#dask/distributed#5353
+  * Is not merged upstream
+  * Does not fix the issues
+  * Breaks other flavors
+
+-------------------------------------------------------------------
+Tue Jan 25 09:33:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add distributed-fix-python310.patch to fix build with python 3.10
+
+-------------------------------------------------------------------
+Thu Jan 20 16:09:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.1.0
+  * full changelog at
+    https://distributed.readthedocs.io/en/latest/changelog.html
+  * New Features:
+    - Task group stacked area chart (GH#5320) Ian Rose
+    - Support configuring TLS min/max version (GH#5594) Jim
+      Crist-Harif
+    - Use asyncio for TCP/TLS comms (GH#5450) Jim Crist-Harif
+- Enhancement release notes for 2021.12.0
+  * Support pytest fixures and parametrize with gen_test (GH#5532)
+    Fábio Rosado
+  * Allow idempotent scheduler plugins to be registered via the RPC
+    (GH#5545) Jacob Tomlinson
+  * AMM logging (GH#5530) crusaderky
+  * Raise error if asyncssh isn’t installed when using SSHCluster
+    (GH#5535) Fábio Rosado
+  * Allow None in UCX configuration schema (GH#5534) Fábio Rosado
+  * Add distributed.comm.ucx.create-cuda-context config (GH#5526)
+    Peter Andreas Entschev
+- Security release note for 2021.10.0:
+  * This release fixed a potential security vulnerability relating
+    to single-machine Dask clusters. Clusters started with
+    dask.distributed.LocalCluster or dask.distributed.Client()
+    (which defaults to using LocalCluster) would mistakenly
+    configure their respective Dask workers to listen on external
+    interfaces (typically with a randomly selected high port)
+    rather than only on localhost. A Dask cluster created using
+    this method AND running on a machine that has these ports
+    exposed could be used by a sophisticated attacker to enable
+    remote code execution. Users running on machines with standard
+    firewalls in place should not be affected. This vulnerability
+    is documented in CVE-2021-42343, and is fixed in this release
+    (GH#5427). Thanks to Jean-Pierre van Riel for discovering and
+    reporting the issue.
+- Skip python310: Not supported yet -- gh#dask/distributed#5350
+
+-------------------------------------------------------------------
+Wed Sep 22 12:55:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.9.1
+  * Revert AMM ReduceReplicas and parallel AMMs updates
+  * Run multiple AMMs in parallel
+  * AMM ReduceReplicas to iterate only on replicated tasks
+  * Add type annotations to various functions within
+    distributed.worker
+  * Mark test_ucx_config_w_env_var flaky on UCX < 1.11
+  * Warn if CUDA context is created on incorrect device in UCX
+  * Remove redundant timeouts from test_client
+  * Allow Client to subscribe to events // Remote printing and
+    warning
+  * Test pickle protocols 4 & 5
+  * Fix-up test_pickle_empty
+  * Increase timeout for
+    test_worker_reconnects_mid_compute_multiple_states_on_scheduler
+  * Add synced dict between cluster and scheduler to store cluster
+    info
+  * Update test_sub_submit_priority
+  * Revert "Add test setup fixture
+  * Fix flaky test_worker_reconnects_mid_compute
+  * Use gen_test in test_adaptive
+  * Increase worker.suspicious_counter threshold
+  * Active Memory Manager framework + discard excess replicas
+  * Add test setup fixture
+- Release version 2021.9.0
+  * Fix add_plugin warnings
+  * Add list around iterator in handle_missing_dep
+  * Jupyter-client 7 compatiblity
+  * Replace atop with blockwise
+  * Add pytest color to CI
+  * Fix test_map and others
+  * Use name argument with Scheduler.remove_plugin calls
+  * Downgrade to jupyter_client 6
+  * Migrate Security HTML repr to Jinja2
+  * Migrate ProcessInterface HTML repr to Jinja2
+  * Add support for diskless machines to system monitor
+  * Avoid during-iteration scheduler plugin changes
+  * Remove GroupProgress scheduler plugin
+  * Properly check for ipv6 availability
+  * Improved IPv6 dask-worker support
+  * Overwrite worker plugins
+  * Refactor scheduler plugins; store in a dictionary
+  * Fix "then" -> "than" typo in docs
+  * Fix typo (remove extra verb "creates") in docs
+  * Fix "fractiom" -> "fraction" typo in docstring
+  * Fix "schedulers" -> "scheduler" typo in docs
+  * Use non-histogram plots up to 100 workers
+- Release 2021.08.1
+  * Rename plots to fit in the labextension
+  * Log messages for CommClosedError now includes information
+    about remote address
+  * Add target='_blank' for redirects of dashboard link
+  * Update computation code retrieval logic
+  * Minor polish on cfexecutor
+  * Use development version of dask in gpuCI build
+  * Use upstream dask.widgets
+  * Fix flaky test_worker_reconnects_mid_compute
+  * Update WorkerPlugin docstring about usage of TaskState objects
+  * Worker Network Timeseries
+  * Add HTML Repr for ProcessInterface class and all its subclasses
+  * Fix an issue where a reconnecting worker could cause an
+    invalid transition
+  * Minor fixes for cfexecutor
+  * Add HTML Repr for Security class
+  * Fix performance report sizing issue
+  * Drop RMM compatibility code from RAPIDS < 0.11
+- Release 2021.08.0
+  * Include addresses in closed comm repr
+  * Test nanny.environ precedence
+  * Migrating HTML reprs to jinja2
+  * Fix test_process_executor_kills_process flakyness
+  * Remove urllib3 as a dependency downloading preloads
+  * Download preload urls in the Preload constructor
+  * Avoid recursion error in profile.merge
+  * Add text exceptions to the Scheduler
+  * Use kwarg for Theme filename
+  * Add a .git-ignore-revs file
+  * Replace not not with bool()
+  * Resolve deadlock cause by transition error after fetching
+    dependency
+  * Set z-index of data-table lower
+  * Add no-worker - memory transition to scheduler
+  * Deprecate worker plugin overwrite policy
+  * Fix flaky tests in CI
+  * Instructions for jemalloc with brew on macOS
+  * Bump RAPIDS_VER to 21.10
+  * Tweak verbiage around async functions
+  * Use Python 3 super() calls
+  * Support asynchronous tasks
+  * Rename total comm bytes and provide doc string
+  * Add GPU executor if GPU is present
+  * Fix RMM and UCX tests
+  * Remove excessive timeout of
+    test_steal_during_task_deserialization
+  * Add gpuCI build script
+  * Demote Worker.ensure_computing to function
+
+-------------------------------------------------------------------
+Sun Aug  8 14:36:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.7.2
+  * Fix a deadlock connected to task stealing and task
+    deserialization
+  * Include maximum shard size in second to_frames method
+  * Minor dashboard style updates
+  * Cap maximum shard size at the size of an integer
+  * Document automatic MALLOC_TRIM_THRESHOLD_ environment variable
+  * Mark ucx-py tests for GPU
+  * Update individual profile plot sizing
+  * Handle NVMLError_Unknown in NVML diagnostics
+  * Unit tests to use a random port for the dashboard
+  * Ensure worker reconnect registers existing tasks properly
+  * Halve CI runtime!
+  * Add NannyPlugins
+  * Add WorkerNetworkBandwidth chart to dashboard
+  * Set nanny environment variables in config
+  * Read smaller frames to workaround OpenSSL bug
+  * Move UCX/RMM config variables to Distributed namespace
+  * Allow ws(s) messages greater than 10Mb
+  * Short-circuit root-ish check for many deps
+-Release 2021.07.1
+  * Remove experimental feature warning from actors docs
+  * Keep dependents in worker dependency if TS is still known
+  * Add Scheduler.set_restrictions
+  * Make Actor futures awaitable and work with as_completed
+  * Simplify test_secede_balances
+  * Computation class
+  * Some light dashboard cleanup
+  * Don't package tests
+  * Add pytest marker for GPU tests
+  * Actor: don't hold key references on workers
+  * Collapse nav to hamburger sooner
+  * Verify that actors survive pickling
+  * Reenable UCX-Py tests that used to segfault
+  * Better support ProcessPoolExecutors
+  * Simplify test_worker_heartbeat_after_cancel
+  * Avoid property validation in Bokeh
+  * Reduce default websocket frame size and make configurable
+  * Disable pytest-timeout SIGALARM on MacOS
+  * rebalance() resilience to computations
+  * Improve CI stability
+  * Ensure heartbeats after cancelation do not raise KeyError s
+  * Add more useful exception message on TLS cert mismatch
+  * Add bokeh mode parameter to performance reports
+- Use the GitHub tarball because the PyPI sdist does to provide the
+  tests anymore
+  * Remove extra conftest.py source
+- Drop distributed-pr5022-improve_ci.patch merged upstream
+
+-------------------------------------------------------------------
+Fri Jul 16 09:31:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.7.0
+  * Fix Nbytes jitter - less expensive
+  * Use native GH actions cancel feature
+  * Don't require workers to report to scheduler if scheduler
+    shuts down
+  * Add pandas to the list of checked packages for client.
+    get_versions()
+  * Move worker preload before scheduler address is set
+  * Fix flaky test_oversubscribing_leases
+  * Update scheduling policy docs for #4967
+  * Add echo handler to Server class
+  * Also include pngs when bundling package
+  * Remove duplicated dashboard panes
+  * Fix worker memory dashboard flickering
+  * Tabs on bottom left corner on dashboard
+  * Rename nbytes widgets
+  * Co-assign root-ish tasks
+  * OSError tweaks
+  * Update imports to cudf.testing._utils
+  * Ensure shuffle split default durations uses proper prefix
+  * Follow up pyupgrade formatting
+  * Rename plot dropdown
+  * Pyupgrade
+  * Misc Sphinx tweaks
+  * No longer hold dependencies of erred tasks in memory
+  * Add maximum shard size to config
+  * Ensure shuffle split operations are blacklisted from work
+    stealing
+  * Add dropdown menu to access individual plots
+  * Edited the path to scheduler.py
+  * Task Group Graph Visualization
+  * Remove more internal references to deprecated utilities
+  * Restructure nbytes hover
+  * Except more errors in pynvml.nvmlInit()
+  * Add occupancy as individual plot
+  * Deprecate utilities which have moved to dask
+  * Ensure connectionpool does not leave comms if closed mid
+    connect
+  * Add support for registering scheduler plugins from Client
+  * Stealing dashboard fixes
+  * Allow requirements verification to be ignored when loading
+    backends from entrypoints
+  * Add Log and Logs to API docs
+  * Support fixtures and pytest.mark.parametrize with gen_cluster
+- Release 2021.06.2
+  * Revert refactor to utils.Log[s] and Cluster.get_logs
+  * Use deprecation utility from Dask
+  * Add transition counter to Scheduler
+  * Remove nbytes_in_memory
+- Release 2021.06.1
+  * Fix deadlock in handle_missing_dep if additional replicas are
+    available
+  * Add configuration to enable/disable NVML diagnostics
+  * Add scheduler log tab to performance reports
+  * Add HTML repr to scheduler_info and incorporate into client
+    and cluster reprs
+  * Fix error state typo
+  * Allow actor exceptions to propagate
+  * Remove importing apply from dask.compatibility
+  * Use more informative default name for WorkerPlugin s
+  * Removed unused utility functions
+  * Locally rerun successfully completed futures
+  * Forget erred tasks and fix deadlocks on worker
+  * Handle HTTPClientError in websocket connector
+  * Update dask_cuda usage in SSHCluster docstring
+  * Remove tests for process_time and thread_time
+  * Flake8 config cleanup
+  * Don't strip scheduler protocol when determining host
+  * Add more documentation on memory management
+  * Add range_query tests to NVML test suite
+  * No longer cancel result future in async process when using
+    timeouts
+- Release 2021.06.0
+  * Multiple worker executors
+  * Ensure PyNVML works correctly when installed with no GPUs
+  * Show more in test summary
+  * Move SystemMonitor s GPU initialization back to constructor
+  * Mark test_server_comms_mark_active_handlers with pytest.mark.asyncio
+  * Who has has what html reprs v2
+  * O(1) rebalance
+  * Ensure repr and eq for cluster always works
+- Release 2021.05.1
+  * Drop usage of WhoHas & WhatHas from Client
+  * Ensure adaptive scaling is properly awaited and closed
+  * Fix WhoHas/ HasWhat async usage
+  * Add HTML reprs for Client.who_has and Client.has_what
+  * Prevent accidentally starting multiple Worker s in the same
+    process
+  * Add system tab to performance reports
+  * Let servers close faster if there are no active handlers
+  * Fix UCX scrub config logging
+  * Ensure worker clients are closed
+  * Fix warning for attribute error when deleting a client
+  * Ensure exceptions are raised if workers are incorrectly started
+  * Update handling of UCX exceptions on endpoint closing
+  * Ensure busy workloads properly look up who_has
+  * Check distributed.scheduler.pickle in Scheduler.run_function
+  * Add performance_report to API docs
+  * Use dict _workers_dv in unordered use cases
+  * Bump pre-commit hook versions
+  * Do not mindlessly spawn workers when no memory limit is set
+  * test_memory to use gen_cluster
+  * Increase timeout of gen_test to 30s
+- Work on the very flaky testsuite:
+  * Add missing conftest.py not packaged on PyPI
+  * Add distributed-pr5022-improve_ci.patch in the hope for better
+    stability -- gh#dask/distributed#5022
+  * Do not use pytest-xdist
+- Add Cython as runtime dep because the scheduler checks the
+  presence
+
+-------------------------------------------------------------------
+Tue May 18 10:12:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to version 2021.5.0
+  * Merge global annotations on the client (GH#4691) Mads R. B.
+    Kristensen
+  * Add support for click 8 (GH#4810) James Bourbeau
+  * Add HTML reprs to some scheduler classes (GH#4795) James
+    Bourbeau
+  * Use JupyterLab theme variables (GH#4796) Ian Rose
+  * Allow the dashboard to run on multiple ports (GH#4786) Jacob
+    Tomlinson
+  * Remove release_dep from WorkerPlugin API (GH#4791) James
+    Bourbeau
+  * Support for UCX 1.10+ (GH#4787) Peter Andreas Entschev
+  * Reduce complexity of test_gather_allow_worker_reconnect
+    (GH#4739) Florian Jetter
+  * Fix doctests in utils.py (GH#4785) Jacob Tomlinson
+  * Ensure deps are actually logged in worker (GH#4753) Florian
+    Jetter
+  * Add stacklevel keyword into performance_report() to allow for
+    selecting calling code to be displayed (GH#4777) Nathan
+    Danielsen
+  * Unregister worker plugin (GH#4748) Naty Clementi
+  * Fixes some pickling issues in the Cythonized Scheduler
+    (GH#4768) jakirkham
+  * Improve graceful shutdown if nanny is involved (GH#4725)
+    Florian Jetter
+  * Update cythonization in CI (GH#4764) James Bourbeau
+  * Use contextlib.nullcontext (GH#4763) James Bourbeau
+  * Cython fixes for MemoryState (GH#4761) jakirkham
+  * Fix errors in check_thread_leak (GH#4747) James Bourbeau
+  * Handle missing key case in report_on_key (GH#4755) jakirkham
+  * Drop temporary set variables s (GH#4758) jakirkham
+- skip even more flaky tests
+- stress that upstream wants to use dask with a matching version
+  number
+
+-------------------------------------------------------------------
+Mon May  3 01:35:36 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 2021.4.1:
+  * Avoid active_threads changing size during iteration (GH#4729)
+    James Bourbeau
+  * Fix UnboundLocalError in AdaptiveCore.adapt() (GH#4731) Anderson
+    Banihirwe
+  * Minor formatting updates for HTTP endpoints doc (GH#4736) James
+    Bourbeau
+  * Unit test for metrics["memory"]=None (GH#4727) crusaderky
+  * Enable configuration of prometheus metrics namespace (GH#4722)
+    Jacob Tomlinson
+  * Reintroduce weight function (GH#4723) James Bourbeau
+  * Add ready->memory to transitions in worker (GH#4728) Gil Forsyth
+  * Fix regressions in GH#4651 (GH#4719) crusaderky
+  * Add descriptions for UCX config options (GH#4683) Charles
+    Blackmon-Luca
+  * Split RAM measure into dask keys/other old/other new (GH#4651)
+    crusaderky
+  * Fix DeprecationWarning on Python 3.9 (GH#4717) George Sakkis
+  * ipython causes test_profile_nested_sizeof crash on windows
+    (GH#4713) crusaderky
+  * Add iterate_collection argument to serialize (GH#4641) Richard J
+    Zamora
+  * When closing Server, close all listeners (GH#4704) Florian Jetter
+  * Fix timeout in client.restart (GH#4690) Matteo De Wint
+  * Avoid repeatedly using the same worker on first task with quiet
+    cluster (GH#4638) Doug Davis
+  * Grab func for finish case only if used (GH#4702) jakirkham
+  * Remove hostname check in test_dashboard (GH#4706) James Bourbeau
+  * Faster tests_semaphore::test_worker_dies (GH#4703) Florian Jetter
+  * Clean up test_dashboard (GH#4700) crusaderky
+  * Add timing information to TaskGroup (GH#4671) Matthew Rocklin
+  * Remove WSSConnector TLS presence check (GH#4695) Marcos Moyano
+  * Fix typo and remove unused time.time import (GH#4689) Hristo
+    Georgiev
+  * Don’t initialize CUDA context in monitor (GH#4688) Charles
+    Blackmon-Luca
+  * Add support for extra conn args for HTTP protocols (GH#4682)
+    Marcos Moyano
+  * Adjust timings in test_threadpoolworkers (GH#4681) Florian Jetter
+  * Add GPU metrics to SystemMonitor (GH#4661) Charles Blackmon-Luca
+  * Removing dumps_msgpack() and loads_msgpack() (GH#4677) Mads
+    R. B. Kristensen
+  * Expose worker SystemMonitor s to scheduler via RPC (GH#4657)
+    Charles Blackmon-Luca
+
+-------------------------------------------------------------------
+Sun Apr  4 16:37:00 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 2021.4.0:
+  * Fix un-merged frames (GH#4666) Matthew Rocklin
+  * Add informative error message to install uvloop (GH#4664) Matthew
+    Rocklin
+  * Remove incorrect comment regarding default LocalCluster creation
+    (GH#4660) cameron16
+  * Treat empty/missing writeable as a no-op (GH#4659) jakirkham
+  * Avoid list mutation in pickle_loads (GH#4653) Matthew Rocklin
+  * Ignore OSError exception when scaling down (GH#4633) Gerald
+  * Add isort to pre-commit hooks, package resorting (GH#4647) Charles
+    Blackmon-Luca
+  * Use powers-of-two when displaying RAM (GH#4649) crusaderky
+  * Support Websocket communication protocols (GH#4396) Marcos Moyano
+  * scheduler.py / worker.py code cleanup (GH#4626) crusaderky
+  * Update out-of-date references to config.yaml (GH#4643) Hristo
+    Georgiev
+  * Suppress OSError on SpecCluster shutdown (GH#4567) Jacob Tomlinson
+  * Replace conda with mamba (GH#4585) crusaderky
+  * Expand documentation on pure functions (GH#4644) James Lamb
+
+-------------------------------------------------------------------
+Fri Apr  2 10:06:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable Cythonization for 32-bit gh#dask/dask#7489
+
+-------------------------------------------------------------------
+Tue Mar 30 20:57:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.3.1
+  * Add standalone dashboard page for GPU usage (GH#4556) Jacob
+    Tomlinson
+  * Handle stream is None case in TCP comm finalizer (GH#4631)
+    James Bourbeau
+  * Include LIST_PICKLE in NumPy array serialization (GH#4632)
+    James Bourbeau
+  * Rename annotation plugin in test_highlevelgraph.py (GH#4618)
+    James Bourbeau
+  * UCX use nbytes instead of len (GH#4621) Mads R. B. Kristensen
+  * Skip NumPy and pandas tests if not importable (GH#4563) Ben
+    Greiner
+  * Remove utils.shutting_down in favor of sys.is_finalizing
+    (GH#4624) James Bourbeau
+  * Handle async clients when closing (GH#4623) Matthew Rocklin
+  * Drop log from remove_key_from_stealable (GH#4609) jakirkham
+  * Introduce events log length config option (GH#4615) Fabian
+    Gebhart
+  * Upstream config serialization and inheritance (GH#4372) Jacob
+    Tomlinson
+  * Add check to scheduler creation in SpecCluster (GH#4605) Jacob
+    Tomlinson
+  * Make length of events deque configurable (GH#4604) Fabian
+    Gebhart
+  * Add explicit fetch state to worker TaskState (GH#4470) Gil
+    Forsyth
+  * Update develop.rst (GH#4603) Florian Jetter
+  * pickle_loads(): Handle empty memoryview (GH#4595) Mads R. B.
+    Kristensen
+  * Switch documentation builds for PRs to readthedocs (GH#4599)
+    James Bourbeau
+  * Track frame sizes along with frames (GH#4593) jakirkham
+  * Add support for a list of keys when using batch_size in client.
+    map (GH#4592) Sultan Orazbayev
+  * If SpecCluster fails to start attempt to gracefully close out
+    again (GH#4590) Jacob Tomlinson
+  * Multi-lock extension (GH#4503) Mads R. B. Kristensen
+  * Update PipInstall plugin command (GH#4584) James Bourbeau
+  * IPython magics: remove deprecated ioloop workarounds (GH#4530)
+    Min RK
+  * Add GitHub actions workflow to cancel duplicate builds
+    (GH#4581) James Bourbeau
+  * Remove outdated macOS build badge from README (GH#4576) James
+    Bourbeau
+  * Dask master -> main (GH#4569) Julia Signell
+  * Drop support for Python 3.6 (GH#4390) James Bourbeau
+  * Add docstring for dashboard_link property (GH#4572) Doug Davis
+  * Change default branch from master to main (GH#4495) Julia
+    Signell
+  * Msgpack handles extract serialize (GH#4531) Mads R. B.
+    Kristensen
+- Drop importorskip-numpy-tests.patch merged upstream
+- Skip python36 build. Upstream dropped support for Python < 3.7
+
+-------------------------------------------------------------------
+Sun Mar  7 16:46:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.3.0
+  * This is the first release with support for Python 3.9 and the
+    last release with support for Python 3.6
+  * tcp.write(): cast memoryview to byte itemsize (#4555)
+    Mads R. B. Kristensen
+  * Refcount the thread_state.asynchronous flag (#4557) Mads
+    R. B. Kristensen
+  * Python 3.9 (#4460) crusaderky
+  * Better bokeh defaults for dashboard (#4554) Benjamin
+    Zaitlen
+  * Expose system monitor dashboard as individual plot for lab
+    extension (#4540) Jacob Tomlinson
+  * Pass on original temp dir from nanny to worker (#4549)
+    Martin Durant
+  * Serialize and split (#4541) Mads R. B. Kristensen
+  * Use the new HLG pack/unpack API in Dask (#4489) Mads R.
+    B. Kristensen
+  * Handle annotations for culled tasks (#4544) Tom
+    Augspurger
+  * Make sphinx autosummary and autoclass consistent (#4367)
+    Casey Clements
+  * Move _transition* to SchedulerState (#4545) jakirkham
+  * Migrate from travis to GitHub actions (#4504) crusaderky
+  * Move new_task to SchedulerState (#4527) jakirkham
+  * Batch more Scheduler sends (#4526) jakirkham
+  * transition_memory_released and get_nbytes() optimizations
+    (#4516) jakirkham
+  * Pin black pre-commit (#4533) James Bourbeau
+  * Read & write all frames in one pass (#4506) jakirkham
+  * Skip stream.write call for empty frames (#4507) jakirkham
+  * Prepend frame metadata header (#4505) jakirkham
+  * transition_processing_memory optimizations, etc. (#4487)
+    jakirkham
+  * Attempt to get client from worker in Queue and Variable
+    (#4490) James Bourbeau
+  * Use main branch for zict (#4499) jakirkham
+  * Use a callback to close TCP Comms, rather than check every
+    time (#4453) Matthew Rocklin
+
+-------------------------------------------------------------------
+Sun Feb 21 18:19:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Another package not available in python36: bokeh
+- Now that the (previously still lingering) python36-numpy package
+  really has been purged from the dependency tree, it became
+  apparent that it is assumed to be present in some tests.
+  * gh#dask/distributed#4529
+  * Add importorskip-numpy-tests.patch
+
+-------------------------------------------------------------------
+Mon Feb 15 11:56:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Unskip python36 build. Just skip installing optional
+  python36-sparse for the tests.
+
+-------------------------------------------------------------------
+Fri Feb 12 14:30:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36 build
+
+-------------------------------------------------------------------
+Mon Feb  8 14:32:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.2.0
+  * Bump minimum Dask to 2021.02.0 (GH#4486) James Bourbeau
+  * Update TaskState documentation about dependents attribute
+    (GH#4440) Florian Jetter
+  * DOC: Autoreformat all functions docstrings (GH#4475) Matthias
+    Bussonnier
+  * Use cached version of is_coroutine_function in stream handling
+    to (GH#4481) Ian Rose
+  * Optimize transitions (GH#4451) jakirkham
+  * Create PULL_REQUEST_TEMPLATE.md (GH#4476) Ray Bell
+  * DOC: typo, directives ends with 2 colons :: (GH#4472) Matthias
+    Bussonnier
+  * DOC: Proper numpydoc syntax for distributed/protocol/*.py
+    (GH#4473) Matthias Bussonnier
+  * Update pytest.skip usage in test_server_listen (GH#4467) James
+    Bourbeau
+  * Unify annotations (GH#4406) Ian Rose
+  * Added worker resources from config (GH#4456) Tom Augspurger
+  * Fix var name in worker validation func (GH#4457) Gil Forsyth
+  * Refactor task_groups & task_prefixes (GH#4452) jakirkham
+  * Use parent._tasks in heartbeat (GH#4450) jakirkham
+  * Refactor SchedulerState from Scheduler (GH#4365) jakirkham
+- Do not pin to tornado < 6.1. The referenced pull request reverted
+  that change and we have asyncio test problems anyway.
+- Use new python_module boolean deps capability
+
+-------------------------------------------------------------------
+Thu Jan 28 12:31:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.1.1
+  * Make system monitor interval configurable (GH#4447) Matthew
+    Rocklin
+  * Add uvloop config value (GH#4448) Matthew Rocklin
+  * Additional optimizations to stealing (GH#4445) jakirkham
+  * Give clusters names (GH#4426) Jacob Tomlinson
+  * Use worker comm pool in Semaphore (GH#4195) Florian Jetter
+  * Set runspec on all new tasks to avoid deadlocks (GH#4432)
+    Florian Jetter
+  * Support TaskState objects in story methods (GH#4434) Matthew
+    Rocklin
+  * Support missing event loop in Client.asynchronous (GH#4436)
+    Matthew Rocklin
+  * Don’t require network to inspect tests (GH#4433) Matthew
+    Rocklin
+- Changelog for 2021.1.0
+  * Add time started to scheduler info (GH#4425) Jacob Tomlinson
+  * Log adaptive error (GH#4422) Jacob Tomlinson
+  * Xfail normalization tests (GH#4411) Jacob Tomlinson
+  * Use dumps_msgpack and loads_msgpack when packing high level
+    graphs (GH#4409) Mads R. B. Kristensen
+  * Add nprocs auto option to dask-worker CLI (GH#4377) Jacob
+    Tomlinson
+  * Type annotation of _reevaluate_occupancy_worker (GH#4398)
+    jakirkham
+  * Type TaskGroup in active_states (GH#4408) jakirkham
+  * Fix test_as_current_is_thread_local (GH#4402) jakirkham
+  * Use list comprehensions to bind TaskGroup type (GH#4401)
+    jakirkham
+  * Make tests pass after 2028 (GH#4403) Bernhard M. Wiedemann
+  * Fix compilation warnings, decide_worker now a C func, stealing
+    improvements (GH#4375) jakirkham
+  * Drop custom __eq__ from Status (GH#4270) jakirkham
+  * test_performance_report: skip without bokeh (GH#4388) Bruno
+    Pagani
+  * Nanny now respects dask settings from ctx mgr (GH#4378)
+    Florian Jetter
+  * Better task duration estimates for outliers (GH#4213) selshowk
+  * Dask internal inherit config (GH#4364) Jacob Tomlinson
+  * Provide setup.py option to profile Cython code (GH#4362)
+    jakirkham
+  * Optimizations of *State and Task* objects and stealing
+    (GH#4358) jakirkham
+  * Cast SortedDict s to dict s in a few key places & other minor
+    changes (GH#4355) jakirkham
+  * Use task annotation priorities for user-level priorities
+    (GH#4354) James Bourbeau
+  * Added docs to highlevelgraph pack/unpack (GH#4352) Mads R. B.
+    Kristensen
+  * Optimizations in notable functions used by transitions
+    (GH#4351) jakirkham
+  * Silence exception when releasing futures on process shutdown
+    (GH#4309) Benjamin Zaitlen
+- Deboard blind passenger requirement: scikit-build is only
+  available for Python > 3.6 (because of SciPy) and not needed here
+
+-------------------------------------------------------------------
+Sat Jan  9 23:23:31 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 2020.12.0
+  * Switched to CalVer for versioning scheme.
+  * The scheduler can now receives Dask HighLevelGraph s instead of
+    raw dictionary task graphs. This allows for a much more
+    efficient communication of task graphs from the client to the
+    scheduler.
+  * Added support for using custom Layer-level annotations like
+    priority, retries, etc. with the dask.annotations context
+    manager.
+  * Updated minimum supported version of Dask to 2020.12.0.
+  * Added many type annotations and updates to allow for gradually
+    Cythonizing the scheduler.
+- Full changelog on
+  https://distributed.readthedocs.io/en/latest/changelog.html
+- Cythonize scheduler: is platform dependent package now
+- Iterative deselection of failing tests: kept adding tests to
+  pytest -k parameter until the test suite did not fail anymore.
+  * pytest-dev/pytest-asyncio#168, pytest-dev/pytest-asyncio#188
+    still not resolved
+  * upstream just pinned pytest-asyncio gh#dask/distributed#4212
+
+-------------------------------------------------------------------
+Thu Dec 24 01:14:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python3 flavors gh#openSUSE/python-rpm-macros#66
+- Move test into multibuild in order to avoid dependency cycle
+  with dask-distributed
+
+-------------------------------------------------------------------
+Thu Dec  3 12:06:24 UTC 2020 - Markéta Machová <mmachova@suse.com>
+
+- Launch tests
+  * around 70 of them are inconsistently (sometimes they pass, sometimes
+    fail) broken by new pytest-asyncio (and similar number of other tests
+    got deselected mostly because of similar names)
+
+-------------------------------------------------------------------
+Sat Nov 21 22:35:43 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.30.1:
+  * Pin pytest-asyncio version (GH#4212) James Bourbeau
+  * Replace AsyncProcess exit handler by weakref.finalize (GH#4184)
+    Peter Andreas Entschev
+  * Remove hard coded connect handshake timeouts (GH#4176) Florian
+    Jetter
+
+-------------------------------------------------------------------
+Sat Oct 10 19:04:32 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.30.0:
+  * Support SubgraphCallable in str_graph() (GH#4148) Mads
+    R. B. Kristensen
+  * Handle exceptions in BatchedSend (GH#4135) Tom Augspurger
+  * Fix for missing : in autosummary docs (GH#4143) Gil Forsyth
+  * Limit GPU metrics to visible devices only (GH#3810) Jacob
+    Tomlinson
+
+-------------------------------------------------------------------
+Mon Oct  5 20:16:12 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.29.0:
+  * Use pandas.testing (GH#4138) jakirkham
+  * Fix a few typos (GH#4131) Pav A
+  * Return right away in Cluster.close if cluster is already closed
+    (GH#4116) Tom Rochette
+  * Update async doc with example on .compute() vs client.compute()
+    (GH#4137) Benjamin Zaitlen
+  * Correctly tear down LoopRunner in Client (GH#4112) Sergey Kozlov
+  * Simplify Client._graph_to_futures() (GH#4127) Mads
+    R. B. Kristensen
+  * Cleanup new exception traceback (GH#4125) Krishan Bhasin
+  * Stop writing config files by default (GH#4123) Matthew Rocklin
+
+- changes from version 2.28.0:
+  * Fix SSL connection_args for progressbar connect (GH#4122) jennalc
+
+-------------------------------------------------------------------
+Sat Sep 19 15:08:52 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.27.0:
+  * Fix registering a worker plugin with name arg (GH#4105) Nick Evans
+  * Support different remote_python paths on cluster nodes (GH#4085)
+    Abdulelah Bin Mahfoodh
+  * Allow RuntimeError s when closing global clients (GH#4115) Matthew
+    Rocklin
+  * Match pre-commit in dask (GH#4049) Julia Signell
+  * Update super usage (GH#4110) Poruri Sai Rahul
+
+-------------------------------------------------------------------
+Sat Sep 12 19:58:20 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.26.0:
+  * Add logging for adaptive start and stop (GH#4101) Matthew Rocklin
+  * Don’t close a nannied worker if it hasn’t yet started (GH#4093)
+    Matthew Rocklin
+  * Respect timeouts when closing clients synchronously (GH#4096)
+    Matthew Rocklin
+  * Log when downloading a preload script (GH#4094) Matthew Rocklin
+  * dask-worker --nprocs accepts negative values (GH#4089) Dror
+    Speiser
+  * Support zero-worker clients (GH#4090) Matthew Rocklin
+  * Exclude fire-and-forget client from metrics (GH#4078) Tom
+    Augspurger
+  * Drop Serialized.deserialize() method (GH#4073) jakirkham
+  * Add timeout= keyword to Client.wait_for_workers method (GH#4087)
+    Matthew Rocklin
+
+-------------------------------------------------------------------
+Sat Aug 29 15:53:08 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.25.0:
+  * Update for black (GH#4081) Tom Augspurger
+  * Provide informative error when connecting an older version of Dask
+    (GH#4076) Matthew Rocklin
+  * Simplify pack_frames (GH#4068) jakirkham
+  * Simplify frame_split_size (GH#4067) jakirkham
+  * Use list.insert to add prelude up front (GH#4066) jakirkham
+  * Graph helper text (GH#4064) Julia Signell
+  * Graph dashboard: Reset container data if task number is too large
+    (GH#4056) Florian Jetter
+  * Ensure semaphore picks correct IOLoop for threadpool workers
+    (GH#4060) Florian Jetter
+  * Add cluster log method (GH#4051) Jacob Tomlinson
+  * Cleanup more exception tracebacks (GH#4054) Krishan Bhasin
+  * Improve documentation of scheduler.locks options (GH#4062) Florian
+    Jetter
+
+- changes from version 2.24.0:
+  * Move toolbar to above and fix y axis (#4043) Julia Signell
+  * Make behavior clearer for how to get worker dashboard (#4047)
+    Julia Signell
+  * Worker dashboard clean up (#4046) Julia Signell
+  * Add a default argument to the datasets and a possibility to
+    override datasets (#4052) Nils Braun
+  * Discover HTTP endpoints (#3744) Martin Durant
+
+-------------------------------------------------------------------
+Sat Aug 15 17:00:33 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.23.0:
+  * Tidy up exception traceback in TCP Comms (GH#4042) Krishan Bhasin
+  * Angle on the x-axis labels (GH#4030) Mathieu Dugré
+  * Always set RMM’s strides in the header (GH#4039) jakirkham
+  * Fix documentation upload_file (GH#4038) Roberto Panai
+  * Update UCX tests for new handshake step (GH#4036) jakirkham
+  * Add test for informative errors in serialization cases (GH#4029)
+    Matthew Rocklin
+  * Add compression, pickle protocol to comm contexts (GH#4019)
+    Matthew Rocklin
+  * Make GPU plots robust to not having GPUs (GH#4008) Matthew Rocklin
+  * Update PendingDeprecationWarning with correct version number
+    (GH#4025) Matthias Bussonnier
+  * Install PyTorch on CI (GH#4017) jakirkham
+  * Try getting cluster dashboard_link before asking scheduler
+    (GH#4018) Matthew Rocklin
+  * Ignore writeable frames with builtin array (GH#4016) jakirkham
+  * Just extend frames2 by frames (GH#4015) jakirkham
+  * Serialize builtin array (GH#4013) jakirkham
+  * Use cuDF’s assert_eq (GH#4014) jakirkham
+  * Clear function cache whenever we upload a new file (GH#3993) Jack
+    Xiaosong Xu
+  * Emmit warning when assign/comparing string with Status Enum
+    (GH#3875) Matthias Bussonnier
+  * Track mutable frames (GH#4004) jakirkham
+  * Improve bytes and bytearray serialization (GH#4009) jakirkham
+  * Fix memory histogram values in dashboard (GH#4006) Willi Rath
+
+-------------------------------------------------------------------
+Sat Aug  1 22:12:29 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.22.0:
+  * Only call frame_split_size when there are frames (GH#3996)
+    jakirkham
+  * Fix failing test_bandwidth (GH#3999) jakirkham
+  * Handle sum of memory percentage when memory_limit is 0 (GH#3984)
+    Julia Signell
+  * Drop msgpack pre-0.5.2 compat code (GH#3977) jakirkham
+  * Revert to localhost for local IP if no network available (GH#3991)
+    Matthew Rocklin
+  * Add missing backtick in inline directive. (GH#3988) Matthias
+    Bussonnier
+  * Warn when threads_per_worker is set to zero (GH#3986) Julia
+    Signell
+  * Use memoryview in unpack_frames (GH#3980) jakirkham
+  * Iterate over list of comms (GH#3959) Matthew Rocklin
+  * Streamline pack_frames/unpack_frames frames (GH#3973) jakirkham
+  * Always attempt to create dask-worker-space folder and continue if
+    it exists (GH#3972) Jendrik Jördening
+  * Use merge_frames with host memory only (GH#3971) jakirkham
+  * Simplify pack_frames_prelude (GH#3961) jakirkham
+  * Use continuation prompt for proper example parsing (GH#3966)
+    Matthias Bussonnier
+  * Ensure writable frames (GH#3967) jakirkham
+
+-------------------------------------------------------------------
+Sat Jul 18 18:13:10 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.21.0:
+  * Fix data replication error (GH#3963) Andrew Fulton
+  * Treat falsey local directory as None (GH#3964) Tom Augspurger
+  * Unpin numpydoc now that 1.1 is released (GH#3957) Gil Forsyth
+  * Error hard when Dask has mismatched versions or lz4 installed
+    (GH#3936) Matthew Rocklin
+  * Skip coercing to bytes in merge_frames (GH#3960) jakirkham
+  * UCX: reuse endpoints in order to fix NVLINK issue (GH#3953) Mads
+    R. B. Kristensen
+  * Optionally use pickle5 (GH#3849) jakirkham
+  * Update time per task chart with filtering and pie (GH#3933)
+    Benjamin Zaitlen
+  * UCX: explicit shutdown message (GH#3950) Mads R. B. Kristensen
+  * Avoid too aggressive retry of connections (GH#3944) Matthias
+    Bussonnier
+  * Parse timeouts in Client.sync (GH#3952) Matthew Rocklin
+  * Synchronize on non-trivial CUDA frame transmission (GH#3949)
+    jakirkham
+  * Serialize memoryview with shape and format (GH#3947) jakirkham
+  * Move scheduler_comm into Cluster.__init__ (GH#3945) Matthew
+    Rocklin
+
+-------------------------------------------------------------------
+Thu Jul  9 12:28:22 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.20.0
+  * Link issue on using ``async`` with ``executor_submit`` (:pr:`3939`) `jakirkham`_
+  * Make dashboard server listens on all IPs by default even when interface is set explicitly (:pr:`3941`) `Loïc Estève`_
+  * Update logic for worker removal in check ttl (:pr:`3927`) `Benjamin Zaitlen`_
+  * Close a created cluster quietly (:pr:`3935`) `Matthew Rocklin`_
+  * Ensure ``Worker.run*`` handles ``kwargs`` correctly (:pr:`3937`) `jakirkham`_
+  * Restore ``Scheduler.time_started`` for Dask Gateway (:pr:`3934`) `Tom Augspurger`_
+  * Fix exception handling in ``_wait_until_connected`` (:pr:`3912`) `Alexander Clausen`_
+  * Make local directory if it does not exist (:pr:`3928`) `Matthew Rocklin`_
+  * Install vanilla status route if bokeh dependency is not satisfied (:pr:`3844`) `joshreback`_
+  * Make ``Worker.delete_data`` sync (:pr:`3922`) `Peter Andreas Entschev`_
+  * Fix ``ensure_bytes`` import location (:pr:`3919`) `jakirkham`_
+  * Fix race condition in repeated calls to ``cluster.adapt()`` (:pr:`3915`) `Jacob Tomlinson`_
+  2.19.0
+  * Notify worker plugins when a task is released (:pr:`3817`) `Nick Evans`_
+  * Update heartbeat checks in scheduler (:pr:`3896`) `Benjamin Zaitlen`_
+  * Make encryption default if ``Security`` is given arguments (:pr:`3887`) `Matthew Rocklin`_
+  * Show ``cpu_fraction`` on hover for dashboard workers circle plot. (:pr:`3906`) `Loïc Estève`_
+  * Prune virtual client on variable deletion (:pr:`3910`) `Marco Neumann`_
+  * Fix total aggregated metrics in dashboard (:pr:`3897`) `Loïc Estève`_
+  * Support Bokeh 2.1 (:pr:`3904`) `Matthew Rocklin`_
+  * Update ``related-work.rst`` (:pr:`3889`) `DomHudson`_
+  * Skip ``test_pid_file`` in older versions of Python (:pr:`3888`) `Matthew Rocklin`_
+  * Replace ``stream=`` with ``comm=`` in handlers (:pr:`3860`) `Julien Jerphanion`_
+  * Check hosts for ``None`` value in SSH cluster. (:pr:`3883`) `Matthias Bussonnier`_
+  * Allow dictionaries in ``security=`` keywords (:pr:`3874`) `Matthew Rocklin`_
+  * Use pickle protocol 5 with NumPy object arrays (:pr:`3871`) `jakirkham`_
+  * Cast any ``frame`` to ``uint8`` (same type as ``bytes``) (:pr:`3870`) `jakirkham`_
+  * Use ``Enum`` for worker, scheduler and nanny status. (:pr:`3853`) `Matthias Bussonnier`_
+  * Drop legacy ``buffer_interface`` assignment (:pr:`3869`) `jakirkham`_
+  * Drop old frame splitting in NumPy serialization (:pr:`3868`) `jakirkham`_
+  * Drop no longer needed local ``import pickle`` (:pr:`3865`) `jakirkham`_
+  * Fix typo in ``feed``'s log message (:pr:`3867`) `jakirkham`_
+  * Tidy pickle (:pr:`3866`) `jakirkham`_
+  * Handle empty times in task stream (:pr:`3862`) `Benjamin Zaitlen`_
+  * Change ``asyncssh`` objects to sphinx references (:pr:`3861`) `Jacob Tomlinson`_
+  * Improve ``SSHCluster`` docstring for ``connect_options`` (:pr:`3859`) `Jacob Tomlinson`_
+  * Validate address parameter in client constructor (:pr:`3842`) `joshreback`_
+  * Use ``SpecCluster`` name in worker names (:pr:`3855`) `Loïc Estève`_
+  * Allow async ``add_worker`` and ``remove_worker`` plugin methods (:pr:`3847`) `James Bourbeau`_
+  2.18.0
+  * Merge frames in ``deserialize_bytes`` (:pr:`3639`) `John Kirkham`_
+  * Allow ``SSHCluster`` to take a list of ``connect_options`` (:pr:`3854`) `Jacob Tomlinson`_
+  * Add favicon to performance report (:pr:`3852`) `Jacob Tomlinson`_
+  * Add dashboard plots for the amount of time spent per key and for transfer/serialization (:pr:`3792`) `Benjamin Zaitlen`_
+  * Fix variable name in journey of a task documentation (:pr:`3840`) `Matthias Bussonnier`_
+  * Fix typo in journey of a task doc (:pr:`3838`) `James Bourbeau`_
+  * Register ``dask_cudf`` serializers (:pr:`3832`) `John Kirkham`_
+  * Fix key check in ``rebalance`` missing keys (:pr:`3834`) `Jacob Tomlinson`_
+  * Allow collection of partial profile information in case of exceptions (:pr:`3773`) `Florian Jetter`_
+  2.17.0
+  * Record the time since the last run task on the scheduler (:pr:`3830`) `Matthew Rocklin`_
+  * Set colour of ``nbytes`` pane based on thresholds (:pr:`3805`) `Krishan Bhasin`_
+  * Include total number of tasks in the performance report (:pr:`3822`) `Abdulelah Bin Mahfoodh`_
+  * Allow to pass in task key strings in the worker restrictions (:pr:`3826`) `Nils Braun`_
+  * Control de/ser offload (:pr:`3793`) `Martin Durant`_
+  * Parse timeout parameters in ``Variable``/``Event``/``Lock`` to support text timeouts (:pr:`3825`) `Nils Braun`_
+  * Don't send empty dependencies (:pr:`3423`) `Jakub Beránek`_
+  * Add distributed Dask ``Event`` that mimics ``threading.Event`` (:pr:`3821`) `Nils Braun`_
+  * Enhance ``VersionMismatchWarning`` messages (:pr:`3786`) `Abdulelah Bin Mahfoodh`_
+  * Support Pickle's protocol 5 (:pr:`3784`) `jakirkham`_
+  * Replace ``utils.ignoring`` with ``contextlib.suppress`` (:pr:`3819`) `Nils Braun`_
+  * Make re-creating conda environments from the CI output easier (:pr:`3816`) `Lucas Rademaker`_
+  * Add prometheus metrics for semaphore (:pr:`3757`) `Lucas Rademaker`_
+  * Fix worker plugin called with superseded transition (:pr:`3812`) `Nick Evans`_
+  * Add retries to server listen (:pr:`3801`) `Jacob Tomlinson`_
+  * Remove commented out lines from ``scheduler.py`` (:pr:`3803`) `James Bourbeau`_
+  * Fix ``RuntimeWarning`` for never awaited coroutine when using ``distributed.Semaphore`` (:pr:`3713`) `Florian Jetter`_
+  * Fix profile thread leakage during test teardown on some platforms (:pr:`3795`) `Florian Jetter`_
+  * Await self before handling comms (:pr:`3788`) `Matthew Rocklin`_
+  * Fix typo in ``Cluster`` docstring (:pr:`3787`) `Scott Sanderson`_
+  2.16.0
+  * ``Client.get_dataset`` to always create ``Futures`` attached to itself (:pr:`3729`) `crusaderky`_
+  * Remove dev-requirements since it is unused (:pr:`3782`) `Julia Signell`_
+  * Use bokeh column for ``/system`` instead of custom css (:pr:`3781`) `Julia Signell`_
+  * Attempt to fix ``test_preload_remote_module`` on windows (:pr:`3775`) `James Bourbeau`_
+  * Fix broadcast for TLS comms (:pr:`3766`) `Florian Jetter`_
+  * Don't validate http preloads locally (:pr:`3768`) `Rami Chowdhury`_
+  * Allow range of ports to be specified for ``Workers`` (:pr:`3704`) `James Bourbeau`_
+  * Add UCX support for RDMACM (:pr:`3759`) `Peter Andreas Entschev`_
+  * Support web addresses in preload (:pr:`3755`) `Matthew Rocklin`_
+
+-------------------------------------------------------------------
+Sat May  2 20:27:24 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.15.2:
+  * Connect to dashboard when address provided (GH#3758) Tom
+    Augspurger
+  * Move test_gpu_metrics test (GH#3721) Tom Augspurger
+  * Nanny closing worker on KeyboardInterrupt (GH#3747) Mads
+    R. B. Kristensen
+  * Replace OrderedDict with dict in scheduler (GH#3740) Matthew
+    Rocklin
+  * Fix exception handling typo (GH#3751) Jonas Haag
+
+- changes from version 2.15.1:
+  * Ensure BokehTornado uses prefix (GH#3746) James Bourbeau
+  * Warn if cluster closes before starting (GH#3735) Matthew Rocklin
+  * Memoryview serialisation (GH#3743) Martin Durant
+  * Allows logging config under distributed key (GH#2952) Dillon
+    Niederhut
+
+-------------------------------------------------------------------
+Sat Apr 25 16:23:42 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.15.0:
+  * Reinstate support for legacy @gen_cluster functions (GH#3738)
+    crusaderky
+  * Relax NumPy requirement in UCX (GH#3731) jakirkham
+  * Add Configuration Schema (GH#3696) Matthew Rocklin
+  * Reuse CI scripts for local installation process (GH#3698)
+    crusaderky
+  * Use PeriodicCallback class from tornado (GH#3725) James Bourbeau
+  * Add remote_python option in ssh cmd (GH#3709) Abdulelah Bin
+    Mahfoodh
+  * Configurable polling interval for cluster widget (GH#3723) Julia
+    Signell
+  * Fix copy-paste in docs (GH#3728) Julia Signell
+  * Replace gen.coroutine with async-await in tests (GH#3706)
+    crusaderky
+  * Fix flaky test_oversubscribing_leases (GH#3726) Florian Jetter
+  * Add batch_size to Client.map (GH#3650) Tom Augspurger
+  * Adjust semaphore test timeouts (GH#3720) Florian Jetter
+  * Dask-serialize dicts longer than five elements (GH#3689) Richard J
+    Zamora
+  * Force threads_per_worker (GH#3715) crusaderky
+  * Idempotent semaphore acquire with retries (GH#3690) Florian Jetter
+  * Always use readinto in TCP (GH#3711) jakirkham
+  * Avoid DeprecationWarning from pandas (GH#3712) Tom Augspurger
+  * Allow modification of distributed.comm.retry at runtime (GH#3705)
+    Florian Jetter
+  * Do not log an error on unset variable delete (GH#3652) Jonathan
+    J. Helmus
+  * Add remote_python keyword to the new SSHCluster (GH#3701)
+    Abdulelah Bin Mahfoodh
+  * Replace Example with Examples in docstrings (GH#3697) Matthew
+    Rocklin
+  * Add Cluster __enter__ and __exit__ methods (GH#3699) Matthew
+    Rocklin
+  * Fix propagating inherit config in SSHCluster for non-bash shells
+    (GH#3688) Abdulelah Bin Mahfoodh
+  * Add Client.wait_to_workers to Client autosummary table (GH#3692)
+    James Bourbeau
+  * Replace Bokeh Server with Tornado HTTPServer (GH#3658) Matthew
+    Rocklin
+  * Fix dask-ssh after removing local-directory from dask_scheduler
+    cli (GH#3684) Abdulelah Bin Mahfoodh
+  * Support preload modules in Nanny (GH#3678) Matthew Rocklin
+  * Refactor semaphore internals: make _get_lease synchronous
+    (GH#3679) Lucas Rademaker
+  * Don’t make task graphs too big (GH#3671) Martin Durant
+  * Pass through connection/listen_args as splatted keywords (GH#3674)
+    Matthew Rocklin
+  * Run preload at import, start, and teardown (GH#3673) Matthew
+    Rocklin
+  * Use relative URL in scheduler dashboard (GH#3676) Nicholas Smith
+  * Expose Security object as public API (GH#3675) Matthew Rocklin
+  * Add zoom tools to profile plots (GH#3672) James Bourbeau
+  * Update Scheduler.rebalance return value when data is missing
+    (GH#3670) James Bourbeau
+
+-------------------------------------------------------------------
+Thu Apr 23 11:08:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove py2 deps as the package is py3 only
+
+-------------------------------------------------------------------
+Sat Apr 11 21:46:23 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.14.0:
+  * Enable more UCX tests (GH#3667) jakirkham
+  * Remove openssl 1.1.1d pin for Travis (GH#3668) Jonathan J. Helmus
+  * More documentation for Semaphore (GH#3664) Florian Jetter
+  * Get CUDA context to finalize Numba DeviceNDArray (GH#3666)
+    jakirkham
+  * Add Resouces option to get_task_stream and call output_file
+    (GH#3653) Prasun Anand
+  * Add Semaphore extension (GH#3573) Lucas Rademaker
+  * Replace ncores with nthreads in work stealing tests (GH#3615)
+    James Bourbeau
+  * Clean up some test warnings (GH#3662) Matthew Rocklin
+  * Write “why killed” docs (GH#3596) Martin Durant
+  * Update Python version checking (GH#3660) James Bourbeau
+  * Add newlines to ensure code formatting for retire_workers
+    (GH#3661) Rami Chowdhury
+  * Clean up performance report test (GH#3655) Matthew Rocklin
+  * Avoid diagnostics time in performance report (GH#3654) Matthew
+    Rocklin
+  * Introduce config for default task duration (GH#3642) Gabriel
+    Sailer
+  * UCX simplify receiving frames in comm (GH#3651) jakirkham
+  * Bump checkout GitHub action to v2 (GH#3649) James Bourbeau
+  * Handle exception in faulthandler (GH#3646) Jacob Tomlinson
+  * Add prometheus metric for suspicious tasks (GH#3550) Gabriel
+    Sailer
+  * Remove local-directory keyword (GH#3620) Prasun Anand
+  * Don’t create output Futures in Client when there are mixed Client
+    Futures (GH#3643) James Bourbeau
+  * Add link to contributing.md (GH#3621) Prasun Anand
+  * Update bokeh dependency in CI builds (GH#3637) James Bourbeau
+
+-------------------------------------------------------------------
+Sat Mar 28 16:48:48 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.13.0:
+  * UCX synchronize default stream only on CUDA frames (GH#3638) Peter
+    Andreas Entschev
+  * Add as_completed.clear method (GH#3617) Matthew Rocklin
+  * Drop unused line from pack_frames_prelude (GH#3634) John Kirkham
+  * Add logging message when closing idle dask scheduler (GH#3632)
+    Matthew Rocklin
+  * Include frame lengths of CUDA objects in header["lengths"]
+    (GH#3631) John Kirkham
+  * Ensure Client connection pool semaphore attaches to the Client
+    event loop (GH#3546) James Bourbeau
+  * Remove dead stealing code (GH#3619) Florian Jetter
+  * Check nbytes and types before reading data (GH#3628) John Kirkham
+  * Ensure that we don’t steal blacklisted fast tasks (GH#3591)
+    Florian Jetter
+  * Support async Listener.stop functions (GH#3613) Matthew Rocklin
+  * Add str/repr methods to as_completed (GH#3618) Matthew Rocklin
+  * Add backoff to comm connect attempts. (GH#3496) Matthias Urlichs
+  * Make Listeners awaitable (GH#3611) Matthew Rocklin
+  * Increase number of visible mantissas in dashboard plots (GH#3585)
+    Scott Sievert
+  * Pin openssl to 1.1.1d for Travis (GH#3602) Jacob Tomlinson
+  * Replace tornado.queues with asyncio.queues (GH#3607) James
+    Bourbeau
+  * Remove dill from CI environments (GH#3608) Loïc Estève
+  * Fix linting errors (GH#3604) James Bourbeau
+  * Synchronize default CUDA stream before UCX send/recv (GH#3598)
+    Peter Andreas Entschev
+  * Add configuration for Adaptive arguments (GH#3509) Gabriel Sailer
+  * Change Adaptive docs to reference adaptive_target (GH#3597) Julia
+    Signell
+  * Optionally compress on a frame-by-frame basis (GH#3586) Matthew
+    Rocklin
+  * Add Python version to version check (GH#3567) James Bourbeau
+  * Import tlz (GH#3579) John Kirkham
+  * Pin numpydoc to avoid double escaped * (GH#3530) Gil Forsyth
+  * Avoid performance_report crashing when a worker dies mid-compute
+    (GH#3575) Krishan Bhasin
+  * Pin bokeh in CI builds (GH#3570) James Bourbeau
+  * Disable fast fail on GitHub Actions Windows CI (GH#3569) James
+    Bourbeau
+  * Fix typo in Client.shutdown docstring (GH#3562) John Kirkham
+  * Add local_directory option to dask-ssh (GH#3554) Abdulelah Bin
+    Mahfoodh
+
+-------------------------------------------------------------------
+Sun Mar  8 19:04:45 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.12.0:
+  * Update TaskGroup remove logic (GH#3557) James Bourbeau
+  * Fix-up CuPy sparse serialization (GH#3556) John Kirkham
+  * API docs for LocalCluster and SpecCluster (GH#3548) Tom Augspurger
+  * Serialize sparse arrays (GH#3545) John Kirkham
+  * Allow tasks with restrictions to be stolen (GH#3069) Stan Seibert
+  * Use UCX default configuration instead of raising (GH#3544) Peter
+    Andreas Entschev
+  * Support using other serializers with register_generic (GH#3536)
+    John Kirkham
+  * DOC: update to async await (GH#3543) Tom Augspurger
+  * Use pytest.raises in test_ucx_config.py (GH#3541) John Kirkham
+  * Fix/more ucx config options (GH#3539) Benjamin Zaitlen
+  * Update heartbeat CommClosedError error handling (GH#3529) James
+    Bourbeau
+  * Use makedirs when constructing local_directory (GH#3538) John
+    Kirkham
+  * Mark None as MessagePack serializable (GH#3537) John Kirkham
+  * Mark bool as MessagePack serializable (GH#3535) John Kirkham
+  * Use ‘temporary-directory’ from dask.config for Nanny’s directory
+    (GH#3531) John Kirkham
+  * Add try-except around getting source code in performance report
+    (GH#3505) Matthew Rocklin
+  * Fix typo in docstring (GH#3528) Davis Bennett
+  * Make work stealing callback time configurable (GH#3523) Lucas
+    Rademaker
+  * RMM/UCX Config Flags (GH#3515) Benjamin Zaitlen
+  * Revise develop-docs: conda env example (GH#3406) Darren Weber
+  * Remove import ucp from the top of ucx.py (GH#3510) Peter Andreas
+    Entschev
+  * Rename logs to get_logs (GH#3473) Jacob Tomlinson
+  * Stop keep alives when worker reconnecting to the scheduler
+    (GH#3493) Jacob Tomlinson
+
+-------------------------------------------------------------------
+Sat Feb 22 18:57:41 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.11.0:
+  * Add dask serialization of CUDA objects (GH#3482) John Kirkham
+  * Suppress cuML ImportError (GH#3499) John Kirkham
+  * Msgpack 1.0 compatibility (GH#3494) James Bourbeau
+  * Register cuML serializers (GH#3485) John Kirkham
+  * Check exact equality for worker state (GH#3483) Brett Naul
+  * Serialize 1-D, contiguous, uint8 CUDA frames (GH#3475) John
+    Kirkham
+  * Update NumPy array serialization to handle non-contiguous slices
+    (GH#3474) James Bourbeau
+  * Propose fix for collection based resources docs (GH#3480) Chris
+    Roat
+  * Remove --verbose flag from CI runs (GH#3484) Matthew Rocklin
+  * Do not duplicate messages in scheduler report (GH#3477) Jakub
+    Beránek
+  * Register Dask cuDF serializers (GH#3478) John Kirkham
+  * Add support for Python 3.8 (GH#3249) James Bourbeau
+  * Add last seen column to worker table and highlight errant workers
+    (GH#3468) kaelgreco
+  * Change default value of local_directory from empty string to None
+    (GH#3441) condoratberlin
+  * Clear old docs (GH#3458) Matthew Rocklin
+  * Change default multiprocessing behavior to spawn (GH#3461) Matthew
+    Rocklin
+  * Split dashboard host on additional slashes to handle inproc
+    (GH#3466) Jacob Tomlinson
+  * Update locality.rst (GH#3470) Dustin Tindall
+  * Minor gen.Return cleanup (GH#3469) James Bourbeau
+  * Update comparison logic for worker state (GH#3321) rockwellw
+  * Update minimum tblib version to 1.6.0 (GH#3451) James Bourbeau
+  * Add total row to workers plot in dashboard (GH#3464) Julia Signell
+  * Workaround RecursionError on profile data (GH#3455) Tom Augspurger
+  * Include code and summary in performance report (GH#3462) Matthew
+    Rocklin
+  * Skip test_open_close_many_workers on Python 3.6 (GH#3459) Matthew
+    Rocklin
+  * Support serializing/deserializing rmm.DeviceBuffer s (GH#3442)
+    John Kirkham
+  * Always add new TaskGroup to TaskPrefix (GH#3322) James Bourbeau
+  * Rerun black on the code base (GH#3444) John Kirkham
+  * Ensure __causes__ s of exceptions raised on workers are serialized
+    (GH#3430) Alex Adamson
+  * Adjust numba.cuda import and add check (GH#3446) John Kirkham
+  * Fix name of Numba serialization test (GH#3447) John Kirkham
+  * Checks for command parameters in ssh2 (GH#3078) Peter Andreas
+    Entschev
+  * Update worker_kwargs description in LocalCluster constructor
+    (GH#3438) James Bourbeau
+  * Ensure scheduler updates task and worker states after successful
+    worker data deletion (GH#3401) James Bourbeau
+  * Avoid loop= keyword in asyncio coordination primitives (GH#3437)
+    Matthew Rocklin
+  * Call pip as a module to avoid warnings (GH#3436) Cyril Shcherbin
+  * Add documentation of parameters in coordination primitives
+    (GH#3434) Søren Fuglede Jørgensen
+  * Replace tornado.locks with asyncio for
+    Events/Locks/Conditions/Semaphore (GH#3397) Matthew Rocklin
+  * Remove object from class hierarchy (GH#3432) Anderson Banihirwe
+  * Add dashboard_link property to Client (GH#3429) Jacob Tomlinson
+  * Allow memory monitor to evict data more aggressively (GH#3424)
+    fjetter
+  * Make _get_ip return an IP address when defaulting (GH#3418) Pierre
+    Glaser
+  * Support version checking with older versions of Dask (GH#3390)
+    Igor Gotlibovych
+  * Add Mac OS build to CI (GH#3358) James Bourbeau
+
+-------------------------------------------------------------------
+Sat Feb  8 21:46:57 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.10.0:
+  * Fixed ZeroDivisionError in dashboard when no workers were present
+    (GH#3407) James Bourbeau
+  * Respect the dashboard-prefix when redirecting from the root
+    (GH#3387) Chrysostomos Nanakos
+  * Allow enabling / disabling work-stealing after the cluster has
+    started (GH#3410) John Kirkham
+  * Support *args and **kwargs in offload (GH#3392) Matthew Rocklin
+  * Add lifecycle hooks to SchedulerPlugin (GH#3391) Matthew Rocklin
+
+-------------------------------------------------------------------
+Sat Jan 18 19:17:28 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.9.3:
+  * Raise RuntimeError if no running loop (GH#3385) James Bourbeau
+  * Fix get_running_loop import (GH#3383) James Bourbeau
+  * Get JavaScript document location instead of window and handle
+    proxied url (GH#3382) Jacob Tomlinson
+
+- changes from version 2.9.2:
+  * Move Windows CI to GitHub Actions (GH#3373) Jacob Tomlinson
+  * Add client join and leave hooks (GH#3371) Jacob Tomlinson
+  * Add cluster map dashboard (GH#3361) Jacob Tomlinson
+  * Close connection comm on retry (GH#3365) James Bourbeau
+  * Fix scheduler state in case of worker name collision (GH#3366)
+    byjott
+  * Add --worker-class option to dask-worker CLI (GH#3364) James
+    Bourbeau
+  * Remove locale check that fails on OS X (GH#3360) Jacob Tomlinson
+  * Rework version checking (GH#2627) Matthew Rocklin
+  * Add websocket scheduler plugin (GH#3335) Jacob Tomlinson
+  * Return task in dask-worker on_signal function (GH#3354) James
+    Bourbeau
+  * Fix failures on mixed integer/string worker names (GH#3352)
+    Benedikt Reinartz
+  * Avoid calling nbytes multiple times when sending data (GH#3349)
+    Markus Mohrhard
+  * Avoid setting event loop policy if within IPython kernel and no
+    running event loop (GH#3336) Mana Borwornpadungkitti
+  * Relax intermittent failing test_profile_server (GH#3346) Matthew
+    Rocklin
+
+-------------------------------------------------------------------
+Sat Jan 11 18:24:51 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.9.1:
+  * Add lock around dumps_function cache (GH#3337) Matthew Rocklin
+  * Add setuptools to dependencies (GH#3320) James Bourbeau
+  * Use TaskPrefix.name in Graph layout (GH#3328) Matthew Rocklin
+  * Add missing “ in performance report example (GH#3329) John Kirkham
+  * Add performance report docs and color definitions to docs
+    (GH#3325) Benjamin Zaitlen
+  * Switch startstops to dicts and add worker name to transfer
+    (GH#3319) Jacob Tomlinson
+  * Add plugin entry point for out-of-tree comms library (GH#3305)
+    Patrick Sodré
+  * All scheduler task states in prometheus (GH#3307) fjetter
+  * Use worker name in logs (GH#3309) Stephan Erb
+  * Add TaskGroup and TaskPrefix scheduler state (GH#3262) Matthew
+    Rocklin
+  * Update latencies with heartbeats (GH#3310) fjetter
+  * Update inlining Futures in task graph in Client._graph_to_futures
+    (GH#3303) James Bourbeau
+  * Use hostname as default IP address rather than localhost (GH#3308)
+    Matthew Rocklin
+  * Clean up flaky test_nanny_throttle (GH#3295) Tom Augspurger
+  * Add lock to scheduler for sensitive operations (GH#3259) Matthew
+    Rocklin
+  * Log address for each of the Scheduler listerners (GH#3306) Matthew
+    Rocklin
+  * Make ConnectionPool.close asynchronous (GH#3304) Matthew Rocklin
+
+-------------------------------------------------------------------
+Sat Dec  7 19:09:30 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed dask-submit, dask-remote
+
+- update to version 2.9.0:
+  * Add dask-spec CLI tool (GH#3090) Matthew Rocklin
+  * Connectionpool: don’t hand out closed connections (GH#3301) byjott
+  * Retry operations on network issues (GH#3294) byjott
+  * Skip Security.temporary() tests if cryptography not installed
+    (GH#3302) James Bourbeau
+  * Support multiple listeners in the scheduler (GH#3288) Matthew
+    Rocklin
+  * Updates RMM comment to the correct release (GH#3299) John Kirkham
+  * Add title to performance_report (GH#3298) Matthew Rocklin
+  * Forgot to fix slow test (GH#3297) Benjamin Zaitlen
+  * Update SSHCluster docstring parameters (GH#3296) James Bourbeau
+  * worker.close() awaits batched_stream.close() (GH#3291) Mads
+    R. B. Kristensen
+  * Fix asynchronous listener in UCX (GH#3292) Benjamin Zaitlen
+  * Avoid repeatedly adding deps to already in memory stack (GH#3293)
+    James Bourbeau
+  * xfail ucx empty object typed dataframe (GH#3279) Benjamin Zaitlen
+  * Fix distributed.wait documentation (GH#3289) Tom Rochette
+  * Move Python 3 syntax tests into main tests (GH#3281) Matthew
+    Rocklin
+  * xfail test_workspace_concurrency for Python 3.6 (GH#3283) Matthew
+    Rocklin
+  * Add performance_report context manager for static report
+    generation (GH#3282) Matthew Rocklin
+  * Update function serialization caches with custom LRU class
+    (GH#3260) James Bourbeau
+  * Make Listener.start asynchronous (GH#3278) Matthew Rocklin
+  * Remove dask-submit and dask-remote (GH#3280) Matthew Rocklin
+  * Worker profile server (GH#3274) Matthew Rocklin
+  * Improve bandwidth workers plot (GH#3273) Matthew Rocklin
+  * Make profile coroutines consistent between Scheduler and Worker
+    (GH#3277) Matthew Rocklin
+  * Enable saving profile information from server threads (GH#3271)
+    Matthew Rocklin
+  * Remove memory use plot (GH#3269) Matthew Rocklin
+  * Add offload size to configuration (GH#3270) Matthew Rocklin
+  * Fix layout scaling on profile plots (GH#3268) Jacob Tomlinson
+  * Set x_range in CPU plot based on the number of threads (GH#3266)
+    Matthew Rocklin
+  * Use base-2 values for byte-valued axes in dashboard (GH#3267)
+    Matthew Rocklin
+  * Robust gather in case of connection failures (GH#3246) fjetter
+  * Use DeviceBuffer from newer RMM releases (GH#3261) John Kirkham
+  * Fix dev requirements for pytest (GH#3264) Elliott Sales de Andrade
+  * Add validate options to configuration (GH#3258) Matthew Rocklin
+
+-------------------------------------------------------------------
+Sun Nov 24 17:36:02 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.8.1:
+  * Fix hanging worker when the scheduler leaves (GH#3250) Tom
+    Augspurger
+  * Fix NumPy writeable serialization bug (GH#3253) James Bourbeau
+  * Skip numba.cuda tests if CUDA is not available (GH#3255) Peter
+    Andreas Entschev
+  * Add new dashboard plot for memory use by key (GH#3243) Matthew
+    Rocklin
+  * Fix array.shape() -> array.shape (GH#3247) Jed Brown
+  * Fixed typos in pubsub.py (GH#3244) He Jia
+  * Fixed cupy array going out of scope (GH#3240) Mads
+    R. B. Kristensen
+  * Remove gen.coroutine usage in scheduler (GH#3242) Jim Crist-Harif
+  * Use inspect.isawaitable where relevant (GH#3241) Jim Crist-Harif
+
+-------------------------------------------------------------------
+Sat Nov 16 17:54:33 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated required versions according to requirement.txt
+
+- update to version 2.8.0:
+  * Add UCX config values (GH#3135) Matthew Rocklin
+  * Relax test_MultiWorker (GH#3210) Matthew Rocklin
+  * Avoid ucp.init at import time (GH#3211) Matthew Rocklin
+  * Clean up rpc to avoid intermittent test failure (GH#3215) Matthew
+    Rocklin
+  * Respect protocol if given to Scheduler (GH#3212) Matthew Rocklin
+  * Use legend_field= keyword in bokeh plots (GH#3218) Matthew Rocklin
+  * Cache psutil.Process object in Nanny (GH#3207) Matthew Rocklin
+  * Replace gen.sleep with asyncio.sleep (GH#3208) Matthew Rocklin
+  * Avoid offloading serialization for small messages (GH#3224)
+    Matthew Rocklin
+  * Add desired_workers metric (GH#3221) Gabriel Sailer
+  * Fail fast when importing distributed.comm.ucx (GH#3228) Matthew
+    Rocklin
+  * Add module name to Future repr (GH#3231) Matthew Rocklin
+  * Add name to Pub/Sub repr (GH#3235) Matthew Rocklin
+  * Import CPU_COUNT from dask.system (GH#3199) James Bourbeau
+  * Efficiently serialize zero strided NumPy arrays (GH#3180) James
+    Bourbeau
+  * Cache function deserialization in workers (GH#3234) Matthew
+    Rocklin
+  * Respect ordering of futures in futures_of (GH#3236) Matthew
+    Rocklin
+  * Bump dask dependency to 2.7.0 (GH#3237) James Bourbeau
+  * Avoid setting inf x_range (GH#3229) rockwellw
+  * Clear task stream based on recent behavior (GH#3200) Matthew
+    Rocklin
+  * Use the percentage field for profile plots (GH#3238) Matthew
+    Rocklin
+
+- changes from version 2.7.0 :
+  * Adds badges to README.rst [skip ci] (GH#3152) James Bourbeau
+  * Don’t overwrite self.address if it is present (GH#3153) Gil
+    Forsyth
+  * Remove outdated references to debug scheduler and worker bokeh
+    pages. (GH#3160) darindf
+  * Update CONTRIBUTING.md (GH#3159) Jacob Tomlinson
+  * Add Prometheus metric for a worker’s executing tasks count
+    (GH#3163) darindf
+  * Update Prometheus documentation (GH#3165) darindf
+  * Fix Numba serialization when strides is None (GH#3166) Peter
+    Andreas Entschev
+  * Await cluster in Adaptive.recommendations (GH#3168) Simon
+    Boothroyd
+  * Support automatic TLS (GH#3164) Jim Crist
+  * Avoid swamping high-memory workers with data requests (GH#3071)
+    Tom Augspurger
+  * Update UCX variables to use sockcm by default (GH#3177) Peter
+    Andreas Entschev
+  * Get protocol in Nanny/Worker from scheduler address (GH#3175)
+    Peter Andreas Entschev
+  * Add worker and tasks state for Prometheus data collection
+    (GH#3174) darindf
+  * Use async def functions for offload to/from_frames (GH#3171) Mads
+    R. B. Kristensen
+  * Subprocesses inherit the global dask config (GH#3192) Mads
+    R. B. Kristensen
+  * XFail test_open_close_many_workers (GH#3194) Matthew Rocklin
+  * Drop Python 3.5 (GH#3179) James Bourbeau
+  * UCX: avoid double init after fork (GH#3178) Mads R. B. Kristensen
+  * Silence warning when importing while offline (GH#3203) James
+    A. Bednar
+  * Adds docs to Client methods for resources, actors, and traverse
+    (GH#2851) IPetrik
+  * Add test for concurrent scatter operations (GH#2244) Matthew
+    Rocklin
+  * Expand async docs (GH#2293) Dave Hirschfeld
+  * Add PatchedDeviceArray to drop stride attribute for cupy<7.0
+    (GH#3198) Richard J Zamora
+
+- changes from version 2.6.0:
+  * Refactor dashboard module (GH#3138) Jacob Tomlinson
+  * Use setuptools.find_packages in setup.py (GH#3150) Matthew Rocklin
+  * Move death timeout logic up to Node.start (GH#3115) Matthew
+    Rocklin
+  * Only include metric in WorkerTable if it is a scalar (GH#3140)
+    Matthew Rocklin
+  * Add Nanny(config={...}) keyword (GH#3134) Matthew Rocklin
+  * Xfail test_worksapce_concurrency on Python 3.6 (GH#3132) Matthew
+    Rocklin
+  * Extend Worker plugin API with transition method (GH#2994)
+    matthieubulte
+  * Raise exception if the user passes in unused keywords to Client
+    (GH#3117) Jonathan De Troye
+  * Move new SSHCluster to top level (GH#3128) Matthew Rocklin
+  * Bump dask dependency (GH#3124) Jim Crist
+
+- changes from version 2.5.2:
+  * Make dask-worker close quietly when given sigint signal (GH#3116)
+    Matthew Rocklin
+  * Replace use of tornado.gen with asyncio in dask-worker (GH#3114)
+    Matthew Rocklin
+  * UCX: allocate CUDA arrays using RMM and Numba (GH#3109) Mads
+    R. B. Kristensen
+  * Support calling cluster.scale as async method (GH#3110) Jim Crist
+  * Identify lost workers in SpecCluster based on address not name
+    (GH#3088) James Bourbeau
+  * Add Client.shutdown method (GH#3106) Matthew Rocklin
+  * Collect worker-worker and type bandwidth information (GH#3094)
+    Matthew Rocklin
+  * Send noise over the wire to keep dask-ssh connection alive
+    (GH#3105) Gil Forsyth
+  * Retry scheduler connect multiple times (GH#3104) Jacob Tomlinson
+  * Add favicon of logo to the dashboard (GH#3095) James Bourbeau
+  * Remove utils.py functions for their dask/utils.py equivalents
+    (GH#3042) Matthew Rocklin
+  * Lower default bokeh log level (GH#3087) Philipp Rudiger
+  * Check if self.cluster.scheduler is a local scheduler (GH#3099)
+    Jacob Tomlinson
+
+- changes from version 2.5.1:
+  * Support clusters that don’t have .security or ._close methods
+    (GH#3100) Matthew Rocklin
+
+- changes from version 2.5.0:
+  * Use the new UCX Python bindings (GH#3059) Mads R. B. Kristensen
+  * Fix worker preload config (GH#3027) byjott
+  * Fix widget with spec that generates multiple workers (GH#3067)
+    Loïc Estève
+  * Make Client.get_versions async friendly (GH#3064) Jacob Tomlinson
+  * Add configuation option for longer error tracebacks (GH#3086)
+    Daniel Farrell
+  * Have Client get Security from passed Cluster (GH#3079) Matthew
+    Rocklin
+  * Respect Cluster.dashboard_link in Client._repr_html_ if it exists
+    (GH#3077) Matthew Rocklin
+  * Add monitoring with dask cluster docs (GH#3072) Arpit Solanki
+  * Protocol of cupy and numba handles serialization exclusively
+    (GH#3047) Mads R. B. Kristensen
+  * Allow specification of worker type in SSHCLuster (GH#3061) Jacob
+    Tomlinson
+  * Use Cluster.scheduler_info for workers= value in repr (GH#3058)
+    Matthew Rocklin
+  * Allow SpecCluster to scale by memory and cores (GH#3057) Matthew
+    Rocklin
+  * Allow full script in preload inputs (GH#3052) Matthew Rocklin
+  * Check multiple cgroups dirs, ceil fractional cpus (GH#3056) Jim
+    Crist
+  * Add blurb about disabling work stealing (GH#3055) Chris White
+
+-------------------------------------------------------------------
+Sat Sep 14 16:19:32 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed six
+
+- update to version 2.4.0:
+  * Remove six (GH#3045) Matthew Rocklin
+  * Add missing test data to sdist tarball (GH#3050) Elliott Sales de
+    Andrade
+  * Use mock from unittest standard library (GH#3049) Elliott Sales de
+    Andrade
+  * Use cgroups resource limits to determine default threads and
+    memory (GH#3039) Jim Crist
+  * Move task deserialization to immediately before task execution
+    (GH#3015) James Bourbeau
+  * Drop joblib shim module in distributed (GH#3040) John Kirkham
+  * Redirect configuration doc page (GH#3038) Matthew Rocklin
+  * Support --name 0 and --nprocs keywords in dask-worker cli
+    (GH#3037) Matthew Rocklin
+  * Remove lost workers from SpecCluster.workers (GH#2990) Guillaume
+    Eynard-Bontemps
+  * Clean up test_local.py::test_defaults (GH#3017) Matthew Rocklin
+  * Replace print statement in Queue.__init__ with debug message
+    (GH#3035) Mikhail Akimov
+  * Set the x_range limit of the Meory utilization plot to
+    memory-limit (GH#3034) Matthew Rocklin
+  * Rely on cudf codebase for cudf serialization (GH#2998) Benjamin
+    Zaitlen
+  * Add fallback html repr for Cluster (GH#3023) Jim Crist
+  * Add support for zstandard compression to comms (GH#2970) Abael He
+  * Avoid collision when using os.environ in dashboard_link (GH#3021)
+    Matthew Rocklin
+  * Fix ConnectionPool limit handling (GH#3005) byjott
+  * Support Spec jobs that generate multiple workers (GH#3013) Matthew
+    Rocklin
+  * Tweak Logs styling (GH#3012) Jim Crist
+  * Better name for cudf deserialization function name (GH#3008)
+    Benjamin Zaitlen
+  * Make spec.ProcessInterface a valid no-op worker (GH#3004) Matthew
+    Rocklin
+  * Return dictionaries from new_worker_spec rather than name/worker
+    pairs (GH#3000) Matthew Rocklin
+  * Fix minor typo in documentation (GH#3002) Mohammad Noor
+  * Permit more keyword options when scaling with cores and memory
+    (GH#2997) Matthew Rocklin
+  * Add cuda_ipc to UCX environment for NVLink (GH#2996) Benjamin
+    Zaitlen
+  * Add threads= and memory= to Cluster and Client reprs (GH#2995)
+    Matthew Rocklin
+  * Fix PyNVML initialization (GH#2993) Richard J Zamora
+
+-------------------------------------------------------------------
+Sat Aug 31 04:50:18 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.3.2:
+  * Skip exceptions in startup information (GH#2991) Jacob Tomlinson
+
+- changes from version 2.3.1:
+  * Add support for separate external address for SpecCluster
+    scheduler (GH#2963) Jacob Tomlinson
+  * Defer cudf serialization/deserialization to that library (GH#2881)
+    Benjamin Zaitlen
+  * Workaround for hanging test now calls ucp.fin() (GH#2967) Mads
+    R. B. Kristensen
+  * Remove unnecessary bullet point (GH#2972) Pav A
+  * Directly import progress from diagnostics.progressbar (GH#2975)
+    Matthew Rocklin
+  * Handle buffer protocol objects in ensure_bytes (GH#2969) Tom
+    Augspurger
+  * Fix documentatation syntax and tree (GH#2981) Pav A
+  * Improve get_ip_interface error message when interface does not
+    exist (GH#2964) Loïc Estève
+  * Add cores= and memory= keywords to scale (GH#2974) Matthew Rocklin
+  * Make workers robust to bad custom metrics (GH#2984) Matthew
+    Rocklin
+
+- changes from version 2.3.0:
+  * Except all exceptions when checking pynvml (GH#2961) Matthew
+    Rocklin
+  * Pass serialization down through small base collections (GH#2948)
+    Peter Andreas Entschev
+  * Use pytest.warning(Warning) rather than Exception (GH#2958)
+    Matthew Rocklin
+  * Allow server_kwargs to override defaults in dashboard (GH#2955)
+    Bruce Merry
+  * Update utils_perf.py (GH#2954) Shayan Amani
+  * Normalize names with str in retire_workers (GH#2949) Matthew
+    Rocklin
+  * Update client.py (GH#2951) Shayan Amani
+  * Add GPUCurrentLoad dashboard plots (GH#2944) Matthew Rocklin
+  * Pass GPU diagnostics from worker to scheduler (GH#2932) Matthew
+    Rocklin
+  * Import from collections.abc (GH#2938) Jim Crist
+  * Fixes Worker docstring formatting (GH#2939) James Bourbeau
+  * Redirect setup docs to docs.dask.org (GH#2936) Matthew Rocklin
+  * Wrap offload in gen.coroutine (GH#2934) Matthew Rocklin
+  * Change TCP.close to a coroutine to avoid task pending warning
+    (GH#2930) Matthew Rocklin
+  * Fixup black string normalization (GH#2929) Jim Crist
+  * Move core functionality from SpecCluster to Cluster (GH#2913)
+    Matthew Rocklin
+  * Add aenter/aexit protocols to ProcessInterface (GH#2927) Matthew
+    Rocklin
+  * Add real-time CPU utilization plot to dashboard (GH#2922) Matthew
+    Rocklin
+  * Always kill processes in clean tests, even if we don’t check
+    (GH#2924) Matthew Rocklin
+  * Add timeouts to processes in SSH tests (GH#2925) Matthew Rocklin
+  * Add documentation around spec.ProcessInterface (GH#2923) Matthew
+    Rocklin
+  * Cleanup async warnings in tests (GH#2920) Matthew Rocklin
+  * Give 404 when requesting nonexistent tasks or workers (GH#2921)
+    Martin Durant
+  * Raise informative warning when rescheduling an unknown task
+    (GH#2916) James Bourbeau
+  * Fix docstring (GH#2917) Martin Durant
+  * Add keep-alive message between worker and scheduler (GH#2907)
+    Matthew Rocklin
+  * Rewrite Adaptive/SpecCluster to support slowly arriving workers
+    (GH#2904) Matthew Rocklin
+  * Call heartbeat rather than reconnect on disconnection (GH#2906)
+    Matthew Rocklin
+
+-------------------------------------------------------------------
+Fri Aug  9 14:39:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 2.2.0
+  * Drop support for Python 2
+  * Lots of other changes, see upstream changelog
+
+-------------------------------------------------------------------
+Sat Feb  2 17:10:13 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.25.3:
+  * Fix excess threading on missing connections (:pr:`2403`) Daniel
+    Farrell
+  * Fix typo in doc (:pr:`2457`) Loïc Estève
+  * Start fewer but larger workers with LocalCluster (:pr:`2452`)
+    Matthew Rocklin
+  * Check for non-zero length first in read loop (:pr:`2465`) John
+    Kirkham
+  * DOC: Use of local cluster in script (:pr:`2462`) Peter Killick
+  * DOC/API: Signature for base class write / read (:pr:`2472`) Tom
+    Augspurger
+  * Support Pytest 4 in Tests (:pr:`2478`) Adam Beberg
+  * Ensure async behavior in event loop with LocalCluster (:pr:`2484`)
+    Matthew Rocklin
+  * Fix spurious CancelledError (:pr:`2485`) Loïc Estève
+  * Properly reset dask.config scheduler and shuffle when closing the
+    client (:pr:`2475`) George Sakkis
+  * Make it more explict that resources are per worker. (:pr:`2470`)
+    Loïc Estève
+  * Remove references to center (:pr:`2488`) Matthew Rocklin
+  * Expand client clearing timeout to 10s in testing (:pr:`2493`)
+    Matthew Rocklin
+  * Propagate key keyword in progressbar (:pr:`2492`) Matthew Rocklin
+  * Use provided cluster's IOLoop if present in Client (:pr:`2494`)
+    Matthew Rocklin
+
+-------------------------------------------------------------------
+Sun Jan  6 22:33:33 UTC 2019 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.25.2:
+  * Clean up LocalCluster logging better in async mode (:pr:`2448`)
+    Matthew Rocklin
+  * Add short error message if bokeh cannot be imported (:pr:`2444`)
+    Dirk Petersen
+  * Add optional environment variables to Nanny (:pr:`2431`) Matthew
+    Rocklin
+  * Make the direct keyword docstring entries uniform (:pr:`2441`)
+    Matthew Rocklin
+  * Make LocalCluster.close async friendly (:pr:`2437`) Matthew
+    Rocklin
+  * gather_dep: don't request dependencies we already found out we
+    don't want (:pr:`2428`) tjb900
+  * Add parameters to Client.run docstring (:pr:`2429`) Matthew
+    Rocklin
+  * Support coroutines and async-def functions in run/run_scheduler
+    (:pr:`2427`) Matthew Rocklin
+  * Name threads in ThreadPoolExecutors (:pr:`2408`) Matthew Rocklin
+
+-------------------------------------------------------------------
+Sat Dec 22 03:59:39 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.25.1
+  * Serialize numpy.ma.masked objects properly (:pr:`2384`) `Jim Crist`_
+  * Turn off bokeh property validation in dashboard (:pr:`2387`) `Jim Crist`_
+  * Fully initialize WorkerState objects (:pr:`2388`) `Jim Crist`_
+  * Fix typo in scheduler docstring (:pr:`2393`) `Russ Bubley`_
+  * DOC: fix typo in distributed.worker.Worker docstring (:pr:`2395`) `Loïc Estève`_
+  * Remove clients and workers from event log after removal (:pr:`2394`) `tjb900`_
+  * Support msgpack 0.6.0 by providing length keywords (:pr:`2399`) `tjb900`_
+  * Use async-await on large messages test (:pr:`2404`) `Matthew Rocklin`_
+  * Fix race condition in normalize_collection (:pr:`2386`) `Jim Crist`_
+  * Fix redict collection after HighLevelGraph fix upstream (:pr:`2413`) `Matthew Rocklin`_
+  * Add a blocking argument to Lock.acquire(`) (:pr:`2412`) `Stephan Hoyer`_
+  * Fix long traceback test (:pr:`2417`) `Matthew Rocklin`_
+  * Update x509 certificates to current OpenSSL standards. (:pr:`2418`) `Diane Trout`_
+
+-------------------------------------------------------------------
+Sat Dec  1 18:37:39 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.25.0:
+  * Fixed the 404 error on the Scheduler Dashboard homepage (GH#2361)
+    Michael Wheeler
+  * Consolidate two Worker classes into one (GH#2363) Matthew Rocklin
+  * Avoid warnings in pyarrow and msgpack (GH#2364) Matthew Rocklin
+  * Avoid race condition in Actor’s Future (GH#2374) Matthew Rocklin
+  * Support missing packages keyword in Client.get_versions (GH#2379)
+    Matthew Rocklin
+  * Fixup serializing masked arrays (GH#2373) Jim Crist
+
+-------------------------------------------------------------------
+Thu Nov 22 22:46:56 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.24.2:
+  * Add support for Bokeh 1.0 (GH#2348) (GH#2356) Matthew Rocklin
+  * Fix regression that dropped support for Tornado 4 (GH#2353) Roy
+    Wedge
+  * Avoid deprecation warnings (GH#2355) (GH#2357) Matthew Rocklin
+  * Fix typo in worker documentation (GH#2349) Tom Rochette
+
+-------------------------------------------------------------------
+Mon Nov 12 05:55:43 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.24.1:
+  * Use tornado’s builtin AnyThreadLoopEventPolicy (GH#2326) Matthew
+    Rocklin
+  * Adjust TLS tests for openssl 1.1 (GH#2331) Marius van Niekerk
+  * Avoid setting event loop policy if within Jupyter notebook server
+    (GH#2343) Matthew Rocklin
+  * Add preload script to conf (GH#2325) Guillaume Eynard-Bontemps
+  * Add serializer for Numpy masked arrays (GH#2335) Peter Killick
+  * Use psutil.Process.oneshot (GH#2339) NotSqrt
+  * Use worker SSL context when getting client from worker. (GH#2301)
+    Anonymous
+
+-------------------------------------------------------------------
+Tue Oct 30 03:06:05 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.24.0:
+  * Remove Joblib Dask Backend from codebase (GH#2298) Matthew Rocklin
+  * Include worker tls protocol in Scheduler.restart (GH#2295) Matthew
+    Rocklin
+  * Adapt to new Bokeh selection for 1.0 (GH#2292) Matthew Rocklin
+  * Add explicit retry method to Future and Client (GH#2299) Matthew
+    Rocklin
+  * Point to main worker page in bokeh links (GH#2300) Matthew Rocklin
+  * Limit concurrency when gathering many times (GH#2303) Matthew
+    Rocklin
+  * Add tls_cluster pytest fixture (GH#2302) Matthew Rocklin
+  * Convert ConnectionPool.open and active to properties (GH#2304)
+    Matthew Rocklin
+  * change export_tb to format_tb (GH#2306) Eric Ma
+  * Redirect joblib page to dask-ml (GH#2307) Matthew Rocklin
+  * Include unserializable object in error message (GH#2310) Matthew
+    Rocklin
+  * Import Mapping, Iterator, Set from collections.abc in Python 3
+    (GH#2315) Gaurav Sheni
+  * Extend Client.scatter docstring (GH#2320) Eric Ma
+  * Update for new flake8 (GH#2321) Matthew Rocklin
+
+-------------------------------------------------------------------
+Mon Oct  8 15:02:15 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.23.3:
+  * Err in dask serialization if not a NotImplementedError (GH#2251)
+    Matthew Rocklin
+  * Protect against key missing from priority in GraphLayout (GH#2259)
+    Matthew Rocklin
+  * Do not pull data twice in Client.gather (GH#2263) Adam Klein
+  * Add pytest fixture for cluster tests (GH#2262) Matthew Rocklin
+  * Cleanup bokeh callbacks (GH#2261) (GH#2278) Matthew Rocklin
+  * Fix bokeh error for memory_limit=None (GH#2255) Brett Naul
+  * Place large keywords into task graph in Client.map (GH#2281)
+    Matthew Rocklin
+  * Remove redundant blosc threading code from protocol.numpy
+    (GH#2284) Mike Gevaert
+  * Add ncores to workertable (GH#2289) Matthew Rocklin
+  * Support upload_file on files with no extension (GH#2290) Matthew
+    Rocklin
+
+-------------------------------------------------------------------
+Mon Sep 17 14:55:33 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.23.2:
+  * Discard dependent rather than remove (#2250) Matthew Rocklin
+  * Use dask_sphinx_theme Matthew Rocklin
+  * Drop the Bokeh index page (#2241) John Kirkham
+  * Revert change to keep link relative (#2242) Matthew Rocklin
+  * docs: Fix broken AWS link in setup.rst file (#2240) Vladyslav
+    Moisieienkov
+  * Return cancelled futures in as_completed (#2233) Chris White
+
+-------------------------------------------------------------------
+Sat Sep  8 04:35:20 UTC 2018 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.23.1:
+  * Raise informative error when mixing futures between clients
+    (#2227) Matthew Rocklin
+  * add byte_keys to unpack_remotedata call (#2232) Matthew Rocklin
+  * Add documentation for gist/rawgit for get_task_stream (#2236)
+    Matthew Rocklin
+  * Quiet Client.close by waiting for scheduler stop signal (#2237)
+    Matthew Rocklin
+  * Display system graphs nicely on different screen sizes (#2239)
+    Derek Ludwig
+  * Mutate passed in workers dict in TaskStreamPlugin.rectangles
+    (#2238) Matthew Rocklin
+
+-------------------------------------------------------------------
+Sun Sep  2 17:03:46 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * remove devel from noarch
+  * be more specific in %files section
+
+- update to version 1.23.0:
+  * Add direct_to_workers to Client Matthew Rocklin
+  * Add Scheduler.proxy to workers Matthew Rocklin
+  * Implement Actors Matthew Rocklin
+  * Fix tooltip (#2168) Loïc Estève
+  * Fix scale / avoid returning coroutines (#2171) Joe Hamman
+  * Clarify dask-worker –nprocs (#2173) Yu Feng
+  * Concatenate all bytes of small messages in TCP comms (#2172)
+    Matthew Rocklin
+  * Add dashboard_link property (#2176) Jacob Tomlinson
+  * Always offload to_frames (#2170) Matthew Rocklin
+  * Warn if desired port is already in use (#2191) (#2199) Matthew
+    Rocklin
+  * Add profile page for event loop thread (#2144) Matthew Rocklin
+  * Use dispatch for dask serialization, also add sklearn, pytorch
+    (#2175) Matthew Rocklin
+  * Handle corner cases with busy signal (#2182) Matthew Rocklin
+  * Check self.dependencies when looking at tasks in memory (#2196)
+    Matthew Rocklin
+  * Add ability to log additional custom metrics from each worker
+    (#2169) Loïc Estève
+  * Fix formatting when port is a tuple (#2204) Loïc Estève
+  * Describe what ZeroMQ is (#2211) Mike DePalatis
+  * Tiny typo fix (#2214) Anderson Banihirwe
+  * Add Python 3.7 to travis.yml (#2203) Matthew Rocklin
+  * Add plot= keyword to get_task_stream (#2198) Matthew Rocklin
+  * Add support for optional versions in Client.get_versions (#2216)
+    Matthew Rocklin
+  * Add routes for solo bokeh figures in dashboard (#2185) Matthew
+    Rocklin
+  * Be resilient to missing dep after busy signal (#2217) Matthew
+    Rocklin
+  * Use CSS Grid to layout status page on the dashboard (#2213) Derek
+    Ludwig and Luke Canavan
+  * Fix deserialization of queues on main ioloop thread (#2221)
+    Matthew Rocklin
+  * Add a worker initialization function (#2201) Guillaume EB
+  * Collapse navbar in dashboard (#2223) Luke Canavan
+
+- changes from version 1.22.1:
+  * Add worker_class= keyword to Nanny to support different worker
+    types (GH#2147) Martin Durant
+  * Cleanup intermittent worker failures (GH#2152) (GH#2146) Matthew
+    Rocklin
+  * Fix msgpack PendingDeprecationWarning for encoding=’utf-8’
+    (GH#2153) Olivier Grisel
+  * Make bokeh coloring deterministic using hash function (GH#2143)
+    Matthew Rocklin
+  * Allow client to query the task stream plot (GH#2122) Matthew
+    Rocklin
+  * Use PID and counter in thread names (GH#2084) (GH#2128) Dror
+    Birkman
+  * Test that worker restrictions are cleared after cancellation
+    (GH#2107) Matthew Rocklin
+  * Expand resources in graph_to_futures (GH#2131) Matthew Rocklin
+  * Add custom serialization support for pyarrow (GH#2115) Dave
+    Hirschfeld
+  * Update dask-scheduler cli help text for preload (GH#2120) Matt
+    Nicolls
+  * Added another nested parallelism test (GH#1710) Tom Augspurger
+  * insert newline by default after TextProgressBar (GH#1976) Phil
+    Tooley
+  * Retire workers from scale (GH#2104) Matthew Rocklin
+  * Allow worker to refuse data requests with busy signal (GH#2092)
+    Matthew Rocklin
+  * Don’t forget released keys (GH#2098) Matthew Rocklin
+  * Update example for stopping a worker (GH#2088) `John A Kirkham`_
+  * removed hardcoded value of memory terminate fraction from a log
+    message (GH#2096) Bartosz Marcinkowski
+  * Adjust worker doc after change in config file location and
+    treatment (GH#2094) Aurélien Ponte
+  * Prefer gathering data from same host (GH#2090) Matthew Rocklin
+  * Handle exceptions on deserialized comm with text error (GH#2093)
+    Matthew Rocklin
+  * Fix typo in docstring (GH#2087) Loïc Estève
+  * Provide communication context to serialization functions (GH#2054)
+    Matthew Rocklin
+  * Allow name to be explicitly passed in publish_dataset (GH#1995)
+    Marius van Niekerk
+  * Avoid accessing Worker.scheduler_delay around yield point
+    (GH#2074) Matthew Rocklin
+  * Support TB and PB in format bytes (GH#2072) Matthew Rocklin
+  * Add test for as_completed for loops in Python 2 (GH#2071) Matthew
+    Rocklin
+  * Allow adaptive to exist without a cluster (GH#2064) Matthew
+    Rocklin
+  * Have worker data transfer wait until recipient acknowledges
+    (GH#2052) Matthew Rocklin
+  * Support async def functions in Client.sync (GH#2070) Matthew
+    Rocklin
+  * Add asynchronous parameter to docstring of LocalCluster Matthew
+    Rocklin
+  * Normalize address before comparison (GH#2066) Tom Augspurger
+  * Use ConnectionPool for Worker.scheduler Matthew Rocklin
+  * Avoid reference cycle in str_graph Matthew Rocklin
+  * Pull data outside of while loop in gather (GH#2059) Matthew
+    Rocklin
+
+-------------------------------------------------------------------
+Mon Jul  2 09:52:43 UTC 2018 - tchvatal@suse.com
+
+- Fix the PyYAML dependency
+
+-------------------------------------------------------------------
+Sun Jul  1 02:12:07 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * updated dask requirement, added pyyaml
+
+-------------------------------------------------------------------
+Sun Jun 24 15:47:45 UTC 2018 - arun@gmx.de
+
+- update to version 1.22.0:
+  * Overhaul configuration (GH#1948) Matthew Rocklin
+  * Replace get= keyword with scheduler= (GH#1959) Matthew Rocklin
+  * Use tuples in msgpack (GH#2000) Matthew Rocklin and Marius van
+    Niekerk
+  * Unify handling of high-volume connections (GH#1970) Matthew
+    Rocklin
+  * Automatically scatter large arguments in joblib connector
+    (GH#2020) (GH#2030) Olivier Grisel
+  * Turn click Python 3 locales failure into a warning (GH#2001)
+    Matthew Rocklin
+  * Rely on dask implementation of sizeof (GH#2042) Matthew Rocklin
+  * Replace deprecated workers.iloc with workers.values() (GH#2013)
+    Grant Jenks
+  * Introduce serialization families (GH#1912) Matthew Rocklin
+  * Add PubSub (GH#1999) Matthew Rocklin
+  * Add Dask stylesheet to documentation Matthew Rocklin
+  * Avoid recomputation on partially-complete results (GH#1840)
+    Matthew Rocklin
+  * Use sys.prefix in popen for testing (GH#1954) Matthew Rocklin
+  * Include yaml files in manifest Matthew Rocklin
+  * Use self.sync so Client.processing works in asynchronous context
+    (GH#1962) Henry Doupe
+  * Fix bug with bad repr on closed client (GH#1965) Matthew Rocklin
+  * Parse –death-timeout keyword in dask-worker (GH#1967) Matthew
+    Rocklin
+  * Support serializers in BatchedSend (GH#1964) Matthew Rocklin
+  * Use normal serialization mechanisms to serialize published
+    datasets (GH#1972) Matthew Rocklin
+  * Add security support to LocalCluster. (GH#1855) Marius van Niekerk
+  * add ConnectionPool.remove method (GH#1977) Tony Lorenzo
+  * Cleanly close workers when scheduler closes (GH#1981) Matthew
+    Rocklin
+  * Add .pyz support in upload_file (GH#1781) @bmaisson
+  * add comm to packages (GH#1980) Matthew Rocklin
+  * Replace dask.set_options with dask.config.set Matthew Rocklin
+  * Exclude versions of sortedcontainers which do not have
+    .iloc. (GH#1993) Russ Bubley
+  * Exclude gc statistics under PyPy (GH#1997) Marius van Niekerk
+  * Manage recent config and dataframe changes in dask (GH#2009)
+    Matthew Rocklin
+  * Cleanup lingering clients in tests (GH#2012) Matthew Rocklin
+  * Use timeouts during Client._ensure_connected (GH#2011) Martin
+    Durant
+  * Avoid reference cycle in joblib backend (GH#2014) Matthew Rocklin,
+    also Olivier Grisel
+  * DOC: fixed test example (GH#2017) Tom Augspurger
+  * Add worker_key parameter to Adaptive (GH#1992) Matthew Rocklin
+  * Prioritize tasks with their true keys, before stringifying
+    (GH#2006) Matthew Rocklin
+  * Serialize worker exceptions through normal channels (GH#2016)
+    Matthew Rocklin
+  * Include exception in progress bar (GH#2028) Matthew Rocklin
+  * Avoid logging orphaned futures in All (GH#2008) Matthew Rocklin
+  * Don’t use spill-to-disk dictionary if we’re not spilling to disk
+    Matthew Rocklin
+  * Only avoid recomputation if key exists (GH#2036) Matthew Rocklin
+  * Use client connection and serialization arguments in progress
+    (GH#2035) Matthew Rocklin
+  * Rejoin worker client on closing context manager (GH#2041) Matthew
+    Rocklin
+  * Avoid forgetting erred tasks when losing dependencies (GH#2047)
+    Matthew Rocklin
+  * Avoid collisions in graph_layout (GH#2050) Matthew Rocklin
+  * Avoid recursively calling bokeh callback in profile plot (GH#2048)
+    Matthew Rocklin
+
+-------------------------------------------------------------------
+Sun May  6 05:30:39 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * Replace msgpack-python by msgpack
+  * updated required versions according to requirement.txt
+
+- update to version 1.21.8:
+  * Remove errant print statement (GH#1957) Matthew Rocklin
+  * Only add reevaluate_occupancy callback once (GH#1953) Tony Lorenzo
+
+- changes from version 1.21.7:
+  * Newline needed for doctest rendering (GH#1917) Loïc Estève
+  * Support Client._repr_html_ when in async mode (GH#1909) Matthew
+    Rocklin
+  * Add parameters to dask-ssh command (GH#1910) Irene Rodriguez
+  * Santize get_dataset trace (GH#1888) John Kirkham
+  * Fix bug where queues would not clean up cleanly (GH#1922) Matthew
+    Rocklin
+  * Delete cached file safely in upload file (GH#1921) Matthew Rocklin
+  * Accept KeyError when closing tornado IOLoop in tests (GH#1937)
+    Matthew Rocklin
+  * Quiet the client and scheduler when gather(…, errors=’skip’)
+    (:pr:`1936) Matthew Rocklin
+  * Clarify couldn’t gather keys warning (GH#1942) Kenneth Koski
+  * Support submit keywords in joblib (GH#1947) Matthew Rocklin
+  * Avoid use of external resources in bokeh server (GH#1934) Matthew
+    Rocklin
+  * Drop __contains__ from Datasets (GH#1889) John Kirkham
+  * Fix bug with queue timeouts (GH#1950) Matthew Rocklin
+  * Replace msgpack-python by msgpack (GH#1927) Loïc Estève
+
+-------------------------------------------------------------------
+Sat Apr  7 19:25:08 UTC 2018 - arun@gmx.de
+
+- update to version 1.21.6:
+  * Fix numeric environment variable configuration (GH#1885) Joseph
+    Atkins-Kurkish
+  * support bytearrays in older lz4 library (GH#1886) Matthew Rocklin
+  * Remove started timeout in nanny (GH#1852) Matthew Rocklin
+  * Don’t log errors in sync (GH#1894) Matthew Rocklin
+  * downgrade stale lock warning to info logging level (GH#1890)
+    Matthew Rocklin
+  * Fix UnboundLocalError for key (GH#1900) John Kirkham
+  * Resolve deployment issues in Python 2 (GH#1905) Matthew Rocklin
+  * Support retries and priority in Client.get method (GH#1902)
+    Matthew Rocklin
+  * Add additional attributes to task page if applicable (GH#1901)
+    Matthew Rocklin
+  * Add count method to as_completed (GH#1897) Matthew Rocklin
+  * Extend default timeout to 10s (GH#1904) Matthew Rocklin
+
+- changes from version 1.21.5:
+  * Increase default allowable tick time to 3s (GH#1854) Matthew
+    Rocklin
+  * Handle errant workers when another worker has data (GH#1853)
+    Matthew Rocklin
+  * Close multiprocessing queue in Nanny to reduce open file
+    descriptors (GH#1862) Matthew Rocklin
+  * Extend nanny started timeout to 30s, make configurable (GH#1865)
+    Matthew Rocklin
+  * Comment out the default config file (GH#1871) Matthew Rocklin
+  * Update to fix bokeh 0.12.15 update errors (GH#1872) Matthew
+    Rocklin
+  * Downgrade Event Loop unresponsive warning to INFO level (GH#1870)
+    Matthew Rocklin
+  * Add fifo timeout to control priority generation (GH#1828) Matthew
+    Rocklin
+  * Add retire_workers API to Client (GH#1876) Matthew Rocklin
+  * Catch NoSuchProcess error in Nanny.memory_monitor (GH#1877)
+    Matthew Rocklin
+  * Add uid to nanny queue communitcations (GH#1880) Matthew Rocklin
+
+- changes from version 1.21.4:
+  * Avoid passing bytearrays to snappy decompression (GH#1831) Matthew
+    Rocklin
+  * Specify IOLoop in Adaptive (GH#1841) Matthew Rocklin
+  * Use connect-timeout config value throughout client (GH#1839)
+    Matthew Rocklin
+  * Support direct= keyword argument in Client.get (GH#1845) Matthew
+    Rocklin
+
+- changes from version 1.21.3:
+  * Add cluster superclass and improve adaptivity (GH#1813) Matthew
+    Rocklin
+  * Fixup tests and support Python 2 for Tornado 5.0 (GH#1818) Matthew
+    Rocklin
+  * Fix bug in recreate_error when dependencies are dropped (GH#1815)
+    Matthew Rocklin
+  * Add worker time to live in Scheduler (GH#1811) Matthew Rocklin
+  * Scale adaptive based on total_occupancy (GH#1807) Matthew Rocklin
+  * Support calling compute within worker_client (GH#1814) Matthew
+    Rocklin
+  * Add percentage to profile plot (GH#1817) Brett Naul
+  * Overwrite option for remote python in dask-ssh (GH#1812) Sven
+    Kreiss
+
+- changes from version 1.21.2:
+  * Fix bug where we didn’t check idle/saturated when stealing
+    (GH#1801) Matthew Rocklin
+  * Fix bug where client was noisy when scheduler closed unexpectedly
+    (GH#1806) Matthew Rocklin
+  * Use string-based timedeltas (like '500 ms') everywhere (GH#1804)
+    Matthew Rocklin
+  * Keep logs in scheduler and worker even if silenced (GH#1803)
+    Matthew Rocklin
+  * Support minimum, maximum, wait_count keywords in Adaptive
+    (GH#1797) Jacob Tomlinson and Matthew Rocklin
+  * Support async protocols for LocalCluster, replace start= with
+    asynchronous= (GH#1798) Matthew Rocklin
+  * Avoid restarting workers when nanny waits on scheduler (GH#1793)
+    Matthew Rocklin
+  * Use IOStream.read_into() when available (GH#1477) Antoine Pitrou
+  * Reduce LocalCluster logging threshold from CRITICAL to WARN
+    (GH#1785) Andy Jones
+  * Add futures_of to API docs (GH#1783) John Kirkham
+  * Make diagnostics link in client configurable (GH#1810) Matthew
+    Rocklin
+
+- changes from version 1.21.1:
+  * Fixed an uncaught exception in distributed.joblib with a
+    LocalCluster using only threads (GH#1775) Tom Augspurger
+  * Format bytes in info worker page (GH#1752) Matthew Rocklin
+  * Add pass-through arguments for scheduler/worker –preload
+    modules. (GH#1634) Alexander Ford
+  * Use new LZ4 API (GH#1757) Thrasibule
+  * Replace dask.optimize with dask.optimization (GH#1754) Matthew
+    Rocklin
+  * Add graph layout engine and bokeh plot (GH#1756) Matthew Rocklin
+  * Only expand name with –nprocs if name exists (GH#1776) Matthew
+    Rocklin
+  * specify IOLoop for stealing PeriodicCallback (GH#1777) Matthew
+    Rocklin
+  * Fixed distributed.joblib with no processes Tom Augspurger
+  * Use set.discard to avoid KeyErrors in stealing (GH#1766) Matthew
+    Rocklin
+  * Avoid KeyError when task has been released during steal (GH#1765)
+    Matthew Rocklin
+  * Add versions routes to avoid the use of run in Client.get_versions
+    (GH#1773) Matthew Rocklin
+  * Add write_scheduler_file to Client (GH#1778) Joe Hamman
+  * Default host to tls:// if tls information provided (GH#1780)
+    Matthew Rocklin
+
+-------------------------------------------------------------------
+Tue Mar 20 21:00:30 UTC 2018 - jengelh@inai.de
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sun Mar 11 08:51:03 UTC 2018 - sebix+novell.com@sebix.at
+
+- Use %license macro for license.
+
+-------------------------------------------------------------------
+Sat Feb 10 17:28:26 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 1.21.0:
+  * Refactor scheduler to use TaskState objects rather than
+    dictionaries (:pr:`1594`) Antoine Pitrou
+  * Plot CPU fraction of total in workers page (:pr:`1624`) Matthew
+    Rocklin
+  * Use thread CPU time in Throttled GC (:pr:`1625`) Antoine Pitrou
+  * Fix bug with memory_limit=None (:pr:`1639`) Matthew Rocklin
+  * Add futures_of to top level api (:pr:`1646`) Matthew Rocklin
+  * Warn on serializing large data in Client (:pr:`1636`) Matthew
+    Rocklin
+  * Fix intermittent windows failure when removing lock file
+    (:pr:`1652`) Antoine Pitrou
+  * Add diagnosis and logging of poor GC Behavior (:pr:`1635`) Antoine
+    Pitrou
+  * Add client-scheduler heartbeats (:pr:`1657`) Matthew Rocklin
+  * Return dictionary of worker info in retire_workers (:pr:`1659`)
+    Matthew Rocklin
+  * Ensure dumps_function works with unhashable functions (:pr:`1662`)
+    Matthew Rocklin
+  * Collect client name ids rom client-name config variable
+    (:pr:`1664`) Matthew Rocklin
+  * Allow simultaneous use of --name and --nprocs in dask-worker
+    (:pr:`1665`) Matthew Rocklin
+  * Add support for grouped adaptive scaling and adaptive behavior
+    overrides (:pr:`1632`) Alexander Ford
+  * Share scheduler RPC between worker and client (:pr:`1673`) Matthew
+    Rocklin
+  * Allow retries= in ClientExecutor (:pr:`1672`) @rqx
+  * Improve documentation for get_client and dask.compute examples
+    (:pr:`1638`) Scott Sievert
+  * Support DASK_SCHEDULER_ADDRESS environment variable in worker
+    (:pr:`1680`) Matthew Rocklin
+  * Support tuple-keys in retries (:pr:`1681`) Matthew Rocklin
+  * Use relative links in bokeh dashboard (:pr:`1682`) Matthew Rocklin
+  * Make message log length configurable, default to zero (:pr:`1691`)
+    Matthew Rocklin
+  * Deprecate Client.shutdown (:pr:`1699`) Matthew Rocklin
+  * Add warning in configuration docs to install pyyaml (:pr:`1701`)
+    Cornelius Riemenschneider
+  * Handle nested parallelism in distributed.joblib (:pr:`1705`) `Tom
+    Augspurger`_
+  * Don't wait for Worker.executor to shutdown cleanly when restarting
+    process (:pr:`1708`) Matthew Rocklin
+  * Add support for user defined priorities (:pr:`1651`) Matthew
+    Rocklin
+  * Catch and log OSErrors around worker lock files (:pr:`1714`)
+    Matthew Rocklin
+  * Remove worker prioritization. Coincides with changes to dask.order
+    (:pr:`1730`) Matthew Rocklin
+  * Use process-measured memory rather than nbytes in Bokeh dashboard
+    (:pr:`1737`) Matthew Rocklin
+  * Enable serialization of Locks (:pr:`1738`) Matthew Rocklin
+  * Support Tornado 5 beta (:pr:`1735`) Matthew Rocklin
+  * Cleanup remote_magic client cache after tests (:pr:`1743`) Min RK
+  * Allow service ports to be specified as (host, port) (:pr:`1744`)
+    Bruce Merry
+
+-------------------------------------------------------------------
+Thu Jan 11 19:40:54 UTC 2018 - toddrme2178@gmail.com
+
+- Fix futures dependency handling
+
+-------------------------------------------------------------------
+Fri Dec  8 18:05:45 UTC 2017 - arun@gmx.de
+
+- update to version 1.20.2:
+  * Clear deque handlers after each test (GH#1586) Antoine Pitrou
+  * Handle deserialization in FutureState.set_error (GH#1592) Matthew
+    Rocklin
+  * Add process leak checker to tests (GH#1596) Antoine Pitrou
+  * Customize process title for subprocess (GH#1590) Antoine Pitrou
+  * Make linting a separate CI job (GH#1599) Antoine Pitrou
+  * Fix error from get_client() with no global client (GH#1595) Daniel
+    Li
+  * Remove Worker.host_health, correct WorkerTable metrics (GH#1600)
+    Matthew Rocklin
+  * Don’t mark tasks as suspicious when retire_workers
+    called. Addresses (GH#1607) `Russ Bubley`_
+  * Do not include processing workers in workers_to_close (GH#1609)
+    `Russ Bubley`_
+  * Disallow simultaneous scale up and down in Adaptive (GH#1608)
+    `Russ Bubley`_
+  * Parse bytestrings in –memory-limit (GH#1615) Matthew Rocklin
+  * Use environment variable for scheduler address if present
+    (GH#1610) Matthew Rocklin
+  * Fix deprecation warning from logger.warn (GH#1616) Brett Naul
+
+-------------------------------------------------------------------
+Mon Nov 27 19:31:41 UTC 2017 - arun@gmx.de
+
+- update to version 1.20.1:
+  * Wrap import ssl statements with try-except block for ssl-crippled
+    environments, (GH#1570) Xander Johnson
+  * Support zero memory-limit in Nanny (GH#1571) Matthew Rocklin
+  * Avoid PeriodicCallback double starts (GH#1573) Matthew Rocklin
+  * Add disposable workspace facility (GH#1543) Antoine Pitrou
+  * Use format_time in task_stream plots (GH#1575) Matthew Rocklin
+  * Avoid delayed finalize calls in compute (GH#1577) Matthew Rocklin
+  * Doc fix about secede (GH#1583) Scott Sievert
+  * Add tracemalloc option when tracking test leaks (GH#1585) Antoine
+    Pitrou
+  * Add JSON routes to Bokeh server (GH#1584) Matthew Rocklin
+  * Handle exceptions cleanly in Variables and Queues (GH#1580)
+    Matthew Rocklin
+
+-------------------------------------------------------------------
+Sun Nov 19 05:13:33 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * only require python-futures for python2
+  * removed files from install section that are not in the tar-ball anymore
+
+- update to version 1.20.0:
+  * Drop use of pandas.msgpack (GH#1473) Matthew Rocklin
+  * Add methods to get/set scheduler metadata Matthew Rocklin
+  * Add distributed lock Matthew Rocklin
+  * Add reschedule exception for worker tasks Matthew Rocklin
+  * Fix nbytes() for bytearrays Matthew Rocklin
+  * Capture scheduler and worker logs Matthew Rocklin
+  * Garbage collect after data eviction on high worker memory usage
+    (GH#1488) Olivier Grisel
+  * Add scheduler HTML routes to bokeh server (GH#1478) (GH#1514)
+    Matthew Rocklin
+  * Add pytest plugin to test for resource leaks (GH#1499) Antoine
+    Pitrou
+  * Improve documentation for scheduler states (GH#1498) Antoine
+    Pitrou
+  * Correct warn_if_longer timeout in ThrottledGC (GH#1496) Fabian
+    Keller
+  * Catch race condition in as_completed on cancelled futures
+    (GH#1507) Matthew Rocklin
+  * Transactional work stealing (GH#1489) (GH#1528) Matthew Rocklin
+  * Avoid forkserver in PyPy (GH#1509) Matthew Rocklin
+  * Add dict access to get/set datasets (GH#1508) Mike DePalatis
+  * Support Tornado 5 (GH#1509) (GH#1512) (GH#1518) (GH#1534) Antoine
+    Pitrou
+  * Move thread_state in Dask (GH#1523) Jim Crist
+  * Use new Dask collections interface (GH#1513) Matthew Rocklin
+  * Add nanny flag to dask-mpi Matthew Rocklin
+  * Remove JSON-based HTTP servers Matthew Rocklin
+  * Avoid doing I/O in repr/str (GH#1536) Matthew Rocklin
+  * Fix URL for MPI4Py project (GH#1546) Ian Hopkinson
+  * Allow automatic retries of a failed task (GH#1524) Antoine Pitrou
+  * Clean and accelerate tests (GH#1548) (GH#1549) (GH#1552) (GH#1553)
+    (GH#1560) (GH#1564) Antoine Pitrou
+  * Move HDFS functionality to the hdfs3 library (GH#1561) Jim Crist
+  * Fix bug when using events page with no events (GH#1562) @rbubley
+  * Improve diagnostic naming of tasks within tuples (GH#1566) Kelvyn
+    Yang
+
+-------------------------------------------------------------------
+Thu Nov  9 18:54:37 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * added binary dask-mpi
+
+- update to version 1.19.3:
+  * Handle None case in profile.identity (GH#1456)
+  * Asyncio rewrite (GH#1458)
+  * Add rejoin function partner to secede (GH#1462)
+  * Nested compute (GH#1465)
+  * Use LooseVersion when comparing Bokeh versions (GH#1470)
+
+- changes from version 1.19.2:
+  * as_completed doesn’t block on cancelled futures (GH#1436)
+  * Notify waiting threads/coroutines on cancellation (GH#1438)
+  * Set Future(inform=True) as default (GH#1437)
+  * Rename Scheduler.transition_story to story (GH#1445)
+  * Future uses default client by default (GH#1449)
+  * Add keys= keyword to Client.call_stack (GH#1446)
+  * Add get_current_task to worker (GH#1444)
+  * Ensure that Client remains asynchornous before ioloop starts
+    (GH#1452)
+  * Remove “click for worker page” in bokeh plot (GH#1453)
+  * Add Client.current() (GH#1450)
+  * Clean handling of restart timeouts (GH#1442)
+
+- changes from version 1.19.1:
+  * Fix tool issues with TaskStream plot (GH#1425)
+  * Move profile module to top level (GH#1423)
+
+- changes from version 1.19.0:
+  * Avoid storing messages in message log (GH#1361)
+  * fileConfig does not disable existing loggers (GH#1380)
+  * Offload upload_file disk I/O to separate thread (GH#1383)
+  * Add missing SSLContext (GH#1385)
+  * Collect worker thread information from sys._curent_frames
+    (GH#1387)
+  * Add nanny timeout (GH#1395)
+  * Restart worker if memory use goes above 95% (GH#1397)
+  * Track workers memory use with psutil (GH#1398)
+  * Track scheduler delay times in workers (GH#1400)
+  * Add time slider to profile plot (GH#1403)
+  * Change memory-limit keyword to refer to maximum number of bytes
+    (GH#1405)
+  * Add cancel(force=) keyword (GH#1408)
+
+- changes from version 1.18.2:
+  * Silently pass on cancelled futures in as_completed (GH#1366)
+  * Fix unicode keys error in Python 2 (GH#1370)
+  * Support numeric worker names
+  * Add dask-mpi executable (GH#1367)
+
+- changes from version 1.18.1:
+  * Clean up forgotten keys in fire-and-forget workloads (GH#1250)
+  * Handle missing extensions (GH#1263)
+  * Allow recreate_exception on persisted collections (GH#1253)
+  * Add asynchronous= keyword to blocking client methods (GH#1272)
+  * Restrict to horizontal panning in bokeh plots (GH#1274)
+  * Rename client.shutdown to client.close (GH#1275)
+  * Avoid blocking on event loop (GH#1270)
+  * Avoid cloudpickle errors for Client.get_versions (GH#1279)
+  * Yield on Tornado IOStream.write futures (GH#1289)
+  * Assume async behavior if inside a sync statement (GH#1284)
+  * Avoid error messages on closing (GH#1297), (GH#1296) (GH#1318)
+    (GH#1319)
+  * Add timeout= keyword to get_client (GH#1290)
+  * Respect timeouts when restarting (GH#1304)
+  * Clean file descriptor and memory leaks in tests (GH#1317)
+  * Deprecate Executor (GH#1302)
+  * Add timeout to ThreadPoolExecutor.shutdown (GH#1330)
+  * Clean up AsyncProcess handling (GH#1324)
+  * Allow unicode keys in Python 2 scheduler (GH#1328)
+  * Avoid leaking stolen data (GH#1326)
+  * Improve error handling on failed nanny starts (GH#1337), (GH#1331)
+  * Make Adaptive more flexible
+  * Support --contact-address and --listen-address in worker (GH#1278)
+  * Remove old dworker, dscheduler executables (GH#1355)
+  * Exit workers if nanny process fails (GH#1345)
+  * Auto pep8 and flake (GH#1353)
+
+-------------------------------------------------------------------
+Mon May 22 19:14:46 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

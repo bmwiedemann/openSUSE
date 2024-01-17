@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Thu Nov  2 15:58:07 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.0.12.1
+  * Display uptime in seconds for BF3
+  * Add fuse3 support 
+
+-------------------------------------------------------------------
+Wed Aug 30 15:00:03 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.0.9
+  * Fix fallback logic of direct mapping 
+  * Make timeout configurable through /dev/rshimX/misc
+
+-------------------------------------------------------------------
+Fri Apr 21 17:49:44 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+- Update service to new tag format
+- update to 2.0.7
+  * adjust reset delay
+  * avoid leak the file descriptor for /dev/uio 
+
+-------------------------------------------------------------------
+Thu Mar 16 11:18:48 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.19.2
+  * fix potential NULL pointer access during USB disconnection
+  * fix vfio and direct mapping mode with several devices
+  * avoid use of stale cached pci_dev pointer after device reset
+  * adjust reset delay
+  * update to dual-licensese GPL-2.0/BSD-3-Clause
+
+-------------------------------------------------------------------
+Thu Sep 15 08:56:34 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.13.7
+  * make use of rshim with several devices more efficient
+  * support 32 bit CR space possible on BF3 USB access
+  * support more transfer sizes
+  * add new device ID for BF3
+  * allow to en/disable VFIO/UIO support via rshim.conf
+  * make restart of rshim process more robust fixing potential race
+  * set default boot timeout to 150 seconds
+
+-------------------------------------------------------------------
+Thu Jul 14 14:16:25 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.11.5
+  * Fix a possible crash on PCIe for BF1/2
+  * Fix possible race condition when several rshim devices are present
+  * Fix a kernel crash when undbinding from uio
+  * Detect new USB/rshim hot plug
+
+-------------------------------------------------------------------
+Fri Nov 19 12:40:52 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.2.2
+  * bfb-install: Handle new indications for installation completion
+  * Make USB reset configurable and set to 3 seconds
+  * Move USB reset to USB up event
+
+-------------------------------------------------------------------
+Wed Sep 29 06:21:09 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.6.1.5
+  * Disable the background timer if no rshim devices
+  * Setting default path for rshim config file
+  * Refine when some workarounds should be applied
+  * Fix hypervisor crash when several cards boot or push streams
+  * Set MTU to standard max size
+
+-------------------------------------------------------------------
+Thu Mar 11 16:05:12 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.5.10
+  * fix possible tmfifo data loss in PCIe interface
+  * fix USB deadlock
+  * reduce CPU load when no rshim device present
+  * add PCIe hotplug support
+
+-------------------------------------------------------------------
+Mon Jan 25 14:35:50 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- fix _service file
+- update to 2.0.5.8.3
+  * fix various issues
+  * add workaround for Bluefield-2 REV-0
+
+-------------------------------------------------------------------
+Thu Nov 19 17:06:49 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- update to 2.0.55.1
+  * add bfb-install script
+- fix version number naming
+- add versioning to _service file
+
+-------------------------------------------------------------------
+Wed Nov 11 10:12:08 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- update to latest version (jsc#SLE-16098 jsc#SLE-13565 jsc#SLE-16108 jsc#SLE-15271)
+  * Some robust fixes for USB rshim
+  * Fix a typo in pcie mmap
+  * Check rshim accessibility when re-enabling it
+  * Enable console output during boot stream pushing
+  * Add some delay for the pcie_lf probe
+  * Auto-start rshim service after installation
+
+-------------------------------------------------------------------
+Thu Oct  1 13:43:25 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- update to latest version
+  * enable BlueField-2 support
+  * Add configuration file support
+
+-------------------------------------------------------------------
+Wed Jun 10 10:56:05 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- add _service file
+- update to latest version
+
+-------------------------------------------------------------------
+Mon Apr 27 13:45:32 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- add version 2.0.4

@@ -1,0 +1,13 @@
+Index: src/driver/usblinux.c
+===================================================================
+--- src/driver/usblinux.c	2006-06-23 10:04:00.000000000 +0200
++++ src/driver/usblinux.c	2012-07-11 22:20:37.608021190 +0200
+@@ -17,7 +17,7 @@
+ #include <usblinux.h>
+ #include "config.h"
+ 
+-#define PCSCLITE_USB_PATH      "/proc/bus/usb"
++#define PCSCLITE_USB_PATH      "/dev/bus/usb"
+ 
+ 
+ int open_linux_usb_dev ( unsigned int manuID, unsigned int prodID, unsigned int lunNum )

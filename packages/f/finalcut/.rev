@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13dd2f14490ebf507f4ca8035f49d8aa</srcmd5>
+    <version>0.5.0</version>
+    <time>1543953231</time>
+    <user>dimstar_suse</user>
+    <comment>The Final Cut library (3rd attempt)</comment>
+    <requestid>652211</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4c059cd362700d51c3fb06ace83c66d</srcmd5>
+    <version>0.5.0</version>
+    <time>1551276490</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679543</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>19f5c31a5de449fe3667e85397228fcc</srcmd5>
+    <version>0.5.1</version>
+    <time>1570799977</time>
+    <user>dimstar_suse</user>
+    <comment>- Release (version 0.5.1)
+- Package name adjustment
+- Use correct package names in Requires.
+- Fix summary containing just of the name. Edit RPM groups.
+- Install examples into docdir
+- Add libfinal-devel = %{version} to devel package
+- Prepare to push to devel project
+- Remove old tarball: finalcut-0.3.0.tar.gz
+- Remove old tarball: finalcut-0.4.0.tar.gz
+- Clean spec with spec-cleaner
+- Add changes file
+- Release (version 0.5.0)
+- Release (version 0.4.0)
+- Release (version 0.3.0)
+- Release (version 0.2.0)
+- Initial Release (version 0.1.1)
+</comment>
+    <requestid>737340</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bf05224b9753ced104598cc2f90d0b89</srcmd5>
+    <version>0.6.0</version>
+    <time>1571653823</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-arm-glibc-2.30.patch: Fixes compilation error with arm architecture with glibc &gt;= 2.30 
+- Release (version 0.6.0)
+- Release (version 0.5.1)
+- Package name adjustment
+- Use correct package names in Requires.
+- Fix summary containing just of the name. Edit RPM groups.
+- Install examples into docdir
+- Add libfinal-devel = %{version} to devel package
+- Prepare to push to devel project
+- Remove old tarball: finalcut-0.3.0.tar.gz
+- Remove old tarball: finalcut-0.4.0.tar.gz
+- Clean spec with spec-cleaner
+- Add changes file
+- Release (version 0.5.0)
+- Release (version 0.4.0)
+- Release (version 0.3.0)
+- Release (version 0.2.0)
+- Initial Release (version 0.1.1)
+</comment>
+    <requestid>741235</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>95dd49ff5f42570d6764d2dab4c72656</srcmd5>
+    <version>0.6.0</version>
+    <time>1579636947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766076</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac2148612997cb24a810e04c389be289</srcmd5>
+    <version>0.7.1</version>
+    <time>1605644517</time>
+    <user>dimstar_suse</user>
+    <comment>- Release (version 0.7.1)
+- Release (version 0.7.0)
+- Release (version 0.6.1 pre-release 0.7.0)
+- deleted patch
+  - 0001-arm-glibc-2.30.patch (upstreamed)
+</comment>
+    <requestid>848624</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8e539ee46ed28687dba765d9b4da9326</srcmd5>
+    <version>0.8.0</version>
+    <time>1635717350</time>
+    <user>dimstar_suse</user>
+    <comment>- Release (version 0.8.0)
+</comment>
+    <requestid>928425</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c92a8b9d7a864d5f6ff5b3cd311edb43</srcmd5>
+    <version>0.9.0</version>
+    <time>1684846459</time>
+    <user>dimstar_suse</user>
+    <comment>- Release (version 0.9.0)</comment>
+    <requestid>1088440</requestid>
+  </revision>
+</revisionlist>

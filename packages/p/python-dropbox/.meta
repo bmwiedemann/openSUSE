@@ -1,0 +1,5 @@
+<package name="python-dropbox" project="openSUSE:Factory">
+  <title></title>
+  <description>Official Dropbox API Python Client</description>
+  <devel project="devel:languages:python" package="python-dropbox"/>
+</package>

@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu Nov 23 07:28:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 0.4.0:
+  * UPGRADE: Drop python 3.7 and support 3.11 (#77)
+  * UPGRADE: Allow markdown-it-py v3 (#85)
+    - Make field_list compatible with latest upstream (#75)
+    - Convert state.srcCharCode -> state.src (#84)
+    - Remove unnecessary method arg by @chrisjsewell in( #76)
+    - Centralise code block test (#83 and #87)
+      - This means that disabling the code block rule in
+        markdown-it-py v3+ will now allow all syntax blocks to be
+        indented by any amount of whitespace.
+  * Improve dollarmath plugin: Add allow_blank_lines option, thanks
+    to @eric-wieser (#46)
+  * Improve admon plugin: Add ??? support, thanks to @KyleKing (#58)
+  * MAINTAIN: Make type checking strict (#86)
+- v0.3.5:
+  * FIX: Regression in dollarmath by @chrisjsewell in #69
+  * Fix regression in amsmath by @chrisjsewell in #70
+  * Correct project documentation link by @andersk in #73
+  * RELEASE v0.3.5 by @chrisjsewell in #74
+- v0.3.4:
+  * NEW: Add attrs_block_plugin by @chrisjsewell in #66
+  * Improve field lists by @chrisjsewell in #65
+  * Update pre-commit by @chrisjsewell in #64 (moving from flake8 to ruff)
+- v0.3.3:
+  * FIX: attrs: span with end of inline before attrs by @chrisjsewell in #57
+- v0.3.2:
+  * MAINTAIN: Fix pre-commit configuration by @hukkin in #54
+  * NEW: Add span parsing to inline attributes plugin by @chrisjsewell in #55
+  * FIX: Task list item marker can be followed by any GFM whitespace by @hukkin in #42
+  * NEW: Port admon plugin by @KyleKing in #53
+  * RELEASE: v0.3.2 by @chrisjsewell in #56
+- v0.3.1:
+  * MAINTAIN: Remove upper bound from Python version constraint by @cjolowicz in #40
+  * MAINTAIN: Update pre-commit by @chrisjsewell in #47
+  * FIX: Parsing when newline is between footnote ID and first paragraph by @hukkin in #49
+  * Anchor ids in separate renders should not affect each other. by @distractedmosfet in #43
+  * PEP 621 package build, drop Python 3.6 by @chrisjsewell in #51
+  * NEW: Add attrs_plugin by @chrisjsewell in #50
+  * RELEASE: v0.3.1 by @chrisjsewell in #52
+
+-------------------------------------------------------------------
+Fri Jun  9 12:58:04 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Sep  5 08:02:15 UTC 2022 - Elisei Roca <eroca@mailbox.org>
+
+- Cleanup requires, comments and files section 
+
+-------------------------------------------------------------------
+Tue Apr 26 16:22:09 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial package for version 0.3.0.

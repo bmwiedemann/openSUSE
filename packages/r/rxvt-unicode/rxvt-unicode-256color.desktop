@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=rxvt-unicode-256colors
+GenericName=rxvt-unicode-256colors
+Comment=An Unicode capable rxvt clone (256colors)
+Exec=urxvt-256color
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=System;TerminalEmulator;X-GNOME-Utilities;

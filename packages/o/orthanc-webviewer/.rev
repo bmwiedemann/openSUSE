@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a24b938a08338ea88743c9a6836277a4</srcmd5>
+    <version>2.5</version>
+    <time>1575464170</time>
+    <user>dimstar_suse</user>
+    <comment>includes fix for missing header</comment>
+    <requestid>753945</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1eac38aa78f787baa33a18d7f5453f1a</srcmd5>
+    <version>2.5</version>
+    <time>1587581455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795517</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af188a497c5f71c5df0ce4b065a23335</srcmd5>
+    <version>2.6</version>
+    <time>1591101275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809646</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0926a0950dd29018596371fc2a9e3e21</srcmd5>
+    <version>2.6</version>
+    <time>1605217085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846160</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de3131d136a5d51ad2f4754a73dc62d8</srcmd5>
+    <version>2.7</version>
+    <time>1608221141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856557</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>af05b582a1347872fc17248a3bb4a254</srcmd5>
+    <version>2.7</version>
+    <time>1612011419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867902</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ece18e0ae2249e92e8441ce3db3ac67b</srcmd5>
+    <version>2.8</version>
+    <time>1664797582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007536</requestid>
+  </revision>
+</revisionlist>

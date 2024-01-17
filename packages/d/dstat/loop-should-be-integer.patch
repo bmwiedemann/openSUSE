@@ -1,0 +1,22 @@
+commit 62ea609fa30261c26232026efa1c7b1950fb568d
+From: Scott Baker <scott.baker@directlink.coop>
+Date:   Thu Jun 13 18:32:02 2019 -0700
+
+Loop should be an integer
+---
+ dstat | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dstat b/dstat
+index 9359965..f6fcecf 100755
+--- a/dstat
++++ b/dstat
+@@ -2697,7 +2697,7 @@ def perform(update):
+ 
+         starttime = time.time()
+ 
+-        loop = (update - 1 + op.delay) / op.delay
++        loop = int((update - 1 + op.delay) / op.delay)
+         step = ((update - 1) % op.delay) + 1
+ 
+         ### Get current time (may be different from schedule) for debugging

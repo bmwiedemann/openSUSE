@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Fri Jul  8 05:32:15 UTC 2016 - coolo@suse.com
+
+- updated to 0.40
+   see /usr/share/doc/packages/perl-Mo/Changes
+
+  0.40 2016-07-06 23:21:21 +0200
+   - Apply PR/30 and PR/31. @nfg++. @veryrusty++.
+
+-------------------------------------------------------------------
+Mon Apr 13 18:08:06 UTC 2015 - coolo@suse.com
+
+- updated to 0.39
+   see /usr/share/doc/packages/perl-Mo/Changes
+
+  0.39 2014-09-03 23:31:55 -0600
+   - Apply PR/25. @daoswald++
+
+-------------------------------------------------------------------
+Tue Oct 29 14:14:46 UTC 2013 - kkaempf@suse.com
+
+- 0.38 2013-10-28 15:37:28 +0800
+  - Fixed Changes file to comply to CPAN::Changes::Spec
+
+- 0.37 2013-10-25 21:46:59 +0800
+  - Bugfix: Run Test::Compile tests as xt as they require optional
+    dependencies to be present (GH issue #22)
+  - Testing: Added Travis-CI integration
+  - Makefile: Added target to update version on all packages
+
+- 0.36 2013-10-20 04:44:42 +0800
+  - Move the distribution to Dist::Zilla
+
+- 0.35 2013-05-27 14:23:42 -0700
+  - Forgot to merge doc changes from CarlosLima++
+
+- 0.34 2013-05-26 14:55:06 -0700
+  - CarlosLima++ added nonlazy support to set defaults during
+    construction.
+
+- 0.33 2013-02-28 03:31:47 +0800
+  - Adds terser syntax to Mo::default
+  - Assumes default when given odd number of arguments to has
+  - Improved automated golfing
+
+- 0.32 2013-02-26 01:47:41 +0800
+  - Required attributes accepts 0/undef
+
+-------------------------------------------------------------------
+Fri Apr 20 07:15:08 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (0.31)
+

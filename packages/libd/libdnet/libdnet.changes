@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Thu Nov  9 11:21:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to libdnet-1.17.0:
+  * Stronger cmake support, updated autotools and a few smaller
+    fixes.
+- update to libdnet-1.16.4:
+  * Various fixes around the build process (esp. cmake support +
+    string.h include fixes)
+  * Sync in latest changes
+  * IPv6 support
+  * Fixed some potential buffer overflows #41
+  * configure: Use AC_CONFIG_HEADERS instead of deprecated
+    AM_CONFIG_HEADER
+  * Don't try to convert hostnames to addresses in addr_pton()
+
+-------------------------------------------------------------------
+Thu Apr 27 22:21:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.4:
+  * Various fixes around the build process (esp. cmake support +
+    string.h include fixes)
+
+-------------------------------------------------------------------
+Thu Jan 12 10:41:06 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.16.3:
+  - IPv6 support
+  - fixed some potential buffer overflows
+
+-------------------------------------------------------------------
+Thu Oct 15 14:16:52 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.14:
+  * many fixes included
+- remove libdnet-autoreconf.patch
+  libdnet-config-multilib.patch
+  libdnet-fortify.patch
+  reproducible.patch: drop (upstream)
+- skip-test-subdir.patch: skip building tests, we don't need
+  to install them and don't run them
+
+-------------------------------------------------------------------
+Wed Mar 18 11:12:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop python2 bindings as they don't make sense to be built with
+  python2 removal
+
+-------------------------------------------------------------------
+Wed Aug  1 04:22:18 UTC 2018 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort linked .o files
+  to make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Tue Jul 25 00:45:47 UTC 2017 - jengelh@inai.de
+
+- Fix RPM groups, trim summaries, drop pointless --with-pic.
+
+-------------------------------------------------------------------
+Mon Jul 17 08:10:34 UTC 2017 - tchvatal@suse.com
+
+- Switch to github
+- Rename libdnet.patch to libdnet-autoreconf.patch
+- Add patch to work properly on multilib systems:
+  * libdnet-config-multilib.patch
+- Install python bindings
+- Add patch for fortify-sources error libdnet-fortify.patch
+
+-------------------------------------------------------------------
+Fri Mar 13 13:39:24 UTC 2015 - tchvatal@suse.com
+
+- Reorder bit with spec cleaner
+- Make the descriptions bit smaller
+
+-------------------------------------------------------------------
+Sun Nov 13 14:54:56 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Sun Nov 13 09:15:27 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Fri Dec  4 15:44:26 CET 2009 - dmueller@suse.de
+
+- refresh patches
+
+-------------------------------------------------------------------
+Tue Oct 20 19:46:05 CEST 2009 - crrodriguez@suse.de
+
+- Update to version 1.12, various bugfixes including
+   support for newwer python versions
+- update download URLs
+
+-------------------------------------------------------------------
+Tue Oct  9 09:09:20 CEST 2007 - crrodriguez@suse.de
+
+- fix build by adapting to the library packaging policy
+- remove useless libtool archive
+- correct some minor packaging issues
+
+-------------------------------------------------------------------
+Thu Sep 21 03:26:32 CEST 2006 - dmueller@suse.de
+
+- Initial package (1.11)
+

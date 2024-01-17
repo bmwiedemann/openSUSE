@@ -1,0 +1,13 @@
+<package name="python-pypi-search" project="openSUSE:Factory">
+  <title>Quickly query packages on PyPI</title>
+  <description>pypi-search allows you to quickly query packages on PyPI. It fetches the following information:
+
+* Version Information
+* Project Links
+* Github Stats if any
+* Meta Information (author, maintainer)
+* Description
+
+It quickly allows you to know what a package is all about without having to open up the PyPI website.</description>
+  <devel project="devel:languages:python" package="python-pypi-search"/>
+</package>

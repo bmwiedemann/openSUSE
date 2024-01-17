@@ -1,0 +1,5 @@
+<package name="libadplug" project="openSUSE:Factory">
+  <title>libadplug</title>
+  <description>libadplug</description>
+  <devel project="multimedia:apps" package="libadplug"/>
+</package>

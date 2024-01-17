@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5da29dc307f867b21e73a04f97efc751</srcmd5>
+    <version>2.020</version>
+    <time>1325658383</time>
+    <user>coolo</user>
+    <comment>new perl module</comment>
+    <requestid>98491</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5da29dc307f867b21e73a04f97efc751</srcmd5>
+    <version>2.020</version>
+    <time>1340183824</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>5da29dc307f867b21e73a04f97efc751</srcmd5>
+    <version>2.020</version>
+    <time>1359109638</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>5da29dc307f867b21e73a04f97efc751</srcmd5>
+    <version>2.020</version>
+    <time>1379663619</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7bf30939e403210512656e014a8b350</srcmd5>
+    <version>2.021</version>
+    <time>1394386523</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>224979</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f8756986fc631dfc9b6ee7831b69349</srcmd5>
+    <version>2.022</version>
+    <time>1395610464</time>
+    <user>scarabeus_factory</user>
+    <comment>update</comment>
+    <requestid>227172</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7f8756986fc631dfc9b6ee7831b69349</srcmd5>
+    <version>2.022</version>
+    <time>1409302239</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6acc7c4d739b71ce2104519c3b68c874</srcmd5>
+    <version>2.023</version>
+    <time>1495637243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495809</requestid>
+  </revision>
+</revisionlist>

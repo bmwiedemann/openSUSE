@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f448a25cd9aa18fd553529f82d46e208</srcmd5>
+    <version>0.3.5</version>
+    <time>1566665411</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2019-08/msg00191.html</comment>
+    <requestid>725811</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b19874435a5bac95ce662e78e0352c7c</srcmd5>
+    <version>0.3.7</version>
+    <time>1567581054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727605</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4757e0f8ebb4c338e8cffda1cb38d333</srcmd5>
+    <version>0.3.9</version>
+    <time>1579729525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766156</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4a74f443da6b0b046fe58f9dde4dd702</srcmd5>
+    <version>0.4.2</version>
+    <time>1590506462</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808036</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f7d5db4e8e1d09bd5d96fe1e385b0cc4</srcmd5>
+    <version>0.4.2</version>
+    <time>1632173586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920179</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>060317ca4f36d9a892dbfc9a62c8c246</srcmd5>
+    <version>0.4.2</version>
+    <time>1634417250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925687</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d09c43c3af6af31315c56661a93cea8c</srcmd5>
+    <version>0.4.3</version>
+    <time>1670703515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041933</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6efdafb22bd33752e21490a52a5d7cb1</srcmd5>
+    <version>0.4.3</version>
+    <time>1679933780</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix compilation error with GCC13:
+  * help.patch
+</comment>
+    <requestid>1074520</requestid>
+  </revision>
+</revisionlist>

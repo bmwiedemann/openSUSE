@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06d7afe23d5c0335eac83121817b7e91</srcmd5>
+    <version>2.3.3</version>
+    <time>1560970489</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>693672</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22d5ae80946422f0b5249c450bda12ea</srcmd5>
+    <version>2.3.3</version>
+    <time>1570104595</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid version ranges in maven dependencies</comment>
+    <requestid>734748</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>36674bf0fbe81cd81eb37127a04d79e5</srcmd5>
+    <version>2.3.3</version>
+    <time>1572884105</time>
+    <user>dimstar_suse</user>
+    <comment>Use source services + LICENSE from the repository</comment>
+    <requestid>744772</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>56c5437ea4b88d68bd4fe5a04d463dcd</srcmd5>
+    <version>2.3.3</version>
+    <time>1655245984</time>
+    <user>dimstar_suse</user>
+    <comment>new alias</comment>
+    <requestid>982583</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>312a459fb263dceb765c434a71cde204</srcmd5>
+    <version>2.3.3</version>
+    <time>1695327784</time>
+    <user>anag+factory</user>
+    <comment>fix build with java &gt;= 20</comment>
+    <requestid>1112750</requestid>
+  </revision>
+</revisionlist>

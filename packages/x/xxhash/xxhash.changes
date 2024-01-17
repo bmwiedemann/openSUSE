@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Thu Nov 30 14:43:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of openSUSE build flags
+
+-------------------------------------------------------------------
+Fri Nov  3 10:00:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.2
+  * ARM NEON speed improvements; on M1 Pro it is +20% speed for
+    XXH3 and XXH128 (from 30.0 GB/s to 36 GB/s).
+  * Added support for ARM's SVE vector extension.
+  * Resolved some issues with XXH3's s390x vector implementation.
+- Delete xxhash-avoid-armv6-unaligned-access.patch (should be
+  fixed by c0dd448b), delete 836f4e735cf368542f14005e41d2f84ec29dfd60.patch
+  (merged), delete 15ce80f9f2760609d8cc68cea76d3f3217ab70e1.patch
+  (merged)
+
+-------------------------------------------------------------------
+Wed Mar  8 21:28:23 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Add 15ce80f9f2760609d8cc68cea76d3f3217ab70e1.patch: fix build
+  failure on ppc64le when using gcc 7 (boo#1208794).
+
+-------------------------------------------------------------------
+Mon Dec 20 10:27:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix racy check execution 
+
+-------------------------------------------------------------------
+Thu Dec  2 22:20:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * perf : much improved performance for XXH3 streaming variants, notably on
+    gcc and msvc
+  * perf : improved XXH64 speed and latency on small inputs
+  * perf : small XXH32 speed and latency improvement on small inputs of random
+    size
+  * perf : minor stack usage improvement for XXH32 and XXH64
+  * api  : new experimental variants XXH3_*_withSecretandSeed()
+  * api  : update XXH3_generateSecret(), can no generate secret of any size (>=
+    XXH3_SECRET_SIZE_MIN)
+  * cli  : xxhsum can now generate and check XXH3 checksums, using command `-H3`
+  * build: can build xxhash without XXH3, with new build macro XXH_NO_XXH3
+  * build: fix xxh_x86dispatch build with MSVC, by @apankrat
+  * build: XXH_INLINE_ALL can always be used safely, even after XXH_NAMESPACE
+    or a previous XXH_INLINE_ALL
+  * build: improved PPC64LE vector support
+  * install: fix pkgconfig
+  * install: compatibility with Haiku
+  * doc  : code comments made compatible with doxygen
+  * misc : XXH_ACCEPT_NULL_INPUT_POINTER is no longer necessary, all functions
+    can accept NULL input pointers, as long as size == 0
+  * misc : complete refactor of CI tests on Github Actions, offering much
+    larger coverage
+  * misc : xxhsum code base split into multiple specialized units, within
+    directory cli/
+- add 836f4e735cf368542f14005e41d2f84ec29dfd60.patch (fix manpage installation)
+
+-------------------------------------------------------------------
+Tue Jul  6 17:15:34 CEST 2021 - ro@suse.de
+
+- add patch xxhash-avoid-armv6-unaligned-access.patch
+  do not expect unaligned accesses to work on armv6, it breaks
+  in our build setup using aarch64 kernels 
+
+-------------------------------------------------------------------
+Mon Aug  3 05:43:31 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.8.0
+  * api : stabilize XXH3
+  * cli : xxhsum can produce BSD-style lines, with command --tag
+  * cli : xxhsum can parse and check BSD-style lines, using command --check
+  * cli : xxhsum - accepts console input
+  * cli : xxhsum accepts -- separator
+  * cli : fix : print correct default algo for symlinked helpers
+- Add BR on c++_compiler, needed for test programs
+
+-------------------------------------------------------------------
+Wed Dec 18 23:57:43 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Enable test suite run in %check
+
+-------------------------------------------------------------------
+Tue Dec 17 13:17:59 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 0.7.2
+  * Fixed collision ratio of XXH128 for some specific input lengths
+  * Improved VSX and NEON variants
+  * Improved performance of scalar code path (XXH_VECTOR=0),
+  * xxhsum: can generate 128-bit hash with command -H2 (note: for
+    experimental purposes only! XXH128 is not yet frozen)
+  * xxhsum: option -q removes status notifications
+
+-------------------------------------------------------------------
+Thu Sep 26 10:06:43 UTC 2019 - simmphonie@opensuse.org
+
+- update to version 0.7.1
+  - XXH3 updates:
+    * Secret first : the algorithm computation can be altered by
+      providing a "secret", which is any blob of bytes, of 
+      size >= XXH3_SECRET_SIZE_MIN.
+    * seed is still available, and acts as a secret generator
+    * As a consequence of these changes, note that new return
+      values of XXH3 are not compatible with v0.7.0
+    * updated ARM NEON variant
+    * Streaming implementation is available
+    * Improve compatibility and performance with Visual Studio
+    * Better integration when using XXH_INLINE_ALL : do not pollute
+      host namespace, use its own macros, such as XXH_ASSERT(), XXH_ALIGN, etc.
+    * 128-bits variant provide helper function, for comparison of hashes.
+  - general improvements:
+    * Better clang generation of rotl instruction
+    * XXH_REROLL build macro, to reduce binary size
+    * Improved cmake script
+    * Full benchmark program provided in /tests/bench
+
+- update to version 0.7.0
+  - Add XXH3 hash algorithm
+
+-------------------------------------------------------------------
+Thu Dec  6 09:25:19 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Remove false information from description - xxHash does not
+  derive from Argon2 algorithm.
+
+-------------------------------------------------------------------
+Mon Dec  3 21:20:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description
+
+-------------------------------------------------------------------
+Tue Oct 16 20:10:06 UTC 2018 - t.gruner@katodev.de
+
+- update to version 0.6.5
+  -  Improved performance on small keys, thanks to suggestions from Jens Bauer
+  -  New build macro, XXH_INLINE_ALL, extremely effective for small keys of fixed length (see this article for details)
+  -  XXH32() : better performance on OS-X clang by disabling auto-vectorization
+  -  Improved benchmark measurements accuracy on small keys
+  -  Included xxHash specification document
+
+-------------------------------------------------------------------
+Sun Jan 21 18:49:27 UTC 2018 - bugs@vdm-design.de
+
+- Initial package of version 0.6.4

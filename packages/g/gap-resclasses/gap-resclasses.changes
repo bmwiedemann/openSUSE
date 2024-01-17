@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Sat Nov 19 01:10:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7.3
+  * Fixed some issues where loading ResClasses could
+    inadvertently alter the behavior of GAP library functions.
+  * Fixed a bug in the 3-argument version of
+    'PartitionsIntoResidueClasses': If the length of the
+    partitions to be computed was smaller than the biggest prime
+    specified in the third argument, the third argument was just
+    ignored.
+  * Changed IsZ_pi from a property to a category.
+  * Remove several internal helper functions.
+
+-------------------------------------------------------------------
+Sat Feb  3 16:22:42 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 4.7.1
+  * No user-visible changes (only pkg metadata)
+
+-------------------------------------------------------------------
+Mon Dec 25 15:43:28 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 4.7.0
+  * Several trivial methods for `SparseRep', `StandardRep' and
+    `Classes' have been added (these methods are now needed by
+    RCWA).
+  * A utility function `GetOption' has been added.
+
+-------------------------------------------------------------------
+Sat Apr 29 22:40:04 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 4.6.0
+  * A utility function `LaTeXStringWord' has been added.
+  * The method for multiplying the empty list with a matrix has
+    been made superfluous and removed.
+
+-------------------------------------------------------------------
+Mon Jun 20 08:17:22 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.5.0
+* Operations `CoverByResidueClasses` and `CoversByResidueClasses`
+  have been introduced, and methods to compute covers of the
+  integers by residue classes with prescribed moduli have been
+  implemented.
+* Utility functions `DrawLineNC` and `AssignGlobalNC` have been
+  added.
+
+-------------------------------------------------------------------
+Wed Jun  8 15:40:43 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.4.2
+* The undocumented and unused function
+  `ResidueClassesIntersectionType` has been removed.
+* The utility functions and -operations `DifferencesList`,
+  `QuotientsList`, `FloatQuotientsList`, `RandomCombination`,
+  `IsCommuting`, `BlankFreeString`, `QuotesStripped` and
+  `IntOrInfinityToLaTeX` have been moved to the Utils package.
+  Therefore Utils is now a needed package of ResClasses.
+* The utility functions and -operations `SaveAsBitmapPicture`,
+  `LoadBitmapPicture`, `DrawGrid`, `EquivalenceClasses`,
+  `GraphClasses`, `AllGraphs` and `IdGraph` have been moved from
+  the RCWA package here, and `IdGraph` has been renamed to
+  `IdGraphNC`.
+* The operations `PositionsSublist`, `GraphClasses`, `AllGraphs`
+  and `IdGraphNC` have been documented.
+
+-------------------------------------------------------------------
+Sat Mar 12 19:45:50 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 4.1.2
+* A class list ("sparse") representation for residue class unions
+  has been implemented; this yields an enormous speedup for
+  computations with unions of few residue classes some of which
+  have big modulus.
+* An auxiliary function `LogToDatedFile' has been added.
+
+-------------------------------------------------------------------
+Fri Dec 12 13:01:22 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.4.0
+* An auxiliary function "NextProbablyPrimeInt" has been added.
+
+-------------------------------------------------------------------
+Fri Feb  7 16:25:54 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 3.3.2
+* Removed a potential performance problem in a "ViewString" method
+  for polynomials over finite fields.
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split resclasses (version 3.3.0) off the gap RPM package

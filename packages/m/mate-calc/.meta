@@ -1,0 +1,6 @@
+<package name="mate-calc" project="openSUSE:Factory">
+  <title>MATE Desktop calculator application</title>
+  <description>mate-calc is a calculator application that was part of the OpenWindows Deskset of the Solaris 8 operating system.
+It incorporates multiple precision arithmetic packages based on the work of Professor Richard Brent.</description>
+  <devel project="X11:MATE:Factory" package="mate-calc"/>
+</package>

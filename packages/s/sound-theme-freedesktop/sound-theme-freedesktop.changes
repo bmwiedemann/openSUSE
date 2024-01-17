@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:39:44 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul  4 20:25:09 UTC 2013 - dimstar@opensuse.org
+
+- Add gpl-2.0.txt as source: COPYING inside the tarball is a 0-byte
+  file (bnc#820488).
+
+-------------------------------------------------------------------
+Tue Sep 25 21:39:14 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.8:
+  + Change default bell sound.
+
+-------------------------------------------------------------------
+Tue Sep 29 11:47:43 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 0.7:
+  + Add sounds: clock alarm
+  + Rename sounds: old alarm to incoming call
+  + Improve sounds: dialog, camera shutter, volume change
+  + Remove sounds: desktop login/logout, battery full, battery low,
+    dialog-ok, dialog-cancel, click-like sounds, many window
+    sounds, menu click, email sound, menu sounds, desktop switch
+  + Rename files from .ogg to .oga
+
+-------------------------------------------------------------------
+Fri Aug 28 18:51:59 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.6:
+  + add system ready/shutdown sounds
+  + replace button-toggle-on and button-toggle-off by a single
+    sound button-toggle
+  + create duplicate sounds as symlinks
+  + add a bunch of new sounds
+  + make complete-media-burn more genericly usable as complete
+
+-------------------------------------------------------------------
+Thu Aug 27 16:50:56 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 0.5:
+  + add window-unmaximize/window-unminimize
+  + add desktop-switch-left and desktop-switch-right
+  + add audio-volume-change
+
+-------------------------------------------------------------------
+Sun Aug 23 21:42:34 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 0.4:
+  + Add screen-capture as a copy of camera-shutter
+- Use fdupes to make package smaller.
+
+-------------------------------------------------------------------
+Wed Jul 29 05:33:27 CEST 2009 - vuntz@novell.com
+
+- Update to version 0.3:
+  + Add one sound.
+- Do not call autoreconf.
+
+-------------------------------------------------------------------
+Thu Nov 13 14:33:08 CET 2008 - rodrigo@novell.com
+
+- Update to version 0.2:
+  + Added some missing sounds
+
+-------------------------------------------------------------------
+Thu Aug 28 12:51:26 CEST 2008 - rodrigo@suse.de
+
+- First version of package, based on Fedora package

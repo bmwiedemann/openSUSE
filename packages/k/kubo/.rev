@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ca5db122aa79cb888b1c4532da87b816</srcmd5>
+    <version>0.21.0</version>
+    <time>1690215959</time>
+    <user>anag+factory</user>
+    <comment>new package (formerly named go-ipfs)
+
+Allows to access the InterPlanetary FileSystem (IPFS) from Linux
+
+now with fixed build</comment>
+    <requestid>1099919</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>70b225c693e748f72c0190573f868b40</srcmd5>
+    <version>0.22.0</version>
+    <time>1692294240</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104228</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81301be573957ccad660a973b930459c</srcmd5>
+    <version>0.23.0</version>
+    <time>1696619654</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.23.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.23.0
+  * Mplex deprecation
+  * Gateway: meaningful CAR responses on Not Found errors
+  * Gateway: added Gateway.DisableHTMLErrors configuration option
+  * Binary characters in file names: no longer works with old clients and new Kubo servers
+  * Self-hosting /routing/v1 endpoint for delegated routing needs
+  * Trustless Gateway Over Libp2p Experiment
+  * Removal of /quic (Draft 29) support
+  * Better Caching of multiaddresses for providers in DHT servers
+  * Fixed FUSE multiblock structures</comment>
+    <requestid>1115959</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0e6b9ee8474ad058578886df9ab7fe8</srcmd5>
+    <version>0.24.0</version>
+    <time>1700421344</time>
+    <user>anag+factory</user>
+    <comment>fixup name in .changes
+
+- Update to 0.24.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.24.0
+  * Support for content blocking
+  * Gateway: the root of the CARs are no longer meaningful
+  * IPNS: improved publishing defaults
+  * IPNS: record TTL is used for caching
+  * Experimental Transport: WebRTC Direct</comment>
+    <requestid>1127487</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7926066d9e27868d7b32c5c38b6c202e</srcmd5>
+    <version>0.24.0</version>
+    <time>1702845258</time>
+    <user>anag+factory</user>
+    <comment>Add 10243.patch to fix FUSE mounts</comment>
+    <requestid>1133743</requestid>
+  </revision>
+</revisionlist>

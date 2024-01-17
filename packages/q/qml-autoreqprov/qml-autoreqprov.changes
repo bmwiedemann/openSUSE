@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue Nov 14 23:57:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Bump version to 1.3
+- qml.req:
+  * Use qtpaths instead of qmake
+  * Generate requirements for unversioned imports
+- qmldirreqprov.sh:
+  * Generate provides and requirements for unversioned imports
+- README.md: Fix typo
+
+-------------------------------------------------------------------
+Tue Jul 11 09:04:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Bump version to 1.2
+- qmldirreqprov.sh:
+  * Fix parsing of "depends"
+  * Add support for "optional plugin"
+- qml.req: Handle imports without minor version requirement
+
+-------------------------------------------------------------------
+Tue Oct 19 18:45:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Check for a Qt runtime directory instead of qmake to also work if
+  no development packages are installed
+
+-------------------------------------------------------------------
+Tue Oct  5 10:48:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update qml.req for Qt 6.2. qmlimportscanner is now installed in
+  %_qt6_libexecdir and has no symlink in /usr/bin. qmake will be
+  queried to find the install dir.
+
+-------------------------------------------------------------------
+Wed Jan 27 08:54:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Convert the opt-in for qml.req to an opt-out
+
+-------------------------------------------------------------------
+Fri Jan 15 15:40:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add a missing { to fix the relative plugin path case
+
+-------------------------------------------------------------------
+Fri Sep  8 18:19:17 UTC 2017 - fabian@ritter-vogt.de
+
+- Initial experiments

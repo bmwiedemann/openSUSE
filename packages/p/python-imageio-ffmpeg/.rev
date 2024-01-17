@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d555f54a52f98df844392063ae3a2c9</srcmd5>
+    <version>0.3.0</version>
+    <time>1558516116</time>
+    <user>dimstar_suse</user>
+    <comment>Required by the latest version of python-imageio.</comment>
+    <requestid>698568</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5b5490fc83c7e4cb48aac45f45e5a06</srcmd5>
+    <version>0.4.1</version>
+    <time>1586973991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792769</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd57eabd8a6158160bb875f97aa6a638</srcmd5>
+    <version>0.4.7</version>
+    <time>1664468036</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006879</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a57f7abe7f677affe81e9e4cc9c83469</srcmd5>
+    <version>0.4.8</version>
+    <time>1679933775</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.8:
+  * get_ffmpeg_exe always checks env var 
+  * Fix pix_format parser to capture formats that have commas 
+    within strings
+  * Avoid warning about invalid escape sequence in regex</comment>
+    <requestid>1074510</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e2b6591ae1897fa9f5d8506f8810fd42</srcmd5>
+    <version>0.4.8</version>
+    <time>1692379740</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104635</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>42760581f43492e0803bf2ac0adb2c45</srcmd5>
+    <version>0.4.9</version>
+    <time>1702845178</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.9:
+  * detect linux-aarch6 correctly for ffmpeg filenames
+  * Add GH Sponsors Link
+  * Updated deprecated test approach + minor changes
+  * Fix format
+  * Enable py311 on ci
+  * Check CI pypy
+  * Add setuptools dependency
+  * correct `fps` parsing
+
+  * get_ffmpeg_exe always checks env var
+  * Fix pix_format parser to capture formats that have commas
+  A fix for closing the std stream.</comment>
+    <requestid>1133658</requestid>
+  </revision>
+</revisionlist>

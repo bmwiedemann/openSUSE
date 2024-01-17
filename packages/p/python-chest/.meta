@@ -1,0 +1,12 @@
+<package name="python-chest" project="openSUSE:Factory">
+  <title></title>
+  <description>A dictionary that spills to disk.
+
+Chest acts likes a dictionary but it can write its contents to disk. This is useful in the following two occasions:
+
+ 1. Chest can hold datasets that are larger than memory
+ 2. Chest persists and so can be saved and loaded for later use
+
+</description>
+  <devel project="devel:languages:python" package="python-chest"/>
+</package>

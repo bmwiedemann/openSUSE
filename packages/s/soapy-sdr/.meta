@@ -1,0 +1,8 @@
+<package name="soapy-sdr" project="openSUSE:Factory">
+  <title>Vendor and platform neutral SDR support library</title>
+  <description>A fresh and clean vendor neutral and platform independent SDR support library.
+
+</description>
+  <devel project="hardware:sdr" package="soapy-sdr"/>
+  <url>https://github.com/pothosware/SoapySDR.git</url>
+</package>

@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Wed Dec  6 12:55:38 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add 10243.patch to fix FUSE mounts
+
+-------------------------------------------------------------------
+Sat Nov 11 01:23:24 UTC 2023 - Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+- Update to 0.24.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.24.0
+  * Support for content blocking
+  * Gateway: the root of the CARs are no longer meaningful
+  * IPNS: improved publishing defaults
+  * IPNS: record TTL is used for caching
+  * Experimental Transport: WebRTC Direct
+
+-------------------------------------------------------------------
+Fri Oct  6 05:52:19 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.23.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.23.0
+  * Mplex deprecation
+  * Gateway: meaningful CAR responses on Not Found errors
+  * Gateway: added Gateway.DisableHTMLErrors configuration option
+  * Binary characters in file names: no longer works with old clients and new Kubo servers
+  * Self-hosting /routing/v1 endpoint for delegated routing needs
+  * Trustless Gateway Over Libp2p Experiment
+  * Removal of /quic (Draft 29) support
+  * Better Caching of multiaddresses for providers in DHT servers
+  * Fixed FUSE multiblock structures
+
+-------------------------------------------------------------------
+Wed Aug  9 17:14:10 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.22.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.22.0
+  * Gateway: support for order= and dups= parameters (IPIP-412)
+  * ipfs name publish now supports V2 only IPNS records
+  * IPNS name resolution has been fixed
+  * go-libp2p v0.29.0 update with smart dialing
+
+-------------------------------------------------------------------
+Fri Jul 21 11:02:24 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Rename from go-ipfs to kubo to follow upsteam git repo rename
+
+-------------------------------------------------------------------
+Wed Jul  5 16:00:28 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.21.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.21.0
+  * Saving previously seen nodes for later bootstrapping
+  * Gateway: DeserializedResponses config flag
+  * Gateway: DAG-CBOR/-JSON previews and improved error pages
+  * Gateway: subdomain redirects are now text/html
+  * Gateway: support for partial CAR export parameters
+  * ipfs dag stat deduping statistics
+  * Accelerated DHT Client is no longer experimental
+  * client/rpc migration of go-ipfs-http-client
+
+-------------------------------------------------------------------
+Sat Feb  4 05:31:59 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.18.1 - for details see:
+  * https://github.com/ipfs/kubo/releases/tag/v0.18.1
+  * https://github.com/ipfs/kubo/releases/tag/v0.18.0
+  * Support InterPlanetary Network Indexers
+  * Support DAG-JSON and DAG-CBOR in gateways
+  * Enable WebTransport by default
+  * Improve libp2p resource management integration
+
+-------------------------------------------------------------------
+Fri Dec  9 02:44:43 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.17.0 - for details see:
+  * https://github.com/ipfs/kubo/releases/tag/v0.17.0
+  * https://github.com/ipfs/kubo/releases/tag/v0.16.0
+  * https://github.com/ipfs/kubo/releases/tag/v0.15.0
+  * https://github.com/ipfs/kubo/releases/tag/v0.14.0
+  * libp2p resource management enabled by default
+  * Implicit connection manager limits
+  * TAR Response Format on Gateways
+  * Dialling /wss peer behind a reverse proxy
+  * More configurable delegated routing system
+  * WebTransport new experimental Transport
+  * Hardened IPNS record verification
+  * Web Gateways now support _redirects files
+  * Add files to MFS with ipfs add --to-files
+  * Blake 3 support
+  * Fx Options plugin
+  * $IPFS_PATH/gateway file
+  * Removed mdns_legacy implementation
+  * Delegated Routing
+  * ipfs repo migrate
+  * Emoji support in Multibase
+
+-------------------------------------------------------------------
+Fri Jun 10 04:27:48 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.13.0
+  * Can now limit how much resource usage libp2p consumes
+  * Improve connecting with nodes behind NATs and Firewalls
+  * Improve HTTP gateway to allow making faster CDNs
+  * Add Gateway.FastDirIndexThreshold configuration, for fast listings
+    of big directories, without the linear slowdown caused by reading
+    size metadata from child nodes.
+  * Improve Etag and If-None-Match
+  * Add X-Ipfs-Roots for smarter HTTP caches
+  * Added metrics per response type
+  * OpenTelemetry tracing
+  * Expand diag profile command
+  * Support for PEM/PKCS8 for key import/export
+  * Use standard IPLD codec names across the CLI/HTTP API
+  * Prioritize Yamux over Mplex stream multiplexer
+  * https://github.com/ipfs/go-ipfs/releases/tag/v0.13.0 for details
+
+-------------------------------------------------------------------
+Fri Feb 18 18:21:01 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.12.0
+  * change how data blocks are stored -> needs migration
+
+-------------------------------------------------------------------
+Fri Dec 10 18:33:25 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.11.0
+  * UnixFS sharding is now automatic and enabled by default
+  * can no longer act as a Circuit Relay v1
+  * HTTP RPC wire format for experimental commands at /api/v0/pubsub changed
+  * Circuit Relay v2
+  * New configuration flags:
+    + Addresses.AppendAnnounce
+    + Pubsub.Enabled 
+  * changed ipfs dag get
+  * changed ipfs dag put
+  * UnixFS refactor
+  * Add ipfs multibase command
+  * Bitswap now supports greater configurability
+  * Programmatic shell completions command
+  * Profile collection command
+  * Add Peering command
+
+-------------------------------------------------------------------
+Thu Jun 24 14:10:36 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.9.0
+  * Exporting of DAGs via Gateways
+  * Custom DNS Resolvers
+  * Support for non-ICANN DNSLink names
+  * Updated to the latest WebUI
+  * IPNS keys can now be exported via the CLI without stopping the daemon
+  * Experimental DHT Client and Provider System
+  * Deprecations
+    + The ipfs object commands are now deprecated
+    + X-Ipfs-Gateway-Prefix is now deprecated
+    + Proquints support removed
+    + SECIO support removed
+
+-------------------------------------------------------------------
+Thu Dec 10 06:10:44 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.8.0
+  * Add Remote pinning services: ipfs pin remote
+  * Faster local pinning and unpinning
+  * update quic-go to support QUIC draft-32
+
+-------------------------------------------------------------------
+Wed Sep 30 03:38:42 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.7.0
+  * Drop upstream 7331.patch
+  * Default to Ed25519 keys
+  * Secio is now disabled by default
+  * IPNS paths now encode the key name as a base36 CIDv1 by default
+  * Multiaddresses now accept PeerIDs encoded as CIDv1
+  * dag stat command shows size and number of blocks
+
+-------------------------------------------------------------------
+Wed May 20 09:24:53 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add 7331.patch to fix ipns resolution
+
+-------------------------------------------------------------------
+Fri May  8 04:23:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.5.0
+  * Improved DHT
+  * Improved Content Transfer
+    * Refactored Bitswap
+  * Stable Badger Datastore
+  * Improved Backoff Logic
+  * AutoNAT - determining if the node is reachable from the public internet
+  * PeerIDs under /p2p/QmSomePeerID instead of /ipfs/QmSomePeerID
+  * enforce RSA keys with 2048+ bits
+  * TLS By Default
+  * Subdomain Gateway now uses http://CID.ipfs.localhost:8080/
+  * PubSub is now using more efficient "gossipsub" implementation
+  * Files can now be ignored on add by passing the --ignore and/or
+    --ignore-rules-path flags.
+  * It's now possible to add data directly from a named pipe
+  * Systemd Support
+    * socket activation and startup/shutdown notifications
+  * IPFS API Over Unix Domain Sockets
+  * After install run ipfs daemon --migrate 
+
+-------------------------------------------------------------------
+Fri Jan 31 09:57:06 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.4.23
+  * Fixed Panics and Crashes
+  * Fixed Spontaneous TLS Disconnects
+  * Better Bitswap
+  * Reduced Relay Related DHT Spam
+  * Retuned Connection Manager
+  * Fixed Resursive Resolving of dnsaddr Multiaddrs
+
+-------------------------------------------------------------------
+Wed Aug  7 15:34:33 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.4.22
+  progress on #6506
+
+  Key bug fixes:
+    Too many open file descriptors/too many peers (#6237).
+    Adding multiple files at the same time doesn't work (#6254).
+    CPU utilization spikes and then holds at 100% (#5613).
+
+  Key features:
+    Experimental TLS1.3 support (to eventually replace secio).
+    OpenSSL support for SECIO handshakes (performance improvement).
+
+-------------------------------------------------------------------
+Tue Apr 30 12:43:53 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.4.20
+  * fixed a frequent panic in the DHT
+  * workaround stuck transfers
+  * See https://github.com/ipfs/go-ipfs/releases/tag/v0.4.20
+    for full changes
+
+-------------------------------------------------------------------
+Mon Mar 11 10:28:59 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Require fuse at runtime
+- Include docs
+
+-------------------------------------------------------------------
+Tue Mar  5 08:45:42 UTC 2019 - Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
+
+- Update to 0.4.19
+
+-------------------------------------------------------------------
+Fri Dec 14 12:18:55 UTC 2018 - Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
+
+- Update to 0.4.18

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>41e5309afbb439cf38f3435b7d3a1640</srcmd5>
+    <version>5.0.8</version>
+    <time>1605011978</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>839119</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>878e30fbb8db9d27933c7bee4aabaae9</srcmd5>
+    <version>5.0.8</version>
+    <time>1615905925</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879209</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f95f0718d8d9b2892980a83b47d89293</srcmd5>
+    <version>5.1.4</version>
+    <time>1672754685</time>
+    <user>dimstar_suse</user>
+    <comment>version 5.1.4 with more detailed changes</comment>
+    <requestid>1046229</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e622f30a5f8318f670487e2575939412</srcmd5>
+    <version>5.1.11</version>
+    <time>1688563880</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.1.11
+  * did not find the changes entries :/ (forwarded request 1096891 from msmeissn)</comment>
+    <requestid>1096893</requestid>
+  </revision>
+</revisionlist>

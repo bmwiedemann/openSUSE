@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Feb 22 17:33:03 UTC 2021 - bruno@ioda-net.ch
+
+- Update to version 0+git.1523004651.b7212d5:
+  * debian: select qt5
+  * debian: follow debian qml-module naming sheme
+  * debian: standards-version 4.1.3 and compat 11
+  * Rename README to README.md Markdown syntax only works well with .md file ending.
+  * Improved readme to help beginners. Added a few screenshots of example scenes.
+  * Added new example revolutePlotAngle. Plots the revolute joint angle in a nice plot (ChartView)
+  * Fixed 'make install' command issue on Android (#119)
+  * Added new example angleTracking. Showcases a revolute joint tracking an angle set by mouse clicks.
+  * Removed invalid iCCP chunk from PNG files
+  * Improved the application showcase file (ui.qml):
+    - added permanent list view at side
+    - removed back button
+    - avoid balls get spawned outside of 'brickwall' scene box
+    - fixed accept keys for revolute, moving box examples
+    - added key text when necessary
+    - removed debugDraw for demolition example, as it caused the
+      example to crash if clicked from sidebar
+- Packaging
+  + refresh with spec-cleaner (license macro, copyright year)
+  + due incompatible changes use internal Box2D
+  + remove external Box2D dependency
+
+-------------------------------------------------------------------
+Sun Aug 21 16:48:09 UTC 2016 - jengelh@inai.de
+
+- Ensure all created directories are owned.
+  Set RPM group classification.
+
+-------------------------------------------------------------------
+Sun Aug 21 12:48:20 UTC 2016 - bruno@ioda-net.ch
+
+- Simplify BuildRequires list with the use of pkgconfig(Qt5Quick)
+  This fix the unresolvable qtquick 1 failure on TW
+
+-------------------------------------------------------------------
+Sun Jul  3 15:02:09 UTC 2016 - bruno@ioda-net.ch
+
+- Update to version 0+git.1451747535.1b37be7:
+  * Corrected some filenames in header comments
+- Don't use github url for src, we use service for that.
+
+-------------------------------------------------------------------
+Sun Dec 27 14:42:24 UTC 2015 - bruno@ioda-net.ch
+
+- First packaging for openSUSE
+- Make qml-box2d find system Box2D
+

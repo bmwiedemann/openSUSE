@@ -1,0 +1,5 @@
+<package name="deepin-branding-openSUSE" project="openSUSE:Factory">
+  <title>deepin-branding-openSUSE</title>
+  <description>This package provides the openSUSE look and feel for the deepin desktop environment.</description>
+  <devel project="X11:Deepin" package="deepin-branding-openSUSE"/>
+</package>

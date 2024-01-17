@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>02e262f250f50b8186be49f4c02a8392</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282847</time>
+    <user>dimstar_suse</user>
+    <comment>New applications released with KDE gear</comment>
+    <requestid>1081081</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>62da9e277bdff09de7b26749ddc1bbff</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916611</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086463</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2df859e4aaadadcdf140cbc7aec80f4c</srcmd5>
+    <version>23.04.2</version>
+    <time>1686335983</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.2 (forwarded request 1091225 from krop)</comment>
+    <requestid>1091688</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f9ff5b3055a984ed876f2a949c315c9</srcmd5>
+    <version>23.04.3</version>
+    <time>1688737783</time>
+    <user>favogt_factory</user>
+    <comment>KDE release gear 23.04.3 (forwarded request 1097054 from krop)</comment>
+    <requestid>1097399</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a569c49f48916037a124dc8a103030ef</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482321</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
+    <requestid>1105819</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e354ef42462edf298302fb0fe2c0ce0e</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808263</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111300</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d27c74a566bf7157e602f88e2362b7db</srcmd5>
+    <version>23.08.2</version>
+    <time>1697147035</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117423</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a9eb9a45c1b481b7899ca2e02f17f256</srcmd5>
+    <version>23.08.3</version>
+    <time>1699615975</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
+    <requestid>1124685</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26853cbd8da3d1b5bf0065a97ca32c7d</srcmd5>
+    <version>23.08.4</version>
+    <time>1702158796</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
+    <requestid>1131978</requestid>
+  </revision>
+</revisionlist>

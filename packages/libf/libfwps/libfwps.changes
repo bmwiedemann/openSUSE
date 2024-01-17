@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Mon Nov 27 19:32:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20231126
+  * Build system updates only
+
+-------------------------------------------------------------------
+Tue Aug  1 15:57:36 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
+
+-------------------------------------------------------------------
+Wed Jul 12 04:12:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230711
+  * New APIs: Moved path string to separate functions
+  * Python bindings were updated
+
+-------------------------------------------------------------------
+Sun Feb  5 20:07:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 20230202
+  * Python bindings were updated
+
+-------------------------------------------------------------------
+Mon Jan 30 17:17:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230130
+  * Python bindings were updated
+
+-------------------------------------------------------------------
+Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (not needed - system libs are
+  autodetected)
+
+-------------------------------------------------------------------
+Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add forced symvers
+
+-------------------------------------------------------------------
+Sat Jan 22 12:35:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220122
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Thu May 13 11:43:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package for build.opensuse.org
+  (version 20210421/commit 5d59f5bf)
+- Add system-libs.patch

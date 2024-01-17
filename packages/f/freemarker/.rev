@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34a44e0003755f115ee2973c1d0a332b</srcmd5>
+    <version>2.3.28</version>
+    <time>1574014933</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748034</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ad858c3204b144eb223f734114d0ad8</srcmd5>
+    <version>2.3.28</version>
+    <time>1580152602</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
+    <requestid>767558</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad3ab09fe631bb989d241fb5a6e33e9a</srcmd5>
+    <version>2.3.31</version>
+    <time>1644617246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953270</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1c38d88a2ae8acf7703739e58c42e55d</srcmd5>
+    <version>2.3.31</version>
+    <time>1652188305</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with newer javacc</comment>
+    <requestid>975896</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ccf2ed50b2f78904c8371aa91733478b</srcmd5>
+    <version>2.3.31</version>
+    <time>1688246286</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with jython 2.7.3</comment>
+    <requestid>1095811</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9d13230bb5767fbcdf83a6d21a9c9a5e</srcmd5>
+    <version>2.3.31</version>
+    <time>1692795454</time>
+    <user>anag+factory</user>
+    <comment>fix build with ivy 2.5.2</comment>
+    <requestid>1105157</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>3a20baec0803f0fb3dac546097d2ed48</srcmd5>
+    <version>2.3.31</version>
+    <time>1694460129</time>
+    <user>anag+factory</user>
+    <comment>reproducible improvements</comment>
+    <requestid>1110244</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>8995bfa6f88e16c8bb6a66f32b540a92</srcmd5>
+    <version>2.3.31</version>
+    <time>1695853547</time>
+    <user>dimstar_suse</user>
+    <comment>Do not get stuck with java 8</comment>
+    <requestid>1113833</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>c9b7fce64ffe21e815eb6991c93ea1ea</srcmd5>
+    <version>2.3.31</version>
+    <time>1698333253</time>
+    <user>anag+factory</user>
+    <comment>source/target 8 == build with jdk 21</comment>
+    <requestid>1120409</requestid>
+  </revision>
+</revisionlist>

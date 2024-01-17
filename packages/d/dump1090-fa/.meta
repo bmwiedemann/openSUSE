@@ -1,0 +1,9 @@
+<package name="dump1090-fa" project="openSUSE:Factory">
+  <title>An ADS-B Mode S decoder for RTLSDR devices (Flightaware fork)</title>
+  <description>An ADS-B Mode S decoder specifically designed for RTLSDR devices.
+Flightaware fork.
+
+</description>
+  <devel project="hardware:sdr" package="dump1090-fa"/>
+  <url>https://github.com/flightaware/dump1090</url>
+</package>

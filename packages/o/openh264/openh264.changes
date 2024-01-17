@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat Oct 15 17:07:07 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 2.3.1
+  + Decoder bug fix to correct the B-frame order in some case
+  + Fixes to avoid hanging for multi-thread decoding
+  + Some Enhancements and fixes for rate control
+  + Assembly optimization for loongson platform
+  + Some minor bug fixes
+  + update SHAREDLIB_MAJORVERSION value in Makefile
+
+-------------------------------------------------------------------
+Wed Mar 16 11:21:48 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 2.2.0
+  + Add support for B-slice error concealment
+  + Thread decoding support for multi-slice frame
+  + Some Bug fixes for B-frame decoding
+  + Some minor bug fixes
+
+-------------------------------------------------------------------
+Thu Jan 13 13:49:47 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
+
+- Initial packaging derived from Fedora package

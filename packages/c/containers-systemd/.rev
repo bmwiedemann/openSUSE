@@ -1,0 +1,367 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2cac38749260897cfc51a57b0042e25</srcmd5>
+    <version>0.0+git20191030.b2f919f</version>
+    <time>1572779819</time>
+    <user>dimstar_suse</user>
+    <comment>New package to run some openSUSE containers from systemd</comment>
+    <requestid>744779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e617593d6dbe7be11b47bff36e97e167</srcmd5>
+    <version>0.0+git20200116.87baa97</version>
+    <time>1579195413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200116.87baa97:
+  * Start container only after network, don't abort if pull fails</comment>
+    <requestid>764997</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c500bed359be70abcc9ed3fe8135a71a</srcmd5>
+    <version>0.0+git20200116.87baa97</version>
+    <time>1579346284</time>
+    <user>dimstar_suse</user>
+    <comment>- Use new macro to prevent restart on update</comment>
+    <requestid>765292</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87d1c8914a4b88ad540617c2a9a6dfcd</srcmd5>
+    <version>0.0+git20200122.8276c03</version>
+    <time>1579729555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200122.8276c03:
+  * Add support for nginx container</comment>
+    <requestid>766256</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ff2f983a114b0b9f2d1fee98b469ede9</srcmd5>
+    <version>0.0+git20200124.e3c2408</version>
+    <time>1580420249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200124.e3c2408:
+  * Fix network parameter for dhcp servers</comment>
+    <requestid>768833</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>faaba8066d3efe402fcb703410509b80</srcmd5>
+    <version>0.0+git20200212.47b21c6</version>
+    <time>1581585168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200212.47b21c6:
+  * Add haproxy</comment>
+    <requestid>773810</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a1992acb9caffbacf5d119f635327ac0</srcmd5>
+    <version>0.0+git20200217.580c00f</version>
+    <time>1582018957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200217.580c00f:
+  * Add squid</comment>
+    <requestid>775002</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b62d07e8ed2ee504812ec779624674b</srcmd5>
+    <version>0.0+git20200219.a6acfd1</version>
+    <time>1582206944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200219.a6acfd1:
+  * Adjust for new nginx container image
+  * Fix comment</comment>
+    <requestid>777380</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b6092dbc5ed15ca502bbfb7684e13834</srcmd5>
+    <version>0.0+git20200324.5f4ae65</version>
+    <time>1585085808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200324.5f4ae65:
+  * Add timer to prune unnamed images</comment>
+    <requestid>787810</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6b460aa4b77da0a95f89b47fafadfb86</srcmd5>
+    <version>0.0+git20200324.5f4ae65</version>
+    <time>1585602386</time>
+    <user>dimstar_suse</user>
+    <comment>- Package service file for squid conainer</comment>
+    <requestid>789792</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b803e12bc4d411b92fe4531122c6d9b6</srcmd5>
+    <version>0.0+git20200324.5f4ae65</version>
+    <time>1588697684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800133</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>93f4828927a110671e50c61e310f312a</srcmd5>
+    <version>0.0+git20200602.25da9c0</version>
+    <time>1591380122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200602.25da9c0:
+  * Fix creation of nginx directories
+
+- Update to version 0.0+git20200602.570333a:
+  * Move from sysconfig to /etc/default to seperate defaults from user made
+    changes (containers-systemd#1)
+  * Use conmon-pidfile for better systemd integration
+    (container-registry-systemd#2)</comment>
+    <requestid>810841</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>93f0163040236c4214f8aa5a5e9275ce</srcmd5>
+    <version>0.0+git20200828.7cc6e97</version>
+    <time>1598642349</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200828.7cc6e97:
+  * Add support for postfix container
+
+- Update to version 0.0+git20200825.e6c35ce:
+  * Allow extra args for podman for the ldap container
+
+- Update to version 0.0+git20200824.8ed78c3:
+  * New files to support OpenLDAP
+  * Adjust documentation</comment>
+    <requestid>830274</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>60277a97da7fef00bdca6d9885412246</srcmd5>
+    <version>0.0+git20200901.c31b0cc</version>
+    <time>1599209643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200901.c31b0cc:
+  * Add LDAP_TLS_VERIFY_CLIENT, use &quot;organization&quot;</comment>
+    <requestid>831097</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eb40994b7f28ce9286a191b2bcf1338d</srcmd5>
+    <version>0.0+git20200918.c14836a</version>
+    <time>1600701090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20200918.c14836a:
+  * All services should 'Want=' targets not just 'After='</comment>
+    <requestid>835440</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ea6621d7c1c0b89043f44d047f182593</srcmd5>
+    <version>0.0+git20201027.f1d33d8</version>
+    <time>1603821516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20201027.f1d33d8:
+  * Add a way to provide pki directory to postfix
+
+- Update to version 0.0+git20201026.4046317:
+  * Start some services only after firewall is running
+
+- Update to version 0.0+git20201023.1bb4d20:
+  * Point to documentation in wiki
+  * Unify names of spool directories
+  * Fix name of container
+  * Fix typo</comment>
+    <requestid>844345</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f6130a73106a7914ceeda431f37d01a2</srcmd5>
+    <version>0.0+git20201113.5e435e8</version>
+    <time>1605450143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20201113.5e435e8:
+  * Make more options configureable
+  * Make list of ports to export configureable
+  * Only restart containers when the process fails abnormally
+  * Add LDAP_BIND_DN, make password files configureable</comment>
+    <requestid>848355</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b98fe6319f800703125abf4dc5858304</srcmd5>
+    <version>0.0+git20201208.1b4413e</version>
+    <time>1607612198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20201208.1b4413e:
+  * Add support for dovecot
+  * Fix description
+  * Add support for minidlna container
+  * Add LMTP variable</comment>
+    <requestid>854067</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9ab71a55656fa194f5f71b0554cde0da</srcmd5>
+    <version>0.0+git20201220.ed8a6b2</version>
+    <time>1608550524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20201220.ed8a6b2:
+  * Add default for FETCHMAILRC
+
+- Update to version 0.0+git20201220.0fae7ba:
+  * Add service for fetchmail container
+
+- Update to version 0.0+git20201220.69a11d7:
+  * Document spamassassin support
+  * Add support for a spamassassin container
+
+- LDAP_MAIL_READER_PASSWORD was renamed to LDAP_BIND_PASSWORD
+- Update to version 0.0+git20201217.a84253d:
+  * Allow to overwrite TLS key location</comment>
+    <requestid>857743</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9edc3acac26cb5aaebd1cf6fb2c06da5</srcmd5>
+    <version>0.0+git20210107.f55f4b3</version>
+    <time>1610303944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210107.f55f4b3:
+  * postfix: provide SMTP_TLS_SECURITY_LEVEL variable
+
+- Update to version 0.0+git20210107.5e7d60c:
+  * spamassassin: add volume for configuration files
+
+- Update to version 0.0+git20210105.c149375:
+  * postfix: Add SMTP_PORT and NULLCLIENT</comment>
+    <requestid>861384</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4efc76d231a8cf1ca502fcc07edf96d9</srcmd5>
+    <version>0.0+git20210118.1366ecb</version>
+    <time>1612182314</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>866615</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>141101a6271186db932e1f80174232b5</srcmd5>
+    <version>0.0+git20210205.a4b07b6</version>
+    <time>1613044039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210205.a4b07b6:
+  * Add container-nfs-service files</comment>
+    <requestid>869722</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3ef4e0e3b8f84568a19dc01e2880d526</srcmd5>
+    <version>0.0+git20210222.f3de7fa</version>
+    <time>1614273979</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.0+git20210222.f3de7fa:
+  * Rewrite based on podman changes
+  * Correct TimeoutStopSec to 70
+  * Replace KillMode=none with TimeoutStopSec</comment>
+    <requestid>874368</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>07317a611635adb0f7b1ae406f0f088e</srcmd5>
+    <version>0.0+git20210318.fea98a6</version>
+    <time>1616365169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210318.fea98a6:
+  * Add lost podman pull back
+  * nginx: fix syntax error</comment>
+    <requestid>879890</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>98a6cb844ec44e818c2c44abec65a0d1</srcmd5>
+    <version>0.0+git20210407.9384691</version>
+    <time>1618061200</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.0+git20210407.9384691:
+  * Add service for wsdd</comment>
+    <requestid>883629</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>155677bfd739a5cc22bc679501c9a7b8</srcmd5>
+    <version>0.0+git20210507.9afe2a6</version>
+    <time>1620653794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210507.9afe2a6:
+  * Add files for samba</comment>
+    <requestid>891252</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>545c965cfbb6253bf247a6aafbc8a4c1</srcmd5>
+    <version>0.0+git20211129.1b144ae</version>
+    <time>1638387975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20211129.1b144ae:
+  * Add roundcube files</comment>
+    <requestid>934610</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3aab2a82a88e54bf3ff833b1f94098ca</srcmd5>
+    <version>0.0+git20220131.79f09c7</version>
+    <time>1643926586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220131.79f09c7:
+  * Adjust timing for start limits in case of errors
+  * Fix typo
+
+- Update to version 0.0+git20211130.31bd054:
+  * Use Type=notify instead of forking (following podman upstream)</comment>
+    <requestid>950221</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d506653800132270a0573fc53697d92f</srcmd5>
+    <version>0.0+git20220628.ee9e63c</version>
+    <time>1656511253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220628.ee9e63c:
+  * Add files to renew certificates with certbot</comment>
+    <requestid>985537</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7447d28befafe76f0ca625be353d3be3</srcmd5>
+    <version>0.0+git20220706.2c928fe</version>
+    <time>1657191373</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220706.2c928fe:
+  * Fix partly missing SELinux support (#5), call podman directly</comment>
+    <requestid>986984</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>6b3699c0f34b65199ea29f93092efd8a</srcmd5>
+    <version>0.0+git20220710.f290756</version>
+    <time>1657559276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220710.f290756:
+  * container-openldap: fix syntax error in ExecStart</comment>
+    <requestid>988065</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c06fe590936f2a2f45fc00cec647212f</srcmd5>
+    <version>0.0+git20220713.967c6f4</version>
+    <time>1657809205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220713.967c6f4:
+  * Add submission/smtps support for postfix</comment>
+    <requestid>988999</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1fc879b74cc0f5ec2300b4f54e067d9b</srcmd5>
+    <version>0.0+git20220811.226e80e</version>
+    <time>1660319182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20220811.226e80e:
+  * Add service for cups container
+  * Make sure dhcp container has NET_RAW capabilities</comment>
+    <requestid>994526</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ec3d9ebfc6f226323f89070ec6141015</srcmd5>
+    <version>0.0+git20230324.9cd3b7a</version>
+    <time>1679766896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20230324.9cd3b7a:
+  * container-certbot-renew.service is a oneshot service</comment>
+    <requestid>1074101</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f54fdfbe053ab3b30db36dfb0c90c2ea</srcmd5>
+    <version>0.0+git20231208.299201e</version>
+    <time>1702158551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20231208.299201e:
+  * certbot needs a tty
+  * wsdd: don't run binary to set HOSTNAME</comment>
+    <requestid>1132103</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,47 @@
+Index: pidentd-3.0.19/src/ikeygen.c
+===================================================================
+--- pidentd-3.0.19.orig/src/ikeygen.c
++++ pidentd-3.0.19/src/ikeygen.c
+@@ -105,8 +105,8 @@ usage(FILE *fp)
+ void
+ program_header(FILE *fp)
+ {
+-    fprintf(fp, "[Ikeygen, version %s - %s %s]\n",
+-	    server_version, __DATE__, __TIME__);
++    fprintf(fp, "[Ikeygen, version %s]\n",
++	    server_version);
+ }
+     
+ 
+Index: pidentd-3.0.19/src/main.c
+===================================================================
+--- pidentd-3.0.19.orig/src/main.c
++++ pidentd-3.0.19/src/main.c
+@@ -88,9 +88,8 @@ usage(FILE *fp)
+ static void
+ program_header(FILE *fp)
+ {
+-    fprintf(fp, "[Pidentd, version %s (compiled for %s) - %s %s]\n",
+-	    server_version, osinfo_build,
+-	    __DATE__, __TIME__);
++    fprintf(fp, "[Pidentd, version %s (compiled for %s)]\n",
++	    server_version, osinfo_build);
+ }
+ 
+ void
+Index: pidentd-3.0.19/src/send.c
+===================================================================
+--- pidentd-3.0.19.orig/src/send.c
++++ pidentd-3.0.19/src/send.c
+@@ -170,9 +170,9 @@ send_version(int fd,
+     char buf[1024], buf2[32];
+     
+     s_snprintf(buf, sizeof(buf),
+-	     "0 , 0 : X-VERSION : pidentd %s for %s (%s %s)\r\n",
++	     "0 , 0 : X-VERSION : pidentd %s for %s\r\n",
+ 	     server_version,
+-	     osinfo_build, __DATE__, __TIME__);
++	     osinfo_build);
+     
+     s_write(fd, buf, strlen(buf));
+     

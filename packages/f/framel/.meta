@@ -1,0 +1,11 @@
+<package name="framel" project="openSUSE:Factory">
+  <title>Library to manipulate Gravitational Wave Detector data in frame format</title>
+  <description>A Common Data Frame Format for Interferometric Gravitational Wave Detector has
+been developed by VIRGO and LIGO. The Frame Library is a software in C
+language, with interfaces to python and matlab, dedicated to frame data
+manipulation including file input/output.
+
+</description>
+  <devel project="science" package="framel"/>
+  <url>https://lappweb.in2p3.fr/virgo/FrameL/</url>
+</package>

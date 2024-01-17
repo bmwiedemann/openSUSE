@@ -1,0 +1,40 @@
+Index: gtags.conf.in
+===================================================================
+--- gtags.conf.in.orig
++++ gtags.conf.in
+@@ -77,7 +77,7 @@ builtin-parser:\
+ user-custom|User custom plugin parser:\
+ 	:tc=common:\
+ 	:langmap=c\:.c.h:\
+-	:gtags_parser=c\:$libdir/gtags/user-custom.la:
++	:gtags_parser=c\:@libdir@/gtags/user-custom.la:
+ #
+ # Plug-in parser to use Exuberant Ctags.
+ #
+@@ -88,7 +88,7 @@ user-custom|User custom plugin parser:\
+ exuberant-ctags|plugin-example|setting to use Exuberant Ctags plug-in parser:\
+ 	:tc=common:\
+ 	:ctagscom=@EXUBERANT_CTAGS@:\
+-	:ctagslib=$libdir/gtags/exuberant-ctags.la:\
++	:ctagslib=@libdir@/gtags/exuberant-ctags.la:\
+ 	:langmap=Ant\:(*.build.xml):\
+ 	:langmap=Asm\:.asm.ASM.s.S.A51(*.29[kK])(*.[68][68][kKsSxX])(*.[xX][68][68]):\
+ 	:langmap=Asp\:.asp.asa:\
+@@ -181,7 +181,7 @@ exuberant-ctags|plugin-example|setting t
+ universal-ctags|setting to use Universal Ctags plug-in parser:\
+ 	:tc=common:\
+ 	:ctagscom=@UNIVERSAL_CTAGS@:\
+-	:ctagslib=$libdir/gtags/universal-ctags.la:\
++	:ctagslib=@libdir@/gtags/universal-ctags.la:\
+ 	:langmap=Ada\:.adb.ads.Ada:\
+ 	:langmap=Ant\:(build.xml)(*.build.xml).ant.xml:\
+ 	:langmap=Asm\:.A51(*.29[kK])(*.[68][68][kKsSxX])(*.[xX][68][68]).asm.ASM.s.S:\
+@@ -370,7 +370,7 @@ universal-ctags|setting to use Universal
+ pygments-parser|Pygments plug-in parser:\
+ 	:tc=common:\
+ 	:ctagscom=@EXUBERANT_CTAGS@:\
+-	:pygmentslib=$libdir/gtags/pygments-parser.la:\
++	:pygmentslib=@libdir@/gtags/pygments-parser.la:\
+ 	:langmap=ABAP\:.abap:\
+ 	:langmap=ANTLR\:.G.g:\
+ 	:langmap=ActionScript3\:.as:\

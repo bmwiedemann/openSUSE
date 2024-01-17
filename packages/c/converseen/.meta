@@ -1,0 +1,15 @@
+<package name="converseen" project="openSUSE:Factory">
+  <title>Batch Image Conversion Tool</title>
+  <description>Converseen is a batch image conversion tool. Converseen allows you
+to convert images in more than 100 different formats.
+
+With converseen you can:
+- Carry out a single or a multiple conversion.
+- Create one or multiple thumbnails.
+- Create &quot;converted&quot; thumbnails.
+- Compress images for your pages.
+
+</description>
+  <devel project="graphics" package="converseen"/>
+  <url>http://converseen.sourceforge.net/</url>
+</package>

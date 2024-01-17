@@ -1,0 +1,5 @@
+<package name="python-django-minio-storage" project="openSUSE:Factory">
+  <title></title>
+  <description>Django file storage using minio</description>
+  <devel project="devel:languages:python:django" package="python-django-minio-storage"/>
+</package>

@@ -1,0 +1,20 @@
+sddm_start_proc () {
+    if [ -x /usr/bin/plymouth ]; then
+        /usr/bin/plymouth quit
+    fi
+    return 0
+}
+
+sddm_vars() {
+    case $1 in
+        sddm)
+            DISPLAYMANAGER=/usr/bin/sddm
+            STARTPROC=sddm_start_proc
+            RELOADPROC=sddm_start_proc
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+    return 0
+}

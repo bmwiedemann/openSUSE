@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Thu May 17 00:38:29 UTC 2018 - avindra@opensuse.org
+
+- Update to revision 316eac0. Changes since d7f95b5:
+  * close config file after using it
+- remove _service in favor of github archive tarball
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Mar  5 14:27:50 UTC 2016 - asarai@suse.com
+
+- added _service: add an automated way to generate the .tar.xz file.
+- update to the latest version of compton (0.1_beta2.82).
+  > Remove the .desktop patch, this has been fixed upstream.
+  > Add the new icons (and hicolor-icon-theme).
+- removed compton-0.1.0-fix_desktop_file.patch
+
+-------------------------------------------------------------------
+Sun Jan 25 17:32:09 UTC 2015 - sfalken@opensuse.org
+
+- Added conditionals to support building on Fedora 
+
+-------------------------------------------------------------------
+Sun May 11 17:59:59 UTC 2014 - andrea@opensuse.org
+
+- major spec file cleanup
+- allow cross distro building with fedora 
+
+-------------------------------------------------------------------
+Tue Aug 13 08:59:00 UTC 2013 - petr@yarpen.cz
+
+- version 0.1.0
+
+-------------------------------------------------------------------
+Mon Jan 28 15:46:00 UTC 2013 - petr@yarpen.cz
+
+- new dependencies: git, dbus-1
+- COMPTON_VERSION set for building
+
+-------------------------------------------------------------------
+Fri Oct 26 16:45:00 UTC 2012 - petr@yarpen.cz
+
+- Version bump to 0.0.1
+
+-------------------------------------------------------------------
+Mon Oct 01 10:35:48 UTC 2012 - petr@scribus.info
+
+- Initial package 0.0.0
+
+

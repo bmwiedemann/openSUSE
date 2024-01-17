@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>497c53a6d8b2bb957d879ff56f69920e</srcmd5>
+    <version>5.4.0</version>
+    <time>1524144450</time>
+    <user>dimstar_suse</user>
+    <comment>Paraview example data</comment>
+    <requestid>592639</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>81333054f952368b136864a31a38024c</srcmd5>
+    <version>5.4.0</version>
+    <time>1531135679</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621101</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>89e56e54bf45fa7c77065ce2720954ea</srcmd5>
+    <version>5.8.0</version>
+    <time>1583094502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780694</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c6ce331d707ea58c3adc2365d38076aa</srcmd5>
+    <version>5.11.2</version>
+    <time>1701972703</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.11.2.
+  * No upstream release notes.
+</comment>
+    <requestid>1131663</requestid>
+  </revision>
+</revisionlist>

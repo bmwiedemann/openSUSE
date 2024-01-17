@@ -1,0 +1,5 @@
+<package name="vips" project="openSUSE:Factory">
+  <title></title>
+  <description>VIPS is a free image processing system. It is good with large images (images larger than the amount of RAM you have available), with many CPUs, for working with colour, for scientific analysis and for general research and development.</description>
+  <devel project="graphics" package="vips"/>
+</package>

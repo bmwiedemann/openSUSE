@@ -1,0 +1,44 @@
+Index: php-8.2.7/php.ini-production
+===================================================================
+--- php-8.2.7.orig/php.ini-production
++++ php-8.2.7/php.ini-production
+@@ -742,7 +742,7 @@ default_charset = "UTF-8"
+ ;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ ; UNIX: "/path1:/path2"
+-;include_path = ".:/php/includes"
++include_path = ".:/usr/share/php8:/usr/share/php/PEAR"
+ ;
+ ; Windows: "\path1;\path2"
+ ;include_path = ".;c:\php\includes"
+@@ -976,7 +976,7 @@ cli_server.color = On
+ [Date]
+ ; Defines the default timezone used by the date functions
+ ; https://php.net/date.timezone
+-;date.timezone =
++date.timezone = 'UTC'
+ 
+ ; https://php.net/date.default-latitude
+ ;date.default_latitude = 31.7667
+@@ -1169,7 +1169,7 @@ mysqli.max_persistent = -1
+ 
+ ; Allow or prevent persistent links.
+ ; https://php.net/mysqli.allow-persistent
+-mysqli.allow_persistent = On
++mysqli.allow_persistent = Off
+ 
+ ; Maximum number of links.  -1 means no limit.
+ ; https://php.net/mysqli.max-links
+Index: php-8.2.7/sapi/fpm/www.conf.in
+===================================================================
+--- php-8.2.7.orig/sapi/fpm/www.conf.in
++++ php-8.2.7/sapi/fpm/www.conf.in
+@@ -27,6 +27,8 @@
+ ;                 If the group is not set, the user's group is used.
+ user = @php_fpm_user@
+ group = @php_fpm_group@
++; session folder has to be writable by user:group
++php_value[session.save_path] = /var/lib/php8/sessions
+ 
+ ; The address on which to accept FastCGI requests.
+ ; Valid syntaxes are:

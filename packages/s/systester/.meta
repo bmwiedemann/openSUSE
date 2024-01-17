@@ -1,0 +1,5 @@
+<package name="systester" project="openSUSE:Factory">
+  <title></title>
+  <description>System Stability Tester tries to test the system's stability by calculating up to 128 millions of Pi digits.</description>
+  <devel project="benchmark" package="systester"/>
+</package>

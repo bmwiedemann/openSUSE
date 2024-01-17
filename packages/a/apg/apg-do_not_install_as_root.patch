@@ -1,0 +1,34 @@
+--- Makefile.orig	2010-06-15 11:38:24.000000000 +0200
++++ Makefile	2010-06-15 11:51:19.000000000 +0200
+@@ -74,8 +74,6 @@
+ #CS_LIBS = -lsocket
+ 
+ # ====== YOU DO NOT NEED TO MODIFY ANYTHING BELOW THIS LINE ======
+-# Find group ID for user root
+-FIND_GROUP = `grep '^root:' /etc/passwd | awk -F: '{ print $$4 }'`
+ 
+ PROGNAME = apg
+ CS_PROGNAME = apgd
+@@ -113,19 +111,19 @@
+ 	if test -x ./apg; then \
+ ./mkinstalldirs ${INSTALL_PREFIX}${APG_BIN_DIR}; \
+ ./mkinstalldirs ${INSTALL_PREFIX}${APG_MAN_DIR}; \
+-./install-sh -c -m 0755 -o root -g ${FIND_GROUP} ./apg ${INSTALL_PREFIX}${APG_BIN_DIR}; \
++./install-sh -c -m 0755 ./apg ${INSTALL_PREFIX}${APG_BIN_DIR}; \
+ ./install-sh -c -m 0444 ./doc/man/apg.1 ${INSTALL_PREFIX}${APG_MAN_DIR}; \
+ fi
+ 	if test -x ./apgd; then \
+ ./mkinstalldirs ${INSTALL_PREFIX}${APGD_BIN_DIR}; \
+ ./mkinstalldirs ${INSTALL_PREFIX}${APGD_MAN_DIR}; \
+-./install-sh -c -m 0755 -o root -g ${FIND_GROUP} ./apgd ${INSTALL_PREFIX}${APGD_BIN_DIR}; \
++./install-sh -c -m 0755 ./apgd ${INSTALL_PREFIX}${APGD_BIN_DIR}; \
+ ./install-sh -c -m 0444 ./doc/man/apgd.8 ${INSTALL_PREFIX}${APGD_MAN_DIR}; \
+ fi
+ 	if test -x ./apgbfm; then \
+ ./mkinstalldirs ${INSTALL_PREFIX}${APG_BIN_DIR}; \
+ ./mkinstalldirs ${INSTALL_PREFIX}${APG_MAN_DIR}; \
+-./install-sh -c -m 0755 -o root -g ${FIND_GROUP} ./apgbfm ${INSTALL_PREFIX}${APG_BIN_DIR}; \
++./install-sh -c -m 0755 ./apgbfm ${INSTALL_PREFIX}${APG_BIN_DIR}; \
+ ./install-sh -c -m 0444 ./doc/man/apgbfm.1 ${INSTALL_PREFIX}${APG_MAN_DIR}; \
+ fi
+ 

@@ -1,0 +1,273 @@
+-------------------------------------------------------------------
+Tue Nov 28 11:59:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -p N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Mon Sep 25 15:09:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.15.1:
+  + Security fix: CVE-2023-4863: Heap buffer overflow in libwebp.
+
+-------------------------------------------------------------------
+Tue Sep  5 09:46:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.15.0:
+  + Various security fixes and other quality improvements.
+  + CVE-2023-4573: Memory corruption in IPC CanvasTranslator
+  + CVE-2023-4574: Memory corruption in IPC
+    ColorPickerShownCallback
+  + CVE-2023-4575: Memory corruption in IPC FilePickerShownCallback
+  + CVE-2023-4576: Integer Overflow in
+    RecordedSourceSurfaceCreation
+  + CVE-2023-4581: XLL file extensions were downloadable without
+    warnings
+  + CVE-2023-4584: Memory safety bugs fixed in Firefox 117, Firefox
+    ESR 102.15, Firefox ESR 115.2, Thunderbird 102.15, and
+    Thunderbird 115.2
+
+-------------------------------------------------------------------
+Fri Aug 11 10:54:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.14.0:
+  + Various security fixes and other quality improvements.
+  + CVE-2023-4045: Offscreen Canvas could have bypassed
+    cross-origin restrictions.
+  + CVE-2023-4046: Incorrect value used during WASM compilation.
+  + CVE-2023-4047: Potential permissions request bypass via
+    clickjacking.
+  + CVE-2023-4048: Crash in DOMParser due to out-of-memory
+    conditions.
+  + CVE-2023-4049: Fix potential race conditions when releasing
+    platform objects.
+  + CVE-2023-4050: Stack buffer overflow in StorageManager.
+  + CVE-2023-4054: Lack of warning when opening appref-ms files.
+  + CVE-2023-4055: Cookie jar overflow caused unexpected cookie jar
+    state.
+  + CVE-2023-4056: Memory safety bugs fixed in Firefox 116, Firefox
+    ESR 115.1, Firefox ESR 102.14, Thunderbird 115.1, and
+    Thunderbird 102.14.
+- Changes from version 102.13.0:
+  + Various security fixes and other quality improvements.
+  + CVE-2023-37201: Use-after-free in WebRTC certificate generation
+  + CVE-2023-37202: Potential use-after-free from compartment
+    mismatch in SpiderMonkey
+  + CVE-2023-37207: Fullscreen notification obscured
+  + CVE-2023-37208: Lack of warning when opening Diagcab files
+  + CVE-2023-37211: Memory safety bugs fixed in Firefox 115,
+    Firefox ESR 102.13, and Thunderbird 102.13
+
+-------------------------------------------------------------------
+Mon Jun 26 12:32:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.12.0:
+  + Various security fixes.
+  + CVE-2023-34414: Click-jacking certificate exceptions through
+    rendering lag.
+
+-------------------------------------------------------------------
+Tue May  9 07:49:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.11.0:
+  + Various security fixes.
+  + CVE-2023-32205: Browser prompts could have been obscured by
+    popups
+  + CVE-2023-32206: Crash in RLBox Expat driver
+  + CVE-2023-32207: Potential permissions request bypass via
+    clickjacking
+  + CVE-2023-32211: Content process crash due to invalid wasm code
+  + CVE-2023-32212: Potential spoof due to obscured address bar
+  + CVE-2023-32213: Potential memory corruption in
+    FileReader::DoReadData()
+  + CVE-2023-32214: Potential DoS via exposed protocol handlers
+  + CVE-2023-32215: Memory safety bugs fixed in Firefox 113 and
+    Firefox ESR 102.11
+
+-------------------------------------------------------------------
+Wed Apr 26 01:51:01 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add missing copyright in the spec to claim:
+  + Frantisek Zatloukal's work from:
+    https://src.fedoraproject.org/rpms/mozjs102/blob/rawhide/f/mozjs102.spec
+  + Wolfgang Rosenauer's work from:
+    https://build.opensuse.org/package/view_file/openSUSE:Leap:42.3/mozjs38/mozjs38.spec?expand=1
+ 
+-------------------------------------------------------------------
+Wed Apr 12 03:13:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.10.0:
+  + Various security fixes.
+  + CVE-2023-29531: Out-of-bound memory access in WebGL on macOS
+  + CVE-2023-29532: Mozilla Maintenance Service Write-lock bypass
+  + CVE-2023-29533: Fullscreen notification obscured
+  + MFSA-TMP-2023-0001: Double-free in libwebp
+  + CVE-2023-29535: Potential Memory Corruption following Garbage
+    Collector compaction
+  + CVE-2023-29536: Invalid free from JavaScript code
+  + CVE-2023-29539: Content-Disposition filename truncation leads
+    to Reflected File Download
+  + CVE-2023-29541: Files with malicious extensions could have been
+    downloaded unsafely on Linux
+  + CVE-2023-29542: Bypass of file download extension restrictions
+  + CVE-2023-29545: Windows Save As dialog resolved environment
+    variables
+  + CVE-2023-1945: Memory Corruption in Safe Browsing Code
+  + CVE-2023-29548: Incorrect optimization result on ARM64
+  + CVE-2023-29550: Memory safety bugs fixed in Firefox 112 and
+    Firefox ESR 102.10
+
+-------------------------------------------------------------------
+Fri Apr  7 09:22:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace clang-devel and llvm-devel with clang and llvm-gold
+  BuildRequires.
+
+-------------------------------------------------------------------
+Tue Mar 14 14:32:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.9.0:
+  + Various security fixes.
+  + CVE-2023-25751: Incorrect code generation during JIT
+    compilation.
+  + CVE-2023-28164: URL being dragged from a removed cross-origin
+    iframe into the same tab triggered navigation.
+  + CVE-2023-28162: Invalid downcast in Worklets.
+  + CVE-2023-25752: Potential out-of-bounds when accessing
+    throttled streams.
+  + CVE-2023-28163: Windows Save As dialog resolved environment
+    variables.
+  + CVE-2023-28176: Memory safety bugs fixed in Firefox 111 and
+    Firefox ESR 102.9.
+
+-------------------------------------------------------------------
+Tue Feb 14 22:30:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.8.0:
+  + Various security fixes.
+  + CVE-2023-25728: Content security policy leak in violation
+    reports using iframes.
+  + CVE-2023-25730: Screen hijack via browser fullscreen mode.
+  + CVE-2023-25743: Fullscreen notification not shown in Firefox
+    Focus.
+  + CVE-2023-0767: Arbitrary memory write via PKCS 12 in NSS.
+  + CVE-2023-25735: Potential use-after-free from compartment
+    mismatch in SpiderMonkey.
+  + CVE-2023-25737: Invalid downcast in
+    SVGUtils::SetupStrokeGeometry.
+  + CVE-2023-25738: Printing on Windows could potentially crash
+    Firefox with some device drivers.
+  + CVE-2023-25739: Use-after-free in
+    mozilla::dom::ScriptLoadContext::~ScriptLoadContext.
+  + CVE-2023-25729: Extensions could have opened external schemes
+    without user knowledge.
+  + CVE-2023-25732: Out of bounds memory write from
+    EncodeInputStream.
+  + CVE-2023-25734: Opening local .url files could cause unexpected
+    network loads.
+  + CVE-2023-25742: Web Crypto ImportKey crashes tab.
+  + CVE-2023-25744: Memory safety bugs fixed in Firefox 110 and
+    Firefox ESR 102.8.
+  + CVE-2023-25746: Memory safety bugs fixed in Firefox ESR 102.8.
+
+-------------------------------------------------------------------
+Tue Jan 17 13:35:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.7.0:
+  + Various stability, functionality, and security fixes.
+  + CVE-2022-46871: libusrsctp library out of date.
+  + CVE-2023-23598: Arbitrary file read from GTK drag and drop on
+    Linux.
+  + CVE-2023-23599: Malicious command could be hidden in devtools
+    output on Windows.
+  + CVE-2023-23601: URL being dragged from cross-origin iframe into
+    same tab triggers navigation.
+  + CVE-2023-23602: Content Security Policy wasn't being correctly
+    applied to WebSockets in WebWorkers.
+  + CVE-2022-46877: Fullscreen notification bypass.
+  + CVE-2023-23603: Calls to <code>console.log</code> allowed
+    bypasing Content Security Policy via format directive.
+  + CVE-2023-23605: Memory safety bugs fixed in Firefox 109 and
+    Firefox ESR 102.7.
+
+-------------------------------------------------------------------
+Wed Dec 14 10:31:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.6.0:
+  + Various stability, functionality, and security fixes.
+  + CVE-2022-46880: Use-after-free in WebGL.
+  + CVE-2022-46872: Arbitrary file read from a compromised content
+    process.
+  + CVE-2022-46881: Memory corruption in WebGL.
+  + CVE-2022-46874: Drag and Dropped Filenames could have been
+    truncated to malicious extensions.
+  + CVE-2022-46875: Download Protections were bypassed by .atloc
+    and .ftploc files on Mac OS.
+  + CVE-2022-46882: Use-after-free in WebGL.
+  + CVE-2022-46878: Memory safety bugs fixed in Firefox 108 and
+    Firefox ESR 102.6.
+
+-------------------------------------------------------------------
+Fri Nov 18 18:04:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.5.0:
+  + Various stability, functionality, and security fixes.
+  + CVE-2022-45403: Service Workers might have learned size of
+    cross-origin media files.
+  + CVE-2022-45404: Fullscreen notification bypass.
+  + CVE-2022-45405: Use-after-free in InputStream implementation.
+  + CVE-2022-45406: Use-after-free of a JavaScript Realm.
+  + CVE-2022-45408: Fullscreen notification bypass via windowName.
+  + CVE-2022-45409: Use-after-free in Garbage Collection.
+  + CVE-2022-45410: ServiceWorker-intercepted requests bypassed
+    SameSite cookie policy.
+  + CVE-2022-45411: Cross-Site Tracing was possible via
+    non-standard override headers.
+  + CVE-2022-45412: Symlinks may resolve to partially uninitialized
+    buffers.
+  + CVE-2022-45416: Keystroke Side-Channel Leakage.
+  + CVE-2022-45418: Custom mouse cursor could have been drawn over
+    browser UI.
+  + CVE-2022-45420: Iframe contents could be rendered outside the
+    iframe.
+  + CVE-2022-45421: Memory safety bugs fixed in Firefox 107 and
+    Firefox ESR 102.5.
+
+-------------------------------------------------------------------
+Tue Oct 18 14:14:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.4.0:
+  + Various stability, functionality, and security fixes.
+  + CVE-2022-42927: Same-origin policy violation could have leaked
+    cross-origin URLs.
+  + CVE-2022-42928: Memory Corruption in JS Engine.
+  + CVE-2022-42929: Denial of Service via window.print.
+  + CVE-2022-42932: Memory safety bugs fixed in Firefox 106 and
+    Firefox ESR 102.4.
+
+-------------------------------------------------------------------
+Tue Sep 27 14:13:15 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Adjust name of ICU data file to fix build on big-endian platforms
+
+-------------------------------------------------------------------
+Tue Sep 20 07:41:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.3.0:
+  + Various stability, functionality, and security fixes.
+  + CVE-2022-3266: Out of bounds read when decoding H264.
+  + CVE-2022-40959: Bypassing FeaturePolicy restrictions on
+    transient pages.
+  + CVE-2022-40960: Data-race when parsing non-UTF-8 URLs in
+    threads.
+  + CVE-2022-40958: Bypassing Secure Context restriction for
+    cookies with __Host and __Secure prefix.
+  + CVE-2022-40956: Content-Security-Policy base-uri bypass.
+  + CVE-2022-40957: Incoherent instruction cache when building WASM
+    on ARM64.
+  + CVE-2022-40962: Memory safety bugs fixed in Firefox 105 and
+    Firefox ESR 102.3.
+
+-------------------------------------------------------------------
+Fri Aug 26 18:08:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.

@@ -1,0 +1,701 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31ff51d25a49cb1549c5ed5be08f4651</srcmd5>
+    <version>1.0.1</version>
+    <time>1461855211</time>
+    <user>dimstar_suse</user>
+    <comment>next try with correct license</comment>
+    <requestid>384537</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>274e2305599433b5ab3be2f05c2837ae</srcmd5>
+    <version>1.0.1</version>
+    <time>1472595051</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>423684</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a54b097567a661f197176a48b9687ecd</srcmd5>
+    <version>1.1.0</version>
+    <time>1489345358</time>
+    <user>dimstar_suse</user>
+    <comment>- buildrequire pkgconfig
+
+- Updated to 1.1.0 / 016-11-04 (FATE#321509)
+  - Added
+  * travis ci support.
+  * Allow for unit tests to be enabled selectively.
+  * tpm2_rc_decode tool: Decode TPM_RC error codes.
+  * Android Make file
+  * tpm2_listpersistent: list all persistent objects
+  * test scripts for tpm2-tools
+  * tpm2_nvreadlock
+  * tpm2_getmanufec: retrieve EC from tpm manufacturer server.
+  * Copy 'common' and 'sample' code from the TPM2.0-TSS repo.
+  - Modified
+  * tpm2_takeownership: update option -c to use lockout password to clear.
+  * tpm2_listpcrs: add options -L and -s, rewrite to increase performance.
+  * tpm2_quote: added -L option to support selection of multiple banks.
+  * tpm2_quote: add -q option to get qualifying data.
+  * configure: Use pkg-config to get info about libcurl and libcrypto.
+  * configure: Use pkg-config to locate SAPI and TCTI headers / libraries.
+  * tpm2_x: Add -X option to enable password input in Hex format.
+  * tpm2_nvdefine: Change -X option to -I.
+  * tpm2-nvwrite: fix for unable to write 1024B+ data.
+  * tpm2_getmanufec: Fix base64 encoding.
+  * tpm2_x: fixed a lot of TPM2B failures caused by wrong initialization.
+  * tpm2_getmanufec: let configure handle libs.
+  * tpm2_getmanufec: Convert from dos to unix format.
+  * build: Check for TSS2 library @ configure time.
+  * build: Detect required TSS2 and TCTI headers.
+  * build: Use libtool to build the common library</comment>
+    <requestid>477412</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>24053c7640232eb6c18dcb9baf10b61c</srcmd5>
+    <version>2.0.0</version>
+    <time>1496534401</time>
+    <user>dimstar_suse</user>
+    <comment>- tpm2.0-tools-fix-hardening.patch: do not disable fortify,
+  do not use -Wstack-protector as it warns also for non-utilized
+  functions and then -Werror fails.
+- tpm2.0-tools-fix-gcc7.patch: fixed gcc7 case fallthrough errors
+
+- Major update to 2.0.0
+  - dropped fixes.patch, now part of the upstream version
+  - a set of man pages have been added to the package
+  - Upstream changes:
+    * Tracked on the milestone: https://github.com/01org/tpm2.0-tools/milestone/2
+    * Reworked all the tools to support configurable TCTIs, based on build time
+      configuration, one can specify the tcti via the --tcti (-T) option to all
+      tools.
+    * tpm2_getrandom interface made -s a positional argument.
+    * Numerous bug fixes.</comment>
+    <requestid>500551</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1ec1fcca229c88ffe2c69af8dc4b2db3</srcmd5>
+    <version>2.0.0</version>
+    <time>1498046251</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-tpm2_listpcrs-use-TPM2_GetCapability-to-determine-PC.patch: fixed
+  tpm2_listpcrs aborting saying &quot;too much pcrs to get!&quot; (bnc#1044419)</comment>
+    <requestid>505011</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>caec1c69d8abe809a0c6d151e0d4d74d</srcmd5>
+    <version>2.0.0</version>
+    <time>1498742540</time>
+    <user>dimstar_suse</user>
+    <comment>- 0002-kdfa-use-openssl-for-hmac-not-tpm.patch: fixed unexpected leak of
+  cleartext password into the tpm when generating an HMAC in the context of
+  tpm_kdfa() (key derivation function) (bnc#1046402, CVE-2017-7524)</comment>
+    <requestid>507025</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>0fe05095dcda279bba388836e40aa75a</srcmd5>
+    <version>2.0.0</version>
+    <time>1503308194</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514173</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b465a688fb3fe57b4a209ea8b08782a7</srcmd5>
+    <version>2.1.0</version>
+    <time>1503925930</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.1.0:
+  - dropped 0002-kdfa-use-openssl-for-hmac-not-tpm.patch, was backported
+   upstream in commit 788a17abbe0000c560935ef9f31c9a6892d9ea33
+  - this version now can interact with the new resource manager tpm2.0-abrmd
+  - Upstream changes:
+    * Fix readx and writex on multiple EINTR returns.
+    * Add support for the tabrmd TCTI. This is the new default.
+    * Change default socket port from 2323 (the old resourcemgr) to 2321
+    (default simulator port).
+    * Cherry-pick fix for CVE-2017-7524.
+    * Fix tpm2_listpcr command line option handling.
+    * Fix tpm2_getmanufec memory issues. (forwarded request 517963 from mgerstner)</comment>
+    <requestid>517972</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4f3146b11fffa86486641a3ab4a4d482</srcmd5>
+    <version>2.1.1</version>
+    <time>1510406413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.1.1
+  * Potential memory leak fix when tcti/sapi initialization fails.
+  * tpm2_listpcrs: use TPM2_GetCapability to determine PCRs to read
+  * listpcrs: remove one redundant call to tpm get cap
+  * listpcrs: fix for unsupported/disabled alg in -L
+  * build: use supported comment to suppress GCC7 fallthrough warning
+  * kdfa: allow to build with OpenSSL 1.1.x (bsc#1067392)
+- drop patches (upstream)
+  * 0001-tpm2_listpcrs-use-TPM2_GetCapability-to-determine-PC.patch
+  * tpm2.0-tools-fix-gcc7.patch</comment>
+    <requestid>540241</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>52fbe8438706b939acc21e3e57757fab</srcmd5>
+    <version>3.0.3</version>
+    <time>1519683857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.3:
+  - various changes in tool options
+  - man pages are now in section 1 (formerly in section 8)
+  - tools are now installed in /usr/bin (formerly /usr/sbin)
+
+this depends on sr#578988, please put it into the same staging project.</comment>
+    <requestid>578990</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fb23661e4f15261fa93fb1c3e4f26297</srcmd5>
+    <version>3.0.3</version>
+    <time>1520503161</time>
+    <user>dimstar_suse</user>
+    <comment>- disable pandoc for all but openSUSE, since pandoc never was on SLE
+
+- disable pandoc/man pages generation on SLE-15, because pandoc is not
+  available there (and adding it would require two dozen additional haskell
+  packages)</comment>
+    <requestid>583976</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4320bc3ea421d41e7c2b17f728a01706</srcmd5>
+    <version>3.0.4</version>
+    <time>1525343640</time>
+    <user>dimstar_suse</user>
+    <comment>- install-man.patch: even after update to 3.0.4 the man pages are not
+  installed correctly. This patch fixes it locally.
+
+- update to version 3.0.4:
+  - Fix save and load for TPM2B_PRIVATE object.
+  - Use a default buffer size for tpm2_nv{read,write} if the TPM reports a 0 size.
+  - Fix --verbose and --version options crossover.
+  - Generate man pages from markdown and include them in the distribution tarball.
+  - Print usage summary if tools are executed with no options or man page can't be displayed.
+- man pages will be shipped for SLE version now, too (pandoc dependency was removed)</comment>
+    <requestid>603119</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4635a7ab23489e87a4063dbc32d0196e</srcmd5>
+    <version>3.0.4</version>
+    <time>1528492441</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build after adding install-man.patch: autoreconf is needed again (sigh!)</comment>
+    <requestid>614208</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aad9ab8848b75babfd4f1465e14e7828</srcmd5>
+    <version>3.1.0</version>
+    <time>1530866474</time>
+    <user>dimstar_suse</user>
+    <comment>Please handle together with sr#620443, sr#620444, required dependencies.
+
+- update to major version 3.1.0:
+  - the tpm2 stack introduces an incompatible ABI to the previous version with
+    this update. There is no compatibility layer, libraries have new names
+  - install-man.patch: dropped, because we don't really need it
+  - tpm2.0-tools-fix-hardening.patch: contained in upstream tarball now
+s etc.
+  - upstream changelog:
+    * tpm2_unseal: -P becomes -p
+    * tpm2_sign: -P becomes -p
+    * tpm2_nvreadlock: long form for -P is now --auth-hierarchy
+    * tpm2_rsadecrypt: -P becomes -p
+    * tpm2_nvrelease: long-form of -P becomes --auth-hierarchy
+    * tpm2_nvdefine: -I becomes -p
+    * tpm2_encryptdecrypt: -P becomes -p
+    * tpm2_dictionarylockout: -P becomes -p
+    * tpm2_createprimary: -K becomes -p
+    * tpm2_createak: -E becomes -e
+    * tpm2_certify: -k becomes -p
+    * tpm2_hash: -g changes to -G
+    * tpm2_encryptdecrypt: Support IVs via -i and algorithm modes via -G.
+    * tpm2_hmac: drop -g, just use the algorithm associated with the object.
+    * tpm2_getmanufec: -g changes to -G
+    * tpm2_createek: -g changes to -G
+    * tpm2_createak: -g changes to -G
+    * tpm2_verifysignature: -g becomes -G
+    * tpm2_sign: -g becomes -G
+    * tpm2_import: support specifying parent key with a context file,
+      --parent-key-handle/-H becomes --parent-key/-C
+    * tpm2_nvwrite and tpm2_nvread: when -P is &quot;index&quot; -a is optional and defaults to
+      the NV_INDEX value passed to -x.</comment>
+    <requestid>620445</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>42940de97171e2fe04d8fd91ded0e391</srcmd5>
+    <version>3.1.1</version>
+    <time>1534940557</time>
+    <user>dimstar_suse</user>
+    <comment>- update to minor version 3.1.1:
+  - Allow man page installation without pandoc being available</comment>
+    <requestid>630849</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2fcff638e278bdcd363e5436d1b49e3d</srcmd5>
+    <version>3.1.2</version>
+    <time>1538117601</time>
+    <user>dimstar_suse</user>
+    <comment>- update to minor version 3.1.2:
+  - Revert the change to use user supplied object attributes exclusively. This
+    is an inappropriate behavioural change for a MINOR version number
+    increment.
+  - Fix inclusion of object attribute specifiers section in tpm2_create and
+    tpm2_createprimary man pages.
+  - Use better object attribute defaults for authentication, preventing an
+    empty password being used for authentication when a policy is set.</comment>
+    <requestid>638482</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>05747a1025fd2bd4fa997754f2510eb0</srcmd5>
+    <version>3.1.2</version>
+    <time>1548064382</time>
+    <user>dimstar_suse</user>
+    <comment>incorporate FATE# in changes file for SLE-15-SP1 (bsc#1121860)</comment>
+    <requestid>665954</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fef16900c429260641b7ff702e3b28c3</srcmd5>
+    <version>3.1.3</version>
+    <time>1551883938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to minor version 3.1.3:
+  - Restore support for the TPM2TOOLS_* env vars for TCTI configuration, in
+    addition to supporting the new unified TPM2TOOLS_ENV_TCTI
+  - Fix tpm2_getcap to print properties with the TPM_PT prefix, rather than
+    TPM2_PT
+  - Make test_tpm2_activecredential Python 3 compatible
+  - Fix tpm2_takeownership to only attempt to change the specified hierarchies
+- use a _service file to sync with upstream tags</comment>
+    <requestid>682127</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>16fe251b1f706cbb7e9b0511ff6723f2</srcmd5>
+    <version>3.1.4</version>
+    <time>1566894238</time>
+    <user>dimstar_suse</user>
+    <comment>- update to minor version 3.1.4:
+  * Fix various man pages
+  * tpm2_getmanufec: fix OSSL build warnings
+  * Fix broken -T option
+  * Various build compatibility fixes
+  * Fix some unit tests
+  * Update build for recent autoconf-archive versions
+  * Install m4 files</comment>
+    <requestid>726072</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1b8fc5dad53bd924c085ef32234093d8</srcmd5>
+    <version>4.1</version>
+    <time>1576676687</time>
+    <user>dimstar_suse</user>
+    <comment>! please handle this together with sr#755853 for tpm2-0-tss !
+
+- add fix_bad_bufsize.patch: fixes findings from compile time fread() checks
+  that indicate bad buffer size specification.
+- add fix_bogus_warning.patch: fixes `maybe-unitialized` warnings that are
+  bogus, since the variables in questions will be initialized in any case
+  later on.
+
+- update to major version 4.1:
+  - changes in version 4.1:
+    * tpm2_certifycreation: New tool enabling command TPM2_CertifyCreation.
+    
+    * tpm2_checkquote:
+       - Fix YAML output bug.
+       - -g option for specifying hash algorithm is optional and defaults to
+         sha256.
+    
+    * tpm2_changeeps: A new tool for changing the Endorsement hierarchy
+      primary seed.
+    
+    * tpm2_changepps: A new tool for changing the Platform hierarchy primary seed.
+    
+    * tpm2_clockrateadjust: Add a new tool for modifying the period on the TPM.
+    
+    * tpm2_create: Add tool options for specifying output data for use in
+      certification
+      - --creation-data to save the creation data
+      - --creation-ticket or -t to save the creation ticket
+      - --creation-hash or -d to save the creation hash
+      - --template-data for saving the template data of the key
+      - --outside-info or -q for specifying unique data to include in creation data.
+      - --pcr-list or -l  Add option to specify pcr list to add to creation data.</comment>
+    <requestid>755855</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>47637f7a76b8dd6425940f70bfb193c5</srcmd5>
+    <version>4.3.0</version>
+    <time>1603880739</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3:
+  - changes in version 4.3:
+    - tss2_*: Fix double-free errors in commands asking for password authorization
+    - tss2_*: Fix shorthand command -f that was falsely requiring an argument
+    - tss2_*: Update tss2_encrypt to the new FAPI interface
+    - The argument 'policyPath' is removed which was never read anyway
+    - tss2_*: Remove the additional '\n' that was appended when redirecting to stdout
+    - tss2_*: Update mandatory vs optional treatment of arguments according to latest Fapi spec
+    - tss2_*: tss2_getinfo now retrieves the correct FAPI version from Fapi_GetInfo
+    - tss2_*: Fix the error handling in case of multiple inputs and/or outputs from stdin/stdout
+    - tss2_*: Fix syntax errors and update content of man pages according to latest Fapi spec
+    - tss2_*: Add parameter types to all man page
+    - tss2_*: tss2_setappdata now reads from file or stdin allowing to store also binary data
+    - tss2_*: Memory leaks are fixed in cases when a returned empty non-char output value was passed to file output
+    - tss2_pcrextend: fix extending PCR 0
+    - tss2_quote: fix unused TSS2_RC in LOG_ERR
+  - changes in 4.2.1:
+    - Fix missing handle maps for ESY3 handle breaks. See #1994.
+    - Bump ESYS minimum dependency version from 2.3.0 to 2.4.0.
+    - Fix for loop declarations build error.
+  - changes in 4.2:
+    - Fix various issues reported by static analysis tools.
+    - Add integration test for ECC based getekcertificate.
+    - Fix for issue #1959 where ARM builds were failing.
+    - Add a check in autotools to add &quot;expect&quot; as a package dependency for fapi tools.
+    - tpm2_createek: Drop the unused -p or --ek-auth option
+    - tpm2_policyor: List of policy files should be specified as an argument
+    - instead of -l option. The -l option is still retained for backwards
+    - compatibility. See issue#1894.
+    - tpm2_eventlog: add a tool for parsing and displaying the event log.</comment>
+    <requestid>843599</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e5447e277b2f41bd5f617a6fc5d0ec79</srcmd5>
+    <version>5.0</version>
+    <time>1611865742</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix_warnings.patch: fixes a couple of build errors resulting from LTO
+  linking and -Werror.
+- add fix_pie_linking.patch: fixes an error in the build system that causes
+  the tss2 binary to be linked without passed LDFLAGS (like -pie), which
+  causes the binary not to be position independent.
+- update to major version 5.0:
+  - Non Backwards Compatible Changes
+    * Default hash algorithm is now sha256. Prior versions claimed sha1, but were
+      inconsistent in choice. Best practice is to specify the hash algorithm to
+      avoid surprises.
+    * tpm2_tools and tss2_tools are now a busybox style commandlet. Ie
+      tpm2_getrandom becomes tpm2 getrandom. make install will install symlinks
+      to the old tool names and the tpm2 commandlet will interrogate argv[0] for
+      the command to run. This will provide backwards compatibility if they are
+      installed. If you wish to use the old names not installed system wide, set
+      DESTDIR during install to a separate path and set the proper directory on
+      PATH.
+    * tpm2_eventlog's output changed to be YAML compliant. The output before
+      was intended to be YAML compliant but was never properly checked and
+      tested.
+    * umask set to 0117 for all tools.
+    * tpm2_getekcertificate now outputs the INTC EK certificates in PEM format
+      by default. In order to output the URL safe variant of base64 encoded
+      output of the INTC EK certificate use the added option --raw.
+  - Dependency update
+    * Update tpm2-tss dependency version to 3.0.1
+    * Update tpm2-abrmd dependency version to 2.3.3
+  - New tools and features
+    * tpm2_zgen2phase: Add new tool to support command TPM2_CC_ZGen_2Phase.
+    * tpm2_ecdhzgen: Add new tool to support command TPM2_CC_ECDH_ZGen.</comment>
+    <requestid>867453</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>56668b849e44262a1e48b3eab584ed5a</srcmd5>
+    <version>5.0</version>
+    <time>1620158461</time>
+    <user>dimstar_suse</user>
+    <comment>- fix `--version` output of tools. Since now autoreconf is called and
+  configure.ac attempts to fetch the version from git (which we don't have
+  during building), the version was empty. Fix this by replacing the git
+  invocation in configure.ac.</comment>
+    <requestid>890270</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>84acd03a14541d0daa8c7c11078d29ea</srcmd5>
+    <version>5.1</version>
+    <time>1622536682</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch: no longer use a
+  fixed AES key in the context of the tpm2_import command. Fixes CVE-2021-3565
+  (bsc#1186490).
+- drop fix_pie_linking.patch: now contained in upstream tarball
+- drop fix_warnings.patch: now contained in upstream tarball
+- update to upstream version 5.1:
+  - Minimum tpm2-tss version dependency bumped to 3.1.0
+  - Minimum tpm2-abrmd version dependency bumped to 2.4.0
+  - tss2:
+    - Support in tools for PolicyRef inclusion in policy search per latest TSS.
+    - Support to use TPM objects protected by a policy with PolicySigned.
+    - Enable backward compatibility to old Fapi callback API.
+    - Fix PCR selection for tss2 quote.
+    - Support policy signed policies by implementing Fapi_SetSignCB.
+  - Command/ response parameter support for auditing and pHash policies:
+    - lib/tpm2_util.c: Add method to determine hashing alg for cp/rphash
+    - Add support to calculate rphash for tpm2_create, tpm2_activatecredential,
+      tpm2_certify, tpm2_certifycreation, tpm2_changeauth, tpm2_changeeps,
+      tpm2_changepps, tpm2_nvdefine, tpm2_nvextend, tpm2_unseal
+    - Add support to calculate cphash for tpm2_changeeps, tpm2_changepps.
+  - Session-support:
+    - tpm2_sessionconfig: Add tool to display and configure session attributes.
+    - tpm2_getrandom: Fix— session input was hardcoded for audit-only
+    - tpm2_startauthsession: Add option to specify the bind object  and its
+      authorization value.
+    - tpm2_startauthsession: support for bounded-only session.
+    - tpm2_startauthsession: support for salted-only session.
+    - tpm2_startauthsession: add option to specify an hmac session type.
+    - Add support for specifying non-authorization sessions for audit and
+      parameter encryption for tpm2_getrandom, tpm2_create, tpm2_nvextend,</comment>
+    <requestid>895955</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>0017daee812a5fe5f84721f7ee73a475</srcmd5>
+    <version>5.1</version>
+    <time>1623705073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899908</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>cfc51f6fe5eba912d727fd6b8fd44b59</srcmd5>
+    <version>5.1</version>
+    <time>1623767887</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable lto to fix tpm2_checkquote error (boo#1187316)
+- Update service file to point to the correct revision (forwarded request 900118 from aplanas)</comment>
+    <requestid>900121</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>f25d82b9f34828128457f3eca65c9c29</srcmd5>
+    <version>5.1</version>
+    <time>1624004036</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-tpm2_checkquote-fix-uninitialized-variable.patch for a better
+  fix of boo#1187316
+- Re-enable lto (forwarded request 900548 from aplanas)</comment>
+    <requestid>900549</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>43ddddcd51aec4e37c36655dba7eff4d</srcmd5>
+    <version>5.1</version>
+    <time>1624136653</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch to fix the
+  tpm2_eventlog command (boo#1187360) (forwarded request 900773 from aplanas)</comment>
+    <requestid>900775</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bcf8e9d151dd5f1c24612b73ccd7fe30</srcmd5>
+    <version>5.1.1</version>
+    <time>1624887226</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.1:
+  - tpm2_import: fix fixed AES key CVE-2021-3565
+    - tpm2_import used a fixed AES key for the inner wrapper, which means that
+      a MITM attack would be able to unwrap the imported key. To fix this,
+      ensure the key size is 16 bytes or bigger and use OpenSSL to generate a
+      secure random AES key.
+- Avoid pandoc build dependency, use prebuilt man pages everywhere
+- Drop 0001-tpm2_import-fix-fixed-AES-key-CVE-2021-3565.patch, now upstream
+- Drop _service, unused
+- Drop unused unzip build dependency
+- Drop autoreconfigure call, no longer necessary
+- Use %autosetup
+- Verify tarball signature
+- Build against efivar
+- Drop %check section, tests weren't built, so that was a noop (forwarded request 902778 from favogt)</comment>
+    <requestid>902783</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>b3c4d2d3da68e42336e9e1d916a38d35</srcmd5>
+    <version>5.1.1</version>
+    <time>1626644687</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>906620</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>5fb819cad497e5143f216b24d0e62c6e</srcmd5>
+    <version>5.1.1</version>
+    <time>1627898671</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-tpm2_eventlog-fix-buffer-offset-when-reading-the-eve.patch to
+fix the offset of the read buffer (forwarded request 909201 from aplanas)</comment>
+    <requestid>909338</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8c0ae5f7d7deca6ad561cd3af2f9a268</srcmd5>
+    <version>5.2</version>
+    <time>1634943023</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2:
+  + tpm2_nvextend:
+    * Added option -n, --name to specify the name of the nvindex in
+      hex bytes. This is used when cpHash ought to be calculated
+      without dispatching the TPM2_NV_Extend command to the TPM.
+  + tpm2_nvread:
+    * Added option --rphash=FILE to specify ile path to record the
+      hash of the response parameters. This is commonly termed as
+      rpHash.
+    * Added option -n, --name to specify the name of the nvindex in
+      hex bytes. This is used when cpHash ought to be calculated
+      without dispatching the TPM2_NVRead command to the TPM.
+    * Added option -S, --session to specify to specify an auxiliary
+      session for auditing and or encryption/decryption of the
+      parameters.
+  + tpm2_nvsetbits:
+    * Added option --rphash=FILE to specify file path to record the
+      hash of the response parameters. This is commonly termed as
+      rpHash.
+    * Added option -S, --session to specify to specify an auxiliary
+      session for auditing and or encryption/decryption of the
+      parameters.
+    * Added option -n, --name to specify the name of the nvindex in
+      hex bytes. This is used when cpHash ought to be calculated
+      without dispatching the TPM2_NV_SetBits command to the TPM.
+  + tpm2_createprimary:
+    * Support public-key output at creation time in various public-key
+      formats.
+  + tpm2_create:
+    * Support public-key output at creation time in various public-key
+      formats.
+  + tpm2_print:
+    * Support outputing public key in various public key formats over
+      the default YAML output. Supports taking -u output from
+      tpm2_create and converting it to a PEM or DER file format.
+  + tpm2_import:
+    * Add support for importing keys with sealed-data-blobs.
+  + tpm2_rsaencrypt, tpm2_rsadecrypt:
+    * Add support for specifying the hash algorithm with oaep.
+  + tpm2_pcrread, tpm2_quote:
+    * Add option -F, --pcrs_format to specify PCR format selection for
+      the binary blob in the PCR output file. 'values' will output a
+      binary blob of the PCR values. 'serialized' will output a binary
+      blob of the PCR values in the form of serialized data structure
+      in little endian format.
+  + tpm2_eventlog:
+    * Add support for decoding StartupLocality.
+    * Add support for printing the partition information.
+    * Add support for reading eventlogs longer than 64kb including
+      from /sys/kernel/security/tpm0/binary_bios-measurements.
+  + tpm2_duplicate:
+    * Add option -L, --policy to specify an authorization policy to be
+      associated with the duplicated object.
+    * Added support for external key duplication without needing the
+      TCTI.
+  + tools:
+    * Enhance error message on invalid passwords when sessions cannot
+      be used.
+  + lib/tpm2_options:
+    * Add option to specify fake tcti which is required in cases where
+      sapi ctx is required to be initialized for retrieving command
+      parameters without invoking the tcti to talk to the TPM.
+  + openssl:
+    * Dropped support for OpenSSL &amp;lt; 1.1.0
+    * Add support for OpenSSL 3.0.0
+  + Support added to make the repository documentation and man pages
+    available live on readthedocs.
+  + Bug-fixes:
+    * tpm2_import: Don't allow setting passwords for imported object
+      with -p option as the tool doesn't modify the TPM2B_SENSITIVE
+      structure. Added appropriate logging to indicate using
+      tpm2_changeauth after import.
+    * lib/tpm2_util.c: The function to calculate pHash algorithm
+      returned error when input session is a password session and the
+      only session in the command.
+    * lib/tpm2_alg_util.c: Fix an error where oaep was parsed under
+      ECC.
+    * tpm2_sign: Fix segfaults when tool does not find TPM resources
+      (TPM or RM).
+    * tpm2_makecredential: Fix an issue where reading input from stdin
+      could result in unsupported data size larger than the largest
+      digest size.
+    * tpm2_loadexternal: Fix an issue where restricted attribute could
+      not be set.
+    * lib/tpm2_nv_util.h: The NV index size is dependent on different
+      data sets read from the GetCapability structures because there
+      is a dependency on the NV operation type: Define vs Read vs
+      Write vs Extend. Fix a sane default in the case where
+      GetCapability fails or fails to report the specific property/
+      data set. This is especially true because some properties are
+      TPM implementation dependent.
+    * tpm2_createpolicy: Fix an issue where tool exited silently
+      without reporting an error if wrong pcr string is specified.
+    * lib/tpm2_alg_util: add error message on public init to prevent
+      tools from dying silently, add an error message.
+    * tpm2_import: fix an issue where an imported hmac object scheme
+      was NULL. While allowed, it was inconsistent with other tools
+      like tpm2_create which set the scheme as hmac-&amp;gt;sha256 when
+      generating a keyedhash object.
+- Drop patches already in upstream:
+  + 0001-tpm2_checkquote-fix-uninitialized-variable.patch
+  + 0001-tpm2_eventlog-fix-buffer-offset-when-reading-the-eve.patch
+  + 0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch (forwarded request 926512 from aplanas)</comment>
+    <requestid>926522</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ee0e76df27efcc85179cc94cb4b2af10</srcmd5>
+    <version>5.2</version>
+    <time>1638997729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936758</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>a7805aea3a454b2061aebdda806081d8</srcmd5>
+    <version>5.2</version>
+    <time>1657378749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987921</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>39bdf2f3ee717c141e195e3612ec1bd6</srcmd5>
+    <version>5.2</version>
+    <time>1657809207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>989125</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a8673cb75a594a4df93235cb734bd610</srcmd5>
+    <version>5.4</version>
+    <time>1670703461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041885</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>2a8525ea9d717b08283eef49ee79205c</srcmd5>
+    <version>5.4</version>
+    <time>1672927208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055808</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>bb4102f082acdffb034ec2d2e5fcb7ef</srcmd5>
+    <version>5.5</version>
+    <time>1676648640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066202</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>5846abeb273a4c1cf61e085301bdd018</srcmd5>
+    <version>5.5</version>
+    <time>1684490073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087676</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>eab2c85231eb859b5f9053e8bce996db</srcmd5>
+    <version>5.6</version>
+    <time>1703800519</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1135462</requestid>
+  </revision>
+</revisionlist>

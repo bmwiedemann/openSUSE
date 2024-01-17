@@ -1,0 +1,255 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e82037c90ac4258a79a01206f3acb478</srcmd5>
+    <version>7.0</version>
+    <time>1521715962</time>
+    <user>dimstar_suse</user>
+    <comment>.</comment>
+    <requestid>588453</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6609296a9c5befb5de8b28d5bc21472c</srcmd5>
+    <version>7.0</version>
+    <time>1530087222</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch readline-7.0-screen.patch to be able to parse settings
+  in inputrc for all screen TERM variables starting with &quot;screen.&quot;
+  to fix boo#1095661</comment>
+    <requestid>616516</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7a1fde0b9a33275602405ae4954e8bb0</srcmd5>
+    <version>7.0</version>
+    <time>1539250583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>640076</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>923a19534b1382e30d09afa244c64add</srcmd5>
+    <version>8.0</version>
+    <time>1548769055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to readline-8.0 final
+
+- Update to readline-8.0-rc1 for testing 
+
+- Update to readline-8.0-beta2 for testing
+  j. Readline now allows application-defined keymap names; there is a new public
+     function, rl_set_keymap_name(), to do that.
+  k. The &quot;Insert&quot; keypad key, if available, now puts readline into overwrite
+     mode.
+    readline-5.2-conf.patch
+- Port and modify patches
+  * readline-6.2-metamode.patch
+  * readline-6.3-input.dif
+  * readline-7.0-screen.patch
+  * readline-8.0.dif
+
+- Update to readline-8.0-beta for testing
+  a. Non-incremental vi-mode search (`N', `n') can search for a shell pattern, as
+     Posix specifies (uses fnmatch(3) if available).
+  b. There are new `next-screen-line' and `previous-screen-line' bindable
+     commands, which move the cursor to the same column in the next, or previous,
+     physical line, respectively.
+  c. There are default key bindings for control-arrow-key key combinations.
+  d. A negative argument (-N) to `quoted-insert' means to insert the next N
+     characters using quoted-insert.
+  e. New public function: rl_check_signals(), which allows applications to
+     respond to signals that readline catches while waiting for input using
+     a custom read function.
+  f. There is new support for conditionally testing the readline version in an
+     inputrc file, with a full set of arithmetic comparison operators available.</comment>
+    <requestid>664074</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8512f4c8c1adf086f96111c50f524a91</srcmd5>
+    <version>8.0</version>
+    <time>1567679456</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework patch readline-7.0-screen.patch again for bug boo#1143055
+  * Map all &quot;screen(-xxx)?.yyy(-zzz)?&quot; to &quot;screen&quot; as well as
+    map &quot;konsole(-xxx)?&quot; and &quot;gnome(-xxx)?&quot; to &quot;xterm&quot;
+
+- Add official patch readline80-001
+  The history file reading code doesn't close the file descriptor open to
+  the history file when it encounters a zero-length file.
+
+- Use FAT LTO objects in order to provide proper static library.</comment>
+    <requestid>723956</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d97307b8c73388dd30c8332fbc6974e3</srcmd5>
+    <version>8.0</version>
+    <time>1568983565</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729453</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b963cc8d128534311d3ae1d8e6cff577</srcmd5>
+    <version>8.0</version>
+    <time>1582299589</time>
+    <user>dimstar_suse</user>
+    <comment>- Add official patch readline80-002
+  When using previous-history to go back beyond the beginning of the history list,
+  it's possible to move to an incorrect partial line.
+- Add official patch readline80-003
+  Reading history entries with timestamps can result in history entries joined
+  by linefeeds.
+- Add official patch readline80-004
+  If writing the history file fails, and renaming the backup history file fails,
+  it's possible for readline's history code to return the wrong error to its
+  caller.</comment>
+    <requestid>774144</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>f11eb213a9d42b2d9246a5bad3c8b3a1</srcmd5>
+    <version>8.0</version>
+    <time>1596364046</time>
+    <user>dimstar_suse</user>
+    <comment>- add upstream keyring and verify source signature
+- change custom handling of official upstream patches to standard,
+  and verify signatures on official patches (forwarded request 821348 from AndreasStieger)</comment>
+    <requestid>821442</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>fa33050d2c31de1746f9a526758f4b29</srcmd5>
+    <version>8.0</version>
+    <time>1608542508</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853761</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f955feb3d6f28237f4eb913bd0570727</srcmd5>
+    <version>8.1</version>
+    <time>1611163363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to final readline-8.1
+  which is mainly rc3
+- Remove obsolate patches and the signatures
+  * readline80-001
+  * readline80-001.sig
+  * readline80-002
+  * readline80-002.sig
+  * readline80-003
+  * readline80-003.sig
+  * readline80-004
+  * readline80-004.sig
+- Port patches
+  * readline-5.2-conf.patch
+  * readline-6.2-metamode.patch
+  * readline-6.3-destdir.patch
+  * readline-6.3-input.dif
+  * readline-6.3-rltrace.patch
+  * readline-7.0-screen.patch
+- Port and rename patch readline-8.0.dif which is now readline-8.1.dif
+
+- Update to readline-8.1-rc3 for testing 
+  * Fixed a bug that could cause point to be set beyond the end of the line
+    buffer when aborting an incremental search.
+
+- Update to readline-8.1-rc2 for testing 
+  * Bracketed paste mode is enabled by default. There is a configure-time
+    option (--enable-bracketed-paste-default) to set the default to on or off.
+  * Terminals that are named &quot;dumb&quot; or unknown do not enable bracketed paste
+    by default.
+  * Ensure that disabling bracketed paste turns off highlighting the incremental</comment>
+    <requestid>862370</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3bbbb869803004889ae599b48eb4a5d1</srcmd5>
+    <version>8.1</version>
+    <time>1620767005</time>
+    <user>dimstar_suse</user>
+    <comment> - Add official patch readline81-001 and its signature
+  * The code to check readline versions in an inputrc file had the sense of the
+    comparisons reversed.</comment>
+    <requestid>890764</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>7167767ff4554322a480cd82e4f4ebe7</srcmd5>
+    <version>8.1</version>
+    <time>1643128536</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>947937</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c6fdce7501ff26ad10b2d9f42bb6504</srcmd5>
+    <version>8.2</version>
+    <time>1665503952</time>
+    <user>RBrownFactory</user>
+    <comment>- Add patch readline82-001 and its signing readline82-001
+  * Starting a readline application with an invalid locale
+    specification for LC_ALL/LANG/LC_CTYPE can cause it crash on
+    the first call to readline.
+
+- Update to final readline-8.2
+  r. When replacing a history entry, make sure the existing entry has a non-NULL
+     timestamp before copying it; it may have been added by the application, not
+     the history library.
+
+- Update to readline-8.2-rc4
+  m. Readline now checks for changes to locale settings (LC_ALL/LC_CTYPE/LANG)
+     each time it is called, and modifies the appropriate locale-specific display
+     and key binding variables when the locale changes.
+- Port patch readline-8.2.dif
+
+- Update to readline-8.2-rc2
+
+- use https:// for source urls  
+- Update to readline-8.2-rc1
+
+- Update to readline-8.2-beta
+  a. There is now an HS_HISTORY_VERSION containing the version number of the
+     history library for applications to use.
+  b. History expansion better understands multiple history expansions that may
+     contain strings that would ordinarily inhibit history expansion (e.g.,
+     `abc!$!$').
+  c. There is a new framework for readline timeouts, including new public
+     functions to set timeouts and query how much time is remaining before a
+     timeout hits, and a hook function that can trigger when readline times</comment>
+    <requestid>1008385</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d2c406b8e3973aa83000e27a3140c693</srcmd5>
+    <version>8.2</version>
+    <time>1666535559</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend version linker map file to detect usage of new symbols (boo#1204336)</comment>
+    <requestid>1030327</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>d0fb19c494053bb305f83035003a1784</srcmd5>
+    <version>8.2</version>
+    <time>1700675641</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch readline82-002
+  * It's possible for readline to try to zero out a line that's not null-
+    terminated, leading to a memory fault.
+- Add upstream patch readline82-003
+- Add upstream patch readline82-004
+- Add upstream patch readline82-005
+  * If an application is using readline in callback mode, and a signal arrives
+    after readline checks for it in rl_callback_read_char() but before it
+    restores the application's signal handlers, it won't get processed until the
+    next time the application calls rl_callback_read_char(). Readline needs to
+    check for and resend any pending signals after restoring the application's
+    signal handlers.
+- Add upstream patch readline82-006
+  * This is a variant of the same issue as the one fixed by patch 5. In this
+    case, the signal arrives and is pending before readline calls rl_getc().
+    When this happens, the pending signal will be handled by the loop, but may
+    alter or destroy some state that the callback uses. Readline needs to treat
+    this case the same way it would if a signal interrupts pselect/select, so
+    compound operations like searches and reading numeric arguments get cleaned
+    up properly.
+- Add upstream patch readline82-007
+  * If readline is called with no prompt, it should display a newline if return
+    is typed on an empty line. It should still suppress the final newline if
+    return is typed on the last (empty) line of a multi-line command.</comment>
+    <requestid>1127840</requestid>
+  </revision>
+</revisionlist>

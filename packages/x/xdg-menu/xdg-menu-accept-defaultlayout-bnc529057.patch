@@ -1,0 +1,14 @@
+--- xdg_menu
++++ xdg_menu
+@@ -638,6 +638,11 @@
+ 			interpret_Exclude($tree->[$i], $menu{'entries'}, $pool);
+ 			$i++;
+ 		}
++		elsif ($tree->[$i] eq 'DefaultLayout') {
++			#FIXME: use the values
++			$i++;
++			$i++;
++		}
+ 		elsif ($tree->[$i] eq '0') {
+ 			$i++;
+ 			if ($tree->[$i] !~ /^\s*$/) {

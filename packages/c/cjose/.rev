@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>429fd2d801b705b681a4711db157ae4c</srcmd5>
+    <version>0.6.1</version>
+    <time>1543224153</time>
+    <user>dimstar_suse</user>
+    <comment>Submission as a dependency of apache2-mod_auth_openidc [fate#324447]</comment>
+    <requestid>649644</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec6dec0b26e9c1d8a4d83249e99ae694</srcmd5>
+    <version>0.6.1</version>
+    <time>1568623993</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731051</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2abf7ff6041f286163b52bdea6221d9c</srcmd5>
+    <version>0.6.1</version>
+    <time>1572557984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744472</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ff5aae71446182cd482ca54786ced393</srcmd5>
+    <version>0.6.1</version>
+    <time>1675792252</time>
+    <user>dimstar_suse</user>
+    <comment>- disable depreacted declarations warnings for openssl 3 for now. (forwarded request 1063395 from msmeissn)</comment>
+    <requestid>1063647</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2a7670dce5880ae00c66a0dd14caca52</srcmd5>
+    <version>0.6.2.2</version>
+    <time>1689710916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099228</requestid>
+  </revision>
+</revisionlist>

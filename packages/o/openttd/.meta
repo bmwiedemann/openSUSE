@@ -1,0 +1,11 @@
+<package name="openttd" project="openSUSE:Factory">
+  <title>A clone of the Microprose game &quot;Transport Tycoon Deluxe&quot;</title>
+  <description>OpenTTD is a clone of the Microprose game &quot;Transport Tycoon Deluxe&quot;,
+a popular game originally written by Chris Sawyer. It attempts to mimic
+the original game as closely as possible while extending it with new
+features.
+
+</description>
+  <devel project="games" package="openttd"/>
+  <url>http://openttd.org/</url>
+</package>

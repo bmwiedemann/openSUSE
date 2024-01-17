@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Aug 21 19:48:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.9.9:
+   * fix some typos reported by the Debian tool lintian
+
+-------------------------------------------------------------------
+Sun Jan  3 10:22:51 UTC 2016 - foss@grueninger.de
+
+- Create new package
+- use tar ball from sourceforge

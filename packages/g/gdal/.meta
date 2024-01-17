@@ -1,0 +1,5 @@
+<package name="gdal" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Application:Geo" package="gdal"/>
+</package>

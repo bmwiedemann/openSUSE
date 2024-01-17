@@ -1,0 +1,33 @@
+Index: gzip-1.12/zgrep.1
+===================================================================
+--- gzip-1.12.orig/zgrep.1
++++ gzip-1.12/zgrep.1
+@@ -11,7 +11,7 @@ The
+ .B zgrep
+ command invokes
+ .B grep
+-on compressed or gzipped files.
++on compressed, xz'ed, lzma'ed, zstd'ed, bzip2'ed or gzipped files.
+ All options specified are passed directly to
+ .BR grep .
+ If no file is specified, then the standard input is decompressed
+Index: gzip-1.12/zgrep.in
+===================================================================
+--- gzip-1.12.orig/zgrep.in
++++ gzip-1.12/zgrep.in
+@@ -215,6 +215,15 @@ do
+     *.bz2)
+       uncompress=bzip2
+       ;;
++  	*.xz)
++      uncompress=xz
++      ;;
++    *.lzma)
++      uncompress=lzma
++      ;;
++    *.zst)
++      uncompress=zstd
++      ;;
+     *)
+       uncompress=gzip
+       ;;

@@ -1,0 +1,9 @@
+<package name="rubygem-http-form_data" project="openSUSE:Factory">
+  <title>http-form_data-2.3.0</title>
+  <description>Utility-belt to build form data request bodies. Provides support for
+`application/x-www-form-urlencoded` and `multipart/form-data` types.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-http-form_data"/>
+  <url>https://github.com/httprb/form_data.rb</url>
+</package>

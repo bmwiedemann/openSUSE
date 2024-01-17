@@ -1,0 +1,68 @@
+# This file is part of package sendmail.
+#
+# Copyright (c) 2011 SuSE LINUX Products GmbH, Germany.
+# Author: Werner Fink
+# Please send feedback to http://www.suse.de/feedback
+#
+# Description:
+#
+#  Used to start the sendmail Mail Transport Agent service
+#  which handles all mails stored at /var/spool/mqueue/ and
+#  all connections on port 25 aka smtp at localhost as well
+#  as on all other network interfaces.
+#
+
+[Unit]
+Description=Sendmail Mail Transport Agent
+Requires=nss-lookup.target network.target local-fs.target
+After=var-run.mount nss-lookup.target network.target local-fs.target
+Wants=time-sync.target nss-user-lookup.target
+After=time-sync.target nss-user-lookup.target
+After=systemd-tmpfiles-setup.service
+After=amavis.service cyrus.service ldap.service nscd.service ypbind.service saslauthd.service
+Wants=sendmail-client.service
+Before=sendmail-client.service
+PropagatesReloadTo=sendmail-client.service
+Conflicts=postfix.service exim.service
+
+[Service]
+Group=mail
+ReadWritePaths=-/run/sendmail
+ReadWritePaths=-/run/sendmail.pid
+ReadWritePaths=-/var/run/sendmail
+ReadWritePaths=-/var/run/sendmail.pid
+ReadWritePaths=-/var/spool/mail
+ReadWritePaths=-/var/spool/mqueue
+ReadWritePaths=-/var/mail
+ReadWritePaths=-/etc/aliases.db
+ReadWritePaths=-/etc/mail/aliases.db
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+# Do never do this as maildrop or procmail can not deliver mails anymore
+#ProtectHome=read-only
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+# Works only with -bD but not with -bd
+Type=exec
+Restart=on-success
+# No PIDFile as it has wrong format and also shows timing problems,
+# use -bD instead of -bd to avoid forking main service process
+ExecStartPre=-/bin/echo 'Initializing SMTP port (sendmail)'
+ExecStartPre=-/bin/sh -c 'make -C /etc/mail'
+Environment="SENDMAIL_ARGS=-L sendmail -Am -bD -q30m -om"
+EnvironmentFile=-/etc/sysconfig/mail
+EnvironmentFile=-/etc/sysconfig/sendmail
+ExecStart=/usr/sbin/sendmail $SENDMAIL_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+Also=sendmail-client.service

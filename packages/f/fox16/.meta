@@ -1,0 +1,11 @@
+<package name="fox16" project="openSUSE:Factory">
+  <title>Shared Libraries for the FOX Toolkit</title>
+  <description>FOX is a C++-based library for graphical user interface development.
+
+FOX supports modern GUI features such as drag-and-drop, tooltips, tab
+books, tree lists, icons, multiple document interfaces (MDI), timers,
+idle processing, automatic GUI updating, as well as OpenGL/Mesa for 3D
+graphics. Subclassing of basic FOX widgets allows for easy extension
+beyond the built-in widgets by application writers.</description>
+  <devel project="X11:FOX" package="fox16"/>
+</package>

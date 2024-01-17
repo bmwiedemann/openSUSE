@@ -1,0 +1,6 @@
+<package name="python-pyroute2" project="openSUSE:Factory">
+  <title>pyroute2</title>
+  <description>Python netlink library — Linux network configuration and monitoring
+</description>
+  <devel project="devel:languages:python" package="python-pyroute2"/>
+</package>

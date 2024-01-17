@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e6b364f2fe6444ddb9b16153f6863596</srcmd5>
+    <version>0.6.0~0</version>
+    <time>1700772071</time>
+    <user>anag+factory</user>
+    <comment>add updated and renamed command not found handler to Factory
+
+replaces cnf-rs</comment>
+    <requestid>1128195</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>07dea9a29943052f1e41e2ae3abdac4c</srcmd5>
+    <version>0.6.0~0</version>
+    <time>1701023788</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128501</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>69badaa601ef605258602d6ea6820905</srcmd5>
+    <version>0.6.0~0</version>
+    <time>1701792077</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130801</requestid>
+  </revision>
+</revisionlist>

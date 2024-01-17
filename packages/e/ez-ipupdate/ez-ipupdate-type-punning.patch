@@ -1,0 +1,36 @@
+From: Philipp Thomas <pth@suse.de>
+Date: 2013-04-11 11:24:54+02:00
+Subject: Use memcpy for type-punning
+
+---
+ md5.c |    8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+signed-off-by: pth@suse.de
+
+Index: md5.c
+===================================================================
+--- md5.c.orig	2013-04-11 10:50:22.160673361 +0200
++++ md5.c	2013-04-11 11:18:46.118299579 +0200
+@@ -92,6 +92,7 @@ md5_finish_ctx (struct md5_ctx *ctx, voi
+ {
+   /* Take yet unprocessed bytes into account.  */
+   md5_uint32 bytes = ctx->buflen;
++  md5_uint32 tmp;
+   size_t pad;
+ 
+   /* Now count remaining bytes.  */
+@@ -103,9 +104,10 @@ md5_finish_ctx (struct md5_ctx *ctx, voi
+   memcpy (&ctx->buffer[bytes], fillbuf, pad);
+ 
+   /* Put the 64-bit file length in *bits* at the end of the buffer.  */
+-  *(md5_uint32 *) &ctx->buffer[bytes + pad] = SWAP (ctx->total[0] << 3);
+-  *(md5_uint32 *) &ctx->buffer[bytes + pad + 4] = SWAP ((ctx->total[1] << 3) |
+-							(ctx->total[0] >> 29));
++  tmp = SWAP (ctx->total[0] << 3);
++  memcpy(&ctx->buffer[bytes + pad], &tmp, sizeof(md5_uint32));
++  tmp = SWAP ((ctx->total[1] << 3) | (ctx->total[0] >> 29));
++  memcpy(&ctx->buffer[bytes + pad + 4], &tmp, sizeof(md5_uint32));
+ 
+   /* Process last bytes.  */
+   md5_process_block (ctx->buffer, bytes + pad + 8, ctx);

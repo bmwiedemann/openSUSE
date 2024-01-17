@@ -1,0 +1,111 @@
+-------------------------------------------------------------------
+Mon Sep  9 13:40:11 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file with spec-cleaner
+- Fix dependencies (recommend xterm) 
+
+-------------------------------------------------------------------
+Thu Oct 20 17:26:51 UTC 2011 - badshah400@gmail.com
+
+- Added new icon in various sizes
+- Changed .desktop category to TerminalEmulator instead of Shell to
+  avoid an rpmlint warning
+
+-------------------------------------------------------------------
+Tue Jun 15 11:55:02 UTC 2010 - badshah400@gmail.com
+
+- Add categories to linux32.desktop to have it appear at the right
+  place in application menus
+
+-------------------------------------------------------------------
+Wed Jul  8 10:25:03 CEST 2009 - coolo@novell.com
+
+- remove linux32 binaries and require new util-linux, leave the package
+  as convenience
+
+-------------------------------------------------------------------
+Wed Apr 22 15:50:47 CEST 2009 - sf@suse.de
+
+- quote command in linux32.desktop correctly (bnc #496724) 
+
+-------------------------------------------------------------------
+Wed Nov  5 09:03:21 CET 2008 - sf@suse.de
+
+- fix desktop file to start in an xterm - for non-KDE-user
+  (bnc #408320)
+
+-------------------------------------------------------------------
+Tue Nov  4 10:24:23 CET 2008 - coolo@suse.de
+
+- remove outdated translations
+
+-------------------------------------------------------------------
+Tue Oct 21 10:51:27 CEST 2008 - kukuk@suse.de
+
+- Build only on x86-64
+- Fix at least on destkop file entry
+
+-------------------------------------------------------------------
+Wed Oct 10 13:28:18 CEST 2007 - bwalle@suse.de
+
+- fix some problems (#188554)
+  o make linux64 working even if it's called with the full path
+  o don't switch magically to linux32 if linux64 is called with
+    arguments (--3gb/--4gb)
+  o fix segmentation fault
+
+-------------------------------------------------------------------
+Wed Mar  1 11:19:34 CET 2006 - sf@suse.de
+
+- added -32bit to name and generics name in .desktop file (#52279) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 23 11:07:18 CET 2004 - adrian@suse.de
+
+- install icon file for desktop entry
+
+-------------------------------------------------------------------
+Sun Aug  3 14:38:17 CEST 2003 - adrian@suse.de
+
+- install the desktop file according to XDG instead of susewm
+
+-------------------------------------------------------------------
+Fri Jun 20 12:05:35 CEST 2003 - ak@suse.de
+
+- add linux32.1 as Source
+
+-------------------------------------------------------------------
+Thu Jun 19 20:35:12 CEST 2003 - ak@suse.de
+
+- eliminate README.linux32
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Jun 19 19:09:49 CEST 2003 - ak@suse.de
+
+- fix neededforbuild
+- make --3gb the default
+- add manpage
+- use hardlink for linux64
+
+-------------------------------------------------------------------
+Thu Jun  5 23:25:19 CEST 2003 - ak@suse.de
+
+- add --3gb support (needs kernel patch)
+- fix error handling
+
+-------------------------------------------------------------------
+Thu Feb 20 13:31:07 CET 2003 - adrian@suse.de
+
+- add menu entry for 32 bit shell in System/Terminals/
+
+-------------------------------------------------------------------
+Fri May 10 11:41:22 CEST 2002 - stepan@suse.de
+
+- initial version
+

@@ -1,0 +1,5 @@
+<package name="vgrabbj" project="openSUSE:Factory">
+  <title>single image frame grabber for v4l devices</title>
+  <description>vgrabbj is used to grab single images from a video4linux device (e.g. webcam) and store it in a file (jpg/png).</description>
+  <devel project="multimedia:apps" package="vgrabbj"/>
+</package>

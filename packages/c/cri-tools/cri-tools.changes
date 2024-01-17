@@ -1,0 +1,379 @@
+-------------------------------------------------------------------
+Thu May 19 23:57:55 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.24.1:
+  * Bump github.com/onsi/ginkgo/v2 from 2.1.3 to 2.1.4
+  * Bump github.com/opencontainers/runc from 1.1.1 to 1.1.2
+  * Remove selinux build tag
+  * cmd/critest: fix empty ginkgo flag's value issue
+  * Bump github.com/docker/docker
+  * Bump github.com/urfave/cli/v2 from 2.5.1 to 2.6.0
+  * Switch to ginkgo/v2
+
+-------------------------------------------------------------------
+Thu May 19 23:57:08 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 1.24.0:
+  * Vendor Kubernetes v1.24.0
+  * Fixes the incubator project reference
+  * update containerd socket in windows
+  * Bump github.com/opencontainers/runc from 1.1.0 to 1.1.1
+  * Bump github.com/urfave/cli/v2 from 2.4.0 to 2.5.1
+  * Bump github.com/opencontainers/selinux from 1.10.0 to 1.10.1
+  * Bump github.com/docker/docker
+  * Bump github.com/onsi/gomega from 1.18.1 to 1.19.0
+  * install CNI on linux
+  * Fix setup-gcloud action by referencing `v0`
+  * Fix CRI-O tests
+  * Add CRICTL_AUTH env var option to crictl pull
+  * Make RPCs CRI v1 and v1alpha2 compatible
+  * Bump github.com/urfave/cli/v2 from 2.3.0 to 2.4.0
+  * Bump github.com/docker/docker
+  * Bump google.golang.org/grpc from 1.44.0 to 1.45.0
+  * Bump github.com/docker/distribution
+  * fix security test case for hostpid
+  * fix log info for mount test case
+  * fix seccomp test case for arm64
+  * Type cast error messages to `string`
+  * add annotation for pull
+  * Bump github.com/docker/distribution
+  * Add `crictl statsp` command
+  * Update crictl ps to show pod name and image path
+  * Bump github.com/onsi/gomega from 1.18.0 to 1.18.1
+  * Add backwards compatiblity to `Version` and `ListContainerStats` RPCs
+  * Switch to CRI v1 API
+  * Bump google.golang.org/grpc from 1.43.0 to 1.44.0
+  * Bump github.com/onsi/gomega from 1.17.0 to 1.18.0
+  * Bump github.com/opencontainers/runc from 1.0.3 to 1.1.0
+
+-------------------------------------------------------------------
+Wed Mar 16 12:22:13 UTC 2022 - rbrown@suse.com
+
+- Update to version 1.23.0:
+  * Bump docs to v1.23.0
+  * Bump github.com/opencontainers/selinux from 1.9.1 to 1.10.0
+  * Bump github.com/opencontainers/runc from 1.0.2 to 1.0.3
+  * Bump github.com/docker/docker
+  * Bump google.golang.org/grpc from 1.42.0 to 1.43.0
+  * 1.5.9
+  * Use same grpc max message size as Kubelet
+  * Add support for cri-dockerd
+  * Add support for specifying custom test container images.
+  * Fix cri-dockerd CI runs
+  * Fix Containerd main branch CI for Windows
+  * fix ci for dockershim-critest
+  * Update Windows images for ltsc2022
+  * images: use k8s-staging-test-infra/gcb-docker-gcloud
+  * Bump github.com/onsi/gomega from 1.16.0 to 1.17.0
+  * Refactor fish completion
+  * Rename bash and zsh completion functions
+  * Add zsh compinit tag
+  * Bump google.golang.org/grpc from 1.41.0 to 1.42.0
+  * Bump github.com/docker/docker
+  * Bump github.com/onsi/ginkgo from 1.16.4 to 1.16.5
+  * Add release publishing workflow
+  * Bump github.com/opencontainers/selinux from 1.8.5 to 1.9.1
+  * Add SHA512 sum for release files
+  * Bump github.com/docker/docker
+  * Bump google.golang.org/grpc from 1.40.0 to 1.41.0
+  * Bump sigs.k8s.io/yaml from 1.2.0 to 1.3.0
+  * Bump k8s.io/api from 0.22.1 to 0.22.2
+  * Bump k8s.io/cri-api from 0.22.1 to 0.22.2
+  * Bump k8s.io/apimachinery from 0.22.1 to 0.22.2
+  * Bump k8s.io/client-go from 0.22.1 to 0.22.2
+  * Bump k8s.io/kubectl from 0.22.1 to 0.22.2
+  * Updates E2E test images registry
+  * Bump github.com/opencontainers/selinux from 1.8.4 to 1.8.5
+  * Switch to go1.17 for CI
+  * Bump github.com/opencontainers/runc from 1.0.1 to 1.0.2
+  * Added dropping/adding `ALL` capabilities case to critest
+  * Bump github.com/onsi/gomega from 1.15.0 to 1.16.0
+  * Bump k8s.io/cri-api from 0.22.0 to 0.22.1
+  * Bump k8s.io/client-go from 0.22.0 to 0.22.1
+  * Bump k8s.io/api from 0.22.0 to 0.22.1
+  * Bump k8s.io/apimachinery from 0.22.0 to 0.22.1
+  * Bump k8s.io/kubectl from 0.22.0 to 0.22.1
+  * Bump google.golang.org/grpc from 1.39.1 to 1.40.0
+  * Bump github.com/onsi/gomega from 1.14.0 to 1.15.0
+  * Bump github.com/opencontainers/selinux from 1.8.3 to 1.8.4
+  * Bump google.golang.org/grpc from 1.39.0 to 1.39.1
+
+-------------------------------------------------------------------
+Fri Aug 06 10:37:35 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.22.0:
+  * Bump Kubernetes to v1.22.0
+  * Bump k8s.io/api from 0.21.3 to 0.22.0
+  * Bump k8s.io/cri-api from 0.21.3 to 0.22.0
+  * Bump k8s.io/kubectl from 0.21.3 to 0.22.0
+  * Bump k8s.io/apimachinery from 0.21.3 to 0.22.0
+  * Bump github.com/docker/docker
+  * Bump github.com/opencontainers/selinux from 1.8.2 to 1.8.3
+
+-------------------------------------------------------------------
+Fri Aug 06 10:35:29 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.0:
+  * Bump README versions to v1.21.0
+  * Update dependencies
+  * Add dependabot config file
+  * Simplify test image build process for user images
+  * Move from gcr.io/cri-tools to gcr.io/k8s-staging-cri-tools
+  * Fix UID/GID and username values for test images
+  * Bump gcb-docker-gcloud image to v20210331-c732583
+  * Fix CRI-O master installation in GitHub actions
+
+-------------------------------------------------------------------
+Mon Apr 12 07:32:53 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.0:
+  * Bump README versions to v1.21.0
+  * Update dependencies
+  * Add dependabot config file
+  * Simplify test image build process for user images
+  * Move from gcr.io/cri-tools to gcr.io/k8s-staging-cri-tools
+  * Fix UID/GID and username values for test images
+  * Bump gcb-docker-gcloud image to v20210331-c732583
+  * Fix CRI-O master installation in GitHub actions
+
+-------------------------------------------------------------------
+Fri Jan 08 12:24:37 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.0:
+  * fix a bug in closure function
+  * Trigger prow job
+  * Update Kubernetes to v1.20.0
+  * Dockershim critest on Windows
+  * Fix CRI Test with Windows containerd runtime
+  * Add comment to cloud build manifest file
+  * Add clarity to docs about default runtimes
+  * Add staging build for test user images
+  * version 1.17.0 -> 1.19.0 in crictl.md
+
+-------------------------------------------------------------------
+Wed Apr  1 08:03:55 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.18.0:
+  * Main Changes
+    * Update Kubernetes to v1.18.0
+    * Switch to urfave/cli/v2
+  * CRI CLI (crictl)
+    * Use ContextDialer to fix build
+    * Add go-template option for inspect commands
+    * Fix invalid log_path in docs
+  * CRI validation testing (critest)
+    *  Make apparmor failure test more flexible
+    *  Start container before fetching metrics
+    *  Cleanup container create test to reduce duplication
+    *  Add container stats test
+
+-------------------------------------------------------------------
+Mon Dec 16 08:46:22 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.17.0:
+  * crictl
+    * Bump cri-tools version in markdown docs
+    * Vendor kubernetes v1.17.0
+    * Update golang dependencies
+    * Print the previous log of the container(just like kubectl)
+    * Add rmi --prune command
+    * Update README.md to contain latest version hint
+    * Download golangci-lint via wget
+    * Fix pod and container name filter for JSON/YAML output
+    * Fix e2e tests by pinning CRI-O and conmon
+    * Fixed Tim St. Clair's username
+    * Add fish shell completion support
+
+-------------------------------------------------------------------
+Thu Sep 26 09:07:07 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Update to v1.16.1:
+  * crictl:
+    * Fix empty fields in crictl inspect(p/i) result.
+    * Pass pod config when pulling image during container creation.
+    * Fix crictl stats panic.
+  * critest
+    * Skip hostnetwork portforward test on windows.
+    * Add hostname test.
+
+-------------------------------------------------------------------
+Tue Sep 17 09:23:45 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v1.16.0:
+  * crictl:
+    * Add container 'run' subcommand.
+    * Pull image on container creation.
+    * Treat first crictl stats argument as filter ID.
+    * Add -a (remove all) option to rmp.
+    * Create directory for config file.
+    * Add container rm --force, -f and --all, -a flags.
+    * Add images aliases image, img.
+    * Add --all, -a flag to image removal (rmi).
+    * Update Kubernetes vendors to 1.16.0 and add addiontion IPs for Pods.
+  * critest:
+    * Add registry prefix option.
+    * Add test for MaskedPaths and ReadonlyPaths.
+    * Switch to multi-arch nonewprivs image.
+    * Use arch specific hostnet-nginx image.
+    * Use a dedicated image for all reference test.
+    * Use IsAppArmorEnabled of Kubernetes instead of local one.
+    * Fix exec test timeout issues.
+
+-------------------------------------------------------------------
+Thu Jul  4 13:41:53 UTC 2019 - Michal Jura <mjura@suse.com>
+
+- Update golang(API) requiremnt to 1.12
+
+-------------------------------------------------------------------
+Thu Jul  4 13:28:57 UTC 2019 - Michal Jura <mjura@suse.com>
+
+- Update cri-tools to v1.15.0:
+  * Add registry prefix option
+  * Revert "Skip test "image status should support all kinds of references" for docker runtime"
+  * Upgrade Kuberntes version to v1.15.0
+  * Fix typo in parallel
+  * Skip test "image status should support all kinds of references" since dockershim doesn't support it
+  * Fallback to repo digest name if repoTag is <none>:<none>
+  * feature: add display; support live monitoring critool stats
+  * Test image status for various references.
+  * fix debug in config file
+  * Update `rmp` to test for running sandbox
+  * Fix logDirectory typo in examples.
+  * Search program directory for config as fallback
+  * Improve error message for failed to connect
+  * Set SelinuxRelabel to true for bind mounts
+  * Include gcs bucket release.
+  * Use same version as previous example
+  * Add `curl` to download example
+
+-------------------------------------------------------------------
+Mon Mar 25 08:00:25 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update cri-tools to v1.14.0:
+  * CRI CLI (crictl)
+    * Adds imagefsinfo subcommand for CRI ImageFSInfo() method.
+    * Adds support to filter containers by image.
+    * Fixes a bug when removing multiple containers.
+    * Reduces the default connection timeout value.
+    * Fixes the exit code for crictl exec.
+    * Updated the instructions fro godep.
+    * Adds support of -q for crictl info.
+    * Adds support of zsh completion.
+    * Upgrades kubernetes version to 1.14.
+  * CRI validation testing (critest)
+    *  Adds a benchmark testcase for measuring the time of creating pod and a
+       container.
+    *  Changes streaming tests to omit newlines on echo
+    *  Adds support of critest for Windows container runtime.
+    *  Updates test environment to xenial and fixes docker installation.
+    *  Updates Go version to 1.12.
+
+-------------------------------------------------------------------
+Mon Dec 17 08:14:45 UTC 2018 - Sascha Grunert <sgrunert@suse.com>
+
+- Added `rpmlintrc` to spec file
+
+-------------------------------------------------------------------
+Fri Dec 14 10:51:01 UTC 2018 - Sascha Grunert <sgrunert@suse.com>
+
+- Update cri-tools to v1.13.0:
+  * CRI CLI (crictl):
+    * Adds --auth options for pull command
+    * Fixes URL parsing for exec and attach
+    * Upgrades Go version to 1.11.1
+    * Enables Windows CI on travis
+    * Switches Windows default endpoints to npipe
+    * Updates version matrix information for the project
+    * Adds container name filter to ps command
+    * Adds metadata to filters
+    * Prints annotations and labels for inspect command
+  * CRI validation testing (critest)
+    * Add tests for multiple containers in a pod
+    * Adds runtime handler support for critest
+    * Adds exec sync timeout test cases
+    * Fixes readonly filesystem test cases
+- Add `crictl.yaml` to install directory
+- Fix build for ppc64
+- Require golang >= 1.11
+
+-------------------------------------------------------------------
+Tue Nov 13 07:50:12 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- crictl/critest: compile version
+
+- Require golang >= 1.10.
+
+-------------------------------------------------------------------
+Tue Oct  2 07:30:42 UTC 2018 - Valentin Rothberg <vrothberg@suse.com>
+
+- Bump cri-tools to v1.12.0:
+  * Properly returns errors when the output format is not supported
+  * Show concise image info for crictl ps
+  * Fixes crictl ps and crictl pods
+  * Adds podID in output of crictl ps
+  * Adds sandbox config to image pull
+  * Fixes unmarshal issues in crictl inspecti
+  * Fixes timeout for grpc dialer
+  * Adds new test to critest for privileged container
+
+-------------------------------------------------------------------
+Mon Aug 13 08:54:30 UTC 2018 - vrothberg@suse.com
+
+- Generate and install bash completion for crictl.
+
+- Provide /etc/crictl.yaml config.
+  bsc#1104598
+
+-------------------------------------------------------------------
+Thu Aug  2 09:00:47 UTC 2018 - vrothberg@suse.com
+
+- Bump cri-tools to v1.11.1:
+  * versioning is now consistent with Kubernetes
+  * Fix argument parsing for crictl exec
+  * Improved documentation
+  * Multi-arch critest tests
+  * Filter pods with prefix matching of name and namespace
+  * Improve terminal support for exec and attach
+
+-------------------------------------------------------------------
+Fri Jun 15 07:59:00 UTC 2018 - vrothberg@suse.com
+
+- Bump cri-tools to v1.0.0-beta.1 (CRI v1.10.x):
+  * crictl: allow short option handling
+  * crictl-exec: fix argument parsing
+  * Update documentation
+  * Kubernetes/CRI 1.10.x compatibility
+  * Minor bug fixe
+
+-------------------------------------------------------------------
+Tue Jun  5 08:28:14 UTC 2018 - dcassany@suse.com
+
+- Refactor %license usage to a simpler form
+
+-------------------------------------------------------------------
+Mon Jun  4 14:50:13 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Mon Mar  5 13:22:07 UTC 2018 - vrothberg@suse.com
+
+- Use cri-tools v1.0.0-alpha.0 to be compatible to cri-o v1.9.x.
+
+-------------------------------------------------------------------
+Fri Mar  2 17:38:18 UTC 2018 - fcastelli@suse.com
+
+- Change buildtime requirement of go-md2man: use go-go-md2man to ensure
+  package builds on IBS against sle12sp3. This change won't affect openSUSE
+
+-------------------------------------------------------------------
+Wed Feb 14 20:01:00 UTC 2018 - jengelh@inai.de
+
+- Description shall say what the software does now, not in the
+  future.
+
+-------------------------------------------------------------------
+Mon Feb 12 11:48:18 UTC 2018 - vrothberg@suse.com
+
+- Add cri-tools packaging for debugging and validating tools for the Kubelet
+  CRI, including the tools crictl and critest.

@@ -1,0 +1,6 @@
+<package name="gtkam" project="openSUSE:Factory">
+  <title>A GTK Digital Camera Tool</title>
+  <description>GTKam is a GTK and GNOME based tool for accessing a digital camera,
+viewing thumbnails, and downloading pictures from the camera.</description>
+  <devel project="graphics" package="gtkam"/>
+</package>

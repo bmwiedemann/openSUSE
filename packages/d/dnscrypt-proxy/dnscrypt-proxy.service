@@ -1,0 +1,34 @@
+[Unit]
+Description=DNSCrypt-proxy client
+Documentation=https://github.com/DNSCrypt/dnscrypt-proxy/wiki/systemd
+# with openSUSE changes
+Documentation=file:/usr/share/doc/packages/dnscrypt-proxy/README.openSUSE
+PartOf=dnscrypt-proxy.socket
+After=network.target
+Before=nss-lookup.target
+Wants=nss-lookup.target
+
+[Service]
+NonBlocking=true
+
+ExecStart=/usr/sbin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+
+# May substitute command line option "pidfile".
+PIDFile=/run/dnscrypt-proxy/dnscrypt-proxy.pid
+ExecStartPost=-/bin/bash -c '/bin/echo -n $MAINPID > /run/dnscrypt-proxy/dnscrypt-proxy.pid'
+
+Group=dnscrypt
+User=dnscrypt
+WorkingDirectory=~
+RuntimeDirectory=dnscrypt-proxy
+
+# Missing in Leap 15.0
+#CacheDirectory=dnscrypt-proxy
+#LogsDirectory=dnscrypt-proxy
+
+ProtectHome=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+
+[Install]
+WantedBy=multi-user.target

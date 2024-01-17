@@ -1,0 +1,35 @@
+Index: mediastreamer2-5.2.30/cmake/FindSRTP.cmake
+===================================================================
+--- mediastreamer2-5.2.30.orig/cmake/FindSRTP.cmake
++++ mediastreamer2-5.2.30/cmake/FindSRTP.cmake
+@@ -31,7 +31,7 @@ set(_SRTP_ROOT_PATHS
+ )
+ 
+ find_path(SRTP2_INCLUDE_DIRS
+-	NAMES srtp2/srtp.h
++	NAMES srtp2-linphone/srtp.h
+ 	HINTS _SRTP_ROOT_PATHS
+ 	PATH_SUFFIXES include
+ )
+@@ -41,7 +41,7 @@ if(SRTP2_INCLUDE_DIRS)
+ 	set(SRTP_INCLUDE_DIRS ${SRTP2_INCLUDE_DIRS})
+ 	set(SRTP_VERSION 2)
+ 	find_library(SRTP_LIBRARIES
+-		NAMES srtp2
++		NAMES srtp2-linphone
+ 		HINTS ${_SRTP_ROOT_PATHS}
+ 		PATH_SUFFIXES bin lib
+ 	)
+Index: mediastreamer2-5.2.30/src/utils/srtp_prefix.h
+===================================================================
+--- mediastreamer2-5.2.30.orig/src/utils/srtp_prefix.h
++++ mediastreamer2-5.2.30/src/utils/srtp_prefix.h
+@@ -30,7 +30,7 @@
+ #elif SRTP_VERSION==1
+ #include <srtp/srtp.h>
+ #else
+-#include <srtp2/srtp.h>
++#include <srtp2-linphone/srtp.h>
+ #endif
+ 
+ #if SRTP_VERSION==2

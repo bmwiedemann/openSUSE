@@ -1,0 +1,62 @@
+From 94ed2247df587f6890345afb4da9330eb8cee4ca Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Mon, 23 May 2022 08:03:23 +0100
+Subject: [PATCH 1/2] [Support] Add missing <cstdint> header to Signals.h
+
+Without the change llvm build fails on this week's gcc-13 snapshot as:
+
+    [  0%] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Signals.cpp.o
+    In file included from llvm/lib/Support/Signals.cpp:14:
+    llvm/include/llvm/Support/Signals.h:119:8: error: variable or field 'CleanupOnSignal' declared void
+      119 |   void CleanupOnSignal(uintptr_t Context);
+          |        ^~~~~~~~~~~~~~~
+
+(cherry picked from commit ff1681ddb303223973653f7f5f3f3435b48a1983)
+---
+ llvm/include/llvm/Support/Signals.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/llvm/include/llvm/Support/Signals.h b/llvm/include/llvm/Support/Signals.h
+index 44f5a750ff5c..937e0572d4a7 100644
+--- a/llvm/include/llvm/Support/Signals.h
++++ b/llvm/include/llvm/Support/Signals.h
+@@ -14,6 +14,7 @@
+ #ifndef LLVM_SUPPORT_SIGNALS_H
+ #define LLVM_SUPPORT_SIGNALS_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace llvm {
+
+From f2bb582f37ec4a99b2b334c15e007d0735cdc84a Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Mon, 23 May 2022 08:39:48 +0100
+Subject: [PATCH 2/2] [Support] Add missing <cstdint> header to Base64.h
+
+Without the change llvm build fails on this week's gcc-13 snapshot as:
+
+    [ 91%] Building CXX object unittests/Support/CMakeFiles/SupportTests.dir/Base64Test.cpp.o
+    In file included from llvm/unittests/Support/Base64Test.cpp:14:
+    llvm/include/llvm/Support/Base64.h: In function 'std::string llvm::encodeBase64(const InputBytes&)':
+    llvm/include/llvm/Support/Base64.h:29:5: error: 'uint32_t' was not declared in this scope
+       29 |     uint32_t x = ((unsigned char)Bytes[i] << 16) |
+          |     ^~~~~~~~
+
+(cherry picked from commit 5e9be93566f39ee6cecd579401e453eccfbe81e5)
+---
+ llvm/include/llvm/Support/Base64.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/llvm/include/llvm/Support/Base64.h b/llvm/include/llvm/Support/Base64.h
+index 62064a35aa34..da4ae1688574 100644
+--- a/llvm/include/llvm/Support/Base64.h
++++ b/llvm/include/llvm/Support/Base64.h
+@@ -13,6 +13,7 @@
+ #ifndef LLVM_SUPPORT_BASE64_H
+ #define LLVM_SUPPORT_BASE64_H
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace llvm {

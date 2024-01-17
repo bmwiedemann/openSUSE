@@ -1,0 +1,7 @@
+<package name="kubernetes1.23" project="openSUSE:Factory">
+  <title>Kubernetes 1.23</title>
+  <description>Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops with Kubernetes.
+
+</description>
+  <devel project="devel:kubic" package="kubernetes1.23"/>
+</package>

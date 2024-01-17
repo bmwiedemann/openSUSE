@@ -1,0 +1,5 @@
+<package name="python-django-polymorphic" project="openSUSE:Factory">
+  <title>Seamless Polymorphic Inheritance for Django Models</title>
+  <description>Seamless polymorphic inheritance for Django models</description>
+  <devel project="devel:languages:python:django" package="python-django-polymorphic"/>
+</package>

@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Mar  5 06:59:26 UTC 2018 - coolo@suse.com
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-String-Format/Changes
+
+  # Version 1.18                                           March 04,  2018
+  # ----------------------------------------------------------------------
+  
+  * stable version with the changes in 1.17_50
+  
+  # ----------------------------------------------------------------------
+  # Version 1.17_50                                        March 03,  2018
+  # ----------------------------------------------------------------------
+  
+  * escape { and } (fix for RT #124147)
+  
+  # ----------------------------------------------------------------------
+
+-------------------------------------------------------------------
+Tue Jun  4 18:28:26 UTC 2013 - coolo@suse.com
+
+- updated to 1.17
+  * changed license
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:19 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:44 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Sat Nov 20 11:11:01 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- cleanup changelog
+
+-------------------------------------------------------------------
+Tue Oct 19 08:39:07 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Wed Oct 21 16:29:06 CEST 2009 - rschweikert@novell.com
+
+- Add %dir directive for String
+
+-------------------------------------------------------------------
+Tue Oct 20 20:26:03 CEST 2009 - rschweikert@novell.com
+
+- Shorten summary to pass rpmlint
+
+-------------------------------------------------------------------
+Tue Oct 20 19:21:17 CEST 2009 - rschweikert@novell.com
+
+- Fix spec to include String directory in files
+
+-------------------------------------------------------------------
+Mon Oct 12 09:52:13 UTC 2009 - rschweikert@novell.com
+
+- initial package 1.16
+

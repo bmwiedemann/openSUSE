@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Sat Dec 30 05:08:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.8.2:
+  * Bug fixes:
+    + Fix incorrect FlatZinc definition in the gecode_presolver
+      solver library.
+    + Fix type specialisation for function with an polymorphic
+      array argument and a non-array return type with the same
+      type-inst identifier.
+    + Fix crash during typechecking of overloaded functions
+      differing only by inst returning structured types.
+    + Fix incorrect type checking of polymorphic functions with
+      type-inst IDs inside structured types.
+    + Fix evaluation error when boolean variables are fixed during
+      flattening.
+    + Fix incorrect call names output when generating .ozn files.
+    + Fix incorrect output of record access as tuple access in
+      .ozn files.
+    + Fix definition of array_intersect so that it can be used in
+      non-positive contexts.
+    + Fix standards definitions of increasing variants to correct
+      be ignored when the argument array is empty.
+    + Fix a problem where exceptions thrown for undefined
+      expressions were not caught during the aggregation of linear
+      expressions, breaking relational semantics.
+    + Fix crash when calculating computed domain of a declaration.
+    + Fix x-y line/scatter visualisations.
+  * Changes:
+    + Support var set``s of enums for ``array_union and
+      array_intersect.
+    + Support var enums for the .. range operator.
+    + Always perform substitution of fixed values before outputting
+      FlatZinc for consistency.
+  * Changes in the IDE:
+    + Make process handling more robust to failures.
+- update to 2.8.1:
+  * Bug fixes:
+    + Fix incorrect message for par array out of bounds indicating
+      that array is empty
+    + Fix incorrect propagation of Boolean variables potentially
+      causing output not accepted by Gecode and Chuffed.
+    + Fix a problem where the usage of lb on a Boolean expression
+      would return -infinity..
+    + Fix omission of error location when there is no stack trace
+      available.
+    + Fix type specialisation to always make par versions of
+      functions available for output.
+    + Fix internal error when checking return value of functions
+      involving arrays of optional values.
+    + Fix incorrect false values for has_output_item when running
+      with --model-interface-only
+    + Fix translation of search annotations with multi-dimensional
+      arrays as arguments.
+    + Fix bug in output generation for some visualisation functions.
+    + Fix problem where tuple or record assignments would sometimes
+      trigger segmentation faults.
+    + Fix context when binding the result of flattening a
+      concatenation operation, resolving a possible segmentation
+      fault.
+    + Fix incorrect possible evaluation error for in operator
+      involving an array RHS.
+  * Changes:
+    + Add --solution-checker option to allow specifying the
+      solution checker (allowing use from a parameter configuration
+      .mpc file).
+    + Produce tighter bounds in compute_mod_bounds for the
+      mod operator.
+  * Changes in the IDE:
+    + Fix command used to run findMUS and Globalizer.
+    + Add ability to set the ports used for the visualisation
+      server.
+    + Add option for printing the visualisation server URL for
+      debugging purposes.
+    + Add more information to subprocess error messages.
+- update to 2.8.0:
+  * Changes in interfaces to solvers:
+    + OR-Tools is now bundled with the MiniZinc IDE on all
+      platforms.
+    + HiGHS is now loaded as a dynamic plugin instead of statically
+      linked, and now supports outputting intermediate solutions
+      for optimisation problems.
+    + Add support for producing a JSON-based version of FlatZinc as
+      the output format of the MiniZinc compiler.
+    + Replace supportsMzn, supportsFzn and supportsNL solver
+      configuration flags with new option inputType. The old flags
+      are still supported for backwards compatibility.
+    + Add experimental support for restart based meta-search
+      specification for the Gecode and Chuffed solvers, as first
+      explored in Solver-Independent Large Neighbourhood Search and
+      A Modern Architecture for Constraint Modelling Languages.
+    + Automatically detect current versions of CPLEX.
+  * Changes in the MiniZinc Library:
+    + Add cumulatives scheduling global constraint.
+    + Add the opt variants of the global_cardinality functions, and
+      add enumerated type typesafety between the values of the
+      decision variables and the cover parameters.
+    + Add optional versions of count_* global constraints.
+    + (strictly_)decreasing will now always be rewritten into
+      (strictly_)increasing and has support for option types.
+    + Allow libraries to define how to iterate over var set of int
+      using the function set2iter, useful for different set
+      representations.
+    + Stabilise the IDE visualisation library, allowing all
+      visualisation functions to be used from output statements,
+      and removing the need for manual calls to showJSON in custom
+      visualisations. This is a breaking change for users of the
+      previous experimental API.
+    + Add mzn_half_reify_clause compiler option to allow solvers to
+      disable the half reification of bool_clause constraints.
+    + Update the reflection functions ub, lb, and dom to return
+      enum values.
+    + Use tuples to implement the decomposition of optional
+      variables, avoiding possible CSE aliasing problems.
+  * Changes in the compiler:
+    + CSE has been adjusted to handle commutative functions when
+      annotated using the promise_commutative annotation.
+    + mzn_reverse_map_var is now only called on output variables
+      that do not yet have reverse mappers after initial
+      flattening, but are required by the output model.
+    + Improve error messaging for invalid parameter configuration
+      (.mpc) files.
+    + Add a list of messages generated by solution checkers to the
+      checker message when using --json-stream.
+    + Support output of command line argument parsing errors in
+      --json-stream mode.
+  * Bug fixes:
+    + Fix restoration of tuple/record domains when flattening let
+      expressions.
+    + Fix type checking error due to creation of incorrect par
+      versions of functions involving tuples/records.
+    + Ensure that when --solver is used, the given solver
+      configuration file is always selected even when it collides
+      with a solver in the search paths.
+    + Fix error when running satisfaction problems using the Gecode
+      presolver where an output variable is also an
+      introduced variable.
+    + Resolve a problem where unification in the optimization phase
+      might remove variables part of the output.
+    + Fix possible crash when printing the final solution using the
+      built-in Chuffed interface.
+    + Don’t print the final status line from solution checkers.
+    + Fix typechecking of par type-inst identifiers when
+      instantiated using structured types involving var types.
+    + Implement fix and is_fixed for strucutred types.
+    + Ensure reverse mappers are created when flattening
+      tuple/record literals. This resolves certain errors during
+      output processing in models using these types.
+    + Fix problem where certain strings in exceptions might be
+      garbage collected before they are output.
+    + Fix problem where argument names of generated functions could
+      conflict with model declared names.
+    + Fix problem where the common type of complex records or
+      tuples was not correctly determined in the array literals.
+    + Fix a problem in the parser where a nullptr would be used
+      before a syntax error was thrown.
+    + Fix error management when reading preference files.
+    + Fix segmentation fault caused by the creation of invalid
+      domain constraints generated for functions with arrays of
+      tuples or records parameters.
+    + Fix crash when instantiating a type-inst identifier using
+      only <>.
+    + Fix evaluation of comprehensions containing opt string.
+    + Fix crash when instantiating polymorphic functions using
+      tuples/records with many var or opt fields.
+    + Do not generate default DZN output when there are only
+      sectioned output items present.
+    + Fix the edge indexing of the edges for the final node in the
+      neural_net global constraint.
+    + Add better error messaging when an index set mismatch is
+      encountered in the standard library.
+    + Fix evaluation error when indexing into an array using <>.
+    + Fix incorrect unsatisfiability when equating optional
+      variables with non-intersecting domains.
+    + Fix array access using optional indices for multidimensional
+      arrays.
+    + Fix output of zero length arrays of optional variables.
+    + Fix output processing performance degradation when printing
+      arrays in DZN output mode.
+    + Fix card function on set of floats and bools.
+    + Make set literals containing strings or annotations a
+      type error.
+  * Changes in the IDE:
+    + Fix unreadable cheat sheet font colour in dark mode.
+    + Add option to output objective value and enable by default.
+    + Show manually input parameters in output window.
+    + Fix missing checker messages.
+    + Fix incorrect OpenSSL version in Linux packages.
+- Add minimal checks
+- Add patches:
+  * 0001-Disambiguate-UNKNOWN-EXCEPTION.patch
+  * 0002-Catch-std-exception-by-const-reference.patch
+  * 0003-Try-to-get-some-more-information-when-catching.patch
+
+-------------------------------------------------------------------
+Thu Nov  9 09:14:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.6:
+  * Change the library and solver configuration path of builtin
+    version of Chuffed to prevent file conflicts
+  * Use the verbose compilation flag to control the verbosity of
+    the MIP domains stage
+  * Introduces the ``arg_val`` and ``arg_val_weak`` globals that
+    return the index of the first occurrence of a value in a given
+    array.
+  * Introduces the ``var_perm_sym`` and ``var_sqr_sym`` symmetry
+    breaking globals.
+  * Enable parallel search for the built-in Gecode presolver.
+  * Use native Qt dark mode on Windows where supported.
+  * Improve behaviour of the custom solver parameter dialog.
+  * ``ASTString`` constructor that uses ``std::string`` is now
+    explicit to avoid unexpected or unnecessary GC allocation.
+  * Circular definitions through the use of annotations will now
+    be reported as type errors, rather incurring infinite recursion
+  * Optimize the compilation of identical calls in different
+    contexts by recursively changing the contexts of the (uncompiled)
+    dependent calls, instead of flattening multiple times.
+  * Change domains of set variables when encountering (par)
+    equalities, or negated ``in`` constraints at the root level.
+  * Calls to ``min`` and ``max`` with ``par set of int`` type
+    argument will now be undefined (becoming ``false`` in the
+    closest Boolean context). This makes them consistent with
+    the calls with an argument of type ``var set of int``.
+  * Note that previous behaviour would have returned ``infinity``
+    or ``-infinity`` respectively (:bugref:`661`).
+  * Only show MOOC error code when response is actually an error
+  * Add documentation for ``--input-is-flatzinc`` flag
+  * Add ``ceil``, ``floor`` and ``round`` functions for ``var
+    float``, and corresponding FlatZinc builtins ``float_ceil``,
+    ``float_floor`` and ``float_round`` that can be overridden
+    by solvers in the new ``redefinitions-2.7.1.mzn`` library file
+  * Fix highlighting of multiline comments starting with ``/*/``
+  * Fix bundling of incompatible OpenSSL version in linux
+    packages.
+  * Support for tuple and record types as well as type-inst
+    synonyms has been added.
+  * Extended enumerated types can now be constructed from non-
+    contiguous sets.
+  * WebAssembly is now fully supported as a target platform.
+  * MiniZinc now includes a solver interface for the `HiGHS
+    linear optimisation suite. HiGHS is included by default in
+    the MiniZincIDE package, and available using ``--solver highs``.
+  * The SCIP interface has been updated and is now compatible
+    with version 7 and 8 only.
+  * A solver's globals library specified in a configuration file
+    will now always be passed to the compiler using the ``-G``
+    flag. This allows users to easily override this library from
+    command line when required.
+  * Automatically detect Gurobi 10.0 and potential future
+    versions.
+  * Avoid loading all solver plugin DLLs on startup, instead
+    loading when required.
+  * The non-FlatZinc interfaces now also accept the ``--free-
+    search`` flag in addition to the ``-f`` flag.
+  * Ensure user config directory is created when modifying
+    solver search paths (:idebugref:`167`).
+  * Add tooltips to the CP-Profiler status bar legend.
+  * Add support for mooc submissions which include file editing
+    history.
+  * bugfixes
+
+-------------------------------------------------------------------
+Sat Jul 16 21:50:27 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.4
+  https://github.com/MiniZinc/libminizinc/blob/2.6.4/changes.rst
+- Drop upstream patches:
+  * 0001-Fix-missing-return-in-non-void-function.patch
+  * 0001-Add-memory-include-required-for-unique_ptr.patch
+
+-------------------------------------------------------------------
+Sat May 21 10:47:50 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.3
+  https://github.com/MiniZinc/libminizinc/blob/2.6.3/changes.rst
+- Fix build with GCC 12.1.0, add
+  0001-Add-memory-include-required-for-unique_ptr.patch
+
+-------------------------------------------------------------------
+Thu Apr 28 12:47:40 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on gecode for building the presolver, and recommend the
+  gecode-minizinc solver plugin.
+
+-------------------------------------------------------------------
+Tue Apr 26 20:51:53 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version (2.6.2)

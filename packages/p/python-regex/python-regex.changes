@@ -1,0 +1,223 @@
+-------------------------------------------------------------------
+Mon Dec  4 11:37:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.10.10:
+  * Updated to Unicode 15.1.0.
+
+-------------------------------------------------------------------
+Thu Sep  7 08:18:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2023.8.8:
+  * Git issue 508: Regex doesn't build using CPython main
+    (3.13.0a0)
+  * Removed usage of _PyBytes_Join and did a little tidying of
+    the code that makes the result string.
+
+-------------------------------------------------------------------
+Thu Sep  7 08:11:04 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2023.6.3:
+   * Git issue 498: Conditional negative lookahead inside positive
+     lookahead fails to match
+   * Conditional node needed an additional member that points to
+     the true branch.
+
+-------------------------------------------------------------------
+Sun May 14 16:27:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.5.5:
+  * Removed semicolon after 'else' in 'munge_name'.
+  * Fixed pyproject.toml and setup.py.
+  * pyproject.toml was missing.
+  * Added pyproject.toml.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:32:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:26 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Mar 27 07:36:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.3.23:
+  * Backtracking failure matching regex
+  * Limit running time for failing fullmatch
+
+-------------------------------------------------------------------
+Wed Nov  9 18:55:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 2022.10.31
+  * Updated text for supported Unicode and Python versions.
+
+-------------------------------------------------------------------
+Fri Sep 16 18:28:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.9.13:
+  * update to unicode 15.0
+
+-------------------------------------------------------------------
+Mon Sep 12 20:17:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.9.11:
+  * fix issue 474: regex has no equivalent to re.Match.groups() for captures
+  * fix segmentation fault when using conditional pattern (issue 479)
+  * use \v for vertical spacing
+
+-------------------------------------------------------------------
+Sun Jul 17 08:17:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.7.9:
+  * Fix Emoji classified as letter
+  * Revisit compilation flag to prevent adding a single explicitly compiled regex to cache
+  * Fix Scoped inline flags 'a', 'u', and 'L' affecting global flags
+
+-------------------------------------------------------------------
+Tue Jun 14 22:03:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022.6.2
+  * No upstream changelog available
+
+-------------------------------------------------------------------
+Tue May 24 07:25:05 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 2022.4.24
+  * Many fixes, including drop of Python 2 and improvement of fuzzy
+   test coverage
+
+-------------------------------------------------------------------
+Sun Aug  1 09:30:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.7.6:
+  * drop-in replacement for python re
+  * fix fuzzy character restrictions not applying to insertions
+
+-------------------------------------------------------------------
+Sun May  9 14:40:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.4.4:
+  * Wheels for arm64 mac os
+  * Fix fuzzy matching with wrong distance
+  * Fix regex fails with a quantified backreference
+
+-------------------------------------------------------------------
+Sat Mar 13 14:14:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2020.11.13:
+  * Fix Unexpected behavior in fuzzy matching with limited character set
+  * clock() calls for timeout cause slowdown in Docker
+  * Update lis of supported Python versions
+  * licensing change to Apache-2.0
+
+-------------------------------------------------------------------
+Wed Oct  7 04:29:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to 2020.9.27
+  * Fuzzy-matching fixes
+  * Fix Memory Error in regex.findall
+  * Added \h as an alias to [[:blank:]].
+  * Improved performance of string sets.
+
+-------------------------------------------------------------------
+Wed Apr 15 15:25:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2020.4.4
+  * Updated to Unicode 13.0.0.
+
+-------------------------------------------------------------------
+Thu Mar 19 10:45:06 UTC 2020 - pgajdos@suse.com
+
+- version update to 2020.2.20
+  * no upstream changelog found
+
+-------------------------------------------------------------------
+Tue Sep 10 10:53:26 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2019.08.19:
+  * minor fixes
+
+-------------------------------------------------------------------
+Mon Jul 22 12:58:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2019.06.08:
+  * minor fixes
+
+-------------------------------------------------------------------
+Wed Jun  5 10:52:20 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2019.06.05
+  * Updated for Python 3.8.
+  * Updated to Unicode 12.1.0.
+  * For fullmatch, added check for end/start of string for
+    RE_OP_SUCCESS in try_match.
+
+-------------------------------------------------------------------
+Tue May 14 17:26:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2019.04.14:
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Mon Jul  2 03:23:26 UTC 2018 - toddrme2178@gmail.com
+
+- Update to 2018.06.21
+  * Fixed Regex matches with `re` but not with `regex` module
+  * Fixed that the reported positions of fuzzy changes were
+    sometimes incorrect.
+  * Updated Unicode word and grapheme boundaries for Unicode
+    11.0.0, which I had overlooked...
+  * Updated to Unicode 11.0.0.
+  * Fixed an off-by-one bug where a lazy repeat is followed by a
+    character (quick check).
+  * Fixed that the Unicode normalization quick check properties
+    weren't handled correctly.
+  * Further changes to match re module's behaviour on zero-width
+    matching for Python 3.7.
+  * Added 'fuzzy_changes' attribute to match object to indicate
+    positions of changes in fuzzy match.
+
+-------------------------------------------------------------------
+Sat Sep  2 09:22:13 UTC 2017 - jengelh@inai.de
+
+- Specify in description what makes regex worthwhile to have.
+  Fix RPM group.
+
+-------------------------------------------------------------------
+Thu Aug 31 06:19:11 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 2017.07.28
+  * Too many changes to list
+
+-------------------------------------------------------------------
+Thu Aug 24 13:53:27 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Fri Jun 16 18:08:36 UTC 2017 - ecsos@opensuse.org
+
+- Update to 2017.06.07
+  * Too many changes to list
+
+-------------------------------------------------------------------
+Sat Sep 17 00:36:59 UTC 2016 - toddrme2178@gmail.com
+
+- Update to 2016.08.27
+  * Too many changes to list
+- Complete rewrite of the .spec file.
+
+-------------------------------------------------------------------
+Wed May  9 15:44:16 UTC 2012 - froh@suse.com
+
+- update to current version 0.1.20120506
+
+-------------------------------------------------------------------
+Tue Oct  4 16:18:57 UTC 2011 - jw@suse.com
+
+- initial pull from pypi
+
+

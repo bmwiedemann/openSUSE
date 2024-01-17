@@ -1,0 +1,1658 @@
+-------------------------------------------------------------------
+Mon Jun 12 19:48:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- rename to protobuf21 and provide cpp bindings only for now
+  as protobuf 22 is disruptive 
+
+-------------------------------------------------------------------
+Fri Apr 28 07:07:50 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Mention the rpmlintrc file in the spec.
+
+-------------------------------------------------------------------
+Thu Apr 27 06:59:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Make possible to build on older systems, like SLE12 that miss
+  some of the used macros.
+
+-------------------------------------------------------------------
+Thu Mar 23 09:01:50 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO (boo#1133277).
+
+-------------------------------------------------------------------
+Thu Dec 15 16:18:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v21.12:
+  * Python
+  * Fix broken enum ranges (#11171)
+  * Stop requiring extension fields to have a sythetic oneof (#11091)
+  * Python runtime 4.21.10 not works generated code can not load valid
+    proto.
+
+-------------------------------------------------------------------
+Thu Dec  8 09:16:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.11:
+  * Python
+  * Add license file to pypi wheels (#10936)
+  * Fix round-trip bug (#10158)
+
+-------------------------------------------------------------------
+Mon Dec  5 20:51:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.10:
+  * Java
+  * Use bit-field int values in buildPartial to skip work on unset groups of
+    fields. (#10960)
+  * Mark nested builder as clean after clear is called (#10984)
+
+-------------------------------------------------------------------
+Sat Oct 29 12:20:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.9:
+  * Ruby
+      * Replace libc strdup usage with internal impl to restore musl compat (#10818)
+      * Auto capitalize enums name in Ruby (#10454) (#10763)
+  * Other
+      * Fix for grpc.tools #17995 & protobuf #7474 (handle UTF-8 paths in argumentfile) (#10721)
+  * C++
+      * 21.x No longer define no_threadlocal on OpenBSD (#10743)
+  * Java
+      * Mark default instance as immutable first to avoid race during static initialization of default instances (#10771)
+      * Refactoring java full runtime to reuse sub-message builders and prepare to
+        migrate parsing logic from parse constructor to builder.
+      * Move proto wireformat parsing functionality from the private "parsing
+        constructor" to the Builder class.
+      * Change the Lite runtime to prefer merging from the wireformat into mutable
+        messages rather than building up a new immutable object before merging. This
+        way results in fewer allocations and copy operations.
+      * Make message-type extensions merge from wire-format instead of building up
+        instances and merging afterwards. This has much better performance.
+      * Fix TextFormat parser to build up recurring (but supposedly not repeated)
+        sub-messages directly from text rather than building a new sub-message and
+        merging the fully formed message into the existing field.
+
+-------------------------------------------------------------------
+Mon Sep 19 07:27:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.6:
+  C++:
+  * Reduce memory consumption of MessageSet parsing 
+
+-------------------------------------------------------------------
+Wed Aug 17 19:33:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.5:
+  PHP
+  * Added getContainingOneof and getRealContainingOneof to descriptor.
+  * fix PHP readonly legacy files for nested messages
+  Python
+  * Fixed comparison of maps in Python.
+
+-------------------------------------------------------------------
+Thu Aug  4 20:50:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add 10355.patch to fix soversioning
+
+-------------------------------------------------------------------
+Thu Jul 28 19:47:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.4:
+  * Reduce the required alignment of ArenaString from 8 to 4
+
+-------------------------------------------------------------------
+Mon Jul 25 07:11:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 21.3:
+  * C++
+    * Add header search paths to Protobuf-C++.podspec (#10024)
+    * Fixed Visual Studio constinit errors (#10232)
+    * Fix #9947: make the ABI compatible between debug and non-debug builds (#10271)
+  * UPB
+    * Allow empty package names (fixes behavior regression in 4.21.0)
+    * Fix a SEGV bug when comparing a non-materialized sub-message (#10208)
+    * Fix several bugs in descriptor mapping containers (eg. descriptor.services_by_name)
+      * for x in mapping now yields keys rather than values, to match Python
+        conventions and the behavior of the old library.
+      * Lookup operations now correctly reject unhashable types as map keys.
+      * We implement repr() to use the same format as dict.
+    * Fix maps to use the ScalarMapContainer class when appropriate
+    * Fix bug when parsing an unknown value in a proto2 enum extension (protocolbuffers/upb#717)
+  * PHP
+    * Add "readonly" as a keyword for PHP and add previous classnames to descriptor pool (#10041)
+  * Python
+    * Make //:protobuf_python and //:well_known_types_py_pb2 public (#10118)
+  * Bazel
+     * Add back a filegroup for :well_known_protos (#10061) 
+
+-------------------------------------------------------------------
+Sun Jul  3 07:50:16 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 21.2:
+- C++
+  - cmake: Call get_filename_component() with DIRECTORY mode instead of PATH mode (#9614)
+  - Escape GetObject macro inside protoc-generated code (#9739)
+  - Update CMake configuration to add a dependency on Abseil (#9793)
+  - Fix cmake install targets (#9822)
+  - Use __constinit only in GCC 12.2 and up (#9936)
+- Java
+  - Update protobuf_version.bzl to separate protoc and per-language java … (#9900)
+- Python
+  - Increment python major version to 4 in version.json for python upb (#9926)
+  - The C extension module for Python has been rewritten to use the upb library.
+  - This is expected to deliver significant performance benefits, especially when
+    parsing large payloads. There are some minor breaking changes, but these
+    should not impact most users. For more information see:
+    https://developers.google.com/protocol-buffers/docs/news/2022-05-06#python-updates
+- PHP
+  - [PHP] fix PHP build system (#9571)
+  - Fix building packaged PHP extension (#9727)
+  - fix: reserve "ReadOnly" keyword for PHP 8.1 and add compatibility (#9633)
+  - fix: phpdoc syntax for repeatedfield parameters (#9784)
+  - fix: phpdoc for repeatedfield (#9783)
+  - Change enum string name for reserved words (#9780)
+  - chore: [PHP] fix phpdoc for MapField keys (#9536)
+  - Fixed PHP SEGV by not writing to shared memory for zend_class_entry. (#9996)
+- Ruby
+  - Allow pre-compiled binaries for ruby 3.1.0 (#9566)
+  - Implement respond_to? in RubyMessage (#9677)
+  - [Ruby] Fix RepeatedField#last, #first inconsistencies (#9722)
+  - Do not use range based UTF-8 validation in truffleruby (#9769)
+  - Improve range handling logic of RepeatedField (#9799)
+- Other
+  - Fix invalid dependency manifest when using descriptor_set_out (#9647)
+  - Remove duplicate java generated code (#9909)
+
+-------------------------------------------------------------------
+Wed May 11 14:13:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use %%autosetup, but %%setup and %%patch on other line
+  * Allows building on SLE-12-SP5
+
+-------------------------------------------------------------------
+Thu May  5 10:54:05 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add temporary patch gcc12-disable-__constinit-with-c++-11.patch
+  that addresses gh#protocolbuffers/protobuf#9916.
+
+-------------------------------------------------------------------
+Thu May  5 05:25:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove change_desc_db.patch, because underlying bug in
+  gh#googleapis/python-api-core#372 has been fixed.
+
+-------------------------------------------------------------------
+Mon Apr 25 13:01:22 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.20.1:
+  - PHP
+    - Fix building packaged PHP extension (#9727)
+    - Fixed composer.json to only advertise compatibility with
+      PHP 7.0+. (#9819)
+  - Ruby
+    - Disable the aarch64 build on macOS until it can be fixed. (#9816)
+  - Other
+    - Fix versioning issues in 3.20.0
+- Update to 3.20.1:
+  - Ruby
+    - Dropped Ruby 2.3 and 2.4 support for CI and releases.
+      (#9311)
+    - Added Ruby 3.1 support for CI and releases (#9566).
+    - Message.decode/encode: Add recursion_limit option
+      (#9218/#9486)
+    - Allocate with xrealloc()/xfree() so message allocation is
+      visible to the
+    - Ruby GC. In certain tests this leads to much lower memory
+      usage due to more
+    - frequent GC runs (#9586).
+    - Fix conversion of singleton classes in Ruby (#9342)
+    - Suppress warning for intentional circular require (#9556)
+    - JSON will now output shorter strings for double and float
+      fields when possible
+    - without losing precision.
+    - Encoding and decoding of binary format will now work
+      properly on big-endian
+    - systems.
+    - UTF-8 verification was fixed to properly reject surrogate
+      code points.
+    - Unknown enums for proto2 protos now properly implement
+      proto2's behavior of
+    - putting such values in unknown fields.
+  - Java
+    - Revert "Standardize on Array copyOf" (#9400)
+    - Resolve more java field accessor name conflicts (#8198)
+    - Fix parseFrom to only throw InvalidProtocolBufferException
+    - InvalidProtocolBufferException now allows arbitrary wrapped
+      Exception types.
+    - Fix bug in FieldSet.Builder.mergeFrom
+    - Flush CodedOutputStream also flushes underlying
+      OutputStream
+    - When oneof case is the same and the field type is Message,
+      merge the
+    - subfield. (previously it was replaced.)’
+    - Add @CheckReturnValue to some protobuf types
+    - Report original exceptions when parsing JSON
+    - Add more info to @deprecated javadoc for set/get/has
+      methods
+    - Fix initialization bug in doc comment line numbers
+    - Fix comments for message set wire format.
+  - Kotlin
+    - Add test scope to kotlin-test for protobuf-kotlin-lite
+      (#9518)
+    - Add orNull extensions for optional message fields.
+    - Add orNull extensions to all proto3 message fields.
+  - Python
+    - Dropped support for Python < 3.7 (#9480)
+    - Protoc is now able to generate python stubs (.pyi) with
+      --pyi_out
+    - Pin multibuild scripts to get manylinux1 wheels back
+      (#9216)
+    - Fix type annotations of some Duration and Timestamp
+      methods.
+    - Repeated field containers are now generic in field types
+      and could be used in type annotations.
+    - Protobuf python generated codes are simplified. Descriptors
+      and message classes' definitions are now dynamic created in
+      internal/builder.py.
+    - Insertion Points for messages classes are discarded.
+    - has_presence is added for FieldDescriptor in python
+    - Loosen indexing type requirements to allow valid index()
+      implementations rather than only PyLongObjects.
+    - Fix the deepcopy bug caused by not copying
+      message_listener.
+    - Added python JSON parse recursion limit (default 100)
+    - Path info is added for python JSON parse errors
+    - Pure python repeated scalar fields will not able to pickle.
+      Convert to list first.
+    - Timestamp.ToDatetime() now accepts an optional tzinfo
+      parameter. If specified, the function returns
+      a timezone-aware datetime in the given time zone. If
+      omitted or None, the function returns a timezone-naive UTC
+      datetime (as previously).
+    - Adds client_streaming and server_streaming fields to
+      MethodDescriptor.
+    - Add "ensure_ascii" parameter to json_format.MessageToJson.
+      This allows smaller JSON serializations with UTF-8 or other
+      non-ASCII encodings.
+    - Added experimental support for directly assigning numpy
+      scalars and array.
+    - Improve the calculation of public_dependencies in
+      DescriptorPool.
+    - [Breaking Change] Disallow setting fields to numpy
+      singleton arrays or repeated fields to numpy
+      multi-dimensional arrays. Numpy arrays should be indexed or
+      flattened explicitly before assignment.
+  - Compiler
+    - Migrate IsDefault(const std::string*) and
+      UnsafeSetDefault(const std::string*)
+    - Implement strong qualified tags for TaggedPtr
+    - Rework allocations to power-of-two byte sizes.
+    - Migrate IsDefault(const std::string*) and
+      UnsafeSetDefault(const std::string*)
+    - Implement strong qualified tags for TaggedPtr
+    - Make TaggedPtr Set...() calls explicitly spell out the
+      content type.
+    - Check for parsing error before verifying UTF8.
+    - Enforce a maximum message nesting limit of 32 in the
+      descriptor builder to
+    - guard against stack overflows
+    - Fixed bugs in operators for RepeatedPtrIterator
+    - Assert a maximum map alignment for allocated values
+    - Fix proto1 group extension protodb parsing error
+    - Do not log/report the same descriptor symbol multiple
+      times if it contains
+    - more than one invalid character.
+    - Add UnknownFieldSet::SerializeToString and
+      SerializeToCodedStream.
+    - Remove explicit default pointers and deprecated API from
+      protocol compiler
+  - Arenas
+    - Change Repeated*Field to reuse memory when using arenas.
+    - Implements pbarenaz for profiling proto arenas
+    - Introduce CreateString() and CreateArenaString() for
+      cleaner semantics
+    - Fix unreferenced parameter for MSVC builds
+    - Add UnsafeSetAllocated to be used for one-of string
+      fields.
+    - Make Arena::AllocateAligned() a public function.
+    - Determine if ArenaDtor related code generation is
+      necessary in one place.
+    - Implement on demand register ArenaDtor for
+      InlinedStringField
+  - C++
+    - Enable testing via CTest (#8737)
+    - Add option to use external GTest in CMake (#8736)
+    - CMake: Set correct sonames for libprotobuf-lite.so and
+      libprotoc.so (#8635) (#9529)
+    - Add cmake option protobuf_INSTALL to not install files
+      (#7123)
+    - CMake: Allow custom plugin options e.g. to generate mocks
+      (#9105)
+    - CMake: Use linker version scripts (#9545)
+    - Manually *struct Cord fields to work better with arenas.
+    - Manually destruct map fields.
+    - Generate narrower code
+    - Fix #9378 by removing
+    - shadowed cached_size field
+    - Remove GetPointer() and explicit nullptr defaults.
+    - Add proto_h flag for speeding up large builds
+    - Add missing overload for reference wrapped fields.
+    - Add MergedDescriptorDatabase::FindAllFileNames()
+    - RepeatedField now defines an iterator type instead of
+      using a pointer.
+    - Remove obsolete macros GOOGLE_PROTOBUF_HAS_ONEOF and
+      GOOGLE_PROTOBUF_HAS_ARENAS.
+  - PHP
+    - Fix: add missing reserved classnames (#9458)
+    - PHP 8.1 compatibility (#9370)
+  - C#
+    - Fix trim warnings (#9182)
+    - Fixes NullReferenceException when accessing
+      FieldDescriptor.IsPacked (#9430)
+    - Add ToProto() method to all descriptor classes (#9426)
+    - Add an option to preserve proto names in JsonFormatter
+      (#6307)
+  - Objective-C
+    - Add prefix_to_proto_package_mappings_path option. (#9498)
+    - Rename proto_package_to_prefix_mappings_path to
+      package_to_prefix_mappings_path. (#9552)
+    - Add a generation option to control use of forward
+      declarations in headers. (#9568)
+- Add change_desc_db.patch to fix
+  gh#googleapis/python-api-core#372 and
+  gh#protocolbuffers/protobuf#9867
+
+-------------------------------------------------------------------
+Wed Mar 16 16:39:10 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Change Requires: zlib-devel to pkgconfig(zlib) so as not to conflict with libz-ng-compat1.
+
+-------------------------------------------------------------------
+Fri Jan 28 20:38:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.4:
+  Python:
+    * Make libprotobuf symbols local on OSX to fix issue #9395 (#9435)
+  Ruby:
+    * Fixed a data loss bug that could occur when the number of optional fields
+      in a message is an exact multiple of 32
+  PHP:
+    * Fixed a data loss bug that could occur when the number of optional fields
+      in a message is an exact multiple of 32.
+
+-------------------------------------------------------------------
+Mon Jan 24 13:08:10 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.19.3:
+  C++:
+    * Make proto2::Message::DiscardUnknownFields() non-virtual
+    * Separate RepeatedPtrField into its own header file
+    * For default floating point values of 0, consider all bits significant
+    * Fix shadowing warnings 
+    * Fix for issue #8484, constant initialization doesn't compile in msvc clang-cl environment 
+  Java:
+    * Improve performance characteristics of UnknownFieldSet parsing
+    * For default floating point values of 0, consider all bits significant
+    * Annotate //java/com/google/protobuf/util/... with nullness annotations
+    * Use ArrayList copy constructor 
+  Bazel:
+    * Ensure that release archives contain everything needed for Bazel
+    * Align dependency handling with Bazel best practices
+  Javascript:
+    * Fix ReferenceError: window is not defined when getting the global object 
+  Ruby:
+    * Fix memory leak in MessageClass.encode 
+    * Override Map.clone to use Map's dup method 
+    * Ruby: build extensions for arm64-darwin 
+    * Add class method Timestamp.from_time to ruby well known types 
+    * Adopt pure ruby DSL implementation for JRuby 
+    * Add size to Map class
+    * Fix for descriptor_pb.rb: google/protobuf should be required first 
+  Python:
+    * Proto2 DecodeError now includes message name in error message
+    * Make MessageToDict convert map keys to strings
+    * Add python-requires in setup.py 
+    * Add python 3.10 
+
+-------------------------------------------------------------------
+Wed Jul 28 08:00:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Remove two build requires that are not needed
+
+-------------------------------------------------------------------
+Thu Jun 24 08:53:14 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.17.3:
+  C++
+  * Introduce FieldAccessListener.
+  * Stop emitting boilerplate {Copy/Merge}From in each ProtoBuf class
+  * Provide stable versions of SortAndUnique().
+  * Make sure to cache proto3 optional message fields when they are cleared.
+  * Expose UnsafeArena methods to Reflection.
+  * Use std::string::empty() rather than std::string::size() > 0.
+  * [Protoc] C++ Resolved an issue where NO_DESTROY and CONSTINIT are in incorrect order (#8296)
+  * Fix PROTOBUF_CONSTINIT macro redefinition (#8323)
+  * Delete StringPiecePod (#8353)
+  * Create a CMake option to control whether or not RTTI is enabled (#8347)
+  * Make util::Status more similar to absl::Status (#8405)
+  * The ::pb namespace is no longer exposed due to conflicts.
+  * Allow MessageDifferencer::TreatAsSet() (and friends) to override previous
+  calls instead of crashing.
+  * Reduce the size of generated proto headers for protos with string or
+  bytes fields.
+  * Move arena() operation on uncommon path to out-of-line routine
+  * For iterator-pair function parameter types, take both iterators by value.
+  * Code-space savings and perhaps some modest performance improvements in
+  * RepeatedPtrField.
+  * Eliminate nullptr check from every tag parse.
+  * Remove unused _$name$cached_byte_size fields.
+  * Serialize extension ranges together when not broken by a proto field in the
+  middle.
+  * Do out-of-line allocation and deallocation of string object in ArenaString.
+  * Streamline ParseContext::ParseMessage to avoid code bloat and improve
+  performance.
+  * New member functions RepeatedField::Assign, RepeatedPtrField::{Add, Assign}.
+  on an error path.
+  * util::DefaultFieldComparator will be final in a future version of protobuf.
+  * Subclasses should inherit from SimpleFieldComparator instead.
+  Kotlin
+  * Introduce support for Kotlin protos (#8272)
+  * Restrict extension setter and getter operators to non-nullable T.
+  Java
+  * Fixed parser to check that we are at a proper limit when a sub-message has
+  finished parsing.
+  * updating GSON and Guava to more recent versions (#8524)
+  * Reduce the time spent evaluating isExtensionNumber by storing the extension
+  ranges in a TreeMap for faster queries. This is particularly relevant for
+  protos which define a large number of extension ranges, for example when
+  each tag is defined as an extension.
+  * Fix java bytecode estimation logic for optional fields.
+  * Optimize Descriptor.isExtensionNumber.
+  * deps: update JUnit and Truth (#8319)
+  * Detect invalid overflow of byteLimit and return InvalidProtocolBufferException as documented.
+  * Exceptions thrown while reading from an InputStream in parseFrom are now
+  included as causes.
+  * Support potentially more efficient proto parsing from RopeByteStrings.
+  * Clarify runtime of ByteString.Output.toStringBuffer().
+  * Added UnsafeByteOperations to protobuf-lite (#8426)
+  Python
+  * Add MethodDescriptor.CopyToProto() (#8327)
+  * Remove unused python_protobuf.{cc,h} (#8513)
+  * Start publishing python aarch64 manylinux wheels normally (#8530)
+  * Fix constness issue detected by MSVC standard conforming mode (#8568)
+  * Make JSON parsing match C++ and Java when multiple fields from the same
+  oneof are present and all but one is null.
+  * Fix some constness / char literal issues being found by MSVC standard conforming mode (#8344)
+  * Switch on "new" buffer API (#8339)
+  * Enable crosscompiling aarch64 python wheels under dockcross manylinux docker image (#8280)
+  * Fixed a bug in text format where a trailing colon was printed for repeated field.
+  * When TextFormat encounters a duplicate message map key, replace the current
+  one instead of merging.
+  Ruby
+  * Add support for proto3 json_name in compiler and field definitions (#8356)
+  * Fixed memory leak of Ruby arena objects. (#8461)
+  * Fix source gem compilation (#8471)
+  * Fix various exceptions in Ruby on 64-bit Windows (#8563)
+  * Fix crash when calculating Message hash values on 64-bit Windows (#8565)
+  General
+  * Support M1 (#8557)
+
+-------------------------------------------------------------------
+Sun Apr 18 08:32:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.15.8:
+  - Fixed memory leak of Ruby arena objects (#8461)
+
+-------------------------------------------------------------------
+Tue Apr  6 01:47:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15.7:
+  C++
+  * Remove the ::pb namespace (alias) (#8423)
+  Ruby
+  * Fix unbounded memory growth for Ruby <2.7 (#8429)
+  * Fixed message equality in cases where the message type is different (#8434)
+
+-------------------------------------------------------------------
+Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Can't assume non-existence of python38 macros in Leap.
+  gh#openSUSE/python-rpm-macros#107
+  Test for suse_version instead. Only Tumbleweed has and needs the
+  python_subpackage_only support.
+
+-------------------------------------------------------------------
+Tue Mar 16 00:19:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15.6:
+  Ruby
+  * Fixed bug in string comparison logic (#8386)
+  * Fixed quadratic memory use in array append (#8379)
+  * Fixed SEGV when users pass nil messages (#8363)
+  * Fixed quadratic memory usage when appending to arrays (#8364)
+  * Ruby <2.7 now uses WeakMap too, which prevents memory leaks. (#8341)
+  * Fix for FieldDescriptor.get(msg) (#8330)
+  * Bugfix for Message.[] for repeated or map fields (#8313)
+  PHP
+  * read_property() handler is not supposed to return NULL (#8362)
+  Protocol Compiler
+  * Optional fields for proto3 are enabled by default, and no longer require
+    the --experimental_allow_proto3_optional flag.
+  C++
+  * Do not disable RTTI by default in the CMake build (#8377)
+  * Create a CMake option to control whether or not RTTI is enabled (#8361)
+  * Fix PROTOBUF_CONSTINIT macro redefinition (#8323)
+
+  * MessageDifferencer: fixed bug when using custom ignore with multiple
+    unknown fields
+  * Use init_seg in MSVC to push initialization to an earlier phase.
+  * Runtime no longer triggers -Wsign-compare warnings.
+  * Fixed -Wtautological-constant-out-of-range-compare warning.
+  * DynamicCastToGenerated works for nullptr input for even if RTTI is disabled
+  * Arena is refactored and optimized.
+  * Clarified/specified that the exact value of Arena::SpaceAllocated() is an
+    implementation detail users must not rely on. It should not be used in
+    unit tests.
+  * Change the signature of Any::PackFrom() to return false on error.
+  * Add fast reflection getter API for strings.
+  * Constant initialize the global message instances
+  * Avoid potential for missed wakeup in UnknownFieldSet
+  * Now Proto3 Oneof fields have "has" methods for checking their presence in
+    C++.
+  * Bugfix for NVCC
+  * Return early in _InternalSerialize for empty maps.
+  * Adding functionality for outputting map key values in proto path logging
+    output (does not affect comparison logic) and stop printing 'value' in the
+    path. The modified print functionality is in the
+    MessageDifferencer::StreamReporter.
+  * Fixed https://github.com/protocolbuffers/protobuf/issues/8129
+  * Ensure that null char symbol, package and file names do not result in a
+    crash.
+  * Constant initialize the global message instances
+  * Pretty print 'max' instead of numeric values in reserved ranges.
+  * Removed remaining instances of std::is_pod, which is deprecated in C++20.
+  * Changes to reduce code size for unknown field handling by making uncommon
+    cases out of line.
+  * Fix std::is_pod deprecated in C++20 (#7180)
+  * Fix some -Wunused-parameter warnings (#8053)
+  * Fix detecting file as directory on zOS issue #8051 (#8052)
+  * Don't include sys/param.h for _BYTE_ORDER (#8106)
+  * remove CMAKE_THREAD_LIBS_INIT from pkgconfig CFLAGS (#8154)
+  * Fix TextFormatMapTest.DynamicMessage issue#5136 (#8159)
+  * Fix for compiler warning issue#8145 (#8160)
+  * fix: support deprecated enums for GCC < 6 (#8164)
+  * Fix some warning when compiling with Visual Studio 2019 on x64 target (#8125)
+
+  Python
+  * Provided an override for the reverse() method that will reverse the internal
+    collection directly instead of using the other methods of the BaseContainer.
+  * MessageFactory.CreateProtoype can be overridden to customize class creation.
+  * Fix PyUnknownFields memory leak (#7928)
+  * Add macOS big sur compatibility (#8126)
+
+  JavaScript
+  * Generate `getDescriptor` methods with `*` as their `this` type.
+  * Enforce `let/const` for generated messages.
+  * js/binary/utils.js: Fix jspb.utils.joinUnsignedDecimalString to work with
+    negative bitsLow and low but non-zero bitsHigh parameter. (#8170)
+
+  PHP
+  * Added support for PHP 8. (#8105)
+  * unregister INI entries and fix invalid read on shutdown (#8042)
+  * Fix PhpDoc comments for message accessors to include "|null". (#8136)
+  * fix: convert native PHP floats to single precision (#8187)
+  * Fixed PHP to support field numbers >=2**28. (#8235)
+  * feat: add support for deprecated fields to PHP compiler (#8223)
+  * Protect against stack overflow if the user derives from Message. (#8248)
+  * Fixed clone for Message, RepeatedField, and MapField. (#8245)
+  * Updated upb to allow nonzero offset minutes in JSON timestamps. (#8258)
+
+  Ruby
+  * Added support for Ruby 3. (#8184)
+  * Rewrote the data storage layer to be based on upb_msg objects from the
+    upb library. This should lead to much better parsing performance,
+    particularly for large messages. (#8184).
+  * Fill out JRuby support (#7923)
+  * [Ruby] Fix: (SIGSEGV) gRPC-Ruby issue on Windows. memory alloc infinite
+    recursion/run out of memory (#8195)
+  * Fix jruby support to handle messages nested more than 1 level deep (#8194)
+  Java
+  * Avoid possible UnsupportedOperationException when using CodedInputSteam
+    with a direct ByteBuffer.
+  * Make Durations.comparator() and Timestamps.comparator() Serializable.
+  * Add more detailed error information for dynamic message field type
+    validation failure
+  * Removed declarations of functions declared in java_names.h from
+    java_helpers.h.
+  * Now Proto3 Oneof fields have "has" methods for checking their presence in
+    Java.
+  * Annotates Java proto generated *_FIELD_NUMBER constants.
+  * Add -assumevalues to remove JvmMemoryAccessor on Android.
+  C#
+  * Fix parsing negative Int32Value that crosses segment boundary (#8035)
+  * Change ByteString to use memory and support unsafe create without copy (#7645)
+  * Optimize MapField serialization by removing MessageAdapter (#8143)
+  * Allow FileDescriptors to be parsed with extension registries (#8220)
+  * Optimize writing small strings (#8149)
+
+-------------------------------------------------------------------
+Sun Nov 22 00:56:06 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Updated URL to https://github.com/protocolbuffers/protobuf
+- Update to v3.14.0
+
+  Protocol Compiler
+  * The proto compiler no longer requires a .proto filename when it is not
+    generating code.
+  * Added flag `--deterministic_output` to `protoc --encode=...`.
+  * Fixed deadlock when using google.protobuf.Any embedded in aggregate options.
+
+  C++
+  * Arenas are now unconditionally enabled. cc_enable_arenas no longer has
+    any effect.
+  * Removed inlined string support, which is incompatible with arenas.
+  * Fix a memory corruption bug in reflection when mixing optional and
+    non-optional fields.
+  * Make SpaceUsed() calculation more thorough for map fields.
+  * Add stack overflow protection for text format with unknown field values.
+  * FieldPath::FollowAll() now returns a bool to signal if an out-of-bounds
+    error was encountered.
+  * Performance improvements for Map.
+  * Minor formatting fix when dumping a descriptor to .proto format with
+    DebugString.
+  * UBSAN fix in RepeatedField
+  * When running under ASAN, skip a test that makes huge allocations.
+  * Fixed a crash that could happen when creating more than 256 extensions in
+    a single message.
+  * Fix a crash in BuildFile when passing in invalid descriptor proto.
+  * Parser security fix when operating with CodedInputStream.
+  * Warn against the use of AllowUnknownExtension.
+  * Migrated to C++11 for-range loops instead of index-based loops where
+    possible. This fixes a lot of warnings when compiling with -Wsign-compare.
+  * Fix segment fault for proto3 optional
+  * Adds a CMake option to build `libprotoc` separately
+
+  Java
+  * Bugfix in mergeFrom() when a oneof has multiple message fields.
+  * Fix RopeByteString.RopeInputStream.read() returning -1 when told to read
+    0 bytes when not at EOF.
+  * Redefine remove(Object) on primitive repeated field Lists to avoid
+    autoboxing.
+  * Support "\u" escapes in textformat string literals.
+  * Trailing empty spaces are no longer ignored for FieldMask.
+  * Fix FieldMaskUtil.subtract to recursively remove mask.
+  * Mark enums with `@java.lang.Deprecated` if the proto enum has option
+    `deprecated = true;`.
+  * Adding forgotten duration.proto to the lite library
+
+  Python
+  * Print google.protobuf.NullValue as null instead of "NULL_VALUE" when it is
+    used outside WKT Value/Struct.
+  * Fix bug occurring when attempting to deep copy an enum type in python 3.
+  * Add a setuptools extension for generating Python protobufs
+  * Remove uses of pkg_resources in non-namespace packages
+  * [bazel/py] Omit google/__init__.py from the Protobuf runtime
+  * Removed the unnecessary setuptools package dependency for Python package
+  * Fix PyUnknownFields memory leak
+
+  PHP
+  * Added support for "==" to the PHP C extension
+  * Added `==` operators for Map and Array
+  * Native C well-known types
+  * Optimized away hex2bin() call in generated code
+  * New version of upb, and a new hash function wyhash in third_party
+  * add missing hasOneof method to check presence of oneof fields
+
+  Go:
+  * Update go_package options to reference google.golang.org/protobuf module.
+
+  C#:
+  * annotate ByteString.CopyFrom(ReadOnlySpan<byte>) as SecuritySafeCritical
+  * Fix C# optional field reflection when there are regular fields too
+  * Fix parsing negative Int32Value that crosses segment boundary
+
+  Javascript:
+  * JS: parse (un)packed fields conditionally
+
+- from version 3.13.0
+
+  PHP:
+  * The C extension is completely rewritten. The new C extension has significantly
+    better parsing performance and fixes a handful of conformance issues. It will
+    also make it easier to add support for more features like proto2 and proto3 presence.
+  * The new C extension does not support PHP 5.x. PHP 5.x users can still use pure-PHP.
+
+  C++:
+  * Removed deprecated unsafe arena string accessors
+  * Enabled heterogeneous lookup for std::string keys in maps.
+  * Removed implicit conversion from StringPiece to std::string
+  * Fix use-after-destroy bug when the Map is allocated in the arena.
+  * Improved the randomness of map ordering
+  * Added stack overflow protection for text format with unknown fields
+  * Use std::hash for proto maps to help with portability.
+  * Added more Windows macros to proto whitelist.
+  * Arena constructors for map entry messages are now marked "explicit"
+    (for regular messages they were already explicit).
+  * Fix subtle aliasing bug in RepeatedField::Add
+  * Fix mismatch between MapEntry ByteSize and Serialize with respect to unset
+    fields.
+
+  Python:
+  * JSON format conformance fixes:
+    * Reject lowercase t for Timestamp json format.
+    * Print full_name directly for extensions (no camelCase).
+    * Reject boolean values for integer fields.
+    * Reject NaN, Infinity, -Infinity that is not quoted.
+    * Base64 fixes for bytes fields: accept URL-safe base64 and missing padding.
+  * Bugfix for fields/files named "async" or "await".
+  * Improved the error message when AttributeError is returned from __getattr__
+    in EnumTypeWrapper.
+
+  Java:
+  * Fixed a bug where setting optional proto3 enums with setFooValue() would
+    not mark the value as present.
+  * Add Subtract function to FieldMaskUtil.
+
+  C#:
+  * Dropped support for netstandard1.0 (replaced by support for netstandard1.1).
+    This was required to modernize the parsing stack to use the `Span<byte>`
+    type internally
+  * Add `ParseFrom(ReadOnlySequence<byte>)` method to enable GC friendly
+    parsing with reduced allocations and buffer copies
+  * Add support for serialization directly to a `IBufferWriter<byte>` or
+    to a `Span<byte>` to enable GC friendly serialization.
+    The new API is available as extension methods on the `IMessage` type
+  * Add `GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE` define to make
+    generated code compatible with old C# compilers (pre-roslyn compilers
+    from .NET framework and old versions of mono) that do not support
+    ref structs. Users that are still on a legacy stack that does
+    not support C# 7.2 compiler might need to use the new define
+    in their projects to be able to build the newly generated code
+  * Due to the major overhaul of parsing and serialization internals,
+    it is recommended to regenerate your generated code to achieve the best
+    performance (the legacy generated code will still work, but might incur
+    a slight performance penalty).
+
+-------------------------------------------------------------------
+Sun Nov 22 00:21:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix the python subpackage generation
+  gh#openSUSE/python-rpm-macros#79
+
+-------------------------------------------------------------------
+Sat Nov 14 23:33:17 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Support multiple python3 flavors gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Tue Jun 30 08:48:59 UTC 2020 - marec <marec@detebe.org>
+
+- Update to version 3.12.3; notable changes since 3.11.4:
+
+  Protocol Compiler
+  * [experimental] Singular, non-message typed fields in proto3 now support
+    presence tracking. This is enabled by adding the "optional" field label and
+    passing the --experimental_allow_proto3_optional flag to protoc.
+    * For usage info, see docs/field_presence.md.
+    * During this experimental phase, code generators should update to support
+      proto3 presence, see docs/implementing_proto3_presence.md for instructions.
+  * Allow duplicate symbol names when multiple descriptor sets are passed on
+    the command-line, to match the behavior when multiple .proto files are passed.
+  * Deterministic `protoc --descriptor_set_out` (#7175)
+
+  Objective-C
+  * Tweak the union used for Extensions to support old generated code. #7573
+  * Fix for the :protobuf_objc target in the Bazel BUILD file. (#7538)
+  * [experimental] ObjC Proto3 optional support (#7421)
+  * Block subclassing of generated classes (#7124)
+  * Use references to Obj C classes instead of names in descriptors. (#7026)
+  * Revisit how the WKTs are bundled with ObjC. (#7173)
+
+  C++
+  * Simplified the template export macros to fix the build for mingw32. (#7539)
+  * [experimental] Added proto3 presence support.
+  * New descriptor APIs to support proto3 presence.
+  * Enable Arenas by default on all .proto files.
+  * Documented that users are not allowed to subclass Message or MessageLite.
+  * Mark generated classes as final; inheriting from protos is strongly discouraged.
+  * Add stack overflow protection for text format with unknown fields.
+  * Add accessors for map key and value FieldDescriptors.
+  * Add FieldMaskUtil::FromFieldNumbers().
+  * MessageDifferencer: use ParsePartial() on Any fields so the diff does not
+    fail when there are missing required fields.
+  * ReflectionOps::Merge(): lookup messages in the right factory, if it can.
+  * Added Descriptor::WellKnownTypes enum and Descriptor::well_known_type()
+    accessor as an easier way of determining if a message is a Well-Known Type.
+  * Optimized RepeatedField::Add() when it is used in a loop.
+  * Made proto move/swap more efficient.
+  * De-virtualize the GetArena() method in MessageLite.
+  * Improves performance of json_stream_parser.cc by factor 1000 (#7230)
+  * bug: #7076 undefine Windows OUT and OPTIONAL macros (#7087)
+  * Fixed a bug in FieldDescriptor::DebugString() that would erroneously print
+    an "optional" label for a field in a oneof.
+  * Fix bug in parsing bool extensions that assumed they are always 1 byte.
+  * Fix off-by-one error in FieldOptions::ByteSize() when extensions are present.
+  * Clarified the comments to show an example of the difference between
+    Descriptor::extension and DescriptorPool::FindAllExtensions.
+  * Add a compiler option 'code_size' to force optimize_for=code_size on all
+    protos where this is possible.
+
+  Ruby
+  * Re-add binary gems for Ruby 2.3 and 2.4. These are EOL upstream, however
+    many people still use them and dropping support will require more
+    coordination.
+  * [experimental] Implemented proto3 presence for Ruby. (#7406)
+  * Stop building binary gems for ruby <2.5 (#7453)
+  * Fix for wrappers with a zero value (#7195)
+  * Fix for JSON serialization of 0/empty-valued wrapper types (#7198)
+  * Call "Class#new" over rb_class_new_instance in decoding (#7352)
+  * Build extensions for Ruby 2.7 (#7027)
+  * assigning 'nil' to submessage should clear the field. (#7397)
+
+  Java
+  * [experimental] Added proto3 presence support.
+  * Mark java enum _VALUE constants as @Deprecated if the enum field is deprecated
+  * reduce <clinit> size for enums with allow_alias set to true.
+  * Sort map fields alphabetically by the field's key when printing textproto.
+  * Fixed a bug in map sorting that appeared in -rc1 and -rc2 (#7508).
+  * TextFormat.merge() handles Any as top level type.
+  * Throw a descriptive IllegalArgumentException when calling
+    getValueDescriptor() on enum special value UNRECOGNIZED instead of
+    ArrayIndexOutOfBoundsException.
+  * Fixed an issue with JsonFormat.printer() where setting printingEnumsAsInts()
+    would override the configuration passed into includingDefaultValueFields().
+  * Implement overrides of indexOf() and contains() on primitive lists returned
+    for repeated fields to avoid autoboxing the list contents.
+  * Add overload to FieldMaskUtil.fromStringList that accepts a descriptor.
+  * [bazel] Move Java runtime/toolchains into //java (#7190)
+
+  Python
+  * [experimental] Added proto3 presence support.
+  * [experimental] fast import protobuf module, only works with cpp generated code linked in.
+  * Truncate 'float' fields to 4 bytes of precision in setters for pure-Python
+    implementation (C++ extension was already doing this).
+  * Fixed a memory leak in C++ bindings.
+  * Added a deprecation warning when code tries to create Descriptor objects
+    directly.
+  * Fix unintended comparison between bytes and string in descriptor.py.
+  * Avoid printing excess digits for float fields in TextFormat.
+  * Remove Python 2.5 syntax compatibility from the proto compiler generated _pb2.py module code.
+  * Drop 3.3, 3.4 and use single version docker images for all python tests (#7396)
+
+  JavaScript
+  * Fix js message pivot selection (#6813)
+
+  PHP
+  * Persistent Descriptor Pool (#6899)
+  * Implement lazy loading of php class for proto messages (#6911)
+  * Correct @return in Any.unpack docblock (#7089)
+  * Ignore unknown enum value when ignore_unknown specified (#7455)
+
+  C#
+  * [experimental] Add support for proto3 presence fields in C# (#7382)
+  * Mark GetOption API as obsolete and expose the "GetOptions()" method on descriptors instead (#7491)
+  * Remove Has/Clear members for C# message fields in proto2 (#7429)
+  * Enforce recursion depth checking for unknown fields (#7132)
+  * Fix conformance test failures for Google.Protobuf (#6910)
+  * Cleanup various bits of Google.Protobuf (#6674)
+  * Fix latest ArgumentException for C# extensions (#6938)
+  * Remove unnecessary branch from ReadTag (#7289)
+
+  Other
+  * Add a proto_lang_toolchain for javalite (#6882)
+  * [bazel] Update gtest and deprecate //external:{gtest,gtest_main} (#7237)
+  * Add application note for explicit presence tracking. (#7390)
+  * Howto doc for implementing proto3 presence in a code generator. (#7407)
+
+-------------------------------------------------------------------
+Wed Jun 10 15:32:29 UTC 2020 - Rolf Krahl <rolf@rotkraut.de>
+
+- Python: Add requirement on python-six
+
+-------------------------------------------------------------------
+Fri Mar  6 10:05:22 UTC 2020 - Nico Kruber <nico.kruber@gmail.com>
+
+- Update to version 3.11.4; notable changes since 3.9.2:
+  * C++: Make serialization method naming consistent
+  * C++: Moved ShutdownProtobufLibrary() to message_lite.h. For
+         backward compatibility a declaration is still available
+         in stubs/common.h, but users should prefer message_lite.h
+  * C++: Removed non-namespace macro EXPECT_OK()
+  * C++: Removed mathlimits.h from stubs in favor of using
+         std::numeric_limits from C++11
+  * C++: Support direct pickling of nested messages
+  * C++: Disable extension code gen for C#
+  * C++: Switch the proto parser to the faster MOMI parser
+  * C++: Unused imports of files defining descriptor extensions
+         will now be reported
+  * C++: Add proto2::util::RemoveSubranges to remove multiple
+         subranges in linear time
+  * C++: Support 32 bit values for ProtoStreamObjectWriter to Struct
+  * C++: Removed the internal-only header coded_stream_inl.h and
+         the internal-only methods defined there
+  * C++: Enforced no SWIG wrapping of descriptor_database.h
+         (other headers already had this restriction)
+  * C++: Implementation of the equivalent of the MOMI parser for
+         serialization. This removes one of the two serialization
+         routines, by making the fast array serialization routine
+         completely general. SerializeToCodedStream can now be
+         implemented in terms of the much much faster array
+         serialization. The array serialization regresses slightly,
+         but when array serialization is not possible this wins big
+  * C++: Add move constructor for Reflection's SetString
+  * Java: Remove the usage of MethodHandle, so that Android users
+          prior to API version 26 can use protobuf-java
+  * Java: Publish ProGuard config for javalite
+  * Java: Include unknown fields when merging proto3 messages in
+          Java lite builders
+  * Java: Have oneof enums implement a separate interface (other
+          than EnumLite) for clarity
+  * Java: Opensource Android Memory Accessors
+  * Java: Change ProtobufArrayList to use Object[] instead of
+          ArrayList for 5-10% faster parsing
+  * Java: Make a copy of JsonFormat.TypeRegistry at the protobuf
+          top level package. This will eventually replace
+          JsonFormat.TypeRegistry
+  * Java: Add Automatic-Module-Name entries to the Manifest
+  * Python: Add float_precision option in json format printer
+  * Python: Optionally print bytes fields as messages in unknown
+            fields, if possible
+  * Python: Experimental code gen (fast import protobuf module)
+            which only work with cpp generated code linked in
+  * Python: Add descriptor methods in descriptor_pool are deprecated
+  * Python: Added delitem for Python extension dict
+  * JavaScript: Remove guard for Symbol iterator for jspb.Map
+  * JavaScript: Remove deprecated boolean option to getResultBase64String()
+  * JavaScript: Change the parameter types of binaryReaderFn in
+                ExtensionFieldBinaryInfo to (number, ?, ?)
+  * JavaScript: Create dates.ts and time_of_days.ts to mirror Java
+                versions. This is a near-identical conversion of
+                c.g.type.util.{Dates,TimeOfDays} respectively
+  * JavaScript: Migrate moneys to TypeScript
+  * PHP: Increase php7.4 compatibility
+  * PHP: Implement lazy loading of php class for proto messages
+  * Ruby: Support hashes for struct initializers
+  * C#: Experimental proto2 support is now officially available
+  * C#: Change _Extensions property to normal body rather than expression
+  * Objective C: Remove OSReadLittle* due to alignment requirements
+  * Other: Override CocoaPods module to lowercase
+  * further bugfixes and optimisations
+
+-------------------------------------------------------------------
+Fri Dec 20 09:04:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use tarball provided by upstream
+- Small package cleanup
+
+-------------------------------------------------------------------
+Thu Dec 19 12:47:53 UTC 2019 - Madhu Mohan Nelemane <mmnelemane@suse.com>
+
+- Updated to version 3.9.2 (bsc#1162343)
+   (Objective-C)
+  * Remove OSReadLittle* due to alignment requirements. (#6678)
+  * Don't use unions and instead use memcpy for the type swaps. (#6672)
+
+-------------------------------------------------------------------
+Fri Sep 27 07:00:11 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Package also the protobuf-bom pom file
+
+-------------------------------------------------------------------
+Thu Aug 22 07:12:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.9.1
+  * Optimized the implementation of RepeatedPtrFieldBase.
+  * Added delimited parse and serialize util.
+  * Added FieldDescriptor::PrintableNameForExtension() and
+    DescriptorPool::FindExtensionByPrintableName(). The latter
+    will replace Reflection::FindKnownExtensionByName().
+  * Created a new Add method in repeated field that allows adding
+    a range of elements all at once.
+  * Drop building wheel for Python 3.4.
+
+-------------------------------------------------------------------
+Sat Jun  8 06:13:57 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Specify java source and target levels in order to build
+  compatible protobuf-java binaries
+
+-------------------------------------------------------------------
+Wed Jun  5 18:58:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.8.0
+  * Introduced new MOMI (maybe-outside-memory-interval) parser.
+  * Added use of C++ override keyword where appropriate.
+  * Always declare enums to be int-sized.
+  * Append '_' to C++ reserved keywords for message, enum, extension.
+- Remove 0001-remove-PACKAGE_NAME-and-REPOSITORY_NAME-deprecated.patch
+  (upstreamed)
+
+-------------------------------------------------------------------
+Wed Apr 24 17:35:37 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133277).
+
+-------------------------------------------------------------------
+Wed Feb 20 12:29:06 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add upstream patch which fixes build with Bazel 0.22.0.
+  * 0001-remove-PACKAGE_NAME-and-REPOSITORY_NAME-deprecated.patch
+
+-------------------------------------------------------------------
+Tue Jan  8 12:35:43 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Add protobuf-source package - some programs using gRPC and
+  protobuf need protobuf definitions which are included inside the
+  source code, but are not included in the devel package.
+
+-------------------------------------------------------------------
+Mon Dec 17 10:28:51 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Add maven pom files to the protobuf-java package
+
+-------------------------------------------------------------------
+Wed Sep 12 07:24:48 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to version v3.6.1:
+  * PHP namespaces for nested messages and enums (#4536)
+  * Allows the json marshaller to be passed json marshal options (#4252)
+  * Make sure to delete temporary maps used by FileDescriptorTables
+  * fix python cpp kokoro build
+  * Change C# reflection to avoid using expression trees
+  * Updated checked-in generated code
+  * Removed unused variables in repeated_scalar_container.cc
+  * Removed unused code pertaining to shared_ptr
+  * Include no_package.proto in Python test
+  * Only check filenames when end with .py in _CalledFromGeneratedFile() (#4262)
+  * Convert descriptortype to type for upb_msgval_sizeof (#4357)
+  * Removed duplicate using statement from ReflectionUtil.cs
+  * Add support for power ppc64le
+  * Cat the test-suite.log on errors for presubits
+  * Address review comments
+  * Add third-party RPC implementation: raster - a network framework supports pbrpc by 'service' keyword.
+  * Delete javanano kokoro build configs.
+  * Updated Ruby conformance test failure list
+  * Removed use of some type traits
+  * Adopt php_metadata_namespace in php code generator (#4622)
+  * Move to Xcode 9.3 which also means a High Sierra image.
+  * Add protoc release script for Linux build.
+  * protoc-artifacts: Avoid storing temporary files and use fewer layers
+  * Rewrite go_benchmark
+  * Add files to build ruby artifact for mac on kokoro (#4814)
+  * Remove javanano.
+  * Comment out unused command from release script.
+  * Avoid direct check of class name (#4601)
+  * The JsonParseOptions::ignore_unknown_fields option behavior treats
+  * Fix php memory leak test (#4692)
+  * Fix benchmark build
+  * Add VS2017 optional component dependency details to the C# readme (#4128)
+  * Fix initialization with Visual Studio
+  * For windows, all python version should use /MT (#4468)
+  * use brew install instead of easy_install in OSX (#4537)
+  * Sync upb change (#4373)
+  * Always add -std=c++11 for mac (#4684)
+  * Add kokoro build status badges.
+  * Removed unrecognized option from no_package.proto
+  * Fixed up proto3_lite_unittest.cc
+  * Update Xcode settings
+  * Cleanup LICENSE file.
+  * Remove js_embed binary. (#4709)
+  * Fixed JS parsing of unspecified map keys
+  * Update version number to 3.6.0
+  * Deliberately call simple code to avoid Unity linker pruning
+  * Revert "Move `compiler/plugin.pb.cc` to libprotobuf with the other WKT sources."
+  * protoc-artifacts: Use ENTRYPOINT to enable devtoolset-1.1
+  * MinGW build failed
+  * Support using MSVC intrinsics in Log2FloorNonZero
+  * Fix array constructor in c extension for compatibility (#4667)
+  * Add space between class name and concat message (#4577)
+  * fix python
+  * Add performance.md and add instruction for linking tcmalloc
+  * Add script for run and upload the benchmark result to bq
+  * Add test for failing write of raw pointer to output stream
+  * [objectivec] Fix memory leak of exceptions raised by RaiseException() (#4556)
+  * Remove stray indent on normal imports.
+  * Fix python ext build on kokoro (#4527)
+  * Add compile test sources for to test include order.
+  * Fixed a Visual Studio 2017 build error. (#4488)
+  * fix linux kokoro build in docker
+  * Fixes MSVC compiler warning C4800 "Forcing value to bool 'true' or 'false'" (#4350)
+  * Updated Docker setup to use GCC 4.8
+  * Remove broken build status icons.
+  * Run autogen.sh in release script.
+  * Output *_pb2_grpc.py when use_grpc_plugin=True
+  * Adopt ruby_package in ruby generated code. (#4627)
+  * Cygwin build failed
+  * Work around an "old runtime" issue with reflection
+  * Added Kokoro protoc release build for OS X (#4770)
+  * Updated change log for 3.6.1 release
+  * Move methods out of class (#4697)
+  * Fix to allow AOT compilers to play nicely with reflection
+  * Update Makefile.am for Java lite files.
+  * Added map_lite_test.proto to fix LiteTest
+  * Introduce a compatiblity shim to support .NET 3.5 delegate creation
+  * Revert "Removed mention of Buffer in byteSourceToUint8Array"
+  * Add gogo benchmark
+  * Set ext.no_native = true for non mac platform
+  * Removed atomicops.h since it is no longer used
+  * Rename a shadowed variable.
+  * Add kokoro bazel configs for 3.6.x branch.
+  * Deleted scoped_ptr.h
+  * Check the message to be encoded is the wrong type. (#4885) (#4949)
+  * protoc-artifacts: Avoid checking out protobuf code
+  * Add conformance test for null value in list JSON
+  * Build ruby gem on kokoro (#4819)
+  * Try using a new version of Visual Studio on AppVeyor
+  * Make ruby release configs consistent with protoc.
+  * fix for API change in PHP 7.3 (#4898)
+  * Add .proto files to extract_includes.bat
+  * Update protoc build scripts.
+  * Blacklist all WELL_KNOWN_PROTOS from Bazel C++ code generation.
+  * Additional support for building and deploying ppcle_64 artifacts
+  * Fix php tests
+  * Cleanup + documentation for Java Lite runtime.
+  * Added Kokoro Windows release build config for protoc (#4766)
+  * typo
+  * fix golang kokoro linux build
+  * Fix spelling error of __GNUC_MINOR__
+  * Update code to work for Xcode 10b1 (#4729)
+  * Added pyext/thread_unsafe_shared_ptr.h
+  * Added missing .inc files to BUILD
+  * js message support for jstype string on integers (#4332)
+  * Improve error message when googletest is missing.
+  * Make assertEquals pass for message (#4947)
+  * Sync internal benchmark changes
+  * Removed some unused C++ source files
+  * Fix missing LIBPROTOC_EXPORT.
+  * Added new test source files to Makefile.am
+  * Update php version to 3.6.0 (#4736)
+  * Fix RepeatedField#delete_if (#4292)
+  * Merge branch (#4466)
+  * Implement array constructor in php c extension.
+  * protoc-artifacts: Update centos base from 6.6 to 6.9
+  * PHP array constructors for protobuf messages (#4530)
+  * Fix problem: cmake build failed in c++11  by clang
+  * Don't assume Windows builds use MSVC.
+  * Use legacy name in php runtime (#4741)
+  * Add file option php_metadata_namespace and ruby_package (#4609)
+  * Fix cpp benchmark dependency on mac
+  * Use the first enum value instead of 0 in DefaultValueObjectWriter::FindEnumDefault
+  * Check return value on write of raw pointer
+  * Delete unused directories.
+  * Replace //:protoc and similar default macro arguments with
+  * Add extra C# file to Makefile.am
+  * includes the expected class in the exception, otherwise the error is harder to track down (#3371)
+  * Update instructions about getting protobuf source.
+  * Add cpp tests under release docker image.
+  * fix java benchmark, fix dashboard build
+  * `update_file_lists.sh` depends on Bash features, thus needs Bash sebang.
+  * Rename build_artifacts.cfg to release.cfg (#4818)
+  * Fix bug: whether always_print_enums_as_ints is true or false, it always print the default value of enums as strings
+  * source code info for interpreted options; fix source code info for extension range options (#4342)
+  * Updated version numbers to 3.6.1
+  * Trim imports for bundled generated protos.
+  * Require C++11 and pass -std=c++11
+  * Remove the iOS Test App.
+  * fix duplicate mkdir in update_file_lists.sh
+  * Updated csharp/README.md to reflect testing changes
+  * Fix bazel build of examples.
+  * Add missing ruby/tests/test_ruby_package.proto
+  * Fix cpp_distcheck
+  * Updated the change log with changes for 3.6.0
+  * some fix
+  * CMake: Update CXX Standard management
+  * Add the files added in #4485.
+  * Change to deal all messages in one loop
+  * Fix php conformance test.
+  * Add __init__.py files to compiler and util subpackages (#4117)
+  * Updated .gitignore to exclude downloaded gmock/ directory
+  * Fix error in Clang UndefinedBehaviorSanitizer
+  * Work around MSVC issue with std::atomic initialization (#4777)
+  * Updated conformance failure lists
+  * Add back GeneratedClassName to public (#4686)
+  * Add continuous test for ruby 2.3, 2.4 and 2.5 (#4829)
+  * Throw error if user want to access message properties (#4603)
+  * fix json_decode call parameters (#4381)
+  * Move `compiler/plugin.pb.cc` to libprotobuf with the other WKT sources.
+  * PHP: fixed typo in message.c
+  * Add go benchmark
+  * Allow list values to be null when parsing
+  * Added instruction for existing ZLIB configuration
+  * Fix 32bit php tests
+  * Removed javanano from post_process_dist.sh
+  * Don't generate imports for the WKTs unless generating the WKTs.
+  * For encoding upb needs descriptor type instead of type. (#4354)
+  * Include googletest as a submodule (#3993)
+  * Write messages to backing field in generated C# cloning code (#4440)
+  * Integrated internal changes from Google
+- Drop adding-Release_CompareAndSwap-64-bit-variant.patch . Applied
+  upstream.
+- bump soname version
+
+-------------------------------------------------------------------
+Mon May 14 15:19:25 UTC 2018 - tbechtold@suse.com
+
+update to version v3.5.2:
+  * Update release date
+  * Disable pip cache when testing uploaded packages
+  * Replace private timelib_update_ts with public date_timestamp_get
+  * Remove py2.6 support.
+  * Cherrypick for csharp, including:
+  * Update changelog
+  * Update changelog for 3.5.1
+  * Fix uploading binary wheel.
+  * Fix memory leak when creating map field via array.
+  * Update rake file to build of 2.1.6.
+  * Avoid using php_date_get_date_ce() in case date extension is not
+  * Update protoc-artfacts
+  * Fix string::back() usage in googletest.cc
+  * Fix memory leak in php7
+  * Support ruby2.5
+  * io_win32: support non-ASCII paths
+  * Explicitly propagate the status of Flush().
+  * Add discard unknown API in ruby. (#3990)
+  * Update version for 3.5.0.post1
+  * remove nullptr
+  * Fix more memory leak for php c extension (#4211)
+  * Bumping number to fix ruby 2.1 on mac
+  * io_win32_unittest: remove incorrect error check
+  * Fix memory leak when creating repeated field via array.
+  * Update version number for php c extension (#3896)
+  * Fix file permission for python package.
+  * Create containing directory before generating well_known_types_embed.cc
+  * Replace C++11 only method std::map::at
+  * Recursively clear unknown fields in submessages. (#3982)
+  * Update version number to 3.5.1
+  * io_win32_unittest: fix condition in GetCwdAsUtf8
+  * Add release log
+  * io_win32_unittest: use CWD as last tempdir
+  * Add PROTOBUF_ENABLE_TIMESTAMP to let user decide whether timestamp util
+  * Add support for Windows ARM64 build
+  * Add protobuf-all in post release
+  * Use fully qualifed name for DescriptorPool in Any.php to avoid name (#3886)
+  * Add _file_desc_by_toplevel_extension back
+  * Fix setup.py for windows build.
+  * io_win32_unittest: make //:win32_test run again
+  * Provide discardUnknonwnFields API in php (#3976)
+  * Update php c extension version number to 3.5.0.1
+  * Fix ruby gc_test in ruby 2.4 (#4011)
+  * Remove duplicate typedef. (#3975)
+  * Accept DatetimeInterface in fromDatetime
+  * io_win32: add more encoding-related tests
+  * Bump version number to 3.5.2
+  * Bump protoc-artifact version for a patch rebuild
+  * Call php method via function name instead of calling directly.
+  * Well known types are not initialized properly. (#4139)
+  * Use matching enum type for IsPOD.
+  * Fix several more memory leak
+  * Fix for php5.5
+  * Add backslach to make class explict in global namespace
+
+-------------------------------------------------------------------
+Fri Feb 23 10:12:07 UTC 2018 - mlin@suse.com
+
+- Add adding-Release_CompareAndSwap-64-bit-variant.patch
+  * Fix compile error undefined reference to
+    `google::protobuf::internal::Release_CompareAndSwap(long volatile*, long, long)'
+    on s390x https://github.com/google/protobuf/issues/3937
+
+-------------------------------------------------------------------
+Mon Jan 22 16:50:28 UTC 2018 - tchvatal@suse.com
+
+- Conditionalize python2 and python3 in order to be able to build
+  without python2 present in distribution
+  * Use singlespec macros to simplify the logic
+- Run fdupes on python modules to avoid duplicates
+- Remove shebangs from import-only code
+
+-------------------------------------------------------------------
+Mon Dec 11 23:42:45 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.5.0
+  * Proto3 messages are now preserving unknown fields by default.
+    If you rely on unknowns fields being dropped, use
+    DiscardUnknownFields() explicitly.
+  * Deprecated the unsafe_arena_release_* and
+    unsafe_arena_add_allocated_* methods for string fields.
+  * Added move constructor and move assignment to RepeatedField,
+    RepeatedPtrField and google::protobuf::Any.
+  * Added perfect forwarding in Arena::CreateMessage.
+  * In-progress experimental support for implicit weak fields
+    with lite protos. This feature allows the linker to strip out
+    more unused messages and reduce binary size.
+- Rename %soname to %sover to better reflect its use.
+
+-------------------------------------------------------------------
+Fri Jun 16 07:57:00 UTC 2017 - mpluskal@suse.com
+
+- Install LICENSE
+
+-------------------------------------------------------------------
+Sun Jun 11 17:15:13 UTC 2017 - alarrosa@suse.com
+
+- Update to 3.3.0 :
+  * C++:
+    * Fixed map fields serialization of DynamicMessage to correctly serialize
+      both key and value regardless of their presence.
+    * Parser now rejects field number 0 correctly.
+    * New API Message::SpaceUsedLong() that’s equivalent to
+      Message::SpaceUsed() but returns the value in size_t.
+    * JSON support
+      - New flag always_print_enums_as_ints in JsonPrintOptions.
+      - New flag preserve_proto_field_names in JsonPrintOptions. It will instruct
+        the JSON printer to use the original field name declared in the .proto
+        file instead of converting them to lowerCamelCase when printing JSON.
+      - JsonPrintOptions.always_print_primtive_fields now works for oneof message
+        fields.
+      - Fixed a bug that doesn’t allow different fields to set the same json_name
+        value.
+      - Fixed a performance bug that causes excessive memory copy when printing
+        large messages.
+    * Various performance optimizations.
+  * Java:
+    * Map field setters eagerly validate inputs and throw NullPointerExceptions
+      as appropriate.
+    * Added ByteBuffer overloads to the generated parsing methods and the Parser
+      interface.
+    * proto3 enum's getNumber() method now throws on UNRECOGNIZED values.
+    * Output of JsonFormat is now locale independent.
+  * Python:
+    * Added FindServiceByName() in the pure-Python DescriptorPool. This works only
+      for descriptors added with DescriptorPool.Add(). Generated descriptor_pool
+      does not support this yet.
+    * Added a descriptor_pool parameter for parsing Any in text_format.Parse().
+    * descriptor_pool.FindFileContainingSymbol() now is able to find nested
+      extensions.
+    * Extending empty [] to repeated field now sets parent message presence.
+- Update to 3.2.0 :
+  * Added protoc version number to protoc plugin protocol. It can be used by
+    protoc plugin to detect which version of protoc is used with the plugin and
+    mitigate known problems in certain version of protoc.
+  * C++:
+    * The default parsing byte size limit has been raised from 64MB to 2GB.
+    * Added rvalue setters for non-arena string fields.
+    * Enabled debug logging for Android.
+    * Fixed a double-free problem when using Reflection::SetAllocatedMessage()
+      with extension fields.
+    * Fixed several deterministic serialization bugs:
+      * MessageLite::SerializeAsString() now respects the global deterministic
+        serialization flag.
+      * Extension fields are serialized deterministically as well.  Fixed protocol
+        compiler to correctly report importing-self as an error.
+    * Fixed FileDescriptor::DebugString() to print custom options correctly.
+    * Various performance/codesize optimizations and cleanups.
+  * Java:
+    * The default parsing byte size limit has been raised from 64MB to 2GB.
+    * Added recursion limit when parsing JSON.
+    * Fixed a bug that enumType.getDescriptor().getOptions() doesn't have custom
+      options.
+    * Fixed generated code to support field numbers up to 2^29-1.
+  * Python:
+    * You can now assign NumPy scalars/arrays (np.int32, np.int64) to protobuf
+      fields, and assigning other numeric types has been optimized for
+      performance.
+    * Pure-Python: message types are now garbage-collectable.
+    * Python/C++: a lot of internal cleanup/refactoring.
+- Increase soname to 13
+- Generate python2-protobuf and python3-protobuf packages in Factory
+- Make the python2-protobuf package provide and obsolete python-protobuf
+  to make the transition smooth in Tumbleweed
+
+-------------------------------------------------------------------
+Sun Jan 22 00:47:42 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Fix an issue with setup.py where some files are built on the
+  first invocation, but only copied on the second. This resulted
+  in an incomplete protobuf-python package.
+
+-------------------------------------------------------------------
+Sat Jan  7 11:02:55 UTC 2017 - stefan.bruens@rwth-aachen.de
+
+- Update to protobuf v3.1.0. Protobuf v3.0.0 introduceced a new
+  version of the protocol buffer language, proto3, which supersedes
+  proto2.
+  The protoc compiler is able to read old proto2 protocol definitions,
+  and defaults to the proto2 syntax if a syntax is not specified, thus
+  packages can be recompiled to link to the new library. For backwards
+  compatibility, the old library version is available from the
+  protobuf2 package.
+  As the API for proto2 is not compatible to the proto3 API, proto3
+  should only be used for new Protocol Buffers, whereas current users
+  are advised to keep using proto2. For a detailed list of changes,
+  see https://github.com/google/protobuf/releases
+- Drop no longer needed patches:
+  * protobuf-setuptools-2.4.1.patch
+  * protobuf-return-no-nonvoid.patch
+
+-------------------------------------------------------------------
+Fri Dec 16 03:33:01 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Use py_sitedir for library installation with setup.py install
+
+-------------------------------------------------------------------
+Wed Dec 14 07:32:06 UTC 2016 - mpluskal@suse.com
+
+- Drop protobuf-libs as it is just workaround for rpmlint issue
+
+-------------------------------------------------------------------
+Sat Dec 10 19:24:18 UTC 2016 - stefan.bruens@rwth-aachen.de
+
+- Cleanup specfile:
+  * remove any conditionals for versions predating SLES 12/Leap 42.x
+  * add Provides: protobuf-libs to fix rpmlint warning
+
+-------------------------------------------------------------------
+Mon Dec  7 04:17:12 UTC 2015 - lnussel@suse.de
+
+- disable google-apputils usage. They are only used for the testsuite which
+  wasn't called anyways. The next upstream version will not use
+  apputils anymore anyways. Fixes build on SLE12.
+  https://github.com/google/protobuf/commit/9f42f5f4a423b923f7b07ae8c5e8db4943df49c6
+  bnc#957472
+
+-------------------------------------------------------------------
+Thu Nov 12 12:30:26 UTC 2015 - alarrosa@suse.com
+
+- Python bindings require a recent python-google-apputils, so build
+ them where it's available (that's anything recent except SLE12)
+
+-------------------------------------------------------------------
+Thu Nov 12 09:36:46 UTC 2015 - alarrosa@suse.com
+
+- Fix check so python bindings are not built in SLE12
+
+-------------------------------------------------------------------
+Fri Nov  6 08:32:15 UTC 2015 - edogawa@aon.at
+
+- tweak spec to build python bindings for Leap 42.1
+
+-------------------------------------------------------------------
+Wed Jul 29 09:56:31 UTC 2015 - dimstar@opensuse.org
+
+- Fix baselibs.conf: last time the sonames were bumped,
+  baselibs.conf has not been updated accordingly.
+
+-------------------------------------------------------------------
+Sat Feb 28 10:41:07 UTC 2015 - mpluskal@suse.com
+
+- Add protobuf-return-no-nonvoid.patch
+- Do not install examples
+- Remove 0001-Add-generic-GCC-support-for-atomic-operations.patch
+
+-------------------------------------------------------------------
+Fri Feb 27 19:20:16 UTC 2015 - mpluskal@suse.com
+
+- Use current url's
+- Update dependencies
+  * python bindings now require recent python-google-apputils
+    which are available only in recet (13.1 and higher releases of
+    openSUSE)
+- Update to 2.6.1
+  * Added atomicops support for Solaris.
+  * Released memory allocated by InitializeDefaultRepeatedFields()
+    and GetEmptyString(). Some memory sanitizers reported them
+    as memory leaks.
+  * Updated DynamicMessage.setField() to handle repeated enum
+    values correctly.
+  * Fixed a bug that caused NullPointerException to be thrown when
+    converting manually constructed FileDescriptorProto to
+    FileDescriptor.
+- Changes for 2.6.0
+  * Added oneofs(unions) feature. Fields in the same oneof will
+    share memory and at most one field can be set at the same time.
+  * Files, services, enums, messages, methods and enum values
+    can be marked as deprecated now.
+  * Added Support for list values, including lists of mesaages,
+    when parsing text-formatted protos in C++ and Java.
+  * Enhanced customization on TestFormat printing.
+  * Added SwapFields() in reflection API to swap a subset of
+    fields.
+  * Added SetAllocatedMessage() in reflection API.
+  * Repeated primitive extensions are now packable. The
+    [packed=true] option only affects serializers. Therefore,
+    it is possible to switch a repeated extension field to
+    packed format without breaking backwards-compatibility.
+  * Various speed optimizations.
+  * writeTo() method in ByteString can now write a substring to
+    an output stream. Added endWith() method for ByteString.
+  * ByteString and ByteBuffer are now supported in CodedInputStream
+    and CodedOutputStream.
+  * java_generate_equals_and_hash can now be used with the
+    LITE_RUNTIME.
+  * A new C++-backed extension module (aka "cpp api v2") that
+    replaces the old ("cpp api v1") one. Much faster than the
+    pure Python code. This one resolves many bugs and is
+    recommended for general use over the pure Python when possible.
+
+-------------------------------------------------------------------
+Tue Nov  5 13:38:45 UTC 2013 - sleep_walker@suse.cz
+
+- fix java flags to build package for SLE_11_SP3
+
+-------------------------------------------------------------------
+Fri Jun  7 15:32:55 UTC 2013 - dvaleev@suse.com
+
+- package google/protobuf/stubs/atomicops_internals_generic_gcc.h
+  mosh reqires it
+
+-------------------------------------------------------------------
+Mon May 27 10:44:05 UTC 2013 - dvaleev@suse.com
+
+- Build on architectures where no specialized code has been written
+  0001-Add-generic-GCC-support-for-atomic-operations.patch
+
+-------------------------------------------------------------------
+Fri Apr 12 18:35:09 UTC 2013 - ftake@geeko.jp
+
+- Upstream update to 2.5.0
+  * New construct "import public"
+  * New enum option "allow_alias"
+  * C++: New generated method set_allocated_foo(Type* foo)
+  * C++: Added SetAllocatedExtension() and ReleaseExtension()
+    to extensions API
+  * Java: Added getters/setters to access the underlying ByteString
+    of a string field
+  * Java: New operations for substring(), prepend(), and append()
+  * Java: New method findInitializationErrors()
+  * Python: Support for dynamic message creation
+  * Python: Fixed custom options were not correctly populated
+  * Python: Added EnumTypeWrapper
+  * Python: Added ParseMessage(descriptor, bytes)
+  * Various bug fixes and optimazations
+- Drop gtest-1.5, which is now included by the archive from
+  the upstream
+-------------------------------------------------------------------
+Sat May 19 18:25:52 UTC 2012 - crrodriguez@opensuse.org
+
+- BuildRequire zlib-devel otherwise gzip_stream is not built
+  thus breaking newer releases of mosh.
+
+-------------------------------------------------------------------
+Fri Mar 16 16:15:25 UTC 2012 - dimstar@opensuse.org
+
+- Add gtest-1.5.0.tar.bz2: This is the release tarball of gtest 1.5
+  which is being used by make check. The included 1.4.0 does not
+  work with gcc 4.7, thus replacing the gtest folder with this
+  snapshot.
+- Wrapped the gtest extraction with a version check... on next
+  version the package will fail in order to remember to take this
+  out again (next release of protobuf bundles gtest 1.5.0)
+- Add libtool BuildRequires and call to autoreconf, as gtest 1.5.0
+  needs to be bootstrapped.
+
+-------------------------------------------------------------------
+Wed Dec 21 09:47:32 UTC 2011 - coolo@suse.com
+
+- remove %release from requires
+
+-------------------------------------------------------------------
+Wed Oct 12 15:46:14 MSD 2011 - tony@daylessday.org
+
+- Update to Protobuf 2.4.1:
+ C++
+  * Fixed the frendship problem for old compilers to make the library now gcc 3
+    compatible again.
+  * Fixed vcprojects/extract_includes.bat to extract compiler/plugin.h.
+
+  Java
+  * Removed usages of JDK 1.6 only features to make the library now JDK 1.5
+    compatible again.
+  * Fixed a bug about negative enum values.
+  * serialVersionUID is now defined in generated messages for java serializing.
+  * Fixed protoc to use java.lang.Object, which makes "Object" now a valid
+    message name again.
+
+  Python
+  * Experimental C++ implementation now requires C++ protobuf library installed.
+    See the README.txt in the python directory for details.
+
+-------------------------------------------------------------------
+Tue Apr 19 00:23:14 CEST 2011 - ro@suse.de
+
+- update baselibs.conf
+
+-------------------------------------------------------------------
+Wed Dec 15 09:42:59 UTC 2010 - lnussel@suse.de
+
+- provide libprotobuf-devel for compatibility
+
+-------------------------------------------------------------------
+Mon Apr 26 11:23:57 UTC 2010 - lnussel@suse.de
+
+- merge features with version from devel:tools:building
+  * build java and python versions
+  * disable static libraries
+
+-------------------------------------------------------------------
+Sat Apr 24 18:12:57 UTC 2010 - lnussel@suse.de
+
+- new version 2.3.0
+
+-------------------------------------------------------------------
+Sat Apr 24 18:07:39 UTC 2010 - lnussel@suse.de
+
+- separate soname define
+
+-------------------------------------------------------------------
+Mon Dec  7 12:39:37 UTC 2009 - lnussel@suse.de
+
+- new version 2.2.0a
+
+-------------------------------------------------------------------
+Tue Mar 31 09:51:34 CEST 2009 - lnussel@suse.de
+
+- move protoc to devel package
+- split according to library policy
+- install vim syntax file
+
+-------------------------------------------------------------------
+Wed Sep 03 00:00:00 CET 2008 - Lenz Grimmer <lenzg@grimmer.com>
+
+- Update to version 2.0.1
+
+-------------------------------------------------------------------
+Wed Aug 13 00:00:00 CET 2008 - Lenz Grimmer <lenz@grimmer.com>
+
+- Initial package the openSUSE build service (Version 2.0.0beta)
+

@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8eb8df8f8d3ccd901563182378ea535e</srcmd5>
+    <version>1.0.0</version>
+    <time>1638131404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934317</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be91e94c45095804df4c94169838630d</srcmd5>
+    <version>1.0.0</version>
+    <time>1641855714</time>
+    <user>dimstar_suse</user>
+    <comment>- skip building for python 2.x, as the setuptools we have is no
+  longer compatible with it</comment>
+    <requestid>945301</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3cfaa98426c2e0ee5b8f44b4056aa0ae</srcmd5>
+    <version>1.1.2</version>
+    <time>1644435486</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.2:
+  * Removed dependency on `tomli` to simplify installation
+  * Improve error messages on invalid inputs to `rust_extensions` keyword
+  * Fix regression from `setuptools-rust` 1.1.0 which broke builds for the
+    `x86_64-unknown-linux-musl` targeta
+  * Fix `--target` command line option being unable to take a value
+  * Fix regression from `setuptools-rust` 1.1.0 which incorrectly converted
+    library extension suffixes to the &quot;abi3&quot; suffix when `py_limited_api` was
+    unspecified Add support for cross-compiling using
+  * [`cross`](https://github.com/rust-embedded/cross)
+  * Fix incompatibility with Python 3.6.0 using default values for NamedTuple classes
+  * Stop forcing the `msvc` Rust toolchain for Windows environments using the
+    `gnu` toolchain</comment>
+    <requestid>951677</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4043acc546c0f23e7b50c95c754666d3</srcmd5>
+    <version>1.3.0</version>
+    <time>1652801014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Increase minimum `setuptools` version to 58.
+  * Fix crash when `python-distutils-extra` linux package is installed.
+  * Fix sdist built with vendored dependencies on Windows having incorrect cargo config.
+  * Drop support for Python 3.6.</comment>
+    <requestid>977389</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cee1e7b6aacb5d2060cfbbc141f9243a</srcmd5>
+    <version>1.4.1</version>
+    <time>1659941097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>990377</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9f57921131e9b92094a866e9d86d41cf</srcmd5>
+    <version>1.5.2</version>
+    <time>1672851030</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2:
+  * Fix regression in `dylib` build artifacts not being found since 1.5.0.
+  * Fix regression in sdist missing examples and other supplementary files
+    since 1.5.0. #291
+  * Fix regression in `get_lib_name` crashing since 1.5.0. #280
+  * Fix regression in `Binding.Exec` builds with multiple executables not
+    finding built executables since 1.5.0. #283
+  * Add support for extension modules built for wasm32-unknown-emscripten
+    with Pyodide. #244
+  * Locate cdylib artifacts by handling messages from cargo instead of
+    searching target dir (fixes build on MSYS2). #267
+  * No longer guess cross-compile environment using `HOST_GNU_TYPE` /
+    `BUILD_GNU_TYPE` sysconfig variables. #269
+  * Fix RustBin build without wheel. #273
+  * Fix RustBin setuptools install. #275</comment>
+    <requestid>1046123</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b0d38403f6118260764e56fa4e1ada04</srcmd5>
+    <version>1.5.2</version>
+    <time>1682193607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081867</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7b9760887aa760e806b4a1faa85be518</srcmd5>
+    <version>1.6.0</version>
+    <time>1683630361</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Prefer passing `--crate-type` option to cargo if &quot;toolchain
+    &gt;= 1.64&quot;.
+  * Fix a bug where rebuilding the library would cause any
+    running processes using it to segfault. #295
+  * Fix `setup.cfg` format for compatibility with
+    &quot;poetry==1.4.0&quot;. #319</comment>
+    <requestid>1084862</requestid>
+  </revision>
+</revisionlist>

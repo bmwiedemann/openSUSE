@@ -1,0 +1,9 @@
+<package name="xed" project="openSUSE:Factory">
+  <title>A small and lightweight text editor</title>
+  <description>X-Apps Text Editor is a small, but powerful text editor designed for the Cinnamon desktop and others.
+It has most standard text editor functions and fully supports international text in Unicode.
+Advanced features include syntax highlighting and automatic indentation of source code, printing and editing of multiple
+documents in one window.
+X-Apps Text Editor is extensible through a plugin system, which currently includes support for spell checking, comparing files, viewing VCS ChangeLogs, and adjusting indentation levels.</description>
+  <devel project="X11:Cinnamon:Factory" package="xed"/>
+</package>

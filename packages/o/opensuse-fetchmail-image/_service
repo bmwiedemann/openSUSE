@@ -1,0 +1,28 @@
+<services>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="extract">LICENSE</param>
+        <param name="extract">fetchmail/README.md</param>
+        <param name="extract">fetchmail/opensuse-fetchmail-image.kiwi</param>
+        <param name="revision">master</param>
+        <param name="versionformat">%cd.%h</param>
+    </service>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="version">_none_</param>
+        <param name="subdir">fetchmail</param>
+        <param name="filename">root</param>
+        <param name="include">entrypoint.sh</param>
+        <param name="changesgenerate">enable</param>
+    </service>
+    <service mode="buildtime" name="kiwi_metainfo_helper"/>
+    <service mode="buildtime" name="kiwi_label_helper"/>
+    <service name="replace_using_package_version" mode="buildtime">
+        <param name="file">opensuse-fetchmail-image.kiwi</param>
+        <param name="regex">%PKG_VERSION%</param>
+        <param name="parse-version">patch</param>
+        <param name="package">fetchmail</param>
+    </service>
+</services>

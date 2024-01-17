@@ -1,0 +1,4 @@
+addFilter("devel-file-in-non-devel-package .*/usr/share/sial/crash.*")
+# crash-7.0.9.tar compresses better with gzip than with bzip2
+addFilter(" source-or-patch-not-bzipped crash-7.0.9.tar.gz")
+addFilter(" source-or-patch-not-compressed bz2 crash-7.0.9.tar.gz")

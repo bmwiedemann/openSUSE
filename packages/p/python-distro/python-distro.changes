@@ -1,0 +1,169 @@
+-------------------------------------------------------------------
+Wed Dec 27 09:21:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * Refactor distro.info() method to return an InfoDict [#360]
+  * Ignore the file '/etc/board-release' [#353]
+  * Ignore the file '/etc/ec2_version' [#359]
+  * Test on modern versions of CPython and PyPy and macOS [#362]
+  * Add support for ALT Linux Server 10.1 distribution [#354]
+  * Add Debian Testing to the tests [#356]
+  * Update archlinux resource for tests [#352]
+
+-------------------------------------------------------------------
+Mon Sep 18 16:28:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove duplicate files calling %fdupes
+
+-------------------------------------------------------------------
+Fri May  5 12:16:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Mon Jan  2 09:26:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Lowered `LinuxDistribution._distro_release_info` method complexity
+    [#327]
+  * Added official support for Buildroot distribution [#329]
+  * Added official support for Guix distribution [#330]
+  * Added support for `/etc/debian_version` [#333] & [#349]
+  * Fixed a typography in CONTRIBUTING.md [#340]
+  * Improved README.md "Usage" code block [#343]
+  * Bumped black to v22.3.0 in pre-commit.ci configuration [#331]
+  * Enabled GitHub Dependabot to keep GitHub Actions up to date [#335]
+
+-------------------------------------------------------------------
+Tue Feb 15 19:13:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove shebang from distro.py
+- update to version 1.7.0:
+ - BACKWARD COMPATIBILITY:
+ - Dropped support for EOL Pythons 2.7, 3.4 and 3.5 [[#281](https://github.com/python-distro/distro/pull/281)]
+ - Dropped support for LSB and `uname` back-ends when `--root-dir` is specified [[#311](https://github.com/python-distro/distro/pull/311)]
+ - Moved `distro.py` to `src/distro/distro.py` [[#315](https://github.com/python-distro/distro/pull/315)]
+ - ENHANCEMENTS:
+ - Documented that `distro.version()` can return an empty string on rolling releases [[#312](https://github.com/python-distro/distro/pull/312)]
+ - Documented support for Python 3.10 [[#316](https://github.com/python-distro/distro/pull/316)]
+ - Added official support for Rocky Linux distribution [[#318](https://github.com/python-distro/distro/pull/318)]
+ - Added a shebang to `distro.py` to allow standalone execution [[#313](https://github.com/python-distro/distro/pull/313)]
+ - Added support for AIX platforms [[#311](https://github.com/python-distro/distro/pull/311)]
+ - Added compliance for PEP-561 [[#315](https://github.com/python-distro/distro/pull/315)]
+ - BUG FIXES:
+ - Fixed `include_uname` parameter oversight [[#305](https://github.com/python-distro/distro/pull/305)]
+ - Fixed crash when `uname -rs` output is empty [[#304](https://github.com/python-distro/distro/pull/304)]
+ - Fixed Amazon Linux identifier in `distro.id()` documentation [[#318](https://github.com/python-distro/distro/pull/318)]
+ - Fixed OpenSuse >= 15 support [[#319](https://github.com/python-distro/distro/pull/319)]
+ - Fixed encoding issues when opening distro release files [[#324](https://github.com/python-distro/distro/pull/324)]
+ - Fixed `linux_distribution` regression introduced in [[#230](https://github.com/python-distro/distro/pull/230)] [[#325](https://github.com/python-distro/distro/pull/325)]
+
+-------------------------------------------------------------------
+Fri Nov 19 05:31:21 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Tests: Set locale to UTF-8 to fix tests on Leap 15.3.
+
+-------------------------------------------------------------------
+Sun Sep 26 16:23:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Expliciting setting of locale is not necessary anymore
+  (gh#python-distro/distro#223).
+
+-------------------------------------------------------------------
+Tue Aug  3 12:19:39 UTC 2021 - brejoc@gmail.com
+
+- Update to version 1.6.0
+  * Deprecated the distro.linux_distribution() function. Use distro.id(), distro.version() and distro.name() instead [#296]
+  * Deprecated Python 2.7, 3.4 and 3.5 support. Further releases will only support Python 3.6+
+  * Added type hints to distro module [#269]
+  * Added __version__ for checking distro version [#292]
+  * Added support for arbitrary rootfs via the root_dir parameter [#247]
+  * Added the --root-dir option to CLI [#161]
+  * Added fallback to /usr/lib/os-release when /etc/os-release isn't available [#262]
+  * Fixed subprocess.CalledProcessError when running lsb_release [#261]
+  * Ignore /etc/iredmail-release file while parsing distribution [#268]
+  * Use a binary file for /dev/null to avoid TextIOWrapper overhead [#271]
+
+-------------------------------------------------------------------
+Tue May 18 10:55:49 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro
+
+-------------------------------------------------------------------
+Tue May 26 07:22:40 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Apr  2 04:18:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.0:
+  * Backward Compatibility:
+    + Keep output as native string so we can compatible with python2 interface
+  * Bug Fixes:
+    + Fix detection of RHEL 6 ComputeNode [#255]
+    + Fix Oracle 4/5 lsb_release id and names [#250]
+    + Ignore /etc/plesk-release file while parsing distribution
+
+-------------------------------------------------------------------
+Sun Feb 10 13:29:22 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.4.0:
+ * Backward Compatibility:
+  * Prefer the VERSION_CODENAME field of os-release to parsing it from VERSION [[#230](https://github.com/nir0s/distro/pull/230)]
+ * Bug Fixes:
+  * Return _uname_info from the uname_info() method [[#233](https://github.com/nir0s/distro/pull/233)]
+  * Fixed CloudLinux id discovery [[#234](https://github.com/nir0s/distro/pull/234)]
+  * Update Oracle matching [[#224](https://github.com/nir0s/distro/pull/224)]
+ * Docs:
+  * Distro is the recommended replacement for platform.linux_distribution [[#220](https://github.com/nir0s/distro/pull/220)]
+ * Release:
+  * Use Markdown for long description in setup.py [[#219](https://github.com/nir0s/distro/pull/219)]
+
+-------------------------------------------------------------------
+Wed Feb  6 17:33:38 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Drop useless BuildRequires of python-flake8 and python-pytest-cov
+
+-------------------------------------------------------------------
+Tue Feb  5 11:48:38 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add assert_locale.patch to warn about wrong locale.
+
+-------------------------------------------------------------------
+Wed Jun 13 16:52:25 UTC 2018 - mcepl@suse.com
+
+- Enable tests properly (this is pytest, not unittest),
+  it is necessary to explicitly set locale to an Unicode one
+  (https://github.com/nir0s/distro/issues/223)
+
+-------------------------------------------------------------------
+Thu May 10 09:42:51 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 1.3.0:
+ * improvements for other operating systems
+ * documentation:
+  * Add Ansible reference implementation and fix arch-linux link (#213)
+  * Add facter reference implementation (#213)
+
+-------------------------------------------------------------------
+Thu Feb  8 19:05:22 UTC 2018 - rjschwei@suse.com
+
+- Include in SLE 15 (FATE#324993, boo#997614))
+
+-------------------------------------------------------------------
+Sun Dec 24 19:11:15 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 1.2.0:
+ * Explicitly set Python versions for flake8 tests.
+
+-------------------------------------------------------------------
+Fri Dec  1 17:14:55 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 1.1.0 / 1.0.5:
+ * Include resources needed for tests and docs in source tarballs
+
+-------------------------------------------------------------------
+Sat Jul 22 10:23:42 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

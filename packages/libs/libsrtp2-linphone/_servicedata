@@ -1,0 +1,6 @@
+<servicedata>
+    <service name="tar_scm">
+        <param name="url">https://gitlab.linphone.org/BC/public/external/srtp.git</param>
+        <param name="changesrevision">4e89d69356565f67711d5109aac72ca44313aed4</param>
+    </service>
+</servicedata>

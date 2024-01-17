@@ -1,0 +1,3 @@
+addFilter("macro-in-comment.*%{nagios_plugindir}");
+addFilter("macro-in-comment.*%{nagios_plugindir}");
+

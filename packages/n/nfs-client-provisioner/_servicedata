@@ -1,0 +1,8 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/kubernetes-sigs/nfs-subdir-external-provisioner.git</param>
+    <param name="changesrevision">88ea43d8859f87f890451372cb9b5092e6c7315c</param>
+ </service>
+<service name="tar_scm">
+                <param name="url">git://github.com/kubernetes-sigs/nfs-subdir-external-provisioner</param>
+              <param name="changesrevision">23ecb3067226f440f6319b85faa35d4b93c7a1d5</param></service></servicedata>

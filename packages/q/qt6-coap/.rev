@@ -1,0 +1,210 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b0f86a8ed84dd702e08f68b9b5b0713</srcmd5>
+    <version>6.0.0</version>
+    <time>1608317916</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.0</comment>
+    <requestid>856436</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b98938ba89a3a4337b231069840e7d9</srcmd5>
+    <version>6.0.2</version>
+    <time>1616008460</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.0.2</comment>
+    <requestid>877996</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d493bfc44e0535b8dfed3eda712e112d</srcmd5>
+    <version>6.0.3</version>
+    <time>1617723037</time>
+    <user>RBrownSUSE</user>
+    <comment>Forward to devel project (forwarded request 882973 from cgiboudeaux)</comment>
+    <requestid>882989</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2d9be603cbc81734ef51e8307382a004</srcmd5>
+    <version>6.1.0</version>
+    <time>1620653909</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.1.0 (forwarded request 891684 from cgiboudeaux)</comment>
+    <requestid>891704</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b9d039efbeca6eea6e90607d86dfe1b</srcmd5>
+    <version>6.1.1</version>
+    <time>1623767877</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.1.1</comment>
+    <requestid>900091</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30231f387fb25598f1c565d009bc29d8</srcmd5>
+    <version>6.1.2</version>
+    <time>1625516583</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.1.2 (forwarded request 904079 from cgiboudeaux)</comment>
+    <requestid>904086</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>590e0e1418398f3941ce478e370e74fe</srcmd5>
+    <version>6.1.3</version>
+    <time>1631042468</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.1.3 (forwarded request 917018 from cgiboudeaux)</comment>
+    <requestid>917022</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>04958d325f460f27e2ac7bbc6f508148</srcmd5>
+    <version>6.2.0</version>
+    <time>1633466021</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.0 (forwarded request 922709 from cgiboudeaux)</comment>
+    <requestid>922710</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7302f9076048f54b0500b2b1760b2557</srcmd5>
+    <version>6.2.1</version>
+    <time>1636038554</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.1 (forward) (forwarded request 928696 from cgiboudeaux)</comment>
+    <requestid>928700</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>06f72287689d702dc4d4c40b5336043f</srcmd5>
+    <version>6.2.2</version>
+    <time>1638997739</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.2 (forwarded request 936299 from cgiboudeaux)</comment>
+    <requestid>936303</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7603da58d5c9273e345d23ba48549db3</srcmd5>
+    <version>6.2.3</version>
+    <time>1643838013</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.3 (forwarded request 950484 from cgiboudeaux)</comment>
+    <requestid>950489</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6c05b195ddae7955b5d6453646001955</srcmd5>
+    <version>6.2.4</version>
+    <time>1648570468</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.2.4 (forwarded request 965385 from cgiboudeaux)</comment>
+    <requestid>965390</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d406517cbf5b8a0cb23ed73fbb000914</srcmd5>
+    <version>6.3.0</version>
+    <time>1650466529</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.0 (forwarded request 970780 from cgiboudeaux)</comment>
+    <requestid>970787</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>57c70d3d7ffd08d7918af8e7546ea063</srcmd5>
+    <version>6.3.1</version>
+    <time>1655732240</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.1 (forwarded request 983727 from cgiboudeaux)</comment>
+    <requestid>983732</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e756e008ea7b969bf3adff16002c068e</srcmd5>
+    <version>6.3.2</version>
+    <time>1663275559</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.3.2 (forwarded request 1003797 from cgiboudeaux)</comment>
+    <requestid>1003802</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e669d02c1c4296fc85b2ccff4ca55879</srcmd5>
+    <version>6.4.0</version>
+    <time>1664638982</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 6.4.0</comment>
+    <requestid>1007307</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>126fe3a1b75450fc325b64a38702e127</srcmd5>
+    <version>6.4.1</version>
+    <time>1669040982</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.4.1</comment>
+    <requestid>1036948</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d3a15526cd25e3b82d8f0fa6f48c4472</srcmd5>
+    <version>6.4.2</version>
+    <time>1673444031</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.4.2 (forwarded request 1057253 from krop)</comment>
+    <requestid>1057257</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>89a72d2fa07f715a4b15f408f4fec3a2</srcmd5>
+    <version>6.4.3</version>
+    <time>1679068984</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.4.3 (forwarded request 1072393 from krop)</comment>
+    <requestid>1072396</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a27123d288ece4827c8e1aec887b3fd5</srcmd5>
+    <version>6.5.0</version>
+    <time>1680723105</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
+    <requestid>1077321</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f517e65fae6541fad74e5b6641c7aba7</srcmd5>
+    <version>6.5.1</version>
+    <time>1685294549</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.5.1</comment>
+    <requestid>1089148</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>8de53f9a3ff48407e015cf641881a5f4</srcmd5>
+    <version>6.5.1</version>
+    <time>1688849259</time>
+    <user>dimstar_suse</user>
+    <comment>Update subpackages requirements</comment>
+    <requestid>1097619</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1f740f01ca447bcfe873534ac0fa0c30</srcmd5>
+    <version>6.5.2</version>
+    <time>1690370549</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.2 (forwarded request 1099849 from krop)</comment>
+    <requestid>1099986</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5c4e58bd20e1aa2955f6350ca131942b</srcmd5>
+    <version>6.5.3</version>
+    <time>1696269926</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.3 (forwarded request 1114130 from krop)</comment>
+    <requestid>1114488</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6c1ce6e39e94435bc8821db5a5f1aa18</srcmd5>
+    <version>6.6.0</version>
+    <time>1697231650</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.0. Not built yet (forwarded request 1116657 from krop)</comment>
+    <requestid>1116929</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e0ee6567bb3b10358c6df474b3a05d8c</srcmd5>
+    <version>6.6.1</version>
+    <time>1701727177</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.6.1 (forwarded request 1129814 from krop)</comment>
+    <requestid>1130403</requestid>
+  </revision>
+</revisionlist>

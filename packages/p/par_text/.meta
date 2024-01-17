@@ -1,0 +1,6 @@
+<package name="par_text" project="openSUSE:Factory">
+  <title>Paragraph reformatter</title>
+  <description>par is a paragraph reformatter, vaguely similar to fmt, but better.</description>
+  <devel project="Base:System" package="par_text"/>
+  <url>http://www.nicemice.net/par/</url>
+</package>

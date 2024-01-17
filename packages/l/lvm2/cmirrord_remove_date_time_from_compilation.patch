@@ -1,0 +1,16 @@
+cmirrord: Do not compile in Data and Time to avoid build retriggering in obs
+
+Signed-off-by: Thomas Renninger <trenn@suse.de>
+
+Index: LVM2.2.02.139/daemons/cmirrord/clogd.c
+===================================================================
+--- LVM2.2.02.139.orig/daemons/cmirrord/clogd.c
++++ LVM2.2.02.139/daemons/cmirrord/clogd.c
+@@ -78,7 +78,6 @@ int main(int argc, char *argv[])
+ 		kill(getppid(), SIGTERM);
+ 
+ 	LOG_PRINT("Starting cmirrord:");
+-	LOG_PRINT(" Built: "__DATE__" "__TIME__"\n");
+ 	LOG_DBG(" Compiled with debugging.");
+ 
+ 	while (!exit_now) {

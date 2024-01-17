@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sat Aug 26 07:41:34 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build on Linux 6.4
+
+- New patch: Fixup-for-commit-1aaba11da9aa-driver-core-class-remo.patch
+- New patch: Fix-the-layout-changes-after-linux-6.patch
+- Delete patches: 0000-msr_allowlist-diff.patch 0001-msr_batch-diff.patch
+  0002-msr_entry-diff.patch 0003-msr_version-diff.patch
+
+-------------------------------------------------------------------
+Sat Apr  1 03:37:38 UTC 2023 - Jeffrey Cheung <jcheung@suse.com>
+
+- Update to v1.7.0
+- Fix the layout changes after linux 6
+
+  New patch: 0000-msr_allowlist-diff.patch
+  New patch: 0001-msr_batch-diff.patch
+  New patch: 0002-msr_entry-diff.patch
+  New patch: 0003-msr_version-diff.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 23:57:41 UTC 2022 - Alejandro Vilches <alejandro.vilches@intel.com>
+
+- Update to v1.6.0
+
+-------------------------------------------------------------------
+Tue Jul  7 07:44:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add better descriptions, use noun phrase.
+- Drop redundant %clean section, drop useless %systemd_ordering,
+  drop arbitrary limitation to building for kernel-default.
+- Replace overarching systemd buildrequire.
+
+-------------------------------------------------------------------
+Mon Jul  6 01:00:47 UTC 2020 - Jeffrey Cheung <jcheung@suse.com>
+
+- Add system account msr for msr-safe tool
+
+-------------------------------------------------------------------
+Wed May 20 07:21:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit jsc#SLE-12664

@@ -1,0 +1,5 @@
+<package name="noise-suppression-for-voice" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="noise-suppression-for-voice"/>
+</package>

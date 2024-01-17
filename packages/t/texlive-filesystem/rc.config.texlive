@@ -1,0 +1,25 @@
+## Path:        Applications/TeX
+## Description: 
+## Type:        yesno
+## Default:     no
+## Command:
+#
+# The automatical font generation of the TeX/LaTeX systems do
+# locate the bitmap font into the directory /var/cache/fonts/.
+# If CLEAR_TEXMF_FONTS is set to "yes" then this directory
+# will be cleared from fonts not used in the last 20 days.
+#
+CLEAR_TEXMF_FONTS="no"
+
+## Type:        yesno
+## Default:     no
+## Command:
+#
+# If above is set to yes and there are users which are member
+# of the group mktex then it might be that users have set an
+# umask which does not allow the user mktex to clear the cache
+# below /var/cache/fonts/.  Setting HAVE_MKTEX_MEMBERS to "yes"
+# will allow the cron job to change the group mask hence allow
+# to clear older data.
+#
+HAVE_MKTEX_MEMBERS="no"

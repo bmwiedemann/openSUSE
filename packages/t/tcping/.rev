@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87b8e1995afb6a7616ae2269a2fdc910</srcmd5>
+    <version>1.12.1</version>
+    <time>1668609813</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain tcping in Factory</comment>
+    <requestid>1035920</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>03a2d9551ac91898270fd0affadd444b</srcmd5>
+    <version>1.19.1</version>
+    <time>1678125318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069492</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>434c29967b768af6e6d68a47259f5269</srcmd5>
+    <version>1.19.2</version>
+    <time>1681058489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078158</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8ce399b77acb825271a56dde93685649</srcmd5>
+    <version>2.0.0</version>
+    <time>1693235909</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107100</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>85b91acd6cd377f3712f662fa6ae167a</srcmd5>
+    <version>2.4.0</version>
+    <time>1699910502</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * new feature: add `-i` to specify the interval between sending
+    probes.
+  * new feature: add `-I` to specify the source interface to use
+    for sending probes.
+  * new feature: add `-t` to specify a custom timeout for probes.
+  * new feature: add `--db` to specify the path and file name to
+    store tcping output to sqlite database. e.g. `--db
+    /tmp/tcping.db`.
+  * fix: add `rtt` to JSON output
+  * refactor: remove unnecessary custom types
+  * refactor: memory align `structs`
+  * refactor: Debian packaging instructions</comment>
+    <requestid>1125281</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,23 @@
+commit 57ca2c53bcef6de7ca33767cedab120afd9a7601
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Thu Jan 13 12:00:19 2022 +0100
+
+    ucm: fix UCX_MEM_MALLOC_RELOC
+    
+    Should be disabled by default but is enabled by the parser default value
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git src/ucs/config/ucm_opts.c src/ucs/config/ucm_opts.c
+index 89cccc487231..b13360980793 100644
+--- src/ucs/config/ucm_opts.c
++++ src/ucs/config/ucm_opts.c
+@@ -62,7 +62,7 @@ static ucs_config_field_t ucm_global_config_table[] = {
+    ucs_offsetof(ucm_global_config_t, enable_malloc_hooks),
+    UCS_CONFIG_TYPE_BOOL},
+ 
+-  {"MALLOC_RELOC", "yes",
++  {"MALLOC_RELOC", "no",
+    "Enable installing malloc symbols in the relocation table.\n"
+    "This is unsafe and off by default, because sometimes glibc\n"
+    "calls malloc/free without going through the relocation table,\n"

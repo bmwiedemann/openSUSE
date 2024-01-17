@@ -1,0 +1,23 @@
+## Path:        Network/WWW/lighttpd
+## Description: start parameters for lighttpd.
+## Type:        string
+## Default:     "-f /etc/lighttpd/lighttpd.conf"
+## Config:      lighttpd
+#
+# start parameters for lighttpd.
+#
+# see man 1 lighttpd for more
+#
+LIGHTTPD_PARAMS="-f /etc/lighttpd/lighttpd.conf"
+
+## Path:        Network/WWW/lighttpd
+## Description: umask to use with lighttpd
+## Type:        string
+## Default:     "077"
+## Config:      lighttpd
+#
+# Since version 1.4.12 lighttpd's mod_webdav honors the umask
+# from the starting environment. To keep the old default, we set
+# the umask to 077.
+#
+LIGHTTPD_UMASK="077"

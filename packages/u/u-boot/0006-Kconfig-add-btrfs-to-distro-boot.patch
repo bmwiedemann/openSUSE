@@ -1,0 +1,26 @@
+From 8161f9d335e3de50c32d572467734a7869a01c34 Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <guillaume.gardet@arm.com>
+Date: Wed, 5 Apr 2023 14:25:29 +0200
+Subject: [PATCH] Kconfig: add btrfs to distro boot
+
+Some distributions use btrfs as the default file system.
+Enable btrfs support by default when using distro boot for all
+architectures but riscv, as it breaks compilation due to size problems.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ boot/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/boot/Kconfig b/boot/Kconfig
+index fbc49c5bca..be576696c4 100644
+--- a/boot/Kconfig
++++ b/boot/Kconfig
+@@ -815,6 +815,7 @@ config DISTRO_DEFAULTS
+ 	select CMD_SYSBOOT
+ 	select HUSH_PARSER
+ 	select SYS_LONGHELP
++	imply CMD_BTRFS if !RISCV && !MIPS
+ 	help
+ 	  Note: These scripts have been replaced by Standard Boot. Do not use
+ 	  them on new boards. See 'Migrating from distro_boot' at

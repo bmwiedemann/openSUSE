@@ -1,0 +1,63 @@
+From 05451e3ea5ccd350683cbe69f50f891e458bcf83 Mon Sep 17 00:00:00 2001
+From: paulc <paulc@26ef948f-17ed-0410-91a8-c94bd273f071>
+Date: Tue, 11 Feb 2020 15:21:59 +0000
+Subject: [PATCH 1/2] Fixed build on newer versions of C++.
+
+git-svn-id: http://voip.null.ro/svn/yatebts/trunk@677 26ef948f-17ed-0410-91a8-c94bd273f071
+---
+ mbts/GPRS/MAC.cpp      | 2 +-
+ mbts/GPRS/MSInfo.cpp   | 2 +-
+ mbts/SGSNGGSN/Sgsn.cpp | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/mbts/GPRS/MAC.cpp b/mbts/GPRS/MAC.cpp
+index 5c631ee..8879389 100644
+--- a/mbts/GPRS/MAC.cpp
++++ b/mbts/GPRS/MAC.cpp
+@@ -835,7 +835,7 @@ PDCHL1FEC *L2MAC::macPickChannel()
+ 	devassert(npacch);
+ 	PDCHL1FEC *ch, *bestch = NULL;
+ 	int bestload = 0;			// unneeded init to make gcc happy.
+-	for (RListIterator<typeof(ch)> itr(macPacchs); itr.next(ch); ) {
++	for (RListIterator<PDCHL1FEC*> itr(macPacchs); itr.next(ch); ) {
+ 		int load = 0;
+ 		MSInfo *ms;
+ 		RN_MAC_FOR_ALL_MS(ms) {
+diff --git a/mbts/GPRS/MSInfo.cpp b/mbts/GPRS/MSInfo.cpp
+index bce7ce8..05a45df 100644
+--- a/mbts/GPRS/MSInfo.cpp
++++ b/mbts/GPRS/MSInfo.cpp
+@@ -638,7 +638,7 @@ bool MSInfo::msAssignChannels()
+         if (msPCHDowns.size() > 1) {
+             std::ostringstream os;
+             msDumpChannels(os);
+-            GPRSLOG(INFO,GPRS_MSG|GPRS_CHECK_OK) << "Multislot assignment for "<<this<<os;
++            GPRSLOG(INFO,GPRS_MSG|GPRS_CHECK_OK) << "Multislot assignment for "<<this<<os.str();
+         }
+ 
+ 	} else {
+diff --git a/mbts/SGSNGGSN/Sgsn.cpp b/mbts/SGSNGGSN/Sgsn.cpp
+index 57371d6..b756c1a 100644
+--- a/mbts/SGSNGGSN/Sgsn.cpp
++++ b/mbts/SGSNGGSN/Sgsn.cpp
+@@ -149,7 +149,7 @@ void SgsnInfo::sirm()
+ 	clearConn(GprsConnNone,SigConnLost);
+ 	std::ostringstream ss;
+ 	sgsnInfoDump(this,ss);
+-	SGSNLOGF(INFO,GPRS_OK|GPRS_MSG,"SGSN","Removing SgsnInfo:"<<ss);
++	SGSNLOGF(INFO,GPRS_OK|GPRS_MSG,"SGSN","Removing SgsnInfo:"<<ss.str());
+ 	sSgsnInfoList.remove(this);
+ 	GmmInfo *gmm = getGmm();
+ 	if (gmm && (gmm->getSI() == this)) {
+@@ -253,7 +253,7 @@ static void GmmRemove(GmmInfo *gmm)
+ {
+ 	std::ostringstream ss;
+ 	gmmInfoDump(gmm,ss,0);
+-	SGSNLOGF(INFO,GPRS_OK|GPRS_MSG,"SGSN","Removing gmm:"<<ss);
++	SGSNLOGF(INFO,GPRS_OK|GPRS_MSG,"SGSN","Removing gmm:"<<ss.str());
+ 	SgsnInfo *si;
+ 	RN_FOR_ALL(SgsnInfoList_t,sSgsnInfoList,si) {
+ 		// The second test here should be redundant.
+-- 
+2.30.1
+

@@ -1,0 +1,5 @@
+<package name="k8s-sidecar" project="openSUSE:Factory">
+  <title>Collect kubernetes cluster configmaps and store it</title>
+  <description></description>
+  <devel project="devel:kubic" package="k8s-sidecar"/>
+</package>

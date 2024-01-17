@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Mar 19 18:53:58 UTC 2021 - mrueckert@suse.de
+
+- Update to version 1.5.0+git32.aa3e8af7:
+  - Fix a lot of broken rendered icons in the paper theme
+  - Added a lot of new icons
+- switch to source service as the latest release still had broken
+  icons and it is not easy to create a diff for binary files.
+- modernize spec file
+
+-------------------------------------------------------------------
+Thu Jan  5 23:05:20 UTC 2017 - matthias.eliasson@gmail.com
+
+- Bump version to 1.4.0
+
+-------------------------------------------------------------------
+Sun Nov 27 21:59:41 UTC 2016 - matthias.eliasson@gmail.com
+
+- Bump version to 1.3.4
+- Change licensing to just CC-BY-SA-4.0 accroding to upstream
+
+-------------------------------------------------------------------
+Sun Jun  5 22:35:24 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 1.3.2
+

@@ -1,0 +1,13 @@
+<package name="libsamplerate" project="openSUSE:Factory">
+  <title>A Sample Rate Converter Library</title>
+  <description>Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for
+audio. One example of where such a thing would be useful is in
+converting audio from the CD sample rate of 44.1kHz to the 48kHz sample
+rate used by DAT players.
+
+SRC is capable of arbitrary and time varying conversions; from
+downsampling by a factor of 12 to upsampling by the same factor.  The
+conversion ratio can also vary with time for speeding up and slowing
+down effects.</description>
+  <devel project="multimedia:libs" package="libsamplerate"/>
+</package>

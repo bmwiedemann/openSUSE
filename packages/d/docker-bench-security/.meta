@@ -1,0 +1,12 @@
+<package name="docker-bench-security" project="openSUSE:Factory">
+  <title>Docker Bench for Security</title>
+  <description>The Docker Bench for Security is a script that checks for dozens of common
+best-practices around deploying Docker containers in production.
+
+The tests are all automated, and are inspired by the CIS Docker 1.6 Benchmark.
+( https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_1.6_Benchmark_v1.0.0.pdf )
+
+</description>
+  <devel project="Virtualization:containers" package="docker-bench-security"/>
+  <url>https://dockerbench.com</url>
+</package>

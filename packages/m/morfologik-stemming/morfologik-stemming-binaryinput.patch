@@ -1,0 +1,22 @@
+--- morfologik-stemming-2.1.6/morfologik-tools/src/main/java/morfologik/tools/DictCompile.java	2019-05-11 14:36:25.000000000 +0200
++++ morfologik-stemming-2.1.6/morfologik-tools/src/main/java/morfologik/tools/DictCompile.java	2019-10-21 17:18:26.482640810 +0200
+@@ -57,7 +57,7 @@
+   private boolean overwrite;  
+ 
+   @ParametersDelegate
+-  private final BinaryInput binaryInput;
++  private BinaryInput binaryInput;
+ 
+   DictCompile() {
+     binaryInput = new BinaryInput();
+--- morfologik-stemming-2.1.6/morfologik-tools/src/main/java/morfologik/tools/FSACompile.java	2019-05-11 14:36:25.000000000 +0200
++++ morfologik-stemming-2.1.6/morfologik-tools/src/main/java/morfologik/tools/FSACompile.java	2019-10-21 17:04:49.058936527 +0200
+@@ -42,7 +42,7 @@
+   private SerializationFormat format = SerializationFormat.FSA5;  
+ 
+   @ParametersDelegate
+-  private final BinaryInput binaryInput;
++  private BinaryInput binaryInput;
+ 
+   FSACompile() {
+     binaryInput = new BinaryInput();

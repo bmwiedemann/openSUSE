@@ -1,0 +1,11 @@
+<package name="python-requests_ntlm" project="openSUSE:Factory">
+  <title>Adds support for NTLM authentication to the requests library</title>
+  <description>This package allows for HTTP NTLM authentication using
+python-requests, the HTTP library for humans.  HttpNtlmAuth extends
+requests' AuthBase, so it can be dropped directly in place, or used
+in conjunction with a Session to make use of connection pooling.
+
+</description>
+  <devel project="devel:languages:python" package="python-requests_ntlm"/>
+  <url>https://github.com/requests/requests-ntlm</url>
+</package>

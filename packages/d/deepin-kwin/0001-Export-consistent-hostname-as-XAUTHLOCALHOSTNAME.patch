@@ -1,0 +1,56 @@
+diff -Nurp deepin-kwin-5.25.0/src/helpers/wayland_wrapper/kwin_wrapper.cpp deepin-kwin-5.25.0-new/src/helpers/wayland_wrapper/kwin_wrapper.cpp
+--- deepin-kwin-5.25.0/src/helpers/wayland_wrapper/kwin_wrapper.cpp	2023-03-30 08:55:43.000000000 +0800
++++ deepin-kwin-5.25.0-new/src/helpers/wayland_wrapper/kwin_wrapper.cpp	2023-04-18 22:51:13.352318847 +0800
+@@ -22,6 +22,7 @@
+ 
+ #include <QCoreApplication>
+ #include <QDebug>
++#include <QHostInfo>
+ #include <QProcess>
+ #include <QTemporaryFile>
+ #include <QDBusConnection>
+@@ -70,8 +71,11 @@ KWinWrapper::KWinWrapper(QObject *parent
+         }
+         if (m_xwlSocket) {
+             if (!qEnvironmentVariableIsSet("KWIN_WAYLAND_NO_XAUTHORITY")) {
+-                if (!generateXauthorityFile(m_xwlSocket->display(), &m_xauthorityFile)) {
++                const QByteArray hostname = QHostInfo::localHostName().toUtf8();
++                if (!generateXauthorityFile(m_xwlSocket->display(), &m_xauthorityFile, hostname)) {
+                     qCWarning(KWIN_WRAPPER) << "Failed to create an Xauthority file";
++                } else {
++                    qputenv("XAUTHLOCALHOSTNAME", hostname);
+                 }
+             }
+         }
+diff -Nurp deepin-kwin-5.25.0/src/xwl/lib/xauthority.cpp deepin-kwin-5.25.0-new/src/xwl/lib/xauthority.cpp
+--- deepin-kwin-5.25.0/src/xwl/lib/xauthority.cpp	2023-03-30 08:55:43.000000000 +0800
++++ deepin-kwin-5.25.0-new/src/xwl/lib/xauthority.cpp	2023-04-18 22:52:58.253169705 +0800
+@@ -45,7 +45,7 @@ static QByteArray generateXauthorityCook
+     return cookie;
+ }
+ 
+-bool generateXauthorityFile(int display, QTemporaryFile *authorityFile)
++bool generateXauthorityFile(int display, QTemporaryFile *authorityFile, const QByteArray &hostname)
+ {
+     const QString runtimeDirectory = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
+ 
+@@ -54,7 +54,6 @@ bool generateXauthorityFile(int display,
+         return false;
+     }
+ 
+-    const QByteArray hostname = QHostInfo::localHostName().toUtf8();
+     const QByteArray displayName = QByteArray::number(display);
+     const QByteArray name = QByteArrayLiteral("MIT-MAGIC-COOKIE-1");
+     const QByteArray cookie = generateXauthorityCookie();
+diff -Nurp deepin-kwin-5.25.0/src/xwl/lib/xauthority.h deepin-kwin-5.25.0-new/src/xwl/lib/xauthority.h
+--- deepin-kwin-5.25.0/src/xwl/lib/xauthority.h	2023-03-30 08:55:43.000000000 +0800
++++ deepin-kwin-5.25.0-new/src/xwl/lib/xauthority.h	2023-04-18 22:53:42.849531429 +0800
+@@ -9,6 +9,7 @@
+ 
+ #pragma once
+ 
++class QByteArray;
+ class QTemporaryFile;
+ 
+-bool generateXauthorityFile(int display, QTemporaryFile *authorityFile);
++bool generateXauthorityFile(int display, QTemporaryFile *authorityFile, const QByteArray &hostname);

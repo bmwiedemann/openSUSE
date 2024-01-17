@@ -1,0 +1,59 @@
+diff -ur aircrack-ng-1.7/lib/libac/support/common.c aircrack-ng-1.7-patched/lib/libac/support/common.c
+--- aircrack-ng-1.7/lib/libac/support/common.c	2022-05-11 01:01:46.000000000 +0200
++++ aircrack-ng-1.7-patched/lib/libac/support/common.c	2022-12-20 20:26:54.727450707 +0100
+@@ -331,9 +331,7 @@
+ #elif defined(__linux__)
+ 	char *s, *pos;
+ 	FILE * f;
+-	// Reading /proc/cpuinfo is more reliable on current CPUs,
+-	// so put it first and try the old method if this one fails
+-	f = fopen("/proc/cpuinfo", "r");
++	f = fopen("/proc/stat", "r");
+ 
+ 	if (f != NULL)
+ 	{
+@@ -344,26 +342,17 @@
+ 			// Get the latest value of "processor" element
+ 			// and increment it by 1 and it that value
+ 			// will be the number of CPU.
+-			number = -2;
++			number = 0;
+ 
+ 			while (fgets(s, 80, f) != NULL)
+ 			{
+-				pos = strstr(s, "processor");
+-
+-				if (pos == s)
++                               pos = strstr(s, "cpu"); 
++				if (pos != NULL && pos + 3 <= s + 81)
+ 				{
+-					pos = strchr(s, ':');
+-
+-					if (pos != NULL)
+-					{
+-						int tmp_number = atoi(pos + 1);
+-						if (tmp_number > 0 && tmp_number <= 1024)
+-							number = tmp_number;
+-					}
++					if (isdigit(*(pos + 3)) != 0) ++number;
+ 				}
+ 			}
+ 
+-			++number;
+ 			free(s);
+ 		}
+ 
+Only in aircrack-ng-1.7-patched/lib/libac/support: common.c.orig
+diff -ur aircrack-ng-1.7/src/aircrack-ng/aircrack-ng.c aircrack-ng-1.7-patched/src/aircrack-ng/aircrack-ng.c
+--- aircrack-ng-1.7/src/aircrack-ng/aircrack-ng.c	2022-05-11 01:01:46.000000000 +0200
++++ aircrack-ng-1.7-patched/src/aircrack-ng/aircrack-ng.c	2022-12-20 20:29:28.537450707 +0100
+@@ -2236,6 +2236,8 @@
+ 			{
+ 				pkh.caplen = ___my_swab32(pkh.caplen);
+ 				pkh.len = ___my_swab32(pkh.len);
++				pkh.tv_sec = ___my_swab32(pkh.tv_sec);
++				pkh.tv_usec = ___my_swab32(pkh.tv_usec);
+ 			}
+ 
+ 			if (pkh.caplen <= 0 || pkh.caplen > 65535)
+Only in aircrack-ng-1.7-patched/src/aircrack-ng: aircrack-ng.c.orig

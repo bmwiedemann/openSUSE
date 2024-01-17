@@ -1,0 +1,510 @@
+-------------------------------------------------------------------
+Wed Nov 08 12:20:34 UTC 2023 - schubi@suse.com
+
+- Update to version 0.6.0:
+  * Supporting Linux Userspace API (UAPI) Group
+    chapter "Configuration Files Specification".
+    See: https://uapi-group.org/specifications/specs/
+                 configuration_files_specification/
+
+-------------------------------------------------------------------
+Fri Nov 03 16:44:38 UTC 2023 - schubi@suse.com
+
+- Update to version 0.5.3:
+  * Added bindings for python3 and C#
+
+-------------------------------------------------------------------
+Thu Oct 26 14:56:30 UTC 2023 - nico.krapp@suse.com
+
+- Update to version 0.5.2:
+  * Add python bindings (#188)
+  * docu version 0.5.2
+  * Fix test (#185)
+  * Plug memory leak (#186)
+
+-------------------------------------------------------------------
+Wed Sep  6 14:38:13 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Additional info for version 0.5.2:
+  * Fixed a stack-buffer-overflow vulnerability in "econf_writeFile"
+    function. (CVE-2023-30078, CVE-2023-32181, bsc#1211078)
+  * Fixed a stack-buffer-overflow vulnerability in "read_file"
+    function. (CVE-2023-30079, CVE-2023-22652, bsc#1211078)
+
+-------------------------------------------------------------------
+Fri Mar 24 15:12:18 UTC 2023 - schubi@suse.com
+
+- Update to version 0.5.2:
+  * Fixed build for aarch64 and gcc13.
+  * Making the output verbose when a test fails.
+  * Fixed a stack-buffer-overflow vulnerability in "econf_writeFile"
+    function.
+  * Fixed a stack-buffer-overflow vulnerability in "read_file"
+    function.
+  * Added new feature: econf_set_conf_dirs (const char **dir_postfix_list)
+    Sets a list of directory structures (with order) which describes
+    the directories in which the files have to be parsed.
+    E.G. with the given list: {"/conf.d/", ".d/", "/", NULL} files in following
+       directories will be parsed:
+          "<default_dirs>/<project_name>.<suffix>.d/"
+          "<default_dirs>/<project_name>/conf.d/"
+          "<default_dirs>/<project_name>.d/"
+          "<default_dirs>/<project_name>/"
+       The entry "<default_dirs>/<project_name>.<suffix>.d/" will be added
+       automatically.
+  * General code cleanup.
+    
+-------------------------------------------------------------------
+Thu Jan 19 15:58:59 UTC 2023 - schubi@suse.com
+
+- Update to version 0.5.1:
+  * Reading files in /usr/_vendor_/_example_._suffix_.d/* regardless
+    there is a /etc/_example_._suffix_ file. (#175)
+
+-------------------------------------------------------------------
+Fri Dec 02 14:13:24 UTC 2022 - schubi@suse.com
+
+- Update to version 0.5.0:
+  * API calls econf_read*WithCallback supporting a general (void *)
+    argument for user defined data with which the callback function is
+    called.
+  * Tagged following functions deprecated:
+    econf_requireOwner, econf_requireGroup, econf_requirePermissions,
+    econf_followSymlinks, econf_reset_security_settings
+    Use one of the econf_read*WithCallback functions instead.
+
+-------------------------------------------------------------------
+Wed Nov 23 14:01:34 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.9:
+  * libeconf.h: added missing sys/types.h header (#171)
+  * new API calls: econf_readFileWithCallback,
+    econf_readDirsWithCallback, econf_readDirsHistoryWithCallback (#172)
+  * Checking NULL comment parameter in the parsing functions.
+
+-------------------------------------------------------------------
+Mon Nov 14 13:47:26 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.8+git20221114.7ff7704:
+  * Parsing files which are containing keys only (#170)
+    All delimiters are allowed now : "", " =", " ", "=". But the
+    user should use "" in order to be distinct.
+  * /usr/etc/shells.d/<file_name> will not be parsed if
+    /etc/shells.d/<file_name> is defined too.
+  * Lto build fixed (#168)
+  * New calls: econf_comment_tag, econf_delimiter_tag, econf_set_comment_tag,
+    econf_set_delimiter_tag
+  * Checking UID,GroupID, permissions,... of the parsed files (#165)
+    New calls: econf_requireOwner, econf_requireGroup, econf_requirePermissions,
+    econf_followSymlinks
+  * Ignoring Group without brackets; Do not hold brackets in the internal data structure. (#164)
+  * Error handling improved for nums and booleans (#163)
+
+-------------------------------------------------------------------
+Wed Apr 27 22:10:35 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.6+git20220427.3016f4e:
+  * econftool:
+    ** Parsing error: Reporting file and line nr.
+    ** --delimeters=spaces Taking all kind of spaces for delimiter 
+  * libeconf:
+    Fixed bsc#1198165: Parsing files correctly which have space characters
+    AND none space characters as delimiters.
+
+-------------------------------------------------------------------
+Wed Apr 06 21:23:48 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.5+git20220406.c9658f2:
+  * econftool:
+    ** New call "syntax" for checking the configuration files only.
+       Returns an error string with line number if an error occurs.
+    ** New options "--comment" and "--delimeters"
+    ** Parsing one file only if needed.
+
+-------------------------------------------------------------------
+Tue Jan 04 11:22:44 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.4+git20220104.962774f:
+  * Fixed i586 build (#158)
+
+-------------------------------------------------------------------
+Tue Jan 04 10:27:32 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.2+git20220104.5dfd69d:
+  * Reading numbers with different bases (e.g. oktal) (bsc#1193632) (#157)
+
+-------------------------------------------------------------------
+Thu Nov 11 14:22:24 UTC 2021 - schubi@suse.com
+
+- Update to version libeconf-0.4.2+git20211111.c7a2c52:
+  * CMake fixes regarding document installation.
+  * Fixed different issues while writing string values to file.
+  * Writing comments to file too.
+  * Fixed memory leaks.
+  * Fixed crash while merging values.
+
+-------------------------------------------------------------------
+Fri Jul  9 07:16:22 UTC 2021 - schubi <schubi@localhost>
+
+- Update to version 0.4.1+git20210709.cf671f2:
+  * CMake fixes regarding installation of econftool and man pages.
+
+-------------------------------------------------------------------
+Thu Jul 08 08:49:53 UTC 2021 - Stefan Schubert schubi@suse.com
+
+- Update to version 0.4.0+git20210708.6918ea1:
+  * Fixed covscan FORWARD_NULL_issues warnings
+
+-------------------------------------------------------------------
+Wed Jul  7 12:11:36 UTC 2021 - Stefan Schubert <schubi@suse.com>
+
+- Update to version 0.4.0+git20210707.537a8a:
+  * Fixed resource leaks found by Iker Pedrosa.
+
+-------------------------------------------------------------------
+Thu Apr 15 10:31:02 UTC 2021 - schubi@suse.com 
+
+- Removed doxygen from build requires.
+
+-------------------------------------------------------------------
+Tue Apr 13 20:25:40 UTC 2021 - schubi@suse.com
+
+- Update to version 0.4.0+git20210413.fdb8025:
+  * Installing man pages via meson. (#147)
+
+-------------------------------------------------------------------
+Mon Apr 12 19:10:54 UTC 2021 - schubi@suse.com
+
+- Update to version 0.4.0+git20210412.1513a26:
+  * Added econftool cat option (#146)
+  * new API call: econf_readDirsHistory (showing ALL locations)
+  * new API call: econf_getPath (absolute path of the configuration file)
+
+-------------------------------------------------------------------
+Thu Apr 08 17:10:59 UTC 2021 - schubi@suse.com
+
+- Update to version 0.4.0+git20210408.6d33e5e:
+  * Man pages libeconf.3 and econftool.8.
+  * Handling multiline strings.
+  * Added libeconf_ext which returns more information like
+    line_nr, comments, path of the configuration file,...
+  * Econftool, an command line interface for handling configuration
+    files.
+  * Generating HTML API documentation with doxygen.
+  * Improving error handling and semantic file check.
+  * Joining entries with the same key to one single entry if
+    env variable ECONF_JOIN_SAME_ENTRIES has been set.
+
+-------------------------------------------------------------------
+Thu Oct 22 12:16:36 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- explicitly BuildRequire: pkgconfig for /usr/lib/rpm/pkgconfigdeps.sh
+  On TW it's pulled in implicitly by libxcrypt-devel which is not the
+  case on 15.2
+
+-------------------------------------------------------------------
+Fri Jul 10 21:15:09 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.3.8+git20200710.5126fff:
+  * Add CMake build scripts, remove autotools support
+  * Move C++ ABI compatibility section
+
+-------------------------------------------------------------------
+Fri Jun 05 15:57:26 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.3.7+git20200605.c67ef9a:
+  * Fix build on i586
+
+-------------------------------------------------------------------
+Thu Jun 04 11:05:02 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.3.6+git20200529.276359f:
+  * Package meson files with autotools
+  * Use newer version of actions/checkout
+  * Add actions for meson
+  * Create meson.yml
+  * Use meson source root for tests configuration files
+  * Add additional compiler warnings
+  * First useable meson build support including unit tests
+  * Add global options, build with pie and GNU_SOURCE
+  * Fix name of library, add example binary
+  * add support for meson
+  * Add C++ compatibility
+  * Add test case for crash with empty value keys
+
+-------------------------------------------------------------------
+Mon Feb 03 16:21:51 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.3.5+git20200203.3144b69:
+  * Release version 0.3.5
+  * Use float.h instead of obsolete gnuism values.h
+  * Remove gnuism (strdupa)
+  * Check for empty value (NULL pointer) before calling strdup.
+
+-------------------------------------------------------------------
+Tue Jan 21 14:53:44 UTC 2020 - rbrown@suse.com
+
+- Update to version 0.3.4+git20200121.febebf2:
+  * Release version 0.3.4
+  * Fix buffer overflow in econf_readDirs
+  * Fix parsing of quoted strings, and values starting with delimiters
+  * tests: add test for quoted strings
+  * tests: tst-configdirs5: fix config dir paths
+
+-------------------------------------------------------------------
+Mon Oct 28 12:11:12 UTC 2019 - iforster@suse.com
+
+- Update to version 0.3.3+git20191028.3ac14ce:
+  * Release version 0.3.3
+  * Reset *key_file to NULL after free
+
+-------------------------------------------------------------------
+Thu Sep 26 17:43:54 UTC 2019 - kukuk@suse.com
+
+- Update to version 0.3.2+git20190926.fea4a03:
+  * Release version 0.3.2
+  * Fix merging an empty file (#105)
+  * Add test cases for merge function
+
+-------------------------------------------------------------------
+Tue Sep 24 12:52:52 UTC 2019 - rbrown@suse.com
+
+- Update to version 0.3.1+git20190924.822cf5b:
+  * release version 0.3.1
+  * Set delimiter in readFile
+  * Change parser interface to store file name and line numbers per key
+  * Update ccpp.yml
+
+-------------------------------------------------------------------
+Fri Sep 06 10:53:32 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.3.0+git20190906.0e60a88:
+  * Ensure LICENSE, README, and TODO are included in the release tarball
+  * Rewrite set*ValueNum functions to avoid libm usage and add error checking
+  * Move src/*.c to lib and release version 0.3.0
+
+-------------------------------------------------------------------
+Thu Sep 05 08:54:20 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.3.0+git20190905.0ca8fe2:
+  * Merge doc changes from parlt91 (pull rq#73)
+  * Implement econf_get*ValueDef functions: if key is not found, a provided default is returned.
+  * Differentiate between no value provided and empty value provided
+  * Remove obsolete check for comments
+  * Enhance and adjust test cases
+  * Remove obsolete check for comments
+
+-------------------------------------------------------------------
+Wed Sep 04 11:13:09 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.2.0+git20190904.03fa5b4:
+  * Enhance and adjust test cases
+  * Update ccpp.yml
+  * Update ccpp.yml
+  * Update ccpp.yml
+
+-------------------------------------------------------------------
+Wed Sep 04 10:17:25 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.2.0+git20190904.989df9f:
+  * Remove debug printf
+
+-------------------------------------------------------------------
+Wed Sep 04 09:58:12 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.2.0+git20190904.c9c1820:
+  * Implement alternate file parser solving the problems with group entry detection.
+  * Add new parse error error code
+  * Bool values read from a config file are not sanitzied, so we need to do that in the getBoolValueNum function, too.
+  * Only use <file>.<suffix>.d directories
+  * Release version 0.2.0
+  * Add an explanation about this project.
+  * Check for NULL pointer arguments
+  * Fix error return value
+  * Fix typo in comment
+  * Add test case for reading login.defs with data from util-linux test suite
+
+-------------------------------------------------------------------
+Mon Sep 02 13:18:01 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190902.dd17c11:
+  * Fix int64 variables on 32bit architectures
+
+-------------------------------------------------------------------
+Sat Aug 31 18:28:13 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190831.fb7c1bb:
+  * Rewrite econf_readDirs - don't assume suffix is ".conf" - Read files and directories in correct order
+
+-------------------------------------------------------------------
+Fri Aug 30 09:43:08 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190830.04ba053:
+  * Make clear that the API and ABI of the three functions econf_newIniFile, econf_newKeyFile, econf_writeFile are not stable yet.
+  * Fix getGroups argument types and add several test cases for this.
+  * Fix cppcheck and compiler warnings
+
+-------------------------------------------------------------------
+Thu Aug 29 14:05:38 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190829.a1479b1:
+  * Make comment argument an array, so that we can support more than one comment character in the future.
+  * Change the API
+  * Fix size_t as return value of getc()
+
+-------------------------------------------------------------------
+Thu Aug 29 10:53:04 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190829.209219e:
+  * Convert all functions to new error API
+  * Convert econf_newKeyFile provide the error via return code
+
+-------------------------------------------------------------------
+Wed Aug 28 13:42:50 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190828.74eeb32:
+  * Fix tst-arguments3 and tst-arguments4 and only use error return code.
+  * Bug fixes for new API
+  * Change API of econf_get* and econf_set* functions to return error code direct.
+  * Fix some compiler warnings
+  * Prevent possible crash when parsing 0xFF
+  * Add "--enable-compiler-warnings" option to enable much more GCC compiler warnings
+  * Fix more cppcheck warnings
+  * Fix github actions build
+  * Update bin/Makefile.am to work with Asan
+  * Add missing tst-getconfdirs4-data to EXTRA_DIST
+  * Fix some cppcheck warnings
+  * Don't ignore getline return value
+  * Add free for getStringValue in tst-group1
+  * Remove XFAIL for tst-groups1
+  * Update example.c to free after getStringValue
+  * Add addbrackets for getValue functions
+  * tst-getconfdirs4: make sure, only a file in /etc/ and not in /usr/etc works, too.
+
+-------------------------------------------------------------------
+Tue Aug 27 12:19:45 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190827.5ed5492:
+  * Mark all input char pointer as const in the official API
+
+-------------------------------------------------------------------
+Tue Aug 27 11:49:42 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190827.b243e6c:
+  * getStringValueNum returns a newly allocated string or NULL in error case.
+
+-------------------------------------------------------------------
+Tue Aug 27 09:47:12 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190827.8374759:
+  * Fix missing return
+  * Remove XFAIL for tst-setgetvalues1
+  * Fix representation of float and double values
+  * Add preliminary test case for group handling
+  * NULL terminate string returned by addbrackets
+  * Fix addbrackets function
+
+-------------------------------------------------------------------
+Mon Aug 26 19:09:25 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190826.99b6bf3:
+  * Add more "const".
+  * Fix setString and setBoolean
+  * Add test suite which sets and gets all possible kind of types. Some are failing, so mark this test as XFAIL.
+  * Start marking some string arguments/results as const
+  * Optimize some strdup away
+  * Mark econf_write_key_file as ALPHA as the API is not stable
+
+-------------------------------------------------------------------
+Mon Aug 26 11:43:16 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190826.9e69003:
+  * Update ccpp.yml
+  * Add --enable-compiler-checks option to configure, enables AddressSanitizer
+  * Fix printf format directive
+  * Rework set*Value functions for error checking and error handling
+  * Add tst-getconfdirs3: verify we can load original file without local changes
+  * Error handling for econf_getGroups and econf_getKeys
+  * More errorreporting changes
+  * Fix make distcheck/don't mess around with libtool install/uninstall, this breaks to much other stuff.
+  * Autotools cleanup and fixes
+  * Fix logindefs1 test case
+
+-------------------------------------------------------------------
+Fri Aug 23 18:56:13 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190823.09a8f2e:
+  * Fix buffer overlow of realpath
+
+-------------------------------------------------------------------
+Fri Aug 23 15:58:37 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190823.acd8cdf:
+  * Update ccpp.yml
+  * Fix crash in strcmp, if strchr returns NULL
+  * Add error reporting to econf_merge_key_files and adjust the depending code.
+  * setStringValue return NULL on error/key not found
+  * Add framework for correct error reporting
+  * Disable searching through XDG dirs for now
+  * Add test cases for econf_get_conf_from_dirs
+  * Update comment setValue -> econf_setValue
+  * Update test cases to use econf_destroy
+  * Replace econf_afree with econf_destroy in example
+  * Add _generic macro to free memory of econf_ functions
+  * Add tst-merge2 to .gitignore
+  * Fix pointer arithmetic
+  * Adjust Makefiles and code to make "make distcheck" working
+
+-------------------------------------------------------------------
+Thu Aug 22 19:33:21 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190822.bb9702b:
+  * Ignore /usr file if /etc exists when merging
+  * Add NULL value handling
+  * Update merge example
+  * Rework merge_functionality
+  * Use deep copies instead of pointers for merged files
+  * Replace [] with KEY_FILE_NULL_VALUE
+  * Refactor getfilecontent functions
+  * Remove cmake files
+  * Fix test cases
+  * Update libeconf.c
+  * Change License from LGPL-2.1 to MIT
+  * libeconf.pc should only be deleted on distclean, not normal clean
+  * Fix delim argument
+  * Add more test cases for login.defs and wrong arguments
+  * Link libeconf against libm, so that it is enough to link an application against libeconf and developers don't need to bother with other dependencies
+  * Add autogen.sh, which calls autoconf/automake/libtool in the correct order to create the configure script
+
+-------------------------------------------------------------------
+Tue Aug 20 13:04:55 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190820.742af8c:
+  * Remove accidental .swp file
+  * Update example with conf.d directory
+  * Remove regex, replace with strchr(delim, ch)
+  * Add symbol versioning Don't ignore complete lib directory
+  * Include all headers in tar archive
+  * Don't define our own errno
+  * Remove wrong commit
+  * Add some basic tests
+
+-------------------------------------------------------------------
+Tue Aug 20 12:59:47 UTC 2019 - kukuk@suse.de
+
+- Update to version 0.0.0+git20190807.7aedb57:
+  * Refactor getfilecontent functions
+  * Update example file
+  * Add econf prefix to public API functions
+  * Add cmake targets for debugging
+  * Fix build with cmake
+  * Fix build with autotools
+  * Move Key_File allocation from the stack to the heap
+  * Move Key_File create functions to libeconf.c
+  * Move destroy functions from helpers.c to libeconf.c
+  * Add macro to set supported types generic.
+
+-------------------------------------------------------------------
+Sat Aug 17 11:53:48 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version

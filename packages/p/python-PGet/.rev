@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>565e1b0f3728f0712e6c54e7b788f08a</srcmd5>
+    <version>0.5.0</version>
+    <time>1580928236</time>
+    <user>dimstar_suse</user>
+    <comment>A tool and library to save large files by creating multiple connections.
+
+Required by the latest version of python-audiomate, which is already in openSUSE:Factory.</comment>
+    <requestid>770330</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>27837824d3d944f24c90bc41d368795d</srcmd5>
+    <version>0.5.1</version>
+    <time>1637372328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1
+  * Use is_alive in favour of isAlive for Python 3.9 compatibility
+  * Bump requests from 2.11.1 to 2.20.0
+- Set minimum requests version to 2.20.0 in BuildRequires and Requires (forwarded request 932227 from glaubitz)</comment>
+    <requestid>932254</requestid>
+  </revision>
+</revisionlist>

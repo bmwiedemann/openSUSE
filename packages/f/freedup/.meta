@@ -1,0 +1,15 @@
+<package name="freedup" project="openSUSE:Factory">
+  <title>Links substantially identical, duplicate files to save file system space.</title>
+  <description>Freedup eliminates duplicate files by linking them, and thus reduces the amount
+of used disk space within one or more file systems. By default, hardlinks are 
+used on a single device, symbolic links when the devices differ. A set of 
+options allows you to modify the methods of file comparison, the hash functions,
+the linking behavior, and the reporting style. You may use batch or interactive
+mode. Freedup usually only considers identical files, but when comparing audio
+or graphics files, you may elect to ignore the tags. Multimedia files often are
+a good target for deduplication.
+
+
+</description>
+  <devel project="Archiving:Backup" package="freedup"/>
+</package>

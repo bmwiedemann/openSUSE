@@ -1,0 +1,985 @@
+-------------------------------------------------------------------
+Wed Sep 27 10:58:51 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Lua 5.1 is deprecated, switch to 5.4.
+- Stop packaging example keys and certificates. It is bad security
+  practice and the examples sometimes interfer with actual
+  configurations.
+- Drop prosody-lua51coexist.patch
+- Add prosody-lua54coexist.patch
+
+-------------------------------------------------------------------
+Thu Sep  7 06:33:41 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.4:
+  * core.certmanager: Update Mozilla TLS config to version 5.7
+  * util.error: Fix error on conversion of invalid error stanza #1805
+  * util.array: Fix new() library function
+  * util.array: Expose new() on module table
+  * prosodyctl: Fix output of error messages containing ‘%’
+  * util.prosodyctl.check: Correct suggested replacement for ‘disallow_s2s’
+  * util.prosodyctl.check: Allow same config syntax variants as in Prosody for some options #896
+  * util.prosodyctl.check: Fix error where hostname can’t be turned into A label
+  * util.prosodyctl.check: Hint about the ‘external_addresses’ config option
+  * util.prosodyctl.check: Suggest ‘http_cors_override’ instead of older CORS settings
+  * util.prosodyctl.check: Validate format of module list options
+  * mod_websocket: Add a ‘pre-session-close’ event #1800
+  * mod_smacks: Fix stray watchdog closing sessions
+  * mod_csi_simple: Disable revert-to-inactive timer when going to active mode
+  * mod_csi_simple: Clear delayed active mode timer on disable
+  * mod_admin_shell: Fix display of remote cert status when expired etc
+  * mod_smacks: Replace existing watchdog when starting hibernation
+  * mod_http: Fix error if ‘access_control_allow_origins’ is set
+  * mod_pubsub: Send correct ‘jid’ attribute in disco#items
+  * mod_http: Unhook CORS handlers only if active to fix an error #1801
+  * mod_s2s: Add event where resolver for s2sout can be tweaked
+
+-------------------------------------------------------------------
+Wed Feb 22 07:15:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.3:
+  Fixes and improvements:
+  * mod_storage_sql: Don’t avoid initialization under prosodyctl
+    (fix #1787: mod_storage_sql changes (d580e6a57cbb) breaks prosodyctl)
+  * mod_storage_sql: Fix for breaking change in certain MySQL versions (#1639)
+  * prosodyctl check dns: Check for Direct TLS SRV records even if not configured (#1793)
+  Minor changes:
+  * mod_websocket: Fire pre-session-close event (fixes #1800: mod_websocket:
+    cleanly-closed sessions are hibernated by mod_smacks)
+  * sessionmanager: Mark session as destroyed to prevent reentry (fixes #1781)
+  * mod_admin_socket: Return error on unhandled input to prevent apparent freeze
+  * configure: Fix quoting of $LUA_SUFFIX (thanks shellcheck/Zash)
+  * net.http.parser: Improve handling of responses without content-length
+  * net.http.parser: Fix off-by-one error in chunk parser
+  * net.http.server: Add new API to get HTTP request from a connection
+  * net.http.server: Fix double close of file handle in chunked mode with opportunistic writes (#1789)
+  * util.prosodyctl.shell: Close state on exit to fix saving shell history
+  * mod_invites: Prefer landing page over xmpp URI in shell command
+  * mod_muc_mam: Add mam#extended form fields #1796
+  * mod_muc_mam: Copy “include total” behavior from mod_mam
+  * util.startup: Close state on exit to ensure GC finalizers are called
+
+-------------------------------------------------------------------
+Wed Feb 15 19:53:44 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add pregenerated example crt+key files
+  to make builds reproducible
+
+-------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
+Wed Dec 14 08:12:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.2:
+  Fixes and improvements:
+  * util.stanza: Allow U+7F when constructing stazas
+  * net.unbound: Preserve built-in defaults and Prosodys settings for
+    luaunbound (fixes #1763: luaunbound not reading resolv.conf)
+  * mod_smacks: Disable not implemented resumption behavior on s2s
+  * mod_http: Allow disabling CORS in the http_cors_override option and by default
+  Minor changes:
+  * util.json: Accept empty arrays with whitespace (fixes #1782: util.json
+    fails to parse empty array with whitespace)
+  * util.stanza: Adjust number of return values to handle change in
+    dependency of test suite (fix test with luassert >=1.9)
+  * util.startup: Ensure import() is available in prosodyctl
+  * mod_storage_sql: Fix initialization when called from prosodyctl
+  * mod_storage_sql: Fix the summary API with Postgres (#1766)
+  * mod_admin_shell: Fixes for showing data related to disconnected sessions (fixes #1777)
+  * core.s2smanager: Don’t remove unrelated session on close of bidi session
+  * mod_smacks: Don’t send redundant requests for acknowledgement (#1761)
+  * mod_admin_shell: Rename commands user:roles() to user:setroles()
+    and user:showroles() to user:roles()
+  * mod_smacks: Bounce unhandled stanzas from local origin (fix #1759)
+  * mod_bookmarks: Reduce log level of message about not having any bookmarks
+  * mod_s2s: Fix firing buffer drain events
+  * mod_http_files: Log warning about legacy modules using mod_http_files
+  * util.startup: Wait for last shutdown steps
+  * util.datamapper: Improve handling of schemas with non-obvious “type”
+  * util.jsonschema: Fix validation to not assume presence of “type” field
+  * util.jsonschema: Use same integer/float logic on Lua 5.2 and 5.3
+
+-------------------------------------------------------------------
+Thu Jun  9 16:19:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.1:
+  Fixes and improvements:
+  * mod_http (and dependent modules): Make CORS opt-in by default (#1731)
+  * mod_http: Reintroduce support for disabling or limiting CORS (#1730)
+  * net.unbound: Disable use of hosts file by default (fixes #1737)
+  * MUC: Allow kicking users with the same affiliation as the kicker (fixes #1724 and improves Jitsi Meet compatibility)
+  * mod_tombstones: Add caching to improve performance on busy servers (fixes #1728: mod_tombstone: inefficient I/O with internal storage)
+  Minor changes:
+  * prosodyctl check config: Report paths of loaded configuration files (#1729)
+  * prosodyctl about: Report version of lua-readline
+  * prosodyctl: check config: Skip bare JID components in orphan check
+  * prosodyctl: check turn: Fail with error if our own address is supplied for the ping test
+  * prosodyctl: check turn: warn about external port mismatches behind NAT
+  * mod_turn_external: Update status and friendlier handling of missing secret option (#1727)
+  * prosodyctl: Pass server when listing (outdated) plugins (fix #1738: prosodyctl list --outdated does not handle multiple versions of a module)
+  * util.prosodyctl: check turn: ensure a result is always returned from a check (thanks eTaurus)
+  * util.prosodyctl: check turn: Report lack of TURN services as a problem #1749
+  * util.random: Ensure that native random number generator works before using it, falling back to /dev/urandom (#1734)
+  * mod_storage_xep0227: Fix mapping of nodes without explicit configuration
+  * mod_admin_shell: Fix error in ‘module:info()’ when statistics is not enabled (#1754)
+  * mod_admin_socket: Compat for luasocket prior to unix datagram support
+  * mod_admin_socket: Improve error reporting when socket can’t be created (#1719)
+  * mod_cron: Record last time a task runs to ensure correct intervals (#1751)
+  * core.moduleapi, core.modulemanager: Fix internal flag affecting logging in in some global modules, like mod_http (#1736, #1748)
+  * core.certmanager: Expand debug messages about cert lookups in index
+  * configmanager: Clearer errors when providing unexpected values after VirtualHost (#1735)
+  * mod_storage_xep0227: Support basic listing of PEP nodes in absence of pubsub#admin data
+  * mod_storage_xep0227: Handle missing {pubsub#owner}pubsub element (fixes #1740: mod_storage_xep0227 tracebacks reading non-existent PEP store)
+  * mod_storage_xep0227: Fix conversion of SCRAM into internal format (#1741)
+  * mod_external_services: Move error message to correct place (fix #1725: mod_external_services: Misplaced textual error message)
+  * mod_smacks: Fix handling of unhandled stanzas on disconnect (#1759)
+  * mod_smacks: Fix counting of handled stanzas
+  * mod_smacks: Fix bounce of stanzas directed to full JID on unclean disconnect
+  * mod_pubsub: Don’t attempt to use server actor as publisher (#1723)
+  * mod_s2s: Improve robustness of outgoing s2s certificate verification
+  * mod_invites_adhoc: Fall back to generic allow_user_invites for role-less users
+  * mod_invites_register: Push invitee contact entry to inviter
+  * util.startup: Show error for unrecognized command-line arguments passed to ‘prosody’ (#1722)
+  * util.jsonpointer: Add tests, compat improvements and minor fixes
+  * util.jsonschema: Lua version compat improvements
+
+-------------------------------------------------------------------
+Fri Mar 18 09:01:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  Modules:
+  * mod_mimicking: Prevent address spoofing
+  * mod_s2s_bidi: Bi-directional server-to-server connections (XEP-0288)
+  * mod_external_services: Generic XEP-0215 support
+  * mod_turn_external: Easy setup of XEP-0215 for STUN/TURN for audio/video calls
+  * mod_http_file_share: File sharing via HTTP (XEP-0363)
+  * mod_http_openmetrics: Expose metrics to Prometheus and compatible monitoring systems
+  * mod_smacks: Stream management and resumption (XEP-0198)
+  * mod_auth_ldap: LDAP authentication
+  * mod_cron: One module to rule all the periodic tasks
+  * mod_admin_shell: New home of the Console admin interface
+  * mod_admin_socket: Enable secure connections to the Console
+  * mod_tombstones: Prevent re-registration of deleted accounts
+  * mod_invites: Create and manage invites
+  * mod_invites_register: Allow registering accounts using invites
+  * mod_invites_adhoc: Create invites via ad-hoc command
+  * mod_bookmarks: Synchronise open rooms between clients
+  Security and authentication:
+  * Unencrypted HTTP port (5280) restricted to loopback by default
+  * require_encryption options default to ‘true’ if unspecified
+  * Authentication module defaults to ‘internal_hashed’ if unspecified
+  * SNI support (including automatic certificate selection)
+  * ALPN support in mod_net_multiplex
+  * DANE support in low-level network layer
+  * Direct TLS support (c2s and s2s)
+  * SCRAM-SHA-256
+  * Direct TLS (including https) certificates are now updated on reload
+  * Pluggable authorization providers (mod_authz_*)
+  * Easy use of Mozilla TLS recommendations presets
+  HTTP:
+  * CORS handling now provided by mod_http
+  * Built-in HTTP server now handles HEAD requests
+  * Uploads can be handled incrementally
+  API:
+  * Module statuses (API change)
+  * util.error for encapsulating errors
+  * Promise based API for sending queries
+  * API for adding periodic tasks
+  * More APIs supporting ES6 Promises
+  * Async can be used during shutdown
+  Other:
+  * Plugin installer
+  * MUC presence broadcast controls
+  * MUC: support for XEP-0421 occupant identifiers
+  * prosodyctl check connectivity via observe.jabber.network
+  * STUN/TURN server tests in prosodyctl check
+  * libunbound for DNS queries
+  * The POSIX poll() API used by server_epoll on *nix other than Linux
+  Changed in this release:
+  * Improved rules for mobile optimizations in mod_csi_simple
+  * Improved rules for what messages should be archived in mod_mam
+  * mod_limits: Support for exempt JIDs
+  * mod_server_contact_info now loaded on components if enabled
+  * Statistics now based on OpenMetrics
+  * Statistics scheduling can be done by plugin
+  * Offline messages aren’t sent to MAM clients
+  * Archive quotas (maximum limit on items in an archive store)
+  * Rewritten migrator with archive support
+  * Improved automatic certificate locating and selecting
+  * Logging to syslog no longer missing startup messages
+  * Graceful shutdown sequence that closes ports first and waits for connections to close
+  Removed in this release:
+  * daemonize option deprecated
+  * SASL DIGEST-MD5 removed
+  * mod_auth_cyrus (older LDAP support)
+  * Network backend server_select deprecated (not actually removed yet)
+  Please see:
+  * https://blog.prosody.im/prosody-0.12.0-released/
+  * https://prosody.im/doc/release/0.12.0
+
+-------------------------------------------------------------------
+Fri Feb 18 14:29:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not replace config file on every upgrade
+
+-------------------------------------------------------------------
+Fri Jan 28 16:09:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.13:
+  * util.xml: Break reference to help the GC (fixes #1711)
+  * util.xml: Deduplicate handlers for restricted XML
+
+-------------------------------------------------------------------
+Thu Jan 13 18:25:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.12:
+  * util.xml: Do not allow doctypes, comments or processing
+    instructions (CVE-2022-0217)
+
+-------------------------------------------------------------------
+Tue Jan  4 15:43:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.11:
+  Fixes and improvements:
+  * net.server_epoll: Prioritize network events over timers to improve
+    performance under heavy load
+  * mod_pep: Add some memory usage limits
+  * mod_pep: Prevent creation of services for non-existent users
+  * mod_pep: Free resources on user deletion (needed a restart previously)
+  Minor changes:
+  * mod_pep: Free resources on reload
+  * mod_c2s: Indicate stream secure state in error text when no stream features to offer
+  * MUC: Fix logic for access to affiliation lists
+  * net.server_epoll: Improvements to shutdown procedure #1670
+  * net.server_epoll: Fix potential issue with rescheduling of timers
+  * prosodyctl: Fix to ensure LuaFileSystem is loaded when needed
+  * util.startup: Fix handling of unknown command line flags (e.g. -h)
+  * Fix version number reported as ‘unknown’ on *BSD
+
+-------------------------------------------------------------------
+Wed Oct 20 14:28:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * prosody.service
+
+-------------------------------------------------------------------
+Mon Aug 16 14:00:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.10:
+  Security:
+  * MUC: Fix logic for access to affiliation lists CVE-2021-37601
+    https://prosody.im/security/advisory_20210722/
+  Minor changes:
+  * prosodyctl: Add ‘limits’ to known globals to warn about misplacing it
+  * util.ip: Fix netmask for link-local address range
+  * mod_pep: Remove obsolete node restoration code
+  * util.pubsub: Fix traceback if node data not initialized
+- Update is related to: bsc#1188976 CVE-2021-37601
+
+-------------------------------------------------------------------
+Thu May 13 18:16:14 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.11.9:
+  Security: 
+  * mod_limits, prosody.cfg.lua: Enable rate limits by default
+  * certmanager: Disable renegotiation by default
+  * mod_proxy65: Restrict access to local c2s connections by default
+  * util.startup: Set more aggressive defaults for GC
+  * mod_c2s, mod_s2s, mod_component, mod_bosh, mod_websockets: Set default stanza size limits
+  * mod_authinternal{plain,hashed}: Use constant-time string comparison for secrets
+  * mod_dialback: Remove dialback-without-dialback feature
+  * mod_dialback: Use constant-time comparison with hmac
+  Minor changes
+  * util.hashes: Add constant-time string comparison (binding to CRYPTO_memcmp)
+  * mod_c2s: Don’t throw errors in async code when connections are gone
+  * mod_c2s: Fix traceback in session close when conn is nil
+  * core.certmanager: Improve detection of LuaSec/OpenSSL capabilities
+  * mod_saslauth: Use a defined SASL error
+  * MUC: Add support for advertising muc#roomconfig_allowinvites in room disco#info
+  * mod_saslauth: Don’t throw errors in async code when connections are gone
+  * mod_pep: Advertise base pubsub feature (fixes #1632: mod_pep missing pubsub feature in disco)
+  * prosodyctl check config: Add ‘gc’ to list of global options
+  * prosodyctl about: Report libexpat version if known
+  * util.xmppstream: Add API to dynamically configure the stanza size limit for a stream
+  * util.set: Add is_set() to test if an object is a set
+  * mod_http: Skip IP resolution in non-proxied case
+  * mod_c2s: Log about missing conn on async state changes
+  * util.xmppstream: Reduce internal default xmppstream limit to 1MB
+- Relevant: https://prosody.im/security/advisory_20210512
+  * boo#1186027: Prosody XMPP server advisory 2021-05-12
+  * CVE-2021-32919
+  * CVE-2021-32917
+  * CVE-2021-32917
+  * CVE-2021-32920
+  * CVE-2021-32918
+
+-------------------------------------------------------------------
+Tue Feb 16 11:06:40 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.8:
+  Security:
+  * mod_saslauth: Disable ‘tls-unique’ channel binding with TLS 1.3 (#1542)
+  Fixes and improvements:
+  * net.websocket.frames: Improve websocket masking performance by using the new util.strbitop
+  * util.strbitop: Library for efficient bitwise operations on strings
+  Minor changes:
+  * MUC: Correctly advertise whether the subject can be changed (#1155)
+  * MUC: Preserve disco ‘node’ attribute (or lack thereof) in responses (#1595)
+  * MUC: Fix logic bug causing unnecessary presence to be sent (#1615)
+  * mod_bosh: Fix error if client tries to connect to component (#425)
+  * mod_bosh: Pick out the ‘wait’ before checking it instead of earlier
+  * mod_pep: Advertise base PubSub feature (#1632)
+  * mod_pubsub: Fix notification stanza type setting (#1605)
+  * mod_s2s: Prevent keepalives before client has established a stream
+  * net.adns: Fix bug that sent empty DNS packets (#1619)
+  * net.http.server: Don’t send Content-Length on 1xx/204 responses (#1596)
+  * net.websocket.frames: Fix length calculation bug (#1598)
+  * util.dbuffer: Make length API in line with Lua strings
+  * util.dbuffer: Optimize substring operations
+  * util.debug: Fix locals being reported under wrong stack frame in some cases
+  * util.dependencies: Fix check for Lua bitwise operations library (#1594)
+  * util.interpolation: Fix combination of filters and fallback values #1623
+  * util.promise: Preserve tracebacks
+  * util.stanza: Reject ASCII control characters (#1606)
+  * timers: Ensure timers can’t block other processing (#1620)
+
+-------------------------------------------------------------------
+Fri Oct  2 08:00:55 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.7:
+  Security:
+  * mod_websocket: Enforce size limits on received frames (fixes #1593)
+  Fixes and improvements:
+  * mod_c2s, mod_s2s: Make stanza size limits configurable
+  * Add configuration options to control Lua garbage collection parameters
+  * net.http: Backport SNI support for outgoing HTTP requests (#409)
+  * mod_websocket: Process all data in the buffer on close frame and connection errors (fixes #1474, #1234)
+  * util.indexedbheap: Fix heap data structure corruption, causing some timers to fail after a reschedule (fixes #1572)
+
+-------------------------------------------------------------------
+Fri Sep 11 08:48:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.6:
+  Fixes and improvements:
+  * mod_storage_internal: Fix error in time limited queries on items without ‘when’ field, fixes #1557
+  * mod_carbons: Fix handling of incoming MUC PMs #1540
+  * mod_csi_simple: Consider XEP-0353: Jingle Message Initiation important
+  * mod_http_files: Avoid using inode in etag, fixes #1498: Fail to download file on FreeBSD
+  * mod_admin_telnet: Create a DNS resolver per console session (fixes #1492: Telnet console DNS commands reduced usefulness)
+  * core.certmanager: Move EECDH ciphers before EDH in default cipherstring (fixes #1513)
+  * mod_s2s: Escape invalid XML in loggin (same way as mod_c2s) (fixes #1574: Invalid XML input on s2s connection is logged unescaped)
+  * mod_muc: Allow control over the server-admins-are-room-owners feature (see #1174)
+  * mod_muc_mam: Remove spoofed archive IDs before archiving (fixes #1552: MUC MAM may strip its own archive id)
+  * mod_muc_mam: Fix stanza id filter event name, fixes #1546: mod_muc_mam does not strip spoofed stanza ids
+  * mod_muc_mam: Fix missing advertising of XEP-0359, fixes #1547: mod_muc_mam does not advertise stanza-id
+  Minor changes:
+  * net.http API: Add request:cancel() method
+  * net.http API: Fix traceback on invalid URL passed to request()
+  * MUC: Persist affiliation_data in new MUC format
+  * mod_websocket: Fire event on session creation (thanks Aaron van Meerten)
+  * MUC: Always include ‘affiliation’/‘role’ attributes, defaulting to ‘none’ if nil
+  * mod_tls: Log when certificates are (re)loaded
+  * mod_vcard4: Report correct error condition (fixes #1521: mod_vcard4 reports wrong error)
+  * net.http: Re-expose destroy_request() function (fixes unintentional API breakage)
+  * net.http.server: Strip port from Host header in IPv6 friendly way (fix #1302)
+  * util.prosodyctl: Tell prosody do daemonize via command line flag (fixes #1514)
+  * SASL: Apply saslprep where necessary, fixes #1560: Login fails if password contains special chars
+  * net.http.server: Fix reporting of missing Host header
+  * util.datamanager API: Fix iterating over “users” (thanks marc0s)
+  * net.resolvers.basic: Default conn_type to ‘tcp’ consistently if unspecified (thanks marc0s)
+  * mod_storage_sql: Fix check for deletion limits (fixes #1494)
+  * mod_admin_telnet: Handle unavailable cipher info (fixes #1510: mod_admin_telnet backtrace)
+  * Log warning when using prosodyctl start/stop/restart
+  * core.certmanager: Look for privkey.pem to go with fullchain.pem (fixes #1526)
+  * mod_storage_sql: Add index covering sort_id to improve performance (fixes #1505)
+  * mod_mam,mod_muc_mam: Allow other work to be performed during archive cleanup (fixes #1504)
+  * mod_muc_mam: Don’t strip MUC tags, fix #1567: MUC tags stripped by mod_muc_mam
+  * mod_pubsub, mod_pep: Ensure correct number of children of (fixes #1496)
+  * mod_register_ibr: Add FORM_TYPE as required by XEP-0077 (fixes #1511)
+  * mod_muc_mam: Fix traceback saving message from non-occupant (fixes #1497)
+  * util.startup: Remove duplicated initialization of logging (fix #1527: startup: Logging initialized twice)
+
+-------------------------------------------------------------------
+Thu Mar 26 07:29:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.5:
+  Fixes and improvements:
+  * prosody / mod_posix: Support for command-line flags to
+    override ‘daemonize’ config option
+  Minor changes:
+  * mod_websocket: Clear mask bit when reflecting ping frames
+    (fixes #1484: Websocket masks pong answer)
+
+-------------------------------------------------------------------
+Mon Jan 20 08:15:32 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.4:
+  Fixes and improvements:
+  * core.rostermanager: Improve performance by caching rosters of offline #1233
+  * mod_pep: Handling subscriptions more efficiently #1372
+  Minor changes:
+  * util.interpolation: Support unescaped variables with more modifiers #1452
+  * MUC: Mark source of historic messages correctly #1416
+  * mod_auth_internal_hashed: Pass on errors #1477
+  * mod_mam, mod_muc_mam: Improve logging of failures #1478, #1480, #1481
+  * mod_muc, mod_muc_mam: Reschedule message expiry in case of failure
+  * mod_mam: Add flag to session when it performs a MAM query
+  * prosodyctl check: Warn about conflict between mod_pep and mod_pep_simple
+  * prosodyctl check: Warn about conflict between mod_vcard and mod_vcard_legacy #1469
+  * core.modulemanager: Disable mod_vcard if mod_vcard_legacy is enabled to prevent conflict #1469
+  * MUC: Strip tags with MUC-related namespaces from private messages #1427
+  * MUC: Don’t advertise registration feature on host #1451
+  * mod_vcard_legacy: Fix handling of empty photo elements #1432
+  * mod_vcard_legacy: Advertise lack of avatar correctly #1431
+  * prosodyctl: Handle if the setting proxy65_address has the wrong type
+  * prosodyctl: Print a blank line to improve spacing and readability
+  * MUC: Fix role loss in Nickname change #1466
+  * util.pposix: Fix reporting of memory usage in 2-4GB range #1445
+  * util.startup: Fix a regression concerning directory paths #1430
+  * mod_websocket: Don’t mask WebSocket pong answers #1484
+  * net.resolvers: Apply IDNA conversion to ascii for DNS lookups (affects only HTTP queries) #1426
+  * net.resolvers.basic: Fix resolution of IPv6 literals (in brackets) #1459
+
+-------------------------------------------------------------------
+Mon Oct  7 05:19:21 UTC 2019 - mvetter@suse.com
+
+- Update to 0.11.3:
+  * MUC: Advertise XEP-0410 support
+  * mod_muc_mam: Import cleanup mechanism from mod_mam (fixes #672: mod_muc_mam: Archive expiry)
+  * mod_bosh: Handle missing wait attribute (fixes #1288: BOSH: Traceback on missing ‘wait’ attribute)
+  * mod_storage_sql: Handle SQLite DELETE with LIMIT being optional (fixes #1359: Sqlite3 archive_store:delete error in prepared statement)
+  * mod_c2s: Fixed #1313: attempt to call a field ‘data’ (a nil value))
+  * net.server_epoll: Restore wantread flag after pause (fixes #1354: server_epoll: Race in chunked reads)
+  * util.encodings: Allow unassigned code points in ICU mode to match libidn behavior (fixes #1348: Different treatment of unassigned code points between libidn and ICU )
+  * util.ip: Add missing netmask for 192.168⁄16 range (fixes #1343)
+  * util.hashes: Use HMAC function provided by OpenSSL (fixes #1345: util.hashes: HMAC-SHA-512 implementation broken)
+  * net.dns: Close resolv.conf handle when done (fixes #1342)
+  * mod_websocket: Clone stanza before mutating (fixes #1398: mod_websocket leaks explicit xmlns attr)
+  * mod_announce: Check for admin on current virtualhost instead of global (fixes #1365: “host admins” should be able to use mod_announce as well as “global admins”) (thanks yc)
+  * mod_blocklist: Trigger resend of presence when unblocking a contact (fixes #1380: Prosody does not send presence when unblocking (XEP-0191))
+  * mod_vcard_legacy: Multiple improvements (fixes #1289: mod_vcard_legacy upgrade experience):
+    - mod_vcard_legacy: Don’t overwrite existing PEP data
+    - mod_vcard_legacy: Handle partial migration
+    - mod_vcard_legacy: Allow disabling vcard conversion
+    - mod_vcard_legacy: Adapt node defaults to number of avatars
+  * mod_muc_mam: Strip the stanza ‘to’ attribute (fixes #1259: [muc_mam] forwarded stanza has a “to” attribute while spec says it MUST NOT)
+  * util.pubsub: Validate node configuration on node creation (fixes #1328: Pubsub: Node configuration not validated on node creation)
+  * mod_pep/mod_pubsub: Simplify configuration for storage of node data (fixes #1320)
+  * MUC: Fix delay@from to be room JID (fixes #1416: MUC: Wrong delay@from on historic messages)
+  * mod_mam/mod_muc_mam: Cache last date that archive owner has messages to reduce writes (fixes #1368: Archive cleanup doubles number of storage access)
+  * mod_mam: Perform message expiry based on building an index by date (backport of 39ee70fbb009 from trunk)
+- For details see: https://blog.prosody.im/prosody-0.11.3-released/
+- Remove prosody-0.11-upstream-fixes.patch
+
+-------------------------------------------------------------------
+Tue Jul 16 08:39:17 UTC 2019 - mvetter@suse.com
+
+- bsc#1141599: Add upstream fixes on 0.11 branch since 0.11.2
+* Add prosody-0.11-upstream-fixes.patch: Up to 9712:7a36b7ac309b
+
+-------------------------------------------------------------------
+Fri Apr 26 10:57:56 UTC 2019 - mvetter@suse.com
+
+- bsc#1130588: Require shadow instead of old pwdutils
+
+-------------------------------------------------------------------
+Thu Jan 10 08:51:27 UTC 2019 - mvetter@suse.com
+
+- Update to 0.11.2:
+  * mod_csi_simple: Multiple enhancements to built-in ‘importance’ rules (fixes #1250)
+  * mod_vcard_legacy: Limit injection of XEP-0153 to normal presence (fixes #1252)
+  * util.datetime: Make sure timezone difference is calculated correctly (fixes #1262)
+  * MUC: Fix traceback when requesting voice (fixes #1269) (thanks jonas’)
+  * MUC: Adjust priorities of muc-get-default-role handlers (fixes #1272)
+  * MUC: Allow changing data attached to an only owner (fixes #1273)
+  * Multiple fixes and improvements to our experimental epoll (non-libevent) backend
+  * util.stanza: Deserialize stanza without mutating input (fixes #711)
+  * mod_mam: Only accept valid JIDs in and prefs. (fixes #1275)
+  * util.pubsub: Restore subscription index from stored data (fixes #1281)
+  * prosodyctl check: Add statisticsmanager settings to known global options
+  * util.startup: Always reload logging after config (fixes #1284)
+  * mod_posix: Don’t reload log files twice
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov 29 10:14:01 UTC 2018 - ecsos@opensuse.org
+
+- Update to 0.11.1:
+  * Fixes and improvements
+    - mod_csi_simple: Don’t set stamps on stanzas (fixes #1248)
+    - mod_csi_simple: Bypass importance event in active mode (fixes #1249)
+  * Minor changes
+    - mod_csi_simple: Use the same event name when firing as when hooking (fixes #1245)
+    - mod_csi: Set session.state to simplify CSI modules
+    - MUC: Fix traceback on muc#admin query with missing child (#1242)
+- Fix build error for Leap 42.3
+
+-------------------------------------------------------------------
+Thu Nov 22 10:26:01 UTC 2018 - mvetter@suse.com
+
+- Update to 0.11.0:
+  * Rewritten more extensible MUC module
+    + Store inactive rooms to disk
+    + Store rooms to disk on shutdown
+    + Voice requests
+    + Tombstones in place of destroyed rooms
+  * PubSub features
+    + Persistence
+    + Affiliations
+    + Access models
+    + "publish-options"
+  * PEP now uses our pubsub code and now shares the above features
+  * Asynchronous operations
+  * Busted for tests
+  * mod\_muc\_mam (XEP-0313 in groupchats)
+  * mod\_vcard\_legacy (XEP-0398)
+  * mod\_vcard4 (XEP-0292)
+  * mod\_csi, mod\_csi\_simple (XEP-0352)
+  * New experimental network backend "epoll"
+- For more details see:
+  * https://blog.prosody.im/prosody-0-11-0-released/
+  * https://prosody.im/doc/release/0.11.0#upgrade_notes
+- Remove prosody-makefile.patch: configure supports --libdir now
+- Update prosody-configure.patch: no libdir manipulation required
+- Update prosody-cfg.patch: refresh and remove posix part.
+  It's enabled by default.
+
+-------------------------------------------------------------------
+Thu May 31 20:04:45 UTC 2018 - benedikt@g5r.eu
+
+- Update to 0.10.2:
+  Security:
+  * mod_c2s: Do not allow the stream ‘to’ to change across stream restarts (fixes #1147)
+  Minor changes:
+  * mod_websocket: Store the request object on the session for use by other modules (fixes #1153)
+  * mod_c2s: Avoid concatenating potential nil value (fixes #753)
+  * core.certmanager: Allow all non-whitespace in service name (fixes #1019)
+  * mod_disco: Skip code specific to disco on user accounts (avoids invoking usermanager, fixes #1150)
+  * mod_bosh: Store the normalized hostname on session (fixes #1151)
+  * MUC: Fix error logged when no persistent rooms present (fixes #1154)
+- change /usr/bin/env lua5.1 to /usr/bin/lua5.1 to fix the env-script-interpreter rpmlint error
+
+-------------------------------------------------------------------
+Wed May 16 08:05:46 UTC 2018 - mvetter@suse.com
+
+- Update to 0.10.1:
+  Security:
+  * SQL: Ensure user archives are purged when a user account is deleted (fixes #1009[1])
+  Fixes and improvements:
+  * Core: More robust signal handling (fixes #1047[2], #1029[3])
+  * MUC: Ensure that elements which match our from are stripped (fixes #1055[4])
+  * MUC: More robust handling of storage failures (fixes #1091[5], #1091[5])
+  * mod_mam: Ensure a user's archiving preferences apply even when they are offline (fixes #1024[6])
+  * Compatibility improvements with LuaSec 0.7, improving curve support
+  * mod_stanza_debug: New module that logs full stanzas sent and received for debugging purposes
+  * mod_mam: Implement option to enable MAM implicitly when client support is detected (#867[7])
+  * mod_mam: Add an option for whether to include 'total' counts by default in queries (for performance)
+  * MUC: send muc#stanza_id feature as per XEP-0045 v1.31 (fixes #1097[8])
+  Minor changes:
+  * SQL: Suppress error log if a transaction failed but was retried ok
+  * core.stanza_router: Verify that xmlns exists for firing stanza/iq/xmlns/name events (fixes #1022[9]) (thanks SamWhited)
+  * mod_carbons: Synthesize a 'to' attribute for carbons of stanzas to "self" (fixes #956[10])
+  * Core: Re-enable timestamps by default when logging to files (fixes #1004[11])
+  * HTTP: Report HTML Content-Type on error pages (fixes #1030[12])
+  * mod_c2s: Set a default value for c2s_timeout (fixes #1036[13])
+  * prosodyctl: Fix traceback with lfs < 1.6.2 and show warning
+  * Fix incorrect '::' compression of a single 0-group which broke some IPv6 address matching
+  * mod_dialback: Copy function from mod_s2s instead of depending on it, which made it harder to disable s2s (fixes #1050[14])
+  * mod_storage_sql: Add an index to SQL archive stores to improve performance of some queries
+  * MUC: Don't attempt to reply to errors with more errors (fixes #1122[15])
+  * Module API: Fix parameter order to http client callbacks
+  * mod_blocklist: Allow mod_presence to handle subscription stanzas before bouncing outgoing presence (fixes #575[16])
+  * mod_http_files: Fix directory listing cache entries not expiring (fixes #1130[17])
+
+-------------------------------------------------------------------
+Fri Dec 15 21:44:25 UTC 2017 - mvetter@suse.com
+
+- Add pid file location to default config
+  Seems this got lost with the update to 0.10.0
+- enable mod_posix
+
+-------------------------------------------------------------------
+Sat Dec  9 19:20:44 UTC 2017 - sleep_walker@opensuse.org
+
+- add lua51-BitOp as dependency for mod_websocket
+   https://prosody.im/doc/packagers#section010
+
+-------------------------------------------------------------------
+Tue Oct  3 09:28:29 UTC 2017 - mvetter@suse.com
+
+- Update to 0.10.0:
+  See https://blog.prosody.im/prosody-0-10-0-released/ for details
+- Remove because contained in new upstream:
+  * prosody-upstream-0.9-branch-fixes-since-0.12-tag.patch
+  * prosody-backport-555.patch
+  * prosody-local-socket.patch
+- Update:
+  * prosody-configure.patch
+  * prosody-makefile.patch
+  * prosody-cfg.patch
+
+-------------------------------------------------------------------
+Fri Sep 15 07:59:52 UTC 2017 - mvetter@suse.com
+
+- Update prosody-upstream-0.9-branch-fixes-since-0.12-tag.patch:
+  * mod_c2s: Iterate over child tags instead of child nodes in
+    stream error (fixes traceback from #987)
+  * mod_component, mod_s2s: Iterate over child tags instead of
+     child nodes (can include text) in stream error
+	 (same as 176b7f4e4ac9)
+
+-------------------------------------------------------------------
+Sun Sep 10 23:27:08 UTC 2017 - benedikt@g5r.eu
+
+- Add prosody-backport-555.patch to backport the fix of issue #555:
+  * net.dns: Use new IPv4-specific socket factory if available (fixes dns on libevent with latest development version of luasocket)
+
+-------------------------------------------------------------------
+Thu Aug  3 21:07:40 UTC 2017 - mvetter@suse.com
+
+- Add prosody-upstream-0.9-branch-fixes-since-0.12-tag.patch to
+  get the following bugfixes:
+  * core.rostermanager: Add method for checking if the user is subscribed to a contact
+  * mod_presence: Send probe once subscribed (fixes #794)
+  * mod_net_multiplex: Enable SSL on the SSL port (fixes #803)
+  * mod_register: Require encryption before registration if c2s_require_encryption is set (fixes #595)
+  * mod_saslauth: Log SASL failure reason
+  * mod_disco: Correctly set the 'node' attr (fixes #449)
+  * mod_bosh: Update session.conn to point to the current connection (fixes #890)
+  * net.dns: Simplify expiry calculation (fixes #919)
+  * mod_watchregistrations: Return the pointer to the root of the stanza, fixes #922.
+  * mod_disco: Add an account/registered identity on subscribed accounts, fixes #826.
+  * mod_welcome: Return the pointer to the root of the stanza, fixes a bug similar to #922.
+  * net.dns: Prevent answers from immediately expiring even if TTL=0 (see #919)
+  * mod_saslauth: Use correct varible name (thanks Roi)
+  * util.dependencies: Add compatibility code for LuaSocket no longer exporting as a global
+  * util.dependencies: Add comment about LuaSec compat
+
+-------------------------------------------------------------------
+Mon Jul 24 14:17:57 UTC 2017 - jengelh@inai.de
+
+- Replace filler wording in description with content.
+
+-------------------------------------------------------------------
+Thu Jul 20 16:00:53 UTC 2017 - tchvatal@suse.com
+
+- Add patch to fix crash "attempt to index global 'socket'":
+  * prosody-local-socket.patch
+
+-------------------------------------------------------------------
+Thu Jul 20 14:28:07 UTC 2017 - tchvatal@suse.com
+
+- Drop the systemd conditional as all systems have systemd now for
+  our purposes.
+- Switch back to lua5.1 as 0.9 prosody works only with that
+
+-------------------------------------------------------------------
+Fri Jul 14 15:09:54 UTC 2017 - tchvatal@suse.com
+
+- Build against lua5.3 instead of lua5.1
+
+-------------------------------------------------------------------
+Tue Jul 11 09:34:47 UTC 2017 - tchvatal@suse.com
+
+- Fix build with namespaced lua
+
+-------------------------------------------------------------------
+
+Wed Jan 11 22:10:06 UTC 2017 - Mathias.Homann@opensuse.org
+
+- added patch: prosody-lua51coexist.patch
+  * makes prosody work on systems that have lua 5.1 and lua 5.2 installed.
+
+-------------------------------------------------------------------
+Wed Jan 11 09:02:59 UTC 2017 - mvetter@suse.com
+
+- Update to 0.9.12:
+    * Dependencies: Fix certificate verification failures when using LuaSec 0.6 (fixes #781)
+    * mod_s2s: Lower log message to 'warn' level, standard for remotely-triggered protocol issues
+    * certs/Makefile: Remove -c flag from chmod call (a GNU extension)
+    * Networking: Prevent writes after a handler is closed (fixes #783)
+
+-------------------------------------------------------------------
+Fri Nov  4 16:08:21 UTC 2016 - mvetter@suse.com
+
+- Update to 0.9.11:
+    * HTTP parser: Improve buffering of incoming HTTP data and add size
+limits (#603)
+    * Sessionmanager: Fix for an issue which caused people to be kicked from conferences if mod_smacks was enabled (#648)
+    * Dependencies: Workaround for compatibility with LuaSec 0.6 (#749)
+    * MUC: Accept missing form as "instant room" request (#377)
+    * C2S: Fix issues with destroying disconnected connections (#590), (#641)
+    * mod_privacy: Fix selection of the top resource(s) #694
+    * mod_presence: Make sure both users get each others presence after adding each other (#673)
+    * mod_http_files: Fix traceback when serving a non-wildcard path (#611)
+    * mod_http_files: Preserve a trailing slash in paths (#639)
+    * util.datamanager: Fix error handling (#632)
+    * net.server_event: Fix internal socket API to allow writing from socket.ondrain callback (#661)
+    * net.server_event: Fix timeout (commit 1909bde0e79f)
+    * net.server_event: Fix traceback due to write during TLS handshake (commit c774622ad9db)
+    * net.server_event: Fix buffer length check (commit 206f9b0485ad)
+- Remove prosody-upstream-0.9-branch-fixes.patch: included in update
+
+-------------------------------------------------------------------
+Tue Oct 11 15:12:33 UTC 2016 - mvetter@suse.com
+
+- Change license to MIT
+
+-------------------------------------------------------------------
+Thu Sep 15 09:28:56 UTC 2016 - mvetter@suse.com
+
+- Add prosody-upstream-0.9-branch-fixes.patch:
+  Upstream pushes all fixes for a certain release to its own branch.
+  See: https://prosody.im/files/branches_explained.png
+  After some time, mostly when a security bug is found, they do a
+  new minor release.
+  The fixes however are often needed to make prosody run smoothly
+  with its community modules. Thus I monitor them and add the patch
+  set. It's only fixes no new features.
+
+-------------------------------------------------------------------
+Fri Jun 17 15:09:29 UTC 2016 - mvetter@suse.com
+
+- Remove prosody-rpmlintrc: Not needed since last cleanup
+
+-------------------------------------------------------------------
+Mon May 23 10:52:48 UTC 2016 - mvetter@suse.com
+
+- Add:
+  * prosody-0.9.10.tar.gz.asc
+  * prosody.keyring containing Matthew and Zashs keys
+- Enable source verification
+
+-------------------------------------------------------------------
+Mon May 23 09:57:24 UTC 2016 - mvetter@suse.com
+
+- Move rcprosody into systemd section until we have proper sysvinit support
+
+-------------------------------------------------------------------
+Fri May 20 14:55:28 UTC 2016 - mvetter@suse.com
+
+- Pass optflags to configure
+- Install service file and create directories if needed in one run
+- Dont strip debug symbols
+- Dont need to verify permissions since we set them
+- Create systemd tempfile properly
+- Install config files with file glob
+- Remove sysvinit stuff
+- Cleanup systemd conditionals
+
+-------------------------------------------------------------------
+Tue Apr 26 10:46:53 UTC 2016 - mvetter@suse.com
+
+- Use less rights
+
+-------------------------------------------------------------------
+Thu Feb 11 10:01:32 UTC 2016 - mvetter@suse.com
+
+- Update to 0.9.10
+  Security:
+  * mod_dialback: Adopt key generation algorithm from XEP-0185, to prevent impersonation attacks (CVE-2016-0756)
+  Fixes and improvements:
+  * Startup: Open /dev/urandom read-only, to fix a failure to start on some systems
+  * Networking: Improve handling of the 'select' network backend running out of file descriptors
+  Minor changes:
+  * Networking: Increase default internal read size to prevent connections stalling with LuaEvent
+  * DNS: Discard queries that failed to send due to connection errors
+  * c2s, s2s: Lower priority of shutdown handler, so that modules such as MUC can always send shutdown notifications to (remote) users
+
+-------------------------------------------------------------------
+Thu Feb 11 09:46:11 UTC 2016 - mvetter@suse.com
+
+- Update to 0.9.9
+  Security fixes:
+  * Fix path traversal vulnerability in mod_http_files (CVE-2016-1231)
+  * Fix use of weak PRNG in generation of dialback secrets (CVE-2016-1232)
+  Bugs:
+  * Improve handling of CNAME records in DNS
+  * Fix traceback when deleting a user in some configurations (issue #496)
+  * MUC: restrict_room_creation could prevent users from joining rooms (issue #458)
+  * MUC: fix occasional dropping of iq stanzas sent privately between occupants
+  * Fix a potential memory leak in mod_pep
+  Additions:
+  * Add http:list() command to telnet to view active HTTP services
+  * IPv4/v6 address selection code for outgoing s2s
+  * Add support for importing SCRAM hashes from ejabberd
+
+-------------------------------------------------------------------
+Sat May  2 07:56:00 UTC 2015 - nekolayer@yandex.ru
+
+- fix broken prosody-makefile.patch for correct lib path [bnc#926932]
+
+-------------------------------------------------------------------
+Tue Apr  7 09:46:33 UTC 2015 - g.bluehut@gmail.com
+
+- Clean up spec file
+- Update to 0.9.8
+    * Ensure only valid UTF-8 is passed to libidn
+    * Fix traceback caused when DNS server IP is unroutable
+    * HTTP client: More robust handling of chunked encoding across packet boundaries
+    * Stanza router: Fix handling of 'error' <iq>'s with multiple children
+    * c2s: Fix error reply when clients try to bind multiple resources on the same stream
+    * s2s: Ensure to/from attributes are always present on stream headers, even if empty
+    * Build scripts: Add –libdir option to ./configure to simplify building on some platforms
+    * Fix traceback in datamanager when used outside of Prosody
+    * mod_admin_telnet: Fix potential traceback in server:memory() command
+    * util.stanza: Don't XML-escape whitespace
+    * prosodyctl: Fix traceback in 'about' command with LuaRocks 2.2.0
+
+-------------------------------------------------------------------
+Mon Oct 20 13:22:39 UTC 2014 - i@marguerite.su
+
+- update version 0.9.6
+  * certmanager, net.http: Disable SSLv3 by default
+  * net.http.parser: Support status code 101 and allow handling
+    of the received data by plugins
+  * util.filters: Ignore filters being added twice (fixes issues
+    on removal, i.e. when some plugins are reloaded/unloaded)
+  * mod_s2s: Close offending s2s streams missing an 'id' attribute
+    with a stream error instead of throwing an unhandled error
+  * Networking API: Add 'ondetach' callback for listener objects,
+    to prevent leaks when connections have their listener changed
+  * core.stanza_router: Stricter validation of stanzas
+  * mod_admin_adhoc: Mark 'accountjids' field as required in 'end
+    user sessions' command
+  * mod_admin_adhoc: Add required to field in user deletion form
+    too
+  * net.dns: Avoid duplicate cache entries
+  * util.stanza: Escape newlines and tabs (\r\n\t) when serializing
+    stanzas.
+  * util/dataforms: Make sure we iterate over field tags only
+  * mod_s2s: Capitalize log message
+  * mod_pubsub: Fix error type of 'forbidden' (change from 'cancel'
+    to 'auth')
+
+-------------------------------------------------------------------
+Wed Aug 20 17:42:14 UTC 2014 - i@marguerite.su
+
+- install pid to %%{_piddir}, fix for factory
+
+-------------------------------------------------------------------
+Wed Aug 20 16:12:29 UTC 2014 - i@marguerite.su
+
+- update version 0.9.4
+  * Compression: Disallow compression on unauthenticated streams
+  * Core: Limit default read size and maximum stanza size
+  * Core: Enable SASL EXTERNAL by default for component s2s
+  * S2S: Warn if `s2s_secure_auth` and `s2s_require_encryption`
+    have been set in conflicting ways
+  * S2S: Warn if no local network addresses were found,
+    preventing successful s2s
+  * MUC: Fix traceback when a non-occupant tried to change an
+    occupant's role
+  * MUC: API: Fire an event when temporary rooms are destroyed
+    after the last person leaves
+  * Telnet: Fixed traceback when listing users
+  * Telnet: Apply normalization to JIDs in user management
+    commands
+  * HTTP: Fix directory detection in file server on Windows
+  * Plugins: Fix paths on Windows
+  * MOTD: Don't strip blank lines from the message provided in
+    the config
+  * prosodyctl: Better error reporting when generating
+    certificates
+  * Makefile: Improve FreeBSD compatibility
+  * Multiple fixes to our migration tools, and support for
+    importing MUCs from ejabberd
+
+-------------------------------------------------------------------
+Fri Feb 28 10:00:42 UTC 2014 - i@marguerite.su
+
+- fix bnc#865781
+  * /var/lib/prosody should be owned by prosody:prosody.
+
+-------------------------------------------------------------------
+Wed Feb 26 12:55:07 UTC 2014 - i@marguerite.su
+
+- update version 0.9.3
+  * A config file passed as command line argument is no longer
+    forgotten when config is reloaded
+  * MUC: Allow admins to always bypass restrict_room_creation
+  * Strip trailing '.' when normalizing hostnames
+  * HTTP: Prevent silent connection failures
+  * Components: Alow easier overriding of component authentication
+    by plugins
+  * Components: Enable TCP keepalives
+  * Migrator: Better error reporting and improved robustness
+  * S2S: Include IP in log messages, if hostname is unavailable
+  * TLS: Log error when initialization fails
+
+-------------------------------------------------------------------
+Tue Feb  4 07:55:28 UTC 2014 - i@marguerite.su
+
+- "After" mysql.service, as if it starts before mysql, prosody
+  can read account infos.
+
+-------------------------------------------------------------------
+Thu Jan 23 09:38:56 UTC 2014 - i@marguerite.su
+
+- update to 0.8.2
+  * IPv6 support for c2s, s2s and all other services (e.g. HTTP)
+  * Server-to-server authentication using certificates (SASL EXTERNAL)
+  * A new HTTP subsystem, supporting virtual hosts, and fully
+    reloadable modules
+  * Client and server connections are now handled by modules:
+    mod_c2s, mod_s2s
+  * mod_pubsub: Basic pubsub service (some features not yet implemented)
+  * prosodyctl about - show information about a Prosody installation
+  * prosodyctl cert - command to generate XMPP certificates and CSRs
+  * Many very nice enhancements to our module API
+  * MUC: Configurable per-room history length
+  * MUC: Plugins can now extend the room configuration form
+- if you're upgrading from 0.8.x or older, please read:
+  * http://prosody.im/doc/release/0.9.0#upgrading
+
+-------------------------------------------------------------------
+Fri Jun 28 16:57:52 UTC 2013 - i@marguerite.su
+
+- add systemd service
+- fix CFG_SOURCEDIR in /usr/bin/{prosody,prosodyctl}
+- create prosody:prosody.
+
+-------------------------------------------------------------------
+Sat Oct  1 13:08:32 UTC 2011 - t1locs@gmail.com
+
+- prosody 0.8.2 has been released and fixes a small handful of bugs
+
+-------------------------------------------------------------------
+Tue Jun 14 15:37:47 CEST 2011 - florian.leparoux@gmail.com
+
+- update to 0.8.1
+
+-------------------------------------------------------------------
+Mon Apr 26 12:19:27 CEST 2011 - florian.leparoux@gmail.com
+
+- update to 0.8.0
+
+-------------------------------------------------------------------
+Wed Apr 7 17:09:24 CEST 2010 - stepan@coresystems.de
+
+- update to 0.7.0rc1
+
+-------------------------------------------------------------------
+Wed Mar 17 00:00:00 UTC 2010 - florian.leparoux@gmail.com
+
+- Fix dependencies
+
+-------------------------------------------------------------------
+Wed Feb 10 00:00:00 UTC 2010 - florian.leparoux@gmail.com
+
+- Fix dependencies
+
+-------------------------------------------------------------------
+Sun Jan 24 00:00:00 UTC 2010 - florian.leparoux@gmail.com
+
+- rebuild correctly prosody on openSUSE 11.2
+
+-------------------------------------------------------------------
+Wed Dec 29 00:00:00 UTC 2009 - florian.leparoux@gmail.com
+
+- build prosody on openSUSE 11.2
+
+

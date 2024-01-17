@@ -1,0 +1,15 @@
+<package name="kgeotag" project="openSUSE:Factory">
+  <title>A photo geotagging utility</title>
+  <description>KGeoTag is a standalone geotagging program.
+Images can be associated with geographic coordinates
+by different means: On the one hand, a matching with
+GPX encoded geodata can be done, on the other hand,
+the coordinates can be set manually, either via drag
+and drop onto a map, via bookmarks or by manually
+supplying them. The coordinates can be stored in the
+images' Exif header and/or in XMP sidecar files.
+
+</description>
+  <devel project="KDE:Extra" package="kgeotag"/>
+  <url>https://kgeotag.kde.org/</url>
+</package>

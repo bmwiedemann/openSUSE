@@ -1,0 +1,7 @@
+<package name="eid-mw" project="openSUSE:Factory">
+  <title>Belgium eID Middleware</title>
+  <description>Middleware and core stack for using the Belgian eID (electronic identity card).
+
+</description>
+  <devel project="security" package="eid-mw"/>
+</package>

@@ -1,0 +1,256 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe9ac4752070cb9dd8e49a6936f2d5da</srcmd5>
+    <version>1.26</version>
+    <time>1168903916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="61">
+    <srcmd5>f49929c59a3312f9aa3833fece08129e</srcmd5>
+    <version>1.26</version>
+    <time>1192635114</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="122">
+    <srcmd5>f49929c59a3312f9aa3833fece08129e</srcmd5>
+    <version>1.26</version>
+    <time>1192635114</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="123">
+    <srcmd5>ec83eff69dc5294264ce26f9d0f66da5</srcmd5>
+    <version>1.26</version>
+    <time>1245337995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="124">
+    <srcmd5>b4691042afba36097daad2ae9ebded25</srcmd5>
+    <version>1.26</version>
+    <time>1248726533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="126">
+    <srcmd5>b4691042afba36097daad2ae9ebded25</srcmd5>
+    <version>1.26</version>
+    <time>1248726533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="127">
+    <srcmd5>154521e7a721dd19f9712abb8b805a6c</srcmd5>
+    <version>1.26</version>
+    <time>1263034260</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Pod based on submit request 28343 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6afd45cbfff446139bd1b48e48d842c7</srcmd5>
+    <version>1.41</version>
+    <time>1266508328</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Pod based on submit request 32695 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7df0ea7e2b150cea646cb9c718ed538d</srcmd5>
+    <version>1.41</version>
+    <time>1268068799</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Pod based on submit request 34260 from user coolo
+</comment>
+    <requestid>34260</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>bb480937e224fd572e382765d5742f2d</srcmd5>
+    <version>1.41</version>
+    <time>1268925622</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c34151afb8df113c712e17fb263f859d</srcmd5>
+    <version>1.43</version>
+    <time>1271864537</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Pod based on submit request 38430 from user computersalat
+</comment>
+    <requestid>38430</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c34151afb8df113c712e17fb263f859d</srcmd5>
+    <version>1.43</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c34151afb8df113c712e17fb263f859d</srcmd5>
+    <version>1.43</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6f88c29ef0c707c00500e5980757835e</srcmd5>
+    <version>1.44</version>
+    <time>1282665617</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Pod based on submit request 45648 from user computersalat
+</comment>
+    <requestid>45648</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d72df435f93e440cd49749828f396481</srcmd5>
+    <version>1.44</version>
+    <time>1291584103</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54664 from user coolo
+</comment>
+    <requestid>54664</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>133604692142567715be4a84ee8b5bff</srcmd5>
+    <version>1.44</version>
+    <time>1291584109</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54664
+</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>133604692142567715be4a84ee8b5bff</srcmd5>
+    <version>1.44</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>35869f424330516e0c2c38f86cb1dac4</srcmd5>
+    <version>1.44</version>
+    <time>1300696354</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64514 from user lmuelle
+</comment>
+    <requestid>64514</requestid>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>1aa4e1f3ed861854d752a7c25198a861</srcmd5>
+    <version>1.44</version>
+    <time>1300696372</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64514
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5df473cbeb63f0cb546548d8870cc235</srcmd5>
+    <version>1.45</version>
+    <time>1301579056</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65662 from user coolo
+</comment>
+    <requestid>65662</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>fc2c95acde59d0f4dfa5825ca825409e</srcmd5>
+    <version>1.45</version>
+    <time>1301579065</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65662
+</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>8543e51e919389a76942ec7f00d57868</srcmd5>
+    <version>1.45</version>
+    <time>1316437940</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82398</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>8543e51e919389a76942ec7f00d57868</srcmd5>
+    <version>1.45</version>
+    <time>1319182312</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>488c4ea774d7bd5890ab00c799756861</srcmd5>
+    <version>1.45</version>
+    <time>1323193711</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>488c4ea774d7bd5890ab00c799756861</srcmd5>
+    <version>1.45</version>
+    <time>1340183933</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>488c4ea774d7bd5890ab00c799756861</srcmd5>
+    <version>1.45</version>
+    <time>1359109819</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>91dfb0fe6097759ce8678245722447ac</srcmd5>
+    <version>1.48</version>
+    <time>1371221263</time>
+    <user>coolo</user>
+    <comment>- updated to 1.48
+   * Fixed test failure with versions of Pod::Simple lower than 3.24. Thanks
+     to Martin Holste and Tatsuhiko Miyagawa for the reports.
+   * Fixed failing test on Pod::Simple 3.27 and higher.
+   * Fixed a crash when `all_pod_files_ok()` finds no files to test. Thanks
+     to H.Merijn Brand.
+   * Switched from custom file searching code to File::Find. Suggested by
+     H.Merijn Brand.
+   * Fixed failing test on Pod::Simple 3.24.</comment>
+    <requestid>178489</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>91dfb0fe6097759ce8678245722447ac</srcmd5>
+    <version>1.48</version>
+    <time>1379663879</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>91dfb0fe6097759ce8678245722447ac</srcmd5>
+    <version>1.48</version>
+    <time>1409302522</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d799b5253c1413687a703dc1a6e2f064</srcmd5>
+    <version>1.49</version>
+    <time>1431753157</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307030</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b512f9bbbe888e67deff7047ed781bd5</srcmd5>
+    <version>1.50</version>
+    <time>1434006559</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311224</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>abbd2de981922767d208adad6272ffbe</srcmd5>
+    <version>1.51</version>
+    <time>1437477857</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315400</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>61145a64f43cd795b50908290cc6728e</srcmd5>
+    <version>1.52</version>
+    <time>1524742440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599317</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="python-django-ckeditor" project="openSUSE:Factory">
+  <title>Django admin CKEditor integration</title>
+  <description>Django admin CKEditor integration.
+Provides a RichTextField and CKEditorWidget utilizing CKEditor with image
+upload and browsing support included.
+
+Author:
+--------
+    Shaun Sephton &lt;shaunsephton@gmail.com&gt;
+</description>
+  <devel project="devel:languages:python:django" package="python-django-ckeditor"/>
+</package>

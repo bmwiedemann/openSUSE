@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73df03d7efd74996b6d157e154e598c2</srcmd5>
+    <version>2.2.1</version>
+    <time>1532527638</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>624454</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f2d50a95e163dd7e72f455da36465e17</srcmd5>
+    <version>2.2.2</version>
+    <time>1540448043</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642842</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1b27f5afca928e2c758d7faa4fce102</srcmd5>
+    <version>2.2.2.1</version>
+    <time>1548452538</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>667130</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7f04fb362b4e81300a3812b7aa6691b2</srcmd5>
+    <version>2.2.2.1</version>
+    <time>1577451029</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759313</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e353d8e9de1f2e4707fc1d3caa6bf89</srcmd5>
+    <version>2.4</version>
+    <time>1578069302</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>760278</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ab99e69e7f411e11790ca0270a444171</srcmd5>
+    <version>2.4.1</version>
+    <time>1580299904</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>766982</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9d35604a341712d1518ddb60768f960c</srcmd5>
+    <version>2.5</version>
+    <time>1583759658</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>780007</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4e753e341ac375e1724d454e0e9b38da</srcmd5>
+    <version>2.6</version>
+    <time>1589196782</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>800996</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1119fde8190227ee0f08c8c3e025855</srcmd5>
+    <version>2.6.1</version>
+    <time>1592579208</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815008</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c134121666a7eb57b651906a0458470a</srcmd5>
+    <version>2.6.2</version>
+    <time>1598642603</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829143</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f1fe5da934bc314ee76b850a1acbf439</srcmd5>
+    <version>2.6.2</version>
+    <time>1605217478</time>
+    <user>dimstar_suse</user>
+    <comment>Automated update of haskell pckages</comment>
+    <requestid>847872</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>465f1496370c73f4eaa98706addd5dd5</srcmd5>
+    <version>2.6.2</version>
+    <time>1608633171</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857184</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>ab52cf6e5c705f2c3541d91d320dffef</srcmd5>
+    <version>2.6.2</version>
+    <time>1644965847</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>954684</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7ce286ca5528b37117fa54ae14dc629a</srcmd5>
+    <version>2.7.0</version>
+    <time>1680635893</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075749</requestid>
+  </revision>
+</revisionlist>

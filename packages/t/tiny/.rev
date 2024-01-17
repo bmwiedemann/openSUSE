@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a60522200628fe9f6e728cd9cde778d8</srcmd5>
+    <version>0.10.0</version>
+    <time>1651960460</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain tiny in openSUSE:Factory</comment>
+    <requestid>975492</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>80a0fe7a09ed2404371722f2735ccfc4</srcmd5>
+    <version>0.10.0+git13</version>
+    <time>1654097700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980228</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6ad6c9e75d5fbc01fdf32e31e7ba2814</srcmd5>
+    <version>0.10.0+git13</version>
+    <time>1655732293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983823</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9116eeca6e203cdba8c5dff8b7eba38e</srcmd5>
+    <version>0.10.0+git13</version>
+    <time>1662405741</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1001270</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>17ee0788ee8efdc1d51fc94437cf8981</srcmd5>
+    <version>0.10.0+git14</version>
+    <time>1670954158</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042517</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5737b94215462167647d7d47ab7ff352</srcmd5>
+    <version>0.10.0+git14</version>
+    <time>1685830360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendored dependencies.
+- Enable desktop notification feature.
+</comment>
+    <requestid>1090538</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1ed2fd9ff3461db1bb335db33ae410ad</srcmd5>
+    <version>0.11.0+git7</version>
+    <time>1691332177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.0+git7:
+  * Bug fixes and refactoring in key map implementation:
+  * Update CHANGELOG, initial config
+  * Rename 'run_command' key action to just 'command'
+  * Support tiny commands in keymap config (#410)
+  * Support italic and strikethrough attribute (#404) (#409)
+  * Fix tab config test with desktop-notifications feature (#408)
+  * Update deps, reword and format initial config, fix new lints
+  * Update changelog
+  * Update dependencies (#405)
+  * Config to set /ignore and /notify (#344)
+  * CHANGELOG: Add #403
+  * Implement bold, italic, underline, strikethrough rendering
+  * Added support for SASL EXTERNAL  (#363)
+  * Fix a few lints introduced with rustc 1.66.0
+  * CHANGELOG: Remove trailing ws, formatting
+  * Implement running shell commands for getting passwords (#315)
+  * Fix a bug when running $EDITOR on macOS 12
+  * Mention default macOS config path in README
+  * Update CHANGELOG with #395
+  * Allow QUIT and PART with a message (#395)
+</comment>
+    <requestid>1102474</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>375bdf015ab9eb027819e6ecf5a4231b</srcmd5>
+    <version>0.11.0+git7</version>
+    <time>1692611124</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104912</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4bdbd1d78f356fa6aad9628db8eb5070</srcmd5>
+    <version>0.11.0+git7</version>
+    <time>1694630769</time>
+    <user>anag+factory</user>
+    <comment>- Fix and update vendored tarball
+- Remove leftover obscpio file
+- Update vendored sources.
+</comment>
+    <requestid>1110913</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d7006f269f68227424d07b7119a8666</srcmd5>
+    <version>0.12.0+git0</version>
+    <time>1704380395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136735</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="gdmd" project="openSUSE:Factory">
+  <title>DMD compatible wrapper for the GDC D compiler</title>
+  <description>GDMD is a wrapper for the GDC D compiler to provide a DMD compatible interface.
+
+</description>
+  <devel project="devel:languages:D" package="gdmd"/>
+  <url>https://github.com/D-Programming-GDC/gdmd</url>
+</package>

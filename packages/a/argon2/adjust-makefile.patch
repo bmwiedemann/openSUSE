@@ -1,0 +1,47 @@
+diff -Nur argon2-20190702/Makefile new/Makefile
+--- argon2-20190702/Makefile	2019-05-20 11:18:00.000000000 +0200
++++ new/Makefile	2022-04-24 00:09:10.859729849 +0200
+@@ -37,7 +37,7 @@
+ SRC_GENKAT = src/genkat.c
+ OBJ = $(SRC:.c=.o)
+ 
+-CFLAGS += -std=c89 -O3 -Wall -g -Iinclude -Isrc
++CFLAGS += $(OPTFLAGS) -Iinclude -Isrc
+ 
+ ifeq ($(NO_THREADS), 1)
+ CFLAGS += -DARGON2_NO_THREADS
+@@ -48,16 +48,12 @@
+ CI_CFLAGS := $(CFLAGS) -Werror=declaration-after-statement -D_FORTIFY_SOURCE=2 \
+ 				-Wextra -Wno-type-limits -Werror -coverage -DTEST_LARGE_RAM
+ 
+-OPTTARGET ?= native
+-OPTTEST := $(shell $(CC) -Iinclude -Isrc -march=$(OPTTARGET) src/opt.c -c \
+-			-o /dev/null 2>/dev/null; echo $$?)
+ # Detect compatible platform
+ ifneq ($(OPTTEST), 0)
+ $(info Building without optimizations)
+ 	SRC += src/ref.c
+ else
+-$(info Building with optimizations for $(OPTTARGET))
+-	CFLAGS += -march=$(OPTTARGET)
++$(info Building with optimizations)
+ 	SRC += src/opt.c
+ endif
+ 
+@@ -128,6 +124,7 @@
+ HEADERS = include/argon2.h
+ 
+ INSTALL = install
++LIB_INSTALL_PERM = 0755
+ 
+ # relative paths for different OS
+ ifeq ($(KERNEL_NAME), $(filter $(KERNEL_NAME),DragonFly FreeBSD))
+@@ -236,7 +233,7 @@
+ 	$(INSTALL) -d $(INST_INCLUDE)
+ 	$(INSTALL) -m 0644 $(HEADERS) $(INST_INCLUDE)
+ 	$(INSTALL) -d $(INST_LIBRARY)
+-	$(INSTALL) -m 0644 $(LIBRARIES) $(INST_LIBRARY)
++	$(INSTALL) -m $(LIB_INSTALL_PERM) $(LIBRARIES) $(INST_LIBRARY)
+ ifdef LINKED_LIB_SH
+ 	cd $(INST_LIBRARY) && ln -s $(notdir $(LIB_SH) $(LINKED_LIB_SH))
+ endif

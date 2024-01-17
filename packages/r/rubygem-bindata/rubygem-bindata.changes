@@ -1,0 +1,227 @@
+-------------------------------------------------------------------
+Thu Nov  2 15:40:04 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- == Version 2.4.15 (2023-02-07)
+
+* Added ruby 2.4.0 requirement to gemspec.  Thanks to theldoria.
+* Added github CI action.  Thanks to Peter Goldstein.
+* Convert file from latin1 to UTF-8.  Thanks to Cédric Boutillier.
+* Move license from dual license to solely BSD-2-Clause.
+* Remove unnecessary files from gem.  Requested by Orien Madgwick.
+* Allow multiple calls to auto_call_delayed_io.  Thanks to dwelch-r7.
+
+
+-------------------------------------------------------------------
+Wed Dec  7 11:13:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.4.14
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.14 (2022-10-31)
+  
+  * Use Comparable#clamp instead of manual calculations.
+  * Update tests to new minitest requirements.
+  * Adjust tests due to changes in ruby 3.1
+  
+
+-------------------------------------------------------------------
+Fri Oct 28 04:52:48 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.4.13
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.13 (2022-10-16)
+  
+  * Relax over-strict parameter naming requirements.  Requested by
+    vinayak3qilabs.
+  
+
+-------------------------------------------------------------------
+Mon Oct 10 12:59:42 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.4.12
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.12 (2022-10-03)
+  
+  * Do not include DelayedIO objects when :onlyif is false.
+  
+  == Version 2.4.11 (2022-09-27)
+  
+  * Make DelayedIO work with :onlyif.  Reported by Spencer McIntyre.
+  
+
+-------------------------------------------------------------------
+Thu Jun 24 17:06:10 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.4.10
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.10 (2021-05-18)
+  
+  * Improve speed of dynamic object creation.  Reported by Charlie Ablett.
+  
+  == Version 2.4.9 (2021-04-22)
+  
+  * Change example from Fixnum to Integer.  Thanks to Tim Chambers.
+  * Now works with frozen string literals.  Requested by Jeremy Evans.
+  
+
+-------------------------------------------------------------------
+Fri Sep 25 13:42:31 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.4.8
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.8 (2020-07-21)
+  
+  * Bug fix array self assignment.  Thanks to Spencer McIntyre.
+  * Bug fix Stringz max_length.  Thanks to cdelafuente-r7.
+  
+
+-------------------------------------------------------------------
+Thu May  7 20:26:56 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.4.7
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.7 (2020-03-31)
+  
+  * Fix choice assignment inside arrays.  Reported by Spencer McIntyre.
+  
+  == Version 2.4.6 (2020-02-27)
+  
+  * More encoding fixes.  Thanks to Aaron Patterson.
+  
+  == Version 2.4.5 (2020-02-21)
+  
+  * Small typo fixes to examples.
+  * Fix encoding issue for ruby 2.7.  Thanks to Aaron Patterson.
+  * Quieter test output.
+
+-------------------------------------------------------------------
+Thu Nov 22 05:00:06 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.4.4
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.4 (2018-10-03)
+  
+  * Display a hint when endian is omitted.  Requested by Tails.
+  * Add thread safety to Integer/BitField creation.  Requested by jbpeirce.
+  * Ensure windows sockets are unseekable.  Thanks to Brent Cook.
+
+-------------------------------------------------------------------
+Tue Mar 20 10:05:11 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.4.3
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.3 (2018-03-10)
+  
+  * Add Uint8Arrays.  Requested by masarakki.
+
+-------------------------------------------------------------------
+Thu Feb  8 05:54:05 UTC 2018 - coolo@suse.com
+
+- updated to version 2.4.2
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.2 (2018-01-31)
+  
+  * Allow boolean values as parameters.  Requested by Patrik Wenger.
+
+-------------------------------------------------------------------
+Sun Sep  3 08:55:50 UTC 2017 - coolo@suse.com
+
+- updated to version 2.4.1
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.1 (2017-08-30)
+  
+  * Fix crash with String :length invoking :rel_offset.  Reported by Claudius
+    Coenen.
+
+-------------------------------------------------------------------
+Mon Apr 10 04:30:09 UTC 2017 - coolo@suse.com
+
+- updated to version 2.4.0
+ see installed NEWS.rdoc
+
+  = 2.4.0
+  
+  This release changes the internal API for sanitizing parameters.  This only
+  affects those that implement the `#sanitize_parameters` method.
+  
+  = 2.3.x
+  
+      if params.needs_sanitizing?(:type)
+        el_type, el_params = params[:type]
+        params[:type] = params.create_sanitized_object_prototype(el_type, el_params)
+      end
+  
+  = 2.4.0
+  
+      params.sanitize_object_prototype(:type)
+
+-------------------------------------------------------------------
+Fri Jan 20 05:28:59 UTC 2017 - coolo@suse.com
+
+- updated to version 2.3.5
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Tue Oct 18 04:29:24 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.4
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Wed Sep  7 04:30:22 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.3
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Sat Sep  3 04:30:36 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.2
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Sat Jun 18 04:29:22 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.1
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Wed Apr  6 06:12:52 UTC 2016 - coolo@suse.com
+
+- updated to version 2.3.0
+ see installed NEWS.rdoc
+
+  = 2.3.0
+  
+  This release adds I/O features.
+  
+  Seeking forward to an arbitrary offset is achieved with Skip's :to_abs_offset
+  parameter.
+  
+  Multi pass I/O has been added.  BinData performs I/O in a single pass.  See
+  DelayedIO to perform multi pass (backwards seeking) I/O.
+  
+  The experimental :adjust_offset feature has been removed.  If you have existing
+  code that uses this feature, you need to explicitly require 'bindata/offset' to
+  retain this functionality.
+
+-------------------------------------------------------------------
+Sun Jan 31 05:28:37 UTC 2016 - coolo@suse.com
+
+- updated to version 2.2.0
+ see installed NEWS.rdoc
+
+-------------------------------------------------------------------
+Tue Apr  7 21:15:18 UTC 2015 - astieger@suse.com
+
+- initial package of rubygem-bindata generated using gem2rpm
+

@@ -1,0 +1,68 @@
+.TH VAGRANT "1" "January 2014" "Vagrant 1.4.3" "User Commands"
+.SH NAME
+Vagrant \- Tool for building and distributing virtualized development environments.
+.SH SYNOPSIS
+.B vagrant
+[\fI-v\fR] [\fI-h\fR] \fIcommand \fR[\fI<args>\fR]
+.SH DESCRIPTION
+Vagrant is a tool for building and distributing virtualized development environments.
+
+Vagrant provides the framework and configuration format to create and manage complete portable development environments. These development environments can live on your computer or in the cloud, and are portable between Windows, Mac OS X, and Linux.
+.SH OPTIONS
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Print the version and exit.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print this help.
+.SS "Available subcommands:"
+.TP
+\fIbox\fR
+manages boxes: installation, removal, etc.
+.TP
+\fIdestroy\fR
+stops and deletes all traces of the vagrant machine
+.TP
+\fIhalt\fR
+stops the vagrant machine
+.TP
+\fIhelp\fR
+shows the help for a subcommand
+.TP
+\fIinit\fR
+initializes a new Vagrant environment by creating a Vagrantfile
+.TP
+\fIpackage\fR
+packages a running vagrant environment into a box
+.TP
+\fIplugin\fR
+manages plugins: \fBinstall\fR, \fBuninstall\fR, \fBupdate\fR, etc.
+.TP
+\fIprovision\fR
+provisions the vagrant machine
+.TP
+\fIreload\fR
+restarts vagrant machine, loads new Vagrantfile configuration
+.TP
+\fIresume\fR
+resume a suspended vagrant machine
+.TP
+\fIssh\fR
+connects to machine via SSH
+.TP
+\fIssh\-config\fR
+outputs OpenSSH valid configuration to connect to the machine
+.TP
+\fIstatus\fR
+outputs status of the vagrant machine
+.TP
+\fIsuspend\fR
+suspends the machine
+.TP
+\fIup\fR
+starts and provisions the vagrant environment
+.PP
+.SH AUTHOR
+Mitchell Hashimoto <mitchell.hashimoto@gmail.com>
+.SH "SEE ALSO"
+For help on any individual command run \fBvagrant \fICOMMAND \fB\-h\fR

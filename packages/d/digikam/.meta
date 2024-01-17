@@ -1,0 +1,10 @@
+<package name="digikam" project="openSUSE:Factory">
+  <title>A KDE Photo Manager</title>
+  <description>digiKam is a simple digital photo management application for KDE, which
+allows you to import and organize your digital photos easily. The
+photos can be organized in albums, which can be sorted chronologically,
+by directory layout, or by custom collections. An easy-to-use interface
+that enables you to connect to your camera and preview, download, or
+delete your images, is provided.</description>
+  <devel project="KDE:Extra" package="digikam"/>
+</package>

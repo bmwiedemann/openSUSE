@@ -1,0 +1,492 @@
+-------------------------------------------------------------------
+Fri Dec 29 09:47:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-2.7.1-slic3r-wxWidgets-3.2.4.patch
+  * Fixes a compilation error with wxWidgets 3.2.4
+  * gh#prusa3d/PrusaSlicer#11769
+
+-------------------------------------------------------------------
+Mon Dec 25 13:59:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.1
+  ## Improvements fixed with respect to 2.7.0
+  * The option Export as binary G-code was removed from Print
+    Settings. Instead, there is a new option in Printer Settings
+    named Supports binary G-code so it can be set at printer level.
+    There is also a new global switch in Preferences->Other, which
+    controls whether binary G-code will be generated for printers
+    which support it. It is therefore easy to turn the feature on
+    or off without doing any changes in profiles (#11734, #11873).
+  * Wipe tower weight was added into G-code metadata so it can be
+    easily displayed in the print statistics on the printer's
+    display.
+  ## Bugs fixed with respect to 2.7.0
+  * When ramping travels were enabled, sometimes a perimeter was
+    missing at the layer where the spiral starts.
+  * Fixed a crash when selecting embossed text while an SVG tool is
+    opened (#11759).
+  * Helical layer changes could result in out of bed moves
+    (#11754).
+  * Helical layer change was enabled even when there was no
+    retraction on layer change (#11709, #11761).
+- Release 2.7.0
+  * This is the stable release of PrusaSlicer 2.7.0, introducing
+    SVG emboss, binary G-codes, ramping travels, support for G2/G3
+    G-codes, support for Cancel object function and much more. It
+    also fixes many bugs.
+  * Important note for Original Prusa MINI, MK4 and XL owners: The
+    new configuration update of our system profiles will enable
+    binary G-code and G2/G3 features. Users using older firmware
+    need to update to 5.1.0-alpha2 or later or manually turn these
+    features off. On older firmware, new binary G-code is not
+    visible or recognized and the G2/G3 G-codes may not work
+    perfectly.
+  * Travel moves improvements
+  * SVG embossing tool (#6916, #9373)
+  * G2 and G3 G-code support #4352
+  * Binary G-code
+  * Improved user interface
+  * Custom G-code editor
+  * Cancel object (Marlin, RRF and Klipper)
+- D PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch
+
+-------------------------------------------------------------------
+Fri Sep 15 19:03:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.6.1
+  * When renaming a preset to a name containing non-ASCII
+    characters, the encoding was mangled. This is now fixed
+    (#11232).
+  * Supports are no longer shown when using the clipping plane in
+    SLA supports tool.
+  * Fixed a crash when displaying command line help (#11060).
+  * Two tooltips in the Cut tool dialog were shown with mangled
+    encoding in some languages (#11236).
+  * The Help menu in PrusaSlicer was extended with "Sample G-codes
+    and Models" item, which navigates the user to the respective
+    page on our website where these assets can be downloaded.
+  * The Help menu was extended with "Quick Start" item, which
+    navigates the user to the beginner's guide on our website.
+- Drop PrusaSlicer-pr11154-fix-cgal-c++-error.patch
+- Drop PrusaSlicer-drop-wx3.0.patch
+
+-------------------------------------------------------------------
+Tue Aug 29 07:23:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-pr11154-fix-cgal-c++-error.patch
+  * gh#prusa3d/PrusaSlicer#11154
+  * Fixes error on CGAL 5.6
+
+-------------------------------------------------------------------
+Sun Aug 20 16:01:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Limit to CGAL < 5.6 as it introduced breaking changes which
+  PrusaSlicer is not compatible yet
+- Disable failing ix86 build
+
+-------------------------------------------------------------------
+Fri Jul 21 10:32:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Require wxWidgets >= 3.1.6
+  * Add PrusaSlicer-drop-wx3.0.patch
+  * gh#prusa3d/PrusaSlicer#11026, gh#prusa3d/PrusaSlicer#11027
+
+-------------------------------------------------------------------
+Sun Jul  9 14:30:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- BuildRequire nanosvg-devel >= 2022.12.22
+  * only the fltk fork has nsvgRasterizeXY()
+
+-------------------------------------------------------------------
+Wed Jul  5 14:13:11 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- disable slic3r_jobs_tests.cpp, as it fails sometimes
+- PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch
+  applied
+
+-------------------------------------------------------------------
+Tue Jul  4 17:16:14 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.6.0
+  * too many changes to list here, you may want to check:
+    https://github.com/prusa3d/PrusaSlicer/commits/version_2.6.0
+  * PrusaSlicer-boost1.79.patch was applied upstream: removed
+  * PrusaSlicer-cereal.patch was applied upstream: removed
+  * gentoo-887055-boost-fix.patch was applied upstream: removed
+  * new dependencies: nanosvg (new package), glu and glew
+  * more sed fiddling required for system expat and qhull support
+  * PrusaSlicer-2.6.0-octoprint-name-fix.patch added to work around
+    compile error: cast lambda expressionn to same type
+  * wxWidgets 3.0 is not supported anymore (even project states
+    otherwise). Let's hope, it will work with 3.2 better now.
+    upstream is using a patched 3.1 version.
+
+-------------------------------------------------------------------
+Fri Apr 21 15:04:55 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to version 2.5.2
+  * contains profiles for Original Prusa MK4 printer
+
+- Update to version 2.5.1
+  * 'Monotonic lines' top/bottom fill pattern
+  * It is now possible to set acceleration separately for external
+    perimeters, solid infill and top solid infill (Print Settings->
+      Speed->Acceleration control)
+  * Original Prusa XL specific: Arrangement into the corner
+  * Fixed a crash sometimes occurring when slicing very detailed models
+  * Added Original Prusa XL profiles
+
+-------------------------------------------------------------------
+Tue Jan 31 18:34:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add gentoo-887055-boost-fix.patch
+  * Fix build error with boost-filesystem 1.81
+  * gh#prusa3d/PrusaSlicer#9294
+  * https://bugs.gentoo.org/887055
+
+-------------------------------------------------------------------
+Sun Jan  1 17:25:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update up-occt-version.patch
+  * Allow any version for openCASCADE
+  * Luckily, the package compiles with recently updated occt v7.7
+
+-------------------------------------------------------------------
+Sat Oct 29 11:35:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.5.0
+  * Arachne perimeter generator
+  * Lightning infill
+  * Pressure equalizer
+  * STEP file import
+  * various smaller features and bugfixes
+  * Big changelog since v2.4.2, most changes decribed in alpha and
+    beta release notes:
+    https://github.com/prusa3d/PrusaSlicer/releases
+- Add up-occt-version.patch
+
+-------------------------------------------------------------------
+Mon Sep  5 17:17:49 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Quoting Lucas Matena (see gh#prusa3d/PrusaSlicer#8299, issue 2): 
+  if you link PrusaSlicer 2.5.x with wxWidgets 3.2, you will most
+  likely break it: link against wxWidgets 3.0.5
+
+-------------------------------------------------------------------
+Mon Aug  1 15:42:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-cereal.patch -- gh#prusa3d/PrusaSlicer#7809
+
+-------------------------------------------------------------------
+Tue May 31 19:04:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Disable test_voronoi -- rh#2059646
+
+-------------------------------------------------------------------
+Sun May  8 10:03:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.4.2
+  * SLA mode incorrectly handled 3MFs from 3rd party software,
+    resulting in misplaced SLA support points and holes in some
+    cases (#6100, #7359, #7189, #7826, #7659). This is very old
+    issue.
+  * Vase mode preview did not show in cases when Custom Start
+    G-Code lacked moves in Z #8032
+  * When loading a 3rd party 3MF using drag and drop. PrusaSlicer
+    no longer asks if the 3MF shall be loaded as a project (which
+    makes no sense since it contains no config) and loads the
+    geometry only
+  * Using the Layer Height Modifier with the wipe tower was
+    impossible with multiple objects. The wipe tower reported that
+    the layer height profile is different, even though it was in
+    fact set the same on all objects (#7711, #7903, #8044)
+  * Fixed a crash on "Convert from/to units" when several objects
+    were selected
+  * Automatic color change for logo crashed PrusaSlicer in certain
+    cases (when a one-layer object was present) #8156
+  * Linux specific: Fixed a crash on opening projects in some cases
+    (#8078, #8097)
+  * Added Snapmaker bundle (Snapmaker A250, Snapmaker A350). Based
+    on https://github.com/nivekmai/snapmaker-prusa by @nivekmai,
+    @WilliamBosacker, @mrworf
+  * Added profiles for Zonestar printers (Z5, Z6, Z5X, Z8, Z9),
+    based on slic3r/slic3r-profiles#19 by @ZONESTAR3D
+  * Fixed a crash when Unsaved Changes dialog attempted to show a
+    modified config option which is not available in current mode
+    (e.g. Start G-Code in Simple mode). #7905
+  * Fixed a bug that when the user was closing the application and
+    replied 'Yes' in the dialog asking about unsaved project while
+    also checking 'Remember my choice', it made it impossible to
+    close PrusaSlicer in the next runs when there were no objects
+    in the plater #8076, #8122
+  * Loading of a G-Code in G-Code Viewer or loading config from
+    G-Code file sometimes failed because of a bug in parsing of the
+    configuration block at the end.
+  * Fixed incorrect rendering of some characters used in the
+    recently updated Simplified Chinese translation #8171
+  * Fixed incorrect number of toolchanges reported in "Sliced Info"
+    box when wipe tower was used. The annotations of toolchanges in
+    G-Code were also numbered wrong #8186
+  * Fixed a crash when using the "Import SL1 Archive" function and
+    either cancelling the dialog or confirming a non-existing file
+    #8175
+  * Recycling symbols in Shape Gallery were mirrored so the user
+    does not have to flip them when using them as negative volumes
+    at the base of the print (which is the usual use case). Also,
+    PLA recycling symbol was added #7800
+
+-------------------------------------------------------------------
+Mon Apr 25 11:27:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Refresh PrusaSlicer-boost1.79.patch with upstream's fix
+  * gh#prusa3d/PrusaSlicer#8238
+
+-------------------------------------------------------------------
+Sun Apr 24 09:26:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-boost1.79.patch avoiding the deprecation
+  of boost::filesystem::ofstream in Boost 1.79
+  * gh#prusa3d/PrusaSlicer#8238
+
+-------------------------------------------------------------------
+Tue Apr 12 12:59:51 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Use gcc version 10 for anything but Tumbleweed
+
+-------------------------------------------------------------------
+Tue Apr 12 06:41:47 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- Use gcc version 10
+  This allows the build on Leap 15.3/15.4 and in Factory using the same
+  compiler.
+- Add buildignore to libglfw3-wayland to fix building for 15.3
+
+-------------------------------------------------------------------
+Fri Mar 18 11:44:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.1
+  * Big changelog since v2.4.0, most changes decribed in alpha and
+    beta release notes:
+    https://github.com/prusa3d/PrusaSlicer/releases
+  * introducing G-Code Substitutions
+  * fixing bugs found in 2.4.0 release
+
+-------------------------------------------------------------------
+Fri Dec 24 14:39:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.0
+  * Big changelog since v2.3.3, most changes decribed in alpha and
+    beta release notes:
+    https://github.com/prusa3d/PrusaSlicer/releases
+  * Send system info: new dialog for telemetry. Opt-in.
+- Drop patches
+  *  PrusaSlicer-catch2upd.patch
+  *  PrusaSlicer-issue6681-openvdb.patch
+  *  PrusaSlicer-pr6590-updateTBB.patch
+
+-------------------------------------------------------------------
+Tue Nov 23 11:21:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make compatible with TBB 2021
+  * add FindTBB.cmake -- gh#prusa3d/PrusaSlicer#7332
+  * add PrusaSlicer-pr6590-updateTBB.patch
+    gh#prusa3d/PrusaSlicer#6590
+
+-------------------------------------------------------------------
+Fri Sep 24 07:53:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-catch2upd.patch
+  * gh#prusa3d/PrusaSlicer#6518
+  * Update of Catch2 test framework from v2.13.3 to v2.13.6
+  * Fixes build failure due to change of MINSIGSTKSZ in glibc 2.34
+
+-------------------------------------------------------------------
+Mon Aug 30 11:37:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-issue6681-openvdb.patch
+  * gh#prusa3d/PrusaSlicer#6681
+  * ilmbase-devel is now provided by openexr-devel
+  * OpenVDB's FindOpenVDB.cmake requires blosc-devel
+
+-------------------------------------------------------------------
+Fri Jul 16 15:22:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.3.3
+  * fix a bug in handling FDM multi-material project and
+    configuration files.
+
+-------------------------------------------------------------------
+Fri Jul  9 16:08:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.3.2
+  * Introducing support for the new Prusa SL1S SPEED masked
+    SLA printer, Prusa CW1S firmware updater, PrusaLink
+    host type for Prusa i3 MK3 printers, Monotonic infill
+    for all solid layers, better support for reading
+    configurations of newer PrusaSlicer releases, new 3rd
+    party printer profiles and a handful of bug fixes.
+- Switch to bundled GLEW -- gh#prusa3d/PrusaSlicer#6396
+
+-------------------------------------------------------------------
+Tue Apr 20 10:50:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.3.1
+  New 3rd party printer profiles
+  * Multiple Creality printers profiles were added (Ender-3 Max,
+    Ender-4, Ender-6, CR-5 Pro, CR-5 Pro H, CR-6 SE, CR-6 Max,
+    CR-10 Max, CR-200B, CR-8), thanks @pmjdebruijn.
+  * Added Artillery printer profiles (Sidewinder X1, Genius),
+    thanks @SzabolcsHornyak.
+  * Added INAT printer profiles, thanks @MarkINAT.
+  * Updated Anycubic Kossel bed texture (thanks @brunosso) and
+    Anycubic Kossel bed STL.
+  Vulnerability issues fixed
+  * The Talos Cisco Intelligence Group did a great job identifying
+    potential security issues in loading invalid and potentially
+    malicious AMF and 3MF files, see their vulnerability reports
+    TALOS-2020-1222 and TALOS-2020-1218. We fixed these two
+    potential security issues with this release of PrusaSlicer.
+  Bugs fixed with respect to PrusaSlicer 2.3.0
+  * Reduced number of hits shown by the "Find config option"
+    dialog, fixed case insensitive search for non-Latin1 languages
+    #5202.
+  * Fixed G-code preview with coloring by a tool and visualization
+    of travels enabled #6095.
+  * Fixed opening of drop down menus at the bottom of the screen
+    on multi-monitor setups #2999 #5911 #5957. This issue has been
+    fixed by us in wxWidgets and accepted by the upstream.
+
+-------------------------------------------------------------------
+Mon Jan 11 18:43:08 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v2.3.0 
+  * Introducing paint-on supports, ironing, monotonic 
+    infill, seam painting, adaptive and support cubic 
+    infill, print time per feature analysis, standalone 
+    G-code viewer application, better auto-arrange with a 
+    customizable gap and rotation, search function for the 
+    settings, reworked "Avoid crossing perimeters" function, 
+    physical printers (network settings), many new 3rd party 
+    printer profiles and much, much more.
+- Full Changelog entries for betas and release candidates:
+  https://github.com/prusa3d/PrusaSlicer/releases
+- Drop PrusaSlicer-pr4340-boost-1-73.patch merged upstream
+
+-------------------------------------------------------------------
+Sun Dec 20 20:12:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove extra PrusaSlicer.desktop. Use upstream's desktop files. 
+  Graphics;3DGraphics seems to be the consensus now.
+- Remove wrapper gh#prusa3d/PrusaSlicer#4691
+
+-------------------------------------------------------------------
+Tue Sep  1 21:20:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- support boost >= 1.73
+  * PrusaSlicer-pr4340-boost-1-73.patch gh#prusa3d/PrusaSlicer#4340
+  * fixes gh#prusa3d/PrusaSlicer#4264
+
+-------------------------------------------------------------------
+Tue Sep  1 11:46:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- enforce GDK_BACKEND=x11 by indroducing the same wrapper as Fedora
+  gh#prusa3d/PrusaSlicer#4691
+
+-------------------------------------------------------------------
+Thu Aug 20 15:50:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- revert the memoryperjob change. The build process really acquires
+  that much memory per job and the workers cannot provide 3GB per
+  CPU core. Sadly, we are limited by memory not by CPU cores.
+- require 11 GB of RAM. This allows us to run 3 jobs in parallel and
+  can be provided by all architectures
+
+-------------------------------------------------------------------
+Thu Aug 20 09:03:33 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+- Use only 1GB for memoryperjob.
+
+-------------------------------------------------------------------
+Mon Aug 10 08:12:10 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use wxGTK3 instead of wxWidgets (GTK2), for better HiDPI and
+  Wayland support.
+
+-------------------------------------------------------------------
+Tue Jun 16 12:09:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- This is mainly a cosmetic update so that the package gets rebuilt
+  in Factory. Rebuild is needed because of wxWidgets - boo#1172750
+- Add openvdb-tools package for better cmake reporting.
+- Make the 32-bit floating point workaround more readable.
+  gh#prusa3d/PrusaSlicer#3781
+
+-------------------------------------------------------------------
+Fri Apr 24 07:24:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through -mini flavors.
+
+-------------------------------------------------------------------
+Sat Mar 21 22:08:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 2.2.0 
+  introducing SLA hollowing and hole drilling, support for 3rd party 
+  printer vendors, 3Dconnexion support, automatic variable layer height, 
+  macOS dark mode support, greatly improved ColorPrint feature and much, 
+  much more.
+  See https://github.com/prusa3d/PrusaSlicer/releases/tag/version_2.2.0
+  and the changelogs for the release candidates, betas and alphas since
+  2.1.1 for a complete list of changes.
+- reactivate parallel builds, but need strong enough workers and reserve 
+  4G of memory per thread (memory-constraints, %limit_build)
+- new build dependencies: cgal, ilmbase, more of boost, libudev, openvdb
+
+
+-------------------------------------------------------------------
+Wed Dec 11 10:24:01 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 2.1.1
+  - integrating the Prusa Mini printer into the 
+    installation wizard
+  - 3D scene thumbnails are newly generated and exported 
+    into the G-code to be displayed on the Prusa Mini 
+    printer's display
+- use Graphics;3DGraphics for non Tumbleweed distros
+
+------------------------------------------------------------------- 
+Fri Sep 13 19:34:47 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- final 2.1.0 
+- symlink icon files instead of duplicate copy
+
+-------------------------------------------------------------------
+Sat Sep  7 15:00:17 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- new version 2.1.0-rc 
+- remove obsolete patch file
+- tag localization files
+- remove stray Noto font file, add as dependency
+- outsource Desktop file creation
+- move Desktop category to "Science;Construction"
+
+-------------------------------------------------------------------
+Mon Jul 29 11:30:21 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- Clean up specfile according to declined submit request 718985
+  - Remove non-devel BuildRequires
+  - Move icons to icons/hicolor
+- build with -j1 as otherwise x64 build is stuck
+
+-------------------------------------------------------------------
+Fri Jul 26 15:25:15 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- use new patch from upstream 
+  (see https://github.com/prusa3d/PrusaSlicer/pull/2676)
+- use Education;Construction as long as boo#1074711 is not resolved
+
+-------------------------------------------------------------------
+Tue Jul 23 11:29:49 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- initial specfile 

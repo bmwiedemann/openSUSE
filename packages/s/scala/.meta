@@ -1,0 +1,12 @@
+<package name="scala" project="openSUSE:Factory">
+  <title>A hybrid functional/object-oriented language for the JVM</title>
+  <description>Scala is a general purpose programming language designed to express common
+programming patterns in a concise, elegant, and type-safe way. It smoothly
+integrates features of object-oriented and functional languages. It is also
+fully interoperable with Java.
+
+</description>
+  <devel project="Java:packages" package="scala"/>
+  <url>http://www.scala-lang.org/</url>
+  <bcntsynctag>scala</bcntsynctag>
+</package>

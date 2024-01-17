@@ -1,0 +1,768 @@
+-------------------------------------------------------------------
+Mon Jul  3 08:34:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.1:
+  * Add user friendly keywords for signals to auditctl
+  * In ausearch, parse up URINGOP and DM_CTRL records
+  * Harden auparse to better handle corrupt logs
+  * Fix a CFLAGS propogation problem in the common directory
+  * Move the audispd af_unix plugin to a standalone program 
+
+-------------------------------------------------------------------
+Thu May  4 12:58:06 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Mon Feb 20 14:13:06 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1:
+  * Disable ProtectControlGroups in auditd.service by default
+  * Fix rule checking for exclude filter
+  * Make audit_rule_syscallbyname_data work correctly outside of auditctl
+  * Add new record types
+  * Add io_uring support
+  * Add support for new FANOTIFY record fields
+  * Add keyword, this-hour, to ausearch/report start/end options
+  * Add Requires.private to audit.pc file
+  * Try to interpret OPENAT2 fields correctly
+
+-------------------------------------------------------------------
+Tue Dec 27 10:21:56 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
+Thu Dec 15 19:17:35 UTC 2022 - Enzo Matsumiya <ematsumiya@suse.de>
+
+- Enable build for ARM (32-bit)
+- Update to version 3.0.9:
+  * In auditd, release the async flush lock on stop
+  * Don't allow auditd to log directly into /var/log when log_group is non-zero
+  * Cleanup krb5 memory leaks on error paths
+  * Update auditd.cron to use auditctl --signal
+  * In auparse, if too many fields, realloc array bigger (Paul Wolneykien)
+  * In auparse, special case kernel module name interpretation
+  * If overflow_action is ignore, don't treat as an error
+  (3.0.8)
+  * Add gcc function attributes for access and allocation
+  * Add some more man pages (MIZUTA Takeshi)
+  * In auditd, change the reinitializing of the plugin queue
+  * Fix path normalization in auparse (Sergio Correia)
+  * In libaudit, handle ECONNREFUSED for network uid/gid lookups (Enzo Matsumiya)
+  * In audisp-remote, fix hang with disk_low_action=suspend (Enzo Matsumiya)
+  * Drop ProtectHome from auditd.service as it interferes with rules
+  (3.0.7)
+  * Add support for the OPENAT2 record type (Richard Guy Briggs)
+  * In auditd, close the logging file descriptor when logging is suspended
+  * Update the capabilities lookup table to match 5.16 kernel
+  * Improve interpretation of renamat & faccessat family of syscalls
+  * Update syscall table for the 5.16 kernel
+  * Reduce dependency from initscripts to initscripts-service
+- Refresh patches (context adjusment):
+  * audit-allow-manual-stop.patch
+  * audit-ausearch-do-not-require-tclass.patch
+  * audit-no-gss.patch
+  * enable-stop-rules.patch
+  * fix-hardened-service.patch
+  * harden_auditd.service.patch
+- Remove patches (fixed by version update):
+  * libaudit-fix-unhandled-ECONNREFUSED-from-getpwnam-25.patch
+  * audisp-remote-fix-hang-with-disk_low_action-suspend-.patch
+
+-------------------------------------------------------------------
+Mon Apr 11 20:44:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop buildrequire on C++ compiler.
+- Modernize specfile constructs.
+
+-------------------------------------------------------------------
+Sat Mar 26 11:14:19 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Fix buildrequire for openldap2-devel - audit doesn't require the
+  (outdated) C++ binding, but the C headers that happen to be pulled
+  in by buildrequiring the C++ devel package
+
+-------------------------------------------------------------------
+Fri Mar 25 04:56:19 UTC 2022 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Fix unhandled ECONNREFUSED with LDAP environments (bsc#1196645)
+  * add libaudit-fix-unhandled-ECONNREFUSED-from-getpwnam-25.patch
+- Fix hang in audisp-remote with disk_low_action=suspend (bsc#1196517)
+  * add audisp-remote-fix-hang-with-disk_low_action-suspend-.patch
+
+-------------------------------------------------------------------
+Wed Mar 23 16:37:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add audit-userspace-517-compat.patch 
+
+-------------------------------------------------------------------
+Mon Nov 29 13:13:56 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Use %autosetup
+- Don't include sample rules as %doc, they're already installed
+  as normal files
+- Fix create-augenrules-service.patch:
+  * auditd.service needs to require augenrules.service,
+    not the other way around
+- Fix documentation for enable-stop-rules.patch
+
+-------------------------------------------------------------------
+Sun Nov  7 13:34:20 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 3.0.6:
+  * fixes a segfault on some SELINUX_ERR records
+  * makes IPX packet interpretation dependent on the ipx header
+    file existing
+  * adds b32/b64 support to ausyscall
+  * adds support for armv8l
+  * fixes auditctl list of syscalls on PPC
+  * auditd.service now restarts auditd under some conditions
+
+-------------------------------------------------------------------
+Fri Oct 15 11:13:26 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add CONFIG parameter to %sysusers_generate_pre
+
+-------------------------------------------------------------------
+Wed Oct 13 19:12:06 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Create separate service for augenrules (bsc#1191614, bsc#1181400)
+  * add create-augenrules-service.patch
+  Remove ReadWritePaths=/etc/audit from auditd.service, also removes
+  augenrules call from ExecStartPost.
+  Create augenrules.service with the ReadWritePaths directive above.
+  This makes /etc/audit only accessible by augenrules.service and
+  let auditd.service (and daemon) to be sandboxed again.
+
+- Update audit-secondary.spec to accomodate the new service file.
+
+-------------------------------------------------------------------
+Mon Sep 20 02:06:44 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Fix hardened auditd.service (bsc#1181400)
+  * add fix-hardened-service.patch
+    Make /etc/audit read-write from the service.
+    Remove PrivateDevices=true to expose /dev/* to auditd.service.
+
+- Enable stop rules for audit.service (cf. bsc#1190227)
+  * add enable-stop-rules.patch
+
+-------------------------------------------------------------------
+Thu Sep 16 03:46:19 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Change default log_format from ENRICHED to RAW (bsc#1190500):
+  * add change-default-log_format.patch (SUSE-specific patch)
+
+- Update to version 3.0.5:
+  * In auditd, flush uid/gid caches when user/group added/deleted/modified
+  * Fixed various issues when dealing with corrupted logs
+  * In auditd, check if log_file is valid before closing handle
+
+- Include fixed from 3.0.4:
+  * Apply performance speedups to auparse library
+  * Optimize rule loading in auditctl
+  * Fix an auparse memory leak caused by glibc-2.33 by replacing realpath
+  * Update syscall table to the 5.14 kernel
+  * Fixed various issues when dealing with corrupted logs
+
+-------------------------------------------------------------------
+Mon Aug 16 13:29:21 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- harden_auditd.service.patch: automatic hardening applied to systemd
+  services
+
+-------------------------------------------------------------------
+Fri Jul 30 18:14:14 CEST 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Update to version 3.0.3:
+  * Dont interpret audit netlink groups unless AUDIT_NLGRP_MAX is defined
+  * Add support for AUDIT_RESP_ORIGIN_UNBLOCK_TIMED to ids
+  * Change auparse_feed_has_data in auparse to include incomplete events
+  * Auditd, stop linking against -lrt
+  * Add ProtectHome and RestrictRealtime to auditd.service
+  * In auditd, read up to 3 netlink packets in a row
+  * In auditd, do not validate path to plugin unless active
+  * In auparse, only emit config errors when AUPARSE_DEBUG env variable exists
+- use https source urls
+
+-------------------------------------------------------------------
+Mon Jun 14 20:54:49 CEST 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Adjust audit.spec and audit-secondary.spec to support new version
+- Include fix for libev
+  * add libev-werror.patch
+
+- Update to version 3.0.2
+- In audispd-statsd pluging, use struct sockaddr_storage (Ville Heikkinen)
+- Optionally interpret auid in auditctl -l
+- Update some syscall argument interpretations
+- In auditd, do not allow spaces in the hostname name format
+- Big documentation cleanup (MIZUTA Takeshi)
+- Update syscall table to the 5.12 kernel
+- Update the auparse normalizer for new event types
+- Fix compiler warnings in ids subsystem
+- Block a couple signals from flush & reconfigure threads
+- In auditd, don't wait on flush thread when exiting
+- Output error message if the path of input files are too long ausearch/report
+
+Included fixes from 3.0.1
+- Update syscall table to the 5.11 kernel
+- Add new --eoe-timeout option to ausearch and aureport (Burn Alting)
+- Only enable periodic timers when listening on the network
+- Upgrade libev to 4.33
+- Add auparse_new_buffer function to auparse library
+- Use the select libev backend unless aggregating events
+- Add sudoers to some base audit rules
+- Update the auparse normalizer for some new syscalls and event types
+
+Included fixes from 3.0
+- Generate checkpoint file even when no results are returned (Burn Alting)
+- Fix log file creation when file logging is disabled entirely (Vlad Glagolev)
+- Convert auparse_test to run with python3 (Tomáš Chvátal)
+- Drop support for prelude
+- Adjust backlog_wait_time in rules to the kernel default (#1482848)
+- Remove ids key syntax checking of rules in auditctl
+- Use SIGCONT to dump auditd internal state (#1504251)
+- Fix parsing of virtual timestamp fields in ausearch_expression (#1515903)
+- Fix parsing of uid & success for ausearch
+- Add support for not equal operator in audit by executable (Ondrej Mosnacek)
+- Hide lru symbols in auparse
+- Add systemd process protections
+- Fix aureport summary time range reporting
+- Allow unlimited retries on startup for remote logging
+- Add queue_depth to remote logging stats and increase default queue_depth size
+- Fix segfault on shutdown
+- Merge auditd and audispd code
+- Close on execute init_pipe fd (#1587995)
+- Breakout audisp syslog plugin to be standalone program
+- Create a common internal library to reduce code
+- Move all audispd config files under /etc/audit/
+- Move audispd.conf settings into auditd.conf
+- Add queue depth statistics to internal state dump report
+- Add network statistics to internal state dump report
+- SIGUSR now also restarts queue processing if its suspended
+- Update lookup tables for the 4.18 kernel
+- Add auparse_normalizer support for SOFTWARE_UPDATE event
+- Add 30-ospp-v42.rules to meet new Common Criteria requirements
+- Deprecate enable_krb and replace with transport config opt for remote logging
+- Mark netlabel events as simple events so that get processed quicker
+- When auditd is reconfiguring, only SIGHUP plugins with valid pid (#1614833)
+- In aureport, fix segfault in file report
+- Add auparse_normalizer support for labeled networking events
+- Fix memory leak in audisp-remote plugin when using krb5 transport. (#1622194)
+- In ausearch/auparse, event aging is off by a second
+- In ausearch/auparse, correct event ordering to process oldest first
+- Migrate auparse python test to python3
+- auparse_reset was not clearing everything it should
+- Add support for AUDIT_MAC_CALIPSO_ADD, AUDIT_MAC_CALIPSO_DEL events
+- In ausearch/report, lightly parse selinux portion of USER_AVC events
+- Add bpf syscall command argument interpretation to auparse
+- In ausearch/report, limit record size when malformed
+- Port af_unix plugin to libev
+- In auditd, fix extract_type function for network originating events
+- In auditd, calculate right size and location for network originating events
+- Make legacy script wait for auditd to terminate (#1643567)
+- Treat all network originating events as VER2 so dispatcher doesn't format it
+- If an event has a node name make it VER2 so dispatcher doesnt format it
+- In audisp-remote do an initial connection attempt (#1625156)
+- In auditd, allow expression of space left as a percentage (#1650670)
+- On PPC64LE systems, only allow 64 bit rules (#1462178)
+- Make some parts of auditd state report optional based on config
+- Update to libev-4.25
+- Fix ausearch when checkpointing a single file (Burn Alting)
+- Fix scripting in 31-privileged.rules wrt filecap (#1662516)
+- In ausearch, do not checkpt if stdin is input source
+- In libev, remove __cold__ attribute for functions to allow proper hardening
+- Add tests to configure.ac for openldap support
+- Make systemd support files use /run rather than /var/run (Christian Hesse)
+- Fix minor memory leak in auditd kerberos credentials code
+- Allow exclude and user filter by executable name (Ondrej Mosnacek)
+- Fix auditd regression where keep_logs is limited by rotate_logs 2 file test
+- In ausearch/report fix --end to use midnight time instead of now (#1671338)
+- Add substitue functions for strndupa & rawmemchr
+- Fix memleak in auparse caused by corrected event ordering
+- Fix legacy reload script to reload audit rules when daemon is reloaded
+- Support for unescaping in trusted messages (Dmitry Voronin)
+- In auditd, use standard template for DEAMON events (Richard Guy Briggs)
+- In aureport, fix segfault for malformed USER_CMD events
+- Add exe field to audit_log_user_command in libaudit
+- In auditctl support filter on socket address families (Richard Guy Briggs)
+- Deprecate support for Alpha & IA64 processors
+- If space_left_action is rotate, allow it every time (#1718444)
+- In auparse, drop standalone EOE events
+- Add milliseconds column for ausearch extra time csv format
+- Fix aureport first event reporting when no start given
+- In audisp-remote, add new config item for startup connection errors
+- Remove dependency on chkconfig
+- Install rules to /usr/share/audit/sample-rules/
+- Split up ospp rules to make SCAP scanning easier (#1746018)
+- In audisp-syslog, support interpreting records (#1497279)
+- Audit USER events now sends msg as name value pair
+- Add support for AUDIT_BPF event
+- Auditd should not process AUDIT_REPLACE events
+- Update syscall tables to the 5.5 kernel
+- Improve personality interpretation by using PERS_MASK
+- Speedup ausearch/report parsing RAW logging format by caching uid/name lookup
+- Change auparse python bindings to shared object (Issue #121)
+- Add error messages for watch permissions
+- If audit rules file doesn't exist log error message instead of info message
+- Revise error message for unmatched options in auditctl
+- In audisp-remote, fixup remote endpoint disappearin in ascii format
+- Add backlog_wait_time_actual reporting / resetting to auditctl (Max Englander)
+- In auditctl, add support for sending a signal to auditd
+
+- Removes audit-fno-common.patch: fixed in upstream
+- Removes audit-python3.patch: fixed in upstream
+
+-------------------------------------------------------------------
+Mon Feb  1 18:13:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not explicitly provide group(audit) in system-users-audit:
+  this is automatically handled by rpm/providers.
+
+-------------------------------------------------------------------
+Thu Jan 28 17:59:43 UTC 2021 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Create new "audit" group for read access to logs (bsc#1178154)
+  * add change-default-log_group.patch
+  * update audit-secondary.spec
+
+-------------------------------------------------------------------
+Wed Dec  2 11:49:28 UTC 2020 - Alexander Bergmann <abergmann@suse.com>
+
+- Enable Aarch64 processor support. (bsc#1179515 bsc#1179806)
+
+-------------------------------------------------------------------
+Fri Oct 16 09:40:34 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
+Mon Jan 13 17:39:03 UTC 2020 - Tony Jones <tonyj@suse.com>
+
+- Update to version 2.8.5:
+  * Fix segfault on shutdown
+  * Fix hang on startup (#1587995)
+  * Add sleep to script to dump state so file is ready when needed
+  * Add auparse_normalizer support for SOFTWARE_UPDATE event
+  * Mark netlabel events as simple events so that get processed quicker
+  * When audispd is reconfiguring, only SIGHUP plugins with valid pid (#1614833)
+  * Add 30-ospp-v42.rules to meet new Common Criteria requirements
+  * Update lookup tables for the 4.18 kernel
+  * In aureport, fix segfault in file report
+  * Add auparse_normalizer support for labeled networking events
+  * Fix memory leak in audisp-remote plugin when using krb5 transport. (#1622194)
+  * Event aging is off by a second
+  * In ausearch/auparse, correct event ordering to process oldest first
+  * auparse_reset was not clearing everything it should
+  * Add support for AUDIT_MAC_CALIPSO_ADD, AUDIT_MAC_CALIPSO_DEL events
+  * In ausearch/report, lightly parse selinux portion of USER_AVC events
+  * In ausearch/report, limit record size when malformed
+  * In auditd, fix extract_type function for network originating events
+  * In auditd, calculate right size and location for network originating events
+  * Treat all network originating events as VER2 so dispatcher doesn't format it
+  * In audisp-remote do an initial connection attempt (#1625156)
+  * In auditd, allow expression of space left as a percentage (#1650670)
+  * On PPC64LE systems, only allow 64 bit rules (#1462178)
+  * Make some parts of auditd state report optional based on config
+  * Fix ausearch when checkpointing a single file (Burn Alting)
+  * Fix scripting in 31-privileged.rules wrt filecap (#1662516)
+  * In ausearch, do not checkpt if stdin is input source
+  * In libev, remove __cold__ attribute for functions to allow proper hardening
+  * Add tests to configure.ac for openldap support
+  * Make systemd support files use /run rather than /var/run (Christian Hesse)
+  * Fix minor memory leak in auditd kerberos credentials code
+  * Fix auditd regression where keep_logs is limited by rotate_logs 2 file test
+  * In ausearch/report fix --end to use midnight time instead of now (#1671338)
+
+- Fix build errors when using gcc-10 no-common default (bsc#1160384)
+  New patch: audit-fno-common.patch
+
+- Refresh audit-allow-manual-stop.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 10:32:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce scriptlets' hard dependency on systemd.
+
+-------------------------------------------------------------------
+Sat Jun 23 08:16:07 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.8.4:
+  * Generate checkpoint file even when not results are returned
+    (Burn Alting).
+  * Fix log file creation when file logging is disabled entirely
+    (Vlad Glagolev).
+  * Use SIGCONT to dump auditd internal state (rh#1504251).
+  * Fix parsing of virtual timestamp fields in ausearch_expression
+    (rh#1515903).
+  * Fix parsing of uid & success for ausearch.
+  * Hide lru symbols in auparse.
+  * Fix aureport summary time range reporting.
+  * Allow unlimited retries on startup for remote logging.
+  * Add queue_depth to remote logging stats and increase default
+    queue_depth size.
+
+-------------------------------------------------------------------
+Sun Jun 17 10:48:40 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2.8.3:
+  * Correct msg function name in lru debug code.
+  * Fix a segfault in auditd when dns resolution isn't available.
+  * Make a reload legacy service for auditd.
+  * In auparse python bindings, expose some new types that were
+    missing.
+  * In normalizer, pickup subject kind for user_login events.
+  * Fix interpretation of unknown ioctcmds (rh#1540507).
+  * Add ANOM_LOGIN_SERVICE, RESP_ORIGIN_BLOCK, &
+    RESP_ORIGIN_BLOCK_TIMED events.
+  * In auparse_normalize for USER_LOGIN events, map acct for
+    subj_kind.
+  * Fix logging of IPv6 addresses in DAEMON_ACCEPT events
+    (rh#1534748).
+  * Do not rotate auditd logs when num_logs < 2 (brozs).
+
+-------------------------------------------------------------------
+Tue Apr  3 13:33:34 CEST 2018 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Fri Mar 16 19:44:45 UTC 2018 - tonyj@suse.com
+
+- Change openldap dependency to client only (bsc#1085003)
+- Resolve issue with previous change if both Python2 and Python3 are
+  present, tests were failing as python2 bindings are preferred in this
+  case.
+
+-------------------------------------------------------------------
+Thu Feb 22 11:00:16 UTC 2018 - meissner@suse.com
+
+- reverted -j1 force ppc specific only
+
+-------------------------------------------------------------------
+Wed Feb  7 09:26:35 UTC 2018 - tchvatal@suse.com
+
+- Add patch to fix test run without python2 interpreter:
+  * audit-python3.patch
+- Update to 2.8.2 release:
+  * Update tables for 4.14 kernel
+  * Fixup ipv6 server side binding
+  * AVC report from aureport was missing result column header (#1511606)
+  * Add SOFTWARE_UPDATE event
+  * In ausearch/report pickup any path and new-disk fields as a file
+  * Fix value returned by auditctl --reset-lost (Richard Guy Briggs)
+  * In auparse, fix expr_create_timestamp_comparison_ex to be numeric field
+  * Fix building on old systems without linux/fanotify.h
+  * Fix shell portability issues reported by shellcheck
+  * Auditd validate_email should not use gethostbyname
+
+-------------------------------------------------------------------
+Tue Feb  6 13:24:43 UTC 2018 - normand@linux.vnet.ibm.com
+
+- force -j1 for PowerPC make check to avoid build failure
+  (lookup_test.o: file not recognized: File truncated)
+
+-------------------------------------------------------------------
+Wed Jan 17 15:25:55 UTC 2018 - tchvatal@suse.com
+
+- Add conditions around python plugins to allow us to conditionalize
+  them in enviroment without python2
+
+-------------------------------------------------------------------
+Thu Nov  9 16:21:23 UTC 2017 - mpluskal@suse.com
+
+- Rename python binding packages to match current python packaging
+  standards
+- Update python build dependencies to resolve future split of
+  python2/3
+
+-------------------------------------------------------------------
+Sat Nov  4 21:11:35 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 2.8.1. See audit.spec (libaudit1) for upstream
+  changelog
+- Remove audit-implicit-writev.patch (fixed upstream across 2
+  commits)
+  * 3b30db20ad983274989ce9a522120c3c225436b3
+  * 07132c22314e9abbe64d1031fd8734243285bb3f
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Aug 18 08:50:02 UTC 2017 - dimstar@opensuse.org
+
+- Add audit-implicit-writev.patch: include sys/uio.h to ensure
+  readv and writev are declared.
+
+-------------------------------------------------------------------
+Mon Jul 24 13:59:06 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM groups, diversify descriptions.
+- Remove mentions of static libraries because they are not built.
+
+-------------------------------------------------------------------
+Tue Jul 18 18:33:40 UTC 2017 - tonyj@suse.com
+
+- Update to version 2.7.7. See audit.spec (libaudit1) for upstream
+  changelog
+  Since commit 6cf57d27 (2.7.4) audit is now started as an non-forking 
+  service (bsc#1042781).
+  Add config: audit-stop.rules
+  Refresh patch: audit-allow-manual-stop.patch
+  Refresh patch: audit-no-gss.patch 
+
+-------------------------------------------------------------------
+Fri Apr  1 14:59:05 UTC 2016 - tchvatal@suse.com
+
+- Version update to 2.5. See audit.spec (libaudit1) for upstream
+  changelog
+- Cleanup with spec-cleaner
+- Sort out bit /sbin /usr/sbin/ installation
+- Install the rules as documentation
+- Remove needless %py_requires from python subpkgs
+
+-------------------------------------------------------------------
+Fri Aug 21 19:00:36 UTC 2015 - tonyj@suse.com
+
+- Update to version 2.4.4. See audit.spec (libaudit1) for upstream
+  changelog
+- Add python3 bindings for libaudit and libauparse
+- Remove patch 'audit-no_m4_dir.patch'
+  (added Fri Apr 26 11:14:39 UTC 2013 by mmeister@suse.com)
+  No idea what earlier 'automake' build error this was trying to fix but
+  it broke the handling of "--without-libcap-ng". Anyways, no build error
+  occurs now and m4 path is also needed in v2.4.4 to find ax_prog_cc_for_build
+
+-------------------------------------------------------------------
+Tue Sep  2 17:35:12 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.4. See audit.spec (libaudit1) for upstream
+  changelog
+  Drop patch: auditd-donot-start-if-kernel-cmdline-disabled.patch
+
+-------------------------------------------------------------------
+Fri Aug 15 14:24:33 UTC 2014 - crrodriguez@opensuse.org
+
+- If the system has been booted with audit=0 in the kernel cmdline
+  auditd.service must refrain from starting as the relevant kernel
+  subsystem will be permanently disabled.
+  add patch: auditd-donot-start-if-kernel-cmdline-disabled.patch
+
+-------------------------------------------------------------------
+Thu Jul 10 06:21:55 UTC 2014 - tonyj@suse.com
+
+- Do not require tclass field to be present when searching for AVC
+  records (bnc#878687)
+  add patch: audit-ausearch-do-not-require-tclass.patch
+
+-------------------------------------------------------------------
+Tue Apr 15 00:52:16 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.3.6. See audit.spec (libaudit1) for upstream
+  changelog
+
+-------------------------------------------------------------------
+Wed Mar 26 18:41:33 UTC 2014 - crrodriguez@opensuse.org
+
+- fix systemd warning: 
+  "Configuration file /usr/lib/systemd/system/auditd.service 
+  is marked world-inaccessible. 
+  This has no effect as configuration data is accessible 
+  via APIs without restrictions"
+* indeed restricting access to unit files using filesystem
+  permissions is non-sense.
+
+-------------------------------------------------------------------
+Thu Feb 27 16:28:31 UTC 2014 - tonyj@suse.com
+
+- Add systemd requires (bnc#865849)
+
+-------------------------------------------------------------------
+Tue Feb  4 00:06:30 UTC 2014 - tonyj@suse.com
+
+- Update to version 2.3.3. See audit.spec (libaudit1) for upstream
+  changelog
+
+-------------------------------------------------------------------
+Tue Nov 26 18:28:58 UTC 2013 - tonyj@suse.com
+
+- Update to version 2.3.2. See audit.spec (libaudit1) for upstream 
+  changelog
+- Drop patch 'audit-fix-implicit-defn.patch' (upstream)
+- Add patch 'audit-allow-manual-stop.patch' to reinstate service 
+  stop/restart.
+- /etc/sysconfig/audit still existed but was no longer referenced
+  by systemd, so remove
+- Delete audit-no_plugins.patch, it was stale (no longer referenced
+  by specfiles) but had not been removed.
+
+-------------------------------------------------------------------
+Wed Oct  2 12:48:50 UTC 2013 - opensuse@cboltz.de
+
+- (re-)add rcauditd as symlink to /usr/sbin/service
+
+-------------------------------------------------------------------
+Thu Jun 27 15:17:16 UTC 2013 - tonyj@suse.com
+
+- Eliminate build cycles. audit.spec now builds only libs/devel.
+  Remainder (including daemon) built from audit-secondary.spec
+- Add patch 'audit-fix-implicit-defn.patch' to fix implicit definition
+  warning.
+
+-------------------------------------------------------------------
+Mon Mar 25 17:27:47 UTC 2013 - crrodriguez@opensuse.org
+
+- Buildrequires cap-ng library 
+
+-------------------------------------------------------------------
+Tue Jan 22 12:34:00 UTC 2013 - jengelh@inai.de
+
+- Executing autoreconf requires autoconf
+
+-------------------------------------------------------------------
+Fri Oct 12 13:00:30 UTC 2012 - coolo@suse.com
+
+- Update to version 2.2.1, see audit's changes
+
+-------------------------------------------------------------------
+Tue Feb 28 21:58:24 UTC 2012 - tonyj@suse.com
+
+- Update to version 2.1.3.  See audit.spec upstream changelog
+
+-------------------------------------------------------------------
+Sat Sep 17 13:38:42 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri May 20 16:54:38 UTC 2011 - tonyj@novell.com
+
+- Adjust license of audit-libs-python to be LGPLv2.1 or later.
+
+-------------------------------------------------------------------
+Wed Apr 27 00:05:50 UTC 2011 - tonyj@novell.com
+
+- Upgrade to version 2.1.1 (see audit.changes for upstream change
+  history)
+
+-------------------------------------------------------------------
+Wed Sep 29 00:22:38 UTC 2010 - tonyj@novell.com
+
+- Upgrade to version 2.0.5 (see audit.changes for upstream change
+  history)
+
+-------------------------------------------------------------------
+Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
+
+- use %_smp_mflags
+
+-------------------------------------------------------------------
+Tue May  4 10:51:33 CEST 2010 - tonyj@suse.de
+
+- Upgrade to version 2.0.4 (see audit.changes for upstream change
+  history)
+
+-------------------------------------------------------------------
+Sat Jun 20 12:33:00 CEST 2009 - cmorve69@yahoo.es
+
+- fixed build with --as-needed
+
+-------------------------------------------------------------------
+Mon May 11 17:19:50 CEST 2009 - tonyj@suse.de
+
+- Update from 1.7.7 to 1.7.13 (see audit.changes for upstream change
+  history) 
+
+-------------------------------------------------------------------
+Fri Sep 26 23:27:36 CEST 2008 - tonyj@suse.de
+
+- Update from 1.7.4 to 1.7.7 (see audit.changes for upstream change
+  history)
+
+-------------------------------------------------------------------
+Fri Aug  1 17:12:46 CEST 2008 - ro@suse.de
+
+- disable debuginfo for secondary specfile 
+
+-------------------------------------------------------------------
+Wed Jun 25 01:50:54 CEST 2008 - tonyj@suse.de
+
+- Update from 1.7.2 to 1.7.4 (see audit.changes for upstream change
+  history)
+
+- Update from 1.6.8 to 1.7.2 (see audit.changes for upstream change
+  history) 
+
+-------------------------------------------------------------------
+Tue Jun  3 21:49:41 CEST 2008 - coolo@suse.de
+
+- avoid packaging a directory with different permissions (creating
+  rpm -V output)
+
+-------------------------------------------------------------------
+Wed Apr 16 12:09:26 CEST 2008 - aj@suse.de
+
+- Use %py_requires for proper requires.
+
+-------------------------------------------------------------------
+Wed Mar 26 21:29:38 CET 2008 - tonyj@suse.de
+
+- Update to version 1.6.8.  
+- Rename to audit-secondary and build audisp-plugins from here
+  to minimise bootstrap dependancies.
+
+-------------------------------------------------------------------
+Tue Mar 18 14:43:11 CET 2008 - schwab@suse.de
+
+- Use autoreconf.
+
+-------------------------------------------------------------------
+Wed Oct 10 23:19:29 CEST 2007 - tonyj@suse.de
+
+- Upgrade to 1.6.2
+ 
+-------------------------------------------------------------------
+Wed Jul 25 01:13:09 CEST 2007 - tonyj@suse.de
+
+- Upgrade to 1.5.5
+    Drop audit-swig-attribute.patch (upstreamed)
+
+-------------------------------------------------------------------
+Fri Jul 13 01:58:29 CEST 2007 - tonyj@suse.de
+
+- Fix build errors on ppc
+
+-------------------------------------------------------------------
+Thu Jul 12 01:38:36 CEST 2007 - tonyj@suse.de
+
+- Upgrade to 1.5.4
+
+-------------------------------------------------------------------
+Wed May  2 19:08:53 CEST 2007 - tonyj@suse.de
+
+- Upgrade to 1.5.3.
+
+-------------------------------------------------------------------
+Wed Nov 29 02:47:22 CET 2006 - tonyj@suse.de
+
+- Upgrade to 1.2.9 (drop several patches which are now upstream)
+- /usr/sbin/audispd now packaged by audit-libs-python
+
+-------------------------------------------------------------------
+Sun Nov  5 00:45:21 CET 2006 - ro@suse.de
+
+- fix requires 
+
+-------------------------------------------------------------------
+Thu Aug 31 22:57:52 CEST 2006 - tonyj@suse.de
+
+- Upgrade to 1.2.6-1
+
+-------------------------------------------------------------------
+Wed Aug 16 16:19:20 CEST 2006 - cthiel@suse.de
+
+- split off package 
+

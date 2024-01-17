@@ -1,0 +1,9 @@
+<package name="uriparser" project="openSUSE:Factory">
+  <title>A strictly RFC 3986 compliant URI parsing library</title>
+  <description>This package is based on the package 'liburiparser1' from project 'openSUSE:Factory'.
+
+uriparser is a strictly RFC 3986 compliant URI parsing library. It is
+cross-platform, fast, and supports Unicode.
+</description>
+  <devel project="devel:libraries:c_c++" package="uriparser"/>
+</package>

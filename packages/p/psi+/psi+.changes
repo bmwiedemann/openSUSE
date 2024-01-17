@@ -1,0 +1,1043 @@
+-------------------------------------------------------------------
+Mon Oct 16 08:05:33 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1650+2
+  * libpsi relinked. Updated CMake files: fixed flags for X11
+  * Add optional "Manage Accounts" button on toolbars
+  * Update desktop file
+  * Updated stylized_classic webkit theme. Fixed last message date
+  * src: Fix Qt5 X11Extras usage in CMakeLists.txt (#700)
+  * Make the build reproducible (#699)
+  * Fixed USE_X11 flag behavior
+  * Add Nix-based CI testing using GitHub Actions (#696)
+  * Update emoji to unicode 15.0
+  * Allow proper runtime linking with `pkgin`-installed libraries on NetBSD (#695)
+  * Update Psi+ metainfo.
+  * Fix invalid ID which is violating DBus specifications
+  * Add releases from GitHub
+  * Add Open Age Rating
+  * SystemInfo: improve detection of macOS version
+  * Travis CI: build with system QCA library in Ubuntu Bionic
+  * Iris relinked.
+  * DOAP: Use correct namespace for xmlns:schema (#691)
+  * Updated rosteravatarframe. Fixed tune button
+  * Removed legacy certificates. (#689)
+  * Added Ubuntu CI action. (#687)
+  * Added Fedora CI action. (#686)
+  * Travis CI: update build scripts:
+  * Fixed EventNotifier visibility on psi launch with disabled tray
+  * Mention incompatibility with Qt6
+- switch to manual _service's
+- add 0001-fix-uint_32_t-build-error.patch to fix build
+
+-------------------------------------------------------------------
+Mon Apr 24 10:06:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Wed Mar 16 11:10:55 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1615+0
+  * Iris relinked
+  * psicli: receive next pending event (for windows) (#682)
+  * Added receive-next-event to cli
+  * Good first Psi release date (#681)
+  * Add basic doap file (#678)
+  * Add openSUSE build requirements to INSTALL.md (#677)
+  * Harmonization of Iconsets (#676)
+  * Added context menu to EventNotifier widget
+  * Use EventNotifier widget instead of EventNotifierAction on Toolbar
+  * Added Dark New Classic theme for webkit/webengine
+  * submodules update
+  * Update desktop file
+  * Show read-only MUC vCard in muc info dialog
+  * jabber -> xmppAddress (#648)
+  * Apply application default proxy to application default QNAM
+  * Issue 666: make it possible to use xmll proxy for http upload
+  * Get rid of legacy signals in PsiAccount
+  * Added an option to show technical kicks
+  * function-harmonizations (#661)
+  * gchat_templates -> chat_templates (#658)
+  * Good order of Backward/Forward (#655)
+  * xmpp by default instead of mailto (#640)
+  * Del -> canDel (#647)
+- skins added
+- skinplugin added
+
+-------------------------------------------------------------------
+Mon Nov 15 08:11:29 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1582+0
+  * JEP -> XEP (#649)
+  * The page has been moved a long time ago (#646)
+  * It is XMPP instead of Jabber (#642)
+  * https instead of http (#643)
+  * Harmonization of the description (#638)
+  * More URI types to parse in text widgets  (#641)
+  * Minor fixes
+  * Don't insert stupid empty line before quote
+  * Fixed broken quote in groupchats
+  * Fix a few static analyzer warnings
+  * Put some reasonable defaults for groupchat size
+  * Defaults for bundles usrsctp same way like qca
+  * iris relinked
+  * Updated ContactManagerDlg: added doubleClick action to select similar
+    items. small code refactoring. Removed sound record button from widgets in
+    options.
+
+-------------------------------------------------------------------
+Mon Oct  4 09:25:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+-  update to 1.5.1555+0
+ * Save shared files in XDG_DATA_HOME instead of XDG_CACHE_HOME (#627)
+ * Fixed #621: don't notify contactlist model about any changes during
+   layout update
+ * relinked qite and iris afer recent crash fixes
+ * added the mucNick() fn to plugins api (#625)
+
+-------------------------------------------------------------------
+Tue Jun 15 07:02:25 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1548+0
+ * iris relinked
+ * Added new thumbnailtoolbar widget for Windows OS (requires WinExtras library)
+ * fixed keycap emojis
+ * emoji 13.1
+ * Removed skin tone and not full-qualified emojis
+ * Attempt to fix emoticons abscence
+ * Enable emoji font in emoticons popup selector
+ * Fixed crash on incoming calls when psidmedia isn't loaded
+ * Enlarge file transfer previews
+ * Pass base port to ice manager
+ * Fixed styles for Psi icons in webkit / fixed wrong downscaling of smileys
+ * Fixed emoji parser handling high surrogates
+ * Draw emojis with system font
+ * Allow select peer resource where to send files
+ * Update documentation
+ * Fix broken encrypted icons in webkit chatlog
+ * reindex iconsets
+ * Get rid of ICQ and Yahoo iconsets
+ * minor qt container detaching fix
+ * Added address sanitizer option. To use compiler means to validate pointers
+ * Always clear referer since not just imgur does't like hot links
+ * minor qt container detaching fix
+ * Added share files to chat dialog's context menu
+ * Fix mime for svg icons
+ * Use ice.setRemoteCredentials instead of separate user/password functions
+- cleanup obsoletes.
+
+-------------------------------------------------------------------
+Mon Apr 19 08:42:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1484+0
+  * Use explicit u8 string literal for quote
+  * Remove old unsupported plugin for Snarl
+  * Remove old unsupported plugins
+  * Iris relinked
+  * Added QPlainTextEdit the list of widget available for options
+  * Update FindLibGpgError.cmake
+
+-------------------------------------------------------------------
+Thu Feb  4 08:51:58 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1477+3
+  * Don't crash if webkit theme requests not existing icon
+  * Christmas edition.. jingle bells.. jingle bells..
+  * libpsi relinked
+  * iris relinked
+  * Fix loading of themes in webkit and webengine builds of Psi
+  * Fix build of webkit version of Psi
+  * Update cmake script for version calc
+  * Tiny fix in INSTALL
+  * Update documentation
+  * Clean up source tree
+  * Removed support of qmake based builds
+  * Remove outdated documentation.
+  * Added a workaround for user toolitips wrong rendering with Qt 5.15
+  * Add app version to QApplication object
+  * Use notification service to show muc join errors
+  * Never "." in <summary> and add missing "+" (#602)
+  * Add AkariXB bot (#604)
+  * jabber: to xmpp: (#603)
+  * Added bundled usrsctp
+  * Added closing </div>
+  * Return icon size in the very end of the size computation function (easier to debug)
+  * Remove unused Prosody stuff
+  * More excludes for the pre-commit hook
+  * Fixed crash on profile change
+
+-------------------------------------------------------------------
+Fri Oct  2 05:13:34 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.4.1513
+  * Iris updated
+  * Vcard: Added a workaround to show either desc or note
+  * Fix http links
+  * Update application meta files
+  * Wayland related fixes
+  * Fixed crash on multiple vcard update for the same muc contact
+  * An attempt to fix crash mentioned in #411
+  * Fixed another crash on exit (after opening at least one chat)
+  * Fixed crash on empty cert chain
+  * Applied a few fixes to themes
+  * Updated stun servers list
+  * Avoid smileys double conversion on each access with webkit/engine version
+  * Fixed image loading from imgur
+  * Update psi.desktop
+
+-------------------------------------------------------------------
+Thu Aug  6 08:29:54 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.1473
+  * Remove some weird code from psitabwidget and fix possible crash on hide all
+  * Allow subscribe on account before login
+  * Update client version info on login
+  * Update client version in iris on updates from plugins
+  * Ensure null strings is not used for disco client info
+  * Removed Reload action from webview for non basic chatlog
+  * Updated msmgle. Fixed redundant replacement of the widget, which led to the loss of connections and broke the input and editing of text.
+  * Fixed taking cached share filename in device opener
+  * Set metadata to plugin as qobject property
+  * Tooltip colors added to UI
+  * Updated iconselect.cpp. Increased number of columns
+  * scale smileys to height, not to square
+  * relink iris
+  * and much more
+- switch to obs_scm
+
+-------------------------------------------------------------------
+Fri Jun  5 11:31:28 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.1366
+  * More svg related fixes
+  * relink libpsi
+  * Fixed overriding iconsets loading with svg inside
+  * Profanity converted to svg
+  * Render SVG in default size if desired size is not set
+  * Improve support of XEP-0380
+  * iris relinked
+  * Improve bookmarks menu + simplify work of translators
+  * Ensmall your icons
+  * Enlarge your icons
+  * Vectorize most of client icons
+  * Remove unused method from plugins interface
+  * Add indicator of secure messages in groupchats
+  * Rename icons related to encryption
+  * Change icons for all encrypted messages in chat
+  * Use captured this explicitly to hint compiler
+  * Fixed some deprecation warnings from Qt 5.15
+  * Removing deprecated bearer management
+  * More optimizations and fixes for svg icons
+  * Fixed rendering issues of svg clients in jid switcher
+  * Added original Conversations client icon
+  * An attempt to fix plugins options. Fixed codestyle
+  * and much more
+- skinsplugin dropped
+- gnupgplugin renamed to openpgpplugin
+
+-------------------------------------------------------------------
+Sun May  3 07:08:54 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.1159
+  * iris and libpsi relinked
+  * Added a workaround for an ICE related bug
+  * Use legacy aggressive nomination for both sides since old rtp code doesn't
+    expect anything else
+  * Don't start sending stun transaction until both sides know each other
+    candidates and credentials
+  * Dynamic adjusting settings/xmpp features on psimedia plugin on/off
+  * Set max icon size to ~2*font-size for iconselect widget
+  * More fixes against svg icons
+  * Render svg icons for accounts in expected sizes
+  * Implemented a way to notify Psi from a plugin about changed media devices
+  * missed header
+  * Fixed gstreamer libs names for msvc
+  * PsiMedia initialization updated accroding to lib changes
+  * Updates according to psimedia lib changes
+  * Improve usage of OpenPGP encryption (step 4)
+  * and much more
+- icqdie plugin was dropped
+
+-------------------------------------------------------------------
+Tue Jan 28 15:38:43 UTC 2020 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.1004
+  * Update Psi IM and Psi+ icons
+  * Decrease size of roster icons
+  * Set jid/nick/passw for mucjoindlg after it was fully initialized
+  * Allow setting email type in vcard
+  * Work with audio messages and options. (#491)
+  * Added cache for advanced flat options editor
+  * close jingle connection early on reading last byte
+  * Don't crash on moving file to cache failure
+  * Fixed sharing in private chat after hiding real jid in SIMS source
+  * Simplify file publishing code
+  * resize image shares previews on webkit version
+  * dirty hack to make early logout working again
+  * Fixed broken pep avatar request
+  * iris relinked
+- do not package already embedded images
+
+-------------------------------------------------------------------
+Fri Nov  1 06:37:54 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.962
+  * Update Psi+ Emoji Pack (#485)
+  * FSM: Favor urls from clipboard and then other stuff
+  * Fixed displaying of own files with webkit
+  * Started work on shares streaming for QNAM
+  * iris relinked.
+  * Changed some default toolbar and notification options
+  * Fixed some share downloader caching and image rendering bugs
+  * Allow SIMS for images
+  * Fixed downloaded shares caching
+  * relink qite
+  * Fixed amplitudes diagram for audio messages
+  * Added Content-Length header to ranged requests too
+  * Make voice messages over jingle working
+  * wip: proxying shares via http
+  * linkify shared urls
+  * Fixed crash on startup for all-in-one mode after previous commit
+  * Work with tabs (#483)
+  * Fixed opt_application (#481)
+  * and more...
+
+-------------------------------------------------------------------
+Fri Sep 27 07:05:18 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.885
+  * Fixed psi autostart on Linux OS
+  * An attempt to fix text drag-n-drop in OS Linux with Qt>=5.11
+  * fixed drag'n'drop for sharing
+  * PEP options updated. Added possibility to enable/disable tunes from options
+  * Update sound record button on chatedit type switching
+  * Fixed potential crash on audio histogram normalization
+  * Added actions to desktop file
+  * Fixed crash on roster contact search
+  * make histogram working
+  * Jingle over http (#464)
+  * Removed A Tip Of The Day dialog as outdated
+  * Rubbish removed
+  * themeserver removed
+  * Enabled http server on all unix systems
+  * Fixed text label emptiness at start of recording
+  * File sharing for arbitrary mimetype
+  * Voice messaging UI
+  * and more...
+
+-------------------------------------------------------------------
+Mon Jul  1 08:10:03 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.768
+  * Deprecate http upload plugin in favor of internal media sharing
+  * Auto accept jingle download requests for shared files
+  * save downloaded share to cache
+  * Handle only audio references for now
+  * Make audio messages working
+  * Work in progress on reference display
+  * Fixed crash on apply of terminated session
+  * Fixed crash on double delete of httpupload
+  * Remove temporary shared files
+  * Send all shared items in one message
+  * Send references in one message
+  * iris relinked
+  * qite relinked
+
+-------------------------------------------------------------------
+Thu May 16 06:35:29 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.689
+  * CMake now using automoc. Iris and libpsi relinked
+  * an attempt to draw progress for filetransfers
+  * jingle: some progress with file receive
+  * Jingle file sending works now
+  * Fixed crashes on exit
+  * Update all strings with project description.
+  * Another fix for travis scripts
+  * Fixed travis scripts
+  * and more fixes
+- remove 0001-iris-return-a-value-from-descriptionFromXml.patch
+  solved differently in upstream
+
+-------------------------------------------------------------------
+Tue Feb 26 09:50:39 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.569+2
+  * Update documentation
+  * libpsi relinked
+  * Install skins with other extra files when they are available
+  * SystemInfo: improve detection of macOS version and full name
+  * Turned off switching of AutoJid to the resource which sent a receipt
+  * Tiny code refactoring.
+  * iris relinked
+  * Fix clang warnings
+  * fixed EventIdGenerator::getId method
+  * fixed issue #424
+- enable Qt WebEngine
+- add license for qite
+- add 0001-iris-return-a-value-from-descriptionFromXml.patch
+
+-------------------------------------------------------------------
+Wed Jan 23 08:59:12 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.544+1
+  * Reject mucjoindlg if corresponding captcha dialog is rejected
+  * a try to fix crash mentioned in #411
+  * Happy new year 2019! (#413)
+  * silk iconset better meta info (#419)
+  * Online Help dead #404 (#420)
+  * iconsets update (#415)
+  * email update
+  * Applied network session close handling patch by Jiri Slaby
+  * Attempt to fix reconnection to XMPP server after system wakeup
+  * Fixed crash on multiple vcard update for the same muc contact
+  * Bring back smooth scrolling
+  * Fixed regression with copy&paste
+  * Use plaintext system messages in private chats for consistency
+    with everything else
+  * Started work on inline media share (xep-0385)
+  * Started QITE integration
+  * Allow set topic even where there is not any topic yet
+  * Get rid of psi_features for plugins
+  * Allow plugins send javascript to chatlogs
+  * More webkit related API for plugins
+  * Don't rewrite muc jid with participant jid
+  * Uncommented act_add_to_roster in urlobject menu
+  * Fixed Psi+ detection
+  * Step forward with JS filters
+  * Keep messageview js filters just in plugin manager
+  * A little progress with js message view filters
+  * Removed obsolete profile migration
+  * A try to restore compatibility with old webkit (old javascript standard)
+  * Remove anti-focus stealing prevention code.
+  * Merged New History implementation by Alexey Andreev (liuch)
+  * removed the last piece of map2json
+  * Fixed scrollkeeper for old webkit version
+  * Improve scroll keeper with WebEngine version.
+  * Added support for XEP-0157
+
+-------------------------------------------------------------------
+Thu Nov 29 15:50:17 UTC 2018 - Jiri Slaby <jslaby@suse.com>
+
+- update to 1.4.411
+  * Updated cmake files. Changed c++ standard to c++14
+  * Unconditional c++14 + a few changes wrt standard
+  * Updated CMake files. Win32 definitions moved to separate file
+  * Reverted workaround for invalid skype caps
+  * Updated http-parser/qhttp modules
+  * Fixed build against hunspell 1.7.
+  * Update CMakeLists.txt
+  * Version bumped to 1.4
+  * Merged WebKit preview fixes from master branch
+  * Applied eac157d1595b (SM fixes) from upstream
+  * Fixed compatibility with Qt-5.XX
+  * Fix build with Qt 5.11.x
+
+-------------------------------------------------------------------
+Thu Oct 11 12:49:39 UTC 2018 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.3.425
+  * Do not destroy window's contents on hiding it via 'close' button (#389)
+  * Apply part of patch 0280-psi-multirows-tab.diff
+  * Fix cppcheck notes with severity "warning"
+  * Fix cppcheck notes with severity "error"
+  * Updated src/tools/tunecontroller/plugins/aimp/third-party/apiRemote.h.
+    Updatd aimp sdk to 4.5.1 version
+  * Updated CMake files. Added possibility to compile psimedia plugin if
+    sources found in root of psi sources
+
+-------------------------------------------------------------------
+Sun Sep  2 09:18:02 UTC 2018 - jslaby@suse.com
+
+- update to 1.3.410
+  * Clearer logic for history preload. Remove iris from MessageView
+  * Don't send Inactive chatstate right after Gone when closing the chat window
+  * chatstate fixes
+  * Update configuration scripts using qconf v2.4-2-g39e05e6
+  * iris relinked
+  * Improve detection of Spark XMPP client
+  * Updated tranlations in desktop file
+  * Tiny improvement in message about PsiMedia loading problem
+  * Changes in plugin API required for OMEMO MUC support
+  * Updated src/win32-prepare-deps.cmake file. Added new gstreamer libs to prepare-bin-libs target
+
+-------------------------------------------------------------------
+Thu Jul  5 07:58:18 UTC 2018 - jslaby@suse.com
+
+- update to 1.3.396
+  * Fix cppcheck notes "nullPointerRedundantCheck":
+  * iris relinked
+  * libpsi relinked
+  * Fix cppcheck note:
+  * Tiny fixes
+  * Fix build with MSVC
+  * Fix build with QtWebKit after aa48948c6ae245a0682774ed499f9d49f8dacd8b.
+  * Tiny code refactoring.
+  * Fix cppcheck warning about uninitialized class members
+  * Fix cppcheck warning:
+  * Fix cppcheck warnings about usage of uninitialized variables
+  * Added missed include. fixes compilation failure on Mac OS
+  * Fix cppcheck complaints
+  * plugins/deprecated/chess: delete unused code
+  * Update caps when toggling a plugin that contributes to caps
+  * Less pointers, more smart stuff
+  * httpupload: encrypt files using OMEMO plugin
+  * Merge pull request #378 from psi-im/reworked_encryption_plugin_approach
+  * EncryptionSupport: committed forgotten file
+  * EncryptionSupport: moved EncryptionHandler from the constructor to a setter
+  * EncryptionSupport: pass EncryptionHandler to XMPP::Client in constructor
+    instead of individual methods that require it
+  * New EncryptionSupport plugin API that allows encryption plugins to plug
+    into the right place for message processing
+  * Revert "Fixed accidentally broken request of "composing" events"
+- new OMEMO plugin
+
+-------------------------------------------------------------------
+Mon Jun 11 08:19:17 UTC 2018 - jslaby@suse.com
+
+- update to 1.3.362
+  * Grammar fixes
+  * Replace xmpp icon with another one without text
+  * client_icons.txt: add Dino
+  * Try to fix issue #364
+  * Try to fix build with qt-5.11
+  * Compute relative path to theme's file before starting searching it everywhere.
+  * Disable translucent widgets background even if requested by theme.
+  * Always recreate jsutil to drop any persistent data from previous theme
+  * Sync src/libpsi submodule
+  * Webkit: Allow loading empty files. convert tiff to png on the fly
+  * Disable context help button on dialogs where it's not used
+  * Don't try to show gstreamer info if psimedia library is not loaded
+  * Added an icon for xmpp service in useradd dialog to be consistent with other services. fixes #370
+  * Don't close Ad-Hoc dialog if response command has another form
+  * Rely on QNetworkSession to decide when to connect after resume.
+  * an attempt to make reconnection after sleep faster
+- convert ChangeLog to unix newlines
+
+-------------------------------------------------------------------
+Thu May  3 06:59:10 UTC 2018 - jslaby@suse.com
+
+- update to 1.3.343
+  * Make sure that PGP gets enabled only when it's available
+  * Cleanup stream on wakeup to avoid receiving errors from stalled stream while reconnecting
+  * Updated CMake files. Added detection of win32 architecture for MSVC
+  * Prevent crash on too log wait for credentials input.
+  * Linkify URLs with "file:" scheme
+  * Fixed crash on exit (write to PsiAccount members after delete)
+  * Adding Flatpak package manifest
+  * Use physical units for muc roster avatars size
+  * util.js: add classes to media previews for easy CSS styling
+  * util.js: add webp, m4a and ogv to the list of media extensions
+  * util.js: ignore query params and hash when determining file extension
+  * util.js: add youtube.com to the list of domains triggering youtube preview
+  * util.js: consider application/octet-stream mime as unknown to the server, so fallback to extension-based heuristic in such case
+  * Fixed crash on exit in Windows
+  * Add an option to send composing events at the beginning of conversation
+  * Set tab to inactive color when the contact is in inactive state
+  * Use static libidn on Windows
+  * Ignore dbus on Windows
+  * Improved hunspell/qca/idn search for qmake based compilation
+  * Tabs to spaces for qcm modules
+  * and more...
+
+-------------------------------------------------------------------
+Sun Jan 21 22:00:10 UTC 2018 - jslaby@suse.com
+
+- update to 1.2.173
+  * Applied patch 0120-psi-tray-act-bring-to-front.diff from Psi+
+  * a little optimization in the roster
+  * Hide OS version if it's "unknown"
+  * Do not rewrite accounts.xml everytime when number of online contacts is changed
+  * Updated CMake files. Fixed build without qt5keychain library
+  * a little optimization in ContactListViewDelegate::eventFilter
+  * removed Q_UNUSED for a variable
+  * refactored ContactListViewDelegate
+  * disable keychain for portable Psi. make an ui option for it
+  * Update CMakeLists.txt
+  * Updated CMake files. USE_KEYCHAIN flag enabled by default if Qt5Keychain library found.
+  * fied typo in defaults.xml
+  * relink iris
+  * Fixed broken compilation
+  * Allow disable keychain in runtime
+  * Updated CMake files.Added new ONLY_BINARY flag to build and install only psi binary. Some changes in install section
+  * Fixed qt component finder in qcm
+  * Upadated cmake/modules/FindQca.cmake. Added new path to find Qca includes. iris relinked
+  * iris relinked
+  * Changed some default options + applied Psi+ patch for contact groups in main menu
+  * and more...
+
+-------------------------------------------------------------------
+Sun Dec 10 08:34:48 UTC 2017 - jslaby@suse.com
+
+- update to 1.2.109+0
+  * many bugfixes
+  * build system fixes
+
+-------------------------------------------------------------------
+Wed Oct  4 10:59:28 UTC 2017 - jslaby@suse.com
+
+- update to 1.2.100
+  * many bugfixes
+
+-------------------------------------------------------------------
+Tue Sep  5 09:32:33 UTC 2017 - jslaby@suse.com
+
+- update to 1.2.46
+  * many bugfixes
+
+-------------------------------------------------------------------
+Wed Aug 23 12:45:46 UTC 2017 - jslaby@suse.com
+
+- update to 1.2.39
+  * many bugfixes
+  * dropped support for qt4 (upstream dropped that too)
+
+-------------------------------------------------------------------
+Fri Jul 28 08:42:38 UTC 2017 - jslaby@suse.com
+
+- update to 1.2.15
+  * many bugfixes
+  * removed MSN and AIM icons
+
+-------------------------------------------------------------------
+Thu Jun 22 08:46:06 UTC 2017 - jslaby@suse.com
+
+- update to 1.0.98
+  * many bugfixes
+- remove 0001-plugins-imagepreviewplugin-include-QWebFrame.patch
+  It is upstram now.
+
+-------------------------------------------------------------------
+Fri Jun  2 11:01:25 UTC 2017 - jslaby@suse.com
+
+- update to 1.0.19+1
+  * some bugfixes
+  * dropped deprecated plugins
+    + captchaformsplugin
+    + gmailserviceplugin
+    + gnome3supportplugin
+- add 0001-plugins-imagepreviewplugin-include-QWebFrame.patch
+
+-------------------------------------------------------------------
+Tue May 23 07:47:55 UTC 2017 - jslaby@suse.com
+
+- update to 0.16.584.748+1
+  * some bugfixes
+  * code unification of psi and psi+
+- switch to sane versioning, according to upstream version which
+  started being sane recently too.
+- split -lang to a separate .spec (lang comes from a differen
+  repository with different versioning)
+
+-------------------------------------------------------------------
+Mon May 15 12:17:01 UTC 2017 - jslaby@suse.com
+
+- update to 20170502
+  * updated translations
+  * some bugfixes
+
+-------------------------------------------------------------------
+Wed Apr  5 11:54:57 UTC 2017 - jslaby@suse.com
+
+- update to 20170403
+  * updated translations
+  * some bugfixes
+- use cmake() in .spec
+
+-------------------------------------------------------------------
+Fri Mar 24 13:20:01 UTC 2017 - jslaby@suse.com
+
+- update to 20170321
+  * updated translations
+  * some bugfixes
+- switch to use cmake & ninja (new support)
+- join -icons, -sounds and -themes into -data
+- use qt5 on leap >= 42.2 too
+- drop psi+-appdata-desktop-reference.patch: appdata no longer used
+
+-------------------------------------------------------------------
+Mon Feb 13 08:07:02 UTC 2017 - jslaby@suse.com
+
+- update to 20170212 (bnc#1024687 CVE-2017-5593)
+  * updated translations
+  * some bugfixes
+  * added httpupload and imagepreview plugins
+
+-------------------------------------------------------------------
+Wed Nov 30 09:05:53 UTC 2016 - jslaby@suse.com
+
+- update to 20161109
+  * updated translations
+  * some bugfixes
+
+-------------------------------------------------------------------
+Tue Oct  4 15:06:01 UTC 2016 - jslaby@suse.com
+
+- update to 20161003
+  * updated translations
+  * some bugfixes
+
+-------------------------------------------------------------------
+Fri Jul 29 11:17:21 UTC 2016 - jslaby@suse.com
+
+- obsolete deleted psi (bnc#990894)
+- update to 20160727
+  * updated translations
+  * some bugfixes
+
+-------------------------------------------------------------------
+Wed Jun  8 08:31:21 UTC 2016 - jslaby@suse.com
+
+- update to 20160607
+  * updated translations
+  * some bugfixes
+- add plugins-devel for building external plugins
+
+-------------------------------------------------------------------
+Tue May  3 15:43:11 UTC 2016 - dimstar@opensuse.org
+
+- Add psi+-appdata-desktop-reference.patch: Fix the reference to
+  the .desktop file in appdata.xml: upstream installs psi.desktop
+  as psi-plus.desktop, psi.appdata.xml as psi-plus.appdata.xml.
+  The reference inside the appdata.xml has to match in order for
+  the linking between appdata file and .desktop file to work.
+
+-------------------------------------------------------------------
+Mon May  2 06:23:45 UTC 2016 - jslaby@suse.com
+
+- update to 20160501
+  * updated translations
+  * some bugfixes
+  * fixed frequent double free crash
+
+-------------------------------------------------------------------
+Sat Apr 23 08:02:22 UTC 2016 - jslaby@suse.com
+
+- update to 20160422
+  * updated translations
+  * some bugfixes
+  * many new icons
+- new subpackages: icons, lang, sounds, themes
+
+-------------------------------------------------------------------
+Mon Mar  7 16:28:33 UTC 2016 - jslaby@suse.com
+
+- update to 20160304
+  * updated translations
+  * some bugfixes
+  * 2 new plugins: enummessages messagefilter
+- remove: proper-activate.patch (really not needed)
+
+-------------------------------------------------------------------
+Tue Nov 24 08:32:00 UTC 2015 - jslaby@suse.com
+
+- update to 20151120
+  * updated translations
+  * some bugfixes
+- remove: qt55-build-fixes.patch -- now unneeded, fixed upstream
+- enable X11 Screen Saver extension
+
+-------------------------------------------------------------------
+Sun Oct 11 10:33:30 UTC 2015 - jslaby@suse.com
+
+- use qt 5
+  * reintroduce qt55-build-fixes.patch (actually needed for 5.5)
+
+-------------------------------------------------------------------
+Tue Sep 29 13:19:30 UTC 2015 - jslaby@suse.com
+
+- update to 20150925
+  * updated translations
+  * added lost context menu adding
+  * some bugfixes
+- remove: qt55-build-fixes.patch (not needed anymore)
+- remove: qca-qt5.patch
+  * and no need to call qconf anymore, they use a new enough one
+
+-------------------------------------------------------------------
+Wed Sep  9 10:43:26 UTC 2015 - jslaby@suse.com
+
+- update to 20150908
+  * updated translations
+  * some bugfixes
+- fix URL
+
+-------------------------------------------------------------------
+Wed Jul 22 19:40:56 UTC 2015 - jslaby@suse.com
+
+- update to 20150708
+  * updated translations
+  * some bugfixes
+
+-------------------------------------------------------------------
+Fri Apr 24 14:34:21 UTC 2015 - jslaby@suse.com
+
+- update to 20150423
+  * updated translations
+  * some bugfixes
+- removed kill-Q_WS_X11.patch (in upstream)
+
+-------------------------------------------------------------------
+Thu Apr  9 07:49:16 UTC 2015 - jslaby@suse.com
+
+- qt55-build-fixes.patch: add
+
+-------------------------------------------------------------------
+Tue Apr  7 19:22:13 UTC 2015 - astieger@suse.com
+
+- build with current libotr (4.x)
+- note qt4 minimum requirement
+
+-------------------------------------------------------------------
+Tue Mar 17 09:44:10 UTC 2015 - jslaby@suse.com
+
+- update to 20150227
+  * updated translations
+  * some bugfixes
+- port to qt5 ready, waiting for fixed packages to reach factory
+- added kill-Q_WS_X11.patch
+- added qca-qt5.patch
+- added proper-activate.patch
+
+-------------------------------------------------------------------
+Wed Jan 14 16:33:51 UTC 2015 - jslaby@suse.com
+
+- update to 20150103
+  * updated translations
+  * many bugfixes
+  * remove the need of qconf (it's run by upstream already)
+
+-------------------------------------------------------------------
+Fri Dec  5 10:05:52 UTC 2014 - jslaby@suse.com
+
+- update to 20141129
+  * updated translations
+  * many bugfixes (see ChangeLog)
+  * login1-dbus-suspend.patch: remove, in upstream
+
+-------------------------------------------------------------------
+Mon Aug 18 12:34:59 UTC 2014 - jslaby@suse.com
+
+- update to 20140723
+  * updated translations
+  * many bugfixes (see ChangeLog)
+
+-------------------------------------------------------------------
+Wed Jul  2 15:18:16 UTC 2014 - jslaby@suse.com
+
+- update to 20140620
+  * updated translations
+  * many bugfixes (see ChangeLog)
+
+-------------------------------------------------------------------
+Tue May  6 13:41:09 UTC 2014 - jslaby@suse.com
+
+- update to 20140505
+  * updated translations
+  * many bugfixes (see ChangeLog)
+
+-------------------------------------------------------------------
+Thu Feb 20 19:48:55 UTC 2014 - jslaby@suse.com
+
+- update to 20130911
+  * updated translations
+  * many bugfixes (see ChangeLog)
+
+-------------------------------------------------------------------
+Fri Jan 10 10:21:51 UTC 2014 - jslaby@suse.com
+
+- update to 20130911
+  * updated translations
+  * many bugfixes (see ChangeLog)
+- enable more plugins
+  * chess
+  * clientswitcher
+  * extendedmenu
+  * gomokugame
+  * jabberdisk
+- enable whiteboarding
+
+-------------------------------------------------------------------
+Wed Sep 25 08:33:11 UTC 2013 - jslaby@suse.com
+
+- update to 20130911
+  * updated translations
+  * many bugfixes (see ChangeLog)
+
+-------------------------------------------------------------------
+Thu Aug 15 17:12:58 UTC 2013 - jslaby@suse.com
+
+- update to 20130815
+  * updated translations
+  * many bugfixes (see ChangeLog)
+  * remove yandex narod plugin as it was deprecated
+- remove add-return-to-nonvoid-fun.patch as it is upstream now
+
+-------------------------------------------------------------------
+Fri Jul 19 19:52:58 UTC 2013 - jslaby@suse.com
+
+- update to 20130719
+  * updated translations
+  * many bugfixes (see ChangeLog)
+
+-------------------------------------------------------------------
+Mon May 13 11:29:06 UTC 2013 - jslaby@suse.com
+
+- login1-dbus-suspend.patch: logind sends a different signal during
+  suspend
+
+-------------------------------------------------------------------
+Mon May 13 07:46:55 UTC 2013 - jslaby@suse.com
+
+- update to 20130505
+  * updated translations
+  * many bugfixes (see ChangeLog)
+
+-------------------------------------------------------------------
+Mon Apr 15 09:33:02 UTC 2013 - jslaby@suse.com
+
+- update to 20130405
+  * updated translations
+  * many bugfixes
+
+-------------------------------------------------------------------
+Sat Mar  2 09:29:08 UTC 2013 - jslaby@suse.com
+
+- update to 20130227
+  * updated translations
+  * many bugfixes
+
+-------------------------------------------------------------------
+Tue Feb 12 10:27:12 UTC 2013 - jslaby@suse.com
+
+- update to 20130211
+  * updated translations
+  * added support for qt5
+  * added gnupg plugin
+  * many bugfixes
+
+-------------------------------------------------------------------
+Wed Jan  9 17:01:15 UTC 2013 - jslaby@suse.com
+
+- enable otr plugin
+- add gdb to buildrequires as it is used for adding gdb-index
+
+-------------------------------------------------------------------
+Wed Jan  9 15:27:12 UTC 2013 - jslaby@suse.com
+
+- split package
+  * free part will be distributed with opensuse (tehnick's repo)
+  * non-free elsewhere (icons with weird licenses)
+
+-------------------------------------------------------------------
+Wed Jan  2 10:41:12 UTC 2013 - jslaby@suse.com
+
+- switch %{version}-%{release} requires to %{version} only
+- use %{?_smp_mflags} instead of %{?jobs:-j%jobs}
+
+-------------------------------------------------------------------
+Sat Dec 29 13:04:32 UTC 2012 - jslaby@suse.com
+
+- proper version
+
+-------------------------------------------------------------------
+Fri Dec 28 23:23:11 UTC 2012 - jslaby@suse.com
+
+- newer snapshot
+- rework to use _service files for easier updating
+- remove qt translation files (they were not used at all)
+
+-------------------------------------------------------------------
+Mon Oct  8 08:05:58 UTC 2012 - jslaby@suse.com
+
+- updated translations: 5367.2
+- newer snapshot
+- disable otr -- does not work with new libotr (in factory)
+
+-------------------------------------------------------------------
+Fri Jun 29 17:01:26 CEST 2012 - jslaby@suse.de
+
+- enable pepchangenotify and otr plugins
+
+-------------------------------------------------------------------
+Wed Jun 27 23:37:16 CEST 2012 - jslaby@suse.de
+
+- update to 0.15.5337
+  * see changelog.txt for changes
+- update translations from psi-plus-i18n
+
+-------------------------------------------------------------------
+Fri Apr 20 22:26:51 CEST 2012 - jslaby@suse.de
+
+- update to 0.15.5320
+  * see changelog.txt for changes
+
+-------------------------------------------------------------------
+Sun Nov  6 20:20:50 CET 2011 - jslaby@suse.de
+
+- update to 0.15.5185
+  * see changelog.txt for changes
+- fixed emoticons in chat
+- add gnome3support plugin
+- update ru translation
+
+-------------------------------------------------------------------
+Sun Nov  6 20:20:50 CET 2011 - jslaby@suse.de
+
+- update to 0.15.5130
+  * see changelog.txt for changes
+- update ru translation
+
+-------------------------------------------------------------------
+Wed Jul 13 11:01:06 CEST 2011 - jslaby@suse.de
+
+- update to 0.15.5050
+  * see changelog.txt for changes
+- we now use numbering scheme from version.txt
+
+-------------------------------------------------------------------
+Fri Jun 17 21:34:06 CEST 2011 - jslaby@suse.de
+
+- update to 0.15.4056
+
+-------------------------------------------------------------------
+Sun May 22 22:01:06 CEST 2011 - jslaby@suse.de
+
+- update to 0.15.3910
+- add psi update script
+
+-------------------------------------------------------------------
+Tue Apr 26 15:50:17 CEST 2011 - jslaby@suse.de
+
+- update to 0.15.3817
+  - new plugins
+  - many improvements
+  - many fixes
+
+-------------------------------------------------------------------
+Tue Feb  1 12:22:51 CET 2011 - jslaby@suse.de
+
+- fix crash on unknown icon load
+
+-------------------------------------------------------------------
+Sun Jan  9 15:13:36 CET 2011 - jslaby@suse.de
+
+- update to 0.15.3464
+    updated many plugins
+    added upower support
+    updated cs translation
+    fixed crashes
+    remove __DATE__ dependency
+
+-------------------------------------------------------------------
+Fri Nov 12 15:21:47 CET 2010 - jslaby@suse.de
+
+- update to 0.15.3164, with a help of home:nirdosh
+
+-------------------------------------------------------------------
+Tue Feb  9 21:19:10 UTC 2010 - prusnak@suse.cz
+
+- based on the psi+ package from home:nirdosh
+

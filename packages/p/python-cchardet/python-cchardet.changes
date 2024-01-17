@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Mon Oct  2 07:16:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.19:
+  * Update pyproject.toml to try building wheels for every Python
+    implementation
+
+-------------------------------------------------------------------
+Wed Jun 21 11:13:11 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sun Feb 26 19:06:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Upstream became stale, switching to the fork
+  https://github.com/faust-streaming/cChardet
+- Update to 2.1.18:
+  - Fix building source distribution
+  - Fix pep517 builds
+  - Time to continue off where the original project left off!
+  - Support Python 3.10 + 3.11
+  - Add linux aarch64 wheel support
+- Removed upstreamed denose.patch
+
+-------------------------------------------------------------------
+Tue Feb 21 07:47:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add denose.patch (gh#PyYoshi/cChardet!87) and enable tests.
+
+-------------------------------------------------------------------
+Tue Feb 21 07:27:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+
+-------------------------------------------------------------------
+Mon Feb 20 13:12:19 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- To fix build error correct capitalization of python modul Cython.
+
+-------------------------------------------------------------------
+Sun Feb 19 12:37:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build with cythonize to have working code for python 3.11
+
+-------------------------------------------------------------------
+Fri Feb 26 06:57:19 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.1.7
+  - support Python 3.9
+  - drop support for Python 3.5
+
+-------------------------------------------------------------------
+Tue Sep 15 06:29:26 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.6:
+  * drop support for Python 2.7
+  * support Github Actions
+  * update dev-dependencies
+
+-------------------------------------------------------------------
+Wed May 27 09:36:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Dec 11 13:02:14 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- initial commit

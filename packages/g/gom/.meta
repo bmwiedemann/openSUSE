@@ -1,0 +1,5 @@
+<package name="gom" project="openSUSE:Factory">
+  <title>gom</title>
+  <description></description>
+  <devel project="GNOME:Factory" package="gom"/>
+</package>

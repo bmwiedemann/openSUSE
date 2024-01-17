@@ -1,0 +1,225 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f648df17b93bcd93560cb2d065c2f08</srcmd5>
+    <version>0.0.1~git0.a5f168a</version>
+    <time>1626208637</time>
+    <user>dimstar_suse</user>
+    <comment>suseconnect-ng reduces the size of its runtime dependencies compared to the replaced SUSEConnect.</comment>
+    <requestid>905951</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50b3922c9e7fdff8c940ae7124ff7cde</srcmd5>
+    <version>0.0.3~git0.dacdd3b</version>
+    <time>1628023746</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>909984</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e5f4bfbf99bc6e4abf942672622977fd</srcmd5>
+    <version>0.0.3~git9.19e761b</version>
+    <time>1630787722</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>916791</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c048f469a22a40a8b52af9c77139cb3</srcmd5>
+    <version>0.0.4~git0.64b80e9</version>
+    <time>1638997729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.4~git0.64b80e9, it now includes a library and ruby gem that can be used by yast-registration</comment>
+    <requestid>935011</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>81469a24cb65c0438f6231254b080afb</srcmd5>
+    <version>0.0.5~git0.bbb5544</version>
+    <time>1641764996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.5~git0.bbb5544:
+  * Switch from rubygem-ffi to fiddle
+  * Cleanup services during migration (bsc#1161891)
+  * Allow non-root users to see usage text
+  * Add option to not fail dup as much
+  * Move APIVersion declaration to file where it is used
+  * Add flag to enable/disable hwinfo test
+  * Add ARM cluster count to hwinfo and fix test
+  * Simplify parsing JSON error response
+  * Add --gpg-auto-import-keys for zypper ref
+  * Rename main.go to logging.go
+  * Fix typo
+  * Remove init() from the connect package
+  * Move CFG variable declaration to config.go
+  * Move AppName const to the file where it is used
+  * Use testing.Helper() in test helpers
+  * Add ppc64le support
+  * Disable UUID test
+  * Add test tools to BuildRequires
+  * Ignore UUID errors
+  * Run basic hwinfo sanity test on build service
+  * Update code comments to match shim behavior.
+  * Remove dependency on systemd
+  * Only run httputil DumpResponse when needed</comment>
+    <requestid>944747</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1e37a58b773b07009c9c7ff67f3c60c3</srcmd5>
+    <version>0.0.6~git0.77933db</version>
+    <time>1643321789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.6~git0.77933db:
+  * Add man pages
+  * Add note in DIFFERENCES.md about abbreviated flags
+  * Add -l as an alias for --list-extensions
+  * Add --clean as an alias for --cleanup (bsc#1195003)
+  * Suppress expected error log message in TLS test
+  * Add flag to import product repo keys (bsc#1174657)</comment>
+    <requestid>949216</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>853c85ae5b5499e72212af0d4dbb2530</srcmd5>
+    <version>0.0.6~git9.33e5847</version>
+    <time>1646241603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.6~git9.33e5847:
+  * Delegate free() calls back to Go (bsc#1195729)
+  * Pass &quot;insecure&quot; to zypper addservice
+  * Workaround system cert reloading after import (bsc#1195220)
+  * Extract setupHTTPClient for easier reuse
+  * Exit with code 64 on connection refused like Ruby</comment>
+    <requestid>958283</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b48197be06279b68172eac1e04b6d44f</srcmd5>
+    <version>0.0.7~git0.3ef988e</version>
+    <time>1648479515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.7~git0.3ef988e:
+  * Fix product tree traversal (bsc#1197398)
+  * Revert &quot;Remove self from LD_PRELOAD (bsc#1196326)&quot;
+  * Remove self from LD_PRELOAD (bsc#1196326)</comment>
+    <requestid>964650</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1bc9d5762b18b3ab1d52f9697fcef68e</srcmd5>
+    <version>0.0.8~git2.368ea44</version>
+    <time>1650466473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.8~git2.368ea44:
+  * go1.18 compatibility: BuildRequires:git
+
+- Update to version 0.0.8~git0.16545bf:
+  * Allow reloading CA certs pool (bsc#1195220)</comment>
+    <requestid>971026</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>53d99a530b51e154b2c8b9c8dddbd4b4</srcmd5>
+    <version>0.0.9~git5.75890b6</version>
+    <time>1661257555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.9~git5.75890b6:
+  * Don't run keepalive on reboot
+  * Use system-wide proxy settings (bsc#1200994)
+  * Add customer information about keepalive calls
+  * Add timer for SUSEConnect --keepalive (bsc#1196076)
+  * Add --keepalive to manpage
+  * Added support for the System-Token header
+  * Add Keepalive command line option
+  * Print nested zypper errors (bsc#1200803)
+  * Fix migration json error with SMT (bsc#1198625)
+  * Add option to run local scc tests
+  * Switch to jenkins-hosted credentials
+  * Fix &quot;VCS stamping&quot; problem
+  * Add missing import
+  * Remove redundant code + add comment</comment>
+    <requestid>993339</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e21f062abbc213d71493f4dad3e52550</srcmd5>
+    <version>0.0.9~git8.f9adb71</version>
+    <time>1662639703</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1001717</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e226eea58ef73694828b287b5974f736</srcmd5>
+    <version>0.0.9~git10.de887da7231f</version>
+    <time>1663694604</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1004763</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>81d9ac01cc775ea95b09bf07dafea120</srcmd5>
+    <version>0.0.10~git0.5f84106</version>
+    <time>1664638950</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006605</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3b2642f20d228f3f641e7217656e501d</srcmd5>
+    <version>0.0.10~git2.ee561b8</version>
+    <time>1665420224</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008757</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7699afce7477f542af9e23011ccaf9c2</srcmd5>
+    <version>1.0.0~git0.60e48564a714</version>
+    <time>1667901220</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034318</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6b0f7446673cb246f273d74ff289c959</srcmd5>
+    <version>1.0.0~git0.faee7c196dc1</version>
+    <time>1668609747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1035853</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>82792ce707b4388818ea7ed51665afae</srcmd5>
+    <version>1.0.0~git14.17a7901</version>
+    <time>1671564009</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1043929</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d5d4f9aaa05870b552f1595bb7dd0d3c</srcmd5>
+    <version>1.1.0~git0.e3c41e60892e</version>
+    <time>1679766906</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1074142</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c92d113132fd8c18ea3283c3a78ccadf</srcmd5>
+    <version>1.1.0~git2.f42b4b2a060e</version>
+    <time>1687033182</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1093063</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e2eb7853a029c119115dd0d06dcf47d4</srcmd5>
+    <version>1.2.0~git0.abd0fec</version>
+    <time>1689786601</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099075</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>120f29b4b61453f7657f891566a50ccb</srcmd5>
+    <version>1.3.0~git0.ae8ba1e</version>
+    <time>1691762114</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103341</requestid>
+  </revision>
+</revisionlist>

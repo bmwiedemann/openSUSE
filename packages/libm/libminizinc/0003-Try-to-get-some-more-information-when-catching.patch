@@ -1,0 +1,126 @@
+From e0a77580c7f4a9ffcbd03cfd11b9bfa3628c9fee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 19 Jul 2022 19:35:10 +0200
+Subject: [PATCH 3/3] Try to get some more information when catching
+
+get_file_contents may throw int error codes, notably when inflating,
+provide the filename.
+
+Also show the error code/value for int type exceptions elsewhere.
+---
+ lib/flattener.cpp |  9 +++++++--
+ lib/parser.cpp    | 16 ++++++++++++++--
+ lib/solns2out.cpp | 24 ++++++++++++++++--------
+ minizinc.cpp      |  5 +++++
+ 4 files changed, 42 insertions(+), 12 deletions(-)
+
+diff --git a/lib/flattener.cpp b/lib/flattener.cpp
+index 5bb1d69b..0fe64df2 100644
+--- a/lib/flattener.cpp
++++ b/lib/flattener.cpp
+@@ -624,8 +624,13 @@ void Flattener::flatten(const std::string& modelString, const std::string& model
+             }
+           }
+           smm->compact();
+-          std::string smm_compressed =
+-              FileUtils::encode_base64(FileUtils::deflate_string(smm_oss.str()));
++          std::string smm_compressed;
++          try {
++            smm_compressed =
++                FileUtils::encode_base64(FileUtils::deflate_string(smm_oss.str()));
++          } catch (int i) {
++            throw Error("Failed to compress, error code: " + std::to_string(i));
++          }
+           auto* ti = new TypeInst(Location().introduce(), Type::parstring(), nullptr);
+           auto* sl = new StringLit(Location().introduce(), smm_compressed);
+           auto* checkString =
+diff --git a/lib/parser.cpp b/lib/parser.cpp
+index ef4db443..aad276e1 100644
+--- a/lib/parser.cpp
++++ b/lib/parser.cpp
+@@ -261,7 +261,13 @@ void parse(Env& env, Model*& model, const vector<string>& filenames,
+       if (verbose) {
+         std::cerr << "processing file '" << fullname << "'" << endl;
+       }
+-      s = get_file_contents(file);
++      try {
++        s = get_file_contents(file);
++      } catch (int i) {
++        throw Error("Cannot read file '" + f + "', error: " + std::to_string(i));
++      } catch (...) {
++        throw Error("Cannot read file '" + f + "'");
++      }
+ 
+       if (m->filepath().empty()) {
+         m->setFilepath(fullname);
+@@ -305,7 +311,13 @@ void parse(Env& env, Model*& model, const vector<string>& filenames,
+         if (verbose) {
+           std::cerr << "processing data file '" << f << "'" << endl;
+         }
+-        s = get_file_contents(file);
++        try {
++          s = get_file_contents(file);
++        } catch (int i) {
++          throw Error("Cannot read data file '" + f + "', error: " + std::to_string(i));
++        } catch (...) {
++          throw Error("Cannot read data file '" + f + "'");
++        }
+       }
+ 
+       ParserState pp(f, s, err, includePaths, files, seenModels, model, true, false, false,
+diff --git a/lib/solns2out.cpp b/lib/solns2out.cpp
+index 6f9fdfe5..b1807ff8 100644
+--- a/lib/solns2out.cpp
++++ b/lib/solns2out.cpp
+@@ -551,16 +551,24 @@ void Solns2Out::init() {
+       _outputExpr = oi->e();
+     } else if (auto* vdi = i->dynamicCast<VarDeclI>()) {
+       if (vdi->e()->id()->idn() == -1 && vdi->e()->id()->v() == "_mzn_solution_checker") {
+-        _checkerModel = eval_string(getEnv()->envi(), vdi->e()->e());
+-        if (!_checkerModel.empty() && _checkerModel[0] == '@') {
+-          _checkerModel = FileUtils::decode_base64(_checkerModel);
+-          FileUtils::inflate_string(_checkerModel);
++        try {
++          _checkerModel = eval_string(getEnv()->envi(), vdi->e()->e());
++          if (!_checkerModel.empty() && _checkerModel[0] == '@') {
++            _checkerModel = FileUtils::decode_base64(_checkerModel);
++            FileUtils::inflate_string(_checkerModel);
++          }
++        } catch (int ei) {
++          throw Error("Failed to inflate solution checker, error: " + std::to_string(ei));
+         }
+       } else if (vdi->e()->id()->idn() == -1 && vdi->e()->id()->v() == "_mzn_stats_checker") {
+-        _statisticsCheckerModel = eval_string(getEnv()->envi(), vdi->e()->e());
+-        if (!_statisticsCheckerModel.empty() && _statisticsCheckerModel[0] == '@') {
+-          _statisticsCheckerModel = FileUtils::decode_base64(_statisticsCheckerModel);
+-          FileUtils::inflate_string(_statisticsCheckerModel);
++        try {
++          _statisticsCheckerModel = eval_string(getEnv()->envi(), vdi->e()->e());
++          if (!_statisticsCheckerModel.empty() && _statisticsCheckerModel[0] == '@') {
++            _statisticsCheckerModel = FileUtils::decode_base64(_statisticsCheckerModel);
++            FileUtils::inflate_string(_statisticsCheckerModel);
++          }
++        } catch (int ei) {
++          throw Error("Failed to inflate stats checker, error: " + std::to_string(ei));
+         }
+       } else {
+         _declmap.insert(make_pair(vdi->e()->id()->str(), DE(vdi->e(), vdi->e()->e())));
+diff --git a/minizinc.cpp b/minizinc.cpp
+index a62478e9..93f83b3d 100644
+--- a/minizinc.cpp
++++ b/minizinc.cpp
+@@ -68,6 +68,11 @@ int run(const std::string& exe, const std::vector<std::string>& args, bool jsonS
+         std::cerr << std::endl;
+       }
+       std::cerr << e.what() << std::endl;
++    } catch (int i) {
++      if (slv.getFlagVerbose()) {
++        std::cerr << std::endl;
++      }
++      std::cerr << "  UNKNOWN EXCEPTION in solver, errorcode: " << i << std::endl;
+     } catch (...) {
+       if (slv.getFlagVerbose()) {
+         std::cerr << std::endl;
+-- 
+2.37.0
+

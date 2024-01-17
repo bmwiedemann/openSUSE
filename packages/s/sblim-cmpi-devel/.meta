@@ -1,0 +1,8 @@
+<package name="sblim-cmpi-devel" project="openSUSE:Factory">
+  <title>SBLIM CMPI Provider Development Support</title>
+  <description>This packages provides the C and C++ CMPI header files needed by
+provider developers and can be used standalone. If used for C++
+provider development it is also necessary to have tog-pegasus-devel
+installed.</description>
+  <devel project="systemsmanagement:wbem" package="sblim-cmpi-devel"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="xdg-user-dirs" project="openSUSE:Factory">
+  <title>Utilities to handle user data directories</title>
+  <description>xdg-user-dirs is a tool to help manage &quot;well known&quot; user directories
+like the desktop folder and the music folder. It also
+handles localization (i.e. translation) of the filenames.</description>
+  <devel project="X11:common:Factory" package="xdg-user-dirs"/>
+</package>

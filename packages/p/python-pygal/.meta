@@ -1,0 +1,5 @@
+<package name="python-pygal" project="openSUSE:Factory">
+  <title>pygal</title>
+  <description>A Python SVG graph plotting library</description>
+  <devel project="devel:languages:python" package="python-pygal"/>
+</package>

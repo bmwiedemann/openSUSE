@@ -1,0 +1,10 @@
+<package name="zita-resampler" project="openSUSE:Factory">
+  <title>A C++ library for resampling audio signals</title>
+  <description>Zita resampler is a C++ library for resampling audio signals. It is
+designed to be used within a real-time processing context, to be
+fast, and to provide high-quality sample rate conversion.
+
+</description>
+  <devel project="multimedia:apps" package="zita-resampler"/>
+  <url>https://kokkinizita.linuxaudio.org/linuxaudio/zita-resampler/resampler.html</url>
+</package>

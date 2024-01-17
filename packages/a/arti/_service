@@ -1,0 +1,67 @@
+<services>
+    <service name="obs_scm" mode="manual">
+        <param name="url">https://gitlab.torproject.org/tpo/core/arti.git</param>
+        <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+        <param name="scm">git</param>
+        <param name="revision">arti-v1.1.11</param>
+        <param name="match-tag">*</param>
+        <param name="versionrewrite-pattern">arti-v(\d+\.\d+\.\d+)</param>
+        <param name="versionrewrite-replacement">\1</param>
+        <param name="changesgenerate">enable</param>
+    </service>
+
+    <service name="set_version" mode="manual" />
+    <service name="cargo_vendor" mode="manual">
+        <param name="srcdir">arti</param>
+        <param name="compression">zst</param>
+        <param name="update">true</param>
+
+        <!-- From
+        https://gitlab.torproject.org/tpo/core/arti/-/blob/58f578f9097b090b289f4ea59488044796428daf/maint/cargo_audit
+        -->
+
+        <!--
+        This is a real but theoretical unaligned read.  It might happen only on
+        Windows and only with a custom global allocator, which we don't do in our
+        arti binary.  The bad crate is depended on by env-logger and clap.
+        This is being discussed by those crates' contributors here:
+            https://github.com/clap-rs/clap/pull/4249
+            https://github.com/rust-cli/env_logger/pull/246
+        -->
+        <param name="i-accept-the-risk">RUSTSEC-2021-0145</param>
+
+        <!--
+        This is an API vulnerability in ed25519-dalek v1.x.x, to the
+        extent that it does not force you to store private and public
+        keys as a single keypair.
+
+        We have desigend our APIs to work around this, and believe we
+        are not affected.  We should eventually upgrade to
+        ed25519-dalek >= 2, however.
+        -->
+        <param name="i-accept-the-risk">RUSTSEC-2022-0093</param>
+
+        <!--
+        This is a DOS vulnerability against rustls-webpki (only some versions)
+        and webpki (all versions) where some cert chains can cause
+        ridiculous CPU usage.
+
+        We've upgraded our rustls-webpki usage, but webpki (which is
+        unmaintained) is still used by tls-api, which we use from
+        arti-hyper.
+
+        I've opened https://github.com/stepancheg/rust-tls-api/issues/45
+        for this issue, but I'm not sure whether `tls-api` is maintained.
+
+        See https://gitlab.torproject.org/tpo/core/arti/-/issues/1016
+        -->
+        <param name="i-accept-the-risk">RUSTSEC-2023-0052</param>
+    </service>
+
+    <service name="cargo_audit" mode="manual">
+        <param name="srcdir">arti</param>
+    </service>
+
+
+    <service name="tar" mode="buildtime" />
+</services>

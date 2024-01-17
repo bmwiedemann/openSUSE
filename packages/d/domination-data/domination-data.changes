@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Thu Nov 13 18:55:30 UTC 2014 - nemysis@gmx.ch
+
+- Change URL
+- Use check for openSUSE %if 0%{?suse_version}
+- Fix permissions
+
+-------------------------------------------------------------------
+Sun Oct  5 06:36:22 UTC 2014 - nemysis@gmx.ch
+
+- Change %fdupes
+
+-------------------------------------------------------------------
+Tue Sep 30 16:24:07 UTC 2014 - nemysis@gmx.ch
+
+- Use %{oname} instead of domination
+- Add Requires: %{oname}
+- Change description
+- Add %post to correct Permissions
+
+-------------------------------------------------------------------
+Thu Sep 18 22:40:33 UTC 2014 - nemysis@gmx.ch
+
+- Use domination instead of domination/maps
+
+-------------------------------------------------------------------
+Thu Sep 18 16:44:55 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+

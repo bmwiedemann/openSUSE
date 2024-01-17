@@ -1,0 +1,6 @@
+<package name="waylock" project="openSUSE:Factory">
+  <title>waylock</title>
+  <description>A small screenlocker for Wayland compositors </description>
+  <devel project="X11:Wayland" package="waylock"/>
+  <url>https://github.com/ifreund/waylock</url>
+</package>

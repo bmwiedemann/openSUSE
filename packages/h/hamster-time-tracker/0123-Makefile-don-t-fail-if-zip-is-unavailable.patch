@@ -1,0 +1,26 @@
+From 5f7560a7efb82cedb8ce5cfe380131db4b1cbb0c Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 17 Feb 2020 15:49:10 +0100
+Subject: [PATCH 123/130] Makefile: don't fail if zip is unavailable
+
+zip is only necessary for uploading to extensions.GNOME.org.
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 1db55aa..8a71be7 100644
+--- a/Makefile
++++ b/Makefile
+@@ -76,7 +76,7 @@ dist: compile
+ # We need to do this like this as 'zip' always uses the cwd as archive root.
+ # And for the extension to work extension.js etc. need to be at the root.
+ 	mkdir -p $(DISTDIR);
+-	cd $(BUILDDIR); zip -rq ../dist/contact@projecthamster.org.zip ./*
++	cd $(BUILDDIR); zip -rq ../dist/contact@projecthamster.org.zip ./* || true
+ 	cd $(BUILDDIR); tar -czf ../dist/contact@projecthamster.org.tar.gz *
+ 	@ls -l dist
+ 
+-- 
+2.26.1
+

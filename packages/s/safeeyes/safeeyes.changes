@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Wed Jul  5 07:55:14 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 2.1.6:
+  * Reverse-DNS scheme for icons & Broken initialize logic fix & Add appstream (#519)
+  * Display a traceback of plugin loading errors when --debug is given (#506)
+  * Remove executable permission from safeeyes.desktop (#512) 
+  * Fix incorrectly skipped long breaks (#443)
+  * Take short or long breaks from tray (#347)
+  * Add sub-menu to take any, short or long breaks
+  * Update translations
+
+-------------------------------------------------------------------
+Thu Dec 22 08:25:31 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.1.4:
+  * Simplify Debian installation instructions
+  * Ayatana Appindicator library
+  * Add smartpause support for swaywm
+  * Directly track running swayidle process
+  * Use HTTPS where users potentially open the URL in a browser
+  * check if using wayland via WAYLAND_DISPLAY env variable
+  * add support for python without gettext.bindtextdomain
+
+-------------------------------------------------------------------
+Wed Apr 28 15:35:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.1.3:
+  * Detect full screen in Wayland
+  * Added translations for brazilian Portugues
+  * Fixed: No break can be triggered if no long breaks are configured
+
+-------------------------------------------------------------------
+Sat Mar 27 11:42:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrasing in descriptions. Trim redundant metadata
+  and tone down program claims.
+
+-------------------------------------------------------------------
+Wed Mar 24 20:20:18 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 2.1.2:
+  * Fix missing icons (gh#slgobinath/SafeEyes#420,
+    gh#slgobinath/SafeEyes#406).
+  * Fix breaks getting postponed forever
+    (gh#slgobinath/SafeEyes#410).
+  * Fix unable to disable auto-start (gh#slgobinath/SafeEyes#409).
+  * Random break order (gh#slgobinath/SafeEyes#418).
+- Changes from version 2.1.1:
+  * Fix desktop entry creation.
+- Changes from version 2.1.0:
+  * Option to disable RPC server.
+  * Add scroll bar to Settings dialog.
+  * Fix idle start time calculation.
+  * Add cron expression to Health Stats plugin.
+  * Fix Gnome restarting in Ubuntu 20.10.
+  * Drop support to Python 3.4 and add support to 3.8 and 3.9.
+- Remove SafeEyes-fix-install-path.patch: Fixed upstream.
+- Add new runtime dependency on python3-cronie.
+- Remove unused build dependency on fdupes.
+- Clean spec file.
+
+-------------------------------------------------------------------
+Thu Oct 22 15:16:21 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- SmartPause plugin: Increase default idle time to pause SafeEyes.
+
+-------------------------------------------------------------------
+Tue Oct 13 11:19:15 UTC 2020 - tuukka.pasanen@ilmi.fi
+
+- Update to version 20201003.448e11f:
+  * Fix UnboundLocalError in smartpause plugin (#378)
+  * Add installation instruction for openSUSE Tumbleweed, resolve #376 (#377)
+  * Translated using Weblate (Swedish)
+
+-------------------------------------------------------------------
+Sun Sep 27 16:40:06 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Add python3-cairo and python3-gobject as runtime dependencies.
+
+-------------------------------------------------------------------
+Sun Sep 20 12:35:05 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 2.0.9 + git a3b957d (2020-09-06):
+  - Updated translations: Arabic, Chinese (Traditional)), 
+    Lithuanian, Marathi.
+
+-------------------------------------------------------------------
+Mon Aug 24 10:44:44 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 2.0.9 + git 0462a41 (2020-08-20)
+- Changes after 2.0.9:
+  - new translations or translation updates after 2.0.9 release
+- Changes from 2.0.8 to 2.0.9
+  - New Settings dialog
+  - Move to Gtk 3.12
+  - Improved Health Stats plugin
+  - Blink tray icon after pre-break notification
+- Changes from 2.0.6 to 2.0.8
+  - Action buttons support is added to the break screen
+  - Option to postpone the next break until the system becomes idle
+- Changes from 2.0.4 to 2.0.6
+  - Audible alert before breaks (Enabled by default)
+  - Do not disturb while on battery (Disabled by default)
+  - Skip long break if the user is idle for a long time
+- Changes from 2.0.0 to 2.0.4
+  - Various bug fixes and translation updates, see
+    https://github.com/slgobinath/SafeEyes/releases for more details
+- Drop SafeEyes-fix-python-requires.patch
+
+-------------------------------------------------------------------
+Thu Nov  2 03:55:38 UTC 2017 - malcolmlewis@opensuse.org
+
+- Update to version 2.0.0 + git fd4882b (2017-10-28).
+- Add rpmlintrc to suppress warnings.
+- Add script to pull from git.
+- Add SafeEyes-fix-python-requires.patch: Define python3-xlib in
+  setup.py requires.
+- Drop SafeEyes-fix-desktop-file.patch.
+
+-------------------------------------------------------------------
+Mon Feb 27 19:49:18 UTC 2017 - malcolmlewis@opensuse.org
+
+- Initial build.
+- Add SafeEyes-fix-desktop-file.patch: Cleanup desktop file
+  errors.
+

@@ -1,0 +1,5 @@
+<package name="livecd-openSUSE" project="openSUSE:Factory">
+  <title>openSUSE Live Images</title>
+  <description>The package contains huge ISOs</description>
+  <devel project="Virtualization:Appliances:Images:openSUSE-Tumbleweed" package="livecd-openSUSE"/>
+</package>

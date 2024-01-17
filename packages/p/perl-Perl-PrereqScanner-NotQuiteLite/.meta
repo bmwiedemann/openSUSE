@@ -1,0 +1,12 @@
+<package name="perl-Perl-PrereqScanner-NotQuiteLite" project="openSUSE:Factory">
+  <title>Tool to scan your Perl code for its prerequisites</title>
+  <description>Perl::PrereqScanner::NotQuiteLite is yet another prerequisites scanner. It passes almost all the scanning tests for Perl::PrereqScanner and Module::ExtractUse (ie. except for a few dubious ones), and runs slightly faster than PPI-based Perl::PrereqScanner. However, it doesn't run as fast as Perl::PrereqScanner::Lite (which uses an XS lexer).
+
+Perl::PrereqScanner::NotQuiteLite also recognizes 'eval'. Prerequisites in 'eval' are not considered as requirements, but you can collect them as suggestions.
+
+Conditional requirements or requirements loaded in a block are treated as recommends. Noed modules are stored separately (since 0.94). You may or may not need to merge them into requires.
+
+Perl::PrereqScanner::NotQuiteLite can also recognize some of the new language features such as 'say', subroutine signatures, and postfix dereferences, to improve the minimum perl requirement (since 0.9905).</description>
+  <devel project="devel:languages:perl" package="perl-Perl-PrereqScanner-NotQuiteLite"/>
+  <url>https://metacpan.org/release/Perl-PrereqScanner-NotQuiteLite</url>
+</package>

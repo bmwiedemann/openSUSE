@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d460bf8b1bf1ad6864999c183138f64</srcmd5>
+    <version>1.0</version>
+    <time>1575463799</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission - DICOM plugin for orthanc</comment>
+    <requestid>747346</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2454556efef49ce9ff42fdf9e9fb75a</srcmd5>
+    <version>1.1</version>
+    <time>1586112933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791413</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e9d727e9d05c18198a4e9d5c0c21251e</srcmd5>
+    <version>1.2</version>
+    <time>1591101267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809644</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3860f94825002e13789b343e4dde333c</srcmd5>
+    <version>1.3</version>
+    <time>1605217075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846158</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e1df3aa113792be91cf8cb68ba391d39</srcmd5>
+    <version>1.4</version>
+    <time>1608542557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856908</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2731a0488e22f9f06977e30423589b25</srcmd5>
+    <version>1.5</version>
+    <time>1611865738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867449</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3d984ad0c6620aafb8473f3169819d75</srcmd5>
+    <version>1.6</version>
+    <time>1620767038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892107</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>efdf77ed7e44a3e25c05945043d16e5f</srcmd5>
+    <version>1.7</version>
+    <time>1630617626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915796</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e179eb7a41d434d8c5e8fc799266aaa4</srcmd5>
+    <version>1.8</version>
+    <time>1652389233</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8
+* Show an error message when trying to send studies &gt; 4GB via STOW-RS
+* Optimized QIDO-RS to build its responses from DB if tags are saved in &quot;ExtraMainDicomTags&quot;.
+* New configuration &quot;PublicRoot&quot; 
+</comment>
+    <requestid>976467</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b94c9804125c707b2a79d55a13aa819c</srcmd5>
+    <version>1.10</version>
+    <time>1664908686</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007865</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f16b02069bf10954fc5123e2a1c94b1d</srcmd5>
+    <version>1.13</version>
+    <time>1681826000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080083</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>88a31373fbd2f3b44307a0102a1d072a</srcmd5>
+    <version>1.14</version>
+    <time>1689175651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098220</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>12452b244991903a040b86fafb55deaa</srcmd5>
+    <version>1.15</version>
+    <time>1694019419</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108997</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>84f18cda3b9c1541adacea510ee085a5</srcmd5>
+    <version>1.16</version>
+    <time>1704380240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1134974</requestid>
+  </revision>
+</revisionlist>

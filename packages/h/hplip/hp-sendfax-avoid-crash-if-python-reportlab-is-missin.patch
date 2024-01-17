@@ -1,0 +1,39 @@
+From 8b1bbbb9a3659475367a6f58986ac8248576663b Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 10 Jan 2020 14:44:51 +0100
+Subject: [PATCH] hp-sendfax: avoid crash if python-reportlab is missing
+
+Avoids this crash:
+
+warning: Reportlab not installed. Fax coverpages disabled.
+warning: Please install version 2.0+ of Reportlab for coverpage support.
+qt.qpa.xcb: QXcbConnection: XCB error: 3 (BadWindow), sequence: 669, resource id: 13465094, major code: 40 (TranslateCoords), minor code: 0
+Traceback (most recent call last):
+  File "/usr/share/hplip/ui5/sendfaxdialog.py", line 375, in FilesTable_fileListChanged
+    self.toggleCoverPage(self.FilesTable.isMIMETypeInList(MIME_TYPE_COVERPAGE))
+  File "/usr/share/hplip/ui5/sendfaxdialog.py", line 328, in toggleCoverPage
+---
+ ui5/sendfaxdialog.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/ui5/sendfaxdialog.py b/ui5/sendfaxdialog.py
+index 4248907..3c3e880 100644
+--- a/ui5/sendfaxdialog.py
++++ b/ui5/sendfaxdialog.py
+@@ -325,9 +325,11 @@ class SendFaxDialog(QDialog, Ui_Dialog):
+ 
+     def toggleCoverPage(self, b):
+         # XXX: qt5port: disconnect method requires attention
+-        self.CoverPageGroupBox.toggled[bool].disconnect(self.CoverPageGroupBox_toggled)
++        if coverpages_enabled:
++            self.CoverPageGroupBox.toggled[bool].disconnect(self.CoverPageGroupBox_toggled)
+         self.CoverPageGroupBox.setChecked(b)
+-        self.CoverPageGroupBox.toggled[bool].connect(self.CoverPageGroupBox_toggled)
++        if coverpages_enabled:
++            self.CoverPageGroupBox.toggled[bool].connect(self.CoverPageGroupBox_toggled)
+ 
+ 
+     #
+-- 
+2.24.1
+

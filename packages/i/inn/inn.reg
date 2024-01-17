@@ -1,0 +1,12 @@
+#############################################################################
+#
+# OpenSLP registration file
+#
+# register INN daemon
+#
+#############################################################################
+
+service:nntp://$HOSTNAME:119,en,65535
+watch-port-tcp=119
+description=Net News Server [innd]
+

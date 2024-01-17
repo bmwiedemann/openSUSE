@@ -1,0 +1,64 @@
+From 521dc174c93efbe616dc5f573a5d293339df642b Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Thu, 25 Feb 2016 15:03:17 +0100
+Subject: [PATCH 2/3] Dependency generation
+
+---
+ lucene/common-build.xml                                     | 4 ++--
+ .../lucene/dependencies/GetMavenDependenciesTask.java       | 2 ++
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/lucene/build.xml b/lucene/build.xml
+index e3cf905..facc19b 100644
+--- a/lucene/build.xml
++++ b/lucene/build.xml
+@@ -426,12 +426,8 @@
+     </sequential>
+   </target>
+ 
+-  <target name="generate-maven-artifacts" depends="-unpack-lucene-tgz">
+-    <ant dir=".." target="resolve" inheritall="false"/>
++  <target name="generate-maven-artifacts">
+     <antcall target="-filter-pom-templates" inheritall="false"/>
+-    <antcall target="-dist-maven" inheritall="false">
+-      <propertyset refid="uptodate.and.compiled.properties"/>
+-    </antcall>
+   </target>
+   
+   <target name="-validate-maven-dependencies" depends="compile-tools, install-maven-tasks, load-custom-tasks">
+diff --git a/lucene/common-build.xml b/lucene/common-build.xml
+index 41da3f2..d2f9d16 100644
+--- a/lucene/common-build.xml
++++ b/lucene/common-build.xml
+@@ -1879,7 +1879,7 @@ ${ant.project.name}.test.dependencies=${test.classpath.list}
+   <target name="-get-maven-dependencies" depends="compile-tools,load-custom-tasks">
+     <ant dir="${common.dir}/.." target="-append-all-modules-dependencies-properties" inheritall="false"/>
+     <get-maven-dependencies-macro
+-        dir="${common.dir}/.."
++        dir="${common.dir}"
+         centralized.versions.file="${common.dir}/ivy-versions.properties"
+         module.dependencies.properties.file="${module.dependencies.properties.file}"
+         maven.dependencies.filters.file="${maven.dependencies.filters.file}"/>
+diff --git a/lucene/tools/src/java/org/apache/lucene/dependencies/GetMavenDependenciesTask.java b/lucene/tools/src/java/org/apache/lucene/dependencies/GetMavenDependenciesTask.java
+index 610323f..13bde29 100644
+--- a/lucene/tools/src/java/org/apache/lucene/dependencies/GetMavenDependenciesTask.java
++++ b/lucene/tools/src/java/org/apache/lucene/dependencies/GetMavenDependenciesTask.java
+@@ -537,6 +537,7 @@ public class GetMavenDependenciesTask extends Task {
+   private Collection<String> getTransitiveDependenciesFromIvyCache
+   (String groupId, String artifactId, String version) {
+     SortedSet<String> transitiveDependencies = new TreeSet<>();
++    /*
+     //                                      E.g. ~/.ivy2/cache/xerces/xercesImpl/ivy-2.9.1.xml
+     File ivyXmlFile = new File(new File(new File(ivyCacheDir, groupId), artifactId), "ivy-" + version + ".xml");
+     if ( ! ivyXmlFile.exists()) {
+@@ -558,6 +559,7 @@ public class GetMavenDependenciesTask extends Task {
+                               + groupId + ':' + artifactId + ':' + version + " from "
+                               + ivyXmlFile.getAbsolutePath(), e);
+     }
++    */
+     return transitiveDependencies;
+   }
+ 
+-- 
+2.20.1
+

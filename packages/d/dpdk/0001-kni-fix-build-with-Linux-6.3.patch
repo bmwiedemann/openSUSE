@@ -1,0 +1,55 @@
+From: Ferruh Yigit <ferruh.yigit@amd.com>
+Date: Fri, 14 Apr 2023 16:25:22 +0100
+Subject: kni: fix build with Linux 6.3
+Patch-mainline: yes
+Git-commit: 5f34cc454df420b9b2da8deb949fb76cba058b87
+References: kernel 6.3
+
+KNI calls `get_user_pages_remote()` API which is using `FOLL_TOUCH`
+flag, but `FOLL_TOUCH` is no more in public headers since v6.3,
+causing a build error.
+
+`FOLL_*` defines in Linux kernel first moved to another header [1],
+later some of them moved to memory subsystem internal header [2] for 6.3
+
+`get_user_pages_remote()` already sets `FOLL_TOUCH` internally,
+no need to set this flag externally anyway, moving flag from the call
+altogether.
+
+[1]
+Commit b5054174ac7c ("mm: move FOLL_* defs to mm_types.h")
+
+[2]
+Commit 2c2241081f7d ("mm/gup: move private gup FOLL_ flags to internal.h")
+
+Fixes: e73831dc6c26 ("kni: support userspace VA")
+Cc: stable@dpdk.org
+
+Signed-off-by: Ferruh Yigit <ferruh.yigit@amd.com>
+Reviewed-by: David Marchand <david.marchand@redhat.com>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ kernel/linux/kni/kni_dev.h | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/kernel/linux/kni/kni_dev.h b/kernel/linux/kni/kni_dev.h
+index a2c6d9fc..21bfb689 100644
+--- a/kernel/linux/kni/kni_dev.h
++++ b/kernel/linux/kni/kni_dev.h
+@@ -105,11 +105,9 @@ static inline phys_addr_t iova_to_phys(struct task_struct *tsk,
+ 
+ 	/* Read one page struct info */
+ #ifdef HAVE_TSK_IN_GUP
+-	ret = get_user_pages_remote(tsk, tsk->mm, iova, 1,
+-				    FOLL_TOUCH, &page, NULL, NULL);
++	ret = get_user_pages_remote(tsk, tsk->mm, iova, 1, 0, &page, NULL, NULL);
+ #else
+-	ret = get_user_pages_remote(tsk->mm, iova, 1,
+-				    FOLL_TOUCH, &page, NULL, NULL);
++	ret = get_user_pages_remote(tsk->mm, iova, 1, 0, &page, NULL, NULL);
+ #endif
+ 	if (ret < 0)
+ 		return 0;
+-- 
+2.35.3
+

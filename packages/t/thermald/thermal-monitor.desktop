@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Thermal Monitor
+GenericName=Monitoring of temperature
+GenericName[de]=Überwachung der Temperatur
+Comment=Displays current temperature readings on a graph
+Comment[de]=Zeigt die aktuellen Temperaturmesswerte in einer Grafik an
+Exec=/usr/bin/ThermalMonitor
+Terminal=false
+Icon=thermal-monitor
+Type=Application
+Categories=Qt;System;Monitor;

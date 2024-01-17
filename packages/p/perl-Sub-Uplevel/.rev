@@ -1,0 +1,184 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5c52f5adb477fd2148893ef916b23d0</srcmd5>
+    <version>0.14</version>
+    <time>1184294369</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>927e702ccdd25e80fb297a3f9eb41416</srcmd5>
+    <version>0.16</version>
+    <time>1191839304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c54286f697e1d4cd1995be287a3b580</srcmd5>
+    <version>0.18</version>
+    <time>1193963851</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ffb0b02e65a1a8a292aab841148942f9</srcmd5>
+    <version>0.1901</version>
+    <time>1203957370</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cbd3b57b1e8a35b2063842e3e914ba95</srcmd5>
+    <version>0.2002</version>
+    <time>1221235989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d6be487b3336580c2155e11dee935df8</srcmd5>
+    <version>0.2002</version>
+    <time>1248724431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>d6be487b3336580c2155e11dee935df8</srcmd5>
+    <version>0.2002</version>
+    <time>1248724431</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>8558685abaedb47b2864908b03b253c5</srcmd5>
+    <version>0.2002</version>
+    <time>1263223069</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Sub-Uplevel based on submit request 28400 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>ab4b6825589e513f2d95057733228bce</srcmd5>
+    <version>0.2002</version>
+    <time>1268925610</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ab4b6825589e513f2d95057733228bce</srcmd5>
+    <version>0.2002</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>ab4b6825589e513f2d95057733228bce</srcmd5>
+    <version>0.2002</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2d40148e2faa9ef06641ab15d4cb040f</srcmd5>
+    <version>0.220.0</version>
+    <time>1281659575</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Sub-Uplevel based on submit request 45378 from user computersalat
+</comment>
+    <requestid>45378</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>44456b4c112cd6fe6de6f2425623c425</srcmd5>
+    <version>0.220.0</version>
+    <time>1291583946</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54649 from user coolo
+</comment>
+    <requestid>54649</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9c6b91cbb766ddbb09def56f19c12aa7</srcmd5>
+    <version>0.220.0</version>
+    <time>1291583951</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54649
+</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>9c6b91cbb766ddbb09def56f19c12aa7</srcmd5>
+    <version>0.220.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>9c6b91cbb766ddbb09def56f19c12aa7</srcmd5>
+    <version>0.220.0</version>
+    <time>1319182308</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e2577c799c39c2c51854cfded21e0576</srcmd5>
+    <version>MACRO</version>
+    <time>1321875982</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92147</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>1058b25f84133948f30b6f46bba05bc3</srcmd5>
+    <version>MACRO</version>
+    <time>1323193659</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>9609b77cb537cd7774c75872fdb7579e</srcmd5>
+    <version>MACRO</version>
+    <time>1329934314</time>
+    <user>coolo</user>
+    <comment>- update to 0.24
+    - fixed: additional test regex fixed
+    - fixed: Perl 5.15 series Carp changes output format of messages (adds
+      a period).  This fixes the test regular expressions. [Andreas Koenig]
+    - added: the $Sub::Uplevel::CHECK_FRAMES global constant to enable the
+      frame depth checking and compile it out if not needed.  [Adam
+      Kennedy]</comment>
+    <requestid>106422</requestid>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>9609b77cb537cd7774c75872fdb7579e</srcmd5>
+    <version>MACRO</version>
+    <time>1340183921</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>9609b77cb537cd7774c75872fdb7579e</srcmd5>
+    <version>MACRO</version>
+    <time>1359109801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>a86814d7de5c5f5012eae3e6a2be9e35</srcmd5>
+    <version>MACRO</version>
+    <time>1366178592</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164073 from namtrac)</comment>
+    <requestid>164086</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>a86814d7de5c5f5012eae3e6a2be9e35</srcmd5>
+    <version>MACRO</version>
+    <time>1379663849</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>a86814d7de5c5f5012eae3e6a2be9e35</srcmd5>
+    <version>MACRO</version>
+    <time>1409302491</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5a6150bf2a213ca0dd6a0927e9cd224a</srcmd5>
+    <version>0.2800</version>
+    <time>1537970458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636326</requestid>
+  </revision>
+</revisionlist>

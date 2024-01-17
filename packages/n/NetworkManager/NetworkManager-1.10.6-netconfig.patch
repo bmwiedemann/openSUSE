@@ -1,0 +1,19 @@
+Index: NetworkManager-1.44.0/src/core/dns/nm-dns-manager.c
+===================================================================
+--- NetworkManager-1.44.0.orig/src/core/dns/nm-dns-manager.c
++++ NetworkManager-1.44.0/src/core/dns/nm-dns-manager.c
+@@ -733,6 +733,14 @@ dispatch_netconfig(NMDnsManager      *se
+     gssize                        l;
+     nm_auto_free_gstring GString *str = NULL;
+ 
++    if (!g_file_test (NETCONFIG_PATH, G_FILE_TEST_IS_EXECUTABLE)) {
++       g_set_error_literal (error,
++                            NM_MANAGER_ERROR,
++                            NM_MANAGER_ERROR_FAILED,
++                            NETCONFIG_PATH " is not executable");
++       return SR_NOTFOUND;
++    }
++
+     pid = run_netconfig(self, error, &fd);
+     if (pid <= 0)
+         return SR_NOTFOUND;

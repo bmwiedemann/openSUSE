@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0babde66a64ae55e831b162fda9132e</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1652114668</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of the AZure SDK</comment>
+    <requestid>975790</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cdd59b9cb103af9d3950537ec29ac333</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1653244080</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1 (forwarded request 977902 from glaubitz)</comment>
+    <requestid>978527</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b5d2205e31de6fb30f8ac85afcb09299</srcmd5>
+    <version>2.0.0</version>
+    <time>1679416887</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 1073118 from glaubitz)</comment>
+    <requestid>1073125</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>91dbb791e8ddd06b377b014948270e69</srcmd5>
+    <version>3.0.0</version>
+    <time>1692795477</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1105211 from glaubitz)</comment>
+    <requestid>1105240</requestid>
+  </revision>
+</revisionlist>

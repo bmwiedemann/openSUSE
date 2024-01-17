@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af9c44c74224832d64c029b133a26a14</srcmd5>
+    <version>0.0.7</version>
+    <time>1670863207</time>
+    <user>dimstar_suse</user>
+    <comment>new package kubectl-oomd: Show pods/containers which have recently been 'OOMKilled'</comment>
+    <requestid>1042352</requestid>
+  </revision>
+</revisionlist>

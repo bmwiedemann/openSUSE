@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Aug 17 16:06:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
+Mon May  1 17:48:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.3
+  * Add show_banner to ignored_traits #29 (@echarles)
+
+-------------------------------------------------------------------
+Mon Dec 26 23:58:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.2.2
+  * Add config file
+
+-------------------------------------------------------------------
+Wed Oct 26 11:19:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.2
+  * raise ceiling on jupyter_server dependency to < 3 #12
+  * remove dev version #15
+  * switch to hatch build backend #14
+- Remove jupyter subpackage: no config installed anymore
+
+-------------------------------------------------------------------
+Sun Jun  5 17:26:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.1
+- Required by nbclassic
+- Disabled test suite --  gh#jupyter/notebook_shim#8

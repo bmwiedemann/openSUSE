@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56e0c482a45658dc8c0ef9c0a9add98c</srcmd5>
+    <version>4.0.2</version>
+    <time>1566291473</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.14 upgrade</comment>
+    <requestid>724075</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7b9796f173eecef8e367fab252fa701c</srcmd5>
+    <version>4.1.0</version>
+    <time>1610443717</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to Xfce 4.16</comment>
+    <requestid>860874</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc87c03f4265d97677725edcde08fd8f</srcmd5>
+    <version>4.1.1</version>
+    <time>1611668848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.1
+  * Update configure.ac.in syntax
+  * Add help button to configuration dialog
+  * Add filechooser dialog option to select command
+  * Add new genmon icon
+  * Remove GSourceFunc casts
+  * update prototype of UpdateConf
+  * Set labels to center justify by default
+  * Translation updates</comment>
+    <requestid>866794</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d0f8265410ae17a66b4f8919f3af4a7d</srcmd5>
+    <version>4.2.0</version>
+    <time>1681825963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.0
+  * Add shell script to migrate settings to xfconf
+  * Fix GDK_Critical
+  * Fixed deskbar support. Issue #8
+  * Add Update Now menu option to right-click menu
+  * build: Add GLib requirement
+  * build: Fix autotools warnings
+  * Use &quot;logo-icon-name&quot; instead of &quot;logo&quot; in about dialog
+  * ***Migrate settings to xfconf
+  * Remove unused variable
+  * Fix intltool lock file bug in make distcheck
+  * Remove closing of standard file descriptors in the child process
+  * Update COPYING
+  * Add &lt;css&gt; tag support
+  * fixed .genmon_label and -gtk-icon transform bugs
+  * Fix code indentation and readalility
+  * Add support for single and multi-row panel layout options
+  * Added support for &lt;css&gt;&lt;/css&gt; XML tag. Changed default
+    progressbar width to 4px
+  * automake: Modernize following other projects
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Add missing comments to code functions
+  * Fix indentation
+  * Translation updates
+- Remove _service file (forwarded request 1079971 from manfred-h)</comment>
+    <requestid>1079981</requestid>
+  </revision>
+</revisionlist>

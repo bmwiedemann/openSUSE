@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8321b73163cf25b1a2d3550f5982a12f</srcmd5>
+    <version>0.8.6</version>
+    <time>1636149554</time>
+    <user>dimstar_suse</user>
+    <comment>I would like to add the Dell SupportAssist tool to Factory to improve the out-of-box support on Dell systems for openSUSE.</comment>
+    <requestid>929741</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6f7ed04f68ecd34ce6dfd317746dfc5e</srcmd5>
+    <version>0.8.6</version>
+    <time>1700162965</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126832</requestid>
+  </revision>
+</revisionlist>

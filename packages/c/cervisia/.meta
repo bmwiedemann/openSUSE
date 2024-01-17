@@ -1,0 +1,5 @@
+<package name="cervisia" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="cervisia"/>
+</package>

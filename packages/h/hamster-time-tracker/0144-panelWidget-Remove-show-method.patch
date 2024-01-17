@@ -1,0 +1,45 @@
+From 377b115ddefb6ae431fa62ed4e74c53e4ef96e5b Mon Sep 17 00:00:00 2001
+From: Matthijs Kooijman <matthijs@stdin.nl>
+Date: Mon, 19 Oct 2020 11:28:35 +0200
+Subject: [PATCH 144/147] panelWidget: Remove show() method
+
+This widget defined a `show()` method, which would show the menu.
+However, `show()` is already a method defined by some class higher up in
+the hierarchy, which makes the *widget* in the status area visible.  By
+defining a `show()` method here, the behavior of the `show()` method
+changes, causing issues.
+
+One such issue showed when combining this extension with the
+status-area-horizontal-spacing extension (prior to v2.6), which calls
+`hide()` and `show()` on each widget in the status area. With the
+overridden `show()` method in the hamster extension, this would hide the
+widget and then show the menu, breaking the extension because the widget
+would stay hidden.
+
+Since the `show()` method was not actuall used anywhere, this commit
+removes it to prevent the conflict.
+---
+ extension/widgets/panelWidget.js | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/extension/widgets/panelWidget.js b/extension/widgets/panelWidget.js
+index 9288f06..549a241 100644
+--- a/extension/widgets/panelWidget.js
++++ b/extension/widgets/panelWidget.js
+@@ -200,13 +200,6 @@ class PanelWidget extends PanelMenu.Button {
+     return GLib.SOURCE_CONTINUE;
+     }
+ 
+-    /**
+-     * Open 'popup menu' containing the bulk of the extension widgets.
+-     */
+-    show() {
+-        this.menu.open();
+-    }
+-
+     /**
+      * Close/Open the 'popup menu' depending on previous state.
+      */
+-- 
+2.31.1
+

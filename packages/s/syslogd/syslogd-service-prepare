@@ -1,0 +1,49 @@
+#!/bin/bash
+# Copyright (c) 2011 SuSE LINUX Products GmbH, Germany.
+#
+# Description:
+#
+#  This script is executed by syslogd.service to prepare
+#  the syslogd daemon start.
+#  Currently it writes an evirtoment file which contains
+#  a variable with the additional log socket parameters
+#  passed to syslogd.
+#
+# Author: Werner Fink, Marius Tomaschewski
+# Please send feedback to http://www.suse.de/feedback
+#
+test -s "/etc/sysconfig/syslog" && \
+      . "/etc/sysconfig/syslog"
+
+run_dir="/var/run/syslogd"
+env_file="/var/run/syslogd/additional-log-sockets.env"
+
+umask 0022
+/bin/mkdir -p -m 0755 "${run_dir}"
+
+#
+# Prepare include with sockets in chroot's
+# passed as start parameter to the syslogd.
+#
+echo -n 'ADDITIONAL_SOCKET="' > "${env_file}"
+for variable in ${!SYSLOGD_ADDITIONAL_SOCKET*}; do
+	eval value=\$$variable
+	test -z "$value" && continue
+	test ! -d "${value%/*}" && continue
+	echo -n "-a $value "
+done >> "${env_file}"
+echo '"' >> "${env_file}"
+
+#
+# make sure xconsole exists and is a pipe
+#
+if test -e /dev/xconsole -a ! -p /dev/xconsole ; then
+	/bin/rm -f /dev/xconsole
+fi
+if test ! -e /dev/xconsole ; then
+	/bin/mknod -m 0600  /dev/xconsole p
+	/bin/chown root:tty /dev/xconsole
+fi
+
+exit 0
+

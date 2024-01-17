@@ -1,0 +1,91 @@
+From 4debfd7393379f83bf5ecf4afa2f39bef76abee9 Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Sun, 5 May 2019 16:48:49 +0200
+Subject: [PATCH] cmake: Fix pkgconfig support on Windows
+
+1. Add cpp macro ZLIB_DLL to zlib.pc, which is required to link
+   to the shared library
+2. Install zlib-static.pc for usage of the static library
+3  Let library names follow mingw style,which is the same as on unix
+  (libz.a/libz.dll.a)
+---
+ CMakeLists.txt  | 34 +++++++++++++++++++++++++++-------
+ zlib.pc.cmakein |  4 ++--
+ 2 files changed, 29 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0fe939d..5d0363a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -78,9 +78,6 @@ if(NOT CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_CURRENT_BINARY_DIR)
+   endif()
+ endif()
+ 
+-set(ZLIB_PC ${CMAKE_CURRENT_BINARY_DIR}/zlib.pc)
+-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/zlib.pc.cmakein
+-		${ZLIB_PC} @ONLY)
+ configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
+ 		${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
+ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
+@@ -205,11 +202,34 @@ if(UNIX)
+    if(NOT APPLE)
+      set_target_properties(zlib PROPERTIES LINK_FLAGS "-Wl,--version-script,\"${CMAKE_CURRENT_SOURCE_DIR}/zlib.map\"")
+    endif()
+-elseif(BUILD_SHARED_LIBS AND WIN32)
+-    # Creates zlib1.dll when building shared library version
+-    set_target_properties(zlib PROPERTIES SUFFIX "1.dll")
++elseif(WIN32)
++    # on windows the static library is always called <compiler-prefix>z
++    set_target_properties(zlibstatic PROPERTIES OUTPUT_NAME z)
++    if(BUILD_SHARED_LIBS AND MSVC)
++        # Creates zlib1.dll when building shared library version
++        set_target_properties(zlib PROPERTIES SUFFIX "1.dll")
++    else()
++        # on windows the shared library is always called <compiler-prefix>z
++        set_target_properties(zlib PROPERTIES OUTPUT_NAME z)
++    endif()
+ endif()
+ 
++# in the static library pc file we use the whole filename
++# to avoid fetching the shared import library name
++set(ZLIB_PC_STATIC ${CMAKE_CURRENT_BINARY_DIR}/zlib-static.pc)
++get_target_property(static_location zlibstatic LOCATION)
++get_filename_component(filename ${static_location} NAME)
++set(PC_LIBS "-Wl,\${libdir}/${filename}")
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/zlib.pc.cmakein
++               ${ZLIB_PC_STATIC} @ONLY)
++
++# in the shared library pc file we use the regular library name
++set(ZLIB_PC ${CMAKE_CURRENT_BINARY_DIR}/zlib.pc)
++set(PC_LIBS "-L\${libdir} -L\${sharedlibdir} -lz")
++set(PC_CFLAGS -DZLIB_DLL)
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/zlib.pc.cmakein
++               ${ZLIB_PC} @ONLY)
++
+ if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
+     install(TARGETS zlib zlibstatic
+         RUNTIME DESTINATION "${INSTALL_BIN_DIR}"
+@@ -223,7 +243,7 @@ if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL )
+     install(FILES zlib.3 DESTINATION "${INSTALL_MAN_DIR}/man3")
+ endif()
+ if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL )
+-    install(FILES ${ZLIB_PC} DESTINATION "${INSTALL_PKGCONFIG_DIR}")
++    install(FILES ${ZLIB_PC} ${ZLIB_PC_STATIC} DESTINATION "${INSTALL_PKGCONFIG_DIR}")
+ endif()
+ 
+ #============================================================================
+diff --git a/zlib.pc.cmakein b/zlib.pc.cmakein
+index a5e6429..916c109 100644
+--- a/zlib.pc.cmakein
++++ b/zlib.pc.cmakein
+@@ -9,5 +9,5 @@ Description: zlib compression library
+ Version: @VERSION@
+ 
+ Requires:
+-Libs: -L${libdir} -L${sharedlibdir} -lz
+-Cflags: -I${includedir}
++Libs: @PC_LIBS@
++Cflags: -I${includedir} @PC_CFLAGS@
+-- 
+1.8.4.5
+

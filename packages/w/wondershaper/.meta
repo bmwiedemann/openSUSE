@@ -1,0 +1,9 @@
+<package name="wondershaper" project="openSUSE:Factory">
+  <title>Wondershaper is a QOS (Quality of Service) script.</title>
+  <description>Many cablemodem and ADSL users experience horrifying latency while
+uploading or downloading. They also notice that uploading hampers
+downloading greatly. The wondershaper neatly addresses these issues,
+allowing users of a router with a wondershaper to continue using SSH
+over a loaded link happily.</description>
+  <devel project="network:utilities" package="wondershaper"/>
+</package>

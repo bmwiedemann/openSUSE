@@ -1,0 +1,5 @@
+<package name="yast2-control-center" project="openSUSE:Factory">
+  <title>YaST2 - Control Center</title>
+  <description>This package contains the menu selection component for YaST2.</description>
+  <devel project="YaST:Head" package="yast2-control-center"/>
+</package>

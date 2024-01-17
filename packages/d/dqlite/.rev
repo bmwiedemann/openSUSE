@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d9eb7716ec96b5c9167b6a5d29a4a431</srcmd5>
+    <version>1.9.1</version>
+    <time>1647367475</time>
+    <user>dimstar_suse</user>
+    <comment>this should be in Factory</comment>
+    <requestid>961575</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aeea649a184e9a4d9fe39122b4400d3d</srcmd5>
+    <version>1.10.0</version>
+    <time>1651501544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974328</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f82fdc97eb514b81513a08a8afbcce5</srcmd5>
+    <version>1.11.1</version>
+    <time>1660235527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>994365</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5949eb1bb280ed8d2c782686147132f0</srcmd5>
+    <version>1.12.0</version>
+    <time>1671023461</time>
+    <user>dimstar_suse</user>
+    <comment>dqlite 1.12.0</comment>
+    <requestid>1041866</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3425955c3b2baa89d8f02cf4e1534055</srcmd5>
+    <version>1.14.0</version>
+    <time>1674585827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060589</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4a0f66ccc8e0946584f0fb89137af9f4</srcmd5>
+    <version>1.14.0</version>
+    <time>1675621225</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1063180</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>263f8bfbc51027a251e73caa782f86a1</srcmd5>
+    <version>1.15.1</version>
+    <time>1687900668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095562</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d35e905b4c0c088a50809423c56653bc</srcmd5>
+    <version>1.16.0</version>
+    <time>1699301701</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123663</requestid>
+  </revision>
+</revisionlist>

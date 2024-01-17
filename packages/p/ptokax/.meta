@@ -1,0 +1,5 @@
+<package name="ptokax" project="openSUSE:Factory">
+  <title>ptokax</title>
+  <description>Multi-platform server application for Neo-Modus DC++ sharing network</description>
+  <devel project="network:utilities" package="ptokax"/>
+</package>

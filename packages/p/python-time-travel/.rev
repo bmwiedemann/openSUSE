@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f89591e3f2d5774c0902c8ec4e42dfb0</srcmd5>
+    <version>1.1.2</version>
+    <time>1630265648</time>
+    <user>dimstar_suse</user>
+    <comment>this package was still missing in Factory</comment>
+    <requestid>914873</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3fee17093e4188e5118791ba20c684aa</srcmd5>
+    <version>1.1.2</version>
+    <time>1639515712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940420</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>80c0f4bc5c4299b67ac325f98b3a8da8</srcmd5>
+    <version>1.1.2</version>
+    <time>1650466509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970768</requestid>
+  </revision>
+</revisionlist>

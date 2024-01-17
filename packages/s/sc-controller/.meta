@@ -1,0 +1,5 @@
+<package name="sc-controller" project="openSUSE:Factory">
+  <title>SC Controller</title>
+  <description>User-mode driver and GTK3 based GUI for Steam Controller</description>
+  <devel project="games:tools" package="sc-controller"/>
+</package>

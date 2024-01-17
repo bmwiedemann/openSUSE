@@ -1,0 +1,19 @@
+Index: swtpm-0.8.0/configure.ac
+===================================================================
+--- swtpm-0.8.0.orig/configure.ac
++++ swtpm-0.8.0/configure.ac
+@@ -418,11 +418,11 @@ if test "x$enable_hardening" != "xno"; t
+ 	# Some versions of gcc fail with -Wstack-protector,
+ 	# some with -Wstack-protector-strong enabled
+ 	if ! $CC -fstack-protector-strong -Wstack-protector $srcdir/include/swtpm/tpm_ioctl.h 2>/dev/null; then
+-		if $CC -fstack-protector -Wstack-protector $srcdir/include/swtpm/tpm_ioctl.h 2>/dev/null; then
+-			HARDENING_CFLAGS="-fstack-protector -Wstack-protector"
++		if $CC -fstack-protector $srcdir/include/swtpm/tpm_ioctl.h 2>/dev/null; then
++			HARDENING_CFLAGS="-fstack-protector"
+ 		fi
+ 	else
+-		HARDENING_CFLAGS="-fstack-protector-strong -Wstack-protector"
++		HARDENING_CFLAGS="-fstack-protector-strong"
+ 	fi
+ 
+ 	dnl Only support -D_FORTIFY_SOURCE=2 and have higher levels passed in by user

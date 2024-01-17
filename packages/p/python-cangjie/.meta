@@ -1,0 +1,5 @@
+<package name="python-cangjie" project="openSUSE:Factory">
+  <title>python-cangjie</title>
+  <description>A Python wrapper to libcangjie which implementing the Cangjie input method</description>
+  <devel project="M17N" package="python-cangjie"/>
+</package>

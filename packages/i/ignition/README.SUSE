@@ -1,0 +1,41 @@
+Changes for openSUSE / SLE:
+
+* ignition-mount-initrd-fstab.service / ignition-umount-initrd-fstab.service:
+  Upstream Ignition will only mount partitions or subvolumes explicitly
+  mentioned in the Ignition configuration. A default SUSE system, however,
+  is split over several subvolumes, and most users won't want to define
+  all the partitions again. On the other hand a lot of core functionality (e.g.
+  configuring a SSH certificate for the root user or adding a configuration
+  file) requires access to those subvolumes.
+  For better usability in addition to Ignition's own mount / umount stage all
+  files systems tagged for being mounted in the initrd ("x-initrd.mount" mount
+  flag) will automatically be mounted / umounted.
+* ignition-setup-user.service / ignition-setup-user.sh:
+  The user configuration can be stored on a device with the label "ignition"
+  (e.g. by attaching a USB flash drive with that name) instead of using the
+  platform specific configuration storage mechanism.
+* ignition-userconfig-timeout*.conf:
+  Set timeout for Ignition device so boot will just continue if no physical
+  Ignition configuration device is attached (e.g. when using platform
+  specific configuration).
+* ignition-rmcfg-suse.conf:
+  Adapt systemd service to match our own packaging: We do not support
+  ConditionFirstBoot, and additionally support auto-detection of the platform
+  (see ignition-suse-generator), so the detection whether the stage should be
+  called has to be done via shell script.
+* ignition-touch-selinux-autorelabel.conf:
+  Trigger SELinux autorelabel after Ignition runs; Ignition would support
+  SELinux itself, however this is a compile time option, so it can't be
+  used here.
+* ignition-suse-generator:
+  Replaces the upstream generator by making use of firstboot.target provided
+  by combustion and hooking up the services provided by this module.
+  Additionally it will try to autodect the platform if it is not set on the
+  kernel command line.
+* ignition-enable-network.service / ignition-enable-network.sh:
+  Ignition supports detection whether the configuration requires networking
+  to avoid having to boot with networking enabled even when it isn't
+  necessary; the actual implementation to start the network is left to the
+  distribution.
+* ignition-kargs-helper:
+  Distribution specific helper script to implement kernel argument support.

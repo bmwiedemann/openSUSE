@@ -1,0 +1,426 @@
+From 65baf4034acf16e07c7c344f6707ef434aabd0b4 Mon Sep 17 00:00:00 2001
+From: Tamas Cservenak <tamas@cservenak.net>
+Date: Fri, 6 May 2022 09:54:39 +0200
+Subject: [PATCH 1/2] [MDEPLOY-291] Update POM parent and Maven (#22)
+
+Update plugin build:
+* update parent to 36
+* update maven to 3.2.5
+* leave the plugin to Java7
+* warn user if older that Maven 3.9.0 is used to deploy a maven-plugin
+---
+ pom.xml                                       | 89 +++++++++++++------
+ .../plugins/deploy/AbstractDeployMojo.java    | 39 +++++++-
+ .../maven/plugins/deploy/DeployFileMojo.java  |  1 +
+ .../maven/plugins/deploy/DeployMojo.java      |  1 +
+ .../plugins/deploy/DeployFileMojoTest.java    | 20 +++--
+ .../maven/plugins/deploy/DeployMojoTest.java  | 17 ++--
+ .../apache/maven/plugins/deploy/Utils.java    |  2 +-
+ .../deploy/stubs/ArtifactRepositoryStub.java  | 12 +++
+ 8 files changed, 136 insertions(+), 45 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index 94d8784..10d2644 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -25,8 +25,8 @@ under the License.
+   <parent>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-plugins</artifactId>
+-    <version>34</version>
+-    <relativePath>../../pom/maven/maven-plugins/pom.xml</relativePath>
++    <version>36</version>
++    <relativePath/>
+   </parent>
+ 
+   <artifactId>maven-deploy-plugin</artifactId>
+@@ -63,7 +63,9 @@ under the License.
+   </distributionManagement>
+ 
+   <properties>
+-    <mavenVersion>3.0</mavenVersion>
++    <mavenVersion>3.2.5</mavenVersion>
++    <slf4jVersion>1.7.5</slf4jVersion> <!-- Keep in sync with resolver used in maven above -->
++    <resolverVersion>1.0.0.v20140518</resolverVersion> <!-- Keep in sync with resolver used in maven above -->
+     <javaVersion>7</javaVersion>
+     <project.build.outputTimestamp>2021-12-27T14:10:57Z</project.build.outputTimestamp>
+   </properties>
+@@ -73,50 +75,71 @@ under the License.
+       <groupId>org.apache.maven</groupId>
+       <artifactId>maven-plugin-api</artifactId>
+       <version>${mavenVersion}</version>
++      <scope>provided</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.apache.maven</groupId>
+       <artifactId>maven-core</artifactId>
+       <version>${mavenVersion}</version>
++      <scope>provided</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.apache.maven</groupId>
+       <artifactId>maven-model</artifactId>
+       <version>${mavenVersion}</version>
++      <scope>provided</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.apache.maven</groupId>
+       <artifactId>maven-artifact</artifactId>
+       <version>${mavenVersion}</version>
++      <scope>provided</scope>
++    </dependency>
++
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++      <version>${slf4jVersion}</version>
++      <scope>provided</scope>
+     </dependency>
+-    
+     <dependency>
+       <groupId>org.apache.maven.shared</groupId>
+       <artifactId>maven-artifact-transfer</artifactId>
+       <version>0.13.1</version>
+     </dependency>
+-    <!-- Upgrade of transitive dependency. -->
+     <dependency>
+       <groupId>commons-io</groupId>
+       <artifactId>commons-io</artifactId>
+-      <version>2.5</version>
++      <version>2.6</version>
+     </dependency>
+-    
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-utils</artifactId>
++      <version>3.3.1</version>
++    </dependency>
++    <dependency>
++      <groupId>org.eclipse.aether</groupId>
++      <artifactId>aether-api</artifactId>
++      <version>${resolverVersion}</version>
++    </dependency>
++    <dependency>
++      <groupId>org.eclipse.aether</groupId>
++      <artifactId>aether-util</artifactId>
++      <version>${resolverVersion}</version>
++    </dependency>
++
+     <!-- dependencies to annotations -->
+     <dependency>
+       <groupId>org.apache.maven.plugin-tools</groupId>
+       <artifactId>maven-plugin-annotations</artifactId>
+       <scope>provided</scope>
+     </dependency>
+-    <dependency>
+-      <groupId>org.codehaus.plexus</groupId>
+-      <artifactId>plexus-utils</artifactId>
+-      <version>3.2.0</version>
+-    </dependency>
++
++    <!-- Test -->
+     <dependency>
+       <groupId>org.apache.maven.plugin-testing</groupId>
+       <artifactId>maven-plugin-testing-harness</artifactId>
+-      <version>2.1</version>
++      <version>3.3.0</version>
+       <scope>test</scope>
+     </dependency>
+     <dependency> <!-- used by maven-plugin-testing-harness, don't give it compile scope! -->
+@@ -126,33 +149,45 @@ under the License.
+       <scope>test</scope>
+     </dependency>
+     <dependency>
+-      <groupId>org.mockito</groupId>
+-      <artifactId>mockito-core</artifactId>
+-      <version>2.28.2</version>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-aether-provider</artifactId>
++      <version>${mavenVersion}</version>
+       <scope>test</scope>
+     </dependency>
+     <dependency>
+-      <groupId>junit</groupId>
+-      <artifactId>junit</artifactId>
+-      <version>4.13.1</version>
++      <groupId>org.eclipse.aether</groupId>
++      <artifactId>aether-connector-basic</artifactId>
++      <version>${resolverVersion}</version>
+       <scope>test</scope>
+     </dependency>
+     <dependency>
+-      <groupId>org.sonatype.aether</groupId>
+-      <artifactId>aether-connector-file</artifactId>
+-      <version>1.7</version>
++      <groupId>org.eclipse.aether</groupId>
++      <artifactId>aether-transport-file</artifactId>
++      <version>${resolverVersion}</version>
+       <scope>test</scope>
+     </dependency>
+     <dependency>
+-      <groupId>org.slf4j</groupId>
+-      <artifactId>slf4j-api</artifactId>
+-      <version>1.7.5</version>
+-      <scope>provided</scope>
++      <groupId>org.eclipse.aether</groupId>
++      <artifactId>aether-transport-http</artifactId>
++      <version>${resolverVersion}</version>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.mockito</groupId>
++      <artifactId>mockito-core</artifactId>
++      <version>2.28.2</version>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>junit</groupId>
++      <artifactId>junit</artifactId>
++      <version>4.13.2</version>
++      <scope>test</scope>
+     </dependency>
+     <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-nop</artifactId>
+-      <version>1.7.5</version>
++      <version>${slf4jVersion}</version>
+       <scope>test</scope>
+     </dependency>
+     
+diff --git a/src/main/java/org/apache/maven/plugins/deploy/AbstractDeployMojo.java b/src/main/java/org/apache/maven/plugins/deploy/AbstractDeployMojo.java
+index f933e36..3939a8e 100644
+--- a/src/main/java/org/apache/maven/plugins/deploy/AbstractDeployMojo.java
++++ b/src/main/java/org/apache/maven/plugins/deploy/AbstractDeployMojo.java
+@@ -26,7 +26,12 @@ import org.apache.maven.artifact.repository.layout.DefaultRepositoryLayout;
+ import org.apache.maven.execution.MavenSession;
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoFailureException;
++import org.apache.maven.plugins.annotations.Component;
+ import org.apache.maven.plugins.annotations.Parameter;
++import org.apache.maven.rtinfo.RuntimeInformation;
++import org.eclipse.aether.util.version.GenericVersionScheme;
++import org.eclipse.aether.version.InvalidVersionSpecificationException;
++import org.eclipse.aether.version.Version;
+ 
+ /**
+  * Abstract class for Deploy mojo's.
+@@ -52,7 +57,14 @@ public abstract class AbstractDeployMojo
+ 
+     @Parameter( defaultValue = "${session}", readonly = true, required = true )
+     private MavenSession session;
+-    
++
++    @Component
++    private RuntimeInformation runtimeInformation;
++
++    private static final String AFFECTED_MAVEN_PACKAGING = "maven-plugin";
++
++    private static final String FIXED_MAVEN_VERSION = "3.9.0";
++
+     /* Setters and Getters */
+ 
+     void failIfOffline()
+@@ -79,4 +91,29 @@ public abstract class AbstractDeployMojo
+     {
+         return session;
+     }
++
++    protected void warnIfAffectedPackagingAndMaven( final String packaging )
++    {
++        if ( AFFECTED_MAVEN_PACKAGING.equals( packaging ) )
++        {
++            try
++            {
++                GenericVersionScheme versionScheme = new GenericVersionScheme();
++                Version fixedMavenVersion = versionScheme.parseVersion( FIXED_MAVEN_VERSION );
++                Version currentMavenVersion = versionScheme.parseVersion( runtimeInformation.getMavenVersion() );
++                if ( fixedMavenVersion.compareTo( currentMavenVersion ) > 0 )
++                {
++                    getLog().warn( "" );
++                    getLog().warn( "You are about to deploy a maven-plugin using Maven " + currentMavenVersion + "." );
++                    getLog().warn( "This plugin should be used ONLY with Maven 3.9.0 and newer, as MNG-7055" );
++                    getLog().warn( "is fixed in those versions of Maven only!" );
++                    getLog().warn( "" );
++                }
++            }
++            catch ( InvalidVersionSpecificationException e )
++            {
++                // skip it: Generic does not throw, only API contains this exception
++            }
++        }
++    }
+ }
+diff --git a/src/main/java/org/apache/maven/plugins/deploy/DeployFileMojo.java b/src/main/java/org/apache/maven/plugins/deploy/DeployFileMojo.java
+index 4304421..12267e7 100644
+--- a/src/main/java/org/apache/maven/plugins/deploy/DeployFileMojo.java
++++ b/src/main/java/org/apache/maven/plugins/deploy/DeployFileMojo.java
+@@ -481,6 +481,7 @@ public class DeployFileMojo
+ 
+         try
+         {
++            warnIfAffectedPackagingAndMaven( packaging );
+             artifactDeployer.deploy( getSession().getProjectBuildingRequest(), deploymentRepository,
+                                      deployableArtifacts );
+         }
+diff --git a/src/main/java/org/apache/maven/plugins/deploy/DeployMojo.java b/src/main/java/org/apache/maven/plugins/deploy/DeployMojo.java
+index ae26134..4aaa971 100644
+--- a/src/main/java/org/apache/maven/plugins/deploy/DeployMojo.java
++++ b/src/main/java/org/apache/maven/plugins/deploy/DeployMojo.java
+@@ -207,6 +207,7 @@ public class DeployMojo
+     {
+         try
+         {
++            warnIfAffectedPackagingAndMaven( pir.getProject().getPackaging() );
+             projectDeployer.deploy( pbr, pir, repo );
+         }
+         catch ( NoFileAssignedException e )
+diff --git a/src/test/java/org/apache/maven/plugins/deploy/DeployFileMojoTest.java b/src/test/java/org/apache/maven/plugins/deploy/DeployFileMojoTest.java
+index 6c7064b..371838b 100644
+--- a/src/test/java/org/apache/maven/plugins/deploy/DeployFileMojoTest.java
++++ b/src/test/java/org/apache/maven/plugins/deploy/DeployFileMojoTest.java
+@@ -30,11 +30,12 @@ import org.apache.maven.execution.MavenSession;
+ import org.apache.maven.model.Model;
+ import org.apache.maven.plugin.testing.AbstractMojoTestCase;
+ import org.apache.maven.project.ProjectBuildingRequest;
+-import org.apache.maven.repository.internal.MavenRepositorySystemSession;
++import org.eclipse.aether.DefaultRepositorySystemSession;
++import org.eclipse.aether.repository.LocalRepository;
+ import org.mockito.InjectMocks;
+ import org.mockito.Mock;
+ import org.mockito.MockitoAnnotations;
+-import org.sonatype.aether.impl.internal.SimpleLocalRepositoryManager;
++import org.eclipse.aether.internal.impl.SimpleLocalRepositoryManagerFactory;
+ 
+ /**
+  * @author <a href="mailto:aramirez@apache.org">Allan Ramirez</a>
+@@ -91,9 +92,10 @@ public class DeployFileMojoTest
+         assertNotNull( mojo );
+         
+         ProjectBuildingRequest buildingRequest = mock ( ProjectBuildingRequest.class );
++        when( buildingRequest.getRepositoryMerging() ).thenReturn( ProjectBuildingRequest.RepositoryMerging.POM_DOMINANT );
+         when( session.getProjectBuildingRequest() ).thenReturn( buildingRequest );
+-        MavenRepositorySystemSession repositorySession = new MavenRepositorySystemSession();
+-        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManager( LOCAL_REPO ) );
++        DefaultRepositorySystemSession repositorySession = new DefaultRepositorySystemSession();
++        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManagerFactory().newInstance( repositorySession, new LocalRepository( LOCAL_REPO ) ) );
+         when( buildingRequest.getRepositorySession() ).thenReturn( repositorySession );
+         
+         String groupId = (String) getVariableValueFromObject( mojo, "groupId" );
+@@ -192,9 +194,10 @@ public class DeployFileMojoTest
+         assertNotNull( mojo );
+         
+         ProjectBuildingRequest buildingRequest = mock ( ProjectBuildingRequest.class );
++        when( buildingRequest.getRepositoryMerging() ).thenReturn( ProjectBuildingRequest.RepositoryMerging.POM_DOMINANT );
+         when( session.getProjectBuildingRequest() ).thenReturn( buildingRequest );
+-        MavenRepositorySystemSession repositorySession = new MavenRepositorySystemSession();
+-        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManager( LOCAL_REPO ) );
++        DefaultRepositorySystemSession repositorySession = new DefaultRepositorySystemSession();
++        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManagerFactory().newInstance( repositorySession, new LocalRepository( LOCAL_REPO ) ) );
+         when( buildingRequest.getRepositorySession() ).thenReturn( repositorySession );
+ 
+         String classifier = ( String ) getVariableValueFromObject( mojo, "classifier" );
+@@ -240,9 +243,10 @@ public class DeployFileMojoTest
+         assertNotNull( mojo );
+         
+         ProjectBuildingRequest buildingRequest = mock ( ProjectBuildingRequest.class );
++        when( buildingRequest.getRepositoryMerging() ).thenReturn( ProjectBuildingRequest.RepositoryMerging.POM_DOMINANT );
+         when( session.getProjectBuildingRequest() ).thenReturn( buildingRequest );
+-        MavenRepositorySystemSession repositorySession = new MavenRepositorySystemSession();
+-        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManager( LOCAL_REPO ) );
++        DefaultRepositorySystemSession repositorySession = new DefaultRepositorySystemSession();
++        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManagerFactory().newInstance( repositorySession, new LocalRepository( LOCAL_REPO ) ) );
+         when( buildingRequest.getRepositorySession() ).thenReturn( repositorySession );
+ 
+         String groupId = (String) getVariableValueFromObject( mojo, "groupId" );
+diff --git a/src/test/java/org/apache/maven/plugins/deploy/DeployMojoTest.java b/src/test/java/org/apache/maven/plugins/deploy/DeployMojoTest.java
+index 63fe2de..6404f5a 100644
+--- a/src/test/java/org/apache/maven/plugins/deploy/DeployMojoTest.java
++++ b/src/test/java/org/apache/maven/plugins/deploy/DeployMojoTest.java
+@@ -40,14 +40,15 @@ import org.apache.maven.plugins.deploy.stubs.ArtifactRepositoryStub;
+ import org.apache.maven.plugins.deploy.stubs.DeployArtifactStub;
+ import org.apache.maven.project.MavenProject;
+ import org.apache.maven.project.ProjectBuildingRequest;
+-import org.apache.maven.repository.internal.MavenRepositorySystemSession;
+ import org.apache.maven.shared.transfer.project.deploy.ProjectDeployerRequest;
+ import org.codehaus.plexus.util.FileUtils;
++import org.eclipse.aether.DefaultRepositorySystemSession;
++import org.eclipse.aether.repository.LocalRepository;
+ import org.junit.Ignore;
+ import org.mockito.InjectMocks;
+ import org.mockito.Mock;
+ import org.mockito.MockitoAnnotations;
+-import org.sonatype.aether.impl.internal.SimpleLocalRepositoryManager;
++import org.eclipse.aether.internal.impl.SimpleLocalRepositoryManagerFactory;
+ 
+ /**
+  * @author <a href="mailto:aramirez@apache.org">Allan Ramirez</a>
+@@ -132,8 +133,8 @@ public class DeployMojoTest
+         
+         ProjectBuildingRequest buildingRequest = mock ( ProjectBuildingRequest.class );
+         when( session.getProjectBuildingRequest() ).thenReturn( buildingRequest );
+-        MavenRepositorySystemSession repositorySession = new MavenRepositorySystemSession();
+-        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManager( LOCAL_REPO ) );
++        DefaultRepositorySystemSession repositorySession = new DefaultRepositorySystemSession();
++        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManagerFactory().newInstance( repositorySession, new LocalRepository( LOCAL_REPO ) ) );
+         when( buildingRequest.getRepositorySession() ).thenReturn( repositorySession );
+         
+         File file = new File( getBasedir(),
+@@ -303,8 +304,8 @@ public class DeployMojoTest
+         
+         ProjectBuildingRequest buildingRequest = mock ( ProjectBuildingRequest.class );
+         when( session.getProjectBuildingRequest() ).thenReturn( buildingRequest );
+-        MavenRepositorySystemSession repositorySession = new MavenRepositorySystemSession();
+-        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManager( LOCAL_REPO ) );
++        DefaultRepositorySystemSession repositorySession = new DefaultRepositorySystemSession();
++        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManagerFactory().newInstance( repositorySession, new LocalRepository( LOCAL_REPO ) ) );
+         when( buildingRequest.getRepositorySession() ).thenReturn( repositorySession );
+         
+         File pomFile = new File( getBasedir(),
+@@ -415,8 +416,8 @@ public class DeployMojoTest
+         
+         ProjectBuildingRequest buildingRequest = mock ( ProjectBuildingRequest.class );
+         when( session.getProjectBuildingRequest() ).thenReturn( buildingRequest );
+-        MavenRepositorySystemSession repositorySession = new MavenRepositorySystemSession();
+-        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManager( LOCAL_REPO ) );
++        DefaultRepositorySystemSession repositorySession = new DefaultRepositorySystemSession();
++        repositorySession.setLocalRepositoryManager( new SimpleLocalRepositoryManagerFactory().newInstance( repositorySession, new LocalRepository( LOCAL_REPO ) ) );
+         when( buildingRequest.getRepositorySession() ).thenReturn( repositorySession );
+ 
+         MavenProject project = (MavenProject) getVariableValueFromObject( mojo, "project" );
+diff --git a/src/test/java/org/apache/maven/plugins/deploy/Utils.java b/src/test/java/org/apache/maven/plugins/deploy/Utils.java
+index 4df7442..f4acbc9 100644
+--- a/src/test/java/org/apache/maven/plugins/deploy/Utils.java
++++ b/src/test/java/org/apache/maven/plugins/deploy/Utils.java
+@@ -26,7 +26,7 @@ import java.util.List;
+ import java.util.Map;
+ 
+ import org.apache.maven.plugin.MojoExecutionException;
+-import org.sonatype.aether.util.ChecksumUtils;
++import org.eclipse.aether.util.ChecksumUtils;
+ 
+ /**
+  * A utility class to assist testing.
+diff --git a/src/test/java/org/apache/maven/plugins/deploy/stubs/ArtifactRepositoryStub.java b/src/test/java/org/apache/maven/plugins/deploy/stubs/ArtifactRepositoryStub.java
+index 0b94ebe..92db6c1 100644
+--- a/src/test/java/org/apache/maven/plugins/deploy/stubs/ArtifactRepositoryStub.java
++++ b/src/test/java/org/apache/maven/plugins/deploy/stubs/ArtifactRepositoryStub.java
+@@ -131,4 +131,16 @@ public class ArtifactRepositoryStub
+     {
+         return blacklisted;
+     }
++
++    // @Override
++    public boolean isBlocked()
++    {
++        return false;
++    }
++
++    // @Override
++    public void setBlocked( boolean b )
++    {
++
++    }
+ }
+-- 
+2.36.0
+

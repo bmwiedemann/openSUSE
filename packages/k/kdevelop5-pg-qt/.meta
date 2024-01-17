@@ -1,0 +1,5 @@
+<package name="kdevelop5-pg-qt" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Extra" package="kdevelop5-pg-qt"/>
+</package>

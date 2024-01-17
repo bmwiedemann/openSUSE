@@ -1,0 +1,58 @@
+---
+ app-defaults/Fig |   30 ++++++++++++++++++++++++++++--
+ 1 file changed, 28 insertions(+), 2 deletions(-)
+
+--- app-defaults/Fig
++++ app-defaults/Fig	2023-09-13 09:21:18.377983211 +0000
+@@ -15,6 +15,7 @@
+ ! The following fixes a problem that some window managers have
+ ! with xfig continually resizing itself
+ Fig*AllowShellResize:		False
++Fig.inches:			False
+ 
+ ! Image editor - can edit imported image
+ Fig.image_editor:		xdg-open
+@@ -166,8 +167,11 @@ Fig*canvas.shadowWidth:  0
+ 
+ ! If on monochrome server, or no Fig-color app-defaults file
+ ! This background resource shows between the buttons like a border
+-Fig*mode_panel.background:	black
++Fig*mode_panel.background:	gray67
+ Fig*mode_panel.foreground:	black
++Fig*mode_panel*topShadow:	white
++Fig*mode_panel*topShadowPixel:	white
++Fig*mode_panel*bottomShadowPixel:	gray17
+ 
+ ! Specify a private Compose key database file.  If this resource contains a "/"
+ ! then the wired-in name of the xfig global directory will not be prefixed
+@@ -638,7 +642,29 @@ Fig*sideruler.background:		gray95
+ ! file panel and scrollbar
+ Fig*FigList*background:			gray95
+ Fig*List*background:			gray95
+-Fig*Scrollbar.background:		gray80
++Fig*Scrollbar.background:		gray77
++
++Fig*Scrollbar.foreground:		gray37
++Fig*ScrollbarBackground:		gray67
++Fig*ScrollbarForeground:		gray37
++
++Fig*horizontal.shadowWidth:		2
++Fig*horizontal.topShadowPixel:		gray95
++Fig*horizontal.bottomShadowPixel:	gray37
++Fig*horizontal.topShadow:		gray95
++Fig*horizontal.bottomShadow:		gray37
++
++Fig*Scrollbar.shadowWidth:		2
++Fig*Scrollbar.topShadow:		gray95
++Fig*Scrollbar.bottomShadow:		gray37
++Fig*Scrollbar.topShadowPixel:		gray95
++Fig*Scrollbar.bottomShadowPixel:	gray37
++
++Fig*stdColor.shadowWidth:		2
++Fig*stdColor.topShadow:			gray95
++Fig*stdColor.bottomShadow:		gray37
++Fig*stdColor.topShadowPixel:		gray95
++Fig*stdColor.bottomShadowPixel:		gray37
+ 
+ Fig*Label.background:			gray80
+ Fig*ind_box.background:			gray80

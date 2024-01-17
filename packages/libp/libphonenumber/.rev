@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>33e292f05153c380a2363f1f22839ae3</srcmd5>
+    <version>8.10.15</version>
+    <time>1564155252</time>
+    <user>dimstar_suse</user>
+    <comment>New package, used by kitinerary</comment>
+    <requestid>718808</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3aaee694df978453337c60c5e472ee7</srcmd5>
+    <version>8.12.10</version>
+    <time>1601043992</time>
+    <user>dimstar_suse</user>
+    <comment>Fix exclude (forwarded request 836101 from favogt)</comment>
+    <requestid>836102</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>80cdb762635c836c1c3659606cf97679</srcmd5>
+    <version>8.12.22</version>
+    <time>1620504432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v8.12.22:
+  * See https://github.com/google/libphonenumber/blob/v8.12.22/release_notes.txt (forwarded request 890937 from favogt)</comment>
+    <requestid>890938</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5fcbed0a1be92527999f39778488baac</srcmd5>
+    <version>8.12.23</version>
+    <time>1621805422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894682</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>65b09f8624ac98d8531fd627c0865c82</srcmd5>
+    <version>8.13.15</version>
+    <time>1688147895</time>
+    <user>dimstar_suse</user>
+    <comment>- absl is also needed for using the -devel package (forwarded request 1095367 from favogt)</comment>
+    <requestid>1095368</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b24b540b0745c510c7a440235a6ebf69</srcmd5>
+    <version>8.13.23</version>
+    <time>1698170863</time>
+    <user>anag+factory</user>
+    <comment>libphonenumber 8.13.28 (forwarded request 1119441 from AndreasStieger)</comment>
+    <requestid>1119880</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,16 @@
+# Screensavers we want to have by default
+# Please keep this list small (~10 screensavers), and try to avoid changing it
+# too much since users are likely using one of those.
+# Note: no screensaver depending on xscreensaver-getimage* or xscreensaver-text
+# should be here.
+fireworkx
+flurry
+fuzzyflakes
+glmatrix
+goop
+# This one is nice, but too similar to substrate.
+#interaggregate
+metaballs
+pacman
+pong
+substrate

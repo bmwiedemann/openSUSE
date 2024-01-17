@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>042c74b90d13a37fd16b44707e9bc89c</srcmd5>
+    <version>1.8</version>
+    <time>1513941570</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 1.8
+</comment>
+    <requestid>555753</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>48a34ca5d97ed43a94c50a2037f9c94a</srcmd5>
+    <version>1.9</version>
+    <time>1520503093</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>583786</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>00ce927f8420d0018c0650217c6571d7</srcmd5>
+    <version>1.9</version>
+    <time>1544726472</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653970</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4d4a2a89c6b3840dacbbde35f2ded213</srcmd5>
+    <version>1.10</version>
+    <time>1554114899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10:</comment>
+    <requestid>685806</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0f7e1d4bb1df3b25d79a3267041bb104</srcmd5>
+    <version>1.10</version>
+    <time>1571210037</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738298</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4429cf990fd699b1227a249b1164c72d</srcmd5>
+    <version>1.11</version>
+    <time>1578320672</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.11.0:
+ - adding url to examples
+ - Switched to using a module-specific logger so code calling this module can have better control over logs.
+ - Update websocket-client and add ping every 15s</comment>
+    <requestid>761130</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9ef746f08119b801c94244654912c55e</srcmd5>
+    <version>1.11</version>
+    <time>1591742659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809822</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>acbb9b72d586dc4e5613594ff92edb42</srcmd5>
+    <version>1.12</version>
+    <time>1622536614</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>895478</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/apache/maven-osgi.git</param>
+		<param name="revision">4e53e51ec6634c07a9bb588a47bc8ba267151241</param>
+		<param name="versionformat">0.3.0</param>
+        <param name="exclude">**/*.jar</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

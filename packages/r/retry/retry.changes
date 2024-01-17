@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Fri Nov 24 18:28:59 UTC 2023 - okurz@suse.com
+
+- Update to version 1700850441.829db9e:
+  * Add explicit -s 0 to test commands
+  * Add testcase for succes on last retry
+  * Fix exit code in last retry
+
+-------------------------------------------------------------------
+Wed Nov 22 18:37:18 UTC 2023 - okurz@suse.com
+
+- Update to version 1700678141.fbcdfe5:
+  * Add check for return code of retried command
+
+-------------------------------------------------------------------
+Wed Jun 28 12:01:48 UTC 2023 - okurz@suse.com
+
+- Update to version 1687953576.0230dc5:
+  * dist: Add missing dependency on util-linux for getopt
+
+-------------------------------------------------------------------
+Mon Jun 27 12:33:18 UTC 2022 - okurz@suse.com
+
+- Update to version 1655407786.7ff7de5:
+  * CI: Fix mergify branch rule
+  * Add optional parameter for fine-tuning base factor
+  * Add mock for sleep
+  * Add tests for exponential back-off
+  * Add simple binary exponential back-off algorithm
+  * Document default sleep value
+  * dist: Rephrase summary trying to prevent name repetition
+  * dist: Skip build-tests due to test-more-bash absence
+  * CI: Rely on environment provided checkbashisms by default
+
+-------------------------------------------------------------------
+Sun Jun 12 08:25:54 UTC 2022 - Oliver Kurz <okurz@suse.com>
+
+- Initial package creation

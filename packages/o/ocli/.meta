@@ -1,0 +1,11 @@
+<package name="ocli" project="openSUSE:Factory">
+  <title>OwnTracks command line interface publisher</title>
+  <description>This is the OwnTracks command line interface publisher, a.k.a.
+ocli, a small utility which connects to gpsd and publishes position
+information in OwnTracks JSON to an MQTT broker in order for
+compatible software to process location data.
+
+</description>
+  <devel project="network:utilities" package="ocli"/>
+  <url>https://github.com/owntracks/ocli</url>
+</package>

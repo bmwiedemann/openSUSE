@@ -1,0 +1,18 @@
+---
+ configure.in |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- a/configure.in
++++ b/configure.in
+@@ -27,7 +27,10 @@ if test "x$am_cv_func_iconv" != "xyes";
+ fi
+ 
+ dnl Checks for libraries.
+-AM_PATH_GTK_2_0(2.6.0, CFLAGS="$CFLAGS $GTK_CFLAGS" CPPFLAGS="$CPPFLAGS $GTK_CFLAGS" LIBS="$LIBS $GTK_LIBS", AC_MSG_ERROR(GTK+ >= 2.6.0 not found.))
++PKG_CHECK_MODULES([GTK], [gtk+-3.0])
++CFLAGS="$CFLAGS $GTK_CFLAGS"
++CPPFLAGS="$CPPFLAGS $GTK_CFLAGS"
++LIBS="$LIBS $GTK_LIBS"
+ AC_CHECK_LIB(iconv, iconv)
+ AC_CHECK_LIB(anthydic, anthy_dic_util_init)
+ AC_CHECK_LIB(anthy, anthy_get_version_string)

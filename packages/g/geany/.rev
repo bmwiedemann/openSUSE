@@ -1,0 +1,516 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>32979d110163718bca6124a9a0e60aef</srcmd5>
+    <version>0.18.1</version>
+    <time>1271369742</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/geany based on submit request 36723 from user vuntz
+</comment>
+    <requestid>36723</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>32979d110163718bca6124a9a0e60aef</srcmd5>
+    <version>0.18.1</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>32979d110163718bca6124a9a0e60aef</srcmd5>
+    <version>0.18.1</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40bdb8bbe488ea4063e6dbda8950a65b</srcmd5>
+    <version>0.19.1</version>
+    <time>1282917663</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/geany based on submit request 46318 from user vuntz
+</comment>
+    <requestid>46318</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b43ecc9d03a66e9fcfaeb436efd4c4ef</srcmd5>
+    <version>0.19.2</version>
+    <time>1291999613</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55317 from user vuntz
+</comment>
+    <requestid>55317</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>68d1045801e94240da9d155c6de53770</srcmd5>
+    <version>0.20</version>
+    <time>1295015984</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58146 from user coolo
+</comment>
+    <requestid>58146</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4d2d1768403c1560cabc88a10e59df2e</srcmd5>
+    <version>0.20</version>
+    <time>1295015990</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58146
+</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>685b0f37393e64908018f2f136d9e4e3</srcmd5>
+    <version>0.20</version>
+    <time>1297642616</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60925 from user vuntz
+</comment>
+    <requestid>60925</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>c7f1eba91be336cfc2031d97698a81c1</srcmd5>
+    <version>0.20</version>
+    <time>1297642621</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60925
+</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>c7f1eba91be336cfc2031d97698a81c1</srcmd5>
+    <version>0.20</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>c7f1eba91be336cfc2031d97698a81c1</srcmd5>
+    <version>0.20</version>
+    <time>1319181899</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2bff09416be8a7b335819fea60910f53</srcmd5>
+    <version>0.21</version>
+    <time>1325787050</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98901</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9d25e4e70018f4f7140ba484292d447d</srcmd5>
+    <version>0.21</version>
+    <time>1328542860</time>
+    <user>coolo</user>
+    <comment>- Add geany-link-gmodule.patch: Detect and link gmodule-2.0.
+- Add libtool BuildRequires and call to ./autogen.sh, as above
+  patch touches the buildsystem. (forwarded request 102559 from dimstar)</comment>
+    <requestid>102772</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>9d25e4e70018f4f7140ba484292d447d</srcmd5>
+    <version>0.21</version>
+    <time>1340183357</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>83c92c8daa48081a649e18b2c6beec6a</srcmd5>
+    <version>1.22</version>
+    <time>1345730608</time>
+    <user>namtrac</user>
+    <comment>Update to 1.22 (forwarded request 130873 from darix)</comment>
+    <requestid>130969</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>83c92c8daa48081a649e18b2c6beec6a</srcmd5>
+    <version>1.22</version>
+    <time>1359108916</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4ab38eac06012a6ea8b03a6b9ba04e2a</srcmd5>
+    <version>1.23</version>
+    <time>1364239099</time>
+    <user>coolo</user>
+    <comment>Update to 1.23 (forwarded request 160771 from Zaitor)</comment>
+    <requestid>160799</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>aecb0c103972f5e02160e76173a775b3</srcmd5>
+    <version>1.23.1</version>
+    <time>1369734254</time>
+    <user>coolo</user>
+    <comment>Update to 1.23.1 (forwarded request 176429 from Zaitor)</comment>
+    <requestid>176471</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>aecb0c103972f5e02160e76173a775b3</srcmd5>
+    <version>1.23.1</version>
+    <time>1379662407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9c181dde1f3b1d871b42c080c21492e1</srcmd5>
+    <version>1.24.1</version>
+    <time>1399317434</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.24.1 (forwarded request 231479 from Zaitor)</comment>
+    <requestid>231863</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>9c181dde1f3b1d871b42c080c21492e1</srcmd5>
+    <version>1.24.1</version>
+    <time>1409300940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9e03b2ab0c4561194034de87f12a754c</srcmd5>
+    <version>1.26</version>
+    <time>1456127840</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with gtk3 (change %prefer_gtk2 to 0).
+- Suppress rpmlint devel-file-in-non-devel-package warnings for
+  files in /usr/share/geany/templates/ by adding them to the
+  rpmlintrc; these files are meant as templates for the use to
+  copy and use and are not really devel files.
+
+- Update to version 1.26:
+  + General:
+    - New plugin API (PR#469).
+    - Add support for &quot;proxy&quot; plugins (PR#629).
+  + Bug fixes:
+    - Fix &quot;Open in New Window&quot; command (Issue#590).
+    - Fix spurious &quot;source file has been modified&quot; (Issue#605,
+      PR#621).
+    - Don't open more than one document for non-existing paths
+      from the CLI
+      (https://bugs.launchpad.net/linuxmint/+bug/1482558, PR#646).
+    - Fix configuration directory encoding on non-UTF-8
+      non-Windows systems (PR#658).
+  + Interface:
+    - Use monospace font for the message window by default
+      (Issue#435, PR#580).
+    - Fix mnemonic conflict in &quot;Use multi-line matching&quot;
+      (Issue#589, PR#647).
+  + Editor:
+    - Update Scintilla to version 3.6.1.
+    - Fix completion popup height when view is zoomed
+      (Issue#702).
+    - Fix Go To End Of Display Line when wrapping is on and EOL
+      are visible (Issue#712).</comment>
+    <requestid>360002</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>32b9d2d0f7725c0e51019229b075a725</srcmd5>
+    <version>1.28</version>
+    <time>1469742346</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412803</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2c28e0bf8cff8f805b42b0df091d4bca</srcmd5>
+    <version>1.29</version>
+    <time>1485598049</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream version</comment>
+    <requestid>452807</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>1b05314653b2dc6ec0c9dfd4db19df19</srcmd5>
+    <version>1.29</version>
+    <time>1485939175</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453494</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>22c35e917fa2bd6af6e7734eab555829</srcmd5>
+    <version>1.30</version>
+    <time>1489178787</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478472</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>402840fe1beba883fba098c7f338476a</srcmd5>
+    <version>1.30.1</version>
+    <time>1499291814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.30.1
+  + Editor: fix auto-completion and calltip popup position on
+    multi-monitor setups (gh#geany/geany#1422).
+  + Updated translations.</comment>
+    <requestid>497346</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>fc116782d3e3cc460a9d81ac690020b2</srcmd5>
+    <version>1.30.1</version>
+    <time>1500275411</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop easily-togglable support for building against gtk2 -- it
+  leads to assumptions that we want to officially support gtk2,
+  where we don't. Remove the %%{prefer_gtk2} macro.
+- Switch gtk3-devel BuildRequires to pkgconfig(gtk+-3.0). (forwarded request 509417 from badshah400)</comment>
+    <requestid>509993</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a898f6a4fa865ec35b46676b2190dc95</srcmd5>
+    <version>1.31</version>
+    <time>1503308280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update description.
+- Update to version 1.31
+  + Bug fixes:
+    - Update statusbar after applying indentation detection.
+    - Fix converting color to hex for insertion in the Color
+      Chooser dialog.
+  + Filetypes:
+    - Add `parfor` to the Matlab keyword list.
+    - C: fix line continuation handling.
+    - Add `require_relative` to the Ruby keyword list.
+    - Update Haxe keywords.
+    - Fix Arduino comment toggling.
+    - Update CMake keywords.
+    - Update C# keywords.
+    - Update HTML keywords.
+  + API: Fix crash when calling plugin_set_key_group() more than
+    once.
+  + Updated translations.
+- Refresh spec-file, run spec-cleaner.
+</comment>
+    <requestid>517812</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>999d98b4ec878d7ec786c4e69acc761c</srcmd5>
+    <version>1.31</version>
+    <time>1503927217</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519104</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7ea8c550ca30782fda864dcc49202bb2</srcmd5>
+    <version>1.32</version>
+    <time>1514842235</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.32
+  + General:
+    - Improve CLI argument help (gh#geany/geany#1644).
+    - Keep the current tab when closing documents to the right of
+      another tab.
+    - Re-enable SIGTERM handling (gh#geany/geany#1255).
+    - Create correct path for filetype config files.
+    - Add an option to enable IME's candidate window display
+      inline.
+    - Add an option to automatically reload files changed on disk
+  + Bug fixes:
+    - Fix backward compatibility of the geometry saving setting.
+    - Close &quot;Deleted from Disk&quot; Infobar on Reload.
+    - Make sure GDK_MOD2_MASK is cleared when getting modifiers
+    - Use non-symlinked VTE libraries on MacOS X.
+    - Fix crash if plugin manager is opened more than once.
+    - Fix incorrect variable reference.
+  + Interface:
+    - Add &quot;Close Documents to the Right&quot; feature.
+    - Add an option to save/reload either window position or size,
+      but optionally not both (gh#geany/geany#1456).
+  + Editor
+    - Update Scintilla to version 3.7.5 (gh#geany/geany#1503).
+    - Improve snippet support (visual indicators and more)
+      (gh#geany/geany#1470).
+    - Push current position to navqueue before navigating back
+      (gh#geany/geany#1537).
+  + Filetypes:
+    - Add GNU assembler filetype extensions (gh#geany/geany#904).
+    - Make Python comment hash space (gh#geany/geany#1682).</comment>
+    <requestid>560580</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f459f0cdf9febdd325a908cf8f142fb7</srcmd5>
+    <version>1.33</version>
+    <time>1520164248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.33:
+  + Bug fixes: Fix the symbols tree hierarchy when several tags
+    have the same name (gh#geany/geany#1598).
+  + Interface:
+    - Add a tooltip showing the full path on menu items
+      representing documents (gh#geany/geany#1706).
+    - Add a note for applying the indent settings in the project
+      preferences (gh#geany/geany#1650).
+    - Enable popup menu on sidebar and message window notebooks
+      (gh#geany/geany#1726).
+    - Show status message on attempt to execute empty context
+      action (gh#geany/geany#1642).
+    - GTK3 theming improvements and documentation
+      (gh#geany/geany#1382).
+  + Filetypes: CSS: Update Grid properties (gh#geany/geany#1705).
+  * Updated translations. (forwarded request 580974 from badshah400)</comment>
+    <requestid>581648</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5d426225071a791ccdf1b659e21714d8</srcmd5>
+    <version>1.34.1</version>
+    <time>1548064008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.34.1:
+  + Fix line breaking on existing lines.
+  + Fix displaying filenames containing XML control chars inside
+    infobars.
+  + Updated translations.
+- Update to version 1.34:
+  + GTK version to build against is now automatically detected.
+  + Show part of the file path to show unique items in the go to
+    symbol popup.
+  + Fix high CPU usage with the Scope plugin.
+  + Update Scintilla to version 3.10.0.
+  + Fix display issues on Windows with HiDPI displays.
+  + Fix line breaking with multi-byte characters.
+  + Update Python 3.7 keywords and PHP 7.2 tags.
+  + Updated translations.
+</comment>
+    <requestid>663168</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a60ce722bfdb07194149925ce187bf61</srcmd5>
+    <version>1.36</version>
+    <time>1570104535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.36:
+  + Add support for fractional font sizes.
+  + Improve matching filetype extensions.
+  + Add Apple Swift, Nim, Kotlin, Groovy and TypeScript filetypes.
+  + Update CUDA and NSIS filetypes.
+  + Update Scintilla to version 3.10.4.
+  + Fix build on recent MSYS2.
+  + Updated translations.
+- Update to version 1.35:
+  + General: Start synchronization with Universal-CTags.
+  + Bug fixes:
+    - Improve IPC socket handling.
+    - Fix loading the default open encoding option.
+    - Fix VTE path following after reset.
+  + Interface: Show variable type in a tooltip in symbol tree.
+  + Editor:
+    - Update Scintilla to version 3.10.2.
+    - Drastically speed up huge bulk replacements.
+    - Fix accessibility information reported upon deletion.
+    - Fix garbage data insertion when moving lines up or down.
+    - Don't perform line breaking in rectangular selection mode.
+  + Filetypes:
+    - Allow stripping trailing spaces from custom filetypes based
+      on the Diff lexer.
+    - Improve JavaScript symbols parsing.
+    - Improve HTML symbols parsing.
+    - Improve COBOL symbols parsing.
+    - Improve ActionScript symbols parsing.
+  + Updated translations.
+</comment>
+    <requestid>734666</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>e8002bf6a3a72aefc1c5d4eb6b748c5d</srcmd5>
+    <version>1.36</version>
+    <time>1580080994</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Apps</comment>
+    <requestid>767353</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>e0b9411e009394980101befe5468d678</srcmd5>
+    <version>1.36</version>
+    <time>1588023789</time>
+    <user>dimstar_suse</user>
+    <comment>- geany-avoid-segfault-on-quit.patch: Add patch. (boo#1166820)
+- geany-appstream.patch: Refresh patch.
+- geany.spec: Reference above new patch. (forwarded request 796769 from berny)</comment>
+    <requestid>798371</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8d0bc96b182f60cb4f158c82b02b2e79</srcmd5>
+    <version>1.37</version>
+    <time>1603959760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.37:
+  * Save main and project configuration whenever documents are
+    opened/closed to reduce accidental loss of current session in the
+    event of a crash (can be disabled).
+  * Fix a possible crash when quitting
+  * Show OS info in debug messages which can and should be included
+    in bug reports to ease support and debugging.
+  * Update Scintilla to version 3.21.1.
+  * Add BibTeX (Mirco Schoenfeld) and Smalltalk
+  * Update FreeBasic, JavaScript, Lua, and Python filetypes.
+- Remove geany-avoid-segfault-on-quit.patch (forwarded request 844555 from polslinux)</comment>
+    <requestid>844558</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>745b318cbe6b83bf82a4eddfcb297eeb</srcmd5>
+    <version>1.37.1</version>
+    <time>1608634284</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.37.1:
+  * Fix crash on first startup (forwarded request 856700 from polslinux)</comment>
+    <requestid>857831</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a8de9c61024390f1183932503d63ded8</srcmd5>
+    <version>1.38</version>
+    <time>1634068137</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.38 (forwarded request 924551 from stroeder)</comment>
+    <requestid>924749</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>f8ec9c87ff39fbe7e4c1a3c9d6527f74</srcmd5>
+    <version>1.38</version>
+    <time>1636218955</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libgeany0 by -devel package: we install the .so symlink
+  and are thus responsible for the link target too. (forwarded request 929646 from dimstar)</comment>
+    <requestid>929709</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>00f40cad0a01f49b32520dbe31752c25</srcmd5>
+    <version>1.38</version>
+    <time>1649274659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966665</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>3dfce768b926d270be16fd417f107096</srcmd5>
+    <version>2.0</version>
+    <time>1698170809</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0:
+  * Split &quot;session data&quot; into session.conf, preferences are written to
+    and read from geany.conf (PR#2776, PR#2779, PR#3014, PR#3125 and more).
+  * Require GTK 3.24.
+  * (Re-)Add ability to scroll over document tabs (PR#3134).
+  * Fix keyword colorization on filetype change (PR#3553).
+  * Fix startup files order when placing tabs next to the current one (PR#3611).
+  * The document list in the sidebar has a new tree view. This mode is
+    the new default and existing installations automatically use it (PR#1813).
+  * Use dark-theme friendly colors for compiler messages (PR#3013).
+  * Add a confirmation dialog on search &amp; replace for the whole session (PR#3033).
+  * Filter entry for symbol tree (PR#3055).
+  * Simplify project creation from existing directories with sources (PR#3042).
+  * Add option to show symbols in symbol tree without category groups (PR#3172).
+  * Add option to only show line endings if they differ from file default (PR#3287).
+  * Make tab label length and window title length configurable (Abdul Rafey, #3365).
+  * Make Go to Symbol commands show signature list (PR#3475).
+  * Sync many parsers from the Universal Ctags project, this leads to
+    updated symbol parsers (PR#2990, PR#2991, PR#3032).
+  * Improved support for the ctags file format, which is now the recommended
+    format for tags files (PR#3049).  
+  * Enable local variables and improve autocompletion for C/C++ and
+    some other languages (PR#3185, PR#3275).
+- Drop upstreamed geany-inttool.patch.
+- Rebased geany-appstream.patch. (forwarded request 1119159 from polslinux)</comment>
+    <requestid>1119569</requestid>
+  </revision>
+</revisionlist>

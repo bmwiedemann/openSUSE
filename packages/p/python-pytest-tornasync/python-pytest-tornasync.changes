@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Dec  7 09:06:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch to %{?sle15_python_module_pythons} for SLE15
+
+-------------------------------------------------------------------
+Wed Jan 15 19:48:54 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- initial version

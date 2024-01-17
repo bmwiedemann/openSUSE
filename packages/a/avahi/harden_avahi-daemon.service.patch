@@ -1,0 +1,24 @@
+Index: avahi-0.8/avahi-daemon/avahi-daemon.service.in
+===================================================================
+--- avahi-0.8.orig/avahi-daemon/avahi-daemon.service.in
++++ avahi-0.8/avahi-daemon/avahi-daemon.service.in
+@@ -20,6 +20,19 @@ Description=Avahi mDNS/DNS-SD Stack
+ Requires=avahi-daemon.socket
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=dbus
+ BusName=org.freedesktop.Avahi
+ ExecStart=@sbindir@/avahi-daemon -s

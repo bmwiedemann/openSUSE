@@ -1,0 +1,11 @@
+--- a/cmake/FindPDAL.cmake        2021-08-05 12:51:21.255398497 +0000
++++ b/cmake/FindPDAL.cmake        2021-08-05 12:51:42.319428567 +0000
+@@ -40,7 +40,7 @@ FIND_LIBRARY(PDAL_UTIL_LIBRARY NAMES pda
+   )
+ FIND_LIBRARY(PDAL_UTIL_LIBRARY NAMES pdal_util libpdal_util)
+ 
+-FIND_PROGRAM(PDAL_BIN pdal
++FIND_PROGRAM(PDAL_BIN pdal-config
+     $ENV{LIB_DIR}/bin
+     /usr/local/bin/
+     /usr/bin/

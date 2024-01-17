@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9da9087f7c78762686172e172ee91dc7</srcmd5>
+    <version>1.6.0</version>
+    <time>1551215710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>677663</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93bdaea7e027056bad11e6aa0d72e792</srcmd5>
+    <version>1.7.0</version>
+    <time>1560861915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Support pytest 4
+  * Support python 3.7</comment>
+    <requestid>707085</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c7bc2b70f1da14d19d0737a3cda6e21b</srcmd5>
+    <version>1.7.0</version>
+    <time>1608112770</time>
+    <user>dimstar_suse</user>
+    <comment>- We don't need to break Python 2.7 (forwarded request 855629 from mcepl)</comment>
+    <requestid>855630</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>60f37b819fdcc363adabe646f061d711</srcmd5>
+    <version>1.7.0</version>
+    <time>1637535098</time>
+    <user>dimstar_suse</user>
+    <comment>- Inject multibuild to break up a build loop.</comment>
+    <requestid>931516</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>9bf058bc3faa31da54feffbb79f398c7</srcmd5>
+    <version>1.7.0</version>
+    <time>1686506161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092222</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="lxqt-openssh-askpass" project="openSUSE:Factory">
+  <title>Tool used with openssh to prompt the user for password </title>
+  <description>Tool used with openssh to prompt the user for password 
+</description>
+  <devel project="X11:LXQt" package="lxqt-openssh-askpass"/>
+</package>

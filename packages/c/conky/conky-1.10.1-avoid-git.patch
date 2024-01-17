@@ -1,0 +1,12 @@
+diff -urEbw conky-1.11.6/cmake/Conky.cmake conky-1.11.6.new/cmake/Conky.cmake
+--- conky-1.11.6/cmake/Conky.cmake	2020-07-27 14:01:52.000000000 +0200
++++ conky-1.11.6.new/cmake/Conky.cmake	2020-07-28 09:01:36.198586808 +0200
+@@ -18,7 +18,7 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #
+ 
+-# set(RELEASE true)
++set(RELEASE true)
+ 
+ # Set system vars
+ if(CMAKE_SYSTEM_NAME MATCHES "Linux")

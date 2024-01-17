@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Thu Dec  7 22:05:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16:
+  * `scanners.re` - fixed warnings; use `*` for fallback.
+  * Fixed some warnings in `scanners.re`.
+  * Update CaseFolding to latest (Kevin Wojniak, #168).
+  * Allow balanced nested parens in link destinations (Yuki
+    Izumi, #166)
+  * Allocate enough bytes for backticks array.
+  * Inlines: Ensure that the delimiter stack is freed in subject.
+
+-------------------------------------------------------------------
+Tue May 30 15:44:02 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.15
+  + formatter: allow for light and dark stylesheets
+  + theme: add light mode variables (lumen)
+  + extension: output unescaped sitemap
+
+- 0.14.1 release
+  + gtk_doc: look for devhelp indexes in more places
+  + devhelp: Exclude useless files
+  + hotdoc_dep_printer: fix Config class name
+  + wheezy.template usage: switch to maintainer-recommended
+    workaround
+  + setup: fix build with python 3.11
+  + Switch from charset-normalizer to faust-cchardet
+  + Adding tarfile member sanitization to extractall()
+
+- 0.14.0 release
+  + requirements: bump networkx and dbus-deviation versions
+  + Regenerate requirements.txt with flex installed
+  + build(deps): bump lxml from 4.6.3 to 4.9.1
+  + Switch unmaintained ccharset to charset-normalizer
+  + enum_member: render Since tag
+  + symbols: do not list aliases as children
+  + extensions: simple ATOM feed generator
+  + base_symbol: format tags for all symbols
+
+- 0.13.7 release
+  + gi: ignore more boilerplate macros
+
+- 0.13.6 release
+  + update cmark submodule
+  + gtkdoc_extension: fix out of bounds access
+
+- 0.13.5 release
+  + Fix incorrect use of hashlib and cache
+  + ext: Allow loading extension modules with full paths
+    gh#hotdoc/hotdoc#235
+  + Add some documentation for the metadata keys
+
+- 0.13.4 release
+  + signals: store callbacks in OrderedSets
+  + gi-extension: ignore boilerplate macros for enums and bitfields too
+  + Add option for enabling prism-keep-markup
+  + tree: fix picking of page output path
+  + Print an error message instead of segfaulting.
+  + CI: use pip for editable installs
+  + build(deps): bump lxml from 4.6.2 to 4.6.3
+
+-------------------------------------------------------------------
+Tue Mar 30 09:40:25 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.13.3:
+  + No changelog
+  + gi_extension: don't ignore callbacks in structs
+  + gi: Add class structure fields as children of the
+    GIInterfaceSymbol
+  + symbols: Do not override field symbol comment with None
+  + gi: Add class structure fields as children of the GIClassSymbol
+  + aliases: fix link resolution
+
+- 0.13.2 release
+  + Update theme submodule
+  + ProxySymbol: do not override the title of the proxied symbol
+  + symbols: not all children symbols need formatting
+  + templates: check-in forgotten action prototypes
+
+- 0.13.1 release
+  + setup.py: distribute comment_on_github assets
+
+- 0.13.0 release
+  + Update theme submodule
+  + Implement a separate symbol type for action signals
+  + gst: make use of gi-extension languages
+  + add frozen list of used packages via pip-compile
+  + setup.py: remove check on __name__ == '__main__'
+  + drop dependency on xdg
+  + future-proof networkx dependency by dropping explicit pinning
+  + fix DeprecationWarnings for collections.abc
+  + unpin wheezy.template dependency
+  + remove unneeded pin on python-pkgconfig version
+  + CI: replace travis with github workflow
+  + gi: remove FundamentalSymbol
+  + Fix GitHub capitalization on "Edit on GitHub button"
+  + Update networkx to 2.5
+  + gi_extension: fix page gi-languages
+  + search_module: don't consider '-' a word separator
+  + Add comment on github extension
+  + Update theme submodule ￼…
+  + Update theme submodule
+  + license_extension: allow theme and extension to advertise
+    licensing
+  + search_module: fix context id identification
+  + gtk_doc: Support annotation lines ended with colons
+  + database: Allow aliases to have the same name as a real symbol
+  + gst: Use plugin name to reference plugins
+  + gst: Move other class types to their own pages
+  + gst: Fix previous commit that shadow 'prop' variable by mistake
+  + gst: Associate objects with their children and plugins with
+    other types
+  + check_since_markers: remove stray print
+  + gi: associate klass with its chilren symbols
+
+- Remove patch which is no longer needed:
+  * remove-dependency-on-python-xdg.patch
+
+-------------------------------------------------------------------
+Sat Mar 20 00:13:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Avoid have-choice with upcoming python39 flavor: Only provide the
+  hotdoc capability without python prefix by primary python3
+  package.
+
+-------------------------------------------------------------------
+Wed Feb 10 09:55:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix typo in previous commit (defnie -> define).
+
+-------------------------------------------------------------------
+Wed Feb 10 08:32:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for python 3.6: not all dependencies are available
+  and compatible to Python 3.6.
+
+-------------------------------------------------------------------
+Tue Nov  3 15:02:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Reinclude the cli files under update-alternatives control into
+  the main package in order to support multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Thu Oct 22 11:06:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add Requires: python-setuptools
+
+-------------------------------------------------------------------
+Fri Oct 16 12:16:37 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to remove dependency on python-xdg and use python-pyxdg
+  instead since both are not coinstallable and pyxdg is a
+  freedesktop project and used by openSUSE-release-tools:
+  * remove-dependency-on-python-xdg.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 15:28:14 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix rpm group
+
+-------------------------------------------------------------------
+Mon Aug  3 11:57:24 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-hotdoc 0.12.2

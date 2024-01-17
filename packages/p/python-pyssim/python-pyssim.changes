@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu Oct  5 08:53:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.6
+  * support numpy 1.20
+- Drop upstreamed numpy120.patch
+- add upstream pillow10.patch
+
+-------------------------------------------------------------------
+Mon Mar  6 11:17:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add numpy120.patch to support numpy 1.20 gh#jterrace/pyssim#44
+- Update to 0.5
+  * No release notes found
+
+-------------------------------------------------------------------
+Sat Feb 13 07:49:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 36 build (scipy) 
+
+-------------------------------------------------------------------
+Wed May 20 07:26:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Feb 21 12:40:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to github tarball until upstream includes the license
+  and the tests, the master test refetching causes source validator
+  to fail
+
+-------------------------------------------------------------------
+Thu Feb 21 04:28:04 AM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.4, with Pillow-imports.patch to workaround
+  problems caused by top level Image.py

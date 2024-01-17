@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Thu Jul 27 08:56:06 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.45
+  * log: resist allocation failure
+  * support HTTP Bearer authentication
+
+-------------------------------------------------------------------
+Tue Jun 20 07:19:24 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.44
+  * response: only trim spaces at headers names end
+  * response: skips lines before response line
+  * headers: log a warning for chunks extension
+
+-------------------------------------------------------------------
+Fri Apr 21 12:33:55 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.43
+  * htp: do not log content-encoding: none
+  * htp: do not error on multiple 100 Continue
+  * readme: remove note on libhtp not being stable
+  * uri: fix compile warning strict-prototypes
+  * bstr: fix compile warning strict-prototypes
+  * fuzz_diff: Free the rust test object.
+  * github: add CIFuzz workflow
+
+-------------------------------------------------------------------
+Tue Nov 29 18:49:29 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 0.5.42
+  * github: add initial workflow
+  * htp: fixes warning about bad delimiter in URI
+  * fuzz: fix a null dereference in a diff report
+  * htp: fixes warning about integer
+
+-------------------------------------------------------------------
+Wed Sep 28 08:16:01 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 0.5.41
+  * trim white space of invalid folding for first header
+  * clear buffered data for body data
+  * minor optimization for decompression code
+
+-------------------------------------------------------------------
+Mon Jun 27 21:32:51 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.40
+  * uri: optionally allows spaces in uri
+  * ints: integer handling improvements
+  * headers: continue on nul byte
+  * headers: consistent trailing space handling
+  * list: fix integer overflow
+  * util: remove unused htp_utf8_decode
+  * fix 100-continue with CL 0
+  * lzma: don't do unnecessary realloc
+
+-------------------------------------------------------------------
+Thu Nov 18 20:57:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.39
+  * host: ipv6 address is a valid host
+  * util: one char is not always empty line
+  * test and fuzz improvements
+
+-------------------------------------------------------------------
+Sun Jul  4 11:53:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.38
+  * consume empty lines when parsing chunks to avoid quadratic
+    complexity.
+
+-------------------------------------------------------------------
+Wed Mar  3 20:52:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.37
+  * support request body decompression
+  * several accuracy fixes
+  * fuzz improvments 
+
+-------------------------------------------------------------------
+Fri Dec  4 17:09:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.36
+  * fix a http pipelining issue
+
+-------------------------------------------------------------------
+Fri Oct  9 18:36:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.35
+  * fix memory leak in tunnel traffoc
+  * fix case where chunked data causes excessive CPU use
+
+-------------------------------------------------------------------
+Sun Sep 13 13:03:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.34
+  * support data GAP handling
+  * support 100-continue Expect
+  * lzma: give more control over settings
+
+-------------------------------------------------------------------
+Wed Apr 29 18:33:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.33
+  * compression bomb protection
+  * memory handling issue found by Oss-Fuzz
+  * improve handling of anomalies in traffic
+
+-------------------------------------------------------------------
+Sun Dec 15 10:23:41 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.32
+  * bug fixes around pipelining
+
+-------------------------------------------------------------------
+Tue Sep 24 18:14:16 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 0.5.31
+  * various improvements related to 'HTTP Evader'
+  * various fixes for issues found by oss-fuzz
+  * adds optional LZMA decompression
+
+-------------------------------------------------------------------
+Tue Mar 26 14:34:52 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Correct License
+
+-------------------------------------------------------------------
+Thu Mar  7 14:26:31 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.30
+  * array/list handing optimization
+  * fuzz targets improvements
+- Update to version 0.5.29
+  * prepare for oss-fuzz integration
+  * fix undefined behavior signed int overflow
+  * make status code parsing more robust
+
+-------------------------------------------------------------------
+Sun Dec 16 19:58:57 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.5.28
+  * Fix potential memory leaks
+  * Fix string truncation compile warning
+
+-------------------------------------------------------------------
+Wed Jul 18 14:46:54 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.5.27
+  * Folded header field can be parsed as separate if there are
+    no data available to peek into [#159]
+  * libhtp crash at deal multiple decompression [#158]
+  * Fix configure flag handling
+  * Fix auth/digist header parsing out of bounds read
+
+-------------------------------------------------------------------
+Sun Jun  3 20:25:48 UTC 2018 - mardnh@gmx.de
+
+- Specfile cleanup
+- Update to version 0.5.26
+  * allow missing requests [#128, #163]
+  * fix memory leak when response line is body [#161]
+  * fix build on MinGW [#162]
+  * fix gcc7 compiler warnings [#157]
+
+- Update to version 0.5.25
+  * underscore in htp_validate_hostname [#149]
+  * fix SONAME issue [#151]
+  * remove unrelated docbook code from tree [#153]
+
+- Update to version 0.5.24
+  * fix HTTP connect handling issue [#150]
+
+-------------------------------------------------------------------
+Wed Mar 26 08:38:47 UTC 2014 - stoppe@gmx.de
+
+- Initial version 0.5.20
+

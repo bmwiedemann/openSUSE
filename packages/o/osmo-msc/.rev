@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0129fb46428ee6c601af049e8c9f827</srcmd5>
+    <version>1.3.1</version>
+    <time>1551386544</time>
+    <user>coolo</user>
+    <comment>I want to maintain osmo-msc in Factory</comment>
+    <requestid>678096</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>06e00f7ce1a6e24c20b108ad4306568c</srcmd5>
+    <version>1.3.1</version>
+    <time>1573473655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747261</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b096946203bdec40f640a4a70751196a</srcmd5>
+    <version>1.6.0</version>
+    <time>1578606608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761698</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dafa856cef6d6e2f33b65f66901b6715</srcmd5>
+    <version>1.6.1</version>
+    <time>1578674958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762582</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7e3b41639b7c9a29ba6217af073c6289</srcmd5>
+    <version>1.6.1</version>
+    <time>1592468989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815558</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4f5e04188005529afdd1823ddec11b2a</srcmd5>
+    <version>1.6.1</version>
+    <time>1634587161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925830</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d552fe1c7ab25f51ecf2dd4add0347b</srcmd5>
+    <version>1.8.0</version>
+    <time>1637535115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932633</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,45 @@
+From 249c4f460094d84dbe000dd557ec8c423e41e70e Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Sun, 4 Dec 2022 11:23:24 +0800
+Subject: [PATCH 1/2] Update test_lint.py
+
+---
+ tests/test_lint.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_lint.py b/tests/test_lint.py
+index 0bc6d0ae..ca42e899 100644
+--- a/tests/test_lint.py
++++ b/tests/test_lint.py
+@@ -204,7 +204,7 @@ def test_yaml_lint(capsys):
+ 
+     nits = lint.lint_yaml_files(file_paths)
+ 
+-    assert len(nits) == 3
++    assert len(nits) == 2
+     # The second rule is empty because it's a syntax error.
+     assert set(["indentation", None, "trailing-spaces"]) == set(v.rule for v in nits)
+ 
+
+From ac22ca9fa810c5ef3d02267492f69317835b19de Mon Sep 17 00:00:00 2001
+From: Guo Yunhe <i@guoyunhe.me>
+Date: Sun, 4 Dec 2022 11:29:08 +0800
+Subject: [PATCH 2/2] Update test_lint.py
+
+---
+ tests/test_lint.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_lint.py b/tests/test_lint.py
+index ca42e899..f8f905ed 100644
+--- a/tests/test_lint.py
++++ b/tests/test_lint.py
+@@ -206,7 +206,7 @@ def test_yaml_lint(capsys):
+ 
+     assert len(nits) == 2
+     # The second rule is empty because it's a syntax error.
+-    assert set(["indentation", None, "trailing-spaces"]) == set(v.rule for v in nits)
++    assert set(["indentation", None]) == set(v.rule for v in nits)
+ 
+     captured = capsys.readouterr()
+     lines = captured.out.split("\n")

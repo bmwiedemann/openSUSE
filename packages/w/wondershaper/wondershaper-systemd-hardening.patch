@@ -1,0 +1,22 @@
+diff -Nur wondershaper-1.4.1+git.20211015.orig/wondershaper.service wondershaper-1.4.1+git.20211015/wondershaper.service
+--- wondershaper-1.4.1+git.20211015.orig/wondershaper.service	2021-10-15 19:58:00.000000000 +0200
++++ wondershaper-1.4.1+git.20211015/wondershaper.service	2022-03-12 08:36:24.819800761 +0100
+@@ -4,9 +4,18 @@
+ Wants=network.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++RestrictRealtime=true
++# end of automatic additions
+ Type=oneshot
+ RemainAfterExit=yes
+ EnvironmentFile=/etc/wondershaper/wondershaper.conf
+ ExecStart=/usr/sbin/wondershaper -a $IFACE -d $DSPEED -u $USPEED
+ ExecStop=/usr/sbin/wondershaper -c -a $IFACE
+ 

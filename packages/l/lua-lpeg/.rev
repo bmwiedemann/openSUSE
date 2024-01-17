@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cddb52c974c8180f0103143837742e7f</srcmd5>
+    <version>1.0.1</version>
+    <time>1503592767</time>
+    <user>dimstar_suse</user>
+    <comment>Namespacing of lua (will need one staging)</comment>
+    <requestid>510477</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8d27d1ebe83892f48b479ddb199e40bf</srcmd5>
+    <version>1.0.1</version>
+    <time>1509461044</time>
+    <user>dimstar_suse</user>
+    <comment>drop lua5.2 from multibuild</comment>
+    <requestid>537622</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4653f7318036fd1da934dd25218e7ffd</srcmd5>
+    <version>1.0.2</version>
+    <time>1552464844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684307</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>54c42e805dd1292d0aeea1d17ab2737f</srcmd5>
+    <version>1.0.2</version>
+    <time>1594293398</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819511</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>226316a4b676ad084e69973be0a90476</srcmd5>
+    <version>1.0.2</version>
+    <time>1612989032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870699</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>c3bb7d2838742402ae6e3e64bab6a9c4</srcmd5>
+    <version>1.0.2</version>
+    <time>1662541572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001510</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>0dec6e53b352aecb600c7c2407a95d27</srcmd5>
+    <version>1.0.2</version>
+    <time>1669289025</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037542 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)
+  - Run test with correct lua version</comment>
+    <requestid>1037590</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>488a0c4ba35c6ef5f97f6a098e5248dd</srcmd5>
+    <version>1.0.2</version>
+    <time>1674737888</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1060903 from michals
+
+- Opencode %make_build to prevent build failure when not defined.</comment>
+    <requestid>1061039</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f0ba21f7d52399d3def8f736d4cad815</srcmd5>
+    <version>1.1.0</version>
+    <time>1689083845</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098145</requestid>
+  </revision>
+</revisionlist>

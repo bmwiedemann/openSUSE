@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ef9f3fc9a8da77c278a7c4440a6abbe</srcmd5>
+    <version>1.106</version>
+    <time>1608640533</time>
+    <user>dimstar_suse</user>
+    <comment>copr tools</comment>
+    <requestid>849376</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ba4953dacb4cf2b725fb5275b423acf5</srcmd5>
+    <version>1.115</version>
+    <time>1646671676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959945</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b28322ca87e9cdb5f25a4b888553952</srcmd5>
+    <version>1.119</version>
+    <time>1650657304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.119:
+  - Bugfixes
+  - Kerberos/GSSAPI authentication for API and copr-cli
+  - Copr-cli re-tries connections with Copr Frontend
+  - Large queue improvements
+  - Smaller fixes
+  - More copr-cli options for editing chroots
+  - Signing packages with SHA256
+  - Remote refs in committish
+</comment>
+    <requestid>972178</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1b7c6c1dfde3882913f397143790d351</srcmd5>
+    <version>1.122</version>
+    <time>1663275597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003843</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ae9355a84eb495e46f97cf1098a5b11</srcmd5>
+    <version>1.123</version>
+    <time>1665591955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010152</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7628db06c94e7313323a4c9f311416f6</srcmd5>
+    <version>1.124</version>
+    <time>1670588286</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.124 
+  - move to GitHub home page
+  - add external repos for custom build
+  - don't play with sessions if using ApiToken
+</comment>
+    <requestid>1041745</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6e1463ebd3acea9338edafface52426b</srcmd5>
+    <version>1.129</version>
+    <time>1687272534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.129:
+  * No upstream changelog.
+- Fiddle with {Build,}Requires as appropiate.
+- Move to pyproject macros.</comment>
+    <requestid>1093861</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>706a5ecdd063bd227fc7a1e12da37d60</srcmd5>
+    <version>1.130</version>
+    <time>1694545371</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.130:
+  * No upstream changelog.
+- Fiddle with {Build,}Requires as appropiate.</comment>
+    <requestid>1110413</requestid>
+  </revision>
+</revisionlist>

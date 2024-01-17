@@ -1,0 +1,11 @@
+--- Build.PL.orig	2019-08-21 13:20:23.591141429 +0200
++++ Build.PL	2019-08-21 13:20:25.603152873 +0200
+@@ -54,7 +54,7 @@
+                          'Module::Pluggable'              => '2.6',
+                         },
+     build_requires  => { 'Module::Build'                  => '0.28',
+-                         'ExtUtils::CBuilder'             => '0.24',
++                         'ExtUtils::CBuilder'             => 0,
+                          'File::Spec'                     => '1.50',
+                          'LWP::Protocol::https'           => '0',
+                          },

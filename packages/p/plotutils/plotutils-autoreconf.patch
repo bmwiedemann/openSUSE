@@ -1,0 +1,219 @@
+---
+ Makefile.am                   |    2 ++
+ configure.ac                  |   15 ++++++++-------
+ double/Makefile.am            |    2 +-
+ graph/Makefile.am             |    2 +-
+ hersheydemo/Makefile.am       |    2 +-
+ lib/Makefile.am               |    2 +-
+ libplot/Makefile.am           |    2 +-
+ libplotter/Makefile.am        |    2 +-
+ ode/Makefile.am               |    2 +-
+ pic2plot/Makefile.am          |    2 +-
+ pic2plot/libgroff/Makefile.am |    2 +-
+ plot/Makefile.am              |    2 +-
+ plotfont/Makefile.am          |    2 +-
+ spline/Makefile.am            |    2 +-
+ tek2plot/Makefile.am          |    2 +-
+ 15 files changed, 23 insertions(+), 20 deletions(-)
+
+--- Makefile.am
++++ Makefile.am	2022-09-21 12:46:18.849066032 +0000
+@@ -13,6 +13,8 @@
+ # package, by default we don't build and install it as a standalone
+ # library.  (It's always compiled into libplot and libplotter, though.)
+ 
++ACLOCAL_AMFLAGS = -I .
++
+ if NO_LIBPLOTTER
+ ADD_LIBPLOTTER =
+ else
+--- configure.ac
++++ configure.ac	2022-09-21 12:47:06.192229777 +0000
+@@ -4,9 +4,10 @@
+ 
+ AC_INIT([GNU plotutils],[2.6],[bug-plotutils@gnu.org])
+ AC_PREREQ(2.59)
++AC_CONFIG_MACRO_DIRS([.])
+ AC_CONFIG_SRCDIR(graph/graph.c)
+-AM_INIT_AUTOMAKE([plotutils],[2.6])
+-AM_CONFIG_HEADER(config.h:config.hin)
++AM_INIT_AUTOMAKE()
++AC_CONFIG_HEADERS(config.h:config.hin)
+ 
+ # The following will be defined in config.h, if appropriate.
+ 
+@@ -63,7 +64,8 @@ fi
+ # AC_PROG_MAKE_SET, or equivalents, so we don't perform them explicitly.
+ # Note: this can apparently alter CFLAGS, on a few platforms, e.g., on
+ # SCO OpenServer 5 (i.e. *-*-sco3.2v5*), "-belf" is added.
+-AC_PROG_LIBTOOL
++LT_INIT
++AC_PROG_CXX
+ 
+ # Determine extension (e.g. ".exe") on executables, if any.
+ AC_EXEEXT
+@@ -72,7 +74,7 @@ AC_EXEEXT
+ AC_C_CONST
+ AC_TYPE_SIZE_T
+ AC_TYPE_PID_T
+-AC_TYPE_SIGNAL
++AC_DEFINE(RETSIGTYPE,void,[Return type of signal handlers, but autoconf 2.70 says 'your code may safely assume C89 semantics that RETSIGTYPE is void.'])
+ 
+ # Check whether fflush(NULL) works
+ AC_MSG_CHECKING(whether flushing a null FILE pointer works)
+@@ -93,10 +95,9 @@ int main()
+     exit(0); }]])],[AC_MSG_RESULT(yes); AC_DEFINE(HAVE_NULL_FLUSH)],[AC_MSG_RESULT(no)],[AC_MSG_RESULT(no)])
+ 
+ # Checks for header files: ANSI C, POSIX, and nonstandard Unix headers.
+-AC_HEADER_STDC
++AC_INCLUDES_DEFAULT
+ AC_CHECK_HEADERS(string.h limits.h float.h)
+ AC_CHECK_HEADERS(malloc.h pthread.h strings.h unistd.h values.h sys/select.h sys/stdtypes.h sys/time.h sys/types.h sys/wait.h)
+-AC_HEADER_TIME
+ 
+ # HP/UX needs a cpp definition for math.h to define matherr-related things
+ AC_EGREP_HEADER(_HPUX_SOURCE, math.h, [AC_EGREP_HEADER(matherr, math.h, [AC_DEFINE(_HPUX_SOURCE)])])
+@@ -107,7 +108,7 @@ AC_FUNC_ALLOCA
+ # Checks for programs.  Automake needs AM_PROG_LEX, not AC_PROG_LEX;
+ # ignore the bogus warning about AC_PROG_LEX being invoked twice.
+ AC_PROG_YACC
+-AM_PROG_LEX
++AM_PROG_LEX([noyywrap])
+ 
+ # Should libplot/libplotter support multithreading via pthread mutexes?
+ # Check to see whether libc includes dummy ("weak") pthread functions, so
+--- double/Makefile.am
++++ double/Makefile.am	2022-09-21 12:35:37.452412255 +0000
+@@ -5,4 +5,4 @@ bin_PROGRAMS = double
+ double_SOURCES = double.c
+ double_LDADD = ../lib/libcommon.a
+ 
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+--- graph/Makefile.am
++++ graph/Makefile.am	2022-09-21 12:36:11.899802000 +0000
+@@ -6,7 +6,7 @@ graph_SOURCES = graph.c misc.c linemode.
+ graph_LDADD = ../lib/libcommon.a ../libplot/libplot.la
+ noinst_HEADERS = extern.h
+ 
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+ 
+ CLEANFILES = fontlist.c
+ 
+--- hersheydemo/Makefile.am
++++ hersheydemo/Makefile.am	2022-09-21 12:43:18.956243473 +0000
+@@ -5,4 +5,4 @@ bin_PROGRAMS = hersheydemo
+ hersheydemo_SOURCES = hersheydemo.c
+ hersheydemo_LDADD = ../lib/libcommon.a ../libplot/libplot.la
+ 
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+--- lib/Makefile.am
++++ lib/Makefile.am	2022-09-21 12:36:40.403297046 +0000
+@@ -1,7 +1,7 @@
+ ## Makefile.am for plotutils/lib.
+ 
+ noinst_LIBRARIES = libcommon.a
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+ 
+ libcommon_a_SOURCES = compat.c display.c getopt.c getopt1.c xmalloc.c xstrdup.c
+ libcommon_a_LIBADD = @ALLOCA@
+--- libplot/Makefile.am
++++ libplot/Makefile.am	2022-09-21 12:37:13.450711599 +0000
+@@ -6,7 +6,7 @@ EXTRA_DIST = DEDICATION HUMOR README-cgm
+ 
+ libplot_la_LDFLAGS = -version-info 4:4:2
+ 
+-INCLUDES = $(X_CFLAGS) -I$(srcdir)/../include -DLIBPLOT
++AM_CPPFLAGS = $(X_CFLAGS) -I$(srcdir)/../include -DLIBPLOT
+ 
+ MISRC = mi_alloc.c mi_api.c mi_arc.c mi_canvas.c mi_fllarc.c mi_fllrct.c \
+ mi_fplycon.c mi_gc.c mi_ply.c mi_plycon.c mi_plygen.c mi_plypnt.c	 \
+--- libplotter/Makefile.am
++++ libplotter/Makefile.am	2022-09-21 12:44:53.586572049 +0000
+@@ -4,7 +4,7 @@ lib_LTLIBRARIES = libplotter.la
+ 
+ libplotter_la_LDFLAGS = -version-info 4:4:2
+ 
+-INCLUDES = $(X_CFLAGS) -I$(srcdir)/../include -DLIBPLOT -DLIBPLOTTER
++AM_CPPFLAGS = $(X_CFLAGS) -I$(srcdir)/../include -DLIBPLOT -DLIBPLOTTER
+ 
+ MISRC = mi_alloc.cc mi_api.cc mi_arc.cc mi_canvas.cc mi_fllarc.cc	\
+ mi_fllrct.cc mi_fplycon.cc mi_gc.cc mi_ply.cc mi_plycon.cc mi_plygen.cc	\
+--- ode/Makefile.am
++++ ode/Makefile.am	2022-09-21 12:39:42.256075513 +0000
+@@ -8,6 +8,6 @@ ode_LDADD = ../lib/libcommon.a @LEXLIB@
+ 
+ AM_YFLAGS = -d
+ 
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+ 
+ EXTRA_DIST = INTERNALS gram.h
+--- pic2plot/Makefile.am
++++ pic2plot/Makefile.am	2022-09-21 12:40:21.235385009 +0000
+@@ -9,7 +9,7 @@ noinst_HEADERS = common.h object.h outpu
+ 
+ AM_YFLAGS = -d
+ 
+-INCLUDES = -I$(srcdir)/../include -I$(srcdir)/include
++AM_CPPFLAGS = -I$(srcdir)/../include -I$(srcdir)/include
+ 
+ CLEANFILES = fontlist.c
+ 
+--- pic2plot/libgroff/Makefile.am
++++ pic2plot/libgroff/Makefile.am	2022-09-21 12:40:36.439115681 +0000
+@@ -1,7 +1,7 @@
+ ## Makefile.am for plotutils/pic2plot/libgroff.
+ 
+ noinst_LIBRARIES = libgroff.a
+-INCLUDES = -I$(srcdir)/../../include -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../../include -I$(srcdir)/../include
+ 
+ libgroff_a_SOURCES = assert.cc change_lf.cc cset.cc errarg.cc error.cc fatal.cc filename.cc illegal.cc itoa.cc lf.cc lineno.cc progname.cc ptable.cc string.cc strsave.cc
+ 
+--- plot/Makefile.am
++++ plot/Makefile.am	2022-09-21 12:41:11.990485963 +0000
+@@ -5,7 +5,7 @@ bin_PROGRAMS = plot
+ plot_SOURCES = plot.c fontlist.c
+ plot_LDADD = ../lib/libcommon.a ../libplot/libplot.la
+ 
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+ 
+ CLEANFILES = fontlist.c
+ 
+--- plotfont/Makefile.am
++++ plotfont/Makefile.am	2022-09-21 12:41:22.314303624 +0000
+@@ -5,7 +5,7 @@ bin_PROGRAMS = plotfont
+ plotfont_SOURCES = plotfont.c fontlist.c
+ plotfont_LDADD = ../lib/libcommon.a ../libplot/libplot.la
+ 
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+ 
+ CLEANFILES = fontlist.c
+ 
+--- spline/Makefile.am
++++ spline/Makefile.am	2022-09-21 12:41:35.106077697 +0000
+@@ -3,6 +3,6 @@
+ bin_PROGRAMS = spline
+ spline_SOURCES = spline.c
+ 
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+ 
+ spline_LDADD = ../lib/libcommon.a
+--- tek2plot/Makefile.am
++++ tek2plot/Makefile.am	2022-09-21 12:41:47.981850287 +0000
+@@ -6,7 +6,7 @@ tek2plot_SOURCES = tek2plot.c Tektable.c
+ tek2plot_LDADD = ../lib/libcommon.a ../libplot/libplot.la
+ noinst_HEADERS = Tekparse.h
+ 
+-INCLUDES = -I$(srcdir)/../include
++AM_CPPFLAGS = -I$(srcdir)/../include
+ 
+ CLEANFILES = fontlist.c
+ 

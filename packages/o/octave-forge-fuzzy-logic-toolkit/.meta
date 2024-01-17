@@ -1,0 +1,6 @@
+<package name="octave-forge-fuzzy-logic-toolkit" project="openSUSE:Factory">
+  <title></title>
+  <description>A mostly MATLAB-compatible fuzzy logic toolkit.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-fuzzy-logic-toolkit"/>
+</package>

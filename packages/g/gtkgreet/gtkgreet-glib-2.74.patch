@@ -1,0 +1,13 @@
+diff --git a/gtkgreet/gtkgreet.c b/gtkgreet/gtkgreet.c
+index 1c97767..acc281b 100644
+--- a/gtkgreet/gtkgreet.c
++++ b/gtkgreet/gtkgreet.c
+@@ -91,7 +91,7 @@ static int gtkgreet_update_clocks_handler(gpointer data) {
+ 
+ struct GtkGreet* create_gtkgreet() {
+     gtkgreet = calloc(1, sizeof(struct GtkGreet));
+-    gtkgreet->app = gtk_application_new("wtf.kl.gtkgreet", G_APPLICATION_FLAGS_NONE);
++    gtkgreet->app = gtk_application_new("wtf.kl.gtkgreet", G_APPLICATION_DEFAULT_FLAGS);
+     gtkgreet->windows = g_array_new(FALSE, TRUE, sizeof(struct Window*));
+     gtkgreet->question_cnt = 1;
+     return gtkgreet;

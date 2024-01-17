@@ -1,0 +1,8 @@
+<package name="xclip" project="openSUSE:Factory">
+  <title>Command Line Interface to the X11 Clipboard</title>
+  <description>xclip is a command line interface to the X11 clipboard. It can also be used
+for copying files, as an alternative to sftp/scp, thus avoiding password
+prompts when X11 forwarding has already been setup.
+</description>
+  <devel project="X11:Utilities" package="xclip"/>
+</package>

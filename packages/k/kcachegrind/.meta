@@ -1,0 +1,5 @@
+<package name="kcachegrind" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kcachegrind"/>
+</package>

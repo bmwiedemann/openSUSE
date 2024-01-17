@@ -1,0 +1,27 @@
+From 1789c4e18b97894cdbcedce5a620a04ae0410e26 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 25 Mar 2022 18:05:58 +0100
+Subject: [PATCH 153/153] metadata.json.in: add support for GNOME 42
+
+(cherry picked from commit 755d27a0e292184d6ed159deb26dad10bcf108a8)
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 5bb293c..61f6731 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -14,7 +14,8 @@
+         "3.36",
+         "3.38",
+         "40",
+-        "41"
++        "41",
++	"42"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.35.1
+

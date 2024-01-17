@@ -1,0 +1,19 @@
+*** airprint-generate-orig.py	2014-01-12 18:03:20.000000000 +0100
+--- airprint-generate.py	2014-01-12 18:05:03.000000000 +0100
+***************
+*** 55,61 ****
+  	<txt-record>txtvers=1</txt-record>
+  	<txt-record>qtotal=1</txt-record>
+  	<txt-record>Transparent=T</txt-record>
+! 	<txt-record>URF=none</txt-record>
+  </service>
+  </service-group>"""
+  
+--- 55,61 ----
+  	<txt-record>txtvers=1</txt-record>
+  	<txt-record>qtotal=1</txt-record>
+  	<txt-record>Transparent=T</txt-record>
+! 	<txt-record>URF=DM3</txt-record>
+  </service>
+  </service-group>"""
+  

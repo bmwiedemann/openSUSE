@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef13349d70b1b95db191bcf4f2fb93db</srcmd5>
+    <version>2.2.0</version>
+    <time>1460482281</time>
+    <user>dimstar_suse</user>
+    <comment>As introduced in the Factory mailing list: tmate is a fork of tmux with terminal
+sharing capabilities.</comment>
+    <requestid>365129</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>444a60517e5944e96b5d4e4428177ff7</srcmd5>
+    <version>2.2.1</version>
+    <time>1461335149</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>390719</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1cf8409ba9cfe975f4fca127e2df6c39</srcmd5>
+    <version>2.3.0</version>
+    <time>1564994181</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.3.0 to work nicely with libssh-0.9.0</comment>
+    <requestid>720143</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e37b0f8791c88dd8e28ea54d3756948</srcmd5>
+    <version>2.3.1</version>
+    <time>1571307699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1
+  - Allow the use of C.UTF-8 locale
+</comment>
+    <requestid>738819</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>50df1414da4447836b6bde6139da9e76</srcmd5>
+    <version>2.4.0</version>
+    <time>1574164749</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0
+  * Use tmate.conf instead of tmux.conf
+</comment>
+    <requestid>749378</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>487f1710900c10e757bc395ca1b486ac</srcmd5>
+    <version>2.4.0</version>
+    <time>1581277678</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup spec</comment>
+    <requestid>772110</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5c98c1cef15c393eb2d454da7d8d61e0</srcmd5>
+    <version>2.4.0</version>
+    <time>1604412960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845421</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1c81892a2832998bde8d277d334f0393</srcmd5>
+    <version>2.4.0</version>
+    <time>1662639736</time>
+    <user>dimstar_suse</user>
+    <comment>- Change msgpack BuildRequires to use pkgconfig
+</comment>
+    <requestid>1001687</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>a059b3eb16b6dfce54f8c5647a23319f</srcmd5>
+    <version>2.4.0</version>
+    <time>1699388934</time>
+    <user>anag+factory</user>
+    <comment>- Build with more modern version of msgpack (which was renamed
+  to msgpack-c in 5.0.0)
+
++but still allow building for Leap/SLE</comment>
+    <requestid>1123498</requestid>
+  </revision>
+</revisionlist>

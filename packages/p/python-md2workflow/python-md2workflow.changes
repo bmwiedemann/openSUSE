@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Fri Feb 26 04:11:20 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop ifpython3 guard for the Provides for md2workflow 
+
+-------------------------------------------------------------------
+Tue Oct  6 07:47:58 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Remove lutoslawski and staging envs for suse jira 
+
+-------------------------------------------------------------------
+Mon Jun 29 11:03:47 UTC 2020 - Radoslav Tsvetkov <rtsvetkov@suse.com>
+
+- There are 2 fields one is scripted and forbidden for editing.
+  We use explicitly the allowed one. boo#1173460
+
+
+-------------------------------------------------------------------
+Thu Jun  4 09:20:44 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+- Update to 1.4.18
+
+- Use github source url instead of pypy as it contains tests 
+- Use correct openSUSE project url
+- Fix issues with optparse call in pytest
+- Fix pytest issues on python2
+- Add missing dependency on icalendar (schedule integration)
+- Add dependencies for pytest execution
+
+-------------------------------------------------------------------
+Thu Jun  4 08:04:03 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Fix __pycache__ reference for python2.
+  ensure to reference *.py* for python2 (py, pyo, pyc)
+  Builds on Leap fail on this
+
+-------------------------------------------------------------------
+Thu Jun  4 06:34:38 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+- Update to 1.4.15
+
+* Reworked plugins into submodules, so handling of individual
+  __pycache__ is now easier
+
+* Removed direct dependency in setup.py on backported 
+  python-configparser. Configparser is part of python3
+
+-------------------------------------------------------------------
+Mon Apr 20 13:11:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- The package name is python-redmine not just redmine on pypi
+  thus fix the requires
+
+-------------------------------------------------------------------
+Mon Apr 20 08:34:46 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Fix files sections and alternatives
+
+-------------------------------------------------------------------
+Tue Feb 18 12:23:16 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update to 1.4.12
+* Add redmine support https://github.com/openSUSE/md2workflow/issues/11
+  This was part of hackweek19
+* Add config for progress.opensuse.org (opensuse-prod)
+
+* Split JIRA and Redmine plugins into a separate packages
+  SLE doesn't have python-redmine so let's not force them to install
+  it
+
+* Add LICENSE as a Source1 (bump all remaining by one)
+
+-------------------------------------------------------------------
+Thu Oct 31 10:39:58 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update to 1.4.9
+
+ * Improve bold highlighting in JIRA text
+   https://github.com/openSUSE/md2workflow/issues/8 
+
+-------------------------------------------------------------------
+Thu Oct 31 10:16:07 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Support all jira*.suse.de instances
+  
+* Add suse-staging.conf
+* Change suse-devel from lutoslawski to jira-devel.suse.de
+* lutoslawski moved to a separate file suse-lutoslawski.conf
+* Update states on prod, stage, devel https://github.com/openSUSE/md2workflow/issues/5
+ 
+
+-------------------------------------------------------------------
+Sat Aug 24 16:25:27 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Use longer description from upstream.
+
+-------------------------------------------------------------------
+Fri Aug  2 12:46:17 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update to 1.4.8
+ * Fixes wrong indendation in jirabackend
+ * Fixes NameError raised on while reading input from user on 
+   python3
+ * Fix incorrect reference to relation in update
+ *  Add requires on python-jira
+
+-------------------------------------------------------------------
+Mon Jul 15 15:24:19 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update to 1.4.5
+  * supply %license
+  * unify tabs and spaces 
+
+-------------------------------------------------------------------
+Sun Jul 14 13:24:39 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add alternatives
+
+-------------------------------------------------------------------
+Sun Jul 14 13:15:04 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update to 1.4.3
+  * Add suse-devel.conf and suse-prod.conf as sources
+
+-------------------------------------------------------------------
+Sun Jul 14 11:35:42 UTC 2019 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Initial build of 1.4.1, spec done by py2pack

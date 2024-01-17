@@ -1,0 +1,27 @@
+Index: munin-2.0.32/master/Build.PL
+===================================================================
+--- munin-2.0.32.orig/master/Build.PL
++++ munin-2.0.32/master/Build.PL
+@@ -1,3 +1,4 @@
++use lib '.';
+ use MasterBuilder;
+ 
+ use warnings;
+Index: munin-2.0.32/node/Build.PL
+===================================================================
+--- munin-2.0.32.orig/node/Build.PL
++++ munin-2.0.32/node/Build.PL
+@@ -1,3 +1,4 @@
++use lib '.';
+ use NodeBuilder;
+ 
+ use warnings;
+Index: munin-2.0.32/plugins/Build.PL
+===================================================================
+--- munin-2.0.32.orig/plugins/Build.PL
++++ munin-2.0.32/plugins/Build.PL
+@@ -1,3 +1,4 @@
++use lib '.';
+ use PluginsBuilder;
+ 
+ use warnings;

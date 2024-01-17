@@ -1,0 +1,6 @@
+<package name="compat-usrmerge" project="openSUSE:Factory">
+  <title>Compat file triggers for usrmerge</title>
+  <description></description>
+  <devel project="Base:System" package="compat-usrmerge"/>
+  <url>https://www.opensuse.org/</url>
+</package>

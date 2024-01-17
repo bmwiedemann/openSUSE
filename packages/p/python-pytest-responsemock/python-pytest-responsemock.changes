@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Apr 21 20:43:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.1
+  * Made responses 0.19.0 compatible
+  * Dropped support for Python 3.6
+
+-------------------------------------------------------------------
+Fri Nov  6 09:33:36 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 1.0.1
+  * Handle setting 'Content-Type' header correctly.
+
+-------------------------------------------------------------------
+Mon Aug 10 11:24:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not depend on pytest-runner
+
+-------------------------------------------------------------------
+Sat Aug  8 07:44:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.0.0
+
+-------------------------------------------------------------------
+Thu May 28 03:10:37 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.2.0

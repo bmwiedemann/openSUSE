@@ -1,0 +1,50 @@
+--- src/cmd/ksh93/data/signals.c
++++ src/cmd/ksh93/data/signals.c	2012-02-06 10:16:54.000000000 +0000
+@@ -18,6 +18,9 @@
+ *                                                                      *
+ ***********************************************************************/
+ #include	"defs.h"
++#include	<cmd.h>
++#include	<jobs.h>
++
+ 
+ #if defined(SIGCLD) && !defined(SIGCHLD)
+ #   define SIGCHLD	SIGCLD
+--- src/cmd/ksh93/sh/xec.c
++++ src/cmd/ksh93/sh/xec.c	2007-12-21 12:28:04.000000000 +0000
+@@ -3834,6 +3834,7 @@ static pid_t sh_ntfork(Shell_t *shp,cons
+ 				{
+ 					signal(SIGTTIN,SIG_DFL);
+ 					signal(SIGTTOU,SIG_DFL);
++					signal(SIGTSTP,SIG_DFL);
+ 				}
+ #endif /* SIGTSTP */
+ #ifdef JOBS
+@@ -3871,6 +3872,9 @@ static pid_t sh_ntfork(Shell_t *shp,cons
+ 			{
+ 				signal(SIGTTIN,SIG_IGN);
+ 				signal(SIGTTOU,SIG_IGN);
++				if(sh_isstate(SH_INTERACTIVE))
++					signal(SIGTSTP,SIG_IGN);
++				else	signal(SIGTSTP,SIG_DFL);
+ 			}
+ #endif /* SIGTSTP */
+ 			if(spawnpid>0)
+@@ -3951,6 +3955,7 @@ static pid_t sh_ntfork(Shell_t *shp,cons
+ 		{
+ 			signal(SIGTTIN,SIG_DFL);
+ 			signal(SIGTTOU,SIG_DFL);
++			signal(SIGTSTP,SIG_DFL);
+ 			jobwasset++;
+ 		}
+ #endif /* SIGTSTP */
+@@ -4013,6 +4018,9 @@ static pid_t sh_ntfork(Shell_t *shp,cons
+ 	{
+ 		signal(SIGTTIN,SIG_IGN);
+ 		signal(SIGTTOU,SIG_IGN);
++		if(sh_isstate(SH_INTERACTIVE))
++			signal(SIGTSTP,SIG_IGN);
++		else	signal(SIGTSTP,SIG_DFL);
+ 	}
+ #endif /* SIGTSTP */
+ 	if(sigwasset)

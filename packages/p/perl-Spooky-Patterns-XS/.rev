@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d036e6759ce679f12c7e8c279ac0d388</srcmd5>
+    <version>1.50</version>
+    <time>1500669890</time>
+    <user>dimstar_suse</user>
+    <comment>needed by cavil</comment>
+    <requestid>501213</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0844e74a2b75ed9329a49f230aed95c</srcmd5>
+    <version>1.51</version>
+    <time>1512433834</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.51: Ignore skips at the end of a pattern</comment>
+    <requestid>548102</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>489104f53815b260264fe7d87354881c</srcmd5>
+    <version>1.52</version>
+    <time>1564302174</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.52: Record all matches even if they overlap at the start</comment>
+    <requestid>719273</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1bce4c29814bbefceb3b4549e51fde90</srcmd5>
+    <version>1.53</version>
+    <time>1579195333</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>764903</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1168fbc4c8262b120e52c0c216c9c624</srcmd5>
+    <version>1.55</version>
+    <time>1580205276</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>767807</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>89e6f3fc8305568ee763f8c67eb23abc</srcmd5>
+    <version>1.55</version>
+    <time>1603725602</time>
+    <user>dimstar_suse</user>
+    <comment>- redownloaded source file
+</comment>
+    <requestid>843869</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fc6e8281d171f5a9b00a54062d6d10ab</srcmd5>
+    <version>1.55</version>
+    <time>1635877150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928796</requestid>
+  </revision>
+</revisionlist>

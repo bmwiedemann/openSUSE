@@ -1,0 +1,8 @@
+<package name="twolame" project="openSUSE:Factory">
+  <title>TwoLAME is an optimised MPEG Audio Layer 2 (MP2) encoder</title>
+  <description>TwoLAME is an optimised MPEG Audio Layer 2 (MP2) encoder based on
+tooLAME by Mike Cheng, which in turn is based upon the ISO dist10
+code and portions of LAME. TwoLAME includes libtwolame, a fully
+thread-safe shared library with an API very similar to LAME's.</description>
+  <devel project="multimedia:libs" package="twolame"/>
+</package>

@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Sun Jan 14 17:35:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Fix StatePickler for Python 3.11.
+  * Add encoding as an attribute for LogFileHandler
+    initialization
+- drop python-311.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Mar  2 18:50:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch, to support python3.11 gh#enthought/apptools#328
+- Remove python310.patch, not needed anymore
+- Update to version 5.2.0
+  * Replace some uses of on_trait_change and depends_on with observe.
+  * (#285, #289)
+  * Use importlib.resources in preference to importlib_resources
+  * on new enough Python versions. (#284)
+  * Replace eval with ast.literal_eval in apptools.preferences.
+  * (#299)
+  * Use context managers to handle locks in apptools.preferences. (#306)
+  * Fix test failures due to collections.abc changes in Python 3.10. (#313)
+  * Remove a redundant elif branch in preference_binding. (#298)
+
+-------------------------------------------------------------------
+Mon May  2 20:02:46 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.1.0
+  * Modules in the apptools.undo subpackage are modified to import
+    from pyface.undo rather than redefining the classes.
+    This should help ease the transition to using pyface.undo in
+    place of the now deprecated apptool.undo.
+  * Deprecations:
+    * Import from pyface.undo.* instead of redefining classes in
+      apptools.undo.*
+  * Add module docstrings to the various api modules in apptools
+    subpackages
+- Add python310.patch
+
+-------------------------------------------------------------------
+Mon May  2 18:59:26 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.0.0
+  * Support for Python versions < 3.6 have been dropped
+  * Deprecate apptools.undo subpackage
+  * Removed deprected subpackages
+    * Remove appscripting subpackage
+    * Remove template subpackage
+    * Remove permission subpackage
+    * Remove lru_cache subpackage
+    * Remove the apptools.sweet_pickle subpackage.
+      Users of sweet_pickle can in some cases transition to using
+      apptools.persistence and pickle from the python standard library
+    * Remove help subpackage
+    * Remove NullHandler from apptools.logger
+    * Remove apptools.logger.filtering_handler and
+      apptools.logger.util submodules
+    * Remove deprecated create_log_file_handler function
+    * Remove use of apptools.type_manager from apptools.naming.
+      Then, remove apptools.type_manager entirely. Finally, remove
+      apptools.naming.adapter.
+    * Remove apptools.persistence.spickle submodule
+    * Remove apptools.naming.ui sub package
+  * Update documentation for Preferences
+  * Add a brief section to documentation for apptools.naming
+  * Document the apptools.io and apptools.io.h5 sub packages
+  * Fix a few broken links in the documentation
+  * Fix SyntaxWarning in persistence.file_path
+  * Fix container items change event being saved in preferences
+  * Fix synchronizing preference trait with name _items
+
+-------------------------------------------------------------------
+Mon Feb  7 07:20:43 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pytest to run the testsuite, not nose.
+
+-------------------------------------------------------------------
+Tue Nov 19 21:17:41 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.5.0
+  * Add missing `long_description_content_type` field in setup.
+  * Remove use of `2to3`.
+  * Use etstool for CI tasks. Setup travis macos and appveyor CI.
+  * Temporarily change cwd when running tests.
+  * Update broken imports.
+  * Add `six` to requirements.
+  * Remove one more use of the deprecated `set` method.
+  * Use `trait_set` instead of the now deprecated `set` method.
+  * Address one more numpy deprecation warning.
+  * Address numpy deprecation warnings.
+  * Test the package on Python 3.5, 3.6 on CI.
+  * Fix mismatched pyface and traitsui requirements.
+  * Drop support for Python 2.6.
+  * Fix `state_pickler.dump` on Python 2.
+  * Fix a few spelling mistakes in documentation.
+
+-------------------------------------------------------------------
+Wed May  9 14:08:07 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+
+-------------------------------------------------------------------
+Wed Aug 23 20:31:50 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to 4.4.0
+  * Apptools now works with Python-3.x. (#54)
+  * Travis-ci support with testing on Python 2.6, 2.7 and 3.4. (#55)
+
+-------------------------------------------------------------------
+Sun May 24 11:09:57 UTC 2015 - toddrme2178@gmail.com
+
+- Update to 4.3.0
+  * Apptools now have a changelog!
+  * Preferences system defaults to utf-8 encoded string with ConfigObj providing
+    better support for unicode in the PreferenceHelper (#41, #45).
+  * Added a traitsified backport of Python 3's lru_cache (#39).
+  * Added PyTables support to the io submodule (#19, #20, and #24 through #34).
+  * Added a SelectionService for managing selections within an application (#15, #16, #17,
+    #23).
+
+-------------------------------------------------------------------
+Mon Oct 13 15:40:37 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.2.1
+  * no changelog
+- Update source to pypi url.
+
+-------------------------------------------------------------------
+Thu Oct 24 10:58:48 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sat Apr 20 15:35:16 UTC 2013 - toddrme2178@gmail.com
+
+- Added a note about being part of the Enthought Tool Suite (ETS).
+
+-------------------------------------------------------------------
+Thu Apr 18 12:12:24 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 4.2.0
+  * no changelog
+
+-------------------------------------------------------------------
+Tue May 22 10:23:36 UTC 2012 - toddrme2178@gmail.com
+
+- Update to 4.1.0
+
+-------------------------------------------------------------------
+Thu Jan 12 14:55:33 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

@@ -1,0 +1,13 @@
+Index: fpcbuild-3.2.2/fpcsrc/compiler/systems/t_linux.pas
+===================================================================
+--- fpcbuild-3.2.2.orig/fpcsrc/compiler/systems/t_linux.pas
++++ fpcbuild-3.2.2/fpcsrc/compiler/systems/t_linux.pas
+@@ -141,7 +141,7 @@ begin
+       if target_info.abi<>abi_powerpc_elfv2 then
+         LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib64;=/usr/lib64;=/usr/X11R6/lib64',true)
+       else
+-        LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib64;=/usr/lib/powerpc64le-linux-gnu;=/usr/X11R6/powerpc64le-linux-gnu',true);
++        LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib64;=/usr/lib64;=/usr/X11R6/lib64',true);
+ {$else powerpc64}
+       LibrarySearchPath.AddLibraryPath(sysrootpath,'=/lib;=/usr/lib;=/usr/X11R6/lib',true);
+ {$endif powerpc64}

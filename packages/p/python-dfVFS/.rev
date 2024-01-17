@@ -1,0 +1,665 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29b2528b7bdf12e80c4486f815ffeed7</srcmd5>
+    <version>0~20140727</version>
+    <time>1409118355</time>
+    <user>coolo</user>
+    <comment>New package - declined due to wrong license previously - corrected</comment>
+    <requestid>245692</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>29b2528b7bdf12e80c4486f815ffeed7</srcmd5>
+    <version>0~20140727</version>
+    <time>1409302842</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>80f975ece788c2fdfe03542678ea763e</srcmd5>
+    <version>0~20140727</version>
+    <time>1409998687</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247355</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e29d458b122f3893cde14edf9d559228</srcmd5>
+    <version>0~20141220</version>
+    <time>1419331859</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266222</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8235ee59c2431aa9bad189d5e029b641</srcmd5>
+    <version>0~20150303</version>
+    <time>1427736773</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest version.  Depends on SR#293184</comment>
+    <requestid>293432</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d5a97b71fb6e1fa84b98dee7f85c96e</srcmd5>
+    <version>0~20150708</version>
+    <time>1440153769</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>324735</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>819cedd089b610110c6ac0a376b33e95</srcmd5>
+    <version>0~20160108</version>
+    <time>1453998207</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 20160108 v</comment>
+    <requestid>355860</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35af67cfcf8b84e28c87a4312b3c83ad</srcmd5>
+    <version>0~20160918</version>
+    <time>1475359655</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>430655</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e88ff67a70a042fab0d66089d0f71429</srcmd5>
+    <version>0~20160918</version>
+    <time>1488560160</time>
+    <user>dimstar_suse</user>
+    <comment>Minor specfile fixes associated with 2017 update</comment>
+    <requestid>461999</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48477559d3912539b61aaf8119b11c84</srcmd5>
+    <version>0~20170723</version>
+    <time>1510232154</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20170723
+  * worked on internal test structure
+- add python3 support
+- implement python singlespec syntax
+- In Requires: lines for libyal python bindings, use the python-lib* variant of the package
+	Python singlespec automatically converts that to python2 / python3 as appropriate
+- remove Requres: python-protobuf.  It has been replaced by a JSON solution
+- adopt upstream name of python{23}-tsk3
+</comment>
+    <requestid>533533</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3e51683f6e7212dbdf5b92938ea67850</srcmd5>
+    <version>0~20171230</version>
+    <time>1516222570</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0~20171230
+  * add more python3 support (even though openSUSE package doesn't use it)
+  * bug fixes
+  * compatible with plaso 20171231
+- revert effort to use Python singlespec.  It's just not working smoothly.</comment>
+    <requestid>564457</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2151301b126187677059d41244a0ddbf</srcmd5>
+    <version>0~20200121</version>
+    <time>1580724949</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest release.
+
+Move from python 2 to python 3</comment>
+    <requestid>769397</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>74d2fda4a2927d36b45e13050593315f</srcmd5>
+    <version>0~20200211</version>
+    <time>1586368563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20200211
+  - Added volume scanner options (#346)
+  - fixed failing test (#425)
+  - Added LUKS support (#418)
+  - Added initial APFS support
+- Add Requires python-dtfabric - testing found not all use cases work without it
+- Add Requires python-fsapfs   - testing found not all use cases work without it
+- removed the %check section - it is failing on newly added APFS support - not yet reliable
+- Once again builds successfully against factory/tumbleweed
+</comment>
+    <requestid>792003</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dd66b157b22ea14ecf5ff4d72d4c4577</srcmd5>
+    <version>0~20200920</version>
+    <time>1608918659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20200920
+  - Changes to make fsntfs the preferred NTFS back-end
+  - Changes to make OS backend more error tollerant 
+  - Changes to make NTFS backend more error tollerant 
+  - Changes to OS file entry for creation time #440 and ns timestamps 
+  - Added XZ compressed stream analyzer 
+  - Added VHDX storage media image support 
+  - Changes to expose HFS+ creation time
+  - Added fshfs back-end
+- examples is no longer installed into the site folder. Remove the rename statement.
+- add requires for libfsext, libfshfs, libluksde
+- updated %fdupes line to eliminate RPM warnings
+</comment>
+    <requestid>858552</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ef3029d34bb157cb5c2708036dcc4fd2</srcmd5>
+    <version>0~20200920</version>
+    <time>1619447959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888338</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>1f8b544d5dced1269c266ada9fea2103</srcmd5>
+    <version>0~20200920</version>
+    <time>1653244043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978282</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5898ddb5c7813a3adc737cfdf93738d1</srcmd5>
+    <version>0~20211228</version>
+    <time>1653417086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978787</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ff8a89dfefb398d90c0752a6eeef5666</srcmd5>
+    <version>0~20220419</version>
+    <time>1654199650</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20220419
+  - changes to support python-dtfabric 20220219
+  - update methods for working with GPT and HFS+ volumes
+- add BuildRequires libphdi   required to provide Parallels Disk Image support
+- re-enable %check section as the built-in tests now all pass
+- update requires libluksde to require a current versions
+- update requires python-dtfabric to require a current versions
+- update to 20211228
+  - deprecated GetStat file entry method
+- Manually run tests results in:
+  - Ran 1228 tests in 299.931s
+  - NO errors reported!
+- update to 20211017
+  - changes to support pyfwnt 20210717
+  - added pyxattr to add attribute support for multiple filesystems 
+  - added size entry for ext, XFS, HFS file entries
+- update to 20210606
+  - added pymodi to support Mac OS disk images
+  - API changes related to time objects to be compatible with newer dependency versions
+- added BuildRequires:  %{python_module libmodi}
+- added Requires:  python-libmodi
+- update to 20210213
+  - added pyvsgpt to support hybrid GPT partition table setups
+  - added pyvsxfs to support XFS filesystem support
+  - moved examples folder to new github project dfvfs-snippets
+- added BuildRequires:  %{python_module libvsgpt}
+- added BuildRequires:  %{python_module libvsxfs}
+- added Requires:  python-libvsgpt
+- added Requires:  python-libvsxfs
+  
+- remove  %doc examples
+  - no longer provided in source tarball, moved to dfvfs-snippets github project
+- remove lintrc reference to examples as examples have been removed
+- update to 20201219 
+  - added fsext backend
+  - changes to expose HFS+ create time
+  - added fshfs backend
+  - added fsxfs backend
+  - added QCOW differential image support
+- python-mock is not required for build (even if the testsuite
+  would run)
+- The majority of dependencies is available for the primary python3
+  flavor only. Do the same.
+- Update to 20200920
+  - Changes to make fsntfs the preferred NTFS back-end
+  - Changes to make OS backend more error tollerant 
+  - Changes to make NTFS backend more error tollerant 
+  - Changes to OS file entry for creation time #440 and ns timestamps 
+  - Added XZ compressed stream analyzer 
+  - Added VHDX storage media image support 
+  - Changes to expose HFS+ creation time
+  - Added fshfs back-end
+- examples is no longer installed into the site folder. Remove the rename statement.
+- add requires for libfsext, libfshfs, libluksde
+- updated %fdupes line to eliminate RPM warnings
+- Update to 20200211
+  - Added volume scanner options (#346)
+  - fixed failing test (#425)
+  - Added LUKS support (#418)
+  - Added initial APFS support
+- Add Requires python-dtfabric - testing found not all use cases work without it
+- Add Requires python-fsapfs   - testing found not all use cases work without it
+- removed the %check section - it is failing on newly added APFS support - not yet reliable
+- Once again builds successfully against factory/tumbleweed
+- Update to 20200121
+- Remove include-examples-in-packages.patch as it is included
+  upstream.
+- Update to 20200117:
+  - switch from PyCrypto to cryptography.io (Hurrah!)
+  - test suite passes (gh#log2timeline/dfvfs#421)
+- add patch: include-examples-in-packages.patch
+- update to 20190902
+  - back to Python singlespec and python3
+- update to v0~20171230
+  * add more python3 support (even though openSUSE package doesn't use it)
+  * bug fixes
+  * compatible with plaso 20171231
+- revert effort to use Python singlespec.  It's just not working smoothly.
+- update to v0~20170723
+  * worked on internal test structure
+- add python3 support
+- implement python singlespec syntax
+- In Requires: lines for libyal python bindings, use the python-lib* variant of the package
+	Python singlespec automatically converts that to python2 / python3 as appropriate
+- remove Requres: python-protobuf.  It has been replaced by a JSON solution
+- adopt upstream name of python{23}-tsk3
+- correct Requires to have 0~ prefix
+- update to v0~20160918
+  * still pre-release and no ChangeLog available
+  * add requires pyfwnt, pyvslvm, python-dfdatetime
+- update to v0~20160108
+  * still pre-release and no ChangeLog available
+  * required by plaso v1.4.0 which is in feature freeze at this point
+- update pyvshadow requires to version v0~20160110
+- add Requires: pyfsntfs
+- update to v0~20150708
+  * warning, breaks plaso prior to v1.3.0rc2
+  * still pre-release and no ChangeLog available
+- update to v0~20150408
+  * Plaso is the primary consumer of dfVFS, but it can be used standalone and may have other consumers in the future
+  * Warning breaks JSON serialization in plaso and require a plaso version of 20150507 or later.
+- update to v0~20150303
+  * dfVFS is in a rapid state of development and Changelog entries have not been implemented by upstream
+- add Requires: pysigscan, it is a new dependency
+- add a new %exclude in %files due to doubly included %doc files
+- remove spec file entry deleting installed examples.  Resolved upstream.
+  * see https://github.com/log2timeline/dfvfs/issues/4
+- chmod run_tests.py to remove the executable bits.  Was causing a rmplint warning.
+- update to v0~20150108
+  * bugfix for auto-dependency build
+- add explicit &quot;%py_compile .&quot; to resolve rpmlint complaint about datestamps not matching
+- add the examples folder to the %doc section of %files
+- add run_tests.py to the %doc section of %files
+- upgrade to v0~20141220
+  * dfVFS is in a rapid state of development and Changelog entries have not been implemented by upstream
+- v0~20141220 required by latest plaso release
+- update Url field to point to the new github site
+- update source to be complete URL
+- delete DL_URL field
+- add an exclude for the &quot;examples&quot; that are provided.  They need a better namespace.
+- add check_dependencies.py to %doc so that users can verify they have usable dependencies
+- add a %doc line to %files section
+- change the license tag to Apache-2.0
+- add Requires libvmdk since it is now in OBS
+- add Requires libvhdi since it is now in OBS
+- add missing &quot;Requires: pyqcow&quot; line to specfile
+- remove %attr(755...) line and instead use sed to remove #!/usr/bin/python from *py files
+- cleanup Requires: in general
+- initial version in OBS (version 0~20140727)
+</comment>
+    <requestid>980395</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3657e24514d65a9cb08cf10d4c3e5ee9</srcmd5>
+    <version>0~20220419</version>
+    <time>1654691100</time>
+    <user>dimstar_suse</user>
+    <comment>- allow multiple python packages to be built (eg. python38, python39, python310)
+   - rm %define pythons python38
+   - add %Obsoletes python3-dfVFS
+   - add %define skip_python2 1
+- update to 20220419
+  - changes to support python-dtfabric 20220219
+  - update methods for working with GPT and HFS+ volumes
+- add BuildRequires libphdi   required to provide Parallels Disk Image support
+- re-enable %check section as the built-in tests now all pass
+- update requires libluksde to require a current version
+- update requires python-dtfabric to require a current version
+- update to 20211228
+  - deprecated GetStat file entry method
+- Manually run tests results in:
+  - Ran 1228 tests in 299.931s
+  - NO errors reported!
+- update to 20211017
+  - changes to support pyfwnt 20210717
+  - added pyxattr to add attribute support for multiple filesystems 
+  - added size entry for ext, XFS, HFS file entries
+- update to 20210606
+  - added pymodi to support Mac OS disk images
+  - API changes related to time objects to be compatible with newer dependency versions
+- added BuildRequires:  %{python_module libmodi}
+- added Requires:  python-libmodi
+- update to 20210213
+  - added pyvsgpt to support hybrid GPT partition table setups
+  - added pyvsxfs to support XFS filesystem support
+  - moved examples folder to new github project dfvfs-snippets
+- added BuildRequires:  %{python_module libvsgpt}
+- added BuildRequires:  %{python_module libvsxfs}
+- added Requires:  python-libvsgpt
+- added Requires:  python-libvsxfs
+  
+- remove  %doc examples
+  - no longer provided in source tarball, moved to dfvfs-snippets github project
+- remove lintrc reference to examples as examples have been removed
+- update to 20201219 
+  - added fsext backend
+  - changes to expose HFS+ create time
+  - added fshfs backend
+  - added fsxfs backend
+  - added QCOW differential image support
+- python-mock is not required for build (even if the testsuite
+  would run)
+- The majority of dependencies is available for the primary python3
+  flavor only. Do the same.
+- Update to 20200920
+  - Changes to make fsntfs the preferred NTFS back-end
+  - Changes to make OS backend more error tollerant 
+  - Changes to make NTFS backend more error tollerant 
+  - Changes to OS file entry for creation time #440 and ns timestamps 
+  - Added XZ compressed stream analyzer 
+  - Added VHDX storage media image support 
+  - Changes to expose HFS+ creation time
+  - Added fshfs back-end
+- examples is no longer installed into the site folder. Remove the rename statement.
+- add requires for libfsext, libfshfs, libluksde
+- updated %fdupes line to eliminate RPM warnings
+- Update to 20200211
+  - Added volume scanner options (#346)
+  - fixed failing test (#425)
+  - Added LUKS support (#418)
+  - Added initial APFS support
+- Add Requires python-dtfabric - testing found not all use cases work without it
+- Add Requires python-fsapfs   - testing found not all use cases work without it
+- removed the %check section - it is failing on newly added APFS support - not yet reliable
+- Once again builds successfully against factory/tumbleweed
+- Update to 20200121
+- Remove include-examples-in-packages.patch as it is included
+  upstream.
+- Update to 20200117:
+  - switch from PyCrypto to cryptography.io (Hurrah!)
+  - test suite passes (gh#log2timeline/dfvfs#421)
+- add patch: include-examples-in-packages.patch
+- update to 20190902
+  - back to Python singlespec and python3
+- update to v0~20171230
+  * add more python3 support (even though openSUSE package doesn't use it)
+  * bug fixes
+  * compatible with plaso 20171231
+- revert effort to use Python singlespec.  It's just not working smoothly.
+- update to v0~20170723
+  * worked on internal test structure
+- add python3 support
+- implement python singlespec syntax
+- In Requires: lines for libyal python bindings, use the python-lib* variant of the package
+	Python singlespec automatically converts that to python2 / python3 as appropriate
+- remove Requres: python-protobuf.  It has been replaced by a JSON solution
+- adopt upstream name of python{23}-tsk3
+- correct Requires to have 0~ prefix
+- update to v0~20160918
+  * still pre-release and no ChangeLog available
+  * add requires pyfwnt, pyvslvm, python-dfdatetime
+- update to v0~20160108
+  * still pre-release and no ChangeLog available
+  * required by plaso v1.4.0 which is in feature freeze at this point
+- update pyvshadow requires to version v0~20160110
+- add Requires: pyfsntfs
+- update to v0~20150708
+  * warning, breaks plaso prior to v1.3.0rc2
+  * still pre-release and no ChangeLog available
+- update to v0~20150408
+  * Plaso is the primary consumer of dfVFS, but it can be used standalone and may have other consumers in the future
+  * Warning breaks JSON serialization in plaso and require a plaso version of 20150507 or later.
+- update to v0~20150303
+  * dfVFS is in a rapid state of development and Changelog entries have not been implemented by upstream
+- add Requires: pysigscan, it is a new dependency
+- add a new %exclude in %files due to doubly included %doc files
+- remove spec file entry deleting installed examples.  Resolved upstream.
+  * see https://github.com/log2timeline/dfvfs/issues/4
+- chmod run_tests.py to remove the executable bits.  Was causing a rmplint warning.
+- update to v0~20150108
+  * bugfix for auto-dependency build
+- add explicit &quot;%py_compile .&quot; to resolve rpmlint complaint about datestamps not matching
+- add the examples folder to the %doc section of %files
+- add run_tests.py to the %doc section of %files
+- upgrade to v0~20141220
+  * dfVFS is in a rapid state of development and Changelog entries have not been implemented by upstream
+- v0~20141220 required by latest plaso release
+- update Url field to point to the new github site
+- update source to be complete URL
+- delete DL_URL field
+- add an exclude for the &quot;examples&quot; that are provided.  They need a better namespace.
+- add check_dependencies.py to %doc so that users can verify they have usable dependencies
+- add a %doc line to %files section
+- change the license tag to Apache-2.0
+- add Requires libvmdk since it is now in OBS
+- add Requires libvhdi since it is now in OBS
+- add missing &quot;Requires: pyqcow&quot; line to specfile
+- remove %attr(755...) line and instead use sed to remove #!/usr/bin/python from *py files
+- cleanup Requires: in general
+- initial version in OBS (version 0~20140727)
+</comment>
+    <requestid>981221</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6940a9cc3ad07539eebad67b2dff0176</srcmd5>
+    <version>0~20220917</version>
+    <time>1671222377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043397</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>86e75701bf0c001096972083ecfd5013</srcmd5>
+    <version>0~20220917</version>
+    <time>1678204236</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requirements on more Python modules</comment>
+    <requestid>1069876</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2ed2951059c0f685187f1a641bf5ac6f</srcmd5>
+    <version>0~20221224</version>
+    <time>1678380330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070239</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>e14aed2c656b5c6ffb943c63ba4028b8</srcmd5>
+    <version>0~20221224</version>
+    <time>1681387844</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1078816</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>3664ff1877be821d7dd77a5072c6953d</srcmd5>
+    <version>0~20221224</version>
+    <time>1690654222</time>
+    <user>dimstar_suse</user>
+    <comment>- use %{?sle_python_module_pythons} to select python versions 
+</comment>
+    <requestid>1101263</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>8c4a6239578548af1e4d75ce222a9507</srcmd5>
+    <version>0~20221224</version>
+    <time>1691154218</time>
+    <user>dimstar_suse</user>
+    <comment>- use %{?sle15_python_module_pythons} to select python versions 
+- re-enable %check section as the built-in tests now all pass
+        --
+- update to 20221224
+  - Added support for empty GPT with MBR partitions
+  - Added CoreStorage volume system
+  - improved handling of bad ZIP files
+  - see git commit log for additional changes
+- Add requirements on more Python modules
+- Upstream libyal/plaso is only supporting python 3.7 or newer
+  - Add BuildRequires:  %{python_module base &gt;= 3.7}
+- update to 20220917
+  - Changes for empty APFS volumes
+  - Changes to expose extended attribute extents
+  - Added empty volume support to file system searcher
+  - Added APFS number of links support 
+  - Extended StatAttribute with device number 
+  - Changes to ZIP file entry for latest dfDateTime 
+  - Added ISO9660 test file and tests 
+- add BuildRequires python-libcaes
+- add BuildRequires python-libfsfat
+- re-disable %check section as the built-in tests fail again for most APFS tests
+- ran spec-cleaner
+- remove Requires:  python-six
+   - This is untested as it is difficult to have an opensuse release without python-six at this point
+- allow multiple python packages to be built (eg. python38, python39, python310)
+   - rm %define pythons python38
+   - add %Obsoletes python3-dfVFS
+   - add %define skip_python2 1
+- update to 20220419
+  - changes to support python-dtfabric 20220219
+  - update methods for working with GPT and HFS+ volumes
+- add BuildRequires libphdi   required to provide Parallels Disk Image support
+- re-enable %check section as the built-in tests now all pass
+- update requires libluksde to require a current version
+- update requires python-dtfabric to require a current version
+- update to 20211228
+  - deprecated GetStat file entry method
+- Manually run tests results in:
+  - Ran 1228 tests in 299.931s
+  - NO errors reported!
+- update to 20211017
+  - changes to support pyfwnt 20210717
+  - added pyxattr to add attribute support for multiple filesystems 
+  - added size entry for ext, XFS, HFS file entries
+- update to 20210606
+  - added pymodi to support Mac OS disk images
+  - API changes related to time objects to be compatible with newer dependency versions
+- added BuildRequires:  %{python_module libmodi}
+- added Requires:  python-libmodi
+- update to 20210213
+  - added pyvsgpt to support hybrid GPT partition table setups
+  - added pyvsxfs to support XFS filesystem support
+  - moved examples folder to new github project dfvfs-snippets
+- added BuildRequires:  %{python_module libvsgpt}
+- added BuildRequires:  %{python_module libvsxfs}
+- added Requires:  python-libvsgpt
+- added Requires:  python-libvsxfs
+  
+- remove  %doc examples
+  - no longer provided in source tarball, moved to dfvfs-snippets github project
+- remove lintrc reference to examples as examples have been removed
+- update to 20201219 
+  - added fsext backend
+  - changes to expose HFS+ create time
+  - added fshfs backend
+  - added fsxfs backend
+  - added QCOW differential image support
+- python-mock is not required for build (even if the testsuite
+  would run)
+- The majority of dependencies is available for the primary python3
+  flavor only. Do the same.
+- Update to 20200920
+  - Changes to make fsntfs the preferred NTFS back-end
+  - Changes to make OS backend more error tollerant 
+  - Changes to make NTFS backend more error tollerant 
+  - Changes to OS file entry for creation time #440 and ns timestamps 
+  - Added XZ compressed stream analyzer 
+  - Added VHDX storage media image support 
+  - Changes to expose HFS+ creation time
+  - Added fshfs back-end
+- examples is no longer installed into the site folder. Remove the rename statement.
+- add requires for libfsext, libfshfs, libluksde
+- updated %fdupes line to eliminate RPM warnings
+- Update to 20200211
+  - Added volume scanner options (#346)
+  - fixed failing test (#425)
+  - Added LUKS support (#418)
+  - Added initial APFS support
+- Add Requires python-dtfabric - testing found not all use cases work without it
+- Add Requires python-fsapfs   - testing found not all use cases work without it
+- removed the %check section - it is failing on newly added APFS support - not yet reliable
+- Once again builds successfully against factory/tumbleweed
+- Update to 20200121
+- Remove include-examples-in-packages.patch as it is included
+  upstream.
+- Update to 20200117:
+  - switch from PyCrypto to cryptography.io (Hurrah!)
+  - test suite passes (gh#log2timeline/dfvfs#421)
+- add patch: include-examples-in-packages.patch
+- update to 20190902
+  - back to Python singlespec and python3
+- update to v0~20171230
+  * add more python3 support (even though openSUSE package doesn't use it)
+  * bug fixes
+  * compatible with plaso 20171231
+- revert effort to use Python singlespec.  It's just not working smoothly.
+- update to v0~20170723
+  * worked on internal test structure
+- add python3 support
+- implement python singlespec syntax
+- In Requires: lines for libyal python bindings, use the python-lib* variant of the package
+	Python singlespec automatically converts that to python2 / python3 as appropriate
+- remove Requres: python-protobuf.  It has been replaced by a JSON solution
+- adopt upstream name of python{23}-tsk3
+- correct Requires to have 0~ prefix
+- update to v0~20160918
+  * still pre-release and no ChangeLog available
+  * add requires pyfwnt, pyvslvm, python-dfdatetime
+- update to v0~20160108
+  * still pre-release and no ChangeLog available
+  * required by plaso v1.4.0 which is in feature freeze at this point
+- update pyvshadow requires to version v0~20160110
+- add Requires: pyfsntfs
+- update to v0~20150708
+  * warning, breaks plaso prior to v1.3.0rc2
+  * still pre-release and no ChangeLog available
+- update to v0~20150408
+  * Plaso is the primary consumer of dfVFS, but it can be used standalone and may have other consumers in the future
+  * Warning breaks JSON serialization in plaso and require a plaso version of 20150507 or later.
+- update to v0~20150303
+  * dfVFS is in a rapid state of development and Changelog entries have not been implemented by upstream
+- add Requires: pysigscan, it is a new dependency
+- add a new %exclude in %files due to doubly included %doc files
+- remove spec file entry deleting installed examples.  Resolved upstream.
+  * see https://github.com/log2timeline/dfvfs/issues/4
+- chmod run_tests.py to remove the executable bits.  Was causing a rmplint warning.
+- update to v0~20150108
+  * bugfix for auto-dependency build
+- add explicit &quot;%py_compile .&quot; to resolve rpmlint complaint about datestamps not matching
+- add the examples folder to the %doc section of %files
+- add run_tests.py to the %doc section of %files
+- upgrade to v0~20141220
+  * dfVFS is in a rapid state of development and Changelog entries have not been implemented by upstream
+- v0~20141220 required by latest plaso release
+- update Url field to point to the new github site
+- update source to be complete URL
+- delete DL_URL field
+- add an exclude for the &quot;examples&quot; that are provided.  They need a better namespace.
+- add check_dependencies.py to %doc so that users can verify they have usable dependencies
+- add a %doc line to %files section
+- change the license tag to Apache-2.0
+- add Requires libvmdk since it is now in OBS
+- add Requires libvhdi since it is now in OBS
+- add missing &quot;Requires: pyqcow&quot; line to specfile
+- remove %attr(755...) line and instead use sed to remove #!/usr/bin/python from *py files
+- cleanup Requires: in general
+- initial version in OBS (version 0~20140727)
+</comment>
+    <requestid>1102232</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>21a3acf77ba80da341ee20c9779cb857</srcmd5>
+    <version>0~20230531</version>
+    <time>1691762149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103389</requestid>
+  </revision>
+</revisionlist>

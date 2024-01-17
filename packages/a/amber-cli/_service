@@ -1,0 +1,21 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/intel/amber-cli.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">main</param>
+    <param name="versionformat">0.3.0+git%cd.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">amber-cli</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="compression">zstd</param>
+  </service>
+</services>

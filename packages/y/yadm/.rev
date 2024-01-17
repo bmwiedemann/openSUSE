@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2e3d14b2dfc38909ed5c28111c9efa2</srcmd5>
+    <version>3.2.1</version>
+    <time>1647974402</time>
+    <user>dimstar_suse</user>
+    <comment>
+
+I'm submitting yadm (yadm.io) version 3.2.1 to Factory
+
+ML Post : https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/NPHZACN3PMHYR3YQFZBZCI6YKVBGNWSC/
+</comment>
+    <requestid>963885</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14e16cd8b43bca10082c80c199aa0b0f</srcmd5>
+    <version>3.2.2</version>
+    <time>1684688921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088056</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>12b97b98c8d487c1c830d1067bbf21de</srcmd5>
+    <version>3.2.2</version>
+    <time>1698249926</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120317</requestid>
+  </revision>
+</revisionlist>

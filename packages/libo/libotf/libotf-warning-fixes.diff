@@ -1,0 +1,14 @@
+---
+ src/otfdrive.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/otfdrive.c
++++ b/src/otfdrive.c
+@@ -1664,6 +1664,7 @@
+ 	else
+ 	  gstring->glyphs[i].glyph_id = lookupper (c, &enc->subtable);
+       }
++  return 0;
+ }
+ 
+ 

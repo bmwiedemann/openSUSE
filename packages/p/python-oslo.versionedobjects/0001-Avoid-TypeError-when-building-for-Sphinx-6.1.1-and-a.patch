@@ -1,0 +1,29 @@
+From 6b7248e0dc504e57eff716671aad81fcd1c587d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dirk=20M=C3=BCller?= <dirk@dmllr.de>
+Date: Mon, 6 Mar 2023 21:36:03 +0100
+Subject: [PATCH] Avoid TypeError when building for Sphinx 6.1.1 and above
+
+see https://github.com/sphinx-doc/sphinx/issues/11094 for the
+investigation and the fix.
+
+Change-Id: If76e79531e0b81ba3e3c9fe38904b77b553e1698
+---
+ doc/source/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index 475926b..51d703a 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -57,7 +57,7 @@ add_module_names = True
+ # Shortened external links.
+ extlinks = {
+     'example': (source_tree +
+-                '/%s/examples/%%s.py' % project.replace(".", "_"), ''),
++                '/%s/examples/%%s.py' % project.replace(".", "_"), None),
+ }
+ 
+ # The name of the Pygments (syntax highlighting) style to use.
+-- 
+2.39.2
+

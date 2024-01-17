@@ -1,0 +1,8 @@
+<package name="mplus-fonts" project="openSUSE:Factory">
+  <title>Free fonts set incorporates all Kanji until level 2 and Latin glyphs</title>
+  <description>The M+ outline fonts are distributed with proportional Latin (4 variations), 
+fixed-halfwidth Latin (3 variations) and fixed-fullwidth Japanese (2 Kana variations)
+character set. 7 weights from Thin to Black are included, but fixed-halfwidth
+Latin with 5 weights from Thin to Bold.</description>
+  <devel project="M17N:fonts" package="mplus-fonts"/>
+</package>

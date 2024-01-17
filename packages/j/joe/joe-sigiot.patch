@@ -1,0 +1,31 @@
+---
+ joe/uformat.c |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+Index: joe/uformat.c
+===================================================================
+--- joe/uformat.c.orig
++++ joe/uformat.c
+@@ -459,7 +459,7 @@ void wrapword(BW *bw, P *p, off_t indent
+ 	if (!pisbol(p) && piscol(p) > indent) {
+ 		/* Move q to two (or one if 'french' is set) spaces after end of previous
+ 		   word */
+-		q = pdup(p, "wrapword");
++		q = pdup(p, "wrapword;");
+ 		while (!pisbol(q))
+ 			if (!joe_isblank(p->b->o.charmap, (c = prgetc(q)))) {
+ 				pgetc(q);
+@@ -596,10 +596,12 @@ int uformat(W *w, int k)
+ 		if (!bw->o.autoindent) {
+ 			/* Don't indent second line of single-line paragraphs if autoindent is off */
+ 			ptrdiff_t tx = zlen(indents);
++			ptrdiff_t start = tx;
+ 			while (tx && (indents[tx - 1] == ' ' || indents[tx - 1] == '\t'))
+ 				indents[--tx] = 0;
+ 			if (tx) {
+-				indents[tx++] = ' ';
++				if (tx < start)
++					indents[tx++] = ' ';
+ 				indents[tx] = 0;
+ 			}
+ 			indent = txtwidth1(bw->o.charmap, bw->o.tab, indents, tx);

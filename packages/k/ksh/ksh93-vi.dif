@@ -1,0 +1,60 @@
+--- src/cmd/ksh93/edit/vi.c
++++ src/cmd/ksh93/edit/vi.c	2007-03-28 16:41:47.000000000 +0000
+@@ -401,6 +401,8 @@ int ed_viread(void *context, int fd, reg
+ 
+ 	if(!yankbuf)
+ 		yankbuf = (genchar*)malloc(MAXLINE*CHARSIZE);
++	if (!vp->lastline)
++		vp->lastline = (genchar*)malloc(MAXLINE*CHARSIZE);
+ 	if( vp->last_cmd == '\0' )
+ 	{
+ 		/*** first time for this shell ***/
+@@ -410,6 +412,8 @@ int ed_viread(void *context, int fd, reg
+ 		vp->lastmotion = '\0';
+ 		vp->lastrepeat = 1;
+ 		vp->repeat = 1;
++		if (!yankbuf)
++			return(-1);
+ 		*yankbuf = 0;
+ 	}
+ 
+@@ -1137,7 +1141,7 @@ static void cdelete(Vi_t *vp,register in
+ 
+ 		/*** save characters to be deleted ***/
+ 
+-		if( mode != 'c' )
++		if( mode != 'c' && yankbuf )
+ 		{
+ 			i = cp[nchars];
+ 			cp[nchars] = 0;
+@@ -2169,6 +2173,9 @@ static void save_last(register Vi_t* vp)
+ {
+ 	register int i;
+ 
++	if (vp->lastline == NULL)
++		return;
++
+ 	if( (i = cur_virt - first_virt + 1) > 0 )
+ 	{
+ 		/*** save last thing user typed ***/
+@@ -2417,6 +2424,11 @@ static int textmod(register Vi_t *vp,reg
+ 		p = yankbuf;
+ 	}
+ 
++	if (!p)
++	{
++		return(BAD);
++	}
++
+ addin:
+ 	switch( c )
+ 	{
+@@ -2687,6 +2699,8 @@ yankeol:
+ 		vp->lastmotion = c;
+ 		if( c == 'y' )
+ 		{
++			if (!yankbuf)
++				return(BAD);
+ 			gencpy(yankbuf, virtual);
+ 		}
+ 		else if(!delmotion(vp, c, 'y'))

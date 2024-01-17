@@ -1,0 +1,8 @@
+<package name="libwpe" project="openSUSE:Factory">
+  <title>General-purpose library for the WPE-flavored port of WebKit</title>
+  <description>General-purpose library developed for the WPE-flavored port of WebKit.
+
+</description>
+  <devel project="GNOME:Factory" package="libwpe"/>
+  <url>https://github.com/WebPlatformForEmbedded/libwpe</url>
+</package>

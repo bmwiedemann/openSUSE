@@ -1,0 +1,57 @@
+From 3b6e9256061bfcb70d2540c49b074b4be0ace4be Mon Sep 17 00:00:00 2001
+From: Federico Fissore <federico@fissore.org>
+Date: Wed, 4 Nov 2015 12:48:02 +0100
+Subject: [PATCH 04/19] parseReturnType should start from the first non-brace
+ token
+
+---
+ c.c | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/c.c b/c.c
+index ef81067..727d6bb 100644
+--- a/c.c
++++ b/c.c
+@@ -567,7 +567,6 @@ static const char *implementationString (const impType imp)
+ /*
+ *   Debugging functions
+ */
+-#define DEBUG
+ #ifdef DEBUG
+ 
+ #define boolString(c)   ((c) ? "TRUE" : "FALSE")
+@@ -2120,6 +2119,7 @@ static void parseReturnType (statementInfo *const st)
+ {
+ 	int i;
+ 	int lower_bound;
++	int upper_bound;
+ 	tokenInfo * finding_tok;
+ 	
+ 	/* FIXME TODO: if java language must be supported then impement this here
+@@ -2161,8 +2161,21 @@ static void parseReturnType (statementInfo *const st)
+ 	}
+ 	else
+ 		lower_bound = 1;
+-	
+-	for (i = (unsigned int) NumTokens;  i > lower_bound;  i--)
++
++	upper_bound = -1;
++	for (i = 0; i < NumTokens; i++) {
++        tokenInfo *curr_tok;
++        curr_tok = prevToken (st, i);
++	    if (curr_tok->type == TOKEN_BRACE_CLOSE || curr_tok->type == TOKEN_BRACE_OPEN) {
++	        upper_bound = i - 1;
++	        break;
++	    }
++	}
++	if (upper_bound < 0) {
++	    upper_bound = NumTokens - 1;
++	}
++
++	for (i = upper_bound;  i > lower_bound;  i--)
+ 	{
+ 		tokenInfo * curr_tok;
+ 		curr_tok = prevToken (st, i);	
+-- 
+2.11.0
+

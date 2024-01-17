@@ -1,0 +1,5 @@
+<package name="python-glanceclient" project="openSUSE:Factory">
+  <title></title>
+  <description>This is a client for the Glance which uses the OpenStack Image API. There's a Python API (the glanceclient module), and a command-line script (glance).</description>
+  <devel project="Cloud:OpenStack:Factory" package="python-glanceclient"/>
+</package>

@@ -1,0 +1,42 @@
+commit 40264438e5320d4bf2cde5d8c1c2ddc4637d3042
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Tue May 29 07:53:52 2018 +0200
+
+    ucm, mcm: fix backlog parameter for socket
+    
+    Using listen(, 0) forces a synchronization barrier between connect and accept
+    if net.ipv4.tcp_syncookies. As this is done by a single thread, it causes connect
+    to timeout with a similar message:
+    open_hca: failed to init cr pipe - Connection timed out
+    
+    Replace with listen(, 1) so the kernel can accept the connection itself and remove
+    the synchronisation point.
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git dapl/openib_mcm/device.c dapl/openib_mcm/device.c
+index 2e30221ac2d2..5ea25615f683 100644
+--- dapl/openib_mcm/device.c
++++ dapl/openib_mcm/device.c
+@@ -59,7 +59,7 @@ static int32_t create_os_signal(IN DAPL_HCA * hca_ptr)
+ 	if (ret)
+ 		goto err1;
+ 
+-	ret = listen(listen_socket, 0);
++	ret = listen(listen_socket, 1);
+ 	if (ret)
+ 		goto err1;
+ 
+diff --git dapl/openib_ucm/device.c dapl/openib_ucm/device.c
+index 11f7334ec348..9e257835f44b 100644
+--- dapl/openib_ucm/device.c
++++ dapl/openib_ucm/device.c
+@@ -92,7 +92,7 @@ static int32_t create_os_signal(IN DAPL_HCA * hca_ptr)
+ 	if (ret)
+ 		goto err1;
+ 
+-	ret = listen(listen_socket, 0);
++	ret = listen(listen_socket, 1);
+ 	if (ret)
+ 		goto err1;
+ 

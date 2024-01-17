@@ -1,0 +1,12 @@
+Index: hplip-3.20.9/scan/sane/http.c
+===================================================================
+--- hplip-3.20.9.orig/scan/sane/http.c
++++ hplip-3.20.9/scan/sane/http.c
+@@ -33,6 +33,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <string.h>
+ #include <syslog.h>
+ #include <ctype.h>

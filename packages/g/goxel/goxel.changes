@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Nov  6 16:11:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Thu Aug 24 06:07:28 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.12.0
+  * Added basic support for Minetest file format import.
+  * Added a new tool to select from a 2d rectangle.
+  * Fixed issues with high density screens.
+  * Added some (very basic) support for scripting.
+
+The biggest new feature is probably the scripting support. For the moment it is very limited, see the example in data/scripts/test.js. If you would like to make your own scripts but some features are missing (and they will), please open an issue about it.
+
+- Added patch fix_security_issue_in_quickjs.patch to address potential security issue
+
+-------------------------------------------------------------------
+Mon Dec  5 09:24:33 UTC 2022 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to 0.11.0
+  * Improve vlx import.
+  * Add support for plane at non 90 deg angles.
+  * Add basic support for selection mask, so that we can add or subtract from the current selection.
+
+-------------------------------------------------------------------
+Mon Dec 13 15:00:29 UTC 2021 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to 0.10.8
+  * Only minor changes and bug fix.
+
+-------------------------------------------------------------------
+Sun Feb 21 11:40:43 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Install upstream appdata and desktop file.
+- Avoid non-standard icon sizes
+- Fix non-standard-group Unspecified
+- Update URL
+
+-------------------------------------------------------------------
+Fri Dec 25 18:57:51 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.10.7
+  * Minor release with mostly improvements to the glTF export.
+  * Sort the file list to make package build reproducible (boo#1041090)
+
+-------------------------------------------------------------------
+Tue Oct 27 08:09:31 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Remove %{set_build_flags} and manually set build flag because 
+  Leap 15.2 does not support this macro.
+
+-------------------------------------------------------------------
+Mon Oct 19 05:09:47 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 

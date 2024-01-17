@@ -1,0 +1,263 @@
+--- src/lib/libast/include/sfio_t.h
++++ src/lib/libast/include/sfio_t.h	2013-10-11 09:22:41.000000000 +0000
+@@ -34,7 +34,7 @@
+ #define _SFIO_PRIVATE \
+ 	Sfoff_t			extent;	/* current file	size		*/ \
+ 	Sfoff_t			here;	/* current physical location	*/ \
+-	unsigned char		unused_1;/* unused #1			*/ \
++	unsigned char		ngetr;	/* sfgetr count			*/ \
+ 	unsigned char		tiny[1];/* for unbuffered read stream	*/ \
+ 	unsigned short		bits;	/* private flags		*/ \
+ 	unsigned int		mode;	/* current io mode		*/ \
+@@ -82,7 +82,7 @@
+ 	  (ssize_t)(-1),				/* val		*/ \
+ 	  (Sfoff_t)0,					/* extent	*/ \
+ 	  (Sfoff_t)0,					/* here		*/ \
+-	  0,						/* getr		*/ \
++	  0,						/* ngetr	*/ \
+ 	  {0},						/* tiny		*/ \
+ 	  0,						/* bits		*/ \
+ 	  (unsigned int)(((type)&(SF_RDWR))|SF_INIT),	/* mode		*/ \
+@@ -93,7 +93,8 @@
+ 	  (mutex),					/* mutex	*/ \
+ 	  (Void_t*)0,					/* stdio	*/ \
+ 	  (Sfoff_t)0,					/* lpos		*/ \
+-	  (size_t)0					/* iosz		*/ \
++	  (size_t)0,					/* iosz		*/ \
++	  0						/* getr		*/ \
+ 	}
+ 
+ /* function to clear an Sfio_t structure */
+@@ -110,7 +111,7 @@
+ 	  (f)->val = (ssize_t)(-1),			/* val		*/ \
+ 	  (f)->extent = (Sfoff_t)(-1),			/* extent	*/ \
+ 	  (f)->here = (Sfoff_t)0,			/* here		*/ \
+-	  (f)->getr = 0,				/* getr		*/ \
++	  (f)->ngetr = 0,				/* ngetr	*/ \
+ 	  (f)->tiny[0] = 0,				/* tiny		*/ \
+ 	  (f)->bits = 0,				/* bits		*/ \
+ 	  (f)->mode = 0,				/* mode		*/ \
+@@ -121,7 +122,8 @@
+ 	  (f)->mutex = (mtx),				/* mutex	*/ \
+ 	  (f)->stdio = (Void_t*)0,			/* stdio	*/ \
+ 	  (f)->lpos = (Sfoff_t)0,			/* lpos		*/ \
+-	  (f)->iosz = (size_t)0				/* iosz		*/ \
++	  (f)->iosz = (size_t)0,			/* iosz		*/ \
++	  (f)->getr = 0					/* getr		*/ \
+ 	)
+ 
+ /* expose next stream inside discipline function; state saved in int f */
+--- src/lib/libast/sfio/sfflsbuf.c
++++ src/lib/libast/sfio/sfflsbuf.c	2013-10-18 11:50:01.866235555 +0000
+@@ -96,7 +96,7 @@ int	c;	/* if c>=0, c is also written out
+ 		isall = SFISALL(f,isall);
+ 		if((w = SFWR(f,data,n,f->disc)) > 0)
+ 		{	if((n -= w) > 0) /* save unwritten data, then resume */
+-				memcpy((char*)f->data,(char*)data+w,n);
++				memmove((char*)f->data,(char*)data+w,n);
+ 			written += w;
+ 			f->next = f->data+n;
+ 			if(c < 0 && (!isall || n == 0))
+--- src/lib/libast/sfio/sfmode.c
++++ src/lib/libast/sfio/sfmode.c	2013-10-11 09:26:43.000000000 +0000
+@@ -258,7 +258,7 @@ reg Sfio_t*	f;	/* stream to close */
+ #endif
+ {
+ 	Sfproc_t*	p;
+-	int		pid, status;
++	int		status;
+ 
+ 	if(!(p = f->proc))
+ 		return -1;
+@@ -279,7 +279,7 @@ reg Sfio_t*	f;	/* stream to close */
+ 		sigcritical(SIG_REG_EXEC|SIG_REG_PROC);
+ #endif
+ 		status = -1;
+-		while ((pid = waitpid(p->pid,&status,0)) == -1 && errno == EINTR)
++		while (waitpid(p->pid,&status,0) == -1 && errno == EINTR)
+ 			;
+ #if _PACKAGE_ast
+ 		status = status == -1 ?
+@@ -405,12 +405,16 @@ reg int		local;	/* a local call */
+ 	if(f->mode&SF_GETR)
+ 	{	f->mode &= ~SF_GETR;
+ #ifdef MAP_TYPE
+-		if((f->bits&SF_MMAP) && (f->tiny[0] += 1) >= (4*SF_NMAP) )
+-		{	/* turn off mmap to avoid page faulting */
+-			sfsetbuf(f,(Void_t*)f->tiny,(size_t)SF_UNBOUND);
+-			f->tiny[0] = 0;
++		if(f->bits&SF_MMAP)
++		{
++			if (!++f->ngetr)
++				f->tiny[0]++;
++			if(((f->tiny[0]<<8)|f->ngetr) >= (4*SF_NMAP) )
++			{	/* turn off mmap to avoid page faulting */
++				sfsetbuf(f,(Void_t*)f->tiny,(size_t)SF_UNBOUND);
++				f->ngetr = f->tiny[0] = 0;
++			}
+ 		}
+-		else
+ #endif
+ 		if(f->getr)
+ 		{	f->next[-1] = f->getr;
+--- src/lib/libast/sfio/sfmove.c
++++ src/lib/libast/sfio/sfmove.c	2013-10-18 12:04:03.194735625 +0000
+@@ -113,7 +113,11 @@ reg int		rc;	/* record separator */
+ 
+ 		/* try reading a block of data */
+ 		direct = 0;
+-		if((r = fr->endb - (next = fr->next)) <= 0)
++		if(fr->rsrv && (r = -fr->rsrv->slen) > 0)
++		{	fr->rsrv->slen = 0;
++			next = fr->rsrv->data;
++		}
++		else if((r = fr->endb - (next = fr->next)) <= 0)
+ 		{	/* amount of data remained to be read */
+ 			if((w = n > MAX_SSIZE ? MAX_SSIZE : (ssize_t)n) < 0)
+ 			{	if(fr->extent < 0)
+--- src/lib/libast/sfio/sfpoll.c
++++ src/lib/libast/sfio/sfpoll.c	2013-10-18 11:59:50.778735232 +0000
+@@ -138,7 +138,7 @@ int		tm;	/* time in millisecs for select
+ 		while((np = SFPOLL(fds,m,tm)) < 0 )
+ 		{	if(errno == eintr || errno == EAGAIN)
+ 				errno = 0;
+-			else	break;
++			else	goto report;
+ 		}
+ 		if(np > 0) /* poll succeeded */
+ 			np = c;
+@@ -147,14 +147,14 @@ int		tm;	/* time in millisecs for select
+ 		{	f = fa[check[r]];
+ 
+ 			if((f->flags&SF_WRITE) && !WRREADY(f) )
+-			{	if(fds[m].revents&POLLOUT)
++			{	if(fds[m].revents&(POLLOUT|POLLHUP|POLLERR))
+ 					status[check[r]] |= SF_WRITE;
+ 			}
+ 
+ 			if((f->flags&SF_READ)  && !RDREADY(f))
+ 			{	if((f->mode&SF_WRITE) && HASAUXFD(f))
+ 					m += 1;
+-				if(fds[m].revents&POLLIN)
++				if(fds[m].revents&(POLLIN|POLLHUP|POLLERR))
+ 					status[check[r]] |= SF_READ;
+ 			}
+ 		}
+@@ -200,7 +200,7 @@ int		tm;	/* time in millisecs for select
+ 		while((np = select(m+1,&rd,&wr,NIL(fd_set*),tmp)) < 0 )
+ 		{	if(errno == eintr)
+ 				errno = 0;
+-			else	break;
++			else	goto report;
+ 		}
+ 		if(np > 0)
+ 			np = c;
+@@ -227,6 +227,7 @@ int		tm;	/* time in millisecs for select
+ 	}
+ #endif /*_lib_select*/
+ 
++ report:
+ 	for(r = c = 0; c < n; ++c)
+ 	{	if(status[c] == 0)
+ 			continue;
+--- src/lib/libast/sfio/sfpool.c
++++ src/lib/libast/sfio/sfpool.c	2013-10-18 11:49:25.614237061 +0000
+@@ -138,7 +138,7 @@ int		n;	/* current position in pool	*/
+ 			else	/* write failed, recover buffer then quit */
+ 			{	if(w > 0)
+ 				{	v -= w;
+-					memcpy(head->data,(head->data+w),v);
++					memmove(head->data,(head->data+w),v);
+ 				}
+ 				head->next = head->data+v;
+ 				goto done;
+@@ -147,7 +147,7 @@ int		n;	/* current position in pool	*/
+ 
+ 		/* move data from head to f */
+ 		if((head->data+k) != f->data )
+-			memcpy(f->data,(head->data+k),v);
++			memmove(f->data,(head->data+k),v);
+ 		f->next = f->data+v;
+ 	}
+ 
+--- src/lib/libast/sfio/sfsetbuf.c
++++ src/lib/libast/sfio/sfsetbuf.c	2013-10-18 12:02:37.534736056 +0000
+@@ -254,6 +254,15 @@ size_t	size;	/* buffer size, -1 for defa
+ #endif
+ 		}
+ 
++		/* set page size, this is also the desired default buffer size */
++		if(_Sfpage <= 0)
++		{
++#if _lib_getpagesize
++			if((_Sfpage = (size_t)getpagesize()) <= 0)
++#endif
++				_Sfpage = SF_PAGE;
++		}
++
+ #if SFSETLINEMODE
+ 		if(init)
+ 			f->flags |= sfsetlinemode();
+@@ -308,15 +317,6 @@ size_t	size;	/* buffer size, -1 for defa
+ 					(void)_sfpopen(f,-1,-1,1);
+ 			}
+ 		}
+-
+-		/* set page size, this is also the desired default buffer size */
+-		if(_Sfpage <= 0)
+-		{
+-#if _lib_getpagesize
+-			if((_Sfpage = (size_t)getpagesize()) <= 0)
+-#endif
+-				_Sfpage = SF_PAGE;
+-		}
+ 	}
+ 
+ #ifdef MAP_TYPE
+--- src/lib/libast/string/stropt.c
++++ src/lib/libast/string/stropt.c	2013-01-03 17:20:37.000000000 +0100
+@@ -90,7 +90,7 @@ stropt(const char* as, const void* tab,
+ 			{
+ 				for (p = (char**)tab; t = *p; p = (char**)((char*)p + siz))
+ 				{
+-					for (v = s; *t && *t++ == *v; v++);
++					for (v = s; *t && *t == *v; t++, v++);
+ 					if (!*t || isspace(*v) || *v == ',' || *v == '=')
+ 						break;
+ 					if (*v == ':' && *(v + 1) == '=')
+--- src/lib/libast/vmalloc/vmopen.c
++++ src/lib/libast/vmalloc/vmopen.c	2013-10-18 13:54:50.918235639 +0000
+@@ -68,19 +68,22 @@ int		mode;	/* type of region		*/
+ 	Block_t		*bp, *np;
+ 	Seg_t		*seg;
+ 	Vmuchar_t	*addr;
+-	int		rv;
++	int		rv, mt;
+ 
+ 	if(!meth || !disc || !disc->memoryf )
+ 		return NIL(Vmalloc_t*);
+ 
+ 	GETPAGESIZE(_Vmpagesize);
+ 
++	mode = (mode&VM_FLAGS) | meth->meth; /* start with user-settable flags */
++
+ 	vmp = &vmproto; /* avoid memory allocation here! */
+ 	memset(vmp, 0, sizeof(Vmalloc_t));
+ 	memcpy(&vmp->meth, meth, sizeof(Vmethod_t));
++	mt = vmp->meth.meth;
++	vmp->meth.meth = 0;
+ 	vmp->disc = disc;
+ 
+-	mode &= VM_FLAGS; /* start with user-settable flags */
+ 	size = 0;
+ 
+ 	if(disc->exceptf)
+@@ -155,6 +158,8 @@ int		mode;	/* type of region		*/
+ 		seg->free = bp;
+ 	else	vd->wild = bp;
+ 
++	vmp->meth.meth = mt;
++
+ done:	/* now make the region handle */
+ 	if(vd->mode&VM_MEMORYF)
+ 		vm = &init->vm.vm;

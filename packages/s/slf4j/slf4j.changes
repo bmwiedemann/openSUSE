@@ -1,0 +1,256 @@
+-------------------------------------------------------------------
+Tue May 30 16:41:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require junit and ant-junit, since we don't run tests
+  during the build
+
+-------------------------------------------------------------------
+Wed Jul  6 12:30:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Add symlink to reload4j -> log4j12 for applications that expect
+  that name.
+
+-------------------------------------------------------------------
+Sat Mar 19 08:06:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target levels 8
+
+-------------------------------------------------------------------
+Fri Feb 25 17:24:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.7.36
+  * Changes in 1.7.36:
+    + Correct corrupt "Export-Package" declaration in MANIFEST.MF
+      in log4j-over-slf4j module
+    + Starting with version 1.7.36, slf4j releases will be
+      reproducible. By reproducible we mean that anyone checking out
+      the code corresponding to the release version from source code
+      repository and building that local copy, will obtain an
+      identical binary to the published binary.
+  * Changes 1.7.35
+    + In this release, the "slf4j-log4j12" artifact automatically
+      instructs Maven to use the "slf4j-reload4j" artifact instead.
+      As you might have guessed, the "slf4j-reload4j" binding
+      delegates log processing to the reload4j logging framework.
+    + Fix incorrect version number in the relocation element in
+      slf4j-log4j12/pom.ml
+  * Changes in 1.7.34
+    + The relocation element in slf4j-log4j12 had incorrect version
+      number. Version 1.7.34 should not be used.
+  * Changes in 1.7.33
+    + SLF4J now ships with the slf4j-reload4j module delegating to
+      the reload4j backend.
+    + SimpleLogger now prints the thread Id if instructed to do so.
+      This fixes SLF4J-499.
+- Added patch:
+  * slf4j-reload4j-bundlename.patch
+    + fix a typo in source reload4k -> reload4j
+
+-------------------------------------------------------------------
+Thu Feb 24 07:08:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use a separate spec file for sources, since now they
+  can be built in the same run as the other artifacts
+
+-------------------------------------------------------------------
+Wed Feb 23 07:17:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * slf4j-reload4j.patch
+    + the incompatibility is now handled in reload4j itself
+
+-------------------------------------------------------------------
+Tue Feb 22 20:45:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source service
+- Depend for build on reload4j
+- Fix dependencies of the module slf4j-log4j12
+
+-------------------------------------------------------------------
+Tue Feb 22 09:50:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * slf4j-reload4j.patch
+    + fix build against reload4j
+
+-------------------------------------------------------------------
+Wed Dec 29 10:53:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to upstream version 1.7.32
+  * In the slf4j-simple module, SimpleLogger now caters for
+    concurrent access.
+- Update to upstream version 1.7.31
+  * In the jcl-over-slf4j module avoid Object to String conversion.
+  * In the log4j-over-slf4j module added empty constructors for
+    ConsoleAppender.
+
+-------------------------------------------------------------------
+Sat Apr 11 19:11:24 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Don't use %%mvn_artifact, but %%add_maven_depmap for the
+  sources artifacts, so that they don't suck in half of the xmvn*
+  stack in order to build
+
+-------------------------------------------------------------------
+Wed Feb 26 12:40:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.7.30
+- Removed patch:
+  * slf4j-Disallow-EventData-deserialization-by-default.patch
+    + not needed any more
+
+-------------------------------------------------------------------
+Wed Dec 18 09:09:30 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Use the source tarball from github, since the previous one is
+  not accessible anymore
+- Modified patches:
+  * slf4j-Disallow-EventData-deserialization-by-default.patch
+    + Adapt to unix line-ends
+  * slf4j-commons-lang3.patch
+    + Adapt to unix line-ends
+    + Do not patch inexisting files
+
+-------------------------------------------------------------------
+Sat Oct  5 12:59:06 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove references to parent from all pom files
+- Avoid dependencies without version tag
+
+-------------------------------------------------------------------
+Tue Oct  1 09:01:32 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the compatibility log4j12-mini package
+- Depend on mvn(log4j:log4j:1.2.17) provided by the compatibility
+  packages
+
+-------------------------------------------------------------------
+Tue Mar 19 05:31:47 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Fix an unexpanded ${parsedVersion.osgiVersion} variable in the
+  manifests.
+
+-------------------------------------------------------------------
+Mon Mar 18 09:34:22 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Split slf4j package into several sub-packages leaving only
+  parent, api, simple and nop in the main package
+- Package slf4j source jar files in a separate spec file
+
+-------------------------------------------------------------------
+Tue Feb 26 09:24:00 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the maven pom installation
+
+-------------------------------------------------------------------
+Mon Oct 22 10:44:00 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.7.25
+- Modify the build.xml file tarball to correspond to the right
+  version
+- Modify slf4j-commons-lang3.patch to the new context
+
+-------------------------------------------------------------------
+Mon Oct 15 14:52:23 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Install the maven artefacts to have mvn dependencies/provides
+  generated automatically
+
+-------------------------------------------------------------------
+Fri May 18 09:17:44 UTC 2018 - pmonrealgonzalez@suse.com
+
+- Security fix:  [bsc#1085970, CVE-2018-8088]
+  * Disallow EventData deserialization by default
+  * Added slf4j-Disallow-EventData-deserialization-by-default.patch
+    refreshed from Fedora [ https://src.fedoraproject.org/rpms/slf4j/
+    blob/d7cd96bc7a8e8d8d62c8bc62baa7df02cef56c63/f/
+    0001-Disallow-EventData-deserialization-by-default.patch ]
+
+-------------------------------------------------------------------
+Wed Oct 11 09:08:10 UTC 2017 - fstrba@suse.com
+
+- Adeed patch:
+  * slf4j-commons-lang3.patch
+    + Use apache-commons-lang3 instead of apache-commons-lang
+
+-------------------------------------------------------------------
+Sun Sep 10 13:38:22 UTC 2017 - fstrba@suse.com
+
+- Specify java source and target levels 1.6 in order to allow
+  building with jdk9
+- Disable doclint to avoid bailing out on formatting errors
+- Recompress the build.xml.tar.bz2, so that it is a real tar.bz2 
+
+-------------------------------------------------------------------
+Fri May 19 16:49:25 UTC 2017 - tchvatal@suse.com
+
+- Remove some not-needed deps
+
+-------------------------------------------------------------------
+Tue Nov 10 09:07:58 UTC 2015 - dmacvicar@suse.de
+
+- note:
+  slf4j-pom_xml.patch was removed (not relevant anymore)
+
+-------------------------------------------------------------------
+Fri Oct 23 10:14:51 UTC 2015 - dmacvicar@suse.de
+
+- remove all unnecessary maven depmap metadata
+
+-------------------------------------------------------------------
+Fri Oct 23 08:56:21 UTC 2015 - dmacvicar@suse.de
+
+- update to version 1.7.12
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:20 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Fri Aug 29 12:50:01 UTC 2014 - coolo@suse.com
+
+- build against log4j-mini to avoid a cycle
+
+-------------------------------------------------------------------
+Thu Sep 19 14:22:54 UTC 2013 - mvyskocil@suse.com
+
+- self-provide osgi(slf4j.api) symbol 
+
+-------------------------------------------------------------------
+Fri Sep 13 10:51:12 UTC 2013 - mvyskocil@suse.com
+
+- fix build with apache-commons-lang 
+
+-------------------------------------------------------------------
+Wed Sep 11 07:49:42 UTC 2013 - mvyskocil@suse.com
+
+- use add_maven_depmap from javapackages-tools
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:22 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Fri Apr 27 09:59:40 UTC 2012 - mvyskocil@suse.cz
+
+- format spec file to be suitable for Factory 
+
+-------------------------------------------------------------------
+Mon Dec 12 19:31:15 UTC 2011 - dmacvicar@suse.de
+
+- Fix absolute path in maven-build.xml that prevented
+  package task in newer versions of openSUSE
+- Fix javadoc group
+
+-------------------------------------------------------------------
+Wed Jul 27 09:08:44 UTC 2011 - dmacvicar@suse.de
+
+- Completely remove all maven build parts. Build with ant
+
+-------------------------------------------------------------------
+Mon Jul  4 21:18:38 UTC 2011 - dmacvicar@suse.de
+
+- add BuildRoot tag
+

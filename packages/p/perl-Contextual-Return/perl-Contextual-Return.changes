@@ -1,0 +1,167 @@
+-------------------------------------------------------------------
+Wed Apr 19 05:16:47 UTC 2017 - coolo@suse.com
+
+- updated to 0.004014
+   see /usr/share/doc/packages/perl-Contextual-Return/Changes
+
+-------------------------------------------------------------------
+Thu Apr 13 05:16:25 UTC 2017 - coolo@suse.com
+
+- updated to 0.004012
+   see /usr/share/doc/packages/perl-Contextual-Return/Changes
+
+  
+  
+  
+  0.004012  Thu Apr 13 01:06:09 2017
+  
+      - Optimized previous patch for memory leak
+        (thanks, Jay and Father C.)
+  
+      - Added missing test plan to t/fail.t
+
+-------------------------------------------------------------------
+Sun Apr  9 05:17:17 UTC 2017 - coolo@suse.com
+
+- updated to 0.004011
+   see /usr/share/doc/packages/perl-Contextual-Return/Changes
+
+  
+  
+  0.004011  Sat Apr  8 15:23:14 2017
+  
+      - Patched memory leak from use of @DB::args
+        (thanks, Jay!)
+
+-------------------------------------------------------------------
+Fri Dec  2 06:07:39 UTC 2016 - coolo@suse.com
+
+- updated to 0.004010
+   see /usr/share/doc/packages/perl-Contextual-Return/Changes
+
+  
+  
+  0.004010  Thu Dec  1 17:41:14 2016
+  
+      - Spelling fix in POD (thanks, Salvatore)
+  
+      - Improved DUMP behaviour when passed a non-CRV argument
+        (thanks, Mathew)
+
+-------------------------------------------------------------------
+Wed Nov 23 14:54:15 UTC 2016 - coolo@suse.com
+
+- remove Build.PL, it's obsolete
+
+-------------------------------------------------------------------
+Fri Nov 18 06:12:51 UTC 2016 - coolo@suse.com
+
+- updated to 0.004009
+   see /usr/share/doc/packages/perl-Contextual-Return/Changes
+
+  
+  
+  0.004009  Fri Nov 18 08:34:19 2016
+  
+      - Improved behaviour of FREEZE (Thanks, Mathew!)
+  
+      - Improved output of DUMP
+
+-------------------------------------------------------------------
+Mon Sep 14 08:25:00 UTC 2015 - coolo@suse.com
+
+- updated to 0.004008
+   see /usr/share/doc/packages/perl-Contextual-Return/Changes
+
+  
+  
+  0.004008  Sat Sep 12 13:16:30 2015
+  
+      - Promoted $VERSION variable to earlier in source to
+        attempt to placate cpanminus (thanks, Karen!)
+  
+      - Added prototype to overridden caller()
+  
+      - Changed way caller() is overridden, hopefully will no longer
+        clash with Sub::Uplevel
+
+-------------------------------------------------------------------
+Mon Dec 17 14:06:41 UTC 2012 - dvaleev@suse.com
+
+- update to 0.004007
+  - Further patch to failures.t
+  - Added redefinition of Scalar::Util::blessed() to avoid nasty
+    surprises (thanks Andrew!)
+  - Added confess() and cluck() overrides
+    and fixed caller() override to set @DB::args when appropriate
+  - Further patch for t/confess.t
+    (Thanks, David!)
+  - Circumvented annoying undef-as-key warnings in Perl 5.17+
+  - Honour @CARP_NOT's when reporting context
+  - Added BLESSED handler for better control over how blessed() lies
+  - Upgraded reimplementation of blessed() to make more sense
+
+- reanable tests for ARM (fixed upstream)
+- fix ppc test failures
+- provide Build.PL to be able to use create_packlist=0
+
+-------------------------------------------------------------------
+Wed Aug  8 09:34:03 UTC 2012 - dmueller@suse.com
+
+- also fails on native, fix build on ARM
+
+-------------------------------------------------------------------
+Thu Jul 26 11:37:42 UTC 2012 - dmueller@suse.com
+
+- workaround build failure under qemu user emulation
+
+-------------------------------------------------------------------
+Wed May 30 11:27:02 UTC 2012 - coolo@suse.com
+
+- updated to 0.004003
+   - Doc patch (thanks Fabrizio)
+
+   - Patched failures.t to account from bleadperl changes
+     (thanks Zefram!)
+
+-------------------------------------------------------------------
+Tue Mar  6 07:24:52 UTC 2012 - coolo@suse.com
+
+- updated to 0.004002
+  Fixed significant typo (Carp:carp -> Carp::carp)
+     (thanks everyone who reported it)
+
+-------------------------------------------------------------------
+Mon Feb 27 08:47:34 UTC 2012 - coolo@suse.com
+
+- updated to 0.004001
+
+    - Updated version number of Contextual::Return::Failure
+      to placate CPAN indexer
+
+    - Improved error messages for bare handlers in bad contexts (thanks Mathew)
+
+    - Work around problems with Test::More and caller
+
+    - Fixed context propagation bugs in FIXED and ACTIVE modifiers
+
+    - Added STRICT modifier to prevent fallbacks
+      (i.e. impose strict typing on return values)
+
+    - Fixed annoying POD nit (thanks Salvatore)
+
+-------------------------------------------------------------------
+Tue Jul 19 19:32:12 UTC 2011 - coolo@novell.com
+
+- regenerate with cpanspec
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:30 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Fri Nov 19 20:09:33 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.003001)
+

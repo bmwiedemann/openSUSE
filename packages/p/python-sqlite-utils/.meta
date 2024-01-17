@@ -1,0 +1,5 @@
+<package name="python-sqlite-utils" project="openSUSE:Factory">
+  <title>python-sqlite-utils</title>
+  <description>Python CLI tool and library for manipulating SQLite databases</description>
+  <devel project="devel:languages:python" package="python-sqlite-utils"/>
+</package>

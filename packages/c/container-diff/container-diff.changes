@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Thu Jul 22 14:34:45 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 0.17.0:
+  * Resolve symlink issue. #355
+  * Remove global variable #349
+  * Code improvement in function readErrorsFromChannel() #347
+- Drop _service, plain URL is sufficient
+- Drop docker recommendation, not really useful
+- Drop %go_nostip, unnecessary
+
+-------------------------------------------------------------------
+Mon Jan 11 09:47:20 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 0.16.0
+  Highlights:
+  * container-diff now supports packages installed with Emerge!
+  New Features:
+  * feat: support emerge packages analyzer #337
+  * Add two options to handle self-signed certificates
+    registries #327
+  Fixes:
+  * version: Move vX.Y.Z to version.go so it works with go get, add
+    git info #304
+  * Fix RPM differ to to include release of version #315
+  * --help: List available analyzers, improve Usage line #303
+  * Fix concurrent map write for hardlink #324
+  * Remove unnecessary flag parsing #330
+  Updates:
+  * Upgrade to go 1.14 and go.mod #329
+  * Update codeowners #341
+  Docs Updates:
+  * README: mention archlinux-specificcinstructions #307
+  * Document official support level from Google #342
+
+-------------------------------------------------------------------
+Fri Aug 23 17:53:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary field.
+
+-------------------------------------------------------------------
+Tue Aug 20 11:25:02 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Update container-diff to v0.15.0
+  * Fix result switch while viewing with type history
+  * Use PKG-INFO and METADATA to infer package names in pip analysis
+  * Use top_level.txt when analyzing pip modules
+  * Strip colons from file path before creating cache dir
+  * Enhancement - save to file
+  * Fixed concurrent map write in image diffing
+  * Split lines prior to diffing
+  * Move all image processing logic into utils, and expose publicly
+
+-------------------------------------------------------------------
+Wed Oct 31 08:14:13 UTC 2018 - David Cassany <dcassany@suse.com>
+
+- Update container-diff to v0.13.1
+  * Fix docker library dependency overrides #269
+  * Update go-containerregistry to pick up docker API client negotiation #267
+  * Fix unintended variable shadowing #263
+  * Change the default analysis type from apt to size #266
+
+-------------------------------------------------------------------
+Wed Oct 10 09:34:27 UTC 2018 - David Cassany <dcassany@suse.com>
+
+- Update container-diff to v0.12.0
+  * Add script to list all pull requests for each release #258
+  * Fix deps #260
+  * Backfill changelog #257
+  * Add maintainers file and new issue template #259
+  * Add size analyzer #256
+  * Fix destination path for clone in contrib guidance. #255
+  * Add rpmlayer differ #252
+  * Handle error gracefully when we can't retrieve an image #251
+  * Layered analysis for single version packages #248
+  * Reuse cached filesystems for layers #247
+
+-------------------------------------------------------------------
+Thu Jun 28 08:22:29 UTC 2018 - dcassany@suse.com
+
+- Update container-diff to v0.11.0
+  * Don't overwrite loaded tarball image
+  * Use local RPM binary (when possible) in RPM differ
+  * Switch to github.com/google/go-containerregistry
+  * Fix entrypoint in RPM differ
+  * Various metadata diffing fixes
+  * Remove Bazel
+  * Switch docker Requires to Recommends
+  * Update github project name in spec, now called GoogleContainerTools
+
+-------------------------------------------------------------------
+Fri Jun  8 07:16:06 UTC 2018 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Install license
+- Remove redundant comments
+- Drop not needed requirement for fdupes
+
+-------------------------------------------------------------------
+Wed Apr 11 07:34:21 UTC 2018 - vrothberg@suse.com
+
+- Build container-diff as PIC (via `-buildmode=pie`).
+
+- Exclude ppc64le from tests.
+
+-------------------------------------------------------------------
+Wed Apr 11 07:01:52 UTC 2018 - vrothberg@suse.com
+
+- Update container-diff to v0.9.0:
+  * Add metadata diffing
+  * Sanitize filepaths before joining to prevent filepath traversal
+  * Fix appending of latest tag to tar files
+  * Correctly clean up image filesystems
+  * Set/unset write bit when unpacking directories out of permission scope
+  * Add all docker config fields to image config
+  * Sort maps before diffing to prevent flaky results
+  * Correctly handle case where no image source is parsed
+  * Cleanup image source directory
+
+-------------------------------------------------------------------
+Tue Mar 20 06:41:27 UTC 2018 - vrothberg@suse.com
+
+- Update container-diff to v0.8.0:
+  * Fixed issue where remote:// prefix was not being stripped correctly
+  * Allow updating env vars on MutableSource image
+  * Save temp layers in cache directory instead of /tmp
+  * Allow accessing and modifying MutableSource config
+  * Fixed appending latest tag to images with no tag provided
+  * Created default ImageSource if none is provided to prepper
+
+-------------------------------------------------------------------
+Thu Feb 22 20:36:14 UTC 2018 - vrothberg@suse.com
+
+- Cleanup spec file with spec-cleaner.
+
+- Use golang-package macro to strip binaries.
+
+- Update container-diff to v0.7.0:
+  * Download remote:// images in RPMAnalyzer
+  * Add support for custom formatting strings
+  * Refactors to the cache and image unpacking code
+  * Add Label to ConfigObject
+  * Add MutableSource for basic image modifications
+
+-------------------------------------------------------------------
+Tue Jan 30 15:30:44 UTC 2018 - vrothberg@suse.com
+
+- Add container-diff v0.6.2: container-diff is a tool to analyze and diff
+  container images.

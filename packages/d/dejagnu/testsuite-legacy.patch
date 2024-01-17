@@ -1,0 +1,50 @@
+From: Jacob Bachmeyer <jcb62281@gmail.com>
+Subject: bug#49250: dejagnu 1.6.3 breaks automake 1.16.3 testsuite
+Date: Tue, 29 Jun 2021 23:49:09 -0500
+
+The Automake tests are using a legacy layout that does not meet a 
+long-documented requirement.
+
+The DejaGnu manual has for years (including all available revision 
+history) stated that a DejaGnu testsuite is required to be in a 
+directory tree named "testsuite" at its root.  Previous versions of 
+DejaGnu did not actually care, but this led to an ambiguity that made 
+integrating DejaGnu with non-recursive Automake build systems very 
+difficult.  This caused significant difficulties with DejaGnu's own 
+testsuite, and fixing it was needed to actually run the DejaGnu 
+testsuite properly.
+
+The simple fix is to move the DejaGnu testsuites in the Automake test 
+cases into "testsuite" directories, but this causes the tests to fail 
+with older versions of DejaGnu.  This broken legacy case is deprecated 
+in 1.6.3 but still supposed to be supported, even though the manual has 
+always said that DejaGnu testsuites are required to be in testsuite/ 
+directories.
+
+The code that detects this legacy case was written to match conditions 
+observed with DejaGnu's own testsuite, with an older version of Automake 
+in use at that time.  As a result, that code branch fails to catch the 
+situations in the Automake 1.16.3 testsuite and DejaGnu falls back to a 
+"deep legacy" mode in which some features do not work.  One of the 
+features that does not work in this mode is limiting testing to a single 
+tool at a time; this appears to cause most of the failures.
+
+
+An experimental patch is attached.
+
+
+
+-- Jacob
+
+diff -urN -x '*~' dejagnu-1.6.3/runtest.exp dejagnu-1.6.3-patch/runtest.exp
+--- dejagnu-1.6.3/runtest.exp	2021-06-16 21:15:25.000000000 -0500
++++ dejagnu-1.6.3-patch/runtest.exp	2021-06-29 21:41:28.735667904 -0500
+@@ -741,7 +741,7 @@
+     set testsuitedir $base_dir
+     set testbuilddir $base_dir
+ } else {
+-    if { $testsuitedir eq "testsuite" && $srcdir eq "." && $objdir eq "." } {
++    if { $testsuitedir eq "testsuite" && $testbuilddir eq "testsuite" } {
+ 	# Broken legacy case -- testsuite not actually in testsuite/
+ 	# Produce a warning, but continue.
+ 	send_error "WARNING: testsuite is not in a testsuite/ directory.\n"

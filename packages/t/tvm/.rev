@@ -1,0 +1,200 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78a6dc38dd69832a140aad3018750f5f</srcmd5>
+    <version>0.6.1</version>
+    <time>1599210686</time>
+    <user>dimstar_suse</user>
+    <comment>v0.6.1</comment>
+    <requestid>831646</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d8a5454e911290a31ecff96438e87171</srcmd5>
+    <version>0.6.1</version>
+    <time>1599667267</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo
+
+- Exclude %arm %{ix86} as tests fail
+
+- Skip tests requiring opencl
+- Skip test requiring a specific arch
+
+- Split cmake folder to not override it with python builds
+- Fix detection of this folder in the python modules:
+  * lib-finder-python-cmake.patch
+
+- Add provides/obsoletes on TVM
+
+- Build fails on Tumbleweed with llvm10, so use llvm9 - boo#1176220
+
+- Format with spec-cleaner
+- Expand properly the fdupes call
+- Fix headers install
+- Fix python pkg names
+- Fix python requires
+
+- Package nnvm and topi python packages</comment>
+    <requestid>833203</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>58fa5086e49fbbf9cdaf06704fa070a7</srcmd5>
+    <version>0.6.1</version>
+    <time>1601653410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839146</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>76b80f94efd597b730de603160ed319d</srcmd5>
+    <version>0.6.1</version>
+    <time>1603462155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839532</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2ea5d2b98bd9fda08033231f96dfe92</srcmd5>
+    <version>0.7.0</version>
+    <time>1611770256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866848</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>89e6eccbb36c30c28f05f229dadb0b34</srcmd5>
+    <version>0.7.0</version>
+    <time>1612378603</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>868988</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d89f4e150b10a285acaf79577ad2a750</srcmd5>
+    <version>0.7.0</version>
+    <time>1613511597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872731</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>9e4a465fa17b9e5a081f2e0848fb99aa</srcmd5>
+    <version>0.7.0</version>
+    <time>1619822813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889541</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>da15bd9505028342e1c93c94b92decf3</srcmd5>
+    <version>0.7.0</version>
+    <time>1634677439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926279</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>c1b8c1db16a3318132a9e61bfe5dbc95</srcmd5>
+    <version>0.7.0</version>
+    <time>1636498494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930277</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>311e61b89c0e77c7dcc559ebcdd55ae6</srcmd5>
+    <version>0.8.0</version>
+    <time>1646073813</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957977</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>872d7cecafee19f72217c983f6dfd447</srcmd5>
+    <version>0.8.0</version>
+    <time>1646158027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958313</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6933a281fe26a18e1977a1a4d77a1ea3</srcmd5>
+    <version>0.8.0</version>
+    <time>1646241752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958455</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>0a9fb891ae86356a145725b949729fc4</srcmd5>
+    <version>0.8.0</version>
+    <time>1646767913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960140</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>a1c358e3f88fa1d486920fada752e298</srcmd5>
+    <version>0.8.0</version>
+    <time>1649274714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967221</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>78355a0ee9da32802d7f0b076192c61f</srcmd5>
+    <version>0.8.0</version>
+    <time>1656587899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985846</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>01f31aa170b8f2f175eb7bca71eaede8</srcmd5>
+    <version>0.8.0</version>
+    <time>1665754976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010771</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>469718365cbb7d2809f7b1a4d2ccfbff</srcmd5>
+    <version>0.8.0</version>
+    <time>1669129842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037258</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>135b0a31bb018b84b7c4cd3a18badd00</srcmd5>
+    <version>0.11.0</version>
+    <time>1678380402</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070356</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>85c84b6ac9e8efc765826140e856a463</srcmd5>
+    <version>0.11.0</version>
+    <time>1678814188</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase disk size requirements
+- Enable all python versions again (remaining issues are corner cases)
+- tvmc shebang should be default python, not highest available version
+</comment>
+    <requestid>1071184</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>262861f0404987ddc356af2e7627bf10</srcmd5>
+    <version>0.13.0</version>
+    <time>1696964487</time>
+    <user>anag+factory</user>
+    <comment>- Do not package %{$python_sitearch}/tvm/{src,include,3rdparty}
+- Update to 0.13.0: 
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.12.0
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.13.0
+- Removed tvm-do-not-force-synr-version.patch
+- Added: CYTHON-Make-cython-compatible-with-3.0-15469.patch
+</comment>
+    <requestid>1116685</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="raspberrypi-rpiboot" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="raspberrypi-rpiboot"/>
+</package>

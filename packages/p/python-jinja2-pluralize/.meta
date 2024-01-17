@@ -1,0 +1,5 @@
+<package name="python-jinja2-pluralize" project="openSUSE:Factory">
+  <title>python-jinja2-pluralize</title>
+  <description>Jinja2 pluralize filters</description>
+  <devel project="devel:languages:python" package="python-jinja2-pluralize"/>
+</package>

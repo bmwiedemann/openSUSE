@@ -1,0 +1,92 @@
+--- svnClientAdapter-1.6.0/build.properties	2007-08-27 16:37:03.000000000 +0200
++++ svnClientAdapter-1.6.0/build.properties	2017-09-19 17:25:52.781134873 +0200
+@@ -34,10 +34,10 @@
+ # -----------------------------------------------------------------------------
+ # all jar needed
+ # -----------------------------------------------------------------------------
+-lib.dir=lib
+-svnjavahl.jar=${lib.dir}/svnjavahl.jar
+-svnkit.jar=${lib.dir}/svnkit.jar
+-ganymed.jar=${lib.dir}/ganymed.jar
++lib.dir=/usr/share/java
++svnjavahl.jar=${lib.dir}/svn-javahl.jar
++#svnkit.jar=${lib.dir}/svnkit.jar
++#ganymed.jar=${lib.dir}/ganymed.jar
+ 
+ # -----------------------------------------------------------------------------
+ # JavaHL win32 lib dir
+--- svnClientAdapter-1.6.0/build.xml	2007-08-27 16:37:03.000000000 +0200
++++ svnClientAdapter-1.6.0/build.xml	2017-09-19 17:28:39.177137713 +0200
+@@ -32,15 +32,18 @@
+     <depend srcDir="${src.javahl.dir}"
+             destDir="${build.classes.dir}"
+             cache="${build.cache.dir}"/>
++<!--
+     <depend srcDir="${src.svnkit.dir}"
+             destDir="${build.classes.dir}"
+             cache="${build.cache.dir}"/>
+     <depend srcDir="${src.cmdline.dir}"
+             destDir="${build.classes.dir}"
+             cache="${build.cache.dir}"/>
++-->
+     <javac srcdir="${src.main.dir}"
+            destdir="${build.classes.dir}"
+            debug="${debug}"
++           encoding="ISO-8859-1"
+ 		   source="${targetJvm}"    	
+ 		   target="${targetJvm}"    	
+            includes="**"
+@@ -49,27 +52,34 @@
+     <javac srcdir="${src.javahl.dir}"
+            destdir="${build.classes.dir}"
+            debug="${debug}"
++           encoding="ISO-8859-1"
+ 		   source="${targetJvm}"    	
+ 		   target="${targetJvm}"    	
+            includes="**"
+ 		   classpathref="project.classpath">
+     </javac>
++<!--
+     <javac srcdir="${src.svnkit.dir}"
+            destdir="${build.classes.dir}"
+            debug="${debug}"
++           encoding="ISO-8859-1"
+ 		   source="${targetJvm}"    	
+ 		   target="${targetJvm}"    	
+            includes="**"
+ 		   classpathref="project.classpath">
+     </javac>
++-->
++<!--
+     <javac srcdir="${src.cmdline.dir}"
+            destdir="${build.classes.dir}"
+            debug="${debug}"
++           encoding="ISO-8859-1"
+ 		   source="${targetJvm}"    	
+ 		   target="${targetJvm}"    	
+            includes="**"
+ 		   classpathref="project.classpath">
+     </javac>
++-->
+     <copy todir="${build.classes.dir}">
+       <fileset dir="${src.main.dir}">
+         <exclude name="**/*.java"/>
+@@ -85,6 +95,8 @@
+     <javadoc sourcepath="${src.main.dir}"
+ 	              classpathref="project.classpath"
+                   destdir="${build.javadoc.dir}"
++                  source="${targetJvm}"    	
++                  encoding="ISO-8859-1"
+ 				  packagenames="org.*"
+                   windowtitle="svnClientAdapter API"
+                   doctitle="svnClientAdapter">
+@@ -214,6 +226,9 @@
+     <javac srcdir="${src.tests.dir}"
+            destdir="${build.testClasses.dir}"
+            debug="${debug}"
++           encoding="ISO-8859-1"
++		   source="${targetJvm}"    	
++		   target="${targetJvm}"    	
+            includes="**">
+ 		<classpath>
+ 			<pathelement location="${build.classes.dir}"/>

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+            <param name="url">git://github.com/chazomaticus/asteroid.git</param>
+          <param name="changesrevision">64869dfe745800f34f1c68248ba2e350dc95a592</param></service></servicedata>

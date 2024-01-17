@@ -1,0 +1,5 @@
+<package name="changelog-generator-data" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:containers:images" package="changelog-generator-data"/>
+</package>

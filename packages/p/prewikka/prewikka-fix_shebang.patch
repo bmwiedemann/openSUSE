@@ -1,0 +1,14 @@
+--- ./prewikka/compat/jquery_unparam.py	2019-09-16 00:13:48.000000000 +0200
++++ ./prewikka/compat/jquery_unparam.py	2019-10-27 00:21:24.497389236 +0200
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ 
+ import functools
+--- ./prewikka/compat/gevent.py	2019-09-16 00:13:40.000000000 +0200
++++ ./prewikka/compat/gevent.py	2019-10-27 00:21:04.161389236 +0200
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ 
+ # Re-add sslwrap to Python 2.7.5

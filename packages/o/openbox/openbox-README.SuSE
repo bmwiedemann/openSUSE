@@ -1,0 +1,9 @@
+SuSE Linux 9.0 was the last release to have the old blackbox codebase based
+openbox. Since openbox 3.0 it has been reimplemented from scratch as a
+completely new windowmanager. This means that none of the old configurations
+for openbox-2.x will work, new ones have to be made.
+
+The 'obconf' (openbox configuration) program will aid in this.
+
+Have a lot of fun,
+	Your SuSE team

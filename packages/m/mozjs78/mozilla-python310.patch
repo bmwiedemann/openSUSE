@@ -1,0 +1,172 @@
+diff --git a/python/mach/mach/config.py b/python/mach/mach/config.py
+index 7210eca823..5f54ae52af 100644
+--- a/python/mach/mach/config.py
++++ b/python/mach/mach/config.py
+@@ -16,7 +16,7 @@ settings are available.
+ 
+ from __future__ import absolute_import, unicode_literals
+ 
+-import collections
++import collections.abc
+ import os
+ import sys
+ import six
+@@ -144,7 +144,7 @@ def reraise_attribute_error(func):
+     return _
+ 
+ 
+-class ConfigSettings(collections.Mapping):
++class ConfigSettings(collections.abc.Mapping):
+     """Interface for configuration settings.
+ 
+     This is the main interface to the configuration.
+@@ -190,7 +190,7 @@ class ConfigSettings(collections.Mapping):
+     will result in exceptions being raised.
+     """
+ 
+-    class ConfigSection(collections.MutableMapping, object):
++    class ConfigSection(collections.abc.MutableMapping, object):
+         """Represents an individual config section."""
+         def __init__(self, config, name, settings):
+             object.__setattr__(self, '_config', config)
+diff --git a/python/mach/mach/decorators.py b/python/mach/mach/decorators.py
+index 27f7f34a6d..c4ca8a180e 100644
+--- a/python/mach/mach/decorators.py
++++ b/python/mach/mach/decorators.py
+@@ -5,7 +5,7 @@
+ from __future__ import absolute_import, unicode_literals
+ 
+ import argparse
+-import collections
++import collections.abc
+ 
+ from .base import MachError
+ from .registrar import Registrar
+@@ -140,7 +140,7 @@ def CommandProvider(cls):
+               'Conditions argument must take a list ' + \
+               'of functions. Found %s instead.'
+ 
+-        if not isinstance(command.conditions, collections.Iterable):
++        if not isinstance(command.conditions, collections.abc.Iterable):
+             msg = msg % (command.name, type(command.conditions))
+             raise MachError(msg)
+ 
+diff --git a/python/mach/mach/main.py b/python/mach/mach/main.py
+index a7311806d0..0f2c6a16d9 100644
+--- a/python/mach/mach/main.py
++++ b/python/mach/mach/main.py
+@@ -16,7 +16,7 @@ import os
+ import sys
+ import traceback
+ import uuid
+-from collections import Iterable
++from collections.abc import Iterable
+ 
+ from six import string_types
+ 
+diff --git a/python/mozbuild/mozbuild/backend/configenvironment.py b/python/mozbuild/mozbuild/backend/configenvironment.py
+index 20d1a9fa69..898cabb73b 100644
+--- a/python/mozbuild/mozbuild/backend/configenvironment.py
++++ b/python/mozbuild/mozbuild/backend/configenvironment.py
+@@ -9,7 +9,8 @@ import six
+ import sys
+ import json
+ 
+-from collections import Iterable, OrderedDict
++from collections.abc import Iterable
++from collections import OrderedDict
+ from types import ModuleType
+ 
+ import mozpack.path as mozpath
+diff --git a/python/mozbuild/mozbuild/makeutil.py b/python/mozbuild/mozbuild/makeutil.py
+index 4da1a3b268..4ce56848cd 100644
+--- a/python/mozbuild/mozbuild/makeutil.py
++++ b/python/mozbuild/mozbuild/makeutil.py
+@@ -7,7 +7,7 @@ from __future__ import absolute_import, print_function, unicode_literals
+ import os
+ import re
+ import six
+-from collections import Iterable
++from collections.abc import Iterable
+ 
+ 
+ class Makefile(object):
+diff --git a/python/mozbuild/mozbuild/util.py b/python/mozbuild/mozbuild/util.py
+index 044cf645c1..62916bcb8d 100644
+--- a/python/mozbuild/mozbuild/util.py
++++ b/python/mozbuild/mozbuild/util.py
+@@ -8,7 +8,7 @@
+ from __future__ import absolute_import, print_function, unicode_literals
+ 
+ import argparse
+-import collections
++import collections.abc
+ import ctypes
+ import difflib
+ import errno
+@@ -782,7 +782,7 @@ class HierarchicalStringList(object):
+         self._strings = StrictOrderingOnAppendList()
+         self._children = {}
+ 
+-    class StringListAdaptor(collections.Sequence):
++    class StringListAdaptor(collections.abc.Sequence):
+         def __init__(self, hsl):
+             self._hsl = hsl
+ 
+diff --git a/taskcluster/taskgraph/util/schema.py b/taskcluster/taskgraph/util/schema.py
+index 0b15d3d5fd..29e36793f3 100644
+--- a/taskcluster/taskgraph/util/schema.py
++++ b/taskcluster/taskgraph/util/schema.py
+@@ -7,6 +7,7 @@ from __future__ import absolute_import, print_function, unicode_literals
+ import re
+ import pprint
+ import collections
++import collections.abc
+ import voluptuous
+ 
+ from six import text_type, iteritems
+@@ -160,7 +161,7 @@ def check_schema(schema):
+                     'Unexpected type in YAML schema: {} @ {}'.format(
+                         type(k).__name__, path))
+ 
+-        if isinstance(sch, collections.Mapping):
++        if isinstance(sch, collections.abc.Mapping):
+             for k, v in iteritems(sch):
+                 child = "{}[{!r}]".format(path, k)
+                 check_identifier(child, k)
+diff --git a/testing/mozbase/manifestparser/manifestparser/filters.py b/testing/mozbase/manifestparser/manifestparser/filters.py
+index 287ee033b2..b1d6080031 100644
+--- a/testing/mozbase/manifestparser/manifestparser/filters.py
++++ b/testing/mozbase/manifestparser/manifestparser/filters.py
+@@ -12,7 +12,8 @@ from __future__ import absolute_import
+ 
+ import itertools
+ import os
+-from collections import defaultdict, MutableSequence
++from collections import defaultdict
++from collections.abc import MutableSequence
+ 
+ import six
+ from six import string_types
+diff --git a/third_party/python/gyp/pylib/gyp/common.py b/third_party/python/gyp/pylib/gyp/common.py
+index b268d229a4..c80d985a66 100644
+--- a/third_party/python/gyp/pylib/gyp/common.py
++++ b/third_party/python/gyp/pylib/gyp/common.py
+@@ -4,7 +4,7 @@
+ 
+ from __future__ import with_statement
+ 
+-import collections
++import collections.abc
+ import errno
+ import filecmp
+ import os.path
+@@ -494,7 +494,7 @@ def uniquer(seq, idfun=None):
+ 
+ 
+ # Based on http://code.activestate.com/recipes/576694/.
+-class OrderedSet(collections.MutableSet):
++class OrderedSet(collections.abc.MutableSet):
+   def __init__(self, iterable=None):
+     self.end = end = []
+     end += [None, end, end]         # sentinel node for doubly linked list

@@ -1,0 +1,6 @@
+<package name="dummy-release" project="openSUSE:Factory">
+  <title>SuSE release version files</title>
+  <description>This package contains the files: /etc/SuSE-release, /etc/issue,
+/etc/issue.net, and /etc/products.d/openSUSE.prod</description>
+  <devel project="Base:System" package="dummy-release"/>
+</package>

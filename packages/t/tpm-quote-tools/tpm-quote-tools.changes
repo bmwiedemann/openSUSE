@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Nov  2 13:02:24 UTC 2017 - matthias.gerstner@suse.com
+
+- update to upstream version 1.0.4:
+	- this version fixes an issue with 'mkaik' when an SRK secret was
+	  required. 'mkaik' always used the well-known secret as SRK.
+
+-------------------------------------------------------------------
+Mon Jun 19 15:39:52 UTC 2017 - matthias.gerstner@suse.com
+
+- fix license specification, it's BSD-3-Clause, not BSD
+
+-------------------------------------------------------------------
+Thu May 18 13:38:18 UTC 2017 - matthias.gerstner@suse.com
+
+- initial package, version 1.0.3

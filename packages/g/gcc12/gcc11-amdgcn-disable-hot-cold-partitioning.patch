@@ -1,0 +1,22 @@
+diff --git a/gcc/config/gcn/gcn.cc b/gcc/config/gcn/gcn.cc
+index 6d02a4a02..d77f66182 100644
+--- a/gcc/config/gcn/gcn.cc
++++ b/gcc/config/gcn/gcn.cc
+@@ -6413,9 +6413,17 @@ gcn_dwarf_register_span (rtx rtl)
+   return p;
+ }
+ 
++static void
++gcn_override_options_after_change (void)
++{
++  flag_reorder_blocks_and_partition = 0;
++}
++
+ /* }}}  */
+ /* {{{ TARGET hook overrides.  */
+ 
++#undef TARGET_OVERRIDE_OPTIONS_AFTER_CHANGE
++#define TARGET_OVERRIDE_OPTIONS_AFTER_CHANGE gcn_override_options_after_change
+ #undef  TARGET_ADDR_SPACE_ADDRESS_MODE
+ #define TARGET_ADDR_SPACE_ADDRESS_MODE gcn_addr_space_address_mode
+ #undef  TARGET_ADDR_SPACE_DEBUG

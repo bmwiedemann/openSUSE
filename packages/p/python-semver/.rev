@@ -1,0 +1,262 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b08821d422b8f35cc242c016c181d214</srcmd5>
+    <version>2.7.7</version>
+    <time>1497944352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>501317</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05d7a0de746c6ab03b24cd43eeaf975a</srcmd5>
+    <version>2.7.8</version>
+    <time>1507896986</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533146</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f62b5b4516f3a1512b7d2ea15ed3f583</srcmd5>
+    <version>2.7.9</version>
+    <time>1510912482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541981</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bdd65cc6f6ff47101daa85274427f115</srcmd5>
+    <version>2.8.0</version>
+    <time>1530304038</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.8.0 (excerpt):
+ * Issue #79 (PR #81 #84). Define and improve a release procedure file
+ * Issue #72 #73 (PR #75). Implements __str__ and __hash__
+</comment>
+    <requestid>617156</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a193c15a2eb4dd2228d94e8a4f9c8327</srcmd5>
+    <version>2.8.1</version>
+    <time>1531470079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622232</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>45ff84a147d1f843e6214a2124c8a1a7</srcmd5>
+    <version>2.8.1</version>
+    <time>1545648227</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659664</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>937a9b200ae2d50a32cab8f7346aadfc</srcmd5>
+    <version>2.8.1</version>
+    <time>1559837966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708128</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>032329b7c9692a1e8d63d0a65cb0bb6f</srcmd5>
+    <version>2.8.1</version>
+    <time>1570104629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734777</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9751e5e860ae280e00d2b5c1dceaf7d4</srcmd5>
+    <version>2.9.0</version>
+    <time>1575464000</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.9.0:
+ - Version 2.9.0 (WIP):
+ - Features:
+  - :gh:`59` (:pr:`164`): Implemented a command line interface
+  - :gh:`85` (:pr:`147`, :pr:`154`): Improved contribution section
+  - :gh:`104` (:pr:`125`): Added iterator to :func:`semver.VersionInfo`
+  - :gh:`112`, :gh:`113`: Added Python 3.7 support
+  - :pr:`120`: Improved test_immutable function with properties
+  - :pr:`125`: Created :file:`setup.cfg` for pytest and tox
+  - :gh:`126` (:pr:`127`): Added target for documentation in :file:`tox.ini`
+  - :gh:`142` (:pr:`143`): Improved usage section
+  - :gh:`144` (:pr:`156`): Added :func:`semver.replace` and :func:`semver.VersionInfo.replace`
+    functions
+  - :gh:`145` (:pr:`146`): Added posargs in :file:`tox.ini`
+  - :pr:`157`: Introduce :file:`conftest.py` to improve doctests
+  - :pr:`165`: Improved code coverage
+  - :pr:`166`: Reworked :file:`.gitignore` file
+  - :gh:`167` (:pr:`168`): Introduced global constant :data:`SEMVER_SPEC_VERSION`
+ - Bug Fixes:
+  - :gh:`102`: Fixed comparison between VersionInfo and tuple
+  - :gh:`103`: Disallow comparison between VersionInfo and string (and int)
+  - :gh:`121` (:pr:`122`): Use python3 instead of python3.4 in :file:`tox.ini`
+  - :pr:`123`: Improved :func:`__repr__` and derive class name from :func:`type`
+  - :gh:`128` (:pr:`129`): Fixed wrong datatypes in docstring for :func:`semver.format_version`
+  - :gh:`135` (:pr:`140`): Converted prerelease and build to string
+  - :gh:`136` (:pr:`151`): Added testsuite to tarball
+  - :gh:`154` (:pr:`155`): Improved README description
+ - Removals:
+  - :gh:`111` (:pr:`110`): Droped Python 3.3
+  - :gh:`148` (:pr:`149`): Removed and replaced ``python setup.py test``
+- update to version 2.8.2:
+ - Skipped, not released.
+</comment>
+    <requestid>753273</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cf423a57a6004e41bebaba1b740a0a63</srcmd5>
+    <version>2.9.1</version>
+    <time>1582725880</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>779224</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dc4739a9e6e14b6c9173929cf9e6012a</srcmd5>
+    <version>2.10.0</version>
+    <time>1589197055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802284</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>bb313da4872dcfa2e352c8b6df9ff866</srcmd5>
+    <version>2.10.0</version>
+    <time>1589893106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807288</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d5446051813837c9baaee250e3e3ce76</srcmd5>
+    <version>2.10.2</version>
+    <time>1595271612</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>821766</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fe117e6c1f8a7cb6fc0af38842452a3f</srcmd5>
+    <version>2.13.0</version>
+    <time>1604702713</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846445</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>aae15993343b313024cd7d4243d85dac</srcmd5>
+    <version>2.13.0</version>
+    <time>1610558650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862836</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>338cec22ee32c863b4900e2f2c33ea7b</srcmd5>
+    <version>3.0.0~dev.2+41+g4d2df08</version>
+    <time>1641855242</time>
+    <user>dimstar_suse</user>
+    <comment>- fix support for Python 3.10 with update to development version:</comment>
+    <requestid>945413</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>49edde3324ff1128f61c0b235febaea5</srcmd5>
+    <version>3.0.0~dev.3</version>
+    <time>1666011507</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1012034</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>049ef1030608d7a7911b537a1da01696</srcmd5>
+    <version>3.0.0~dev.4</version>
+    <time>1678555453</time>
+    <user>dimstar_suse</user>
+    <comment>- add setup-remove-asterisk.patch to fix build error
+- update to version 3.0.0-dev.4:
+ - Bug Fixes:
+ - :gh:`374`: Correct Towncrier's config entries in the :file:`pyproject.toml` file.
+   The old entries ``[[tool.towncrier.type]]`` are deprecated and need
+   to be replaced by ``[tool.towncrier.fragment.&lt;TYPE&gt;]``.
+ - Deprecations:
+ - :gh:`372`: Deprecate support for Python 3.6.
+   Python 3.6 reached its end of life and isn't supported anymore.
+   At the time of writing (Dec 2022), the lowest version is 3.7.
+   Although the `poll &lt;https://github.com/python-semver/python-semver/discussions/371&gt;`_
+   didn't cast many votes, the majority agree to remove support for
+   Python 3.6.
+ - Improved Documentation:
+ - :gh:`335`: Add new section &quot;Converting versions between PyPI and semver&quot; the limitations
+   and possible use cases to convert from one into the other versioning scheme.
+ - :gh:`340`: Describe how to get version from a file
+ - :gh:`343`: Describe combining Pydantic with semver in the &quot;Advanced topic&quot;
+   section.
+ - :gh:`350`: Restructure usage section. Create subdirectory &quot;usage/&quot; and splitted
+   all section into different files.
+ - :gh:`351`: Introduce new topics for:
+   * &quot;Migration to semver3&quot;
+   * &quot;Advanced topics&quot;
+ - Features:
+ - :pr:`359`: Add optional parameter ``optional_minor_and_patch`` in :meth:`.Version.parse`  to allow optional
+   minor and patch parts.
+ - :pr:`362`: Make :meth:`.Version.match` accept a bare version string as match expression, defaulting to
+   equality testing.
+ - :gh:`364`: Enhance :file:`pyproject.toml` to make it possible to use the
+   :command:`pyproject-build` command from the build module.
+   For more information, see :ref:`build-semver`.
+ - :gh:`365`: Improve :file:`pyproject.toml`.
+   * Use setuptools, add metadata. Taken approach from
+     `A Practical Guide to Setuptools and Pyproject.toml
+     &lt;https://godatadriven.com/blog/a-practical-guide-to-setuptools-and-pyproject-toml/&gt;`_.
+   * Doc: Describe building of semver
+   * Remove :file:`.travis.yml` in :file:`MANIFEST.in`
+     (not needed anymore)
+   * Distinguish between Python 3.6 and others in :file:`tox.ini`
+   * Add skip_missing_interpreters option for :file:`tox.ini`
+   * GH Action: Upgrade setuptools and setuptools-scm and test
+     against 3.11.0-rc.2
+ - Trivial/Internal Changes:
+ - :gh:`378`: Fix some typos in Towncrier configuration
+</comment>
+    <requestid>1070842</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e3791c13d18e800afcf44b2594865db0</srcmd5>
+    <version>3.0.0</version>
+    <time>1684074703</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1087008</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>36a66730f172fda5c93bb7d4331d5c0c</srcmd5>
+    <version>3.0.1</version>
+    <time>1688052527</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095875</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a03d584ce66ca6067d85638521b27361</srcmd5>
+    <version>3.0.2</version>
+    <time>1702158811</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.2:
+  * :pr:`418`: Replace :class:`~collection.OrderedDict` with
+    :class:`dict`.
+  * The dict datatype is ordered since Python 3.7. As we do not
+    support Python 3.6 anymore, it can be considered safe to avoid
+    :class:`~collection.OrderedDict`.
+  * :pr:`431`: Clarify version policy for the different semver
+    versions (v2, v3, &gt;v3) and the supported Python versions.
+  * :gh:`432`: Improve external doc links to Python and Pydantic.
+  * :pr:`417`: Amend GitHub Actions to check against MacOS.
+
+- switch to the tagged version rather than a gh branch tarball
+ * PR #62. Support custom default names for pre and build</comment>
+    <requestid>1132138</requestid>
+  </revision>
+</revisionlist>

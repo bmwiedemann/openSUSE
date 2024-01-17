@@ -1,0 +1,6 @@
+<package name="spice-protocol" project="openSUSE:Factory">
+  <title>headers defining SPICE-protocol</title>
+  <description>headers defining SPICE-protocol</description>
+  <devel project="Virtualization" package="spice-protocol"/>
+  <url>http://www.spice-space.org/</url>
+</package>

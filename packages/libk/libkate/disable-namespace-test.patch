@@ -1,0 +1,32 @@
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 4fa768a..16883c2 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -41,11 +41,6 @@ tmp_srt2:="$(top_builddir)/kate-check-2.srt"
+ KATEENC_OPTS=-s 0 -c test -l en -K 5 -R 15
+ 
+ check-local:
+-	@echo " Checking Kate namespace"
+-	@! @NM@ $(top_builddir)/lib/.libs/*.{a,so} \
+-	 | $(GREP) "^[0123456789abcdef]\{8\} [ABCDEFGHIJKLMOPQRSTUVWXYZ] [^\.]" \
+-	 | $(GREP) -v "^.\{11\}_" \
+-	 | $(GREP) -v "^.\{11\}kate_"
+ 	@echo " Checking memory allocation routines"
+ 	@! $(GREP) -EHn '[^_](malloc|realloc|free|calloc|memalign)\(' \
+            $(top_srcdir)/src/*.[ch] $(top_srcdir)/include/kate/*.h \
+diff --git a/tests/Makefile.in b/tests/Makefile.in
+index 2fe27a1..8b4efa4 100644
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -698,11 +698,6 @@ uninstall-am:
+ 
+ 
+ check-local:
+-	@echo " Checking Kate namespace"
+-	@! @NM@ $(top_builddir)/lib/.libs/*.{a,so} \
+-	 | $(GREP) "^[0123456789abcdef]\{8\} [ABCDEFGHIJKLMOPQRSTUVWXYZ] [^\.]" \
+-	 | $(GREP) -v "^.\{11\}_" \
+-	 | $(GREP) -v "^.\{11\}kate_"
+ 	@echo " Checking memory allocation routines"
+ 	@! $(GREP) -EHn '[^_](malloc|realloc|free|calloc|memalign)\(' \
+            $(top_srcdir)/src/*.[ch] $(top_srcdir)/include/kate/*.h \

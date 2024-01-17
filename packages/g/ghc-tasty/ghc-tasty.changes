@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Wed Sep 27 20:38:15 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty to version 1.5 revision 1.
+  Version 1.5
+  ---------------
+
+  _2023-09-10_
+
+  * Progress reporting is no longer ignored.
+    `PrintTest` constructor of `TestOutput` now has an extra field used to report progress.
+    Supply `const (pure ())` as this extra field value if you want to skip progress reporting
+    ([#311](https://github.com/UnkindPartition/tasty/pull/311)).
+  * `foldGroup` now takes `[b]` instead of `b` as its last argument to allow
+    for custom fold strategies. This is a backwards incompatible change,
+    but you can get the old behavior by applying `mconcat`
+    ([#364](https://github.com/UnkindPartition/tasty/issues/364)).
+  * Dependency loop error now lists all test cases that formed a cycle
+    ([#340](https://github.com/UnkindPartition/tasty/issues/340)).
+  * Dependencies can now be defined pattern-free with `sequentialTestGroup`
+    ([#343](https://github.com/UnkindPartition/tasty/issues/343)).
+  * Added `--min-duration-to-report` flag that specifies the time a test
+    must take before `tasty` outputs timing information
+    ([#341](https://github.com/UnkindPartition/tasty/issues/341)).
+  * When a test failed with an exception, print it using `displayException`
+    instead of `show`
+    ([#330](https://github.com/UnkindPartition/tasty/issues/330)).
+  * The `-p` / `--pattern` option can be specified multiple times;
+    only tests that match all patterns are run
+    ([#380](https://github.com/UnkindPartition/tasty/pull/380)).
+  * Fix color scheme to make info messages visible in terminals with white background
+    ([#369](https://github.com/UnkindPartition/tasty/pull/369)).
+  * When parsing of a command-line option failed, report received option
+    ([#368](https://github.com/UnkindPartition/tasty/pull/368)).
+  * Support WASM
+    ([#365](https://github.com/UnkindPartition/tasty/pull/365)).
+  * Tested with GHC 8.0 - 9.8.
+
+-------------------------------------------------------------------
+Wed Aug  2 17:23:04 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-unbounded-delays.patch: Don't depend on unbounded-delays for
+  riscv64
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:30 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Dec 18 21:32:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update tasty to version 1.4.3.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/tasty-1.4.3/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sat May  7 21:32:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update tasty to version 1.3.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:46:10 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:21 UTC 2020 - psimons@suse.com
+
+- Add tasty at version 1.3.1.
+

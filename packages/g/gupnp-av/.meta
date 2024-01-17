@@ -1,0 +1,6 @@
+<package name="gupnp-av" project="openSUSE:Factory">
+  <title>Library to ease the handling and implementation of UPnP A/V profiles</title>
+  <description>GUPnP A/V is a small utility library that aims to ease the handling and
+implementation of UPnP A/V profiles.</description>
+  <devel project="GNOME:Factory" package="gupnp-av"/>
+</package>

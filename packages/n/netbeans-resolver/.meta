@@ -1,0 +1,6 @@
+<package name="netbeans-resolver" project="openSUSE:Factory">
+  <title>Resolver subproject of xml-commons patched for NetBeans</title>
+  <description>Resolver subproject of xml-commons, version %{patched_resolver_ver} with 
+a patch for NetBeans.</description>
+  <devel project="Java:packages" package="netbeans-resolver"/>
+</package>

@@ -1,0 +1,10 @@
+--- src/Makefile.am
++++ src/Makefile.am
+@@ -77,6 +77,7 @@
+ endif
+ 
+ libid3_la_LDFLAGS = \
++  -lz \
+   -version-info $(LT_VERSION) \
+   -release $(LT_RELEASE) \
+   -export-dynamic

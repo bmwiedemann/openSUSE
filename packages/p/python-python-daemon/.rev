@@ -1,0 +1,290 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06835229f69f9c578e1239f36af844fe</srcmd5>
+    <version>1.6</version>
+    <time>1306920120</time>
+    <user>saschpe</user>
+    <comment>Please add python-python-daemon to openSUSE:Factory.</comment>
+    <requestid>72176</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b2b38d0ead696f93f96dfce0a244cb82</srcmd5>
+    <version>1.6</version>
+    <time>1306920135</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72176
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ba3985d82fa5996bc3a0c82fbf947b68</srcmd5>
+    <version>1.6</version>
+    <time>1317025039</time>
+    <user>saschpe</user>
+    <comment>- Changed BuildRequires python-minimock to python-MiniMock
+- Removed %clean section and some other useless stuff</comment>
+    <requestid>83942</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>ba3985d82fa5996bc3a0c82fbf947b68</srcmd5>
+    <version>1.6</version>
+    <time>1319182403</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>140957760a99d193628cf7c8751cf742</srcmd5>
+    <version>1.6</version>
+    <time>1322259170</time>
+    <user>coolo</user>
+    <comment>- Add Provides for the old python-daemon name (forwarded request 93454 from namtrac)</comment>
+    <requestid>93627</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e8da6ad428d1a948bd4bfb1b7b821014</srcmd5>
+    <version>1.5.5</version>
+    <time>1329487272</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103941</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a0a88ac0e01f4ece91fc2f1d16733cbb</srcmd5>
+    <version>1.5.5</version>
+    <time>1334927986</time>
+    <user>coolo</user>
+    <comment>- BuildRequire lowercase python-minimock 
+- to also work with the existing 11.4 package (forwarded request 114329 from bmwiedemann)</comment>
+    <requestid>114402</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>a0a88ac0e01f4ece91fc2f1d16733cbb</srcmd5>
+    <version>1.5.5</version>
+    <time>1340184084</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>57ba688633b9ec25061f0879f1ef557c</srcmd5>
+    <version>1.5.5</version>
+    <time>1353848547</time>
+    <user>coolo</user>
+    <comment>- Correctly provide/obsolete python-daemon
+- Spec file cleanup</comment>
+    <requestid>142596</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>57ba688633b9ec25061f0879f1ef557c</srcmd5>
+    <version>1.5.5</version>
+    <time>1359110103</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>57ba688633b9ec25061f0879f1ef557c</srcmd5>
+    <version>1.5.5</version>
+    <time>1379664263</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>bb57a8c3583db74c8df76b34972492f2</srcmd5>
+    <version>1.5.5</version>
+    <time>1382693401</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204638</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>bb57a8c3583db74c8df76b34972492f2</srcmd5>
+    <version>1.5.5</version>
+    <time>1409302968</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8993654a0c875abce9d9cd45fc9b8f1c</srcmd5>
+    <version>2.0.5</version>
+    <time>1432723807</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308782</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0cd9b546dadb8c2bbd6a63a001f32185</srcmd5>
+    <version>2.0.6</version>
+    <time>1441726767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328819</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1cc9bf6cfc49043fe974d1e43a9411d2</srcmd5>
+    <version>2.1.1</version>
+    <time>1455610700</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357160</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dc09df15da24126abeeacaf6076a99ed</srcmd5>
+    <version>2.1.2</version>
+    <time>1508610085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533011</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>58083565b73b35b817331aec2328b92e</srcmd5>
+    <version>2.1.2</version>
+    <time>1535123048</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency on unittest2</comment>
+    <requestid>628991</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6d00028e3170c1f1b85105e1c6182a30</srcmd5>
+    <version>2.2.3</version>
+    <time>1553263920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687566</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ff2b1bf6e22ad5908109a18a51d2fc24</srcmd5>
+    <version>2.2.3</version>
+    <time>1556622019</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebuild for jsc#SLE-5706 to be sent to SUSE:SLE-12-SP5:GA.
+</comment>
+    <requestid>697401</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>b4994cf3a18b86b65310d1b4fb0df244</srcmd5>
+    <version>2.2.3</version>
+    <time>1558037201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702977</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e8394330e443a2ee3e8094b81571d48f</srcmd5>
+    <version>2.2.4</version>
+    <time>1583226908</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.4:
+  * Run the Setuptools `egg-info` command as part of the `build`
+    command.
+  * Create the socket and catch “non-socket” errors.
+  * Only deal with a range of file descriptors if the range is not empty.
+  * Declare Twine as a build dependency.
+  * Reformat the change log entries with keepachangelog.com sub-sections.</comment>
+    <requestid>780388</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>712837555d479a4632160e05b819b458</srcmd5>
+    <version>2.2.4</version>
+    <time>1612466690</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off running of the test suite
+  (https://pagure.io/python-daemon/issue/53).</comment>
+    <requestid>869533</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>26b01765392ffd1daa32ead2ea1d9ce4</srcmd5>
+    <version>2.3.0</version>
+    <time>1619298514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Remove support for Python versions older than Python 3.
+    Python 2 has been unsupported by the Python project since 2020.
+  * Remove dependency on back-ported `unittest2` and `mock`.
+    Depend instead on standard library `unittest` and `unittest.mock`.</comment>
+    <requestid>887875</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>5fe7d7eb1e867d3c57b0dae17a1a8151</srcmd5>
+    <version>2.3.0</version>
+    <time>1642112471</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_double_patch.patch and remove_safe_hasattr.patch to
+  fix https://pagure.io/python-daemon/issue/53
+- Remove pytest as the test runner (apparently, the package
+  requires python3 -munittest discovery).
+</comment>
+    <requestid>946125</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>1c83917a8b0970c47f111027b7ac39d1</srcmd5>
+    <version>2.3.0</version>
+    <time>1647974169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963041</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>017c6a5f9c9fedf6578468a182420b1c</srcmd5>
+    <version>2.3.1</version>
+    <time>1664797540</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Avoid operations on a closed stream file when detecting a socket.
+  * Correct use of names to allow `from daemon import *`.
+  Changed:
+  * Speed daemon start time by computing candidate file descriptors once.
+  * Remove incorrect double-patch of objects in test cases.
+  * Deprecate helper function `is_socket`.
+  * Drop backward-compatible helpers that provided Python 2 support.
+    * declaration of source encoding ‘utf-8’
+    * absolute_import
+    * unicode_literals
+    * module-level metaclass `type`
+    * unification of str with unicode type
+    * renamed standard library exceptions and modules
+    * raise exception from context exception
+    All these are default behaviour in Python 3 and need no special
+    handling.
+- drop remove_safe_hasattr.patch, remove_double_patch.patch (upstream)</comment>
+    <requestid>1007473</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b94c14c16c8a24291c2ebbb840f81cd8</srcmd5>
+    <version>2.3.2</version>
+    <time>1667219184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032449</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>30354d4d1e38e504d99d5256435b6af9</srcmd5>
+    <version>2.3.2</version>
+    <time>1683403751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085085</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>19e8195eb7de727853c3140a467e2692</srcmd5>
+    <version>3.0.1</version>
+    <time>1702845098</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.1:
+  * Declare dependency on Setuptools &gt;= 62.4.0.
+  * Refactor calculation of file descriptor ranges to close.
+  * When the range of candidate file descriptors is very large,
+    the code that computes file descriptors to close when the
+    daemon starts attempted to allocate a large amount of memory
+    and took a long time to compute.
+  * Document a `ServiceRunner` class as an example of using
+    `DaemonContext`.
+  * Raise a TypeError if any `exclude` values are not valid file
+    descriptors.
+  * Remove the obsolete `runner` module.
+    This module was deprecated starting in `python-daemon`
+    version 2.1.2, and is now removed as unmaintained.
+
+- Update to 2.3.2
+- Skip broken test
+- BuildRequire lowercase python-minimock
+- Add Provides for the old python-daemon name</comment>
+    <requestid>1133522</requestid>
+  </revision>
+</revisionlist>

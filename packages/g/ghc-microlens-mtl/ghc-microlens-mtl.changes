@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Oct 11 19:28:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-mtl to version 0.2.0.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:31 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Dec 14 05:19:46 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-mtl to version 0.2.0.3.
+  # 0.2.0.2
+
+  * Added support for mtl 2.3 and transformers 0.6 per [#152](https://github.com/stevenfontanella/microlens/issues/152).
+
+-------------------------------------------------------------------
+Mon May 16 04:48:35 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-mtl to version 0.2.0.2.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:45:26 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:15 UTC 2020 - psimons@suse.com
+
+- Add microlens-mtl at version 0.2.0.1.
+

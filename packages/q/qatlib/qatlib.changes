@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Wed Jan  3 10:37:20 UTC 2024 - Torsten Duwe <duwe@suse.com>
+
+- update to 23.11.0:
+  * use new --enable-legacy-algorithms to avoid regressions
+  * add support for data compression chaining (hash then compress)
+  * add support for additional configuration profiles
+  * add support DC NS (NoSession) APIs
+  * add support DC CompressBound APIs
+  * add Support for Chinese SM{2,3,4} ciphers
+  * bump shared library major to 4
+  * refactoring, bug fixes and documentation updates
+
+-------------------------------------------------------------------
+Tue May 30 07:33:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement shared library packaging guidelines
+- Drop R/TM signs as per
+  https://en.opensuse.org/openSUSE:Package_description_guidelines
+
+-------------------------------------------------------------------
+Sat Dec  3 23:15:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.07.2:
+  * Changed from yasm to nasm for assembly compilation
+  * Added configuration option to use C implementation of soft CRC
+    implementation instead of asm
+  * Added support for pkg-config
+  * Added missing lock around accesses to some global data in qatmgr
+  * Fix for QATE-86605 – improve error checking on size param used by qatmgr
+    debug function.
+  * Fix for issue #10
+  * Fixed link to Programmer's Guide
+  * Added support for Compression LZ4 and LZ4s algorithms
+  * Added support for Compression end-to-end integrity checks
+  * Added support for PKE Generic Point Multiply APIs
+  * Added support for CPM2.0b
+  * Updated library to support new version of QAT APIs
+  * Updated qat service to allow compression only and crypto only
+    configurations
+  * Created qatlib-tests rpm package
+  * Added option to configure script to skip building sample code
+
+-------------------------------------------------------------------
+Wed Apr 27 08:44:06 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use source url, switch to .tar.gz as this is used in github upstream
+
+-------------------------------------------------------------------
+Wed Oct  6 13:37:02 UTC 2021 - Torsten Duwe <duwe@suse.com>
+
+- Update to 21.05.0
+  * Add support for Compression Deflate algorithm
+  * Add communication path to PF driver (PFVFcomms)
+  * Enable services based on VF capabilities.
+  * Stop service correctly during uninstallation
+  * Fix qatmgr foreground option -f
+  * Add qatmgr -v option to display version
+  * Add version check between qatlib and qatmgr
+  * Suppress deprecated warnings from OpenSSL3
+  * Fix build with clang
+
+-------------------------------------------------------------------
+Wed Oct  6 13:37:02 UTC 2021 - Torsten Duwe <duwe@suse.com>
+
+- Update to 21.08.0
+  * Add support for Compression Deflate algorithm
+  * Add communication path to PF driver (PFVFcomms)
+  * Enable services based on VF capabilities.
+  * Stop service correctly during uninstallation
+  * Fix qatmgr foreground option -f
+  * Add qatmgr -v option to display version
+  * Add version check between qatlib and qatmgr
+  * Suppress deprecated warnings from OpenSSL3
+  * Fix build with clang
+
+-------------------------------------------------------------------
+Sat Jul  3 19:39:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 21.05.0:
+  * Added support for AES-CCM 192/265
+  * Added support for SHA3-224/384/512 (no partials support)
+  * Added support for ChaCha20-Poly1305
+  * Added support for PKE 8K (RSA, DH, ModExp, ModInv)
+  * Fixed device enumeration on different nodes
+  * Fixed pci_vfio_set_command for 32 bit builds
+
+-------------------------------------------------------------------
+Mon Feb  8 09:02:36 UTC 2021 - Torsten Duwe <duwe@suse.com>
+
+- re-add _service file, but "disabled".
+
+-------------------------------------------------------------------
+Mon Feb  1 14:43:22 UTC 2021 - Torsten Duwe <duwe@suse.com>
+
+- Freeze service run for Factory

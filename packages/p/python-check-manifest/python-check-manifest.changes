@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Fri Dec  1 18:58:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to use the current interpreter by default in the 
+  TestCheckManifest::test_python_from_path test in SLE. Otherwise
+  the test runs the python3.6 interpreter which doesn't work:
+  * use-current-interpreter.patch
+
+-------------------------------------------------------------------
+Sun Jun 11 08:30:38 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sat May 20 16:04:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Do not require bzr (breezy) for tests: fails in Factory, we're
+  the only user
+- PEP517
+- Fix tomli runtime requirement
+
+-------------------------------------------------------------------
+Mon Apr  3 01:45:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded {Build,}Requires on pep517. 
+
+-------------------------------------------------------------------
+Mon Jan  2 14:29:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.49:
+  * Add Python 3.11 support.
+  * Drop Python 3.6 support.
+- drop python-check-manifest-no-mock.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Nov 24 10:46:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add "git config --global --add protocol.file.allow always" to fix tests,
+  based on https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1023597
+
+-------------------------------------------------------------------
+Mon Sep 26 21:17:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 0.48
+
+  Add Python 3.10 support.
+  Switch to tomli instead of toml, after hearing about PEP-680. tomli will be included in the Python 3.11 standard library as
+  tomllib, while toml is apparently unmaintained.
+  Fix submodule support when .gitmodules exists in a subdirectory (#153). Note that this reverts a fix for #124: git versions
+  before 2.11 are no longer supported. 
+
+-------------------------------------------------------------------
+Thu Mar 10 10:48:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add python-check-manifest-no-mock.patch
+  (gh#mgedmin/check-manifest#151) replace using mock with
+  unittest.mock.
+
+-------------------------------------------------------------------
+Wed Mar  9 10:06:10 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.47
+  0.47 (2021-09-22)
+  -----------------
+  - Fix ``setuptools_scm`` workaround for packages with dashes in the name
+    (`#145 <https://github.com/mgedmin/check-manifest/issues/145>`_).
+  0.46 (2021-01-04)
+  -----------------
+  - The `pre-commit <https://pre-commit.com>`__ hook now always uses Python 3.
+
+-------------------------------------------------------------------
+Tue Nov 24 15:53:15 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.45
+  * Add Python 3.9 support.
+  * Drop Python 3.5 support.
+  * Switch from pep517 to python-build
+  * Add ``--no-build-isolation`` option so check-manifest can
+    succeed building pep517-based distributions without an
+    internet connection.
+    With --no-build-isolation, you must preinstall the
+    ``build-system.requires`` beforehand.
+- from v0.44
+  * Try to avoid passing ``--recurse-submodules`` to ``git ls``
+    if the project doesn't use git submodules (i.e. doesn't
+    have a ``.gitsubmodules`` file)
+    This should make check-manifest work again with older git
+    versions, as long as you don't use submodules
+- from v0.43
+  * Fix collecting files versioned by ``git`` when a project
+    has submodules and ``GIT_INDEX_FILE`` is set. This bug was
+    triggered when ``check-manifest`` was run from a git hook
+
+-------------------------------------------------------------------
+Thu Aug 20 10:23:37 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.42
+  * Added ``-q``/``--quiet`` command line argument. This will reduce the
+    verbosity of informational output, e.g. for use in a CI pipeline.
+  * Rewrote the ignore logic to be more compatible with setuptools.  This 
+    might have introduced some regressions, so please file bugs!  One side
+    effect of this is that ``--ignore`` (or the ``ignore`` setting in the
+    config file) is now handled the same way as ``global-exclude`` in a
+    ``MANIFEST.in``, which means:
+    - it's matched anywhere in the file tree
+    - it's ignored if it matches a directory
+  * Drop Python 2.7 support.
+- from v0.41
+  * Support `PEP 517`_, i.e. packages using pyproject.toml
+  * Ignore subcommand stderr unless the subcommand fails.
+
+-------------------------------------------------------------------
+Mon May 25 10:59:13 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Fri May  1 12:09:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch to multibuild and remove Suggests for bzr.
+
+-------------------------------------------------------------------
+Wed Apr  8 18:47:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't build-require bzr, just suggest it, it is not that necessary.
+- Switch tests to using pytest as a test runner.
+
+-------------------------------------------------------------------
+Wed Oct 23 13:51:47 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.40
+  * Add Python 3.8 support.
+
+-------------------------------------------------------------------
+Fri Sep 13 11:02:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.39:
+  * You can now use check-manifest as a pre-commit hook (#100).
+
+-------------------------------------------------------------------
+Wed May 15 18:07:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Wed May  8 15:09:17 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove unnecessary bcond test
+- Add optional VCS dependencies to BuildDepends and Suggests
+- Use fdupes
+- Revise Summary replacing confusing 'MANIFEST in' with MANIFEST.in
+- Update to v0.38
+  * Add Python 3.7 support
+  * Drop Python 3.4 support.
+  * Added GitHub templates to default ignore patterns
+  * Added reading check-manifest config out of tox.ini or pyproject.toml
+
+-------------------------------------------------------------------
+Wed Sep 19 16:45:46 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.37
+
+- update to version 0.37:
+  * Drop Python 3.3 support.
+  * Support packages using setuptools_scm (#68).
+  * Note that setuptools_scm usually makes MANIFEST.in files obsolete.
+    Having one is helpful only if you intend to build an sdist and then
+    use that sdist to perform further builds, instead of building from
+    a source checkout.
+
+-------------------------------------------------------------------
+Wed Nov 22 19:44:30 UTC 2017 - arun@gmx.de
+
+- update to version 0.36:
+  * Handle empty VCS repositories more gracefully (#84).
+
+-------------------------------------------------------------------
+Thu Jul 13 15:15:22 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

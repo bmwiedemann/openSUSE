@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Tue Jan 16 16:16:16 UTC 2024 - ohering@suse.de
+
+- Remove usage of dune.configurator because ocamlfind names which
+  contain a dot are not considered valid anymore with dune 3.13
+
+-------------------------------------------------------------------
+Tue Aug  8 08:08:08 UTC 2023 - ohering@suse.de
+
+- Remove dependency to Camomile
+  The only consumer of this pkg (virt-top) does not need it
+
+-------------------------------------------------------------------
+Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
+
+- add bcond ocaml_gettext_testsuite to disable failing testsuite
+
+-------------------------------------------------------------------
+Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
+
+- remove dependency to ounit via _multibuild
+
+-------------------------------------------------------------------
+Thu Aug 20 20:20:20 UTC 2020 - ohering@suse.de
+
+- Update to version 0.4.2
+  Compatibility with OCaml 4.11
+
+-------------------------------------------------------------------
+Thu May 14 14:14:14 UTC 2020 - ohering@suse.de
+
+- The filename for rpm *.attr files and the tag used within these
+  files must match. Otherwise rpm will not execute the helper scripts.
+  Use helper 'suseocaml' in addition to 'ocaml' to avoid
+  filename conflicts with rpm-build.rpm (bsc#1154874)
+
+-------------------------------------------------------------------
+Fri Nov  1 12:34:56 UTC 2019 - ohering@suse.de
+
+- Require current dune macros
+- Update to version 0.4.1, via _service file
+  Improve documentation layout.
+  Migrate build system to dune.
+  Move ocaml-xgettext from Camlp4 to ppx.
+- Remove sub packages
+- Remove ocaml-gettext-unix.patch
+- Remove ocaml-gettext-0.3.5-use-ocamlopt-g.patch
+
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Mon Jul 17 10:48:58 UTC 2017 - ohering@suse.de
+
+- Remove autodeps for pre openSUSE 12.1 releases
+
+-------------------------------------------------------------------
+Wed May 10 08:23:44 UTC 2017 - olaf@aepfle.de
+
+- stub-devel requires stub (bsc#1031359)
+
+-------------------------------------------------------------------
+Fri May 20 13:36:28 UTC 2016 - ohering@suse.de
+
+- Fix compile error with ocaml-4.03 (fate#320836)
+  ocaml-gettext-unix.patch
+  reenable all archs
+
+-------------------------------------------------------------------
+Tue Nov 10 10:18:47 UTC 2015 - ohering@suse.de
+
+- Add hardcoded Provides for pre 12.1 repos
+
+-------------------------------------------------------------------
+Wed Sep 16 22:27:56 UTC 2015 - mlatimer@suse.com
+
+- Exclude s390x architecture 
+
+-------------------------------------------------------------------
+Wed Jun 24 06:56:58 UTC 2015 - olaf@aepfle.de
+
+- Update License to SUSE-LGPL-2.0-with-linking-exception
+
+-------------------------------------------------------------------
+Mon Dec  8 20:46:30 UTC 2014 - mlatimer@suse.com
+
+- Update spec file to use ocaml-rpm-macros, remove
+  ExclusiveArch, and ensure bytecode is built
+
+-------------------------------------------------------------------
+Fri Dec  5 18:14:52 UTC 2014 - mlatimer@suse.com
+
+- Initial commit using upstream version 3.5 

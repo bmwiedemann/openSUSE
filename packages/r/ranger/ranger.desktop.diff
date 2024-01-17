@@ -1,0 +1,18 @@
+Index: ranger-1.9.3/doc/ranger.desktop
+===================================================================
+--- ranger-1.9.3.orig/doc/ranger.desktop
++++ ranger-1.9.3/doc/ranger.desktop
+@@ -1,10 +1,12 @@
+ [Desktop Entry]
+ Type=Application
+ Name=ranger
++GenericName=ranger
++X-SuSE-translate=false
+ Comment=Launches the ranger file manager
+ Icon=utilities-terminal
+ Terminal=true
+ Exec=ranger
+-Categories=ConsoleOnly;System;FileTools;FileManager
++Categories=ConsoleOnly;System;FileTools;FileManager;
+ MimeType=inode/directory;
+ Keywords=File;Manager;Browser;Explorer;Launcher;Vi;Vim;Python

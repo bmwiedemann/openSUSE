@@ -1,0 +1,218 @@
+-------------------------------------------------------------------
+Sat Oct 21 08:59:55 UTC 2023 - guiv42 <guiv42@tuta.io>
+
+- Added path to commons-compress in 0013-startscript.patch
+  to enable TuxGuitar to open .gp files 
+
+-------------------------------------------------------------------
+Thu Oct 12 06:49:30 UTC 2023 - Fridrich Štrba <fstrba@suse.com>
+
+- Added patch:
+  * tuxguitar-CVE-2020-13940.patch
+    + fix bsc#1173633 (CVE-2020-14940): improper configuration of
+      XML parsers might lead to XXE while loading GP6 (.gpx) and
+      GP7 (.gp) tablature files
+
+-------------------------------------------------------------------
+Thu Oct 12 05:21:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Package also a sample tuxguitar.tg file
+- Modified patch:
+  * 0013-startscript.patch
+    + compose the CLASSPATH jar by jar, since wildcards are not
+      working for CLASSPATH variable
+
+-------------------------------------------------------------------
+Wed Oct 11 05:17:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building on all supported architectures and distributions
+- Added patches:
+  * 0001-tuxguitar-aarch64.patch
+    + allow building native parts of tuxguitar for aarch64
+  * 0002-tuxguitar-armv6hl.patch
+    + allow building native parts of tuxguitar for armv6hl
+  * 0003-tuxguitar-armv7hl.patch
+    + allow building native parts of tuxguitar for armv7hl
+  * 0004-tuxguitar-ppc64.patch
+    + allow building native parts of tuxguitar for ppc64
+  * 0005-tuxguitar-ppc64le.patch
+    + allow building native parts of tuxguitar for pcc64le
+  * 0006-tuxguitar-riscv64.patch
+    + allow building native parts of tuxguitar for riscv64
+  * 0007-tuxguitar-s390x.patch
+    + allow building native parts of tuxguitar for s390x
+  * 0008-tuxguitar-x86.patch
+    + allow building native parts of tuxguitar for 32-bit intel
+      platform
+  * 0010-no-lv2.patch
+    + disable lv2 synthesizer on platforms that lack the
+      dependencies
+  * 0011-no-fluidsynth.patch
+    + disable fluidsynth synthesizer on platforms that lack the
+      dependency
+- Modified patches:
+  * no-vst.patch -> 0009-no-vst.patch
+    + extend to all ported architectures and manage with git to make
+      rediffs easier for newer versions
+  * desktop.patch -> 0014-desktop.patch
+  * tuxguitar-default-soundfont.patch -> 0012-default-soundfont.patch
+  * tuxguitar-startscript.patch -> 0013-startscript.patch
+    + manage with git to make rediffs easier for newer versions
+
+-------------------------------------------------------------------
+Mon Oct  9 16:30:14 UTC 2023 - guiv42 <guiv42@tuta.io>
+
+- Add complementary information to previous changelog
+- Deleted patches
+  * tuxguitar-startscript-itext.patch
+  * tuxguitar-additional-arch.patch
+  * no-fluidsynth.patch
+- Added new patch, required by release 1.6.0
+  * desktop.patch
+
+-------------------------------------------------------------------
+Sat Oct  7 20:14:13 UTC 2023 - guiv42 <guiv42@tuta.io>
+
+- Update to new upstream release 1.6.0
+  * switch to https://github.com/helge17/tuxguitar
+    as source repo, since historical repo is orphaned
+  * only x86_64 arch is supported by source repo
+
+-------------------------------------------------------------------
+Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with java 11 on ix86 in order to avoid random
+  build failures
+
+-------------------------------------------------------------------
+Wed Mar 23 12:32:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Tue Feb  8 09:42:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * no-fluidsynth.patch
+    + disable fluidsynth for building on sle12
+
+-------------------------------------------------------------------
+Sun Aug  1 14:05:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * tuxguitar-additional-arch.patch
+    + add armv6hl
+
+-------------------------------------------------------------------
+Wed Jul  8 10:09:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Add viewer and tray to the built modules
+
+-------------------------------------------------------------------
+Wed Jul  8 07:43:09 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.5.4
+- Removed patches:
+  * tuxguitar-do-not-force-java-1.5.patch
+  * tuxguitar-jsa-build.patch
+  * tuxguitar-tray-build.patch
+    + not needed anymore, since we don't use the ant build system
+- Modified patch.
+  * tuxguitar-startscript.patch
+    + adapt to work with openSUSE layout of directories
+- Added patches:
+  * tuxguitar-startscript-itext.patch
+    + apply when building --with itext in order to have the
+      necessary libraries in the classpath
+  * no-vst.patch
+    + do not build the parts that need unavailable VST SDK
+  * tuxguitar-additional-arch.patch
+    + extend supported architectures to aarch64, ppc64, ppc64le,
+      and s390x
+
+-------------------------------------------------------------------
+Fri Oct  5 12:21:07 UTC 2018 - opensuse.lietuviu.kalba@gmail.com
+
+- Remove FluidSynth and fluid-soundfont-gm dependencies for
+  openSUSE Leap 15 and newer versions.
+
+-------------------------------------------------------------------
+Sun Oct 22 13:43:13 UTC 2017 - fstrba@suse.com
+
+- Build with java and source target levels 1.6
+  * Solves one of the issues raised in boo#1062807
+
+-------------------------------------------------------------------
+Fri Sep 22 05:16:12 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Add tuxguitar-do-not-force-java-1.5.patch: Don't force JAVA 1.5
+
+-------------------------------------------------------------------
+Fri Jun 23 20:00:08 UTC 2017 - opensuse.lietuviu.kalba@gmail.com
+
+- Rewrite spec file, based on spec file from Fedora Project.
+- Updated to version 1.4 (bnc#1038205)
+  * New edit Toolbar
+  * Several bugs fixed
+
+-------------------------------------------------------------------
+Fri Dec 11 15:21:29 UTC 2015 - opensuse.lietuviu.kalba@gmail.com
+
+- Fix building for openSUSE Leap 42.1 by removing itext dependency.
+  Itext used for printing to PDFs.
+
+-------------------------------------------------------------------
+Mon Nov 10 00:41:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Tue Jun 26 13:59:19 UTC 2012 - mvyskocil@suse.cz
+
+- build require java-devel >= 1.6.0
+
+-------------------------------------------------------------------
+Sun Oct  2 07:00:49 UTC 2011 - embar@users.berlios.de
+
+- added itext to requires section
+
+-------------------------------------------------------------------
+Sun Sep  18 13:00:49 UTC 2011 - embar@users.berlios.de
+
+- don't strict to swt 3.4 version
+
+-------------------------------------------------------------------
+Tue Jun  8 16:00:49 UTC 2010 - mseben@novell.com
+
+- added libswt3-gtk2 to requires section (bnc#611710)
+
+-------------------------------------------------------------------
+Tue Dec  1 08:25:52 UTC 2009 - mseben@novell.com
+
+- added timidity to requires section (bnc#556711)
+
+-------------------------------------------------------------------
+Thu Nov  5 08:20:50 UTC 2009 - mseben@novell.com
+
+- updated to version 1.2
+  * Support measure range to loop
+  * Transpose notes feature
+  * Optionally transpose afected notes when change tuning
+  * Move beats left|right support
+  * More song properties options.
+  * Add multiple measure support
+  * Clean multiple measure support
+  * Number of pastes support
+  * Better lilypond plugin
+  * Better fluidsynth plugin
+  * New jack plugin
+  * New community integration plugin
+  * New cocoa integration plugin
+  * New audio unit plugin
+  * Many bug fixes
+
+-------------------------------------------------------------------
+Tue Jun 16 15:42:49 CEST 2009 - mseben@suse.cz
+
+- initial openSUSE package for tuxguitar 1.1 (modified spec from tarball)
+

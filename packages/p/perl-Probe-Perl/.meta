@@ -1,0 +1,7 @@
+<package name="perl-Probe-Perl" project="openSUSE:Factory">
+  <title>Information about the currently running perl</title>
+  <description>This module provides methods for obtaining information about the currently
+running perl interpreter. It originally began life as code in the
+Module::Build project, but has been externalized here for general use.</description>
+  <devel project="devel:languages:perl" package="perl-Probe-Perl"/>
+</package>

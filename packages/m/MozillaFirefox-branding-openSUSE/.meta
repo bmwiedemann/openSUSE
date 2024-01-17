@@ -1,0 +1,5 @@
+<package name="MozillaFirefox-branding-openSUSE" project="openSUSE:Factory">
+  <title>openSUSE branding of MozillaFirefox</title>
+  <description>This package provides openSUSE Look and Feel for MozillaFirefox.</description>
+  <devel project="mozilla:Factory" package="MozillaFirefox-branding-openSUSE"/>
+</package>

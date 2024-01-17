@@ -1,0 +1,5 @@
+<package name="fira-code-fonts" project="openSUSE:Factory">
+  <title>Fira Code Fonts - Free monospaced font with programming ligatures</title>
+  <description>Fira Code is a free monospaced font containing ligatures for common programming multi-character combinations. This is just a font rendering feature: underlying code remains ASCII-compatible. This helps to read and understand code faster. </description>
+  <devel project="M17N" package="fira-code-fonts"/>
+</package>

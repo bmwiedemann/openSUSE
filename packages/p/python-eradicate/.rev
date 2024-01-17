@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>284fb777b5f237158465dccd4b1e019f</srcmd5>
+    <version>1.0</version>
+    <time>1550151235</time>
+    <user>dimstar_suse</user>
+    <comment>- Activate tests
+- Update to v1.0
+- Fix %check
+- Remove unneeded build dependency on python-devel
+- initial version for 0.2.1
+</comment>
+    <requestid>674532</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>588ea2aafb8cfa73e3be1955d90f167f</srcmd5>
+    <version>1.0</version>
+    <time>1551216039</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary.
+</comment>
+    <requestid>679048</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b35d856bb616ecfa87fd1a91e1ddc3b</srcmd5>
+    <version>2.1.0</version>
+    <time>1661497696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999344</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3d8e14a6fe79e0667195c2f9dff965ad</srcmd5>
+    <version>2.1.0</version>
+    <time>1686753023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093044</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>94dec177bf68a270079f45acf1922908</srcmd5>
+    <version>2.3.0</version>
+    <time>1695209329</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * This is the last release with Python2 support:
+  * True Windows support
+  * New console script</comment>
+    <requestid>1112072</requestid>
+  </revision>
+</revisionlist>

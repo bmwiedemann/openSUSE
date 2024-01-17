@@ -1,0 +1,7 @@
+<package name="tkxcd" project="openSUSE:Factory">
+  <title>Graphical frontend for diff</title>
+  <description>This is a diff front-end with a look and feel based on Atria Clearcase
+xcleardiff. Both files are displayed in a window each and the
+differences are marked in different colors.</description>
+  <devel project="devel:tools" package="tkxcd"/>
+</package>

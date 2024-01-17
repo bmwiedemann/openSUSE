@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Tue Jun 20 13:46:18 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.2:
+  *Improved Linux deployment
+  * Replaced deprecated code
+- Changes for version 3.2.1:
+  * Switched to Qt 6
+
+-------------------------------------------------------------------
+Thu Dec  9 10:54:59 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.0:
+  * Added setting words written for current day
+  * Added support for Qt 6
+  * Refactored code
+  * Removed XPM icon
+  * Translation updates: Dutch, Lithuanian
+
+-------------------------------------------------------------------
+Fri Apr 24 08:12:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.1.7:
+  * FIXED: Did not load locales with underscores
+  * Improved Windows deployment
+  * Replaced deprecated code
+- Changes in version 3.1.6:
+  * FIXED: Window icon didn't work in Wayland
+  * Improved loading locales
+  * Improved Windows deployment
+  * Replaced deprecated code
+
+-------------------------------------------------------------------
+Wed Nov 21 10:00:43 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.1.5:
+  * FIXED: Automatic high DPI support
+- Changes for version 3.1.4:
+  * Extra warnings only shown in debug build
+  * Translation updates: Portuguese
+- Mark license as such
+
+-------------------------------------------------------------------
+Wed Nov 21 09:47:21 UTC 2018 - Karol Babioch <kbabioch@suse.de>
+
+- Update to version 3.1.5
+  * FIXED: Automatic high DPI support
+- Update to version 3.1.4
+  * Extra warnings only shown in debug build
+  * Improved Linux deployment
+  * Improved macOS deployment
+  * Improved Windows deployment
+  * Translation updates: Portuguese
+- Applied spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan  8 08:32:23 UTC 2018 - mpluskal@suse.com
+
+- Update to verion 3.1.3:
+  * FIXED: Could not compile with Qt 5.10.
+  * Translation updates: French.
+- Do not run post scriplets on Tumbleweed where they are not needed
+- Split lang subpackage
+
+-------------------------------------------------------------------
+Thu Oct 19 11:31:39 UTC 2017 - mpluskal@suse.com
+
+- Update to version 3.1.2:
+  * FIXED: Did not always install translations in Linux.
+  * Translation updates: Dutch.
+
+-------------------------------------------------------------------
+Fri Dec 23 10:53:44 UTC 2016 - mpluskal@suse.com
+
+- Update to version 3.1.1:
+  * Generate binary translations at build time.
+  * FIXED: Was not properly loading Qt translations.
+  * Translation updates: Dutch, Lithuanian.
+
+-------------------------------------------------------------------
+Sat May 14 13:29:10 UTC 2016 - mpluskal@suse.com
+
+- Package for 3.1.0 (based on spec file by Graeme Gott)
+

@@ -1,0 +1,5 @@
+<package name="rovasiras-kende-fonts" project="openSUSE:Factory">
+  <title></title>
+  <description>Kende is a ligatured font for the Old Hungarian script.</description>
+  <devel project="M17N:fonts" package="rovasiras-kende-fonts"/>
+</package>

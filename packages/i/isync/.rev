@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd06099debf7bddfa7956f96d9e37f73</srcmd5>
+    <version>1.2.1</version>
+    <time>1465481356</time>
+    <user>dimstar_suse</user>
+    <comment>e-mail synchronization tool I use for years
+
+this time with COPYING, ChangeLog, AUTHORS and README</comment>
+    <requestid>399639</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49ce7b146c86c785cfca2b75c573bd9b</srcmd5>
+    <version>1.3.0</version>
+    <time>1515110395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561298</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e46634160a767860a96112d18110cb80</srcmd5>
+    <version>1.3.1</version>
+    <time>1583750562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782851</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b19e6268d0f6045a1faaa79371de64e</srcmd5>
+    <version>1.3.2</version>
+    <time>1595011904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821433</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b84016a28c23e31f186ea63878773e54</srcmd5>
+    <version>1.3.3</version>
+    <time>1597064623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825268</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>998243192f27ff76b3a7b4c5d696f2cb</srcmd5>
+    <version>1.3.3</version>
+    <time>1609959438</time>
+    <user>dimstar_suse</user>
+    <comment>- fix homepage url</comment>
+    <requestid>860760</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0a00a55ce0432addf2b7d2aa61271075</srcmd5>
+    <version>1.3.5</version>
+    <time>1614684896</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.3.5 (boo#1182488)
+  * This is a security release that fixes CVE-2021-20247.
+- Update to version 1.3.4
+  This is a maintenance release that contains exactly one change:
+  * fixed regression in handling NAMESPACE 'INBOX.', introduced in
+    v1.3.2</comment>
+    <requestid>875977</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e960a6b637ac785211c1052da3e12296</srcmd5>
+    <version>1.4.2</version>
+    <time>1623705075</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>899937</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c251c5cdf5297484c9cbd559640f8b8c</srcmd5>
+    <version>1.4.3</version>
+    <time>1628675233</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911240</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f1f330e602f7de2515fe5b8451ed3cba</srcmd5>
+    <version>1.4.4</version>
+    <time>1643321815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949393</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>01690962485ebbd1029201e89cbdfc02</srcmd5>
+    <version>1.4.4</version>
+    <time>1677584979</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch work-around-unexpected-EOF-error-messages-at-end-of-SSL-connections.patch
+  * Some mail servers do not send a close notification
+    (SSL_shutdown()) before closing the TCP socket. This workaround
+    makes isync handles the situation more gracefully (boo#1208166).</comment>
+    <requestid>1068135</requestid>
+  </revision>
+</revisionlist>

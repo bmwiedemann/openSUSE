@@ -1,0 +1,5 @@
+<package name="qore-linenoise-module" project="openSUSE:Factory">
+  <title> Qore Linenoise Module</title>
+  <description>The linenoise module provides readline-like functionality to Qore, allowing qore programs to manage comfortable user input in the command line.</description>
+  <devel project="devel:languages:misc" package="qore-linenoise-module"/>
+</package>

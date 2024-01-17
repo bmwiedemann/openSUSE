@@ -1,0 +1,11 @@
+--- a/src/google/protobuf/port.h.orig	2023-04-24 14:27:40.734888878 +0200
++++ b/src/google/protobuf/port.h	2023-04-24 14:27:53.607255222 +0200
+@@ -33,6 +33,8 @@
+ // port_def.inc and port_undef.inc so they are not visible from outside of
+ // protobuf.
+ 
++#include <stdint.h>
++
+ #ifndef GOOGLE_PROTOBUF_PORT_H__
+ #define GOOGLE_PROTOBUF_PORT_H__
+ 

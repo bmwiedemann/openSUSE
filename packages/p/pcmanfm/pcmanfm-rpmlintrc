@@ -1,0 +1,2 @@
+# libfm is NOT a lib, and it's a needed dependecy
+addFilter ("W: explicit-lib-dependency")

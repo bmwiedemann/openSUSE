@@ -1,0 +1,24 @@
+<package name="perl-Pod-Spell" project="openSUSE:Factory">
+  <title>Formatter for spellchecking Pod</title>
+  <description>Pod::Spell is a Pod formatter whose output is good for spellchecking.
+Pod::Spell rather like Pod::Text, except that it doesn't put much effort
+into actual formatting, and it suppresses things that look like Perl
+symbols or Perl jargon (so that your spellchecking program won't complain
+about mystery words like &quot;$thing&quot; or &quot;Foo::Bar&quot; or &quot;hashref&quot;).
+
+This class provides no new public methods. All methods of interest are
+inherited from Pod::Parser (which see). The especially interesting ones
+are `parse_from_filehandle' (which without arguments takes from STDIN
+and sends to STDOUT) and `parse_from_file'. But you can probably just
+make do with the examples in the synopsis though.
+
+This class works by filtering out words that look like Perl or any form
+of computerese (like &quot;`$thing'&quot; or &quot;`N&gt;7'&quot; or &quot;`@{$foo}{'bar','baz'}'&quot;,
+anything in C&lt;...&gt; or F&lt;...&gt; codes, anything in verbatim paragraphs
+(codeblocks), and anything in the stopword list. The default stopword
+list for a document starts out from the stopword list defined by
+Pod::Wordlist, and can be supplemented (on a per-document basis) by
+having `&quot;=for stopwords&quot;' / `&quot;=for :stopwords&quot;' region(s) in a document.</description>
+  <devel project="devel:languages:perl" package="perl-Pod-Spell"/>
+  <url>http://search.cpan.org/dist/Pod-Spell/</url>
+</package>

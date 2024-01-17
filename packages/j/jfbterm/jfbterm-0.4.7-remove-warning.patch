@@ -1,0 +1,179 @@
+--- jfbterm-0.4.7/fbcommon.c.compile	2003-09-03 00:23:17.000000000 +0900
++++ jfbterm-0.4.7/fbcommon.c	2006-07-26 16:29:11.000000000 +0900
+@@ -560,7 +560,7 @@
+ 	if ((long)p->smem == -1) {
+ 		die("cannot mmap(smem)");
+ 	}
+-	p->smem = (char *)p->smem + p->soff;
++	p->smem = p->smem + p->soff;
+ 
+ 	p->moff = (u_long)(fb_fix.mmio_start) & (~PAGE_MASK);
+ 	p->mlen = (fb_fix.mmio_len + p->moff + ~PAGE_MASK) & PAGE_MASK;
+@@ -573,7 +573,7 @@
+ 		print_message("cannot mmap(mmio) : %s\n", strerror(errno));
+ #endif
+ 	}
+-	p->mmio = (char *)p->mmio + p->moff;
++	p->mmio = p->mmio + p->moff;
+ 
+ #ifdef DEBUG
+ 	print_message("mmap ; %d - %p\n", p->slen, p->smem);
+--- jfbterm-0.4.7/fbdpsp.c.compile	2006-07-25 21:13:20.000000000 +0900
++++ jfbterm-0.4.7/fbdpsp.c	2007-12-17 22:32:28.000000000 +0900
+@@ -837,7 +837,7 @@
+ #define GRAPHICS_MODE_INDEX 5           /* Graphics Mode Register index. */
+ #define BIT_MASK_INDEX 8                /* Bit Mask Register index. */
+ 
+-static inline void rmw(volatile char *p)
++static inline void rmw(volatile unsigned char *p)
+ {
+         *p |= 1;
+ }
+--- jfbterm-0.4.7/pcf.c.compile	2003-09-16 00:45:31.000000000 +0900
++++ jfbterm-0.4.7/pcf.c	2006-07-26 16:17:16.000000000 +0900
+@@ -212,9 +212,20 @@
+ }
+ 
+ /*---------------------------------------------------------------------------*/
++#if 0
+ static u_int to_u32l(u_char* p)
+ {
+ 	return  p[0]+(p[1]<<8)+(p[2]<<16)+(p[3]<<24);
++#else
++static u_int to_u32l(char* p)
++{
++    /*signness fix */
++  u_int i, j = 0;
++  for (i = 0; i < 4; i++){
++    j += ((u_char) p[i]) << (i * 8);
++  }
++  return j;
++#endif
+ }
+ 	
+ /*---------------------------------------------------------------------------*/
+@@ -288,7 +299,7 @@
+ 		read_u8(fp);
+ 	}
+ 	p->nSlen = read_s32(fp, p->e);
+-	if (!(p->strings = (u_char*)malloc(sizeof(u_char)*p->nSlen))) {
++	if (!(p->strings = (char*)malloc(sizeof(u_char)*p->nSlen))) {
+ 		die("(FONT): malloc error\n");
+ 	}
+ 	if (fread(p->strings, p->nSlen, 1, fp) != 1) die_file_eof(fp);
+@@ -535,7 +546,7 @@
+ 	p->defa = read_s16(fp, fmt.obit);
+ 
+ 	r = (p->coll - p->colf +1) * (p->rowl  - p->rowf +1);
+-	if (!(p->table = (u_int*)malloc(sizeof(int) * r))) {
++	if (!(p->table = (int*)malloc(sizeof(int) * r))) {
+ 		die("(FONT): malloc error\n");
+ 	}
+ 	for (i = 0 ; i < r ; i++) {
+--- jfbterm-0.4.7/term.c.compile	2003-09-16 00:45:31.000000000 +0900
++++ jfbterm-0.4.7/term.c	2007-12-17 22:32:28.000000000 +0900
+@@ -134,7 +134,7 @@
+ 
+ 	int ret;
+ 	struct timeval tv;
+-	u_char buf[BUF_SIZE+1];
++	char buf[BUF_SIZE+1];
+ #ifdef JFB_ENABLE_DIMMER
+ 	u_int idle_time = 0;
+ 	u_int blank = 0;
+@@ -216,7 +216,8 @@
+ 			}
+ #endif
+ 			if (ret > 0) {
+-				write(p->ptyfd, buf, ret);
++				int j = write(p->ptyfd, buf, ret);
++				j = 0;
+ 			}
+ 		} else if (FD_ISSET(p->ptyfd,&fds)) {
+ 			ret = read(p->ptyfd, buf, BUF_SIZE);
+@@ -247,6 +248,7 @@
+ {
+ 	struct utmp	utmp;
+ 	struct passwd	*pw;
++	time_t tmp_ut_time;
+ 	char	*tn;
+ 
+ 	pw = getpwuid(util_getuid());
+@@ -262,7 +264,8 @@
+ 	    tn = p->name + 5;
+ 	strncpy(utmp.ut_line, tn, sizeof(utmp.ut_line));
+ 	strncpy(utmp.ut_user, pw->pw_name, sizeof(utmp.ut_user));
+-	time(&(utmp.ut_time));
++	time(&(tmp_ut_time));
++	utmp.ut_time = (int32_t) tmp_ut_time;
+ 	pututline(&utmp);
+ 	endutent();
+ }
+@@ -270,6 +273,7 @@
+ void	tterm_reset_utmp(TTerm* p)
+ {
+ 	struct utmp	utmp, *utp;
++	time_t tmp_ut_time;
+ 	char	*tn;
+ 
+ 	tn = rindex(p->name, '/') + 4;
+@@ -281,7 +285,8 @@
+ 	utp->ut_type = DEAD_PROCESS;
+ 	memset(utp->ut_user, 0, sizeof(utmp.ut_user));
+ 	utp->ut_type = DEAD_PROCESS;
+-	time(&(utp->ut_time));
++	time(&(tmp_ut_time));
++	utp->ut_time = (int32_t) tmp_ut_time;
+ 	pututline(utp);
+ 	endutent();
+ }
+--- jfbterm-0.4.7/vterm.c.compile	2004-05-11 03:08:47.000000000 +0900
++++ jfbterm-0.4.7/vterm.c	2006-07-26 16:22:04.000000000 +0900
+@@ -1107,6 +1107,7 @@
+ 
+ static void tvterm_esc_report(TVterm* p, u_char mode, u_short arg)
+ {
++  int j;
+ 	p->report[0] = '\0';
+ 
+ 	switch(mode) {
+@@ -1125,7 +1126,8 @@
+ 		}
+ 		break;
+ 	}
+-	write(p->term->ptyfd, p->report, strlen(p->report));
++	j = write(p->term->ptyfd, p->report, strlen(p->report));
++	j = 0;
+ }
+ 
+ static void tvterm_set_region(TVterm* p,int ymin, int ymax)
+@@ -1355,7 +1357,7 @@
+ static void
+ tvterm_esc_rbracket(TVterm* p, u_char ch)
+ {
+-	static u_char arg[MAX_ARGLEN+1], enbuf[MAX_ARGLEN+32];
++	static char arg[MAX_ARGLEN+1], enbuf[MAX_ARGLEN+32];
+ 	static int argidx;
+ 
+ 	if (ch >= 0x20 && ch <= 0x7e) {
+--- jfbterm-0.4.7/vtermlow.c.compile	2003-09-30 00:45:33.000000000 +0900
++++ jfbterm-0.4.7/vtermlow.c	2006-07-26 16:27:30.000000000 +0900
+@@ -591,7 +591,9 @@
+ 	}
+ }
+ 
+-void	tvterm_text_reverse(TVterm* p,int fx, int fy, int tx, int ty)
++#if 0 /* DEAD CODE */
++void	tvterm_text_reverse(TVterm* p,u_int fx, u_int fy, 
++			    u_int tx, u_int ty)
+ {
+ 	u_int	from, to, y, swp, xx, x;
+ 	u_char	fc, bc, fc2, bc2;
+@@ -629,6 +631,7 @@
+ 		fx = 0;
+ 	}
+ }
++#endif
+ 
+ #if 0
+ /* Cursor related routines. */

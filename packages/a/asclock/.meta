@@ -1,0 +1,6 @@
+<package name="asclock" project="openSUSE:Factory">
+  <title>AfterStep digital clock</title>
+  <description>A swallowable applet shows clock and calendar. Supports themes for
+different looks.</description>
+  <devel project="X11:Utilities" package="asclock"/>
+</package>

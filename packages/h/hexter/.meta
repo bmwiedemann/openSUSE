@@ -1,0 +1,15 @@
+<package name="hexter" project="openSUSE:Factory">
+  <title>A Yamaha DX7 modeling software synthesizer for DSSI</title>
+  <description>Hexter is a software synthesizer that models the sound generation of                                              
+a Yamaha DX7 synthesizer.  It can easily load most DX7 patch bank 
+files, edit those patches via a built-in editor or MIDI sys-ex                                                          
+messages (ALSA systems only), and recreate the sound of the DX7 with 
+greater accuracy than any previous open-source emulation (that the 
+author is aware of....)                                        
+
+Hexter operates as a plugin for the DSSI Soft Synth Interface. DSSI 
+is a plugin API for software instruments (soft synths) with user 
+interfaces, permitting them to be hosted in-process by audio 
+applications.</description>
+  <devel project="multimedia:libs" package="hexter"/>
+</package>

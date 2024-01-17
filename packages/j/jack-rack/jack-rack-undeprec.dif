@@ -1,0 +1,55 @@
+--- src/Makefile.am.orig
++++ src/Makefile.am
+@@ -55,13 +55,11 @@ jack_rack_CFLAGS = \
+ 	-DPIXMAPDIR=\"$(pixmapdir)\" \
+ 	-DDTDDIR=\"$(dtddir)\" \
+ 	-DG_DISABLE_DEPRECATED=1 \
+-	-DGTK_DISABLE_DEPRECATED=1 \
+ 	-DGDK_DISABLE_DEPRECATED=1 \
+-	-DGDK_PIXBUF_DISABLE_DEPRECATED=1 \
+-	-DGNOME_DISABLE_DEPRECATED=1
++	-DGDK_PIXBUF_DISABLE_DEPRECATED=1
+ 
+ 
+-jack_rack_LDFLAGS = \
++jack_rack_LDADD = \
+ 	$(JACK_LIBS) \
+ 	$(GTK_LIBS) \
+ 	$(GNOMEUI_LIBS) \
+--- src/Makefile.in.orig
++++ src/Makefile.in
+@@ -263,10 +263,8 @@ jack_rack_CFLAGS = \
+ 	-DPIXMAPDIR=\"$(pixmapdir)\" \
+ 	-DDTDDIR=\"$(dtddir)\" \
+ 	-DG_DISABLE_DEPRECATED=1 \
+-	-DGTK_DISABLE_DEPRECATED=1 \
+ 	-DGDK_DISABLE_DEPRECATED=1 \
+-	-DGDK_PIXBUF_DISABLE_DEPRECATED=1 \
+-	-DGNOME_DISABLE_DEPRECATED=1
++	-DGDK_PIXBUF_DISABLE_DEPRECATED=1
+ 
+ jack_rack_LDFLAGS = \
+ 	$(JACK_LIBS) \
+--- configure.ac.orig
++++ configure.ac
+@@ -4,7 +4,10 @@ AM_INIT_AUTOMAKE(1.6)
+ AM_CONFIG_HEADER(src/ac_config.h)
+ AM_MAINTAINER_MODE
+ 
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AM_PROG_CC_C_O
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ #AC_PROG_LIBTOOL
+ 
+ 
+@@ -175,6 +178,8 @@ fi
+ 
+ AM_CONDITIONAL(HAVE_LASH, test "$LASH_FOUND" = "yes")
+ 
++AC_SEARCH_LIBS(dlopen, dl)
++
+ ############
+ ### lrdf ###
+ ############

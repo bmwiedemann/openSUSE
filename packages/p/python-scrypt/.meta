@@ -1,0 +1,7 @@
+<package name="python-scrypt" project="openSUSE:Factory">
+  <title>Bindings for scrypt</title>
+  <description>Bindings for the scrypt key derivation function library
+
+</description>
+  <devel project="devel:languages:python" package="python-scrypt"/>
+</package>

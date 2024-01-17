@@ -1,0 +1,6 @@
+<package name="gcolor2" project="openSUSE:Factory">
+  <title> Simple color selector</title>
+  <description>Gcolor2 is a GTK2 color selector to provide a quick and easy way to find
+colors for whatever task is at hand. Colors can be saved and deleted as well.</description>
+  <devel project="X11:Utilities" package="gcolor2"/>
+</package>

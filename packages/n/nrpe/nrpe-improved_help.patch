@@ -1,0 +1,25 @@
+Index: nrpe-4.0.3/src/check_nrpe.c
+===================================================================
+--- nrpe-4.0.3.orig/src/check_nrpe.c
++++ nrpe-4.0.3/src/check_nrpe.c
+@@ -769,6 +769,7 @@ void usage(int result)
+ 		printf("                              separated by a space. If provided, this must be the last\n");
+ 		printf("                              option supplied on the command line.\n");
+ 		printf(" -e 	                      Enable syslog debug messages.\n");
++		printf(" -h, --help                   Print this short help.\n");
+ 		printf("\n");
+ 		printf(" NEW TIMEOUT SYNTAX\n");
+ 		printf(" -t, --timeout=INTERVAL:STATE\n");
+Index: nrpe-4.0.3/src/nrpe.c
+===================================================================
+--- nrpe-4.0.3.orig/src/nrpe.c
++++ nrpe-4.0.3/src/nrpe.c
+@@ -594,6 +594,8 @@ void usage(int result)
+ 		printf("Options:\n");
+ 		printf(" -V, --version         Print version info and quit\n");
+ 		printf(" -n, --no-ssl          Do not use SSL\n");
++		printf(" -h, --help            Print this short help.\n");
++		printf(" -l,--license          Print licensing information.\n");
+ 		printf(" -c, --config=FILE     Name of config file to use\n");
+ 		printf(" -4, --ipv4            Use ipv4 only\n");
+ 		printf(" -6, --ipv6            Use ipv6 only\n");

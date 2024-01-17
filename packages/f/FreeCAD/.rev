@@ -1,0 +1,466 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b157eb857582b46c90a7feaebbcbd3bf</srcmd5>
+    <version>0.16</version>
+    <time>1485040307</time>
+    <user>dimstar_suse</user>
+    <comment>fix issue with lacking zipios dependency    Using the internal, one for now, since FreeCAD needs currently a specific version. new request with minor code change.</comment>
+    <requestid>418216</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ebac2c657a7dfb9c4844cf8bf0be93a2</srcmd5>
+    <version>0.16</version>
+    <time>1508316642</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533180</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c6cdf64b3341a4554f18d406616d9978</srcmd5>
+    <version>0.16.6712</version>
+    <time>1510241258</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>540131</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f5d6b6f472d4f00289a391be2599b5cf</srcmd5>
+    <version>0.16.6712</version>
+    <time>1513583921</time>
+    <user>dimstar_suse</user>
+    <comment>fix build</comment>
+    <requestid>557258</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3746506ee0b4c54f2d2eece203003bfd</srcmd5>
+    <version>0.16.6712</version>
+    <time>1515260973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561795</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dbd532e5ead36fa6fe068407cbfe74a4</srcmd5>
+    <version>0.17</version>
+    <time>1525779562</time>
+    <user>dimstar_suse</user>
+    <comment>drop med-tools from adi project
+
+- temporary disable FEM module
+  * it works fine, but requires hdf5 version 1.8 via med-tools,
+    which currently conflicts in openSUSE distro.
+- Fix draft module crash
+  (got merged upstream for 0.18 fix-draft-module-with-python3.patch)
+
+- apply current 0.17 branch (branch_update.patch)
+  In first place for occt 7.2 fixes
+
+- fix crash in Draft module with python 3
+
+- cleanup python qt deps (pyside2 only now)
+
+- update to version 0.17
+  2 years of work: https://www.freecadweb.org/wiki/Release_notes_0.17
+- switching to Qt5
+  (fix-build.diff 0001-find-openmpi2-include-files.patch)
+  (the old 0.16 fork had obsolete temporary patches remove-qtwebkit.patch and
+   remove-webgui.patch)</comment>
+    <requestid>605255</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b6961685a83fd23b2e3906d3963830ac</srcmd5>
+    <version>0.17</version>
+    <time>1527277151</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt 5.11 (forwarded request 610724 from cgiboudeaux)</comment>
+    <requestid>611499</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>13920397223e7f753c8da7dc15a34c11</srcmd5>
+    <version>0.17</version>
+    <time>1529667151</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617706</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>63cc091bb2f081ef26508ec135d8e052</srcmd5>
+    <version>0.17.1534399137.9948ee4f1</version>
+    <time>1536327629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633536</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d0bbbf3c0a1b1add5a8e8f6df866390d</srcmd5>
+    <version>0.17.1545162057.e1db7bff8</version>
+    <time>1549624186</time>
+    <user>coolo</user>
+    <comment>- update to current branch:
+  - Spreadsheet: Fixed issue #3361.
+
+- Add upstream patches to fix build with python 3.7:
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-__FreeCADBase__-module.patch
+  * get-rid-of-private-function-_PyImport_FixupBuiltin-for-FreeCAD-and-FreeCADGui-modules.patch</comment>
+    <requestid>671003</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5b18e76429e447b69584e1121c110d2e</srcmd5>
+    <version>0.17.1545162057.e1db7bff8</version>
+    <time>1551386376</time>
+    <user>coolo</user>
+    <comment>- disable builds for 32bit and s390x, test suite fails and it makes no
+  sense to use FreeCAD on small systems or mainframes...
+
+- Fix build with GCC 8, add fix-gcc8-build-failure.patch
+- Add 0001-Use-GL_RGB32F-instead-of-GL_RGB32F_ARB.patch, fix building
+  on AArch64.
+- Remove openmpi build dependencies, erroneously required for VTK
+  previously.
+  Drop 0001-find-openmpi2-include-files.patch
+
+- enable FEM module
+- disable builds for 32bit and s390x, test suite fails and it makes no
+  sense to use FreeCAD on small systems or mainframes...</comment>
+    <requestid>676501</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>c9fb1fb723f28b938701224b1660a1dd</srcmd5>
+    <version>0.17.1545162057.e1db7bff8</version>
+    <time>1552299378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update URL: to use https://
+- Reorder BuildRequires alphabetically, remove duplicates (forwarded request 683026 from StefanBruens)</comment>
+    <requestid>683694</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d13f26371e91cfaadd144e3718b42dfe</srcmd5>
+    <version>0.17.1545162057.e1db7bff8</version>
+    <time>1552901962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685413</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5160ddecae095824e361121b52495918</srcmd5>
+    <version>0.18</version>
+    <time>1554458242</time>
+    <user>dimstar_suse</user>
+    <comment>Version update to 0.18, now with fixed deps and test suite</comment>
+    <requestid>688190</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>24bc1984e3614e5f175b6c94e47dd1d5</srcmd5>
+    <version>0.18.1</version>
+    <time>1554712593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.1
+  * FEM module fixes
+  * crash fixes
+  * Qt5 bugs with external display</comment>
+    <requestid>691894</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4d98674c292f997ed1c186d106dfcd3a</srcmd5>
+    <version>0.18.3</version>
+    <time>1567849586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720109</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8f7aa14a23dae1be324905dfde01131b</srcmd5>
+    <version>0.18.3</version>
+    <time>1572278157</time>
+    <user>dimstar_suse</user>
+    <comment>- update to current 0.18 branch, esp for Qt &gt;= 5.9 fixes
+  * [TD]Fix slow GC of QGIPrimPath
+  * [Spreadsheet] Excel File Import fix Py3 bug
+  * [Path] Fix xrange bug with Py3
+  * fix print preview function for &gt;= Qt 5.9
+  * Backport: startwb files restored in 0.18.3 to display thumbs correctly
+  * 0.18.x displays the example files within in the Start WB without their
+     respective thumbs. This PR restores that functionality
+  * Fixed problems with 'pythonopen'
+  * Correction of drill speed calculation
+  * Material: py2 fix in depreciated mat file parser (back port from 0.19)
+  * [TD]Fix #4017 Crash on bad hatch scale</comment>
+    <requestid>741676</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3dd606ddc1c7171b68a6c22525f00583</srcmd5>
+    <version>0.18.4</version>
+    <time>1572556756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to final 0.18.4
+  * pre-select name filter in import/export file dialog</comment>
+    <requestid>744271</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>57e1e3975afa7b8fe8c15cc3d18cd8be</srcmd5>
+    <version>0.18.4</version>
+    <time>1580080914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767343</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>d6e6ea97453ba43e6be8714e85bf3dd1</srcmd5>
+    <version>0.18.4</version>
+    <time>1584350410</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix runtime errors with Python 3.8:
+  * 0001-fem-use-time.process_time-instead-of-removed-time.cl.patch
+- Fix last python2 she-bang remainders, fix imports:
+  * fix_unittestgui_tkinter_py3.patch
+- Remove unnecessary opencv build dependency
+- update to current 0.18 branch:
+  * Fem: fix segmentation fault when opening contraint transform
+    panel. Fix Python code
+  * Part: the number of domains returned by TopoShape::getDomains
+    must match with number of faces
+  * apply fixes from master when building with occt 7.4
+    + Drop 0002-fix-compile.patch
+- Fix build with Python 3.8:
+  Add update-swigpyrunin-for-python-3.8.patch
+- Spec file cleanup
+  * Drop xpm FreeCAD icon
+  * Install PNGs/SVG icons in correct paths
+  * Remove obsolete update_mime_database calls in %post
+  * Remove obsolete conditionals for Leap 42.x
+</comment>
+    <requestid>785389</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>641ded6e073230efd78f6f75aa0e4b4a</srcmd5>
+    <version>0.18.4</version>
+    <time>1585262112</time>
+    <user>dimstar_suse</user>
+    <comment>- More spec file cleanup, removed duplicate files
+- Use upstream provided desktop files, mimeinfo, etc
+</comment>
+    <requestid>788586</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>ea2f6333fecd20dfc9e3f4edb61fbd96</srcmd5>
+    <version>0.18.4</version>
+    <time>1585342724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788942</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>e118ca0900e77cb91185b3b2a0d6a10c</srcmd5>
+    <version>0.18.4</version>
+    <time>1588855889</time>
+    <user>dimstar_suse</user>
+    <comment>- Only enable gmsh BuildRequires on Tumbleweed, it's not available in Leap 15
+
+This should allow to submit the latest version to Leap 15.2. The current version in 15.2 fails to build since 4 months (and is uninstallable), and needs an update. (forwarded request 800657 from wolfi323)</comment>
+    <requestid>800703</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>8894ed60885107b7f2c55d7e24a9ab72</srcmd5>
+    <version>0.18.4</version>
+    <time>1591653605</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Fix build with Qt 5.15, add fix_qt_5.15_build.patch
+
+Build in science fails due to incompatible VTK 9.0, which is not yet in Tumbleweed
+</comment>
+    <requestid>812289</requestid>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>00534ad0c5046fe0cc39635f35c3d47f</srcmd5>
+    <version>0.18.4</version>
+    <time>1595864763</time>
+    <user>dimstar_suse</user>
+    <comment>- temporary disable FEM module until VTK 9 support arrives</comment>
+    <requestid>822931</requestid>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>d3c69412fa90fc25916982f5afc247ae</srcmd5>
+    <version>0.18.4</version>
+    <time>1600801729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835691</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>715dafe85ff0f10d3601d369b27dae8a</srcmd5>
+    <version>0.18.5</version>
+    <time>1606649508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.5:
+  * Fix addon manager to adapt to GitHub infrastructure changes.
+  * Add 0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
+  * Rebase 0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+- Reenable workbenches dependent on Mesher (e.g. Path, FEM):
+  * Add fix-smesh-vtk9.patch
+</comment>
+    <requestid>851603</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>86a7848922239ac88083e0fc5aa5111d</srcmd5>
+    <version>0.18.5</version>
+    <time>1609866835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860362</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>ac4beafe293af9faf9be93543eb394ae</srcmd5>
+    <version>0.18.5</version>
+    <time>1614274148</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874946</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>54ab6edfb72105a16a2867a418cbdf51</srcmd5>
+    <version>0.19.1</version>
+    <time>1617279403</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881026</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>48f5a447a1b67edccb71bdd2f92422df</srcmd5>
+    <version>0.19.2</version>
+    <time>1619653067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888893</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>730e7902236a795efc4dea90b1a77c95</srcmd5>
+    <version>0.19.2</version>
+    <time>1626788332</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace the QtWebKit build dependency with QtWebEngine.
+</comment>
+    <requestid>906975</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fbc5201149eed04046accd4c1d9b590d</srcmd5>
+    <version>0.19.3</version>
+    <time>1642462604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947051</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>874fa90f1e4c28111549afdb4ad4c0a6</srcmd5>
+    <version>0.19.3</version>
+    <time>1644435544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952284</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9fb75231549d17d506b895590320d325</srcmd5>
+    <version>0.19.4</version>
+    <time>1646671606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959753</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>8e2b44080c20228fb516c555f4ebc77f</srcmd5>
+    <version>0.19.4</version>
+    <time>1647367464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960932</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a208ebc795cdaf344771673983758bfa</srcmd5>
+    <version>0.20</version>
+    <time>1655821917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982855</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fdeda3c4c3af81892f0db62adf39affe</srcmd5>
+    <version>0.20.1</version>
+    <time>1660834151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997635</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>609d2ee32a7a53c7922e5ceeb89bb896</srcmd5>
+    <version>0.20.2</version>
+    <time>1670514638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041159</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>3ed28e95c5f21766ba84397767e605fe</srcmd5>
+    <version>0.20.2</version>
+    <time>1672562326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045909</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>1a1b91b0a6919c6832d1f15e77bc2d4c</srcmd5>
+    <version>0.20.2</version>
+    <time>1674737921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061091</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>873be5a8661cb25b53c336413efe4d0e</srcmd5>
+    <version>0.20.2</version>
+    <time>1679933851</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with gcc 13
+  0001-Fix-build-with-gcc13.patch</comment>
+    <requestid>1074633</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>0e56788dfcfe17cf49e1a78a5c5ece34</srcmd5>
+    <version>0.20.2</version>
+    <time>1683213079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084654</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>fbad6815fdc434b8f4c050d5783359e5</srcmd5>
+    <version>0.21.0</version>
+    <time>1691595251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103158</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>51b891afd38fecbaffae4204cd582cf6</srcmd5>
+    <version>0.21.1</version>
+    <time>1694545350</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110358</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>30555818b6ddad479ce6a1c52364e951</srcmd5>
+    <version>0.21.1</version>
+    <time>1704380246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1135807</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>be3a96704cfe0996dc8f0b1876d436cd</srcmd5>
+    <version>0.21.2</version>
+    <time>1704829751</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137142</requestid>
+  </revision>
+</revisionlist>

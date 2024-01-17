@@ -1,0 +1,2 @@
+addFilter("no-soname .*site-packages/awkward_cpp/lib/_ext.*.so")
+addFilter("zero-length .*.dist-info/entry_points.txt")

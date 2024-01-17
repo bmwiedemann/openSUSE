@@ -1,0 +1,7 @@
+# False positives. Libraries outside LD_LIBRARY_PATH use RPATH to find libraries, not ldconfig.
+addFilter("library-without-ldconfig-postin /usr/libexec/build/staging/.*")
+addFilter("library-without-ldconfig-postun /usr/libexec/build/staging/.*")
+# Not applicable for multi flavor build.
+addFilter("invalid-spec-name")
+# Not important, and it simplifies packaging.
+addFilter("non-etc-or-var-file-marked-as-conffile /usr/libexec/build/staging/.*")

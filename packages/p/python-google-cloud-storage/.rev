@@ -1,0 +1,273 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ac984c7e6beaeb1a16436b321b36db4</srcmd5>
+    <version>1.11.0</version>
+    <time>1537018782</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635525</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f189c46ebf079a581d0265547a8ff52c</srcmd5>
+    <version>1.11.0</version>
+    <time>1548335639</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667857</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>60510bb654ae90728b66454aadbc9002</srcmd5>
+    <version>1.14.0</version>
+    <time>1551386473</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676987</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8d25ab67697f4c24da32e1c8ad09fb09</srcmd5>
+    <version>1.15.1</version>
+    <time>1558129438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703587</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4239058ba111d91c68a6b8b457b51260</srcmd5>
+    <version>1.19.1</version>
+    <time>1569523604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.19.1:
+  * Minor bugfix over previous release
+
+- Update to 1.19.0:
+  * Huge range of updates and tweaks, mostly bugfixing</comment>
+    <requestid>733461</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8e097805cfeb4012300cc723d75c27f8</srcmd5>
+    <version>1.28.0</version>
+    <time>1588450564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.28.0:
+  * Many various bugfixes all around
+  * Updated dependency requirements</comment>
+    <requestid>798606</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b2d67f23023f6d3b6124c997815f43e9</srcmd5>
+    <version>1.29.0</version>
+    <time>1592580198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815733</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>69236d7616ca8fd9ab8891f83366d241</srcmd5>
+    <version>1.29.0</version>
+    <time>1593546997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817772</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d9f19ecae1b48d5b7555b654b0b44c0e</srcmd5>
+    <version>1.38.0</version>
+    <time>1624387501</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Requires to googleapis-common-protos.
+- Add Requires on python-google-filesystem, and stop including a file it
+  now ships.
+
+- Update to 1.38.0:
+  - add getters and setters for encryption_key and kms_key_name
+  - retry auth.TransportError errors
+  - revise docstrings for generate_signed_url
+  - Ensure consistency check in test runs even if expected error
+    occurs
+  - silence expected errors for routine operations on BlobReader
+  - add blob.open() for file-like I/O
+  - update user_project usage and documentation in bucket/client
+    class methods
+  - update batch connection to request api endpoint info from
+    client
+  - allow metadata keys to be cleared 
+  - allow signed url version v4 without signed credentials
+  - correctly encode bytes for V2 signature
+  - add mtls support
+  - correctly decode times without microseconds
+  - expose num_retries parameter for blob upload methods
+  - pass the unused parameter
+  - set custom_time on uploads
+  - address incorrect usage of request preconditions
+  - Amend default retry behavior for bucket operations on client
+  - support ConnectionError retries for media operations
+  - make retry parameter public and added in other methods
+  - avoid triggering global logging config
+  - fall back to 'charset' of 'content_type' in</comment>
+    <requestid>901276</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1c20ce3ede4943dd6602959847bdbccd</srcmd5>
+    <version>1.38.0</version>
+    <time>1633038224</time>
+    <user>dimstar_suse</user>
+    <comment>- Copy the testsuite before we run it to avoid import problems.
+- Remove horrible workarounds creating __init__.py and then removing them. 
+- Drop Requires on python-google-filesystem.</comment>
+    <requestid>922325</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>63660aeecb9574258fbc7def329321cb</srcmd5>
+    <version>1.38.0</version>
+    <time>1635272054</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-relative-imports.patch to fix relative imports.</comment>
+    <requestid>927534</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b42912e95e08d49c1b5eb6b2bca45354</srcmd5>
+    <version>2.2.1</version>
+    <time>1649876769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1
+  Bug Fixes
+  * remove py.typed marker file for PEP 561 (#735), closes (#734)
+- from version 2.2.0
+  Features
+  * allow no project in client methods using storage emulator (#703)
+  Bug Fixes
+  * add user agent in python-storage when calling resumable media (c7bf615)
+  * **deps:** require google-api-core&gt;=1.31.5, &gt;=2.3.2 (#722) (e9aab38)
+  * Fix BlobReader handling of interleaved reads and seeks (#721) (5d1cfd2)
+  * retry client side requests timeout (#727) (e0b3b35)
+  Documentation
+  * fixed download_blob_to_file example (#704) (2c94d98)
+- from 2.1.0
+  Features
+  * add turbo replication support and samples (#622) (4dafc81)
+  * avoid authentication with storage emulator (#679) (8789afa)
+  * remove python 3.6 support (#689) (8aa4130)
+- from version 2.0.0
+  BREAKING CHANGES
+  * Remove Python 2 support (#657)
+  Features
+  * Remove Python 2 support (#657) (b611670)
+- from version 1.44.0
+  Features
+  * add raw_download kwarg to BlobReader (#668) (10cdad6)
+  Documentation
+  * Describe code sample more specifically (#660) (0459cb4)
+  * refresh readme instructions (#667) (ceb9314)
+  * This is just a simple PR to better describe what the code (forwarded request 969826 from glaubitz)</comment>
+    <requestid>969851</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3f5eec2b0145c3d035cb5004400d9ce1</srcmd5>
+    <version>2.3.0</version>
+    <time>1650355086</time>
+    <user>dimstar_suse</user>
+    <comment>REQUIRES https://build.opensuse.org/request/show/970437
+
+- Update to 2.3.0:
+  - add dual region bucket support and sample
+  - track invocation id for retry metrics
+  - deps: drop pkg_resources
+  - fix links in blob module
+- Add patches:
+  - no-relative-imports.patch to allow running the test suite
+    with pytest (gh#googleapis/python-storage#772)
+  - demock.patch to remove dependency on the external package
+    mock (gh#googleapis/python-storage#770)</comment>
+    <requestid>970440</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fdb868e4e9de4bbf2f7e81bd53a2eef4</srcmd5>
+    <version>2.4.0</version>
+    <time>1654782106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981504</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>000de03a73f69a60f6123da38e99b947</srcmd5>
+    <version>2.5.0</version>
+    <time>1663074605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003296</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bc69c315d8cd4e64287df5b41653fe8d</srcmd5>
+    <version>2.6.0</version>
+    <time>1668702290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036390</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>60dbd975b9d4aeebf78753692f29bb74</srcmd5>
+    <version>2.7.0</version>
+    <time>1673281407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.0
+  * Add &quot;transfer_manager&quot; module for concurrent uploads and
+    downloads, as a preview feature (#943)
+  * Add use_auth_w_custom_endpoint support (#941)
+  * Implement closed property on fileio.py classes (#907)</comment>
+    <requestid>1056981</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>62d05134404f9ac137907483fc4adde9</srcmd5>
+    <version>2.8.0</version>
+    <time>1680209549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.0
+  * Add multiprocessing and chunked downloading to transfer manager (#1002)
+  * Add trove classifier for python 3.11 (#971)
+  * Remove use of deprecated cgi module (#1006)
+  * Add clarifications to read timeout (#873)
+  * Fix c.g.c structure (#982)
+  * Update c.g.c docs and guides  (#994)
+- Refresh patches for new upstream version
+  * demock.patch (forwarded request 1075534 from glaubitz)</comment>
+    <requestid>1075541</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5a45ad993721f3e2835ca336f28895b0</srcmd5>
+    <version>2.14.0</version>
+    <time>1703102493</time>
+    <user>anag+factory</user>
+    <comment>- Fix tests, setting GOOGLE_CLOUD_PROJECT environment variable.
+- Add fake default credentials to fix tests
+
+- update to 2.14.0:
+  * Add support for Python 3.12
+  * Support object retention lock
+  * Clarify error message and docstrings in Blob class method
+  * Propagate timeout in BlobWriter
+  * Use native namespace to avoid pkg_resources warnings
+
+- Update to 2.13.0
+  * Add Autoclass v2.1 support (#1117)
+  * Add support for custom headers (#1121)
+  * Blob.from_string parse storage uri with regex (#1170)
+  * Bucket.delete(force=True) now works with version-enabled buckets (#1172)
+  * Fix typo in Bucket.clear_lifecycle_rules() (#1169)
+  * Fix exception field in tm reference docs (#1164)
+- from version 2.12.0
+  * Add additional_blob_attributes to upload_many_from_filenames (#1162)
+  * Add crc32c_checksum argument to download_chunks_concurrently (#1138)
+  * Add skip_if_exists to download_many (#1161)
+  * Launch transfer manager to GA (#1159)
+  * Bump python-auth version to fix issue and remove workaround (#1158)
+  * Mark _deprecate_threads_param as a wrapper to unblock introspection and docs (#1122)
+  * Add snippets for upload_chunks_concurrently and add chunk_size (#1135)
+  * Update formatting and wording in transfer_manager docstrings (#1163)
+- from version 2.11.0
+  * Add gccl-gcs-cmd field to X-Goog-API-Client header for Transfer Manager calls (#1119)
+  * Add transfer_manager.upload_chunks_concurrently using the XML MPU API (#1115)
+  * Support configurable retries in upload_chunks_concurrently (#1120)</comment>
+    <requestid>1134085</requestid>
+  </revision>
+</revisionlist>

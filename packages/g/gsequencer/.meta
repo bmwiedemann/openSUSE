@@ -1,0 +1,16 @@
+<package name="gsequencer" project="openSUSE:Factory">
+  <title>Advanced Gtk+ Sequencer audio processing engine</title>
+  <description>Advanced Gtk+ Sequencer audio processing engine is an audio
+sequencer application supporting LADPSA, DSSI and Lv2 plugin
+format. It can output to Pulseaudio server, JACK audio connection
+kit, ALSA and OSS4.
+
+You may add multiple sinks, mix different sources by producing
+sound with different sequencers. Further it features a pattern
+and piano roll. Additional there is a automation editor to
+automate ports.
+
+</description>
+  <devel project="multimedia:apps" package="gsequencer"/>
+  <url>https://nongnu.org/gsequencer</url>
+</package>

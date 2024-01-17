@@ -1,0 +1,15 @@
+---
+ configure.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/configure.in
++++ b/configure.in
+@@ -36,7 +36,7 @@ AC_CHECK_LIB(anthydic, anthy_dic_util_in
+ AC_CHECK_LIB(anthy, anthy_get_version_string)
+ 
+ CFLAGS="$CFLAGS -Wall"
+-CXXFLAGS="$CXXFLAGS -Wall"
++CXXFLAGS="$CXXFLAGS -Wall -std=c++14"
+ 
+ dnl Checks for header files.
+ 

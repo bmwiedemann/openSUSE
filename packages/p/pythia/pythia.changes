@@ -1,0 +1,508 @@
+-------------------------------------------------------------------
+Wed Jul 26 22:12:11 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.310:
+  * Production of quarkonia is now available via the simple
+    timelike shower, see Onia Showers for details.
+  * Added a new feature that allows producing user-defined
+    resonances in hadronic rescattering. Newly added particles can
+    be produced as resonances if they set varWidth = on.
+  * A number of changes have been made to the heavy ion machinery.
+  * Included possibility to sample intermediate photon virtuality
+    also for externally provided events using built-in photon flux
+    for protons.
+  * Included possibility to generate DIS events with a
+    (anti-)neutrino beam.
+  * The TopRecoilHook, formerly available separately, has now been
+    integrated into the SimpleTimeShower.
+  * Introduced a new use plugin system, see Plugins for details.
+  * The arguments to the setSigmaPtr method are now shared
+    pointers. Additionally, addSigmaPtr has been introduced with
+    the previous behaviour of setSigmaPtr, and the new setSigmaPtr
+    overrides all previously added pointers.
+  * A similar change has been made for the setResonancePtr method
+    with the addition of the addResonancePtr method.
+  * The new Logger class now handles printing such as
+    initialization information and diagnostic messages. For more
+    information about this class, see the Logging page.
+  * The new BeamSetup class has been introduced to handle the beam
+    configuration, including initializing and changing beam
+    identities, kinematics and parton distributions.
+  * Modified interface to LHAPDF6 to allow for multi-threading.
+  * Updated the Python interface to use pybind11 version 2.10.4
+    which is compatible with Python 3.11.
+  * Fix for the Python interface working with gcc13.
+  * Fixed a bug in the Python interface which prevented main162.py
+    from running correctly when passing a custom function for
+    initialization.
+  * Updated the Lambda_b0 lifetime to c*tau = 0.44 mm. The value
+    was rounded to two significant digits since PDG and HFLAV do
+    not quite agree to three digits.
+  * Included several small fixes in response to running an LLVM
+    static code analysis.
+  * Fixed out-of-range access when calling Hist::getYMin and
+    Hist::getYMax for a histogram that has not been booked.
+  * Fixed BeamRemnants:unresolvedHadron option that was broken and
+    had no effect since 8.307.
+  * Removed use of simple-template-ids in SusyLesHouches.h to make
+    compliant with C++20.
+  * Fixed dipole sorting behaviour in ColourReconnection which
+    resulted in an ordering that depended on the current memory
+    state of the program.
+  * Changed the default for Parallelism:balanceLoad to on and
+    updated the documentation. This ensures each thread will
+    always generate the same number of events.
+  * Added the += notation for settings vectors, as well as the
+    include = fileName directive, which allows for additional
+    settings files to be directly read in.
+  * Fixed a bug in the bookkeeping the number of hadrons in the
+    string fragmentation.
+- Major rebase of pythia-remove-rpaths.patch for updated version.
+
+-------------------------------------------------------------------
+Sun Feb 27 23:05:39 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.307:
+  * Extensions to the hadronic cross sections and beam types used
+    for hadronic rescattering and cascades in the atmosphere.
+  * Improvements for hidden valley scenarios.
+  * A new framework for parallelisation (in addition to the
+    existing openMP option).
+  * A number of other technical improvements and bug fixes (full
+    list here: https://pythia.org/history/index.html).
+- Minor rebase of patches to apply cleanly, without fuzz.
+
+-------------------------------------------------------------------
+Wed Jan  5 16:00:14 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop HepMC2 dependency and build without hepmc2 support; largely
+  superseded by HepMC(3) and this change allows Leap 15.x builds
+  to proceed without HepMC2-HepMC conflicts.
+- Add BuildRequires: fastjet-plugin-siscone-devel which is needed
+  for one of the tests (test number 111).
+
+-------------------------------------------------------------------
+Sun Dec 12 21:15:04 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.306:
+  * Fixed the incorrect scale being set when applying the POWHEG
+    veto, i.e. main31.cc. Note that the number of emissions is
+    correct in 8.303, but is incorrect in 8.304 and 8.305.
+  * Fixed repeated initialization causing an ever expanding
+    physics pointer list in the main Pythia class.
+  * Fixed issue for HepMC output from Vincia, which would
+    previously issue warnings about inconsistent mother/daughter
+    relationships.
+  * Removed assert statements from Angantyr.
+  * Shortened Pythia constructor header.
+- Rebase pythia-honour-env-cxxflags.patch and
+  pythia-makefile-destdir-support.patch to apply cleanly.
+- Major rebase of pythia-remove-rpaths.patch for updated version.
+- Drop patch not required any more:
+  * pythia-disable-example23-req-MixMax_h.patch: Examples can now
+    be disabled by passing options to the run script.
+- Change BuildRequires to pkgconfig based ones wherever
+  appropriate. 
+- More examples need linking against gmp explicitly: add fixes for
+  all necessary examples to patch pythia-example71-link-gmp.patch
+  and rename it to pythia-examples-link-gmp.patch.
+- Build with Rivet and HepMC(3) support: add HepMC-devel,
+  pkgconfig(rivet) BuildRequires.
+- Update URL and source URL in keeping with upstream.
+- Minor improvements to package summaries.
+- Run spec-cleaner for minor cleanups.
+
+-------------------------------------------------------------------
+Fri Apr 16 12:30:00 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build for Leap 15.3
+
+-------------------------------------------------------------------
+Thu Jan  7 15:55:52 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Compile with %optflags
+
+-------------------------------------------------------------------
+Mon Jan  4 13:59:33 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to drop build date (boo#1047218)
+
+-------------------------------------------------------------------
+Sun Jan  3 17:56:27 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.245:
+  * Significant speedup of parton distribution handling.
+  * Several fixes to avoid out-of-bound evaluation of vectors in
+    the merging code.
+  * Several fixes to correctly handle CKKW-L merging of EWkino-
+    and higgsino-processes have been included.
+  * Include the functionality for MC@NLO-Delta matching with
+    aMC@NLO.
+  * Further bug fixes for the hard process name handling for
+    weak-boson-fusion-like processes, that led to an incorrect
+    counting of additional emissions.
+  * Small fixes to history construction in the presence of
+    multiple resonances.
+  * The primordial kT for LHE files is now set by the
+    BeamRemnants:primordialKThard average value, rather than the
+    LHE scale, since the latter may be quite low e.g. in the
+    POWHEG approach.
+  * The problem of "dangling" gluons causing changing color flows
+    in SimpleTimeShower for top decays is now fixed.
+  * Extra check added to SimpleSpaceShower for the case where a
+    small daughter PDF value can lead to an infinite loop if PDF
+    variations are switched on.
+  * Bug fixed in the new possibility to let particles with narrow
+    widths (such as onia states) obtain a simple Breit-Wigner
+    distribution, specifically for MPIs, introduced in 8.240.
+  * An indexing bug, for the scattering lepton in DIS events with
+    photon radiation allowed, has been fixed.
+  * Added a few copy constructors to match corresponding
+    assignment operators, to avoid warnings for some compilers.
+  * Small fix in cross section calculation of main89.cc.
+  * Fixes in configure and examples/Makefile to have ROOT examples
+    work again.
+  * main**.cmnd, ** = 81-84, 87-88 have been slightly modified
+    such that linking to LHAPDF6 is not required by default.
+  * A bug in the XML-to-HTML conversion has led to the
+    indiscriminate removal of "more" from the HTML manual, notably
+    in Pythia::moreDecays().
+- Add patches:
+  * pythia-example71-link-gmp.patch: Fix building example 71 by
+    adding -lgmp to the linker flag.
+  * pythia-disable-example23-req-MixMax_h.patch: Drop a test that
+    requires the non-free MixMax.h header (which we delete).
+- Use autopatch to setup source dir and apply patches
+  automatically.
+
+-------------------------------------------------------------------
+Sun Mar  1 11:10:02 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.244:
+  * The combination of weight variations, within the context of
+    uncertainty bands, has not been well documented and therefore
+    prone to misunderstandings. Now the behaviour of
+    Info::getGroupWeight() has been made transparent, and the
+    documentation in Variations has been improved. The main121.cc
+    example has been modified accordingly.
+  * Restore the capability to set width and lifetime of a
+    resonance separately (see change in 8.240). Now the lifetime
+    is set from the width only if the allowCalc() method of the
+    resonance class returns true.
+  * Updated handling of Powheg files, such that files with
+    multiple/variable number of real emissions can be handled. The
+    default value of the POWHEG:nFinalparameter has been changed
+    to -1, see the POWHEG Merging documentation.
+  * Limit the amount by which transverse smearing of the
+    space-time quark-antiquark string breakup vertices can give
+    large shifts, which may translate into unreasonably long
+    invariant times being assigned to primary hadron production
+    vertices. This is regulated by the new HadronVertex:maxSmear
+    parameter. Even so, large hadron production invariant times
+    may still occur occasionally by imperfections in the
+    reconstruction around multiple gluon corners, so
+    HadronVertex:maxTau gives the possibility to reject the
+    hadrons of such a parton system and try again. Also some other
+    related changes.
+  * Fixes for consistent storage of production vertices in units
+    of mm. Thanks to Christopher Plumberg.
+  * Number of weights in info reset to 1 for each new init call.
+- Drop manual fixes in specfile that are no longer needed:
+  * No unusual hidden files to delete.
+  * Buildroot doesn't get copied into config files.
+  * No more spurious exec permissions in plain files.
+
+-------------------------------------------------------------------
+Wed Aug 21 08:06:55 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.243:
+  + See
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase existing patches to apply cleanly.
+
+-------------------------------------------------------------------
+Fri May  3 12:49:40 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.240:
+  + See
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase existing patches to apply cleanly.
+- Disable boost and drop boost BuildRequires as it is no longer
+  needed when compiling against LHAPDF >= 6.2.
+- Remove unnecessary hidden files not cleaned up by build.
+- Cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Apr 30 22:09:08 UTC 2018 - badshah400@gmail.com
+
+- Update to version 8.235:
+  + See
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase pythia-remove-rpaths.patch 
+- Drop bundled header file MixMax.h which is not used by pythia
+  directly and violates GPL copyright.
+- Update License to GPL-2.0-or-later in keeping with upstream
+  change.
+- Use %%license to install COPYING file instead of %%doc.
+- Remove no-longer needed post-install mosifications:
+  + The correct permission for pythia8-config binary is set by
+    install script; stop setting it manually
+  + Rpaths are already removed from the shared libraries; don't
+    execute chrpath to do this. Also drop BuildRequires: chrpath.
+  + Don't remove non-existent backup file.
+
+-------------------------------------------------------------------
+Mon Oct  9 10:20:22 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.230:
+  + Long list of changes, see
+    http://home.thep.lu.se/~torbjorn/Pythia.html.
+- Drop python-dont-force-std-cxx98.patch, incorporated into
+  upstream sources.
+- Rebase existing patches.
+
+-------------------------------------------------------------------
+Thu Aug 31 22:16:11 UTC 2017 - badshah400@gmail.com
+
+- Build with HepMC2-devel < 3, since pythia tests fail when built
+  against HepMC-devel >= 3. 
+
+-------------------------------------------------------------------
+Mon Jul 31 16:21:15 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.226:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/pythia82html/UpdateHistory.html
+- Rebase patches for update.
+- Add python-dont-force-std-cxx98.patch to prevent usage of
+  --std=c++98 and instead inherit default compiler flags; using
+  c++98 causes conflicts with dependencies such as fastjet which
+  are built using default compiler std, leading to build failures
+  for openSUSE > 1320 (where fastjet is compiled with --std=c+=14
+  support). Tests in the check section show that this does not
+  have any untoward repercussions.
+
+-------------------------------------------------------------------
+Sun Feb  5 16:42:33 UTC 2017 - badshah400@gmail.com
+
+- Use individual libboost-*-devel packages instead of boost-devel
+  (only for suse_version > 1325).
+
+-------------------------------------------------------------------
+Thu Feb  2 04:05:24 UTC 2017 - bwiedemann@suse.com
+
+- Fix build with rpm-4.13 that creates no .orig file
+
+-------------------------------------------------------------------
+Wed Jan 25 09:46:08 UTC 2017 - badshah400@gmail.com
+
+- Update to version 8.223:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/Pythia.html
+    or locally at
+    /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Pass "-std=c++14" to CXXFLAGS as it is required for building
+  with fastjet support.
+- Move installation of shell env definitions to %install section;
+  this avoids an rpmlint warning and is a better place to do the
+  installation rather than the %build section.
+
+-------------------------------------------------------------------
+Sun Jan  1 13:06:18 UTC 2017 - jengelh@inai.de
+
+- Trim descriptions; only have the full one on the most important
+  package. RPM group corrections.
+
+-------------------------------------------------------------------
+Wed Sep  7 03:45:36 UTC 2016 - badshah400@gmail.com
+
+- Modify pythia-remove-rpaths.patch to make disabling rpaths
+  optional, specified by passing the "--disable-rpath" option to
+  configure. Pass said option at the %build stage to prevent
+  rpath usage in build shared libraries.
+
+-------------------------------------------------------------------
+Fri Sep  2 01:42:56 UTC 2016 - badshah400@gmail.com
+
+- Update to version 8.219:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/Pythia.html
+    or locally at
+    /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Rebase patches so that they apply cleanly against updated
+  version.
+- Add pythia-remove-rpaths.patch to remove rpath usage when
+  building shared libraries.
+
+-------------------------------------------------------------------
+Mon Feb  1 17:02:25 UTC 2016 - badshah400@gmail.com
+
+- Update to version 8.215:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/Pythia.html
+    or locally at
+    /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Rebase patches so that they apply cleanly against updated
+  version.
+
+-------------------------------------------------------------------
+Wed Sep 23 21:34:24 UTC 2015 - badshah400@gmail.com
+
+- Update to version 8.212:
+  + See list of changes at:
+    http://home.thep.lu.se/~torbjorn/Pythia.html
+
+-------------------------------------------------------------------
+Fri Sep  4 09:17:48 UTC 2015 - badshah400@gmail.com
+
+- Update pythia-honour-env-cxxflags.patch to really fix the
+  issue (mentioned in previous entry) for all cases.
+
+-------------------------------------------------------------------
+Wed Sep  2 03:22:30 UTC 2015 - badshah400@gmail.com
+
+- Update pythia-honour-env-cxxflags.patch to fix a minor issue
+  with the pythia8-config script when system CXXFLAGS are passed
+  during compilation.
+
+-------------------------------------------------------------------
+Fri Aug 14 23:52:54 UTC 2015 - badshah400@gmail.com
+
+- Fix the location pointed to by PYTHIA8DATA env variable saved in
+  /etc/profile.d/pythia.*; remove %{appname} macro as nothing uses
+  it any more.
+- Use %configure instead of ./configure (remove duplicate
+  specification of "--prefix=PATH").
+- Add pythia-honour-env-cxxflags.patch to allow compilation with
+  CXXFLAGS set by env appended to default compilation flags; this
+  allows the build to honour RPM_OPT_FLAGS.
+- Fix some unusual characters in the descriptions.
+
+-------------------------------------------------------------------
+Fri Aug 14 11:44:09 UTC 2015 - badshah400@gmail.com
+
+- Verify installation by running select bundled tests in a %check
+  section.
+
+-------------------------------------------------------------------
+Fri Aug 14 11:33:44 UTC 2015 - idonmez@suse.com
+
+- Change postinstall scripts to run ldconfig directly 
+
+-------------------------------------------------------------------
+Fri Aug 14 05:18:52 UTC 2015 - badshah400@gmail.com
+
+- Update to version 8.210:  
+  + Bug fix in CKKW-L merging for LHE files, such that the
+    factorization and renormalization scales are set by the SCALUP
+    value if the muf2 and mur2 LHEF3 attributes have not been set,
+    and the user has not set any explicit values; this change
+    restores the PYTHIA 8.1 behaviour.
+  + Various technical improvements in the machinery for hard
+    diffraction.
+  + Correct quark flavour selection when a string spanned directly
+    between two junctions is split up.
+  + Check that SK-I and SK-II colour reconnection machineries only
+    are called for event topologies they are set up to handle.
+  + Bug fixes in partial widths of the W' boson. Results are
+    correct when the W' is a simply rescaled copy of the W, but
+    not for more general couplings. Thanks to Mihail Chizhov.
+  + Minor fix in default location of PDF data files in the
+    constructors. No practical consequence since correct
+    non-default values are used.
+  + Tiny fix in the configure script, so that CXX options
+    containing an equal sign are parsed correctly.
+- Changes from version 8.202 through 8.209:
+  + See /usr/share/doc/packages/pythia/htmldoc/UpdateHistory.html.
+- Add pythia-makefile-destdir-support.patch to enable DESTDIR
+  support in the Makefile; makes configure stage buildroot-free
+  and prevents an ugly BUILDROOT trace in the shlib.
+- Enable additional bindings now that all necessary deps are in
+  Factory; new subpackage: libpythia8lhapdf6.
+- Add BuildRequires: chrpath; required to cleanup rpath in
+  libpythia8lhapdf6.so.
+
+-------------------------------------------------------------------
+Fri Oct 17 06:09:48 UTC 2014 - badshah400@gmail.com
+
+- Update to version 8.201:
+  + Undocumented changes
+- Changes from version 8.200:
+  + Long list of changes, see announcement here:
+    https://www.hepforge.org/lists-archive/pythia8-announce/2014/000009.html
+- Packaging changes:
+  + Rename pythia-libs to libpythia8 to satisfy rpmlint (although
+    the package only includes one unversioned shlib)
+  + Documentation files moved from toplevel dir in source to
+    "share" subdir, adapt specfile accordingly
+  + pythia8-config.in is now replaced by the script pythia8-config
+    and does not require any tweaking in specfile to get right
+    paths
+  + configure options changed, allowing to automatically install
+    to libdir where it needed to be manually copied to /usr/lib64
+    for the x86_64 arch
+  + Package new headers directory: %{_includedir}/Pythia8Plugins/
+  + Package new pdf documentation: %{_docdir}/%{name}/pdfdoc/.
+
+-------------------------------------------------------------------
+Thu Sep  4 23:49:37 UTC 2014 - badshah400@gmail.com
+
+- Update to version 8.186:
+  + New user hook to help experimentation with colour
+    reconnection, in particular in relation to resonance decays
+  + New set of parameters StringFlav:probQQ1toQQ0join, used to
+    pick diquark spin when two already produced quarks are to be
+    joined into a diquark
+  + Possibility to map the bookkeeping of exotic unresolved
+    incoming beams in Les Houches event files onto neutrino beams,
+    see LesHouches:idRenameBeams; primarily intended for dark
+    matter annihilation
+  + A correction to the graviton (G^*) + parton hard processes
+    (5003-5005) to account for off-shell G^* production; the
+    previous formula assumed the graviton was on-shell and
+    could greatly overestimate the low-mass tail of the G^*.
+  + Bug fixes in examples/JetMatching.h, for uninitialized
+    boolean, and number of partons to match for heavy flavour
+    handling. The former bug was introduced with the new
+    matching schemes in version 8.185 and affected matching to
+    ALPGEN, since no events were rejected
+  + Differentiate the reading of ALPGEN masses, so that vanishing
+    c or b masses in ALPGEN are not unwittingly used where
+    inappropriate; also protect the c and b masses from being set
+    too low in TimeShower and SpaceShower, so that flavour
+    thresholds are not messed up
+  + Reduce number of maximum violation warnings in SpaceShower by
+    leaving some headroom for branching weights
+  + Bug fix that hasVetoed in Pythia.cc was not reset correctly in
+    some specific cases
+  + Bug fix in PartonLevel.cc where a reference could become
+    invalid
+  + Improvements and bug fixes in junction handling
+  + Bug fix to not reuse colour indices in double diffraction
+  + Bug fix in the calculation of the average mass threshold of
+    open decay channels of a resonance; reduced
+    ResonanceWidths::MASSMIN parameter value.
+  + Correct typo in left-right symmetry documentation
+  + Other minor fixes.
+
+-------------------------------------------------------------------
+Sat Mar 15 21:21:44 UTC 2014 - badshah400@gmail.com
+
+- Update to version 8.185:
+  + This is a bug-fix release, see
+    http://www.hepforge.org/lists-archive/pythia8-announce/2014/000007.html
+    for a summary of changes.
+
+-------------------------------------------------------------------
+Sat Feb 22 05:10:04 UTC 2014 - badshah400@gmail.com
+
+- Update to version 8.183:
+  + This is a bug-fix release, see
+    http://www.hepforge.org/lists-archive/pythia8-announce/2014/000006.html
+    for a list of changes.
+
+-------------------------------------------------------------------
+Tue Dec 10 23:32:03 UTC 2013 - badshah400@gmail.com
+
+- Initial version
+

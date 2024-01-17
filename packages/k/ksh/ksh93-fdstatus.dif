@@ -1,0 +1,1631 @@
+| Fix for bnc#814135, bnc#808449, bnc#835885, and bnc#844071
+| - crash in bestreclaim() after traversing a memory block with a very large size (ksh)
+| - set -k does not work properly with ksh-93t-13.17 and higher
+| - Problem after update of ksh from ksh-93u-0.14.1 to ksh-93u-0.22.1
+| - Regression: Fix crash in sfio code of libast
+| This is a backport from the beta version ksh93v-2013-10-10
+--- src/cmd/ksh93/bltins/enum.c
++++ src/cmd/ksh93/bltins/enum.c	2013-10-25 13:26:45.739248213 +0000
+@@ -266,7 +266,9 @@ int b_enum(int argc, char** argv, Shblti
+ 		optdisc.opt.infof = enuminfo;
+ 		optdisc.np = tp;
+ 		nv_addtype(tp, enum_type, &optdisc.opt, sizeof(optdisc)); 
++		nv_onattr(np,NV_LTOU|NV_UTOL);
+ 	}
++	nv_open(0,shp->var_tree,0);
+ 	return error_info.errors != 0;
+ }
+ 
+--- src/cmd/ksh93/bltins/read.c
++++ src/cmd/ksh93/bltins/read.c	2013-10-25 13:26:45.740248120 +0000
+@@ -280,24 +280,25 @@ int sh_readline(register Shell_t *shp,ch
+ 	if(size || (flags>>D_FLAG))	/* delimiter not new-line or fixed size read */
+ 	{
+ 		if((shp->fdstatus[fd]&IOTTY) && !keytrap)
+-			tty_raw(fd,1);
++			tty_raw(sffileno(iop),1);
+ 		if(!(flags&(N_FLAG|NN_FLAG)))
+ 		{
+ 			delim = ((unsigned)flags)>>D_FLAG;
+ 			ep->e_nttyparm.c_cc[VEOL] = delim;
+ 			ep->e_nttyparm.c_lflag |= ISIG;
+-			tty_set(fd,TCSADRAIN,&ep->e_nttyparm);
++			tty_set(sffileno(iop),TCSADRAIN,&ep->e_nttyparm);
+ 		}
+ #if defined(__linux__)
+ 		else if ((shp->fdstatus[fd]&(IOTTY|IONOSEEK))==0)
+ 		{
+ 			struct stat st;
+-			if ((fstat(fd, &st) == 0) && S_ISFIFO(st.st_mode))
++			int fn = sffileno(iop);
++			if ((fstat(fn, &st) == 0) && S_ISFIFO(st.st_mode))
+ 			{
+ 				int fdflg;
+-				if (((fdflg = fcntl(fd, F_GETFL)) != -1) && !(fdflg & O_NONBLOCK))
+-					fcntl(fd, F_SETFL, fdflg|O_NONBLOCK);
+-				shp->fdstatus[fd] |= IONOSEEK;
++				if (((fdflg = fcntl(fn, F_GETFL)) != -1) && !(fdflg & O_NONBLOCK))
++					fcntl(fn, F_SETFL, fdflg|O_NONBLOCK);
++				shp->fdstatus[fn] |= IONOSEEK;
+ 			}
+ 		}
+ #endif
+@@ -342,7 +343,7 @@ int sh_readline(register Shell_t *shp,ch
+ 		size = nv_size(np);
+ 	}
+ 	was_write = (sfset(iop,SF_WRITE,0)&SF_WRITE)!=0;
+-	if(fd==0)
++	if(sffileno(iop)==0)
+ 		was_share = (sfset(iop,SF_SHARE,shp->redir0!=2)&SF_SHARE)!=0;
+ 	if(timeout || (shp->fdstatus[fd]&(IOTTY|IONOSEEK)))
+ 	{
+@@ -366,7 +367,7 @@ int sh_readline(register Shell_t *shp,ch
+ 		else
+ 			end = var + sizeof(buf) - 1;
+ 		up = cur = var;
+-		if((sfset(iop,SF_SHARE,1)&SF_SHARE) && fd!=0)
++		if((sfset(iop,SF_SHARE,1)&SF_SHARE) && sffileno(iop)!=0)
+ 			was_share = 1;
+ 		if(size==0)
+ 		{
+@@ -473,7 +474,7 @@ int sh_readline(register Shell_t *shp,ch
+ 			timerdel(timeslot);
+ 		if(binary && !((size=nv_size(np)) && nv_isarray(np) && c!=size))
+ 		{
+-			if((c==size) && np->nvalue.cp && !nv_isarray(np))
++			if((c==size) && np->nvalue.cp && !nv_isarray(np) && !np->nvfun)
+ 				memcpy((char*)np->nvalue.cp,var,c);
+ 			else
+ 			{
+@@ -819,7 +820,7 @@ done:
+ 		sfset(iop,SF_SHARE,0);
+ 	nv_close(np);
+ 	if((shp->fdstatus[fd]&IOTTY) && !keytrap)
+-		tty_cooked(fd);
++		tty_cooked(sffileno(iop));
+ 	if(flags&S_FLAG)
+ 		hist_flush(shp->gd->hist_ptr);
+ 	if(jmpval > 1)
+--- src/cmd/ksh93/bltins/trap.c
++++ src/cmd/ksh93/bltins/trap.c	2013-10-25 13:26:45.740248120 +0000
+@@ -116,8 +116,7 @@ int	b_trap(int argc,char *argv[],Shbltin
+ 					continue;
+ 				}
+ 				shp->st.otrap = 0;
+-				if(shp->st.trap[sig])
+-					free(shp->st.trap[sig]);
++				arg = shp->st.trap[sig];
+ 				shp->st.trap[sig] = 0;
+ 				if(!clear && *action)
+ 					shp->st.trap[sig] = strdup(action);
+@@ -128,6 +127,8 @@ int	b_trap(int argc,char *argv[],Shbltin
+ 					else
+ 						shp->trapnote = 0;
+ 				}
++				if(arg)
++					free(arg);
+ 				continue;
+ 			}
+ 			if(sig>shp->gd->sigmax)
+--- src/cmd/ksh93/bltins/typeset.c
++++ src/cmd/ksh93/bltins/typeset.c	2013-10-25 13:26:45.741248028 +0000
+@@ -676,7 +676,7 @@ static int     setall(char **argv,regist
+ 			}
+ 			if(!nv_isarray(np) && !strchr(name,'=') && !(shp->envlist  && nv_onlist(shp->envlist,name)))
+ 			{
+-				if(comvar || (shp->last_root==shp->var_tree && (tp->tp || (!shp->st.real_fun && (nvflags&NV_STATIC)) || (!(flag&(NV_EXPORT|NV_RDONLY)) && nv_isattr(np,(NV_EXPORT|NV_IMPORT))==(NV_EXPORT|NV_IMPORT)))))
++				if(comvar || (shp->last_root==shp->var_tree && ((tp->tp && tp->tp!=nv_type(np)) || (!shp->st.real_fun && (nvflags&NV_STATIC)) || (!(flag&(NV_EXPORT|NV_RDONLY)) && nv_isattr(np,(NV_EXPORT|NV_IMPORT))==(NV_EXPORT|NV_IMPORT)))))
+ {
+ 				if((flag&(NV_HOST|NV_INTEGER))!=NV_HOST)
+ 					_nv_unset(np,0);
+--- src/cmd/ksh93/include/defs.h
++++ src/cmd/ksh93/include/defs.h	2013-10-25 13:26:45.741248028 +0000
+@@ -182,6 +182,8 @@ struct shared
+ 	pid_t		spid; 		/* subshell process id */ \
+ 	pid_t		pipepid; \
+ 	pid_t		outpipepid; \
++	pid_t		*procsub;	/* pids for >() argument */ \
++	int		nprocsub;	/* number of pids in procsub */ \
+ 	int		topfd; \
+ 	int		savesig; \
+ 	unsigned char	*sigflag;	/* pointer to signal states */ \
+@@ -243,7 +245,7 @@ struct shared
+ 	char		*cur_line; \
+ 	int		offsets[10]; \
+ 	Sfio_t		**sftable; \
+-	unsigned char	*fdstatus; \
++	unsigned int	*fdstatus; \
+ 	const char	*pwd; \
+ 	void		*jmpbuffer; \
+ 	void		*mktype; \
+--- src/cmd/ksh93/include/io.h
++++ src/cmd/ksh93/include/io.h	2013-10-25 13:26:45.741248028 +0000
+@@ -81,6 +81,7 @@ extern void 	sh_iosave(Shell_t *, int,in
+ extern int 	sh_iovalidfd(Shell_t*, int);
+ extern int 	sh_inuse(Shell_t*, int);
+ extern void 	sh_iounsave(Shell_t*);
++extern void	sh_iounpipe(Shell_t*);
+ extern int	sh_chkopen(const char*);
+ extern int	sh_ioaccess(int,int);
+ extern int	sh_devtofd(const char*);
+--- src/cmd/ksh93/include/jobs.h
++++ src/cmd/ksh93/include/jobs.h	2013-10-25 13:26:45.741248028 +0000
+@@ -103,6 +103,7 @@ struct jobs
+ 	pid_t		mypid;		/* process id of shell */
+ 	pid_t		mypgid;		/* process group id of shell */
+ 	pid_t		mytgid;		/* terminal group id of shell */
++	pid_t		lastpost;	/* last job posted */
+ 	int		curjobid;
+ 	unsigned int	in_critical;	/* >0 => in critical region */
+ 	int		savesig;	/* active signal */
+@@ -152,11 +153,11 @@ extern struct jobs job;
+ #define job_lock()	(job.in_critical++)
+ #define job_unlock()	\
+ 	do { \
+-		int	sig; \
+-		if (!--job.in_critical && (sig = job.savesig)) \
++		int	_sig; \
++		if (!--job.in_critical && (_sig = job.savesig)) \
+ 		{ \
+ 			if (!job.in_critical++ && !vmbusy()) \
+-				job_reap(sig); \
++				job_reap(_sig); \
+ 			job.in_critical--; \
+ 		} \
+ 	} while(0)
+--- src/cmd/ksh93/sh/args.c
++++ src/cmd/ksh93/sh/args.c	2013-10-25 13:26:45.741248028 +0000
+@@ -32,6 +32,7 @@
+ #include	"builtins.h"
+ #include	"terminal.h"
+ #include	"edit.h"
++#include	"jobs.h"
+ #include	"FEATURE/poll"
+ #if SHOPT_KIA
+ #   include	"shlex.h"
+@@ -57,6 +58,7 @@
+ #define PRINT		2
+ 
+ static	char		*null;
++static	pid_t		*procsub; 
+ 
+ /* The following order is determined by sh_optset */
+ static  const char optksh[] =  PFSHOPT BASHOPT "DircabefhkmnpstuvxBCGEl" HFLAG;
+@@ -717,6 +719,7 @@ char **sh_argbuild(Shell_t *shp,int *nar
+ 			return(ap->dolval+ap->dolbot);
+ 		}
+ 		shp->lastpath = 0;
++		procsub = shp->procsub;
+ 		*nargs = 0;
+ 		if(ac)
+ 		{
+@@ -737,6 +740,8 @@ char **sh_argbuild(Shell_t *shp,int *nar
+ 			}
+ 			argp = arghead;
+ 		}
++		if(procsub)
++			*procsub = 0;
+ 	}
+ 	{
+ 		register char	**comargn;
+@@ -782,8 +787,9 @@ struct argnod *sh_argprocsub(Shell_t *sh
+ {
+ 	/* argument of the form <(cmd) or >(cmd) */
+ 	register struct argnod *ap;
+-	int monitor, fd, pv[3];
++	int nn, monitor, fd, pv[3];
+ 	int subshell = shp->subshell;
++	pid_t pid0;
+ 	ap = (struct argnod*)stkseek(shp->stk,ARGVAL);
+ 	ap->argflag |= ARG_MAKE;
+ 	ap->argflag &= ~ARG_RAW;
+@@ -794,18 +800,33 @@ struct argnod *sh_argprocsub(Shell_t *sh
+ 	sfwrite(shp->stk,e_devfdNN,8);
+ 	pv[2] = 0;
+ 	sh_pipe(pv);
++	sfputr(shp->stk,fmtbase((long)pv[fd],10,0),0);
+ #else
+ 	pv[0] = -1;
+ 	shp->fifo = pathtemp(0,0,0,"ksh.fifo",0);
+ 	mkfifo(shp->fifo,S_IRUSR|S_IWUSR);
+ 	sfputr(shp->stk,shp->fifo,0);
+ #endif /* SHOPT_DEVFD */
+-	sfputr(shp->stk,fmtbase((long)pv[fd],10,0),0);
+ 	ap = (struct argnod*)stkfreeze(shp->stk,0);
+ 	shp->inpipe = shp->outpipe = 0;
+ 	if(monitor = (sh_isstate(SH_MONITOR)!=0))
+ 		sh_offstate(SH_MONITOR);
+ 	shp->subshell = 0;
++#if SHOPT_DEVFD
++	fcntl(pv[fd],F_SETFD,0);
++	shp->fdstatus[pv[fd]] &= ~IOCLEX;
++#endif /* SHOPT_DEVFD */
++	pid0=shp->procsub?*shp->procsub:0; 
++	if(!shp->procsub)
++		shp->procsub = procsub = newof(0,pid_t,shp->nprocsub=4,0);
++	else if((nn=procsub-shp->procsub) >= shp->nprocsub)
++	{
++		shp->nprocsub += 3;
++		shp->procsub = newof(shp->procsub,pid_t,shp->nprocsub,0);
++		procsub = shp->procsub + nn;
++	}
++	if(pid0)
++		*shp->procsub = 0;
+ 	if(fd)
+ 	{
+ 		shp->inpipe = pv;
+@@ -816,11 +837,14 @@ struct argnod *sh_argprocsub(Shell_t *sh
+ 		shp->outpipe = pv;
+ 		sh_exec((Shnode_t*)argp->argchn.ap,(int)sh_isstate(SH_ERREXIT));
+ 	}
++	if(pid0)
++		*shp->procsub = pid0;
++	*procsub++ = job.lastpost;
+ 	shp->subshell = subshell;
+ 	if(monitor)
+ 		sh_onstate(SH_MONITOR);
+ #if SHOPT_DEVFD
+-	close(pv[1-fd]);
++	sh_close(pv[1-fd]);
+ 	sh_iosave(shp,-pv[fd], shp->topfd, (char*)0);
+ #else
+ 	free(shp->fifo);
+--- src/cmd/ksh93/sh/array.c
++++ src/cmd/ksh93/sh/array.c	2013-10-25 13:26:45.742247936 +0000
+@@ -438,10 +438,13 @@ int nv_arraysettype(Namval_t *np, Namval
+ 			nv_offattr(nq,NV_RDONLY);
+ 		if(!nv_isattr(tp,NV_BINARY))
+ 		{
++			char *prefix = shp->prefix;
+ 			if(xtrace)
+ 				sh_offoption(SH_XTRACE);
+ 			ap->nelem &= ~ARRAY_SCAN;
++			shp->prefix = 0;
+ 			sh_eval(sh_sfeval(av),0);
++			shp->prefix = prefix;
+ 			ap->nelem |= ARRAY_SCAN;
+ 			free((void*)av[0]);
+ 			if(xtrace)
+@@ -773,7 +776,10 @@ static void array_putval(Namval_t *np, c
+ 			free((void*)aq->xp);
+ 		}
+ 		if((nfp = nv_disc(np,(Namfun_t*)ap,NV_POP)) && !(nfp->nofree&1))
++		{
++			ap = 0;
+ 			free((void*)nfp);
++		}
+ 		if(!nv_isnull(np))
+ 		{
+ 			if(!np->nvfun)
+@@ -785,7 +791,7 @@ static void array_putval(Namval_t *np, c
+ 		if(np->nvalue.cp==Empty)
+ 			np->nvalue.cp = 0;
+ 	}
+-	if(!string && (flags&NV_TYPE))
++	if(!string && (flags&NV_TYPE) && ap)
+ 		array_unscope(np,ap);
+ }
+ 
+--- src/cmd/ksh93/sh/fault.c
++++ src/cmd/ksh93/sh/fault.c	2013-10-25 13:26:45.742247936 +0000
+@@ -518,6 +518,8 @@ void sh_exit(register int xno)
+ 		shp->exitval |= (sig=shp->lastsig);
+ 	if(pp && pp->mode>1)
+ 		cursig = -1;
++	if(shp->procsub)
++		*shp->procsub = 0;
+ #ifdef SIGTSTP
+ 	if(shp->trapnote&SH_SIGTSTP)
+ 	{
+--- src/cmd/ksh93/sh/io.c
++++ src/cmd/ksh93/sh/io.c	2013-10-25 13:26:45.743247844 +0000
+@@ -407,7 +407,7 @@ int  sh_iovalidfd(Shell_t *shp, int fd)
+ {
+ 	Sfio_t		**sftable = shp->sftable;
+ 	int		max,n, **fdptrs = shp->fdptrs;
+-	unsigned char	*fdstatus = shp->fdstatus;
++	unsigned int	*fdstatus = shp->fdstatus;
+ 	if(fd<0)
+ 		return(0);
+ 	if(fd < shp->gd->lim.open_max)
+@@ -422,13 +422,13 @@ int  sh_iovalidfd(Shell_t *shp, int fd)
+ 	if(n > max)
+ 		n = max;
+ 	max = shp->gd->lim.open_max;
+-	shp->sftable = (Sfio_t**)calloc((n+1)*(sizeof(int*)+sizeof(Sfio_t*)+1),1);
++	shp->sftable = (Sfio_t**)calloc((n+1)*(sizeof(int*)+sizeof(Sfio_t*)+sizeof(*fdstatus)),1);
+ 	if(max)
+ 		memcpy(shp->sftable,sftable,max*sizeof(Sfio_t*));
+ 	shp->fdptrs = (int**)(&shp->sftable[n]);
+ 	if(max)
+ 		memcpy(shp->fdptrs,fdptrs,max*sizeof(int*));
+-	shp->fdstatus = (unsigned char*)(&shp->fdptrs[n]);
++	shp->fdstatus = (unsigned int*)(&shp->fdptrs[n]);
+ 	if(max)
+ 		memcpy(shp->fdstatus,fdstatus,max);
+ 	if(sftable)
+@@ -686,7 +686,10 @@ int sh_close(register int fd)
+ 	register Sfio_t *sp;
+ 	register int r = 0;
+ 	if(fd<0)
++	{
++		errno = EBADF;
+ 		return(-1);
++	}
+ 	if(fd >= shp->gd->lim.open_max)
+ 		sh_iovalidfd(shp,fd);
+ 	if(!(sp=shp->sftable[fd]) || sfclose(sp) < 0)
+@@ -699,13 +702,15 @@ int sh_close(register int fd)
+ 	}
+ 	if(fd>2)
+ 		shp->sftable[fd] = 0;
++	if(r = (shp->fdstatus[fd]>>8))
++		close(r);
+ 	shp->fdstatus[fd] = IOCLOSE;
+ 	if(shp->fdptrs[fd])
+ 		*shp->fdptrs[fd] = -1;
+ 	shp->fdptrs[fd] = 0;
+ 	if(fd < 10)
+ 		shp->inuse_bits &= ~(1<<fd);
+-	return(r);
++	return(0);
+ }
+ 
+ #ifdef O_SERVICE
+@@ -873,9 +878,9 @@ int sh_iomovefd(register int fdold)
+ 	register int fdnew;
+ 	if(fdold >= shp->gd->lim.open_max)
+ 		sh_iovalidfd(shp,fdold);
+-	if(fdold<0 || fdold>2)
++	if(fdold<0 || fdold>9)
+ 		return(fdold);
+-	fdnew = sh_iomovefd(dup(fdold));
++	fdnew = sh_iomovefd(sh_fcntl(fdold,F_DUPFD,10));
+ 	shp->fdstatus[fdnew] = (shp->fdstatus[fdold]&~IOCLEX);
+ 	close(fdold);
+ 	shp->fdstatus[fdold] = IOCLOSE;
+@@ -964,7 +969,7 @@ int	sh_pipe(register int pv[])
+ 	while ((r=bind (pv[out], (struct sockaddr *) &sin, slen)) == -1 && errno==EADDRINUSE);
+ 	if(r<0 ||  listen(pv[out],5) <0)
+ 	{
+-		close(pv[out]);
++		sh_close(pv[out]);
+ 		errormsg(SH_DICT,ERROR_system(1),e_pipe);
+ 	}
+ 	fcntl(pv[out],F_SETFD,FD_CLOEXEC);
+@@ -1079,7 +1084,7 @@ static char *io_usename(char *name, int
+ 		if((fd = sh_open(name,O_RDONLY,0)) >= 0)
+ 		{
+ 			r = fstat(fd,&statb);
+-			close(fd);
++			sh_close(fd);
+ 			if(r)
+ 				return(0);
+ 			if(!S_ISREG(statb.st_mode))
+@@ -1144,6 +1149,7 @@ int	sh_redirect(Shell_t *shp,struct iono
+ 	char *tname=0, *after="", *trace = shp->st.trap[SH_DEBUGTRAP];
+ 	Namval_t *np=0;
+ 	int isstring = shp->subshell?(sfset(sfstdout,0,0)&SF_STRING):0;
++	Sfio_t		*sp;
+ 
+ 	if(flag==2)
+ 		clexec = 1;
+@@ -1245,16 +1251,35 @@ int	sh_redirect(Shell_t *shp,struct iono
+ 			{
+ 				int dupfd,toclose= -1;
+ 				io_op[2] = '&';
+-				if((fd=fname[0])>='0' && fd<='9')
++				if((fd=fname[0])>='0' && (fd=='{' || fd<='9'))
+ 				{
+ 					char *number = fname;
+-					dupfd = strtol(fname,&number,10);
++					int f;
++					if(fd=='{')
++					{
++						np = 0;
++						if(number=strchr(fname,'}'))
++						{
++							*number = 0;
++							np = nv_open(fname+1,shp->var_tree,NV_NOASSIGN|NV_VARNAME|NV_NOFAIL);
++							*number++ = '}';
++						}
++						if(!np)
++						{
++							message = e_file;
++							goto fail;
++						}
++						dupfd = nv_getnum(np);
++						np = 0;
++					}
++					else
++						dupfd = strtol(fname,&number,10);
+ 					if(*number=='-')
+ 					{
+ 						toclose = dupfd;
+ 						number++;
+ 					}
+-					if(*number || dupfd > IOUFD)
++					if(*number)
+ 					{
+ 						message = e_file;
+ 						goto fail;
+@@ -1267,8 +1292,23 @@ int	sh_redirect(Shell_t *shp,struct iono
+ 							shp->subdup |= 1<<fn;
+ 						dupfd = sffileno(sfstdout);
+ 					}
+-					else if(shp->sftable[dupfd])
++					else if(sp=shp->sftable[dupfd])
++					{
++						char *tmpname;
++						if((sfset(sp,0,0)&SF_STRING) && (tmpname = pathtemp(NiL ,NiL,NiL,"sf",&f)))
++						{
++							Sfoff_t last = sfseek(sp,(Sfoff_t)0,SEEK_END);
++
++							unlink(tmpname);
++							free(tmpname);
++							write(f, sp->_data, (size_t)last);
++							lseek(f,(Sfoff_t)0,SEEK_SET);
++
++							sfclose(sp);
++							sp = sfnew(sp,NULL,-1,f,SF_READ);
++						}
+ 						sfsync(shp->sftable[dupfd]);
++					}
+ 					if(dupfd!=1 && fn < 10)
+ 						shp->subdup &= ~(1<<fn);
+ 				}
+@@ -1293,11 +1333,25 @@ int	sh_redirect(Shell_t *shp,struct iono
+ 				}
+ 				if(flag==SH_SHOWME)
+ 					goto traceit;
+-				if((fd=sh_fcntl(dupfd,F_DUPFD,3))<0)
++				if((sp=shp->sftable[dupfd]) && sfset(sp,0,0)&SF_STRING)
++				{
++					char *cp;
++					Sfoff_t	off = sftell(sp);
++					sfset(sp,SF_MALLOC,0);
++					cp = sfsetbuf(sp,(char*)sp,0);
++					sfset(sp,SF_MALLOC,1);
++					r = (int)(sfseek(sp,(Sfoff_t)0,SEEK_END)-off);
++					sfseek(sp,off,SEEK_SET);
++					fd = shp->gd->lim.open_max-1;
++					shp->sftable[fd] = sfnew(NIL(Sfio_t*),cp,r,-1,SF_READ|SF_STRING);
++					shp->fdstatus[fd] = shp->fdstatus[dupfd];
++				}
++				else if((fd=sh_fcntl(dupfd,F_DUPFD,3))<0)
+ 					goto fail;
+ 				if(fd>= shp->gd->lim.open_max)
+ 					sh_iovalidfd(shp,fd);
+-				sh_iocheckfd(shp,dupfd);
++				if(!shp->sftable[dupfd])
++					sh_iocheckfd(shp,dupfd);
+ 				shp->fdstatus[fd] = (shp->fdstatus[dupfd]&~IOCLEX);
+ 				if(toclose<0 && shp->fdstatus[fd]&IOREAD)
+ 					shp->fdstatus[fd] |= IODUP;
+@@ -1496,7 +1550,8 @@ int	sh_redirect(Shell_t *shp,struct iono
+ 					if(fn>9 || !(shp->inuse_bits&(1<<fn)))
+ 						io_preserve(shp,shp->sftable[fn],fn);
+ 				}
+-				sh_close(fn);
++				if(!(iof&IODOC))
++					sh_close(fn);
+ 			}
+ 			if(flag==3)
+ 				return(fd);
+@@ -1531,7 +1586,24 @@ int	sh_redirect(Shell_t *shp,struct iono
+ 						shp->inuse_bits |= (1<<fn);
+ 				}
+ 			}
+-			if(fd >2 && clexec)
++			else if(iof&IODOC)
++			{
++				Sfio_t *sp = &_Sfstderr;
++				if(fn==1)
++					sp = &_Sfstdout;
++				else if(fn==0)
++					sp = &_Sfstdin;
++				shp->sftable[fn] = shp->sftable[-1];
++				shp->fdstatus[fn] = shp->fdstatus[-1];
++				if(fn <=2)
++				{
++					sfswap(shp->sftable[fn],sp);
++					shp->sftable[fn] = sp;
++				}
++				shp->fdptrs[fn] = 0;
++				shp->sftable[-1] = 0;
++			}
++			if(fd >2 && clexec && !(shp->fdstatus[fd]&IOCLEX))
+ 			{
+ 				fcntl(fd,F_SETFD,FD_CLOEXEC);
+ 				shp->fdstatus[fd] |= IOCLEX;
+@@ -1619,12 +1691,12 @@ static int io_heredoc(Shell_t *shp,regis
+ 				sfclose(infile);
+ 		}
+ 	}
++	if(traceon && !(iop->iofile&IOSTRG))
++		sfputr(sfstderr,iop->ioname,'\n');
+ 	/* close stream outfile, but save file descriptor */
+ 	fd = sffileno(outfile);
+ 	sfsetfd(outfile,-1);
+ 	sfclose(outfile);
+-	if(traceon && !(iop->iofile&IOSTRG))
+-		sfputr(sfstderr,iop->ioname,'\n');
+ 	lseek(fd,(off_t)0,SEEK_SET);
+ 	shp->fdstatus[fd] = IOREAD;
+ 	return(fd);
+@@ -2059,9 +2131,11 @@ int sh_iocheckfd(Shell_t *shp, register
+ 	if(!(n&(IOSEEK|IONOSEEK)))
+ 	{
+ 		struct stat statb;
++		Sfio_t *sp = shp->sftable[fd];
+ 		/* /dev/null check is a workaround for select bug */
+ 		static ino_t null_ino;
+ 		static dev_t null_dev;
++		shp->sftable[fd] = 0;
+ 		if(null_ino==0 && stat(e_devnull,&statb) >=0)
+ 		{
+ 			null_ino = statb.st_ino;
+@@ -2097,6 +2171,7 @@ int sh_iocheckfd(Shell_t *shp, register
+ 			n |= IONOSEEK;
+ 		else
+ 			n |= IOSEEK;
++		shp->sftable[fd] = sp;
+ 	}
+ 	if(fd==0)
+ 		n &= ~IOWRITE;
+@@ -2143,6 +2218,7 @@ static int	io_prompt(Shell_t *shp,Sfio_t
+ 			}
+ #endif	/* TIOCLBIC */
+ 			cp = sh_mactry(shp,nv_getval(sh_scoped(shp,PS1NOD)));
++			shp->exitval = 0;
+ 			for(;c= *cp;cp++)
+ 			{
+ 				if(c==HIST_CHAR)
+@@ -2494,12 +2570,14 @@ skip:
+  */
+ ssize_t sh_read(register int fd, void* buff, size_t n) 
+ {
++	int r,err=errno;
+ 	Shell_t *shp = sh_getinterp();
+ 	register Sfio_t *sp;
+ 	if(sp=shp->sftable[fd])
+ 		return(sfread(sp,buff,n));
+-	else
+-		return(read(fd,buff,n));
++	while ((r=read(fd,buff,n))<0 && errno==EINTR)
++		errno = err;
++	return(r);
+ }
+ 
+ #undef write
+@@ -2508,12 +2586,14 @@ ssize_t sh_read(register int fd, void* b
+  */
+ ssize_t sh_write(register int fd, const void* buff, size_t n) 
+ {
++	int r,err=errno;
+ 	Shell_t *shp = sh_getinterp();
+ 	register Sfio_t *sp;
+ 	if(sp=shp->sftable[fd])
+ 		return(sfwrite(sp,buff,n));
+-	else
+-		return(write(fd,buff,n));
++	while ((r=write(fd,buff,n))<0 && errno==EINTR)
++		errno = err;
++	return(r);
+ }
+ 
+ #undef lseek
+--- src/cmd/ksh93/sh/jobs.c
++++ src/cmd/ksh93/sh/jobs.c	2013-10-25 13:26:45.744247751 +0000
+@@ -424,6 +424,8 @@ int job_reap(register int sig)
+ 		}
+ 		if(pid<=0)
+ 			break;
++		if(pid==shp->spid)
++			shp->spid = 0;
+ 		if(wstat==0)
+ 			job_chksave(pid);
+ 		flags |= WNOHANG;
+@@ -520,7 +522,12 @@ int job_reap(register int sig)
+ 				{
+ 					shp->sigflag[SIGCHLD] |= SH_SIGTRAP;
+ 					if(sig==0)
++					{
++						int c = job.in_critical;
++						job.in_critical = 0;
+ 						job_chldtrap(shp,shp->st.trapcom[SIGCHLD],0);
++						job.in_critical = c;
++					}
+ 					else
+ 						shp->trapnote |= SH_SIGTRAP;
+ 				}
+@@ -646,7 +653,7 @@ void job_init(Shell_t *shp, int lflag)
+                         return;
+ 		while(close(JOBTTY)<0 && errno==EINTR)
+ 			errno = err;
+-                if((fd = open(ttynam,O_RDWR)) <0)
++                if((fd = sh_open(ttynam,O_RDWR)) <0)
+                         return;
+                 if(fd!=JOBTTY)
+                         sh_iorenumber(shp,fd,JOBTTY);
+@@ -1313,6 +1320,7 @@ int job_post(Shell_t *shp,pid_t pid, pid
+ 		return(0);
+ 	}
+ 	job_lock();
++	job.lastpost = pid;
+ #ifdef SHOPT_BGX
+ 	if(join==1)
+ 	{
+@@ -1635,9 +1643,21 @@ int	job_wait(register pid_t pid)
+ 	if(intr && shp->trapnote)
+ 		shp->exitval = 1;
+ 	pwfg = 0;
+-	job_unlock();
+ 	if(pid==1)
++	{
++		if(nochild)
++		{
++			for(pw=job.pwlist; pw; pw=px)
++			{
++				px = pw->p_nxtjob;
++				pw->p_flag |= P_DONE;
++				job_unpost(pw,1);
++			}
++		}
++		job_unlock();
+ 		return(nochild);
++	}
++	job_unlock();
+ 	exitset();
+ 	if(pid==0)
+ 		goto done;
+@@ -1800,7 +1820,7 @@ static struct process *job_unpost(regist
+ #endif /* DEBUG */
+ 	pwtop = pw = job_byjid((int)pwtop->p_job);
+ #ifdef SHOPT_BGX
+-	if(pw->p_flag&P_BG) 
++	if(!pw || pw->p_flag&P_BG) 
+ 		return(pw);
+ #endif /* SHOPT_BGX */
+ 	for(; pw && (pw->p_flag&P_DONE)&&(notify||!(pw->p_flag&P_NOTIFY)||pw->p_env); pw=pw->p_nxtproc);
+--- src/cmd/ksh93/sh/lex.c
++++ src/cmd/ksh93/sh/lex.c	2013-10-25 13:26:45.744247751 +0000
+@@ -556,7 +556,7 @@ int sh_lex(Lex_t* lp)
+ 							lp->lexd.docword=1;
+ 						else if(n==LPAREN)
+ 						{
+-							if(lp->lex.intest)
++							if(lp->lex.intest || lp->comp_assign)
+ 								return(c);
+ 							lp->lexd.nest=1;
+ 							lp->lastline = shp->inlineno;
+@@ -2468,7 +2468,7 @@ static int alias_exceptf(Sfio_t *iop,int
+ 			if(dp!=handle)
+ 				sfdisc(iop,dp);
+ 		}
+-		else if(type==SF_FINAL)
++		else if(type==SF_DPOP || type==SF_FINAL)
+ 			free((void*)ap);
+ 		goto done;
+ 	}
+--- src/cmd/ksh93/sh/macro.c
++++ src/cmd/ksh93/sh/macro.c	2013-10-25 13:26:45.745247659 +0000
+@@ -392,7 +392,7 @@ void sh_machere(Shell_t *shp,Sfio_t *inf
+ 				break;
+ 			    }
+ 			    case S_PAR:
+-				comsubst(mp,(Shnode_t*)0,1);
++				comsubst(mp,(Shnode_t*)0,3);
+ 				break;
+ 			    case S_EOF:
+ 				if((c=fcfill()) > 0)
+@@ -447,6 +447,7 @@ static void copyto(register Mac_t *mp,in
+ 	int		ansi_c = 0;
+ 	int		paren = 0;
+ 	int		ere = 0;
++	int		dotdot = 0;
+ 	int		brace = 0;
+ 	Sfio_t		*sp = mp->sp;
+ 	Stk_t		*stkp = mp->shp->stk;
+@@ -846,7 +847,7 @@ e_badsubscript,*cp);
+ 			{
+ 				sfwrite(stkp,first,c);
+ 				sfputc(stkp,0);
+-				mp->dotdot = stktell(stkp);
++				dotdot = stktell(stkp);
+ 				cp = first = fcseek(c+2);
+ 			}
+ 			break;
+@@ -854,6 +855,7 @@ e_badsubscript,*cp);
+ 	}
+ done:
+ 	mp->sp = sp;
++	mp->dotdot = dotdot;
+ 	mp->quote = oldquote;
+ }
+ 
+@@ -1010,7 +1012,6 @@ static int subcopy(Mac_t *mp, int flag)
+ 	mp->pattern = flag?4:0;
+ 	mp->arrayok=1;
+ 	mp->subcopy++;
+-	mp->dotdot = 0;
+ 	copyto(mp,RBRACT,0);
+ 	mp->subcopy = 0;
+ 	mp->pattern = xpattern;
+@@ -1099,6 +1100,7 @@ static int varsub(Mac_t *mp)
+ 	Stk_t		*stkp = mp->shp->stk;
+ retry1:
+ 	mp->zeros = 0;
++	mp->dotdot = 0;
+ 	idbuff[0] = 0;
+ 	idbuff[1] = 0;
+ 	c = fcmbget(&LEN);
+@@ -1166,7 +1168,7 @@ retry1:
+ 	    case S_PAR:
+ 		if(type)
+ 			goto nosub;
+-		comsubst(mp,(Shnode_t*)0,1);
++		comsubst(mp,(Shnode_t*)0,3);
+ 		return(1);
+ 	    case S_DIG:
+ 		var = 0;
+@@ -1349,7 +1351,7 @@ retry1:
+ 					ap = nv_arrayptr(np=nq);
+ 				if(ap)
+ 				{
+-					nv_putsub(np,v,ARRAY_SCAN);
++					np = nv_putsub(np,v,ARRAY_SCAN);
+ 					v = stkptr(stkp,mp->dotdot);
+ 					dolmax =1;
+ 					if(array_assoc(ap))
+@@ -2077,6 +2079,18 @@ static void comsubst(Mac_t *mp,register
+ 			fcrestore(&save);
+ 			return;
+ 		}
++		else if(type==2 && t && (t->tre.tretyp&COMMSK)==0 && t->com.comarg)
++		{
++			Namval_t *np;
++			str = NULL;
++			if(!(t->com.comtyp&COMSCAN))
++			{
++				struct dolnod *ap = (struct dolnod*)t->com.comarg;
++				str = ap->dolval[ap->dolbot];
++			}
++			else if(t->com.comarg->argflag&ARG_RAW)
++				str = t->com.comarg->argval;
++		}
+ 	}
+ 	else
+ 	{
+@@ -2158,10 +2172,9 @@ static void comsubst(Mac_t *mp,register
+ 	mp->ifsp = nv_getval(np);
+ 	stkset(stkp,savptr,savtop);
+ 	newlines = 0;
+-	sfsetbuf(sp,(void*)sp,0);
+-	bufsize = sfvalue(sp);
+ 	/* read command substitution output and put on stack or here-doc */
+ 	sfpool(sp, NIL(Sfio_t*), SF_WRITE);
++	sfset(sp, SF_WRITE|SF_PUBLIC|SF_SHARE,0);
+ 	sh_offstate(SH_INTERACTIVE);
+ 	if((foff = sfseek(sp,(Sfoff_t)0,SEEK_END)) > 0)
+ 	{
+@@ -2170,6 +2183,8 @@ static void comsubst(Mac_t *mp,register
+ 		stkseek(stkp,soff+foff+64);
+ 		stkseek(stkp,soff);
+ 	}
++	if(foff > IOBSIZE)
++		sfsetbuf(sp,NULL,SF_UNBOUND);
+ 	while((str=(char*)sfreserve(sp,SF_UNBOUND,0)) && (c=bufsize=sfvalue(sp))>0)
+ 	{
+ #if SHOPT_CRNL
+@@ -2291,6 +2306,13 @@ static void mac_copy(register Mac_t *mp,
+ 	Stk_t			*stkp=mp->shp->stk;
+ 	int			oldpat = mp->pattern;
+ 	nopat = (mp->quote||(mp->assign==1)||mp->arith);
++	if(size>512)
++	{
++		/* pre-allocate to improve performance */
++		c = stktell(stkp);
++		stkseek(stkp,c+size+(size>>4));
++		stkseek(stkp,c);
++	}
+ 	if(mp->zeros)
+ 	{
+ 		/* prevent leading 0's from becomming octal constants */
+--- src/cmd/ksh93/sh/main.c
++++ src/cmd/ksh93/sh/main.c	2013-10-25 13:26:45.745247659 +0000
+@@ -309,7 +309,7 @@ int sh_main(int ac, char *av[], Shinit_f
+ 					int isdir = 0;
+ 					if((fdin=sh_open(name,O_RDONLY,0))>=0 &&(fstat(fdin,&statb)<0 || S_ISDIR(statb.st_mode)))
+ 					{
+-						close(fdin);
++						sh_close(fdin);
+ 						isdir = 1;
+ 						fdin = -1;
+ 					}
+--- src/cmd/ksh93/sh/name.c
++++ src/cmd/ksh93/sh/name.c	2013-10-25 13:26:45.746247567 +0000
+@@ -421,6 +421,8 @@ void nv_setlist(register struct argnod *
+ 					if(array&NV_ARRAY)
+ 					{
+ 						nv_setarray(np,nv_associative);
++						if(typ)
++							nv_settype(np,typ,0);
+ 					}
+ 					else
+ 					{
+@@ -436,7 +438,7 @@ void nv_setlist(register struct argnod *
+ #endif /* SHOPT_TYPEDEF */
+ 				}
+ 				/* check for array assignment */
+-				if(tp->tre.tretyp!=TLST && tp->com.comarg && !tp->com.comset && ((array&NV_IARRAY) || !((mp=tp->com.comnamp) && nv_isattr(mp,BLT_DCL))))
++				if((tp->tre.tretyp&COMMSK)==TCOM && tp->com.comarg && !tp->com.comset && ((array&NV_IARRAY) || !((mp=tp->com.comnamp) && nv_isattr(mp,BLT_DCL))))
+ 				{
+ 					int argc;
+ 					Dt_t	*last_root = shp->last_root;
+@@ -509,6 +511,7 @@ void nv_setlist(register struct argnod *
+ 							if(!(array&NV_IARRAY) && !(tp->com.comset->argflag&ARG_MESSAGE))
+ 								nv_setarray(np,nv_associative);
+ 						}
++						shp->typeinit = 0;
+ 						nv_setlist(tp->com.comset,flags&~NV_STATIC,0);
+ 						shp->prefix = prefix;
+ 						if(tp->com.comset->argval[1]!='[')
+@@ -1292,8 +1295,9 @@ void nv_delete(Namval_t* np, Dt_t *root,
+ 				if(rp->sub)
+ 					free(rp->sub);
+ 				rp->sub = 0;
+-				rp = dtdelete(Refdict,(void*)rp);
+-				rp->np = &NullNode;
++				rp = dtremove(Refdict,(void*)rp);
++				if(rp)
++					rp->np = &NullNode;
+ 			}
+ 		}
+ 	}
+@@ -1345,10 +1349,12 @@ Namval_t *nv_open(const char *name, Dt_t
+ 	struct Cache_entry	*xp;
+ #endif
+ 	
+-	sh_stats(STAT_NVOPEN);
+ 	memset(&fun,0,sizeof(fun));
+ 	shp->openmatch = 0;
+ 	shp->last_table = 0;
++	if(!name)
++		return(0);
++	sh_stats(STAT_NVOPEN);
+ 	if(!root)
+ 		root = shp->var_tree;
+ 	shp->last_root = root;
+@@ -2470,6 +2476,8 @@ static void table_unset(Shell_t *shp, re
+ 			}
+ 		}
+ 		npnext = (Namval_t*)dtnext(root,np);
++		if(nv_arrayptr(np))
++			nv_putsub(np,NIL(char*),ARRAY_SCAN);
+ 		_nv_unset(np,flags);
+ 		nv_delete(np,root,0);
+ 	}
+@@ -2552,9 +2560,11 @@ void	_nv_unset(register Namval_t *np,int
+ 		/* This function contains disc */
+ 		if(!nv_local)
+ 		{
++			Dt_t *last_root = shp->last_root;
+ 			nv_local=1;
+ 			nv_putv(np,NIL(char*),flags,np->nvfun);
+ 			nv_local=0;
++			shp->last_root = last_root;
+ 			return;
+ 		}
+ 		/* called from disc, assign the actual value */
+@@ -2575,7 +2585,7 @@ void	_nv_unset(register Namval_t *np,int
+ 	{
+ 
+ 		if(np->nvalue.nrp->root)
+-			dtdelete(Refdict,(void*)np->nvalue.nrp);
++			dtremove(Refdict,(void*)np->nvalue.nrp);
+ 		if(np->nvalue.nrp->sub)
+ 			free(np->nvalue.nrp->sub);
+ 		free((void*)np->nvalue.nrp);
+@@ -3577,7 +3587,7 @@ void nv_unref(register Namval_t *np)
+ 	{
+ 		if(np->nvalue.nrp->sub)
+ 			free(np->nvalue.nrp->sub);
+-		dtdelete(Refdict,(void*)np->nvalue.nrp);
++		dtremove(Refdict,(void*)np->nvalue.nrp);
+ 	}
+ 	free((void*)np->nvalue.nrp);
+ 	np->nvalue.cp = strdup(nv_name(nq));
+--- src/cmd/ksh93/sh/nvtree.c
++++ src/cmd/ksh93/sh/nvtree.c	2013-10-25 13:26:45.747247475 +0000
+@@ -144,8 +144,9 @@ static  Namfun_t *nextdisc(Namval_t *np)
+ 
+ void *nv_diropen(Namval_t *np,const char *name)
+ {
+-	char *next,*last;
+-	int c,len=strlen(name);
++	const char *last;
++	char *next;
++	size_t c=0,len=strlen(name);
+ 	struct nvdir *save, *dp = new_of(struct nvdir,len+1);
+ 	Namval_t *nq=0,fake;
+ 	Namfun_t *nfp=0;
+@@ -1031,9 +1032,18 @@ static char *walk_tree(register Namval_t
+ 			shp->var_tree = dp;
+ 			if(nq && mq)
+ 			{
++				register struct nvdir *odir=0,*dp = (struct nvdir*)dir;
++				if(dp->table==nq)
++				{
++					dp = dp->prev;
++					odir = dir;
++					dir = dp;
++				}
+ 				nv_clone(nq,mq,flags|NV_RAW);
+ 				if(flags&NV_MOVE)
+ 					nv_delete(nq,walk.root,0);
++				if(odir)
++					free(odir);
+ 			}
+ 			continue;
+ 		}
+--- src/cmd/ksh93/sh/nvtype.c
++++ src/cmd/ksh93/sh/nvtype.c	2013-10-25 13:26:45.747247475 +0000
+@@ -484,7 +484,10 @@ static Namfun_t *clone_type(Namval_t* np
+ 		}
+ 	}
+ 	if(nv_isattr(mp,NV_BINARY))
++	{
+ 		mp->nvalue.cp = dp->data;
++		nv_onattr(mp,NV_NOFREE);
++	}
+ 	if(pp->strsize<0)
+ 		dp->strsize = -pp->strsize;
+ 	return(&dp->fun);
+--- src/cmd/ksh93/sh/parse.c
++++ src/cmd/ksh93/sh/parse.c	2013-10-25 13:26:45.748247383 +0000
+@@ -1722,6 +1722,7 @@ static struct ionod	*inout(Lex_t *lexp,s
+ 	lexp->digits=0;
+ 	iop=(struct ionod*) stkalloc(stkp,sizeof(struct ionod));
+ 	iop->iodelim = 0;
++	iop->iosize = 0;
+ 	if(token=sh_lex(lexp))
+ 	{
+ 		if(token==RPAREN && (iof&IOLSEEK) && lexp->comsub) 
+--- src/cmd/ksh93/sh/path.c
++++ src/cmd/ksh93/sh/path.c	2013-10-25 13:27:42.151044203 +0000
+@@ -333,7 +333,8 @@ static char *path_lib(Shell_t *shp,Pathc
+ 		char save[8];
+ 		for( ;pp; pp=pp->next)
+ 		{
+-			path_checkdup(shp,pp);
++			if(!pp->dev && !pp->ino)
++				path_checkdup(shp,pp);
+ 			if(pp->ino==statb.st_ino && pp->dev==statb.st_dev && pp->mtime==statb.st_mtime)
+ 				return(pp->lib);
+ 		}
+@@ -613,6 +614,7 @@ static void funload(Shell_t *shp,int fno
+ 		}
+ 		while((rp=dtnext(shp->fpathdict,rp)) && strcmp(pname,rp->fname)==0);
+ 		sh_close(fno);
++		free((void*)pname);
+ 		return;
+ 	}
+ 	sh_onstate(SH_NOLOG);
+@@ -876,7 +878,7 @@ Pathcomp_t *path_absolute(Shell_t *shp,r
+ 		{
+ 			nv_onattr(nv_open(name,sh_subfuntree(shp,1),NV_NOARRAY|NV_IDENT|NV_NOSCOPE),NV_LTOU|NV_FUNCTION);
+ 			funload(shp,f,name);
+-			close(f);
++			sh_close(f);
+ 			f = -1;
+ 			return(0);
+ 		}
+@@ -1408,7 +1410,7 @@ static void exscript(Shell_t *shp,regist
+ 		sabuf.ac_etime = compress( (time_t)(after-before));
+ 		fd = open( SHACCT , O_WRONLY | O_APPEND | O_CREAT,RW_ALL);
+ 		write(fd, (const char*)&sabuf, sizeof( sabuf ));
+-		close( fd);
++		sh_close( fd);
+ 	}
+     }
+  
+--- src/cmd/ksh93/sh/streval.c
++++ src/cmd/ksh93/sh/streval.c	2013-10-25 13:26:45.749247290 +0000
+@@ -165,14 +165,11 @@ Sfdouble_t	arith_exec(Arith_t *ep)
+ 	Math_f fun;
+ 	struct lval node;
+ 	Shell_t	*shp = ep->shp;
++	memset(&node,0,sizeof(node));
+ 	node.shp = shp;
+ 	node.emode = ep->emode;
+ 	node.expr = ep->expr;
+ 	node.elen = ep->elen;
+-	node.value = 0;
+-	node.nosub = 0;
+-	node.ptr = 0;
+-	node.eflag = 0;
+ 	if(level++ >=MAXLEVEL)
+ 	{
+ 		arith_error(e_recursive,ep->expr,ep->emode);
+--- src/cmd/ksh93/sh/subshell.c
++++ src/cmd/ksh93/sh/subshell.c	2013-10-25 13:26:45.749247290 +0000
+@@ -122,23 +122,26 @@ void	sh_subtmpfile(Shell_t *shp)
+ 		register struct checkpt	*pp = (struct checkpt*)shp->jmplist;
+ 		register struct subshell *sp = subshell_data->pipe;
+ 		/* save file descriptor 1 if open */
+-		if((sp->tmpfd = fd = fcntl(1,F_DUPFD,10)) >= 0)
++		if((sp->tmpfd = fd = sh_fcntl(1,F_DUPFD,10)) >= 0)
+ 		{
++			int err=errno;
+ 			fcntl(fd,F_SETFD,FD_CLOEXEC);
+ 			shp->fdstatus[fd] = shp->fdstatus[1]|IOCLEX;
+-			close(1);
++			while(close(1)<0 && errno==EINTR)
++				errno = err;
+ 		}
+ 		else if(errno!=EBADF)
+ 			errormsg(SH_DICT,ERROR_system(1),e_toomany);
+ 		/* popping a discipline forces a /tmp file create */
+-		sfdisc(sfstdout,SF_POPDISC);
++		if(shp->comsub != 1)
++			sfdisc(sfstdout,SF_POPDISC);
+ 		if((fd=sffileno(sfstdout))<0)
+ 		{
+ 			/* unable to create the /tmp file so use a pipe */
+ 			int fds[3];
+ 			Sfoff_t off;
+ 			fds[2] = 0;
+-			sh_pipe(fds);
++			sh_rpipe(fds);
+ 			sp->pipefd = fds[0];
+ 			sh_fcntl(sp->pipefd,F_SETFD,FD_CLOEXEC);
+ 			/* write the data to the pipe */
+@@ -180,7 +183,7 @@ void sh_subfork(void)
+ {
+ 	register struct subshell *sp = subshell_data;
+ 	Shell_t	*shp = sp->shp;
+-	int	curenv = shp->curenv;
++	int	curenv = shp->curenv, comsub=shp->comsub;
+ 	pid_t pid;
+ 	char *trap = shp->st.trapcom[0];
+ 	if(trap)
+@@ -204,6 +207,7 @@ void sh_subfork(void)
+ 	{
+ 		/* this is the child part of the fork */
+ 		/* setting subpid to 1 causes subshell to exit when reached */
++		shp->cpid = 0;
+ 		sh_onstate(SH_FORKED);
+ 		sh_onstate(SH_NOLOG);
+ 		sh_offoption(SH_MONITOR);
+@@ -213,7 +217,7 @@ void sh_subfork(void)
+ 		shp->comsub = 0;
+ 		SH_SUBSHELLNOD->nvalue.s = 0;
+ 		sp->subpid=0;
+-		shp->st.trapcom[0] = trap;
++		shp->st.trapcom[0] = (comsub==2?NULL:trap);
+ 		shp->savesig = 0;
+ 	}
+ }
+@@ -337,7 +341,7 @@ static void nv_restore(struct subshell *
+ 		}
+ 		nv_setsize(mp,nv_size(np));
+ 		if(!(flags&NV_MINIMAL))
+-			mp->nvenv = np->nvenv;
++			mp->nvenv = nv_isnull(mp)?0:np->nvenv;
+ 		if(!nofree)
+ 			mp->nvfun = np->nvfun;
+ 		if(nv_isattr(np,NV_IDENT))
+@@ -494,6 +498,8 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 		subenv = 0;
+ 	}
+ 	shp->curenv = ++subenv;
++	if(shp->curenv<=0)
++		shp->curenv = subenv = 1;
+ 	savst = shp->st;
+ 	sh_pushcontext(shp,&buff,SH_JMPSUB);
+ 	subshell = shp->subshell+1;
+@@ -508,6 +514,7 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 	sp->options = shp->options;
+ 	sp->jobs = job_subsave();
+ 	sp->subdup = shp->subdup;
++	shp->subdup = 0;
+ #if SHOPT_COSHELL
+ 	sp->coshell = shp->coshell;
+ 	shp->coshell = 0;
+@@ -530,7 +537,9 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 		job.curpgid = 0;
+ 	sp->subshare = shp->subshare;
+ 	sp->comsub = shp->comsub;
+-	shp->subshare = comsub==2 ||  (comsub==1 && sh_isoption(SH_SUBSHARE));
++	shp->subshare = comsub==2 ||  (comsub && sh_isoption(SH_SUBSHARE));
++	if(!shp->subshare)
++		sp->pathlist = path_dup((Pathcomp_t*)shp->pathlist);
+ 	if(comsub)
+ 		shp->comsub = comsub;
+ 	if(!comsub || !shp->subshare)
+@@ -604,7 +613,7 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 			sp->tmpfd = -1;
+ 			sp->pipefd = -1;
+ 			/* use sftmp() file for standard output */
+-			if(!(iop = sftmp(PIPE_BUF)))
++			if(!(iop = sftmp(comsub==1?PIPE_BUF:IOBSIZE)))
+ 			{
+ 				sfswap(sp->saveout,sfstdout);
+ 				errormsg(SH_DICT,ERROR_system(1),e_tmpcreate);
+@@ -639,6 +648,7 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 	sh_popcontext(shp,&buff);
+ 	if(shp->subshell==0)	/* must be child process */
+ 	{
++		shp->st.trapcom[0] = 0;
+ 		subshell_data = sp->prev;
+ 		if(jmpval==SH_JMPSCRIPT)
+ 			siglongjmp(*shp->jmplist,jmpval);
+@@ -664,6 +674,19 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 		}
+ 		else
+ 		{
++			if(comsub!=1 && shp->spid)
++			{
++				int c = shp->exitval;
++				job_wait(shp->spid);
++				if(shp->exitval==ERROR_NOENT)
++				{
++					shp->exitval = c;
++					shp->savexit=shp->exitval;
++				}
++				if(shp->pipepid==shp->spid)
++					shp->spid = 0;
++				shp->pipepid = 0;
++			}
+ 			/* move tmp file to iop and restore sfstdout */
+ 			iop = sfswap(sfstdout,NIL(Sfio_t*));
+ 			if(!iop)
+@@ -690,19 +713,27 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 			}
+ 			sfset(iop,SF_READ,1);
+ 		}
+-		sfswap(sp->saveout,sfstdout);
++		if(sp->saveout)
++			sfswap(sp->saveout,sfstdout);
++		else
++			sfstdout = &_Sfstdout;
+ 		/*  check if standard output was preserved */
+ 		if(sp->tmpfd>=0)
+ 		{
+-			close(1);
++			int err=errno;
++			while(close(1)<0 && errno==EINTR)
++				errno = err;
+ 			if (fcntl(sp->tmpfd,F_DUPFD,1) != 1)
+ 				duped++;
+ 			sh_close(sp->tmpfd);
+ 		}
+ 		shp->fdstatus[1] = sp->fdstatus;
+ 	}
+-	path_delete((Pathcomp_t*)shp->pathlist);
+-	shp->pathlist = (void*)sp->pathlist;
++	if(!shp->subshare)
++	{
++		path_delete((Pathcomp_t*)shp->pathlist);
++		shp->pathlist = (void*)sp->pathlist;
++	}
+ 	job_subrestore(sp->jobs);
+ 	shp->jobenv = savecurenv;
+ 	job.curpgid = savejobpgid;
+@@ -764,8 +795,6 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 		}
+ 		else
+ 			free((void*)sp->pwd);
+-		if(sp->pwdclose)
+-			close(sp->pwdfd);
+ 		if(sp->mask!=shp->mask)
+ 			umask(shp->mask=sp->mask);
+ 		if(shp->coutpipe!=sp->coutpipe)
+@@ -777,8 +806,9 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 		shp->cpipe[1] = sp->cpipe;
+ 		shp->coutpipe = sp->coutpipe;
+ 	}
++	if(sp->pwdclose)
++		close(sp->pwdfd);
+ 	shp->subshare = sp->subshare;
+-	shp->comsub = sp->comsub;
+ 	shp->subdup = sp->subdup;
+ #if SHOPT_COSHELL
+ 	shp->coshell = sp->coshell;
+@@ -808,7 +838,12 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 	if(nsig>0)
+ 		kill(getpid(),nsig);
+ 	if(sp->subpid)
++	{
+ 		job_wait(sp->subpid);
++		if(comsub>1)
++			sh_iounpipe(shp);
++	}
++	shp->comsub = sp->comsub;
+ 	if(comsub && iop && sp->pipefd<0)
+ 		sfseek(iop,(off_t)0,SEEK_SET);
+ 	if(shp->trapnote)
+--- src/cmd/ksh93/sh/xec.c
++++ src/cmd/ksh93/sh/xec.c	2013-10-25 13:29:00.390826813 +0000
+@@ -102,26 +102,30 @@ struct funenv
+  * temp file.
+  */
+ static int      subpipe[3],subdup,tsetio,usepipe;
+-static void iounpipe(Shell_t*);
+ 
+ static int iousepipe(Shell_t *shp)
+ {
+-	int i;
++	int fd=sffileno(sfstdout),i,err=errno;
+ 	if(usepipe)
+ 	{
+ 		usepipe++;
+-		iounpipe(shp);
++		sh_iounpipe(shp);
+ 	}
+ 	if(sh_rpipe(subpipe) < 0)
+ 		return(0);
+ 	usepipe++;
+-	fcntl(subpipe[0],F_SETFD,FD_CLOEXEC);
+-	subpipe[2] = fcntl(1,F_DUPFD,10);
+-	fcntl(subpipe[2],F_SETFD,FD_CLOEXEC);
++	if(shp->comsub!=1)
++	{
++		subpipe[2] = sh_fcntl(subpipe[1],F_DUPFD,10);
++		sh_close(subpipe[1]);
++		return(1);
++	}
++	subpipe[2] = sh_fcntl(fd,F_dupfd_cloexec,10);
+ 	shp->fdstatus[subpipe[2]] = shp->fdstatus[1];
+-	close(1);
+-	fcntl(subpipe[1],F_DUPFD,1);
+-	shp->fdstatus[1] = shp->fdstatus[subpipe[1]];
++	while(close(fd)<0 && errno==EINTR)
++		errno = err;
++	fcntl(subpipe[1],F_DUPFD,fd);
++	shp->fdstatus[1] = shp->fdstatus[subpipe[1]]&~IOCLEX;
+ 	sh_close(subpipe[1]);
+ 	if(subdup=shp->subdup) for(i=0; i < 10; i++)
+ 	{
+@@ -135,14 +139,23 @@ static int iousepipe(Shell_t *shp)
+ 	return(1);
+ }
+ 
+-static void iounpipe(Shell_t *shp)
++void sh_iounpipe(Shell_t *shp)
+ {
+-	int n;
++	int fd=sffileno(sfstdout),n,err=errno;
+ 	char buff[SF_BUFSIZE];
+-	close(1);
+-	fcntl(subpipe[2], F_DUPFD, 1);
+-	shp->fdstatus[1] = shp->fdstatus[subpipe[2]];
++	if(!usepipe)
++		return;
+ 	--usepipe;
++	if(shp->comsub>1)
++	{
++		sh_close(subpipe[2]);
++		while(read(subpipe[0],buff,sizeof(buff))>0);
++		goto done;
++	}
++	while(close(fd)<0 && errno==EINTR)
++		errno = err;
++	fcntl(subpipe[2], F_DUPFD, fd);
++	shp->fdstatus[1] = shp->fdstatus[subpipe[2]];
+ 	if(subdup) for(n=0; n < 10; n++)
+ 	{
+ 		if(subdup&(1<<n))
+@@ -174,6 +187,7 @@ static void iounpipe(Shell_t *shp)
+ 		else if(errno!=EINTR)
+ 			break;
+ 	}
++done:
+ 	sh_close(subpipe[0]);
+ 	subpipe[0] = -1;
+ 	tsetio = 0;
+@@ -748,20 +762,20 @@ static void *sh_coinit(Shell_t *shp,char
+ {
+ 	struct cosh	*csp = job.colist;
+ 	const char 	*name = argv?argv[0]:0;
+-	int  		id, open=1;
++	int  		id, xopen=1;
+ 	if(!name)
+ 		return(0);
+ 	if(*name=='-')
+ 	{
+ 		name++;
+-		open=0;
++		xopen=0;
+ 	}
+ 	nv_open(name,shp->var_tree,NV_IDENT|NV_NOADD);
+ 	while(csp)
+ 	{
+ 		if(strcmp(name,csp->name)==0)
+ 		{
+-			if(open)
++			if(xopen)
+ 			{
+ 				coattr(csp->coshell,argv[1]);
+ 				return((void*)csp);
+@@ -771,7 +785,7 @@ static void *sh_coinit(Shell_t *shp,char
+ 		}
+ 		csp = csp->next;
+ 	}
+-	if(!open)
++	if(!xopen)
+ 		errormsg(SH_DICT,ERROR_exit(1),"%s: unknown namespace",name);
+ 	environ[0][2]=0;
+ 	csp = newof(0,struct cosh,1,strlen(name)+1);
+@@ -898,13 +912,14 @@ static int sh_coexec(Shell_t *shp,const
+ #if SHOPT_FILESCAN
+     static Sfio_t *openstream(Shell_t *shp, struct ionod *iop, int *save)
+     {
+-	int savein, fd = sh_redirect(shp,iop,3);
++	int err=errno,savein, fd = sh_redirect(shp,iop,3);
+ 	Sfio_t	*sp;
+ 	savein = dup(0);
+ 	if(fd==0)
+ 		fd = savein;
+ 	sp = sfnew(NULL,NULL,SF_UNBOUND,fd,SF_READ);
+-	close(0);
++	while(close(0)<0 && errno==EINTR)
++		errno = err;
+ 	open(e_devnull,O_RDONLY);
+ 	shp->offsets[0] = -1;
+ 	shp->offsets[1] = 0;
+@@ -1434,7 +1449,11 @@ int sh_exec(register const Shnode_t *t,
+ 							stat(".",&stata);
+ 							/* restore directory changed */
+ 							if(statb.st_ino!=stata.st_ino || statb.st_dev!=stata.st_dev)
+-								chdir(shp->pwd);
++							{
++								int err=errno;
++								while((chdir(shp->pwd) < 0) && errno==EINTR)
++									errno = err;
++							}
+ 						}
+ 						sh_offstate(SH_STOPOK);
+ 						if(share&SF_SHARE)
+@@ -1570,7 +1589,7 @@ int sh_exec(register const Shnode_t *t,
+ 						unset_instance(nq,&node,&nr,mode);
+ 					sh_funstaks(slp->slchild,-1);
+ 					stakdelete(slp->slptr);
+-					if(jmpval > SH_JMPFUN)
++					if(jmpval > SH_JMPFUN || (io && jmpval>SH_JMPIO))
+ 						siglongjmp(*shp->jmplist,jmpval);
+ 					goto setexit;
+ 				}
+@@ -1597,10 +1616,14 @@ int sh_exec(register const Shnode_t *t,
+ 			if(shp->subshell)
+ 			{
+ 				sh_subtmpfile(shp);
+-				if(shp->comsub==1 && !(shp->fdstatus[1]&IONOSEEK))
+-					unpipe=iousepipe(shp);
+ 				if((type&(FAMP|TFORK))==(FAMP|TFORK))
+-					sh_subfork();
++				{
++					if(shp->comsub && !(shp->fdstatus[1]&IONOSEEK))
++					{
++						unpipe=iousepipe(shp);
++						sh_subfork();
++					}
++				}
+ 			}
+ 			no_fork = !ntflag && !(type&(FAMP|FPOU)) && !shp->subshell &&
+ 			    !(shp->st.trapcom[SIGINT] && *shp->st.trapcom[SIGINT]) &&
+@@ -1676,7 +1699,7 @@ int sh_exec(register const Shnode_t *t,
+ 				if(parent<0)
+ 				{
+ 					if(shp->comsub==1 && usepipe && unpipe)
+-						iounpipe(shp);
++						sh_iounpipe(shp);
+ 					break;
+ 				}
+ #else
+@@ -1693,7 +1716,7 @@ int sh_exec(register const Shnode_t *t,
+ 				if(parent<0)
+ 				{
+ 					if(shp->comsub==1 && usepipe && unpipe)
+-						iounpipe(shp);
++						sh_iounpipe(shp);
+ 					break;
+ 				}
+ #else
+@@ -1715,6 +1738,8 @@ int sh_exec(register const Shnode_t *t,
+ 					nlock--;
+ 					job_unlock();
+ 				}
++				if(shp->subshell)
++					shp->spid = parent;
+ 				if(type&FPCL)
+ 					sh_close(shp->inpipe[0]);
+ 				if(type&(FCOOP|FAMP))
+@@ -1730,11 +1755,15 @@ int sh_exec(register const Shnode_t *t,
+ 					if(shp->pipepid)
+ 						shp->pipepid = parent;
+ 					else
++					{
+ 						job_wait(parent);
++						if(parent==shp->spid)
++							shp->spid = 0;
++					}
+ 					if(shp->topfd > topfd)
+ 						sh_iorestore(shp,topfd,0);
+-					if(usepipe && tsetio &&  subdup && unpipe)
+-						iounpipe(shp);
++					if(usepipe && tsetio &&  subdup)
++						sh_iounpipe(shp);
+ 					if(!sh_isoption(SH_MONITOR))
+ 					{
+ 						shp->trapnote &= ~SH_SIGIGNORE;
+@@ -1906,8 +1935,8 @@ int sh_exec(register const Shnode_t *t,
+ 			{
+ 				was_interactive = sh_isstate(SH_INTERACTIVE);
+ 				sh_offstate(SH_INTERACTIVE);
+-				sh_iosave(shp,0,shp->topfd,(char*)0);
+ 				shp->pipepid = simple;
++				sh_iosave(shp,0,shp->topfd,(char*)0);
+ 				sh_iorenumber(shp,shp->inpipe[0],0);
+ 				/*
+ 				 * if read end of pipe is a simple command
+@@ -1924,7 +1953,7 @@ int sh_exec(register const Shnode_t *t,
+ 			jmpval = sigsetjmp(buffp->buff,0);
+ 			if(jmpval==0)
+ 			{
+-				if(shp->comsub==1)
++				if(shp->comsub)
+ 					tsetio = 1;
+ 				sh_redirect(shp,t->fork.forkio,execflg);
+ 				(t->fork.forktre)->tre.tretyp |= t->tre.tretyp&FSHOWME;
+@@ -1953,8 +1982,8 @@ int sh_exec(register const Shnode_t *t,
+ 					if(type || !sh_isoption(SH_PIPEFAIL))
+ 						shp->exitval = type;
+ 				}
+-				if(shp->comsub==1 && usepipe)
+-					iounpipe(shp);
++				if(shp->comsub==1 && usepipe && unpipe)
++					sh_iounpipe(shp);
+ 				shp->pipepid = 0;
+ 				shp->st.ioset = 0;
+ 				if(simple && was_errexit)
+@@ -2179,7 +2208,7 @@ int sh_exec(register const Shnode_t *t,
+ 			}
+ 			shp->exitval = n;
+ #ifdef SIGTSTP
+-			if(!pipejob && sh_isstate(SH_MONITOR))
++			if(!pipejob && sh_isstate(SH_MONITOR) && sh_isstate(SH_INTERACTIVE))
+ 				tcsetpgrp(JOBTTY,shp->gd->pid);
+ #endif /*SIGTSTP */
+ 			job.curpgid = savepgid;
+@@ -2320,7 +2349,10 @@ int sh_exec(register const Shnode_t *t,
+ 					nv_putsub(np,NIL(char*),0L);
+ 				nv_putval(np,cp,0);
+ 				if(nameref)
++				{
+ 					nv_setref(np,(Dt_t*)0,NV_VARNAME);
++					nv_onattr(np,NV_TABLE);
++				}
+ 				if(trap=shp->st.trap[SH_DEBUGTRAP])
+ 				{
+ 					av[0] = (t->tre.tretyp&COMSCAN)?"select":"for";
+@@ -2352,6 +2384,8 @@ int sh_exec(register const Shnode_t *t,
+ 				if(shp->st.breakcnt<0)
+ 					shp->st.execbrk = (++shp->st.breakcnt !=0);
+ 			}
++			if(nameref)
++				nv_offattr(np,NV_TABLE);
+ #if SHOPT_OPTIMIZE
+ 		endfor:
+ 			sh_popcontext(shp,buffp);
+@@ -2466,8 +2500,10 @@ int sh_exec(register const Shnode_t *t,
+ #if SHOPT_FILESCAN
+ 			if(iop)
+ 			{
++				int err=errno;
+ 				sfclose(iop);
+-				close(0);
++				while(close(0)<0 && errno==EINTR)
++					errno = err;
+ 				dup(savein);
+ 				shp->cur_line = 0;
+ 			}
+@@ -2746,7 +2782,7 @@ int sh_exec(register const Shnode_t *t,
+ 				stakdelete(slp->slptr);
+ 				if(rp->sdict)
+ 				{
+-					Namval_t *mp, *nq;
++					Namval_t *nq;
+ 					shp->last_root = rp->sdict;
+ 					for(mp=(Namval_t*)dtfirst(rp->sdict);mp;mp=nq)
+ 					{
+@@ -2911,6 +2947,15 @@ int sh_exec(register const Shnode_t *t,
+ 			break;
+ 		    }
+ 		}
++		if(shp->procsub && *shp->procsub)
++		{
++			pid_t pid, *procsub;
++			int exitval = shp->exitval;
++			for(procsub=shp->procsub;pid=*procsub;procsub++)
++				job_wait(pid);
++			*shp->procsub = 0;
++			shp->exitval = exitval;
++		}
+ 		if(shp->trapnote || (shp->exitval && sh_isstate(SH_ERREXIT)) &&
+ 			t && echeck) 
+ 			sh_chktrap(shp);
+@@ -3167,7 +3212,7 @@ pid_t _sh_fork(Shell_t *shp,register pid
+ 			{
+ 				if(shp->topfd > restorefd)
+ 					sh_iorestore(shp,restorefd,0);
+-				iounpipe(shp);
++				sh_iounpipe(shp);
+ 			}
+ 		}
+ 		return(parent);
+@@ -3479,8 +3524,7 @@ static void sh_funct(Shell_t *shp,Namval
+ 	struct funenv fun;
+ 	char *fname = nv_getval(SH_FUNNAMENOD);
+ 	struct Level	*lp =(struct Level*)(SH_LEVELNOD->nvfun);
+-	int		level, pipepid=shp->pipepid, comsub=shp->comsub;
+-	shp->comsub = 0;
++	int		level, pipepid=shp->pipepid;
+ 	shp->pipepid = 0;
+ 	sh_stats(STAT_FUNCT);
+ 	if(!lp->hdr.disc)
+@@ -3523,7 +3567,6 @@ static void sh_funct(Shell_t *shp,Namval
+ 	lp->maxlevel = level;
+ 	SH_LEVELNOD->nvalue.s = lp->maxlevel;
+ 	shp->last_root = nv_dict(DOTSHNOD);
+-	shp->comsub = comsub;
+ #if 0
+ 	nv_putval(SH_FUNNAMENOD,shp->st.funname,NV_NOFREE);
+ #else
+@@ -3628,11 +3671,11 @@ static void coproc_init(Shell_t *shp, in
+ 		sh_pipe(shp->cpipe);
+ 		if((outfd=shp->cpipe[1]) < 10) 
+ 		{
+-		        int fd=fcntl(shp->cpipe[1],F_DUPFD,10);
++		        int fd=sh_fcntl(shp->cpipe[1],F_DUPFD,10);
+ 			if(fd>=10)
+ 			{
+ 			        shp->fdstatus[fd] = (shp->fdstatus[outfd]&~IOCLEX);
+-				close(outfd);
++				sh_close(outfd);
+ 			        shp->fdstatus[outfd] = IOCLOSE;
+ 				shp->cpipe[1] = fd;
+ 			}
+@@ -3721,7 +3764,7 @@ static int run_subshell(Shell_t *shp,con
+ 	if(!shp->gd->shpath)
+ 		shp->gd->shpath = pathshell();
+ 	pid = spawnveg(shp->shpath,arglist,envlist,grp);
+-	close(fd);
++	sh_close(fd);
+ 	for(i=3; i < 10; i++)
+ 	{
+ 		if(shp->fdstatus[i]&IOCLEX && i!=pin && i!=pout)
+@@ -4002,7 +4045,7 @@ static pid_t sh_ntfork(Shell_t *shp,cons
+ 				shp->gd->shpath = pathshell();
+ 			spawnpid = path_spawn(shp,shp->gd->shpath,&argv[-1],arge,pp,(grp<<1)|1);
+ 			if(fd>=0)
+-				close(fd);
++				sh_close(fd);
+ 			argv[0] = argv[-1];
+ 		}
+ 	fail:
+--- src/cmd/ksh93/tests/leaks.sh
++++ src/cmd/ksh93/tests/leaks.sh	2013-10-25 13:26:45.751247106 +0000
+@@ -67,6 +67,11 @@ done
+ 
+ data="(v=;sid=;di=;hi=;ti='1328244300';lv='o';id='172.3.161.178';var=(k='conn_num._total';u=;fr=;l='Number of Connections';n='22';t='number';))"
+ read -C stat <<< "$data"
++for ((i=0; i < 1; i++))
++do	print -r -- "$data"
++done |	while read -u$n -C stat
++	do	:
++	done	{n}<&0-
+ a=0$(vmstate --format='+%(size)u')
+ for ((i=0; i < 500; i++))
+ do	print -r -- "$data"

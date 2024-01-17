@@ -1,0 +1,174 @@
+---
+ modules/clx/new-clx/demos/README         |    4 +--
+ modules/clx/new-clx/demos/clx-demos.lisp |    2 -
+ modules/clx/new-clx/demos/koch.lisp      |   29 +++++++++++++++++++++++++-
+ modules/clx/new-clx/demos/qix.lisp       |   30 ++++++++++++++++++++++++++-
+ modules/clx/new-clx/demos/sokoban.lisp   |   34 +++++++++++++++++++++++++++++--
+ 5 files changed, 92 insertions(+), 7 deletions(-)
+
+--- a/modules/clx/new-clx/demos/README
++++ b/modules/clx/new-clx/demos/README
+@@ -3,8 +3,8 @@ Most came with the original CLX and has
+ Some are original with CLISP (notably sokoban).
+ 
+ To try them, do
+-$ clisp -i clx-demos
++$ clisp -K full -i clx-demos
+ and read the instructions.
+ 
+ To try them all, one by one, do
+-$ clisp -i clx-demos -x '(clx-demos:run-all-demos)'
++$ clisp -K full -i clx-demos -x '(clx-demos:run-all-demos)'
+--- a/modules/clx/new-clx/demos/clx-demos.lisp
++++ b/modules/clx/new-clx/demos/clx-demos.lisp
+@@ -13,7 +13,7 @@
+ 
+ (defparameter *demos*
+   ;; (demo-name [package requirements])
+-  '((koch) (qix) (sokoban #:xpm) (greynetic) (petal) (hanoi)
++  '((greynetic) (petal) (hanoi)
+     (recurrence) (plaid) (clclock) (bball) (bwindow)))
+ 
+ (defmacro do-demos ((fun-var) &body body)
+--- a/modules/clx/new-clx/demos/koch.lisp
++++ b/modules/clx/new-clx/demos/koch.lisp
+@@ -5,7 +5,30 @@
+ ;;; See http://www.gnu.org/copyleft/gpl.html
+ ;;;
+ 
+-(in-package :clx-demos)
++(defpackage "KOCH"
++  (:use "COMMON-LISP" "XLIB" "EXT")
++  (:import-from "SYS" "GETENV")
++  (:shadowing-import-from "XLIB" "CHAR-WIDTH") ; EXT has CHAR-WIDTH
++  (:export "KOCH"))
++
++(in-package :koch)
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++(defun x-host-display (&optional (disp (getenv "DISPLAY")))
++  "Parse the DISPLAY environment variable.
++Return 3 values: host, server, screen."
++  (if disp
++      (let* ((pos1 (position #\: disp))
++             (pos2 (and pos1 (position #\. disp :start pos1))))
++        (values (subseq disp 0 pos1)
++                (if pos1 (parse-integer (subseq disp (1+ pos1) pos2)) 0)
++                (if pos2 (parse-integer (subseq disp (1+ pos2))) 0)))
++      (values "" 0 0)))
++
++(defun x-open-display ()
++  "Open the appropriate X display."
++  (multiple-value-bind (host di) (x-host-display)
++    (xlib:open-display host :display di)))
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ (defun koch-point (cx width/2 height/2 scale)
+   (list (round (+ width/2 (* scale width/2 (realpart cx))))
+@@ -121,4 +144,8 @@ Returns the new list and an indicator of
+       (xlib:unmap-window win)
+       (xlib:display-finish-output dpy))))
+ 
++(format t "~& Koch snoflake:~%
++  (koch:koch :width :height :delay :x :y :scale :font)
++~% Call (koch:koch)~%~%")
++
+ (provide "koch")
+--- a/modules/clx/new-clx/demos/qix.lisp
++++ b/modules/clx/new-clx/demos/qix.lisp
+@@ -14,7 +14,30 @@
+ ;;;; o or a spline option?!
+ ;;;;
+ 
+-(in-package :clx-demos)
++(defpackage "QIX"
++  (:use "COMMON-LISP" "XLIB" "EXT")
++  (:import-from "SYS" "GETENV")
++  (:shadowing-import-from "XLIB" "CHAR-WIDTH") ; EXT has CHAR-WIDTH
++  (:export "QIX"))
++
++(in-package :qix)
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++(defun x-host-display (&optional (disp (getenv "DISPLAY")))
++  "Parse the DISPLAY environment variable.
++Return 3 values: host, server, screen."
++  (if disp
++      (let* ((pos1 (position #\: disp))
++             (pos2 (and pos1 (position #\. disp :start pos1))))
++        (values (subseq disp 0 pos1)
++                (if pos1 (parse-integer (subseq disp (1+ pos1) pos2)) 0)
++                (if pos2 (parse-integer (subseq disp (1+ pos2))) 0)))
++      (values "" 0 0)))
++
++(defun x-open-display ()
++  "Open the appropriate X display."
++  (multiple-value-bind (host di) (x-host-display)
++    (xlib:open-display host :display di)))
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ (defvar *offset* 3)
+ (defvar *delta* 6)
+@@ -87,4 +110,9 @@
+       (xlib:unmap-window win)
+       (xlib:display-finish-output dpy))))
+ 
++;; since we have no herald, simply dump it:
++(format t "~& The famous swirling vectors.~%
++ (qix:qix :host :display :dpy :width :height :delay :nqixs :nlines)
++~% Call (qix:qix) or (qix:qix :delay 0)~%~%")
++
+ (provide "qix")
+--- a/modules/clx/new-clx/demos/sokoban.lisp
++++ b/modules/clx/new-clx/demos/sokoban.lisp
+@@ -41,7 +41,30 @@
+ ;;;;  - maximum field size is hard wired to 20x20. (This is not in the LISP spirit!)
+ ;;;;  - sometimes the programm could not count correctly ...
+ 
+-(in-package :clx-demos)
++(defpackage "SOKOBAN"
++  (:use "COMMON-LISP")
++  (:import-from "SYS" "GETENV")
++  (:import-from "XLIB" "CLOSED-DISPLAY-P")
++  (:export "SOKOBAN"))
++
++(in-package :sokoban)
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
++(defun x-host-display (&optional (disp (getenv "DISPLAY")))
++  "Parse the DISPLAY environment variable.
++Return 3 values: host, server, screen."
++  (if disp
++      (let* ((pos1 (position #\: disp))
++             (pos2 (and pos1 (position #\. disp :start pos1))))
++        (values (subseq disp 0 pos1)
++                (if pos1 (parse-integer (subseq disp (1+ pos1) pos2)) 0)
++                (if pos2 (parse-integer (subseq disp (1+ pos2))) 0)))
++      (values "" 0 0)))
++
++(defun x-open-display ()
++  "Open the appropriate X display."
++  (multiple-value-bind (host di) (x-host-display)
++    (xlib:open-display host :display di)))
++;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
+ ;;;; First a lot of global variables ...
+ (defvar *pixmaps* nil)                  ;array of pixmaps according to below indices
+@@ -228,7 +251,12 @@
+                  (nny (+ ny dy)))
+              (when (>= (field nnx nny) %floor)
+                ;;Ok its legal ...
+-               (when (and (= (field nx ny) %object)
++               ;;Allow moving through
++               (when (and (= (field nx ny)   %treasure)
++                          (= (field nnx nny) %floor))
++                 (incf *n-objects*))
++               ;;Take this point
++               (when (and (= (field nx ny)   %object)
+                           (= (field nnx nny) %goal))
+                  (decf *n-objects*))
+                (incf (field nx ny) 4)   ;remove object and add man
+@@ -475,4 +503,6 @@ If you quit sokoban using 'q' the curren
+          (setq *level* 1)
+          (init-field))) )
+ 
++(format t "~&~% Call (sokoban:sokoban)~%~%")
++
+ (provide "sokoban")

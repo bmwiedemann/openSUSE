@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Tue May  9 13:41:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Sun Jun 19 17:47:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Add install info to readme for openSUSE. (#205)
+  * Support defaultdict for namespace mapping (#211)
+  * parse(generator) is now possible (#212)
+  * Processing comments on parsing from xml to dict (connected to #109) (#221)
+  * Add expand_iter kw to unparse to expand iterables (#213)
+  * Fixed some typos
+  * Add support for python3.8
+  * Drop Jython/Python 2 and add Python 3.9/3.10.
+  * Drop OrderedDict in Python >= 3.7
+  * Do not use len() to determine if a sequence is empty
+  * Add more namespace attribute tests
+  * Fix encoding issue in setup.py
+
+-------------------------------------------------------------------
+Tue Feb 22 10:27:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch skip-tests-expat-245.patch:
+  * Do not run tests that make no sense with a current Expat. 
+
+-------------------------------------------------------------------
+Fri May 29 10:34:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Replace nose with pytest
+
+-------------------------------------------------------------------
+Sat Apr  6 00:00:15 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add export LANG=en_US.UTF-8 to fix Leap builds
+
+-------------------------------------------------------------------
+Tue Mar 26 12:20:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Mar 26 11:02:52 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.12.0
+  * Allow force_commits=True for getting all keys as lists (#204)
+  * README.md: fix useless uses of cat (#200)
+  * Add FreeBSD install instructions (#199)
+  * Fix and simplify travis config (#192)
+  * Add support for Python 3.7 (#189)
+  * Drop support for EOL Python (#191)
+  * Use Markdown long_description on PyPI (#190)
+  * correct spelling mistake (#165)
+  * correctly unparse booleans (#180)
+  * Updates README.md with svg badge
+
+-------------------------------------------------------------------
+Tue Dec  4 12:56:17 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 18 15:01:55 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Fix source URL.
+- Update to version 0.11.0
+  * Determine fileness by checking for read attr
+  * Add support for Python 3.6.
+  * Release as a universal wheel.
+  * Updated docs examples to use print function.
+  * unparse: pass short_empty_elements to XMLGenerator
+  * Added namespace support when unparsing.
+
+-------------------------------------------------------------------
+Tue Sep  6 07:25:55 UTC 2016 - mardnh@gmx.de
+
+- update to version 0.10.2
+  + Fixed defusedexpat expat import. 
+- v0.10.1
+  + Use defusedexpat if available.
+  + Allow non-string attributes in unparse.
+  + Add postprocessor support for attributes.
+  + Make command line interface Python 3-compatible.
+- v0.10.0
+  + Add force_list feature.
+  + Add support for Python 3.4 and 3.5.
+  + Performance optimization: use list instead of string for CDATA.
+  + Include Arch Linux package instructions in README.
+  + Improved documentation.
+  + Allow any iterable in unparse, not just lists.
+  + Bugfix: Process namespaces in attributes too.
+  + Better testing under Python 2.6.
+- v0.9.2
+  + Fix multiroot check for list values
+- v0.9.1
+  + Only check single root when full_document=True
+
+-------------------------------------------------------------------
+Thu Nov 27 14:46:28 UTC 2014 - boris@steki.net
+
+- add python-xml to all *suse distributions as SLE 12 requires it too 
+
+-------------------------------------------------------------------
+Mon Nov  3 13:45:57 UTC 2014 - boris@steki.net
+
+- add python-xml to requires to enable SLE build 
+
+-------------------------------------------------------------------
+Wed Sep 10 12:48:51 UTC 2014 - boris@steki.net
+
+- initial packaging of 0.9.0 version 
+

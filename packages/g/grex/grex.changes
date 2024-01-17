@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Oct 16 20:38:12 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- License correction based on legaldb scan 
+
+-------------------------------------------------------------------
+Sat Aug 26 01:36:49 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 1.4.4:
+  * All dependencies have been updated to their latest versions.
+- Python library excluded from the package by changes to --features
+
+-------------------------------------------------------------------
+Wed Jul 26 12:41:47 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 1.4.2:
+  Improvements:
+  * All characters from the current Unicode standard 15.0 are now
+    fully supported. (#128)
+  * A proper exit code is now returned if the provided user input
+    cannot be handled by the CLI. (#165)
+  Fixes:
+  * Several bugs have been fixed that caused incorrect expressions
+    to be generated in rare cases.
+
+- Removal of unneeded _constraints
+    
+-------------------------------------------------------------------
+Sat Feb 18 00:14:49 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for grex 1.4.1

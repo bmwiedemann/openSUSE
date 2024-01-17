@@ -1,0 +1,23 @@
+From 98d68c15dd0e7ca8e410cebb3a55f872c1a189c9 Mon Sep 17 00:00:00 2001
+From: Andrea Manzini <ilmanzo@gmail.com>
+Date: Fri, 14 Apr 2023 08:27:20 +0200
+Subject: [PATCH] Update global.h
+
+to reflect `PIDFile=/run/mbpfan.pid` in the service file
+---
+ src/global.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/global.h b/src/global.h
+index 1552511..363d0c9 100644
+--- a/src/global.h
++++ b/src/global.h
+@@ -3,7 +3,7 @@
+ 
+ #define PROGRAM_NAME "mbpfan"
+ #define PROGRAM_VERSION "2.4.0"
+-#define PROGRAM_PID "/var/run/mbpfan.pid"
++#define PROGRAM_PID "/run/mbpfan.pid"
+ 
+ extern int daemonize;
+ extern int verbose;

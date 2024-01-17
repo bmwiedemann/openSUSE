@@ -1,0 +1,12 @@
+The command to run this container is:
+
+mkdir /srv/dhcp-server
+# create /src/dhcp-server/dhcpd.conf
+podman run -d --rm --net host -v /srv/dhcp-server:/data --env DHCPD_INTERFACES="eth2" --name dhcp-server registry.opensuse.org/opensuse/dhcp-server:latest
+
+Configuration files (dhcpd.conf, dhcpd6.conf) should be stored in
+/srv/dhcp-server, where the leases will be stored, too.
+
+Supported environment variables:
+DHCPD_IP_PROTOCOL=[4|6] - IPv4 or IPv6?
+DHCPD_INTERFACES="if0 if1 ... ifN" - List of interfaces to listen on

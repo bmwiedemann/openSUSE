@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Wed Aug 10 10:45:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.99.5
+  * Implemented a new higher performance octahedron normal vector
+    decoding variant that eliminates GPU SIMD divergence and
+    costs fewer instructions
+  * Added a completely flattened closest-hit dispatch approach
+    through bitwise manipulation of the outpus of the OptiX 7
+    optixGetHitKind() and optixGetPrimitiveType() APIs.
+  * Added SBT-local hitgroup geometry flags containing
+    cached/flattened material opacity, texture alpha cutout, and
+    other information useful for short-circuiting frequent high
+    latency data fetches from global memory or textures,
+    particularly those items needed for for any-hit programs.
+
+-------------------------------------------------------------------
+Thu Apr 21 22:12:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.99.4
+  * Added support for AO maximum occlusion distance cutoff, for
+    convenient rendering of interior scenes where the "sky" would
+    otherwise be largely or fully occluded.
+  * Updated grid acceleration structure generation logic to avoid
+    integer wraparound when working with scenes containing
+    billions of objects and very large resulting grids.
+  * Added a rough draft implementation of a quadrilateral mesh
+    primitive
+  * Migrated gradient noise magnitude and associated calculations
+    outside of the ray tracing kernels themselves.
+  * Unified the various camera raygen program alpha transparency
+    code.
+  * Added mainstream tone mapping operators and corrected alpha
+    channel handling in colorspace conversions.
+
+-------------------------------------------------------------------
+Thu Dec 24 12:49:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Specfile modernizations. Remove conjecture from descriptions.
+
+-------------------------------------------------------------------
+Thu Feb  8 14:50:50 UTC 2018 - jengelh@inai.de
+
+- Remove old SLES BuildRequires.
+
+-------------------------------------------------------------------
+Wed Feb  5 01:23:51 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 0.99~b6
+* a new barrier synchronization mechanism was implemented for
+  synchronizing the pool of worker threads on each node prior to
+  sending/receiving the image buffer via MPI.
+* Added support for atomic integer ops for improved performance
+  when mixing threads and distributed memory message passing.
+
+-------------------------------------------------------------------
+Thu Dec 13 21:42:53 UTC 2012 - jengelh@inai.de
+
+- Install the tachyon main program
+
+-------------------------------------------------------------------
+Sun Apr 22 17:45:04 UTC 2012 - alinm.elena@gmail.com
+
+- added *.h in the devel packages... I hope I added all 
+  I have managed to build vmd from cvs with them
+
+-------------------------------------------------------------------
+Tue Sep 27 14:13:02 UTC 2011 - jengelh@medozas.de
+
+- Initial package (version 0.99_b2) for build.opensuse.org

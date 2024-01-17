@@ -1,0 +1,17 @@
+--- tests/gmagick-056-set_getsamplingfactors.phpt	2018-01-01 03:37:18.000000000 +0100
++++ tests/gmagick-056-set_getsamplingfactors.phpt	2021-01-22 13:22:13.171846979 +0100
+@@ -1,5 +1,7 @@
+ --TEST--
+ Set, getsamplingfactors
++--XFAIL--
++https://sourceforge.net/p/graphicsmagick/bugs/633/
+ --SKIPIF--
+ <?php
+ /* $Id: gmagick-056-set_getsamplingfactors.phpt 280206 2009-05-09 18:22:48Z vito $ */
+@@ -17,4 +19,4 @@ Array
+ (
+     [0] => 1
+     [1] => 2
+-)
+\ Geen regeleindeteken (LF) aan einde van bestand
++)

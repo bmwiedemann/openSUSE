@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fc3b90cb6efe81375e9d7b4ea04bf67</srcmd5>
+    <version>0.6</version>
+    <time>1288973770</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50574 from user kukuk
+</comment>
+    <requestid>50574</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ae51ea13a033c6b506030df199894689</srcmd5>
+    <version>0.6</version>
+    <time>1288973775</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50574
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c40e06550dd3010213ca03fe24ee4432</srcmd5>
+    <version>0.6</version>
+    <time>1290096241</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53176 from user coolo
+</comment>
+    <requestid>53176</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>36430991301ad0bef492b55e7b3675e9</srcmd5>
+    <version>0.6</version>
+    <time>1290096257</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53176
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ca3180f649913d26ce34cb7a6bcf164c</srcmd5>
+    <version>0.6</version>
+    <time>1291128757</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 53946 from user kukuk
+</comment>
+    <requestid>53946</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>ba5b803cb4d30eb15dfa869aa35a41e0</srcmd5>
+    <version>0.6</version>
+    <time>1291128762</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 53946
+</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>cb694800a18fe30af150a995434cb440</srcmd5>
+    <version>0.6</version>
+    <time>1291581855</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54503 from user coolo
+</comment>
+    <requestid>54503</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>fb16d2a467f36df6013c1c403812354b</srcmd5>
+    <version>0.6</version>
+    <time>1291581859</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54503
+</comment>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>fb16d2a467f36df6013c1c403812354b</srcmd5>
+    <version>0.6</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>fb16d2a467f36df6013c1c403812354b</srcmd5>
+    <version>0.6</version>
+    <time>1319182254</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>80caee6a4762053b82ccbc06dddf22f0</srcmd5>
+    <version>0.6</version>
+    <time>1323193176</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>80caee6a4762053b82ccbc06dddf22f0</srcmd5>
+    <version>0.6</version>
+    <time>1340183819</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="18">
+    <srcmd5>80caee6a4762053b82ccbc06dddf22f0</srcmd5>
+    <version>0.6</version>
+    <time>1359109631</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="20">
+    <srcmd5>80caee6a4762053b82ccbc06dddf22f0</srcmd5>
+    <version>0.6</version>
+    <time>1379663608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="22">
+    <srcmd5>80caee6a4762053b82ccbc06dddf22f0</srcmd5>
+    <version>0.6</version>
+    <time>1409302227</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

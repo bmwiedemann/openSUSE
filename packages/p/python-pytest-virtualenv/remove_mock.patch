@@ -1,0 +1,29 @@
+--- a/tests/unit/test_venv.py
++++ b/tests/unit/test_venv.py
+@@ -1,4 +1,7 @@
+-import mock
++try:
++    from unittest.mock import patch
++except ImportError:
++    from mock import patch
+ 
+ import pytest_virtualenv as venv
+ from pytest_shutil import env
+@@ -6,7 +9,7 @@ from pytest_shutil import env
+ 
+ def test_PYTHONPATH_not_present_in_testing_env_if_set():
+     with env.set_env('PYTHONPATH', 'fred'):
+-        with mock.patch.object(venv.Workspace, 'run') as run:
++        with patch.object(venv.Workspace, 'run') as run:
+             venv.VirtualEnv()
+             call = run.mock_calls[0]
+             assert 'PYTHONPATH' not in call[2]['env']
+@@ -18,7 +21,7 @@ def test_PYTHONPATH_not_present_in_testi
+ 
+ def test_PYTHONPATH_not_present_in_testing_env_if_unset():
+     with env.no_env('PYTHONPATH'):
+-        with mock.patch.object(venv.Workspace, 'run') as run:
++        with patch.object(venv.Workspace, 'run') as run:
+             venv.VirtualEnv()
+             call = run.mock_calls[0]
+             assert 'PYTHONPATH' not in call[2]['env']

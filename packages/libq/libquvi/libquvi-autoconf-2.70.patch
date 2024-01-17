@@ -1,0 +1,24 @@
+From: Boyuan Yang <byang@debian.org>
+Date: Fri, 3 Sep 2021 10:47:13 -0400
+Subject: Fix FTBFS with autoconf 2.70
+
+Patch retrieved from https://bugs.gentoo.org/777768
+
+Bug-Debian: https://bugs.debian.org/978860
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index da8e61c..3010a3b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,7 +8,7 @@ m4_include([m4/version.m4])
+ AC_INIT([libquvi], m4_esyscmd([./gen-ver.sh -c | tr -d '\n']),
+         [http://quvi.sf.net/bugs/],[],[http://quvi.sf.net/])
+ 
+-AC_DEFINE_UNQUOTED([BUILD_OPTS], "$@",
++AC_DEFINE_UNQUOTED([BUILD_OPTS], "$*",
+   [Define to configure invocation command line options])
+ 
+ # Interface

@@ -1,0 +1,5 @@
+<package name="python-nethsm" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="python-nethsm"/>
+</package>

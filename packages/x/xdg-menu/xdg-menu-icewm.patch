@@ -1,0 +1,20 @@
+--- xdg_menu
++++ xdg_menu
+@@ -1549,7 +1549,7 @@
+ 	my $menu_name = $menu->{'PrepName'};
+ 	
+ 	$output .= ' ' x $indent;
+-	$output .= "menu \"$menu_name\" folder {\n";
++	$output .= "menu \"$menu_name\" folder {\n" if $indent > 0; #skip toplevel menu, bug 273232
+ 	
+ 	foreach my $entry (@{$menu->{'entries'}}) {
+ 		if ($entry->{type} eq 'desktop') {
+@@ -1570,7 +1570,7 @@
+ 		
+ 	}
+ 	$output .= ' ' x $indent;
+-	$output .= "}\n";
++	$output .= "}\n" if $indent > 0;
+ 	
+ 	return $output;
+ }

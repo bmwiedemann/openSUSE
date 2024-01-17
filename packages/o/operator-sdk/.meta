@@ -1,0 +1,14 @@
+<package name="operator-sdk" project="openSUSE:Factory">
+  <title>CLI for installing the Operator Lifecycle Manager</title>
+  <description>This project is a component of the Operator Framework, an open source toolkit to manage Kubernetes native applications, called Operators, in an effective, automated, and scalable way. Read more in the introduction blog post.
+
+Operators make it easy to manage complex stateful applications on top of Kubernetes. However writing an Operator today can be difficult because of challenges such as using low level APIs, writing boilerplate, and a lack of modularity which leads to duplication.
+
+The Operator SDK is a framework that uses the controller-runtime library to make writing operators easier by providing:
+
+* High level APIs and abstractions to write the operational logic more intuitively
+* Tools for scaffolding and code generation to bootstrap a new project fast
+* Extensions to cover common Operator use cases</description>
+  <devel project="devel:kubic" package="operator-sdk"/>
+  <url>https://github.com/operator-framework/operator-sdk</url>
+</package>

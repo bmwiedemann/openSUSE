@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sun Jun 19 11:54:51 UTC 2016 - jengelh@inai.de
+
+- Drop redundant clean section and throw out unnecessary macros
+
+-------------------------------------------------------------------
+Fri Jun 17 07:20:31 UTC 2016 - mlin@suse.com
+
+- Remove CHECK() in License field and use Artistic-1.0 or GPL-2.0+
+  as same as what license we had for perl.
+
+-------------------------------------------------------------------
+Thu Apr 14 08:08:21 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.12
+    * created by cpanspec 1.78.04
+

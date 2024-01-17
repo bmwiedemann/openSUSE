@@ -1,0 +1,8 @@
+<package name="efibootmgr" project="openSUSE:Factory">
+  <title>EFI Boot Manager</title>
+  <description>The EFI Boot Manager allows the user to edit the Intel Extensible
+Firmware Interface (EFI) Boot Manager variables.  Additional
+information about the EFI can be found at
+&lt;http://developer.intel.com/technology/efi/efi.htm&gt;.</description>
+  <devel project="Base:System" package="efibootmgr"/>
+</package>

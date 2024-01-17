@@ -1,0 +1,26 @@
+diff -Nur dde-wayland-1.0.0/client/client.pro dde-wayland-1.0.0-new/client/client.pro
+--- dde-wayland-1.0.0/client/client.pro	2020-08-18 15:29:39.000000000 +0800
++++ dde-wayland-1.0.0-new/client/client.pro	2020-09-16 21:48:15.801129275 +0800
+@@ -32,6 +32,9 @@
+     includes.path = $$INCLUDE_INSTALL_DIR
+ }
+ 
++INCLUDEPATH += /usr/include/wayland
++LIBS += -L$$LIB_INSTALL_DIR -lwayland-client
++
+ includes.files += \
+     $$PWD/dshellsurface.h
+ 
+diff -Nur dde-wayland-1.0.0/server/server.pro dde-wayland-1.0.0-new/server/server.pro
+--- dde-wayland-1.0.0/server/server.pro	2020-08-18 15:29:39.000000000 +0800
++++ dde-wayland-1.0.0-new/server/server.pro	2020-09-16 21:48:10.953124288 +0800
+@@ -33,6 +33,9 @@
+     includes.path = $$INCLUDE_INSTALL_DIR
+ }
+ 
++INCLUDEPATH += /usr/include/wayland
++LIBS += -L$$LIB_INSTALL_DIR -lwayland-server
++
+ includes.files += \
+     $$PWD/dshellsurface.h
+ 

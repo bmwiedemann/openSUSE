@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Wed Apr  3 07:14:01 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-Module-Build-XSUtil/Changes
+
+  0.19 2018-04-17T14:51:20Z
+      - Use File::Copy::Recursive::Reduced instead File::Copy::Recursive(#13)
+          (jkeenan)
+
+-------------------------------------------------------------------
+Thu Nov  9 06:32:57 UTC 2017 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-Module-Build-XSUtil/Changes
+
+  0.18 2017-11-01T18:22:27Z
+      - Remove Module::Build::Tiny from deps
+
+-------------------------------------------------------------------
+Wed Nov  1 06:34:27 UTC 2017 - coolo@suse.com
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-Module-Build-XSUtil/Changes
+
+  0.17 2017-10-31T13:00:43Z
+      - Support pure-perl build
+
+-------------------------------------------------------------------
+Tue Jun 30 14:39:28 UTC 2015 - coolo@suse.com
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-Module-Build-XSUtil/Changes
+
+  0.16 2015-06-29T15:55:13Z
+      - Fix regexp of _gcc_version for Ubuntu and Debian
+          (syohex)
+      - Set -std=c99 explicitly for older GCC
+          (syohex)
+
+-------------------------------------------------------------------
+Fri Apr 24 15:35:46 UTC 2015 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Module-Build-XSUtil/Changes
+
+  0.15 2015-04-23T22:43:05Z
+      - Update XSHelper for Fix STATIC_INLINE for gcc -std=c89
+          (vpit)
+
+-------------------------------------------------------------------
+Mon Sep 15 12:55:59 UTC 2014 - coolo@suse.com
+
+- initial package 0.14
+    * created by cpanspec 1.78.08
+

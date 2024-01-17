@@ -1,0 +1,24 @@
+diff --git a/mrouted.service.in b/mrouted.service.in
+index 80d5d64..8c25a16 100644
+--- a/mrouted.service.in
++++ b/mrouted.service.in
+@@ -10,6 +10,19 @@ After=network-online.target
+ Requires=network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ ExecStartPre=-/sbin/modprobe ipip
+ EnvironmentFile=-@SYSCONFDIR@/default/mrouted

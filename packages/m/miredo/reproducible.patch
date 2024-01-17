@@ -1,0 +1,24 @@
+commit a31ef243d0038bf22bfe5f03b9f377a8819c5da0
+Author: Rémi Denis-Courmont <remi@remlab.net>
+Date:   Wed Aug 8 19:09:55 2018 +0300
+
+    Remove build hostname from executable
+
+
+Index: miredo-1.2.6/src/main.c
+===================================================================
+--- miredo-1.2.6.orig/src/main.c
++++ miredo-1.2.6/src/main.c
+@@ -93,9 +93,8 @@ miredo_version (void)
+ # define VERSION "unknown version"
+ #endif
+ 	printf (_("Miredo: Teredo IPv6 tunneling software %s (%s)\n"
+-	          " built %s on %s (%s)\n"),
+-	        VERSION, PACKAGE_HOST, __DATE__,
+-	        PACKAGE_BUILD_HOSTNAME, PACKAGE_BUILD);
++                 " built in OBS (%s)\n"),
++               VERSION, PACKAGE_HOST, PACKAGE_BUILD);
+ 	printf (_("Configured with: %s\n"), PACKAGE_CONFIGURE_INVOCATION);
+ 	puts (_("Written by Remi Denis-Courmont.\n"));
+ 
+

@@ -1,0 +1,684 @@
+-------------------------------------------------------------------
+Thu Sep  7 06:41:06 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Use the make install target to install everything properly
+  (boo#1215079)
+
+-------------------------------------------------------------------
+Fri Jul 14 14:02:05 UTC 2023 - Erwan GEORGET <egeorget@canopus.dev>
+
+- Update to upstream version 0.9
+
+  New Features:
+
+  * Segments
+      + Split addressable LED zones into sub-groups
+      + Useful to divide up daisy-chained ARGB devices (fans, strips) connected to the same header
+  * Keyboard Layout Manager, a back-end feature that makes it easier to develop keyboard integrations and manage multiple regional layouts
+  * Hardware IDs page helps to make it easier to integrate new devices
+  * SDK integration for plugins, allows plugins to expose their own custom SDK hooks
+  * Replaced old PNG icons with new icons
+  * Additional translations
+      + Malaysian
+      + Japanese
+      + Croatian
+      + Polish
+  * Translation updates for existing translations
+  
+  New Device Support:
+
+  * Many additional GPUs added to existing GPU controllers
+    + ASUS
+    + Colorful
+    + EVGA
+    + Gainward
+    + Gigabyte
+    + iGame
+    + MSI
+    + NVIDIA
+    + Palit
+    + PNY
+  * AOC controller:
+    + AOC GK500 keyboard
+    + AOC GMM700 mousemat
+    + AOC GM500 mouse
+  * ASRock controller improvements:
+    + Fixes for ASRock Polychrome USB boards
+  * ASUS controller improvements:
+    + Additional devices added
+    + Various device-specific improvements
+    + ASUS ROG Ally support
+  * Cherry keyboard support
+  * Corsair controller improvements:
+    + Corsair Dominator Platinum DDR5 support
+    + Corsair Vengeance DDR5 support
+  * CRYORIG H7 Quad Lumi support
+  * Das Keyboard controller improvements:
+    + Additional device support
+  * ENE controller improvements:
+    + Improved ENE SMBus configuration table parsing (fixes Unknown LED names on most ENE DRAM)
+    + Made Save to Device hidden behind configuration file setting as it is unreliable on some modules
+  * GaiZhongGai controller improvements:
+    + Additional device support
+  * Gigabyte controller improvements:
+    + Added new motherboard layouts
+  * HyperX controller improvements:
+    + Added an hidapi wrapped device type to use libusb-hidapi on Linux for certain devices that have a non-compliant USB HID descriptor
+    + Additional device support
+  * JSAUX Steam Deck dock support
+  * LEGO Dimensions toypad base support
+  * Lenovo laptop controller improvements:
+    + Additional device support
+  * Lenovo motherboard support
+  * Lian-Li controller improvements:
+    + Additional device support
+  * Logitech controller improvements:
+    + Bug fixes
+  * MSI controller improvements:
+    + More MSI Mystic Light motherboards added
+  * Nollie32 controller support
+  * NZXT Hue 1 (Smart Device V1) support
+  * NZXT Hue 2 controller improvements:
+    + Additional device support
+    + Additional accessory (fans/strips) support
+  * OKS keyboard support
+  * Razer controller improvements:
+    + Additional device support
+    + Fixed initialization issues that made some devices unreliable
+    + Migrated many Razer keyboards to KeyboardLayoutManager
+  * RedSquare keyboard support
+  * Roccat headset support
+  * Sapphire controller improvements:
+    + Additional features supported
+  * TP-Link Kasa Smart support
+  * Wooting controller improvements:
+    + Additional device support
+
+Bug Fixes:
+
+  * Fixed some CLI issues
+
+Known Issues:
+
+  * Some NVIDIA GPU controllers may not work on Linux due to issues with NVIDIA's proprietary driver.  The latest beta version of the driver should have a fix.
+    + ASUS Aura 3xxx (ENE) GPUs
+    + EVGA 3xxx GPUs
+  * AMD GPU controllers do not work on Linux due to issues with AMD's amdgpu kernel driver.
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Asus Addressable number of channels may be incorrect
+
+Notes:
+
+  * Due to changes in device names, existing profiles you have saved from previous versions may not work and will need to be recreated.  Same goes for saved addressable controller sizes.
+  * If upgrading from a release prior to OpenRGB 0.6, it is recommended to disable OpenRazer or OpenRazer-win32 in the settings.  This allows use of the new Razer controller with better device support.  OpenRazer will likely be removed in the next release.
+  * Due to plugin versioning change, you may have to delete your old plugins manually before OpenRGB will install new ones.  To do this, go to the Settings tab, under General Settings click Open Settings Folder.  Close OpenRGB, then delete the plugins folder in this directory.  Reopen OpenRGB and you can install new plugins from the settings tab.  
+
+- Patches
+  * Drop OpenRGB-GCC13.patch: fixed upstream
+  * Drop OpenRGB-mbedTLS3-hueplusplus.patch: fixed upstream
+  * Rebase OpenRGB-use_system_libs.patch: Update to new version
+
+
+-------------------------------------------------------------------
+Sat Jun  3 07:38:14 UTC 2023 - Erwan GEORGET <egeorget@canopus.dev>
+
+- Split the package in two to allow installation of udev rules for use with the Flatpak version.
+
+-------------------------------------------------------------------
+Thu May 25 08:45:23 UTC 2023 - Jan Baier <jbaier@suse.com>
+
+- openSUSE build:
+  * Fix build in Factory:
+    + Add OpenRGB-mbedTLS3-hueplusplus.patch
+    + Add OpenRGB-GCC13.patch
+
+-------------------------------------------------------------------
+Tue May  2 13:59:02 UTC 2023 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Fix openSUSE build:
+  * Add OpenRGB-mbedTLS3-hueplusplus.patch: Remove certs.h
+    dependency for embedded hueplusplus library.
+  * Add OpenRGB-GCC13.patch: Apply GCC 13 compilation fixes from
+    upstream.
+
+-------------------------------------------------------------------
+Mon Nov 28 09:31:08 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- OpenSUSE Build:
+  * Re-enable LTO flags.
+  * Drop OpenRGB-fix_return_in_nonvoid.patch due to upstream merge.
+  * Refresh OpenRGB-use_system_libs.patch.
+  * Modify OpenRGB.spec to support auto-translation and auto-udev generation.
+
+- Update to 0.8
+  New Features:
+  * Translation support
+    + Automatically detect language from OS or manually select in settings
+  * UI cleanup, frames around UI elements
+  * Automatic udev rules generation
+  * Improved AMD ADL I2C driver to support more AMD GPUs on Windows
+  * Option to enable SMBus mutex in Windows for compatibility with other
+    hardware management and RGB software that accesses SMBus.
+  * (Windows) Switched from inpout32 to WinRing0 low level access library.
+  * More Intel chipsets added to Intel SMBus detection
+  * New Device Support:
+    + Many additional GPUs added to existing GPU controllers:
+    + ASUS Aura GPU (Legacy)
+    + ASUS Aura GPU (ENE)
+    + Gigabyte RGB Fusion v1
+    + Gigabyte RGB Fusion v2
+    + EVGA GPU
+    + MSI GPU
+    + Gainward GPU
+    + Palit/PNY GPU
+  * New GPU controllers:
+    + NVIDIA Illumination (FE cards, Windows only)
+    + Colorful GPU
+  * MSI-RGB controller improvements:
+    + Additional motherboards added
+  * MSI Mystic Light controller improvements:
+    + Additional motherboards added
+    + Per-LED Direct mode on compatible boards
+    + More modes re-enabled
+  * Razer controller improvements:
+    + Additional devices added
+    + Improved keymaps, unused slots no longer show as an LED
+  * SteelSeries controller improvements:
+    + Additional devices added
+    + Firmware version request
+    + Improved keymaps
+  * Logitech controller improvements:
+    + Additional devices added
+    + Improved keymaps
+  * ASUS Peripheral controller improvements:
+    + Additional devices added
+  * Trust support
+    + Controller for Trust devices
+  * ZET GAMING
+    + Edge Air Pro
+    + Fury Pro
+  * NZXT Hue 2 controller improvements:
+    + Additional modes added
+  * LIFX support
+    + Controller for LIFX bulbs
+    + Tab in Settings to configure LIFX devices
+  * Zalman Z-SYNC re-enabled
+    + WARNING: Corruption issues are still possible, but also possible
+      with OEM software. Recommend using Direct mode only.
+    + Firmware detection improved
+  * NVIDIA ESA controller
+  * Lexip gaming mouse controller
+  * Keychron controller (non-QMK)
+  * Gigabyte/Aorus RGB DRAM controller
+  * Cougar device controller
+  * Acer Monitor controller
+  * Corsair Peripheral controller improvements:
+    + Additional devices added
+  * Roccat controller improvements:
+    + Additional devices added
+  * E1.31 controller improvements:
+    + Add grouping for unicast controllers on the same IP address
+  * Thermaltake Riing Quad additional devices added
+  * Cooler Master controller improvements:
+    + Additional devices added
+  * EVGA Peripheral controller improvements:
+    + Additional devices added
+  * Nanoleaf support
+    + Controller for Nanoleaf panels
+    + All panel types should be supported
+    + Tab in Settings to configure Nanoleaf devices
+  * ASRock Polychrome controller improvements:
+    + Additional motherboards added
+    + Improved speed settings for modes
+  * Dark Project KD3B keyboard support
+  * Patriot Viper DRAM improvements:
+    + Proper Direct mode support fixes flickering
+    + Multiple sticks sync in effects modes
+  * ViewSonic support for some monitor RGB strips
+  * Patriot Viper Steel DRAM support
+  * HyperX Peripheral controller improvements:
+    + Additional devices added
+  * AMD Wraith Prism controller improvements:
+    + Now supports per-LED control on the ring zone
+  * Intel Arc A770 Limited Edition support (Direct mode only)
+  * Sony DualSense controller
+  * SRGBMods Raspberry Pi Pico controller
+  * Wooting controller improvements:
+    + Additional devices added
+  * Elgato Keylight support
+    + Controller for Elgato Keylight
+    + Tab in Settings to configure Keylight devices
+  * Basic I2C protocol for Arduino-controlled ARGB over I2C
+
+  Bug Fixes:
+
+  * Fixed inverted brightness handling in the UI
+  * Sinowealth keyboard controller has been disabled due to bricking
+    issues with certain Redragon keyboards due to USB PID/VID reuse.
+
+  Known Issues:
+
+  * Some NVIDIA GPU controllers may not work on Linux due to issues
+    with NVIDIA's proprietary driver. The latest beta version of
+    the driver should have a fix.
+    + ASUS Aura 3xxx (ENE) GPUs
+    + EVGA 3xxx GPUs
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Asus Addressable number of channels may be incorrect
+
+  Notes:
+
+  Due to changes in device names, existing profiles you have saved from
+  previous versions may not work and will need to be recreated. Same
+  goes for saved addressable controller sizes. If upgrading from a release
+  prior to OpenRGB 0.6, it is recommended to disable OpenRazer or
+  OpenRazer-win32 in the settings. This allows use of the new Razer
+  controller with better device support. Due to plugin versioning change,
+  you may have to delete your old plugins manually before OpenRGB will
+  install new ones. To do this, go to the Settings tab, under General
+  Settings click Open Settings Folder. Close OpenRGB, then delete the
+  plugins folder in this directory. Reopen OpenRGB and you can install
+  new plugins from the settings tab.
+
+-------------------------------------------------------------------
+Wed Jan  5 03:42:47 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Disable link time optimization as this causes a segfault during
+  startup when loading in controllers.
+
+-------------------------------------------------------------------
+Mon Jan  3 18:36:19 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7
+  New Features:
+  * Improved plugin architecture - Plugins can now be easily
+    installed from Settings and are versioned to ensure
+    compatibility.
+    + Plugins include effects engine, E1.31 receiver, visual map
+      editor, and more.
+  * Settings tabs for various configurable features so you don't
+    have to manually edit settings file
+    + E1.31 Devices
+    + Serial Devices
+    + QMK OpenRGB Protocol
+    + Philips Hue
+    + Philips Wiz
+    + Yeelight
+  * Log console
+    + Log console can be enabled in settings, allows to view the
+      log in the GUI under Information
+  * Save To Device
+    + On supported controllers, the Save To Device button allows
+      you to save the selected mode and color configuration to
+      device internal memory
+  * Brightness Control
+    + On supported controllers, you can adjust the brightness
+      with the Brightness slider
+  * Autostart Settings
+    + Configure OpenRGB to automatically start on login in the
+      Settings tab
+    + Configure auto-start options such as start server, load
+      profile, and more
+  * Zone resize dialog prompts users to resize uninitialized
+    zero-size zones
+  New Device Support:
+  * Additional GPUs added to detection list from Gigabyte, ASUS,
+    MSI, EVGA, Sapphire, and more
+  * Additional MSI Mystic Light motherboards tested and added
+  * Logitech mouse issues from 0.6 have been fixed
+  * Logitech G213 keyboard modes
+  * Philips Hue (normal and Entertainment mode) support
+  * Corsair Commander Core
+  * HyperX Alloy Origins Core
+  * Alienware G5 SE
+  * ASUS ROG Pugio and general improvements for ASUS mice
+  * ASUS ROG Throne headset stand
+  * ASUS ROG Strix Scope
+  * Additional Razer devices added to Razer Controller
+  * Obinslab Anne Pro 2
+  * ASUS Aura SMBus controller renamed to ENE SMBus controller
+    and expanded
+    + Conflict with Crucial DRAM fixed
+    + ASUS 3xxx GPU support added, these GPUs use an ENE
+      controller
+    + XPG Spectrix S40G NVMe SSD (ENE controller), requires
+      running as Administrator/root
+  * HP Omen 30L
+  * Cooler Master RGB Controller
+  * Cooler Master ARGB Controller direct mode
+  * Wooting keyboard improvements
+  * Blinkinlabs BlinkyTape
+  * Alienware AW510K Keyboard
+  * Corsair K100 keyboard
+  * SteelSeries Rival 600
+  * SteelSeries Rival 7x0
+  * Logitech G915, G915 TKL
+  * Logitech G Pro
+  * Sinowealth 0016 keyboard
+  * Fix HyperX device flickering, especially HyperX FPS RGB
+  * Re-enable all Crucial DRAM addresses, should fix missing
+    Crucial detection
+  * Gigabyte RGB Fusion 2 GPUs
+  * EVGA 3xxx GPUs
+  * EVGA KINGPIN 1080Ti and 1080 FTW2
+  * ASUS Strix Evolve mouse
+  * MSI GPU direct mode
+  Bug Fixes:
+    + Fixed a detection issue with USB interface/page/usage
+      values
+    + Improved layouts and keymaps of many devices
+    + Improve log manager formatting
+    + Fix issues with WMI multiple initialization
+    + Several small UI improvements
+    + Fix crash when using certain Logitech mice (G502 Hero and
+      G502 PS)
+    + Fix crash related to unloading plugins
+  Known Issues:
+  * Some newly added NVIDIA GPU controllers don't work on Linux.
+    This seems to be an issue with NVIDIA's proprietary driver's
+    I2C and SMBus functionality.
+    + ASUS Aura 3xxx (ENE) GPUs
+    + EVGA 3xxx GPUs
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Asus Addressable number of channels may be incorrect
+  Notes:
+  * Due to changes in device names, existing profiles you have
+    saved from previous versions may not work and will need to
+    be recreated.  Same goes for saved addressable controller
+    sizes.
+  * If upgrading from a release prior to OpenRGB 0.6, it is
+    recommended to disable OpenRazer or OpenRazer-win32 in the
+    settings. This allows use of the new Razer controller with
+    better device support.
+  * Due to plugin versioning change, you may have to delete your
+    old plugins manually before OpenRGB will install new ones.
+    To do this, go to the Settings tab, under General Settings
+    click Open Settings Folder.  Close OpenRGB, then delete the
+    plugins folder in this directory. Reopen OpenRGB and you can
+    install new plugins from the settings tab.
+- Refresh OpenRGB-use_system_libs.patch
+- Drop OpenRGB-Logitch_G502_detect.patch and
+  OpenRGB-Logitch_G502_PID.patch (merged upstream)
+- Add OpenRGB-fix_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
+Tue Sep 28 15:44:06 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add OpenRGB-Logitch_G502_detect.patch and
+  OpenRGB-Logitch_G502_PID.patch (fix boo#1190894)
+
+-------------------------------------------------------------------
+Wed Jun  2 06:21:19 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6
+  New Features:
+  * Plugin architecture - OpenRGB plugins add functionality to
+    the user interface.
+    + Plugins include effects engine, E1.31 receiver, visual map
+      editor, and more.
+  * Additional user interface configurable options
+    + Exit to tray
+    + Save window geometry
+    + Display index number labels in LED view
+  * Log manager
+    + Logs are stored in configuration directory under logs
+      folder
+  * Update detector list in configuration file before detection,
+    to avoid crashes
+  * SDK server provides capability to list and load profiles
+    (protocol version updated to 2)
+  * Reworked Linux build system to test on multiple Debian-based
+    distros
+  Device Controller Changes:
+  * MSI Mystic Light re-enabled after deep dive investigation
+    into RGB controller bricking issue
+    + Only motherboards that have been tested are enabled
+    + We can help you unbrick if your board was bricked with a
+      previous version, join our Discord for help
+  * PCI ID filtering added to ASUS GPU controller
+  * Additional GPUs added to MSI GPU controller
+  * Additional GPUs added to Gigabyte GPU controller
+  * EVGA GPU v2 controller updated to support all modes
+  * HyperX Pulsefire FPS Pro controller added
+  * Yeelight controller added (see configuration in wiki)
+  * Additional serial protocols for Arduino-controlled ARGB
+    + TPM2
+    + Adalight
+  * FanBus controller added
+  * E.31 improvements
+    + Maximum channels per universe (fixes WLED compatibility)
+  * Corsair K55 support added
+  * Corsair K57 controller added (wired mode only)
+  * Corsair Vengeance Pro DRAM direct mode
+  * Standalone Razer controller, does not depend on OpenRazer
+    + A bunch of new Razer devices supported, including Razer
+      Chroma ARGB controller
+  * DAS Keyboard 4Q controller added
+  * NZXT Hue 2 Underglow device added
+  * Thermaltake Riing Quad controller added
+  * ASUS ROG Strix Flare controller added
+  * Lian Li Uni Hub controller added
+  * Creative Sound BlasterX G6 controller added
+  * Consolidated Logitech mouse controllers to reduce duplicate
+    code
+  * Added Direct mode to Logitech consolidated Logitech mouse
+    code
+  * Logitech G910 Orion Spectrum controller added
+  * QMK OpenRGB controller added (requires configuration entry)
+  * Logitech wireless mouse support improved
+  Known Issues:
+  * G502 Hero and G502 PS mice crash on startup. The issue has
+    been fixed in the pipeline builds.
+  * Plugin architecture does not have a versioning system. If
+    OpenRGB crashes on open, try deleting/updating all plugins.
+  * Some ASUS GPUs that worked in 0.5 no longer work in 0.6.
+    + Please open an issue on GitLab or join our Discord to get
+      its PCI ID added. We need the following information:
+      x Card marketing name and model number (Link to ASUS
+        website preferred)
+      x PCIe ID (Vendor, Product, Subvendor, Subproduct)
+      x Detector I2C address (you can get this using a
+        previous version of OpenRGB, version 0.5 recommended)
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Asus Addressable number of channels may be incorrect
+  Notes:
+  * Due to changes in device names, existing profiles you have
+    saved from previous versions may not work and will need to
+    be recreated. Same goes for saved addressable controller
+    sizes.
+  * If upgrading from a previous release, it is recommended to
+    disable OpenRazer or OpenRazer-win32 in the settings. This
+    allows use of the new Razer controller with better device
+    support.
+- Refreshed OpenRGB-use_system_libs.patch
+
+-------------------------------------------------------------------
+Mon Dec  7 18:50:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 0.5
+  New Features:
+  * Settings have been consolidated into a new file OpenRGB.json,
+    using JSON format
+  * Settings tab allows enabling and disabling devices from the
+    user interface
+  * Configuration files are stored in an XDG-compliant
+    configuration directory (%APPDATA%\OpenRGB or ~/.config/OpenRGB)
+  * Speed up detection by limiting I2C/SMBus detectors to specific
+    PCI IDs
+  * Fixed profile loading, deleting
+  Device Controller Changes:
+  * E1.31 improvements - better grouping, unicast support
+  * MSI-RGB color inversion fixed
+  * LED labels added to some Corsair mice
+  * Espurna controller API support
+  * EVGA GPU (V1 and partial V2 - 1xxx and 2xxx series) support
+  * New SteelSeries devices - Apex Pro TKL, Old Apex
+  * Philips Wiz support
+  * Linux LED sysfs support
+  * Corsair Dominator Platinum RGB support
+  * Sony DualShock 4 support
+  * Logitech G213 support
+  * ASUS Mice support - ROG Gladius II Core, ROG Gladius II, and
+    ROG Gladius II Origin
+  * HyperX Fury Ultra mousemat support
+  * SteelSeries Apex M750
+  * ASUS TUF gaming laptops on Windows (already supported via
+    Faustus on Linux)
+  * Cooler Master ARGB controller support
+  * NZXT Hue+ performance improved
+  * HyperX DRAM mapping issues resolved, flicker reduced
+  * More keymaps for Razer keyboards
+  Known Issues:
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Corsair Vengeance RGB Pro takes 2 "Set All Device" clicks to
+    properly set
+  * Asus Addressable number of channels may be incorrect
+  * MSI Mystic Light controller still disabled due to bricking
+    risk, bricking situation being investigated. OpenRGB 0.5 will
+    not brick your MSI board as this code is disabled.
+  Notes:
+  * Due to changes to the profile manager, any existing profiles
+    you have saved from previous versions likely will not work
+    and will need to be recreated. Same goes for saved addressable
+    controller sizes.
+- Drop patches (included upstream):
+  * 0001-Fix-build-on-powerpc-and-related.patch
+  * reproducible.patch
+
+-------------------------------------------------------------------
+Wed Nov 18 06:37:05 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override build date (boo#1047218)
+
+-------------------------------------------------------------------
+Fri Nov  6 20:47:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4
+  New Features:
+  * Graphical LED view allows you to see the current settings and
+    select multiple LEDs to apply colors quickly.
+  * Device detection happens in the background and a progress bar
+    shows detection progress, allows you to cancel detection.
+  * Keyboard and mouse LED names have been standardized, allowing
+    better integration with Aurora (use dev branch).
+  * New I2C tool for reading multi-byte SMBus registers (as ASRock
+    uses).
+  Device Controller Changes:
+  * New controller for Corsair Hydro Series coolers (only Pro
+    variants H100i Pro and H115i Pro for now).
+  * New controller for Tecknet M008 Mouse.
+  * New controller for HyperX Pulsefire Surge Mouse.
+  * Improvements to ASRock Polychrome controller
+    + Polychrome V2 individual LED control.
+    + Polychrome V1 individual zone control.
+    + More reliable detection and communication for Polychrome.
+      devices.
+  * RGB Fusion 2 SMBus controller enabled for select motherboards
+  * More MSI GPUs added
+  * RGB Fusion 2 USB detection fixed
+  * Keymaps added to many keyboard controllers
+  Known Issues:
+  * RGB Fusion 2 SMBus controller may incorrectly be detected when
+    an MSI GPU is present (due to address 0x68).
+  * Redragon M711 wave effect doesn't work.
+  * Corsair mice do not have specific LED labels.
+  * Some Razer keyboards are missing key maps.
+  * Corsair Vengeance RGB Pro takes 2 "Set All Device" clicks to
+    properly set.
+  * Asus Addressable number of channels may be incorrect.
+  * MSI Mystic Light controller still disabled due to bricking
+    risk, bricking situation being investigated. OpenRGB 0.4 will
+    not brick your MSI board as this code is disabled.
+  * MSI-RGB boards still may experience inverted colors
+- Rebase patch:
+  * OpenRGB-use_system_libs.patch
+- Drop patch:
+  * OpenRGB-no_return_in_nonvoid.patch (not longer needed)
+
+-------------------------------------------------------------------
+Wed Jul 22 11:14:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.3
+  * GUI now includes an SDK client. This allows one UI to
+    control multiple PCs as long as they are running the SDK
+    server.
+  * Default SDK server port changed to 6742 (this is "ORGB" on a
+    phone keypad)
+  * CLI now includes --server and --client options for starting
+    an SDK server or client
+  * OpenRGB will now automatically attempt to connect to a local
+    server. If it exists, the hardware detection will be
+    skipped. This allows use in a client/daemon model.
+  * Many new drivers and driver improvements. See the supported
+    devices list on the wiki.
+  * MSI Mystic Light controller has been disabled. It was
+    causing bricked RGB on certain boards.
+  Known Issues:
+  * Redragon M711 wave effect doesn't work
+  * Corsair mice show up as mousemat
+  * Razer keyboards do not have named keys
+  * Corsair Vengeance RGB Pro takes 2 "Set All Device" clicks to
+    properly set
+  * Asus Addressable number of channels may be incorrect
+  version 0.2:
+  * Color Wheel color picker
+  * NZXT Kraken driver
+  * MSI Mystic Light driver
+  * Asus ROG Aura Core driver
+  * Asus Addressable driver
+  * Cooler Master MP750 driver
+  * OpenRGB SDK server
+  Known Issues:
+  * Redragon M711 wave effect doesn't work
+  * Corsair mice show up as mousemat
+  * Razer keyboards do not have named keys
+  * Corsair Vengeance RGB Pro takes 2 "Set All Device" clicks to
+    properly set
+  * Asus Addressable number of channels may be incorrect
+  * MSI Mystic Light driver may have issues with certain
+    motherboards
+
+-------------------------------------------------------------------
+Fri Mar 27 05:39:22 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.1.0:
+  * Bring in nct6775 SMBus driver improvements from updated patch to Windows
+  * Update OpenRazer-win32 DLLs to openrazer commit bd864c8
+  * Fix wrong index being used in profile lookup that would cause segfaults if there are more controllers detected than in profile
+  * Add timeouts to i2c-nct6775 driver and fix kernel segfault caused by byte access with no data
+  * Fix segfault in CLI
+  * Fix arguments not parsing in CLI, add mode specific color support to CLI
+  * Add some comments to the CLI code and clean up some warnings
+  * Move help and version functions to the same place as the other arguments
+  * Fix current device ID in CLI
+  * Add profile saving to command line
+
+-------------------------------------------------------------------
+Fri Mar 27 05:32:38 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.1.0:
+  * Bring in nct6775 SMBus driver improvements from updated patch to Windows
+  * Update OpenRazer-win32 DLLs to openrazer commit bd864c8
+  * Fix wrong index being used in profile lookup that would cause segfaults if there are more controllers detected than in profile
+  * Add timeouts to i2c-nct6775 driver and fix kernel segfault caused by byte access with no data
+  * Fix segfault in CLI
+  * Fix arguments not parsing in CLI, add mode specific color support to CLI
+  * Add some comments to the CLI code and clean up some warnings
+  * Move help and version functions to the same place as the other arguments
+  * Fix current device ID in CLI
+  * Add profile saving to command line
+
+-------------------------------------------------------------------
+Fri Mar 27 05:31:53 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package

@@ -1,0 +1,12 @@
+Index: src/aasavefont.c
+===================================================================
+--- src/aasavefont.c.orig	2001-04-26 16:37:31.000000000 +0200
++++ src/aasavefont.c	2009-10-06 01:01:06.000000000 +0200
+@@ -27,6 +27,7 @@ int main(int argc, char **argv)
+     fprintf(f, "};\n\n"
+ 	    "struct aa_font %s =\n"
+ 	    "\t{%sdata, %i, \"%s\", \"%s\"};\n", argv[2], argv[2], font->height, argv[3], argv[4]);
++    fclose(f);
+     aa_close(c);
+     return 1;
+ }

@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Jun  7 07:43:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable CAFFE and Tensorflow since it has been dropped in latest armnn
+
+-------------------------------------------------------------------
+Tue Oct 27 10:41:27 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add ExcludeArch: %ix86: follow the definition in armnn: where
+  armnn does not build, this package can't exist neither.
+
+-------------------------------------------------------------------
+Tue May 19 16:00:00 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove unneeded dependency on tensorlfow-devel
+
+-------------------------------------------------------------------
+Tue Apr  7 15:05:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch data sub-package to noarch
+- Use a _service file instead of master.zip archive
+- Fix minor rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Oct 28 12:37:54 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable TensorFlow on TW aarch64 and x86_64 (follow armnn)
+- Enable TensorFlow Lite on Leap 15.2+ (follow armnn)
+
+-------------------------------------------------------------------
+Thu Sep  5 11:45:38 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to git version 56dc3ec (20190831)
+- Add armnn-mobilenet-quant example for arm NN TfLite, 
+  disabled for now as ONNX parser is not enabled on armNN
+- Disable TensorFlow example as armNN disabled it
+
+-------------------------------------------------------------------
+Wed May 29 08:20:28 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires data package from main package
+
+-------------------------------------------------------------------
+Thu Apr 11 08:44:31 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Initial release git version 0bc5caa (2019.03.06)
+

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:09:03 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Sep 27 13:51:39 UTC 2021 - psimons@suse.com
+
+- Update word-wrap to version 0.5.
+  0.5
+  ===
+
+  API changes:
+   * Line-wrapping now supports optional "filling", i.e., placing prefix
+     strings at the start of wrapped lines. The behavior of filling is
+     configured by new `WrapSettings` fields: `fillStrategy` (what to
+     add to filled lines) and `fillScope` (which lines to affect with
+     filling). Thanks to Brent Yorgey for this work!
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
+
+- Update word-wrap to version 0.4.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:39 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:17 UTC 2020 - psimons@suse.com
+
+- Add word-wrap at version 0.4.1.
+

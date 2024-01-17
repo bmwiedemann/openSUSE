@@ -1,0 +1,26 @@
+From f75806e845cc26725a0aaf8de0ad6808a98c0f60 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Wed, 13 Sep 2023 18:30:26 +0200
+Subject: [PATCH] Do not leave a stray options file in the generated javadoc
+ tree
+
+---
+ .../src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java  | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java b/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java
+index f90b6b99..644c3930 100644
+--- a/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java
++++ b/xmvn-mojo/src/main/java/org/fedoraproject/xmvn/mojo/JavadocMojo.java
+@@ -435,6 +435,8 @@ public class JavadocMojo
+                          StandardOpenOption.TRUNCATE_EXISTING );
+ 
+             invokeJavadoc( outputDir );
++
++            Files.deleteIfExists( outputDir.resolve( "args" ) );
+         }
+         catch ( IOException | InterruptedException e )
+         {
+-- 
+2.42.0
+

@@ -1,0 +1,9 @@
+<package name="tdfiglet" project="openSUSE:Factory">
+  <title>tdfiglet</title>
+  <description>Because figlet ASCII is not as cool
+
+https://git.trollforge.org/tdfiglet/about (Developer)
+https://git.com.de/georg/tdfiglet-rpm (Packager)</description>
+  <devel project="Base:System" package="tdfiglet"/>
+  <url>https://github.com/tat3r/tdfiglet</url>
+</package>

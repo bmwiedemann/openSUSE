@@ -1,0 +1,13 @@
+#!/bin/bash
+function keyname() {
+	for key in "$@"; do
+		while read line; do
+			[ "${line:0:4}" = "pub:" ] || continue
+			IFS=: eval set -- "\$line"
+			keyid="${5:8}"
+			printf "gpg-pubkey-%s-%08x\n" "${keyid,,}" "$6"
+		done < <(gpg --with-colons --import-options show-only --import 2>/dev/null < "$key")
+	done
+}
+
+keyname "$@"

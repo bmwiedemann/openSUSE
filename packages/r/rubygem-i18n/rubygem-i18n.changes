@@ -1,0 +1,368 @@
+-------------------------------------------------------------------
+Sat Nov  4 00:38:57 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable docs
+
+-------------------------------------------------------------------
+Sat Nov  4 00:37:57 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup ruby version restrictions
+
+-------------------------------------------------------------------
+Fri Nov  3 07:39:05 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 1.14.1:
+
+## Included in this release
+
+* Simplify the "Translation missing" message when default is an empty Array by @amatsuda in https://github.com/ruby-i18n/i18n/pull/662
+
+## Maintenance stuff
+* Skip CIing on jruby against Rails 5.2 by @amatsuda in https://github.com/ruby-i18n/i18n/pull/664
+* A fix for failing CI against edge Rails by @amatsuda in https://github.com/ruby-i18n/i18n/pull/663
+* Add documentation hint for fallback values by @mark-a in https://github.com/ruby-i18n/i18n/pull/659
+* CI against Ruby 3.2 by @amatsuda in https://github.com/ruby-i18n/i18n/pull/665
+* Fix build warnings in the CI by using actions/checkout@v3 by @amatsuda in https://github.com/ruby-i18n/i18n/pull/666
+
+Thanks to @amatsuda for these PRs!
+
+## New Contributors
+* @mark-a made their first contribution in https://github.com/ruby-i18n/i18n/pull/659
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.14.0...v1.14.1
+
+1.14.0:
+
+## What's Changed
+* fix LazyLoadable#available_locales duplicating locales by @ccutrer in https://github.com/ruby-i18n/i18n/pull/655
+* Add more helpful translation error when :default option is provided. by @Nerian in https://github.com/ruby-i18n/i18n/pull/654
+* Fix I18n::Locale::Fallbacks not initializing itself on Ruby 3 by @yheuhtozr in https://github.com/ruby-i18n/i18n/pull/653
+* Fix I18n.t when locale contains separator by @tubaxenor in https://github.com/ruby-i18n/i18n/pull/656
+  *  **This reverts a change from #651, that was released in v1.13.0**
+
+## New Contributors
+* @ccutrer made their first contribution in https://github.com/ruby-i18n/i18n/pull/655
+* @Nerian made their first contribution in https://github.com/ruby-i18n/i18n/pull/654
+* @yheuhtozr made their first contribution in https://github.com/ruby-i18n/i18n/pull/653
+* @tubaxenor made their first contribution in https://github.com/ruby-i18n/i18n/pull/656
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.13.0...v1.14.0
+
+1.13.0:
+
+## What's Changed
+* Fix symbol resolving with pluralization by @movermeyer in https://github.com/ruby-i18n/i18n/pull/636
+* Updating DEFAULT_APPROXIMATIONS with capitalised German Eszett character for consistency by @lucapericlp in https://github.com/ruby-i18n/i18n/pull/627
+* Fix load_path example in README.md by @nickcampbell18 in https://github.com/ruby-i18n/i18n/pull/642
+* Add support for meridian indicators on `Date` objects by @movermeyer in https://github.com/ruby-i18n/i18n/pull/640
+* Make translations loading thread-safe by @mensfeld in https://github.com/ruby-i18n/i18n/pull/644
+* Get closer to full CLDR pluralization support by @movermeyer in https://github.com/ruby-i18n/i18n/pull/634
+* Allow passing scope argument to exists? by @misdoro in https://github.com/ruby-i18n/i18n/pull/647
+* Revert #503 changes for `Backend::Base` by @movermeyer in https://github.com/ruby-i18n/i18n/pull/637
+* Properly stub constants by @fatkodima in https://github.com/ruby-i18n/i18n/pull/650
+* Optimize `I18n.t` by @fatkodima in https://github.com/ruby-i18n/i18n/pull/651
+* Return same string object when no interpolations were made by @fatkodima in https://github.com/ruby-i18n/i18n/pull/649
+
+## New Contributors
+* @lucapericlp made their first contribution in https://github.com/ruby-i18n/i18n/pull/627
+* @nickcampbell18 made their first contribution in https://github.com/ruby-i18n/i18n/pull/642
+* @mensfeld made their first contribution in https://github.com/ruby-i18n/i18n/pull/644
+* @misdoro made their first contribution in https://github.com/ruby-i18n/i18n/pull/647
+
+**Full Changelog**: https://github.com/ruby-i18n/i18n/compare/v1.12.0...v1.13.0
+
+
+
+-------------------------------------------------------------------
+Thu Aug  4 13:15:01 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.12.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Mar  3 08:21:39 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.10.0
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Dec 21 00:32:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.8.11
+  - Fix typo in documentation by @rkh in #565
+  - Improve available locale check in Simple backend by
+    @codealchemy in #566
+  - Fix typo in Simple backend JSON test by @codealchemy in #572
+  - Fix a build error when using Psych 4.0 by @koic in #569
+
+-------------------------------------------------------------------
+Tue Apr 20 13:36:12 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.10
+
+  * Fix string locale will trigger on_fallback hook - #562
+
+-------------------------------------------------------------------
+Mon Feb 15 13:25:33 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.9
+
+  * Rely on Ruby 3's native Hash#except method -- #557
+
+-------------------------------------------------------------------
+Sat Feb  6 11:28:44 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.8
+
+  * Fixed threadsafety issues in Simple backend: #554
+  * Re-attempt to fix threadsafety of fallbacks: #548
+  * Use OpenSSL::Digest instead of usual Digest libraries: #549
+  * Goodbye, post-install message #552
+  * Use Rails' main branch, instead of master #553
+
+-------------------------------------------------------------------
+Wed Jan 20 07:35:40 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.7
+
+  * Fixed a regression with fallback logic: see issues #547, #546 and #542.
+
+-------------------------------------------------------------------
+Mon Aug 17 12:46:18 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.8.5
+
+  * Fixed an issue where users could not use their own custom fallback classes - #536
+
+  1.8.4:
+
+  * Fixed issue where fallbacks were not working when I18n.fallbacks was an array - #534
+  * Fixed conditional around deprecating constant of INTERPOLATION_PATTERN - #531
+
+-------------------------------------------------------------------
+Fri Jun  5 10:15:22 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.8.3
+
+  Features / Improvements
+
+  * Memory and speed improvements - #527+ #528
+  * Add option to disable fallbacks for I18n.exists? check - #482
+  * Add an on_fallback hook to allow users to be notified when a fallback happens - #520
+
+  Bug Fixes
+
+  * Fix an issue with deep_merge and chain fallback backends - #499 & #509
+  * Fix an issue with Rails ordinal number proc and keyword splatting - #521
+  * Pass options as keyword arguments to translation procs - #529
+  * Fix pluralize on unknown locale with attributes - #519
+
+-------------------------------------------------------------------
+Tue Jan 14 09:52:29 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.8.2
+
+  1.7.1:
+  - I18n is now tested with GitHub Actions, instead of Travis CI.
+  - Fixed issue introduced in v1.7.0 (04a814b) where count option was not preserved - #503
+  - #501 adds a comment that explains that you will need to double-splat keyword arguments given to I18n.t to avoid warnings in Ruby 2.7.
+
+  1.8.0:
+  - Use Rails' implementation of deep_merge when chaining fallback backends - #499.
+
+  1.8.1:
+  - Reverted #499 in #508 due to #507 - missing deep_merge method.
+
+  1.8.2:
+  - Restoration of #499 via #509 - deep_merge! & deep_merge methods appear again in the Hash refinement.
+  - An issue was introduced in v1.7.0 where some translations were returned as hashes, see #510. This was fixed in 1b5e345, and is available in this release.
+
+-------------------------------------------------------------------
+Tue Nov 12 15:27:56 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.7.0
+
+  * no changelog found
+
+-------------------------------------------------------------------
+Thu Mar 14 10:57:48 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.6.0
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Jan 28 07:53:12 UTC 2019 - mschnitzer@suse.com
+
+- updated to version 1.5.3
+
+  * Fix issue where localize would return strange messages if the
+    translation was missing - #464
+
+-------------------------------------------------------------------
+Mon Jan 14 08:05:29 UTC 2019 - mschnitzer@suse.com
+
+- updated to version 1.5.2
+
+  * Fixed a bug where the required_ruby_version was not set
+    correctly in the gemspec - #462
+
+-------------------------------------------------------------------
+Wed Dec 19 07:08:54 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.2.0
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Nov  6 07:46:20 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 1.1.1
+
+  * Expose translations with an option to perform initialization (if it hasn't been done already) (#353 / #254)
+  * Removed un-used Kernel core extension #436
+  * Added project metadata for RubyGems #434
+
+-------------------------------------------------------------------
+Thu Aug 16 06:50:16 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 1.1.0
+
+  * Simplified default exception handler - #414
+  * Fallbacks now exclude default locale - #415, possibly fixes #413 + #338
+  * Fixed deprecated use of assert_nothing_raised #417
+  * Fixed pluralization behavior for KeyValue backend with subtrees disabled - #419
+  * Allow yaml file extension - #421
+
+-------------------------------------------------------------------
+Thu Apr 19 09:05:12 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.0.1
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Apr 18 05:05:10 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.0.1
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Feb 14 05:29:52 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.0.0
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Feb  9 05:30:52 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.9.4
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Feb  8 06:08:00 UTC 2018 - coolo@suse.com
+
+- updated to version 0.9.3
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Nov 17 08:35:33 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 0.9.1
+  * Reverted Hash#slice behaviour introduced with #250 - See #390.
+  * Fixed a regression caused by #387, where translations may have returned a not-helpful error message - See #389
+
+-------------------------------------------------------------------
+Mon Oct 23 05:56:56 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 0.9.0
+  * Made Backend::Memoize threadsafe. See #51 and #352.
+  * Added a middleware I18n::Middleware that should be used to ensure that i18n config is reset correctly between requests. See #381 and #382.
+
+-------------------------------------------------------------------
+Thu Aug  3 09:34:25 UTC 2017 - cbruckmayer@suse.com
+
+- updated to version 0.8.6
+  no changelog found
+
+-------------------------------------------------------------------
+Wed May 31 07:20:52 UTC 2017 - coolo@suse.com
+
+- updated to version 0.8.4
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Mar 13 15:28:26 UTC 2017 - hvogel@suse.com
+
+- Update to version 0.8.1
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Feb  1 05:38:55 UTC 2017 - coolo@suse.com
+
+- updated to version 0.8.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jan 28 12:58:29 UTC 2015 - adrian@suse.de
+
+- update to version 0.7.0, no changelog
+
+-------------------------------------------------------------------
+Fri Oct 10 09:23:44 UTC 2014 - fcastelli@suse.com
+
+- update to new packaging scheme and add gem2rpm.yml
+
+-------------------------------------------------------------------
+Mon Jul 28 05:28:21 UTC 2014 - coolo@suse.com
+
+- updated to version 0.6.11, no changelog
+
+-------------------------------------------------------------------
+Wed Dec  4 11:31:19 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.9, no changelog
+
+-------------------------------------------------------------------
+Tue Dec  3 20:02:35 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.8, no changelog
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:51 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.5, use https:// source
+
+-------------------------------------------------------------------
+Sun Mar  3 09:37:34 UTC 2013 - coolo@suse.com
+
+- updated to version 0.6.4
+
+-------------------------------------------------------------------
+Fri Aug 31 14:59:22 UTC 2012 - coolo@suse.com
+
+- updated to version 0.6.1, no changelog
+
+-------------------------------------------------------------------
+Fri Aug  3 07:49:10 UTC 2012 - coolo@suse.com
+
+- remove no longer necessary suffix
+
+-------------------------------------------------------------------
+Tue Jul 31 11:44:56 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide correct dependencies for activesupport 
+
+-------------------------------------------------------------------
+Fri Mar 23 10:59:56 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Factory preparation
+
+-------------------------------------------------------------------
+Tue Aug 16 12:33:53 UTC 2011 - mrueckert@suse.de
+
+- change license header to list MIT and Ruby license (bnc#712385)
+
+-------------------------------------------------------------------
+Mon Jun 20 12:33:57 UTC 2011 - mrueckert@suse.de
+
+- initial package of the 0.6 branch (0.6.0)
+

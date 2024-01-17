@@ -1,0 +1,5 @@
+<package name="python-django-extra-views" project="openSUSE:Factory">
+  <title></title>
+  <description>Extra class-based views for Django</description>
+  <devel project="devel:languages:python:django" package="python-django-extra-views"/>
+</package>

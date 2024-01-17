@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee19ab13f215da57f3cf0cbaeee703ee</srcmd5>
+    <version>0.3.4</version>
+    <time>1531379935</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.4
+  * vendor: dep ensure -update github.com/shirou/gopsutil (#79)
+    gopsutil library is licensed under BSD, but the previous
+    version contained some GPL-licensed code which is a violation
+    of GPL license. The updated version doesn't contain
+    GPL-licensed code anymore.
+    https://github.com/shirou/gopsutil/issues/518
+- Make use of golang-packaging macros
+- Initial release
+</comment>
+    <requestid>621926</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f185cba6f93fff3c7214c87831ec49fa</srcmd5>
+    <version>0.3.18</version>
+    <time>1623363536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899060</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c62fd6a6bd76097c0d58e500566da045</srcmd5>
+    <version>0.3.20</version>
+    <time>1633959077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924226</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03b700c67a45ea248f6d67a0e918ca84</srcmd5>
+    <version>0.3.25</version>
+    <time>1658162044</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.3.25:
+  * Only report CPU percentage per period if period is &gt; 0
+  * ci: run tests with -race
+  * agent: fix data race in Listen (forwarded request 987969 from jfkw)</comment>
+    <requestid>989506</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a75360b0332a8eb20a3d38619e0117da</srcmd5>
+    <version>0.3.27</version>
+    <time>1690370651</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.17 to match go.mod
+  * Add basic %check to run packaged executable binary --help (forwarded request 1100664 from jfkw)</comment>
+    <requestid>1100665</requestid>
+  </revision>
+</revisionlist>

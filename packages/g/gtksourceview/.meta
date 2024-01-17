@@ -1,0 +1,9 @@
+<package name="gtksourceview" project="openSUSE:Factory">
+  <title>GTK+ Source Editing Widget</title>
+  <description>GtkSourceView is a text widget that extends GtkTextView, the standard
+GTK+ text widget.
+
+It improves GtkTextView by implementing syntax highlighting and other
+features typical of a source editor.</description>
+  <devel project="GNOME:Factory" package="gtksourceview"/>
+</package>

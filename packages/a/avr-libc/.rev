@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>700efb20015298ba8ce3415bd68a3c29</srcmd5>
+    <version>2.0.0</version>
+    <time>1519041661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577242</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8732b87cd380b8e74a5398c4fb8f01dd</srcmd5>
+    <version>2.1.0</version>
+    <time>1668271250</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0
+  * Improvements and additions:
+    - Patch #9187 improved the library coverage for the AVR_TINY
+      architecture (ATtiny10 and relatives).  In particular, many
+      of the functions from &lt;string.h&gt; are now available there.
+          
+    - Patch #8729 adds ISR_NOICF and ISR_FLATTEN to &lt;avr/interrupt.h&gt;
+  * Bugs fixed:
+    [#36933] Documentation no longer correctly describes how to declare
+    [#41689] add static_assert to assert.h
+    [#48898] power_usart3_* functions no more defined in power.h
+    [#49020] dtostre() flags documentation error
+    [#49447] Example code for uart_putchar() has error in recursive call
+      strings for storage in program memory
+    [#50439] avr/iom32u4.h does not define PRTIM4
+    [#51755] iotn441.h &amp; iotn841.h missing definitions for PUEA[0-7] and PUEB[0-3]
+    [no-id] util/eu_dst.h: fix reversed DST decision logic for March and October
+    [no-id] util/delay.h.in: add missing return
+  
+  * Contributed Patches:
+    [no-id] Define weak symbols for known memory region sizes based on device 
+      header definitions, starting with fuse region.
+    [#8961] Update test script for new simulavr and library layout
+    [#8964] Update tests isinf-01.c, signbit-01.c and modf-np.c
+    [#9163] New eeprom write block function for xmega using eeprom page write
+    [#8729] [avr/interrupt.h] Add ISR_NOICF, ISR_FLATTEN. Fix namespace
+      of identifiers.
+    [#8536] Fix a typo within &lt;stdio.h&gt;
+    [#8649] small documentation fixes in
+    [#9187] [AVR_TINY]: Support 16-bit xtoa functons and more string functions.
+    [#9400] Add avrxmega3 multilibs
+    [#9659] Update eeprom_is_ready for avrxmega3 devices
+    [#9553] Fix some issues in libc/
+    [#9864] Use proper float function names and prototypes (forwarded request 1035193 from kwk)</comment>
+    <requestid>1035232</requestid>
+  </revision>
+</revisionlist>

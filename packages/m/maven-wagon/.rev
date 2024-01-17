@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c96140149fae695fce181581d124adee</srcmd5>
+    <version>3.2.0</version>
+    <time>1554281409</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>688994</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0da6449701f214796162b3d0d57a6f3b</srcmd5>
+    <version>3.2.0</version>
+    <time>1570449019</time>
+    <user>dimstar_suse</user>
+    <comment>Build also the ssh* providers</comment>
+    <requestid>735646</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>413d88ae8008bcab9dc18be3f7cabf02</srcmd5>
+    <version>3.4.3</version>
+    <time>1619653106</time>
+    <user>dimstar_suse</user>
+    <comment>3.4.3</comment>
+    <requestid>889013</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3008efd913bb172a3714469f8da327ef</srcmd5>
+    <version>3.5.3</version>
+    <time>1683213007</time>
+    <user>dimstar_suse</user>
+    <comment>3.5.3</comment>
+    <requestid>1084300</requestid>
+  </revision>
+</revisionlist>

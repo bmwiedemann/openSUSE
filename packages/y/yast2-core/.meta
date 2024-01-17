@@ -1,0 +1,6 @@
+<package name="yast2-core" project="openSUSE:Factory">
+  <title>YaST2 - Core Libraries</title>
+  <description>This package contains the scanner, parser, and interpreter runtime
+library for the YCP scripting language used in YaST2.</description>
+  <devel project="YaST:Head" package="yast2-core"/>
+</package>

@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>725bc8ad8078cf7c819307429b09d771</srcmd5>
+    <version>0.18</version>
+    <time>1528021991</time>
+    <user>dimstar_suse</user>
+    <comment>Needing by python-pandas-datareader</comment>
+    <requestid>603364</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9ec6d4deaabf9d2d7896c70600271d12</srcmd5>
+    <version>0.18</version>
+    <time>1528492666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614836</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2d72abb351718b07a890e219558b2459</srcmd5>
+    <version>0.18</version>
+    <time>1545648351</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659744</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ca3df46875ee0a99a9292bc7c010246b</srcmd5>
+    <version>0.20</version>
+    <time>1630182572</time>
+    <user>dimstar_suse</user>
+    <comment>- Make testing more verbose
+- version update to 0.20
+  Release 0.20 (13-Jul-2020)
+  *  Respect versionfile_source in __init__.py snippet (#241)
+  *  Add pep440-branch and pep440-post-branch styles (#164)
+  *  Stop testing deprecated easy_install, support left in for now (#237)
+  *  Use versionfile_build instead of versionfile_source where needed (#242)
+  *  Improve handling of refname edge cases (#229)
+  *  Clarify installation in docs (#235)
+  *  Play nicely with custom build_exts (#232)
+  Release 0.19 (10-Nov-2020)
+  *  Drop support for Python &lt; 3.6, test up to Python 3.9
+  *  Strip GPG signature information from date (#222)
+  *  Add bdist_ext cmdclass, to support native code extensions (#171)
+  *  Canonicalize pep440-pre style (#163)
+  *  Take arguments to get_cmdclass
+- test the package a bit at least
+</comment>
+    <requestid>914758</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1db86ad9f1e187174f51446372c227ce</srcmd5>
+    <version>0.26</version>
+    <time>1665591877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.24 
+  * MNT: Relicense to Unlicense by @effigies in #317
+  * ENH: in verbose mode do not hide stderr of git rev-parse by @yarikoptic in #318
+  * DOC: clarify upgrading to 0.23 doesn't require special actions by @sappelhoff in #321
+  * ENH: Prepare for py2exe dropping distutils support by @effigies in #319
+  * ENH: Allow versioneer to be used as a module in PEP-518 mode by @effigies in #294
+</comment>
+    <requestid>1009892</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f121e113981a6cdaae991bfb8f57e3f7</srcmd5>
+    <version>0.26</version>
+    <time>1684846398</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1088305</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e119f52c652fcda255824a71a6de743c</srcmd5>
+    <version>0.28</version>
+    <time>1685393254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089423</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cd2cbc15f2a4f0728903ebd9bdc01563</srcmd5>
+    <version>0.29</version>
+    <time>1695853480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1113555</requestid>
+  </revision>
+</revisionlist>

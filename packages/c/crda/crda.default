@@ -1,0 +1,8 @@
+#
+# Used by the crda(8) helper to set the country code for the WLAN
+# location.  Outside the US or without self-managed WLAN devices
+# it is helpful to copy this file to  /etc/default/  and set the
+# two letter specific ISO / IEC 3166 alpha2 country code.
+#
+
+REGDOMAIN=00

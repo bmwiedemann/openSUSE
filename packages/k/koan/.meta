@@ -1,0 +1,5 @@
+<package name="koan" project="openSUSE:Factory">
+  <title>koan</title>
+  <description> koan - kickstart over a network </description>
+  <devel project="systemsmanagement" package="koan"/>
+</package>

@@ -1,0 +1,21 @@
+Index: os-prober/linux-boot-prober
+===================================================================
+--- os-prober.orig/linux-boot-prober
++++ os-prober/linux-boot-prober
+@@ -90,15 +90,9 @@ if [ "$type" = btrfs ]; then
+ 		# /boot is part of the root
+ 		bootpart="$partition"
+ 		bootsv="$subvol"
+-	elif echo "$bootmnt" | cut -d ' ' -f 3 | grep -q "btrfs"; then
++	elif echo "$bootmnt" | cut -d ' ' -f 3 | grep -q "btrfs" && echo "$bootmnt" | cut -d ' ' -f 4 | grep -q "subvol="; then
+ 		# separate btrfs /boot subvolume
+ 		bootsv=$(echo "$bootmnt" | cut -d ' ' -f 4 | sed -n 's!\(^subvol=\|.*,subvol=\)\([^,]\+\).*!\2!p')
+-		if [ -z "$bootsv" ]; then
+-			warn "no subvolume in entry: $bootmnt"
+-			umount "$tmpmnt" 2>/dev/null
+-			rmdir "$tmpmnt" 2>/dev/null
+-			exit 1
+-		fi
+ 		bootuuid=$(echo "$bootmnt" | cut -d ' ' -f 1 | sed -n 's/UUID=\("\(.*\)"\|\(.*\)\)/\2\3/p')
+ 		debug "mounting btrfs $tmpmnt/boot UUID=$bootuuid subvol=$bootsv"
+ 		bindfrom=$(check_btrfs_mounted $bootsv $bootuuid)

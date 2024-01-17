@@ -1,0 +1,17 @@
+Test malloc, set unused to NULL if it fails
+
+---
+ tests/heapshrink-helper.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/tests/heapshrink-helper.c
++++ b/tests/heapshrink-helper.c
+@@ -21,5 +21,7 @@
+ 
+ static void __attribute__((constructor)) setup_heapshrink_helper(void)
+ {
+-	(void) malloc(1);
++	void *unused = malloc(1);
++	if (unused)
++		unused = NULL;
+ }

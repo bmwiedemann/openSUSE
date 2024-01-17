@@ -1,0 +1,5 @@
+<package name="mate-eiciel" project="openSUSE:Factory">
+  <title>ACL viewer and editor for MATE</title>
+  <description>MATE eiciel is a Graphical editor for access control lists (ACLs) and extended attributes (xattr), either as an extension within Caja, or as a standalone utility.</description>
+  <devel project="X11:MATE:Factory" package="mate-eiciel"/>
+</package>

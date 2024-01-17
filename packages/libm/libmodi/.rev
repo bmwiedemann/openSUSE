@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1236c31ad2126ab73b7290987d43806a</srcmd5>
+    <version>20210513</version>
+    <time>1623443457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899474</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6489cbb655bd4ac9c8eb2933c7248d00</srcmd5>
+    <version>20210515</version>
+    <time>1624813155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902547</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07c3a2eed847cc47b226c06fc24a9047</srcmd5>
+    <version>20210807</version>
+    <time>1637970678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210807</comment>
+    <requestid>933962</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7f47b6ba667df4c3e3fad5fd4f7ab880</srcmd5>
+    <version>20210807</version>
+    <time>1643062181</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds.</comment>
+    <requestid>948273</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>dbe3d4ed6be68db839e8d677cad191a6</srcmd5>
+    <version>20210807</version>
+    <time>1660051733</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994014</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>a898776141817943fe7b920296b2d028</srcmd5>
+    <version>20210807</version>
+    <time>1661863772</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999958</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dc0f774734b36c85913ac724c2df79ec</srcmd5>
+    <version>20221023</version>
+    <time>1666602788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221023</comment>
+    <requestid>1030605</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ae1abebea5cb0da97e8445d4ac64702f</srcmd5>
+    <version>20221023</version>
+    <time>1669629996</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038482</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>dde76fffa855d80f2c66b8417ea0af4f</srcmd5>
+    <version>20221023</version>
+    <time>1672851110</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046594</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d362e033f40b228ec8e5e16fcf642f53</srcmd5>
+    <version>20221023</version>
+    <time>1691594737</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103021</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9ba93720dcd0cc9f77a0b382ffeb6fb5</srcmd5>
+    <version>20231123</version>
+    <time>1700865255</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231123</comment>
+    <requestid>1128391</requestid>
+  </revision>
+</revisionlist>

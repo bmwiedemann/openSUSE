@@ -1,0 +1,51 @@
+[opensuse-leap-oss]
+name=openSUSE Leap $releasever - OSS
+baseurl=https://download.opensuse.org/distribution/leap/$releasever/repo/oss/
+#metalink=https://download.opensuse.org/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
+gpgcheck=1
+
+[opensuse-leap-oss-update]
+name=openSUSE Leap $releasever - OSS - Updates
+baseurl=https://download.opensuse.org/update/leap/$releasever/oss/
+#metalink=https://download.opensuse.org/update/leap/$releasever/oss/repodata/repomd.xml.metalink
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
+gpgcheck=1
+
+[opensuse-leap-oss-debuginfo]
+name=openSUSE Leap $releasever - OSS - Debug
+baseurl=https://download.opensuse.org/debug/distribution/leap/$releasever/repo/oss/
+#metalink=https://download.opensuse.org/debug/distribution/leap/$releasever/repo/oss/repodata/repomd.xml.metalink
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
+gpgcheck=1
+
+[opensuse-leap-oss-update-debuginfo]
+name=openSUSE Leap $releasever - OSS - Updates - Debug
+baseurl=https://download.opensuse.org/debug/update/leap/$releasever/oss/
+#metalink=https://download.opensuse.org/debug/update/leap/$releasever/oss/repodata/repomd.xml.metalink
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
+gpgcheck=1
+
+[opensuse-leap-oss-source]
+name=openSUSE Leap $releasever - OSS - Source
+baseurl=https://download.opensuse.org/distribution/leap/$releasever/repo/src-oss/
+#metalink=https://download.opensuse.org/distribution/leap/$releasever/repo/src-oss/repodata/repomd.xml.metalink
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
+        file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
+gpgcheck=1
+

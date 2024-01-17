@@ -1,0 +1,8 @@
+<package name="python-time-travel" project="openSUSE:Factory">
+  <title>Python time mocking</title>
+  <description>A python library that helps users write deterministic tests for time sensitive and I/O intensive code.
+
+</description>
+  <devel project="devel:languages:python" package="python-time-travel"/>
+  <url>https://github.com/snudler6/time-travel</url>
+</package>

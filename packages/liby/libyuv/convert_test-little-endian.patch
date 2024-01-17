@@ -1,0 +1,44 @@
+Correctly check for endianness and disable two additional tests that assume endianness
+
+--- libyuv-20230517+a377993/unit_test/convert_test.cc.old	2023-05-17 00:23:24.000000000 +0000
++++ libyuv-20230517+a377993/unit_test/convert_test.cc	2023-05-21 13:08:30.803014700 +0000
+@@ -33,7 +33,7 @@
+ 
+ // Some functions fail on big endian. Enable these tests on all cpus except
+ // PowerPC, but they are not optimized so disabled by default.
+-#if !defined(DISABLE_SLOW_TESTS) && !defined(__powerpc__)
++#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+ #define LITTLE_ENDIAN_ONLY_TEST 1
+ #endif
+ #if !defined(DISABLE_SLOW_TESTS) || defined(__x86_64__) || defined(__i386__)
+@@ -2989,6 +2989,7 @@ static const uint8_t kNoDither4x4[16] =
+     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ };
+ 
++#ifdef LITTLE_ENDIAN_ONLY_TEST
+ TEST_F(LibYUVConvertTest, TestNoDither) {
+   align_buffer_page_end(src_argb, benchmark_width_ * benchmark_height_ * 4);
+   align_buffer_page_end(dst_rgb565, benchmark_width_ * benchmark_height_ * 2);
+@@ -3010,12 +3011,14 @@ TEST_F(LibYUVConvertTest, TestNoDither)
+   free_aligned_buffer_page_end(dst_rgb565);
+   free_aligned_buffer_page_end(dst_rgb565dither);
+ }
++#endif
+ 
+ // Ordered 4x4 dither for 888 to 565.  Values from 0 to 7.
+ static const uint8_t kDither565_4x4[16] = {
+     0, 4, 1, 5, 6, 2, 7, 3, 1, 5, 0, 4, 7, 3, 6, 2,
+ };
+ 
++#ifdef LITTLE_ENDIAN_ONLY_TEST
+ TEST_F(LibYUVConvertTest, TestDither) {
+   align_buffer_page_end(src_argb, benchmark_width_ * benchmark_height_ * 4);
+   align_buffer_page_end(dst_rgb565, benchmark_width_ * benchmark_height_ * 2);
+@@ -3048,6 +3051,7 @@ TEST_F(LibYUVConvertTest, TestDither) {
+   free_aligned_buffer_page_end(dst_argb);
+   free_aligned_buffer_page_end(dst_argbdither);
+ }
++#endif
+ 
+ #define TESTPLANARTOBID(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN, \
+                         YALIGN, W1280, N, NEG, OFF, FMT_C, BPP_C)              \

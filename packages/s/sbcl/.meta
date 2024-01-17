@@ -1,0 +1,12 @@
+<package name="sbcl" project="openSUSE:Factory">
+  <title>Steel Bank Common Lisp.</title>
+  <description>
+Steel Bank Common Lisp (SBCL) is a high performance Common Lisp
+compiler. It is open source / free software, with a permissive license.
+In addition to the compiler and runtime system for ANSI Common Lisp, it
+provides an interactive environment including a debugger, a statistical
+profiler, a code coverage tool, and many other extensions.
+  </description>
+  <devel project="devel:languages:misc" package="sbcl"/>
+  <url>http://www.sbcl.org/</url>
+</package>

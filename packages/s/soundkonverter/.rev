@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6eab189c47955d7a5f54f6cd5e0a93b</srcmd5>
+    <version>3.0.1</version>
+    <time>1604414135</time>
+    <user>dimstar_suse</user>
+    <comment>- Initialization 3.0.1.
+- Add patch Use-local-cmake-modules-first.patch.</comment>
+    <requestid>845515</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="qtcurve" project="openSUSE:Factory">
+  <title>QtCurve style for Qt and GTK+</title>
+  <description>QtCurve is a set of widget styles available for Qt and GTK+.
+
+</description>
+  <devel project="KDE:Extra" package="qtcurve"/>
+  <url>https://github.com/KDE/qtcurve</url>
+</package>

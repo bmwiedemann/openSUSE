@@ -1,0 +1,15 @@
+## Path:        Security/Monitoring
+## Description: Velociraptor Kafka-Humio Gateway settings
+## Type:        string                                                          
+## Default:     ""
+## ServiceRestart: velociraptor
+#
+# Options for velociraptor
+#
+KAFKA_HUMIO_GATEWAY_OPTIONS="--verbose"
+
+#
+# Location of configuration file
+#
+KAFKA_HUMIO_GATEWAY_CONFIG="/etc/velociraptor-kafka-humio-gateway/transport.yml"
+

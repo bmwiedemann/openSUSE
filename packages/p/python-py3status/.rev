@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e5eac958641f470cc3f1aa0098efe09</srcmd5>
+    <version>3.7</version>
+    <time>1521904555</time>
+    <user>dimstar_suse</user>
+    <comment>py3status is enhancement of i3status - content generator (not only) for i3 panel</comment>
+    <requestid>590407</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>325ceba98dee85aee527c5cf31a73f53</srcmd5>
+    <version>3.12</version>
+    <time>1535123424</time>
+    <user>dimstar_suse</user>
+    <comment>- Version  update to 3.12:
+  * For the list of changes please see CHANGELOG file
+- Enable tests
+- Add patch fast-entrypoints.patch to fix setup.py</comment>
+    <requestid>630855</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fca387d07f1c7f283261ec8b96066edb</srcmd5>
+    <version>3.19</version>
+    <time>1559375147</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the pytest macro
+
+- version update to 3.19
+  * many changes, see CHANGELOG file
+- deleted patches
+  - fast-entrypoints.patch (upstreamed)</comment>
+    <requestid>705398</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>830c09175604f01fe55e5e7e7937e303</srcmd5>
+    <version>3.20</version>
+    <time>1568191174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.20:
+  * introduce entry point based discovery of packaged custom modules
+  * many other fixes, see CHANGELOG</comment>
+    <requestid>729884</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0bbc337276c2a2c9246ff55f2e92e64a</srcmd5>
+    <version>3.21</version>
+    <time>1571653932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741421</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eaa68323106298cb4def8e7e9f3a41b9</srcmd5>
+    <version>3.27</version>
+    <time>1583833144</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783224</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f9f8c1af68cac3113523158ca3460a8d</srcmd5>
+    <version>3.28</version>
+    <time>1586973371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794133</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a17cd84c87084e98402ac2d60552a0d4</srcmd5>
+    <version>3.28</version>
+    <time>1614108147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874630</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8c2ec4926e86c9ec3afe411c0a2cf546</srcmd5>
+    <version>3.47</version>
+    <time>1664820489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007681</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>abca1cd65df85177558800e92d7c0fec</srcmd5>
+    <version>3.49</version>
+    <time>1678283566</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1069990</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f550946ff8d039df985b9b384a127fbe</srcmd5>
+    <version>3.50</version>
+    <time>1681919034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080260</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c1594786f6e716237c92f4102f4f7dce</srcmd5>
+    <version>3.51</version>
+    <time>1688148008</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file.
+- Update to 3.51:
+  * NEW: thanks to Andreas Grapentin, py3status can now run in lots of other containers (tmux, term, dzen2, lemonbar...)
+  * IMPORTANT: modules are moving away from the obsolete pydbus library
+  * core: implement handling of output_format in py3status for i3bar, dzen2, xmobar, lemonbar, tmux, term, none (#2104), by Andreas Grapentin
+  * core: autodetect output_format (#2202), by lasers
+  * fix(module): report module post_config_hook errors thx to @lasers (#2208)
+  * docs(user): add a section to specify that modules dependencies are up to the users
+  * docs(mkdocs): drop mkdocs-simple-hooks closes #2195
+  * docs: fix two DeprecationWarning (#2191), by lasers
+  * docs(audiosink): fix screenshots (#2194), by lasers
+  * docs(autodoc): remove dead code thx to @lasers, closes #2183 (#2193)
+  * arch_updates module: add support for pikaur (#2182), by vim
+  * arch_updates module: remove cower support (gone) (#2190), by lasers
+  * backlight module: drop pydbus, switch to dbus-python
+  * bluetooth module: report battery percentage if available (#2185), by Alex Tsitsimpis
+  * clock module: added timezone information to times implicitly using local system timezone (#2197), by Andreas Grapentin
+  * clock module: minor patch to get the local timezone. (#2189), by Josh Sixsmith
+  * diskdata module: fix variable init type
+  * diskdata module: make module work on FreeBSD (#2200), by Björn Busse
+  * mpd_status module: fix UnboundLocalError (#2199), by Björn Busse
+  * ns_checker module: replace query() with resolve() (#2207), by Björn Busse
+  * systemd module: drop pydbus, switch to dbus-python
+  * vpn_status module: drop pydbus, switch to dbus-python
+</comment>
+    <requestid>1096164</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>113c95177035f3447d6062efda0a1f73</srcmd5>
+    <version>3.52</version>
+    <time>1691414934</time>
+    <user>dimstar_suse</user>
+    <comment>Moving the package from d:l:p to here.</comment>
+    <requestid>1102577</requestid>
+  </revision>
+</revisionlist>

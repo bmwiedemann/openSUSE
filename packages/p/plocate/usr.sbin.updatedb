@@ -1,0 +1,19 @@
+# Last Modified: Sun Aug 27 12:06:59 2023
+include <tunables/global>
+
+/usr/{bin,sbin}/updatedb {
+  include <abstractions/base>
+
+  capability dac_override,
+  capability dac_read_search,
+  capability fowner,
+
+  / r,
+  /**/ r,
+  /etc/updatedb.conf r,
+  /usr/{bin,sbin}/updatedb mr,
+  /var/lib/plocate r,
+  /var/lib/plocate/* rwlk,
+  owner /proc/@{pid}/mounts r,
+
+}

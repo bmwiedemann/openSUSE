@@ -1,0 +1,10 @@
+<package name="ocaml-bos" project="openSUSE:Factory">
+  <title>Basic OS interaction for OCaml</title>
+  <description>Bos provides support for basic and robust interaction with the operating system 
+in OCaml. It has functions to access the process environment, parse command line 
+arguments, interact with the file system and run command line programs.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-bos"/>
+  <url>https://opam.ocaml.org/packages/bos</url>
+</package>

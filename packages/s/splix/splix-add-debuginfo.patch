@@ -1,0 +1,18 @@
+SLE needs debugging information even for optimized binaries.
+
+Signed-off-by: Libor Pechacek <lpechacek@suse.cz>
+Index: splix-2.0.0.315/Makefile
+===================================================================
+--- splix-2.0.0.315.orig/Makefile	2016-11-25 14:36:14.303965938 +0100
++++ splix-2.0.0.315/Makefile	2016-11-25 14:36:21.779850424 +0100
+@@ -74,8 +74,8 @@ comma           := ,
+ 
+ DEBUG_CFLAGS    := -O0 -g
+ DEBUG_CXXFLAGS  := -O0 -g
+-OPTIM_CFLAGS	:= -O2
+-OPTIM_CXXFLAGS	:= -O2
++OPTIM_CFLAGS	:= -O2 -g
++OPTIM_CXXFLAGS	:= -O2 -g
+ 
+ ARCHI           := $(shell uname -s)
+ 

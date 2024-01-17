@@ -1,0 +1,14 @@
+--- ski.desktop.orig	2014-12-16 04:38:40.000000000 +0100
++++ ski.desktop	2016-01-28 19:49:30.735594660 +0100
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+-Type=Application
+-Version=1.0
+ Name=Ski
+ GenericName=Ski game
+ Comment=Skiing simulation with curses interface in python
+ Icon=ski
+ Exec=ski
+ Categories=Game;SportsGame;
++Type=Application
+ Terminal=true

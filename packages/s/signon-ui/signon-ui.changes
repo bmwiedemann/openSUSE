@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sat Sep 29 13:37:39 UTC 2018 - fabian@ritter-vogt.de
+
+- Add patch to return a proper username again:
+  * 0001-Reintroduce-the-username-field-reading-with-webkit-o.patch
+
+-------------------------------------------------------------------
+Sat Sep  8 16:44:28 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to webengine branch (4368bb77d9d1abc2978af514225ba4a42c29a646):
+  * No WebKit dependency anymore
+  * While it has missing features, it's important to switch to a
+    maintained browser engine.
+  * Does not support webkit-options.d, which means usernames will
+    be blank and autologin non-functional. Tokens are still saved.
+- Add patch to fix bug in WebEngine integration:
+  * 0001-Fix-WebEngine-cache-directory-path.patch
+
+-------------------------------------------------------------------
+Fri Nov  3 09:30:22 UTC 2017 - buschmann23@opensuse.org
+
+- Update to version 0.17+15.10.20150810
+  * no changelog available
+
+-------------------------------------------------------------------
+Sat Feb 22 10:11:49 UTC 2014 - tittiatcoke@gmail.com
+
+- Initial package
+

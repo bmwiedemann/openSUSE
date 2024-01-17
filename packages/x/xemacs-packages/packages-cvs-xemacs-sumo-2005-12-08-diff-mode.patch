@@ -1,0 +1,42 @@
+diff -ru packages.orig/xemacs-packages/prog-modes/diff-mode.el packages/xemacs-packages/prog-modes/diff-mode.el
+--- packages/xemacs-packages/prog-modes/diff-mode.el	2005-12-02 10:54:34.000000000 +0100
++++ packages/xemacs-packages/prog-modes/diff-mode.el	2005-12-13 17:18:21.000000000 +0100
+@@ -914,6 +914,26 @@
+ 			  (equal ?\  c)))
+ 		(forward-line 1))))))))))
+ 
++(defvar diff-fixup-modif-regexp
++  (concat
++   ;; start
++   "\\("
++   ;; unified hunk start
++   "@@ -[0-9,]+ \\+[0-9,]+ @@.*"
++   ;; or
++   "\\|"
++   ;; unified hunk+file start
++   ;;   --- .*
++   ;;   +++ .*
++   ;;   @@ ...
++   "--- .+\n\\+\\+\\+ .+\n@@ -[0-9,]+ \\+[0-9,]+ @@"
++   ;; or
++   "\\|"
++   ;; context start
++   "[-*][-*][-*] .+ [-*][-*][-*][-*]"
++   ;; end
++   "\\)$"))
++
+ (defun diff-fixup-modifs (start end)
+   "Fixup the hunk headers (in case the buffer was modified).
+ START and END are either taken from the region (if a prefix arg is given) or
+@@ -926,10 +946,7 @@
+       (goto-char end) (diff-end-of-hunk)
+       (let ((plus 0) (minus 0) (space 0) (bang 0))
+ 	(while (and (= (forward-line -1) 0) (<= start (point)))
+-	  (if (not (looking-at
+-		    (concat "@@ -[0-9,]+ \\+[0-9,]+ @@"
+-			    "\\|[-*][-*][-*] [0-9,]+ [-*][-*][-*][-*]$"
+-			    "\\|--- .+\n\\+\\+\\+ ")))
++	  (if (not (looking-at diff-fixup-modif-regexp))
+ 	      (case (char-after)
+ 		(?\  (incf space))
+ 		(?+ (incf plus))

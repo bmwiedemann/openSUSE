@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c099af6d26a746fab5b83d36ca3324a</srcmd5>
+    <version>1.3</version>
+    <time>1536327386</time>
+    <user>dimstar_suse</user>
+    <comment>Add Clazy, a code checker based on the Clang framework.
+</comment>
+    <requestid>632996</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8cd0d638a64d96b8a6266e6eb43fbdfa</srcmd5>
+    <version>1.4</version>
+    <time>1538374763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638965</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1afd15c543e7adf9b03fb92c41f5eefa</srcmd5>
+    <version>1.5</version>
+    <time>1551024665</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670578</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f54c8f9597873f58d63aad3dcadae76b</srcmd5>
+    <version>1.5</version>
+    <time>1563366412</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable lto.
+- Remove workarounds for older openSUSE versions.
+</comment>
+    <requestid>715626</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>74e0017438d86ab09e71fbb7b99aecb2</srcmd5>
+    <version>1.5</version>
+    <time>1570198014</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cmake-clang-cpp.patch: fix build with LLVM 9.
+- Replace outdated llvm-clang-devel dependency by clang-devel.</comment>
+    <requestid>734944</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6725aafe12baa478d53b37bc975acca1</srcmd5>
+    <version>1.6</version>
+    <time>1571210280</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.6</comment>
+    <requestid>738561</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>16a49984b19ae45a86af968501d3d51f</srcmd5>
+    <version>1.6</version>
+    <time>1575282832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752689</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0be6db26b1d1b9b289f50e8d7c605400</srcmd5>
+    <version>1.6</version>
+    <time>1585667684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789910</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>7bc3a87019e2e44563ead983a91a5886</srcmd5>
+    <version>1.6</version>
+    <time>1588697753</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  * 0001-qstring-allocations-Fix-unit-tests-with-llvm-10.patch</comment>
+    <requestid>800164</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d81f336fe18d0ecb4be026262ef5edf5</srcmd5>
+    <version>1.7</version>
+    <time>1593548741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817925</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d5e7f5b5856963f304ee9890994e4e50</srcmd5>
+    <version>1.7</version>
+    <time>1603821563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844114</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>e1f2f6645158b9ea33dc960f86ec13c0</srcmd5>
+    <version>1.7</version>
+    <time>1606252173</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure the clang executables matching the libraries we link
+  to are installed (mitigates boo#1178637).</comment>
+    <requestid>849485</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>896587301d7330e3e0d272c3b4311ab5</srcmd5>
+    <version>1.8</version>
+    <time>1606329047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850731</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>89ed012b114723e7e80b9ec7ac16c958</srcmd5>
+    <version>1.9</version>
+    <time>1610381684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862220</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>512f39c64d0492b4d8e91b0086faf6fc</srcmd5>
+    <version>1.9</version>
+    <time>1612182436</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a stricter llvm requirement. Only relying on the llvm
+  soversion is still not enough. (kde#432078)</comment>
+    <requestid>866842</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>d2bdd926053be07608924d83331a749d</srcmd5>
+    <version>1.9</version>
+    <time>1618859209</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * 0001-Fix-build-with-Clang-12.patch</comment>
+    <requestid>886726</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>f959fbf45ffae27bd4ce2f71b6edc8de</srcmd5>
+    <version>1.9</version>
+    <time>1619653095</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888964</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dd95743d19badbc4bacb96e0151c3e34</srcmd5>
+    <version>1.10</version>
+    <time>1627076468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10
+  * Requires C++17
+  * Fixed a -Wclazy-lambda-in-connect false-positive
+  * Fixed crash in copyable-polymorphic when PCH was enabled
+- Drop 0001-Fix-build-with-Clang-12.patch. Fixed upstream.</comment>
+    <requestid>907878</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>02dc231a2a333815dbe4a71a5c24918e</srcmd5>
+    <version>1.11</version>
+    <time>1643321809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949315</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4b5d9d49237322a01c00538038231671</srcmd5>
+    <version>1.11</version>
+    <time>1663764162</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream changes, including clang 15 build fix.</comment>
+    <requestid>1005060</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>b577fc7cbb28ed19b733e2f55874c28a</srcmd5>
+    <version>1.11</version>
+    <time>1680370337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076544</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>43479f8616fd6bf4450f91ec53544198</srcmd5>
+    <version>1.11git.20230920T205027~2965bc3</version>
+    <time>1696188140</time>
+    <user>anag+factory</user>
+    <comment>build fix for clang 17</comment>
+    <requestid>1114382</requestid>
+  </revision>
+</revisionlist>

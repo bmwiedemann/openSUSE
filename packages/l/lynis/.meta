@@ -1,0 +1,16 @@
+<package name="lynis" project="openSUSE:Factory">
+  <title>Security and System auditing tool  </title>
+  <description>Lynis is a security and system auditing tool. It scans a system on the  
+most interesting parts useful for audits, like:  
+     - Security enhancements  
+     - Logging and auditing options  
+     - Banner identification  
+     - Software availability  
+  
+Lynis is released as a GPL licensed project and free for everyone to use.  
+  
+See http://www.rootkit.nl for a full description and documentation.  
+  </description>
+  <devel project="security" package="lynis"/>
+  <url>http://www.rootkit.nl/projects/lynis.html</url>
+</package>

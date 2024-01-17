@@ -1,0 +1,5 @@
+<package name="python-zope.location" project="openSUSE:Factory">
+  <title>Zope Location</title>
+  <description>In Zope3, location are special objects that has a structural location.</description>
+  <devel project="devel:languages:python" package="python-zope.location"/>
+</package>

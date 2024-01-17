@@ -1,0 +1,422 @@
+-------------------------------------------------------------------
+Fri Dec  8 16:18:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * :pr:`418`: Replace :class:`~collection.OrderedDict` with
+    :class:`dict`.
+  * The dict datatype is ordered since Python 3.7. As we do not
+    support Python 3.6 anymore, it can be considered safe to avoid
+    :class:`~collection.OrderedDict`.
+  * :pr:`431`: Clarify version policy for the different semver
+    versions (v2, v3, >v3) and the supported Python versions.
+  * :gh:`432`: Improve external doc links to Python and Pydantic.
+  * :pr:`417`: Amend GitHub Actions to check against MacOS.
+
+-------------------------------------------------------------------
+Wed Jun 21 20:11:42 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- remove obsolete setup-remove-asterisk.patch
+- update to version 3.0.1:
+ - Remove incorrect dependencies from build-system section of pyproject.toml by @mgorny in #405
+ - correct typo in function description of next_version by @treee111 in #406
+ - Improve GitHub Action by @tomschr in #408
+ - Add CITATION.cff for citation by @tomschr in #409
+ - Add Version class to __all__ export. Fix #410 by @Soneji in #411
+ - Configure docformatter by @tomschr in #412
+ - Prepare version 3.0.1 by @tomschr in #413
+
+-------------------------------------------------------------------
+Sat May  6 15:59:50 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 3.0.0:
+ - Bugfixes
+  - :gh:`291`: Disallow negative numbers in VersionInfo arguments
+    for ``major``, ``minor``, and ``patch``.
+  * :gh:`310`: Rework API documentation.
+    Follow a more "semi-manual" attempt and add auto directives
+    into :file:`docs/api.rst`.
+  * :gh:`344`: Allow empty string, a string with a prefix, or ``None``
+    as token in
+    :meth:`~semver.version.Version.bump_build` and
+    :meth:`~semver.version.Version.bump_prerelease`.
+  * :pr:`384`: General cleanup, reformat files:
+    * Reformat source code with black again as some config options
+      did accidentely exclude the semver source code.
+      Mostly remove some includes/excludes in the black config.
+    * Integrate concurrency in GH Action
+    * Ignore Python files on project dirs in .gitignore
+    * Remove unused patterns in MANIFEST.in
+    * Use ``extend-exclude`` for flake in :file:`setup.cfg`` and adapt list.
+    * Use ``skip_install=True`` in :file:`tox.ini` for black
+  * :pr:`393`: Fix command :command:`python -m semver` to avoid the error "invalid choice"
+  * :pr:`396`: Calling :meth:`~semver.version.Version.parse` on a derived class will show correct type of derived class.
+ - Deprecations
+  * :gh:`169`: Deprecate CLI functions not imported from ``semver.cli``.
+  * :gh:`234`: In :file:`setup.py` simplified file and remove
+    ``Tox`` and ``Clean`` classes
+  * :gh:`284`: Deprecate the use of :meth:`~Version.isvalid`.
+    Rename :meth:`~semver.version.Version.isvalid`
+    to :meth:`~semver.version.Version.is_valid`
+    for consistency reasons with :meth:`~semver.version.Version.is_compatible`.
+  * :pr:`402`: Keep :func:`semver.compare <semver._deprecated.compare>`.
+     Although it breaks consistency with module level functions, it seems it's
+     a much needed/used function. It's still unclear if we should deprecate
+     this function or not (that's why we use :py:exc:`PendingDeprecationWarning`).
+     As we don't have a uniform initializer yet, this function stays in the
+     :file:`_deprecated.py` file for the time being until we find a better solution. See :gh:`258` for details.
+ - Features
+  * Remove :file:`semver.py`
+  * Create :file:`src/semver/__init__.py`
+  * Create :file:`src/semver/cli.py` for all CLI methods
+  * Create :file:`src/semver/_deprecated.py` for the ``deprecated`` decorator and other deprecated functions
+  * Create :file:`src/semver/__main__.py` to allow calling the CLI using :command:`python -m semver`
+  * Create :file:`src/semver/_types.py` to hold type aliases
+  * Create :file:`src/semver/version.py` to hold the :class:`Version` class (old name :class:`VersionInfo`) and its utility functions
+  * Create :file:`src/semver/__about__.py` for all the metadata variables
+  * :gh:`213`: Add typing information
+  * :gh:`284`: Implement :meth:`~semver.version.Version.is_compatible` to make "is self compatible with X".
+  * :gh:`305`: Rename :class:`~semver.version.VersionInfo` to :class:`~semver.version.Version` but keep an alias for compatibility
+
+-------------------------------------------------------------------
+Sat Mar 11 09:57:18 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- add setup-remove-asterisk.patch to fix build error
+- update to version 3.0.0-dev.4:
+ - Bug Fixes:
+ - :gh:`374`: Correct Towncrier's config entries in the :file:`pyproject.toml` file.
+   The old entries ``[[tool.towncrier.type]]`` are deprecated and need
+   to be replaced by ``[tool.towncrier.fragment.<TYPE>]``.
+ - Deprecations:
+ - :gh:`372`: Deprecate support for Python 3.6.
+   Python 3.6 reached its end of life and isn't supported anymore.
+   At the time of writing (Dec 2022), the lowest version is 3.7.
+   Although the `poll <https://github.com/python-semver/python-semver/discussions/371>`_
+   didn't cast many votes, the majority agree to remove support for
+   Python 3.6.
+ - Improved Documentation:
+ - :gh:`335`: Add new section "Converting versions between PyPI and semver" the limitations
+   and possible use cases to convert from one into the other versioning scheme.
+ - :gh:`340`: Describe how to get version from a file
+ - :gh:`343`: Describe combining Pydantic with semver in the "Advanced topic"
+   section.
+ - :gh:`350`: Restructure usage section. Create subdirectory "usage/" and splitted
+   all section into different files.
+ - :gh:`351`: Introduce new topics for:
+   * "Migration to semver3"
+   * "Advanced topics"
+ - Features:
+ - :pr:`359`: Add optional parameter ``optional_minor_and_patch`` in :meth:`.Version.parse`  to allow optional
+   minor and patch parts.
+ - :pr:`362`: Make :meth:`.Version.match` accept a bare version string as match expression, defaulting to
+   equality testing.
+ - :gh:`364`: Enhance :file:`pyproject.toml` to make it possible to use the
+   :command:`pyproject-build` command from the build module.
+   For more information, see :ref:`build-semver`.
+ - :gh:`365`: Improve :file:`pyproject.toml`.
+   * Use setuptools, add metadata. Taken approach from
+     `A Practical Guide to Setuptools and Pyproject.toml
+     <https://godatadriven.com/blog/a-practical-guide-to-setuptools-and-pyproject-toml/>`_.
+   * Doc: Describe building of semver
+   * Remove :file:`.travis.yml` in :file:`MANIFEST.in`
+     (not needed anymore)
+   * Distinguish between Python 3.6 and others in :file:`tox.ini`
+   * Add skip_missing_interpreters option for :file:`tox.ini`
+   * GH Action: Upgrade setuptools and setuptools-scm and test
+     against 3.11.0-rc.2
+ - Trivial/Internal Changes:
+ - :gh:`378`: Fix some typos in Towncrier configuration
+
+-------------------------------------------------------------------
+Mon Oct 10 08:26:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to the tagged version rather than a gh branch tarball
+
+-------------------------------------------------------------------
+Mon Jan 10 21:27:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- fix support for Python 3.10 with update to development version:
+- update to revision g4d2df08:
+ - Changes for the upcoming release can be found in:
+ - the `"changelog.d" directory <https://github.com/python-semver/python-semver/tree/master/changelog.d>`_:
+ - in our repository.:
+- update to version 3.0.0-dev.2:
+ - Deprecations:
+ - :gh:`169`: Deprecate CLI functions not imported from ``semver.cli``.
+ - Features:
+ - :gh:`169`: Create semver package and split code among different modules in the packages.
+   * Remove :file:`semver.py`
+   * Create :file:`src/semver/__init__.py`
+   * Create :file:`src/semver/cli.py` for all CLI methods
+   * Create :file:`src/semver/_deprecated.py` for the ``deprecated`` decorator and other deprecated functions
+   * Create :file:`src/semver/__main__.py` to allow calling the CLI using :command:`python -m semver`
+   * Create :file:`src/semver/_types.py` to hold type aliases
+   * Create :file:`src/semver/version.py` to hold the :class:`Version` class (old name :class:`VersionInfo`) and its utility functions
+   * Create :file:`src/semver/__about__.py` for all the metadata variables
+ - :gh:`305`: Rename :class:`VersionInfo` to :class:`Version` but keep an alias for compatibility
+ - Improved Documentation:
+ - :gh:`304`: Several improvements in documentation:
+   * Reorganize API documentation.
+   * Add migration chapter from semver2 to semver3.
+   * Distinguish between changlog for version 2 and 3
+ - :gh:`305`: Add note about :class:`Version` rename.
+ - Trivial/Internal Changes:
+ - :gh:`169`: Adapted infrastructure code to the new project layout.
+   * Replace :file:`setup.py` with :file:`setup.cfg` because the :file:`setup.cfg` is easier to use
+   * Adapt documentation code snippets where needed
+   * Adapt tests
+   * Changed the ``deprecated`` to hardcode the ``semver`` package name in the warning.
+   Increase coverage to 100% for all non-deprecated APIs
+ - :gh:`304`: Support PEP-561 :file:`py.typed`.
+   According to the mentioned PEP:
+     "Package maintainers who wish to support type checking
+     of their code MUST add a marker file named :file:`py.typed`
+     to their package supporting typing."
+   Add package_data to :file:`setup.cfg` to include this marker in dist
+   and whl file.
+- update to version 3.0.0-dev.1:
+ - Deprecations:
+ - :pr:`290`: For semver 3.0.0-alpha0:
+   * Remove anything related to Python2
+   * In :file:`tox.ini` and :file:`.travis.yml`
+     Remove targets py27, py34, py35, and pypy.
+     Add py38, py39, and nightly (allow to fail)
+   * In :file:`setup.py` simplified file and remove
+     ``Tox`` and ``Clean`` classes
+   * Remove old Python versions (2.7, 3.4, 3.5, and pypy)
+     from Travis
+ - :gh:`234`: In :file:`setup.py` simplified file and remove
+   ``Tox`` and ``Clean`` classes
+ - Features:
+ - :pr:`290`: Create semver 3.0.0-alpha0
+   * Update :file:`README.rst`, mention maintenance
+     branch ``maint/v2``.
+   * Remove old code mainly used for Python2 compatibility,
+     adjusted code to support Python3 features.
+   * Split test suite into separate files under :file:`tests/`
+     directory
+   * Adjust and update :file:`setup.py`. Requires Python >=3.6.*
+     Extract metadata directly from source (affects all the ``__version__``,
+     ``__author__`` etc. variables)
+ - :gh:`270`: Configure Towncrier (:pr:`273`:)
+   * Add :file:`changelog.d/.gitignore` to keep this directory
+   * Create :file:`changelog.d/README.rst` with some descriptions
+   * Add :file:`changelog.d/_template.rst` as Towncrier template
+   * Add ``[tool.towncrier]`` section in :file:`pyproject.toml`
+   * Add "changelog" target into :file:`tox.ini`. Use it like
+     :command:`tox -e changelog -- CMD` whereas ``CMD`` is a
+     Towncrier command. The default :command:`tox -e changelog`
+     calls Towncrier to create a draft of the changelog file
+     and output it to stdout.
+   * Update documentation and add include a new section
+     "Changelog" included from :file:`changelog.d/README.rst`.
+ - :gh:`276`: Document how to create a sublass from :class:`VersionInfo` class
+ - :gh:`213`: Add typing information
+ - Bug Fixes:
+ - :gh:`291`: Disallow negative numbers in VersionInfo arguments
+   for ``major``, ``minor``, and ``patch``.
+ - Improved Documentation:
+ - :pr:`290`: Several improvements in the documentation:
+   * New layout to distinguish from the semver2 development line.
+   * Create new logo.
+   * Remove any occurances of Python2.
+   * Describe changelog process with Towncrier.
+   * Update the release process.
+ - Trivial/Internal Changes:
+ - :pr:`290`: Add supported Python versions to :command:`black`.
+
+-------------------------------------------------------------------
+Wed Jan 13 09:28:26 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove build dependency on pytest-cov, fixing Leap builds
+
+-------------------------------------------------------------------
+Fri Oct 30 11:22:16 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.13.0:
+ - Features:
+  - :pr:`287`: Document how to create subclass from ``VersionInfo``
+ - Bug Fixes:
+  - :pr:`283`: Ensure equal versions have equal hashes.
+    Version equality means for semver, that ``major``,
+    ``minor``, ``patch``, and ``prerelease`` parts are
+    equal in both versions you compare. The ``build`` part
+    is ignored.
+- update to version 2.12.0:
+ - Bug Fixes:
+  - :gh:`291` (:pr:`292`): Disallow negative numbers of
+    major, minor, and patch for ``semver.VersionInfo``
+- update to version 2.11.0:
+ - Bug Fixes:
+  - :gh:`276` (:pr:`277`): VersionInfo.parse should be a class method
+     Also add authors and update changelog in :gh:`286`
+  - :gh:`274` (:pr:`275`): Py2 vs. Py3 incompatibility TypeError
+
+-------------------------------------------------------------------
+Sun Jul 12 16:04:41 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.10.2:
+ - Features:
+  - Increase coverage
+ - Bug Fixes:
+  - Fixed ``__getitem__`` returning None on wrong parts
+  - Doc: Add missing "install" subcommand for openSUSE
+ - Deprecations:
+  - functions `semver.max_ver`, `semver.min_ver`
+- update to version 2.10.1:
+ - Features:
+  - Added release policy and version restriction in documentation to
+    help our users which would like to stay on the major 2 release.
+  - Simplified installation semver on openSUSE with ``obs://``.
+  - Made docstrings consistent
+ - Bug Fixes:
+  - Fixed return type of ``semver.VersionInfo.next_version``
+    to always return a ``VersionInfo`` instance.
+
+-------------------------------------------------------------------
+Tue May 19 09:27:55 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Sat May  9 16:05:49 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated url
+  * moved download url back to pypi (issue with tests not included seems resolved)
+
+- update to version 2.10.0:
+  * Features
+    + :pr:`138`: Added __getitem__ magic method to semver.VersionInfo
+      class. Allows to access a version like version[1].
+    + :pr:`235`: Improved documentation and shift focus on
+      semver.VersionInfo instead of advertising the old and deprecated
+      module-level functions.
+  * Bug Fixes
+    + :gh:`224` (:pr:`226`): In setup.py, replaced in class clean,
+      super(CleanCommand, self).run() with CleanCommand.run(self)
+    + :gh:`244` (:pr:`245`): Allow comparison with VersionInfo,
+      tuple/list, dict, and string.
+  * Additions
+    + :pr:`228`: Added better doctest integration
+  * Removals
+    + :gh:`225` (:pr:`229`): Output a DeprecationWarning for the
+      following functions:
+        - semver.parse
+        - semver.parse_version_info
+        - semver.format_version
+        - semver.bump_{major,minor,patch,prerelease,build}
+        - semver.finalize_version
+        - semver.replace
+        - semver.VersionInfo._asdict (use the new, public available function semver.VersionInfo.to_dict())
+        - semver.VersionInfo._astuple (use the new, public available function semver.VersionInfo.to_tuple())
+      These deprecated functions will be removed in semver 3.
+
+-------------------------------------------------------------------
+Tue Feb 18 20:00:54 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.9.1:
+ - Features:
+  - :gh:`177` (:pr:`178`): Fixed repository and CI links (moved https://github.com/k-bx/python-semver/ repository to https://github.com/python-semver/python-semver/)
+  - :pr:`179`: Added note about moving this project to the new python-semver organization on GitHub
+  - :gh:`187` (:pr:`188`): Added logo for python-semver organization and documentation
+  - :gh:`191` (:pr:`194`): Created manpage for pysemver
+  - :gh:`196` (:pr:`197`): Added distribution specific installation instructions
+  - :gh:`201` (:pr:`202`): Reformatted source code with black
+  - :gh:`208` (:pr:`209`): Introduce new function :func:`semver.VersionInfo.isvalid`
+    and extend :command:`pysemver` with :command:`check` subcommand
+  - :gh:`210` (:pr:`215`): Document how to deal with invalid versions
+  - :pr:`212`: Improve docstrings according to PEP257
+ - Bug Fixes:
+  - :gh:`192` (:pr:`193`): Fixed "pysemver" and "pysemver bump" when called without arguments
+
+-------------------------------------------------------------------
+Tue Nov 26 14:15:33 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.9.0:
+ - Version 2.9.0 (WIP):
+ - Features:
+  - :gh:`59` (:pr:`164`): Implemented a command line interface
+  - :gh:`85` (:pr:`147`, :pr:`154`): Improved contribution section
+  - :gh:`104` (:pr:`125`): Added iterator to :func:`semver.VersionInfo`
+  - :gh:`112`, :gh:`113`: Added Python 3.7 support
+  - :pr:`120`: Improved test_immutable function with properties
+  - :pr:`125`: Created :file:`setup.cfg` for pytest and tox
+  - :gh:`126` (:pr:`127`): Added target for documentation in :file:`tox.ini`
+  - :gh:`142` (:pr:`143`): Improved usage section
+  - :gh:`144` (:pr:`156`): Added :func:`semver.replace` and :func:`semver.VersionInfo.replace`
+    functions
+  - :gh:`145` (:pr:`146`): Added posargs in :file:`tox.ini`
+  - :pr:`157`: Introduce :file:`conftest.py` to improve doctests
+  - :pr:`165`: Improved code coverage
+  - :pr:`166`: Reworked :file:`.gitignore` file
+  - :gh:`167` (:pr:`168`): Introduced global constant :data:`SEMVER_SPEC_VERSION`
+ - Bug Fixes:
+  - :gh:`102`: Fixed comparison between VersionInfo and tuple
+  - :gh:`103`: Disallow comparison between VersionInfo and string (and int)
+  - :gh:`121` (:pr:`122`): Use python3 instead of python3.4 in :file:`tox.ini`
+  - :pr:`123`: Improved :func:`__repr__` and derive class name from :func:`type`
+  - :gh:`128` (:pr:`129`): Fixed wrong datatypes in docstring for :func:`semver.format_version`
+  - :gh:`135` (:pr:`140`): Converted prerelease and build to string
+  - :gh:`136` (:pr:`151`): Added testsuite to tarball
+  - :gh:`154` (:pr:`155`): Improved README description
+ - Removals:
+  - :gh:`111` (:pr:`110`): Droped Python 3.3
+  - :gh:`148` (:pr:`149`): Removed and replaced ``python setup.py test``
+- update to version 2.8.2:
+ - Skipped, not released.
+
+-------------------------------------------------------------------
+Thu Oct  3 10:08:21 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Conflicts: python-node-semver
+- Add fdupes
+
+-------------------------------------------------------------------
+Thu Jun  6 12:15:36 UTC 2019 - pgajdos@suse.com
+
+- run the testsuite
+
+-------------------------------------------------------------------
+Tue Dec  4 12:54:07 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jul 12 03:30:06 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * be more specific for python_sitelib in %files section
+
+- update to version 2.8.1:
+  * Issue #77 (PR #47). Convert multiple tests into
+    pytest.mark.parametrize
+  * Issue #89 (PR #90). Add doctests.
+  * Issue #40 (PR #88). Add a static parse method to VersionInfo
+  * Issue #87 #94 (PR #93). Remove named tuple inheritance. Fix bad
+    rendering in Pandas DataFrame
+  * Issue #96 (PR #97). Make VersionInfo immutable
+  * Issue #98 (PR #99). prerelease and build set to None by default
+
+-------------------------------------------------------------------
+Mon May 21 06:42:33 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 2.8.0 (excerpt):
+ * Issue #79 (PR #81 #84). Define and improve a release procedure file
+ * Issue #72 #73 (PR #75). Implements __str__ and __hash__
+
+-------------------------------------------------------------------
+Tue Nov 14 16:43:50 UTC 2017 - arun@gmx.de
+
+- update to version 2.7.9:
+  * Issue #65 (PR #66). Add finalize_version function
+
+-------------------------------------------------------------------
+Fri Aug 25 07:56:06 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 2.7.8
+ * PR #62. Support custom default names for pre and build
+
+-------------------------------------------------------------------
+Fri Jun  2 19:50:40 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

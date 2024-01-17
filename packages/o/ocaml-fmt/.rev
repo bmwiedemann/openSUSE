@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>83c08ff0333f853d5cc9ea8c8479bd3d</srcmd5>
+    <version>0.8.9</version>
+    <time>1619653013</time>
+    <user>dimstar_suse</user>
+    <comment>new BuildRequires for ocaml-bos</comment>
+    <requestid>868383</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8c7e51aa7d7b37e38140c52fb7a87892</srcmd5>
+    <version>0.8.10</version>
+    <time>1634587152</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>925816</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f2f33b3e7d11e7b499de69c0d10e241</srcmd5>
+    <version>0.9.0</version>
+    <time>1649274674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0
+  See included CHANGES.md for details</comment>
+    <requestid>967052</requestid>
+  </revision>
+</revisionlist>

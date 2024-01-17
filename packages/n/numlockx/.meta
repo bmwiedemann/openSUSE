@@ -1,0 +1,9 @@
+<package name="numlockx" project="openSUSE:Factory">
+  <title>Switch on/off or toggle numlock</title>
+  <description>This little thingy allows you to start X with NumLock turned on ( which
+is a feature that a lot of people seem to miss and nobody really knew
+how to achieve this ). This code relies on X extensions called XTest
+and XKB, so you need to have at least one of these X extensions
+installed ( you most probably do ).</description>
+  <devel project="X11:Utilities" package="numlockx"/>
+</package>

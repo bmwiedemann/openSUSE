@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63b5e429911667c7f51e4a43c573351c</srcmd5>
+    <version>0~20160703</version>
+    <time>1477644282</time>
+    <user>dimstar_suse</user>
+    <comment>Additionnal offline voices for gcompris-qt</comment>
+    <requestid>418068</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ee1f87147039a5c1d2df0e5308ec7276</srcmd5>
+    <version>0~20160703</version>
+    <time>1480341922</time>
+    <user>dimstar_suse</user>
+    <comment>Put voices in the real needed gcompris-qt path
+Last piece to fix boo#1011125</comment>
+    <requestid>441705</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc1c960f39200962df66a0ff776112dd</srcmd5>
+    <version>0~20161224</version>
+    <time>1483048226</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447646</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95beeb8c052ac3d6db74907e6b0ad0ed</srcmd5>
+    <version>0~20170826</version>
+    <time>1505335078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to its real state 20170826
+- Fix provide version to be equal to main package
+- Refrech content for gcompris-qt release 0.80
+  * Updated LICENSE file with the upstream changes.
+    Renamed, deleted, added files.
+- Packaging : change requires to gcomprit-qt
+</comment>
+    <requestid>525835</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>22118e07b6f54b02ba55197cea2ceb9e</srcmd5>
+    <version>0~20170930</version>
+    <time>1507570877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530472</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>93830043fad0170745b8b72cfb6c63e0</srcmd5>
+    <version>0~20180314</version>
+    <time>1521579548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587896</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>41738803e14b52a2687c6f3eceb6f1a6</srcmd5>
+    <version>0~20180517</version>
+    <time>1527582847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610729</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>39d7ea211aabf91298cbc9c8dcb5b3ef</srcmd5>
+    <version>0~20180517</version>
+    <time>1548335019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662858</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5c2f119717193e8c5c8eacaa054433c6</srcmd5>
+    <version>0~20190304</version>
+    <time>1551785143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681545</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f7a6d446c202146a814604e046fdfbc9</srcmd5>
+    <version>0~20191210</version>
+    <time>1576189186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756033</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c1e79b0e48b25145032e7ce162ae5964</srcmd5>
+    <version>0~20206270</version>
+    <time>1593293012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817434</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>41d946c409569d97bb381e88795bec59</srcmd5>
+    <version>1.0~20201120</version>
+    <time>1608317889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849965</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ca7feb68086aec065c8074ad8b989e2d</srcmd5>
+    <version>1.1~20210322</version>
+    <time>1617131965</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880572</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cad460b5198b28f1af833252b67505e6</srcmd5>
+    <version>2.0~20211218</version>
+    <time>1640200694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0~20211218 for gcompris-qt 2.0 (as such need to be build/tested in paar with gcompris-qt)
+</comment>
+    <requestid>942089</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>140ed3cd1065cc24d51ea94ed6f949f0</srcmd5>
+    <version>2.1~20220121</version>
+    <time>1642936582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>948199</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0b3a28c8d1eefed042ef44426065dcb6</srcmd5>
+    <version>2.3~20220313</version>
+    <time>1647458425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961988</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>00d2bd80a833c8fadc52147f47dc09f7</srcmd5>
+    <version>2.4~20220419</version>
+    <time>1650736024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972306</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ee000a6c187d016d4dad3086d14ed512</srcmd5>
+    <version>3.1~20230121</version>
+    <time>1674997847</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1061793</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>61a14f5db9e8ba11a1ff2883936a1c01</srcmd5>
+    <version>3.2~20230329</version>
+    <time>1680789439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2~20230329 for gcompris-qt 3.2
+please place in same staging as gcompris-qt
+
+</comment>
+    <requestid>1077681</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>509e1bcbb192957bc2b522f1aae328c1</srcmd5>
+    <version>3.3~20230606</version>
+    <time>1688398898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3~20230606 for gcompris-qt 3.3 with the right fixes for the expected version (3.3)
+</comment>
+    <requestid>1096493</requestid>
+  </revision>
+</revisionlist>

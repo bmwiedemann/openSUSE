@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89ac5bbdace4d65815720936b59a38a8</srcmd5>
+    <version>0.6.5</version>
+    <time>1544441335</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove false information from description - xxHash does not
+  derive from Argon2 algorithm.
+- Trim bias from description
+- update to version 0.6.5
+  -  Improved performance on small keys, thanks to suggestions from Jens Bauer
+  -  New build macro, XXH_INLINE_ALL, extremely effective for small keys of fixed length (see this article for details)
+  -  XXH32() : better performance on OS-X clang by disabling auto-vectorization
+  -  Improved benchmark measurements accuracy on small keys
+  -  Included xxHash specification document
+- Initial package of version 0.6.4
+</comment>
+    <requestid>655685</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2047ea1dd674f66d27551333e379b303</srcmd5>
+    <version>0.7.1</version>
+    <time>1569523593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733431</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02ad5a8bcc3668bb2ed00fbf57c6efe1</srcmd5>
+    <version>0.7.2</version>
+    <time>1576927867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758243</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14d3afeaa45827a166772795af8e84ae</srcmd5>
+    <version>0.8.0</version>
+    <time>1596564985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824139</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8b5c067d6fa69acc1627c49e22209e87</srcmd5>
+    <version>0.8.0</version>
+    <time>1625867799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904413</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4781b16f978e8ae8bbb3f261dbb6cfcd</srcmd5>
+    <version>0.8.1</version>
+    <time>1639855774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940740</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a694f4ffc5decb3ac13674182ea1dec9</srcmd5>
+    <version>0.8.1</version>
+    <time>1640108415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941635</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c1089c1f7559fb9033680b0c89778830</srcmd5>
+    <version>0.8.1</version>
+    <time>1678707594</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 15ce80f9f2760609d8cc68cea76d3f3217ab70e1.patch: fix build
+  failure on ppc64le when using gcc 7 (boo#1208794).
+</comment>
+    <requestid>1070769</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>62898ca052e53fae5d731bce466730cf</srcmd5>
+    <version>0.8.2</version>
+    <time>1699478187</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123715</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cd95ab49d6d4f04ae3f1e35587703523</srcmd5>
+    <version>0.8.2</version>
+    <time>1701462289</time>
+    <user>anag+factory</user>
+    <comment>- Make use of openSUSE build flags (forwarded request 1130022 from Guillaume_G)</comment>
+    <requestid>1130029</requestid>
+  </revision>
+</revisionlist>

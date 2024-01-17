@@ -1,0 +1,27 @@
+From 1917e50265c15ff00c6f40b64720ef173f550059 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 10 Nov 2021 12:30:27 +0100
+Subject: [PATCH] crash: enable zstd support
+
+---
+ CFLAGS.extra  | 2 +-
+ LDFLAGS.extra | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CFLAGS.extra b/CFLAGS.extra
+index 4fafcff..825d5ee 100644
+--- a/CFLAGS.extra
++++ b/CFLAGS.extra
+@@ -1 +1 @@
+--DLZO -DSNAPPY
++-DLZO -DSNAPPY -DZSTD
+diff --git a/LDFLAGS.extra b/LDFLAGS.extra
+index 83f3661..ffc6ee8 100644
+--- a/LDFLAGS.extra
++++ b/LDFLAGS.extra
+@@ -1 +1 @@
+--llzo2 -lsnappy
++-llzo2 -lsnappy -lzstd
+-- 
+2.33.1
+

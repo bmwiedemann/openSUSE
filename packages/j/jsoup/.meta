@@ -1,0 +1,21 @@
+<package name="jsoup" project="openSUSE:Factory">
+  <title>Java library for working with HTML</title>
+  <description>jsoup is a Java library for working with HTML.
+It provides an API for extracting and manipulating data,
+using DOM, CSS, and jquery-like methods.
+
+jsoup implements the WHATWG HTML5 specification.
+
+ - scrapes and parses HTML from a URL, file, or string
+ - finds and extracts data, using DOM traversal or CSS selectors
+ - manipulates the HTML elements, attributes, and text
+ - cleans user-submitted content against a safe white-list,
+   to prevent XSS attacks
+ - outputs tidied HTML
+
+jsoup can deal with invalid HTML tag soup.
+
+</description>
+  <devel project="Java:packages" package="jsoup"/>
+  <url>http://jsoup.org/</url>
+</package>

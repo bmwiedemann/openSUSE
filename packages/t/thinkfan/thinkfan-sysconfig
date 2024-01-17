@@ -1,0 +1,10 @@
+## Path:           System/
+## Description:    Fan control for Thinkpads
+## Type:           string
+## Default:        "-b0"
+## ServiceRestart: thinkfan
+#
+# Decrease biasing (up to -b-10) if your fan speed changes too quickly,
+# Increase biasing (up to -b20) if your fan speed changes too slowly.
+#
+THINKFAN_ARGS="-b0"

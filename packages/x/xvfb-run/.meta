@@ -1,0 +1,5 @@
+<package name="xvfb-run" project="openSUSE:Factory">
+  <title>xvfb-run</title>
+  <description>Script to conveniently run Xvfb contributed by Debian.</description>
+  <devel project="X11:XOrg" package="xvfb-run"/>
+</package>

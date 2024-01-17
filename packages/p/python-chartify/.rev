@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9acfcf497bf7c7d5a7e36df07993d630</srcmd5>
+    <version>2.7.0</version>
+    <time>1576014338</time>
+    <user>dimstar_suse</user>
+    <comment>Python library for plotting charts</comment>
+    <requestid>755580</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a9e2ebeeb584710e4f92d11d4df4e473</srcmd5>
+    <version>2.7.0</version>
+    <time>1586248160</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable one test that fails due to numpy update</comment>
+    <requestid>791641</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64ff26610bd7aaf8ac38175baa6faeaf</srcmd5>
+    <version>3.0.1</version>
+    <time>1594228726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819468</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6f9699ef7ea4bf4fa18d5b44aa1b285d</srcmd5>
+    <version>3.0.3</version>
+    <time>1613427518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872000</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2e8cb5a6dd5be618ecbc46359fdce08</srcmd5>
+    <version>3.0.4</version>
+    <time>1669289002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037506</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cdabcd5f9b784044de45594f9f590738</srcmd5>
+    <version>3.0.5</version>
+    <time>1672851226</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.5:
+  * Fixed a few errors in example and tutorial notebooks
+  * Fixed a typo in requirements.txt</comment>
+    <requestid>1055859</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e8b7753a0f85cdd50c2f74da343eb568</srcmd5>
+    <version>4.0.2</version>
+    <time>1686665334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.2:
+  * Fix categorical_order_by check for scatter plot
+  * Fix categorical_order_by check for _construct_source
+  * Refactor category sorting in _construct_source
+  * Add tests for categorical_order_by
+  * Fix scatter plot tests that used line plots
+  * Updated version requirement of pillow to avoid bug
+  * Dropped support for python 3.6 and 3.7
+- unpin pandas to allow 2.x
+
+- update to 3.1.0:
+  * Added Boxplot Chart including example in examples notebook</comment>
+    <requestid>1092608</requestid>
+  </revision>
+</revisionlist>

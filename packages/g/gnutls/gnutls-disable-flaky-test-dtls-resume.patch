@@ -1,0 +1,13 @@
+Index: gnutls-3.7.8/tests/Makefile.am
+===================================================================
+--- gnutls-3.7.8.orig/tests/Makefile.am
++++ gnutls-3.7.8/tests/Makefile.am
+@@ -508,7 +508,7 @@ if !WINDOWS
+ # List of tests not available/functional under windows
+ #
+ 
+-dist_check_SCRIPTS += dtls/dtls.sh dtls/dtls-resume.sh #dtls/dtls-nb
++dist_check_SCRIPTS += dtls/dtls.sh #dtls/dtls-resume.sh #dtls/dtls-nb
+ 
+ indirect_tests += dtls-stress
+ 

@@ -1,0 +1,1307 @@
+-------------------------------------------------------------------
+Tue Jan  2 16:15:30 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.7.3:
+ * change: budget report added sign on categories like in
+   manage dialog
+ * change: budget report only display fulfilled for budegt
+   category
+ * bugfix: forecast was sometimes faultly done for
+   excluded/closed account
+ * bugfix: date range 'last 12 months' start was not set to
+   1st day of -12 months
+ * bugfix: lp#2045299 'install for me only' end with error message
+   when creating optional desktop shortcut
+ * bugfix: lp#2043886 portable version could prevent to store
+   recent-file
+ * bugfix: lp#2043433 chart drill down Category link is not
+   translated
+ * bugfix: lp#2043385 budget report forced displayed subcategories
+   can have no parent
+ * bugfix: lp#2043366 budget forced category remains displayed
+   with exp/inc filter
+ * bugfix: lp#2043223 budget report fulfilled column badly rounded
+   display 99% vs 100%
+ * bugfix: lp#2042676 accound dialog exclude from any report
+   do not refresh the graph after close
+ * bugfix: lp#2020181 mate: only french flag for payment icons 
+ * wish  : lp#2042699 chart drill down shows the cat total when
+   drawing subat
+ * wish  : lp#2042683 assigment rule dialog to be wider
+   and/or size saved
+
+-------------------------------------------------------------------
+Mon Nov 13 19:12:51 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.7.2: 
+  * bugfix: crash was possible when no file loaded and change to
+    main chart
+  * bugfix: lp#2043152 lock icon for transaction sometime disapear
+    due to column resize
+  * bugfix: lp#2042771 currency don't update due to wrong api url
+    since 5.7
+  * bugfix: lp#2042770 HomeBank closes after leaving "preferences"
+    menu with no file open.
+  * bugfix: lp#2042668 remove/sanitize GTK listview quicksearch
+  * bugfix: lp#2042484 category popoverlist shows subcat income
+    standalone its expense parent
+  * bugfix: lp#2042463 manage categories add subcategory fail
+    after a search
+  * bugfix: lp#2042035 assign edit cancel faultly persist the
+    rule search
+  * bugfix: lp#2040494 App crashes when exporting a report after
+    I delete a category that contained data
+  * bugfix: lp#2040010 ISO 8601 date format not respected when
+    exporting to clipboard or CSV
+  * bugfix: lp#2039995 budget by time do not filter txn type
+    exp/inc
+  * bugfix: lp#2039493 statistics report crash when opened with
+    a too wide date range 
+  * wish  : lp#2042692 count and show number of selected
+    transactions when suppressing them
+
+-------------------------------------------------------------------
+Mon Oct  9 15:34:02 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.7.1:
+  *  new   : split dialog: add a confirm dialog before delete all
+     split lines
+  *  new   : dateentry only rely on token and date order
+     detection, glib failover
+  *  change: split dialog: add info+tooltip icon next to the
+     amount input
+  *  change: split dialog: amount input is named according
+     transaction type
+  *  bugfix: dateentry d, dm, md was sometimes wrong
+  *  bugfix: dateentry 2 year digits fix with 40/60 windowing
+  *  bugfix: lp#2037597 top 10 Spending Category chart legend
+     labels sometimes ellipsized
+  *  bugfix: lp#2037468 "All Transactions" CSV export no longer
+     includes account
+  *  bugfix: lp#2037132 cannot create assignments from a
+     transaction with empty memo
+  *  bugfix: lp#2036703 budget report shows wrong Spent and
+     Budget totals
+  *  bugfix: lp#2036290 migrate libsoup-2.4 to libsoup-3.0
+  *  bugfix: lp#2036270 no message when split limit is reached
+  *  bugfix: lp#2036228 forecast only limited to time span set in
+     preferences
+  *  bugfix: lp#2036097 budget report date range from/to does not
+     localized month name
+  *  bugfix: lp#2035401 Main panel size not retained; account
+     info concealed on start
+  *  bugfix: lp#2035129 incorrect values in "tooltip" message
+     for forcast view (subcategory)
+  *  bugfix: lp#2034764 statistics Report Total Row not
+     reflecting displayed amounts
+  *  bugfix: lp#2034647 trend time Report Title does not match
+     Interval
+  *  bugfix: lp#2034618	statistics report sometimes crashes with
+     half year interval 
+  *  wish  : lp#2038601 "Schedule" and "Template" linked
+     togglebuttons are not mutually exclusive (don't act like
+     switchers)
+  *  wish  : lp#2034625	statistics Reportsorting by expense or
+     income when using the Time Mode
+- Changed BuildRequires from libsoup-2.4 to libsoup-3.0
+
+-------------------------------------------------------------------
+Thu Sep  7 16:23:23 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.7:
+  *  new   : added balance mode for statistics total report
+  *  new   : added fulfilled column for budget report
+  *  new   : added back the Custom indicator in Date Range widget
+  *  new   : added the date as last sort in case of prior equality
+     for transaction list
+  *  new   : added two preferences parameters to be more flexible
+     with currency rate api
+  *  new   : added abbreviated weekday in date input widget
+  *  change: migrating to GTK4 preparation
+     (GtkContainer/GdkEvent/...)
+  *  change: the currency rate api to exchangerate.host
+  *  change: numerous optimization and refactoring for report
+     computing
+  *  change: home scheduled: moved the maximum post date to an
+     info icon tooltip
+  *  change: avoid refreshing undisplayed items on the home main
+     window
+  *  change: chart legend is hidden when not enough space to
+     display chart
+  *  change: export PDF of transaction migrated to a standard
+     print feature
+  *  wish  : lp#2030322 add weekday display in date input 
+  *  wish  : lp#2024956 sort the scheduled transaction by date
+     order
+  *  wish  : lp#2028464 manage account add sort header, search
+     and website 
+  *  wish  : lp#2023477 stack chart to display income above and
+     expense below
+  *  wish  : lp#2019193 preference to sync transfer status by
+     default
+  *  wish  : lp#2018680 replace  * *PREFILLED** for new
+     assignement/archive from register with added icon
+  *  wish  : lp#2018174 change currency rate api to a more
+     fulfilled one
+  *  wish  : lp#2008641 add a duplicate assignment action 
+  *  wish  : lp#2004078 print option missing in Show all
+  *  wish  : lp#1964434 optimize the legend position to maximize
+     chart size
+  *  wish  : lp#1933165 budget report includes
+     Category & Subcategory
+  *  wish  : lp#1932198 pdf print txn report, custom title, total
+     and portrait/paysage 
+  *  wish  : lp#1918459 adding pdf print function - show the
+     result as a list 
+  *  wish  : lp#1912973 ability to print "Your accounts" list
+     in main window 
+  *  wish  : lp#1909851 filter scheduled operations add Next
+     payout (max post date)
+  *  wish  : lp#1857890 home chart to show account balance
+     total/time
+  *  wish  : lp#1816389 home chart to show spending by month
+  *  wish  : lp#1783645 chart drill down for categories
+  *  wish  : lp#588864 budget report over time (month)
+  *  wish  : lp#121510 cash flow forecast
+  *  bugfix: lp#2030333 account not sorted by position in import
+     assistant
+  *  bugfix: lp#2024322 currency online update not working
+  *  bugfix: lp#2018726 budget report should be bounded to month
+- Update BuildRequires minimum versions for glib-2.0, gtk+-3.0
+  and libsoup-2.4
+
+-------------------------------------------------------------------
+Tue Aug  8 05:15:14 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.6.6:
+  * bugfix: lp#2027201 when ordering the transaction list by
+    category, split ones are not ordered
+  * bugfix: lp#2026641 anonymise does not deal with account notes,
+    start balance, overdraft and automatic assignment notes
+  * bugfix: lp#2026626 anonymise feature doesn't fully anonymise
+    accounts name
+  * bugfix: lp#2026594 changing currency account with xfer faulty
+    change target account currency
+  * bugfix: lp#2026184 statistics report doesn't always show total
+    for parent category
+  * bugfix: lp#2024940 statistics faulty hide items with data when
+    result is 0.0
+  * bugfix: lp#2024389 filter Status always show section should
+    always be visible
+  * bugfix: lp#2019312 status column included in export detail txn
+    from report break re-import 
+
+-------------------------------------------------------------------
+Tue Jun 27 15:51:36 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.6.5:
+ * bugfix: lp#2024243 when creating splits for income transactions,
+   expenses are added as incomes regardless of amount sign
+ * bugfix: lp#2023388 account cannot be deleted message is not
+   precise enough
+ * bugfix: lp#2022049 windows: displayed values overflow int32 in
+   5.6.4
+ * bugfix: lp#2019312 status column included in export detail txn
+   from report break re-import
+ * bugfix: lp#2018039 lock icon for reconciled txn is not displayed
+   in report detail
+
+-------------------------------------------------------------------
+Fri May 19 15:37:28 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 5.6.4:
+ * bugfix: lp#2012576 statistics Report using Balance Mode by time
+   shows odd "total" column
+ * bugfix: lp#2012999 one transaction Imported from QFX file no
+   longer matches 
+ * bugfix: lp#2017435 posting both sides of a scheduled internal
+   transfer posts 2 occurrence
+ * bugfix: lp#2018145 rate calculation on total report values
+ * bugfix: lp#2018206 balance sometimes displays -0.00
+ * bugfix: lp#2018414 tags edit/import faultly enable space and may
+   cause report crash
+ * bugfix: lp#2019876 balance report allow max < min date (crash)
+   and ignore input with All dates range set
+
+-------------------------------------------------------------------
+Mon Mar 20 16:34:23 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 5.6.3:
+  * change: budget table view is now the default
+  * bugfix: scheduled transaction list was not display src/dst
+    account for xfer
+  * bugfix: scheduled transaction list total was incorrect
+  * bugfix: account future transaction account column was not
+    displayed oblique
+  * bugfix: lp#2009277 removing tag from multiple transactions
+  * bugfix: lp#2009250 cannot select Hidden Categories in
+    Statistics Reporting
+  * bugfix: lp#2008521 account window toggle future transaction
+    is not working
+  * bugfix: lp#2007947 dropdown boxes in the Edit Transaction
+    dialog box behave inconsistently
+  * bugfix: lp#2007712 report half-year column header is not
+    translated
+  * bugfix: lp#2000728 wayland: template window closes only
+    on third attempt
+  * bugfix: lp#1999699 wayland: click on schedule button select
+    first item and don't open popover
+  * wish: lp#2007714 table budget dialog view improvements 
+  * wish: lp#2000290 Fortnight interval in Reports 
+  * wish: lp#1996505 Sum SELECTED scheduled transaction at
+    main window
+  * wish: lp1956060 sort by amount in statistics report to take
+    sign into consideration
+  * wish: lp#1886123 Remind status transactions not calculated
+    in reports despite include preference 
+
+-------------------------------------------------------------------
+Mon Feb  6 18:10:55 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 5.6.2:
+  * change: updated the example.xhb file with up to date data
+  * change: avoid to call the update currency api unless file
+    last save is less than 24h
+  * bugfix: lp#2004631 date and column title alignement
+  * bugfix: lp#2004053 budget manage table view category column
+    no ellipsis nor resizable
+  * bugfix: lp#2002873 changing a category name do not update
+    the list
+  * bugfix: lp#2002699 en_GB locale faultly translated to Arabic
+    by a user
+  * bugfix: lp#2002650 update currency at program start always
+    mark the file changed
+  * bugfix: lp#2002348 impossible to schedule income template
+    with an amount equal to 0
+  * bugfix: lp#2000480 crash importing OFX under specific
+    conditions
+  * bugfix: lp#2000452 vehicle cost report shows duplicated subcats
+
+-------------------------------------------------------------------
+Mon Jan  9 16:41:47 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 5.6.1:
+  * bugfix: lp#2001566 vehicule cost report label vehicle while
+    properties label Category
+  * bugfix: lp#2000834 when fiscal year is not 01 jan
+    last/this/next year is 1 year ahead
+  * bugfix: lp#2000809 user feedback when create template or
+    assignment
+  * bugfix: lp#2000760 typo in french translation
+  * bugfix: lp#2000629 move buttons in Manage Assignments window
+    do not update at ends
+  * bugfix: lp#2000294 statistics Time 'Balance mode' ignores
+    filters
+  * bugfix: lp#2000292 week 51/52 display incorrectly in
+    Statistics Report
+  * bugfix: lp#2000269 quick filter transactions uncleared shows
+    reconciled transactions
+  * bugfix: lp#2000266 duplicated 'This fortnight' label in
+    date range
+  * bugfix: lp#1999963 category list with an & show other name
+  * bugfix: lp#1999879 new assignment by amount do not save
+    the amount
+  * bugfix: lp#1999322 When I hide a payee, changes are not saved
+  * bugfix: lp#1999297 win: crash in scheduled transaction
+  * bugfix: lp#1999265 future/remind list column width
+    to 0 (hidden)
+  * bugfix: lp#1999250 program crashes exporting Payees to csv
+  * bugfix: lp#1999243 moving assignment rule is not subject to
+    saving and moving to position>99 fails
+  * bugfix: lp#1999188 show detail preference is ignored + column
+    width to 0
+  * bugfix: lp#1999186 void transactions show regardless of
+    preferences setting
+  * bugfix: lp#1998987 translation is missing for days and
+    transaction status
+  * bugfix: lp#1998912 translation is missing for the new
+    date selector
+
+-------------------------------------------------------------------
+Tue Dec  6 21:24:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6:
+ * new   : add a Manage > Wallet menu entry
+ * new   : add suggested/destructive style to relevant dialog buttons
+ * new   : add search input into manage category dialog
+ * new   : all search input CTRL+F to activate, ESC to empty+quit
+ * new   : filter on individual type: expense, income, transfer
+ * new   : filter on individual status: cleared, reconciled
+ * new   : filter dialog has a visual indicator on page with active filter
+ * new   : added an info icon with detailed info as tooltip in import, account pages
+ * new   : added a warning icon when xfer with different currency prefill target amount fail
+ * change: dropped usage of remaining comboboxentry in profit of a popoverentry
+ * change: account rename dialog relayout
+ * change: payee edit dialog relayout
+ * change: category edit dialog relayout
+ * change: manage payee/category hid usage column by default, toggle button to show
+ * change: filter dialog relayout
+ * change: layout harmonisation of all manage dialog
+ * change: spacing check and harmonisation of all windows
+  * change: removed icons for secondary windows/dialogs
+ * wish  : #1996223 statistics time report stack chart to show rate in tooltip
+ * wish  : #1993088 register closed account popmenu should be disabled
+ * wish  : #1989211 stats report preference to include/exlcude xfer by default
+ * wish  : #1986501 columns visibility settings for scheduled mainwindow list
+ * wish  : #1983995 Ability to "Copy raw amount" from a transaction in the account's transactions list
+ * wish  : #1982036 improve columns order/width for target xfer transaction list
+ * wish  : #1980562 setting to unlock by default the reconciled changes
+ * wish  : #1977686 autocompletion for split memo field
+ * wish  : #1974450 modify assignment order by specifying its index
+ * wish  : #1973029 add tag import/export function
+ * wish  : #1958039 Add ability to sort by search text in Assignments Dialog
+ * wish  : #1955305 Ability to search for criteria text in "Management Assignments" window
+ * wish  : #1933164 sort by header column click on statistics
+ * wish  : #1932193 add a note field into payee
+ * wish  : #1920642 separate columns and widths settings for reports details pane
+ * wish  : #1909749 feature to lock changes of reconciled transactions
+ * wish  : #1906953 add "ignore" week-end behavior
+ * wish  : #1896887 Reports / Exclude tags does an AND on multiple tags, it should default to OR
+ * wish  : #1896441 set an account to be outflow into 'Your Accounts'
+ * wish  : #1886757 HomeBank Report Account balances for each month
+ * wish  : #1875801 shows split detail in the report detail list
+ * wish  : #1869352 option to add scheduled txn until x months
+ * wish  : #1826360 archive payee/category to lighten the lists
+ * wish  : #1710085 assignment based on amount
+ * wish  : #1673260 internal transfer with different currency
+ * wish  : #1530170 more date range option and redesign
+ * wish  : #1173135 charts for stat over time items (pay, cate, acc...) report
+ * wish  : #625527  multiselectable combobox in trendtime reports
+ * bugfix: unused tags were not saved
+ * bugfix: add ellipsize to some report columns for large item name
+ * bugfix: report budget layout problem with large category name
+ * bugfix: #1993599 your accounts tooltip fail when account name contains a &
+ * bugfix: #1993727 import assistant selection counts do not update
+
+-------------------------------------------------------------------
+Fri Oct 21 15:59:00 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.8:
+  * bugfix: lp#1992548 linking xfers between accounts fails to
+    join correctly
+  * bugfix: lp#1992284 manage tag edit input is empty
+
+-------------------------------------------------------------------
+Wed Oct  5 16:12:38 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.7:
+  * bugfix: lp#1681532 Segfault when pressing escape while editing
+    a new transaction
+  * bugfix: lp#1981464 "Select among possible transactions" duplicate
+    transfer refactor
+  * bugfix: lp#1984246 compilation problem on Debian 11
+  * bugfix: lp#1987975 choose among target xfer faultly propose same
+    sign transaction
+  * bugfix: lp#1988489 Statistics "total" percentage breakdown
+    incorrect
+  * bugfix: lp#1988594 edit txn with keyboard ok button (alt) don't
+    update focused amount
+  * bugfix: lp#1989171 Invalid appdata confuse gnome-software
+  * bugfix: lp#1991459 register apply type=income +
+    status=uncategorized shows expense
+- BuildRequires for glib2 changed back to >= 2.39, lp#1984246
+  fixes building with glib2 < 2.68
+
+-------------------------------------------------------------------
+Thu Jun 30 18:07:43 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.6: 
+  * bugfix: #1977796 rounding problem for euro minor in
+    deutsche mark
+  * bugfix: #1976138 split amount opposite sign don't work when
+    using + button
+  * bugfix: #1972078 inherit old xfer enable to post to
+    a closed account
+  * bugfix: #1970526 windows do not minimize independently; cannot
+    raise main window above others
+  * bugfix: #1970509 manage scheduled list column hscrollbar
+  * bugfix: #1970020 balance report - toggle detail show no txn
+  * bugfix: #1967708 csv export invalid with semicolon in text
+-  BuildRequires for glib2 changed to >= 2.68
+
+-------------------------------------------------------------------
+Mon Apr 25 16:30:28 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.5:
+  * change: windows: upgraded to GTK 3.24.33
+  * wish: #1960755 add a refresh button in account detail screen 
+  * wish: #1960380 void transaction icon improved visibility in
+    dark mode
+  * wish: #1950234 your account show total for single group
+    foreign currency
+  * wish: #1948608 scheduled list (manage/bottom) could show
+    category column
+  * wish: #1945636 detail report list amount sort in base currency
+  * bugfix: fixed double trigger on some radiobutton: category,
+    budget, assign, repstats
+  * bugfix: #1968249 templates names not displayed in Transaction
+    dialog 
+  * bugfix: #1965594 children windows should be transient for their
+    parents
+  * bugfix: #1964433 'Top Spending' home chart option button
+    disapear
+  * bugfix: #1963833 window: main window don't open in primary
+    screen
+  * bugfix: #1960750 tooltip is in English even if localization is
+    set to FR
+  * bugfix: #1960745 not showing * after some changes made
+    to manage
+  * bugfix: #1960743 double click payee not working after search
+  * bugfix: #1958767 managing payees search does not refresh
+    after merge
+  * bugfix: #1958145 windows: can't enter specials characters with
+    alt gr
+  * bugfix: #1958001 balance 'Show Empty Line' includes days
+    outside of selected range
+
+-------------------------------------------------------------------
+Sat Jan 15 06:10:06 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.4:
+  * change: windows: upgraded to GTK 3.24.31
+  * bugfix: #1956185 dates not accepting 2 digit year
+  * bugfix: #1955984 homebank cannot import its own CSV exports
+  * bugfix: #1955046 statistics time csv subcategory export fail
+  * bugfix: #1954017 QIF import uncheck similar txn with
+    different category
+  * bugfix: #1947931 vehicle cost CSV output incorrect values
+    in km/l column
+  * bugfix: #1945715 windows: update currency return
+    'unaccaceptable TLS certificate'
+  * bugfix: #1942494 statistics "total" percentage breakdown
+    incorrect
+  * bugfix: #1940103 (null) is shown in dialog when deleting
+    a template/scheduled
+  * bugfix: #1919063 windows: scaling in 'Top Spending' text
+    too big in UHD 3840 x 2160
+  * bugfix: #1801655 windows: button order for GtkAssistant
+    import is confusing 
+
+-------------------------------------------------------------------
+Tue Aug 10 17:47:42 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.3:
+ * new: added 4 report color themes: quicken2017, mint,
+   material, nord
+ * change: added 6 more colors to ynab report color theme
+ * wish: #1930395 ability to copy certain amounts (sum, avg, balance)
+ * bugfix: fixed some minor memory leak in post scheduled
+ * bugfix: adding tags from manage tags dialog don't enable save
+ * bugfix: #1936806 after editing a txn from detail list of report,
+   the list is empty
+ * bugfix: #1934739 today button text is not translated in date picker
+ * bugfix: #1932301 main windows New and Save tooltip text remains
+   in english
+ * bugfix: #1931816 changing a date from 'show all transaction'
+   don't sort by date
+ * bugfix: #1930924 import back a csv reads categories as tags
+ * bugfix: #1928147 account column don't sort in scheduled dialog
+ * bugfix: #1919936 document what the account maximum balance limit
+   does in practice
+
+-------------------------------------------------------------------
+Sun May  9 12:03:33 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.2:
+  * new   : statistics report add result/detail to clipboard/csv
+    file
+  * wish  : #1923368 calendar "Today" button to not auto-close
+    widget
+  * wish  : #1916365 please add Toggle detail function to Time
+    mode on Statistics report 
+  * bugfix: #1925976 statistics "total" percentage breakdown
+    incorrect
+  * bugfix: #1922829 reorder transaction buttons not updated
+    after date change
+  * bugfix: #1921741 top spending chart legend text overlap
+  * bugfix: #1919080 OFX import deduplication unselect valid txn
+  * bugfix: #1918479 choosing to force budget monitoring does
+    not make document dirty
+  * bugfix: #1918334 void transactions from previous periods show
+    up in the current transactions
+
+-------------------------------------------------------------------
+Tue May  4 19:32:51 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.1:
+  * change: report window are now closed when new/open a file
+  * bugfix: #1917837 the tag popover list is too small in width
+    and height
+  * bugfix: #1917075 delete unused payee/category do not enable
+    save
+  * bugfix: #1916932 impossible to read text when using dark theme
+  * bugfix: #1916587 scheduled this/next month date filter is wrong
+  * bugfix: #1915729 windows "tag" close the programm on delete
+    item
+  * bugfix: #1915660 update to the Help & Homebank for check
+    numbers
+  * bugfix: #1915643 the "Balance report" does not group correctly
+    by week (ISO 8601)
+  * bugfix: #1915609 qif export of multiple account double xfer
+    line
+  * bugfix: #1914943 statistic by time total row doubled with
+    subcategory
+  * bugfix: #1914935 changing the "Include remind into balance"
+    option doesn't update balance in accounts summary
+  * bugfix: #1910857 transaction category autofill from payee is
+    too invasive
+  * bugfix: #1910819 paste amount into split may input too much
+    decimal digits
+  * bugfix: #1889659 crash on typing in category during add due
+    to inconsistent XML
+  * bugfix: #1842429 difference between loading 1 OFX file or
+    more at once
+  * wish  : #1904569 more flexible date handling for QIF import
+  * wish  : #1594684 balance report to select several accounts
+
+-------------------------------------------------------------------
+Sat Feb 13 16:48:32 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5:
+  * new   : your accounts added cleared column
+  * new   : target xfer dialog add a match ratio column
+  * new   : added checking and savings account type
+  * new   : added tooltip on 'your accounts' to show last reconciled
+    date, minimun/maximum remaining
+  * new   : trend time, added average value and line into the graph
+  * change: your accounts renamed bank column to reconciled
+  * change: statistics report renamed the 'Balance' term with a more
+    accurate 'Total'
+  * change: statistics report added a compare Exp. & Inc. checkbox
+    to clarify the interface
+  * wish  : #1911838 integrate fr_CA categories (included with wish)
+  * wish  : #1909694 duplicate auto assignment find
+  * wish  : #1909590 include one decimal digit in the fuel average
+  * wish  : #1900281 homebank Stats Rept - Subcategory heading
+  * wish  : #1898277 add a "today" button/calendar option when adding
+    new transactions
+  * wish  : #1897810 search or sort assignment rules
+  * wish  : #1897696 red text in budget report for negative results
+  * wish  : #1894425 Add switch inside app to change dark/light theme
+  * wish  : #1893854 shortcut for scheduled main window button
+  * wish  : #1892606 graph legend text not smaller than windows font
+  * wish  : #1891878 your accounts add remaining before overdraft
+  * wish  : #1890024 add a high limit for saving accounts
+  * wish  : #1887212 internal xfer detection day gap manual preference
+  * wish  : #1884376 payee multimatch for autocompletion
+  * wish  : #1882876 category/payee separate usage count for
+    transaction and overall usage
+  * wish: : #1882456 txn dialog to order popover category by type
+  * wish  : #1870390 statistic report - sum/total as last row
+  * wish  : #1866456 import option to invert expense/income for
+    credit card account
+  * wish  : #1857636 Allow showing only short/medium-term scheduled
+    operations in the main window's overview
+  * wish  : #1847622 txn status display to button and/or add icon
+  * wish  : #1846928 top spending max items configurable
+  * wish  : #1846822 your accounts column choose + add cleared
+  * wish  : #1581863 on main window, accounts have 'Reconciled date'
+  * wish  : #1565386 ability to set time interval for the Balance report
+  * wish  : # 300380 add direct print + pdf/png/ps export mostly
+    for report/graph
+  * bugfix: #1911805 the decimal digits of the Belarusian ruble is
+    indicated incorrectly
+  * bugfix: #1909323 windows: crash importing an OFX file with
+    info + add to info
+  * bugfix: #1903437 date column in transaction list can be empty
+  * bugfix: #1898408 split window does not provide 8 decimal places
+    for cryptocurrency
+  * bugfix: #1898294 time unit is not translated 'Manage
+    scheduled/template transactions' dialog
+  * bugfix: #1895478 ofx file marked as invalid if empty line at top
+- Remove obsolete (0%{?suse_version} < 1330) stuff from spec file
+
+-------------------------------------------------------------------
+Wed Sep 30 13:16:51 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.4.3:
+  * change: remove deprecated GtkAction/GtkUIManager for
+    rep_balance
+  * change: harmonization of dialog dimension with aspect
+    ratio
+  * change: split list column now follow same width rule
+    than other list
+  * change: updated the file statistics: added tags, currencies,
+    template, scheduled
+  * change: updated the welcome dialog: added icon, relayout, show
+    next time checkbox
+  * change: reworked and improved the new file assistant
+  * change: prefixed template created from the register
+  * wish  : #1861759 search "Manage Accounts"
+  * wish  : #1861432 merge tags
+  * wish  : #1860905 sort by amount in budget report
+  * wish  : #1851733 Reports/Vehicle Cost Report filtered dropdown
+  * wish  : #1851729 multi line scheduled post
+  * wish  : #1851718 popup menu on transaction list
+  * wish  : #1847907 add reconcile data when export as CSV
+  * wish  : #1829597 view split transaction detail from the register
+    (expand or other)
+  * wish  : #1810621 mass prefill assignment from the register
+  * bugfix: double click on scheduled list total line was faulty
+    reactive
+  * wish  : #1886299 export to csv/clipboard 1st column title
+    naming
+  * wish  : #1886181 default preference or remind for import
+    similar date gap
+  * wish  : #1880386 revert ease to combine expense/income in
+    splits dialog
+  * wish  : #1882081 add a gtk font size override Edit
+  * wish  : #1871383 increase exchange rate size
+  * wish  : #1869112 "Export CSV" feature for the "Show all..."
+    transactions view
+  * wish  : #1837550 export transaction from account as CSV with
+    every split line 
+  * bugfix: delete tag was partially working
+  * bugfix: your accounts list was not refreshed after new
+    file or import
+  * bugfix: #1870476 typo: Your
+  * bugfix: #1870433 default backup path folder not initialized
+    with wallet folder
+  * bugfix: #1869727 typo: assigment
+  * bugfix: #1868185 search not finding amounts with more than 3
+    digits dollar amount
+  * bugfix: #1867392 delete tooltip not translated in
+    scheduled/template dialog
+  * bugfix: #1865361 txn dialog template list switch sort order
+    on each save
+  * bugfix: #1865083 when moving a transaction a 'changed' icon
+    isn't displayed against the 'from' account
+  * bugfix: #1864176 'Restore backup' doesn't open default
+    backup folder
+  * bugfix: #1864089 missing icons for "Case sensitive" and
+    "Regular expression in the assignment dialog
+  * bugfix: #1863484 scheduled 'stop after' cannot be removed
+  * bugfix: #1862769 manage schedule/template and quicksearch
+    behavior
+  * bugfix: #1862677 add and keep FROM register reset the date
+  * bugfix: #1862540 win: currency symbol detection fail leads
+    to crash
+  * bugfix: #1862436 win: incorrect display of russian ruble
+    currency symbol
+  * bugfix: #1858675 import/export budget mixup if subcategory
+    has same name
+
+-------------------------------------------------------------------
+Tue Mar 10 14:06:06 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 5.3.2:
+  * Changes;
+    + Remove deprecated GtkAction/GtkUIManager for rep_balance.
+  * Bugfixes;
+    + Edit menu was not disable for closed account.
+    + Statistics show legend toolbutton was state inverted.
+    + #1861337 transactions from closed accounts not
+      showing > Transactions > Show All.
+    + #1861008 after changing values in the budget, the save button
+      is not enabled.
+    + #1860356 transaction List wrong preset status dropdown.
+    + #1860309 preference "Keep the last date" not working after
+      creating a new transaction
+    + #1860232 crash when deleting multiple transactions from
+      "Show All" view.
+    + #1859476 budget "Dec" not included in total.
+    + #1859386 unable to save Split Transaction in 5.3.1 after
+      initially working.
+    + #1859346 restore backup should be available anytime.
+    + #1859344 missing texts under icons in top menu.
+    + #1859275 budget table view balance sometimes empty + no edit.
+- Changes from version 5.3.1:
+  * Bugfixes;
+    + #1859279 toggling from category to subcategory level on
+      Statistics Report doubles the amount .
+    + #1859117 split transaction not displaying Split in Category
+      after edit txn.
+    + #1859088 crash may occur if you enable 'show confirmation
+      text' in preference.
+    + #1859077 no more pre-filled account when single account.
+    + #1858945 keep last date preference no more working.
+    + #1858682 add buttons disabled while adding or inherit a
+      transfer.
+    + #1858507 some menu/toolbar tooltip text remains in English.
+- Changes from version 5.3:
+  * New;
+    + Transaction dialog shows weekdays and account currency.
+    + Transaction type created expense/income and transfer.
+    + Added a clear menu for recent opened file.
+    + Added delete key shortcut to delete transaction.
+    + Added budget pin icon to category forced to be displayed.
+    + Filter dialog added select all/none/invert for payment.
+    + Added account budget icon to show if account is part of the
+      budget.
+  * Changes;
+    + Xhb data file format (v1.4).
+    + Account dialog layout change.
+    + Budget dialog layout change.
+    + Assign dialog layout change.
+    + Filter dialog layout change.
+    + Transaction dialog layout change.
+    + Merged transaction and template dialog.
+    + Internal transfer payment mode removed (in profit to transfer
+      type).
+    + Transfer payment mode was renamed to bank transfer.
+    + Button add/edit/merge/delete to icon button into toolbar
+      under listview.
+    + Rewritten menus and toobars to drop usage of deprecated
+      GtkAction/GtkUIManager.
+    + Dropped significant g_list_append to gain in performance.
+    + Replaced the 'remove' text to more accurate 'delete'.
+    + Reworked the ui design of release candidate warning message.
+    + Lighten stack usage for dialog.
+  * Wish;
+    + #1851449 Add a transaction very very slooow with many account
+      numbers.
+    + #1848604 rely on type exp/inc also for split line input.
+    + #1845388 remind the apply of assignment between import.
+    + #1844892 detect/skip UTF-8 BOM (Excel CSV files).
+    + #1842897 color trailing spaces in assignments.
+    + #1842758 your accounts list keep state after open/close
+      register.
+    + #1840100 updates when use multiple account window.
+    + #1831975 optional visible/audible confirmation of transaction
+      entered.
+    + #1831372 add nett Budget value to 'Manage Budget' screen.
+    + #1818320 add "void" status to transactions.
+    + #1818052 copy/paste one/multiple transaction(s).
+    + #1813474 "Info" field for scheduled/template transactions.
+    + #1812630 multiple edit enable change to internal transfer.
+    + #1812598 calculate "Remind" transactions into balance (as
+      configuration option?).
+    + #1810299 bold lowest balance for future date in register.
+    + #1792279 configurable backup directory.
+    + #1756681 ease debit/credit/transfer transaction seizure.
+    + #1749457 change order of same day transactions.
+    + #1740368 expense & Income type available at sub-category
+      level.
+    + #1719184 table view for budget setup (contribution code).
+    + #1708974 allow for transfer on mismatched days.
+    + #1504348 improve control of assignments.
+    + #1460666 features for scheduled transactions dialog.
+    + #1173135 statistics report to show all items (pay, cate,
+      acc...) over time.
+    + #1095160 account: more type and created group.
+  * Bugfixes;
+    + #1854953 Direct Debit type ignored during OFX import.
+    + #1853531 show 'Uncleared' transactions displays uncleared and
+      Reconciled.
+    + #1845841 check point and remainder on splits gone since 5.2.
+    + #1847645 number of backups exceeds preference settings.
+    + #1845839 updating a transaction from the Remind screen
+      doesn't always update the account summary.
+    + #1844881 internal xfer of budget account "this needs a
+      category".
+    + #1829927 when inherit a txn, the Add button faulty keep the
+      data.
+- Changes from version 5.2.8:
+  * New;
+    + Import: auto assigment is now optional.
+    + Payee dialog: added a payment icon column to ease management.
+    + Add help and donate toolbar buttons.
+  * Changes;
+    + Payee popover: improved the dimension of the popover to larger one.
+  * Wish;
+    + #1843184 reorganize accelerator for txn dialog.
+    + #1841462 shortcuts for register view.
+    + #1828914 mark "Today" for calendar widget.
+    + #1826211 csv import to assign category from payee choice.
+    + #1673902 add a visual marker for uncategorized txn of budget
+      account.
+  * Bugfixes;
+    + Fixed compile fail with GTK < 3.22 and gtk_popover_popdown.
+    + Accelerator key was not working for date widget.
+    + #1843648 info gets empty after editing a txn with paymode
+      cheque and positive amount.
+    + #1842935 can't save file after OFX import with long unicode
+      strings.
+    + #1842292 windows: language change KO if install path as utf-8
+      char (é, ç, à, etc).
+    + #1840998 transaction Screen only shows 3 weeks in advance.
+    + #1840393 import qfx similar transaction dialog amount show
+      $0.00.
+    + #1839851 balance report details view all show amount 0.00.
+- Changes from version 5.2.7:
+  * New;
+    + Dropped usage of comboboxentry in profit of a popover list
+      for tags.
+    + Payee column shows >account or <account for internal
+      transfer.
+    + Transaction tooltip were clarified.
+  * Wish;
+    + #1828732 add expand/collapse all for categories in edit
+      filter.
+  * Bugfixes;
+    + Filter payment click on label was not working.
+    + Tags add from manager was allowing input space in name.
+    + Tags were not freed from archives.
+    + #1837838 create an account in new file wizard allows trailing
+      space in account name.
+    + #1836380 vehicle cost report show bad km stats in some case.
+    + #1835588 toggle future transactions button is faulty always
+      showed.
+    + #1832982 typo in src/dsp-account.c.
+    + #1832216 win: open payee menu crash on libcairo, and is slow.
+    + #1830880 changing a transaction in the future screen doesn't
+      activate the save button.
+    + #1830710 tag list is slow with lots of items and too wide.
+    + #1830707 no warning for "amount and category sign don't
+      match" if internal transfer.
+    + #1830656 Payee and Memo colums on scheduled screen sometimes
+      revert to minimum width.
+    + #1830523 future/remind txn main panel list shows 0.00 amount.
+    + #1792277 not all columns auto-size to contents.
+
+-------------------------------------------------------------------
+Thu Jan 30 11:14:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Mon May 27 06:18:13 UTC 2019 - mvetter@suse.com
+
+- Update to 5.2.6:
+  + Changes:
+    - access to the show all transaction with the toolbar
+  + Bugfixes:
+    - #1829630 homebank: _cairo_arc_in_direction(): homebank killed by SIGABRT 
+    - #1829076 status "no category" filter not working
+    - #1829603 multi currencies problem in Trend Time Report
+  + Wishes:
+    - #1829007 prefill txn dialog with account if single
+    - #1828209 multiple edit could allow updating transaction amount
+    - #1809022 detail txn show only category amount split part
+    - #1792749 main window date 'other...' consistency 
+
+-------------------------------------------------------------------
+Wed Mar 20 06:31:53 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.2.3
+  + new
+    - statistics report, added account
+    - trend time report, added half year interval
+    - added console error message for load/save preference file
+  + wish
+    - sortable columns during import
+    - fill paymode/category independently from payee
+    - enable to import unlimited account
+    - reorder split transactions
+    - add tags manager
+    - "Show all accounts" should not be shown when no account is selected
+    - scheduled home list to show remaining occurence
+    - OFX import to allow mapping the "name" field to "info"
+    - remind expander state into 'Your account' list
+    - display list of available tags in txn dialog
+    - enable tag for trend time report 
+  + lots of bug fixes, see the Changelog for a complete list
+
+-------------------------------------------------------------------
+Sun Sep 16 08:58:45 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 5.2.1:
+  + Wish: Treat search box as another filter (lp#1789698).
+  + Bugfixes:
+    - Backup files are not being deleted (lp#1792677).
+    - Trendtime report crash when display payee (lp#1792567).
+    - CSV import do not import info, payee, and tags (lp#1791656).
+    - Revert and Restore backup menu items permanently greyed out
+      (lp#1791554).
+- Changes from version 5.2:
+  + Changes:
+    - Import, you can drop file to import on the main window.
+    - xhb data file format (v1.3).
+    - Optimized XML close tag.
+    - Preferences, reorganised the pages and elements.
+    - Improved the split dialog with a listview and new layout.
+    - Migrated split to GPtrArray.
+    - Improved the register selection informations.
+    - Relayouted payee and category dialog.
+    - Removed most theme icons to keep a consistent interface.
+  + Wishes:
+    - Show average of selection (lp#1783826).
+    - Column chart for trend time report (lp#1760145).
+    - Filter templates by current account (lp#1759028).  
+    - Add Select All/None feature when importing transactions from
+      files (lp#1744612). 
+    - Import remember last account (lp#1738816). 
+    - Execute all the rules for assignments (lp#1720538).
+    - Add a visual marker for uncategorized txn (lp#1673902). 
+    - Option to control the autocomplete of memo (lp#1673048). 
+    - Update account target window if open (lp#1667501).
+    - Show category in subcategory view of budget report
+      (lp#1661980). 
+    - Import option to case convert txn description (lp#1623931). 
+    - Enhance the backup system (lp#1610563).
+    - Import to always shows date tolerance (lp#1586211).
+    - Prevent to import csv invalid date combinations (lp#1579494). 
+    - Add quick filter for manage payees window (lp#1500227).
+    - Split the amount of a transaction into more than 10
+      categories (lp#1225122).
+    - Optional default transaction template for each account
+      (lp#1008629).
+    - Include tags in scheduled/template transaction (lp#969218).
+    - Option to help detect duplicated transaction (lp#829418).
+    - List of all transactions (lp#668417).
+    - Implement import of multiple files (lp#528739).
+  + Bugfixes:
+    - Currencies update fail due to fixer.io requires api key
+      (lp#1785210).
+    - Segmentation fault if you entered a category ending with :
+      (lp#1772281).
+    - Lost account focus after internal transfert (lp#1787830).
+    - Filter for internal xfer target is wrong from txn
+      (lp#1787829).
+    - Budget report graph partially display last line (lp#1784862).
+    - Save unavailable after import of OFX (lp#1782926).
+    - When editing multiple transactions Homebank doesn't display
+      the "account changed" icon (lp#1782749).
+    - Merging a category doesn't update the count (lp#1771720).
+    - Top spending graphic treats income as expenses (lp#1767659).
+    - Quick (partial) date entry doesn't work anymore (lp#1765953).
+    - Cannot rename payee in case-sensitive way (lp#1764547).
+    - Display of quarter shows calendar year not fiscal year
+      (lp#1764133).
+    - Date resets to 01/01/1900 while adding a new transaction
+      (lp#1763952).
+    - Trendtime report quarter bound date wrong (lp#1758532).
+    - Report 'select all' prevent to pick some date (lp#1756601).
+
+-------------------------------------------------------------------
+Fri Apr 13 01:38:54 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 5.1.8:
+  + Wish: 
+    - Add more decimals for cryptocurrencies (lp#1743254).
+    - Enable/disable show future txn in register window
+      (lp#1743147).
+    - Trendtime, average line, negative amounts (lp#1446505).
+  + Bug Fixes:
+    - Account dialog, the frac digit was not set for currency with
+      more than 2 digits.
+    - Update currency message error (lp#1750426).
+    - CSV export decimal char is not always the same (lp#1750257).
+    - No warning when a file was changed from another instance
+      (lp#1750161).
+    - Currencies update fail due to yahoo discontinued service
+      (lp#1730527).
+    - Group internal xfer when sort by payee (lp#1721980).
+- Update '+' to '-or-later' in GPL License tag to comply with SPDX
+  3.0.
+- Drop standard BuildRoot tag declaration: RPM already sets it
+  itself.
+
+-------------------------------------------------------------------
+Wed Jan 17 01:59:24 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 5.1.7:
+  + New:
+    - Rewritten partially the charts and removed the treeview for
+      legend.
+    - Chart line have now a vertical line on active item.
+    - Chart now display the 0 scale text.
+    - Rewritten the dateentry widget to use a popover.
+    - Reports enable to copy to clipboard in addition to export
+      as CSV.
+  + Change:
+    - Chart bar/line now span automatically.
+    - Chart donut hole do not trigger overlay anymore.
+    - Preferences, txn column list removed, as there is a now a
+      context menu.
+    - Top spending is now display top 10 items.
+    - Fixer.io is now used to get currencies exchange rate
+      (replace yahoo).
+    - Changes and new entries into the help menu.
+  + Wish: lp#1709374, lp#1697241, lp#1674018, lp#1661986,
+    lp#1656589 and lp#300380.
+  + Bug Fixes:
+    - Chart x-scale labels were sometime overriding each others
+    - Balance report:
+      . Overdrawn was not displayed if the threshold was 0.
+      . The amount scale was faulty offset to left at first draw.
+    - Budget report: chart bar was not showing over state.
+    - lp#1734449, lp#1734210, lp#1730527, lp#1721980, lp#1720377
+      and lp#1688744.
+- Point fdupes to the data directory instead of the build root,
+  which is a practice that must be avoided.
+- Conditionalize the use of shared-mime-info BuildRequires as it is
+  only required by some old distros that does not have RPM File
+  Triggers.
+
+-------------------------------------------------------------------
+Sat Sep 23 19:54:30 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 5.1.6:
+  + wish: warn when opening a backup file (lp#1710955).
+  + Bugfixes:
+    - New memo doesn't get added to quick list (lp#1716182).
+    - New/deleted transactions and search box show inconsistency
+      (lp#1716181).
+    - "All date" range remains as is after "Select All" in Report
+      (lp#1715532).
+    - Un-editable category (lp#1713413).
+    - Manage budget window do not expand properly (lp#1710800).
+    - Automatic check numbering issue (lp#1708956).
+    - Anonymize dialog change accounts if user close window
+      (lp#1707201).
+    - Months in Manage Budget should allow tabbing from consecutive
+      months (lp#1697174).
+    - 'Notes' field in 'Manage Accounts' should wrap text
+      (lp#1697171).
+    - Start Balance not shown after new file assistant
+      (lp#1693998).
+    - The "other" side of an internal transfer is not marked as
+      changed when an internal transfer is deleted (lp#1691992).
+    - Internal transfers with a status of "Remind" are not created
+      correctly (lp#1690555).
+- Add fdupes BuildRequiers and %fdupes macro.
+- Add conditional use of deprecated %desktop_database_*,
+  %icon_theme_cache_* and %mime_database_* post/postun macros for
+  old suse versions buildability.
+
+-------------------------------------------------------------------
+Tue Jul 11 09:47:47 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 5.1.5:
+  + Change: win32: Upgraded to gtk+ 3.22.7.
+  + Bugfix: Updating currency rate was not updating file changes
+    (and enable save).
+  + Bugs fixed: lp#1689308, lp#1687117, lp#1683646, lp#1681532,
+    lp#1678476, lp#1678230, lp#1676162, lp#1674020, lp#1672209,
+    lp#1672205, lp#1672135, lp#1668036, lp#1667201, lp#1664916.
+
+-------------------------------------------------------------------
+Wed Mar  8 21:33:06 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 5.1.4:
+  + Change:
+    - filter:
+      . Reworked the layout.
+      . Category select change now propagate to subcategories.
+  +  Wish:
+     - lp#1661806: Show overdraft amount in account window (balance
+       column).
+     - lp#1655542: Improve handling of end of month scheduled
+       transactions.
+  + Bugs fixed: lp#1663795, lp#1663789, lp#1663399, lp#1662197,
+    lp#1662189, lp#1661279, lp#1660910, lp#1658538, lp#1656720,
+    lp#1655626.
+- Changes from version 5.1.3:
+  + New: Your account, added expand/collapse button.
+  + Wish:
+    - lp#1653350: Cvs import default category for payee.
+    - lp#1645126: Remember the size of columns listview in the main
+      window.
+    - lp#1530784 easy way to see closed accounts in account list.
+    - lp#1164643 totals per Financial Institution in account
+      summary.
+  + Bugs fixed: lp#1658047, lp#1658045, lp#1658043, lp#1656531,
+    lp#1653957, lp#1652994, lp#1652527, lp#1649081, lp#1649078,
+    lp#1648856.
+- Changes from version 5.1.2:
+  + Wish:
+    - lp#1645126: Remember the size of columns in the main window.
+    - lp#1639862: Multiple edit transactions date.
+    - lp#1638023: Remind scheduled listview column width.
+    - lp#916690: Qif option (info to desc; payee to desc).
+    - lp#462919: Option to choose to import OFX name to payee or
+      memo.
+  + Bugs fixed: lp#1645001, lp#1640885, lp#1638064.
+- Changes from version 5.1.1:
+  + Wish:
+    - lp#1634615: Get currency format from system again.
+    - lp#1634182: Template chooser popover could be wider by
+      default.
+    - lp#1629647: 'Multiple Edit' to include account.
+  + Bugs fixed: lp#1638035, lp#1637805, lp#1635857, lp#1635260,
+    lp#1635053, lp#1633915, lp#1633895.
+- Changes from version 5.1:
+  + Change:
+    - Xhb data file format (v1.2).
+    - Internal storage of txn into accounts.
+    - Transaction dialog, changed the layout.
+    - Template/scheduled dialog, changed the layout.
+    - Register, refactored toolbar grouping single and multiple
+      actions.
+    - Listview:
+      . Removed deprecated rule hint (alternate row color).
+      . Added line grid (new GTK+ option).
+    - Preferences, reworked layout.
+  + Wish:
+    - lp#1610672: Multiple edit should allow clearing fields.
+    - lp#1608025: Revert prefill with shift/ctrl clicked txn when
+      multiple edit.
+    - lp#1500235: Automatic assignments based on regular
+      expressions.
+    - lp#1500220: Allow auto assignments to overwrite payee.
+    - lp#1484449: Warn when amount sign and category don't match.
+    - lp#1448613: Display full category name in autocompletion.
+    - lp#1424365: Separate scheduled transaction from template
+      transaction.
+    - lp#1242312: Category split for template/scheduled
+      transaction.
+    - lp#1102981: Add comment bloc for accounts.
+    - lp#1094528: Auto-assign Payment.
+    - lp#844576: Payee default category and payment type.
+    - lp#552565: Multiple currency accounting.
+  + Bugs fixed: lp#1631888, lp#1628664, lp#1625913, lp#1615245.
+- Add pkgconfig(libsoup-2.4) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Sep  7 09:38:06 UTC 2016 - fcrozat@suse.com
+
+- Update to version 5.0.9:
+  + Enhancements: lp#1507253, lp#1429411, lp#532564.
+  + Bug fixed: lp#1602835, lp#1594152, lp#1583406, lp#1562372,
+    lp#1535483.
+- Changes from 5.0.8:
+  + Bug fixed: lp#1584342.
+- Changes from 5.0.7:
+  + New: preferences, add preview for chart color scheme.
+  + Enhancements: lp#1509485, lp#1507252, lp#1501125, lp#1501111,
+    lp#1292377, lp#880846.
+  + Bug fixed: lp#1577555, lp#1556289, lp#1553862, lp#1523216,
+    lp#1511325, lp#1464961.
+
+-------------------------------------------------------------------
+Sat Dec 26 16:13:23 CET 2015 - fcrozat@suse.com
+
+- Update to version 5.0.6:
+  + Bugs fixed: lp#1504514, lp#1504359, lp#1503682, lp#1502997,
+    lp#1502496, lp#1502444, lp#1502034, lp#1501968, lp#1501962,
+    lp#1501144, lp#1501138, lp#1501129, lp#1501098, lp#1500043,
+    lp#1498622, lp#1497630, lp#1497521.
+- Changes from version 5.0.5:
+  + Revert back fix for lp#1464961 inconsistency in internal xfer.
+- Changes from version 5.0.4:
+  + win32: upgraded to gtk+ 3.16.6.
+  + Amount toggle sign button changed from text button to entry
+    icon.
+  + Added/changed transaction are always showed by default filter.
+  + lp#1469424: bank Account window should remember user column
+    arrangement.
+  + lp#1338052: add option to show x days future ledger txn.
+  + lp#1330156: in the ledger, a way to identify graphically the
+    past from the future.
+  + Bugs fixed: lp#1492634, lp#1475969, lp#1473717, lp#1464961,
+    lp#1391506.
+
+-------------------------------------------------------------------
+Thu Jun 11 11:46:25 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 5.0.3:
+  + Internal xfer credit should display from account.
+  + Button to expand/collapse all in "Manage Categories".
+  + Re-design icon "credit vs debit card".
+  + Add ability to modify transaction when posting from template.
+  + Bugfix: "Save file as". If I change the file name, it does
+    not change.
+  + Some win32/libofx fixes.
+
+-------------------------------------------------------------------
+Thu May  7 10:55:39 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 5.0.2:
+  + Fix importing CSV files automatically creates 3 new accounts.
+  + Fix date filter From/To fields not working in Trend time and
+    Balance reports.
+  + Fix saving cut file name after a dot.
+  + Fix budget amount is wrong (seems twice).
+  + Fix calendar widget can't be dismissed by clicking on the arrow
+    or text entry.
+
+-------------------------------------------------------------------
+Tue Apr  7 20:49:24 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 5.0.1:
+  + change: xhb data file format (v1.1).
+  + For other changes, please see ChangeLog.
+
+-------------------------------------------------------------------
+Tue Feb 10 11:36:46 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 5.0.0:
+  + Migrated to GTK+ 3.0.
+  + For other changes, please see ChangeLog.
+- Replace gtk2-devel BuildRequires with pkgconfig(gtk+-3.0),
+  following upstreams port to GTK+ 3.0.
+- Replace glib2-devel BuildRequires with pkgconfig(glib-2.0),
+  matching what configure looks for.
+
+-------------------------------------------------------------------
+Sun Jan 18 18:47:37 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 4.6.3:
+  + New: enhanced categories completion (complete is done with
+    partial match on both categories and subcategories).
+  + Change: win32: upgraded to libofx 0.9.9.
+  + Bugfixes:
+    - lp#1351098 win32: OFX import freeze HomeBank.
+    - lp#1349160 layout are not persisted well on maximized
+      windows.
+
+-------------------------------------------------------------------
+Sun Mar  2 12:35:09 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 4.5.6:
+  + This is a stable maintenance release.
+  + Bugs fixed: lp#1285326, lp#1285164, lp#1277622, lp#1276377,
+    lp#1275534, lp#1273848.
+
+-------------------------------------------------------------------
+Sun Feb  2 21:24:49 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 4.5.5:
+  + Extended number of split from 6 to 10.
+  + Bugs fixed: lp#1242274, lp#1238575, lp##1231120, lp#1202503,
+    lp#953695, lp#735350, lp#1272760, lp##1270876, lp#1270687,
+    lp#1270457, lp#1268026, lp#1267344, lp#1258821, lp#1254544,
+    lp#1253004, lp#1252230, lp#1250061, lp#1250057, lp#1235465,
+    lp#1234879, lp#773282.
+- Changes from version 4.5.4:
+  + Scheduled transaction icon was still displayed after a save.
+  + Bugs fixed: lp#1230401, lp#1232418.
+- Changes from version 4.5.3:
+  + Bugs fixed: lp#1225611, lp#1221484, lp#1218644, lp#1216321,
+    lp#1216284, lp#1215521, lp#1214077, lp#1213569.
+- Changes from version 4.5.2:
+  + Bugs fixed: lp#1207156.
+- Changes from version 4.5.1:
+  + Lot of code warning fix with gcc -Wextra and cppcheck
+  + Source code preparation for gtk3 migration.
+  + mainwindow, top spending was not refreshed after preferences
+    change.
+  + Anonymize, bankname/number were not modified.
+  + Bugs fixed: lp#1163319, lp#814472, lp#801970, lp#703544,
+    lp#559787, lp#331113, lp#1202507, lp#1202503, lp#1197516,
+    lp#1195859, lp#1173910, lp#1163749, lp#1163447, lp#1156846,
+    lp#1151259, lp#1140903, lp#1138103, lp#1133105, lp#1103668,
+    lp#1102896, lp#730319, lp#1099944, lp#1047103.
+- Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 24 19:09:19 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 4.5:
+  + Portable version for Windows.
+  + Where your money goes mainwindow report.
+  + Category split for transactions.
+  + New filters for account window.
+  + Scheduled append until a day of month.
+  + New color scheme for charts.
+  + Lots of more features and wishes.
+  + Lots of bug fixes.
+- Add url to source.
+
+-------------------------------------------------------------------
+Fri Jan 20 12:11:52 UTC 2012 - vuntz@opensuse.org
+
+- Clean up for inclusion in Factory:
+  + Create lang subpackage.
+  + Use %suse_update_desktop_file instead of a patch to change the
+    .desktop file.
+  + Remove application-registry files: those are not used since
+    GNOME 2.8.
+  + Use %desktop_database_post(un), %icon_theme_cache_post(un) and
+    %mime_database_post(un) macros in scriptlets.
+
+-------------------------------------------------------------------
+Sun Apr 24 19:24:24 UTC 2011 - alexandre@exatati.com.br
+
+- Initial package (4.4) for openSUSE.

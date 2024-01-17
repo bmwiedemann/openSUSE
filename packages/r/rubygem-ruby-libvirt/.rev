@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0900373cfba593df385b41520beb1608</srcmd5>
+    <version>0.6.0</version>
+    <time>1474623015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>421788</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b077e0e53de1385aa4fd88d905c8455f</srcmd5>
+    <version>0.7.0</version>
+    <time>1476109394</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433708</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3345b231febdb0a7daea024c7ea4f185</srcmd5>
+    <version>0.7.1</version>
+    <time>1519308065</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>578573</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3453157f908f9ebb7714c3c30acae1bf</srcmd5>
+    <version>0.7.1</version>
+    <time>1611068542</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>864120</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e19c131319f04fde57267b1890cf2dda</srcmd5>
+    <version>0.7.1</version>
+    <time>1642112458</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop BuildRequires: libvirt, not necessary and very expensive (forwarded request 946013 from favogt)</comment>
+    <requestid>946025</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8380194b344decab73b9707cc09e9427</srcmd5>
+    <version>0.8.0</version>
+    <time>1663438235</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release 0.8.0</comment>
+    <requestid>1004130</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,2 @@
+# It's only an example file 'example.c'
+addFilter("E: devel-file-in-non-devel-package *")

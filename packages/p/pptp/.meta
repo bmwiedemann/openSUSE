@@ -1,0 +1,8 @@
+<package name="pptp" project="openSUSE:Factory">
+  <title>Point-to-Point Tunneling Protocol (PPTP) Client</title>
+  <description>A client for the proprietary Microsoft Point-to-Point Tunneling
+Protocol, PPTP.  It allows connections to a PPTP based VPN as used by
+employers and some cable and ADSL service providers. It requires MPPE
+support in the kernel. Use the ppp-mppe package.</description>
+  <devel project="network" package="pptp"/>
+</package>

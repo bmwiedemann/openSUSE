@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Tue Nov 14 15:03:01 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- New upstream release 1.2.1, no changelog found
+
+-------------------------------------------------------------------
+Fri Jan 27 09:27:44 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.1.0
+  * URI::GID: Update #check_scheme, no need to call super by @alexcwatt in #146
+  * JSON-encode GlobalIDs as strings by @georgeclaghorn in #149
+  * Support pattern matching of GlobalID & GlobalID::URI by @ojab in #140
+  * prevent double find by @ooooooo-q in #148
+  * implement non signed global_id helper method on fixture set by @rainerborene in #144
+
+-------------------------------------------------------------------
+Mon Jan 23 23:46:01 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.0.1
+  Fix ReDoS vulnerability in name parsing (CVE-2023-22799 [bsc#1207587])
+
+-------------------------------------------------------------------
+Sat Dec 25 00:09:14 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.0.0
+
+  Stable API release.
+
+  The code is the same as the 0.6.0 release.
+
+-------------------------------------------------------------------
+Fri Dec 24 23:59:47 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.6.0
+
+  * Add ActiveRecord::FixtureSet.signed_global_id helper to generate signed ids inside fixtures.
+
+-------------------------------------------------------------------
+Wed Aug 25 05:12:40 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.5.2
+
+  * Add back Ruby 2.5 support so gem install rails works out of the box,
+    thereby satisfying Rails' Ruby version requirement. See rails/rails#42931
+
+-------------------------------------------------------------------
+Mon Jan 14 08:04:04 UTC 2019 - mschnitzer@suse.com
+
+- updated to version 0.4.2
+
+  * Allow configuration in initialisers 3c8f909
+  * Clear to_global_id memoization on dup #109
+  * Adds hash equality #108
+
+-------------------------------------------------------------------
+Thu Oct 26 10:02:21 UTC 2017 - coolo@suse.com
+
+- updated to version 0.4.1
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Apr 17 04:32:22 UTC 2017 - coolo@suse.com
+
+- updated to version 0.4.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jul 27 04:29:42 UTC 2016 - coolo@suse.com
+
+- updated to version 0.3.7
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Aug  5 04:31:13 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.6
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Apr  9 04:31:18 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.5
+
+-------------------------------------------------------------------
+Fri Feb 13 05:29:47 UTC 2015 - coolo@suse.com
+
+- updated to version 0.3.3
+
+-------------------------------------------------------------------
+Tue Feb 10 08:10:22 UTC 2015 - coolo@suse.com
+
+- initial package (version 0.3.2)
+

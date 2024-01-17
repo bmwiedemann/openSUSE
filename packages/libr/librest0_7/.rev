@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56c3c5549ebeda06530ac80dadc88e82</srcmd5>
+    <version>0.8.1</version>
+    <time>1648062972</time>
+    <user>dimstar_suse</user>
+    <comment>New compat package</comment>
+    <requestid>963576</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a1e549afc4923578de4c68669ba24bc8</srcmd5>
+    <version>0.8.1</version>
+    <time>1671305784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043390</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0df031726be1809669b8eacf53eff742</srcmd5>
+    <version>0.8.1</version>
+    <time>1705437563</time>
+    <user>anag+factory</user>
+    <comment>- Own /usr/share/gtk-doc: glib no longer uses gtk-doc and as a
+  consequence cannot be held responsible to deliver that basic
+  directory structure. (forwarded request 1139222 from dimstar)</comment>
+    <requestid>1139253</requestid>
+  </revision>
+</revisionlist>

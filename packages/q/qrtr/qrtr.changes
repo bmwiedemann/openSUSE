@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Nov 21 08:57:04 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop unused patch:
+  * 0001-make-change-prefix-lib-and-include-folders-based-on-.patch
+- Add upstream patches:
+  * lookup: add Snapdragon Sensor Core service:
+    d0d471c96e7d112fac6f48bd11f9e8ce209c04d2.patch
+  * Makefile: allow $(CFLAGS), $(LDFLAGS) override:
+    a4398c8bf271f90338f95e1230373dde977d9cff.patch
+
+-------------------------------------------------------------------
+Fri Nov 17 13:29:27 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Minor spec file cleanups:
+  + Implement shared library packaging policy: the library is
+    packaged as libqrtr1; source name remains qrtr, devel package
+    remains qrtr-devel.
+  + Use make_install macro instead of self-crafted install
+    instructions: This results in the binaries and systemd service
+    also being installed (as part of the main package qrtr).
+  + Use ldconfig_scriptlets macro for ldconfig post/postun.
+  + Use full source URL.
+  + Drop deprecated Group: tags.
+
+--------------------------------------------------------------------
+Thu Sep 27 15:43:40 UTC 2023 - Chester Lin <clin@suse.com>
+- Rename the package from libqrtr1 to qrtr
+
+--------------------------------------------------------------------
+Wed Sep 27 09:22:00 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Initial commit

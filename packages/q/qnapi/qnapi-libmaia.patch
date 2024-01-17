@@ -1,0 +1,48 @@
+Index: qnapi-0.2.3/libqnapi/libqnapi.pro
+===================================================================
+--- qnapi-0.2.3.orig/libqnapi/libqnapi.pro
++++ qnapi-0.2.3/libqnapi/libqnapi.pro
+@@ -13,7 +13,6 @@ DESTDIR = $$PWD
+ 
+ INCLUDEPATH += $$PWD/src
+ 
+-include(../deps/libmaia/maia.pri)
+ include(../deps/qt-maybe/qt-maybe.pri)
+ 
+ UI_DIR = tmp
+@@ -90,7 +89,9 @@ HEADERS += src/config/configreader.h \
+     src/version.h
+ 
+ unix:!macx {
+-    PKGCONFIG += libmediainfo
++    CONFIG += link_pkgconfig
++    PKGCONFIG += libmediainfo \
++                 maia
+ }
+ 
+ macx {
+Index: qnapi-0.2.3/libqnapi/libqnapi.pri
+===================================================================
+--- qnapi-0.2.3.orig/libqnapi/libqnapi.pri
++++ qnapi-0.2.3/libqnapi/libqnapi.pri
+@@ -1,6 +1,5 @@
+ LIBS += -L$$PWD -lqnapi
+ INCLUDEPATH += $$PWD/src \
+-    $$PWD/../deps/libmaia \
+     $$PWD/../deps/qt-maybe
+ DEPENDPATH += $$PWD/src
+ PRE_TARGETDEPS += $$PWD/libqnapi.a
+Index: qnapi-0.2.3/gui/gui.pro
+===================================================================
+--- qnapi-0.2.3.orig/gui/gui.pro
++++ qnapi-0.2.3/gui/gui.pro
+@@ -80,7 +80,8 @@ unix:!macx {
+     TARGET = qnapi
+     DESTDIR = ../
+     CONFIG += link_pkgconfig
+-    PKGCONFIG += libmediainfo
++    PKGCONFIG += libmediainfo \
++                 maia
+ }
+ 
+ macx {

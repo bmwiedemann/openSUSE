@@ -1,0 +1,25 @@
+[Unit]
+Description=DNSCrypt-proxy socket
+Documentation=https://github.com/DNSCrypt/dnscrypt-proxy/wiki/systemd
+# with openSUSE changes
+Documentation=file:/usr/share/doc/packages/dnscrypt-proxy/README.openSUSE
+PartOf=dnscrypt-proxy-resolvconf.service
+Before=nss-lookup.target
+Wants=nss-lookup.target
+
+[Socket]
+# Choose this for dnscrypt-proxy as primary resolver
+ListenStream=127.0.0.1:53
+ListenDatagram=127.0.0.1:53
+
+# Otherwise forward from your primary local name resolver to somewhere else:
+#ListenStream=127.0.0.1:5353
+#ListenDatagram=127.0.0.1:5353
+
+# Probably not useful and can be overridden
+#  if only listening for udp (ListenDatagram)
+NoDelay=true
+DeferAcceptSec=1
+
+[Install]
+WantedBy=sockets.target

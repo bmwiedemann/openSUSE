@@ -1,0 +1,7 @@
+<package name="fife" project="openSUSE:Factory">
+  <title>A powerful 2D game engine</title>
+  <description>FIFE stands for Flexible Isometric Free Engine and is a cross platform game creation framework. It provides you with the ability to create a game using Python interfaces.
+
+You can make just about any 2D game with FIFE but it is more geared toward a RTS or RPG in just about any view style (isometric ortop-down). For more information on FIFE's capabilities visit the Features page.</description>
+  <devel project="games" package="fife"/>
+</package>

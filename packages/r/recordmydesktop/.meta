@@ -1,0 +1,11 @@
+<package name="recordmydesktop" project="openSUSE:Factory">
+  <title>Desktop session recorder for GNU/Linux</title>
+  <description>
+recordMyDesktop is a desktop session recorder for GNU/Linux that
+produces an ogg-encapsulated theora-vorbis file. It tries to be as
+unobstrusive as possible by proccessing only regions of the screen
+that have changed.
+</description>
+  <devel project="multimedia:apps" package="recordmydesktop"/>
+  <url>http://recordmydesktop.sourceforge.net</url>
+</package>

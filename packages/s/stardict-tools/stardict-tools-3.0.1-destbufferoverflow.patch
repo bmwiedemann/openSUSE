@@ -1,0 +1,26 @@
+Index: src/myspell2dic.c
+===================================================================
+--- src/myspell2dic.c.orig	2007-09-07 05:10:45.000000000 +0200
++++ src/myspell2dic.c	2008-10-08 22:23:39.000000000 +0200
+@@ -132,7 +132,7 @@ if (argc<3) 
+ 
+ fprintf(stderr, "Enter grammar language [Spanish]: ");
+ fflush(stderr);
+-fgets(lang, 100, stdin);
++fgets(lang, 50, stdin);
+ if ((p=strchr(lang, '\n'))!=NULL) *p=0;
+ if (*lang==0) strcpy(lang, "Spanish");
+ 
+Index: src/ooo2dict.c
+===================================================================
+--- src/ooo2dict.c.orig	2007-07-10 09:16:06.000000000 +0200
++++ src/ooo2dict.c	2008-10-08 22:24:23.000000000 +0200
+@@ -71,7 +71,7 @@ current2=malloc(10000);
+ 
+ fprintf(stderr, "Enter thesaurus language [WordNet_English]: ");
+ fflush(stderr);
+-fgets(lang, 100, stdin);
++fgets(lang, 50, stdin);
+ if ((p=strchr(lang, '\n'))!=NULL) *p=0;
+ if (*lang==0) strcpy(lang, "WordNet_English");
+ F=fopen((argc>1)? argv[1]: "/usr/share/myspell/dicts/th_en_US_v2.dat", "rt");

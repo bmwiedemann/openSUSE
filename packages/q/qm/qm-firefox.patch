@@ -1,0 +1,11 @@
+--- qm/platform_unix.py
++++ qm/platform_unix.py
+@@ -88,7 +88,7 @@
+     # Escape single quotes in the URL.
+     url = string.replace(url, "'", "%27")
+     # Which browser to use?
+-    browser = common.rc.Get("browser", "mozilla", "common")
++    browser = common.rc.Get("browser", "firefox", "common")
+     # Invoke the browser.
+     os.system("%s '%s' &" % (browser, url))
+ 

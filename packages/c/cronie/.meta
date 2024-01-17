@@ -1,0 +1,11 @@
+<package name="cronie" project="openSUSE:Factory">
+  <title>Cron Daemon</title>
+  <description>cron automatically starts programs at specific times. Add new entries
+with &quot;crontab -e&quot;. (See &quot;man 5 crontab&quot; and &quot;man 1 crontab&quot; for
+documentation.)
+
+Under /etc, find the directories cron.hourly, cron.daily, cron.weekly,
+and cron.monthly.  Scripts and programs that are located there are
+started automatically.</description>
+  <devel project="Base:System" package="cronie"/>
+</package>

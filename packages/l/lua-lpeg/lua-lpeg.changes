@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Tue Jul 11 11:23:08 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.1.0
+ * No change log from upstream and no usage of a git forge so that's it...
+
+-------------------------------------------------------------------
+Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Opencode %make_build to prevent build failure when not defined.
+
+-------------------------------------------------------------------
+Wed Nov 23 10:23:38 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+- Run test with correct lua version
+
+-------------------------------------------------------------------
+Wed Aug 31 17:08:45 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Add %check section and test.lua
+
+-------------------------------------------------------------------
+Sun Aug 28 14:26:14 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- noarch the doc package
+
+-------------------------------------------------------------------
+Fri Aug 26 02:54:52 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+- Add previously unpackaged re.lua module
+
+-------------------------------------------------------------------
+Tue Feb  9 14:56:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %lua_provides: add the lua-mod_name provides/obsoletes to
+  the lua version matching the distro default.
+
+-------------------------------------------------------------------
+Mon Jul  6 19:04:19 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
+Tue Mar 12 11:59:22 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.0.2, which is just a bugfix release.
+
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Thu Jul 13 16:12:32 UTC 2017 - tchvatal@suse.com
+
+- Switch to multibuild spec for all lua versions
+
+-------------------------------------------------------------------
+Fri Feb 17 07:34:12 UTC 2017 - callumjfarmer13@gmail.com
+
+- Version to 1.0.1
+
+-------------------------------------------------------------------
+Mon Mar  2 18:05:58 UTC 2015 - tchvatal@suse.com
+
+- Version bump to 0.12.1:
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Mon Mar  2 17:55:14 UTC 2015 - tchvatal@suse.com
+
+- Initial commit. Required for neovim.
+

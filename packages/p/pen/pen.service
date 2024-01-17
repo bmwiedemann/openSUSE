@@ -1,0 +1,22 @@
+[Unit]
+Description=A simple load balancer for tcp based protocols
+After=time-sync.target nss-lookup.target syslog.socket remote-fs.target
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=forking
+ExecStart=/usr/share/pen/scripts/rcpen start
+ExecStop=/usr/share/pen/scripts/rcpen stop
+[Install]
+WantedBy=multi-user.system

@@ -1,0 +1,8 @@
+<package name="ocaml-zarith" project="openSUSE:Factory">
+  <title>Arbitrary precision integers</title>
+  <description>The Zarith library implements arithmetic and logical operations over arbitrary-precision integers and rational numbers.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-zarith"/>
+  <url>https://opam.ocaml.org/packages/zarith</url>
+</package>

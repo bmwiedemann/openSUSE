@@ -1,0 +1,30 @@
+<package name="dumpzilla" project="openSUSE:Factory">
+  <title>Firefox browser forensic tool</title>
+  <description>Extract all forensic interesting information from Firefox,
+Iceweasel and Seamonkey browsers.
+Works in command line interface, so information dumps could be
+redirected by pipes with tools such as grep, awk, cut, sed...
+Dumpzilla allows to visualize following sections, search
+customization and extract certain content.
+
+Features:
+ * Cookies + DOM Storage (HTML 5).
+ * User preferences (Domain permissions, Proxy settings...).
+ * Downloads.
+ * Web forms (Searches, emails, comments..).
+ * Historial.
+ * Bookmarks.
+ * Cache HTML5 Visualization / Extraction (Offline cache).
+ * visited sites &quot;thumbnails&quot; Visualization / Extraction .
+ * Addons / Extensions and used paths or urls.
+ * Browser saved passwords.
+ * SSL Certificates added as a exception.
+ * Session data (Webs, reference URLs and text used in forms).
+ * Visualize live user surfing, Url used in each tab or window
+   and use of forms.
+
+
+</description>
+  <devel project="security:forensics" package="dumpzilla"/>
+  <url>https://www.dumpzilla.org/</url>
+</package>

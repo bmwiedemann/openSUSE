@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Aug 21 19:25:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add jsonschema < 4.18 to test dependencies
+  * gh#asdf-format/asdf-standard#391
+
+-------------------------------------------------------------------
+Thu Oct 27 16:31:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v1.0.3
+  * The in progress ASDF Standard is v1.6.0
+  * The stable ASDF Standard is v1.5.0
+  * Update documentation to be consistent with the ASDF library
+    documentation.
+  * Add time-1.2.0 schema to document bugfix requiring additional
+    property to be written from asdf-astropy.
+  * Move packaging to pyproject.toml file from setup.cfg and
+    setup.py files.
+  * Remove tag from within the time-1.1.0 schema.
+  * Remove tag from within the remaining schemas.
+
+-------------------------------------------------------------------
+Sun Jun  5 19:46:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip tests failing due to astropy 5.1 deprecating non-use of
+  asdf-astropy -- gh#astropy/asdf-astropy#82
+
+-------------------------------------------------------------------
+Wed Apr 27 10:52:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- update to v1.0.2
+  * Pin astropy min version to 5.0.4.
+
+-------------------------------------------------------------------
+Wed Mar 16 17:46:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Require the main package in :test so that tests work with
+  2.8 <= python-asdf < 2.10
+
+-------------------------------------------------------------------
+Sun Mar 13 08:32:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v1.0.1
+- Outsourced from and required by python-asdf

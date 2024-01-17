@@ -1,0 +1,26 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sun Oct 9 08:08:24 2022 +0200
+Subject: Fix error message: not the name but the link information is parsed
+Patch-mainline: Not yet
+Git-repo: ssh://eich@192.168.122.1:/home/eich/sources/HPC/hdf5
+Git-commit: 7b0b8bc5703ace47aec51d7f60c1149cd3e383b1
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5Olink.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/src/H5Olink.c b/src/H5Olink.c
+index 51c44a36b0..ee2a413dc1 100644
+--- a/src/H5Olink.c
++++ b/src/H5Olink.c
+@@ -245,7 +245,7 @@ H5O__link_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNUSE
+                 /* Make sure that length doesn't exceed buffer size, which could
+                    occur when the file is corrupted */
+                 if (p + len > p_end)
+-                    HGOTO_ERROR(H5E_OHDR, H5E_OVERFLOW, NULL, "name length causes read past end of buffer")
++                    HGOTO_ERROR(H5E_OHDR, H5E_OVERFLOW, NULL, "link information length causes read past end of buffer")
+ 
+                 if (NULL == (lnk->u.ud.udata = H5MM_malloc((size_t)len)))
+                     HGOTO_ERROR(H5E_RESOURCE, H5E_NOSPACE, NULL, "memory allocation failed")

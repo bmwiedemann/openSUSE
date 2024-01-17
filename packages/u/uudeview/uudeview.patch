@@ -1,0 +1,89 @@
+--- tcl/uutcl.c
++++ tcl/uutcl.c
+@@ -340,7 +340,7 @@
+ static void
+ uutcl_UpdateParameter (Tcl_Interp *interp)
+ {
+-  char *cval;
++  const char *cval;
+ 
+   if ((cval = Tcl_GetVar (interp, "OptionFast",     TCL_GLOBAL_ONLY))!=NULL)
+     UUSetOption (UUOPT_FAST, atoi (cval), NULL);
+--- unix/uudeview.c
++++ unix/uudeview.c
+@@ -454,7 +454,7 @@
+     return 0;
+   }
+ 
+-  if ((target = fopen (stdfile, "wb")) == NULL) {
++  if ((target = fopen (stdfile, "wbx")) == NULL) {
+     fprintf (stderr, "proc_stdin: cannot open temp file %s for writing: %s\n",
+ 	     stdfile, strerror (errno));
+     _FP_free (stdfile);
+--- uulib/fptools.c
++++ uulib/fptools.c
+@@ -83,7 +83,7 @@
+  */
+ 
+ char * TOOLEXPORT
+-_FP_strdup (char *string)
++_FP_strdup (const char *string)
+ {
+   char *result;
+ 
+--- uulib/fptools.h
++++ uulib/fptools.h
+@@ -33,7 +33,7 @@
+ #endif
+ 
+ void	TOOLEXPORT	_FP_free	_ANSI_ARGS_((void *));
+-char *	TOOLEXPORT	_FP_strdup	_ANSI_ARGS_((char *));
++char *	TOOLEXPORT	_FP_strdup	_ANSI_ARGS_((const char *));
+ char *	TOOLEXPORT	_FP_strncpy	_ANSI_ARGS_((char *, char *, int));
+ void *	TOOLEXPORT	_FP_memdup	_ANSI_ARGS_((void *, int));
+ int 	TOOLEXPORT	_FP_stricmp	_ANSI_ARGS_((char *, char *));
+--- uulib/uudeview.h
++++ uulib/uudeview.h
+@@ -188,7 +188,7 @@
+ 
+ int	UUEXPORT UUInitialize		_ANSI_ARGS_((void));
+ int	UUEXPORT UUGetOption		_ANSI_ARGS_((int, int *, char *, int));
+-int	UUEXPORT UUSetOption		_ANSI_ARGS_((int, int, char *));
++int	UUEXPORT UUSetOption		_ANSI_ARGS_((int, int, const char *));
+ char *	UUEXPORT UUstrerror		_ANSI_ARGS_((int));
+ int	UUEXPORT UUSetMsgCallback	_ANSI_ARGS_((void *,
+ 						     void (*) (void *, 
+--- uulib/uulib.c
++++ uulib/uulib.c
+@@ -505,7 +505,7 @@
+ }
+ 
+ int UUEXPORT
+-UUSetOption (int option, int ivalue, char *cvalue)
++UUSetOption (int option, int ivalue, const char *cvalue)
+ {
+   switch (option) {
+   case UUOPT_FAST:
+--- uulib/uunconc.c
++++ uulib/uunconc.c
+@@ -1325,9 +1325,9 @@
+     return UURET_NODATA;
+ 
+   if (data->uudet == PT_ENCODED)
+-    mode = "wt";	/* open text files in text mode */
++    mode = "wtx";	/* open text files in text mode */
+   else
+-    mode = "wb";	/* otherwise in binary          */
++    mode = "wbx";	/* otherwise in binary          */
+ 
+   if ((data->binfile = tempnam (NULL, "uu")) == NULL) {
+     UUMessage (uunconc_id, __LINE__, UUMSG_ERROR,
+@@ -1510,7 +1510,7 @@
+       free (ntmp);
+       return UURET_IOERR;
+     }
+-    if ((dataout = fopen (ntmp, "wb")) == NULL) {
++    if ((dataout = fopen (ntmp, "wbx")) == NULL) {
+       UUMessage (uunconc_id, __LINE__, UUMSG_ERROR,
+ 		 uustring (S_NOT_OPEN_TARGET),
+ 		 ntmp, strerror (uu_errno = errno));

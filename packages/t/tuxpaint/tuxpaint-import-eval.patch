@@ -1,0 +1,13 @@
+Index: tuxpaint-0.9.27/src/tuxpaint-import.sh
+===================================================================
+--- tuxpaint-0.9.27.orig/src/tuxpaint-import.sh
++++ tuxpaint-0.9.27/src/tuxpaint-import.sh
+@@ -143,7 +143,7 @@ fi
+ # For each picture list...
+ for x in $(seq 1 $#)
+ do
+-  i="${!x}"
++  i=$(eval echo \$\{$x\})
+ 
+   if [ -e "$i" ]; then
+     # Determine a filename for it:

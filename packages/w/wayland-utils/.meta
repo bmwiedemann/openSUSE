@@ -1,0 +1,5 @@
+<package name="wayland-utils" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Wayland" package="wayland-utils"/>
+</package>

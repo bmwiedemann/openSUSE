@@ -1,0 +1,33 @@
+<package name="perl-Test-Object" project="openSUSE:Factory">
+  <title>Thoroughly testing objects via registered handlers</title>
+  <description>In situations where you have deep trees of classes, there is a common
+situation in which you test a module 4 or 5 subclasses down, which should
+follow the correct behaviour of not just the subclass, but of all the
+parent classes.
+
+This should be done to ensure that the implementation of a subclass has not
+somehow &quot;broken&quot; the object's behaviour in a more general sense.
+
+'Test::Object' is a testing package designed to allow you to easily test
+what you believe is a valid object against the expected behaviour of *all*
+of the classes in its inheritance tree in one single call.
+
+To do this, you &quot;register&quot; tests (in the form of CODE or function
+references) with 'Test::Object', with each test associated with a
+particular class.
+
+When you call 'object_ok' in your test script, 'Test::Object' will check
+the object against all registered tests. For each class that your object
+responds to '$object-&gt;isa($class)' for, the appropriate testing function
+will be called.
+
+Doing it this way allows adapter objects and other things that respond to
+'isa' differently that the default to still be tested against the classes
+that it is advertising itself as correctly.
+
+This also means that more than one test might be &quot;counted&quot; for each call to
+'object_ok'. You should account for this correctly in your expected test
+count.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Object"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

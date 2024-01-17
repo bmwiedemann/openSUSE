@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b829ef80433a04e09ebc4466a20d811</srcmd5>
+    <version>1.5.2~0</version>
+    <time>1678902855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071962</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2425569ef74bbc7e467405d8e39db0d3</srcmd5>
+    <version>1.6.0~0</version>
+    <time>1679416899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  * Add NetBSD instructions #77
+  * Add repology badge #76
+  * Fix issue where level wasn't being read from config #78
+  * Add scoop manifest #80
+  * Default to num logical cpus rather than 4 threads #81
+  * Add support for generating shell completions #82
+  * Fix miscoloration of directories that have extension #83
+  * [Optimization] - Upgraded heap-based tree data structure to an index-tree #86
+  * Replace tempdir crate with tempfile crate #87
+  * Fix issue where ansi escapes were being printed raw on windows #90</comment>
+    <requestid>1073129</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c87e491fefc11b6fe8946082b813a63b</srcmd5>
+    <version>1.7.0~0</version>
+    <time>1680209568</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Fix windows can not recognize the tag version when publishing #91
+  * Fix the problem that test actions cannot upload windows binary files,
+    add the function of custom form to set tag version. #94
+  * Reduce default thread count #99
+  * option for plain text disk usage reporting #102
+  * Prune bug #103
+  * dirs-only #104
+  * Feature/file count #105</comment>
+    <requestid>1075592</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c855e70d0ec814c102b22ff272aae2ad</srcmd5>
+    <version>1.7.1~0</version>
+    <time>1680290148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * Fix issue where not-existent directory as cli arg causes
+    infinite loop #107</comment>
+    <requestid>1075745</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8129c3aa3587e30b68a63d030d153a53</srcmd5>
+    <version>1.8.1~0</version>
+    <time>1681213913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+  * Fix some typos #110
+  * Add clap requires to flags that depent on --report #111
+  * Refactor tests: move --no-config to mod::run_cmd #112
+  * Prevent panic when --prune is used with --glob which results
+    in empty match set #116
+  * Add ability to take glob patterns from stdin #114
+  * Refactor/node and support hard link detection on Windows #118
+  * Support colorless output when redirecting/piping stdout;
+    also provide --no-color option #120
+  * Remove ansi escapes for default icon #122</comment>
+    <requestid>1078371</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd7ec46a5c5f701349fc20143e7d069b</srcmd5>
+    <version>2.0.0~0</version>
+    <time>1682782111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Regular expressions #130[1]
+  * Unix permissions #132[2]
+  * Force color #135[3]
+  * Show hardlinks without double counting file size #136[4]
+  * Regular expressions and globbing with file-type #137[5]
+  * Truncate output #138[6]
+  * Inverted tree layout #139[7]
+  * Binary has been renamed from et to erd in order to
+    address the following issue regarding name collisions with
+    other programs: #23[8]</comment>
+    <requestid>1083620</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d255c506f20eb795a6d60575c2fa7cd</srcmd5>
+    <version>3.0.0~0</version>
+    <time>1685294639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Added support for owners and groups for the ls -l-like -l,
+    --long view (Unix).
+  * Edited the default fields shown in the -l, --long view to
+    reduce clutter; made the removed fields optional (Unix).
+  * Added support for various other disk usage metrics:
+    blocks (Unix), word-count, and line-count.
+  * Added a progress indicator.
+  * Added comparators for sorting by time accessed, created, and modified.
+  * Added support for specifying a custom time format
+
+  * Regular expressions #130
+  * Unix permissions #132
+  * Force color #135
+  * Show hardlinks without double counting file size #136
+  * Regular expressions and globbing with file-type #137
+  * Truncate output #138
+  * Inverted tree layout #139
+    other programs: #23</comment>
+    <requestid>1089439</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b0a79286f8f6a11cde5274b4ac895959</srcmd5>
+    <version>3.0.1~0</version>
+    <time>1685393267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Fixed issue where empty directories were automatically being pruned
+    despite not opting into --prune.
+  * Fixed issue where searching via globs or regex doesn't work when
+    user has a config file.
+  * Added exit codes to erdtree.
+  * Progress indicator now acquires a lock to stdout reduce likelihood
+    of printing the progress-text being a bottleneck.
+  * Some code-cleanup.</comment>
+    <requestid>1089523</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>575063470bbc7218d119c0deb62708dd</srcmd5>
+    <version>3.0.2~0</version>
+    <time>1687550003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Fix segmentation fault when invalid group or user #193
+  * Update deprecated Nerd symbols #192
+  * Change CJK and emoji block icons #194</comment>
+    <requestid>1094823</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a4a87164c4da2f7212bb5fb81f367de</srcmd5>
+    <version>3.1.2~0</version>
+    <time>1688399011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.2:
+  * Fix loading .erdtree.toml on Windows #218
+  * Fixed race to print #220
+
+- Update to 3.1.1:
+  * Fix deadlock issue #214
+
+- Update to 3.1:
+  * Multiple configs with .erdtree.toml
+  * Increased performance with --suppress-size
+  * -x, --one-file-system
+  * Support for NO_COLOR
+  * Inverted flat layout
+  * Aliases: atime, ctime, and mtime
+  * ctrlc handler to restore cursor if progress indicator is enabled
+  * .erdtreerc will be deprecated by v3.3 in favor of .erdtree.toml.
+    Please be sure to migrate by then and be sure to visit the Changelog
+    for further details about .erdtree.toml and the new release.</comment>
+    <requestid>1096418</requestid>
+  </revision>
+</revisionlist>

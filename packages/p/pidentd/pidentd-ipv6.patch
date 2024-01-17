@@ -1,0 +1,412 @@
+--- src/conf.c.orig
++++ src/conf.c
+@@ -103,7 +103,7 @@ conf_parse(const char *path,
+ 	
+ 	else if (strcasecmp(cp, "server:port") == 0)
+ 	{
+-	    if (str2port(arg, &listen_port) < 0)
++	    if (str2str(arg, &listen_port) < 0)
+ 		syslog(LOG_ERR, "%s: %d: invalid port: %s",
+ 		       path, line, arg);
+ 	}
+--- src/k_linux.c.orig
++++ src/k_linux.c
+@@ -81,6 +81,7 @@ static int
+ netlink_lookup(struct kainfo *kip, struct kernel *kp)
+ {
+     int status;
++    int i;
+     struct {
+ 	struct nlmsghdr nlh;
+ 	union {
+@@ -95,12 +96,34 @@ netlink_lookup(struct kainfo *kip, struc
+     buf.nlh.nlmsg_type = TCPDIAG_GETSOCK;
+     buf.nlh.nlmsg_flags = NLM_F_REQUEST;
+     buf.nlh.nlmsg_seq = ++kip->seq;
+-    buf.u.req.idiag_family = AF_INET;
++    buf.u.req.idiag_family = kp->remote.sg_addr._sg_sa.sa_family;
+ 
+-    buf.u.req.id.idiag_dport = kp->remote.sin_port;
+-    buf.u.req.id.idiag_sport = kp->local.sin_port;
+-    buf.u.req.id.idiag_dst[0] = kp->remote.sin_addr.s_addr;
+-    buf.u.req.id.idiag_src[0] = kp->local.sin_addr.s_addr;
++    switch (buf.u.req.idiag_family) {
++
++    case AF_INET:
++	buf.u.req.id.idiag_dport = kp->remote.sg_addr._sg_sin.sin_port;
++	buf.u.req.id.idiag_sport = kp->local.sg_addr._sg_sin.sin_port;
++	buf.u.req.id.idiag_dst[0] = kp->remote.sg_addr._sg_sin.sin_addr.s_addr;
++	buf.u.req.id.idiag_src[0] = kp->local.sg_addr._sg_sin.sin_addr.s_addr;
++	break;
++
++    case AF_INET6:
++	buf.u.req.id.idiag_dport = kp->remote.sg_addr._sg_sin6.sin6_port;
++	buf.u.req.id.idiag_sport = kp->local.sg_addr._sg_sin6.sin6_port;
++
++	for (i = 0; i < 4; i++) {
++	    buf.u.req.id.idiag_dst[i] =
++		kp->remote.sg_addr._sg_sin6.sin6_addr.__in6_u.__u6_addr32[i];
++	    buf.u.req.id.idiag_src[i] =
++		kp->local.sg_addr._sg_sin6.sin6_addr.__in6_u.__u6_addr32[i];
++	}
++	break;
++
++    default:
++	syslog(LOG_ERR, "netlink_lookup: unknown address family: %d",
++	       buf.u.req.idiag_family);
++	return 3;
++    }
+     buf.u.req.id.idiag_cookie[0] = INET_DIAG_NOCOOKIE;
+     buf.u.req.id.idiag_cookie[1] = INET_DIAG_NOCOOKIE;
+ 
+@@ -181,10 +204,10 @@ ka_lookup(void *vp, struct kernel *kp)
+     if (kip->nlfd >= 0)
+ 	return netlink_lookup(kip, kp);
+ 
+-    r_rport = ntohs(kp->remote.sin_port);
+-    r_lport = ntohs(kp->local.sin_port);
+-    r_raddr = kp->remote.sin_addr.s_addr;
+-    r_laddr = kp->local.sin_addr.s_addr;
++    r_rport = ntohs(kp->remote.sg_addr._sg_sin.sin_port);
++    r_lport = ntohs(kp->local.sg_addr._sg_sin.sin_port);
++    r_raddr = kp->remote.sg_addr._sg_sin.sin_addr.s_addr;
++    r_laddr = kp->local.sg_addr._sg_sin.sin_addr.s_addr;
+ 
+     fp = kip->proc_net_tcp;
+ 
+--- src/main.c.orig
++++ src/main.c
+@@ -162,8 +162,9 @@ main(int argc, char *argv[])
+     if (debug)
+ 	fprintf(stderr, "socktype = %d\n", socket_type);
+ 
+-    if (socket_type == SOCKTYPE_LISTEN || socket_type == SOCKTYPE_CONNECTED)
+-	listen_sock = STDIN_FILENO;
++    if (socket_type == SOCKTYPE_LISTEN || socket_type == SOCKTYPE_CONNECTED) {
++	server_set_socket(STDIN_FILENO);
++    }
+     
+     conf_parse(PATH_CFGFILE, 1);
+ 
+@@ -198,23 +199,23 @@ main(int argc, char *argv[])
+ 	    break;
+ 	    
+ 	  case 'w':
+-	    listen_sock = STDIN_FILENO;
++	    server_set_socket(STDIN_FILENO);
+ 	    socket_type = SOCKTYPE_LISTEN;
+ 	    break;
+ 	    
+ 	  case 'i':
+-	    listen_sock = STDIN_FILENO;
++	    server_set_socket(STDIN_FILENO);
+ 	    socket_type = SOCKTYPE_CONNECTED;
+ 	    break;
+ 	    
+ 	  case 'I':
+-	    listen_sock = -1;
++	    server_set_socket(-1);
+ 	    socket_type = SOCKTYPE_NOTSOCKET;
+ 	    init_mode = 1;
+ 	    break;
+ 	    
+ 	  case 'b':
+-	    listen_sock = -1;
++	    server_set_socket(-1);
+ 	    socket_type = SOCKTYPE_NOTSOCKET;
+ 	    break;
+ 
+@@ -223,7 +224,7 @@ main(int argc, char *argv[])
+ 	    break;
+ 	    
+ 	  case 'p':
+-	    if (str2port(optarg, &listen_port) < 0)
++	    if (str2str(optarg, &listen_port) < 0)
+ 	    {
+ 		syslog(LOG_ERR, "invalid argument to '-p': %s", optarg);
+ 		if (socket_type == -1 || socket_type == SOCKTYPE_NOTSOCKET)
+@@ -352,7 +353,7 @@ main(int argc, char *argv[])
+     if (!debug && 
+ 	getppid() != INIT_PID && !init_mode &&
+ 	socket_type != SOCKTYPE_CONNECTED &&
+-	listen_sock < 0)
++	listen_count == 0)
+     {
+ 	become_daemon();
+     }
+@@ -380,7 +381,7 @@ main(int argc, char *argv[])
+ 	if (!debug && pidfile_path != NULL)
+ 	    pidfile_create(pidfile_path);
+ 
+-	if (listen_sock < 0)
++	if (listen_count == 0)
+ 	{
+ 	    request_timeout = 0;
+ 	}
+@@ -442,7 +443,7 @@ main(int argc, char *argv[])
+ 	server_run();
+     }
+     else
+-	return request_run(listen_sock, 1);
++	return request_run(listen_socks[0], 1);
+ 
+   Exit:
+     syslog(LOG_DEBUG, "terminating");
+--- src/server.c.orig
++++ src/server.c
+@@ -28,9 +28,10 @@
+ 
+ 
+ 
+-int listen_sock = -1;
+-int listen_port = IPPORT_IDENT;
+-int listen_addr = INADDR_ANY;
++int *listen_socks;
++int listen_count = 0;
++char *listen_port = "ident";
++char *listen_addr = NULL;
+ int listen_backlog = 256;
+ 
+ 
+@@ -60,14 +61,30 @@ unlimit_nofile(void)
+ #endif
+ }
+ 
++void
++server_set_socket(int fd)
++{
++    if (listen_socks != NULL) {
++	free(listen_socks);
++	listen_socks = NULL;
++    }
++    if (fd < 0) {
++	listen_count = 0;
++    } else {
++	listen_socks = malloc(sizeof(*listen_socks));
++	listen_socks[0] = fd;
++	listen_count = 1;
++    }
++}
+ 
+ int
+ server_init(void)
+ {
+     static int one = 1;
+     int nofile;
+-    struct sockaddr_in sin;
+-    
++    struct addrinfo hints;
++    struct addrinfo *result, *rp;
++    int s;
+     
+     /*
+     ** Increase the number of available file descriptors
+@@ -77,91 +94,120 @@ server_init(void)
+     if (nofile < 0)
+ 	return -1;
+ 
++    if (listen_count > 0) {
++	return 0;
++    }
+ 
+-    if (listen_sock < 0)
+-    {
+-	listen_sock = socket(AF_INET, SOCK_STREAM, 0);
+-	if (listen_sock < 0)
+-	{
+-	    syslog(LOG_ERR, "socket(AF_INET, SOCK_STREAM) failed: %m");
+-	    return -1;
++    memset(&hints, 0, sizeof(struct addrinfo));
++    hints.ai_family = AF_UNSPEC;
++    hints.ai_socktype = SOCK_STREAM;
++    hints.ai_flags = AI_PASSIVE;
++
++    s = getaddrinfo(listen_addr, listen_port, &hints, &result);
++    if (s != 0) {
++	fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(s));
++	exit(EXIT_FAILURE);
++    }
++
++    for (rp = result; rp != NULL; rp = rp->ai_next) {
++	int sock;
++
++	sock = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
++
++	if (sock < 0) {
++	    syslog(LOG_ERR, "socket() failed: %m");
++	    continue;
+ 	}
+ 
+-	(void) setsockopt(listen_sock, SOL_SOCKET, SO_REUSEADDR,
+-		   (void *) &one, sizeof(one));
++	if (rp->ai_family == AF_INET6) {
++	    if (setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY,
++			   (void *) &one, sizeof(one)) < 0) {
++		syslog(LOG_ERR, "setsockopt(IPV6_V6ONLY,) failed: %m");
++		close(sock);
++		continue;
++	    }
++	}
++
++	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR,
++		       (void *) &one, sizeof(one)) < 0) {
++	    syslog(LOG_ERR, "setsockopt(SO_REUSEADDR) failed: %m");
++	    close(sock);
++	    continue;
++	}
+ 	
+-	memset(&sin, 0, sizeof(sin));
+-	sin.sin_family = AF_INET;
+-	sin.sin_addr.s_addr = htonl(listen_addr);
+-	sin.sin_port = htons(listen_port);
+-
+-	if (bind(listen_sock, (struct sockaddr *) &sin, sizeof(sin)) < 0)
+-	{
+-	    syslog(LOG_ERR, "bind(port=%d) failed: %m",
++	if (bind(sock, rp->ai_addr, rp->ai_addrlen) < 0) {
++	    syslog(LOG_ERR, "bind(port=%s) failed: %m",
+ 		   listen_port);
+-	    return -1;
++	    close(sock);
++	    continue;
+ 	}
+-    }
+ 
+-    /* We do this outside of the 'if' statement to support
+-       some broken 'inetd' daemons... */
+-    if (listen(listen_sock, listen_backlog) < 0)
+-    {
+-	syslog(LOG_ERR, "listen(backlog=%d) failed: %m", listen_backlog);
+-	return -1;
++	if (listen(sock, listen_backlog) < 0) {
++	    syslog(LOG_ERR, "listen(backlog=%d) failed: %m", listen_backlog);
++	    close(sock);
++	    continue;
++	}
++
++	if (fcntl(sock, F_SETFL, O_NONBLOCK) == -1) {
++	    syslog(LOG_ERR, "fcntl() failed: %m");
++	    close(sock);
++	    continue;
++	}
++
++	listen_socks = realloc(listen_socks,
++			       sizeof(listen_socks) * listen_count);
++	listen_socks[listen_count] = sock;
++	listen_count++;
+     }
+ 
+-    return 0;
++    return listen_count ? 0 : 1;
+ }
+ 
+ 
+ int
+ server_run(void)
+ {
+-    struct pollfd ufds[1];
+-    int fd;
++    struct pollfd ufds[listen_count];
++    int i, fd;
+     int timeout = request_timeout <= 0 ? -1 : request_timeout * 1000;
+     int retval;
+ 
+-    if (fcntl(listen_sock, F_SETFL, O_NONBLOCK) == -1)
+-    {
+-	syslog(LOG_ERR, "fcntl() failed: %m");
+-	return -1;
++    for (i = 0; i < listen_count; i++) {
++	ufds[i].fd = listen_socks[i];
++	ufds[i].events = POLLIN;
+     }
+-
+-    ufds[0].fd = listen_sock;
+-    ufds[0].events = POLLIN;
+-    while (1)
+-    {
+-	if ((retval = s_poll(ufds, 1, timeout)) == -1)
+-	{
++    while (1) {
++	if ((retval = s_poll(ufds, listen_count, timeout)) == -1) {
+ 	    syslog(LOG_ERR, "poll() failed: %m");
+ 	    return -1;
+ 	}
+ 	else if (retval == 0)
+ 	    break;
+ 
+-	fd = s_accept(listen_sock, NULL, NULL);
+-	if (fd < 0)
+-	{
+-	    syslog(LOG_ERR, "accept() failed: %m");
+-	    
+-	    switch (errno)
+-	    {
+-	      case EBADF:
+-	      case EMFILE:
+-	      case ENODEV:
+-	      case ENOMEM:
+-	      case ENOTSOCK:
+-	      case EOPNOTSUPP:
+-	      case EWOULDBLOCK:
+-		return -1;
++	for (i = 0; i < listen_count; i++) {
++
++	    if (ufds[i].revents & POLLIN) {
++
++		fd = s_accept(listen_socks[i], NULL, NULL);
++		if (fd < 0) {
++		    syslog(LOG_ERR, "accept() failed: %m");
++
++		    switch (errno) {
++		    case EBADF:
++		    case EMFILE:
++		    case ENODEV:
++		    case ENOMEM:
++		    case ENOTSOCK:
++		    case EOPNOTSUPP:
++		    case EWOULDBLOCK:
++			return -1;
++		    }
++		} else {
++		    request_run(fd, 0);
++		}
+ 	    }
+ 	}
+-
+-	request_run(fd, 0);
+     }
+-
+     if (debug)
+ 	fprintf(stderr, "accept() timed out\n");
+     exit(0);
+--- src/server.h.orig
++++ src/server.h
+@@ -15,13 +15,15 @@
+ #ifndef PIDENTD_SERVER_H
+ #define PIDENTD_SERVER_H
+ 
+-extern int listen_sock;
+-extern int listen_port;
+-extern int listen_addr;
++extern int *listen_socks;
++extern int listen_count;
++extern char *listen_port;
++extern char *listen_addr;
+ extern int listen_backlog;
+ 
+ 
+ extern int server_init(void);
+ extern int server_run(void);
++extern void server_set_socket(int);
+ 
+ #endif
+--- src/sockaddr.h.orig
++++ src/sockaddr.h
+@@ -18,6 +18,7 @@
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <netinet/in.h>
++#include <netdb.h>
+ 
+ #ifdef HAVE_IPV6
+ 

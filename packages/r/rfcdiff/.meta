@@ -1,0 +1,14 @@
+<package name="rfcdiff" project="openSUSE:Factory">
+  <title>Draft Diff Tool</title>
+  <description>The purpose of this program is to compare two versions of an
+internet-draft, and as output produce a diff in one of several
+formats:
+- side-by-side html diff
+- paged wdiff output in a text terminal
+- a text file with changebars in the left margin
+- a simple unified diff output
+
+</description>
+  <devel project="devel:tools" package="rfcdiff"/>
+  <url>https://tools.ietf.org/tools/rfcdiff/index</url>
+</package>

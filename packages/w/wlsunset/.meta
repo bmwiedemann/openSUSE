@@ -1,0 +1,6 @@
+<package name="wlsunset" project="openSUSE:Factory">
+  <title>wlsunset</title>
+  <description>Day/night gamma adjustments for Wayland compositors supporting wlr-gamma-control-unstable-v1</description>
+  <devel project="X11:Wayland" package="wlsunset"/>
+  <url>https://git.sr.ht/~kennylevinsen/wlsunset</url>
+</package>

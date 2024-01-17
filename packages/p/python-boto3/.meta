@@ -1,0 +1,11 @@
+<package name="python-boto3" project="openSUSE:Factory">
+  <title>Python SDK for Amazon Web Services (AWS)</title>
+  <description>Boto3 is the Amazon Web Services (AWS) Software Development Kit (SDK) for Python, which allows Python developers to write software that makes use of services like Amazon S3 and Amazon EC2.
+
+boto3 replaces the previous SDK known as boto and packaged as python-boto. New feature development only takes place in boto3.
+
+For documentation consult the online documentation at
+http://boto3.readthedocs.org/en/latest/
+</description>
+  <devel project="devel:languages:python:aws" package="python-boto3"/>
+</package>

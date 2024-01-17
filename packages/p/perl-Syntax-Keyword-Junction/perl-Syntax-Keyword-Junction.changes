@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Apr 13 18:30:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.003008
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Junction/Changes
+
+  0.003008  2014-07-06 20:08:35-05:00 America/Chicago
+   - Stop using base.pm (Olivier Mengué)
+
+-------------------------------------------------------------------
+Mon Mar 10 06:57:03 UTC 2014 - coolo@suse.com
+
+- updated to 0.003007
+  - Minor typo fixes
+  - Finally really silence warnings above 5.17.10
+  - Remove useless array copy to measurably improve performance (Maxime Soulé)
+  - Make tests pass even if Sub::Exporter is not installed
+  - Set version for Test::More dep (reported by ppisar)
+
+-------------------------------------------------------------------
+Sun Aug  4 15:27:25 UTC 2013 - coolo@suse.com
+
+- initial package 0.003004
+    * created by cpanspec 1.78.07
+

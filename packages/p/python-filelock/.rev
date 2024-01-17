@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>647f4900ff71226b5b15ad780ffadcc0</srcmd5>
+    <version>3.0.4</version>
+    <time>1533292631</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by weblate</comment>
+    <requestid>626927</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f1105214b2dc8a834b2f45e2231c4ec</srcmd5>
+    <version>3.0.10</version>
+    <time>1553888045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.10:
+  * No upstream changelog</comment>
+    <requestid>684351</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>280854f004241543b5e52990c345c76e</srcmd5>
+    <version>3.0.12</version>
+    <time>1560457921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708375</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>750aa949dcee134b67fdc233686b4960</srcmd5>
+    <version>3.0.12</version>
+    <time>1572883826</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743982</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>036239c07dd7c7b7a440248250a34d49</srcmd5>
+    <version>3.7.1</version>
+    <time>1654506603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980904</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5318ebc2d05c8b6f2942593e83fd09a1</srcmd5>
+    <version>3.8.0</version>
+    <time>1665754826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010146</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c70330ce3cd7e00f968e5d07622b1b9f</srcmd5>
+    <version>3.8.2</version>
+    <time>1671128636</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Update to version 3.8.2 
+  * What's Changed
+    Bump pypa/gh-action-pypi-publish from 1.5.1 to 1.6.1 by @dependabot in #178
+    Update the license classifier to &quot;Unlicense&quot; by @jond01 in #180
+- Update to version 3.8.1
+  * What's Changed
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #166
+    link to flufl.lock by @dholth in #167
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #168
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #169
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #170
+    fix BaseFileLock.timeout's getter/setter being obscured by itself by @dearfl in #172
+    Fix mypy fails understanding FileLock by @gaborbernat in #177
+</comment>
+    <requestid>1042822</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>06164916dd7b9b227a9af63a0b17da1a</srcmd5>
+    <version>3.8.2</version>
+    <time>1671787241</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1044032</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea1cbdb51c05da67c10c50dc5343fac3</srcmd5>
+    <version>3.9.0</version>
+    <time>1672927208</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.0:
+  * move to hatchling build backend</comment>
+    <requestid>1055798</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2610a61bbaf1550c7f4f8fac4bec429c</srcmd5>
+    <version>3.9.1</version>
+    <time>1679068927</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.1:
+  * use time.perf_counter instead of time.monotonic</comment>
+    <requestid>1071878</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f680da03871a9743d8ff6c9d6d455887</srcmd5>
+    <version>3.9.1</version>
+    <time>1682193662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081927</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6028a5d7b7a6cef366221c0436a2e469</srcmd5>
+    <version>3.12.0</version>
+    <time>1682782054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083340</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1dae489972fc3f7a4fee3cee296f5779</srcmd5>
+    <version>3.12.1</version>
+    <time>1686576293</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.1:
+  * Add 3.12 support
+  * Fix test_bad_lock_file for other OSes</comment>
+    <requestid>1092285</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>97faa550ea400eb2b612b6ef0831e70e</srcmd5>
+    <version>3.12.2</version>
+    <time>1687379838</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.2:
+  * Restore 'if TYPE_CHECKING' syntax for FileLock definition</comment>
+    <requestid>1094132</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fb15e1f466ea959a83edc44a32d2e597</srcmd5>
+    <version>3.12.3</version>
+    <time>1694200516</time>
+    <user>anag+factory</user>
+    <comment>- Add missing Requires on typing-extensions if &lt; 3.11 
+
+- update to 3.12.3:
+  * Fix import ordering
+  * Exclude dependabot and pre-commit ci from release notes
+  * Create parent directories if necessary
+
+- Update to version 3.8.2
+- Update to version 3.8.0
+  * Ownership moved from @benediktschmitt to the tox-dev organization
+  * Accept path types (like pathlib.Path and pathlib.PurePath) in the</comment>
+    <requestid>1109649</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2180f18d1aae258a9c3c33117e0aaa43</srcmd5>
+    <version>3.13.1</version>
+    <time>1701206313</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.13.1:
+  * Allow users to subclass FileLock with custom keyword
+    arguments
+  * Support reentrant locking on lock file path via optional
+    singleton instance
+  * change typing-extensions to be installed only with the
+    [typing] extra
+
+- Add missing Requires on typing-extensions if &lt; 3.11</comment>
+    <requestid>1129184</requestid>
+  </revision>
+</revisionlist>

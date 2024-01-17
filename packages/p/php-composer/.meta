@@ -1,0 +1,5 @@
+<package name="php-composer" project="openSUSE:Factory">
+  <title>Dependency Management for PHP</title>
+  <description>Composer is a dependency manager tracking local dependencies of your projects and libraries.</description>
+  <devel project="server:php:applications" package="php-composer"/>
+</package>

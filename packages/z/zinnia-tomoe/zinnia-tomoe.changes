@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Jan 10 00:21:26 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call. Wrap description at 70 cols.
+
+-------------------------------------------------------------------
+Sat Jun 30 02:45:57 UTC 2012 - ftake@geeko.jp
+
+- fix build error for SLE 
+
+-------------------------------------------------------------------
+Sat Jul  2 07:32:59 UTC 2011 - ftake@geeko.jp
+
+- Initial import
+ * Upstream version: 0.6.0-20080911 
+

@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ca418a711dedaff8d0fd98651d17b88</srcmd5>
+    <version>1.1</version>
+    <time>1426064308</time>
+    <user>dimstar_suse</user>
+    <comment>somehow interesting benchmark</comment>
+    <requestid>290058</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>994a38fb993fa79bb8ebf78f19c0306d</srcmd5>
+    <version>1.1</version>
+    <time>1551883669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project url
+- Modernise spec file</comment>
+    <requestid>681706</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>788fdf2dc76355a1c97529897f23a47e</srcmd5>
+    <version>1.1</version>
+    <time>1573044910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>740099</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bceb9bde0f3a56ea41b341068e7c88db</srcmd5>
+    <version>1.1</version>
+    <time>1619031585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886885</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b157ce3558381bfc55c55c6249358164</srcmd5>
+    <version>1.2</version>
+    <time>1687272583</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2
+  * Access the memory pages being read, which is more realistic that just filling a shared buffer.
+- Drop no longer relevant fix-rewriters-argcount.patch</comment>
+    <requestid>1093971</requestid>
+  </revision>
+</revisionlist>

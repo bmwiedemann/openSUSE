@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Tue Oct 24 09:37:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.8.0:
+  * Update saml auth login endpoint to dashboard endpoint
+  * Create configuration with 0600 permissions by default
+  * Move config loading to config/config.go
+  * Add missing packages after moving Dapper image to BCI (#340)
+  * Bump Go and Dockerfile versions (#338)
+
+-------------------------------------------------------------------
+Tue Sep 19 04:51:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.7.7:
+  * Add missing packages after moving Dapper image to BCI (#339)
+  * Bump Go and Dockerfile versions
+  * Fix cluster create --import flag (#332)
+  * Revert "Adds cluster-name flag instead of implied (#325)"
+  * Adds cluster-name flag instead of implied (#325)
+- skipping non-existent releases between 2.7.0 and 2.7.7
+- BuildRequire go1.20
+
+-------------------------------------------------------------------
+Sat Dec  3 23:41:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v2.7.0:
+  * Ignore FOSSA failures by @nettlingham in #323
+  * Update error messages and usage for add-node command by @HarrisonWAffel
+    in #322
+
+-------------------------------------------------------------------
+Mon Oct 17 05:14:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.9:
+  * update errors and usage for add-node
+  * Ignore FOSSA failures
+- skipping non-existent release 2.6.8
+
+-------------------------------------------------------------------
+Wed Sep 07 12:17:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.7:
+  * Fix index out of bounds when installing hidden chart
+  * if no servers are configured, state such when running servers ls, switch, or delete
+  * Update dependencies and fix golangci-lint issue (#317)
+  * improve clusters create description
+  * fix the issue that RKE2 or K3S clusters are recognized properly in the output of the 'cluster list' command
+  * Implement drone-plugin-fossa
+- skipping non-existent release 2.6.6
+
+-------------------------------------------------------------------
+Fri May 13 19:42:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.5:
+  * Escape quotes in username, password, responseType for an auth request
+
+-------------------------------------------------------------------
+Fri Mar 25 09:13:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.4:
+  * Transform all keys to JSON format as specified by struct tags for RKE config values
+  * Add s390x arch support
+- versions 2.6.1, 2.6.2 and 2.6.3 are not existing
+
+-------------------------------------------------------------------
+Tue Jan 04 13:25:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.6.0:
+  * Bump Rancher dependency and use nodeName when getting machine
+  * Support SSH for v2 provisioned machines
+  * Write only base-names of files in the checksum file on releases
+
+-------------------------------------------------------------------
+Tue Jan  4 13:21:13 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 2.4.13:
+  * Add c-m- provisioing v2 format to regex for context
+
+-------------------------------------------------------------------
+Tue Jan 04 13:18:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.4.12:
+  * Add support for --set-string flag
+  * Remove rancher/types dependency and update imports
+  * go mod tidy
+  * Cache kubeconfig used for kubectl commands
+
+-------------------------------------------------------------------
+Tue Jun  1 20:34:05 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
+
+- initial version of package rancher-cli
+  - upstream package name is cli
+  - executable is named rancher-cli

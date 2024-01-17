@@ -1,0 +1,21 @@
+SUSE specific patch that hardens the auth_pam_tool setuid-root binary.
+Matthias Gerstner wants it as a prerequisite for allowing auth_pam_tool
+setuid-root binary in [bsc#1160285].
+
+Index: mariadb-10.4.12/plugin/auth_pam/auth_pam_base.c
+===================================================================
+--- mariadb-10.4.12.orig/plugin/auth_pam/auth_pam_base.c
++++ mariadb-10.4.12/plugin/auth_pam/auth_pam_base.c
+@@ -149,6 +149,12 @@ static int pam_auth_base(struct param *p
+   const char *service = info->auth_string && info->auth_string[0]
+                           ? info->auth_string : "mysql";
+ 
++  if( strcmp(service, "mysql") != 0 )
++  {
++	  PAM_DEBUG((stderr, "PAM: rejecting non-standard PAM service %s\n", service));
++	  return CR_ERROR;
++  }
++
+   param->ptr = param->buf + 1;
+ 
+   PAM_DEBUG((stderr, "PAM: pam_start(%s, %s)\n", service, info->user_name));

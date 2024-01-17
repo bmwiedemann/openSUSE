@@ -1,0 +1,4 @@
+addFilter(".*devel-file-in-non-devel-package.*/usr/share/polari/gir-1.0/Polari-1.0.gir")
+addFilter(".*desktopfile-without-binary.*/usr/share/applications/org.gnome.Polari.desktop gapplication")
+# We are not providing the Obsoleted typelib as it is now private, hence we can not provide it no matter how much rpmlint wants us to.
+addFilter("W: obsolete-not-provided typelib-1_0-Polari-1_0")

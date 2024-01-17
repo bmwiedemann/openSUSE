@@ -1,0 +1,9 @@
+<package name="python-pytest-instafail" project="openSUSE:Factory">
+  <title>Pytest Plugin to Show Failures Instantly</title>
+  <description>pytest-instafail is a plugin for py.test that shows failures and errors instantly instead of waiting until the end of test session.
+
+
+</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-instafail"/>
+  <url>https://github.com/jpvanhal/pytest-instafail</url>
+</package>

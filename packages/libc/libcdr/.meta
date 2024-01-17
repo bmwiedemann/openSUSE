@@ -1,0 +1,5 @@
+<package name="libcdr" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="libcdr"/>
+</package>

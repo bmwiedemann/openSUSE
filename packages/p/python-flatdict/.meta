@@ -1,0 +1,5 @@
+<package name="python-flatdict" project="openSUSE:Factory">
+  <title>python-flatdict</title>
+  <description>Python module for interacting with nested dicts</description>
+  <devel project="devel:languages:python" package="python-flatdict"/>
+</package>

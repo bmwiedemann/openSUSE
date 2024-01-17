@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>68b5d5de14c2deb7614edf70551e6a17</srcmd5>
+    <version>1.0.4</version>
+    <time>1336471449</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115452</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>68b5d5de14c2deb7614edf70551e6a17</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184363</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>68b5d5de14c2deb7614edf70551e6a17</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2554544b21c23a38815cd8baff2e8d39</srcmd5>
+    <version>1.0.5</version>
+    <time>1372138726</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.0.5 (forwarded request 180676 from Zaitor)</comment>
+    <requestid>180708</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2554544b21c23a38815cd8baff2e8d39</srcmd5>
+    <version>1.0.5</version>
+    <time>1379665063</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>81e8e9b6af29bcdf92961b5383a80b9d</srcmd5>
+    <version>1.0.5</version>
+    <time>1391770597</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to X11 in specfile</comment>
+    <requestid>221095</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>81e8e9b6af29bcdf92961b5383a80b9d</srcmd5>
+    <version>1.0.5</version>
+    <time>1409303748</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>224db209236c4e213776978dc6cd9ddd</srcmd5>
+    <version>1.0.6</version>
+    <time>1524144489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * Drop CRAY/WORD64 support (unifdef -UCRAY -UWORD64)
+  * Replace TXT16 with XChar2b inline
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Get rid of some extraneous ; at the end of C source lines
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>593594</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d9cf25644972beb5a6204040aba8d368</srcmd5>
+    <version>1.1.0</version>
+    <time>1657559398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * This release adds two small new features - a &quot;Reset&quot; button to reset
+    all the selections back to the initial values, and when given the &quot;-scaled&quot;
+    option fetch the actual screen resolution and add that to the list of
+    available resolutions for the resX and resY menus.</comment>
+    <requestid>988373</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2c96564a0ae1698108c3d4b70798df46</srcmd5>
+    <version>1.1.0</version>
+    <time>1661020148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998305</requestid>
+  </revision>
+</revisionlist>

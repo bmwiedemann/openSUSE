@@ -1,0 +1,6 @@
+<package name="popeye" project="openSUSE:Factory">
+  <title>popeye</title>
+  <description>A Kubernetes cluster resource sanitizer</description>
+  <devel project="devel:kubic" package="popeye"/>
+  <url>https://github.com/derailed/popeye</url>
+</package>

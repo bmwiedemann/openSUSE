@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Fri Nov 17 07:31:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.4.8: 
+  * Fix name mangling with dependent proto files (#892, #899)
+  * Fix initializer macros for custom callback datatype (#806)
+  * Use UTF-8 encoding for generated files irrespective of locale (#868)
+  * Add integer size overrides for fixed width types (#897)
+  * Add ability to specify size of generated enums (#867)
+  * Provide define for largest message in file (#893)
+  * Automatically break circular dependencies (#881)
+  * Use static_assert keyword on MSVC in C89 mode (#843)
+  * Fix comments generation for submessages (#788)
+  * Fix handling of spaces in arguments passed through protoc (#810)
+  * Fix problems with multiple files and mangle_names option (#783, #820)
+  * Fix generator error when using M_STRIP_PACKAGE without package name (#795)
+  * Fix compilation error with fixed size array and FT_POINTER (#630)
+  * Fix wrong format in Python Poetry project file (#811)
+  * Fix unnecessary generator message when using --quiet (#831)
+  * Fix enum_to_string with C++ (#838)
+  * Fix /* */ inside .proto file comment
+  * Workaround python-protobuf version issues (#787)
+  * Safeguard substraction in pb_read() with custom streams (#697)
+  * Always include pb_release() as function, instead of macro. (#802)
+  * Allow using = instead of : with generator option -s
+  * Allow specifying include format without special characters (#810)
+  * Allow including headers from inside of extern C (#814)
+  * Add option NANOPB_PB2_TEMP_DIR to store nanopb_pb2.py in a temporary dir (#601)
+  * Add compile-time error message for when PB_FIELD_32BIT is needed (#680, #827)
+  * Add --c-style command line option for naming style (#199, #533, #791)
+  * Add --protoc-opt to nanopb_generator.py (#628)
+  * Add ENUMTYPE convenience macros (#803)
+  * Generator: keep order of messages when possible
+
+-------------------------------------------------------------------
+Mon Feb  6 16:43:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Revert back to 0.4.6 since 0.4.7 breaks nanopb_generator.py thus breaking
+  some packages (e.g. Criterion: https://github.com/nanopb/nanopb/issues/845)
+
+-------------------------------------------------------------------
+Mon Jan 30 09:22:09 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Revert fix-missing-file.patch.
+
+-------------------------------------------------------------------
+Mon Jan 30 07:14:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-missing-file.patch (generator/proto/__init__.py).
+
+-------------------------------------------------------------------
+Sat Jan 28 21:06:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.7:
+  * Fix comments generation for submessages
+  * Fix handling of spaces in arguments passed through protoc
+  * Fix problems with multiple files and mangle_names option
+  * Fix generator error when using M_STRIP_PACKAGE without package name
+  * Fix compilation error with fixed size array and FT_POINTER
+  * Fix wrong format in Python Poetry project file
+  * Fix unnecessary generator message when using --quiet
+  * Fix enum_to_string with C++
+ Fix /* */ inside .proto file comment
+  * Workaround python-protobuf version issues
+  * Safeguard substraction in pb_read() with custom streams
+  * Always include pb_release() as function, instead of macro.
+ Allow using = instead of : with generator option -s
+  * Allow specifying include format without special characters
+  * Allow including headers from inside of extern C
+  * Add option NANOPB_PB2_TEMP_DIR to store nanopb_pb2.py in a temporary dir
+  * Add compile-time error message for when PB_FIELD_32BIT is needed
+  * Add --c-style command line option for naming style
+  * Add --protoc-opt to nanopb_generator.py
+  * Add ENUMTYPE convenience macros
+  * Add Bazel build rules
+
+-------------------------------------------------------------------
+Mon Jan  9 06:59:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add 'PB_ENABLE_MALLOC=1' so that we can build Criterion.
+
+-------------------------------------------------------------------
+Mon Aug 29 11:38:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.6
+  * Fix passing of error message from substream callback
+  * Fix regression in 0.4.3 where generator did not find all
+    dependencies
+  * Fix double-definition errors with size_union
+  * Fix generator error with same inner message name
+  * Fix infinite recursion in generator/protoc script
+  * Use C11 static assert mechanism by default
+  * Support --proto-path as alias to -I
+  * Use memcpy instead of iterating on buf_read/write
+  * Add generator support for PlatformIO
+  * Improve handling of varint overflows
+  * Improve optimization for little-endian platforms
+
+-------------------------------------------------------------------
+Wed Oct  6 03:10:34 UTC 2021 - Jonathan Papineau <jonathan@jontech.app>
+
+- Install nanopb also under /usr/bin/nanopb_generator.py - this fixes an
+  error when using with protoc
+
+-------------------------------------------------------------------
+Wed Apr 14 20:12:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.4.5:
+  * Fix CVE-2021-21401: Release of Invalid Pointer or Reference
+  * Fix unordered field numbers inside oneof causing fields to be ignored
+  * Fix pb_decode() not initializing fields inside oneof
+  * Fix compiler errors with complex oneof hierarchy and sizeof()
+  * Fix descriptor width calculation for 64-bit types
+  * Fix compiler error in generated initializer for submessage callback
+  * Fix duplicate union definition in generated file
+  * Add support for including comments from .proto file
+- Update to 0.4.4:
+  * Fix CVE-2020-26243, memory leak
+  * Fix generator error when oneof contains a single unresolved field size
+  * Fix unsigned enums not working correctly inside OneOf
+  * Fix recursion depth exceeded error in generator
+  * Add support for proto3 optional fields introduced in protoc 3.12
+  * Add better error message when enum type is not found
+  * Allow specifying descriptorsize on field level also
+  * Allow multiple targets to be created by calling NANOPB_GENERATE_CPP()
+- Update to 0.4.3
+  * Fix issue with unknown message sizes being referred inside oneof
+    encoded size calculation
+  * Fix problem with [default=xxxx, (nanopb).proto3=true] field
+    option combination
+  * Better support C++ types in generated structs
+  * Use grpcio protoc
+  * Make pb_decode_varint32() reject overlong varint encodings.
+  * Performance optimizations
+  * !! NOTE: version 0.4.3 changes layout of pb_msgdesc_t. It requires
+    recompiling .pb.c files and thus breaks ABI compatibility.
+- Enabled build of generator (requires Python3)
+
+-------------------------------------------------------------------
+Wed Sep 30 08:18:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.4.2:
+  * Fix buffer overflow when encoding bytes with size set to 65535 (#547, GHSA-3p39-mfxg-hrq4)
+  * Fix segfault with pointer fields and proto3_singular_msgs = true. (#504,#505)
+  * Fix Windows 10 temp file handling (#486)
+  * Fix macro name conflicts (ATMEGA32U4 UENUM and more) (#522)
+  * Fix generator error with nested messages and default values (#487)
+  * Fix nanopb_generator exception on enums with aliases (#535)
+  * Fix compile error when struct members are called X or a (#492)
+  * Fix sizeof(union ...) fallback not compiling with C++ (#415, #494)
+  * Fix "missing required field" error with submessage callback (#544)
+  * Fix field descriptor sizing with submsg_callback option (#545)
+  * Fix protoc calling on Python 2 (#503)
+  * Fix handling of varying NaN representations in PB_CONVERT_DOUBLE_FLOAT (#543)
+  * Fix clang undefined behavior sanitizer errors.
+  * Change generator to use Python 3 by default (#441, #509)
+  * Binary packages updated to use Python 3 and grpcio-tools
+  * Add support for infinity and nan floating-point defaults (#530, #538)
+  * Add generator option sort_by_tag (#542)
+  * Add type_override option to override type defined in .proto (#497)
+  * Set proto2 enum fields to first value when no default is given, even if nonzero (#532,#539)
+  * Include protoc-gen-nanopb in path in protoc wrapper script
+  * Properly pass error status from protoc wrapper when calling binary protoc
+  * Generator: pass --include_imports when calling protoc (#494)
+  * Create intermediate directories when writing files to relative path (#512)
+  * Add current directory to include path for protoc (#499)
+  * Update readme to use nanopb_generator.py directly
+  * Regression test for proto3 incorrectly considered empty (#504)
+  * CMake: change package name to Nanopb for cmake 3.17 compatibility (#506)
+  * CMake: remove find_package(PythonInterp) (#508)
+  * CMake: use split --nanopb_opt only on protoc >= 3.6 (#515)
+  * CMake: Relax python version spec, allowing Python3. (#534)
+  * Swift package manager (#549)
+  * Rename BUILD as BUILD.bazel (#537
+
+-------------------------------------------------------------------
+Mon Mar  9 13:00:49 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Update to version 0.4.1:
+  * Fix for CVE-2020-5235 - porential exploitable out of memory
+    condition.
+  * Fixes for AVR builds and tests.
+
+-------------------------------------------------------------------
+Thu Jan 30 13:39:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- As we download the tags directly no need for services and we
+  can fetch it using URL paths
+- Do not build generators as those require python2 and we are
+  removing that from the dsitribution
+- Update to 0.4.0:
+  * Make nanopb_generator automatically compile .proto files (#462)
+  * Allow installing as Python package from pip (#460)
+  * Use protoc from grpcio-tools Python package if available (#463)
+  * Change proto3 message types to be optional (#308, #452)
+  * Add pb_decode_ex(), pb_encode_ex() functions.
+  * Automatically rebuild nanopb_pb2.py
+  * Use plugin.proto that comes with python-protobuf (#234)
+
+-------------------------------------------------------------------
+Tue Dec 17 13:41:21 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 0.3.9.4:
+  * Publishing nanopb-0.3.9.4
+  * Update changelog
+  * Add test for PB_ENCODE_ARRAYS_UNPACKED
+  * Fix "unused variable" warning when using PB_ENCODE_ARRAYS_UNPACKED
+  * Fix undefined behavior with bool fields (#434)
+  * Make fuzztest detect invalid bool values (#434)
+  * .gitignore: don't ignore generator-bin files (#419)
+  * Don't call stream callback with count=0 (#421)
+  * network_server example: Detect count=0 in read_callback() (#421)
+  * Add scons package to travis rules, for build automation
+  * Introduce new compile time flag: PB_ENCODE_ARRAYS_UNPACKED
+  * Add migration note about enum min/max
+  * Use min/max enum value for min/max
+  * Publishing nanopb-0.3.9.3
+  * Fix generator error with mangle_names option (#380)
+  * Add testcase for #380
+  * Fix incorrect PB_STATIC_ASSERT for bytes inside oneof (#363)
+  * Add testcase for #363
+  * Generator: Allow comma separated options in plugin mode (#343)
+  * Fix encoding of fixed size arrays inside proto3 submessages (#376)
+  * Add regression test for issue #376
+
+-------------------------------------------------------------------
+Mon Jan  7 15:47:22 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Enable PB_FIELD_16BIT setting to add support for tag numbers >
+  255 and fields larger than 255 bytes.
+
+-------------------------------------------------------------------
+Mon Jan  7 14:32:19 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Add nanopb-source package - some Go programs using gRPC need
+  protobuf definitions which are included inside the source code,
+  but are not included in the devel package.
+
+-------------------------------------------------------------------
+Mon Dec 10 08:53:57 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Update to version 0.3.9.2:
+  * Update changelog & authors
+  * Fix splint test error (#359)
+  * Clarify the usage of callback fields inside oneof sections in the docs
+  * cmake: Include CMAKE_INSTALL_LIBDIR in CMAKE_INSTALL_CMAKEDIR
+  * cmake: Allow to build a shared library
+  * Made some changes for Error Output.
+  * Update README.md
+  * Further test fail fix for Windows
+
+-------------------------------------------------------------------
+Wed Oct 24 12:52:36 UTC 2018 - Michał Rostecki <mrostecki@suse.de>
+
+- Initial release

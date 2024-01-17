@@ -1,0 +1,194 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81c509fda4612a9713197fa29058a733</srcmd5>
+    <version>53.4</version>
+    <time>1637618674</time>
+    <user>dimstar_suse</user>
+    <comment>Renaming the package according to PyPI</comment>
+    <requestid>933135</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f3801a6e81d0f73cab11a5d5e30c08c</srcmd5>
+    <version>53.4</version>
+    <time>1638918009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936290</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d3959b7cf7244edcb290c28abdee4a2b</srcmd5>
+    <version>53.4</version>
+    <time>1639855809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941308</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fe375f014e25d1801287724c5ebb9de0</srcmd5>
+    <version>53.4</version>
+    <time>1640617632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942650</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a03c8d2cb9cca0e9a385a202416e003b</srcmd5>
+    <version>54.0</version>
+    <time>1642455273</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>947061</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dffea4b7d8ff6176c62b032539269a88</srcmd5>
+    <version>55.0</version>
+    <time>1652717336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 55.0 
+  Python 3.7 is now the minimum requirement
+  - Features
+    - #1534: Support word-break: break-all
+    - #489, #1619: Support column breaks
+    - #1553: Allow reproducible PDF generation
+    - #1547: Handle break-inside: avoid on tr tags
+  - Bugfixes
+    - #1626, 3802f88: Fix the vertical position and available height of absolute boxes
+    - 9641098, e5e6b88: Minor fixes for multi-column layout
+    - 0fcc7de: Don’t stop rendering SVG when CSS parsing fails
+    - #1636: Fix sequential footnotes that could disappear when overflowing
+    - #1637: Fix position of absolute boxes with right-to-left direction
+    - #1641: Fix relative paths for SVG files stored as data URLs
+    - #1007, #1524: Handle inherit in shorthand properties
+    - #1539, #1541: Space out no-repeat patterns
+    - #1554: Avoid invalid PDF operators when drawing SVG text
+    - #1564, #1566, #1570: Don’t output footnotes before their call sites
+    - #1020, #1597: Prevent infinite loops in multi-column layout
+    - #1512, #1613: Fix position of absolute boxes in right-to-left contexts
+    - #1093: Draw borders around absolute replaced boxes
+    - #984, #1604: Fix skip stacks for columns
+    - #1621: Better support of nested text-decoration properties
+    - fe1f3d9: Fix absolute blocks in lines
+    - 4650b70: Clear adjoining margins when a container’s child doesn’t fit
+    - #1588 Support position: absolute in footnotes
+    - #1586 Fix discarded text-align values
+    - #1575: Always store parent blocks children as lists
+    - #1574, #1559: Fix float rounding errors
+    - #1571: Ignore unknown glyphs
+    - #1561, #1562: Fix line break when breaks occur between a nbsp and an inline block
+    - #1560: Always set the child index
+    - #1558: Fix patterns with use tags
+    - #1540, #1239: Handle absolute children in running elements
+    - #1538: Handle invalid values in text-align
+    - #1536: Handle absolute flex boxes
+  - Performance
+    - #1548: Improve tests speed
+    - 3b0ae92, #1457: Improve fonts management
+    - #1597: Improve column layout speed
+    - #1587, #1607, #1608: Cache ch and ex units calculations
+</comment>
+    <requestid>977518</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2310850bc7d8f013c7d9feffed9840f9</srcmd5>
+    <version>56.1</version>
+    <time>1662740858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 56.1 
+  * Support format 5 for bitmap glyphs
+  * #1666: Fix reproducible PDF generation with embedded images
+  * #1668: Fix @page:nth() selector
+  * #1674: Follow max-height on footnot area, with financial support from Code &amp; Co.
+  * #1678: Fix gradients with opacity set</comment>
+    <requestid>1001923</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed00b3f7aba4207a197862130f88d4ff</srcmd5>
+    <version>59.0</version>
+    <time>1686753005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 59.0:
+  * New features:
+    + a4fc7a1: Support image-orientation
+  * Dependencies:
+    + #1754: Pillow 9.1.0 is now needed
+  * Bug fixes:
+    + #1864: Handle overflow for svg and symbol tags in SVG images
+    + #1867: Remove duplicate compression of attachments
+    + d0ad5c1: Override use tag children instead of drawing their references
+    + #1874: Drawn underline and overline behind text
+    + #1822, #1823: Fix vertical positioning for absolute replaced elements
+    + #1807: Don’t crash when out-of-flow box is split in out-of-flow parent
+    + #1806: Don’t crash when fixed elements aren’t displayed yet in
+      aborted line
+    + #1809: Fix background drawing for out-of-the-page transformed boxes
+    + #1764: Use reference instead of stream for annotation appearance stream
+    + #1783: Fix multiple font weights for @font-face declarations
+    + #1756: Fix rem font size for SVG images
+    + #1755: Keep format when transposing images
+    + #1753: Don’t use deprecated read_text function when files is available
+    + #1741: Generate better manpage
+    + #1747: Correctly set target counters in pages’ absolute elements
+    + #1748: Always set font size when font is changed in line
+    + #1739: Set baseline on all flex containers
+    + #1740: Don’t crash when currentColor is set on root svg tag
+    + #1718: Don’t crash with empty bitmap glyphs
+    + #1736: Always use the font’s vector variant when possible
+    + #1662: Use a stable key to store stream fonts
+    + #1733: Don’t remove attachments when adding internal anchors
+  * Performance:</comment>
+    <requestid>1093006</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>661be827918704ae3829033351ca036b</srcmd5>
+    <version>59.0</version>
+    <time>1687272499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093786</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f22f87a778256788592ca7515869022d</srcmd5>
+    <version>60.2</version>
+    <time>1704281065</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 60.2:
+  * Fix SVG markers size, position and drawing
+  * Draw background behind absolutely positioned replaced boxes
+  * Don’t crash with bitmap fonts with no &quot;glyf&quot; table
+  * Improve SVG text-anchor attribute
+  * Fix crash caused by wrong UTF-8 indices
+  * Print form fields
+  * Add support for textLength and lengthAdjust in SVG text
+    elements
+  * Handle &lt;wbr&gt; tag
+  * Handle y offset of glyphs
+  * Add a --timeout option
+  * Bug fixes:
+  * Fix footnote-call displayed incorrectly for some fonts
+  * Fix page-margin boxes layout algorithm
+  * Fix IndexError when rendering PDF version 1.4
+  * Apply text transformations to first-letter pseudo elements
+  * Avoid footnote appearing before its call
+  * Fix balance before &quot;column-span: all&quot;
+  * Only draw required glyph with OpenType-SVG fonts
+  * Don’t draw clipPath when defined after reference
+  * Don’t ignore min-width when computing cell size
+  * Fix named pages inheritance
+  * Avoid page breaks caused by children of overflow hidden boxes
+  * Use bleed area for page’s painting area
+  * Use margin box of children to define available width for
+    leaders
+
+- Update to version 56.1
+- Update to 55.0</comment>
+    <requestid>1135635</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4ca3fc9657a94b4308663ca9326cb7d6</srcmd5>
+    <version>60.2</version>
+    <time>1705003537</time>
+    <user>anag+factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1138102</requestid>
+  </revision>
+</revisionlist>

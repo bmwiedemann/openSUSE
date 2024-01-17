@@ -1,0 +1,9 @@
+<package name="blobby" project="openSUSE:Factory">
+  <title>Blobby Volley 2</title>
+  <description>Blobby Volley is one of the most popular arcade volley ball games.
+
+
+ </description>
+  <devel project="games" package="blobby"/>
+  <url>http://blobby.sourceforge.net</url>
+</package>

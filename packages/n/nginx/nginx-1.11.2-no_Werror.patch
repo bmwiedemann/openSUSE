@@ -1,0 +1,26 @@
+Index: nginx-1.11.2/auto/cc/gcc
+===================================================================
+--- nginx-1.11.2.orig/auto/cc/gcc
++++ nginx-1.11.2/auto/cc/gcc
+@@ -166,7 +166,7 @@ esac
+ 
+ 
+ # stop on warning
+-CFLAGS="$CFLAGS -Werror"
++#CFLAGS="$CFLAGS -Werror"
+ 
+ # debug
+ CFLAGS="$CFLAGS -g"
+Index: nginx-1.11.2/auto/cc/icc
+===================================================================
+--- nginx-1.11.2.orig/auto/cc/icc
++++ nginx-1.11.2/auto/cc/icc
+@@ -111,7 +111,7 @@ case "$NGX_ICC_VER" in
+ esac
+ 
+ # stop on warning
+-CFLAGS="$CFLAGS -Werror"
++#CFLAGS="$CFLAGS -Werror"
+ 
+ # debug
+ CFLAGS="$CFLAGS -g"

@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>52f07907568b545ed209924a1458b3bc</srcmd5>
+    <version>2.4.1</version>
+    <time>1515623434</time>
+    <user>dimstar_suse</user>
+    <comment>dependencies for kubic</comment>
+    <requestid>555940</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>306da0fdbaa37a56cd774004bf63fed8</srcmd5>
+    <version>2.4.2</version>
+    <time>1518281983</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>574924</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7ecf75244dcb0bb9482527c63a64546</srcmd5>
+    <version>2.4.3</version>
+    <time>1531946915</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620989</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>02391ceb76b92c7b98e6c23b6d01f91a</srcmd5>
+    <version>2.4.4</version>
+    <time>1543224498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651092</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78d298cbbbfb214c9f0d37f6bfce2a40</srcmd5>
+    <version>2.4.7</version>
+    <time>1589197225</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802327</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>31f4ce9fd6ce83fdd83a93296d0127ed</srcmd5>
+    <version>2.4.8</version>
+    <time>1601919006</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838022</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>afb2a922cd3b5b378e69727bec912050</srcmd5>
+    <version>2.4.10</version>
+    <time>1624626082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901966</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a78217ae30d5704d7d300e3dc861e41</srcmd5>
+    <version>2.4.12</version>
+    <time>1665591903</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.4.12
+ see installed ChangeLog.rdoc
+  == Version 2.4.12 (2022-10-03)
+  
+  * Do not include DelayedIO objects when :onlyif is false.
+  
+  == Version 2.4.11 (2022-09-27)
+  
+  * Make DelayedIO work with :onlyif.  Reported by Spencer McIntyre.
+  
+</comment>
+    <requestid>1010048</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea5ab61607c7968cb2c6fec64c730927</srcmd5>
+    <version>2.4.13</version>
+    <time>1667150921</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.4.13
+ see installed ChangeLog.rdoc
+  == Version 2.4.13 (2022-10-16)
+  
+  * Relax over-strict parameter naming requirements.  Requested by
+    vinayak3qilabs.
+  
+</comment>
+    <requestid>1032133</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7807f613c231cf342c78048a75850bb8</srcmd5>
+    <version>2.4.14</version>
+    <time>1670954188</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042624</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a5306da9719f4e15871cc76c920821f6</srcmd5>
+    <version>2.4.15</version>
+    <time>1699994603</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1122992</requestid>
+  </revision>
+</revisionlist>

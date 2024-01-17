@@ -1,0 +1,10 @@
+<package name="pgbackrest" project="openSUSE:Factory">
+  <title>simple and reliable backup restore system for PostgreSQL</title>
+  <description>https://pgbackrest.org
+
+pgBackRest aims to be a simple, reliable backup and restore system that can seamlessly scale up to the largest databases and workloads, written now in C.
+
+pgBackRest implements all backup features internally and uses a custom protocol for communicating with remote systems.
+</description>
+  <devel project="server:database:postgresql" package="pgbackrest"/>
+</package>

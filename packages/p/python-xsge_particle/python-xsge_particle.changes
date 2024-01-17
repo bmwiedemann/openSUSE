@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri Dec 29 09:01:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * relicensed to LGPL
+
+-------------------------------------------------------------------
+Wed May 26 04:46:54 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0:
+  * Drop support for Python 2.
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
+Thu Jul 26 15:14:00 UTC 2018 - jengelh@inai.de
+
+- Trim redundancies from description.
+
+-------------------------------------------------------------------
+Tue Jul 24 12:56:40 UTC 2018 - mardnh@gmx.de
+
+- Correct name of the changes file
+
+-------------------------------------------------------------------
+Sun Jul 22 11:52:28 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 0.1

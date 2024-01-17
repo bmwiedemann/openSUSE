@@ -1,0 +1,6 @@
+<package name="openhantek" project="openSUSE:Factory">
+  <title>Software for Hantek DSO6022 USB digital signal oscilloscopes</title>
+  <description>OpenHantek6022 is a free software for Hantek DSO6022 USB digital signal oscilloscopes that is actively developed on github.com/OpenHantek/OpenHantek6022 - but only for Hantek 6022BE/BL and compatible scopes (Voltcraft, Darkwire, Protek, Acetech, etc.).</description>
+  <devel project="hardware" package="openhantek"/>
+  <url>https://github.com/OpenHantek/OpenHantek6022</url>
+</package>

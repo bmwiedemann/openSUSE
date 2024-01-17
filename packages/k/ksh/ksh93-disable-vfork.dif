@@ -1,0 +1,11 @@
+--- src/lib/libast/features/lib.orig	2014-11-19 13:03:58.009305098 +0000
++++ src/lib/libast/features/lib	2014-11-19 13:23:05.010183379 +0000
+@@ -221,7 +221,7 @@ tst	lib_vfork unistd.h stdlib.h vfork.h
+ 			_exit(2);
+ 		}
+ 		status = 1;
+-		_exit(wait(&status) < 0 || status != 0);
++		_exit(wait(&status) < 0 || status != 0 || 1);
+  	}
+ }end
+  

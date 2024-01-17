@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Tue Nov 14 04:26:56 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.20.0:
+  * Implementation of Active CMAES (gh#mlpack/ensmallen#367).
+  * LBFGS: avoid generation of NaNs, and add checks for finite
+    values (gh#mlpack/ensmallen#368).
+  * Fix CNE test tolerances (gh#mlpack/ensmallen#360).
+  * Rename SCD optimizer, to CD (gh#mlpack/ensmallen#379).
+- Build and run tests.
+
+-------------------------------------------------------------------
+Fri Mar  3 09:13:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.1:
+  * Avoid deprecation warnings in Armadillo 11.2+  
+
+-------------------------------------------------------------------
+Sun Dec  4 21:16:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * Added DemonSGD and DemonAdam optimizers
+  * Fix bug with Adam-like optimizers not resetting when `resetPolicy` is `true`.
+  * Add Yogi optimizer
+  * Add AdaBelief optimizer
+  * Add AdaSqrt optimizer
+  * Bump check for minimum supported version of Armadillo
+  * Update Catch2 to 2.13.8
+  * Fix epoch timing output
+  * Accelerate SGD test time
+  * Fix potential infinite loop in CMAES
+  * Fix SCD partial gradient test
+  * Add gradient value clipping and gradient norm scaling callback
+  * Remove superfluous CMake option to build the tests
+  * Bump minimum Armadillo version to 9.800
+  * Update Catch2 to 2.13.7
+  * Remove redundant template argument for C++20 compatibility
+  * Fix MOEAD test stability
+ 
+-------------------------------------------------------------------
+Sun Sep 26 21:21:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.17.0
+  * CheckArbitraryFunctionTypeAPI extended for MOO support
+  * Refactor NSGA2
+  * Add MOEA-D/DE Optimizer
+  * Add Das-Dennis weight initialization method
+  * Add Dirichlet Weight Initialization
+
+-------------------------------------------------------------------
+Sat Mar 27 12:40:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Fri Mar 26 08:43:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.16.2
+  * See: https://ensmallen.org/docs.html#ensmallen-2162-severely-dented-can-of-polyurethane
+  * and skipped 2.16.1: https://ensmallen.org/docs.html#ensmallen-2161-severely-dented-can-of-polyurethane
+
+-------------------------------------------------------------------
+Wed Feb 17 12:31:07 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.16.0
+  * See: https://ensmallen.org/docs.html#ensmallen-2160-severely-dented-can-of-polyurethane
+- Drop _service file
+- Fix cmake install
+- Clean-up spec file
+- Enable tests
+
+-------------------------------------------------------------------
+Sat Dec  5 16:40:16 UTC 2020 - Markus Kolb <novell@tower-net.de>
+
+- Update to version 2.15.1
+  * See https://ensmallen.org/docs.html#ensmallen-2151-why-cant-i-manage-to-grow-any-plants
+
+-------------------------------------------------------------------
+Fri Jul  3 16:23:38 UTC 2020 - Markus Kolb <novell@tower-net.de>
+
+- Update to version 2.12.1 
+
+-------------------------------------------------------------------
+Wed Mar 11 22:08:28 UTC 2020 - Markus Kolb <novell@tower-net.de>
+
+- Update to version 2.11.4
+  * Updated 02-disable-ensmallen-test.patch
+  * There is /usr/share/cmake/ensmallen
+
+-------------------------------------------------------------------
+Mon Nov  4 21:37:05 UTC 2019 - Markus Kolb <novell@tower-net.de>
+
+- Release ensmallen 2.10.3
+

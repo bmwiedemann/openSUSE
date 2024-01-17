@@ -1,0 +1,5 @@
+<package name="skelcd-openSUSE" project="openSUSE:Factory">
+  <title>Skeleton for openSUSE OSS Media Sets</title>
+  <description>Internal package only, used for openSUSE OSS Media sets</description>
+  <devel project="system:install:head" package="skelcd-openSUSE"/>
+</package>

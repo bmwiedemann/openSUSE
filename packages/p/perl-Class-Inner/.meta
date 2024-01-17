@@ -1,0 +1,7 @@
+<package name="perl-Class-Inner" project="openSUSE:Factory">
+  <title>A perlish implementation of Java like inner classes</title>
+  <description>Yet another implementation of an anonymous class with per object
+overrideable methods, but with the added attraction of sort of working
+dispatch to the parent class's method.</description>
+  <devel project="devel:languages:perl" package="perl-Class-Inner"/>
+</package>

@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5f6e208d52493aabea31e7d4be11066</srcmd5>
+    <version>5.0.10</version>
+    <time>1644435526</time>
+    <user>dimstar_suse</user>
+    <comment>configuration tool for fcitx5</comment>
+    <requestid>949615</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f132792793ef6e8b5d6b90aa00ef06a1</srcmd5>
+    <version>5.0.10</version>
+    <time>1644617260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953338</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>49cea8bf58c9fcff7aea2848cc3d83ef</srcmd5>
+    <version>5.0.12</version>
+    <time>1647101735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961299</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3b9e078b1a864d12c32961ee6bceb47</srcmd5>
+    <version>5.0.14</version>
+    <time>1658162015</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>989553</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07611176a53a3e7600caeaf4c325dee5</srcmd5>
+    <version>5.0.15</version>
+    <time>1663850992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005232</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>26e80c2916595b5de5825dc5c0f3aff5</srcmd5>
+    <version>5.0.16</version>
+    <time>1669549993</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1038424</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dd6a69c257220d114ce5621fee6efc75</srcmd5>
+    <version>5.0.17</version>
+    <time>1684846435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088355</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dcd3d9c5406e2344134e7953d2c9d9ec</srcmd5>
+    <version>5.1.0</version>
+    <time>1692611087</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104888</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>59322e7a353ae1f7dc4def2bb475c277</srcmd5>
+    <version>5.1.1</version>
+    <time>1696451476</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114923</requestid>
+  </revision>
+</revisionlist>

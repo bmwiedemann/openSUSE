@@ -1,0 +1,18 @@
+Index: lmms-1.2.1/cmake/modules/DetectMachine.cmake
+===================================================================
+--- lmms-1.2.1.orig/cmake/modules/DetectMachine.cmake	2020-03-28 13:53:04.556153597 +0200
++++ lmms-1.2.1/cmake/modules/DetectMachine.cmake	2020-03-28 13:55:13.925217058 +0200
+@@ -44,6 +44,13 @@ ENDIF(IS_X86)
+ 
+ IF(CMAKE_INSTALL_LIBDIR)
+ 	SET(LIB_DIR "${CMAKE_INSTALL_LIBDIR}")
++    # Make LIB_DIR relative
++    STRING(FIND "${LIB_DIR}" "${CMAKE_INSTALL_PREFIX}" PREFIX_IDX)
++    IF(PREFIX_IDX EQUAL 0)
++            STRING(LENGTH "${CMAKE_INSTALL_PREFIX}" PREFIX_LEN)
++            STRING(SUBSTRING "${LIB_DIR}" ${PREFIX_LEN} -1 LIB_DIR)
++            STRING(REGEX REPLACE "^[/\\]" "" LIB_DIR "${LIB_DIR}")
++    ENDIF()
+ ELSE(CMAKE_INSTALL_LIBDIR)
+ 	SET(LIB_DIR lib)
+ ENDIF(CMAKE_INSTALL_LIBDIR)

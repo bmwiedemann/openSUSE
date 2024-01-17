@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee5ff43d02599b62a556b0a6f0d32d22</srcmd5>
+    <version>2.7.1</version>
+    <time>1677498901</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-tables</comment>
+    <requestid>1067735</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8f533e17a81b70b9e6ea0bc50ff8517c</srcmd5>
+    <version>2.7.1</version>
+    <time>1677966204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069312</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>965977ffd227f04eabac5d98b9a83a75</srcmd5>
+    <version>2.8.0</version>
+    <time>1680209562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.0
+  * New bytedelta filter added. SIMD support for Intel and ARM platforms is there.
+    We have blogged about this: https://www.blosc.org/posts/bytedelta-enhance-compression-toolset
+    Thanks to Aras Pranckevičius for inspiration and initial implementation.
+  * Minor improvements in BloscLZ, leading to better compression ratios in general.
+  * BLoscLZ version bumped to 2.5.2.
+  * Updated internal zlib-ng to 2.0.7.
+</comment>
+    <requestid>1075583</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c156b0ab3124af872af9474b6bfcb747</srcmd5>
+    <version>2.8.0</version>
+    <time>1680290173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076449</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>07a66f419fb77b6d22ca833f75375356</srcmd5>
+    <version>2.9.1</version>
+    <time>1683916640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.1
+  * Allow the use of BTUNE by detecting the ``BTUNE_BALANCE``
+    environment variable.
+- Release 2.9.0
+  * Dynamic plugins as Python wheels are supported now! This new
+    feature allows for creating plugins in C, distribute them as
+    wheels, and load them dynamically in runtime. Small example at
+    https://github.com/Blosc/blosc2_plugin_example
+  * BloscLZ can achieve more speed in clevel 1 now.
+  * Internal Zstd sources updated to latest 1.5.5 version.
+  * Copyright notice updated.  Thanks to @DimitriPapadopoulos.
+- Skip failing test_contexts gh#Blosc/c-blosc2#464 (forwarded request 1086565 from bnavigator)</comment>
+    <requestid>1086567</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>98e30ab5bb1593c9072a91c9e9fbb3d7</srcmd5>
+    <version>2.9.1</version>
+    <time>1684313601</time>
+    <user>dimstar_suse</user>
+    <comment>- Add c-blosc2-pr483-BLOSC_STUNE.patch gh#Bosc/c-blosc2#483
+  * Fixes build failure of PyTables (forwarded request 1087458 from bnavigator)</comment>
+    <requestid>1087459</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>90404e761aeb0744af128db999b9f1bc</srcmd5>
+    <version>2.10.2</version>
+    <time>1692795506</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.10.2
+  * Several fixes for the CMake system. Thanks to Axel Huebl. See
+    PR #541 and #542.
+- Changes from 2.10.0 to 2.10.1
+  * blosc2_remove_urlpath(const char *urlpath) does not return an
+    error when path does not exist.
+  * Changes in CMake installer to conserve targets and properties
+    on install, so CMake users do not need to write
+    FindBlosc2.cmake files anymore. This also helps to preserve
+    transitive dependencies on CMake targets, especially useful for
+    fully static builds, e.g., for Python wheels. Thanks to @ax3l
+    (Axel Huebl). See PR #537.
+  * Fix new typos. Thanks to @DimitriPapadopoulos. See PR #538.
+- Changes from 2.9.3 to 2.10.0
+  * bytedelta filter has been fixed. For backward compatibility,
+    the old bytedelta filter is still available as
+    BLOSC_FILTER_BYTEDELTA_BUGGY symbol, with the same ID (34) than
+    before. The new, fixed bytedelta filter has received a new ID
+    (35) and it can be used via the usual BLOSC_FILTER_BYTEDELTA
+    symbol. That means that old data written with the buggy
+    bytedelta filter should be decompressed without issues. Thanks
+    to @foody (Tom Birch) for the fix. See #531, #532 for more
+    info.
+  * Filter buffers are correctly cycled now. Now it is possible to
+    use e.g. shuffle and bitshuffle filters in the pipeline. Thanks
+    to @foody (Tom Birch) for the fix. See #528 and PR #530.
+  * Assorted fixes for allowing better inclusion in external
+    projects. Thanks to @ax3l (Axel Huebel). See #525, #527 and
+    #529.
+- Changes from 2.9.2 to 2.9.3
+  * Thanks to Dimitri Papadopoulos for an extensive set of
+    improvements in documentation and code.
+  * load_lib is now a private function. Before was public, but
+    never meant to be.
+  * Several fixes for bugs discovered by the fuzzer.
+- Changes from 2.9.1 to 2.9.2
+  * Now is possible to register the same plugin (as long as they
+    have the same ID and name) without errors. This is useful for
+    registering the same plugin without worrying on whether it has
+    been registered already.
+  * Improved detection of dynamic plugin locations. Now they must
+    implement plugin_module.print_libpath() as the canonical way to
+    find the path for the dynamic library plugin.
+  * The blosc2_static has gained the cmake
+    POSITION_INDEPENDENT_CODE property. This should allow to use
+    the static library in more situations.
+  * BLOSC_STUNE is defined in blosc2.h now. Fixes #481. Thanks to
+    @DimitriPapadopoulos.
+  * Fixed an issue when having incompressible data in combination
+    with lazy_chunks.
+  * Fix linking with static -DBUILD_STATIC=0. Fixes #480.
+  * Many small fixes and code improvements. Thanks to
+    @DimitriPapadopoulos, @bnavigator.
+- Drop c-blosc2-pr483-BLOSC_STUNE.patch upstream merged
+</comment>
+    <requestid>1105325</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>999d3ed9b19d08234f715b008f140c16</srcmd5>
+    <version>2.10.5</version>
+    <time>1697390852</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117790</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d6424bdeef1995553fcaf032d3120d89</srcmd5>
+    <version>2.11.2</version>
+    <time>1701378093</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129934</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>362319735fe8718a02710e29a5320702</srcmd5>
+    <version>2.11.3</version>
+    <time>1701462411</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130255</requestid>
+  </revision>
+</revisionlist>

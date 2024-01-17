@@ -1,0 +1,154 @@
+diff -Pdpru scheme48-1.9.2/c/net/address.c scheme48-1.9.2-mod/c/net/address.c
+--- scheme48-1.9.2/c/net/address.c	2012-12-28 01:46:24.000000000 +0900
++++ scheme48-1.9.2-mod/c/net/address.c	2014-05-05 16:50:21.836799983 +0900
+@@ -105,6 +105,7 @@ s48_extract_af(s48_call_t call, s48_ref_
+     case 3 :
+       return AF_UNSPEC;
+     }
++    s48_assertion_violation_2(call, "s48_extract_af", "invalid af_val", 1, af_val);
+ }
+ 
+ s48_ref_t
+@@ -448,6 +449,7 @@ s48_extract_socket_type(s48_call_t call,
+       case 1:
+ 	return SOCK_DGRAM;
+       }
++  s48_assertion_violation_2(call, "s48_extract_socket_type", "invalid socktype_val", 1, socktype_val);
+ }
+ 
+ s48_ref_t
+@@ -504,6 +506,7 @@ extract_ip_protocol(s48_call_t call, s48
+       case 5:
+ 	return IPPROTO_UDP;
+     }
++  s48_assertion_violation_2(call, "extract_ip_protocol", "invalid ip", 1, ip);
+ }
+ 
+ static s48_ref_t
+diff -Pdpru scheme48-1.9.2/c/net/socket.c scheme48-1.9.2-mod/c/net/socket.c
+--- scheme48-1.9.2/c/net/socket.c	2012-12-28 01:46:24.000000000 +0900
++++ scheme48-1.9.2-mod/c/net/socket.c	2014-05-05 16:50:25.198799845 +0900
+@@ -65,6 +65,7 @@ extract_how(s48_call_t call, s48_ref_t s
+       return SHUT_RDWR;
+ #endif
+     }
++    s48_assertion_violation_2(call, "extract_how", "invalid how_val", 1, how_val);
+ }
+ 
+ int
+diff -Pdpru scheme48-1.9.2/c/scheme48.h scheme48-1.9.2-mod/c/scheme48.h
+--- scheme48-1.9.2/c/scheme48.h	2014-03-03 01:22:18.000000000 +0900
++++ scheme48-1.9.2-mod/c/scheme48.h	2014-05-05 17:05:30.454762787 +0900
+@@ -200,12 +200,12 @@ S48_EXTERN void *	s48_value_pointer_2(s4
+ /* Exceptions */
+ 
+ S48_EXTERN void s48_error_2(s48_call_t call, const char* who, const char* message,
+-			    long irritant_count, ...);
++			    long irritant_count, ...) __attribute__((noreturn));
+ S48_EXTERN void s48_assertion_violation_2(s48_call_t call, const char* who, const char* message,
+-					  long irritant_count, ...);
++					  long irritant_count, ...) __attribute__((noreturn));
+ S48_EXTERN void s48_os_error_2(s48_call_t call, const char* who, int the_errno,
+-			       long irritant_count, ...);
+-S48_EXTERN void s48_out_of_memory_error_2(s48_call_t call);
++			       long irritant_count, ...) __attribute__((noreturn));
++S48_EXTERN void s48_out_of_memory_error_2(s48_call_t call) __attribute__((noreturn));
+ 
+ /* Internal use */
+ 
+@@ -446,26 +446,26 @@ S48_EXTERN void *	s48_value_pointer(s48_
+ /* Exceptions */
+ 
+ S48_EXTERN void s48_error(const char* who, const char* message,
+-			  long irritant_count, ...);
++			  long irritant_count, ...) __attribute__((noreturn));
+ S48_EXTERN void s48_assertion_violation(const char* who, const char* message,
+-					long irritant_count, ...);
++					long irritant_count, ...) __attribute__((noreturn));
+ S48_EXTERN void s48_os_error(const char* who, int the_errno,
+-			     long irritant_count, ...);
+-S48_EXTERN void s48_out_of_memory_error();
++			     long irritant_count, ...) __attribute__((noreturn));
++S48_EXTERN void s48_out_of_memory_error() __attribute__((noreturn));
+ 
+ /* The following are deprecated */
+ 
+-S48_EXTERN void s48_raise_argument_type_error(s48_value value);
++S48_EXTERN void s48_raise_argument_type_error(s48_value value) __attribute__((deprecated, noreturn));
+ S48_EXTERN void s48_raise_argument_number_error(s48_value value,
+ 						s48_value min,
+-						s48_value max);
++						s48_value max) __attribute__((deprecated, noreturn));
+ S48_EXTERN void s48_raise_range_error(s48_value value,
+ 				      s48_value min,
+-				      s48_value max);
+-S48_EXTERN void s48_raise_closed_channel_error();
+-S48_EXTERN void s48_raise_os_error(int the_errno);
+-S48_EXTERN void s48_raise_string_os_error(char *reason);
+-S48_EXTERN void s48_raise_out_of_memory_error();
++				      s48_value max) __attribute__((deprecated, noreturn));
++S48_EXTERN void s48_raise_closed_channel_error() __attribute__((deprecated, noreturn));
++S48_EXTERN void s48_raise_os_error(int the_errno) __attribute__((deprecated, noreturn));
++S48_EXTERN void s48_raise_string_os_error(char *reason) __attribute__((deprecated, noreturn));
++S48_EXTERN void s48_raise_out_of_memory_error() __attribute__((deprecated, noreturn));
+ 
+ /* Internal use */
+ 
+diff -Pdpru scheme48-1.9.2/c/scheme48.h.in scheme48-1.9.2-mod/c/scheme48.h.in
+--- scheme48-1.9.2/c/scheme48.h.in	2012-12-28 01:46:24.000000000 +0900
++++ scheme48-1.9.2-mod/c/scheme48.h.in	2014-05-05 16:10:07.783898808 +0900
+@@ -187,12 +187,12 @@ S48_EXTERN void *	s48_value_pointer_2(s4
+ /* Exceptions */
+ 
+ S48_EXTERN void s48_error_2(s48_call_t call, const char* who, const char* message,
+-			    long irritant_count, ...);
++			    long irritant_count, ...) __attribute__((noreturn));
+ S48_EXTERN void s48_assertion_violation_2(s48_call_t call, const char* who, const char* message,
+-					  long irritant_count, ...);
++					  long irritant_count, ...) __attribute__((noreturn));
+ S48_EXTERN void s48_os_error_2(s48_call_t call, const char* who, int the_errno,
+-			       long irritant_count, ...);
+-S48_EXTERN void s48_out_of_memory_error_2(s48_call_t call);
++			       long irritant_count, ...) __attribute__((noreturn));
++S48_EXTERN void s48_out_of_memory_error_2(s48_call_t call) __attribute__((noreturn));
+ 
+ /* Internal use */
+ 
+@@ -433,26 +433,26 @@ S48_EXTERN void *	s48_value_pointer(s48_
+ /* Exceptions */
+ 
+ S48_EXTERN void s48_error(const char* who, const char* message,
+-			  long irritant_count, ...);
++			  long irritant_count, ...) __attribute__((noreturn));
+ S48_EXTERN void s48_assertion_violation(const char* who, const char* message,
+-					long irritant_count, ...);
++					long irritant_count, ...) __attribute__((noreturn));
+ S48_EXTERN void s48_os_error(const char* who, int the_errno,
+-			     long irritant_count, ...);
+-S48_EXTERN void s48_out_of_memory_error();
++			     long irritant_count, ...) __attribute__((noreturn));
++S48_EXTERN void s48_out_of_memory_error() __attribute__((noreturn));
+ 
+ /* The following are deprecated */
+ 
+-S48_EXTERN void s48_raise_argument_type_error(s48_value value);
++S48_EXTERN void s48_raise_argument_type_error(s48_value value) __attribute__((deprecated, noreturn));
+ S48_EXTERN void s48_raise_argument_number_error(s48_value value,
+ 						s48_value min,
+-						s48_value max);
++						s48_value max) __attribute__((deprecated, noreturn));
+ S48_EXTERN void s48_raise_range_error(s48_value value,
+ 				      s48_value min,
+-				      s48_value max);
+-S48_EXTERN void s48_raise_closed_channel_error();
+-S48_EXTERN void s48_raise_os_error(int the_errno);
+-S48_EXTERN void s48_raise_string_os_error(char *reason);
+-S48_EXTERN void s48_raise_out_of_memory_error();
++				      s48_value max) __attribute__((deprecated, noreturn));
++S48_EXTERN void s48_raise_closed_channel_error() __attribute__((deprecated, noreturn));
++S48_EXTERN void s48_raise_os_error(int the_errno) __attribute__((deprecated, noreturn));
++S48_EXTERN void s48_raise_string_os_error(char *reason) __attribute__((deprecated, noreturn));
++S48_EXTERN void s48_raise_out_of_memory_error() __attribute__((deprecated, noreturn));
+ 
+ /* Internal use */
+ 

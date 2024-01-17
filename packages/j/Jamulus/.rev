@@ -1,0 +1,944 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01c45d0979e2a846ef938d3ce5623355</srcmd5>
+    <version>3.4.2</version>
+    <time>1521052671</time>
+    <user>dimstar_suse</user>
+    <comment>Brought over from Packman</comment>
+    <requestid>585173</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d6248dac7f963adc3e74b2c4b8425acc</srcmd5>
+    <version>3.4.2</version>
+    <time>1521499091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587948</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6877035985b4fc7d0a37b7e751024865</srcmd5>
+    <version>3.4.3</version>
+    <time>1556022955</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696757</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e54297e70d12d5c66d123b30b7215719</srcmd5>
+    <version>3.4.3</version>
+    <time>1573044562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739246</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>75fcbe7320c5cb85615b7ecdc03f43dd</srcmd5>
+    <version>3.4.4</version>
+    <time>1585996014</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename source icon to Jamulus_icon.png to avoid troubles
+  with suse_update_desktop_file.sh
+- Create desktop file via script since upstream no longer
+  supplies it
+- Address rpmlint complaints
+- Update to version 3.4.4
+  * added support for controlling the audio mixer faders with a
+    MIDI controller (MacOS and Linux)
+  * added command line argument for disabling auto jack connection
+   (Ticket #49)
+  * audio recording for the server, coded by pljones
+  * SVG server history graph, coded by pljones
+</comment>
+    <requestid>791268</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>97c47806f52e57bf8731853275eca046</srcmd5>
+    <version>3.4.5</version>
+    <time>1587581586</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename source tarball
+- Update to version 3.4.5
+  The upstream maintainer announced that he will no longer publish source
+  tarballs to SF.net, so fetched the tarball from github directly.
+  Changes included:
+  * audio fade-in at the server if a new client connects
+  * added a scroll bar to the mixer board to support large numbers of
+    mixer faders (a thank you to doloopuntil for his help)
+  * changed the maximum number of clients supported by the server from 20 to 50
+  * Windows installer now contains a 32 and 64 bit version of Jamulus (the version to
+    be installed is selected automatically according to the detected operating system)
+  * bug fix: server list ping times may not be accurate and client list may not be retrieved
+</comment>
+    <requestid>794380</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9e815ad324cb9ec5555e118e8f4e88fd</srcmd5>
+    <version>3.5.2</version>
+    <time>1589315508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802737</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9c465714f3f70aecda7a072a2c57be7f</srcmd5>
+    <version>3.5.9</version>
+    <time>1596565192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824135</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6384000006a1602762f5ce1d4f4434dc</srcmd5>
+    <version>3.5.10</version>
+    <time>1597658697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826996</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>354093545fa58e7e57755bee6bdf5cc3</srcmd5>
+    <version>3.5.11</version>
+    <time>1601044545</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.11
+  * support a check for updates
+  * added an optional server list whitelist filter
+  * added a command line argument to enable multithreading in
+    the server
+  * added support for split protocol messages (fixes bug with
+    large number of clients connected to a server)
+  * store recorder settings
+  * added a command line argument to disable recording on start
+    up
+  * accessibility improvements
+  * added Jack audio audio latency calculation
+  * show the server name in the title bar
+  * bug fix: crash when using the Jack backend and quickly
+    reconfiguring, coded by hselasky
+  * bug fix: Alt+h shortcut to open the Chat dialog did not
+    work, use Alt+c instead
+  * bug fix: pan is not correctly initialized in the server on a
+    new connection
+- Add Jamulus-disable_version_check.patch
+</comment>
+    <requestid>837223</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5cabc24f0dfe851799cce47a33c8e0f9</srcmd5>
+    <version>3.5.12</version>
+    <time>1601919645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839389</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>dccd156baa457682a50e1be096e6821f</srcmd5>
+    <version>3.6.0</version>
+    <time>1603725634</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843860</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>adde70eac7b046159c3d759cf7b258ed</srcmd5>
+    <version>3.6.1</version>
+    <time>1606252468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850445</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>996c3d250d1b5e7c7988593af65ec978</srcmd5>
+    <version>3.6.2</version>
+    <time>1607965738</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855573</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>51c4b309d2524fcf82496b1adc306db8</srcmd5>
+    <version>3.6.2</version>
+    <time>1611348734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865960</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c48afa3edb6b19ac287163e3f360812c</srcmd5>
+    <version>3.7.0</version>
+    <time>1618061219</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881752</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3388504e57640f6b3a4b38edd071473b</srcmd5>
+    <version>3.7.0</version>
+    <time>1620240037</time>
+    <user>dimstar_suse</user>
+    <comment>- remove %config for firewalld's jamulus.xml
+- Fixes for %_libexecdir changing to /usr/libexec(bsc#1174075)
+</comment>
+    <requestid>890747</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ab15380c0219c0e286a6acc2939f62f2</srcmd5>
+    <version>3.8.0</version>
+    <time>1622759609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897034</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>30a26b06bebac38846ea5cd018e78625</srcmd5>
+    <version>3.8.1</version>
+    <time>1635877129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.1
+ * Client: JACK support on Windows has been improved (#1718).
+   (contributed by @jujudusud, @henkdegroot)
+ * Client: Rewrote multiple error messages to improve UX (#1568, #1732).
+   (contributed by @ann0see)
+ * Client: Add custom directory servers to Connect Dialog (#1869, #1894).
+   (contributed by @jp8)
+ * Client: Rearrange existing UI menu bar items (#1915, #1926).
+   (contributed by @jp8)
+ * Bug Fix: Mute myself has been made more consistent (#1838).
+   (contributed by @ngocdh)
+ * Bug Fix: Fix ampersand not being shown correctly on mixer (#1886, #1893).
+   (contributed by @HughePaul, @ann0see)
+   
+ * Bug Fix: A crash fix related to the way iOS handles sockets in 
+   idle mode (#1875). 
+   (contributed by @ngocdh)
+ * Server: A single click on the server application in the 
+   systemtray now opens the Jamulus Server main window (#1722, #1731).
+   (contributed by @henkdegroot)
+ * Server: Jam Recorder's internal locking and initialization code
+   has been made more robust (#1826).
+   (contributed by @cdmahoney)
+ * Server: The list of servers registered on a directory can now
+   be saved during directory restart. Use the new
+   --directoryfile CLI option to use this feature (#1867).
+   (contributed by @pljones)
+   
+ * Server: Add link to website if a new version is available (#1980).
+   (contributed by: @ann0see)
+ * Bug Fix: Remove incorrect version of headless .service file (#2009).
+   (contributed by @ann0see)
+ * Client/Server: Add IPv6 support for direct connections (#1017, #1938).
+   (contributed by @jardous, @softins)
+ * CLI: Re-order and refactor help for client/server validation (#1896).
+   (contributed by @pljones)
+ * CLI: Jamulus now shows a link to the Website for translated
+   content (#1759).
+   (contributed by @henkdegroot)
+ * Android: Add close button on Android to enhance UX (#1763, #1876).
+   (contributed by @ngocdh)
+   
+ * iOS: Sound support, feature to allow switch between external device
+   and the internal mic (#1875).
+   (contributed by @ngocdh)
+ * MacOS: Keyboard shortcuts now also work on macOS (#1726, #1873).
+   (contributed by @henkdegroot)
+ * Installer: Add zh_CN translation + for nsis win installer (#1922, #1954).
+   (contributed by @BLumia)
+ * Documentation: Move Demos, description of inputs options to 
+   Knowledge Base (#603, #551).
+   (contributed by: @pcar75, @gilgongo)
+ * Documentation: Add user experience section to CONTRIBUTING.md (#1885).
+   (contributed by: @ann0see)
+ * Documentation: Create Server Admin Manual (#527).
+   (contributed by: @gilgongo)
+ * Documentation: Update typo on links in compiling.md file (#1824).
+   (contributed by @jujudusud)
+ * Documentation: Number range command line error messages 
+   reworded accurately (#1978).
+   (contributed by @DavidSavinkoff)
+   
+ * Website: switch to .po file format to make updating 
+   translations easier (various PRs)
+   (contributed by: @ignotus666)
+ * Website: Removed edit button from wiki layout file (#576).
+   (contributed by: @DevRish)
+ * Internal: Enable signing of macOS binaries (via build script
+   and automatically via CI) (#1856, #1937). 
+   (contributed by @emlynmac)
+ * Internal: Added Apple Appstore licence waiver (#1874)
+   (contributed by @ann0see, @pljones, @gilgongo)
+ * Internal: Add autobuild for Windows with JACK (#1829).
+   (contributed by @henkdegroot)
+ * Internal: Document release process on contribute page (#1594, #592).
+   (contributed by: @hoffie, @ann0see)
+- change central server to directory term
+- Update to 3.8.0
+ * The term &quot;Central server&quot; has been replaced with &quot;Directory 
+   server&quot; (#1407, #1715, #1629).
+   Note that the program will still accept the --centralserver 
+   option for backward
+   compatibility with existing system startup scripts, but its usage 
+   is deprecated.
+   (contributed by @pljones, @softins)
+   
+ * Mac: Generate build with Qt 5.15.2 for better compatibility with 
+   Big Sur (#1687, #1768).
+   We still build a legacy version with Qt 5.9.9 to support older 
+   versions of macOS:
+    * Users of 10.13 (High sierra) or newer should use the standard 
+      build with Qt 5.15.2
+    * Users of Yosemite, El Capitan or Sierra should use the legacy 
+      build with Qt 5.9.9
+      (contributed by @softins)
+   
+ * GUI: Settings window has been reorganized into tabs (#1415, 
+   #1554, #1542, #1588):
+    * User Profile window has been integrated into the settings 
+      window.
+    * Input Pan has been moved to the newly created Advanced tab 
+      and removed from main window.
+      (contributed by @dcorson-ticino-com, @pljones)
+   
+ * GUI: Moved the Ping and Delay stats from the Settings window to 
+   the main window (#1762):
+   This was partly to work around a Mac issue with updates to the 
+   settings window (#1643)
+   and is actually an improvement anyway, as the settings window 
+   does not need to remain open.
+   (contributed by @dcorson-ticino-com and @softins)
+   
+ * GUI: Added &quot;About Qt&quot; to the help menu to display version of Qt 
+   (#1685, #1692).
+   (contributed by @softins)
+   
+ * GUI: Corrected the operation of What's This in the settings 
+   dialog (#1622, #1635).
+   (contributed by @dcorson-ticino-com)
+   
+ * GUI: Improved the muted speaker icon display (#1691).
+   (contributed by @henkdegroot)
+   
+ * Added new icons for Linux desktop use (#1672).
+   (contributed by @jujudusud)
+   
+ * GUI: Corrected handling of custom directory server in the server, 
+   to prevent
+   unintended registration with a directory server (#1624, #1627).
+   (contributed by @softins)
+   
+ *  GUI: Corrected alignment of Mute icon above fader (#811, #1312, 
+   #1640).
+   (contributed by @vimpostor)
+   
+ * GUI: Support for more than two mixer rows has been added (#1549, 
+   #1560).
+   (contributed by @pljones)
+   
+ * GUI: --clientname also works in dialog titles now (#1352, 1370).
+   (contributed by @dcorson-ticino-com)
+   
+ * GUI: Translations have been updated
+       Dutch, by @henkdegroot (#1562, #1623, #1714, #1557)
+       French, by @jujudusud (#1648, #1708)
+       German, by @rolamos (#1677, #1810)
+       Italian, by @dzpex (#1620)
+       Polish, by @SeeLook (#1619)
+       Portuguese Brazilian, by @melcon (#1671, #1807)
+       Portuguese European, by @Snayler (#1689)
+       Slovak, by @jose1711 (#1647)
+       Spanish, by @ignotus666 (#1621, #1730, #1808)
+       Swedish, by @genesisproject2020 (#1664, #1696)
+   
+ * Network: Support for DSCP Quality of Service flags has been added 
+   (#1310).
+   This is supposed to lead to improved network performance.
+   It is enabled by default.
+   On Windows, this requires additional configuration in order to 
+   work.
+   Please see the Tips &amp; Tricks page on the website for a setup 
+   guide for Windows.
+   (contributed by @DavidSavinkoff)
+   
+ * Client: Automatic channel fader adjustment simplifies mixer setup 
+   by using the channel level meters (#1071).
+   (contributed by @JohannesBrx)
+   
+ * Client: Basic audio feedback detection has been added (#1179).
+   (contributed by @JohannesBrx)
+   
+ * Client: Support for input gain boost has been added (#1222, #1030)
+   (contributed by @hoffie)
+   
+ * Client: Grouping support has been extended to allow for up to 
+   eight groups (#1551).
+   (contributed by @pljones)
+   
+ * Client: A hint regarding non-default Jack support has been added 
+   (#1397, #1438).
+   (contributed by @djfun)
+   
+ * Server: Support for Delay Panning has been added (#332, #567, 
+   #1151, #1417, #1744):
+   This feature can be enabled on servers using the new --delaypan 
+   option.
+   Enabling this feature will slightly increase server CPU usage.
+   It can create a much more realistic spatial sound impression for 
+   clients
+   that are set to Stereo or Mono-in/Stereo-out mode.
+   (contributed by @DetlefHennings, @Hk1020, @softins, @henkdegroot)
+   
+ * Server: Multi-threading performance has been improved (#960).
+   (contributed by @menzels, @softins)
+   
+ * Server: Half-connected clients will no longer receive audio 
+   (#1243, #1589):
+   Note: This breaks compatibility with client versions before 3.3.0 
+   (Feb 2013).
+   If you update your server, ensure that all clients use 3.3.0 or 
+   later as well.
+   (contributed by @softins)
+   
+ * Server: HTML status file is now emptied on exit (#1423, #1427).
+   (contributed by @hoffie, @drummer1154)
+   
+ * Server: An explicit bind address can now be specified (#141, 
+   #1561).
+   This can be done by the new --serverbindip option.
+   (contributed by @buv)
+   
+ * Recorder: Compatibility with third-party tools such as Audacity 
+   has been improved (#1384, #1424, #1437).
+   Non-ASCII characters are now stripped out when creating filenames.
+   (contributed by @softins, @gilgongo, @reinhardwh)
+   
+ * Recorder: Failures to start recording no longer result in crashes 
+   (#1163, #1289, #1463).
+   (contributed by @hoffie, @softins, @pljones)
+   
+ * Recorder: Logging has been improved (#1284, #1463).
+   (contributed by @hoffie, @drummer1154)
+   
+ * Bug fix: The mute indicator is now also shown in mono mode (#1074).
+   (contributed by @npostavs)
+   
+ * Bug fix: Channel mapping on Windows now only resets if the sound 
+   card or the numbers of channels changed (#1347).
+   (contributed by @ann0see)
+   
+ * Bug fix: Jamulus client should now close itself correctly if a 
+   non-working device was selected (#872).
+   (contributed by @npostavs)
+   
+ * Bug fix: Server no longer crashes while changing the recording 
+   directory (#1501, #1573).
+   (contributed by @henkdegroot, @hoffie, @softins)
+   
+ * Bug fix: Example systemd unit has been fixed to avoid crashing 
+   when sending signals (#1515, #1518).
+   (contributed by @softins, @helgeerbe, @gilgongo)
+   
+ * Bug fix: The Windows installer now correctly compiles in a path 
+   with spaces (#864, #1319).
+   (contributed by @henkdegroot)
+   
+ * Performance: Opus encoding/decoding now uses machine-specific 
+   optimizations (#1105).
+   (contributed by @npostavs)
+   
+ * Performance: Timer configuration for Windows servers has been 
+   improved (#1536).
+   (contributed by @npostavs)
+   
+ * iOS support is being worked on (#1450).
+   (contributed by @jeroenvv)
+   
+ * Github autobuild for Mac now uses Xcode 11.7 and SDK 10.15 for 
+   compatibility with Qt5 (#1655).
+   (contributed by @softins)
+   
+ * Build: Creation of debug builds has been simplified (#1516).
+   (contributed by @hoffie)
+   
+ * Internal: Constants for JACK usage have been renamed (#1429).
+   (contributed by @djfun)
+   
+ * Internal: Legacy IP address variables have been cleaned up (#1400).
+   (contributed by @wferi)
+   
+ * Internal: Added automatic code formatting with clang-format 
+   (#901, #1127, #1751).
+   (contributed by @passing)
+   
+ * Internal: New pull requests will now be checked for coding style 
+   automatically (#1735).
+   (contributed by @passing)
+   
+ * Internal: Windows deploy script has been aligned to autobuilds 
+   (#1720).
+   (contributed by @henkdegroot)
+- remove %config for firewalld's jamulus.xml
+- Fixes for %_libexecdir changing to /usr/libexec(bsc#1174075)
+- Update to 3.7.0
+  * Server lists have been reorganized to make room for more
+    servers (#875):
+    - Default has been renamed to Any Genre 1.
+    - Any Genre has been renamed to Any Genre 2.
+    - Any Genre 3 has been added.
+    - Choral/Barbershop has been added.
+    - Classical/Folk/Choral has been renamed to Classical/Folk.
+  * Central server addresses have been moved to the jamulus.io 
+    domain (#919).
+    The fischvolk.de addresses are deprecated.
+  * GUI: If a name is provided using --clientname, that name is 
+    shown first in the window title, to avoid clipping in the 
+    Windows task bar (#789).
+  * GUI: Translations have been updated:
+    - Dutch, by @jerogee (#1110)
+    - French, by @trebmuh &amp; @jujudusud (#1199 &amp; #1113)
+    - German, by @rolamos (#1097)
+    - Italian, by @dzpex (#1112)
+    - Polish, by @SeeLook (#1099)
+    - Portugese, by @melcon &amp; @Snayler (#1141 &amp; #1168)
+    - Slovak, by @jose1711 (#1104)
+    - Spanish, by @ignotus666 (#1152)
+    - Swedish, by @genesisproject2020 (#1182 &amp; #1106)
+  * Active recording state is now highlighted in the mixerboard
+    title (#968).
+  * Client window makes it more obvious when not connected to
+    a server by graying out input levels and showing a message
+    (#847, #983).
+  * Screensaver and screen blanking are now prevented on Macs
+   (#834).
+  * Windows installer has been improved (#792, #841).
+    Note: If you are using ASIO4ALL, we strongly suggest that
+    you take a screenshot of your ASIO4ALL settings before upgrading.
+    The installer will try its best to migrate your settings, but
+    it may fail to do so when using custom installation paths.
+  * Windows installer interface now supports English, Dutch, French,
+    German, Italian, Polish, Portuguese, Spanish and Swedish.
+  * Windows ASIO Setup button placement has been improved to be below
+    the driver selection (#977).
+  * Chat dialog has gained support for auto-linking http addresses
+    (#879).
+  * Chat messages no longer allow HTML-formatted chat messages due to
+    security reasons (#939). HTML formatting in Welcome messages will
+    continue to work.
+  * Mixerboard background image quality in the Fancy skin has been
+    improved (#970).
+  * MIDI controller logic has been improved to support fader, pan,
+    mute and solo buttons in --ctrlmidich syntax (#945).
+    Mute &amp; solo buttons are only for toggle-type controllers and do
+    not support headless operation yet.
+  * Servers connected to central servers behind the same NAT can
+    now be made accessible to public clients via the newly added
+    --serverpublicip option (#954).
+  * External IP detection no longer generates traffic to Cloudflare
+   (#633, #1092).
+  * Version update detection has been improved (#1155):
+    - The check now uses two servers instead of one 
+      (updatecheck1.jamulus.io and updatecheck2.jamulus.io).
+    - The server version is now ignored if it is not a release, due
+      to a suffix such as dev, beta or rc.
+  * Official Ubuntu/Debian packages are now built and published as 
+    part of the release (#1100).
+    The packages are compatible with Ubuntu 18.04 or later.
+  * Experimental .apk installation packages for Android are now 
+    provided (#880).
+  * Bug fix: A suspected memory leak has been solved by removing 
+    usage of ConsoleWriterFactory (#926).
+  * Bug fix: Changing ASIO driver properties like switching 
+    input/outputs in ASIO4ALL now resets input/output channel 
+    mapping in Jamulus again (#796).
+    This was done to solve a bug with ASIO4ALL introduced in the
+    last version.
+  * Bug fix: Fader levels, mute and solo state are now restored 
+    properly when reconnecting to a restarted server (#955, #1010).
+    This is a server-side fix.
+  * Bug fix: Multiple memory leaks in the server's recording feature
+    have been fixed (#1073).
+  * Bug fix: Menu accelerator keys have been fixed in multiple
+    translations (#1165).
+  * Bug fix: Windows sound driver lacked driverInfo initialisation
+    (#1194).
+  * Internal build and release process have been re-designed,
+    automated and moved to Github.
+  * Internal development builds now contain a detailed version
+    number (#475).
+- Change to new projekt- and source-url.
+- %pre needs to pull in &quot;nogroup&quot;, too.
+- Do not ignore errors from useradd.
+- Reduce scriptlet boilerplate generated by %service_*.
+- Cease removing users at package deinstallation.
+- Add services for headless public and private server.
+- Add services for newRecording and ToggleRecording.
+- Add sysconfig for service files.
+- Add firewalld for private server.
+- Add user jamulus for server services.
+- Update to version 3.6.2
+  * change Clear All Stored Solo Settings to clear Mute as 
+    well (#731)
+  * avoid selecting IPv6 results from hostname lookup, coded by 
+    jarmar (#722)
+  * added possibility to set MIDI offset for fader control to 
+    --ctrlmidich (#95)
+  * detect if no audio Device is selected before trying to connect
+    a server (#129)
+  * on MacOS if an audio device is no longer available, show a 
+    warning rather than switching to default automatically (#727)
+  * bug fix: sliders move by themselves if fader groups are used
+    on reconnect (#611)
+  * bug fix: do not reset sound card channel selection on a device
+    property change (#727)
+  * bug fix: compiling Jamulus 3.6.1 is failing on Debian 9 
+    Linode (#736)
+  * bug fix: on MacOS Jamulus does not always select the previous
+    sound card (#680)
+  * bug fix: use new server icon on Mac server bundle and Windows
+    installer (#737)
+  * bug fix: ping times of servers which are further down the
+    server list are too high (#49)
+- Update to version 3.6.1
+  * added menu entry &quot;Set All Faders to New Client Level&quot; (#622)
+  * isolate a channel from the group temporarily with 
+    shift-click-drag (#695)
+  * on shift-click the pan reset to 0 L/R (#707)
+  * support multiple custom central server addresses (#698)
+  * the Jamulus server now has a different icon, created by 
+    geheimerEichkater (#700)
+  * support two rows for the mixer panel (#720)
+  * changed RYG indicator lights with colour-blind compensation, 
+    created by geheimerEichkater (#57)
+  * saving and loading mixer settings is now possible during an 
+    active connection and a mixer settings file can be loaded with
+    drag'n'drop (#706)
+  * menu entry Clear All Stored Solo Settings is now enabled
+    during an active connection
+  * bug fix: the fader group property was not correctly loaded
+    from the ini file
+- Update to version 3.6.0
+  * handle audio packets received out of order
+  * most recently connected users appear on the RH side on the
+    fader panel
+  * improvements for the server multithreading
+  * removed Display Channel Levels setting and --servername
+  * removed support for further server infos in --serverinfo
+    since the preferred way of registering a server is to do it
+    using the protocol messages
+  * removed -g, --pingservers since all Central servers must
+    activate this function, now it is activated by default and
+    no command line argument is needed
+  * added --mutemyown command line argument to mute my own
+    signal in my personal mix, only supported in headless client
+    mode
+  * added &quot;Mountain Dulcimer&quot; instrument icon
+  * added new instrument icons for &quot;Scratching&quot; and &quot;Rapping&quot;
+  * replaced double types by floats for some of the signal
+    processing
+  * support permanent channl fader sorting (i.e., not only on
+    request but always)
+  * support sorting faders by channel city
+  * if sorting the faders by instrument, we now sort by the name
+    for the same instruments
+  * bug fix: reduced server list is displayed instead of the
+    normal list
+- Update to version 3.5.12
+  * added hyperlink support for the chat window
+  * added new menu entry &quot;Clear All Stored Solo Settings&quot;
+  * fade in all clients at the server when entering a server to
+    avoid the volume is at 100% when joining a server
+  * added a qmake CONFIG flag for disabling the automatic
+    version check
+  * avoid confusion with the Server Address field on the
+    connection setup window by no longer showing the server name
+    in that field since it is only intended for entering IP
+    addresses or valid server URLs
+  * removed the &quot;Show Creative Commons BY-NC-SA 4.0 Licence
+    Dialog&quot; setting from the server GUI and changed the
+    -L/--licence text in the licence dialog to &quot;Do you agree
+    to the text in the chat window?&quot; so that a licence text must
+    now be given in the server welcome message
+  * added a protocol message for a reduced server list to
+    improve the situation caused by UDP packet fragmentation
+  * added translation: Slovak
+  * bug fix: crash when using the jam recorder in the server
+- Dropped Jamulus-disable_version_check.patch (merged upstream)
+- Update to version 3.5.11
+  * support a check for updates
+  * added an optional server list whitelist filter
+  * added a command line argument to enable multithreading in
+    the server
+  * added support for split protocol messages (fixes bug with
+    large number of clients connected to a server)
+  * store recorder settings
+  * added a command line argument to disable recording on start
+    up
+  * accessibility improvements
+  * added Jack audio audio latency calculation
+  * show the server name in the title bar
+  * bug fix: crash when using the Jack backend and quickly
+    reconfiguring, coded by hselasky
+  * bug fix: Alt+h shortcut to open the Chat dialog did not
+    work, use Alt+c instead
+  * bug fix: pan is not correctly initialized in the server on a
+    new connection
+- Add Jamulus-disable_version_check.patch
+- Update to version 3.5.10
+  * do not change the server list order if the mouse is over the
+    table to avoid selecting an incorrect server on a mouse
+    double click
+  * if network name/address contains spaces, they are removed
+    now, coded by dingodoppelt
+  * improve compact skin by using smaller font size
+  * improve server audio mix processing for better clipping
+    behavior
+  * support MIDI control faders in headless build (#483)
+  * option to set Mute Myself on with a command line argument
+  * added a red message to indicate that Mute Myself is
+    activated
+  * manual clip LED reset by mouse click on the level meter
+  * replacing internal history graph functionality by external
+    scripts/tools
+  * accessibility improvements, coded by chigkim
+  * bug fix: added more mutex in the server
+  * bug fix: --showallservers ping column sort is alphabetic
+- Drop _service file
+- Spec cleanup
+- Update to version 3.5.9
+  * new app icon for Jamulus, created by geheimerEichkater
+  * support up to four different groups for the channels
+  * support sorting faders by channel group
+  * add support to change the GUI language
+  * add special server list filter for filtering occupied
+    servers by using &quot;#&quot;
+  * update server UI to allow setting the jam recorder directory
+    (like -R)
+  * redesign of the server dialog (e.g. added welcome message
+    setting)
+  * save and restore mixer state (like fader, mute, etc.)
+    note that saving/loading of settings only works if not
+    connected
+  * scale channel instrument picture in Compact skin mode
+  * show maximum number of clients for servers in the
+    serverlist, coded by dingodoppelt
+  * log the number of connected clients on each new connection
+  * move the Mute Myself button up to prevent accidentally
+    disconnecting
+  * bug fix: grouping faders in the client should be
+    proportional
+  version 3.5.8:
+  * bug fix: incorrect selection of UI language
+  version 3.5.7:
+  * add new &quot;compact&quot; skin, intended for large ensembles
+  * support sorting faders by channel instrument, coded by
+    Alberstein8
+  * new group switch to change several faders in sync, coded by
+    Alberstein8
+  * support a clip LED, coded by fleutot
+  * add server recording indicator, coded by pljones
+  * support for storing/recovering the server window positions
+  * add a headless build type which does not depend on
+    QtGui/QtWidgets, coded by marcan
+  * the local pan middle position is no longer attenuated in
+    Mono-in/Stereo-out mode
+  * added translation: Brazilian Portuguese by melcon
+  * add send button to chat window
+  * add some protections to the code, coded by atsampson
+  * bug fix: server window stop updating after minimized, coded
+    by AronVietti
+  version 3.5.6:
+  * support sorting faders by channel name
+  * enable/disable recording from command line, coded by pljones
+  * add Audacity &quot;list of files&quot; writer to jam recorder, by
+    pljones
+  * make level meter LED black when off, by fleutot
+  * added ukulele/bass ukulele instrument icons created by dos1
+  * avoid showing IP address if no name in the musician profile
+    is given
+  * show channel numbers if --ctrlmidich is used
+  * added check in acknowledge message, coded by atsampson
+  * bug fix: on MacOS declare an activity to ensure the process
+    doesn't get throttled by OS level Nap, Sleep, and Thread
+    Priority systems, coded by AronVietti
+  version 3.5.5:
+  * added banjo/mandolin instrument icons created by atsampson
+  * faster update of musicians list in the server list table
+  * display recorder state and latest recording directory in the
+    server GUI, allow a new recording to be requested, by
+    pljones
+  * New Client Level now also applies if you enter a server
+  * bug fix: honour own fader and Mute button in Mute Myself
+  * bug fix: audio fader sliders cannot be moved if the main
+    windows is too small
+  * bug fix: server gain calculations were incorrect (introduced
+    in version 3.5.4)
+  version 3.5.4:
+  * introduce genre-based server lists
+  * implement panning for channels, coded by tarmoj
+  * added an indicator that another client has muted me
+  * move central server type dropdown to connection setup
+  * added vocal bass/tenor/alto/soprano instrument icons created
+    by Alberstein8
+  * support intermediate Reaper RPP file while recording, coded
+    by pljones
+  * save client settings on Linux cmdline termination signal,
+    coded by pljones
+  * added translation: Italian by dzpex
+  * bug fix: fixed misaligned tracks in recordings, coded by
+    snayler, improved by pljones
+  version 3.5.3:
+  * correct unregister of headless server and RPP file creation
+    on SIGINT/SIGTERM, coded by pljones
+  * for CoreAudio and 4 channel input, support mixing channels
+    1&amp;2 with 3&amp;4
+  * added bassoon/oboe/harp instrument icons created by dszgit,
+    congas/bongo created by bspeer
+  * link to docs from application Help menu
+  * support Mac CoreAudio aggregated devices
+  * added translations: French by trebmuh, Portuguese by Snayler,
+    Spanish by ignotus666, Dutch by jerogee, German by corrados
+  * new design for the About dialog
+  * new command line option -d to disconnect all clients on
+    shutdown of the server
+  * bug fix: for mono capture jack audio interface Jamulus
+    complains it cannot make connections
+  * bug fix: fixed that Jamulus segfaults when jackd is
+    restarted
+  * bug fix: better handling of disconnect message in the client
+  * note: Jamulus is no longer compatible to Qt4
+- Update to version 3.5.2:
+  * use audio level meter bars for normal skin
+  * store Show All Musicians setting in the ini-file
+  * improved Mac installer, coded by doloopuntil
+  * support to open ASIO driver setup(s) if startup failed due to incorrect driver settings (Ticket #117)
+  * added -v/--version command line argument to output version information (Ticket #121)
+  * added bodhran and other instrument icons, bodhran created by bomm (Ticket #131)
+  * bug fix: if small network buffers are used we get much better audio quality when drop outs occur
+  * bug fix: if names given with the -o option were too long, the server registration failed (Ticket #91)
+  * bug fix: audio level changes if Buffer Delay is changed (Ticket #106)
+  * bug fix: do not reset fader level meters if number of clients change
+  * bug fix: fixed a crash with JackRouter 64 bit ASIO driver (Ticket #93, thanks to elliotclee) 
+- Add a source service.
+- Rename source tarball
+- Update to version 3.4.5
+  The upstream maintainer announced that he will no longer publish source
+  tarballs to SF.net, so fetched the tarball from github directly.
+  Changes included:
+  * audio fade-in at the server if a new client connects
+  * added a scroll bar to the mixer board to support large numbers of
+    mixer faders (a thank you to doloopuntil for his help)
+  * changed the maximum number of clients supported by the server from 20 to 50
+  * Windows installer now contains a 32 and 64 bit version of Jamulus (the version to
+    be installed is selected automatically according to the detected operating system)
+  * bug fix: server list ping times may not be accurate and client list may not be retrieved
+- Rename source icon to Jamulus_icon.png to avoid troubles
+  with suse_update_desktop_file.sh
+- Create desktop file via script since upstream no longer
+  supplies it
+- Address rpmlint complaints
+- Update to version 3.4.4
+  * added support for controlling the audio mixer faders with a
+    MIDI controller (MacOS and Linux)
+  * added command line argument for disabling auto jack connection
+   (Ticket #49)
+  * audio recording for the server, coded by pljones
+  * SVG server history graph, coded by pljones
+- Remove obsolete Groups tag (fate#326485)
+- Update to version 3.4.3
+  * for ASIO and 4 channel input, support mixing channels 1&amp;2
+    with 3&amp;4
+- obsolete jamulus to allow pkg migration from packman to OBS
+- Update to version 3.4.2
+  * removed old CELT library (minimum compatible version is now
+    3.3.1)
+  * show server name in the server list in bold font if it is a
+    permanent server
+  version  3.4.1
+  * avoid a single jitter buffer for the auto detection
+  * the Musicians value in the server list shows a warning if the
+    server is full
+  * automatic server setting for permanent server flag in the
+    protocol
+  * bug fix: ping time measurement may be invalid for the Linux OS
+  version 3.4.0
+  * show the names of the connected clients in the server list
+  version 3.3.11
+  * added a new client fader level setting
+  version 3.3.10
+  * changed the default central server URL
+  * added support for server disconnection
+  version 3.3.9
+  * another improvement of auto jitter buffer detection in very bad
+    network conditions
+  * support client operation without using a GUI front end
+  version 3.3.8
+  * improved audio quality in bad network conditions
+  * more realistic overall delay estimation
+  * improvement of auto jitter buffer detection in bad network
+    conditions
+  * show info about sound card buffer size if not one of the
+    standard sizes
+  version 3.3.7
+  * added a musician profile dialog (some settings in the main
+    window were removed)
+  * a tool tip for the fader tag shows the complete musician
+    profile
+  * the city and skill level can be set in the musician profile
+  * added new instrument picture for &quot;Guitar+Vocal&quot;
+  version 3.3.6
+  * support for a country flag icon on the fader tag
+  * a licence agreement dialog can be requested by the server
+  version 3.3.5
+  * new compile config options for disabling old CELT, use OPUS in
+    a shared library and change the executable name
+  * added a Linux jamulus.desktop file
+  version 3.3.4
+  * true stereo reverberation effect (previously it was a mono
+    reverberation effect on both stereo channels)
+  * added a mono-in/stereo-out mode to support special sound cards
+    which have mono inputs for the instrument and a microphone but
+    have stereo outputs
+  * store fader solo state in the ini file
+  * improved stability of the audio stream by reducing audio drop
+    outs (by using a separate socket thread)
+  * removed unnecessary settings and LED indicators
+  * bug fix: the fader level could not be changed if the fader was
+    on solo 
+- Switched to Qt5 build
+- Use system libopus
+- Added Jamulus.png as source (icon of adequate size)
+- initial version (3.3.3)
+</comment>
+    <requestid>928633</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b30da355addb5d59332c614825be5eda</srcmd5>
+    <version>3.8.2</version>
+    <time>1645998187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957850</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>61fe3d9edf5ae73a48ef41296f3141a8</srcmd5>
+    <version>3.9.0</version>
+    <time>1661863807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000148</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3398def8d0caf115058fcee8215eee6a</srcmd5>
+    <version>3.9.1</version>
+    <time>1667830995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034178</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>632d8ad89913c6f34bf99559d0d1cf07</srcmd5>
+    <version>3.10.0</version>
+    <time>1697146859</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117067</requestid>
+  </revision>
+</revisionlist>

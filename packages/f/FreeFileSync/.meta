@@ -1,0 +1,7 @@
+<package name="FreeFileSync" project="openSUSE:Factory">
+  <title></title>
+  <description>FreeFileSync is a free Open Source software that helps you synchronize files and synchronize folders for Windows, Linux and Mac OS X. It is designed to save your time setting up and running backup jobs while having nice visual feedback along the way.
+</description>
+  <devel project="network" package="FreeFileSync"/>
+  <url>https://www.freefilesync.org/</url>
+</package>

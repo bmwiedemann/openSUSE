@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Sat May 20 16:03:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- flom 1.6.1:
+  * add an option to disable test cases needing a network interface
+
+-------------------------------------------------------------------
+Tue May  2 10:39:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim description of subpackages for size (the library does not
+  have the shell interface)
+- Trim redundances from description already expressed through
+  the License: field.
+
+-------------------------------------------------------------------
+Sun Apr 30 15:54:36 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- flom 1.6.0, initial package

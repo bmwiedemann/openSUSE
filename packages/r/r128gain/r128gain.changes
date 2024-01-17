@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Thu Dec 21 06:37:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded Requires on python3-future. 
+
+-------------------------------------------------------------------
+Sat Mar 25 20:23:48 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.7
+  * feat: warn if input is not a directory in recursive mode.
+  * refactor: reduce get_r128_loudness complexity.
+  * fix: mypy pre-commit hook error.
+  * fix: workaround ffmpeg ebur128 filter early stop with concat.
+  * fix: improve ffmpeg ebur128 output parsing.
+  * fix: wrong replaygain sample peak calculation for non standard
+     sample rates.
+  * fix: don't map ffmpeg filter output.
+  * feat: make progress output persistant.
+  * feat: log filter script
+- Update to version 1.0.6
+  * no functional changes
+- Update to version 1.0.5
+  * no functional changes
+
+-------------------------------------------------------------------
+Sun Oct 24 13:21:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.4:
+  * Drop Python 3.5 support
+  * Add typing annotations
+  * Fix AAC file support
+
+-------------------------------------------------------------------
+Mon Sep 21 20:45:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.3:
+  * Fix race causing futures to be forgotten too early
+  * Read/write MP4 tags using lowercase key format (fixes #22)
+
+-------------------------------------------------------------------
+Wed Jun 10 10:44:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.2:
+  * Better handling of non unicode filenames
+  * Pass ffmpeg verbosity flags
+
+-------------------------------------------------------------------
+Sun Feb  2 13:51:04 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.1
+  * Logging fix
+  * Improve & refractor recursive progress report
+
+-------------------------------------------------------------------
+Tue Jan 14 12:37:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.0.0

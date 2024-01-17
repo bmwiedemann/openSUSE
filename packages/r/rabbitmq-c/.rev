@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96ed6ee9d2f26d0fe30b124d33be01eb</srcmd5>
+    <version>0.10.0</version>
+    <time>1599597976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832899</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c408a362f1b0551349dfdb0e32925c60</srcmd5>
+    <version>0.10.0</version>
+    <time>1604054985</time>
+    <user>dimstar_suse</user>
+    <comment>- fix tests for SLE15</comment>
+    <requestid>844990</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4f49b940ba718cea0c17044553bf8c94</srcmd5>
+    <version>0.10.0</version>
+    <time>1608317993</time>
+    <user>dimstar_suse</user>
+    <comment>- %check: use rabbitmqctl await_startup to wait for RabbitMQ
+  server start and rabbitmqctl stop for stopping the server
+  [bsc#1180096] (forwarded request 856660 from pgajdos)</comment>
+    <requestid>856831</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>73a70398e147d1ba6dedd97ceb00ed7e</srcmd5>
+    <version>0.10.0</version>
+    <time>1609253355</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible.patch to override build date (boo#1047218) (forwarded request 858184 from bmwiedemann)</comment>
+    <requestid>858976</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9466de84aa4e5877a67a08577d947ed2</srcmd5>
+    <version>0.11.0</version>
+    <time>1620398768</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.11.0 (forwarded request 891265 from susnux)</comment>
+    <requestid>891305</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ca1e089f7eeeb7aa2bce106f9c1701e4</srcmd5>
+    <version>0.11.0</version>
+    <time>1630936683</time>
+    <user>dimstar_suse</user>
+    <comment>- %check: fix testsuite run</comment>
+    <requestid>917000</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>371724fc029201f776fab6dd9d107004</srcmd5>
+    <version>0.11.0</version>
+    <time>1651088525</time>
+    <user>dimstar_suse</user>
+    <comment>- give up to run testsuite when the server will not start in time
+  [bsc#1198202]</comment>
+    <requestid>973171</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10818f4e88071f87706e440692fc6578</srcmd5>
+    <version>0.13.0</version>
+    <time>1687550018</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.13.0
+  ## v0.13.0 - 2023-02-05
+  ## Fixed
+  - Fixed missing option to not install static library (#665)
+  - Missing pkgconfig version in v0.12.0 output (#755, #751)
+  - Correct return value from amqp_ssl_socket_set_key_buffer (#723)
+  ## Changed
+  - Remove OpenSSL code no longer needed when used with OpenSSL &gt;= 1.1.0. (Fixed: #715, #737)
+  ## Added
+  - Integration with OSS-Fuzz (#736)
+  ## v0.12.0 - 2023-01-31
+  ## Changed
+  - rabbitmq-c now compiles as C99
+  - CMake 3.12 is new minimum required version
+  - CMake -DBUILD_TESTS renamed to -DBUILD_TESTING
+  - CMake -DBUILD_EXAMPLES now defaults to OFF
+  - CMake -DBUILD_TOOLS now defaults to OFF
+  - Unix library version now matches the release version, SONAME remains the same.
+  - Modernized CMake scripts to better adopt modern standards
+  - Public headers have moved to rabbitmq-c/ directory
+  - Dropped support for MSVC older than VS 2010
+  - Dropped support for OpenSSL v1.1.0 and older
+  - Minimum SSL version set to TLSv1.2
+  - Updated to RabbitMQ framing to v3.8.19</comment>
+    <requestid>1094846</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d62fd42e32364001d9f331a97fddb692</srcmd5>
+    <version>0.13.0</version>
+    <time>1687980802</time>
+    <user>dimstar_suse</user>
+    <comment>- fixes CVE-2023-35789 [bsc#1212499]</comment>
+    <requestid>1095527</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>137e266376029c1328ada94fcae5cb2d</srcmd5>
+    <version>0.4.0</version>
+    <time>1564994187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720149</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f52049bc8ff963d9b3d1f0b511ff461a</srcmd5>
+    <version>0.4.0</version>
+    <time>1566665315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725770</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ec363f98cd44b2b099bfb26fd3983f34</srcmd5>
+    <version>0.4.0</version>
+    <time>1590506235</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807656</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>daa8ebea63496ce7d2fbb36e5b1c8397</srcmd5>
+    <version>0.4.0</version>
+    <time>1635366085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927846</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>af5af4ef4f67367741cf6e535e3d640b</srcmd5>
+    <version>0.4.0</version>
+    <time>1644440654</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove nose BR, we really needn't it.
+</comment>
+    <requestid>953029</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>28b0c79f18e09baa20293443bcb28283</srcmd5>
+    <version>0.4.0</version>
+    <time>1677878916</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1069144</requestid>
+  </revision>
+</revisionlist>

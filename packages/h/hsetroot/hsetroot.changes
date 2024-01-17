@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Dec 31 16:51:38 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Clean up build dependencies - make use of pkgconfig
+- Refresh DESTDIR patch to upstream version
+  * add_destdir_support.patch
+- Fix directory creation during installation
+  + hsetroot-Fix-installation.patch
+
+-------------------------------------------------------------------
+Wed Oct  6 15:34:47 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update project URL.
+
+-------------------------------------------------------------------
+Tue Oct  5 16:37:05 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Tue Oct  5 10:01:33 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Package updated to 1.0.5
+- Remove upstreamed patches:
+  - hsetroot-1.0.2_01_fix-no-display-crash.patch
+  - hsetroot-1.0.2_02_extend-mode.patch
+  - hsetroot-1.0.2_03_cover-mode.patch
+  - hsetroot-1.0.2_04_link-to-X11.patch
+- Updated man page
+- Add support for destdir with new build system
+  + add_destdir_support.patch
+
+-------------------------------------------------------------------
+Thu Sep  8 11:46:45 UTC 2016 - msuchanek@suse.de
+
+- Import Debian patches
+ - hsetroot/hsetroot-1.0.2_01_fix-no-display-crash.patch - fix NULL dereference
+ - hsetroot/hsetroot-1.0.2_04_link-to-X11.patch - fix build errors due to missing library reference
+ Add extra options
+ - hsetroot/hsetroot-1.0.2_02_extend-mode.patch
+ - hsetroot/hsetroot-1.0.2_03_cover-mode.patch
+
+-------------------------------------------------------------------
+Fri Mar 10 00:00:00 UTC 2006 - mrueckert@suse.de
+
+- initial package of version 1.0.2
+

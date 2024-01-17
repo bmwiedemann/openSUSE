@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e43555e86cd2c14b73c6156f6920d4cd</srcmd5>
+    <version>0.2.1</version>
+    <time>1527583338</time>
+    <user>dimstar_suse</user>
+    <comment>needed by python-CairoSVG and python-WeasyPrint</comment>
+    <requestid>611776</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9ba433dbfd8fc59b39a2e2dc2efca8a2</srcmd5>
+    <version>0.2.1</version>
+    <time>1544726528</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653998</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9b33f741823900ec0c427c362d82f016</srcmd5>
+    <version>0.2.1</version>
+    <time>1551386635</time>
+    <user>coolo</user>
+    <comment>- Fix the build again
+
+- Remove unnecessary build dependencies on pytest plugins, by
+  invoking pytest directly avoiding setup.py checking test deps,
+  and removing addopts from setup.cfg</comment>
+    <requestid>679803</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>04170efc6273c034177807dc4aa5cdd7</srcmd5>
+    <version>0.2.1</version>
+    <time>1557083903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699149</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f875669d532da66c211d89cfa8833fb1</srcmd5>
+    <version>0.2.2</version>
+    <time>1569233360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.2:
+  * Optimize lang attribute selectors</comment>
+    <requestid>730669</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5bbccdfefd8fd9071b5c58f727d6bc17</srcmd5>
+    <version>0.3.0</version>
+    <time>1586247568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790649</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc9dc638e62b2c8be9273c218c35a33a</srcmd5>
+    <version>0.7.0</version>
+    <time>1679854750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Support :has selector
+0.6.0:
+  * Improve speed of ancestors and previous siblings
+0.5.0:
+  * Support Python 3.10
+  * Drop support of Python 3.6
+  * Handle many CSS4 selectors
+  * Ignore comments at the beginning of selectors
+0.4.1:
+  * Fix PyPI description and various links.
+0.4.0:
+  * Drop support of Python 3.5, add support of Python 3.9.
+  * Don’t crash on empty :not() selectors.
+  * New code structure, new packaging, new documentation.
+</comment>
+    <requestid>1074179</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b8081cc8791a0e7910b1fd79c5e25c59</srcmd5>
+    <version>0.7.0</version>
+    <time>1682193688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081953</requestid>
+  </revision>
+</revisionlist>

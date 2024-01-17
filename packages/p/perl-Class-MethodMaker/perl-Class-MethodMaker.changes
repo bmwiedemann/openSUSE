@@ -1,0 +1,244 @@
+-------------------------------------------------------------------
+Sat Jul  8 19:58:13 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort hashes to fix build-compare
+
+-------------------------------------------------------------------
+Mon Apr 13 18:17:11 UTC 2015 - coolo@suse.com
+
+- updated to 2.24
+   see /usr/share/doc/packages/perl-Class-MethodMaker/Changes
+
+  2.24	Mar 31 2015
+          - fix missing OUTPUT section - RT#103113 (Zefram)
+  
+  2.23	Mar 05 2015
+          - Use strict and warnings everywhere (Neil Bowers)
+          - renamed CommonMethods.pm to CommonMethods.pmt, as it's a
+            template for module code. CPANTS was assuming it's a module
+            from the name, and failing it (Neil Bowers)
+  
+  2.22	Jan 14 2015
+          - use File::Temp::tmpnam as needed in Android (Brian Fraser)
+  
+  2.21	Mar 16 2014
+          - sync with Debian patches - RT#91658
+          - fix copyright and license entries - RT#43463
+
+-------------------------------------------------------------------
+Sun Feb  9 13:31:44 UTC 2014 - coolo@suse.com
+
+- updated to 2.20
+     - drop t/v1*.t unit tests due to license issue
+       https://github.com/renormalist/class-methodmaker/issues/2
+
+-------------------------------------------------------------------
+Wed Dec 18 10:37:48 UTC 2013 - coolo@suse.com
+
+- updated to 2.19
+      - Fix 5.19 incompatibility - RT#88934 (Zefram)
+      - small distro polishing
+
+-------------------------------------------------------------------
+Thu Apr 21 05:14:32 UTC 2011 - coolo@opensuse.org
+
+- updated to 2.18
+      - Fix 5.14 incompatibility - RT#66196 (Nicholas Clark)
+      - Just an intermediate release!
+        (in order to get help on fixing Class::MethodMaker for 5.14)
+      - already fixed breakage with 5.13.3 (rt#66196)
+        (CvGV is now an rvalue, so use CvGV_set instead of assigning
+        directly -- credits to ANDK, rafl and Zefram)
+      - added test for no warnings to additionally be able to bisect
+        annoying warnings since 5.13.2
+      - Stay tuned -- 2.18 will hopefully completely revitalize C:MM
+        for Perl 5.13+.
+
+-------------------------------------------------------------------
+Thu Mar 31 09:08:51 UTC 2011 - coolo@novell.com
+
+- update to version 2.17
+   - Just an intermediate release!
+     (in order to get help on fixing Class::MethodMaker for 5.14)
+   - already fixed breakage with 5.13.3
+     (CvGV is now an rvalue, so use CvGV_set instead of assigning
+     directly -- credits to ANDK, rafl and Zefram)
+   - added test for no warnings to additionally be able to bisect
+     annoying warnings since 5.13.2
+   - Stay tuned -- 2.18 will hopefully completely revitalize C:MM
+     for Perl 5.13+.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:01 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Jun  2 11:06:00 UTC 2010 - chris@computersalat.de
+
+- update to version 2.16
+  - Drop signature self test in order to fix rt#57359
+  - fix missing use base (Yan Fitterer / Martyn J. Pearce)
+  - fix case of "LICENSE" key and upgrade Makefile.PL
+    (cpanservice@chorny.net)
+
+-------------------------------------------------------------------
+Sun Apr  4 20:08:51 UTC 2010 - chris@computersalat.de
+
+- update to version 2.15
+  - Skip some tests on MSWin (#16601)
+- 2.14	Feb 15 2009
+  - Fix Incorrect value checking in set_sub_name, introduced in
+    v2.13 (#41994) (Jens Rehsack)
+- 2.13	Dec 02 2008
+  - Improve diagnostics and avoid crash with bad arguments.
+    (Lubomir Rintel)
+- 2.12	Jul 20 2008
+  - fixed warnings: Name " X::foo" used only once (#35840, #37023)
+- cleanup spec
+  o sort TAGS
+  o add Url
+  o fixed deps
+    - removed BuildReq perl-Module-Build
+    - added BuildReq perl
+  o updated description
+  o added check
+  o macros
+  o doc
+    - removed MANIFEST
+    - added SIGNATURE
+- removed obsolete patches
+  o Class-MethodMaker-Makefile.PL.diff
+  o suppress_warning.diff
+- added perl-macros
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jun 11 15:04:20 CEST 2008 - ug@suse.de
+
+- fixed a warning
+
+-------------------------------------------------------------------
+Fri Apr  4 11:13:04 CEST 2008 - ug@suse.de
+
+- update to version 2.11
+- Drop Module::Build support
+  (which was broken anyway for a long time, #19167, #16241, #17059, #15987, #13755)
+- Correct "use version" statements (#19585)
+
+-------------------------------------------------------------------
+Mon Jul 16 11:46:35 CEST 2007 - ug@suse.de
+
+- update to version 2.10
+- Fixed SIGNATURE
+- Fixed compile problems with 5.9.4 upwards (rt.cpan.org #22413)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:31 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Dec 12 12:29:30 CET 2005 - ug@suse.de
+
+- update to version 2.08
+
+-------------------------------------------------------------------
+Wed Sep 28 22:09:58 CEST 2005 - dmueller@suse.de
+
+ - add norootforbuild
+
+-------------------------------------------------------------------
+Mon Aug  1 20:10:24 CEST 2005 - cthiel@suse.de
+
+- added Class-MethodMaker-Makefile.PL.diff
+
+-------------------------------------------------------------------
+Fri Jul 29 18:05:48 CEST 2005 - cthiel@suse.de
+
+- update to version 2.07
+
+-------------------------------------------------------------------
+Mon Jan 31 14:26:59 CET 2005 - ug@suse.de
+
+- version update from 2.04 to 2.05
+
+-------------------------------------------------------------------
+Fri Jan 21 11:11:44 CET 2005 - ug@suse.de
+
+- version update from 2.02 to 2.04
+- heavy changes in build process
+- Add XS code to set created sub names in profiler, etc.
+- Documentation tweaks
+- Add an argument of the subject object to default ctor calls
+
+-------------------------------------------------------------------
+Fri Aug 20 11:20:41 CEST 2004 - ug@suse.de
+
+- version update from 2.00 to 2.02
+- Make VERSION evaluate on single line to work with 
+  ExtUtils::MakeMaker.
+- Fix hash in v1 mode to return reference to the actual storage
+- Fix obscure handling of -hash_init with v1 hash
+- Fix redefine warnings (with V1Compat) under perl-5.8.3
+
+-------------------------------------------------------------------
+Fri Feb 27 15:04:50 CET 2004 - ug@suse.de
+
+- version update from 1.10 to 2.00
+
+-------------------------------------------------------------------
+Fri Aug 22 14:12:08 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 29 10:35:31 CEST 2003 - ug@suse.de
+
+- version update from 1.08 to 1.10
+
+-------------------------------------------------------------------
+Mon Jul 28 10:28:07 CEST 2003 - ug@suse.de
+
+- "make test" added
+- add vendorarch changes
+
+-------------------------------------------------------------------
+Mon Jun 23 13:53:48 CEST 2003 - ro@suse.de
+
+- added directories to filelist 
+
+-------------------------------------------------------------------
+Mon May 19 13:36:22 CEST 2003 - ug@suse.de
+
+- packlist and perllocal.pod fix
+
+-------------------------------------------------------------------
+Fri Jan 17 11:06:15 CET 2003 - ug@suse.de
+
+- version update to 1.08 
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Wed Jun 26 16:04:38 CEST 2002 - ug@suse.de
+
+- version update to 1.06 
+
+-------------------------------------------------------------------
+Mon Mar 26 19:05:33 CEST 2001 - ug@suse.de
+
+- initial release
+

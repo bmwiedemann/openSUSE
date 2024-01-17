@@ -1,0 +1,6 @@
+<package name="neko" project="openSUSE:Factory">
+  <title>A cross-platform lightweight virtual machine and language</title>
+  <description>Neko is a virtual machine and dynamic language that is both lightweight and efficient.</description>
+  <devel project="devel:languages:haxe" package="neko"/>
+  <url>http://nekovm.org</url>
+</package>

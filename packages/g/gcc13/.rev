@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6b8ef001a4db45b2cbde95adc15d7ac</srcmd5>
+    <version>13.0.0+git197351</version>
+    <time>1671128681</time>
+    <user>dimstar_suse</user>
+    <comment>you need to add the following for the libgo SONAME bump in 13
+
+%product_libs_gcc_ver_libgo21 12</comment>
+    <requestid>1042666</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5853af8c9cce11ed8517606f7d93a2fc</srcmd5>
+    <version>13.0.0+git197351</version>
+    <time>1671722512</time>
+    <user>dimstar_suse</user>
+    <comment>- update floatn fixinclude pickup to check each header separately (bsc#1206480) (forwarded request 1043820 from dirkmueller)</comment>
+    <requestid>1043900</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7f9634bfb735d5d49417476682262fe</srcmd5>
+    <version>13.0.1+git5199</version>
+    <time>1674143029</time>
+    <user>dimstar_suse</user>
+    <comment>- Configure external timezone database provided by the timezone
+  package.  Make libstdc++6 recommend timezone to get a fully
+  working std::chrono.  Install timezone when running the testsuite.
+- Remove dependence on doxygen and graphviz when building the
+  testsuite.  Those were used to build the libstdc++ API html
+  documentation but we stopped shipping that when Java support
+  was removed and nobody noticed.  Purge traces of the built
+  libstdc++6-gccN-doc package.
+- Package libhwasan_preinit.o on x86_64.
+
+- Update to GCC trunk head (r13-5199-g2f81164255bf0d)
+  * pulls changes up to the start of Stage 4
+- Change version numbering to match the commit count from
+  the git gcc-descr alias
+- Add gcc13-pr107678.patch to fix unwinding on aarch64 with
+  pointer signing.  [bsc#1206684]
+
+- Don't rely on %usrmerged, set it based on standard %suse_version
+
+- Enable PRU flavour for gcc13</comment>
+    <requestid>1058888</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cbd08d465fe5cdb7ecdd630e49d64153</srcmd5>
+    <version>13.0.1+git5199</version>
+    <time>1674143338</time>
+    <user>dimstar_suse</user>
+    <comment>Also package libhwasan_preinit.o on aarch64. Rapid-fix as discussed with richard over slack</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d7b4ac34334ccb258f3d12dc6a445c5</srcmd5>
+    <version>13.0.1+git5428</version>
+    <time>1675265901</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for new front-ends Rust and Modula-2.
+- Align _multibuild order with gcc12 package.
+- Bump to ca8fb0096713a8477614ef874f16ba5bf16c48bc, git5428.
+
+- Add bootstrap conditional to allow --without=bootstrap to be
+  specified to speed up local builds for testing.
+
+- Bump included newlib to version 4.3.0. 
+
+- Update to GCC trunk head (r13-5254-g05b9868b182bb9) 
+  * pulls Go frontend fix to fix build fail on s390x
+  * pulls upstream fix for PR107678, obsoleting gcc13-pr107678.patch
+- Also package libhwasan_preinit.o on aarch64.</comment>
+    <requestid>1061993</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>218f306274543f61df6492887ca597dd</srcmd5>
+    <version>13.0.1+git6669</version>
+    <time>1679239000</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to 42630fadbe248717859d61c0244c821c32b4e52c, git6669.
+- Fixes mariadb miscompilation (PR109109). (forwarded request 1071855 from marxin)</comment>
+    <requestid>1071933</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d69145979cfa9a080708abfe9a56e2f</srcmd5>
+    <version>13.0.1+git6995</version>
+    <time>1680884188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077145</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>829c87af9e7b0b3e7c926552f42c1b3b</srcmd5>
+    <version>13.0.1+git7162</version>
+    <time>1681653992</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to d339e9802f758e051b0a1ef6db732ff846cbf4e3, git7162.
+
+- Add new x86-related intrinsics (amxcomplexintrin.h). (forwarded request 1078870 from marxin)</comment>
+    <requestid>1079070</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aed0468a8d1318ebfb4cf28a63f2f43d</srcmd5>
+    <version>13.0.1+git7231</version>
+    <time>1682193341</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to f980561c60b0446cc427595198d7f3f4f90e0924, git7231.
+  * fixes compile-time issue reported in [bsc#1210557]
+  * GCC 13.1 RC3
+- Disable building the rust frontend.</comment>
+    <requestid>1081094</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>175198d96733ea12bcb027d85689f355</srcmd5>
+    <version>13.1.1+git7364</version>
+    <time>1685051519</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to dd36656ada05731c069ecd5b1878380294fb1f3e, git7364.
+  * Includes the RISC-V atomic changes
+- Remove riscv-atomic.patch and riscv-pthread.patch now included
+- Make libstdc++6-devel packages own their directories since they
+  can be installed standalone.  [bsc#1211427]
+
+- Bump to 910735c5d7ce7607384fc1eec4189e90c8ae5c84, git7256.
+  * Includes GCC 13.1 release and first bugfixes
+- Update riscv-atomic.patch from the version committed upstream.</comment>
+    <requestid>1088374</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>461f53a4b7d1dcdb908bfa7ee42aee42</srcmd5>
+    <version>13.1.1+git7552</version>
+    <time>1689083765</time>
+    <user>anag+factory</user>
+    <comment>- Bump to f9781fcf733ca3afe5b5811afd8ecbb18d9d3a11, git7552
+- Remove gcc13-pr110334.patch again as it breaks libreoffice build.
+
+- Bump to a533ded17fb13cbbb2fa5133ecd470360f66c5cf, git7489.
+- Add gcc13-pr110334.patch to fix missed optimization in Skia
+  resulting in Firefox crashes when building with LTO.  [boo#1212101]
+
+- Raise architecture levels for ALP.  [PED-153]
+  * Raise POWER architecture baseline to power9.  [PED-2005]
+  * Raise x86-64 architecture baseline to x86-64-v2 for ALP.  [PED-252]
+  * Delay raising s390x architecture baseline to z14.  [PED-253]</comment>
+    <requestid>1097918</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec200f9ff76b458880227605e0890619</srcmd5>
+    <version>13.1.1+git7597</version>
+    <time>1690370491</time>
+    <user>anag+factory</user>
+    <comment>- Bump to 9aac37ab8a7b919a89c6d64bc7107a8436996e93, git7597
+  * GCC 13.2 RC1
+- Add rpmlint filter for SLE12 complaining about invalid licenses.
+
+- Also handle -static-pie in the default-PIE specs</comment>
+    <requestid>1099831</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>396fde77ea3e34e3ee8ca3fdfefcdd6d</srcmd5>
+    <version>13.2.1+git7683</version>
+    <time>1691594629</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to cc279d6c64562f05019e1d12d0d825f9391b5553, git7683
+  * Includes GCC 13.2 release
+  * Includes patch to fix broken testcase in libbacktrace, fixing
+    build problems on SLES 12
+
+- gdcflags.patch: Use substituted GDCFLAGS
+- Filter out -Werror=return-type from D compile flags</comment>
+    <requestid>1102636</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>50b7313f1bd11f154864dd72e8432636</srcmd5>
+    <version>13.2.1+git7683</version>
+    <time>1693383568</time>
+    <user>anag+factory</user>
+    <comment>- Disable building glibc cross compilers on SLE based code streams,
+  the required cross-glibc packages are not available there.
+- Disable building avr cross on non-openSUSE code streams since
+  avr-libc isn't available there.
+- Disable building newlib cross compilers on non-openSUSE code streams
+  since newlib isn't available there.
+- Fix typo preventing s390x compiler build.
+- Raise s390x architecture baseline to z14 for ALP.  [PED-253]
+- Turn cross compiler to ppc64le to a glibc cross.
+
+- Turn cross compiler to s390x to a glibc cross.  [bsc#1214460]
+
+- Raise Power architecture baseline to Power9 only for ALP (boo#1213915).</comment>
+    <requestid>1107917</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dbc90620c2956b67ae70358e7d03bffb</srcmd5>
+    <version>13.2.1+git7813</version>
+    <time>1694701454</time>
+    <user>anag+factory</user>
+    <comment>- Bump to b96e66fd4ef3e36983969fb8cdd1956f551a074b, git7831
+  * Includes many bugfixes
+  * Includes fix to -fstack-protector issues with variable
+    length stack allocations on aarch64.  [bsc#1214052] (CVE-2023-4039)</comment>
+    <requestid>1110686</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>818afb60e33a17c615b39c7df3ac2e62</srcmd5>
+    <version>13.2.1+git7813</version>
+    <time>1695853464</time>
+    <user>dimstar_suse</user>
+    <comment>- add pr111411.patch (bsc#1215427)
+
+- Bump included newlib to version 4.3.0.
+- Update to GCC trunk head (r13-5254-g05b9868b182bb9)
+- Redo floatn fixinclude pick-up to simply keep what is there. (forwarded request 1112960 from dirkmueller)</comment>
+    <requestid>1113437</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>3dffec4e552a6b3c62df82cc6667837a</srcmd5>
+    <version>13.2.1+git7813</version>
+    <time>1699562073</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc13-bsc1216664.patch, works around SAP ASE DB crash during
+  C++ standard library initialization.  [bsc#1216664]</comment>
+    <requestid>1124004</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f1dfee65d7f1c0cfc833510df4a55749</srcmd5>
+    <version>13.2.1+git8109</version>
+    <time>1701533511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-13 branch head, 741743c028dc00f27b9c8b1d5, git8109
+  * Includes fix for building mariadb on i686.  [bsc#1217667]
+  * Remove pr111411.patch contained in the update.
+
+- Avoid update-alternatives dependency for accelerator crosses.
+- Package tool links to llvm in cross-amdgcn-gcc13 rather than in
+  cross-amdgcn-newlib13-devel since that also has the dependence.
+- Depend on llvmVER instead of llvm with VER equal to
+  %product_libs_llvm_ver where available and adjust tool discovery
+  accordingly.  This should also properly trigger re-builds when
+  the patchlevel version of llvmVER changes, possibly changing
+  the binary names we link to.  [bsc#1217450]</comment>
+    <requestid>1130160</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>67c07b5db0e6a1226bd3bc71faa7802a</srcmd5>
+    <version>13.2.1+git8205</version>
+    <time>1705099443</time>
+    <user>anag+factory</user>
+    <comment>- Update to gcc-13 branch head, 36ddb5230f56a30317630a928, git8205</comment>
+    <requestid>1137881</requestid>
+  </revision>
+</revisionlist>

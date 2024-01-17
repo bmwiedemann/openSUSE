@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>854a1040cb80350a1e4d969275bd280f</srcmd5>
+    <version>1.18.1</version>
+    <time>1584446941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785636</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4092ca93f30ad5d9f067d78828913a6d</srcmd5>
+    <version>1.18.1</version>
+    <time>1584745030</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with py2 build disabled in singlespec</comment>
+    <requestid>786744</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>683311f836f6245e7d46bf728971e50b</srcmd5>
+    <version>1.18.1</version>
+    <time>1584964338</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename the common-devel to be prefixed with python2 in order
+  to not be replaced by common-devel from the py3 variant of pycairo</comment>
+    <requestid>787390</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>38cc06301c405e40880a8ddf971dd37d</srcmd5>
+    <version>1.18.1</version>
+    <time>1585176353</time>
+    <user>dimstar_suse</user>
+    <comment>- Install the fake egg-info folder to work with pip and friends</comment>
+    <requestid>788082</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4e2d0dcfb36b8ae18db613b908a92f4c</srcmd5>
+    <version>1.18.1</version>
+    <time>1585342682</time>
+    <user>dimstar_suse</user>
+    <comment>- Use py2 variable as this is not singlespec</comment>
+    <requestid>788902</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="python-grpcio-tools" project="openSUSE:Factory">
+  <title>Protobuf code generator for gRPC</title>
+  <description>This package provides a python-based Protobuf code generator for gRPC.
+
+</description>
+  <devel project="network" package="python-grpcio-tools"/>
+  <url>https://grpc.io</url>
+</package>

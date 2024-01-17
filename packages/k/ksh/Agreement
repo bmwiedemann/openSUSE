@@ -1,0 +1,14 @@
+http://www.research.att.com/sw/download/
+http://www.research.att.com/sw/download/beta/
+User: `I accept www.opensource.org/licenses/cpl'
+Password: `.'
+
+#user='I accept www.opensource.org/licenses/eclipse'
+user='I accept www.opensource.org/licenses/cpl'
+#subdir=beta
+subdir=tgz
+version=2012-02-29
+wget --user="${user}" --password='.' \
+	http://www2.research.att.com/sw/download/${subdir}/ast-ksh.${version}.tgz \
+	http://www2.research.att.com/sw/download/${subdir}/INIT.${version}.tgz \
+	http://www2.research.att.com/sw/download/${subdir}/ast-base.${version}.tgz

@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Dec 15 15:32:49 UTC 2011 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  The package is BSD-3-Clause not MIT (look at the License file). Use SPDX
+  format.
+
+-------------------------------------------------------------------
+Thu Dec  8 13:22:31 UTC 2011 - coolo@suse.com
+
+- "BSD" is not a valid spdx.org license
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+- Add patch fondu-flags.diff to make package not forget our CFLAGS
+- Add patch fondu-shadow.diff to fix compile error when using -O
+
+-------------------------------------------------------------------
+Fri Oct 22 11:18:33 UTC 2010 - mrdocs@opensuse.org
+
+- first build server package
+- clean and tidy spec file
+ 
+

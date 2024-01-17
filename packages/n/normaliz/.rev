@@ -1,0 +1,194 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98bf1a8510ed4a36653a286c4ad61e4c</srcmd5>
+    <version>3.4.0</version>
+    <time>1507486443</time>
+    <user>dimstar_suse</user>
+    <comment>boost-devel dependency</comment>
+    <requestid>528910</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02e79dc9f3e0e87a6339782fce6b4410</srcmd5>
+    <version>3.4.1</version>
+    <time>1511426630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.1:
+  * Miscellaneous bug fixes. (forwarded request 544345 from badshah400)</comment>
+    <requestid>544347</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>00422d09dd6fd9372b3aef2cec5f8326</srcmd5>
+    <version>3.5.0</version>
+    <time>1514842605</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>561006</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ccb1c8f311693d6edc67d6a0933debe</srcmd5>
+    <version>3.5.1</version>
+    <time>1515623811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.1:
+  * Uniqueness in output of not uniqely determined results (bases
+    of sublattices, equations), necessary to make all tests yield
+    the same results on all.
+systems
+- Drop 0001-Fix-compiler-warnings-in-matrix.cpp.patch:
+  incorporated upstream. (forwarded request 563067 from badshah400)</comment>
+    <requestid>563096</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a7135b89991e2c927cfcbf20038777f7</srcmd5>
+    <version>3.5.4</version>
+    <time>1525210421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602655</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>26944dbd987aac2b7ea363f1da4a4402</srcmd5>
+    <version>3.6.1</version>
+    <time>1531947418</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623618</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cb1100f51f7b5207e96af1d0fd929abc</srcmd5>
+    <version>3.6.3</version>
+    <time>1540319956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643744</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c9492c106d58eac506efe76bfdaaa130</srcmd5>
+    <version>3.7.4</version>
+    <time>1566894320</time>
+    <user>dimstar_suse</user>
+    <comment>- Add headerfile.patch to provide normaliz/output.h.
+- Update to new upstream release 3.7.4</comment>
+    <requestid>726122</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea63868d107cacab3f1d54f8b4d1747c</srcmd5>
+    <version>3.8.0</version>
+    <time>1568190857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.0</comment>
+    <requestid>729716</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b340f9cbaf6938fdf7d6fd014547659b</srcmd5>
+    <version>3.8.1</version>
+    <time>1569852026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.1</comment>
+    <requestid>733922</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5778d3709b1b291e03691ef2c3c53e13</srcmd5>
+    <version>3.8.2</version>
+    <time>1574677562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.2</comment>
+    <requestid>750651</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>adc0d99df70089bdce04d01b5b6049b7</srcmd5>
+    <version>3.8.3</version>
+    <time>1574784590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.3</comment>
+    <requestid>751018</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c1b052d76d45ec42b4b4ed61a6b2992b</srcmd5>
+    <version>3.8.5</version>
+    <time>1591381495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.5</comment>
+    <requestid>811847</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1782851426f0ffb9e5c19d9f0dab977d</srcmd5>
+    <version>3.8.7</version>
+    <time>1596277989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.7</comment>
+    <requestid>823749</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>561f969ca2e234eeb72caacdd4d656cb</srcmd5>
+    <version>3.8.8</version>
+    <time>1598983842</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.8</comment>
+    <requestid>831042</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>77a1fb4e1e875d1887cddabc3b02f83b</srcmd5>
+    <version>3.8.9</version>
+    <time>1601653386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.9</comment>
+    <requestid>839145</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>447b8b745a5e30184a5c0ca6a94928aa</srcmd5>
+    <version>3.8.10</version>
+    <time>1613427328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.8.10</comment>
+    <requestid>871258</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e4547e000234ff2e660e1650905945df</srcmd5>
+    <version>3.9.0</version>
+    <time>1625338251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.9.0</comment>
+    <requestid>903783</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>07f18d5a4509217c3080e4659ce61445</srcmd5>
+    <version>3.9.1</version>
+    <time>1630525045</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.9.1</comment>
+    <requestid>915520</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fc88673e6ef354bdb2bdfb0949ccfd9e</srcmd5>
+    <version>3.9.2</version>
+    <time>1644273504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.9.2</comment>
+    <requestid>952204</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>925547a08088be39eac45d32a49fa59c</srcmd5>
+    <version>3.9.4</version>
+    <time>1661863754</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>999966</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>005c032ad1210d9360d8869b83f25950</srcmd5>
+    <version>3.10.1</version>
+    <time>1699046396</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.10.1</comment>
+    <requestid>1122964</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>81a8d824af61ba4e75c4dab622029f2e</srcmd5>
+    <version>3.10.1</version>
+    <time>1703527540</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-Add-FLINT-3-support.patch</comment>
+    <requestid>1134932</requestid>
+  </revision>
+</revisionlist>

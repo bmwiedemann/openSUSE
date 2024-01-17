@@ -1,0 +1,28 @@
+From dc1cdf3c7251cd1363a1091657b5cb94eb84ea64 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Tue, 28 Nov 2017 15:37:19 +0100
+Subject: [PATCH 22/29] Fix crash caused by NULL content_type
+
+Author: Adam Majer <adam.majer@suse.de>
+
+Also, allow requests with Content-Type set to text/xml
+---
+ cimXmlParser.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cimXmlParser.c b/cimXmlParser.c
+index e5586e63b0b6..9ce87c547b83 100644
+--- a/cimXmlParser.c
++++ b/cimXmlParser.c
+@@ -1738,7 +1738,7 @@ scanCimXmlRequest(CimRequestContext *ctx, char *xmlData, int *rc)
+   control.MQs = 0;
+   control.MPQs = 0;
+ 
+-  if (strncmp(ctx->contentType,"application/xml",15) !=0 ) {
++  if (strncmp(ctx->contentType,"application/xml",15) !=0 && strncmp(ctx->contentType,"text/xml",8) != 0) {
+     *rc=1;
+     return control.reqHdr;
+   }
+-- 
+2.23.0
+

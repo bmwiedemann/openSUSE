@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58144735a8cf216fa8f1e6a55749f6f8</srcmd5>
+    <version>1.9.0</version>
+    <time>1576235098</time>
+    <user>dimstar_suse</user>
+    <comment>Replacing PHP7 specific packages by PHP version agnostic packages in preparation of PHP8</comment>
+    <requestid>756757</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d594681f40acb762e6c11ecdbb5936d</srcmd5>
+    <version>1.9.1</version>
+    <time>1591558831</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 1.9.1
+  * Added .gitattributes for nicer packaging
+</comment>
+    <requestid>812275</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>728b6c828d07dcc87513947c41f86866</srcmd5>
+    <version>1.9.2</version>
+    <time>1597855847</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 1.9.2
+  * Repackage documentation</comment>
+    <requestid>827593</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9dfbacfeeffdb702c62394f6912b3d8a</srcmd5>
+    <version>1.10.0</version>
+    <time>1622928715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897734</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2f08a6fb1f611b76f197928c0894833</srcmd5>
+    <version>1.10.1</version>
+    <time>1665504197</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009674</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>57608b57c373ed963ae4bf3b9ce2b444</srcmd5>
+    <version>1.11.1</version>
+    <time>1698952905</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release 1.11.1
+  * BugFix: Triggering deprecation warnings in error-log causes system
+    failures because of changing the behavior in error reporting (#76)
+- New upstream release 1.11.0
+  * Feature: Add SCRAM-SHA-1, SCRAM-SHA-224, SCRAM-SHA-256, SCRAM-SHA-384
+    and SCRAM-SHA-512 support (#76)
+  * Task: Mark authentication methods CRAM-MD5, DIGEST-MD5 and LOGIN as
+    DEPRECATED with deprecation warnings in the error-log (#76)
+  * BugFix: SMTP: STARTTLS failed (code: 220, response: 2.0.0 Ready to
+    start TLS) (#74)
+  * BugFix: Issue with non-blocking streams on establishing STARTTLS
+    encryption (#74)
+  * BugFix: Implement TLS1.3 on STARTTLS encryption (#74)
+  * BugFix: using implode() instead of join() (#74)</comment>
+    <requestid>1121709</requestid>
+  </revision>
+</revisionlist>

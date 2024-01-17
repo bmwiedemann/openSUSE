@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sat Oct 15 17:11:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Reduce variable scopes as suggested by cppcheck
+  * NullIceErrorHandler: make arg names match between definition & declaration
+  * Remove or correct obsolete casts
+  * Use calloc instead of malloc to allocate arrays
+  * CheckFullyQuantifiedName: return unqualified name if alloc fails
+  * CheckFullyQuantifiedName: improve gethostname() handling
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
+Fri Apr 24 14:05:52 UTC 2015 - sndirsch@suse.com
+
+- Update to version 1.0.6:
+  * This minor maintenance release provides assorted build
+    configuration improvements and janitorial clenaups. 
+
+-------------------------------------------------------------------
+Fri Apr 13 16:58:18 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0.5:
+  + Fix a possible NULL dereference in an error handler
+  + Explicitly depend on libICE
+  + Man page improvements
+  + Build configuration improvements
+- Add pkgconfig(ice) BuildRequires: new explicit dependency
+  upstream.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split smproxy from xorg-x11. Initial version: 1.0.4.
+

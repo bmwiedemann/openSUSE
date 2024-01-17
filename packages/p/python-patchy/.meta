@@ -1,0 +1,5 @@
+<package name="python-patchy" project="openSUSE:Factory">
+  <title>python-patchy</title>
+  <description>Patch the inner source of python functions at runtime</description>
+  <devel project="devel:languages:python" package="python-patchy"/>
+</package>

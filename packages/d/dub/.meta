@@ -1,0 +1,5 @@
+<package name="dub" project="openSUSE:Factory">
+  <title>DUB</title>
+  <description>Package Manager for the D Programming language.</description>
+  <devel project="devel:languages:D" package="dub"/>
+</package>

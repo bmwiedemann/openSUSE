@@ -1,0 +1,9 @@
+<package name="libhts" project="openSUSE:Factory">
+  <title>C library for high-throughput sequencing data formats</title>
+  <description>HTSlib is an implementation of a unified C library for accessing common file formats, such as SAM, CRAM and VCF, used for high-throughput sequencing data, and is the core library used by samtools and bcftools.
+
+HTSlib implements a generalized BAM index, with file extension .csi (coordinate-sorted index). The HTSlib file reader first looks for the new index and then for the old if the new index is absent.
+
+This project also includes the popular tabix indexer, which indexes both .tbi and .csi formats, and the bgzip compression utility.</description>
+  <devel project="science" package="libhts"/>
+</package>

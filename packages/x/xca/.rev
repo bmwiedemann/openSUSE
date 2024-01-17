@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24dab2d35724e868a340e10047104785</srcmd5>
+    <version>2.1.2</version>
+    <time>1579636824</time>
+    <user>dimstar_suse</user>
+    <comment>xca 2.1.2 should be here</comment>
+    <requestid>765925</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d002b460c10eb00bd06f7516d2a2cf4</srcmd5>
+    <version>2.2.0</version>
+    <time>1580373746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768500</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>985b8816fe511c44ad6de956cff15021</srcmd5>
+    <version>2.2.1</version>
+    <time>1580842604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769131</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8d3a620d3c4ae9c4d49fe760de52602</srcmd5>
+    <version>2.3.0</version>
+    <time>1595864737</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.3.0 (forwarded request 822873 from computersalat)</comment>
+    <requestid>822874</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>635456cb7e5d74f19616a734cff2c99e</srcmd5>
+    <version>2.4.0</version>
+    <time>1621269939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893795</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>99588d399be5a4cd03fbace975780003</srcmd5>
+    <version>2.4.0</version>
+    <time>1676911590</time>
+    <user>dimstar_suse</user>
+    <comment>- change buildrequires for openssl on factory to use openssl-1.1
+  openSSL 3 is not supported in xca-2.4.0 yet (forwarded request 1066756 from oertel)</comment>
+    <requestid>1066758</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f466a8a0270e0cc8a8319df0b5d94726</srcmd5>
+    <version>2.5.0</version>
+    <time>1698249861</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120197</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2c791ce1dc357b844250eafca463dc8f</srcmd5>
+    <version>2.5.0</version>
+    <time>1700162996</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126917</requestid>
+  </revision>
+</revisionlist>

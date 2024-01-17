@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3110c1be38afe8002e010781efda8ba2</srcmd5>
+    <version>5.12</version>
+    <time>1551284941</time>
+    <user>dimstar_suse</user>
+    <comment>Python bindings for Qt5 3D Data Visualization</comment>
+    <requestid>678246</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d2cf7a563c0442447c85773edb0ea7dd</srcmd5>
+    <version>5.12</version>
+    <time>1551785184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681640</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0879511e630ccd16621dafb76a9b6d0c</srcmd5>
+    <version>5.13.0</version>
+    <time>1563259225</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.13.0</comment>
+    <requestid>714848</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c16dc1ba7f18b249713f07ed6306733</srcmd5>
+    <version>5.13.1</version>
+    <time>1574783596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748565</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ece45aba97fed0ea7c98472c24bd4f2e</srcmd5>
+    <version>5.15.0</version>
+    <time>1599210561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830359</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c4d943ea83e96ec58969397f8d815a1d</srcmd5>
+    <version>5.15.1</version>
+    <time>1600180139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.15.1
+  * A bug-fix release.
+- remove the superfluous Tumbleweed python2 skip hack</comment>
+    <requestid>834347</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e54f906a6bb2ad14f305587114adab90</srcmd5>
+    <version>5.15.1</version>
+    <time>1605290254</time>
+    <user>dimstar_suse</user>
+    <comment>- use sip5 where available 
+</comment>
+    <requestid>846244</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b3fca59f3916acb9f0b76ca5635f4a62</srcmd5>
+    <version>5.15.3</version>
+    <time>1615061913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875740</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3efb1b123987393c4ed25fbbb7c95fa4</srcmd5>
+    <version>5.15.4</version>
+    <time>1616008503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878419</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>26bcf009e65ce076ffa9f10c72d750ba</srcmd5>
+    <version>5.15.4</version>
+    <time>1624136660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900825</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>45f65f121a7dc2e56ba3ab74aa4afed1</srcmd5>
+    <version>5.15.4</version>
+    <time>1631646880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918869</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9b4898d0fa55f483e3055c857019662f</srcmd5>
+    <version>5.15.5</version>
+    <time>1673559869</time>
+    <user>dimstar_suse</user>
+    <comment>- Merge -sip and -api package into -devel
+
+- Update to 5.15.5
+  * Added support for Python v3.10.</comment>
+    <requestid>1057815</requestid>
+  </revision>
+</revisionlist>

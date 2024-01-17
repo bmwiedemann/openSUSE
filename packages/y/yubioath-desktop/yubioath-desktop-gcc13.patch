@@ -1,0 +1,12 @@
+Index: yubioath-desktop/QZXing/zxing/zxing/common/Types.h
+===================================================================
+--- yubioath-desktop.orig/QZXing/zxing/zxing/common/Types.h
++++ yubioath-desktop/QZXing/zxing/zxing/common/Types.h
+@@ -4,6 +4,7 @@
+ 
+ #include <string>
+ #include <iostream>
++#include <cstdint>
+ #include <zxing/common/Counted.h>
+ 
+ namespace zxing {

@@ -1,0 +1,2094 @@
+-------------------------------------------------------------------
+Wed Dec  6 11:46:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.10
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.10
+- Changes since 5.27.9:
+  * Adapt to plasma-framework being renamed to libplasma
+  * Adapt to plasma-framework moving to Plasma
+  * katesessions/konsoleprofiles: do not hold profilesmodel on the stack (kde#472862)
+
+-------------------------------------------------------------------
+Tue Oct 24 14:25:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.9
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.9
+- No code changes since 5.27.8
+
+-------------------------------------------------------------------
+Tue Sep 12 11:22:25 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * thumbnail_grid: use MouseArea as delegate root
+  * thumbnail_grid: allow screen reader to announce window name when pressing Alt+Tab
+  * applets/userswitcher: Set an explicitly compact width
+
+-------------------------------------------------------------------
+Tue Aug  1 11:19:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * wallpapers/potd: use https in apodprovider
+
+-------------------------------------------------------------------
+Tue Jun 20 17:15:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- Changes since 5.27.5:
+  * Color Picker: Round color values before formatting them
+  * alternatecalendar: set dayLabel for Qt calendar providers (kde#470034)
+
+-------------------------------------------------------------------
+Tue May  9 13:44:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.5
+- Changes since 5.27.4:
+  * applets/colorpicker: disable pick button when compositing is disabled (kde#466230)
+  * ProfilesModel: Adjust to kate using different folder for storing sessions than konsole (kde#466824)
+  * runners/datetime: fix test failure
+  * applets/colorpicker: Use native relative positioning Menu API
+  * applets/colorpicker: Open context menu on Menu key press
+  * applets/colorpicker: Fix copying color via keyboard
+  * applets/colorpicker: Factor out logic from signal handler
+  * applets/colorpicker: Only reset global current index from a real current item
+  * applets/colorpicker: Fix QML/JS code style, add explicit signal arguments
+
+-------------------------------------------------------------------
+Tue Apr  4 15:05:39 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.4
+- Changes since 5.27.3:
+  * wallpapers/potd: replace `anchor.{left,right}` with `Layout.fillWidth`
+  * ProfilesModel: Add placeholder for option "Start Kate (no arguments)" (kde#464724)
+
+-------------------------------------------------------------------
+Tue Mar 14 15:05:59 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.3
+- No code changes since 5.27.2
+
+-------------------------------------------------------------------
+Tue Feb 28 17:34:17 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.2
+- No code changes since 5.27.1
+
+-------------------------------------------------------------------
+Tue Feb 21 14:09:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.1
+- No code changes since 5.27.0
+
+-------------------------------------------------------------------
+Thu Feb  9 14:19:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.0
+- Changes since 5.26.90:
+  * runners/datetime: refine time zone matching
+
+-------------------------------------------------------------------
+Thu Jan 19 14:43:04 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed Jan  4 14:06:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.5
+- Changes since 5.26.4:
+  * There is no translation for nativeText, use sequence instead. (kde#463775)
+  * applets/notes: Close context menu on left click (kde#463530)
+  * wallpapers/potd: update picture at 0:01 (kde#463345)
+  * wallpapers/potd: use `i18ndc` to specify translation domain (kde#463103)
+  * KateSessionsItemDelegate: Fix reference to signal parameter (kde#462452)
+  * alternatecalendar: always use day name in full label
+
+-------------------------------------------------------------------
+Tue Nov 29 14:47:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- Changes since 5.26.3:
+  * wallpapers/potd: allow force refresh when no cached image is available
+  * applets/weather: Fix system tray detection
+
+-------------------------------------------------------------------
+Tue Nov  8 17:25:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- No code changes since 5.26.2
+
+-------------------------------------------------------------------
+Wed Oct 26 14:16:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- Changes since 5.26.1:
+  * runners/spellchecker: Fix config group name mismatch (kde#460899)
+
+-------------------------------------------------------------------
+Tue Oct 18 11:27:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * Add missing Messages.sh
+  * Revert "wallpapers/potd: show image with cursor when dragging" (kde#460378)
+  * Revert "wallpapers/potd: clear `Drag.imageSource` on `dragFinished`"
+  * Icon switchers: Use the actual app icon, not the plasma icon for the app
+  * fuzzy-clock: Fix colors in full representation (calendar view)
+  * colorpicker: Make left-clicking a color copy in the default format (kde#457311)
+  * Fuzzy-clock, binary-clock: Fix clicking applets again to close calendar
+
+-------------------------------------------------------------------
+Thu Oct  6 14:48:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * User switcher: fix excessive vertical padding in horizontal panels (kde#454111)
+  * Install po folder
+  * applets/timer: port to GridLayout in CompactRepresentation
+  * wallpapers/potd: move boolean to condition
+  * wallpapers/potd: fix not updating wallpaper in lock screen (kde#457361)
+  * wallpapers/potd: clear `Drag.imageSource` on `dragFinished`
+  * Remove ContainmentType from the grouping container plasmoid (kde#454416)
+  * [applets/notes] Show Font Toolbar just in editing mode
+  * wallpapers/potd: show image with cursor when dragging
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Sep  6 16:56:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.5
+- Changes since 5.25.4:
+  * wallpapers/potd: convert ms to h in debug info
+  * wallpapers/potd: add downloading debug info to `PotdClient`
+  * wallpapers/potd: skip updating when another updating process is running
+  * wallpapers/potd: do not match colon in regex (kde#457823)
+  * applets/weather: Make desktop widget big enough to fit Configure button (kde#419591)
+
+-------------------------------------------------------------------
+Tue Aug  2 14:07:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.4
+- Changes since 5.25.3:
+  * applets/calculator: read the answer after pressing `=`
+  * applets/calculator: move focus to the corresponding button when pressing keys
+  * applets/colorpicker: press space to open color menu
+  * applets/colorpicker: add name to color rectangle
+  * applets/fuzzy-clock: add a11y properties
+  * [applets/comic] Fix configurationRequired and busy state when deactivating the last provider
+  * [applets/comic] Update providers list after (un)installing provider
+  * Add missing include to array
+  * [applets/comic] Disable most context menu actions when comic is not ready (kde#406991)
+  * Remove clipPath portion of SVG (kde#399568)
+
+-------------------------------------------------------------------
+Tue Jul 12 11:29:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.3
+- Changes since 5.25.2:
+  * wallpapers/potd: only pass 1920x1080 or 3840x2160 to bing provider
+  * switchers/thumbnails: Fix icon cropped when text is large enough (kde#451997)
+  * switchers/compact: Fix dialog sizes not getting updated (kde#422447)
+  * switchers/thumbnailgrid: Fix layout when window count changes (kde#441241)
+
+-------------------------------------------------------------------
+Tue Jun 28 13:03:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.2
+- Changes since 5.25.1:
+  * wallpapers/hunyango: call repaintNeeded after color is changed
+  * wallpapers/potd: clear unused QDebug header in providers
+  * wallpapers/potd: load the old cached image to avoid blank screen
+  * wallpapers/potd: always force update after resume from sleep
+  * wallpapers/potd: shorten update interval if one provider fails to update
+
+-------------------------------------------------------------------
+Tue Jun 21 11:39:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.1
+- Changes since 5.25.0:
+  * wallpapers/potd: fix multimonitor support (kde#454333)
+  * wallpapers/potd: move providers to providers folder
+  * Drop no longer necessary KF5WindowSystem dependency
+  * [applets/userswitcher] Fix illegal property value
+  * [applets/userswitcher] Use onPressed: wasExpanded... idiom
+
+-------------------------------------------------------------------
+Thu Jun  9 11:15:02 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.0
+- Changes since 5.24.90:
+  * [applets/konsoleprofiles] Fix invalid property error
+  * wallpapers/potd: update accent color on image changed
+  * Explicitly list relevant lunar phase events (kde#454801)
+  * applets/dict: focus on input field on expanded
+
+-------------------------------------------------------------------
+Thu May 19 19:45:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.90
+- Too many changes to list here
+- Needs newer GCC on Leap
+
+-------------------------------------------------------------------
+Tue May  3 13:00:23 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.5
+- Changes since 5.24.4:
+  * Remove unneeded check for comic Dataengine being valid (kde#452596)
+
+-------------------------------------------------------------------
+Tue Mar 29 16:04:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.4
+- No code changes since 5.24.3
+
+-------------------------------------------------------------------
+Tue Mar  8 18:10:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.3
+- No code changes since 5.24.2
+
+-------------------------------------------------------------------
+Tue Feb 22 16:21:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.2
+- No code changes since 5.24.1
+
+-------------------------------------------------------------------
+Tue Feb 15 19:18:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.1
+- Changes since 5.24.0:
+  * [applets/notes] Fix drag-and-drop focus stealing (kde#449711)
+
+-------------------------------------------------------------------
+Sat Feb  5 19:51:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.24.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.24.0
+- Changes since 5.23.90:
+  * Purge all references to download.kde.org, replacing them with the correct endpoint of autoconfig.kde.org.
+  * dataengines/potd: Fix image URL parsing in NOAAProvider (kde#443424)
+  * wallpapers/potd: Don't access providerModel when currentIndex is -1
+  * spellchecker runner: Do not define plugin id with a space (kde#448156)
+
+-------------------------------------------------------------------
+Thu Jan 13 20:30:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.90
+- Changes since 5.23.5:
+  * Show timezone keyword as part of runner syntax
+  * Add Simon Stalenhag POTD Provider
+  * [windowswitchers] QML replacement for flipswitch and coverswitch (kde#443757,kde#184874,kde#404802,kde#321324)
+  * Use ellipsis character instead of three dots
+  * Use std::as_const
+  * [applets/weather] Remove associatedApplicationUrls (kde#445946)
+  * Add GitLab CI
+  * [applets/weather] Don't read providers from config + refactor
+  * applets/weather: Enable all weather providers by default
+  * applets/weather: Make cursor a pointing hand when hovering over source link
+  * [mediaframe] Make files added from paths into URLs. (kde#445071)
+  * Align indentation
+  * Remove unneeded CMAKE_MODULE_PATH change
+  * Remove Windows conditions
+  * Remove cmake comment cruft
+  * Clean up cmake code for runners:
+  * Define X-KDE-ConfigModule for runner KCMs
+  * [applets/notes] Fix Binding::restoreMode deprecation warning
+  * [colorpicker] Add ability to cancel color picking via Escape key
+  * Make colors in color picker respond properly to right click and Menu key
+  * Add .kde-ci.yml
+  * applets/weather: Improve first-run (needs config) experience
+
+-------------------------------------------------------------------
+Tue Jan  4 14:58:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.5
+- No code changes since 5.23.4
+
+-------------------------------------------------------------------
+Tue Nov 30 14:59:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.4
+- Changes since 5.23.3:
+  * applets/weather: Make cursor a pointing hand when hovering over source link
+  * [mediaframe] Make files added from paths into URLs. (kde#445071)
+
+-------------------------------------------------------------------
+Tue Nov  9 15:43:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.3
+- No code changes since 5.23.2
+
+-------------------------------------------------------------------
+Tue Oct 26 14:56:00 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.2
+- Changes since 5.23.1:
+  * [applets/notes] Fix Binding::restoreMode deprecation warning
+
+-------------------------------------------------------------------
+Tue Oct 19 14:05:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.1
+- No code changes since 5.23.0
+
+-------------------------------------------------------------------
+Thu Oct  7 13:50:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.23.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.23.0
+- Changes since 5.22.90:
+  * Make colors in color picker respond properly to right click and Menu key
+- Add new key + signature to plasma.keyring
+
+-------------------------------------------------------------------
+Thu Sep 16 13:05:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Aug 31 19:08:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- No code changes since 5.22.4
+
+-------------------------------------------------------------------
+Tue Jul 27 12:34:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- Changes since 5.22.3:
+  * Use dynamic sorting to support different locales
+  * Sort Unsplash POTD image categories alphabetically (kde#422971)
+
+-------------------------------------------------------------------
+Tue Jul  6 12:01:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.3
+- No code changes since 5.22.2.1
+
+-------------------------------------------------------------------
+Wed Jun 23 08:24:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- No code changes since 5.22.1
+
+-------------------------------------------------------------------
+Tue Jun 15 13:17:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.1
+- Changes since 5.22.0:
+  * [applet/notes] Don't focus buttons on click (kde#437828)
+
+-------------------------------------------------------------------
+Thu Jun  3 13:06:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.0
+- No code changes since 5.21.90
+
+-------------------------------------------------------------------
+Thu May 13 18:15:42 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue May  4 14:15:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- No code changes since 5.21.4
+
+-------------------------------------------------------------------
+Tue Apr  6 14:00:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- No code changes since 5.21.3
+
+-------------------------------------------------------------------
+Tue Mar 16 13:55:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * Fix outdated API key for flickr provider
+
+-------------------------------------------------------------------
+Tue Mar  2 15:01:37 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.2
+- No code changes since 5.21.1
+
+-------------------------------------------------------------------
+Tue Feb 23 14:52:09 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.1
+- No code changes since 5.21.0
+
+-------------------------------------------------------------------
+Thu Feb 11 18:23:13 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.0
+- Changes since 5.20.90:
+  * Copy result by default
+
+-------------------------------------------------------------------
+Thu Jan 21 21:31:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/20.90/
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  5 14:40:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.5
+- Changes since 5.20.4:
+  * Fix weather widget crash when going to Units tab for the second time (kde#419709)
+  * Fix the comic applet to display icons in the tabbar
+
+-------------------------------------------------------------------
+Tue Dec  1 15:22:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.4
+- No code changes since 5.20.3
+
+-------------------------------------------------------------------
+Wed Nov 11 11:08:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.3
+- No code changes since 5.20.2
+
+-------------------------------------------------------------------
+Tue Oct 27 22:23:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.2
+- Changes since 5.20.1:
+  * Fix translations for tooltips (kde#428154)
+
+-------------------------------------------------------------------
+Fri Oct 23 14:57:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Only BuildRequire Qt5WebEngine if available
+- Replace obsolete cmake(KDEExperimentalPurpose) BuildReq
+- Simplify %files a bit, move libplasmapotdprovidercore.so to -devel
+
+-------------------------------------------------------------------
+Tue Oct 20 14:30:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Fix typo in small icons window switcher (kde#427745)
+  * Use higher match priority and copy suggested text
+
+-------------------------------------------------------------------
+Thu Oct  8 16:55:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * Sync runner config groups on save
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * [applets/nightcolor] Also toggle on middle click (kde#426428)
+  * Require C++17
+  * [runners/converter] Reject conversion queries without source unit
+  * Drop unused KF5DBusAddons dependency
+  * Remove POTD KDED module
+  * Change POTD cache path back to ~/.cache
+  * Drop empty X-KDE-PluginInfo-Depends
+  * Fix KNS deprecations
+  * specify license for dictionary runner
+  * Port mostly to PlasmaComponents3
+  * Fix timer applet commands with arguments (kde#424349)
+  * Use camelcase includes (scripted)
+  * move pot kded to kconfigwatcher
+  * do not needlessly allocate stuff when the potd isn't even used
+  * spdx++
+  * Add license header to kded_potd and correct identifier
+  * Port task switchers to use standard sizes for everything else
+  * Port task switchers to use units.iconSizes (kde#422547)
+  * runners: port to new KRunner metadata system & install location
+  * Fix POTD in lock screen (kde#389962)
+  * Improve warning
+  * Implement configurable zoom in web browser widget
+  * [applets/userswitcher] Reflect users KCM's new name
+  * [applets] Show KCMs in System Settings (kde#417836)
+
+-------------------------------------------------------------------
+Tue Sep  1 11:38:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.5
+- No code changes since 5.19.4
+
+-------------------------------------------------------------------
+Tue Jul 28 13:45:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.4
+- No code changes since 5.19.3
+
+-------------------------------------------------------------------
+Tue Jul  7 13:58:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.3
+- Changes since 5.19.2:
+  * Port task switchers to use standard sizes for everything else
+  * Port task switchers to use units.iconSizes (kde#422547)
+
+-------------------------------------------------------------------
+Tue Jun 23 13:26:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.2
+- No code changes since 5.19.1
+
+-------------------------------------------------------------------
+Tue Jun 16 14:34:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.1.php
+- No code changes since 5.19.0
+
+-------------------------------------------------------------------
+Thu Jun  4 13:27:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.19.0.php
+- Changes since 5.18.90:
+  * set AcceptingInputStatus flag only when the text is in the panel (kde#410612)
+
+-------------------------------------------------------------------
+Thu May 14 14:33:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.90.php
+- Changes since 5.18.5:
+  * Remove remaining icons from applets with custom tooltips
+  * Konsole Runner: optimize and simplify
+  * [applets/weather] Improve UX for selecting a weather station
+  * Port quicklaunch from KRun::run to CommandLauncherJob
+  * Remove too strict Qt/KF5 deprecation rule
+  * Port Konsole and Kate runners and dataengine away from KToolInvocation
+  * [runners/converter] Skip empty parts when splitting units
+  * Fix build
+  * Refactor foreach, use Qt5 signal syntax, remove unnecessary method call
+  * [applets/notes] Actually hide button row when it's not visible
+  * add missing include to fix freebsd build
+  * do not link qtest on the runner
+  * make convertrunner only build once
+  * use correct locale for thousand separator + force qlocale default
+  * Refactor converter runner
+  * characters: Refactoring, improve validation in kcm, optimize
+  * [applet/notes] Show a "remove" button on the button row
+  * Make it compile against qt5.15. SkipEmptyParts is part of Qt::.
+  * [applets/notes] Rename to "Sticky Note"
+  * [applets/notes] Only show configure button when focussed (kde#417608)
+  * Fix duplicate results for sessions, simplify and optimize
+  * Fix minor EBN issues: http -> https, newlines, licenses
+  * Fix minor EBN issues
+
+-------------------------------------------------------------------
+Tue May  5 13:01:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.5.php
+- Changes since 5.18.4.1:
+  * Remove too strict Qt/KF5 deprecation rule
+
+-------------------------------------------------------------------
+Tue Mar 31 15:16:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4.1:
+  * Version fixed
+
+-------------------------------------------------------------------
+Tue Mar 31 14:47:41 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.4.php
+- No code changes since 5.18.3
+
+-------------------------------------------------------------------
+Tue Mar 10 14:55:32 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.3.php
+- Changes since 5.18.2:
+  * [applets/notes] Fix drag&drop links and cursor shape regression (kde#417953)
+
+-------------------------------------------------------------------
+Tue Feb 25 14:07:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.2.php
+- Changes since 5.18.1:
+  * [applets/weather] Remove outdated extra configure button (kde#412114)
+  * fix condition in KonsoleProfiles::run
+
+-------------------------------------------------------------------
+Tue Feb 18 14:05:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.1.php
+- Changes since 5.18.0:
+  * Fixup the previous commit
+  * Replace plasma.kde.org with kde.org/plasma-desktop
+
+-------------------------------------------------------------------
+Thu Feb  6 15:10:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.18.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.18.0.php
+- Changes since 5.17.90:
+  * [applets/weather] Port weather station picker to QQC2+ListView (kde#414442)
+
+-------------------------------------------------------------------
+Thu Jan 23 11:20:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build
+
+-------------------------------------------------------------------
+Thu Jan 16 14:04:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.90.php
+- Changes since 5.17.5:
+  * [TabBox] Add Thumbnail Grid window switcher
+  * [applets/calculator] Use Qt's in-built number formatting (kde#410988)
+  * Update my email address
+  * Fix localization. Idea by Victor Ryzhykh.
+  * Add applet for controlling Night Color (kde#400418)
+  * Port to QRandomGenerator
+  * List the Activity Pager also as an alternative to e.g. the Activity Bar (kde#394792)
+  * Assign notification area category for Keyboard indicator
+  * Unset X-Plasma-MainScript for wallpaper plugins
+  * Make it compile against qt5.15
+  * [applet/Weather] Remove unnecessary size override for the busy indicator
+  * support for shadowed background
+  * enable custom background for some plasmoids
+  * [applets/Weather] Port config UI mostly to QQC2 and away from Plasma components
+  * Shorten POTD provider names and remove description that is not used anywhere
+  * Add KDEClangFormat cmake support
+  * [applets/weather] Use unit description from KUnitConversion
+  * Add mmHg to pressure options in weather applet
+  * [applets/weather] Port from KIconLoader to QIcon
+  * Fix NOAA picture of the day provider (kde#408580)
+  * Correctly highlight the icon in the system tray
+  * Use colorful Plasma icon for General category in applets' settings sidebars Ref T10165
+  * Ignore some files
+  * Make it compile without deprecated methods
+  * Remove deprecated method
+
+-------------------------------------------------------------------
+Tue Jan  7 16:24:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.5.php
+- Changes since 5.17.4:
+  * [applets/weather] Fix regression in temperature size with short panels (kde#415187)
+
+-------------------------------------------------------------------
+Wed Dec  4 08:37:00 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.4.php
+- Changes since 5.17.3:
+  * [applets/Weather] Activate Apply button when clicking on a table item (kde#414442)
+  * [applets/Weather] Improve station chooser window's default size and margins
+  * [applets/Weather] Fix "no weather station found" message overflowing layout (kde#414441)
+  * [Weather] Make compact representation temperature text match size of clock text
+  * Fix POTD config ComboBox display issue in Lock Screen KCM
+
+-------------------------------------------------------------------
+Tue Nov 12 11:01:08 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.3.php
+- Changes since 5.17.2:
+  * [applets/weather] Reduce label minimum width to accommodate narrow vertical panels (kde#413592)
+  * [applets/weather] Don't show temp label in panel when it's blank (kde#413702)
+
+-------------------------------------------------------------------
+Tue Oct 29 20:45:52 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.2.php
+- No code changes since 5.17.1
+
+-------------------------------------------------------------------
+Tue Oct 22 16:44:44 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.1.php
+- Changes since 5.17.0:
+  * [Weather] Make update time spinbox editable
+  * Fix NOAA picture of the day provider (kde#408580)
+
+-------------------------------------------------------------------
+Thu Oct 10 14:25:47 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.17.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.17.0.php
+- No code changes since 5.16.90
+
+-------------------------------------------------------------------
+Thu Sep 19 12:32:37 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.90.php
+- Changes since 5.16.5:
+  * In the note applet, always paste without formatting by default. Add an action to paste preserving formatting in the contextual menu.
+  * Fix build The QMutex include in AbstractRunner was removed in https://cgit.kde.org/krunner.git/commit/?id=ac6814b1387bc0c790928ec5b62f43c1764994d6
+  * Fix Unsplash POTD not updating
+  * Fix build The QMutex include in AbstractRunner was removed in https://cgit.kde.org/krunner.git/commit/?id=ac6814b1387bc0c790928ec5b62f43c1764994d6
+  * [Converter Runner] Support fractional units (kde#409216)
+  * Attempt to support different collections of Unsplash
+  * Unsplash POTD: filter out banner image and pick random photo from latest
+  * Add Unsplash POTD Provider
+  * [quota] Use new breeze icons (kde#389311)
+  * [Notes] Fix icons being almost invisible with light backgrounds when using dark themes (kde#353819)
+  * Add gitignore
+  * Fix forward declaration
+  * can take keyboard focus in panels
+
+-------------------------------------------------------------------
+Tue Sep  3 12:44:12 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.5.php
+- Changes since 5.16.4:
+  * Fix build
+  * Fix #410744: Duplicate results when a 2nd unit is partially written in krunner (kde#410744)
+  * Remove colon (:) prefix when looking up dictionary word (kde#376905)
+
+-------------------------------------------------------------------
+Tue Jul 30 12:40:18 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.16.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.4.php
+- Changes since 5.16.3:
+  * Remove colon (:) prefix when looking up dictionary word (kde#376905)
+  * Hide the applet when clicking the view and it's expanded (kde#395589)
+
+-------------------------------------------------------------------
+Tue Jul  9 17:29:07 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.3.php
+- No code changes since 5.16.2
+
+-------------------------------------------------------------------
+Tue Jun 25 12:41:18 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.2.php
+- Changes since 5.16.1:
+  * [Calculator] Fix popup size and minimum size for expanded version
+
+-------------------------------------------------------------------
+Tue Jun 18 16:38:15 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.1.php
+- No code changes since 5.16.0
+
+-------------------------------------------------------------------
+Thu Jun  6 14:07:09 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.16.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.16.0.php
+- Changes since 5.15.90:
+  * [Weather applet] CompactRepresentation: glow icon on hover
+  * [Calculator] Make buttons' text labels scale in size along with the widget
+  * Move knsrc files to the new location
+
+-------------------------------------------------------------------
+Thu May 16 16:56:38 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.90.php
+- Changes since 5.15.5:
+  * bump Qt version to 5.12 as agreed at start of cycle
+  * remove QQC1 now that the bug has been fixed
+  * [Notes] Fix bad merge and restore triple-equals comparison
+  * [Notes] Port to QQC2 and use GridView KCM components for the color chooser
+  * [Media Frame] Port "Paths" category to QQC2+Kirigami and modernize UI
+  * [Astronomical Calendar Plugin] Port to QQC2+Kirigami Formlayout
+  * [dict] Modernize configuration window
+  * Require KF5 5.58.0 like the rest of Plasma
+  * [quicklaunch] Port settings window to QQC2+Kirigami FormLayout and modernize UI
+  * [System Load Viewer] Port settings window to QQC2+Kirigami FormLayout and modernize UI
+  * [potd] Modernize configuration settings
+  * [Weather] Port settings window to QQC2+Kirigami FormLayout and modernize UI
+  * [Timer] Port settings window to QQC2+Kirigami FormLayout and modernize UI
+  * [User Switcher] Port settings window to QQC2+Kirigami FormLayout and modernize UI
+  * Remove the Show Desktop applet (it's in plasma-desktop now)
+  * [FifteenPuzzle] Port configuration window to QQC2 and Kirigami.FormLayout and improve UI
+  * [comic] Modernize configuration windows
+  * For the moment this runner is disable but this reply was never deleted
+  * [color-picker] Port configuration window to QQC2 and Kirigami.FormLayout
+  * [fuzzy-clock] Port configuration window to QQC2 and Kirigami.FormLayout
+  * [quickshare] Port configuration window to QQC2 and Kirigami.FormLayout
+  * [binary-clock] Port configuration window to QQC2 and Kirigami.FormLayout
+  * [Media frame] Modernize and improve settings window (kde#390571)
+  * [Web Browser] Use more appropriate panel icon and increase default size
+  * Remove deprecated method
+  * [Color Picker] Allow dragging color button to drag color
+  * [potd] Remove explicit use of ECM_KDE_MODULE_DIR, part of ECM_MODULE_PATH
+  * Consistent arrow key handling in the Informative Alt+Tab skin
+
+-------------------------------------------------------------------
+Tue May  7 11:04:57 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.5.php
+- Changes since 5.15.4:
+  * [weather] Fix default visibility unit for non-metric locales
+
+-------------------------------------------------------------------
+Tue Apr  2 12:40:58 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.4.php
+- Changes since 5.15.3:
+  * [Media Frame] Set sourceSize for higher quality and lower memory consumption
+
+-------------------------------------------------------------------
+Tue Mar 12 13:15:22 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.3.php
+- Changes since 5.15.2:
+  * Consistent arrow key handling in the Informative Alt+Tab skin
+
+-------------------------------------------------------------------
+Tue Feb 26 14:05:43 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.2.php
+- Changes since 5.15.1:
+  * [PotD] Port mostly to QQC2 (kde#404248)
+
+-------------------------------------------------------------------
+Tue Feb 19 12:26:20 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.1.php
+- Changes since 5.15.0:
+  * [weather] Center align the warning heading
+  * [weather] Fix weather Notices tab not showing
+  * [comic dataengine] Do not cache identifier only requests
+  * [comic] Update comic strip on current identifier only
+  * [comic] Fix max cache limit
+  * [comic] Request current identifier on data change
+  * [comicupdater] Fix last day check
+
+-------------------------------------------------------------------
+Thu Feb  7 16:02:52 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.15.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.15.0.php
+- Changes since 5.14.90:
+  * [KdePlasma-Addons/POTD/EOPD] Fixed RegEx string to accommodate both HTTP/HTTPS protocols
+
+-------------------------------------------------------------------
+Thu Jan 17 18:48:03 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.90.php
+- Changes since 5.14.5:
+  * date runner: match timezones by whether it's contained (kde#403271)
+  * Fix copyrights in binary clock files
+  * Allow dictionary runner to search multiple times
+  * [KdePlasma-Addons/POTD/NOAA] Fixed RegEx string of landing page
+  * [KdePlasma-Addons/POTD/NOAA] Fixed the web address and fetched the picture from new address
+  * Use the nicer K_PLUGIN_CLASS_WITH_JSON
+  * [weather] Use capitalized strings for display of pressure tendency
+  * [comic dataengine] Do not cache identifier only requests
+  * [comic] Update comic strip on current identifier only
+  * [comic] Fix max cache limit
+  * [comic] Request current identifier on data change
+  * [comicupdater] Fix last day check
+  * Added "Transparent with light text" theme for Desktop Notes (kde#386833)
+  * Fix minor typosand EBN issues
+
+-------------------------------------------------------------------
+Tue Jan  8 13:37:16 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.14.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.5.php
+- Changes since 5.14.4:
+  * [comic dataengine] Do not cache identifier only requests
+  * [comic] Update comic strip on current identifier only
+  * [comic] Fix max cache limit
+  * [comic] Request current identifier on data change
+  * [comicupdater] Fix last day check
+
+-------------------------------------------------------------------
+Wed Nov 28 07:52:47 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.4.php
+- Changes since 5.14.3:
+  * [comic] Correct usage of DataEngineConsumer
+  * [comic] Fix error handling in data updated
+  * [comic] Fix widget context menu
+  * [KonsoleProfiles applet] Fix initial focus
+  * [weather] Fix broken observation display for temperature of 0 °
+  * datetime runner: Match timezones less restrictively
+  * keyboard indicator: Fix warnings
+  * [Comics & Weather widgets] give "Configure..." buttons icons (kde#399888)
+  * [Media Frame] Hide back/forward buttons altogether if there is only one image
+  * [Media Frame] Fix futureLength property
+  * [KonsoleProfiles applet] Fix navigating with the keyboard
+  * [DateTime Runner] Fix a copyright typo.
+  * Use KDEFrameworkCompilerSettings
+
+-------------------------------------------------------------------
+Tue Nov  6 15:53:46 UTC 2018 - fabian@ritter-vogt.de
+
+- Add David Edmundson's key to plasma.keyring
+- Update to 5.14.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.3.php
+- Changes since 5.14.2:
+  * [comicprovider] Restart timer on redirect request
+
+-------------------------------------------------------------------
+Tue Oct 23 13:56:01 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.2.php
+- Changes since 5.14.1:
+  * [Minimize All Plasmoid] Import QtQuick 2.7 (kde#399947)
+
+-------------------------------------------------------------------
+Tue Oct 16 14:05:14 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.1.php
+- Changes since 5.14.0:
+  * [Media Frame] Fix enabling Apply button when adding/removing paths
+  * [KonsoleProfiles applet] Fix navigating with the keyboard
+
+-------------------------------------------------------------------
+Fri Oct  5 10:01:12 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.14.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.14.0.php
+- Changes since 5.13.90:
+  * [weather applet] Fix unwanted ruling of implicit icon sizes on displayed size (kde#398960)
+
+-------------------------------------------------------------------
+Sat Sep 15 16:25:29 UTC 2018 - fabian@ritter-vogt.de
+
+- Add tarball signature and keyring containing keys of release managers
+  Jonathan Riddell and Bhushan Shah
+
+-------------------------------------------------------------------
+Thu Sep 13 17:25:02 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.90.php
+- Changes since 5.13.5:
+  * [Spellchecker Runner] Add button to open Spell Check KCM (kde#398244)
+  * QT_MIN_VERSIONS is Qt 5.11 for Plasma 5.14. Agreed at kickoff meeting.  Set everywhere for clearity and consistency.
+  * Show the state as well on the full representation (kde#397365)
+  * [Timer applet] Reset opacity on timer start and reset (kde#396497)
+  * Changed variable type to int to display squares instead of rectangles
+  * Changed refresh time from 30 to 60 seconds
+  * Cleaned code for binary clock applet and added comments
+  * New icons for Keyboard Indicator Closes T9050
+  * Show info if we have this info :)
+  * Centre align SystemLoadViewer headers
+
+-------------------------------------------------------------------
+Tue Sep  4 10:58:41 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.5.php
+- Changes since 5.13.4:
+  * [POTD] Actually update the image every day (kde#397914)
+
+-------------------------------------------------------------------
+Tue Jul 31 15:18:33 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.4.php
+- Changes since 5.13.3:
+  * [dict applet] Fix translation catalog name to match pluginid
+
+-------------------------------------------------------------------
+Tue Jul 10 14:02:11 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.3.php
+- Changes since 5.13.2:
+  * [Media Frame] Fix history length property
+
+-------------------------------------------------------------------
+Tue Jun 26 16:01:01 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.2.php
+- Changes since 5.13.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun 19 14:44:57 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.1.php
+- Changes since 5.13.0:
+  * Do not restore windows on minimise change (kde#395519)
+  * [weather applet] Fix tooltip to add only existing wind information
+  * [weather applet] Fix new wind direction arrows to match direction of old
+
+-------------------------------------------------------------------
+Thu Jun  7 20:03:51 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.13.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.13.0.php
+- Changes since 5.12.90:
+  * [Timer applet] Fix double speed countdown & commands run multiple times (kde#381173)
+  * [timer applet] Fix internal function calls
+  * [timer applet] Unify QtQuick imports
+  * Fix always empty memory bar
+
+-------------------------------------------------------------------
+Sat May 19 14:16:37 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.90.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Wed May  2 09:23:59 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.5.php
+- Changes since 5.12.4:
+  * Fix run-time warnings on quick-share
+  * [mediaframe applet] Enable wrapping of fill mode description in config UI (kde#393232)
+  * [quickshare applet] Fix sizing of complete color config page
+  * [quickshare applet] Fix layout of elements in config page
+  * [mediaframe applet] Fix defunct adding of new files/folder per DnD
+  * [mediaframe applet] Fix broken selection of fill mode
+  * [notes applet] Remove unused/unneeded import of private.notifications
+  * [potd dataengine] Fix Wikimedia Picture of the Day provider
+  * [Media Frame] Fix config pages to fit themselves into dialog
+  * [weather applet] Fix wind direction arrows to adapt to color theme
+  * [potd wallpaper] Add missing Messages.sh, use wallpaper catalog name
+  * [potd wallpaper] Config UI: fix spacing between UI elements
+  * [potd dataengine] Do not leak pimpl object of PotdProvider class
+
+-------------------------------------------------------------------
+Tue Mar 27 15:40:48 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.4.php
+- Changes since 5.12.3:
+  * [konsoleprofiles applet] Do not try to set plasmoid.aspectRatioMode
+  * Fix default colour used by Swap monitor
+  * Drop unused X-Plasma-Requires-* entries from applet metadata
+  * Remove long-time deprecated Encoding=UTF-8 from desktop format files
+
+-------------------------------------------------------------------
+Tue Mar  6 16:07:48 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.3.php
+- Changes since 5.12.2:
+  * [grouping applet] Use "object-group" as icon
+  * [grouping applet] Add missing Comment entry to metadata
+
+-------------------------------------------------------------------
+Wed Feb 21 23:57:08 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.2.php
+- Changes since 5.12.1:
+  * Remove dead code & translation extraction from release branch
+  * [Media Frame] Use Label instead of Text (kde#389259)
+
+-------------------------------------------------------------------
+Tue Feb 13 16:25:28 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.1.php
+- Changes since 5.12.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Feb  2 21:03:44 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.12.0.php
+- Changes since 5.11.95:
+  * Use PURPOSE property with Qt5WebEngine to note reason for dependency
+  * [konsoleprofiles applet] Fix name of translations catalog
+  * [mediaframe applet] Fix creation of file search filter by QImageReader data
+  * Remove unused old pre-plasma5 file binaryclock.cpp
+  * Remove bogus additional cmake project() calls in subdirs
+  * Remove dead groupingdesktop containment code, replaced by applets//grouping
+  * [comic applet] Don't compare iterators from different return values
+  * Removal of all unported/unbuilt applets, dataengines, runners, wallpapers
+  * Make WebEngine really optional
+  * Skip the dict applet if Qt5WebEngine isn't available
+  * [binary clock] Fix some broken entries in metadata
+  * [weather applet] Fix badly sized comboboxes in config by switching to QQC2 (kde#389474)
+  * Dump unported code of contactsrunner, akonadi-search has pimcontactsrunner
+  * [katesessions runner] Fix unwanted creation of multiple KDirWatch'ers
+  * Bump Qt version to 5.9
+  * Require KDE Frameworks 5.42
+
+-------------------------------------------------------------------
+Mon Jan 15 15:54:06 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.95.php
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Tue Jan  2 16:40:09 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.5.php
+- Changes since 5.11.4:
+  * [comic] Fix update interval
+  * [comic] Make sure KNS download dialog is destroyed
+
+-------------------------------------------------------------------
+Thu Nov 30 10:45:12 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.4.php
+- Changes since 5.11.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Nov  7 15:15:41 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.3.php
+- Changes since 5.11.2:
+  * Use wakeOne() instead of notify_one()
+
+-------------------------------------------------------------------
+Tue Oct 24 18:13:27 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.2.php
+- Changes since 5.11.1:
+  * Dictionary Engine: fix synchronization issues.
+
+-------------------------------------------------------------------
+Sat Oct 21 13:46:02 UTC 2017 - fabian@ritter-vogt.de
+
+- Add #!BuildIgnore to break the
+  plasma5-workspace-devel -> plasma5-workspace -> kwin5 -> kdialog
+  dep chain which results in pulling in kdebase4-runtime on 42.2
+
+-------------------------------------------------------------------
+Tue Oct 17 17:19:03 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.1.php
+- Changes since 5.11.0:
+  * None
+
+-------------------------------------------------------------------
+Thu Oct  5 12:39:18 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.11.0.php
+- Changes since 5.10.95:
+  * Fix ksysguard not starting on plasmoid click
+
+-------------------------------------------------------------------
+Thu Sep 14 14:29:06 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.95.php
+- Changes since 5.10.5:
+  * Try to get higher quality image for flickr potd. (kde#377917)
+  * spdx syntax fix http://metadata.neon.kde.org/appstream/html/xenial/main/issues/plasma-dataengines-addons.html
+  * fix .desktop files for appstream compliance http://metadata.neon.kde.org/appstream/html/xenial/main/issues/plasma-widgets-addons.html
+  * fixes for appstream compliance http://metadata.neon.kde.org/appstream/html/xenial/main/issues/plasma-wallpapers-addons.html
+  * [Color Picker] Add drag pixmap for color
+  * [Color Picker] Allow running color picker applet standalone
+  * [Notes applet] Wrap in FocusScope
+  * remove wrong X-Ubuntu-Gettext-Domain key
+  * Restore original formatButtonsRow.opacity
+  * [Notes Applet] Show formatting options when it has focus
+  * Use Q_DECL_OVERRIDE
+  * Fix fifteen puzzle solveability (kde#358940)
+
+-------------------------------------------------------------------
+Tue Aug 22 19:11:31 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.5.php
+- Changes since 5.10.4:
+  * Update comic KNS providers to https
+
+-------------------------------------------------------------------
+Tue Jul 18 16:14:48 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.4.php
+- Changes since 5.10.3:
+  * Fix check for missing engine in comic applet (kde#372313)
+  * [Color Picker] Fix picking colors in multi-screen (kde#382261)
+  * Replace XML parsing in National Geographic dataengine (kde#379003)
+
+-------------------------------------------------------------------
+Tue Jun 27 17:50:38 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.3.php
+- Changes since 5.10.2:
+  * fix no-display of CPU bars per core (and fix some warnings)
+
+-------------------------------------------------------------------
+Tue Jun 13 21:35:01 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.2.php
+- Changes since 5.10.1:
+  * None
+
+-------------------------------------------------------------------
+Tue Jun  6 17:19:56 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.1.php
+- Changes since 5.10.0:
+  * Make QuickShare plasmoid compatible with Purpose 1.1 (kde#380883)
+  * FEATURE: Remove the moon it doesn't get built, contains unclearly licenced files causing problem for distributors, there is a modern equivalent in KDE store https://store.kde.org/p/1165459/
+
+-------------------------------------------------------------------
+Fri May 26 14:10:31 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.10.0.php
+- Changes since 5.9.95:
+  * None
+
+-------------------------------------------------------------------
+Thu May 11 20:26:27 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.95
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.95.php
+- Too many changes to list here
+- Remove patches, now upstream:
+  * 0001-Color-Picker-Add-border-around-color-if-contrast-to-.patch
+  * 0002-Color-Picker-Add-contrast-frame-around-colors-in-pop.patch
+
+-------------------------------------------------------------------
+Tue Apr 25 18:58:04 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.9.5
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.5.php
+- Changes since 5.9.4:
+  * None
+
+-------------------------------------------------------------------
+Tue Mar 21 19:21:46 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.4
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.4.php
+- Changes since 5.9.3:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 28 19:55:14 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.3.php
+- Changes since 5.9.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Feb 14 17:58:13 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.2
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.2.php
+- Changes since 5.9.1:
+  * Lazy QUrl::fromUserInput in web browser
+
+-------------------------------------------------------------------
+Tue Feb  7 18:54:01 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.1
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.1.php
+- Changes since 5.9.0:
+  * check on current comic to be valid
+
+-------------------------------------------------------------------
+Sat Jan 28 09:54:36 UTC 2017 - fabian@ritter-vogt.de
+
+- Add upstream patches from master to improve appearance of color picker:
+  * 0001-Color-Picker-Add-border-around-color-if-contrast-to-.patch
+  * 0002-Color-Picker-Add-contrast-frame-around-colors-in-pop.patch
+
+-------------------------------------------------------------------
+Thu Jan 26 19:58:55 CET 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/plasma-5.9.0.php
+- Changes since 5.8.95:
+  * Fix pixel alignment and non-standard height in QuickShare delegate
+  * [User Switcher] Just use Row's implicitWidth instead of calculating it manually
+
+-------------------------------------------------------------------
+Thu Jan 12 20:39:58 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.8.95 (Plasma 5.9 Beta)
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.95.php
+- Changes:
+  * See https://www.kde.org/announcements/plasma-5.8.5-5.8.95-changelog.php#plasma-addons
+
+-------------------------------------------------------------------
+Tue Dec 27 18:31:45 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.5.php
+
+-------------------------------------------------------------------
+Wed Nov 23 10:59:30 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.4.php
+
+-------------------------------------------------------------------
+Thu Nov  3 17:41:25 UTC 2016 - fabian@ritter-vogt.de
+
+- Introduce new _plasma5_bugfix global for more fine-tuned dependencies
+
+-------------------------------------------------------------------
+Tue Nov  1 10:36:40 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.3.php
+
+-------------------------------------------------------------------
+Tue Oct 18 15:16:03 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.2.php
+
+-------------------------------------------------------------------
+Tue Oct 11 15:44:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.1.php
+
+-------------------------------------------------------------------
+Wed Oct  5 07:58:49 UTC 2016 - fabian@ritter-vogt.de
+
+- Add Source: URL back
+
+-------------------------------------------------------------------
+Thu Sep 29 16:36:28 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.8.0
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.8.0.php
+
+-------------------------------------------------------------------
+Wed Sep 21 09:15:14 UTC 2016 - fabian@ritter-vogt.de
+
+- Use %{_plasma5_version} again, define it if needed
+
+-------------------------------------------------------------------
+Thu Sep 15 15:53:55 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.95 (Plasma 5.8 Beta)
+  * New LTS feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.95.php
+
+-------------------------------------------------------------------
+Tue Sep 13 17:42:09 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.5
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.5.php
+
+-------------------------------------------------------------------
+Fri Aug 26 20:36:41 UTC 2016 - fabian@ritter-vogt.de
+
+- Update to 5.7.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.4.php
+
+-------------------------------------------------------------------
+Fri Aug 12 23:39:43 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Adjust filelist for the plasmoid appdata, installed with KF > 5.25.0
+
+-------------------------------------------------------------------
+Tue Aug  2 11:36:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.3.php
+
+-------------------------------------------------------------------
+Wed Jul 20 08:54:36 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.2.php
+
+-------------------------------------------------------------------
+Wed Jul 13 06:13:33 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.1.php
+
+-------------------------------------------------------------------
+Tue Jul  5 11:50:24 UTC 2016 - wbauer@tmo.at
+
+- Use the new %kf5_find_lang macro to create the file list for the
+  lang package
+- Remove rpmlintrc file, it is not needed any more now
+
+-------------------------------------------------------------------
+Thu Jun 30 12:02:29 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.7.0.php
+
+-------------------------------------------------------------------
+Sun May 15 16:50:22 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.4
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.4.php
+
+-------------------------------------------------------------------
+Tue Apr 19 20:46:02 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.3
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.3.php
+
+-------------------------------------------------------------------
+Tue Apr  5 15:53:53 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.2
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.2.php
+
+-------------------------------------------------------------------
+Tue Mar 29 16:21:04 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * New bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.1.php
+
+-------------------------------------------------------------------
+Sun Mar 20 09:19:57 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.6.0.php
+
+-------------------------------------------------------------------
+Tue Mar  1 17:33:21 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.5 (boo#968966)
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.5.php
+
+-------------------------------------------------------------------
+Tue Jan 26 22:20:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.4:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.4.php
+
+-------------------------------------------------------------------
+Wed Jan  6 14:12:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.3:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.3.php
+
+-------------------------------------------------------------------
+Tue Dec 22 22:35:13 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.2.php
+
+-------------------------------------------------------------------
+Tue Dec 15 17:49:58 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.5.1.php
+
+-------------------------------------------------------------------
+Sat Dec 12 17:32:25 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0:
+  * For more details please see:
+    https://dot.kde.org/2015/12/08/plasma-55-beautiful-new-artwork
+- Move to cmake(...) BuildRequires where possible
+
+-------------------------------------------------------------------
+Sun Nov  8 19:01:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.3 (boo#955068):
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.3.php
+
+-------------------------------------------------------------------
+Sun Oct  4 10:44:07 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.2.php
+
+-------------------------------------------------------------------
+Thu Sep 10 17:18:37 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.1.php
+
+-------------------------------------------------------------------
+Mon Aug 24 17:52:44 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.0:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.4.0.php
+
+-------------------------------------------------------------------
+Sun Aug 16 10:17:06 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.95 aka 5.4 beta:
+  This release of Plasma brings many nice touches for our users
+  such as much improved high DPI support, KRunner auto-completion
+  and many new beautiful Breeze icons. It also lays the ground for
+  the future with a tech preview of Wayland session available.
+  We're shipping a few new components such as an Audio Volume
+  Plasma Widget, monitor calibration tool and the User Manager
+  tool comes out beta.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.95.php
+- Add purpose(-devel) (Build)Requires on newer oS versions
+
+-------------------------------------------------------------------
+Thu Jul 23 10:51:47 UTC 2015 - mlin@suse.com
+
+- Fix those version condition for 42
+
+-------------------------------------------------------------------
+Sun Jun 28 18:32:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.2.php
+
+-------------------------------------------------------------------
+Fri May 22 15:30:10 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.1.php
+
+-------------------------------------------------------------------
+Thu Apr 23 13:27:31 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.3 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.3.0.php
+- Obsolete plasma-addons for openSUSE > 13.2
+
+-------------------------------------------------------------------
+Sat Apr 11 18:53:46 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.95 aka 5.3 beta:
+  * New feature release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.95.php
+- Update required Qt version to 5.4.0
+- Added knewstuff-devel and sonnet-devel BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 19 17:42:42 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.2:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.2.php
+
+-------------------------------------------------------------------
+Mon Mar 16 11:49:23 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added libxcb-devel and pkgconfig(xcb-keysyms) BuildRequires
+
+-------------------------------------------------------------------
+Fri Feb 20 02:44:02 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * Bugfix release
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.1.php
+
+-------------------------------------------------------------------
+Mon Jan 26 19:49:29 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Final:
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.2.0.php
+
+-------------------------------------------------------------------
+Tue Jan 13 16:35:11 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 Beta aka 5.1.95:
+  * Undo changes to Plasma desktop layout
+  * Smarter sorting of results in KRunner
+  * Breeze window decoration theme adds a new look to your
+    desktop and is now used by default
+  * New white mouse cursor theme for Breeze.
+  * New plasma widgets: 15 puzzle, web browser, show desktop
+  * Over 300 bugs fixed throughout Plasma modules.
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.95.php
+- Add new BuildRequires:
+  kross-devel, pkgconfig(Qt5X11Extras), pkgconfig(gio-2.0),
+  pkgconfig(glib-2.0), pkgconfig(gobject-2.0), pkgconfig(ibus-1.0),
+  pkgconfig(x11)
+- Split kimpanel engine and plasmoid to a separate package
+- Drop no longer relevant obsoletes
+- Add conflict with plasma-addons
+
+-------------------------------------------------------------------
+Thu Dec 11 18:00:05 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.2:
+  * Bugfix release
+  * Handle onExternalData event in notes applet
+  * Properly wrap to the next hour. kde#340615
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.2.php
+
+-------------------------------------------------------------------
+Thu Nov  6 20:14:19 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1.1:
+  * Bugfix release
+  * Fix fuzzy clock saying "half past seven" when
+    it's half past six, kde#340406
+  * Make fuzzy strings properly translateable, kde#340406
+  * Make text color white on black note, kde#335213
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.1.php
+
+-------------------------------------------------------------------
+Sat Oct 25 17:46:12 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Recommend lang subpackage
+
+-------------------------------------------------------------------
+Thu Oct  9 21:24:37 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.1 Final:
+  * Bugfixes since RC1
+  * For more details please see:
+    https://www.kde.org/announcements/plasma-5.1.0.php
+
+-------------------------------------------------------------------
+Tue Sep 30 13:25:29 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Declare license as LGPL-2.1 and GPL-2.0+ and GPL-3.0 (bnc#653113),
+  with newer releases we'd get more and more addons, and there is
+  not much point in splitting each in separate package
+- Remove %post and %postun sections, no shared libs are installed
+  so there is no need to call ldconfig
+
+-------------------------------------------------------------------
+Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Activate plasma5-addons package
+- Add rpmlintrc file for file-not-in-%lang warnings: we don't use
+  find_lang macro as it doesn't searches in subdirectories

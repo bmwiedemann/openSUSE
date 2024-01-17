@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Fri May  5 12:22:21 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add hwnoise tool which got added with Linux 6.3
+
+-------------------------------------------------------------------
+Tue Jan 10 10:41:54 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add missing libtraceevent linker argument (workaround until
+  the kernel list the lib dependency)
+- Drop version dependencies on kernel and the libraries
+
+-------------------------------------------------------------------
+Thu Oct  6 09:40:30 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Add a dummy -rebuild package to give OBS/Tumbleweed a hint when this
+  package needs a rebuild
+
+-------------------------------------------------------------------
+Mon Jul 25 14:20:41 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Suppress stripping of installed binaries
+
+-------------------------------------------------------------------
+Fri Feb 11 17:07:20 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Initial packaging of rtla.

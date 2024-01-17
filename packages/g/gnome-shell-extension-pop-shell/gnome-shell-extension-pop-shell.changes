@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Wed Aug 30 13:37:16 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Add 8be10fa999b6631382c4f71826ee78ea9993f459.patch, fixes TSC
+  compilation 
+
+-------------------------------------------------------------------
+Fri Sep 23 11:59:16 UTC 2022 - Robert Munteanu <rombert@apache.org>
+
+- Add 4520e7813dcbca57ff19cba68085f5d8adf4785e.patch, allows GNOME 43 
+
+-------------------------------------------------------------------
+Tue May 31 18:34:26 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+bump: 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch to allow GNOME 42
+
+-------------------------------------------------------------------
+Fri Aug 27 14:29:49 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch:
+  also allow gnome 41
+
+-------------------------------------------------------------------
+Mon Jul 26 12:31:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- backport 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch:
+  Fix prefs dialog crashing on Gnome 40
+- drop allow-gnome-40.patch:
+  included in 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch
+
+-------------------------------------------------------------------
+Fri Mar 19 19:05:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add allow-gnome-40.patch:
+  Allow Gnome 40 until upstream tags a new release.
+
+-------------------------------------------------------------------
+Mon Mar 15 09:44:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Mar 12 11:25:07 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add BuildRequires to gobject-introspection to enable the requires
+  generator for the typelib imports
+
+-------------------------------------------------------------------
+Thu Mar 11 18:03:49 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.2.0
+  https://github.com/pop-os/shell/releases/tag/1.2.0
+
+-------------------------------------------------------------------
+Wed May  6 18:29:15 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- require the helper app 
+
+-------------------------------------------------------------------
+Fri May  1 13:56:38 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

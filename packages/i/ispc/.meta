@@ -1,0 +1,9 @@
+<package name="ispc" project="openSUSE:Factory">
+  <title>C-based SPMD programming language compiler</title>
+  <description>A compiler for a variant of the C programming language, with extensions for
+&quot;single program, multiple data&quot; (SPMD) programming.
+ 
+</description>
+  <devel project="devel:tools:compiler" package="ispc"/>
+  <url>https://ispc.github.io/</url>
+</package>

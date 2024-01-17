@@ -1,0 +1,177 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89608781d0fe08982ec24ae402aea1a3</srcmd5>
+    <version>19.08</version>
+    <time>1574783426</time>
+    <user>dimstar_suse</user>
+    <comment>Add ComputeLibrary to Factory</comment>
+    <requestid>736686</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a105d01ad3f6c2b6c9f7734a6c9a3383</srcmd5>
+    <version>19.08</version>
+    <time>1574859307</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable neon on armv7</comment>
+    <requestid>751088</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e830d6597eef685f8e3b20be73f0c96f</srcmd5>
+    <version>19.11.1</version>
+    <time>1583094447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.11.1:
+  * Fix offset calculation in NEReductionOperationKernel.
+  * Fix data layout in NEScaleKernel for nhwc.
+  * Retain configuration step data layout to avoid side-effects.
+  * Perform sqrt in double domain for L2 pooling.
+  * Fix output shape calculation for Reduce Mean.
+
+- Cleanup a bit with spec-cleaner
+
+- Update to 19.11 (no upstream changelog)
+- Revert previous commit to disable neon on armv7</comment>
+    <requestid>779344</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edfa8f7ab14f5e25de95f4d7e5a4b9c5</srcmd5>
+    <version>20.02.1</version>
+    <time>1583948989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783448</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c3ec6221605cc38c9a3fa07d4b4e8ea</srcmd5>
+    <version>20.05</version>
+    <time>1591990744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812529</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d75f2cdfefdfae9dbda764e948d5d582</srcmd5>
+    <version>20.08</version>
+    <time>1599597998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.08:
+  * Public major release
+  * Documentation (API, changelogs, build guide, 
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v20.08/
+</comment>
+    <requestid>832532</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de5361d6501dd5560ba4d4361f480904</srcmd5>
+    <version>20.11</version>
+    <time>1610050977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.11:
+  * Public major release
+  * Deprecation notice:
+      Deprecated GLES functions and kernels
+      Deprecated Neon and OpenCL Computer Vision functions
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v20.11/
+</comment>
+    <requestid>860735</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>860e45515097b2dffe79ada9088d927e</srcmd5>
+    <version>21.02</version>
+    <time>1617910362</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883851</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e1cb8be0fb34ba45196aaaad7b7db752</srcmd5>
+    <version>21.05</version>
+    <time>1621626620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894802</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9ff8d565fc86ac7aed529cdcc0b4eb47</srcmd5>
+    <version>21.08</version>
+    <time>1631221657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917695</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8c90ac97d03a3593f6aa388905584bf4</srcmd5>
+    <version>21.11</version>
+    <time>1638388055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935020</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>920895b0898f6373e0cf12147a50b6eb</srcmd5>
+    <version>22.02</version>
+    <time>1647458494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962183</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>09aae6bd38e0b614f43fc0a102c2b04c</srcmd5>
+    <version>22.08</version>
+    <time>1663596232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004563</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cffaa7054354918f09d571fff1aea824</srcmd5>
+    <version>22.11</version>
+    <time>1669634146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038612</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>42bdecf347b8a44ac4a9c92ac011ba8a</srcmd5>
+    <version>23.02</version>
+    <time>1678902974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072063</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>87f70218483b6b3f2e0a48ce11ced757</srcmd5>
+    <version>23.02</version>
+    <time>1682002138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078438</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a3e887a420cbc7c7fa7c16c5aeb001c4</srcmd5>
+    <version>23.05</version>
+    <time>1686665358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092616</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3b0b3064d9d7f77d93fd993cdad96d3e</srcmd5>
+    <version>23.08</version>
+    <time>1694019573</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109208</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>62f44f7c428c30d973b9d8df984c492e</srcmd5>
+    <version>23.11</version>
+    <time>1701972696</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131645</requestid>
+  </revision>
+</revisionlist>

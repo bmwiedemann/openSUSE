@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69b4e2d232f32747b96453aed24a812b</srcmd5>
+    <version>2.19</version>
+    <time>1516359101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560891</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>887ccdd30ff6b58c6e971df8db9fe3a3</srcmd5>
+    <version>2.19</version>
+    <time>1568379484</time>
+    <user>lnussel_factory</user>
+    <comment>- Use modern macros
+
+- Update the license tag.
+- Disable lto before building fakechroot.
+
+- Update description. Use noun phrase in summary.
+
+- Make build and tests run in verbose mode.</comment>
+    <requestid>730079</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>789b15e04b17e9ae19a539542c196a9c</srcmd5>
+    <version>2.20.1</version>
+    <time>1588855824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.1
+  * Fixed problem when tests couldn't be started with root user and
+    glibc 2.28.
+  * Fixed problem with too verbose test for debootstrap(8) command.
+  * Fixed problem with tests for fts_* functions when started on
+    btrfs filesystem.
+  - The debootstrap(8) command honors FAKECHROOT_EXTRA_LIBRARY_PATH
+    environment variable too.
+  * Workaround has been added for systemd package installed by
+    debootstrap(8) command.
+  * Better support for link-time optimizer.
+- Changes for version 2.20:
+  * The fts64_* functions were added: glibc supports them since
+    2.23.
+  * The renameat2(2) function were added: glibc supports it since
+    2.28 and mv command from coreutils 8.30 uses it.
+  * The chroot(8) wrapper and fakechroot(1) command can work with
+    POSIX shell.
+  * The chroot(8) wrapper allows to chroot into root directory.
+  * The chroot(8) wrapper appends directories from
+  * FAKECHROOT_EXTRA_LIBRARY_PATH environment variable because some
+    commands use runpath. The default value is
+    /lib/systemd:/usr/lib/man-db forsystemctl(1) and man(1)
+    commands.
+  * The ldd(1) wrapper doesn't lose a leading slash in absolute
+    paths.
+  * The fakechroot(1) command unsets CDPATH environment variable
+    and swaps libfakeroot and libfakechroot in LD_PRELOAD
+    environment variable if needed.
+  * Can be compiled with gcc 7.1 -Wformat-truncation.</comment>
+    <requestid>800637</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5c6e2dc0916f4be620e007fbb8a30ed8</srcmd5>
+    <version>2.20.1</version>
+    <time>1614792872</time>
+    <user>RBrownSUSE</user>
+    <comment>- add fakechroot-glibc-233.patch to fix glibc 2.33 compatibility
+</comment>
+    <requestid>876287</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="usbauth-notifier" project="openSUSE:Factory">
+  <title>usbauth-notifier</title>
+  <description>usbauth-notifier: Notifier for USB Firewall to use with desktop environments
+
+A notifier for the usbauth firewall against BadUSB attacks. The user could manually allow or deny USB devices.</description>
+  <devel project="security" package="usbauth-notifier"/>
+</package>

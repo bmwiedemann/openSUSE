@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bd2ed7f5dc9b95e84429969f16503b9</srcmd5>
+    <version>1.15</version>
+    <time>1592398082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815015</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4f16af91c00bc3d91895ca8127a308c</srcmd5>
+    <version>1.16.7</version>
+    <time>1616598834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880627</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e793f46f4876dfd7e05847bbb0ab4103</srcmd5>
+    <version>1.16.8</version>
+    <time>1618859184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886657</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3334376eba8294d116b499b96feeb092</srcmd5>
+    <version>1.19.1</version>
+    <time>1705353367</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.19.1:
+  * load a schema from a Python dict or object (or actually any
+    Python entity with a ``__str__`` method.).
+  * with JSON Pointer the ``:pass_unmodified:`` option is included.
+  * fixed a bug escaping backspaces.
+  * ``:hide_key:`` directive option.
+    This option allows you to hide certain keys, specified by a JSON
+    Path specification, to be excluded from rendering.
+  * added the ``:encoding:`` directive option.</comment>
+    <requestid>1138556</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>edc88c07b0a7cdd95efe9844f6cdb66e</srcmd5>
+    <version>20190121.0</version>
+    <time>1554380005</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain udpspeeder in Factory</comment>
+    <requestid>688786</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5441653806413a2a09b261f03de46cc2</srcmd5>
+    <version>20200714.0</version>
+    <time>1596036054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823220</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2dcc215b7c8a41afb1292d2bbcba5e2d</srcmd5>
+    <version>20200818.0</version>
+    <time>1597955576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828132</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e1aec7a15d50c8456f380faf205f737</srcmd5>
+    <version>20210116.0</version>
+    <time>1612378485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866530</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c3429364b48578a7d3a429ffbdfb8310</srcmd5>
+    <version>20230206.0</version>
+    <time>1687900592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20230206.0:
+  * Fix bug in https://github.com/wangyu-/UDPspeeder/issues/290.</comment>
+    <requestid>1095483</requestid>
+  </revision>
+</revisionlist>

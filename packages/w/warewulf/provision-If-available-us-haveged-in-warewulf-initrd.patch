@@ -1,0 +1,45 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Nov 28 09:12:23 2018 +0100
+Subject: provision: If available us haveged in warewulf initrd
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 91c0f647bdd79f28e6cc5c42b13ccb6e75bd09b5
+References: 
+
+There have been entrophy issues which caused the system
+to block when trying to generate an ssh key.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ provision/initramfs/Makefile.am | 1 +
+ provision/initramfs/init        | 5 +++++
+ 2 files changed, 6 insertions(+)
+diff --git a/provision/initramfs/Makefile.am b/provision/initramfs/Makefile.am
+index 5988b9e..cc032d4 100644
+--- a/provision/initramfs/Makefile.am
++++ b/provision/initramfs/Makefile.am
+@@ -150,6 +150,7 @@ rootfs: busybox e2fsprogs libarchive parted
+ 	else \
+ 		$(MAKE) -C _work/$(PARTED_DIR)/ DESTDIR=`pwd`/rootfs install; \
+ 	fi
++	if [ -f /usr/sbin/haveged ]; then cp -a /usr/sbin/haveged rootfs/usr/sbin/haveged; fi
+ 	cp -L --parents /lib*/ld-linux* rootfs/
+ 	find rootfs -type f -perm -o+x -print | grep -v ld-linux | xargs ldd | grep "=>" | awk '{print $$3}' | grep "^/" | sort | uniq | while read i; do cp -L --parents $$i rootfs/ && chmod 755 rootfs/$$i; done
+ 	rm -f rootfs/linuxrc rootfs/lib64/*.la rootfs/lib/*.la rootfs/usr/lib64/*.la rootfs/usr/lib/*.la
+diff --git a/provision/initramfs/init b/provision/initramfs/init
+index c5fc4b9..e3f0be2 100644
+--- a/provision/initramfs/init
++++ b/provision/initramfs/init
+@@ -34,6 +34,11 @@ clear
+ msg_blue "Now Booting Warewulf...\n"
+ echo
+ 
++if [ -f /usr/sbin/haveged ]; then
++    msg_white "Starting HAVEGEd\n"
++    /usr/sbin/haveged -F >/dev/null 2>&1 &
++fi
++
+ if [ -n "$WWHOSTNAME" ]; then
+     HOSTNAME="$WWHOSTNAME"
+     export HOSTNAME

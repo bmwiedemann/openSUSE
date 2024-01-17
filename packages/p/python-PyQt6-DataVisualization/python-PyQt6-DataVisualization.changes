@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Oct 30 14:37:19 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.6.0
+  *  This adds support for Qt v6.6.
+
+-------------------------------------------------------------------
+Mon Apr 24 20:15:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.0
+  * Added support for Qt v6.5.
+
+-------------------------------------------------------------------
+Wed Mar 15 14:04:04 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to support python 3.6 in order to build for SLE/Leap:
+  * support-python3.6.patch
+
+-------------------------------------------------------------------
+Mon Oct  3 17:46:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.4.0
+  *  Added support for Qt v6.4.
+
+-------------------------------------------------------------------
+Tue Jun 21 16:58:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update devel runtime requirements and supplements
+
+-------------------------------------------------------------------
+Tue Jun 21 10:13:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.1
+  * Bug fixes.
+- Drop PyQt6-DataVisualization-6.3-fix-timeline.patch
+
+-------------------------------------------------------------------
+Wed Apr 13 08:23:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.0
+  * Added support for Qt v6.3.
+- Add PyQt6-DataVisualization-6.3-fix-timeline.patch
+  https://www.riverbankcomputing.com/pipermail/pyqt/2022-April/044562.html
+
+-------------------------------------------------------------------
+Sun Oct  3 13:40:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.2.0
+  * Added support for Qt v6.2.
+
+-------------------------------------------------------------------
+Mon Aug 23 19:48:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't write mtime-based init pyc file during import test
+  (boo#1047218)
+
+-------------------------------------------------------------------
+Tue Jun 15 13:13:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.1.1
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Thu May 13 18:34:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for version 6.1.0 

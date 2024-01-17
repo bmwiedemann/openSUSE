@@ -1,0 +1,17 @@
+<package name="nginx-module-brotli" project="openSUSE:Factory">
+  <title>NGINX module for Brotli compression</title>
+  <description>Brotli is a generic-purpose lossless compression algorithm that compresses data
+using a combination of a modern variant of the LZ77 algorithm, Huffman coding
+and 2nd order context modeling, with a compression ratio comparable to the best
+currently available general-purpose compression methods. It is similar in speed
+with deflate but offers more dense compression.
+
+ngx_brotli is a set of two nginx modules:
+
+ngx_brotli filter module - used to compress responses on-the-fly,
+ngx_brotli static module - used to serve pre-compressed files.
+
+</description>
+  <devel project="server:http" package="nginx-module-brotli"/>
+  <url>https://github.com/google/%{project_name}</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="gphoto2-webcam" project="openSUSE:Factory">
+  <title>hello</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="graphics" package="gphoto2-webcam"/>
+</package>

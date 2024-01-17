@@ -1,0 +1,7 @@
+<package name="gtranslator" project="openSUSE:Factory">
+  <title>A GNOME po file editor with many bells and whistles</title>
+  <description>gtranslator is a comfortable po file editor with many bells and whistles.
+It features many useful function which ease the work of translators of po
+files imminently.</description>
+  <devel project="GNOME:Apps" package="gtranslator"/>
+</package>

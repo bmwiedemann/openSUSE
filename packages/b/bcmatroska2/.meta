@@ -1,0 +1,5 @@
+<package name="bcmatroska2" project="openSUSE:Factory">
+  <title>C Library to Deal with Matroska Files</title>
+  <description>Bcmatroska2 is a C library to parse Matroska files (.mkv and .mka).</description>
+  <devel project="multimedia:libs" package="bcmatroska2"/>
+</package>

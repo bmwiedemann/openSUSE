@@ -1,0 +1,17 @@
+[opensuse-tumbleweed-non-oss]
+name=openSUSE Tumbleweed - Non-OSS
+baseurl=https://download.opensuse.org/tumbleweed/repo/non-oss/
+#metalink=https://download.opensuse.org/tumbleweed/repo/non-oss/repodata/repomd.xml.metalink
+enabled=0
+enabled_metadata=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
+gpgcheck=1
+
+[opensuse-tumbleweed-non-oss-source]
+name=openSUSE Tumbleweed - Non-OSS - Source
+baseurl=https://download.opensuse.org/tumbleweed/repo/src-non-oss/
+#metalink=https://download.opensuse.org/tumbleweed/repo/src-non-oss/repodata/repomd.xml.metalink
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-2022
+gpgcheck=1
+

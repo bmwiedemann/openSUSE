@@ -1,0 +1,28 @@
+From: Ana Guerrero Lopez <aguerrero@suse.com>
+Date: Add library version number
+Patch-mainline: 
+Subject: Mon Jan 25 15:20:57 UTC 2021
+
+Based in a previous patch by Egbert Eich <eich@suse.com>
+
+--- src/CMakeLists.txt
++++ src/CMakeLists.txt
+@@ -246,6 +246,9 @@
+   set (BUILD_SHARED_LIBS OFF CACHE INTERNAL "" FORCE)
+ endif ()
+ 
++# Here HYPRE_MINOR == HYPRE_MAJOR == HYPRE_VERSION
++set_target_properties(HYPRE PROPERTIES VERSION ${HYPRE_VERSION} SOVERSION ${HYPRE_VERSION})
++
+ # Set MPI compile flags
+ if (NOT HYPRE_SEQUENTIAL)
+   find_program (MPIEXEC_EXECUTABLE NAMES mpiexec mpirun)
+@@ -302,7 +305,7 @@
+   LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+   ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+   INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+-install (FILES ${HYPRE_HEADERS} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
++install (FILES ${HYPRE_HEADERS} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/hypre")
+ 
+ include (CMakePackageConfigHelpers)
+ write_basic_package_version_file (

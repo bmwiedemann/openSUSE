@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>84e9054c2240b8eebb42316ec9813ff6</srcmd5>
+    <version>1.15.3</version>
+    <time>1687272539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093879</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf6d16daab611f46e6bef0fb9bde1f5e</srcmd5>
+    <version>1.15.3</version>
+    <time>1687469215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094656</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>06f4088a79e3d80c4d350c5dd66f99d2</srcmd5>
+    <version>1.16.2</version>
+    <time>1696964327</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1116315 from hillwood)</comment>
+    <requestid>1116316</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>dcaad9120760987b0564fcc985bb33b9</srcmd5>
+    <version>1.16.2</version>
+    <time>1698333291</time>
+    <user>anag+factory</user>
+    <comment>- Fix boo#1216372 and boo#1216373, run systemd service as a dedicated user and group</comment>
+    <requestid>1120484</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58706d29f654749560d15d913db3e13a</srcmd5>
+    <version>1.17.1</version>
+    <time>1701632972</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130558</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>93ab9264cb4e964db83eeda446488a5a</srcmd5>
+    <version>1.17.1</version>
+    <time>1702489004</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132889</requestid>
+  </revision>
+</revisionlist>

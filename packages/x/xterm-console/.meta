@@ -1,0 +1,5 @@
+<package name="xterm-console" project="openSUSE:Factory">
+  <title>A linux console look and feel xterm</title>
+  <description>Longing for the Linux text console (ctrl-alt-f1) in xterm?  Seek no further :)  here comes an xterm wrapper that will be just that.  Includes the fonts and all.</description>
+  <devel project="devel:openQA:tested" package="xterm-console"/>
+</package>

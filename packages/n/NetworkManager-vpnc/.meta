@@ -1,0 +1,5 @@
+<package name="NetworkManager-vpnc" project="openSUSE:Factory">
+  <title>NetworkManager VPN Support for vpnc</title>
+  <description>NetworkManager-vpnc provides VPN support to NetworkManager for vpnc.</description>
+  <devel project="GNOME:Factory" package="NetworkManager-vpnc"/>
+</package>

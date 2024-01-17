@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Fri Oct 15 18:24:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  General improvements
+  * Touch devices: added the ability to pause the game using an
+    on-screen button
+  * The game looks more crisp when using scaling on high DPI screens
+  * File dialog: when typing a name, the list automatically scrolls
+    to the first matching file
+  * File dialog: input textbox now only suggests 'My Rome' when
+    saving, not when loading a game
+  * Population graph on the populator advisor is now usable for
+    populations larger than 51200
+  * Bridges are now shown on the minimap
+  * Ships now play the proper phrase when leaving the docks
+  * Configuration: new option to disable scrolling when the mouse
+    is near the window's edge
+  * Configuration: hotkey config now gives a warning when you try
+    to assign a hotkey that's already in use
+  * Korean: fix money being drawn as "100 Funds" instead of "100 Dn"
+  Bugfixes
+  * Fixed possible corruption and linked storages when an
+    earthquake destroys a warehouse
+  * Fixed the game self-destructing the entire city when a
+    wall/aqueduct blocked the road to Rome
+  * Fixed build images in the sidebar not showing the correct image
+    when a building was selected for construction
+  * Fixed being able to construct a building that's been disabled
+    in the menu using the "clone building" hotkey
+  * Fixed interest on financial advisor showing last year instead
+    of this year
+  * Fixed incorrect house devolve text related to food types
+  * Fixed going back in help jumping to random scroll position
+  * Fixed static in sound from videos played on low sound volume
+  * Fixed alternative hotkeys for arrow firing on modifiers
+  * Fixed corrupt dialog text when language fails to load on
+    configuration screen
+  * Fixed not being able to type text when using SDL 2.0.16 with
+    the Wayland video driver for Linux
+
+-------------------------------------------------------------------
+Mon Mar 22 10:45:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.6.0
+  * Minimap of the scenario can be displayed when selecting a map
+    to play
+  * Bridge cost is shown before building the bridge
+  * Roads lead into the access ramps to indicate that access ramps
+    are part of the road network
+  * Undo is disabled after certain houses upgrade to prevent visual
+    corruption
+  * Granary info window shows cart status when it's getting food from
+    another granary
+  * Construction: plaza shows as green when over a road with people
+    on it. Previously it was red but the player could still place it
+  * Construction: fountain shows as red when over a building or other
+    non-clear tile. It still indicates whether that tile has reservoir
+    access
+  * Removed config option: "Fix Emperor change and survival time"
+  * Fix entertainer corrupting building memory in certain cases
+  * Fix people on bridges not having a portrait on right-click
+  * Fix being able to place disabled buildings in tutorial missions
+    using their hotkey
+  * Fix small bug with visual feedback on delete
+  * Fix intro video playback causing skipped videos and unexpected
+    audio on slow devices
+  * Fix top menu items overlapping with the city funds for more
+    verbose languages
+  * Fix press effect not showing for image buttons
+  * Fix 'right-click to close window' not working when mouse cursor
+    was over a button
+  * Fix visual bug when undoing deleted houses
+  * Fix incorrect scaling mode applied when using a custom display
+    scale, which resulted in pixelated graphics
+
+-------------------------------------------------------------------
+Sat Dec 26 14:48:12 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Add missing dependencies: zlib and libpng
+
+-------------------------------------------------------------------
+Wed Oct 28 22:02:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.1
+  Technical fixes
+  * When supplying a display scale on the command line, the
+    correct scaling mode is now applied, resulting in less
+    pixelated graphics.
+  General improvements
+  * Mission victory and intro videos now scale up to fullscreen
+
+-------------------------------------------------------------------
+Tue Oct 27 18:54:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.0
+  UI improvements
+  * Add right-click image to some enemies which were missing
+    images.
+  * Number of unemployed people has been added to the senate
+    tooltip and Chief advisor.
+  * Setting hotkeys for construction of common buildings is now
+    possible.
+  * Setting a hotkey for quickly selecting the building under
+    cursor for construction.
+  * Changing trade status (import/export) for resources can now
+    be done from the Empire map.
+  * Some more in-game messages have a button to the relevant
+    advisor.
+  Configuration options
+  * New option: highlight legion on cursor hover.
+  * New option: enable military sidebar.
+  * New option: disable right click to drag the map.
+  * New command-line option: use --windowed to force the game to
+    start in windowed mode.
+  Language improvements
+  * Use localized filenames for mission saved games. For example,
+    Citizen.sav will now be called Bürger.sav in the German
+    version of the game.
+  * Users running the Korean or Chinese version of the game can
+    now save files using Korean/Chinese characters.
+  * Add Italian, Polish and Swedish translations for the
+    configuration screen.
+  * Add support for the Simplified Chinese version of the game.
+  * Tweaks to make texts in more verbose languages fit in their
+    dialogs.
+  UI/Gameplay fixes
+  * Fix aqueduct tile turning into gatehouse image on a certain
+    aqueduct configuration.
+  * Fix graphic glitch in road tile caused by plaza.
+  * Fix visual bugs when visual feedback is active.
+  * Fix Religion being shown as Health on chief advisor.
+  * Fix warehouses/granaries getting linked during delete/undo.
+  * Fix combat short and long music being swapped.
+  * Fix population advisor showing the wrong end date for the
+    history graph.
+  * Fix education advisor always saying that people want more
+    libraries.
+  * Fix displayed price for clear land being double the actual
+    amount.
+  * Fix right-clicking the buttons on the sidebar going to the
+    wrong help page.
+  * Fix game speed being way too fast on the higher speed
+    settings on >60Hz monitors.
+  * Fix columns on damage overlay being too tall.
+  * Fix minimap not immediately jumping to the right location when
+    "go to problem" button is used.
+  * Fix minimap not immediately updating when placing a building.
+  Technical fixes
+  * Fix crash/memory corruption on difficulty dialog.
+
+-------------------------------------------------------------------
+Mon Jun  1 14:35:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  Improvements
+  * Price is now shown in localized currency for game languages
+    other than English
+  * Added Russian translation for the configuration screen
+  Bugfixes
+  * reservoir range was not displaying properly for orientations
+    other than north
+  * filenames were not displaying properly when using the Chinese
+    version of the game
+  * building ghost flickered after scrolling
+  * aqueduct ghost was showing green on curved roads and plazas
+  * scroll speed calculations were incorrect for monitors not
+    running at 60Hz
+  * the select folder dialog crashed on certain Linux systems
+  * mouse double-click was not working properly
+  * Korean message about missing fonts was not displaying due to
+    missing fonts
+  * escape button was not working in the city when using touch
+
+-------------------------------------------------------------------
+Sun May 10 14:17:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  General improvements
+  * New hotkeys:
+    + Ctrl+O / Ctrl+S for loading and saving games
+    + Alt+Enter for toggling full screen
+    + Numeric keypad 0-9 for going to the advisors
+  * Changed hotkey behavior: Escape now closes dialogs instead
+    of exiting the game
+  * Configurable hotkeys: you can now assign your own keys for
+    the hotkey actions. This means that existing hotkeys may no
+    longer work if you use a non-US keyboard layout. Go to
+    Options -> Configure hotkeys in the game to set them.
+  * Support for language packs. If you have multiple language
+    versions of the game you can easily switch between them.
+  * Support for Korean and Swedish versions of the game
+  * Configuration option screen has been translated to French,
+    German, Korean, Portuguese and Spanish
+  Gameplay improvements
+  * Building a fort no longer triggers a message that the city
+    needs workers
+  * Right-click info for fountain and mission post now shows
+    workers
+  * Tooltip on the religion overlay now shows to which gods the
+    house has access
+  * New config option: fix emperor change events and survival
+    time win criteria - more details
+  User interface enhancements
+  * New config option: show reservoir, fountain and well range
+    when constructing
+  * New config option: show size when constructing draggable
+    buildings
+  * Right-clicking and dragging when in the city will now move
+    the map
+  * Double-click can be used to load files
+  * Make certain elements more color blind friendly
+  * Tweaks to the interface to fit languages with longer texts
+  Bugfixes
+  * Fix graphic artifacts while building draggable reservoirs
+  * Fix amphitheater right click not playing the corresponding
+    sound file
+  * Fix walls destroyed by enemies showing "nowhere" when
+    right-clicking the rubble
+  * Fix map not scrolling properly when using certain custom
+    display scales
+  Technical improvements
+  * Screen no longer turns black when resizing the window when a
+    dialog is showing
+  * Fix bugs when using touch
+  * Fix missing audio for certain sound driver/OS combinations
+  * Disable setting windowed mode on platforms that do not
+    support it
+  * Add runtime version checks for SDL, allowing the use of older
+    SDL libraries
+
+-------------------------------------------------------------------
+Sun Mar  8 21:58:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Package license file and readme
+- Run testsuite
+
+-------------------------------------------------------------------
+Sun Mar  8 15:07:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Package release, version 1.3.1
+
+-------------------------------------------------------------------
+Sun Mar  8 15:00:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use %cmake macros
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Mon Apr  1 08:21:25 UTC 2019 - Ivan Gonzalez <cain1986@gmail.com>
+
+- Initial changelog
+

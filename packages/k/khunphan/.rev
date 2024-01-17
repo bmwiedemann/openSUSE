@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="216">
+    <srcmd5>73a73aaa5672444ff356102e3265fa2e</srcmd5>
+    <version>0.55</version>
+    <time>1168903209</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="327">
+    <srcmd5>711381506624c1a2fc366cd4f8a41fce</srcmd5>
+    <version>0.55</version>
+    <time>1192130858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="450">
+    <srcmd5>711381506624c1a2fc366cd4f8a41fce</srcmd5>
+    <version>0.55</version>
+    <time>1192130858</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="451">
+    <srcmd5>128f39ed15557e8b2cce34a5179453d3</srcmd5>
+    <version>0.55</version>
+    <time>1236268198</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="453">
+    <srcmd5>128f39ed15557e8b2cce34a5179453d3</srcmd5>
+    <version>0.55</version>
+    <time>1236268198</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="454">
+    <srcmd5>7ab1ff5898f057d66ebc63ee322ee519</srcmd5>
+    <version>0.55</version>
+    <time>1268924283</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="456">
+    <srcmd5>7ab1ff5898f057d66ebc63ee322ee519</srcmd5>
+    <version>0.55</version>
+    <time>1278667355</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="457">
+    <srcmd5>7ab1ff5898f057d66ebc63ee322ee519</srcmd5>
+    <version>0.55</version>
+    <time>1278678586</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="458">
+    <srcmd5>e4396e64a404d17f35c866f605a12b14</srcmd5>
+    <version>0.55</version>
+    <time>1292011669</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55601 from user coolo
+</comment>
+    <requestid>55601</requestid>
+  </revision>
+  <revision rev="10" vrev="459">
+    <srcmd5>7f7310bd69d2952b706f028f87a47aea</srcmd5>
+    <version>0.55</version>
+    <time>1292011674</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55601
+</comment>
+  </revision>
+  <revision rev="11" vrev="462">
+    <srcmd5>7f7310bd69d2952b706f028f87a47aea</srcmd5>
+    <version>0.55</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="464">
+    <srcmd5>7f7310bd69d2952b706f028f87a47aea</srcmd5>
+    <version>0.55</version>
+    <time>1319182046</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="465">
+    <srcmd5>88839dcf7e83e73064017064b24fa6e6</srcmd5>
+    <version>0.55</version>
+    <time>1327403939</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100914</requestid>
+  </revision>
+  <revision rev="14" vrev="467">
+    <srcmd5>88839dcf7e83e73064017064b24fa6e6</srcmd5>
+    <version>0.55</version>
+    <time>1340183527</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="468">
+    <srcmd5>1d345674bfce5f6f18b87241a98dbcf2</srcmd5>
+    <version>0.55</version>
+    <time>1346914369</time>
+    <user>coolo</user>
+    <comment>Fix building with libpng15 - by pgajdos</comment>
+    <requestid>132097</requestid>
+  </revision>
+  <revision rev="16" vrev="469">
+    <srcmd5>401b862e2440066a7b1db96eaa91a618</srcmd5>
+    <version>0.55</version>
+    <time>1348412770</time>
+    <user>coolo</user>
+    <comment>- Add explicity glu dependency</comment>
+    <requestid>134885</requestid>
+  </revision>
+  <revision rev="17" vrev="471">
+    <srcmd5>401b862e2440066a7b1db96eaa91a618</srcmd5>
+    <version>0.55</version>
+    <time>1359109186</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="473">
+    <srcmd5>401b862e2440066a7b1db96eaa91a618</srcmd5>
+    <version>0.55</version>
+    <time>1379662801</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="474">
+    <srcmd5>011b99169dbeef7701448673e9794537</srcmd5>
+    <version>0.55</version>
+    <time>1380115164</time>
+    <user>coolo</user>
+    <comment>- Add games user/group on demand (fate#314560) (forwarded request 200173 from namtrac)</comment>
+    <requestid>200479</requestid>
+  </revision>
+  <revision rev="20" vrev="476">
+    <srcmd5>011b99169dbeef7701448673e9794537</srcmd5>
+    <version>0.55</version>
+    <time>1409301376</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="477">
+    <srcmd5>b47c8525e130ddbeda8b9748be9b27dc</srcmd5>
+    <version>0.55</version>
+    <time>1486856965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455562</requestid>
+  </revision>
+</revisionlist>

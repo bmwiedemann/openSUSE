@@ -1,0 +1,169 @@
+Index: pgbackrest-release-2.49/CODING.md
+===================================================================
+--- pgbackrest-release-2.49.orig/CODING.md
++++ pgbackrest-release-2.49/CODING.md
+@@ -268,11 +268,11 @@ Continuation characters should be aligne
+ 
+ This function can be called without variable parameters:
+ ```c
+-storagePathCreateP(storageLocal(), "/tmp/pgbackrest");
++storagePathCreateP(storageLocal(), "/run/pgbackrest");
+ ```
+ Or with variable parameters:
+ ```c
+-storagePathCreateP(storageLocal(), "/tmp/pgbackrest", .errorOnExists = true, .mode = 0777);
++storagePathCreateP(storageLocal(), "/run/pgbackrest", .errorOnExists = true, .mode = 0777);
+ ```
+ If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.
+ 
+Index: pgbackrest-release-2.49/doc/resource/git-history.cache
+===================================================================
+--- pgbackrest-release-2.49.orig/doc/resource/git-history.cache
++++ pgbackrest-release-2.49/doc/resource/git-history.cache
+@@ -7203,7 +7203,7 @@
+     {
+         "commit": "a1365b26d4c2383eaacea3714eeb521435ca79aa",
+         "date": "2021-01-18 23:41:09 -0500",
+-        "subject": "Remove duplicate mkdir for /tmp/pgbackrest in Vagrantfile."
++        "subject": "Remove duplicate mkdir for /run/pgbackrest in Vagrantfile."
+     },
+     {
+         "commit": "8322dfd7af97e307b952cfb37e6a65b65f55be0f",
+@@ -10019,8 +10019,8 @@
+     {
+         "commit": "3fbfcba811499a59b943dd893eef9ff52090f7b6",
+         "date": "2020-03-16 17:27:01 -0400",
+-        "subject": "Forbid access to /tmp/pgbackrest in the Vagrantfile.",
+-        "body": "This matches the error that will be thrown in the vm=none test on Travis CI if a unit test writes to /tmp/pgbackrest."
++        "subject": "Forbid access to /run/pgbackrest in the Vagrantfile.",
++        "body": "This matches the error that will be thrown in the vm=none test on Travis CI if a unit test writes to /run/pgbackrest."
+     },
+     {
+         "commit": "46911c64c19dc8ff76d2a6ff4548fc01647043e0",
+@@ -11920,7 +11920,7 @@
+         "commit": "45881c74aeff4bb25559ec0254fa7fc1960d9cab",
+         "date": "2019-10-08 12:06:30 -0400",
+         "subject": "Allow most unit tests to run outside of a container.",
+-        "body": "Three major changes were required to get this working:\n\n1) Provide the path to pgbackrest in the build directory when running outside a container. Tests in a container will continue to install and run against /usr/bin/pgbackrest.\n\n1) Set a per-test lock path so tests don't conflict on the default /tmp/pgbackrest path. Also set a per-test log-path while we are at it.\n\n2) Use localhost instead of a custom host for TLS test connections. Tests in containers will continue to update /etc/hosts and use the custom host.\n\nAdd infrastructure and update harnessCfgLoad*() to get the correct exe and paths loaded for testing.\n\nSince new tests are required to verify that running outside a container works, also rework the tests in Travis CI to provide coverage within a reasonable amount of time. Mainly, break up to doc tests by VM and run an abbreviated unit test suite on co6 and co7."
++        "body": "Three major changes were required to get this working:\n\n1) Provide the path to pgbackrest in the build directory when running outside a container. Tests in a container will continue to install and run against /usr/bin/pgbackrest.\n\n1) Set a per-test lock path so tests don't conflict on the default /run/pgbackrest path. Also set a per-test log-path while we are at it.\n\n2) Use localhost instead of a custom host for TLS test connections. Tests in containers will continue to update /etc/hosts and use the custom host.\n\nAdd infrastructure and update harnessCfgLoad*() to get the correct exe and paths loaded for testing.\n\nSince new tests are required to verify that running outside a container works, also rework the tests in Travis CI to provide coverage within a reasonable amount of time. Mainly, break up to doc tests by VM and run an abbreviated unit test suite on co6 and co7."
+     },
+     {
+         "commit": "77b0c6c993a0e6ff45a6a99f343c3709a016d152",
+@@ -20407,7 +20407,7 @@
+         "commit": "18fd25233b1db7b3197f5d8dc537d239dcfc7aba",
+         "date": "2016-04-14 09:30:54 -0400",
+         "subject": "New simpler configuration and consistent project/exe/path naming.",
+-        "body": "* The repo-path option now always refers to the repository where backups and archive are stored, whether local or remote, so the repo-remote-path option has been removed. The new spool-path option can be used to define a location for queueing WAL segments when archiving asynchronously. Otherwise, a local repository is no longer required.\n\n* Implemented a new config format which should be far simpler to use. See the User Guide and Configuration Reference for details but for a simple configuration all options can now be placed in the stanza section. Options that are shared between stanzas can be placed in the [global] section. More complex configurations can still make use of command sections though this should be a rare use case.\n\n* The default configuration filename is now pgbackrest.conf instead of pg_backrest.conf. This was done for consistency with other naming changes but also to prevent old config files from being loaded accidentally.\n\n* The default repository name was changed from /var/lib/backup to /var/lib/pgbackrest.\n\n* Lock files are now stored in /tmp/pgbackrest by default. These days /run/pgbackrest would be the preferred location but that would require init scripts which are not part of this release. The lock-path option can be used to configure the lock directory.\n\n* Log files are now stored in /var/log/pgbackrest by default and no longer have the date appended so they can be managed with logrotate. The log-path option can be used to configure the lock directory.\n\n* Executable filename changed from pg_backrest to pgbackrest."
++        "body": "* The repo-path option now always refers to the repository where backups and archive are stored, whether local or remote, so the repo-remote-path option has been removed. The new spool-path option can be used to define a location for queueing WAL segments when archiving asynchronously. Otherwise, a local repository is no longer required.\n\n* Implemented a new config format which should be far simpler to use. See the User Guide and Configuration Reference for details but for a simple configuration all options can now be placed in the stanza section. Options that are shared between stanzas can be placed in the [global] section. More complex configurations can still make use of command sections though this should be a rare use case.\n\n* The default configuration filename is now pgbackrest.conf instead of pg_backrest.conf. This was done for consistency with other naming changes but also to prevent old config files from being loaded accidentally.\n\n* The default repository name was changed from /var/lib/backup to /var/lib/pgbackrest.\n\n* Lock files are now stored in /run/pgbackrest by default. These days /run/pgbackrest would be the preferred location but that would require init scripts which are not part of this release. The lock-path option can be used to configure the lock directory.\n\n* Log files are now stored in /var/log/pgbackrest by default and no longer have the date appended so they can be managed with logrotate. The log-path option can be used to configure the lock directory.\n\n* Executable filename changed from pg_backrest to pgbackrest."
+     },
+     {
+         "commit": "885797e4b58a675487a3531ba16908c1d1e9f970",
+Index: pgbackrest-release-2.49/doc/xml/coding.xml
+===================================================================
+--- pgbackrest-release-2.49.orig/doc/xml/coding.xml
++++ pgbackrest-release-2.49/doc/xml/coding.xml
+@@ -365,13 +365,13 @@ void storagePathCreate(const Storage *th
+             <p>This function can be called without variable parameters:</p>
+ 
+             <code-block type="c">
+-storagePathCreateP(storageLocal(), "/tmp/pgbackrest");
++storagePathCreateP(storageLocal(), "/run/pgbackrest");
+             </code-block>
+ 
+             <p>Or with variable parameters:</p>
+ 
+             <code-block type="c">
+-storagePathCreateP(storageLocal(), "/tmp/pgbackrest", .errorOnExists = true, .mode = 0777);
++storagePathCreateP(storageLocal(), "/run/pgbackrest", .errorOnExists = true, .mode = 0777);
+             </code-block>
+ 
+             <p>If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.</p>
+Index: pgbackrest-release-2.49/doc/xml/release/2016/1.00.xml
+===================================================================
+--- pgbackrest-release-2.49.orig/doc/xml/release/2016/1.00.xml
++++ pgbackrest-release-2.49/doc/xml/release/2016/1.00.xml
+@@ -43,7 +43,7 @@
+                     <release-item-contributor id="david.steele"/>
+                 </release-item-contributor-list> -->
+ 
+-                <p>Lock files are now stored in <path>/tmp/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
++                <p>Lock files are now stored in <path>/run/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
+             </release-item>
+ 
+             <release-item>
+Index: pgbackrest-release-2.49/src/build/config/config.yaml
+===================================================================
+--- pgbackrest-release-2.49.orig/src/build/config/config.yaml
++++ pgbackrest-release-2.49/src/build/config/config.yaml
+@@ -844,7 +844,7 @@ option:
+   lock-path:
+     section: global
+     type: path
+-    default: /tmp/pgbackrest
++    default: /run/pgbackrest
+     command:
+       annotate: {}
+       archive-get: {}
+Index: pgbackrest-release-2.49/src/config/parse.auto.c.inc
+===================================================================
+--- pgbackrest-release-2.49.orig/src/config/parse.auto.c.inc
++++ pgbackrest-release-2.49/src/config/parse.auto.c.inc
+@@ -11,7 +11,7 @@ Rule Strings
+ 
+ static const StringPub parseRuleValueStr[] =
+ {
+-    PARSE_RULE_STRPUB("/tmp/pgbackrest"),                                                                                 // val/str
++    PARSE_RULE_STRPUB("/run/pgbackrest"),                                                                                 // val/str
+     PARSE_RULE_STRPUB("/var/lib/pgbackrest"),                                                                             // val/str
+     PARSE_RULE_STRPUB("/var/log/pgbackrest"),                                                                             // val/str
+     PARSE_RULE_STRPUB("/var/spool/pgbackrest"),                                                                           // val/str
+Index: pgbackrest-release-2.49/test/ci.pl
+===================================================================
+--- pgbackrest-release-2.49.orig/test/ci.pl
++++ pgbackrest-release-2.49/test/ci.pl
+@@ -202,8 +202,8 @@ eval
+             $strPackage .= " libdbd-pg-perl";
+         }
+ 
+-        processBegin('/tmp/pgbackrest owned by root so tests cannot use it');
+-        processExec('sudo mkdir -p /tmp/pgbackrest && sudo chown root:root /tmp/pgbackrest && sudo chmod 700 /tmp/pgbackrest');
++        processBegin('/run/pgbackrest owned by root so tests cannot use it');
++        processExec('sudo mkdir -p /run/pgbackrest && sudo chown root:root /run/pgbackrest && sudo chmod 700 /run/pgbackrest');
+         processEnd();
+ 
+         processBegin('install test packages');
+Index: pgbackrest-release-2.49/test/src/module/command/helpTest.c
+===================================================================
+--- pgbackrest-release-2.49.orig/test/src/module/command/helpTest.c
++++ pgbackrest-release-2.49/test/src/module/command/helpTest.c
+@@ -245,7 +245,7 @@ testRun(void)
+             "                                      [default=n]\n"
+             "  --io-timeout                        I/O timeout [default=60]\n"
+             "  --lock-path                         path where lock files are stored\n"
+-            "                                      [default=/tmp/pgbackrest]\n"
++            "                                      [default=/run/pgbackrest]\n"
+             "  --neutral-umask                     use a neutral umask [default=y]\n"
+             "  --process-max                       max processes to use for\n"
+             "                                      compress/transfer [default=1]\n"
+Index: pgbackrest-release-2.49/test/Vagrantfile
+===================================================================
+--- pgbackrest-release-2.49.orig/test/Vagrantfile
++++ pgbackrest-release-2.49/test/Vagrantfile
+@@ -54,12 +54,12 @@ Vagrant.configure(2) do |config|
+             sudo /etc/init.d/virtualbox-guest-utils stop
+             sudo /usr/sbin/VBoxService --timesync-set-on-restore --timesync-interval 5000 --timesync-set-threshold 1
+ 
+-            # Create /tmp/pgbackrest and give ownership to root so we know unit tests are not writing there
++            # Create /run/pgbackrest and give ownership to root so we know unit tests are not writing there
+             #-----------------------------------------------------------------------------------------------------------------------
+-            echo 'Create /tmp/pgbackrest owned by root' && date
+-            sudo mkdir -p /tmp/pgbackrest
+-            sudo chown root:root /tmp/pgbackrest
+-            sudo chmod 700 /tmp/pgbackrest
++            echo 'Create /run/pgbackrest owned by root' && date
++            sudo mkdir -p /run/pgbackrest
++            sudo chown root:root /run/pgbackrest
++            sudo chmod 700 /run/pgbackrest
+ 
+             # Mount tmpfs at /home/vagrant/test for faster testing
+             #-----------------------------------------------------------------------------------------------------------------------

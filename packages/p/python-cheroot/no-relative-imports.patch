@@ -1,0 +1,100 @@
+---
+ cheroot/ssl/builtin.py      |   10 +++++-----
+ cheroot/test/conftest.py    |    6 +++---
+ cheroot/test/test_server.py |    8 ++++----
+ cheroot/test/test_ssl.py    |   12 ++++++------
+ 4 files changed, 18 insertions(+), 18 deletions(-)
+
+Index: cheroot-10.0.0/cheroot/ssl/builtin.py
+===================================================================
+--- cheroot-10.0.0.orig/cheroot/ssl/builtin.py
++++ cheroot-10.0.0/cheroot/ssl/builtin.py
+@@ -25,11 +25,11 @@ except ImportError:
+     except ImportError:
+         DEFAULT_BUFFER_SIZE = -1
+ 
+-from . import Adapter
+-from .. import errors
+-from .._compat import IS_ABOVE_OPENSSL10
+-from ..makefile import StreamReader, StreamWriter
+-from ..server import HTTPServer
++from cheroot.ssl import Adapter
++from cheroot import errors
++from cheroot._compat import IS_ABOVE_OPENSSL10
++from cheroot.makefile import StreamReader, StreamWriter
++from cheroot.server import HTTPServer
+ 
+ generic_socket_error = OSError
+ 
+Index: cheroot-10.0.0/cheroot/test/conftest.py
+===================================================================
+--- cheroot-10.0.0.orig/cheroot/test/conftest.py
++++ cheroot-10.0.0/cheroot/test/conftest.py
+@@ -9,12 +9,12 @@ import time
+ 
+ import pytest
+ 
+-from .._compat import IS_MACOS, IS_WINDOWS  # noqa: WPS436
+-from ..server import Gateway, HTTPServer
+-from ..testing import (  # noqa: F401  # pylint: disable=unused-import
++from cheroot._compat import IS_MACOS, IS_WINDOWS  # noqa: WPS436
++from cheroot.server import Gateway, HTTPServer
++from cheroot.testing import (  # noqa: F401  # pylint: disable=unused-import
+     native_server, wsgi_server,
+ )
+-from ..testing import get_server_client
++from cheroot.testing import get_server_client
+ 
+ 
+ @pytest.fixture
+Index: cheroot-10.0.0/cheroot/test/test_server.py
+===================================================================
+--- cheroot-10.0.0.orig/cheroot/test/test_server.py
++++ cheroot-10.0.0/cheroot/test/test_server.py
+@@ -13,11 +13,11 @@ import pytest
+ import requests
+ import requests_unixsocket
+ 
+-from .._compat import bton, ntob
+-from .._compat import IS_LINUX, IS_MACOS, IS_WINDOWS, SYS_PLATFORM
+-from ..server import IS_UID_GID_RESOLVABLE, Gateway, HTTPServer
+-from ..workers.threadpool import ThreadPool
+-from ..testing import (
++from cheroot._compat import bton, ntob
++from cheroot._compat import IS_LINUX, IS_MACOS, IS_WINDOWS, SYS_PLATFORM
++from cheroot.server import IS_UID_GID_RESOLVABLE, Gateway, HTTPServer
++from cheroot.workers.threadpool import ThreadPool
++from cheroot.testing import (
+     ANY_INTERFACE_IPV4,
+     ANY_INTERFACE_IPV6,
+     EPHEMERAL_PORT,
+Index: cheroot-10.0.0/cheroot/test/test_ssl.py
+===================================================================
+--- cheroot-10.0.0.orig/cheroot/test/test_ssl.py
++++ cheroot-10.0.0/cheroot/test/test_ssl.py
+@@ -16,11 +16,11 @@ import pytest
+ import requests
+ import trustme
+ 
+-from .._compat import bton, ntob, ntou
+-from .._compat import IS_ABOVE_OPENSSL10, IS_CI, IS_PYPY
+-from .._compat import IS_LINUX, IS_MACOS, IS_WINDOWS
+-from ..server import HTTPServer, get_ssl_adapter_class
+-from ..testing import (
++from cheroot._compat import bton, ntob, ntou
++from cheroot._compat import IS_ABOVE_OPENSSL10, IS_CI, IS_PYPY
++from cheroot._compat import IS_LINUX, IS_MACOS, IS_WINDOWS
++from cheroot.server import HTTPServer, get_ssl_adapter_class
++from cheroot.testing import (
+     ANY_INTERFACE_IPV4,
+     ANY_INTERFACE_IPV6,
+     EPHEMERAL_PORT,
+@@ -28,7 +28,7 @@ from ..testing import (
+     _get_conn_data,
+     _probe_ipv6_sock,
+ )
+-from ..wsgi import Gateway_10
++from cheroot.wsgi import Gateway_10
+ 
+ 
+ IS_GITHUB_ACTIONS_WORKFLOW = bool(os.getenv('GITHUB_WORKFLOW'))

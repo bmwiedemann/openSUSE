@@ -1,0 +1,24 @@
+Index: thttpd-2.26/extras/htpasswd.c
+===================================================================
+--- thttpd-2.26.orig/extras/htpasswd.c	2014-09-03 09:54:25.155386527 +0200
++++ thttpd-2.26/extras/htpasswd.c	2014-09-03 10:32:19.736082368 +0200
+@@ -15,6 +15,7 @@
+ #include <stdlib.h>
+ #include <time.h>
+ #include <unistd.h>
++#include <crypt.h>
+ 
+ #define LF 10
+ #define CR 13
+Index: thttpd-2.26/libhttpd.c
+===================================================================
+--- thttpd-2.26.orig/libhttpd.c	2014-09-03 09:54:25.155386527 +0200
++++ thttpd-2.26/libhttpd.c	2014-09-03 10:33:13.913694495 +0200
+@@ -53,6 +53,7 @@
+ #include <string.h>
+ #include <syslog.h>
+ #include <unistd.h>
++#include <crypt.h>
+ #include <stdarg.h>
+ 
+ #ifdef HAVE_OSRELDATE_H

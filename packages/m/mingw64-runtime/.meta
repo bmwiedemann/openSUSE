@@ -1,0 +1,9 @@
+<package name="mingw64-runtime" project="openSUSE:Factory">
+  <title>MinGW-W64 runtime for win32</title>
+  <description>MinGW Win64 cross-compiler runtime, base libraries.
+
+
+</description>
+  <devel project="windows:mingw:win64" package="mingw64-runtime"/>
+  <url>http://mingw-w64.sourceforge.net/</url>
+</package>

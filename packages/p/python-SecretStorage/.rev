@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1228370afa5dda438593b919b6aae4f0</srcmd5>
+    <version>2.3.1</version>
+    <time>1473349048</time>
+    <user>dimstar_suse</user>
+    <comment>needed for python-keyring</comment>
+    <requestid>424145</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6322114c82b2e2ce83d8a2abfb91cb10</srcmd5>
+    <version>2.3.1</version>
+    <time>1480951922</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442569</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d00cad2ed7367f3896712c7f0cec0ecd</srcmd5>
+    <version>2.3.1</version>
+    <time>1485167487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451346</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f5ed577ee695faebaaba5859071c39ee</srcmd5>
+    <version>2.3.1</version>
+    <time>1494937672</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492351</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>892c328b4c47f12d8bad7f38c46f094b</srcmd5>
+    <version>2.3.1</version>
+    <time>1516880226</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dbus-python deps to ease the logic and allow python2less build</comment>
+    <requestid>568848</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>cf9ed64a078bf3b1494f25e9904c689f</srcmd5>
+    <version>2.3.1</version>
+    <time>1545376802</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659357</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>89d0e706ff0142722c14b21a3492f4ee</srcmd5>
+    <version>2.3.1</version>
+    <time>1574414475</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746333</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f93fde65926e0d1dce6817295ec05d01</srcmd5>
+    <version>3.1.2</version>
+    <time>1587325778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794551</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2f6e91f610db6bd55d56ac165a7cc460</srcmd5>
+    <version>3.2.0</version>
+    <time>1606648762</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Added helper function ``check_service_availability`` for checking if the
+  Secret Service daemon is available without using it.</comment>
+    <requestid>850937</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cd6ea0c05ad496461b95c18fbf12970e</srcmd5>
+    <version>3.3.0</version>
+    <time>1612466592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.0:
+  * Use new-style Jeepney blocking I/O API.
+  * Python ≥ 3.6 and Jeepney ≥ 0.6 are now required.</comment>
+    <requestid>868467</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7d52f2cfab599f597474753df28a7ca4</srcmd5>
+    <version>3.3.1</version>
+    <time>1614948186</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 3.3.1:
+  * Fixed a deprecation warning from cryptography module.
+  * Added a :PEP:`561` ``py.typed`` file to declare typing support.</comment>
+    <requestid>876091</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d5039bc7bed8097362e48794ab572311</srcmd5>
+    <version>3.3.2</version>
+    <time>1652389094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.2:
+  * Fixed a deprecation warning with jeepney 0.8.
+    Thanks to Sam McKelvie for the pull request!</comment>
+    <requestid>976282</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>6c4bd5a1a06ff955597b73ddb18409ef</srcmd5>
+    <version>3.3.2</version>
+    <time>1661863690</time>
+    <user>dimstar_suse</user>
+    <comment>- Inject multibuild to prevent a build cycle</comment>
+    <requestid>999750</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1a73fbb8af9137e652de1dd5c5550d10</srcmd5>
+    <version>3.3.3</version>
+    <time>1663002480</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.3:
+  * Handle case when CreateItem method returns a prompt [`#39`_].
+  * Reformatted code in accordance with :PEP:`8` standard.
+  * _`#39`: https://github.com/mitya57/secretstorage/issues/39 
+- Add missing file to enable multibuild</comment>
+    <requestid>1002554</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2e351105716b9b3804b51b0e9f49c95f</srcmd5>
+    <version>3.3.3</version>
+    <time>1663764003</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build of tests</comment>
+    <requestid>1004656</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>8a74fdad259ded960880400565523737</srcmd5>
+    <version>3.3.3</version>
+    <time>1675357627</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for older distributions</comment>
+    <requestid>1062356</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d77be4a4137e50d96c287bb65395be01</srcmd5>
+    <version>3.3.3</version>
+    <time>1682193751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082020</requestid>
+  </revision>
+</revisionlist>

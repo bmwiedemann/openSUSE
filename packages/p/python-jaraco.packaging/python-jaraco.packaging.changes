@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Fri May 12 19:53:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 9.2.0
+  * #7, #10, #11: Added environment variable to bypass building
+    metadata for offline builds.
+- Add virtualenv dependency
+- Reenable tests
+
+-------------------------------------------------------------------
+Fri Apr 21 12:27:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:15 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Wed Jan  4 20:18:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.2:
+  * #6: Added minimal test to ``sphinx.packaging``.
+
+-------------------------------------------------------------------
+Fri Oct 28 17:50:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v9.1.1
+  * Change requirement to build[virtualenv] as workaround for pypa/build#266.
+- Update to v9.1.0
+  * Prefer build to pep517 for loading package metadata.
+
+-------------------------------------------------------------------
+Mon Aug 29 19:50:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove stray python3.inv
+
+-------------------------------------------------------------------
+Mon Aug 29 10:11:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v9.0.0
+  * Use pep517.meta to load package metadata. Adds support
+    for packages without setup.py.
+  * Removed info module (and setuptools show command).
+  * Removed depends module. Use other packaging tools instead.
+- v8.2.1: Rely on PEP 420 for namespace package.
+- v8.2.0: Inject rst_epilog to include ``|project|`` substitution.
+- Remove jaraco.base: PEP420 namespace packages do not use that
+  kind of scheme anymore.
+
+-------------------------------------------------------------------
+Mon Nov  8 11:07:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add missing six dependency declaration 
+
+-------------------------------------------------------------------
+Mon Mar  9 15:11:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 8.1.0
+  * In sphinx when loading metadata, trap a ValueError to include the offending value.
+  * Require Python 3.6 or later.
+  * Removed 'cheese' package as it was built for a use-case that is no longer needed.
+  * Sphinx plugin now declares support for parallel reads (optimistically).
+
+-------------------------------------------------------------------
+Mon Oct 14 13:46:38 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Run SPEC file through spec-cleaner -i.
+
+-------------------------------------------------------------------
+Tue Feb 26 07:17:20 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LICENSE
+- Remove bcond_with test, and skip two failing tests
+- Compile manually due to switch to pkgutil namespace technique
+- Add docs/*.rst to %doc
+- Update to v6.1
+  * Sphinx plugin now exposes ``package_url`` in HTML templates.
+- from 6.0
+  * Switch to pkgutil namespace technique for the ``jaraco`` namespace.
+- from 5.2
+  * Show command now also honors direct attributes on a Distribution instance.
+- from 5.1.1
+  * In Sphinx module, use universal newlines to avoid broken results on Windows.
+- from 5.1
+  * Added ``jaraco.packaging.make-tree`` utility for taking output from
+    pipdeptree and making a tree of it.
+- from 5.0
+  * Drop support for Python 2.6.
+  * Re-aligned to use pkg_resources-managed technique for
+    the jaraco namespace, all package of which must elect one
+    technique or another.
+
+-------------------------------------------------------------------
+Mon Nov 13 17:25:52 UTC 2017 - toddrme2178@gmail.com
+
+- Add namespace package that other jaraco packages can use.
+- Properly handle namespace package structure.
+  This guarantees the module is importable.
+
+-------------------------------------------------------------------
+Wed Jul  5 08:00:46 UTC 2017 - aloisio@gmx.com
+
+- Initial package (4.1)

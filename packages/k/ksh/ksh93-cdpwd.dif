@@ -1,0 +1,19 @@
+--- ./src/cmd/ksh93/bltins/cd_pwd.c.orig	2014-11-13 16:07:38.336318883 +0000
++++ ./src/cmd/ksh93/bltins/cd_pwd.c	2014-11-13 16:24:53.323415375 +0000
+@@ -116,9 +116,14 @@ int	b_cd(int argc, char *argv[],Shbltin_
+ 		char	*sp;
+ 		for(dp=dir; *dp=='.'; dp++)
+ 		{
+-			if(*++dp=='.' && (*++dp=='/' || *dp==0))
++			if (dp[1]=='.' && (dp[2]=='/' || dp[2]==0))
++			{
+ 				n++;
+-			else if(*dp && *dp!='/')
++				dp += 2;
++			}
++			else if (dp[1]=='/' || dp[1]==0)
++				dp++;
++			else
+ 				break;
+ 			if(*dp==0)
+ 				break;

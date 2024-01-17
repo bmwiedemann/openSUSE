@@ -1,0 +1,151 @@
+--- ./src/cmd/ksh93/sh/io.c.orig	2015-12-09 11:17:56.993309654 +0000
++++ ./src/cmd/ksh93/sh/io.c	2015-12-09 11:20:10.671805470 +0000
+@@ -692,7 +692,7 @@ int sh_close(register int fd)
+ 	}
+ 	if(fd >= shp->gd->lim.open_max)
+ 		sh_iovalidfd(shp,fd);
+-	if(!(sp=shp->sftable[fd]) || sfclose(sp) < 0)
++	if(!(sp=shp->sftable[fd]) || sffileno(sp) != fd || sfclose(sp) < 0)
+ 	{
+ 		int err=errno;
+ 		if(fdnotify)
+--- ./src/cmd/ksh93/sh/jobs.c.orig	2015-11-27 12:18:44.168204649 +0000
++++ ./src/cmd/ksh93/sh/jobs.c	2015-11-27 14:49:54.255529119 +0000
+@@ -1630,6 +1630,8 @@ int	job_wait(register pid_t pid)
+ 		}
+ 		sfsync(sfstderr);
+ 		job.waitsafe = 0;
++		if (pw && !job.savesig && shp->subshell)
++			sh_readpipedata();
+ 		nochild = job_reap(job.savesig);
+ 		if(job.waitsafe)
+ 			continue;
+--- ./src/cmd/ksh93/sh/macro.c.orig	2015-08-11 12:00:52.454212675 +0000
++++ ./src/cmd/ksh93/sh/macro.c	2015-11-27 14:02:27.493074974 +0000
+@@ -2183,7 +2183,7 @@ static void comsubst(Mac_t *mp,register
+ 		stkseek(stkp,soff+foff+64);
+ 		stkseek(stkp,soff);
+ 	}
+-	if(foff > IOBSIZE)
++	if(sffileno(sp)>=0 && foff>(Sfoff_t)IOBSIZE)
+ 		sfsetbuf(sp,NULL,SF_UNBOUND);
+ 	while((str=(char*)sfreserve(sp,SF_UNBOUND,0)) && (c=bufsize=sfvalue(sp))>0)
+ 	{
+--- ./src/cmd/ksh93/sh/subshell.c.orig	2015-08-11 11:59:29.030528394 +0000
++++ ./src/cmd/ksh93/sh/subshell.c	2015-12-09 11:20:38.614700038 +0000
+@@ -105,11 +105,23 @@ static struct subshell
+ #if SHOPT_COSHELL
+ 	void		*coshell;
+ #endif /* SHOPT_COSHELL */
++	char		*pipedata;
++	size_t		pipedatalen;
+ } *subshell_data;
+ 
+ static long subenv;
+ 
+ 
++static void sh_addtopipedata(struct subshell *sp, void *buf, size_t len) 
++{
++        if (!sp->pipedata)
++                sp->pipedata = malloc(len);
++        else
++                sp->pipedata = realloc(sp->pipedata, sp->pipedatalen + len);
++        memcpy(sp->pipedata + sp->pipedatalen, buf, len);
++        sp->pipedatalen += len; 
++}
++
+ /*
+  * This routine will turn the sftmp() file into a real /tmp file or pipe
+  * if the /tmp file create fails
+@@ -146,7 +158,7 @@ void	sh_subtmpfile(Shell_t *shp)
+ 			sh_fcntl(sp->pipefd,F_SETFD,FD_CLOEXEC);
+ 			/* write the data to the pipe */
+ 			if(off = sftell(sfstdout))
+-				write(fds[1],sfsetbuf(sfstdout,(Void_t*)sfstdout,0),(size_t)off);
++				sh_addtopipedata(sp, sfsetbuf(sfstdout,(Void_t*)sfstdout,0),(size_t)off);
+ 			sfclose(sfstdout);
+ 			if((sh_fcntl(fds[1],F_DUPFD, 1)) != 1)
+ 				errormsg(SH_DICT,ERROR_system(1),e_file+4);
+@@ -173,6 +185,50 @@ void	sh_subtmpfile(Shell_t *shp)
+ 	}
+ }
+ 
++void sh_readpipedata()
++{
++	register struct subshell *sp = subshell_data;
++	fd_set rfd;
++	if (sp)
++		sp = sp->pipe;
++	if (!sp || sp->pipefd < 0 || sp->pipefd >= FD_SETSIZE)
++		return;
++	sigset_t sigsaved, sigchld;
++	sigemptyset(&sigchld);
++	sigaddset(&sigchld, SIGCHLD);
++	/* block sigchild */
++	sigprocmask(SIG_BLOCK, &sigchld, &sigsaved);
++	FD_ZERO(&rfd);
++	FD_SET(sp->pipefd, &rfd);
++	while (!job.savesig) {
++		int i = pselect(sp->pipefd + 1, &rfd, 0, 0, 0, &sigsaved);
++		if (i > 0) {
++			char buf[4096];
++			i = read(sp->pipefd, buf, 4096);
++			if (i == 0 || (i < 0 && errno != EINTR))
++				break;
++			sh_addtopipedata(sp, buf, i);
++		}
++	}
++	sigprocmask(SIG_SETMASK, &sigsaved, 0);
++}
++
++void sh_emptypipe(struct subshell *sp, int pipefd)
++{
++	int i;
++	char buf[4096];
++	if (!sp || pipefd < 0)
++		return;
++	for (;;) {
++		i = read(pipefd, buf, 4096);
++		if (i < 0 && errno == EINTR)
++			continue;
++		if (i <= 0)
++			break;
++		sh_addtopipedata(sp, buf, i);
++	}
++}
++
+ 
+ /*
+  * This routine creates a temp file if necessary and creates a subshell.
+@@ -614,7 +670,7 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 			sp->tmpfd = -1;
+ 			sp->pipefd = -1;
+ 			/* use sftmp() file for standard output */
+-			if(!(iop = sftmp(comsub==1?PIPE_BUF:IOBSIZE)))
++			if(!(iop = sftmp(comsub==1?SF_UNBOUND:IOBSIZE)))
+ 			{
+ 				sfswap(sp->saveout,sfstdout);
+ 				errormsg(SH_DICT,ERROR_system(1),e_tmpcreate);
+@@ -822,6 +878,22 @@ Sfio_t *sh_subshell(Shell_t *shp,Shnode_
+ 		sh_argfree(shp,argsav,0);
+ 	if(shp->topfd != buff.topfd)
+ 		sh_iorestore(shp,buff.topfd|IOSUBSHELL,jmpval);
++
++	/* empty the pipe and move all data into iop */
++	if (comsub && sp->pipefd>=0)
++	{
++		sh_emptypipe(sp, sffileno(iop));
++		sfclose(iop);
++		sp->pipefd = -1;
++		iop = sftmp(SF_UNBOUND);
++		if (sp->pipedatalen)
++			sfwrite(iop, sp->pipedata, sp->pipedatalen);
++		if (sp->pipedata)
++			free(sp->pipedata);
++		sp->pipedata = 0;
++		sp->pipedatalen = 0;
++	}
++
+ 	if(sp->sig)
+ 	{
+ 		if(sp->prev)

@@ -1,0 +1,25 @@
+Index: kshisen-16.08.2/src/board.cpp
+===================================================================
+--- kshisen-16.08.2.orig/src/board.cpp
++++ kshisen-16.08.2/src/board.cpp
+@@ -1401,9 +1401,9 @@ void Board::madeMove(TilePos const & til
+ {
+     std::unique_ptr<Move> move;
+     if (slide.empty()) {
+-        move = std::make_unique<Move>(tilePos1, tilePos2, field(tilePos1), field(tilePos2));
++        move = std::unique_ptr<Move>(new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2)));
+     } else {
+-        move = std::make_unique<Move>(tilePos1, tilePos2, field(tilePos1), field(tilePos2), slide);
++        move = std::unique_ptr<Move>(new Move(tilePos1, tilePos2, field(tilePos1), field(tilePos2), slide));
+     }
+     m_undo.push_back(std::move(move));
+     if (!m_redo.empty()) {
+@@ -1743,7 +1743,7 @@ bool Board::hint_I(PossibleMoves & possi
+ 
+ int Board::tilesLeft() const
+ {
+-    return std::count_if(m_field.begin(), m_field.end(), [](auto field) { return field != EMPTY; });
++    return std::count_if(m_field.begin(), m_field.end(), [](int field) { return field != EMPTY; });
+ }
+ 
+ int Board::currentTime() const

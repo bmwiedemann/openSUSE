@@ -1,0 +1,6 @@
+# this is not duplicated - it's unpacked on media
+addFilter("duplicated-file-gpl-v2.*/CD1/GPLv2.txt")
+# this is correct - as the file ending suggests
+addFilter("non-linux-readme.*/CD1/README.DOS")
+# we only have docu, but depending on the architecture
+addFilter("no-binary");

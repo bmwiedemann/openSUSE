@@ -1,0 +1,5 @@
+<package name="python-pybind11-stubgen" project="openSUSE:Factory">
+  <title>Generates stubs for python modules</title>
+  <description>Generates stubs for python modules (targeted to C++ extensions compiled with pybind11) </description>
+  <devel project="science" package="python-pybind11-stubgen"/>
+</package>

@@ -1,0 +1,2 @@
+addFilter("W: files-duplicate /usr/share/x11vnc/classes/index.vnc /usr/share/x11vnc/classes/ssl/index.vnc")
+addFilter("W: patch-not-applied Patch5: x11vnc-thread-auth.diff")

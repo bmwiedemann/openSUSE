@@ -1,0 +1,1037 @@
+-------------------------------------------------------------------
+Sat Nov 25 22:18:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.1:
+  * Report parse errors in config files.
+  * Fix image toggling for Emacs >= 29.1.
+  * Support relative lastmod queries (see notmuch-sexp-queries(7)
+    and notmuch-search-terms(7) for details).
+  * Support indexing of designated attachments as text (see
+  * notmuch-config(1) for details).
+  * Add options --offset and --limit to notmuch-show(1).
+  * New commands notmuch-search-edit-search and notmuch-tree-
+    edit-search.
+  * Introduce notmuch-tree-outline-mode.
+  * Some compatibility fixes for Emacs 29. At least one issue
+    (hiding images) remains in 0.38.
+  * Support completion when piping to external command.
+  * Fix regression in updating tag display introduced by 0.37.
+  * Fix bug creating database when database.path is not set.
+  * Incremental performance improvements for message deletion.
+  * Catch Xapian exceptions when deleting messages.
+  * Sync removed message properties to the database.
+  * Replace use of thread-unsafe Query::MatchAll in the infix
+    query parser.
+  * Be more careful when clearing the results directory.
+  * Use `database_open_with_config`, and provide compatible path
+    search semantics.
+  * Support testing installed version of notmuch.
+  * Adapt to some breaking changes in glib handling of init
+    files.
+  * Replace OpenPGP key used in test suite.
+  * Performance Tests
+  * Update signatures for performance test corpus.
+
+-------------------------------------------------------------------
+Mon Aug  7 06:49:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove rhetorics and history lesson from description.
+
+-------------------------------------------------------------------
+Mon Aug  7 06:20:42 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Fix libnotmuch pkg description, fixes boo#1020067
+
+-------------------------------------------------------------------
+Sat Dec  3 15:05:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop build-dependency on libgcrypt-cavs: no longer existing with
+  libgcrypt 1.10.
+
+-------------------------------------------------------------------
+Mon Oct  3 15:43:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.37:
+  * Fix uninitialized field in message objects.
+  * Add one sided lastmod ranges for sexp queries.
+  * Expand macro parameters inside regex and wildcard modifiers.
+  * `notmuch help` now works for external commands.
+  * `NOTMUCH_CONFIG` is now passed to external commands and hooks.
+  * The function `notmuch-mua-mail` now moves point depending on the
+  * provided arguments.
+  * Restrict what mime types are inlined in replies and on refresh.
+  * The functions in notmuch-query.el are now obsolete and may be removed
+  * in a future version of Notmuch.
+  * Add some controls for lazy display of message bodies (See "Dealing
+  * with large messages and threads" in the notmuch-emacs documentation).
+  * Allow the user to select (with '%') a different duplicate message file
+  * to display.
+  * Use `message-dont-reply-to-names` in `notmuch-message-mode`.
+  * Add the `sexp` prefix to the infix (traditional) query parser. This
+  * allows specific subqueries to be parsed by the sexp parser (with
+  * appropropriate quoting). See `notmuch-search-terms(7)` for details.
+  * Add another heuristic to regexp fields to prevent phrase parsing of
+  * bracketed sub-expressions.
+  * Envelope from ("From ") headers are now escaped as X-Envelope-From: in
+  * input to `notmuch-insert`. This prevents creating mbox files when
+  * calling `notmuch-insert` from e.g. `postfix`.
+  * Use the `config_pairs` API in ConfigIterator. This returns all
+  * matching key-value pairs, not just those that happen to be stored in
+  * the database.
+  * Reorganize documention for `notmuch-config`. Add a few links from
+  * other man pages.
+
+-------------------------------------------------------------------
+Tue Mar  1 00:00:00 CET 2022 - dsterba@suse.cz
+
+- Version 0.35
+  * Library
+  - Implement the `date` and `lastmod` fields in the S-expression parser.
+  - Ignore trailing `/` for pathnames in both query parsers.
+  - Rename configuration option `built_with.sexpr_query` to `built_with.sexp_queries`.
+  - Do not assume a default mail root in split (e.g. XDG) configurations.
+  - Fix some small memory leaks in `notmuch_database_open_with_config`.
+
+  * CLI
+  - Improve handling of leading/trailing punctation and space for configuration lists.
+  - Only ignore `.notmuch` at the top level in `notmuch new`.
+  - Optionally show extra headers in `notmuch show`. See `show.extra_headers` in notmuch-config(1).
+
+  * Disable tests due to known failures of python-cffi test cases
+
+-------------------------------------------------------------------
+Wed Nov  3 15:50:43 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.34.1
+
+What's new in notmuch 0.34.1
+=========================
+
+Library
+-------
+
+Fix for deallocation and nulling of output parameter for
+notmuch_database_{open_with,create_with,load}_config when errors
+occur. This change fixes a potential use-after-free bug that has been
+present since 0.32. This release also improves the documentation of
+status returns for the same 3 functions.
+
+-------------------------------------------------------------------
+Fri Oct 22 08:03:40 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.34
+
+What's new in notmuch 0.34
+=========================
+
+General
+-------
+
+An optional new s-expression based query parser is available if
+notmuch is built with the `sfsexp` library. See
+notmuch-sexp-queries(7) for syntax, and use `notmuch config get
+built_with.sexpr_queries` to check if notmuch is compiled with
+s-expression query support.
+
+CLI
+---
+
+Support multiple `Delivered-To` headers in notmuch-reply(1).
+
+Emacs
+-----
+
+Functions are now allowed in `notmuch-search-result-format`.
+
+Improvements to unthreaded view on large threads.
+
+Tolerate bad/missing working directory for most commands.
+
+Allow customization of tree drawing symbols in notmuch-tree mode.
+
+-------------------------------------------------------------------
+Thu Sep 30 14:22:26 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.33.2
+
+What's new in notmuch 0.33.2
+=========================
+
+Tests
+-----
+
+Improve reliability of T355-smime by changing gpgsm initialization.
+
+-------------------------------------------------------------------
+Mon Sep 13 10:02:59 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.33.1
+
+What's new in notmuch 0.33.1
+=========================
+
+General
+-------
+
+Replace the fully-qualified-domain-name of the host with "localhost"
+in the default email address.  This should fix two flaky subtests in
+T590-libconfig.
+
+
+What's new in notmuch 0.33
+=========================
+
+Library
+-------
+
+Correct documentatation about transactions.
+
+Add a configurable automatic commit of transactions. See
+`database.autocommit` in notmuch-config(1).
+
+Document the algorithm used to find a database.
+
+CLI
+---
+
+Define format version 5, which supports sorting the output of
+notmuch-show.
+
+Emacs
+-----
+
+`notmuch` no longer sets `mail-user-agent` on load. To restore the
+previous behaviour of using notmuch to send mail by default, customize
+`mail-user-agent` to `notmuch-user-agent`.
+
+`notmuch-company` now works in `org-msg`.
+
+Improve the display of messages from long threads in unthreaded mode.
+
+Prefer email addresses over User ID when showing valid signatures.
+
+Define a new face `notmuch-jump-key`.
+
+New commands in notmuch-tree view: `notmuch-tree-filter` and `notmuch-tree-filter-by-tag`.
+
+Honour `notmuch-show-text/html-blocked-images` when using `w3m` to
+render html.
+
+Support toggling sort order in notmuch-tree mode.
+
+Ruby
+----
+
+Memory management of allocated notmuch objects (database, messages,
+etc...) is now done via the Ruby GC. This removes all constraints on
+the order of object destruction.  Database close and destroy are
+split, following an old library API change.
+
+Vim
+---
+
+Respect excluded tags when showing a thread.
+
+Documentation
+-------------
+
+Fix doc build for Sphinx 4.0.
+
+Improve the markup and linking of the documentation.
+
+-------------------------------------------------------------------
+Wed Aug 18 06:29:37 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.32.3
+
+What's new in notmuch 0.32.3
+=========================
+
+Library
+-------
+
+Restore location of database via `MAILDIR` environment variable, which
+was broken in 0.32.
+
+Bump libnotmuch minor version to match the documentation in
+`notmuch.h`.
+
+Correct documentation for deprecated database opening functions to
+point out that they (still) do not load configuration information.
+
+CLI
+---
+
+Restore "notmuch config get built_with.*", which was broken in 0.32.
+
+-------------------------------------------------------------------
+Mon Jun 28 06:35:16 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+What's new in notmuch 0.32.2
+=========================
+
+General
+-------
+
+Fix a bug from 2017 that can add duplicate thread-id terms to message
+documents.
+
+CLI
+---
+
+Fix small memory leak in notmuch new.
+
+Emacs
+-----
+
+Add `(require 'seq)` for `seq-some`.
+
+Documentation
+-------------
+
+Fix man page build for Sphinx 4.x. Fix variable name in emacs docs.
+
+Tests
+-----
+
+Fix backup creation in `perf-test/T00-new`.  Check openssl
+prerequisite in `add_gpgsm_home`.
+
+-------------------------------------------------------------------
+Mon May 17 10:49:07 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+What's new in notmuch 0.32.1
+=========================
+
+General
+-------
+
+Restore handling of relative values for `database.path` that was
+broken by 0.32. Extend this handling to `database.mail_root`,
+`database.backup_dir`, and `database.hook_dir`.
+
+Reload certain metadata from Xapian database in
+notmuch_database_reopen. This fixes a bug when adding messages to the
+database in a pre-new hook.
+
+Fix default of `$HOME/mail` for `database.path`. In release 0.32, this
+default worked only in "notmuch config".
+
+Emacs
+-----
+
+Restore the dynamically bound variables `tag-changes` and `query` in
+in `notmuch-before-tag-hook` and `notmuch-after-tag-hook`.
+
+-------------------------------------------------------------------
+Wed May  5 05:25:32 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+What's new in notmuch 0.32
+=========================
+
+General
+-------
+
+This release includes a significant overhaul of the configuration
+management facilities for notmuch.  The previous distinction between
+configuration items that can be modified via plain text configuration
+files and those that must be set in the database via the "notmuch
+config" subcommand is gone, and all configuration items can be set in
+both ways.  The external configuration file overrides configuration
+items in the database. The location of database, hooks, and
+configuration files is now more flexible, with several new
+configuration variables. In particular XDG locations are now supported
+as fallbacks for database, configuration and hooks. For more
+information see `notmuch-config(1)`.
+
+Library
+-------
+
+To support the new configuration facilities, several functions and
+constants have been added to the notmuch API. Most notably:
+
+- `notmuch_database_create_with_config`
+- `notmuch_database_open_with_config`
+- `notmuch_database_load_config`
+- `notmuch_config_get`
+
+A previously requested API change is that `notmuch_database_reopen` is
+now exposed (and generalized).
+
+The previously severe slowdowns from large numbers calls to
+notmuch_database_remove_message or notmuch_message_delete in one
+session has been fixed.
+
+As always, the canonical source of API documentation is
+`lib/notmuch.h`, or the doxygen formatted documentation in `notmuch(3)`
+
+CLI
+---
+
+The `notmuch config set` subcommand gained a `--database` argument to
+specify that the database should be updated, rather than a config file.
+
+The speed of `notmuch new` and `notmuch reindex` in dealing with large
+numbers of mail file deletions is significantly improved.
+
+Emacs
+-----
+
+Completion related updates include: de-duplicating tags offered for
+completion, use the actual initial input in address completion, allow
+users to opt out of notmuch address completion, and do not force Ido
+when prompting for senders.
+
+Some keymaps used to contain bindings for unnamed commands.  These
+lambda expressions have been replaced by named commands (symbols), to
+ease customization.
+
+Lexical binding is now used in all notmuch-emacs libraries.
+
+Fix bug in calling `notmuch-mua-mail` with a non-nil RETURN-ACTION.
+
+Removed, inlined or renamed functions and variables:
+    `notmuch-address-locate-command`,
+    `notmuch-documentation-first-line`, `notmuch-folder`,
+    `notmuch-hello-trim', `notmuch-hello-versions` => `notmuch-version`,
+    `notmuch-remove-if-not`, `notmuch-search-disjunctive-regexp`,
+    `notmuch-sexp-eof`, `notmuch-split-content-type`, and
+    `notmuch-tree-button-activate`.
+
+-------------------------------------------------------------------
+Mon Mar  1 07:13:58 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.31.4
+
+  What's new in notmuch 0.31.4
+  =========================
+
+  Library
+  -------
+
+  Fix include bug triggered by glib 2.67.
+
+  Test
+  ----
+
+  Fix race condition in T568-lib-thread.
+
+-------------------------------------------------------------------
+Mon Jan  4 15:32:48 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.31.3
+
+  What's new in notmuch 0.31.3
+  =========================
+
+  Bindings
+  --------
+
+  Fix for exclude tags in notmuch2 bindings.
+
+  Build
+  -----
+
+  Portability update for T360-symbol-hiding
+
+  Library
+  -------
+
+  Fix for memory error in notmuch_database_get_config_list
+
+-------------------------------------------------------------------
+Mon Nov  9 08:33:41 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.31.2
+
+  What's new in notmuch 0.31.2
+  =========================
+
+  Build
+  -----
+
+  Catch one more occurence of "version" in the build system, which
+  caused the file to be regenerated in the release tarball.
+
+
+  What's new in notmuch 0.31.1
+  =========================
+
+  Library
+  -------
+
+  Fix a memory initialization bug in notmuch_database_get_config_list.
+
+  Build
+  -----
+
+  Rename file 'version' to 'version.txt'. The old file name conflicted
+  with a C++ header for some compilers.
+
+  Replace use of coreutils `realpath` in configure.
+
+-------------------------------------------------------------------
+Mon Sep  7 07:33:47 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.31
+
+  * skip a failing test on ppc64
+
+  What's new in notmuch 0.31
+  =========================
+
+  Emacs
+  -----
+
+  Notmuch now supports Emacs 27.1. You may need to set
+  `mml-secure-openpgp-sign-with-sender` and/or
+  `mml-secure-smime-sign-with-sender` to continue signing messages.
+
+  The minimum supported major version of GNU Emacs is now 25.1.
+
+  Add support for moving between threads after notmuch-tree-from-search-thread.
+
+  New `notmuch-unthreaded` mode (added in Notmuch 0.30)
+
+  Unthreaded view is a mode where each matching message is shown on a
+  separate line.
+
+  The main key entries to unthreaded view are
+
+  'u' enter a query to view in unthreaded mode (works in hello,
+  search, show and tree mode)
+
+  'U' view the current query in unthreaded mode (works from search,
+  show and tree)
+
+  Saved searches can also specify that they should open in unthreaded
+  view.
+
+  Currently it is not possible to specify the sort order: it will
+  always be newest first.
+
+  Notmuch-Mutt
+  ------------
+
+  The shell pipeline executed by notmuch-mutt, which symlinked matched
+  files to a maildir for mutt to access is replaced with internal perl
+  processing. This search operation is now more portable, and somewhat
+  faster.
+
+  Library
+  -------
+
+  Improve exception handling in the library. This should
+  largely eliminate terminations inside the library due to uncaught
+  exceptions or internal errors.  No doubt there are a few uncovered
+  code paths still; please report them as bugs.
+
+  Add `notmuch_message_get_flag_st` and
+  `notmuch_message_has_maildir_flag_st`, and deprecate the existing
+  non-status providing versions.
+
+  Move memory de-allocation from `notmuch_database_close` to
+  `notmuch_database_destroy`.
+
+  Handle relative filenames in `notmuch_database_index_file`, as
+  promised in the documentation.
+
+  Python Bindings
+  ---------------
+
+  Documentation for the python bindings is merged into the main
+  sphinx-doc documentation tree. The merged documentation can be built
+  with e.g. `make sphinx-html`
+
+  Dependencies
+  ------------
+
+  We now support building notmuch against Xapian 1.5 (the current
+  development version).
+
+  Test Suite
+  ----------
+
+  Test suite fixes for compatibility with Emacs 27.1.
+
+  Build System
+  ------------
+
+  Man pages are now compressed reproducibly.
+
+-------------------------------------------------------------------
+Mon Aug 31 16:25:00 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream pre-release 0.31~rc2
+
+-------------------------------------------------------------------
+Tue Aug 18 11:46:56 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream pre-release 0.31~rc1
+
+-------------------------------------------------------------------
+Mon Aug 17 08:34:31 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream pre-release 0.31~rc0
+
+-------------------------------------------------------------------
+Mon Jul  6 11:30:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.30
+
+  S/MIME
+  ------
+
+  Handle S/MIME (PKCS#7) messages -- one-part signed messages, encrypted
+  messages, and multilayer messages. Treat them symmetrically to
+  OpenPGP messages. This includes handling protected headers
+  gracefully.
+
+  If you're using Notmuch with S/MIME, you currently need to configure
+  gpgsm appropriately.
+
+  Mixed-up MIME Repair
+  --------------------
+
+  Detect and automatically repair a common form of message mangling
+  created by Microsoft Exchange (see index.repaired=mixedup in
+  notmuch-properties(7)).
+
+  Protected Headers
+  -----------------
+
+  Avoid indexing the legacy-display part of an encrypted message that
+  has protected headers (see
+  index.repaired=skip-protected-headers-legacy-display in
+  notmuch-properties(7)).
+
+  Python
+  ------
+
+  Drop support for python2, focus on python3.
+
+  Introduce new CFFI-based python bindings in the python module named
+  "notmuch2".  Officially deprecate (but still support) the older
+  "notmuch" module.
+
+  Dependencies
+  ------------
+
+  Support for Xapian 1.2 is removed. The minimum supported version of
+  Xapian is now 1.4.0.
+
+-------------------------------------------------------------------
+Tue May  5 08:54:01 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add missing BuildRequire info and drop obsoleted macros:
+  %install_info, %install_info_prereq and %install_info_delete were deprecated
+  in favor of file triggers => drop these from the spec
+
+-------------------------------------------------------------------
+Wed Mar 11 09:13:41 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Improve Python 3.8 workaround:
+  silence python warnings emitted by gdb instead of skipping tests
+
+-------------------------------------------------------------------
+Tue Mar 10 15:57:03 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Add workaround for Python 3.8 + GDB 8
+
+-------------------------------------------------------------------
+Mon Jan  6 22:49:12 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- drop python2 subpackages
+- don't BuildRequires python3-devel, isn't needed
+
+-------------------------------------------------------------------
+Thu Nov 28 10:14:18 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.29.3
+
+  Disable python-notmuch building following upstream with the Debian package
+
+  General
+  -------
+
+  Fix for use-after-free in notmuch_config_list_{key,val}.
+
+  Fix for double close of file in notmuch-dump.
+
+-------------------------------------------------------------------
+Mon Oct 21 07:59:45 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.29.2
+
+  * Fix for file descriptor leak when opening gzipped mail files. Thanks to
+    James Troup for the bug report and the fix.
+
+  Update notmuch.keyring (David Bremner's public key changed)
+
+-------------------------------------------------------------------
+Fri Oct  4 12:39:15 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Only run the testsuite when debugging symbols are available
+  This fixes the issue reported in boo#1152451
+
+-------------------------------------------------------------------
+Thu Jun 20 09:50:39 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Update to notmuch 0.29.1:
+  * Fix for installation failure with `configure --without-emacs`.
+
+-------------------------------------------------------------------
+Tue Jun 11 10:09:18 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Cleanup specfile
+  + expand Sources to be more human parseable
+  + use signature of upstream tarball instead
+
+-------------------------------------------------------------------
+Fri Jun  7 15:00:17 UTC 2019 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update source to notmuch 0.29
+  * Add "body:" field to allow searching for terms that occur only
+    in the message body. Users will need to reindex their mail
+    to take advantage of this feature.
+  * Add support for indexing user specified headers (e.g. List-Id).
+    See notmuch-config(1)
+  * Add support for gzip compressed mail messages
+  * Notmuch is now capable of indexing, searching and rendering
+    cryptographically-protected Subject: headers
+  * emacs:
+    + Bind B to browse URLs in current message.
+    + Bind g to refresh the current notmuch buffer.
+    + Forwarded messages are now tagged as +forwarded
+    + Add references header to link forwarded message to thread of
+      original message.
+    + The minimum supported major version of Emacs is now 24.
+    + Support for GNU Emacs older than 25.1 is deprecated
+- Switch to .xz upstream archive
+- Bump minimum dependency for gmime to 3.0, thus dropping support for
+  openSUSE Leap 42.3
+
+-------------------------------------------------------------------
+Wed May  8 11:09:32 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Remove checksum file as upstream is not using detached signatures
+  and it's confusing. Signed checksum is in the signature file.
+
+-------------------------------------------------------------------
+Sun May  5 20:16:05 UTC 2019 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Upgrade to notmuch 0.28.4
+  * Fix a spurious error when using `notmuch show --raw` on messages
+    whose size is a multiple of the internal buffer size.
+- dropped 0001-CLI-reindex-fix-memory-leak.patch: upstreamed
+
+-------------------------------------------------------------------
+Tue Apr 16 12:53:03 UTC 2019 - Adam Majer <adam.majer@suse.de>
+
+- Update unnecessarily specific BuildRequires
+
+-------------------------------------------------------------------
+Tue Apr 16 09:41:39 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add 0001-CLI-reindex-fix-memory-leak.patch:
+  Fix a memory leak in the reindexing code,
+  taken from the message ID: 20190416014616.31623-2-david@tethera.net
+
+-------------------------------------------------------------------
+Thu Apr 11 10:16:28 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Install the info pages, run the tests during build
+
+-------------------------------------------------------------------
+Thu Mar  7 13:01:19 UTC 2019 - Chris Coutinho <c.coutinho@redstack.nl>
+
+What's new in notmuch 0.28.3
+=========================
+
+Library
+-------
+
+Fix a bug with the internal data structure _notmuch_string_map_t used
+by message properties.
+
+Build System
+------------
+
+Serialize calls to sphinx-build to avoid race condition.
+
+-------------------------------------------------------------------
+Sun Feb 24 23:58:47 UTC 2019 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update to 0.28.2
+  * Pull in latest release from notmuchmail.org
+
+From the NEWS file, this version reports the following:
+
+    Emacs
+    -----
+
+    Invoke gpg with --batch and --no-tty.
+
+    Python Bindings
+    ---------------
+
+    Fix documentation build with Python 3.7. Note that Python >= 3.3 is
+    now needed to build this documentation.
+
+-------------------------------------------------------------------
+Sat Mar 10 22:33:22 UTC 2018 - carmen@carmenbianca.eu
+
+- update to 0.26
+  * Add python3-Sphinx to unconditional BuildRequires
+  - Support indexing cleartext of encrypted e-mails
+  - Python bindings specific Debian packaging is removed
+  - cli:
+    + Support for re-indexing existing messages
+    + Support maildir synced tags in new.tags
+    + Support /regex/ in new.ignore
+  - Library changes:
+    + Indexing files with duplicate message-id
+    + New functions to count files
+    + New function to remove properties
+    + Change return value of notmuch_thread_get_authors from NULL to empty string
+    + Transition notmuch_database_add_message to notmuch_database_index_file
+
+-------------------------------------------------------------------
+Thu Oct 19 10:18:40 UTC 2017 - mimi.vx@gmail.com
+
+- update to 0.25.1
+  - disable handling x-display in text/enriched messages
+
+-------------------------------------------------------------------
+Thu Sep 14 15:53:43 UTC 2017 - zaitor@opensuse.org
+
+- Add conditional for pkgconfig(gmime-2.6) and new
+  pkgconfig(gmime-3.0) BuildRequires: adjust to whats available in
+  Tumbleweed and what the source supports.
+
+-------------------------------------------------------------------
+Tue Sep  5 14:26:36 UTC 2017 - abhishek.lekshmanan@suse.com
+
+- version 0.25
+  * use sha256 files for checksum & gpg signatures
+  * Add notmuch-emacs-mua binary
+  - Add regexp searching for mid, paths, and tags.
+  - Skip HTML tags when indexing
+  - cli:
+    + Bash completion is now installed to /usr/share by default.
+    + Allow space as separator for keyword arguments.
+  - emacs:
+    + Support for stashing message timestamp in show and tree views
+    + Don't use 'function' as variable name
+  - Library changes:
+    + Add workaround for date parsing of bad input in older GMime
+    + Replace deprecated functions with status returning versions
+    + Add support for building against GMime 3.0.
+    + Rename libutil.a to libnotmuch_util.a.
+    + libnotmuch SONAME is incremented to libnotmuch.so.5.
+
+- version 0.24.2
+  - Fix output from `notmuch dump --include=properties` to not include tags.
+  - emacs: Fix filename stashing in tree view.
+
+- version 0.24.1
+  - Fix regressions in non-regexp search for `from:` and `subject:`
+  - Fix several memory leaks in `notmuch show`
+  - Fix bug in dump header
+  - Fix a read-after-free in the library.
+
+- version 0.24
+  - Regular expression searches supported for `from:` and `subject:`
+  - Run external `notmuch-` prefixed commands as subcommands
+  - New default output format to 3
+  - emacs:
+    + Postpone and resume messages in `notmuch-message-mode` (composition)
+    + Address Completion improvements
+    + A configurable Tag jump menu
+    + Single command to refresh all buffers with `M-=`
+    + Stop display of `application/*` parts
+    + Small change in the api for notmuch-search-tag
+    + Bugfix for sending messages with very long headers
+    + `notmuch emacs-mua` command installed with the Emacs interface
+    + Notmuch Emacs desktop integration
+  - Library changes:
+    + `notmuch_query_count_messages` is now non-destructive
+    + Improved handling of DatabaseModifiedError
+
+- version 0.23.6
+  - fix read-after-free bug in `notmuch new`
+
+-------------------------------------------------------------------
+Thu Feb 23 20:05:08 UTC 2017 - mvetter@suse.com
+
+- Update to version 0.23.5:
+  * Fix quoting bug in configure. This had introduced a RUNPATH into the
+    notmuch binary in cases where it was not not needed.
+
+-------------------------------------------------------------------
+Mon Dec 26 12:35:50 UTC 2016 - hzhr+os@mailbox.org
+
+- version 0.23.4
+  - Improve error handling in notmuch insert
+  - Restore autoload cookie for notmuch-search
+
+-------------------------------------------------------------------
+Sat Dec 10 15:55:52 UTC 2016 - hzhr+os@mailbox.org
+- version 0.23.3
+  - Treat disappearing files during notmuch new as non-fatal
+  - Fix incompatibility (related to signature size) with gnupg 2.1.16
+- version 0.23.2
+  - Fix notmuch-interesting-buffer and notmuch-cycle-notmuch-buffers
+  - Restore compatibility with Emacs 23
+- version 0.23.1
+  - Require Xapian >= 1.2.6
+  - Fix default colours for unread and flagged messages
+  - Fix test failure with Emacs 25.1
+- version 0.23
+  - Compiling against Xapian 1.4 enables several new features
+  - Support for single argument date: queries
+  - Support for blocking opens
+  - Support for named queries
+  - Message property API
+  - Bug fix for `notmuch_directory_set_mtime`
+  - Support for compile time options
+  - Dump/Restore support for configuration information and properties
+  - Make notmuch-message-mode use insert for fcc
+  - Make internal address completion customizable
+  - Allow internal address completion on an individual basis
+  - Resend messages
+  - Face customization is easier
+  - Add support for `notmuch_database_get_all_tags`
+  - Go bindings moved to contrib
+  - Add support for `notmuch_threads_t` and `notmuch_thread_t`
+  - Fixed constant values so they are not all zero anymore
+- version 0.22.2
+  - Silence gdb more
+  - Hardcode fingerprint in PGP/MIME tests
+
+-------------------------------------------------------------------
+Thu Aug 25 15:02:19 UTC 2016 - mimi.vx@gmail.com
+
+- version 0.22.1
+  - Correct the definition of LIBNOTMUCH_CHECK_VERSION.
+  - Document the (lack of) operations permitted on a closed database.
+  - Fix race condition in dump / restore tests.
+  - Notmuch-mutt: Use env to locate perl.
+  - Emacs: Tell message-mode mode that outgoing messages are mail
+  - Emacs: This makes message-mode configuration behave more predictably.
+  - Respect charset of MIME parts when reading them
+  - Fix previous assumption that everyone uses UTF-8.
+
+-------------------------------------------------------------------
+Sat Jun 18 10:04:44 UTC 2016 - lmb@suse.com
+
+- version 0.22
+  - Xapian 1.3 support
+  - Limited support for S/MIME messages
+  - Fix for threading bug involving deleting and re-adding messages.
+  - Fix for case-sensitive content disposition headers.
+  - Fix handling of 1 character directory names at top level.
+  - Emacs: Notmuch replies now include all parts shown in the show view
+  - Emacs: Filtering or Limiting messages is now bound to `l` in the
+    search view
+  - Emacs: `F` forwards all open messages in a thread
+  - Emacs: Preferred content type can be determined from the message
+    content
+- version 0.21
+  - Notmuch now requires gmime >= 2.6.7. The gmime 2.4 series is no
+    longer supported.
+  - Database revision tracking: `lastmod:` queries
+  - Date queries now support `date:<expr>..!` shorthand for
+    `date:<expr>..<expr>`
+  - Notmuch database upgrade to support `lastmod:` queries
+  - The `notmuch address` command supports new deduplication schemes
+
+-------------------------------------------------------------------
+Thu Jul  9 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- version 0.20.2
+  - Emacs: Bug fix for marking messages read in notmuch-tree mode
+- version 0.20.1
+  - test suite fixes
+- version 0.20
+  - There is a new mimetype: search prefix
+  - Path to gpg is now configurable
+  - Notmuch-Mutt: Support messages without Message-IDs.
+  - Undeprecate single message mboxes
+  - Contrib: notmuch-deliver is removed
+  - Improved notmuch-search-terms.7
+
+-------------------------------------------------------------------
+Wed Feb  4 21:14:54 UTC 2015 - mvyskocil@opensuse.org
+
+- workaround a source checker issue by moving bcond macros behind
+  Name and Version tag
+
+-------------------------------------------------------------------
+Fri Jan 30 00:00:01 CET 2015 - dsterba@suse.cz
+
+- readd the signature file and update keyring
+
+-------------------------------------------------------------------
+Fri Jan 30 00:00:00 CET 2015 - dsterba@suse.cz
+
+- spec updates
+  - remove gpg checks (broken) and the related files
+  - define lib version
+- version 0.19
+  - Stopped notmuch dump failing if someone writes to the database
+  - notmuch insert requires succesful message indexing for success status
+  - notmuch insert has gained support for post-insert hook
+  - notmuch deliver is deprecated
+  - notmuch search now supports --duplicate=N option with --output=messages
+  - Added notmuch address subcommand
+- versions 0.18.1, 0.18.2
+  - This is a bug fix and portability release
+  - Resurrect support for single-message mbox files
+- version 0.18
+  - The folder: search prefix now requires an exact match
+  - There is a new path: search prefix
+  - Notmuch database upgrade due to folder: and path: changes
+  - Support for indexing mbox files has been dropped
+  - notmuch dump now defaults to batch-tag format
+  - notmuch new has a --quiet option
+  - notmuch insert respects maildir.synchronize_flags config option
+- version 0.17
+  - Incompatible change in SHA1 computation
+  - New options to better support handling duplicate messages
+  - Improved notmuch new performance for unchanged folders
+  - notmuch reply --format=text RFC 2047-encodes headers
+  - notmuch compact command
+  - emacs interface:
+    - notmuch-tree (formerly notmuch-pick) has been added to mainline
+    - The notmuch-tag function now requires a list of tag changes
+    - Fixed notmuch-reply putting reply in primary selection
+    - Fixed notmuch-mua-reply point placement when signature involved
+- version 0.16
+  - Support for delivering messages to Maildir
+  - notmuch count --batch option
+  - notmuch tag option to remove all tags from matching messages
+  - Decrypting commands explicitly expect a gpg-agent
+  - Bash command-line completion
+  - many emacs interface updates
+
+-------------------------------------------------------------------
+Mon Feb 18 15:46:41 UTC 2013 - mvyskocil@suse.com
+
+- remove zsh completion, it's part of zsh itself
+
+-------------------------------------------------------------------
+Mon Feb 18 14:12:35 UTC 2013 - mvyskocil@suse.com
+
+- drop contrib from installed files
+- install zsh to correct location
+- instal notmuch.el as notmuch-emacs package like Debian do
+
+-------------------------------------------------------------------
+Mon Feb 18 08:38:41 UTC 2013 - mvyskocil@suse.com
+
+- initial packaging of notmuch 0.15.2 for SUSE
+  * including python/python3 bindings
+  * and notmuchmail (the original emacs lisp based
+    email client for notmuch library)
+

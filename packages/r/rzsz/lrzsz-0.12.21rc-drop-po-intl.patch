@@ -1,0 +1,30 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS = lib intl src po man testsuite
++SUBDIRS = lib src man testsuite
+ EXTRA_DIST = check.lrzsz COMPATABILITY README.cvs README.isdn4linux \
+ 	README.gettext rpmrc buildrpm systype.in fastcheck.sh README.tests \
+ 	beos-runpiped.c fastcheck.beos
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -92,7 +92,7 @@ USE_NLS = @USE_NLS@
+ VERSION = @VERSION@
+ l = @l@
+ 
+-SUBDIRS = lib intl src po man testsuite
++SUBDIRS = lib src man testsuite
+ EXTRA_DIST = check.lrzsz COMPATABILITY README.cvs README.isdn4linux 	README.gettext rpmrc buildrpm systype.in fastcheck.sh README.tests 	beos-runpiped.c fastcheck.beos
+ 
+ noinst_SCRIPTS = systype
+--- a/configure.in
++++ b/configure.in
+@@ -107,7 +107,7 @@ dnl AC_PROG_MAKE_SET included in AM_INIT
+ AC_PROG_RANLIB
+ AC_ISC_POSIX
+ AC_USE_SYSTEM_EXTENSIONS
+-AM_GNU_GETTEXT
++AM_GNU_GETTEXT([external])
+ AC_C_CONST
+ AC_C_INLINE
+ 

@@ -1,0 +1,6 @@
+<package name="hypre" project="openSUSE:Factory">
+  <title>Scalable algorithms for solving linear systems of equations</title>
+  <description>The goal of the Scalable Linear Solvers project is to develop scalable algorithms and software for solving large, sparse linear systems of equations on parallel computers. The primary software product is Hypre, a library of high performance preconditioners that features parallel multigrid methods for both structured and unstructured grid problems. The problems of interest arise in the simulation codes being developed at LLNL and elsewhere to study physical phenomena in the defense, environmental, energy, and biological sciences.
+</description>
+  <devel project="science" package="hypre"/>
+</package>

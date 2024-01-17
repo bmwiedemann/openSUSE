@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c25f973023c1668cfdfab976d2aaf36e</srcmd5>
+    <version>0.003</version>
+    <time>1270723055</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Net-DNS-Resolver-Programmable based on submit request 37301 from user computersalat
+</comment>
+    <requestid>37301</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c25f973023c1668cfdfab976d2aaf36e</srcmd5>
+    <version>0.003</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c25f973023c1668cfdfab976d2aaf36e</srcmd5>
+    <version>0.003</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e61ff894d7c2ac1fad9f3bcc6b0a1f5d</srcmd5>
+    <version>0.003</version>
+    <time>1291998993</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55380 from user coolo
+</comment>
+    <requestid>55380</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>2bb63c319730d36fed126266c1e86b39</srcmd5>
+    <version>0.003</version>
+    <time>1291999007</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55380
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>2bb63c319730d36fed126266c1e86b39</srcmd5>
+    <version>0.003</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>2bb63c319730d36fed126266c1e86b39</srcmd5>
+    <version>0.003</version>
+    <time>1319182291</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>fd5bf8a9404c966068e0458e9bcdc8ed</srcmd5>
+    <version>0.003</version>
+    <time>1323193501</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>fd5bf8a9404c966068e0458e9bcdc8ed</srcmd5>
+    <version>0.003</version>
+    <time>1340183889</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>fd5bf8a9404c966068e0458e9bcdc8ed</srcmd5>
+    <version>0.003</version>
+    <time>1359109759</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>fd5bf8a9404c966068e0458e9bcdc8ed</srcmd5>
+    <version>0.003</version>
+    <time>1379663785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>fd5bf8a9404c966068e0458e9bcdc8ed</srcmd5>
+    <version>0.003</version>
+    <time>1409302422</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>ab86ce98436ddf21b7491ef03a7e9c59</srcmd5>
+    <version>0.003</version>
+    <time>1420318980</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266844</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aa39510d0aeb7df4500a54a30ae8c2f0</srcmd5>
+    <version>0.009</version>
+    <time>1504617236</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.009
+   see /usr/share/doc/packages/perl-Net-DNS-Resolver-Programmable/CHANGES
+  --- 0.009 (2017-07-24)
+    + Cleaner way to handle both arrays of strings and Net::DNS::Packet objects,
+      courtesy of NLNETLABS (Dick Franks) in RT 122542 - thanks!
+    + Extend tests to cover non-mocked queries too
+  
+  --- 0.008 (2017-07-21)
+    * Add Scalar::Util to deps
+  
+  --- 0.007 (2017-07-19)
+    * Fix handling pre-prepared ::Packet objects passed to send()
+    + Additional tests
+- remove Net-DNS-Resolver-Net-DNS-0.75.patch
+
+- updated to 0.006
+   see /usr/share/doc/packages/perl-Net-DNS-Resolver-Programmable/CHANGES
+  --- 0.006 (2017-07-16)
+    * Don't demand 5.10, work on perl &gt;= 5.6
+    * No taint mode flag in t/01-basic.t
+    * Avoid problems with our $VERSION = '...' on one line
+    All these courtesy of Dick Franks (rwfranks) - thanks!
+
+- updated to 0.005
+   see /usr/share/doc/packages/perl-Net-DNS-Resolver-Programmable/CHANGES
+  --- 0.005 (2017-07-13)
+  
+    * Remove debian/ subdir as per RT #108522
+    * Regenerate README via pod2readme
+    * Fix version number in changelog entry below - d'oh - and remove</comment>
+    <requestid>520471</requestid>
+  </revision>
+</revisionlist>

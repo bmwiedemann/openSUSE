@@ -1,0 +1,6 @@
+<package name="octave-forge-database" project="openSUSE:Factory">
+  <title></title>
+  <description>Interface to SQL databases, currently only postgresql using libpq.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-database"/>
+</package>

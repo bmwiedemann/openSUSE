@@ -1,0 +1,9 @@
+<package name="fhourstones" project="openSUSE:Factory">
+  <title>The Fhourstones Benchmark</title>
+  <description>This integer benchmark solves positions in the game of connect-4, as played
+on a vertical 7x6 board.
+
+</description>
+  <devel project="benchmark" package="fhourstones"/>
+  <url>https://tromp.github.io/c4/fhour.html</url>
+</package>

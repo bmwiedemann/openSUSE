@@ -1,0 +1,19 @@
+CPPFLAGS is present everywhere except for the command line
+where it's really needed. Stupid manual Makefiles.
+---
+ Makefile.rules |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: libtecla/Makefile.rules
+===================================================================
+--- libtecla.orig/Makefile.rules
++++ libtecla/Makefile.rules
+@@ -11,7 +11,7 @@ $(OBJDIR):
+ 
+ # Construct the compilation command.
+ 
+-COMPILE = $(CC) -c $(CFLAGS) -o $@
++COMPILE = $(CC) -c $(CPPFLAGS) $(CFLAGS) -o $@
+ 
+ LIB_OBJECTS = $(OBJDIR)/getline.o $(OBJDIR)/keytab.o $(OBJDIR)/freelist.o \
+  $(OBJDIR)/strngmem.o $(OBJDIR)/hash.o $(OBJDIR)/history.o \

@@ -1,0 +1,128 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fafcb5375982ae1b32efe33cb4c02b37</srcmd5>
+    <version>0.4.21</version>
+    <time>1667825497</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain mdbook in openSUSE:Factory.</comment>
+    <requestid>1033893</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>edc8339dcc16861ee1aec216c90dfc91</srcmd5>
+    <version>0.4.22+g4</version>
+    <time>1671564061</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1043884</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9fd9afa2337651c90af71c505de8a6d</srcmd5>
+    <version>0.4.25</version>
+    <time>1672221274</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1045508</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>db4f3b34d1225dd93bc6a5b4fb177eba</srcmd5>
+    <version>0.4.25</version>
+    <time>1672851170</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1046663</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ab49a4df5f9d8b0e577fe83a49152460</srcmd5>
+    <version>0.4.25</version>
+    <time>1674495102</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1060307</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9a29a838d1f97d505b866817d2a337a4</srcmd5>
+    <version>0.4.27</version>
+    <time>1677075710</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067127</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>01cb9eba5f62574641b6227a422a44d7</srcmd5>
+    <version>0.4.27</version>
+    <time>1678283646</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1070153</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>04a883ee8b6a471804ad4d16ae9ee66e</srcmd5>
+    <version>0.4.28</version>
+    <time>1679182219</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1072655</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5a9453eafd60c11324317a1e2921c4e2</srcmd5>
+    <version>0.4.28</version>
+    <time>1682095673</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1081285</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>98f7a1263194000feae717662125473e</srcmd5>
+    <version>0.4.29</version>
+    <time>1685212719</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089304</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>420cef9d93d7a795ed8b30b0418e9369</srcmd5>
+    <version>0.4.30</version>
+    <time>1685830407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090647</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d8003bfc68092db717b2d72cd2a7377c</srcmd5>
+    <version>0.4.31</version>
+    <time>1688737794</time>
+    <user>favogt_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1097511</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dffa634054a6bcbdde85b0dd411dafc6</srcmd5>
+    <version>0.4.32</version>
+    <time>1690897100</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101638</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6789fca6d579ccadd8ca7263f7e8202c</srcmd5>
+    <version>0.4.34</version>
+    <time>1693235701</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1106093</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0a04942fe3b6054b1ee88015fb4148dd</srcmd5>
+    <version>0.4.35</version>
+    <time>1696269914</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.35:
+  * added the book.text-direction setting for explicit support for right-to-left
+    languages.
+  * added rel=prefetch to the &quot;next&quot; links to potentially improve browser performance
+  * added a .warning css class which is styled for displaying warning blocks.
+  * better support of the sidebar when JS is disabled.
+</comment>
+    <requestid>1114465</requestid>
+  </revision>
+</revisionlist>

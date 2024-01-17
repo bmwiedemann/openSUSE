@@ -1,0 +1,13 @@
+<package name="perl-Config-Std" project="openSUSE:Factory">
+  <title>Config::Std</title>
+  <description>
+This module implements yet another damn configuration-file system.
+
+The configuration language is deliberately simple and limited, and the
+module works hard to preserve as much information (section order,
+comments, etc.) as possible when a configuration file is updated.
+
+  Author:               Damian Conway &lt;DCONWAY@cpan.org&gt;
+  </description>
+  <devel project="devel:languages:perl" package="perl-Config-Std"/>
+</package>

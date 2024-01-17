@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Sat Mar 12 07:05:17 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.4.1+git.20211015
+  - use Debian systemd paths
+  - add high priority host support
+- Changes since version 1.4
+  - download limiting has been added from (removed in 1.3), it had
+    to be reworked the script now directs ingress to ifb virtual
+    interface where it is properly limited.
+    Source for this work are:
+    - https://gist.github.com/ole1986/d9d6be5218affd41796610a35e3b069c
+    - https://wiki.archlinux.org/index.php/advanced_traffic_control
+  - make upload or download limiting optional
+- Changes since version 1.3
+  - move from CBQ to HTB queuing.
+    CBQ didn't cope well on a ~100Mbps link : individual downloads
+    were ceiling at 3Mbit/s. Moving to HTB allows to really use all
+    the available bandwidth, event with a single TCP connection,
+    and without any caveats on SIP telephony or link reactivity.
+- Changes since version 1.2 
+  - added command-line interface (through options and flags)
+    that didn't seem to be working before as the options were
+    hardcoded in the script.
+- Run spec-cleaner
+- Update project URL
+- Drop rcwondershaper, wondershaper.service, wondershaper-1.1a.diff
+- Drop sysconfig.wondershaper, wondershaper comes now itself with
+  a .conf file for configuration
+- Add wondershaper-fix-conf-path.patch: using /etc/wondershaper 
+  instead /etc/systemd
+- Add _service files
+- Add wondershaper-systemd-hardening.patch: bsc#1181400
+
+-------------------------------------------------------------------
+Wed Jan  5 10:55:28 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * wondershaper.service
+
+-------------------------------------------------------------------
+Wed Mar 20 18:23:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove name repetition from summary (rpmlint warning)
+- %service_* mandates systemd-rpm-macros and
+  should make use of %systemd_ordering.
+- Replace old $RPM_* shell vars.
+- Remove author list from description.
+
+-------------------------------------------------------------------
+Wed Mar 20 09:03:29 UTC 2019 - josef.moellers@suse.com
+
+- Added systemd support
+  [bsc#1116052, wondershaper.service]
+
+-------------------------------------------------------------------
+Thu Nov 23 13:46:47 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Thu Mar 30 08:23:50 UTC 2017 - meissner@suse.com
+
+- prereq %insserv_prereq
+
+-------------------------------------------------------------------
+Sat Nov 15 20:18:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in rcwondershaper script
+
+-------------------------------------------------------------------
+Sun Oct  5 20:29:56 UTC 2014 - jengelh@inai.de
+
+- Remove unused/ancient rpm tags and section
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:03 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Sep 29 17:09:59 CEST 2004 - hvogel@suse.de
+
+- fixed another bug in the init script status behaviour.
+  (Bug #46425) 
+
+-------------------------------------------------------------------
+Fri Aug 27 19:20:05 CEST 2004 - lmuelle@suse.de
+
+- Add WSHAPER_QDISC_TYPE variable to the sysconfig file and use HTB as
+  default.
+
+-------------------------------------------------------------------
+Wed Apr 28 18:12:24 CEST 2004 - hvogel@suse.de
+
+- Do sanity checks only during starting. (Bug #39583) 
+
+-------------------------------------------------------------------
+Tue Apr 27 14:40:28 CEST 2004 - hvogel@suse.de
+
+- fix sysconfig variable namings which made config nearly impossible
+  (Bug #39464)
+
+-------------------------------------------------------------------
+Thu Mar 18 22:48:39 CET 2004 - hvogel@suse.de
+
+- fix init script. There is now a default queue so status returned
+  always running. (Bug #36510) 
+
+-------------------------------------------------------------------
+Thu Nov 13 15:07:48 CET 2003 - hvogel@suse.de
+
+- dont build as root 
+
+-------------------------------------------------------------------
+Thu Aug 14 15:08:45 CEST 2003 - hvogel@suse.de
+
+- Add sysconfig activation metadata 
+
+-------------------------------------------------------------------
+Thu Jul 31 16:42:38 CEST 2003 - hvogel@suse.de
+
+- use preun/postun service macros
+
+-------------------------------------------------------------------
+Thu Mar 13 12:03:31 CET 2003 - hvogel@suse.de
+
+- cleaned patch. wshaper.htb had old variables (#25228)
+
+-------------------------------------------------------------------
+Tue Mar  4 13:56:53 CET 2003 - hvogel@suse.de
+
+- added QOS kernel test
+- fixed sysconfig metadata types
+
+-------------------------------------------------------------------
+Sun Jan 26 02:31:58 CET 2003 - hvogel@suse.de
+
+- Removed need for src/dst variables reported by axboe 
+- Source sysconfig file in init script
+
+-------------------------------------------------------------------
+Fri Jan 17 13:21:16 CET 2003 - hvogel@suse.de
+
+- fixed permissions of init script
+- added new sysconfig scheme
+
+-------------------------------------------------------------------
+Mon Jan 13 15:28:04 CET 2003 - hvogel@suse.de
+
+- Changed variable names to use the original wondershaper names
+- Made the verbose rcwondershaper status output variable dependent.
+
+-------------------------------------------------------------------
+Thu Dec 19 16:42:46 CET 2002 - hvogel@suse.de
+
+- Initial Package, Version 1.1a 
+

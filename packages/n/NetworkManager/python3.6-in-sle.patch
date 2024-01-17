@@ -1,0 +1,13 @@
+Index: NetworkManager-1.44.2/meson.build
+===================================================================
+--- NetworkManager-1.44.2.orig/meson.build
++++ NetworkManager-1.44.2/meson.build
+@@ -882,7 +882,7 @@ test_args = [
+ ]
+ 
+ py3 = import('python3')
+-python = py3.find_python()
++python = find_program('python3')
+ 
+ if python.found()
+   config_h.set_quoted('TEST_NM_PYTHON', python.path())

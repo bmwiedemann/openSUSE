@@ -1,0 +1,231 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>489ca0d114f69c04a786ec01332c6bf8</srcmd5>
+    <version>1.4.1</version>
+    <time>1579032743</time>
+    <user>dimstar_suse</user>
+    <comment>New firmware files required for the recent audio chip supported by SOF
+(Sound Open Firmware) drivers.</comment>
+    <requestid>764328</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e79050f7932962268d73a70cba6695db</srcmd5>
+    <version>1.4.2</version>
+    <time>1582018754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774844</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad4561f28fab224a86e59323d91e57a9</srcmd5>
+    <version>1.5</version>
+    <time>1593727353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812976</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8886f4d7458ad564915fa3bd1de1d4ae</srcmd5>
+    <version>1.5</version>
+    <time>1596652221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824509</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8eac9377d7cc32ef4626af310ae53d7</srcmd5>
+    <version>1.5.1</version>
+    <time>1600703196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835810</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9e718d6f262a6ab906bf519e1647e8a8</srcmd5>
+    <version>1.6~rc3</version>
+    <time>1604413003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6-rc3 (bsc#1178306):
+  * Support for Intel Tigerlake
+  * Support for Maxim Smart Amplifiers
+  * Beamformer Microphone support
+  * DC blocker audio processing component
+  * Major feature and performance improvements for ASRC, KWD and FIR/IIR
+  * Numerous bug fixes and performance improvements for Intel and NXP
+    platforms (forwarded request 845627 from tiwai)</comment>
+    <requestid>845628</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>181f75770ff75a02ab35d0bddda7775d</srcmd5>
+    <version>1.6~rc3</version>
+    <time>1605124094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847805</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5ebb535efae927ebbeb27789b8425e88</srcmd5>
+    <version>1.6~rc3</version>
+    <time>1606649278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851069</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>72f569ad821a0a73e7cb8a63bbf45094</srcmd5>
+    <version>1.6</version>
+    <time>1608221172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856686</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e9f4d54a4aa6e5e36cf3cb6ea8a5590</srcmd5>
+    <version>1.6.1</version>
+    <time>1611262635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865338</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6aeac2d3d4616660683d900b0bebb8d8</srcmd5>
+    <version>1.6.1</version>
+    <time>1612272308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868372</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b3609401147ec611bb93c88157571e89</srcmd5>
+    <version>1.7</version>
+    <time>1618223791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>883599</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3286acd218c0a9b9ddd01ac7af370e94</srcmd5>
+    <version>1.7</version>
+    <time>1622664739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896859</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>50cb040ee21edc9c37e65b2c49a0fc09</srcmd5>
+    <version>1.8</version>
+    <time>1626887185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907339</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f5c9f13dbbd5ab547db8f2e46066bb7e</srcmd5>
+    <version>2.0</version>
+    <time>1642724741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947720</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e09af83bf7f1e1615b3c1f910ed6ea45</srcmd5>
+    <version>2.1.1</version>
+    <time>1650466624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970970</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8ce4ee68f26718947ef74c68cdf6a7dc</srcmd5>
+    <version>2.2</version>
+    <time>1658162065</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989675</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a992df179878042c279f26c27c71de3b</srcmd5>
+    <version>2.2.1</version>
+    <time>1661758984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999787</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>57926a1febc05892cf9b8e3d875b049d</srcmd5>
+    <version>2.2.2</version>
+    <time>1667499290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033042</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2dab20f6acd79fc8ec5afe263fd0199f</srcmd5>
+    <version>2.2.4</version>
+    <time>1673973372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058996</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>375dbe25bd7bc8647001dbf403df6c51</srcmd5>
+    <version>2.2.5</version>
+    <time>1686074130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090928</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2b7434ffc4405238c778831c340d39c1</srcmd5>
+    <version>2.2.6</version>
+    <time>1690215105</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099843</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4ef89e0d065a32fa60b43dd208e3aec9</srcmd5>
+    <version>2023.09</version>
+    <time>1696963922</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116465</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ebfc63229fdbfeb33f651349bf6ea443</srcmd5>
+    <version>2023.09.1</version>
+    <time>1699615755</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124725</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c4dc17a9507bdf4ab04d5cf53a5587d3</srcmd5>
+    <version>2023.09.1</version>
+    <time>1700078805</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126234</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>df1a780503b06a5ac9c3287f419d825d</srcmd5>
+    <version>2023.09.2</version>
+    <time>1702673189</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2023.09.02:
+  updates for Intel Meteor Lake (jsc#PED-6123,jsc#PED-6114,
+  jsc#PED-6104,jsc#PED-6067,jsc#PED-6045,jsc#PED-6036)
+
+  fixes for Intel Meteor Lake platforms (jsc#PED-6123,jsc#PED-6114,
+  jsc#PED-6104,jsc#PED-6067,jsc#PED-6045,jsc#PED-6036)</comment>
+    <requestid>1133359</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a72a0945b0e5d5495a7191dd837d658d</srcmd5>
+    <version>2023.12</version>
+    <time>1704380112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136209</requestid>
+  </revision>
+</revisionlist>

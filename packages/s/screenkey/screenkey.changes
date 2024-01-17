@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Sat Dec 11 12:43:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.5:
+  * New LockScreen detection prevents passwords from being shown
+    right after unlocking the screen when possible
+  * Keypad number keys are now displayed correctly
+  * Additional mouse buttons are now shown as "M[x]" instead of
+    being incorrectly displayed as Ctrl/Alt modifiers
+  * The new --window command line flag allows to display screenkey
+    as a regular window instead of an overlay. This can be useful
+    for recording screenkey as an independent overlay during
+    screencasts and/or to manage the window position through the
+    window manager.
+  * New German translation
+  * Fix regression that would keep the overlay visible when using
+    Ctrl sequences with the mouse visualization disabled.
+  * Fix regression causing a backtrace instead of a proper error
+    message during initialization errors.
+  * Fix crash happening due to screen size and/or resolution
+    changes while screenkey is running.
+  *Prettify JSON configuration file
+- add upstream signing key to verify source signature
+- Correct license is GPL-3.0-or-later, package license text
+
+-------------------------------------------------------------------
+Sun Jan 31 00:07:02 UTC 2021 - slbtty <shenlebantongying@gmail.com>
+
+- Update to 1.4
+  * Internationalization/catalog handling during installation is now handled with Babel (python-distutils-extra is no longer used).
+  * Improved highlighting of recent mouse activity (makes fast actions such as double-click more distinct).
+  * Fixed another resizing issue not working properly when attempting to shrink the window size.
+  * Removed Python 2 remains 
+- 1.3 changes
+  * Can displays mouse clicks and modifier keys
+  * Updated Russian translation
+  * Includes Appstream metadata 
+  * Add --version support
+  * Fixes interactive resizing with a persistent window.
+  
+-------------------------------------------------------------------
+Mon Nov  2 04:43:14 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 1.2:
+  * Now supports FontAwesome 5 in addition to FontAwesome 4.
+  * New multimedia keys for: bluetooth, tools, favorites.
+  * New Catalan translation 
+  * Updated Simplified Chinese translation 
+  * New flag --start-disabled to start screenkey in disabled state.
+  * Fix crash due to a race condition 
+  * Fix incorrect value for "Compress repeats" in settings.
+- 1.1 changes:
+  * Fix PyGI warning during startup when using AppIndicator.
+  * Fix running with GTK versions older than 3.23.
+- 1.0 changes:
+  * Switch to Python 3 and GTK 3
+  * "ISO_Left_Tab" is now also shown as Tab.
+  * Shift+Shift or Alt+Alt can now be used to toggle screenkey
+    as an alternative to Ctrl+Ctrl.
+  * More multimedia keys are supported (volume, brightness,
+    playback).
+  * Transparency of the window is now independent from the text
+  * Screenkey no longer detaches by default from the terminal.
+  * New "Windows" and "Linux" modifier modes.
+  * French Translation improvements
+  * Improved geometry handling
+- cleanup with spec-cleaner
+- remove screenkey_icon.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 11:21:32 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Compact description. Use multi-argument find -exec.
+
+-------------------------------------------------------------------
+Thu Nov 29 12:16:22 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9:
+  * Ctrl+Ctrl detection now works correctly in more scenarios.
+  * Ctrl++ (and similar sequences with repeated characters) are now shown as Ctrl+”+” for improved readability.
+  * Shift+Backspace is now recognized and shown correctly.
+  * Several multimedia keys are now supported. If “FontAwesome” is installed, the correct symbol is also displayed instead of a text abbreviation.
+  * Visualization of whitespace characters can now be controlled.
+  * Repeated key sequences are now abbreviated with a repeat count if above the specified threshold (3 by default).
+- For full ChangeLog since 0.2 see:
+  https://www.thregr.org/~wavexx/software/screenkey/NEWS.html
+- Run spec-cleaner
+- Remove screenkey-fix-popup.patch: upstreamed
+- Update screenkey_icon.patch
+- Adjust URL, Source and Group
+- Add proper requirements
+
+------------------------------------------------------------------
+Thu Oct  4 17:38:11 UTC 2012 - gregkh@opensuse.org
+
+- fix python-xlib dependancy
+- added patch to fix popup not working properly (from upstream)
+- cleaned up the spec file a bit
+- fixed license to be GPLv3+
+
+------------------------------------------------------------------
+Mon Oct  1 20:41:05 UTC 2012 - gregkh@opensuse.org
+
+- fixed spec file and got things working for 0.2 release
+
+------------------------------------------------------------------
+* Tue Jun 11 2010 - William Witt <william@witt-family.net>
+- modify icon
+- used gnomesu instead of gksu
+
+------------------------------------------------------------------
+* Tue Jun 08 2010 - William Witt <william@witt-family.net>
+- add to OBS
+
+------------------------------------------------------------------
+* Tue Jun 08 2010 - Ivan Makfinsky <ivan.makfinsky@endosys.com>
+- Initial Build
+

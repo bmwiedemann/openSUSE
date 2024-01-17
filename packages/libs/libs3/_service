@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">git://github.com/bji/libs3</param>
+		<param name="parent-tag">7f08779e5ee4b0bb99f8baae018fa35da42352e0</param>
+		<param name="versionformat">4.1.git@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

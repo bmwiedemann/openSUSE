@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3cb329444801b92132dbdd135c783446</srcmd5>
+    <version>0.12.4</version>
+    <time>1687900588</time>
+    <user>dimstar_suse</user>
+    <comment>New package gopls (pronounced &quot;Go please&quot;) version 0.12.4 is the official Go language server developed by the Go team. It provides IDE features to any LSP-compatible editor.</comment>
+    <requestid>1095451</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>751e552644c2e2cae408190f2e338ffa</srcmd5>
+    <version>0.13.0</version>
+    <time>1690892172</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.13.0: (forwarded request 1101555 from jfkw)</comment>
+    <requestid>1101561</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20ad9087c4caf4cd82bb899bd38abd56</srcmd5>
+    <version>0.13.1</version>
+    <time>1691947069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.1:
+  * gopls: update go.mod for v0.13.1-pre.2
+  * gopls/internal/hooks: clean language version before passing to gofumpt
+  * gopls/internal/lsp/analysis: fix stubmethods with variadic parameters
+  * gopls: update go.mod for v0.13.1-pre.1
+  * gopls/internal/lsp/source: reinstate equalOrigin for references check
+  * gopls/internal/lsp/source: fix incorrect 'origin' logic for named types
+  * gopls/internal/lsp/source: fix renaming of type parameters
+  * gopls/internal/lsp/source: refresh embeddirective analyzer docs (forwarded request 1103614 from jfkw)</comment>
+    <requestid>1103616</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>65796686a5def47ba3147e78a8a0924d</srcmd5>
+    <version>0.13.2</version>
+    <time>1692379718</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.13.2:
+  * gopls: update go.mod for v0.13.2-pre.1
+  * [gopls-release-branch.0.13] refactor/satisfy: (re)allow composite lits of pointer type (forwarded request 1104476 from jfkw)</comment>
+    <requestid>1104477</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5d7d1ec29930a613d01e7b74e3328cd6</srcmd5>
+    <version>0.13.2</version>
+    <time>1694630715</time>
+    <user>anag+factory</user>
+    <comment>- License correction based on legaldb review
+  Add Apache-2.0 and MIT for vendor/gopkg.in/yaml.v3 (forwarded request 1110633 from lkocman)</comment>
+    <requestid>1110780</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>680103319b8433e89509d10315a2a9d5</srcmd5>
+    <version>0.14.0</version>
+    <time>1698333216</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.14.0: (forwarded request 1120334 from jfkw)</comment>
+    <requestid>1120335</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20ab5be8b78f548282de008bbdd262a4</srcmd5>
+    <version>0.14.1</version>
+    <time>1698700302</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.14.1:
+  * gopls: update go.mod for v0.14.1-pre.1
+  * gopls/internal/lsp: fix code action panic on params of external funcs
+  * go/packages: don't fail if GOPACKAGESDRIVER leaves Compiler/GOARCH=&quot;&quot; (forwarded request 1121254 from jfkw)</comment>
+    <requestid>1121256</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66fdbbfde8fd42d690ae6661ceb60ce9</srcmd5>
+    <version>0.14.2</version>
+    <time>1700250574</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.14.2:
+  * gopls: update go.mod for v0.14.2-pre.1
+  * gopls: upgrade x/telemetry and account for new mode logic (forwarded request 1127178 from jfkw)</comment>
+    <requestid>1127191</requestid>
+  </revision>
+</revisionlist>

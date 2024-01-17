@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6c88954aa5903889ed87ce85fd7d83fe</srcmd5>
+    <version>0.24.1</version>
+    <time>1681221274</time>
+    <user>dimstar_suse</user>
+    <comment>See https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/LDZRDNWPAZL5QCNZDIJG2TCGZDZUQBET/</comment>
+    <requestid>1078430</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca183c9dfb1edfe9a2b9a890cf8a116d</srcmd5>
+    <version>0.25.0</version>
+    <time>1684415904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084488</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>da4c07a742d20756ec0d23d7cb8e3a95</srcmd5>
+    <version>0.26.0</version>
+    <time>1685476978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089789</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e8cca4b016a723b93dc459b31af5eb6</srcmd5>
+    <version>0.27.0</version>
+    <time>1689614587</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098716</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5df4bc81053455f1b3c41d991e8c07f9</srcmd5>
+    <version>0.27.2</version>
+    <time>1689786633</time>
+    <user>anag+factory</user>
+    <comment>Updated to version 0.27.2</comment>
+    <requestid>1099521</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7dcd385fbf2d1bf97947bfda3f93ec0e</srcmd5>
+    <version>0.28.0</version>
+    <time>1691845600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103511</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>50c5ffc4cc2cab0654e200a4581bb6ad</srcmd5>
+    <version>0.29.1</version>
+    <time>1693860776</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.29.1
+(this time actually, due to an OBS *bug*/bad design the previous request was just 0.29.0)</comment>
+    <requestid>1108727</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c058beb14acd3294894d92c50ca2e843</srcmd5>
+    <version>0.30.0</version>
+    <time>1695664926</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113171</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0f4b1b79c277a2802c1d98c7e551fa70</srcmd5>
+    <version>0.31.0</version>
+    <time>1698097273</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119681</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eddd04879e1d2960470c79aa4f74028b</srcmd5>
+    <version>0.32.0</version>
+    <time>1699478324</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124204</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ad097740638a8cdf69dc907577186ca4</srcmd5>
+    <version>0.32.3</version>
+    <time>1699910463</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125193</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>efd1a6c7256f46f6b2c8143e807e087c</srcmd5>
+    <version>0.33.1</version>
+    <time>1701972614</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131460</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bbbc9349b3a3e4ac0239a2e9904808cc</srcmd5>
+    <version>0.34.0</version>
+    <time>1704660031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137393</requestid>
+  </revision>
+</revisionlist>

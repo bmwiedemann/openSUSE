@@ -1,0 +1,13 @@
+Index: src/tailor.h
+===================================================================
+--- src/tailor.h.orig
++++ src/tailor.h
+@@ -590,6 +590,8 @@
+ #  else	/* !MSDOS */
+ # include <tmpdir.h>
+ # include <stdio.h>
++# include <stdlib.h>
++# include <unistd.h>
+ 
+ static char __buftmpfn[2048];
+ static char *_tmpfn ()

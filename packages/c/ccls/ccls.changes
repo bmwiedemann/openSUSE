@@ -1,0 +1,205 @@
+-------------------------------------------------------------------
+Sat Sep 30 12:37:09 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Backport upstream patch llvm17-precompiled-preamble-build.patch
+  to fix build with LLVM 17.
+- Remove explicit runtime dependency libclang-cpp* when we don't
+  need an exact version, because it will be derived automatically.
+
+-------------------------------------------------------------------
+Thu Mar 30 21:52:42 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Backport upstream patch llvm16-optional-deprecation.patch to fix
+  build with LLVM 16.
+- Relax runtime requirements with Clang 16 and newer: the resource
+  directory doesn't depend on the patch-level version anymore.
+- Relax build requirements.
+
+-------------------------------------------------------------------
+Sat Jul 30 11:25:52 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.20220729.
+- Drop obsolete patches:
+  * llvm14-braced-constructor-call.patch
+  * llvm14-include-STLExtras.patch
+  * llvm14-refactor-isIdentifierBody.patch
+
+-------------------------------------------------------------------
+Sat Jun  4 13:28:49 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Port back upstream patches to fix build with LLVM 14:
+  * llvm14-refactor-isIdentifierBody.patch
+  * llvm14-braced-constructor-call.patch
+  * llvm14-include-STLExtras.patch
+- Fix build with older LLVMs by setting CLANG_LINK_CLANG_DYLIB=ON
+  only for versions >= 9.
+
+-------------------------------------------------------------------
+Mon May  3 18:10:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.20210330
+  * Fix short_name_size when getNameAsString does not return
+    a prefix
+- Update to version 0.20201219
+  * Supports Clang 7~11
+  * Support 3.15.0 serverInfo
+  * Report index status via $/progress
+  * Better recursive .ccls files
+  * New initialization option completion.placeholder:
+    change client.snippetSupport: false to drop ( and <
+  * Infer -target and --driver-mode from argv[0]
+  * indexer: log the number of errors and the first diagnostic
+  * indexer: set the kind of static data members to Field
+    instead of Var
+- Fixed gcc dependency for upcoming Leap 15.3
+
+-------------------------------------------------------------------
+Mon Nov  2 17:55:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.20201025
+
+  Remove patches:
+  * 0001-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
+  * 0002-Adapt-llvmorg-10-init-12036-g3b9715cb2193-handleDecl.patch
+
+This release supports Clang 7~11.
+
+# LSP conformance
+
+* Support 3.15.0 `serverInfo`
+
+# Misc
+
+* Infer -target and --driver-mode from argv[0] #511 
+* Support CMake variable `CLANG_LINK_CLANG_DYLIB` (some distributions use this to provide `libclang-cpp.so` instead of `libclang*.a` or `libclang*.so`. This option is needed to link against `libclang-cpp.so`)
+* `textDocument/documentSymbol`: support unopened files #548
+
+-------------------------------------------------------------------
+Mon Aug 24 09:25:51 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Require only 500MB per core.
+
+-------------------------------------------------------------------
+Thu Aug 20 08:33:21 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
+Fri Jun  5 17:10:44 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Drop conditional macro application for Leap 15.2
+
+-------------------------------------------------------------------
+Tue Apr 14 08:34:23 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix build failures with LLVM 10
+
+  Added:
+  * 0002-Adapt-llvmorg-10-init-12036-g3b9715cb2193-handleDecl.patch
+
+  Rebased:
+  * 0001-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
+
+-------------------------------------------------------------------
+Mon Jan 20 09:27:29 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Enable building on Leap 15.2
+
+-------------------------------------------------------------------
+Tue Nov  5 20:24:48 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Switch from custom patch to upstream fix:
+  Drop 0001-Fix-builds-for-LLVM-9-for-LLVM-build-without-BUILD_S.patch
+  (rejected upstream)
+  Add 0001-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
+  (upstream fix: https://github.com/MaskRay/ccls/pull/519)
+
+-------------------------------------------------------------------
+Tue Oct 29 08:53:30 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Update to release 0.20190823.4
+
+  Add 0001-Fix-builds-for-LLVM-9-for-LLVM-build-without-BUILD_S.patch
+  (fixes builds with LLVM 9 that was build without the unsuported flag
+   BUILD_SHARED_LIBS=ON, see boo#1155416)
+
+-------------------------------------------------------------------
+Mon Sep 30 12:01:59 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Update to release 0.20190823.3
+
+  - incorrect use of clang::FileEntry::getName on Arch Linux #487
+
+-------------------------------------------------------------------
+Tue Sep 17 09:52:46 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Update to pre-release 0.20190823.2
+
+-------------------------------------------------------------------
+Fri Aug 23 07:54:27 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- New upstream pre-release 20190823
+
+  Drop 0001-Only-add-include-directories-for-LLVM-clang-rapidjso.patch
+
+  LSP conformance
+  - Support `null` as `initializationOptions`
+  - Set `declarationProvider` in server capabilities. Some client may need this
+    capability to enable `textDocument/declaration`
+  - Support non-numeric request ID #437
+
+  Misc
+  - Fix a double-free of llvm::MemoryBuffer when parsing fails #350
+  - Keep comments from system headers and improve `textDocument/hover` #373
+  - Fix the conformance issue that `VersionedTextDocumentIdentifier.version` was
+    omitted. If one renames something spanning more than one document and some
+    documents are not opened, the client may not apply the `textDocument/rename`
+    change. #387
+  - Some macro diagnostics were lost because Note::concerned was not propagated
+    to Diag::concerned #391
+  - `index.onChange`: true support non-existent files #443
+  - `textDocument/definition`: don't jump to the type definition
+  - Disable warnings and skip processed function bodies. This should provide
+    massive performance improvement when indexing a project. I measured 2x
+    improvement indexing ccls with 2 threads, more than 2x indexing
+    llvm/clang/extra/lld/compiler-rt with 6 threads.
+
+  Project
+  - Fix some issues with hierarchical `.ccls` in #384
+  - `.ccls`: support CUDA files with the `%cu` directive
+  - `compilationDatabaseDirectory` can be absolute. #466
+  - Improve heuristics for files not described by `compile_commands.json`
+    "... but not so well for projects with separate include and source
+    directories, e.g. "inc/long/path/to/my_file.h" and
+    "src/long/path/to/my_file.cc" #441
+
+  Windows
+  - A Visual Studio 2017 STL bug prevented clang-cl from compiling
+    ccls/src/utils.hh #371 #414
+  - If the file is re-saved before the previous indexing has complete, various
+    ambiguous errors might occur. Fixing this by making opened files volatile
+    #235 #453
+
+  Extension requests
+  - `$ccls/fileInfo`: can optionally dump dependencies, includes and skipped_ranges
+
+
+
+-------------------------------------------------------------------
+Mon Jul  1 08:21:11 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Drop 0001-Don-t-add-include-paths-as-SYSTEM.patch
+  Add 0001-Only-add-include-directories-for-LLVM-clang-rapidjso.patch
+  This fixes compilation issues with gcc9 in general and has been
+  upstreamed.
+
+-------------------------------------------------------------------
+Thu Jun 20 15:44:08 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add 0001-Don-t-add-include-paths-as-SYSTEM.patch
+  This fixes compilation failures on PPC, ARM & zSystem
+
+-------------------------------------------------------------------
+Mon Apr  1 09:48:11 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Initial package version

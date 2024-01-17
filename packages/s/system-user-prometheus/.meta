@@ -1,0 +1,5 @@
+<package name="system-user-prometheus" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:monitoring" package="system-user-prometheus"/>
+</package>

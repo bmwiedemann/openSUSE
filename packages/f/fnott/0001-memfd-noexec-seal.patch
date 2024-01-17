@@ -1,0 +1,35 @@
+From bc80e607b14e4c25639d9414e646bbaa7d534adc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Sun, 8 Oct 2023 11:10:00 +0200
+Subject: [PATCH] shm: create memfd with MFD_NOEXEC_SEAL
+
+---
+ shm.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/shm.c b/shm.c
+index e21a0d7..5e51edc 100644
+--- a/shm.c
++++ b/shm.c
+@@ -15,6 +15,12 @@
+ #include "log.h"
+ #include "stride.h"
+ 
++#if defined(MFD_NOEXEC_SEAL)
++    #define FNOTT_MFD_FLAGS (MFD_CLOEXEC | MFD_ALLOW_SEALING | MFD_NOEXEC_SEAL)
++#else
++    #define FNOTT_MFD_FLAGS (MFD_CLOEXEC | MFD_ALLOW_SEALING)
++#endif
++
+ static tll(struct buffer) buffers;
+ 
+ static void
+@@ -64,7 +70,7 @@ shm_get_buffer(struct wl_shm *shm, int width, int height)
+ 
+     /* Backing memory for SHM */
+ #if defined(MEMFD_CREATE)
+-    pool_fd = memfd_create("fnott-wayland-shm-buffer-pool", MFD_CLOEXEC);
++    pool_fd = memfd_create("fnott-wayland-shm-buffer-pool", FNOTT_MFD_FLAGS);
+ #elif defined(__FreeBSD__)
+     // memfd_create on FreeBSD 13 is SHM_ANON without sealing support
+     pool_fd = shm_open(SHM_ANON, O_RDWR | O_CLOEXEC, 0600);

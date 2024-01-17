@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Dec  5 22:05:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * A new visual layout by Jonathan Race
+  * More visible support for ctrl-alt-delete
+  * Tuning of behavior of streaming videos
+  * A fix for an unresponsive GDM 
+
+-------------------------------------------------------------------
+Mon Mar  9 18:32:12 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update to release 0.2.2
+  (includes releases 0.2.0 and 0.2.1)
+  * Switch implementation to use ES6 modules
+  * Debug console is now user toggleable
+  * Only use display channel with id 0
+  * Better handle underruns
+  * Improve mouse position handling
+  * Improve logic for sound packet time sequencing
+  * Other misc bug fixes
+
+-------------------------------------------------------------------
+Tue Mar 21 15:17:10 UTC 2017 - cbosdonnat@suse.com
+
+* Release 0.1.7
+  - Add support for vp8 video streams
+  - Support sized data streams and stream data reports
+  - Add minor debug tools for media playback
+  - Enable file transfer for spice_auto.html
+  - Avoid an unwanted exception when used by cockpit plugin
+  - Make spice_auto.html respect an input path
+  - Minor Coverity adjustments
+  - Improve log messages- 
+

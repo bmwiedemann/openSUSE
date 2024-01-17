@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>365673806090776257bc8ccbfa1aecbb</srcmd5>
+    <version>0.9.9</version>
+    <time>1406836231</time>
+    <user>coolo</user>
+    <comment>New module for Qore programming language as described in http://lists.opensuse.org/opensuse-factory/2013-01/msg00105.html</comment>
+    <requestid>243026</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4be2f3389de0b65821ce5a785a8549a6</srcmd5>
+    <version>0.9.9</version>
+    <time>1407073016</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243441</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4be2f3389de0b65821ce5a785a8549a6</srcmd5>
+    <version>0.9.9</version>
+    <time>1409303136</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>339ecacbeba7800898ee00c85ac6c4c0</srcmd5>
+    <version>0.9.9</version>
+    <time>1607801513</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Fix s390x build
+</comment>
+    <requestid>855324</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>d49e9d2be0c5a3a79c4debcbc3a42f1e</srcmd5>
+    <version>0.9.9</version>
+    <time>1619107448</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop -m64/-m32 flags on Arm
+- Fix build on aarch64 (forwarded request 885565 from Guillaume_G)</comment>
+    <requestid>887449</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fe601c0b8e1a6cf5fd8ec8a74b753590</srcmd5>
+    <version>1.3.0+qore0.9.15</version>
+    <time>1627850479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909444</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad1c5302927782beeaadab13be6400db</srcmd5>
+    <version>1.4</version>
+    <time>1642835911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947969</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>03b1fbbd1f7c7fbd4b5111281f070796</srcmd5>
+    <version>1.4.1</version>
+    <time>1648330266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965004</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7ca6206f71d7013d4e7ba5023672b871</srcmd5>
+    <version>1.4.2</version>
+    <time>1693685271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108567</requestid>
+  </revision>
+</revisionlist>

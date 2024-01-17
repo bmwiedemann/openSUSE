@@ -1,0 +1,158 @@
+--- apcupsd-3.14.9/src/gapcmon/gapcmon.c.timeout	2008-09-16 06:58:20.000000000 +0200
++++ apcupsd-3.14.9/src/gapcmon/gapcmon.c	2011-10-12 20:10:52.986362156 +0200
+@@ -179,6 +179,54 @@ struct hostent * gethostname_re
+ */
+ static gboolean lg_graph_debug = FALSE;
+ 
++static GSList *timeout_list = NULL;
++
++static inline timeout_t * new_timeout(guint id, timeout_type_t type, void *data) {
++    timeout_t *timeout = (timeout_t *) malloc(sizeof(timeout_t));
++
++    timeout->id   = id;
++    timeout->type = type;
++    timeout->data = data;
++    return timeout;
++}
++
++/* callback will check if timeout is associated with window
++ * which is about to be destroyed and it will call g_source_remove 
++ * in order to prevent the callback associated with timeout to be executed 
++ */ 
++static void remove_timeout(gpointer tmo, gpointer data) {
++    timeout_t * timeout = (timeout_t *) tmo;
++    PGAPC_MONITOR monitor = (PGAPC_MONITOR) data;
++    int delete_timeout  = 0;
++
++    if (timeout == NULL) {
++        return;
++    }
++
++    switch (timeout->type) {
++    case GRAPH:
++        if (timeout->data == (void *) monitor->phs.plg) {
++            delete_timeout = 1;
++        }
++        break;
++    case MONITOR:
++        if (timeout->data == (void *) monitor) {
++            delete_timeout = 1;
++        }
++        break;
++
++    case HISTORY:
++        if (timeout->data == (void *) &(monitor->phs)) {
++            delete_timeout = 1;
++        }
++        break;
++    }
++    
++    if (delete_timeout) {
++        g_source_remove(timeout->id);
++        timeout_list = g_slist_remove(timeout_list, (gconstpointer) timeout);
++    }
++}
+ 
+ /* ************************************************************************* */
+ 
+@@ -1376,8 +1424,8 @@ static gint lg_graph_configure_event_cb 
+     plg->x_range.i_minor_inc = plg->plot_box.width / plg->x_range.i_num_minor;
+     plg->x_range.i_major_inc = plg->plot_box.width / plg->x_range.i_num_major;
+ 
+-    g_timeout_add (250, (GSourceFunc) lg_graph_draw, plg);
+-
++    guint tid = g_timeout_add (250, (GSourceFunc) lg_graph_draw, plg);
++    timeout_list = g_slist_append(timeout_list, new_timeout(tid, GRAPH, (void *) plg));
+     return TRUE;
+ }
+ 
+@@ -1745,7 +1793,8 @@ static gboolean cb_monitor_automatic_ref
+       return FALSE;                /* stop timers */
+ 
+    if (pm->b_timer_control) {
+-      g_timeout_add(100, (GSourceFunc) cb_monitor_refresh_control, pm);
++      guint tid = g_timeout_add(100, (GSourceFunc) cb_monitor_refresh_control, pm);
++      timeout_list = g_slist_append(timeout_list, new_timeout(tid, MONITOR, (void *) pm));
+       return FALSE;
+    }
+ 
+@@ -4543,9 +4592,9 @@ static void cb_monitor_interface_button_
+    }
+ 
+    g_async_queue_push(pm->q_network, pm);
+-   g_timeout_add(GAPC_REFRESH_FACTOR_ONE_TIME,
++   guint tid = g_timeout_add(GAPC_REFRESH_FACTOR_ONE_TIME,
+       (GSourceFunc) cb_monitor_dedicated_one_time_refresh, pm);
+-
++   timeout_list = g_slist_append(timeout_list, new_timeout(tid, MONITOR, (void *) pm));
+    return;
+ }
+ 
+@@ -5174,6 +5223,9 @@ static void cb_monitor_interface_destroy
+       g_source_remove(pm->tid_automatic_refresh);
+    }
+ 
++   /* iterate through list of timers and remove all timers associated with this monitor */
++   g_slist_foreach(timeout_list, remove_timeout, (gpointer) pm);
++
+    if (pm->tid_thread_qwork != NULL) {
+       pm->b_thread_stop = TRUE;
+       g_async_queue_push(pm->q_network, pm);
+@@ -5537,9 +5589,9 @@ static gint gapc_monitor_history_page(PG
+ 
+    /* collect one right away */
+    pphs->b_startup = TRUE;
+-   g_timeout_add((guint) (pm->d_refresh * GAPC_REFRESH_FACTOR_1K + 75),
++   guint tid = g_timeout_add((guint) (pm->d_refresh * GAPC_REFRESH_FACTOR_1K + 75),
+       (GSourceFunc) cb_util_line_chart_refresh, pphs);
+-
++   timeout_list = g_slist_append(timeout_list, new_timeout(tid, HISTORY, (void *) pphs));
+    return i_page;
+ }
+ 
+@@ -5565,7 +5617,8 @@ static gboolean cb_util_line_chart_refre
+       return FALSE;
+ 
+    if (pm->b_graph_control) {
+-      g_timeout_add(100, (GSourceFunc) cb_util_line_chart_refresh_control, pm);
++      guint tid = g_timeout_add(100, (GSourceFunc) cb_util_line_chart_refresh_control, pm);
++      timeout_list = g_slist_append(timeout_list, new_timeout(tid, MONITOR, (void *) pm));
+       return FALSE;
+    }
+ 
+@@ -6392,6 +6445,7 @@ extern int main(int argc, char *argv[])
+    PGAPC_CONFIG pcfg = NULL;
+    GtkWidget *window = NULL;
+ 
++   timeout_list = g_slist_alloc();
+    /*
+     * Initialize GLib thread support, and GTK
+     */
+@@ -6435,5 +6489,6 @@ extern int main(int argc, char *argv[])
+    gdk_flush();
+    gdk_threads_leave();
+ 
++   g_slist_free(timeout_list);
+    return (0);
+ }
+--- apcupsd-3.14.9/src/gapcmon/gapcmon.h	2011-10-12 20:12:54.584317583 +0200
++++ apcupsd-3.14.9/src/gapcmon/gapcmon.h.timeout	2011-10-12 20:14:10.965669911 +0200
+@@ -403,6 +403,18 @@ typedef struct _System_Control_Data {
+ 
+ } GAPC_CONFIG, *PGAPC_CONFIG;
+ 
++typedef enum {
++    GRAPH,
++    MONITOR,
++    HISTORY
++} timeout_type_t;
++
++typedef struct {
++    guint id;
++    timeout_type_t type;
++    void *data;
++} timeout_t;
++
+ /* ************************************************************************* */
+ 
+ #define GAPC_GLOSSARY  "<span size=\"xx-large\"><b>GAPCMON</b></span>\n \

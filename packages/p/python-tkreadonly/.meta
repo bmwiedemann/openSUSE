@@ -1,0 +1,5 @@
+<package name="python-tkreadonly" project="openSUSE:Factory">
+  <title></title>
+  <description>A set of Tkinter widgets to display readonly text and code</description>
+  <devel project="devel:languages:python" package="python-tkreadonly"/>
+</package>

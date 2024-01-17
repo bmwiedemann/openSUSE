@@ -1,0 +1,47 @@
+From e3b2a7b4008dc8ec21cfd0e4f555b96aebfcbc69 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 12 Mar 2020 00:30:19 +0100
+Subject: [PATCH 130/130] README.rst: Add a section about UUID changing
+
+The auto-blacklisting issue has been figured out by now
+(https://github.com/projecthamster/hamster-shell-extension/issues/324),
+It was caused by our non-integer "version" tag in metadata.json,
+plus the fact that two version of the "contact@projecthamster.org"
+extension had been uploaded to extensions.gnome.org, but were never
+approved by a reviewer, plus the "extension auto-upgrade" feature
+of GNOME shell 3.36.
+
+Nevertheless, being able to change the UUID may be useful in the
+future.
+---
+ README.rst | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/README.rst b/README.rst
+index a8b35c2..599f15d 100644
+--- a/README.rst
++++ b/README.rst
+@@ -82,3 +82,20 @@ Afterwards, enable the extension and change the preferences using Tweak Tool,
+ or on ``https://extensions.gnome.org/local/``. On GNOME 3.36 and later, you
+ can also use the GNOME "Extensions" tool.
+ 
++Changing the extension UUID
++~~~~~~~~~~~~~~~~~~~~~~~~~~~
++
++It's possible to change the "UUID" of the extension from
++``contact@projecthamster.org`` to a name of your choice. If you do this,
++you have to obey the `UUID Guidelines
++<https://wiki.gnome.org/Projects/GnomeShell/Extensions/UUIDGuidelines>`.
++This may become necessary in some cases if there are problems with the
++official UUID on `https://extensions.gnome.org`.
++
++To change the UUID, pass it to ``make dist`` in the instructions above::
++
++    # Build
++    make dist UUID="my_uuid@my.domain"
++
++The rest of the build procedure is like above, except that you have to replace
++``contact@projecthamster.org`` by your new UUID everywhere.
+-- 
+2.26.1
+

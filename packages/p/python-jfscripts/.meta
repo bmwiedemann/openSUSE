@@ -1,0 +1,15 @@
+<package name="python-jfscripts" project="openSUSE:Factory">
+  <title>A collection of various tools written by Josef Friedrich</title>
+  <description>A collection of various tools written by Josef Friedrich
+  * dns-ipv6-prefix.py
+  * extract-pdftext.py
+  * find-dupes-by-size.py
+  * list-files.py
+  * mac-to-eui64.py
+  * pdf-compress.py
+  * image-into-pdf.py
+
+</description>
+  <devel project="devel:languages:python" package="python-jfscripts"/>
+  <url>https://github.com/Josef-Friedrich/python-scripts</url>
+</package>

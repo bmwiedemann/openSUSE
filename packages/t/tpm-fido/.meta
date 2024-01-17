@@ -1,0 +1,6 @@
+<package name="tpm-fido" project="openSUSE:Factory">
+  <title>tpm-fido</title>
+  <description>tpm-fido is FIDO token implementation for Linux that protects the token keys by using your system's TPM. tpm-fido uses Linux's uhid facility to emulate a USB HID device so that it is properly detected by browsers.</description>
+  <devel project="devel:languages:go" package="tpm-fido"/>
+  <url>https://github.com/psanford/tpm-fido</url>
+</package>

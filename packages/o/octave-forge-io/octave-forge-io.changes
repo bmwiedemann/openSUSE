@@ -1,0 +1,270 @@
+-------------------------------------------------------------------
+Mon Feb 21 18:41:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.4:
+  * Bug fixes:
+    - fromJSON.m, toJSON.m: some improvements for Java-based BIST.
+    - make saving .ods/.xlsx files work again with OCT interface.
+    - fix opening .xlsx files made using Google docs (bug #60830).
+    - allow other file extensions than .xls/.xlsx when saving to a
+      different file.
+    - fix writing text strings in .ods files (bug #60825).
+    - improve file extension processing.
+  * Code improvements
+    - toJSON.m, fromJSON.m: made much more robust.
+  * Deprecated function:
+    - object2json (superseded by toJSON).
+
+-------------------------------------------------------------------
+Sun Nov 15 21:06:41 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.3:
+  * Bug fixes:
+    - xlsopen.m: don't wipe user selected reqinterface upon first
+      call to xlsopen after loading io package (bug #59273, bug
+      #59277)
+    - Improve handling of POI interface, esp. OOXML support (bug
+      #59273)
+    - Make reading .ods using OCT interface more reliable (bug
+      #59273)
+  * Code improvements:
+    - Spreadsheet I/O interfaces echoed to screen when invoking
+      test scripts with "verbose flag.
+    - Significant speed improvements when reading .xlsx files with
+      OCT interface, thanks to Dennis Zeilstra (bug #59277)
+  * New functions
+    - toJSON and fromJSON: convert Octave objects into a JSON
+      string and vice versa, contributed by Ketan M. Patel (patch
+      #9980).
+
+-------------------------------------------------------------------
+Fri Oct 23 15:41:27 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.2:
+  * Bug fixes:
+    + Fix Named range read errors for .ods files with OCT interface.
+    + dbfread.m: open files in little-endian mode (fix by Rafael Laboissière).
+    + xlsopen.m: improve filename extension checking (.xlsm, .xlsb and .sxc
+      were not recognized).
+    + xlsclose (private/__COM_spsh_close__.m): add missing output formats for
+      COM interface (esp. .ods; also .wk3 and .wk4).
+    + xlsread.m: implement options argument (it *was* mentioned in the help
+      but didn't work)
+    + Improve character encoding for COM interface (bug #59203); credits to
+      Markus Mützel
+  * Code improvements:
+    + xlsfinfo.m: implement 'verbose' flag to echo used interface info.
+    + io_testscript.m: minimize delay, improve texinfo.
+    + csv2cell's maximum line length has been increased to 32768 characters
+      (bug #58618).
+    + Remove autotools (bootstrap, configure). Avoids potential problems and
+      makes code easier to maintain. Kudos to Kai Torben Ohlhus (bug 357081).
+    + Reintroduce xmlread and xmlwrite functions.
+      NOTE: xmlread may provoke Octave crashes on some Linux systems (see
+            bug #58004)
+
+-------------------------------------------------------------------
+Thu May  7 17:30:46 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.1:
+  * io-2.6.1 is meant to polish a few prominent bugs introduced unfortunately
+    in the coarse of code overhaul for io-2.6.0.
+  * Bug fixes:
+    - xlsopen: reinstate default OCT interface (reason that on systems w/o
+      Java or with non-matching Java bit width "no spreadsheet I/O support
+      was found" for .ods and .xlsx).
+    - ods*.m wrapper functions: properly implement output args (bug #58045).
+    - Wrong concatenation of indices when reading .xlsx with OCT interface.
+  * Still no fix for the XML functions :-(
+- Update to version 2.6.0:
+  * Bug fixes:
+    - Fixed some concealed bugs in getxmlattv.m & __OXS_spsh2oct__.m.
+    - dbfwrite.m: made more robust as regards heterogeneous data columns, just
+      skip them rather than abort.
+      Also fixed writing just one data row (bug #57669)
+    - read_namelist.m: fixed a minor typo.
+    - OCT interface: properly return negative values formatted as "(<value>)" 
+      (bug #57812).
+    - The XML functions xmlread.m and xmlwrite.m have been (temporarily)
+      removed (see bug #58004). Once that bug is fixed these functions will be
+      reinstated.
+  * Code improvements:
+    - Most user-visible spreadsheet I/O functions have been adapted such that:
+      * All supported spreadsheet formats / file types can be read and written
+        with the xls*.m functions. So it isn't required anymore to read
+        .xlsx/.xls with xlsread, and .ods with odsread, etc.
+      * The ods*.m functions still exist but now are mere wrappers for the
+        corresponding xls*.m functions. They are (softly) deprecated but will
+        be retained for a while (to at least somewhere in 2022 ?).
+        As they are mere wrappers they have all the functionality of the
+        corresponding xls*.m and previous ods*.m functions.
+      This has been done to cut down on code maintenance; it wasn't really
+      manageable to keep two separate function sets in sync that behind the
+      scenes provided close to 95 % overlapping internal functionality. The
+      choice for keeping xls*.m rather than ods*.m functions was made for
+      Matlab compatibility - that has no ods*.m functions.
+    - The xlsread.m help text now contains an extensive explanation of
+      spreadsheet I/O interfaces.
+    - The message indicating which interfaces were found is now silenced but
+      can be shown by adding an argument "verbose" to xlsread / xlsopen /
+      xlswrite. See the help for xlsread, xlsopen and xlswrite.
+  * Other changes
+    The previously separate READ-ODS.html and READ-XLS.html docs in the doc/
+    subdirectory have been replaced by a new combined html background document
+    rewritten from scratch: Spreadsheet-IO-in-Octave.html
+
+-------------------------------------------------------------------
+Wed Nov 27 00:45:19 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.4.13:
+  * Bug fixes:
+    - COM interface: restore writing formulas to spreadsheet
+    - OCT interface: ignore NA and NaN values when writing .ods and
+      .gnumeric (bug #56375)
+    - OCT interface: don't truncate arrays when using single
+      cell-range input with oct2ods and oct2xls functions (bug #56444)
+    - csv2cell: properly process leading tilde in file name (bug #53591)
+  * Code improvements:
+    - COM interface: better support for creating file formats other than
+      .xlsx
+    - ditto for UNO interface
+    - Remove references to legacy Java package, as io depends on Octave
+      >= 4.0 where core Octave should have built-in Java support anyway
+    - Replace calls to strmatch() with calls to str(n)cmp(i)()
+    - Replace calls to __octave_config_info__() and __have_feature__() by
+      javachk() (bug #47480)
+  * Various:
+    - The io package now needs Octave >= 4.0.0, due to dependence on javachk
+
+-------------------------------------------------------------------
+Wed Nov 21 10:56:19 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.4.12:
+  * Bug fixes:
+    - dbfwrite.m: avoid crash and vectorize writing data to file
+      (bug #53899)
+    - dbfwrite.m: add unwind_protect block to be able to avoid
+      dangling file handles in case of errors; better checks on
+      data column homogeneity; texinfo (help) header fixes
+    - A little more robust Java check
+    - csv2cell: improper string indexing (bug #54407), fix by
+      Orion Paplowski
+  * Code improvements:
+    - POI interface: adapt to POI-4.0.0 (new getCelltype enums)
+    - POI: overhaul cell type handling when reading and writing
+    - dbfread.m: improve speed when reading a subset of data
+
+-------------------------------------------------------------------
+Wed Jun  6 08:33:35 UTC 2018 - badshah400@gmail.com
+
+- Update to version 2.4.11:
+  * OCT interface: fix reading shared formula results (bug #52875)
+  * OCT interface: fix a rare case of nested text cell XML with
+    special formatting attributes (bug # 53298)
+  * OCT interface: don't over-allocate memory when reading text
+    cells in xlsx (bug 533910, credits to Peter Giles
+  * OCT interface: return correct date values for .ods file (bug
+    #53401)
+  * dbfwrite.m: don't prepend space before string values
+  * bug #53510: fix detection of Java version for Java > 8
+  * OCT interface: (part of) bug #53459, i.e. reading .xlsx files
+    with a more complex mix of chartsheets, macrosheets and
+    worksheets, and exploring such files with xlsfinfo. Writing to
+    such files however isn't guaranteed to be bug free. However,
+    other interfaces (POI, UNO) provide a workaround.
+  * COM interface: clearly distinguish between worksheets and e.g.,
+    chartsheets when referencing sheets by number.
+
+-------------------------------------------------------------------
+Thu Nov  9 16:28:49 UTC 2017 - badshah400@gmail.com
+
+- Update to version 2.4.8:
+  * csv2cell(): Improve ignoring CR (char (13)) in csv files (bugs
+    #50979 and #50297)
+  * OCT interface:
+    - More robust identification of worksheets (spreadsheets
+      written with POI interface were misinterpreted)
+    - Overhauled reading .xlsx files; catches more types:
+      inlineString, Boolean, ...
+  * read_namelist.m: improve reading when ending char is not fist
+    on line (bug #52242) 
+  * Replace utf82unicode with native2unicode v.v. in Octave 4.4+
+  * If no filename extension is given, default to .xlsx rather
+    than .xls
+  * xlsread.m and odsread.m now accept a function handle, an
+    output options struct and interface as arguments after the
+    third (range) argument, in any order.
+  * all spreadsheet I/O functions now accept an empty string as
+    worksheet name, implying the first worksheet.
+
+-------------------------------------------------------------------
+Thu Nov 24 13:17:37 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.4.5
+  * New functions.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sat Sep 17 18:01:59 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.4.3
+  * io_xls_testscript.m, io_ods_testscript.m: return results rather
+    than bail out when hitting errors
+  * cell2csv: increase precision hen writing double values
+  * Bug fixes
+
+-------------------------------------------------------------------
+Fri Jul  8 10:02:20 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.4.2
+  * Changed several calls to (now deprecated) octave_config_info into
+    calls to __have_feature__.m
+  * Add support for complex numbers in read_namelist.m and write_namelist.m
+  * Bug fixes
+
+-------------------------------------------------------------------
+Fri Jun 10 16:35:46 UTC 2016 - dmitry_r@opensuse.org
+
+- Update to version 2.4.1
+  - xmlread.m and xmlwrite.m as replacement of the undocumented,
+    unsupported and unusable binary code.
+  - New function tidyxml.m:  simply strips characters < 32 or > 126 from
+    character arrays or cell arrays (including mixed cell arrays).
+  - test_spsh.m now shows a nice summary of test results for each interface.
+
+-------------------------------------------------------------------
+Thu Oct 22 20:35:44 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.11
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Sep 28 14:09:10 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.10
+  * Support for Named Ranges
+  * Bug fixes
+
+-------------------------------------------------------------------
+Tue Jul 14 19:51:38 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.9
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon Jun 22 19:46:25 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.8
+  * Bug fixes
+
+-------------------------------------------------------------------
+Sun Mar  8 21:46:51 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 2.2.7
+  * Bug fixes
+
+-------------------------------------------------------------------
+Thu Feb 26 16:06:43 UTC 2015 - dmitry_r@opensuse.org
+
+- Split from octave-forge package, version 2.2.6
+

@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a0aa1c0433b4e398cc745b7d34f6043</srcmd5>
+    <version>2.4.2</version>
+    <time>1503592736</time>
+    <user>dimstar_suse</user>
+    <comment>Namespacing of lua (will need one staging)</comment>
+    <requestid>510449</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9aa0b561ecb08aa6002a80e6620e6851</srcmd5>
+    <version>2.4.2</version>
+    <time>1509461059</time>
+    <user>dimstar_suse</user>
+    <comment>drop lua5.2 from multibuild</comment>
+    <requestid>537630</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b48fd9474b427d42dfcd912d11c64496</srcmd5>
+    <version>3.1.2</version>
+    <time>1560970733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705517</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f39eec66528ca56fa5128b3d4818c0a3</srcmd5>
+    <version>3.2.0</version>
+    <time>1567092317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726834</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3342ea52f1358ddedc52c32ccf4c5a19</srcmd5>
+    <version>3.2.0</version>
+    <time>1594817753</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target
+</comment>
+    <requestid>819771</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f971c2f406c7cab03d819db78cac0dbe</srcmd5>
+    <version>3.3.1</version>
+    <time>1595865005</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>822976</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3f2c01fbf03fa07fc7623b146bea04ff</srcmd5>
+    <version>3.3.1</version>
+    <time>1614001161</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>873533</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f8e7534c4f751c3a8fd2c35f0042b1a9</srcmd5>
+    <version>3.7.0</version>
+    <time>1624004010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900205</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>26250ed2f67499c17b1c0d2b71d831a3</srcmd5>
+    <version>3.8.0</version>
+    <time>1640030768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.0:
+  * Support GitHub's protocol security changes transparently
+  * luarocks test has a new flag --prepare that checks, downloads
+    and installs the tool requirements and rockspec dependencies
+    but does not run the test suite for the rockspec being tested.
+  * Code tweaks so that LuaRocks can run on a Lua interpreter
+    built without the debug library.
+</comment>
+    <requestid>941408</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>edc36c9758b41e5e43f77973bc70d0c3</srcmd5>
+    <version>3.9.1</version>
+    <time>1661257540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998615</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>03cb931390c2ea8ff41bdcd3a707b54a</srcmd5>
+    <version>3.9.1</version>
+    <time>1661346650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998863</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>4d533b2a4eb4ed471c73e67a0870eace</srcmd5>
+    <version>3.9.1</version>
+    <time>1662322282</time>
+    <user>dimstar_suse</user>
+    <comment>- Own /usr/lib/luarocks
+- Add lib64.patch:
+  * Fix luarocks placing files in incorrect libdir
+</comment>
+    <requestid>1000929</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>e9511818b8a461538a71a21b7262b343</srcmd5>
+    <version>3.9.1</version>
+    <time>1669288946</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037545 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1037592</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>f80aa857e143bbb83d4a43084d066a20</srcmd5>
+    <version>3.9.1</version>
+    <time>1698438457</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120604</requestid>
+  </revision>
+</revisionlist>

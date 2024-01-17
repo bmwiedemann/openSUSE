@@ -1,0 +1,530 @@
+-------------------------------------------------------------------
+Fri Nov 17 09:34:27 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 8.0.0:
+  - This is a major release that provides support for PySide
+    6.4 and 6.5 as well as Python 3.11. It includes a number
+    of backwards-incompatible changes following the example of
+    Pyface 8.0.0, most notable is moving the traitsui.qt4.*
+    modules to traitsui.qt.*. As with Pyface 8.0 we include a
+    backwards-compatibility mode which allows importing from the
+    'qt4' namespace via:
+    - setting the ETS toolkit to "qt4"
+    - setting the ETS_QT4_IMPORTS environment variable
+    - manually adding appropriate finders to sys.meta_path
+    - Be strict about 'handler.init()' return values
+    - Move 'traitsui.qt4.' to 'traitsui.qt.'
+    - Remove deprecated 'format' trait
+    - Deprecate imports from traitsui.editors (use
+      traitsui.editors.api)
+    - Remove backwards-compatibility mode in undo/redo code
+    - Support for Python 3.11 and PySide 6.4+
+    - Fix uses of None in date range editor
+    - Add comments for Wx-only examples
+    - Replace uses of "fast_ui" dispatch with "ui" dispatch
+    - Fix FileDialog selection actions
+    - Fix regression in Wx version of FileEditor
+    - Fix missing attribute of InstanceFactoryChocie
+    - Replace some relative imports in tests
+- Update to 7.4.3:
+  - This is a small bugfix release which resolves some bugs that
+    have come to light as we get more experience with PySide
+    6, together with changes to run CI on more recent Python
+    versions and current Github infrastructure.
+    - Fix rendering of dragged tree nodes on Qt6
+    - Add explicit allow_none in Datetime traits
+    - Generate extra TableEditor menus dynamically
+    - Display the selected date in the DateEditor in custom style
+    - Guard Qt TreeEditor against destroyed QTreeViewItems
+- Update to 7.4.2:
+  - This is a small bug fix release which resolves a couple of
+    bugs in the RangeEditor and TreeEditor. It also pins the
+    PySide6 version to < 6.4.0 due to incompatibilities with the
+    new enum system, which should improve the install experience.
+    - Fix RangeTextEditor handling of None for low/high
+    - Pin PySide6 to < 6.4
+    - Fix issues with shared "New" context menu in TreeEditor
+- Update to 7.4.1:
+  - This is a bug fix release which resolves an issue with
+    RangeEditor not handling None for either the high or low
+    value, as well as an issue with ProgressColumn rendering.
+    - Fix issue with progress column rendering on Linux and
+      Windows.
+    - Fix typos in docstrings
+    - Fix range text editor bug
+    - Fix issue where file editor filters were not used in simple
+      editor
+- Update to 7.4.0:
+  - This is a minor release which fixes a number of bugs and adds
+    smala couple of l features. The most significant changes
+    are the to Eability to add separators numEditor comboboxes,
+    the ability and to use Pyface action Schemas for menu bars
+    toolbars in Views, QtMuand getting the VideoEditor working
+    against the new ltimedia QtMuAPIs in Qt6.
+    - Separators in Combobox EnumEditors.
+    - Allow the use of Pyface Schemas for View menus and
+      toolbars.
+    - Delay imports which force toolkit selection
+    - Fix ImageEditor paintEvent when image is None.
+    - Fix VideoEditor for Qt6
+    - Fix the ImageEnumEditor on Qt5+
+    - Fix some height and width calls for Qt and Python 3.10+
+    - Fix a crash on PyQt5 when a Group has no content
+    - Numerous fixes for tests and CI
+    - Add a copy button to code blocks in documentation
+- Update to 7.3.1:
+  - This is a bugfix release that resolves a couple of critical
+    errors in some Editors.
+    - Fix an issue with KeyBindingsEditor double-click and dark
+      mode colors
+    - Fix an issue with integer division in ImageEnumEditor
+    - Fix an attribute name and type error in the FileEditor
+- Update to 7.3.0:
+  - This is a minor release which includes numerous bug fixes,
+    documentation improvements, code maintenance changes, and
+    enhancements.
+    - The most important new features are experimental support
+      for Qt6, both for PySide6 and PyQt6 (although the latter is
+      less complete).
+    - Qt4 is deprecated and is no longer being tested in
+      CI. Support will be removed in the next major release.
+    - The new Pyface Font and Color classes can now be used with
+      the TraitsUI Color and Font traits.
+    - The image editor can now use any Pyface IImage instance,
+      allowing simple dynamic image editing.
+    - Numerous bugfixes and small improvements to existing
+      editors.
+  - Features
+    - Expose TreeEditor actions and IconSize in
+      traitsui.editors.api
+    - Add UITester support for qt TableEditor
+    - Add UITester DirectoryEditor support
+    - Add an expand_all method to TreeEditor
+    - Used Black to ensure a uniform codestyle for TraitsUI
+    - Allow per-row tooltips in the ListStrEditor's adapter
+    - PySide6 support
+    - Add support for Pyface Color and standaize color names
+    - Pyface Fonts can be used with TraitsUI Font traits
+    - Add ListStrAdapter to traitsui.api
+    - Remove uses of the archaic property_depends_on decorator
+    - Require Pyface 7.4.1
+  - Fixes
+    - Call HasPrivateTraits.init() in GroupEditor.init
+    - Add RangeEditor support for format_func and deprecate
+      format trait on
+    - RangeEditor factory / toolkit specific Editor
+      implementations
+    - Fix Dynamic EnumEditor on qt
+    - Fix ProgressColumn bars overlapping with PyQt5 and PySide2
+    - Fix selectable InstanceEditor combobox updates
+    - Fix Qt InstanceEditor appearance when None selected
+    - Prevent RangeTextEditor from allowing values outside range
+    - Fix droppable InstanceEditor
+    - Fix double error dialogs
+    - Convert traitsui.instance_choice.InstanceChoiceItem into an
+      instance of traits.api.ABCHasStrictTraits to avoid users
+      from instantiating the object directly
+    - Fix issue with incorrect items added via context menu in a
+      TreeEditor
+    - Fix name errors and refactor flake8 config to reduce the
+      chance of future errors.
+    - Fix NotebookEditor initial selected
+    - Convert Qt Enums to be compatible with PyQt6
+    - Fix SimpleSpinEditor "enter set" on qt
+    - Fix issue with ImageEditor not updating for all IImage
+      implementations.
+    - Fix issues with KeyBindings.
+    - Fix the KeyBindingEditor.
+    - Improve error colors for dark mode on Qt.
+  - Documentation changes
+    - Move "array_editor" to "StandardEditors" contributed
+      examples
+- Remove upstramed patch:
+  - traitsui-pr1689-deprecations.patch
+
+-------------------------------------------------------------------
+Sun Jan 16 15:11:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.2.1
+  * Explicitly require traits 6.2 and pyface 7.3 (#1666, #1668)
+- Release 7.2.0
+  * TraitsUI 7.2.0 is a minor release which includes numerous bug
+    fixes, documentation improvements, code maintenance changes,
+    and enhancements.
+  * The migration from on_trait_change to observe is underway. As a
+    result, TraitsUI now requires Traits >= 6.2.
+  * New display-only VideoEditor (currently only on Qt backend).
+    Exapnsion of features for the new UITester including the
+    ability to inspect UI object visibility / enabledness. Also
+    documentation for testing has been updated.
+  * Notes on upgrading: This release of TraitsUI now depends on
+    Traits 6.2+ and pyface 7.2+. Also, deprecated code / modules
+    have been removed. Namely, the :mod:traitsui.image
+    <traitsui.image> module which was moved to pyface.image,
+    editors_gen modules, Editor and EditorFactory factory methods
+    on Toolkit objects, and more. For a complete list, see PRs in
+    the "Removals" section. These were all generally unused /
+    deprecated for sometime. Also, importing directly from
+    traitsui.editors has been deprecated. Please update imports to
+    import directly from :mod:traitsui.api or
+    :mod:traitsui.editors.api.
+- Detailed changelog at
+  https://github.com/enthought/traitsui/releases/tag/7.2.0
+- Add traitsui-pr1689-deprecations.patch
+  * gh#enthought/traitsui#1689 + gh#enthought/traitsui#1681
+
+-------------------------------------------------------------------
+Tue Feb 23 19:50:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.1.1
+  * Fix scrollable trait of a Group not being implemented on Qt
+    (#1406)
+  * Fix icon button's clickable area too small for FileEditor and
+    RangeEditor on Qt and OSX (#1383)
+  * Fix missing minimize and maximize buttons for dialogs opened
+    on certain Linux platforms (#1409)
+- Release 7.1.0
+  Highlights of this release
+  * A new traitsui.testing.api module has been introduced for
+    testing GUI applications built using TraitsUI. See Testing
+    TraitsUI Applications for an introduction. Builtin support has
+    been added for testing several TraitsUI editors. More support
+    will be added in the future.
+  * On OSX and Qt, there have been reports of missing UI view
+    updates after a push button is clicked. While this is
+    suspected to be a Qt issue, changes have been made to
+    ButtonEditor, SetEditor and ImageEnumEditor to mitigate the
+    situation.
+  * The internal logic for disposing an instance traitsui.ui.UI is
+    changed as an attempt to resolve AttributeError that occurs
+    while a nested UI is removed.
+  Notes on upgrading
+  * On the issue about Qt button not causing views to update on
+    OSX, projects that have been working around the issue by
+    adding GUI().process_events() (or similar) in their
+    applications may now try to remove those workarounds. However,
+    the change that mitigates the issue in a production
+    environment has implications for tests: The button's click
+    slot is no longer invoked immediately but always invoked by
+    the Qt GUI event loop. Tests that used to call the Qt button
+    click method directly and rely on the event to happen
+    immediately will now need to update their tests to ensure that
+    the click slot is processed by the Qt GUI event loop in the
+    same order as before. Consider using the new testing library
+    which automatically runs the GUI event loop after each
+    interaction (e.g. mouse click).
+  Future removals
+  * traitsui.image has been moved to pyface.image more than 3
+    years ago and has since been deprecated. Previously it was
+    scheduled to be removed in TraitsUI 6.0. This planned removal
+    is now deferred to TraitsUI 7.2.
+- use pytest-xvfb
+- Don't test numpy on python36
+
+-------------------------------------------------------------------
+Tue Sep  8 08:15:11 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.1
+  * Fix error from true division of integers for Qt RangeEditor and BoundsEditor
+    (#999, #1000)
+  * Fix handling of minimum and maximum datetimes in Qt DatetimeEditor (#803)
+  * Fix error in wx TabularEditor (#969)
+  * Fix wx panel error due to alignments (#829)
+  * Fix various issues in the demo application (#799, #808)
+  * Fix format_func not used when EnumEditor is initialized with static values
+    (#848)
+  * Fix demo application description (#850)
+  * Fix auto-add functionality in ListStrModel (#860)
+  * Fix segmentation fault for TabularModel (#871, #873)
+  * Fix event handling in ListStrEditor and TabularEditor for adding and removing
+    items (#875)
+  * Fix TabularAdapter crashes when column number reduces (#897)
+  * Fix theme pickling issue (#915)
+  * Fix error from example's tutor.py script (#813)
+- use pytest instead of nose for running tests
+
+-------------------------------------------------------------------
+Mon Jul 13 11:20:18 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 7.0.0
+  * Documentation improvements (#720, #724, #723, #778)
+  * WxPython 4 compatibility and support (#708, #736, #762, #772, #775, #776)
+  * Traits 6 compatibility and enhancements (#689, #690, #693, #695, #713, #727, #770)
+  * Style improvements (#648, #771)
+  * Add placeholder text option for TextEditor (#735)
+  * Examples clean-up and unification (#697, #702, #703, #705, #711, #712, #777)
+  * Add a DatetimeEditor (#719, #730)
+  * Refactor and clean-up of base Editor class (#685, #686, #688)
+  * Remove use of Category classes from TraitsUI (#654)
+  * Add LEDEditor for Qt (#635)
+  * Add 'docs' command to etstool.py (#624)
+  * Add TabularAdapter to traitsui.api (#627)
+  * Enhancements to CI and testing (#683, #714, #740)
+  * Documentation fixes (#546, #766)
+  * Fix cgi.escape for Python 3.8 (#780)
+  * Log exceptions in table sorting (#751)
+  * Use TupleEditor for traits derived from BaseTuple (#747)
+  * Fixes for Undo/Redo (#733)
+  * Add explicit redraw for TableEditor selection (#721)
+  * Fixes for Qt5 support (#709)
+  * Fix bugs in color functions (#707, #744)
+  * Fix importing of ProgressColumn and EditColumn (#691)
+  * Set initial focus item correctly in Qt (#602)
+  * Fix text elision test on some platforms (#644)
+  * Fix a bug with TableEditor column clicking (#669)
+  * Fix typo in progress column exception (#662)
+
+-------------------------------------------------------------------
+Mon Apr 20 08:58:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Fri Sep 13 14:59:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.1.3:
+  * Add "bool" to allowed types for TableColumn (#656)
+  * Fix tabular editor column widths (#652)
+  * Fix setting valus in DataFrameEditor (#651)
+  * Allow '...' in addition to ellipsis in text elision (#644)
+  * Handle invalid values in RangeEditor better (#637)
+  * Fix multi-select in Qt TabularEditor (#633)
+  * Fix call to Bind in Wx FileEditor (#628)
+  * Fixes to doc links in tutorial (#619)
+  * Remove 3.5 from test matrix (#615)
+  * Ensure etstool.py has consistent default Python versions (#614)
+  * Fix typos in comments for table editor (#610)
+  * Comprehensive tests for the base Editor object (#609)
+  * Fix ContextValue __init__ method (#607)
+  * Fix tutor.py in examples for Python 3 (#603)
+  * Set initial item focus correctly on Qt (#602)
+  * Make View and UI icons an Image trait (#600)
+  * Fix TableEditor styling for Qt (#597)
+
+-------------------------------------------------------------------
+Tue Jul 23 15:25:22 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to Release 6.1.2
+  + Fixes
+    * Fix tree node copy failure to copy
+    * Fix/scroll to row preserve column
+    * Call correct object on label change for TreeNodeObject
+    * Remove uses of etsdevtools
+    * Fix modal view application
+    * Remove unicode usage
+    * Update Travis CI configuration to be compatible with Ubuntu Xenial.
+    * Build CI on maintenance branches
+    * Fix an erroneous handler removal
+    * Fix the sizeHint() default for TreeItemDelegate.
+    * Update unittest import
+- Update to Release 6.1.1
+  + Fixes
+    * Fix TreeNodeObject listener cache.
+    * Fix tree node insertion.
+- Update to Release 6.1.0
+  + Enhancemenrs
+    * Switch to using six instead of 2to3.
+    * Experimental Pyside2 support.
+    * Allow arbitrary rendering of tree nodes in Qt backend.
+    * Use tooltip metadata on a trait instead of desc, if available.
+    * Enable scroll to column for TabularEditor
+    * Add demo for tabular editor with context menu.
+    * Allow the use of extended trait names in TreeNodes where possible.
+    * Allow drag move and drag copy modes on Qt TabularEditor.
+  + Fixes
+    * Fixes to README.
+    * Documentation fixes.
+    * Fixes to setup.py.
+    * Fix an attribute error on Qt TextRangeEditor.
+    * Use SimpleEditor for Qt TextEditor's "text" style.
+    * Fix handling of Range traits with a mix of constant and named bounds.
+    * Fix display selection on Wx backend.
+    * Fixes for Qt TableEditor selections.
+    * Fix deprecation warnings for inspect.getargspec.
+    * Fixes to etstool.
+    * Fix TreeEditor unhashable type errors.
+    * Fix crash when TabularEditor has no columns.
+    * Clone editor factories so they don't share traits.
+    * Avoid creation of dummy traits by springy items.
+    * Fix drag and drop crash in Python 3.
+    * Fix Undo/Redo for readonly items and error handling.
+    * Fix source parsing in demo app.
+    * Fix signature of close() method of Qt modal dialog.
+    * Fix incorrect code in Wx ColorEditor.
+    * Fix incorrect code in Wx ProgressEditor.
+    * Remove uses of deprecated HasTraits.set() calls.
+    * Fix rendering of CheckboxColumn on OS X and Qt.
+
+-------------------------------------------------------------------
+Wed May  9 14:05:26 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 6.0.0
+  + Enhancements
+    * Support for Qt5 (#347, #352, #350, #433)
+    * Remove TraitsUI Themes (#342)
+    * Improve Toolkit selection and handling (#425, #429)
+    * API Documentation (#438)
+    * Adapter documentation (#340)
+    * Support multi-selection in DataFrameEditor (#413)
+    * DataFrameEditor demo (#444)
+    * Common BasePanel class for toolkits (#392)
+    * Labels honor enable_when values (#401)
+    * Better error messages when toolkit doesn’t implement methods (#391)
+    * Improve TraitsUI Action handling (#384)
+    * ListEditor UI improvements (#338, #396, #395)
+    * Remove old style signals and slots for Qt backend (#330, #346, #347, #403)
+    * Expose a “refresh” trait for the DataFrameEditor (#288)
+    * Use Enthought Deployment Manager to automate CI and testing (#321, #357)
+    * Continuous integration on OS X (#322)
+    * Reduce circular dependencies of PyFace on TraitsUI (#304)
+    * PEP8-compliant formatting of source (#290)
+    * Add progress bar column for TableEditor (#287)
+    * Add codecov coverage reports (#285, #328)
+  + Fixes
+    * Fix some issues for newer WxPython (#418)
+    * Fix Wx simple FileEditor (#426)
+    * Fixes for DataFrameEditor (#415)
+    * Fixes for preferences state saving under Qt (#410, #447)
+    * Fix panel state after setting preferences (#253)
+    * Fix TableEditor ColorColumn (#399)
+    * Prevent loopback from slider in Qt RangeEditor (#400)
+    * Fix Action buttons under Qt (#393, #394)
+    * Fix ValueEditor icons (#386)
+    * Fix bug in update_object (#379)
+    * Avoid reading Event trait values in sync_value (#375)
+    * Fix raise_to_debug calls (#362, #372)
+    * Fix errors during garbage collection (#359)
+    * Remove unused argument in wx.hook_events (#360)
+    * Fix button label updates (#358)
+    * Fix TreeEditor label updates (#335)
+    * Proper InstanceEditor dialog lifecycle (#332)
+    * Don’t explicitly destroy child widgets under Qt (#283)
+    * Test fixes and improvements (#329, #369, #371, #327)
+    * Fixes for demos and examples (#320, #445)
+    * Fix CheckListEditor string comparison (#318)
+    * Remove some spurious print statements (#305)
+    * Documentation fixes (#301, #326, #380, #438, #443)
+    * Fixes for Python 3 compatibility (#295, #300, #165, #311, #410)
+    * Fix error with Qt table model mimetype (#296)
+    * Fixes for continuous integration (#299, #345, #365, #397, #420, #427)
+    * Fix offset issue when dragging from Qt TreeEditor (#293)
+    * Fix Wx kill-focus event issues (#291)
+    * Fix readthedocs build (#281)
+- Update to version 5.1.0
+  + Enhancements
+    * Add support for multi-select in the DataFrameEditor (#413).
+- Use license tag
+
+-------------------------------------------------------------------
+Wed Aug 23 20:30:09 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 5.1.0
+  + Enhancements
+    * Enthought Sphinx Theme Support (#219)
+    * Allow hiding groups in split layouts on Qt (#246)
+    * Allow subclass of Controller to set a default model (#255)
+    * Add toolbar in Qt UI panel (#263)
+  + Fixes
+    * Fix Qt TableEditor segfault on editing close (#277)
+    * Update tree nodes when adding children to am empty tree (#251)
+    * Change default backend from Wx to Qt (#254, #256)
+    * Improve toolkit selection (#259)
+    * Fix capturing the mouse and click events on Wx (#265, #266)
+    * Remove duplicated traits in NotebookEditor (#268)
+    * Fix exception during disposal of ListStrEditor (#270)
+    * Version number in documentation (#273)
+
+-------------------------------------------------------------------
+Thu Apr 14 14:06:28 UTC 2016 - stecue@gmail.com
+
+- Removed python-pandas dependency.
+
+-------------------------------------------------------------------
+Tue Apr 12 19:14:58 UTC 2016 - toddrme2178@gmail.com
+
+- Update to version 5.0.0
+  - New Features
+    * Experimental Python 3 support (#230)
+    * A DataFrameEditor for Pandas DataFrames, similar to the ArrayViewEditor
+      (#196)
+  - Enhancements
+    * Add a Qt version of the ProgressEditor (#217)
+    * Links to demos in the documentation (#159)
+    * Add minimal support for the dock_styles option to the Qt tabbed List
+      Editor. (#143)
+  - Fixes
+    * Fix failure to disconnect selection listeners for ListStrEditor in Qt (#223)
+    * Fix layout of TextEditors in some situations (#216)
+    * Fix removal of _popEventHandlers not owned by TraitsUI in Wx (#215)
+    * Remove some old (TraitsUI 3.0-era) documentation (#214)
+    * Help button now works on Qt (#160)
+
+-------------------------------------------------------------------
+Wed Mar 16 20:33:37 UTC 2016 - stecue@gmail.com
+
+- Fixed the "have choice" error by adding "BuildRequires:  python-wxWidgets"
+
+-------------------------------------------------------------------
+Fri Sep  4 11:05:13 UTC 2015 - toddrme2178@gmail.com
+
+- Release 4.5.1
+  - Fixes
+    * Fix pypi installation problem (#206)
+- Release 4.5.0
+  - Fixes
+     * Application-modal Traits UI dialogs are correctly styled as
+       application-modal under Qt. On Macs, they will now appear as independent
+       windows rather than drop-down sheets. (#164)
+     * Qt CodeEditor now honors 'show_line_numbers' and the 'readonly' style (#137)
+     * Deprecated `implements` declaration removed, use `provides` instead (#152)
+     * Fix TableEditor so that Qt.QSplitter honors 'orientation' trait (#171)
+     * Show row labels in Qt TableEditor when requested (#176)
+     * Fix TupleEditor so that multiple change events are not fired (#179)
+     * Numpy dependency is now optional. `ArrayEditor` will not be available
+       if numpy cannot be imported (#181)
+     * Add development versioning (#200)
+
+-------------------------------------------------------------------
+Mon Oct 13 15:19:20 UTC 2014 - toddrme2178@gmail.com
+
+- Update to 4.4.0
+  * No upstream changelog
+- Update source to pypi url.
+
+-------------------------------------------------------------------
+Thu Oct 24 11:16:18 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Sat Apr 20 15:35:16 UTC 2013 - toddrme2178@gmail.com
+
+- Added a note about being part of the Enthought Tool Suite (ETS).
+
+-------------------------------------------------------------------
+Thu Apr 18 12:12:24 UTC 2013 - toddrme2178@gmail.com
+
+- Update to 4.3.0
+  * no changelog
+
+-------------------------------------------------------------------
+Tue May 22 08:58:34 UTC 2012 - toddrme2178@gmail.com
+
+- Renamed to python-traitsui to reflect upstream name change
+- Updated to version 4.2.0
+- Updated to version 4.1.0
+- Package now includes Qt and wx backends
+
+-------------------------------------------------------------------
+Tue May 31 14:36:19 UTC 2011 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Added license header
+  * Use proper SUSE version checks
+
+-------------------------------------------------------------------
+Sat Apr 23 18:30:24 UTC 2011 - ocefpaf@yahoo.com.br
+
+- first import from Fedora src rpm
+

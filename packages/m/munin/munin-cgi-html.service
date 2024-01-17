@@ -1,0 +1,24 @@
+[Unit]
+Description=Munin CGI HTML generator
+Requires=network.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=forking
+ExecStart=/usr/bin/spawn-fcgi -s /var/run/munin/munin-cgi-html.sock -P /var/run/munin/munin-cgi-html.pid -u munin -g munin -M 0770 -U munin -G www /srv/www/cgi-bin/munin-cgi-html
+PIDFile=/var/run/munin/munin-cgi-html.pid 
+
+[Install]
+WantedBy=multi-user.target

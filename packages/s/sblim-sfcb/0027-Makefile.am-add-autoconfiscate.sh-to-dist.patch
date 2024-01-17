@@ -1,0 +1,26 @@
+From 1db719b257591ad7e07a52cf3bda2a101fbb2f2f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Wed, 18 Aug 2010 10:58:03 +0200
+Subject: [PATCH 27/29] Makefile.am: add autoconfiscate.sh to dist
+
+---
+ Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 56933cf0c701..40bbe8021b4b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -388,7 +388,8 @@ man_MANS=$(MANFILES)
+ EXTRA_DIST=sfcb.cfg.pre.in sfcb.spec sfcbrepos.sh.in sfcbstage.sh.in \
+ 	sfcbunstage.sh.in sfcbuuid.sh.in sfcb.init-redhat.in sfcb.init-suse.in \
+ 	sfcb.init-none.in cimXmlParser.c footprint.pl test \
+-    sblim-sfcb.service.pre.in
++	sblim-sfcb.service.pre.in \
++	autoconfiscate.sh
+ 
+ dist_sfcbdata_SCRIPTS=genSslCert.sh getSchema.sh test/stageschema.sh
+ 
+-- 
+2.23.0
+

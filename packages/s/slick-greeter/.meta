@@ -1,0 +1,6 @@
+<package name="slick-greeter" project="openSUSE:Factory">
+  <title>The slick-looking login screen application</title>
+  <description>The slick-looking greeter (login screen) application.
+It is implemented as a LightDM greeter.</description>
+  <devel project="X11:Cinnamon:Factory" package="slick-greeter"/>
+</package>

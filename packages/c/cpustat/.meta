@@ -1,0 +1,13 @@
+<package name="cpustat" project="openSUSE:Factory">
+  <title>Periodic cpu utilization statistics</title>
+  <description>cpustat periodically reports the current CPU utilization of running tasks and
+can optionally report per CPU and per task utilization statistics at the end
+of a run.
+cpustat has been designed and optimized to use a minimal amount of CPU cycles
+to monitor a system hence it is a light weight alternative to traditional
+process monitoring tools such as top. 
+
+</description>
+  <devel project="server:monitoring" package="cpustat"/>
+  <url>http://kernel.ubuntu.com/~cking/cpustat/</url>
+</package>

@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba958e1cf1fe65386f9c5494f5e8cfbd</srcmd5>
+    <version>0.4.0</version>
+    <time>1600079755</time>
+    <user>dimstar_suse</user>
+    <comment>CSI sidecar package, used when deploying ceph on k8s with rook</comment>
+    <requestid>834256</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c21d71c92db78eb97a79537a948b92b</srcmd5>
+    <version>0.5.0</version>
+    <time>1606145872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0
+  * Ability to customize PVC workqueue retry interval
+  * Pass volume capability to ControllerExpandVolume RPC call
+- Rework _service and spec file to make future version updates easier
+</comment>
+    <requestid>849531</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5f37da394ae9cc8b0c7ffb122fe8e471</srcmd5>
+    <version>0.5.0</version>
+    <time>1607612179</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854034</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>63a58d30d337bcabbfc26f0d8584256c</srcmd5>
+    <version>1.0.1</version>
+    <time>1617722931</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882397</requestid>
+  </revision>
+</revisionlist>

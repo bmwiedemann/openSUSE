@@ -1,0 +1,286 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>443e1a3ba2d6d6e52e93bc7f736cd3c1</srcmd5>
+    <version>0.0.6</version>
+    <time>1526371680</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-datashader</comment>
+    <requestid>603775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a1b6ef6657a6a496a3f0c83f6118284b</srcmd5>
+    <version>0.0.6</version>
+    <time>1528897039</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615166</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2eb9d6d69c905bc9d300bf9a6a1139ee</srcmd5>
+    <version>0.1.6</version>
+    <time>1538502444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639321</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>63ea5bb7456cfaa253b7be98dfc689cf</srcmd5>
+    <version>0.2.0</version>
+    <time>1543224567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651329</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9bac78a8606fadf3ccfde05c94ae4fa3</srcmd5>
+    <version>0.2.1</version>
+    <time>1548704915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668842</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc28f3a73b0e885f0e40748abe7029d1</srcmd5>
+    <version>0.3.1</version>
+    <time>1557404891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699763</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4892a735b299a39560d4ee22351e19a7</srcmd5>
+    <version>0.3.1</version>
+    <time>1558428017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704258</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7ad9c1d451bfa519a73274065128f60b</srcmd5>
+    <version>0.3.2</version>
+    <time>1564994534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720881</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ed815cf92ce3c769f932a267eb8e75d0</srcmd5>
+    <version>0.3.2</version>
+    <time>1572180073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742993</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f619d19f8bfceed139c71496e68a029</srcmd5>
+    <version>0.3.3</version>
+    <time>1586248203</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to use sys.executable and not call py2 binary directly:
+  * use-python-exec.patch
+
+- Update to 0.3.3:
+  * no upstream changelog</comment>
+    <requestid>791651</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f701948658e14bfa0946f8a33285dd52</srcmd5>
+    <version>0.4.0</version>
+    <time>1594383206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819826</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e710253780eabd190ba0ce00d180fc3a</srcmd5>
+    <version>0.4.1</version>
+    <time>1595271637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821679</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c9d2851f296d7ff51616d790f16459f9</srcmd5>
+    <version>0.5.0</version>
+    <time>1609705615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859938</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>29cd5f676d4761c5e60bbf82b847d315</srcmd5>
+    <version>0.5.0</version>
+    <time>1612466685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869528</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>a5bb59925696187fbc89ec1de88985a7</srcmd5>
+    <version>0.5.0</version>
+    <time>1612989034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870700</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>283788416efb85ffe0fb8e9baa610bb0</srcmd5>
+    <version>0.5.0</version>
+    <time>1613427421</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 36 build</comment>
+    <requestid>871464</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>48777a30dbed5dc1608c34bfd323786e</srcmd5>
+    <version>0.6.3</version>
+    <time>1621439369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894287</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>590897d73d7399ba2299db6a66020c1c</srcmd5>
+    <version>0.7.1</version>
+    <time>1628751683</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911011</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>390ad30813a3c98fa22555820c7823b2</srcmd5>
+    <version>0.7.2</version>
+    <time>1638131422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934419</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3a97dd7eedf7a00e1dc6895b5aaf521b</srcmd5>
+    <version>0.7.2</version>
+    <time>1642455249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946883</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fb9cf10fabd92f7288c454f81393e8a4</srcmd5>
+    <version>0.8.0</version>
+    <time>1643838006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950305</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>656000998792a4b14ba0f3990bb1eff0</srcmd5>
+    <version>0.8.1</version>
+    <time>1650996970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972913</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f6b721566d0a56594e733049a2b9f177</srcmd5>
+    <version>0.8.3</version>
+    <time>1667217864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032429</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5a81caff85b117110128d272da15d0b9</srcmd5>
+    <version>0.8.3</version>
+    <time>1671889922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045047</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fb7550f1a83efb6055cc6098b43296aa</srcmd5>
+    <version>2022.12.0</version>
+    <time>1672754741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046424</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3ba74d127ede6803a13afac0efe59518</srcmd5>
+    <version>2023.2.0</version>
+    <time>1676302851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064743</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>aa96bf561455d4314cf8d079b2c67e4a</srcmd5>
+    <version>2023.4.0</version>
+    <time>1682691854</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.4.0:
+  * allow loading categoricals even if not so in the pandas metadata,
+    when a column is dict-encoded￼and we only have one row-group (#863)
+￼ * apply dtype to the columns names series, even when selecting no
+    columns (#861, 859)
+￼ * don't make strings while estimating bye column size (#858)
+￼ * handle upstream depr (#857, 856)</comment>
+    <requestid>1083474</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>95916287a07d6ab3b4fd3dc6d89466dc</srcmd5>
+    <version>2023.7.0</version>
+    <time>1688398984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096412</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0c54807ee0a275ef8ca660e1a47e8d5d</srcmd5>
+    <version>2023.8.0</version>
+    <time>1701632943</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.8.0:
+  * More general timestamp units (#874)
+  * ReadTheDocs V2 (#871)
+  * Better roundtrip dtypes (#861, 859)
+  * No convert when computing bytes-per-item for str (#858)
+
+- Add patch to fox the test test_delta_from_def_2 on
+  * row-level filtering of the data. Whereas previously, only full
+    row-groups could be excluded on the basis of their parquet
+    metadata statistics (if present), filtering can now be done
+    within row-groups too. The syntax is the same as before,
+    allowing for multiple column expressions to be combined with
+    AND|OR, depending on the list structure. This mechanism
+    requires two passes: one to load the columns needed to create
+    the boolean mask, and another to load the columns actually
+    needed in the output. This will not be faster, and may be
+    slower, but in some cases can save significant memory
+    footprint, if a small fraction of rows are considered good and
+    the columns for the filter expression are not in the output.
+  * DELTA integer encoding (read-only): experimentally working,
+    but we only have one test file to verify against, since it is
+    not trivial to persuade Spark to produce files encoded this
+    way. DELTA can be extremely compact a representation for
+  * nanosecond resolution times: the new extended &quot;logical&quot; types
+    system supports nanoseconds alongside the previous millis and
+    micros. We now emit these for the default pandas time type,
+    and produce full parquet schema including both &quot;converted&quot; and
+    &quot;logical&quot; type information. Note that all output has
+    isAdjustedToUTC=True, i.e., these are timestamps rather than
+    local time. The time-zone is stored in the metadata, as</comment>
+    <requestid>1130498</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4b20351494976404f011c20f7d423c7b</srcmd5>
+    <version>2023.10.1</version>
+    <time>1701792274</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.10.0:
+  * Datetime units in empty() with tz (#893)
+  * Fewer inplace decompressions for V2 pages (#890
+  * Allow writing categorical column with no categories (#888)
+  * Fixes for new numpy (#886)
+  * RLE bools and DELTA for v1 pages (#885, 883)</comment>
+    <requestid>1130976</requestid>
+  </revision>
+</revisionlist>

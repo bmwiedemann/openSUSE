@@ -1,0 +1,373 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ca878ca2ec2028859899b7c8c165409</srcmd5>
+    <version>0.0.15</version>
+    <time>1527582791</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0.0.15
+  * Fixed: (BUG) RCD_RETURN_FALSE() returns RCD_TRUE
+- update to v0.0.14
+  * Update: guilog.h v0.2
+  * Fixed: Info panel: BG &amp; FG colors were theme-dependent, which
+    could make the panel look &quot;ugly&quot; or even completely unreadable.
+    Now the FG is forced to black and the BG is white.
+- update to v0.0.13
+  * Fixed: (GCC 6.x): silenced some warnings (false-positives)
+    regarding &quot;possibly unitialized variables&quot; in EDID_class.cpp
+  * Fixed: (GCC 6.x, C11 mode): wxEDID_Main.h: C11 requires a space
+    between literal and string macro [-Wliteral-suffix].
+  * Update: returncode.h v0.8.3 
+- Initial commit
+</comment>
+    <requestid>610664</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eafda3e7801286ec2365b39a843499a3</srcmd5>
+    <version>0.0.16</version>
+    <time>1544726864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.17
+Added
+  * support for wxWidgets v3.1.x : *experimental*
+Changed
+  * DTD panel: all the controls are now configured to use default
+    min sizes - this is rather a disadventage, because f.e. the
+    default controls in gtk3 are ridiculously big. However,
+    the minimal App frame size is now re-calculated dynamically,
+    basing on the min. size reported by the DTD sizer - so this
+    is a more flexible solution.
+  * Dropped support for old wxWidgets versions (&lt;3.0.0).
+  * Changed proportions of AUI panes.
+Fixed
+  * DTD panel: dtd_screen: background was erased twice on resize
+    event → now the refreshing is performed in a single call to
+    the paint event.
+  * wxWidgets v3.1.x wxGrid::SetCellValue(wxString&amp;, int, int)
+    is deprecated, new version is wxGrid::SetCellValue(int, int,
+    wxString&amp;)
+  * wxWidgets v3.1.x: wxEVT_GRID_CELL_CHANGE is no longer
+    supported → renamed to wxEVT_GRID_CELL_CHANGED
+  * wxEDID_Frame::evt_frame_size() missing call to sizer-&gt;Layout()
+    → quick resizing of the frame could cause incorrect placement
+    of child windows on the DTD panel.
+  * (BUG::old): DTD_Ctor_WriteInt(): value change event log:
+    missing field names. Only the first letter of field name was
+    printed due to missing conversion from ASCII to wxString.
+  * (BUG::old): EDID_class.cpp: wxString AltDesc wasn't really
+    initializing the alternative desriptors' &quot;Desc&quot; fields.
+    Now the AltDesc is just a char string, and the &quot;Desc&quot; fields
+    are proprly initialized by calling wxString::FromUTF8(AltDesc).
+  * DTD_Ctor_WriteInt(), WriteField(): value change event log:
+    print the whole message string in a single call to
+    guilog::DoLog() - eliminates printing of multiple timestamps
+    per event.
+  * Corrected few textual descriptions of EDID fields.
+</comment>
+    <requestid>655668</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72ac8985714d7bb9378e805151944963</srcmd5>
+    <version>0.0.17</version>
+    <time>1545648503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.17
+Changed
+  * Increased default Log Window size from 400x300 to 500x400.
+  * All panels &amp; controls are now using default system font instead
+    of fixed one.
+Fixed
+  * (BUG::wxSmith) Menu &quot;Quit&quot; and &quot;About&quot; handlers were connected
+    dynamically in the frame constructor, even though they were
+    already present in the static event table.
+  * Options menu: all menu items except &quot;Log window&quot; should stay
+    disabled until edid data is loaded/imported.
+</comment>
+    <requestid>660878</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd1fd5c0ed166e29b715ef1fb471673c</srcmd5>
+    <version>0.0.18</version>
+    <time>1563994238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.18
+Fixed
+  * Removed unused &quot;Hex View&quot; menu item
+Added
+  * Menu Options: &quot;DTD preview: keep aspect ratio&quot;: keep aspect
+    ratio of the DTD preview screen.
+  * DTD_Constructor: active screen area size is now displayed on
+    the DTD screen preview. H/V borders are excluded from active
+    area.
+</comment>
+    <requestid>718285</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34122699988c2ae242ee2dad417f4114</srcmd5>
+    <version>0.0.20</version>
+    <time>1591381462</time>
+    <user>dimstar_suse</user>
+    <comment>- Add wxedid-no-implicit-string-conversion.patch
+  Works around compilation issues with openSUSE’s wxWidgets
+  packages, which do not enable implicit string type conversion.
+- Update to v0.0.20
+Added
+  * Added: Loading/Importing EDID files from path passed as cmd
+    line argument.
+  * Added: Save settings: last used directory + last opened file,
+    dtd_keep_aspect_ratio
+Changed
+  * lower-case name for the final executable: wxEDID -&gt; wxedid
+Fixed
+  * (BUG) cea_y42c_cl::gen_data_layout() never tested: buggy code,
+    memory corruption. Program crash if EDID data contains
+    &quot;YCBCR 4:2:0 Capability Map Data Block&quot;
+    (TagCode=7, ExtTagCode=15)
+- Update to v0.0.19
+Fixed
+  * evt_blktree_sel(): the cell editor must be closed before
+    switching to newly selected data block. Otherwise the cell
+    editor can be &quot;orphaned&quot; and its window stays opened until
+    another cell editor is activated. This problem was visible
+    only when the cell editor was activated from Value Selector
+    Menu event and if evt_blktree_sel() was invoked with opened
+    cell editor.
+  * EDID_cl::ProdWk(): wxString::operator&lt;&lt;() requires type casting
+    to &lt;int&gt; when appending a byte -&gt; otherwise &lt;u8_t&gt; is
+    interpreted as &lt;char&gt;
+  * menu Options::&quot;Ignore EDID errors&quot; must be always enabled,
+    because otherwise the option will be unavailable until a valid
+    EDID structure is loaded.
+Added
+  * Menu Help::Flags &amp; Types: info about flags displayed in the
+    block data grid.
+</comment>
+    <requestid>811827</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>190f7bb08c06060c844991ae862a30fd</srcmd5>
+    <version>0.0.21</version>
+    <time>1594894567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.21
+Fixed
+  * (BUG): BlockTree: root node was not showing EDID file name if
+    the file path was provided as an cmd line argument
+    (both binary and --text).
+  * (BUG) cea_hdrs_cl::init(): Incorrect min size for
+    &quot;HDR Static Metadata Data Block&quot; (TagCode=7, ExtTagCode=6):
+    the min. block size is 3, not 6 bytes. Fields for bytes 4..6
+    are marked as unused, depending on the block size.
+  * (BUG) cea_hdrs_cl: incorrect bitfield definitions for reserved
+    fields: &quot;ET6-7&quot; &amp; &quot;SM1-7&quot;
+  * Wrong evt ID for importing HEX-text EDID from cmd line arg:
+    should be id_mnu_imphex, not id_mnu_exphex.
+  * (Regression) if config file doen't exist, the
+    config.b_dtd_keep_aspect is set to OFF, but by default it
+    should be set to ON.</comment>
+    <requestid>820976</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>14cff869f859a56033475c4a164b9db4</srcmd5>
+    <version>0.0.22</version>
+    <time>1610123963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.22
+Fixed
+  * (BUG) (Thanks to Matthew Evanson): EDID_cl::ParseEDID_CEA():
+    the number of included DTDs can be greater than the number of
+    mandatory *native* DTDs specified in
+    cea_hdr_t.info_blk.num_dtd. Those additional DTDs were silently
+    ignored in previous wxEDID versions. Additionally, the padding
+    area after last DTD is now checked (all bytes have to be
+    zeroed).
+  * Desription of cea_hdr_t.info_blk.num_dtd field: it should be
+    explicitly stated, that this is a number of *native* DTDs,
+    and not the total number of DTDs in the CEA block.
+  * wxEDID_App::CmdLineArgs(): using wxLogStderr for printing
+    messages to stderr.
+  * EDID_cl::ParseDetDtor(): error msg needs EDID block number,
+    passed by the caller.
+  * all references to GPLv3 replaced with GPLv3+, to match the
+    declarations in COPYING.
+  * makefile.am: strict control of what goes to the 'dist' target.
+  * don't distribute src/config.h -&gt; this requires a workaround in
+    wxEDID_Main.h, i.e. defining dummy VERSION symbol when
+    rcd_autogen is running.
+  * (BUG) EDID_cl::VSD_ltncy(): unsupported IEEE-OUI codes: don't
+    overflow if the latency value is zero: mark the field as
+    unused. Added EF_FGR flags: editing the latency value removes
+    &quot;unused&quot; flag.
+  * (BUG) cea_vsd_cl::fields[] max latency value is 500ms, not 251=(500/2)+1.
+Changed
+  * wxEDID_Frame::SaveRep_SubGrps(): export offset values in both
+    decimal and hex format.
+  * single top-level makefile.am
+  * cea_vsd_cl::fields[]: Latency: Added info about 2ms granularity
+    of values.
+  * cea_vsd_cl: Updated group description (new IEEE-OUI codes).
+Added
+  * man/wxedid.1 manpage written by Felix Lechner.
+Updated
+  * rcode.h v1.1.0, rcd_autogen v2.1
+</comment>
+    <requestid>861679</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a716b537e148fd49fa9ba92f77f746a3</srcmd5>
+    <version>0.0.23</version>
+    <time>1615802153</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop wxedid-no-implicit-string-conversion.patch
+- Update to v0.0.23
+Fixed
+  * (BUG in GCC v8.3.0): broken array bounds checking with
+    optimizations enabled, f.e: &quot;src/CEA_EXT_class.cpp:1512:13:
+    warning: ‘void* memcpy(void*, const void*, size_t)’ forming
+    offset [49, 560] is out of the bounds [0, 48] of object
+    ‘slocd_cl::SLOCD_subg’ with type ‘const subgrp_dsc_t’
+    {aka ‘const subgrp_dsc_s’} [-Warray-bounds]&quot; Disabled
+    diagnostic for [-Warray-bounds] in CEA_EXT_class.cpp
+  * (BUG) EDID_cl::ParseEDID_CEA(): checking of padding bytes after
+    last DTD did not allow to ignore errors (bad rcode on exit).
+  * (BUG) IFDB::VSIFD: incorrect offset for ieee_id field.
+  * (BUG) RMCD: several bugs in field offsets, incorrect max values
+  * (BUG) SAB: Speaker Allocation Block: used ID_VSD as typeID,
+    instead of (missing) ID_SAB.
+  * (BUG) SLOCD fields: incorrect offset for channel index byte.
+  * (BUG) VSD: Vendor Specific Data Block: cea_vsd_cl::init()
+    display unspecified payload data as unknown bytes (previously
+    ignored).
+  * (BUG::LEAK): GroupAr_cl: Delete()/Paste(): call Detach() then
+    delete the object: RemoveAt() only removes the pointer.
+  * (BUG::typo) HDRD: HDR Dynamic Metadata Data Block: incorrect
+    pointer used to read HDRD metadata lenght: base DBC pointer
+    (inst) used instead of p_mtd.
+  * (partially): VSD: dynamic data layout, depending on block
+    length (currently only 00-0C-03 ID is supported)
+  * BlkDataGrid: don't use fixed Row/Column sizes: problems on
+    HDPI (thanks to Jat).
+  * BlockTree menu: show group free space if no subgroups are</comment>
+    <requestid>878969</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bc08663912f6dc4ee7e212805fdf1ffc</srcmd5>
+    <version>0.0.25</version>
+    <time>1619031573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.25
+Changed
+  * default size for all spin controls on DTD_Constructor panel.
+    Looks ugly, but works with wxWidgets compiled against GTK3.
+Fixed
+  * &lt;various functions&gt; :: in case of error, always return error
+    message, not just the rcode. Some function were returning the
+    message only if &quot;Ignore Errors&quot; mode was enabled.
+  * Build fails with Clang: unlike GCC, Clang does not support
+    static initialization of flexible arrays in C++ mode:
+    removed flex arrays from all field groups descriptors.
+- Changes in v0.0.24
+Added
+  * VID: Video Input Descriptor: support for field definitions
+    introduced in EDID v1.4
+  * wxEDID_Frame::ImportEDID_hex(): report source file byte offset
+    if conversion fails.
+Changed
+  * EDID base block: UNK: Unknown Descriptor, unk_cl::init():
+    insert unknown byte fields instead of single byte string
+    (easier to view and edit).
+  * EDID_class.h: CEA-specific classes moved to dedicated headers:
+    CEA_class.h, CEA_EXT_class.h
+  * EDID_class.h: shared declarations moved to EDID_shared.h
+Fixed
+  * (BUG::regression) wxEDID_Frame::UpdateBlockTree():
+    the BlockTree was not expanded automatically when opened file
+    contains only the base EDID block (no extensions).
+  * (BUG::regression): edi_grp_cl::init_fields(): a call to
+    FieldsAr.Empty() is necessary for ForcedGroupRefresh()</comment>
+    <requestid>886813</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a94b1e9f8f66f538d12a2eb608e3df39</srcmd5>
+    <version>0.0.26</version>
+    <time>1640278426</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.26
+Fixed
+  * CEA::VSD incorrect bit offset for DVI_Dual field.
+  * reparsing of CEA-header group should not be possible
+    (returned uninitialized rcode).</comment>
+    <requestid>942188</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e19fec3cae2259d1e93e69a41049c52</srcmd5>
+    <version>0.0.29</version>
+    <time>1684846471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.29
+Changed:
+  * BED: dynamic name: displays only MFC and product ID (removed
+    prod. year and week)
+  * VDB::SVD: append &quot;[Native]&quot; if native resolution flag is set.
+Fixed:
+  * (BUG::regression) EDID_cl::getVidDesc(): missing space between
+    aspect ratio and screen resolution: incorrect SVD description
+    in text output mode (Save_As_Text).
+  * Using global strings where possible: cheaper, faster.
+    xxx::getGrpName() -&gt; global EDID_cl::gp_name
+    wxEDID_Frame::SaveRep_SubGrps(), WriteField(),
+    GetFullGroupName() -&gt; wxEDID_Frame::sval
+    EDID_cl::getStrUint() -&gt; EDID_cl::tmps2
+
+- Update to v0.0.28
+Changed:
+  * Change: Default colors for all controls:
+    allows to work with different window themes:
+    wxWidgets 3.0.x: not working for wxAUI windows, wxTreeCtrl
+    and wxGrid
+    wxWidgets 3.2.x: not working for wxGrid
+Added:
+  * Automatic selection of BED block after the EDID file is
+    loaded/imported.
+  * BDD: display image size as dynamic block name.
+  * BED: display MFC code, year, week, prod ID as dynamic block
+    name.
+  * DTD and VDB::SVD: use screen resolution as dynamic block name.
+  * MND: display monitor name as dynamic block name.</comment>
+    <requestid>1088486</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>70f5e3f095e5e2c5ef1bced75a8e14ea</srcmd5>
+    <version>0.0.30</version>
+    <time>1704919947</time>
+    <user>anag+factory</user>
+    <comment>- Update to v0.0.30
+Added:
+  * Support for Dark Mode in Block Data grid.
+    NOTE: wxGrid does not fully support dynamic theme switching in
+    wxWidgets v3.2.x, so the application has to be restarted to use
+    new theme.
+Fixed:
+  * DTD panel: fixed alignment of &quot;X11 mode line&quot;.
+  * Option &quot;Assemble EDID&quot; now updates also the CHD::DTD_offset
+    field in Block Data grid.
+    NOTE: The value is computed by EDID_cl::CEA_Set_DTD_Offset().
+  * wxEDID_Frame::AssembleEDID_main(): the EDID.BASE.BED could be
+    refreshed twice if the CEA extension is not present.
+  * Auto-select the BED block also after &quot;Reparse EDID buffer&quot; is
+    executed: wxEDID_Frame::Reparse()-&gt;AutoSelectBED()
+  * mrl_cl::fields: misleading field description: GTF J, GTF C:
+    &quot;xxx value, multiplied by 2: 0...255 -&gt;  0...127.5&quot;
+    changed to: &quot;xxx value, multiplied by 2: 0...127.5 -&gt; 0...255&quot;
+  * MRL::resvd field should have the EF_HEX flag.
+  * BED: fields ProdYr and ProdWk should not have the EF_BND flag
+    set.
+  * BED: ProdWk: added information that week==0 means that the
+    field is not used.
+Changed:
+  * EF_NI &quot;NI&quot; flag is no longer displayed in BlockData::&quot;Flags&quot;
+    column.
+  * rcode v3.0: structure changed:
+    RCD_UNIT_MAX=65535, RCD_LINE_MAX=16383</comment>
+    <requestid>1137848</requestid>
+  </revision>
+</revisionlist>

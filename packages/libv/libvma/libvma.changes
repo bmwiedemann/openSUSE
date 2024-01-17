@@ -1,0 +1,193 @@
+-------------------------------------------------------------------
+Mon Oct  2 08:10:03 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v9.8.40
+  - RM #3593939 DPCP dependency
+  - RM #3591039 Wrong lwip seqno wrap around condition
+  - RM #3591039 Type overflow during trimming TCP seg
+  - RM #3591039 Ref count for mem_buf chains
+  - RM #3591039 GRO retransmitted TCP stream
+  - RM #3591039 Incorrect pbuf chain split
+  - RM #3604175 Fixing stuck empty rx ring cleanup
+  - RM #3525812 Socketxtreme buffer reclaim leak
+  - RM #3420360 Support for ConnectX-7
+  - RM #3373882 Fix compilation issue for gcc 13.0.1
+  - RM #3321730 Update the copyright statement to 2023
+  - RM #3249310 Support only systemctl for vma service setup/removal
+  - RM #321712 Prevent failure of debian postinst script
+- Drop patch fixed upstream:
+  - issue-3373882-Fix-compilation-issue-for-gcc-13.0.1.patch
+
+-------------------------------------------------------------------
+Wed Mar 29 08:41:11 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add issue-3373882-Fix-compilation-issue-for-gcc-13.0.1.patch for GCC13 support
+
+-------------------------------------------------------------------
+Fri Sep 30 13:13:43 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v9.7.0 (jsc#PED-913)
+  - Fixing the handling of null elements in iov tx vector
+  - Updating coverity version to 2021.12
+  - Fixing coverity 2021.12 findings
+  - Fixing pcb resources leak for failed blocking connect
+  - Fix no SYN rexmits for blocking connect
+  - Fix blocking socket connect timer race
+  - Use VMA_HANDLE_SIGINTR for signal() API
+  - Fix segfault when IPoIB is used along with extra logging
+  - Fix no traffic during disabled sriov (azure)
+  - Update Copyright
+  - Fix stats output logic
+  - Fix debian/copyright file
+  - Fix hypervisor check under x86_64
+  - Fix gcc12 compilation issue
+  - Fix VMA_UDP_3T_RULES logic for UDP UC
+  - Add C++11 Support requirement to a compiler
+  - Export symbols from socket api only
+  - Fix gcc12 compilation issue
+  - Fix fc35 issues
+  - Add support for fortified glibc functions
+  - Fix issue in vma_recvfrom_zcopy()
+  - Fix data corruption in shrink operation
+  - Workaround for segfault on IBV_EVENT_DEVICE_FATAL
+- Drop patches fixed upstream:
+  - issue-2485156-Fix-fc35-issues.patch
+  - issue-2945718-Fix-gcc12-compilation-issue.patch
+
+-------------------------------------------------------------------
+Mon Jun 13 06:47:26 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add issue-2945718-Fix-gcc12-compilation-issue.patch to fix
+  compilation issues with GCC12
+
+-------------------------------------------------------------------
+Tue Oct  5 09:08:03 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_vma.service.patch
+  Modified:
+  * vma.service
+
+-------------------------------------------------------------------
+Sun Sep 26 11:11:24 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add issue-2485156-Fix-fc35-issues.patch from upstream to fix
+  compilation with newer glibc (deprecated pthread_yield)
+
+-------------------------------------------------------------------
+Mon Jun 28 12:54:15 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 9.3.1
+  - Remove multi packets (MP-RQ) depracated code
+  - Several bug fixes
+    - See CHANGES for a complete list
+
+-------------------------------------------------------------------
+Wed Apr 28 08:13:07 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 9.2.2
+  - Support Bonding over rdma-core
+  - Several bug fixes
+    - See journal.txt for a complete list
+- Enable PIE
+
+-------------------------------------------------------------------
+Wed Sep 23 07:47:30 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 9.1.2 (jsc#SLE-15165)
+  * No short release notes available.
+    See journal.txt for a complete list
+
+-------------------------------------------------------------------
+Thu Jun  4 08:17:05 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 9.1.0
+  * No short release notes available.
+    See journal.txt for a complete list
+
+-------------------------------------------------------------------
+Thu Sep 26 11:05:35 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 8.9.4
+  * No short release notes available.
+    See journal.txt for a complete list
+
+-------------------------------------------------------------------
+Fri Sep  6 08:08:47 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 8.9.2
+  * No short release notes available.
+    See journal.txt for a complete list
+
+-------------------------------------------------------------------
+Wed May 15 06:19:54 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 8.8.2
+  * No short release notes available.
+    See journal.txt for a complete list
+
+-------------------------------------------------------------------
+Mon Oct 15 07:58:57 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to version 8.7.1 (fate#325994)
+  * No short release notes available.
+    See journal.txt for a complete list
+- Removed issue-1417243-Fix-gcc8-build-warnings.patch as it
+  was fixed upstream.
+
+-------------------------------------------------------------------
+Mon Jun 18 06:09:14 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to version 8.6.7
+  - No short release notes available
+- Added issue-1417243-Fix-gcc8-build-warnings.patch to
+  fix compilation issue with GCC8
+
+-------------------------------------------------------------------
+Wed Jan 24 08:23:57 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to version 8.4.11
+  - Added:
+    - RM #1214451 Add systemd support for daemon
+    - RM #1214453 Improve selection of filesystem monitor method
+    - RM #1207424 Send quickack depending on the payload size
+    - RM #1179641 Add MTU find logic to ring
+    - RM #1190606 VMA stats - Remove timewait interval in last cycle
+    - RM #1179641 Override MTU from route over interface MTU
+    - RM #1179641 Add parsing route table metrics
+    - RM #1190054 Rename VMA_SPEC parameter 6973 to 7750
+    - RM #1176937 Add VMA_TCP_QUICKACK environment variable
+    - RM #1176937 Add TCP_QUICKACK option support
+    - RM #1176937 Add delayed ack control into LWIP
+    - RM #1151606 Modify valgrind suppression file
+    - RM #1182826 Check if the module parameters exists
+    - RM #847360 Add Coverity badge to README.md
+    - RM #1172255 Disable parser warning coverity checker
+  - Fixed:
+    - RM #1247358 Fix crash when VMA could not resolve neighbor
+    - RM #1258245 Fix SYN messages are sent to invalid peer
+    - RM #1250147 Reorder netlink event registration at startup
+    - RM #1214453 Fix daemon for powerpc
+    - RM #1214453 Fix issue in inotify processing
+    - RM #1222660 Correct warning check for flow steering
+    - RM #1192017 Fix ibv_destroy_cq() failure while VMA_TCP_3T_RULES=1
+    - RM #1213984 Use dst_enty to find the route MTU
+    - RM #1175479 Inherit missing properties from the parent
+    - RM #1175657 Fix ring statistics are not updated was flowtag is enabled
+    - RM #1201040 Fix VMA_BUFFER_BATCHING_MODE is ignored while set from spec
+    - RM #1182981 Fix TCP zero-window probe message sequence number
+    - RM #1181379 Fix TCP zero window probe when there is data in-flight
+    - RM #1185978 Fix compilation for --enable-opt-log=high
+    - RM #1164732 Fix possible deadlock during connect
+    - RM #1185372 Fix traffic is not offloaded for high VMA_RX_WRE values
+- Update vma.service to match upstream
+
+-------------------------------------------------------------------
+Tue Nov 14 13:40:52 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Install COPYING file
+
+-------------------------------------------------------------------
+Wed Nov  8 09:24:55 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Initial packaging of version 8.4.8

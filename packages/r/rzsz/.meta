@@ -1,0 +1,5 @@
+<package name="rzsz" project="openSUSE:Factory">
+  <title>rzsz</title>
+  <description>A unix communication package providing the xmodem, ymodem and zmodem file transfer protocols.</description>
+  <devel project="Base:System" package="rzsz"/>
+</package>

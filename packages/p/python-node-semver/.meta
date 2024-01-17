@@ -1,0 +1,8 @@
+<package name="python-node-semver" project="openSUSE:Factory">
+  <title>Port of node-semver</title>
+  <description>python version of node-semver (https://github.com/isaacs/node-semver)
+
+</description>
+  <devel project="devel:languages:python" package="python-node-semver"/>
+  <url>https://github.com/podhmo/python-semver</url>
+</package>

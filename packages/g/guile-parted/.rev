@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ec27c57c88a04c6485bf674d08bd30d</srcmd5>
+    <version>0.0.1</version>
+    <time>1557263797</time>
+    <user>dimstar_suse</user>
+    <comment>- add missing guile-parted-rpmlintrc as source 
+- let there be guile-parted 
+
+dependency of guix</comment>
+    <requestid>698226</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85a8dfaf2dc28ea1ff22c46bed9db03b</srcmd5>
+    <version>0.0.2</version>
+    <time>1578069441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760490</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c4c58fa4e1e11f40327e2bf539cfaff3</srcmd5>
+    <version>0.0.2</version>
+    <time>1579636865</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765947</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3e0442afbe8561db63fa213aa1598e36</srcmd5>
+    <version>0.0.4</version>
+    <time>1606428896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.0.4:
+  * Add Guile 3.0 support.
+  * Fix unit-parse.
+  * Add support for nvme, ram and pmem.
+- Remove patch:
+  * support-guile-3.0.patch: support added in release
+</comment>
+    <requestid>850993</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>92613da1432bee4166ae5430d98eae77</srcmd5>
+    <version>0.0.6</version>
+    <time>1664112919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1005737</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>108a4a46004a7dc66eb06dfb0c0ad2db</srcmd5>
+    <version>0.0.7</version>
+    <time>1687796159</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095259</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7aafc16b8b42f53fdfbfdf2a0ee9bd37</srcmd5>
+    <version>0.0.7</version>
+    <time>1692110442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1104047</requestid>
+  </revision>
+</revisionlist>

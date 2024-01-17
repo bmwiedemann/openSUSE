@@ -1,0 +1,8 @@
+<package name="emacs-gnuplot-mode" project="openSUSE:Factory">
+  <title>Gnuplot mode for EMACS</title>
+  <description>Gnuplot-mode is a major Emacs mode for editing Gnuplot source code. It
+provides syntax highlighting, automatic indentation and context sensitive
+command completion.
+</description>
+  <devel project="Publishing" package="emacs-gnuplot-mode"/>
+</package>

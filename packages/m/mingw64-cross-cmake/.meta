@@ -1,0 +1,5 @@
+<package name="mingw64-cross-cmake" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="windows:mingw:win64" package="mingw64-cross-cmake"/>
+</package>

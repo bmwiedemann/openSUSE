@@ -1,0 +1,17 @@
+diff --git a/libcxx/test/configs/llvm-libc++-shared.cfg.in b/libcxx/test/configs/llvm-libc++-shared.cfg.in
+index 7228c7e8d467..9835a012c1de 100644
+--- a/libcxx/test/configs/llvm-libc++-shared.cfg.in
++++ b/libcxx/test/configs/llvm-libc++-shared.cfg.in
+@@ -10,10 +10,10 @@ config.substitutions.append(('%{compile_flags}',
+     '-nostdinc++ -I %{include} -I %{target-include} -I %{libcxx}/test/support'
+ ))
+ config.substitutions.append(('%{link_flags}',
+-    '-nostdlib++ -L %{lib} -Wl,-rpath,%{lib} -lc++ -pthread'
++    '-nostdlib++ -L %{lib} -lc++ -pthread'
+ ))
+ config.substitutions.append(('%{exec}',
+-    '%{executor} --execdir %T -- '
++    '%{executor} --execdir %T --env LD_LIBRARY_PATH=%{lib} -- '
+ ))
+ 
+ import os, site

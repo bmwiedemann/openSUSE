@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Thu May  4 19:54:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Prefer passing `--crate-type` option to cargo if "toolchain
+    >= 1.64".
+  * Fix a bug where rebuilding the library would cause any
+    running processes using it to segfault. #295
+  * Fix `setup.cfg` format for compatibility with
+    "poetry==1.4.0". #319
+
+-------------------------------------------------------------------
+Fri Apr 21 12:33:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Jan  2 09:51:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Fix regression in `dylib` build artifacts not being found since 1.5.0.
+  * Fix regression in sdist missing examples and other supplementary files
+    since 1.5.0. #291
+  * Fix regression in `get_lib_name` crashing since 1.5.0. #280
+  * Fix regression in `Binding.Exec` builds with multiple executables not
+    finding built executables since 1.5.0. #283
+  * Add support for extension modules built for wasm32-unknown-emscripten
+    with Pyodide. #244
+  * Locate cdylib artifacts by handling messages from cargo instead of
+    searching target dir (fixes build on MSYS2). #267
+  * No longer guess cross-compile environment using `HOST_GNU_TYPE` /
+    `BUILD_GNU_TYPE` sysconfig variables. #269
+  * Fix RustBin build without wheel. #273
+  * Fix RustBin setuptools install. #275
+
+-------------------------------------------------------------------
+Wed Jul 20 09:16:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix requirements
+  * Don't need sphinx
+  * Needs rust and cargo
+  * Don't need nox; can't use it in obs as it wants to install
+    wheels.
+- Fix tests:
+  * Plain pytest test suite without is rudimentary
+  * At least build the hello-world example
+- Use PEP517
+
+-------------------------------------------------------------------
+Mon Jul 18 07:35:46 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Deduplicate files in python_sitelib.
+
+-------------------------------------------------------------------
+Sat Jul 16 15:56:02 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update setuptools requirement to 62.4
+  * require pyparsing
+  * be mor specific in %files section
+  * use pytest
+
+- update to version 1.4.1:
+  * Fixed
+    + Fix crash when checking Rust version. #263
+
+- changes from version 1.4.0:
+  * Packaging
+    + Increase minimum setuptools version to 62.4. #246
+  * Added
+    + Add cargo_manifest_args to support locked, frozen and offline
+      builds. #234
+    + Add RustBin for packaging binaries in scripts data
+      directory. #248
+  * Changed
+    + Exec binding RustExtension with script=True is deprecated in
+      favor of RustBin. #248
+    + Errors while calling cargo metadata are now reported back to the
+      user #254
+    + quiet option will now suppress output of cargo metadata. #256
+    + setuptools-rust will now match cargo behavior of not setting
+      --target when the selected target is the rust host. #258
+    + Deprecate native option of RustExtension. #258
+  * Fixed
+    + If the sysconfig for BLDSHARED has no flags, setuptools-rust
+      won't crash anymore. #241
+
+-------------------------------------------------------------------
+Sun May 15 19:16:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Increase minimum `setuptools` version to 58.
+  * Fix crash when `python-distutils-extra` linux package is installed.
+  * Fix sdist built with vendored dependencies on Windows having incorrect cargo config.
+  * Drop support for Python 3.6.
+
+-------------------------------------------------------------------
+Fri Feb  4 22:05:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Removed dependency on `tomli` to simplify installation
+  * Improve error messages on invalid inputs to `rust_extensions` keyword
+  * Fix regression from `setuptools-rust` 1.1.0 which broke builds for the
+    `x86_64-unknown-linux-musl` targeta
+  * Fix `--target` command line option being unable to take a value
+  * Fix regression from `setuptools-rust` 1.1.0 which incorrectly converted
+    library extension suffixes to the "abi3" suffix when `py_limited_api` was
+    unspecified Add support for cross-compiling using
+  * [`cross`](https://github.com/rust-embedded/cross)
+  * Fix incompatibility with Python 3.6.0 using default values for NamedTuple classes
+  * Stop forcing the `msvc` Rust toolchain for Windows environments using the
+    `gnu` toolchain
+
+-------------------------------------------------------------------
+Mon Jan 10 11:54:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip building for python 2.x, as the setuptools we have is no
+  longer compatible with it 
+
+-------------------------------------------------------------------
+Sat Nov 27 13:25:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (1.0.0) 

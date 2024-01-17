@@ -1,0 +1,27 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Mon, 10 Apr 2023 20:30:28 +0200
+Subject: [PATCH 19/20] Fix crash on opening help
+
+Basically by copying what the base class does in the function that we're
+overriding. Not sure if we actually need all of that.
+---
+ Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp
+index 0658817..5d4a6b6 100644
+--- a/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp
++++ b/Source/tmwxGUI/tmwxHtmlHelp/tmwxHtmlHelpController.cpp
+@@ -31,6 +31,12 @@ parameters that go with this frame.
+ wxHtmlHelpFrame* tmwxHtmlHelpController::CreateHelpFrame(wxHtmlHelpData* data)
+ {
+   mHtmlHelpFrame = new tmwxHtmlHelpFrame(data);
++  mHtmlHelpFrame->SetController(this);
++  mHtmlHelpFrame->SetTitleFormat(m_titleFormat);
++  mHtmlHelpFrame->Create(m_parentWindow, -1, wxEmptyString, m_FrameStyle, m_Config, m_ConfigRoot);
++  mHtmlHelpFrame->SetShouldPreventAppExit(m_shouldPreventAppExit);
++  m_helpFrame = mHtmlHelpFrame;
++
+   mHtmlEasyPrinting = new wxHtmlEasyPrinting();
+   mHtmlEasyPrinting->SetFooter(
+     wxT("<hr><p align=\"right\">page @PAGENUM@ of @PAGESCNT@</p>"), 

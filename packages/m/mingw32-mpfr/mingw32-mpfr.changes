@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sat Mar 27 00:31:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc
+
+-------------------------------------------------------------------
+Fri Nov 22 13:59:33 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- remove link to upstream sources as they are no longer online
+
+-------------------------------------------------------------------
+Wed Nov 20 13:40:31 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- inital package for Factory submission

@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f4258733b90b996aaeb2c575bdf9f977</srcmd5>
+    <version>0.5.4</version>
+    <time>1501840682</time>
+    <user>maxlin_factory</user>
+    <comment>Needed for linphone</comment>
+    <requestid>507976</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d286ee1a857ad05e87e2d463024dc1f</srcmd5>
+    <version>0.5.4</version>
+    <time>1531813384</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the devel package from buildrequires</comment>
+    <requestid>623125</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d4cd5f374004d6a3a1c7607c18b6fa7b</srcmd5>
+    <version>0.5.4</version>
+    <time>1593728112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818345</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bf1525a1d42f47780656bfa7af9f2f11</srcmd5>
+    <version>0.6.0</version>
+    <time>1639340861</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 0.6.0:
+  * Bump spec versions to latest =&gt; v1.1.3
+  * Modernize python and CI tools, update docs/doctests
+  * Update unicode conversion test for py3-only
+  * Add pep8speaks cfg, cleanup warnings
+  * Remove superfluous setup test/unused imports
+  * Use correct wheel name in release workflow, limit wheels
+  * Add install check/test of downloaded wheel
+  * Update/add ci workflows and tox cfg, bump to next dev0 version
+  * fix document processing, update pandoc args and history
+  * add release.yml to CI, test env settings
+  * fix bogus commit message, update versions and tox cf
+  * add post-test steps for building pkgs with/without doc updates
+  * Bugfix: test_specloader.py: fix test_find__with_directory on other OSs
+  * Bugfix: pystache/loader.py: remove stray windows line-endings
+  * fix crufty (and insecure) http urls
+  * Bugfix: modernize python versions (keep py27)</comment>
+    <requestid>939992</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8c3056c09a4b21c20f0d83fd2b539cf7</srcmd5>
+    <version>0.6.0</version>
+    <time>1690469607</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1101068 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1101080</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66f5aaa94e1672aa0ec71c7b2f0b6e19</srcmd5>
+    <version>0.6.5</version>
+    <time>1704281458</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.5:
+  * Use the content-type for RST that pypi now wants
+  * Add full sphinx apidoc build, include readme/extras.
+  * Fix included filename and link cleanup.
+  * Remove more py2 cruft from doctesting (py3.10 warnings)
+  * Update maintainer info and spec test cmd.
+  * Use updated bandit action and workflow excludes (exclude test)
+  * Use current org-level coverage workflow.</comment>
+    <requestid>1136321</requestid>
+  </revision>
+</revisionlist>

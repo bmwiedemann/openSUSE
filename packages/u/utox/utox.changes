@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Sun Jan 24 07:24:56 UTC 2021 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 0.18.1
+  Fixes:
+
+    * Solved crash when undoing chat input with ctrl-z (@siburec) (d841c3e)
+      groups: load group topics from Tox save (d6f9b68)
+    * Fix heap-use-after-free when creating new group chats (@siburec) (c47612e)
+      langs: Remove strings that are not supposed to be translated (b1fc2f3)
+    * Use correct type for pthread entry point (@krobelus) (cadab94)
+    * Pass enum value with correct type when cancelling file transfers (@krobelus) (7bf108d)
+    * Copy text from chat without nicks via ctrl-c in Windows (@redmanmale) (88bf58d)
+
+  Documentation:
+
+    * README.md: Add Spanish to the list of complete translations (4b8cda7)
+    * Add Debian installation instructions (@garetethan) (c5595be)
+    * docs: fix simple typo, precomplied -> precompiled (@timgates42) (fd2ad87)
+
+  Languages:
+
+    * Complete Spanish translation (@siburec) (f840779)
+
+-------------------------------------------------------------------
+Sat Nov 28 11:08:13 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 0.18.0
+  Fixes:
+
+    * Fix crash when changing toxcore-related settings (92102bf)
+    * fix dragging friend list (#1470) (@w23rd) (70127ba)
+    * utox_settings struct: give proxy_ip[] a size (fix UB) (072d29e)
+    * Update and refactor settings loading and saving:
+      - Drop obsolete save and load settings format (@redmanmale) (6ead537)
+      - Rename (and fix usages) SETTINGS fields to match UTOXSAVE struct to be able to load it from config directly (@redmanmale) (751ea57)
+      - Remove unused function config_osdefaults() (@redmanmale) (fe8cfe0)
+      - Use settings instead of separate variables (@redmanmale) (94d474a)
+      - Refactoring save and load uTox settings (@redmanmale) (acb2787)
+      - Save settings before killing Tox threads (@redmanmale) (a615853)
+      - Style fixes (@redmanmale) (0a0b171)
+      - Update mock settings (@redmanmale) (0c8c74e)
+      - Try create Tox folder before saving settings (@redmanmale) (93aaef8)
+      - settings.c: Write macros for write_config_value_*() (6347681)
+    * getopt: Exit on wrong usage (c7353a3)
+    * Fix offset of the typing notification (@redmanmale) (c92dfe6)
+    * Fix file size formatting in chatlog (@redmanmale) (60a0085)
+    * Fix handling large files (@redmanmale) (590efb8)
+
+  Languages:
+
+    * Update Japanese (@xfm00mm) (6ef32a4)
+    * Update German (Markus V) (b4c8682)
+
+-------------------------------------------------------------------
+Thu Apr 16 18:53:34 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- drop patch fix_build_with_openAL_1.20.patch
+- update to 0.17.2
+  Features:
+
+  * Implement ctrl+F: toggle flist online status filter (b7fdac2)
+  * Implement ctrl+f: focus on flist search input field (0b401eb)
+  * Search friend list also by Tox ID (ae85208)
+  * Implement ontab and onshifttab callbacks for text fields in add friend page (4842553)
+  * Handle Home & End key in friend list (ctrl+Home, ctrl+End; go to first and last friend) (f1de42b)
+  * Handle Home & End key in messages panel (For going to the top and bottom of the chat log) (8f19de0)
+  * Make Esc key unfocus from text input fields (This allows to scroll the chat log without having to click into it.) (b227afe)
+  * Focus message input field when starting to type (e4cc50c)
+  * Implement ontab and onshifttab callbacks for all text fields in settings (7194761)
+
+  Fixes:
+
+  * Fix a crash when adding a friend to a group (cb451de)
+  * Load window position from config file (0bcfead)
+  * Unbreak build with OpenAL 1.20.0 (@t6) (b608d58)
+  * Friend list fixes (1504fc0 195553d 58707ee)
+  * Fix Up key in message input field (118298e)
+  * Fix memory leaks (8b04e6f)
+  * Fix compilation error on GNU/kFreebsd (@yangfl) (bb790c5)
+  * Fix typos (@yangfl) (23e9e9b)
+  * Use correct evdev header on FreeBSD (@t6) (37271f9)
+
+  Development:
+
+  * Remove auto-updater (@robinlinden & @avoidr) (3d1b1df)
+  * Show value of $ENABLE_LTO in cmake output (fb57530)
+  * Static linking fixes (02c5898 bc048af 812ad6d 507ea0a 6ca51bd ea876ca)
+  * Don't pass 2 of every flags in CFLAGS (@robinlinden) (4b1228d)
+  * Travis: Linux: disable auto-update test (e5a564f)
+  * CMakeLists.txt: add CFLAG -fno-common (ee15dbe)
+  * Make uTox gcc10-ready (-fno-common fix) (@eclipseo) (c7cb563)
+  * Remove WinXP support (eb81ba5)
+  * add tools/relnotes_to_cstring.sed (bb8ce78)
+
+  Documentation:
+
+  * add instructions to install from Guix (@metallicmole) (60fb4ee)
+  * add keybindings to manpage (@metallicmole) (192ed8d)
+  * docs/BUILD.md: minor rephrasing (c4d101f)
+  * docs/BUILD.md: add note about musl+clang linking issue (9a8a632)
+
+-------------------------------------------------------------------
+Sat Feb 22 09:18:40 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- added patch fix_build_with_openAL_1.20.patch to fix build with openAL 1.20
+
+-------------------------------------------------------------------
+Sun Sep 22 07:28:50 UTC 2019 - Andrey Karepin <egdfree@opensuse.org>
+
+- update utox.keyring
+- update to 0.17.1
+  * Add --allow-root option: Now you can't run uTox as root by accident (1b491cd)
+  * Add right click menu to Xlib (5f5f570)
+  *  Add support for loading groupchats (049ca56)
+  * More *BSD support! (FreeBSD, NetBSD, OpenBSD, DragonFlyBSD) (@mazocomp)
+  * Groupchat creation screen implemented
+  * Fix a crash when changing to a video input device that fails to init (e36e475)
+  * Fix: a friendlist bug related to the Tox profile having no friends and
+    groups (d81d276)
+  * Don't flip video preview button status if preview fails (8f73ee2)
+  * Xlib: Clean up zombies if xdg-open is not installed (dfc5f50)
+  * Add border to QR code to make it actually readable to QR code scanners
+    (3643744)
+  * Fix file transfer text (72b7347)
+  * Prevent a crash related to having too many friends (1e41307)
+  * Fix crash related to dropdowns (b0b3167)
+  * Fix ignoring friend requests (ed55880)
+  * Close dropdowns on changing tabs (4dd4ae0)
+  * Fix crash on startup related to QR code (@ColumPaget) (41c5044)
+  * Fix group settings layout
+  * Fix a crash related to Tox savedata being too large (363e486)
+  * Fix two possible memory leaks (a549f11 168eb78)
+  * Fix a crash related to text undo in message input field (@cyisfor) (e1371e4)
+  * Fix a crash related to the password input field (8891616)
+  * Fix crash related to FPS value input field (d297e0d)
+  * Fix selection bug: Selection on double-click doesn't leak into neighbouring
+    line anymore (06f85ab)
+  * Fix HOME key (3833c13)
+  * Fix END key and make ctrl+shift+end work (6fa9df6)
+  * Sort languages enum by their native names alphabetically (b8d33d4)
+  * Move Language setting from "Profile" to "User Interface" tab (234f027)
+  * Updated translations: German (d96d309 4328777 9757f05),  English (e2901e8),
+    Polish (96f7c02 542b19a), Swedish (@jony0008) (eda5a41 38e4ae7), Hungarian
+    (@baloo79) (9d9f24b)
+
+-------------------------------------------------------------------
+Wed Sep 26 17:34:20 UTC 2018 - Andrey Karepin <egdfree@opensuse.org>
+
+- initial

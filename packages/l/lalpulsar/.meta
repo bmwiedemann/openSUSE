@@ -1,0 +1,8 @@
+<package name="lalpulsar" project="openSUSE:Factory">
+  <title>LSC Algorithm Pulsar Library</title>
+  <description>The LSC Algorithm Pulsar Library for gravitational wave data analysis.
+
+</description>
+  <devel project="science" package="lalpulsar"/>
+  <url>https://wiki.ligo.org/Computing/DASWG/LALSuite</url>
+</package>

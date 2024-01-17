@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Dec 26 20:29:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.23:
+  * fix: #912 Pillow<=9.5 constraint entails security
+    vulnerability
+  * Add #909 Add imgW, imgH params to `shapes.add_ole_object()`
+  * fix: #754 _Relationships.items() raises
+  * fix: #758 quote in autoshape name must be escaped
+  * fix: #746 update Python 3.x support in docs
+  * fix: #748 setup's `license` should be short string
+  * fix: #762 AttributeError: module 'collections' has no
+    attribute 'abc'
+
+-------------------------------------------------------------------
+Thu Oct  6 22:44:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.6.21 (2021-09-20)
+  Fix #741 _DirPkgReader must implement .__contains__()
+
+- Update to 0.6.20 (2021-09-14)
+  Fix #206 accommodate NULL target-references in relationships.
+  Fix #223 escape image filename that appears as literal in XML.
+  Fix #517 option to display chart categories/values in reverse order.
+  Major refactoring of ancient package loading code.
+
+-------------------------------------------------------------------
+Mon Apr 11 13:24:32 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not use mock
+
+-------------------------------------------------------------------
+Tue Aug 24 18:00:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.6.19

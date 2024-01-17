@@ -1,0 +1,25 @@
+From a94cfd5dea05c2c4a9d6b8b243048a2ceeb3f208 Mon Sep 17 00:00:00 2001
+From: Christian Lanig <clanig@suse.com>
+Date: Mon, 27 Nov 2017 13:10:26 +0100
+Subject: [PATCH] Run salt-api as user salt (bsc#1064520)
+
+---
+ pkg/common/salt-api.service | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pkg/common/salt-api.service b/pkg/common/salt-api.service
+index d0b6d74120..9cdc9c582b 100644
+--- a/pkg/common/salt-api.service
++++ b/pkg/common/salt-api.service
+@@ -6,6 +6,7 @@ After=network.target
+ [Service]
+ Type=notify
+ NotifyAccess=all
++User=salt
+ LimitNOFILE=8192
+ ExecStart=/usr/bin/salt-api
+ TimeoutStopSec=3
+-- 
+2.39.2
+
+

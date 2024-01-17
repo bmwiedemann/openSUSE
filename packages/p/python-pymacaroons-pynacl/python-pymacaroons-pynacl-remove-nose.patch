@@ -1,0 +1,363 @@
+Index: pymacaroons-0.9.3/.coveragerc
+===================================================================
+--- pymacaroons-0.9.3.orig/.coveragerc
++++ pymacaroons-0.9.3/.coveragerc
+@@ -1,4 +1,3 @@
+ [report]
+ omit =
+     */python?.?/*
+-    */site-packages/nose/*
+Index: pymacaroons-0.9.3/.gitignore
+===================================================================
+--- pymacaroons-0.9.3.orig/.gitignore
++++ pymacaroons-0.9.3/.gitignore
+@@ -36,7 +36,6 @@ htmlcov/
+ .tox/
+ .coverage
+ .cache
+-nosetests.xml
+ coverage.xml
+ 
+ # Translations
+Index: pymacaroons-0.9.3/requirements.txt
+===================================================================
+--- pymacaroons-0.9.3.orig/requirements.txt
++++ pymacaroons-0.9.3/requirements.txt
+@@ -2,7 +2,7 @@
+ -e .
+ 
+ # Test Dependencies
+-nose==1.3.6
++pytest
+ coverage>=3.6,<3.99
+ mock>=1.0.1,<1.0.99
+ sphinx>=1.2.3
+Index: pymacaroons-0.9.3/tests/functional_tests/encrypted_field_tests.py
+===================================================================
+--- pymacaroons-0.9.3.orig/tests/functional_tests/encrypted_field_tests.py
++++ pymacaroons-0.9.3/tests/functional_tests/encrypted_field_tests.py
+@@ -2,7 +2,7 @@ from __future__ import unicode_literals
+ 
+ import nacl.bindings
+ 
+-from nose.tools import *
++import pytest
+ 
+ from pymacaroons import Macaroon, Verifier
+ from pymacaroons.caveat_delegates import EncryptedFirstPartyCaveatDelegate, EncryptedFirstPartyCaveatVerifierDelegate
+@@ -28,10 +28,9 @@ class TestEncryptedFieldsMacaroon(object
+         encryptor = SecretBoxEncryptor(nonce=ZERO_NONCE)
+         m.first_party_caveat_delegate = EncryptedFirstPartyCaveatDelegate(field_encryptor=encryptor)
+         m.add_first_party_caveat('test = caveat', encrypted=True)
+-        assert_equal(
+-            m.signature,
++        assert\
++            m.signature ==\
+             'a443bc61e8f45dca4f0c441d6cfde90b804cebb0b267aab60de1ec2ab8cc8522'
+-        )
+ 
+     def test_verify_encrypted_first_party_exact_caveats(self):
+         m = Macaroon(
+@@ -49,4 +48,4 @@ class TestEncryptedFieldsMacaroon(object
+             m,
+             'this is our super secret key; only we should know it'
+         )
+-        assert_true(verified)
++        assert verified
+Index: pymacaroons-0.9.3/tests/functional_tests/functional_tests.py
+===================================================================
+--- pymacaroons-0.9.3.orig/tests/functional_tests/functional_tests.py
++++ pymacaroons-0.9.3/tests/functional_tests/functional_tests.py
+@@ -1,8 +1,8 @@
+ from __future__ import unicode_literals
+ import json
+ 
+-from mock import *
+-from nose.tools import *
++from unittest.mock import *
++import pytest
+ 
+ import nacl.bindings
+ 
+@@ -29,10 +29,9 @@ class TestMacaroon(object):
+             identifier='we used our secret key',
+             key='this is our super secret key; only we should know it'
+         )
+-        assert_equal(
+-            m.signature,
++        assert\
++            m.signature ==\
+             'e3d9e02908526c4c0039ae15114115d97fdd68bf2ba379b342aaf0f617d0552f'
+-        )
+ 
+     def test_first_party_caveat(self):
+         m = Macaroon(
+@@ -41,10 +40,9 @@ class TestMacaroon(object):
+             key='this is our super secret key; only we should know it'
+         )
+         m.add_first_party_caveat('test = caveat')
+-        assert_equal(
+-            m.signature,
++        assert\
++            m.signature ==\
+             '197bac7a044af33332865b9266e26d493bdd668a660e44d88ce1a998c23dbd67'
+-        )
+ 
+     def test_serializing(self):
+         m = Macaroon(
+@@ -53,12 +51,11 @@ class TestMacaroon(object):
+             key='this is our super secret key; only we should know it'
+         )
+         m.add_first_party_caveat('test = caveat')
+-        assert_equal(
+-            m.serialize(),
++        assert\
++            m.serialize() ==\
+             'MDAxY2xvY2F0aW9uIGh0dHA6Ly9teWJhbmsvCjAwMjZpZGVudGlmaWVyIHdlIHVzZ\
+ WQgb3VyIHNlY3JldCBrZXkKMDAxNmNpZCB0ZXN0ID0gY2F2ZWF0CjAwMmZzaWduYXR1cmUgGXusegR\
+ K8zMyhluSZuJtSTvdZopmDkTYjOGpmMI9vWcK'
+-        )
+ 
+     def test_serializing_strips_padding(self):
+         m = Macaroon(
+@@ -67,26 +64,24 @@ K8zMyhluSZuJtSTvdZopmDkTYjOGpmMI9vWcK'
+             key='this is our super secret key; only we should know it'
+         )
+         m.add_first_party_caveat('test = acaveat')
+-        assert_equal(
+-            m.serialize(),
+-            # In padded base64, this would end with '=='
++        # In padded base64, this would end with '=='
++        assert\
++            m.serialize() ==\
+             ('MDAxY2xvY2F0aW9uIGh0dHA6Ly9teWJhbmsvCjAwMjZpZGVudGlmaWVyIHdlIHVz'
+              'ZWQgb3VyIHNlY3JldCBrZXkKMDAxN2NpZCB0ZXN0ID0gYWNhdmVhdAowMDJmc2ln'
+              'bmF0dXJlIJRJ_V3WNJQnqlVq5eez7spnltwU_AXs8NIRY739sHooCg')
+-        )
+ 
+     def test_serializing_max_length_packet(self):
+         m = Macaroon(location='test', identifier='blah', key='secret')
+         m.add_first_party_caveat('x' * 65526)  # exactly 0xFFFF
+-        assert_not_equal(
+-            m.serialize(),
++        assert\
++            m.serialize() !=\
+             None
+-        )
+ 
+     def test_serializing_too_long_packet(self):
+         m = Macaroon(location='test', identifier='blah', key='secret')
+         m.add_first_party_caveat('x' * 65527)  # one byte too long
+-        assert_raises(
++        pytest.raises(
+             MacaroonSerializationException,
+             m.serialize
+         )
+@@ -97,10 +92,9 @@ K8zMyhluSZuJtSTvdZopmDkTYjOGpmMI9vWcK'
+ VyIHdlIHVzZWQgb3VyIHNlY3JldCBrZXkKMDAxNmNpZCB0ZXN0ID0gY2F2ZWF0CjAwMmZzaWduYXR1\
+ cmUgGXusegRK8zMyhluSZuJtSTvdZopmDkTYjOGpmMI9vWcK'
+         )
+-        assert_equal(
+-            m.signature,
++        assert\
++            m.signature ==\
+             '197bac7a044af33332865b9266e26d493bdd668a660e44d88ce1a998c23dbd67'
+-        )
+ 
+     def test_deserializing_accepts_padding(self):
+         m = Macaroon.deserialize(
+@@ -108,10 +102,9 @@ cmUgGXusegRK8zMyhluSZuJtSTvdZopmDkTYjOGp
+              'ZWQgb3VyIHNlY3JldCBrZXkKMDAxN2NpZCB0ZXN0ID0gYWNhdmVhdAowMDJmc2ln'
+              'bmF0dXJlIJRJ_V3WNJQnqlVq5eez7spnltwU_AXs8NIRY739sHooCg==')
+         )
+-        assert_equal(
+-            m.signature,
++        assert\
++            m.signature ==\
+             '9449fd5dd6349427aa556ae5e7b3eeca6796dc14fc05ecf0d21163bdfdb07a28'
+-        )
+ 
+     def test_serializing_json(self):
+         m = Macaroon(
+@@ -120,10 +113,9 @@ cmUgGXusegRK8zMyhluSZuJtSTvdZopmDkTYjOGp
+             key='this is our super secret key; only we should know it'
+         )
+         m.add_first_party_caveat('test = caveat')
+-        assert_equal(
+-            json.loads(m.serialize(serializer=JsonSerializer()))['signature'],
++        assert\
++            json.loads(m.serialize(serializer=JsonSerializer()))['signature'] ==\
+             "197bac7a044af33332865b9266e26d493bdd668a660e44d88ce1a998c23dbd67"
+-        )
+ 
+     def test_deserializing_json(self):
+         m = Macaroon.deserialize(
+@@ -132,10 +124,9 @@ key", "signature": "197bac7a044af3333286
+ 3dbd67", "caveats": [{"cl": null, "cid": "test = caveat", "vid": null}]}',
+             serializer=JsonSerializer()
+         )
+-        assert_equal(
+-            m.signature,
++        assert\
++            m.signature ==\
+             '197bac7a044af33332865b9266e26d493bdd668a660e44d88ce1a998c23dbd67'
+-        )
+ 
+     def test_serializing_deserializing_json(self):
+         m = Macaroon(
+@@ -148,7 +139,7 @@ key", "signature": "197bac7a044af3333286
+             m.serialize(serializer=JsonSerializer()),
+             serializer=JsonSerializer()
+         )
+-        assert_equal(m.signature, n.signature)
++        assert m.signature == n.signature
+ 
+     def test_verify_first_party_exact_caveats(self):
+         m = Macaroon(
+@@ -163,7 +154,7 @@ key", "signature": "197bac7a044af3333286
+             m,
+             'this is our super secret key; only we should know it'
+         )
+-        assert_true(verified)
++        assert verified
+ 
+     def test_verify_first_party_general_caveats(self):
+         m = Macaroon(
+@@ -182,7 +173,7 @@ key", "signature": "197bac7a044af3333286
+             m,
+             'this is our super secret key; only we should know it'
+         )
+-        assert_true(verified)
++        assert verified
+ 
+     def test_third_party_caveat(self):
+         m = Macaroon(
+@@ -199,10 +190,9 @@ never use the same secret twice'
+             caveat_key,
+             identifier,
+             nonce=ZERO_NONCE)
+-        assert_equal(
+-            m.signature,
++        assert\
++            m.signature ==\
+             'd27db2fd1f22760e4c3dae8137e2d8fc1df6c0741c18aed4b97256bf78d1f55c'
+-        )
+ 
+     def test_serializing_macaroon_with_first_and_third_caveats(self):
+         m = Macaroon(
+@@ -218,27 +208,22 @@ never use the same secret twice'
+ 
+         n = Macaroon.deserialize(m.serialize())
+ 
+-        assert_equal(
+-            m.signature,
+-            n.signature
+-        )
++        assert m.signature == n.signature
+ 
+     def test_prepare_for_request(self):
+         # use a fixed nonce to ensure the same signature
+         signature = self.generate_macaroon(ZERO_NONCE)
+-        assert_equal(
+-            signature,
++        assert\
++            signature ==\
+             '2eb01d0dd2b4475330739140188648cf25dda0425ea9f661f1574ca0a9eac54e'
+-        )
+ 
+     @patch('nacl.utils.random')
+     def test_defaults_to_random_nonce(self, rand_nonce):
+         rand_nonce.return_value = ONE_NONCE
+         signature = self.generate_macaroon(None)
+-        assert_equal(
+-            signature,
++        assert\
++            signature ==\
+             '97b6b4195737d69388ec20d9bcde5ae631ccab430897a40d9473486110476e70'
+-        )
+ 
+     def generate_macaroon(self, nonce):
+         m = Macaroon(
+@@ -295,7 +280,7 @@ never use the same secret twice'
+ never use the same secret twice',
+             discharge_macaroons=[protected]
+         )
+-        assert_true(verified)
++        assert verified
+ 
+     @patch('libnacl.secret.libnacl.utils.rand_nonce')
+     def test_inspect(self, rand_nonce):
+@@ -313,11 +298,11 @@ never use the same secret twice',
+         caveat_key = '4; guaranteed random by a fair toss of the dice'
+         identifier = 'this was how we remind auth of key/pred'
+         m.add_third_party_caveat('http://auth.mybank/', caveat_key, identifier)
+-        assert_equal(m.inspect(), (
++        assert m.inspect() == (
+             'location http://mybank/\n'
+             'identifier we used our secret key\n'
+             'cid test = caveat\n'
+             'cid this was how we remind auth of key/pred\n'
+             'vid AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA68NYajhiFuHnKGSNcVhkAwgbs0VZ0yK2o+q0Aq9+bONkXw7ky7HAuhCLO9hhaMMc\n'
+             'cl http://auth.mybank/\n'
+-            'signature 7a9289bfbb92d725f748bbcb4f3e04e56b7021513ebeed8411bfba10a16a662e'))
++            'signature 7a9289bfbb92d725f748bbcb4f3e04e56b7021513ebeed8411bfba10a16a662e')
+Index: pymacaroons-0.9.3/tests/property_tests/macaroon_property_tests.py
+===================================================================
+--- pymacaroons-0.9.3.orig/tests/property_tests/macaroon_property_tests.py
++++ pymacaroons-0.9.3/tests/property_tests/macaroon_property_tests.py
+@@ -1,7 +1,8 @@
+ from __future__ import unicode_literals
+ 
+-from mock import *
+-from nose.tools import *
++import pytest
++
++from unittest.mock import *
+ from hypothesis import assume, given, strategy
+ from hypothesis.specifiers import one_of, sampled_from
+ 
+@@ -37,6 +38,6 @@ class TestMacaroon(object):
+             key=key
+         )
+         deserialized = Macaroon.deserialize(macaroon.serialize())
+-        assert_equal(macaroon.identifier, deserialized.identifier)
+-        assert_equal(macaroon.location, deserialized.location)
+-        assert_equal(macaroon.signature, deserialized.signature)
++        assert macaroon.identifier == deserialized.identifier
++        assert macaroon.location == deserialized.location
++        assert macaroon.signature == deserialized.signature
+Index: pymacaroons-0.9.3/tox.ini
+===================================================================
+--- pymacaroons-0.9.3.orig/tox.ini
++++ pymacaroons-0.9.3/tox.ini
+@@ -5,12 +5,12 @@ skip_missing_interpreters=True
+ [testenv]
+ deps=-rrequirements.txt
+ commands=
+-    nosetests --with-yanc
++    pytest --color=yes
+ 
+ [testenv:py26]
+ deps=-rrequirements.txt
+ commands=
+-    nosetests tests/functional_tests --with-yanc
++    pytest --color=yes tests/functional_tests
+ 
+ [testenv:docs]
+ basepython=python
+@@ -28,4 +28,4 @@ commands=
+ [testenv:coverage]
+ deps=-rrequirements.txt
+ commands=
+-    nosetests --with-coverage --cover-erase --cover-package=pymacaroons
++    pytest --cov=pymacaroons tests/
+Index: pymacaroons-0.9.3/pytest.ini
+===================================================================
+--- /dev/null
++++ pymacaroons-0.9.3/pytest.ini
+@@ -0,0 +1,5 @@
++[pytest]
++python_files = *test*.py
++testpaths = tests/
++addopts = -v
++

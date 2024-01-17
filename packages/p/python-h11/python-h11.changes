@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:25:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:44 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Wed Oct 12 03:33:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.14.0 
+  No upstream changelog
+
+-------------------------------------------------------------------
+Wed Feb 16 23:08:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Clarify that the Headers class is a Sequence and inherit from the
+    collections Sequence abstract base class to also indicate this (and
+    gain the mixin methods).
+  * Switch event classes to dataclasses for easier typing and slightly
+    improved performance.
+  * Shorten traceback of protocol errors for easier readability
+  * Add typing including a PEP 561 marker for usage by type checkers
+  * Expand the allowed status codes to [0, 999] from [0, 600]
+  * Ensure request method is a valid token
+
+-------------------------------------------------------------------
+Fri Feb  5 17:05:15 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version to 0.12.0
+  * Add early detection of invalid http data when request line
+    starts with binary
+  * Drop support for Python 2
+  * Fix ReST formatting
+  * Tuned maybe_extract_next_line to search only \r\n
+  * Changed the ReceiveBuffer
+  * Speed up maybe_extract_lines and removed unused variables
+  * Changed the maybe_extract_lines logic according PR review
+  * Small rfg (renamed body_and_headers_delimiter_regex ->
+    blank_line_delimiiter_regex) and slightly updated docs
+  * Fixed some performance issues
+  * Added ability to use LF, not only CRLF delimiter
+
+-------------------------------------------------------------------
+Tue Nov 10 08:02:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * h11 now stores and makes available the raw header name as
+  received. In addition h11 will write out header names with the same
+  casing as passed to it. This allows compatibility with systems that
+  expect titlecased header names. See `#31
+  * Multiple content length headers are now merged into a single header
+  if all the values are equal, if any are unequal a LocalProtocol
+  error is raised (as before). See `#92
+
+-------------------------------------------------------------------
+Thu Aug 13 12:35:59 UTC 2020 - aloisio@gmx.com
+
+- Update to version 0.10.0
+  * Drop support for Python 3.4.
+  * Support Python 3.8.
+  * Make error messages returned by match failures less ambiguous
+
+-------------------------------------------------------------------
+Wed May  6 07:47:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not restrict pytest anymore, seems working
+
+-------------------------------------------------------------------
+Thu Aug 22 14:15:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.0:
+  * no changelog
+- Restrict pytest5 for now
+
+-------------------------------------------------------------------
+Wed Jun  5 08:36:51 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- test package in %check
+
+-------------------------------------------------------------------
+Tue Dec  4 21:14:53 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.8.1
+  Bug fixes:
+  * Always return headers as ``bytes`` objects (`#60
+    <https://github.com/python-hyper/h11/issues/60>`__)
+  Other changes:
+  * Added proper license notices to the Javascript used in our
+    documentation (`#61
+    <https://github.com/python-hyper/h11/issues/60>`__)
+  version 0.8.0
+  Backwards **in**\compatible changes:
+  * h11 now performs stricter validation on outgoing header
+    names and header values: illegal characters are now rejected
+    (example: you can't put a newline into an HTTP header), and
+    header values with leading/trailing whitespace are also
+    rejected (previously h11 would silently discard the
+    whitespace). All these checks were already performed on
+    incoming headers; this just extends that to outgoing
+    headers.
+  New features:
+  * New method :meth:`Connection.send_failed`, to notify a
+    :class:`Connection` object when data returned from
+    :meth:`Connection.send` was *not* sent.
+  Bug fixes:
+  * Make sure that when computing the framing headers for HEAD
+    responses, we produce the same results as we would for the
+    corresponding GET.
+  * Error out if a request has multiple Host: headers.
+  * Send the Host: header first, as recommended by RFC 7230.
+  * The Expect: header `is case-insensitive
+    <https://tools.ietf.org/html/rfc7231#section-5.1.1>`__, so
+    use case-insensitive matching when looking for 100-continue.
+  Other changes:
+  * Better error messages in several cases.
+  * Provide correct ``error_status_hint`` in exception raised
+    when encountering an invalid ``Transfer-Encoding`` header.
+  * For better compatibility with broken servers, h11 now
+    tolerates responses where the reason phrase is missing (not
+    just empty).
+  * Various optimizations and documentation improvements.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Feb 25 16:26:48 UTC 2018 - aloisio@gmx.com
+
+- Initial package (version 0.7.0)

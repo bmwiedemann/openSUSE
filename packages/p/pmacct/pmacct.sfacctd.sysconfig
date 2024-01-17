@@ -1,0 +1,7 @@
+# Defaults for sfacct initscript and systemd service
+
+# Location of the configuration file
+SFACCTD_CONF=/etc/pmacct/sfacctd.conf
+
+# Additional options that are passed to sfacctd
+DAEMON_OPTS=""

@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce772757f42134f5a994481d173294ce</srcmd5>
+    <version>2.4.0</version>
+    <time>1623618374</time>
+    <user>dimstar_suse</user>
+    <comment>Add package for fcft, a dependency of the foot package.</comment>
+    <requestid>899790</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0cd558203559353e79317c563589bb0</srcmd5>
+    <version>2.4.1</version>
+    <time>1625225276</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1:
+  * Log messages are now printed to stderr instead of stdout.
+  * fcft_grapheme_rasterize() now sets a minimum grapheme column count of 2
+    when the cluster ends with an Emoji variant selector (codepoint 0xFE0F).
+  * Fixed compilation error when fallback definition for FCFT_EXPORT was used
+    in meson.build.</comment>
+    <requestid>903583</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b231fe95570d0553146f5ec196ed30ed</srcmd5>
+    <version>2.4.2</version>
+    <time>1625777353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2:
+  * Fixed rare crash when one thread was doing a glyph cache lookup,
+    while another was resizing the cache.</comment>
+    <requestid>904655</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>47d75a59e5b6847bda5f59fc4af8300f</srcmd5>
+    <version>2.4.3</version>
+    <time>1626644707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.3: 
+  * Fixed bitmap/aliased font glyphs being mirrored on
+    big-endian architectures.
+  * Fixed color font glyphs having wrong colors on big-endian architectures.
+  * Fixed crash when destroying a font that failed to load
+    (typically happens when there are no fonts available at all).</comment>
+    <requestid>906958</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a00b5cace644518e13b8864d8b4fc9d</srcmd5>
+    <version>2.4.4</version>
+    <time>1626986609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.4:
+  * Fixed rendering of bitmap fonts with Freetype &gt;= 2.11</comment>
+    <requestid>907697</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9b4e5ffee408cbeeb4afbcbd5802d8d</srcmd5>
+    <version>2.4.5</version>
+    <time>1629101507</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.4.5:
+  * Fixed fcft_text_run_rasterize not checking if codepoint is in
+    the font’s charset before attempting shaping.
+  * Fixed crash when destroying a font with a grapheme cache entry
+    representing a failed grapheme glyph.</comment>
+    <requestid>912100</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1e1acd0d4ec59f165d1bc34cb6a5ff0</srcmd5>
+    <version>2.4.6</version>
+    <time>1635366062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.6:
+  * Updated UnicodeData to 14.0
+  * Fixed fcft_glyph.wc to be the Unicode codepoint instead of font index.
+  * Fixed assertion in glyph_cache_resize when rasterizing a large amount of
+    code points.
+  * Fixed bad performance of grapheme cache when rasterizing
+    many grapheme clusters.</comment>
+    <requestid>927598</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2a5fcf972083ee3cec267303aa2b8bdf</srcmd5>
+    <version>2.5.0</version>
+    <time>1636840120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0:
+  * Added fcft_set_emoji_presentation that can be used to override
+    emojis' default presentation style.
+  * Changed fcft_*_rasterize so that emoji's default presentation is now
+    accounted for when searching for a font containing the emoji codepoint,
+    codepoints whose default presentation is &quot;text&quot; will no longer consider
+    emoji fonts, and codepoints whose default presentation is &quot;emoji&quot; will
+    no longer consider non-emoji fonts.
+  * Improved handling of RTL scripts in fcft_text_run_rasterize</comment>
+    <requestid>931251</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c69560a4c181dcaf14cf467748e2a5b5</srcmd5>
+    <version>2.5.1</version>
+    <time>1639075541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.1:
+  * fcft_set_scaling_filter now applies to color bitmap fonts only,
+    ie emoji fonts.
+  * Fixed incorrect value of FCFT_SCALING_FILTER_CUBIC constant.
+  * Fixed pixman errors and program freezes when scaling bitmap fonts to
+    very small sizes.</comment>
+    <requestid>937363</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1ea7ac4debbeee833c8c51d7e90e1ae2</srcmd5>
+    <version>3.0.1</version>
+    <time>1644188067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Added fcft_font.name member for the name of the primary font.
+  * Added fcft_glyph.font_name member for the name of the font that the glyph
+    was loaded from.
+  * Added fcft_init and fcft_fini to initialize and deinitialize the library,
+    which must now be called explicitly. Also, fcft_log_init has been removed,
+    and logging is now initialized by fcft_init.
+  * All wchar_t usage has been replaced with uint32_t. Also,
+    fcft_{glyph,grapheme,text_run}_rasterize have been renamed to
+    fcft_rasterize_{char,grapheme,text_run}_utf32 to emphasize this.
+  * fcft_rasterize_grapheme_utf32 no longer accepts layout tags, unlike
+    its predecessor fcft_grapheme_rasterize. They should be
+    set using fontfeature when calling fcft_from_name.
+  * Removed fcft_size_adjust.
+  * Removed fcft_font.space_advance member.
+  * Fixed bug in fcft_rasterize_text_run_utf32 due to uninitialized variable.</comment>
+    <requestid>951809</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>301c54f08db4997c94169570475ebe07</srcmd5>
+    <version>3.0.1</version>
+    <time>1645137632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955690</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ebf3945b5e90f0e561843935e3c5d056</srcmd5>
+    <version>3.1.1</version>
+    <time>1651501500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Added OT-SVG support using a bundled nanosvg as backend.
+    FCFT_CAPABILITY_SVG has been added to fcft_capabilities to detect this.
+  * Fixed fcft_font::name, and fcft_glyph::font_name not being set correctly
+    for font collections (e.g. *.ttc files).
+  * Fixed assertion inside HarfBuzz with fcft_rasterize_grapheme_ut32
+    when rasterizing a glyph fails.
+- Set all options and features explicitly instead of relying on auto-detection
+  to ensure build fails if dependencies change.</comment>
+    <requestid>974220</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>edf1b21a9cb2ef4a8bbf5345c239f7c2</srcmd5>
+    <version>3.1.2</version>
+    <time>1653061838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.2:
+  * Fixed SVG glyphs failing with “bad argument” if LCD subpixel rendering is
+    enabled.</comment>
+    <requestid>978164</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>42b2fead9eda225201d597fb07874746</srcmd5>
+    <version>3.1.3</version>
+    <time>1661257779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.3:
+  * Fixed bitmap font glyph advance width calculation when the user has
+    enabled 10-scale-bitmap-fonts.conf in fontconfig.
+- Fix libfcft package missing license file, and remove redundant copy of
+  doc files and license in $datadir/doc/fcft/</comment>
+    <requestid>998706</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>94c9f8381e2578fcd630765b9d6e3a8c</srcmd5>
+    <version>3.1.4</version>
+    <time>1662541576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.4:
+  * Fixed crash when failing to load an SVG glyph with multiple sub-glyphs.</comment>
+    <requestid>1001514</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9e0ea983e74184bfc95d746617453aa1</srcmd5>
+    <version>3.1.5</version>
+    <time>1664112909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.5:
+  * SVG fonts now ignore user transformations instead of failing with
+    &quot;unimplemented feature&quot;.
+  * Updated glyph advance width calculation for Harfbuzz 5.2 changes.
+    The new calculation is incompatible with Harfbuzz 5.1 and earlier, so
+    required version of Harfbuzz has been increased to 5.2.</comment>
+    <requestid>1005678</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fc10b021dde93a928e98e1bb53f5de6f</srcmd5>
+    <version>3.1.6</version>
+    <time>1689614587</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.6:
+  * Updated bundled nanosvg.</comment>
+    <requestid>1098717</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>12df7063bf5dc266656f7ac1a3d33bec</srcmd5>
+    <version>3.1.7</version>
+    <time>1702673384</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.7:
+  * Fixed infinite loop on certain invalid fontfeatures values.</comment>
+    <requestid>1133265</requestid>
+  </revision>
+</revisionlist>

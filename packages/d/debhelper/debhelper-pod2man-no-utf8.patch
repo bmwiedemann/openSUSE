@@ -1,0 +1,11 @@
+--- debhelper-debian-10.10.9.orig/Makefile	2017-11-19 12:06:36.000000000 +0100
++++ debhelper-debian-10.10.9/Makefile	2021-03-16 15:18:03.115557862 +0100
+@@ -54,7 +54,7 @@
+ 
+ PREFIX=/usr
+ 
+-POD2MAN_FLAGS=--utf8 -c Debhelper -r "$(VERSION)"
++POD2MAN_FLAGS=-c Debhelper -r "$(VERSION)"
+ 
+ ifneq ($(USE_NLS),no)
+ # l10n to be built is determined from .po files

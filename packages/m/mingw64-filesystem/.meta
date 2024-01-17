@@ -1,0 +1,14 @@
+<package name="mingw64-filesystem" project="openSUSE:Factory">
+  <title>MinGW base filesystem and environment</title>
+  <description>This package contains the base filesystem layout, RPM macros and
+environment for all MinGW packages.
+
+This environment is maintained by the Fedora MinGW SIG at:
+
+  http://fedoraproject.org/wiki/SIGs/MinGW
+
+
+</description>
+  <devel project="windows:mingw:win64" package="mingw64-filesystem"/>
+  <url>http://hg.et.redhat.com/misc/fedora-mingw--devel/</url>
+</package>

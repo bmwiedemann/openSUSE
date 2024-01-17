@@ -1,0 +1,6 @@
+<package name="perl-User-Identity" project="openSUSE:Factory">
+  <title>perl-User-Identity - Maintains info about a physical person</title>
+  <description>The 'User-Identity' distribution is created to maintain a set of informational objects which are related to one user. The 'User::Identity' module tries to be smart providing defaults, conversions and often required combinations.  The identities are not implementing any kind of storage, and can therefore be created by any simple or complex Perl program. This way, it is more flexible than an XML file to store the data. For instance, you can decide to store the data with Data::Dumper, Storable, DBI, AddressBook or whatever.</description>
+  <devel project="devel:languages:perl" package="perl-User-Identity"/>
+  <url>https://metacpan.org/release/User-Identity</url>
+</package>

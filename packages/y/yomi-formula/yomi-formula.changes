@@ -1,0 +1,457 @@
+-------------------------------------------------------------------
+Wed Oct 13 14:14:06 UTC 2021 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Ignore libudev1 dependency for Enterprise Linux.
+
+-------------------------------------------------------------------
+Thu Sep 02 13:30:30 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1630589391.4557cfd:
+  * macros: fix names of states and modules
+
+-------------------------------------------------------------------
+Wed Aug 18 10:03:43 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1629280900.fdbe9f0:
+  * monitor: rename it to yomi-monitor
+  * suseconnect: make regcode parameter optional
+
+-------------------------------------------------------------------
+Fri Apr 23 09:30:17 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1619170188.fa52819:
+  * README: document ym.sshd parameter
+
+-------------------------------------------------------------------
+Thu Feb 25 17:55:47 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1614275707.786435e:
+  * pillar: update to SLE-15-SP2
+  * fstab: do not mount while registering
+  * devices: fix documentation
+  * Adding a TOC
+  * software: add recreatedb.sls for rpmdb migration
+  * repository: workaround for boo#1178910
+  * software: separate repository.sls
+  * network: generate persistent-net.rules
+
+-------------------------------------------------------------------
+Mon Dec 21 10:49:22 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Run spec-cleaner
+- Add temporary and explicit dependency to libudev1
+
+-------------------------------------------------------------------
+Tue Nov 10 10:04:08 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1604593202.a2c22bf:
+  * storage: hide mountpoint if no filesystem
+  * software: migrate repos as certs
+  * software: add verify parameter
+  * _grains: efi grains are in Salt now
+  * software: transfer current repository
+  * software: add repository options
+  * lvm: fix indentation
+  * partitioned: fix parted call and tests
+
+-------------------------------------------------------------------
+Tue Oct 06 15:55:24 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1601999695.6141130:
+  * README: add user provided config
+
+-------------------------------------------------------------------
+Tue Sep 01 08:24:05 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1598948600.9a9eab0:
+  * Replace fdisk with parted in partitioned
+
+-------------------------------------------------------------------
+Tue Jul 28 16:12:00 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1595952633.b300be2:
+  * pillar: install always kernel-default
+  * chroot: python3-base is now a capability
+  * Move systemctl calls inside chroot
+  * Network: initial work for network declaration
+  * MicroOS: Remove tmp subvolume
+  * Update format following the new standard
+  * Fix __mount_device wrapper
+
+-------------------------------------------------------------------
+Mon Apr 27 11:28:16 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1587986719.9a9097a:
+  * Add initial support for ARM64 with EFI
+
+-------------------------------------------------------------------
+Mon Apr 20 12:24:01 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1587385401.ce3ed18:
+  * storage: suppor XFS filesystem
+
+-------------------------------------------------------------------
+Thu Apr 02 17:23:32 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1585837779.87bbc9c:
+  * salt-minion: transfer also the cached data
+
+-------------------------------------------------------------------
+Wed Apr 01 17:25:28 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1585760395.c0ab5b9:
+  * network: reformat file.append text
+  * network: add systemd link for the NIC (bsc#1168076)
+
+-------------------------------------------------------------------
+Fri Mar 27 14:32:24 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1585319502.392f59c:
+  * users: better quote for certificate
+  * users: workaround bsc#1167909 for passwords
+
+-------------------------------------------------------------------
+Mon Mar 09 16:33:24 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1583771480.5787782:
+  * Comment about the network configuration
+
+-------------------------------------------------------------------
+Tue Feb 18 14:34:00 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1582036279.1c70638:
+  * Revert "init: drop namespace for the check"
+
+-------------------------------------------------------------------
+Tue Feb 18 10:22:10 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1581958876.d324e18:
+  * metadata: support "after" ordering
+- Adjust the ordering of the forms
+- Move out the user modules from the susemanager domain
+
+-------------------------------------------------------------------
+Wed Jan 15 12:12:38 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1579090265.ecae64c:
+  * suseconnect: include only if regcode is present
+
+-------------------------------------------------------------------
+Tue Jan 14 16:15:31 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1579018449.c2c32c4:
+  * metadata: add help sections and unify names
+
+-------------------------------------------------------------------
+Mon Jan 13 16:51:20 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1578933940.1fcc9f3:
+  * metadata: fix target typo
+  * suseconnet: fix mapping check
+  * autoyast2yomi: initial version of the conversion tool
+  * run_tests: support test of external scripts
+  * monitor: adjust some spaces
+  * bootloader: add timeout parameter
+  * bootloader: drop grub2_console, add terminal and serial_command
+  * bootloader: move theme parameter from config
+  * bootloader: add gfxmode parameter
+  * reboot: add halt and shutdown modes
+  * tests: remove the unit level
+  * Change copyright attribution to SUSE LLC
+  * suseconnect: support local regcodes for modules
+  * init: drop namespace for the check
+  * network: support non-persisten naming
+  * pillar: add SLE pillar example
+  * metadata: add suseconnect section
+  * software: integrate suseconnect states
+  * suseconnect: add SUSEConnect state module
+  * suseconnect: add SUSEConnect execution module
+  * bootloader: do not depend on product name for branding
+
+-------------------------------------------------------------------
+Tue Oct 29 09:56:22 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Change /usr/share/yomi to root:root, but readable for others
+
+-------------------------------------------------------------------
+Wed Oct 09 09:49:38 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1570614306.1a4ae0f:
+  * README: update FQDN where master lives by default
+
+-------------------------------------------------------------------
+Mon Oct  7 14:27:14 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update directoy persmissions based on the new configuration from
+  salt-standalone-formulas-configuration
+
+-------------------------------------------------------------------
+Mon Oct 07 14:05:26 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1570457098.f38ad71:
+  * mount: pre-set the chroot before calling zypper (bsc#1153062)
+  * mkinitrd: force re-creation if software changes
+
+-------------------------------------------------------------------
+Fri Oct 04 08:53:27 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1570179173.75fc04c:
+  * states: simplify default values on conditions
+  * machine-id: copy machine-id from the system
+  * reboot: replace backtick quote in shell command
+  * partitions: unify kind of quote
+  * users: force password hash under quotes
+  * metadata: split form in multiple subforms
+- Generate metadata information for subforms
+
+-------------------------------------------------------------------
+Tue Oct 01 13:07:20 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1569935178.cfe975f:
+  * image: check the presence of URL for inclusion
+  * image: fix umount_image_/mnt name
+  * installer: rename entry point to init.sls
+  * mark: remove guard mark and use mount detector
+  * states: get default value for empty sections
+  * pillar: install glibc-locale with pattern:enhanced_base
+  * bootloader: fix documentation and form
+  * metadata: add the initial metadata and form data
+
+-------------------------------------------------------------------
+Mon Sep  9 08:53:36 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add metadata directory
+- Adjust states and metadata directory permissions
+
+-------------------------------------------------------------------
+Fri Sep 06 13:53:49 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1567698409.1177c34:
+  * image: add new mechanism for software installation
+  * formatted: remove useless comments
+  * docs: refactor the documentation
+
+-------------------------------------------------------------------
+Fri Sep  6 13:52:50 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add metadata information
+- Adjust salt-formula directory permissions
+
+-------------------------------------------------------------------
+Mon Aug 26 11:43:31 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Lower the priority of /usr/share/yomi/pillar 
+
+-------------------------------------------------------------------
+Fri Aug 23 14:09:03 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1566569312.4133e8e:
+  * storage.wipe: state to wipe all devices
+
+-------------------------------------------------------------------
+Fri Aug 23 13:03:26 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1566565353.86af2cb:
+  * devices.hwinfo: parse the hwinfo report
+
+-------------------------------------------------------------------
+Tue Aug 13 08:02:08 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565683297.a242917:
+  * pillar: make grub2_console persent in config
+
+-------------------------------------------------------------------
+Mon Aug 12 16:23:41 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565626987.fdda5d6:
+  * grub2_mkconfig: do not use gfxterm when in console mode
+  * docs: update links to Factory
+  * pillar: use better default pattern
+
+-------------------------------------------------------------------
+Mon Aug 12 11:06:22 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565607953.281fdae:
+  * bootloader: provides a default value to kernel
+
+-------------------------------------------------------------------
+Mon Aug 12 08:06:59 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565597137.7fbd398:
+  * devices.hwinfo provide a basic report module
+  * devices.wipe: remove GRUB signature
+  * bootloader: check for the second stage
+  * reboot: replace kexec config option with reboot
+
+-------------------------------------------------------------------
+Wed Aug 07 15:32:14 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565191883.64eabeb:
+  * devices.wipe: clean disk information
+  * pillar: add to MicroOS the new subvols
+  * pillar: fix services for MicroOS
+  * partitioned: ignore flags that contains type=
+  * partitioned: wipefs the new partition
+
+-------------------------------------------------------------------
+Mon Aug 05 15:08:03 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1565017592.7207cea:
+  * documentation: add a note about the pillar top.sls
+
+-------------------------------------------------------------------
+Wed Jul 31 13:14:12 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1564577012.3d7decf:
+  * _default_target: fix systemctl call
+  * documentation: add top.sls creation
+
+-------------------------------------------------------------------
+Mon Jul 29 14:15:36 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Change Requires to Requires(pre) for Salt packages, to guarantee
+  ordering of installation and the presence of the 'salt' group.
+
+-------------------------------------------------------------------
+Mon Jul 29 13:52:23 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Require salt-master for non SLE/Leap 15.1 nor Tumbleweed
+
+-------------------------------------------------------------------
+Fri Jul 26 14:16:26 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Remove the top.sls provided as an example from Yomi
+
+-------------------------------------------------------------------
+Fri Jul 26 12:38:45 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1564144697.5bce6e9:
+  * pillar: add user certificate as example
+
+-------------------------------------------------------------------
+Fri Jul 26 12:09:32 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1564140669.8074699:
+  * chroot: freeze and unfreeze packages
+  * salt-minion: fix unless condition
+  * users: support cerfificates
+  * pillar: parametrize the device type
+  * pillar: remove extra user
+  * pillar: set US as default keryboard layout
+  * pillar: add a Kubic pillar
+  * Split documentation about Kubic
+  * Document boot parameters master and minion_id
+  * _default_target: add config option to set target
+  * README: fix references to installer.sls
+
+-------------------------------------------------------------------
+Wed Jun 19 14:10:18 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560951712.33b7ae5:
+  * control_plane: use the first interface IP
+  * Fix macros.log call
+  * use-case-as-a-kubic-worker: fix monitor path
+
+-------------------------------------------------------------------
+Wed Jun 19 12:32:21 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560947494.0b6189a:
+  * network: fix dhcp config path
+
+-------------------------------------------------------------------
+Wed Jun 19 12:19:19 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560946703.1c4d880:
+  * Add use-case-deploying-kubic-from-scratch document
+
+-------------------------------------------------------------------
+Tue Jun 18 12:06:07 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560859479.b7d8fe1:
+  * network: configure network to accept hostanames
+  * Document --adv-addr in kubicctl
+
+-------------------------------------------------------------------
+Mon Jun 17 12:42:45 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560775166.35e3299:
+  * network: use the same ifcfg config file from YaST
+  * Add advanced configuration section
+  * Add use-case-as-a-kubic-worker documentation
+
+-------------------------------------------------------------------
+Fri Jun 14 15:40:18 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560526707.be4ae81:
+  * top: use generic glob
+
+-------------------------------------------------------------------
+Fri Jun 14 09:36:43 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560504884.48ef883:
+  * yomi: move all the states to a new ns
+
+-------------------------------------------------------------------
+Thu Jun 13 13:37:37 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Move to /usr/share/salt-formulas
+- Add example configuration files
+
+-------------------------------------------------------------------
+Wed Jun 12 12:12:33 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1560256453.82ef153:
+  * mark: mark successful installations
+  * firstboot: add systemd-firstboot support
+  * network: configure all interfaces
+  * fstab: use the not_change attribute
+  * Support salt-minion installation
+  * Unify YAML boolean syntax
+  * network: replace network detection algorithm
+  * README: document services section
+  * services: use systemctl to find service status
+  * microos: enable crio and kubelet services
+  * services: add enabled / disabled states
+  * microos: add Kubic patterns
+  * devices: deduce the net name in order
+  * network: add basic network configuration
+  * software: support minimal installation
+  * MicroOS: add extra bootloader data
+  * MicroOS: add RO option for root subvolume
+  * MicroOS: fix size typo
+  * software: support pattern detection
+  * fstab: support non-default options
+  * post_install: use the btrfs.properties state
+  * MicroOS: Add new patterns in software section
+  * bootloader: Call grub2-set-default
+  * bootloader: Run grub2_mkconfig after configuration change
+  * bootloader: Add kernel and disable_os_prober features
+  * software: do not jump into inner states
+  * post_install: do not jump into inner states
+  * Rename states to use underscore
+  * device.umount: fix variable name
+  * MicroOS: use patterns instead of packages
+  * MicroOS: Add a pillar to deploy MicroOS
+  * LVM: Refactor LVM definition
+  * pillar: parametrize all the pillars
+  * devices.filter: rename to filter_ and create an alias
+
+-------------------------------------------------------------------
+Thu Mar 28 10:13:21 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1553705260.c137d0e:
+  * partmod: move partition logic to the module
+  * Extract unit parser from partitioned
+  * partition: introduce `id` attribute
+  * partitioned: move partitioned.devices to devices.filter
+  * partition: simplify fs_type look out
+  * partitioned: rename aligment to initial_gap
+  * README.md: Remove extra dot
+  * README.md: Comment about UEFI and secure boot.
+  * README.md: Add some notes about monitor.
+  * README.md: Add installation instructions.
+
+--------------------------------------------------------------------
+Mon Feb 25 10:38:16 UTC 2019 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add initial version of Salt Yomi formula 

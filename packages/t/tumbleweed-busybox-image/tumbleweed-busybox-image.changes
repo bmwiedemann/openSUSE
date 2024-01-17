@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Thu Jun  3 15:53:32 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust for usrMerge: don't create /bin/su symlink
+
+-------------------------------------------------------------------
+Thu Mar  4 14:54:59 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make sure su is really working
+- Use /bin/sh instead of bash as login shell (bash is not installed)
+
+-------------------------------------------------------------------
+Tue Dec  1 09:42:43 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Make use of ExpandFlags: kiwi-nobasepackages:
+  * Drop replaces
+  * Add workaround for bug in obs-build
+
+-------------------------------------------------------------------
+Wed Sep 30 14:36:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove config.sh, busybox does not support rpm anymore (not
+  able to read our current RPMs), so no need to create links
+
+-------------------------------------------------------------------
+Wed Aug 12 14:59:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-policycoreutils and busybox-selinux-tools
+
+-------------------------------------------------------------------
+Fri Jul 24 08:18:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-{dos2unix,telnet,tftp,time,tunctl,vlan,sysvinit-tools}
+
+-------------------------------------------------------------------
+Thu Jul 23 13:06:24 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing busybox-psmisc
+- Add busybox-ed, busybox-bc and busybox-netcat
+
+-------------------------------------------------------------------
+Wed Jul 22 09:32:23 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-whois, busybox-less, busybox-unzip, busybox-vi,
+  busybox-wget and busybox-syslogd
+
+-------------------------------------------------------------------
+Thu Jun 11 09:41:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-adduser
+
+-------------------------------------------------------------------
+Fri Jun  5 13:46:26 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add replaces "bc" for ppc64 to busybox-misc
+
+-------------------------------------------------------------------
+Tue May 12 14:46:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add new busybox-sendmail sub-package
+
+-------------------------------------------------------------------
+Tue Apr 28 06:45:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add busybox-sh (was splitted from busybox-ash because of bash)
+
+-------------------------------------------------------------------
+Mon Apr 20 09:05:00 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add LICENSE file
+
+-------------------------------------------------------------------
+Sat Apr 18 19:26:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use busybox-ash instead of busybox-sh 
+
+-------------------------------------------------------------------
+Wed Apr 15 07:23:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- config.sh: don't create symlinks which we package now
+- list all packages, don't use busybox-links meta package
+
+-------------------------------------------------------------------
+Tue Apr 14 10:42:15 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Use 'busybox' as 'busybox-container' was dropped
+
+-------------------------------------------------------------------
+Tue Mar 17 15:22:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Convert to use busybox-links
+
+-------------------------------------------------------------------
+Fri Mar 13 21:06:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- busybox-container was merged with busybox
+
+-------------------------------------------------------------------
+Thu Mar 12 16:18:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add kubernetes pause binary
+
+-------------------------------------------------------------------
+Thu Aug 22 14:29:49 CEST 2019 - kukuk@suse.de
+
+- Use busybox-container, much smaller
+
+-------------------------------------------------------------------
+Fri Aug  2 12:54:52 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add subcommand with /bin/sh, as the default /bin/bash does
+  not exist
+
+-------------------------------------------------------------------
+Wed May 29 15:43:02 CEST 2019 - kukuk@suse.de
+
+- Fix labels
+
+-------------------------------------------------------------------
+Wed May 29 15:11:28 CEST 2019 - kukuk@suse.de
+
+- Move to official opensuse repository
+
+-------------------------------------------------------------------
+Thu May  9 20:07:19 CEST 2019 - kukuk@suse.de
+
+- Lock root password
+
+-------------------------------------------------------------------
+Wed Apr 10 10:37:18 CEST 2019 - kukuk@suse.de
+
+- Remove bash, kiwi >= 9.17.35 don't need them anymore
+- Add workaround that .kconfig uses bash syntax
+
+-------------------------------------------------------------------
+Thu Mar 28 13:13:41 CET 2019 - kukuk@suse.de
+
+- Initial version
+

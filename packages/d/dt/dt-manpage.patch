@@ -1,0 +1,13 @@
+Index: Documentation/dt.man
+===================================================================
+--- Documentation/dt.man.orig
++++ Documentation/dt.man
+@@ -299,7 +299,7 @@ Log File Format Keywords:
+ .TP
+ %iodir
+ The I/O direction.
+-.tP
++.TP
+ %iotype
+ The I/O type.
+ .TP

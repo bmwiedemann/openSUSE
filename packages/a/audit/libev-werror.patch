@@ -1,0 +1,26 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2021-06-02 16:18:03.256597842 +0200
+
+Cherry-pick http://cvs.schmorp.de/libev/ev_iouring.c?view=log&r1=1.25
+to fix some terrible code.
+
+[   50s] ev_iouring.c: In function 'iouring_sqe_submit':
+[   50s] ev_iouring.c:300:1: error: no return statement in function returning non-void [-Werror=return-type]
+
+---
+ src/libev/ev_iouring.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: audit-3.0.1/src/libev/ev_iouring.c
+===================================================================
+--- audit-3.0.1.orig/src/libev/ev_iouring.c
++++ audit-3.0.1/src/libev/ev_iouring.c
+@@ -287,7 +287,7 @@ iouring_sqe_get (EV_P)
+ }
+ 
+ inline_size
+-struct io_uring_sqe *
++void
+ iouring_sqe_submit (EV_P_ struct io_uring_sqe *sqe)
+ {
+   unsigned idx = sqe - EV_SQES;

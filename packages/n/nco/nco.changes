@@ -1,0 +1,1145 @@
+-------------------------------------------------------------------
+Wed Dec 27 16:02:48 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.1.9:
+  * updates ncremap to employ new TempestRemap weight-generation algorithms,
+      updates ncremap to recognize new names for existing algorithms,
+      changes ncremap's default treatment of filling empty areas with missing values,
+      and fixes a long-standing bug with ncra and ncrcat subcycle and interleave options
+- Update to version 5.1.8:
+  * recognizes NC_STRING as valid alternatives to NC_CHAR attributes,
+      infers MPAS grids stored in radians when units attributes are not present,
+      and support checks for adherence to NASA DIWG (and CF) recommendations
+      for valid identiers, and for the missing_value attribute
+
+-------------------------------------------------------------------
+Tue Aug  1 22:44:54 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.1.7:
+  * simplifies netCDF codec invocation in ncremap/ncclimo,
+      and fixes two issues with Intel compilers
+- Update to version 5.1.6:
+  * further polishes vertical interpolation, further improves NCZarr safety,
+      and fixes minor ncremap issues, improves EAMxx support, adds basic
+      support for regridding Coupler history files, and employs CF Conventions,
+      where possible, on all input files regardless of whether they
+      claim to be CF-compliant.
+- Update to version 5.1.5:
+  * polishes the new vertical interpolation capabilities introduced in
+      5.1.3 and 5.1.4, improves the safety NCZarr operations,
+      and fixes minor ncremap bugs
+
+-------------------------------------------------------------------
+Sat Jan 28 00:28:01 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.4:
+  * Introduced vertical interpolation for datasets stored on
+    depth/height grids, such as ocean data.
+  * Also fixed a vexing issue that can occur with certain compilers
+    on AMD hardware.
+
+-------------------------------------------------------------------
+Fri Dec 30 08:51:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.3:
+  * Improved speed of vertical interpolation for fields whose
+    most-rapidly-varying dimension is the vertical (not horizontal).
+  * Also fixes an issue in using ncremap to invoke the interpolation.
+- Update to version 5.1.2:
+  * Improved support for horizontal regridding, vertical
+    interpolation, or both, on ultra high-resolution model output.
+- Update to version 5.1.1:
+  * Added features for NCZarr, regridding, and interpolation.
+    All operators now support NCZarr I/O and input filenames via
+    stdin.
+  * ncremap supports two new vertical extrapolation methods, 1D
+    files, and allows flexible masking based on external fields
+    such sub-gridscale extent.
+  * ncclimo outputs regional averages.
+  * Numerous minor fixes improve codec support and regridding
+    control.
+
+-------------------------------------------------------------------
+Tue Sep  6 14:03:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 5.1.0:
+  * new netCDF 4.9.0 features for filters and quantization.
+  * ncremap fix for sub-sub-gridscale regridding
+- Cleanup spec file
+
+-------------------------------------------------------------------
+Mon Feb 21 13:23:14 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.0.6:
+  * fix: E3SM: unable to find any Conda binaries when invoked within scripts
+  * fix: ncremap 5.0.5 sometimes overwrote user-specified values of sgs_frc
+  * fix: ncclimo sometimes invoked the Bash basename() intrinsic on
+      non-existent arrays
+- Update to version 5.0.5:
+  * Arithmetic operators now support the lossy quantization algorithm
+      known as BitRound
+  * ncclimo now accepts filenames from stdin or positional arguments
+      in monthly climo mode
+  * ncatted has a new edit mode: Prepend
+  * fix: ncclimo 5.0.4 inadvertently broke automatic filename generation
+      for MPAS
+  * fix: fix ncclimo to work correctly with stdin filenames
+  * fix: changing _FillValue attribute did not always work in ncatted
+- Update to version 5.0.4:
+  * ncremap removes the previous assumption that input horizontal
+      dimensions are in lat-lon order
+  * ncremap adds alias "idw" for "dwe" distance-weighted extrapolation
+  * ncremap adds the --split flag to select splitter mode
+  * ncremap changes the API for the --permute option
+  * ncremap adds the --area_dgn flag (diagnose area)
+  * fix: ncwa was failing to set compression parameters since netCDF 4.8.0
+  * fix: issues due to deflation compression changes in netCDF 4.8.0
+
+-------------------------------------------------------------------
+Wed Dec  1 10:27:54 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- adjust shebangs: on Leap 15.2, the following installation error
+    occurs: "nothing provides /usr/bin/bash".
+    Therefore use /bin/bash for Leap 15.2. 
+- minor cleanup of spec file
+
+-------------------------------------------------------------------
+Fri Nov  5 08:47:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.0.3
+  * ncremap: contains the necessary options to exploit MPI-enabled
+    weight generators such as ESMF_RegridWeightGen.
+  * ncremap: now supports the MOAB parallel interface to the
+    TempestRemap (TR) weight-generation libraries for 1D FV->FV grids.
+  * ncremap: now supports the MOAB parallel interface to the TempestRemap
+    (TR) weight-generation libraries for 1D FV->FV grids.
+  * ncclimo: now splits timeseries into variables specified by
+    regular expressions.
+  * ncclimo: now splits timeseries into variables specified by regular
+    expressions.
+  * The regridder and all quantization algorithms (including BitGroom)
+    have been refactored
+
+-------------------------------------------------------------------
+Thu Jul  1 12:41:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.0.0
+  * ncremap has crucial fixes for applying and exporting the mask
+    field, if any.
+  * ncremap provides new flags to control the application of
+    _FillValue attributes in empty destination cells, and to
+    accomodate map-files that ignore or violate proper treatment
+    of masked grids.
+  * ncks auxiliary coordinates (-X) now support wrapped longitude
+    regions.
+- Update to version 4.9.9
+  * ncclimo now supports the mth_srt/end options for high resolution
+    timeseries that do not begin/end in Jan/Dec
+  * ncremap has crucial fixes for weight generation and map-checking
+    for masked grids, fixes for curvilinear grid inferral,
+    and automatic rounding when regridding integer-valued fields
+- Drop manual removing of `__DATE__` and `__TIME__` macros, those
+  get automatically overriden by `SOURCE_DATE_EPOCH` set by rpmbuild
+  (supported since gcc7)
+
+-------------------------------------------------------------------
+Sat May  8 15:15:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.9.8:
+  * Support for unpacking sparse 1D (S1D) data and restart files
+    used for plant functional types and multiple elevation classes
+  * Support for splitting monthly resolution timeseries that do not
+    begin/end in Jan/Dec
+  * Support seamless climos for the E3SM ice-sheet model (MALI)
+  * Bugfixes for inferring grid files and handling sub-gridscale data
+
+-------------------------------------------------------------------
+Thu Dec 31 17:27:00 UTC 2020 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 4.9.7:
+  * ncremap can now infer SCRIP grids from MPAS restart files
+  * ncremap and ncclimo have been updated to work in MPI mode for some DOE machines
+  * NCO can be built to leverage the Community Codec Repository
+  * fix: ncclimo fixes the bug that caused the --glb_avg option to fail sometimes
+  * fix: bug in ncclimo high-frequency climo mode introduced in 4.9.6
+- Update to version 4.9.6:
+  * ncclimo supports a new option --var_xtr
+  * This version is forward-compatible with netCDF 4.8.0 (incompatible filter behavior)
+  * ncclimo now supports the -P option to determine the processing type
+  * ncclimo and ncremap now support the large memory AMD (cmem) nodes
+      on Cori when in MPI mode
+  * fix: ncremap fixes a bug that prevented MPI mode from working on Cori
+  * fix: ncremap always retains the input values of masks in SCRIP gridfiles
+  * fix: ncremap correctly infers the final vertices of RLL grids stored
+      in north-to-south order
+- Update to version 4.9.5:
+  * ncclimo supports alternates to "area" and "ncol"
+  * fix: The prototype for nco_def_var_filterx() has been changed
+  * fix: correct OpenMP incompatibility with the Intel Compiler Suite
+  * fix: ncatted will now print the full list of parameters for the _Filter attribute
+  * fix: Fix a bug in the computation of the intersection mesh (4.9.4 regression)
+- Update to version 4.9.4:
+  * configure option --enable-gpu to offload computations (experimental) 
+  * support unbuffered IO with flag --uio
+  * default quantization is now Bit Rounding
+  * ncra and ncrcat now support interleaved time-coordinates
+  * nces now supports per-file weights (option -w)
+  * ncra now supports per-record weights (or --prw)
+  * ncra accepts the new flag --promote_ints to output statistics
+      of integer variables in floating-point
+  * ncremap supports new dimensions used in DOE E3SM MPAS BGC simulations
+  * new regridding algorithm distance-weighted extrapolation (DWE) for ncremap
+  * ncks --dt_fmt now applies also to JSON and XML
+  * ncra, nces, and ncrcat introduce the --clm_nfo to
+      produce CF-conformant climatological times and bounds
+  * ncclimo now has "-a sdd --no_amwg_links" by default
+  * ncclimo now supports the high-frequency climos and splitting
+  * ncclimo now outputs more CF-conformant climatological times and bounds
+  * fix: ncremap/ncks: Fix vertical interpolation from hybrid-to-hybrid files
+
+-------------------------------------------------------------------
+Thu Jun 11 21:57:23 UTC 2020 - Manfred Schwarb <manfred99@gmx.ch>
+
+- move libnco.so and libnco_c++.so symlinks to devel package, otherwise conflicts arise
+
+-------------------------------------------------------------------
+Wed Jun 10 14:09:55 UTC 2020 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 4.9.3:
+  * ncatted prints additional diagnostics when referenced attributes are not found
+  * ncclimo adds a new clm_md='hf' type for splitting high-frequency (hgh_frq) datasets
+  * ncremap now automatically parallelizes the loading of data during regridding (with OpenMP)
+  * The ncks --frac_b_nrm and --area_wgt options both now automatically imply --chk_map
+  * Options for TempestRemap have been updated to current guidance
+  * ncremap's grid intersection algorithms are improved
+  * ncks accepts a new option --cell_area_quad
+  * ncks includes a workaround to the backwards incompatible changes
+      to nc_inq_var_filter() introduced in netCDF 4.7.4
+  * ncap2 eliminated an old and little-used custom correlation procedure
+  * The Users Guide now fully documents the ncremap and ncks options
+      chk_map, job_nbr, par_typ, SGS, unq_sfx
+  * Add --frac_b_nrm option to ncks map-checker
+  * fix: ncremap once again passes non-default regridding options to
+      the NCO weight-generator in map-only mode
+  * fix: ncclimo in splitter mode now correctly globs all files in a directory
+  * fix: ncrcat once again re-bases time coordinates stored as integers
+  * fix: Curvilinear regional NCO grids that work with ESMF now work
+      with the NCO weight generator
+- Update to version 4.9.2 (new 3-Clause BSD license):
+  * ncremap now supports vertical interpolation of pure-pressure files to hybrid grids
+  * ncks --chk_map checks for and reports NaN weights
+  * ncremap and ncclimo both now export HDF5_USE_FILE_LOCKING='FALSE'
+  * NCO's weight generator can now read unstructured SCRIP gridfiles
+  * ncremap --devnull option controls output from NCO weight-generator
+  * ncpdq -U now always unpacks all variables, including packed grid variables
+  * fix: ncks --chk_map statistics no longer scrambled
+  * fix: ncremap --alg_typ=fv2fv now implements the same TempestRemap
+      options as --alg_typ=fv2fv_stt
+  * fix: ncremap now passes all NCO options through to ncks
+- Update to version 4.9.1:
+  * ncremap changes the default regridder algorithm from ESMF "bilinear" to NCO "nco_con"
+  * ncclimo can now output spatial-average timeseries (--glb_avg)
+  * ncpdq has a new map, flt_dbl, to convert single-precision to
+      double-precision floating point variables
+  * fix: Fix a difficulty that caused Intel compilers to fail to build NCO
+  * fix:  Print WARNING instead of dying when requested to copy the
+      _NCProperties attribute
+  * fix: Fix an error when interpolating to/from a pure pressure grid
+  * fix: Fix misuse of autoconf library references
+- Update to version 4.9.0:
+  * ncremap has been refactored for full parallelism
+  * ncremap has a new API for sub-gridscale (SGS) regridding
+  * ncremap supports the new NCO weight generation algorithm
+  * ncks supports a new option --chk_map to evaluate the quality of regridding weights
+  * ncremap works with newer MPAS Ocean files that contain BGC dimensions like R3 and FOUR
+  * ncremap now propagates all netCDF formats except CDF5 to TempestRemap (TR)
+  * ncremap omits the TR --volumetric flag from fv2se_stt maps
+  * ncremap allows simultaneous invocation of horizontal and vertical regridding
+  * ncremap/ncclimo have deprecated support for options named for the short-lived ALM land
+      surface model
+  * NCO supports flexible options to specify non-default names for vertical grid coordinates
+      in input and output (vertically interpolated) data files
+  * ncks supports a new option --chk_nan to quickly find the location of any
+      NaN values in a dataset
+  * fix: ncap2 --output again works with single command-line files
+  * fix: Regridder allows "none" for SCRIP normalization type for bilinear regridding
+  * fix: ncremap vertical interpolation bug-fix for fields stored on
+      interface levels of hybrid coordinate grids (e.g., CMFMC)
+  * fix: ncremap bug-fix for pressure-to-pressure grid vertical
+      interpolation for input files with no time dimension
+  * fix: ncks --json fixes JSON output of NC_FLOAT and NC_DOUBLE
+  * fix: ncremap no longer automatically employs mean-preserving algorithm
+      when encountering missing_dat
+
+-------------------------------------------------------------------
+Tue Dec 10 00:21:26 UTC 2019 - manfred99@gmx.ch
+
+- Update to 4.7.9
+  * ncremap now names the SGS map as per the -m map_fl option
+  * ncremap and ncclimo support MPAS files with a 'depth' dimension
+  * The regridder utilizes the lat_dmn_nm and lon_dmn_nm options to name the dimensions
+  * ncclimo writes more explicit information about parallelism
+  * The splitter in ncclimo now outputs progress more clearly
+  * ncra/ncrcat now perform time-rebasing in rec_apn mode using calendar units from dest/
+  * NCO now writes more intelligible error messages with HINTS for
+      likely causes of and responses to NC_EHDFERR and NC_EBADCHUNK errors.
+  * ncks emulates ncdump more closely and prints hidden attribute
+      _NoFill (not _NOFILL) values as "true" or "false" not 1 or 0.
+  * ncks prints CDL for hidden _Filters attribute, if any, with all filter values.
+  * ncks prints hidden _Endianness attribute for floating point types
+      not just multi-byte integers as before.
+  * fix: Fix a bug exposed in NCO 4.7.1 that could attempt to dereference a NULL pointer
+  * fix: ncremap used an inappropriate area to weight SGS variables
+  * fix: ncremap orders Tempest remap commands in execution-order in the history attribute
+  * fix: Cause ncclimo in MPI mode to exit when no nodes are available
+  * fix: Ensure ncclimo writes nd_fl to writable directory
+  * fix: ncap2 exits gracefully when no output file is specified
+  * fix: ncap2 exits gracefully when no -s or -S argument given
+- Update to 4.8.0
+  * ncremap now accepts two new Tempest map configurations, "se2se" and "fv2fv"
+  * ncap2 now allows creating brand-new files without specifying an input filename
+  * ncremap and ncclimo have a new flag, --no_stdin, that disables checking stdin for input files
+  * ncremap can now interpolate files in the vertical dimension (--vrt_fl=vrt_fl)
+  * ncremap and ncclimo now accept the --xcl_var switch
+  * ncremap and ncclimo now alter paths on certain supercomputers at only when requested to
+  * ncclimo adopts a default job_nbr of var_nbr in splitter mode
+  * ncks has a new --chk_nan option
+  * New synonyms --xtr_ass_var and --xcl_ass_var
+  * renamed --no-coords and --no-crd to --no_coords and --no_crd
+  * fix: ncremap runs 20-30x faster on Cori KNL than before
+- Update to 4.8.1
+  * ncremap/ncks now always creates/infers north-to-south grids with
+      polygons in counter-clockwise (CCW) orientation
+  * ncremap now vertically interpolates data from ECMWF IFS hybrid vertical grid format
+  * ncks, ncremap, and ncclimo now support two different extrapolation
+      algorithms for vertical regridding, --vrt_xtr=nrs_ngh and --vrt_xtr=mss_val
+  * The former ncremap ESMF extrapolation options xtr_nsp, xtr_typ, and
+      xtr_xpn have been renamed xtr_nsp, xtr_typ, and esmf_xpn
+  * ncremap accepts a new option, --msh_fl=msh.nc for name of the intersection mesh-file
+  * ncremap MWF mode now only generates TempestRemap maps when one or
+      both input grids are Exodus-format
+  * fix: ncremap now infers north-to-south Gaussian grids correctly
+  * fix: North-to-south grids are now output in counterclockwise order
+  * fix: ncap2 correctly overwrites output-files in single-file mode
+
+-------------------------------------------------------------------
+Fri Dec  7 18:28:16 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Remove static libraries.
+- Split libraries into own packages.
+  The C++ library is an important part of the netCDF C++ API,
+  but it isn't used by the executables so give it its own package.
+- Make the tests actually fail on an error.
+- Simplify description
+
+-------------------------------------------------------------------
+Wed Dec  5 17:45:45 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to 4.7.8
+  * many improvements to help convert ESM output into CMIP6 timeseries format.
+- Update to 4.7.7
+  * Improved forward and backward compatibility with newer and older versions of ESMF_RegridWeightGen
+  * Generation and inferral of grids running north->south (à la ECMWF)
+  * exact symmetry for Gaussian grid interfaces
+  * an ncpdq compression map that converts doubles to floats
+  * production of "skeleton files" for new grids
+  * equivalent treatment of MPAS and CESM grid variables in arithmetic
+  * reversion of the filename whitelist security.
+- Update to 4.7.6
+  * two new processing modes for ncremap
+    + regridding regional data
+    + generating all mapfile permutations with all interpolation algorithms
+  * improved support for auxiliary coordinates that lack coordinates/standard_name conventions in ncremap
+  * improved ncap2 command-line script handling in Windows
+  * less intrusive HPSS file system support
+
+-------------------------------------------------------------------
+Mon Jul 30 10:24:52 UTC 2018 - manfred99@gmx.ch
+
+- separate build settings for science project
+- Update to 4.7.5:
+  * ncclimo accepts mpassi in place of mpascice and mpasseaice.
+  * ncap2 allows optional scale_factor/add_offset arguments to its pack() method.
+  * extend character set whitelist when input file invokes the DAP4 protocol.
+  * XML printing now includes the "ncml:" prefix on most tags.
+  * fix: ncremap fixes the algorithm that identifies unstructured dimensions.
+- Update to 4.7.4:
+  * NCO supports absolute and relative paths to out-of-group (OOG) variables in CF attributes.
+  * ncremap supports three new features of ESMF 7.1.0r, see manual.
+  * ncremap guesses the unstructured dimension in first dimension.
+  * Add "gridcell" to ncremap database of unstructured dimensions.
+  * ncap2 where() terminates if the LHS variable in the assignment statement is a hyperslab.
+  * Add "elm" and "ctsm" as prc_typ synonyms for ncremap -P.
+  * Add "mpasseaice" as mdl_nm synonym for ncclimo -m.
+  * fix: Skip-over rather than fail when printing user-defined types.
+- Update to 4.7.3:
+  * introduce Filename character whitelist.
+  * user switches for E3SM-recommended Tempest remapping algorithms.
+  * ncclimo supports two more dataset filename template regular expressions.
+  * printf() format option for printed output (CDL, XML, JSON, TRD).
+  * ncks now accepts a --print_file=file option.
+  * ncap, the predecessor to ncap2, has been completely eliminated.
+  * fix: eliminate compiler warnings for building ncap2.
+- Update to 4.7.2:
+  * ncremap implements E3SM-recommended Tempest remapping algorithms.
+  * ncremap supports "canonical" NCO argument ordering (command [options] [input] [output]).
+  * ncremap support a --mss_val=val option for MPAS data.
+  * ncclimo has improved support for NCAR cheyenne batch queues.
+  * fix: Fix ncclimo splitter bug where time-periods not evenly divisible.
+- Update to 4.7.1:
+  * NCO Conda package for Windows.
+  * ncclimo in daily mode now handles stdin input more cleverly.
+  * JSON printing of netCDF3 strings has changed.
+  * fix: Fix bug where ncclimo --clm_md=dly/ann expected a season list.
+  * fix: ncks in JSON, CDL, and XML modes now prints a single NUL as "".
+- Update to 4.7.0:
+  * ncclimo and ncremap accept fl_fmt options for output file format.
+  * ncclimo and ncremap accept the dfl_lvl option for compression.
+  * ncclimo accepts the ppc option for Precision-Preserving Compression.
+  * ncrename is now quiet by default.
+  * changes to CMake engine.
+  * automatic CDF5 bug checker has been turned-off, needs compile-time option to activate.
+  * fix: ncra and ncrcat treated negative record hyperslab indices with old (pre-2014) convention.
+- Update to 4.6.9:
+  * CDF5: NCO warns when CDF5 files may be corrupted.
+  * CDF5: All NCO operators now fully support CDF5.
+  * CDF5: ncks prints RAM size of variables and data in CDL comments.
+  * CMake build-engine.
+  * ncks now prints CDL by default.
+  * fix: ncclimo false-positive messages about 'ANN' eliminated.
+
+-------------------------------------------------------------------
+Sun Sep 10 22:56:23 UTC 2017 - manfred99@gmx.ch
+
+- require hdf5 version >=1.8.8 in accordance with netcdf on science project
+
+-------------------------------------------------------------------
+Fri Aug 18 23:12:15 CEST 2017 - manfred99@gmx.ch
+
+- remove nullpointer.patch
+- remove silence_post-build-checks.patch
+- Update to 4.6.8:
+  * ncap2 now fully implements NCO chunking maps and policies.
+  * ncks CDL printing supports finer-grained control of date formats.
+  * ncclimo now supports up to eleven (and counting) custom-defined seasons.
+  * ncremap --msk_src and --msk_dst options now accept the value 'none'.
+  * ncremap now accepts standard NCO arguments for output file type.
+  * Fix: ncap2 implementation of mibs()/mabs()/mebs().
+  * Fix: JSON now prints "null" instead of "NaN".
+  * Fix: ncwa did not correctly handle hyperslabs for masks and weights.
+  * Fix: Ensure ncclimo and ncremap load netCDF libraries 4.4.x+.
+- Update to 4.6.7:
+  * ncremap has a new sub-gridscale (SGS) mode, -P sgs.
+  * ncremap got optimized ERWG weight generator.
+  * ncremap: cleanup in command line switches, short options
+      -a, -E, -T, -U, -w and -W got new meanings!
+  * ncap2 has a new function named missing().
+  * ncap2 now propagates existing chunking parameters from the input
+      file to the output file.
+  * ncks now has a --trd (or --traditional) option.
+  * Fix: ncatted allows writing an empty NC_CHAR or NC_STRING attribute.
+  * Fix: core dumps of ncap2 with pre-chunked and/or deflated data.
+  * Fix: ncatted now correctly handles creation, modification, overwriting
+      of _FillValue attributes in netCDF4 data.
+- Update to 4.6.6:
+  * new extract/exclude switches for ncremap and ncclimo.
+  * ncclimo's splitter mode no longer requires variable lists.
+  * regridder now produces UGRID output.
+  * ncks now prints the units as comments in debugging mode.
+  * ncap2 now implements the CF cell_methods convention.
+  * ncks now prints human-legible time strings.
+  * ncks now prints "(no units)" instead of "(null)".
+  * Fix: no more core dump on missing files with the hsi command.
+  * Fix: ncremap no longer defines mask variables in inferred grid files
+      unless it finds a mask variable in the source file.
+  * Fix: ncremap now invokes the neareststod algorithm when requested.
+  * Fix: ncremap now converts non-default masks correctly in infer mode.
+  * Fix: ncks now prints braces required to disambiguate compound
+      record dimensions in CDL mode.
+
+-------------------------------------------------------------------
+Fri Jun  2 00:09:47 CEST 2017 - manfred99@gmx.ch
+
+- add nullpointer.patch: fix '\0' vs. NULL confusion.
+
+-------------------------------------------------------------------
+Fri Mar 17 00:56:21 CET 2017 - manfred99@gmx.ch
+
+- modify silence_post-build-checks.patch:
+    silence check by providing default switch target in code
+- Update to 4.6.5:
+  * ncks now prints the human-legible calendar string corresponding to
+    values with UDUnits date units and CF calendar attribute.
+  * ncap2 now seamlessly edits character arrays.
+  * ncremap support a verbosity level option, --vrb_lvl.
+  * ncremap and ncks now parse more unknown grids than before.
+  * Fix: ncap2 attribute propagation for some unary operators is fixed.
+  * Fix: The chunk cache option (--cnk_csh) was a no-op.
+  * Fix: regridder failure due to broken diagnostic.
+  * Fix: Correct exit status for bad command-line options.
+- Update to 4.6.4:
+  * ncclimo will reshape timeseries.
+  * ncks allows setting per-variable chunk cache-size with --cnk_csh.
+  * ncremap now includes staggered grid weights with FV grid output.
+  * Variables listed in a formula_terms attribute are now extracted
+    by default, turn off with --no_frm_trm.
+  * Variables listed in a cell_measures attribute are now extracted
+    by default, turn off with --no_cll_msr.
+  * Fix: hyperslabs involving UDUnits dates could fail.
+  * Fix: hyperslabs of non-unity stride in netCDF4 files could
+    return incorrect values.
+- Update to 4.6.3:
+  * ncclimo supports "binary climos" and annual-mean mode.
+  * ncrcat and ncra now re-base data from arbitrary time units
+    in multiple calendar systems.
+  * ncap2 now supports converting data between any two compatible units.
+  * ncclimo and ncremap now support long options.
+  * ncclimo and ncremap now save the full command line.
+  * ncks can now print attribute CDL types as comments.
+  * Implement JSON brackets.
+- Update to 4.6.2:
+  * New JSON backend.
+    http://nco.sf.net/nco.html#json
+  * New multi-argument feature.
+    http://nco.sf.net/nco.html#mta
+  * Fix: Fix ncclimo and ncremap Bash-ism.
+  * Fix: Correct ncatted NaN implementation for MinGW.
+  * Fix: ncks CDL now prints correct tokens for uint, int64, uint64 types.
+- Update to 4.6.1:
+  * ncks supports new provenance features released in netCDF-4.4.1.
+  * Add ncflint -N, --nrm, --normalize option
+  * ncap2's array() function can now take a dimension list as the
+    third argument.
+  * ncclimo incremental mode.
+  * Fix: ncatted now allows special characters in attribute and variable names.
+  * Fix: ncap2 fixed handling of implicit array bounds for slabs of form var(3:).
+  * Fix: ncremap could confuse dimension names with coordinate names.
+  * Fix: ncremap now automatically chooses distinct output bounds names.
+- Update to 4.6.0:
+  * New operator ncclimo: produces climatological monthly means, seasonal means,
+    annual mean, and optionally regrids all these files.
+    http://nco.sf.net/nco.html#ncclimo
+  * ncap2 now works with pointers to variables and attributes.
+  * ncap2 has reduced memory usage.
+  * ncap2 has a new function make_bounds() to create CF-compliant bounds.
+    http://nco.sf.net/nco.html#make_bounds
+  * ncap2 now propagates metadata when Left-Hand-Casting variables.
+  * ncatted new mode "nappend" appends only to existing attributes.
+  * ncpdq now has a third unpacking mode.
+  * ncpdq now has a three unpacking modes: use --upk=[0,1,2] to choose
+    non-default modes [netCDF, HDF4 MODIS MOD08, HDF4 MODIS MOD13].
+  * ncra can now honor the CF convention for climatology bounds (--cb, --c2b).
+  * ncremap now defaults to $TMPDIR for intermediate files (-U to change).
+  * NCO now treats as associated coordinates all variables listed in
+    "grid_mapping" attributes. 
+  * ncremap and ncks now follow the CF "coordinates" convention
+  * Fix: Correct ncatted documentation for "append" mode.
+  * Fix: Fix Append mode: syncronize -A with interactive responses.
+  * Fix: ncpdq fix complex reordering in group hierarchies.
+  * Fix: ncap2 fix bug propagating attributes of variables with whitespace
+    in their names.
+
+-------------------------------------------------------------------
+Fri Dec  2 12:28:45 CET 2016 - manfred99@gmx.ch
+
+- remove all __DATE__ and __TIME__ macros as well as set USER
+    and HOSTNAME manually to get reproducible builds
+- add silence_post-build-checks.patch:
+    silence checks by providing default switch targets in code
+
+-------------------------------------------------------------------
+Tue Nov 29 17:42:32 CET 2016 - manfred99@gmx.ch
+
+- remove gsl2_support.patch
+- add additional files to documentation
+- Update to 4.5.5:
+  * NCO supports the CDF5 file type first introduced by pnetCDF and now
+    supported in Unidata netCDF as of version 4.4.0.
+    Use '-5', '--5', '--fl_fmt=[cdf5|64bit_data|pnetcdf]'.
+    http://nco.sf.net/nco.html#cdf5
+  * ncremap: -P option triggers filetype-specific workflow procedures
+    (such as automatic permutation).
+  * ncremap: -m map_fl supplies names to generated mapfiles and ncremap
+    annotates map-files it creates with full history.
+    http://nco.sf.net/nco.html#ncremap
+  * ncremap -j job_nbr option for MPI parallelism
+    http://nco.sf.net/nco.html#ncremap
+  * ncra/nces/ncwa: New operation tabs()=total_absolute_value.
+    The the -y tabs option is like -y ttl except the sum is over
+    absolute values. tabs(), mibs(), mebs(), and mabs() are analogous
+    to ttl(), min(), mean(), and max().
+    http://nco.sf.net/nco.html#op_typ
+  * Improve support for Cygwin builds
+  * Fix: ncremap: Inferred curvilinear grids always return points now in
+    counterclockwise order.
+  * Fix: ncremap: Inferring grids from curvilinear coordinates no longer
+    confused by "branch cuts" (i.e., the date-line).
+  * Fix: ncpdq: Fix problem that could cause '--gaa' option to fail in
+    earlier versions.
+  * Fix: nces: Copy attributes of coordinate variables in nces --nsm_grp.
+  * Fix: ncra/nces: Correctly normalize "mebs" arithmetic.
+  * Fix: ncap2: Fix incorrect handling of negative dimension indices.
+  * Fix: ncatted/ncrename: Fully support --glb_att_add=--gaa.
+    http://nco.sf.net/nco.html#gaa
+- Update to 4.5.4:
+  * ncremap: A new netCDF operator for regridding.
+    http://nco.sf.net/nco.html#ncremap
+  * ncks prints XML "_Unsigned" attribute for unsigned attribute types.
+    Formerly, ncks did not preserve the signedness of attributes.
+    http://nco.sf.net/nco.html#xml
+  * ncap2 now accepts [] and () syntax interchangeably.
+    Expressions which formerly had to use one or the other can now
+    use either.
+  * ncap2 now conforms arrays by hyperslabbed dimension size rather
+    than by dimension name.
+    http://nco.sf.net/nco.html#pdel
+  * NCO now treats variables named wgt_* as weights and avoids
+    performing math on them when possible.
+    http://nco.sf.net/nco.html#prc_xcp
+  * ncap2 now accepts "sum" as a synonym for "total" in its methods.
+    Additionally, ncap2 has a new function,
+    ncap_stats_wvariance(var,wgt) to computed weighted standard
+    deviations where missing values may be present.
+    Additionally, ncap2 now builds with GSL 2.x. All thanks to Henry.
+    http://nco.sf.net/nco.html#ncap2
+  * Fix: ncks -V in (at least) versions 4.5.1--4.5.3 could segfault.
+  * Fix: After dimension reduction operations, ncra and ncwa excise the
+    reduced dimensions from the CF "coordinates" attribute, if any.
+    Versions 4.4.9--4.5.3 could, under certain circumstances involving
+    multiple dimensions, retain extra whitespace in "coordinates".
+- Update to 4.5.3:
+  * NCO's new configure --disable-doc switch allows NCO (but not its
+    documentation) to build on vanilla OSX again.
+  * ncks --rgr nfr reads any/all grid information from input files,
+    infers any necessary but missing information (e.g., estimates cell
+    interface locations from cell midpoints), and outputs the gridfile
+    in SCRIP-format for easy use by offline regridders.
+    http://nco.sf.net/nco.html#grid
+  * ncks --rgr skl='y' creates a "skeleton" version of a data file
+    with the specified geometry.
+    http://nco.sf.net/nco.html#skl
+  * Generate 2-D regional grids in SCRIP format, and, in conjunction
+    with a mapfile, regrid to/from regional bounding boxes.
+    http://nco.sf.net/nco.html#grid
+    http://nco.sf.net/nco.html#regrid
+  * Use --xtn_var or --extensive to specify extensive variables.
+    http://nco.sf.net/nco.html#regrid
+  * Fix: ncks fixes two newly uncovered regridder bugs that were exposed by
+    multi-level fields that contain missing values and underwent
+    non-conservative (e.g., bilinear) regridding.
+  * Fix: ncap2 now evaluates logical expressions with a method that does
+    not convert the type of the arguments to lesser precision.
+  * Fix: ncecat version 4.4.9 introduced a problem that could cause it
+    to fail when using --gag mode on a single file.
+  * Fix: ncatted version 4.5.1 introduced a bug that dumps core when
+    attribute deletion is requested without a specific attribute name,
+    i.e., whenever all attributes are to be deleted.
+- Update to 4.5.2:
+  * All operators can now add user-specified global attributes to
+    output files using the --glb switch.
+    http://nco.sf.net/nco.html#glb
+  * Grid generation: ncks generates SCRIP-format gridfiles for
+    select grid types, in cluding uniform/equi-angular, cap/FV, and
+    Gaussian. Options pertinent to the grid geometry and metadata are
+    passed to NCO via key-value pairs prefixed by "--rgr".
+    http://nco.sf.net/nco.html#grid
+  * Regrid regional datasets with ESMF, SCRIP, and TempestRemap
+    mapfiles. Please give it a try and send us feedback!
+    http://nco.sf.net/nco.html#regrid
+  * Multi-file operators support a new extension to the -n option
+    that understands calendar month counting.
+    http://nco.sf.net/nco.html#input
+  * Fix: The ncra --wgt option, introduced in 4.4.9, works fine except,
+    it turns out, for variables with missing values. The normalization
+    for these values was incorrect and produced errors whose size was
+    roughly inversely proportional to the size of the weights.
+- Update to 4.5.1:
+  * Regrid global datasets with TempestRemap mapfiles (in addition to
+    ESMF and SCRIP, which were already supported).
+    http://nco.sf.net/nco.html#regrid
+  * ncatted now supports regular expressions in both the variable name
+    AND the attribute name (simultaneously, too). Previously, ncatted
+    accepted regular expressions only in the variable name.
+    http://nco.sf.net/nco.html#ncatted
+  * Add mibs/mabs/mebs methods and operators to ncap2. These are the
+    absolute-value analogues of min/max/mean, so that, e.g., mibs()
+    returns the minimum absolute-value of the operand.
+    http://nco.sf.net/nco.html#mibs
+    http://nco.sf.net/nco.html#ppc
+    http://nco.sf.net/nco.html#ncap2
+  * Prevent operators from repeating existing cell_methods attribute.
+    Previously NCO would append new operations, e.g., "time: mean" to
+    the existing cell_methods attribute, if any.
+    http://nco.sf.net/nco.html#cll_mth
+  * Fix formatting of history_of_appended_files attribute when appended
+    file had no history attribute.
+    http://nco.sf.net/nco.html#history
+  * Fix: Round-up to one rather than round-down to zero in chunking maps lfp
+    and rew. This fixes a bug that only appears on datasets with
+    certain shapes.
+    http://nco.sf.net/nco.html#cnk
+  * Fix bug using min/max on coordinate variables in ncap2
+  * Fix: Initialize memory that appeared to cause zeros to be written
+    by regridder compiled by clang on MacOSX.
+- Update to 4.5.0:
+  * Regrid global datasets with ESMF or SCRIP remap files.
+    http://nco.sf.net/nco.html#regrid
+  * ncdismember is a one-stop shop for flattening and CF-checking.
+    http://nco.sf.net/nco.html#ncdismember
+  * NCO introduces a convention to retain the history-attribute
+    contents of all files that were appended to a file.
+    http://nco.sf.net/nco.html#history
+  * When copying the variables date_written or time_written to the
+    output file, NCO now updates their contents the GMT time reported
+    by the system-supplied gmtime().
+    http://nco.sf.net/nco.html#cnv_acme
+  * Fix ncatted so it preserves global attributes (including history)
+    from the output file when in append (-A) mode.
+
+-------------------------------------------------------------------
+Sun Nov 27 00:20:14 CET 2016 - manfred99@gmx.ch
+
+- spec-cleaner changes
+- add gsl2_support.patch:
+    upstream commit 4d2ef537ec6c47c86a6bb14b0bd5ae82086c4bb3 for nco 4.6.3
+- add gnusource.patch:
+    "#define _GNU_SOURCE" is needed for strcasestr
+- remove unsupported configure options --disable-dap-opendap
+    and --enable-dap-netcdf
+- remove unneeded configure options --enable-netcdf4 and --disable-udunits
+- remove unneeded -fPIC and -fpermissive compiler options
+- add "-Wno-cpp" compiler option (a lot of _DEFAULT_SOURCE recommendations)
+- remove unneeded environment variables in spec file
+- remove unneeded "BuildRequires: gcc-fortran"
+- add "%check" section in spec file 
+
+-------------------------------------------------------------------
+Wed Aug 19 16:02:34 UTC 2015 - itsbo@fz-juelich.de
+
+- Updated to 4.4.9
+        * Undo crippling of ncra --wgt wgt_nm for further debugging
+        * Cripple ncra. Re-tag. Re-release with new tag format so GitHub tarball naming conventions work.
+        * Put nco_sng2kvm() in nco_sng_utl.c where it belongs. Fixes configure link problems.
+        * Allow wgt_nm to not be in extraction list
+        * Implement main logic for --wgt wgt_nm per-record weighting
+        * Per-file weighting with --wgt wgt_arr works fine
+        * Add some infrastructure to accept weight names, e.g., ncra --wgt=time_dlt
+        * Correct normalization in ncra --wgt and combine into multiplication by one pre-normalized factor
+        * Treat climatology variables as pseudo-coordinates like bounds variables
+        * Re-base climatology variables in ncra/ncrcat
+        * Apply per-file weights/normalization to averaged non-coordinate variables
+        * ncra reads optional per-file weights with new command line -w, --wgt switch
+        * Obtain destination grid interfaces/boundaries and remap matrix from mapping file
+        * All regression tests pass, 4.4.9 release once configure-builds work on yellowstone and rhea
+        * Recent rhea upgrade uses szip in icc netcdf, so (re-)add SZ and SZ_LIB flags to Makefile, Makefile.old
+        * Rhea icc 13.1.3 (gcc version 4.4.7 compatibility) requires -D_BSD_SOURCE on files that #include nameser.h
+        * Fix ncecat --gag mode use of uninitialized file pointers
+        * Shuffle never, to my knowledge, increases filesize, so shuffle by default when manually deflating
+        * LFP chunking uses "reasonable defaults" when var_sz < cnk_sz_ttl
+        * Turn-off MM3 workaround for MM3->MM4 copying to speed-up compression induced chunking
+        * Choose output chunking map/policy = rew/all rather than xst/xst for netCDF3 input
+        * Split Tempest library calls into separate function, nco_rgr_tps()
+        * Improve error message when nco_lmt.c encounters hyperslab requests on 2-D "coordinates"
+        * Crude version of nco_rgr_map()
+        * Describe SCRIP remapping in nco_rgr.c
+        * Segregate parts of nco_sld.[ch] into nco_ppc.[ch] and nco_rgr.[ch]
+        * Situate nco_rgr_ctl() between main() and all regridding routines
+        * Tidy string functions by DYW and PVN
+        * Makefile generates LINUX_C?? compiler defaults for MACOSX
+        * Introduce special variable handling with --rgr_var
+        * Wait until after ESMC_Finalize() to free dynamic memory provided to ESMF
+        * Improve nco_rgr_esmf() genericity
+        * Refine MACOSX linking for libesmf.a
+        * Fix bug in call to ESMC_GridCreateFromFile(). Simple ESMF regridding works.
+        * Annotate ESMF variables and calls
+        * Add regression test for unchunking variables with _Shuffle set
+        * Utilize extensible functions to format/access Tempest regridding commands
+        * Enumerate Tempest (tps) rename commands
+        * Add dummy call to Tempest remap GenerateRLLMesh
+        * Eliminate borken nco_sng2array() (which failed on single-element lists) in favor of nco_lst_prs_2D()
+        * Merge rgr (formerly dyw) branch back into master
+        * Use generic NC_SHUFFLE and NC_NOSHUFFLE tokens
+        * Set shuffle to false before unchunking variables. Fixes bug #74 reported by Dave Allured.
+        * Support GCC under MacPorts on MacOSX using
+        * Fix MacOSX Yosemite LLVM version 6.0 (clang-600.0.57) (based on LLVM 3.5svn) issues:
+        * Changed name of dyw branch to rgr (for "regrid")
+        * Add to configure: -lesmf -lrt -lgfortran -ldl -lnetcdff -lnetcdf_c++
+        * Merge changes from master into dyw branch:
+        * Quiet printing extended filetype for dbg_lvl=2
+        * Revamp regridding command-line interface, initialization, and deallocation
+        * Makefile/ESMF appears to pass regression tests
+        * Fix memory issues with rgr_arg
+        * Re-built MACOSX with XTools 6.2 clang 6.0 LLVM 3.5 for OS 10.10 Yosemite: No problems
+        * Add regression test for changing _FillValue in netCDF4 file
+        * Turn-off flg_netCDF4_rename_trick in nco_att_utl.c if NC_LIB_VERSION >= 434
+        * Add cf2.cdl to test different approaches to CF group extension questions
+        * Various typo corrections to documentation
+        * Add --enable_esmf option to configure
+        * Add EMSF option to Makefile
+        * Move ESMF functions to nco_sld.[ch]
+        * Fix bugs in dyw branch
+        * Tag nco-4.4.9-alpha to test new release procedure
+        * Build on rhea.ccs.ornl.edu
+        * Finish cnk_plc=nco implementation so plc/map=nco/nco means all/rew
+        * Document "coordinates" attribute modification
+        * Test git change as dyw
+        * Quiet printing of extended filetype for dbg_lvl=2
+        * Created remote upstream branches dyw, hmb, and pvn
+        * Change on master by csz
+        * Refine .gitignore's for configure-make
+        * Fix regression tests to account for new "coordinates" attributes
+        * Eliminate dimensions from "coordinates" attribute after collapsing them
+        * Tighten new -x warning WARNING
+        * Warn when coordinate variables intended to be excluded by -x and -C was not invoked
+        * Add .gitignore's to clean up git status output
+        * Create csz branch for local work on 4.4.9
+        * Replace SF source addresses with GitHub source addresses
+        * Document Git transition procedure
+        * Remove CVS keyword expansions by copying un-expanded originals over from CVS tree
+        * Create README.md for Github
+        * Clean-up ChangeLog
+        * Worked on CVS->SVN-->Git migration all week. Preserving tags is hard.
+        * Final procedure was something like:
+        * One week of documentation improvements while SF was down
+        * More inclusive definition of "coordinate variables" to avoid quantizing
+        * Never quantize upwards floating point values of zero
+        * Implement PPC in ncecat, ncflint (revert ncbo)
+        * Correctly format brackets on indices of missing_values in nco_prn.c
+        * Rewrite tables with new less-lossy NSD algorithm
+        * Implement rounding (DSD) on integer types
+        * Prevent bitmasking (NSD) on integer types
+        * Prevent bitmasking when desired precision exceeds representable precision
+        * Preserve one extra bit for NC_DOUBLE, based on empirical tests results with ppc=array(1.234567,1.e-6,$dmn)
+        * Add pure float version of nco_var_around()
+        * Bitmask-up to ones instead of down to zeros every other element to avoid bias in rounded mean
+        * Document mabs/mebs/mibs
+        * Add nco_op_typ=mabs, mebs, mibs for maximum, mean, minimum absolute value
+        * Increase prc_bnr_xpl_rqr by 2 so prc_bnr_xpl_rqr=prc_bnr_ceil. Fixes NSD=1 for Q?? in in.nc
+        * Reduce verbosity of dbg_lvl_std
+        * Implement PPC in ncwa.c, ncra.c
+        * Use -O3 not -O4 on clang
+        * Document PPC efficacy in tbl_ppc_nc
+        * Fix ppc used in ncpdq
+        * Explicit cast instead of implicit coercion to squelch many MSVC warnings
+        * Put string.h headers in nco_cln_utl.h
+        * Add isblank() for MSVC
+        * Fix nco_var_lst_add() call in ncap_lex.l to restore g++ compilation capability
+        * Fix compiling problems on MSVC
+        * Implement cnk plc_nco and cause it and map_rew to do map_rew for 3-D otherwise map_lfp
+        * Optimize nco_ppc_set_var(), fail on invalid variable names
+        * Fully document PPC, NSD, DSD
+        * Specifying PPC triggers dfl_lvl=1 on netCDF4 if not otherwise set
+        * Allow PPC on netCDF3
+        * Warn on incorrect NSD input
+        * Change generic name from LSD to PPC (precision-preserving compression)
+        * Implement threshold precision that turns-off LSD on per-variable basis
+        * DSD and NSD compression both appear to work and pass all regressions
+        * Zero two additional bits from significand in nco_var_bitmask()
+        * Fix missing value treatment in nco_var_bitmask()
+        * Change nco_var_around() from lrint() to rint() (duh!)
+        * Dynamically allocate dimension string info in nco_prn_var_dfn() so NCO works on AIRS files with loooong dimension names
+        * Functionalize NSD algorithm into nco_var_bitmask()
+        * Prototype NSD algorithm compiles, runs, and appears to work as expected
+        * Demonstrate LSD failure on lsd_bgr, need real precision algorithm
+        * Add LSD to ncpdq, document in nco.texi, regression tests
+        * Move nco_lsd_att_prc() from main.c into nco_xtr_dfn() for maintainability
+        * DYW added least_significant_digit attribute
+        * Move DYW functions to new nco_sld.[ch] files
+        * Use tgamma() instead of gamma() on MacOSX
+        * Tidy --enable-custom warnings on clang
+        * Fix automake error on in_4c.nc
+        * Fix LSD on MM3 codepath by using brute force instead of hash table in trv_tbl_var_nm_fll()
+        * Clean-up rx code for LSD by DYW
+        * Deprecate -D_BSD_SOURCE -D_POSIX_SOURCE in favor of -D_DEFAULT_SOURCE in configure
+        * Fix nco_var_typ_trv() prototype for C++ compilers
+        * LSD implementation in MM3 code compiles cleanly yet has problem finding traversal objects
+        * Introduce nco_var_around() calls in MM3 write/copy code
+        * Patch nco_mss_val_get() to avoid invalid free()---now nco_var_around() can work
+        * Regressions now fixed. Failures may have been due to excessive .tmp files in regression directory.
+        * Do not call nco_var_around when lsd == NC_MAX_INT, ensure lsd always initialized
+        * Implement multiple LSD options by Dingying Wei (DYW). Currently broken.
+        * Improve ISO8601 functionality with nco_cln_sng_rbs()
+        * Quiet CEWIs exposed by GCC 4.9.2
+        * Verify recent (20150109+) netCDF library snapshots fix coordinate renaming problems yet break attribute renaming
+        * Introduce -D_DEFAULT_SOURCE in place of deprecated (as of gcc 4.9.2) -D_BSD_SOURCE -D_POSIX_SOURCE
+        * Add --lbr, --library to ncap2 to facilitate link-path debugging
+        * New ncecat regression test to verify concatentated coordinates do not gain new record dimension
+        * Implement temporary fix for autoconf issues
+        * Discovered that NCO autotools do not follow autoconf guidelines
+        * Add autobld/compile: Wrapper for compilers which do not understand '-c -o'. Required by autoconf/configure on FC21.
+        * NCO_CHECK_FUNCS() for nc_rename_grp() and nc_inq_format() in configure
+        * Change copyright year to 2015 and tweak LICENSE from "can" to "may"
+        * Introduce stubs to print calendar "time since"dates in more human-readable format
+        * Impose nco_*() namespace convention on var_scv_*() and scv_var_*() routines
+        * --lsd ready-to-go except needs per-variable option and needs to avoid coordinates
+        * Add nco_var_around() to enhance zlib compression by making it lossy up to specified precision
+        * defdim() now accepts an additional optional arg UNLIMITED or LIMITED
+        * Warn when appended output type differs from input type (legal yet sketchy with -A)
+
+-------------------------------------------------------------------
+Fri Jan  2 15:34:08 UTC 2015 - ocefpaf@gmail.com
+
+- Updated to 4.4.7
+    * Warn when appended output type differs from input type
+    * Regression tests show no failures on gcc and clang Linux and MacOS
+      One non-fatal failure on icc Linux (yellowstone) ncecat#9
+      Output file is chunked differently than expected. Mysterious.
+    * Initialize input chunksize defaults correctly for ncwa, ncecat, ncpdq
+    * Replace strncpy() in sng_trm_trl_zro() with explicit loop to prevent valgrind complaining about,
+      and Mac OS X crashing on, overlapping source and destination buffers
+    * Support passing (int *)NULL to nc_inq_format_extended() stub
+    * Fix GSL and UDUnits flags in Makefile (fixes yellowstone builds)
+    * Use new NC_HAS_HDF4 to report HDF4 support with ncks -r
+    * Document new chunking features
+    * cnk_rew appears to work for rank = 3. Need larger datasets to be sure.
+    * Tidy nco_bld_crd_aux()
+    * Add regression test for non-coordinate dimension auxiliary coordinate variables
+    * Almost finished implementing cnk_rew
+    * cnk_min=0 sets minimum size of variables to chunk as twice blocksize
+    * Using -X now imposes CNV_CCM_CCSM_CF=True regardless of Conventions attribute
+    * Add regression for auxiliary coordinates
+    * First regression-free version in three weeks
+    * Now that nco_cnk_sz_set_trv() always called, allow it to work when ncecat creates new record dimension
+    * Fix long-time bug where nco_cpy_var_dfn_trv() incorrectly sets dmn_cmn[].is_rec_var for record dimensions affected by
+      --fix_rec_dmn or --mk_rec_dmn invocation (always set incorrectly except on first variable affected)
+    * Adjust regression tests to work with --cnk_min. Document --cnk_min.
+    * ncap_cst_mk() in ncap2_utl.cc checks that record dim is the first dim in list ONLY if nc3 file
+      and nc4 file. This also allows users to define vars with multiple record dims.
+    * Add hidden feature to defdim(): when dim_sz < 0 then dim is defined as unlimited
+    * Replace NETCDF4_ROOT by NETCDF_ROOT in configure
+    * Add --cnk_min to specify minimum size (default 8kB) in bytes of variable to chunk
+    * Change configure.ac --enable-dap-netcdf to --enable-dap
+    * Add cnk.cdl to test chunking algorithms
+    * Add cnk_map=nco to assign to current NCO-recommended map
+    * Always call chunking
+    * Stubs for cnk_map = nc4 for default netCDF4 chunking (same as unchunking for now?)
+    * Change links to online discussion forums from, e.g., https://sf.net/projects/nco/forums/forum/9830 to
+      https://sf.net/p/nco/discussion/9830 to eliminate new circular reference errors from sf webserver
+    * Rationalize regression tests with new chunking defaults (xst, xst)
+    * Ensure user-specified full chunking paths take precedence over relative paths
+    * Simplify nco_cnk_sz_set_trv()
+    * Fix ncrename regression tests
+    * Build in_4.nc from in.nc (not in.cdl due to ncgen chunksize problems and bugs) for regression tests
+    * Add numerous regression tests to evaluate nc_rename_var/dim() behavior.
+    * Avoid nc_rename_var/dim() bug in netCDF4 files by avoiding nc_redef()/nc_enddef(). No dice.
+    * Improve hdr_pad, ncrename documentation
+    * Add NCO_VERSION for consistency with NC_VERSION
+    * Document newly discovered ncrename problems due to netCDF4 bugs http://nco.sf.net/nco.html#bug_nc4_rename
+    * Check more error return codes in ncrename.c. Verifies NCO does not ignore any netCDF errors.
+    * Add regression checks for valid values in renamed coordinates in netCDF4 files
+    * Change to real Python convention where -1 is last element, e.g., -2 is penultimate element, -N is first element
+
+-------------------------------------------------------------------
+Sat Nov  1 22:43:12 UTC 2014 - ocefpaf@gmail.com
+
+- Updated to 4.4.6
+  * Add negative zero syntax to select last element of hyperslab.
+  * Avoid void arithmetic in USE_NC4_SRD_WORKAROUND.
+  * Change important nco_calloc() to nco_malloc() for speed.
+  * Fix ncwa handling of packed variables for minimization/maximization.
+  * Implement strncasecmp() for Windows and MSVC compilers.
+  * Fix count bug in USE_NC4_SRD_WORKAROUND.
+  * Implement USE_NC4_SRD_WORKAROUND by default in all applicable cases,
+    i.e.,  for singly strided hyperslab access to netCDCF4 files.
+  * Implement workaround to nc_get_vars() slowdown for netCDF4 in netCDF
+    library Workaround avoids nc_get_vars() and instead loops through calls
+    to nc_get_vara() Workaround implemented in nco_msa_get_var_trv() and
+    activated, for now, by -D 6.
+  * Finish ncrename rewrite. All capabilities work. No regressions.
+    Some debugging, syntax, and documentation remains to be done.
+  * Use netcdf_meta.h in nco.h to enable chunking/deflation calls for HDF4.
+  * ncrename now builds and works again for all but attributes.
+  * Print extended file format as _SOURCE_FORMAT with ncks --hdn.
+  * Remove nco_dmn_usr_sng() and nco_obj_usr_sng() due to flawed algorithms.
+  * Finish ncrename re-write for variables, groups, and dimensions.
+    NCO versions 4.3.3-4.4.5 broke "." support and did not fully support
+    groups.  Those versions renamed first and ignored subsequent instances
+    of old_nm.  Now ncrename fails as intended when required objects are not
+    present.  Attributes are more complex and are still broken.
+  * Support netCDF 4.3.3 netcdf_meta.h in nco_netcdf.h so NC_HAVE_RENAME_GRP
+    is found.
+  * Add regression tests to make ncrename die when required entities not
+    present.
+  * Fix bug with ncra --dbl on packed variables with missing values.
+  * Add debugging statements to track netCDF4 stride slowdown.
+  * Note locations which assume record dimension is in first position.
+  * Start to generalize ncra.c so single record dimensions can occupy any
+    position.
+  * Add regression test to demonstrate bug with ncra --dbl on
+    packed float variables with missing values.
+  * Implement missing getopt() line for file_format switch.
+  * ./configure now checks for daperror() instead of nc__opendap().
+  * Add NC_EIO error clarifications.
+  * Create -V = --var_val = -Q --no_nm_prn for ncks to print only variable
+    values.
+  * Document -Q and -V and switch --quiet to -Q (not -q) and synonomize -q
+    with --quench.
+  * Clarify WARNING when record dimension size changes.
+  * ncap2 command-line and script arguments can now both be specified AND
+    executed.  Command-line args are executed before script:
+    ncap2 -v -s "lon=longitude" -S in_4.nc out.nc.
+
+-------------------------------------------------------------------
+Tue Sep  2 17:01:40 UTC 2014 - ocefpaf@gmail.com
+
+- Updated to 4.4.5
+  * New Features
+  - NCO now supports stdin input file lists up to ~50 MB long.  This applies
+    to all NCO multi-file operators (ncra, ncea, ncrcat).  The previous limit
+    was 10 MB.  The new limit suffices for 30 years of hourly datasets where
+    each dataset name is 192 bytes long.  One NASA user is averaging 10 years
+    of data, or 87600 files.  Who will be the first user to break the million
+    file barrier?
+  - NCO now supports the CF ancillary_variables convention described at
+    http://cfconventions.org/1.6.html#ancillary-data This convention allows
+    ancillary variables to be associated with one or more primary variables.
+    NCO attaches any such variables to the extraction list along with the
+    primary variable and its coordinates and bounds, if any.
+  - NCO now accesses DAP files on HTTPS servers. Previously NCO would only
+    test filenames beginning with "http://" for DAP access.  Now NCO also
+    tests filenames beginning with "https://" for DAP.  If you use DAP servers
+    with a protocol besides HTTP or HTTPS please tell us so we can enable NCO
+    for those services too.
+  - ncks --grp_xtr_var_xcl: Group Extraction Variable Exclusion.  This new
+    switch helps control variable and group extraction. Normally NCO works in
+    "intersection mode" where the objects extracted are the intersection of
+    arguments to -g and -v. And the --union switch can be used to make their
+    union.  As of 4.4.4 (June, 2014), ncks (alone) supports an option to
+    include specified groups yet exclude specified variables.  The
+    --grp_xtr_var_xcl switch (with long option equivalent --gxvx extracts all
+    contents of groups given as arguments to -g except for variables given as
+    arguments to -v.  Use this when one or a few variables in hierarchical
+    files are not to be extracted, and all other variables are.  This is
+    useful when coercing netCDF4 files into netCDF3 files such as with
+    converting, flattening, or dismembering files.
+  - ncks --grp_xtr_var_xcl -g g1 -v v1 # Extract all of group g1 except v1
+  - New chunking policy r1d changes chunksize of 1-D record variables (and no
+    other variables) to specified (with --cnk_dmn) chunksize.  Any specified
+    record dimension chunksizes will be applied to 1-D record variables only.
+    Other dimensions may be chunked with their own --cnk_dmn options that will
+    apply to all variables.  For example,
+    ncks --cnk_plc=r1d --cnk_dmn=time,1000.  This sets time chunks to 1000
+    only in 1-D record variables.  Without the r1d policy, time chunks would
+    change in all variables.  Not to be confused with chunking map rd1.
+    Thanks to James Adams for suggesting this.
+
+-------------------------------------------------------------------
+Tue Jul 15 00:15:31 UTC 2014 - ocefpaf@gmail.com
+
+- Updated to 4.4.4
+  * Improve NCO compliance with NASA Reuse-Readiness Levels (RRLs)
+    Reorganize documentation on citation, authorship, copyright, and licensing
+  * Document NARR example of SLD statistics
+  * Add pnetCDF token stubs. Build pnetCDF-enabled netCDF4 in /usr/local/parallel.
+  * Filenames that begin with https:// now trigger DAP access code path
+
+-------------------------------------------------------------------
+Thu May  1 19:14:45 UTC 2014 - ocefpaf@gmail.com
+
+- Updated to 4.4.3
+  * Attempt regular expression parsing in nco_dmn_avg_mk() only when
+    user explicitly specifies dimensions to process. This allows ncwa
+    to work on files with crazy HDF names for dimensions.
+  * Clean-up warnings for crazy HDF names
+
+-------------------------------------------------------------------
+Mon Mar  3 22:10:53 UTC 2014 - ocefpaf@gmail.com
+
+- Updated to 4.4.2
+  * Slightly simplify logic in calling/utilizing nco_inq_format_extended()
+  * Restore explanatory messages for new ncrename regression failures
+  * Remove test group with hidden attributes from in_grp.cdl to prevent build
+    failures with netCDF 4.1.1-Isolate this group in new file hdn.cdl so that
+    in_grp.nc builds and regressions pass.
+    
+-------------------------------------------------------------------
+Thu Dec 19 01:40:43 UTC 2013 - ocefpaf@gmail.com
+
+- Updated to 4.3.9
+  * Rename old ncea program to nces (netCDF ensemble statistics)
+  * Rename old ncea-mode to ncfe-mode (netCDF file ensemble)
+  * Rename old nces-mode to ncge-mode (netCDF group ensemble)
+
+-------------------------------------------------------------------
+Wed Nov 27 18:46:31 UTC 2013 - ocefpaf@gmail.com
+
+- Updated to 4.3.8
+  * Add example of removing "bounds" variable
+  * Add -7 synonym switch for fl_fmt=netcdf4_classic
+
+-------------------------------------------------------------------
+Wed Sep 11 01:29:01 UTC 2013 - ocefpaf@gmail.com
+
+- Updated to 4.3.4
+    * Document and test --hdf_upk in all other applicable operators
+    * Add ncpdq regression test to re-pack 1D variable from HDF convention to
+       netCDF convention
+    * Move header information from nco_netcdf.c to nco_netcdf.h
+    * Tidy UDUnits parsing/handling code
+    * Standardize UDUnits code on opaque return values, not shell return values
+
+-------------------------------------------------------------------
+Sun Apr 28 20:29:29 UTC 2013 - ocefpaf@gmail.com
+
+- Updated to 4.3.0
+  * (Current Stable Release) ncbo -g; ncatted NULs; ncap2 rounding; ncks
+    metadata bugfix
+  * 4.2.6: Record appending with ncra/ncrcat --rec_apn; ncflint --fix_rec_crd;
+    RX's in full paths; Correct dimension/coordinate scopes; ncks MM3 bugfix;
+  * 4.2.5: ncks --mk_rec_dmn bugfix; ncks subsetting bugfix
+  * 4.2.4: Group wildcards; Group anchoring and recursion; Intersection/union
+    modes; ncrename global att. handling; ncea bugfix; ncra bugfix
+  * 4.2.3: Group Path Editing (GPE); ncecat bugfix
+  * 4.2.2: ncks, ncecat support groups; --hdr_pad all operators; ncks prints
+    underscores; fixes to --[mk/fix]_rec_dmn; ncpdq fix; ncwa on Windows;
+
+-------------------------------------------------------------------
+Tue Sep  4 18:00:36 UTC 2012 - ocefpaf@gmail.com
+
+- Updated to 4.2.1
+  * --ram_all for diskless files; --no_tmp_fl to bypass temporary files;
+    Negative indices for hyperslabs; ncpdq unpacks coordinate variables;
+    ncra/ncrcat DRN/MRO options; ncra/ncrcat rebase bounds;
+  * 4.2.0: ncecat "fixes" auxiliary coordinates and bounds; ncks uses nc__open,
+    format NC_INT with %i; ncra -y ttl fix; ncrcat UDUnits fix; ncwa and ncap2
+    limited NaN support; Microsoft Visual Studio support;
+
+-------------------------------------------------------------------
+Sat Mar 31 16:43:32 UTC 2012 - ocefpaf@gmail.com
+
+- Updated to 4.1.0
+  * Added DENABLE_NETCDF4 and DHAVE_NETCDF4_H to "really" add netcdf4 support
+  * MD5 digests; ncap2 sorts & maps; ncks MM3 workaround; ncrename/ncatted
+    chmods; ncatted NaN support
+  * 4.0.9: Fix over-zealous ncap2 packing; Fix ncea -y ttl; Fix/improve ncap2
+    print, array(); Warn when appending variables of suspicious record length;
+    Warn when NC_MAX_ATTRS exceeded
+
+-------------------------------------------------------------------
+Fri Apr 29 19:36:02 UTC 2011 - ocefpaf@yahoo.com.br
+
+- Updated to 4.0.8
+  * Support HPSS; Workaround netCDF NOFILL bug (upgrade recommended); Support
+    CF bounds; CF noleap not no_leap; Fix ncatted overwrite-mode; Fix NC_BYTE
+    printing
+
+-------------------------------------------------------------------
+Sun Mar 20 01:06:20 UTC 2011 - ocefpaf@yahoo.com.br
+
+- Updated to 4.0.7
+  * Fix degenerate hyperslab bug (upgrade recommended)
+
+-------------------------------------------------------------------
+Thu Feb  3 23:54:45 UTC 2011 - ocefpaf@yahoo.com.br
+
+- Updated to 4.0.6
+  * clang-compliance; Fix ncra YYYYMMDD-date bug; Extract all associated
+    coordinates; Tighten ncbo warnings; ncpdq warns when _FillValue outside
+    packing range
+
+-------------------------------------------------------------------
+Fri Oct 15 18:48:45 UTC 2010 - ocefpaf@yahoo.com.br
+
+- Update to 4.0.5
+  * Fix ncks hyperslabbing bug; Fix ncra CF "coordinate" bug
+

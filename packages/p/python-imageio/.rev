@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16986bcdf7ee4f1b507bd8750f1e0c1c</srcmd5>
+    <version>2.1.2</version>
+    <time>1520588188</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-holoviews, already in openSUSE:Factory.</comment>
+    <requestid>581983</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>016fd3c83287c7782072db7708c13f70</srcmd5>
+    <version>2.3.0</version>
+    <time>1524742642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599638</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>caadaecbd3328a1080a13f1af57d9b51</srcmd5>
+    <version>2.3.0</version>
+    <time>1537115485</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix BuildRequires (&quot;freeimage-devel&quot; instead of &quot;libfreeimage3&quot;), and
+  remove superfluous Requires for libfreeimage3.
+- Remove shebangs from non-scripts in shipped plugins.
+- Add python-imageio-rpmlintrc ... we install zero-length files.
+</comment>
+    <requestid>633470</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0339230279957e9f877cf67307510444</srcmd5>
+    <version>2.3.0</version>
+    <time>1545647900</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659436</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b89406979782f50cd5bebe9c8478bfa0</srcmd5>
+    <version>2.3.0</version>
+    <time>1553611446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688136</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e2742db4da2f7be0e9560f88d819f4e</srcmd5>
+    <version>2.5.0</version>
+    <time>1558532322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698244</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0e0df447802ce09a3e1aec2c66c8b1cf</srcmd5>
+    <version>2.5.0</version>
+    <time>1585265154</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>785581</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e586161d4020a20f671530920c52846</srcmd5>
+    <version>2.8.0</version>
+    <time>1587325790</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>794615</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a3675db0ae469ed0db885994e09854d8</srcmd5>
+    <version>2.8.0</version>
+    <time>1591379920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>808788</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6d292650bd9cdffbe4d9d185ab7b872a</srcmd5>
+    <version>2.9.0</version>
+    <time>1613511272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872659</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>acebdb88fd4b88f17b86269b88e7cbfd</srcmd5>
+    <version>2.16.1</version>
+    <time>1647724835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962946</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a6eceaa3cef9327184f8bfbb8da5a3f3</srcmd5>
+    <version>2.21.2</version>
+    <time>1664468037</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006881</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>738e822dfeb086d9919edcfc01590a95</srcmd5>
+    <version>2.31.1</version>
+    <time>1688148007</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file.
+- update to 2.31.1
+  * Add support for Python 3.11
+  * Tifffile v3 support
+  * Add audio support for ffmpeg writer
+  * small improvements to pyav
+  * Consistently apply color palettes by default
+  * Add n_images to ImageProperties
+  * Expose v3 plugins via v2 API
+  * Decode gray 16-bit PNG as uint16 (not int32) if pillow allows
+- update to 2.22.1:
+  * Raise ImportError when iio-ffmpeg is missing  
+</comment>
+    <requestid>1096162</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>88268037a869aeaaef300722d2eb6c35</srcmd5>
+    <version>2.31.1</version>
+    <time>1692379739</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104634</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>46c38d75fb909e4c802b1726d6217f27</srcmd5>
+    <version>2.33.0</version>
+    <time>1701121500</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.33.0:
+  * Update pyav plugin to reflect AV changes
+  * Unpin Pillow and allow versions &gt;=10.1.0
+  * Support for AVIF image format
+  * Add support for HEIF format
+  * Raise warning instead of error when using fps in pillow
+  * Consistently load GIF frames using the same pixel format
+  * Refactor resolution metadata reading for TIFF and avoid failing on missing data
+  * Add bytes to ImageResource typehints
+  * Remove deprecations in CD
+  * Fix typo in README.md
+  * Fix several typos in the docs and source code comments
+  * Add migration note for format kwarg
+
+  * Raise ImportError when iio-ffmpeg is missing
+- Update to 2.22.0</comment>
+    <requestid>1129223</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9f2455e80110e7b46a1aebfc5fff6b54</srcmd5>
+    <version>2.33.1</version>
+    <time>1702845129</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.33.1:
+  * Replace mktemp with mkstemp when caching to disk for legacy
+    plugins</comment>
+    <requestid>1133613</requestid>
+  </revision>
+</revisionlist>

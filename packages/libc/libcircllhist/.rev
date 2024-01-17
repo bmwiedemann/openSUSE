@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30b58c946c1361db9c8dc08c0a70d99c</srcmd5>
+    <version>20180917</version>
+    <time>1549017853</time>
+    <user>dimstar_suse</user>
+    <comment>- Change library package name from libcircllhist0 to
+  libcircllhist0_0_1 to follow the pattern about sonames with
+  minor and patch version.
+- Initial version 20180917
+</comment>
+    <requestid>668123</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a1b1d22c65600de3125d73f67ca1b0ab</srcmd5>
+    <version>20180917</version>
+    <time>1552206991</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682566</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Fri Apr 14 14:56:54 UTC 2023 - Stefan Weiberg <sweiberg@suse.com>
+
+- add man pages
+
+-------------------------------------------------------------------
+Fri Apr 14 14:44:27 UTC 2023 - sweiberg@suse.com
+
+- Update to version 2.0.1:
+  * 2.0.1 (#256)
+  * Create FUNDING.yml
+  * 2.0.0 (#253)
+  * 1.0.34 (#243)
+  * update man for 1.0.33
+  * 1.0.33 (#242)
+  * 1.0.32 (#240)
+  * 1.0.31 (#238)
+  * fix man
+  * Fix documentation
+
+-------------------------------------------------------------------
+Tue Nov 29 16:12:05 UTC 2022 - sweiberg@suse.com
+
+- Update to version 1.0.24:
+  * The config option tag-follow works now
+- Update to version 1.0.23:
+  * List of followed tags. Use :tags
+  * Multiple tags in one feed. Use :tag linux mastodon
+  * Two new flags --config and --config-dir if you want to load
+    your configuration from a custom location. You can also use
+    the environment variables TUT_CONF and TUT_CONF_DIR instead
+  * :timeline direct shouldn't crash tut
+  * :user should now find more accounts
+- Update to version 1.0.22:
+  * Tut won't crash when you edit a reply
+
+-------------------------------------------------------------------
+Fri Nov 25 07:43:22 UTC 2022 - sweiberg@suse.com
+
+- Update to version 1.0.21:
+  * edit toots (#188)
+
+-------------------------------------------------------------------
+Wed Nov 23 18:59:51 UTC 2022 - sweiberg@suse.com
+
+- Update to version 1.0.20:
+  * 1.0.20 (#183)
+    You can now follow and unfollow tags with :follow-tag tut and
+    :unfollow-tag tut.
+    You can now add and remove users from lists. Run :lists and
+    then you can use the keys that tut displays. This feature only
+    works okay as it doesn't give you any response if the user is
+    added to the list or not. But it works.
+    An error from the terminal programs like lynx shouldn't crash
+    tut.
+    When you are reading a thread tut won't make unnecessary API
+    requests
+  * add history to help
+  * 1.0.19 (#179)
+  * 1.0.18 (#175)
+  * Updating go install command. (#167)
+  * 1.0.17 (#164)
+  * 1.0.16 (#161)
+  * 1.0.15 (#160)
+  * 1.0.14 (#159)
+  * 1.0.13 (#157)
+
+-------------------------------------------------------------------
+Mon Nov 21 11:47:53 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
+
+- Initial packaging of tut version 1.0.19:
+  * New features:
+    New command :history and leader action history that lets you
+    see the edit history of a toot.
+    Notifications when someone edits a toot you've boosted.
+
+  * Bug fix
+    An error from the editor shouldn't crash tut.

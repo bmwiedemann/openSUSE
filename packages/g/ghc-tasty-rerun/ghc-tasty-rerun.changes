@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Sun Oct 15 17:56:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty-rerun to version 1.1.19 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Sep 27 20:41:51 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty-rerun to version 1.1.19 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Sep 10 00:17:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty-rerun to version 1.1.19.
+  # 1.1.19
+
+  * Support tasty 1.5.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Jan 29 19:42:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty-rerun to version 1.1.18 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed May  4 00:46:57 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update tasty-rerun to version 1.1.18 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Sep  7 08:15:18 UTC 2021 - psimons@suse.com
+
+- Update tasty-rerun to version 1.1.18 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jan  4 11:47:41 UTC 2021 - psimons@suse.com
+
+- Update tasty-rerun to version 1.1.18 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Thu Oct 29 03:01:15 UTC 2020 - psimons@suse.com
+
+- Update tasty-rerun to version 1.1.18.
+  # 1.1.18
+
+  * Support tasty 1.4.
+
+-------------------------------------------------------------------
+Mon Aug 31 09:34:35 UTC 2020 - psimons@suse.com
+
+- Update tasty-rerun to version 1.1.17 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:12 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:36 UTC 2020 - psimons@suse.com
+
+- Add tasty-rerun at version 1.1.17.
+

@@ -1,0 +1,6 @@
+<package name="yast2-audit-laf" project="openSUSE:Factory">
+  <title>YaST2 - Configuration of Linux Auditing (LAF)</title>
+  <description>This module allows the configuration of the audit daemon as well as to
+add rules for the audit subsystem.</description>
+  <devel project="YaST:Head" package="yast2-audit-laf"/>
+</package>

@@ -1,0 +1,347 @@
+From 96bfe69e7f9f6e0f175a4c501a96054cb537850e Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 22 Sep 2023 18:53:26 +0200
+Subject: [PATCH 168/173] Use ECMAScript import/export statements
+
+https://gjs.guide/extensions/upgrading/gnome-shell-45.html
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ extension/extension.js                    | 18 +++++--------
+ extension/prefs.js                        |  9 +++----
+ extension/stuff.js                        | 10 +++----
+ extension/widgets/categoryTotalsWidget.js | 14 +++++-----
+ extension/widgets/factsBox.js             | 32 ++++++++++-------------
+ extension/widgets/ongoingFactEntry.js     | 14 +++++-----
+ extension/widgets/panelWidget.js          | 25 +++++++++---------
+ extension/widgets/todaysFactsWidget.js    | 18 ++++++-------
+ extension/widgets/totalTimeWidget.js      | 14 +++++-----
+ 9 files changed, 70 insertions(+), 84 deletions(-)
+
+diff --git a/extension/extension.js b/extension/extension.js
+index 8ece31e..31068ef 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -21,18 +21,14 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ */
+ 
+ 
+-const GLib = imports.gi.GLib;
+-const Shell = imports.gi.Shell;
+-const Meta = imports.gi.Meta;
+-const Main = imports.ui.main;
+-const Gio = imports.gi.Gio;
++import GLib from 'gi://GLib';
++import Shell from 'gi://Shell';
++import Meta from 'gi://Meta';
++import Gio from 'gi://Gio';
++import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+ 
+-const Gettext = imports.gettext.domain('hamster-shell-extension');
+-const _ = Gettext.gettext;
+-
+-const ExtensionUtils = imports.misc.extensionUtils;
+-const Me = ExtensionUtils.getCurrentExtension();
+-const PanelWidget = Me.imports.widgets.panelWidget.PanelWidget;
++import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
++import PanelWidget from './widgets/panelWidget.js';
+ 
+ // dbus-send --session --type=method_call --print-reply --dest=org.gnome.Hamster /org/gnome/Hamster org.freedesktop.DBus.Introspectable.Introspect
+ const ApiProxyIface = ['',
+diff --git a/extension/prefs.js b/extension/prefs.js
+index 23e9ab0..c7ae150 100644
+--- a/extension/prefs.js
++++ b/extension/prefs.js
+@@ -21,11 +21,10 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ */
+ 
+ 
+-const Gdk = imports.gi.Gdk;
+-const Gio = imports.gi.Gio;
+-const Gtk = imports.gi.Gtk;
+-const GObject = imports.gi.GObject;
+-const ExtensionUtils = imports.misc.extensionUtils;
++import Gdk from 'gi://Gdk';
++import Gio from 'gi://Gio';
++import Gtk from 'gi://Gtk';
++import GObject from 'gi://GObject';
+ 
+ const HamsterSettingsWidget = GObject.registerClass(
+ class HamsterSettingsWidget extends Gtk.Grid {
+diff --git a/extension/stuff.js b/extension/stuff.js
+index 56c7054..4cd8a12 100644
+--- a/extension/stuff.js
++++ b/extension/stuff.js
+@@ -29,7 +29,7 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+  *
+  * @param {int} - Total amount of seconds to represent.
+  */
+-function formatDuration(total_seconds) {
++export function formatDuration(total_seconds) {
+     let hours = total_seconds / 3600;
+     let remaining_seconds = total_seconds % 3600;
+     // We only care for "full minutes".
+@@ -45,7 +45,7 @@ function formatDuration(total_seconds) {
+  *
+  * @param {int} - Total amount of seconds to represent.
+  */
+-function formatDurationHuman(total_seconds) {
++export function formatDurationHuman(total_seconds) {
+     let hours = total_seconds / 3600;
+     let remaining_seconds = total_seconds % 3600;
+     // We only care for "full minutes".
+@@ -75,7 +75,7 @@ function formatDurationHuman(total_seconds) {
+  *
+  * @param {int} - Total amount of seconds to represent.
+  */
+-function formatDurationHours(seconds) {
++export function formatDurationHours(seconds) {
+     // We shift by one decimal place to the left in order to round properly.
+     let hours = Math.round((seconds/3600)*10);
+     // Shift right after rounding.
+@@ -85,7 +85,7 @@ function formatDurationHours(seconds) {
+ 
+ // Other helper functions
+ 
+-function fromDbusFact(fact) {
++export function fromDbusFact(fact) {
+     // converts a fact coming from dbus into a usable object
+     function UTCToLocal(timestamp) {
+         // TODO - is this really the way?!
+@@ -108,7 +108,7 @@ function fromDbusFact(fact) {
+     return result;
+ }
+ 
+-function fromDbusFacts(facts) {
++export function fromDbusFacts(facts) {
+     let res = [];
+     for (var fact of facts) {
+         res.push(fromDbusFact(fact));
+diff --git a/extension/widgets/categoryTotalsWidget.js b/extension/widgets/categoryTotalsWidget.js
+index 88f9b96..9b36b7e 100644
+--- a/extension/widgets/categoryTotalsWidget.js
++++ b/extension/widgets/categoryTotalsWidget.js
+@@ -21,13 +21,11 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ */
+ 
+ 
+-const St = imports.gi.St;
+-const Clutter = imports.gi.Clutter;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-
+-const Me = imports.misc.extensionUtils.getCurrentExtension();
+-const Stuff = Me.imports.stuff;
++import St from 'gi://St';
++import Clutter from 'gi://Clutter';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import * as Stuff from '../stuff.js'
+ 
+ 
+ /**
+@@ -66,3 +64,5 @@ class CategoryTotals extends St.Label {
+         this.set_text(getString(facts));
+     }
+ });
++
++export default CategoryTotalsWidget;
+diff --git a/extension/widgets/factsBox.js b/extension/widgets/factsBox.js
+index a033602..ab745de 100644
+--- a/extension/widgets/factsBox.js
++++ b/extension/widgets/factsBox.js
+@@ -21,23 +21,18 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ */
+ 
+ 
+-const St = imports.gi.St;
+-const PopupMenu = imports.ui.popupMenu;
+-const Clutter = imports.gi.Clutter;
+-const Mainloop = imports.mainloop;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-
+-const Gettext = imports.gettext.domain('hamster-shell-extension');
+-const _ = Gettext.gettext;
+-
+-const Me = imports.misc.extensionUtils.getCurrentExtension();
+-const Stuff = Me.imports.stuff;
+-const OngoingFactEntry = Me.imports.widgets.ongoingFactEntry.OngoingFactEntry;
+-const CategoryTotalsWidget = Me.imports.widgets.categoryTotalsWidget.CategoryTotalsWidget;
+-const TotalTimeWidget = Me.imports.widgets.totalTimeWidget.TotalTimeWidget;
+-const TodaysFactsWidget = Me.imports.widgets.todaysFactsWidget.TodaysFactsWidget;
++import St from 'gi://St';
++import Clutter from 'gi://Clutter';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
++import { gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
++import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
++import * as Stuff from '../stuff.js';
++import OngoingFactEntry from './ongoingFactEntry.js';
++import CategoryTotalsWidget from './categoryTotalsWidget.js';
++import TotalTimeWidget from './totalTimeWidget.js';
++import TodaysFactsWidget from './todaysFactsWidget.js';
+ 
+ /**
+  * Create the widget that ``PanelWidget`` will use to dispay the *raw fact entry* as
+@@ -79,7 +74,6 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+         // Setup category summery
+         this.summaryLabel = new CategoryTotalsWidget();
+         main_box.add(this.summaryLabel);
+-
+         // Setup total time
+         this.totalTimeLabel = new TotalTimeWidget();
+         main_box.add(this.totalTimeLabel);
+@@ -100,7 +94,7 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+      * Focus the fact entry and make sure todaysFactsWidget are scrolled to the bottom.
+      */
+     focus() {
+-        Mainloop.timeout_add(20, function() {
++        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 20, function() {
+             this._scrollAdjustment.value = this._scrollAdjustment.upper;
+             global.stage.set_key_focus(this.ongoingFactEntry);
+         }.bind(this));
+@@ -113,3 +107,5 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+         global.stage.set_key_focus(null);
+     }
+ });
++
++export default FactsBox;
+diff --git a/extension/widgets/ongoingFactEntry.js b/extension/widgets/ongoingFactEntry.js
+index cce4929..cd63ae3 100644
+--- a/extension/widgets/ongoingFactEntry.js
++++ b/extension/widgets/ongoingFactEntry.js
+@@ -21,15 +21,11 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ */
+ 
+ 
+-const GObject = imports.gi.GObject;
+-const St = imports.gi.St;
+-const Clutter = imports.gi.Clutter;
+-
+-const Gettext = imports.gettext.domain('hamster-shell-extension');
+-const _ = Gettext.gettext;
+-
+-const Me = imports.misc.extensionUtils.getCurrentExtension();
++import GObject from 'gi://GObject';
++import St from 'gi://St';
++import Clutter from 'gi://Clutter';
+ 
++import { gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
+ 
+ /**
+  * Custom Entry widget that allows entering a *raw fact* string for a new ongoing fact.
+@@ -186,3 +182,5 @@ class OngoingFactEntry extends St.Entry {
+         }
+     }
+ });
++
++export default OngoingFactEntry;
+diff --git a/extension/widgets/panelWidget.js b/extension/widgets/panelWidget.js
+index 4a15dd6..b02d37b 100644
+--- a/extension/widgets/panelWidget.js
++++ b/extension/widgets/panelWidget.js
+@@ -21,20 +21,17 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ */
+ 
+ 
+-const Gio = imports.gi.Gio;
+-const GObject = imports.gi.GObject;
+-const Clutter = imports.gi.Clutter;
+-const PanelMenu = imports.ui.panelMenu;
+-const St = imports.gi.St;
+-const PopupMenu = imports.ui.popupMenu;
+-const GLib = imports.gi.GLib;
++import Gio from 'gi://Gio';
++import GObject from 'gi://GObject';
++import Clutter from 'gi://Clutter';
++import St from 'gi://St';
++import GLib from 'gi://GLib';
++import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
++import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
+ 
+-const Gettext = imports.gettext.domain('hamster-shell-extension');
+-const _ = Gettext.gettext;
+-
+-const Me = imports.misc.extensionUtils.getCurrentExtension();
+-const FactsBox = Me.imports.widgets.factsBox.FactsBox;
+-const Stuff = Me.imports.stuff;
++import { gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
++import FactsBox from './factsBox.js';
++import * as Stuff from '../stuff.js';
+ 
+ /**
+  * Class that defines the actual extension widget to be shown in the panel.
+@@ -341,3 +338,5 @@ class PanelWidget extends PanelMenu.Button {
+         }
+     }
+ });
++
++export default PanelWidget;
+diff --git a/extension/widgets/todaysFactsWidget.js b/extension/widgets/todaysFactsWidget.js
+index 778f964..29c2370 100644
+--- a/extension/widgets/todaysFactsWidget.js
++++ b/extension/widgets/todaysFactsWidget.js
+@@ -21,17 +21,13 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ */
+ 
+ 
+-const St = imports.gi.St;
+-const Clutter = imports.gi.Clutter;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-
+-const Gettext = imports.gettext.domain('hamster-shell-extension');
+-const _ = Gettext.gettext;
+-
+-const Me = imports.misc.extensionUtils.getCurrentExtension();
+-const Stuff = Me.imports.stuff;
++import St from 'gi://St';
++import Clutter from 'gi://Clutter';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
+ 
++import { gettext as _ } from 'resource:///org/gnome/shell/extensions/extension.js';
++import * as Stuff from '../stuff.js';
+ 
+ /**
+  * A widget that lists all facts for *today*.
+@@ -195,3 +191,5 @@ class TodaysFactsWidget extends St.ScrollView {
+         this.populateFactsWidget(facts, ongoingFact);
+     }
+ });
++
++export default TodaysFactsWidget;
+diff --git a/extension/widgets/totalTimeWidget.js b/extension/widgets/totalTimeWidget.js
+index 9a6d64b..d11be30 100644
+--- a/extension/widgets/totalTimeWidget.js
++++ b/extension/widgets/totalTimeWidget.js
+@@ -21,13 +21,11 @@ Copyright (c) 2016 - 2018 Eric Goller / projecthamster <elbenfreund@projecthamst
+ Copyright (c) 2018 Thibaut Madelaine <madtibo_git@tribu-ml.fr>
+ */
+ 
+-const St = imports.gi.St;
+-const Clutter = imports.gi.Clutter;
+-const GLib = imports.gi.GLib;
+-const GObject = imports.gi.GObject;
+-const Me = imports.misc.extensionUtils.getCurrentExtension();
+-const Stuff = Me.imports.stuff;
+-
++import St from 'gi://St';
++import Clutter from 'gi://Clutter';
++import GLib from 'gi://GLib';
++import GObject from 'gi://GObject';
++import * as Stuff from '../stuff.js';
+ 
+ /**
+  * Custom Label widget that displays total time.
+@@ -58,3 +56,5 @@ var TotalTimeWidget = GObject.registerClass(
+         this.set_text(getString(facts));
+     }
+ });
++
++export default TotalTimeWidget;
+-- 
+2.42.0
+

@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2e758e3c8d186430081d7f9c93f5144</srcmd5>
+    <version>1.6.2</version>
+    <time>1586555653</time>
+    <user>dimstar_suse</user>
+    <comment>Reintroducing package after  boo#1154971 (CVE-2019-18359) was fixed.</comment>
+    <requestid>792961</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a1fe548de071427eb0ae916ea6d037b6</srcmd5>
+    <version>1.6.2</version>
+    <time>1586775160</time>
+    <user>dimstar_suse</user>
+    <comment>- fix source validator and mark license file as license text
+- Add 0001-fix-security-bugs.patch to fix CVE-2019-18359 and other
+  crashes. boo#1154971
+- Update to version 1.6.2
+- Dropped mp3gain-1.6.1-libmpg123_fixup.patch,
+  mp3gain-1.6.1-fix_warnings.patch and
+  mp3gain-1.6.1-fix-CVE-2017-12911.patch (merged upstream)
+- Added mp3gain-1.6.1-fix-CVE-2017-12911.patch
+- Dropped mp3gain-makefile-optflags.diff (no longer necessary)
+- Replaced mp3gain-exit_if_cannot_parse.patch with
+  mp3gain-1.6.1-libmpg123_fixup.patch and
+  mp3gain-implicit_declarations.patch with 
+  mp3gain-1.6.1-fix_warnings.patch
+- Refreshed mp3gain.1.gz
+- Update to version 1.6.1
+  * Link to current libmpg123 instead of the hacked old version
+    thereof
+- Drop gpl-2.0.txt as source (package can be shipped as lgpl2.1+
+  now)
+- Add mp3gain-implicit_declarations.patch
+- Add mp3gain-exit_if_cannot_parse.patch (hotfix)
+- Set correct license (GPL-2.0+) and replaced source2 with its
+  text instead
+- Cleaned up buildrequires
+- Spec cleanup
+- changed the gpl LICENSE file to v2.1
+- made a few spec file cleanups for future releases
+- extracted missing manpage from
+http://ftp.us.debian.org/debian/pool/main/m/mp3gain/mp3gain_1.5.2-r2-2_amd64.deb
+- added this new LICENSE file because of this warning:
+mp3gain.x86_64: W: incorrect-fsf-address /usr/share/doc/packages/mp3gain/lgpl.txt
+The Free Software Foundation address in this file seems to be outdated or
+misspelled.  Ask upstream to update the address, or if this is a license file,possibly the entire file with a new copy available from the FSF. 
+- new upstream version 1.5.2-r2 
+ 
+- new upstream version 1.5.2   
+- moved to Packman               
+                                 
+- new upstream version           
+- rewrote spec file
+</comment>
+    <requestid>793210</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-snuggs" project="openSUSE:Factory">
+  <title>python-snuggs</title>
+  <description>Snuggs are s-expressions for Numpy</description>
+  <devel project="Application:Geo" package="python-snuggs"/>
+</package>

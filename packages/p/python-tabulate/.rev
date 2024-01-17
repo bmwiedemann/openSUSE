@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c955d822d7273ebd1a59f5fb5272c9d1</srcmd5>
+    <version>0.7.7</version>
+    <time>1493020175</time>
+    <user>dimstar_suse</user>
+    <comment>tabulate is rather useful for ascii tables</comment>
+    <requestid>489792</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3ebde809d871c64f1a29fe73452af678</srcmd5>
+    <version>0.8.2</version>
+    <time>1522226005</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-setuptools to Requires
+
+- Update to 0.8.2
+  * Bugfix release
+- Changes from 0.8.1
+  * Multiline data in several output formats. New latex_raw format.
+  * Column-specific floating point formatting.
+  * Python 3.5 &amp; 3.6 support.
+  * Drop support for Python 2.6, 3.2, 3.3 (should still work).
+- Run spec-cleaner</comment>
+    <requestid>591612</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7824c2a0bd8881393904b90c519f1f07</srcmd5>
+    <version>0.8.3</version>
+    <time>1550151071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673450</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>545404857bc2441f7946dc4e96eeb611</srcmd5>
+    <version>0.8.3</version>
+    <time>1568805065</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731170</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>09e914c21166b5dc6adae02f598f64ce</srcmd5>
+    <version>0.8.5</version>
+    <time>1571950940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.5:
+  * various bugfixes
+- Remove merged pr_2.patch</comment>
+    <requestid>736041</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5dd0d99fa1e7f43a3b16b4ff1bae1841</srcmd5>
+    <version>0.8.6</version>
+    <time>1575282944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752804</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>023fa28bb19263532a6864a68106f051</srcmd5>
+    <version>0.8.6</version>
+    <time>1584050314</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pandas dependency (optional test dependency, and went python 3.x only)</comment>
+    <requestid>783188</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c4d22d96f9c25222a312bd85708ee85</srcmd5>
+    <version>0.8.7</version>
+    <time>1588323900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797707</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>3043b6c53051aaf50f0f598fd7bd0e73</srcmd5>
+    <version>0.8.7</version>
+    <time>1590649664</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807161</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f3b516e934d95e8951df333525cebaf1</srcmd5>
+    <version>0.8.7</version>
+    <time>1610965585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862896</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a44510bf04db5f944fd81eb857fb82d</srcmd5>
+    <version>0.8.9</version>
+    <time>1626887127</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.9:
+  * Bug fix. Revert support of decimal separators.
+  * Python 3.9 support, 3.10 ready.
+  * New formats: ``unsafehtml``, ``latex_longtable``, ``fancy_outline``.
+  * Support lists of UserDicts as input.
+  * Support hyperlinks in terminal output.
+  * Improve testing on systems with proxies.
+  * Migrate to pytest.
+  * Various bug fixes and improvements.</comment>
+    <requestid>906725</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cdc2cc74df2e459ea7ba9709ef8f5cb1</srcmd5>
+    <version>0.8.9</version>
+    <time>1633466009</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on nose.</comment>
+    <requestid>922084</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2581c6bcd21b878842c0663b71882fc5</srcmd5>
+    <version>0.8.10</version>
+    <time>1657617116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988241</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d51da51b034120a4908b5b6c10b39580</srcmd5>
+    <version>0.9.0</version>
+    <time>1676827123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066244</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cf66515cb491aeeeeca6333d1215f8b6</srcmd5>
+    <version>0.9.0</version>
+    <time>1682691740</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1083124</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>da807baf1ffc97e8c4f7b3aa731baafd</srcmd5>
+    <version>0.9.0</version>
+    <time>1684688881</time>
+    <user>dimstar_suse</user>
+    <comment>- build with setuptools_scm</comment>
+    <requestid>1087891</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-pyperf" project="openSUSE:Factory">
+  <title>python-pyperf</title>
+  <description>Python module to run and analyze benchmarks</description>
+  <devel project="devel:languages:python" package="python-pyperf"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="perl-B-Hooks-OP-PPAddr" project="openSUSE:Factory">
+  <title>Hook into opcode execution</title>
+  <description>This module provides a c api for XS modules to hook into the execution of
+perl opcodes.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-B-Hooks-OP-PPAddr"/>
+  <url>http://search.cpan.org/dist/B-Hooks-OP-PPAddr</url>
+</package>

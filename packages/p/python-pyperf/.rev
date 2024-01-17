@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>266f9333e926cee5bcbdd3c7236c37fb</srcmd5>
+    <version>1.6.1</version>
+    <time>1572278128</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>738178</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06f94724e7164bf85e02dfb459136752</srcmd5>
+    <version>1.7.0</version>
+    <time>1583759877</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782891</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b209a8aec80c18f3adc1cd714bacc3be</srcmd5>
+    <version>2.0.0</version>
+    <time>1584964197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786881</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0ab3f28a4b510b2c03442b933fad5ff3</srcmd5>
+    <version>2.0.0</version>
+    <time>1590506312</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807684</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>144953d055ff3a7edd32c035dc0ab6c8</srcmd5>
+    <version>2.3.1</version>
+    <time>1649370483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967459</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2bbfe3916cc659a8cba031c66f602505</srcmd5>
+    <version>2.4.1</version>
+    <time>1665185105</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008685</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>58be4090410d51be7647a54d85bffe66</srcmd5>
+    <version>2.5.0</version>
+    <time>1668271253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035239</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ace1f17386785bcdef07f8227c02a013</srcmd5>
+    <version>2.6.2</version>
+    <time>1704660163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.2:
+  * Now, pystats stats are collected during warmups.
+  * system: Fix detection of battery.
+  * Fix a possible attribute error in argument parsing.
+  * Inherit PYTHONPATH environment variable by default.
+  * Runner.bench_async_func() takes an optional loop_factory to
+    support custom loop construction.
+
+- Update to version 2.5.0
+- version update to 2.4.1</comment>
+    <requestid>1137437</requestid>
+  </revision>
+</revisionlist>

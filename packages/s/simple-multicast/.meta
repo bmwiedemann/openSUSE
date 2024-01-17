@@ -1,0 +1,14 @@
+<package name="simple-multicast" project="openSUSE:Factory">
+  <title>Multicast Server and Client application</title>
+  <description>Simple multicast Server/Client application.
+Supports:
+
+ * IPv4 AND IPv6
+ * Multicast Server
+ * Multicast client
+ * Source Specific Multicast client
+
+</description>
+  <devel project="network:utilities" package="simple-multicast"/>
+  <url>https://sourceforge.net/projects/simplemulticast/</url>
+</package>

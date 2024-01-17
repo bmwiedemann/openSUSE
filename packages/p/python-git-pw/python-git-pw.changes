@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Thu Dec  7 23:02:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Add release note for --since, --before opts
+  * patch, series: Add support for '--since' and '--before'
+  * utils: Correct type
+  * Fix black issues
+  * CI: Switch to pypa/gh-action-pypi-publish@release/v1
+
+-------------------------------------------------------------------
+Mon Apr  3 08:17:21 UTC 2023 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Wed Dec 14 08:47:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+
+-------------------------------------------------------------------
+Tue Dec 13 15:29:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.4.0
+  * Replace implicit optional typedefs
+
+-------------------------------------------------------------------
+Fri May  6 10:28:55 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.3.0
+  2.3.0
+  -----
+  * Release 2.3.0
+  * Drop Python 3.5, 3.6 support, add 3.10
+  * Create git-blame-ignore-revs file
+  * Blackify code
+  * requirements: Uncap docs requirements
+  * CI: Add missing anchors
+  2.2.3
+  -----
+  * Release 2.2.3
+  * CI: Generate release
+  * rpm: Add README for RPM specs
+  * requirements: Uncap test requirements
+  * rpm: Yet more spec file changes
+  2.2.2
+  -----
+  * Release 2.2.2
+  * Add missing runtime dependencies
+  * rpm: Modify changelog
+  2.2.1
+  -----
+  * Release 2.2.1
+  * requirements: Remove all upper constraint caps
+  * rpm: Add pytest as dependency
+  2.2.0
+  -----
+  * Release 2.2.0
+  * rpm: Spec updates
+  * Replace mock with unittest.mock
+  * Add missing PyYAML type stubs package
+  * utils: Add support for 'yaml' formatter
+  * trivial: Style fixes
+  * README: Update docs for Patchwork 3.0
+  * README: Use python3 variants of packages
+  * CI: Stop publishing to test.pypi.org
+  2.1.2
+  -----
+  * Release 2.1.2
+  * requirements: Add support for click 8.x
+  * tests: Unset PAGER env when testing fallback
+  * docs: Update doc name
+  * utils: Convert prints to logging calls
+  * utils: Log subprocess calls
+  2.1.1
+  -----
+  * man: Update man pages
+  2.1.0
+  -----
+  * Add release note for new 'bundle download' options
+  * Fix the setup.py warning
+  * Allow downloading of series patches to separate files
+  * utils: Remove unnecessary future import
+  * README: Re-add build status
+  * Remove references to Travis
+  * Switch to GitHub Actions
+  * tox: Add missing 'typing' stubs
+  * tox: Fix default Python versions
+  * Convert to Python 3-style type hints
+  * Add release note for read-only auth change
+  * Do not require authentication for GET requests
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Wed Jul 29 06:47:47 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.0:
+  * Drop support for Python 2.7
+  * trivial: Use names for options with multiple=True
+  * Add '--hash' option for 'git-pw patch list'
+  * rpm: Address review comments
+  * Add spec file
+  * Revert "docs: Increase support range for reno"
+  * travis: Add support for GitHub releases
+  * docs: Increase support range for reno
+
+-------------------------------------------------------------------
+Wed Jun 24 04:27:25 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.9.0:
+  * Adds support for Patchwork API v1.2 and introduces five new commands:
+    + bundle create
+    + bundle update
+    + bundle delete
+    + bundle add
+    + bundle remove
+
+-------------------------------------------------------------------
+Tue Mar 31 16:43:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.8.1: fixing the bug we filed.
+
+-------------------------------------------------------------------
+Tue Mar 31 14:54:17 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Skip over failing UpdateTestCase.test_update_with_invalid_state test
+  (gh#getpatchwork/git-pw#53)
+- Add Provides/Obsoletes to rename git-pw to python-git-pw package.
+- Replace %python_only construct with proper alternatives.
+
+-------------------------------------------------------------------
+Sun Mar 15 07:24:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.0:
+  * no changelog
+- Set out proper dependencies
+- Fix build without python2
+
+-------------------------------------------------------------------
+Wed Nov 27 08:11:06 UTC 2019 - Johannes Thumshirn <jthumshirn@suse.com>
+
+- Update to v1.7.0
+
+-------------------------------------------------------------------
+Sun Feb 10 10:11:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.5.1
+  + Fix help text for --format to refer to pw.format
+
+-------------------------------------------------------------------
+Wed Nov 28 10:10:51 UTC 2018 - jthumshirn@suse.com
+
+- Initial packaging for openSUSE

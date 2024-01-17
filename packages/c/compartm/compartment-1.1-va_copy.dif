@@ -1,0 +1,37 @@
+diff -rU 10 ../compartment-1.1.orig/compartment.c ./compartment.c
+--- ../compartment-1.1.orig/compartment.c	2008-09-03 16:43:48.000000000 +0200
++++ ./compartment.c	2008-09-05 11:19:57.000000000 +0200
+@@ -93,29 +93,31 @@
+ "files to another user than root if you use capabilties. Read the README file!\n"
+ "\nKnown capset names: none");
+     tmp = 0;
+     while(strlen(cap_set_names[tmp])>0)
+         fprintf(stderr," %s",cap_set_names[tmp++]);
+     fprintf(stderr, " (see linux/capability.h for more information)\n");
+     exit(-1);
+ }
+ 
+ void print_msg(const char *format, ...) {
+-    va_list arg;
++    va_list arg, arg_copy;
+     char *log;
+     if (quiet == 0) {
+         log = malloc(LOGBUF);
+         va_start(arg, format);
++        va_copy(arg_copy, arg);
+         vfprintf(stderr, format, arg);
+-        vsnprintf(log, LOGBUF, format, arg);
++        vsnprintf(log, LOGBUF, format, arg_copy);
+         syslog(LOG_NOTICE, log);
+         va_end(arg);
++        va_end(arg_copy);
+         free(log);
+     }
+ }
+ 
+ void my_secure() {
+     char file[10] = "/dev/null";
+     int mode = O_RDWR;
+ 
+     alarm(0);
+     if (verbose)

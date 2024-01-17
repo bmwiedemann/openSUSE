@@ -1,0 +1,5 @@
+<package name="mint-y-icon-theme" project="openSUSE:Factory">
+  <title>Mint-Y icon themes</title>
+  <description>The flat, colourful, and modern themes based on Paper and Moka.</description>
+  <devel project="X11:Cinnamon:Factory" package="mint-y-icon-theme"/>
+</package>

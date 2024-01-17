@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Nov 16 10:14:11 UTC 2015 - coolo@suse.com
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-Proc-Simple/Changes
+
+            1.32 (2015/11/15)
+              (ms) [rt.cpan.org #108215] open() calls now use the safe form.
+
+-------------------------------------------------------------------
+Fri Jun 14 14:41:45 UTC 2013 - coolo@suse.com
+
+- updated to 1.31
+         (ms) To better deal with the race condition in the 
+              previous release, kill the newly created child 
+              process first, then send a killpg to its process 
+              group and ignore the outcome.
+
+         (ms) [RT 81203] Jim A Kessler reported a perl 5.16 issue
+              with the "AutoLoader" line, so I went ahead and removed
+              all references to "Exporter" and "AutoLoader", as 
+              Proc::Simple isn't using them at all.
+
+-------------------------------------------------------------------
+Mon Dec  5 14:39:34 UTC 2011 - Sascha.Manns@open-slx.de
+
+- changed Licensefield to that one which cpanspec gives me 
+
+-------------------------------------------------------------------
+Sun Dec  4 20:31:08 UTC 2011 - Sascha.Manns@open-slx.de
+
+- fixed build for < 11.4 
+
+-------------------------------------------------------------------
+Sun Dec  4 20:14:22 UTC 2011 - Sascha.Manns@open-slx.de
+
+- initial package 1.30
+    * created by cpanspec 1.78.06
+

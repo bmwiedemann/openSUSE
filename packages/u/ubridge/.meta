@@ -1,0 +1,5 @@
+<package name="ubridge" project="openSUSE:Factory">
+  <title>uBridge</title>
+  <description>uBridge is a simple application to create user-land bridges between various technologies. Currently bridging between UDP tunnels, Ethernet and TAP interfaces is supported. Packet capture is also supported.</description>
+  <devel project="Education" package="ubridge"/>
+</package>

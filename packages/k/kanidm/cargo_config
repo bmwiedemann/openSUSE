@@ -1,0 +1,15 @@
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/dnaeon/rust-sshkeys.git?rev=fa5bd02dd6e90ee724fdb981253c1e7726a7f534"]
+git = "https://github.com/dnaeon/rust-sshkeys.git"
+rev = "fa5bd02dd6e90ee724fdb981253c1e7726a7f534"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/kanidm/webauthn-rs.git?rev=2218d2055c0c900ef57b398423eee5e8d5521f4c"]
+git = "https://github.com/kanidm/webauthn-rs.git"
+rev = "2218d2055c0c900ef57b398423eee5e8d5521f4c"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"

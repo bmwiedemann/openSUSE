@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a746a07a8f9bbc5e01215a980ad57095</srcmd5>
+    <version>0.14.0</version>
+    <time>1597064830</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>825358</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8ad3f0d4674b13be45b5d01d1de87fc4</srcmd5>
+    <version>0.15.1</version>
+    <time>1620937127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>892683</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fffb5295a8b8de87999970438d436b0e</srcmd5>
+    <version>0.15.2</version>
+    <time>1641855243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.2:
+  - Ignore temporary attributes from project settings module (see
+    gh#idlesign/pytest-djangoapp#21).
+- Add django_4.patch making the package compatible with Django
+  4.* (gh#idlesign/pytest-djangoapp#23).
+</comment>
+    <requestid>945411</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b13775fecc8a778c5efabf62a57112e4</srcmd5>
+    <version>0.15.2</version>
+    <time>1647532898</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded {Build,}Requires on python-mock.</comment>
+    <requestid>962307</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f345a59113f4a2bc19888291991970ad</srcmd5>
+    <version>1.2.0</version>
+    <time>1690278683</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Add 'liveserver' and 'liveclient' fixtures (closes #24).
+  * Added 'command_makemigrations' fixture.
+  * Added 'conf_app_name' fixture (see #17).
+  * Fixture 'template_context' now accepts a username.
+  * Dropped support for Django 1.7.
+  * Dropped support for Py2. Py3.6+ specific syntax is
+    introduced. Code update may be required.
+  * Introduced new 'check_migrations' fixture.
+- drop django_4.patch (upstream)</comment>
+    <requestid>1100442</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,16 @@
+--- deepin-desktop-base-2021.3.10/distribution.info	2021-03-10 16:14:25.000000000 +0800
++++ deepin-desktop-base-2021.3.10-new/distribution.info	2021-04-15 20:09:15.879644520 +0800
+@@ -1,7 +1,7 @@
+ [Distribution]
+-Name=Deepin
+-WebsiteName=www.deepin.org
+-Website=https://www.deepin.org
+-Logo=/usr/share/deepin/distribution/distribution_logo.svg
+-LogoLight=/usr/share/deepin/distribution/distribution_logo_light.svg
+-LogoTransparent=/usr/share/deepin/distribution/distribution_logo_transparent.svg
++Name=openSUSE
++WebsiteName=www.opensuse.org
++Website=https://www.opensuse.org
++Logo=/usr/share/pixmaps/distribution-logos/square-hicolor.svg
++LogoLight=/usr/share/pixmaps/distribution-logos/square-hicolor.svg
++LogoTransparent=/usr/share/pixmaps/distribution-logos/square-symbolic.svg

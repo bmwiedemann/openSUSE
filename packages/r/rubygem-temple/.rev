@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45c7dcb70539b6fb93565f04fbb246ba</srcmd5>
+    <version>0.8.0</version>
+    <time>1496926925</time>
+    <user>dimstar_suse</user>
+    <comment>needed for adi:8</comment>
+    <requestid>500779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>979d4d984d3194a3f75a20cf7926797a</srcmd5>
+    <version>0.8.1</version>
+    <time>1553699851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685120</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28e60754eb146a75d5b12000899538d4</srcmd5>
+    <version>0.8.2</version>
+    <time>1583613621</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773857</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>365cfece8710f70b27776ecb98cf4183</srcmd5>
+    <version>0.9.1</version>
+    <time>1667067440</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 0.9.1
+ see installed CHANGES
+  0.9.1
+  
+    * Fix Slim's error in AttributeMerger due to 0.9.0's :capture_generator (#137)
+    * Fix Temple::ERB::Engine's &lt;%= to not escape and &lt;%== to escape expressions
+  
+  0.9.0
+  
+    * Require Ruby 2.5+ (#131)
+    * Change default :capture_generator to self (#113)
+    * Improve compatibility with Rails 7.1 (#135)
+    * Support Rails 6.1's annotate_rendered_view_with_filenames
+      with Temple::Filters::Ambles (#134)
+    * Fix a crash in StringSplitter filter (#138)
+    * Fix a warning by Object#=~ since Ruby 2.6 (#129)
+    * Fix deprecated Tilt template mime type (#108)
+    * Stop using deprecated EscapeUtils from Temple::Utils (#136)
+  
+</comment>
+    <requestid>1032163</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1e391ab4a51aee2ec4dcf37d6421fba6</srcmd5>
+    <version>0.10.0</version>
+    <time>1682095658</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 0.10.0
+  * Regression: Revert changes to :capture_generator since 0.8.2 (#112, #113, #137)
+  * Regression: Ensure that output buffer is not reused for capturing in Rails (#135)
+  * Drop support for Rails 4.x</comment>
+    <requestid>1081282</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cab703d01fadaa26ac7064909df35c2</srcmd5>
+    <version>0.10.3</version>
+    <time>1700078837</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123157</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="sysbench" project="openSUSE:Factory">
+  <title>A MySQL benchmarking tool</title>
+  <description>This benchmark was designed for identifying basic system parameters, as
+they are important for systems using MySQL (w Innodb) under intensive
+load.
+</description>
+  <devel project="benchmark" package="sysbench"/>
+</package>

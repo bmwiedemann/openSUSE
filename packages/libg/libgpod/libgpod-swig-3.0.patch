@@ -1,0 +1,18 @@
+Index: libgpod-0.8.3/bindings/python/gpod.i.in
+===================================================================
+--- libgpod-0.8.3.orig/bindings/python/gpod.i.in
++++ libgpod-0.8.3/bindings/python/gpod.i.in
+@@ -298,9 +298,10 @@ PyObject* sw_get_photo(GList *list, gint
+ %include "gpod_doc.i"
+ %include "@top_builddir@/config.h"
+ 
+-# be nicer to decode these utf8 strings into Unicode objects in the C
+-# layer. Here we are leaving it to the Python side, and just giving
+-# them utf8 encoded Strings.
++/* be nicer to decode these utf8 strings into Unicode objects in the C
++ * layer. Here we are leaving it to the Python side, and just giving
++ * them utf8 encoded Strings.
++ */
+ typedef char gchar;
+ 
+ %typemap(in) time_t {

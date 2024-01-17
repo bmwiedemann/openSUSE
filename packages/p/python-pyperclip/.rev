@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf9d639da2cc2228dfa406989916c754</srcmd5>
+    <version>1.5.27</version>
+    <time>1492169554</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>478026</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5986741b15598124b367665972f94317</srcmd5>
+    <version>1.5.27</version>
+    <time>1493020184</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>489812</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55bf0f06e423b60a6678d537033fde3c</srcmd5>
+    <version>1.6.0</version>
+    <time>1518601861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576016</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0bdd3420ce6590e2727dbc77e4a8e36c</srcmd5>
+    <version>1.6.0</version>
+    <time>1545866871</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659599</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a4330be9b215ca5dbcb708146044d303</srcmd5>
+    <version>1.7.0</version>
+    <time>1555691828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694213</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e8513f1513c5f529828b8f048e6e5f2b</srcmd5>
+    <version>1.7.0</version>
+    <time>1572883867</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743994</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d5522c77aed011ffd94a931caf683a1f</srcmd5>
+    <version>1.7.0</version>
+    <time>1585264819</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I</comment>
+    <requestid>783976</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d83759907bee2ef40f3d8313f34e4697</srcmd5>
+    <version>1.8.0</version>
+    <time>1588323991</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0
+  + no changes available</comment>
+    <requestid>798861</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>469fcff7fb13c8373fb43ab50e241823</srcmd5>
+    <version>1.8.1</version>
+    <time>1608729530</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.1:
+  + no changes available</comment>
+    <requestid>856969</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a6607ac5d3a9f649a02a71aca886c714</srcmd5>
+    <version>1.8.2</version>
+    <time>1615552261</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.2:
+  + no changes available</comment>
+    <requestid>877609</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bb857595245188a04eb718852fc7d9b8</srcmd5>
+    <version>1.8.2</version>
+    <time>1682193470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081633</requestid>
+  </revision>
+</revisionlist>

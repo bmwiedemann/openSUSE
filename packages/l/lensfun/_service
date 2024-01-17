@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="disabled" >
+    <param name="url">https://github.com/lensfun/lensfun</param>
+    <param name="scm">git</param>
+    <param name="subdir">data</param>
+    <param name="filename">data</param>
+    <param name="version">master</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

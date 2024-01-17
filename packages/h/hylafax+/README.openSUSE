@@ -1,0 +1,122 @@
+GENERAL NOTE
+============
+Due to history and structure of this package, the server part of HylaFAX+ 
+should only be installed in isolated environments for security reasons,
+allowing direct access for admins only. [bsc#1173519]
+
+
+Setup of hylafax+ on openSUSE
+-----------------------------
+
+After installation of hylafax you need to run 
+
+faxsetup
+
+answer the questions and modify to your needs.
+
+Run 
+
+faxaddmodem
+
+for each attached modem. It asks you for the device, leave out the /dev prefix; 
+only enter eg. modem, ttyS0 or similar device names. 
+Answer the questions, important ones are related to ringtones, max pages, 
+permissions on files or the name that should be shown on the tagline of send faxes. 
+
+
+Setting up hylafax for systemd
+------------------------------
+
+hylafax comes with a couple of systemd services. Two of them are needed to send
+out faxes from your server:
+
+hylafax-hfaxd.service - the hylafax server
+hylafax-faxq.service - the fax scheduler
+
+Enable these services with 
+
+systemctl enable hylafax-hfaxd.service
+systemctl enable hylafax-faxq.service
+
+They will be started at boot time.
+
+
+systemd-timers
+--------------
+
+openSUSE has moved from cron to systemd-timers. By default we ship two timers, 
+for cleaning the faxqueue and for usage statistics. You need to enable them in 
+case you want to make use of these features:
+
+systemctl enable hylafax-faxqclean.timer
+systemctl enable hylafax-usage.timer
+
+
+Receiving faxes
+---------------
+
+In order to receive faxes, you need to additinally run one faxgetty for each 
+interface, e.g.:
+
+systemctl start hylafax-faxgetty@ttyS0.service
+systemctl start hylafax-faxgetty@ttyIAX0.service
+
+Enable them at boot time with:
+
+systemctl enable hylafax-faxgetty@ttyS0.service
+systemctl enable hylafax-faxgetty@ttyIAX0.service
+
+
+Setting up firewalld
+--------------------
+The server package installs a ready to use hylafax service and helper file.
+For the simple case, you need to:
+
+firewall-cmd --add-service hylafax
+
+Please note, that the client tools faxstat and sendfax use a protocol similar
+to FTP to transfer payload data. As long, as you don't mix hylafax with a ftp
+server service, you're almost set at this point, and we would strongly advise
+against such a setup! At least, it requires you to combine the ftp and hylafax
+services and helpers into a single service and helper in /etc/firewalld, because
+both use the same kernel helper module "nf_conntrack_ftp". Again, YMMV.
+
+Additionally on the *clients*, you should switch the hylafax protocol to passive mode:
+
+cat >> /etc/hylafax/hyla.conf << EOF
+PassiveMode:    yes
+EOF
+
+After successfully checking the connection from the client with:
+
+faxstat -hfaxserver -s 
+
+you can persist the firewalld settings with:
+
+firewall-cmd --add-service hylafax --permanent
+
+
+Send-only environment
+---------------------
+
+Many installations run hylafax just for sending faxes. To get this up and
+running, the command 
+
+faxmodem
+
+needs to run after hylafax is started.
+For this we have created a separate service, hylafax-faxmodem@.service
+
+You need to invoke this service with the interface, e.g.
+systemctl enable hylafax-faxmodem@ttyS0.service
+
+(Note: you may as well attach the faxmodem call to the faxq-service:
+Create a directory
+/etc/systemd/system/hylafax-faxq.service.d
+and copy the file sendonly.conf into this directory.
+Check that the mentioned port (ttyS0 - Parameter is the modem device) in this
+file matches your configuration and restart the service.
+Depending on how fast the FIFO comes up, you may see a restart of the service)
+
+For general documentation on how to set up hylafax, please see
+http://hylafax.sourceforge.net/howto/install.php

@@ -1,0 +1,5 @@
+<package name="dMagnetic" project="openSUSE:Factory">
+  <title>dMagnetic</title>
+  <description>Olay Textadventures from Magnetic Scrolls with glorious ANSI Art</description>
+  <devel project="games" package="dMagnetic"/>
+</package>

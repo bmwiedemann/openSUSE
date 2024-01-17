@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sun Aug 27 05:06:16 UTC 2017 - coolo@suse.com
+
+- updated to 0.06
+   see /usr/share/doc/packages/perl-B-Hooks-OP-PPAddr/Changes
+
+  0.06      2017-08-26 20:47:27Z
+    - fix builds on older MSVC (PR#1; thanks, Stephan Loyd!)
+
+-------------------------------------------------------------------
+Thu Jul 14 05:02:02 UTC 2016 - coolo@suse.com
+
+- updated to 0.05
+   see /usr/share/doc/packages/perl-B-Hooks-OP-PPAddr/Changes
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:31 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:22 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Nov  4 22:46:18 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.03)
+

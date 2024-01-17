@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Apr 30 16:21:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.3
+  * Dropped dumb2wav binary
+  * Removed API deprecated since 0.9.3
+  * Deprecated duh_render(), use duh_render_float() and duh_render_int()
+  * More supported formats (e.g. FEST MOD files)
+  * Default resampling quality is now cubic
+  * Fixed: PSM Playback Has Garbled Sound
+  * New dumbplay, dumbout examples
+  * Better audio playback quality
+  * SSE optimizations support
+  * New resamplers
+  * Seek support
+  * Memory leak and bug fixes
+- Drop outdated patches:
+  * dumb-0.9.3-CVE-2006-3668.patch
+  * dumb-0.9.3-DT_NEEDED.patch
+  * dumb-0.9.3-example.patch
+  * dumb-0.9.3-license-clarification.patch
+- SPEC file changes:
+  * Build using cmake
+  * Drop allegro4 outdated subpackage
+  * Some cleanup
+- Dumb 0.9.3 was branched as dumb0 package
+
+-------------------------------------------------------------------
+Sat Jul  8 15:30:35 UTC 2017 - jengelh@inai.de
+
+- Replace %__-type macro indirections
+- Rectify wrong summaries
+
+-------------------------------------------------------------------
+Sun Jun 30 15:58:38 UTC 2013 - seife+obs@b1-systems.com
+
+- use "zlib" license as fedora does to allow build
+
+-------------------------------------------------------------------
+Mon Feb 21 22:40:36 UTC 2011 - reddwarf@opensuse.org
+
+- Split dumb from aldmb since allegro5 now uses dumb
+
+-------------------------------------------------------------------
+Sat Jul  3 11:10:37 UTC 2010 - cmorve69@yahoo.es
+
+- Fix DT_NEEDED entries
+
+-------------------------------------------------------------------
+Fri Oct 16 18:27:05 UTC 2009 - saigkill@opensuse.org
+
+- Reworked Spec (Provides/Obsoletes)
+
+------------------------------------------------------------------
+Sun Mar  8 19:55:16 CET 2009 - saigkill@opensuse.org
+
+- fixed $LDFLAGS to change the execstac
+
+------------------------------------------------------------------
+Sun Mar  8 12:39:13 CET 2009 - saigkill@opensuse.org
+
+- initial Package for openSUSE Build Service based on
+  Packman Spec.
+
+------------------------------------------------------------------
+Fri Feb 01 2008 - toni@links2linux.de
+
+- First packaged release 0.9.3 based on fedora-spec
+  Tue Aug  7 2007 Hans de Goede <j.w.r.degoede@hhs.nl> 0.9.3

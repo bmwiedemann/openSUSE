@@ -1,0 +1,477 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e3f8b46d118336072564edd0bd50d19</srcmd5>
+    <version>0.9.1</version>
+    <time>1455790051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>359979</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>66401b3de036842139ba6426a35097b0</srcmd5>
+    <version>0.9.2</version>
+    <time>1456821951</time>
+    <user>dimstar_suse</user>
+    <comment>Newer 0.9.2 version</comment>
+    <requestid>362984</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f831fab332382e85262609696a1ef23d</srcmd5>
+    <version>0.9.5</version>
+    <time>1463652928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>396572</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e384d6fb9658960230143d7816f28d3</srcmd5>
+    <version>0.9.6</version>
+    <time>1465750518</time>
+    <user>dimstar_suse</user>
+    <comment>new upstream release (forwarded request 400896 from Mailaender)</comment>
+    <requestid>400912</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6c822348e3def925dec6264a7f4b3452</srcmd5>
+    <version>0.10.0</version>
+    <time>1477134660</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a define for the so version and fix -devel requiring the old libappstream3 
+
+- Update to version 0.10.0
+- Disable stemming support until we have libstemmer packaged.
+- Generate libappstream4 packages since AppStream changes the ABI in 0.10.0
+Notes:
+ * This release breaks API/ABI in order to support multiple metadata sets describing the same
+   component (needed for bundling support), moving away from the database as central data store
+   and general cleanup.
+ * Porting is relatively straightforward, if you were using AsDatabase, you should switch to AsPool
+   now (AsDatabase has been a wrapper around AsPool for a while anyway).
+ * Many methods became private API with this release, file a bug if you miss anything.
+ * The 'categories.xml' file is gone - please account for that if you were reading it directly,
+   and consider using AsCategory instead, which offers the same functionality.
+Features:
+ * Remove the AsDatabase class (Matthias Klumpp)
+ * Use cmakedefine for compile-time features (Matthias Klumpp)
+ * Rename AsDataPool -&gt; AsPool (Matthias Klumpp)
+ * Add placeholder enum for web applications (Matthias Klumpp)
+ * qt: Implement Appstream::Release for the Qt interface (Aleix Pol)
+ * Recognize the &quot;Pantheon&quot; desktop for Elementary (Matthias Klumpp)
+ * Get rid of the menu parser and make AsCategory more useful instead (Matthias Klumpp)
+ * Allow AsComponent to automatically check for list-value duplicates (Matthias Klumpp)
+ * Give bundles their own class (Matthias Klumpp)
+ * Stop shipping the categories.xml file (Matthias Klumpp)
+ * Allow multiple metadata sets in the pool to describe a component (Matthias Klumpp)
+ * Name AppStream metadata styles consistently (Matthias Klumpp)
+ * Allow the 'C' description fallback to be turned off (Iain Lane)
+ * Make AsScreenshot return localized images by default (Matthias Klumpp)
+ * Allow to compare AsRelease versions easily (Matthias Klumpp)</comment>
+    <requestid>436641</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a88d9163f2fc4542c0f852a2689473d</srcmd5>
+    <version>0.10.5</version>
+    <time>1485859987</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest version, needed by plasma5-desktop and discover. Renames the library name and a lot of internals, have fun...</comment>
+    <requestid>450495</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>be83a13b2eb8027237d2d2ff8130f689</srcmd5>
+    <version>0.11.1</version>
+    <time>1499415352</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508299</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2d772cfb1b8d56a654f6de128143a6e7</srcmd5>
+    <version>0.11.8</version>
+    <time>1517668826</time>
+    <user>dimstar_suse</user>
+    <comment>- Now the appstream cache is refreshed in %post. The update to 0.11.8
+  plus the refresh fixes kde#389531.
+- Headers are now installed to /usr/include/appstream instead of 
+  /usr/inlude/AppStream
+- New package AppStream-doc with the html documentation for AppStream
+- Use meson to build instead of cmake
+- Update to version 0.11.8:
+  Features:
+   * validator: Emit a hint in case a discouraged AppStream ID style is used (Matthias Klumpp)
+   * l10n: Renamed Norwegian Bokmål language file (Matthias Klumpp)
+  Specification:
+   * docs: Add quickstart instructions for intltool (David Steele)
+   * spec: Discourage use of hyphens and digit-started segments for IDs (Matthias Klumpp)
+  Bugfixes:
+   * qt: Export the AppStreamQt target (Aleix Pol)
+   * Various string improvements (Allan Nordhøy)
+   * validator: Don't make HEAD requests for URL checks, fetch first byte instead (Matthias Klumpp)
+   * Enforce a non-broken version of gobject-introspection (Matthias Klumpp)
+   * Ensure LINGUAS update is only run explicitly (Matthias Klumpp)
+   * Fix a minor memory and fd leak (Matthias Klumpp)
+- Update to version 0.11.7:
+  Notes:
+   * The appstreamcli validation commands now use curl if it is available to check all
+     URLs in the metadata for existence.
+     If you don't want this behavior, pass &quot;--nonet&quot; to appstreamcli. There might also
+     be false positives (one is known with the KDE bugtracker) that need to be investigated,
+     so feedback on this new feature is welcome.
+  
+  Features:
+   * validator: Check all urls for validity (Matthias Klumpp)</comment>
+    <requestid>572099</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8d8960e1ad9e8dcd5eeb7cbfd0c87cb1</srcmd5>
+    <version>0.11.8</version>
+    <time>1518426369</time>
+    <user>dimstar_suse</user>
+    <comment>- appstreamcli can use curl for some checks, so recommend it (boo#1080446)</comment>
+    <requestid>575384</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c8202fcdb34e2cc193a7d093eeaba9c1</srcmd5>
+    <version>0.11.8</version>
+    <time>1527933151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611760</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>52dfa34cf6bb4330c9fde07c41ffada4</srcmd5>
+    <version>0.12.2</version>
+    <time>1540199227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642265</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c07c5bd89b8d4abfa8f28f1ec9013ea8</srcmd5>
+    <version>0.12.6</version>
+    <time>1552048180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681643</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3052f85656c0b77a9dbb46689d9586db</srcmd5>
+    <version>0.12.6</version>
+    <time>1553157737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685760</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>47d132fa1c090f5a44166ec97e8c8607</srcmd5>
+    <version>0.12.7</version>
+    <time>1561195004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710910</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>bcdb5d436b9254d7521bf5a4e5d9b3ed</srcmd5>
+    <version>0.12.7</version>
+    <time>1564993742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719784</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>74d0d5a5b3be61ab00c937b8a63efe4c</srcmd5>
+    <version>0.12.7</version>
+    <time>1577972395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758447</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>92d399c0b583c4166ead2a7e63bb7116</srcmd5>
+    <version>0.12.10</version>
+    <time>1582899555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779429</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>672391242162759da873ff2be6c78edf</srcmd5>
+    <version>0.12.11</version>
+    <time>1594045028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818429</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4bbcfc25e485f19f0008dd5b48751824</srcmd5>
+    <version>0.12.11</version>
+    <time>1605782963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848417</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d0cf6eccd9a7e3d1df24bc3fb912484f</srcmd5>
+    <version>0.13.1</version>
+    <time>1610736261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862279</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8db4b8f50c5f322c5fbce8442d1ec7cb</srcmd5>
+    <version>0.14.1</version>
+    <time>1614107933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.1: (forwarded request 873077 from dimstar)</comment>
+    <requestid>873084</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fe5cb2cf937543809d8ca05d9369d281</srcmd5>
+    <version>0.14.3</version>
+    <time>1619107392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.3
+  * spec: Mention that license-IDs are case-sensitive
+  * compose: Don't loop endlessly if external desktop l10n function
+    is set
+  * Never create a predictable dir in /tmp for caching
+  * qt: Implement missing Pool::componentsByCategories
+  * Share one user-owned read-only system metadata cache between all
+    applications
+  * pool: Clean up user sysdata caches if we start to use the system
+    cache
+  * Port over some parsing improvements for desktop-files from asgen
+  * compose: Add helper for reading desktop-entry files
+  * compose: Handle bad UTF-8 in desktop-entry files even better
+  * search: Perform partial token matches instead of prefix matches
+  * search: Unconditionally perform partial term matching after
+    exact matching
+  * news-to-metainfo: Recognize the &quot;Contributors&quot; section
+  * Update our own metainfo file for appstreamcli
+  * Read descriptions from collection XML correctly again
+  * search: Make whole-search string matching a lot more strict
+  * validator: Resolve false-positive when testing remote icon
+    URL validity
+  * utils: Improve textwrap if text is just one excessively
+    long word
+  * compose: Permit U+00AD SOFT HYPHEN in string values
+  * Validate our own metainfo file
+  * compose: Don't assume lowest priority for desktop-entry-only
+    components
+  * search: Only replace full words with greylist terms,
+    not partial ones
+  * ascli: Take all positional parameters as search terms when
+    searching (forwarded request 885182 from susnux)</comment>
+    <requestid>885246</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4410dbedd4e4074ecab55a34e26497e7</srcmd5>
+    <version>0.14.4</version>
+    <time>1628751668</time>
+    <user>RBrownSUSE</user>
+    <comment>Not yet built tested, beware.
+
+- Update to version 0.14.4 (needed by future Discover versions)
+ * qt: Expose setter and getter for pool cache location
+ * utils: Use GLib's gstring_replace if available
+ * its: Allow to mark release descriptions as non-translatable
+ * compose: Point people at the specification if metadata license is invalid
+ * docs: Clarify which metadata licenses are permitted
+ * docs: Fix a typo on the icon cache page
+ * spec: Add a paragraph about which license to put in &lt;project_license&gt;
+ * Add documentation for YAML release type and urgency
+ * Add documentation for YAML provides
+ * component: Don't strip &quot;;&quot; from keywords before translating them
+ * utils: Don't strip modifiers when stripping encoding
+ * compose: Check optipng is there before we use it
+ * Improve text line wrapping, especially if many newlines are present
+ * Make word-wrap function unicode-aware
+ * Make license_is_metadata_license parse more complex expressions
+ * Improve cache refresh code, don't flag cache as updated if update failed
+ * Use system cache even if we had to drop some invalid metadata
+ * Assign more string class members safely
+ * Fix flashed firmware generating incorrect XML
+ * Fix YAML having wrong names for the firmware data (forwarded request 910733 from luca_b)</comment>
+    <requestid>911010</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>55de745e20feaf3e05f7f8b8ed5a3c52</srcmd5>
+    <version>0.14.4</version>
+    <time>1630617605</time>
+    <user>dimstar_suse</user>
+    <comment>- Create and install a Vala API file</comment>
+    <requestid>915181</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b66600d622f2f9cd2ff25680fe26c14f</srcmd5>
+    <version>0.14.6</version>
+    <time>1635272009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927094</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>010578a81b4813b611536a952073afc0</srcmd5>
+    <version>0.15.1</version>
+    <time>1641203342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943291</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>96b61a4ddfd7c51136de81cd05ae9fcf</srcmd5>
+    <version>0.15.1</version>
+    <time>1646487842</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't refresh the system cache in %post. The user metadata cache
+  works much better, rely on that instead.</comment>
+    <requestid>959403</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c5c53b99751f388deaa6e9242de11e66</srcmd5>
+    <version>0.15.3</version>
+    <time>1652561529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976577</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8fc81d367a5ea32e3ab76026b4b769af</srcmd5>
+    <version>0.15.4</version>
+    <time>1657378751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987332</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>efff23a8337bb98f2a138a8f8e9b42f5</srcmd5>
+    <version>0.15.5</version>
+    <time>1662322283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001041</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>56f41a67b368b7518363c9090ced1411</srcmd5>
+    <version>0.15.6</version>
+    <time>1673724687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058216</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e092471af34897e85a6be053c1afcec1</srcmd5>
+    <version>0.16.0</version>
+    <time>1675956113</time>
+    <user>dimstar_suse</user>
+    <comment>Update to appstream 16, build with compose support (forwarded request 1063573 from ldragon)</comment>
+    <requestid>1063768</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d17c14be6b1d0d3b6c6401bca3723907</srcmd5>
+    <version>0.16.1</version>
+    <time>1677683625</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ldconfig_scriptlets for libappstream-compose (forwarded request 1068217 from favogt)</comment>
+    <requestid>1068218</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>c91ed1449575c6610b147198843a05f9</srcmd5>
+    <version>0.16.1</version>
+    <time>1678814153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071181</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>389734d4d572c684b4fec43d55a8d7d0</srcmd5>
+    <version>0.16.1</version>
+    <time>1684846404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088342</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>daa63db03c2db1acab43ddc96599a631</srcmd5>
+    <version>0.16.2</version>
+    <time>1687207806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093668</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c74254a100765d1935170469dc4e53cf</srcmd5>
+    <version>0.16.3</version>
+    <time>1693383550</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106082</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c108570c6d7ddf2e259423567d8db46b</srcmd5>
+    <version>0.16.3</version>
+    <time>1696451440</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114964</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>fc2523afa50ab0ec1daef918c7185970</srcmd5>
+    <version>0.16.3</version>
+    <time>1697748424</time>
+    <user>anag+factory</user>
+    <comment>- Fix the documentation being put in the devel subpackage while
+  the doc subpackage was empty. I think the doc %files section was
+  probably removed inadvertently since it wasn't mentioned in the
+  changelog and the doc subpackage declaration was left around.
+- Moved the appstreamcli-compose man page to the same package
+  as the binary.
+- Make AppStream-compose-devel explicitly require 
+  libappstream-compose0 to stop rpmlint from reporting an error. (forwarded request 1118338 from alarrosa)</comment>
+    <requestid>1118339</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e95252a2d20d3b2c9c574c0900f843af</srcmd5>
+    <version>0.16.4</version>
+    <time>1700250492</time>
+    <user>anag+factory</user>
+    <comment>Yes I know 1.0 just dropped, but lets get the newly released old stable in first.
+
+- Update to version 0.16.4:
+  * Features:
+    - Allow hyphens in the last segment of a component-ID
+    - Implement the developer element for unique developer IDs
+    - Add meson overrides
+  * Bugfixes:
+    - meson: Prevent building attempts with MSVC
+    - meson: Avoid potentially bad sed backup filename when fixing
+      .pc file
+  * Miscellaneous: Make sed invocation more portable
+- Rebase patch with quilt. (forwarded request 1126593 from iznogood)</comment>
+    <requestid>1126792</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>20b056bdf00a6f4fa19d661ffe56eb7c</srcmd5>
+    <version>0.16.4</version>
+    <time>1701972534</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131018</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>5d133c81927d58625222bdbc6ab27d28</srcmd5>
+    <version>0.16.4</version>
+    <time>1702327795</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132453</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6c8bf2b6344f304b3fab76aaf3a14408</srcmd5>
+    <version>1.0.0</version>
+    <time>1703527479</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.0.0 (forwarded request 1133407 from krop)</comment>
+    <requestid>1133971</requestid>
+  </revision>
+</revisionlist>

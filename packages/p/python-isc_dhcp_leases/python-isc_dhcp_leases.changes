@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Aug 31 15:41:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.0
+  * Fix timezone awareness for Python 2.7.x
+  * Support working with historical dhcpd.leases files
+  * Use timezone-aware datetime objects
+  * Refactor keyword argument passing to BaseLease
+
+-------------------------------------------------------------------
+Mon Nov  7 14:14:13 UTC 2022 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/MartijnBraam/python-isc-dhcp-leases/issues/38
+  + python-isc_dhcp_leases-remove-unused-code.patch
+
+-------------------------------------------------------------------
+Wed Sep  1 11:53:37 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Fri Apr 17 13:23:53 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.9.1

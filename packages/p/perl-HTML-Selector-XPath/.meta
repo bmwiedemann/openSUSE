@@ -1,0 +1,6 @@
+<package name="perl-HTML-Selector-XPath" project="openSUSE:Factory">
+  <title>CSS Selector to XPath compiler</title>
+  <description>HTML::Selector::XPath is a utility function to compile full set of CSS2 and partial CSS3 selectors to the equivalent XPath expression.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-Selector-XPath"/>
+  <url>https://metacpan.org/release/HTML-Selector-XPath</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="alpine-branding-openSUSE" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:mail" package="alpine-branding-openSUSE"/>
+</package>

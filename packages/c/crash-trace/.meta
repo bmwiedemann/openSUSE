@@ -1,0 +1,6 @@
+<package name="crash-trace" project="openSUSE:Factory">
+  <title>The trace command for crash</title>
+  <description>This extension implements the &quot;trace&quot; command for the crash tool.
+</description>
+  <devel project="Kernel:kdump" package="crash-trace"/>
+</package>

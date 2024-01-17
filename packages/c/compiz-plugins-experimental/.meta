@@ -1,0 +1,5 @@
+<package name="compiz-plugins-experimental" project="openSUSE:Factory">
+  <title>OpenGL window and compositing manager experimental plugins</title>
+  <description>This package contains the experimental Compiz compositing manager plugins.</description>
+  <devel project="X11:Compiz" package="compiz-plugins-experimental"/>
+</package>

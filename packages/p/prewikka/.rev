@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf67dcab5ad86842b2f94c0b3cea0d00</srcmd5>
+    <version>3.0.0</version>
+    <time>1474016431</time>
+    <user>dimstar_suse</user>
+    <comment>Adding prewikka to factory.
+
+It needs SR 405816 for python-libpreludedb</comment>
+    <requestid>424727</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b929f49d85bd7297e9462263152e5372</srcmd5>
+    <version>3.0.0</version>
+    <time>1487462447</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455339</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c5f8cffb83da134349628093e86084c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1490318512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481611</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c29b46922ceca0883594dc45bbde91a7</srcmd5>
+    <version>4.0.0</version>
+    <time>1510577986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538198</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>78f5a3b752cfe43a1ce15c17ecd07705</srcmd5>
+    <version>4.0.0</version>
+    <time>1518950724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577606</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15240690791e5b673602f0eca92cd301</srcmd5>
+    <version>5.1.1</version>
+    <time>1574784153</time>
+    <user>dimstar_suse</user>
+    <comment>Bump version 5.1.1
+  - Use the correct hook in heartbeat detail
+  - Fix grouping errors with datasearch:update
+  - Reload plugins if needed in prewikka-crontab
+- Add missing depends (see INSTALL file):
+  - python3-croniter
+  - python3-gevent
+  - python3-voluptuous
+  - python3-lark-parser
+Bump version 5.1.0
+  - Update frameworks
+  - Add prewikka-cli, prewikka in command line
+  - Add new options in config file
+  - Various fixes
+  - Separate dataprovider backend and instance
+  - Implement support for time-spanning data
+  - Add past periods to the control menu
+  - Add comparison operators for additional data
+- Use the correct hook in heartbeat detail
+- Remove patchs:
+  - prewikka-fix_python3.patch
+    - Fixed upstream
+- Add patchs:
+  - prewikka-fix_shebang.patch
+    - Non executives files do not need shebang
+- Remove python2
+  - Python 2 will be removed step by step in all Linux distributions
+</comment>
+    <requestid>750892</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bd074b716bfb5654e96ae9615855aa68</srcmd5>
+    <version>5.2.0</version>
+    <time>1603959798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844637</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2113719395b17afc339b2265bb0cd9c9</srcmd5>
+    <version>5.2.0</version>
+    <time>1623268316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897112</requestid>
+  </revision>
+</revisionlist>

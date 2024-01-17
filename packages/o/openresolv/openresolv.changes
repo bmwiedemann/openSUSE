@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Tue Dec  5 15:28:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.13.2:
+  * Do not return error from -i when no interfaces are configured 
+  * Update README.md to fix broken link to openresolv configuration 
+
+- update to 3.13.1:
+  * new build system
+
+- update to 3.13.0:
+  * /etc/resolv.conf is now updated by mv(1) so it's atomic and watchers don't read partials.
+  * unbound can now add generic options to forward zones
+  * dinit and s6 init systems are now supported
+
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Mon Jan  4 08:36:46 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.12.0:
+  * Allow configurations to be marked as Deprecated and Acivtated
+  * Harden resolvconf lock detection
+
+-------------------------------------------------------------------
+Wed Aug 26 20:02:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.11.0:
+  * Add allow_interfaces and deny_interfaces configuration options 
+  * Add support to notify avahi-daemon and mdnsd of resolv.conf changes
+
+-------------------------------------------------------------------
+Thu Oct 31 17:25:39 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.9.2
+  *  dnsmasq: clear cache after updating servers via dbus
+  *  pdns_recursor: Fix global forwards (thus now installed by
+     default)
+  *  man: layout and misc fixes
+  *  build: added import-src target
+  version 3.9.1
+  *  More strict POSIX shell support
+  *  Interfaces have an implicit metric of 0 unless specified
+  *  Inline comments are stripped from nameserver and domain
+     entries
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Fri Apr 20 09:40:49 UTC 2018 - dheidler@suse.com
+
+- Fix dependency
+
+-------------------------------------------------------------------
+Mon Apr 16 14:51:02 UTC 2018 - dheidler@suse.com
+
+- Initial Package 

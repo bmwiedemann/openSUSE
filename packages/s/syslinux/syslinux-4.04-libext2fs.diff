@@ -1,0 +1,11 @@
+--- libinstaller/linuxioctl.h
++++ libinstaller/linuxioctl.h
+@@ -19,7 +19,7 @@
+ 
+ #undef SECTOR_SIZE		/* Defined in msdos_fs.h for no good reason */
+ #undef SECTOR_BITS
+-#include <linux/ext2_fs.h>	/* EXT2_IOC_* */
++#include <ext2fs/ext2_fs.h>	/* EXT2_IOC_* */
+ 
+ #ifndef FAT_IOCTL_GET_ATTRIBUTES
+ # define FAT_IOCTL_GET_ATTRIBUTES	_IOR('r', 0x10, __u32)

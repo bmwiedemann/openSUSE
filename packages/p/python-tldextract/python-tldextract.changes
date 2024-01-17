@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Fri Dec  8 13:44:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.1:
+  * Fix path join on Windows (#314)
+  * Support Python 3.12
+
+-------------------------------------------------------------------
+Fri Nov 10 07:40:00 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Macro %{?sle15_python_module_pythons} must at beginn of spec to
+  fix build error in Leap.
+
+-------------------------------------------------------------------
+Mon Nov  6 23:25:32 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 5.1.0:
+Features:
+  * Allow passing in `requests.Session`
+    #gh/john-kurkowski/tldextract#311
+  * Add "-j, --json" option to support output in json format
+    #gh/john-kurkowski/tldextract#313
+
+-------------------------------------------------------------------
+Mon Oct 23 00:56:58 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 5.0.1:
+Bugfixes:
+  * Indicate MD5 not used in a security context (FIPS compliance)
+    #gh/john-kurkowski/tldextract#309
+Misc.:
+  * Increase typecheck aggression
+- Changes in 5.0.0:
+Breaking Changes:
+  * Migrate `ExtractResult` from `namedtuple` to `dataclass`
+    #gh/john-kurkowski/tldextract#306
+Bugfixes:
+  * Drop support for EOL Python 3.7
+- Changes in 4.0.0:
+Breaking Bugfixes:
+  * Always include suffix if private suffix enabled and private
+    suffix exists
+    #gh/john-kurkowski/tldextract#300
+- Changes in 3.5.0:
+Features:
+  * Support IPv6 addresses
+    #gh/john-kurkowski/tldextract#298
+Bugfixes:
+  * Accept only 4 decimal octet IPv4 addresses
+    #gh/john-kurkowski/tldextract#292
+  * Support IPv4 addresses with unicode dots
+  * Reject IPv4 addresses with trailing whitespaces + non-whitespaces
+    #gh/john-kurkowski/tldextract#293
+
+-------------------------------------------------------------------
+Sat Jul  1 09:06:29 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Sun May 21 13:02:41 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.4.4:
+Bugfixes
+  * Honor private domains flag on self, not only when passed to
+    __call__
+    #gh/john-kurkowski/tldextract#289
+- Changes in 3.4.3:
+Bugfixes
+  * Speed up 10-15% over all inputs
+  * Refactor suffix_index() to use a trie
+    #gh/john-kurkowski/tldextract#285
+Docs
+  * Adopt PEP257 doc style
+- Changes in 3.4.2:
+Bugfixes
+  * Speed up 10-40% on "average" inputs, and even more on
+    pathological inputs, like long subdomains
+  * Optimize suffix_index(): search from right to left
+    #gh/john-kurkowski/tldextract#283
+  * Optimize netloc extraction: switch from regex to if/else
+    #gh/john-kurkowski/tldextract#284
+
+-------------------------------------------------------------------
+Thu May  4 13:11:06 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.4.1
+Bugfixes
+  * Fix Pyright not finding tldextract public interface
+    #gh/john-kurkowski/tldextract#279
+  * Fix various Pyright checks
+  * Use SPDX license identifier
+    #gh/john-kurkowski/tldextract#280
+  * Support Python 3.11
+Docs
+  * Add FAQ about private domains
+
+-------------------------------------------------------------------
+Thu Nov 10 09:04:18 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.4.0
+Features
+  * Add method extract_urllib to extract from a
+    urllib.parse.{ParseResult,SplitResult}
+    #gh/john-kurkowski/tldextract#274
+Bugfixes
+  * Fix internal type-var error, in newer versions of mypy
+    #gh/john-kurkowski/tldextract#275
+
+-------------------------------------------------------------------
+Sun Jul 24 17:00:27 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.3.1
+Bugfixes
+  * Fix documented types, in README and in exception message
+    #gh/john-kurkowski/tldextract#265
+
+-------------------------------------------------------------------
+Wed Jun 15 16:34:05 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.3.0
+Features
+  * Add CLI flag `--suffix_list_url` to set the suffix list URL(s)
+    or source file(s)
+    (#gh/john-kurkowski/tldextract#197)
+  * Add CLI flag `--no_fallback_to_snapshot` to not fall back to
+    the snapshot
+    (#gh/john-kurkowski/tldextract#260)
+  * Add alias `--include_psl_private_domains` for CLI flag
+    `--private_domains`
+Bugfixes
+  * Handle more internationalized domain name dots
+    (#gh/john-kurkowski/tldextract#253)
+Misc.
+  * Update bundled snapshot
+  * Add basic CLI test coverage
+Changes in 3.2.1:
+Bugfixes
+  * Fix incorrect namespace used for caching function returns
+    (#gh/john-kurkowski/tldextract#258)
+Changes in 3.2.0:
+Features
+  * Add types to the public API
+    (#gh/john-kurkowski/tldextract#244)
+Bugfixes
+    * Add support for Python 3.10, drop EOL Python 3.6
+      (#gh/john-kurkowski/tldextract/issues/246))
+
+-------------------------------------------------------------------
+Fri Oct  1 07:26:20 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.1.2 (no visible changes)
+- Changes in 3.1.1:
+  * Bugfixes
+    + Support Python 3.9
+    + Drop support for EOL Python 3.5
+
+-------------------------------------------------------------------
+Thu Feb  4 20:10:10 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix python-rpm-macros singlespec glitches:
+  * The versions go inside python_module
+  * The obsoletion of the old python2 package did not work with
+    the python_subpackages rewrite
+
+-------------------------------------------------------------------
+Sat Nov 28 20:13:57 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.1.0:
+  * Features
+    + Prefer to cache in XDG cache directory in user folder,
+      vs. in Python install folder
+      (https://github.com/john-kurkowski/tldextract/issues/213)
+    + Fix `AttributeError` on `--update`
+      (https://github.com/john-kurkowski/tldextract/issues/215)
+
+-------------------------------------------------------------------
+Mon Oct 26 00:28:42 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.0.2:
+  * Catch permission error when making cache dir, as well as cache
+    file (https://github.com/john-kurkowski/tldextract/issues/211)
+
+-------------------------------------------------------------------
+Fri Oct 23 21:46:35 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.0.1:
+  * Fix `tlds` property `AttributeError`
+    (https://github.com/john-kurkowski/tldextract/issues/210)
+  * Allow `include_psl_private_domains` in global `extract` too
+    (https://github.com/john-kurkowski/tldextract/issues/210)
+
+-------------------------------------------------------------------
+Tue Oct 20 22:45:59 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.0.0:
+  This release fixes the long standing bug that public and private
+  suffixes were generated separately and could not be switched at
+  runtime, https://github.com/john-kurkowski/tldextract/issues/66
+
+  * Breaking Changes
+    + Rename `cache_file` to `cache_dir` as it is no longer a
+      single file but a directory
+      (https://github.com/john-kurkowski/tldextract/issues/207)
+    + Rename CLI arg also, from `--cache_file` to `--cache_dir`
+    + Remove Python 2.7 support
+  * Features
+    + Can pass `include_psl_private_domains` on call, not only on
+      construction
+    + Use filelocking to support multi-processing and
+      multithreading environments
+  * Bugfixes
+    + Select public or private suffixes at runtime
+      (https://github.com/john-kurkowski/tldextract/issues/66)
+  * Removals
+    + Do not `debug` log the diff during update
+  * Drop tldextract-tests-offline.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 11:47:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * Fix concurrent access to cache file when using tldextract in multiple threads ([#146](https://github.com/john-kurkowski/tldextract/pull/146))
+  * Relocate version number, to avoid costly imports ([#187](https://github.com/john-kurkowski/tldextract/pull/187))
+  * Catch `IndexError` caused by upstream punycode bug ([#200](https://github.com/john-kurkowski/tldextract/pull/200))
+  * Drop support for EOL Python 3.4 ([#186](https://github.com/john-kurkowski/tldextract/pull/186))
+  * Explain warning better
+
+-------------------------------------------------------------------
+Wed Sep 16 21:32:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Fix concurrent access to cache file when using tldextract in multiple threads ([#146](https://github.com/john-kurkowski/tldextract/pull/146))
+  * Relocate version number, to avoid costly imports ([#187](https://github.com/john-kurkowski/tldextract/pull/187))
+  * Catch `IndexError` caused by upstream punycode bug ([#200](https://github.com/john-kurkowski/tldextract/pull/200))
+  * Drop support for EOL Python 3.4 ([#186](https://github.com/john-kurkowski/tldextract/pull/186))
+  * Explain warning better
+
+-------------------------------------------------------------------
+Mon May 18 09:10:32 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Wed Mar 11 11:24:28 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.2.2
+  * Bugfixes
+    * Catch file not found
+    * Use pkgutil instead of pkg_resources ([#163](https://github.com/john-kurkowski/tldextract/pull/163))
+    * Performance: avoid recomputes, a regex, and a partition
+  * Misc.
+    * Update LICENSE from GitHub template
+    * Fix warning about literal comparison
+    * Modernize testing ([#177](https://github.com/john-kurkowski/tldextract/issues/177))
+        * Use the latest pylint that works in Python 2
+        * Appease pylint with the new rules
+        * Support Python 3.8-dev
+        * Drop support for EOL Python 3.4
+
+-------------------------------------------------------------------
+Sun Mar 10 19:57:13 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
+
+- Run test suite
+- Add tldextract-tests-offline.patch
+  No internet connection on OBS build hosts; skip suffix list
+  snapshot diff
+- Update to 2.2.1
+  * Bugfixes
+    - Ignore case on punycode prefix check
+    - Drop support for EOL Python 2.6
+    - Improve sundry doc and README bits
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:20 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Mon Apr 16 15:38:22 UTC 2018 - jengelh@inai.de
+
+- Update summary.
+
+-------------------------------------------------------------------
+Tue Feb  6 22:24:40 UTC 2018 - 9+suse@cirno.systems
+
+- Convert to singlespec, fix non-SPDX license tag
+- Add rpmlintrc for (required) hidden file
+- Add README.md to docs and use %license macro
+- Update to 2.2.0
+  * Bugfixes:
+    - Switch to explicit Python version check
+    - Work around `pkg_resources` missing
+    - Always close sessions
+  * Features:
+    - Add `fqdn` and `ipv4` convenience properties
+    - Add `cache_fetch_timeout` kwarg
+      and `TLDEXTRACT_CACHE_TIMEOUT` env var
+  * Misc:
+    - Document public vs. private domains
+    - Document support for Python 3.6
+
+-------------------------------------------------------------------
+Fri Jun 24 02:06:44 UTC 2016 - archie.cobbs@gmail.com
+
+- Correct license in spec file (MIT -> BSD)
+
+-------------------------------------------------------------------
+Sun Jun 19 21:38:28 UTC 2016 - archie.cobbs@gmail.com
+
+- Fix homepage URL in specfile
+
+-------------------------------------------------------------------
+Tue Jun 14 08:38:36 CDT 2016 - archie.cobbs@gmail.com
+
+- Initial creation of package, version 2.0.1
+

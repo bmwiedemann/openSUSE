@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Sat Nov 19 13:07:04 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.5
+  * fix typos
+
+-------------------------------------------------------------------
+Sat Oct 15 13:49:25 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.4
+  * fcitx upstream suggests to use "fcitx" environment variable
+    or some application like firefox may not work, see:
+    https://github.com/fcitx/fcitx5/pull/611
+    so we need some special handling of fcitx5
+
+-------------------------------------------------------------------
+Thu Sep 22 13:32:40 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.3
+  * fix boo#1200229, LC_CTYPE is not idential to directory name
+    in xim.d
+
+-------------------------------------------------------------------
+Sun Mar  6 04:22:55 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.2
+  * $LANG may not set at early stage of systemd user instance,
+    read /etc/locale.conf first then defaults to en_US.
+  * $HOME may set to /var/lib/sddm, ignore for that case
+
+-------------------------------------------------------------------
+Sun Feb 27 09:27:15 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.1
+  * be aware of user's custom settings, /etc/sysconfig/language
+    and $LANG
+
+-------------------------------------------------------------------
+Wed Feb 23 13:40:20 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- initial commit
+

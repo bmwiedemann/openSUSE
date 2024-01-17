@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Thu Sep  7 10:48:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.3:
+  * Fixed compatibility with asyncio.timeout() on Python 3.11+.
+  * Added support for Python 3.11.
+  * Dropped support for Python 3.6.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:22:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:07 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Fri Mar 24 11:25:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dependency typing_extensions, just needed for
+  python < 3.8
+
+-------------------------------------------------------------------
+Sat Jan 15 16:39:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Fix annotations on __exit__ and __aexit__
+  * Use stdlib typing.final in Python 3.8+ 
+
+-------------------------------------------------------------------
+Sat Dec 11 18:40:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.1 
+  * Fix regression:
+    - Don't raise TimeoutError from timeout object that doesn't
+      enter into async context manager
+    - Use call_soon() for raising TimeoutError if deadline is
+      reached on entering into async context manager (#258)
+  * Make Timeout class available in __all__.
+- Release 4.0.0
+  * Implemented timeout_at(deadline) (#117)
+  * Supported timeout.deadline and timeout.expired properties.
+  * Dropped timeout.remaining property: it can be calculated as
+    timeout.deadline - loop.time()
+  * Dropped timeout.timeout property that returns a relative
+    timeout based on the timeout object creation time; the absolute
+    timeout.deadline should be used instead.
+  * Added the deadline modification methods: timeout.reject(),
+    timeout.shift(delay), timeout.update(deadline).
+  * Deprecated synchronous context manager usage
+
+-------------------------------------------------------------------
+Wed Jan 27 07:40:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix Obsolete/Provides to work with multiple python3 flavors
+
+-------------------------------------------------------------------
+Wed Mar  6 12:32:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.1:
+  * More aggressive typing (#48)
+- Run tests
+
+-------------------------------------------------------------------
+Mon Jun 25 08:06:21 UTC 2018 - adrian@suse.de
+
+- update to 3.0.0:
+  * Drop Python 3.4, the minimal supported version is Python 3.5.3
+  * Provide type annotations
+
+-------------------------------------------------------------------
+Mon Mar 26 09:52:24 UTC 2018 - tbechtold@suse.com
+
+- rename package to python-async_timeout to match pypi name
+- update to 2.0.1:
+  * Fix ``PendingDeprecationWarning`` on Python 3.7 (#33)
+
+-------------------------------------------------------------------
+Sun Oct 22 07:03:32 UTC 2017 - aloisio@gmx.com
+
+- Update to version 2.0.0
+  * Changed timeout <= 0 behaviour
+    + Backward incompatibility change, prior this version 0 was
+      shortcut for None
+    + when timeout <= 0 TimeoutError raised faster
+
+-------------------------------------------------------------------
+Tue Sep 12 11:49:40 UTC 2017 - aloisio@gmx.com
+
+- Update to version 1.4.0
+  * Implement `remaining` property (#20)
+    + If timeout is not started yet or started unconstrained:
+      `remaining` is `None`
+    + If timeout is expired: `remaining` is `0.0`
+    + All others: roughly amount of time before `TimeoutError` is triggered
+
+-------------------------------------------------------------------
+Fri Sep  8 15:17:52 UTC 2017 - toddrme2178@gmail.com
+
+- Fix building
+- Remove skip_python3 for python < 3.4, the package already
+  requires python >= 3.4.
+
+-------------------------------------------------------------------
+Thu Aug 24 09:33:54 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

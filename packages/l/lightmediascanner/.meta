@@ -1,0 +1,5 @@
+<package name="lightmediascanner" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="lightmediascanner"/>
+</package>

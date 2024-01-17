@@ -1,0 +1,5 @@
+<package name="python-graphql-relay" project="openSUSE:Factory">
+  <title>Relay implementation for Python</title>
+  <description>Relay Library for GraphQL Python</description>
+  <devel project="devel:languages:python" package="python-graphql-relay"/>
+</package>

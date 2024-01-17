@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Jan  3 10:20:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.4:
+  * Fix type of info.printer_uri_supported
+  * fix: remove I/O in the event loop when creating IPP
+  * Convert client class to dataclass
+- update to 0.14.0:
+  * Export all models
+  * Thaw models
+- update to 0.13.0:
+  * Allow for markers and URIs being single values
+  * Improvements to serializer
+  * Improve typing
+  * Refactor models
+  * Configure Renovate
+  * Improvements to serializer
+  * Improve typing
+  * Define exports
+  * Improve models test coverage
+  * Refactor models
+  * Development workflow updates
+- update to 0.12.1:
+  * Add marker/other attributes to default attributes
+- update to 0.12.0:
+  * This release requires Python 3.9
+  * Use encoded value length when serializing attributes
+  * Accept successful and informational status codes
+  * Add additional tags/enum cleanup. Fix date parsing.
+  * Adding printer-more-info support
+  * Packaging Overhaul (Python 3.9)
+  * Add Kyocera to known makes
+  * Parse unsupported-attributes group
+  * Add KYOCERA ECOSYS M2540dn test fixture
+  * Update Tests
+
+-------------------------------------------------------------------
+Wed Jan  3 10:12:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- spec file cleanups
+
+-------------------------------------------------------------------
+Mon Apr 13 15:11:50 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-pyipp 0.11.0

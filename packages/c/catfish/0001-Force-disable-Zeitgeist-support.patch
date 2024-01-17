@@ -1,0 +1,26 @@
+This wrongly generated a dependency on typelib(Zeitgeist) we cannot
+fulfill since it was removed from Tumbleweed
+
+diff -up a/catfish/CatfishSearchEngine.py b/catfish/CatfishSearchEngine.py
+--- a/catfish/CatfishSearchEngine.py	2023-07-27 16:08:30.202842200 +0200
++++ b/catfish/CatfishSearchEngine.py	2023-08-06 11:17:33.615347569 +0200
+@@ -39,18 +39,7 @@ from gi.repository import GLib
+ 
+ from catfish_lib import FiletypeLists
+ 
+-try:
+-    gi.require_version('Zeitgeist', '2.0')
+-    from gi.repository import Zeitgeist
+-    log_trial = Zeitgeist.Log.get_default()
+-    if log_trial.datapath() is None:
+-        ZEITGEIST_SUPPORT = False
+-    else:
+-        ZEITGEIST_SUPPORT = True
+-except ImportError:
+-    ZEITGEIST_SUPPORT = False
+-except ValueError:
+-    ZEITGEIST_SUPPORT = False
++ZEITGEIST_SUPPORT = False
+ 
+ LOGGER = logging.getLogger('catfish_search')
+ ENGINE_COUNT = 0

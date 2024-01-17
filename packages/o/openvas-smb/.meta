@@ -1,0 +1,5 @@
+<package name="openvas-smb" project="openSUSE:Factory">
+  <title>openvas-smb</title>
+  <description></description>
+  <devel project="security:OpenVAS:STABLE" package="openvas-smb"/>
+</package>

@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b389fd29fef7393c38d184e0daa0833a</srcmd5>
+    <version>0.07</version>
+    <time>1395216325</time>
+    <user>scarabeus_factory</user>
+    <comment>needed for perl-MooseX-App-Cmd</comment>
+    <requestid>225885</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b389fd29fef7393c38d184e0daa0833a</srcmd5>
+    <version>0.07</version>
+    <time>1409302419</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c5137ab3f8c0360eb0ee9627208e7a03</srcmd5>
+    <version>0.07</version>
+    <time>1508197897</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with perl 5.26</comment>
+    <requestid>533553</requestid>
+  </revision>
+</revisionlist>

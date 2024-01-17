@@ -1,0 +1,33 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2016-06-30 13:18:23.962908776 +0200
+
+build: resolve autoreconf warnings
+
+GNUmakefile.am:33: warning: compiling 'sassc.c' with per-target flags requires 'AM_PROG_CC_C_O' in 'configure.ac'
+/usr/share/automake-1.13/am/ltlibrary.am: archiver requires 'AM_PROG_AR' in 'configure.ac'
+
+Adding AM_PROG_CC_C_O also requires that no AC_PROG_CC follows it.
+Remove the duplicated test, then.
+
+---
+
+Index: libsass-3.4.3/configure.ac
+===================================================================
+--- libsass-3.4.3.orig/configure.ac
++++ libsass-3.4.3/configure.ac
+@@ -16,6 +16,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_R
+ 
+ # Checks for programs.
+ AC_PROG_CC
++AM_PROG_CC_C_O
+ AC_PROG_CXX
+ AC_LANG_PUSH([C])
+ AC_LANG_PUSH([C++])
+@@ -55,7 +56,6 @@ if test "x$is_mingw32" != "xyes"; then
+ fi
+ 
+ if test "x$enable_tests" = "xyes"; then
+-  AC_PROG_CC
+   AC_PROG_AWK
+   # test need minitest gem
+   AC_PATH_PROG(RUBY, [ruby])

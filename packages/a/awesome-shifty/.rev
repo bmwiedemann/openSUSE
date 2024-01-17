@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58c0bf39035bff210dacbb303a3ed3f0</srcmd5>
+    <version>git20121009</version>
+    <time>1352617959</time>
+    <user>coolo</user>
+    <comment>Enhancemend package for awesome
+
+Shifty is an Awesome 3 extension that implements dynamic tagging.</comment>
+    <requestid>140658</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>58c0bf39035bff210dacbb303a3ed3f0</srcmd5>
+    <version>git20121009</version>
+    <time>1359108688</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>58c0bf39035bff210dacbb303a3ed3f0</srcmd5>
+    <version>git20121009</version>
+    <time>1379662019</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>58c0bf39035bff210dacbb303a3ed3f0</srcmd5>
+    <version>git20121009</version>
+    <time>1409300544</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c8541d4fc02302955fd9f058f7ef17c0</srcmd5>
+    <version>git20140405</version>
+    <time>1433744998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310643</requestid>
+  </revision>
+</revisionlist>

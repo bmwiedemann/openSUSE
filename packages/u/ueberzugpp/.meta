@@ -1,0 +1,22 @@
+<package name="ueberzugpp" project="openSUSE:Factory">
+  <title>utilities/ueberzugpp</title>
+  <description>Überzug++ is a C++ command line utility which allows to draw images
+on terminals by using child windows or using sixel on supported
+terminals. (This is a drop-in replacement for the now defunct
+ueberzug project.)
+
+Advantages over w3mimgdisplay and ueberzug:
+
+- support for wayland (sway only)
+- no race conditions as a new window is created to display images
+- &quot;expose&quot; events will be processed, so that images will be
+  redrawn when switching workspaces
+- tmux support on X11
+- terminals without the WINDOWID environment variable are supported
+- chars are used as position and size unit
+- A lot of image formats are supported (through opencv and libvips)
+- GIF and animated WEBP support on X11 and Sixel
+- Resized images are cached for faster viewing</description>
+  <devel project="utilities" package="ueberzugpp"/>
+  <url>https://github.com/jstkdng/ueberzugpp</url>
+</package>

@@ -1,0 +1,971 @@
+-------------------------------------------------------------------
+Mon Nov 20 11:33:04 UTC 2023 - mwilck@suse.com
+
+- Update to version 3.0.3
+- Changed fact entry syntax (see NEWS.md for details)
+  * Remove the need for using a double comma to start the description,
+    a single comma can be used instead.
+  * The tags part must now be separated by a comma. This allows using
+    '#' inside activityx, category and description
+  * extract simple #haswords from description, like
+    "fix #bugs in #hamster"
+  * consistent limitations on field content
+- spec file: fix build with python 3.6
+  * added remove-text-keyword-from-subprocess.run.patch
+  * refreshed replace-env-python-invocation-by-direct-call.patch
+
+-------------------------------------------------------------------
+Wed Sep 27 21:07:24 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update GNOME extension for GNOME shell 45 support
+  (older GNOME shell is not supported any more)
+  * add 0162-README.rst-add-info-about-restarting-the-extension.patch
+  * add 0163-TotalTimeWidget-port-to-JS6-classes.patch
+  * add 0164-prefs.js-Remove-display-of-extension-version.patch
+  * add 0165-settings-schema-fix-description-for-panel-placement-.patch
+  * add 0166-README.rst-simplify-installation-instructions.patch
+  * add 0167-panelWidget-add-button-to-open-extension-settings.patch
+  * add 0168-Use-ECMAScript-import-export-statements.patch
+  * add 0169-extension.js-adapt-to-GNOME-45.patch
+  * add 0170-prefs.js-re-implement-for-GNOME-45.patch
+  * add 0171-metadata.json.in-GNOME-45-support.patch
+  * add 0172-README.rst-fixup-GNOME-shell-compatiblility.patch
+  * add 0173-Replace-global.log-by-console.log.patch
+  * del 0133-Bump-latest-validated-gnome-shell-version-1.patch (empty)
+
+-------------------------------------------------------------------
+Mon Jun 19 15:50:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 3.0.3~20 (git d10ae12):
+  * Had to bump pre-release to 20 to fix artefact of broken version
+    for shell extension ("3.0.3~10.10.0_42" instead of "3.0.3~1_0.10.0_42")
+  * Fix hamster startup failure under python 3.11
+    (remove call to deprecated bind_textdomain_codeset gettext function)
+  * HTML export fixes and clean up (gh#projecthamster/hamster#665)
+  * Apply escaping and preserve newlines in HTML export (gh#projecthamster/hamster#704)
+  * Update Croatian translation, add hr.po
+  * Fix time-activity overlap with wide fonts
+- Update GNOME shell extension to upstream 75541ac
+  * use upstream patches for GNOME shell 44 support
+  * Fix GNOME shell dependency on TW
+  * gracefully handle hamster DBUS service disappearing
+  * del 0154-metadata.json.in-add-support-for-GNOME-44.patch
+  * add 0154-prefs.js-handle-different-return-values-of-Gtk.accel.patch
+  * add 0155-Use-of-ellipsis-instead-of-tripledot.patch
+  * add 0156-Use-ellipsis-instead-of-triple-dot-.-in-translations.patch
+  * add 0157-Add-Gnome-Shell-43-compatibility.patch
+  * add 0158-Add-basic-gnome-44-support.patch
+  * add 0159-Report-errors-in-DBUS-calls.patch
+  * add 0160-Report-errors-on-initial-DBUS-connection.patch
+  * add 0161-Gracefully-handle-hamster-DBUS-disappearing.patch
+ - spec file: Fix GNOME shell dependency so that it works for "44.2"
+
+-------------------------------------------------------------------
+Mon May  1 09:41:00 UTC 2023 - Andrey Gankov <gav@qsolution.ru>
+
+- GNOME 43 and GNOME 44 support for GNOME shell extension
+  * added 0154-metadata.json.in-add-support-for-GNOME-44.patch
+
+-------------------------------------------------------------------
+Wed Nov 30 00:41:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on Python 2. 
+
+-------------------------------------------------------------------
+Tue Mar 29 07:23:50 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Fix version ranges for GNOME shell extension
+  * Avoid "nothing provides gnome-shell >= 42" errors from factory
+    bot for s390x/ppc64
+  * This will cause conflicts on future GNOME shell updates, but
+    that's what we want, actually.
+
+-------------------------------------------------------------------
+Fri Mar 25 19:53:17 UTC 2022 - mwilck@suse.com
+
+- Update to upstream hamster 3.0.3~1
+- Upstream fixes and enhancements:
+  * Resume last activity using Ctl-Space. (#678)
+  * FactController: Fix start date picker modifying date twice (#674)
+  * Fix Wayland pop-up issues (#652)
+  * Add keyword entry to .desktop file (#649)
+  * Reset position in FactTree only when needed (#648)
+  * Remove dark bars for empty days in overview. (#650)
+
+-------------------------------------------------------------------
+Fri Mar 25 19:21:03 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Fix GNOME shell versions for TW and 15.4
+- GNOME 41 and GNOME 42 support for GNOME shell extension
+  * added 0152-metadata.json-add-support-for-GNOME-41.patch
+  * added 0153-metadata.json.in-add-support-for-GNOME-42.patch
+- Changed default shortcut from Super-t to Super-h to avoid conflict
+  with GNOME's "minimize window" shortcut
+  * added 0151-Default-shortcut-Super-t.patch
+- Allow "center" positioning in menu bar
+  * added 0149-Extension-configuration-add-a-new-option-center-with.patch
+  * added 0150-Improve-description-of-center-positioning.patch
+- Display total time for the day
+  * added 0148-display-total-time-for-the-day.patch
+
+-------------------------------------------------------------------
+Thu May 20 20:53:22 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- GNOME 40 support for hamster shell extension
+  Upstream: d6e45d7 ("Fix GNOME shell error message about factsBox.FactsBox")
+  * added 0131-metadata.json.in-fix-json-syntax-error.patch
+  * added 0132-Update-README.st.patch
+  * added 0133-Bump-latest-validated-gnome-shell-version-1.patch
+  * added 0134-README-mention-GNOME-shell-compatibility-of-this-ver.patch
+  * added 0135-README.rst-document-GNOME-shell-compatibility.patch
+  * added 0136-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+  * removed 0132-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+  * added 0137-README.rst-update-GNOME-shell-compatibility-informat.patch
+  * added 0138-Makefile-Add-install-user-target.patch
+  * added 0139-Makefile-Add-install-target.patch
+  * added 0140-README-Add-description-of-install-targets.patch
+  * added 0141-Update-reST-syntax.patch
+  * added 0142-Update-reST-syntax-take-2.patch
+  * added 0143-Document-GNOME-3.38-compatibility.patch
+  * added 0144-panelWidget-Remove-show-method.patch
+  * added 0145-panelWidget-Rename-toggle-to-toggle_menu.patch
+  * added 0146-Makeing-it-work-with-Gnome-40.-340.patch
+  * added 0147-fixup-Makeing-it-work-with-Gnome-40.-340.patch
+
+-------------------------------------------------------------------
+Wed May 12 17:24:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.2
+  * Fix off-by-one-day error in CSV exports
+
+-------------------------------------------------------------------
+Tue Apr 28 15:34:47 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix malfunction of backspace key in GNOME extension (3.36)
+  * add patch: 0132-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
+
+-------------------------------------------------------------------
+Tue Apr 28 12:28:12 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix syntax error in metadata.json.in
+  * add patch: 0131-metadata.json.in-fix-json-syntax-error.patch
+
+-------------------------------------------------------------------
+Mon Apr 27 11:01:53 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Support GNOME 3.34 on SLE15-SP2/Leap15.2
+- Correctly set GNOME shell version depending on OS release
+- Update shell extension to GNOME-3.36 branch, and use upstream patch order
+  * renumber patch: 0101-Don-t-try-to-access-controller.activities-before-it-.patch
+    (was 0001-Don-t-try-to-access-controller.activities-before-it-.patch)
+  * renumber patch: 0102-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
+    (was 0002-Fix-disable-callback-gnome-shell-3.30-compatibility.patch)
+  * renumber patch: 0103-convenience.js-has-been-removed-in-GNOME-extensions-.patch
+    (was 0003-convenience.js-has-been-removed-in-GNOME-extensions-.patch)
+  * renumber patch: 0104-Makefile-allow-shipping-convenience.js.patch
+    (was 0005-Makefile-allow-shipping-convenience.js.patch)
+  * renumber patch: 0105-metadata.json-mark-GNOME-3.30-as-supported.patch
+    (was 0004-metadata.json-mark-GNOME-3.30-as-supported.patch)
+  * remove patch: 0006-Makefile-don-t-zip.patch
+  * add patch: 0106-Fix-installation-instructions-matches-Ubuntu-18.04-T.patch
+  * add patch: 0107-metadata.json-remove-version-field.patch
+  * renumber patch: 0108-drop-convenience.js.patch
+    (was 0007-drop-convenience.js.patch)
+  * renumber patch: 0109-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
+    (was 0008-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch)
+  * renumber patch: 0110-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
+    (was 0009-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch)
+  * renumber patch: 0111-Port-GObject-classes-to-JS6-classes.patch
+    (was 0010-Port-GObject-classes-to-JS6-classes.patch)
+  * renumber patch: 0112-add-jshint-validthis-to-silence-warnings-about-stric.patch
+    (was 0011-add-jshint-validthis-to-silence-warnings-about-stric.patch)
+  * renumber patch: 0113-todaysFactsWidget-add-missing-bind.patch
+    (was 0012-todaysFactsWidget-add-missing-bind.patch)
+  * renumber patch: 0114-replace-Lang.bind-with-function-.bind.patch
+    (was 0013-replace-Lang.bind-with-function-.bind.patch)
+  * renumber patch: 0115-Port-non-GObject-class-to-JS6.patch
+    (was 0014-Port-non-GObject-class-to-JS6.patch)
+  * renumber patch: 0116-extension.js-add-jshint-validthis-hints.patch
+    (was 0015-extension.js-add-jshint-validthis-hints.patch)
+  * renumber patch: 0117-extension.js-fix-indentation-after-previous-change.patch
+    (was 0016-extension.js-fix-indentation-after-previous-change.patch)
+  * renumber patch: 0118-Don-t-log-ACTIVITIES-at-every-refresh.patch
+    (was 0017-Don-t-log-ACTIVITIES-at-every-refresh.patch)
+  * renumber patch: 0119-doc-remove-broken-link-to-usejsdoc.org.patch
+    (was 0018-doc-remove-broken-link-to-usejsdoc.org.patch)
+  * renumber patch: 0120-factsBox-use-GObject.registerClass.patch
+    (was 0019-factsBox-use-GObject.registerClass.patch)
+  * renumber patch: 0121-panelWidget-fix-object.actor-is-deprecated-warning.patch
+    (was 0020-panelWidget-fix-object.actor-is-deprecated-warning.patch)
+  * renumber patch: 0122-metadata.json-mark-GNOME-3.34-as-supported.patch
+    (was 0021-metadata.json-mark-GNOME-3.34-as-supported.patch)
+  * add patch: 0123-Makefile-don-t-fail-if-zip-is-unavailable.patch
+  * add patch: 0124-Makefile-collect-must-depend-on-build.patch
+  * add patch: 0125-todaysFactsWidget-replace-Clutter.TableLayout-with-C.patch
+  * add patch: 0126-Fix-GNOME-shell-error-message-about-factsBox.FactsBo.patch
+  * add patch: 0127-Makefile-configurable-extension-UUID.patch
+  * add patch: 0128-metadata.json.in-mark-GNOME-3.36-supported.patch
+  * add patch: 0129-README.rst-mention-the-GNOME-extensions-tool.patch
+  * add patch: 0130-README.rst-Add-a-section-about-UUID-changing.patch
+
+-------------------------------------------------------------------
+Tue Mar 17 16:41:04 UTC 2020 - mwilck@suse.com
+
+- Update to version v3.0.1+8:s
+  * New source file hamster-time-tracker-v3.0.1+8.tar.xz
+    (3.0.1 + 2 bug fixes, upstream commit e6b90fcd)
+  * Fix off-by-one error in hamster export tsv (upstream 
+    #576, #580)
+  * Use itstool instead of xml2po (#584)
+- Fix broken version number of extension package in previous build
+- Remove upstreamed patches
+  * Drop patch: fix-from_start_end-handle-datetime-first.patch
+  * Drop patch: choke-on-invalid-types-in-from_start_end.patch
+  * Drop patch: Use-itstool-instead-of-xml2po.patch (i18n fixes)
+  * Drop patch: fixup-Use-itstool-instead-of-xml2po.patch
+
+-------------------------------------------------------------------
+Sun Mar 15 21:30:12 UTC 2020 - mwilck@suse.com
+
+- Update to version 3.0.1:
+  * remove binary waf footer
+  * mark org.gnome.Hamster.GUI as experimental
+  * restore edit method in WindowServer
+  * add edit action in cli
+  * appdata: Rename to org.gnome.Hamster
+  * explicitly set application ID and prgname on startup
+  * Fix completion in categories TreeView
+  * Fix search function (#551)
+  * metainfo file renamed to org.gnome.Hamster.GUI.metainfo.xml
+- Use --skip-icon-cache-update option during build
+- Dropped / renamed patches
+  * Drop patch: wscript-don-t-update-icon-cache.patch (obsolete)
+  * Drop patch: Fix-search-function-551.patch (merged upstream)
+  * Drop patch: hamster-explicitly-set-application-ID-and-prgname-on.patch
+    (merged upstream)
+  * Drop patch: Revert-remove-unused-edit-method.patch (rejected
+  upstream)
+  * Rename patch: env-script-interpreter.patch
+    -> replace-env-python-invocation-by-direct-call.patch
+  * Removed appdata.patch in OBS
+- Added upstram bug-fix PR #580 ("Fix handling of datetime arguments 
+  to from_start_end")
+  * Add patch: fix-from_start_end-handle-datetime-first.patch
+  * Add patch: choke-on-invalid-types-in-from_start_end.patch
+- Added merged upstream PR #584 ("Use itstool instead of xml2po")
+  * Add patch: Use-itstool-instead-of-xml2po.patch (i18n fixes)
+  * Add patch: fixup-Use-itstool-instead-of-xml2po.patch
+
+-------------------------------------------------------------------
+Wed Feb 12 20:16:15 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix search function
+  (https://github.com/projecthamster/hamster/pull/551)
+  * Add Fix-search-function-551.patch
+- Fix icon not being displayed on Wayland 
+  (https://github.com/projecthamster/hamster/pull/541)
+  * Add hamster-explicitly-set-application-ID-and-prgname-on.patch
+
+-------------------------------------------------------------------
+Tue Feb 11 20:51:50 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix non-working "Add Earlier activity" button in shell extension
+  (https://github.com/projecthamster/hamster/pull/549)
+  * Add Revert-remove-unused-edit-method.patch
+
+-------------------------------------------------------------------
+Mon Feb 10 21:36:47 UTC 2020 - mwilck@suse.com
+
+- Update to version 3.0~beta:
+  * Numerous bug fixes (see NEWS)
+  * New 'version' or 'Version' command/methods available (PR 528).
+  * New *JSON dbus methods to pass facts verbatim (PR 514).
+  * Changed parser:
+    - Accept activity starting with hash '#' (issue ?)
+    - Accept comma in activity (issue ?)
+    - Breaking (sorry, really needed):
+      Description delimiter is a double comma ',,' instead of a single comma.
+    - Comma is forbidden in category (instead of silently swallowed)
+    - Same parser for terminal, gui and D-Bus interface.
+      Range is still searched at tail (terminal) or head position (gui, D-Bus).
+    - Fact.range start/end are always datetimes
+      any time given without date is attributed to a default hamster day.
+      The default hamster day is usually today.
+      In the gui, the default day is the day selected in the timeline.
+    - start/end can be entered as +mmm or -mmm (<sign><1-3 digits>),
+      relative to a reference. The reference is usually now.
+    - The fact duration can be given as mmm (<1-3 digits>, no sign),
+      instead of the end.
+    - hour/minutes separator can be colon, comma, dot, e.g. 9.30.
+      No separator is allowed, but only with 4 digits: hhmm.
+  * Improved consistency in date/time handling (PR 429) by
+      - switching to ISO date format (%Y-%m-%d) in lib/* 
+        to be consistent with hamster-cli usage
+      - rounding (i.e. truncating) all activity start/end timestamps
+        to the minute
+      ** note that this only affects new and/or edited activities in the database
+  * Added stop tracking button to header bar (PR 427)
+  * The help system is back (PR 393).
+  * Improved keyboard handling:
+    - Ctrl+Space to stop tracking.
+    - Left/Right arrows change date.
+    - Resume: start now a clone of the selected activity.
+      Ctrl-+: clone or fallback to new if none selected.
+              (same as pressing the + button)
+      Ctrl-R: only Resume (clone) an existing fact.
+      Ctrl-N: only new.
+    - Up, down, Home, End, Page-Up, Page-Down, Return
+      work straight from the overview (no need to click).
+    - More info on PR #387.
+- Removed obsolete patches (merged upstream)
+  * removed appdata.patch (shipping upstream metainfo now)
+  * removed 0002-Overview-fix-gtk.show_uri-call.patch
+  * removed 0003-Overview-add-help-menu-entry.patch
+  * removed 0004-waf-install-help-files-into-usr-share-help.patch
+  * removed 0005-wscript-install-bash-completion-to-usr-share-bash-co.patch
+  * removed 0006-Overview-show-error-window-if-opening-help-fails.patch
+- Added patches to skip waf installation steps that aren't needed for
+  openSUSE packaging because they're done at package install time
+  * added wscript-don-t-update-icon-cache.patch
+  * added waf-skip-gsettings-schema-compilation.patch
+- No more gconf support after move to gsettings
+
+-------------------------------------------------------------------
+Tue Oct 22 18:58:23 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Added a Provides: for gnome-shell-extension-hamster for proper
+  package renaming
+
+-------------------------------------------------------------------
+Tue Oct 22 15:14:44 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Make hamster-shell-extension compatible with GNOME 3.34 for TW
+  (gh#projecthamster/hamster-shell-extension#316)
+  * added 0019-factsBox-use-GObject.registerClass.patch
+  * added 0020-panelWidget-fix-object.actor-is-deprecated-warning.patch
+  * added 0021-metadata.json-mark-GNOME-3.34-as-supported.patch
+- Renamed gnome-shell-extension-hamster to gnome-shell-extension-hamster-time-tracker
+  and changed version number scheme which was broken before
+  * coded "maximum GNOME shell version" in
+  * don't use hamster main package version, as the extension has an
+    independent code base and the hamster API is stable
+
+-------------------------------------------------------------------
+Fri May 10 09:56:26 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Make hamster-shell-extension compatible with GNOME 3.32 for TW
+  (gh#projecthamster/hamster-shell-extension#312)
+  * added 0007-drop-convenience.js.patch
+  * added 0008-make-test-style-set-esversion-to-6-for-GNOME-3.32.patch
+  * added 0009-Mark-GNOME-3.32-as-supported-all-others-as-unsupport.patch
+  * added 0010-Port-GObject-classes-to-JS6-classes.patch
+  * added 0011-add-jshint-validthis-to-silence-warnings-about-stric.patch
+  * added 0012-todaysFactsWidget-add-missing-bind.patch
+  * added 0013-replace-Lang.bind-with-function-.bind.patch
+  * added 0014-Port-non-GObject-class-to-JS6.patch
+  * added 0015-extension.js-add-jshint-validthis-hints.patch
+  * added 0016-extension.js-fix-indentation-after-previous-change.patch
+  * added 0017-Don-t-log-ACTIVITIES-at-every-refresh.patch
+  * added 0018-doc-remove-broken-link-to-usejsdoc.org.patch
+
+-------------------------------------------------------------------
+Fri Mar 15 12:57:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Make full use of the %setup macro.
+- Remove one set of %if..%endif guards that do not affect the build.
+
+-------------------------------------------------------------------
+Thu Mar 07 19:39:38 UTC 2019 - mwilck@suse.com
+
+- Update to version 2.2.2:
+  * add PangoCairo require_version (#390)
+  * use .format() instead of f-string (#389)
+  * test for decimal number in activity (#386)
+  * add total duration in 'hamster list' command (#380)
+  * take the current hamster day as default date
+  * start a clone of the selected activity upon clicking "add"
+  * fix xml and ical export
+  * remove the ReportWriter.export function (fix issue #373)
+  * keep input order for tag list
+  * Ellipsize labels that don't fit in stats window
+  * and many minor fixes
+
+-------------------------------------------------------------------
+Mon Mar  4 11:41:26 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Handle error when opening help files (when no help browser is
+  installed)
+  * add 0006-Overview-show-error-window-if-opening-help-fails.patch
+
+-------------------------------------------------------------------
+Sat Mar  2 07:31:55 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description. Generalize description.
+
+-------------------------------------------------------------------
+Fri Mar  1 14:31:49 UTC 2019 - Martin Wilck <mwilck@suse.com>
+
+- Added help files and help menu entry
+  * added 0002-Overview-fix-gtk.show_uri-call.patch
+  * added 0003-Overview-add-help-menu-entry.patch
+  * added 0004-waf-install-help-files-into-usr-share-help.patch
+- Added gnome-shell-extension-hamster
+  * added hamster-shell-extension-0.10.0.tar.gz
+  * added convenience.js (from gnome-shell-extensions 3.30)
+- Patches for 3.30 compatibility and OBS support for the GNOME extension:
+  * added 0001-Don-t-try-to-access-controller.activities-before-it-.patch
+  * added 0002-Fix-disable-callback-gnome-shell-3.30-compatibility.patch
+  * added 0003-convenience.js-has-been-removed-in-GNOME-extensions-.patch
+  * added 0004-metadata.json-mark-GNOME-3.30-as-supported.patch
+  * added 0005-Makefile-allow-shipping-convenience.js.patch
+  * added 0006-Makefile-don-t-zip.patch
+- Spec file fixes:
+  * restored proper gconf schema handling, which had been removed
+    in a previous submission
+  * added requirements for %desktop_database_post and
+    %icon_theme_cache_post
+  * moved bash completions to /usr/share/bash-completion/completions
+    (added 0005-wscript-install-bash-completion-to-usr-share-bash-co.patch)
+  * added some %doc and %license files
+  * removed build dependency on pkgconfig(gnome-keybindings), replaced
+    by deps on the build tools actually needed. This provides a much
+    leaner build.
+  * removed build dependency on translation-update-upstream
+    (we don't call it anyway)
+  * added BuildRequires on gobject-introspection to get autogenerated
+    typelib dependencies right
+
+-------------------------------------------------------------------
+Thu Nov 29 23:01:41 UTC 2018 - edera@gmx.fr
+
+- Update to version 2.1.1 (legacy hamster) from
+  https://github.com/projecthamster/hamster/releases/tag/v2.1.1
+  python3 migration + minor usability fixes
+  with respect to 2.0-rc1 (Gtk3 port)
+
+-------------------------------------------------------------------
+Fri Mar 24 10:13:04 UTC 2017 - mwilck@suse.com
+
+- spec file: removed obsolete %clean section
+
+-------------------------------------------------------------------
+Thu Feb 16 08:24:58 UTC 2017 - martin.wilck@suse.com
+
+- Update to version 1.04+0:
+  * Build from github, using _service file (localonly mode)
+- Fix email address in .changes file.
+
+-------------------------------------------------------------------
+Tue Oct  4 05:21:14 UTC 2016 - mailaender@opensuse.org
+
+- Add appdata.xml for https://en.opensuse.org/openSUSE:AppStore
+
+-------------------------------------------------------------------
+Sun Jan 19 17:41:18 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.04:
+  + Bugfixes around talking to the notifications daemon.
+  + Updating tags list in prefs wasn't doing anything.
+  + In some cases activity updates were failing when tags where
+    provided.
+
+-------------------------------------------------------------------
+Fri Feb  8 23:06:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.03.3 (bnc#802601):
+  + Fix exporting entries to file.
+- Changes from version 1.03.2:
+  + Fix bug when trying to enter an activity with tags.
+- Changes from version 1.03.1:
+  + Fix silly bug with path.
+- Changes from version 1.03:
+  + Fix issue #61: installation was missing initial database for
+    fresh installs
+  + Loosen backend dependencies so that hamster.client can be used
+    outside the project.
+  + Desktop notification now once again correctly notifies of
+    "No activity"
+
+-------------------------------------------------------------------
+Tue Jan 15 18:03:43 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-3.0+ and CC-BY-SA-3.0
+  A substantial number of content files found with CC-BY-SA-3.0 license
+
+-------------------------------------------------------------------
+Mon Jan 14 14:10:52 UTC 2013 - dimstar@opensuse.org
+
+- Rename to hamster-time-tracker, following upstream
+- Update to version 1.02.1:
+  + Drop gnome-keybindings as a dependency.
+- Changes from version 1.02:
+  + Project Hamster has detached from Gnome and thus we are
+    resetting the versioning. The program name also has changed
+    from hamster-applet to a more generic hamster-time-tracker
+  + Improvements in the command line. hamster-cli has been renamed
+    to simply "hamster" and without parameters launches the day
+    view. Run "hamster --help" to get help on available commands.
+    The executable also supports tab-completion to suggest actions
+    as well as to look up activities and categories
+  + Desktop notifications are back
+  + The notification tray interaction has been slightly improved
+  + ~20 bug fixes.
+- Obsolete hamster-applet and docky-hamster-applet <= 2.91.2 (last
+  release prior the rename by upstream).
+- Note: docky-hamster-applet has been completely dropped for now.
+- Change python-evolution Requires to Recommends: h-t-t can work
+  without evolution support and on recent evo-versions, there are
+  no python bindings available.
+
+-------------------------------------------------------------------
+Thu Jun  9 12:46:03 CEST 2011 - vuntz@opensuse.org
+
+- Update dependencies to be more specific:
+  + Add python-evolution, python-gconf and python-wnck Requires
+    since those modules are explicitly used.
+  + Drop gnome-python-desktop and python-gnome Requires: we
+    explicitly have the Requires we need now, and so we don't need
+    those more generic meta-packages.
+  + Add a comment about the gnomeapplet python module, and why it
+    is not needed anymore with GNOME 3.
+- Drop gnome-python-desktop BuildRequires that was there only for
+  directory ownership, and instead remove the .server file for the
+  GNOME 2 applet since we can't use it.
+
+-------------------------------------------------------------------
+Fri Mar  4 17:51:18 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.2:
+  + Experimental trophy support (gnome-achievements is needed for
+    this, see fate#312280).
+  + Improvements in HTML reports
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Feb 14 19:49:23 CET 2011 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream.
+
+-------------------------------------------------------------------
+Sun Feb 13 16:24:44 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Wed Dec 15 10:28:17 CET 2010 - vuntz@opensuse.org
+
+- Add gnome-python-desktop BuildRequires (which is already a
+  Requires), for directory ownership, to fix build.
+- Move the dockmanager files to docky-hamster-applet.
+
+-------------------------------------------------------------------
+Tue Nov 16 09:36:20 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + Totals are returned to HTML report
+  + Fixed problems with the stop button and python 2.7
+  + Ampersand now is safe to use again
+  + Updated translations.
+- Add python-xdg Requires. Fix bnc#653578.
+
+-------------------------------------------------------------------
+Mon Sep 27 13:48:47 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Fixed bug with stale cache in description label
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 13 15:33:55 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.92:
+  + Minor bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 31 01:40:33 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.91:
+  + Data integrity bugfixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 17 11:11:45 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.90:
+  + Maintaining selection on refresh in a more sane manner
+  + Self-monitor the database not only for updates but also for
+    remove/create (solves problems with some synchronization tools)
+  + Fixed the global hotkey, require gnome-keybindings package as
+    the hotkey is part of expected functionality
+  + Updated translations.
+- Add pkgconfig(gnome-keybindings) BuildRequires.
+
+-------------------------------------------------------------------
+Mon Aug  9 00:53:35 CEST 2010 - vuntz@opensuse.org
+
+- Remove unneeded BuildRequires: gnome-control-center-devel,
+  gnome-python-desktop, gtk2-devel, python-gnome-devel,
+  python-gtk-devel.
+- Add glib2-devel BuildRequires.
+
+-------------------------------------------------------------------
+Fri Aug  6 00:35:19 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + the top graph in overview is now interactive and allows zooming
+    in and out
+  + sqlite utf-8 case sensitivity workarounds for queries
+  + hamster's docky helper installed together with hamster
+  + using full text search in the overview window now
+  + hopefully activity trees now behave better on refresh
+  + updated translations
+- Changes from version 2.31.5:
+  + adjustments for custom widgets to better work with themes
+  + if dialog windows are called from commandline, make sure they
+    shut down properly
+  + updated translations
+- Make package noarch.
+- Call %suse_update_desktop_file for hamster-applet.desktop
+- Create a docky-hamster-applet subpackage for the docky
+  integration.
+
+-------------------------------------------------------------------
+Thu Jul  8 02:12:04 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.4:
+  + overview gets a menu, drops toolbars and now supports date
+    range browsing
+  + adjustments to starts and ends graph in statistics (should be
+    more accurate)
+  + performance updates in graphics
+  + html report was looking in the wrong place for the template
+- Changes from version 2.31.3.2:
+  + bgo#620965: respecting SYSCONFDIR environment variable to
+    determine where to store gconf schema
+- Changes from version 2.31.3.1:
+  + including generated help pages in the tarball
+- Changes from version 2.31.3:
+  + dropped in-house global hotkey management in favour to Gnome's
+    global hotkeys
+  + HTML report template now can be overridden from $HOME folder.
+    instructions can be found in the report footer
+  + remembering path of last saved report
+  + moved build system from autotools to waf
+- Changes from version 2.31.2:
+  + optional integration with gtg (via preferences)
+  + all kinds of bugfixes
+- Changes from version 2.31.1.2:
+  + add missing file from tarball
+- Changes from version 2.31.1.1:
+  + add missing translations
+- Changes from version 2.31.1:
+  + application has been split up in back-end d-bus daemon and
+    clients
+  + edit activity preview widget got some love
+  + minor bugfixes from 2.30 release
+  + updated translations
+- Adapt spec file to use waf instead of configure.
+
+-------------------------------------------------------------------
+Thu Apr 29 14:31:14 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.30.1:
+  + translations were not appearing in standalone
+  + database file change monitor now follows symlinks
+  + fixed rounding error in totals  (regression)
+  + standalone can be now closed using standard Ctrl+w keystroke
+  + updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 31 14:24:41 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0.1:
+  + bgo#614452 - load translations in standalone mode
+
+-------------------------------------------------------------------
+Mon Mar 29 15:08:03 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  8 17:29:56 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.92:
+  + depend on gnome-python-desktop to fulfill wnck-python
+    dependency
+  + minor bug with screen refresh after deletion
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 24 12:05:21 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.91:
+  + avoiding blank entries, not reusing fact ids; other details
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 10 19:39:45 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.90:
+  + Updated translations.
+- Add back the gconf packaging magic.
+
+-------------------------------------------------------------------
+Tue Jan 26 18:22:19 CET 2010 - vuntz@opensuse.org
+
+- Update to version 2.29.6:
+  + workspace tracking - switch activity, when switching desktops
+  + chart improvements - theme friendly and less noisier
+  + for those without GNOME panel there is now a standalone
+    version, accessible via Applications -> Accessories -> Time
+    Tracker
+  + overview window remembers position
+  + maintaining cursor on the selected row after edits / refreshes
+    (unimportant, but very convenient)
+  + descriptions once again in the main input field, delimited by
+    comma
+  + activity suggestion box now sorts items by recency
+  + updated translations
+- Add gnome-doc-utils-devel BuildRequires.
+- Add gnome-control-center-devel BuildRequires to support custom
+  keybindings.
+- Remove all the gconf packaging magic since the gconf schemas were
+  removed, but this might come back (see bgo#608252).
+- Update new desktop file with the X-SuSE-TimeUtility category.
+
+-------------------------------------------------------------------
+Thu Jan 14 03:55:41 CET 2010 - captain.magnus@opensuse.org
+
+- Update to version 2.29.5:
+  + searching
+  + simplified save report dialog, thanks to the what you see is
+    what you report revamp
+  + overview/stats replaced with activities / totals and stats
+    accessible from totals
+  + interactive graphs to drill down in totals
+  + miscellaneous performance improvements
+  + pixel-perfect graphs
+
+-------------------------------------------------------------------
+Tue Dec 22 04:33:17 CET 2009 - lmedinas@opensuse.org
+
+- Update to version 2.29.4:
+  + Overview window overhaul (still in progress)
+  + More progress on tag front (now showing in lists)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  2 22:04:47 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + partial tag support (adding to a fact and editing autocomplete
+    list, no reports yet)
+  + fixed glitches when editing ongoing task
+  + improved save report dialog
+  + better autocomplete for the entries
+  + Updated translations.
+- Changes from version 2.29.2:
+  + bgo#599343 - the charts are now back again (for those who had
+    lost them)
+  + hamster midnight is now a preference
+  + when in panel, printing uncaught errors to .xsession-errors
+  + when looking for ongoing task, don't look into the future
+    (causes some mad durations and is generally impractical)
+  + new dbus method getCurrentActivity that returns just the name
+    and category
+  + fixed problems with hamster interfering with screensaver
+    hibernation code
+  + database MOVED to the xdg home (~/.local)
+  + in reports inlude also activities without category
+  + set start time to the end of the last activity if adding
+    previous activity for today
+  + fixes to the dropdown in compiz (not spanning over virtual
+    desktops anymore)
+  + in dropdown added end time and dropped the stripes (too much
+    noise already)
+  + Updated translations.
+- Pass --disable-schemas-install to configure.
+
+-------------------------------------------------------------------
+Sat Nov 14 21:29:15 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Avoid getting activities from the future (bgo#596617)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 22 19:42:36 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  8 10:44:35 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.27.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 11 04:08:18 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.90:
+  + Fixes to idle detection
+  + Return of the day view
+  + UI layout fixes to match HIG
+  + Now it is possible to add more than one applet to panel without
+    crashing
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Jul 28 16:32:19 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.5:
+  + Better autocomplete
+  + More skeptic on parsing time
+  + Legend in overview is sized proportionally to screen size,
+    allowing larger labels
+  + Translation updates.
+
+-------------------------------------------------------------------
+Mon Jul 20 01:39:30 CEST 2009 - lmedinas@gmail.com
+
+- Update to version 2.27.4:
+  + Now it is possible to copy/paste activities in the overview
+  + Mostly polishing and bug fixing the new stuff brought in 2.27
+    cycle
+  + Translation updates
+
+-------------------------------------------------------------------
+Tue Jun 16 14:28:24 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.3:
+  + A much better DBUS support
+  + Switch days at 5am because humans tend to work late.
+    Overlapping activities fall in day where the largest part of it
+    is
+  + Now you can enter negatives minutes to start an activity in
+    past. Example "-30 cookies" will start activity "cookies" 30
+    minutes before now
+  + TSV, XML and iCal export
+  + Ability to filter task by date and category
+  + Overview has been improved by adding some nifty statistics for
+    your pleasure
+  + Updated translations.
+- Add dbus-1-python Requires.
+
+-------------------------------------------------------------------
+Wed May 27 12:43:57 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + Now a reminder is displayed every configured amount of time
+    also when no activity is being tracked.
+  + Allow to switch to same task if description differs.
+  + Activity edit icon in dropdown is now keyboard accessible.
+  + Start time and end time can be specified when typing in task.
+    Example: 00:04 Hamster
+  + Slightly smarter autocomplete with category suggestions when
+    after @ symbol
+  + Fixes to edit activity dialog's end time field.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue May  5 19:51:27 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.1:
+  + Overview window graphs have been redone and now are less noisy
+  + Tasks now can span over midnight, showing correct per-day
+    totals in overview
+  + Add earlier activity / edit activity has been overhauled and
+    now is much easier to use. An experimental preview has been
+    added
+  + In preferences UI buttons have been added for editing and
+    deletion
+  + Glade files have been migrated to gtkbuilder format
+  + Now it is possible to start overview and other windows straight
+    from command line using "-s [stats|edit|prefs]" switch
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 22:56:35 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Final fixes to utf-8 and Python 2.6 sqlite.
+  + Updated translations.
+- Remove AutoReqProv: it's default now.
+- Use parallel make.
+
+-------------------------------------------------------------------
+Sun Mar  8 23:57:32 CET 2009 - vuntz@novell.com
+
+- Review changes.
+
+-------------------------------------------------------------------
+Wed Mar  4 12:36:57 CET 2009 - lmedinas@gmail.com
+
+- Update to version 2.25.92:
+  + Fixed problems with utf-8 and Python 2.6 sqlite
+  + Escaping user input so they don't break UI where pango is used
+  + Stop tracking on shutdown was ignoring user preference
+  + Translation updates
+
+-------------------------------------------------------------------
+Mon Feb 16 23:58:59 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.91:
+  + Show day totals in statistics
+  + Better keyboard support (Enter / Escape)
+  + Fixes to detect alternative pygtk
+  + Fixes to support Japanese better
+  + Python 2.6 support
+  + Better duplicate entry checks in activities / categories
+  + Translation updates
+- Remove checks for <= 10.2
+- Remove gnome-common and perl-XML-Parser from BuildRequires
+
+-------------------------------------------------------------------
+Sat Feb 14 03:51:17 CET 2009 - mboman@suse.de
+
+- Remove python-sqlite2 from Requires
+
+-------------------------------------------------------------------
+Fri Feb  6 13:11:21 EST 2009 - hfiguiere@suse.de
+
+- Review and approve
+- Fix dependencies
+
+-------------------------------------------------------------------
+Thu Feb  5 01:43:29 WET 2009 - lmedinas@gmail.com
+
+- Update to 2.25.90
+  + Locales fixes
+  + Fix checks for python 2.6 and 3.0
+  + Translation Updates
+- Update homepage url
+- Use %%fdupes
+
+-------------------------------------------------------------------
+Wed Jan 14 13:51:28 GMT 2009 - awafaa@opensuse.org
+
+- Update to 2.24.3
+
+-------------------------------------------------------------------
+Thu Apr 24 11:19:08 CDT 2008 - maw@suse.de
+
+- Improve package's metadata
+- Build on 10.2
+- Require things that should be required.
+
+-------------------------------------------------------------------
+Thu Apr 24 10:38:27 CDT 2008 - maw@suse.de
+
+- Initial hamster-applet package: version 0.2.

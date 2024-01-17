@@ -1,0 +1,508 @@
+-------------------------------------------------------------------
+Sat Aug 12 22:23:17 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.18.12...0.19.1
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Thu Jul 13 18:37:17 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.18.2...0.18.12
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Tue Jun 13 21:10:59 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.17.18...0.18.2
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Fri May 12 23:41:16 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.17.5...0.17.18
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Sun Jan 29 05:25:02 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.15.11...0.17.5
+  * see CHANGELOG.md for changes
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Oct 14 22:07:20 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.15.3...0.15.11
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Tue Aug 16 14:48:45 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.14.36...0.15.3
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Wed Jul 13 22:29:58 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Use recommended flags
+- Add Fedora build
+- Add remove-version-check.patch to make the package more usable as a build require
+
+-------------------------------------------------------------------
+Mon Apr 18 15:41:13 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.14.28...0.14.36
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Sun Mar 27 23:52:54 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- roll 0.14.9...0.14.28
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Wed Dec 29 18:54:28 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.14.9:
+  * see CHANGELOG.md for changes
+
+-------------------------------------------------------------------
+Thu Nov 25 15:55:54 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.13.15
+  * see CHANGELOG.md for changes, additions or removals
+
+-------------------------------------------------------------------
+Sat Jun 19 18:16:58 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.12.9
+  * feat: override "this" with --define (#1361)
+  * fix: CSS minification with !important and duplicate declarations (#1372)
+- includes 0.12.8
+  * Plugins can now specify sideEffects: false (#1009)
+  * Remove a warning about unsupported source map comments (#1358)
+- includes 0.12.7
+  * Quote object properties that are modern Unicode identifiers (#1349)
+  * Ignore tsconfig.json files inside node_modules (#1355)
+  * Fix missing --metafile when using --watch (#1357)
+  * Add a hidden __esModule property to modules in ESM format (#1338)
+- includes 0.12.6
+  * Improve template literal lowering transformation conformance (#1327)
+  * Only respect target in tsconfig.json when esbuild's target is not
+    configured (#1332)
+  * Fix the order of CSS imported from JS (#1342)
+  * Fix an edge case with transforming export default class (#1346)
+
+-------------------------------------------------------------------
+Thu Jun  3 14:53:42 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.12.5
+  * Add support for lowering tagged template literals to ES5
+  * Change class field behavior to match TypeScript 4.3
+  * Avoid generating character sequence </script>
+  * Change the triple-slash reference comment for Deno
+- includes 0.12.4
+  * Reorder name preservation before TypeScript decorator evaluation
+  * Potential fix for determinism issue (introduced 0.11.13)
+  * Respect `target` in `tsconfig.json`
+- includes 0.12.3
+  * Ensure JSX element names start with a capital letter
+  * Fix a single hyphen being treated as a CSS name
+- includes 0.12.2
+  * Various code generation and minification issues fixed
+- includes 0.12.1
+  * Ability to preserve JSX syntax
+  * Update list of built-in node modules (added wasi and _http_common)
+- includes 0.12.0
+  * Fix bundled CSS import order
+  * Fix bundled CSS when using JS code splitting
+  * Change "define" to have higher priority than "inject"
+  * Support for "NO_COLOR" environment variable
+
+-------------------------------------------------------------------
+Sun May 16 15:51:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.11.23
+  * Add a shim function for unbundled uses of require
+  * Fix incorrect caching of internal helper function library
+  * Minor performance improvements
+- includes 0.11.22
+  * Add support for the "import assertions" proposal
+  * Forbid the token sequence `for ( async of` when not followed by `=>`
+  * Restrict super property access to inside of methods
+- includes 0.11.21
+  * TypeScript override for parameter properties
+  * Fix duplicate export errors due to TypeScript import-equals statements
+  * Add support for type-only TypeScript import-equals statements
+- includes 0.11.20
+  * Omit warning about duplicate JSON keys from inside node_modules
+  * Add CSS minification for box-shadow values
+  * Fix object spread transform for non-spread getters
+  * Prevent private class members from being added more than once
+
+-------------------------------------------------------------------
+Thu May  6 19:32:35 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.11.19
+  * Allow esbuild to be restarted in Deno
+  * Fix code splitting edge case
+  * Fix code generation with declare class fields
+  * Annotate module wrapper functions in debug builds
+  * Add CSS minification for more cases
+  * Preserve quotes around properties when minification is disabled
+- includes 0.11.18
+  * Fix an incorrect warning about top-level this
+- includes 0.11.17
+  * Fix building with a large stdin string with Deno
+  * Add a warning about replacing this with undefined in ESM code
+  * Allow a string literal as a JSX fragment
+  * Fix metafile in onEnd with watch mode enabled
+- includes 0.11.16
+  * Fix TypeScript enum edge case
+  * Parse the @-moz-document CSS rule
+  * Fix syntax error in TypeScript-specific speculative arrow function parsing
+  * Further changes to the behavior of the browser field
+  * Avoid placing a super() call inside a return statement
+  * Fix a bug with onEnd and watch mode
+  * Fix an edge case with minified export names and code splitting
+  * Provide a friendly error message when you forget async
+
+-------------------------------------------------------------------
+Tue Apr 27 21:08:25 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.11.15
+  * Provide options for how to handle legal comments
+  * Add onStart and onEnd callbacks to the plugin API
+- includes 0.11.14
+  * Implement arbitrary module namespace identifiers
+  * Implement more accurate sideEffects behavior from Webpack
+- includes 0.11.13
+  * Implement ergonomic brand checks for private fields
+  * Add the --allow-overwrite flag
+  * Minify property accesses on object literals
+  * Improve arrow function parsing edge cases
+- includes 0.11.12
+  * Fix a bug where -0 and 0 were collapsed to the same value
+  * Match the TypeScript compiler's output in a strange edge case
+  * Separate the debug log level into debug and verbose
+
+-------------------------------------------------------------------
+Thu Apr 15 19:53:51 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.11.11
+  * Initial support for Deno
+  * Remove warnings about non-bundled use of require and import
+
+-------------------------------------------------------------------
+Wed Apr 14 18:09:02 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.11.10
+  * Provide more information about exports map import failures if possible
+- includes 0.11.9
+  * Fix escaping of non-BMP characters in property names
+  * Be maximally liberal in the interpretation of the browser field
+- includes 0.11.8
+  * Fix hash calculation for code splitting and dynamic imports
+  * Refactor the internal module graph representation
+- includes 0.11.7
+  * Fix incorrect chunk reference with code splitting, css, and dynamic imports
+  * Split apart tree shaking and code splitting
+  * Make "this" work in static class fields in TypeScript files
+  * Various fixes for private class members
+
+-------------------------------------------------------------------
+Wed Apr  7 16:10:35 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.11.6
+  * Fix an incorrect minification transformation
+  * Change how NODE_PATH works to match node
+  * Provide a better error message for incorrectly-quoted JSX attributes
+
+-------------------------------------------------------------------
+Sun Apr  4 17:55:08 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.11.5
+  * Add support for the override keyword in TypeScript 4.3
+  * Allow async plugin setup functions
+  * Add some optimizations around hashing
+  * Disable tree shaking annotations when code splitting is active
+- includes 0.11.4
+  * Avoid name collisions with TypeScript helper functions
+  * Fix a chunk hashing issue
+- includes 0.11.3
+  * Auto-define process.env.NODE_ENV when platform is set to browser
+  * Retain side-effect free intermediate re-exporting files
+  * Add a very verbose debug log level
+
+-------------------------------------------------------------------
+Thu Apr  1 17:52:35 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.11.2
+  * Fix missing symbol dependency for wrapped ESM files
+  * Fix an edge case with entry points and top-level await
+- includes 0.11.1
+  * Fix a missing space before internal import() when minifying
+  * Fix code generation for unused imported files without side effects
+  * Allow top-level await in supported environments
+  * Convert import() to require() if import() is not supported
+- includes 0.11.0
+  * Change how require() and import() of ESM works
+  * Dynamic imports now use chunk names instead of entry names
+  * Allow custom output paths for individual entry points
+  * Derive entry point output paths from the original input path
+  * Use the file namespace for file entry points
+  * Warn about mutation of private methods
+  * Fix some obscure TypeScript type parsing edge cases
+- includes 0.10.2
+  * Fix CSS crash introduced in the previous release
+  * Fix private fields inside destructuring assignment
+  * Fix an issue with direct eval and top-level symbols
+
+-------------------------------------------------------------------
+Fri Mar 26 08:34:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.10.1
+  * Remove the file splitting optimization
+  * Add a formatMessages API
+  * Expose metafile to onRebuild in watch mode
+- includes 0.10.0
+  * feature: Initial support for bundling with top-level await
+  * feature: Add the ability to set sourceRoot in source maps
+  * feature: Allow plugins to return custom file watcher paths
+  * No longer support module or exports in an ESM file
+  * No longer change import() to require()
+  * Run-time export * as statements no longer convert the file to CommonJS
+  * Change whether certain files are interpreted as ESM or CommonJS
+- includes 0.9.7
+  * Fix incorrect MIME types on Windows
+  * Using a top-level return inside an ECMAScript module is now forbidden
+
+-------------------------------------------------------------------
+Sun Mar 21 23:08:26 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.9.6
+  * Expose build options to plugins
+  * Fix an edge case with the object spread transform
+  * Fix a TypeScript parsing edge case with arrow function return types
+  * Enable faster synchronous transforms under a flag
+  * Update how optional chains are compiled to match new V8 versions
+- includes 0.9.5
+  * Fix parsing of the [dir] placeholder
+- includes 0.9.4
+  * Enable hashes in entry point file paths
+  * Fix importing a path containing a ? character on Windows
+  * Parse and ignore the deprecated @-ms-viewport CSS rule
+  * Avoid mutating the binary executable file in place
+  * Avoid warning about potential issues with sideEffects in packages
+- includes 0.9.3
+  * Fix path resolution with the exports field for scoped packages
+  * Improved error message in exports failure case
+  * Mention glob syntax in entry point error messages
+  * Raise certain VM versions in the JavaScript feature
+    compatibility table
+  * Mention the configured target environment in error messages
+  * Fix an issue with Unicode and source maps
+
+-------------------------------------------------------------------
+Sun Mar 14 20:06:00 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.9.2:
+  * Fix export name annotations in CommonJS output for node
+- includes 0.9.1:
+  * Always lower object spread and rest when targeting V8
+  * Fix object rest return value
+  * Basic support for CSS page margin rules
+  * Add export name annotations to CommonJS output for node
+  * Fix bundling when parent directory is inaccessible
+  * Avoid allocations in JavaScript API stdout processing
+  * Support conditional @import syntax when not bundling
+
+-------------------------------------------------------------------
+Wed Mar 10 03:48:12 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.9.0:
+  * Add support for node's exports field in package.json files
+  * Banner and footer options explicitly set js vs. css
+  * The extensions .mjs and .cjs are no longer implicit
+  * Remove the --summary flag and instead just always print a summary
+  * Rename --error-limit= to --log-limit=
+  * Remove the metafile from outputFiles
+  * Remove the deprecated --avoid-tdz optioon
+  * Remove the esbuild.startService() API
+  * Remove Spinner options from Go API
+
+-------------------------------------------------------------------
+Fri Mar  5 16:53:30 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.56
+  * Fix a discrepancy with esbuild's tsconfig.json implementation
+  * Work around the Jest testing framework breaking node's Buffer API
+  * Better handling of implicit main fields in package.json
+- includes 0.8.55
+  * Align more closely with node's default import behavior for CommonJS
+  * Fix bug when ESM file has empty exports and is converted to CommonJS
+  * Avoid introducing this for imported function calls
+
+-------------------------------------------------------------------
+Tue Mar  2 23:31:48 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.54
+  * Fix ordering issue with private class methods
+  * Fix --keep-names for private class members
+  * Fix cross-chunk import paths
+  * Remove the guarantee that direct eval can access imported symbols
+- includes 0.8.53
+  * Support chunk and asset file name templates
+  * Handle this in class static field initializers
+  * Do not warn about dynamic imports when .catch() is detected
+  * CSS namespaces are no longer supported
+- includes 0.8.52
+  * Fix a concurrent map write with the --inject: feature
+  * Provide kind to onResolve plugins
+
+-------------------------------------------------------------------
+Wed Feb 24 17:11:34 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.51
+  * The stderr log format now contains line numbers after file names
+  * Allow --define with import.meta
+  * Fix a race condition with multiple injected files
+  * Change --serve behavior to serve on all interfaces
+  * Change the import resolution rules of absolute paths
+  * Output files in metafile now have entryPoint
+- includes 0.8.50
+  * Using direct eval now pulls in module and exports
+  * Always remove all "use asm" directives
+  * Fix a variable hoisting edge case
+  * Remove empty CSS rules when minifying
+
+-------------------------------------------------------------------
+Fri Feb 19 18:00:30 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.49
+  * Work around a problem with pnpm and NODE_PATH
+  * Add more names to the global no-side-effect list
+  * Fix a TypeScript parser regression
+  * Add the Go-specific cli.ParseServeOptions() API
+- includes 0.8.48
+  * Fix various parsing edge cases
+  * Remove local web server feature from the WebAssembly package
+- includes 0.8.47
+  * Omit warning about require.someProperty when targeting CommonJS
+  * Support ignored URL parameters at the end of import paths
+  * Prevent paths starting with / from being used as relative paths on Windows
+  * Warn when importing a path with the wrong case
+
+-------------------------------------------------------------------
+Sun Feb 14 18:46:34 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.46
+  * Fix minification of .0 in CSS
+  * Support range requests in local HTTP server
+- includes 0.8.45
+  * Add the --servedir= flag
+  * Handle absolute paths in tsconfig.json
+  * Change the watch mode output format
+- includes 0.8.44
+  * Create logo for esbuild
+  * Add support for node's --preserve-symlinks flag
+  * Ignore a leading byte order mark (BOM) in CSS files
+  * Add message notes to the API
+  * Add origin information to errors from plugins
+  * Fix a regression with the synchronous JavaScript API
+  * Remove absolute paths for disabled files from source maps
+- includes 0.8.43
+  * Support the XDG_CACHE_HOME environment variable
+  * Further improve constant folding of branches
+  * Fix an edge case with CSS variable syntax
+  * Add support for recursive symlinks during path resolution
+  * Fix subtle circular dependency issue
+  * Add support for the NODE_PATH environment variable
+- includes 0.8.42
+  * Fix crash with block-level function declaration and --keep-names
+  * Disallow additional features in strict mode
+  * Basic support for watch mode with plugins
+  * Make JavaScript API error format more consistent
+
+-------------------------------------------------------------------
+Thu Feb  4 16:35:56 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.41
+  * Special-case certain syntax with --format=esm
+  * Basic "use strict" tracking
+  * Fix a minifier bug when transforming "with" clauses
+  * Transform block-level function declarations
+- includes 0.8.40
+  * Fix TypeScript parameter decorators on class constructors
+  * Resolve browser entries in package.json with no file extension
+- includes 0.8.39
+  * Add an API option for a per-build working directory
+  * Fix stray esbuild process after node exits
+- includes 0.8.38
+  * --watch mode added
+  * Add pluginData to pass data between plugins
+- includes 0.8.37
+  * Improve ambiguous import handling
+  * Reuse automatically-generated temporary *.node files
+  * Fix the serve API with outfile
+
+-------------------------------------------------------------------
+Tue Jan 26 16:36:03 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.36
+  * hide N-API native node extensions from Yarn 2
+- includes 0.8.35
+  * Fix a commonly-missed corner case with await inside **
+  * Allow namespaced names in JSX syntax
+  * Fix worker: false in esbuild's browser-based JavaScript API
+  * Add a hack for faster command-line execution for the WebAssembly
+    module in certain cases
+  * Fix non-absolute paths with the esbuild-wasm package in the browser
+- includes 0.8.34
+  * Fix a parser bug about suffix expressions after an arrow function body
+  * Add new neutral platform to help text
+
+-------------------------------------------------------------------
+Wed Jan 20 16:27:52 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.33
+  * Fix esbuild potentially exiting early during incremental rebuilds
+  * Fix using the new sourcesContent option with the transform API
+  * Insert the object spread shim in constructor methods after the super() call
+  * Add the --platform=neutral API option
+  * Provide minified and non-minified versions of in-browser API library
+- strip binary
+
+-------------------------------------------------------------------
+Thu Jan 14 18:58:10 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.32
+  * Calling stop() on the JavaScript API is now optional
+  * Fix bug in metafile path generation
+  * Add kind to import JavaScript and CSS paths in metafile JSON
+  * Add support for TypeScript 4.2 syntax (abstract construct signatures)
+  * Add detail to errors and warnings
+  * Disable code warnings inside node_modules directories even with plugins
+  * Remove the warning about self-assignment
+  * Disable constant folding for the ?: operator when not minifying
+
+-------------------------------------------------------------------
+Thu Jan  7 10:37:21 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.31
+  * Fix minification issue from previous release
+  * Add the option --sourcemap=both
+  * Tree-shake unused code with --format=iife
+
+-------------------------------------------------------------------
+Wed Jan  6 21:16:00 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.30
+  * Fix @jsx and @jsxFrag comments without trailing spaces
+  * Minification improvements
+  * Fix issues with nested source maps
+
+-------------------------------------------------------------------
+Mon Jan  4 18:01:03 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- initial package at 0.8.29

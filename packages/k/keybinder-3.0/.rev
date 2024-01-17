@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba94d2e57cefa80633c236bf155b00c9</srcmd5>
+    <version>0.3.2</version>
+    <time>1507391527</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit the update with package rename keybinder3 -&gt; keybinder-3.0;
+see https://build.opensuse.org/request/show/530181</comment>
+    <requestid>532258</requestid>
+  </revision>
+</revisionlist>

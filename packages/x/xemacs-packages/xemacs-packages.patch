@@ -1,0 +1,592 @@
+Index: packages/xemacs-packages/calc/calc-ext.el
+===================================================================
+--- packages/xemacs-packages/calc/calc-ext.el.orig
++++ packages/xemacs-packages/calc/calc-ext.el
+@@ -19,7 +19,7 @@
+ ;; file named COPYING.  Among other things, the copyright notice
+ ;; and this notice must be preserved on all copies.
+ 
+-
++(require 'calc)
+ 
+ (provide 'calc-ext)
+ 
+Index: packages/xemacs-packages/calc/calc.el
+===================================================================
+--- packages/xemacs-packages/calc/calc.el.orig
++++ packages/xemacs-packages/calc/calc.el
+@@ -64,7 +64,7 @@
+ ;;; "report-calc-bug", and "defmath".  User-accessible variables begin
+ ;;; with "var-".
+ 
+-
++(require 'calc-macs)
+ 
+ (provide 'calc)
+ 
+Index: packages/xemacs-packages/edit-utils/paren.el
+===================================================================
+--- packages/xemacs-packages/edit-utils/paren.el.orig
++++ packages/xemacs-packages/edit-utils/paren.el
+@@ -147,7 +147,7 @@ appropriate for the syntax of a program
+   "*If the cursor is on a parenthesis, the matching parenthesis will blink.
+ This variable controls how long each phase of the blink lasts in seconds.
+ This should be a fractional part of a second (a float.)"
+-  :type 'number
++  :type '(choice (const nil) number)
+   :group 'paren-matching)
+ 
+ (defcustom paren-max-blinks (* 5 60 5)	; 5 minutes is plenty...
+Index: packages/xemacs-packages/gnats/lib-src/install-sid
+===================================================================
+--- packages/xemacs-packages/gnats/lib-src/install-sid.orig
++++ packages/xemacs-packages/gnats/lib-src/install-sid
+@@ -29,6 +29,14 @@ BINDIR=/usr/bin
+ 
+ SUBMITTER=
+ TEMP=/tmp/sp$$
++rm -f $TEMP
++if test -e $TEMP ; then
++	echo "$0: $TEMP already exists." 1>&2
++	exit 1
++fi
++if test -n "`type -p mktemp`" ; then
++	TEMP="`mktemp ${TEMP}.XXXXXX`" || exit 1
++fi
+ 
+ if [ $# -eq 0 ]; then
+   echo "$USAGE"
+Index: packages/xemacs-packages/gnats/lib-src/send-pr
+===================================================================
+--- packages/xemacs-packages/gnats/lib-src/send-pr.orig
++++ packages/xemacs-packages/gnats/lib-src/send-pr
+@@ -76,18 +76,25 @@ fi
+ 
+ #
+ 
+-if [ -z "$TMPDIR" ]; then
+-  TMPDIR=/tmp
+-else
+-  if [ "`echo $TMPDIR | grep '/$'`" != "" ]; then
+-    TMPDIR="`echo $TMPDIR | sed -e 's,/$,,'`"
+-  fi
++: ${TMPDIR=/tmp}
++TMPDIR=${TMPDIR%/}/send-pr.$$
++# make sort secure
++export TMPDIR
++
++mkdir $TMPDIR
++if [ $? -ne 0 -o ! -d $TMPDIR ] ; then
++	echo "$0: Cannot create clean directory ${TMPDIR}." 1>&2
++	exit 1
+ fi
+-
+ TEMP=$TMPDIR/p$$
+ BAD=$TMPDIR/pbad$$
+ REF=$TMPDIR/pf$$
+ 
++# Catch some signals. ($xs kludge needed by Sun /bin/sh)
++xs=0
++trap 'rm -rf $TMPDIR; exit $xs' 0
++trap 'echo "$COMMAND: Aborting ..."; rm -rf $TMPDIR; xs=1; exit' 1 2 3 13 15
++
+ # find a user name
+ if [ "$LOGNAME" = "" ]; then
+ 	if [ "$USER" != "" ]; then
+@@ -265,11 +272,6 @@ DESCRIPTION_C='<precise description of t
+ HOW_TO_REPEAT_C='<code/input/activities to reproduce the problem (multiple lines)>'
+ FIX_C='<how to correct or work around the problem, if known (multiple lines)>'
+ 
+-# Catch some signals. ($xs kludge needed by Sun /bin/sh)
+-xs=0
+-trap 'rm -f $REF $TEMP; exit $xs' 0
+-trap 'echo "$COMMAND: Aborting ..."; rm -f $REF $TEMP; xs=1; exit' 1 2 3 13 15
+-
+ # If they told us to use a specific file, then do so.
+ if [ -n "$IN_FILE" ]; then
+   if [ "$IN_FILE" = "-" ]; then
+Index: packages/xemacs-packages/ispell/ispell.el
+===================================================================
+--- packages/xemacs-packages/ispell/ispell.el.orig
++++ packages/xemacs-packages/ispell/ispell.el
+@@ -523,7 +523,7 @@ and then re-start emacs."
+ 
+ ;;; First part of dictionary, shortened for loaddefs.el
+ ;;;###autoload
+-(setq
++(defvar
+  ispell-dictionary-alist-1
+  '((nil					; default (English.aff)
+     "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B") nil iso-8859-1)
+@@ -547,7 +547,7 @@ and then re-start emacs."
+ 
+ ;;; Second part of dictionary, shortened for loaddefs.el
+ ;;;###autoload
+-(setq
++(defvar
+  ispell-dictionary-alist-2
+  '(("czech"
+     "[A-Za-z\301\311\314\315\323\332\331\335\256\251\310\330\317\253\322\341\351\354\355\363\372\371\375\276\271\350\370\357\273\362]"
+@@ -568,7 +568,7 @@ and then re-start emacs."
+ 
+ ;;; Third part of dictionary, shortened for loaddefs.el
+ ;;;###autoload
+-(setq
++(defvar
+  ispell-dictionary-alist-3
+  '(("esperanto"
+     "[A-Za-z\246\254\266\274\306\330\335\336\346\370\375\376]"
+@@ -587,7 +587,7 @@ and then re-start emacs."
+ 
+ ;;; Fourth part of dictionary, shortened for loaddefs.el
+ ;;;###autoload
+-(setq
++(defvar
+  ispell-dictionary-alist-4
+  '(("francais-tex"			; Francais.aff
+     "[A-Za-z\300\302\306\307\310\311\312\313\316\317\324\331\333\334\340\342\347\350\351\352\353\356\357\364\371\373\374\\]"
+@@ -609,7 +609,7 @@ and then re-start emacs."
+ 
+ ;;; Fifth part of dictionary, shortened for loaddefs.el
+ ;;;###autoload
+-(setq
++(defvar
+  ispell-dictionary-alist-5
+  '(("norsk"				; 8 bit Norwegian mode
+     "[A-Za-z\305\306\307\310\311\322\324\330\345\346\347\350\351\362\364\370]"
+@@ -630,7 +630,7 @@ and then re-start emacs."
+ 
+ ;;; Sixth part of dictionary, shortened for loaddefs.el
+ ;;;###autoload
+-(setq
++(defvar
+  ispell-dictionary-alist-6
+  ;; include Russian iso coding system too?
+  ;;   "[']" t ("-d" "russian") "~latin1" iso-8859-1
+@@ -720,12 +720,12 @@ LANGUAGE.aff file \(e.g., english.aff\).
+ 			       (const koi8-r))))
+   :group 'ispell)
+ 
+-;;; update the dictionaries at load time
+-(setq ispell-dictionary-alist
+-      (append ispell-local-dictionary-alist	; dictionary customizations
+-	      ispell-dictionary-alist-1 ispell-dictionary-alist-2
+-	      ispell-dictionary-alist-3 ispell-dictionary-alist-4
+-	      ispell-dictionary-alist-5 ispell-dictionary-alist-6))
++;; ;;; update the dictionaries at load time
++;; (setq ispell-dictionary-alist
++;;       (append ispell-local-dictionary-alist	; dictionary customizations
++;; 	      ispell-dictionary-alist-1 ispell-dictionary-alist-2
++;; 	      ispell-dictionary-alist-3 ispell-dictionary-alist-4
++;; 	      ispell-dictionary-alist-5 ispell-dictionary-alist-6))
+ 
+ 
+ 
+Index: packages/xemacs-packages/speedbar/speedbar.el
+===================================================================
+--- packages/xemacs-packages/speedbar/speedbar.el.orig
++++ packages/xemacs-packages/speedbar/speedbar.el
+@@ -1640,11 +1640,11 @@ Images are not available in Emacs 20 or
+   (setq speedbar-show-unknown-files (not speedbar-show-unknown-files))
+   (speedbar-refresh))
+ 
++(put 'speedbar-with-writable 'lisp-indent-function 0)
+ (defmacro speedbar-with-writable (&rest forms)
+   "Allow the buffer to be writable and evaluate FORMS."
+   (list 'let '((inhibit-read-only t))
+ 	(cons 'progn forms)))
+-(put 'speedbar-with-writable 'lisp-indent-function 0)
+ 
+ (defun speedbar-insert-button (text face mouse function
+ 				    &optional token prevline)
+Index: packages/xemacs-packages/tm/lib-src/pstogif
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/pstogif.orig
++++ packages/xemacs-packages/tm/lib-src/pstogif
+@@ -45,6 +45,15 @@ eval 'exec perl -w -S $0 ${1+"$@"}' # Po
+ # 
+ 
+ #####################################################################
++my $depth = 24;
++my $papersize = "a4";
++my $scale = 1;
++
++my %options =  ("color depth"	=> \$depth,
++		"papersize"	=> \$papersize,
++		"scale factor"	=> \$scale,
++);
++
+ $| =1;
+ &read_args;
+ 
+@@ -65,20 +74,20 @@ $PNMCROP=$ENV{'PNMCROP'} || 'pnmcrop' ;
+ # Also in PBMPLUS
+ $PNMFLIP=$ENV{'PNMFLIP'} || 'pnmflip' ;
+ 
+-# Also in PBMPPLUS	  
++# Also in PBMPPLUS
+ $PPMTOGIF=$ENV{'PPMTOGIF'} || 'ppmtogif' ;
+ 
+ # Also in PBMPPLUS	  
+ $REDUCE_COLOR=$ENV{'PPMQUANT'} || 'ppmquant 256' ;
+  
+ $OUTFILE = $ENV{'OUTFILE'} || $out;
+-			
++
+ # Valid choices for $COLOR_DEPTH are 1, 8 or 24. 
+ $DEPTH = $ENV{'DEPTH'} || $depth || 24;
+ 
+ #Default density is 72
+ $DENSITY = $ENV{'DENSITY'} || $density || 72;
+-    
++
+ # Valid choices are any numbers greater than zero
+ # Useful choices are numbers between 0.1 - 5
+ # Large numbers may generate very large intermediate files
+@@ -131,6 +140,7 @@ sub crop_scale_etc {
+     local($tmp) = $in . ".tmp";
+     open(STDERR, ">/dev/null") unless $DEBUG;
+ 
++    unlink $tmp;
+     if ($flip) {
+ 	rename($tmp, $in) unless system("$PNMFLIP -$flip $in > $tmp");
+ 	}
+Index: packages/xemacs-packages/tm/lib-src/tm-au
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/tm-au.orig
++++ packages/xemacs-packages/tm/lib-src/tm-au
+@@ -28,6 +28,10 @@ fi
+ 
+ if [ "$5" = "" ]; then
+ 	filename="$TM_TMP_DIR/mime$$.au"
++	rm -f $filename
++	if [ -n "`type -p mktemp`" ] ; then
++		filename="`mktemp ${filename}.XXXXXX`" || exit 1
++	fi
+ else
+ 	filename="$TM_TMP_DIR/$5"
+ fi
+@@ -35,6 +39,8 @@ fi
+ 
+ case "$4" in
+ "play")
++	trap 'rm -f $filename' 0 1 2 3 13 15
++        
+ 	echo "$2; $3 ->"
+ 	tmdecode $3 $1 $filename
+ 	if [ "$AUDIOSERVER" = "" ]; then
+@@ -46,8 +52,6 @@ case "$4" in
+ 	else
+           autool -v 40 $filename
+ 	fi
+-        
+-	trap 'rm -f $filename' 0 1 2 3 13 15
+ 	;;
+ "extract")
+ 	echo "$2; $3 -> $filename"
+Index: packages/xemacs-packages/tm/lib-src/tm-file
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/tm-file.orig
++++ packages/xemacs-packages/tm/lib-src/tm-file
+@@ -28,6 +28,10 @@ fi
+ 
+ if [ "$5" = "" ]; then
+ 	filename="$TM_TMP_DIR/mime$$"
++	rm -f $filename
++	if [ -n "`type -p mktemp`" ] ; then
++		filename="`mktemp ${filename}.XXXXXX`" || exit 1
++	fi
+ else
+ 	filename="$TM_TMP_DIR/$5"
+ fi
+Index: packages/xemacs-packages/tm/lib-src/tm-html
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/tm-html.orig
++++ packages/xemacs-packages/tm/lib-src/tm-html
+@@ -33,6 +33,10 @@ fi
+ 
+ if [ "$5" = "" ]; then
+     filename="$TM_TMP_DIR/mime$$.html"
++    rm -f $filename
++    if [ -n "`type -p mktemp`" ] ; then
++	filename="`mktemp ${filename}.XXXXXX`" || exit 1
++    fi
+ else
+     filename="$TM_TMP_DIR/$5"
+ fi
+@@ -43,6 +47,8 @@ tmdecode "$3" $1 $filename
+ 
+ case "$4" in
+ "play")
++    trap 'rm -f $filename' 0 1 2 3 13 15
++
+     if [ `echo $TM_WWW_BROWSER | grep netscape` ]; then
+ 	echo netscape
+ 	if [ -h $HOME/.netscape/lock ]; then
+@@ -54,7 +60,6 @@ case "$4" in
+ 	echo not netscape
+ 	$TM_WWW_BROWSER $filename
+     fi
+-    trap 'rm -f $filename' 0 1 2 3 13 15
+     ;;
+ "extract")
+     echo "extract to $filename"
+Index: packages/xemacs-packages/tm/lib-src/tm-image
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/tm-image.orig
++++ packages/xemacs-packages/tm/lib-src/tm-image
+@@ -52,6 +52,11 @@ if [ "$5" = "" ]; then
+ 		filename="$TM_TMP_DIR/mime$$.img"
+ 		;;
+ 	esac
++	# Be secure
++	rm -f $filename
++	if [ -n "`type -p mktemp`" ] ; then
++		filename="`mktemp ${filename}.XXXXXX`" || exit 1
++	fi
+ else
+ 	filename="$TM_TMP_DIR/$5"
+ fi
+@@ -62,8 +67,8 @@ tmdecode $3 $1 $filename
+ 
+ case "$4" in
+ "play")
+-	xv -geometry +1+1 $filename
+ 	trap 'rm -f $filename' 0 1 2 3 13 15
++	xv -geometry +1+1 $filename
+ 	;;
+ "extract")
+ 	echo "extract to $filename"
+Index: packages/xemacs-packages/tm/lib-src/tm-mpeg
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/tm-mpeg.orig
++++ packages/xemacs-packages/tm/lib-src/tm-mpeg
+@@ -27,6 +27,10 @@ if [ "$TM_TMP_DIR" = "" ]; then
+ fi
+ if [ "$5" = "" ]; then
+ 	filename="$TM_TMP_DIR/mime$$.mpg"
++	rm -f $filename
++	if [ -n "`type -p mktemp`" ] ; then
++		filename="`mktemp ${filename}.XXXXXX`" || exit 1
++	fi
+ else
+ 	filename="$TM_TMP_DIR/$5"
+ fi
+@@ -37,12 +41,13 @@ tmdecode $3 $1 $filename
+ 
+ case "$4" in
+ "play")
++	trap 'rm -f $filename' 0 1 2 3 13 15
++
+ 	if [ "$VIDEO_DITHER" = "" ]; then
+ 		VIDEO_DITHER=gray
+ 		export VIDEO_DITHER
+ 	fi
+ 	mpeg_play -dither $VIDEO_DITHER $filename
+-	trap 'rm -f $filename' 0 1 2 3 13 15
+ 	;;
+ "extract")
+ 	echo "extract to $filename"
+Index: packages/xemacs-packages/tm/lib-src/tm-plain
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/tm-plain.orig
++++ packages/xemacs-packages/tm/lib-src/tm-plain
+@@ -27,12 +27,18 @@ if [ "$TM_TMP_DIR" = "" ]; then
+ fi
+ if [ "$5" = "" ]; then
+ 	filename="$TM_TMP_DIR/mime$$.pln"
++	rm -f $filename
++	if [ -n "`type -p mktemp`" ] ; then
++		filename="`mktemp ${filename}.XXXXXX`" || exit 1
++	fi
+ else
+ 	filename="$TM_TMP_DIR/$5"
+ fi
+ 
+ case "$4" in
+ "play")
++	trap 'rm -f $filename' 0 1 2 3 13 15
++
+ 	echo "$2; $3 ->"
+ 	tmdecode "$3" "$1" /dev/stdout
+ 	;;
+@@ -42,6 +48,8 @@ case "$4" in
+ 	tmdecode "$3" "$1" $filename
+ 	;;
+ "print")
++	trap 'rm -f $filename' 0 1 2 3 13 15
++
+ 	echo "$2; $3 ->"
+ 	tmdecode "$3" "$1" /dev/stdout | lpr
+ 	;;
+Index: packages/xemacs-packages/tm/lib-src/tm-ps
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/tm-ps.orig
++++ packages/xemacs-packages/tm/lib-src/tm-ps
+@@ -27,16 +27,21 @@ if [ "$TM_TMP_DIR" = "" ]; then
+ fi
+ if [ "$5" = "" ]; then
+ 	filename="$TM_TMP_DIR/mime$$.pln"
++	rm -f $filename
++	if [ -n "`type -p mktemp`" ] ; then
++		filename="`mktemp ${filename}.XXXXXX`" || exit 1
++	fi
+ else
+ 	filename="$TM_TMP_DIR/$5"
+ fi
+ 
+ case "$4" in
+ "play")
++	trap 'rm -f $filename' 0 1 2 3 13 15
++
+ 	echo "$2; $3 -> $filename"
+ 	tmdecode $3 $1 $filename
+ 	ghostview $filename
+-	trap 'rm -f $filename' 0 1 2 3 13 15
+ 	;;
+ "extract")
+ 	echo "$2; $3 -> $filename"
+@@ -44,6 +49,8 @@ case "$4" in
+ 	tmdecode "$3" "$1" $filename
+ 	;;
+ "print")
++	trap 'rm -f $filename' 0 1 2 3 13 15
++
+ 	echo "$2; $3 ->"
+ 	tmdecode "$3" "$1" /dev/stdout | lpr
+ 	;;
+Index: packages/xemacs-packages/tm/lib-src/tmdecode
+===================================================================
+--- packages/xemacs-packages/tm/lib-src/tmdecode.orig
++++ packages/xemacs-packages/tm/lib-src/tmdecode
+@@ -19,6 +19,8 @@
+ # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ # Boston, MA 02111-1307, USA.
+ 
++set -C
++
+ PATH=${PATH:-/usr/bin:/bin}:`dirname $0 2>/dev/null`; export PATH
+ 
+ trap 'rm -f $2' 0 1 2 3 13 15
+@@ -28,7 +30,7 @@ case "$3" in
+ 	OUTPUT=
+ 	;;
+ *)
+-	OUTPUT='> $3'
++	OUTPUT='-o $3'
+ 	;;
+ esac
+ 
+@@ -37,17 +39,18 @@ case "$1" in
+ 	eval "cat $2 $OUTPUT"
+ 	;;
+ "base64")
+-	#eval "decode-b < $2 $OUTPUT"
+-	eval "mmencode -u $2 $OUTPUT"
++	eval "mmencode -u $OUTPUT $2"
+ 	;;
+ "quoted-printable")
+-	eval "mmencode -q -u $2 $OUTPUT"
++	eval "mmencode -q -u $OUTPUT $2"
+ 	;;
+ "x-uue"|"x-uuencode")
+-	(cd $TM_TMP_DIR ; uudecode $2)
++	# Does this work? Does the caller expects the name
++	# within the begin line?
++	"eval uudecode $OUTPUT $2"
+ 	;;
+ "x-gzip64")
+-	#eval "decode-b < $2 | gzip -cd $OUTPUT"
++	test -n "$OUTPUT" && OUTPUT='> $3'
+ 	eval "mmencode -u $2 | gzip -cd $OUTPUT"
+ 	;;
+ *)
+Index: packages/xemacs-packages/tm/mel-u.el
+===================================================================
+--- packages/xemacs-packages/tm/mel-u.el.orig
++++ packages/xemacs-packages/tm/mel-u.el
+@@ -36,8 +36,7 @@
+ (defvar uuencode-external-encoder '("uuencode" "-")
+   "*list of uuencode encoder program name and its arguments.")
+ 
+-(defvar uuencode-external-decoder
+-  (list "sh" "-c" (format "(cd %s; uudecode)" mime-temp-directory))
++(defvar uuencode-external-decoder (list "uudecode" "-o")
+   "*list of uuencode decoder program name and its arguments.")
+ 
+ 
+@@ -68,7 +67,7 @@ This function uses external uuencode dec
+ variable `uuencode-external-decoder'."
+   (interactive "*r")
+   (save-excursion
+-    (let ((filename (save-excursion
++    (let* ((filename (save-excursion
+ 		      (save-restriction
+ 			(narrow-to-region start end)
+ 			(goto-char start)
+@@ -76,7 +75,11 @@ variable `uuencode-external-decoder'."
+ 			    (if (looking-at ".+$")
+ 				(buffer-substring (match-beginning 0)
+ 						  (match-end 0))
+-			      ))))))
++			      )))))
++	   (filename (make-temp-name (format "%s%s" mime-temp-directory
++		(file-name-nondirectory filename))))
++	   (uuencode-external-decoder (append uuencode-external-decoder
++		(list (format "%s" filename)))))
+       (if filename
+ 	  (as-binary-process
+ 	   (apply (function call-process-region)
+Index: packages/xemacs-packages/tm/tm-play.el
+===================================================================
+--- packages/xemacs-packages/tm/tm-play.el.orig
++++ packages/xemacs-packages/tm/tm-play.el
+@@ -104,6 +104,8 @@
+   (get-unified-alist mime/content-decoding-condition al)
+   )
+ 
++(defmacro chmod (perms file)
++  (list 'call-process "chmod" nil nil nil perms file))
+ 
+ ;;; @ external decoder
+ ;;;
+@@ -130,6 +132,8 @@
+ 		)
+ 	      (goto-char b)
+ 	      (write-region b end file)
++	      (message (concat "Private file " file))
++	      (chmod "0600" file)
+ 	      (message "External method is starting...")
+ 	      (setq cal (put-alist
+ 			 'name (replace-as-filename name) cal))
+Index: packages/xemacs-packages/viper/viper-ex.el
+===================================================================
+--- packages/xemacs-packages/viper/viper-ex.el.orig
++++ packages/xemacs-packages/viper/viper-ex.el
+@@ -1870,7 +1870,7 @@ reversed."
+   (condition-case nil
+       (progn
+ 	(pop-to-buffer (get-buffer-create "*info*"))
+-	(info (if (featurep 'xemacs) "viper.info" "viper"))
++	(info (if (featurep 'xemacs) "/usr/share/xemacs/info/viper.info" "viper"))
+ 	(message "Type `i' to search for a specific topic"))
+     (error (beep 1)
+ 	   (with-output-to-temp-buffer " *viper-info*"
+Index: packages/xemacs-packages/w3/lisp/css.el
+===================================================================
+--- packages/xemacs-packages/w3/lisp/css.el.orig
++++ packages/xemacs-packages/w3/lisp/css.el
+@@ -208,8 +208,9 @@ For a terminal screen, the value is alwa
+ 
+ (modify-syntax-entry ?' "\"" css-syntax-table)
+ (modify-syntax-entry ?` "\"" css-syntax-table)
+-(modify-syntax-entry ?{ "(" css-syntax-table)
+-(modify-syntax-entry ?} ")" css-syntax-table)
++(modify-syntax-entry ?{ "(}" css-syntax-table)
++(modify-syntax-entry ?} "){" css-syntax-table)
++(modify-syntax-entry ?\; "@" css-syntax-table)
+ 
+ (eval-when-compile
+   (defvar css-scratch-val nil)
+Index: packages/package-compile.el
+===================================================================

@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2799262ae6a7624a557ed6a328c8cdb</srcmd5>
+    <version>0.7.1</version>
+    <time>1532527972</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain python-uniseg in Factory</comment>
+    <requestid>625110</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>80a19cf65891c9bbc563303775d57cbe</srcmd5>
+    <version>0.7.1</version>
+    <time>1532774596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625604</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5e25a62d37603782b6662af78d49528a</srcmd5>
+    <version>0.7.1</version>
+    <time>1576062853</time>
+    <user>dimstar_suse</user>
+    <comment>- Pull in the full python for sqlite module</comment>
+    <requestid>755741</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0c334a845ccf0f432fe94a4580713e15</srcmd5>
+    <version>0.7.1</version>
+    <time>1589892505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806961</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>cc0fb611624e1bf92d8243cb92089fd0</srcmd5>
+    <version>0.7.1</version>
+    <time>1630012510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914348</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2765e9deb4c5af3ac76eff24c6d95029</srcmd5>
+    <version>0.7.1.post2</version>
+    <time>1647282953</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>961709</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9074442810375aa67473c04a3d44d5bc</srcmd5>
+    <version>0.7.2</version>
+    <time>1677683663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2
+  * Improve performance of Unicode lookups.
+- Drop uniseg-dbpath</comment>
+    <requestid>1068328</requestid>
+  </revision>
+</revisionlist>

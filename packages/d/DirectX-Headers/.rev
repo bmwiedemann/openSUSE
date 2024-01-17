@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7aabc692908cc6cf0fa5d0801c463d95</srcmd5>
+    <version>1.600.10</version>
+    <time>1653503727</time>
+    <user>dimstar_suse</user>
+    <comment>Pulling in changes from @gmbr3.</comment>
+    <requestid>979247</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>66b4a0990f1aeb1a35a4d0402f7ae449</srcmd5>
+    <version>1.606.3</version>
+    <time>1660753006</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>997435</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6bce3a7dd9f8692754fdb3c2da07d8ef</srcmd5>
+    <version>1.606.4</version>
+    <time>1662062987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.606.4:
+  * Update D3DX12.H to support new ABI for MinGW (#73)
+  * dxguids: Add new GUIDs from the last several releases</comment>
+    <requestid>1000484</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ec7618e47734311674c6274c4fede79</srcmd5>
+    <version>1.608.0</version>
+    <time>1669715570</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1038747</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e5c62ce9a7887f604d494f3bcf7aa44</srcmd5>
+    <version>1.608.2</version>
+    <time>1680968338</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1077788</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>afacf0123607f1ebc0823d2592ecc5ce</srcmd5>
+    <version>1.610.0</version>
+    <time>1682193403</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1080970</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>df92b75fd37145267fcf643c45ce3ef3</srcmd5>
+    <version>1.610.0</version>
+    <time>1687122460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093485</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6b0996859a16aacc32b325b8a3fe84ec</srcmd5>
+    <version>1.611.0</version>
+    <time>1702488854</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1132706</requestid>
+  </revision>
+</revisionlist>

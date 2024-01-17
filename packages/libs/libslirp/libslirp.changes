@@ -1,0 +1,190 @@
+-------------------------------------------------------------------
+Wed Dec 13 09:44:43 UTC 2023 - lnussel@suse.com
+
+- Update to version 4.7.0+60:
+  * Avoid including <sys/param.h> on windows
+  * Document functions
+  * icmp: Handle ICMP packets as IPPROTO_IP on BSD
+  * ip: Enforce strict aliasing
+  * Fix including BaseTsd.h on mingw
+  * Use SSIZE_T from BaseTsd.h on windows
+  * Detach UDP socket if errno is ENOTCONN (Socket is not connected)
+  * slirp: use localhost as dns when /etc/resolv.conf empty
+  * missing semicolon
+  * Drop unused UDP_UDPDATALEN macro
+  * Reject domain-search when any entry ends with ".."
+  * Use target address from Neighbor Advertisement
+- removed libslirp-semicolon.patch, now included
+
+-------------------------------------------------------------------
+Fri Nov 11 09:30:22 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://gitlab.freedesktop.org/slirp/libslirp/-/issues/64
+  + libslirp-semicolon.patch
+
+-------------------------------------------------------------------
+Mon Jul 18 14:50:16 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.7.0+44 (current git master):
+  * Fix vmstate regression
+  * msvc: use char* for pointer arithmetic
+  * Align outgoing packets
+  * Bump incoming packet alignment to 8 bytes
+  * msvc: fix some gcc-specific pragma warnings
+  * msvc: enable vmstate code on !gnuc
+  * vmstate: only enable when building under GNU C
+  * ncsitest: Fix build with msvc
+  * Avoid running git-version-gen when building with MS VC
+  * windows: export symbols
+  * win32: replace strcasecmp with g_ascii_strcasecmp
+  * Drop spurious inline
+  * Avoid returning void
+  * Fix arithmetic on void *
+  * Avoid using ##__VA_ARGS__ gcc extension
+  * Fix bitfields order for MSVC
+  * Separate out SLIRP_PACKED to SLIRP_PACKED_BEGIN/END
+  * Do not use ssize_t on Windows
+  * Do not include unistd.h on windows, it does not have it
+  * Accept build-aux/git-version-gen failing to run
+  * container_of: avoid using __extension__
+  * ncsi: Add Mellanox Get Mac Address handler
+  * slirp: Add out-of-band ethernet address
+  * ncsi: Add OEM command handler
+  * ncsi: Add basic test for Get Version ID response
+  * ncsi: Use response header for payload length
+  * ncsi: Pass command header to response handlers
+  * src/slirp.h: Bump the minimum Windows version to Windows 7
+  * ncsi: Add Get Version ID command
+  * ncsi: Pass Slirp structure to response handlers
+  * slirp: Add manufacturer's ID
+  * Add support for Haiku to meson.build
+  * meson: add extra warnings
+  * win32: declare some local functions as static
+  * Include <sys/socket.h> and <arpa/inet.h> for AF_INET6 and inet_pton
+  * Release v4.7.0
+  * bump ABI version and age
+  * slirp: invoke client callback before creating timers
+  * pingtest: port to timer_new_opaque
+  * introduce timer_new_opaque callback
+  * introduce slirp_timer_new wrapper
+  * icmp6: make ndp_send_ra static
+  * Add sanitizers CI runs
+  * socket: Handle ECONNABORTED from recv
+  * bootp: fix g_str_has_prefix warning/critical
+  * slirp: Don't duplicate packet in tcp_reass
+  * Rename insque/remque -> slirp_[ins|rem]que
+  * mbuf: Use SLIRP_DEBUG to enable mbuf debugging instead of DEBUG
+  * Replace inet_ntoa() with safer inet_ntop()
+  * Add VMS_END marker
+  * bootp: add support for UEFI HTTP boot
+  * IPv6 DNS proxying support
+  * Add missing scope_id in caching
+  * Drop fixed TODO
+  * socket: Move closesocket(so->s_aux) to sofree
+  * socket: Check so_type instead of so_tcpcb for Unix-to-inet translation
+  * socket: Add s_aux field to struct socket for storing auxilliary socket
+  * socket: Initialize so_type in socreate
+  * socket: Allocate Unix-to-TCP hostfwd port from OS by binding to port 0
+  * Allow to disable internal DHCP server
+  * slirp_pollfds_fill: Explain why dividing so_snd.sb_datalen by two
+  * CI: run integration tests with slirp4netns
+  * socket: Check address family for Unix-to-inet accept translation
+  * socket: Add debug args for tcpx_listen (inet and Unix sockets)
+  * socket: Restore original definition of fhost
+  * socket: Move <sys/un.h> include to socket.h
+  * Support Unix sockets in hostfwd
+  * resolv: fix IPv6 resolution on Darwin
+  * Use the exact sockaddr size in getnameinfo call
+  * Initialize sin6_scope_id to zero
+  * slirp_socketpair_with_oob: Connect pair through 127.0.0.1
+  * resolv: fix memory leak when using libresolv
+  * pingtest: Add a trivial ping test
+  * icmp: Support falling back on trying a SOCK_RAW socket
+
+-------------------------------------------------------------------
+Thu Jul 22 11:39:54 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.6.1+7:
+  * Haiku: proper path to resolv.conf for DNS server
+  * Fix for Haiku
+  * dhcp: Always send DHCP_OPT_LEN bytes in options
+- Commit _servicedata to fix changelogs
+- Don't include .git in source archive, not needed
+- Run set_version together with obs_scm
+
+-------------------------------------------------------------------
+Wed Jul 21 12:22:59 UTC 2021 - mrostecki@suse.com
+
+- Update to version 4.6.1:
+  * Release v4.6.1
+  * Fix "DHCP broken in libslirp v4.6.0"
+- fixes [bsc#1198773]
+
+-------------------------------------------------------------------
+Fri Jul 16 08:51:33 UTC 2021 - novell@tower-net.de
+
+- Update to version 4.6.0:
+  * build-sys: forgot to bump version to 4.6.0
+  * changelog: post-release
+  * Release v4.6.0
+  * udp: check upd_input buffer size
+  * tftp: introduce a header structure
+  * tftp: check tftp_input buffer size
+  * upd6: check udp6_input buffer size
+  * bootp: check bootp_input buffer size
+  * bootp: limit vendor-specific area to input packet memory buffer
+  * Revert "Set macOS deployment target to macOS 10.4"
+- fixes CVE-2021-3592 [bsc#1187364], CVE-2021-3593 [bsc#1187365],
+        CVE-2021-3594 [bsc#1187367],CVE-2021-3595[bsc#1187366]
+
+-------------------------------------------------------------------
+Fri Jan 08 13:15:17 UTC 2021 - rbrown@suse.com
+
+- Update to version 4.4.0:
+  * Release v4.4.0
+  * socket: consume empty packets
+  * slirp: check pkt_len before reading protocol header
+  * Remove the QEMU-special make build-system
+  * Add DNS resolving for iOS
+  * meson: support compiling as subproject
+  * meson: remove meson-dist script
+  * Add G_GNUC_PRINTF to local function slirp_vsnprintf
+  * sosendoob: better document what urgc is used for
+  * .gitlab-ci: add a Coverity stage
+  * TCPIPHDR_DELTA: Fix potential negative value
+  * udp, udp6, icmp, icmp6: Enable forwarding errors on Linux
+  * icmp, icmp6: Add icmp_forward_error and icmp6_forward_error
+  * udp, udp6, icmp: handle TTL value
+  * ip_stripoptions use memmove
+  * changelog: post-release
+- fixes [bsc#1201551]
+
+-------------------------------------------------------------------
+Wed Jul  8 14:53:54 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 4.3.1 (bsc#1172380)
+  - A silent truncation could occur in `slirp_fmt()`, which will
+    now print a critical message. See also #22.
+  - CVE-2020-10756 - Drop bogus IPv6 messages that could lead to
+    data leakage.  See !44 and !42.
+  - Fix win32 builds by using the SLIRP_PACKED definition.
+  - Various coverity scan errors fixed. !41
+  - Fix new GCC warnings. !43 
+- Packaging changes
+  - Enable "set_version" source service in _service file
+  - Move "tar" and "recompress" service to "buildtime" as outlined
+    in the OBS user guide
+  - Enable "package-meta" as the libslirp build process now
+    requires access to the git metadata.
+
+-------------------------------------------------------------------
+Mon May  4 10:16:40 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Update to 4.3.0
+- Fix use-afte-free in ip_reass() (CVE-2020-1983)
+
+-------------------------------------------------------------------
+Tue Apr 21 12:10:07 UTC 2020 - Oliver Bengs <appleonkel@opensuse.org> - 4.2.0-2
+
+- Initial package, adapted specfile from Fedora to work on openSUSE 

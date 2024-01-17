@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Thu Apr  6 09:42:32 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/sphinx-contrib/autoprogram/issues/63
+  + python-sphinxcontrib-autoprogram-no-six.patch
+
+-------------------------------------------------------------------
+Mon Feb 20 10:40:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add sphinx6.patch to support Sphinx >= 6.0, gh#sphinx-contrib/autoprogram#62
+- Delete python-sphinxcontrib-autoprogram-python310.patch
+- skip-failing-test.patch
+- Update to 0.1.8
+  * Test against Python 3.10, 3.11.
+
+-------------------------------------------------------------------
+Thu Dec  8 09:33:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add skip-failing-test.patch skipping failing test
+  gh#sphinx-contrib/autoprogram#54.
+
+-------------------------------------------------------------------
+Tue Feb 22 11:19:17 UTC 2022 - pgajdos@suse.com
+
+- fix build and introduced doc build flavor
+- modified sources
+  % _multibuild
+- added patches
+  fix https://github.com/sphinx-contrib/autoprogram/pull/25
+  + python-sphinxcontrib-autoprogram-python310.patch
+
+-------------------------------------------------------------------
+Tue Oct 12 13:40:48 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.1.7
+  Version 0.1.7
+  -------------
+  - Publish to PyPI via Github Actions.
+  Version 0.1.6
+  -------------
+  - Dropped support for Python 2 and Pypy
+  - Declare this extension safe for parallel reading
+  - Migrate to Github Actions for CI [:issue:`28`, :pull:`32` by Langston Barrett]
+  - Test against recent versions of Sphinx [:issue:`33`, :pull:`32` by Langston Barrett]
+  - Format source code with Black [:issue:`30`, :pull:`32` by Langston Barrett]
+  - Add documentation to the ``sdist`` [:issue:`26`, :pull:`32` by Langston Barrett]
+  - Fixed unwanted ``<blockquote>`` tags in multi-line command descriptions that
+    are indented to match surrounding code. [:pull:`21` by dgw]
+- deleted patches
+  - 0001-License-file-ci-skip.patch (upstreamed)
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
+Tue Dec 18 10:25:10 UTC 2018 - Dan Čermák <dcermak@suse.com>
+
+- Run tests in %check
+
+-------------------------------------------------------------------
+Thu Dec 13 10:59:56 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Dec 13 09:23:46 UTC 2018 - Dan Čermák <dcermak@suse.com>
+
+- Fix package name in spec file header
+
+-------------------------------------------------------------------
+Thu Dec 13 07:43:53 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Sort out with spec-cleaner, fix all FIXME mentions
+
+-------------------------------------------------------------------
+Wed Dec 12 15:44:15 UTC 2018 - Dan Čermák <dcermak@suse.com>
+
+- Initial release

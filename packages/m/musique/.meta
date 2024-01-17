@@ -1,0 +1,15 @@
+<package name="musique" project="openSUSE:Factory">
+  <title>A different take on the music player</title>
+  <description>Musique is a music player designed by and for people that love
+music. Musique does its best to stay out the way and keep you
+focused on the only thing that really matters: Music.
+You need to try it to really get it.
+To set expectations right — Musique is not about podcasts or
+internet radio; it's not about managing mobile devices and it has
+no integrated music store.
+It's about listening to beautiful music.
+
+</description>
+  <devel project="KDE:Extra" package="musique"/>
+  <url>https://flavio.tordini.org/musique</url>
+</package>

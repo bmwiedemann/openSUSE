@@ -1,0 +1,6 @@
+<package name="python-compizconfig" project="openSUSE:Factory">
+  <title>Python bindings for libraries/plugins for compizconfig-settings</title>
+  <description>Python bindings for libraries/plugins for compizconfig-settings
+</description>
+  <devel project="X11:Compiz" package="python-compizconfig"/>
+</package>

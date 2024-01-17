@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Fri Dec 30 20:13:54 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to release 2.10.0 
+  * draw: add pixel format YUYV422
+  * vidframe_draw_hline: add more formats
+  * vid: add support for YUV422P pixel format
+  * aubuf: avoid underflow of cur_sz
+  * cmake/pkgconfig: fix prefix variable
+
+-------------------------------------------------------------------
+Sat Oct  1 08:56:45 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.8.0
+  * No high level changelog provided, see packaged CHANGELOG.md for
+    details.
+- Use CMake for the build
+
+-------------------------------------------------------------------
+Thu Aug 25 22:39:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * aubuf: prevent faulty timestamps
+
+-------------------------------------------------------------------
+Tue Jun 28 21:31:44 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 2.4.0:
+  * No high level changelog provided, see packaged CHANGELOG.md for
+    details.
+- Changes from version 2.3.1, 2.0.1, 2.0.0:
+  * No high level changelog provided, see packaged CHANGELOG.md for
+    details.
+- Remove 0001-mk-add-abi-versioning.patch: Upstreamed.
+
+-------------------------------------------------------------------
+Wed May 12 23:24:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Switch baresip fork, required for baresip.
+- Update to fork version 1.0.0:
+  * aac: add module for AAC header parsing
+  * flv: add MP3 and PCM_LE
+  * fix ALAW and ULAW encoding
+  * vid: add NV12/NV21 to vidframe_fill
+  * H264: added SPS decode
+  * aubuf: read also last frame if it has not the full size
+  * add aulevel module
+- Add 0001-mk-add-abi-versioning.patch
+
+-------------------------------------------------------------------
+Sun Jun 28 10:27:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM groups and description.
+
+-------------------------------------------------------------------
+Wed Jun 24 09:07:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Complete specfile overhaul
+
+-------------------------------------------------------------------
+Wed Sep  7 00:00:00 UTC 2011 - Alfred E. Heggestad <aeh@db.org>
+
+- Initial build
+
+

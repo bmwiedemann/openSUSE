@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf1a325faf50c21c1a18d67f59916aef</srcmd5>
+    <version>2.54</version>
+    <time>1453998287</time>
+    <user>dimstar_suse</user>
+    <comment>Dochazka dependency</comment>
+    <requestid>356266</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6589ab0a69b1ec527813697ca65b4304</srcmd5>
+    <version>2.55</version>
+    <time>1458228843</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>370254</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>284c0790eb31b5f2b00b94e842774570</srcmd5>
+    <version>2.58</version>
+    <time>1601997073</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839748</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a2548edb84c78d4717fa73e2500519bd</srcmd5>
+    <version>2.590.0</version>
+    <time>1704383245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136858</requestid>
+  </revision>
+</revisionlist>

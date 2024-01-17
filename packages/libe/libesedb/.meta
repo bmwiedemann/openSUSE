@@ -1,0 +1,6 @@
+<package name="libesedb" project="openSUSE:Factory">
+  <title>Library and tools to access the ESE Database File (EDB) format</title>
+  <description>Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format. ESEDB is used in may different applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
+</description>
+  <devel project="security:forensics" package="libesedb"/>
+</package>

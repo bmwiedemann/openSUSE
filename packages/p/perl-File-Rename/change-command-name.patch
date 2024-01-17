@@ -1,0 +1,32 @@
+Name the command `file-rename` so as not to conflict with the command provided by `util-linux`.
+
+This is not only the upstream's choice of an alternative name, but also makes us compatible with Debian
+(see https://salsa.debian.org/perl-team/modules/packages/rename/-/blob/master/debian/rules )
+
+
+diff --git a/Makefile.PL b/Makefile.PL
+index ea8fb98..d91de90 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -15,7 +15,7 @@ warn "No Perl::OSType\n" unless ($has_os or $] < 5.014);
+ my $is_win = ( $has_os ? Perl::OSType::is_os_type('Windows') 
+                         : $INC{'ExtUtils/MM_Win32.pm'} );
+ my $script = File::Spec->catfile( 'script',
+-                $is_win ? 'file-rename' : 'rename' );
++                'file-rename' );
+ my $unsafe = File::Spec->catfile( 'script',
+                                     'unsafe-rename');
+ my $source = File::Spec->catfile( 'source', 'rename');
+diff --git a/t/testlib.pl b/t/testlib.pl
+index 9e1abeb..6c8f35c 100644
+--- a/t/testlib.pl
++++ b/t/testlib.pl
+@@ -138,7 +138,7 @@ sub is_windows {
+ }
+ 
+ sub script_name {
+-    return +( is_windows() ? 'file-rename' : 'rename' );
++    return +('file-rename');
+ }
+ 
+ sub unsafe_script_name { return 'unsafe-rename'; }

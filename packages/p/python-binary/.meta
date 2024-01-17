@@ -1,0 +1,5 @@
+<package name="python-binary" project="openSUSE:Factory">
+  <title></title>
+  <description>Convert between binary and SI units</description>
+  <devel project="devel:languages:python:numeric" package="python-binary"/>
+</package>

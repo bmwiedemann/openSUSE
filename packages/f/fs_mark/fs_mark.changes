@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Mar 16 14:57:55 UTC 2016 - mpluskal@suse.com
+
+- Build with optflags
+
+-------------------------------------------------------------------
+Fri Mar 13 21:18:50 UTC 2015 - mpluskal@suse.com
+
+- Use url for license
+
+-------------------------------------------------------------------
+Fri Mar 13 18:48:38 UTC 2015 - mpluskal@suse.com
+
+- Use source for url
+- Cleanup spec file with spec-cleaner
+- Add fs_mark-nostatic.diff
+
+-------------------------------------------------------------------
+Tue Jul 26 18:49:05 CEST 2011 - dsterba@suse.cz
+
+- initial import of 3.3
+- add -R option to randomize data

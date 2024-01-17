@@ -1,0 +1,8 @@
+<package name="xml-security-c" project="openSUSE:Factory">
+  <title>Apache XML security C++ library</title>
+  <description>The xml-security-c library is a C++ implementation of the XML Digital Signature
+and Encryption specifications. The library makes use of the Apache XML project's
+Xerces-C XML Parser and Xalan-C XSLT processor. The latter is used for processing
+XPath and XSLT transforms.</description>
+  <devel project="Apache:Shibboleth" package="xml-security-c"/>
+</package>

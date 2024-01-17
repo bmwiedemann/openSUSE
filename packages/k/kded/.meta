@@ -1,0 +1,5 @@
+<package name="kded" project="openSUSE:Factory">
+  <title>kded</title>
+  <description>KDE Daemon</description>
+  <devel project="KDE:Frameworks5" package="kded"/>
+</package>

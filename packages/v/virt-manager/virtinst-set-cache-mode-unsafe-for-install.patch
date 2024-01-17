@@ -1,0 +1,506 @@
+Set cache mode for target installation disk to unsafe for better
+performance.
+Index: virt-manager-4.1.0/virtinst/install/installer.py
+===================================================================
+--- virt-manager-4.1.0.orig/virtinst/install/installer.py
++++ virt-manager-4.1.0/virtinst/install/installer.py
+@@ -567,16 +567,29 @@ class Installer(object):
+ 
+     def _build_postboot_xml(self, final_xml, meter):
+         initial_guest = Guest(self.conn, parsexml=final_xml)
++        # At install time set the target disk to 'unsafe' for
++        # better performance if the target is not a block device
++        saved_cache = "None"
++        if initial_guest.devices.disk:
++            target_disk = initial_guest.devices.disk[0]
++            saved_cache = target_disk.driver_cache
++            if target_disk.type != DeviceDisk.TYPE_BLOCK and target_disk.driver_io != "native":
++                target_disk.driver_cache = DeviceDisk.CACHE_MODE_UNSAFE
++
+         self._alter_bootconfig(initial_guest)
+         self._alter_install_resources(initial_guest, meter)
+         if self.has_cloudinit():
+             initial_guest.set_smbios_serial_cloudinit()
+ 
++        install_xml = initial_guest.get_xml()
++        if saved_cache != "None":
++            target_disk.driver_cache = saved_cache
++
+         final_guest = Guest(self.conn, parsexml=final_xml)
+         self._remove_install_cdrom_media(final_guest)
+         self._remove_unattended_install_cdrom_device(final_guest)
+ 
+-        return initial_guest.get_xml(), final_guest.get_xml()
++        return install_xml, final_guest.get_xml()
+ 
+     def _build_xml(self, guest, meter):
+         initial_xml = None
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cdrom-url.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cdrom-url.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cdrom-url.xml
+@@ -24,6 +24,7 @@
+       </source>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-memory-hotplug.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-memory-hotplug.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-memory-hotplug.xml
+@@ -35,7 +35,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2" discard="unmap"/>
++      <driver name="qemu" type="qcow2" discard="unmap" cache="unsafe"/>
+       <source file="/var/lib/libvirt/images/fedora.qcow2"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cdrom-double.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cdrom-double.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cdrom-double.xml
+@@ -22,6 +22,7 @@
+     <disk type="file" device="disk">
+       <source file="/var/lib/libvirt/images/vm1.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <source file="/pool-dir/testvol1.img"/>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-default.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cloud-init-default.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-default.xml
+@@ -26,6 +26,7 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options1.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cloud-init-options1.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options1.xml
+@@ -37,6 +37,7 @@ chpasswd:
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options2.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cloud-init-options2.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options2.xml
+@@ -37,6 +37,7 @@ users:
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options3.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cloud-init-options3.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options3.xml
+@@ -32,6 +32,7 @@ users:
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options4.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cloud-init-options4.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options4.xml
+@@ -26,6 +26,7 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options5.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cloud-init-options5.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cloud-init-options5.xml
+@@ -26,6 +26,7 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-multiple-short-id.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-osinfo-multiple-short-id.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-multiple-short-id.xml
+@@ -31,7 +31,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-win7-unattended.xml
+@@ -36,7 +36,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="cdrom">
+-      <driver name="qemu"/>
++      <driver name="qemu" cache="unsafe"/>
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-win7.iso"/>
+       <target dev="sda" bus="sata"/>
+       <readonly/>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-osvariant-defaults-pxe.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-osvariant-defaults-pxe.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osvariant-defaults-pxe.xml
+@@ -28,6 +28,7 @@
+     <disk type="file" device="disk">
+       <source file="/var/lib/libvirt/images/fedora26.qcow2"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-reinstall-location.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-reinstall-location.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-reinstall-location.xml
+@@ -22,7 +22,7 @@
+   <devices>
+     <emulator>/usr/lib/xen/bin/qemu-dm</emulator>
+     <disk type="file" device="disk">
+-      <driver type="qcow2"/>
++      <driver type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/test-clone-simple.img"/>
+       <target dev="hda" bus="ide"/>
+       <address type="drive" controller="0" bus="0" target="0" unit="0"/>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-reinstall-pxe.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-reinstall-pxe.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-reinstall-pxe.xml
+@@ -21,7 +21,7 @@
+   <devices>
+     <emulator>/usr/lib/xen/bin/qemu-dm</emulator>
+     <disk type="file" device="disk">
+-      <driver type="qcow2"/>
++      <driver type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/test-clone-simple.img"/>
+       <target dev="hda" bus="ide"/>
+       <address type="drive" controller="0" bus="0" target="0" unit="0"/>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-w2k3-cdrom.xml
+@@ -35,6 +35,7 @@
+     <disk type="file" device="disk">
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <disk type="file" device="cdrom">
+       <source file="/pool-dir/testvol2.img"/>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-aarch64-cdrom.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-aarch64-cdrom.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-aarch64-cdrom.xml
+@@ -26,7 +26,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-aarch64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-cdrom-centos-label.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-cdrom-centos-label.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-cdrom-centos-label.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-centos7.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-centos7.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-centos7.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-cpu-default-fallback.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-cpu-default-fallback.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-cpu-default-fallback.xml
+@@ -34,7 +34,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-cpu-hostmodel-fallback.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-cpu-hostmodel-fallback.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-cpu-hostmodel-fallback.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-fedoralatest-url.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-fedoralatest-url.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-fedoralatest-url.xml
+@@ -33,7 +33,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-rhel5.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-rhel5.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-rhel5.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-rhel6.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-rhel6.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-rhel6.xml
+@@ -33,7 +33,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-rhel7.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-rhel7.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-rhel7.xml
+@@ -33,7 +33,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-session-defaults.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-session-defaults.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-session-defaults.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2" discard="unmap"/>
++      <driver name="qemu" type="qcow2" discard="unmap" cache="unsafe"/>
+       <source file="/tmp/.local/share/libvirt/images/fedora21.qcow2"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win10.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-win10.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win10.xml
+@@ -38,7 +38,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-kvm-win2k3-cdrom.xml
+@@ -38,7 +38,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-linux2020.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-linux2020.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-linux2020.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2" discard="unmap"/>
++      <driver name="qemu" type="qcow2" discard="unmap" cache="unsafe"/>
+       <source file="/var/lib/libvirt/images/linux2020.qcow2"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-location-iso.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-location-iso.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-location-iso.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="vda" bus="virtio"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-location-manual-kernel.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-location-manual-kernel.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-location-manual-kernel.xml
+@@ -27,7 +27,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="cdrom">
+-      <driver name="qemu"/>
++      <driver name="qemu" cache="unsafe"/>
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-no-osinfo.iso"/>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-netinst-unattended.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-osinfo-netinst-unattended.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-netinst-unattended.xml
+@@ -32,7 +32,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="cdrom">
+-      <driver name="qemu"/>
++      <driver name="qemu" cache="unsafe"/>
+       <source file="TESTSUITE_SCRUBBED/tests/data/fakemedia/fake-f26-netinst.iso"/>
+       <target dev="sda" bus="sata"/>
+       <readonly/>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-q35-defaults.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-q35-defaults.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-q35-defaults.xml
+@@ -27,7 +27,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-remote-storage.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-remote-storage.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-remote-storage.xml
+@@ -22,6 +22,7 @@
+     <disk type="file" device="disk">
+       <source file="/foo/bar/baz"/>
+       <target dev="hda" bus="ide"/>
++      <driver cache="unsafe"/>
+     </disk>
+     <disk type="block" device="disk">
+       <source dev="/dev/zde"/>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-unattended-remote-cdrom.xml
+@@ -32,6 +32,7 @@
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="hda" bus="ide"/>
+       <readonly/>
++      <driver cache="unsafe"/>
+     </disk>
+     <controller type="usb" model="ich9-ehci1"/>
+     <controller type="usb" model="ich9-uhci1">
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-win7-uefi.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-win7-uefi.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-win7-uefi.xml
+@@ -40,7 +40,7 @@
+   <devices>
+     <emulator>/usr/bin/qemu-system-x86_64</emulator>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="sda" bus="sata"/>
+     </disk>
+Index: virt-manager-4.1.0/tests/data/cli/compare/virt-install-xen-pv.xml
+===================================================================
+--- virt-manager-4.1.0.orig/tests/data/cli/compare/virt-install-xen-pv.xml
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-xen-pv.xml
+@@ -16,7 +16,7 @@
+   </os>
+   <devices>
+     <disk type="file" device="disk">
+-      <driver name="qemu" type="qcow2"/>
++      <driver name="qemu" type="qcow2" cache="unsafe"/>
+       <source file="/pool-dir/testvol1.img"/>
+       <target dev="xvda" bus="xen"/>
+     </disk>

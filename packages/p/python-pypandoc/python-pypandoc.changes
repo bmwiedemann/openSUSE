@@ -1,0 +1,65 @@
+-------------------------------------------------------------------
+Wed May 24 17:47:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating to upstream version 1.11 (as previous 1.6.4 fails)
+  * tests.py was also updated and needed another item excluded to
+    possibly account for how pandoc is built.
+- Converting to noarch (per rpmlint).
+- Adding pandocfilters module to BuildRequires
+
+-------------------------------------------------------------------
+Sun Jul 17 01:20:53 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add build dependency texlive-xcolor
+
+-------------------------------------------------------------------
+Mon Dec 20 10:34:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Exclude build for %ix86: pandoc (entire haskell stack) is not
+  available on i586.
+- As a result, do not mark package noarch: due to the missing
+  pandoc dependency, it is uninstallable on i586.
+
+-------------------------------------------------------------------
+Sat Dec  4 23:33:35 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.6.4
+- Remove no longer needed fix-test.patch
+- Add tests.py from upstream master to workaround failures
+
+-------------------------------------------------------------------
+Sun Dec 27 03:51:58 UTC 2020 - Jason Craig <os-dev@jacraig.com>
+
+- Add fix-test.patch to fix test: according to Pandoc documentation,
+  ATX-style headings are the default. See
+  https://pandoc.org/MANUAL#option--markdown-headings
+
+-------------------------------------------------------------------
+Sun Nov 22 13:21:43 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace ghc-pandoc-citeproc, removed as obsolete, with ghc-citeproc
+
+-------------------------------------------------------------------
+Thu Jul 23 07:28:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to v1.5
+
+-------------------------------------------------------------------
+Wed Aug 16 08:11:22 UTC 2017 - daniel.molkentin@suse.com
+
+- Add fdupes 
+
+-------------------------------------------------------------------
+Tue Aug 15 16:06:39 UTC 2017 - daniel.molkentin@suse.com
+
+- Update to 1.4
+- Convert to single spec
+- Ran spec cleaner
+
+-------------------------------------------------------------------
+Tue Jan 24 21:37:32 UTC 2017 - termim@gmail.com
+
+- Initial check in version 1.3.3
+
+

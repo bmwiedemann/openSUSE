@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Mar 30 17:07:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Mar 13 12:06:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lpeg to version 1.0.4.
+  ## lpeg-1.0.4
+
+  Released 2023-03-13.
+
+  -   Allow lua-2.3.
+
+  -   Cease support for GHC 8.2 and older; require base 4.11 or
+      later.
+
+-------------------------------------------------------------------
+Sat Feb 19 14:38:07 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lpeg to version 1.0.3.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/lpeg-1.0.3/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Feb  4 12:31:25 UTC 2022 - psimons@suse.com
+
+- Add lpeg at version 1.0.2.
+

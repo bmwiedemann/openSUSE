@@ -1,0 +1,437 @@
+-------------------------------------------------------------------
+Tue Dec  6 21:13:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.21.1:
+  * tiling drag: allow configuration
+  * tiling drag: allow click immediately, to focus on decoration click
+  * tiling drag: fix cursor (wrong argument passed)
+  * tiling drag: increase drag threshold, run it through logical_px
+  * tiling drag: left-click needs threshold, mod-click doesn’t
+  * tiling drag: ignore scratchpad windows when locating drop targets
+  * tiling drag: only start when there are drop targets
+  * Raise floating windows when their border is clicked
+  * docs/ipc: document sticky field of GET_TREE
+  * man/i3-config-wizard: escape ~ to prevent interpretation as subscript
+  * Motif hints: respect maximum border style configuration set by user
+  * i3-dmenu-desktop: fix quoting bug
+  * Fix segfault during config validation
+
+-------------------------------------------------------------------
+Wed Sep 21 19:32:17 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version v4.21:
+  * feat: drag tiling windows with the mouse
+  * CHANGES
+  * Allow dragging tiling windows with the mouse
+  * Add client.focused_tab_title color option
+  * Add support for multiple output names in the focus command,
+  * allowing users to cycle focus between e.g. VGA1 and LVDS1 but not DVI0.
+  * Add a toggle option to the title_window_icon command
+  * i3 switched from the obsolete PCRE 8.x regular expression matching
+    library to the current PCRE2 10.x version.
+  * BUG FIXES:
+  * docs/ipc: document all window_type values
+  * docs/userguide: clarify the difference between the “workspace N” and
+    “workspace number N” commands
+  * i3bar: fix default font not being applied to bars if defined after bar block
+  * i3-dmenu-desktop: add backslashes for the exec command,
+    which fixes opening some .desktop files (e.g. electrum)
+  * i3-sensible-pager: sanitize LESS environment variable to remove -E or -F
+  * testsuite: catch i3 crashes instead of hanging on crash
+  * Fix logging on machines with 256 GB of RAM
+  * Do not replace existing IPC socket on start, to prevent clobbering
+    the IPC socket when running i3 within i3 (e.g. in Xepyhr, for development)
+  * Refuse to start without a valid IPC socket
+  * Fix focus when moving container between outputs with mouse warp and
+    focus_follows_mouse
+  * Fix endless loop with transient_for windows
+  * Fix wrong “failed” IPC reply on move workspace to output
+  * Fix WM registration selection (from WM_S_S<screen> to WM_S<screen>)
+  * avoid graphics artifacts when changing the layout tree by
+    initializing surfaces to all black
+  * update parent split con titles when child container swaps position with
+    another child container
+  * Fix segfault if command in bindsym is empty
+  * Fix segfault with explicit mode "default" key bindings
+  * Fix crash if config contains nested variables.
+  * strip trailing whitespace in bar output names
+  * Fix crash with long commands
+  * Fix changing borders by restoring BS_NORMAL _MOTIF_WM_HINTS correctly
+
+-------------------------------------------------------------------
+Tue Dec  7 23:24:38 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- i3 v4.20
+  * You can now use an “include” directive in your i3 config:
+    https://i3wm.org/docs/userguide.html#include
+  * You can now enable showing window icons in window titlebars:
+    https://i3wm.org/docs/userguide.html#title_window_icon
+- includes 4.20.1:
+  * i3bar: fix crash with multiple monitors
+  * xmlto: fix broken .TH line by extending title length
+  * i3-msg: fix --raw short form (-r) in manpage
+  * libi3: add missing sys/stat.h header
+  * use getcwd(NULL, 0) instead of GNU extension get_current_dir_name()
+- includes 4.19.2:
+  * fix release tarball version number and debug log settings
+- includes 4.19.1:
+  * fix workspaces not moving to assigned output after output becomes available
+  * fix duplicate bindcode after i3-config-wizard
+  * fix commented-out rofi call in default i3 config
+
+-------------------------------------------------------------------
+Tue Feb  2 21:37:38 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.19.1:
+  * fix: workspaces not moving to assigned output after output becomes available
+  * doc: rofi call in default i3 config comment fixed
+  * fix: i3-config-wizard creates duplicate bindcode
+
+-------------------------------------------------------------------
+Sun Nov 15 19:29:17 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.19:
+  * Changes
+  - userguide: explain button6 and button7 (scroll wheel right/left)
+  - ipc: always include the marks property (even if empty)
+  - ipc: introduce GET_BINDING_STATE command
+  - ipc: clarify workspace name field semantics
+  - ipc: document parse_error COMMAND reply field
+  - i3bar: launch using exec to avoid leaving useless shell process
+  - i3bar: make dock client order deterministic (sorted by class/instance) as a
+    side effect, i3bars without an explicit bar-id will be sorted according
+    to their definition order in the config file
+  - i3bar: update config when necessary (reduces redraws on bar mode changes)
+  - i3bar: add coordinates relative to the current output in i3bar click events
+  - i3bar: add “nonprimary” output option
+  - i3bar: set WM_CLASS instance to bar id
+  - i3-input: add different exit codes for when i3-input fails
+  - i3-dmenu-desktop: Support symlinks in search path
+  - pod2html: render without stylesheet by default
+  - introduce “tiling_from” and ”floating_from” criteria
+  - mention rofi in default config file
+  - allow ppt values in move direction and move position commands
+  - allow matching on empty properties like class, title, etc.
+  * Bug fixes:
+  - i3-nagbar: Use _PATH_BSHELL to ensure using a bourne shell
+  - i3bar: fix hang when pausing/resuming bar program
+  - i3bar: fix crash on invalid JSON input
+  - ensure client windows have a size of at least 1px after resize
+  - correctly handle overlapping decorations
+  - limit workspace numbers within 0..INT32_MAX
+  - fix a bug with tiling resize inside floating container
+  - correctly handle mouse resize in fullscreen containers by
+    not propagating $mod+right click to fullscreen clients
+  - do not try to resize fullscreen and non-fullscreen windows
+  - do not focus floating windows changing workspace with ConfigureNotify
+  - set _NET_DESKTOP_VIEWPORT after randr changes
+  - fix a bug with i3-nagbar not starting after it has already started once
+  - fix conflict when moving parent of fullscreen window to workspace
+  - fix named workspace assignments on output changes
+  - fix named workspace assignment precedence on workspace renames
+  - fix windows getting swallowed more than once
+  - erase i3 --moreversion progress line before overwriting
+  - fix test case 180-fd-leaks when running on Fedora
+  - fix crash in `focus next sibling`
+  - fix moving tiling windows out of the scratchpad
+  - fix crash on invalid JSON input in stored layouts
+  - fix monitor change during/with i3 restart by moving
+    content for non-existing output containers
+- Move build to meson since autotools build was removed
+- Remove support for EOL Leap 42.x
+
+-------------------------------------------------------------------
+Thu Oct 29 22:44:55 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.18.3:
+  - Bugfix: kick tray clients before destroying the bar
+
+-------------------------------------------------------------------
+Sat Oct  3 18:58:17 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.18.2:
+  * Bugfixes
+  - floating_maybe_reassign_ws: only re-focus if previously focused
+    (fixes a focus issue with KDE notifications)
+  - get_output_by_name: guard output->primary with require_active
+  - i3bar: fix Xorg memory leak
+
+-------------------------------------------------------------------
+Fri Jun  5 01:17:18 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.18.1:
+  * Bugfixes
+  - Move parent nodes in scratchpad correctly
+  - i3bar: Call cont_child() more liberally
+  - Fix load_layout crash when floating node doesn't have
+    CT_FLOATING_CON parent
+  - Fix SEGFAULT when i3bar receives invalid input
+  - Revert "floating_reposition: avoid extra tree_render"
+  - Call tree_render if floating move changes workspace
+  - Update EWMH properties on workspace move
+  - cmd_focus_sibling: Fix crash on workspace level
+
+-------------------------------------------------------------------
+Mon Mar  9 01:20:32 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.18:
+  * Changes
+    + layout saving: remanage window after property updates (e.g.
+      titles)
+    + get_first_output: prefer primary output (e.g. when moving
+      disabled outputs)
+    + ipc: add window_type to nodes
+    + ipc: add container id to nodes
+    + allow dragging active titles for all container types (e.g.
+      floating+tabbed)
+    + allow dragging inactive titles after a 10px threshold
+    + make tray icon order deterministic (sorted by class/instance)
+    + implement focus next|prev
+    + implement focus next|prev sibling
+    + implement focus_wrapping workspace
+    + exit with exit code 0 on --help
+    + exec command: respect command criteria
+ * Bugfixes
+    + build: fix lcov support
+    + build: use AC_REPLACE_FUNCS, drop bundled memmem
+    + build: fix building with -fno-common (for gcc 10)
+    + build: configure: deal with git worktree checkouts, where
+      .git is a file
+    + i3-nagbar: make debug log visible
+    + i3-nagbar: fix small memory leaks
+    + i3bar: fix small memory leaks
+    + move workspace to output: don’t create duplicate numbered
+      workspace
+    + correctly select output when pointer query fails
+    + fix moving windows to scratchpad when using marks
+    + fix startup workspace selection when workspace command
+      uses options
+    + do not try to center floating window on itself (fixes
+      xterm placement)
+    + fix “move window to <mark>” when target is a workspace
+    + correctly activate windows behind a fullscreen window
+    + fix back-and-forth after renaming workspaces
+    + keep focus when moving container to marked workspace
+    + do not show scratchpad windows upon move to position
+      command
+    + reparent windows to their current position when unmanaging
+    (fixes dock clients unexpectedly moving to different output)
+    + fix crash when moving containers
+    + scratchpad_move: un-fullscreen correct container
+    + avoid crash when nc->window is NULL
+
+-------------------------------------------------------------------
+Sat Sep 14 04:19:01 UTC 2019 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.17.1:
+  * Bugfixes
+    + unset _I3_RESTART_FD after restart (fixes crashes on restart)
+    + default config: immediately refresh i3status after volume changes
+    + default config: add XF86AudioMicMute
+    + default config: mention loginctl lock-session alongside xss-lock
+    + default config: use workspace number, not just workspace
+
+-------------------------------------------------------------------
+Tue Aug  6 18:34:21 UTC 2019 - antoine.belvire@opensuse.org
+
+- Update to version 4.17:
+  * Changes:
+    + config: make binding modes case-sensitive
+    + default config: mention ~/.config/i3/config
+    + default config: start xss-lock, nm-applet, pactl (volume
+      keys)
+    + docs/userguide: update syntax in strip_workspace_*
+    + docs/userguide: add a section about hidpi displays
+    + docs/userguide: document mark --replace
+    + docs/userguide: uncomment and update mark section example
+    + docs/userguide: point out differences of normal/pixel title
+      bars
+    + docs/userguide: clarify which config directives can be used
+      at runtime
+    + docs/userguide: for_window is a directive, not a command
+    + docs/ipc: clarify event/reply types
+    + docs/ipc: mention new i3-ipc++ C++ library
+    + docs/ipc: clarify restart/exit behavior
+    + docs/i3bar-protocol: add markup
+    + man/i3.man: fix config file search order
+    + ipc: make restart command send a reply once restart
+      completed
+    + ipc: use queue for all messages; fixes i3bar issues when
+      switching between workspaces with many windows
+    + i3-dump-log: clarify log message
+    + i3-msg: exit with status code 2 when i3 returns an error
+    + render left and right borders of titles in stacked mode
+    + make swap work with floating windows, fix swap crash
+    + switch to clang-format-6.0
+    + add input and bounding shapes support (e.g. for the
+      https://github.com/phw/peek screen recorder)
+    + preserve back_and_forth across restarts
+    + allow partial UTF-8 to UCS-2 conversion for better handling
+      of title bar content which cannot be represented (e.g. emoji)
+      when using bitmap pixel fonts
+    + check for duplicate key bindings in i3 -C
+    + i3bar: support transparency via --transparency flag (RGBA)
+    + i3bar: support for user-defined border widths
+  * Bugfixes:
+    + build: correctly depend on glib (for g_utf8_make_valid)
+    + build: fix build when git is configured to show signatures
+    + ipc: report correct workspace in init event after workspace
+      move
+    + ipc: send missing window:focus event
+    + i3bar: correctly recognize click events with text alignment
+    + i3bar: fix running without fd 0
+    + i3bar: correctly handle button presses on separator
+    + i3 --moreversion: warn when $DISPLAY is unset
+    + i3bar: support disabling click events
+    + release.sh: persist correct version number in docs
+    + accept output names containing spaces (e.g. in assignment)
+    + fix cursor resizing positioning
+    + fix aspect ratio issues (e.g. with mpv)
+    + fix brief focus flicker when renaming workspaces
+    + fix crash when canceling i3 via ctrl+c
+    + fix heap-use-after-free, memory leak
+    + fix focus bugs in enabling/disabling RandR outputs
+    + fix crash with popups when fullscreen is non-leaf
+    + fix crash when moving a second window to mark
+    + fix crash with programs with splash screen
+    + fix atoms when closing inactive workspace
+    + apply title_align to non-leaf containers
+    + layout loading: correctly mark non-leaf containers
+    + truncate wm_name utf8 strings to first zero byte
+      (makes window titles work with buggy clients)
+    + fix crash in workspace moving
+    + export I3SOCK environment variable (again)
+    + fix hanging flaky testcase by using the correct X11
+      connection
+    + resize: add missing error replies
+    + don't pop up floating windows on the wrong workspace
+    + remove extra \n from errx and die calls
+
+-------------------------------------------------------------------
+Wed Apr 10 01:08:24 UTC 2019 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 4.16.1
+  * Truncate wm_name utf8 strings to first zero byte (fixes window
+    title corruption)
+  * Apply title_align to non-leaf containers. Also, marks will now
+    display for non-leaf containers.
+  * attach_to_workspace: set new parent before tree_render (fixes
+    a heap-use-after-free)
+  * Use ipc queue for all messages (fixes an i3bar crash)
+  * Fix crash with popups when fullscreen is non-leaf
+  * Fix: render_con shows floating containers on wrong workspace
+
+-------------------------------------------------------------------
+Mon Nov 05 05:36:14 UTC 2018 - sean@suspend.net
+
+- update to 4.16
+  * see https://github.com/Airblader/i3/blob/4.16/RELEASE-NOTES-4.16
+    for bugs fixed, features added, etc
+  * drop i3-asciidoc-fix.patch (ascii for title bar has been fixed) (bsc#1075764)
+- switch to release tarball (drop auto* deps)
+
+-------------------------------------------------------------------
+Thu Apr 12 15:55:31 CEST 2018 - tiwai@suse.de
+
+- Fix build with asciidoctor (bsc#1075764):
+  i3-asciidoc-fix.patch
+
+-------------------------------------------------------------------
+Thu Mar 15 17:59:09 UTC 2018 - avindra@opensuse.org
+
+- update to 4.15.0.1
+  * minor: fix version so it's recognized as a release version.
+
+-------------------------------------------------------------------
+Sun Mar 11 20:20:03 UTC 2018 - avindra@opensuse.org
+
+- update to 4.15
+  * i3-sensible-terminal: add “kitty”, “guake”, “tilda”
+  * i3-sensible-editor: add “gvim”
+  * dump-asy: add prerequisite checks
+  * dump-asy: fix warnings about empty container names
+  * i3-dump-log: enable shmlog on demand
+  * i3bar: add --release flag for bindsym in bar blocks
+  * i3bar: add relative coordinates in JSON for click events
+  * ipc: rename COMMAND to RUN_COMMAND for consistency
+  * ipc: implement tick event for less flaky tests
+  * ipc: add error reply to “focus <window_mode>”
+  * ipc: send success response for nop
+  * introduce “assign <criteria> [→] [workspace] [number] <workspace>”
+  * introduce “assign <criteria> [→] output left|right|up|down|primary|<output>”
+  * introduce a “focus_wrapping” option (subsumes “force_focus_wrapping”)
+  * introduce percentage point resizing for floating containers:
+    “resize set <width> [px | ppt] <height> [px | ppt]”
+  * introduce “resize set <width> ppt <height> ppt” for tiling windows
+  * rename “new_window” and “new_float” to “default_border” and
+    “default_floating_border” (the old names keep working)
+  * output names (e.g. “DP2”) can now be used as synonyms for
+    monitor names (e.g. “Dell UP2414Q”).
+  * the “swap” command now works with fullscreen windows
+  * raise floating windows to top when they are focused
+    programmatically
+  * _NET_ACTIVE_WINDOW: invalidate focus to force SetInputFocus call
+  * make focus handling consistent when changing focus between outputs
+  * round non-integer Xft.dpi values
+  * tiling resize: remove minimum size
+  * doc updates to ipc and userguide, some changes to default config
+  * i3bar: fix various memory leaks
+  * i3bar: fix crash when no status_command is provided
+  * fix incorrectly set up signal handling
+  * fix crash when specifying invalid con_id for “swap”
+  * fix crash upon restart with window marks
+  * fix crash when config file does not end in a newline
+  * fix crash in append_layout
+  * fix crash in layout toggle command
+  * fix crash when switching monitors
+  * fix use-after-free in randr_init error path
+  * fix move accidentally moving windows across outputs
+  * fix crash when floating window is tiled while being resized
+  * fix out-of-bounds memory read
+  * fix memory leak when config conversion fails
+  * fix layout toggle split, which didn’t work until enabling
+    tabbed/stack mode once
+  * move XCB event handling into xcb_prepare_cb
+  * avert endless loop on unexpected EOF in ipc messages
+  * perform proper cleanup for signals with Term action
+  * don’t match containers in the scratchpad with criteria
+  * fix “workspace show” related issues
+  * fix config file conversion with long variable names
+  * fix config file conversion memory initialization
+  * prevent access of freed workspace in _workspace_show
+  * disable fullscreen when required when programmatically
+    focusing windows
+  * free last_motion_notify
+  * don’t raise floating windows when focused because of
+    focus_follows_mouse
+  * correctly set EWMH atoms when closing a workspace
+  * don’t raise floating windows when workspace is shown
+  * keep focus order when encapsulating workspaces
+  * validate layout files before loading
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Oct 27 14:11:25 UTC 2017 - dimstar@opensuse.org
+
+- Have i3-gaps-devel conflict with i3-devel.
+
+-------------------------------------------------------------------
+Sat Oct  7 19:14:20 UTC 2017 - aavindraa@gmail.com
+
+- Fix Leap 42.x build
+- Drop _service file
+- Drop dead code in .spec file
+- Properly set "Conflict" to other providers of i3
+
+-------------------------------------------------------------------
+Sun Sep 24 23:48:38 UTC 2017 - aavindraa@gmail.com
+
+- bump to 4.14.1
+- Create _service file
+- Fix 32-bit ARM build
+
+-------------------------------------------------------------------
+Mon Sep  4 17:00:07 UTC 2017 - aavindraa@gmail.com
+
+- Bump to 4.14
+- Reformat spec file to match i3

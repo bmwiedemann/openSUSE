@@ -1,0 +1,298 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cea78bd5725180d84da746e7acfdbb28</srcmd5>
+    <version>3.2.5</version>
+    <time>1515261329</time>
+    <user>dimstar_suse</user>
+    <comment>- GNU Health client - initial version 3.2.5
+</comment>
+    <requestid>562028</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8594f9228f1ba8019f3712d3b6cfdf56</srcmd5>
+    <version>3.2.5</version>
+    <time>1517323443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570778</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb3b1e69d03df22b30d8ac4373828ff1</srcmd5>
+    <version>3.2.6</version>
+    <time>1526372055</time>
+    <user>dimstar_suse</user>
+    <comment>- Bugfix Release 3.2.6
+</comment>
+    <requestid>606655</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>292ad08c2de463eb835c2fad4f9ae884</srcmd5>
+    <version>3.4.2</version>
+    <time>1548062933</time>
+    <user>dimstar_suse</user>
+    <comment>New version GNU Health client 3.4.2</comment>
+    <requestid>661850</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>53c94b6450336fe98aaafc2da202d7d9</srcmd5>
+    <version>3.4.3</version>
+    <time>1548704952</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix release</comment>
+    <requestid>668941</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5c24753d5fdbba3842c52592ca72fc39</srcmd5>
+    <version>3.4.3</version>
+    <time>1554458703</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1131096</comment>
+    <requestid>691594</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3ed701bb75121be14d97dcd2eb4c0f09</srcmd5>
+    <version>3.4.4</version>
+    <time>1555773217</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1131707</comment>
+    <requestid>696161</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c6c1ce24a506017617564319954de13f</srcmd5>
+    <version>3.4.4</version>
+    <time>1563362096</time>
+    <user>dimstar_suse</user>
+    <comment>boo#1141369</comment>
+    <requestid>714990</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b141a418dea990f767ac2937b7ee5012</srcmd5>
+    <version>3.4.4</version>
+    <time>1573505023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747414</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a59e9ab9a06603950f700b59c7dea767</srcmd5>
+    <version>3.6.3</version>
+    <time>1575463931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753056</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2d833df5750e5d4004c53ef8011a0ca1</srcmd5>
+    <version>3.6.4</version>
+    <time>1575753114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754954</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>589b75d523d70ec6272f123c797002cd</srcmd5>
+    <version>3.6.5</version>
+    <time>1577267696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759142</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>40cdd5bf075472ced0a0ee6f52fc1bc6</srcmd5>
+    <version>3.6.5</version>
+    <time>1578069417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760473</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>99d680e12aaac9b9ad42530d32a0bfa4</srcmd5>
+    <version>3.6.6</version>
+    <time>1580511436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768988</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b97bec0a82c7e2a61f5c8ea91ef7eeb3</srcmd5>
+    <version>3.6.8</version>
+    <time>1583094512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780758</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>de0d23d6545df9a2fdc607677c93c680</srcmd5>
+    <version>3.6.9</version>
+    <time>1589751797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806257</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f7439d70d061c89c948daafbd877f392</srcmd5>
+    <version>3.6.9</version>
+    <time>1604779376</time>
+    <user>dimstar_suse</user>
+    <comment>remove __pycache__ from plugins (boo#1178453)</comment>
+    <requestid>846845</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e1b345e022e62c9eeade5f56ab08a071</srcmd5>
+    <version>3.8.1</version>
+    <time>1613511580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872716</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>00bb663330f0c355b614c0b732fb6d0e</srcmd5>
+    <version>3.8.1</version>
+    <time>1614373182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875218</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>c46a3b3fbf8c01ccfd4fb9b93fcfdbd2</srcmd5>
+    <version>3.8.1</version>
+    <time>1614684755</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875633</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e4e79663ba9b40311be29d8eda6c929d</srcmd5>
+    <version>4.0.0</version>
+    <time>1646671692</time>
+    <user>dimstar_suse</user>
+    <comment>version bump (forwarded request 959967 from DocB)</comment>
+    <requestid>959987</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7bc8a8dfe1e5746904061d411aea0b45</srcmd5>
+    <version>4.0.1</version>
+    <time>1655821959</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>984049</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>a26ce1cb058d057537d76c57f2977df2</srcmd5>
+    <version>4.0.1</version>
+    <time>1665504215</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009815</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>73dd60a5a839d9ca29d68e581c96fe7b</srcmd5>
+    <version>4.0.1</version>
+    <time>1666185189</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1029959</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>bde0b50a47c485aee21ce52a5ab6d749</srcmd5>
+    <version>4.0.2</version>
+    <time>1671128722</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix version</comment>
+    <requestid>1043011</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5a2fc555a5c9097dfeb9eda4cf28ba36</srcmd5>
+    <version>4.2.0</version>
+    <time>1676225692</time>
+    <user>dimstar_suse</user>
+    <comment>- verion 4.2.0
+  * Instance and connection information visible at the GTK client title 
+  * Add GNUHEalth scalable icon - svg - for desktop menu and panel entries
+  * see Changelog for full description
+  * separate gnuhalth-client.desktop file removed
+- version 4.0.1
+  * various bug fixes, see changelog
+  * plugins adapted and renamed for 4.0
+  
+- version 4.0.0
+  * based on Tryton 6.0
+  * for details see CHANGELOG
+- add upstream signing key and verify source signature
+- python_dependency_generator removed (misses dependencies....)
+- version 3.8.1
+  spec-file updated to use new python macros 
+- remove __pycache__ from plugins (boo#1178453)
+- version 3.6.9
+  various bugfixes (including boo#1170553)
+- version 3.6.8
+  * Removed the deprecated App Menu in favor of the Menu Bar.
+  * Migrate from obsolete Table to Grid
+  * Fix the footer
+  * Include accelerator for preferences (ctrl+shift+p) and fix
+    accelerator for shortcuts (ctrl+shift+F1) 
+  * Avoid maximizing application at startup
+  * Remove unused fast tabbing option from menu
+  * Allow setting the GH command line on the bottom again (cli_position =
+    bottom). By default is top.
+- version 3.6.6
+  * Fix bug #57682: GTK Client - CLI is activated when pressing Shift+Z
+  * Add GNU Health shortcuts to the help window
+- update frl plugin to 3.6.1
+- version 3.6.5: Fix variable name to values
+- version 3.6.4 #57371  Error when assigning a health professional on the work schedule
+- version 3.6.3 - various performance improvements 
+- version 3.6.2 - various bugfixes
+- version 3.6.0
+- camera.diff added
+  plugins changed from *latest* to version 3.4.x
+- plugin_frl updated to version 3.4.1 
+- version 3.4.4 - Security fix boo#1131707
+- link to python2-GooCalendar (remains python2) boo#1131096
+- Version 3.4.3
+  * Fix bug #55458: Command line gets activated with shift Z 
+  * many bugfixes from tryton client
+- version 3.4.2 with many bugfixes
+- New client for the GNU Health 3.4 series based on Tryton 4.6 series
+  * Enhanced support for Calendar and WebDAV system
+  * Native client has a command line interface
+  * Over 30 new commands for the main daily tasks
+  * Enhanced GNU Health camera plugin, including zoom
+  * gnuhealth_crypto.patch replaced by plugin
+  * Activity Log window on the client
+  * SYSINFO command to retrieve the information about client and server 
+  * Customize the banner on the client
+- Bugfix Release 3.2.6
+- Add emptly build phase to silence rpmlint
+- Drop python-rsvg require, the code does not include it
+- GNU Health client - initial version 3.2.5
+</comment>
+    <requestid>1064690</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>d2cb958cb65faa811c1c6351465dde79</srcmd5>
+    <version>4.2.0</version>
+    <time>1697657118</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118334</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e7c3fdeb9c13250090fa714b1f67e479</srcmd5>
+    <version>4.2.1</version>
+    <time>1703281363</time>
+    <user>anag+factory</user>
+    <comment>- version 4.2.1
+  * Various Tryton-patches applied, see Changelog for details
+</comment>
+    <requestid>1134643</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c66f938582a75ec4e7068bad1c098cb4</srcmd5>
+    <version>4.2.1</version>
+    <time>1704558604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137221</requestid>
+  </revision>
+</revisionlist>

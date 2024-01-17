@@ -1,0 +1,52 @@
+From b8570328d6d781b9f7fd96381423c4b3cef352fe Mon Sep 17 00:00:00 2001
+From: Marian Koncek <mkoncek@redhat.com>
+Date: Wed, 18 Sep 2019 11:54:36 +0200
+Subject: [PATCH] Remove dependency on glassfish-el
+
+---
+ .../enterprise/inject/spi/BeanManager.java    | 22 -------------------
+ 1 file changed, 22 deletions(-)
+
+diff --git a/api/src/main/java/javax/enterprise/inject/spi/BeanManager.java b/api/src/main/java/javax/enterprise/inject/spi/BeanManager.java
+index 29c62af..b467727 100644
+--- a/api/src/main/java/javax/enterprise/inject/spi/BeanManager.java
++++ b/api/src/main/java/javax/enterprise/inject/spi/BeanManager.java
+@@ -17,8 +17,6 @@
+ 
+ package javax.enterprise.inject.spi;
+ 
+-import javax.el.ELResolver;
+-import javax.el.ExpressionFactory;
+ import javax.enterprise.context.ContextNotActiveException;
+ import javax.enterprise.context.spi.Context;
+ import javax.enterprise.context.spi.Contextual;
+@@ -415,26 +413,6 @@ public interface BeanManager {
+      */
+     public Context getContext(Class<? extends Annotation> scopeType);
+ 
+-    /**
+-     * Returns a {@link javax.el.ELResolver} that resolves beans by EL name.
+-     * 
+-     * @return the {@link javax.el.ELResolver}
+-     */
+-    public ELResolver getELResolver();
+-
+-    /**
+-     * Returns a wrapper {@link javax.el.ExpressionFactory} that delegates {@link javax.el.MethodExpression} and
+-     * {@link javax.el.ValueExpression} creation to the given {@link javax.el.ExpressionFactory}. When a Unified EL expression
+-     * is evaluated using a {@link javax.el.MethodExpression} or {@link javax.el.ValueExpression} returned by the wrapper
+-     * {@link javax.el.ExpressionFactory}, the container handles destruction of objects with scope
+-     * {@link javax.enterprise.context.Dependent}.
+-     * 
+-     * 
+-     * @param expressionFactory the {@link javax.el.ExpressionFactory} to wrap
+-     * @return the wrapped {@link javax.el.ExpressionFactory}
+-     */
+-    public ExpressionFactory wrapExpressionFactory(ExpressionFactory expressionFactory);
+-
+     /**
+      * Obtain an {@link AnnotatedType} that may be used to read the annotations of the given class or interface.
+      * 
+-- 
+2.21.0
+

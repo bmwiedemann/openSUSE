@@ -1,0 +1,162 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9974f5c241084f7ad0d3ad48ddd3339</srcmd5>
+    <version>0.22.0</version>
+    <time>1492617427</time>
+    <user>dimstar_suse</user>
+    <comment>new requirement for python-cryptography</comment>
+    <requestid>480650</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>402000fd2b3c85de4aacee6e45b00ce4</srcmd5>
+    <version>0.22.0</version>
+    <time>1494937645</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491323</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>717b7ce3f3fe565bed03ce463599bd65</srcmd5>
+    <version>0.23.0</version>
+    <time>1510911353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541214</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bfd04a092d0ad5eff66f2ca04b187412</srcmd5>
+    <version>0.24.0</version>
+    <time>1513851828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557782</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f7dbc3c7df01d199ea74ca322807d0a5</srcmd5>
+    <version>0.24.0</version>
+    <time>1544094826</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653920</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1700425ee12a397f8e37478e19e7c557</srcmd5>
+    <version>0.24.0</version>
+    <time>1546946230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662682</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea98aef9889704a49849c938b22873d4</srcmd5>
+    <version>1.0.0</version>
+    <time>1570284982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734805</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>103c3337050796294c9d46c8902160e7</srcmd5>
+    <version>1.3.0</version>
+    <time>1579557009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765255</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7cc1f7a72c5aec6d1a607635791882a1</srcmd5>
+    <version>1.4.0</version>
+    <time>1598351933</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0
+ * core.ObjectIdentifier and all derived classes now obey X.660 §7.6 
+   and thus restrict the first arc to 0 to 2, and the second arc to less
+   than 40 if the first arc is 0 or 1. This also fixes parsing of OIDs where
+   the first arc is 2 and the second arc is greater than 39.
+ * Fixed keys.PublicKeyInfo.bit_size to return an int rather than a float
+   on Python 3 when working with elliptic curve keys
+ * Fixed the asn1crypto-tests sdist on PyPi to work properly to generate a .whl</comment>
+    <requestid>828177</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>67f439d2b4741a731bc3cf8678712775</srcmd5>
+    <version>1.4.0</version>
+    <time>1622536372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895186</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b0f261d7c233c5bccb90630e003733e7</srcmd5>
+    <version>1.5.1</version>
+    <time>1648159093</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+ - Handle RSASSA-PSS in `keys.PrivateKeyInfo.bit_size` and
+   `keys.PublicKeyInfo.bit_size`
+ - Handle RSASSA-PSS in `keys.PrivateKeyInfo.wrap` and
+   `keys.PublicKeyInfo.wrap`
+ - Updated docs for `keys.PrivateKeyInfo.algorithm` and
+   `keys.PublicKeyInfo.algorithm` to reflect that they can return
+   `&quot;rsassa_pss&quot;`
+ - Fix `tsp.TimeStampAndCRL` to be a `core.Sequence` instead of a
+   `core.SequenceOf` *via @joernheissler*
+ - Added OIDs for Edwards curves from RFC 8410 - via @MatthiasValvekens
+ - Fixed convenience attributes on `algos.EncryptionAlgorithm` when the
+   algorithm is RC2 *via @joernheissler*
+ - Added Microsoft OIDs `microsoft_enrollment_csp_provider`
+   (`1.3.6.1.4.1.311.13.2.2`), `microsoft_os_version`
+   (`1.3.6.1.4.1.311.13.2.3`) and `microsoft_request_client_info`
+   (`1.3.6.1.4.1.311.21.20`)
+   to `csr.CSRAttributeType` along with supporting extension structures
+   *via @qha*
+ - Added Microsoft OID `microsoft_enroll_certtype` (`1.3.6.1.4.1.311.20.2`)
+   to `x509.ExtensionId` *via @qha*
+ - Fixed a few bugs with parsing indefinite-length encodings *via @davidben*
+ - Added various bounds checks to parsing engine *via @davidben*
+ - Fixed a bug with tags not always being minimally encoded *via @davidben*
+ - Fixed `cms.RoleSyntax`, `cms.SecurityCategory` and `cms.AttCertIssuer` to
+   have explicit instead of implicit tagging *via @MatthiasValvekens*
+ - Fixed tagging of, and default value for fields in `cms.Clearance` *via
+   @MatthiasValvekens*
+ - Fixed calling `.dump(force=True)` when the value has undefined/unknown
+   `core.Sequence` fields. Previously the value would be truncated, now</comment>
+    <requestid>964490</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>24b327c7ab38ff2dad58d0960412422e</srcmd5>
+    <version>1.5.1</version>
+    <time>1682095698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082006</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f104878b127200e522cbce1bf07c7aa0</srcmd5>
+    <version>1.5.1</version>
+    <time>1684952564</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file
+</comment>
+    <requestid>1088776</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>b999ac7ccd53624ec49596f4df264eed</srcmd5>
+    <version>1.5.1</version>
+    <time>1704290011</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+
+ * core.ObjectIdentifier and all derived classes now obey X.660 §7.6
+  * Fixed a TypeError when trying to call .untag() or .copy() on a core.UTCTime()
+  * Added asn1crypto.load_order(), which returns a list of unicode strings of the names
+    of the fully-qualified module names for all of submodules of the package. The module
+    names are listed in their dependency load order. This is primarily intended
+  * BREAKING CHANGE: Removed functionality to calculate public key
+    values from private key values. Alternatives have been added to
+  * Significantly improved parsing of core.UTCTime() and core.GeneralizedTime()
+  * No longer try to load optional performance dependency, libcrypto,
+  * Add support for explicit RSA SSA PSS to keys.PublicKeyInfo()</comment>
+    <requestid>1136430</requestid>
+  </revision>
+</revisionlist>

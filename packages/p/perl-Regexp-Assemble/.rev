@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c7402f6bedbaeaf5f622252c21490da</srcmd5>
+    <version>0.35</version>
+    <time>1302267918</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66458 from user babelworx
+</comment>
+    <requestid>66458</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7861b8918f5bc22e23419b32aa1280d</srcmd5>
+    <version>0.35</version>
+    <time>1302267931</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66458
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3887d801e8c4b570cfc225f17101a7ff</srcmd5>
+    <version>0.35</version>
+    <time>1306417281</time>
+    <user>saschpe</user>
+    <comment>- apply realperl.patch to fix perl requires</comment>
+    <requestid>71359</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0b859f4f05e5cd2e79eaf5daaa453e8e</srcmd5>
+    <version>0.35</version>
+    <time>1306417290</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71359
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>0b859f4f05e5cd2e79eaf5daaa453e8e</srcmd5>
+    <version>0.35</version>
+    <time>1319182302</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>d6ec9f996b9e0245ba402907bf52c195</srcmd5>
+    <version>0.35</version>
+    <time>1323193603</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>d6ec9f996b9e0245ba402907bf52c195</srcmd5>
+    <version>0.35</version>
+    <time>1340183909</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>d6ec9f996b9e0245ba402907bf52c195</srcmd5>
+    <version>0.35</version>
+    <time>1359109785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>d6ec9f996b9e0245ba402907bf52c195</srcmd5>
+    <version>0.35</version>
+    <time>1379663825</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>d6ec9f996b9e0245ba402907bf52c195</srcmd5>
+    <version>0.35</version>
+    <time>1409302462</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c3cb9d7d8064eb71a6919362651c0f40</srcmd5>
+    <version>0.38</version>
+    <time>1507571141</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.38
+   see /usr/share/doc/packages/perl-Regexp-Assemble/Changelog.ini
+- remove realperl.patch</comment>
+    <requestid>532528</requestid>
+  </revision>
+</revisionlist>

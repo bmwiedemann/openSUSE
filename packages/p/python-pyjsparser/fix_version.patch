@@ -1,0 +1,13 @@
+Index: pyjsparser-2.7.1/pyjsparser/__init__.py
+===================================================================
+--- pyjsparser-2.7.1.orig/pyjsparser/__init__.py
++++ pyjsparser-2.7.1/pyjsparser/__init__.py
+@@ -1,5 +1,5 @@
+ __all__ = ['PyJsParser', 'parse', 'JsSyntaxError', 'pyjsparserdata']
+ __author__ = 'Piotr Dabkowski'
+-__version__ = '2.2.0'
++__version__ = '2.7.1'
+ from .parser import PyJsParser, parse, JsSyntaxError
+-from . import pyjsparserdata
+\ No newline at end of file
++from . import pyjsparserdata

@@ -1,0 +1,7 @@
+<package name="thunderbolt-user-space" project="openSUSE:Factory">
+  <title>Thunderbolt(TM) Linux Software for thunderbolt Networking</title>
+  <description>Thunderbolt™ technology is a transformational high-speed, dual protocol I/O that provides unmatched performance with up to 40Gbps bi-directional transfer speeds. It provides flexibility and simplicity by supporting both data (PCIe, USB3.1) and video (DisplayPort) on a single cable connection that can daisy-chain up to six devices.&amp;#13;
+
+</description>
+  <devel project="network" package="thunderbolt-user-space"/>
+</package>

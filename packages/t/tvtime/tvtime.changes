@@ -1,0 +1,213 @@
+-------------------------------------------------------------------
+Sat Feb 23 11:15:11 UTC 2019 - seife+obs@b1-systems.com
+
+- add tvtime-1.0.11-sysmacros.diff to build with current glibc
+
+-------------------------------------------------------------------
+Mon Feb  6 16:01:16 UTC 2017 - mailaender@opensuse.org
+
+- Update to version 1.0.11
+- Drop tvtime-gcc6-fixes.patch
+
+-------------------------------------------------------------------
+Thu Jun 23 13:34:06 CEST 2016 - tiwai@suse.de
+
+- Fix build errors with gcc6: all are about spaces with literals
+  tvtime-gcc6-fixes.patch
+
+-------------------------------------------------------------------
+Mon Feb 15 14:49:40 UTC 2016 - eshmarnev@suse.com
+
+- A Patch tvtime.linux-compiler.patch is being deleted 
+- A Patch tvtime-glibc.patch is being deleted
+- A Patch tvtime-1.0.2-videoinput.patch is being deleted
+- A Patch tvtime-gcc41.patch is being deleted 
+- A Patch tvtime-libpng15.patch is being deleted
+
+-------------------------------------------------------------------
+Thu Nov  5 14:47:21 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 1.0.8
+  * Change translation man pages and messages to use UTF-8
+- Changes from version 1.0.7
+  * Fix warning about Makefiles ignoring the --datarootdir parameter
+  * Remove unused functions
+  * Safely assume C89 semantics and make RETSIGTYPE void
+  * Replace deprecated function XKeycodeToKeysym with XkbKeycodeToKeysym
+  * Add gitignore to plugins directory
+  * Link to libsupc++ instead of bringing in libstdc++.
+  * Actually call function
+  * Set subdir-objects automake option
+  * Revert "Set subdir-objects option for automake"
+  * Set automake flavour to foreign
+  * Set subdir-objects option for automake
+  * Revert accidental replacement of INSTALL file
+  * Turn automake silent by default
+  * Fix bashisms in boostrap
+  * Remove unused safetytime variable
+  * Remove embedded Debian packaging directory
+- Do not longer ship INSTALL file
+
+-------------------------------------------------------------------
+Sun Feb 15 19:24:18 UTC 2015 - crrodriguez@opensuse.org
+
+-  Update to tvtime 1.0.6.
+- Update URL/Source locations for future updates
+- Remove all patches since none are needed now.
+- tvtime now uses alsa instead of OSS emulation.
+
+-------------------------------------------------------------------
+Sat Nov  8 00:44:53 UTC 2014 - crrodriguez@opensuse.org
+
+- Run spec cleaner 
+- replace use of xorg-x11-devel by individual pkgconfig()
+  buildrequires.
+
+-------------------------------------------------------------------
+Thu Aug 30 09:50:40 UTC 2012 - pgajdos@suse.com
+
+- package builds also against libpng15
+  * tvtime-libpng15.patch
+
+-------------------------------------------------------------------
+Mon Feb 20 13:30:46 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire on xorg-x11-devel
+
+-------------------------------------------------------------------
+Tue Nov 22 10:22:52 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Thu Jun  4 15:29:33 CEST 2009 - coolo@suse.de
+
+- fix build with new glibc
+
+-------------------------------------------------------------------
+Sun Feb 24 21:40:37 CET 2008 - crrodriguez@suse.de
+
+- use find_lang macro to create a proper language list 
+
+-------------------------------------------------------------------
+Mon Aug  6 22:35:06 CEST 2007 - olh@suse.de
+
+- remove inclusion of linux/compiler.h
+
+-------------------------------------------------------------------
+Wed Mar 14 00:04:45 CET 2007 - anschneider@suse.de
+
+- tvtime-1.0.2-videoinput.patch:
+  VIDIOC_DQBUF called without setting cur_buf.memory
+
+-------------------------------------------------------------------
+Tue Oct 17 00:17:11 CEST 2006 - ro@suse.de
+
+- remove DirectFB from BuildRequires (unused) 
+
+-------------------------------------------------------------------
+Mon Jan 30 11:26:51 CET 2006 - hvogel@suse.de
+
+- fix buildrequires again
+
+-------------------------------------------------------------------
+Fri Jan 27 12:10:40 CET 2006 - hvogel@suse.de
+
+- add libpng-devel and freetype2-devel to buildrequires
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:21 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 19 14:09:07 CET 2006 - hvogel@suse.de
+
+- update to version 1.0.2
+
+-------------------------------------------------------------------
+Fri Jan 13 15:05:56 CET 2006 - hvogel@suse.de
+
+- update to version 1.0.1 
+
+-------------------------------------------------------------------
+Mon Oct 17 16:22:34 CEST 2005 - hvogel@suse.de
+
+- removed some extra qualifications to make gcc happy again
+
+-------------------------------------------------------------------
+Thu Jun 23 17:24:17 CEST 2005 - hvogel@suse.de
+
+- mark config file as noreplace
+
+-------------------------------------------------------------------
+Wed May 18 11:36:26 CEST 2005 - hvogel@suse.de
+
+- also use -mmmx for c++
+
+-------------------------------------------------------------------
+Tue May 17 01:55:26 CEST 2005 - ro@suse.de
+
+- add -mmmx on x86 
+
+-------------------------------------------------------------------
+Mon May  9 16:43:36 CEST 2005 - hvogel@suse.de
+
+- Update to version 0.99
+
+-------------------------------------------------------------------
+Thu Apr 14 17:17:06 CEST 2005 - sbrabec@suse.cz
+
+- Added audiofile-devel to neededforbuild.
+
+-------------------------------------------------------------------
+Fri Nov  5 12:49:26 CET 2004 - hvogel@suse.de
+
+- update to version 0.9.15 
+
+-------------------------------------------------------------------
+Thu Oct  7 13:38:00 CEST 2004 - hvogel@suse.de
+
+- update version to 0.9.13 
+
+-------------------------------------------------------------------
+Thu Jan 29 14:07:15 CET 2004 - hvogel@suse.de
+
+- mark config files as config
+- mark man pages as documentation 
+- use bzip2 for the source
+
+-------------------------------------------------------------------
+Thu Jan  8 18:31:28 CET 2004 - hvogel@suse.de
+
+- remove localstatedir/fifogroup usage
+- stop moving desktop file around
+
+-------------------------------------------------------------------
+Mon Dec  1 16:24:35 CET 2003 - hvogel@suse.de
+
+- readd part of the non intel patch 
+
+-------------------------------------------------------------------
+Wed Nov 26 16:17:45 CET 2003 - hvogel@suse.de
+
+- update to version 0.9.12
+
+-------------------------------------------------------------------
+Fri Nov 14 23:53:34 CET 2003 - meissner@suse.de
+
+- do not do Intel specific stuff on non-i386 (loading of
+  windows dlls, ioperm() and inb()).
+- 2 pointer accesses (and probably more) are not 64bit clean.
+- fixed destdir patch.
+
+-------------------------------------------------------------------
+Thu Nov 13 15:21:32 CET 2003 - hvogel@suse.de
+
+- dont build as root 
+
+-------------------------------------------------------------------
+Mon Oct 13 14:02:53 CEST 2003 - hvogel@suse.de
+
+- Initial package version 0.9.10 
+

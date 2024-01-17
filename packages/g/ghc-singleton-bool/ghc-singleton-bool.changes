@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Oct 24 20:17:09 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update singleton-bool to version 0.1.7 revision 1.
+  - 0.1.7
+      - Add EqP and OrdP instances
+
+-------------------------------------------------------------------
+Thu Mar 30 17:08:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Sun Aug 21 12:09:00 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update singleton-bool to version 0.1.6 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Dec 17 21:18:04 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update singleton-bool to version 0.1.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Apr  5 14:14:56 UTC 2021 - psimons@suse.com
+
+- Update singleton-bool to version 0.1.6.
+  - 0.1.6
+      - Add `boring` instances
+      - Add `some` (`GEq` etc) instances
+      - Add `deepseq` instances
+      - Require GHC-7.8+
+
+-------------------------------------------------------------------
+Sun Feb 21 12:48:18 UTC 2021 - psimons@suse.com
+
+- Update singleton-bool to version 0.1.5 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Mon Aug 31 09:34:33 UTC 2020 - psimons@suse.com
+
+- Update singleton-bool to version 0.1.5 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug 26 18:06:06 UTC 2020 - psimons@suse.com
+
+- Add singleton-bool at version 0.1.5.
+

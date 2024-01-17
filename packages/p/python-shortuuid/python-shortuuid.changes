@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun Jun 25 07:16:19 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu May  4 20:39:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.11:
+  * Add Type hinting
+  * add py.typed (PEP 561)
+
+-------------------------------------------------------------------
+Fri Oct  7 15:37:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.0.9
+  No Upstream changelog
+
+-------------------------------------------------------------------
+Sun Jan  9 02:02:33 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove tests from runtime package
+- Update to v1.0.8
+  * Include the COPYING file in releases
+- from v1.0.7
+  * Add prefix and max_length to the Django field
+- from v1.0.6
+  * Fix compatibility for python versions older than 3.8
+- from v1.0.5
+  * Don't try to get the version from the pyproject.toml
+  * Fix slow loading times from using pkg_resources
+- from v1.0.4
+  * Fix the cli interface that the previous release broke
+- from v1.0.3
+  * Add Django ShortUUIDField
+- from v1.0.2
+  * Added basic input type validation to encode and decode
+  * Use sys.version_info since sys.version returns string that
+    interprets 3.10 as 3.1 in comparison
+
+-------------------------------------------------------------------
+Wed Mar 18 11:29:15 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.0.1
+  * Use README as the long description on PyPI. [Stavros Korokithakis]
+  * Drop support for Python before 3.5. [Stavros Korokithakis]
+  * Add simple command-line interface (#43) [Éric Araujo]
+  * Make encode and decode MSB-first (#36) [Keane Nguyen]
+  * Make the URL check more robust (fixes #32) [Stavros Korokithakis]
+- deleted patches
+  - shortuuid-no-pep8.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Sep 26 09:13:16 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not depend on pep8 linter, also reported upstream
+  to fix properly:
+  * shortuuid-no-pep8.patch
+
+-------------------------------------------------------------------
+Sat Apr 28 13:50:31 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,9 @@
+diff -Naur graphite-1.3.14.orig/src/CMakeLists.txt graphite-1.3.14/src/CMakeLists.txt
+--- graphite-1.3.14.orig/src/CMakeLists.txt	2020-08-10 10:08:58.963417496 +0200
++++ graphite-1.3.14/src/CMakeLists.txt	2020-08-10 10:13:14.909357757 +0200
+@@ -156,4 +156,4 @@
+ 
+ 
+ install(TARGETS graphite2 EXPORT graphite2 LIBRARY DESTINATION lib${LIB_SUFFIX} ARCHIVE DESTINATION lib${LIB_SUFFIX} PUBLIC_HEADER DESTINATION include/graphite2 RUNTIME DESTINATION bin)
+-install(EXPORT graphite2 DESTINATION share/graphite2 NAMESPACE gr2_)
++install(EXPORT graphite2 DESTINATION lib${LIB_SUFFIX}/graphite2 NAMESPACE gr2_)

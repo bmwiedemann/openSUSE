@@ -1,0 +1,21 @@
+{
+    "default": [
+        {
+            "type": "insecureAcceptAnything"
+        }
+    ],
+    "transports": {
+        "docker-daemon": {
+            "": [{"type":"insecureAcceptAnything"}]
+        },
+        "docker": {
+            "registry.suse.com/bci": [{
+                "type": "sigstoreSigned",
+                "keyPath": "/usr/share/pki/containers/suse-container-key.pem",
+                "signedIdentity": {
+                    "type": "matchRepository"
+                }
+            }]
+        }
+    }
+}

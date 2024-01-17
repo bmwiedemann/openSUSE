@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Mon May  9 12:38:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.9.1
+  * Bugs fixed
+    + Quote escape configured to double quote (quote value)
+      character if escape not detected
+    + Delimiter detection returns first candidate delimiter even if
+      it does not exist in the file
+    + context.getSelectedHeaders() in RowProcessor processStarted()
+      can return invalid results
+    + DefaultNullRead of @parsed does not work with enums
+    + Missing fields not initialized if nested beans present
+    + Possible race condition
+    + Implicit limitation on max column name length?
+    + CSV auto-detection assigning line ending as quote escape
+    + FixedWidthFields.keepPadding not working
+    + Multi-char delimiter incorrectly detected inside quoted string
+    + Fixed the repeatable conversions initialization in the
+      DefaultConversionProcessor
+    + Fix NPE in EnumConversion
+    + Fixed quoted parser when using non-printable char as delimiter
+  * Enhancements
+    + Delimiter detection returns first candidate delimiter even if
+      it does not exist in the file
+    + Custom CsvFormatDetector
+    + Detects "whitespace" as delimiter instead of "comma"
+    + make the maxRowSample for parameter public configurable for
+      CSV auto-detection
+    + settings.excludeFields() doesn't throw errors for
+      non-existing fields anymore.
+    + Expose InputAnalysisProcess implementations publicly
+    + add "com.googlecode.openbeans" as an optional OSGi dependency
+- Removed patch:
+  * ambiguous-Record.patch
+    + Not sufficient with this version
+  * 0001-Resolve-import-clash-with-OpenJDK-17.patch
+    + fix name clash with the new java.lang.Record
+
+-------------------------------------------------------------------
+Wed Mar 23 12:04:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * ambiguous-Record.patch
+    + fix name clash with the new java.lang.Record
+
+-------------------------------------------------------------------
+Mon Mar 21 12:44:26 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Fri Mar 15 09:11:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Fri Mar 15 06:31:18 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of univocity-parsers 2.5.5
+- Generate and customize ant build.xml file

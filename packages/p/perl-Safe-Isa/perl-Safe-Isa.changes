@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Thu Apr 26 05:56:49 UTC 2018 - coolo@suse.com
+
+- updated to 1.000010
+   see /usr/share/doc/packages/perl-Safe-Isa/Changes
+
+  1.000010 - 2018-04-25
+    - fix DOES tests on 5.8.x
+
+-------------------------------------------------------------------
+Sun Apr 22 05:56:36 UTC 2018 - coolo@suse.com
+
+- updated to 1.000009
+   see /usr/share/doc/packages/perl-Safe-Isa/Changes
+
+  1.000009 - 2018-04-21
+    - Fix handling of DOES and does (they no longer fall back to isa in most
+      situations outside of Moo/Moose)
+
+-------------------------------------------------------------------
+Sun Oct  8 08:07:04 UTC 2017 - coolo@suse.com
+
+- updated to 1.000008
+   see /usr/share/doc/packages/perl-Safe-Isa/Changes
+
+  1.000008 - 2017-10-03
+    - fix scalar/list context handling for $_call_if_can
+
+-------------------------------------------------------------------
+Fri Sep 22 06:02:44 UTC 2017 - coolo@suse.com
+
+- updated to 1.000007
+   see /usr/share/doc/packages/perl-Safe-Isa/Changes
+
+  1.000007 - 2017-09-22
+    - added new interface: $obj->$_call_if_can
+
+-------------------------------------------------------------------
+Tue Nov  1 07:13:35 UTC 2016 - coolo@suse.com
+
+- updated to 1.000006
+   see /usr/share/doc/packages/perl-Safe-Isa/Changes
+
+  1.000006 - 2016-10-31
+    - now falling back to $obj->isa if DOES/does is not implemented on the
+      object, to avoid fatal errors on perls too old to have their own DOES
+      (RT#100866)
+
+-------------------------------------------------------------------
+Fri Sep 19 12:15:44 UTC 2014 - coolo@suse.com
+
+- updated to 1.000005
+  - comment blessed use so people who don't know perl stop trying to break it
+  - add link to lightning talk given at YAPC::NA 2013
+
+-------------------------------------------------------------------
+Sat Mar 15 06:33:07 UTC 2014 - coolo@suse.com
+
+- updated to 1.000004
+  - fixed slightly mangled metadata from last release
+
+-------------------------------------------------------------------
+Wed Sep  4 17:38:17 UTC 2013 - coolo@suse.com
+
+- initial package 1.000003
+    * created by cpanspec 1.78.07
+

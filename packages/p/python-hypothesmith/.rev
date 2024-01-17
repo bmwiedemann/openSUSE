@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fe7cd85325049a241643dc4373d25c1</srcmd5>
+    <version>0.0.6</version>
+    <time>1587071113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794561</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>882b4cc12c2b75427bc4d5fcc5f6eb49</srcmd5>
+    <version>0.1.4</version>
+    <time>1598351913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828110</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7fe3d549e7a7e998e3d5c62b0b464686</srcmd5>
+    <version>0.1.6</version>
+    <time>1605644473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848495</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52c8f583c42338e59411b6215f563c5f</srcmd5>
+    <version>0.1.8</version>
+    <time>1617279350</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880624</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>38648754bf92bb32c195c3bfaea3ee1d</srcmd5>
+    <version>0.2.0</version>
+    <time>1666361944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030202</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e92e316fdf84751032268443840da432</srcmd5>
+    <version>0.2.3</version>
+    <time>1673035648</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1044162</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4b3882756199a6a470d31d94668a2735</srcmd5>
+    <version>0.2.3</version>
+    <time>1682095689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081888</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e93232e7cf617cbe039e227dadfa2e17</srcmd5>
+    <version>0.3.0</version>
+    <time>1697748452</time>
+    <user>anag+factory</user>
+    <comment>fix (forwarded request 1117695 from mimi_vx)</comment>
+    <requestid>1117696</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6d5692e807ff4c1acfbbb9d992813e5</srcmd5>
+    <version>0.3.1</version>
+    <time>1703800491</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.1:
+  * Hypothesis &gt;= 6.89.0 made some internal changes which broke
+    our `from_grammar()`. This patch restores compatibility, and
+    requires the new Hypothesis.
+
+- Update to version 0.2.3
+  * Use importlib.resources to load the Python grammar (zip-safe)
+  * Drop support for Python 3.6, add 3.10 and 3.11 to CI
+  Fixed rare internal error when from_node() generated misplaced except: clauses
+  * Fix internal error in `from_grammar(&quot;single_input&quot;)
+  * Emit more debug info to diagnose a compile() issue in CPython</comment>
+    <requestid>1135285</requestid>
+  </revision>
+</revisionlist>

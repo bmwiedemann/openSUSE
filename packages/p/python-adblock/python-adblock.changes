@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Tue Mar 28 08:09:55 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update vendor tarball
+- Add python-adblock-maturin-0-14-compat.patch
+  Allow building with newer maturin, which is pedantic about
+  PEP 621
+
+-------------------------------------------------------------------
+Sun Jul 24 16:35:11 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.6.0
+Added
+  * Added aliases optional argument to Engine.add_resource.
+Changes
+  * Update PyO3 dependency to 0.16.
+  * Update upstream dependency to 0.5.6.
+Breaks
+  * Minimum Rust version is now 1.53.
+  * Minimum Python version is now 3.7.
+
+-------------------------------------------------------------------
+Wed Jun 15 14:07:33 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.2
+  * Include complete redirect rule feature
+    (gh#ArniDagur/python-adblock#59)
+
+-------------------------------------------------------------------
+Wed Feb  2 09:29:35 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.1
+  * Fix test suite for Python 3.10
+
+-------------------------------------------------------------------
+Fri Nov  5 03:03:01 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add cargo audit service to detect potential security issues
+
+-------------------------------------------------------------------
+Thu Sep 30 04:09:06 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
+Sun Jun 27 17:00:18 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.0
+  * Library now throws the custom adblock.AdblockException
+    exception, instead of ValueError.
+
+-------------------------------------------------------------------
+Tue Apr 20 20:51:41 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- init, 0.4.4

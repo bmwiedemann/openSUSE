@@ -1,0 +1,11 @@
+<package name="kubeseal" project="openSUSE:Factory">
+  <title>kubeseal</title>
+  <description>Sealed Secrets is composed of two parts:
+
+    A cluster-side controller / operator
+    A client-side utility: kubeseal
+
+The kubeseal utility uses asymmetric crypto to encrypt secrets that only the controller can decrypt.</description>
+  <devel project="devel:kubic" package="kubeseal"/>
+  <url>https://github.com/bitnami-labs/sealed-secrets</url>
+</package>

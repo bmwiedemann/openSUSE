@@ -1,0 +1,5 @@
+<package name="nfs-client-provisioner" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="nfs-client-provisioner"/>
+</package>

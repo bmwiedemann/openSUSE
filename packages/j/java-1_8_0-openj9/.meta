@@ -1,0 +1,12 @@
+<package name="java-1_8_0-openj9" project="openSUSE:Factory">
+  <title>OpenJDK 8 Runtime Environment with Eclipse OpenJ9 virtual machine</title>
+  <description>The OpenJDK 8 with Eclipse OpenJ9 virtual machine. Eclipse OpenJ9
+is a Java Virtual Machine for OpenJDK that is optimized for small
+footprint, fast start-up, and high throughput.
+
+Supported architectures are ppc64le, s390x and x86_64
+
+</description>
+  <devel project="Java:Factory" package="java-1_8_0-openj9"/>
+  <url>https://www.eclipse.org/openj9/</url>
+</package>

@@ -1,0 +1,7 @@
+<package name="python-managesieve" project="openSUSE:Factory">
+  <title>Python Module Implementing the ManageSieve Protocol</title>
+  <description>python-managesieve is a Python module implementing the ManageSieve client
+protocol. It also includes an user application (the interactive sieveshell).</description>
+  <devel project="devel:languages:python" package="python-managesieve"/>
+  <url>http://python-managesieve.origo.ethz.ch/wiki/python_managesieve</url>
+</package>

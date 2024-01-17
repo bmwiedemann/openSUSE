@@ -1,0 +1,45 @@
+Index: libgnucash/quotes/gnc-fq-update.in
+===================================================================
+--- a/libgnucash/quotes/gnc-fq-update.in
++++ b/libgnucash/quotes/gnc-fq-update.in
+@@ -24,11 +24,39 @@
+ use strict;
+ use CPAN;
+ 
++print "\n";
++print "WARNING: This program updates several Perl packages to untested latest\n";
++print "versions from CPAN. It could potentially cause unexpected failures\n";
++print "in any program or future upgrade problems.\n";
++print "\n";
++print "It is strongly recommended NOT TO USE this program and report possible\n";
++print "problems with parsing of stock quotes to http://bugzilla.novell.com/\n";
++print "\n";
++print "Please use the Perl packages provided by the distribution instead!\n";
++print "\n\n";
++
++print "Do you want to continue? (y/n) ";
++
++my $input = <STDIN>;
++chomp ($input);
++
++exit 0 if ($input ne "y");
++print "\n\n";
++print "It invalidates your system certification!\n";
++print "\n";
++print "Are you absolutely sure? Do you prefer to abort now? (y/n) ";
++
++my $input = <STDIN>;
++chomp ($input);
++
++exit 0 if ($input ne "n");
++
++
+ if ($( != 0) {
+   print "\n";
+   print "You probably need to be root before running gnc-fq-update.";
+   print "\n\n";
+-  print "Are you sure, you want to update parts of your Perl library? (y/n) ";
++  print "Are you sure, you want to update parts of your Perl library (RECONSIDER - Last warning!)? (y/n) ";
+ 
+   my $input = <STDIN>;
+   chomp ($input);

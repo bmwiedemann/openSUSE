@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Fri Jul 26 19:50:42 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- LTO breaks compilation, disable for now
+
+-------------------------------------------------------------------
+Fri Jul  7 08:56:37 UTC 2017 - adam.majer@suse.de
+
+- Add enhance->enhance_r compatibility symlink to binary
+
+-------------------------------------------------------------------
+Thu Jul  6 22:44:29 UTC 2017 - jengelh@inai.de
+
+- Add tecla-only-reentrant.diff: have the tecla tools built
+  with tecla_r [boo#1047552].
+- Add tecla-cppflags.diff
+
+-------------------------------------------------------------------
+Fri May  5 22:29:40 UTC 2017 - jengelh@inai.de
+
+- Make libtecla and libtecla_r be the same thing to avoid having
+  both loaded into the same process image [similar to boo#996551].
+
+-------------------------------------------------------------------
+Sat Apr 29 17:35:47 UTC 2017 - jengelh@inai.de
+
+- RPM group fix; make descriptions the same (but -devel shorter).
+
+-------------------------------------------------------------------
+Wed Apr 26 19:05:04 UTC 2017 - mpluskal@suse.com
+
+- Prepare spec file for factory submission
+
+-------------------------------------------------------------------
+Thu Apr 20 08:14:41 UTC 2017 - mardnh@gmx.de
+
+- update to version 1.6.3
+- remove patch: libtecla_pkgconfig.patch
+- add patch: libtecla-makefiles-rules-no-rpath.diff
+- specfile cleanup
+
+-------------------------------------------------------------------
+Sat Feb 28 22:33:38 UTC 2015 - mardnh@gmx.de
+
+- add libtecla_pkgconfig.patch
+
+-------------------------------------------------------------------
+Mon Aug  4 19:32:54 UTC 2014 - mardnh@gmx.de
+
+- minor specfile cleanup
+
+-------------------------------------------------------------------
+Tue Oct 22 21:54:24 UTC 2013 - mardnh@gmx.de
+
+- initial package
+

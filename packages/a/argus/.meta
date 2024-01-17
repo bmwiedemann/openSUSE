@@ -1,0 +1,7 @@
+<package name="argus" project="openSUSE:Factory">
+  <title>Network Monitoring Tool</title>
+  <description>Argus is a network monitoring tool.
+
+Documentation can be found in /usr/share/doc/packages/argus.</description>
+  <devel project="security" package="argus"/>
+</package>

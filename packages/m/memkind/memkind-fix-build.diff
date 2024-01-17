@@ -1,0 +1,25 @@
+commit 5f4c89b9876e70e36b89742aed55e0c388ccaadf
+Author: Michael Matz <matz@suse.com>
+Date:   Tue Aug 18 10:42:17 2020 +0200
+
+    memkind: fix build
+    
+    We build with --disable-static, but the Makefile isn't completely
+    prepared for that, this removes the remaining hard-coded reference to
+    the static lib.
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -672,7 +672,7 @@ memkind-$(VERSION).spec:
+ rpm: dist
+ 	$(MAKE) version="$(VERSION)" -f memkind.spec.mk $@
+ 
+-all: jemalloc_deps static_lib
++all: jemalloc_deps
+ 
+ # the script merge memkind and jemalloc libraries into one static library.
+ define ar_prog

@@ -1,0 +1,5 @@
+<package name="kalzium" project="openSUSE:Factory">
+  <title>Periodic Table of Elements</title>
+  <description>Kalzium shows a periodic table of the elements.</description>
+  <devel project="KDE:Applications" package="kalzium"/>
+</package>

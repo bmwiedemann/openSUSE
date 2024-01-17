@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Oct 12 05:50:03 UTC 2017 - coolo@suse.com
+
+- Fix build with perl 5.26
+
+-------------------------------------------------------------------
+Sat Mar 22 06:54:07 UTC 2014 - coolo@suse.com
+
+- updated to 0.00012
+    - pr #1 add repo location in metadata (dsteinbrunner)
+    - apply changes from https://rt.cpan.org/Ticket/Display.html?id=56794#txn-1341476
+- upstreamed fix-crash.diff
+
+-------------------------------------------------------------------
+Fri Mar 21 13:54:18 UTC 2014 - coolo@suse.com
+
+- fix crash in test suite by adding fix-crash.diff
+
+-------------------------------------------------------------------
+Fri Mar 21 13:50:07 UTC 2014 - coolo@suse.com
+
+- initial package 0.00011
+    * created by cpanspec 1.78.07
+

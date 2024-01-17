@@ -1,0 +1,365 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:20:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Build Windows installers on invent
+  * Fix crash for forbidden non-mxc media (kde#476698)
+
+-------------------------------------------------------------------
+Tue Nov  7 17:05:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * snapcraft: remove dbus slots rejected by store.
+  * Add CI template for building APKs
+  * snapcraft: Fix libsecret support! BUndle gnomekeychain. 
+    Set XDG variables so it finds keychain. Update qtkeychain.
+  * snapcraft: initial import snapcraft files.
+  * Use KF5 version of kirigami-addons in flatpak builds
+
+-------------------------------------------------------------------
+Tue Oct 10 18:28:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- No code change since 23.08.1
+
+-------------------------------------------------------------------
+Tue Sep 12 11:56:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Use shortcode as a fallback for body when sending stickers
+  * Add cmake check for qtlocation QML module
+  * Add Windows-specific screenshots as screenshots with custom attribute
+  * Deselect space when leaving it (kde#473271)
+  * Fix opening settings (kde#473789)
+  * Fix opening report sheet
+  * Force plain text user display name in user detail sheet
+  * Fix opening ban sheet
+  * Add release note for last two version
+  * Remove debuging value
+
+-------------------------------------------------------------------
+Mon Sep  4 06:38:34 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add some qt5qmlimport runtime deps (boo#1214916)
+
+-------------------------------------------------------------------
+Sun Aug 20 14:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Don't inherit color in TimelineContainer
+  * Use view-list-details instead of expand icon in room drawer
+  * Destroy the correct component in space list context menu
+  * Prevent the TapHandler in AvatarTabButton from triggering clicked()
+  * Add icons to the space list context menu items
+  * Prevent the chat bar from pasting a local file URL if we save the bitmap
+  * Ensure that the notification avatar is drawn with no pen
+  * Further notification avatar improvements
+  * Fix the account switcher width so it doesn't spill off the side
+  * Pick a better shadow and clean up emoji popup backgrounds
+  * Don't clip the emoji popups as they destroy shadows
+  * Improve tooltips in chatbar
+  * Wrap room display name in Room Drawer
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Display big emoji correctly
+  * Force plain text in room delegate
+  * Remove leftover debug statement
+  * Fix last active time in devices page
+  * Redesign timeline
+  * Fix opening account menu on right click
+  * Html-escape display names in state delegates
+  * Fix room list icon size in compact room list (kde#472682)
+  * Fix compilation with e2ee disabled
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Fix toolbar of RoomList when using font size 11px (kde#467242)
+  * Don't try getting data for invalid indices (kde#470639)
+  * Refactor login (kde#469486)
+  * Improve Delegate Width Sizing (kde#470167)
+  * Fix replying and editing from chatbox (kde#469733)
+  * Fix the room timeline being dragged when selecting text (kde#467163)
+  * Focus message search window's search field by default (kde#469879)
+  * Cache last event (kde#455042)
+  * Add more bottom margin (kde#469616)
+  * Fix autocompletion not working (kde#468967)
+  * Remove Unread Count (kde#466515)
+  * Fix regressions from RoomPage refactoring (kde#469427)
+  * Improve RoomDrawer for direct chats (kde#466895)
+  * Prevent crash in SyntaxHighlighter when leaving room (kde#467722)
+  * Fix handling line separators (kde#468977)
+  * Fix Ctrl+Shift+, opening settings (kde#469057)
+  * Fix room search field shortcut (kde#469059)
+  * Fix Chat bubble background changing color when created (kde#468124)
+  * Fix Long Topics in the RoomDrawer Overflowing (kde#467512)
+  * Don't crash in UserListModel when there is no room (kde#466045)
+  * Fix state event visiblity in timeline (kde#455048)
+  * Improve Text Handling (kde#463932)
+
+-------------------------------------------------------------------
+Tue Jul  4 10:20:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Tue Jun  6 20:01:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Focus message search window's search field by default (kde#469879)
+  * Fix asan runtime error in texthandler
+  * Update appstream description
+
+-------------------------------------------------------------------
+Tue May  9 10:47:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Don't enforce tests on windows Qt6
+  * Fix handling line separators (kde#468977)
+  * Prevent crash in SyntaxHighlighter when leaving room (kde#467722)
+  * Add loading title to LoadingPage
+
+-------------------------------------------------------------------
+Sat Apr 15 08:46:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:42:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Mar 18 18:47:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Feb 15 21:27:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.01.0
+  * notifications are now shown for all accounts
+  * new compact mode for the room list
+  * searching in history is now possible
+  * emojis and reactions improvements
+
+-------------------------------------------------------------------
+Thu Jan 23 12:19:20 UTC 2023 - Tamara Schmitz <tschmitz@suse.com>
+
+- update to 22.11:
+  * work on end-to-end encryption implementation
+  * configuration settings ported to new form components
+  * new settings component for managing notifications settings
+  * add proxy configuration menu
+  * added developer tools for inspecting raw matrix events
+  * added confirmation dialog when signing out and when enabling end-to-end encryption
+  * rewrite of theaccount switcher
+- fix buildrequires, remove redundant requires
+- fix permissions of license file
+
+-------------------------------------------------------------------
+Thu Sep 29 19:55:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.09:
+  * implemented support for configuring notifications on a per-room basis. As
+    part of his GSoC project, Snehit added a space selector to the room list,
+    which allows filtering the room list for rooms included in the selected
+    space. James also reworked the timeline layout to make it look nicer when
+    the window is very wide. There have also been a ton of other fixes and
+    improvements in translations, the layout and the stability of NeoChat.
+
+-------------------------------------------------------------------
+Fri Aug  5 06:07:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use GCC 10 to build neochat on Leap.
+
+-------------------------------------------------------------------
+Wed Aug  3 07:56:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.06:
+  * Sending of typing notifications can now be disabled.
+  * In the room list, the scrollbar will now disappear correctly when it is not needed.
+  * On wayland, NeoChat will now raise correctly when clicking on a notification.
+  * Several bugs have been fixed that would sometimes cause messages containing
+    markdown and/or HTML elements to be sent incorrectly.
+  * The quick switcher can now be controlled using the mouse.
+  * There is now an option to disable automatic room sidebar opening when
+    resizing the window.
+  * Creation of custom emojis has been fixed.
+  * Editing or replying to the last message using the keyboard shortcuts now
+    works correctly.
+  * When switching between rooms using the keyboard, the switching direction is
+    now correct.
+
+-------------------------------------------------------------------
+Tue Mar 22 09:03:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the QCoro build dependency.
+
+-------------------------------------------------------------------
+Wed Feb  9 19:07:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 22.02:
+  * Implement sharing with Purpose (export)
+  * Implement adding labels for account
+  * Give settings window a title
+  * Reduce minimum height of the window
+  * Fix build with qcoro 0.4
+  * Fix issues with saveFileAs
+  * Changed “Settings” to “Configure NeoChat” in menu
+  * Improve toolbar on mobile
+  * Improve emoji pane
+  * Check if password can be changed
+  * Fix image tooltip
+  * Adapt list setting pages to new style
+  * Allow using ESC to go back to room list
+  * Port away from QNetworkConfigurationManager
+  * Remove lag when starting user autocompletion
+  * Set single window hint in desktop file
+  * Make room address selectable
+  * Display monochrome icon in tray
+  * Fix QuickSwitcher activation
+  * Fix Windows/mac build
+  * Fix notifications on Android
+  * Support raising when we receive a notification
+  * Don’t render html in RoomDrawer heading
+  * Add support for minimizing to system tray on startup
+  * Use non blocking passord reading
+  * Add a mobile oriented context menu for the room list
+  * Fix loading room settings on mobile
+  * Use icon from qrc for system tray icon
+  * Adapt to libQuotient API change
+
+-------------------------------------------------------------------
+Mon Feb  7 16:09:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 21.12:
+  * Solved various problems related to login, logout and account switching
+  * Fixed a few problems in the timeline layout
+  * Added Spell checking while writing a message
+  * Improved Settings pages
+  * Many improvements to the android and general mobile support
+  * Show blurhashes while images load
+  * Support showing custom emojis
+  * Added a global menu
+  * Added support for spoilers
+  * Added a quick switcher to switch between rooms
+  * Added support for an optional fancy blur background effect
+  * Resizable left and right drawers
+  * Added Syntax highlighting in raw json messages
+  * Better wayland support
+  * Improved file reception and download
+- Part of Plasma Mobile Gear now, adjust URL and neochat.keyring
+
+-------------------------------------------------------------------
+Sat Jun 26 09:38:16 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Fix build error.
+  - Add missig cmark which will not be install with libcmark-devel.
+
+-------------------------------------------------------------------
+Tue Jun  1 14:04:23 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.0
+  * major UI redesign
+  * chage page is now using bubbles
+  * it's now possible to send custom reactions by replying
+    to a comment with /react <message>
+  * now supports opening Matrix URI from the web browser
+
+-------------------------------------------------------------------
+Thu Feb 25 18:52:07 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.1.1
+  - First launch experience improvements
+  - Allow logins to servers requiring SSO
+  - Display stickers
+  - Allow editing messages
+  - Multimodal mode to open a room into a new window
+  - New chat commands
+  - Better Plasma integration
+
+-------------------------------------------------------------------
+Mon Feb 15 00:33:01 UTC 2021 - Tomas Cech <sleep_walker@opensuse.org>
+
+- Add missing require libqt5-qtquickcontrols again.
+
+-------------------------------------------------------------------
+Sat Jan 16 10:14:57 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Adjust spec file to conform to the KDE team's guidelines
+
+-------------------------------------------------------------------
+Wed Jan 13 11:49:59 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.1
+  - NeoChat doesn't require a .well-know configuration in the
+    server to work.
+  - Edited messages won’t show up duplicated anymore.
+  - NeoChat now ask for consent to terms and conditions if required
+    instead of displaying nothing.
+  - Users avatar in the room list are now displayed correctly.
+  - Fix image saving
+  - Various graphic glitches have been fixed.
+- Switch source from invent.kde.org to download.kde.org, because in
+  git is not always the newest tar.
+- Add language subpackages.
+
+-------------------------------------------------------------------
+Mon Jan  4 14:16:53 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Add missing require libqt5-qtquickcontrols.
+
+-------------------------------------------------------------------
+Wed Dec 23 14:17:40 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Change from git version to version 1.0
+
+-------------------------------------------------------------------
+Mon Nov 23 15:12:10 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 

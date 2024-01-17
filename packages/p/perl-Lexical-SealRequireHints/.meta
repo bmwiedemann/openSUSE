@@ -1,0 +1,5 @@
+<package name="perl-Lexical-SealRequireHints" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Lexical-SealRequireHints"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="iscsi-formula" project="openSUSE:Factory">
+  <title>Salt formula to manage iscsi server/client</title>
+  <description>Configure iSCSI targets and initiator on GNU/Linux and FreeBSD.
+
+https://github.com/saltstack-formulas/iscsi-formula</description>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="iscsi-formula"/>
+</package>

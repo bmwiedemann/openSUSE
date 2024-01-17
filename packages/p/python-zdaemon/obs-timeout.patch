@@ -1,0 +1,82 @@
+Index: zdaemon-4.3/src/zdaemon/tests/tests.py
+===================================================================
+--- zdaemon-4.3.orig/src/zdaemon/tests/tests.py
++++ zdaemon-4.3/src/zdaemon/tests/tests.py
+@@ -264,77 +264,6 @@ def test_log_rotation():
+     """
+ 
+ 
+-def test_start_test_program():
+-    """
+-    >>> write('t.py',
+-    ... '''
+-    ... import time
+-    ... time.sleep(1)
+-    ... open('x', 'w').close()
+-    ... time.sleep(99)
+-    ... ''')
+-
+-    >>> write('conf',
+-    ... '''
+-    ... <runner>
+-    ...   program %s t.py
+-    ...   start-test-program cat x
+-    ... </runner>
+-    ... ''' % sys.executable)
+-
+-    >>> import os
+-
+-    >>> system("./zdaemon -Cconf start")
+-    . .
+-    daemon process started, pid=21446
+-
+-    >>> os.path.exists('x')
+-    True
+-    >>> os.remove('x')
+-
+-    >>> system("./zdaemon -Cconf restart")
+-    . . .
+-    daemon process restarted, pid=19622
+-    >>> os.path.exists('x')
+-    True
+-
+-    >>> system("./zdaemon -Cconf stop")
+-    <BLANKLINE>
+-    daemon process stopped
+-    """
+-
+-
+-def test_start_timeout():
+-    """
+-    >>> write('t.py',
+-    ... '''
+-    ... import time
+-    ... time.sleep(9)
+-    ... ''')
+-
+-    >>> write('conf',
+-    ... '''
+-    ... <runner>
+-    ...   program %s t.py
+-    ...   start-test-program cat x
+-    ...   start-timeout 1
+-    ... </runner>
+-    ... ''' % sys.executable)
+-
+-    >>> import time
+-    >>> start = time.time()
+-
+-    >>> system("./zdaemon -Cconf start")
+-    <BLANKLINE>
+-    Program took too long to start
+-    Failed: 1
+-
+-    >>> system("./zdaemon -Cconf stop")
+-    <BLANKLINE>
+-    daemon process stopped
+-    """
+-
+-
+ def DAEMON_MANAGER_MODE_leak():
+     """
+     Zdaemon used an environment variable to flag that it's running in

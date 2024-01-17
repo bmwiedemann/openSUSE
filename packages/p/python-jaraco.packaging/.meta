@@ -1,0 +1,7 @@
+<package name="python-jaraco.packaging" project="openSUSE:Factory">
+  <title>Supplement packaging Python releases</title>
+  <description>Tools to supplement packaging Python releases.
+
+</description>
+  <devel project="devel:languages:python" package="python-jaraco.packaging"/>
+</package>

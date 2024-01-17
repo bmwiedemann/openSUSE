@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1f04459f15c3f460b8dafde137d951d</srcmd5>
+    <version>0.0.4</version>
+    <time>1551455195</time>
+    <user>dimstar_suse</user>
+    <comment>- Activate test suite
+- Use fdupes
+- Update URL to https://github.com/core-api/python-coreschema
+- Expand summary and description
+- Initial commit
+</comment>
+    <requestid>677642</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b8890123054eed4a6e7370ef3648ed2a</srcmd5>
+    <version>0.0.4</version>
+    <time>1687796144</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095184 from gladiac
+
+- Use sle15_python_module_pythons</comment>
+    <requestid>1095242</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="imwheel" project="openSUSE:Factory">
+  <title>Mouse Event to Key Event Mapper Daemon</title>
+  <description>A daemon for X11, which watches for mouse wheel actions and outputs them as keypresses. It can be configured separately for different windows. It also allows input from it's own (included) gpm, or from jamd, or from XFree86 ZAxis mouse wheel conversion.</description>
+  <devel project="hardware" package="imwheel"/>
+</package>

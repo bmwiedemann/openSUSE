@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3a99266303764374a97cd8df3a243eb</srcmd5>
+    <version>0.2.0</version>
+    <time>1591863179</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>813401</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d2ada300b5b752616a64757d54a81ea</srcmd5>
+    <version>0.2.2</version>
+    <time>1648330293</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.2:
+  * fix license declaration</comment>
+    <requestid>965036</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9d6cc36cef7e2251d98b21859f6c038c</srcmd5>
+    <version>0.2.2</version>
+    <time>1658243935</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>989558</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>64a4d5003dadb4f707456b33b05298c2</srcmd5>
+    <version>0.2.3</version>
+    <time>1665754882</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010371</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>841b11579ecf387fb5bfaa055aac6339</srcmd5>
+    <version>0.2.6</version>
+    <time>1667067397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032048</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f8b67e08fc2899c24fee0b4e9c201714</srcmd5>
+    <version>0.2.7</version>
+    <time>1668173807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035178</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>48a483001316d99460c3a4ba4208fa75</srcmd5>
+    <version>0.2.8</version>
+    <time>1670430904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.10
+  * Merge pull request #33 from jelmer/release-0.2.10
+    Merge release of 0.2.10
+- Update to version 0.2.9
+  * Merge pull request #32 from jelmer/release-0.2.9
+    Merge release of 0.2.9
+- Update to version 0.2.8 
+  * Merge pull request #31 from jelmer/bump-version
+  * Bump version to 0.2.8
+</comment>
+    <requestid>1040774</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8dcaaf9e5f082398b571a46623b7fac7</srcmd5>
+    <version>0.2.11</version>
+    <time>1671128696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042884</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>61a45926c5113b70ad85617c4204393f</srcmd5>
+    <version>0.2.12</version>
+    <time>1672754729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.12:
+  * install patiencediff 
+  * drop python 3.6</comment>
+    <requestid>1046300</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5e47265d1e0db9ea2d1429ee20dd7057</srcmd5>
+    <version>0.2.14</version>
+    <time>1702405965</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.14:
+  * Sort Python import definitions with isort
+  * Use disperse action
+  * Enable ruff, pyupgrade
+
+  * install patiencediff
+  * drop python 3.6
+- Update to version 0.2.11
+- Update to version 0.2.8
+- Update to version 0.2.7
+- Update to version 0.2.4
+- Update to version 0.2.3
+  * No Upstream changelog
+  * fix license declaration</comment>
+    <requestid>1132684</requestid>
+  </revision>
+</revisionlist>

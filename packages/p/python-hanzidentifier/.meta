@@ -1,0 +1,5 @@
+<package name="python-hanzidentifier" project="openSUSE:Factory">
+  <title>python-hanzidentifier</title>
+  <description>Python module that identifies Chinese text as Simplified or Traditional</description>
+  <devel project="devel:languages:python" package="python-hanzidentifier"/>
+</package>

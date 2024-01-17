@@ -1,0 +1,26 @@
+diff --git a/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java b/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java
+index 144571914..7e99bc880 100644
+--- a/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java
++++ b/rt.equinox.framework/bundles/org.eclipse.equinox.launcher/src/org/eclipse/equinox/launcher/Main.java
+@@ -1330,7 +1330,7 @@ public class Main {
+ 				String appVersion = props.getProperty(PRODUCT_SITE_VERSION);
+ 				if (appVersion == null || appVersion.trim().length() == 0)
+ 					appVersion = ""; //$NON-NLS-1$
+-				appName += File.separator + appId + "_" + appVersion + "_" + installDirHash; //$NON-NLS-1$ //$NON-NLS-2$
++				appName += File.separator + appId + "_" + installDirHash; //$NON-NLS-1$
+ 			} catch (IOException e) {
+ 				// Do nothing if we get an exception.  We will default to a standard location
+ 				// in the user's home dir.
+diff --git a/rt.equinox.framework/bundles/org.eclipse.osgi/container/src/org/eclipse/osgi/internal/location/EquinoxLocations.java b/rt.equinox.framework/bundles/org.eclipse.osgi/container/src/org/eclipse/osgi/internal/location/EquinoxLocations.java
+index 0c13ace6f..d92d4fc45 100755
+--- a/rt.equinox.framework/bundles/org.eclipse.osgi/container/src/org/eclipse/osgi/internal/location/EquinoxLocations.java
++++ b/rt.equinox.framework/bundles/org.eclipse.osgi/container/src/org/eclipse/osgi/internal/location/EquinoxLocations.java
+@@ -308,7 +308,7 @@ public class EquinoxLocations {
+ 				String appVersion = props.getProperty(PRODUCT_SITE_VERSION);
+ 				if (appVersion == null || appVersion.trim().length() == 0)
+ 					appVersion = ""; //$NON-NLS-1$
+-				appName += File.separator + appId + "_" + appVersion + "_" + installDirHash; //$NON-NLS-1$ //$NON-NLS-2$
++				appName += File.separator + appId + "_" + installDirHash; //$NON-NLS-1$
+ 			} catch (IOException e) {
+ 				// Do nothing if we get an exception.  We will default to a standard location
+ 				// in the user's home dir.

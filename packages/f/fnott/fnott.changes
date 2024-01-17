@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Fri Oct 13 13:12:31 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@uncomfyhalomacro.pl>
+
+- Add 0001-memfd-noexec-seal.patch
+  * newer kernels introduced MFD_NOEXEC_SEAL. Linux kernels older than
+    6.3 will crash fnott because they will reject memfd_create() calls that set it.
+    This patch fixes it by testing first if it works with the new MFD_NOEXEC_SEAL
+    and then retry without it.
+
+-------------------------------------------------------------------
+Tue Jul 18 08:27:09 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove the following patches as they are already part of the new release
+  * 0000-unreleased-changelog.patch
+  * 0001-decoded-len-unused.patch
+  * 0002-include-stdc-predef.patch
+  * 0003-clang-fixes-on-changelog.patch
+  * 0004-pkgbuild-on-changelog.patch
+  * 0005-clang-plus-notification-stack-fix.patch
+- Update to 1.4.1
+  * Compilation errors with clang 15.x
+  * Notifications initially positioned outside the screen not being visible after being moved up in the notification stack.
+    
+-------------------------------------------------------------------
+Fri Jun 16 13:13:42 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add the following patches:
+  * 0000-unreleased-changelog.patch
+  * 0001-decoded-len-unused.patch
+  * 0002-include-stdc-predef.patch
+  * 0003-clang-fixes-on-changelog.patch
+  * 0004-pkgbuild-on-changelog.patch
+  * 0005-clang-plus-notification-stack-fix.patch (originally as 0000-clang-plus-notification-stack-fix.patch)
+
+- These patches bring some small improvements and fixes
+
+-------------------------------------------------------------------
+Fri Jun 16 12:37:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0000-clang-plus-notification-stack-fix.patch
+  * Notifications initially positioned outside the screen not being
+  * visible after being moved up in the notification stack.
+
+-------------------------------------------------------------------
+Mon Apr  3 08:33:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.4.0
+  * Added idle-timeout option to specify the amount of time you need to be idle before notifications are prevented from timing out (#16).
+  * Added icon option, to specify icon to use when none is provided by the notification itself (#82).
+  * Support for image-path hints (#84).
+  * dpi-aware=no|yes|auto option (#80).
+  * Changed Default value of max-width and max-height is now 0 (unlimited).
+  * When determining initial font size, do FontConfig config substitution if the user-provided font pattern has no {pixel}size option (#1287).
+  * Fixed file:// URIs, in icon paths (#84)
+  * Replace ID being ignored if there were no prior notification with that ID.
+  * Wayland protocol violation when output scaling was enabled.
+  * Notification expiration (timeout) and dismissal are now deferred while the action selection helper is running (#90).
+- cleaned up specfile
+
+-------------------------------------------------------------------
+Fri Dec  2 13:48:53 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update specfile
+- Change to c11 standard to comply with latest on leap
+
+-------------------------------------------------------------------
+Fri Aug 19 23:39:11 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.3.0:
+  * Added:
+    - Support for a “progress” hints, notify-send -h int:value:20 ..., (#51).
+    - title-format, summary-format and body-format options, allowing you to customize the rendered strings. In this release, the %a, %s, %b and %% formatters, as well as \n, are recognized. (#39).
+    - Added configuration option layer to specify the layer on which notifications are displayed. Values include background, top, bottom, and overlay (#71).
+  * Changed:
+    - Minimum required meson version is now 0.58.
+    - Notification text is now truncated instead of running into, and past, the vertical padding (#52).
+    - All color configuration options have been changed from (A)RGB (i.e. ARGB, where the alpha component is optional), to RGBA. This means all color values must be specified with 8 digits (#47).
+  * Removed:
+    - $XDG_CONFIG_HOME/fnottrc and ~/.config/fnottrc. Use $XDG_CONFIG_HOME/fnott/fnott.ini (defaulting to ~/.config/fnott/fnott.ini) instead (#7).
+  * Fixed:
+    - Scale not being applied to the notification’s size when first instantiated (#54).
+    - Fallback to /etc/xdg if XDG_CONFIG_DIRS is unset.
+    - Icon lookup is now better at following the XDG specification (#64).
+    - Setting max-width and/or max-height to 0 no longer causes fnott to crash. Instead, a zero max-width/height means there is no limit (#66).
+
+-------------------------------------------------------------------
+Mon Mar  7 05:24:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- use released tarball with source URL
+
+-------------------------------------------------------------------
+Sat Feb 26 02:45:32 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec
+

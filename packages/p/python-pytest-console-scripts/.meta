@@ -1,0 +1,14 @@
+<package name="python-pytest-console-scripts" project="openSUSE:Factory">
+  <title>Pytest plugin for testing console scripts</title>
+  <description>Pytest-console-scripts is a `Pytest`_ plugin for testing python scripts
+installed via ``console_scripts`` entry point of ``setup.py``. It can run the
+scripts under test in a separate process or using the interpreter that's
+running the test suite.  The former mode ensures that the script will run in an
+environment that is identical to normal execution whereas the latter one allows
+much quicker test runs during development while simulating the real runs as
+much as possible.
+
+</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-console-scripts"/>
+  <url>https://github.com/kvas-it/pytest-console-scripts</url>
+</package>

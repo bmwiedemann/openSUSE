@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Sat May 27 05:17:40 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build reproducible
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Sat Jun 13 20:52:15 UTC 2015 - nemysis@gmx.ch
+
+- Change Summary
+- Change URL to not use %{name}
+- Change Source0 and Source1 Web URL to use SourceUrls
+- Use sed instead of simple patches
+- Remove patches tomatoes-makefile.patch, tomatoes-configdir.patch,
+  tomatoes-hiscoredir.patch
+- Add tomatoes-rpmlintrc, Application Name is in Summary
+- Use tomatoes.desktop instead of Desktop Entry in spec
+- Add BuildRequires for dos2unix and hicolor-icon-theme
+- Use BuildRequires pkgconfig() instead of devel packages
+- Change Description
+- Use cp instead of mv and rm
+- Use dos2unix instead of sed
+- Add sed, fix Flags, place config.dir, hiscore
+- Use CXXFLAGS="%{optflags}" to fix 'File is compiled without RPM_OPT_FLAGS'
+- Simplify installation handling
+- Change installation, because game install in wrong paths and not use FHS
+- Install icon in %{_datadir}/icons/hicolor/64x64/apps/ instead of %{_datadir}/pixmaps/
+
+-------------------------------------------------------------------
+Thu Apr 18 06:51:35 UTC 2013 - joop.boonen@opensuse.org
+
+- Adapted the License according to the spdx standard
+
+-------------------------------------------------------------------
+Sat Jul  2 15:33:38 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Tue May 12 00:00:00 UTC 2009 - cmorve69@yahoo.es
+
+- Initial package

@@ -1,0 +1,11 @@
+<package name="tunctl" project="openSUSE:Factory">
+  <title>Create and remove virtual network interfaces</title>
+  <description>tunctl is a tool to set up and maintain persistent TUN/TAP network
+interfaces, enabling user applications access to the wire side of a
+virtual nework interface. Such interfaces is useful for connecting VPN
+software, virtualization, emulation and a number of other similar
+applications to the network stack.
+
+tunctl originates from the User Mode Linux project. </description>
+  <devel project="network:utilities" package="tunctl"/>
+</package>

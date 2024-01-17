@@ -1,0 +1,204 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7562a5a2b104936d7725c2d8750ec192</srcmd5>
+    <version>0.0.3</version>
+    <time>1592840812</time>
+    <user>dimstar_suse</user>
+    <comment>Submission of rubocop-ast which is a new dependency of rubocop</comment>
+    <requestid>816377</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bc2b19761e0615e712110498edd172b</srcmd5>
+    <version>0.1.0</version>
+    <time>1597752050</time>
+    <user>dimstar_suse</user>
+    <comment>Update changelog</comment>
+    <requestid>827558</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ade91eaeba2ddeb4260027434626db0c</srcmd5>
+    <version>0.3.0</version>
+    <time>1599598250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829029</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84c01e28b1c2778f70d0e7fbe21a985a</srcmd5>
+    <version>0.5.0</version>
+    <time>1601919208</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838077</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0453e6d4d44b8294181dc82f27accabc</srcmd5>
+    <version>1.1.0</version>
+    <time>1604412983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845480</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>39566c0377ad4204a2e6c2b7ea431651</srcmd5>
+    <version>1.1.1</version>
+    <time>1605959011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849713</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>66d4d468091b1fad65b57576c5be1126</srcmd5>
+    <version>1.4.0</version>
+    <time>1609783812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860215</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e74cbcfff0e08c09e94cdccc3d2bab7e</srcmd5>
+    <version>1.4.1</version>
+    <time>1617910352</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883773</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cd80426e688d33e868bf853071e66b48</srcmd5>
+    <version>1.5.0</version>
+    <time>1621201226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891104</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e74b82dacd87fcaba20dc8117281fca0</srcmd5>
+    <version>1.7.0</version>
+    <time>1622536799</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 896511 from mschnitzer)</comment>
+    <requestid>896522</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2e19729daca4ce97c330a962bd98909d</srcmd5>
+    <version>1.8.0</version>
+    <time>1627587118</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 909128 from mschnitzer)</comment>
+    <requestid>909131</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5aa3e84756a38cdbfc19886e678870d0</srcmd5>
+    <version>1.11.0</version>
+    <time>1629917896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914161</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d6ee4d78027134d5d6762d3464927260</srcmd5>
+    <version>1.12.0</version>
+    <time>1633959095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924372</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8c9519e65569ad7b3fab091bbbadeba0</srcmd5>
+    <version>1.15.0</version>
+    <time>1640200688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942035</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6607c63818fce19b971f2563b2f07c96</srcmd5>
+    <version>1.15.1</version>
+    <time>1640876142</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 943209 from mschnitzer)</comment>
+    <requestid>943210</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bda421ee91f81c917ae7ebf38d27e943</srcmd5>
+    <version>1.15.2</version>
+    <time>1645723224</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>956130</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6050b0f4efbe9419bf9a9378bae783df</srcmd5>
+    <version>1.16.0</version>
+    <time>1646948766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960906</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5f9faf77712846463cdfdc99c0a6ece8</srcmd5>
+    <version>1.17.0</version>
+    <time>1651351968</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974075</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>802e949d78227518d22dfcb84840fb9d</srcmd5>
+    <version>1.18.0</version>
+    <time>1652717316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977462</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7707d92455350ca3d8a26bb3cd58f056</srcmd5>
+    <version>1.19.1</version>
+    <time>1660051612</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>993519</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fd84e236c85db43cf634435fc35473fd</srcmd5>
+    <version>1.21.0</version>
+    <time>1661593812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999451</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>287ef9db7c62dcf1b64b396b6c6a4fd6</srcmd5>
+    <version>1.23.0</version>
+    <time>1667150940</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.23.0
+  no changelog found
+</comment>
+    <requestid>1032161</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bdeb1ad84163fe1a38c9ed209e52e940</srcmd5>
+    <version>1.24.0</version>
+    <time>1670954218</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042659</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4e97282f4b51e731d0fca65217bf0da4</srcmd5>
+    <version>1.29.0</version>
+    <time>1696964404</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1116489</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9fb4fb8e7475e39149e35c73847721ef</srcmd5>
+    <version>1.30.0</version>
+    <time>1700078880</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126316</requestid>
+  </revision>
+</revisionlist>

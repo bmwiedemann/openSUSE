@@ -1,0 +1,5 @@
+<package name="python-unittest-mixins" project="openSUSE:Factory">
+  <title></title>
+  <description>Helpful mixins for unittest classes</description>
+  <devel project="devel:languages:python" package="python-unittest-mixins"/>
+</package>

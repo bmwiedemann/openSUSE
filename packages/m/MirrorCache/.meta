@@ -1,0 +1,5 @@
+<package name="MirrorCache" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:infrastructure:MirrorCache" package="MirrorCache"/>
+</package>

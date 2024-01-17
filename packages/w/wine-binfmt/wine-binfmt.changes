@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Thu Mar 30 11:32:22 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.2.1
+  * Fix uninstalling script as mentioned at
+    https://build.opensuse.org/request/show/1075518
+  * Drop obsolete Buildroot: tag
+
+-------------------------------------------------------------------
+Thu Mar 30 09:22:15 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use pkgconfig(systemd) as requested at
+  https://build.opensuse.org/request/show/1075504
+- Replace tabs by spaces in spec file
+
+-------------------------------------------------------------------
+Sun Jun 21 14:56:00 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- 1.2.0
+  * Add standalone package
+  * Add rpmlintrc
+
+-------------------------------------------------------------------
+Thu Jul  4 07:52:06 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- 1.1.0
+  * add systemd service
+  * renamed to wine-binfmt
+
+-------------------------------------------------------------------
+Fri Feb 21 2014 ralf.habacker@freenet.de
+
+- initial package

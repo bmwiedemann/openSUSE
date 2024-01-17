@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>92707b5a2c03985225e85629d10b7c31</srcmd5>
+    <version>0.25</version>
+    <time>1596727977</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Submission to factory</comment>
+    <requestid>824143</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be6fd17b3b4500b0854c41a55ce91f84</srcmd5>
+    <version>0.25</version>
+    <time>1597390379</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>826258</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0866ed1cea9b2d625296dfef974ada99</srcmd5>
+    <version>0.27</version>
+    <time>1604926677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847062</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f264cb40a600ccc86df69707de9f5da1</srcmd5>
+    <version>0.28</version>
+    <time>1609111732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858860</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b9cded9f87f98c465fabc12334785b72</srcmd5>
+    <version>0.30</version>
+    <time>1614684853</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875893</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c4fc2f5f955ad8d1ebcb5f6b8430efc</srcmd5>
+    <version>0.34</version>
+    <time>1673021176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056375</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3ebf72e25fb90530a75c30cea6795ad9</srcmd5>
+    <version>0.35</version>
+    <time>1675095061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061968</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2b93509d29d28c2b633af6cccd6a1950</srcmd5>
+    <version>0.36</version>
+    <time>1683728249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.36:
+  * The &quot;Welcome interested developers&quot; release!
+  * Not that many features which are of use to the casual gamer, but
+    under the hood, the code has matured. Now it is even possible to
+    build a backend library to run the magic of Magnetic Scrolls
+    with 3rd party frontends!</comment>
+    <requestid>1085757</requestid>
+  </revision>
+</revisionlist>

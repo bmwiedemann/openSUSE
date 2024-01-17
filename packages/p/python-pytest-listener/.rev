@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>453d4c789bce797f3ea7454ea3d26afd</srcmd5>
+    <version>1.7.0</version>
+    <time>1569523082</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>732123</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c5e9bd2ff53ceb26054a5fd39b1a251f</srcmd5>
+    <version>1.7.0</version>
+    <time>1577630979</time>
+    <user>dimstar_suse</user>
+    <comment>- use pytest macro</comment>
+    <requestid>759800</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>95d33e03a897cb3d42307e0552af965b</srcmd5>
+    <version>1.7.0</version>
+    <time>1621201327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893506</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>cf2e7f834c2661c3fe76544c6f352500</srcmd5>
+    <version>1.7.0</version>
+    <time>1670588306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041841</requestid>
+  </revision>
+</revisionlist>

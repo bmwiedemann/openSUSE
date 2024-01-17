@@ -1,0 +1,13 @@
+# A space seperated list of one or more hostnames/IPv4 addresses to use as
+# potential routers.
+# The default is the unqualified hostname 'isatap'
+#ISATAP_ROUTERS=""
+
+# IPv6 MTU of the created ISATAP tunnel interface. The IPv4 path to
+# the ISATAP router and all other ISATAP clients should be able to
+# handle at least MTU+20 bytes. 
+# The minimum IPv6 MTU (1280 Bytes) is the safest choice here
+MTU="1280"
+
+# Additional options, see isatapd(8) for details
+#DAEMON_OPTS=""

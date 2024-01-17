@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cf9073d87159c7b857e9dcb0fa6a3fc</srcmd5>
+    <version>1.1.6</version>
+    <time>1540320118</time>
+    <user>dimstar_suse</user>
+    <comment>replacing pyalsa</comment>
+    <requestid>643959</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f2ae9a4d9662dc36f1d5b165038077fe</srcmd5>
+    <version>1.1.6</version>
+    <time>1622536802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896569</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c83fca082e368908d59187388bb0db18</srcmd5>
+    <version>1.1.6</version>
+    <time>1638480620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935158</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d558b5a8306ac80cb11e6ba8633ed6ff</srcmd5>
+    <version>1.2.6</version>
+    <time>1638831615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936047</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f48d795721728040b520e4053fc9205</srcmd5>
+    <version>1.2.7</version>
+    <time>1654097699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980236</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b004a49b01ff8d8835f46196fdc76ffe</srcmd5>
+    <version>1.2.7</version>
+    <time>1668086505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034829</requestid>
+  </revision>
+</revisionlist>

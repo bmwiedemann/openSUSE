@@ -1,0 +1,5 @@
+<package name="lua-fennel" project="openSUSE:Factory">
+  <title>fennel</title>
+  <description>Lisp that transpiles to Lua</description>
+  <devel project="devel:languages:lua" package="lua-fennel"/>
+</package>

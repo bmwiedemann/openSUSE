@@ -1,0 +1,812 @@
+-------------------------------------------------------------------
+Sun Dec 24 21:58:53 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 1.2.14
+
+  * Implemented Clipper plugins series.
+  * Implemented Multiband Clipper plugin series.
+  * Implemented Parametric Equalizer x8 plugin series.
+  * Updated VST 2.x plugin naming to fit the maximum possible length
+    of 31 characters.
+  * Added tracking of maximum values option for Spectrum Analyzer
+    plugin series.
+  * Added possibility to change frequency values by double click for
+    GOTT Compressor.
+  * Improved performance of expression language in the UI.
+  * Implemented separate input and output signal spectrum analysis
+    for Filter, Graphic Equalizer and Parametric Equalizer plugin series.
+  * Updated default value and extended range of the zoom fader for
+    Filter, Graphic Equalizer and Parametric Equalizer plugin series.
+  * Added possibility to globally adjust filter point size for Filter,
+    Graphic Equalizer and Parametric Equalizer plugin series.
+  * Added gain level display for filter info of the Parametric
+    Equalizer and Filter plugin series.
+  * Added missing inline display to the Autogain plugin series.
+  * Threshold markers are now editable for all dynamics and
+    multiband dynamics plugins.
+  * Implemented switch that controls automatic scaling of spectrum
+    graph for plugin series:
+      * Beat Breather.
+      * Filter.
+      * GOTT Compressor.
+      * Graphic Equalizer.
+      * Multiband Compressor.
+      * Multiband Dynamic Processor.
+      * Multiband Gate.
+      * Multiband Expander.
+      * Multiband Limiter.
+      * Noise Generator.
+      * Parametric Equalizer.
+  * Many code updates that could cause potential problems related
+    to using another decimal point for floating-point number formatting.
+  * Added frequency and note displaying for band splits for all
+    multiband plugin series.
+  * Added support of storing current file type selection in
+    file dialogs of UI.
+  * Optimization of compressor and gate functions using AVX-512
+    instruction set.
+  * Fixed bug in Mid/Side conversion functions for AArch64
+    architecture (contributed by marcan at GitHub).
+  * Introduced SIMD-optimized expander curve and gain functions.
+  * Improved performance of logarithmic values calculations for
+    DSP modules.
+
+-------------------------------------------------------------------
+Sun Oct 29 22:43:07 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 1.2.13
+
+  * Fixed bug in Multiband Limiter plugin series caused by invalid
+    processing of large input buffers.
+  * Fixed bug in Compensation Delay plugin series caused by invalid
+    processing of large input buffers.
+  * Fixed crackling sound caused by small buffer gaps in Autogain
+    plugin series.
+  * Fixed bug introduced in 1.2.11 version related to improper
+    optimized function for AVX-512 instruction set that could cause
+    dynamic processing plugins (like Compressor, Expander, Gate, etc)
+    work improperly.
+  * Several optimizations of DSP library with AVX and AVX2 instruction sets.
+  * Many additional optimizations of DSP library with AVX-512 instruction set.
+  * Optimizations of compressor, expander and gate modules with SIMD instructions.
+  * Gate module now uses lsp-dsp-lib for low-level gain and curve optimizations.
+  * Reduced the gain curve refresh rate for all multiband plugins
+    which may reduce CPU usage for small input buffer sizes.
+  * Optimized common gain curve calculation for all multiband plugins.
+ 
+-------------------------------------------------------------------
+Fri Oct 13 23:00:34 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Remove 01-Fixed-double-free-of-generated-port-metadata.patch
+  now upstream
+- update to 1.2.12
+
+  * Implemented Autogain plugin series for controlling the loudness
+    of the signal according to the ITU-R BS.1770-4 specificaions.
+  * Implemented SIMD-optimized curve and gain calculation functions
+    for compressors which allow to lower the CPU consumption by
+    compressor plugins.
+  * More AVX-512 optimized functions added to the low-level DSP code.
+  * Additional SIMD-optimized functions added to DSP library.
+  * Fixed VST2 plugin crash on UI close in OBS Studio.
+  * Fixed invalid default values of parameters for CLAP plugin format.
+  * Fixed double memory free of generated port metadata in CLAP,
+    VST2 and LV2 wrappers.
+  * Fixed HPF/LPF knob activity in the UI for multiband dynamics
+    plugins.
+
+-------------------------------------------------------------------
+Thu Sep 28 20:32:32 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add 01-Fixed-double-free-of-generated-port-metadata.patch
+  from upstream fixing crashes
+
+-------------------------------------------------------------------
+Sun Sep 10 19:56:44 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 1.2.11
+
+ * Added partial support of AVX-512 instruction set.
+ * Windows support changed to experimental.
+ * Fixed code issues reported by the PVS Studio static analyzer.
+ * Fixed improper band characteristics drawn on band Mute for 
+   multiband plugins in Linear Phase mode.
+
+-------------------------------------------------------------------
+Sun Aug 27 01:24:00 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 1.2.10
+
+  * Implemented Beat Breather plugin series.
+  * Added phase switches to Delay Compensator plugin series.
+  * Implemented Stereo Split mode for stereo version of all dynamic
+    plugins:
+    - Compressor and Multiband Compressor;
+    - Dynamics Processor and Multiband Dynamics Processor;
+    - Expander and Multiband Expander;
+    - Gate and Multiband Gate;
+    - GOTT Compressor.
+  * Added Allpass filter to the Filter plugin series.
+  * Added Bandpass, Ladder-pass and Ladder-rej filters to Parametric
+    Equalizer plugin series.
+  * Introduced Linear Phase mode for the Crossover plugin series.
+  * Introduced Linear Phase mode for multiband plugin series:
+    - GOTT Compressor;
+    - Multiband Compressor;
+    - Multiband Dynamics Processor;
+    - Multiband Expander;
+    - Multiband Gate;
+    - Multiband Limiter.
+  * Fixed missing inline display for Phase Detector plugin.
+  * Fixed invalid input signal level metering for Flanger plugin
+    series.
+  * Fixed frequency inspection bug for LeftRight and MidSide
+    versions of Parametric Equalizer plugin series.
+  * Fixed improper latency value report by Multiband Limiter
+    plugin series.
+
+-------------------------------------------------------------------
+Mon Jul 31 12:27:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.8:
+  * Implemented GOTT (Grand Over-The-Top) Compressor plugin
+    series.
+  * Implemented Filter plugin series.
+  * Implemented Flanger plugin series.
+  * Implemented Multiband Limiter plugin series.
+  * Implemented high-precision oversampling algorithms for
+    Oscilloscope plugin series.
+  * Updated default values for file selectors in Impulse
+    Responses and Impulse Reverb plugin series.
+  * Added generation of explicit element definitions for LV2
+    groups in TTL files as a workaround to LV2 problem related
+    to missing predefined port groups' elements.
+  * Added 'All' channel selector to Sampler and Multisampler
+    plugin series which is now the default value for channel
+    selector.
+  * Added missing audio preview for single-channel Sampler Plugin
+    series.
+  * Adding missing output balance knobs in Impulse Reverb Mono
+    plugin.
+  * Fixed improper behaviour of the bypass switch for Multiband
+    Compressor, Expander and Dynamics Processor plugin series.
+  * Fixed bug in the font manager which could yield memory
+    corrption after complete font manager cleanup
+  * Fixed memory leakage in the UI
+  * Fixed bug in ALR function for Limiter plugin series which
+    could cause random audio scratches.
+  * Fixed gain jumping bug in A/B tester plugin.
+  * Serveral bugfixes in the core DSP modules provided by the
+    lsp-dsp-units library.
+
+-------------------------------------------------------------------
+Sun May 21 21:35:05 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- version 1.2.7
+
+  * Fixed CLAP UI support for Bitwig Studio.
+  * Fixed build that disabled CairoCanvas for Inline Display feature.
+  * Fixed memory leakage issued by the libcairo font cache on the plugin UI close.
+  * Moved custom font rendering solution to direct usage of libfreetype.
+  * Fixed crash (BadMatch) for Fluxbox window manager on popup windows.
+  * Fixed popup window heading display in Fluxbox.
+  * Fixed non-working solo button for Parametric Equalizer after 1.2.6 release.
+  * Removed Makefile.d. Dependencies are now automatically generated at the build stage.
+  * Added possibility to invert the behaviour of mouse scroll for all widgets or
+    for graph dot widget.
+  * Added frequency display and gain for each filter of Graphic Equalizer plugin series.
+  * Added measure button and meter line on graph for Spectrum Analyzer plugin series.
+  * Added display of filter number, filer channel and filter type near to the
+    frequency and note.
+  * Added possibility to change the thickness of lies on the spectrum graph for the
+    Spectrum Analyzer plugin series.
+  * Some output parameters like Latency are not exported into configuration file anymore.
+
+-------------------------------------------------------------------
+Sun Mar 26 08:18:38 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Another spec clean-up
+
+-------------------------------------------------------------------
+Sun Mar 26 07:45:11 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add OpenGL BuildRequires fixes TW build
+- Update spec 
+
+-------------------------------------------------------------------
+Thu Mar 23 08:48:34 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Version 1.2.6
+
+ * Implemented Mixer plugin series for 4, 8 and 16 Mono/Stereo channels.
+ * Implemented A/B Tester plugin series with blind option.
+ * Parametric Equalizer is now smoothly operating with frequency/gain/q factor for 
+   each mode: FIR, IIR, FFT, SPM.
+ * Added popup menu for more precise control over the equalizer dot on the graph for
+   Parametric Equalizer.
+ * Added frequency and note displaying (with detune in cents) over the currently
+   configured filter in the Parametric Equalizer.
+ * Implemented automatic and manual inspect mode for filters in Parametric Equalizer.
+ * Implemented more user-friendly inspecting slider to the Spectrum Analyzer plugin 
+   series: frequency value, amplitude and note (with detune in cents) are displayed now near 
+   the slider which can be adjusted with mouse movements.
+ * Added basic SFZ import support by the Multisampler plugin series.
+ * Added shared objects related to 3D rendering to LV2, VST and CLAP packages.
+ * Fixed buggy tether for the parameter popup window.
+ * Fixed improper data stream synchronization using LV2:Atom protocol.
+ * Implemented linear ramping lramp_* functions in the lsp-dsp-lib optimized for
+   i686, x86_64, ARM32 and AArch64 architectures.
+ * Fixed avx::dyn_biquad_process_x8_fma3 function implementation which could cause
+   some data distortion in the output buffer.
+ * Fixed plugin state out of sync for CLAP plugin format on state restore in REAPER.
+ * Several bugfixes in UI libraries.
+ * Better support for build under different ARM architectures.
+ * The Windows support status has been changed to 'Compiles'.
+ * The AArch64 support status has been changed to 'Full'.
+
+-------------------------------------------------------------------
+Sun Jan 29 09:20:06 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- new clap plugin subpackage
+- Version 1.2.5
+
+  * Introduced CLAP plugin format support.
+  * Introduced the ‘Override Hydrogen drumkit’ feature for Multisampler plugin series.
+  * Reworked and simplified the behaviour of the parameters that define ‘Stretch’ and
+    ‘Loop’ ranges.
+  * Minimum and maximum values now depend on the sample length for several parameters
+    like ‘Stretch’, ‘Loop’, ‘Fade in’ and ‘Fade out’ in the Sampler and Multisampler
+    plugin series.
+  * Fixed the application menu spam in GNOME environment by reworking the XDG files
+    (contributed by sdwolfz).
+  * Changed VST parameter normalized value mapping for logarithmic parameters.
+  * Added possibility to specify JACK connections that should be estimated by the
+    standalone JACK plugin when the plugin connects to the JACK server.
+  * Implemented plugin metadata validator which runs at the build stage and verifies
+    the consistency of the plugin metadata.
+  * Fixed bug related to modification of cyclic parameters for several plugin formats.
+  * Fixed possible crash when importing configuration data from clipboard.
+  * Added possibility to enable/disable Knob’s scale actions.
+  * Several bugfixes related to the memory access in the lsp-ws-lib.
+
+-------------------------------------------------------------------
+Wed Dec 28 00:01:17 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove patch fix-xorg-high-cpu-usage.patch now upstream
+- Version 1.2.4
+
+  * Implemented Noise Generator plugin series.
+  * Added 'Stretch' and 'Compensate' functions to the sampler plugin (contributed by
+    Vitalius Kuchalskis).
+  * Added support of 'Loop' feature by the Sampler plugin series.
+  * Added audio sample preview feature in the file open dialog for Sampler, Trigger,
+    Impulse Responses and Impulse Reverb plugin series.
+  * Extended LSPC (LSP Chunk) file format to support additional types of chunks.
+  * Added possibility to export Sampler configuration as a single bundle with
+    the configuration and audio files packaged together into the LSPC file format.
+  * Fixed broken configuration save and load operations with relative file paths.
+  * Added 'Min' and 'Max' sidechain sources for single-band and multiband dynamic
+    processing plugins: Compressor, Dynamic Processor, Expander, Gate.
+  * Added possibility to add several filters by performing mouse double click on the
+    graph area for the Parametric Equalizer plugin series.
+  * Added several built-in presets for the Parametric Equalizer plugin series
+    (contributed by Largos @ linuxmusicians).
+  * Fixed performance regression of the UI.
+  * Significant optimizations of CPU consumption by the dspu::Limiter module.
+  * Introduced tab control for the lsp-tk lib and lsp-plugin-fw.
+  * Raised the maximum supported sample rate from 192 kHz to 384 kHz.
+  * Several bug fixes in lsp-dsp-units library.
+  * Several bug fixes in lsp-runtime-lib library.
+  * Several bug fixes in lsp-plugin-fw library.
+  * Several bug fixes in lsp-tk-lib library.
+  * Fixed 32-bit ARM architecture detection under 64-bit CPU in makefiles.
+
+-------------------------------------------------------------------
+Wed Nov 30 10:19:29 UTC 2022 - pgajdos@suse.com
+
+- buildrequire php8 instead of php7 in TW
+
+-------------------------------------------------------------------
+Sat Oct 15 11:05:04 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Add fix-xorg-high-cpu-usage.patch from upstream devel branch
+  to fix lsp-plugins#272
+
+-------------------------------------------------------------------
+Mon Sep 12 02:03:46 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove patches, now upstream:
+  02-Fixed-the-improper-use-of-nanosleep.patch
+  01-Append-CXXFLAGS.patch
+
+- Version 1.2.3
+
+  * Graphic Toolkit Library lsp-tk-lib has been ported to Windows.
+  * Updated compressor plugin bundles: added negative boosting gain
+    option in 'Boosting' mode.
+  * Updated gate plugin bundles: added negative gain option for
+    ducking gateway option.
+  * Assigned more correct names for sidechain types of dynamic
+    processing plugins.
+  * Introduced several workarounds for the support of UI by the OBS host.
+  * Fixed build of i386 DSP code under FreeBSD with Clang compiler.
+  * Better support of building code for ARMv6, ARMv7 and AArch64
+    under FreeBSD with Clang compiler.
+  * Added basic CI tests introduced by GitHub CI.
+  * Several bugfixes in core libraries.
+
+-------------------------------------------------------------------
+Tue Jun 28 23:23:00 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add upstream patch:
+  02-Fixed-the-improper-use-of-nanosleep.patch
+- fix build and vl2lint check:
+  01-Append-CXXFLAGS.patch 
+
+-------------------------------------------------------------------
+Mon Jun 27 09:15:05 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.2.2
+
+  * Implemented Multiband Dynamic Processor plugin series.
+  * Changed donation methods.
+  * Added german translations (contributed by Johannes Guenther).
+  * Added pitch control for the sample in the Sampler and Multisampler
+    plugin series (contributed by Vitalius Kuchalskis).
+  * Added pitch control for the sample in the Trigger plugin series.
+  * Fixed plugin version tracking which didn't save the updated version
+    to the configuration file.
+  * Fixed improper configuration file import in JACK headless mode.
+  * Fixed segmentation fault error in JACK headless mode when JACK
+    connection was lost.
+  * Added window scaling button function for plugin window.
+
+-------------------------------------------------------------------
+Wed May  4 01:21:07 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove patches, now upstream:
+  01-Fixed-the-XDG-data-installation-script.patch
+  02-Fixed-the-icon-installation-script.patch
+  03-Fixed-invalid-pointer-dereference-when-exporting-configuration-file.patch
+  04-Fixed-problem-with-the-UI-visibility-status-update.patch 
+
+- Version 1.2.1
+
+  * Introduced JACK connection status indication for JACK plugin format.
+  * Improved keyboard event handling for VST2 plugin format in the case the host prevents
+    plugins from directly receiving X11 events.
+  * Updated serialization format of the KVT (Key-Value Tree) for the LV2 plugin format.
+  * Updated parameter mapping LV2 URI for KVT.
+  * Updated build (some resources were unnecessary added to builtin resources).
+  * Updated version handling in the UI wrapper that allows to control multiple bundle
+    versions in one global configuration file.
+  * Updated grammar in several text comments (contributed by Dennis Braun).
+  * Fixed typo in Wavefront Object File Format name.
+  * Fixed bugs related to usage of custom installation prefix in build scripts.
+  * Fixed the XDG data installation script that forced to use '/usr/local/share'
+    location for shared icons.
+  * Fixed problem with the UI visibility status update for JACK plugin format
+    that could cause problems of missing of some graphical content in the UI.
+  * Fixed invalid pointer dereference when exporting configuration file that could cause crashes.
+  * Fixed bug that caused plugins working in headless mode to crash.
+  * Fixed regression related to saving state of some plugin controls using lv2:State interface.
+  * Fixed missing serialization for high-precision parameters in the configuration file.
+  * Fixed bug related to improper parsing of port name aliases in the UI.
+  * Fixed typo in Wavefront Object File Format name.
+  * Fixed bug that could cause improper window sizing in several cases.
+
+-------------------------------------------------------------------
+Sun Mar 27 22:26:00 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add upstream patches:
+
+01-Fixed-the-icon-installation-script.patch
+02-Fixed-the-XDG-data-installation-script.patch
+03-Fixed-invalid-pointer-dereference-when-exporting-configuration-file.patch
+04-Fixed-problem-with-the-UI-visibility-status-update.patch
+
+-------------------------------------------------------------------
+Sun Mar 27 12:36:50 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- noarch fo -docs
+- add -devel
+
+- Version 1.2.0
+
+  * Decomposition of core modules into submodules.
+  * Implemented multiple visual themes for the plugins.
+  * Added possibility to change visual themes in runtime.
+  * Added headless support for JACK plugins.
+  * Fixed delay compensation issue for Dry/Wet balance for 
+    single-banded dynamic plugin series
+    (Compressor/Gate/Expander/Dynamic Processor).
+  * Add support of LV2UI:scaleFactor extension
+    - https://github.com/drobilla/lv2/pull/38/commits
+  * Implemented 'Reset to default' button.
+  * Added support of building under LoongArch32 and LoongArch64
+    architectures.
+  * Added support of building under 32-bit and 64-bit RISC-V 
+    architectures.
+
+-------------------------------------------------------------------
+Tue Dec 21 10:23:18 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 1.1.31
+
+  * Fixed X11 error handling routine that could crash under certain
+  * conditions.
+  * Better support for musl libc (contributed by Artur Sinila).
+  * Added support of VERBOSE parameter for build system (contributed
+    by Artur Sinila).
+  * Fixed possible system crash in profiler plugin.
+  * Updated LV2 TTL generator, now instrument plugins are better
+    compatible with Ardour DAW.
+  * Updated french translation (contributed by wargreen at Github
+    and Olivier Humbert).
+  * Migrated hyperlinks from HTTP to HTTPS protocol (contributed
+    by Bruno Vernay).
+  * Added support of build for 32-bit and 64-bit RISC-V architecture
+    (contributed by Xeonacid at GitHub).
+  * Fixed window issue for the Fluxbox window manager.
+  * Fixed build for ARMv8 architecture (contributed by Marek Szuba).
+ 
+-------------------------------------------------------------------
+Mon May 10 13:49:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning directories provided by filesystem (bsc#1184786)
+
+-------------------------------------------------------------------
+Thu Apr  1 11:38:55 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- upstream update in source release
+
+-------------------------------------------------------------------
+Thu Apr  1 01:58:50 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 1.1.30
+  * Implemented Oscilloscope plugin series: x1, x2 and x4. 
+    UX design by Boris Gotsulenko.
+  * Added data streaming port support to plugin framework.
+  * Added strobe feature to mesh primitives that allows to draw
+  * multiple streamed meshes together.
+  * Implemented 4-lobe Lanczos oversampling DSP functions for i586
+    architecture.
+  * Implemented 4-lobe Lanczos oversampling DSP functions for
+    x86_64 architecture.
+  * Implemented 4-lobe Lanczos oversampling DSP functions for
+    32-bit ARM architecture.
+  * Implemented 4-lobe Lanczos oversampling DSP functions for 
+    64-bit ARM architecture.
+  * Minor bugfixes in the core library.
+  * Fixed bug with character set encoding for several systems with
+    limited iconv.
+  * Fixed latency compensation issue that happened for the 'Bypass'
+    switch/automation.
+  * Implemented additional 'Boosting' mode for the single-band
+    compressor plugin series.
+  * Implemented additional 'Boosting' mode for the multiband-band
+    compressor plugin series.
+  * Updated french translations (contributed by Olivier Humbert).
+  * Updated italian translations by Stefano Tronci.
+  * Desktop icon installation moved to a separate 'install_xdg'
+    icon to prevent LSP icon flooding for several systems which
+    don't support XDG standard.
+
+-------------------------------------------------------------------
+Wed Jan 20 06:23:48 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 1.1.29
+  * Fixed latency computation error for FIR and FFT modes of the
+    filter.
+  * Optimize FIR and FFT equalizers to use fastconv_ routines
+    instead of FFT.
+  * Implemented SPM mode for Parameteric and Graphic Equalizer
+    plugin series.
+  * Fixed improper VST call handling for several calls.
+  * Several typo fixes in documentation
+    (contributed by Olivier Humbert).
+  * Fixed improper output MIDI event sorting for all plugins.
+  * Channels of spectrum analyzer are now synchronized.
+  * Fixed regression related to loading built-in file resources.
+  * Added extra button to hide/show equalizer section for Impulse
+    Responses and Impulse Reverb plugin series.
+  * Updated OBJ file parsing for support less strict file format.
+  * Fixed improper behaviour of File Open Dialog widget related 
+    to file name input.
+  * Art Delay plugin settings changed: by default multipliers are
+    now set to 1, BPM multiplier allows now to step with 
+    0.5 values allowing to set dotted notes.
+
+-------------------------------------------------------------------
+Tue Jan  5 15:15:37 UTC 2021 - pgajdos@suse.com
+
+- does not require php7-devel for build, php7 is enough
+
+-------------------------------------------------------------------
+Thu Dec 24 09:27:05 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 1.1.28
+  *  Implemented Artistic Delay plugin.
+  *  Added delay time and phase inversion for each band of the 
+     crossover plugin.
+  *  MIDI octave numbering now starts with "-1", previously it 
+     started with "-2".
+  *  Added automatic scanning of installed Hydrogen drumkits to the
+     Multisampler plugin series
+  *  and possibility to load them by single click in the main menu.
+  *  Added sample reversal feature to the 
+     Sampler/Multisampler/Trigger plugin series.
+  *  Added possibility to change the note number in 
+     Sampler/Multisampler/Trigger plugin series
+  *  by scrolling mouse wheel over the note number indicator or 
+     performing mouse double click on it.
+  *  Added possibility to use relative paths in file 
+     configurations.
+  *  Added 'Plugin Manual' menu item to show the documentation to
+     plugin in the browser.
+  *  Added 'UI Manual' menu item to show the documentation to UI
+     in the browser.
+  *  Added tutorial of using hydrogen drumkits in the Multisampler
+     plugin series - contributed by chrisanthropic @ github.
+  *  Updated french translations - contributed by Olivier Humbert.
+  *  Plugins now can be built with Clang C++ compiler version 10+.
+  *  Refactored ipc::Process for better work with vfork() system
+     call.
+  *  Fixed bug in improper RGB -> HSL conversion for UI.
+  *  Fixed regression in led indication for the Compensation
+     Delay plugin series.
+  *  Fixed drag&drop regression after code refactoring.
+  *  Fixed bug in Fraction widget related to nominator drop-down
+     list values.
+
+-------------------------------------------------------------------
+Sat Oct  3 12:10:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update license to LGPL-3.0-or-later
+
+-------------------------------------------------------------------
+Sat Oct  3 05:19:45 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 1.1.26
+  * Implemented Crossover Plugin series.
+  * Fixed phase mismatch between channels in the oversampling mode 
+    of limiter (contributed by Hector Martin).
+  * Fixed bug in convolver module which could perform improper tail
+    convolution (reported by Robin Gareus).
+    Affected plugins: Impulse Responses, Impulse Reverb, 
+    Room Builder.
+  * Fixed small memory leakage in multiband plugins (Compressor, 
+    Gate, Expander) related to usage of Inline Display feature.
+  * Added support of pg:mainInput and pg:mainOutput LV2 properties
+    in TTL files for all plugins.
+  * Updated all C++ heades and source files to match the LGPL3+
+    license headers.
+
+-------------------------------------------------------------------
+Fri Aug 28 07:14:58 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.1.24. 
+  * Implemented Loudness Compensator plugin series 
+    (Mono and Stereo).
+  * Implemented Surge Filter plugin series (Mono and Stereo) for 
+    protecting audio chain from possible pops on playback 
+    start/stop events.
+  * Significant changes the Limiter Plugin series, may be partially
+    incompatible with hosts/wrappers:
+  * Removed 'Classic' and 'Mixed' modes since these modes do not 
+    give effective results.
+  * Introduced Automatic Level Regulation (ALR) feature enabled by 
+    default.
+  * Added possibility to dump internal state of plugin to file.
+  * Several plugins now support dumping of internal state.
+  * Added support of loading Hydrogen drumkits by the Multisampler
+    plugin series.
+  * Added 'Squared Cosine' and 'Cubic Hermite Spline' windows to 
+    Spectrum Analyzer.
+  * Fixed bug that caused Spectrum Analyzer to ignore window 
+    selection.
+  * Fixed bug in AVX-optimized sidechaining funcion that could 
+    cause invalid behaviour of plugins that use external/internal 
+    sidechain for processing.
+  * Implemented back-buffering of the window surface, all UI 
+    controls now don't glitch on edit.
+  * Refactored and simplified LV2 parameter transport between UI 
+    and plugin code.
+  * VST plugins now provide possibility to save and load presets 
+    and do not crash Host.
+  * Added support of lv2:StateChanged extension which properly 
+    works with Ardour 6.0.145 and higher.
+  * Fixed improper behaviour of VST controls under REAPER host 
+    (and possible other VST hosts).
+  * Updated metadata for dynamic processors to better match the UI.
+  * Now all lv2:Atom ports that do not provide MIDI message 
+    transfer are marked as lv2:connectionOptional.
+  * Exported plugin configuration now contains information about 
+    original package version.
+
+-------------------------------------------------------------------
+Tue Jun  2 15:44:40 UTC 2020 - Giordano Boschetti <geekosdaw@gmail.com>
+
+- Update to 1.1.22
+
+  * Implemented Multiband Gate plugin series.
+  * Added sidechain low-pass and high-pass filters for Compressor plugin series.
+  * Added sidechain low-pass and high-pass filters for Expander plugin series.
+  * Added sidechain low-pass and high-pass filters for Gate plugin series.
+  * Added sidechain low-pass and high-pass filters for Dynamic Processor plugin series.
+  * Added sidechain low-pass and high-pass filters for Trigger plugin series.
+  * Fixed VST2 identifiers for Multiband Expander plugin series.
+  * Fixed graph issues related to dot editing.
+  * Added spanish translation of the UI (contributed by Ignotus - ignotus666 at github.com).
+  * Compressor, Expander, Gate and Dynamic Processor plugins now report latency for the lookahead knob.
+  * Fixed mapping of some numpad keys that could cause problems when entering manual value in the UI.
+  * VERSION build variable replaced with LSP_VERSION build variable (contributed by Bruno Vernay).
+  * Fixed UI synchronization issue on plugin state restore for VST plugin format.
+  * Fixed improper work of default Attack and Release time parameters for
+  Dynamic Processor plugin series.
+  * Fixed build broken by recent LV2 header updates. 
+  * Some french translation fixes (contributed by Olivier Humbert).
+
+-------------------------------------------------------------------
+Wed Apr 29 16:21:50 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO for %arm and aarch64 to fix build
+
+-------------------------------------------------------------------
+Tue Apr 21 14:21:14 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to 1.1.19
+  * Updated XDG desktop application integration.
+  * Refactoring of sse::fft functions for better portability
+ between different compilation options.
+  * Fixed bug in asimd::hdotp functions for AArch64 that caused
+ invalid result output.
+  * LV2 UI and standalone JACK plugins are now resizable.
+  * Fixed plugin sizing issues on certain new Linux distributions.
+  * Refactoring and several fixes of decoding and encoding of MIDI
+ protocol messages.
+  * Fixed silent MIDI output for JACK plugins.
+  * Profile binaries are now excluded from release build.
+
+- Remove lsp-plugins-fix_memory_corruption.patch
+
+-------------------------------------------------------------------
+Mon Apr  6 18:58:19 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to 1.1.17. 
+
+-------------------------------------------------------------------
+Thu Nov 28 14:21:21 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Oct 29 07:10:23 UTC 2019 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Split various plugin formats into subpackages
+
+-------------------------------------------------------------------
+Tue Sep  3 09:33:01 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added lsp-plugins-fix_memory_corruption.patch
+
+-------------------------------------------------------------------
+Sun Aug 25 12:14:33 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.10
+  * Implemented 3D reverb simulator plugin series - Room Builder
+    Mono and Room Builder Stereo.
+  * Fixed improper InlineDisplay feature support in LV2 TTL
+    files.
+  * Plugin names now have 'LSP' prefix for the LV2 format.
+  * Each plugin can now provide it's custom UI class which is
+    derived from common plugin's UI class.
+  * Code now compiles for the PPC64 architecture.
+  * Code now compiles for the IBM s390x architecture.
+  * Added command-line option to pass configuration file name
+    for standalone JACK plugins.
+  * The settings stored in configuration file will be
+    automatically loaded at startup.
+  * Updated function signatures for libraries which now support
+    '-fvisibility=hidden' compilation flag.
+  * Added support of nested menus in the UI toolkit.
+  * Added 3D scene rendering support in the UI by using
+    different rendering backends.
+  * Implemented GLX backend based on openGL 2.x for rendering 3D
+    scenes.
+  * Implemented key-value tree storage (KVTStorage) for storing
+    and managing dynamic parameters.
+  * Implemented key-value tree storage (KVTStorage) UI<->DSP
+    synchronization mechanisms.
+  * Implemented key-value tree storage (KVTStorage)
+    serialization/deserialization in parameters.
+  * Implemented key-value tree storage (KVTStorage)
+    serialization/deserialization for the plugin state.
+  * Implemented mechanism for UI<->DSP OSC message interchange.
+  * Added support of OSC protocol messages serialization,
+    deserialization and pattern matching.
+  * Optimized complex number functions for AArch64 architecture.
+  * Changed installation path for jack core library from to
+    /lsp-plugins.
+  * Added more careful file type analysis for non-EXT file
+    systems.
+  * Added support of Hygon Dhyana x86 family CPU optimizations
+    and detection of some other CPU vendors.
+  * Now both release and test binaries are available to build
+    into separate subdirectories independently.
+  * Improved built-in resource generation tool.
+  * Embedded resources are now alphabetically sorted to make the
+    build more deterministic.
+  * Added support of built-in presets for plugin's UI.
+
+- Dropped lsp-plugins-verbose.patch (using a different method to
+  have verbose build)
+
+- Enabled ppc64 build
+
+-------------------------------------------------------------------
+Sun Jun 30 10:37:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Put documentation into right group. Remove excess Requires.
+
+-------------------------------------------------------------------
+Fri Jun 21 16:30:17 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Improved lsp-plugins-verbose.patch
+
+-------------------------------------------------------------------
+Tue Jun 18 11:52:11 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.9
+  * Added experimental support of AArch64 architecture (DSP code
+    is not optimized yet).
+  * Fixed regression in VST and Standalone plugin formats that
+    caused offline tasks to not to be launched.
+  * Improved build system to make source code possible to build
+    for KXStudio repository.
+    Distribution builders should ensure that the GNU C++
+    compiler is selected at the build stage.
+  * Additional I/O improvements for better WindowsNT support.
+  version 1.1.7:
+  * Implemented fully compatible with EqualizerAPO software
+    digital filters that are now part of the Parametric Equalizer
+    plugin series.
+  * Fixed issue that caused VST plugins not to load from cusom
+    user-defined path.
+  * Some code parts rewritten for better compatibility with
+    WindowsNT platform.
+  * Fixed file listing in the file dialog that caused improper
+    reading of remote directories mounted on the local file
+    system.
+  * Changed implementation of LV2 MIDI transport so now plugins
+    utilize only one LV2:Atom input port and one LV2:Atom output
+    port.
+  * Fixed bug in host<->UI time and position synchronization for
+    VST plugin format.
+  * Fixed AVX+FMA3 implementation of dynamic biquadratic filters
+    that caused improper behaviour of the Multi-band compressor
+    plugin on machines that support AVX and FMA3 instruction set.
+  * Multiband compressor now properly handles the 'Bypass'
+    button.
+  * Fixed return of improper extension pointers when requested
+    extension is different to the ui:idleInterface.
+  * Fixed bug in dynamic processor plugin that could issue
+    invalid metering values.
+  * Fixed UI size issue for VST plugins in Cockos Reaper.
+  * Fixed numerous memory leakage issues in UI components.
+  * Fixed spontaneous crashes when destroying the Profiler
+    Mono/Stereo plugin.
+  * Fixed embedded resource generation tool that had invalid
+    behaviour for several file systems.
+  * Reimplemented I/O subsystem.
+
+- Dropped _service and fix-setting-paths.patch (no longer
+  necessary)
+
+- Added lsp-plugins-verbose.patch
+
+-------------------------------------------------------------------
+Fri Mar  8 09:34:37 UTC 2019 - jthumshirn@suse.com
+
+- Initial packaging for SUSE
+  + fix-setting-paths.patch

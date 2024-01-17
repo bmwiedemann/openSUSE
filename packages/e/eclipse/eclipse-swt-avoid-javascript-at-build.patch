@@ -1,0 +1,121 @@
+From dd7d5dd0a820b3efd1a7955a7b80c881a40ddafc Mon Sep 17 00:00:00 2001
+From: Mat Booth <mat.booth@redhat.com>
+Date: Sat, 21 Mar 2020 15:29:00 +0000
+Subject: [PATCH] Avoid the need to have javascript interpreter in the build
+ root
+
+---
+ .../bundles/binaries-parent/pom.xml           | 17 ------
+ .../bundles/org.eclipse.swt/buildSWT.xml      | 53 ++++---------------
+ 2 files changed, 11 insertions(+), 59 deletions(-)
+
+diff --git a/eclipse.platform.swt.binaries/bundles/binaries-parent/pom.xml b/eclipse.platform.swt.binaries/bundles/binaries-parent/pom.xml
+index 4d209cfdc..eab439ae5 100644
+--- a/eclipse.platform.swt.binaries/bundles/binaries-parent/pom.xml
++++ b/eclipse.platform.swt.binaries/bundles/binaries-parent/pom.xml
+@@ -75,23 +75,6 @@
+                         </goals>
+                     </execution>
+                 </executions>
+-                <dependencies>
+-                    <dependency>
+-                        <groupId>org.mozilla</groupId>
+-                        <artifactId>rhino-runtime</artifactId>
+-                        <version>1.7.12</version>
+-                    </dependency>
+-                    <dependency>
+-                        <groupId>org.apache.ant</groupId>
+-                        <artifactId>ant</artifactId>
+-                        <version>1.10.7</version>
+-                    </dependency>
+-                    <dependency>
+-                        <groupId>org.apache.ant</groupId>
+-                        <artifactId>ant-apache-bsf</artifactId>
+-                        <version>1.10.7</version>
+-                    </dependency>
+-                </dependencies>
+             </plugin>
+         </plugins>
+     </build>
+diff --git a/eclipse.platform.swt/bundles/org.eclipse.swt/buildSWT.xml b/eclipse.platform.swt/bundles/org.eclipse.swt/buildSWT.xml
+index 9d4bb1b6f..6c1cdf690 100644
+--- a/eclipse.platform.swt/bundles/org.eclipse.swt/buildSWT.xml
++++ b/eclipse.platform.swt/bundles/org.eclipse.swt/buildSWT.xml
+@@ -374,27 +374,8 @@
+ 	<!-- Set swt_version, new_version, (and rev, min_ver, maj_ver, new_rev, new_min_ver, new_maj_ver) from the make_common.mak  -->
+ 	<target name="get_version" unless="swt_version">
+ 		<loadproperties srcFile="${repo.src}/${file_make_common}"/>
+-		<script language="javascript">
+-		<![CDATA[
+-			rev = project.getProperty("rev");
+-			min_ver = project.getProperty("min_ver");
+-			maj_ver = project.getProperty("maj_ver");
+-			new_rev = parseInt(rev) + 1;
+-			new_min_ver = min_ver;
+-			new_maj_ver = maj_ver;
+-			one = new_maj_ver;
+-			two = new_min_ver;
+-			three = new_rev;
+-			four = 0;
+-			project.setProperty("new_rev", new_rev);
+-			project.setProperty("new_min_ver", new_min_ver);
+-			project.setProperty("new_maj_ver", new_maj_ver);
+-			project.setProperty("new_comma_ver", one + "," + two + "," + three + "," + four);
+-   	 	]]>
+-		</script>
+ 		<property name="swt_version" value="${maj_ver}${min_ver}r${rev}"/>
+-		<property name="new_version" value="${new_maj_ver}${new_min_ver}r${new_rev}"/>
+-		<echo>Version=${swt_version}; New=${new_version}; New comma_ver=${new_comma_ver}</echo>
++		<echo>Version=${swt_version}</echo>
+ 	</target>
+ 
+ 	<target name="get_new_release_version" unless="min_ver">
+@@ -523,11 +504,7 @@
+ 		</condition>
+ 		<property name="fragment_dir" value="${repo.bin}/bundles/${fragment}"/>
+ 		<property name="sha1_file" value="${fragment_dir}/build.sha1"/>
+-		<script language="javascript">
+-			<![CDATA[
+-				project.setProperty("library_src", project.getProperty("src_" + project.getProperty("swt.ws")));
+-	   	 	]]>
+-		</script>
++		<property name="library_src" value="${src_gtk}"/>
+ 	</target>
+ 	
+ 	<target name="update_sha1_file_in_fragment">
+@@ -661,23 +638,15 @@
+ 	</target>
+ 
+ 	<target name="copy.library.src">
+-		<script language="javascript">
+-			<![CDATA[
+-				var File = java.io.File;
+-				var StreamTokenizer = java.io.StreamTokenizer;
+-				var StringReader = java.io.StringReader;
+-				task = project.createTask("copy");
+-				projectDir = project.getProperty("project_dir");
+-				task.setTodir(new File(project.getProperty("build_dir")));
+-				tk = new StreamTokenizer(new StringReader(project.getProperty("library_src")));
+-				while ((token = tk.nextToken()) != StreamTokenizer.TT_EOF) {
+-					fileset = project.createDataType("fileset");
+-					fileset.setDir(new File(projectDir + "/" + tk.sval + "/"));
+-					task.addFileset(fileset);
+-				}
+-				task.execute();
+-	   	 	]]>
+-		</script>
++		<copy todir="${build_dir}">
++			<fileset dir="${project_dir}/bundles/org.eclipse.swt/Eclipse SWT/common/library/"/>
++			<fileset dir="${project_dir}/bundles/org.eclipse.swt/Eclipse SWT PI/common/library/"/>
++			<fileset dir="${project_dir}/bundles/org.eclipse.swt/Eclipse SWT PI/gtk/library/"/>
++			<fileset dir="${project_dir}/bundles/org.eclipse.swt/Eclipse SWT AWT/gtk/library/"/>
++			<fileset dir="${project_dir}/bundles/org.eclipse.swt/Eclipse SWT OpenGL/glx/library/"/>
++			<fileset dir="${project_dir}/bundles/org.eclipse.swt/Eclipse SWT PI/cairo/library/"/>
++			<fileset dir="${project_dir}/bundles/org.eclipse.swt/Eclipse SWT WebKit/gtk/library/"/>
++		</copy>
+ 	</target>
+ 
+ 	<!-- Params: swt.ws, swt.os, swt.arch -->
+-- 
+2.21.1
+

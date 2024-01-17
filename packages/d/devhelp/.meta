@@ -1,0 +1,13 @@
+<package name="devhelp" project="openSUSE:Factory">
+  <title>Developer's Help Program for GNOME</title>
+  <description>Devhelp Features - Full indexing of books in XML
+
+- HTML viewer (GtkHTML2)
+
+- Search by function, struct, macro, and more
+
+- Auto completion
+
+- Command line search with nice Emacs integration</description>
+  <devel project="GNOME:Factory" package="devhelp"/>
+</package>

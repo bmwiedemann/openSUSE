@@ -1,0 +1,206 @@
+-------------------------------------------------------------------
+Mon Sep  4 16:04:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Adds support for running chardet CLI via `python -m chardet`
+
+-------------------------------------------------------------------
+Fri Apr 21 12:23:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:40:29 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Jan 16 21:13:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 builds 
+
+-------------------------------------------------------------------
+Mon Jan  2 18:40:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Add should_rename_legacy argument to most functions, which will rename
+    older encodings to their more modern equivalents (e.g., GB2312 becomes
+    GB18030) (#264, @dan-blanchard)
+  * Add capital letter sharp S and ISO-8859-15 support 
+  * Add a prober for MacRoman encoding
+  * Add --minimal flag to chardetect command
+  * Add type annotations to the project and run mypy on CI
+  * Add support for Python 3.11
+  * Clarify LGPL version in License trove classifier (#255, @musicinmybrain)
+  * Remove support for EOL Python 3.6 (#260, @jdufresne)
+  * Remove unnecessary guards for non-falsey values (#259, @jdufresne)
+  * Switch to Python 3.10 release in GitHub actions (#257, @jdufresne)
+  * Remove setup.py in favor of build package (#262, @jdufresne)
+  * Run tests on macos, Windows, and 3.11-dev (#267, @dan-blanchard)
+
+-------------------------------------------------------------------
+Tue Jul  5 13:21:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to  5.0.0
+  * This release is the first release of chardet that no longer
+    supports Python < 3.6
+  * Added a prober for Johab Korean (#207, @grizlupo)
+  * Added a prober for UTF-16/32 BE/LE (#109, #206, @jpz)
+  * Added test data for Croatian, Czech, Hungarian, Polish, Slovak,
+    Slovene, Greek, and Turkish, which should help prevent future
+    errors with those languages
+  * Improved XML tag filtering, which should improve accuracy for
+    XML files (#208)
+  * Tweaked SingleByteCharSetProber confidence to match latest
+    uchardet (#209)
+  * Made detect_all return child prober confidences (#210)
+  * Updated examples in docs (#223, @domdfcoding)
+  * Documentation fixes (#212, #224, #225, #226, #220, #221, #244
+    from too many to mention)
+  * Minor performance improvements (#252, @deedy5)
+  * Add support for Python 3.10 when testing (#232, @jdufresne)
+  * Lots of little development cycle improvements, mostly thanks to
+    @jdufresne
+- Canonicalize alternatives creation
+
+-------------------------------------------------------------------
+Fri Dec 10 09:05:04 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
+Thu Sep 30 08:18:47 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
+Sun Dec 20 05:52:28 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove now unnecessary pytest4.patch and python-chardet-rpmlintrc
+- Update to v4.0.0
+  See https://github.com/chardet/chardet/compare/3.0.4...4.0.0
+
+-------------------------------------------------------------------
+Mon Oct 14 11:45:00 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Wed Jul  3 08:32:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with pytest4:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Tue Feb 26 08:14:25 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to avoid buildcycles
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:12 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Tue May 15 07:02:02 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix update-alternatives call in %postun.
+
+-------------------------------------------------------------------
+Wed Sep 20 21:47:30 UTC 2017 - dmueller@suse.com
+
+- add update-alternatives post-requires 
+
+-------------------------------------------------------------------
+Fri Aug 25 13:09:48 UTC 2017 - tbechtold@suse.com
+
+- Fix build for Leap-42.3
+
+-------------------------------------------------------------------
+Tue Aug 15 09:57:21 UTC 2017 - dmueller@suse.com
+
+- add update-alternative support for py2/py3 coinstallability
+
+-------------------------------------------------------------------
+Thu Jun 29 08:43:41 UTC 2017 - ecsos@opensuse.org
+
+- fix source link
+
+-------------------------------------------------------------------
+Sat Jun 10 08:39:04 UTC 2017 - dmueller@suse.com
+
+- update to 3.0.4
+
+-------------------------------------------------------------------
+Tue Mar 21 13:57:55 UTC 2017 - jmatejek@suse.com
+
+- do not use %py_ver, replace with %python_version
+
+-------------------------------------------------------------------
+Sun Mar 19 08:23:54 UTC 2017 - aloisio@gmx.com
+
+- Converted to single spec.
+
+-------------------------------------------------------------------
+Mon Jan 30 21:41:47 UTC 2017 - rjschwei@suse.com
+
+- Include in SLE 12 (bsc#1002895, FATE#321630)
+
+-------------------------------------------------------------------
+Mon May 11 05:49:58 UTC 2015 - arun@gmx.de
+
+- specfile:
+  * added update alternative to prevent conflicts with python3 version
+  * add tests
+
+-------------------------------------------------------------------
+Tue Feb 10 23:45:01 UTC 2015 - aloisio@gmx.com
+
+- Update to version 2.3.0
+  * Added support for CP932 detection (thanks to @hashy)
+  * Fixed an issue where UTF-8 with a BOM would not be detected
+    as UTF-8-SIG (#8)
+  * Modified chardetect to use argparse for argument parsing
+  * Moved docs to a gh-pages branch. You can now access them
+    at http://chardet.github.io
+- Changelog on https://github.com/chardet/chardet/commits/2.3.0
+- Other minor changes
+
+-------------------------------------------------------------------
+Thu Oct 24 11:00:03 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Tue Oct  2 03:09:41 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 2.1.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Fri Jul 27 15:10:36 UTC 2012 - alexandre@exatati.com.br
+
+- Update to 1.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Wed Dec 28 22:18:53 UTC 2011 - alexandre@exatati.com.br
+
+- Standard in spec file;
+- Remove CFLAGS and %clean section from spec file.
+
+-------------------------------------------------------------------
+Thu Dec  8 11:12:41 UTC 2011 - coolo@suse.com
+
+- the license seems to be LGPL-2.1+
+
+-------------------------------------------------------------------
+Sat Mar 26 02:11:35 UTC 2011 - alexandre@exatati.com.br
+
+- Regenerate spec file with py2pack;
+- Bzip2 source file.
+
+-------------------------------------------------------------------
+Mon Jan 25 14:35:35 UTC 2010 - alexandre@exatati.com.br
+
+- Initial package (2.0.1) for openSUSE.

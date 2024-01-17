@@ -1,0 +1,14 @@
+<package name="apr-util" project="openSUSE:Factory">
+  <title>Apache Portable Runtime (APR) Library</title>
+  <description>A companion library to APR, the Apache Portable Runtime.
+
+
+
+Authors:
+--------
+    Too many to list here -- see /usr/share/doc/packages/apache2/ABOUT_APACHE
+
+</description>
+  <devel project="Apache" package="apr-util"/>
+  <url>http://apr.apache.org/</url>
+</package>

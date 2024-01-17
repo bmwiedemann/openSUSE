@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>192c9df7ed60273148aaca08d79e8a74</srcmd5>
+    <version>1.3</version>
+    <time>1515261153</time>
+    <user>dimstar_suse</user>
+    <comment>For SLE15, including spec file with clean section removed</comment>
+    <requestid>561995</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7292ecf2a5c53ba0aea907d917195ea1</srcmd5>
+    <version>1.3.1</version>
+    <time>1608112900</time>
+    <user>dimstar_suse</user>
+    <comment>Updated Package</comment>
+    <requestid>856086</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>69802edde7e57ba69cf9cbcef375233d</srcmd5>
+    <version>1.3.1</version>
+    <time>1620240039</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 890770 from jrecord)</comment>
+    <requestid>890771</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1c7a5a740c20e142040f4975cc762cef</srcmd5>
+    <version>1.3.2</version>
+    <time>1621531497</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 894399 from jrecord)</comment>
+    <requestid>894400</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>295b407c302b9d74f5c83df857e866c9</srcmd5>
+    <version>1.3.3</version>
+    <time>1623363556</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 899344 from jrecord)</comment>
+    <requestid>899345</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b8555e14ac2e8f5cbbfd675fc7f2005f</srcmd5>
+    <version>1.3.3</version>
+    <time>1629269782</time>
+    <user>RBrownSUSE</user>
+    <comment>Factory Ready (forwarded request 912710 from jrecord)</comment>
+    <requestid>912711</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>339116e5e15a9faf1bbf5e64cd3e4b55</srcmd5>
+    <version>1.3.3</version>
+    <time>1634068161</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 923089 from jrecord)</comment>
+    <requestid>923090</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ed7098c529a25a04408f9b8557e95f6e</srcmd5>
+    <version>1.5.0</version>
+    <time>1636149510</time>
+    <user>dimstar_suse</user>
+    <comment>Converted from python2 to python3 (forwarded request 929474 from jrecord)</comment>
+    <requestid>929475</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>065c4de908a5f51dcb5bd926e5871f1c</srcmd5>
+    <version>1.5.1</version>
+    <time>1666978225</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed UnicodeDecodeError when reading files bsc#1204723 (forwarded request 1031612 from jrecord)</comment>
+    <requestid>1031613</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b4d178a8567f6ff2e1a76016f18a8ad3</srcmd5>
+    <version>1.5.2</version>
+    <time>1693570772</time>
+    <user>anag+factory</user>
+    <comment>bsc#1210908 bsc#1205826 (forwarded request 1108320 from jrecord)</comment>
+    <requestid>1108321</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff8ee5a2cde8642f73e7b99c645f46fe</srcmd5>
+    <version>1.6.0</version>
+    <time>1701378073</time>
+    <user>anag+factory</user>
+    <comment>Master moved to ALP (forwarded request 1129864 from jrecord)</comment>
+    <requestid>1129865</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>37cafffe12943e333e69260940dbaf2f</srcmd5>
+    <version>1.6.0</version>
+    <time>1704919897</time>
+    <user>anag+factory</user>
+    <comment>Minor spec file formatting (forwarded request 1137788 from jrecord)</comment>
+    <requestid>1137789</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,25 @@
+From b9fa92532328daad84766753422e8a21fd474e6f Mon Sep 17 00:00:00 2001
+From: Michal Sekletar <msekleta@redhat.com>
+Date: Mon, 29 Sep 2014 08:37:25 +0200
+Subject: [PATCH 3/4] pcap-linux: apparently ctc interfaces on s390 has
+ ethernet DLT
+
+---
+ pcap-linux.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: libpcap-1.10.0/pcap-linux.c
+===================================================================
+--- libpcap-1.10.0.orig/pcap-linux.c
++++ libpcap-1.10.0/pcap-linux.c
+@@ -2461,6 +2461,10 @@ activate_pf_packet(pcap_t *handle, int i
+ 			}
+ 		}
+ 
++		/* Hack to make things work on s390 ctc interfaces */
++		if (strncmp("ctc", device, 3) == 0)
++			handle->linktype = DLT_EN10MB;
++
+ 		handlep->ifindex = iface_get_id(sock_fd, device,
+ 		    handle->errbuf);
+ 		if (handlep->ifindex == -1) {

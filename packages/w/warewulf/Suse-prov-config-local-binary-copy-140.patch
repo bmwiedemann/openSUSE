@@ -1,0 +1,409 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Fri Sep 14 09:09:58 2018 -0600
+Subject: Suse prov config local binary copy (#140)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: e07cff3a604c6b90b341cf0df150ef36df493243
+References: 
+
+* provision: Prepare configure.ac for local file options
+
+The FIND_LOCAL macros is created in the configure.ac to handle the
+selection of locally installed binaries as alternatives to the
+Warewulf-built binaries. By default, the macro does not set any
+variables and makes no changes if the --with-local-* option is not used
+or is used as --without-local-*.
+
+The FIND_LOCAL macro takes two parameters:
+* package name: This parameter is used for three purposes:
+  - It is used for the configure script option in the form of
+    --with-local-<package name>
+  - It sets a display string shown during the run of the configure
+    script
+  - It is used to form the AC_SUBST variable local_<package name>_path
+     that can be used in *.in files
+* file name: This parameter is the file to search for. If the file is
+  found, then the local_<package name>_path variable is set to the full
+  path of the file. If the file cannot be found, a command with the file
+  name will be searched for using the `which` command.
+
+Signed-off-by: John L. Jolly <jjolly@suse.com>
+
+* provision: allow build to use locally-installed busybox
+
+Traditionally, distribution vendors have their own build of the Busybox
+utility. Having Warewulf build a specialized copy of Busybox causes
+issues:
+* Duplicate builds cause unnecessary extra time and resources to be
+  spent in the build process
+* Patches need to be applied and tested twice
+
+To mitigate this issue, two extra configuration items have been added
+to the provision configure script:
+* --with-local-busybox allows the builder to specify the location of
+  the busybox binary
+  - If no path to the binary is specified, then the PATH is searched
+    for a suitable binary
+  - If a suitable binary cannot be found, the system falls back to
+    building Busybox internally
+* --with-busybox-links-file specifies the list of links that need to be
+  created along with the Busybox binary
+  - If a local Busybox binary is found, this defaults to
+    /usr/share/busybox/busybox.links
+  - This file must exist for the local Busybox binary to be used
+
+In all cases, if these configuration items are not used, the build
+falls back to building Busybox internally.
+
+Signed-off-by: John Jolly <jjolly@suse.com>
+
+* provision: Add build configuration to allow for use of local e2fsprogs
+
+In order to shorten the build process as well as allow distributions
+the ability to use a pre-built binary, a configure options has been
+added that allows the use of a local installation of the e2fsprogs
+utility mkfs.ext4.
+
+Signed-off-by: John L. Jolly <jjolly@suse.com>
+
+* provision: Add build configuration to allow for use of local ipxe
+
+In order to shorten the build process as well as allow distributions
+the ability to use a pre-built binary, a configure options has been
+added that allows the use of a local installation of the ipxe images
+undionly.kpxe, snp-i386.efi, and snp-x86_64.efi.
+
+Signed-off-by: John L. Jolly <jjolly@suse.com>
+
+* provision: Add build configuration to allow for use of local bsdtar
+
+In order to shorten the build process as well as allow distributions
+the ability to use a pre-built binary, a configure options has been
+added that allows the use of a local installation of the libarchive
+file bsdtar.
+
+Signed-off-by: John L. Jolly <jjolly@suse.com>
+
+* provision: Add build configuration to allow for use of local parted
+
+In order to shorten the build process as well as allow distributions
+the ability to use a pre-built binary, a configure options has been
+added that allows the use of a local installation of the parted files
+parted and partprobe.
+
+Signed-off-by: John L. Jolly <jjolly@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ provision/3rd_party/Makefile.am |  24 ++++++-
+ provision/configure.ac          |  72 +++++++++++++++++++
+ provision/initramfs/Makefile.am | 152 +++++++++++++++++++++++++---------------
+ 3 files changed, 190 insertions(+), 58 deletions(-)
+diff --git a/provision/3rd_party/Makefile.am b/provision/3rd_party/Makefile.am
+index 54ed780..7504159 100644
+--- a/provision/3rd_party/Makefile.am
++++ b/provision/3rd_party/Makefile.am
+@@ -21,19 +21,37 @@ prep:
+ bin-i386-pcbios/undionly.kpxe: prep
+ 
+ if BUILD_X86_64
+-	$(MAKE) -C _work/$(IPXE_DIR)/src CROSS_COMPILE=$(CROSS_COMPILE_X86_64) bin-i386-pcbios/undionly.kpxe
++	@ if [ -n "@local_ipxe_undionly_path@" -a -f "@local_ipxe_undionly_path@" ]; then \
++		echo "Detected local install of undionly.kpxe boot image. Bypassing build process." ;\
++		mkdir -p _work/$(IPXE_DIR)/src/bin-i386-pcbios ;\
++		cp "@local_ipxe_undionly_path@" _work/$(IPXE_DIR)/src/bin-i386-pcbios/undionly.kpxe ;\
++	else \
++		$(MAKE) -C _work/$(IPXE_DIR)/src CROSS_COMPILE=$(CROSS_COMPILE_X86_64) bin-i386-pcbios/undionly.kpxe; \
++	fi
+ endif
+ 
+ bin-x86_64-efi/snp.efi: prep
+ 
+ if BUILD_X86_64
+-	$(MAKE) -C _work/$(IPXE_DIR)/src CROSS_COMPILE=$(CROSS_COMPILE_X86_64) bin-x86_64-efi/snp.efi
++	@ if [ -n "@local_ipxe_snp_x86_64_path@" -a -f "@local_ipxe_snp_x86_64_path@" ]; then \
++		echo "Detected local install of x86_64 snp.efi boot image. Bypassing build process." ;\
++		mkdir -p _work/$(IPXE_DIR)/src/bin-x86_64-efi ;\
++		cp "@local_ipxe_snp_x86_64_path@" _work/$(IPXE_DIR)/src/bin-x86_64-efi/snp.efi ;\
++	else \
++		$(MAKE) -C _work/$(IPXE_DIR)/src CROSS_COMPILE=$(CROSS_COMPILE_X86_64) bin-x86_64-efi/snp.efi; \
++	fi
+ endif
+ 
+ bin-i386-efi/snp.efi: prep
+ 
+ if BUILD_X86_64
+-	$(MAKE) -C _work/$(IPXE_DIR)/src CROSS_COMPILE=$(CROSS_COMPILE_X86_64) bin-i386-efi/snp.efi
++	@ if [ -n "@local_ipxe_snp_i386_path@" -a -f "@local_ipxe_snp_i386_path@" ]; then \
++		echo "Detected local install of i386 snp.efi boot image. Bypassing build process." ;\
++		mkdir -p _work/$(IPXE_DIR)/src/bin-i386-efi ;\
++		cp "@local_ipxe_snp_i386_path@" _work/$(IPXE_DIR)/src/bin-i386-efi/snp.efi ;\
++	else \
++		$(MAKE) -C _work/$(IPXE_DIR)/src CROSS_COMPILE=$(CROSS_COMPILE_X86_64) bin-i386-efi/snp.efi; \
++	fi
+ endif
+ 
+ bin-arm64-efi/snp.efi: prep
+diff --git a/provision/configure.ac b/provision/configure.ac
+index 3060257..59d961f 100644
+--- a/provision/configure.ac
++++ b/provision/configure.ac
+@@ -74,6 +74,78 @@ fi
+ AC_MSG_RESULT($apache_moddir)
+ AC_SUBST(apache_moddir)
+ 
++AC_DEFUN([FIND_LOCAL], [
++    AC_MSG_CHECKING([for locally installed $1])
++    AC_ARG_WITH([local-$1], [
++        AS_HELP_STRING([--with-local-$1], [
++            use locally installed $1 @<:@default is no@:>@
++        ])], [], [with_local_$1=no]
++    )
++
++    local_$1_path=
++    AS_IF([test -n "$with_local_$1" -a "x$with_local_$1" != "xno"], [
++        local_$1_path="$with_local_$1"
++        AS_IF([test "x$with_local_$1" == "xyes"], [local_$1_path="$2"])
++        AS_IF([test -f "$local_$1_path"], [
++            AC_MSG_RESULT([$local_$1_path])
++        ], [
++            search_$1_path=`which "$local_$1_path" 2>/dev/null`
++            AS_IF([test -z "$search_$1_path"], [
++                AC_MSG_ERROR([no, $local_$1_path could not be found])
++            ], [
++                AC_MSG_RESULT([$search_$1_path])
++                local_$1_path="$search_$1_path"
++            ])
++        ])
++    ], [
++        AC_MSG_RESULT([no])
++        local_$1_path=
++    ])
++
++    AC_SUBST(local_$1_path)
++])
++
++FIND_LOCAL(busybox, busybox)
++busybox_links_path="/usr/share/busybox/busybox.links"
++AS_IF([test -n "$local_busybox_path"],
++    [AC_MSG_CHECKING([for local busybox links file])
++        AC_ARG_WITH([busybox-links-file],
++            [AS_HELP_STRING([--with-busybox-links-file],
++                [use list of busybox links @<:@default is $busybox_links_path@:>@]
++            )],
++            [AS_IF([test -n "$with_busybox_links_file"],
++                [AS_IF([test "x$with_busybox_links_file" == "xno"],
++                    [busybox_links_path=],
++                    [AS_IF([test "x$with_busybox_links_file" != "xyes"],
++                        [busybox_links_path="$with_busybox_links_file"])
++                    ]
++                )]
++            )]
++        )
++        AS_IF([test -z "$busybox_links_path"],
++            [AC_MSG_RESULT([cannot use local busybox without links file - fallback to internal busybox build])
++                local_busybox_path=
++            ],
++            [AS_IF([test -f "$busybox_links_path"],
++                [AC_MSG_RESULT([$busybox_links_path])],
++                [AC_MSG_RESULT([$busybox_links_path not found - fallback to internal busybox build])
++                    local_busybox_path=
++                    busybox_links_path=
++                ]
++            )]
++        )
++    ]
++)
++
++AC_SUBST(busybox_links_path)
++
++FIND_LOCAL(e2fsprogs, mkfs.ext4)
++FIND_LOCAL(ipxe_undionly, /usr/share/ipxe/undionly.kpxe)
++FIND_LOCAL(ipxe_snp_i386, /usr/share/ipxe/snp-i386.efi)
++FIND_LOCAL(ipxe_snp_x86_64, /usr/share/ipxe/snp-x86_64.efi)
++FIND_LOCAL(libarchive, bsdtar)
++FIND_LOCAL(parted, parted)
++FIND_LOCAL(partprobe, partprobe)
+ 
+ #AC_CHECK_LIB(fuse, fuse_main, , [
+ #AC_MSG_ERROR([Fatal:  Fuse libraries not found.])
+diff --git a/provision/initramfs/Makefile.am b/provision/initramfs/Makefile.am
+index a0c6c2b..7e0a372 100644
+--- a/provision/initramfs/Makefile.am
++++ b/provision/initramfs/Makefile.am
+@@ -27,67 +27,84 @@ PARTED_DIR = parted-$(PARTED_VERSION)
+ PARTED_CONFIGARGS = --prefix=/usr --without-readline --disable-static --disable-nls --disable-dynamic-loading --disable-debug
+ 
+ e2fsprogs:
+-	@ if [ ! -d "_work/$(E2FSPROGS_DIR)" ]; then \
+-		echo "Preparing to build e2fsprogs" ;\
+-		mkdir -p _work/ ;\
+-		tar xzf $(E2FSPROGS_SOURCE) -C _work/ ;\
+-	fi
+-	@ if [ ! -f "_work/$(E2FSPROGS_DIR)/misc/mke2fs" ]; then \
+-		echo "Building e2fsprogs" ;\
+-		if [ -f "/usr/lib/rpm/config.guess" ]; then \
+-			cp /usr/lib/rpm/config.guess _work/$(E2FSPROGS_DIR)/config;\
+-		fi; \
+-		if [ -f "/usr/lib/rpm/config.sub" ]; then \
+-			cp /usr/lib/rpm/config.sub _work/$(E2FSPROGS_DIR)/config;\
+-		fi; \
+-		(cd _work/$(E2FSPROGS_DIR)/; ./configure $(E2FSPROGS_CONFIGARGS)) ;\
+-		$(MAKE) -C _work/$(E2FSPROGS_DIR);\
++	@ if [ -n "@local_e2fsprogs_path@" -a -f "@local_e2fsprogs_path@" ]; then \
++		echo "Detected local install of e2fsprogs. Bypassing e2fsprogs build process." ;\
++	else \
++		if [ ! -d "_work/$(E2FSPROGS_DIR)" ]; then \
++			echo "Preparing to build e2fsprogs" ;\
++			mkdir -p _work/ ;\
++			tar xzf $(E2FSPROGS_SOURCE) -C _work/ ;\
++		fi ;\
++		if [ ! -f "_work/$(E2FSPROGS_DIR)/misc/mke2fs" ]; then \
++			echo "Building e2fsprogs" ;\
++			if [ -f "/usr/lib/rpm/config.guess" ]; then \
++				cp /usr/lib/rpm/config.guess _work/$(E2FSPROGS_DIR)/config;\
++			fi; \
++			if [ -f "/usr/lib/rpm/config.sub" ]; then \
++				cp /usr/lib/rpm/config.sub _work/$(E2FSPROGS_DIR)/config;\
++			fi; \
++			(cd _work/$(E2FSPROGS_DIR)/; ./configure $(E2FSPROGS_CONFIGARGS)) ;\
++			$(MAKE) -C _work/$(E2FSPROGS_DIR);\
++		fi ;\
+ 	fi
+ 
+ 
+ busybox:
+-	@ if [ ! -d "_work/$(BUSYBOX_DIR)" ]; then \
+-		echo "Preparing to build initramfs core" ;\
+-		mkdir -p _work/ ;\
+-		tar xjf $(BUSYBOX_SOURCE) -C _work/ ;\
+-		for i in $(BUSYBOX_PATCHES); do \
+-			(cd _work/$(BUSYBOX_DIR); patch -p1 < ../../$${i} || exit 1) \
+-		done ;\
+-		cp $(srcdir)/busybox.config _work/busybox-$(BUSYBOX_VERSION)/.config ;\
+-	fi
+-	@ if [ ! -f "_work/$(BUSYBOX_DIR)/" ]; then \
+-		echo "Building initramfs core" ;\
+-		$(MAKE) -C _work/$(BUSYBOX_DIR) busybox ;\
+-	fi
+-	@ if [ ! -d "_work/$(BUSYBOX_DIR)/_install" ]; then \
+-		echo "Installing initramfs core" ;\
+-		$(MAKE) -C _work/$(BUSYBOX_DIR) install ;\
++	@ if [ -n "@local_busybox_path@" -a -f "@local_busybox_path@" -a \
++	    -n "@local_busybox_path@" -a -f "@busybox_links_path@" ]; then \
++		echo "Detected local install of busybox. Bypassing busybox build process." ;\
++	else \
++		if [ ! -d "_work/$(BUSYBOX_DIR)" ]; then \
++			echo "Preparing to build initramfs core" ;\
++			mkdir -p _work/ ;\
++			tar xjf $(BUSYBOX_SOURCE) -C _work/ ;\
++			for i in $(BUSYBOX_PATCHES); do \
++				(cd _work/$(BUSYBOX_DIR); patch -p1 < ../../$${i} || exit 1) ;\
++			done ;\
++			cp $(srcdir)/busybox.config _work/busybox-$(BUSYBOX_VERSION)/.config ;\
++		fi ;\
++		if [ ! -f "_work/$(BUSYBOX_DIR)/" ]; then \
++			echo "Building initramfs core" ;\
++			$(MAKE) -C _work/$(BUSYBOX_DIR) busybox ;\
++		fi ;\
++		if [ ! -d "_work/$(BUSYBOX_DIR)/_install" ]; then \
++			echo "Installing initramfs core" ;\
++			$(MAKE) -C _work/$(BUSYBOX_DIR) install ;\
++		fi ;\
+ 	fi
+ 
+ libarchive:
+-	@ if [ ! -d "_work/$(LIBARCHIVE_DIR)" ]; then \
+-		echo "Preparing to build libarchive" ;\
+-		mkdir -p _work/ ;\
+-        echo In directory `pwd` ;\
+-		tar xzf $(LIBARCHIVE_SOURCE) -C _work/ ;\
+-	fi
+-	@ if [ ! -f "_work/$(LIBARCHIVE_DIR)/" ]; then \
+-		echo "Building libarchive" ;\
+-		(cd _work/$(LIBARCHIVE_DIR)/; ./configure $(LIBARCHIVE_CONFIGARGS)) ;\
+-		$(MAKE) -C _work/$(LIBARCHIVE_DIR);\
++	@ if [ -n "@local_libarchive_path@" -a -f "@local_libarchive_path@" ]; then \
++		echo "Detected local install of bsdtar. Bypassing libarchive build process." ;\
++	else \
++		if [ ! -d "_work/$(LIBARCHIVE_DIR)" ]; then \
++			echo "Preparing to build libarchive" ;\
++			mkdir -p _work/ ;\
++			tar xzf $(LIBARCHIVE_SOURCE) -C _work/ ;\
++		fi ;\
++		if [ ! -f "_work/$(LIBARCHIVE_DIR)/" ]; then \
++			echo "Building libarchive" ;\
++			(cd _work/$(LIBARCHIVE_DIR)/; ./configure $(LIBARCHIVE_CONFIGARGS)) ;\
++			$(MAKE) -C _work/$(LIBARCHIVE_DIR);\
++		fi ;\
+ 	fi
+ 
+ parted:
+-	@ if [ ! -d "_work/$(PARTED_DIR)" ]; then \
+-		echo "Preparing to build parted" ;\
+-		mkdir -p _work/ ;\
+-        echo In directory `pwd` ;\
+-		tar Jxf $(PARTED_SOURCE) -C _work/ ;\
+-	fi
+-	@ if [ ! -f "_work/$(PARTED_DIR)/" ]; then \
+-		echo "Building parted" ;\
+-		(cd _work/$(PARTED_DIR)/; ./configure $(PARTED_CONFIGARGS)) ;\
+-		$(MAKE) -C _work/$(PARTED_DIR);\
++	@ if [ -n "@local_parted_path@" -a -f "@local_parted_path@" -a \
++	  -n "@local_partprobe_path@" -a -f "@local_partprobe_path@" ]; then \
++		echo "Detected local install of parted. Bypassing parted build process." ;\
++	else \
++		if [ ! -d "_work/$(PARTED_DIR)" ]; then \
++			echo "Preparing to build parted" ;\
++			mkdir -p _work/ ;\
++		echo In directory `pwd` ;\
++			tar Jxf $(PARTED_SOURCE) -C _work/ ;\
++		fi; \
++		if [ ! -f "_work/$(PARTED_DIR)/" ]; then \
++			echo "Building parted" ;\
++			(cd _work/$(PARTED_DIR)/; ./configure $(PARTED_CONFIGARGS)) ;\
++			$(MAKE) -C _work/$(PARTED_DIR);\
++		fi \
+ 	fi
+ 
+ rootfs: busybox e2fsprogs libarchive parted
+@@ -103,11 +120,36 @@ rootfs: busybox e2fsprogs libarchive parted
+ 	mkdir rootfs/lib
+ 	mkdir rootfs/lib64
+ 	chmod -R u+w rootfs/
+-	cp -a _work/$(BUSYBOX_DIR)/_install/* rootfs/
+-	cp _work/$(E2FSPROGS_DIR)/misc/mke2fs rootfs/sbin/mkfs.ext4
++	if [ -n "@local_busybox_path@" -a -f "@local_busybox_path@" -a \
++	    -n "@local_busybox_path@" -a -f "@busybox_links_path@" ]; then \
++		while read lfpath; do \
++			if [ ! -d rootfs$$(dirname $${lfpath}) ]; then \
++				mkdir -p rootfs$$(dirname $${lfpath}); \
++			fi; \
++			ln -vs /bin/busybox rootfs$${lfpath}; \
++		done < "@busybox_links_path@" ;\
++		cp -av "@local_busybox_path@" rootfs/bin/busybox ;\
++	else \
++		cp -av _work/$(BUSYBOX_DIR)/_install/* rootfs/ ;\
++	fi
++	if [ -n "@local_e2fsprogs_path@" -a -f "@local_e2fsprogs_path@" ]; then \
++		cp -av "@local_e2fsprogs_path@" rootfs/sbin/mkfs.ext4 ;\
++	else \
++		cp -av _work/$(E2FSPROGS_DIR)/misc/mke2fs rootfs/sbin/mkfs.ext4 ;\
++	fi
+ 	ln -s mkfs.ext4 rootfs/sbin/mkfs.ext3
+-	cp -a _work/$(LIBARCHIVE_DIR)/bsdtar rootfs/bin/bsdtar
+-	$(MAKE) -C _work/$(PARTED_DIR)/ DESTDIR=`pwd`/rootfs install
++	if [ -n "@local_libarchive_path@" -a -f "@local_libarchive_path@" ]; then \
++		cp -av "@local_libarchive_path@" rootfs/bin/bsdtar; \
++	else \
++		cp -av _work/$(LIBARCHIVE_DIR)/bsdtar rootfs/bin/bsdtar; \
++	fi
++	if [ -n "@local_parted_path@" -a -f "@local_parted_path@" -a \
++	  -n "@local_partprobe_path@" -a -f "@local_partprobe_path@" ]; then \
++		cp -av "@local_parted_path@" rootfs/usr/sbin/parted; \
++		cp -av "@local_partprobe_path@" rootfs/usr/sbin/partprobe; \
++	else \
++		$(MAKE) -C _work/$(PARTED_DIR)/ DESTDIR=`pwd`/rootfs install; \
++	fi
+ 	cp -L --parents /lib*/ld-linux* rootfs/
+ 	find rootfs -type f -perm -o+x -print | grep -v ld-linux | xargs ldd | grep "=>" | awk '{print $$3}' | grep "^/" | sort | uniq | while read i; do cp -L --parents $$i rootfs/ && chmod 755 rootfs/$$i; done
+ 	rm -f rootfs/linuxrc rootfs/lib64/*.la rootfs/lib/*.la rootfs/usr/lib64/*.la rootfs/usr/lib/*.la

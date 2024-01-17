@@ -1,0 +1,5 @@
+<package name="python-requre" project="openSUSE:Factory">
+  <title>python-requre</title>
+  <description>Library for testing python code what allows store output of various objects and use stored data for testing</description>
+  <devel project="devel:languages:python" package="python-requre"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="kwindowsystem" project="openSUSE:Factory">
+  <title>kwindowsystem</title>
+  <description>KWindowSystem</description>
+  <devel project="KDE:Frameworks5" package="kwindowsystem"/>
+</package>

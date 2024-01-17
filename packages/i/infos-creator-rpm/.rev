@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>815f8e2bfa20a7be1c91aa6190bdd34c</srcmd5>
+    <version>0.3</version>
+    <time>1487462527</time>
+    <user>dimstar_suse</user>
+    <comment>Small package containing a kiwi hook used to create virt-builder
+site index. This will be needed to properly build virt-builder
+images for openSUSE.
+
+To use it, place a $IMGNAME.virtbuilder.template file next to the
+kiwi file.</comment>
+    <requestid>457043</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d9a9b83401b3edcad8dc5c57e6f1672c</srcmd5>
+    <version>0.3</version>
+    <time>1553809725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689148</requestid>
+  </revision>
+</revisionlist>

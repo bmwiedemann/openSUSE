@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Wed Aug 15 07:33:46 UTC 2018 - schwab@suse.de
+
+- qoauth-ppc64-libdir.patch: Also add riscv64 as lib64 platform
+- Use %licence for LICENSE
+
+-------------------------------------------------------------------
+Tue Mar 14 23:41:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Add qoauth-qt5-fix-includedir.patch: fix the include directory.
+- A minor spec cleanup.
+
+-------------------------------------------------------------------
+Mon Jan 30 21:08:01 UTC 2017 - jengelh@inai.de
+
+- Trim filler words from descriptions
+
+-------------------------------------------------------------------
+Thu Jan 19 17:18:38 UTC 2017 - wbauer@tmo.at
+
+- Change license to LGPL-2.1+
+- Install LICENSE file
+
+-------------------------------------------------------------------
+Wed Dec 28 13:27:41 UTC 2016 - jengelh@inai.de
+
+- Ensure all directories are owned. Re-set RPM groups,
+  drop extra author mentions.
+
+-------------------------------------------------------------------
+Tue Dec 27 16:22:18 UTC 2016 - wbauer@tmo.at
+
+- Update to version 2.0.0:
+  * Qt5 support
+- Rename qoauth-rpmoptflags.patch to qoauth-qt5-rpmoptflags.patch
+- Rename qoauth-ppc64-libdir.patch to qoauth-qt5-ppc64-libdir.patch
+- Add pcfile.patch to adjust the pkgconfig file to Qt5
+
+-------------------------------------------------------------------
+Thu May 28 17:41:15 CEST 2015 - ro@suse.de
+
+- expand qoauth-ppc64-libdir.patch for s390x 
+
+-------------------------------------------------------------------
+Sun Dec 15 03:39:39 UTC 2013 - uweigand@de.ibm.com
+
+- qoauth-ppc64-libdir.patch: Add ppc64le as lib64 platform
+
+-------------------------------------------------------------------
+Mon Mar 18 16:49:45 UTC 2013 - schwab@suse.de
+
+- Add aarch64 to the list of lib64 platforms
+
+-------------------------------------------------------------------
+Fri Jul  6 21:45:50 UTC 2012 - dvaleev@suse.com
+
+- fix ppc64 libdir 
+
+-------------------------------------------------------------------
+Sat Mar 10 16:49:23 UTC 2012 - crrodriguez@opensuse.org
+
+- Use RPM_OPT_FLAGS 
+- Fix -debuginfo generation..
+- Build with inlines-hidden
+
+-------------------------------------------------------------------
+Thu Dec  8 11:08:10 UTC 2011 - coolo@suse.com
+
+- this should be LGPL-3.0+, LGPL is not a valid license name
+
+-------------------------------------------------------------------
+Sun Aug  7 14:44:44 UTC 2011 - toddrme2178@gmail.com
+ 
+- Removed name from summaries (fix for RPMLINT warning)
+
+-------------------------------------------------------------------
+Wed Sep 22 09:35:16 UTC 2010 - tittiatcoke@gmail.com
+
+- Changed spec-file to remove duplicated BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug 30 10:04:07 UTC 2010 - tittiatcoke@gmail.com
+
+- Update to version 1.0.1
+  * new API:
+    - QOAuth::Interface::networkAccessManager()
+    - QOAuth::Interface::setNetworkAccessManager()
+    - QOAuth::Interface::ignoreSslErrors()
+    - QOAuth::Interface::setIgnoreSslErrors()
+    refer to the API docs for more info,
+  * added missing export statements to some global functions,
+  * Percent encode consumer secret and token secret for the Signature Base String signing key [#8],
+  * Parse for request content when sending POST [#10],
+  * API docs and examples fixes [#9],
+  * temporarily removed QOAuth::DELETE from QOAuth::HttpMethod enum on Windows [#4],
+  * buildsystem fixes - install under /usr/lib64 on 64-bit Unix-like systems and
+     make use of QT_INSTALL_HEADERS in oauth.prf.
+  * Added support for RSA-SHA1 signing algorithm, also working with
+    passphrase-protected private RSA keys.
+  * Added initial support for PLAINTEXT authorization.
+  * inlineParameters() extended by the parameter specifying parsing method,
+  * Introduced the QOAuth namespace, with QOAuth::Interface class holding the core
+    functionality.
+
+-------------------------------------------------------------------
+Tue Oct 27 02:00:00 UTC 2009 - flavio@castelli.name
+
+- first release

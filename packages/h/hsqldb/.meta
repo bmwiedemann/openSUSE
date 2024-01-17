@@ -1,0 +1,21 @@
+<package name="hsqldb" project="openSUSE:Factory">
+  <title>Hsqldb Database Engine</title>
+  <description>HSQLdb is a relational database engine written in JavaTM , with a JDBC
+driver, supporting a subset of ANSI-92 SQL. It offers a small (about
+100k), fast database engine which offers both in memory and disk based
+tables. Embedded and server modes are available. Additionally, it
+includes tools such as a minimal web server, in-memory query and
+management tools (can be run as applets or servlets, too) and a number
+of demonstration examples.
+
+Downloaded code should be regarded as being of production quality. The
+product is currently being used as a database and persistence engine in
+many Open Source Software projects and even in commercial projects and
+products! In it's current version it is extremely stable and reliable.
+It is best known for its small size, ability to execute completely in
+memory and its speed. Yet it is a completely functional relational
+database management system that is completely free under the Modified
+BSD License. Yes, that's right, completely free of cost or
+restrictions!</description>
+  <devel project="Java:packages" package="hsqldb"/>
+</package>

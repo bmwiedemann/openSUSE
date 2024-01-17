@@ -1,0 +1,39 @@
+diff --git a/com32/mboot/mboot.c b/com32/mboot/mboot.c
+index 35450e0..a124a21 100644
+--- a/com32/mboot/mboot.c
++++ b/com32/mboot/mboot.c
+@@ -97,9 +97,14 @@ static int get_modules(char **argv, struct module_data **mdp)
+     int arglen;
+     const char module_separator[] = "---";
+ 
++    char *bootif = 0;
+     for (argp = argv; *argp; argp++) {
+ 	if (!strcmp(*argp, module_separator))
+ 	    module_count++;
++        /* BOOTIF= gets only appended for last group by syslinux, but it may be needed also
++           for other modules. So let's copy it. Esp. needed for XEN booting, Dom0 kernel needs it */
++        if (!strncmp(*argp, "BOOTIF=", 7))
++            bootif = *argp;
+     }
+ 
+     *mdp = mp = malloc(module_count * sizeof(struct module_data));
+@@ -133,11 +138,19 @@ static int get_modules(char **argv, struct module_data **mdp)
+ 	    mp->cmdline = strdup("");
+ 	} else {
+ 	    char *p;
++            if (bootif) {
++              arglen += strlen(bootif) + 1;
++            }
++
+ 	    mp->cmdline = p = malloc(arglen);
+ 	    for (; *argp && strcmp(*argp, module_separator); argp++) {
+ 		p = stpcpy(p, *argp);
+ 		*p++ = ' ';
+ 	    }
++            if (bootif) {
++	      p = stpcpy(p, bootif);
++	      *p++ = ' ';
++            }
+ 	    *--p = '\0';
+ 	}
+ 	mp++;

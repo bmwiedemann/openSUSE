@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sun Nov 26 10:58:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 58.11:
+  * Undocumented -collision -kill, to be implemented
+  * Quickly check and (sometimes) recovery from SHA-1 collision
+  * Warning-hunting on 15+ years compiler
+  * Removed a fake compiler warning
+  * 32 bit gcc fix, or better workaroud
+    https://bugzilla.redhat.com/show_bug.cgi?id=2238781
+  * disclaimer after help for USE THE DOUBLE QUOTES, LUKE!
+  * changed $day, $hour... to %day, %hour ( Linux does not like
+    '$' very much )
+  * PowerPC fix
+  * New switch -home in a command (add)
+  * Stripped of about everything from zpaqfranz repository
+  * Moved to zpaqfranz-stuff (for license reason when 'packaged')
+  * the subfolders, much smaller git
+  * Fixed some typo in zpaqfranz.cpp source code, added some
+    greetings
+
+-------------------------------------------------------------------
+Tue Aug 22 11:10:03 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package for version 58.8

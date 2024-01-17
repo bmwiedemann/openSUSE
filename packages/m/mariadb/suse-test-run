@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+#
+# Test the SUSE mariadb package using the mysql-test framework
+
+my $id = getpwnam("mysql") or die "can't find user \"mysql\": $!";
+my $dir = "/usr/share/mysql-test/";
+
+if ($< == 0) {
+	($<, $>) = ($id, $id);
+	if ($< != $id || $> != $id) {
+		die "can't switch to user mysql(id $id): $!";
+	}
+}
+
+chdir($dir) or die "can't cd to $dir: $!";
+exec("./mysql-test-run.pl", "--big-test", @ARGV);
+die "can't execute mysql-test-run.pl: $!";

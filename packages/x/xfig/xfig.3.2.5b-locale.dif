@@ -1,0 +1,45 @@
+---
+ src/main.c |   11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+--- src/main.c
++++ src/main.c	2023-09-13 10:32:19.633436763 +0000
+@@ -23,6 +23,7 @@
+ 
+ #include <errno.h>
+ #include <locale.h>
++#include <langinfo.h>
+ #include <signal.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -805,9 +806,6 @@ main(int argc, char **argv)
+ 		}
+ 	}
+ 
+-	setlocale(LC_ALL, "");
+-	XtSetLanguageProc(NULL, NULL, NULL);
+-
+ 	/*
+ 	 * save the command line arguments
+ 	 */
+@@ -914,6 +912,10 @@ main(int argc, char **argv)
+ 	else
+ 		setup_icons_big();
+ 
++	if (NULL == strcasestr(nl_langinfo(CODESET),"ANSI") &&
++	    NULL == strcasestr(nl_langinfo(CODESET),"ISO-8859-"))
++		appres.international = True;
++
+ 	/*************************************************/
+ 	/* indicate if the international option is unset */
+ 	/*************************************************/
+@@ -1663,6 +1665,9 @@ setup_visual(int *argc_p, char **argv, A
+ 	 */
+ 	tool = XtAppInitialize (&tool_app, "Fig", options, XtNumber (options),
+ 			argc_p, argv, fallback_resources, args, 0);
++	setlocale(LC_ALL, "");
++	XtSetLanguageProc(tool_app, NULL, NULL);
++
+ 	/* save important info */
+ 	tool_d = XtDisplay(tool);
+ 	tool_s = XtScreen(tool);

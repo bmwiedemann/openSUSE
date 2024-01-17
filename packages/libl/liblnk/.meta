@@ -1,0 +1,7 @@
+<package name="liblnk" project="openSUSE:Factory">
+  <title>Library to access the Windows Shortcut File (LNK) Format</title>
+  <description>Library to access the Windows Shortcut File (LNK) Format files.
+
+</description>
+  <devel project="security:forensics" package="liblnk"/>
+</package>

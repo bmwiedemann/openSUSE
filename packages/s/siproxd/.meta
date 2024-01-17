@@ -1,0 +1,9 @@
+<package name="siproxd" project="openSUSE:Factory">
+  <title>A SIP masquerading proxy with RTP support</title>
+  <description>Siproxd is an proxy/masquerading daemon for the SIP protocol. It handles
+registrations of SIP clients on a private IP network and performs
+rewriting of the SIP message bodies to make SIP connections possible
+via an masquerading firewall. It allows SIP clients (like kphone,
+linphone) to work behind an IP masquerading firewall or router.</description>
+  <devel project="network:telephony" package="siproxd"/>
+</package>

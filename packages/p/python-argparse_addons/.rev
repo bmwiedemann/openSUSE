@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ffc8b24766996b677e8f7119f2237039</srcmd5>
+    <version>0.12.0</version>
+    <time>1683991094</time>
+    <user>dimstar_suse</user>
+    <comment>new package required by python-bincopy (required for pynitrokey)
+</comment>
+    <requestid>1086982</requestid>
+  </revision>
+</revisionlist>

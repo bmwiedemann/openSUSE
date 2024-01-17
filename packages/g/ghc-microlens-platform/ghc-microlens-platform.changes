@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Thu Oct 12 07:06:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-platform to version 0.4.3.4.
+  # 0.4.3.4
+
+  * [#171](https://github.com/stevenfontanella/microlens/pull/171) Support text 2.1
+
+  # 0.4.3.3
+
+  * [#161](https://github.com/stevenfontanella/microlens/pull/161) Fix GHC 9.4 warning for using `~` without TypeOperators
+
+  # 0.4.3.2
+
+  * [#156](https://github.com/stevenfontanella/microlens/pull/156) Add a missing upper bound for text dependency
+
+-------------------------------------------------------------------
+Wed Oct 11 19:28:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-platform to version 0.4.3.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:07:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Dec 14 05:19:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-platform to version 0.4.3.3.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Fri Jun 10 05:23:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-platform to version 0.4.3.2.
+  # 0.4.3.1
+
+  * Bumped `text` upper bound to support 2.0.
+
+  # 0.4.3
+
+  * New minor release (microlens-0.4.13.0, microlens-ghc-0.4.14).
+
+-------------------------------------------------------------------
+Wed Nov 10 10:02:39 UTC 2021 - psimons@suse.com
+
+- Update microlens-platform to version 0.4.2.1.
+  # 0.4.2.1
+
+  * Bumped `hashable` upper bound.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Nov 17 15:31:30 UTC 2020 - psimons@suse.com
+
+- Update microlens-platform to version 0.4.2.
+  # 0.4.2
+
+  * New minor release (microlens-0.4.12.0, microlens-ghc-0.4.13).
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:27 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:19 UTC 2020 - psimons@suse.com
+
+- Add microlens-platform at version 0.4.1.
+

@@ -1,0 +1,16 @@
+<package name="dmidecode" project="openSUSE:Factory">
+  <title>DMI table decoder</title>
+  <description>Dmidecode reports information about your system's hardware as described
+in your system BIOS according to the SMBIOS/DMI standard. This
+information typically includes system manufacturer, model name, serial
+number, BIOS version, asset tag as well as a lot of other details of
+varying level of interest and reliability depending on the
+manufacturer. This will often include usage status for the CPU sockets,
+expansion slots (e.g. AGP, PCI, ISA) and memory module slots, and the
+list of I/O ports (e.g. serial, parallel, USB).
+
+Beware that DMI data have proven to be too unreliable to be blindly
+trusted. Dmidecode does not scan your hardware, it only reports what
+the BIOS told it to.</description>
+  <devel project="Base:System" package="dmidecode"/>
+</package>

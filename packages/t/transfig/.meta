@@ -1,0 +1,14 @@
+<package name="transfig" project="openSUSE:Factory">
+  <title>Graphic Converter</title>
+  <description>TransFig is a set of tools for creating TeX documents with graphics
+that are portable in the sense that they can be printed in a wide
+variety of environments.
+
+The transfig directory contains the source for the transfig command
+which generates a Makefile which translates Fig code to various
+graphics description languages using the fig2dev program.  In previous
+releases, this command was implemented as a shell script.
+
+Documentation: man transfig</description>
+  <devel project="Publishing" package="transfig"/>
+</package>

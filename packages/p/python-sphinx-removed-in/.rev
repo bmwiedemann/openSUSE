@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e97e6778af4c2193055c4351d51e4bb</srcmd5>
+    <version>0.2.0</version>
+    <time>1554189715</time>
+    <user>dimstar_suse</user>
+    <comment>sphinx removedin directives</comment>
+    <requestid>689907</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5076332f48830c8a62e3c3f47e2c1ae5</srcmd5>
+    <version>0.2.1</version>
+    <time>1583526566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782227</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>992182115965090aa9b6024c3bad49a5</srcmd5>
+    <version>0.2.1</version>
+    <time>1664467948</time>
+    <user>RBrownFactory</user>
+    <comment>- Add patch remove-sphinx-testing.patch, to remove the sphinx-testing
+  dependency, based on gh#mrsenko/sphinx-removed-in#9
+</comment>
+    <requestid>1006630</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2a72b95617ac9f484d23d091faf5dfb0</srcmd5>
+    <version>0.2.2</version>
+    <time>1701727304</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.2:
+  * no upstream changelog provided
+- drop remove-sphinx-testing.patch (upstream)
+
+- initial commit</comment>
+    <requestid>1130714</requestid>
+  </revision>
+</revisionlist>

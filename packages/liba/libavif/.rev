@@ -1,0 +1,239 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>322da85139a5376d30557eafe008007f</srcmd5>
+    <version>0.5.3</version>
+    <time>1579273549</time>
+    <user>dimstar_suse</user>
+    <comment>Library implementing for the AV1-AVIF image file format.
+
+This lib uses rav1e and dav1d for encoding and decoding.</comment>
+    <requestid>765061</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ab04597cf6b7e71fe01144b742e28ae</srcmd5>
+    <version>0.5.5</version>
+    <time>1582018593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.5
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.5
+- Rename libavif-tools to avif-tools
+  This fixes an rpmlint warning
+</comment>
+    <requestid>774727</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>47d3b2716e010be228bcf743a59f76c4</srcmd5>
+    <version>0.6.2</version>
+    <time>1584350344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2
+  https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+- If we want to build with aom, require version &gt;= 1.1.0
+- Removed cbcf62c2200be83b85b48059c819ae708216ccec.patch
+- Update to version 0.5.7
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.7
+</comment>
+    <requestid>785129</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>25537607cf699db41b51ef1389a15187</srcmd5>
+    <version>0.7.1</version>
+    <time>1587839214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796649</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>330cf0b5c3e508b2c2e1c98884605176</srcmd5>
+    <version>0.7.3</version>
+    <time>1588697742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+  * Removed e4e5d752ece581d6ef9fbb8bab0ab2edfde13fc5.patch
+  * Removed ebb29b37711c749681278f8b778f0e6c031c4ca2.patch
+  * Removed e7dcc74b5529da209266020852a72b554461e538.patch
+- Update to version 0.7.2
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+  * Added e4e5d752ece581d6ef9fbb8bab0ab2edfde13fc5.patch
+  * Added ebb29b37711c749681278f8b778f0e6c031c4ca2.patch
+  * Added e7dcc74b5529da209266020852a72b554461e538.patch
+</comment>
+    <requestid>800411</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a66185ae9304dd16d7c1093e4c3fb70</srcmd5>
+    <version>0.8.0</version>
+    <time>1595577579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.0
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+</comment>
+    <requestid>822195</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59448a11d0ea5bf07a352f90e858aadf</srcmd5>
+    <version>0.8.1</version>
+    <time>1597744821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.1
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+- Enabled AOM support (default)
+</comment>
+    <requestid>827354</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>191db2ed1d1a82bc35a9bb2d56b1f01b</srcmd5>
+    <version>0.8.2</version>
+    <time>1602762693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+</comment>
+    <requestid>841880</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>df883ac22791031d0f31b084f5e4f7c5</srcmd5>
+    <version>0.8.4</version>
+    <time>1610965596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862969</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d3498677bca52373cf23d3dc5504d1d5</srcmd5>
+    <version>0.9.0</version>
+    <time>1616008422</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.0/CHANGELOG.md
+    for a complete changelog.
+</comment>
+    <requestid>879242</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>59ab6fe20ec3e8ee9fcd79eb11d1774f</srcmd5>
+    <version>0.9.0</version>
+    <time>1618387816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884867</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e4c9ff0c4b9af3e755f336a39c18ac7d</srcmd5>
+    <version>0.9.2</version>
+    <time>1624813100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.2
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.2/CHANGELOG.md
+    for a complete changelog.
+- Update to version 0.9.1
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.1/CHANGELOG.md
+    for a complete changelog.
+</comment>
+    <requestid>902192</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>584d83875b38264879384215cd1ef040</srcmd5>
+    <version>0.9.3</version>
+    <time>1635167830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.3
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.9.3/CHANGELOG.md
+    for a complete changelog.
+</comment>
+    <requestid>926673</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>be041ca804d0d2c654b070c28c7064fd</srcmd5>
+    <version>0.10.0</version>
+    <time>1649610323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.0
+  * See https://github.com/AOMediaCodec/libavif/blob/v0.10.0/CHANGELOG.md
+    for a complete changelog or check the CHANGELOG.md in the doc directory.
+- Disable libaom and use rav1e by default
+  * As PHP 8.1 has AVIF support, use rav1e by default as it is more
+    secure being written in Rust.
+</comment>
+    <requestid>967877</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a2ad39db4835d1950ee9eb123735a9ce</srcmd5>
+    <version>0.10.1</version>
+    <time>1650996900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972437</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f623c1ba6cec6ea4a07f1611d1333e69</srcmd5>
+    <version>0.10.1</version>
+    <time>1659612164</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable libyuv on TW
+</comment>
+    <requestid>992214</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>558668d6aef7396d1652b864f815cfbf</srcmd5>
+    <version>0.11.0</version>
+    <time>1666256965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011224</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>03004ed54c350ba3b8fb79d921254eb2</srcmd5>
+    <version>0.11.0</version>
+    <time>1667306423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032374</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c5710926a99b5ddd54be6a50f4d3a434</srcmd5>
+    <version>0.11.1</version>
+    <time>1668514703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035657</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>270efa412f8fc619b4d1297de7066cd0</srcmd5>
+    <version>0.11.1</version>
+    <time>1683630436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085326</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dfc645a34a6b8e4f1a89ecd7bfaed1ee</srcmd5>
+    <version>1.0.0</version>
+    <time>1693482141</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107858</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5b0bab137804fcb0f7ccedc7a99fb6ec</srcmd5>
+    <version>1.0.2</version>
+    <time>1701377947</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129716</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0b78adb252e5226b3936c87025ae4029</srcmd5>
+    <version>1.0.3</version>
+    <time>1703527475</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134725</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Jul 24 18:55:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Add 'liveserver' and 'liveclient' fixtures (closes #24).
+  * Added 'command_makemigrations' fixture.
+  * Added 'conf_app_name' fixture (see #17).
+  * Fixture 'template_context' now accepts a username.
+  * Dropped support for Django 1.7.
+  * Dropped support for Py2. Py3.6+ specific syntax is
+    introduced. Code update may be required.
+  * Introduced new 'check_migrations' fixture.
+- drop django_4.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Mar 17 05:37:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded {Build,}Requires on python-mock. 
+
+-------------------------------------------------------------------
+Mon Jan 10 20:59:26 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.15.2:
+  - Ignore temporary attributes from project settings module (see
+    gh#idlesign/pytest-djangoapp#21).
+- Add django_4.patch making the package compatible with Django
+  4.* (gh#idlesign/pytest-djangoapp#23).
+
+-------------------------------------------------------------------
+Thu May 13 12:20:59 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.15.1
+  * Fixture 'request_client' now accepts 'json' argument to encode post data.
+  * Made Django 3.2 compatible.
+
+-------------------------------------------------------------------
+Mon May  4 01:14:24 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.14.0

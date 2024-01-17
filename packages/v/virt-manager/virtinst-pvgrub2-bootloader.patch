@@ -1,0 +1,40 @@
+Reference: bnc#863821
+grub.xen is required to boot PV VMs that use the BTRFS filesystem.
+This patch forces the use of grub.xen (instead of using pygrub) for
+suse distros SLE12GA, openSUSE 13.2, and newer.
+Index: virt-manager-4.0.0/virtinst/install/installer.py
+===================================================================
+--- virt-manager-4.0.0.orig/virtinst/install/installer.py
++++ virt-manager-4.0.0/virtinst/install/installer.py
+@@ -222,7 +222,8 @@ class Installer(object):
+ 
+     def _alter_treemedia_bootconfig(self, guest):
+         if not self._treemedia:
+-            return
++            if not self._treemedia_bootconfig or "grub.xen" not in self._treemedia_bootconfig[0]:
++                return
+ 
+         kernel, initrd, kernel_args = self._treemedia_bootconfig
+         if kernel:
+@@ -582,6 +583,21 @@ class Installer(object):
+         final_xml = guest.get_xml()
+         if self._requires_postboot_xml_changes():
+             initial_xml, final_xml = self._build_postboot_xml(final_xml, meter)
++        if (guest.os.is_xenpv() and
++            not guest.os.kernel):
++            os_ver = guest.osinfo.name
++            if guest.os.arch != 'x86_64' or os_ver.startswith("sles9") or \
++               os_ver.startswith("sles10") or os_ver.startswith("sled10") or \
++               os_ver.startswith("opensuse10") or os_ver.startswith("opensuse11"):
++                guest.bootloader = "pygrub"
++            else:
++                guest.bootloader = None
++                self._treemedia_bootconfig = ("/usr/lib/grub2/x86_64-xen/grub.xen", "", "")
++                log.debug("Using grub.xen to boot guest")
++                on_reboot_value = guest.on_reboot
++                self._alter_bootconfig(guest)
++                guest.on_reboot = on_reboot_value
++                final_xml = guest.get_xml()
+         final_xml = self._pre_reinstall_xml or final_xml
+ 
+         log.debug("Generated initial_xml: %s",

@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Mon Oct  2 10:03:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Fix import path to make it vendoring-friendly
+  * remove py reference from tests
+- switch to gh tarball to get tests again
+
+-------------------------------------------------------------------
+Fri Apr 21 12:21:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:39:55 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Feb 27 10:20:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
+Wed Nov 30 17:05:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Generate the _version.py file in %prep to remove completely hatch-vcs from
+  pyproject to make it build and run tests correctly
+
+-------------------------------------------------------------------
+Wed Nov 30 16:45:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-hatch-vcs dependency
+
+-------------------------------------------------------------------
+Wed Nov 30 12:49:07 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-py dependency
+
+-------------------------------------------------------------------
+Tue Nov 29 16:53:46 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Update to 3.0.1:
+  * restore tox.ini to support tox --current-env based packaging
+- 3.0.0
+  * add support for python 3.11 and drop dead pythons (thanks hukgo)
+  * migrate to hatch
+  * split up __init__.py
+  * add some type annotations
+- 2.1.1
+  * drop the python 3.4 support marker, 2.1.0 broke it
+    2.1.0 will be yanked after release
+
+-------------------------------------------------------------------
+Sun Oct 17 12:03:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.1.0
+  * fix race condition for import of modules using apipkg.initpkg
+    in Python 3.3+ by updating existing modules in-place rather
+    than replacing in sys.modules with an apipkg.ApiModule
+    instances. This race condition exists for import statements
+    (and __import__) in Python 3.3+ where sys.modules is checked
+    before obtaining an import lock, and for
+    importlib.import_module in Python 3.11+ for the same reason.
+- Release 2.0.1
+  * fix race conditions for attribute creation
+- Release 2.0.0
+  * also transfer __spec__ attribute
+  * make py.test hack more specific to avoid hiding real errors
+  * switch from Travis CI to GitHub Actions
+  * modernize package build
+  * reformat code with black
+- Drop pytest4.patch
+
+-------------------------------------------------------------------
+Tue Dec  8 10:59:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- The now broken apicycle requires apipkg to be importable from
+  elsewhere -- use src dir.
+
+-------------------------------------------------------------------
+Sun Dec  6 11:49:49 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Split package into multibuild, to avoid apipkg -> pytest -> py ->
+  apipkg cycle.
+
+-------------------------------------------------------------------
+Fri Jul 19 09:02:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- refresh pytest4.patch for pytest5
+
+-------------------------------------------------------------------
+Tue Feb 12 14:15:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with pytest newer than 4:
+  * pytest4.patch
+
+-------------------------------------------------------------------
+Sun Aug  5 17:06:32 UTC 2018 - mimi.vx@gmail.com
+
+- update to 1.5
+- fixed dependencies
+  * switch to setuptools_scm
+  * avoid dict iteration (fixes issue on python3)
+  * preserve __package__ - ths gets us better pep 302 compliance
+
+-------------------------------------------------------------------
+Thu Apr 27 10:37:20 UTC 2017 - aloisio@gmx.com
+
+- Fixed source URL
+
+-------------------------------------------------------------------
+Fri Apr 21 19:39:38 UTC 2017 - aloisio@gmx.com
+
+- Converted to single-spec
+- Enabled tests
+
+-------------------------------------------------------------------
+Fri Mar 11 08:37:01 UTC 2016 - tbechtold@suse.com
+
+- update to 1.4:
+  - revert the automated version gathering
+  - fix issue2 - adapt tests on Jython
+  - handle jython __pkgpath__ missabstraction when running python from jar files
+  - alias modules pointing to unimportable modules will return None for
+    all their attributes instead of raising ImportError.  This addresses
+    python3.4 where any call to getframeinfo() can choke on sys.modules
+    contents if pytest is not installed (because py.test.* imports it).
+  - introduce apipkg.distribution_version(name) as helper to
+    obtain the current version number of a package from install metadata
+    its used by default with the package name
+  - add an eagerloading option and eagerload automatically
+    if bpython is used (workaround for their monkeypatching)
+- Switch to use .tar.gz sdist instead of zip
+- Install LICENSE
+- BuildRequires python-setuptools
+
+-------------------------------------------------------------------
+Tue Nov 20 10:05:35 UTC 2012 - saschpe@suse.de
+
+- Initial version
+

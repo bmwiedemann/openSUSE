@@ -1,0 +1,27 @@
+[Unit]
+Description=Loki is a horizontally-scalable, highly-available, multi-tenant log aggregation system
+Documentation=https://github.com/grafana/loki
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Restart=always
+User=loki
+EnvironmentFile=-/etc/sysconfig/loki
+ExecStart=/usr/bin/loki -config.file=${CONFIG_FILE}
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+<package name="mkosi" project="openSUSE:Factory">
+  <title>Build Legacy-Free OS Images</title>
+  <description>A fancy wrapper around dnf --installroot, debootstrap, pacstrap and zypper that
+may generate disk images with a number of bells and whistles.
+
+Generated images are &quot;legacy-free&quot;. This means only GPT disk labels
+(and no MBR disk labels) are supported, and only systemd based images
+may be generated. Moreover, for bootable images only EFI systems are
+supported (not plain MBR/BIOS).
+
+</description>
+  <devel project="Virtualization" package="mkosi"/>
+  <url>https://github.com/systemd/mkosi</url>
+</package>

@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>d5fb5b69c86cde0aa10546e2b65877f7</srcmd5>
+    <version>0.1</version>
+    <time>1221274449</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>38181fd6be726e644b7f9ba1dc3e8865</srcmd5>
+    <version>0.2</version>
+    <time>1227012068</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8d512d9d0d266c1bd4c2d1e40a41bc3e</srcmd5>
+    <version>0.3</version>
+    <time>1249066360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b1bda5ba828ef963c3b447f1938d3293</srcmd5>
+    <version>0.6</version>
+    <time>1252020872</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/sound-theme-freedesktop based on submit request 19783 from user vuntz
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e35a7973fef238e81e7c7f43af8daa4b</srcmd5>
+    <version>0.7</version>
+    <time>1254781611</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/sound-theme-freedesktop based on submit request 21835 from user vuntz
+</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e35a7973fef238e81e7c7f43af8daa4b</srcmd5>
+    <version>0.7</version>
+    <time>1254781611</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/sound-theme-freedesktop based on submit request 21835 from user vuntz
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>16c8b0aa907c7e40ec5dce784a309788</srcmd5>
+    <version>0.7</version>
+    <time>1268926207</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>16c8b0aa907c7e40ec5dce784a309788</srcmd5>
+    <version>0.7</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>16c8b0aa907c7e40ec5dce784a309788</srcmd5>
+    <version>0.7</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>16c8b0aa907c7e40ec5dce784a309788</srcmd5>
+    <version>0.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>16c8b0aa907c7e40ec5dce784a309788</srcmd5>
+    <version>0.7</version>
+    <time>1319182480</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>5b9d75356f18080b109051bb625c344a</srcmd5>
+    <version>0.7</version>
+    <time>1323194719</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>5b9d75356f18080b109051bb625c344a</srcmd5>
+    <version>0.7</version>
+    <time>1340184229</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>213ff9e53d5ea61d0523de96c97984a1</srcmd5>
+    <version>0.8</version>
+    <time>1349253626</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136786</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>213ff9e53d5ea61d0523de96c97984a1</srcmd5>
+    <version>0.8</version>
+    <time>1359110423</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>7d3cfd728216ba1572e6b2d2a8f8137a</srcmd5>
+    <version>0.8</version>
+    <time>1373260509</time>
+    <user>coolo</user>
+    <comment>- Add gpl-2.0.txt as source: COPYING inside the tarball is a 0-byte
+  file (bnc#820488). (forwarded request 182255 from RBrownCCB)</comment>
+    <requestid>182290</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>7d3cfd728216ba1572e6b2d2a8f8137a</srcmd5>
+    <version>0.8</version>
+    <time>1379664708</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>7d3cfd728216ba1572e6b2d2a8f8137a</srcmd5>
+    <version>0.8</version>
+    <time>1409303392</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>4ad1ad7884eb2998b69e9fbc61f73b04</srcmd5>
+    <version>0.8</version>
+    <time>1520502375</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581202 from dimstar)</comment>
+    <requestid>582793</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/lawl/NoiseTorch.git</param>
+              <param name="changesrevision">8a918f9076ea057c505fd92bc85b080e125b15d5</param></service><service name="tar_scm">
+                <param name="url">https://github.com/NoiseTorch/NoiseTorch.git</param>
+              <param name="changesrevision">195f574aa37b908843f86a1eab3a94865c24fb6a</param></service></servicedata>

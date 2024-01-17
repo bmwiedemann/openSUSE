@@ -1,0 +1,11 @@
+--- csound-6.16.0/util/CMakeLists.txt.orig	2021-06-10 18:27:41.000000000 +1000
++++ csound-6.16.0/util/CMakeLists.txt	2021-06-29 11:16:01.079617007 +1000
+@@ -34,7 +34,7 @@
+     make_utility(pv_export   pvx_main.c)
+     make_utility(pv_import   pvi_main.c)
+     make_utility(scale       scale_main.c)
+-    make_utility(sndinfo     sndinfo_main.c)
++    make_utility(csndinfo     sndinfo_main.c)
+     make_utility(srconv      srconv_main.c)
+ 
+ 

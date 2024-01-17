@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<component>
+  <id type="desktop">jaxodraw.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>JaxoDraw</name>
+  <project_license>GPL-2.0+ and Apache-2.0</project_license>
+  <summary>A Java-based GUI for drawing Feynman diagrams</summary>
+  <url type="homepage">http://jaxodraw.sourceforge.net</url>
+  <description>
+    <p>JaxoDraw is a Java program for drawing Feynman diagrams. It has a
+complete graphical user interface that allows to carry out all actions
+in a mouse click-and-drag fashion. Fine-tuning of the diagrams is
+possible through keyboard short-cuts. Graphs may be exported to a
+variety of image formats, including (encapsulated) postscript, and can
+be saved in XML files to be used in later sessions.</p>
+    <p>
+The main feature of JaxoDraw is the possibility of generating
+LaTeX code that makes use of J. Vermaseren's axodraw package to
+compile. In fact the main motivation for writing JaxoDraw was to
+create a graphical user interface for the axodraw package. In that
+way, we combine the power of LaTeX with the easiness of a
+what-you-see-is-what-you-get interface.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image height="900" width="1600">http://jaxodraw.sourceforge.net/images/jaxo2.png</image>
+      <caption>Jaxodraw GUI</caption>
+    </screenshot>
+    <screenshot>
+      <image height="900" width="1600">http://jaxodraw.sourceforge.net/images/general.png</image>
+      <caption>Preview and export diagrams from Jaxodraw</caption>
+    </screenshot>
+    <screenshot>
+      <image height="900" width="1600">http://jaxodraw.sourceforge.net/images/tabbing.png</image>
+      <caption>Tabs in Jaxodraw</caption>
+    </screenshot>
+  </screenshots>
+  <update_contact>lukas_theussl@users.sourceforge.net</update_contact>
+</component>

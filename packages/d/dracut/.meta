@@ -1,0 +1,9 @@
+<package name="dracut" project="openSUSE:Factory">
+  <title>dracut</title>
+  <description>Dracut contains tools to create a bootable initramfs for 2.6 and newer Linux kernels.
+Unlike existing implementations, dracut does hard-code as little as possible
+into the initramfs. Dracut contains various modules which are driven by the
+event-based udev. Having root on MD, DM, LVM2, LUKS is supported as well as
+NFS, iSCSI, NBD, FCoE with the dracut-network package.</description>
+  <devel project="Base:System" package="dracut"/>
+</package>

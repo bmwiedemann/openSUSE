@@ -1,0 +1,5 @@
+<package name="kguiaddons" project="openSUSE:Factory">
+  <title>kguiaddons</title>
+  <description>KGuiAddons</description>
+  <devel project="KDE:Frameworks5" package="kguiaddons"/>
+</package>

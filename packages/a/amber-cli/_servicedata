@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/intel/amber-cli.git</param>
+              <param name="changesrevision">955f78d47362994616e95140ce65f8013a3cda9c</param></service></servicedata>

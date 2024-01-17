@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d16478a1e167ff67a8f18da4918a5a95</srcmd5>
+    <version>2.4.3.post1</version>
+    <time>1569588372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730372</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e539ef1ed0a7c72ced8c09122bbdb92e</srcmd5>
+    <version>2.4.5</version>
+    <time>1584643805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.5:
+  * No upstream changelog.</comment>
+    <requestid>786290</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>03e7705070cf77c655f9cc9e604144bf</srcmd5>
+    <version>2.4.5</version>
+    <time>1589893065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807278</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9310038ccecbec808f7b6feed0c1f81e</srcmd5>
+    <version>2.4.8</version>
+    <time>1649949942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970083</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1ee949a7c8abcdb66b74249183d0663c</srcmd5>
+    <version>2.4.9</version>
+    <time>1665185167</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008871</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>04a3b17173b2b9fcdc5079b84773fcbf</srcmd5>
+    <version>2.4.10.post1</version>
+    <time>1704281463</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.10.post1:
+  * #309 ModuleNotFoundError: No module named 'looseversion'
+- update to 2.4.10:
+  * #298 Asyncio usage no longer supports Python 3.4
+  * Support for Python 3.10-3.12, via
+  * #296 Remove loop params that break in Python 3.10
+  * #298 Replace asyncio.coroutine attributes with async def
+  * #300 Update LooseVersion dependency
+  * #303 Specify 'coverage' package version in requirements.txt
+  * #267 and #304 Wait for wait_closed (on Python 3.7 and
+    greater) in asyncio mode by @dpineiden
+  * #308 Make 'restore' command's `-i db.table` option work again
+  * #290 Fix bug in stringified query representation logic by
+    @liranbg
+  * #296 Also, fix warning or error when &quot;is not&quot; is used with an
+    empty string
+  * We have a new dependency on `looseversion==1.3.0`.
+
+- version update to 2.4.9</comment>
+    <requestid>1136301</requestid>
+  </revision>
+</revisionlist>

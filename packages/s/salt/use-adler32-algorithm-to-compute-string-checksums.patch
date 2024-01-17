@@ -1,0 +1,124 @@
+From ef6da7d43fcf51a7d705422624c1e7a94b1297f2 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 18 Jan 2022 16:36:57 +0100
+Subject: [PATCH] Use Adler32 algorithm to compute string checksums
+
+Generate the same numeric value across all Python versions and platforms
+
+Re-add getting hash by Python shell-out method
+
+Add an option to choose between default hashing, Adler32 or CRC32 algorithms
+
+Set default config option  for server_id hashing to False on minion
+
+Choose CRC method, default to faster but less reliable "adler32", if crc is in use
+
+Add warning for Sodium.
+
+Move server_id deprecation warning to reduce log spamming (bsc#1135567) (bsc#1135732)
+
+Remove deprecated warning that breaks miniion execution when "server_id_use_crc" opts are missing
+---
+ salt/config/__init__.py |  4 ++++
+ salt/grains/core.py     | 48 +++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 48 insertions(+), 4 deletions(-)
+
+diff --git a/salt/config/__init__.py b/salt/config/__init__.py
+index 1632663474..43182f3f92 100644
+--- a/salt/config/__init__.py
++++ b/salt/config/__init__.py
+@@ -991,6 +991,9 @@ VALID_OPTS = immutabletypes.freeze(
+         "maintenance_interval": int,
+         # Fileserver process restart interval
+         "fileserver_interval": int,
++        # Use Adler32 hashing algorithm for server_id (default False until Sodium, "adler32" after)
++        # Possible values are: False, adler32, crc32
++        "server_id_use_crc": (bool, str),
+     }
+ )
+ 
+@@ -1296,6 +1299,7 @@ DEFAULT_MINION_OPTS = immutabletypes.freeze(
+         "global_state_conditions": None,
+         "reactor_niceness": None,
+         "fips_mode": False,
++        "server_id_use_crc": False,
+     }
+ )
+ 
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 1199ad274f..5c12556346 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -21,6 +21,7 @@ import subprocess
+ import sys
+ import time
+ import uuid
++import zlib
+ from errno import EACCES, EPERM
+ 
+ import salt.exceptions
+@@ -3382,6 +3383,36 @@ def _hw_data(osdata):
+     return grains
+ 
+ 
++def _get_hash_by_shell():
++    """
++    Shell-out Python 3 for compute reliable hash
++    :return:
++    """
++    id_ = __opts__.get("id", "")
++    id_hash = None
++    py_ver = sys.version_info[:2]
++    if py_ver >= (3, 3):
++        # Python 3.3 enabled hash randomization, so we need to shell out to get
++        # a reliable hash.
++        id_hash = __salt__["cmd.run"](
++            [sys.executable, "-c", 'print(hash("{}"))'.format(id_)],
++            env={"PYTHONHASHSEED": "0"},
++        )
++        try:
++            id_hash = int(id_hash)
++        except (TypeError, ValueError):
++            log.debug(
++                "Failed to hash the ID to get the server_id grain. Result of hash command: %s",
++                id_hash,
++            )
++            id_hash = None
++    if id_hash is None:
++        # Python < 3.3 or error encountered above
++        id_hash = hash(id_)
++
++    return abs(id_hash % (2 ** 31))
++
++
+ def get_server_id():
+     """
+     Provides an integer based on the FQDN of a machine.
+@@ -3392,10 +3423,19 @@ def get_server_id():
+     #   server_id
+ 
+     if salt.utils.platform.is_proxy():
+-        return {}
+-    id_ = __opts__.get("id", "")
+-    hash_ = int(hashlib.sha256(id_.encode()).hexdigest(), 16)
+-    return {"server_id": abs(hash_ % (2**31))}
++        server_id = {}
++    else:
++        use_crc = __opts__.get("server_id_use_crc")
++        if bool(use_crc):
++            id_hash = (
++                getattr(zlib, use_crc, zlib.adler32)(__opts__.get("id", "").encode())
++                & 0xFFFFFFFF
++            )
++        else:
++            id_hash = _get_hash_by_shell()
++        server_id = {"server_id": id_hash}
++
++    return server_id
+ 
+ 
+ def get_master():
+-- 
+2.39.2
+
+

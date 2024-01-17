@@ -1,0 +1,21 @@
+Index: smcroute-2.5.3/smcroute.service.in
+===================================================================
+--- smcroute-2.5.3.orig/smcroute.service.in
++++ smcroute-2.5.3/smcroute.service.in
+@@ -20,6 +20,16 @@ NoNewPrivileges=true
+ ProtectControlGroups=true
+ ProtectSystem=full
+ ProtectHome=true
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++RestrictRealtime=true
++# end of automatic additions 
+ 
+ [Install]
+ WantedBy=multi-user.target

@@ -1,0 +1,608 @@
+From 41387eda390183ed390f5a9e612cb0d47f68628e Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Mon, 20 Feb 2023 15:26:06 +0100
+Subject: [PATCH 1/2] to_to_nox implementation for tox 4
+
+---
+ nox/tox4_to_nox.jinja2 | 33 +++++++++++++++++
+ nox/tox_to_nox.py      | 84 ++++++++++++++++++++++++++++++++++++++----
+ pyproject.toml         |  2 +-
+ 3 files changed, 110 insertions(+), 9 deletions(-)
+ create mode 100644 nox/tox4_to_nox.jinja2
+
+diff --git a/nox/tox4_to_nox.jinja2 b/nox/tox4_to_nox.jinja2
+new file mode 100644
+index 00000000..e5a67d9b
+--- /dev/null
++++ b/nox/tox4_to_nox.jinja2
+@@ -0,0 +1,33 @@
++import nox
++
++{% for envname, envconfig in config.items()|sort: %}
++@nox.session({%- if envconfig.base_python %}python='{{envconfig.base_python}}'{%- endif %})
++def {{fixname(envname)}}(session):
++    {%- if envconfig.description != '' %}
++    """{{envconfig.description}}"""
++    {%- endif %}
++    {%- set envs = envconfig.get('set_env', {}) -%}
++    {%- for key, value in envs.items()|sort: %}
++    session.env['{{key}}'] = '{{value}}'
++    {%- endfor %}
++
++    {%- if envconfig.deps %}
++    session.install({{envconfig.deps}})
++    {%- endif %}
++
++    {%- if not envconfig.skip_install %}
++    {%- if envconfig.use_develop %}
++    session.install('-e', '.')
++    {%- else %}
++    session.install('.')
++    {%- endif -%}
++    {%- endif %}
++
++    {%- if envconfig.change_dir %}
++    session.chdir('{{envconfig.change_dir}}')
++    {%- endif %}
++
++    {%- for command in envconfig.commands %}
++    session.run({{command}})
++    {%- endfor %}
++{% endfor %}
+diff --git a/nox/tox_to_nox.py b/nox/tox_to_nox.py
+index a6591b4b..26b0146c 100644
+--- a/nox/tox_to_nox.py
++++ b/nox/tox_to_nox.py
+@@ -17,24 +17,38 @@
+ from __future__ import annotations
+ 
+ import argparse
++import os
+ import pkgutil
+-from typing import Any, Iterator
++import re
++from configparser import ConfigParser
++from pathlib import Path
++from subprocess import check_output
++from typing import Any, Iterable
+ 
+ import jinja2
+ import tox.config
++from tox import __version__ as TOX_VERSION
+ 
+-_TEMPLATE = jinja2.Template(
+-    pkgutil.get_data(__name__, "tox_to_nox.jinja2").decode("utf-8"),  # type: ignore[union-attr]
+-    extensions=["jinja2.ext.do"],
+-)
++TOX4 = TOX_VERSION[0] == "4"
+ 
++if TOX4:
++    _TEMPLATE = jinja2.Template(
++        pkgutil.get_data(__name__, "tox4_to_nox.jinja2").decode("utf-8"),  # type: ignore[union-attr]
++        extensions=["jinja2.ext.do"],
++    )
++else:
++    _TEMPLATE = jinja2.Template(
++        pkgutil.get_data(__name__, "tox_to_nox.jinja2").decode("utf-8"),  # type: ignore[union-attr]
++        extensions=["jinja2.ext.do"],
++    )
+ 
+-def wrapjoin(seq: Iterator[Any]) -> str:
++
++def wrapjoin(seq: Iterable[Any]) -> str:
+     return ", ".join([f"'{item}'" for item in seq])
+ 
+ 
+ def fixname(envname: str) -> str:
+-    envname = envname.replace("-", "_")
++    envname = envname.replace("-", "_").replace("testenv:", "")
+     if not envname.isidentifier():
+         print(
+             f"Environment {envname!r} is not a valid nox session name.\n"
+@@ -49,7 +63,61 @@ def main() -> None:
+ 
+     args = parser.parse_args()
+ 
+-    config = tox.config.parseconfig([])
++    if TOX4:
++        output = check_output(["tox", "config"], text=True)
++        original_config = ConfigParser()
++        original_config.read_string(output)
++        config: dict[str, dict[str, Any]] = {}
++
++        for name, section in original_config.items():
++            if name == "DEFAULT":
++                continue
++
++            config[name] = dict(section)
++            # Convert set_env from string to dict
++            set_env = {}
++            for var in section.get("set_env", "").strip().splitlines():
++                k, v = var.split("=")
++                if k not in (
++                    "PYTHONHASHSEED",
++                    "PIP_DISABLE_PIP_VERSION_CHECK",
++                    "PYTHONIOENCODING",
++                ):
++                    set_env[k] = v
++
++            config[name]["set_env"] = set_env
++
++            config[name]["commands"] = [
++                wrapjoin(c.split()) for c in section["commands"].strip().splitlines()
++            ]
++
++            config[name]["deps"] = wrapjoin(section["deps"].strip().splitlines())
++
++            for option in "skip_install", "use_develop":
++                if section.get(option):
++                    if section[option] == "False":
++                        config[name][option] = False
++                    else:
++                        config[name][option] = True
++
++            if os.path.isabs(section["base_python"]) or re.match(
++                r"py\d+", section["base_python"]
++            ):
++                impl = (
++                    "python" if section["py_impl"] == "cpython" else section["py_impl"]
++                )
++                config[name]["base_python"] = impl + section["py_dot_ver"]
++
++            change_dir = Path(section.get("change_dir"))
++            rel_to_cwd = change_dir.relative_to(Path.cwd())
++            if str(rel_to_cwd) == ".":
++                config[name]["change_dir"] = None
++            else:
++                config[name]["change_dir"] = rel_to_cwd
++
++    else:
++        config = tox.config.parseconfig([])
++
+     output = _TEMPLATE.render(config=config, wrapjoin=wrapjoin, fixname=fixname)
+ 
+     with open(args.output, "w") as outfile:
+diff --git a/pyproject.toml b/pyproject.toml
+index c234bf89..b027d299 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -50,7 +50,7 @@ dependencies = [
+ [project.optional-dependencies]
+ tox_to_nox = [
+   "jinja2",
+-  "tox<4",
++  "tox",
+ ]
+ 
+ [project.urls]
+
+From 0a317823ed4cfe9c73855bcd21e178187703b292 Mon Sep 17 00:00:00 2001
+From: Lumir Balhar <lbalhar@redhat.com>
+Date: Mon, 20 Feb 2023 15:28:02 +0100
+Subject: [PATCH 2/2] Testing and CI with multiple versions of tox
+
+---
+ .github/workflows/ci.yml | 29 ++++++++++++-
+ noxfile.py               | 26 ++++++++++--
+ pyproject.toml           |  1 +
+ tests/test_tox_to_nox.py | 92 +++++++++++++++++++++-------------------
+ 4 files changed, 100 insertions(+), 48 deletions(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 9d2476ec..4b034de5 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -18,6 +18,7 @@ jobs:
+       matrix:
+         os: [ubuntu-20.04, windows-latest, macos-latest]
+         python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
++        tox-version: ["latest", "<4"]
+     steps:
+       - uses: actions/checkout@v3
+       - name: Set up Python ${{ matrix.python-version }}
+@@ -35,7 +36,33 @@ jobs:
+         run: |
+           python -m pip install --disable-pip-version-check .
+       - name: Run tests on ${{ matrix.os }}
+-        run: nox --non-interactive --error-on-missing-interpreter --session "tests-${{ matrix.python-version }}" -- --full-trace
++        run: nox --non-interactive --error-on-missing-interpreter --session "tests(python='${{ matrix.python-version }}', tox_version='${{ matrix.tox-version }}')" -- --full-trace
++      - name: Save coverage report
++        uses: actions/upload-artifact@v3
++        with:
++          name: coverage
++          path: .coverage.*
++
++  coverage:
++    needs: build
++    runs-on: ubuntu-latest
++    steps:
++      - uses: actions/checkout@v3
++      - name: Set up Python 3.11
++        uses: actions/setup-python@v4
++        with:
++          python-version: "3.11"
++      - name: Install Nox-under-test
++        run: |
++          python -m pip install --disable-pip-version-check .
++      - name: Download individual coverage reports
++        uses: actions/download-artifact@v3
++        with:
++          name: coverage
++      - name: Display structure of downloaded files
++        run: ls -aR
++      - name: Run coverage
++        run: nox --non-interactive --session "cover"
+ 
+   lint:
+     runs-on: ubuntu-latest
+diff --git a/noxfile.py b/noxfile.py
+index dc23b51d..c6e5d43d 100644
+--- a/noxfile.py
++++ b/noxfile.py
+@@ -31,12 +31,29 @@
+     nox.options.sessions.append("conda_tests")
+ 
+ 
+-@nox.session(python=["3.7", "3.8", "3.9", "3.10", "3.11"])
+-def tests(session: nox.Session) -> None:
++@nox.session
++@nox.parametrize(
++    "python, tox_version",
++    [
++        (python, tox_version)
++        for python in ("3.7", "3.8", "3.9", "3.10", "3.11")
++        for tox_version in ("latest", "<4")
++    ],
++)
++def tests(session: nox.Session, tox_version: str) -> None:
+     """Run test suite with pytest."""
++    # Because there is a dependency conflict between
++    # argcomplete and the latest tox (both depend on
++    # a different version of importlibmetadata for Py 3.7)
++    # pip installs tox 3 as the latest one for Py 3.7.
++    if session.python == "3.7" and tox_version == "latest":
++        return
++
+     session.create_tmp()  # Fixes permission errors on Windows
+     session.install("-r", "requirements-test.txt")
+     session.install("-e", ".[tox_to_nox]")
++    if tox_version != "latest":
++        session.install(f"tox{tox_version}")
+     session.run(
+         "pytest",
+         "--cov=nox",
+@@ -44,9 +61,10 @@ def tests(session: nox.Session) -> None:
+         "pyproject.toml",
+         "--cov-report=",
+         *session.posargs,
+-        env={"COVERAGE_FILE": f".coverage.{session.python}"},
++        env={
++            "COVERAGE_FILE": f".coverage.{session.python}.tox.{tox_version.lstrip('<')}"
++        },
+     )
+-    session.notify("cover")
+ 
+ 
+ @nox.session(python=["3.7", "3.8", "3.9", "3.10"], venv_backend="conda")
+diff --git a/pyproject.toml b/pyproject.toml
+index b027d299..a0945d2a 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -73,6 +73,7 @@ profile = "black"
+ 
+ [tool.coverage.run]
+ branch = true
++relative_files = true
+ omit = [ "nox/_typing.py" ]
+ 
+ [tool.coverage.report]
+diff --git a/tests/test_tox_to_nox.py b/tests/test_tox_to_nox.py
+index c7b54850..c4d86b60 100644
+--- a/tests/test_tox_to_nox.py
++++ b/tests/test_tox_to_nox.py
+@@ -18,9 +18,14 @@
+ import textwrap
+ 
+ import pytest
++from tox import __version__ as TOX_VERSION
+ 
+ from nox import tox_to_nox
+ 
++TOX4 = TOX_VERSION[0] == "4"
++PYTHON_VERSION = f"{sys.version_info.major}.{sys.version_info.minor}"
++PYTHON_VERSION_NODOT = PYTHON_VERSION.replace(".", "")
++
+ 
+ @pytest.fixture
+ def makeconfig(tmpdir):
+@@ -40,9 +45,9 @@ def makeconfig(toxini_content):
+ def test_trivial(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+     [tox]
+-    envlist = py27
++    envlist = py{PYTHON_VERSION_NODOT}
+     """
+         )
+     )
+@@ -50,12 +55,12 @@ def test_trivial(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+     import nox
+ 
+ 
+-    @nox.session(python='python2.7')
+-    def py27(session):
++    @nox.session(python='python{PYTHON_VERSION}')
++    def py{PYTHON_VERSION_NODOT}(session):
+         session.install('.')
+     """
+         ).lstrip()
+@@ -65,9 +70,9 @@ def py27(session):
+ def test_skipinstall(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+     [tox]
+-    envlist = py27
++    envlist = py{PYTHON_VERSION_NODOT}
+ 
+     [testenv]
+     skip_install = True
+@@ -78,12 +83,12 @@ def test_skipinstall(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+     import nox
+ 
+ 
+-    @nox.session(python='python2.7')
+-    def py27(session):
++    @nox.session(python='python{PYTHON_VERSION}')
++    def py{PYTHON_VERSION_NODOT}(session):
+     """
+         ).lstrip()
+     )
+@@ -92,9 +97,9 @@ def py27(session):
+ def test_usedevelop(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+     [tox]
+-    envlist = py27
++    envlist = py{PYTHON_VERSION_NODOT}
+ 
+     [testenv]
+     usedevelop = True
+@@ -105,12 +110,12 @@ def test_usedevelop(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+     import nox
+ 
+ 
+-    @nox.session(python='python2.7')
+-    def py27(session):
++    @nox.session(python='python{PYTHON_VERSION}')
++    def py{PYTHON_VERSION_NODOT}(session):
+         session.install('-e', '.')
+     """
+         ).lstrip()
+@@ -120,12 +125,12 @@ def py27(session):
+ def test_commands(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+     [tox]
+     envlist = lint
+ 
+     [testenv:lint]
+-    basepython = python2.7
++    basepython = python{PYTHON_VERSION}
+     commands =
+         python setup.py check --metadata --restructuredtext --strict
+         flake8 \\
+@@ -138,11 +143,11 @@ def test_commands(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+     import nox
+ 
+ 
+-    @nox.session(python='python2.7')
++    @nox.session(python='python{PYTHON_VERSION}')
+     def lint(session):
+         session.install('.')
+         session.run('python', 'setup.py', 'check', '--metadata', \
+@@ -156,12 +161,12 @@ def lint(session):
+ def test_deps(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+     [tox]
+     envlist = lint
+ 
+     [testenv:lint]
+-    basepython = python2.7
++    basepython = python{PYTHON_VERSION}
+     deps =
+       flake8
+       gcp-devrel-py-tools>=0.0.3
+@@ -172,11 +177,11 @@ def test_deps(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+     import nox
+ 
+ 
+-    @nox.session(python='python2.7')
++    @nox.session(python='python{PYTHON_VERSION}')
+     def lint(session):
+         session.install('flake8', 'gcp-devrel-py-tools>=0.0.3')
+         session.install('.')
+@@ -188,12 +193,12 @@ def lint(session):
+ def test_env(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+     [tox]
+     envlist = lint
+ 
+     [testenv:lint]
+-    basepython = python2.7
++    basepython = python{PYTHON_VERSION}
+     setenv =
+         SPHINX_APIDOC_OPTIONS=members,inherited-members,show-inheritance
+         TEST=meep
+@@ -204,11 +209,11 @@ def test_env(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+     import nox
+ 
+ 
+-    @nox.session(python='python2.7')
++    @nox.session(python='python{PYTHON_VERSION}')
+     def lint(session):
+         session.env['SPHINX_APIDOC_OPTIONS'] = \
+ 'members,inherited-members,show-inheritance'
+@@ -222,12 +227,12 @@ def lint(session):
+ def test_chdir(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+     [tox]
+     envlist = lint
+ 
+     [testenv:lint]
+-    basepython = python2.7
++    basepython = python{PYTHON_VERSION}
+     changedir = docs
+     """
+         )
+@@ -236,11 +241,11 @@ def test_chdir(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+     import nox
+ 
+ 
+-    @nox.session(python='python2.7')
++    @nox.session(python='python{PYTHON_VERSION}')
+     def lint(session):
+         session.install('.')
+         session.chdir('docs')
+@@ -252,12 +257,12 @@ def lint(session):
+ def test_dash_in_envname(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+             [tox]
+             envlist = test-with-dash
+ 
+             [testenv:test-with-dash]
+-            basepython = python2.7
++            basepython = python{PYTHON_VERSION}
+             """
+         )
+     )
+@@ -265,11 +270,11 @@ def test_dash_in_envname(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+         import nox
+ 
+ 
+-        @nox.session(python='python2.7')
++        @nox.session(python='python{PYTHON_VERSION}')
+         def test_with_dash(session):
+             session.install('.')
+         """
+@@ -277,15 +282,16 @@ def test_with_dash(session):
+     )
+ 
+ 
++@pytest.mark.skipif(TOX4, reason="Not supported in tox 4.")
+ def test_non_identifier_in_envname(makeconfig, capfd):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+             [tox]
+             envlist = test-with-&
+ 
+             [testenv:test-with-&]
+-            basepython = python2.7
++            basepython = python{PYTHON_VERSION}
+             """
+         )
+     )
+@@ -293,11 +299,11 @@ def test_non_identifier_in_envname(makeconfig, capfd):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+         import nox
+ 
+ 
+-        @nox.session(python='python2.7')
++        @nox.session(python='python{PYTHON_VERSION}')
+         def test_with_&(session):
+             session.install('.')
+         """
+@@ -316,12 +322,12 @@ def test_with_&(session):
+ def test_descriptions_into_docstrings(makeconfig):
+     result = makeconfig(
+         textwrap.dedent(
+-            """
++            f"""
+             [tox]
+             envlist = lint
+ 
+             [testenv:lint]
+-            basepython = python2.7
++            basepython = python{PYTHON_VERSION}
+             description =
+                 runs the lint action
+                 now with an unnecessary second line
+@@ -332,11 +338,11 @@ def test_descriptions_into_docstrings(makeconfig):
+     assert (
+         result
+         == textwrap.dedent(
+-            """
++            f"""
+             import nox
+ 
+ 
+-            @nox.session(python='python2.7')
++            @nox.session(python='python{PYTHON_VERSION}')
+             def lint(session):
+                 \"\"\"runs the lint action now with an unnecessary second line\"\"\"
+                 session.install('.')

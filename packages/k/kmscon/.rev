@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d54d829b9521b0eb842ae5ddd674f7d</srcmd5>
+    <version>8.1~1536176839</version>
+    <time>1552985900</time>
+    <user>dimstar_suse</user>
+    <comment>Reintroduce kmscon</comment>
+    <requestid>682467</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7af6bf6cf688e27a4e99ead989b02b49</srcmd5>
+    <version>9.0.0</version>
+    <time>1661863782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.0.0
+  * uxkb: add Compose (dead-key) support
+  * Add --xkb-compose-file option
+  * Custom palette support
+- Delete kmscon-x-linking.patch (obsolete)
+- Add 0001-Use-correct-systemd-system-unit-directory.patch</comment>
+    <requestid>1000051</requestid>
+  </revision>
+</revisionlist>

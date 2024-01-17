@@ -1,0 +1,11 @@
+--- xvfb-run.sh	2014-05-30 01:03:57.862452101 +0200
++++ xvfb-run.sh	2014-05-30 01:10:32.792647392 +0200
+@@ -151,7 +151,7 @@
+         error "temporary directory $XVFB_RUN_TMPDIR already exists"
+         exit 4
+     fi
+-    AUTHFILE=$(mktemp -p "$XVFB_RUN_TMPDIR" Xauthority)
++    AUTHFILE=$(mktemp -p "$XVFB_RUN_TMPDIR" Xauthority.XXXXXXXX)
+ fi
+ 
+ # Start Xvfb.

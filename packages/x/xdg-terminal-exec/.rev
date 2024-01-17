@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc426ce334652b1efd792890a8b112a1</srcmd5>
+    <version>20230731+git.6426085</version>
+    <time>1690892138</time>
+    <user>maxlin_factory</user>
+    <comment>As used by Glib for defining the default terminal application, of great use in the non-Gnome desktops.</comment>
+    <requestid>1101538</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d1c543c4c3971ea8e4fdbd661cc34af0</srcmd5>
+    <version>20231003+git.e5c20d0</version>
+    <time>1696760326</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231003+git.e5c20d0:
+  * test/tests.bats: Add a TODO for additional tests
+  * Add myself as a contributor
+  * xdg-terminal-exec: Remove now unused code
+  * xdg-terminal-exec: Move entry ID loops out to main
+  * xdg-terminal-exec: Use globals set by `find*entry`
+  * xdg-terminal-exec: Parse config file using `case`
+  * xdg-terminal-exec: Check entries using `case`
+  * xdg-terminal-exec: Parse entry file using `case`
+  * xdg-terminal-exec: set `errexit` and `nounset`
+  * README: Small fixes and changes
+  * default debug value (fixes #24)
+  * xdg-terminal-exec: Remove empty variable assignments
+  * xdg-terminal-exec: Normalise printing
+  * xdg-terminal-exec: Normalise string quotes
+  * xdg-terminal-exec: Indent here documents
+  * tests: Make `tests.bats` executable
+  * xdg-terminal-exec: run `shfmt`
+  * xdg-terminal-exec: don't use `find -printf`
+</comment>
+    <requestid>1116205</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>10b724c5eb1a54a51902f1e94bc951ac</srcmd5>
+    <version>20231014+git.b6d2874</version>
+    <time>1698438489</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231014+git.b6d2874:
+  * update readme
+  * WIP #28 internal list deduplicator, formatting
+  * WIP #28 add stock applications controls to configs
+  * check_bool function
+  * WIP #28 filter terminals from applications
+  * tr is faster than xargs -n1 on lots of lines
+- Store only *.obscpio, the tarball is generated in buildtime.
+</comment>
+    <requestid>1120603</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f28eb253f0fe12eecc54785828b623fc</srcmd5>
+    <version>20231124+git.fc8a6e0</version>
+    <time>1700865339</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231124+git.fc8a6e0:
+  * do not let alias chew on empty data
+  * Support Desktop Actions, update docs
+  * xdg-terminal-exec: Don't default to `xterm`
+  * README: Reflect new `XTE_STOCK_TERMINALS` behaviour
+  * xdg-terminal-exec: Convert all IDs in one `tr` call
+  * xdg-terminal-exec: Map ID-path pairs using aliases
+  * xdg-terminal-exec: Mask `IFS` inside functions
+  * xdg-terminal-exec: Introduce `check_entry_key`
+  * xdg-terminal-exec: Introduce `find_entry`
+  * xdg-terminal-exec: Introduce `find_entry_paths`
+  * xdg-terminal-exec: check `Categories` in `check_entry`
+  * xdg-terminal-exec: Use `$XTE_STOCK_TERMINALS`
+  * xdg-terminal-exec: Introduce `read_config_paths`
+  * xdg-terminal-exec: Introduce `find_config_paths`
+  * xdg-terminal-exec: Use `find -print`
+  * xdg-terminal-exec: Make `find` call POSIX compliant
+  * xdg-terminal-exec: match default paths with spec
+  * xdg-terminal-exec: disable pathname expansion
+</comment>
+    <requestid>1128631</requestid>
+  </revision>
+</revisionlist>

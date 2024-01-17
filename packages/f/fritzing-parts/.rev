@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f19c5cc58610bd21e14abb2d54c7b50</srcmd5>
+    <version>0.9.2b</version>
+    <time>1441146981</time>
+    <user>dimstar_suse</user>
+    <comment>Upstream split fritzing into two repositories, this package contains the parts part.
+
+Fixed the license issues according to previous request.</comment>
+    <requestid>328189</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b128f99e30adee457266e9bf5c15eea2</srcmd5>
+    <version>0.9.3b</version>
+    <time>1486465660</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.9.3b</comment>
+    <requestid>455011</requestid>
+  </revision>
+</revisionlist>

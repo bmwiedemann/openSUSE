@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Dec 27 16:51:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.0:
+  * Support Django 5.0.
+  * Drop Python 3.7 support.
+  * Support Python 3.12.
+  * Changed documentation site URL from
+    ``https://whitenoise.evans.io/`` to
+    ``https://whitenoise.readthedocs.io/``.
+  * Support Django 4.2.
+  * Remove further support for byte strings from the ``root`` and
+    ``prefix`` arguments to ``WhiteNoise``, and Django’s
+    ``STATIC_ROOT`` setting.
+  * Django does not support ``STATIC_ROOT`` being a byte string.
+  * Add some video file extensions to be ignored during
+    compression.
+  * Remove the behaviour of decoding byte strings passed for
+    settings that take strings.
+  * Document “hidden” feature of setting ``max_age`` to ``None``
+    to disable the ``Cache-Control`` header.
+  * Drop support for working as old-style Django middleware, as
+    support was `removed in Django 2.0
+
+-------------------------------------------------------------------
+Sat Aug 26 09:49:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Tue Oct 11 17:14:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.2.0
+  * Support Python 3.11.
+  * Support Django 4.1.
+
+-------------------------------------------------------------------
+Tue Feb 22 17:49:24 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.0.0:
+  - Drop support for Python 3.5 and 3.6.
+  - Add support for Python 3.9 and 3.10.
+  - Drop support for Django 1.11, 2.0, and 2.1.
+  - Add support for Django 4.0.
+  - Import new MIME types from Nginx, changes:
+      - .avif files are now served with the image/avif MIME type.
+      - Open Document files with extensions .odg, .odp,
+        .ods, and .odt are now served with their respective
+        application/vnd.oasis.opendocument.* MIME types.
+  - The whitenoise.__version__ attribute has been removed. Use
+    importlib.metadata.version() to check the version of
+    Whitenoise if you need to.
+  - Requests using the Range header can no longer read beyond the
+    end of the requested range.
+  - Treat empty and "*" values for Accept-Encoding as if the
+    client doesn’t support any encoding.
+  - Gracefully handle unparsable If-Modified-Since headers
+    (thanks @danielegozzi).
+  - Add mimetype for Markdown (.md) files
+  - Various documentation improvements
+  - Add support for relative STATIC_URLs in settings, as allowed
+    in Django 3.1.
+  - Add mimetype for .mjs (JavaScript module) files and use
+    recommended text/javascript mimetype for .js files.
+  - Various documentation improvements (thanks @lukeburden).
+  - Add a manifest_strict setting to prevent Django throwing
+    errors when missing files are referenced.
+  - Fix packaging to indicate only Python 3.5+ compatibiity (thanks @mdalp).
+
+-------------------------------------------------------------------
+Tue Jul 21 12:51:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.1.0
+  * Add a manifest_strict setting to prevent Django throwing errors
+    when missing files are referenced
+
+-------------------------------------------------------------------
+Thu Feb  6 13:10:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 5.0.1
+  * remove Python 2 compatibility
+  * Fix incompatibility with Django 3.0
+  * Lots of improvements to the test suite
+  * Make tests more deterministic and easier to run outside of tox.
+- package GitHub tarball because of tests
+
+-------------------------------------------------------------------
+Mon Jul 22 11:38:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.3:
+  * Fix handling of zero-valued mtimes which can occur when running on some filesystems
+  * Fix potential path traversal attack while running in autorefresh mode on Windows
+
+-------------------------------------------------------------------
+Sun Jul  7 22:31:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure descriptions are neutral and not exaggerated.
+
+-------------------------------------------------------------------
+Wed Jun 19 11:46:32 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 4.1.2)

@@ -1,0 +1,16 @@
+--- a/plugins/emperor_pg/uwsgiplugin.py
++++ b/plugins/emperor_pg/uwsgiplugin.py
+@@ -2,11 +2,8 @@ import os
+ 
+ NAME = 'emperor_pg'
+ 
+-CFLAGS = ['-I' + os.popen('pg_config --includedir').read().rstrip()]
++CFLAGS = os.popen('pkg-config --cflags libpq').read().rstrip().split()
+ LDFLAGS = []
+-LIBS = [
+-    '-L' + os.popen('pg_config --libdir').read().rstrip(),
+-    '-lpq'
+-]
++LIBS = os.popen('pkg-config --libs libpq').read().rstrip().split()
+ 
+ GCC_LIST = ['emperor_pg']

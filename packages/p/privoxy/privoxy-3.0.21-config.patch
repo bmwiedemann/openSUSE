@@ -1,0 +1,24 @@
+---
+ config |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/config
++++ b/config
+@@ -259,7 +259,7 @@
+ #
+ #      No trailing "/", please.
+ #
+-confdir .
++confdir /etc
+ #
+ #  2.2. templdir
+ #  ==============
+@@ -344,7 +344,7 @@
+ #
+ #      No trailing "/", please.
+ #
+-logdir .
++logdir /log
+ #
+ #  2.5. actionsfile
+ #  =================

@@ -1,0 +1,727 @@
+-------------------------------------------------------------------
+Fri Nov 10 15:00:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230614d (bsc#1217032):
+  * fix buffer overflow when parsing TCP packets where the sender
+    includes a TCP fast open cookie larger than 16 bytes
+
+-------------------------------------------------------------------
+Sat Oct  7 09:04:41 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20230614c:
+ - scamper:
+  * fix compile-on-windows support; use icmp-echo probes instead of UDP
+    probes for traceroute on windows; provide "attach" support on
+    windows.
+  * fix compile-on-FreeBSD-15+ where pf firewall does not have
+    DIOCGETSTATUS ioctl
+  * in scamper's remote control (-R option), fix file descriptor leak
+    when unable to reconnect to the remote controller.
+  * add --disable-scamper-trace --disable-scamper-ping
+    --disable-scamper-tracelb --disable-scamper-dealias
+    --disable-scamper-tbit --disable-scamper-sting
+    --disable-scamper-sniff --disable-scamper-host configure options
+    to build scamper without specific measurement capabilities.
+ - sc_attach:
+  * add windows support
+
+-------------------------------------------------------------------
+Sun Aug 13 06:05:08 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20230614b:
+ - scamper:
+  * fix handling of EPOLLHUP on client disconnection -- Linux-specific
+    (scamper -U /path/to/socket)
+ - libscamperctrl:
+  * fix handling of disconnected instances
+
+-------------------------------------------------------------------
+Wed Aug  9 05:58:57 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20230614a
+ * configure:
+  * better tests for zlib, libbz2, and liblzma that check for both
+    libraries and headers.
+  * change --with-sc_uptime, --with-sc_hoiho, and --with-tests to be
+    --enable-sc_uptime, --enable-sc_hoiho, and --enable-tests
+  * disable maintainer mode, pass foreign to AM_INIT_AUTOMAKE
+ * scamper:
+  * remove reading regular files from poll/select/epoll/kqueue path,
+    which fixes reading regular input files (-f option to scamper) using
+    epoll or kqueue
+  * fix reading stdin as input (-f option to scamper) when using
+    epoll (catch EPOLLHUP)
+  * add DNS server to host signature, add host path for scamper_task_find
+  * rework scamper_osinfo to work with malformed release names (uname -r)
+  * dealias: do not crash on malformed prefixscan and bump commands
+  * dealias: fix memory leak of probedefs on malformed commands
+  * sting: fix memory leak of recorded packets
+  * remove tsps input method (-O tsps option to scamper)
+  * update manual page
+ * libscamperctrl:
+  * link against list.o and splaytree.o so that the library is self-contained
+  * fix memory leak when task is not accepted
+  * API improvements
+ * libscamperfile:
+  * fix memory leak when reading SOA/MX from warts file
+  * fix memory leak when reading PMTUD traceroute structures from warts file
+  * sting: fix memory leak of recorded packets
+ * sc_analysis_dump, sc_warts2pcap, sc_wartscat, sc_wartsfilter:
+  * link against list.o/utils.o so that these utilities are not reliant on
+    those symbols being exported from libscamperfile
+ * sc_prefixprober:
+  * allow compression type to be specified using -O
+  * free scamper_addr_t as each are removed from the list to probe
+ * sc_remoted:
+  * catch EPOLLHUP with epoll
+ * sc_warts2text:
+  * fix memory leaks
+ * sc_wartsdump:
+  * fix memory leaks
+  * link against utils.o so that sc_wartsdump is not reliant on those
+    symbols being exported from libscamperfile
+
+-------------------------------------------------------------------
+Tue Jun 13 06:20:24 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20230605:
+ * HEADSUP: if you previously used -e pidfile to record the pid of a
+   running scamper process, there is a good chance that the pidfile is
+   owned by root.  scamper now attempts to write this file using the uid
+   that started scamper, and will not be able to write it if scamper is
+   not started by root (it should not be, rather the scamper binary
+   should be setuid root).  Please delete the existing pidfile, or change
+   its ownership, prior to restarting scamper, or scamper will not start.
+ * scamper:
+  * write a process ID that the user that started scamper can kill
+    in the pidfile when using privsep.
+  * when using privsep, exit the unprivileged process if the privileged
+    process exits (is killed)
+  * run as real uid from the start of scamper, for both privsep and
+    not-privsep.
+  * fix bug where attempting to open an unsupported datalink would
+    leave a freed scamper_fd_t in the fd_tree and fd_list, leading to
+    a crash.
+  * fix double free triggered when a user provides an invalid dealias
+    command.
+  * fix memory leak if the payload was specified twice to ping or trace
+  * rework pollfunc selection logic, use kqueue/epoll by default.
+  * remove _malloc_options = "AJ" as this only works on unsupported
+    versions of FreeBSD.
+  * add additional paramaters to attach command to allow the user
+    to override list and cycle parameters, documented in manual page.
+  * catch EAGAIN/EINTR from select/kqueue/epoll to allow gdb to attach
+    and detach without flagging errors.
+  * for DNS replies for host command, record reply flags and rcode.
+  * add support for SOA and NS queries in host.
+  * add a JSON output for host measurements.
+  * do not let scamper emit warts to a tty.  check for isatty in
+    configure.
+  * only allow -O and -z to be specified multiple times in a trace command
+  * only allow -O to be specified multiple times in a ping command
+  * split command parsing logic out from task probing logic.  add
+    fuzzing cradle for parsing logic for all measurement types, and
+    basic unit tests for dealias, ping, and trace parsing logic.
+  * autodetect output type by file extension if output type is not
+    explicitly specified on the command line.
+ * libscamperfile:
+  * remove all struct definitions from libscamperfile (e.g.
+    scamper_trace, scamper_ping, scamper_addr, etc).  provide typedefs
+    for each (scamper_trace_t) and _get() functions that return the
+    field requested.  This change will allow hopefully allow
+    libscamperfile's version to stabilize.  all scamper utilities now
+    use these get functions.
+  * shift some functions that were previously implemented in
+    libscamperfile into the one place they were used, if they were only
+    used in (for example scamper / sc_analysis_dump / other scamper
+    utility).  delete other functions that were not used anywhere in
+    the public scamper release.
+ * libscamperctrl:
+  * fix bug by ensuring line_off is always valid after the read.
+  * catch EAGAIN from select.
+  * add kqueue support.
+  * add scamper_attp_* routines to allow applications to specify
+    list and cycle parameters.
+  * for scamper_inst_do, take a parameter to keep with each task.
+  * add scamper_task_getparam function to get the parameter.
+  * add scamper_task_getcmd function to get the command associated with a task.
+  * use TYPE_FATAL instead of TYPE_ERR in application callback when
+    scamper_inst_read encounters a fatal error, only use TYPE_ERR when
+    scamper does not accept a command.
+ * sc_prefixprober:
+  * new driver to conduct measurements (ping, trace, tracelb) to an
+    address in each prefix.
+ * sc_ally:
+  * use scamper_file_t outfiles, add ability to write gz/bz2/xz files.
+  * ask for cycle-start and cycle-stop records, write them out.
+  * improve use of libscamperctrl.
+ * sc_hoiho:
+  * add support for VP geohints, document.
+  * silence -Wshadow.
+  * silence warnings related to assignments that are not used.
+ * sc_ipiddump:
+  * fix memory leak when user specifies invalid command line options.
+ * sc_filterpolicy:
+  * ask for cycle-start and cycle-stop records, write them out.
+  * improve use of libscamperctrl.
+ * sc_pinger:
+  * signal done to get cycle stop record.
+  * improve use of libscamperctrl.
+  * document remote socket option.
+ * sc_prefixscan:
+  * use scamper_file_t outfiles, add ability to write gz/bz2/xz files.
+  * ask for cycle-start and cycle-stop records, write them out.
+  * improve use of libscamperctrl.
+ * sc_remoted:
+  * catch EAGAIN from select.
+ * sc_speedtrap:
+  * ask for cycle-start and cycle-stop records, write them out.
+  * improve use of libscamperctrl.
+ * sc_uptime:
+  * silence -Wshadow.
+  * silence warnings related to assignments that are not used.
+  * fix memory leak in up_reboots_doone.
+ * sc_warts2json:
+  * fix memory leak with cycle start/stop records.
+  * emit json for host records.
+ * sc_wartscat:
+  * fix ability to write compressed warts files.
+- update to version 20230323:
+ * libscamperfile:
+  * add ability for scamper and all utilities to read warts and arts
+    files compressed with bzip2 and xz, if libbz2 and liblzma are found
+    by configure.
+  * add ability for scamper and all utilities to write warts files
+    compressed with gzip, bzip2, and xz, if zlib, libbz2, and liblzma
+    are found by configure.
+  * tidy up libscamperfile code.
+ * misc:
+  * silence -Wsign-compare and -Wtype-limits
+  * tidy usage statements for sc_uptime and sc_tbitpmtud
+  * document use of '-' to read from stdin and write to stdout
+    in sc_wartsfilter.1
+
+-------------------------------------------------------------------
+Tue Mar  7 09:28:35 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 20230302:
+ - scamper:
+  * use a random source port / ICMP ID in trace if -s 0.
+  * better parallelize pings to a single destination that use
+    udp-dport, tcp-ack-sport, or tcp-syn-sport probe methods.
+  * document default value of source port consistently for all
+    measurements that take a source port parameter in the man page.
+ - sc_wartscat:
+  * print useful error messages when encountering an error.
+  * add ability to merge neighbourdisc, tbit, sting, sniff, and host.
+
+-------------------------------------------------------------------
+Fri Feb 24 07:32:35 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 20230224:
+ - scamper:
+  - allow multiple parallel measurements to the same destination,
+ -   provided the measurements have probe signatures that scamper can
+ -   distinguish.
+  - return the associated task ID with each DATA blob in control socket.
+ -   this task ID matches the ID returned in an OK when scamper accepted
+ -   the task.
+  - in ping, only compute delay statistics on responses from destination.
+  - in ping, allow timeout to be expressed in fractions of a second.
+ - libscamperfile:
+  - support reading gz-compressed warts files.
+ - libscamperctrl:
+  - add libscamperctrl, a library to interact with a collection of
+ -   scamper instances.
+  - modify sc_ally, sc_filterpolicy, sc_prefixscan, sc_speedtrap, and
+ -   sc_pinger to use this library.
+  - this library is likely to evolve.  current behaviour is documented
+ -   in libscamperctrl manual page.
+ - misc:
+  - improve sc_wartsfilter manual page with examples.
+  - add remote control socket support to sc_pinger.
+  - fix kqueue/epoll loop in sc_remoted.
+  - consistently use size_t throughout when counting number of items.
+  - build without warnings using -Wextra -Wno-unused-parameter.
+  - improvements through adding function attributes to printf-like
+ -   functions.
+  - deorbit some unused functions from utils.c.
+
+-------------------------------------------------------------------
+Thu Dec 29 09:06:25 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 20211212e:
+ - scamper:
+  * gracefully handle situations where there is no
+    /etc/resolv.conf, or no nameserver lines in an /etc/resolv.conf
+    but a measurement or scamper-internal task wants to resolve a
+    name
+  * tidy up buggy prinf-like statements in scamper and some drivers.
+ - warts/json:
+  * in JSON output for ping, print the TCP/UDP src/dst ports or
+    ICMP id/seq used in individual probe packets,
+  * fix regression in libscamperfile so that it can read old warts
+    files.
+
+-------------------------------------------------------------------
+Sat Nov 19 07:20:02 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 20211212d:
+ - scamper:
+  * add tcp-syn-sport method to ping, document in scamper(1) manual page
+ - documentation:
+  * document trace json object in sc_warts2json(1) manual page
+
+-------------------------------------------------------------------
+Thu Aug 18 06:36:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 20211212b:
+ - scamper:
+  * add an option (-O cafile=/path/to/file) to load CA certificates
+    from a specific file when starting scamper for validating a
+    remote controller's certificate (this was released in 20211212a)
+  * add options
+    -O client-certfile=/path/to/certfile and
+    -O client-privfile=/path/to/privfile
+    to have scamper present a client certificate during a TLS handshake
+    with a remote controller
+  * fix bugs that prevent scamper from reconnecting to a remote
+    controller
+  * fix -d debugfile when scamper is built with privilege separation
+  * fix bug when writing neighbordisc measurements to warts file that
+    prevents a neighbordisc measurement from being read
+  * fix bug when reading some tracelb measurements with unresponsive hops
+    from a warts file
+  * allow user to specify fractions of a second to ping timeout (-W)
+  * use a random source port / ICMP ID in ping if -F 0
+ - sc_remoted:
+  * add -C option to specify a CA PEM file to verify client certificates
+    presented by scamper instances.
+  * add -O skipnameverification option to tell sc_remoted to verify
+    scamper presents a certificate signed by the CA, but do not do
+    name verification
+
+-------------------------------------------------------------------
+Mon Apr 25 14:13:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libscamperfile1 provides from the lib subpckage:
+  libscamperfile.so.2 is not a drop-in replacement for anything
+  that linked libscamperfile.so.1, and as such the provides is
+  invalid. The obsoletes is technically wrong, but is there to fix
+  the upgrade path of a wrongly-packaged libscamperfile.so.2 in a
+  libscamperfile1 package.
+
+-------------------------------------------------------------------
+Fri Feb 25 20:29:54 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add provices/obsoletes for old libscamperfile1 sub-package.
+
+-------------------------------------------------------------------
+Sat Feb 12 18:37:04 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 20211212a:
+ - No changelog available.
+
+-------------------------------------------------------------------
+Tue Dec 14 17:50:16 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20211212:
+ - scamper:
+  * in hostname code, handle nameserver lines with comments in them
+ - sc_remoted:
+  * fix logic to handle TLSv1.3 handshakes
+ - sc_hoiho:
+  * add the ability to learn regular expressions that extract
+    network names from router hostnames, documented in the
+    sc_hoiho man page
+
+-------------------------------------------------------------------
+Wed Oct 27 18:47:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to 20211026:
+ scamper:
+ * in trace, allow probes to multiple consecutive hops to be
+   outstanding in the network without having to stop and wait,
+   using the -N parameter documented in scamper's man page.
+ * in trace, do optional PTR lookups using the option documented
+   in scamper's man page.  output these hostnames into warts and
+   json outputs.
+ * bump libscamperfile version for the above changes.
+ * document that scamper's control socket can be told to return
+   JSON through an option now documented in scamper's man page.
+ * improvements to reading warts files via fuzzing.
+ * other man page tidy ups.
+ sc_erosprober:
+ * add the ability to adjust the probe list at run time through a
+   unix domain socket, documented in the sc_erosprober man page.
+ sc_hoiho:
+ * add the ability to learn regular expressions that extract
+   geographic hints from router hostnames, documented in the
+   sc_hoiho man page
+
+-------------------------------------------------------------------
+Mon Apr  5 19:33:43 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20210324:
+ sc_speedtrap:
+ * speed up speedtrap's runtime
+
+-------------------------------------------------------------------
+Wed Sep 23 06:32:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20200923:
+ - scamper:
+  * integrate some fixes for compiling scamper on windows
+ - sc_erosprober:
+  * allow larger probe intervals
+ - sc_hoiho:
+  * add support for learning regexes that extract ASNs in hostnames
+
+-------------------------------------------------------------------
+Sat Jul 18 13:36:44 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20200717:
+ - scamper:
+  - update remote control protocol to support session resumption
+    if the underlying TCP connection is interrupted.
+  - if remote controller is specified with a domain name, use TLS.
+  - fix -p pidfile when starting scamper as a daemon
+  - expire entries in the ARP cache periodically
+  - add -r support to ping and tracelb, and record router addresses
+    in warts output.
+  - autoconf work to build on linux without sys/socketvar.h or
+    linux/netlink.h
+  - allow scamper to do IPv4 ICMP echo and IPv6 UDP traceroute
+    without requiring root on linux.
+  - libscamperfile version 1.0.0
+ - sc_remoted:
+  - update remote control protocol to support session resumption
+    if the underlying TCP connection is interrupted.
+  - use HUP signal to reload TLS certificate and private key chain
+  - add -e pidfile to write PID to file, to make HUP easy
+ - sc_pinger:
+  - add utility to ping a set of addresses with ICMP echo, UDP, and
+    TCP-ack probes
+ - throughout:
+  - reduce number of warnings when compiling with -Wextra
+  - remove rcsid from all files
+
+-------------------------------------------------------------------
+Sat Mar 14 16:50:43 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20191102b:
+ - scamper:
+  * do not dereference a null pointer when converting a tracelb node
+    with no IP address to a string, when generating json output.
+ - sc_bdrmap:
+  * allow the source IP address to be specified when probing with the
+    -S parameter.
+ - sc_wartsfilter:
+  * a new utility to select specific records from a warts file
+
+-------------------------------------------------------------------
+Mon Jan  6 19:30:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+-update to version 20191102:
+ * scamper
+  * escape hostname in json output for tracelb
+  * use length parameters when parsing hostname responses, from
+    Marianne Fletcher
+ * sc_bdrmap
+  * add a -O noalias option to tell bdrmap to not do alias resolution.
+  * update -C documentation in the sc_bdrmap.1 man page
+  * fix a memory leak of trace objects in -d traces
+  * print RTT in -d traces
+  * add an -M option to help corner cases with private and IXP addresses
+  * relax heuristics to allow VPs to claim routers with IP2AS when no
+    other router assignments can take place
+  * turn off analytical interface alias resolution heuristics by default
+ * sc_hoiho
+  * change -O verbose to -O debug to better reflect what it does.
+  * change tpa to atp to be consistent with language in paper
+    https://www.caida.org/~mjl/pubs/rnc.pdf
+  * free a malloc, pointed out by clang static analysis
+  * add support for reading -d 3 output, which is the format of
+    regular expressions provided in the data supplement:
+    http://data.caida.org/datasets/supplement/2019-imc-hoiho/
+ * sc_uptime
+  * add a metadata table to be able to track metadata across sc_uptime
+    invocations, from Marianne Fletcher
+  * fix an error message when trying to create a database that
+    already exists.
+
+-------------------------------------------------------------------
+Wed Sep 18 19:37:58 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove SIOCGSTAMP.patch
+- update to version 20190916:
+ * scamper
+  * add a host implementation for looking up DNS records.  it uses
+  the first nameserver it finds in /etc/resolv.conf by default.
+  * add an -O ptr option to tracelb.
+  * bugfix json output for tracelb.
+  * integrate patricia trie implementation into scamper hotspot
+  * use HAVE_SYSCTL macro to solve a compile issue on android
+  * include <linux/sockios.h> to get SIOCGSTAMP in Linux kernel > 5.2
+  * add -A option to ping code to set the ack number to use in tcp
+  probes (or sequence number in SYN packets).  do not randomly
+  generate sequence and ack values for each TCP ping.
+  * rework options handling to allow for long long values.
+  * set the window size in TCP probes to 65535, instead of advertising a
+  zero receive window.
+  * update configure scripts around the use of --with-privsep-dir-owner
+ * sc_ally:
+  * when outputting alias sets, conduct a canonical sort to allow for
+  easy diffs
+  * update man page because sc_ally can take more than two addresses per
+  line
+ * sc_erosprober:
+  * new driver to periodically probe addresses and rotate output files.
+ * sc_hoiho:
+  * new utility for holistic orthography of Internet hostname
+  observations.  this utility is only built if --with-sc_hoiho is
+  passed to configure.  sc_hoiho requires pcre or pcre2, which can be
+  controlled by passing --with-pcre or --with-pcre2 to configure.
+ * sc_uptime:
+  * add a last_tx column to state_dsts to allow for simple monitoring of
+  when each destination address was last probed.
+ * various drivers:
+  * handle scamper disconnections gracefully in sc_ally,
+  sc_filterpolicy, sc_prefixscan, sc_radargun, sc_speedtrap,
+  sc_tbitblind, sc_tbitpmtud, and sc_uptime
+
+-------------------------------------------------------------------
+Tue Aug 20 19:34:08 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add SIOCGSTAMP.patch for recent changes in socket.h/socketios.h
+
+-------------------------------------------------------------------
+Sat Dec 22 22:04:19 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 20181219:
+ * scamper:
+  * json output format for tracelb (MDA traceroute)
+  * print an error message if an output file cannot be opened
+  * document (in warts.5) the offset variable in a warts traceroute record,
+    and scamper_trace_dtree_t
+  * use autoconf to check if X509_VERIFY_PARAM_set1_host is available,
+    rather than OpenSSL #defines that are not used consistently among
+    OpenSSL-like libraries.
+ * libscamperfile:
+  * don't crash on a zero length file, or other conditions where sf->type
+    is SCAMPER_FILE_NONE
+  sc_ally:
+  * fix example in manual page
+  * dump 3: when merging routers in a transitive closure, remove the
+    obsolete router from the dump list.
+  * if an address is repeated in the input file then complain
+ * sc_bdrmap:
+  * document -C csum in sc_bdrmap.1
+  * allow duplicate prefixes in the IXP file
+  * add initial support for UDP paris traceroute, as an alternative
+    to the ICMP paris traceroute bdrmap uses by default.
+  * document updates in sc_bdrmap.1
+ * sc_ttlexp:
+  * add -O noreserved
+  * bugfix reading from stdin, file handling
+  * document updates in sc_ttlexp.1
+ * sc_uptime:
+  * add an optional -I interval parameter which controls how frequently
+    we want an address to be probed.  add logic to exit early if we are
+    probing on with -I and there is a list of low-priority probing
+    that is not empty, so that sc_uptime can meet the probe interval.
+  * add the ability to expire addresses out of the database after they
+    have not been seen in traceroute for a while, and they do not
+    respond with an incrementing IPID value, with optional -E expiry
+    parameter.
+  * loading addresses into the state database is now a separate step (-a)
+  * add a -c option to create and initialise a database file
+  * add do-not-probe support
+  * replace import code that used a row for each sample with a blob that
+    stores multiple samples per blob.
+  * report some measure of progress on import
+  * build monotonic sequences which allow patterns in responses to be
+    more easily identified, so that reboots are not falsely inferred
+    in the cases of multiple counters, 16 bit counters, and routers
+    that start each sequence after a PTB with a new IPID.
+  * add an -O verbose to dump IPID sequences
+  * document updates in sc_uptime.1
+
+-------------------------------------------------------------------
+Sun May  6 08:20:47 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 20180504:
+ * scamper:
+  * increase the size of a buffer in scamper's traceroute json
+    creation to reduce chance of truncation.
+  * print the number of probes sent by traceroute in the json
+    output.
+  * enforce a minimum firsthop value of 1 when reading a warts
+    traceroute object.
+ * sc_bdrmap:
+  * choose a static ICMP checksum value when using Paris traceroute
+    to reduce churn in observed topology in bdrmap output.
+  * add ability to pass list of ASes to -d traces to see
+    traceroutes towards specific ASes, useful for understanding
+    bdrmap inferences.
+
+-------------------------------------------------------------------
+Thu Mar  8 19:36:27 UTC 2018 - sebix+novell.com@sebix.at
+
+- update to version 20180309:
+ * sc_*:
+  * For the utilities (sc_*) that read input files, do not allocate
+    memory to hold the entire input file in memory before parsing
+    the file.  This improvement affects sc_ally, sc_attach,
+    sc_bdrmap, sc_filterpolicy, sc_radargun, sc_speedtrap,
+    sc_tbitblind, sc_tbitpmtud, sc_uptime, sc_warts2text.
+ * sc_tbitpmtud:
+  * add scamper driver from IMC2010 paper to collect data on webserver
+    responsiveness to ICMP packet too big messages, and perform
+    rudimentary analysis of collected data.
+ * sc_ttlexp:
+  * new utility to dump source addresses from ICMP TTL expired
+    messages in warts files.
+ * sc_wartsfix:
+  * add a manual page
+ * sc_warts2csv:
+  * add a manual page
+
+-------------------------------------------------------------------
+Mon Dec  4 08:40:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- remove new-openssl.patch, included upstream
+- update to version 20171204:
+ - scamper:
+   * add a blind-fin tbit test, which tests receiver behavior to TCP FIN
+     packets which could have come from an off-path attacker.
+ - sc_radargun:
+   * add -d 2 option, which dumps interface IP-ID behavior classifications.
+
+-------------------------------------------------------------------
+Thu Nov 30 21:22:24 UTC 2017 - sebix+novell.com@sebix.at
+
+- add patch new-openssl.patch to compile with new openssl versions
+
+-------------------------------------------------------------------
+Thu Aug 24 06:58:41 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to version 20170822
+  scamper:
+  * replace recursive versions of some functions with iterative versions.
+  * add cycle-start and cycle-stop json record implementations.
+  * fix traceroute json record: the hop transmit time value it reported
+    was junk.
+  * add support for sending json over the control socket.  use
+    "attach format json" to get this mode; "attach" by itself still
+    returns uuencoded warts.  Initial patch supplied by Young Hyun.
+  * fix possible memory leaks detected with static analysis.
+  * quality assurance on research paper cites in manual pages.
+  * spelling errors noticed by Iain R. Learmonth.
+
+  sc_ally:
+  * add feature to dump inferred aliases from the collected data.
+
+  sc_speedtrap:
+  * add threaded implementation of pairwise comparison to form candidate
+    alias sets, if pthreads are detected at compilation time and
+    --disable-threads configure option is not supplied.
+
+  sc_uptime:
+  * new scamper driver to infer IPv6 device reboot windows if the device
+    returns an incrementing identifier field in the IPv6 fragmentation
+    header.  the driver is not built by default, as it expects sqlite3.
+    use --with-sc_uptime configure option to build.
+    https://www.caida.org/~mjl/pubs/spf.pdf
+
+-------------------------------------------------------------------
+Thu Jun 22 20:47:31 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 20161204a
+ * More fixes to libscamperfile caught with fuzz testing.  corrupt
+   warts files provided by Greg Ward of Dyn
+ * if targets or commands are specified in a file, and that file
+   ends after all probing of commands in that file has completed,
+   finish the source, allowing scamper to exit.  this scenario is
+   most likely when stdin is the input file.  Reported by Alex
+   Colvin of Dyn
+ * use select/poll/epoll/kqueue to look for read events on stdin files
+ * malloc enough memory for a prefix6_t in the prefixtree code.  reported
+   by Sebastian Wagner via gcc7.  only sc_bdrmap uses that code
+ * increase size of string buffers for some ping and trace fields for text
+   output to silence gcc7 warning.
+ * allow source IP address to be null when outputting a trace with json
+ * update sc_tbitblind.1 man page to show correct use of scamper's IPFW
+   firewall support, which changed in the 20161204 release
+ * fix unlikely unaligned access when computing checksums with IPv6
+   addresses
+
+-------------------------------------------------------------------
+Wed Jun 21 20:20:18 UTC 2017 - sebix+novell.com@sebix.at
+
+- update to 20161204
+ * add remote control socket support to scamper.  scamper can be
+   configured to connect to a remote controller at run time to
+   allow remote systems to control a scamper instance.  the
+   remote controller is handled by the sc_remoted utility, and
+   is documented in the sc_remoted manual page (see below).
+ * fixes to libscamperfile caught with fuzz testing.  corrupt
+   warts data files provided by Greg Ward of Dyn.
+ * add a PATRICIA trie implementation based off Sedgewick's
+   Algorithms in C++ book.  this improves the performance
+   of scamper compared to holding addresses in splaytrees.
+ * improve speed of warts(5) code.
+ * improve speed of scamper_writebuf by allocating pagesize blocks
+   at a time.
+ * begin to document ping warts records in warts(5).
+ * fix debug printf implementation so that all features will
+   be built in as long as --without-debugfile is not used.
+   backported to 20141211g.
+ * silence compiler warnings from Microsoft Visual Studio.
+   backported to 20141211g.
+ * sc_prefixscan:
+  * add a utility, sc_prefixscan, that provides a convenient
+    interface to scamper's prefixscan alias resolution method.
+    https://www.caida.org/tools/measurement/scamper/man/sc_prefixscan.1.pdf
+ * sc_radargun:
+  * add a utility, sc_radargun, that provides a convenient
+    interface to scamper's radargun implementation.
+    https://www.caida.org/tools/measurement/scamper/man/sc_radargun.1.pdf
+ * sc_remoted:
+  * add a utility, sc_remoted, that provides an interface to a
+    collection of remote scamper instances.
+    https://www.caida.org/tools/measurement/scamper/man/sc_remoted.1.pdf
+ * sc_ally:
+  * use writebufs so sc_ally is event driven and will not block.
+  * add code to probe candidate sets in pairs, with transitive
+    closure to save probes.
+  * allow inter-probe gaps of less than 1 second.
+ * sc_attach:
+  * add support for remote control sockets.
+  * add an option to randomise the order tasks are run.
+ * sc_speedtrap:
+  * stricter default test for inferring if two IP addresses may
+    share a single shared counter.
+    backported to 20141211g.
+  * code cleanup.
+ * sc_warts2json
+  * add support for printing ICMP extensions included in traceroute
+    responses, prompted by Quirin Scheitle
+
+-------------------------------------------------------------------
+Sat Oct  8 19:30:55 UTC 2016 - mardnh@gmx.de
+
+- update to version 20141211e
+  - upstream does not provide a changelog
+
+-------------------------------------------------------------------
+Sun Aug 21 18:29:06 UTC 2016 - mardnh@gmx.de
+
+- moved man3/* from lib- to -devel subpackage
+- removed useless provides from libscamperfile0
+
+-------------------------------------------------------------------
+Wed Aug 17 17:49:53 UTC 2016 - mardnh@gmx.de
+
+- initial package, version 20141211e
+

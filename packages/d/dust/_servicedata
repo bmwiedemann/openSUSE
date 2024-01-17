@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/bootandy/dust</param>
+              <param name="changesrevision">c2546684c63bcd0ed99cfee22c5e855c7b825502</param></service><service name="tar_scm">
+                <param name="url">https://github.com/bootandy/dust</param>
+              <param name="changesrevision">fead40b6283255173345e3742c22e74f3dd30673</param></service></servicedata>

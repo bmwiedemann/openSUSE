@@ -1,0 +1,5 @@
+<package name="ddnet" project="openSUSE:Factory">
+  <title>DDraceNetwork</title>
+  <description>a cooperative racing mod of Teeworlds</description>
+  <devel project="games" package="ddnet"/>
+</package>

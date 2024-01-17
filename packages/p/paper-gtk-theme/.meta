@@ -1,0 +1,5 @@
+<package name="paper-gtk-theme" project="openSUSE:Factory">
+  <title>Paper GTK Theme</title>
+  <description>Paper is a modern desktop theme suite. Its design is mostly flat with a minimal use of shadows for depth.</description>
+  <devel project="X11:common:Factory" package="paper-gtk-theme"/>
+</package>

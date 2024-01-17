@@ -1,0 +1,5 @@
+<package name="seadrive-gui" project="openSUSE:Factory">
+  <title></title>
+  <description>GUI part of seafile drive</description>
+  <devel project="Cloud:Seafile" package="seadrive-gui"/>
+</package>

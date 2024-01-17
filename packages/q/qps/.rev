@@ -1,0 +1,232 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c37fc460d0dfddcc9ef45f5a947364f</srcmd5>
+    <version>1.10.16</version>
+    <time>1315235496</time>
+    <user>lrupp</user>
+    <comment>Migrating from openSUSE:Factory:Contrib</comment>
+    <requestid>80767</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>40d4c2a2daabc26567e503dfe23dccaa</srcmd5>
+    <version>1.10.16</version>
+    <time>1315235506</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 80767
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>40d4c2a2daabc26567e503dfe23dccaa</srcmd5>
+    <version>1.10.16</version>
+    <time>1319182416</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9d452f6f75d55c35a1b73f86d82b9267</srcmd5>
+    <version>1.10.16</version>
+    <time>1324831238</time>
+    <user>coolo</user>
+    <comment>spec clean up</comment>
+    <requestid>97590</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9d452f6f75d55c35a1b73f86d82b9267</srcmd5>
+    <version>1.10.16</version>
+    <time>1340184128</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>9d452f6f75d55c35a1b73f86d82b9267</srcmd5>
+    <version>1.10.16</version>
+    <time>1359110262</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>9d452f6f75d55c35a1b73f86d82b9267</srcmd5>
+    <version>1.10.16</version>
+    <time>1379664414</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>9d452f6f75d55c35a1b73f86d82b9267</srcmd5>
+    <version>1.10.16</version>
+    <time>1409303140</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>78bbf68e7feff23f10734cae99aec60d</srcmd5>
+    <version>1.10.17</version>
+    <time>1519683942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580003</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a89a9369ae11f6be211f2386b7ea422</srcmd5>
+    <version>1.10.18</version>
+    <time>1527084564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.18:
+  * Bumped patch version to 18 (#45)
+  * Update from Weblate. (#41)
+  * Added transltion state to README.md
+  * Add da translation
+  * translation update
+  * Added translation using Weblate (German)
+  * Create qps_da.ts
+  * Update qps.desktop.in
+  * i18n: Update Polish translation
+  * Drop Qt foreach
+  * Fix links QtDesktop --&gt; lxqt</comment>
+    <requestid>611341</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d89f49bf4d74905799eba17c50ae5758</srcmd5>
+    <version>1.10.19</version>
+    <time>1551113418</time>
+    <user>coolo</user>
+    <comment>- Update to 1.10.19:
+  * Improved localization support
+- Move translation from lxqt-l10n into package
+</comment>
+    <requestid>670405</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>86ea3183e4f8a9b85a0065619fd51ff2</srcmd5>
+    <version>1.10.20</version>
+    <time>1551455362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.20:
+  * Only translations was changed</comment>
+    <requestid>680415</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>df30ddb0f5b07d0cc07c47e6bc140eb9</srcmd5>
+    <version>2.0.0</version>
+    <time>1570912887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Several code cleanups:
+    - Silenced compiler warnings about QtTableView
+    - Do not detect systray on every refresh (this also fixes memory leak under some GTK DEs)
+    - Removed the method `HeadedTable::sizeHintForColumn`
+    - htable.cpp: remove unused define
+    - qps.h: remove unused define
+    - Cleaned up the classes SearchBox, ControlBar and StatusBar
+    - Do not cast bool to integer on return
+    - Removed no strings casts definitions
+    - Removed unmanaged code
+    - Remove some comments
+    - Corrected sscanf format
+    - Removed unused variable
+    - Simplified groupName
+    - Add missing &quot;const&quot;
+    - Apply LXQtCompilerSettings to project
+  * Fixed memory leaks:
+    - Fixed memory leak in showing process details dialogs
+    - Prevent a file descriptor leak
+    - Fixed several memory leaks
+  * UI and other improvements:
+    - Properly save font info
+    - Sort fields list alphabetically
+    - Update sort indicator on adding columns
+    - Use float for memory column if in megabytes
+    - Support HDPI pixmaps
+    - A better filter box with clear button and place holder
+    - Don't allow an unsorted table
+    - Fixed table size and scrollbars</comment>
+    <requestid>737572</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f3523ae89d4df12b01d5c14b9e03f07e</srcmd5>
+    <version>2.0.0</version>
+    <time>1573165261</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't require glibc &gt;= 2.30, it works actually without it</comment>
+    <requestid>746244</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7876f66b7ec231a2953fabf553a6e15f</srcmd5>
+    <version>2.1.0</version>
+    <time>1588622464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797669</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f31703eb343ff278910615a07ca2c0ba</srcmd5>
+    <version>2.1.0</version>
+    <time>1591862839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813179</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eb6ecef7d1d6b4f3159b941d32163c2c</srcmd5>
+    <version>2.2.0</version>
+    <time>1604510929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Avoided compiler warnings.
+  * Avoided overflow in &quot;proc.cpp&quot;.</comment>
+    <requestid>846020</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3b846b52ef9a92351e781eb9eb383704</srcmd5>
+    <version>2.3.0</version>
+    <time>1618610521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Prevent a crash on showing Qps' window if Qps is started
+    minimized to tray.</comment>
+    <requestid>885957</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>92d0ae5aefb624fe7742b6f9a689412b</srcmd5>
+    <version>2.4.0</version>
+    <time>1636498476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0:
+  * Ensure that only one sort indicator exists.
+  * Enhanced filtering.
+  * Bumped minimum required Qt version to 5.15.
+  * Code cleanup.</comment>
+    <requestid>930126</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>37e3529c61caf80784b0f80875b2d266</srcmd5>
+    <version>2.5.0</version>
+    <time>1659721851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993093</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2100fd5df77bdb061ae92cdf0d8c84ff</srcmd5>
+    <version>2.6.0</version>
+    <time>1667734965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033813</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b33eba9540b076f105beaa86720e0c85</srcmd5>
+    <version>2.7.0</version>
+    <time>1681996431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079649</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9cdb696ec6a5675b2fd8a7c39c9cf257</srcmd5>
+    <version>2.8.0</version>
+    <time>1699388765</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123567</requestid>
+  </revision>
+</revisionlist>

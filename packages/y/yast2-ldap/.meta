@@ -1,0 +1,7 @@
+<package name="yast2-ldap" project="openSUSE:Factory">
+  <title>YaST2 - LDAP Agent</title>
+  <description>This agent is used by various YaST2 modules to work with LDAP. It
+enables searching the LDAP tree and adding/deleting/modifying items on
+an LDAP server.</description>
+  <devel project="YaST:Head" package="yast2-ldap"/>
+</package>

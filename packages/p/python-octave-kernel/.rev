@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8657a0f5bde0cd01e2d80fde12bc79cd</srcmd5>
+    <version>0.30.3</version>
+    <time>1559375836</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix conflicts.
+- Rename to match upstream name change.
+- Update to 0.30.3</comment>
+    <requestid>706527</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>77d73e0b65e609d644c9fb49686cefb2</srcmd5>
+    <version>0.31.0</version>
+    <time>1560459846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709561</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>061185bd5b443a9f6cc174ffca80340f</srcmd5>
+    <version>0.31.0</version>
+    <time>1565695498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722803</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5edb691ceece29e25d545ca31b3d71d8</srcmd5>
+    <version>0.31.0</version>
+    <time>1575039429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748385</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a323126fd07170d7d8ec56647d7dfb5c</srcmd5>
+    <version>0.32.0</version>
+    <time>1591743001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.32.0:
+  * Fixes for octave5
+  * Fixes for new jupyterlab
+- Remove fix_octave5.patch</comment>
+    <requestid>812825</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3c2f86ad85c67c2467d8cbe66891d240</srcmd5>
+    <version>0.32.0</version>
+    <time>1633542587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923349</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e34c6c75c887ebc7256730a3903ecd06</srcmd5>
+    <version>0.34.1</version>
+    <time>1648479637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965095</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0617e9949376ef63aa9bb245dc2786c8</srcmd5>
+    <version>0.34.2</version>
+    <time>1659612213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.34.2
+  * Fix error: '_make_figures' undefined near line 1, column 1 #212</comment>
+    <requestid>992643</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cd1ef56dd83201a5defceb71d00bcca0</srcmd5>
+    <version>0.35.1</version>
+    <time>1673209553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.35.1
+  * Include test and example notebook in sdist #228 (@blink1073)
+- Move to PEP517 hatchling build
+</comment>
+    <requestid>1056889</requestid>
+  </revision>
+</revisionlist>

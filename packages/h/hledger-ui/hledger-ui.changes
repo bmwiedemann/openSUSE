@@ -1,0 +1,328 @@
+-------------------------------------------------------------------
+Mon Jan  1 01:44:00 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.32.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.32.2/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Dec  7 21:25:14 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.32.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.32.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Dec  2 05:12:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.32.
+
+  - The V key now preserves the valuation mode specified at the
+    command line, if any. (#2084)
+
+  - The hledger-ui package no longer wastefully builds its modules
+    twice.
+
+-------------------------------------------------------------------
+Sun Sep  3 08:16:30 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.31.
+
+  - A "Cash accounts" screen has been added, showing accounts of
+    the `Cash` type.
+
+  - The top-level menu screen is now the default screen. Power
+    users can use the `--cash`/`--bs`/`--is`/`--all` flags to start
+    up in another screen.
+
+  - "All accounts" screen has been moved to the bottom of the list.
+
+  - Screens' help footers have been improved.
+
+  - A pager is used to show --help output when needed, as in
+    `hledger`.
+
+  - In the help dialog, mention that LEFT shows other screens.
+
+  - In the manual, mention shift-up/down config needed for
+    Terminal.app.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:09:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Dec  1 17:16:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.28.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.28/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Sep 18 19:41:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.27.1.
+  Upstream has not updated the file "CHANGES.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Fri Sep  2 01:32:54 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.27.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.27/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Aug 14 16:16:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.26.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jul 11 09:36:25 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.26.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.26.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Fri Jun 10 05:49:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.26 revision 1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.26/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Mar  5 06:11:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.25.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.25/src/CHANGES.md
+
+-------------------------------------------------------------------
+Fri Dec 10 22:55:52 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.24.99.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.24.99/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Oct  7 07:57:11 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.23 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Sep 22 08:52:12 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.23.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.23/src/CHANGES.md
+
+-------------------------------------------------------------------
+Tue Sep  7 18:42:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- relax constranits on base-compat
+
+-------------------------------------------------------------------
+Sun Aug  8 22:07:03 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.22.2.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.22.2/src/CHANGES.md
+
+-------------------------------------------------------------------
+Wed Aug  4 08:17:15 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.22.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.22.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Mon Jul 19 07:05:21 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.22 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jul 10 13:41:54 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.22.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.22/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Mar 11 08:22:41 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.21.
+  # 1.21 2021-03-10
+
+  - Register screen: also show transactions below the depth limit, as in
+    1.19, keeping the register balance in agreement with the balance
+    shown on the accounts screen. This regressed in 1.20. (#1468)
+
+  - Transaction screen: all decimal places are now shown. On the
+    accounts screen and register screen we round amounts according to
+    commodity display styles, but when you drill down to a transaction
+    you probably want to see the unrounded amounts. (Like print, #cf
+    931.)
+
+  - New flags `--man` and `--info` open the man page or info manual.
+    (See hledger changelog)
+
+-------------------------------------------------------------------
+Sun Jan 31 13:49:24 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.20.4.
+  # 1.20.4 2021-01-29
+
+  - ui: register: show all txns in/under an account at the depth limit (#1468).
+    In 1.20-1.20.3, the register screen had stopped showing transactions
+    in accounts below a depth limit. Now it properly shows all subaccount transactions,
+    even when there is a depth limit, ensuring that the register's final total
+    matches the balance shown on the account screen.
+
+-------------------------------------------------------------------
+Fri Jan 15 08:54:40 UTC 2021 - psimons@suse.com
+
+- Update hledger-ui to version 1.20.3.
+  # 1.20.3 2021-01-14
+
+  - Use hledger 1.20.3.
+
+-------------------------------------------------------------------
+Tue Dec 29 21:17:28 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.20.2.
+  # 1.20.2 2020-12-28
+
+  - Fix loss of capitalisation in part of the manual.
+
+  - Fix the info manual's node structure.
+
+  - Use hledger 1.20.2.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- disable %{ix86} build
+
+-------------------------------------------------------------------
+Wed Dec 16 17:26:00 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.20.1.
+  # 1.20.1 2020-12-15
+
+  - Fix the F key (toggle future/forecast transactions), which in 1.20
+    would only work twice. (#1411)
+
+  - Fix loss of forecasted transactions when the journal was reloaded
+    while they were hidden. (#1204)
+
+-------------------------------------------------------------------
+Sun Dec  6 13:36:35 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.20.
+  # 1.20 2020-12-05
+
+  - When entering a query with `/`, malformed queries/regular expressions
+    no longer cause the program to exit. (Stephen Morgan)
+
+  - Eliding of multicommodity amounts now makes better use of available space. (Stephen Morgan)
+
+  - `E` now parses the `HLEDGER_UI_EDITOR` or `EDITOR` environment variable
+    correctly on Windows (ignoring the file extension), so if you have that set
+    it should be better at opening your editor at the correct line.
+
+  - `E` now supports positioning when `HLEDGER_UI_EDITOR` or `EDITOR`
+    is VS Code ("`code`") (#1359)
+
+  - hledger-ui now has a (human-powered) test suite.
+
+-------------------------------------------------------------------
+Tue Sep  8 02:00:43 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.19.1.
+  # 1.19.1 2020-09-07
+
+  - Allow megaparsec 9
+
+-------------------------------------------------------------------
+Thu Sep  3 02:00:59 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.19.
+  # 1.19 2020-09-01
+
+  - The --color/--colour=WHEN command line option, support for the
+    NO_COLOR environment variable, and smarter autodetection of colour
+    terminals have been added (#1296)
+
+  - -t and -l command line flags have been added as short forms of
+    --tree and --flat (#1286)
+
+  - Flat (AKA list) mode is now the default
+
+  - t now toggles tree mode, while T sets the "today" period (#1286)
+
+  - register: multicommodity amounts containing more than two
+    commodities are now elided
+
+  - register: a transaction dated outside the report period now is not
+    shown even if it has postings dated inside the report period.
+
+  - ESC now restores exactly the app's state at startup, which includes
+    clearing any report period limit (#1286)
+
+  - DEL/BS no longer changes the tree/list mode
+
+  - q now exits help before exiting the app (#1286)
+
+  - The help dialog's layout is improved
+
+-------------------------------------------------------------------
+Wed Aug 19 07:44:33 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:52 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Mon Jun 22 02:00:23 UTC 2020 - psimons@suse.com
+
+- Update hledger-ui to version 1.18.1.
+  # 1.18.1 2020-06-21
+
+  - Fix regression in 'F' (#1255) (Dmitry Astapov)
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:37 UTC 2020 - psimons@suse.com
+
+- Add hledger-ui at version 1.18.

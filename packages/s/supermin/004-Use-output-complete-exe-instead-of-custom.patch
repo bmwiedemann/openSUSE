@@ -1,0 +1,27 @@
+Subject: ocamlc: Use -output-complete-exe instead of -custom
+From: Richard W.M. Jones rjones@redhat.com Wed Jul 12 22:37:58 2023 +0100
+Date: Wed Jul 12 22:40:27 2023 +0100:
+Git: dc80dbbef60d5d81a7d4321683a8c7305dc04972
+
+This prevents bytecode executables from being broken by strip and
+similar tools.  Note this is incompatible with OCaml < 4.10 (so breaks
+RHEL 8).  However this only affects bytecode builds which we prefer
+not to use in RHEL.  I left the old option in the Makefile so that it
+could be uncommented by someone using older OCaml + bytecode.  We need
+this for OCaml 5.0 since that drops native backends (temporarily) for
+riscv64, s390x and ppc64le.
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5b07e5d..5a1c671 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -132,7 +132,8 @@ OCAMLFLAGS = -g -warn-error +C+D+E+F+L+M+P+S+U+V+X+Y+Z-3
+ if !HAVE_OCAMLOPT
+ OBJECTS = $(BOBJECTS)
+ BEST    = c
+-OCAMLFLAGS += -custom
++#OCAMLFLAGS += -custom  # for OCaml < 4.10
++OCAMLFLAGS += -output-complete-exe
+ else
+ OBJECTS = $(XOBJECTS)
+ BEST    = opt

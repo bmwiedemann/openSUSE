@@ -1,0 +1,33 @@
+--- jfbterm-0.4.7/term.c.hang	2006-07-27 17:19:12.000000000 +0900
++++ jfbterm-0.4.7/term.c	2006-07-28 01:01:42.000000000 +0900
+@@ -77,6 +77,30 @@
+ 	int st;
+ 	int ret;
+ 	ret = wait(&st);
++
++	/* ???
++	   Comment by Mamoru Tasaka. Jul 28 2006
++	   
++	   Some race condition occurring??
++	   In some case, this sigchild wait(2) the process with
++	   id gChildProcessId + 1 and leave gChildProcessId a ZOMBIE
++	   process.
++	   
++	   In this case jfbterm never returns from tterm_start
++	   and hangs eternally.
++	   
++	   WORKARROND:
++	*/
++	if (gChildProcessId && (ret != ECHILD) 
++	    && (ret != gChildProcessId)){
++	  /* Well... It seems that this routine is sometimes called.
++	     I don't know why, however, if there is a case, this is
++	     necessary.
++	   */
++	  int status;
++	  ret = waitpid(gChildProcessId, &status, WNOHANG|WUNTRACED);
++	}
++
+ 	if (ret == gChildProcessId || ret == ECHILD) {
+ 		tvterm_unregister_signal();
+ 		tterm_final(&gTerm);

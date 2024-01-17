@@ -1,0 +1,5 @@
+<package name="libetebase" project="openSUSE:Factory">
+  <title>libetebase</title>
+  <description>A C library for Etebase</description>
+  <devel project="network" package="libetebase"/>
+</package>

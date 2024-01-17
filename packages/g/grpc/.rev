@@ -1,0 +1,574 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f14ff77d0cd9517ffefc0b26fd3f69da</srcmd5>
+    <version>1.2.3</version>
+    <time>1495637205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>492150</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a6826665645329eb53f6e6d925fb939</srcmd5>
+    <version>1.8.3</version>
+    <time>1515876365</time>
+    <user>dimstar_suse</user>
+    <comment>- version 1.8.3</comment>
+    <requestid>561134</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>577e17965f79033e9a071cc0f3c53f7b</srcmd5>
+    <version>1.8.4</version>
+    <time>1516222652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.4</comment>
+    <requestid>566379</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0c07097bbd9f10e5867fbfc85e1c7740</srcmd5>
+    <version>1.8.5</version>
+    <time>1517167936</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>569989</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3b62aee38c6530fa17fb59193ccbc0fa</srcmd5>
+    <version>1.8.6</version>
+    <time>1517424774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.8.6</comment>
+    <requestid>571240</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>00f4f41d1ed4158366749cafed59630c</srcmd5>
+    <version>1.9.0</version>
+    <time>1517932175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.9.0</comment>
+    <requestid>573170</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1c9f8e42b147d806b8064acb4852e37c</srcmd5>
+    <version>1.10.0</version>
+    <time>1522317457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.10.0</comment>
+    <requestid>592077</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>781991c10693edc5597c642863b1cfe5</srcmd5>
+    <version>1.12.0</version>
+    <time>1526737393</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.0:</comment>
+    <requestid>610404</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ac0a4b6fd9937970830c17f24d7fe471</srcmd5>
+    <version>1.12.0</version>
+    <time>1527605535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612693</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>75b0f3b83b3116201c78cdf97228dbfb</srcmd5>
+    <version>1.12.0</version>
+    <time>1529919749</time>
+    <user>dimstar_suse</user>
+    <comment>- Throw out silly -Werror in release builds.</comment>
+    <requestid>618658</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e47de939e967e9337cffa1e0387bdc19</srcmd5>
+    <version>1.16</version>
+    <time>1542012314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.16</comment>
+    <requestid>648253</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b19882b2aa019c4ac8706d4a2d77b2ec</srcmd5>
+    <version>1.16</version>
+    <time>1547540237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665021</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>924bcd931c3e7eb1c845cf2fd3cd80c9</srcmd5>
+    <version>1.19.1</version>
+    <time>1552902155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.19.1</comment>
+    <requestid>685620</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d806ccb963db014d4b22d7c19360fe3c</srcmd5>
+    <version>1.19.1</version>
+    <time>1555322023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694165</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0810ac51c289fff0bb2c21d4dc48b2ef</srcmd5>
+    <version>1.21.3</version>
+    <time>1560536692</time>
+    <user>dimstar_suse</user>
+    <comment>group with protobuf (currently staging:F)
+
+- Update to new upstream release 1.21.3</comment>
+    <requestid>708400</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d1d771a90da7af20fa51038d67a47338</srcmd5>
+    <version>1.23</version>
+    <time>1566551351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 1.23 [boo#1144068]</comment>
+    <requestid>725393</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>35c866e6d510229b2177a1dfc3473791</srcmd5>
+    <version>1.23.1</version>
+    <time>1570104611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.23.1
+- Split libgrpc into libgrpc++ because that has a SO version
+  group of its own.
+- Bump libgrpc6 to libgrpc7 as there is actually .so.7 files.
+  Add suitable Conflicts markers.</comment>
+    <requestid>734760</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c36052e5380079f348e12fccbd39f407</srcmd5>
+    <version>1.23.1</version>
+    <time>1570913136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737661</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>6b4a2ce49eb3efbc4d08a4e042e428d1</srcmd5>
+    <version>1.23.1</version>
+    <time>1573223283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746510</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>1840787951d7948ac9d7d8e04f64bc32</srcmd5>
+    <version>1.23.1</version>
+    <time>1573556177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747459</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7165adfbf5b0da2058b93e23c7d6f0ed</srcmd5>
+    <version>1.25.0</version>
+    <time>1577194228</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>759048</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>b587269b93d488ed37d2d0478645fd9f</srcmd5>
+    <version>1.25.0</version>
+    <time>1579273675</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch for Bazel files, which is not needed anymore:
+  * 0001-bazel-Replace-boringssl-with-openssl.patch (forwarded request 765229 from mrostecki)</comment>
+    <requestid>765230</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>d36f22bb9ffaaaaad4ff580bcbdbbf5a</srcmd5>
+    <version>1.25.0</version>
+    <time>1584350215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784554</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b5a9e2329e7d3cca52d7aaa748ec63b9</srcmd5>
+    <version>1.32.0</version>
+    <time>1602682609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841067</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4ead73a77db001aa0cabc4d75b850b01</srcmd5>
+    <version>1.33.1</version>
+    <time>1603725152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843436</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1b1e0ef0631efb375c003f3f316e2dbf</srcmd5>
+    <version>1.33.2</version>
+    <time>1604306389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.33.2
+
+put together with abseil-cpp</comment>
+    <requestid>844726</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>b02ea3c542640b85dba10fe0997e6d2b</srcmd5>
+    <version>1.33.2</version>
+    <time>1605216851</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing ldconfig for libupb13.</comment>
+    <requestid>847811</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9125e19fef2f7da9b2eedae838dfad91</srcmd5>
+    <version>1.34.1</version>
+    <time>1610633136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862999</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2f94395c16aaa3e09b239ab939db8f38</srcmd5>
+    <version>1.34.1</version>
+    <time>1614684736</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>875555</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b7bbc23a1b5b38286a15ec9fe7d76d08</srcmd5>
+    <version>1.36.1</version>
+    <time>1614948448</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.36.1:</comment>
+    <requestid>876704</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4e50df4cc110a65534ef10e370ea3b64</srcmd5>
+    <version>1.36.2</version>
+    <time>1615061959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.36.2</comment>
+    <requestid>877364</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7a8967c0e0f4573623b024bf5cf1c445</srcmd5>
+    <version>1.36.4</version>
+    <time>1616168611</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 1.36.4</comment>
+    <requestid>880064</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bb307bc9475efa587b421836513bd460</srcmd5>
+    <version>1.37.1</version>
+    <time>1619822822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.37.1</comment>
+    <requestid>889564</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f3bc7edcc33e20444873e3d082d01a56</srcmd5>
+    <version>1.37.1</version>
+    <time>1621034671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893121</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8e3c339630dad4fad0009d50aa4b5b38</srcmd5>
+    <version>1.38.0</version>
+    <time>1622759598</time>
+    <user>dimstar_suse</user>
+    <comment>- Add grpc-cxx17.patch
+- Update to release 1.38.0</comment>
+    <requestid>897022</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>89144d1d0411bab1b358a84d7c2d65a7</srcmd5>
+    <version>1.38.1</version>
+    <time>1624387512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.38.1</comment>
+    <requestid>901333</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f900559a299222516be7878e3fe81536</srcmd5>
+    <version>1.39.0</version>
+    <time>1627492899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908876</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ea3a0fcc0405a5af88a2522dd5303076</srcmd5>
+    <version>1.39.1</version>
+    <time>1630432529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.39.1</comment>
+    <requestid>915134</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>57f122e49e81a5d8bf6eb9c370cf6bfe</srcmd5>
+    <version>1.41.0</version>
+    <time>1632849394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.41.0</comment>
+    <requestid>921901</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e571fd703fd314ff48606587040b34d5</srcmd5>
+    <version>1.41.1</version>
+    <time>1637108035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.41.1</comment>
+    <requestid>931634</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>432774cc4eac28819a174260c7cb01c2</srcmd5>
+    <version>1.43.2</version>
+    <time>1644435577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.43.2:</comment>
+    <requestid>952841</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1a76dcc42495d44bc798b3cc9df7dee0</srcmd5>
+    <version>1.44.0</version>
+    <time>1644965873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.44.0</comment>
+    <requestid>955130</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>43b65ada8d3733bc3ea4bf90be85e160</srcmd5>
+    <version>1.45.0</version>
+    <time>1648063156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964315</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d44acc37f450dcc93844687af74f096d</srcmd5>
+    <version>1.45.1</version>
+    <time>1649014252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.45.1</comment>
+    <requestid>966565</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7c813cfce0cb6e5c6b3707bdc9527c89</srcmd5>
+    <version>1.46.0</version>
+    <time>1651784830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.46</comment>
+    <requestid>975156</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>39b006f7460900889d9a6f35c5832841</srcmd5>
+    <version>1.46.1</version>
+    <time>1652389239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.46.1</comment>
+    <requestid>976481</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>747173e78540f38e55cae6631f0df855</srcmd5>
+    <version>1.46.2</version>
+    <time>1652801062</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.46.2</comment>
+    <requestid>977595</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>7569ea19a9a139614a53c2a30ebce6d2</srcmd5>
+    <version>1.46.3</version>
+    <time>1653152788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978412</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>cd2125766ba9499f55f3e01853de13ca</srcmd5>
+    <version>1.48.0</version>
+    <time>1661863752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.48.0</comment>
+    <requestid>1000009</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>43ae839e5ca254dbac30de9064311a5b</srcmd5>
+    <version>1.48.1</version>
+    <time>1662639823</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1001886</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c131eaf7cab94fdd6db94fd23a930b38</srcmd5>
+    <version>1.49.1</version>
+    <time>1663858764</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release 1.49.1 (forwarded request 1005384 from stroeder)</comment>
+    <requestid>1005401</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>78db2b301e15eb1fc1f2618e1d4ccdc7</srcmd5>
+    <version>1.50.0</version>
+    <time>1665844677</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release 1.50.0
+
+Note: In my home project this only builds on Factory/Tumbleweed. (forwarded request 1011023 from stroeder)</comment>
+    <requestid>1011025</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>475707a5f01c58cd9017b6184fd3505e</srcmd5>
+    <version>1.50.1</version>
+    <time>1666978307</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.50.1
+  Fix Bazel 4 support and objc bazel tests on python3.9 (#31410) (forwarded request 1031924 from stroeder)</comment>
+    <requestid>1031934</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0e25d32a39e16f56979c7dae73f0617c</srcmd5>
+    <version>1.51.0</version>
+    <time>1669129814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.51</comment>
+    <requestid>1037183</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>cec77bc28f48c2ef55ca5cf957901784</srcmd5>
+    <version>1.51.1</version>
+    <time>1670588290</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1041753</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>68116a892e1a2d60c34915ba0105a5c4</srcmd5>
+    <version>1.54.1</version>
+    <time>1683637326</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.54.1</comment>
+    <requestid>1084010</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>6720101d0fc6acac225fbad12f8f04f7</srcmd5>
+    <version>1.56.0</version>
+    <time>1688147902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095799</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>6018c6459ce90fd44d7cbce363184d1d</srcmd5>
+    <version>1.56.2</version>
+    <time>1689614559</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.56.2</comment>
+    <requestid>1098775</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>4c114ebc8cd163063b38ffedf3acf221</srcmd5>
+    <version>1.56.2</version>
+    <time>1691332167</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102469</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ff10143e043f5913f2ed95ada4a2edc2</srcmd5>
+    <version>1.57.0</version>
+    <time>1691674361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.57</comment>
+    <requestid>1103055</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>3fbfb83d2a602670c1a8d61b38c7ddeb</srcmd5>
+    <version>1.58.0</version>
+    <time>1694113923</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.58</comment>
+    <requestid>1109312</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>4f53263e1e45ebfaa6324a1582f87fae</srcmd5>
+    <version>1.58.0</version>
+    <time>1694630626</time>
+    <user>anag+factory</user>
+    <comment>- Add fix_grpconfig_cmake.patch to make find_package(gRPC) in
+  downstream using packages functional again.</comment>
+    <requestid>1110898</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>7af5cafca57f33ee83f795cd56c64c0f</srcmd5>
+    <version>1.58.1</version>
+    <time>1694971729</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.58.1
+  * Reintroduced c-ares 1.14 or later support
+- Pass &quot;-f&quot; flag to &quot;rm&quot; when removing CMakeConfigureLog.yaml (forwarded request 1111346 from glaubitz)</comment>
+    <requestid>1111410</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>74491d65fe5c37b4843c0ae3753e907b</srcmd5>
+    <version>1.59.0</version>
+    <time>1696528987</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115660</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>d22d7a80e95601dfb41ba39cf20f114d</srcmd5>
+    <version>1.59.1</version>
+    <time>1697061207</time>
+    <user>anag+factory</user>
+    <comment>Update to version 1.59.1. (forwarded request 1116255 from badshah400)</comment>
+    <requestid>1116259</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>7438cce8c3e0667d435699d978abffed</srcmd5>
+    <version>1.59.2</version>
+    <time>1698872970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.59.2</comment>
+    <requestid>1121407</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>20edaf2f17162ddd3ea3b3d3aba64dba</srcmd5>
+    <version>1.59.2</version>
+    <time>1700078803</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125885</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>7e4acc867dfb73c5715c0b8832ecbf8b</srcmd5>
+    <version>1.59.3</version>
+    <time>1700511539</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.59.3:
+  * Security - Revocation: Crl backport to 1.59. (#34926)
+
+- pin to protobuf &lt; 22 until next version update
+- Update to 1.36.1:</comment>
+    <requestid>1127415</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>5543572f7336cf412668f8af993f9258</srcmd5>
+    <version>1.60.0</version>
+    <time>1701972536</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1131220</requestid>
+  </revision>
+</revisionlist>

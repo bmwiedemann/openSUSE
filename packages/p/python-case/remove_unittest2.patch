@@ -1,0 +1,31 @@
+--- a/requirements/py2.txt
++++ b/requirements/py2.txt
+@@ -1,2 +1 @@
+ -r deps/mock.txt
+-unittest2>=0.5.1
+--- a/case/case.py
++++ b/case/case.py
+@@ -4,21 +4,15 @@ import re
+ import sys
+ import types
+ import warnings
++import unittest
+ 
+ from contextlib import contextmanager
+ from functools import partial
++from unittest.util import safe_repr, unorderable_list_difference
+ from six import string_types, itervalues as values, iteritems as items
+ 
+ from . import mock
+ 
+-try:
+-    import unittest  # noqa
+-    unittest.skip
+-    from unittest.util import safe_repr, unorderable_list_difference
+-except AttributeError:
+-    import unittest2 as unittest  # noqa
+-    from unittest2.util import safe_repr, unorderable_list_difference  # noqa
+-
+ __all__ = ['Case']
+ 
+ 

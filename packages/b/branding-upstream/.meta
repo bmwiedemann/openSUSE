@@ -1,0 +1,11 @@
+<package name="branding-upstream" project="openSUSE:Factory">
+  <title>SuSE Brand File Supplementing Upstream Look and Feel</title>
+  <description>This package contains the file /etc/SuSE-brand, and its name is used as
+a trigger for installation of look and feel and branding of packages as
+it was defined by upstream developers.
+
+WARNING: If you decide to install this package instead of the default
+branding package, you will lose vendor customization of your
+distribution.</description>
+  <devel project="Base:System" package="branding-upstream"/>
+</package>

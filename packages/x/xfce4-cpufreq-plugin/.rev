@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="100">
+    <srcmd5>d455e3ffd82a8c155808a25eef768289</srcmd5>
+    <version>1.2.1</version>
+    <time>1566291453</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.14 upgrade</comment>
+    <requestid>724068</requestid>
+  </revision>
+  <revision rev="2" vrev="101">
+    <srcmd5>7c76fe46872e9121661aad5fef922468</srcmd5>
+    <version>1.2.1</version>
+    <time>1591654081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812561</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ee4217c19f93c64424dc1243f6f7197</srcmd5>
+    <version>1.2.2</version>
+    <time>1603979588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844857</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>821a6c6fd03f483be8a5c5f66a600847</srcmd5>
+    <version>1.2.3</version>
+    <time>1610633125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862973</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61d7397e408b4b0a8365ce311748fa63</srcmd5>
+    <version>1.2.4</version>
+    <time>1612378574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.4
+  * Display governors even if they differ among CPU cores
+  * Enable fixed units in the frequency text box
+  * Create the label widget if it does not exist
+  * Update copyright year
+  * Translation Updates (forwarded request 868831 from mauriziogalli)</comment>
+    <requestid>868874</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3a36dbcd90988dbc0948f6ffe823ecd</srcmd5>
+    <version>1.2.5</version>
+    <time>1615213121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.5
+  - Adjust CPU icon color according to frequency
+  - Use 99th percentile as the max frequency when adjusting icon color
+  - Display text using a drawing area instead of using a label with CSS
+  - Enable font color reset
+  - Disable font settings when not displaying text
+  - Switch to symbolic close icons
+  - Bump required version of Xfce UI to 4.14
+  - Compute max_freq and min_freq when calculating avg/min/max
+  - Delete font name from RC file if using the default font
+  - Code cleanups, fixes and minor optimizations
+  - Translation Updates (forwarded request 876933 from mauriziogalli)</comment>
+    <requestid>877534</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d56ac3b0ce93f20d0b944a06dabb0e52</srcmd5>
+    <version>1.2.7</version>
+    <time>1644007771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.7
+  * Use locale-independent floats in configuration files
+  * Fix translations not showing in the GUI
+  * Translation Updates
+- Update to version 1.2.6
+  * Prevent cur_freq sysfs reads from stalling plugin initialization
+  * Enable fractional update internals
+  * Prevent sysfs read latency from interfering with GUI updates
+  * Improve static type-safety of signal handlers
+  * Replace C pointers with reference-counted pointers
+  * Cleanup configuration files
+  * Bump libxfce4panel requirement from 4.12 to 4.14
+  * Update copyright year
+  * Bump required xdt-autogen version to 4.14.0
+  * Update configure.ac.in syntax
+  * Update and sort the list of authors
+  * Manually update %d to %zu in translations
+  * Translation Updates
+</comment>
+    <requestid>951634</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>df5f034c0945b509c959682defbbc899</srcmd5>
+    <version>1.2.8</version>
+    <time>1671898677</time>
+    <user>dimstar_suse</user>
+    <comment>Update for Xfce 4.18 (forwarded request 1045141 from mauriziogalli)</comment>
+    <requestid>1045214</requestid>
+  </revision>
+</revisionlist>

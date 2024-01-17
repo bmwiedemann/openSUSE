@@ -1,0 +1,6 @@
+<package name="svgpart" project="openSUSE:Factory">
+  <title>SVG render engine for Konqueror</title>
+  <description>An SVG kparts component based
+</description>
+  <devel project="KDE:Applications" package="svgpart"/>
+</package>

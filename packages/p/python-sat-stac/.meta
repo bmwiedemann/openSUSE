@@ -1,0 +1,11 @@
+<package name="python-sat-stac" project="openSUSE:Factory">
+  <title>python-sat-stac</title>
+  <description>This is a Python 3 library for reading and working with existing Spatio-Temporal Asset Catalogs (STAC). It can be used to
+
+    Open and traverse STAC catalogs
+    Download assets from STAC Items, using templated path names
+    Save and load Self-contained STAC catalogs
+
+The features for creating and updating existing catalogs in past versions have been removed in 0.4.0. If writing catalogs is needed, see PySTAC.</description>
+  <devel project="devel:languages:python" package="python-sat-stac"/>
+</package>

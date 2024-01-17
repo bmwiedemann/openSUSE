@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/marguerite/rime-plum-go</param>
+    <param name="scm">git</param>
+    <param name="versionformat">%cs+git.%h</param>
+    <param name="revision">master</param>
+    <param name="filename">rime-plum-go</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

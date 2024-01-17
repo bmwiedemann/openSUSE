@@ -1,0 +1,6 @@
+<package name="jcip-annotations" project="openSUSE:Factory">
+  <title>Java Concurrency in Practice</title>
+  <description>Class, field, and method level annotations for describing thread-safety
+policies.</description>
+  <devel project="Java:packages" package="jcip-annotations"/>
+</package>

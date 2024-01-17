@@ -1,0 +1,95 @@
+Topics:
+* Extra-Opts
+* Further use of the /etc/monitoring-plugins directory
+
+
+
+
+Extra-Opts
+==========
+
+Starting with the 1.4.12 release, most Monitoring Plugins (those written in C)
+support reading options from a configuration file. Since version 2.0, this is
+enabled by default.
+
+You can easily know if a plugin supports Extra-Opts by checking the --help
+output for the --extra-opts option. Once compiled in, the --extra-opts plugin
+option allows reading extra options from a config file. The syntax for the
+command is:
+
+--extra-opts=[section][@file]
+
+Some examples:
+
+    Read special_opts section of default config file:
+
+    $ ./check_stuff --extra-opts=special_opts
+
+    Read special_opts section of /etc/myconfig.ini:
+
+    $ ./check_stuff --extra-opts=special_opts@/etc/myconfig.ini
+
+    Read check_stuff section of /etc/myconfig.ini:
+
+    $ ./check_stuff --extra-opts=@/etc/myconfig.ini
+
+	Read check_stuff section of default config file and use additional
+    arguments along with the other specified arguments (Extra-Opts arguments are
+    always processed first no matter where --extra-opts appears on the command
+    line):
+
+    $ ./check_stuff --extra-opts -jk --some-other-opt
+
+The default nagios plugins file is used if no explicit filename is given. The
+current standard locations checked are:
+
+    /usr/local/etc/monitoring-plugins/monitoring-plugins.ini
+    /usr/local/etc/monitoring-plugins.ini
+    /etc/monitoring-plugins/monitoring-plugins.ini
+    /etc/monitoring-plugins.ini
+
+To use a custom location, set the MP_CONFIG_FILE environment variable to the
+desired path name.
+
+To specify an option without parameter, you can use a key without value, but
+the equal sign must remain, for example:
+
+     allow-regex=
+
+Also note that repeated keys are allowed within sections just like you can
+repeat arguments on the command line.
+
+The basic theory is that options specified in the configuration files are
+substituted at the beginning of the command line.
+
+The initial use case for this functionality is for hiding passwords, so you do
+not have to define sensitive credentials in the configuration of your
+monitoring server and these options won't appear in the command line.
+
+
+Permissions
+===========
+
+As some plugins require log in data, which are formerly stored in 
+ /etc/{icinga,nagios}/resource.cfg 
+and can now be stored inside the extra-opts file, please remember that the same
+security rules apply now also to this new extra-opts file. Under normal 
+circumstances, you should set restrictive permissions (600 or 640) on them.
+User: root
+Group: icinga or nagios, depending on your monitoring daemon
+
+
+Further use of the /etc/monitoring-plugins directory
+====================================================
+
+Some Monitoring Plugins (like check_zypper) support additional configuration
+files to be included/sourced in on execution. As long as the location of those
+additional configuration files is not fixed, we recommend to use this directory
+for it. 
+
+@Packagers: please consider encapsulating Plugins with Apparmor or SELinux
+profiles. For security and conveniance reasons, please allow your plugins to
+read in the /etc/monitoring-plugins directory - or even better: allow your
+plugins to read their configuration file below /etc/monitoring-plugins. 
+
+

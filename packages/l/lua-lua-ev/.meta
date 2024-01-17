@@ -1,0 +1,5 @@
+<package name="lua-lua-ev" project="openSUSE:Factory">
+  <title>Lua integration with libev</title>
+  <description>Lua integration with libev (http://dist.schmorp.de/libev)</description>
+  <devel project="devel:languages:lua" package="lua-lua-ev"/>
+</package>

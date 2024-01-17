@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Thu Dec  8 09:30:14 UTC 2022 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Update to HEAD (git 715728607ae77bebf3ac50fdbdb46639551995e4, 15 Sep 2020)
+  * firmware: fix maximum size master 
+  * flash-ota: add support for directly flashing AsksinPP... 
+  * Suppress warnings about non-literal format strings 
+  * Allow the user to specify the compiler via environment... 
+  * Cleanup: Use := for assignment 
+  * Cleanup: Use size_t for len 
+  * Cleanup: Use correct format string 
+  * Add missing case in switch 
+  * Cleanup: Cast explicitly where integers of different... 
+  * Cleanup: Add missing 'void' 
+  * Cleanup: Improve const correctness 
+  * Add support for printing the transfer status 
+  * enable-hmmodiprf: add small script to enable a tty... 
+  * consistency in state names 
+  * hmuartlgw: add a bit of support for HmIP-RFUSB-TK 
+  * hmland.init: try hmland-location from Fhem-wiki, too 
+  * README: change clone-URL to https 
+  * hmuartlgw: Add timeout during module initialization 
+  * hmuartlgw: Add minimal support for DualCoPro-firmware 
+
+-------------------------------------------------------------------
+Fri Oct 15 12:11:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop ProtectClock hardening, can cause issues if other device acceess is needed
+
+-------------------------------------------------------------------
+Wed Sep 22 08:06:50 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * hmland.service
+
+-------------------------------------------------------------------
+Mon Feb  3 13:54:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
+  shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Mon Mar 18 10:04:57 UTC 2019 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Repair URL and Source in spec
+
+-------------------------------------------------------------------
+Thu Jun 14 10:36:20 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- Remove unnecessary brackets fron description
+
+-------------------------------------------------------------------
+Thu Apr  5 08:46:27 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- Mark LICENSE as %license
+
+-------------------------------------------------------------------
+Mon Mar 26 10:16:30 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- rename changes file
+
+-------------------------------------------------------------------
+Thu Mar 22 12:26:30 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- removed _service and used spec-clean
+
+-------------------------------------------------------------------
+Mon Mar 12 13:32:46 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- kicked pre-systemd support (SLE11)
+
+-------------------------------------------------------------------
+Tue Feb 27 08:25:31 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- clean up spec file
+
+-------------------------------------------------------------------
+Sun Feb 11 18:59:57 UTC 2018 - vetter@physik.uni-wuerzburg.de
+
+- upgrade to hmcfgusb (0.103-1) unstable; urgency=low
+  * flash-ota: add support for HM-HMOD-UART and TSCUL
+  * hmsniff: add support for HM-MOD-UART
+  * flash-hmmoduart: firmware updating on HM-MOD-UART
+  * flash-ota: various bug-fixes
+
+- adapt to systemd for newer distros
+
+-------------------------------------------------------------------
+Wed Feb 24 00:00:00 UTC 2016 vetter@physik.uni-wuerzburg.de
+
+- Initial Packaging
+- hmcfgusb-0.102

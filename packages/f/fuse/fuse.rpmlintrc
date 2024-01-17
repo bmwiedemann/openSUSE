@@ -1,0 +1,15 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+# rpmlint message:
+# Your package contains a /etc/init.d scrip")
+# a start dependency that is not behind $remote_fs, while it apparently
+# needs $remote_fs dependency due to files being packaged under /usr.
+#
+# /usr/bin/fusermount is only needed when normal users want to mount,
+# otherwise everything else is outside of /usr, so it can be localfs:
+#
+addFilter("fuse non-remote_fs-dependency")
+
+# Everything moved away, so it got small but the docs are not huge:
+addFilter("fuse package-with-huge-docs")

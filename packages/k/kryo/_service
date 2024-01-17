@@ -1,0 +1,18 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/EsotericSoftware/kryo.git</param>
+		<param name="revision">kryo-parent-4.0.2</param>
+		<param name="versionformat">4.0.2</param>
+		<param name="filename">kryo</param>
+		<param name="exclude">benchmark</param>
+		<param name="exclude">build</param>
+		<param name="exclude">compat_reports</param>
+		<param name="exclude">lib</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

@@ -1,0 +1,6 @@
+<package name="goverlay" project="openSUSE:Factory">
+  <title>goverlay</title>
+  <description>GOverlay is an open source project aimed to create a Graphical UI to manage Vulkan/OpenGL overlays. It is still in early development, so it lacks a lot of features.</description>
+  <devel project="games:tools" package="goverlay"/>
+  <url>https://github.com/benjamimgois/goverlay</url>
+</package>

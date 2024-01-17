@@ -1,0 +1,12 @@
+# This is a source package and /usr/src is a correct path to install files.
+addFilter("googleapis.* suse-filelist-forbidden-fhs23")
+# This is a source package, it's fine to have empty files.
+addFilter("googleapis.* zero-length")
+# We don't really want users to execute those scripts.
+addFilter("googleapis.* env-script-interpreter")
+addFilter("googleapis.* non-executable-script")
+addFilter("googleapis.* script-without-shebang")
+# Certificates shipped with googleapis are just test examples.
+addFilter("googleapis.* pem-certificate")
+# Huh, fdupes sometimes isn't perfect... but... that doesn't really matter
+addFilter("googleapis.* files-duplicate")

@@ -1,0 +1,35 @@
+Index: mumble-1.5.517/src/mumble/Cert.cpp
+===================================================================
+--- mumble-1.5.517.orig/src/mumble/Cert.cpp
++++ mumble-1.5.517/src/mumble/Cert.cpp
+@@ -96,11 +96,13 @@ void CertView::setCert(const QList< QSsl
+ 		else
+ 			qlSubjectEmail->setText(tr("(none)"));
+ 
++    const auto expiryDateStr = QLocale::system().toString(qscCert.expiryDate(), QLocale::ShortFormat);
++
+ 		if (qscCert.expiryDate() <= QDateTime::currentDateTime())
+-			qlExpiry->setText(QString::fromLatin1("<font color=\"red\"><b>%1</b></font>")
+-								  .arg(qscCert.expiryDate().toString(Qt::SystemLocaleDate).toHtmlEscaped()));
+-		else
+-			qlExpiry->setText(qscCert.expiryDate().toString(Qt::SystemLocaleDate));
++ 		  qlExpiry->setText(QString::fromLatin1("<font color=\"red\"><b>%1</b></font>")
++          .arg(expiryDateStr.toHtmlEscaped()));
++    else
++			qlExpiry->setText(expiryDateStr);
+ 
+ 		if (qlCert.count() > 1)
+ 			qscCert = qlCert.last();
+Index: mumble-1.5.517/src/mumble/Log.cpp
+===================================================================
+--- mumble-1.5.517.orig/src/mumble/Log.cpp
++++ mumble-1.5.517/src/mumble/Log.cpp
+@@ -730,7 +730,7 @@ void Log::log(MsgType mt, const QString
+ 			qdDate = dt.date();
+ 			tc.insertBlock();
+ 			tc.insertHtml(
+-				tr("[Date changed to %1]\n").arg(qdDate.toString(Qt::DefaultLocaleShortDate).toHtmlEscaped()));
++				tr("[Date changed to %1]\n").arg(QLocale().toString(qdDate, QLocale::ShortFormat).toHtmlEscaped()));
+ 			tc.movePosition(QTextCursor::End);
+ 		}
+ 

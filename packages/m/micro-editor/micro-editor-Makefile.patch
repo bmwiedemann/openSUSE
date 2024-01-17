@@ -1,0 +1,35 @@
+diff --git a/Makefile b/Makefile
+index fc9601a..831585e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,9 @@
+ .PHONY: runtime build generate build-quick
+ 
+-VERSION = $(shell GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) \
++VERSION ?= $(shell GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) \
+ 	go run tools/build-version.go)
+-HASH = $(shell git rev-parse --short HEAD)
+-DATE = $(shell GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) \
++HASH ?= $(shell git rev-parse --short HEAD)
++DATE ?= $(shell GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) \
+ 	go run tools/build-date.go)
+ ADDITIONAL_GO_LINKER_FLAGS = $(shell GOOS=$(shell go env GOHOSTOS) \
+ 	GOARCH=$(shell go env GOHOSTARCH) \
+@@ -16,7 +16,7 @@ VSCODE_TESTS_BASE_URL = 'https://raw.githubusercontent.com/microsoft/vscode/e6a4
+ build: generate build-quick
+ 
+ build-quick:
+-	go build -trimpath -ldflags "-s -w $(GOVARS) $(ADDITIONAL_GO_LINKER_FLAGS)" ./cmd/micro
++	go build $(EXTRAFLAGS) -ldflags "-s -w $(GOVARS) $(ADDITIONAL_GO_LINKER_FLAGS)" ./cmd/micro
+ 
+ build-dbg:
+ 	go build -trimpath -ldflags "-s -w $(ADDITIONAL_GO_LINKER_FLAGS) $(DEBUGVAR)" ./cmd/micro
+@@ -35,7 +35,7 @@ fetch-tags:
+ 	git fetch --tags
+ 
+ generate:
+-	GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) go generate ./runtime
++	go generate ./runtime
+ 
+ testgen:
+ 	mkdir -p tools/vscode-tests

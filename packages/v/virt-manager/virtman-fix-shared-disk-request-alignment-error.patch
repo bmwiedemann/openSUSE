@@ -1,0 +1,45 @@
+References: bsc#1207070
+
+When creating a raw disk that is marked as 'shared', libvirt
+will round the allocation amount higher to a 4k boundary.
+This results in the qemu error shown below passed back to libvirt.
+Note that only raw disks can be marked shared (not qcow2)
+but the rounding should not harm qcow2 disks.
+
+libvirt.libvirtError: internal error: qemu unexpectedly closed the monitor: 2023-01-19T21:40:28.507063Z qemu-system-x86_64:
+-device {"driver":"virtio-blk-pci","bus":"pci.8","addr":"0x0","share-rw":true,"drive":"libvirt-1-format","id":"virtio-disk1","write-cache":"on"}:
+Cannot get 'write' permission without 'resize': Image size is not a multiple of request alignment
+
+
+Index: virt-manager-4.1.0/virtManager/createvol.py
+===================================================================
+--- virt-manager-4.1.0.orig/virtManager/createvol.py
++++ virt-manager-4.1.0/virtManager/createvol.py
+@@ -246,7 +246,13 @@ class vmmCreateVolume(vmmGObjectUI):
+         vol = self._make_stub_vol()
+         vol.name = volname
+         vol.capacity = (cap * 1024 * 1024 * 1024)
++        if vol.capacity:
++            # If a raw disk is marked 'shared', round up for libvirt
++            vol.capacity -= vol.capacity % -4096
+         vol.allocation = (alloc * 1024 * 1024 * 1024)
++        if vol.allocation:
++            vol.allocation -= vol.allocation % -4096
++
+         if backing:
+             vol.backing_store = backing
+         if fmt:
+Index: virt-manager-4.1.0/virtinst/devices/disk.py
+===================================================================
+--- virt-manager-4.1.0.orig/virtinst/devices/disk.py
++++ virt-manager-4.1.0/virtinst/devices/disk.py
+@@ -361,6 +361,9 @@ class DeviceDisk(Device):
+                       volname, poolobj.name())
+ 
+         cap = (size * 1024 * 1024 * 1024)
++        if cap:
++            # If a raw disk is marked 'shared', round up for libvirt
++            cap -= cap % -4096
+         if sparse:
+             alloc = 0
+         else:

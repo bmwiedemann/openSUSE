@@ -1,0 +1,369 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d75d6695a14e27b06e20c2327de351f</srcmd5>
+    <version>17.10.1</version>
+    <time>1522062609</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix python2 pulling of trollius
+- Initial package
+</comment>
+    <requestid>590759</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02ef00124f645c9032bcc9548f335237</srcmd5>
+    <version>17.10.1</version>
+    <time>1534100049</time>
+    <user>dimstar_suse</user>
+    <comment>Add remove-unittest2.patch which remove dependency on unittest2
+(filed upstream https://github.com/crossbario/autobahn-python/issues/1036)</comment>
+    <requestid>628599</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0579cc2b6b7e45a4a19f1dd88c219343</srcmd5>
+    <version>18.9.2</version>
+    <time>1540448022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.9.2:
+  * Various fixes all around
+  * Support python 3.7
+- remove-unittest2.patch was merged upstream</comment>
+    <requestid>642831</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4f0a4724b5b56c601f60de190c683d4e</srcmd5>
+    <version>19.3.3</version>
+    <time>1554458798</time>
+    <user>dimstar_suse</user>
+    <comment>:x
+
+- Update to 19.3.3:
+  * No upstream changelog
+
+- Update to 19.3.2:
+  * no upstream changelog
+- List all the missing requirements based on setup.py</comment>
+    <requestid>691726</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4369bdfbc04aaf66c4a5480d8c6de2f1</srcmd5>
+    <version>19.3.3</version>
+    <time>1557141683</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename reproducible.patch to respect-cflags.patch and really make
+  sure we respect all the cflags
+
+- Add reproducible.patch to make package build reproducible (boo#1100677)
+  and to not use SSE4.1 instructions</comment>
+    <requestid>692232</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8169bd0b64eb91f1e1873845e2c6d299</srcmd5>
+    <version>19.5.1</version>
+    <time>1558532367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703027</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8f004dae7a678742c3f3628b93c70bc6</srcmd5>
+    <version>19.9.2</version>
+    <time>1569523138</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732185</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2b950b7403d6425bcd725d887e52b207</srcmd5>
+    <version>20.4.2</version>
+    <time>1587467223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.4.2:
+  * new: XBR - adjust eip712 signature for channel close
+  * new: XBR - adjustments after xbr refactoring (#1357)
+  * new: XBR - add channel open/close eip712 types to AB (#1358)
+  * new: WAMP-cryptosign - make channel_id_type optional in transport_channel_id()
+  * new: expose new XBR top-level contracts
+  * fix: bump dependencies versions for attrs and identity (#1346)
+  * fix: FrontendProxyProtocol object has no attribute 'write' (#1339)
+  * fix: WAMP-cryptosign authid is not mandatory; reduce log noise (#1340)
+  * fix: confusion between paying and payment channel (#1337)
+  * new: forward explicitly set app level errors from ApplicationRunner.run() (#1336)
+  * fix: simple typo: hookinh -&gt; hooking (#1333)
+  * new: update for xbr v20.3.1
+  * fix: for #1327 - cancel Auto Ping Timeout (#1328)
+  * new: helper function to create a configured Web3 blockchain connection (#1329)
+  * fix: add AuthAnonymous to __all__ (#1303)
+  * fix: CI building (caching?) issue &quot;corrupt ZIP file&quot;
+  * fix: update docker image build scripts and add ARM64/PyPy
+  * fix: use :func:`txaio.time_ns` and drop deprecated :func:`autobahn.util.time_ns`
+  * fix: update project README and docs for supported python versions (#1296)
+  * fix: WebSocket protocol instances now raise autobahn.exception.Disconnected when sending on a closed connection (#1002)
+  * fix: version conflict in xbr downstream application dependency (crossbarfx) (#1295)
+  * fix: add python_requires&gt;=3.5 to prevent installation on python 2 (#1293)
+  * fix: first part of cleaning up code, dropping Python 2 support (#1282).
+  * fix: add docs for parameters to component.py (#1276)
+  * new: statistics tracking on WAMP serializers :class:`autobahn.wamp.serializer.Serializer`
+  * new: helper :func:`autobahn.util.time_ns`
+- No longer build for Python 2
+- Update BuildRequires.</comment>
+    <requestid>795683</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bd4d5178aaf801356d2a5813e02e199d</srcmd5>
+    <version>20.6.1</version>
+    <time>1593006476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.6.1:
+  * new: massive expansion of XBR CLI and EIP712 helpers
+  * new: more (exhaustive) serializer cross-tripping tests
+  * fix: some code quality and bug-risk issues (#1379)
+  * fix: removed externalPort assignment when not set (#1378)
+  * fix: docs link in README (#1381)
+  * fix: docs typo frameword -&gt; framework (#1380)
+  * fix: improve logging; track results on observable mixin
+  * new: add environmental variable that strips xbr. (#1374)
+  * fix: trollius is gone (#1373)
+  * new: added ability to disable TLS channel binding (#1368)
+- Correct BuildRequires/Requires (boo#1172126)
+
+- update to 20.4.3:
+  * new: XBR CLI (#1367)
+  * fix: add missing XBR dependency py-multihash
+
+- %python3_only -&gt; %python_alternative</comment>
+    <requestid>814607</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8d926b41eed0d7cd50880f74f4d7c6bc</srcmd5>
+    <version>20.6.2</version>
+    <time>1594228408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.6.2:
+  * fix: xbr fixes (#1396)
+  * fix: use cpy 3.8 for running flake in CI
+  * new: Ticket1392 internal attrs (#1394)
+  * new: internal-only router attributes and hook for router to add custom
+    information</comment>
+    <requestid>819310</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4205ad27751dc438a93ed81fd7cba968</srcmd5>
+    <version>20.7.1</version>
+    <time>1595339329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.7.1:
+  * new: add market login eip. expose helpers</comment>
+    <requestid>821997</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>b3e838dbe57a8fd9f4944b72613fd307</srcmd5>
+    <version>20.7.1</version>
+    <time>1595585427</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to include correct &lt;arch&gt;intrin.h for s390
+  * intrin-arch.patch
+- Minor patch refresh for respect-cflags.patch
+</comment>
+    <requestid>822557</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>2ad888617c4a7addf19da7b48f77235d</srcmd5>
+    <version>20.7.1</version>
+    <time>1597955486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828104</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>0d3758b72d853bdfc48540c44854cf9d</srcmd5>
+    <version>20.7.1</version>
+    <time>1598885599</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830724</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>b8ace97ee09a924b2f6e20f90c368765</srcmd5>
+    <version>20.7.1</version>
+    <time>1608729700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858113</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1f7707bba68ceec2bec1e6f3eeab446a</srcmd5>
+    <version>20.12.3</version>
+    <time>1609866896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.12.3:
+  * fix: URL must be re-encoded when doing redirect (#1439)
+  * new: minimum supported Python (language) version is now 3.6
+  * fix: derive_bip32childkey traceback (#1436)
+  * fix: update and adjust docker files to upstream changes
+  * new: CLI commands for WAMP IDL (xbrnetwork describe-schema / codegen-schema)
+  * new: add eth address helpers (#1413)
+  * new: cryptosign authextra allow arbitrary keys (#1411)
+  * fix: adapt to planet api prefix change (#1408)
+  * fix: Type check improve (#1405)</comment>
+    <requestid>860363</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0553a21de15344e35f9e8ff021f6b5fa</srcmd5>
+    <version>20.12.3</version>
+    <time>1609959379</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug and CVE numbers (bsc#1180570, CVE-2020-35678)</comment>
+    <requestid>860566</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>60b6b19500b723b9b464e1e1d843f3f2</srcmd5>
+    <version>20.12.3</version>
+    <time>1610558401</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires/Requires on python-hyperlink</comment>
+    <requestid>862473</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>46aab89a9b310dccec7c4c54051d3939</srcmd5>
+    <version>21.2.1</version>
+    <time>1613427539</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.2.1:
+  * new: XBR ABI files now via separate package (“xbr”) - substantially reduce
+    package size for non-XBR users
+  * fix: circular dependency in “xbr” install flavor
+  * fix: XBR package manifest and CLI user profile loading
+  * fix: consider ‘wamp.close.goodbye_and_out’ a clean exit
+  * fix: HASH import as well as improve diagnostics if things go wrong
+  * fix: add missing jinja2 dependency for XBR CLI
+  * fix: wamp.close.goodbye_and_out counts as a clean exit</comment>
+    <requestid>872023</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bb938a2f88b6cba7e2810e2ddfc9eced</srcmd5>
+    <version>21.3.1</version>
+    <time>1621439347</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.3.1:
+  * fix: Twisted v21.2.0 breaks Crossbar.io
+  * new: use_binary_hex_encoding option for JSON object serializer
+  * fix: correct some sphinx doc references
+  * new: minimum supported Python (language) version is now 3.7 (on CPython and PyPy)
+  * new: more XBR proxy/stub code generation capabilities (RPC call/invoation handlers)
+  * fix: wamp-cryptosign loading of keys from SSH agent
+  * fix: update Docker image building and build Docker multi-arch images
+  * new: add more WAMP-cryptosign signature test vectors and unit tests
+  * fix: include XBR code rendering templates in package manifest</comment>
+    <requestid>894061</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>303585e8f4174d27ee9a9dd8e00168b6</srcmd5>
+    <version>21.3.1</version>
+    <time>1644273506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>952246</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>26d0bab7f5aba19cb1eb97b53e33a519</srcmd5>
+    <version>22.2.2</version>
+    <time>1646848066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.2.2:
+  * fix: auto ping/pong logs should be debug instead of info (#1524)
+  * new: add auto-ping/pong configuration knob autoPingRestartOnAnyTraffic (see discussion here).
+  * new: extended websocket auto-ping/pong (&quot;heartbeating&quot;) with builtin RTT measurement
+  * new: experimental support for transaction_hash in WAMP Publish/Call (see discussion here).
+  * new: support decimal numbers WAMP serialization and round-tripping in both JSON and CBOR
+  * fix: only depend on cbor2 (for WAMP CBOR serialization), not also cbor
+  * fix: PyInstaller and Docker build / CI issues
+  * new: support Python 3.10
+  * new: allow optional keys in endpoint config validation
+  * fix: reset transport retry status when connection succeeds
+  * fix: update Docker/PyPy to pypy:3.8-slim
+  * fix: autobahn installation in docker (#1503)
+  * new: refactor SigningKey class for reusability (#1500, #1501)
+  * new: expand XBR node pairing helpers
+  * fix: build with nvx by default and don't publish universal wheel. (#1493)
+  * fix: update wamp flatbuffer schema for r2r links
+  * fix: don't clobber factory (#1480)
+  * fix: explicitly require setuptools
+  * new: expand wamp auth scram and xbr argon2/hkdf (#1479)
+  * fix: WebSocket compression, window size (zlib wbits) == 8 is illegal nowerdays (#1477)
+  * fix: XBR IDL code generator - all 4 WAMP actions working now
+  * new: add automated build of xbrnetwork CLI (single-file EXE) in CI 
+- Remove python-mock BuildRequires
+- Rebase respect-cflags.patch
+- Ship the xbrnetwork-ui cli tool</comment>
+    <requestid>960358</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>12a2eb23510c0747286f22ab8d9099dc</srcmd5>
+    <version>22.2.2</version>
+    <time>1647031286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961037</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e7230f063ffc430a531fb39862663429</srcmd5>
+    <version>22.3.1</version>
+    <time>1648479650</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.3.1:
+  * fix generate_token
+  * reduce twisted log noise for wamp clients
+  * add GitHub URL for PyPi</comment>
+    <requestid>965198</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2b86ca9661fe28e1b602e3ea65bda35e</srcmd5>
+    <version>22.3.2</version>
+    <time>1648665348</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.3.2:
+  * fix: split out UI deps into separate dist flavor (#1532)
+  * fix: deps for RTD builds (#1540)
+  * fix: use and bundle dev deps from requirements file</comment>
+    <requestid>965827</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7cc72973b2b18c42ca29ad4909be46a6</srcmd5>
+    <version>22.7.1</version>
+    <time>1659721866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993142</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f20f206d5eb65afc9047e6c546c31864</srcmd5>
+    <version>23.6.2</version>
+    <time>1687796142</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094863 from mcalabkova
+
+- Update to 23.6.2
+    * fix: use regular PyPI bitarray&gt;=2.7.5 rather than from GitHub master
+    23.6.1
+    * fix: updated bitarray to make eth-account work on pypy
+    * fix: updated web3 and eth-abi to not use beta versions (#1616)
+    23.1.2
+    * fix: monkey patch web3/eth_abi for python 3.11
+    23.1.1
+    * fix: support for Python up to v3.11
+    * fix: update GitHub CI
+    * fix: copyright transferred to typedef int GmbH - no license change!
+    * fix: remove coverage crap
+    22.12.1
+    * new: expand WAMP Flatbuffers schemata (session ID in each message for MUXing)
+    * new: update flatc v22.12.06 and regenerate WAMP Flatbuffers type libraries
+    * fix: Twisted 22.10.0 incompability (#1604)
+    * fix: Rapid Cancelling Of Tasks Can Cause InvalidStateError (#1600)
+    * fix: identify_realm_name_category (#1590)
+    * fix: support Python 3.11 (#1599)
+    * fix: building _nvx_utf8validator extension on non-x86 systems (#1596)
+    * fix: asyncio rawsocket protocol transport details (#1592)
+    * new: expand EIP712AuthorityCertificate; more tests</comment>
+    <requestid>1095236</requestid>
+  </revision>
+</revisionlist>

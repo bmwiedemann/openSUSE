@@ -1,0 +1,11 @@
+--- a/src/lib/lttng-ctl/lttng-ctl.pc.in
++++ b/src/lib/lttng-ctl/lttng-ctl.pc.in
+@@ -12,7 +12,7 @@ Name: LTTng control library
+ Description: Control LTTng recording sessions and triggers
+ Version: @PACKAGE_VERSION@
+ Requires:
+-Requires.private:
++Requires.private: liburcu liburcu-cds
+ Libs: -L${libdir} -llttng-ctl
+ Cflags: -I${includedir}
+ 

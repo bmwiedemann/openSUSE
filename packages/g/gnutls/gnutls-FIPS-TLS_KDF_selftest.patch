@@ -1,0 +1,31 @@
+Index: gnutls-3.7.7/lib/fips.c
+===================================================================
+--- gnutls-3.7.7.orig/lib/fips.c
++++ gnutls-3.7.7/lib/fips.c
+@@ -517,6 +517,26 @@ int _gnutls_fips_perform_self_checks2(vo
+ 		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
+ 	}
+ 
++        /* KDF */
++
++	char derived[512];
++
++	gnutls_datum_t secret = { (void *)"\x04\x50\xb0\xea\x9e\xcd\x36\x02\xee\x0d\x76\xc5\xc3\xc8\x6f\x4a", 16 };
++	gnutls_datum_t seed = { (void *)"\x20\x7a\xcc\x02\x54\xb8\x67\xf5\xb9\x25\xb4\x5a\x33\x60\x1d\x8b", 16 };
++	gnutls_datum_t label = { (void *)"test label", 10 };
++	gnutls_datum_t expected = { (void *)"\xae\x67\x9e\x0e\x71\x4f\x59\x75\x76\x37\x68\xb1\x66\x97\x9e\x1d", 16 };
++
++	ret = _gnutls_prf_raw(GNUTLS_MAC_SHA256, secret.size, secret.data,
++		label.size, (char*)label.data, seed.size, seed.data, expected.size, derived);
++	if (ret < 0) {
++		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
++	}
++
++	ret = memcmp(derived, expected.data, expected.size);
++	if (ret != 0) {
++		return gnutls_assert_val(GNUTLS_E_SELF_TEST_ERROR);
++	}
++
+ 	/* PK */
+ 	ret = gnutls_pk_self_test(0, GNUTLS_PK_RSA);
+ 	if (ret < 0) {

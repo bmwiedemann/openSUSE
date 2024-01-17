@@ -1,0 +1,351 @@
+-------------------------------------------------------------------
+Tue Dec 19 08:01:08 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.10
+
+  Bug fixes:
+  * Fix incorrect free in conn_sock (removes fix-incorrect-free-in-conn_sock.patch)
+  * logging: Respect log-size-max immediately after open
+
+-------------------------------------------------------------------
+Mon Dec 18 09:02:52 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add fix-incorrect-free-in-conn_sock.patch
+  This fixes a regression in 2.1.9
+  (https://github.com/containers/conmon/issues/475 and
+  https://github.com/containers/conmon/issues/477)
+
+-------------------------------------------------------------------
+Fri Dec 15 09:54:35 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.9
+
+  ### Bug fixes
+  * fix some issues flagged by SAST scan
+  * src: fix write after end of buffer
+  * src: open all files with O_CLOEXEC
+  * oom-score: restore oom score before running exit command
+  ### Features
+  * Forward more messages on the sd-notify socket
+  * logging: -l passthrough accepts TTYs
+
+-------------------------------------------------------------------
+Thu Sep 28 16:02:58 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- go 1.19 EOL, swith to go >= 1.20
+   * [bsc#1215806]
+
+-------------------------------------------------------------------
+Wed Sep  6 05:41:47 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 2.1.8:
+  * stdio: ignore EIO for terminals
+  * ensure console socket buffers are properly sized
+  * conmon: drop return after pexit()
+  * ctrl: make accept4 failures fatal
+  * logging: avoid opening /dev/null for each write
+  * oom: restore old OOM score
+  * Use default umask 0022
+  * cli: log parsing errors to stderr
+  * Changes to build conmon for riscv64
+  * Changes to build conmon for ppc64le
+  * Fix close_other_fds on FreeBSD
+
+-------------------------------------------------------------------
+Wed Mar 15 14:36:27 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.7
+2.1.7:
+
+### Bug Fixes
+Fix leaking symbolic links in the opt_socket_path directory
+cgroup: Stumble on if we can't set up oom handling (bsc#1208737)
+
+2.1.6:
+
+### Bug Fixes
+  * Fix OOM watcher for cgroupv2 `oom_kill` events
+### Misc
+  * Use --detach instead of -d
+  * ctrl: drop fifo perms to 0660
+
+- Remove merged patch:
+  * 0001-Fix-tools-Makefile-with-GNU-make-4.4.patch
+
+- Bump go version to 1.19 (bsc#1209307)
+
+-------------------------------------------------------------------
+Wed Nov 23 14:43:15 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Update to version 2.1.5:
+
+  * don't leak syslog_identifier
+  * logging: do not read more that the buf size
+  * logging: fix error handling
+  * Makefile: Fix install for FreeBSD
+  * signal: Track changes to get_signal_descriptor in the FreeBSD version
+  * Packit: initial enablement
+
+- Update to version 2.1.4:
+
+  * Fix a bug where conmon crashed when it got a SIGCHLD
+
+-------------------------------------------------------------------
+Fri Nov  4 14:35:09 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with make >= 4.4:
+  * 0001-Fix-tools-Makefile-with-GNU-make-4.4.patch
+
+-------------------------------------------------------------------
+Wed Aug 17 20:16:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.3:
+  * Port conmon to FreeBSD
+  * Stop using g_unix_signal_add() to avoid threads
+  * Rename CLI optionlog-size-global-max to log-global-size-max 
+
+-------------------------------------------------------------------
+Wed Jun 29 06:05:57 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 2.1.2:
+  * add log-global-size-max option to limit the total output conmon processes (CVE-2022-1708 boo#1200285)
+  * journald: print tag and name if both are specified
+  * drop some logs to debug level
+
+-------------------------------------------------------------------
+Thu May  5 15:46:07 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.1.0
+  * logging: buffer partial messages to journald
+  * exit: close all fds >= 3
+  * fix: cgroup: Free memory_cgroup_file_path if open fails.
+    Call g_free instead of free.
+- Update to version 2.0.32
+  * Fix: Avoid mainfd_std{in,out} sharing the same file descriptor.
+  *exit_command: Fix: unset subreaper attribute before running exit command
+- Update to version 2.0.31
+  * logging: new mode -l passthrough
+  * ctr_logs: use container name or ID as SYSLOG_IDENTIFIER for journald
+  * conmon: Fix: free userdata files before exec cleanup
+
+-------------------------------------------------------------------
+Fri Sep 24 07:31:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.0.30:
+  * Remove unreachable code path
+  * exit: report if the exit command was killed
+  * exit: fix race zombie reaper
+  * conn_sock: allow watchdog messages through the notify socket proxy
+  * seccomp: add support for seccomp notify
+
+-------------------------------------------------------------------
+Fri Jul 23 09:51:11 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.0.29:
+  * Reset OOM score back to 0 for container runtime
+  * call functions registered with atexit on SIGTERM
+  * conn_sock: fix potential segfault
+
+-------------------------------------------------------------------
+Tue Mar 30 08:47:10 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.0.27:
+  * bump to v2.0.27
+  * Add CRI-O integration test GitHub action
+  * exec: don't fail on EBADFD
+  * close_fds: fix close of external fds
+  * Add arm64 static build binary
+  * bump to v2.0.27-dev
+
+-------------------------------------------------------------------
+Thu Feb 25 15:41:49 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to version 2.0.26:
+  * conn_sock: do not fail on EAGAIN
+  * fix segfault from a double freed pointer
+  * Fix a bug where conmon could never spawn a container, because
+    a disagreement between the caller and itself on where the attach
+    socket was.
+  * improve --full-attach to ignore the socket-dir directly. that
+    means callers don't need to specify a socket dir at all (and
+    can remove it)
+  * add full-attach option to allow callers to not truncate a very
+    long path for the attach socket
+  * close only opened FDs
+  * set locale to inherit environment
+
+-------------------------------------------------------------------
+Tue Jan 12 08:10:52 UTC 2021 - sgrunert@suse.com
+
+- Update to version 2.0.22:
+  * added man page
+  * attach: always chdir
+  * conn_sock: Explicitly free a heap-allocated string
+  * refactor I/O and add SD_NOTIFY proxy support
+
+-------------------------------------------------------------------
+Mon Sep 21 07:06:04 UTC 2020 - dmueller@suse.com
+
+- Update to version 2.0.21:
+  * bump to v2.0.21
+  * protect against kill(-1)
+  * Makefile: enable debuginfo generation
+  * Remove go.sum file and add go.mod
+  * Fail if conmon config could not be written
+  * nix: remove double definition for e2fsprogs
+  * Speedup static build by utilizing CI cache on `/nix` folder
+  * Fix nix build for failing e2fsprogs tests
+  * test: fix CI
+  * Use Podman for building
+
+-------------------------------------------------------------------
+Wed Jul 29 10:20:58 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.20 (bsc#1175821)
+  - journald: fix logging container name
+  - container logging: Implement none driver - "off", "null" or
+    "none" all work.
+  - ctrl: warn if we fail to unlink
+  - Drop fsync calls
+  - Reap PIDs before running exit command
+  - Fix log path parsing
+  - Add --sync option to prevent conmon from double forking
+  - Add --no-sync-log option to instruct conmon to not sync the
+    logs of the containers upon shutting down. This feature fixes a
+    regression where we unconditionally dropped the log sync. It is
+    possible the container logs could be corrupted on a sudden
+    power-off. If you need container logs to remain in consistent
+    state after a sudden shutdown, please update from v2.0.19 to
+    v2.0.20
+
+-------------------------------------------------------------------
+Wed May 27 06:55:07 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.17
+  - Add option to delay execution of exit command
+
+-------------------------------------------------------------------
+Mon May 18 07:38:30 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.16
+  - tty: flush pending data when fd is ready
+
+-------------------------------------------------------------------
+Fri Apr  3 14:33:46 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Enable support for journald logging (bsc#1162432)
+
+-------------------------------------------------------------------
+Fri Apr  3 07:22:43 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.15
+  - store status while waiting for pid
+
+-------------------------------------------------------------------
+Wed Mar 25 08:55:06 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.14
+  - drop usage of splice(2)
+  - avoid hanging on stdin
+  - stdio: sometimes quit main loop after io is done
+  - ignore sigpipe
+
+-------------------------------------------------------------------
+Tue Mar 17 10:10:44 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to v2.0.12
+  - oom: fix potential race between verification steps
+
+-------------------------------------------------------------------
+Thu Mar  5 08:06:24 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Update to v2.0.11
+  - log: reject --log-tag with k8s-file
+  - chmod std files pipes
+  - adjust score to -1000 to prevent conmon from ever being OOM
+    killed
+  - container OOM: verify cgroup hasn't been cleaned up before
+    reporting OOM
+
+-------------------------------------------------------------------
+Fri Feb 21 09:22:06 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to v2.0.10 (bsc#1160460, bsc#1164390, jsc#ECO-1048,
+  jsc#SLE-11485, jsc#SLE-11331):
+  - journal logging: write to /dev/null instead of -1
+
+-------------------------------------------------------------------
+Tue Jan  7 12:20:08 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
+
+- Add TimedOutMessage to config to share with go code
+- Fix format string to limit the size of the string to 10
+  characters
+
+-------------------------------------------------------------------
+Mon Dec 16 08:41:54 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Persist oom files on cgroup v2
+- Revert the check for  the OOM counter on cgroups v1 before
+  writing OOM file
+
+-------------------------------------------------------------------
+Fri Dec 13 08:23:04 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add --persist-dir flag to allow important container files to be
+  written to a persistent directory
+- Check OOM counter on cgroups v1 before writing OOM file
+- Use splice(2) to copy from stdin
+
+-------------------------------------------------------------------
+Thu Dec 12 11:37:19 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Kill the process group on timeout
+
+-------------------------------------------------------------------
+Wed Dec 11 07:39:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add --persist-dir to allow callers to specify a directory that
+  conmon should mirror certain important files that should persist
+  reboots (right now, just the container exit file)
+
+-------------------------------------------------------------------
+Mon Dec  9 17:34:49 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Fix tight loop on OOM
+
+-------------------------------------------------------------------
+Thu Nov 14 14:25:29 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add log level trace
+- Separate handling of log reopen events and terminal resize events
+
+-------------------------------------------------------------------
+Tue Oct 29 09:03:03 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Add CONN_SOCK_BUF_SIZE to config
+- Fix bug to close the sync pipe before exit command
+
+-------------------------------------------------------------------
+Mon Sep 16 16:59:28 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Set masterfd_stdout before registering ctrl_cb
+
+-------------------------------------------------------------------
+Sat Aug 24 04:10:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Upstream has an actual description, use it instead of just
+  duplicating the summary again.
+
+-------------------------------------------------------------------
+Fri Aug 16 11:48:30 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Use `%make_build` macro instead of `%{__make}`
+- Use `%make_install` macro instead of `%{__make} install`
+- Use `%{_bindir}` macro instead of `%{_usr}/bin`
+- Change `PREFIX` to not contain `%{buildroot}` and use the
+  `$DESTDIR` variable
+
+-------------------------------------------------------------------
+Mon Aug 12 06:41:41 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Initial release v2.0.0

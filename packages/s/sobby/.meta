@@ -1,0 +1,6 @@
+<package name="sobby" project="openSUSE:Factory">
+  <title>Stand-alone obby server</title>
+  <description>sobby is a stand-alone obby server. It currently runs under Unix-like
+platforms only.</description>
+  <devel project="GNOME:Apps" package="sobby"/>
+</package>

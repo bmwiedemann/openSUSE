@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2c59f6c7e883b71face6177a05d4faa</srcmd5>
+    <version>0.9.4</version>
+    <time>1407331918</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>243720</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e2c59f6c7e883b71face6177a05d4faa</srcmd5>
+    <version>0.9.4</version>
+    <time>1409303208</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>616157ea972ff78f3be7a448a84a7640</srcmd5>
+    <version>0.9.6</version>
+    <time>1447882477</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable xmlrpc on Tumbleweed (forwarded request 344464 from pluskalm)</comment>
+    <requestid>344465</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92d65b28d1c6d6bc6a1eb45332eb484c</srcmd5>
+    <version>0.9.6.g93</version>
+    <time>1503592184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 0.9.6.g93</comment>
+    <requestid>501673</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>81db8a00e74c27a47468c244b7b56f4d</srcmd5>
+    <version>0.9.6.g116</version>
+    <time>1513110194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new snapshot 0.9.6.g113</comment>
+    <requestid>556323</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>796af7b875c1b22ab170be38f4fb3fe8</srcmd5>
+    <version>0.9.8</version>
+    <time>1564576275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719869</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>00d469dbdb5d9fadb57cd56a192fa693</srcmd5>
+    <version>0.9.8</version>
+    <time>1566243544</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing %service_* scriptlets</comment>
+    <requestid>724200</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0a180b839712c47537eec84e2d116dae</srcmd5>
+    <version>0.9.8</version>
+    <time>1580842311</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>769058</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>38d294f3c097e44227cd5596b1631a4b</srcmd5>
+    <version>0.9.8</version>
+    <time>1599343450</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop old specfile constructs.</comment>
+    <requestid>832211</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>14e3eb3ba6af4070ac2cb0db6be21506</srcmd5>
+    <version>0.9.8</version>
+    <time>1637535143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932825</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>599d411258e80fee6b3314c29a4a3b3a</srcmd5>
+    <version>0.9.8</version>
+    <time>1655972653</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport fix which resolves a crashing issue on startup on openSUSE.
+  https://github.com/rakshasa/rtorrent/pull/1169
+  + 0001-utils-lockfile-avoid-stack-overflow-for-lockfile-buf.patch</comment>
+    <requestid>984398</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Dec 20 18:19:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Nov 15 05:38:36 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.5.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Sat Aug 19 07:18:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/typst-symbols-0.1.4/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Jun 30 22:43:57 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.2.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Thu Jun 29 17:49:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.1.1.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Sun Jun  4 23:02:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Add typst-symbols at version 0.1.0.1 revision 1.
+

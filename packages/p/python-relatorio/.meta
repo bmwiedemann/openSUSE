@@ -1,0 +1,5 @@
+<package name="python-relatorio" project="openSUSE:Factory">
+  <title>relatorio is an OpenHex and B2CK project to easily create reports in a variety of formats (openoffice text, PDF, XHTML) from python objects.</title>
+  <description>relatorio is an OpenHex and B2CK project to easily create reports in a variety of formats (openoffice text, PDF, XHTML) from python objects.</description>
+  <devel project="devel:languages:python" package="python-relatorio"/>
+</package>

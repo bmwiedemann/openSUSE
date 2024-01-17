@@ -1,0 +1,25 @@
+From 8257181f9e4e54505de158a98d54c8a11b127553 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Wed, 13 Sep 2023 23:40:16 +0200
+Subject: [PATCH 21/24] tests: enforce full fs check
+
+---
+ test/shell/lvresize-fs-crypt.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/shell/lvresize-fs-crypt.sh b/test/shell/lvresize-fs-crypt.sh
+index 966870d5d..302fd5fc9 100644
+--- a/test/shell/lvresize-fs-crypt.sh
++++ b/test/shell/lvresize-fs-crypt.sh
+@@ -139,7 +139,7 @@ dd if=/dev/zero of="$mount_dir/zeros1" bs=1M count=10 oflag=direct
+ df --output=size "$mount_dir" |tee df1
+ # resize only the fs (to 256M), not the crypt dev or LV
+ umount "$mount_dir"
+-fsck -n /dev/mapper/$cr
++fsck -fn /dev/mapper/$cr
+ resize2fs /dev/mapper/$cr 262144k
+ mount /dev/mapper/$cr "$mount_dir"
+ # this lvresize will not resize the fs (which is already reduced
+-- 
+2.35.3
+

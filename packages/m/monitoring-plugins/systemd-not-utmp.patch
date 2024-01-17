@@ -1,0 +1,78 @@
+--- monitoring-plugins-2.3.3.old/configure.ac	2023-02-01 14:40:55.000000000 +0100
++++ monitoring-plugins-2.3.3/configure.ac	2023-06-15 16:21:19.637049416 +0200
+@@ -328,6 +328,25 @@
+   LIBS="$_SAVEDLIBS"
+ ])
+ 
++
++AC_ARG_WITH([systemd], [AS_HELP_STRING([--without-systemd], [Skips systemd support])])
++
++dnl Check for libsystemd
++AS_IF([test "x$with_systemd" != "xno"], [
++  _SAVEDLIBS="$LIBS"
++  AC_CHECK_LIB(systemd,sd_get_sessions,,,-lsystemd)
++  if test "$ac_cv_lib_systemd_sd_get_sessions" = "yes"; then
++    SYSTEMDLIBS="-lsystemd"
++    SYSTEMDINCLUDE=""
++    AC_SUBST(SYSTEMDLIBS)
++    AC_SUBST(SYSTEMDINCLUDE)
++  else
++    AC_MSG_WARN([Skipping systemd support])
++  fi
++  LIBS="$_SAVEDLIBS"
++])
++
++
+ dnl Check for headers used by check_ide_smart
+ case $host in
+   *linux*)
+diff -wur monitoring-plugins-2.3.3.old/plugins/check_users.c monitoring-plugins-2.3.3/plugins/check_users.c
+--- monitoring-plugins-2.3.3.old/plugins/check_users.c	2023-02-01 14:40:55.000000000 +0100
++++ monitoring-plugins-2.3.3/plugins/check_users.c	2023-06-15 16:16:34.879700400 +0200
+@@ -48,6 +48,11 @@
+ # include "popen.h"
+ #endif
+ 
++#ifdef HAVE_LIBSYSTEMD
++#include <systemd/sd-daemon.h>
++#include <systemd/sd-login.h>
++#endif
++
+ #define possibly_set(a,b) ((a) == 0 ? (b) : 0)
+ 
+ int process_arguments (int, char **);
+@@ -115,6 +120,11 @@
+ 
+ 	WTSFreeMemory(wtsinfo);
+ #elif HAVE_UTMPX_H
++#ifdef HAVE_LIBSYSTEMD
++	if (sd_booted () > 0)
++	        users = sd_get_sessions (NULL);
++	else {
++#endif
+ 	/* get currently logged users from utmpx */
+ 	setutxent ();
+ 
+@@ -123,6 +133,9 @@
+ 			users++;
+ 
+ 	endutxent ();
++#ifdef HAVE_LIBSYSTEMD
++	}
++#endif
+ #else
+ 	/* run the command */
+ 	child_process = spopen (WHO_COMMAND);
+Nur in monitoring-plugins-2.3.3/plugins: check_users.c~.
+diff -wur monitoring-plugins-2.3.3.old/plugins/Makefile.am monitoring-plugins-2.3.3/plugins/Makefile.am
+--- monitoring-plugins-2.3.3.old/plugins/Makefile.am	2023-02-01 14:40:55.000000000 +0100
++++ monitoring-plugins-2.3.3/plugins/Makefile.am	2023-06-15 16:23:36.925699810 +0200
+@@ -112,7 +112,7 @@
+ check_time_LDADD = $(NETLIBS)
+ check_ntp_time_LDADD = $(NETLIBS) $(MATHLIBS)
+ check_ups_LDADD = $(NETLIBS)
+-check_users_LDADD = $(BASEOBJS) $(WTSAPI32LIBS)
++check_users_LDADD = $(BASEOBJS) $(WTSAPI32LIBS) $(SYSTEMDLIBS)
+ check_by_ssh_LDADD = $(NETLIBS)
+ check_ide_smart_LDADD = $(BASEOBJS)
+ negate_LDADD = $(BASEOBJS)

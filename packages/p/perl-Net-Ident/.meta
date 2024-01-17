@@ -1,0 +1,8 @@
+<package name="perl-Net-Ident" project="openSUSE:Factory">
+  <title>Lookup the username on the remote end of a TCP/IP connection</title>
+  <description>You can either use the simple interface, which does one ident lookup at a
+time, or use the asynchronous interface to perform (possibly) many
+simultaneous lookups, or simply continue serving other things while the
+lookup is proceeding.</description>
+  <devel project="devel:languages:perl" package="perl-Net-Ident"/>
+</package>

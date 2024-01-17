@@ -1,0 +1,5 @@
+<package name="python-django-ipware" project="openSUSE:Factory">
+  <title></title>
+  <description>Django utility application that returns client's real IP address</description>
+  <devel project="devel:languages:python:django" package="python-django-ipware"/>
+</package>

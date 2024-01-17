@@ -1,0 +1,66 @@
+From d259c18bc21ad83381e990b48bc66ea1dec21528 Mon Sep 17 00:00:00 2001
+From: Christian Hergert <chergert@redhat.com>
+Date: Fri, 22 Sep 2023 15:14:45 -0700
+Subject: [PATCH] close-dialog: clamp row title to maximum length
+
+Without this, the sizing machinery can take so long that the window ends
+up being larger than the maximum texture size as well as just looping
+forever in terms glyph sizing.
+
+Handles obnoxiously long process titles.
+
+Fix: https://gitlab.gnome.org/GNOME/console/-/issues/264
+---
+ src/kgx-close-dialog.c | 27 ++++++++++++++++++++++++---
+ 1 file changed, 24 insertions(+), 3 deletions(-)
+
+diff --git a/src/kgx-close-dialog.c b/src/kgx-close-dialog.c
+index 09563734..3a330a30 100644
+--- a/src/kgx-close-dialog.c
++++ b/src/kgx-close-dialog.c
+@@ -32,6 +32,9 @@
+ #include "kgx-process.h"
+ #include <adwaita.h>
+ 
++#define MAX_TITLE_LENGTH 100
++
++
+ GtkWidget *
+ kgx_close_dialog_new (KgxCloseDialogContext  context,
+                       GPtrArray             *commands)
+@@ -63,11 +66,29 @@ kgx_close_dialog_new (KgxCloseDialogContext  context,
+ 
+   for (int i = 0; i < commands->len; i++) {
+     KgxProcess *process = g_ptr_array_index (commands, i);
++    const char *title = kgx_process_get_exec (process);
+     GtkWidget *row;
+ 
+-    row = g_object_new (ADW_TYPE_ACTION_ROW,
+-                        "title", kgx_process_get_exec (process),
+-                        NULL);
++    if (strlen (title) > MAX_TITLE_LENGTH) {
++      GPid pid = kgx_process_get_pid (process);
++      g_autofree char *pid_title = g_strdup_printf (_("Process %d"), pid);
++      g_autoptr (GString) short_title = g_string_new (NULL);
++      const char *iter = title;
++
++      for (guint len = 0; *iter && len < MAX_TITLE_LENGTH; iter = g_utf8_next_char (iter), len++) {
++        g_string_append_unichar (short_title, g_utf8_get_char (iter));
++      }
++      g_string_append (short_title, "…");
++
++      row = g_object_new (ADW_TYPE_ACTION_ROW,
++                          "title", pid_title,
++                          "subtitle", short_title->str,
++                          NULL);
++    } else {
++      row = g_object_new (ADW_TYPE_ACTION_ROW,
++                          "title", title,
++                          NULL);
++    }
+ 
+     gtk_list_box_append (GTK_LIST_BOX (list), row);
+   }
+-- 
+GitLab
+

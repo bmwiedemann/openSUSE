@@ -1,0 +1,60 @@
+# JTAG ICE mkII
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2103", GROUP="plugdev", MODE="0660"
+# AVR ISP mkII
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2104", GROUP="plugdev", MODE="0660"
+# STK600
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2106", GROUP="plugdev", MODE="0660"
+# AVR Dragon
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2107", GROUP="plugdev", MODE="0660"
+# AVR JTAGICE3
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2110", GROUP="plugdev", MODE="0660"
+# AVR xplainedmini
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2145", GROUP="plugdev", MODE="0660"
+# Xplained Pro board
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2111", GROUP="plugdev", MODE="0660"
+# AVR JTAGICE3 (v3.x)
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2140", GROUP="plugdev", MODE="0660"
+# Atmel-ICE
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2141", GROUP="plugdev", MODE="0660"
+# ATxmega32A4U DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2fe4", GROUP="plugdev", MODE="0660"
+# Cactus V6 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2fe6", GROUP="plugdev", MODE="0660"
+# Cactus RF60 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2fea", GROUP="plugdev", MODE="0660"
+# atmega8u2 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2fee", GROUP="plugdev", MODE="0660"
+# atmega16u2 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2fef", GROUP="plugdev", MODE="0660"
+# atmega32u2 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ff0", GROUP="plugdev", MODE="0660"
+# at32uc3a3 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ff1", GROUP="plugdev", MODE="0660"
+# atmega16u4 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ff3", GROUP="plugdev", MODE="0660"
+# atmega32u4 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ff4", GROUP="plugdev", MODE="0660"
+# at32uc3b0/1 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ff6", GROUP="plugdev", MODE="0660"
+# at90usb82 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ff7", GROUP="plugdev", MODE="0660"
+# at32uc3a0/1 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ff8", GROUP="plugdev", MODE="0660"
+# at90usb646/647 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ff9", GROUP="plugdev", MODE="0660"
+# at90usb162 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ffa", GROUP="plugdev", MODE="0660"
+# at90usb1286/1287 AVR DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ffb", GROUP="plugdev", MODE="0660"
+# at89c5130/c5131 DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2ffd", GROUP="plugdev", MODE="0660"
+# at89c5132/c51snd1c DFU
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2fff", GROUP="plugdev", MODE="0660"
+# PICkit2
+SUBSYSTEM=="usb", ATTR{idVendor}=="04d8", ATTR{idProduct}=="0033", GROUP="plugdev", MODE="0660"
+# USBasp
+SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="05dc", GROUP="plugdev", MODE="0660"
+# NIBObee
+SUBSYSTEM=="usb", ATTR{idVendor}=="16c0", ATTR{idProduct}=="092f", GROUP="plugdev", MODE="0660"
+# USBtinyISP
+SUBSYSTEM=="usb", ATTR{idVendor}=="1781", ATTR{idProduct}=="0c9f", GROUP="plugdev", MODE="0660"

@@ -1,0 +1,24 @@
+From 458c9baafbbe81550a2789b9e3d8716fd3c23ac3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tommi=20M=C3=A4kitalo?= <tommi@vantaa.tm.maekitalo.de>
+Date: Sat, 6 Aug 2022 18:47:30 +0200
+Subject: [PATCH] add missing header time.h to src/timer.cpp
+
+---
+ src/timer.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/timer.cpp b/src/timer.cpp
+index f0a98b3..3098361 100644
+--- a/src/timer.cpp
++++ b/src/timer.cpp
+@@ -28,6 +28,7 @@
+ #include "cxxtools/selector.h"
+ #include "cxxtools/datetime.h"
+ #include <stdexcept>
++#include <time.h>
+ 
+ namespace cxxtools
+ {
+-- 
+2.37.1
+

@@ -1,0 +1,24 @@
+From: Jan Engelhardt <jengelh@inai.de>
+2013-05-23 10:58:06.612359124 +0200
+
+build: resolve compiler error due to missing includes
+
+conBDD.cpp: In member function 'void conBDD::build()':
+conBDD.cpp:59:20: error: 'numeric_limits' was not declared in this scope
+
+---
+ conBDD.cpp |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: azove-2.0/conBDD.cpp
+===================================================================
+--- azove-2.0.orig/conBDD.cpp
++++ azove-2.0/conBDD.cpp
+@@ -21,6 +21,7 @@
+ 
+ #include "conBDD.hpp"
+ 
++#include <limits>
+ #include <stack>
+ 
+ 

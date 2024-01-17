@@ -1,0 +1,5 @@
+<package name="ngspice-doc" project="openSUSE:Factory">
+  <title>Manual for ngspice</title>
+  <description></description>
+  <devel project="electronics" package="ngspice-doc"/>
+</package>

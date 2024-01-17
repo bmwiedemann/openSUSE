@@ -1,0 +1,6 @@
+<package name="kcm_flatpak" project="openSUSE:Factory">
+  <title>Flatpak Permissions Management KCM</title>
+  <description>The KCM allows changing what permissions have been granted to installed Flatpak applications.</description>
+  <devel project="KDE:Frameworks5" package="kcm_flatpak"/>
+  <url>https://invent.kde.org/plasma/flatpak-kcm</url>
+</package>

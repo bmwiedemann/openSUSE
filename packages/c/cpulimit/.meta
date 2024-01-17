@@ -1,0 +1,12 @@
+<package name="cpulimit" project="openSUSE:Factory">
+  <title>Limit the CPU Usage of a Process</title>
+  <description>cpulimit is a simple program that attempts to limit the CPU usage of a process
+(expressed in percentage, not in CPU time). This is useful to control batch
+jobs when you don't want they eat too much CPU. It does not act on the nice
+value or other scheduling priority details, but on the real CPU usage. Also, it
+is able to adapt itself to the overall system load, dynamically and quickly.
+
+</description>
+  <devel project="utilities" package="cpulimit"/>
+  <url>http://limitcpu.sourceforge.net/</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-yarl" project="openSUSE:Factory">
+  <title>Python yarl</title>
+  <description>The module provides a URL class for url parsing and changing.</description>
+  <devel project="devel:languages:python" package="python-yarl"/>
+</package>

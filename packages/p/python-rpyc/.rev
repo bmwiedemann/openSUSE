@@ -1,0 +1,176 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d43c6c6bbd3a659ccf8a78d0135aaac</srcmd5>
+    <version>3.4.4</version>
+    <time>1529066236</time>
+    <user>maxlin_factory</user>
+    <comment>An RPC library for python</comment>
+    <requestid>613562</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c1b28cdec9578f5decf4442800523871</srcmd5>
+    <version>3.4.4</version>
+    <time>1549017855</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>668133</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f0b62a24ae85bba7cf36602535f909da</srcmd5>
+    <version>4.0.2</version>
+    <time>1559375093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705224</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4dfcefcbb6328b57884571172affb05e</srcmd5>
+    <version>4.0.2</version>
+    <time>1559902744</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test execution to make sure we run it under all interpreters</comment>
+    <requestid>707749</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e042e3c8e7293de162dc73ba1110a21e</srcmd5>
+    <version>4.1.0</version>
+    <time>1560459773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709404</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ab1f7593a42c7be2f06b506249de8e8</srcmd5>
+    <version>4.1.1</version>
+    <time>1568190944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.1:
+  * Fixed netref.class_factory id_pack usage per #339 and added test cases
+  * Name pack casted in _unbox to fix IronPython bug. Fixed #337
+  * Increased chunk size to improve multi-client response time and throughput of large data #329
+  * Added warning to _remote_tb when the major version of local and remote mismatch (#332)
+  * OneShotServer termination was fixed by WilliamBruneau (#343)
+  * Known issue with 3.8 for CodeType parameters (may drop Python2 support first)</comment>
+    <requestid>729790</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f5c6129e9135f35bd0bde7d04a01b32a</srcmd5>
+    <version>4.1.4</version>
+    <time>1584643848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786356</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>017ad3f309dd32ee5143afbfeb963343</srcmd5>
+    <version>4.1.5</version>
+    <time>1589579553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.5:
+  * Fixed mutable object used as kwarg for Server ctor
+  * Corrections to teleport example
+  * Lowered GIL-lock acquires for &lt;64kb within channel sends to address slowness
+
+  - Fixed bsc#1152987 `CVE-2019-16328`_ which was caused by a missing protocol security check</comment>
+    <requestid>805821</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>dd81536a8b178e47c05beb051214105e</srcmd5>
+    <version>4.1.5</version>
+    <time>1591990668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811140</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fc60a02c3afb3c08fd20902375a663c7</srcmd5>
+    <version>5.2.3</version>
+    <time>1664210873</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove some failing tests because they where failing for some deadlock
+  reason.
+- Add gcc-c++ required dependency for tests
+- Fix multibuild with flavor global
+- update to 5.2.3:
+  * #503 rpyc_classic.py and rpyc_registry.py are tracked by pyproject.toml and
+    should resolve now. Moreover, they can now be resolved without their file
+    suffixes as well.
+  * Release 5.2.0
+    * Added support for using decorators to expose methods (see #292)
+    * Allow BgServingThread serve and sleep intervals to be customized
+    * Avoid redefining hasattr_static on every check_attr` call
+    * Updated SSL context usage to avoid deprecated aspects and changes
+    * Add a configurable timeout on the zero deploy close method
+    * Fixed --mode CLI argument for rpyc_registry
+    * Fixed propagation of AttributeErrors raised by exposed descriptors
+    * Allow filtering by host on list_services
+    * and #502 Improved documentation and fixed typos
+    * Some work around race conditions but proper fix is rather involved (see #491)
+  * Release 5.1.0
+    * Added types.MappingProxyType to builtin_types #470
+    * Updated documentation #469
+    * Fixed spradic dealock issues from wait within AsyncResult #463 and #455
+    * Fixed chained Classic RPyC connections #460
+    * Added ability to list Registry services #452
+    * Fixed bug that prevented RPyC from running on systems without SSL #451
+    * Fixed unexpected behavior with respect to auto_register #445
+    * Fixed propagation of chunk_size parameter for download_dir #433
+- update to 5.0.1:
+  *  Fixed unexpected behavior when using inspect.isfunction
+  *  Now prevents installation of RPyC on unsupported versions of python
+  *  RPyC 5.0.0 cannot teleport functions to earlier versions
+  *  Deprecated Python 2 support to coincide with it's EOL
+  *  Server hostname default supports IPv4 and IPv6 by using the wildcard address
+  *  Fixed pickle failure on windows for ``connect_multiprocess`` and ``connect_thread``
+  *  Fixed teleport function behavior for keyword-only arguments with default
+  *  Improved documentation on custom exception handling
+  *  Fixed IPv6 support for server
+  *  Added a simple asynchrounous service example
+</comment>
+    <requestid>1006027</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f8c530b9d67e9e31e4bffdf027de536</srcmd5>
+    <version>5.3.0</version>
+    <time>1670430907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040778</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c565b1b8c52221c586265ce801fba896</srcmd5>
+    <version>5.3.0</version>
+    <time>1677584974</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1068126</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5c6446d08bf5ced0b185c1d14ea46ca4</srcmd5>
+    <version>5.3.1</version>
+    <time>1704281047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.1:
+  * `#527`_ Resolved timeout issue that was introduced in 5.2.1
+  * `#525`_ and `#524`_ Fixed experimental thread binding struct
+    for platforms where unsigned long is 8-bits
+    While the fix for thread binding is not backwards compatible,
+    it only impacts people using an experimental feature. Hence,
+    I did a patch version bump.
+
+- Update to version 5.3.0
+  * fix ValueError during install due to absolute PATH in SOURCES.txt
+  * classic.teleport_function now executes the function in the
+  * Changed signature of Service.on_connect and on_disconnect,
+  * Changed signature of Service.__init__, removing the connection
+  * SlaveService is now split into two asymetric classes:
+  * Exposed attributes no longer hide plain attributes if one
+    otherwise has the required permissions to access the plain attribute.
+  * teleported functions will now be defined by default in the
+  * add gevent Server. For now, this requires using gevent.monkey.patch_all()
+  * fix problem with MongoDB, or more generally any remote objects
+  * service can now easily override protocol handlers, by updating</comment>
+    <requestid>1135621</requestid>
+  </revision>
+</revisionlist>

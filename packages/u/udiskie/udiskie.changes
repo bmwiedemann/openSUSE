@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Wed Mar  2 09:39:53 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.2:
+  * add support for AyatanaAppIndicator3
+  * setup loop devices in read-write mode if sufficient permissions are available
+  * add icon name that is specifically designed for tray panel
+  * try to detect installed translation files also in non-system installations
+  * make it possible to override localedir manually using the TEXTDOMAINDIR environment variable
+  * fix: buttons in "device-added" notifications always mounting the last partition instead of the selected one
+  * fix incorrect use of wayland settings (appindicator+workarounds) within X session,
+    if a wayland session is or was active under the same user (even if that was in a different login session)
+  * fix incorrect display of image menu items under X due to caching
+  * don't swallow STDOUT for notify-commands
+  * default to appindicator if tray is requested under wayland
+  * don't auto-disable tray when running in "pure" wayland session
+  * set window role on the password dialog
+  * remove unneeded xdg from optional dependencies
+  * fix a typo in Spanish translation and update russian translation files
+
+-------------------------------------------------------------------
+Tue May  5 13:18:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.1 
+  * handle XDG_CONFIG_HOME variable without external pyxdg dependency
+  * silence warning when using AppIndicator
+  * make ``--appindicator`` sufficient to show icon (previously additionally
+    required ``--tray``)
+  * improve wording in password dialog "Remember" -> "Cache"
+  * make some of the logging more concise
+  * fix recursive adding/removing of some child devices:
+    - fix incorrect root device detection for devices without Drive property
+      (e.g. children of loop devices)
+    - fix ``--detach`` option when applied to partitions of loop devices
+
+-------------------------------------------------------------------
+Tue Feb  4 07:07:52 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.0
+  * fix some typos (thanks @torstehu, #197)
+  * change how device rules are evaluated: lookup undecided rules on parent device (fixes issue with filters not applying to subdevices of a matched device, see #198)
+  * change builtin rules to not show loop devices with HintIgnore, see #181
+  * change how is_external attribute is compute: use the value from udisks directly (fixes issue with is_external property not behaving as expected, see #185)
+  * add 'skip' keyword for rules to skip evaluation of further rules on this device, and continue directly on the parent
+  * fix user commands that output non-utf8 data
+  * fix exception when using non-device parameters with DeviceCommand (e.g. in --notify-command)
+  * hotfix for automounting being broken since 2.0.0
+  * use importlib.resources directly on py3.7 and above, rather than requiring importlib_resources as additional dependency
+  * require python >= 3.5
+  * drop python2 support
+  * drop udisks1 support
+  * drop command line options corresponding to udisks version selection (-1, -2)
+  * use py35's async def functions -- improving stack traces upon exception
+  * internal refactoring and simplifications
+  * add "show password" checkbox in password dialog
+  * keep password dialog always on top
+  * fix stdin-based password prompts
+  * add russian translations (thanks @mr-GreyWolf)
+  * fixed deprecation warnings in setup.py (thanks @sealj553)
+
+
+-------------------------------------------------------------------
+Thu Jan 31 11:54:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use python macros for build and install to keep working under
+  python 3.7
+
+-------------------------------------------------------------------
+Fri May 23 13:14:55 UTC 2018 - sebix+novell.com@sebix.at
+
+- initial package for udiskie-1.7.5

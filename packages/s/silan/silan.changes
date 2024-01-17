@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sun Sep  4 12:35:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Limit ffmpeg dependencies to ffmpeg-4 and older variant.
+
+-------------------------------------------------------------------
+Sun May  3 17:05:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package for silan. version 0.4.0

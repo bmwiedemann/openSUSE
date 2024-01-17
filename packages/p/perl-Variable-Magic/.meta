@@ -1,0 +1,10 @@
+<package name="perl-Variable-Magic" project="openSUSE:Factory">
+  <title>Associate user-defined magic to variables from Perl</title>
+  <description>Magic is Perl's way of enhancing variables. This mechanism lets the user
+add extra data to any variable and hook syntactical operations (such as
+access, assignment or destruction) that can be applied to it. With this
+module, you can add your own magic to any variable without having to write
+a single line of XS.</description>
+  <devel project="devel:languages:perl" package="perl-Variable-Magic"/>
+  <url>http://search.cpan.org/dist/Variable-Magic/</url>
+</package>

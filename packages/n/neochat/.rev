@@ -1,0 +1,195 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>869c544e120f2ea69824bc7e235f2f3e</srcmd5>
+    <version>1.0.1</version>
+    <time>1611163612</time>
+    <user>dimstar_suse</user>
+    <comment>New package: neochat, a Matrix client by KDE</comment>
+    <requestid>864159</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>937e9e8bc5ae912ac2a68851920a0e43</srcmd5>
+    <version>1.0.1</version>
+    <time>1613511612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872799</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>29f76f894dbf3653a3e038a926624aa7</srcmd5>
+    <version>1.1.1</version>
+    <time>1614373184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1
+  - First launch experience improvements
+  - Allow logins to servers requiring SSO
+  - Display stickers
+  - Allow editing messages
+  - Multimodal mode to open a room into a new window
+  - New chat commands
+  - Better Plasma integration
+</comment>
+    <requestid>875222</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>696f58357e8645b3bd3649b61f650118</srcmd5>
+    <version>1.2.0</version>
+    <time>1622664718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896729</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e5a365cea16ca96aa741c700a406ebc7</srcmd5>
+    <version>1.2.0</version>
+    <time>1624999396</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build error.
+  - Add missig cmark which will not be install with libcmark-devel.
+</comment>
+    <requestid>902906</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2dd8f0445958aa4838240b87f704a77f</srcmd5>
+    <version>22.02</version>
+    <time>1644531134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953174</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2c57a546f64a9f921a341f49e6c1c237</srcmd5>
+    <version>22.02</version>
+    <time>1647981412</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964085</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>17aca5ff7e86d6daaa3031e314acae41</srcmd5>
+    <version>22.06</version>
+    <time>1659721864</time>
+    <user>dimstar_suse</user>
+    <comment>- Use GCC 10 to build neochat on Leap.
+
+- update to 22.06:
+  * Sending of typing notifications can now be disabled.
+  * In the room list, the scrollbar will now disappear correctly when it is not needed.
+  * On wayland, NeoChat will now raise correctly when clicking on a notification.
+  * Several bugs have been fixed that would sometimes cause messages containing
+    markdown and/or HTML elements to be sent incorrectly.
+  * The quick switcher can now be controlled using the mouse.
+  * There is now an option to disable automatic room sidebar opening when
+    resizing the window.
+  * Creation of custom emojis has been fixed.
+  * Editing or replying to the last message using the keyboard shortcuts now
+    works correctly.
+  * When switching between rooms using the keyboard, the switching direction is
+    now correct.</comment>
+    <requestid>993234</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dc1fe91698269d6489a2da48d8cd6cf5</srcmd5>
+    <version>22.09</version>
+    <time>1664553490</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007108</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b2ad5d874233592215e2415f060a6d0</srcmd5>
+    <version>22.11</version>
+    <time>1674495227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060428</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f4cb2c81a51cc980371e0b7058b01636</srcmd5>
+    <version>23.01.0</version>
+    <time>1676562998</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 23.01.0</comment>
+    <requestid>1066066</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>73b9cd2382de5a83597dcf63aa32de8a</srcmd5>
+    <version>23.04.0</version>
+    <time>1682282831</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04 (forwarded request 1079740 from krop)</comment>
+    <requestid>1080732</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f077edfb3b955599234c966e73177d96</srcmd5>
+    <version>23.04.1</version>
+    <time>1683916601</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.1</comment>
+    <requestid>1086454</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b7edf6223172f9bf7122a21f997fd67</srcmd5>
+    <version>23.04.2</version>
+    <time>1686335977</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.2 (forwarded request 1091225 from krop)</comment>
+    <requestid>1091679</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2fe771f7a62e50a403606480adf67bb7</srcmd5>
+    <version>23.04.3</version>
+    <time>1688737779</time>
+    <user>favogt_factory</user>
+    <comment>KDE release gear 23.04.3 (forwarded request 1097054 from krop)</comment>
+    <requestid>1097390</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>beff7886a3f3475a2f236680a4fac69c</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482317</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
+    <requestid>1105810</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>6239b9e41bef8a33bef188fd2b2ab5a2</srcmd5>
+    <version>23.08.0</version>
+    <time>1693860784</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108774</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f5b46d74f9a00429160f16876662f494</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808258</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111291</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>239b39b21a73ac2d89298e0bf3bf1456</srcmd5>
+    <version>23.08.2</version>
+    <time>1697147031</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117414</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e5a24a99b447308fd44cd3cb97165e2c</srcmd5>
+    <version>23.08.3</version>
+    <time>1699615970</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
+    <requestid>1124676</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2edc12691f00b0909e351801ebfa9128</srcmd5>
+    <version>23.08.4</version>
+    <time>1702158792</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
+    <requestid>1131969</requestid>
+  </revision>
+</revisionlist>

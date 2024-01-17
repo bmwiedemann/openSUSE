@@ -1,0 +1,6 @@
+<package name="xorg-x11-util-devel" project="openSUSE:Factory">
+  <title>Include Files and Libraries mandatory for X11 Development</title>
+  <description>This package contains all necessary include files and libraries needed
+to develop X11 applications that require these.</description>
+  <devel project="X11:XOrg" package="xorg-x11-util-devel"/>
+</package>

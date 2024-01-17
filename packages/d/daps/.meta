@@ -1,0 +1,17 @@
+<package name="daps" project="openSUSE:Factory">
+  <title>DocBook Authoring and Publishing Suite (daps)</title>
+  <description>daps contains a set of stylesheets, scripts and makefiles that enable
+you to create HTML, PDF, EPUB and other formats from DocBook XML with a
+single command. It also contains tools to generate profiled source
+tarballs for distributing your XML sources for translation or review.
+
+daps also includes tools that assist you when writing DocBook XML:
+linkchecker, validator, spellchecker, editor macros and stylesheets for
+converting DocBook XML.
+
+daps is the successor of susedoc. See
+/usr/share/doc/packages/daps/README.upgrade_from_susedoc_4.x
+for upgrade instructions.
+  </description>
+  <devel project="Documentation:Tools" package="daps"/>
+</package>

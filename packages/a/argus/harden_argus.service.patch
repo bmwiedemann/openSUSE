@@ -1,0 +1,24 @@
+Index: argus-3.0.8.3/support/Startup/argus.service
+===================================================================
+--- argus-3.0.8.3.orig/support/Startup/argus.service
++++ argus-3.0.8.3/support/Startup/argus.service
+@@ -12,6 +12,19 @@ After=network.target
+ # This was tested on Fedora 16
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStartPre=/sbin/ifconfig em2 up
+ ExecStart=/usr/local/sbin/argus
+ 

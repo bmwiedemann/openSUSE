@@ -1,0 +1,185 @@
+-------------------------------------------------------------------
+Tue Aug 15 11:41:37 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Fix lddtree to call python3 (boo#1213178)
+
+-------------------------------------------------------------------
+Thu Feb  2 16:02:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.7:
+  * meson: fix installation of man pages w/o xmlto
+
+-------------------------------------------------------------------
+Thu Jan 12 20:36:48 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 1.3.6
+  * Build system changed to Meson
+  * lddtree: specify utf-8 encoding with text files
+  * lddtree: Add logging for ELFParseError
+  * lddtree: avoid shadowing function args
+
+-------------------------------------------------------------------
+Wed May  4 08:42:45 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.3.4
+  * paxelf: add LoongArch to recognized ELF machine types
+  * lddtree: add argcomplete support if available
+  * lddtree: add --skip-missing
+    Allow explicitly ignoring missing files.
+  * seccomp: allow madvise() call (glibc 2.35+)
+  * seccomp: mark arrays const+static
+    This generates better code, although it doesn't super matter since
+    this is only used at build time.
+
+-------------------------------------------------------------------
+Thu Apr 21 09:52:11 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated url to https
+
+-------------------------------------------------------------------
+Wed Jan 26 18:40:04 UTC 2022 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 1.3.3:
+  * seccomp: allow getrandom() call (glibc-2.34+)
+  * seccomp-bpf: fix warnings by not using nexted open comments
+  * seccomp: fix build failure on mips (use _MIP_SIM tests)
+  * lddtree: respect (destination) root with --argv0 interp probing
+  * security: restore syscalls accidentally dropped
+  * security: pregen seccomp bpf programs
+  * paxldso: fix pointer style
+- Changes since 1.2.8:
+  * dumpelf: constify elfobj in APIs
+  * dumpelf: add libFuzzer support
+  * fuzz: add basic framework for using libFuzzer
+  * paxldso: add support for "new" glibc cache format
+  * lddtree: add --cwd option
+  * lddtree: handle relative ldpaths
+  * lddtree: handle ${ORIGIN} like $ORIGIN
+  * lddtree: use ldso's --argv0 when available
+  * lddtree: apply functools cache to some repeated filesystem calls
+  * lddtree: don't crash when interp is missing
+  * lddtree: require Python 3.6+
+  * lddtree: re-enable long line checks
+  * pylintrc: adjust python code to 4 space indent
+  * glob is used in paxldso.c for NetBSD too, but glob.h is not included in porting.h for NetBSD.
+
+-------------------------------------------------------------------
+Mon Feb  1 14:24:19 UTC 2021 - Gianluca Gabrielli <gianluca.gabrielli@suse.com>
+
+- Update to 1.2.8.
+- Changes since 1.2.6:
+  - Add support for arm64 arch.
+  - Add flag -U/--uuid to dump the object's UUID.
+    This is in particular useful when comparing against TextAPI stubs, .tbd files.
+
+-------------------------------------------------------------------
+Tue Jul 21 14:21:17 UTC 2020 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 1.2.6.
+- Changes since 1.2.4:
+  - Add RISC-V to the list of architectures in ELF
+  - dumpelf.c: add missing break when decoding SHT_GNU_LIBLIST.
+  - lddtree.py: resolve python location through PATH.
+  - lddtree: Put ldso interpreter library path at end.  https://crbug.com/917193
+  - scanelf.c: be more verbose at saying what all the addresses mean. https://bugs.gentoo.org/713082
+  - scanelf.c: don't crash in -v mode on non-functions. https://bugs.gentoo.org/713082
+  - security.c: allow 'semtimedop' in seccomp sandbox. https://bugs.gentoo.org/709794
+  - security.c: allow 'statx' in seccomp sandbox. https://bugs.gentoo.org/717300
+
+-------------------------------------------------------------------
+Mon Jul  1 14:44:19 UTC 2019 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 1.2.4.
+- Removed patches that have since been committed to upstream (1.2.3):
+  - 0001-dumpelf-check-for-invalid-section-entry-sizes.patch
+    https://github.com/gentoo/pax-utils/commit/4609f57a690b4a5670baeb93167dab5300d07d4e
+  - 0002-dumpelf-check-for-invalid-program-headers.patch
+    https://github.com/gentoo/pax-utils/commit/18ded0e30ee5a84260cceb80d818b9c21ade4c76
+  - 0003-dumpelf-check-for-invalid-notes.patch
+    https://github.com/gentoo/pax-utils/commit/10a9643d90a1ba6058a66066803fac6cf43f6917
+  - 0004-scanelf-check-range-of-hash-bucket.patch
+    https://github.com/gentoo/pax-utils/commit/e577c5b7e230c52e5fc4fa40e4e9014c634b3c1d
+- Changes since 1.2.2:
+  - paxldso: properly decode the flags bits in the cache 
+    This fixes handling of multiple ABIs for a single arch like x86/x86_64/x32
+or mips o32/n32/n64.  It also fixes decoding of arm float libs.
+  - dumpelf: add support for dumping notes 
+  - dumpelf: add support for prelink sections
+  - scanmacho: fix 126 byte limit on -E option
+  - security fixes (mentioned above)
+
+-------------------------------------------------------------------
+Thu Jan 18 18:10:13 UTC 2018 - dimstar@opensuse.org
+
+- Drop unknown parameter "-q" from autosetup.
+
+-------------------------------------------------------------------
+Mon Feb 27 10:53:14 UTC 2017 - lnussel@suse.de
+
+- update to 1.2.2
+  * misc fd and memory leak fixes
+  Add patches from git (boo#1026959)
+  0004-scanelf-check-range-of-hash-bucket.patch
+  0003-dumpelf-check-for-invalid-notes.patch
+  0001-dumpelf-check-for-invalid-section-entry-sizes.patch
+  0002-dumpelf-check-for-invalid-program-headers.patch
+
+-------------------------------------------------------------------
+Thu Nov  3 21:33:44 UTC 2016 - aloisio@gmx.com
+
+- Update to 1.1.6 (no changelog found)
+- Spec cleanup
+- Dropped pax-utils-file-contains-date-and-time.patch
+
+-------------------------------------------------------------------
+Mon Feb  9 17:51:31 UTC 2015 - crrodriguez@opensuse.org
+
+- Pax utils 0.9.2, no changelog found 
+- Update source URL.
+- Switch to autoconf based build
+- pax-utils-file-contains-date-and-time.patch: Do not
+  include time stamps in binaries
+- pax-utils-handle-lib64.patch replaces pax-utils-lib64.patch
+
+-------------------------------------------------------------------
+Mon Aug 19 19:22:35 UTC 2013 - crrodriguez@opensuse.org
+
+- pax-utils-lib64.patch: scanelf -l does not scan lib64 as 
+  it should in x86_64 
+
+-------------------------------------------------------------------
+Fri Jun 19 10:35:46 CEST 2009 - coolo@novell.com
+
+- disable as-needed for this package as it fails to build with it
+
+-------------------------------------------------------------------
+Tue Apr  1 11:13:07 CEST 2008 - lnussel@suse.de
+
+- new version 0.1.16
+  * mostly manpage and portability improvements
+
+-------------------------------------------------------------------
+Fri Jan 26 11:39:02 CET 2007 - lnussel@suse.de
+
+- new version 0.1.15
+  * Support added for displaying em_machine via %a format flag in scanelf
+  * Make scanelf_file_bind() not output anything if quiet mode and the ELF is
+    static or not setuid.
+  * pspax: new options -u and -g
+
+-------------------------------------------------------------------
+Tue Nov 14 15:39:49 CET 2006 - lnussel@suse.de
+
+- new version 0.1.13
+  * supports scanning archives and searching for specific sections
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:17 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  9 17:02:36 CET 2006 - lnussel@suse.de
+
+- new package pax-utils
+

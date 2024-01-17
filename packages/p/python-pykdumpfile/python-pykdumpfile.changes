@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Nov 21 06:42:26 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to 0.5.4
+  * RISC-V (64-bit) support.
+  * Descriptive file names.
+
+-------------------------------------------------------------------
+Mon Nov 20 16:31:02 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Do not try to build with Python2. This is a Python3-only package.
+
+-------------------------------------------------------------------
+Wed Nov  8 19:47:03 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to 0.5.3.1
+  * Bugfix release.
+
+-------------------------------------------------------------------
+Tue Nov  7 13:22:05 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Initial packaging (version 0.5.3).

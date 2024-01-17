@@ -1,0 +1,6 @@
+<package name="xmgrace" project="openSUSE:Factory">
+  <title>xmgrace</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="graphics" package="xmgrace"/>
+  <url>http://plasma-gate.weizmann.ac.il/Grace/</url>
+</package>

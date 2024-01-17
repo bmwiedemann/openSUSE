@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Aug 19 14:03:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Removed python-PyCondor-collections.abc-Iterable.patch.  
+  Already applied upstream
+
+-------------------------------------------------------------------
+Wed Aug 17 22:59:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 0.6.0 
+  * Bug fix release to get development started again.
+  New Features:
+  * No new features added
+  Changes:
+  * Transition to pycondor namespace (See :pr:`149`)
+    Improvements to testing and infrastructure (See :pr:`135`, :pr:`148`, :pr:`149`, :pr:`141`, and :pr:`152`)
+    Use sphinx extlinks in the changelog (See :pr:`130`)
+  Bug Fixes:
+  * Fix counting of unready jobs in monitor (See :pr:`138`)
+  * Updates to the logging setup (See :pr:`129`)
+  * Fix issue in python 3.8 (See :pr:`140`)
+  Documentation:
+  * Migrate documentation to readthedocs (See :pr:`150`)
+
+-------------------------------------------------------------------
+Wed Jan 26 10:22:01 UTC 2022 - pgajdos@suse.com
+
+- fix build with newer pythons
+- added patches
+  https://github.com/jrbourbeau/pycondor/commit/b41b17546c898d5cc2368b92fda86473c605e923
+  + python-PyCondor-collections.abc-Iterable.patch
+
+-------------------------------------------------------------------
+Tue Aug  4 14:55:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

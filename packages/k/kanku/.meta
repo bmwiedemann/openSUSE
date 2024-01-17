@@ -1,0 +1,6 @@
+<package name="kanku" project="openSUSE:Factory">
+  <title>Development and continuous integration made easy</title>
+  <description>kanku is designed to give you a better integration of your kiwi images built by the Open Build Service (OBS) in your development and testing workflow. It provides a framework for simple automation of complex setups, e.g. to prepare your development environment or run simple tests.</description>
+  <devel project="devel:kanku" package="kanku"/>
+  <url>https://m0ses.github.io/kanku/</url>
+</package>

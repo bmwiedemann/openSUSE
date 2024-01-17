@@ -1,0 +1,86 @@
+Index: bleach-6.0.0/bleach/html5lib_shim.py
+===================================================================
+--- bleach-6.0.0.orig/bleach/html5lib_shim.py
++++ bleach-6.0.0/bleach/html5lib_shim.py
+@@ -14,27 +14,27 @@ warnings.filterwarnings(
+     "ignore",
+     message="html5lib's sanitizer is deprecated",
+     category=DeprecationWarning,
+-    module="bleach._vendor.html5lib",
++    module="html5lib",
+ )
+ 
+-from bleach._vendor.html5lib import (  # noqa: E402 module level import not at top of file
++from html5lib import (  # noqa: E402 module level import not at top of file
+     HTMLParser,
+     getTreeWalker,
+ )
+-from bleach._vendor.html5lib import (
++from html5lib import (
+     constants,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.constants import (  # noqa: E402 module level import not at top of file
++from html5lib.constants import (  # noqa: E402 module level import not at top of file
+     namespaces,
+     prefixes,
+ )
+-from bleach._vendor.html5lib.constants import (
++from html5lib.constants import (
+     _ReparseException as ReparseException,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.filters.base import (
++from html5lib.filters.base import (
+     Filter,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.filters.sanitizer import (
++from html5lib.filters.sanitizer import (
+     allowed_protocols,
+     allowed_css_properties,
+     allowed_svg_properties,
+@@ -42,21 +42,21 @@ from bleach._vendor.html5lib.filters.san
+     svg_attr_val_allows_ref,
+     svg_allow_local_href,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.filters.sanitizer import (
++from html5lib.filters.sanitizer import (
+     Filter as SanitizerFilter,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib._inputstream import (
++from html5lib._inputstream import (
+     HTMLInputStream,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.serializer import (
++from html5lib.serializer import (
+     escape,
+     HTMLSerializer,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib._tokenizer import (
++from html5lib._tokenizer import (
+     attributeMap,
+     HTMLTokenizer,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib._trie import (
++from html5lib._trie import (
+     Trie,
+ )  # noqa: E402 module level import not at top of file
+ 
+Index: bleach-6.0.0/tests/test_clean.py
+===================================================================
+--- bleach-6.0.0.orig/tests/test_clean.py
++++ bleach-6.0.0/tests/test_clean.py
+@@ -5,7 +5,7 @@ import pytest
+ from bleach import clean
+ from bleach.html5lib_shim import Filter
+ from bleach.sanitizer import ALLOWED_PROTOCOLS, Cleaner, NoCssSanitizerWarning
+-from bleach._vendor.html5lib.constants import rcdataElements
++from html5lib.constants import rcdataElements
+ 
+ 
+ @pytest.mark.parametrize(
+Index: bleach-6.0.0/bleach/parse_shim.py
+===================================================================
+--- bleach-6.0.0.orig/bleach/parse_shim.py
++++ bleach-6.0.0/bleach/parse_shim.py
+@@ -1 +1 @@
+-from bleach._vendor.parse import urlparse  # noqa
++from urllib.parse import urlparse  # noqa

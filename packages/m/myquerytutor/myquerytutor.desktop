@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=myquerytutor
+GenericName=MyQueryTutor
+Comment=Learning tool for SQL
+Exec=myquerytutor
+Icon=mqt
+Categories=Development;IDE;Database;
+Type=Application
+Terminal=false

@@ -1,0 +1,17 @@
+---
+ scripts/php-config.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: php-8.0.0/scripts/php-config.in
+===================================================================
+--- php-8.0.0.orig/scripts/php-config.in	2020-11-24 18:04:03.000000000 +0100
++++ php-8.0.0/scripts/php-config.in	2021-01-07 10:13:28.462563114 +0100
+@@ -6,7 +6,7 @@ datarootdir="@datarootdir@"
+ exec_prefix="@exec_prefix@"
+ version="@PHP_VERSION@"
+ vernum="@PHP_VERSION_ID@"
+-include_dir="@includedir@/php"
++include_dir="@includedir@/php8"
+ includes="-I$include_dir -I$include_dir/main -I$include_dir/TSRM -I$include_dir/Zend -I$include_dir/ext -I$include_dir/ext/date/lib"
+ ldflags="@PHP_LDFLAGS@"
+ libs="@EXTRA_LIBS@"

@@ -1,0 +1,13 @@
+diff -ru fvwm-themes-full-0.6.2.orig/configure.in fvwm-themes-full-0.6.2/configure.in
+--- fvwm-themes-full-0.6.2.orig/configure.in	2002-12-06 03:01:37.000000000 +0100
++++ fvwm-themes-full-0.6.2/configure.in	2003-08-25 21:10:06.000000000 +0200
+@@ -193,7 +193,7 @@
+ 
+ # Hopefully this "sort" is portable (after many tries using awk and expr)
+ if (echo $REQUIRED_FVWM_VERSION; echo $FVWM_VERSION) \
+-| sed 's/\./ /g' | uniq | sort -n +0 -1 +1 -2 +2 -3 -c 2>/dev/null; then
++| sed 's/\./ /g' | uniq | sort -n -k1,2 -k 2,3 -k3,4 -c 2>/dev/null; then
+ 	:
+ 	# fvwm version is ok
+ else
+fvwm-themes-full-0.6.2だけに発見: configure.in.~1~

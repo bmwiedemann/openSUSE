@@ -1,0 +1,6 @@
+<package name="python-wikipedia" project="openSUSE:Factory">
+  <title>python-wikipedia</title>
+  <description>A Pythonic wrapper for the Wikipedia API</description>
+  <devel project="devel:languages:python" package="python-wikipedia"/>
+  <url>https://github.com/goldsmith/Wikipedia</url>
+</package>

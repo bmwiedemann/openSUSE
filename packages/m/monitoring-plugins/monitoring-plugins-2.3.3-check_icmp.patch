@@ -1,0 +1,12 @@
+Index: monitoring-plugins-2.3.3/plugins-root/check_icmp.c
+===================================================================
+--- monitoring-plugins-2.3.3.orig/plugins-root/check_icmp.c
++++ monitoring-plugins-2.3.3/plugins-root/check_icmp.c
+@@ -1446,6 +1446,7 @@ get_ip_address(const char *ifname)
+ #else
+ 	errno = 0;
+ 	crash("Cannot get interface IP address on this platform.");
++	return INADDR_NONE;
+ #endif
+ }
+ 

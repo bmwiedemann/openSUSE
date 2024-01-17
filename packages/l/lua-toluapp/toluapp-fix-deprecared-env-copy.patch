@@ -1,0 +1,14 @@
+Index: b/src/tests/SCsub
+===================================================================
+--- a/src/tests/SCsub
++++ b/src/tests/SCsub
+@@ -1,5 +1,8 @@
+ Import('env')
+-env_tests = env.Copy()
++try:
++  env_tests = env.Copy()
++except AttributeError:
++  env_tests = env.Clone()
+ 
+ env_tests.LuaBinding('tclassbind.cpp', 'tclass.pkg', 'tclass', use_own=1, use_typeid=1)
+ 

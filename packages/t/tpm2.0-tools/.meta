@@ -1,0 +1,5 @@
+<package name="tpm2.0-tools" project="openSUSE:Factory">
+  <title>tpm-tools</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="security" package="tpm2.0-tools"/>
+</package>

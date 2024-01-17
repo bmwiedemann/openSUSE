@@ -1,0 +1,5 @@
+<package name="uget-integrator" project="openSUSE:Factory">
+  <title>uGet Integrator</title>
+  <description>Integrate uGet Download Manager with Google Chrome, Chromium, Opera, Vivaldi and Mozilla Firefox.</description>
+  <devel project="GNOME:Apps" package="uget-integrator"/>
+</package>

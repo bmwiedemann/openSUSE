@@ -1,0 +1,116 @@
+Index: xrdp-0.9.23.1/sesman/startwm.sh
+===================================================================
+--- xrdp-0.9.23.1.orig/sesman/startwm.sh
++++ xrdp-0.9.23.1/sesman/startwm.sh
+@@ -58,54 +58,54 @@ post_start()
+ #start the window manager
+ wm_start()
+ {
+-  if [ -r /etc/default/locale ]; then
+-    . /etc/default/locale
+-    export LANG LANGUAGE
+-  fi
+-
+-  # debian
+-  if [ -r /etc/X11/Xsession ]; then
+-    pre_start
+-    . /etc/X11/Xsession
+-    post_start
+-    exit 0
+-  fi
+-
+-  # alpine
+-  # Don't use /etc/X11/xinit/Xsession - it doesn't work
+-  if [ -f /etc/alpine-release ]; then
+-    if [ -f /etc/X11/xinit/xinitrc ]; then
+-        pre_start
+-        /etc/X11/xinit/xinitrc
+-        post_start
+-    else
+-        echo "** xinit package isn't installed" >&2
+-        exit 1
+-    fi
+-  fi
+-
+-  # el
+-  if [ -r /etc/X11/xinit/Xsession ]; then
+-    pre_start
+-    . /etc/X11/xinit/Xsession
+-    post_start
+-    exit 0
+-  fi
+-
+-  # suse
+-  if [ -r /etc/X11/xdm/Xsession ]; then
+-    # since the following script run a user login shell,
+-    # do not execute the pseudo login shell scripts
+-    . /etc/X11/xdm/Xsession
+-    exit 0
+-  elif [ -r /usr/etc/X11/xdm/Xsession ]; then
+-    . /usr/etc/X11/xdm/Xsession
+-    exit 0
+-  fi
+-
+-  pre_start
+-  xterm
+-  post_start
++  #To customize system-wise session, edit this file.
++  #To customize user specific session, copy this file to $HOME and edit it.
++  #Please refer to DefaultWindowManager and UserWindowManager in /etc/xrdp/sesman.ini for more details.
++
++  #The default session is gnome (GNOME Session)
++  #sle means SLE-Classic Session
++  SESSION="gnome"
++
++  case $SESSION in
++    sle)
++      if [ -r /usr/bin/gnome-session ]; then
++        export XDG_SESSION_TYPE=x11
++        export GNOME_SHELL_SESSION_MODE=sle-classic
++        /usr/bin/dbus-run-session /usr/bin/gnome-session --session gnome-classic
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/icewm-session
++      fi
++      ;;
++    gnome)
++      if [ -r /usr/bin/gnome-session ]; then
++        export XDG_SESSION_TYPE=x11
++        /usr/bin/dbus-run-session /usr/bin/gnome-session
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/dbus-run-session /usr/bin/icewm-session
++      fi
++      ;;
++    mate)
++      if [ -r /usr/bin/mate-session ]; then
++        export XDG_SESSION_TYPE=x11
++        /usr/bin/dbus-run-session /usr/bin/mate-session
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/dbus-run-session /usr/bin/icewm-session
++      fi
++      ;;
++    plasma)
++      if [ -r /usr/bin/startplasma-x11 ]; then
++        export XDG_SESSION_TYPE=x11
++        /usr/bin/dbus-run-session /usr/bin/startplasma-x11
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/dbus-run-session /usr/bin/icewm-session
++      fi
++      ;;
++    icewm)
++      if [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/dbus-run-session /usr/bin/icewm-session
++      fi
++      ;;
++  esac
+ }
+ 
+ #. /etc/environment
+@@ -122,6 +122,8 @@ wm_start()
+ # includes
+ # auth       required     pam_env.so readenv=1
+ 
++pre_start
+ wm_start
++post_start
+ 
+ exit 1

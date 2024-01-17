@@ -1,0 +1,491 @@
+-------------------------------------------------------------------
+Tue Oct 17 15:42:16 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.16.2:
+  * Fixed bug in rendering some sixels with edges of the wrong color.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.16.2 for more details.
+
+-------------------------------------------------------------------
+Thu Oct 12 15:37:45 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.16.1:
+  * Fixed rendering cells underneath erased sixels.
+  * Fixed being unable to start on kernel versions before 6.3.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.16.1 for more details.
+
+-------------------------------------------------------------------
+Wed Oct 11 16:56:40 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.16.0:
+  * foot.ini options:
+    * Mouse wheel scroll can now be bound to actions, as BTN_BACK for
+      scrolling up and BTN_FORWARD for scrolling down.
+    * Added mouse-bindings.scrollback-up-mouse and
+      mouse-bindings.scrollback-down-mouse options to scroll contents.
+      Default to BTN_BACK and BTN_FORWARD.
+    * Changed default mouse-bindings.select-row from BTN_LEFT-3
+      (triple left click) to BTN_LEFT-4 (quadruple left click).
+    * Added mouse-bindings.select-quote option to select an entire quote and
+      copy it. Defaults to BTN_LEFT-3 (triple left click).
+    * Added many search-bindings.extend-* options to extend the selection
+      of a search match.
+    * Added many search-bindings.scrollback-* options to scroll the contents
+      in search mode.
+    * Added bell.visual option to control if the BEL character will cause
+      the window to flash. Defaults to "no".
+    * Added colors.flash and colors.flash-alpha options to set the color of
+      the window when it flashes.
+  * Added support for grapheme cluster processing support to be
+    queried and modified by applications that support it.
+  * Changed URL mode to not strip file:// prefix from local file URIs.
+  * Changed rendering to have lower latency in many cases, especially on
+    high DPI monitors.
+  * Fixed wrong baseline offset for some fonts.
+  * Fixed foot-server systemd units to only start after the wayland session
+    is fully initialized.
+  * Fixed URL mode to work with URLs containing double-width characters and
+    grapheme clusters.
+  * Fixed margins to become non-transparent in full-screen mode, for
+    compliance with the current Wayland protocol specification.
+  * Fixed command-line configuration overrides to take effect even if
+    the foot.ini does not exist or cannot be parsed.
+  * Fixed some crashes related to fractional scaling, XDG activation and
+    search mode.
+  * Added new theme - panda.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.16.0 for more details.
+
+-------------------------------------------------------------------
+Mon Aug  7 15:34:47 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.15.3:
+  * Fixed -f,--font command line option not affecting the font used for CSDs.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.15.3 for more details.
+
+-------------------------------------------------------------------
+Sun Jul 30 17:16:33 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.15.2:
+  * foot.ini options:
+    * Added tweak.bold-text-in-bright-amount option.
+  * Fixed various crashes related to copy-paste, font sizes, wayland support
+    of compositor, and more.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.15.2 for more details.
+
+-------------------------------------------------------------------
+Fri Jul 21 07:11:08 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.15.1:
+  * Background transparency (alpha) is now disabled in fullscreened windows.
+  * systemd service and socket units of foot-server are no longer instanced
+    on the WAYLAND_DISPLAY env var. They are now singletons and part of
+    the standard graphical-session.target. This also means the socket path
+    does not incorporate the WAYLAND_DISPLAY value. The list of socket paths
+    that footclient tries to connect to has been updated accordingly.
+  * Fixed various bugs related to fractional scaling, font sizes, and more.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.15.1 for more details.
+
+-------------------------------------------------------------------
+Fri Jul 14 15:49:39 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.15.0:
+  * foot.ini options:
+    * Added csd.double-click-to-maximize option. Defaults to "yes".
+    * Added touch.long-press-delay option.
+    * Renamed main.utempter option to main.utmp-helper. main.utempter is still
+      recognized, but will log a deprecation warning.
+    * Changed default main.dpi-aware value from "auto" to "no", and "auto" is
+      no longer an allowed value.
+    * Default theme is now "starlight".
+    * Changed default key-bindings.show-urls-launch from Ctrl-Shift-U to
+      Ctrl-Shift-O.
+    * Changed default key-bindings.unicode-input from none to Ctrl-Shift-U.
+  * Implemented support fractional scaling on compositors that implement
+    the fractional-scale-v1 Wayland protocol. This also changes how fonts
+    are scaled to be based on the output scale factor configured in
+    the compositor rather than the output's DPI. To restore
+    the original behavior, set main.dpi-aware to "yes".
+  * Implemented support server side cursor shapes on compositors that implement
+    the cursor-shape-v1 Wayland protocol.
+  * Implemented support for touchscreen input.
+  * Implemented XTQMODKEYS query (CSI ? Pp m).
+  * Added new themes - aeroroot, ayu-mirage, srcery, starlight.
+  * Fixed incorrect icon in dock and window switcher on GNOME.
+  * Fixed various bugs in sixel output.
+  * Fixed various crashes when resizing or scrolling.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.15.0 for more details.
+- Patches:
+  * Drop 0000-fix-scroll-damage-crash.patch
+  * Drop 0001-fix-crash-when-reflowing-alt-screen.patch
+  * Drop 0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+  * Drop 0003-keep-empty-bottom-scroll-margin-empty-after-resize.patch
+  * Drop 0004-fix-non-utf8-complaint.patch
+  * Drop 0005-fix-wayland-protocols-1.32.patch
+
+-------------------------------------------------------------------
+Mon Jul  3 15:58:29 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Add patch 0005-fix-wayland-protocols-1.32.patch.
+  * wayland: handle enum value XDG_TOPLEVEL_STATE_SUSPENDED
+
+-------------------------------------------------------------------
+Tue Jun 27 09:48:27 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Modify 0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+
+-------------------------------------------------------------------
+Mon Jun 26 21:58:34 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add patches
+  * 0003-keep-empty-bottom-scroll-margin-empty-after-resize.patch
+  * 0004-fix-non-utf8-complaint.patch
+
+-------------------------------------------------------------------
+Mon Jun 26 21:51:34 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+  * render: ensure scroll region’s endpoint is valid after a window resize
+
+-------------------------------------------------------------------
+Mon Jun 26 09:49:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0001-fix-crash-when-reflowing-alt-screen.patch
+  * render: resize: fix crash when reflowing the alt screen
+
+-------------------------------------------------------------------
+Mon Jun 26 09:15:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0000-fix-scroll-damage-crash.patch.
+  * term: scroll: only record scroll damage when viewport is at the bottom.
+
+-------------------------------------------------------------------
+Sat Apr 22 15:36:15 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Fix dependency on tllist to be >=1.1.0 since the code uses a feature
+  not found in older versions.
+
+-------------------------------------------------------------------
+Wed Apr  5 17:45:07 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Add dependency on utempter explicitly since it's not picked up automatically.
+
+-------------------------------------------------------------------
+Wed Apr  5 16:55:38 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.14.0:
+  * foot.ini options:
+    * Added font-size-adjustment option to set the font size change increment
+      when zooming in or out.
+    * Added underline-thickness option to set underline height.
+    * Changed default colors to correspond to the solarized-dark-normal-brights
+      theme.
+    * Added main.utempter option to set path to utempter binary, used to
+      create utmp records. Defaults to the path of that binary at build time.
+    * Changed default grapheme-width-method option to double-width.
+    * Changed default pad option to 0x0.
+    * String values can now be quoted with double quotes (""), which can be
+      used to set an option to an empty string value. For environment variables
+      setting them to the empty string unsets them.
+  * Added various terminfo capabilities to work better with vim, etc.
+  * Fixed various crashes.
+  * Added new themes - deus, material-amber, modus, moonfly, nightfly, onedark,
+    rose-pine, zenburn.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.14.0 for more details.
+
+-------------------------------------------------------------------
+Wed Aug 31 17:38:33 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.13.1:
+  * Window is now dimmed while in Unicode input mode.
+  * Fix crash on some compositors like GNOME.
+  * Fix crash when resizing the window or scrolling in scrollback history.
+  * Fix empty cells being highlighted as selected when they shouldn't be.
+  * Fix separate URLs being connected in URL mode if they have the same ID.
+
+-------------------------------------------------------------------
+Sun Aug  7 16:16:41 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.13.0:
+  * foot.ini options:
+    * Added colors.search-box-no-match and colors.search-box-match options.
+    * Added new environment section to define custom environment variables for
+      child processes.
+    * Added key-bindings.prompt-prev and key-bindings.prompt-next options.
+      These key bindings jump to the previous / next prompt with a cooperating
+      shell.
+    * Added key-bindings.unicode-input and search-bindings.unicode-input
+      options. They provide a way to input unicode using codepoints without
+      an external IME.
+  * Client-side decorations no longer show buttons that do nothing because
+    the compositor doesn't support the button's feature. For example,
+    the minimize button won't be shown if the compositor doesn't support
+    minimizing.
+  * Added new themes - Monokai Pro, Catppuccin, Tokyo Night,
+    Tokyo Night Day, Tokyo Night Storm.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.13.0 for more details.
+- Mark foot-extra-terminfo and foot-themes packages as noarch.
+- Remove redundant copy of doc files and license in $datadir/doc/foot/
+
+-------------------------------------------------------------------
+Wed Apr 27 19:19:51 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.12.1:
+  * foot.ini options:
+    * search-bindings.clipboard-paste now includes Ctrl-Shift-V and XF86Paste
+      by default.
+  * search-bindings.extend-to-word-boundary command no longer stops at
+    space-to-word boundaries.
+  * Fixed some issues related to scrollback search mode.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.12.1 for more details.
+
+-------------------------------------------------------------------
+Fri Apr 22 21:51:06 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.12.0:
+  * foot.ini options:
+    * Added key-bindings.scrollback-home and .scrollback-end options.
+    * Added key-binding.show-urls-persistent option. This is similar to
+      show-urls-launch, but remains in URL mode after activating an URL.
+    * Added tweak.sixel option to allow disabling sixel support.
+    * Added csd.hide-when-maximized option to hide the CSD when maximized.
+  * Implemented socket activation support for foot --server, along with
+    sample systemd user session units.
+  * footclient now has a -E,--client-environment parameter to inherit
+    its environment from its parent process instead of the foot server.
+  * Implemented support for more terminal sequences.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.12.0 for more details.
+- Set all options and features explicitly instead of relying on auto-detection
+  to ensure build fails if dependencies change.
+- Upstream moved default foot.ini from $datadit/foot/foot.ini
+  to $sysconfdir/xdg/foot/foot.ini . Move it ourselves
+  to $distconfdir/xdg/foot/foot.ini in accordance with packaging guidelines
+  for new packages.
+- Patches:
+  * Drop foot-tests-missing-deps.patch
+
+-------------------------------------------------------------------
+Thu Mar 17 08:18:45 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add "Requires: foot" for foot-themes package
+
+-------------------------------------------------------------------
+Thu Mar 17 08:15:10 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Make foot-themes a subpackage of foot.
+- Fix foot-themes summary and description.
+
+-------------------------------------------------------------------
+Sat Feb  5 23:01:59 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.11.0:
+  * foot.ini options:
+    * Added mouse-bindings.selection-override-modifiers option to specify
+      which modifiers should be held to force selection and prevent
+      client applications from grabbing the mouse.
+    * scrollback.multiplier is now also applied in alternate-scroll mode.
+      The client receives multiple arrow key presses equal to
+      the multiplier instead of just one.
+    * key-bindings.clipboard-{copy,paste} now support
+      the XF86{Copy,Paste} keycodes.
+  * irc:// and ircs:// URLs are now auto-detected as URLs.
+  * Added support for reporting mouse coordinates in SGR-Pixels (1016) format.
+  * Added XTGETTCAP support for reporting the current terminfo to clients
+    that support it instead of needing the terminfo file installed,
+    say when ssh'ing to remote hosts.
+  * Added partial DECRQSS support so that clients can request
+    top and bottom margins (DECSTBM), graphic rendition (SGR) and
+    cursor style (DECSCUSR).
+  * Searching the scrollback now defaults to searching for
+    the previously-searched string.
+  * PaperColorDark and PaperColorLight themes have been renamed to
+    paper-color-dark and paper-color-light for consistency with other themes.
+  * foot will now try to change the locale to either C.UTF-8 or en_US.UTF-8
+    on startup if it has been started with a non-UTF-8 locale. If it fails to
+    change the locale for any reason, it will show an error and not start
+    the shell / program it was supposed to.
+  * Pasting or dropping files on the alternate screen no longer quotes
+    the filename.
+  * Copying a line-based selection now includes a trailing newline.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.11.0 for more details.
+- Patches:
+  * Add foot-tests-missing-deps.patch to add missing wayland-client dependency
+    to tests subdirectory, as discussed with upstream.
+
+-------------------------------------------------------------------
+Wed Dec  8 19:48:49 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.10.3:
+  * Implemented support for all other modes of the Kitty keyboard protocol.
+    See Kitty keyboard protocol docs for more details.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.3 for more details.
+
+-------------------------------------------------------------------
+Thu Dec  2 20:10:15 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.10.2:
+  * foot.ini options:
+    * tweak.grapheme-width-method can now be set to max, which means to use
+      the width of the largest codepoint in the grapheme cluster.
+  * Added initial support for Kitty keyboard protocol, currently with support
+    for only the "Disambiguate escape codes" mode. See Kitty keyboard protocol
+    docs for more details.
+  * Right-clicking the CSD title bar now informs the Wayland compositor to show
+    a window context menu, if the compositor supports such a thing in general.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.2 for more details.
+
+-------------------------------------------------------------------
+Mon Nov 22 22:44:13 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.10.1:
+  * Fixed bugs in parsing foot.ini for letter-spacing, pipe-* key bindings, etc
+    that were introduced in 1.10.0.
+  * Added XDG desktop file for footclient.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.1 for more details.
+
+-------------------------------------------------------------------
+Sun Nov 21 01:44:45 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Rename foot-direct-extra terminfo file to foot-extra-direct, to match
+  upstream's wishes.
+
+-------------------------------------------------------------------
+Sun Nov 14 20:04:50 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.10.0:
+  * foot.ini options:
+    * Added notify-focus-inhibit boolean option to control whether
+      desktop notifications should be inhibited when the terminal
+      has keyboard focus.
+    * Added colors.scrollback-indicator color-pair option to specify foreground
+      and background colors for the scrollback indicator.
+    * Added csd.border-width and csd.border-color to configure the width and
+      color of the CSD border.
+    * Added colors.dim0-7 options to configure custom "dim" colors.
+    * Changed tweak.grapheme-shaping to be enabled by default.
+    * Changed tweak.grapheme-width-method to be "wcswidth" by default.
+    * All boolean options are now limited to "yes|true|on|1|no|false|off|0".
+      Previously any numbers greater than 0 were treated as true, and anything
+      else that wasn't "yes|true|on" was treated as false.
+    * scrollback.multiplier is no longer applied when the alternate screen
+      is in use.
+    * Removed deprecated bell option. bell section (introduced in 1.8.0) should
+      be used instead.
+    * Removed deprecated url-launch, jump-label-letters and
+      osc8-underline-options options. url section (introduced in 1.8.0) should
+      be used instead.
+  * Some pre-defined color themes are now available in /usr/share/foot/themes/
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.10.0 for more details.
+
+-------------------------------------------------------------------
+Thu Oct 14 21:01:16 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Fix default TERM to be "foot" and not "foot-extra" as was intended.
+
+- Add dependency on terminfo package since that is the package that ships
+  ncurses upstream's terminfo for foot, not terminfo-base.
+
+-------------------------------------------------------------------
+Mon Oct  4 07:02:24 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.9.2:
+  * foot.ini options:
+    * New tweak.font-monospace-warn option to disable new warning when
+      the primary font is not monospace.
+    * dpi-aware=auto option now scales fonts using the monitor's DPI only when
+      all monitors have a scaling factor of one.
+  * foot's custom terminfos have been moved to the foot-extra-terminfo package,
+    where they have been renamed to foot-extra. By default, foot no longer
+    sets TERMINFO and expects to use the terminfo shipped by ncurses. If you
+    want to use the customer terminfos instead, install
+    the foot-extra-terminfo package and set term=foot-extra in
+    your foot config.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.9.1 and
+    https://codeberg.org/dnkl/foot/releases/tag/1.9.2 for more details.
+
+-------------------------------------------------------------------
+Fri Aug 27 22:17:48 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.9.0:
+  * foot.ini options:
+    * include directives for including files now expand ~ in the path.
+    * New uri.uri-characters option to customize what characters are considered
+      to be part of a URL.
+  * If using a compositor with client-side decorations, the CSDs now show
+    window titles.
+  * foot's terminfo file is now installed under /usr/share/foot/terminfo
+    so as to not conflict with terminfo-base's version of the file
+    under /usr/share/terminfo. foot also sets the TERMINFO env var on
+    the program to /usr/share/foot/terminfo so that the program prefers to
+    use the file in this directory instead of terminfo-base's version.
+    This is because terminfo-base's version does not expose all the capabilities
+    that foot supports.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.9.0 for more details.
+
+-------------------------------------------------------------------
+Sun Jul 18 16:56:41 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.8.2:
+  * New foot.ini options:
+    * locked-title option to disable dynamic changes to the window title.
+    * tweak.overflowing-glyps option to fix rendering issues with glyphs of
+      any width that appear cut-off. This supersedes
+      the tweak.allow-overflowing-double-width-glyphs and
+      tweak.pua-double-width options, which have been removed.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.8.2 for more details.
+
+-------------------------------------------------------------------
+Thu Jul  1 21:28:28 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Delete 01-fix-xkbcommon-missing-dep.7edda924.patch since it is in upstream
+  since 1.8.0
+
+-------------------------------------------------------------------
+Thu Jul  1 19:26:17 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.8.1:
+  * New foot.ini options:
+    * cursor.beam-thickness
+    * cursor.style=beam (cursor.style=bar remains a recognized value, but will
+      will eventually be deprecated, and removed)
+    * cursor.underline-thickness
+    * underline-offset
+    * csd.button-color
+    * dedicated [bell] section, supporting multiple actions,      
+      a new command action to run an arbitrary command and                        
+      XDG activation support. The bell option has been deprecated.
+    * dedicated [url] section. The jump-label-letters, osc8-underline and
+      url-launch options have been deprecated in favor of options in
+      this new section.
+    * tweak.grapheme-shaping option to foot.ini to support                  
+      grapheme cluster segmentation and grapheme shaping.
+      The grapheme cluster width is limited to two cells by default,
+      which may cause cursor synchronization issues with many applications.
+    * tweak.grapheme-width-method=wcswidth option to stop limiting
+      grapheme cluster width to two cells.
+    * tweak.pua-double-width option to foot.ini to force                    
+      Private Usage Area codepoints to be treated as double-width characters.
+  * Added support for including files in foot.ini
+  * Added support for setting the full 256 color palette in foot.ini
+  * Added ctrl+c as a default key binding; to cancel search/url mode.
+  * Added support for overriding configuration options on the command line.
+  * Added support for DECSET/DECRST 2026, as an alternative to the existing
+    "synchronized updates" DCS sequences.
+  * Added support for LS2 and LS3 (locking shift) escape sequences.
+  * Added OSC 9 desktop notifications (iTerm2 compatible).
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.8.0 and
+    https://codeberg.org/dnkl/foot/releases/tag/1.8.1 for more details.
+
+-------------------------------------------------------------------
+Sat Jun 12 10:36:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove unsubstantiated claims from descriptions.
+
+-------------------------------------------------------------------
+Fri Jun 11 22:07:20 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Fix specfile to use correct URL, meson dependency to match upstream,
+  and remove incorrect Group. Also use autosetup macro instead of setup.
+
+-------------------------------------------------------------------
+Fri Jun 11 09:26:32 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Initial package of 1.7.2 for openSUSE

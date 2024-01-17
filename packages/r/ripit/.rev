@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5df9ebb8c1cd80ecb6163e81a000fc4b</srcmd5>
+    <version>3.5.1</version>
+    <time>1168904117</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="31">
+    <srcmd5>ccbce2af66351a97a67f8a47c4d1f906</srcmd5>
+    <version>3.5.1</version>
+    <time>1175630016</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>25bd28a21a4222b6ba00dabc32727b30</srcmd5>
+    <version>3.6.0</version>
+    <time>1182180168</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="78">
+    <srcmd5>45ebf35a293d983ab1636cbe436354c2</srcmd5>
+    <version>3.6.0</version>
+    <time>1220911419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="80">
+    <srcmd5>45ebf35a293d983ab1636cbe436354c2</srcmd5>
+    <version>3.6.0</version>
+    <time>1220911419</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="81">
+    <srcmd5>f92630388ce49bd8e2761be4edbe8ad7</srcmd5>
+    <version>3.6.0</version>
+    <time>1268925983</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf7629e39eaf73a2308b052776e20c92</srcmd5>
+    <version>3.8.2</version>
+    <time>1271374541</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/ripit based on submit request 37640 from user plater
+</comment>
+    <requestid>37640</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cf7629e39eaf73a2308b052776e20c92</srcmd5>
+    <version>3.8.2</version>
+    <time>1278667387</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>cf7629e39eaf73a2308b052776e20c92</srcmd5>
+    <version>3.8.2</version>
+    <time>1278678616</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e9aa6115c7c9a53684ad58e9373d6910</srcmd5>
+    <version>3.9.0</version>
+    <time>1290099430</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53351 from user hennevogel
+</comment>
+    <requestid>53351</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>23f017cbea5636cdd6b1e9411d4f1b91</srcmd5>
+    <version>3.9.0</version>
+    <time>1290099436</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53351
+</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>23f017cbea5636cdd6b1e9411d4f1b91</srcmd5>
+    <version>3.9.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>23f017cbea5636cdd6b1e9411d4f1b91</srcmd5>
+    <version>3.9.0</version>
+    <time>1319182427</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>1c6984ab80c0e7f6c71234e55e0c6ffe</srcmd5>
+    <version>3.9.0</version>
+    <time>1323194402</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>1c6984ab80c0e7f6c71234e55e0c6ffe</srcmd5>
+    <version>3.9.0</version>
+    <time>1340184145</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>1c6984ab80c0e7f6c71234e55e0c6ffe</srcmd5>
+    <version>3.9.0</version>
+    <time>1359110289</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>1c6984ab80c0e7f6c71234e55e0c6ffe</srcmd5>
+    <version>3.9.0</version>
+    <time>1379664457</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>1c6984ab80c0e7f6c71234e55e0c6ffe</srcmd5>
+    <version>3.9.0</version>
+    <time>1409303189</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4dfa53c226a31d6d872dca4fa91b30a6</srcmd5>
+    <version>3.9.90</version>
+    <time>1426680434</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291142</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6036b320f418957e973473070bab27c8</srcmd5>
+    <version>3.9.90</version>
+    <time>1518697550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576468</requestid>
+  </revision>
+</revisionlist>

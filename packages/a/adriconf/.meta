@@ -1,0 +1,10 @@
+<package name="adriconf" project="openSUSE:Factory">
+  <title>Advanced DRI Configurator</title>
+  <description>adriconf (Advanced DRI CONFigurator) is a GUI tool used to configure open
+source graphics drivers. It works by setting options and writing them to
+the standard drirc file used by the Mesa drivers.
+
+</description>
+  <devel project="X11:Utilities" package="adriconf"/>
+  <url>https://github.com/jlHertel/adriconf</url>
+</package>

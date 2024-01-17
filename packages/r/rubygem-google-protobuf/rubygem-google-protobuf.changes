@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Mon Nov 20 10:15:44 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 3.25.1
+- Add 0001-ruby-return-0-from-shared_convert.c-shared_message.c.patch to fix
+  build failures with -Werror=return-type
+
+-------------------------------------------------------------------
+Thu Nov 16 14:41:55 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Fix spurious +x permissions in the sources
+
+-------------------------------------------------------------------
+Tue May 23 06:46:49 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 3.23.1
+  * Rebase do-not-wrap.patch.
+
+-------------------------------------------------------------------
+Wed Dec  7 11:22:29 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.21.10
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Nov  3 11:16:58 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup gem2rpm.yml:
+  - preamble:
+    - this works for 2.5 and up just fine so disabling 2.7 is not
+      needed.
+  - post install:
+    - we do not need to set +x bit just because the file has a she
+      bang line. it is clearly a library.
+    - use print0/xargs -r0 to avoid any problems with paths with
+      whitespaces.
+
+-------------------------------------------------------------------
+Thu Nov  3 11:01:20 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add do-not-wrap.patch:
+  * wrapping memcpy caused loading 'google/protobuf' to hang
+
+-------------------------------------------------------------------
+Fri Oct 28 04:57:44 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.21.9
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Oct 10 13:07:10 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.21.7
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Aug 29 06:51:02 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.21.5
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Aug 23 15:34:28 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Restrict builds to Ruby 3.1 on Tumbleweed
+
+-------------------------------------------------------------------
+Thu Aug  4 13:13:09 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.21.4
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Apr 28 05:31:21 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.20.1
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Feb 15 07:29:28 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.19.4
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Jan 20 12:43:32 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.14.0
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Sep 25 14:05:35 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.13.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu May  7 20:50:04 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.11.4
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Feb 10 14:45:53 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.11.3
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Jul 19 09:12:40 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.9.0
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Mar 29 06:03:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.7.1
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Mar  2 15:19:37 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.7.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Nov 22 05:13:16 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.6.1
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Feb  8 07:48:00 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 3.5.1.2
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Jan  9 07:30:37 UTC 2018 - coolo@suse.com
+
+- updated to version 3.5.1
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Dec 14 14:21:32 UTC 2017 - coolo@suse.com
+
+- updated to version 3.5.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Sep 23 20:36:58 UTC 2017 - mrueckert@suse.de
+
+- update to 3.4.1.1
+
+-------------------------------------------------------------------
+Mon Jun 19 16:21:48 UTC 2017 - mrueckert@suse.de
+
+- update to 3.3.0
+
+-------------------------------------------------------------------
+Thu Mar 23 14:10:27 UTC 2017 - mrueckert@suse.de
+
+- initial package

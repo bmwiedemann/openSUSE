@@ -1,0 +1,249 @@
+--- a/Keyboard/ckbcomp
++++ b/Keyboard/ckbcomp
+@@ -3273,14 +3273,14 @@ if ($keycodes =~ /(^|\+|\|)ataritt(\([^\
+ ########### READ ACM ###############################################
+ 
+ if ($charmap) {
+-    for my $acmfile ("$installdir/share/consoletrans/${charmap}",
+-                     "$installdir/share/consoletrans/${charmap}.gz",
+-                     "$installdir/share/consoletrans/${charmap}.acm",
+-                     "$installdir/share/consoletrans/${charmap}.acm.gz",
+-                     "/usr/share/consoletrans/${charmap}",
+-                     "/usr/share/consoletrans/${charmap}.gz",
+-                     "/usr/share/consoletrans/${charmap}.acm",
+-                     "/usr/share/consoletrans/${charmap}.acm.gz",
++    for my $acmfile ("$installdir/share/kbd/consoletrans/${charmap}",
++                     "$installdir/share/kbd/consoletrans/${charmap}.gz",
++                     "$installdir/share/kbd/consoletrans/${charmap}.acm",
++                     "$installdir/share/kbd/consoletrans/${charmap}.acm.gz",
++                     "/usr/share/kbd/consoletrans/${charmap}",
++                     "/usr/share/kbd/consoletrans/${charmap}.gz",
++                     "/usr/share/kbd/consoletrans/${charmap}.acm",
++                     "/usr/share/kbd/consoletrans/${charmap}.acm.gz",
+                      "${charmap}") {
+ 	if (-f $acmfile) {
+ 	    $acm = $acmfile;
+--- a/Keyboard/compose_translator
++++ b/Keyboard/compose_translator
+@@ -51,10 +51,10 @@ my %uni2acm;
+ my %acm2uni;
+ if ($acm) {
+     for my $acmfile ("${acm}", "${acm}.gz", "${acm}.acm", "${acm}.acm.gz",
+-		     "/usr/share/consoletrans/${acm}",
+-		     "/usr/share/consoletrans/${acm}.gz",
+-		     "/usr/share/consoletrans/${acm}.acm",
+-		     "/usr/share/consoletrans/${acm}.acm.gz",) {
++		     "/usr/share/kbd/consoletrans/${acm}",
++		     "/usr/share/kbd/consoletrans/${acm}.gz",
++		     "/usr/share/kbd/consoletrans/${acm}.acm",
++		     "/usr/share/kbd/consoletrans/${acm}.acm.gz",) {
+ 	if (-f $acmfile) {
+ 	    $acm = $acmfile;
+ 	    last;
+--- a/Makefile
++++ b/Makefile
+@@ -11,9 +11,9 @@ include Fonts/Makefile
+ ~ := main
+ 
+ prefix := /usr/local
+-# etcdir must be either /etc or
+-etcdir := $(prefix)/etc
+ bootprefix := $(patsubst %/usr,%/,$(prefix:%/=%))
++# etcdir must be either /etc or /usr/etc
++etcdir := $(bootprefix)/etc
+ mandir := $(prefix)/share/man
+ 
+ acmfiles := $(wildcard $./acm/*.acm)
+@@ -26,8 +26,8 @@ build-common: gzipped-acmfiles
+ 
+ .PHONY: install-common
+ install-common: build-common
+-	install -d  $(bootprefix)/bin/
+-	install setupcon $(bootprefix)/bin/
++	install -d  $(prefix)/bin/
++	install setupcon $(prefix)/bin/
+ 	install -d $(etcdir)/default
+ 	install -m 644 config/keyboard $(etcdir)/default/
+ 	install -m 644 config/console-setup $(etcdir)/default/
+@@ -39,10 +39,11 @@ install-common: build-common
+ 
+ .PHONY: install-common-linux
+ install-common-linux: build-linux
+-	install -d $(prefix)/share/consolefonts/
+-	install -m 644 Fonts/*.psf.gz $(prefix)/share/consolefonts/
+-	install -d $(prefix)/share/consoletrans
+-	install -m 644 acm/*.acm.gz $(prefix)/share/consoletrans/
++	install -d $(prefix)/share/kbd
++	install -d $(prefix)/share/kbd/consolefonts/
++	install -m 644 Fonts/*.psf.gz $(prefix)/share/kbd/consolefonts/
++	install -d $(prefix)/share/kbd/consoletrans
++	install -m 644 acm/*.acm.gz $(prefix)/share/kbd/consoletrans/
+ 	install -d $(etcdir)/console-setup
+ 	install -m 644 Keyboard/compose.*.inc $(etcdir)/console-setup/
+ 	install -m 644 Keyboard/remap.inc $(etcdir)/console-setup/
+@@ -53,8 +54,8 @@ install-common-freebsd: build-freebsd
+ 	install -m 644 Fonts/*.fnt $(prefix)/share/syscons/fonts/
+ 	install -d $(prefix)/share/syscons/scrnmaps/
+ 	install -m 644 Fonts/*.scm $(prefix)/share/syscons/scrnmaps/
+-	install -d $(prefix)/share/consoletrans
+-	install -m 644 acm/*.acm $(prefix)/share/consoletrans/
++	install -d $(prefix)/share/kbd/consoletrans
++	install -m 644 acm/*.acm $(prefix)/share/kbd/consoletrans/
+ 	install -d $(etcdir)/console-setup
+ 	install -m 644 Fonts/terminfo $(etcdir)/console-setup/
+ 	install -m 644 Fonts/termcap $(etcdir)/console-setup/
+@@ -99,10 +100,10 @@ install-mini-freebsd: install-common ins
+ 
+ common-uninstall: | build-linux build-mini-linux build-freebsd build-mini-freebsd
+ 	-for font in Fonts/*.psf.gz; do \
+-		rm $(prefix)/share/consolefonts/$${font##*/}; \
++		rm $(prefix)/share/kbd/consolefonts/$${font##*/}; \
+ 	done
+ 	-for acm in acm/*.acm.gz acm/*.acm; do \
+-		rm $(prefix)/share/consoletrans/$${acm##*/}; \
++		rm $(prefix)/share/kbd/consoletrans/$${acm##*/}; \
+ 	done
+ 	-for font in Fonts/*.fnt; do \
+ 		rm $(prefix)/share/syscons/fonts/$${font##*/}; \
+@@ -119,7 +120,7 @@ common-uninstall: | build-linux build-mi
+ 	-rm $(etcdir)/default/keyboard
+ 	-rm $(etcdir)/default/console-setup
+ 	-rm $(prefix)/bin/ckbcomp
+-	-rm $(bootprefix)/bin/setupcon
++	-rm $(prefix)/bin/setupcon
+ 
+ .PHONY: uninstall-linux
+ uninstall-linux: build-linux common-uninstall
+--- a/man/ckbcomp.1
++++ b/man/ckbcomp.1
+@@ -46,7 +46,7 @@ Print a usage message and exit.
+ .BI -charmap\  charmap
+ The encoding to use for the output keymap.  There should be an
+ character mapping table defining this encoding in
+-.IR /usr/local/share/consoletrans .
++.IR /usr/share/kbd/consoletrans .
+ Definitions of the following charmaps are provided:
+ .nh
+ .BR ARMSCII-8 ,
+@@ -86,8 +86,9 @@ for files included by the keymap descrip
+ multiple times.  If a file can not be found in any of the specified
+ directories, it will be searched also in some other standard
+ locations, such as
+-.IR /usr/local/etc/console-setup/ckb ,
+-.IR /usr/local/share/X11/xkb
++.IR /etc/console-setup/ckb ,
++.IR /usr/local/share/X11/xkb ,
++.IR /usr/share/X11/xkb
+ and
+ .IR /etc/X11/xkb
+ 
+@@ -167,9 +168,9 @@ Specifies the layout variant used to cho
+ Adds an option used to choose component names.
+ 
+ .SH FILES
+-.I /usr/local/share/consoletrans
++.I /usr/share/kbd/consoletrans
+ .br
+-.I /usr/local/etc/console-setup/ckb
++.I /etc/console-setup/ckb
+ .br
+ .I /usr/share/X11/xkb
+ .br
+--- a/man/console-setup.5
++++ b/man/console-setup.5
+@@ -403,16 +403,16 @@ Completely covered by the following font
+ The standard location of the
+ .B console-setup
+ configuration file is
+-.IR /usr/local/etc/default/console-setup .
++.IR /etc/default/console-setup .
+ The keyboard configuration is in
+-.IR /usr/local/etc/default/keyboard .
++.IR /etc/default/keyboard .
+ Fonts that can be used with the variable
+ .B FONT
+ are usually installed in
+-.IR /usr/share/consolefonts/ " or " /usr/share/syscons/fonts/ .
++.IR /usr/share/kbd/consolefonts/ " or " /usr/share/consolefonts/ .
+ Translation maps that can be used with the variable CONSOLE_MAP are
+ usually installed in
+-.IR /usr/share/consoletrans/ " or " /usr/share/syscons/scrnmaps/ .
++.IR /usr/share/kbd/consoletrans/ " or " /usr/share/consoletrans/ .
+ 
+ .SH NOTES
+ The aim of the Terminus font is to reduce the eyes-fatigue when one
+--- a/man/keyboard.5
++++ b/man/keyboard.5
+@@ -154,12 +154,12 @@ on FreeBSD.
+ The standard location of the
+ .B keyboard
+ file is
+-.IR /usr/local/etc/default/keyboard .
++.IR /etc/default/keyboard .
+ Description of all available keyboard models, layouts, variants and
+ options is available in
+-.IR /usr/local/share/X11/xkb/rules/base.lst .
++.IR /usr/share/X11/xkb/rules/base.lst .
+ In most cases, in
+-.IR /usr/share/keymaps/ " or " /usr/share/syscons/keymaps/
++.IR /usr/share/kbd/keymaps/
+ you will find several keymaps that can be used with the variable
+ .BR KMAP .
+ 
+--- a/man/setupcon.1
++++ b/man/setupcon.1
+@@ -22,11 +22,11 @@ the console.  Most of the time you invok
+ without arguments.  The keyboard configuration is specified in
+ .I ~/.keyboard
+ or
+-.IR /usr/local/etc/default/keyboard .
++.IR /etc/default/keyboard .
+ The font configuration is specified in
+ .I ~/.console-setup
+ or
+-.IR /usr/local/etc/default/console-setup .
++.IR /etc/default/console-setup .
+ Consult
+ .BR keyboard (5)
+ and
+@@ -162,13 +162,13 @@ Display usage information.
+ .br
+ .I ~/.keyboard
+ .br
+-.I /usr/local/etc/default/console-setup
++.I /etc/default/console-setup
+ .br
+-.I /usr/local/etc/default/keyboard
++.I /etc/default/keyboard
+ .br
+-.I /usr/local/etc/default/console-setup.VARIANT
++.I /etc/default/console-setup.VARIANT
+ .br
+-.I /usr/local/etc/default/keyboard.VARIANT
++.I /etc/default/keyboard.VARIANT
+ .br
+ .I /etc/console-setup/
+ 
+--- a/setupcon
++++ b/setupcon
+@@ -644,9 +644,9 @@ esac
+ # mapdir, fontdir, stdfont, stdfontfallback
+ case "$kernel" in
+     linux)
+-        mapdir=share/consoletrans
++        mapdir=share/kbd/consoletrans
+         stdmap=$CHARMAP.acm.gz
+-        fontdir=share/consolefonts
++        fontdir=share/kbd/consolefonts
+         stdfont=$CODESET-$FONTFACE$FONTSIZE.psf.gz
+         # [A-WXYZa-wyz] is a funny way to say [A-Za-wyz].  In some locales 
+         # [A-Z] includes x and we don't want this.
+@@ -716,7 +716,7 @@ fi
+ # FONTMAPFILE
+ FONTMAPFILE=''
+ if [ "$kernel" = linux -a -n "$FONT_MAP" ]; then
+-    FONTMAPFILE=`findfile share/consoletrans "$FONT_MAP"`
++    FONTMAPFILE=`findfile share/kbd/consoletrans "$FONT_MAP"`
+ fi
+ 
+ # XKBMODEL

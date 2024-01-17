@@ -1,0 +1,5 @@
+<package name="azure-storage-cpp" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science:machinelearning" package="azure-storage-cpp"/>
+</package>

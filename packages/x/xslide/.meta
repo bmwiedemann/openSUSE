@@ -1,0 +1,5 @@
+<package name="xslide" project="openSUSE:Factory">
+  <title>XSL Integrated Development Environment</title>
+  <description>An Emacs mode to edit XSL files.</description>
+  <devel project="editors" package="xslide"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="authbind" project="openSUSE:Factory">
+  <title>Allows non-root programs to bind() to low ports</title>
+  <description>The authbind software allows a program that would normally require superuser privileges to access privileged network services to run as a non-privileged user. authbind allows the system administrator to permit specific users and groups access to bind to TCP and UDP ports below 1024.</description>
+  <devel project="devel:CaaSP:Head:ControllerNode" package="authbind"/>
+</package>

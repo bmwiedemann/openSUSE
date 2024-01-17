@@ -1,0 +1,1196 @@
+-------------------------------------------------------------------
+Mon Jan 15 17:09:09 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.24.0:
+  * Breaking change
+    - service hash computation logic has been updated to fully
+      ignore replicas/scale. Due to this change, after upgrade all
+      services will be recreated.
+  * Enhancements
+    - Implement docker compose attach by @g0t4 in #11181
+    - Introduce ps --orphans to include/exclude services not
+      declared by project by @ndeloof in #11220
+    - Introduce compose logs --index to select a replica container
+      by @ndeloof in #11231
+    - --with-dependencies let docker compose build build
+      dependencies transitively by @ndeloof in #11290
+    - Introduce stats command by @ndeloof in #11299
+    - Add source policies for build by @cpuguy83 in #11325
+  * Fixes
+    - Include disabled services for shell completion by @ndeloof in
+      #11251
+    - Restore Project is ps json output by @ndeloof in #11223
+    - Log we don't expose service ports when --verbose by @ndeloof
+      in #11227
+    - Fix configs are mounted under / by @ndeloof in #11232
+    - Fix combination of --pull always --no-build by @ndeloof in
+      #11244
+    - Fix(publish): add OCI 1.0 fallback support for AWS ECR by
+      @milas in #11239
+    - Fix race condition in log printer by @horus in #11286
+    - Send out a cancel event on SIGINT/SIGTERM signal for compose
+      up by @vyneer in #11230
+    - Up: teardown when command context is cancelled by @laurazard
+      in #11292
+    - Build do not require environment to be resolved by @ndeloof
+      in #11274
+  * Internal
+    - Let contributor know we might close unanswered issues by
+      @ndeloof in #11219
+    - Feat(cli): report more useful User-Agent on engine API
+      requests by @milas in #11333
+    - Adopt compose-go/v2 by @ndeloof in #11207
+    - Add support for start_interval by @ndeloof in #10939
+    - Update README.md to use standard compose.yaml file name by
+      @johnthagen in #11233
+    - Watch: remove requirements for tar binary and for sync target
+      to be rw by @ndeloof in #11330
+    - Deps: update docker/cli to fix go version selection issue by
+      @laurazard in #11283
+    - Remove ServiceProxy which was introduced for archived
+      compose-cli by @ndeloof in #11298
+    - github.com/golang/mock is deprecated by @ndeloof in #11272
+    - Add support for endpoint-specific MAC address by @akerouanton
+      in #11208
+    - Collect services to build using WithServices by @ndeloof in
+      #11255
+  * Bumps
+    - Bump compose-go to version v2.0.0-beta.3 by @glours in #11307
+    - Bump ddev to 1.22.4 by @ndeloof in #11225
+    - Bump golang to version 1.21.5 by @glours in #11249
+    - Bump docker cli v1.25 beta1 by @ndeloof in #11247
+    - Bump golang to version v1.21.6 by @glours in #11331
+    - Bump golangci-lint to v1.55.2 ci(deps) by @milas in #11332
+    - Bump compose-go v2-beta.2 by @ndeloof in #11295
+    - Build(deps): bump golang.org/x/sys from 0.15.0 to 0.16.0 by
+      @dependabot in #11324
+    - Build(deps): bump golang.org/x/sys from 0.14.0 to 0.15.0 by
+      @dependabot in #11228
+    - Build(deps): bump golang.org/x/sync from 0.5.0 to 0.6.0 by
+      @dependabot in #11317
+    - Build(deps): bump go.uber.org/mock from 0.3.0 to 0.4.0 by
+      @dependabot in #11291
+    - go.mod: docker/docker and docker/cli v25.0.0-beta.3 by
+      @thaJeztah in #11294
+    - go.mod: update docker/docker and docker/cli to v25.0.0-rc.1
+      by @thaJeztah in #11320
+    - gha: update DOCKER_CLI_VERSION to v24.0.7 by @thaJeztah in
+      #11321
+
+-------------------------------------------------------------------
+Thu Nov 23 09:29:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.3:
+  * bump buildx to v0.12.0 and adapt code to changes
+
+-------------------------------------------------------------------
+Thu Nov 23 06:49:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.2:
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/moby/buildkit from 0.12.2 to
+    0.12.3
+  * in watch mode force pull policy to build for services with both
+    build and develop attributes This default behaviour will force
+    a rebuild of the service images at watch process startup and be
+    sure containers will be in sync with the local source code
+  * Assume /src/pkg/compose/testdata absolute workingdir to make
+    tests reproducible
+  * avoir use of []types.ServiceConfig
+  * identify services to build and don't display 'building' if none
+  * fix --remove-orphans not to consider disabled services as
+    orphaned
+  * introduce RuntimeVersion for code to check container runtime
+    supports required features
+  * push also consider build.tags
+  * Make it context aware and add test skipping options
+
+-------------------------------------------------------------------
+Thu Nov 16 14:24:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.1:
+  * Strip project prefix from docker-compose up output
+  * render quiet after filtering applied
+  * bump golang to version 1.21.4
+  * bump compose-go to v1.20.1
+  * reject compose file using `secrets|configs.driver or
+    template_driver`
+  * skips flaky e2e tests on watch and attach
+  * fix docker/compose#11170 add newline in cmd/compose/build.go
+    fmt.Fprint
+  * fix --pull documentation
+  * improve watch configuration logging Add action associated to
+    each managed path
+  * lint
+  * do not resolve cache dir until remote resource is in use
+  * add a copyright notice with original author
+  * implement runtime file selection
+  * re-implement cache folder detection
+  * introduce --resolve-image-digests for publish to seal service
+    images by digest
+  * fix build
+  * fix
+  * ENGDOCS-1764
+  * add docs upstream validation workflow
+  * build(deps): bump go.uber.org/goleak from 1.2.1 to 1.3.0
+  * linter errors fixed
+  * NetworkList to NetworkInspect for ID search
+  * Squashing feature branch commits in order to add signoff
+    message.
+  * Use project.ServiceNames() if no service specified in hash
+  * Add branch configuration for pull_request trigger
+  * Initial codeql.yml commit
+  * fix SIGTERM support to stop/kill stack
+  * align with OCI artifact best practices
+  * refactor(cmd/compose/run): remove redundant `len` check
+  * fail start if depependency is missing
+
+-------------------------------------------------------------------
+Thu Oct 19 05:44:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.23.0:
+  * check that the pull policy provided is a valid one or is not
+    missing when --pull is used
+  * remove uncessary return value of pullComposeFiles function
+  * enable profile when down is ran with explicit service names
+  * add sync+restart action to watch attribute
+  * build(deps): bump github.com/containerd/containerd from 1.7.6
+    to 1.7.7
+  * build(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+  * build(deps): bump google.golang.org/grpc from 1.58.2 to 1.59.0
+  * build(deps): bump golang.org/x/sync from 0.3.0 to 0.4.0
+  * remove refrecence docs generation
+  * remove cucumber tests as we haven't added new ones for a while
+  * add support of COMPOSE_ENV_FILES env variable to pass a list of
+    env files
+  * add dry-run support for publish command
+  * extract method to reduce cyclomatic complexity
+  * warn user remote resource is disabled
+  * Don't delete dependent services
+  * Apply platform before hashing
+  * deps: remove deprecated github.com/pkg/errors
+  * Include image name in error message
+  * pkg/compose/publish: use empty config descriptor mediaType
+  * pkg/remote/oci: check artifactType instead of config.mediaType
+  * pkg/remote/oci: refer to the manifest as manifest
+  * update the watch warning message when no services with a
+    develop section
+  * ci: enable verbose output for e2e tests (#11045)
+  * truncate command by default, introduce --no-trunc flag to get
+    the full command
+  * build(deps): bump google.golang.org/grpc from 1.58.1 to 1.58.2
+
+-------------------------------------------------------------------
+Fri Sep 22 05:35:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.0:
+  * config --xx don't need `env_file` being parsed
+  * remove --timeout=0 flag to cleanup function of watch e2e test
+    compose down command need the watch process to be killed to
+    succeed
+  * move watch from alpha to main command
+  * TestWatch to use new  `develop` section
+  * implement publish
+  * watch: use official `develop` section (#11026)
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump github.com/moby/buildkit from 0.12.1 to
+    0.12.2
+  * build(deps): bump gotest.tools/v3 from 3.5.0 to 3.5.1
+  * build(deps): bump google.golang.org/grpc from 1.58.0 to 1.58.1
+  * build(deps): bump github.com/containerd/containerd from 1.7.3
+    to 1.7.6
+  * introduce pull --missing flag to only pull images not present
+    in cache
+  * resolve service reference into container based on observed
+    state
+  * don't rely on depends_on to resolve volume_from, better use
+    observed state
+  * update to go1.21.1
+  * correct scale error messages formatting
+  * add scale command
+  * ci: tweak restricted imports in linter (#10992)
+  * deps: upgrade Moby to v24.0.6 and gRPC to v1.58.0 (#10991)
+  * cli: fix `--build` flag for `create` (#10982)
+  * otel: add args & flags to cli traces (#10974)
+  * watch: build & launch the project at start (#10957)
+  * pull OCI remote resource
+  * introduce publish (alpha) command
+  * doc: updated README.md to remove broken link
+  * migrate to github.com/distribution/reference
+  * Enable service explicitly requested to be restarted
+  * build: pass BuildOptions around explicitly & fix multi-platform
+    issues
+  * up: fix various race/deadlock conditions on exit (#10934)
+  * pkg/api: replace uuid for basic random id
+
+-------------------------------------------------------------------
+Tue Sep 05 14:28:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.21.0:
+  * test: e2e test reliability improvements (#10950)
+  * build(deps): upgrade to compose-go v1.18.3 (#10947)
+  * added the dot at the end of the sentence
+  * add support for attributes exposed by `docker ps`
+  * align docker compose ps with docker CLI to support --format
+  * watch: only allow a single instance per-project
+  * ci: bump golangci-lint to v1.54.2
+  * logs: fix for missing output on container exit (#10925)
+  * replace dockerfile/dockerignore with patternmatcher/ignorefile
+  * go.mod: github.com/moby/patternmatcher v0.6.0
+  * go.mod: remove some outdated comments
+  * otel: add `include` to project up span
+  * build(deps): bump github.com/compose-spec/compose-go from
+    1.18.1 to 1.18.2 (#10915)
+  * include: add experimental support for Git resources (#10811)
+  * up: handle various attach use cases better
+  * build: use correct values for proxy variables (#10908)
+  * warn user secret uid/gid/mode is not supported
+
+-------------------------------------------------------------------
+Tue Sep 05 14:26:37 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.21
+- Update to version 2.20.3:
+  * build(deps): bump github.com/moby/buildkit
+  * bump compose-go to version v1.18.1
+  * bump compose-go to version v1.18.0
+  * update README and CI workflows to match main branch
+  * upgrade Golang to 1.21
+  * build: fix missing proxy build args for classic builder
+    (#10887)
+  * trace: do not block connecting to OTLP endpoint (#10882)
+  * watch: enable tar-based syncer by default (#10877)
+  * Display builder's name on the first build line. Code borrowed
+    from buildx commands/build.go.
+  * up: do not warn on successful optional dependency complete
+    (#10870)
+  * Improve shell completion for `--project-directory`
+  * Add shell completion for `--profile`
+  * progress: minor correctness fixes (#10871)
+  * doc: update Config() comment in API Service interface (#10840)
+  * Improve buildkit node creation (#10843)
+  * watch: batch & de-duplicate file events (#10865)
+  * watch: support multiple containers for tar implementation
+    (#10860)
+  * test: temporarily disable an exit-code-from Cucumber test case
+    (#10875)
+  * test: fix e2e test for privileged builds (#10873)
+  * update to go1.20.7
+  * build(deps): bump github.com/docker/docker from
+    24.0.5-0.20230714235725-36e9e796c6fc+incompatible to
+    24.0.5+incompatible (#10844)
+  * build(deps): bump github.com/containerd/containerd from 1.7.2
+    to 1.7.3 (#10850)
+  * build(deps): bump google.golang.org/grpc from 1.56.2 to 1.57.0
+    (#10847)
+  * watch: add tar sync implementation (#10853)
+  * build(deps): bump github.com/docker/cli
+
+-------------------------------------------------------------------
+Wed Jul 19 14:01:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.20.2:
+  * watch: move sync logic into separate package
+  * pkg/compose: RunOneOffContainer: don't use NewStartOptions()
+  * trace: instrument `compose up` at a high-level
+  * check secret target is an absolute windows path
+  * build: do not attempt to push unnamed service images
+  * test: do not run watch e2e tests in parallel
+  * test: skip watch e2e test on macOS for the moment
+  * only check if a dependency is required when something
+    unexpected happens
+  * add support of depends_on.required attribute
+
+-------------------------------------------------------------------
+Wed Jul 19 04:24:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.20.1:
+  * go.mod: github.com/docker/docker v24.0.5-dev (tip of 24 release
+    branch)
+  * go.mod: github.com/docker/buildx v0.11.2
+  * go.mod: github.com/moby/buildkit v0.12.0
+  * test: speed up the e2e test suite
+  * update go to go1.20.6
+  * go.mod: github.com/docker/docker 8443a06149b5 (v24.0.5-dev)
+    (#10810)
+  * watch: add end-to-end test (#10801)
+  * bump buildkit to version
+    v0.11.0-rc3.0.20230620112432-2d91ddcceedc (#10794)
+  * build(deps): bump github.com/docker/cli from
+    24.0.2+incompatible to 24.0.4+incompatible (#10799)
+
+-------------------------------------------------------------------
+Tue Jul 11 13:36:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.20.0:
+  * ci: speed up a couple Dockerfile targets w/ cache mount
+  * build(deps): bump github.com/docker/buildx from 0.11.0 to
+    0.11.1
+  * test: fix process leak in wait e2e test
+  * Apply no-deps before we select and mutate target service
+  * support `attach`
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump gotest.tools/v3 from 3.4.0 to 3.5.0
+  * build(deps): bump github.com/docker/docker
+  * deps: bump docker/cli-docs-tool to v0.6.0
+  * build(deps): bump google.golang.org/grpc from 1.56.0 to 1.56.2
+  * fix(secrets): file permission value does not comply with spec
+  * when --index is not set select first service container
+  * network: fix random missing network when service has more than
+    one
+  * don't use unitialized cli to setup DryRunClient
+  * fix some comments
+  * add support of --builder and BUILDX_BUILDER
+  * Add `docker compose wait`
+
+-------------------------------------------------------------------
+Fri Jun 30 04:43:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.19.1:
+  * ci: upgrade compose-go to v1.15.1 (#10757)
+  * up: fix race condition on network connect
+  * Updated documentation files for my contribution
+  * Fix capitalization error in sentence by adding an uppercase
+    letter at beginning
+  * fix typos
+  * watch: add warning when a path is already used by a bind mount
+    volume (#10741)
+
+-------------------------------------------------------------------
+Wed Jun 21 12:37:44 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.20
+- Update to version 2.19.0:
+  * build(deps): bump google.golang.org/grpc from 1.53.0 to 1.56.0
+  * bump compose-go to version v1.15.0
+  * ci: build fix for new buildx
+  * ci: upgrade to buildx v0.11
+  * otel: refactor root command span reporting
+  * fix race condition, waiting for containers when one exit
+  * build(deps): bump github.com/AlecAivazis/survey/v2 from 2.3.6
+    to 2.3.7 (#10699)
+  * use main branch of Docker Desktop repo to trigger remote
+    workflow
+  * add missing comma in desktop-edge-test job
+  * introduce run --cap-add to run maintenance commands using
+    service image
+  * otel: fix initialization / error-handling (#10717)
+  * build(deps): bump golang.org/x/sync from 0.2.0 to 0.3.0
+  * don't apply "rebuild" watch strategy by default
+  * warn user build.secrets uid,gid,mode are not implemented
+  * specify origin repo in generation token step of docker desktop
+    edge testing
+  * add vars. prefix to DOCKERDESKTOP_APP_ID
+  * use directly DOCKERDESKTOP_APP_ID without env. prefix
+  * fix typo in merge workflow for DOCKERDESKTOP_APP_ID
+  * Update .github/workflows/merge.yml
+  * escape containerimage.digest attribut in merge.yml GHA worlflow
+  * use `--progress` to configure progress UI stylet push
+  * cli: fix timeout behavior on up / restart / stop (#10672)
+  * ci: add more ignore rules to dependabot
+  * ci: fix merge workflow (#10685)
+  * add GitHub action to trigger Docker Desktop e2e tests with
+    Compose edge version
+  * build(deps): bump github.com/Microsoft/go-winio from 0.5.2 to
+    0.6.1
+  * trace: add OTEL initialization (#10526)
+  * ci: merge Go coverage reports before upload (#10666)
+  * create directory in container using `mkdir -p`
+  * ci: upgrade to Go 1.20.5 and Moby v24.x
+  * assume we receive logs by lines and don't ignore those without
+    EOL
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.2 to
+    1.9.3 (#10653)
+  * ci: bump golangci-lint to v1.53.x (#10659)
+  * don't skip `compose` used as project name
+  * better diagnostic message on network label mismatch
+  * bump buildx and use confutil.ConfigDir
+  * detect network conflict as name is not guaranteed to be unique
+    (#10612)
+  * forward signal to container
+  * fix build issue
+  * add Windows drive prefix to temp dir usage in the doc
+    generation task
+  * build(deps): bump github.com/stretchr/testify from 1.8.3 to
+    1.8.4
+  * e2e: make test re-runnable on the same machine
+  * e2e: add a cuke feature to test compose errors with port
+    conflicts
+  * up should not silently ignore missing depends_on service
+  * prevent buildkt's progress to render `Building` when no built
+    is needed
+  * e2e test to cover logs -f managing service being added/scaled
+  * detect new container from project have started when running
+    `compose logs` with no explicit services
+  * compute service hash with a default DeployConfig
+  * Fix typo in warning about existing volume
+  * build(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.3
+  * build(deps): bump github.com/cloudflare/cfssl from 1.4.1 to
+    1.6.4
+  * progress: remove errant import (#10614)
+  * fix display of volumes flag in down help command
+  * detect conflict removing volume/image and warn user
+  * introduce WithRootNodesAndDown to walk the graph from specified
+    nodes and down
+  * introduce ability to select service to be stopped by `compose
+    down`
+  * scale: sort containers by creation date to remove older ones
+    first (#10571)
+  * watch: only monitor configured paths (#10599)
+  * secrets: only set CopyUIDGID when required (#10598)
+  * update docs to reflect dry run mode is feature complete
+  * fix support for project name set by COMPOSE_PROJECT_NAME env
+    var
+  * go.mod: golang.org/x/oauth2 v0.1.0
+  * fix detection of swarm mode
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.0 to
+    1.9.2
+
+-------------------------------------------------------------------
+Wed May 17 17:38:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.1:
+  * only check the platform of cached image if image found
+
+-------------------------------------------------------------------
+Tue May 16 18:18:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.0:
+  * introduce --no-path-resolution to skip relative path to be
+    resolved
+  * report external network not found when swarm is disabled
+  * `parallel` flag belong do top-level "compose" cobra command,
+    not the current one
+  * detect terminal is not a `console.File` to avoid a panic
+  * Update dry-run documentation
+  * move dry-run support from alpha to main command
+  * introduce COMPOSE_ANSI to define --ansi default value
+  * rm: remove debugging output (#10554)
+  * detect active endpoint trying to remove network and skip with a
+    warning (#10555)
+  * cli: option to write status messages on stdout (#10549)
+  * fix local image removal when `compose down` is ran with
+    `--project-name` (#10558)
+  * restore long description to be included in `docker compose
+    help` (#10504)
+  * check local image matches the required platform
+  * fix race condition running `compose up` with --parallel <
+    number of services
+  * fix container being recreated while config has not changed
+    (#10540)
+  * tests: inline dockerfile
+  * build(deps): bump github.com/moby/term from
+    0.0.0-20221205130635-1aeaba878587 to 0.5.0 (#10523)
+  * deps: update related modules
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump go.opentelemetry.io/otel from 1.15.0 to
+    1.15.1
+  * build(deps): bump golang.org/x/sync from 0.1.0 to 0.2.0
+    (#10534)
+  * fix builkit progressui integration (#10535)
+  * add dry-run support to up command
+  * let user declare build secret target (id)
+  * update go to go1.20.4
+  * stop containers after termination
+  * cli: dry run support for `build` (#10502)
+  * progress: make title configurable (#10507)
+  * Revert "build(deps): bump github.com/opencontainers/image-spec"
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump go.opentelemetry.io/otel from 1.14.0 to
+    1.15.0
+  * build(deps): bump github.com/moby/buildkit from 0.11.5 to
+    0.11.6
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump github.com/docker/cli
+  * TailMsgf must format with args
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/moby/buildkit from 0.11.5 to
+    0.11.6 (#10489)
+  * restore support for `--memory`
+  * don't block events loop collecting logs
+  * test: fix E2E tests under Engine v23 / DD 4.19
+  * Fixed issue when project name contains dashes (`-`)
+  * Added tests to `viz` subcommand
+  * Added docs
+  * Replaced calls to WriteRune with WriteByte and reformatted
+    imports
+  * Started working on `viz` subcommand
+
+-------------------------------------------------------------------
+Thu Apr 20 14:26:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.17.3:
+  * bump compose-go to v1.13.4
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump github.com/docker/cli
+  * bump compose-go
+  * Remove redundant goroutine while removing containers (#10449)
+  * log: fix race on container kill (#10459)
+  * Don't use "info.IndexServerAddress" for authentication
+  * go.mod: fix grouping of dependencies, and tidy
+  * build(deps): bump github.com/opencontainers/runc from 1.1.3 to
+    1.1.5
+  * add dry-run support to down command
+  * fix gocyclo lint error which currently block Compose CI
+  * can't watch a service without a build section
+  * ansi=auto|never|always
+  * bump docker version to 23.0.3 (CVE-2023-28840)
+  * better support NO_COLOR by disabling colors, not ANSI TUI
+    (#10434)
+  * ci: bump Go to 1.20.3 and various dependencies
+  * restore `--timeout` flag renamed by mistake
+  * prevent panic using classic builder
+  * add dry-run support to create command
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * workaround race condition in ContainerList
+  * add dry-run support to run command
+
+-------------------------------------------------------------------
+Mon Mar 27 04:50:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.17.2:
+  * ci: bump compose-go to v1.13.2
+
+-------------------------------------------------------------------
+Fri Mar 24 18:27:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.17.1:
+  * test: fix e2e commands on Windows
+  * test: generate valid Compose project names from Cucumber specs
+  * test: update error message
+  * test: fix race in e2e build test
+  * ci: upgrade to Go 1.20.2 & bump deps
+  * build(deps): bump github.com/moby/buildkit from 0.11.4 to
+    0.11.5
+  * watch involves up --build after change has been detected
+  * watch: add note about goroutine-safety & test
+  * watch: data race / segfault fixes
+
+-------------------------------------------------------------------
+Wed Mar 22 13:07:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.17.0:
+  * update -p project name flag documentation
+  * introduce `ignore` attribute for watch triggers
+  * Run classic builder with BuildConfig, not buildx.Options
+  * use `build` as common API for build scenarios
+  * use progress to show copy status
+  * watch: add file delete/rename handling
+  * build(deps): bump github.com/docker/buildx from 0.10.3 to
+    0.10.4
+  * Fix concurrent map read/write when recreating containers
+  * build(deps): bump github.com/moby/buildkit from 0.11.3 to
+    0.11.4
+  * build and push binaries images when a PR is merged or a tag
+    pushed
+  * Add support for `additional_contexts` in `build` service config
+  * introduce dockerfile_inline
+  * one off container name use configured Separator for naming
+  * collect built image IDs
+  * progress writer uses dockercli.Err stream
+  * Remove "-s" from LDFLAGS
+  * use go 1.20 -cover support
+  * pad can be negative on small terminal
+  * add dry-run support for push command
+  * add dry-run support for pull command
+  * adopt http://no-color.org/
+  * add dry-run support to restart command
+  * restart only needed services by checking depends_on relations
+  * update compose-go
+  * Report error if project name is empty after normalization
+  * only consider containers with config_hash labels (i.e, created
+    by compose)
+  * build(deps): bump github.com/containerd/containerd from 1.6.18
+    to 1.6.19
+  * build(deps): bump go.opentelemetry.io/otel from 1.13.0 to
+    1.14.0
+  * test: tweak pause test to try and prevent failures in Windows
+    CI
+  * build(deps): bump github.com/stretchr/testify from 1.8.1 to
+    1.8.2
+  * watch: ignore ephemeral files & minor output tweaks
+  * bump golang/x/net to v0.7.0 (CVE-2022-41723)
+  * add support for `restart` for `depends_on`
+  * build(deps): bump github.com/containerd/containerd from 1.6.17
+    to 1.6.18
+  * apply config options for pseudo-subcommands
+  * build(deps): bump github.com/docker/buildx from 0.10.2 to
+    0.10.3
+  * compact TUI to monitor layers download progress
+  * ci: bump to Go 1.20.1 and latest deps
+  * ignore services without a build section
+  * sort service --hash output by service name
+  * introduce --timeout on `up`
+  * introduce --no-deps on restart
+  * also restart dependent services after a service has been
+    restarted
+  * build(deps): bump go.uber.org/goleak from 1.1.12 to 1.2.1
+  * exclude unstable labels from config hash
+  * store exec details to offer better dry-run status on ExecStart
+  * add support for `excludes` and `rebuild`
+  * use CGO to enable fsevent on OSX
+  * ci: don't use `-race` on Windows
+  * ci: use CGO for tests to enable race detector
+  * support dry-run for rm command
+  * support dry-run for stop command
+  * support dry-run for exec command
+  * Update emacs ignore patterns (#5903)
+  * ignore: add Go umask files to ephemeral set (#5740)
+  * filewatch: use apiserver FileWatch model in EngineState (#4277)
+  * Add .kate-swp files to ignore pattern (#3380)
+  * change org name from windmilleng to tilt-dev (#3346)
+  * tilt: ignore a few more vim swap files (#2190)
+  * ignore: auto-ignore jetbrains .idea file (#2065)
+  * model: move to pkg (#2024)
+  * ignore: improve the ephemeral temp file patterns [ch2663]
+    (#1925)
+
+-------------------------------------------------------------------
+Wed Feb 08 12:44:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.0:
+  * build(deps): bump go.opentelemetry.io/otel from 1.12.0 to 1.13.0
+  * bump docker engine and cli version to 23.0.0 with buildkit(v0.11.2) and buildx (v0.10.2)
+  * prevent assignment to entry in nil map
+  * wait on service containers as dependencies to be deterministic
+  * use containers we expect to start for wait condition
+  * detect replacement container is created and inform printer so it attach and don't stop
+  * bump golang to 1.20
+  * ci: Replace deprecated command with environment file
+  * add log when copying files/directories between host and containers (both way)
+  * support dry-run for cp command
+  * initial support for `sync`
+  * use tilt watcher to track filesystem changes
+  * adjust code and dependencies
+  * cleanup deprecated ioutil functions (#5919)
+  * watch: optimization to help avoid inotify nodes for large file trees (#5769)
+  * tests: make test fixtures responsible for tearing themselves down (#5512)
+  * lint: fix local-prefixes for goimports (#5453)
+  * ci: add exportloopref linter and upgrade to golangci-lint v1.43.0 (#5281)
+  * build: ensure file handles properly closed (#5298)
+  * Fix local go_lintfix errors (#5191)
+  * watch: use WalkDir to speed up file listing (#4684)
+  * test: clean up test loggers a bit (#4580)
+  * test: fix lint errors on Darwin (macOS) (#4247)
+  * test: enable unused check, remove dead code (#4208)
+  * watch: improve error messages when you run out of inotify instances (#3960)
+  * dockerignore: convert ignore patterns to absolute paths [ch9237] (#3743)
+  * watch: fix a dumb errcheck (#3622)
+  * watch: increase the windows watch i/o buffer (#3620)
+  * change org name from windmilleng to tilt-dev (#3346)
+  * watch: use the recursive watcher on windows (#3306)
+  * Revert "watch: fix inotify tests on windows" (#3147)
+  * watch: fix inotify tests on windows (#3140)
+  * circleci: run make shorttest on windows. flag off a large swath of broken tests (#3132)
+  * tilt: enable errcheck on tests (#2877)
+  *  ci: enable staticcheck, fix problems that were surfaced (#2809)
+  * logger: move to pkg (#2031)
+  * watch: add retry counts to fsync (#2023)
+  * dockerignore: improve MatchesEntireDir (#1865)
+  * watch: move more of the directory-skipping logic into the interface (#1864)
+  * watch: add a simple check when there are no exclusions (#1863)
+  * watch: skip setup if nothing is being watched (#1861)
+  * watch: FileEvents must always be absolute (#1841)
+  * watch: add tests for ignores and number of watches (#1838)
+  * watch: change the watcher interface to better match how we actually use it (#1835)
+  * watch: record num watches in expvars (#1795)
+  * makefile: fix goimports -local (#1763)
+  * watch: fix spurious errors while watching (#1726)
+  * watch: don't watch each individual file (#1613)
+  * live_update: error if syncing from outside of docker context (#1396)
+  * watch: tfw you have a test that asserts broken file-watch behavior :cry: (#1354)
+  * watch: add watch function that traverses up directory structure recursively (#1013)
+  * watch: remove inotify-specific bits of watcher_linux (#890)
+  * watch: fix a bug when a file and its ancestor both have direct watches (#863)
+  * testing: update internal/watch to use the tempdir fixture (#862)
+  * cleanup: wrap errors properly (#772)
+  * watch: use `sinceWhen` and `HistoryDone` to avoid spurious events (#557)
+  * watch: fix a spurious error (#344)
+  * watch: try a slightly different ignore strategy (#174)
+  * watch: fix more data races on darwin (#166)
+  * watch: a new strategy for handling spurious events, hoping to fix race conditions (#163)
+  * watch: fix a flaky test by ignoring spurious events correctly (#162)
+  * watch: fix a segfault on linux (#148)
+  * watch: stop skipping tests (#145)
+  * watch: simplify the fileEvent interface to only contain paths (#144)
+  * add errcheck (#93)
+  * tilt: copy watch code from tesseract
+  * Add remote buildx driver
+  * rename `convert` to `config` to align with compose v1 UX
+  * build(deps): bump go.opentelemetry.io/otel from 1.11.2 to 1.12.0
+  * add dry-run support of pause and unpause commands
+  * build(deps): bump github.com/containerd/containerd from 1.6.15 to 1.6.16
+  * support dry-run for kill command
+  * update tty and plain text writers to support dry run mode
+  * refresh Maintainers list
+  * Support for docker compose build --push when using multiple platforms
+  * Update docs to add `--scale` argument to `compose create`
+  * Add `--scale` to `compose create`, refactor scale option
+  * Fix: Handle concurrent threads using mutex on the rainbowColor function
+  * Remove unecessary files
+  * Fix: remove the infinite goroutine
+  * Remove unecessary files
+  * Fix: remove the infinite goroutine
+  * alias -n for --tail to align with docker CLI
+  * cleanup TUI lines after switching to "compact" mode
+  * Update docs to mention `COMPOSE_PARALLEL_LIMITS` and ways to configure parallelism
+  * fix docs to reflect docker compose ps being aligned with docker ps
+  * Revert "Fix Goroutine leak in v2/command/formatter"
+  * Fix Linting Issues
+  * Feat: Clean inifinite Goroutine
+  * Only account running containers for logs
+  * bump compose-go to version v1.9.0
+  * allow a TTY to be allocated with -t
+  * debounce refresh requests with quietperiod
+  * Add tests for filtering containers not created by Compose
+  * Ignore containers created outside compose
+  * directly embed the orignal APIClient in the DryRunClient
+  * identify functions which need to be ovorridden for dry run feature
+  * add alpha command to test dry-run
+  * create custom CLI when dry-run mode active update documentation
+  * add DryRun API Client with delagation pattern
+  * add dry-run flag
+  * use compose service methods when exist instead of directly service.dockerCli
+  * mark alpha command as experimental
+  * Adjust terminal height calc
+  * introduce experimental watch command (skeletton)
+  * Skip child events when printer events > terminal height
+  * fix typo
+  * Update docs programatically like you're supposed to
+  * fix docs yaml
+  * This option lives in the create options, not the run options
+  * Add remove-orphans functionality to run, because it recommends that in error messages
+  * Add :cucumber: GHA workflow
+  * introduce --remove-orphans in compose create command
+  * pass proxy config as build args - same as docker/buildx#959
+  * Remove unused kube tag
+  * build(deps): bump github.com/containerd/containerd from 1.6.14 to 1.6.15
+  * Update expected Cucumber `compose ps` output to match changes
+
+-------------------------------------------------------------------
+Tue Jan 10 05:50:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.1:
+  * Don't share the options map
+  * don't filter by services if no filter was set
+  * use a simpler prompt implementation when we lack a terminal
+  * fix CVE-2022-27664 and CVE-2022-32149 high-risk vulnerability
+  * add support for uts namespace
+
+-------------------------------------------------------------------
+Thu Jan 05 13:59:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.0:
+  * add support for COMPOSE_PARALLEL_LIMIT (parity with Compose v1)
+  * introduce --no-attach to ignore some service output
+  * introduce `--ignore-buildable` to ignore buildable images on pull
+  * limit build concurrency according to --parallel
+  * Ignore not only auto-removed containers but also "removal in progress" for orphan containers
+  * Set `pullChanged` when setting `--pull` on `compose up`
+  * Fix empty file when using compose config in case of smaller source files
+  * Update documentation
+  * build(deps): bump github.com/docker/cli-docs-tool from 0.5.0 to 0.5.1
+  * add support of privileged attribut in service.build section
+  * cleanup framework.go from uncessary debug logs
+  * reduce cyclomatic complexity
+  * fix security opts support (seccomp and unconfined)
+  * check service names based on project, not running containers
+  * debut output for CI
+  * change the way finding the just built compose binary
+  * e2e tests display Compose version used to run the test currently the version displayed is the one installed and not the one use for the tests
+  * rely on CI timeout
+  * add buildx plugin to e2e configuration directory
+  * remove flaky TestLocalComposeLogsFollow
+  * service hash MUST exclude replicas
+  * don't assume os.Stdout and rely on dockerCLI.streams
+  * dump stdout to help diagnose flaky test
+  * don't fail `logs` when driver:none is set
+  * introduce support for cgroup namespace
+
+-------------------------------------------------------------------
+Tue Dec 20 12:21:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.14.2:
+  * build(deps): bump github.com/containerd/containerd from 1.6.12 to 1.6.14
+  * fix race condition on compose logs
+  * update projectOptions to be public by renaming it to ProjectOptions
+  * detect dependency failed to start
+  * set CPU quota
+  * Use `DOCKER_DEFAULT_PLATFORM` to determine platform when creating container
+  * fix regression running pull --ignore-pull-failures
+  * only list running containers when --all=false
+  * volume: fix WCOW volume mounts
+
+-------------------------------------------------------------------
+Fri Dec 16 12:35:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.14.1:
+  * apply uid/gid when creating secret from environment
+  * load project from explicit --files when set
+  * use recently introduced `withSelectedServicesOnly` to reduce code duplication
+  * introduce --timestamp option on compose up
+  * Address review comments
+  * Add --include-deps to push command
+  * align `--format` flag and UX with docker cli
+  * align `compose ps` output with `docker ps`
+  * use StatusError from docker/cli, not "dockerd"
+  * resolve --env-file as absolute path
+  * fix parsing of repository:tag
+  * distinguish stdout and stderr in `up` logs
+  * ContainerStart must run sequentially for engine to assing distinct ports within configured range
+  * Fix corner case when there's no container to attach to
+  * Don't stop pull for images that can be built
+  * Squashed commit of the following:
+  * build(deps): bump github.com/containerd/containerd from 1.6.10 to 1.6.12
+  * remove go.* from e2e tests directory
+  * added table of contents inside readme
+  * fix race condition collecting pulled images IDs
+  * detect required service are gone to stop watching explicit API to stop the log printer
+  * update to go1.19.4
+  * Cleanup tips from output
+  * check only running containers in after down tests of profiles e2e tests
+  * Update `e2e` mod deps
+  * build(deps): bump go.opentelemetry.io/otel from 1.11.1 to 1.11.2
+  * introduce --parallel to limit concurrent engine calls
+  * port: improve error-handling if port not found (#10039)
+
+-------------------------------------------------------------------
+Mon Dec 05 09:14:05 UTC 2022 - kastl@b1-systems.de
+
+- BuildRequires go1.19
+- Update to version 2.14.0:
+  * ci: upgrade to Go 1.19.3 & bump deps
+  * schema: add support for tmpfs.mode in mount definition (#10031)
+  * test: speed up Cucumber stop test (#10032)
+  * Make use of Containers.filter() and isService()
+  * Fix replacing "service:x" with "container:y"
+  * use StringToBool to detect COMPOSE_IGNORE_ORPHANS
+  * use api.Separator to print right image names
+  * use DistributionInspect to resolve image digest
+  * move image digests resolution to backend
+  * Broken Link fixed in compose docs
+  * add file header and cleanup profiles e2e tests
+  * add e2e tests to check profile activation via targeted service
+  * add e2e tests to check no profile usages
+  * add e2e tests using explicitly profiles
+  * pass services list to projectOrName function to add profiles for targeted services
+  * only stop services started by `up` on interruption
+  * docs: fix grammatical issues (#9997)
+  * implement support for oom_score_adj
+  * useDockerDefaultOrServicePlatform fct should return service.platform if defined and present in the build.platforms list (or if the list is empty)
+  * configure buildx for plain output if --ansi=never has been set
+  * change the default branch of the doc repository
+
+-------------------------------------------------------------------
+Thu Nov 24 15:58:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.13.0:
+  * Update `e2e` module deps
+  * ignore error parsing container number label, just warn
+  * Update docs
+  * Add `--build` option to `compose run`
+  * use platform defined by DOCKER_DEFAULT_PLATFORM when pulling and no service platform defined
+  * display creation warnings from the engine
+  * add e2e tests to check build dependency between services
+  * check if a missing image won't be build via a service declared in depends_on section
+  * add --no-consistency flag to convert command
+  * use COMPOSE_PROFILES value only if no command line arg profiles used
+  * build(deps): bump github.com/containerd/containerd from 1.6.9 to 1.6.10
+  * exclude issues with the kind/feature label from stale bot process
+  * ci: upgrade to compose-go v1.7.0
+  * ci: update dependencies to latest
+  * ci: remove uses of deprecated gotest.tools v2 (#9935)
+  * Update `e2e` module dependencies
+  * build(deps): bump github.com/containerd/containerd from 1.6.8 to 1.6.9
+  * add support of deploy.reservation.memory
+  * Update deps for `e2e` module
+  * map deploy.restart_policy.condition to engine values
+  * build(deps): bump github.com/stretchr/testify from 1.8.0 to 1.8.1
+  * go.mod: update docker-credential-helpers v0.7.0
+  * go.mod: remove replace for runc
+  * go mod: tidy and group "require" blocks, update comments
+
+-------------------------------------------------------------------
+Sat Oct 22 13:35:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.12.2:
+  * go.mod: docker 5aac513617f072b15322b147052cbda0d451d389 / v22.06-dev
+
+-------------------------------------------------------------------
+Sat Oct 22 13:32:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.12.1:
+  * update docker engine API to apply fix of CVE-2022-39253
+  * Update `e2e` module deps
+  * build(deps): bump go.opentelemetry.io/otel from 1.11.0 to 1.11.1
+  * Skip flaky test in CI
+
+-------------------------------------------------------------------
+Tue Oct 18 18:19:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.12.0:
+  * log the error object instead of the string message only
+  * replace deprecated functions
+  * bump docker dependencies version
+  * Fix Makefile target `validate-go-mod` to only run correct bakefile target
+  * Update `e2e` module deps
+  * Add Codecov
+  * port: fix container name in error message (#9909)
+  * github: add feature request template
+  * github: switch to issue template form
+  * build(deps): bump go.opentelemetry.io/otel from 1.10.0 to 1.11.0
+  * Update e2e mod dependencies
+  * build(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.0
+  * docs: update with result of `make docs`
+  * Add support to push images quietly via compose cli
+  * Bump e2e module deps
+  * build(deps): bump gotest.tools/v3 from 3.3.0 to 3.4.0
+  * don't fail when trying to remove an orphan container during down command
+  * Update to go 1.19.2 to address CVE-2022-2879, CVE-2022-2880, CVE-2022-41715
+  * ci: update docs repo path
+  * Adjust modules sync validating script
+  * Add `validate-modules` target to CI matrix
+  * Add Makefile, buildx target to ensure root and e2e go.mod are kept in sync
+  * Create new `e2e` module to separate out test dependencies, move cucumber tests
+  * Removed tests that were replaced by Cucumber features
+  * Update go.mod replace
+  * Rename start cucumber feature
+  * Convert `cascade_stop_test.go` into a cucumber feature `stop.feature`
+  * Cucumber test setup/fixtures
+
+-------------------------------------------------------------------
+Wed Sep 28 05:01:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.11.2:
+  * deps: fix race condition during graph traversal (#9878)
+  * ci: limit job permissions from default (#9874)
+  * remove unnecessary code
+  * add more information when service.platform isn't part of  service.build.platforms
+  * ci: upgrade to compose-go v1.6.0
+  * cli: add shell completion function (#9269)
+  * run: clean service command if entrypoint is overridden (#9836)
+  * Remove support for `DOCKER_HOST` in `.env` files (#9871)
+  * keep the platform defined, in priority, via DOCKER_DEFAULT_PLATFORM or the service.plaform one if no build platforms provided
+  * Restore `-s` in `uname` OS detection logic in `Makefile`
+  * Streamline GHA workflow
+  * Upgrade `actions/setup-go` to v3
+  * Skip some tests in CI due to flakiness
+  * Increase E2E test timeouts to reduce flakiness
+  * Temporarily disable broken E2E tests on Windows
+  * Rework Makefile for better Windows support
+  * Add GitHub Action workflow to run tests on Mac/Windows runners
+  * configure default builder export when no build.platforms defined
+  * Remove `/rebase` GitHub Action since it's no longer necessary
+
+-------------------------------------------------------------------
+Wed Sep 21 08:31:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.11.1:
+  * keep the platform defined via DOCKER_DEFAULT_PLATFORM during build if no build platforms provided
+  * Fix linting issues
+  * Don't overwrite existing dependency condition
+  * Add unit tests for `PrepareVolumes`
+  * keep the platform defined at service level during build if no build platforms provided
+
+-------------------------------------------------------------------
+Thu Sep 15 07:50:53 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.11.0:
+  * update compose-go version to v1.5.1
+  * add license to file
+  * small cleanup + godoc
+  * down: refactor image pruning
+  * pull: improve output for services with both image+build (#9829)
+  * build(deps): bump go.opentelemetry.io/otel from 1.9.0 to 1.10.0
+  * build(deps): bump github.com/AlecAivazis/survey/v2 from 2.3.5 to 2.3.6 (#9830)
+  * Update README.md
+  * logs: filter to services from current Compose file (#9811)
+  * convert: do not escape $ into $$ when using the --no-interpolate option (#9703)
+  * Cleanup E2E tests
+  * Add unit tests to graph building logic in `dependencies.go`
+  * Restrict compose project to selected services and dependencies on `compose start`
+  * Apply newly loaded envvars to "DockerCli" and "APIClient"
+  * build(deps): bump go.opentelemetry.io/otel from 1.4.1 to 1.9.0
+  * build: label built images for reliable cleanup on `down`
+  * ci: upgrade golangci-lint
+  * ci: upgrade to Go 1.19.1
+  * Cleanup E2E tests
+  * patch: build.go access custom labels directly cause panic
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.6 to 0.3.7
+  * always use 'docker' export entry when building with 'up' or 'run' commands
+  * don't push images at the end of multi-arch build (and simplify e2e tests) support DOCKER_DEFAULT_PLATFORM when 'compose up --build' add tests to check behaviour when DOCKER_DEFAULT_PLATFORM is defined
+  * add a test with multiple service builds using platforms in the same compose file
+  * fix panic when using 'compose up --build'
+  * add support of platforms in build section
+  * build(deps): bump github.com/docker/go-units from 0.4.0 to 0.5.0
+  * api: fix typo on Push godoc (#9798)
+  * ci: reduce noise from dependabot on Docker deps (#9770)
+  * Add E2E tests for starting/stopping single services
+  * Fix `down` with `--rmi`
+  * Only capture exit codes from `exit` events
+  * Add E2E tests for `up --exit-code-from`
+
+-------------------------------------------------------------------
+Wed Sep 07 06:51:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.2:
+  * Makefile: mutualize local and Dockerfile build opts (#9776)
+  * Revert "Apply newly loaded envvars to `DockerCli` and `APIClient`" (#9792)
+
+-------------------------------------------------------------------
+Wed Sep 07 06:50:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.1:
+  * ci: bring back individual checksum files
+  * build(deps): bump github.com/moby/buildkit from 0.10.3 to 0.10.4 (#9780)
+  * ci: fix checksums checking
+  * Pull image regardless of whether it exists locally if `tag=latest`
+  * Remove error message showing exit code when using --exit-code-from
+  * pull: only skip pull when policy is `missing`/`if_not_present`
+  * Wake up!
+
+-------------------------------------------------------------------
+Fri Aug 19 14:58:42 UTC 2022 - dmueller@suse.com
+
+- Update to version 2.10.0:
+  * Fix breaking test
+  * Update docs for new `compose kill` `--remove-orphans` option
+  * Apply compose model on `compose kill`, add `--remove-orphans`
+  * Code formatting
+  * Give environment variables precedence back to OS over .env
+  * Reset the DockerCli and APIClient after loading the environment file
+  * up/start/run: don't wait for disabled service
+  * create: pull all services logic out of loop; add DependsOn deps
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.14 to 0.0.16 (#9754)
+  * build windows/arm64 and linux/riscv64 binaries
+  * ci: fix checksums file
+  * Use compose to pull image twice
+  * root: filter out commandConn.Close* warning message
+  * Use alpine:3.13.12 to be unique across the test cases
+  * readme: fix badges
+  * Fix package name
+  * Try changing package used to avoid any race condition in tests
+  * Better sandboxed workflow and enhanced cross compilation
+  * build(deps): bump github.com/containerd/containerd from 1.6.7 to 1.6.8
+  * make compose pull tests more expressive
+  * lint: add `nolintlint` and clean up `nolint` directives (#9738)
+  * lint: run gofmt from Go 1.19 (#9728)
+  * don't apply default pull policy from command line if one is define in service configuration
+  * build(deps): bump github.com/containerd/containerd from 1.6.6 to 1.6.7
+  * update Docker CLI version use in CI to v20.10.17
+  * fix version of golangci-lint to v1.47.3, issue with v1.48.0 for now
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.5 to 0.3.6
+  * config: use correct YAML marshal func (#9712)
+  * docs: remove extra whitespaces in help text (#9710)
+  * ci: use latest stable dockerfile syntax & rename docs Dockerfile (#9711)
+  * Change `projectOrName()` to check COMPOSE_PROJECT_NAME env var
+  * Filter `compose ps` output by provided compose model
+  * Add E2E tests for `compose stop` with compose file
+  * if command is ran with a compose file, apply the compose model, not just project name
+  * up: do not stop dependency containers (#9701)
+  * config: case-insensitive env vars on Windows (#9438)
+  * build: upgrade BuildKit & docker/distribution
+  * build: bump to Go 1.18.5
+  * update usage strings for consistency
+  * remove unused workflows, especially the pr-closed which always failed
+  * Fix breaking TestComposePull test case
+  * Avoid pulling same images multiple times ⚡️
+
+-------------------------------------------------------------------
+Mon Aug  8 18:52:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Require docker-compose-switch to not break user expectations,
+  as otherwise 'zypper in docker-compose' will not provide a docker-compose binary
+  (docker-compose only provides a docker plugin, i.e. 'docker compose ...')
+
+-------------------------------------------------------------------
+Tue Aug 02 06:38:24 UTC 2022 - dmueller@suse.com
+
+- Update to version 2.9.0:
+  * switch tests back to '_' separator for networks and volumes
+  * update to compose-go v1.4.0 as previous version introduced breaking changes
+  * Overwrite parent commands PreRun code for `compose version`
+  * Improve descriptions about tests in CONTRIBUTING.md
+  * Fix LinkLocalIPs in V2
+  * Link to BUILDING.md for testing instructions
+
+-------------------------------------------------------------------
+Mon Aug 01 11:13:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.8.0:
+  * Fix go.mod on  replace for compose-go
+  * config: ignore image for config hash generation (#9350)
+  * Bump compose-go -> 1.3.0
+  * use '-' as separator by default for image name
+  * as --no-build is set, set service image to default image name
+  * cmd: consistent handling no-args commands (#9660)
+  * Fixes #9403: Remove Named Pipes from volumeMounts
+  * Fix environment variables priority between environment and .env
+  * Fix .env and --envfile priorities
+  * add pull & build config to project before create add pull flag to create and up documentation
+  * introduce --pull
+  * use Google addlicense instead of kunalkushwaha/ltag
+  * update cli-doc-tool and update the doc with this new version
+  * remove usage of GO111MODULE option in gh actions
+  * use env variable for golang version and updates gh actions from v2 to v3
+  * ci(docs): use push-to-fork when creating pr
+  * remove unused sessionConfig param for addSecretsConfig function
+
+-------------------------------------------------------------------
+Wed Jul 20 07:19:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.7.0:
+  * Bump compose-go -> v1.2.9
+  * build(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0
+  * Fix nolint issues
+  * Add "style" tag to gocritic
+  * Add "opinionated" tag to gocritic
+  * Add "diagnostic" tag to gocritic
+  * Add gocritic to linters
+  * add 2 named networks with close name in the networks test suite to guarantee the good distinction on network names
+  * update go to 1.18.4
+  * keep the container reference when volumes_from target a container and not a service
+  * build.go: Access customLabels directly instead of by reference
+  * check the exact network's name before creating or stopping it NetworkList API doesn't return the extact name match, so we can retrieve more than one network with a request
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.4 to 0.3.5
+  * Fix typo in docker_compose_pull
+  * Fix typo in compose pull documentation
+  * add new targets to build Compose binary before running e2e tests
+  * Fix golangci syntax error in run configuration
+  * add support of environment secret during build step
+  * Use switch/case instead of static map for simplicity
+  * TC: Add missing tests for argumetns
+  * TC: fix naming
+  * TC: Use map to simplify flag conversion and avoid multilple if statements
+  * e2e: add more start/stop test cases
+  * build(deps): bump github.com/stretchr/testify from 1.7.5 to 1.8.0
+  * Update logic to keep `compose stop` and `restart` from affecting one-offs
+  * e2e: split out `pause` tests and add more cases
+  * fix: panic caused by empty string argument
+  * build(deps): bump github.com/hashicorp/go-version from 1.5.0 to 1.6.0
+  * Blacklist ioutil pkg in golangci-lint
+  * Use alpine instead of ubuntu for E2E compose file, no need to include version
+  * Replace deprecated ioutil pkg with os & io
+  * test: add copyright notice
+  * ci: release workflow to open a PR on docs repo with latest changes
+  * build(deps): bump github.com/stretchr/testify from 1.7.4 to 1.7.5
+  * build(deps): bump github.com/cnabio/cnab-to-oci from 0.3.3 to 0.3.4
+  * network: make test mock consistent throughout
+  * build: respect dependency order for classic builder
+  * networks: prevent issues due to duplicate names
+  * build(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0
+  * build(deps): bump github.com/stretchr/testify from 1.7.2 to 1.7.4
+  * Use appropriate dependency condition for one-shot containers when running `compose up --wait`
+
+-------------------------------------------------------------------
+Wed Jun 29 18:26:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package docker-compose (v2)
+  - v2 was rewritten in golang, while v1 was in Python
+  - as they behaviour changes between v1 (python-docker-compose) and v2,
+    this package does not obsolete the v1 package

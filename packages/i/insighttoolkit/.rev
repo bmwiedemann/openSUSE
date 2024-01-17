@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>833b73c88ccc4e0927b15eb92e1069f3</srcmd5>
+    <version>4.13.2</version>
+    <time>1568025177</time>
+    <user>dimstar_suse</user>
+    <comment>Updates</comment>
+    <requestid>713746</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9517b6d5f7b6ee79aed490ae5e812ba9</srcmd5>
+    <version>5.1.0</version>
+    <time>1595577256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821295</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>847cc7d03e836dd326d3c495e26cd953</srcmd5>
+    <version>5.1.0</version>
+    <time>1596203876</time>
+    <user>dimstar_suse</user>
+    <comment>- Add reproducible.patch to make build results independent of build machine CPU (boo#1100677, gh#InsightSoftwareConsortium/ITK#1939).
+</comment>
+    <requestid>823706</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b668294d933f78de50b68318f16971ab</srcmd5>
+    <version>5.1.0</version>
+    <time>1597955517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828150</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b856a2e08fac83b14e4d6725d85a5803</srcmd5>
+    <version>5.1.1</version>
+    <time>1599343398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832379</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1a839af21b7516cf41ae6eb38b9f963d</srcmd5>
+    <version>5.1.1</version>
+    <time>1602155641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840189</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>bf53131147a96d95c4c11b1a192189d0</srcmd5>
+    <version>5.1.1</version>
+    <time>1607430260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853567</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>180eee0ba79a3849062a7a5f166990c0</srcmd5>
+    <version>5.1.2</version>
+    <time>1608542550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854471</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eb188f7a6350e2c5d2f722590c322efc</srcmd5>
+    <version>5.2.0</version>
+    <time>1621355213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893705</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4053ab1e3e35c7225916b45a46521cd0</srcmd5>
+    <version>5.2.1</version>
+    <time>1629360062</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912853</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5947518f20f285e0925eb4d9aed826d7</srcmd5>
+    <version>5.2.1</version>
+    <time>1644007757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951468</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>7ae7b2e5714b292c504a8c463230a473</srcmd5>
+    <version>5.2.1</version>
+    <time>1651180082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973563</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>bae068ac92e851af1b3b0bcb3ebe92e6</srcmd5>
+    <version>5.2.1</version>
+    <time>1662063074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000532</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8b6b6eaef6c07bb4a092fa7349398cf9</srcmd5>
+    <version>5.3.0</version>
+    <time>1670333099</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040621</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>70677f49a530a23189fe579a1c7f3a6e</srcmd5>
+    <version>5.3.0</version>
+    <time>1674737927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061100</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>176be9069045a3e154bb18fda721164f</srcmd5>
+    <version>5.3.0</version>
+    <time>1681213917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078387</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>71cd4d8d14b46db5b2bbb0cb59426c6a</srcmd5>
+    <version>5.3.0</version>
+    <time>1699478242</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123714</requestid>
+  </revision>
+</revisionlist>

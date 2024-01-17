@@ -1,0 +1,123 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a900736740551e10f85a4448ed3794ff</srcmd5>
+    <version>0.0.1</version>
+    <time>1312451364</time>
+    <user>saschpe</user>
+    <comment>new package</comment>
+    <requestid>76899</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>048ab5eb80a681bed5fe16a24acf435b</srcmd5>
+    <version>0.0.1</version>
+    <time>1312451374</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76899
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b6b23f80e9df01e6f72c9e2f6e5e67b</srcmd5>
+    <version>0.1.1.99+git20110814</version>
+    <time>1315561557</time>
+    <user>saschpe</user>
+    <comment>build with latest openbox</comment>
+    <requestid>81368</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4b6b23f80e9df01e6f72c9e2f6e5e67b</srcmd5>
+    <version>0.1.1.99+git20110814</version>
+    <time>1319182163</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>be6469cc567734641deb6e3f2e70c46a</srcmd5>
+    <version>0.1.1.99+git20110814</version>
+    <time>1322134570</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93225 from coolo)</comment>
+    <requestid>93312</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>cdf015764943320b1cc6c7944e207136</srcmd5>
+    <version>0.1.1.99+git20110814</version>
+    <time>1323192444</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eb8463995351bf2091c7a08e92d09046</srcmd5>
+    <version>0.2.0</version>
+    <time>1338991701</time>
+    <user>coolo</user>
+    <comment>new upstream version</comment>
+    <requestid>123777</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>eb8463995351bf2091c7a08e92d09046</srcmd5>
+    <version>0.2.0</version>
+    <time>1340183679</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>eb8463995351bf2091c7a08e92d09046</srcmd5>
+    <version>0.2.0</version>
+    <time>1359109415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>7ad620c432af36f91de68ceb31516abc</srcmd5>
+    <version>0.2.0</version>
+    <time>1379318770</time>
+    <user>coolo</user>
+    <comment>fix for factory (forwarded request 198959 from MargueriteSu)</comment>
+    <requestid>199130</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>7ad620c432af36f91de68ceb31516abc</srcmd5>
+    <version>0.2.0</version>
+    <time>1379663214</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7ff3e73a0a1dcf80828e0543bb9a3a52</srcmd5>
+    <version>0.2.1</version>
+    <time>1390395204</time>
+    <user>coolo</user>
+    <comment>Version update, mostly a maintenance release. (forwarded request 214636 from jcsl)</comment>
+    <requestid>214637</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>7ff3e73a0a1dcf80828e0543bb9a3a52</srcmd5>
+    <version>0.2.1</version>
+    <time>1409301832</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b94acc16bf3481e7f4621cc90e6637da</srcmd5>
+    <version>0.2.2</version>
+    <time>1410967634</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249903</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4b56f96242952dcacf0b45a3309ca881</srcmd5>
+    <version>0.2.2</version>
+    <time>1411721541</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>252239</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d1db458ec72e75122d3f7ef560befa06</srcmd5>
+    <version>0.2.3</version>
+    <time>1484232917</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448639</requestid>
+  </revision>
+</revisionlist>

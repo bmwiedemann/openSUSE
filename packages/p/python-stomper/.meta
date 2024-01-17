@@ -1,0 +1,11 @@
+<package name="python-stomper" project="openSUSE:Factory">
+  <title></title>
+  <description>This is a python client implementation of the STOMP protocol.
+ 
+The client is attempting to be transport layer neutral. This module provides
+functions to create and parse STOMP messages in a programatic fashion. The
+messages can be easily generated and parsed, however its up to the user to do
+the sending and receiving.</description>
+  <devel project="devel:languages:python" package="python-stomper"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

@@ -1,0 +1,289 @@
+<gconfschemafile>
+    <schemalist>
+      <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_history</key>
+        <applyto>/apps/firefox/lockdown/disable_history</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable the browser history</short>
+        <long>Prevent the browser from keeping a history of visited sites</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_toolbar_editing</key>
+        <applyto>/apps/firefox/lockdown/disable_toolbar_editing</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable toolbar editing</short>
+        <long>Prevent the user from editing the toolbar</long>
+        </locale>
+      </schema>
+       <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_themes</key>
+        <applyto>/apps/firefox/lockdown/disable_themes</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable installing themes</short>
+        <long>To prevent the user from installing themes</long>
+        </locale>
+      </schema>
+      <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_extensions</key>
+        <applyto>/apps/firefox/lockdown/disable_extensions</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable installing extensions</short>
+        <long>Prevent the user from installing extensions</long>
+        </locale>
+       </schema>
+     <schema>
+        <key>/schemas/apps/firefox/web/disable_popups</key>
+        <applyto>/apps/firefox/web/disable_popups</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Enable popup blocker</short>
+        <long>Enable popup blocker without warning about blocked popups</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/web/java_enabled</key>
+        <applyto>/apps/firefox/web/java_enabled</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>true</default>
+        <locale name="C">
+        <short>Enable java</short>
+        <long>Enable java</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/web/javascript_enabled</key>
+        <applyto>/apps/firefox/web/javascript_enabled</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>true</default>
+        <locale name="C">
+        <short>Enable javascript</short>
+        <long>Enable javascript</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_url_bar</key>
+        <applyto>/apps/firefox/lockdown/disable_url_bar</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable location bar</short>
+        <long>Prevent the user from entering URLs in the location bar</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_searchbar</key>
+        <applyto>/apps/firefox/lockdown/disable_searchbar</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable search bar</short>
+        <long>Prevent the user from using the search bar</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/web/disable_cookies</key>
+        <applyto>/apps/firefox/web/disable_cookies</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable cookies</short>
+        <long>Prevent the browser from storing cookies</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/web/disable_save_password</key>
+        <applyto>/apps/firefox/web/disable_save_password</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable saved passwords</short>
+        <long>Prevent the browser from storing saved passwords</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/web/cache_size</key>
+        <applyto>/apps/firefox/web/cache_size</applyto>
+        <owner>firefox</owner>
+        <type>int</type>
+        <default>50000</default>
+        <locale name="C">
+        <short>Disk cache size in KB</short>
+        <long>Disk cache size in KB</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/general/homepage_url</key>
+        <applyto>/apps/firefox/general/homepage_url</applyto>
+        <owner>firefox</owner>
+        <type>string</type>
+        <default>www.opensuse.org</default>
+        <locale name="C">
+        <short>Home Page URL</short>
+        <long>Home Page URL</long>
+        </locale>
+      </schema>
+      <schema>
+        <key>/schemas/apps/firefox/web/download_defaultfolder</key>
+        <applyto>/apps/firefox/web/download_defaultfolder</applyto>
+        <owner>firefox</owner>
+        <type>string</type>
+        <default>Desktop</default>
+        <locale name="C">
+        <short>Default download location</short>
+        <long>Default download location.  Possible values include: "Desktop", "My Downloads", and "Home"</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_unsafe_protocol</key>
+        <applyto>/apps/firefox/lockdown/disable_unsafe_protocol</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable unsafe protocols</short>
+        <long>Disable non-builtin protocols not explicitly enabled</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_bookmark_editing</key>
+        <applyto>/apps/firefox/lockdown/disable_bookmark_editing</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable editing bookmarks</short>
+        <long>Prevent the user from editing browser bookmarks</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/hide_bookmark</key>
+        <applyto>/apps/firefox/lockdown/hide_bookmark</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable bookmarks feature</short>
+        <long>Prevent the user from editing or viewing bookmarks</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_show_passwords</key>
+        <applyto>/apps/firefox/lockdown/disable_show_passwords</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Disable display of stored web passwords</short>
+        <long>Disable plain text display of stored web passwords in Preferences dialog</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/disable_javascript_chrome</key>
+        <applyto>/apps/firefox/lockdown/disable_javascript_chrome</applyto>
+        <owner>firefox</owner>
+        <type>bool</type>
+        <default>false</default>
+        <locale name="C">
+        <short>Prevent javascript windows from hiding chrome</short>
+        <long>Prevent windows opened by javascript from hiding window chrome (location bar, status bar, etc.)</long>
+        </locale>
+      </schema>
+	<schema>
+        <key>/schemas/apps/firefox/web/cookie_accept</key>
+        <applyto>/apps/firefox/web/cookie_accept</applyto>
+        <owner>firefox</owner>
+        <type>int</type>
+        <default>0</default>
+        <locale name="C">
+        <short>Cookie Lifetime Policy</short>
+        <long>Cookie Lifetime Policy: 0 = Accept cookies normally; 1 = Prompt for each cookie; 2 = Accept for current session only; 3 = Accept for N days</long>
+        </locale>
+      </schema>
+        <schema>
+        <key>/schemas/apps/firefox/web/images_load</key>
+        <applyto>/apps/firefox/web/images_load</applyto>
+        <owner>firefox</owner>
+        <type>int</type>
+        <default>0</default>
+        <locale name="C">
+        <short>Image loading policy</short>
+        <long>Image loading policy: 0 = load all images; 1 = exclude third-party image loading; 2 = exclude all image loading</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/lockdown/additional_safe_protocols</key>
+        <applyto>/apps/firefox/lockdown/additional_safe_protocols</applyto>
+        <owner>firefox</owner>
+        <type>string</type>
+        <default></default>
+        <locale name="C">
+        <short>Additional Safe Protocols</short>
+        <long>Additional Safe Protocols</long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/general/trusted_URIs</key>
+        <applyto>/apps/firefox/general/trusted_URIs</applyto>
+        <owner>firefox</owner>
+        <type>list</type>
+        <list_type>string</list_type>
+        <default>[]</default>
+        <locale name="C">
+        <short>List of URIs for which Kerberos/NTLM is enabled</short>
+        <long>A comma-separated list of URI keys, of the form
+         [scheme "://"] [host [":" port]], for which login should be allowed
+         via SPNEGO Kerberos or NTLM authentication.
+        </long>
+        </locale>
+      </schema>
+     <schema>
+        <key>/schemas/apps/firefox/general/delegated_URIs</key>
+        <applyto>/apps/firefox/general/delegated_URIs</applyto>
+        <owner>firefox</owner>
+        <type>list</type>
+        <list_type>string</list_type>
+        <default>[]</default>
+        <locale name="C">
+        <short>List of URIs for which Kerberos/NTLM delegation is enabled</short>
+        <long>A comma-separated list of URI keys, of the form
+         [scheme "://"] [host [":" port]], for which delegation should be allowed
+         using SPNEGO Kerberos or NTLM authentication.
+        </long>
+        </locale>
+      </schema>
+      <schema>
+        <key>/schemas/apps/firefox/general/allowed_indirect_gnomevfs_loads</key>
+        <applyto>/apps/firefox/general/allowed_indirect_gnomevfs_loads</applyto>
+        <owner>firefox</owner>
+        <type>string</type>
+        <default>""</default>
+        <locale name="C">
+          <short>A list of protocols, handled by gnome-vfs, that are permitted</short>
+          <long>A comma-separated list of protocols, handled by
+          gnome-vfs and of the form [scheme "://"], whose loads are
+          allowed.</long>
+        </locale>
+      </schema>
+    </schemalist>
+</gconfschemafile>

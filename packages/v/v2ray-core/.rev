@@ -1,0 +1,358 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4972c350283b74e64ee4f4d39ce115e</srcmd5>
+    <version>4.23.4</version>
+    <time>1592245663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812573</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>12321cea305fecd62dd986fe3efeec5f</srcmd5>
+    <version>4.25.0</version>
+    <time>1592840753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version  to 4.25.0
+  * VMess's new header format experiment begins. You can now enable VMessAEAD to
+    be better protected. Documents EN CH are updated. See extra-VMessAEADdoc.zip
+    for a more detailed explanation available in both Chinese and English.
+  * mKCP can now be encrypted to resist recognition, address issue mentioned in
+    #2530 #2253 #2131. Documents EN CH are updated.
+  * Updated Golang tool-chain. Thanks @rprx
+  * LocalAddr() in UDP workers will now return correct local addr. Thanks
+    @zhuobixin
+  * Further remove the identity leakage with TLS ClientHello from #2521 thank
+    @darhwa
+  * Fix UDP stability issue in Socks5 inbound, Shadowsocks inbound, and
+    Dokodemo( TProxy ) inbound. This should alleviate unnecessary CPU, memory
+    usage, and premature disconnection issue typically triggered by playing
+    games, video conference, and Torrenting. See #2565 thank @JimHan75d8c5
+    @xiaokangwang and Other testers @1265578519 @zhj9709 @Kylejustknows etc
+  * Added ARM v5 binary in the release. This should allow legacy ARM devices to
+    run V2Ray correctly. See #2536 (forwarded request 816221 from hillwood)</comment>
+    <requestid>816222</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f63ac0683ac86ea7765f4f58d693dea3</srcmd5>
+    <version>4.25.0</version>
+    <time>1593200941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update summary with something useful. Trim filler wording
+  from description. (forwarded request 817108 from jengelh)</comment>
+    <requestid>817137</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8fa17074f3fa1f97934f27ab018f958</srcmd5>
+    <version>4.26.0</version>
+    <time>1594706280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.26.0
+  * Update Signing key
+  * Update geoip, geosite
+  * Fix bug with tag name extract
+  * Generate Manifest for bleeding edge release
+  * Adjust arm build
+  * Allow the use of Browser Bridge (forwarded request 820329 from hillwood)</comment>
+    <requestid>820330</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>73be1f59cb35e94cd8d0a2fd820d55b0</srcmd5>
+    <version>4.26.0</version>
+    <time>1596457128</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix out-of-box usability (forwarded request 823969 from Sam0523)</comment>
+    <requestid>824026</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ad1da5584dbb1f3f02dcef67c19c3b2</srcmd5>
+    <version>4.27.4</version>
+    <time>1598726710</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.27.4
+  * get source tarball from latest release page.
+  * update vendor use latest project git directory.
+  * update changes from version 4.26.0
+- update upstream source url
+- update systemd units follow upstream
+- change asset data directory follow upstream and downstream (forwarded request 830473 from zzndb)</comment>
+    <requestid>830477</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf21081d6653c97a39590bc5facdff09</srcmd5>
+    <version>4.27.5</version>
+    <time>1599088742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.27.5
+  * Features
+    - Parse X-Forwarded-For in http transport @lucifer9
+  * Fix
+    - Fix according to staticcheck result @Loyalsoldier
+    - Fix: Bound check when accessing DNS server's ipIndexMap @Vigilans
+    - Refine code @Loyalsoldier
+  * Warning
+    - In version v4.28.0 and later, VMess AEAD will be enabled when alterId is
+    set to 0 (forwarded request 831436 from zzndb)</comment>
+    <requestid>831478</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6d8b454118b30b192fd818ab2903338</srcmd5>
+    <version>4.28.1</version>
+    <time>1600079705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.28.1
+  * Fix incorrect IV usage which slightly reduced security
+- Update version to 4.28.0
+  * Changes
+    - VMess AEAD will be used when alterId is 0. (&quot;testsEnabled&quot; is discarded)
+  * Fixes
+    - Fix dns tests by setting v2ray.location.asset @felixonmars
+    - fix abstract UDS &amp;amp; add PROXY protocol support to DS inbound @lucifer9 @rprx
+    - Systemd: prevent restart on corrupt config @DuckSoft
+  * Chores
+    - Upgrade all dependencies @rprx
+    - Change lint order to avoid file changes notice @Loyalsoldier
+    - Update geoip, geosite (forwarded request 833934 from zzndb)</comment>
+    <requestid>834221</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d850946112210e61a3dfbb0b139d9971</srcmd5>
+    <version>4.29.0</version>
+    <time>1601399078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838411</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d5bf3d45b0c95fbad1d1568d84efe40b</srcmd5>
+    <version>4.32.0</version>
+    <time>1604510790</time>
+    <user>dimstar_suse</user>
+    <comment>- update version to 4.32.0
+  * loads JSON internally by default @forever8938
+  * Refine UNIX domain socket @lucifer9
+  * Fix mKCP sending window @p4gefau1t
+  * Fix JSON parsing dependency introduced by mutijson config @xiaokangwang
+  * Fix proto.go ProtoFilesUsingProtocGenGoFast on Windows @JimhHan
+- other changes before this version
+  * Add full VLESS fallbacks support to Trojan
+  * Add Trojan over XTLS support @maskedeken
+  * Add XTLS Direct Mode
+  * Add XTLS support to mKCP
+  * Add padding to abstract UNIX domain socket in fallbacks
+  * Add XTLS support to DomainSocket @rprx (forwarded request 845261 from zzndb)</comment>
+    <requestid>845725</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f7021b397f961567b2fa8a472b0298c5</srcmd5>
+    <version>4.33.0</version>
+    <time>1606428863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850900</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f36094223ffb186fc86af98d42a80aff</srcmd5>
+    <version>4.35.1</version>
+    <time>1615489808</time>
+    <user>dimstar_suse</user>
+    <comment>- update version to 4.35.1
+  * Add support for FakeDNS (#395 #406 #696) @yuhan6665
+  * Add streamSetting / transport support for outbound front proxy
+  * Add zero pseudo encryption for better performance VMess
+  * Add support to disable compatibility for legacy VMess MD5 (#596) @dyhkwong
+  * Add a faster and more memory-efficient routing rule matcher
+    HybridDomainMatcher (#587 #639) @darsvador
+  * Add support to disable DNS cache (#699 #705) @CalmLong
+  * Fix test HTTP/2 dial timeout (#570) @kslr
+  * Fix Trojan panic when UDP dispatcher fails to write response (#599) @maskedeken
+  * Fix TCP default ALPN (#716) @AkinoKaede
+  * Fix DNS rule index out of range (#727) @Loyalsoldier
+  Check https://github.com/v2fly/v2ray-core/releases/tag/v4.35.1 for more info
+- update import path to github.com/v2fly/v2ray-core/v4 (forwarded request 877960 from zzndb001)</comment>
+    <requestid>878159</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8f2165dc30fa02d6455c5e610f40b17b</srcmd5>
+    <version>4.37.3</version>
+    <time>1618498674</time>
+    <user>dimstar_suse</user>
+    <comment>- update version to 4.37.3
+  * Add multiple address host support for DNS (#884 #886 #888)
+  * Fix geoiop &amp; geosite load issue (#889)
+- update in 4.37.2
+  * Add browser forwarder support for Websocket (#818)
+  * Add Websocket 0-RTT early data support (#818)
+  * Add replay protection for Shadowsocks proxy (#777)
+  * Add queryStrategy option for DNS (#794)
+  * Add disableFallback &amp; skipFallback option for DNS client (#864)
+  * Add inversed GeoIP matching (#860)
+  * Add grpcSettings &amp; gunSettings to streamSettings (00879c4) @rprx
+  * Fix vprotogen loop dependency (#797) @Loyalsoldier @U-v-U
+  * Fix DNS tests timeout due to network instability (#805) @Loyalsoldier
+  * Remove AA header flag in DNS query (#817) @Loyalsoldier
+  * TProxy: cannot find IPv6 destination in redirect mode (#815) @mzz2017
+  * Context: ctx initialization for core.functions (#841) @rurirei
+  * Set FakeDNS FakeEnable option dynamically (#879) @sixg0000d @Loyalsoldier
+  * Fix Websocket early data 404 bug (#859) @k79e
+  * Fix QUIC: disconnect due to timeout (#850) @bhoppi
+  * Log: remove package path prefix in logs (#840 0138017 78c1993) @kslr
+- update in 4.36.2
+  * Fix gRPC max delay unintentionally low (1eaec68) @xiaokangwang
+  * Fix core panics when zero domain/full type of rule (#786) @darsvador
+- update in 4.36.1
+  * Add gRPC/gun transport (#757 #783)
+  * Add loopback proxy (#770)
+  * Add a new efficient routing rule matcher MphDomainMatcher (#743)
+  * FakeDNS: use 198.18.0.0/15 as default FakeDNS IP pool (#779)
+- update build needed golang version to 1.16
+- keep go.sum go.mod to fix build issue with 'matched no packages'
+- add geo files manually since upstream removed them from source (forwarded request 885541 from zzndb001)</comment>
+    <requestid>885561</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bd87c48660ee521d8633039db4b14c02</srcmd5>
+    <version>4.39.2</version>
+    <time>1622759612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.39.2
+  * Websocket: support header based Websocket early data &amp; its partial browser
+  forwarder support
+  * GeoData: add a memory efficient geodata decoder called memconservative for
+  memory-limited devices #934 #953 #964 #965 #967 #977 Thanks @Loyalsoldier @rurirei
+  * HTTP/2 Transport: support to set method and headers for outgoing connections
+  * TCP Socket Option: support to set keepalive interval on Linux operating system
+  #962 Thanks @therealak12
+  * Fix BrowserForwarder panics with empty config (#954) Thanks @AkinoKaede
+  @Loyalsoldier
+  * Fix FakeDNS prints error with empty config (#955) Thanks @Loyalsoldier
+  * Fix Dual stack FakeDNS Close method (#956) Thanks @Loyalsoldier
+  * Fix Observatory starts with empty config &amp; fails to close (#957) Thanks
+  @Loyalsoldier
+  * Fix Null check on alternative system dialer (#959) Thanks @rurirei
+  * Fixed the chain proxy support for gRPC and HTTP/2 transport
+  * Fixed leastping logic (#1019) Thanks @fanyiguang
+  * Fixed v2ctl unable to create geodata loaders (#1014) Thanks @ght99
+- Update in 4.38.3
+  - FakeDNS: Added fakedns+others sniffer , based on #697 . Thanks @yuhan6665
+  - TLS: A SECURITY improvement that allow the remote peer's TLS certificate
+  to be pinned to a known value. Document for TLS is updated
+  - Observatory: A component that measure the connectivity of selected outbounds
+  The document for Observatory is updated.
+  - Routing : leastPing balancing strategy is added. This strategy will select
+  a outbound that is alive and completed HTTPS GET request in the least time.
+  The document for Routing is updated.
+  - Fixed crashing in fake dns. #931 Thanks @IceCodeNew
+  - Added IPv6 pool in fake dns by default. #925 Thanks @Loyalsoldier
+  - Return ErrEmptyResponse for fakedns. #926 Thanks @sixg0000d
+  - Fixed UDP DNS connection cause crash. Thanks @nekohasekai
+  - Fixed two typo in comments. Thanks @U-v-U
+  * Multi-json support for observatory, browser forwarder.
+  #944 Thanks @ha-ku @AkinoKaede
+- Add browserforwarder related v2ray-extra.zip (forwarded request 896867 from zzndb001)</comment>
+    <requestid>897040</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8c0a2af3ebecad7e0b494b5250699ec0</srcmd5>
+    <version>4.42.2</version>
+    <time>1632341575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920804</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c7d523e5299ce0ddb21601254bcac51e</srcmd5>
+    <version>4.43.0</version>
+    <time>1636663084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.43.0
+  * Send Shadowsocks handshake with payload data if available
+  * Custom TCP Fast Open queue length support
+  * Fix Trojan fallback cannot get ALPN
+  * Fix QueryStrategy ignored
+  * Fix UDP connection transport connection terminated unnecessarily
+  * refactor: move from io/ioutil to io and os package
+  * Fix some tests to use udp.PickPort() 
+  * Fix flaky TestVMessDynamicPort (forwarded request 930773 from hillwood)</comment>
+    <requestid>930774</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ce01f0efa96301270cdcf4f810b6ef4e</srcmd5>
+    <version>4.43.0</version>
+    <time>1638388054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 935001 from jsegitz)</comment>
+    <requestid>935008</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>15d3a1ca3a9842587481105ecdc478dc</srcmd5>
+    <version>4.44.0</version>
+    <time>1640617647</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942765</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1afdd8ec55c9fe25602c96e5b06f4c9c</srcmd5>
+    <version>5.2.0</version>
+    <time>1672562349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045962</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4fb7beac163dbf830cdf1bcae4ed20a0</srcmd5>
+    <version>5.2.0</version>
+    <time>1672935104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056203</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>664b3a82251efcdef015239da103f05a</srcmd5>
+    <version>5.7.0</version>
+    <time>1686576444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.7.0
+  * meek: a new transport protocol meek is added.
+  * HTTP Proxy Add h1SkipWaitForReply Option to HTTP Proxy Protocol
+  * set v2ray binary as an entrypoint in container images
+  * Add Integrated Container Image Building
+  * Skip validating on empty http host config
+  * Add PacketAddr support to Trojan
+  * DomainStrategy support for all outbounds
+  * Add an option to replace destination address in access log with sniffed domain
+  * uTLS uTLS ALPN Control
+  * uTLS New Security Type uTLS: TLS Client Hello imitation
+  * DNS Support per-client configuration
+  * DNS Support specifying domain matcher
+  * Add bind to device to Windows and Darwin
+  * Replace default Health Ping URL to HTTPS for burst observatory
+  * Implement Match and MatchAny for all MatcherGroup
+  * Fix bugs (forwarded request 1092471 from hillwood)</comment>
+    <requestid>1092473</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>23a46b8123a74f0b4e2793456b5a36eb</srcmd5>
+    <version>5.7.0</version>
+    <time>1687722128</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop vendor in filelist (forwarded request 1095190 from hillwood)</comment>
+    <requestid>1095191</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e3b35aade2ca1152e3b0c630d7a32eaf</srcmd5>
+    <version>5.8.0</version>
+    <time>1698170980</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1119975 from hillwood)</comment>
+    <requestid>1119977</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5e2290b495b5baf811fa88486ce91d02</srcmd5>
+    <version>5.12.1</version>
+    <time>1701632970</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130554</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,555 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ee4a9012b98f97d225d11d7e7b06bc9</srcmd5>
+    <version>20161026</version>
+    <time>1486635199</time>
+    <user>dimstar_suse</user>
+    <comment>libosinfo has been split into three packages, libosinfo, osinfo-db, and osinfo-db-tools</comment>
+    <requestid>452309</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>594ddcb30534da7fd8e427c3672c71a0</srcmd5>
+    <version>20161026</version>
+    <time>1487384152</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>458017</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5eb1523eb836612a7c0c226561ebb64f</srcmd5>
+    <version>20161026</version>
+    <time>1489415479</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>478555</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>719bf352ee449b598c9f313dddbc8d6c</srcmd5>
+    <version>20170326</version>
+    <time>1492009927</time>
+    <user>maxlin_factory</user>
+    <comment>- casp is actually written CaasP.
+  Rename patch add-casp-support.patch into add-caasp-support.patch (forwarded request 487108 from cbosdonnat)</comment>
+    <requestid>487110</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>76cbe338f0eb8d788da72604ec88441c</srcmd5>
+    <version>20170423</version>
+    <time>1498485100</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>505957</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f679f97d0de2b37928fdf96a29975741</srcmd5>
+    <version>20170813</version>
+    <time>1503592068</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest available database version. Add support for openSUSE Leap 15 and SLE15</comment>
+    <requestid>517279</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2600e24ee3630332d1445c4394b3c625</srcmd5>
+    <version>20170813</version>
+    <time>1506108721</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1057733 caasp defaults and bsc#1056028 OES support</comment>
+    <requestid>527361</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4eabfce528fac51e916a7189bc4d8dbb</srcmd5>
+    <version>20170813</version>
+    <time>1514840756</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>560044</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>161debe45872534b63e30e9e8678ddd0</srcmd5>
+    <version>20180311</version>
+    <time>1521498797</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1085757 - Leap 15 patch for osinfo-db has wrong information in it</comment>
+    <requestid>588695</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0c66ddf5b9d4653d56a2c21e2375f29d</srcmd5>
+    <version>20180311</version>
+    <time>1522404046</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1086715</comment>
+    <requestid>591757</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>9ae756494d717834c0beea5174708c7c</srcmd5>
+    <version>20180311</version>
+    <time>1523126934</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#974580</comment>
+    <requestid>593843</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7036e5ad65574ffed86e86847518c5d</srcmd5>
+    <version>20180416</version>
+    <time>1524400568</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20180416</comment>
+    <requestid>598784</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3ad7f2a9afd61d403161799b5e0c14a1</srcmd5>
+    <version>20180502</version>
+    <time>1525611565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603231</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f391447d5d30538657bad0fb15499a3d</srcmd5>
+    <version>20180514</version>
+    <time>1526737279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607511</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>058ef0125d7cae27e6935a9dd961a9bd</srcmd5>
+    <version>20180531</version>
+    <time>1528195767</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20180531</comment>
+    <requestid>613359</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>930bb26b88cc27376fbdce4e36b931f0</srcmd5>
+    <version>20180612</version>
+    <time>1529666196</time>
+    <user>maxlin_factory</user>
+    <comment>Update to database version 20180612. Fix for bsc#1098054</comment>
+    <requestid>618149</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>91f88d8b40b74065527d39e52bb3da30</srcmd5>
+    <version>20180720</version>
+    <time>1532361475</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20180720. Add support for SLE12-SP4</comment>
+    <requestid>624332</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0256051a5faacbf67c77a931f0713249</srcmd5>
+    <version>20180903</version>
+    <time>1536575378</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>632982</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fdfabbffa3b9bb591a5dc1ddb3061b49</srcmd5>
+    <version>20180920</version>
+    <time>1540198952</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20180920. Add support for SLE15-SP1</comment>
+    <requestid>641124</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5eb24453deef7236c4254fcbfc23c01c</srcmd5>
+    <version>20181011</version>
+    <time>1541509496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644233</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>275b80301193fd636b33dca37e890cc7</srcmd5>
+    <version>20181116</version>
+    <time>1543999109</time>
+    <user>dimstar_suse</user>
+    <comment>Update database to version 20181116</comment>
+    <requestid>653122</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>afe6ee852db89e5ca35e5ddb15c19eac</srcmd5>
+    <version>20181116</version>
+    <time>1545376813</time>
+    <user>dimstar_suse</user>
+    <comment>Just adds the correct release date for SLE12-SP4</comment>
+    <requestid>659631</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>82cb5b92f0180e58db8a2450fdfe58d6</srcmd5>
+    <version>20181116</version>
+    <time>1547211785</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for SLE15-SP1 and openSUSE Leap 15.1</comment>
+    <requestid>664466</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e9b6ce4ecf1dbe0c75ff4d0ad74605ef</srcmd5>
+    <version>20190120</version>
+    <time>1549464352</time>
+    <user>coolo</user>
+    <comment>Update the osinfo-db database to version 20190120</comment>
+    <requestid>671219</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e850e4e8d434be3d0b0206515d3faade</srcmd5>
+    <version>20190301</version>
+    <time>1551687176</time>
+    <user>dimstar_suse</user>
+    <comment>Update the osinfo-db database to version 20190301</comment>
+    <requestid>680651</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>42a788a63c1b70ea704fc42ff94302e8</srcmd5>
+    <version>20190301</version>
+    <time>1554458175</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for Caasp40 media</comment>
+    <requestid>691299</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d2ed0d52af6e02b7997beb7bfc61b82b</srcmd5>
+    <version>20190319</version>
+    <time>1555321799</time>
+    <user>dimstar_suse</user>
+    <comment>Update to the latest database version 20190319</comment>
+    <requestid>692972</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>dccc5af7e0360acd50775c7f47a63614</srcmd5>
+    <version>20190504</version>
+    <time>1557653546</time>
+    <user>dimstar_suse</user>
+    <comment>Update to the latest database version 20190504</comment>
+    <requestid>702053</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a4273487f555df6912abb55aa89f098f</srcmd5>
+    <version>20190504</version>
+    <time>1560760370</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>709773</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9aae5914905eca157b0dcebfdc9b774c</srcmd5>
+    <version>20190611</version>
+    <time>1564575133</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>718323</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ca61eaf6aae3aea23dc7fc433e2c2925</srcmd5>
+    <version>20190726</version>
+    <time>1565864589</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>720735</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2dfd8371721d02e9d597bc63d52506f6</srcmd5>
+    <version>20190905</version>
+    <time>1569079666</time>
+    <user>maxlin_factory</user>
+    <comment>Update to the latest database version 20190905</comment>
+    <requestid>731772</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ca2da7aa420d85b0d4d0ddfd073d3856</srcmd5>
+    <version>20190920</version>
+    <time>1570806881</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>736342</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>288d8be44999c5e0c9447b9559af7e18</srcmd5>
+    <version>20191108</version>
+    <time>1574103763</time>
+    <user>dimstar_suse</user>
+    <comment>Update to the latest database version 20191108</comment>
+    <requestid>748498</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ed725d93c72e365525cf620113768825</srcmd5>
+    <version>20191125</version>
+    <time>1577136918</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755660</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>6bd1bc8d32b793e9754b6363f0cf04c6</srcmd5>
+    <version>20191125</version>
+    <time>1578322921</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1159445 win2k9 detection</comment>
+    <requestid>760479</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d3fcc30a1a9e64b6e800c8c6ee730a09</srcmd5>
+    <version>20200214</version>
+    <time>1583526387</time>
+    <user>dimstar_suse</user>
+    <comment>Add UEFI support for openSUSE and SLE (bsc#1165855)</comment>
+    <requestid>781944</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>9a3b769dc1aac325ebaad997df3f61be</srcmd5>
+    <version>20200214</version>
+    <time>1591285857</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1172008 - Add support for openSUSE Leap 15.2 to the database</comment>
+    <requestid>808302</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>29a332d7c3d5d8b20ffa7a2769d339d9</srcmd5>
+    <version>20200529</version>
+    <time>1591879501</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812733</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>3e9d2b373d1cf12a5d8481ab3da17a56</srcmd5>
+    <version>20200529</version>
+    <time>1594623819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819040</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>93fffdb1d4676021fce9ffcc312a19b4</srcmd5>
+    <version>20200804</version>
+    <time>1597855356</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>826705</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>74405b7dd984db7ef5d1f9a0f4c6921e</srcmd5>
+    <version>20200804</version>
+    <time>1598167154</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for openSUSE Leap 15.3 and SLE15-SP3</comment>
+    <requestid>827957</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>42c5335e52edec5c10cc2bdd4eeeb0f4</srcmd5>
+    <version>20200813</version>
+    <time>1600077881</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833547</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8aacc225fdbab2606d17f59a0568a976</srcmd5>
+    <version>20201015</version>
+    <time>1604306207</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20201015</comment>
+    <requestid>844379</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>315b22af36cf15b1a30d953c43abbc3b</srcmd5>
+    <version>20201218</version>
+    <time>1611068327</time>
+    <user>dimstar_suse</user>
+    <comment>Update database to version 20201218</comment>
+    <requestid>863176</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ce463af53c60b2022b8f926060c0aa6f</srcmd5>
+    <version>20210215</version>
+    <time>1615362375</time>
+    <user>dimstar_suse</user>
+    <comment>Update database to version 20210215</comment>
+    <requestid>876290</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>be2dcc489edfa45ab438a9fc97ff2e35</srcmd5>
+    <version>20210621</version>
+    <time>1624551738</time>
+    <user>dimstar_suse</user>
+    <comment>Update database to version 20210621</comment>
+    <requestid>901211</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>f383e18c2ea6e012c4063bd6d619b761</srcmd5>
+    <version>20210621</version>
+    <time>1626986554</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1188336 - openSUSE Tumbleweed unattended installation in libvirt fails due to invalid autoyast.xml</comment>
+    <requestid>907198</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>dc84558486d3238ae8e3b46f576df38f</srcmd5>
+    <version>20210621</version>
+    <time>1627587071</time>
+    <user>dimstar_suse</user>
+    <comment>Fix language element in opensuse-autoyast-desktop.xml for bsc#1182144</comment>
+    <requestid>908654</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2fb2aa42f6de80ef7b277de3f5ef68cb</srcmd5>
+    <version>20210903</version>
+    <time>1631826871</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>918021</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d528aa65e52ac8c5a320ff17c579ec13</srcmd5>
+    <version>20211013</version>
+    <time>1635539587</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927798</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>b0df1bc1483f504da680cbf7cf00dbfc</srcmd5>
+    <version>20211013</version>
+    <time>1638560119</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934885</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>da20453522877904a4508e1c80d616e4</srcmd5>
+    <version>20211216</version>
+    <time>1641680583</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20211216</comment>
+    <requestid>944513</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>39443c814f8fa9c6aa58bef4253f8565</srcmd5>
+    <version>20220214</version>
+    <time>1646241628</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20220214</comment>
+    <requestid>958324</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>8c5012a6b2061ab198a93b2046e33bd4</srcmd5>
+    <version>20220214</version>
+    <time>1647199504</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1196965 - openSUSE Tumbleweed unattended installation with libvirt fails</comment>
+    <requestid>960941</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>b898b8f5a49dd54cddb2317023f1607a</srcmd5>
+    <version>20220214</version>
+    <time>1650060822</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>969578</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d33baf18a23f38025d434fe66aa4a669</srcmd5>
+    <version>20220516</version>
+    <time>1653417073</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20220516</comment>
+    <requestid>978781</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e621847bb24dc3e40176630f3a19fa8f</srcmd5>
+    <version>20220727</version>
+    <time>1661257541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998620</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>f6c49792ef304541dd0b49bf95ac4ca5</srcmd5>
+    <version>20220727</version>
+    <time>1661593670</time>
+    <user>dimstar_suse</user>
+    <comment>Add support to the database for Leap 15.5, SLE15-SP5, and SLE Micro 5.3</comment>
+    <requestid>999291</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>6c069be5d215b28a4cf5adcbe56fc845</srcmd5>
+    <version>20220727</version>
+    <time>1662322294</time>
+    <user>dimstar_suse</user>
+    <comment>Fix short-id in definition for sle15sp5 - bsc#1202827</comment>
+    <requestid>1000965</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>10850cf4b87d5f03f83d558df7f94f06</srcmd5>
+    <version>20220830</version>
+    <time>1664797448</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20220830</comment>
+    <requestid>1007039</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>1173e0619b300007cce4d3db97624a82</srcmd5>
+    <version>20221018</version>
+    <time>1666978170</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20221018</comment>
+    <requestid>1031592</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>fe51eb60578faeea65c800bdf27b5dbc</srcmd5>
+    <version>20221130</version>
+    <time>1671305762</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20221130. Add support for SLE Micro 5.4</comment>
+    <requestid>1043201</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>15e4dd8c76f99fbbf59652f1e191f7eb</srcmd5>
+    <version>20230308</version>
+    <time>1678902783</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20230308</comment>
+    <requestid>1071248</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>00e33b62b962f2a5a4ab075977a34e53</srcmd5>
+    <version>20230518</version>
+    <time>1687033181</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091337</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>41db8394f1bef90a56e16eb112e62fad</srcmd5>
+    <version>20230719</version>
+    <time>1691594638</time>
+    <user>dimstar_suse</user>
+    <comment>Update to database version 20230719. Add support for SLE15-SP6 and SLE Micro 5.5</comment>
+    <requestid>1102786</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>b5dff4301ed1103364ef65f054067bd3</srcmd5>
+    <version>20231027</version>
+    <time>1700078794</time>
+    <user>anag+factory</user>
+    <comment>Update to database version 20231027</comment>
+    <requestid>1125734</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>b833a65978152e4f2b3b04eb768853a9</srcmd5>
+    <version>20231027</version>
+    <time>1702405939</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1131674</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>f7a9b9a50c8d97cc05b5836dd503cc00</srcmd5>
+    <version>20231215</version>
+    <time>1704558559</time>
+    <user>dimstar_suse</user>
+    <comment>Update database to version 20231215</comment>
+    <requestid>1137134</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,795 @@
+-------------------------------------------------------------------
+Fri Oct  6 07:08:03 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.2.3 (jsc#PED-5446) 
+  * Add OPENSSL_init_crypto in libica constructor
+  * Remove deprecated ioctl Z90STAT_STATUS_MASK
+  * Bug fixes
+
+-------------------------------------------------------------------
+Tue May 23 14:16:42 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.2.2 (jsc#PED-3277, jsc#PED-3276)
+  - [UPDATE] syslog msgs only in error cases
+  - [UPDATE] don't count statistics in fips power-on self tests
+  - [PATCH] various fixes and some new tests
+
+-------------------------------------------------------------------
+Fri Apr 28 09:20:08 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Remove file /etc/libica/openssl3-fips.cnf - we don't support FIPS yet
+
+-------------------------------------------------------------------
+Thu Apr 27 16:12:06 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Prefix /etc/libica with %dir to ensure we don't package
+  unversioned files in libica4, as otherwise we violate SLPP.
+
+-------------------------------------------------------------------
+Thu Apr 27 14:34:27 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Add /etc/libica directory into %files section.
+
+-------------------------------------------------------------------
+Fri Feb 17 11:08:33 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.2.1 (jsc#PED-2872)
+  - [PATCH] fix regression opening shared memory
+
+-------------------------------------------------------------------
+Mon Jan 16 13:00:34 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Upgrade to version 4.2.0 (jsc#PED-581, bsc#1202365).
+  - [FEATURE] Display build info via icainfo -v
+  - [FEATURE] New API function ica_get_build_version()
+  - [FEATURE] Display fips indication via icainfo -f
+  - [FEATURE] New API function ica_get_fips_indicator()
+  - [FEATURE] New API function ica_aes_gcm_initialize_fips()
+  - [FEATURE] New API function ica_aes_gcm_kma_get_iv()
+  - [FEATURE] New API function ica_get_msa_level()
+  - [PATCH] icainfo: check for malloc error when getting functionlist
+
+-------------------------------------------------------------------
+Tue Oct 11 20:32:12 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 4.1.1 (jsc#PED-581, bsc#1202365).
+  v4.1.1
+   - [PATCH] Fix aes-xts multi-part operations
+     [PATCH] Fix make dist
+  v4.1.0
+   - [FEATURE] FIPS: make libica FIPS 140-3 compliant
+     [FEATURE] New API function ica_ecdsa_sign_ex()
+     [FEATURE] New icainfo output option -r
+   - [PATCH] Various bug fixes
+- Removed the following obsolete files:
+  baselibs.conf
+  icaioctl.h
+
+-------------------------------------------------------------------
+Mon Sep 12 19:09:59 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 4.0.3 (jsc#PED-581, jsc#PED-621, jsc#PED-629)
+  v4.0.3
+   - [PATCH] Reduce the number of open file descriptors
+   - [PATCH] Various bug fixes
+  v4.0.2
+   - [PATCH] Various bug fixes
+  v4.0.1
+   - [PATCH] Various bug fixes
+   - [PATCH] Compute HMAC from installed library
+  v4.0.0
+   - [UPDATE] NO_SW_FALLBACKS is now the default for libica.so
+     [UPDATE] Removed deprecated API functions including tests
+     [UPDATE] Introduced 'const' for some API function parameters
+     [FEATURE] icastats: new parm -k to display detailed counters
+- Replaced libica-sles15sp2-FIPS-hmac-key.patch with an updated
+  version named libica-sles15sp5-FIPS-hmac-key.patch.
+- Updated the libica-rpmlintrc file to suppress warnings about the 
+  libica-cex hmac files being hidden.
+- Updated the spec file to properly both obsolete and provide two
+  older versions of the package.
+
+-------------------------------------------------------------------
+Tue Oct 19 21:20:22 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 3.9.0 (jsc#SLE-18454, jsc#SLE-18564)
+  - [FEATURE] Add support for OpenSSL 3.0
+  - [FEATURE] icainfo: new parm -c to display available EC curves
+- Replaced the obsolete PreReq: %fillup_prereq
+  with                  Requires(post): %fillup_prereq
+  in the spec file.
+
+-------------------------------------------------------------------
+Mon Jun  7 18:29:04 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 3.8.0 (jsc#SLE-18334)
+  - [FEATURE] provide libica-cex module to satisfy special security requirements
+  - [FEATURE] FIPS: enforce the HMAC check
+- Remove upstreamed patches:
+   - libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
+   - libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
+   - libica-sles15sp2-Zeroize-local-variables.patch
+- Remove patches obsoleted by upstrea developent:
+   * FIPS: Find libica from phdrs.
+     - libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
+   * FIPS: enforce the hmac check
+     - libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
+- Fix up tests and hmac generation
+   + libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
+- Remove obsolete attributes from filelists
+
+-------------------------------------------------------------------
+Fri Sep 18 20:59:39 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 3.7.0 (jsc#SLE-13708)
+  * Version 3.7.0
+    - [FEATURE] FIPS: Add HMAC based library integrity check
+    - [PATCH] icainfo: bugfix for RSA and EC related info for software column.
+    - [PATCH] FIPS: provide output iv in cbc-cs decrypt as required by FIPS tests
+    - [PATCH] FIPS: Fix DES and TDES key length
+    - [PATCH] icastats: Fix stats counter format
+  * Version 3.6.1
+    - [PATCH] Fix x25519 and x448 handling of non-canonical values
+- Removed the following obsolete patches
+  * libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-values.patch
+  * libica-sles15sp2-Fix-DES-and-TDES-key-length.patch
+  * libica-sles15sp2-FIPS-provide-output-iv-as-required-by-FIPS-tests.patch
+  * libica-sles15sp2-icainfo-bugfix-for-RSA-and-EC-related-info-for-softw.patch
+  * libica-sles15sp2-Build-with-pthread-flag.patch
+  * libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
+  * libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-addon.patch
+  * libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-rename-variables.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 21:08:38 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Fix lack of SHA3 KATs in "make check" processing (bsc#1175277)
+  * Added libica-sles15sp2-FIPS-add-SHA3-KATs-to-fips_powerup_tests.patch
+  * Added libica-sles15sp2-FIPS-skip-SHA3-tests-if-running-on-hardware-without-.patch
+- Fix FIPS hmac check (bsc#1175356).
+  * Update FIPS support to upstream
+    - Refresh libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
+      from upstream.
+    - Add libica-sles15sp2-Build-with-pthread-flag.patch
+    - Add libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-addon.patch
+    - Add libica-sles15sp2-FIPS-HMAC-based-library-integrity-check-rename-variables.patch
+    - Add libica-sles15sp2-FIPS-use-full-library-version-for-hmac-filename.patch
+  * FIPS check should fail when hmac is missing
+    - Add libica-sles15sp2-FIPS-fix-inconsistent-error-handling.patch
+    - Create an hmac for the selftest
+    - Check that selftest fails without a hmac
+    - Hash libica.so.3 rather than libica.so.3.6.0
+  * Fix hmac key format. It should be hexadecimal, not ASCII
+    - Refresh libica-sles15sp2-FIPS-hmac-key.patch
+- Fix Some internal variables used to store sensitive information
+  (keys) were not zeroized before returning to the calling application.
+  (bsc#1175357)
+  * Added libica-sles15sp2-Zeroize-local-variables.patch
+- Updated libica-rpmlintrc to eliminate the warning about the HMAC file
+  being a hidden file. It is supposed to be hidden.
+
+-------------------------------------------------------------------
+Thu May  7 18:01:31 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added the following patches for FIPS certification (bsc#1162533)
+  * libica-sles15sp2-FIPS-introduce-HMAC-based-library-integrity-check.patch
+  * libica-sles15sp2-FIPS-hmac-key.patch
+- Added a BuildRequires for the fipscheck package.
+- Made a couple of changes to the spec file based upon recommendations
+  by spec-cleaner.
+
+-------------------------------------------------------------------
+Wed Apr  8 18:55:24 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Added the following patches for FIPS certification.
+  * libica-sles15sp2-Fix-DES-and-TDES-key-length.patch
+    (bsc#1166071) Although a DES key has only 56 effective bits,
+     all 64 bits must be considered, because the parity bits are
+     spread over all 8 bytes of the key.
+  * libica-sles15sp2-FIPS-provide-output-iv-as-required-by-FIPS-tests.patch
+    (bsc#1166210) FIPS tests require the output iv to be the iv
+    resulting from decrypting the last block with a zero iv as input.
+  * libica-sles15sp2-icainfo-bugfix-for-RSA-and-EC-related-info-for-softw.patch
+    (bsc#1166224) The output from icainfo never shows 'yes' for
+    RSA ME, RSA CRT, ECDH, ECDSA sign, ECDSA verify, and ECKGEN,
+    due to the missing ICA_FLAG_SW flag in the icaList.
+
+-------------------------------------------------------------------
+Thu Nov 14 22:45:16 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Added libica-sles15sp2-x25519-x448-fix-handling-of-non-canonical-values.patch
+  (bsc#1156768)
+
+-------------------------------------------------------------------
+Tue Oct 15 18:53:36 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 3.6.0 (jsc#SLE-7584)
+  * [FEATURE] Add MSA9 CPACF support for Ed25519, Ed448, X25519 and X448
+
+-------------------------------------------------------------------
+Fri Aug 30 21:46:50 UTC 2019 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 3.5.0 (Fate#327840)
+  - [FEATURE] Add MSA9 CPACF support for ECDSA sign/verify
+- Reworked how libica-tools loads and unloads kernel modules to
+  avoid spurious error messages (bsc#1134004):
+  * Converted the boot.z90crypt sysV init script to a systemd unit
+  file.
+  * Removed any references to insserv in the spec file.
+  * Updated the z90crypt script itself to properly load and unload
+  the kernel modules as they exist today.
+  * Eliminated the obsolete libica-SuSE.tar.bz2 archive.
+- Updated the README.SUSE file to reflect the change from sysV init
+  style script to systemd.
+- Made numerous changes to the spec file, based on the output from
+  the spec-cleaner command.
+
+-------------------------------------------------------------------
+Wed Jul 24 10:09:46 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Run testsuite during build
+
+-------------------------------------------------------------------
+Thu Nov 15 19:16:30 UTC 2018 - mpost@suse.com
+
+- Upgraded to version 3.4.0 (Fate#325690)
+  * v3.4.0
+    [FEATURE] Add SHA-512/224 and SHA-512/256 support
+- Dropped obsolete patch Add-non-executable-gnu-stack-markings-in-the-assembl.patch
+- Made numerous updates to spec file based on spec-cleanup run.
+
+-------------------------------------------------------------------
+Wed Nov 14 18:01:37 UTC 2018 - mpost@suse.com
+
+- Upgraded to version 3.3.3 (Fate#325690)
+  * v3.3.3
+    [PATCH] Various bug fixes
+  * v3.3.2
+    [PATCH] Skip ECC tests if required HW is not available
+    [PATCH] Update spec file
+  * v3.3.1
+    [PATCH] Fix configure.ac to honour CFLAGS
+  * v3.3.0
+    [FEATURE] Add CEX supported elliptic-curve crypto interfaces
+    [FEATURE] Add SIMD supported multiple-precision arithmetic interfaces
+    [FEATURE] Add interface to enable/disable SW fallbacks
+    [FEATURE] Add 'make check' target, test-suite rework
+  * v3.2.1
+    [FEATURE] Use z14 PRNO-TRNG to seed SHA512-DRBG.
+    [PATCH] Various bug fixes.
+- Dropped obsolete patch increment-icastats-counter-for-aes-gcm.patch
+- Removed COPYING from %files, since it is no longer in the tarball.
+- Added Add-non-executable-gnu-stack-markings-in-the-assembl.patch
+  (bsc#1103493).
+- Made multiple changes to the spec file based on the output of
+  spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 22 19:09:13 UTC 2018 - mpost@suse.com
+
+- Added "Obsoletes: libica-2_3_0" to the libica-tools package to
+  fix a problem with upgrading from SLES12 SP2 to either SLES12
+  SP3/SP4, or SLES15. (bsc#1112655)
+
+-------------------------------------------------------------------
+Tue Sep 11 17:19:57 UTC 2018 - mpost@suse.com
+
+- Added "Obsoletes: libica2" to the libica-tools package to fix
+  a problem with upgrading from SLES12 SP2 to either SLES12
+  SP3/SP4, or SLES15. (bsc#1046435, bsc#1104638)
+
+-------------------------------------------------------------------
+Wed Apr 18 02:29:29 UTC 2018 - mpost@suse.com
+
+- Added increment-icastats-counter-for-aes-gcm.patch (bsc#1086756)
+- Updated boot.z90crypt script to fix a problem with the modprobe
+  command not being found. (bsc#1040229).
+- Added "Recommends: libica-tools" (bsc#1046435).
+
+-------------------------------------------------------------------
+Thu Nov 23 13:53:22 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Oct  4 19:22:58 UTC 2017 - mpost@suse.com
+
+- Added "--enable-fips" to the %configure parms (Fate#324115)
+
+-------------------------------------------------------------------
+Fri Sep 22 21:27:04 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 3.2 (Fate#321517)
+  * v3.2.0
+    [FEATURE] New AES-GCM interface.
+    [UPDATE] Add symbol versioning.
+  * v3.1.1
+    [PATCH] Various bug fixes related to old and new AES-GCM implementations.
+    [UPDATE] Add SHA3 test cases. Improved and extended test suite.
+  * v3.1.0
+    [FEATURE] Add KMA support for AES-GCM.
+    [FEATURE] Add SHA-3 support.
+    [PATCH] Reject RSA keys with invalid key-length.
+    [PATCH] Allow zero output length for ica_random_number_generate.
+    [PATCH] icastats: Correct owner of shared segment when root creates it.
+  * Removed the following obsolete patches:
+    libica-3.0.2-01-fix-old-aes-gcm-decrypt-code-path.patch
+    libica-3.0.2-02-fix-aes-ccm-encrypt-code-path.patch
+    libica-3.0.2-03-fix-aes-ctr.patch
+    libica-3.0.2-04-fix-aes-gcm-to-allow-zero-pt-ct-length.patch
+
+-------------------------------------------------------------------
+Wed Sep 13 20:23:05 UTC 2017 - mpost@suse.com
+
+- libica: AES-GCM/CCM sometimes compute wrong tag values (bsc#1058567)
+  - Added the following patches (bsc#1058567)
+    - libica-3.0.2-01-fix-old-aes-gcm-decrypt-code-path.patch
+    - libica-3.0.2-02-fix-aes-ccm-encrypt-code-path.patch
+    - libica-3.0.2-03-fix-aes-ctr.patch
+    - libica-3.0.2-04-fix-aes-gcm-to-allow-zero-pt-ct-length.patch
+
+-------------------------------------------------------------------
+Thu Jun  1 14:36:04 UTC 2017 - fcrozat@suse.com
+
+- baselibs.conf doesn't need any additional provides/conflicts for
+  libica3.
+
+-------------------------------------------------------------------
+Fri May 12 09:07:34 UTC 2017 - fcrozat@suse.com
+
+- Update baselibs.conf with proper name for library package name,
+  stop providing/obsoleting libica-2_1_0/libica-2_3-0.
+
+-------------------------------------------------------------------
+Tue May  9 17:23:11 UTC 2017 - mpost@suse.com
+
+- Upgraded to version 3.0.2 (Fate#322025).
+  - v3.0.2
+    - Fix locking callbacks for openSSL APIs.
+  - v3.0.1
+    - Fixed msa level detection on zEC/BC12 GA1 and predecessors.
+  - v3.0.0
+    - Added FIPS mode.
+    - Sanitized exported symbols.
+    - Removed deprecated APIs. Marked some APIs as deprecated.
+    - Adapted to OpenSSL v1.1.0.
+    - RSA key generation is thread-safe now.
+- Removed the following obsolete patches:
+  - fix-initialization-of-s390-hardware-switches-1.patch
+  - fix-initialization-of-s390-hardware-switches-2.patch
+  - fix-msa-level-detection.patch
+  - fix-segfault-during-multithread-keygen.patch
+  - rng-performance.patch
+
+-------------------------------------------------------------------
+Fri Mar 31 20:45:35 UTC 2017 - mpost@suse.com
+
+- Made the following packaging changes:
+  - Implemented the shared library packaging guidelines.
+  - Consolidated double invocation of %setup into just one.
+  - Dropped redundant %ifarch, the package is already ExclusiveArch.
+  - Updated descriptions.
+- Added an libica-rpmlintrc file.
+
+-------------------------------------------------------------------
+Wed Nov 30 20:04:29 UTC 2016 - mpost@suse.com
+
+- Added the following two patches:
+  - fix-segfault-during-multithread-keygen.patch (bsc#991485)
+  - fix-msa-level-detection.patch (bsc#1010927)
+
+-------------------------------------------------------------------
+Tue Aug  2 16:00:30 UTC 2016 - mpost@suse.com
+
+- Added rng-performance.patch (bsc#990850).
+
+-------------------------------------------------------------------
+Tue Jun 14 21:03:41 UTC 2016 - mpost@suse.com
+
+- Updated baselibs.conf to obsolete prior versions of the 32bit
+  package. (bsc#983897):
+   provides "libica-<targettype> = <version>"
+   obsoletes "libica-<targettype> < <version>"
+   provides "libica-2_1_0-<targettype> = <version>"
+   obsoletes "libica-2_1_0-<targettype> < <version>"
+   provides "libica-2_3_0-<targettype> = <version>"
+   obsoletes "libica-2_3_0-<targettype> < <version>"
+
+-------------------------------------------------------------------
+Wed May 18 16:52:44 UTC 2016 - mpost@suse.com
+
+- Added fix-initialization-of-s390-hardware-switches-1.patch and
+  fix-initialization-of-s390-hardware-switches-2.patch (bsc#980548)
+
+-------------------------------------------------------------------
+Mon Feb 22 19:12:49 UTC 2016 - mpost@suse.com
+
+- Upgraded to version 2.6.2 (FATE#319610).
+- Renamed /etc/init.d/z90crypt to boot.z90crypt to conform to
+  naming standards.
+- Found the original location of the icaioctl.h file and downloaded
+  it to replace what we had previously.
+- Removed the unnecessary libica2.la file
+- Removed unnecessary Requires for glibc-devel
+- Added Requires libica2 to the -devel package
+- Converted call to configure to %configure macro
+- Removed obsolete and unnecessary INSROOT and bindir parameters
+  from the make install command
+
+-------------------------------------------------------------------
+Fri Nov  6 16:02:05 CET 2015 - pth@suse.de
+
+- Add Provides/Obsoletes for libica-2_3_0 so that the package from
+  SLE12 GA is replaced (bsc#953096).
+
+-------------------------------------------------------------------
+Wed Nov  4 10:41:19 UTC 2015 - meissner@suse.com
+
+- move the .so file to the mainpackage, the openssl-ibmca engine
+  will only load "libica.so" (bsc#952871)
+
+-------------------------------------------------------------------
+Mon Aug 17 21:04:40 UTC 2015 - jjolly@suse.com
+
+- Update to libica v2.4.2 (FATE#318035)
+- Removed outdated libica-aes_ccm-31-bit-compatibility.patch
+- Moved init script into libica-SuSE.tar.bz2 archive
+
+-------------------------------------------------------------------
+Wed Sep  3 01:41:37 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Wed Aug 13 18:01:15 UTC 2014 - jjolly@suse.com
+
+- Moved z90crypt out of useless libica-SuSE.tar.bz2 tarball to root
+- Removed libica-SuSE.tar.bz2
+- z90crypt now starts and stops ap kernel module (bnc#888943)
+
+-------------------------------------------------------------------
+Tue Mar 18 13:21:03 UTC 2014 - jjolly@suse.com
+
+- libica-aes_ccm-31-bit-compatibility.patch: AES_CCM:
+  fixed 64/31 bit compatibility
+
+-------------------------------------------------------------------
+Thu Mar  6 14:51:45 CET 2014 - ro@suse.de
+
+- add obsoletes and provides for older libica versions 
+
+-------------------------------------------------------------------
+Wed Mar  5 18:33:02 CET 2014 - ro@suse.de
+
+- update to 2.3.0 (fate#315342) 
+- obsolete/upstreamed patches:
+  libica-2_1_0-fix_temporary_buffer_allocation_in_ica_get_version.patch
+  libica-2_1_0-msa4-extension.patch
+  libica-2_1_0-synchronize_shared_memory_ref_counting.patch
+
+-------------------------------------------------------------------
+Wed Feb 19 06:04:25 UTC 2014 - jjolly@suse.com
+
+- Added COPYING to %files
+
+-------------------------------------------------------------------
+Tue Feb 18 14:33:13 UTC 2014 - jjolly@suse.com
+
+- Fixed build dependency errors by requiring autoconf, automake
+  and libtool
+- Changed license to CPL-1.0
+- Created devel package
+
+-------------------------------------------------------------------
+Fri Dec 21 14:49:54 UTC 2012 - uli@suse.com
+
+- Support for MSA4 extension (bnc#794518, fate#314078)
+
+-------------------------------------------------------------------
+Thu Oct  6 10:46:26 UTC 2011 - uli@suse.com
+
+- synchronize shared memory reference counting for library
+  statistics (bnc#719659)
+- fix temporary buffer allocation in ica_get_version() (bnc#719660)
+
+-------------------------------------------------------------------
+Tue Jun 14 11:50:13 CEST 2011 - uli@suse.de
+
+- update -> 2.1.0 (fate#311914)
+
+-------------------------------------------------------------------
+Fri Jan 23 22:40:55 CET 2009 - jjolly@suse.de
+
+- Moved icainfo into /usr/bin (bnc#448643)
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Wed Nov  5 01:34:34 CET 2008 - ro@suse.de
+
+- fix build on all platforms 
+
+-------------------------------------------------------------------
+Sun Nov  2 01:56:40 CET 2008 - jjolly@suse.de
+
+- Added CPL license to include/z90crypt.h, removed GPL reference
+  (This patch is upstream)
+
+-------------------------------------------------------------------
+Wed Oct 15 15:55:55 CEST 2008 - jjolly@suse.de
+
+- Changed package name to libica-1_3_9 to conform to rpmlint
+  requirements. (bnc#433432)
+
+-------------------------------------------------------------------
+Thu Sep 25 10:34:00 CEST 2008 - jjolly@suse.de
+
+- Removed soname filter for rpmlint
+- Several RPM fixes to help satisfy rpmlint
+
+-------------------------------------------------------------------
+Fri Sep 12 06:54:16 CEST 2008 - jjolly@suse.de
+
+- Updated to libica 1.3.9
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Aug  9 19:20:07 CEST 2007 - olh@suse.de
+
+- remove inclusion of linux/config.h
+
+-------------------------------------------------------------------
+Mon Mar 12 14:02:57 CET 2007 - uli@suse.de
+
+- z90crypt: handle errors (bug #247799)
+
+-------------------------------------------------------------------
+Mon May 22 08:43:22 CEST 2006 - aj@suse.de
+
+- Add gcc-c++ to BuildRequires.
+
+-------------------------------------------------------------------
+Fri May 19 16:50:02 CEST 2006 - ro@suse.de
+
+- fix build for the rest of platforms 
+
+-------------------------------------------------------------------
+Fri May 19 15:34:30 CEST 2006 - hare@suse.de
+
+- Update to libica 1.3.7 (#160036 - LTC22571)
+
+-------------------------------------------------------------------
+Fri Apr 21 14:31:10 CEST 2006 - hare@suse.de
+
+- Increasing # of open handles with symmetric crypto support
+  (#165323 - LTC23095)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:37:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 14 01:30:49 CET 2005 - ro@suse.de
+
+- include string.h and unistd.h in icalinux.c 
+
+-------------------------------------------------------------------
+Mon Dec 12 15:09:25 CET 2005 - hare@suse.de
+
+- Port package from SLES9 SP3
+- Update to libica 1.3.6-rc3.
+
+-------------------------------------------------------------------
+Wed Nov  2 16:23:24 CET 2005 - hare@suse.de
+
+- Close all filehandles (#130060 - LTC19221).
+
+-------------------------------------------------------------------
+Wed Oct  5 14:07:28 CEST 2005 - uli@suse.de
+
+- downgrade to libica 1.3.6-rc2 (contains AES software fallback,
+  bug #117336)
+
+-------------------------------------------------------------------
+Thu Sep 29 12:44:50 CEST 2005 - hare@suse.de
+
+- Update to libica 1.3.6 (#117336)
+
+-------------------------------------------------------------------
+Fri Sep 23 02:05:26 CEST 2005 - ro@suse.de
+
+- fix implicit declaration 
+
+-------------------------------------------------------------------
+Wed Aug 31 13:20:55 CEST 2005 - ihno@suse.de
+
+- Changing the default value from 0 to -1 in rcz90crypt (#114371) 
+
+-------------------------------------------------------------------
+Mon May 23 17:52:05 CEST 2005 - hare@suse.de
+
+- Finally fix 'reload' messages (#81824 - LTC15733).
+
+-------------------------------------------------------------------
+Fri May 20 12:11:51 CEST 2005 - hare@suse.de
+
+- Fix sigill patch.
+
+-------------------------------------------------------------------
+Wed May 18 13:17:39 CEST 2005 - hare@suse.de
+
+- Remove printf output from sigill patch (#81829 - LTC15731).
+
+-------------------------------------------------------------------
+Tue May 10 12:56:38 CEST 2005 - hare@suse.de
+
+- Use correct default value for z90crypt (#81825 - LTC15732).
+
+-------------------------------------------------------------------
+Mon May  9 14:49:52 CEST 2005 - hare@suse.de
+
+- Fix messages for 'reload' (#81824 - LTC15733).
+
+-------------------------------------------------------------------
+Tue Feb  8 16:58:02 CET 2005 - hare@suse.de
+
+- Fixed SIGILL on z900 (#46422).
+
+-------------------------------------------------------------------
+Fri Jul 23 10:06:08 CEST 2004 - hare@suse.de
+
+- Fixed range for 'domain' parameter in sysconfig.z90crypt (#42005).
+
+-------------------------------------------------------------------
+Wed Jul 14 08:22:27 CEST 2004 - hare@suse.de
+
+- Fix module loading error (#42006).
+- Add sysconfig variable to set the 'domain' parameter (#42005).
+
+-------------------------------------------------------------------
+Wed Jun 23 12:58:58 CEST 2004 - uli@suse.de
+
+- update -> 1.3.5-3 (bug #42122)
+
+-------------------------------------------------------------------
+Mon May 24 18:28:27 CEST 2004 - bk@suse.de
+
+- Update README.SuSE and correct name as well
+- Use modprobe instead of insmod and fix module load error(#40526)
+- Fix error checking for no hardware found case and hw error on load
+
+-------------------------------------------------------------------
+Fri May  7 15:15:17 CEST 2004 - hare@suse.de
+
+- Update Readme again for the correct name (SUSE LINUX Server).
+- Moved README.SuSE to README.SUSE.
+
+-------------------------------------------------------------------
+Fri May  7 15:00:51 CEST 2004 - hare@suse.de
+
+- Update Readme to refer to the correct name (SUSE Linux Server).
+
+-------------------------------------------------------------------
+Thu May  6 09:01:53 CEST 2004 - hare@suse.de
+
+- Update to 1.3.5-2 (#38511, #39693).
+- Update Readme to refer to SUSE Linux Server instead of
+  SuSE Linux Enterprise Server.
+
+-------------------------------------------------------------------
+Thu Apr  1 09:50:02 CEST 2004 - hare@suse.de
+
+- Update to 1.3.5
+- export CFLAGS & CPPFLAGS for configure
+- Exclude S/390-specific files for other archs (#37183) 
+
+-------------------------------------------------------------------
+Fri Jan 16 01:29:03 CET 2004 - ro@suse.de
+
+- add "-I./include" to CFLAGS and use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Tue Jan 13 10:00:42 CET 2004 - adrian@suse.de
+
+- fix build
+
+-------------------------------------------------------------------
+Sun Jan 11 21:07:44 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Jul 30 18:14:08 CEST 2003 - poeml@suse.de
+
+- update to 1.3.4
+
+-------------------------------------------------------------------
+Sun Jul 27 16:37:20 CEST 2003 - poeml@suse.de
+
+- update to 1.3.2
+
+-------------------------------------------------------------------
+Fri Jul 11 11:30:22 CEST 2003 - poeml@suse.de
+
+- update to 1.3.1:
+  now supports DES, TDES and SHA, as well as RSA.
+- throw libica.patch away, since autoversion and Makefile.am have
+  similar changes now, and the renaming from _LINUX_S390_ to
+  __s390__ is not really necessary
+- use %defattr
+- checked that icaioctl.h is still current
+- dump the bin-only z90crypt-2.4.7-s390-2.tar.gz which has gone
+  open source meanwhile and comes with the kernel sources
+
+-------------------------------------------------------------------
+Thu Oct 31 10:45:00 CET 2002 - froh@suse.de
+
+- added documentation how to set up crypto hardware support,
+  esp. S/390 and zSeries. (#16011, #22056)
+
+-------------------------------------------------------------------
+Thu Oct 10 11:07:07 CEST 2002 - froh@suse.de
+
+- upgraded to version 1.2 as requested by IBM to make openCryptoki 1.5
+  actually work. (#20737)
+
+-------------------------------------------------------------------
+Tue Aug 20 10:52:45 CEST 2002 - mmj@suse.de
+
+- Correct PreReq
+
+-------------------------------------------------------------------
+Wed Jul 31 15:00:23 CEST 2002 - froh@suse.de
+
+- fixed src/Makefile.am and ugly ./autoversion to honor %_lib and
+  to build on non-s390
+
+-------------------------------------------------------------------
+Tue Jul 30 10:56:33 CEST 2002 - froh@suse.de
+
+- updated to current libica
+- hacked in icaioctl.h for build, 'til we have the module in the
+  kernel.
+
+-------------------------------------------------------------------
+Sat Jul 27 16:16:35 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue May  7 14:27:50 CEST 2002 - ro@suse.de
+
+- fix for current automake/autoconf
+
+-------------------------------------------------------------------
+Sat Apr 27 11:12:11 CEST 2002 - ro@suse.de
+
+- removed old fillup-template and START_ variable 
+
+-------------------------------------------------------------------
+Wed Mar 27 17:58:50 CET 2002 - ihno@suse.de
+
+- modified etc/init.d/z90crypt-script to report result at start.
+
+-------------------------------------------------------------------
+Tue Feb  5 11:01:16 CET 2002 - froh@suse.de
+
+- Added openssl to #neededforbuild, which is needed in addition to
+  openssl-devel
+
+-------------------------------------------------------------------
+Wed Jan 30 16:20:48 CET 2002 - froh@suse.de
+
+- initial version
+
+-------------------------------------------------------------------

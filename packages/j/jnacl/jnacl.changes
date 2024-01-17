@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Sep 19 11:03:37 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require maven-javadoc-plugin that we don't use
+
+-------------------------------------------------------------------
+Mon Sep 11 09:29:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jnacl-bnd.patch
+    + add reproducible options to the bnd configuration
+
+-------------------------------------------------------------------
+Sat Sep  9 14:28:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Wed Jun 15 16:24:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of jnacl 1.0.0

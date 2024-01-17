@@ -1,0 +1,7 @@
+<package name="quazip" project="openSUSE:Factory">
+  <title>C++ wrapper for ZIP/UNZIP</title>
+  <description>A C++ wrapper for the Gilles Vollant's ZIP/UNZIP C package, using Trolltech's Qt toolkit.
+Useful to access ZIP archives from the Qt programs.</description>
+  <devel project="devel:libraries:c_c++" package="quazip"/>
+  <url>http://quazip.sourceforge.net/</url>
+</package>

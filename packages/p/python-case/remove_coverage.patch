@@ -1,0 +1,6 @@
+Index: case-1.5.3/requirements/test.txt
+===================================================================
+--- case-1.5.3.orig/requirements/test.txt
++++ case-1.5.3/requirements/test.txt
+@@ -1 +0,0 @@
+-coverage>=3.0

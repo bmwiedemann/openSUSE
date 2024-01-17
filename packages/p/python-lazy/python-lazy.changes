@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Dec  7 22:32:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6:
+  * Implement ``lazy.__set_name__()`` which helps in cases like
+  * ``foo=lazy(_foo)``.
+  * Pin sphinx and sphinx-rtd-theme versions in docs extra.
+  * Fix stray characters in keywords.
+
+-------------------------------------------------------------------
+Fri Jun  9 06:12:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Jan 18 16:47:05 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.5
+  * Allow type checkers to infer the type of a lazy attribute
+  * Add Python 3.8-3.11 to tox.ini. Remove old Python versions
+  * Replace deprecated python setup.py test in tox.ini
+  * Remove deprecated test_suite from setup.py
+  * Move metadata to setup.cfg and add a pyproject.toml file
+  * Include tests in sdist but not in wheel
+
+- use .tar.gz instead of .zip for better compression ratio
+
+-------------------------------------------------------------------
+Wed May 26 08:46:45 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Thu Feb 28 15:15:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4:
+  * Add MANIFEST.in. [stefan]
+  * Release as universal wheel. [stefan]
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:55 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu May 10 02:55:40 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+
+-------------------------------------------------------------------
+Sat Oct  7 15:40:52 UTC 2017 - arun@gmx.de
+
+- initial package

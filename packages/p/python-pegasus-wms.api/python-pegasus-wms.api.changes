@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Oct 29 09:55:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.0.3
+  * Support for Deep LFN’s in CondorIO Mode. If you are using
+  	bypass of staging for input files, then support for deep LFN’s
+  	depends on associated HTCondor ticket 1325 that will be fixed
+  	in HTCondor release 10.1.0.
+  * Per Job Symlinking
+  * New Containers exercise in the Pegasus Tutor
+
+-------------------------------------------------------------------
+Fri Jul  1 14:15:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for version 5.0.2
+- Required by PyCBC 

@@ -1,0 +1,6 @@
+<package name="loupe" project="openSUSE:Factory">
+  <title>A simple image viewer application written with GTK4 and Rust</title>
+  <description></description>
+  <devel project="GNOME:Factory" package="loupe"/>
+  <url>https://gitlab.gnome.org/GNOME/loupe</url>
+</package>

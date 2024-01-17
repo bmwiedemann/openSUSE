@@ -1,0 +1,34 @@
+From 470ef00f9378d6960f53ed0dd2f228bb31d1f676 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Thu, 10 Aug 2023 18:04:46 +0200
+Subject: [PATCH 162/173] README.rst: add info about restarting the extension
+
+---
+ README.rst | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/README.rst b/README.rst
+index 1e5b305..fe4e920 100644
+--- a/README.rst
++++ b/README.rst
+@@ -93,6 +93,17 @@ Afterwards, enable the extension and change the preferences using Tweak Tool,
+ or on ``https://extensions.gnome.org/local/``. On GNOME 3.36 and later, you
+ can also use the GNOME "Extensions" tool.
+ 
++Reloading the Extension
++~~~~~~~~~~~~~~~~~~~~~~~
++
++If the Hamster GNOME shell extension is already loaded and you change some code, 
++the GNOME shell needs to be restarted in order to update and restart the extension.
++The easiest way to do this is to run GNOME under X11 and use the key combination
++``Alt-F2`` followed by ``r``. If you run GNOME under Wayland, either re-login, or 
++start a `nested session <https://wiki.gnome.org/Initiatives/Wayland/GnomeShell/Testing>`_::
++    
++    dbus-run-session -- gnome-shell --nested --wayland
++
+ Changing the extension UUID
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+-- 
+2.42.0
+

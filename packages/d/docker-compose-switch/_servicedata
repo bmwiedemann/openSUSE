@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/docker/compose-switch</param>
+              <param name="changesrevision">c108cab13aa8ace270da9133f127f83f491121f0</param></service></servicedata>

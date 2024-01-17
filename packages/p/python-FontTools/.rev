@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95d83cb98284053527dc236da9d025a0</srcmd5>
+    <version>3.24.1</version>
+    <time>1520778237</time>
+    <user>dimstar_suse</user>
+    <comment>This is a replacement for the fonttools package that provides python2 and python3 python modules for use by python packages, while still providing the &quot;fonttools&quot; package with executables based on the python3 version.
+
+This package provides both python2 and python3 versions.  The old package this replaces didn't have a python2 version. 
+
+And the leap 42.3 build cannot be fixed in any simply way.  It just doesn't have the necessary dependencies to build this. The package this is replacing also didn't build for leap 42.3, either: https://build.opensuse.org/package/show/M17N/fonttools
+
+This version fixes the conflict from the previous version.</comment>
+    <requestid>584509</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21890cea3c582e3eb26ddc8f4a869890</srcmd5>
+    <version>3.29.0</version>
+    <time>1537018600</time>
+    <user>maxlin_factory</user>
+    <comment>- Upstream provided fix for the issue with big endian machines. Remove
+  fonttools-disable_failing_tests_bigendian.patch and replace with
+  349cd94d171cf4e1e7541884df0d12bb6d4e841a.patch
+- Upstream fix has a missing import; thus fix-missing-sys.patch
+- Update to 3.29.0:
+    too many changes to enlist here, complete list is on
+    https://github.com/fonttools/fonttools/releases
+- add fonttools-disable_failing_tests_bigendian.patch
+  disable two tests currently failing on bigendian archs 
+</comment>
+    <requestid>634622</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>595d01404d92b832766dd8933e7cb9be</srcmd5>
+    <version>3.39.0</version>
+    <time>1554189819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690425</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e97a55fd1adbb8eb57ce59bb129c5d68</srcmd5>
+    <version>4.10.2</version>
+    <time>1590780148</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809914</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d197a737032c4f1b240b11696885039b</srcmd5>
+    <version>4.13.0</version>
+    <time>1597602457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826625</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>48828f9bcf5ad23b388a4dd90b349a7b</srcmd5>
+    <version>4.13.0</version>
+    <time>1598340890</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from brotlipy to Brotli (bsc#1175303) (forwarded request 827753 from mcalabkova)</comment>
+    <requestid>828948</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba8dd48ce0ad5aff5880ed6031e80788</srcmd5>
+    <version>4.19.1</version>
+    <time>1614274015</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>873070</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c9a17c94514467dcb3b062ba0479cd7c</srcmd5>
+    <version>4.19.1</version>
+    <time>1619447971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888398</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fad4de4fd855d7c859e9d0ba90c0c6f4</srcmd5>
+    <version>4.21.1</version>
+    <time>1619973372</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 889774 from bnavigator)</comment>
+    <requestid>889780</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b86da5ca389b0d451e86773b10b11b1</srcmd5>
+    <version>4.28.3</version>
+    <time>1639616449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940710</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b59ab7e649a2845d0612cac0f02a30de</srcmd5>
+    <version>4.28.5</version>
+    <time>1642455234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946758</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c5da12464e0523e6f818b8f125b6b249</srcmd5>
+    <version>4.29.1</version>
+    <time>1647031191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960245</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>53b53fcdc615d6756b2bdc550f88e478</srcmd5>
+    <version>4.32.0</version>
+    <time>1650060832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>969728</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b4dce8a0c28e52f98e783f5d7520a1b8</srcmd5>
+    <version>4.33.3</version>
+    <time>1652389054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976012</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c4e531b42b931cc37fb0a1ec56f53694</srcmd5>
+    <version>4.37.1</version>
+    <time>1661962113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000146</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7aa07ae0581e80a5d38425d227119021</srcmd5>
+    <version>4.38.0</version>
+    <time>1669193254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037228</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b79ea2717102ea566901e0f9bf1f7260</srcmd5>
+    <version>4.38.0</version>
+    <time>1677166087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067091</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fb7cb994fee4d86d5db114522ba5d3df</srcmd5>
+    <version>4.39.3</version>
+    <time>1680384425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076413</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5bfc10a39efb1f68c43590862da6960f</srcmd5>
+    <version>4.39.3</version>
+    <time>1682691772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083300</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7ddb2b75b5d00b0ead7ea3dbde01382a</srcmd5>
+    <version>4.39.4</version>
+    <time>1686665328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092457</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>745ee5b02360580c56feb02d694aefa0</srcmd5>
+    <version>4.39.4</version>
+    <time>1697390761</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117744</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>697c14db3d2ee0982b89a090747784b2</srcmd5>
+    <version>4.47.0</version>
+    <time>1704487291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137072</requestid>
+  </revision>
+</revisionlist>

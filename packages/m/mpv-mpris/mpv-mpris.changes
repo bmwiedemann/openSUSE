@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Sun Sep 17 01:36:42 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to 1.1
+  * Fix idle -> playing state transition 
+    gh#hoyon/mpv-mpris#90
+  * add support for embedded cover art
+    gh#hoyon/mpv-mpris#94
+  
+-------------------------------------------------------------------
+Mon Apr  3 19:23:55 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.0
+  * rename album fields to match MusicBrainz internal names
+    gh#hoyon/mpv-mpris#81
+  * Fix string leaks in property change handler
+    gh#hoyon/mpv-mpris#84
+  * Makefile: Allow to append CFLAGS / LDFLAGS from environment.
+    gh#hoyon/mpv-mpris#87
+  * Do not use the default GMainContext
+    gh#hoyon/mpv-mpris#88
+
+-------------------------------------------------------------------
+Thu Sep 29 19:32:58 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.9
+  * expose musicbrainz metadata if available
+    gh#hoyon/mpv-mpris#79
+  * Fix test failure with glib 2.73.3
+    gh#hoyon/mpv-mpris#80
+
+-------------------------------------------------------------------
+Fri Jun 17 23:04:06 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.8.1
+  * Fix Unknown Artist for YouTube videos
+    #gh/hoyon/mpv-mpris#76
+  * Emit signal for fullscreen event
+    #gh/hoyon/mpv-mpris#78
+
+-------------------------------------------------------------------
+Wed Jun 15 17:02:27 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.7.1
+  * Add test suite
+  * Emit Stopped Signal on exit.
+    #gh/hoyon/mpv-mpris#61
+    #gh/hoyon/mpv-mpris#22
+  * Set xesam:artist to channel name for YouTube videos.
+    #gh/hoyon/mpv-mpris#50
+
+-------------------------------------------------------------------
+Sun Nov 21 11:43:51 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 0.6:
+  * Fix YouTube regex including 0 to the numeric range
+  * Fix LoopStatus property change signal
+  * Fix loop-file change handler in mpv 0.33.0
+  * Fix LoopStatus when numeric argument given to loop-file or loop-playlist
+
+  * Full changelog: https://github.com/hoyon/mpv-mpris/compare/0.5...0.6
+
+-------------------------------------------------------------------
+Mon May 18 07:30:32 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to mpv-mpris 0.5:
+  * Fixed some glib warnings
+  * Uninitialise glib objects on shutdown
+  * Fix dbus names with multiple instances
+  * Use YouTube thumbnails as mpris:artUrl when playing YouTube videos
+
+-------------------------------------------------------------------
+Sat Jan 18 11:12:47 UTC 2020 - Martin Herkt <9+suse@cirno.systems>
+
+- init, 0.4

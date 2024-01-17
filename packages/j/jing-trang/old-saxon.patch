@@ -1,0 +1,20 @@
+--- jing-trang-20181222/mod/schematron/mod.xml	2018-12-21 23:36:19.000000000 +0100
++++ jing-trang-20181222/mod/schematron/mod.xml	2021-07-02 13:29:44.941625566 +0200
+@@ -6,9 +6,6 @@
+   <depends lib="xalan-j2"/>
+   <depends lib="saxon"/>
+   <depends lib="saxon9"/>
+-  <test name="old-saxon" in="mod/schematron/test/schematrontest.xml"
+-	type="validate" schema="test/schematrontest.nrl"
+-	lib="saxon"/>
+   <test name="new-saxon" in="mod/schematron/test/schematrontest.xml"
+ 	type="validate" schema="test/schematrontest.nrl"
+ 	lib="saxon9"/>
+@@ -39,7 +36,6 @@
+   <compile/>
+   <service type="com.thaiopensource.validate.SchemaReaderFactory">
+     <provider classname="com.thaiopensource.validate.schematron.NewSaxonSchemaReaderFactory"/>
+-    <provider classname="com.thaiopensource.validate.schematron.OldSaxonSchemaReaderFactory"/>
+     <provider classname="com.thaiopensource.validate.schematron.XalanSchemaReaderFactory"/>
+     <provider classname="com.thaiopensource.validate.schematron.SchematronSchemaReaderFactory"/>
+   </service>

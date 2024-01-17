@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Wed Aug  2 09:28:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add magic-file-5.45.patch: fix test suite with file 5.45
+  (gh#ahupp/python-magic#290).
+
+-------------------------------------------------------------------
+Fri Apr 21 12:32:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:44:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Wed Jan 11 07:42:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 4ffcd591.patch: update test for upstream added gzip
+  extensions.
+
+-------------------------------------------------------------------
+Mon Nov 14 15:13:02 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Reintroduce the Conflict with python-magic back as paython-paython-magic
+  uses the same name space but are fully different (boo#1181252)
+
+-------------------------------------------------------------------
+Mon Oct 10 08:53:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.27:
+  - remove spurious pyproject.toml that breaks source builds
+  - Use tox for all multi-version testing
+  - Fix use of pytest, use it via tox
+
+-------------------------------------------------------------------
+Wed Feb 16 17:32:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.25:
+  - Support file 5.41. 
+  - Support os.PathLike types 
+  - Fix compat mode handling with empty mime string 
+  - Cleanup library loading 
+  - add py.typed sentinal per https://www.python.org/dev/peps/pep-0561/#p… 
+  - Check for cookie attribute before trying to delete it
+  - Revert "Fix bug in Magic when destructor called too early" 
+  - Fix yet another import error
+  - add more doc pointers for compat mode, and enable PendingDeprecationW…
+  - restore python 2.7 to setup.py, to preserve back compat
+  - document libmagic compat layer
+  - prefix add_compat with an underscore to avoid namespace pollution
+  - remove from_open_file, since its duplicative with from_descriptor and…
+  - move typing stubs next to implementation
+  - temorarily remove dropped support for python2
+  - Revert "Remove Python2 from the tests"
+  - Merge branch 'master' into redo-compat
+  - Remove Python2 from the tests
+  - Add support for Python 3.9
+  - Added support for magic_descriptor routine
+  - Handle undecodable characters in description
+  - Handle libmagic versions that don't support MAGIC_EXTENSION 
+  - MAGIC_EXTENSION support (file --extension)
+  - support changed mime types in test
+  - Fix tests with file 5.39
+  - add docker tests for archlinux
+  - Fallback to default behavior on setparam failure
+  - Fix bug in Magic when destructor called too early
+  - sheep Create basic stub file for magic.py 
+  - various cleanups proposed by debian folks
+  - Merge in compatability mode with libmagic
+  - add from_open_file to match libmagic binding featureset
+- Remove upstreamed patches:
+  - fix-test-tumbleweed.patch
+  - fix-test.patch
+  - fix-4-file-5.40.patch
+  - fix-support-file-5.41.patch
+
+-------------------------------------------------------------------
+Fri Oct 22 10:09:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use pyunittest macro instead of the home-grown solution.
+
+-------------------------------------------------------------------
+Fri Oct 22 08:02:27 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add fix-support-file-5.41.patch to support file 5.41.
+
+-------------------------------------------------------------------
+Fri Apr 16 13:00:57 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch fix-4-file-5.40.patch to support file 5.40 (boo#1184881)
+
+-------------------------------------------------------------------
+Sat Jul 25 14:46:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove patches not necessary anymore:
+ - magic-new-mime.patch
+ - magic-pep8.patch
+ - magic-tests.patch
+ - magic-new-file.patch
+- add patch fix-test.patch and fix-test-tumbleweed.patch to adapt the `file` test outputs to OpenSUSE.
+- update to version 0.4.18:
+ - Make bindings for magic_[set|get]param optional, and throw NotImplementedError
+   if they are used but not supported. Only call setparam() in the constructor if
+   it's supported. This prevents breakage on CentOS7 which uses an old version of
+   libmagic.
+- update to version 0.4.16 and 0.4.17 (changelog is combined upstream):
+ - add MAGIC_MIME_TYPE constant, use that in preference to MAGIC_MIME internally.
+   This sets up for a breaking change in a future major version bump where
+   MAGIC_MIME will change to mathch magic.h.
+ - add magic.version() function to return library version
+ - add setparam/getparam to control internal behavior
+ - increase internal limits with setparam to prevent spurious error on some jpeg files
+ - various setup.py improvements to declare modern python support
+ - support MSYS2 magic dlls
+ - fix warning about using 'is' on an int in python 3.8
+ - include tests in source distribution
+ - many test improvements:
+  - tox runner support
+  - remove deprecated test_suite field from setup.py
+  - docker tests that cover all LTS ubuntu versions
+  - add test for snapp file identification
+ - doc improvements
+  - document dependency install process for debian
+  - various typos
+  - document test running process
+
+-------------------------------------------------------------------
+Thu Jul  4 12:09:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update the patch magic-new-file.patch to work with newer file
+  package
+
+-------------------------------------------------------------------
+Tue Aug 21 10:31:23 UTC 2018 - tchvatal@suse.com
+
+- Version update to 0.4.15:
+  * Few test tweaks
+- Enable tests
+- Add patch to fix gzip detection in tests:
+  * magic-tests.patch
+- Add patch to fix working with new file:
+  * magic-new-file.patch
+- Add patch to work with new mimedb:
+  * magic-new-mime.patch
+- Add patch magic-pep8.patch to have other patches apply cleanly
+
+-------------------------------------------------------------------
+Thu Sep 14 00:17:15 UTC 2017 - toddrme2178@gmail.com
+
+- Fix python-magic conflicts
+
+-------------------------------------------------------------------
+Thu Sep  7 20:06:52 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+- Update to version 0.4.13
+  * No changelog
+
+-------------------------------------------------------------------
+Tue Feb  3 19:12:38 UTC 2015 - toddrme2178@gmail.com
+
+- Explicitly require file
+
+-------------------------------------------------------------------
+Mon Feb  2 23:16:35 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

@@ -1,0 +1,8 @@
+<package name="crmsh" project="openSUSE:Factory">
+  <title>Pacemaker/CRM shell</title>
+  <description>CRM shell is a Pacemaker cluster resource manager command line
+interface. It supports Pacemaker configuration, management, and
+troubleshooting.
+</description>
+  <devel project="network:ha-clustering:Factory" package="crmsh"/>
+</package>

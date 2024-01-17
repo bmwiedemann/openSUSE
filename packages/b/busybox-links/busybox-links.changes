@@ -1,0 +1,242 @@
+-------------------------------------------------------------------
+Fri Dec  8 14:12:35 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add new sub-package for udhcpc
+
+-------------------------------------------------------------------
+Mon Nov 20 12:58:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- zgrep: don't set the label option as only the real grep
+  supports it (bsc#1215943)
+
+-------------------------------------------------------------------
+Thu Sep  7 11:46:36 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add conflict for coreutils-systemd, package got splitted
+
+-------------------------------------------------------------------
+Wed Aug 30 07:06:43 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Don't build the Dockerfile in OBS, it's for development only
+
+-------------------------------------------------------------------
+Mon Aug 14 11:56:07 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Check in filelists instead of buildrequiring all non-busybox utils
+
+-------------------------------------------------------------------
+Thu Jun 29 13:34:39 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make sure last stays in busybox-util-linux, even if we moved
+  the original binary from util-linux to wtmpdb
+
+-------------------------------------------------------------------
+Tue Dec 27 10:28:04 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
+Fri Sep 16 15:12:44 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing new requires for busybox-sha3sum
+
+-------------------------------------------------------------------
+Fri Sep 16 13:14:35 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create sub-package "hexedit" [bsc#1203399]
+- Create sub-package "sha3sum" [bsc#1203397]
+
+-------------------------------------------------------------------
+Tue Mar 15 12:58:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- replace copy from buildroot's gzip with a reimplementation
+  that is not GPLv3 (jsc#SLE-24210 or jsc#SLE-24211)
+
+-------------------------------------------------------------------
+Thu Feb 10 15:10:02 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Drop update-alternatives support
+
+-------------------------------------------------------------------
+Fri Oct 22 15:57:07 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Removed libalternatives machanism. Using direct link from
+  /usr/bin/busybox to /usr/bin/sh. The package is conflicting with
+  the new packages bash-sh which has a link for /usr/bin/sh too.
+
+-------------------------------------------------------------------
+Wed Aug 18 14:00:55 UTC 2021 - Stefan Schubert <schubi@suse.com>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
+Mon Aug  2 13:51:13 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add shadow as BuildRequires
+
+-------------------------------------------------------------------
+Thu Jul  1 13:07:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add util-linux-systemd as BuildRequires
+
+-------------------------------------------------------------------
+Mon Mar 15 10:50:09 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- busybox-misc needs to conflict with lzop and sysstat as it
+  replaces files of those. Usrmerge reveals that conflict.
+
+-------------------------------------------------------------------
+Tue Mar  2 14:40:42 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
+Tue Feb  2 15:57:47 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add zmore and zless
+
+-------------------------------------------------------------------
+Mon Dec 28 08:37:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- busybox-sendmail also conflicts with the postfix-bdb flavor.
+
+-------------------------------------------------------------------
+Wed Dec  9 14:41:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- busybox-adduser needs "nogroup" for system accounts, which have
+  no group specified.
+
+-------------------------------------------------------------------
+Tue Dec  1 14:38:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add conflicts: bridge-utils to busybox-iproute2: both packages
+  provide /usr/sbin/brctl.
+
+-------------------------------------------------------------------
+Tue Sep 29 10:02:38 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't fail if rpm will not be build
+
+-------------------------------------------------------------------
+Mon Sep 21 07:41:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add post/postun requires for busybox to busybox-sh
+  (/usr/bin/ash is a symlink to busybox)
+
+-------------------------------------------------------------------
+Wed Sep 16 15:33:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- busybox-vi: also conflict with gvim, one more vi variant.
+
+-------------------------------------------------------------------
+Fri Sep 11 10:21:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- busybox-vi: conflict with all vi variants
+
+-------------------------------------------------------------------
+Fri Aug 28 08:09:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add zgrep to gzip sub-package
+
+-------------------------------------------------------------------
+Thu Aug 13 09:30:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix typo in spec file
+
+-------------------------------------------------------------------
+Wed Aug 12 14:29:02 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create new sub-packages: selinux-tools and policycoreutils
+
+-------------------------------------------------------------------
+Tue Jul 28 12:28:36 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- busybox-syslogd: add conflict with syslogd
+- busybox-iproute2: add conflict with wicked-service for ifup
+- busybox-sh: remove bogus %ghost entry
+
+-------------------------------------------------------------------
+Fri Jul 24 08:46:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create busybox-{dos2unix,telnet,tftp,time,tunctl,vlan,sysvinit-tools}
+
+-------------------------------------------------------------------
+Thu Jul 23 12:36:22 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create busybox-ed, busybox-bc and busybox-netcat
+- Fix filelist of busybox-iproute2
+
+-------------------------------------------------------------------
+Wed Jul 22 09:49:56 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create busybox-less, busybox-unzip, busybox-whois, busybox-wget,
+  busybox-syslogd and busybox-vi
+- Merge all shells into busybox-sh (to fix update-alternative for sh)
+
+-------------------------------------------------------------------
+Tue Jul 14 16:05:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add provides smtp_daemon to busybox-sendmail
+
+-------------------------------------------------------------------
+Thu Jun 11 09:48:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create own busybox-adduser sub-package
+
+-------------------------------------------------------------------
+Fri May 29 05:13:50 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add conflicts: mawk to busybox-gawk
+
+-------------------------------------------------------------------
+Mon May 18 13:42:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add conclicts: msmtp-mta to busybox-sendmail: there is one more
+  provider of /usr/sbin/sendmail.
+
+-------------------------------------------------------------------
+Tue May 12 14:40:14 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create own busybox-sendmail sub-package
+
+-------------------------------------------------------------------
+Tue May 12 11:11:27 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Specify conflict between busybox-misc and exim: both provide
+  /usr/sbin/sendmail.
+
+-------------------------------------------------------------------
+Mon May  4 11:17:46 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove bash conflict from busybox-sh as bash got fixed
+
+-------------------------------------------------------------------
+Mon Apr 27 15:13:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Split busybox-sh from busybox-ash as workaround for broken
+  update-alternatives usage in bash
+
+-------------------------------------------------------------------
+Sun Apr 19 07:54:47 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix update-alternatives usage
+
+-------------------------------------------------------------------
+Sat Apr 18 06:38:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use update-alternatives for sh
+
+-------------------------------------------------------------------
+Fri Apr 17 09:41:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add conflicts for files to busybox-misc
+
+-------------------------------------------------------------------
+Wed Apr 15 07:08:09 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add missing requires for busybox-sh
+
+-------------------------------------------------------------------
+Sat Mar 14 09:03:28 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version

@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6bdb0e18c8cc6c67d4d8e9d91bbd3fcd</srcmd5>
+    <version>4.1</version>
+    <time>1554281501</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>690876</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09109ceddbf8981fcdc977c7de2dee64</srcmd5>
+    <version>4.1</version>
+    <time>1620840727</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build against the compatibility guava20
+- Added patch:
+  * google-guice-throwingproviderbinder.patch
+    + fix a little glitch with default generic function in guava
+</comment>
+    <requestid>892403</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6da12aa799507ad6112383beaf256609</srcmd5>
+    <version>4.1</version>
+    <time>1623363529</time>
+    <user>dimstar_suse</user>
+    <comment>Better fix</comment>
+    <requestid>899010</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>be4802a166a82aa0c55b4d14668876db</srcmd5>
+    <version>4.1</version>
+    <time>1651180062</time>
+    <user>dimstar_suse</user>
+    <comment>Don't use xmvn-tools as to avoid build cycles</comment>
+    <requestid>973254</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a3cd5ae704fb8a8f5e130652fb6c242e</srcmd5>
+    <version>5.1.0</version>
+    <time>1683213014</time>
+    <user>dimstar_suse</user>
+    <comment>5.1.0</comment>
+    <requestid>1084445</requestid>
+  </revision>
+</revisionlist>

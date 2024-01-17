@@ -1,0 +1,8 @@
+<package name="kig" project="openSUSE:Factory">
+  <title>Interactive Geometry</title>
+  <description>Kig is an application for Interactive Geometry. It's intended to serve
+two purposes: Allow students to interactively explore mathematical
+figures and concepts using the computer. Serve as a WYSIWYG tool for
+drawing mathematical figures and including them in other documents.</description>
+  <devel project="KDE:Applications" package="kig"/>
+</package>

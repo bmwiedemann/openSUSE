@@ -1,0 +1,1436 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efcc84f9ea17d3bee42d254b8c804fac</srcmd5>
+    <version>5.0.9</version>
+    <time>1617130523</time>
+    <user>RBrownSUSE</user>
+    <comment>Updated to latest version</comment>
+    <requestid>880900</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fcbe1df2b1a97170ffe4203a2cee8a75</srcmd5>
+    <version>5.2.1</version>
+    <time>1617723058</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 5.2.1
+</comment>
+    <requestid>883167</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c20db05c7090423f62864f1fa075ed44</srcmd5>
+    <version>6.0.1</version>
+    <time>1619447980</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.1
+</comment>
+    <requestid>888424</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ac01833c2afe78c9d4deedcb7ca1e5e3</srcmd5>
+    <version>7.0.2</version>
+    <time>1623098684</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>898156</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ea097897124b1e78b78fd68b0658d387</srcmd5>
+    <version>7.0.4</version>
+    <time>1623868483</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>900208</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>01ed3743b3b49676feb55ad2d22cf113</srcmd5>
+    <version>7.1.1</version>
+    <time>1624887223</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>902750</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>747ca201a6896c845a5c8ba41401509c</srcmd5>
+    <version>10.0.0</version>
+    <time>1630432506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>913607</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bf29bece9dcb2533e4b136da79349701</srcmd5>
+    <version>10.1.1</version>
+    <time>1631129811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.1.1
+  * Changes of version 10.1.1
+    = Refines the design of APL glyphs, and also introduces
+      a configurable &quot;Favor APL&quot; configuration for APL-oriented
+      custom builds (#1200).
+  * Changes of version 10.1.0
+    = Improve ligation set for logical operators; Add bar kerning
+      to match JetBrains Mono (#1192).
+    = Add Tironian Sign Et (U+2E52, U+204A) (#1198).
+</comment>
+    <requestid>917588</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d0c59e4dffa69383bfe799fbbdb42068</srcmd5>
+    <version>10.2.0</version>
+    <time>1631391871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.2.0
+  * Changes of version 10.2.0
+    = Refine the size and placements of diacritics, to avoid
+      stacking marks to collide (#1204).
+    = Refine the alignment of Number Sign (#) to align with
+      numbers (#1210).
+    = Add tailless variants for Greek small Mu (μ) (#1211).
+    = Remove unnecessary serifs of Greek Capital Ksi (Ξ) (#1212).
+    = Add quick reuse of default weight/width/slope grades
+      in customized build (#1215).
+    = Add taller variants for At sign's Threefold and Fourfold
+      form (#1216).
+</comment>
+    <requestid>918445</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1dbc87f3e31cba47db3bb89a21966d7a</srcmd5>
+    <version>10.3.0</version>
+    <time>1632173587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.3.0
+  * Changes of version 10.3.0
+    = Add Greek letters and symbols:
+      ~ Heta (U+0370, U+0371);
+      ~ Sampi (U+0372, U+0373, U+03E0, U+03E1);
+      ~ Greek Lower Number Sign (U+0375);
+      ~ Pamphylian Digamma (U+0376, U+0377);
+      ~ Capital Kai Symbol (U+03CF);
+      ~ Qoppa (U+03D8, U+03D9, U+03DE, U+03DF);
+      ~ Stigma (U+03DA, U+03DB);
+      ~ San (U+03FA, U+03FB);
+      ~ Rho with Bar Symbol (U+03FC).
+</comment>
+    <requestid>920188</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8748710b8ffdafdab37e8fe1725644f3</srcmd5>
+    <version>10.3.1</version>
+    <time>1633365617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.3.1
+  * Changes of version 10.3.1
+    = Add taller variants of Number Sign (#1222).
+</comment>
+    <requestid>922805</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1a559cfabeddc2408cfbee0eab06ea76</srcmd5>
+    <version>10.3.2</version>
+    <time>1633959113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.3.2
+  * Changes of version 10.3.2
+    = Add support for OpenType frac feature (#1230).
+    = Fix placement of U+031C and U+0357.
+</comment>
+    <requestid>924554</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>adc144eaf27fd8da78e64fef546646de</srcmd5>
+    <version>10.3.3</version>
+    <time>1634587168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.3.3
+  * Changes of version 10.3.3
+    = Add support for Roman numerals (#623).
+</comment>
+    <requestid>925882</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3bc717b97c1fe37944320119fc635516</srcmd5>
+    <version>10.3.4</version>
+    <time>1635167845</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.3.4
+  * Changes of version 10.3.4
+    = Fix weight of D under heavy weights (#1237).
+    = Fix width under Aile and Etoile:
+      ~ Cyrillic Letter EnGhe (U+04A4, U+04A5);
+      ~ Cyrillic Letter Pe With Middle Hook (U+04A6, U+04A7);
+      ~ Cyrillic Letter Abkhazian Ha (U+04A8, U+04A9).
+    = Improve shape of double emotion punctuations
+      (U+203C, U+2047, U+2048, U+2049) under wide width.
+    = Add Characters
+      ~ Element Of with Long Horizontal Stroke (U+22F2);
+      ~ Element Of with Vertical Bar at end of
+        Horizontal Stroke (U+22F3);
+      ~ Small Element Of with Vertical Bar at end of
+        Horizontal Stroke (U+22F4);
+      ~ Contains with Long Horizontal Stroke (U+22FA);
+      ~ Contains with Vertical Bar at end of
+        Horizontal Stroke (U+22FB);
+      ~ Small Contains with Vertical Bar at end of
+        Horizontal Stroke (U+22FC);
+</comment>
+    <requestid>927184</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>590007de5b7690baaec154cb4cb43092</srcmd5>
+    <version>11.0.0</version>
+    <time>1636240742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.0.0
+  * Changes of version 11.0.0
+    = [Breaking] Fixed width and removal logic for
+      Long Leftwards Arrow (U+27F5) and
+      Long Rightwards Arrow (U+27F6) (#1245).
+    = [Breaking] Fix the metrics of wide characters, making
+      Extended families compatible with FontConfig’s
+      “dual” width (#1247).
+    = Change the shape of Eng (U+014A) into &quot;N with Hook&quot;,
+      to follow Unicode code chart (#1239).
+    = Increase shoulder arc thickness of lowercase r
+      for better thickness contrast (#1243).
+    = Fix metrics of Swung Dash (U+2053) (#1246).
+</comment>
+    <requestid>929893</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a65ff9ae1c19bd908fadb61f08dfd1dd</srcmd5>
+    <version>11.1.0</version>
+    <time>1637535139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.1.0
+  * Changes of version 11.1.0
+    = Add characters
+      ~ MODIFIER LETTER CHINESE TONE YIN PING .. MODIFIER LETTER
+        CHINESE TONE YANG RU (U+A700 .. U+A707) (#1249).
+      ~ LONG LEFTWARDS ARROW FROM BAR (U+27FB), LONG RIGHTWARDS
+        ARROW FROM BAR (U+27FC) (#1251).
+      ~ PITCHFORK (U+22D4).
+      ~ ELEMENT OF WITH DOT ABOVE (U+22F5).
+      ~  ELEMENT OF WITH TWO HORIZONTAL STROKES (U+22F9).
+    = Fix serif of Cyrillic capital Ya under italics (#1250).
+  * Changes of version 11.0.1
+    = Fix custom builds with compatibility ligatures (#1248).
+</comment>
+    <requestid>932807</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ab41ca45c93816960a179d60e4a7e566</srcmd5>
+    <version>11.1.1</version>
+    <time>1638131415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.1.1
+  * Changes of version 11.1.1
+    = Fix broken geometry of SECTION SIGN (U+00A7)
+      under extra-wide widths (#1252).
+    = Fix broken geometry of K under extra-wide widths (#1253).
+</comment>
+    <requestid>934366</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>95a25d5ad84e5904e77fc65bee442549</srcmd5>
+    <version>11.2.0</version>
+    <time>1638740772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.2.0
+  * Changes of version 11.2.0
+    = Slightly reduce X-height by 0.01em for better geometric
+      balancing.
+    = Make low-crossbar variants of f more distinctive
+      with crossbar-at-x-height (#1254).
+    = Add Fira Code V6's progress bar symbols.
+    = Add BLACK FOUR POINTED STAR (U+2726)
+      and WHITE FOUR POINTED STAR (U+2727).
+    = Add MATHEMATICAL LEFT FLATTENED PARENTHESIS (U+27EE)
+      and MATHEMATICAL RIGHT FLATTENED PARENTHESIS (U+27EF).
+    = Add Hookless variants for r (#1255).
+</comment>
+    <requestid>935727</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8874fb79a9233abcd047508d3b9f8b1c</srcmd5>
+    <version>11.2.1</version>
+    <time>1639340860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.2.1
+  * Changes of version 11.2.1
+    = Add top-left and bottom-right serifed variants for K
+      and Cyrillic Ka (#1257).
+    = Add characters:
+      = LEFTWARDS ARROW WITH LOOP (U+21AB).
+      = RIGHTWARDS ARROW WITH LOOP (U+21AC).
+      = DOWNWARDS ZIGZAG ARROW (U+21AF).
+      = LEFTWARDS TRIPLE ARROW (U+21DA).
+      = RIGHTWARDS TRIPLE ARROW (U+21DB).
+      = LEFTWARDS SQUIGGLE ARROW (U+21DC).
+      = RIGHTWARDS SQUIGGLE ARROW (U+21DD).
+      = RIGHTWARDS ARROW WITH TIP DOWNWARDS (U+2B0E) ...
+        LEFTWARDS ARROW WITH TIP UPWARDS (U+2B11).
+</comment>
+    <requestid>939996</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5dce7368ff700ec221511e9ef0874169</srcmd5>
+    <version>11.2.2</version>
+    <time>1640030774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.2.2
+  * Changes of version 11.2.2
+    = Add open-swash Q (#1264).
+    = Add ability to customize the width of S-related necks
+      for different kind of letters (#1265).
+    = Add Characters
+      ~ NORTH WEST ARROW TO CORNER (U+21F1).
+      ~ SOUTH EAST ARROW TO CORNER (U+21F2).
+      ~ THREE RIGHTWARDS ARROWS (U+21F6).</comment>
+    <requestid>941545</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>af498fab61d7d56b87976fd25ee187a6</srcmd5>
+    <version>11.2.3</version>
+    <time>1640690776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.2.3
+  * Changes of version 11.2.3
+    = Make webfont formats customizable (#1266).
+    = Fix localization of Macedonian GJE (#1267).
+</comment>
+    <requestid>942811</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4117f892c76d0984044bcc74436f3904</srcmd5>
+    <version>11.2.4</version>
+    <time>1641321493</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>943773</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8967583321f102791f5c837a95d2bcac</srcmd5>
+    <version>11.2.5</version>
+    <time>1641680656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.2.5
+  * Changes of version 11.2.5
+    = Add split-slash variants of 0 (#1270).
+    = Add ligation set for Dafny (#1271).
+</comment>
+    <requestid>944917</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9f6262fbd808e9d619e5d17ddf5c28fd</srcmd5>
+    <version>11.2.6</version>
+    <time>1642455242</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>946860</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>517cfd44fe0c9aae2f502303ef5ed80f</srcmd5>
+    <version>11.2.7</version>
+    <time>1643062182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.2.7
+  * Changes of version 11.2.7
+    = Add characters:
+      ~ LIGHT VERTICAL BAR (U+2758) ... HEAVY VERTICAL BAR (U+275A).
+</comment>
+    <requestid>948278</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>53c09cb3c496086060f9db2efcb0f2ec</srcmd5>
+    <version>11.3.0</version>
+    <time>1644188069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v11.3.0
+  * Changes of version 11.3.0
+    = Add Characters
+      ~ REVERSED SEMICOLON (U+204F);
+      ~ REVERSED QUESTION MARK (U+2E2E);
+      ~ REVERSED COMMA (U+2E41);
+      ~ DOUBLE LOW-REVERSED-9 QUOTATION MARK (U+2E42);
+    = Add fourfold-solid-inner variants for @ (#1285).
+    = Change the layout of control picture subglyphs from horizontal
+      to diagonal (#1286).
+</comment>
+    <requestid>951841</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>720a5240983ac72aa452092e3670f95a</srcmd5>
+    <version>13.3.1</version>
+    <time>1644707728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v13.3.1
+  * Changes of version 13.3.1
+    = Fix geometry of reversed comma under heavy italic (#1292).
+    = Fix alignment of motion serif in v when squished (#1293).
+    = Fix geometry of &quot;Ӊ&quot;, &quot;ӊ&quot;, &quot;Ӎ&quot; , and &quot;ӎ&quot; (#1295).
+</comment>
+    <requestid>953910</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c998820cd38c9f9dc0a494b71c7cf948</srcmd5>
+    <version>14.0.1</version>
+    <time>1645461982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v14.0.1
+  * Changes of version 14.0.1
+    = Balance weight of $ under heavy weights (#1302).
+    = Balance serif weight of 7's serifed-straight variants (#1303).
+    = Add moon phase symbols (U+1F311 ... U+1F319, #1308).
+- Update to v14.0.0
+  * Changes of version 14.0.0
+    = [Breaking] Reordered variants for @, 0, 1.
+    = [Breaking] Renamed variants selector for following characters:
+      ¶ (paragraph-sign → pilcrow).
+    = Fix cv99's application to U+0149 LATIN SMALL LETTER N
+      PRECEDED BY APOSTROPHE (#1297).
+    = Fix cv45's application to U+1DF0 COMBINING LATIN SMALL
+      LETTER U WITH LIGHT CENTRALIZATION STROKE (#1298).
+</comment>
+    <requestid>956096</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9f3617069eae38ec01c59525891fa4d2</srcmd5>
+    <version>15.0.0</version>
+    <time>1645998179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.0.0
+  * Changes of version 15.0.0
+    = [Breaking] Metric override name change: xheight → xHeight.
+    = Add variant selector for dot and comma diacritics (#1309).
+    = Fix enclosed glyphs' placement when having glyphs
+      with different Y-shifting (#1310).
+    = Add metric override for archDepth and smallArchDepth (#1313).
+    = Fix feature application on OBJECT REPLACEMENT CHARACTER
+      (U+FFFC) and REPLACEMENT CHARACTER (U+FFFD) (#1314).
+</comment>
+    <requestid>957809</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>dda643e4f9dad82dc02da7f8ed01cddf</srcmd5>
+    <version>15.0.1</version>
+    <time>1646671591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959749</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2b69ac85c4837e4bf36f3e3d7f268f61</srcmd5>
+    <version>15.0.3</version>
+    <time>1647724855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.0.3
+  * Changes of version 15.0.3
+    = Add Asterism (U+2042) character (#1324).
+- Update to v15.0.2
+  * Changes of version 15.0.2
+    = Fix placement of COMBINING DOT ABOVE RIGHT (U+0358) (#1318).
+    = Fix fourfold width of @ under quasi-proportionals (#1319).
+</comment>
+    <requestid>963085</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e6a50261d28dedf77d845ed69225b9ae</srcmd5>
+    <version>15.1.0</version>
+    <time>1648330273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.1.0
+  * Changes of version 15.1.0
+    = Add Characters
+      ~ MODIFIER LETTER YIN DEPARTING TONE MARK (U+02EA);
+      ~ MODIFIER LETTER YANG DEPARTING TONE MARK (U+02EB);
+      ~ MODIFIER LETTER DOUBLE APOSTROPHE (U+02EE);
+      ~ MODIFIER LETTER MIDDLE GRAVE ACCENT (U+02F4);
+      ~ MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT (U+02F5);
+      ~ MODIFIER LETTER MIDDLE DOUBLE ACUTE ACCENT (U+02F6);
+      ~ MODIFIER LETTER RAISED COLON (U+02F8);
+      ~ MODIFIER LETTER BEGIN HIGH TONE (U+02F9);
+      ~ MODIFIER LETTER END HIGH TONE (U+02FA);
+      ~ MODIFIER LETTER BEGIN LOW TONE (U+02FB);
+      ~ MODIFIER LETTER END LOW TONE (U+02FC);
+      ~ MODIFIER LETTER SHELF (U+02FD);
+      ~ MODIFIER LETTER OPEN SHELF (U+02FE);
+      ~ MODIFIER LETTER LOW LEFT ARROW (U+02FF);
+      ~ COMBINING LEFT ARROW BELOW (U+20EE);
+      ~ COMBINING RIGHT ARROW BELOW (U+20EF);
+</comment>
+    <requestid>965032</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>95cc41dbe53353bb3d1d5af1723d7e48</srcmd5>
+    <version>15.2.0</version>
+    <time>1650232226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.2.0
+  * Changes of version 15.2.0
+    = Add characters:
+      ~ FLOWER PUNCTUATION MARK (U+2055);
+      ~ VERTICAL FOUR DOTS (U+205E);
+      ~ BLACK LEFTWARDS BULLET (U+204C);
+      ~ BLACK RIGHTWARDS BULLET (U+204D);
+      ~ THREE DOT PUNCTUATION (U+2056);
+      ~ FOUR DOT PUNCTUATION (U+2058);
+      ~ FIVE DOT PUNCTUATION (U+2059);
+      ~ TWO DOT PUNCTUATION (U+205A);
+      ~ FOUR DOT MARK (U+205B);
+    = Shape adjustment of t (#1336).
+    = Pilcrow signs are adjusted to have fills.
+</comment>
+    <requestid>970464</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>07f107199c2e4c70ed4b7b012860eab9</srcmd5>
+    <version>15.3.0</version>
+    <time>1652039561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.3.0
+  * Changes of version 15.3.0
+    = Add characters (#1337):
+      ~ SUMMATION TOP (U+23B2);
+      ~ SUMMATION BOTTOM (U+23B3);
+      ~ BLACK RIGHT-POINTING DOUBLE TRIANGLE (U+23E9);
+      ~ BLACK LEFT-POINTING DOUBLE TRIANGLE (U+23EA);
+      ~ BLACK UP-POINTING DOUBLE TRIANGLE (U+23EB);
+      ~ BLACK DOWN-POINTING DOUBLE TRIANGLE (U+23EC);
+      ~ BLACK RIGHT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR
+        (U+23ED);
+      ~ BLACK LEFT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR
+        (U+23EE);
+      ~ BLACK RIGHT-POINTING TRIANGLE WITH DOUBLE VERTICAL BAR
+        (U+23EF);
+    = Enlarged U+02BE and U+02BF to match the dimensions of other
+      quotes (#1346).
+</comment>
+    <requestid>975620</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>417669d246c5d4d2fc09ca27024d8196</srcmd5>
+    <version>15.3.1</version>
+    <time>1653244060</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>978464</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e4d7d8d7a25588f424d8b05f28a2ab95</srcmd5>
+    <version>15.4.0</version>
+    <time>1653907403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.4.0
+  * Changes of version 15.4.0
+    = Add characters:
+      ~ LATIN SMALL LETTER SIDEWAYS O (U+1D11);
+      ~ LATIN SMALL LETTER SIDEWAYS OPEN O (U+1D12);
+      ~ LATIN SMALL LETTER SIDEWAYS O WITH STROKE (U+1D13);
+      ~ LATIN SMALL LETTER SIDEWAYS U (U+1D1D);
+      ~ LATIN SMALL LETTER SIDEWAYS DIAERESIZED U (U+1D1E);
+      ~ LATIN SMALL LETTER SIDEWAYS TURNED M (U+1D1F);
+      ~ MODIFIER LETTER SMALL SIDEWAYS U (U+1D59);
+    = Make user build plans' variants inheritable (#1345).
+    = Add top-cut variants of 1 (#1354).
+- Update to v15.3.1
+  * Changes of version 15.3.1
+    = Fix display of Kleisli arrows under Kitty (#1350).
+    = Ascender height and Cap height is decoupled. Now they could
+      be configured separately (#1334).
+- Update to v15.3.0
+  * Changes of version 15.3.0
+    = Add characters (#1337):
+      ~ SUMMATION TOP (U+23B2);
+      ~ SUMMATION BOTTOM (U+23B3);
+      ~ BLACK RIGHT-POINTING DOUBLE TRIANGLE (U+23E9);
+      ~ BLACK LEFT-POINTING DOUBLE TRIANGLE (U+23EA);
+      ~ BLACK UP-POINTING DOUBLE TRIANGLE (U+23EB);
+      ~ BLACK DOWN-POINTING DOUBLE TRIANGLE (U+23EC);
+      ~ BLACK RIGHT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR
+        (U+23ED);
+      ~ BLACK LEFT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR
+        (U+23EE);
+      ~ BLACK RIGHT-POINTING TRIANGLE WITH DOUBLE VERTICAL BAR
+        (U+23EF);
+    = Enlarged U+02BE and U+02BF to match the dimensions of other
+      quotes (#1346).
+- Update to v15.2.0
+  * Changes of version 15.2.0
+    = Add characters:
+      ~ FLOWER PUNCTUATION MARK (U+2055);
+      ~ VERTICAL FOUR DOTS (U+205E);
+      ~ BLACK LEFTWARDS BULLET (U+204C);
+      ~ BLACK RIGHTWARDS BULLET (U+204D);
+      ~ THREE DOT PUNCTUATION (U+2056);
+      ~ FOUR DOT PUNCTUATION (U+2058);
+      ~ FIVE DOT PUNCTUATION (U+2059);
+      ~ TWO DOT PUNCTUATION (U+205A);
+      ~ FOUR DOT MARK (U+205B);
+    = Shape adjustment of t (#1336).
+    = Pilcrow signs are adjusted to have fills.
+- Update to v15.1.0
+  * Changes of version 15.1.0
+    = Add Characters
+      ~ MODIFIER LETTER YIN DEPARTING TONE MARK (U+02EA);
+      ~ MODIFIER LETTER YANG DEPARTING TONE MARK (U+02EB);
+      ~ MODIFIER LETTER DOUBLE APOSTROPHE (U+02EE);
+      ~ MODIFIER LETTER MIDDLE GRAVE ACCENT (U+02F4);
+      ~ MODIFIER LETTER MIDDLE DOUBLE GRAVE ACCENT (U+02F5);
+      ~ MODIFIER LETTER MIDDLE DOUBLE ACUTE ACCENT (U+02F6);
+      ~ MODIFIER LETTER RAISED COLON (U+02F8);
+      ~ MODIFIER LETTER BEGIN HIGH TONE (U+02F9);
+      ~ MODIFIER LETTER END HIGH TONE (U+02FA);
+      ~ MODIFIER LETTER BEGIN LOW TONE (U+02FB);
+      ~ MODIFIER LETTER END LOW TONE (U+02FC);
+      ~ MODIFIER LETTER SHELF (U+02FD);
+      ~ MODIFIER LETTER OPEN SHELF (U+02FE);
+      ~ MODIFIER LETTER LOW LEFT ARROW (U+02FF);
+      ~ COMBINING LEFT ARROW BELOW (U+20EE);
+      ~ COMBINING RIGHT ARROW BELOW (U+20EF);
+- Update to v15.0.3
+  * Changes of version 15.0.3
+    = Add Asterism (U+2042) character (#1324).
+- Update to v15.0.2
+  * Changes of version 15.0.2
+    = Fix placement of COMBINING DOT ABOVE RIGHT (U+0358) (#1318).
+    = Fix fourfold width of @ under quasi-proportionals (#1319).
+- Update to v15.0.1
+  * Changes of version 15.0.1
+    = Fix cv99/VXDD applications on U+0149, U+0310, U+034B, U+0352,
+      U+037C, U+037D, U+03FE, U+03FF, U+1E0B, and U+1EF5 (#1317).
+- Update to v15.0.0
+  * Changes of version 15.0.0
+    = [Breaking] Metric override name change: xheight → xHeight.
+    = Add variant selector for dot and comma diacritics (#1309).
+    = Fix enclosed glyphs' placement when having glyphs
+      with different Y-shifting (#1310).
+    = Add metric override for archDepth and smallArchDepth (#1313).
+    = Fix feature application on OBJECT REPLACEMENT CHARACTER
+      (U+FFFC) and REPLACEMENT CHARACTER (U+FFFD) (#1314).
+- Update to v14.0.1
+  * Changes of version 14.0.1
+    = Balance weight of $ under heavy weights (#1302).
+    = Balance serif weight of 7's serifed-straight variants (#1303).
+    = Add moon phase symbols (U+1F311 ... U+1F319, #1308).
+- Update to v14.0.0
+  * Changes of version 14.0.0
+    = [Breaking] Reordered variants for @, 0, 1.
+    = [Breaking] Renamed variants selector for following characters:
+      ¶ (paragraph-sign → pilcrow).
+    = Fix cv99's application to U+0149 LATIN SMALL LETTER N
+      PRECEDED BY APOSTROPHE (#1297).
+    = Fix cv45's application to U+1DF0 COMBINING LATIN SMALL
+      LETTER U WITH LIGHT CENTRALIZATION STROKE (#1298).
+- Update to v13.3.1
+  * Changes of version 13.3.1
+    = Fix geometry of reversed comma under heavy italic (#1292).
+    = Fix alignment of motion serif in v when squished (#1293).
+    = Fix geometry of &quot;Ӊ&quot;, &quot;ӊ&quot;, &quot;Ӎ&quot; , and &quot;ӎ&quot; (#1295).
+- Update to v11.3.0
+  * Changes of version 11.3.0
+    = Add Characters
+      ~ REVERSED SEMICOLON (U+204F);
+      ~ REVERSED QUESTION MARK (U+2E2E);
+      ~ REVERSED COMMA (U+2E41);
+      ~ DOUBLE LOW-REVERSED-9 QUOTATION MARK (U+2E42);
+    = Add fourfold-solid-inner variants for @ (#1285).
+    = Change the layout of control picture subglyphs from horizontal
+      to diagonal (#1286).
+- Update to v11.2.7
+  * Changes of version 11.2.7
+    = Add characters:
+      ~ LIGHT VERTICAL BAR (U+2758) ... HEAVY VERTICAL BAR (U+275A).
+- Update to v11.2.6
+  * Changes of version 11.2.6
+    = Fix variant selection of CIRCLED ZERO WITH SLASH (U+1F10D)
+      (#1274).
+- Update to v11.2.5
+  * Changes of version 11.2.5
+    = Add split-slash variants of 0 (#1270).
+    = Add ligation set for Dafny (#1271).
+- Update to v11.2.4
+  * Changes of version 11.2.4
+    = Add spacing grade quasi-proportional-extension-only.
+    = Fix broken geometry of a.double-storey-tailed under
+      heavy weights.
+    = Fix broken geometry of Cyrillic Iotified Es under
+      heavy weights.
+- Update to v11.2.3
+  * Changes of version 11.2.3
+    = Make webfont formats customizable (#1266).
+    = Fix localization of Macedonian GJE (#1267).
+- Update to v11.2.2
+  * Changes of version 11.2.2
+    = Add open-swash Q (#1264).
+    = Add ability to customize the width of S-related necks
+      for different kind of letters (#1265).
+    = Add Characters
+      ~ NORTH WEST ARROW TO CORNER (U+21F1).
+      ~ SOUTH EAST ARROW TO CORNER (U+21F2).
+      ~ THREE RIGHTWARDS ARROWS (U+21F6).
+- Update to v11.2.1
+  * Changes of version 11.2.1
+    = Add top-left and bottom-right serifed variants for K
+      and Cyrillic Ka (#1257).
+    = Add characters:
+      ~ LEFTWARDS ARROW WITH LOOP (U+21AB).
+      ~ RIGHTWARDS ARROW WITH LOOP (U+21AC).
+      ~ DOWNWARDS ZIGZAG ARROW (U+21AF).
+      ~ LEFTWARDS TRIPLE ARROW (U+21DA).
+      ~ RIGHTWARDS TRIPLE ARROW (U+21DB).
+      ~ LEFTWARDS SQUIGGLE ARROW (U+21DC).
+      ~ RIGHTWARDS SQUIGGLE ARROW (U+21DD).
+      ~ RIGHTWARDS ARROW WITH TIP DOWNWARDS (U+2B0E) ...
+        LEFTWARDS ARROW WITH TIP UPWARDS (U+2B11).
+- Update to v11.2.0
+  * Changes of version 11.2.0
+    = Slightly reduce X-height by 0.01em for better geometric
+      balancing.
+    = Make low-crossbar variants of f more distinctive
+      with crossbar-at-x-height (#1254).
+    = Add Fira Code V6's progress bar symbols.
+    = Add BLACK FOUR POINTED STAR (U+2726)
+      and WHITE FOUR POINTED STAR (U+2727).
+    = Add MATHEMATICAL LEFT FLATTENED PARENTHESIS (U+27EE)
+      and MATHEMATICAL RIGHT FLATTENED PARENTHESIS (U+27EF).
+    = Add Hookless variants for r (#1255).
+- Update to v11.1.1
+  * Changes of version 11.1.1
+    = Fix broken geometry of SECTION SIGN (U+00A7)
+      under extra-wide widths (#1252).
+    = Fix broken geometry of K under extra-wide widths (#1253).
+- Update to v11.1.0
+  * Changes of version 11.1.0
+    = Add characters
+      ~ MODIFIER LETTER CHINESE TONE YIN PING .. MODIFIER LETTER
+        CHINESE TONE YANG RU (U+A700 .. U+A707) (#1249).
+      ~ LONG LEFTWARDS ARROW FROM BAR (U+27FB), LONG RIGHTWARDS
+        ARROW FROM BAR (U+27FC) (#1251).
+      ~ PITCHFORK (U+22D4).
+      ~ ELEMENT OF WITH DOT ABOVE (U+22F5).
+      ~  ELEMENT OF WITH TWO HORIZONTAL STROKES (U+22F9).
+    = Fix serif of Cyrillic capital Ya under italics (#1250).
+  * Changes of version 11.0.1
+    = Fix custom builds with compatibility ligatures (#1248).
+- Update to v11.0.0
+  * Changes of version 11.0.0
+    = [Breaking] Fixed width and removal logic for
+      Long Leftwards Arrow (U+27F5) and
+      Long Rightwards Arrow (U+27F6) (#1245).
+    = [Breaking] Fix the metrics of wide characters, making
+      Extended families compatible with FontConfig’s
+      “dual” width (#1247).
+    = Change the shape of Eng (U+014A) into &quot;N with Hook&quot;,
+      to follow Unicode code chart (#1239).
+    = Increase shoulder arc thickness of lowercase r
+      for better thickness contrast (#1243).
+    = Fix metrics of Swung Dash (U+2053) (#1246).
+- Update to v10.3.4
+  * Changes of version 10.3.4
+    = Fix weight of D under heavy weights (#1237).
+    = Fix width under Aile and Etoile:
+      ~ Cyrillic Letter EnGhe (U+04A4, U+04A5);
+      ~ Cyrillic Letter Pe With Middle Hook (U+04A6, U+04A7);
+      ~ Cyrillic Letter Abkhazian Ha (U+04A8, U+04A9).
+    = Improve shape of double emotion punctuations
+      (U+203C, U+2047, U+2048, U+2049) under wide width.
+    = Add Characters
+      ~ Element Of with Long Horizontal Stroke (U+22F2);
+      ~ Element Of with Vertical Bar at end of
+        Horizontal Stroke (U+22F3);
+      ~ Small Element Of with Vertical Bar at end of
+        Horizontal Stroke (U+22F4);
+      ~ Contains with Long Horizontal Stroke (U+22FA);
+      ~ Contains with Vertical Bar at end of
+        Horizontal Stroke (U+22FB);
+      ~ Small Contains with Vertical Bar at end of
+        Horizontal Stroke (U+22FC);
+- Update to v10.3.3
+  * Changes of version 10.3.3
+    = Add support for Roman numerals (#623).
+- Update to v10.3.2
+  * Changes of version 10.3.2
+    = Add support for OpenType frac feature (#1230).
+    = Fix placement of U+031C and U+0357.
+- Update to v10.3.1
+  * Changes of version 10.3.1
+    = Add taller variants of Number Sign (#1222).
+- Update to v10.3.0
+  * Changes of version 10.3.0
+    = Add Greek letters and symbols:
+      ~ Heta (U+0370, U+0371);
+      ~ Sampi (U+0372, U+0373, U+03E0, U+03E1);
+      ~ Greek Lower Number Sign (U+0375);
+      ~ Pamphylian Digamma (U+0376, U+0377);
+      ~ Capital Kai Symbol (U+03CF);
+      ~ Qoppa (U+03D8, U+03D9, U+03DE, U+03DF);
+      ~ Stigma (U+03DA, U+03DB);
+      ~ San (U+03FA, U+03FB);
+      ~ Rho with Bar Symbol (U+03FC).
+- Update to v10.2.0
+  * Changes of version 10.2.0
+    = Refine the size and placements of diacritics, to avoid
+      stacking marks to collide (#1204).
+    = Refine the alignment of Number Sign (#) to align with
+      numbers (#1210).
+    = Add tailless variants for Greek small Mu (μ) (#1211).
+    = Remove unnecessary serifs of Greek Capital Ksi (Ξ) (#1212).
+    = Add quick reuse of default weight/width/slope grades
+      in customized build (#1215).
+    = Add taller variants for At sign's Threefold and Fourfold
+      form (#1216).
+- Update to v10.1.1
+  * Changes of version 10.1.1
+    = Refines the design of APL glyphs, and also introduces
+      a configurable &quot;Favor APL&quot; configuration for APL-oriented
+      custom builds (#1200).
+  * Changes of version 10.1.0
+    = Improve ligation set for logical operators; Add bar kerning
+      to match JetBrains Mono (#1192).
+    = Add Tironian Sign Et (U+2E52, U+204A) (#1198).
+- Update to v10.0.0
+- Fix merge conflict
+- Update to version 9.0.1
+- Additionally package 18 stylistic sets
+- Package “Super TTC” because it is the recommended way to install fonts for
+  Desktop usage
+- Add separate %reconfigure_fonts_scriptlets for each subpackage
+- Spec file cleanup
+- Update to 7.3.2
+- Update to 7.3.0
+- Update to 7.2.8
+- Update to 7.1.1
+- Update to 7.0.4
+- Update to 7.0.2
+- Properly add files
+- Update to 6.0.1
+- Update to 5.2.1
+- Update to 5.1.1
+- Update to 5.1.0
+- Update to 5.0.9
+- Update to 5.0.5
+- Update to 5.0.1
+- Update to 5.0.0-rc.1
+- Trim marketing and redundancies from
+  descriptions. Updates to summaries.
+- Add the source files
+- Properly fix the package
+- Set the _service file mode to manual
+- Work around the version string not being able to contain dashes
+- Update to v5.0.0-beta.2
+- Update to v4.5.0
+- Update to v4.4.0
+- Update to v4.3.0
+- Add Aile, Etoile, and Sparkle font families
+- Separate families into subpackages
+- Update to v4.2.0
+- Use TTC instead of TTF
+- Update to v4.0.3
+- Update to v4.0.2
+- Update to v4.0.0
+- Remove/replace obsolete macros
+- Update to v4.0.0-beta.3
+- Update to v4.0.0-beta.2
+- Update to v3.0.0-rc.5
+- Update to v3.0.0-rc.4
+- Update to v3.0.0-rc.3
+- Update to v3.0.0-rc.1
+- Update to v1.12.5
+</comment>
+    <requestid>979644</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>12193af26b5940a4bca6e313e0f4dadf</srcmd5>
+    <version>15.5.0</version>
+    <time>1654457294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.5.0
+  * Changes of version 15.5.0
+    = Add characters
+      ~ LATIN SMALL LETTER B WITH MIDDLE TILDE (U+1D6C) ... LATIN
+        SMALL LETTER Z WITH MIDDLE TILDE (U+1D76);
+      ~ LATIN SMALL CAPITAL LETTER U WITH STROKE (U+1D7E);
+- Update to v15.4.2
+  * Changes of version 15.4.2
+    = Fix ranks of cv72 (variants applying to 1) (#1358).
+- Update to v15.4.1
+  * Changes of version 15.4.1
+    = Fix VXDD application on U+1D1E (#1357).
+</comment>
+    <requestid>980832</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5c3a36de0aa5113fbd5611bee4e8b1df</srcmd5>
+    <version>15.5.1</version>
+    <time>1655665869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v15.5.1
+  * Changes of version 15.5.1
+    = Add characters:
+      ~ QUADRUPLE PRIME (U+2057);
+      ~ CARET INSERTION POINT (U+2041);
+      ~ DOTTED CROSS (U+205C);
+    = Unhinted webfonts are added into releases.
+</comment>
+    <requestid>983644</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e929983eb8d2d29911883c0868eca065</srcmd5>
+    <version>15.5.2</version>
+    <time>1656865595</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>986358</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>36c4103c480871a03374866eb2c9e1e3</srcmd5>
+    <version>15.6.0</version>
+    <time>1658162016</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to v15.6.0
+  * Changes of version 15.6.0
+    = Fix assignment of r and w for SS09 (#1378, #1379).
+    = Add variant selectors for Cyrillic Zhe (#1380).
+    = Harmonize dimensions of Cyrillic Yer, Yeri and Yery (#1382).
+</comment>
+    <requestid>989628</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>05c43950d6591cbb62194b35e9f56260</srcmd5>
+    <version>15.6.1</version>
+    <time>1659382327</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>991808</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>20ab3e87239e885227586ce6121492bc</srcmd5>
+    <version>15.6.3</version>
+    <time>1660423001</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>994873</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9614f76f98a8b3c53fba276fcc0377b2</srcmd5>
+    <version>16.0.2</version>
+    <time>1661962141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v16.0.2
+  * Changes of version 16.0.0
+    = [Breaking] Change the mechanism of variants of not-equal
+      ligation (#1400):
+      ~ The &quot;dotted&quot; ligation groups (exeqeq-dotted, eqexeq-dotted,
+        eqexeq-dl-dotted, exeq-dotted) are removed.
+      ~ A character variant, &quot;lig-neq&quot; (feature tag VXAF), is added
+        to control the shape instead.
+    = Ensure that the middle point between Typo Ascender and
+      Descender lies on the middle of symbols/operators (#1398).
+  * Changes of version 16.0.1
+    = Fix cv99 application on ASCII single quotes and graves
+      (#1404).
+    = Fix cv44 application on certain t-derived letters (U+01AB,
+      U+0236, U+0288, U+1DB5, and U+20A7) (#1405).
+    = Fix shape of BLANK SYMBOL (U+2422, #1406).
+  * Changes of version 16.0.2
+    = Fix mapping of MODIFIER LETTER VERTICAL LINE (U+02C8) and
+      MODIFIER LETTER LOW VERTICAL LINE (U+02CC) (#1407).
+    = Fix shape of LATIN SMALL LETTER T WITH CURL (U+0236) (#1408).
+    = Fix cv99 application on ELEMENT OF WITH DOT ABOVE (U+22F5)
+      (#1409).
+    = Fix cv33 application on Hwair (U+0195) (#1410).
+    = Fix letterform of Cyrillic Small Letter Ghe With Upturn under
+      Italic.
+</comment>
+    <requestid>1000404</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>14ba2de4ad2369da4f7849f70142c08e</srcmd5>
+    <version>16.1.0</version>
+    <time>1662926259</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1002519</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7bec5cee2528acb32008becefe9e6ad9</srcmd5>
+    <version>16.2.0</version>
+    <time>1663596177</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1004507</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9d99f279f53c4867088a33a7f389e1ec</srcmd5>
+    <version>16.2.1</version>
+    <time>1664797548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v16.2.1
+  * Changes of version 16.2.1
+    = Fix shape of p @ motion-serifed (#1423).
+</comment>
+    <requestid>1007487</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3540dd2aef09753af0b5bbacb6a56dd0</srcmd5>
+    <version>16.3.1</version>
+    <time>1665420430</time>
+    <user>favogt_factory</user>
+    <comment>- Update to v16.3.1
+  * Changes of version 16.3.1
+    = Fix shape of LATIN SMALL LETTER E WITH OGONEK (U+0119)
+      (#1427).
+    = Width grade will now influence marks' width.
+- Update to v16.3.0
+  * Changes of version 16.3.0
+    = Add variant selector to remove notches for equality ligations
+      (#1425).
+    = Fix cv40's application to CYRILLIC SMALL LETTER ER (U+0440)
+      (#1426).
+</comment>
+    <requestid>1009069</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9ba04f89f872834d55bff77d0eed4d86</srcmd5>
+    <version>16.3.4</version>
+    <time>1666602761</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1030596</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>643d90b7d6889d6a1c7c13d42f0d807e</srcmd5>
+    <version>16.3.6</version>
+    <time>1667901244</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034282</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f47183ee22e8f848960969d1d30e8353</srcmd5>
+    <version>16.5.0</version>
+    <time>1670162302</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1039854</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>109979a7b44f1573097793bb752ac99e</srcmd5>
+    <version>16.6.0</version>
+    <time>1670775401</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042048</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>d1ae0d764bee9b06c07b606d3771a52b</srcmd5>
+    <version>17.0.2</version>
+    <time>1672851140</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1046620</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a29167bd36b443aa6455613b23f079ef</srcmd5>
+    <version>17.0.4</version>
+    <time>1674495062</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1060198</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2ae2742fe8937baaa9b28c078f370e52</srcmd5>
+    <version>17.1.0</version>
+    <time>1675095036</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1061961</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b3c1f57bc487a397fa3ab0d5608b83dc</srcmd5>
+    <version>18.0.0</version>
+    <time>1676149054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1064356</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>90a9620fe0eb6ebb443161557213d7f2</srcmd5>
+    <version>19.0.1</version>
+    <time>1677419462</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1067786</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>33dc821595c74057eb032296a71f195b</srcmd5>
+    <version>21.0.0</version>
+    <time>1679182332</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1072843</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>cbc53e701ba1061598bf0be7b54eabff</srcmd5>
+    <version>21.1.1</version>
+    <time>1679854800</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1074468</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>6badc9ef072924987583857f19e0cb33</srcmd5>
+    <version>22.0.0</version>
+    <time>1681058442</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1078116</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>a993b1076d8d1bfcac07c841cc1abfa3</srcmd5>
+    <version>22.0.2</version>
+    <time>1682193833</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1082199</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>40c405c19b01be1e9b1cb7305d720163</srcmd5>
+    <version>22.1.0</version>
+    <time>1682959850</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1083764</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>1004eb639f09ecc92ca10a0e62478136</srcmd5>
+    <version>22.1.2</version>
+    <time>1684596229</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1088020</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>1044bacb6768844ebb4d39a3473c505d</srcmd5>
+    <version>24.0.0</version>
+    <time>1685294557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v24.0.0
+  * Changes of version 24.0.0
+    = [BREAKING] Add taller slash, broken slash and broken zero
+      variants for Zero. As a result, current variants are
+      reordered (#1307, #1509, #1678).
+    = [BREAKING] Add above-baseline crossed variant for Q. As a
+      result, current variants are reordered (#1533).
+    = [BREAKING] Add threefold-solid-inline variant for @. As a
+      result, current variants are reordered (#1495).
+    = [BREAKING] Rectify the variant atlas. As a result, if a
+      character's variant list has motion-serifed, then it will
+      have serifless and serifed variants: the serifed-ness will no
+      longer be controlled by SLAB variable. The characters
+      influenced are M, N, P, R, U, V, W, b, h, m, n, p, q, u, v,
+      w, y.
+    = [BREAKING] Renamed and/or reordered various variants.
+    = Add Characters:
+      ~ VERTICAL BAR WITH HORIZONTAL STROKE (U+27CA).
+      ~ ELEMENT OF OPENING UPWARDS (U+27D2).
+      ~ TRIPLE VERTICAL BAR DELIMITER (U+2980).
+      ~ Z NOTATION SPOT (U+2981).
+      ~ DOTTED FENCE (U+2999).
+      ~ CIRCLED ANTICLOCKWISE-ROTATED DIVISION SIGN (U+29BC).
+      ~ CIRCLED WHITE BULLET (U+29BE).
+      ~ CIRCLED BULLET (U+29BF).
+      ~ SQUARED RISING DIAGONAL SLASH (U+29C4) ... SQUARED SQUARE
+        (U+29C8).
+      ~ EQUALS SIGN AND SLANTED PARALLEL (U+29E3) ... IDENTICAL TO
+        AND SLANTED PARALLEL (U+29E5).
+      ~ THERMODYNAMIC (U+29E7).
+      ~ REVERSE SOLIDUS OPERATOR (U+29F5) ... REVERSE SOLIDUS WITH
+        HORIZONTAL STROKE (U+29F7).
+      ~ PLUS SIGN WITH SMALL CIRCLE ABOVE (U+2A22) ... PLUS SIGN
+        WITH TILDE ABOVE (U+2A24).
+      ~ PLUS SIGN WITH TILDE BELOW (U+2A26).
+      ~ PLUS SIGN IN LEFT HALF CIRCLE (U+2A2D).
+      ~ PLUS SIGN IN RIGHT HALF CIRCLE (U+2A2E).
+      ~ MULTIPLICATION SIGN IN LEFT HALF CIRCLE (U+2A34) ...
+        CIRCLED MULTIPLICATION SIGN WITH CIRCUMFLEX ACCENT
+        (U+2A36).
+      ~ CIRCLED DIVISION SIGN (U+2A38).
+      ~ UNION WITH MINUS SIGN (U+2A41) ... INTERSECTION WITH
+        OVERBAR (U+2A43).
+      ~ LOGICAL AND WITH DOUBLE OVERBAR (U+2A5E) ... LOGICAL OR
+        WITH DOUBLE UNDERBAR (U+2A63).
+      ~ TRIPLE HORIZONTAL BAR WITH DOUBLE VERTICAL STROKE (U+2A68).
+      ~ TRIPLE HORIZONTAL BAR WITH TRIPLE VERTICAL STROKE (U+2A69).
+      ~ ALMOST EQUAL TO WITH CIRCUMFLEX ACCENT (U+2A6F).
+      ~ ELEMENT OF OPENING DOWNWARDS (U+2AD9) ... NONFORKING
+        (U+2ADD).
+      ~ PARALLEL WITH HORIZONTAL STROKE (U+2AF2) ... TRIPLE COLON
+        OPERATOR (U+2AF6).
+      ~ LARGE TRIPLE VERTICAL BAR OPERATOR (U+2AFC).
+      ~ GROUP MARK (U+2BD2).
+      ~ HYPHEN WITH DIAERESIS (U+2E1A).
+      ~ TILDE WITH RING ABOVE (U+2E1B).
+      ~ LEFT VERTICAL BAR WITH QUILL (U+2E20).
+      ~ RIGHT VERTICAL BAR WITH QUILL (U+2E21).
+      ~ DOUBLE HYPHEN (U+2E40).
+    = Improve height of glyphs derived from DIVIDES (U+2223) and
+      PARALLEL TO (U+2225) to be the same as APL tacks as they are
+      often used as APL stiles.
+    = Add diagonal-tailed variants for lowercase Iota (#1737).
+    = Make VXSF to influence Eth too (#1738).
+- Update to v23.0.0
+  * Changes of version 23.0.0
+    = [BREAKING]
+      Add serifed and diagonal-tailed variants for Long S. As a
+      result, current variants are reordered (#1728, #1729).
+    = Add Characters:
+      ~ CYRILLIC SMALL LETTER NARROW O (U+1C82) (#1517).
+      ~ CYRILLIC SMALL LETTER UNBLENDED UK (U+1C88) (#1517).
+      ~ MATHEMATICAL RISING DIAGONAL (U+27CB).
+      ~ MATHEMATICAL FALLING DIAGONAL (U+27CD).
+      ~ UP TACK WITH CIRCLE ABOVE (U+27DF).
+      ~ REVERSED ANGLE (U+29A3).
+      ~ REVERSED EMPTY SET (U+29B0) ... EMPTY SET WITH LEFT ARROW
+        ABOVE (U+29B4).
+      ~ CIRCLED VERTICAL BAR (U+29B6) ... CIRCLE DIVIDED BY
+        HORIZONTAL BAR AND TOP HALF DIVIDED BY VERTICAL BAR
+        (U+29BA).
+      ~ DOUBLE ENDED MULTIMAP (U+29DF).
+      ~ MINUS SIGN WITH FALLING DOTS (U+2A2B).
+      ~ MINUS SIGN WITH RISING DOTS (U+2A2C).
+      ~ MULTIPLICATION SIGN WITH UNDERBAR (U+2A31).
+      ~ SEMIDIRECT PRODUCT WITH BOTTOM CLOSED (U+2A32).
+      ~ TILDE OPERATOR WITH RISING DOTS (U+2A6B).
+      ~ SIMILAR MINUS SIMILAR (U+2A6C).
+      ~ APPROXIMATELY EQUAL TO OR EQUAL TO (U+2A70) ... EQUALS SIGN
+        ABOVE TILDE OPERATOR (U+2A73).
+      ~ DOES NOT DIVIDE WITH REVERSED NEGATION SLASH (U+2AEE) ...
+        DOWN TACK WITH CIRCLE BELOW (U+2AF1).
+      ~ REVERSED RIGHT ANGLE (U+2BFE).
+      ~ COMBINING CYRILLIC LETTER ES-TE (U+2DF5) (#1720).
+      ~ COMBINING CYRILLIC LETTER MONOGRAPH UK (U+2DF9) (#1720).
+      ~ DAGGER WITH LEFT GUARD (U+2E36).
+      ~ DAGGER WITH RIGHT GUARD (U+2E37).
+      ~ TRIPLE DAGGER (U+2E4B).
+      ~ CYRILLIC CAPITAL LETTER MONOGRAPH UK (U+A64A) (#1517).
+      ~ CYRILLIC SMALL LETTER MONOGRAPH UK (U+A64B) (#1517).
+      ~ CYRILLIC CAPITAL LETTER YN (U+A65E) (#1142, #1517).
+      ~ CYRILLIC SMALL LETTER YN (U+A65F) (#1142, #1517).
+      ~ LATIN CAPITAL LETTER INSULAR D (U+A779) (#1688).
+      ~ LATIN SMALL LETTER INSULAR D (U+A77A) (#1688).
+      ~ LATIN CAPITAL LETTER OLD POLISH O (U+A7C0) (#1732).
+      ~ LATIN SMALL LETTER OLD POLISH O (U+A7C1) (#1732).
+      ~ HEBREW LETTER ALTERNATIVE PLUS SIGN (U+FB29).
+    = Disunify DIVIDES (U+2223) and PARALLEL TO (U+2225) from
+      VERTICAL LINE (U+007C) and DOUBLE VERTICAL LINE (U+2016)
+      under cv99.
+    = Fix glyph of TURNED DAGGER (U+2E38).
+    = Fix variant assignment of cv26 under ss16.
+    = Fix variant assignment of cv31 under ss13.
+    = Fix variant assignments of cv32 under ss03 and ss15.
+    = Fix variant assignments of cv51 under ss01, ss05, ss09, ss10,
+      ss12, and ss16.
+    = Fix variant assignments of cv52 under ss10 and ss16.
+    = Fix variant assignment of cv71 under ss15.
+    = Add toothless variants fo Greek Mu and Micro Sign (#1731).
+</comment>
+    <requestid>1089325</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8e0e67cf64a1ba185dbde5a38d2e6dfd</srcmd5>
+    <version>24.1.1</version>
+    <time>1686506117</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091998</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a508bfba032628567abe12adffef9d85</srcmd5>
+    <version>24.1.3</version>
+    <time>1687272472</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1093769</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>07ef75cc20e4c9a6180a7926c673290d</srcmd5>
+    <version>24.1.4</version>
+    <time>1688398945</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096337</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>8a27cc64a2d0db89ff93c88a744fae9d</srcmd5>
+    <version>25.0.1</version>
+    <time>1689710069</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1098973</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>8412f878aa2d1dcd3199c0a6392e52da</srcmd5>
+    <version>25.1.1</version>
+    <time>1690743486</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101396</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>f316007a1f79c7f84e534bf89123575a</srcmd5>
+    <version>26.1.0</version>
+    <time>1692483119</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104780</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>0b7fbbe293c80cffb692a4dbf86bc02c</srcmd5>
+    <version>27.1.0</version>
+    <time>1696760332</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1116216</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>38a9a64e2b81e12a6c7c76804003eeef</srcmd5>
+    <version>27.2.0</version>
+    <time>1697390858</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117811</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7bfe1337c8703ae0f510efe174922c50</srcmd5>
+    <version>27.3.5</version>
+    <time>1700421363</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1127438</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>876a424f7e8d33039478104228bd2834</srcmd5>
+    <version>28.0.0</version>
+    <time>1702845228</time>
+    <user>anag+factory</user>
+    <comment>- Update to v28.0.0
+  * Changes of version 28.0.0
+    = [BREAKING] The filenames and package filenames are changed.
+      ~ They will now use PascalCase instead of kebab-case.
+      ~ To package manager maintainers: Please upgrade your script
+        to make it capable to download and install the fonts under
+        new names, and properly uninstall the fonts under old
+        names.
+    = [BREAKING] Certain properties in the build plans are changed
+      to camelCase. Using them will trigger a build failure.
+      ~ no-cv-ss → noCvSs
+      ~ no-ligation → noLigation
+      ~ export-glyph-names → exportGlyphNames
+      ~ build-texture-feature → buildTextureFeature
+      ~ metric-override → metricOverride
+      ~ compatibility-ligatures → compatibilityLigatures
+      ~ exclude-chars → excludeChars
+      ~ webfont-formats → webfontFormats
+    = [BREAKING] The &quot;SGr&quot; TTC packages for Iosevka Aile and Etoile
+      will no longer be generated, as they are duplicates to the
+      non-SGr TTC packages.
+    = [BREAKING] Reorder of glyph variants:
+      ~ Influenced characters: M, R, f, i, l, t, x, Long S (ſ),
+        Lower Lambda (λ), Lower Tau (τ), Lower Chi (χ), Cyrillic
+        Lower Em (м), Cyrillic Lower Ef (ф), Cyrillic Ya (Я, я), 5.
+    = [BREAKING] Tags for variant features for Cyrillic lowercase
+      Er and U are changed to cv76 and cv78.
+      ~ Various other glyph variant tags are also changed to
+        reflect this insertion.
+    = [BREAKING] Make the ligation group names for symbol
+      connections more intuitive, and add alternatives to start
+      chaining from at least 3 continuous characters (#2100):
+      ~ plusplus → plus-plus, plus-plus-plus.
+      ~ connected-hyphen → minus-minus, minus-minus-minus.
+      ~ connected-tilde-as-wave → tilde-tilde, tilde-tilde-tilde.
+      ~ connected-underscore → underscore-underscore,
+        underscore-underscore-underscore.
+      ~ connected-number-sign → hash-hash, hash-hash-hash.
+    = Add Characters:
+      ~ CYRILLIC CAPITAL LETTER LHA (U+0514) ... CYRILLIC SMALL
+        LETTER YAE (U+0519) (#2018).
+      ~ GEORGIAN PARAGRAPH SEPARATOR (U+10FB).
+      ~ COMBINING BREVE-MACRON (U+1DCB) ... COMBINING MACRON-BREVE
+        (U+1DCC) (#1880).
+      ~ COMBINING DOUBLE CIRCUMFLEX ABOVE (U+1DCD).
+      ~ COMBINING LATIN SMALL LETTER FLATTENED OPEN A ABOVE
+        (U+1DD3).
+      ~ COMBINING DELETION MARK (U+1DFB).
+      ~ LINE SEPARATOR (U+2028) ... PARAGRAPH SEPARATOR (U+2029).
+      ~ TRIANGLE-HEADED RIGHTWARDS ARROW (U+279D).
+      ~ LONG RIGHTWARDS SQUIGGLE ARROW (U+27FF).
+      ~ LEFTWARDS DOUBLE ARROW WITH VERTICAL STROKE (U+2902) ...
+        LEFT RIGHT DOUBLE ARROW WITH VERTICAL STROKE (U+2904).
+      ~ LONG LEFTWARDS SQUIGGLE ARROW (U+2B33).
+      ~ DOWNWARDS TRIANGLE-HEADED ZIGZAG ARROW (U+2B4D).
+      ~ RAISED SQUARE (U+2E0B).
+      ~ HYPODIASTOLE (U+2E12).
+      ~ TWO DOTS OVER ONE DOT PUNCTUATION (U+2E2A) ... FIVE DOT
+        MARK (U+2E2D).
+      ~ LATIN SMALL LETTER U WITH LEFT HOOK (U+AB52).
+      ~ MODIFIER LETTER SMALL U WITH LEFT HOOK (U+AB5F).
+    = Add hook-inward-serifed variants for a (#2085).
+    = Add single-storey-double-serifed and
+      single-storey-tailed-serifed variants for a and Greek Lower
+      Alpha (α) (#1949).
+      ~ Make a.single-storey-tailed-serifed the default for slab
+        italic to match g and q.
+    = Add bottom-serifed variants for d, and q.
+    = Add bottom-right-serifed variants for U.
+    = Add tailless variants for Greek Lower Iota (ι).
+    = Make Greek Lower Iota (ι) and Greek Lower Tau (τ) semi-tailed
+      under default upright and tailed under default italic.
+    = Remove earless-rounded variants for U+01A5, U+0256, U+02A0,
+      and U+1D91.
+    = Remove earless-corner variants for U+027E.
+    = Improve serifs for turned k (U+029E) to match q and turned h
+      (U+0265).
+    = Improve top-left serif for LATIN SMALL LETTER KRA (U+0138) to
+      match k.
+    = Make Greek Kappa (U+03BA) respond to more serif variants for
+      k (cv36).
+    = Add a top-left serif to GREEK SMALL LETTER HETA (U+0371)
+      under slab.
+    = Add a serif to MATHEMATICAL DOUBLE-STRUCK SMALL J (U+1D55B)
+      to match that of MATHEMATICAL DOUBLE-STRUCK SMALL I
+      (U+1D55A).
+    = Improve vertical alignmant of bowl for LATIN CAPITAL LETTER
+      THORN WITH STROKE (U+A764) and LATIN CAPITAL LETTER THORN
+      WITH STROKE THROUGH DESCENDER (U+A766).
+    = Stylistic set fixes:
+      ~ Fix cv10 for ss01, ss02, and ss08 under slab.
+      ~ Fix cv53 for ss16.
+      ~ Fix cv64 and cv65 for ss07.
+      ~ Fix cv66 for ss17.
+      ~ Fix cv81 and cv82 for ss03 and ss08 under italic slab.
+      ~ Fix cv93 for ss01.
+      ~ Fix vsAJ for ss10.
+      ~ Fix vlAB for ss09 and ss14.
+      ~ Fix vlAD for ss05 and ss14.
+</comment>
+    <requestid>1133725</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>7ce27b37d5f73e5285c038309624b3ca</srcmd5>
+    <version>28.0.3</version>
+    <time>1704558580</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1137211</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>87cb70430a41825df18c3af67ae7fd06</srcmd5>
+    <version>28.0.4</version>
+    <time>1705255379</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1138458</requestid>
+  </revision>
+</revisionlist>

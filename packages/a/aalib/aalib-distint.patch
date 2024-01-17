@@ -1,0 +1,21 @@
+--- aalib-1.4.0/src/aalinuxkbd.c
++++ aalib-1.4.0/src/aalinuxkbd.c
+@@ -200,7 +200,7 @@
+ static int rawmode_init(void)
+ {
+     if (!closed)
+-	return;
++	return (0);
+     mypid = getpid();
+     if (tty_fd == -1) {
+ 	tty_fd = fileno(stdin);
+--- aalib-1.4.0/src/aamktabl.c
++++ aalib-1.4.0/src/aamktabl.c
+@@ -122,6 +122,7 @@
+ 	    for (dm = 0; dm < 4; dm++)
+ 		for (ii = -1; ii <= 1; ii += 2) {
+ 		    int dist, dist1, index;
++		    dist = dist1 = 0;
+ 		    unsigned short ch;
+ 		    i1 = m1;
+ 		    i2 = m2;

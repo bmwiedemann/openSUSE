@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9bbc627f36a35b9819fd7a05ace93bbc</srcmd5>
+    <version>1.0.4</version>
+    <time>1306415031</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66756</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>90e7d92461c8b3c0fa3e85ff5b1315a9</srcmd5>
+    <version>1.0.4</version>
+    <time>1306415040</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66756
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>90e7d92461c8b3c0fa3e85ff5b1315a9</srcmd5>
+    <version>1.0.4</version>
+    <time>1319182304</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8bde15f696ee23c6ed1e99d3e278db60</srcmd5>
+    <version>1.0.4</version>
+    <time>1321875932</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92175</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>d98130e2cd22d3f5668bd582bf9af674</srcmd5>
+    <version>1.0.4</version>
+    <time>1323193627</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>d98130e2cd22d3f5668bd582bf9af674</srcmd5>
+    <version>1.0.4</version>
+    <time>1340183915</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>d98130e2cd22d3f5668bd582bf9af674</srcmd5>
+    <version>1.0.4</version>
+    <time>1359109792</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>79327ccc50764503138450f83654af6e</srcmd5>
+    <version>1.000005</version>
+    <time>1375185856</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184840</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>79327ccc50764503138450f83654af6e</srcmd5>
+    <version>1.000005</version>
+    <time>1379663835</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>79327ccc50764503138450f83654af6e</srcmd5>
+    <version>1.000005</version>
+    <time>1409302475</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d6ce9101e3a8b2919a10deaa610c513c</srcmd5>
+    <version>1.06</version>
+    <time>1446208998</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340829</requestid>
+  </revision>
+</revisionlist>

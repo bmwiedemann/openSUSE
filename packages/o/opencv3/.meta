@@ -1,0 +1,8 @@
+<package name="opencv3" project="openSUSE:Factory">
+  <title>Collection of algorithms for computer vision</title>
+  <description>OpenCV means Intel® Open Source Computer Vision Library. It is a collection of C
+functions and a few C++ classes that implement some popular Image Processing and
+Computer Vision algorithms.
+</description>
+  <devel project="science" package="opencv3"/>
+</package>

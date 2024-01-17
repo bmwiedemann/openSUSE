@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2f547543a896e2fe7bf278957680278</srcmd5>
+    <version>1.0</version>
+    <time>1701533585</time>
+    <user>dimstar_suse</user>
+    <comment>New dependency for Cavil. Since the old perl-File-Unpack has been unmaintained for many years and requires a lot of patching.</comment>
+    <requestid>1130352</requestid>
+  </revision>
+</revisionlist>

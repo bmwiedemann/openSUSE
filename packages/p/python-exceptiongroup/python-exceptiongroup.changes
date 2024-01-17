@@ -1,0 +1,98 @@
+-------------------------------------------------------------------
+Mon Nov 27 15:43:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Added special monkeypatching if `Apport
+    <https://github.com/canonical/apport>`_ has
+    overridden ``sys.excepthook`` so it will format exception
+    groups correctly
+  * Added a backport of ``contextlib.suppress()`` from Python
+    3.12.1 which also handles suppressing exceptions inside
+    exception groups
+  * Fixed bare ``raise`` in a handler reraising the original
+    naked exception rather than an exception group which is what
+    is raised when you do a ``raise`` in an ``except*`` handler
+  * ``catch()`` now raises a ``TypeError`` if passed an async
+    exception handler instead of just giving a ``RuntimeWarning``
+    about the coroutine never being awaited.
+  * Fixed plain ``raise`` statement in an exception handler
+    callback to work like a ``raise`` in an ``except*`` block
+  * Fixed new exception group not being chained to the original
+    exception when raising an exception group from exceptions
+    raised in handler callbacks
+  * Fixed type annotations of the ``derive()``, ``subgroup()``
+    and ``split()`` methods to match the ones in typeshed
+- drop skip-test_catch_handler_raises-for-older-311.patch
+  (upstream)
+
+-------------------------------------------------------------------
+Tue Jul  4 22:32:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.2:
+  - Changed handling of exceptions in exception group handler
+    callbacks to not wrap a single exception in an exception
+    group, as per CPython issue gh#python/cpython#103590.
+- Add skip-test_catch_handler_raises-for-older-311.patch
+  (gh#agronholm/exceptiongroup#64).
+
+-------------------------------------------------------------------
+Fri Apr 21 12:24:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:07 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Mar 14 22:18:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Worked around `CPython issue #98778
+    ``urllib.error.HTTPError(..., fp=None)`` raises
+    ``KeyError`` on unknown attribute access, on affected
+    Python versions.
+
+-------------------------------------------------------------------
+Fri Dec 23 15:24:56 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.0
+  * Backported upstream fix for gh-99553 (custom subclasses of
+    BaseExceptionGroup that also inherit from Exception should not
+    be able to wrap base exceptions)
+  * Moved all initialization code to __new__() (thus matching
+    Python 3.11 behavior)
+- Fix multibuild
+
+-------------------------------------------------------------------
+Mon Dec 19 10:08:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- split tests into multibuild to solve cycle with pytest
+
+-------------------------------------------------------------------
+Thu Dec  1 09:42:08 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.0.4:
+  * Fixed regression introduced in v1.0.3 where the code computing the suggestions would assume that both the obj attribute of AttributeError is always available, even though this is only true from Python 3.10 onwards (#43; PR by Carl Friedrich Bolz-Tereick)
+- update to 1.0.3:
+  * Fixed monkey patching breaking suggestions (on a NameError or AttributeError) on Python 3.10 (#41; PR by Carl Friedrich Bolz-Tereick)
+- update to 1.0.2:
+  * Updated type annotations to match the ones in typeshed
+- update to 1.0.1:
+  * Fixed formatted traceback missing exceptions beyond 2 nesting levels of __context__ or __cause__
+- update to 1.0.0:
+  * Fixed AttributeError: 'PatchedTracebackException' object has no attribute '__cause__' on Python 3.10 (only) when a traceback is printed from an exception where an exception group is set as the cause (#33)
+  * Fixed a loop in exception groups being rendered incorrectly (#35)
+  * Fixed the patched formatting functions (format_exception()``etc.) not passing the ``compact=True flag on Python 3.10 like the original functions do
+
+-------------------------------------------------------------------
+Wed Oct 26 19:53:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- The package actually builds with Python 3.11.
+
+-------------------------------------------------------------------
+Sun Oct  9 19:54:31 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v 1.0.0rc9
+- Pre-release version required by hypothesis

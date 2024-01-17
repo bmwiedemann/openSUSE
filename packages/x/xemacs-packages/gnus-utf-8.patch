@@ -1,0 +1,14 @@
+diff -ru packages.orig/xemacs-packages/gnus/lisp/mm-util.el packages/xemacs-packages/gnus/lisp/mm-util.el
+--- packages/xemacs-packages/gnus/lisp/mm-util.el	2005-11-15 04:45:54.000000000 +0100
++++ packages/xemacs-packages/gnus/lisp/mm-util.el	2005-12-14 16:58:44.000000000 +0100
+@@ -785,7 +785,9 @@
+ 		 (mapcar 'mm-mime-charset
+ 			 (delq 'ascii
+ 			       (mm-find-charset-region b e)))))))
+-    charsets))
++    (if (> (length charsets) 1)
++	'(utf-8)
++      charsets)))
+ 
+ (defmacro mm-with-unibyte-buffer (&rest forms)
+   "Create a temporary buffer, and evaluate FORMS there like `progn'.

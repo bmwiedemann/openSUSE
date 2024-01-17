@@ -1,0 +1,5 @@
+<package name="civetweb" project="openSUSE:Factory">
+  <title>an open fork of mongoose</title>
+  <description></description>
+  <devel project="server:http" package="civetweb"/>
+</package>

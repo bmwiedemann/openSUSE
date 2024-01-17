@@ -1,0 +1,286 @@
+-------------------------------------------------------------------
+Thu Jan 19 08:01:48 UTC 2023 - fcrozat@suse.com
+
+- Update to version 1.4.10:
+  * Bump version to v1.4.10
+  * Update kvm-ioctls to 0.12.0
+  * init: Fix parsing of Env in JSON
+- Drop new-kvm-ioctl.patch, merged upstream.
+
+-------------------------------------------------------------------
+Mon Jan 16 09:37:08 UTC 2023 - fcrozat@suse.com
+
+- Update to version 1.4.9:
+  * Remove unnecessary casts
+  * init: do a case-insensitive check for JSON fields
+  * Fix kernel command line for non-TEE targets
+  * snp: measure regions rqequired by FW and PSP
+  * snp: refactor code to add_region
+  * cargo: Update to sev 1.0.0
+  * Add CODEOWNERS file
+  * examples: Add snp-config-noattest TEE config
+  * vmm/tee: Merge amd-sev and amd-snp modules
+  * vmm/resources: kbs_types behind tee flag
+  * tee: Make TeeConfig required
+  * vmm: Remove aarch64 config on amdsev function
+  * vmm/linux/tee: Add amd-snp module
+  * vmm/linux: Introduce tee module for TEE-specificities
+  * amdsev: Replace manual ioctls for sev library APIs
+  * cargo: Point "sev" to upstream git repo
+
+-------------------------------------------------------------------
+Mon Dec 05 13:14:11 UTC 2022 - dmueller@suse.com
+
+- Update to version 1.4.8:
+  * Bump version to v1.4.8
+  * macos: fix mapped volumes initialization
+  * Bump version to v1.4.6
+  * sev: fix a new clippy error
+  * fs: fix new clippy issue in descriptor_utils
+  * macos: init: register rosetta in binfmt_misc
+  * macos: map Rosetta directory if present
+  * macos: implement the ioctl Rosetta needs
+- add new-kvm-ioctl.patch
+
+-------------------------------------------------------------------
+Mon Dec  5 08:44:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add proper split-provides 
+- add cargo_audit
+
+-------------------------------------------------------------------
+Thu Nov 03 13:16:17 UTC 2022 - predivan@mts.rs
+
+- Update to version 1.4.6:
+  * Bump version to v1.4.6
+  * fs/macos: Fix some clippy warnings
+  * hvf: write reg on sysreg trap
+  * Bump version to v1.4.5
+  * sev: Don't use a static initrd size
+  * sev: Update to the final KBS attestation protocol
+  * vsock: Fix signal logic in Muxer
+  * examples/Makefile: Remove launch-tee binary on make clean
+
+-------------------------------------------------------------------
+Thu Sep 29 23:42:09 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch to a "proper library" packaging layout. Downstreams (namely,
+  crun) are now able to cope with this. So do it, and get rid of a lot
+  of RPM lint warnings and errors!
+- Make it easier to turn on/off building the SEV-enabled library
+* Patches dropped:
+  not-set-soname-as-it-is-plugin.patch
+
+-------------------------------------------------------------------
+Thu Sep 29 09:01:33 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Build the SEV version first, so we don't overwrite the non-SEV
+  enabled plugin with the SEV one.
+
+-------------------------------------------------------------------
+Wed Sep 28 16:45:10 UTC 2022 - dfaggioli@suse.com
+
+- Update to version 1.4.4:
+  * Bump version to v1.4.4
+  * fs/macos: drop value mutability in read/write
+  * fs/macos: avoid deadlock in open_inode
+  * fs/macos: Fix path replacing on rename dir
+  * Bump version to v1.4.3
+  * devices/fs: Drop mutability from FileReadWriteAtVolatile
+  * fs/macos: keep track of unlinked files
+  * devices: add missing fence in Queue
+  * Replace mpsc with crossbeam-channel
+  * Bump version to v1.4.2
+  * init: override kernel's HOME and TERM envs
+  * init: ensure "/dev" is properly mounted
+  * init: set a default hostname if no env is present
+  * Makefile: drop library dependency on install
+  * sev: temporarily vendorize kbs-types
+  * sev: replace ureq with curl
+  * Bump version to v1.4.1
+  * clippy: Derive Eq in addition of PartialEq
+  * macos: fix symlink ownership and mode attrs
+  * Makefile: force creation of symlinks on install
+  * sev: inform the user about progress
+  * sev: extend TEE config and override VmConfig
+  * Bump version to v1.4.0
+  * sev: write zero page and include in measurement
+  * sev: adopt the tentative KBS attestation protocol
+  * sev: update sev crate to 0.3
+  * sev: drop reqwest dependency
+  * sev: replace attestation_url with tee_config_file
+  * Bump version to v1.3.0
+  * init: be permissive with non-ASCII bytes
+  * init: add support for Entrypoint
+  * init: deal with missing "/dev"
+  * init: don't override existing env vars
+  * libkrun: add krun_set_env()
+  * sev: don't rely on cmdline_secret size and unlink
+  * libkrun: remove KRUN_INIT and KRUN_WORKDIR defaults
+  * init: Add cmdline_secret and config file support
+  * Bump version to v1.2.3
+  * macos: use upstream buildah xattr key
+  * macos: honor flag enabling/disabling xattr
+  * README.md: add known users and contact sections
+
+-------------------------------------------------------------------
+Wed Aug  3 09:01:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Reconcile spec file and package content (reference .xz and
+  get rid of .zst)
+
+-------------------------------------------------------------------
+Fri Jul 29 11:12:32 UTC 2022 - fcrozat@suse.com
+
+- Update to version 1.2.2:
+  * Bump version to v1.2.2
+  * vsock: remove stray println
+
+-------------------------------------------------------------------
+Wed Jun 22 07:36:02 UTC 2022 - dfaggioli@suse.com
+
+- Run services and update vendored dependencies
+- Update to version 1.2.1:
+  * Bump vm-memory dependency from 0.7.0 to 0.8.0
+- Update to version to 1.2.0:
+  * Disable virtio-fs DAX
+    + Fixes a bug triggered when using openSUSE images 
+  * vsock: defer TSI proxy removal
+
+-------------------------------------------------------------------
+Fri Jun 17 14:23:15 UTC 2022 - dfaggioli@suse.com
+
+- Update to version 1.1.0:
+  * vsock: restore lost port mapping feature
+  * vsock: translate errno to macOS to Linux
+  * vsock: use MSG_NOSIGNAL to avoid SIGPIPE
+  * vsock: update to nix 0.24.1
+  * vsock: make accept() and explicit operation
+- Update to version to v1.0.0
+  * Update README.md
+  * CI: run clippy tests with amd-sev feature too
+  * Implement virtio-rng device
+  * vmm: disable test_get_supported_cpuid
+  * sev: use a different name when building with SEV
+  * sev: switch to upstream kvm-bindings/ioctls
+  * Makefile: add versioning to the output library
+  * arch/aarch64: remove dependency on device_tree
+  * libkrun: remove unneeded "cc" dependency
+- Update to version to 0.2.0
+  * Replace old vsock with TSIv2's vsock
+  * macos: operate directly on kqueue in epoll
+  * utils: Allow Epoll to be cloned
+  * Replace "logger" crate with env_logger+log
+- Patches added:
+  * not-set-soname-as-it-is-plugin.patch
+
+-------------------------------------------------------------------
+Fri May 27 12:23:06 UTC 2022 - dfaggioli@suse.com
+
+- Automatic update of vendored dependencies
+- Update to version 0.1.8.
+- (From upstream) Bump version to 0.1.8. We're about to introduce
+  some breaking changes that will lead us to 0.2.0, so let's
+  release a version now so people can get the latest clean ups
+  without jumping all the way into 0.2.
+- Some changes:
+  * utils: drop unused functionality
+  * CI: fail on clippy warnings
+  * cpuid/logger: remove  "fn main" in doctests
+  * Use vm-memory from crates.io
+  * Remove unneeded extern declarations
+  * libkrun: fix clippy warnings
+  * libkrun: set Rust Edition to 2021
+  * vmm: fix clippy warnings
+  * vmm: set Rust Edition to 2021
+  * kernel: fix clippy warnings
+  * kernel: set Rust Edition to 2021
+  * logger: fix clippy warnings
+  * logger: update code to Rust 2021
+  * polly: fix clippy warnings
+  * polly: set Rust Edition to 2021
+  * utils: fix clippy warnings
+  * utils: set Rust Edition to 2021
+  * devices: fix clippy warnings
+  * devices: set Rust Edition to 2021
+  * cpuid: fix clippy warnings
+  * cpuid: update code to Rust 2021
+  * arch: fix clippy warnings
+  * arch: update code to Rust 2021
+  * SEV: Ensure space for BIOS is always reserved
+  * SEV: Implement support for SEV-ES
+  * SEV: Increase the RAM of the examples to 2 GiB
+  * SEV: Add the SEV flag to the Makefiles
+  * SEV: Add a couple of examples fro libkrun-SEV
+  * SEV: Automatically detect AMD CPU model
+  * SEV: Implement support for Remote Attestation
+  * SEV: Teach init how to open a LUKS volume
+  * SEV: Add support for initramfs
+  * SEV: Import virtio-block support from Firecraker
+  * SEV: Initial plain SEV support
+  * SEV: Configure MTRR MSR
+  * SEV: Load qboot into the reset vector
+  * CI: use default Cargo features on tests
+
+-------------------------------------------------------------------
+Fri Aug  6 13:28:37 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Don't try follow library policy, libkrun is a plugin.
+
+-------------------------------------------------------------------
+Fri Mar 19 02:14:29 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- enable only the arch-es that we know are supported (x86_64 and Arm64)
+- build fails with old versions of cargo. Set a minimum version
+
+-------------------------------------------------------------------
+Fri Mar 19 00:52:32 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- fixup the obscpio files for 0.1.7
+
+-------------------------------------------------------------------
+Fri Mar 19 00:36:40 UTC 2021 - dfaggioli@suse.com
+
+- Update to version 0.1.7:
+  * libkrun: Bump version to 0.1.7
+  * devices/fs: fix listxattr on macOS
+  * libkrun: Bump version to 0.1.6
+  * vmm: Add "no-kvmapf" to the kernel command line
+  * libkrun: Bump version to 0.1.5
+  * libkrun: Put env vars values between quotes
+  * init: Fix format warning in printf()
+  * init: Compile with -Wall
+  * Makefile: Have init.c as a prerequisite of init
+  * init: Fix the perror() messages
+
+-------------------------------------------------------------------
+Fri Mar 19 00:17:49 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- there's no libkrunfw for i586 so exclude it here as well
+
+-------------------------------------------------------------------
+Sat Feb 27 04:40:58 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Set all services to disabled
+
+-------------------------------------------------------------------
+Thu Feb 18 07:54:29 UTC 2021 - dmacvicar@suse.com
+
+- Update to version v0.1.4:
+  * libkrun: Put env vars values between quotes
+  * init: Fix format warning in printf()
+  * init: Compile with -Wall
+  * Makefile: Have init.c as a prerequisite of init
+  * init: Fix the perror() messages
+  * examples: Introduce the "rootfs" make target
+  * README: Mention the C Library static on requirements
+  * libkrun: Fix type of arguments mapped_volumes and port_map
+  * libkrun: Add support for setting RLIMITs in the guests
+  * README.md: Add instructions for building under macOS
+
+-------------------------------------------------------------------
+Thu Feb 18 00:01:04 UTC 2021 - Duncan Mac-Vicar <duncan@mac-vicar.eu>
+
+- Initial package for 0.1.4
+  Based on Fedora package from Sergio Lopez <slp@redhat.com>
+

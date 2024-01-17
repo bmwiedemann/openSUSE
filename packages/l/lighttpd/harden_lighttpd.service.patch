@@ -1,0 +1,24 @@
+Index: lighttpd-1.4.64/doc/systemd/lighttpd.service
+===================================================================
+--- lighttpd-1.4.64.orig/doc/systemd/lighttpd.service
++++ lighttpd-1.4.64/doc/systemd/lighttpd.service
+@@ -3,6 +3,19 @@ Description=Lighttpd Daemon
+ After=network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=read-only
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ PIDFile=/run/lighttpd.pid
+ ExecStartPre=/usr/sbin/lighttpd -tt -f /etc/lighttpd/lighttpd.conf

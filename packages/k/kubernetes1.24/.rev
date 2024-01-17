@@ -1,0 +1,110 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ff44f51716a932e7aad567c58bedfa9</srcmd5>
+    <version>1.24.0</version>
+    <time>1655396437</time>
+    <user>dimstar_suse</user>
+    <comment>jfkw is now in charge :)</comment>
+    <requestid>982779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e5f5796bd47446f15a9d7d30546c76f</srcmd5>
+    <version>1.24.3</version>
+    <time>1658396110</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.24.3:
+- Require only BuildRequires: golang(API) = 1.18 pinned Go major version.
+  Remove potentially conflicting BuildRequires: go &gt;= x.y.z.
+  The plan for future updates is BuildRequires: golang(API) &gt;= 1.18
+  minimum Go major version. (forwarded request 990344 from jfkw)</comment>
+    <requestid>990408</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>594558a6b975ea87617fb60868a85896</srcmd5>
+    <version>1.24.11</version>
+    <time>1678707639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070751</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a8b1ea6d502edd7be2b22680168360e7</srcmd5>
+    <version>1.24.12</version>
+    <time>1680209474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075489</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c6444b45aaed0b5e6948eb671374812a</srcmd5>
+    <version>1.24.12</version>
+    <time>1681306496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078718</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c7d1c3932acab7e62fcfe5a531cd220b</srcmd5>
+    <version>1.24.13</version>
+    <time>1681470828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079331</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>742f33e3adc5bdde53b1ad224f02c069</srcmd5>
+    <version>1.24.13</version>
+    <time>1682618547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083261</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a83f24bdaa33796adabea60e5b16d9aa</srcmd5>
+    <version>1.24.14</version>
+    <time>1686576399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092435</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9bdc0947db087f09d8d6f3a3fdfb0a5</srcmd5>
+    <version>1.24.15</version>
+    <time>1686927264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093312</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0de9effec49dbc8be34045aebf0adfae</srcmd5>
+    <version>1.24.15</version>
+    <time>1687272548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093893</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a97bb4532896a48a4eec8052a63ef749</srcmd5>
+    <version>1.24.16</version>
+    <time>1690469496</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100845</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06f1976ffb168bd4aa37600c8c75e7cb</srcmd5>
+    <version>1.24.17</version>
+    <time>1696188122</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112625</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0487bbb5763ca4f60c43803416d78fbb</srcmd5>
+    <version>1.24.17</version>
+    <time>1704753916</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137476</requestid>
+  </revision>
+</revisionlist>

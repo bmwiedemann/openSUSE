@@ -1,0 +1,5 @@
+<package name="gontributions" project="openSUSE:Factory">
+  <title>gontributions</title>
+  <description></description>
+  <devel project="utilities" package="gontributions"/>
+</package>

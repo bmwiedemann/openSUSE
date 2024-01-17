@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e297dc66f67b774cc4da95e1ae36aa61</srcmd5>
+    <version>0.1.3</version>
+    <time>1562056671</time>
+    <user>dimstar_suse</user>
+    <comment>I need this package as a dependency of rubygem-fog-libvirt.</comment>
+    <requestid>709712</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a2789da40a9aabbd3b05055149df9ee8</srcmd5>
+    <version>0.1.4</version>
+    <time>1644273470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>950623</requestid>
+  </revision>
+</revisionlist>

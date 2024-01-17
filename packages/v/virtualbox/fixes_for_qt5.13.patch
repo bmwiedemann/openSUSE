@@ -1,0 +1,49 @@
+Index: VirtualBox-7.0.12/include/VBox/VBoxGL2D.h
+===================================================================
+--- VirtualBox-7.0.12.orig/include/VBox/VBoxGL2D.h
++++ VirtualBox-7.0.12/include/VBox/VBoxGL2D.h
+@@ -123,7 +123,7 @@ typedef GLvoid (APIENTRY *PFNVBOXVHWA_UN
+ /* GL_ARB_pixel_buffer_object*/
+ #ifndef Q_WS_MAC
+ /* apears to be defined on mac */
+-typedef ptrdiff_t GLsizeiptr;
++typedef long int GLsizeiptr;
+ #endif
+ 
+ #ifndef GL_READ_ONLY
+Index: VirtualBox-7.0.12/src/VBox/Additions/3D/mesa/mesa-21.3.8/include/GL/glext.h
+===================================================================
+--- VirtualBox-7.0.12.orig/src/VBox/Additions/3D/mesa/mesa-21.3.8/include/GL/glext.h
++++ VirtualBox-7.0.12/src/VBox/Additions/3D/mesa/mesa-21.3.8/include/GL/glext.h
+@@ -466,7 +466,12 @@ GLAPI void APIENTRY glBlendEquation (GLe
+ 
+ #ifndef GL_VERSION_1_5
+ #define GL_VERSION_1_5 1
++#include <QtCore/qglobal.h>
++#if __BITS_PER_LONG != 64
+ typedef khronos_ssize_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ typedef khronos_intptr_t GLintptr;
+ #define GL_BUFFER_SIZE                    0x8764
+ #define GL_BUFFER_USAGE                   0x8765
+Index: VirtualBox-7.0.12/src/VBox/Devices/Graphics/vmsvga_glext/glext.h
+===================================================================
+--- VirtualBox-7.0.12.orig/src/VBox/Devices/Graphics/vmsvga_glext/glext.h
++++ VirtualBox-7.0.12/src/VBox/Devices/Graphics/vmsvga_glext/glext.h
+@@ -4680,6 +4680,14 @@ GLAPI void APIENTRY glWeightuivARB (GLin
+ GLAPI void APIENTRY glWeightPointerARB (GLint size, GLenum type, GLsizei stride, const void *pointer);
+ GLAPI void APIENTRY glVertexBlendARB (GLint count);
+ #endif
++#ifndef GL_VERSION_1_5
++/* GL types for handling large vertex buffer objects */
++typedef ptrdiff_t GLintptr;
++#if __BITS_PER_LONG != 64
++typedef ptrdiff_t GLsizeiptr;
++#else
++typedef long int GLsizeiptr;
++#endif
+ #endif /* GL_ARB_vertex_blend */
+ 
+ #ifndef GL_ARB_vertex_buffer_object

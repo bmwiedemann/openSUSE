@@ -1,0 +1,35 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Sep 28 14:54:58 2022 +0200
+Subject: H5O_dtype_decode_helper: Parent of enum needs to have same size as enum itself
+Patch-mainline: Not yet
+Git-repo: ssh://eich@192.168.122.1:/home/eich/sources/HPC/hdf5
+Git-commit: d39a27113ef75058f236b0606a74b4af5767c4e7
+References: 
+
+The size of the enumeration values is determined by the size of the parent.
+Functions accessing the enumeration values use the size of the enumartion
+to determine the size of each element and how much data to copy. Thus the
+size of the enumeration and its parent need to match.
+Check here to avoid unpleasant surprises later.
+
+This fixes CVE-2018-14031.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5Odtype.c | 3 +++
+ 1 file changed, 3 insertions(+)
+diff --git a/src/H5Odtype.c b/src/H5Odtype.c
+index 9af79f4e9a..dc2b904362 100644
+--- a/src/H5Odtype.c
++++ b/src/H5Odtype.c
+@@ -472,6 +472,9 @@ H5O__dtype_decode_helper(unsigned *ioflags /*in,out*/, const uint8_t **pp, H5T_t
+             if (H5O__dtype_decode_helper(ioflags, pp, dt->shared->parent) < 0)
+                 HGOTO_ERROR(H5E_DATATYPE, H5E_CANTDECODE, FAIL, "unable to decode parent datatype")
+ 
++            if (dt->shared->parent->shared->size != dt->shared->size)
++                HGOTO_ERROR(H5E_DATATYPE, H5E_CANTDECODE, FAIL, "ENUM size does not match parent")
++
+             /* Check if the parent of this enum has a version greater than the
+              * enum itself. */
+             H5O_DTYPE_CHECK_VERSION(dt, version, dt->shared->parent->shared->version, ioflags, "enum", FAIL)

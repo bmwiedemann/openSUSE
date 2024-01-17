@@ -1,0 +1,76 @@
+Index: httpd-2.4.46/config.layout
+===================================================================
+--- httpd-2.4.46.orig/config.layout	2020-11-11 11:02:08.957535301 +0100
++++ httpd-2.4.46/config.layout	2020-11-11 11:03:47.118083192 +0100
+@@ -178,28 +178,52 @@
+     proxycachedir: ${localstatedir}/proxy
+ </Layout>
+ 
+-#   SuSE 6.x layout
+-<Layout SuSE>
+-    prefix:        /usr
+-    exec_prefix:   ${prefix}
+-    bindir:        ${prefix}/bin
+-    sbindir:       ${prefix}/sbin
+-    libdir:        ${prefix}/lib
+-    libexecdir:    ${prefix}/lib/apache
+-    mandir:        ${prefix}/share/man
+-    sysconfdir:    /etc/httpd
+-    datadir:       /usr/local/httpd
+-    installbuilddir: ${datadir}/build
+-    errordir:      ${datadir}/error
+-    iconsdir:      ${datadir}/icons
++#   SUSE (32 bit system)
++<Layout SUSE>
++    prefix:        /srv/www
++    exec_prefix:   /usr
++    bindir:        ${exec_prefix}/bin
++    sbindir:       ${exec_prefix}/sbin
++    libdir:        ${exec_prefix}/lib
++    libexecdir:    ${exec_prefix}/lib/apache2${MPM_SUFFIX}
++    mandir:        ${exec_prefix}/share/man
++    sysconfdir:    /etc/apache2
++    datadir:       ${prefix}
++    installbuilddir: ${exec_prefix}/share/apache2/build
++    errordir:      ${exec_prefix}/share/apache2/error
++    iconsdir:      ${exec_prefix}/share/apache2/icons
+     htdocsdir:     ${datadir}/htdocs
+-    manualdir:     ${datadir}/manual
++    manualdir:     ${exec_prefix}/share/apache2/manual
+     cgidir:        ${datadir}/cgi-bin
+-    includedir:    ${prefix}/include/apache
+-    localstatedir: /var/lib/httpd
++    includedir:    ${exec_prefix}/include/apache2${MPM_SUFFIX}
++    localstatedir: /var/lib/apache2
+     runtimedir:    /var/run
+-    logfiledir:    /var/log/httpd
+-    proxycachedir: /var/cache/httpd
++    logfiledir:    /var/log/apache2
++    proxycachedir: /var/cache/apache2
++</Layout>
++
++#   SUSE (64 bit system)
++<Layout SUSE_64>
++    prefix:        /srv/www
++    exec_prefix:   /usr
++    bindir:        ${exec_prefix}/bin
++    sbindir:       ${exec_prefix}/sbin
++    libdir:        ${exec_prefix}/lib64
++    libexecdir:    ${exec_prefix}/lib64/apache2${MPM_SUFFIX}
++    mandir:        ${exec_prefix}/share/man
++    sysconfdir:    /etc/apache2
++    datadir:       ${prefix}
++    installbuilddir: ${exec_prefix}/share/apache2/build
++    errordir:      ${exec_prefix}/share/apache2/error
++    iconsdir:      ${exec_prefix}/share/apache2/icons
++    htdocsdir:     ${datadir}/htdocs
++    manualdir:     ${exec_prefix}/share/apache2/manual
++    cgidir:        ${datadir}/cgi-bin
++    includedir:    ${exec_prefix}/include/apache2${MPM_SUFFIX}
++    localstatedir: /var/lib/apache2
++    runtimedir:    /var/run
++    logfiledir:    /var/log/apache2
++    proxycachedir: /var/cache/apache2
+ </Layout>
+ 
+ #   BSD/OS layout

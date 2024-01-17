@@ -1,0 +1,5 @@
+<package name="software-o-o-launcher" project="openSUSE:Factory">
+  <title>A simple xdg-open launcher for https://software.opensuse.org</title>
+  <description>Many users are not aware of the service and a simple menu item would help them find it while looking for an additional software.</description>
+  <devel project="X11:Utilities" package="software-o-o-launcher"/>
+</package>

@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c0e123154654837a443a06d0f50fcee</srcmd5>
+    <version>1.22.1</version>
+    <time>1679416903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073143</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb16887dfbbf49c5a9a3546bc0a65d45</srcmd5>
+    <version>1.24</version>
+    <time>1689710043</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.24:
+  * Add exit codes for an IBM Z OS, named 'zos'
+  * Goreleaser pipeline to build more archs and make release
+    workflow more reliable
+  * AWS module try to use AWS_VAULT when AWS_PROFILE is not set
+  * Use altermative prompt from python venv
+  * Background tasks should use --no-optional-locks to prevent
+    issues with other tools running at the same time.
+  * Add &quot;git branch&quot; symbol to gitlite module (if git mode is not
+    &quot;compact&quot;)</comment>
+    <requestid>1098928</requestid>
+  </revision>
+</revisionlist>

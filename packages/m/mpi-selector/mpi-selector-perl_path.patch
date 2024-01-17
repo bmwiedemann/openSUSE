@@ -1,0 +1,19 @@
+diff -u mpi-selector-1.0.3.orig/mpi-selector.in mpi-selector-1.0.3/mpi-selector.in
+--- mpi-selector-1.0.3.orig/mpi-selector.in	2009-12-29 18:52:49.000000000 +0100
++++ mpi-selector-1.0.3/mpi-selector.in	2022-10-05 10:02:26.130874900 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ #
+ # Copyright (c) 2007 Cisco Systems, Inc.  All rights reserved.
+ #
+diff -u mpi-selector-1.0.3.orig/mpi-selector-menu mpi-selector-1.0.3/mpi-selector-menu
+--- mpi-selector-1.0.3.orig/mpi-selector-menu	2009-12-29 18:52:49.000000000 +0100
++++ mpi-selector-1.0.3/mpi-selector-menu	2022-10-05 10:01:18.838421798 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ #
+ # Copyright (c) 2007 Cisco Systems, Inc.  All rights reserved.
+ #
+Only in mpi-selector-1.0.3: mpi-selector-menu~

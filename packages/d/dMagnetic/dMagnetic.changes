@@ -1,0 +1,100 @@
+-------------------------------------------------------------------
+Fri Apr 28 08:04:40 UTC 2023 - Deepthi Yadabettu Venkatachala <deepthi.venkatachala@suse.com>
+
+- Update to 0.36:
+  * The "Welcome interested developers" release!
+  * Not that many features which are of use to the casual gamer, but
+    under the hood, the code has matured. Now it is even possible to
+    build a backend library to run the magic of Magnetic Scrolls
+    with 3rd party frontends!
+-------------------------------------------------------------------
+Sat Jan 28 19:40:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.35:
+  * Lots of cleanup. 
+  * The memory consumption was reduced 
+  * the interface between the frontend and the engine has gotten cleaner
+  * more stable savegame for Atari and Apple
+ 
+-------------------------------------------------------------------
+Thu Jan  5 14:18:21 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.34
+  * moved man page to section 6
+  * bugfixes and documentation update
+
+-------------------------------------------------------------------
+Mon Mar  1 07:12:35 UTC 2021 - Enno Gotthold <egotthold@suse.com>
+
+- Update to 0.30
+  This is a code cleanup release. It includes lots of bug fixes. For example:
+  A picture from 'Fish!' was missing. What a shame. In addtion to this, I also
+  took the liberty of cleaning up the website a little bit. Hope you like it.
+- Update to 0.29
+  Welcome to the "Night before Christmas" Release of dMagnetic! This one allows
+  players to use ATR images from the AtariXL and Atari800 releases of the games.
+  In addtition to this, a new graphics vmode has been added: UTF. It works on
+  more terminals than the sixel mode and allows more people to enjoy the
+  beautiful pictures! 
+
+-------------------------------------------------------------------
+Sun Dec 20 14:38:18 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28:
+  * This is the Spectrum and the Archimedes release. Users now have the
+  opportunity to play Magnetic Scrolls' games from the Spectrum128,
+  Spectrum+3 and the Acorn Archimedes disk images. What remarkable pieces of
+  hardware they were 
+
+-------------------------------------------------------------------
+Mon Nov  9 06:38:44 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Update to 0.27
+  *  Unfortunately, the last release (0.26) had a severe bug. Which
+     allowed Amstrad CPC enthusiasts to play the old games, but
+     nobody else. This bug has been fixed now.  
+
+-------------------------------------------------------------------
+Thu Aug  6 10:39:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Put up a more sensible description.
+
+-------------------------------------------------------------------
+Fri Jul 31 15:52:19 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Corrected specfile install command to let rpm take care of the
+  compression (see rq#823547#status-history-8597198 )
+
+-------------------------------------------------------------------
+Mon Jul 27 08:02:23 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.25:
+  * Internal RGB channels upgraded from 3 to 10 bit
+
+-------------------------------------------------------------------
+Mon Jul 13 07:39:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24:
+  No changes provided
+
+-------------------------------------------------------------------
+Mon Jan 13 07:36:24 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Align the desc to the authors wishes 
+
+-------------------------------------------------------------------
+Thu Jan  2 14:25:09 UTC 2020 - Enno Gotthold <egotthold@suse.com>
+
+- Update to Version 0.19
+- Remove unecessary dependency 
+
+-------------------------------------------------------------------
+Tue Jul 16 10:54:40 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Extended Specfile to perform an acutal build with the files. 
+
+-------------------------------------------------------------------
+Tue Jul 16 06:52:40 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Added project sources
+- Added Specfile

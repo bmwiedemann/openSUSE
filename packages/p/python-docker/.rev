@@ -1,0 +1,282 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0863c38f0ed4ef2af42dc99515c41310</srcmd5>
+    <version>2.4.2</version>
+    <time>1506870111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>529920</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1bb8c4fa16767405d8846297c3093c12</srcmd5>
+    <version>2.5.1</version>
+    <time>1507897102</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533368</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ff2fd6a59fc50992405575f01baaa163</srcmd5>
+    <version>2.6.1</version>
+    <time>1515623399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540467</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2c577486d43e757af53c21c57aa0161</srcmd5>
+    <version>3.3.0</version>
+    <time>1525343593</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.3.0:
+  * Too many changes to name see upstream tag list:
+    https://github.com/docker/docker-py/releases
+- Make sure to run tests and properly name all the requirements</comment>
+    <requestid>603010</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>bcfd35fbb7400c6e597e0e064cd61ca0</srcmd5>
+    <version>3.3.0</version>
+    <time>1526371767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603832</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5a7527300037dd0c3103b2b68dd601de</srcmd5>
+    <version>3.4.1</version>
+    <time>1531135832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621580</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3b66c1499d7862d862cfe2371aec5db2</srcmd5>
+    <version>3.4.1</version>
+    <time>1531232215</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for older python 3.x versions</comment>
+    <requestid>621776</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c8bc896bb70f130fa0e20ec2c776ad4a</srcmd5>
+    <version>3.4.1</version>
+    <time>1535705175</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on older releases by not using new pytest syntax
+  for test selection</comment>
+    <requestid>632141</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>be354682ee1a6e9cd59d125f1795cfca</srcmd5>
+    <version>3.5.1</version>
+    <time>1540987952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643580</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>da4605ad49362f060713b9dda647fd2c</srcmd5>
+    <version>3.5.1</version>
+    <time>1542203041</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the fdupes call to match up reality</comment>
+    <requestid>648938</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c56ae9327cd4674b17fb0828e7bae405</srcmd5>
+    <version>3.7.0</version>
+    <time>1548335425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666190</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e13717c0f2f1ab52217f17a9f1287230</srcmd5>
+    <version>3.7.0</version>
+    <time>1552207051</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682605</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>358163a8708d2bb591c8414a48f5905e</srcmd5>
+    <version>3.7.1</version>
+    <time>1553809706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.1:
+  * Set a different default number (which is now 9) for SSH pools
+  * Adds a BaseHTTPAdapter with a close method to ensure that the pools is clean on close()
+  * Makes SSHHTTPAdapter reopen a closed connection when needed like the others</comment>
+    <requestid>688730</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>68b5dead3800bdb5a4057b94e3fc296d</srcmd5>
+    <version>3.7.2</version>
+    <time>1554189771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.2:
+  * Fix base_url to keep TCP protocol on utils.py by letting the responsability of changing the
+    protocol to parse_host afterwards, letting base_url with the original value.
+  * XFAIL test_attach_stream_and_cancel on TLS</comment>
+    <requestid>690379</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>288f43ed63c089e80fd17053eef70cc4</srcmd5>
+    <version>4.0.2</version>
+    <time>1564414289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719521</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b66581e1aa9c6b0bd1587809d5e35b04</srcmd5>
+    <version>4.1.0</version>
+    <time>1575282511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751832</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cff05272c801010cc8ca57085603e3f7</srcmd5>
+    <version>4.2.0</version>
+    <time>1581456232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772524</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bfaa69b27f771e419337a299fb69bfba</srcmd5>
+    <version>4.2.1</version>
+    <time>1592245716</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.1:
+  - Add option on when to use `tls` on Context constructor
+  - Make context orchestrator field optional</comment>
+    <requestid>814541</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>78f8a47094fa8c5b99a1eddc6ed51a17</srcmd5>
+    <version>4.2.2</version>
+    <time>1594623979</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.2:
+  - Fix context load for non-docker endpoints</comment>
+    <requestid>819986</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2013f79bebfccb8804e88cb2226bf107</srcmd5>
+    <version>4.4.0</version>
+    <time>1608729561</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  - Add an alternative SSH connection to the paramiko one, based on shelling out to the SSh client. Similar to the behaviour of Docker cli
+  - Default image tag to `latest` on `pull`
+  - Fix plugin model upgrade
+  - Fix examples URL in ulimits
+  - Improve exception messages for server and client errors
+  - Bump cryptography from 2.3 to 3.2
+  - Set default API version to `auto`
+  - Fix conversion to bytes for `float`
+  - Support OpenSSH `identityfile` option
+  - Add `DeviceRequest` type to expose host resources such as GPUs
+  - Add support for `DriverOpts` in EndpointConfig
+  - Disable compression by default when using container.get_archive method
+  - Update default API version to v1.39
+  - Update test engine version to 19.03.12</comment>
+    <requestid>857122</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6e0f43e557099194cc4404c09dadd36a</srcmd5>
+    <version>4.4.4</version>
+    <time>1615489843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878139</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c4165b556db32462f139ded792353fdd</srcmd5>
+    <version>5.0.3</version>
+    <time>1639340858</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.3:
+  * Add cap_add and cap_drop parameters to service create and ContainerSpec
+  * Add templating parameter to config create
+  * Bump urllib3 to 1.26.5
+  * Bump requests to 2.26.0
+  * Remove support for Python 2.7
+  * Make Python 3.6 the minimum version supported</comment>
+    <requestid>939988</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>af4c5d8bc9bb86707da9f102ad4a4884</srcmd5>
+    <version>5.0.3</version>
+    <time>1647618141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962628</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>258a974bcae55063d0eee2184fbf336e</srcmd5>
+    <version>5.0.3</version>
+    <time>1665591946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010132</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>98bbb0d79ece74589750e1bf802ac87d</srcmd5>
+    <version>5.0.3</version>
+    <time>1683728324</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085822</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9d1af1dd761c2091155a10b07c6e4fc1</srcmd5>
+    <version>6.1.3</version>
+    <time>1687796143</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094902 from ojkastl_buildservice
+
+large update to 6.1.3 to fix builds; recreated spec file using py2pack</comment>
+    <requestid>1095239</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>18238435c6fea63c60ed664be4d4a394</srcmd5>
+    <version>7.0.0</version>
+    <time>1703800865</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.0:
+  * Removed SSL version (`ssl_version`) and explicit hostname
+    check (`assert_hostname`) options (#3185)
+  * Python 3.7+ supports TLSv1.3 by default
+  * Websocket support is no longer included by default (#3123)
+  * Use `pip install docker[websockets]` to include `websocket-
+    client` dependency
+  * By default, `docker-py` hijacks the TCP connection and does
+    not use Websockets
+  * Websocket client is only required to use
+    `attach_socket(container, ws=True)`
+  * Python 3.7 no longer supported (reached end-of-life June
+    2023) (#3187)
+  * Python 3.12 support (#3185)
+  * Full `networking_config` support for `containers.create()`
+  * Replaces `network_driver_opt` (added in 6.1.0)
+  * Add `health()` property to container that returns status
+    (e.g. `unhealthy`)
+  * Add `pause` option to `container.commit()` (#3159)
+  * Add support for bind mount propagation (e.g. `rshared`,
+    `private`)
+  * Add support for `filters`, `keep_storage`, and `all` in
+    `prune_builds()` on API v1.39+ (#3192)
+  * Consistently return `docker.errors.NotFound` on 404 responses
+  * Validate tag format before push (#3191)
+
+- Bump required version of pycreds to 0.4.0 (sync with requirements.txt)
+- update to 3.7.0 (mandatory for latest docker-compose)
+- add python-dockerpycreds dependency in the spec file
+  rebase hide_py_pckgmgmt.patch</comment>
+    <requestid>1135242</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+---
+ src/lsz.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- lrzsz-0.12.20.orig/src/lsz.c
++++ lrzsz-0.12.20/src/lsz.c
+@@ -839,10 +839,10 @@ send_pseudo(const char *name, const char
+ 	lfd=0;
+ 	do {
+ 		if (lfd++==10) {
+-			free(tmp);
+ 			vstringf (_ ("send_pseudo %s: cannot open tmpfile %s: %s"),
+ 					 name, tmp, strerror (errno));
+ 			vstring ("\r\n");
++			free(tmp);
+ 			return 1;
+ 		}
+ 		sprintf(tmp+plen,"%s.%lu.%d",name,(unsigned long) getpid(),lfd);

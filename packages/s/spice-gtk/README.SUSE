@@ -1,0 +1,4 @@
+For the spice USB device passthrough feature to work your user account needs
+to be a member of the 'kvm' group. This is required for running the
+spice-client-glib-usb-acl-helper helper program. It is a security precaution
+to not make this privileged program accessible to all users in the system.

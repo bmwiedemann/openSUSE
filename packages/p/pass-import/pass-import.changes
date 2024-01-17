@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue Jan  9 14:21:56 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.4:
+  - Added a --dry-run option #188
+  - Dropped support for python 3.7
+  - The manpage is now generated during the release
+    process.
+  - Automated release process.
+  - Fix KDBX import bug #190
+- Remove pandoc dependency, using pre-generated manpages.
+
+-------------------------------------------------------------------
+Tue Sep 20 19:21:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.3:
+  - Added
+    - Added password audit support.
+    - Added haveibeenpwned.com audit integration (require the
+      --pwned option).
+    - Add support for pwdsphinx #183
+    - Add support for nordpass #178
+    - Add support for 1Password8 #169
+    - Add support for SafeInCloud #168
+    - Add support for Lastpass CLI (with lpass) import & export.
+    - Read OTP from 1Password's 1pif format #157
+    - Add support fot Bitwarden Organisation export in CSV &
+      JSON.
+  - Changed
+    - Support for python 3.10, dropped support for python 3.6
+    - Remove Travis CI in favor of Github Action.
+    - The man pages are now generated from markdown with pandoc.
+    - Various refractor, style and linter improvments.
+  - Fixed
+    - Fix KDBX export group creation #185
+    - Fix pykeepass use of find_groups path parameter #182
+    - Honor sroot in passwordstore exports #181
+    - As safety measure, terminate the GnuPG commandline #165
+    - Raise an exception upon invalid LastPass CSV data. #156
+    - Fix possible path corruption in deduplication. #154 #155
+    - Other various fixed on multiple password managers.
+- Exclude %{ix86}, we don't have pandoc.
+
+-------------------------------------------------------------------
+Sun May 29 00:00:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for pass-import 3.2.

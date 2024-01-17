@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>642b505e72f03643c9decfaa998093a1</srcmd5>
+    <version>1.2.8</version>
+    <time>1600879210</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain growlight in Factory</comment>
+    <requestid>830333</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>59d37680d574b52dc7e39c4e0a3a8ece</srcmd5>
+    <version>1.2.11</version>
+    <time>1600956838</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>836380</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65ec6e93afc946ad60a940674b5139ef</srcmd5>
+    <version>1.2.14</version>
+    <time>1602762631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841639</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a7c24d856b0e235c8bcaa8a1534e37a</srcmd5>
+    <version>1.2.16</version>
+    <time>1603203241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842619</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe86a7919a08be4ddecbdef22422bac8</srcmd5>
+    <version>1.2.17</version>
+    <time>1603821565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844111</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>90561310cb6fea798018c82737383e67</srcmd5>
+    <version>1.2.18</version>
+    <time>1605012364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847334</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e94f633f3b271e294970521e7bd4463b</srcmd5>
+    <version>1.2.23</version>
+    <time>1607548360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853713</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2ec30c835d0f974491ab109681e85e54</srcmd5>
+    <version>1.2.27</version>
+    <time>1611163608</time>
+    <user>dimstar_suse</user>
+    <comment>- build without pandoc on 32bit platforms 
+
+- Update to version 1.2.27
+  * Upstream does not provide a changelog</comment>
+    <requestid>864422</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9e602d4dfd1211d6161e8895e45fa73</srcmd5>
+    <version>1.2.28</version>
+    <time>1613463547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872133</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>665dcb0a87a536a79ccd43e508023969</srcmd5>
+    <version>1.2.31</version>
+    <time>1615213154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877585</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7e0d0e53e6426051e976b6fba5828ba4</srcmd5>
+    <version>1.2.31</version>
+    <time>1617723073</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883226</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1c2e730f430321fc7ca8a3897afbd38d</srcmd5>
+    <version>1.2.32</version>
+    <time>1618694717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886301</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b286504adce7fbb709668e19f2ab3177</srcmd5>
+    <version>1.2.33</version>
+    <time>1621201302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893344</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e261eddbf8e09a5cee652517b381a8f</srcmd5>
+    <version>1.2.35</version>
+    <time>1630093434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914540</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d4a1c6073cea91750ad4db612abd6407</srcmd5>
+    <version>1.2.37</version>
+    <time>1637228087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932043</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0c12774f45a1bb6243625c065692b579</srcmd5>
+    <version>1.2.38</version>
+    <time>1671455281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043666</requestid>
+  </revision>
+</revisionlist>

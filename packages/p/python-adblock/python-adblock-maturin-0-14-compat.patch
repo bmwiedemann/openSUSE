@@ -1,0 +1,47 @@
+diff -ru python-adblock-0.6.0/Cargo.toml python-adblock/Cargo.toml
+--- python-adblock-0.6.0/Cargo.toml	2022-07-18 00:57:45.000000000 +0200
++++ python-adblock/Cargo.toml	2023-03-28 09:56:10.191554072 +0200
+@@ -9,15 +9,6 @@
+ homepage = "https://github.com/ArniDagur/python-adblock"
+ repository = "https://github.com/ArniDagur/python-adblock"
+ 
+-[package.metadata.maturin]
+-classifier = [
+-    "Programming Language :: Python",
+-    "Programming Language :: Rust",
+-    "License :: OSI Approved :: MIT License",
+-    "License :: OSI Approved :: Apache Software License",
+-]
+-requires-python = ">=3.7"
+-
+ [profile.release]
+ debug = true
+ 
+diff -ru python-adblock-0.6.0/pyproject.toml python-adblock/pyproject.toml
+--- python-adblock-0.6.0/pyproject.toml	2022-07-18 00:57:45.000000000 +0200
++++ python-adblock/pyproject.toml	2023-03-28 09:56:06.079472470 +0200
+@@ -15,3 +15,12 @@
+ [build-system]
+ requires = ["maturin>=0.12,<0.13"]
+ build-backend = "maturin"
++
++[package.metadata.maturin]
++classifier = [
++    "Programming Language :: Python",
++    "Programming Language :: Rust",
++    "License :: OSI Approved :: MIT License",
++    "License :: OSI Approved :: Apache Software License",
++]
++requires-python = ">=3.7"
+diff -ru python-adblock-0.6.0/tests/test_metadata.py python-adblock/tests/test_metadata.py
+--- python-adblock-0.6.0/tests/test_metadata.py	2022-07-18 00:57:45.000000000 +0200
++++ python-adblock/tests/test_metadata.py	2023-03-28 10:07:26.104151881 +0200
+@@ -57,7 +57,7 @@
+     Make sure that the Python interpreter we're running this test suite on
+     falls into the required Python range.
+     """
+-    with open("Cargo.toml", encoding="utf-8") as f:
++    with open("pyproject.toml", encoding="utf-8") as f:
+         cargo_toml = toml.loads(f.read())
+ 
+     required_python = cargo_toml["package"]["metadata"]["maturin"]["requires-python"]

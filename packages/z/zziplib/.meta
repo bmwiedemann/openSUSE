@@ -1,0 +1,6 @@
+<package name="zziplib" project="openSUSE:Factory">
+  <title>ZZipLib: Free Zip Compression Library with an Easy-to-Use API</title>
+  <description>ZZipLib is a library for dealing with zip and zip-like archives by
+using free algorithms of zlib.</description>
+  <devel project="devel:libraries:c_c++" package="zziplib"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="pulseaudio-equalizer" project="openSUSE:Factory">
+  <title>LADSPA plugin graphical user interface</title>
+  <description>GUI for PulseAudio's LADSPA interface using Steve Harris' Multiband EQ (mbeq_1197) plugin</description>
+  <devel project="multimedia:apps" package="pulseaudio-equalizer"/>
+</package>

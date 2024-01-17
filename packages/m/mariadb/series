@@ -1,0 +1,8 @@
+mariadb-10.2.4-logrotate.patch -p0
+mariadb-10.1.1-mysqld_multi-features.patch -p0
+mariadb-10.0.15-logrotate-su.patch -p0
+mariadb-10.2.4-fortify-and-O.patch -p0
+mariadb-10.2.19-link-and-enable-c++11-atomics.patch -p1
+mariadb-10.4.12-harden_setuid.patch -p1
+mariadb-10.4.12-fix-install-db.patch -p1
+fix-lock-rollback-assert-abort.patch

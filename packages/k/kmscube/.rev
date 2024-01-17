@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab6e9a47b24d0aa3526f4d4aac39e198</srcmd5>
+    <version>0.0.0.git1562664497.a12e306</version>
+    <time>1563018598</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial version 0.0.0.git1562664497.a12e306
+</comment>
+    <requestid>714830</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e099fe51c1794984696bf4e6b2062df5</srcmd5>
+    <version>0.0.0.git1562664497.a12e306</version>
+    <time>1563362431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715637</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>24796a1db5227001c07a5d09f701ece6</srcmd5>
+    <version>0.0.0.git1562664497.a12e306</version>
+    <time>1570557525</time>
+    <user>dimstar_suse</user>
+    <comment>- back to Mesa-libGLESv3-devel 
+
+- Buildrequire libglvnd-devel &gt;= 1.2.0 instead of Mesa-libGLESv3-devel
+  (workaround for broken buildservice)</comment>
+    <requestid>735977</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c36ab0f7fbe25f047189c563f2961ce2</srcmd5>
+    <version>0.0.0.git1585705428.4660a7d</version>
+    <time>1591654216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812642</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>98e3c96c0726bb9e7f2c46bb67c12201</srcmd5>
+    <version>0.0.0.git1612698153.9f63f35</version>
+    <time>1647532901</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962354</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ef2fd1c859edca069f303395466c020d</srcmd5>
+    <version>0.0.0.git20230926.96d63eb</version>
+    <time>1700772137</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128323</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Mon May  1 19:02:20 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
+
+- Don't catchall filelist
+- Clean dependencies
+
+-------------------------------------------------------------------
+Fri Apr 21 12:26:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Sun Jan 29 18:27:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Drop Python 3.6
+  * Add Python 3.11 support
+  * type hints added
+- use gh tarball for tests
+
+-------------------------------------------------------------------
+Mon Dec  5 12:45:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-py as test dependency
+
+-------------------------------------------------------------------
+Wed Jul 20 12:01:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- BuildRequire itself when building test flavour. 
+
+-------------------------------------------------------------------
+Mon Mar 14 10:47:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (bsc#1195916, bsc#1196696, jsc#PM-3356, jsc#SLE-23972)
+
+-------------------------------------------------------------------
+Tue Nov 10 08:00:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * fix version determination (thanks @florimondmanca)
+  * typing stubs (thanks @bluetech)
+
+-------------------------------------------------------------------
+Mon Aug 24 13:03:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Initial packaging (v1.0.1)
+- Build the tests separately because it deadlocks with pytest

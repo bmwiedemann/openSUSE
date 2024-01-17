@@ -1,0 +1,12 @@
+Index: include/consts
+===================================================================
+--- include/consts.orig
++++ include/consts
+@@ -115,6 +115,7 @@ ETC_PATHS="/etc /usr/local/etc"
+     FAIL2BANBINARY=""
+     FILEBINARY=""
+     FILEVALUE=""
++    FILE_NUM_TOTAL=0
+     FIND=""
+     FIREWALL_ACTIVE=0
+     FOUNDPATH=0

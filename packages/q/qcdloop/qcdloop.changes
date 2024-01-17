@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Tue Dec  6 10:10:40 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.9:
+  * Fixes bubble integrals [gh#scarrazza/qcdloop#22].
+- Re-base existing patch qcdloop-soversion.patch for updated
+  version.
+- Disable builds for ppc64 due to lack of quadmath on these
+  platforms.
+
+-------------------------------------------------------------------
+Fri Aug  7 14:35:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.5:
+  * Fixes gh#scarrazza/qcdloop#10.
+
+-------------------------------------------------------------------
+Sat Aug  1 21:26:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add patches:
+  * qcdloop-math-linking.patch: Explicitly link to math library to
+    fix linking error when linking with --Wl,no-undefined
+  * qcdloop-soversion.patch: Implement so versioning
+  * qcdloop-fix-conflicting-types.patch: Explicitly cast a
+    variable type to ensure consistency across build archs; fixes
+    build failures for i586
+  * qcdloop-remove-march-mtune-flags.patch: Drop march and mtune
+    flags being passed to the c++ compiler to enable building on
+    multiple archs.
+
+-------------------------------------------------------------------
+Wed Jul 22 08:54:45 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

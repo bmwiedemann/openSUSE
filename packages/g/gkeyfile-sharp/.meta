@@ -1,0 +1,5 @@
+<package name="gkeyfile-sharp" project="openSUSE:Factory">
+  <title>.NET/C# Bindings for GKeyFile</title>
+  <description>C#/CLI bindings for GKeyFile</description>
+  <devel project="Mono:Factory" package="gkeyfile-sharp"/>
+</package>

@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb4840b831f9b6fe37c9514f9b2ccda4</srcmd5>
+    <version>0.9.6</version>
+    <time>1549140557</time>
+    <user>coolo</user>
+    <comment>- Enabled test suite using GitHub tag source tarball
+- Added %license and %doc
+- Initial revision for v0.9.6
+</comment>
+    <requestid>669843</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cfec36d4f0204f74dd1375d41207e6c7</srcmd5>
+    <version>0.9.7</version>
+    <time>1584744907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786490</requestid>
+  </revision>
+</revisionlist>

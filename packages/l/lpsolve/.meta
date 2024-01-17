@@ -1,0 +1,7 @@
+<package name="lpsolve" project="openSUSE:Factory">
+  <title>A Mixed Integer Linear Programming (MILP) Solver</title>
+  <description>Mixed Integer Linear Programming (MILP) solver lpsolve solves pure
+linear, (mixed) integer/binary, semi-continuous and special ordered
+sets (SOS) models.</description>
+  <devel project="LibreOffice:Factory" package="lpsolve"/>
+</package>

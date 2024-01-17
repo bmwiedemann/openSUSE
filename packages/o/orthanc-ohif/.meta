@@ -1,0 +1,5 @@
+<package name="orthanc-ohif" project="openSUSE:Factory">
+  <title>OHIF-Viewer plugin for Orthanc</title>
+  <description></description>
+  <devel project="graphics" package="orthanc-ohif"/>
+</package>

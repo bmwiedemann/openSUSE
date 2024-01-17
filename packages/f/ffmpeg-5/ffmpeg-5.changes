@@ -1,0 +1,400 @@
+-------------------------------------------------------------------
+Wed Dec  6 08:50:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Copy codec list from ffmpeg-6
+
+-------------------------------------------------------------------
+Fri Nov 10 11:19:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.1.4:
+  * Updates and bugfixes to avcodecs, avformat and avfilters
+    mainly.
+- Drop patches fixed upstream:
+  * 0001-avcodec-libsvtav1-replace-vbv_bufsize-with-maximum_b.patch
+  * 0002-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
+  * 0003-avcodec-libsvtav1-only-set-max_buf_sz-if-both-bitrat.patch
+  * 0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch
+  * 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 07:59:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Add 0001-avcodec-x86-mathops-clip-constants-used-with-shift-i.patch
+  to resolve a build failure on 15.4/15.5.
+
+-------------------------------------------------------------------
+Thu Jun 29 12:26:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avcodec-libsvtav1-replace-vbv_bufsize-with-maximum_b.patch,
+  0002-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch,
+  0003-avcodec-libsvtav1-only-set-max_buf_sz-if-both-bitrat.patch,
+  0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch
+
+-------------------------------------------------------------------
+Wed Apr 19 20:09:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.1.3:
+  * avcodec/012v: Order operations for odd size handling
+  * avcodec/alsdec:
+    - Check bits left before block decoding in non multi channel
+      coding loop
+    - The minimal block is at least 7 bits
+  * avcodec/atrac3plus: reorder channels to match the output layout
+  * avcodec/audiotoolboxenc: return AVERROR_EXTERNAL immediately
+    when encode error
+  * avcodec/bink:
+    - Avoid undefined out of array end pointers in
+      binkb_decode_plane()
+    - Fix off by 1 error in ref end
+  * avcodec/eac3dec: avoid float noise in fixed mode addition to
+    overflow
+  * avcodec/eatgq: : Check index increments in tgq_decode_block()
+  * avcodec/escape124:
+    - Fix signdness of end of input check
+    - Fix some return codes
+  * avcodec/ffv1dec:
+    - Check that num h/v slices is supported
+    - Fail earlier if prior context is corrupted
+  * avcodec/ffv1dec: restructure slice coordinate reading a bit
+  * avcodec/h274: fix include
+  * avcodec/libjxldec:
+    - Fix gamma22 and gamma28 recognition
+    - Avoid hard failure with unspecified primaries
+  * avcodec/mjpegenc: take into account component count when
+    writing the SOF header size
+  * avcodec/mlpdec: Check max matrix instead of max channel in
+    noise check
+  * avcodec/motionpixels: Mask pixels to valid values
+  * avcodec/mpeg12dec:
+    - Check input size
+    - Use init_get_bits8 and check the return value
+  * avcodec/nvenc: fix vbv buffer size in cq mode
+  * avcodec/pictordec: Remove mid exit branch
+  * avcodec/pngdec:
+    - Check deloco index more exactly
+    - Dont skip/read chunk twice
+  * avcodec/rpzaenc: stop accessing out of bounds frame
+  * avcodec/scpr3: Check bx
+  * avcodec/scpr: Test bx before use
+  * avcodec/smcenc: stop accessing out of bounds frame
+  * avcodec/snowenc: Fix visual weight calculation
+  * avcodec/speedhq: Check buf_size to be big enough for DC
+  * avcodec/speexdec: Check channels > 2
+  * avcodec/sunrast: Fix maplength check
+  * avcodec/tests/snowenc:
+    - Fix 2nd test
+    - Return a failure if DWT/IDWT mismatches
+    - Unbreak DWT tests
+  * avcodec/tiff: Ignore tile_count
+  * avcodec/utils:
+    - Allocate a line more for VC1 and WMV3
+    - Ensure linesize for SVQ3
+    - Use 32pixel alignment for bink
+  * avcodec/videodsp_template: Adjust pointers to avoid undefined
+    pointer things
+  * avcodec/wavpack:
+    - Avoid undefined shift in get_tail()
+    - Check for end of input in wv_unpack_dsd_high()
+  * avcodec/xpmdec: Check size before allocation to avoid
+    truncation
+  * avcodec/aacdec: fix parsing streams with channel configuration
+    11
+  * avformat/id3v2: Check taglen in read_uslt()
+  * avformat/mov: Check samplesize and offset to avoid integer
+    overflow
+  * avformat/mxfdec: Use 64bit in remainder
+  * avformat/replaygain: avoid undefined / negative abs
+  * avformat/vividas: Check packet size
+  * avutil/tx: Use unsigned in ff_tx_fft_sr_combine() to avoid
+    undefined behavior
+  * hwcontext_vulkan: remove optional encode/decode extensions from
+    the list
+  * lavf/async: Fix ring_write return value
+  * lavu/vulkan: fix handle type for 32-bit targets
+  * libswscale: force a minimum size of the slide for bayer sources
+  * swscale/input: Use more unsigned intermediates
+  * swscale/output:
+    - Bias 16bps output calculations to improve non overflowing
+      range
+    - Bias 16bps output calculations to improve non overflowing
+      range for GBRP16/GBRPF32
+  * swscale: aarch64: Fix yuv2rgb with negative strides
+  * Use https for repository links
+  * vulkan: Fix win/i386 calling convention
+- Rebase patches with quilt.
+- Drop ffmpeg-CVE-2022-3964.patch: Fixed upstream.
+- Drop no-vk-video-decoding.patch: Upstream removed this optional
+  code.
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
+Thu Mar 16 18:11:17 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Obsolete old FFmpeg 5 libswresample4, otherwise they'll conflict
+
+-------------------------------------------------------------------
+Thu Mar 16 17:55:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Conflict with otherproviders(ffmpeg-tools).
+
+-------------------------------------------------------------------
+Mon Mar 13 11:54:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add soname.diff to get libswresample4 nonconflicting with ffmpeg-6.
+
+-------------------------------------------------------------------
+Thu Mar  9 09:48:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Actually enable libjxl backend
+
+-------------------------------------------------------------------
+Mon Feb 27 09:44:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add ``Requires: this-is-only-for-build-envs`` [boo#1208652]
+
+-------------------------------------------------------------------
+Tue Jan 31 16:03:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add no-vk-video-decoding.patch to resolve build failure
+  with Vulkan 1.3.239
+
+-------------------------------------------------------------------
+Fri Jan 17 11:01:25 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Merge ffmpeg-5-mini.spec with the main .spec file in order to
+  make building the _multibuild packages easier for the case the
+  package is named to be built for a specific distribution; an
+  example would be "A_tw-ffmpeg-5" in Packman.
+
+-------------------------------------------------------------------
+Thu Jan  5 12:57:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Provide a ffmpeg-5-mini-devel build recipe to help split
+  anticipated build cycles.
+- Reenable SDL2 for ffmpeg-5.spec. ffplay and -vf sdl should be
+  back. [boo#1206505]
+
+-------------------------------------------------------------------
+Mon Dec 12 21:18:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build for x86_64 subarchs the same way like for baseline 
+
+-------------------------------------------------------------------
+Thu Dec  8 11:27:56 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Enable librist support on TW: enables usage of RIST encoded MPEG-TS
+  streams and is used by OBS Studio
+
+-------------------------------------------------------------------
+Tue Dec  6 16:01:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop BuildRequire on SDL2 to break a dependency loop; with this,
+  /usr/bin/ffplay is no longer built.
+
+-------------------------------------------------------------------
+Wed Nov 16 01:32:19 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix
+  out of bounds read in update_block_in_prev_frame() (bsc#1205388).
+
+-------------------------------------------------------------------
+Sat Oct 15 17:22:52 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
+
+- Refresh Fedora OpenH264 dlopen patch and sources for OpenH264 2.3.1
+  * Patch: ffmpeg-dlopen-openh264.patch
+  * Source: ffmpeg-dlopen-headers.tar.xz
+  * Source: ffmpeg_get_dlopen_headers.sh
+
+-------------------------------------------------------------------
+Wed Oct  5 17:00:38 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Enable AMF conditionally
+
+-------------------------------------------------------------------
+Mon Sep 26 18:44:55 UTC 2022 - C J <c.j@tuta.io>
+
+- Update to release 5.1.2
+  * Add more field checks, add checks against overflows,
+    or outright use larger integer types.
+  * avformat/dashdec: Fix crash on invalid input/ENOMEM, fix leak
+  * lavc/videotoolbox: do not pass AVCodecContext to decoder
+    output callback
+  * lavc/pthread_frame: always transfer stashed hwaccel state
+  * avcodec/arm/sbcenc: avoid callee preserved vfp registers
+  * avformat/riffdec: don't unconditionally overwrite
+    WAVEFORMATEXTENSIBLE layout
+  * avfilter/vf_scale: overwrite the width and height expressions
+    with the original values
+  * lavc/pthread_frame: avoid leaving stale hwaccel state in
+    worker threads
+
+-------------------------------------------------------------------
+Sun Sep  4 11:45:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1.1
+  * avformat/asfdec_o: limit recursion depth in asf_read_unknown()
+  * libavformat/iff: Check for overflow in body_end calculation
+  * avformat/avidec: Prevent entity expansion attacks
+  * avcodec/h263dec: Sanity check against minimal I/P frame size
+  * avcodec/libvpx: fix assembling vp9 packets with alpha channel
+  * avcodec/libspeexdec: Fix use of uninitialized value
+  * avcodec/alac: don't fail if channels aren't set during init()
+    when extradata is valid
+  * avformat/mov: Check count sums in build_open_gop_key_points()
+    [CVE-2022-2566] [boo#1203441]
+
+-------------------------------------------------------------------
+Tue Jul 26 18:55:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable libjxl
+
+-------------------------------------------------------------------
+Sat Jul 23 15:29:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update ffmpeg-chromium.patch from upstream
+
+-------------------------------------------------------------------
+Sat Jul 23 08:35:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1
+  * AVIF image muxer support for the AV1-based image format
+  * JPEG-XL image support
+  * Removed the X-Video Motion Compensation (XvMC) hardware
+    acceleration
+  * IPFS/IPNS protocol support
+  * PCM-Bluray encoder support
+- Drop vmaf-trim-usr-local.patch (obsolete),
+  ffmpeg-openh264-averr-on-bad-version.patch (merged)
+- Add work-around-abi-break.patch
+
+-------------------------------------------------------------------
+Sat Apr  9 22:36:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * avcodec/exr: Avoid signed overflow in displayWindow
+  * avcodec/diracdec: avoid signed integer overflow in global mv
+  * avcodec/takdsp: Fix integer overflow in decorrelate_sf()
+  * avcodec/apedec: fix a integer overflow in long_filter_high_3800()
+  * avdevice/dshow: fix regression
+  * avfilter/vf_subtitles: pass storage size to libass
+  * avcodec/vp9_superframe_split_bsf: Don't read inexistent data
+  * avcodec/vp9_superframe_split_bsf: Discard invalid zero-sized frames
+  * avcodec/vp9_superframe_bsf: Check for existence of data before reading it
+  * avcodec/vp9_raw_reorder_bsf: Check for existence of data before reading it
+  * avformat/imf: fix packet pts, dts and muxing
+  * avformat/imf: open resources only when first needed
+  * avformat/imf: cosmetics
+  * avformat/imf_cpl: do not use filesize when reading XML file
+  * avformat/imfdec: Use proper logcontext
+  * avformat/imfdec: do not use filesize when reading XML file
+  * doc/utils: add missing 22.2 layout entry
+  * avcodec/av1: only set the private context pix_fmt field if get_pixel_format() succeeds
+  * avformat/aqtitledec: Skip unrepresentable durations
+  * avformat/cafdec: Do not store empty keys in read_info_chunk()
+  * avformat/mxfdec: Do not clear array in mxf_read_strong_ref_array() before writing
+  * avformat/mxfdec: Check for avio_read() failure in mxf_read_strong_ref_array()
+  * avformat/mxfdec: Check count in mxf_read_strong_ref_array()
+  * avformat/hls: Check target_duration
+  * avcodec/pixlet: Avoid signed integer overflow in scaling in filterfn()
+  * avformat/matroskadec: Check pre_ns
+  * avcodec/sonic: Use unsigned for predictor_k to avoid undefined behavior
+  * avcodec/libuavs3d: Check ff_set_dimensions() for failure
+  * avcodec/speexdec: Align some comments
+  * avcodec/speexdec: Use correct doxygen comments
+  * avcodec/mjpegbdec: Set buf_size
+  * avformat/matroskadec: Use rounded down duration in get_cue_desc() check
+  * avcodec/argo: Check packet size
+  * avcodec/g729_parser: Check channels
+  * avformat/avidec: Check height
+  * avformat/rmdec: Better duplicate tags check
+  * avformat/mov: Disallow empty sidx
+  * avformat/argo_cvg:: Fix order of operations in error check in argo_cvg_write_trailer()
+  * avformat/argo_asf: Fix order of operations in error check in argo_asf_write_trailer()
+  * avcodec/movtextdec: add () to CMP() macro to avoid unexpected behavior
+  * avformat/matroskadec: Check duration
+  * avformat/mov: Corner case encryption error cleanup in mov_read_senc()
+  * avcodec/jpeglsdec: Fix if( code style
+  * avcodec/jpeglsdec: Check get_ur_golomb_jpegls() for error
+  * avcodec/motion_est: fix indention of ff_get_best_fcode()
+  * avcodec/motion_est: Fix xy indexing on range violation in ff_get_best_fcode()
+  * avformat/hls: Use unsigned for iv computation
+  * avcodec/jpeglsdec: Increase range for N in ls_get_code_runterm() by using unsigned
+  * avformat/matroskadec: Check desc_bytes
+  * avformat/utils: Fix invalid NULL pointer operation in ff_parse_key_value()
+  * avformat/matroskadec: Fix infinite loop with bz decompression
+  * avformat/utils: keep chapter monotonicity on chapter updates
+  * avformat/mov: Check size before subtraction
+  * avcodec/cfhd: Avoid signed integer overflow in coeff
+  * avcodec/libdav1d: free the Dav1dData packet on dav1d_send_data() failure
+  * avcodec/h264_parser: don't alter decoder private data
+  * configure: link to libatomic when it's present
+  * fate/ffmpeg: add missing samples dependency to fate-shortest 
+
+-------------------------------------------------------------------
+Thu Mar 10 13:37:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(celt) BuildRequires and stop passing
+  --enable-libcelt to configure and drop celt from enable_decoders,
+  abandoned upstream for opus.
+- Drop pkgconfig(libv4l2) BuildRequires and stop passing
+  --enable-libv4l2 to configure, only needed very old devices and
+  may cause problems for others for those needing it, use
+  LD_PRELOAD pointing on libv4l2.
+- Drop pkgconfig(librtmp) BuildRequires and stop passing
+  conditional --enable-librtmp to configure, built-in RTMP support
+  is better, and has listen mode.
+- Drop bcond conditionals for libaom, srt, lv2, soxr,
+  zmq, zimg and openmpt, build unconditionally for all supported
+  versions of openSUSE.
+- Drop pkgconfig(enca) BuildRequires: Seems unused.
+
+-------------------------------------------------------------------
+Sat Feb 19 13:26:41 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Use Shaderc instead of separate glslang/SPIRV-Tools for Vulkan support
+
+-------------------------------------------------------------------
+Fri Feb 18 22:32:41 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
+
+- Add patch to fix error returned with bad versions of OpenH264
+  * Patch: ffmpeg-openh264-averr-on-bad-version.patch
+- Enable OpenH264 as an H.264 codec via dlopen using patch from Fedora
+  * Patch: ffmpeg-dlopen-openh264.patch
+- Add source and script for headers for dlopening OpenH264
+  * Source: ffmpeg-dlopen-headers.tar.xz
+  * Source: ffmpeg_get_dlopen_headers.sh
+
+-------------------------------------------------------------------
+Wed Feb 16 18:46:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disamble libsmbclient usage (can always be built with
+  --with-smbclient): the usecase of ffmpeg directly accessing
+  smb:// shares is quite constructed (most users will have their
+  smb shares mounted).
+
+-------------------------------------------------------------------
+Sun Jan 30 20:07:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable building with glslang. (Should enable video blending
+  with GLSL.)
+- Unconditionalize ffnvcodec (like vmaf already is).
+
+-------------------------------------------------------------------
+Sun Jan 16 12:09:57 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add ffmpeg-chromium.patch: allows Chromium to use the now
+  internalised field first_dts
+
+-------------------------------------------------------------------
+Fri Jan 14 23:16:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Based on ffmpeg-4.0.spec, update to 5.0
+  * New Vulkan-powered filters for video horizontal/vertical
+    flipping.
+  * Speex decoder.
+  * Various new muxers/demuxers.
+  * An AV1 low-overhead bitstream format muxer is added.
+  * Swscale slice threading support.
+  * New audio and video filters.
+- Drop soversion.diff (for now; it may very well be reintroduced,
+  depending on how 5.1 is released).

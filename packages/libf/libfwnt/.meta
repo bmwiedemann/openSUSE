@@ -1,0 +1,7 @@
+<package name="libfwnt" project="openSUSE:Factory">
+  <title>Library for Windows NT data types</title>
+  <description>Library to provide Windows NT data type support for the libyal family of libraries.
+libyal is typically used in digital forensic tools.
+</description>
+  <devel project="security:forensics" package="libfwnt"/>
+</package>

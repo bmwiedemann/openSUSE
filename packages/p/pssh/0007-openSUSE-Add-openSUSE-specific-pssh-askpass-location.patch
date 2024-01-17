@@ -1,0 +1,24 @@
+From 464bb8a0fa767d491860292c64ff96ce4d3fa640 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kristoffer=20Gr=C3=B6nlund?= <krig@koru.se>
+Date: Thu, 9 Jan 2014 11:49:07 +0100
+Subject: [PATCH 7/8] openSUSE: Add openSUSE-specific pssh-askpass location
+
+---
+ psshlib/askpass_client.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/psshlib/askpass_client.py b/psshlib/askpass_client.py
+index 8c5fae528cfb..d66d455d4786 100644
+--- a/psshlib/askpass_client.py
++++ b/psshlib/askpass_client.py
+@@ -25,6 +25,7 @@ import textwrap
+ bin_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+ askpass_bin_path = os.path.join(bin_dir, 'pssh-askpass')
+ ASKPASS_PATHS = (askpass_bin_path,
++        '/usr/bin/pssh-askpass',
+         '/usr/libexec/pssh/pssh-askpass',
+         '/usr/local/libexec/pssh/pssh-askpass',
+         '/usr/lib/pssh/pssh-askpass',
+-- 
+1.8.4
+

@@ -1,0 +1,226 @@
+-------------------------------------------------------------------
+Thu Nov  3 15:23:38 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add 0002-Use-the-root-group-for-the-synced-folders.patch to fix boo#1200894
+  Upstream started setting the wheel group for the synced folders, but this is
+  not available in the opensuse boxes. Thus we use the root group instead.
+
+-------------------------------------------------------------------
+Fri Jul  1 12:33:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix testsuite.sh: Follow changes of version 1.3.7, use
+  reverse_mount with uid/gid (boo#1200894).
+
+-------------------------------------------------------------------
+Tue Jun 21 08:43:04 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.3.7
+
+Dusty Mabe <dusty@dustymabe.com> (12):
+      00f5737 guest: Enterprise Linux 9 has landed
+      e90bbdb guest: add Alma Linux support
+      e76db4d guest: handle Alma/Rocky until fixes land upstream
+      b77809e add support for owner, group, and mount_options
+      b37e1e5 tests: switch config.ssh.insert_key to boolean in Vagrantfile
+      dba8c30 Update to Fedora 36 for build container and test VM
+      cc887ad guest: upload fuse module loading for FreeBSD
+      08c1c83 sshfs_reverse_mount: fixup botched copy/paste
+      bf72f0f sshfs_reverse_mount: create guest directory if not exists
+      51be8cb sshfs_reverse_mount: use ruby Etc lib for owner/group
+      3f13f07 Gemfile: bump to latest versions of vagrant and vagrant-libvirt
+      f60ff0e version: bump to 1.3.7
+
+Even Onsager <even.onsager@gmail.com> (3):
+      ecb8c03 Add guest capabilities file for Rocky (based on CentOS)
+      95e8ffc Add Rocky guest_capability to plugin.rb
+      ade5564 Remove superfluous case/when (only rocky_8 exists)
+
+-------------------------------------------------------------------
+Mon Jun 13 07:25:17 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add missing requires /usr/bin/fusermount
+
+-------------------------------------------------------------------
+Tue Feb  1 12:42:08 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Switch to default ruby for Tumbleweed
+
+-------------------------------------------------------------------
+Wed Nov  3 11:16:07 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Fix ruby macro usage
+
+-------------------------------------------------------------------
+Fri Oct  8 13:44:36 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- testsuite.sh: avoid reuse of existing directory or symlink from other users
+  to prevent potential security issues (bsc#1182861)
+
+-------------------------------------------------------------------
+Thu Aug  5 07:28:21 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Build using ruby 3.0 on Tumbleweed
+
+-------------------------------------------------------------------
+Wed May  5 05:38:32 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+New upstream release 1.3.6
+
+Thanks to the following contributors for patches during this release:
+
+Dominique Leuenberger <dimstar@opensuse.org> (1):
+      cc2757e synced_folder: Add directory for SUSE/openSUSE to find sftp-server
+
+Dusty Mabe <dusty@dustymabe.com> (5):
+      b5652a5 guest: centos: use lowercase for powertools repo
+      c50fb6e More places where we can not pass file descriptors.
+      4bef1db tests: update to use Fedora 34 vagrant box
+      dd02818 Gemfile: bump to latest versions of vagrant and vagrant-libvirt
+      0f5c864 version: bump to 1.3.6
+
+Ian2020 <Ian2020@users.noreply.github.com> (1):
+      2615783 Fix #120: do not pass our file descriptors to spawned children
+
+Dropped patches:
+- vagrant-sshfs-libexecdir.patch
+
+Rebased patches:
+- 0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 07:21:13 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Switch back to the default Ruby for Tumbleweed
+
+-------------------------------------------------------------------
+Thu Sep  3 08:24:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add vagrant-sshfs-libexecdir.patch: Use /usr/libexec/ssh to find
+  sftp-server (boo#1176002).
+
+-------------------------------------------------------------------
+Mon Jun 29 08:48:30 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.3.5
+
+  Dropped patches:
+  * 0001-Use-var-run-run-symlink-for-tests.patch (merged upstream)
+  * 0002-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch (rebased)
+
+  Added patches:
+  * 0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
+
+  Changelog for 1.3.5:
+
+  Adam Butler <Adam.J.Butler@gmail.com> (1):
+      eb6446f Add CentOS guest support for compatibility with Vagrant v2.2.8+
+
+  Dan Čermák <dcermak@suse.com> (1):
+      99a62bb Use /var/run/ -> /run symlink for tests
+
+  Dusty Mabe <dusty@dustymabe.com> (7):
+      3bc01b5 guest: centos: add a few comments into sshfs_client.rb
+      1a0f440 guest: centos: rename module with capital OS
+      f4408e3 guest: redhat: reset back to pre-EL8 modifications
+      04235d9 guest: redhat: add best-effort support for RHEL8
+      b1d92d9 Update vagrant in Gemfile to 2.2.9
+      596360a tests: update to use Fedora 32 vagrant box
+      fa27379 version: bump to 1.3.5
+
+-------------------------------------------------------------------
+Tue May 12 15:31:27 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Switch to Ruby 2.6 for Tumbleweed
+
+-------------------------------------------------------------------
+Wed Apr  1 20:38:10 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Fix test suite failures (boo#1168371)
+
+  The testsuite was implicitly assuming that /sbin/ is a symlink to /usr/sbin
+  (which is the case on Fedora, but not on opensuse). By switching to the
+  /var/run -> /run symlink, we fix this issue.
+
+  Also, the sed call in the spec file to change the Fedora box to
+  opensuse/Tumbleweed.$(uname -m) got removed and instead was moved into the
+  packaged Vagrantfile.
+
+  Added patches:
+  * 0001-Use-var-run-run-symlink-for-tests.patch
+  * 0002-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
+
+-------------------------------------------------------------------
+Tue Mar 31 06:49:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix vagrant-ssh-testsuite for aarch64 by using 
+  opensuse/Tumbleweed.$(uname -m) instead of fedora box which is
+  for x86_64 only
+
+-------------------------------------------------------------------
+Mon Mar 16 12:01:33 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.3.4
+
+  * guest: redhat: use yum to install epel-release
+  * guest: redhat: pull fuse-sshfs from PowerTools repo on el8
+  * guest: redhat: handle missing el8 version detection in vagrant
+  * Update vagrant in Gemfile
+  * RELEASE: update some release instructions
+  * version: bump to 1.3.4
+
+-------------------------------------------------------------------
+Wed Jan 29 08:51:07 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.3.3
+
+  v1.3.3:
+  * RELEASE.txt: Updates to release process
+  * synced_folder: gentoo: Update path to look for sftp-server
+  * version: bump to 1.3.3
+
+  v1.3.2:
+  * remove tests - add build script
+  * Fix some errors when building
+  * Updates to build/release instructions
+  * Update vagrant and vagrant-libvirt in Gemfile
+  * Remove the build Vagrantfile
+  * Run the build.sh script inside a buildah unshare session
+  * guest: make alpine fuse module loading match what we do for freebsd
+  * tests: update Vagrantfile to be Fedora 31
+  * version: bump to 1.3.2
+  * guest: Add alpine support
+  * Add note for windows users to use cygwin shell.
+
+- Drop patches:
+  * 0001-Bump-testing-Vagrant-box-version.patch
+  * 0001-remove-win32-dep.patch
+
+- Add gpg source verification
+- Drop not required dependencies on the rubygems mime-types, builder and ffi
+
+-------------------------------------------------------------------
+Thu Nov  7 21:05:53 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add missing sshfs dependency
+
+-------------------------------------------------------------------
+Wed Oct  9 10:12:50 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Fix vagrant box name in testsuite.sh
+
+-------------------------------------------------------------------
+Fri Sep 27 20:34:04 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Fix in testsuite.sh:
+  Ignore the return value of vagrant destroy -f in the cleanup function, so that
+  all cleanup tasks run even if vagrant destroy fails
+
+-------------------------------------------------------------------
+Tue Sep 17 21:34:25 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Add working testsuite subpackage
+
+-------------------------------------------------------------------
+Thu Mar 14 14:51:58 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Initial package version

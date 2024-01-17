@@ -1,0 +1,24 @@
+Index: Fr-8.42.3/Python/CMakeLists.txt
+===================================================================
+--- Fr-8.42.3.orig/Python/CMakeLists.txt
++++ Fr-8.42.3/Python/CMakeLists.txt
+@@ -10,8 +10,8 @@ if (ENABLE_PYTHON)
+     # find paths by querying python
+     execute_process(
+         COMMAND "${Python3_EXECUTABLE}" "-c"
+-        "from distutils import sysconfig; import numpy;
+-print(sysconfig.get_python_lib(plat_specific=True, prefix=''), end=';');
++        "import sysconfig; import numpy;
++print(sysconfig.get_path('platlib'), end=';');
+ print(numpy.get_include(), end=';')
+ "
+         RESULT_VARIABLE _Python3_RESULT
+@@ -62,7 +62,7 @@ print(numpy.get_include(), end=';')
+     endif()
+ 
+     # install python library
+-    set(TARGET_SP_DIR "${CMAKE_INSTALL_PREFIX}/${Python3_INSTALL_DIR}")
++    set(TARGET_SP_DIR "${Python3_INSTALL_DIR}")
+     install(
+         TARGETS PyFr3
+         RUNTIME DESTINATION ${TARGET_SP_DIR}

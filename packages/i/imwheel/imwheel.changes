@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Jul 14 10:34:17 UTC 2015 - mpluskal@suse.com
+
+- Clenaup spec file with spec-cleaner
+- Include %changelog in spec file
+- Trim dependencies
+
+-------------------------------------------------------------------
+Mon Apr 22 11:43:29 UTC 2013 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  No indication in package that GPL-2.0 (i.e. "only") is intended
+
+-------------------------------------------------------------------
+Sat Apr 20 15:49:09 UTC 2013 - dap.darkness@gmail.com
+ - Macro replacing "makeinstall" => "make_install"
+   via `spec-cleaner` was reverted to build at SLE_11_SP2.
+
+-------------------------------------------------------------------
+Sat Apr  6 19:52:54 UTC 2013 - dap.darkness@gmail.com
+- Spec header and changes file were added to correspond to distro policy.
+- License tag was set to GPL-2.0 to correspond to distro policy.
+- Spec file was fixed up via `spec-cleaner`.
+- Patches were commented to correspond to distro policy.
+- Clean section was removed as unnecessary.

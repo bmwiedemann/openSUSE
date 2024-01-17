@@ -1,0 +1,6 @@
+<package name="totem-pl-parser" project="openSUSE:Factory">
+  <title>A simple GObject-based library to parse playlist formats</title>
+  <description>totem-pl-parser is a simple GObject-based library to parse a host of
+playlist formats, to save them too.</description>
+  <devel project="GNOME:Factory" package="totem-pl-parser"/>
+</package>

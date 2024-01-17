@@ -1,0 +1,421 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9e49590066f64a484594956c77377fa</srcmd5>
+    <version>11.2</version>
+    <time>1552380537</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 11.2</comment>
+    <requestid>678944</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05f35c0aecdeee73a10341e7ecabed6e</srcmd5>
+    <version>11.3</version>
+    <time>1558036712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.3:
+  * https://www.postgresql.org/docs/11/release-11-3.html
+  * https://www.postgresql.org/about/news/1939/
+  * CVE-2019-10130, bsc#1134689: Prevent row-level security
+    policies from being bypassed via selectivity estimators.
+  * CVE-2019-10129, bsc#1134684: Avoid access to already-freed
+    memory during partition routing error reports.</comment>
+    <requestid>702689</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a59742c55e7b7d8317c6e94fbee4e315</srcmd5>
+    <version>11.4</version>
+    <time>1563018382</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.4:
+  * https://www.postgresql.org/docs/11/release-11-4.html
+  * https://www.postgresql.org/about/news/1949/
+  * CVE-2019-10164 bsc#1138034: Stack-based buffer overflow via
+    setting a password</comment>
+    <requestid>713375</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00abae381a4c129dfc0a4ef39dff5362</srcmd5>
+    <version>11.5</version>
+    <time>1567679380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.5:
+  * https://www.postgresql.org/about/news/1960/
+  * https://www.postgresql.org/docs/11/release-11-5.html
+  * CVE-2019-10208, bsc#1145092: TYPE in pg_temp executes arbitrary
+    SQL during SECURITY DEFINER execution.
+  * CVE-2019-10209, bsc#1145091: Memory disclosure in cross-type
+    comparison for hashed subplan.
+
+- Use FAT LTO objects in order to provide proper static library.</comment>
+    <requestid>723108</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eccf1b78f61e631ec633d5c3479f5a43</srcmd5>
+    <version>11.6</version>
+    <time>1580204753</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.6:
+  https://www.postgresql.org/about/news/1994/
+  https://www.postgresql.org/docs/11/release-11-6.html
+
+- add requires to the server-devel package for the libs that are
+  returned by pg_config --libs
+
+- disable building of the libraries here. Will now be provided from
+  the 12.0 package</comment>
+    <requestid>766658</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8abd34ecd9ea497ebb73a42a79571042</srcmd5>
+    <version>11.6</version>
+    <time>1580724675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768273</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>54e39efe7277fe0db88b326334c137a5</srcmd5>
+    <version>11.7</version>
+    <time>1582112421</time>
+    <user>dimstar_suse</user>
+    <comment>update for CVE-2020-1720 (forwarded request 774442 from darix)</comment>
+    <requestid>774448</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e8eaa71f0ece90cbd03fe77f8532d3e</srcmd5>
+    <version>11.8</version>
+    <time>1591862260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811584</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f26104b259e6d922ad9f5847ab8cb4e</srcmd5>
+    <version>11.9</version>
+    <time>1597518832</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.9:
+  * CVE-2020-14349, bsc#1175193: Set a secure search_path in
+    logical replication walsenders and apply workers
+  * CVE-2020-14350, bsc#1175194: Make contrib modules' installation
+    scripts more secure.
+  * https://www.postgresql.org/docs/11/release-11-9.html
+- Remove postgresql-regress.patch, it does not apply anymore and
+  it does not seem to be needed anymore.
+- Pack the /usr/lib/postgresql symlink only into the main package.
+
+- Let postgresqlXX conflict with postgresql-noarch &lt; 12.0.1 to get
+  a clean and complete cutover to the new packaging schema.
+
+- Move from the &quot;libs&quot; build flavour to a &quot;mini&quot; package that will
+  only be used inside the build service and not get shipped, to
+  avoid confusion with the debuginfo packages (bsc#1148643).</comment>
+    <requestid>826607</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>eca7325bde40294b4e613714beba0cbf</srcmd5>
+    <version>11.9</version>
+    <time>1604415577</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a DST problem in the test suite: postgresql-timetz.patch
+  https://postgr.es/m/16689-57701daa23b377bf@postgresql.org</comment>
+    <requestid>845765</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>748e719d115170f328c19273d2eeb09f</srcmd5>
+    <version>11.10</version>
+    <time>1605450303</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 11.10:
+  * CVE-2020-25695, bsc#1178666: Block DECLARE CURSOR ... WITH HOLD
+    and firing of deferred triggers within index expressions and
+    materialized view queries.
+  * CVE-2020-25694, bsc#1178667:
+    a) Fix usage of complex connection-string parameters in pg_dump,
+    pg_restore, clusterdb, reindexdb, and vacuumdb.
+    b) When psql's \connect command re-uses connection parameters,
+    ensure that all non-overridden parameters from a previous
+    connection string are re-used.
+  * CVE-2020-25696, bsc#1178668: Prevent psql's \gset command from
+    modifying specially-treated variables.
+  * Fix recently-added timetz test case so it works when the USA
+    is not observing daylight savings time.
+    (obsoletes postgresql-timetz.patch)
+  * https://www.postgresql.org/about/news/2111/
+  * https://www.postgresql.org/docs/11/release-11-10.html</comment>
+    <requestid>848145</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>186916a27e3d35f2a0187989fce5ae55</srcmd5>
+    <version>11.10</version>
+    <time>1607612206</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1178961: %ghost the symlinks to pg_config and ecpg.
+- boo#1179765: BuildRequire libpq5 and libecpg6 when not building
+  them to avoid dangling symlinks in the devel package.</comment>
+    <requestid>854084</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>d703fb2e6147c9c207529f0bb67f701d</srcmd5>
+    <version>11.10</version>
+    <time>1610123641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861012</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9a20a41b79b233484d6133fce09f674d</srcmd5>
+    <version>11.11</version>
+    <time>1614107870</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+Upgrade to version 11.11:
+  * https://www.postgresql.org/docs/11/release-11-11.html  
+  * Reindexing might be needed after applying this update.
+  * CVE-2021-3393, bsc#1182040: Fix information leakage in
+    constraint-violation error messages.
+  * Obsoletes postgresql-icu68.patch.</comment>
+    <requestid>873820</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>03392e1cb3a21b1bc9d28afbb50b4375</srcmd5>
+    <version>11.11</version>
+    <time>1615489685</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove leftover PreReq on chkconfig, we stopped using it long
+  time ago.</comment>
+    <requestid>878018</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>03f4278e5b4d50589af44cf42f6ba2c9</srcmd5>
+    <version>11.11</version>
+    <time>1619107396</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now.</comment>
+    <requestid>885323</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cb057a65850daf79fc89d7ab21d156cf</srcmd5>
+    <version>11.12</version>
+    <time>1621355198</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 11.12:
+  * https://www.postgresql.org/docs/11/release-11-12.html
+  * CVE-2021-32027, bsc#1185924:
+    Prevent integer overflows in array subscripting calculations.
+  * CVE-2021-32028, bsc#1185925: Fix mishandling of “junk”
+    columns in INSERT ... ON CONFLICT ... UPDATE target lists.
+  * CVE-2021-32029, bsc#1185926: Fix possibly-incorrect
+    computation of UPDATE ... RETURNING
+    &quot;pg_psql_temporary_savepoint&quot; does not exist”.
+- Don't use %_stop_on_removal, because it was meant to be private
+  and got removed from openSUSE. %_restart_on_update is also
+  private, but still supported and needed for now (bsc#1183168).
+
+  only be delivered on PackageHub for now (boo#1183118).</comment>
+    <requestid>893133</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>80f564719d0c3a3d36e2cd282dd501bd</srcmd5>
+    <version>11.13</version>
+    <time>1631543055</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1185952: fix build with llvm12 on s390x.
+  0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch 
+- bsc#1179945: Re-enable icu for PostgreSQL 10.
+
+- Upgrade to version 11.13:
+  * https://www.postgresql.org/docs/11/release-11-13.html
+  * CVE-2021-3677 (boo#1189748)
+    The planner could create an incorrect plan in cases where two
+    ProjectionPaths were stacked on top of each other. The only
+    known way to trigger that situation involves parallel sort
+    operations, but there may be other instances. The result would
+    be crashes or incorrect query results. Disclosure of server
+    memory contents is also possible.
+
+- bsc#1187751: Make the dependency of postgresqlXX-server-devel on
+  llvm and clang optional (postgresql-llvm-optional.patch).</comment>
+    <requestid>917540</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>910e5cb241f536c3c2bb6c8341316d82</srcmd5>
+    <version>11.13</version>
+    <time>1634068083</time>
+    <user>dimstar_suse</user>
+    <comment>- Let genlists skip non-existing binaries to avoid lots of version
+  conditionals in the file lists.
+- Remove postgresql-testsuite-int8.sql.patch, because its purpose
+  is unclear. This affects only the test subpackage.</comment>
+    <requestid>923705</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>81bd15dbb6e3eac94e0208f67a2e495c</srcmd5>
+    <version>11.14</version>
+    <time>1636840092</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1192516: Upgrade to version 11.14:
+  * Make the server reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23214).
+  * Make libpq reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23222).
+  * https://www.postgresql.org/docs/11/release-11-14.html</comment>
+    <requestid>930952</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8ea2e256f629dee14025ed97ae5c0338</srcmd5>
+    <version>11.14</version>
+    <time>1638831566</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a llvmjit-devel subpackage to pull in the right versions
+  of clang and llvm for building extensions. 
+- Fix some mistakes in the interdependencies between the
+  implementation packages and their noarch counterpart.
+- Update the BuildIgnore section.</comment>
+    <requestid>935207</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2120f431e957020d73adb96b0ce05196</srcmd5>
+    <version>11.15</version>
+    <time>1649949782</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1198166: Pin to llvm13 until the next patchlevel update.
+
+- bsc#1195680: Upgrade to 11.15:
+  * https://www.postgresql.org/docs/11/release-11-15.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround</comment>
+    <requestid>969864</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b09cd57c9b9a5ed6da693c55de41def7</srcmd5>
+    <version>11.16</version>
+    <time>1652561683</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 11.16:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within &quot;security restricted operation&quot; sandboxes.
+  * https://www.postgresql.org/docs/11/release-11-16.html</comment>
+    <requestid>977046</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7013236c3e76f45a0df1426ba335d5ab</srcmd5>
+    <version>11.17</version>
+    <time>1660662400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.17:
+  * bsc#1202368, CVE-2022-2625: Extension scripts replace objects
+    not belonging to the extension.
+  * https://www.postgresql.org/docs/release/11.17/</comment>
+    <requestid>995182</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c70c5210083ba2253e5eda8e31e55abc</srcmd5>
+    <version>11.17</version>
+    <time>1664908650</time>
+    <user>RBrownFactory</user>
+    <comment>- Create mechanism to specify the latest supported LLVM version.
+  Automatically pin to that version if the distribution has a newer
+  unsupported default version.
+- Sync spec file with postgresql15.
+- Disable LLVM JIT on riscv64
+</comment>
+    <requestid>1006686</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>80c976eef3e03e10931f22971fe5f967</srcmd5>
+    <version>11.18</version>
+    <time>1668271237</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1205300: Update to 11.18:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/11/release-11-18.html
+- Sync spec file with postgresql15.</comment>
+    <requestid>1035215</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c89fdedb17ed75ea371febd4487932ec</srcmd5>
+    <version>11.19</version>
+    <time>1676036036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.19:
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/15/release-15-2.html
+- Bump latest_supported_llvm_ver to 15.</comment>
+    <requestid>1064058</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4ea337d7f87bde62ac52e3d57d73a5c1</srcmd5>
+    <version>11.19</version>
+    <time>1682079469</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1210303: Stop using the obsolete internal %_restart_on_update
+  macro and drop support for sysv init to simplify the scriptlets.</comment>
+    <requestid>1081149</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>060bf5b2988b39a60b05c3d9dc668fa6</srcmd5>
+    <version>11.20</version>
+    <time>1683916638</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.20:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/11/release-11-20.html</comment>
+    <requestid>1086558</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e3fcd24982d73a0b66ecc5cde5f857a8</srcmd5>
+    <version>11.21</version>
+    <time>1691762141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.21:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * https://www.postgresql.org/docs/11/release-11-21.html
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.</comment>
+    <requestid>1103348</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>17ab7934152a21972374da73ef24767b</srcmd5>
+    <version>11.21</version>
+    <time>1698780394</time>
+    <user>anag+factory</user>
+    <comment>- boo#1216734: Revert the last change and make the devel package
+  independend of all other subpackages except for the libs.
+
+- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.</comment>
+    <requestid>1121438</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c9dc9eed261fd3790e3022c96875c189</srcmd5>
+    <version>11.22</version>
+    <time>1699562176</time>
+    <user>anag+factory</user>
+    <comment>November 2023 Security Updates</comment>
+    <requestid>1124720</requestid>
+  </revision>
+</revisionlist>

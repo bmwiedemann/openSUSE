@@ -1,0 +1,2 @@
+# Zero-length c/cpp files are necessary placeholders
+addFilter("zero-length .*/usr/share/castxml/empty.c(pp)*")

@@ -1,0 +1,7 @@
+<package name="gspell" project="openSUSE:Factory">
+  <title>gspell</title>
+  <description>A flexible API to implement the spell checking in a GTK+ application.
+  </description>
+  <devel project="GNOME:Factory" package="gspell"/>
+  <url>https://wiki.gnome.org/Projects/gspell</url>
+</package>

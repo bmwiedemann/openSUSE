@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Sun Jul 16 18:33:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * The display settings window in the setup tool has been
+    reorganised to a better arrangement.
+  * It is now possible to load .lmp files (and play back demos)
+    with long filenames
+  * In the setup tool, it is now possible to hold down shift when
+  * changing key/mouse/joystick bindings to prevent other
+    bindings to the same key from being cleared (thanks myk).
+  * The joystick menu in the setup tool now has a test button
+  * Specifying the -privateserver option implies -server
+  * Freedesktop.org desktop files are now installed for Doom and
+    the setup tool, which will appear in the main menu on desktop
+  * environments such as Gnome and KDE
+  * The Chex Quest dehacked patch (chex.deh) will now be detected
+    if it is in the same directory as the IWAD file.
+  * Added support for the alternate version of the Final Doom
+    executable included in some later versions of the Id
+    Anthology.
+  * Very short sound effects are not played, to better emulate
+    the behavior of DMX in Vanilla Doom
+  * The null sector dereference emulation code has been imported
+    from Prboom+ - this fixes a desync with CLNJ-506.LMP
+  * The IDMUS cheat doesn’t work when emulating the v1.9
+    executable
+  * Menu navigation when using joystick/joypad (thanks AXDOOMER).
+  * For configuration file value for shift keys, use scan code
+    for right shift, not left shift (thanks AXDOOMER).
+  * Default joystick buttons for the setup tool now match Vanilla
+  * The default sfx/music volume set by the setup tool is now 8
+    instead of 15, matching the game itself. (thanks AXDOOMER).
+  * Weapon cycling from the shotgun to the chaingun in Doom 1 now
+    works properly (thanks AXDOOMER).
+  * MIDI playback that locked up when using an empty MUS / MIDI
+    file
+  * Default sampling rate used by setup tool changed to 44100Hz,
+    to match the game default (thanks AXDOOMER).
+
+-------------------------------------------------------------------
+Wed Mar 29 16:33:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch from packageand() to modern rpm conditionals
+- Avoid conflict with chocolate-doom manpages
+
+-------------------------------------------------------------------
+Mon Mar 27 14:20:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 5.12.0) for build.opensuse.org

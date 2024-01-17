@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Mon Oct  2 10:59:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.4:
+  * Handle case-insensitive sensitive headers (#674) @shtimn
+  * Add a "pagetitle" block to Silky templates (#661) @vsajip
+  * Allow to generate more informative profile file name (#638)
+    @k4rl85
+  * Outsource all inline scripts and styles (#635) @sgelis
+  * Remove support for looking up headers on django &lt;3.2
+  * Update python dependencies (#677) @albertyw
+
+-------------------------------------------------------------------
+Thu Jan 26 00:10:37 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop remove-contextlib2.patch merged upstream
+- Update to v5.0.3
+  * Retain ordering, view style and limit
+  * prevent encoding errors in params
+  * Silk fails on constraint check queries
+    (Fixes compatibility with Django 4.1)
+  * Add action on sql query list
+  * traceback only when needed
+  * Drop dependency to jinja2
+- from v5.0.2
+  * Fix Multipart forms and RawPostDataException
+  * Decrease unnecessary database hits
+  * Remove unneeded pytz package
+  * Use contextlib in test_profile_parser
+  * Add support for storages, that don't implement full filesystem path
+
+-------------------------------------------------------------------
+Fri Aug 12 04:43:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.1:
+  * Add jquery UI 1.13.1 images and fix collectstatic
+  * Drop support for Django 2.2 (EOL) (#567)
+  * Added silk_request_garbage_collect command for out-of-band garbage
+    collection.
+  * Switch 'Apply' and 'Clear all filters' ordering
+  * Make filters on Requests tab more visible
+  * Add small margin for filter selects
+  * Add 'Clear all filters' button
+  * Add message when there are no requests to display
+  * Making the error logging more accurate and explicit
+  * Fixing #530 - Adding support for SILKY_EXPLAIN_FLAGS
+  * Remove unused js compilation pipeline (#561)
+- Add patch remove-contextlib2.patch:
+  * Remove use of contextlib2.
+- No longer skip Python 3.6.
+
+-------------------------------------------------------------------
+Thu May 12 06:39:30 UTC 2022 - pgajdos@suse.com
+
+- version update to 4.3.0
+  * Jazzband: Synced file(s) with jazzband/.github by @jazzband-bot in #518
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #520
+  * Fix installation instructions in README by @side2k in #521
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #523
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #524
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #526
+  * Add Python 3.10 compatibility by @hramezani in #527
+  * Django main by @hramezani in #528
+  * Remove unneeded dependency Pygments by @jayvdb in #532
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #533
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #535
+  * Replace assertDictContainsSubset by @albertyw in #536
+  * Use correct db in a multi db setup by @glujan in #538
+  * Update django version by @eduzen in #544
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #552
+  * Some tests misusing assertTrue for comparisons fix by @code-review-doctor in #550
+  * Standardize supported django versions by @albertyw in #553
+  * Drop support for python 3.6 by @albertyw in #554
+  * Remove duplicate requirements.txt dependencies by @albertyw in #555
+  * Pin dependencies in requirements.txt by @albertyw in #556
+  * Release version v4.3.0 by @albertyw in #557
+- python-mock is not required for build
+- deleted patches
+  - 2610f91.patch (upstreamed)
+
+-------------------------------------------------------------------
+Sun Dec 26 09:52:54 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace no-longer necessary _service with PyPI tarball
+- Add 2610f91.patch to fix a test incompatibility with Django 4.
+- Tidy build dependencies and remove unnecessary Pygments dep.
+- Upgrade to v4.2.0
+  * Passed wsgi request to SILKY_PYTHON_PROFILER_FUNC
+  * Added Django 3.1 & 3.2 to test matrix
+  * Replace url with re_path for Django 4.0
+  * Do not crash when silk app is not included in urls
+  * Add the SILKY_JSON_ENSURE_ASCII configuration item to support
+    Chinese
+  * Add row view for requests page
+  * RequestModelFactory: fallback if request body too large
+  * Add query execution plan to sql_detail
+  * Add Python 3.9 compatibility
+  * Replace re_path with path
+  * Fix transaction error for mysql
+  * parse query when count joins to match only Keyword
+  * fix: DB connection to ClearDB when multiple databases
+  * fix: DataCollector sql_queries model not found on
+    filter(request=self.request)
+  * Generate missing row.css from sass
+  * Filter null values from most time overall summary
+  * Ensure sorting between longest requests
+  * Filter null values from most db time summary
+  * Ensure sorting between most db time requests
+  * Temporary fix for testing Django 2.2
+  * Fix egg metadata error
+  * Fixed a bug that the profile tab could not be opened
+    when the source code contains Japanese
+  * fix incorrectly made decorator
+  * Ensure sorting between most db queries requests
+  * Add tests that access the actual DB
+  * remove python 2 style codes from across the codebase
+  * Fix broken test on Windows 10 (SQLite)
+  * Remove Make Migrations
+  * Add Python 3.10 compatibility
+
+-------------------------------------------------------------------
+Thu Dec  2 12:41:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip python 3.6 since python-networkx does not support it
+
+-------------------------------------------------------------------
+Mon May  3 03:53:22 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip Python 3.9 due to incompatibilities fixed in upcoming release
+- Remove executable bit on static assets
+
+-------------------------------------------------------------------
+Mon Aug 31 10:57:01 UTC 2020 - mcalabkova@suse.com
+
+- Update to version 4.1.0:
+  * #427 Passed wsgi request to SILKY_PYTHON_PROFILER_FUNC
+  * Release 4.1.0
+  * Update README.md django-silk is tested with Django 3.1
+  * Make compatible with Django 3.1
+  * Fix force_text RemovedInDjango40Warning
+  * Extra line removed
+  * 配置silk使用非'default'的数据库时Clear DB错误
+  * Capture entire key name during cleansing in _mask_credentials (#414)
+  * Replace the call to re.findall with re.sub in _mask_credentials so (#413)
+  * Wrap re.sub() in try-except. If credentials ends with "\" (for example: "--password=123456\") re.sub() fails with error "bad escape (end of pattern)".
+- Switch to obs service to silence setuptools_scm error
+
+-------------------------------------------------------------------
+Fri Apr  3 10:31:54 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.1:
+  * Restructured clear db HTML #399 (nasirhjafri)
+  * JS workflow cleanup #397 (nasirhjafri)
+  * Refactor QA setup #393 (aleksihakli)
+
+-------------------------------------------------------------------
+Thu Feb 20 09:08:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.0.0:
+  * Ability to clean up all requests/queries #368 (nasirhjafri)
+  * Used bulk_create to save number of queries #370 (nasirhjafri)
+  * Dropped Python 2 and 3.4 support #380 (munza)
+  * Added Python 3.8 support #380 (nasirhjafri)
+  * Removed django<2.2 support and added django 3.0 support #385 (nasirhjafri)
+  * Add function support for enabling profiling #391 (tredzko)
+  * Mask authorization header #376 (StefanMich)
+
+-------------------------------------------------------------------
+Mon Sep 16 09:19:52 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.4:
+  * templates: limit select width to its container one #351 (xrmx)
+  * Clean up RemovedInDjango30Warning with {% load staticfiles %} #353 (devmonkey22)
+  * Simplify pattern masking and handle dicts #355 (Chris7)
+  * Fix masking sensitive data in batch JSON request #342 (nikolaik)
+  * Fix project url on PyPi #343 (luzfcb)
+
+-------------------------------------------------------------------
+Mon Apr 29 07:50:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.2:
+  * Add testing support for django 2.2 #340 (mbeacom)
+  * SILKY_MIDDLEWARE_CLASS option #334 (vartagg)
+  * Many bugfixes
+- Remove merged patches:
+  * pr_333.patch
+  * test-urls-auth-login-view.patch
+
+-------------------------------------------------------------------
+Tue Mar 26 12:22:40 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from descriptions.
+
+-------------------------------------------------------------------
+Thu Feb 21 15:33:00 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v3.0.1
+- Use upstream pr_333.patch to fix incompatible version of gprof2dot
+- Fix tests on Django 2.1 with test-urls-auth-login-view.patch

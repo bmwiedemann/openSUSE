@@ -1,0 +1,5 @@
+<package name="python-pytest-flask" project="openSUSE:Factory">
+  <title>pytest-flask</title>
+  <description>An extension of pytest test runner which provides a set of useful tools to simplify testing and development of the Flask extensions and applications.</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-flask"/>
+</package>

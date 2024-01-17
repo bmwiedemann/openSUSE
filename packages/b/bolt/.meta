@@ -1,0 +1,5 @@
+<package name="bolt" project="openSUSE:Factory">
+  <title>bolt</title>
+  <description>Userspace system daemon to enable security levels for Thunderbolt 3 on GNU/Linux.</description>
+  <devel project="hardware" package="bolt"/>
+</package>

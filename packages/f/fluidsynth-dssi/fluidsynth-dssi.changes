@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Fri Apr  5 12:18:18 UTC 2019 - plater <davejplater@gmail.com>
+
+- Update to pre 2.0.0 git snapshot 1.9.9+git13012019 to fix 
+  Factory build and removed obsolete patch
+  fluidsynth-dssi-nogtk1.diff
+- Upstream changes:
+  *Add /usr/share/soundfonts to sf2 default paths
+  *Fixes for recent autotools
+  *Fixes for fluidsynth 2.x
+  *Add configuration file support for
+   *audio/realtime-prio: realtime priority for threads.
+   *synth/maxchannels:Maximum channels supported by fluidsynth-dssi
+   *parallel-threads: Number of parallel threads used for sound
+    rendering
+   *dynamic-sample-loading: -> synth.dynamic-sample-loading
+  *Don't trash effects but set NULL to avoid useless copying within
+   fluidsynth to reduce CPU load
+  *Fix some gcc truncation warnings
+  *Set default max channels to 32
+  *Bug fix to fsd_cleanup() from Rui Nuno Capela, allowing eventual
+   reinstantiation of FluidSynth (sf.net Tracker ID 1990241).
+  *Patch from Albert Graef to pass sysex messages on to FluidSynth,
+   allowing the use of MIDI Tuning Standard.
+  *Fixed plugin to use reentrant strtok_r().
+
+-------------------------------------------------------------------
+Sat Oct  1 05:39:06 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to make the spec file more reliable
+
+-------------------------------------------------------------------
+Fri Apr  2 08:17:46 UTC 2010 - davejplater@gmail.com
+
+- Update to version 1.0.0
+
+-------------------------------------------------------------------
+Fri Jul 24 16:27:29 CEST 2009 - tiwai@suse.de
+
+- fix obsoleted run_ldconfig macro
+- clean up using standard rpm macros
+- fix missing closedir (bnc#525017)
+
+-------------------------------------------------------------------
+Fri Jul 24 14:06:21 CEST 2009 - tiwai@suse.de
+
+- fix buildrequires: dssi-devel and libjack-devel
+
+-------------------------------------------------------------------
+Tue Apr 17 16:52:51 CEST 2007 - tiwai@suse.de
+
+- fix buildrequires ladspa -> ladspa-devel
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:56 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct 12 20:02:32 CEST 2005 - tiwai@suse.de
+
+- removed gtk1 support.
+- removed glib* from neededforbuild.
+
+-------------------------------------------------------------------
+Tue Jun 14 12:11:30 CEST 2005 - tiwai@suse.de
+
+- moved from fluidsynth sub-package: version 0.9.1.
+

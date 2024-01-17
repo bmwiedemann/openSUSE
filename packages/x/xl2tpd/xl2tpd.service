@@ -1,0 +1,24 @@
+[Unit]
+Description=Level 2 Tunnel Protocol Daemon (L2TP)
+After=syslog.target network.target
+After=ipsec.service
+# Some ISPs in Russia use l2tp without IPsec, so don't insist anymore
+#Wants=ipsec.service
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+ExecStart=/usr/sbin/xl2tpd -D
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

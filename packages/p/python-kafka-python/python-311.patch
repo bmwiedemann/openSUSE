@@ -1,0 +1,31 @@
+From cca513e3f511834e8f8c833a619ee8d7fa1b0ee1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@atlas.cz>
+Date: Fri, 10 Mar 2023 14:24:06 +0100
+Subject: [PATCH] Fix tests for Py3.11
+
+---
+ test/test_assignors.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_assignors.py b/test/test_assignors.py
+index 67e91e131..a1214d8fa 100644
+--- a/test/test_assignors.py
++++ b/test/test_assignors.py
+@@ -661,7 +661,7 @@ def test_reassignment_with_random_subscriptions_and_changes(mocker, execution_nu
+ 
+     subscriptions = defaultdict(set)
+     for i in range(n_consumers):
+-        topics_sample = sample(all_topics, randint(1, len(all_topics) - 1))
++        topics_sample = sample(sorted(all_topics), randint(1, len(all_topics) - 1))
+         subscriptions['C{}'.format(i)].update(topics_sample)
+ 
+     member_metadata = make_member_metadata(subscriptions)
+@@ -671,7 +671,7 @@ def test_reassignment_with_random_subscriptions_and_changes(mocker, execution_nu
+ 
+     subscriptions = defaultdict(set)
+     for i in range(n_consumers):
+-        topics_sample = sample(all_topics, randint(1, len(all_topics) - 1))
++        topics_sample = sample(sorted(all_topics), randint(1, len(all_topics) - 1))
+         subscriptions['C{}'.format(i)].update(topics_sample)
+ 
+     member_metadata = {}

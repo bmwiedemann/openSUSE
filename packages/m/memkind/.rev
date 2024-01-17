@@ -1,0 +1,260 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1017c962497375aad6d33a3fcaee2d30</srcmd5>
+    <version>1.1.0</version>
+    <time>1472731360</time>
+    <user>dimstar_suse</user>
+    <comment>Sync SLE and Factory packages (bnc#990223)</comment>
+    <requestid>423676</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0822d7626f3c47407d5d03a6423fd690</srcmd5>
+    <version>1.6.0</version>
+    <time>1510960947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update memkind to version 1.6.0 (fate #321932):
+  * Deprecated some functions: memkind_create(), memkind_ops,
+    memkind_finalize(), memkind_get_num_kind(),
+    memkind_get_kind_by_partition(), memkind_get_kind_by_name(),
+    memkind_partition_mmap(), memkind_get_size().
+  * Introduced hbw_verify_memory_region() for checking HBWness
+  * Added memkind_create_kind(), memkind_destroy_kind().
+  * Updated internal jemalloc to 4.3.1
+  * Add envvar MEMKIND_HOG_MEMORY preventing memkind from releasing
+    memory to OS.
+  * Deprecated support for gigabyte-pages
+  * Deprecated the headers from memkind/internal
+  * Allocation time optimizations with up to 20% improvement
+  * Introduced logging mechanism
+  * Cleanup of symbols exposed by libmemkind.so
+  * Introduced policy HBW_POLICY_BIND_ALL and MEMKIND_HBW_ALL,
+    MEMKIND_HBW_ALL_HUGETLB and MEMKIND_REGULAR kinds
+- Removed gtest-1.7.0.zip (tests now included fused gtest sources)
+- Adjust patch memkind-fix-build.diff</comment>
+    <requestid>542702</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>59ec53f8856854e55ea9546b3f0a922c</srcmd5>
+    <version>1.9.0</version>
+    <time>1576014359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update memkind to version 1.9.0 (jsc#SLE-8598, jsc#SLE-10102)
+  with these changes since 1.8.0:
+  * Provided a second function to create PMEM kind
+    memkind_create_pmem_with_config()
+  * Provided the memkind_detect_kind() function to recognize
+    a kind from memory allocation
+  * Provided memkind_config_set_memory_usage_policy() function
+    that modifies the default memory usage policy behavior
+  * Provided the ability to pass a NULL kind to
+    memkind_malloc_usable_size() and memkind_realloc()
+  * Unified the memkind_realloc() behavior for all kinds
+  * Added the support for the pool_msize() function to TBB
+  * Extended build arch to ppc64, ppc64le, s390x
+  * Removed disable-stats from used jemalloc
+  * Fixed compilation under the Clang and rpm build configuration
+  * Provided support for Dockerfile
+- Also includes these changes since 1.7.0:
+  * Fixed error with realloc/free method with passing
+    thread-specific cache flag
+  * Fixed error with memkind_create_pmem(), if other PMEM kind
+    was destroyed before
+  * Fixed error with zeroing large allocations in PMEM kind
+  * Added support to create kind without maximum size limit of
+    PMEM kind (max_size=0)
+  * Extended memkind API with memkind_malloc_usable_size()
+  * Removed EXPERIMENTAL from most methods in memkind API
+  * Added MEMKIND_ERROR_ARENAS_CREATE code
+  * Added C++ allocator for PMEM kind
+  * Extended PMEM examples
+  * Fixed integration with Travis CI</comment>
+    <requestid>755604</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a121ddfffccf35fe1688d6a266cd4298</srcmd5>
+    <version>1.9.0</version>
+    <time>1576598080</time>
+    <user>dimstar_suse</user>
+    <comment>Just a submission for some policy: mentioning the Jira Epic issue
+numbers.
+- Update memkind to version 1.9.0 (jsc#SLE-8598 aka jsc#SLE-8515,
+  jsc#SLE-10102 aka jsc#SLE-7950)</comment>
+    <requestid>757563</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6c2066bce65f6a4ab356fef4484b54d2</srcmd5>
+    <version>1.10.0</version>
+    <time>1597955678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828259</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>58532506433ff4d73ae7931b1754855e</srcmd5>
+    <version>1.10.0</version>
+    <time>1602857643</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Buildrequires pkg-config to generate pkg-config provides (forwarded request 841903 from cvoegl)</comment>
+    <requestid>841930</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6ea17adebd5a2e2ac1ab1b2beb2d2c53</srcmd5>
+    <version>1.10.1</version>
+    <time>1607965826</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 1.10.1 (forwarded request 855640 from jgwang)</comment>
+    <requestid>855759</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>11224bfbfbe792527914e35f7ce11377</srcmd5>
+    <version>1.10.1</version>
+    <time>1611595509</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable build on aarch64 (forwarded request 866517 from Guillaume_G)</comment>
+    <requestid>866616</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>16a9422af75835372163eb790006685f</srcmd5>
+    <version>1.12.0</version>
+    <time>1633959074</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.12.0 (JSC#SLE-22050)
+  * Optimized hog memory
+  * Removed memkind_malloc_wrapper
+  * Extended error handling in pmem_allocator
+  From version 1.11.0:
+  * Provided a function to verify if path supports DAX - memkind_check_dax_path()
+  * Provided a NUMA node interleave variant for MEMKIND_DAX_KMEM (MEMKIND_DAX_KMEM_INTERLEAVE)
+  * Provided a function to enable/disable background threads - memkind_set_bg_threads()
+  * Provided a function to print statistics - memkind_stats_print()
+  * Extended configure mechanism by enable-memkind-initial-exec-tls option
+  * Extended memkind to support HMAT (libhwloc required)
+  * Provided memory property abstraction (MEMKIND_HIGHEST_CAPACITY*, MEMKIND_LOWEST_LATENCY_LOCAL*, MEMKIND_HIGHEST_BANDWIDTH_LOCAL*)
+  * Extended support for MEMKIND_HBW* to platforms with full HMAT support (kernel+hardware)
+- Enable build on aarch64
+- Update to version 1.10.1
+- Removed the patch Add-missing-includes.patch, it
+  was merged into upstream.
+- Add Buildrequires pkg-config to generate pkg-config provides
+- Enable memkind builds for ppc64, ppc64le and s390x
+- Update memking to version 1.10.0 with these changes:
+  * Provided another way to use Persistent Memory in memkind (MEMKIND_DAX_KMEM_* kinds)
+  * Added C++ allocator for static kinds (including MEMKIND_DAX_KMEM_* kinds)
+  * Provided an interface to get memkind allocation statistics
+  * Provided a method to reduce fragmentation - memkind_defrag_reallocate()
+  * Added support for background thread
+  * Updated internally used jemalloc to upstream version 5.2.1
+  * Extended hbw interface with hbw_malloc_usable_size()
+  *  Simplified building process
+- Rebase memkind-fix-build.diff .
+- Backport Add-missing-includes.patch from upstream to fix compilation
+  with GCC10
+- Use %configure for building
+- Update memkind to version 1.9.0 (jsc#SLE-8598 aka jsc#SLE-8515,
+  jsc#SLE-10102 aka jsc#SLE-7950)
+  with these changes since 1.8.0:
+  * Provided a second function to create PMEM kind
+    memkind_create_pmem_with_config()
+  * Provided the memkind_detect_kind() function to recognize
+    a kind from memory allocation
+  * Provided memkind_config_set_memory_usage_policy() function
+    that modifies the default memory usage policy behavior
+  * Provided the ability to pass a NULL kind to
+    memkind_malloc_usable_size() and memkind_realloc()
+  * Unified the memkind_realloc() behavior for all kinds
+  * Added the support for the pool_msize() function to TBB
+  * Extended build arch to ppc64, ppc64le, s390x
+  * Removed disable-stats from used jemalloc
+  * Fixed compilation under the Clang and rpm build configuration
+  * Provided support for Dockerfile
+- Also includes these changes since 1.7.0:
+  * Fixed error with realloc/free method with passing
+    thread-specific cache flag
+  * Fixed error with memkind_create_pmem(), if other PMEM kind
+    was destroyed before
+  * Fixed error with zeroing large allocations in PMEM kind
+  * Added support to create kind without maximum size limit of
+    PMEM kind (max_size=0)
+  * Extended memkind API with memkind_malloc_usable_size()
+  * Removed EXPERIMENTAL from most methods in memkind API
+  * Added MEMKIND_ERROR_ARENAS_CREATE code
+  * Added C++ allocator for PMEM kind
+  * Extended PMEM examples
+  * Fixed integration with Travis CI
+  * Extended Travis CI configuration with Astyle and Coverage
+  * Added PMEM kind tests
+- Also includes these changes since 1.6.0:
+  * Updated internally used jemalloc to upstream version 5.0.
+  * Fixed error that has been occuring while memkind was
+    dynamically loaded.
+  * Fixed MEMKIND_HBW_NODES behavior for single NUMA node system.
+  * Removed licenses other than BSD 3-clause from COPYING.
+  * Changed build instructions.
+  * Added configurable jemalloc prefix in build scripts.
+  * Upgraded gtest to version 1.8.0.
+  * Added memory footprint tests.
+  * Added locality test for MEMKIND_PREFERRED.
+  * Applied test parametrization in BATests.
+  * Fixed problems with pytest testing in Travis.
+  * Added huge page configuration in several tests.
+  * Removed several symbols that are no longer exposed in
+    public API from man pages.
+  * Fixed HBW_POLICY_BIND_ALL documentation.
+- Rebase memkind-fix-build.diff .
+- Update memkind to version 1.6.0 (fate #321932):
+  * Deprecated some functions: memkind_create(), memkind_ops,
+    memkind_finalize(), memkind_get_num_kind(),
+    memkind_get_kind_by_partition(), memkind_get_kind_by_name(),
+    memkind_partition_mmap(), memkind_get_size().
+  * Introduced hbw_verify_memory_region() for checking HBWness
+  * Added memkind_create_kind(), memkind_destroy_kind().
+  * Updated internal jemalloc to 4.3.1
+  * Add envvar MEMKIND_HOG_MEMORY preventing memkind from releasing
+    memory to OS.
+  * Deprecated support for gigabyte-pages
+  * Deprecated the headers from memkind/internal
+  * Allocation time optimizations with up to 20% improvement
+  * Introduced logging mechanism
+  * Cleanup of symbols exposed by libmemkind.so
+  * Introduced policy HBW_POLICY_BIND_ALL and MEMKIND_HBW_ALL,
+    MEMKIND_HBW_ALL_HUGETLB and MEMKIND_REGULAR kinds
+- Removed gtest-1.7.0.zip (tests now included fused gtest sources)
+- Adjust patch memkind-fix-build.diff
+- Re-set RPM groups for openSUSE. Make description available in
+  the most prominently installed package. Fix a wrong Require tag.
+- Replace memkind-1.1.0.tar.bz2 with memkind-1.1.0.tar.gz; github
+  only supports tar.gz downloads.
+- Use --disable-static instead of deleting the static library
+  afterwards.
+- Create libmemkind0 subpackage for shared library policy.
+- Initial package (git tag v1.1.0)
+- Add memkind-fix-build.diff for our AS_NEEDED setup. (forwarded request 924218 from aginies)</comment>
+    <requestid>924219</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4d20aea756c8caa2178b2f26d87e8688</srcmd5>
+    <version>1.12.0</version>
+    <time>1640200671</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942068</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>21fdf7b1559c382848fd21b3e9e7d3fd</srcmd5>
+    <version>1.12.0</version>
+    <time>1655981372</time>
+    <user>dimstar_suse</user>
+    <comment>- Add memkind-dont-redefine-fortify.diff to not redefine
+  _FORTIFY_SOURCE if already included in CFLAGS.
+</comment>
+    <requestid>984698</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b88ac10f4c19f3fc57ab24d2ba29d05d</srcmd5>
+    <version>1.14.0</version>
+    <time>1668609794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035882</requestid>
+  </revision>
+</revisionlist>

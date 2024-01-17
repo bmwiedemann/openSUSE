@@ -1,0 +1,5 @@
+<package name="ghc-dense-linear-algebra" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-dense-linear-algebra"/>
+</package>

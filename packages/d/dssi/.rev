@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>1e76518a39189d635e870206b9cddd39</srcmd5>
+    <version>0.9.1</version>
+    <time>1168902641</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="61">
+    <srcmd5>1557e1d89bb610792fd5b3d5142cfdff</srcmd5>
+    <version>0.9.1</version>
+    <time>1176849059</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="191">
+    <srcmd5>1557e1d89bb610792fd5b3d5142cfdff</srcmd5>
+    <version>0.9.1</version>
+    <time>1176849059</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>423f836f85b98f40826ec9ab8d06417c</srcmd5>
+    <version>1.0.0</version>
+    <time>1232409677</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3501d13c6e856f65c355ff61a5f0f161</srcmd5>
+    <version>1.0.0</version>
+    <time>1248430269</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>3b9abe913c51767b1f5265ef9693a6f2</srcmd5>
+    <version>1.0.0</version>
+    <time>1248729489</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>3b9abe913c51767b1f5265ef9693a6f2</srcmd5>
+    <version>1.0.0</version>
+    <time>1248729489</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>646732e2ea368646711bbf7ddcb4d912</srcmd5>
+    <version>1.0.0</version>
+    <time>1268923403</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>646732e2ea368646711bbf7ddcb4d912</srcmd5>
+    <version>1.0.0</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>646732e2ea368646711bbf7ddcb4d912</srcmd5>
+    <version>1.0.0</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>848525b6ffbb91c1987a882789ad7167</srcmd5>
+    <version>1.1.0</version>
+    <time>1286400962</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/dssi based on submit request 49858 from user coolo
+</comment>
+    <requestid>49858</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>848525b6ffbb91c1987a882789ad7167</srcmd5>
+    <version>1.1.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>388ea7d405a9129e58f603efddb230ad</srcmd5>
+    <version>1.1.0</version>
+    <time>1314692270</time>
+    <user>saschpe</user>
+    <comment>- Fix linking with new toolchain. (forwarded request 80153 from elvigia)</comment>
+    <requestid>80155</requestid>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>8dddfd54c1ef34d10c473edf2726017f</srcmd5>
+    <version>1.1.0</version>
+    <time>1314692278</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80155
+</comment>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>48fd931a59848666d9b0f9047266c848</srcmd5>
+    <version>1.1.0</version>
+    <time>1316443771</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83300 from jengelh)</comment>
+    <requestid>83370</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>1586d0faa071e3b807325bf2bece4f2a</srcmd5>
+    <version>1.1.0</version>
+    <time>1317626181</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85989 from coolo)</comment>
+    <requestid>86096</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>1586d0faa071e3b807325bf2bece4f2a</srcmd5>
+    <version>1.1.0</version>
+    <time>1319181856</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>6e2af5f1a5aea4047ce9aebc1ec7a8fe</srcmd5>
+    <version>1.1.0</version>
+    <time>1323191230</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>59dd728e48d2735701e8ffc9cb236798</srcmd5>
+    <version>1.1.1</version>
+    <time>1326292572</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1.1:
+  * Fix to a crash on startup in one of the example plugins
+    (less_trivial_synth)
+- Run spec-cleaner</comment>
+    <requestid>99690</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>59dd728e48d2735701e8ffc9cb236798</srcmd5>
+    <version>1.1.1</version>
+    <time>1340183292</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>59dd728e48d2735701e8ffc9cb236798</srcmd5>
+    <version>1.1.1</version>
+    <time>1359108828</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>27b1484f477fb126d3ce33eca8b0d33e</srcmd5>
+    <version>1.1.1</version>
+    <time>1362744093</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157364 from coolo)</comment>
+    <requestid>157366</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>27b1484f477fb126d3ce33eca8b0d33e</srcmd5>
+    <version>1.1.1</version>
+    <time>1379662257</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>27b1484f477fb126d3ce33eca8b0d33e</srcmd5>
+    <version>1.1.1</version>
+    <time>1409300792</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="11">
+    <srcmd5>22ca6cf32c23f5194024322ebd153b6c</srcmd5>
+    <version>1.1.1</version>
+    <time>1412533935</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253980</requestid>
+  </revision>
+</revisionlist>

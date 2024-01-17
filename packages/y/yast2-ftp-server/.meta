@@ -1,0 +1,6 @@
+<package name="yast2-ftp-server" project="openSUSE:Factory">
+  <title>YaST2 - FTP configuration</title>
+  <description>This package contains the YaST2 component for FTP configuration. It can
+to configure two daemons: pure-ftpd and vsftpd.</description>
+  <devel project="YaST:Head" package="yast2-ftp-server"/>
+</package>

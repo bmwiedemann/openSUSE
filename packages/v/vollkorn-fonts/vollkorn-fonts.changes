@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Mon Jul 30 10:29:52 UTC 2018 - jengelh@inai.de
+
+- Delete undesirable files unconditionally.
+
+-------------------------------------------------------------------
+Fri Jun  8 18:30:58 UTC 2018 - cornelis@solcon.nl
+
+- Update to version 4.105
+  * fixed feature code for figures
+  *  added Dcedilla
+  * generated OTF, TTF, WOFF, WOFF2, EOT (but we package only TTF)
+- Update to version 4.104
+  * fixed ascender of λ
+  * added several top anchors to Xx and greek letters
+- Update to version  4.103
+  * added missing uni0258 ereversed
+- Update to version 4.102
+  * fixed SemiBold font name
+  * fixed some kerning issues
+  * added some brackets and musical bars
+  * added some anchors to Greek lowercase
+- Update to version 4.100
+  * added intermediate weights “Medium” and “Extrabold” (and adjusted “SemiBold” and “Bold”)
+  * optimised Vietnamese
+  * added ca. 40 glyphs to support more languages
+  * some new Greek and Latin glyphs
+  * fixed Eng
+  * added half brackets
+
+-------------------------------------------------------------------
+Wed Apr  4 13:08:28 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality of description. Use English typography marks
+  for English descriptions.
+
+-------------------------------------------------------------------
+Wed Apr  4 10:59:53 UTC 2018 - cornelis@solcon.nl
+
+- update fonts to 4.015:
+  * Small Caps (including figures)
+  * Cyrillic
+  * More localized forms
+  * Greek
+  * Tabular Oldstyle
+  * Inferiors and superiors
+  * Uppercase accents
+  * Superscripts symbols
+  * Currency
+  * Mathematical symbols
+
+-------------------------------------------------------------------
+Fri Jun 13 09:26:24 UTC 2014 - sknorr@suse.de
+
+- update fonts to 3.005
+- update URL to vollkorn-typeface.com
+- remove -j parameter from unzip, as that was not helpful
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:35 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 13 10:57:31 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Wed Jan  4 13:25:40 UTC 2012 - toms@suse.de
+
+- Updated to version 2.1 from the author's homepage
+
+-------------------------------------------------------------------
+Sun Sep 26 12:10:28 UTC 2010 - toms@suse.de
+
+- First initial release
+

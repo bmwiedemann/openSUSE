@@ -1,0 +1,12 @@
+<package name="thunar-sendto-clamtk" project="openSUSE:Factory">
+  <title>Adds a right-click, context menu to scan files or folders in Thunar</title>
+  <description>All this plugin does is copy a desktop file to Thunar's send-to
+directory.  If this seems redundant, that's because it is:
+this plugin depends on clamtk, which already has this directory
+file. So, it stands to reason we should be able to just find that
+file and copy it, rather than having our own copy.
+
+</description>
+  <devel project="X11:xfce" package="thunar-sendto-clamtk"/>
+  <url>https://dave-theunsub.github.io/clamtk/</url>
+</package>

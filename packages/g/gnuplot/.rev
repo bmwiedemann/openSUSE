@@ -1,0 +1,1262 @@
+<revisionlist>
+  <revision rev="1" vrev="20">
+    <srcmd5>43d35134a89441f411c3a34f184fb207</srcmd5>
+    <version>4.0.0</version>
+    <time>1168902911</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e173349e6cdea35042481cd01cd12c02</srcmd5>
+    <version>4.2.0</version>
+    <time>1176391947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>51856ba6abd97e8a3479dd36dba9df38</srcmd5>
+    <version>4.2.0</version>
+    <time>1177077370</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6ddac86a3920de2b5b3dc4df31cf9ae2</srcmd5>
+    <version>4.2.0</version>
+    <time>1177415775</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="13">
+    <srcmd5>16c84604732e08e63e663e9f040334c6</srcmd5>
+    <version>4.2.0</version>
+    <time>1178895336</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="26">
+    <srcmd5>3a6ca01766773748fcfe5ee2e90c0fb8</srcmd5>
+    <version>4.2.0</version>
+    <time>1180640087</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="60">
+    <srcmd5>5e0eb3ab6d3053520a84c2f13016fafe</srcmd5>
+    <version>4.2.0</version>
+    <time>1189109951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f789df5e5f821fafab6fed178140f1b3</srcmd5>
+    <version>4.2.2</version>
+    <time>1197646185</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="36">
+    <srcmd5>839e109c1de2cb1cc223e524bbce5784</srcmd5>
+    <version>4.2.2</version>
+    <time>1205512910</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1c40cb1e744130c61727b699986f430f</srcmd5>
+    <version>4.2.3</version>
+    <time>1206651429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>972cb3e79c96cc7367dee9acea83041a</srcmd5>
+    <version>4.2.3</version>
+    <time>1207265371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="78">
+    <srcmd5>972cb3e79c96cc7367dee9acea83041a</srcmd5>
+    <version>4.2.3</version>
+    <time>1207265371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="79">
+    <srcmd5>b9e51995cc42489147cb9e7cbff55cf7</srcmd5>
+    <version>4.2.3</version>
+    <time>1232065915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4130454cd3803e085eeb9f61680cd44f</srcmd5>
+    <version>4.2.5</version>
+    <time>1243478640</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4d5078af4c8ddcaed2212c2ee0e3216d</srcmd5>
+    <version>4.2.5</version>
+    <time>1245076500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>4a96b2e7bd8ee62bfeefb4011faf1e4f</srcmd5>
+    <version>4.2.5</version>
+    <time>1246695379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>4a96b2e7bd8ee62bfeefb4011faf1e4f</srcmd5>
+    <version>4.2.5</version>
+    <time>1246695379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e9f9908cafc32cb61122a16d1b024a5b</srcmd5>
+    <version>4.2.6</version>
+    <time>1267785850</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/gnuplot based on submit request 34006 from user WernerFink
+</comment>
+    <requestid>34006</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>0256a45f162d04aa09db5b94aa98b7f4</srcmd5>
+    <version>4.2.6</version>
+    <time>1268923840</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a70820876be15b92078d36115c07c248</srcmd5>
+    <version>4.2.6</version>
+    <time>1270586284</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/gnuplot based on submit request 37108 from user WernerFink
+</comment>
+    <requestid>37108</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7ab8ac25868702a18867b9f26fd91dd2</srcmd5>
+    <version>4.4.0</version>
+    <time>1270667955</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/gnuplot based on submit request 37193 from user WernerFink
+</comment>
+    <requestid>37193</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>dd32d8d80a37d863afb8f0bbaa69ea1b</srcmd5>
+    <version>4.4.0</version>
+    <time>1273681615</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/gnuplot based on submit request 39729 from user WernerFink
+</comment>
+    <requestid>39729</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>ea69eeb6a15e25df41a5c073ec7282c7</srcmd5>
+    <version>4.4.0</version>
+    <time>1274790924</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/gnuplot based on submit request 40594 from user coolo
+</comment>
+    <requestid>40594</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>ea69eeb6a15e25df41a5c073ec7282c7</srcmd5>
+    <version>4.4.0</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>ea69eeb6a15e25df41a5c073ec7282c7</srcmd5>
+    <version>4.4.0</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>366045b0781d217f9a03fe89affacb62</srcmd5>
+    <version>4.4.1</version>
+    <time>1284764893</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/gnuplot based on submit request 48141 from user WernerFink
+</comment>
+    <requestid>48141</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e58f78862889adce55cdd60c0f0d0dac</srcmd5>
+    <version>4.4.2</version>
+    <time>1286314805</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/gnuplot based on submit request 49713 from user WernerFink
+</comment>
+    <requestid>49713</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>fccfc69d94e2a063d463d6961c901016</srcmd5>
+    <version>4.4.2</version>
+    <time>1295286174</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58530 from user WernerFink
+</comment>
+    <requestid>58530</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>0c5a4d6bf0dd923c89d8095528c45ac8</srcmd5>
+    <version>4.4.2</version>
+    <time>1295286185</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58530
+</comment>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>0c5a4d6bf0dd923c89d8095528c45ac8</srcmd5>
+    <version>4.4.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>bf58c2ae9c123ad0e23f00f087a4ead8</srcmd5>
+    <version>4.4.3</version>
+    <time>1303385161</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 68036 from user coolo
+</comment>
+    <requestid>68036</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>7151b3123e1848d76605bafdc820579f</srcmd5>
+    <version>4.4.3</version>
+    <time>1303385170</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 68036
+</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>7151b3123e1848d76605bafdc820579f</srcmd5>
+    <version>4.4.3</version>
+    <time>1319181933</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ce0bf446254d0e951f350a2162ec28b4</srcmd5>
+    <version>4.4.4</version>
+    <time>1327490313</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100907</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>3dc99b62313b88c22ee70188e0e7a18f</srcmd5>
+    <version>4.4.4</version>
+    <time>1329383138</time>
+    <user>coolo</user>
+    <comment>- Make gnuplot build with newer LUA version.
+
+- Fix version control of further help messages, fix done
+  by Dieter Jurzitza (bnc#746299)
+
+- Fix libdir x libexecdir clash (bnc#744835).
+- Use %configure macro.
+
+     - Diese Version hat splines und bezier zum Fit für
+       Mit vollständiger Dokumentation und Beispielen</comment>
+    <requestid>104781</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>11e57b933db978c669a7497be2300226</srcmd5>
+    <version>4.6.0</version>
+    <time>1334215491</time>
+    <user>coolo</user>
+    <comment>- Use new bcond_without h3d_gridbox to switch back to h3d-quadtree
+  if h3d-gridbox will be disabled on the commandline of rpmbuild
+
+- Avoid to stumble on bug in QtCore.pc on older distributions 
+
+- Refresh patches to see in which C function each change is in
+- Reenable bitmap terminals
+
+- Update to gnuplot 4.6.0
+  * New syntax supporting multi-line blocks of code delimited by curly braces
+       if (&lt;cond&gt;) { ... } else { ... }
+       do for [&lt;iteration-spec&gt;] { ... }
+       while (&lt;cond&gt;) { ... }
+  * Time formats can handle fractional seconds to microsecond precision.
+  * User-definable linetypes that can be used to establish a locally
+    preferred default sequence of colors or dash/thickness/point styles.
+  * Statistical summary of the data to be plotted (new command &quot;stats&quot;)
+  * New terminal drivers:  qt  context  epscairo  cairolatex
+  * The version for Windows received major improvements
+    (GUI, help, native terminal and wxt, installer)
+  * Improved support for UTF-8, SJIS and other multi-byte encodings</comment>
+    <requestid>112459</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>049ba31d5a23888ffebbac7d0d0fe5bf</srcmd5>
+    <version>4.6.0</version>
+    <time>1338528014</time>
+    <user>coolo</user>
+    <comment>am 1.12 - http://lists.opensuse.org/opensuse-factory/2012-05/msg00752.html
+- Remove redundant tags/sections from specfile
+- Parallel build with %_smp_mflags
+- Add patch to delete no-longer supported constructs from
+  configure.in/Makefile.am (forwarded request 122937 from jengelh)</comment>
+    <requestid>122946</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>049ba31d5a23888ffebbac7d0d0fe5bf</srcmd5>
+    <version>4.6.0</version>
+    <time>1340183397</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>29b194d2e06aec16225df3aa21e629be</srcmd5>
+    <version>4.6.0</version>
+    <time>1341316451</time>
+    <user>coolo</user>
+    <comment>- Convert gnuplot.el to new backtick lisp scheme for emacs 24.1</comment>
+    <requestid>126953</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>8c34399fd40fcdd0a8155bea8229f5bd</srcmd5>
+    <version>4.6.0</version>
+    <time>1343030425</time>
+    <user>coolo</user>
+    <comment>- add more texlive 2012 requirements (forwarded request 128642 from coolo)</comment>
+    <requestid>128710</requestid>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>9c9db617d2eb1570faff344e1d26c085</srcmd5>
+    <version>4.6.0</version>
+    <time>1343134897</time>
+    <user>coolo</user>
+    <comment>- Resolve the former problem by using texlive-texinfo to enforce
+  installing required fonts as well as required tools for TL 2012</comment>
+    <requestid>128726</requestid>
+  </revision>
+  <revision rev="42" vrev="8">
+    <srcmd5>752d569dda0fbf3d228ec3a276855a33</srcmd5>
+    <version>4.6.0</version>
+    <time>1350415932</time>
+    <user>coolo</user>
+    <comment>- buildrequire libpng, it compiles fine with it (forwarded request 138294 from coolo)</comment>
+    <requestid>138336</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0aeda423c4ea9cf928e6f2961b1a20c4</srcmd5>
+    <version>4.6.1</version>
+    <time>1352358272</time>
+    <user>coolo</user>
+    <comment>- Update to 4.6.1
+  * Bug fixes.
+  * Support tabulation of variable color column.
+  * Support tabulation (set table) of pixel values from image plot styles
+- Remove now obsolete patches gnuplot-automake.diff and gnuplot-4.6.0-fix-format-errors.diff. (forwarded request 140325 from burnus)</comment>
+    <requestid>140329</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>0aeda423c4ea9cf928e6f2961b1a20c4</srcmd5>
+    <version>4.6.1</version>
+    <time>1359108977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c985c94f01eb0f99a2b76c5c6221b75e</srcmd5>
+    <version>4.6.2</version>
+    <time>1364896092</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.2 (forwarded request 161937 from burnus)</comment>
+    <requestid>162049</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a7d142678a6588bb5cb7af3315c03703</srcmd5>
+    <version>4.6.3</version>
+    <time>1367221997</time>
+    <user>coolo</user>
+    <comment>- Update to 4.6.3
+  * FIX suppression of color in linetypes after &quot;set term ... mono&quot;
+  * FIX synchronization of graphics and text color in latex terminals (forwarded request 173320 from burnus)</comment>
+    <requestid>173644</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>a7d142678a6588bb5cb7af3315c03703</srcmd5>
+    <version>4.6.3</version>
+    <time>1379662520</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8271f6f5acfea04494195d285e58dab7</srcmd5>
+    <version>4.6.4</version>
+    <time>1383545147</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.4 (forwarded request 205229 from burnus)</comment>
+    <requestid>205588</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>4c9672ef51c393a550c8b52cd7f97574</srcmd5>
+    <version>4.6.5</version>
+    <time>1393455585</time>
+    <user>coolo</user>
+    <comment>Update to 4.6.5 (forwarded request 223794 from burnus)</comment>
+    <requestid>224002</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>4c9672ef51c393a550c8b52cd7f97574</srcmd5>
+    <version>4.6.5</version>
+    <time>1409301058</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>4f6f03cff14ea65c100e7b4098640b05</srcmd5>
+    <version>4.6.6</version>
+    <time>1415201195</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258721</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4644a13fef3a7165bfbd5e5790200919</srcmd5>
+    <version>5.0.0</version>
+    <time>1422216875</time>
+    <user>dimstar_suse</user>
+    <comment>Update to gnuplot 5.0.0 (forwarded request 282275 from burnus)</comment>
+    <requestid>282561</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>f997d90684263bf97ea41840df0dde0f</srcmd5>
+    <version>5.0.0</version>
+    <time>1423214193</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283903</requestid>
+  </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>4bade84b509f6409f82e1fb0fd4a8350</srcmd5>
+    <version>5.0.0</version>
+    <time>1427735437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293536</requestid>
+  </revision>
+  <revision rev="55" vrev="4">
+    <srcmd5>5a0c585f27aee6ff083d1863c4aaf7fc</srcmd5>
+    <version>5.0.0</version>
+    <time>1432281224</time>
+    <user>dimstar_suse</user>
+    <comment>- Since QtCore is build with -reduce-relocations a -fPIC is required 
+  therefore add patch gnuplot-QtCore-PIC.dif</comment>
+    <requestid>308185</requestid>
+  </revision>
+  <revision rev="56" vrev="5">
+    <srcmd5>7fac51a0fbeb3b42593ac564ae2c10ee</srcmd5>
+    <version>5.0.0</version>
+    <time>1432982032</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>309130</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>378a92d2f09c6e422b777a30dfe704ac</srcmd5>
+    <version>5.0.0</version>
+    <time>1438615284</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch gnuplot-5.0.0-lua-5.3.1.dif to make it build with
+  lua-5.3.1
+
+- Require pkgconfig of libcerf at build time</comment>
+    <requestid>319060</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f6380e122dafcdee499d355b94f09510</srcmd5>
+    <version>5.0.1</version>
+    <time>1449686936</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346936</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>a8b0c3d150eb603e95749d8172d069a5</srcmd5>
+    <version>5.0.1</version>
+    <time>1470413822</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>416606</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4595a07c918084c85ae34dc9498d7097</srcmd5>
+    <version>5.0.5</version>
+    <time>1483047830</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 5.0.5
+  * NEW allow filename completion for system commands and pipes (backport from 5.1)
+  * NEW option to plot with labels {rotate variable}
+  * NEW command &quot;set minussign&quot;
+  * NEW stats command &quot;name&quot; option now accepts &quot;columnheader&quot; or &quot;columnheader(N)&quot;
+  * NEW command option &quot;set colorbox invert&quot;
+  * CHANGE qt terminal force selection of outline font rather than bitmap font
+  * CHANGE post terminal simplex/duplex output depends on PostScript level setting
+  * CHANGE improved autoscaling of plot &quot;with boxes&quot;
+  * CHANGE qt terminal sets TERM_POLYGON_PIXELS to avoid aliasing artifacts
+  * CHANGE all stats and fit commands skip header records if &quot;autotitle columnhead&quot;
+  * FIX Do not confuse EOF with 8-bit character 0x177 (E.g. in Cyrillic encodings).
+  * FIX use blank line rather than 'u' flag in &quot;set table&quot; output of smoothed data
+  * FIX order dependence of &quot;fillcolor&quot; keyword in plot commands
+  * FIX svg - better vertical justification of rotated text
+  * FIX wxt - file export widget correctly handles inactive plots
+  * FIX qt - preserve leading and trailing whitespace in enhanced text strings
+  * FIX various bugs affecting matrix data plotted &quot;with image&quot;
+- Remove the patches now upstream
+   gnuplot-5.0.0-lua-5.3.1.dif
+   gnuplot-5.0.1-fix-latex-docs.diff
+- Port patches to current version
+   gnuplot-4.4.0-x11ovf.dif
+   gnuplot-4.6.0-demo.diff
+   gnuplot-4.6.0.dif
+   gnuplot-QtCore-PIC.dif
+   gnuplot-wx3.diff</comment>
+    <requestid>446389</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>84a12cd12247bfdb3eba82f0ea35241c</srcmd5>
+    <version>5.0.6</version>
+    <time>1495267958</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.0.6 (forwarded request 494037 from NicoK)</comment>
+    <requestid>494064</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>e55b4e27233f8583236809473e5b5a9f</srcmd5>
+    <version>5.0.7</version>
+    <time>1502893432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.7 (which does also close CVE-2017-9670 (bsc#1044638))
+  * NEW set term {pngcairo|pdfcairo} pointscale &lt;factor&gt;
+  * NEW &quot;save fit&quot; back-ported from version 5.2 as a replacement for &quot;update&quot;
+  * NEW user-defined dashtypes in metapost terminal
+  * CHANGE deprecate &quot;update&quot; command (but do not remove it)
+  * CHANGE allow placement of circles in 3D plots using axis coordinates
+  * CHANGE ignore invalid z coordinate for 3D objects placed in &quot;set view map&quot;
+  * CHANGE distinguish 'bind &quot;shift-Button1&quot;' from 'bind &quot;Button1&quot;'
+  * CHANGE use Mingw-w64 and MSVC popen rather than built-in &quot;fake&quot; popen
+  * CHANGE allow range to include sampling interval in plots using pseudofile '+'
+  * FIX rangelimited y2 axis could produce spurious diagonal line across plot
+  * FIX assignment of x/y dimensions in &quot;binary record=(a,b) ... with image&quot;
+  * FIX negative array index caused by hidden3d degenerate polygon
+  * FIX object clipping in &quot;set view map&quot;
+  * FIX cairo terminals: scale textbox border linewidth by terminal linewidth
+  * FIX canvas terminal: initialization of plot dimensions (affects first zoom)
+  * FIX crash in stats if no usable data is found
+  * FIX do not use LaTeX formatting in tabular output
+  * FIX sanity check to catch &quot;plot '+' binary&quot;
+  * FIX sanity check for NULL format passed to gprintf
+  * FIX sanity check for empty image data structure on input
+  * FIX more consistent handling of plot 'with table'
+  * FIX incorrect, possibly empty, command string was saved for previous fit
+  * FIX 2D images with logscale axes could fail (segfault)
+  * FIX nested iteration containing an empty range
+  * FIX allow 64-bit Cygwin build using gtk3 for wxt terminal</comment>
+    <requestid>517125</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>41b07bec8b8793442a60804c18cf8935</srcmd5>
+    <version>5.2.0</version>
+    <time>1507570819</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch gnuplot-5.2.0-texi2info.patch as source to be able
+  to patch the resulting gnuplot.texi 
+- Modify patches
+  * gnuplot-4.4.0-x11ovf.dif
+  * gnuplot-4.6.0-demo.diff
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-QtCore-PIC.dif
+  * gnuplot-wx3.diff
+
+- Update to gnuplot 5.2.0
+  * NEW user-defined dashtypes in metapost terminal
+* NEW datablock contents may be accessed as an indexed array of strings
+  * CHANGE allow explicit sample interval for u and v using pseudofile '++'
+  * CHANGE decouple cbrange from color components in &quot;with rgbimage&quot;
+  * FIX reconcile aspect ratio flags from &quot;set view map&quot; and &quot;set view equal xy&quot;
+  * FIX &quot;set key fixed&quot; should be ignored in the case of &quot;set view map&quot;
+  * FIX GPVAL_* variables were not being updated in &quot;set table&quot; mode
+  * FIX evaluation of nested iteration containing an empty range
+  * FIX bug in variant time_spec formats %tH %tM (undesired wrapping)
+  * NEW &quot;plot with table&quot; can handle string-valued output columns
+  * CHANGE add caca terminal documentation to the user manual
+  * CHANGE revised output of &quot;test&quot; command
+  * CHANGE use Mingw-w64 and MSVC popen rather than built-in &quot;fake&quot; popen
+  * FIX copy environmental variable GNUTERM to internal variable on entry
+  * FIX more consistent handling of plot 'with table'
+  * FIX incorrect, possibly empty, command string was saved for previous fit
+  * FIX ignore non-numeric values of potential dummy params used by &quot;fit&quot;
+  * FIX autoscaling during refresh of volatile data plots &quot;with vectors&quot;
+  * FIX terminal initialization must be done before executing ~/.gnuplot</comment>
+    <requestid>529865</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>65da416fda66d1808042467e29a33297</srcmd5>
+    <version>5.2.1</version>
+    <time>1510232869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540022</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c84d2bc7022b11886dc123ef9302161f</srcmd5>
+    <version>5.2.2</version>
+    <time>1510960846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.2.2 
+  * NEW splot ... with lines title at {beg|end}
+  * FIX allow mixed use of in-key plot titles and manually placed titles
+  * FIX prevent runaway iterations of the form   plot for [i=start:*] ...
+  * FIX handle in-line range limits for linked or nonlinear axes
+  * FIX restore pre-5.2 interpretation of logscaled tic increment as a multiplier
+  * FIX logscale tic placement is closer to that of versions before 5.2.0
+  * FIX recheck inrange/outrange points after spline or bezier smoothing
+  * FIX sampling on x2 if linked to x1;  e.g. plot sample [t=1:5:1] '+' axes x2y1
+  * FIX empty range on logscale y axis is handled by auto-extending the range
+  * FIX autoscaling xrange of stacked histograms
+- Add now missed TEXDIR at configure time which now includes also
+  the sub path tex/latex/gnuplot/ below /usr/share/texmf/ (could
+  become removed with some of the next version updates?)</comment>
+    <requestid>542575</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>c9a1ec4d61d9d73b2cc7294cfc9d0f08</srcmd5>
+    <version>5.2.2</version>
+    <time>1518514314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575871</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>ff46b5cee7882989cdb6a7f29866e11e</srcmd5>
+    <version>5.2.2</version>
+    <time>1518813796</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not miss gpic and mif
+- Even if pulled by other packages do explicite require for the build
+  * pkgconfig(freetype2)
+  * pkgconfig(libjpeg)
+  * pkgconfig(libpng16)</comment>
+    <requestid>576952</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>d0cede7be289cebf25c067f3d8058190</srcmd5>
+    <version>5.2.3</version>
+    <time>1525697639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.2.3
+  * NEW &quot;set grid {no}vertical&quot; adds grid lines in the xz and xz planes
+  * NEW &quot;set cntrparam {firstlinetype N} {{un}sorted}&quot;
+  * CHANGE drop non-working support for YIQ color space
+  * CHANGE expand \n characters when printing into a datablock
+  * CHANGE allow contour plots to opt out of hidden3d processing
+  * CHANGE special-case code to speed up handling of logscale axes
+  * CHANGE do not write GPFUN_* variables to &quot;save&quot; output file
+  * CHANGE default to density 100 for &quot;set fs solid&quot;, 50 for &quot;set fs transparent&quot;
+  * FIX potential buffer overflow in gprintf formats containing %%
+  * FIX immediate response to ctrl-Z when libreadline is used for input
+  * FIX warning messages inside a bracketed clause could trigger early exit
+  * FIX tweak logscale tic range limits and minor tic generation intervals
+  * FIX stats FOO using 'namedcolumn' name columnhead
+  * FIX clipping of INRANGE-&gt;UNDEFINED line segments
+  * FIX use of logscale y axis in &quot;set view map&quot; or &quot;set pm3d map&quot; modes
+  * FIX placement of colorbox in &quot;set view map&quot; mode
+  * FIX autoscaled axis range of logscale axes in &quot;set view map&quot; mode
+  * FIX polar mode &quot;with yerrorbars&quot; error bars are radial, not vertical
+  * FIX clipping of circles whose center is offscreen to the left or bottom
+  * FIX snap to x=zero for function plot sampling does not apply to logscale x
+  * FIX canvas terminal: apply both color and alpha channel to points and lines
+  * FIX svg terminal: apply current color to dots
+  * FIX qt terminal: include &quot;notitle&quot; plots in accounting for toggle operations
+  * FIX svg terminal: point plot empty title produced spurious mousing directive
+  * FIX tikz terminal: failed to recognize dashtype 1
+
+- Update to gnuplot 5.2.2</comment>
+    <requestid>604708</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>9190292421c6860b902fa32fb0f7f86d</srcmd5>
+    <version>5.2.4</version>
+    <time>1530866587</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620919</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>bfbfa34432947297da3198cae1ad6562</srcmd5>
+    <version>5.2.5</version>
+    <time>1539093280</time>
+    <user>dimstar_suse</user>
+    <comment>- Let patch gnuplot-5.2.0-texi2info.patch apply 
+
+- Update to gnuplot 5.2.5
+  * NEW &quot;set pm3d depthorder base&quot; sorts pm3d quadrangles by projecting to z=0
+  * NEW &quot;set jitter vertical&quot; displaces y coordinate rather than x coordinate
+  * NEW array size can be determined automatically from the initializer
+  * CHANGE place titles along x axis in plots with columnstacked histograms
+  * CHANGE equivalent slope constraint for mcs splines at both ends of the range
+  * CHANGE numerical arguments to &quot;call&quot; are stored in ARG1..ARGn as strings
+  * CHANGE numerical arguments to &quot;call&quot; are stored in ARGV[n] as complex
+  * CHANGE treat imaginary values plotted from a using spec as UNDEFINED (NaN)
+  * CHANGE allow &quot;reset&quot; between plots in a multiplot layout
+  * CHANGE Deprecate linux and vgagl terminals (to be removed in 5.3)
+  * CHANGE placement of axis and tic labels in 3D projections on to xz or yz plane
+  * CHANGE default to ./configure --without-wx-multithreading
+  * FIX parametric function plots did not work with logscale x (regression in 5.2.0-4)
+  * FIX polar mode &quot;set trange&quot; was assumed to use radians, now it tracks &quot;set angle&quot;
+  * FIX clip polar grid lines and ticks to x/y range limits
+  * FIX clipping of plot &quot;with lines&quot; when axes are nonlinear (regression from 5.0)
+  * FIX clipping of all elements in finanacebars/candlesticks/boxplots
+  * FIX clipping of 3D splot &quot;with labels&quot;
+  * FIX strange interaction of &quot;noautoscale&quot; with blank data lines
+  * FIX alignment of boxed text to center for eps/cairolatex
+  * FIX incompatibility of &quot;pm3d depthorder&quot; and rgb color taken from data column
+  * FIX aqua terminal font changes in enhanced text mode</comment>
+    <requestid>640800</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>656fd4c9ec048a7328e514dce3a812c8</srcmd5>
+    <version>5.2.5</version>
+    <time>1544095056</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>655317</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>67e5f8c36ff75ee5a16716f889ef46de</srcmd5>
+    <version>5.2.6</version>
+    <time>1546535378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.2.6
+  * NEW keyword &quot;keyentry&quot; places an entry in the key without actually plotting
+  * NEW &quot;set style boxplot medianlinewidth &lt;lw&gt;&quot;
+  * CHANGE drop non-working support for CIE/XYZ color space
+  * CHANGE strptime ignores content read with format a/A/w/W
+  * FIX various corner-case bugs and overruns found by fuzzing
+  * FIX revise waitforinput in x11 terminal
+  * FIX revise waitforinput and terminal close events in qt terminal
+  * FIX revise waitforinput and new window events in monothreaded wxt terminal
+  * FIX lua.trm compatibility with lua version 5.3
+  * FIX error line reporting inside an if/else bracketed clause
+  * FIX error in date conversion for times within a nanosecond of a year boundary
+- Drop patch gnuplot-e3cc539c.patch as this is fixed with update</comment>
+    <requestid>662610</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>1c9d1bcf284a7cac22fe184890bffe03</srcmd5>
+    <version>5.2.7</version>
+    <time>1559642834</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.2.7
+  * NEW &quot;set pm3d noclipcb&quot; will skip drawing quadrangles with color &lt; cbmin
+  * NEW pm terminal supports utf8, dashed lines, bold/italic text
+  * NEW imaginary component of array values is available to &quot;using&quot; in column 3
+  * NEW gnuplot --slow may help use of qt terminal with slow system font server
+  * CHANGE splot &quot;with points pt 0&quot; acts like &quot;with dots&quot;
+  * CHANGE (tikz) improved default interpretation of gnuplot arrowhead style
+  * CHANGE teach hidden3d to handle double-headed vectors (arrowstyle &quot;heads&quot;)
+  * CHANGE &quot;unset title&quot; or &quot;reset&quot; resets all title properties to default
+  * CHANGE font names passed to enhanced text processing may be in quotes
+  * CHANGE cairo terminals accept fractional font sizes
+  * CHANGE &quot;plot with table&quot; does not output trailing field separator
+  * CHANGE better centering for clustered histograms
+  * CHANGE clear STATS_* variables before performing analysis
+  * CHANGE cairo, libgd, and svg terminals handle LT_NODRAW by not drawing at all
+  * CHANGE svg terminal clickable icons are in-line data rather than external refs
+  * CHANGE revise space allocated for ylabel; allow text justification for ylabel
+  * CHANGE reduce overhead, making it feasible to have 10^6 hypertext labels
+  * CHANGE heavily revised fig terminal
+  * FIX &quot;plot with table&quot; unnecessarily limited string column output to 60 chars 
+  * FIX (windows) make sure graph window is shown even if the program is &quot;hidden&quot;
+  * FIX hidden3d mode was not correctly dealing with arrowstyle backhead
+  * FIX sprintf in 'using' spec must not clobber numeric locale
+  * FIX tikz - request for polygon with 0 vertices could hang terminal
+  * FIX lua/tikz - do not attempt to ftruncate output being piped through stdout
+  * FIX tkcanvas - do not attempt to ftruncate output being piped through stdout
+  * FIX handle NaN values in input stream to &quot;stats FOO matrix&quot;
+  * FIX prevent extra read past the end of a datablock holding matrix data
+  * FIX pm - issues in box and polygon fill, (wide) lines, enhanced text, images
+  * FIX dropped character in piped input stream if plot window is manually closed</comment>
+    <requestid>706614</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>84f468e7dbc6d0025b824310eb62cd94</srcmd5>
+    <version>5.2.7</version>
+    <time>1566893520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725989</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>2bb0e6a4a1c0602ddbcd9d4bc20b57d2</srcmd5>
+    <version>5.2.8</version>
+    <time>1575728162</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.2.8
+  * CHANGE user-visible GPVAL_TERM_HCHAR GPVAL_TERM_VCHAR (help debug font issues)
+  * CHANGE placement of ylabel (compromise 5.2.7 and earlier versions) (Bug #2181)
+  * CHANGE make strstrt() aware of UTF8, e.g. strstrt(&quot;αβγ5&quot;, &quot;5&quot;) returns 4
+  * FIX &quot;set timestamp&quot; from &quot;save&quot; must not include a justification (Bug #2178)
+  * FIX set cntrparam levels increment &lt;base&gt;, &lt;factor&gt; for logscale z (Bug #2183)
+  * FIX character pointtypes should inherit plot coloring like normal pointtypes
+  * FIX bad autoscaling of linked y2 axis (Bug #2186)
+  * FIX prevent infinite loop from unbounded interation in a non-data plot command
+  * FIX dimensions reported by &quot;stats matrix every&quot; (Bug #2189)
+  * FIX extent of boxplot whiskers could be off by one point (Bug #2106)
+  * FIX mix unbounded iteration and functions in a single plot command (Bug #2201)
+  * FIX reverse history search with readline=builtin (Bug #2209)
+  * FIX qt: suppress off-by-one ysize (Bug #1759)
+  * FIX cairo: suppress off-by-one ysize (Bug #1759)
+  * FIX gd: apply alpha to brushstroke lines (Bug #2117)
+  * FIX tikz: fixes to accommodate lua 5.3 and newer pgf
+  * FIX wxt: ExportToFile widget disabled in persist mode (Bug #2185)
+  * FIX qt: handling of modifier keys (ctrl alt shift) for keyboard events
+  * FIX wxt: handling of modifier keys (ctrl alt shift) for keyboard events
+  * FIX fig: dashtype &quot;solid&quot; was not passed through correctly to transfig
+  * FIX gd: incorrect line spacing of multiline label (Bug #2215)</comment>
+    <requestid>753096</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>2528dc7f5e3f26d0b11b5d9031ac5c9a</srcmd5>
+    <version>5.2.8</version>
+    <time>1593096447</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch gnuplot-QtIndexedList.dif to avoid warnings reported
+  with boo#1172565 
+
+- Disable warning messages from Qt5(.15 and up) (boo#1172565)</comment>
+    <requestid>816758</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>181b6577ebbead84560142b0af2ccd6c</srcmd5>
+    <version>5.4.0</version>
+    <time>1595339069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4
+  * NEW support for 64-bit integer arithmetic
+  * NEW support for voxel grids
+  * NEW plot ... with table if &lt;expression&gt;
+  * NEW &quot;set walls&quot; command to show xy xz and yz planes in 3D plots
+  * NEW &quot;set clip radial&quot; for line segments in polar mode plots
+  * NEW &quot;splot ... with isosurface&quot;
+  * NEW &quot;splot ... with circles&quot;
+  * NEW &quot;splot ... with boxes&quot;
+  * NEW &quot;plot ... with arrows&quot;
+  * NEW &quot;plot ... with polygons&quot;
+  * NEW &quot;set view projection {xz|yz}&quot;
+  * NEW &quot;set datafile columnheaders&quot;
+  * NEW per-plot fillcolor and fillstyle for pm3d surfaces
+  * NEW allow separate color column with dgrid3d surfaces (but not color splines)
+  * NEW string function trim(&quot; padded string &quot;) removes leading and trailing whitespace
+  * NEW unicode escape sequences \U+hhhh
+  * NEW order N Bessel functions of 1st and 2nd kind (besjn besyn)
+  * NEW modified Bessel functions I0 (besi0) and I1 (besi1)
+  * NEW modified Bessel function of order n (besin)
+  * NEW &quot;set object polygon depthsort&quot; as an alternative to front/back/behind
+  * NEW &quot;set pixmap&quot; object-like bitmap images from png/gif/jpeg input files
+  * NEW overflow avoidance extends range of arguments handled by complex division
+  * NEW largely extended pcl5 terminal supports PCL5e/PCL5c printers
+  * NEW revised pstricks and texdraw LaTeX terminals
+  * NEW extended dospc terminal (DOS32/OpenWatcom)
+  * NEW extended svga terminal using the (M)GRX library (DOS32/DJGPP)
+  * NEW heavily revised fig terminal
+  * NEW LaTeX terminal pict2e uses the LaTeX2e pict2e environment
+  * NEW Left-click on hypertext label will copy text to clipboard (wxt qt)</comment>
+    <requestid>821479</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>cd3bdbc4376cfa0b0dcd0c122043c8f9</srcmd5>
+    <version>5.4.0</version>
+    <time>1601743941</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary upstream commits as patches
+  * 052cbd17.patch
+  * 1f36c4fb.patch
+  * 963c7df3.patch
+  * a31c3b70.patch
+  to fix the bugs bsc#1176689 with CVE-2020-25559 and bsc#1176687
+  with CVE-2020-25412</comment>
+    <requestid>838238</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>8218798b960436135f2d8b1df1cd1422</srcmd5>
+    <version>5.4.1</version>
+    <time>1607801290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.1
+  * NEW &quot;with rgbimage&quot; and &quot;with rgbalpha&quot; accept single column ARGB input
+  * NEW add toggle in toolbar widget for qt terminal option &quot;ctrl-q&quot;
+  * NEW keyword &quot;smooth kdensity period &lt;val&gt;&quot;
+  * NEW time format %tD encodes days relative to time 0
+  * NEW pm3d quadrangles in 2D projection are clipped smoothly to x and y
+  * CHANGE gif animation 'optimize' option is deprecated Bugs #1992 #2070 #2348
+  * CHANGE svg increase coordinate precision to two decimal points Bug #2369
+  * FIX y autoscaling of default &quot;with filledcurves&quot; #Bug 2294
+  * FIX placement of mirrored x and y tics in mode 'set view projection ...'
+  * FIX pm3d lighting calculation for degenerate quadrangles
+  * FIX botched deprecation of old syntax for &quot;call&quot; arguments Bug #2298 #2368
+  * FIX pm3d &quot;depthorder&quot; affects 'set obj polygon' with &gt;4 vertices Bug #2297
+  * FIX loss of precision for asin(x), asinh(x) with real x &lt;&lt; 0 Bug #2302
+  * FIX error handling of bad font name in enhanced text Bugs #2303 #2308
+  * FIX incomplete domain for complex acosh(x), real x &lt; -1 was treated as NaN
+  * FIX error handling of fuzzed input  Bugs #2306 #2307 #2309 #2312 #2344
+  * FIX add range check for plot of binned data (allows clipping on y)
+  * FIX &quot;unzoom&quot; applied to autoscaled volatile data
+  * FIX no default for binary columns needed if there is a 'using' spec Bug #2315
+  * FIX buffer overflow of enhanced text fragment  Bugs #2310 #2311
+  * FIX qnorm and Hann functions applied in dgrid3d Bugs #2277 #2318
+  * FIX handling of dashtype given as a string with leading whitespace Bug #2336
+  * FIX preserve key position across isolated instance of &quot;title at x,y&quot; Bug #2342
+  * FIX contour labels had spurious point symbols
+  * FIX allow &quot;pointtype variable&quot; in combination with jitter Bug #2354
+  * FIX cgm: sanity for non-zero font size Bug #2358
+  * FIX more checks for valid UTF-8 Bugs #2362 #2364
+- Remove patches now upstream
+  * 052cbd17.patch</comment>
+    <requestid>854609</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>e95f1b52f4f1569e40b239ea642aab26</srcmd5>
+    <version>5.4.1</version>
+    <time>1619298398</time>
+    <user>dimstar_suse</user>
+    <comment>- Last commit had added patch gnuplot-PIE.patch
+
+- Hardening: compile with PIC and link with PIE.</comment>
+    <requestid>887452</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>a306210d06fa96e76df0c297b1fd183b</srcmd5>
+    <version>5.4.1</version>
+    <time>1619729158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update spec file to work with TeXLive 2021 
+
+- Last commit had added patch gnuplot-PIE.patch
+
+- Hardening: compile with PIC and link with PIE.
+
+- Update spec file to work with TeXLive 2021</comment>
+    <requestid>889297</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>7052fb3e63174833b6f1b6b6659af925</srcmd5>
+    <version>5.4.2</version>
+    <time>1623443423</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.2
+  * NEW in &quot;using&quot; context, $# means &quot;number of columns in current data line&quot;
+  * NEW define on program entry:   I = sqrt(-1) = {0.,1.}
+  * NEW support input data that uses epidemiological date-week formats
+  * NEW optional fillcolor for &quot;set key opaque&quot;
+  * NEW provide and document use of a plugin to provide uigamma function
+  * CHANGE much improved domain and precision for igamma function
+  * CHANGE generate only one key entry per multi-dataset input file Bug #2380
+  * CHANGE (Windows): attempt to convert unicode on command line to UTF-8
+  * CHANGE clip `with image` to plot boundary in 2D plots
+  * CHANGE In gprintf format &quot;%c&quot;, add no space for a null prefix Bug #2266
+  * CHANGE Make auto-placement of left border less sensitive to plot size Bug #2415
+  * FIX time formats %U %W Bug #2390
+  * FIX cairo terminals: Do not lose font info during multi-line enhanced text
+  * FIX left-justification of titles in splot with user-specified key position
+  * FIX cairo terminals (Windows): ignore &quot;text scaling&quot; from user screen settings
+  * FIX win: instabilities associated with changing window size Bug #2301 #2304
+  * FIX pm: better mousing and font handling
+  * FIX qt: prevent zombie gnuplot_qt process Bug #2188
+  * FIX clipping of filled polygons that have only 1 or 2 vertices Bug #2400
+  * FIX &quot;set tics front&quot; unexpectedly made all grid lines invisible
+  * FIX more terminals support requested linewidth for textbox borders
+  * FIX indexing of multiple matrix data sets in a single input file
+  * FIX do not inject extra '\n' into input stream after 'set term' Bug #2292
+- Change offset of patches
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-gd.patch
+
+- Update to gnuplot 5.4.2</comment>
+    <requestid>898022</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>67af65dfc70dc2e0da0c2ab7ed0f5daf</srcmd5>
+    <version>5.4.3</version>
+    <time>1641855705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.3
+  * NEW &quot;set pm3d border retrace&quot; will use quadrangle color for the border
+  * NEW &quot;nogrid&quot; flag for plots to opt out of dgrid3d processing
+  * NEW option &quot;above|below y=&lt;val&gt;&quot; for &quot;plot with fillsteps&quot;
+  * NEW &quot;set style histogram nokeyseparators&quot; suppress blank key entries Bug #2473
+  * CHANGE always allow palette color for non-plot elements of 2D plot
+  * FIX contours were incorrectly allocated space in the key even if &quot;notitle&quot;
+  * FIX evaluation of unary minus in front of ternary operator Bug #2468
+  * FIX arm and s390 require &quot;signed char&quot; Bugs #2467 #2450
+  * FIX range errors if &quot;smooth csplines&quot; applied with x-axis reversed Bug #2465
+  * FIX handle various corner cases found by fuzzing
+  * FIX textcolor should accept &quot;linetype N&quot;  Bug #2459
+  * FIX Windows:  handling of Window messages for piped input Bugs #2204 #2412
+  * FIX aquaterm: auto-configuration use of Frameworks  Bug #2419
+  * FIX qt:       pm3d quadrangle borders for transparent surfaces
+  * FIX png/gif:  gdlib auto-configuration issues
+  * FIX dumb:     limit enhanced text markup to single-line vertical displacement
+- This update fixes CVE-2021-44917 (boo#1194017)
+- Port patches
+  * gnuplot-4.6.0.dif
+  * gnuplot-gd.patch</comment>
+    <requestid>945279</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>5c81e44ab19ea179c8cc70de88f9fb6d</srcmd5>
+    <version>5.4.3</version>
+    <time>1642112471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946015</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>93eea3ff8335b9288412d29450b984d6</srcmd5>
+    <version>5.4.3</version>
+    <time>1655824504</time>
+    <user>dimstar_suse</user>
+    <comment>- Use wxGTK3 instead of GTK2 wxWidgets.
+- Update to gnuplot 5.4.3
+  * NEW &quot;set pm3d border retrace&quot; will use quadrangle color for the border
+  * NEW &quot;nogrid&quot; flag for plots to opt out of dgrid3d processing
+  * NEW option &quot;above|below y=&lt;val&gt;&quot; for &quot;plot with fillsteps&quot;
+  * NEW &quot;set style histogram nokeyseparators&quot; suppress blank key entries Bug #2473
+  * CHANGE always allow palette color for non-plot elements of 2D plot
+  * FIX contours were incorrectly allocated space in the key even if &quot;notitle&quot;
+  * FIX evaluation of unary minus in front of ternary operator Bug #2468
+  * FIX arm and s390 require &quot;signed char&quot; Bugs #2467 #2450
+  * FIX range errors if &quot;smooth csplines&quot; applied with x-axis reversed Bug #2465
+  * FIX handle various corner cases found by fuzzing
+  * FIX textcolor should accept &quot;linetype N&quot;  Bug #2459
+  * FIX Windows:  handling of Window messages for piped input Bugs #2204 #2412
+  * FIX aquaterm: auto-configuration use of Frameworks  Bug #2419
+  * FIX qt:       pm3d quadrangle borders for transparent surfaces
+  * FIX png/gif:  gdlib auto-configuration issues
+  * FIX dumb:     limit enhanced text markup to single-line vertical displacement
+- This update fixes CVE-2021-44917 (boo#1194017)
+- Port patches
+  * gnuplot-4.6.0.dif
+  * gnuplot-gd.patch
+- Use wxGTK3 instead of GTK2 wxWidgets. (forwarded request 983724 from StefanBruens)</comment>
+    <requestid>983854</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>9c6fc32a1c0b4c5d1672ded493c23dea</srcmd5>
+    <version>5.4.4</version>
+    <time>1659554190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.4
+  * NEW plots can use arrow styles that specify &quot;lc rgb variable&quot; 
+  * CHANGE make page layout of &quot;set view map; splot&quot; more like that of &quot;plot&quot;
+           - honor &quot;set rmargin&quot; and &quot;set tmargin&quot; Bug #2484
+           - display x2label and y2label Bug #2484
+           - revised placement of color box Bug #2484
+           - reconcile linked axis data and tic ranges Bug #2483
+           - apply &quot;set key invert&quot; to splot Bug #2381
+  * CHANGE cairo terminals: increase internal oversampling factor Bugs #2499 #2369
+  * CHANGE fig: restore terminal option &quot;pointsmax &lt;N&gt;&quot; Bug #2509
+  * CHANGE always add a space between items in a &quot;print&quot; command Bug #2488
+  * CHANGE consistent ordering of input columns for &quot;plot ... ps var pt var&quot; Bug #2524
+  * CHANGE gnuplot -c script.gp A B -C ... will pass A B -C ... without interpretation
+  * CHANGE stricter error checks when promoting string to numeric value Bug #2527
+  * CHANGE report GPVAL_TERM_XMIN and friends as floating point values
+  * FIX handle combination of axis properties logscale + autoscale + reverse Bug #2347
+  * FIX mis-handled arguments at start-up of &quot;gnuplot -c script arg1 ...&quot; Bug #2493
+  * FIX windows: redirected output of printf() Bug #2490
+  * FIX allow variable point style and point type in plot &quot;with yerrorbars&quot;
+  * FIX plots &quot;with labels point pt variable&quot; were off-by-one in choosing point type
+  * FIX contour &quot;with labels&quot; from binary data
+  * FIX x/y fractional coordinate mouse readout for nonlinear axes Bug #2526
+  * FIX Support combination of &quot;set surface explicit; set hidden3d&quot; Bug #2521
+- Use https
+- Port patches
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-gd.patch
+
+- Update to gnuplot 5.4.4</comment>
+    <requestid>992338</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>3b245466a68bfe3a76d8f26259a9e523</srcmd5>
+    <version>5.4.4</version>
+    <time>1664638947</time>
+    <user>RBrownFactory</user>
+    <comment>remove warnings with GNU grep 3.8 and fix build with egrep/fgrep
+removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
+    <requestid>1006580</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>11ccd9cce1756e7f492803428cfaf034</srcmd5>
+    <version>5.4.5</version>
+    <time>1671563986</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.5:
+  * NEW    &quot;set key offset &lt;dx&gt;, &lt;dy&gt;&quot; tweaks placement of the key
+  * NEW    data-driven histogram colors
+  * CHANGE re-order 3D labels to come after pm3d depthorder surfaces
+  * CHANGE hpgl: add terminal option &quot;fontscale &lt;value&gt;&quot;
+  * CHANGE for nonuniform matrix data, column(0) returns linear position in
+    matrix
+  * CHANGE set pointintervalbox 0 disables drawing the background box Bug
+  * FIX    svg: hypertext font handling
+  * FIX    track columnheaders of multiple data blocks in a single file Bug
+  * FIX    Clean up positioning of polar border, raxis, and theta tics Bug
+  * FIX    Autoscaling of logscaled raxis
+  * FIX    memory corruption if a small plot structure is recycled Bug #2550
+  * FIX    Windows qt terminal:  &quot;pause -1&quot; should not block mousing Bug
+  * FIX    promotion of string to integer should not assume leading 0 means
+    octal (forwarded request 1043480 from dirkmueller)</comment>
+    <requestid>1043703</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>054768a256d85f9e3d42df2524a4dbf3</srcmd5>
+    <version>5.4.6</version>
+    <time>1676401670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.6
+  * NEW    set key {columns &lt;exact no of columns&gt;}
+           set key {keywidth &lt;exact width&gt;}
+  * NEW    XDG support
+             startup file:      $XDG_CONFIG_HOME/gnuplot/gnuplotrc
+             history file:      $XDG_STATE_HOME/gnuplot_history
+             wxt configuration: $XDG_CONFIG_HOME/gnuplot/gnuplot-wxt.conf
+  * CHANGE remove &quot;alldoc&quot; build target
+  * CHANGE plot with polygons fillstyle empty really does mean empty
+  * FIX    windows: various problems mixing piped input and stdin        Bug #2491
+  * FIX    x11: bad interactions of lt nodraw, bgnd and dash pattern     Bug #2572
+  * FIX    wxt: export-to-file widget should preserve line properties
+  * FIX    svg: set initial default fill to &quot;none&quot;
+  * FIX    png: back-compatibility with very old versions of gdlib       Bug #2579
+  * FIX    variable pointtype, pointsize in plot style yerrorlines
+  * FIX    border color for polygons with variable fillcolor
+  * FIX    definition followed by iteration in a plot command            Bug #2580
+  * FIX    parametric plot with filledcurves y1=&lt;limit&gt;                  Bug #1797
+- Port patches
+  * Gnuplot_5_4.pdf
+  * gnuplot-4.6.0-demo.diff
+  * gnuplot-4.6.0-fonts.diff
+  * gnuplot-4.6.0.dif
+  * gnuplot-5.4.4-grep.patch
+  * gnuplot-PIE.patch
+  * gnuplot-gd.patch
+
+
+- Update to gnuplot 5.4.6
+  * NEW    set key {columns &lt;exact no of columns&gt;}</comment>
+    <requestid>1065409</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>c2e3454b57fbe55d64b6595da4dd3479</srcmd5>
+    <version>5.4.7</version>
+    <time>1684846392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.7
+  * FIX   pseudofiles '+','++' must ignore &quot;set datafile columnheader&quot;  Bug #2585
+  * FIX   data from an array must ignore &quot;set datafile columnheader&quot;    Bug #2585
+  * FIX   various problems with unbounded plot iteration                Bug #2589
+  * FIX   allow plot ... smooth acsplines with filledcurves             Bug #2592
+  * FIX    &quot;plot title at {end|beginning}&quot; belongs in KEYSAMPLE layer
+  * FIX   handle empty string in last field of csv file
+  * FIX   Handle nonlinear axes during contour generation               Bug #2593
+  * FIX   yerrorbars key sample should match bars in the plot           Bug #2598
+  * FIX   &quot;plot with table&quot; must skip all smoothing operations          Bug #2610
+  * FIX   cairolatex/epslatex: prevent doubled text in opaque textboxes
+  * FIX   wxt: versions prior to 3.0 do not support XDG                 Bug #2587
+  * FIX   wxt: fontscale and fontsize handling was inconsistent         Bug #2373
+  * FIX   tikz epslatex cairolatex: updated to work with TeXLive2023    Bug #2613
+  * FIX   correctly report cardinality of an empty array is zero        Bug #2616
+  * FIX   ignore datafile separator when plotting from an array
+  * FIX   combination of pm3d options &quot;at b&quot; or &quot;at t&quot; with &quot;depthorder&quot;
+  * FIX   combination of 'autotitle columnhead' and 'using col(&quot;key&quot;)'  Bug #2620
+  * FIX   do not complain if XDG files are not found because no $HOME   Bug #2623
+  * FIX   windows terminal: arrow length corrected for aspect ratio     Bug #2565
+- Delete patch gnuplot-5.4.4-grep.patch now upstream
+
+- Update to gnuplot 5.4.7
+  * FIX   pseudofiles '+','++' must ignore &quot;set datafile columnheader&quot;  Bug #2585
+  * FIX   data from an array must ignore &quot;set datafile columnheader&quot;    Bug #2585
+  * FIX   various problems with unbounded plot iteration                Bug #2589
+  * FIX   allow plot ... smooth acsplines with filledcurves             Bug #2592
+  * FIX    &quot;plot title at {end|beginning}&quot; belongs in KEYSAMPLE layer
+  * FIX   handle empty string in last field of csv file
+  * FIX   Handle nonlinear axes during contour generation               Bug #2593</comment>
+    <requestid>1088274</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>4a1fbe74a49a87d03305e5b49cd173ba</srcmd5>
+    <version>5.4.8</version>
+    <time>1687272007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.8
+  * FIX   version reporting in Windows binaries
+          No other changes</comment>
+    <requestid>1093737</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>c471a1d6d05b4a48ef82ec140a5f26f9</srcmd5>
+    <version>5.4.9</version>
+    <time>1695327192</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112274</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>e6f203e62603fb238f075f248ad75785</srcmd5>
+    <version>5.4.10</version>
+    <time>1698170807</time>
+    <user>anag+factory</user>
+    <comment>- Update to gnuplot 5.4.10
+  * FIX   postscript: build failed in 5.4.9 if neither gd nor cairo libraries present
+  * FIX   data-dependent variable point properties in polar plots
+  * FIX   configure script modified to work with macOS+Homebrew
+  * CHANGE use 64-bit integers for iteration (allows iteration over dates)
+
+- Update to gnuplot 5.4.10
+  * FIX   postscript: build failed in 5.4.9 if neither gd nor cairo libraries present
+  * FIX   data-dependent variable point properties in polar plots
+  * FIX   configure script modified to work with macOS+Homebrew
+  * CHANGE use 64-bit integers for iteration (allows iteration over dates)</comment>
+    <requestid>1119564</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>748f32ac2a0e51417dc14b71968d18b0</srcmd5>
+    <version>6.0.0</version>
+    <time>1704919853</time>
+    <user>anag+factory</user>
+    <comment>- Add missing doc/webp_figures.gnu fronm upstream git repo
+
+- Update to gnuplot 6.0.0
+  * Japanese documentation updated
+    (missing file title-ja.tex, build dependencies for mingw)
+  * Support building against Qt6
+    (./configure falls back to Qt5 if the Qt6 libraries are not found)
+  * New configure option --enable-stable-sort
+    1) Use mergesort rather than qsort if the system provides it.
+    2) If neither mergesort nor glibc stable qsort is available,
+       modify internal gnuplot structures to contain a secondary sort key
+  * Render color gradient in colorbox as a pixel array (cairo, qt terminals)
+  * &quot;reset session&quot; restores initial state of all linetype properties
+  * postscript terminal now handles pixmaps (Bug #2644)
+  * New plot style &quot;with contourfill&quot; handles 2D and 3D contour plots with
+    discrete z-ranges indicated by solid fill colors.
+  * FIX do not clobber a datablock if its name is encountered unexpectedly
+  * FIX cairo terminals:  ignore zero-size polygons
+  * FIX svg terminal now correctly tracks pattern-fill color
+  * FIX integer overflow/wraparound when polygon is clipped to plot border
+  * FIX do not mangle variable point properties in polar mode Bug #2650
+  * partial support for replotting and mousing multiplots (finally!)
+  * fixes build error for postscript terminal when libgd and cairo are not present
+  * strip trailing CR from function blocks read from a dos file   Bug #2653
+  * use 64-bit integers for iteration
+  * &quot;unset pointintervalbox&quot; disables the box rather than setting it to default size
+  * keyentry '...' can be used to place a secondary title in the key
+  * fix use of stacked histograms with variable number of data columns
+  - Replotting and mousing multiplots
+    o now working much more comprehensively</comment>
+    <requestid>1137694</requestid>
+  </revision>
+</revisionlist>

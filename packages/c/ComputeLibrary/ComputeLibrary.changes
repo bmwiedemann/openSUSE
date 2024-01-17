@@ -1,0 +1,291 @@
+-------------------------------------------------------------------
+Thu Dec  7 09:05:47 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 23.11:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v23.11
+
+-------------------------------------------------------------------
+Tue Sep  5 14:24:12 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 23.08:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v23.08
+
+-------------------------------------------------------------------
+Mon Jun 12 12:24:24 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 23.05:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v23.05
+- Drop upstream patch:
+  *  fix-gcc13-fallout.patch
+
+-------------------------------------------------------------------
+Tue Apr 11 12:15:38 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- More fixes to use python3 as the python script interpreter
+
+-------------------------------------------------------------------
+Wed Apr  5 06:08:28 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update fix-gcc13-fallout.patch with upstream version
+
+-------------------------------------------------------------------
+Mon Mar 27 21:36:33 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply fix-gcc13-fallout.patch to fix the gcc 13 fallout
+- Use python3 as the python script interpreter
+
+-------------------------------------------------------------------
+Tue Mar 14 13:24:45 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 23.02:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v23.02
+
+-------------------------------------------------------------------
+Mon Nov 28 07:37:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 22.11:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v22.11
+
+-------------------------------------------------------------------
+Tue Aug 30 09:13:11 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 22.08:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v22.08
+- Drop upstream patch:
+  * fix-with-gcc12.patch
+
+-------------------------------------------------------------------
+Tue May 31 12:09:33 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 22.05:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v22.05
+- Fix build with GCC12:
+  * fix-with-gcc12.patch
+
+-------------------------------------------------------------------
+Tue Mar 15 13:08:32 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 22.02:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v22.02
+
+-------------------------------------------------------------------
+Wed Dec  1 10:01:36 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.11:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v21.11/
+
+-------------------------------------------------------------------
+Thu Sep  9 08:02:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.08:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v21.08/
+
+-------------------------------------------------------------------
+Fri May 21 06:45:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.05:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v21.05/
+- Drop patch which is not needed anymore:
+  * acl-fix-packaging-issue.patch
+
+-------------------------------------------------------------------
+Wed Apr  7 16:40:47 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build of ArmNN with openCL:
+  * acl-fix-packaging-issue.patch
+
+-------------------------------------------------------------------
+Wed Apr  7 11:12:51 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package separately libarm_compute_core and libarm_compute_graph
+
+-------------------------------------------------------------------
+Mon Mar 29 12:14:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.02:
+  * Public major release
+  * Documentation (API, changelogs, build guide, 
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v21.02/
+
+-------------------------------------------------------------------
+Wed Dec  9 14:30:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.11:
+  * Public major release
+  * Deprecation notice:
+      Deprecated GLES functions and kernels
+      Deprecated Neon and OpenCL Computer Vision functions
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v20.11/
+
+-------------------------------------------------------------------
+Thu Sep  3 09:04:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.08:
+  * Public major release
+  * Documentation (API, changelogs, build guide, 
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v20.08/
+
+-------------------------------------------------------------------
+Thu Jun  4 09:47:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.05:
+  * Public major release
+  * Documentation (API, changelogs, build guide, 
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v20.05/
+
+-------------------------------------------------------------------
+Mon Mar  9 17:45:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.02.1 (no upstream changelog)
+
+-------------------------------------------------------------------
+Tue Feb 25 16:05:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.11.1:
+  * Fix offset calculation in NEReductionOperationKernel.
+  * Fix data layout in NEScaleKernel for nhwc.
+  * Retain configuration step data layout to avoid side-effects.
+  * Perform sqrt in double domain for L2 pooling.
+  * Fix output shape calculation for Reduce Mean.
+
+-------------------------------------------------------------------
+Tue Feb 25 15:50:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Cleanup a bit with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Dec  6 13:44:14 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.11 (no upstream changelog)
+- Revert previous commit to disable neon on armv7
+
+-------------------------------------------------------------------
+Tue Nov 26 15:40:34 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable neon on armv7
+
+-------------------------------------------------------------------
+Wed Oct  9 08:49:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix Python scripts interpreter
+- Fix -devel package dep
+- Drop gcc 4.8 workaround
+
+-------------------------------------------------------------------
+Thu Sep  5 07:22:11 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 19.08 (no upstream changelog)
+
+-------------------------------------------------------------------
+Mon Jun  3 13:50:04 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add validation test option (disabled by default since CL is 
+  unusable inside OBS)
+
+-------------------------------------------------------------------
+Mon Jun  3 13:05:20 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.05 (no upstream changelog)
+- Remove upstream patch:
+  * computelibrary-fix_opencl.patch
+
+-------------------------------------------------------------------
+Fri Apr 19 10:25:12 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package scripts
+
+-------------------------------------------------------------------
+Thu Apr 11 13:13:54 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build with openCL:
+  * computelibrary-fix_opencl.patch
+
+-------------------------------------------------------------------
+Wed Apr  3 16:27:53 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.02
+
+-------------------------------------------------------------------
+Mon Jan 14 13:08:46 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 18.11
+
+-------------------------------------------------------------------
+Thu Sep 13 12:50:04 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 18.08
+- Remove upstreamed patches:
+  * fix_build_with_scons3.patch
+  * fix_c++11_syntax.patch
+
+-------------------------------------------------------------------
+Tue Jun  5 07:52:03 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add missing includes
+- Add sample-data
+
+-------------------------------------------------------------------
+Mon Jun  4 10:07:34 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add soname option and require scons >= 2.4
+- Add a -devel package
+
+-------------------------------------------------------------------
+Fri Jun  1 13:01:07 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Rename from arm_compute to ComputeLibrary (upstream name)
+- Split libraries to a separate package
+
+-------------------------------------------------------------------
+Fri Jun  1 10:45:00 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 18.05
+- Add patches to fix builds on Leap 15.0+:
+  * fix_build_with_scons3.patch
+  * fix_c++11_syntax.patch
+- Disable openCL on Leap 15.0+ since the build script is not yet 
+  fully compatible with Python3 and breaks when openCL is enabled
+
+-------------------------------------------------------------------
+Mon Apr  3 17:03:33 UTC 2017 - afaerber@suse.de
+
+- Initial release 17.03.1
+

@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun Jan 15 19:27:54 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.2.2
+  * Fix build with Qt 5.15.8
+- Add signature file and keyring
+
+-------------------------------------------------------------------
+Thu Aug 27 09:04:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon Feb  3 06:04:02 UTC 2020 - wbauer@tmo.at
+
+- Update to 2.2.1
+  * Fix build with Qt 5.14
+  * New flag ENFORCE_COMPATIBLE_ERROR_AWARE_CODE for the
+    kdevpgqt_generate() CMake macro
+- Drop Fix-build-with-Qt-5.14.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri Dec 27 06:42:44 UTC 2019 - wbauer@tmo.at
+
+- Add Fix-build-with-Qt-5.14.patch to make it compile with Qt 5.14
+
+-------------------------------------------------------------------
+Fri May 24 09:59:16 UTC 2019 - wbauer@tmo.at
+
+- Update to 2.2.0
+  * Fix compiler warnings in generated code (adding nullptr &
+    override)
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Jul 28 14:02:45 UTC 2017 - wbauer@tmo.at
+
+- Update to 2.1.0
+  * DebugVisitor: catch and show invalid token indizes
+  * Update to Astyle 1.24 (latest 1.x release)
+  * Add asserts to some TokenStreamBase methods, protect against
+    out-of-bounds
+  * Fix compile warnings with clang
+  * Fix yymore_used_but_not_detected undefined issue (kde#374523)
+- Drop fix-yymore-used-but-not-detected.patch, fixed upstream now
+
+-------------------------------------------------------------------
+Tue Jul 25 22:35:32 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream patch fix-yymore-used-but-not-detected.patch:
+  * Fixes build with newer flex
+
+-------------------------------------------------------------------
+Wed Aug 24 10:56:16 UTC 2016 - cgiboudeaux@gmx.com
+
+- Update to 2.0.0
+
+-------------------------------------------------------------------
+Thu Jan 28 10:43:20 UTC 2016 - tittiatcoke@gmail.com
+
+- Initial package for kdevelop5-pg-qt based on Qt5.
+  * Kdevelop 5 Beta 3
+

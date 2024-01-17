@@ -1,0 +1,5 @@
+<package name="vacuum-im-plugins-dbusnotifications" project="openSUSE:Factory">
+  <title>Vacuum-IM notification messages through system DBus</title>
+  <description>The plug-in uses org.freedesktop.Notifications for show of notification messages </description>
+  <devel project="network" package="vacuum-im-plugins-dbusnotifications"/>
+</package>

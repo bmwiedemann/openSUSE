@@ -1,0 +1,13 @@
+<package name="ocaml-extlib" project="openSUSE:Factory">
+  <title>OCaml ExtLib additions to the standard library</title>
+  <description>ExtLib is a project aiming at providing a complete - yet small -
+standard library for the OCaml programming language. The purpose of
+this library is to add new functions to OCaml Standard Library
+modules, to modify some functions in order to get better performances
+or more safety (tail-recursive) but also to provide new modules which
+should be useful for the average OCaml programmer.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-extlib"/>
+  <url>https://github.com/ygrek/ocaml-extlib</url>
+</package>

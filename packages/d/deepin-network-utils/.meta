@@ -1,0 +1,6 @@
+<package name="deepin-network-utils" project="openSUSE:Factory">
+  <title>Deepin Network Utils</title>
+  <description>Deepin Network Utils is an application repackage the DBus data which is provided
+by network module of dde-daemon</description>
+  <devel project="X11:Deepin" package="deepin-network-utils"/>
+</package>

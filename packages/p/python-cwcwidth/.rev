@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b41f2d52e9585078a0ac7b42372f61d</srcmd5>
+    <version>0.1.4</version>
+    <time>1617910328</time>
+    <user>RBrownSUSE</user>
+    <comment>needed by some packages</comment>
+    <requestid>883569</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b36c2071fb4288d2e9d807ad658e2208</srcmd5>
+    <version>0.1.7</version>
+    <time>1664380279</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006502</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dc003e3ac37394b415052ba533473ab2</srcmd5>
+    <version>0.1.8</version>
+    <time>1667907703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034463</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8a32fc36accb0bfda8495160a66910fe</srcmd5>
+    <version>0.1.9</version>
+    <time>1699910289</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.1.9:
+  * Drop support for Python 3.7.
+  * Add support for Python 3.12.
+  * Avoid redefinition of `_XOPEN_SOURCE`.</comment>
+    <requestid>1124980</requestid>
+  </revision>
+</revisionlist>

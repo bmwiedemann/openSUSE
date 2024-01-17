@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9a54b6fd8750747b96ae665d947b688</srcmd5>
+    <version>0.6.3</version>
+    <time>1685981175</time>
+    <user>dimstar_suse</user>
+    <comment>fde-tools for full disk encryption</comment>
+    <requestid>1090821</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cb4ba83f287d5d9d48b34e49e5cc362c</srcmd5>
+    <version>0.6.5</version>
+    <time>1688476915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.5
+- Add fde-tools-avoid-cleaning-temp-dir.patch to avoid cleaning
+  the temp directory when calling tpm_test</comment>
+    <requestid>1096676</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9c8c70a280b3e0df62764377d9f40bed</srcmd5>
+    <version>0.6.5</version>
+    <time>1688737792</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097489</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>227a95b9af85c0f20a408ba0e6fa1ada</srcmd5>
+    <version>0.6.5</version>
+    <time>1689261531</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098478</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec965fd712c1806c3996f27de0856696</srcmd5>
+    <version>0.6.6</version>
+    <time>1690278604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099742</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f6f68d7f0ce01f37d74df6c729a63756</srcmd5>
+    <version>0.6.6</version>
+    <time>1690469568</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100993</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6246cd761db47babe1c353605cc4e31</srcmd5>
+    <version>0.6.7</version>
+    <time>1692379735</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104645</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>41504345790ad0243f1c2a991476d214</srcmd5>
+    <version>0.6.8</version>
+    <time>1693235532</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105563</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>470465138d3e5f6c9da20f7632cbe997</srcmd5>
+    <version>0.6.9</version>
+    <time>1693383647</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107876</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>deff2660c6a165cb892ff99de1aab753</srcmd5>
+    <version>0.7.0</version>
+    <time>1695209345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112138</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>00e842b2d19b5dbed6763a35bc6f7001</srcmd5>
+    <version>0.7.0</version>
+    <time>1696269856</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114736</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>666602e3f1b78aa0a07a1a27a4e153d2</srcmd5>
+    <version>0.7.0</version>
+    <time>1696528972</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115533</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>72a624aa01664bef7d92cff90f493483</srcmd5>
+    <version>0.7.1</version>
+    <time>1698170807</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119546</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>de8af154965b1fa7ffb04b0505b11527</srcmd5>
+    <version>0.7.2</version>
+    <time>1698952852</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121560</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6ba0a8b591cc0b7e19e387691fadbce1</srcmd5>
+    <version>0.7.2</version>
+    <time>1699388712</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123704</requestid>
+  </revision>
+</revisionlist>

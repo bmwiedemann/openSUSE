@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>082d85df1df4ed68bcd5a79ca9c50797</srcmd5>
+    <version>1.0.7</version>
+    <time>1558532347</time>
+    <user>dimstar_suse</user>
+    <comment>Wrapper around the LineUpjs library for multi attribute rankings</comment>
+    <requestid>700446</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8c6defe2e77c5beed3482d0023f29e7d</srcmd5>
+    <version>1.0.7</version>
+    <time>1565695217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722239</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>08d2ce1d6d4b2cf1e1cc4cc2d24a4b9f</srcmd5>
+    <version>1.0.7</version>
+    <time>1575039409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748339</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ab640577406fd1d55ea783ccf9a40cd3</srcmd5>
+    <version>1.0.7</version>
+    <time>1619298547</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build python36-* package (missing pandas)
+</comment>
+    <requestid>888109</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>898f1005a4c19764e7e2092451045da6</srcmd5>
+    <version>4.0.0</version>
+    <time>1636840114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0
+  * no release notes
+  * drop python2 support
+  * URL change
+  * JS package updates
+  * License file included in sdist
+</comment>
+    <requestid>931197</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4ff679ffc788d18c12fbd892ed6c3c5d</srcmd5>
+    <version>4.0.0</version>
+    <time>1693235691</time>
+    <user>anag+factory</user>
+    <comment>- Don't use notebook 7: nbclassic or notebook 6 required
+- PEP517 (forwarded request 1106068 from bnavigator)</comment>
+    <requestid>1106069</requestid>
+  </revision>
+</revisionlist>

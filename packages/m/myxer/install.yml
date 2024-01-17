@@ -1,0 +1,12 @@
+rinstall: 0.1.0
+pkgs:
+  myxer:
+    type: rust
+    exe:
+      - myxer
+    desktop-files:
+      - Myxer.desktop
+    licenses:
+      - LICENSE.md
+    docs:
+      - README.md

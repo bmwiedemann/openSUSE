@@ -1,0 +1,6 @@
+<package name="k0sctl" project="openSUSE:Factory">
+  <title></title>
+  <description>A bootstrapping and management tool for k0s clusters.</description>
+  <devel project="devel:kubic" package="k0sctl"/>
+  <url>https://github.com/k0sproject/k0sctl</url>
+</package>

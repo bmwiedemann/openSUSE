@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/suse/sle15#15.3</image>
+  <tags>sle15.3.pacific</tags>
+  <name>ses/7/ceph/ceph</name>
+  <prefix>com.suse.ses</prefix>
+  <title>SUSE Enterprise Storage 7.0</title>
+  <url>https://registry.suse.com/ses/7/ceph/ceph:%PKG_VERSION%.%RELEASE%</url>
+  <reference>registry.suse.com/ses/7/ceph/ceph:%PKG_VERSION%.%RELEASE%</reference>
+  <labels>
+	<label>
+		<name>com.suse.ses.version</name>
+		<value>7.0</value>
+	</label>
+	<label>
+		<name>com.suse.ses.url</name>
+		<value>https://www.suse.com/solutions/software-defined-storage/</value>
+	</label>
+	<label>
+		<name>com.suse.ceph.version</name>
+		<value>%PKG_VERSION%</value>
+	</label>
+	<label>
+		<name>com.suse.ceph.url</name>
+		<value>https://ceph.com/</value>
+	</label>
+	<label>
+		<name>com.suse.rook.created</name>
+		<value>%BUILDTIME%</value>
+	</label>
+  </labels>
+  <packages_image>
+    <package>
+      <name>patterns-base-fips</name>
+    </package>
+    <package>
+      <name>patterns-ses-ceph_base</name>
+    </package>
+    <package>
+      <name>zabbix-agent</name>
+    </package>
+  </packages_image>
+</param>

@@ -1,0 +1,5 @@
+<package name="qqc2-desktop-style" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="qqc2-desktop-style"/>
+</package>

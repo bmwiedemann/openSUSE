@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50c59386b801478b1cf9c5bb4856db93</srcmd5>
+    <version>17.0.7.0</version>
+    <time>1683916744</time>
+    <user>dimstar_suse</user>
+    <comment>Restore package without dependency on gradle</comment>
+    <requestid>1086796</requestid>
+  </revision>
+</revisionlist>

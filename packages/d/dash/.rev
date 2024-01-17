@@ -1,0 +1,298 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82bb218159300d96513a97eceab8a2d0</srcmd5>
+    <version>0.5.5.1</version>
+    <time>1266500306</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/dash based on submit request 32541 from user gberh
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b1a19bef11bf48e1310048e1a0865c1e</srcmd5>
+    <version>0.5.5.1</version>
+    <time>1267105710</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/dash based on submit request 33319 from user coolo
+</comment>
+    <requestid>33319</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0eb5b4d1565b397a863ecc0de99ebf60</srcmd5>
+    <version>0.5.5.1</version>
+    <time>1268923290</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>0eb5b4d1565b397a863ecc0de99ebf60</srcmd5>
+    <version>0.5.5.1</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>0eb5b4d1565b397a863ecc0de99ebf60</srcmd5>
+    <version>0.5.5.1</version>
+    <time>1278678570</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5834c13c2cd81a470aad379888cefcc9</srcmd5>
+    <version>0.5.6.1</version>
+    <time>1280737432</time>
+    <user>autobuild</user>
+    <comment>Copy from shells/dash based on submit request 43876 from user gberh
+</comment>
+    <requestid>43876</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>5834c13c2cd81a470aad379888cefcc9</srcmd5>
+    <version>0.5.6.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>00ccc7ae4712dae2e4128c12f619e429</srcmd5>
+    <version>0.5.7</version>
+    <time>1317976167</time>
+    <user>lrupp</user>
+    <comment>- remove libeditline dependency again as libeditline lives in /usr
+
+- update to version 0.5.7
+  - optimize dash -c &quot;command&quot; to avoid a fork
+  - improve LINENO support
+  - dotcmd should exit with zero when doing nothing
+  - replace GPL noclobberopen code with the FreeBSD version
+  - do not split the result of tilde expansion
+  - use exit status 127 when the script to run does not exist
+  - document optional open parenthesis for case patterns
+  - use faccessat if available
+- added dash-0.5.7-do-not-close-stderr.patch in order to prevent
+  stderr from being closed when /dev/tty fails to open (backported
+  from upstream git)
+- added
+  dash-remove-backslash-before-in-double-quotes-in-variable.patch
+  which removes a backslash before } in double-quotes in variable
+  as it prevents the closing brace from terminating the
+  substitution (from FreeBSD/Debian)
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)</comment>
+    <requestid>86994</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>00ccc7ae4712dae2e4128c12f619e429</srcmd5>
+    <version>0.5.7</version>
+    <time>1319181840</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>66120e3376db06c306cf8e4921b773f4</srcmd5>
+    <version>0.5.7</version>
+    <time>1323191113</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>66120e3376db06c306cf8e4921b773f4</srcmd5>
+    <version>0.5.7</version>
+    <time>1340183269</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>66120e3376db06c306cf8e4921b773f4</srcmd5>
+    <version>0.5.7</version>
+    <time>1359108797</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>66120e3376db06c306cf8e4921b773f4</srcmd5>
+    <version>0.5.7</version>
+    <time>1379662202</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>e0280cf0d2f964b365c764f7d073380b</srcmd5>
+    <version>0.5.7</version>
+    <time>1380475384</time>
+    <user>coolo</user>
+    <comment>- install into %{_bindir} and add a compatibility symlink to /bin
+- reenable commandline editor</comment>
+    <requestid>201085</requestid>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>e0280cf0d2f964b365c764f7d073380b</srcmd5>
+    <version>0.5.7</version>
+    <time>1409300739</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0e99137ca2fd3d9df59f57477b4028a6</srcmd5>
+    <version>0.5.8</version>
+    <time>1413060100</time>
+    <user>coolo</user>
+    <comment>- update to version 0.5.8
+  - Small optimisation of command -pv change
+  - Set command -p path to /usr/sbin:/usr/bin:/sbin:/bin
+  - Change &quot;characters&quot; for printf precision to &quot;bytes&quot;
+  - Clarify &quot;trap '' signals&quot; syntax in manual page
+  - Clarify that 0 and EXIT are both acceptable for exit traps
+  - command: allow combining -p with -v
+  - getjob: Fix off-by-one error for multiple of four job numbers
+  - Propagate EXP_QPAT in subevalvar
+  - Initialise OPTIND after importing environment
+  - Fixed argument parsing crash in test
+  - Add newline when tracing in poplocalvars
+  - Markup fixes in manual for mandoc 1.12.1
+  - Use PRIdMAX instead of %j in printf
+  - Fix typo for wait in manual
+  - Add support for ulimit -r
+  - Avoid overflow for very long variable name
+  - Sanitise environment variable names on entry
+  - Allow building without LINEO support
+  - Add top-level autogen.sh
+  - Avoid imaxdiv when only one of the results is wanted
+  - Fix klibc DEBUG compilation
+  - Merge SKIPFUNC/SKIPFILE and only clear SKIPFUNC when leaving
+    dotcmd</comment>
+    <requestid>254939</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7c901a8e3a7c4dd27c8dccf5e65d854d</srcmd5>
+    <version>0.5.8</version>
+    <time>1428652159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295131</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0410bd31e70d6759367fd2ca0a9cf416</srcmd5>
+    <version>0.5.9.1</version>
+    <time>1524742419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599296</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6a049fee42847bb41c628df545ac3a50</srcmd5>
+    <version>0.5.10</version>
+    <time>1541666454</time>
+    <user>dimstar_suse</user>
+    <comment>3rd times a charm?</comment>
+    <requestid>645115</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>cc7191fc4bd5faba2a8965a7f5db2b7a</srcmd5>
+    <version>0.5.10</version>
+    <time>1586973970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792716</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>00a0ee9393f6ec5ab79aeaa1d48dd8c6</srcmd5>
+    <version>0.5.11.1</version>
+    <time>1602155292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839335</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a475447e722beedd4c73da87a30ec04e</srcmd5>
+    <version>0.5.11.2</version>
+    <time>1603448372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842610</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>effda9b9e371204effe0554b9f4360e9</srcmd5>
+    <version>0.5.11.2</version>
+    <time>1606145802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849514</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>ae876691c473be4b4b95ac38cadf5b4c</srcmd5>
+    <version>0.5.11.2</version>
+    <time>1607612193</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>854042</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5df0952923383df1102ceffc8ac2f0ce</srcmd5>
+    <version>0.5.11.3</version>
+    <time>1609619420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859642</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0e2cbc72c55039f5e74c8cc1220512f2</srcmd5>
+    <version>0.5.11.4</version>
+    <time>1623618326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898188</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ec1b88b9bcc94645edca049a35b31090</srcmd5>
+    <version>0.5.11.5</version>
+    <time>1640108422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>941683</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ead082163d55392dad36fad49baa0012</srcmd5>
+    <version>0.5.11.5</version>
+    <time>1643666200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949666</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>2d274bc71f6d1a74289419679ab9acb3</srcmd5>
+    <version>0.5.11.5</version>
+    <time>1666689505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030867</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>efd2f73cb44b4f7d1e48b46109c36d2f</srcmd5>
+    <version>0.5.12</version>
+    <time>1671889868</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.12:
+  * eval: Test evalskip before flipping status for NNOT
+  * parser: Add VSBIT to ensure subtype is never zero
+  * eval: Check eflag after redirection error
+  * eval: Always set exitstatus in evaltree
+  * expand: Add ifsfree to expand to fix a logic error that causes a buffer over-read
+  * expand: Always quote caret when using fnmatch
+  * parser: Fix VSLENGTH parsing with trailing garbage
+  * shell: Fail if building --with-libedit and can't find libedit
+  * jobs: Only block in waitcmd on first run
+  * redir: Retry open64 on EINTR
+  * eval: Prevent recursive PS4 expansion
+  * jobs: Fix waitcmd busy loop
+- drop check-nflag-in-evaltree.patch (upstream)</comment>
+    <requestid>1044369</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>832639674bd07224d836c135cfc87e26</srcmd5>
+    <version>0.5.12</version>
+    <time>1672927197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1055668</requestid>
+  </revision>
+</revisionlist>

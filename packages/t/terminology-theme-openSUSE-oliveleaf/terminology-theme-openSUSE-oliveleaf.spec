@@ -1,0 +1,58 @@
+#
+# spec file for package terminology-theme-openSUSE-oliveleaf
+#
+# Copyright (c) 2022 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define theme_name openSUSE-Oliveleaf
+
+Name:           terminology-theme-openSUSE-oliveleaf
+Version:        20220219.1.26
+Release:        0
+Summary:        Theme for Terminology
+License:        BSD-2-Clause AND LGPL-2.1-only AND CC-BY-SA-3.0
+Group:          System/X11/Terminals
+URL:            https://en.opensuse.org/Portal:Enlightenment
+Source:         terminology-theme-%{theme_name}-%{version}.tar.xz
+BuildRequires:  ImageMagick
+BuildRequires:  edje
+BuildRequires:  python3-base
+Requires:       terminology
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildArch:      noarch
+Provides:       terminology-theme
+
+%description
+A old openSUSE theme for Terminology
+
+%prep
+%setup -q -n terminology-theme-%{theme_name}-%{version}
+
+%build
+./build-darkmod.sh --termpkg
+cp licenses-authors/* .
+
+%install
+install -m 0755 -d %{buildroot}%{_datadir}/terminology/themes
+install -m 0644 -t %{buildroot}%{_datadir}/terminology/themes artifacts/bin-term/openSUSE-Oliveleaf.edj
+install -m 0755 -d %{buildroot}%{_datadir}/terminology/colorschemes
+install -m 0644 -t %{buildroot}%{_datadir}/terminology/colorschemes artifacts/bin-term/openSUSE-Oliveleaf.eet
+
+%files
+%defattr(-,root,root)
+%license AUTHORS COPYING
+%{_datadir}/terminology
+
+%changelog

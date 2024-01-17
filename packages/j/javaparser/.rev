@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>762c7f06a3cea5e1aa498139e93f7ff4</srcmd5>
+    <version>3.3.5</version>
+    <time>1572542015</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>734358</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>132cae537b3e0d181ae33a6e4ffb19eb</srcmd5>
+    <version>3.24.0</version>
+    <time>1646948729</time>
+    <user>dimstar_suse</user>
+    <comment>2.24.0</comment>
+    <requestid>960738</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bcc2130eed556b7f4cfd6cc02850b1d2</srcmd5>
+    <version>3.24.2</version>
+    <time>1653318334</time>
+    <user>dimstar_suse</user>
+    <comment>3.24.2</comment>
+    <requestid>978707</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cb07b78738bb507c8be9f9df750e758c</srcmd5>
+    <version>3.24.9</version>
+    <time>1676036129</time>
+    <user>dimstar_suse</user>
+    <comment>3.24.9</comment>
+    <requestid>1064160</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7035e8bbe70bb2825ec1b642c55317a5</srcmd5>
+    <version>3.25.1</version>
+    <time>1678283661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1070175</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>551ad8ba8437f2d6ef5252f297d8eb43</srcmd5>
+    <version>3.25.2</version>
+    <time>1680722940</time>
+    <user>dimstar_suse</user>
+    <comment>3.25.2</comment>
+    <requestid>1077582</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>95d40596bbeb8caeb2bb73e21a8e8da0</srcmd5>
+    <version>3.25.3</version>
+    <time>1684754055</time>
+    <user>dimstar_suse</user>
+    <comment>3.25.3</comment>
+    <requestid>1088152</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39529f0f91e63dd35fc63161cf13b7b1</srcmd5>
+    <version>3.25.5</version>
+    <time>1693685254</time>
+    <user>dimstar_suse</user>
+    <comment>3.25.5</comment>
+    <requestid>1108492</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>69d6b1583848353129b4923c53af276b</srcmd5>
+    <version>3.25.5</version>
+    <time>1694344274</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1110023</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>3837a8e750f97449f0c57bc0c9ad2157</srcmd5>
+    <version>3.25.5</version>
+    <time>1694460133</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110253</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>1bfe68c19925d6bbcc93e844caa1bd87</srcmd5>
+    <version>3.25.5</version>
+    <time>1698333260</time>
+    <user>anag+factory</user>
+    <comment>Fix build with jdk 21</comment>
+    <requestid>1120418</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9073d81f4f20c1499fdc3bf9d52c5684</srcmd5>
+    <version>3.25.6</version>
+    <time>1700675683</time>
+    <user>anag+factory</user>
+    <comment>3.25.6</comment>
+    <requestid>1128023</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>694fc503d24cffb833c5e37a9a69b28e</srcmd5>
+    <version>3.25.7</version>
+    <time>1704753911</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137465</requestid>
+  </revision>
+</revisionlist>

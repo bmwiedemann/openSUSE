@@ -1,0 +1,44 @@
+From afb60167d6268a61d51b1a33efa741f46c7e73ee Mon Sep 17 00:00:00 2001
+From: Mikulas Patocka <mpatocka@redhat.com>
+Date: Wed, 6 Sep 2023 15:28:29 +0200
+Subject: [PATCH 14/24] gcc: fix warnings for x32 architecture
+
+Warning from x32 ABI compilation.
+---
+ lib/log/log.c            | 2 +-
+ lib/metadata/vdo_manip.c | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/lib/log/log.c b/lib/log/log.c
+index 6dc269675..b654737f1 100644
+--- a/lib/log/log.c
++++ b/lib/log/log.c
+@@ -515,7 +515,7 @@ static void _set_time_prefix(char *prefix, int buflen)
+ 	if (!len)
+ 		goto fail;
+ 
+-	len = dm_snprintf(prefix + len, buflen - len, ".%06ld ", ts.tv_nsec/1000);
++	len = dm_snprintf(prefix + len, buflen - len, ".%06d ", (int)ts.tv_nsec/1000);
+ 	if (len < 0)
+ 		goto fail;
+ 
+diff --git a/lib/metadata/vdo_manip.c b/lib/metadata/vdo_manip.c
+index d51ef2dbf..516d42d8b 100644
+--- a/lib/metadata/vdo_manip.c
++++ b/lib/metadata/vdo_manip.c
+@@ -522,9 +522,9 @@ static int _get_sysinfo_memory(uint64_t *total_mb, uint64_t *available_mb)
+ 	if (sysinfo(&si) != 0)
+ 		return 0;
+ 
+-	log_debug("Sysinfo free:%lu  bufferram:%lu  sharedram:%lu  freehigh:%lu  unit:%u.",
+-		  si.freeram >> 20, si.bufferram >> 20, si.sharedram >> 20,
+-		  si.freehigh >> 20, si.mem_unit);
++	log_debug("Sysinfo free:%llu  bufferram:%llu  sharedram:%llu  freehigh:%llu  unit:%u.",
++		  (unsigned long long)si.freeram >> 20, (unsigned long long)si.bufferram >> 20, (unsigned long long)si.sharedram >> 20,
++		  (unsigned long long)si.freehigh >> 20, si.mem_unit);
+ 
+ 	*available_mb = ((uint64_t)(si.freeram + si.bufferram) * si.mem_unit) >> 30;
+ 	*total_mb = si.totalram >> 30;
+-- 
+2.35.3
+

@@ -1,0 +1,76 @@
+Index: hsqldb/build/build.xml
+===================================================================
+--- hsqldb.orig/build/build.xml
++++ hsqldb/build/build.xml
+@@ -257,6 +257,8 @@ examples:
+ 
+     <target name="mdesc-hsqldbmin" depends="sw-hsqldbmin" if="ant.java.iscjava11" >
+         <javac srcdir="${swsrcmin}"
++              source="8"
++              target="8"
+                bootclasspath="${javac.bootcp.override}"
+                sourcepath=""
+                includeantruntime="false"
+@@ -276,6 +278,8 @@ examples:
+       <fail unless='_servlet_available'
+             message="Place Jar file for Servlet API at '${servletapi.lib}', or set property 'servletapi.lib'"/>
+       <javac srcdir="${swsrc}"
++            source="8"
++            target="8"
+              bootclasspath="${javac.bootcp.override}"
+              sourcepath=""
+              includeantruntime="false"
+@@ -290,6 +294,8 @@ examples:
+     <target name="classes" depends="sw-hsqldb,-javajsse"
+     description="compiles JVM-independent non-lib/util/cmdline/servlet classes">
+       <javac srcdir="${swsrc}"
++            source="8"
++            target="8"
+              bootclasspath="${javac.bootcp.override}"
+              includeantruntime="false"
+              encoding="${javac.encoding}"
+@@ -331,6 +337,8 @@ examples:
+     <target name="-util" depends="-prepare, sw-hsqldb"
+             description="compiles the util folder">
+       <javac srcdir="${swsrc}"
++            source="8"
++            target="8"
+              bootclasspath="${javac.bootcp.override}"
+              includeantruntime="false"
+              encoding="${javac.encoding}"
+@@ -349,6 +357,8 @@ examples:
+       <!-- This javac is no longer dependent upon default attr. includeAntRuntime=true -->
+       <!-- Ant resolver and preprocessor moved to trunk/integration/ant/prepocessor/src -->
+       <javac srcdir="src"
++            source="8"
++            target="8"
+              bootclasspath="${javac.bootcp.override}"
+              encoding="${javac.encoding}"
+              destdir="classes"
+@@ -364,6 +374,8 @@ examples:
+                      -conditionalize-sqlfile-scanner, -sqlfile-scanner">
+ 
+       <javac srcdir="${swsrctool}"
++            source="8"
++            target="8"
+              bootclasspath="${javac.bootcp.override}"
+              includeantruntime="false"
+              encoding="${javac.encoding}"
+@@ -390,6 +402,8 @@ examples:
+     <target name="-swing" depends="sw-hsqldb"
+             description="compiles the swing based classes in the util folder">
+       <javac srcdir="${swsrc}"
++            source="8"
++            target="8"
+              bootclasspath="${javac.bootcp.override}"
+              includeantruntime="false"
+              encoding="${javac.encoding}"
+@@ -415,6 +429,8 @@ examples:
+     <target name="scanner-driver" depends="-cmdline"
+             description="Build Scanner Driver.  For SqlTool scanner developers.">
+       <javac srcdir="${swsrc}"
++            source="8"
++            target="8"
+              bootclasspath="${javac.bootcp.override}"
+              includeantruntime="false"
+              encoding="${javac.encoding}"

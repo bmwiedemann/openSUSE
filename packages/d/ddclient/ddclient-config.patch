@@ -1,0 +1,44 @@
+--- ddclient-3.10.0/ddclient.conf.in.bak	2022-12-27 12:41:54.160794070 +0100
++++ ddclient-3.10.0/ddclient.conf.in	2022-12-27 12:43:39.501317859 +0100
+@@ -18,10 +18,10 @@
+ ######################################################################
+ daemon=300				# check every 300 seconds
+ syslog=yes				# log update msgs to syslog
+-mail=root				# mail all msgs to root
++#mail=root				# mail all msgs to root
+ mail-failure=root		# mail failed update msgs to root
+-pid=@runstatedir@/ddclient.pid		# record PID in file.
+-ssl=yes					# use ssl-support.  Works with
++pid=/run/ddclient/ddclient.pid		# record PID in file.
++ssl=no					# use ssl-support.  Works with
+ 						# ssl-library
+ # postscript=script		# run script after updating.  The
+ 						# new IP is added as argument.
+@@ -56,6 +56,9 @@
+ #
+ #use=ip,                     ip=127.0.0.1	# via static IP's
+ #use=if,                     if=eth0		# via interfaces
++#use=if,                     if=ippp0           # when using ISDN
++#use=if,                     if=ppp0            # when using DSL
++#use=if,                     if=tun0            # when using tunnel device
+ #use=web					# via web
+ #
+ #protocol=dyndns2				# default protocol
+@@ -69,6 +72,17 @@
+ #backupmx=yes|no				# host is primary MX?
+ #wildcard=yes|no				# add wildcard CNAME?
+ 
++## selfhost dynamic addresses
++## http://cms.selfhost.de/cgi-bin/selfhost?p=faq&show=113
++##
++# server=carol.selfhost.de,    \
++# protocol=dyndns2,      \
++# login=your-selfhost-login,   \
++# password=your-selfhost-password  \
++# your.selfhost.bz
++
++##
++
+ ##
+ ## dyndns.org dynamic addresses
+ ##

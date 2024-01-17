@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sun Mar 20 06:26:51 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add icebreaker-makefile-fix.patch, fixes unterminated call to
+  function 'shell' in makefile for openSUSE Leap and use $(CC)
+  instead hardcoded gcc
+- Fix building for openSUSE Leap, using gcc10-c++
+
+-------------------------------------------------------------------
+Mon Nov  1 13:53:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.1
+  * Add keywords in desktop file
+- Drop upstream resolved version.patch and cflags.patch
+
+-------------------------------------------------------------------
+Mon Mar 22 08:16:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler plot from description. Expand on origin
+  of the game logic.
+
+-------------------------------------------------------------------
+Sat Mar  6 14:23:39 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- initial packaging of version 2.2.0
+- add version.patch and cflags.patch

@@ -1,0 +1,8 @@
+addFilter("hidden-file-or-dir .*")
+
+# We need to filter this and make this arch dependent, not because of anything in this
+# package, but cargo-audit is ONLY on tier 1 arches. There is an install check bot
+# in OBS that will spam you if we don't do this.
+addFilter("no-binary")
+
+

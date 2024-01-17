@@ -1,0 +1,13 @@
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index eda1052a..e76d7f92 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -33,6 +33,8 @@ target_sources(${PROJECT_NAME} PRIVATE
+     UBSetting.h
+     UBSettings.cpp
+     UBSettings.h
++    UBShortcutManager.cpp
++    UBShortcutManager.h
+     UBTextTools.cpp
+     UBTextTools.h
+ )

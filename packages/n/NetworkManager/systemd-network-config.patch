@@ -1,0 +1,36 @@
+Index: NetworkManager-1.44.0/data/NetworkManager.service.in
+===================================================================
+--- NetworkManager-1.44.0.orig/data/NetworkManager.service.in
++++ NetworkManager-1.44.0/data/NetworkManager.service.in
+@@ -1,7 +1,7 @@
+ [Unit]
+ Description=Network Manager
+ Documentation=man:NetworkManager(8)
+-Wants=network.target
++Wants=remote-fs.target network.target
+ After=network-pre.target dbus.service
+ Before=network.target @DISTRO_NETWORK_SERVICE@
+ BindsTo=dbus.service
+@@ -31,6 +31,7 @@ LimitNOFILE=65536
+ 
+ [Install]
+ WantedBy=multi-user.target
++Alias=network.service
+ Also=NetworkManager-dispatcher.service
+ 
+ # We want to enable NetworkManager-wait-online.service whenever this service
+Index: NetworkManager-1.44.0/data/NetworkManager-wait-online.service.in
+===================================================================
+--- NetworkManager-1.44.0.orig/data/NetworkManager-wait-online.service.in
++++ NetworkManager-1.44.0/data/NetworkManager-wait-online.service.in
+@@ -16,7 +16,9 @@ Before=network-online.target
+ # time.
+ 
+ Type=oneshot
+-ExecStart=@bindir@/nm-online -s -q
++Environment=NM_ONLINE_TIMEOUT=0
++EnvironmentFile=-/etc/sysconfig/network/config
++ExecStart=/bin/bash -c "if [ ${NM_ONLINE_TIMEOUT} -gt 0 ]; then @bindir@/nm-online -s -q --timeout=${NM_ONLINE_TIMEOUT} ; else /bin/true ; fi"
+ RemainAfterExit=yes
+ 
+ # Set $NM_ONLINE_TIMEOUT variable for timeout in seconds.

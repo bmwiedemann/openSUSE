@@ -1,0 +1,5 @@
+<package name="python-graphene-django" project="openSUSE:Factory">
+  <title>Graphene Django integration</title>
+  <description>A Django integration for Graphene.</description>
+  <devel project="devel:languages:python:django" package="python-graphene-django"/>
+</package>

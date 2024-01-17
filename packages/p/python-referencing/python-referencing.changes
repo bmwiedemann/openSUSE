@@ -1,0 +1,294 @@
+-------------------------------------------------------------------
+Sun Jan 07 13:33:05 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.32.1:
+  * We CannotDetermineSpecification for $schema kyes that aren't
+    strs
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * Enable more ruff rulesets.
+  * Remove an unneeded doc ext, we have no CLI.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump actions/setup-python from 4 to 5
+  * Update pre-commit hooks.
+
+-------------------------------------------------------------------
+Thu Dec 07 15:40:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.32.0:
+  * Add Specification.detect.
+
+-------------------------------------------------------------------
+Thu Nov 30 09:10:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.31.1:
+  * Do more silly things to pepper over type checking nonsense.
+  * Minor noxfile tweaking.
+  * Add the explicit Tidelift link.
+  * Complain about spurious type: ignores.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Thu Nov 16 14:51:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.31.0:
+  * Add referencing.jsonschema.EMPTY_REGISTRY.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * Enable TCH rules for slightly reducing runtime imports.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add tests for Registry being truthy or falsy.
+  * Apparently this setting is now autodetected.
+  * yarl -> url.py in the (trivial) docs usage.
+  * Ignore the dirhtml directory usable for docs generation.
+  * Unpin pyright, as whatever was previously broken seems fixed.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * Pull in some style ignores that we don't really need yet.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * referencing, not Bowtie
+  * New pip-compile default.
+  * Update requirements.
+  * Remove the now-unneeded noqa's.
+  * Ask ruff to fix things when it runs.
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Update requirements.
+  * [pre-commit.ci] pre-commit autoupdate
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add and ensure the noxfile gets documented.
+  * Bump actions/checkout from 3 to 4
+  * [pre-commit.ci] pre-commit autoupdate
+  * Few more ruff rules.
+  * Bump docs requirements.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump suite from `fa1b818` to `9153b05`
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump suite from `b094fe5` to `fa1b818`
+  * Minor tweaks to some annotations.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Sun Aug 06 07:54:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.30.2:
+  * Document why a number of private objects are documented.
+  * Build docs with 3.11 in ReadTheDocs
+
+-------------------------------------------------------------------
+Sun Aug 06 07:52:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.30.1:
+  * Ensure submodules are checked out when building a release.
+  * Enable another ruff ruleset.
+  * One fewer thing in the README (which is likely less confusing).
+  * Bump suite from `6e126a9` to `b094fe5`
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add a few additional interlinks to the JSON Schema
+    specification.
+  * Make the noxfile support passing a less temporary directory for
+    building docs.
+  * Update requirements.
+  * More correct listing of nox envs for the GitHub actions
+    workflow
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Tue Jul 18 18:55:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.30.0:
+  * Declare support for 3.12.
+  * Update the referencing suite.
+
+-------------------------------------------------------------------
+Tue Jul 18 09:04:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.3:
+  * Spelling.
+
+-------------------------------------------------------------------
+Tue Jul 18 09:03:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.2:
+  * Improve the hashability of exceptions when they contain
+    hashable data.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump suite from `9335e4a` to `fe891e8`
+
+-------------------------------------------------------------------
+Thu Jul 06 10:57:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.1:
+  * Update pre-commit hooks.
+  * Minor rewording of the caching section and give it a
+    subsection.
+  * Bump suite from `cb57930` to `9335e4a`
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump suite from `445c8ee` to `cb57930`
+  * Bump suite from `f6fa54d` to `445c8ee`
+  * Don't use nox.session.create_tmp.
+
+-------------------------------------------------------------------
+Thu Jun 01 05:26:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.0:
+  * Implement referencing.retrieval.to_cached_resource
+  * Ensure more things raise non-subclassable exceptions.
+
+-------------------------------------------------------------------
+Thu Jun 01 05:24:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.6:
+  * Move to using Trusted Publishers.
+  * Ensure twine checks the README in strict mode.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Enable markdown coverage in CI.
+  * Try again with the extra coverage job in CI.
+
+-------------------------------------------------------------------
+Thu May 25 06:24:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.5:
+  * Fill in the missing coverage, and ensure it runs in CI.
+  * Add pip-audit to CI.
+  * Explicitly ensure we catch calling .anchor on a nonexistent
+    resource.
+
+-------------------------------------------------------------------
+Wed May 24 05:01:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.4:
+  * More explicit field aliasing for silly type checker behavior.
+  * Update requirements.
+  * Supposedly dependabot supports pip-compile, let's see.
+  * Catch accidental hardcoded links in docs.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Tue May 23 07:55:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.3:
+  * Update ruff's config for the removal of keep-runtime-typing.
+
+-------------------------------------------------------------------
+Thu May 18 07:49:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.2:
+  * Pin the pyright version until I understand what's changed.
+  * Re-add the packaging classifiers.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Fri May  5 10:46:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Thu May 04 04:39:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.1:
+  * Move the type: ignore for converter with pyright.
+  * Explicitly note you probably don't mean to touch Resolver.
+  * Bump suite from `89016c7` to `f6fa54d`
+  * [pre-commit.ci] pre-commit autoupdate
+  * v0.28.0 -> CHANGELOG
+
+-------------------------------------------------------------------
+Tue May 02 05:29:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.0:
+  * Add a simple-ish example to the doc homepage.
+  * Looks like Hatchling needs a bump before this can actually
+    happen.
+  * Add the new JSON and JSON Schema classifiers, hooray!
+
+-------------------------------------------------------------------
+Wed Apr 26 08:43:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.4:
+  * Minor simplification to the docs structure.
+  * Bump suite from `e744bfc` to `89016c7`
+  * Bump the referencing suite.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Tue Apr 25 04:54:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.3:
+  * Fix whatever typing change causes pyright to think frozen
+    classes aren't frozen.
+  * Also strip empty fragments when using __getiem__ on Registries.
+  * Bump wntrblm/nox from 2022.11.21 to 2023.04.22
+
+-------------------------------------------------------------------
+Fri Apr 14 06:58:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.2:
+  * Yet another stab at anchor lookup from non-canonical URIs.
+  * Bump suite from `2751845` to `e8927d9`
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Thu Apr 13 10:18:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.1:
+  * Add a note to the changelog.
+  * Enable the type annotation linter.
+  * Slight improvements to a few more docstrings.
+  * Update requirements.
+  * Bump suite from `5f47bda` to `e8927d9`
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Tue Apr 04 06:16:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.0:
+  * Fix looking up anchors from non-canonical URIs.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Tue Mar 28 09:12:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Split package into multibuild to avoid a build cycle.
+
+-------------------------------------------------------------------
+Tue Mar 28 05:05:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.4:
+  * One more example of non-public API
+  * Add a note on spec-incorrect behavior.
+
+-------------------------------------------------------------------
+Tue Mar 28 05:02:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.3:
+  * First pass at an explicit list of (non-)public API
+
+-------------------------------------------------------------------
+Tue Mar 28 04:58:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.2:
+  * Also suggest a correct pointer for #/.
+  * Fix the double wording in the InvalidAnchor exception message.
+
+-------------------------------------------------------------------
+Mon Mar 27 05:04:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.1:
+  * Update the changelog.
+
+-------------------------------------------------------------------
+Mon Mar 27 05:03:31 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.0:
+  * Try to be more helpful when someone forgets a slash in JSON
+    pointers.
+  * Exclude bots from release notes.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
+Fri Mar 24 12:43:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-referencing required by
+  python-jsonschema-specifications

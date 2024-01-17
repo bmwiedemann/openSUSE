@@ -1,0 +1,59 @@
+From 801cdd23a9dd9e8948f516537b0f5f09a252c5b7 Mon Sep 17 00:00:00 2001
+From: Marian Koncek <mkoncek@redhat.com>
+Date: Fri, 17 Dec 2021 13:33:49 +0100
+Subject: [PATCH] Port to maven 3.8.1
+
+---
+ .../internal/Maven31ArtifactRepositoryAdapter.java   | 12 ++++++++++++
+ .../internal/Maven31ArtifactRepositoryAdapter.java   | 12 ++++++++++++
+ 2 files changed, 24 insertions(+)
+
+diff --git a/src/main/java/org/apache/maven/shared/transfer/collection/internal/Maven31ArtifactRepositoryAdapter.java b/src/main/java/org/apache/maven/shared/transfer/collection/internal/Maven31ArtifactRepositoryAdapter.java
+index 9d93f31..8297fdb 100644
+--- a/src/main/java/org/apache/maven/shared/transfer/collection/internal/Maven31ArtifactRepositoryAdapter.java
++++ b/src/main/java/org/apache/maven/shared/transfer/collection/internal/Maven31ArtifactRepositoryAdapter.java
+@@ -207,6 +207,18 @@ class Maven31ArtifactRepositoryAdapter implements ArtifactRepository
+         throw new UnsupportedOperationException();
+     }
+ 
++    @Override
++    public boolean isBlocked()
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    @Override
++    public void setBlocked(boolean blocked)
++    {
++        throw new UnsupportedOperationException();
++    }
++
+     @Override
+     public String toString()
+     {
+diff --git a/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java b/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java
+index d5716bb..4669353 100644
+--- a/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java
++++ b/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java
+@@ -207,6 +207,18 @@ class Maven31ArtifactRepositoryAdapter implements ArtifactRepository
+         throw new UnsupportedOperationException();
+     }
+ 
++    @Override
++    public boolean isBlocked()
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    @Override
++    public void setBlocked(boolean blocked)
++    {
++        throw new UnsupportedOperationException();
++    }
++
+     @Override
+     public String toString()
+     {
+-- 
+2.31.1
+

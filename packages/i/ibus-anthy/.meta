@@ -1,0 +1,6 @@
+<package name="ibus-anthy" project="openSUSE:Factory">
+  <title>The Anthy engine for IBus input platform</title>
+  <description>The Anthy engine for IBus platform. It provides Japanese input method from
+libanthy.</description>
+  <devel project="M17N" package="ibus-anthy"/>
+</package>

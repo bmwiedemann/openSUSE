@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Thu Jul  6 23:02:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.2.2.
+  ## 3.2.2
+
+  * Corrected handling of messages at the buffer boundary in the SingleLogger
+    [#211](https://github.com/kazu-yamamoto/logger/pull/211)
+
+  ## 3.2.1
+
+  * Fixing a bug where a single logger is not killed
+
+  ## 3.2.0
+
+  * newFastLogger1 ensures the ordering of logs
+    [#207](https://github.com/kazu-yamamoto/logger/pull/207)
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Feb  6 05:43:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.1.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/fast-logger-3.1.2/src/ChangeLog.md
+
+-------------------------------------------------------------------
+Sun Jan 29 01:01:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.1.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Jan 20 07:53:07 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.1.1.
+  ## 3.1.1
+
+  * More time-ordered logging functions
+    [#199](https://github.com/kazu-yamamoto/logger/pull/199
+
+  ## 3.1.0
+
+  * Having a single Buffer in LoggerSet for locking [#197](https://github.com/kazu-yamamoto/logger/pull/197.
+    This would have performance penalty. So, the major version bumps up. If you see performance regression, please register an issue on github.
+
+-------------------------------------------------------------------
+Fri Apr 30 08:30:09 UTC 2021 - psimons@suse.com
+
+- Update fast-logger to version 3.0.5.
+  ## 3.0.5
+
+  * recovering backward compatibility for newFileLoggerSet.
+
+-------------------------------------------------------------------
+Wed Apr 28 08:49:15 UTC 2021 - psimons@suse.com
+
+- Update fast-logger to version 3.0.4.
+  ## 3.0.4
+
+  * New API: `newFastLogger1` which use only one capability.
+  * Making `FD` safer with `invalidFD`.
+
+-------------------------------------------------------------------
+Fri Feb 19 23:03:07 UTC 2021 - psimons@suse.com
+
+- Update fast-logger to version 3.0.3.
+  ## 3.0.3
+
+  * Dropping support of GHC 7.x.
+  * Add `ToLogStr` instance for `ShortByteString`. Add lower bound on
+    `bytestring` dependency to ensure that `bytestring` exports
+    `Data.ByteString.Short`.
+
+  ## 3.0.2
+
+  * Fixing documentation.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Sep 29 02:00:57 UTC 2020 - psimons@suse.com
+
+- Update fast-logger to version 3.0.2.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:49 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:18 UTC 2020 - psimons@suse.com
+
+- Add fast-logger at version 3.0.1.
+

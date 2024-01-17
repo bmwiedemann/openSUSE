@@ -1,0 +1,11 @@
+--- src/pic16/pcodepeep.c.orig
++++ src/pic16/pcodepeep.c
+@@ -41,7 +41,7 @@ pCode * pic16_findNextInstruction(pCode
+ int pic16_getpCode(char *mnem,int dest);
+ int pic16_getpCodePeepCommand(char *cmd);
+ void pic16_pBlockMergeLabels(pBlock *pb);
+-char *pic16_pCode2str(char *str, int size, pCode *pc);
++char *pic16_pCode2str(char *str, size_t size, pCode *pc);
+ //char *pic16_get_op(pCodeOp *pcop,char *buf, size_t buf_size);
+ pCodeOp *pic16_popCombine2(pCodeOp *, pCodeOp *, int);
+ 

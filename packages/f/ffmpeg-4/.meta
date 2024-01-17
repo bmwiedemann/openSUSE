@@ -1,0 +1,5 @@
+<package name="ffmpeg-4" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:libs" package="ffmpeg-4"/>
+</package>

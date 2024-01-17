@@ -1,0 +1,113 @@
+--- configure.ac.orig
++++ configure.ac
+@@ -4,12 +4,12 @@ AC_CONFIG_AUX_DIR(config)
+ AM_INIT_AUTOMAKE(libmpcdec,1.2.6)
+ AM_CONFIG_HEADER(include/config.h)
+ 
+-AM_PROG_LIBTOOL
+-
+-CFLAGS="$CFLAGS -O3 -fomit-frame-pointer -fPIC"
+-
+-AC_C_BIGENDIAN(,CFLAGS="$CFLAGS -DMPC_LITTLE_ENDIAN",)
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ 
++LT_INIT([disable-static pic-only])
++AC_C_BIGENDIAN
+ AC_HEADER_STDC
+ AC_HEADER_STDBOOL
+ AC_C_CONST
+--- include/mpcdec/internal.h.orig
++++ include/mpcdec/internal.h
+@@ -37,8 +37,8 @@
+ 
+ #ifndef _mpcdec_internal_h
+ #define _mpcdec_internal_h
+-
+-
++#include <byteswap.h>
++#pragma GCC visibility push(hidden)
+ enum {
+     MPC_DECODER_SYNTH_DELAY = 481
+ };
+@@ -46,8 +46,7 @@ enum {
+ /// Big/little endian 32 bit byte swapping routine.
+ static __inline
+ mpc_uint32_t mpc_swap32(mpc_uint32_t val) {
+-    return (((val & 0xff000000) >> 24) | ((val & 0x00ff0000) >> 8) |
+-            ((val & 0x0000ff00) <<  8) | ((val & 0x000000ff) << 24));
++    return bswap_32(val);
+ }
+ 
+ /// Searches for a ID3v2-tag and reads the length (in bytes) of it.
+@@ -60,6 +59,6 @@ mpc_int32_t JumpID3v2(mpc_reader* fp);
+ mpc_uint32_t mpc_random_int(mpc_decoder *d); // in synth_filter.c
+ void mpc_decoder_initialisiere_quantisierungstabellen(mpc_decoder *d, double scale_factor);
+ void mpc_decoder_synthese_filter_float(mpc_decoder *d, MPC_SAMPLE_FORMAT* OutData);
+-
++#pragma GCC visibility pop
+ #endif // _mpcdec_internal_h
+ 
+--- src/Makefile.am.orig
++++ src/Makefile.am
+@@ -15,4 +15,4 @@ libmpcdec_la_SOURCES = \
+ 	synth_filter.c
+ libmpcdec_la_LDFLAGS = -no-undefined -version-info 5:2:0
+ 
+-INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/src
++AM_CPPFLAGS = -include $(top_srcdir)/include/config.h -I$(top_srcdir)/include -I$(top_srcdir)/src
+--- src/mpc_decoder.c.orig
++++ src/mpc_decoder.c
+@@ -39,6 +39,7 @@
+ #include <mpcdec/internal.h>
+ #include <mpcdec/requant.h>
+ #include <mpcdec/huffman.h>
++#include <byteswap.h>
+ 
+ //SV7 tables
+ extern const HuffmanTyp*   mpc_table_HuffQ [2] [8];
+@@ -58,8 +59,8 @@ extern const HuffmanTyp    mpc_table_Reg
+ 
+ #endif
+ 
+-#ifndef MPC_LITTLE_ENDIAN
+-#define SWAP(X) mpc_swap32(X)
++#ifdef WORDS_BIGENDIAN
++#define SWAP(X) bswap_32(X)
+ #else
+ #define SWAP(X) (X)
+ #endif
+@@ -267,7 +268,7 @@ mpc_decoder_decode_frame(mpc_decoder *d,
+   if (in_len > sizeof(d->Speicher)) in_len = sizeof(d->Speicher);
+   memcpy(d->Speicher, in_buffer, in_len);
+   for (i = 0; i < (in_len + 3) / 4; i++)
+-    d->Speicher[i] = mpc_swap32(d->Speicher[i]);
++    d->Speicher[i] = bswap_32(d->Speicher[i]);
+   d->dword = SWAP(d->Speicher[0]);
+   switch (d->StreamVersion) {
+ #ifdef MPC_SUPPORT_SV456
+--- src/streaminfo.c.orig
++++ src/streaminfo.c
+@@ -37,6 +37,7 @@
+ 
+ #include <mpcdec/mpcdec.h>
+ #include <mpcdec/internal.h>
++#include <byteswap.h>
+ 
+ static const char *
+ Stringify(mpc_uint32_t profile) // profile is 0...15, where 7...13 is used
+@@ -217,11 +218,11 @@ mpc_streaminfo_read(mpc_streaminfo * si,
+     si->tag_offset = si->total_file_length;
+     
+     if (memcmp(HeaderData, "MP+", 3)) return ERROR_CODE_INVALIDSV;
+-#ifndef MPC_LITTLE_ENDIAN
++#ifdef WORDS_BIGENDIAN
+     {
+         mpc_uint32_t ptr;
+         for (ptr = 0; ptr < 8; ptr++) {
+-            HeaderData[ptr] = mpc_swap32(HeaderData[ptr]);
++            HeaderData[ptr] = bswap_32(HeaderData[ptr]);
+         }
+     }
+ #endif

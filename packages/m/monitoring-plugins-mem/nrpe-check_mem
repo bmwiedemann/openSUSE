@@ -1,0 +1,1 @@
+command[check_mem]=/usr/lib/nagios/plugins/check_mem.pl -f -C -w 10 -c 5

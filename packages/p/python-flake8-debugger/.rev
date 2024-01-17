@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ac66d034ff91ce419ee32f41d798f39</srcmd5>
+    <version>3.1.0</version>
+    <time>1546535385</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit, repo-checker has a stale review</comment>
+    <requestid>662615</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>19eb193869ccf2afa7e330f2c83e2878</srcmd5>
+    <version>3.2.1</version>
+    <time>1587071107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1:
+  * no changelog</comment>
+    <requestid>794559</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9dffbddb3e9a3a106e4150b2b7029123</srcmd5>
+    <version>4.0.0</version>
+    <time>1617279484</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 4.0.0:
+  * Opted back into using Poetry now that the existing issues have been fixed.
+  * Python 2.7 support was no officially dropped. 
+- add pycodestyle-indent-size.patch and use pypi tarball to avoid poetry</comment>
+    <requestid>882503</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>278007bf17f715143c7d6db812aeb1f6</srcmd5>
+    <version>4.1.2</version>
+    <time>1667306528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032481</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Aug  3 11:02:39 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add cpp17.patch to build in newer version of absl
+  gh#facebook/pyre2#25
+
+-------------------------------------------------------------------
+Wed May 19 09:09:13 UTC 2021 - pgajdos@suse.com
+
+- use %pytest_arch macro in %check
+
+-------------------------------------------------------------------
+Tue Mar 12 15:11:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.7:
+  * initialize regexp field to preven nullptr free
+- Run tests (switch to github tarball for them)
+
+-------------------------------------------------------------------
+Tue Dec 11 18:56:14 UTC 2018 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 1.0.6)

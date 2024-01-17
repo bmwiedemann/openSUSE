@@ -1,0 +1,317 @@
+-------------------------------------------------------------------
+Mon Nov  6 16:02:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.19: unnumbered patches are no longer
+  supported.
+
+-------------------------------------------------------------------
+Wed Nov  1 07:19:45 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.2
+  + Add help output for the command tpm-authorize
+  + Improve the multi-devices support
+
+-------------------------------------------------------------------
+Mon Oct 23 05:57:33 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.1
+  + add-secondary-key: remove the generation of the secondary
+    password
+  + add-secondary-key: remove the inclusion of
+   'add-secondary-password'
+  + luks: list all underlying LUKS device
+  + Introduce FDE_DEVS to list all LUKS devices
+- Drop upstreamd patch
+  + fde-tools-remove-redundant-2nd-pw-creation.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 07:04:47 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-remove-redundant-2nd-pw-creation.patch to remove
+  the creation of the secondary password in 'add-secondary-key'
+
+-------------------------------------------------------------------
+Mon Oct  2 08:10:10 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Bring ExclusiveArch back and only enable the build for the
+  architectures with the proper UEFI Secure Boot and TPM 2.0/TCG
+  protocol support: aarch64 x86_64 riscv64
+
+-------------------------------------------------------------------
+Tue Sep 19 05:59:00 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.0
+  + firstboot: apply the grub.cfg change immediately
+  + fde-tpm-helper for bootloader RPMs to update the sealed key
+    automatically
+  + Fix the find command of 'make dist'
+  + Clean up the repo
+  + Make the system flags configurable
+  + fde-tpm-helper: specify the bootloaders in %post
+- Add two new subpackages for the bootloader RPMs to update the
+  sealed key: fde-tpm-helper and fde-tpm-helper-rpm-macros
+- Remove ExclusiveArch and set the system directories for 'make'
+  and 'make install'
+
+-------------------------------------------------------------------
+Tue Aug 29 07:56:44 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.9
+  + Redirect the firstboot messages to journald instead of a
+    standalone log file (bsc#1214581)
+  + Update /boot/grub2/grub.cfg at the end of firstboot to reflect
+    the LUKS key change
+  + Update the version automatically
+  + Add 'cryptsetup' to 'make dist'
+  + Fix the version in fde.sh
+- Update the download URL
+
+-------------------------------------------------------------------
+Thu Aug 24 07:45:13 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.8
+  + Improve the LUKS partition detection to support LUKS over LVM
+- Remove openssl and tpm2-0-tss-devel from BuildRequires since all
+  TPM related programs are already in pcr-oracle
+- Add util-linux-systemd to Requires for 'lsblk'
+
+-------------------------------------------------------------------
+Fri Aug 18 07:51:12 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.7
+  + Check failure of authorized policy creation
+  + Additional check for recovery password
+- Drop upstreamed patch
+  + fde-tools-handle-authorized-policy-failure.patch
+
+-------------------------------------------------------------------
+Thu Jul 27 06:23:22 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-handle-authorized-policy-failure.patch handle the
+  failure of authorized policy creation
+
+-------------------------------------------------------------------
+Thu Jul 20 08:39:13 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.6
+  + Avoid cleaning the temp directory when calling tpm_test
+  + firstboot/fde: use functions as the aliases for bootloader
+    functions
+  + firstboot/fde: always regenerate initrd
+  + firstboot/fde: use authorized policy by default
+  + Support devices other than the root partition
+- Drop upstreamed patches
+  + fde-tools-avoid-cleaning-temp-dir.patch
+  + fde-tools-fix-bootloader-func.patch
+  + fde-tools-force-dracut.patch
+  + fde-tools-enable-authpol-in-firstboot.patch
+
+-------------------------------------------------------------------
+Thu Jul 13 06:57:46 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-enable-authpol-in-firstboot.patch to enable
+  authorized policy in the firstboot script
+
+-------------------------------------------------------------------
+Fri Jul  7 08:40:25 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-fix-bootloader-func.patch
+  + Define the bootloader specific functions in the firstboot
+    script since the aliases are not expanded
+- Add fde-tools-force-dracut.patch
+  + Always regenerate initrd
+
+-------------------------------------------------------------------
+Tue Jul  4 07:02:19 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-avoid-cleaning-temp-dir.patch to avoid cleaning
+  the temp directory when calling tpm_test
+
+-------------------------------------------------------------------
+Tue Jul  4 02:59:34 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.5
+  + LUKS2 keyslot management with the grub-tpm2 token
+  + Replace mkinitrd with dracut
+
+-------------------------------------------------------------------
+Wed Jun 14 02:39:26 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.4
+  + Add man page and bash completion support
+  + Switch to TPM 2.0 Key File for grub2
+  + Update the installation paths
+  + Enable authorized policy by default
+  + Implement 'tpm-disable' command (bsc#1208834)
+- Add a subpackage: fde-tools-bash-completion
+- Use 'tpm-activate' in the systemd service file
+- Add help2man to BuildRequires
+- Drop the upstreamed patches
+  + fde-tools-tpm2.0-key-file-support.patch
+  + fde-tools-fix-paths.patch
+  + fde-tools-set-stop-event-for-tpm_authorize.patch
+  + fde-tools-enable-authorized-policy-by-default.patch
+  + fde-tools-reduce-iterations.patch
+  + fde-tools-set-grub.cfg-as-stop-event.patch
+
+-------------------------------------------------------------------
+Thu Jun  8 08:31:15 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix the path in fde-tools.service
+
+-------------------------------------------------------------------
+Wed Jun  7 00:57:26 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-tpm2.0-key-file-support.patch to support TPM 2.0
+  Key File for grub2
+- Bump the required pcr-oracle version to 0.4.5 for the TPM 2.0 Key
+  File support
+- Add fde-tools-reduce-iterations.patch to reduce the iterations
+  for the key created by luks_add_random_key
+- Add fde-tools-set-grub.cfg-as-stop-event.patch to set grub.cfg as
+  the stop event for the PCR prediction
+- Add fde-tools-enable-authorized-policy-by-default.patch to switch
+  FDE_USE_AUTHORIZED_POLICIES to yes
+
+-------------------------------------------------------------------
+Tue Jun  6 07:32:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- remove dracut and jeos-firstboot from buildrequires, just specify
+  the directory.
+
+-------------------------------------------------------------------
+Wed May 17 08:37:47 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-fix-paths.patch to fix the installation paths
+- Using the tarball from the github repo
+- Remove %clean
+
+-------------------------------------------------------------------
+Fri Apr 21 05:58:08 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update project URL
+
+-------------------------------------------------------------------
+Tue Mar 28 03:19:11 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Apply fde-tools-set-stop-event-for-tpm_authorize.patch correctly
+
+-------------------------------------------------------------------
+Mon Mar  6 07:25:45 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-set-stop-event-for-tpm_authorize.patch to set the
+  stop event when signing the authorized policy
+
+-------------------------------------------------------------------
+Wed Mar  1 10:41:43 UTC 2023 - Olaf Kirch <okir@suse.com>
+
+- firstboot/fde: ensure that aliases get expanded in shell scripts
+  This is needed to make the bootloader_foo -> grub2_foo function
+  name expansion work
+
+-------------------------------------------------------------------
+Tue Feb 28 16:22:19 UTC 2023 - Olaf Kirch <okir@suse.com>
+
+- Updated to version 0.6.3
+- Fix a bug introduced by the recent change in tempdir handling
+
+-------------------------------------------------------------------
+Mon Jan  9 16:36:00 UTC 2023 - Olaf Kirch <okir@suse.com>
+
+- Updated to version 0.6.2
+- Several patches that were added last-minute for the December
+  snapshot have been folded back into git.
+- Implement first stab at authorized policies.
+
+-------------------------------------------------------------------
+Wed Dec 14 12:08:06 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Fix several bugs in firstboot
+  * The approach for reading the initial FDE pass phrase
+    from /etc/default/grub is not supported in kiwi yet,
+    so work around that
+  * The kiwi KVM images have a strange EFI boot path that
+    does not contain a File component. Try to work
+    around that.
+  * shim-install behaves differently between kiwi image build time
+    and the installed system. Work around.
+
+-------------------------------------------------------------------
+Tue Dec 13 15:56:25 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Tue Dec 13 11:30:26 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Fix the fde-tpm-enroll.service file
+
+-------------------------------------------------------------------
+Mon Dec 12 15:02:53 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Updated to version 0.6.1
+- Fix tpm-enable subcommand
+- Add new add-secondary-key subcommand
+- Add a systemd unit file that triggers on the presence of the
+  key file written by d-installer
+
+-------------------------------------------------------------------
+Wed Dec  7 13:53:56 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Updated to version 0.6
+- pcr-oracle is now a standalone project and package
+- Split off the jeos-firstboot stuff into a binary package of its own,
+  because bare metal installations do not need it
+- Refactoring the scripts
+- Folded Gary's patches into git.
+
+-------------------------------------------------------------------
+Fri Oct 14 08:25:22 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add bsc1204037-mokutil-check-sb-state.patch to check the
+  SecureBoot state with mokutil (bsc#1204037)
+
+-------------------------------------------------------------------
+Thu Oct 13 07:02:18 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add bsc1204037-update-grub.cfg-for-pw-only.patch to update
+  grub.cfg when the user only chooses the pass phrase to encrypt
+  the disk. (bsc#1204037)
+
+-------------------------------------------------------------------
+Fri Sep 30 11:17:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add build support for other architectures
+- spec file clean ups
+
+-------------------------------------------------------------------
+Fri Sep 16 10:24:54 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Move the (shipped) keyfile into /root to avoid issues with r/o root
+
+-------------------------------------------------------------------
+Tue Sep 13 15:55:21 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Introduce a specific unit script that takes care of mounting root
+  early (to avoid conflicts with ignition).
+
+-------------------------------------------------------------------
+Mon Aug 29 11:02:58 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Make the firstboot workflow smarter (offer different key protectors)
+
+-------------------------------------------------------------------
+Mon Aug 15 14:53:12 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Fixed typo of tpm2_key_protector_clear
+
+-------------------------------------------------------------------
+Mon Aug 15 09:43:16 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Renamed to fde-tools-0.1
+- included firstboot stuff
+
+-------------------------------------------------------------------
+Tue Jul 26 12:54:28 UTC 2022 - Olaf Kirch <okir@suse.com>
+
+- Initial build as package pcr-oracle

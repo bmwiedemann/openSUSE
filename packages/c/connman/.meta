@@ -1,0 +1,5 @@
+<package name="connman" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:utilities" package="connman"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="qmlpluginexports" project="openSUSE:Factory">
+  <title>Tool to list exports provided by QML plugins</title>
+  <description>This tools loads a QML plugin and prints a list of identifiers and versions
+to stdout. See qml-autoreqprov's README for details.
+
+</description>
+  <devel project="KDE:Qt5" package="qmlpluginexports"/>
+  <url>https://www.opensuse.org</url>
+</package>

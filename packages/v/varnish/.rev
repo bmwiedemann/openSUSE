@@ -1,0 +1,395 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be0769652ea3bb9175c97ed8e8e90874</srcmd5>
+    <version>2.1.3</version>
+    <time>1285283269</time>
+    <user>autobuild</user>
+    <comment>Copy from server:http/varnish based on submit request 48519 from user jengelh
+</comment>
+    <requestid>48519</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>be0769652ea3bb9175c97ed8e8e90874</srcmd5>
+    <version>2.1.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>181558e472a32d341e9e984315212854</srcmd5>
+    <version>2.1.3</version>
+    <time>1309350404</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67020</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>da67cb6d537ce552d5b90071f9d80dda</srcmd5>
+    <version>2.1.3</version>
+    <time>1309350414</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67020
+</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>da67cb6d537ce552d5b90071f9d80dda</srcmd5>
+    <version>2.1.3</version>
+    <time>1319182547</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>16ac69e441978a2be5ca66f6ce7b1439</srcmd5>
+    <version>3.0.2</version>
+    <time>1331579837</time>
+    <user>coolo</user>
+    <comment>- Update to new upstream release 3.0.2
+* Add support for ESI and gzip
+* Handle objects larger than 2G
+* HTTP Range support is now enabled by default
+* &quot;307 Temporary redirect&quot; is now considered cacheable
+* see ChangeLog (packaged) or
+  http://varnish-cache.org/trac/browser/doc/changes.rst
+  for details
+- Note that the -s file,/var/cache/varnish,524288 argument (check
+  /etc/sysconfig/varnish) needs at least &quot;1M&quot; instead of 524288
+  or the daemon will not start anymore.
+- Add systemd unit files</comment>
+    <requestid>107492</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>16ac69e441978a2be5ca66f6ce7b1439</srcmd5>
+    <version>3.0.2</version>
+    <time>1340184308</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d5de5cba0779fddb62c68ac9a48ca6b0</srcmd5>
+    <version>3.0.3</version>
+    <time>1349633165</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137391</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d5de5cba0779fddb62c68ac9a48ca6b0</srcmd5>
+    <version>3.0.3</version>
+    <time>1359110538</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>d5de5cba0779fddb62c68ac9a48ca6b0</srcmd5>
+    <version>3.0.3</version>
+    <time>1379664909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>d90915e667d2f951aceeaf0c8185cee0</srcmd5>
+    <version>3.0.3</version>
+    <time>1381735962</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203103</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>346d795b51867d44dbe50207d39090d7</srcmd5>
+    <version>3.0.3</version>
+    <time>1383379674</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add 0001-Make-up-our-mind-Any-req.-we-receive-from-the-client.patch
+  (CVE-2013-4484, bnc#48451)</comment>
+    <requestid>205573</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>614db1fdf02ebe48dc363e05861e4c0d</srcmd5>
+    <version>3.0.5</version>
+    <time>1391770577</time>
+    <user>scarabeus_factory</user>
+    <comment>- Updated to 3.0.5</comment>
+    <requestid>220760</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>614db1fdf02ebe48dc363e05861e4c0d</srcmd5>
+    <version>3.0.5</version>
+    <time>1409303597</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>baa966f836e199440d88f1f9cf140d64</srcmd5>
+    <version>4.0.3</version>
+    <time>1427736797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 4.0.3</comment>
+    <requestid>293478</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c2fb04151fd7ff55612bf960804cee60</srcmd5>
+    <version>4.1.1</version>
+    <time>1455701205</time>
+    <user>dimstar_suse</user>
+    <comment>- disable silent rules in spec file.
+- enable testsuite for varnish. (forwarded request 359616 from evshmarnev)</comment>
+    <requestid>359622</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>bb58ddb36c83d397c7499fd414591194</srcmd5>
+    <version>4.1.1</version>
+    <time>1458228895</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>373113</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>70b2eeab467e565bf7c9e0d7046f988b</srcmd5>
+    <version>4.1.2</version>
+    <time>1462051910</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>392907</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e77c959c38a36323cafe1fb72ec71a66</srcmd5>
+    <version>4.1.2</version>
+    <time>1471688830</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on openSUSE:Factory i586 (forwarded request 419852 from dimstar)</comment>
+    <requestid>419880</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>92923fb65a407a3706a592ce5a7e874a</srcmd5>
+    <version>5.0.0</version>
+    <time>1475589650</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433078</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5085a5f0af5d56e0f53ba010bb9d19fa</srcmd5>
+    <version>5.0.0</version>
+    <time>1495011342</time>
+    <user>dimstar_suse</user>
+    <comment>Fix current failure on openSUSE:Factory - NOTE: with the introduction of gcc7, this package will be failing again (forwarded request 495480 from dimstar)</comment>
+    <requestid>495484</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b6d8a3fd327a39abcff2633974bed76d</srcmd5>
+    <version>5.1.2</version>
+    <time>1498742085</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506720</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>5661fc41358b8d62c09cb6317ef9ff77</srcmd5>
+    <version>5.1.2</version>
+    <time>1511517392</time>
+    <user>dimstar_suse</user>
+    <comment>Replace references to /var/adm/fillup-templates with new %_fillupdir macro (boo#1069468) (forwarded request 544794 from RBrownSUSE)</comment>
+    <requestid>544987</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7c104d7be6903f7ba2ee124b4c380dd0</srcmd5>
+    <version>6.0.0</version>
+    <time>1526041649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 6.0.0</comment>
+    <requestid>602965</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cc3977a208ab2734fbcbd1006aade2b7</srcmd5>
+    <version>6.2.0</version>
+    <time>1553700174</time>
+    <user>dimstar_suse</user>
+    <comment>6.2.0</comment>
+    <requestid>689081</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>83ee045829cac4d8516a100bbbfe8954</srcmd5>
+    <version>6.2.0</version>
+    <time>1566894513</time>
+    <user>dimstar_suse</user>
+    <comment>- Add uninit.patch.</comment>
+    <requestid>726298</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c12fcf9c13449aae36bd28fc6bfd33a0</srcmd5>
+    <version>6.2.1</version>
+    <time>1567680385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.2.1
+  * Bugfix for CVE-2019-15892 [boo#1149382]</comment>
+    <requestid>728299</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>52c0b89a06961dd084874316b94ed462</srcmd5>
+    <version>6.3.0</version>
+    <time>1568805170</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to release 6.3.0</comment>
+    <requestid>731529</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2f275e816c6c2d38302a0504ab6a86c4</srcmd5>
+    <version>6.3.2</version>
+    <time>1583311181</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>781116</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>91698055d118e6bf136f541d729bbc54</srcmd5>
+    <version>6.4.0</version>
+    <time>1584531589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.4.0</comment>
+    <requestid>785931</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>16f4a75af8472ffca59be63deec784e8</srcmd5>
+    <version>6.4.0</version>
+    <time>1592939177</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO, this randomly fails during link stage.
+
+- Update Git-Web repository link
+- Set CFLAGS+=-fcommon.</comment>
+    <requestid>816511</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6933a78c9b51b961b39dc872c4d30de3</srcmd5>
+    <version>6.5.0</version>
+    <time>1600347822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.5.0</comment>
+    <requestid>835135</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>523048f5340bee707de0bdec83e97afa</srcmd5>
+    <version>6.5.1</version>
+    <time>1601653438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.5.1</comment>
+    <requestid>839157</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>df31eb265df2f6583f6feec58cb8a80e</srcmd5>
+    <version>6.6.0</version>
+    <time>1626118828</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>905813</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f76ae0dbfe0b7af8333b68ee28e679e6</srcmd5>
+    <version>6.6.1</version>
+    <time>1628282702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.6.1
+  * Fix an HTTP/2.0 request smuggling vulnerability. [bnc#1188470]</comment>
+    <requestid>910486</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>49d01b38385f117d5863e26a091c300c</srcmd5>
+    <version>6.6.1</version>
+    <time>1638388052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935002</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>910f47c3a7899ae252cd4053a9367ca8</srcmd5>
+    <version>7.1.0</version>
+    <time>1652801069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.1.0 [boo#1195188] [CVE-2022-23959]</comment>
+    <requestid>977601</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0d9e44b572f2c40493761429a03653df</srcmd5>
+    <version>7.1.1</version>
+    <time>1660313227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.1.1 [boo#1202350] [CVE-2022-38150]</comment>
+    <requestid>994770</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>1293d6c3743dcb57dbb4d3cbdbe7b96e</srcmd5>
+    <version>7.1.1</version>
+    <time>1663596195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004579</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>fa2499efa67c27298eb3ba22e1d40e51</srcmd5>
+    <version>7.1.1</version>
+    <time>1664210876</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005885</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6fa2b8c17eaa90bbf491d8e08174ed91</srcmd5>
+    <version>7.2.0</version>
+    <time>1667306590</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.2.0:</comment>
+    <requestid>1032578</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f55996d98ac2f4c945c54f08d1805ac7</srcmd5>
+    <version>7.2.1</version>
+    <time>1668086574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.2.1</comment>
+    <requestid>1034895</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b529275d599db0a024b7785c52257044</srcmd5>
+    <version>7.4.1</version>
+    <time>1695327770</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.4.1</comment>
+    <requestid>1112701</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>1a4b5eff99001ea65dd3f1a7f78e621b</srcmd5>
+    <version>7.4.2</version>
+    <time>1701462394</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.4.2 (bsc#1216123, CVE-2023-44487):
+  * The ``vcl_req_reset`` feature (controllable through the ``feature``
+    parameter, see `varnishd(1)`) has been added and enabled by default
+    to terminate client side VCL processing early when the client is
+    gone.
+    *req_reset* events trigger a VCL failure and are reported to
+    `vsl(7)` as ``Timestamp: Reset`` and accounted to ``main.req_reset``
+    in `vsc` as visible through ``varnishstat(1)``.
+    In particular, this feature is used to reduce resource consumption
+    of HTTP/2 &quot;rapid reset&quot; attacks (see below).
+    Note that *req_reset* events may lead to client tasks for which no
+    VCL is called ever. Presumably, this is thus the first time that
+    valid `vcl(7)` client transactions may not contain any ``VCL_call``
+    records.
+  * Added mitigation options and visibility for HTTP/2 &quot;rapid reset&quot;
+    attacks
+    Global rate limit controls have been added as parameters, which can
+    be overridden per HTTP/2 session from VCL using the new vmod ``h2``:
+    * The ``h2_rapid_reset`` parameter and ``h2.rapid_reset()`` function
+      define a threshold duration for an ``RST_STREAM`` to be classified
+      as &quot;rapid&quot;: If an ``RST_STREAM`` frame is parsed sooner than this
+      duration after a ``HEADERS`` frame, it is accounted against the
+      rate limit described below.
+    * The ``h2_rapid_reset_limit`` parameter and
+      ``h2.rapid_reset_limit()`` function define how many &quot;rapid&quot; resets
+      may be received during the time span defined by the
+      ``h2_rapid_reset_period`` parameter / ``h2.rapid_reset_period()``
+      function before the HTTP/2 connection is forcibly closed with a
+      ``GOAWAY`` and all ongoing VCL client tasks of the connection are
+      aborted. (forwarded request 1130176 from dirkmueller)</comment>
+    <requestid>1130193</requestid>
+  </revision>
+</revisionlist>

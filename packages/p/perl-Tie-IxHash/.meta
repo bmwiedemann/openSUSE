@@ -1,0 +1,7 @@
+<package name="perl-Tie-IxHash" project="openSUSE:Factory">
+  <title>TieIxHash Perl Module</title>
+  <description>If you have been led to believe that associative arrays in Perl do not
+preserve order, and if you have ever craved that feature, this module
+is for you.</description>
+  <devel project="devel:languages:perl" package="perl-Tie-IxHash"/>
+</package>

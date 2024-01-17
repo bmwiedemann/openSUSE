@@ -1,0 +1,5 @@
+<package name="four-in-a-row" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="four-in-a-row"/>
+</package>

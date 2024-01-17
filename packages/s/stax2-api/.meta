@@ -1,0 +1,5 @@
+<package name="stax2-api" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="stax2-api"/>
+</package>

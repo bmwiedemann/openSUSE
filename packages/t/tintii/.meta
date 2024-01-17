@@ -1,0 +1,9 @@
+<package name="tintii" project="openSUSE:Factory">
+  <title>Selective Colour Photo Filter</title>
+  <description>tintii takes full colour photos and processes them into black and white with
+some select regions highlighted in colour. The technique is known as colour
+popping or selective colouring - tintii makes it easy.
+</description>
+  <devel project="graphics" package="tintii"/>
+  <url>http://www.indii.org/software/tintii</url>
+</package>

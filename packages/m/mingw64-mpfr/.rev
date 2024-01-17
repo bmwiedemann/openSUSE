@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2eac425f29d0fdbf06ae2a0e62ec5673</srcmd5>
+    <version>3.1.4</version>
+    <time>1578502466</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>754476</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ab0e8ae3d512d1efc2571c3592bf23e2</srcmd5>
+    <version>3.1.4</version>
+    <time>1617034903</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc</comment>
+    <requestid>881629</requestid>
+  </revision>
+</revisionlist>

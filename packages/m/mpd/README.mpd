@@ -1,0 +1,41 @@
+mpd config file /etc/mpd.cond should be customised, at least a path to
+music directories (music_directory).
+
+To use alsa sound output instead of pulse, activate the corresponding
+part of mpd.conf and put comment on pulse part.
+
+For security reasons, MPD runs as restricted user mpd, group
+audio. Please consider that music_directory and all directories in the
+path to it should be readable and executable either for user mpd or
+group audio. IF you ask youself what should "executable" means to
+a directory, it is a right to change into it. So a directory could
+either belong to mpd user or belong to the audio group or be readable
+for all (others). Directories and files beneath it should be accessable
+the same way. Some examples for right permissions:
+
+ls -l -d /mnt/mp3
+
+readable by everyone
+drwxr-xr-x  226 user    users       16384 Mar 24 23:36 /mnt/mp3
+
+readable by audio group
+drwxr-x---  226 user    audio       16384 Mar 24 23:36 /mnt/mp3
+
+readable by mpd user
+drwx------  226 mpd    audio       16384 Mar 24 23:36 /mnt/mp3
+
+If you would like to set up some independent directories, declare one
+of it as music_directory and link others in it. Permissions for other
+directories are to be set accordingly. 
+
+MPD will be bounded to the local address (localhost): If you would
+like to control it over network , then change bind_to_address to the
+network address. You can set password and the list of activities to
+restrict control of MPD over network.
+
+To start MPD at boot time, call as root:
+
+systemctl enable mpd
+
+If filenames or directory names don't display correctly, set the
+character set (encoding) for the filesystem in mpd.conf.

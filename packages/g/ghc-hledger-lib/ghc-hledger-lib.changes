@@ -1,0 +1,568 @@
+-------------------------------------------------------------------
+Mon Jan  1 01:43:50 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.32.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.32.2/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Dec 14 19:04:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.32.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Dec  7 21:25:06 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.32.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.32.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Dec  2 05:12:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.32.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.32/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Sep  3 08:16:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.31.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.31/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Jul  1 17:09:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.28 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Dec  1 17:16:27 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.28.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.28/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Sep 18 19:41:48 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.27.1.
+  Upstream has not updated the file "CHANGES.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Fri Sep  2 01:32:51 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.27.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.27/src/CHANGES.md
+
+-------------------------------------------------------------------
+Mon Jul 11 09:36:20 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.26.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.26.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Jun  4 22:57:25 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.26.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.26/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sat Mar  5 06:11:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.25.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.25/src/CHANGES.md
+
+-------------------------------------------------------------------
+Fri Dec 10 22:54:45 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update hledger-lib to version 1.24.99.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.24.99/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Oct  7 07:57:05 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.23 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Sep 22 08:51:26 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.23.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.23/src/CHANGES.md
+
+-------------------------------------------------------------------
+Tue Sep  7 08:28:49 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase RAM required in _constraints to match the current
+  requirements and avoid OOM errors seen on aarch64
+
+-------------------------------------------------------------------
+Tue Sep  7 03:45:51 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- relax dependency on base-compat-batteries 
+
+-------------------------------------------------------------------
+Sun Aug  8 22:05:02 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.22.2.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.22.2/src/CHANGES.md
+
+-------------------------------------------------------------------
+Wed Aug  4 08:16:06 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.22.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.22.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Mon Jul 19 07:06:12 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.22 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jul 10 13:42:17 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.22.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.22/src/CHANGES.md
+
+-------------------------------------------------------------------
+Thu Mar 11 08:23:02 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.21.
+  # 1.21 2021-03-10
+
+  - Building Hledger.Data.Journal no longer fails if the monad-extras
+    package is installed.
+
+  - Many parts of the hledger-lib and hledger APIs have become more
+    Text-ified, expecting or returning Text instead of String, reducing
+    hledger's time and resident memory requirements by roughly 10%.
+    Some functions now use WideBuilder (a text "builder" which keeps track
+    of width), to concatenate text more efficiently. There are some
+    helpers for converting to and from WideBuilder (wbUnpack, wbToText..)
+    showAmountB/showMixedAmountB are new amount-displaying functions
+    taking an AmountDisplayOpts. These will probably replace the old
+    show(Mixed)Amount* functions. (#1427, Stephen Morgan)
+
+  - AtThen valuation is now implemented for all report types.
+    amountApplyValuation now takes the posting date as an argument.
+    (transaction/posting)ApplyValuation's valuation type and
+    transaction/posting arguments have been reordered like
+    amountApplyValuation's. (Stephen Morgan)
+
+  - Amount, AmountPrice, AmountStyle, DigitGroupStyle fields are now
+    strict. (Stephen Morgan)
+
+  - Amount prices are now stored with their sign, so negative prices can
+    be represented. (They seem to have always worked, but now the
+    internal representation is more accurate.) (Stephen Morgan)
+
+  - normaliseMixedAmount now combines Amounts with TotalPrices in the
+    same commodity. (Stephen Morgan)
+
+  - normaliseMixedAmount now uses a strict Map for combining amounts
+    internally, closing a big space leak. (Stephen Morgan)
+
+  - (multiply|divide)(Mixed)?Amount now also multiply or divide the
+    TotalPrice if it is present, and the old
+    (multiply|divide)(Mixed)?AmountAndPrice functions are removed. (Stephen Morgan)
+
+  - (amount|mixedAmount)(Looks|Is)Zero functions now check whether both
+    the quantity and the cost are zero. This is usually what you want,
+    but if you do only want to check whether the quantity is zero, you
+    can run mixedAmountStripPrices (or similar) before this. (Stephen Morgan)
+
+  - commodityStylesFromAmounts now consumes the list immediately,
+    reducing the maximum heap size per thread from ~850K to ~430K in a
+    real-world register report. (Stephen Morgan)
+
+  - *ApplyValuation functions take two less arguments, and
+    *ApplyCostValuation functions have been added, performing both
+    costing and valuation. (Stephen Morgan)
+
+  - traceAtWith now has a level argument and works properly.
+
+  - API changes include:
+    ```
+    Hledger.Data.Amount:
+     setAmountPrecision -> amountSetPrecision
+     setFullPrecision -> amountSetFullPrecision
+     setMixedAmountPrecision -> mixedAmountSetPrecision
+     showMixed -> showMixedAmountB
+     showMixedLines -> showMixedAmountLinesB
+    -mixedAmountSetFullPrecision
+
+    Hledger.Data.Journal:
+     mapJournalTransactions -> journalMapTransactions
+     mapJournalPostings -> journalMapPostings
+    -mapTransactionPostings
+    +journalPayeesUsed
+    +journalPayeesDeclaredOrUsed
+
+    Hledger.Data.Transaction:
+    +transactionFile
+    +transactionMapPostings
+
+    Hledger.Data.Valuation:
+    -valuationTypeIsCost
+    -valuationTypeIsDefaultValue
+    -ValuationType's AtDefault constructor
+
+    Hledger.Query:
+    +matchesDescription
+    +matchesPayeeWIP
+
+    Hledger.Utils.Text:
+    +textConcatBottomPadded
+    +wbToText
+    +wbUnpack
+
+    Text.Tabular.AsciiWide:
+     alignCell -> textCell
+    ```
+
+-------------------------------------------------------------------
+Sun Jan 31 13:49:33 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.20.4.
+  # 1.20.4 2021-01-29
+
+  - See hledger.
+
+-------------------------------------------------------------------
+Fri Jan 15 08:56:01 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.20.3.
+  # 1.20.3 2021-01-14
+
+  - See hledger.
+
+-------------------------------------------------------------------
+Tue Dec 29 21:16:20 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.20.2.
+  # 1.20.2 2020-12-28
+
+  - Fix the info manuals' node structure.
+
+  - Drop unused parsec dependency.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Dec 16 17:26:09 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.20.1.
+  # 1.20.1 2020-12-15
+
+  - renamed: updateReportSpecFromOpts -> updateReportSpec[With]
+
+-------------------------------------------------------------------
+Sun Dec  6 13:33:45 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.20.
+  # 1.20 2020-12-05
+
+  - added: journalApplyAliases, transactionApplyAliases, postingApplyAliases
+
+  - a new more robust price lookup implementation, fgl library dropped (#1402)
+
+  - Reverted a stripAnsi change in 1.19.1 that caused a 3x slowdown of amount rendering
+    in terminal reports. (#1350)
+
+  - Amount and table rendering has been improved, so that stripAnsi is no longer needed.
+    This speeds up amount rendering in the terminal, speeding up some reports by 10% or more since 1.19.
+    (Stephen Morgan)
+
+  - global commodity display styles can now be set in InputOpts or Journal,
+    overriding all others (declared or inferred). This is used by the import
+    command and probably command-line options in future.
+
+  - Journal keeps a new piece of parsing state, a decimal mark character,
+    which can optionally be set to force the number format expected by all
+    amount parsers.
+
+  - Remove Empty Query constructor, which does nothing and has done so for a very long time. (Stephen Morgan)
+
+  - In ReportOpts, store query terms term-by-term in a list in querystring_. (Stephen Morgan)
+    This helps deal with tricky quoting issues, as we no longer have to make
+    sure everything is quoted properly before merging it into a string.
+
+  - Implement concat(Top|Bottom)Padded in terms of renderRow, allowing them to be width aware. (Stephen Morgan)
+
+  - Expand Tabular.AsciiWide to allow multiline, custom-width,
+    vertically/horizontally-aligned cells, and optional table borders.
+    (Stephen Morgan)
+
+  - Introduce showMixed*Unnormalised, eliminate most direct calls of strWidth. (Stephen Morgan)
+
+  - showMixedAmountElided now makes better use of space, showing as many
+    Amounts possible as long as they and the elision string fit within
+    32 characters. (Stephen Morgan)
+
+  - Add Functor instance for CompoundPeriodicReport. (Stephen Morgan)
+
+  - Generalise CBCSubreportSpec to allow more subreport control. (Stephen Morgan)
+
+  - Export some MultiBalanceReport helper functions. (Stephen Morgan)
+
+  - Make Default instances clearer, remove Default instance for Bool. (Stephen Morgan)
+
+  - Many ReportOpts-related changes, such as the addition of ReportSpec, aimed
+    at preventing runtime errors (from parsing: regexps, dates, format strings;
+    from not having today's date set; etc.)
+    ReportSpec holds a ReportOpts, the day of the report, and the Query generated from these.
+
+  - StringFormat now takes an optional overline width, which is
+    currently only used by defaultBalanceLineFormat. (Stephen Morgan)
+
+  - quoteIfNeeded should not escape the backslashes in unicode code points. (Stephen Morgan)
+
+  - Export OrdPlus and constructors. (Stephen Morgan)
+
+  - Debug output now uses pretty-simple instead pretty-show.
+    This hopefully gives overall nicer debug output (eg in colour),
+    including for values which don't have Read-able Show output.
+    This means that we can start removing custom Show instances
+    that were a workaround for pretty-show. Eg account names
+    in debug output no longer show their colons as underscores.
+
+    Here's some old pretty-show output:
+
+     CsvRules
+       { rdirectives = [ ( "skip" , "1" ) ]
+       , rcsvfieldindexes = [ ( "date" , 1 ) , ( "amount" , 2 ) ]
+       , rassignments = [ ( "amount" , "%2" ) , ( "date" , "%1" ) ]
+       , rconditionalblocks = []
+       }
+
+    And the new pretty-simple output:
+
+     CsvRules
+       { rdirectives=
+         [ ( "skip", "1" ) ]
+       , rcsvfieldindexes=
+         [ ( "date", 1 ), ( "amount", 2 ) ]
+       , rassignments=
+         [ ( "amount", "%2" ), ( "date", "%1" ) ]
+       , rconditionalblocks= []
+       }
+
+    We require pretty-simple 4.0.0.0 to get this compact output.
+    It's a little less compact than pretty-show, but not too bad.
+    Non-compact pretty-simple output would be:
+
+     CsvRules
+         { rdirectives=
+             [
+                 ( "skip"
+                 , "1B"
+                 )
+             ]
+         , rcsvfieldindexes=
+             [
+                 ( "date"
+                 , 1
+                 )
+             ,
+                 ( "amount"
+                 , 2
+                 )
+             ]
+         , rassignments=
+             [
+                 ( "amount"
+                 , "%2"
+                 )
+             ,
+                 ( "date"
+                 , "%1"
+                 )
+             ]
+         , rconditionalblocks=[]
+         }
+
+-------------------------------------------------------------------
+Tue Sep  8 02:00:51 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.19.1.
+  # 1.19.1 2020-09-07
+
+  - Allow megaparsec 9
+
+  - stripAnsi: correctly strip ansi sequences with no
+    numbers/semicolons. (Stephen Morgan)
+
+  - Added case-insensitive accountNameToAccountRegexCI,
+    accountNameToAccountOnlyRegexCI, made the default account type
+    queries case insensitive again. (#1341)
+
+-------------------------------------------------------------------
+Thu Sep  3 02:00:42 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.19.
+  # 1.19 2020-09-01
+
+  - Added a missing lower bound for aeson, making cabal installs more
+    reliable. (#1268)
+
+  - The Regex type alias has been replaced by the Regexp ADT, which
+    contains both the compiled regular expression (so is guaranteed to
+    be usable at runtime) and the original string (so can be serialised,
+    printed, compared, etc.) A Regexp also knows whether is it case
+    sensitive or case insensitive. The Hledger.Utils.Regex API has
+    changed. (#1312, #1330).
+
+  - Typeable and Data instances are no longer derived for hledger's
+    data types; they were redundant/no longer needed.
+
+  - NFData instances are no longer derived for hledger's data types.
+    This speeds up a full build by roughly 7%. But it means we can't
+    deep-evaluate hledger values, or time hledger code with Criterion.
+    https://github.com/simonmichael/hledger/pull/1330#issuecomment-684075129
+    has some ideas on this.
+
+  - Query no longer has a custom Show instance
+
+  - Hledger.Utils.String: quoteIfNeeded now actually escapes quotes in
+    strings. escapeQuotes was dropped. (Stephen Morgan)
+
+  - Hledger.Utils.Tree: dropped some old utilities
+
+  - Some fromIntegral calls have been replaced with safer code, removing
+    some potential for integer wrapping bugs (#1325, #1326)
+
+  - Parsing numbers with more than 255 decimal places now gives an error
+    instead of silently misparsing (#1326)
+
+  - Digit groups are now limited to at most 255 digits each. (#1326)
+
+  - Exponents are parsed as Integer rather than Int.
+    This means exponents greater than 9223372036854775807 or less than
+    -9223372036854775808 are now parsed correctly, in theory. (In
+    practice, very large exponents will cause hledger to eat all your
+    memory, so avoid them for now.) (#1326)
+
+  - AmountStyle's asprecision is now a sum type with Word8, instead of
+    an Int with magic values.
+
+  - DigitGroupStyle uses Word8 instead of Int.
+
+  - Partial helper function parsedate has been dropped, use fromGregorian instead.
+
+  - Partial helper function mkdatespan has been dropped.
+
+  - Helper function transaction now takes a Day instead of a date string. (Stephen Morgan)
+
+  - Old CPP directives made redundant by version bounds have been
+    removed. (Stephen Morgan)
+
+  - Smart dates are now represented by the SmartDate type, and are
+    always well formed. (Stephen Morgan)
+
+  - accountTransactionsReport (used for hledger aregister and
+    hledger-ui/hledger-web registers) now filters transactions more
+    thoroughly, so eg transactions dated outside the report period will
+    not be shown. Previously the transaction would be shown if it had
+    any posting dated inside the report period. Possibly some other
+    filter criteria now get applied that didn't before. I think on
+    balance this will give slightly preferable results.
+
+  - The old BalanceReport code has been dropped at last, replaced by
+    MultiBalanceReport so that all balance reports now use the same
+    code. (Stephen Morgan, #1256).
+
+    - The large multiBalanceReport function has been split up and refactored
+      extensively.
+    - Tabular data formerly represented as [[MixedAmount]] is now HashMap
+      AccountName (Map DateSpan Account). Reports with many columns are now faster.
+    - Calculating starting balances no longer calls the whole balanceReport,
+      just the first few functions.
+    - displayedAccounts is completely rewritten. Perhaps one subtle thing to
+      note is that in tree mode it no longer excludes nodes with zero inclusive
+      balance unless they also have zero exclusive balance.
+    - Simon's note: "I'll mark the passing of the old multiBalanceReport, into
+      which I poured many an hour :). It is in a way the heart (brain ?) of
+      hledger - the key feature of ledgerlikes (balance report) and a key
+      improvement introduced by hledger (tabular multiperiod balance reports)
+      ...
+      Thanks @Xitian9, great work."
+
+-------------------------------------------------------------------
+Mon Aug 31 09:34:31 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.18.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:45:01 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Thu Jul 23 12:41:08 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints default 4GB disk space
+
+-------------------------------------------------------------------
+Mon Jun 22 02:00:23 UTC 2020 - psimons@suse.com
+
+- Update hledger-lib to version 1.18.1.
+  # 1.18.1 2020-06-21
+
+  - fix some doc typos (Martin Michlmayr)
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:37 UTC 2020 - psimons@suse.com
+
+- Add hledger-lib at version 1.18.
+

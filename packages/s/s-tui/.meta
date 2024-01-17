@@ -1,0 +1,9 @@
+<package name="s-tui" project="openSUSE:Factory">
+  <title>Terminal based CPU stress and monitoring utility</title>
+  <description>Terminal UI for monitoring your computer to monitor CPU temperature, frequency,
+power and utilization in a graphical way from the terminal.
+
+</description>
+  <devel project="server:monitoring" package="s-tui"/>
+  <url>https://github.com/amanusk/s-tui</url>
+</package>

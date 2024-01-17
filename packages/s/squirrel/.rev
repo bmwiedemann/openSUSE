@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dcd74965362f6152df1369fc5ddd4dc4</srcmd5>
+    <version>3.0</version>
+    <time>1321460505</time>
+    <user>coolo</user>
+    <comment>New package for factory</comment>
+    <requestid>91621</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7a3dcce93cc8ee4a2aae8cb73da6d007</srcmd5>
+    <version>3.0</version>
+    <time>1323705554</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>96119</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d3d197a71cad558b985c0c39f1dd5136</srcmd5>
+    <version>3.0</version>
+    <time>1332752894</time>
+    <user>coolo</user>
+    <comment>Fix build with gcc 4.7 - Please work with upstream to resolve it in upstream code base. There is also a chance that a newer version of the package might have this fixed already. (forwarded request 110954 from dimstar)</comment>
+    <requestid>110963</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7324cc61f1786a134c2f1c3969a0b8e5</srcmd5>
+    <version>3.0.2</version>
+    <time>1336452524</time>
+    <user>coolo</user>
+    <comment>update to version 3.0.2 (forwarded request 116216 from worldcitizen)</comment>
+    <requestid>116220</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7324cc61f1786a134c2f1c3969a0b8e5</srcmd5>
+    <version>3.0.2</version>
+    <time>1340184236</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>7324cc61f1786a134c2f1c3969a0b8e5</srcmd5>
+    <version>3.0.2</version>
+    <time>1359110433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>f87004deaffc57a86e2006372e4218b7</srcmd5>
+    <version>3.0.2</version>
+    <time>1374756553</time>
+    <user>coolo</user>
+    <comment>- the dirname macro is something special in rpm 4.11, so rename
+  the macro to fix build</comment>
+    <requestid>184199</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>f87004deaffc57a86e2006372e4218b7</srcmd5>
+    <version>3.0.2</version>
+    <time>1379664726</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>f87004deaffc57a86e2006372e4218b7</srcmd5>
+    <version>3.0.2</version>
+    <time>1409303409</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d57def877664da90c8da02f442b6fb53</srcmd5>
+    <version>3.0.7</version>
+    <time>1427736772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.7
+  * newthread and sq_newthread() no longer resets the base lib 
+    function in the root table
+  * exceptions in the _inherited metamethod are propagated
+  * 'in' operator performance improvement
+  * fixed bug in print()
+  * fixed some documentation bug
+- Use download Url as source
+- Update patches;
+  * squirrel-gcc47.patch 
+  * squirrel-ptr_conversion.patch</comment>
+    <requestid>293406</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>28c53116b17e26340a64b47b2706af99</srcmd5>
+    <version>3.0.7</version>
+    <time>1570010294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734099</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>bd03c67ac7755fc3c099a3093e91183c</srcmd5>
+    <version>3.0.7</version>
+    <time>1572278347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743441</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a52b1a28a9642634612416c9c715373d</srcmd5>
+    <version>3.2</version>
+    <time>1673650998</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2 (bsc#1201974, CVE-2021-41556):
+  * added new inline bind env syntax for closures
+  * added sq_tailcall
+  * added rawcall keyword
+  * added post call initializer syntax
+  * added table.keys() and table.values()
+  * added table.filter()
+  * added skipempty in split()
+  * additional parameters in array.map() and array.apply()
+  * additional optional initializer in array.reduce()
+  * added sqstd_pushstringf and sqstd_throwerrorf
+  * closure.call() is now a &quot;native tailcall&quot; and the invoked function can now be suspended
+  * fixed sq_newmember and sq_rawnewmember properly pop parameters
+  * fixed capturing free variable on for loop counter before a break statement
+  * fixed \u in lexer
+  * various bugfixes
+  * sq_gettypetag doesn't set last error(it's treated as SQBool function but keeps a SQRESULT for backward compatibility)
+  * fixed _set method in userdata delegates
+  * fixed some warnings 
+- drop squirrel-aliasing.patch, squirrel-ptr_conversion.patch (upstream)</comment>
+    <requestid>1058212</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>509952e4f18ac6d5a1d44ccd64732f84</srcmd5>
+    <version>3.2</version>
+    <time>1679520684</time>
+    <user>dimstar_suse</user>
+    <comment>- spec file changes:
+  * drop static library because everything that needs maintenance
+    patch is then vulnerable without rebuild (see bug that was just patched)
+  * drop Group since it was wrong anyway
+  * move runtime library to its won subpackage from executable
+  * switch to cmake
+  * update sover ourselves since upstream doesn't do this and
+    seems to break ABI between versions.
+- c++11.patch: drop C++11 standard in favour of latest
+- sover.patch: patch to update sover on version updates, generated
+  from sover.patch.in during setup
+- squirrel-gcc47.patch: dropped, fixed upstream
+- squirrel-autoconfiscate.patch: dropped, obsolete
+- squirrel-rename_binary.patch: dropped, obsolete
+- squirrel-config.cmake.in: add missing file
+- squirrel.rpmlintrc: ignore EOL warnings in doc files</comment>
+    <requestid>1073749</requestid>
+  </revision>
+</revisionlist>

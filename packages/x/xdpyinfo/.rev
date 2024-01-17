@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf681560e0e5e70a9570d8b2aa3560ab</srcmd5>
+    <version>1.3.0</version>
+    <time>1336471271</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115409</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bf681560e0e5e70a9570d8b2aa3560ab</srcmd5>
+    <version>1.3.0</version>
+    <time>1340184342</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>bf681560e0e5e70a9570d8b2aa3560ab</srcmd5>
+    <version>1.3.0</version>
+    <time>1359110603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d57d11f2644c4f0bc5c6e7be73d4ec57</srcmd5>
+    <version>1.3.1</version>
+    <time>1372138699</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.3.1 (forwarded request 180678 from Zaitor)</comment>
+    <requestid>180709</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d57d11f2644c4f0bc5c6e7be73d4ec57</srcmd5>
+    <version>1.3.1</version>
+    <time>1379665011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>d57d11f2644c4f0bc5c6e7be73d4ec57</srcmd5>
+    <version>1.3.1</version>
+    <time>1409303694</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59f3bd941edc951c027bb80d99f4958a</srcmd5>
+    <version>1.3.2</version>
+    <time>1430132337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.2:
+  * Print which option was in error along with usage message
+  * Sprinkle consts in StrCmp to quiet cast warnings
+  * config: Add missing AC_CONFIG_SRCDIR
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Mark required arguments to Xlib error handler as unused
+  * Delete unused NULLSTR macro</comment>
+    <requestid>303661</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>95529c30d95363dc239d6b4649f624f4</srcmd5>
+    <version>1.3.2</version>
+    <time>1561882487</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer require legacy extension xf86miscproto; no longer
+  provided by xorgproto-2019.1 by default</comment>
+    <requestid>711691</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a87ca2863c5ef8bca13804665adc42fc</srcmd5>
+    <version>1.3.3</version>
+    <time>1649610309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.3:
+  * This release includes a pair of changes to align with the
+    xserver-21.x release series - it prints the version without
+    the leading &quot;1.&quot; for 21.x xservers, and it changes the default
+    for building DMX support from --with-dmx to --without-dmx as
+    DMX is no longer included in the 21.x xservers.
+    (The DMX support in xdpyinfo is not removed in this release,
+     and can be enabled at build time with the --with-dmx flag to
+     configure, but may be fully removed in a future release of
+     xdpyinfo.)</comment>
+    <requestid>967736</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e55f91b7954df23f698a3a44ac816cf</srcmd5>
+    <version>1.3.4</version>
+    <time>1682782063</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.4
+  * This release stops compiling support for the XF86-Misc extension by
+    default, and thus stops linking with the deprecated libXxf86misc
+    library by default.  This support can still be enabled for now by
+    passing --with-xf86misc to the configure script, but as the server
+    side of this extension was removed in the xserver-1.6.0 release in 2008
+    there is little reason to do so, and the support may be removed entirely
+    in a future release of xdpyinfo.
+- we have xorg-server &gt;= 1.6 since sle11-sp1, so we are on the safe
+  side with our customers</comment>
+    <requestid>1083414</requestid>
+  </revision>
+</revisionlist>

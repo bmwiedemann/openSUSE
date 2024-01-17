@@ -1,0 +1,8 @@
+<package name="global" project="openSUSE:Factory">
+  <title>Common source code tag system</title>
+  <description>GLOBAL is a common source code tag system for C, C++, Yacc, and Java.
+You can locate the specified function in source files and move there
+easily. It is useful to hack a large project containing many
+subdirectories or many main() functions like MH, X, or Linux kernel.</description>
+  <devel project="devel:tools" package="global"/>
+</package>

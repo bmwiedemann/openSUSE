@@ -1,0 +1,15 @@
+From: Matthias Bach <marix@marix.org>
+Date: 2018-10-17 21:18:00 +0200
+Subject: Adjust shebangs to directly invoke Python3 instead of via env
+Upstream: never
+
+diff --git a/piper.in b/piper.in
+index af4b1fa..24db3a3 100755
+--- a/piper.in
++++ b/piper.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ import gi
+ import os

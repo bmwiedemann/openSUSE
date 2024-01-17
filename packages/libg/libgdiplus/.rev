@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20a18ce29978755ce62e2490c59dfd3e</srcmd5>
+    <version>3.12</version>
+    <time>1442638410</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>330065</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8c311f97fcae7bbbf8cb018d662e6739</srcmd5>
+    <version>3.12</version>
+    <time>1553262893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687009</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c6b4ee6d4444d98646910c12c0c2d7d4</srcmd5>
+    <version>6.0.4</version>
+    <time>1598167150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0.4
+  * No changelog upstream.
+- Drop libgdiplus-giflib5.patch, upstreamed
+- Drop libgdiplus-libjpeg_prefix.patch, upstreamed
+- Disable tests for now, some newly introduced tests
+  didn't run at all</comment>
+    <requestid>827595</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c13f02dee273698e90cdd336fc8a2073</srcmd5>
+    <version>6.0.5</version>
+    <time>1610965563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862693</requestid>
+  </revision>
+</revisionlist>

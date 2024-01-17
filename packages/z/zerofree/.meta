@@ -1,0 +1,7 @@
+<package name="zerofree" project="openSUSE:Factory">
+  <title>zerofree</title>
+  <description>zerofree is a utility for ext2 filesystems that will scan the
+list of free blocks in a filesystem and fill with zeroes
+any blocks that do not already contain zeroes.</description>
+  <devel project="Virtualization" package="zerofree"/>
+</package>

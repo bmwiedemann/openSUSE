@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue May 24 00:18:51 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Run "osc service runall format_spec_file".
+
+-------------------------------------------------------------------
+Mon May 23 21:04:16 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Simplify %files section.
+
+-------------------------------------------------------------------
+Wed Nov 10 23:06:49 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Create package with rbenv-bundle-exec version 1.0.0.

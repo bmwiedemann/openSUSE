@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2cf97a8e393d4930494f1f9e37262ee</srcmd5>
+    <version>0.1.3</version>
+    <time>1633365622</time>
+    <user>dimstar_suse</user>
+    <comment>Interesting plugin for python-lsp.</comment>
+    <requestid>922964</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2fe714405c7defdf6713c314af8c778a</srcmd5>
+    <version>0.1.4</version>
+    <time>1633466040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.4:
+  - Add method to method object refactoring
+  - Supress all exceptions when determining codeActions
+</comment>
+    <requestid>923245</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45ea85bd0d34a85b66544f689788298b</srcmd5>
+    <version>0.1.6</version>
+    <time>1634068294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.6:
+  - Fixed issue with missing typing-extensions dependency
+  - Add use functions refactoring
+  - Internal rewrites
+  - Add type annotation for many things
+  - Improve error handling during executeCommand()
+</comment>
+    <requestid>924932</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d4ad65c0d2da4084f5d1feeb020fcb98</srcmd5>
+    <version>0.1.7</version>
+    <time>1637701848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.7:
+  - pylsp-rope now work on unsaved buffers. This support is
+    currently experimental.
+  - New Refactoring:
+    - Implement local to field refactoring
+    - Implement organize import code action
+</comment>
+    <requestid>933307</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f6322a83afa04deaf5a1782e4213472</srcmd5>
+    <version>0.1.8</version>
+    <time>1640468500</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>942470</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>74ad029e2c0b5c5157f1f7752a052aa4</srcmd5>
+    <version>0.1.9</version>
+    <time>1659470974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.9:
+  - Implement introduce parameter refactoring
+</comment>
+    <requestid>990106</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>889d016047fde4032c3fb75b88b34ab3</srcmd5>
+    <version>0.1.10</version>
+    <time>1665034903</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008122</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>78631bc0fa1e5eccd211dc8268086d94</srcmd5>
+    <version>0.1.11</version>
+    <time>1673973324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.11:
+  - Move codeAction Command* to pylsp_rope.refactoring
+  - Implement generate.{GenerateVariable(),GenerateClass(),get_code_actions(),GenerateFunction()}.
+</comment>
+    <requestid>1058819</requestid>
+  </revision>
+</revisionlist>

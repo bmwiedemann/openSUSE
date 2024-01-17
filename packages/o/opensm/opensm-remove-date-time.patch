@@ -1,0 +1,13 @@
+diff --git opensm/osm_console.c opensm/osm_console.c
+index 0f68afe0..f1892e2d 100644
+--- opensm/osm_console.c
++++ opensm/osm_console.c
+@@ -1647,7 +1647,7 @@ static void help_version(FILE * out, int detail)
+ 
+ static void version_parse(char **p_last, osm_opensm_t * p_osm, FILE * out)
+ {
+-	fprintf(out, "%s build %s %s\n", p_osm->osm_version, __DATE__, __TIME__);
++	fprintf(out, "%s build\n", p_osm->osm_version);
+ }
+ 
+ /* more parse routines go here */

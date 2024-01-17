@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Thu Sep 28 14:12:34 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.5.1
+  - Fix an issue where the headerbar is overly large
+- update to 0.5.0
+  - Helvum has been ported to libadwaita, and now requires libadwaita >= 1.3 to
+    build.
+  - The graph UI has been redesigned to fit the libadwaita style and to improve
+    usability and looks. Nodes now have a background, ports are split into a
+    label and a round handle, and more minor changes.
+  - Ports are now added and removed more reliably from nodes, and are sorted by
+    name.
+  - An "About" window has been added, and can be opened using the new primary
+    menu, opened by a button in the headerbar.
+  - The application no longer enters an unusable state if the app can't connect
+    to the pipewire server, or loses connection. Instead, the app will attempt
+    to reconnect on an interval, and display a banner in the UI to notify the
+    user that the app is not connected.
+- started using cargo-packaging
+
+-------------------------------------------------------------------
+Mon Aug 21 15:01:19 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.4.1
+  - Nodes are now allocated their proper size when the graph is zoomed, so that
+    they do not become smaller when the graph is zoomed in.
+  - When dragging a port to create a link, a link is now drawn from the port to
+    the cursor position to visualize the linking process. If hovering over a
+    compatible port, the link snaps to that port.
+  - Multiple internal improvements.
+
+-------------------------------------------------------------------
+Mon Feb 13 08:21:08 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.4.0
+  - Improvements
+    - The graphview no longer renders content outside the visible area and uses
+      less CPU drawing, which should improve performance greatly.
+    - The graphview can now be zoomed. Zooming is possible via
+      two-finger-gesture, CTRL+Scrolling, and a zoom widget in the header bar.
+    - The graphview now has a fixed size, and the view is initially centered in
+      middle.
+    - Labels on nodes and ports now may use multiple lines when too long, and
+      very long labels will be ellipsized. A new tooltip is displayed when
+      hovering a label, which displays the full name and is never ellipsized.
+    - The label for a node now prefers displaying the node.description property
+      over the node.nick property of a pipewire node, which is usually more
+      human-readable and helpful, and also matches the behaviour of other tools.
+  - Fixes
+    - Helvum should build again with pipewire versions 0.3.64 and 0.3.65 due to
+      an updated pipewire dependency.
+
+-------------------------------------------------------------------
+Wed Feb  2 13:04:21 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.3.4
+  - Update glib dependency, which fixes a SIGSEGV when using glib as a log
+    backend and the output is being captured by systemd.
+
+-------------------------------------------------------------------
+Fri Jan 28 21:03:21 UTC 2022 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.3.3
+  - An appstream metadata file was added and is installed to the metainfo directory
+  - gtk4-update-icon-cache instead of the gtk3 variant is used during post-install
+  - The application id was changed to `org.pipewire.Helvum`
+  - Bash build scripts were removed and their work is done directly via meson instead
+  - The upstream URL has changed to https://gitlab.freedesktop.org/pipewire/helvum
+
+-------------------------------------------------------------------
+Mon Dec  6 13:21:03 UTC 2021 - William Franco Abdul Hai <haiwilliam0@gmail.com>
+
+- Fixes:
+  - Changed location of hicolor folder to properly display app icon.
+
+-------------------------------------------------------------------
+Tue Nov 30 20:19:59 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.3.2
+  - Changes:
+    - Links where the endpoint is left of the start point and on the same height
+      now have a slight vertical component in their curve so they don't appear
+      as a single line
+    - Links now use a gray instead of black color for better constrast
+  - Fixes:
+    - Build scripts now use bash instead of sh, as they were already using bash
+      features before, which could lead to problems where sh is not a symlink to
+      bash
+  - Also, from now on, releases will have a source tarball with vendored cargo
+    dependencies attached, so that releases can be built offline easier.
+
+-------------------------------------------------------------------
+Fri Oct 01 18:45:37 UTC 2021 - adam@mizerski.pl
+
+- Update to version 0.3.1:
+  - Add meson as new primary buildsystem
+  - Add application icon and symbolic icon
+  - Add .desktop file 
+
+-------------------------------------------------------------------
+Sun Aug 08 15:58:47 UTC 2021 - adam@mizerski.pl
+
+- Update to version 0.3.0:
+  - Improvements
+    - Links that are currently inactive are drawn using a dashed line
+    - New nodes are positioned with some spacing to the window border
+    - Links can now be created by dragging a port to another in both directions
+  - Fixes
+    - The build no longer fails with pipewire >= 0.3.32
+
+-------------------------------------------------------------------
+Mon Jun 14 07:17:53 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- new package; version 0.2.1

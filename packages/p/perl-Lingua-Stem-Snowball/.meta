@@ -1,0 +1,9 @@
+<package name="perl-Lingua-Stem-Snowball" project="openSUSE:Factory">
+  <title>Perl interface to Snowball stemmers</title>
+  <description>Stemming reduces related words to a common root form -- for instance,
+&quot;horse&quot;, &quot;horses&quot;, and &quot;horsing&quot; all become &quot;hors&quot;. Most commonly, stemming
+is deployed as part of a search application, allowing searches for a given
+term to match documents which contain other forms of that term.</description>
+  <devel project="devel:languages:perl" package="perl-Lingua-Stem-Snowball"/>
+  <url>http://search.cpan.org/perldoc?Lingua::Stem::Snowball</url>
+</package>

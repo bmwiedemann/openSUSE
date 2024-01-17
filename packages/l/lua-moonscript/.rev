@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbe9eebc1efa1134677cde52c5b241d8</srcmd5>
+    <version>0.5.0</version>
+    <time>1586368508</time>
+    <user>dimstar_suse</user>
+    <comment>Initial effort to package the module.</comment>
+    <requestid>792024</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b312fe163379978e1a53087ba4c7409c</srcmd5>
+    <version>0.5.0</version>
+    <time>1594817797</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819793</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5f2c844012211babb2ea15681f8cbfb8</srcmd5>
+    <version>0.5.0</version>
+    <time>1613677327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873523</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0380f357ddad23acf20eadbf511eb08b</srcmd5>
+    <version>0.5.0</version>
+    <time>1669289033</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037554 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1037598</requestid>
+  </revision>
+</revisionlist>

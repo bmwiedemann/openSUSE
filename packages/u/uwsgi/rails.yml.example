@@ -1,0 +1,10 @@
+uwsgi:
+    plugins: rack
+    rack: config.ru
+    master: 1
+    autoload: 1
+    processes: 8
+    socket: 127.0.0.1:3033
+    post-buffering: 4096
+    chdir: /srv/railsapp001
+

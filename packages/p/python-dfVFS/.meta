@@ -1,0 +1,9 @@
+<package name="python-dfVFS" project="openSUSE:Factory">
+  <title>Digital Forensics Virtual File System</title>
+  <description>dfVFS, or Digital Forensics Virtual File System, provides read-only access to file-system objects from various storage media types and file formats. The goal of dfVFS is to provide a generic interface for accessing file-system objects, for which it uses several back-ends that provide the actual implementation of the various storage media types, volume systems and file systems.
+
+dfVFS originates from the Plaso project and is also based on ideas from the GRR project. It was largely rewritten and made into a stand-alone project to provide more flexibility and allow other projects to make use of the VFS functionality. dfVFS originally was named PyVFS, but that name conflicted with another project.
+
+dfVFS is currently implemented as a Python module.</description>
+  <devel project="security:forensics" package="python-dfVFS"/>
+</package>

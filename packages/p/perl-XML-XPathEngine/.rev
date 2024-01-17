@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b13168c716a697d12f431e9a87e0ac9e</srcmd5>
+    <version>0.12</version>
+    <time>1302605688</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66785 from user babelworx
+</comment>
+    <requestid>66785</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d2061023dc82debab6d6d37a67695ada</srcmd5>
+    <version>0.12</version>
+    <time>1302605699</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66785
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>d2061023dc82debab6d6d37a67695ada</srcmd5>
+    <version>0.12</version>
+    <time>1319182324</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4cf2ec4c32175340e78d99a2b4ef1668</srcmd5>
+    <version>0.13</version>
+    <time>1321876259</time>
+    <user>coolo</user>
+    <comment>- update to 0.13
+    error, with (hopefully!) proper error message when trying to
+    follow XML axes from a litteral, see 
+      http://stackoverflow.com/questions/7761509/xpath-expression-to-access-parent-or-sibling-using-htmltreebuilderxpath-modul</comment>
+    <requestid>92381</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a3080b6a2b85942e4e7f608b5c8fa8ce</srcmd5>
+    <version>0.13</version>
+    <time>1323193800</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>a3080b6a2b85942e4e7f608b5c8fa8ce</srcmd5>
+    <version>0.13</version>
+    <time>1340183957</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>a3080b6a2b85942e4e7f608b5c8fa8ce</srcmd5>
+    <version>0.13</version>
+    <time>1359109857</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>afca54b96bd4eca7b755e9187398b452</srcmd5>
+    <version>0.14</version>
+    <time>1370523993</time>
+    <user>coolo</user>
+    <comment>- updated to 0.14
+   fixed   POD error (forwarded request 177557 from coolo)</comment>
+    <requestid>177565</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>afca54b96bd4eca7b755e9187398b452</srcmd5>
+    <version>0.14</version>
+    <time>1379663928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>afca54b96bd4eca7b755e9187398b452</srcmd5>
+    <version>0.14</version>
+    <time>1409302579</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

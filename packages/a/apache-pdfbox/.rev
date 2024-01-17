@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d0f3a57905695836813d22d3b236079</srcmd5>
+    <version>1.8.11</version>
+    <time>1459002157</time>
+    <user>dimstar_suse</user>
+    <comment>Main purpose of this SR is to get xmlgraphics-fop 2.1, which depends on this, into factory.
+
+The Apache PDFBox library is an open source Java tool for working with PDF documents.
+This project allows creation of new PDF documents, manipulation of existing documents
+and the ability to extract content from documents.
+Apache PDFBox also includes several command line utilities.
+
+Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.</comment>
+    <requestid>368361</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8fcc66d63053a9b4ae663da9729f566</srcmd5>
+    <version>1.8.12</version>
+    <time>1466326189</time>
+    <user>dimstar_suse</user>
+    <comment>Didn't change much except for the version number, but an update is an update.</comment>
+    <requestid>402708</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5ab4a6df48eca1a227cf6df3e917123c</srcmd5>
+    <version>1.8.12</version>
+    <time>1489345304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477244</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>354300e007030e2b2dc64309cd85a81c</srcmd5>
+    <version>1.8.12</version>
+    <time>1492011112</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>481799</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>c23a3c8951037d8e55f8fbcbdaaa8a37</srcmd5>
+    <version>1.8.12</version>
+    <time>1495442829</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496576</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>e29eddad8f5a1fb7146eed6dbe2da813</srcmd5>
+    <version>1.8.12</version>
+    <time>1505507490</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>526277</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>7b0454561990bd62952f013a9495d112</srcmd5>
+    <version>1.8.12</version>
+    <time>1508197868</time>
+    <user>dimstar_suse</user>
+    <comment>Condition correctly the maven defines</comment>
+    <requestid>533050</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>89534c2c414f88844942ab83fd4e525b</srcmd5>
+    <version>1.8.15</version>
+    <time>1530993391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620189</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3612dc5fa36afdae869bc575066c0832</srcmd5>
+    <version>1.8.16</version>
+    <time>1539590772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640544</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>29af0db1aa7aec37b31f497746e2149c</srcmd5>
+    <version>2.0.19</version>
+    <time>1591652644</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.19 (will need change in xmlgraphics-fop)</comment>
+    <requestid>811300</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7010e0b3ca111c18894a3059d7f4fbea</srcmd5>
+    <version>2.0.22</version>
+    <time>1610123554</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860184</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c6f41bd65c5c65e3161ab1d734e9962d</srcmd5>
+    <version>2.0.23</version>
+    <time>1619107395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885319</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>302c119c981338d8cff3fdfba93de726</srcmd5>
+    <version>2.0.23</version>
+    <time>1646487815</time>
+    <user>dimstar_suse</user>
+    <comment>Missing some packaged resources</comment>
+    <requestid>958716</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>53cf698bb62a66d20f01379b8d4fee1e</srcmd5>
+    <version>2.0.23</version>
+    <time>1648479546</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>962931</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>82fcb7cfb76a5a97205b1f4e4312be36</srcmd5>
+    <version>2.0.23</version>
+    <time>1651272263</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with bouncycastle 1.71</comment>
+    <requestid>973709</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>117b854a955b376d6a6a9ac9b9acf21a</srcmd5>
+    <version>2.0.28</version>
+    <time>1682691746</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.28</comment>
+    <requestid>1083170</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55a45d2982eb65fb6edebafd791e70e8</srcmd5>
+    <version>2.0.29</version>
+    <time>1691594649</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.29</comment>
+    <requestid>1102898</requestid>
+  </revision>
+</revisionlist>

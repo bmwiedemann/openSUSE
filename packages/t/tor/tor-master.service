@@ -1,0 +1,16 @@
+# Use tor-master.service to restart/reload/stop the main tor.service and
+# all instances of tor@.service that are running.
+#
+# systemd targets cannot be reloaded so this is a service instead.
+
+[Unit]
+Description=Anonymizing overlay network for TCP (multi-instance master)
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+ExecReload=/bin/true
+
+[Install]
+WantedBy=multi-user.target

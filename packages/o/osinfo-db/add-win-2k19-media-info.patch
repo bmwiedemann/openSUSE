@@ -1,0 +1,27 @@
+Index: osinfo-db-20231215/os/microsoft.com/win-2k19.xml
+===================================================================
+--- osinfo-db-20231215.orig/os/microsoft.com/win-2k19.xml
++++ osinfo-db-20231215/os/microsoft.com/win-2k19.xml
+@@ -38,6 +38,22 @@
+     <upgrades id="http://microsoft.com/win/2k16"/>
+     <release-date>2018-11-13</release-date>
+     <eol-date>2029-01-09</eol-date>
++    <media arch="x86_64">
++      <variant id="standard"/>
++      <iso>
++        <volume-id>^(SSS_X64FRE?)_</volume-id>
++        <publisher-id>MICROSOFT CORPORATION</publisher-id>
++        <l10n-language regex="true" l10n-language-map="http://microsoft.com/win/7/l10n-language">[A-Z0-9]*_([A-Z]*)</l10n-language>
++      </iso>
++    </media>
++    <media arch="x86_64">
++      <variant id="datacenter"/>
++      <iso>
++        <volume-id>^(SSS_X64FRE?)_</volume-id>
++        <publisher-id>MICROSOFT CORPORATION</publisher-id>
++        <l10n-language regex="true" l10n-language-map="http://microsoft.com/win/7/l10n-language">[A-Z0-9]*_([A-Z]*)</l10n-language>
++      </iso>
++    </media>
+     <variant id="essentials">
+       <name>Windows Server 2019 Essentials</name>
+       <name xml:lang="zh_Hans">Windows Server 2019 Essentials</name>

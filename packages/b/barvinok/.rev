@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b357774d1d00a582e082b3b65ed2b167</srcmd5>
+    <version>0.41.3</version>
+    <time>1601398859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834934</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>93f70827e72646ac6d0da5ebfec104ba</srcmd5>
+    <version>0.41.4</version>
+    <time>1609147823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.41.4</comment>
+    <requestid>858480</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fcf6be16331304e9915f3d4d783ab19f</srcmd5>
+    <version>0.41.5</version>
+    <time>1650548605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.41.5</comment>
+    <requestid>971368</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8adec0ace7dff2c326acabd2b0e1a22</srcmd5>
+    <version>0.41.6</version>
+    <time>1659106105</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 0.41.6</comment>
+    <requestid>991700</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>73e326315a302d12a58dff10fb82af59</srcmd5>
+    <version>0.41.7</version>
+    <time>1687722121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.41.7</comment>
+    <requestid>1095075</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6645d95d787cd89221bfa5330d6a31d6</srcmd5>
+    <version>1.12</version>
+    <time>1329221284</time>
+    <user>coolo</user>
+    <comment>one more perl module</comment>
+    <requestid>103774</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6645d95d787cd89221bfa5330d6a31d6</srcmd5>
+    <version>1.12</version>
+    <time>1340183803</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>6645d95d787cd89221bfa5330d6a31d6</srcmd5>
+    <version>1.12</version>
+    <time>1359109611</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>266a461c589588d4359c139ba806e30f</srcmd5>
+    <version>1.14</version>
+    <time>1370524225</time>
+    <user>coolo</user>
+    <comment>- updated to 1.14
+       [ENHANCEMENTS]
+       Added assert_undefined() for Ben Hengst.
+       Added assert_unlike().
+       [FIXES]
+       assert_nonblank() wasn't using the correct message.  Thanks to
+       Leland Johnson.
+       assert_nonempty() wouldn't work on blessed arrays and refs.
+       Now it will. (forwarded request 177625 from coolo)</comment>
+    <requestid>177658</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>266a461c589588d4359c139ba806e30f</srcmd5>
+    <version>1.14</version>
+    <time>1379663574</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>266a461c589588d4359c139ba806e30f</srcmd5>
+    <version>1.14</version>
+    <time>1409302188</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1522d8a779218699d402562237f6fb88</srcmd5>
+    <version>1.16</version>
+    <time>1503593558</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516828</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>42c1d5f7dc0466fe37340fd59098370b</srcmd5>
+    <version>1.18</version>
+    <time>1563808715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717508</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e54c11b4677441fe5f8eb9ae8f5c1d39</srcmd5>
+    <version>1.20</version>
+    <time>1565695138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722196</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1be19f7460ca384439b1eae082ff9ec3</srcmd5>
+    <version>1.24</version>
+    <time>1602282511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840238</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>823f27e7860b18e4938f3ab3a20c4026</srcmd5>
+    <version>1.26</version>
+    <time>1609783805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860222</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>977f952c524f6009d9154e861e1f2c52</srcmd5>
+    <version>2.0.1</version>
+    <time>1629795283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913791</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>42f9cdeb8c46fb360ce9b75376e604f7</srcmd5>
+    <version>2.1.0</version>
+    <time>1661346693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998966</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2e1ed47752d8c9940571551a00194aa7</srcmd5>
+    <version>2.2.0</version>
+    <time>1676562960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066004</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1c9c13fdbbf48a16bd1511928118e8dd</srcmd5>
+    <version>2.3.0</version>
+    <time>1685743633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090362</requestid>
+  </revision>
+</revisionlist>

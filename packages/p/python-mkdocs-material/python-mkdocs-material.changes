@@ -1,0 +1,550 @@
+-------------------------------------------------------------------
+Mon Jan 15 20:24:50 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.4:
+  * Fixed #6645: Local storage with invalid value can break site
+  * Fixed #6635: Tags icons before default ignored if default is set
+
+-------------------------------------------------------------------
+Sun Jan  7 18:23:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.5.3:
+  * Limited version range of MkDocs to < 1.6
+  * Updated Macedonian translations
+  * Fixed #6520: Group plugin crashes when using mike
+  * Fixed #6494: Hide author's email address if disabled in
+    git-authors plugin
+
+-------------------------------------------------------------------
+Mon Dec 11 17:44:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.5.2:
+  * Fixed types for `slugify` settings in blog plugin config
+  * Fixed #6469: Horizontal scrollbars on MathJax containers
+
+-------------------------------------------------------------------
+Fri Dec  8 09:12:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.5.1:
+  * Updated Greek translations
+  * Fixed #6464: Privacy plugin cannot be enabled
+  * Fixed #6461: Sorting blog posts ignores time component in date
+
+-------------------------------------------------------------------
+Thu Dec  7 11:44:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.5.0:
+  * Merged Insiders features of 'Goat's Horn' funding goal
+    - Added privacy plugin: automatic downloading of external
+      assets
+    - Added support for card grids and grid layouts
+    - Added support for improved tooltips
+    - Added support for content tabs anchor links (deep linking)
+    - Added support for automatic dark/light mode
+    - Added support for document contributors
+
+-------------------------------------------------------------------
+Mon Nov 27 05:40:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.14:
+  * Added support for linking authors in blog posts
+
+-------------------------------------------------------------------
+Mon Nov 27 05:30:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.13:
+  * Fixed #6365: Blog plugin pagination links to previous pages
+    broken
+  * Fixed #5758: Updated Mermaid.js to version 10.6.1 (latest)
+
+-------------------------------------------------------------------
+Fri Nov 24 10:18:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.12:
+  * Improved blog plugin to generate Unicode-aware slugs by default
+  * Fixed non-deterministic order of categories in blog plugin
+
+-------------------------------------------------------------------
+Thu Nov 23 11:42:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.11:
+  * Fixed #6364: Search plugin crashing when enabling theme while
+    serving
+  * Fixed blog plugin crashing when disabling pagination
+
+-------------------------------------------------------------------
+Mon Nov 20 05:37:37 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.10:
+  *  Fixed #6356: Version selector can't be disabled via mike's
+     configuration
+  *  Fixed #6281: Navigation not rendering due to Safari bug (9.4.2
+     regression)
+  *  Fixed #6261: Navigation expansion animates on first load
+     (9.4.2 regression)
+
+-------------------------------------------------------------------
+Fri Nov 17 13:46:12 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.9:
+  * Fixed #6344: Long entries cutoff in table of contents
+  * Fixed #6336: Custom template for glob archive not working with
+    pagination
+  * Fixed #6328: Blog plugin crashes for locales with dashes, e.g.
+    `pt-BR`
+  * Fixed #6327: Copy-to-clipboard button doesn't trim trailing
+    line feed
+  * Fixed #6302: Version strings not matched when using mike, only
+    aliases
+  * Fixed instant navigation progress indicator for gzipped content
+    in Chrome
+  * Fixed rendering bug on details marker rotation in Firefox
+
+-------------------------------------------------------------------
+Mon Nov  6 05:46:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.8:
+  * Fixed invalid local address replacement when using instant
+    loading
+  * Fixed #6275: Crash after navigation caused 404 when using
+    instant loading
+
+-------------------------------------------------------------------
+Mon Oct 30 07:26:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.7:
+  * Added Azerbaijani translations
+
+-------------------------------------------------------------------
+Sat Oct 14 18:59:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.6:
+  * Updated Danish and Norwegian (Nynorsk) translations
+  * Fixed #6169
+    <https://github.com/squidfunk/mkdocs-material/issues/6169>:
+    Blog post metadata layout overflows on small screens
+
+-------------------------------------------------------------------
+Tue Oct 10 13:58:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.5:
+  * Fixed sidebar auto-positioning (9.4.2 regression)
+  * Fixed #6166: Improve group plugin compatibility with
+    Python < 3.10
+  * Fixed #6157: Hiding tags does not work (9.4.3 regression)
+
+-------------------------------------------------------------------
+Sat Oct  7 05:26:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.4:
+  * Added support for overriding text to be copied for code blocks
+  * Fixed broken layout in some browsers at breakpoints when using
+    zoom
+  * Fixed #6132
+    <https://github.com/squidfunk/mkdocs-material/issues/6132>:
+    Incomplete search highlighting for code blocks in titles
+
+-------------------------------------------------------------------
+Mon Oct  2 10:43:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.3:
+  * Added support for instant navigation progress indicator
+  * Improved spacing and alignment of tags
+  * Moved back-to-top button into separate partial
+  * Fixed #6104: Indentation for some code blocks lost in search
+  * Fixed #6094: Blog post metadata overlaps with footer on small
+    screens
+  * Fixed #6069: Blog plugin crashes for categories with non-ASCII
+    names
+
+-------------------------------------------------------------------
+Mon Sep 25 09:08:23 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.2:
+  * Updated Slovenian translations
+  * Added animation to sidebar navigation expansion and collapse
+  * Added support for auto-replacement of document head for instant
+    navigation
+  * Improved compatibility of new emoji extension with Python <
+    3.10
+  * Switched regex dependency to use minimal version
+  * Refactored alignment and spacing of sidebar navigation
+  * Fixed expansion button not focusable via keyboard in sidebar
+    navigation
+  * Fixed viewport offset restoration on first load when using
+    instant navigation
+  * Fixed accidental highlight of non-clickable elements in blog
+    plugin sidebar
+  * Fixed #6041: Blog plugin crashes when `nav` is defined and blog
+    not included
+  * Fixed #5972: Blog plugin ignores section index pages in
+    paginated views
+  * Fixed #5954: Repeated click on anchor ignored when using
+    instant navigation
+  * Fixed #5742: Keyboard navigation broken when using instant
+    navigation
+
+-------------------------------------------------------------------
+Fri Sep 22 14:25:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.1:
+  * Improved colors and contrast in dark mode
+  * Improved admonition borders to match font weight
+  * Switched content tabs to neutral color
+
+-------------------------------------------------------------------
+Fri Sep 22 05:36:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.0:
+  * Added Belarusian translations
+  * Added version info to entrypoint of package
+  * Added emoji extension as a replacement for materialx
+  * Improved slate color scheme (dark mode) - now even darker
+  * Restructured project to improve development experience
+  * Updated MkDocs to 1.5.3
+  * Fixed #3890: Development mode crash on Linux
+
+-------------------------------------------------------------------
+Tue Sep 19 07:14:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.3.2:
+  * Updated Slovenian translations
+  * Updated Python dependencies in requirements to use minimum
+    versions
+  * Fixed #6017: Code highlighting inconsistent in Community and
+    Insiders edition
+  * Fixed #6001: Contributor avatars display incorrectly in Firefox
+  * Fixed #6000: Blog post drafts are included in navigatio
+
+-------------------------------------------------------------------
+Tue Sep 12 04:58:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.3.1:
+  * Fixed crash of group plugin when used together with hooks
+
+-------------------------------------------------------------------
+Tue Sep 12 04:55:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rebase patch no-hatchling-requirements_txt.patch
+- update to 9.3.0:
+  * Improved configuration sharing between community and Insiders
+    edition
+  * Added experimental built-in group plugin for enabling plugins
+    conditionally
+  * Added new settings in tags plugin for enabling/disabling
+  * Dropped support for Python 3.7 (EOL)
+
+-------------------------------------------------------------------
+Thu Sep  7 06:59:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.8:
+  * Updated Italian and Russian translations
+  * Fixed #5952: Combining blog and tags plugin leads to wrong
+    links
+  * Fixed #5951: Blog plugin ignores post title in metadata
+  * Fixed #5949: Blog plugin ignores post linked in nav
+
+-------------------------------------------------------------------
+Thu Sep  7 06:58:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.7:
+  * Switched dependencies to compatible release clauses
+  * Removed `readtime` and `lxml` dependencies for blog plugin
+  * Reduced size of Docker image to improve CI build performance
+  * Fixed #5945: Incorrect footer navigation for sibling pages of
+    blog
+  * Fixed #5939: Page jumps when changing color palette (Firefox
+    117)
+  * Fixed #5901: Announcement bar reappears when using instant
+    loading
+  * Fixed #5824: Allow to customize styles of sequence diagrams
+
+-------------------------------------------------------------------
+Thu Sep  7 06:57:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.6:
+  * Added Basque translations
+  * Added template for simple redirects
+  * Improved blog plugin interop by moving view generation to
+    `on_files`
+  * Fixed #5924: Social plugin still checks dependencies when
+    disabled
+  * Fixed #5916: Blog plugin crashes on Python 3.8 (9.2.0
+    regression)
+
+-------------------------------------------------------------------
+Thu Sep  7 06:56:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.5:
+  * Fixed error in dirty serve mode when using blog plugin
+  * Fixed page title not being consistent in blog plugin pagination
+  * Fixed #5899: Blog plugin pagination breaks when disabling
+    directory URLs
+
+-------------------------------------------------------------------
+Thu Sep  7 06:55:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.4:
+  * Added version to bug report name in info plugin
+  * Updated Afrikaans translations
+
+-------------------------------------------------------------------
+Thu Sep  7 06:54:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.3:
+  * Fixed blog plugin rendering wrongly with
+    `markdown.extensions.toc`
+  * Fixed blog plugin entrypoint generation
+
+-------------------------------------------------------------------
+Thu Sep  7 06:53:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.2:
+  * Fixed #5880: Blog plugin failing when building a standalone
+    blog
+  * Fixed #5881: Blog plugin not compatible with Python < 3.10
+
+-------------------------------------------------------------------
+Thu Sep  7 06:34:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.1:
+  * Fixed #5879: Blog plugin failing when building a standalone
+    blog
+  * Fixed error in blog plugin when using draft tagging on future
+    date
+  * Fixed error in blog plugin when toc extension is not enabled
+
+-------------------------------------------------------------------
+Wed Sep  6 15:01:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.2.0:
+  * Additions and improvements
+    - Added blogging support via built-in blog plugin
+    - Added support for Chinese language segmentaiton in search
+      plugin
+    - Added support for adding custom dates to blog posts
+    - Added support for paginating archive and category pages
+    - Added support for annotations (outside of code blocks)
+    - Added support for navigation icons
+    - Added support for navigation pruning
+    - Added support for navigation status
+    - Added support for customizing site icons
+    - Added support for customizing (code) annotation icons
+    - Added focus outline to admonitions and details
+    - Added prompt for bug report name to info plugin
+    - Added Luxembourgish translations
+    - Improved rendering of (code) annotation markers
+    - Improved print styles for (code) annotations
+    - Improved customizability of navigation tabs
+    - Improved interop of plugins with external tools like mike
+    - Improved interop of blog plugin with awesome pages plugin
+    - Improved header partial by moving buttons into separate
+      partials
+    - Improved clarity of `site_url` warning in social plugin
+    - Improved blog plugin to automatically setup directory
+      structure
+    - Switched info plugin to `importlib` to mitigate deprecations
+    - Automatically download ResizeObserver polyfill when necessary
+    - Automatically add iframe-worker polyfill when necessary in
+      offline plugin
+    - Automatically focus and bring up keyboard on touch devices
+    - Updated Serbo-Croatian translations
+    - Updated MkDocs to 1.5.2
+  * Removals
+    - Removed Universal Analytics integration
+    - Removed ancient polyfills to reduce size of bundled
+      JavaScript by 20%
+    - Removed necessity for `Array.flat` and `Array.flatMap`
+      polyfill
+    - Removed announcement bar button when JavaScript is not
+      available
+  * Fixes
+    - Fixed rendering of tags when announcement bar is present
+    - Fixed tags plugin rendering pages excluded by other plugins
+    - Fixed #5132: Blog plugin requires `nav` entry in `mkdocs.yml`
+    - Fixed #5599: Insufficient contrast for default link color
+    - Fixed #5715: Blog plugin missing integrated table of contents
+      in pagination
+    - Fixed #5806: Version selector not hoverable on some Android
+      devices
+    - Fixed #5826: Blog post drafts with tags show up in tags index
+
+-------------------------------------------------------------------
+Tue Aug  1 10:01:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.21:
+  * Fixed MkDocs 1.4 compat issue in social plugin (9.1.20
+    regression)
+
+-------------------------------------------------------------------
+Thu Jul 27 11:07:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.20:
+  * Updated Sanskrit translations
+  * Fixed deprecation warnings for social plugin
+
+-------------------------------------------------------------------
+Tue Jul 18 13:27:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.19:
+  * Added support for MkDocs 1.5+
+  * Fixed #5699: Improve error reporting in social plugin
+
+-------------------------------------------------------------------
+Mon Jul  3 10:39:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.18:
+  * Updated Danish translations
+  * Added support for installing user requirements in Docker image
+  * Fixed #5655: Search separator with lookbehind breaks
+    highlighting
+
+-------------------------------------------------------------------
+Mon Jun 26 04:59:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.17:
+  * Fixed #5633: Code annotations with nested lists incorrectly
+    mounted
+  * Fixed #5628: Regression in new social plugin configuration
+    scheme
+
+-------------------------------------------------------------------
+Fri Jun 16 05:17:19 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.16:
+  * Updated Indonesian translations
+  * Ensure scroll bar follows color scheme of operating system
+
+-------------------------------------------------------------------
+Mon May 29 17:58:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.15:
+  * Fixed #5566: Indicate color scheme to operating system
+  * Fixed #5565: Update `Dockerfile` to latest version of base
+    image
+  * Fixed #5554: Add additional version tags (`9`, `9.1`) to Docker
+    image
+  * Fixed #5536: Strip tags of ARIA labels in table of contents
+
+-------------------------------------------------------------------
+Mon May 22 05:44:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.14:
+  * Updated Armenian and Greek translations
+
+-------------------------------------------------------------------
+Tue May 16 18:19:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.13:
+  * Fixed #5517: Social plugin crashes for some fonts (e.g. Open
+    Sans)
+
+-------------------------------------------------------------------
+Fri May 12 13:42:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.12:
+  * Updated Bengali (Bengal) translations
+  * Fixed #5503: Docker image publish errors on uppercase
+    characters
+  * Fixed #5407: Auto-pause media when in hidden content tabs
+
+-------------------------------------------------------------------
+Tue May  9 05:22:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.11:
+  * Fixed #5487: Social plugin crashes without options
+    (9.1.10 regression)
+
+-------------------------------------------------------------------
+Tue May  9 05:20:57 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.10:
+  * Added `cards_layout_options` setting for social cards
+	* Deprecated `cards_color` and `cards_font` setting for social
+    cards
+
+-------------------------------------------------------------------
+Fri May  5 11:11:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Tue May  2 11:02:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.9:
+  * Added Telulugu, Kannada and Sanskrit translations
+  * Fixed #5428: Fixed margins for light/dark mode images in
+    figures
+  * Fixed #5420: Social plugin crashing for some specific Google
+    Fonts
+  * Fixed #5160: Instant loading makes code annotations jump (9.1.1
+    regression)
+  * Fixed #4920: Social plugin not loading logo from custom icon
+    set
+  * Fixed social plugin crashing when only code font is specified
+
+-------------------------------------------------------------------
+Mon Apr 24 18:31:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.8:
+  * Fixed #5417: Theme breaks when `palette` is not defined (9.1.7
+    regression)
+
+-------------------------------------------------------------------
+Sat Apr 22 14:24:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.7:
+  * Updated Persian (Farsi) and Turkish translations
+  * Fixed #5401: Added missing flag to disable built-in tags plugin
+  * Fixed #5206: Ensure defaults are set for primary and accent
+    colors
+  * Fixed unnecessary inclusion of palette CSS when unused
+
+-------------------------------------------------------------------
+Thu Apr 13 10:32:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.6
+  * Updated Persian (Farsi) translations
+  * Fixed #5300: Boxes in Mermaid sequence diagrams not
+    color-abiding
+
+-------------------------------------------------------------------
+Thu Apr 13 06:41:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- really add proper Requires for plugins...
+
+-------------------------------------------------------------------
+Tue Apr  4 12:44:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add Requires needed for plugins
+
+-------------------------------------------------------------------
+Mon Apr  3 12:30:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.5:
+  * Updated Lithuanian and Japanese translations
+  * Updated Mermaid.js to version 9.4.3
+  * Fixed #5290: Footer previous/next labels cut-off for short page
+    titles
+- update to 9.1.4:
+  * Fixed #5239: Instant loading breaks anchors in details
+    (9.1.1 regression)
+  * Fixed #5211: Anchor following not working for Chinese
+    (9.1.2 regression)
+
+-------------------------------------------------------------------
+Tue Mar 28 08:42:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add no-hatchling-requirements_txt.patch, which manually
+  create project.dependencies in pyproject.toml instead of
+  using hatch_requirements_txt module. This is a brutal
+  hack, but otherwise (see sr#1072844 for details) we need
+  python-hatch_requirements_txt which pulls in excessive number
+  of packages (starting with python-conincidence, python-whey,
+  python-domdf-python-tools, and many others). Until we have
+  these in openSUSE, we should stay with this hand-managed patch.
+
+-------------------------------------------------------------------
+Sat Mar 18 10:42:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-mkdocs-material

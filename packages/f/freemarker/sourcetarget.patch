@@ -1,0 +1,38 @@
+--- freemarker-2.3.31/build.xml	2023-10-26 05:51:54.739518257 +0200
++++ freemarker-2.3.31/build.xml	2023-10-26 05:53:02.543324732 +0200
+@@ -202,7 +202,7 @@
+     <!-- Note: the "build.base" conf doesn't include optional FreeMarker dependencies. -->
+     <ivy:cachepath conf="build.base" pathid="ivy.dep" />
+     <javac destdir="build/classes" deprecation="off" 
+-      debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
++      debug="on" optimize="off" target="1.8" source="1.8" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep"
+       excludes="
+@@ -232,7 +232,7 @@
+     
+     <ivy:cachepath conf="build.jsp2.1" pathid="ivy.dep.jsp2.1" />
+     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+-      debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
++      debug="on" optimize="off" target="1.8" source="1.8" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep.jsp2.1"
+       includes="
+@@ -248,7 +248,7 @@
+     
+     <ivy:cachepath conf="build.jsp2.1" pathid="ivy.dep.jsp2.1" />
+     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+-      debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
++      debug="on" optimize="off" target="1.8" source="1.8" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep.jsp2.1"
+       includes="
+@@ -259,7 +259,7 @@
+ 
+     <ivy:cachepath conf="build.jython2.5" pathid="ivy.dep.jython2.5" />
+     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+-      debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
++      debug="on" optimize="off" target="1.8" source="1.8" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep.jython2.5"
+       includes="

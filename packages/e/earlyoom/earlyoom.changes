@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Wed May 18 16:14:43 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Refreshed spec-file via spec-cleaner and manual optimizated.
+  * Reduced to the standard github URL.
+  * Added -p flag to all install commands.
+- Updated file earlyoom.sysconfig with actual firefox process names.
+- Updated to 1.7
+  * Updated file earlyoom.1 (MANPAGE.md -s -t man > earlyoom.1).
+  * https://github.com/rfjakob/earlyoom#changelog
+  * Added -N flag to run a script every time a process is killed.
+  * Added -g flag to kill whole process group.
+  * Removed -i flag, it does not work properly on Linux kernels 5.9+.
+  * Droped ambient capabilities on startup.
+
+-------------------------------------------------------------------
+Thu Nov 18 09:31:29 UTC 2021 - Илья Индиго <ilya@ilya.cf>
+
+- Added GeckoMain in --prefer parameter. (firefox name process)
+- Removed firefox and chromium in --prefer parameter. (irrelevant)
+
+-------------------------------------------------------------------
+Fri May  7 08:35:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Package pre-built earlyoom.1 as pandoc / haskell is not supported
+  on all archs.
+- Drop pandoc BuildRequires.
+
+-------------------------------------------------------------------
+Thu Dec  3 14:12:54 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.6.2
+  * Double-check memory situation before killing victim ([commit](https://github.com/rfjakob/earlyoom/commit/e34e0fcec5d9f60eb19a48a3ec2bab175818fdd8))
+  * Never terminate ourselves ([#205](https://github.com/rfjakob/earlyoom/issues/205))
+  * Dump buffer on /proc/meminfo conversion error ([#214](https://github.com/rfjakob/earlyoom/issues/214))
+- Remove invalid Recommends of libnotify-tools (boo#1179537)
+- disable tests
+- add link from /sbin/rcearlyoom to /sbin/service
+
+-------------------------------------------------------------------
+Thu Sep 17 08:19:35 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- Enable tests on x86_64 & ARM
+- change reporting interval to never
+- remove calls to systemctl in make install
+- change LDFLAGS handling via env variables
+
+-------------------------------------------------------------------
+Thu Sep  3 08:48:01 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop dependency on insserv-compat
+
+  The sysvinit script is not shipped so this dependency on this
+  obsolete package is not needed and can be removed.
+
+-------------------------------------------------------------------
+Mon Aug 17 11:19:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * Clean up dbus-send zombie processes
+  * Skip processes with oom_score_adj=-1000
+
+-------------------------------------------------------------------
+Wed Jun 10 08:18:22 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.6
+
+  * 1.6, 2020-04-11
+    * Replace old `notify-send` GUI notification logic with `dbus-send` /
+      [systembus-notify](https://github.com/rfjakob/systembus-notify)
+      ([#183](https://github.com/rfjakob/earlyoom/issues/183))
+      * `-n`/`-N` now enables the new logic
+      * You need to have
+        [systembus-notify](https://github.com/rfjakob/systembus-notify) running
+        in your GUI session for notifications for work
+    * Handle `/proc` mounted with
+      [hidepid](https://github.com/rfjakob/earlyoom/wiki/proc-hidepid)
+      gracefully ([issue #184](https://github.com/rfjakob/earlyoom/issues/184))
+
+  * v1.5, 2020-03-22
+    * `-p`: set oom_score_adj to `-100` instead of `-1000`
+      ([#170](https://github.com/rfjakob/earlyoom/issues/170))
+    * Allow using **both** `-M` and `-m`, and `-S` and `-s`. The lower value
+      (converted to percentages) will be used.
+    * Set memory report interval in `earlyoom.default` to 1 hour instead of 1
+      minute ([#177](https://github.com/rfjakob/earlyoom/issues/177))
+
+-------------------------------------------------------------------
+Thu Mar 19 08:50:17 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- earlyoom.sysconfig: Fix sddm, add kwin_wayland
+
+-------------------------------------------------------------------
+Wed Mar  4 17:40:07 UTC 2020 - Илья Индиго <ilya@ilya.cf>
+
+- Add PREFIX=%{_prefix} to %make_build macro for correct ExecStart.
+- Update to 1.4
+  * https://github.com/rfjakob/earlyoom#changelog 
+  * Make victim selection logic 50% faster by lazy-loading process
+    attributes.
+  * Log the user id uid of killed processes in addition to pid and
+    name.
+  * Color debug log in light grey.
+  * Code clean-up
+    * Use block-local variables where possible.
+    * Introduce PATH_LEN to replace several hardcoded buffer
+      lengths.
+  * Expand testsuite (make test).
+  * Run cppcheck when available.
+  * Add unit-test benchmarks (make bench).
+  * Drop root privileges in systemd unit file earlyoom.service.
+  * Fix spurious testsuite failure on systems with a lot of RAM.
+
+-------------------------------------------------------------------
+Fri Feb 21 06:55:10 UTC 2020 - Илья Индиго <ilya@ilya.cf>
+
+- Add "Web\ Content" before "firefox" in --prefer parameter.
+- Manual optimizations in spec-file.
+
+-------------------------------------------------------------------
+Thu Feb 20 18:13:08 UTC 2020 - opensuse@trummer.xyz
+
+- include Falkon browser and mpv media player among 
+  the list of programs to terminate preferably
+
+-------------------------------------------------------------------
+Wed Feb 19 18:19:21 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Add -p option.
+
+-------------------------------------------------------------------
+Sat Jan 11 19:29:18 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Set lower critical values, add more programs into whitelist.
+
+-------------------------------------------------------------------
+Mon Jan  6 16:00:16 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Clean-up.
+
+-------------------------------------------------------------------
+Thu Jun  6 07:18:05 UTC 2019 - Alexander Evseev <aevseev@gmail.com>
+
+- First build. Version - 1.3

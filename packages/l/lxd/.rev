@@ -1,0 +1,546 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c60e007d9fdb2997f4645702244cfcda</srcmd5>
+    <version>3.13</version>
+    <time>1560338372</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of LXD 3.13 (with the %config-related rpmlint warning fixed).
+
+Hopefully this won't cause another 2-month delay, given that licensedigger
+seemed okay with the last submission. *fingers crossed*</comment>
+    <requestid>709335</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be4801f3947f40341bcc6810e4c8c41c</srcmd5>
+    <version>3.13</version>
+    <time>1560459790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709492</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ca6ec2c99cf8de6ea5cedc78572cb4e2</srcmd5>
+    <version>3.13</version>
+    <time>1560971591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710701</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52b723632811a4ec0546eaf3c1c1b5c6</srcmd5>
+    <version>3.17</version>
+    <time>1569393933</time>
+    <user>dimstar_suse</user>
+    <comment>- Completely drop all stripping -- it appears to cause all sorts of problems
+  with unresolved symbol errors.
+- Update to LXD 3.17. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-17-has-been-released/5679
+  boo#1151874
+  + Storage pool backed image tarballs and backups
+  + Container configuration as YAML on lxc init and lxc launch
+  * Ported to final Dqlite 1.0
+  * Database rework
+  * Container devices rework
+  * Storage rework</comment>
+    <requestid>732962</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4182461399dd8868b4d959eb59543697</srcmd5>
+    <version>3.17</version>
+    <time>1569523240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733136</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b00d7a4a0195d4b01aa9849e0b564fc2</srcmd5>
+    <version>3.18</version>
+    <time>1570104558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734693</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>576333058452e16d9ad9298a898810d3</srcmd5>
+    <version>3.18</version>
+    <time>1576189168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755961</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>14aef769b919160ee442837c5df353f0</srcmd5>
+    <version>3.19</version>
+    <time>1579791265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LXD 3.19. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-3-19-has-been-released/6529
+  boo#1161615</comment>
+    <requestid>766444</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0bb13ba623e22b9edc72ead7f779a852</srcmd5>
+    <version>3.20</version>
+    <time>1580511433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769025</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>204c5fc4751257bd542318fe9fd639c0</srcmd5>
+    <version>3.20</version>
+    <time>1580842357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769650</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d050d77a31a277d9925c5d1cb7dced81</srcmd5>
+    <version>3.21</version>
+    <time>1581694818</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>774283</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>771ca2ce4a95a4db6d841074d4130199</srcmd5>
+    <version>3.22</version>
+    <time>1583613734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782545</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c89765832c62562325bd73047d97ff7</srcmd5>
+    <version>3.23</version>
+    <time>1584883042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787033</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>efd6ac1ac9cba65846eef1ac63213d51</srcmd5>
+    <version>4.0.0</version>
+    <time>1585761631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790622</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4f30b6be8a8b0bfb7c7dca1cbaceacff</srcmd5>
+    <version>4.0.1</version>
+    <time>1587839393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796787</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b11902f0daa9771373e438cb35702e7f</srcmd5>
+    <version>4.2</version>
+    <time>1592578143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LXD 4.2. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-2-has-been-released/8071
+  bsc#1172605
+
+  + VLAN filtering on bridges
+  * Expanded network state information
+  + Support for custom search domains
+  + New IPv4 and IPv6 columns in network lists
+  * mips &amp; riscv64 support for containers and s390x support for VMs
+  * Using pidfds for all container subprocesses
+  * LVM volumes only active when needed
+  + DB query tracing support
+  * Better cluster life-cycle handling
+  * Cleaned up database functions</comment>
+    <requestid>812999</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>735ec20082a941fe49bc7209c0e22a7f</srcmd5>
+    <version>4.3</version>
+    <time>1593727881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818201</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>19266bcb0d213e8373cd82e827bcbcfe</srcmd5>
+    <version>4.4</version>
+    <time>1596277929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823864</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4a621c52da31083f4f060ca48ba86d6a</srcmd5>
+    <version>4.5</version>
+    <time>1598726655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830383</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8912f8ab7e9996c032f828b7cef7227b</srcmd5>
+    <version>4.6</version>
+    <time>1600801892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835983</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e3970771f78d8edca501cdfcfb6f3291</srcmd5>
+    <version>4.7</version>
+    <time>1603448500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842269</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>08488c76caba0943445675e1f53a2eb1</srcmd5>
+    <version>4.8</version>
+    <time>1605290364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848283</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>459931558debbffbc618cd16c58ab679</srcmd5>
+    <version>4.9</version>
+    <time>1607801531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>855073</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1d7be833f623ae1b0c30a0f515bf2bcb</srcmd5>
+    <version>4.10</version>
+    <time>1610381791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862301</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>51af15ed704457d56900b126112e5afa</srcmd5>
+    <version>4.11</version>
+    <time>1612707661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869679</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2f765a64e5fdfb103af85d2a4e574bb3</srcmd5>
+    <version>4.12</version>
+    <time>1615061953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877356</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ff793edf5e7b503d40587ef8c86a18e6</srcmd5>
+    <version>4.12</version>
+    <time>1616104498</time>
+    <user>dimstar_suse</user>
+    <comment>- Move OVMF symlinks to /usr/share, /opt is not allowed in SUSE
+  packages.</comment>
+    <requestid>879766</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6c229ed7b3b2fe59bf4f22edccfb195b</srcmd5>
+    <version>4.13</version>
+    <time>1618223851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884539</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f9c6678c32e965b1c0a06a30e0f6d324</srcmd5>
+    <version>4.13</version>
+    <time>1619031610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887110</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>67d3b2d342975eee3d58148b4751088d</srcmd5>
+    <version>4.14</version>
+    <time>1622536757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896242</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4526b963180f6de74742863c81051106</srcmd5>
+    <version>4.14</version>
+    <time>1622759600</time>
+    <user>dimstar_suse</user>
+    <comment>- fix dependencies for aarch64/armv7l 
+
+- Fix build on i586 by if_arch-ing out the VM support on non-x86_64 platforms.</comment>
+    <requestid>896774</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3c1de310fd383d0b5663746e5729dee1</srcmd5>
+    <version>4.15</version>
+    <time>1623098640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897987</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>08f5d2d01f3685a055b014c48b6beeaa</srcmd5>
+    <version>4.15</version>
+    <time>1623868500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900296</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>159cc3e686c3d60f9785f1e072030ecb</srcmd5>
+    <version>4.15</version>
+    <time>1624626104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902316</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>855a263f63ac389f47b58065d5ba5547</srcmd5>
+    <version>4.15</version>
+    <time>1627389128</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908504</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>81a12619ca1042fbea19e9d375459bbb</srcmd5>
+    <version>4.16</version>
+    <time>1627750282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909503</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e55f1be4982591e60e1c5047143b30df</srcmd5>
+    <version>4.17</version>
+    <time>1629706083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913360</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1449aca18aee071f44c6268f0a75b734</srcmd5>
+    <version>4.18</version>
+    <time>1631221649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917629</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>bbcf3f96d59c377101f3dbf0b448a384</srcmd5>
+    <version>4.18</version>
+    <time>1631646851</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable stripping of binaries, which seems to be causing issues at runtime
+  due to some ld.so assertion failing. In particular it seems that libdqlite is
+  getting corrupted somehow.</comment>
+    <requestid>918522</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fb6779117fa175c1d0eaa61feb4251ba</srcmd5>
+    <version>4.20</version>
+    <time>1636388666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930036</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2e66bbff904d5981ccdbe237ccb41824</srcmd5>
+    <version>4.21</version>
+    <time>1639424670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940123</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bc6a239880668ab6bbe7481e6e1c1fb4</srcmd5>
+    <version>5.1</version>
+    <time>1652188362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LXD 5.1. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-1-has-been-released/13956
+  boo#1199216
+  + Sysinfo system call interception
+  + lxc cluster role sub-command
+  * lxc storage volume info shows volume total size
+  + Configurable host network interface naming pattern
+  * Overrideable evacuation mode
+  * Setting profiles during an image copy
+- Backport upstream patch to fix build on x32 systems.
+  + 0001-lxd-secommp-Fix-sysinfo-syscall-interception-on-32-b.patch
+- Make CRIU a Recommends so that we can still use LXD on 32-bit openSUSE.</comment>
+    <requestid>976038</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1ebb86f1cf510ab0faa4e696a65bf1f4</srcmd5>
+    <version>5.2</version>
+    <time>1653907432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979722</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2034caaeb6f2b0ecdbcd87f30d4115ca</srcmd5>
+    <version>5.3</version>
+    <time>1656422552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>985402</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>33ebcea4e33315c634984390ea05cb51</srcmd5>
+    <version>5.3</version>
+    <time>1660924585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998103</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>833017bc0f82c1a850feed0b7414309d</srcmd5>
+    <version>5.6</version>
+    <time>1664210883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005934</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>0dcac5b1fa484f028eeb79c0f70ab346</srcmd5>
+    <version>5.7</version>
+    <time>1667150952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032315</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9b2f1ee22f2c925742e4e30ab5684a1f</srcmd5>
+    <version>5.8</version>
+    <time>1669129826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037224</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>e218be929a9b5fc67bb5da453983c007</srcmd5>
+    <version>5.9</version>
+    <time>1670863172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042237</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>bbb800c2aebade7a8ef513ffe0890163</srcmd5>
+    <version>5.9</version>
+    <time>1674585822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060590</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a3785b96f53f07a1fbc2e4f5e872fdae</srcmd5>
+    <version>5.10</version>
+    <time>1676401692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065756</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0522b15584a8a34b102740540654328f</srcmd5>
+    <version>5.11</version>
+    <time>1677166247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067411</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ed8ba66ffaeb2db2139d02f76f206441</srcmd5>
+    <version>5.13</version>
+    <time>1684415982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087726</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>1520c35e2a5753f6702a862976ecea56</srcmd5>
+    <version>5.13</version>
+    <time>1686927290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093362</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c8de42d432243b26c4f8e0adb1b7a5e1</srcmd5>
+    <version>5.16</version>
+    <time>1691502866</time>
+    <user>dimstar_suse</user>
+    <comment>- correct source0/1 urls
+
+- fix import path to the new upstream git repo
+- Update to 5.16. Full upstream changelogs are at
+  https://discourse.ubuntu.com/t/lxd-5-16-has-been-released/37150
+  Highlights:
+  + ISO volumes
+  + IPAM information
+  + selection of cluster groups when moving instances
+
+- update keyring 
+
+- Update to 5.15. Full upstream changelogs are at 
+  https://discuss.linuxcontainers.org/t/lxd-5-14-has-been-released/17259 and
+  https://discuss.linuxcontainers.org/t/lxd-5-15-has-been-released/17493
+  Highlights from 5.15:
+  + Non-UEFI support in LXD VMs (CSM)
+  + Instance rebuild
+  + Container pinning based on NUMA nodes
+  + User authentication information in API
+  Highlights from 5.14:
+  + Cluster auto-healing
+  + OIDC web authentication
+  + lxc publish --reuse
+  + Support for specifying the size of an LVM thinpool
+  + Total disk and memory reporting</comment>
+    <requestid>1102825</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>1acd9e05f65e588d121834ba5f7fe788</srcmd5>
+    <version>5.16</version>
+    <time>1693860785</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108779</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>bfedc0bdf0e27a113442a5f2b92f2713</srcmd5>
+    <version>5.18</version>
+    <time>1696964367</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116434</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f9f4fe2ece38c166a531081f4fa5bdf2</srcmd5>
+    <version>5.19</version>
+    <time>1699388856</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123913</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>02c46ffc3626dedc81a05e6f1d755169</srcmd5>
+    <version>5.19</version>
+    <time>1700598726</time>
+    <user>anag+factory</user>
+    <comment>- add attr as dependency for setfattr (bsc#1190416)
+
+- update keyring
+- Update to 5.15. Full upstream changelogs are at</comment>
+    <requestid>1127791</requestid>
+  </revision>
+</revisionlist>

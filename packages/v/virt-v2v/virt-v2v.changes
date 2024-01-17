@@ -1,0 +1,214 @@
+-------------------------------------------------------------------
+Thu Jan  4 13:38:59 MST 2024 - carnold@suse.com
+
+- Update to virt-v2v 2.4.0 (jsc#PED-6305)
+  * New --block-driver option which can be used to choose to
+    install either virtio-blk or virtio-scsi drivers
+  * The virt-v2v --key option now recognizes LVM names like
+    /dev/mapper/rhel_bootp--73--75--123-root
+  * The --key option also supports a new --key all:... selector to
+    try the same key on all devices.
+  * Conversions now set the host-model CPU in the output metadata,
+    except where the source hypervisor overrides this. The
+    exception is -o qemu mode which uses -cpu host.
+  * virt-v2v will now look for bootloader configuration in
+    /boot/grub/grub.cfg for UEFI guests
+  * Invoke pnputil (if available) to install drivers, fixing some
+    Windows conversions
+  * Skip SELinux relabelling if the guest has disabled SELinux
+  * Several output modes now generate metadata to indicate whether
+    the guest requires the RTC to be set to UTC (Linux) or
+    localtime (most Windows). For example with -o libvirt this
+    generates <clock offset="utc|localtime"/>.
+  * -i ova mode is now less strict about parsing the manifest file,
+    which helps when converting some non-conforming OVA files.
+  * Input modes using -it ssh now use the correct quoting
+  * -i vmx mode now rejects VMDK files explicitly, reducing a
+    source of user confusion
+  * Multiple fixes to -o kubevirt mode. Also implement -oo
+    compressed for this mode.
+  * -o libvirt mode now supports Rocky Linux
+  * -o openstack documentation for cloud configurations fixed
+  * -o rhv-upload mode has an improved error when the -os parameter
+    is invalid or missing
+  * Remove support for RHEL 3
+  * Various language translation updates
+- Drop patches
+  fix-compiler-error-Stdlib.stderr.patch
+  fix-linker-error.patch
+
+-------------------------------------------------------------------
+Thu Nov 30 22:22:22 UTC 2023 - olaf@aepfle.de
+
+- Remove obsolete requirement for ocaml-gettext-stub-devel
+- Require OCaml 4.07+
+- Align ExclusiveArch with libguestfs
+
+-------------------------------------------------------------------
+Wed Feb  8 16:08:19 MST 2023 - carnold@suse.com
+
+- Update to virt-v2v 2.2.0
+  * New virt-v2v-inspector(1) tool. This tool can be used before
+    conversion to collect facts about the source guest, such as
+    number of disks, and to estimate the disk space required after
+    conversion.
+  * Add support for NVMe devices and SATA hard disks when importing
+    from VMware VMX files (Laszlo Ersek).
+  * Add support for importing to KubeVirt using the new
+    experimental -o kubevirt mode.
+  * Windows 11 guests are now supported.
+  * Rocky Linux guest support has been added (Andrey Drobyshev).
+  * The -o json mode was removed. It was intended to be used with
+    KubeVirt but was never actually used there. Use -o kubevirt
+    instead.
+  * Numerous bug fixes and build changes
+
+-------------------------------------------------------------------
+Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
+
+- jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen
+  and KVM Management
+
+-------------------------------------------------------------------
+Tue Jul 12 16:03:38 MDT 2022 - carnold@suse.com
+
+- Update to version 2.0.7
+  * This is a bug fix release
+  fix-compiler-error-Stdlib.stderr.patch
+- Drop patch contained in new tarball
+  CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
+
+-------------------------------------------------------------------
+Wed Jun 29 09:51:03 MDT 2022 - carnold@suse.com
+
+- bsc#1201064 - Libguestfs: Buffer overflow in get_keys leads
+  to DOS - CVE-2022-2211
+  CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
+
+-------------------------------------------------------------------
+Thu May 26 11:39:38 MDT 2022 - carnold@suse.com
+
+- Update to version 2.0.6
+  * This is a bug fix release on top of 2.0.5
+
+-------------------------------------------------------------------
+Thu May 12 14:40:29 MDT 2022 - carnold@suse.com
+
+- Update to version 2.0.5
+  * Virt-v2v has been modularised allowing external programs to
+    examine the state of the conversion and inject their own
+    copying step. Further enhancements will be made to this new
+    architecture in forthcoming releases.
+  * The command line is almost identical apart from some debugging
+    features that were removed (see below). The only significant
+    difference is that the output format (-of) now has to be
+    specified if it is different from the input format, whereas
+    previous versions of virt-v2v would use the same output format
+    as input format automatically.
+  * A lot of time was spent improving the performance of virt-v2v
+    in common cases.
+  * Implement conversion of ALT Linux guests (Mikhail Gordeev).
+  * Many bug fixes and performance enhancements were made to oVirt
+    imageio output (Nir Soffer).
+  * There is a new virt-v2v-in-place(1) tool which replaces the
+    existing virt-v2v --in-place option.
+  * Virt-v2v can now convert guests which use LUKS encrypted
+    logical volumes (Laszlo Ersek).
+  * Option -oo rhv-direct has been replaced by -oo rhv-proxy, and
+    direct mode (which is much faster) is now the default when
+    writing to oVirt, with proxy mode available for restricted
+    network configurations (thanks: Nir Soffer).
+  * The following command line options were removed:
+    --print-estimate, --debug-overlays, --no-copy.
+  * Virt-v2v no longer installs the RHEV-APT tool in Windows
+    guests. This tool was deprecated and then removed in oVirt 4.3.
+  * Deprecated tool virt-v2v-copy-to-local has been removed.
+    This was deprecated in November 2018.
+
+-------------------------------------------------------------------
+Thu Jan  6 15:56:46 MST 2022 - carnold@suse.com
+
+- Update to version 1.44.2
+  * This is a bug fix release
+  virt-v2v-1.44.2.tar.gz.sig
+- Drop virt-v2v-1.44.0.tar.gz.sig
+
+-------------------------------------------------------------------
+Thu Sep 16 11:58:59 MDT 2021 - carnold@suse.com
+
+- Fix ocaml linker error due to unresolved 'rpl_free'. For
+  comparison, see libguestfs commit 489b14b75e.
+  fix-linker-error.patch
+
+-------------------------------------------------------------------
+Fri May  7 14:34:45 MDT 2021 - carnold@suse.com
+
+- Update to version 1.44.0
+  Include virt-v2v-1.44.0.tar.gz.sig
+  * windows: Allow qxldod.inf as synonym for qxl.inf
+  * -i ova: Set LANG=C and --no-auto-compress when running tar.
+  * Increase required free space in Windows to 100 MB
+  * Tidy up error messages when mounting a virtio-win ISO
+
+-------------------------------------------------------------------
+Thu Apr 29 09:37:35 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 1.43.5
+    * No upstream provided Changelog
+- Package changes
+    * Switch BuildRequires pcre-devel to pcre2-devel
+    * Ran spec-cleaner
+
+-------------------------------------------------------------------
+Wed Feb 10 22:47:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile macros and constructs.
+
+-------------------------------------------------------------------
+Thu Jan 28 15:20:40 MST 2021 - carnold@suse.com
+
+- Update to version 1.43.3
+  * Support for ALT Linux 9 and up added
+  * Many upstream bug fixes
+  * Language file fixes and updates
+
+-------------------------------------------------------------------
+Thu Dec  3 12:41:55 UTC 2020 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 1.43.2
+    * No upstream provided Changelog.
+
+-------------------------------------------------------------------
+Thu Oct  1 07:16:12 UTC 2020 - Predrag Ivanović <predivan@mts.rs>
+
+-  Fix rpmbuild 'directories not owned by package' error on Leap
+-  Fix Requires referencing  wrong/non-existing packages
+
+-------------------------------------------------------------------
+Mon Jul 20 19:53:29 MDT 2020 - carnold@suse.com
+
+- Update to version 1.43.1
+  * Several bug fixes
+- Drop fix-redefinition-error.patch
+
+-------------------------------------------------------------------
+Tue May  5 14:48:39 MDT 2020 - carnold@suse.com
+
+- Fix error: redefinition of 'glib_autoptr_clear_OsinfoList'
+  fix-redefinition-error.patch
+
+-------------------------------------------------------------------
+Wed Apr 22 16:10:29 MDT 2020 - carnold@suse.com
+
+- Initial package of virt-v2v version 1.42.0
+  * The rhv-upload output mode of virt-v2v is not listed as output
+    driver, as virt-p2v does not provide all the GUI elements to
+    properly use it
+  * Virt-v2v is checked as requirement for the functional tests,
+    in addition to guestfish, and virt-customize
+  * Virt-p2v-make-disk now sets p2v.local as hostname in the
+    generated disk image
+  * Document p2v as initial password for the root user on the disk
+    image generated by virt-p2v-make-disk, virt-p2v-make-kickstart,
+    and virt-p2v-make-kiwi
+

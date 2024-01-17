@@ -1,0 +1,118 @@
+---
+ configure.ac                   |    3 ---
+ include/builddefs.in           |    2 +-
+ libnfs4acl/Makefile            |    2 +-
+ libnfs4acl/nfs4_acl_for_path.c |    8 ++++++--
+ libnfs4acl/nfs4_set_acl.c      |    7 ++++++-
+ nfs4_setfacl/nfs4_setfacl.c    |    3 ++-
+ 6 files changed, 16 insertions(+), 9 deletions(-)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,11 +26,8 @@ AC_FUNC_MALLOC
+ AC_FUNC_STAT
+ AC_CHECK_FUNCS([memset strchr])
+ 
+-AC_CHECK_LIB([attr], [getxattr])
+-
+ AC_PACKAGE_GLOBALS([nfs4acl])
+ AC_PACKAGE_UTILITIES([nfs4acl])
+-AC_PACKAGE_NEED_GETXATTR_LIBATTR
+ AC_MANUAL_FORMAT
+ 
+ AC_OUTPUT(include/builddefs)
+--- a/include/builddefs.in
++++ b/include/builddefs.in
+@@ -40,7 +40,7 @@ OPTIMIZER = @opt_build@
+ MALLOCLIB = @malloc_lib@
+ 
+ LIBNFS4ACL = $(TOPDIR)/libnfs4acl/libnfs4acl.la
+-LIBATTR = @libattr@
++LIBATTR =
+ 
+ prefix = @prefix@
+ exec_prefix = @exec_prefix@
+--- a/libnfs4acl/Makefile
++++ b/libnfs4acl/Makefile
+@@ -37,7 +37,7 @@ LTLDFLAGS += -Wl,--version-script,$(TOPD
+ include $(TOPDIR)/include/builddefs
+ 
+ LTLIBRARY = libnfs4acl.la
+-LTLIBS = -lattr
++LTLIBS =
+ LTDEPENDENCIES = $(TOPDIR)/include/nfs4.h
+ 
+ # 3 2 1  ->  .so.2.1.2
+--- a/libnfs4acl/nfs4_acl_for_path.c
++++ b/libnfs4acl/nfs4_acl_for_path.c
+@@ -32,11 +32,11 @@
+  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
+-
++#include <errno.h>
+ #include <sys/types.h>
+ #include <config.h>
+ #ifdef HAVE_ATTR_XATTR_H
+-# include <attr/xattr.h>
++# include <sys/xattr.h>
+ #else
+ # ifdef HAVE_SYS_XATTR_H
+ #  include <sys/xattr.h>
+@@ -46,6 +46,10 @@
+ #include <stdio.h>
+ #include "libacl_nfs4.h"
+ 
++#ifndef ENOATTR
++#define ENOATTR ENODATA        /* No such attribute */
++#endif
++
+ static int nfs4_getxattr(const char *, void *, size_t);
+ 
+ /* returns a newly-allocated struct nfs4_acl for `path', or NULL on error. */
+--- a/libnfs4acl/nfs4_set_acl.c
++++ b/libnfs4acl/nfs4_set_acl.c
+@@ -29,12 +29,13 @@
+  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
++#include <errno.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/errno.h>
+ #include <config.h>
+ #ifdef HAVE_ATTR_XATTR_H
+-# include <attr/xattr.h>
++# include <sys/xattr.h>
+ #else
+ # ifdef HAVE_SYS_XATTR_H
+ #  include <sys/xattr.h>
+@@ -44,6 +45,10 @@
+ #include <stdio.h>
+ #include "libacl_nfs4.h"
+ 
++#ifndef ENOATTR
++#define ENOATTR ENODATA        /* No such attribute */
++#endif
++
+ int nfs4_set_acl(struct nfs4_acl *acl, const char *path)
+ {
+ 	int res = 0;
+--- a/nfs4_setfacl/nfs4_setfacl.c
++++ b/nfs4_setfacl/nfs4_setfacl.c
+@@ -34,13 +34,14 @@
+  */
+ 
+ #define _XOPEN_SOURCE 500
++#include <errno.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+ #include <sys/errno.h>
+ #include <config.h>
+ #ifdef HAVE_ATTR_XATTR_H
+-# include <attr/xattr.h>
++# include <sys/xattr.h>
+ #else
+ # ifdef HAVE_SYS_XATTR_H
+ #  include <sys/xattr.h>

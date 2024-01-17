@@ -1,0 +1,15 @@
+--- EmptyEpsilon-EE-2023.06.17/CMakeLists.txt	2022-03-16 07:43:41.000000000 +0100
++++ /var/tmp/build-root/openSUSE_Tumbleweed-x86_64/home/abuild/rpmbuild/SOURCES/EmptyEpsilon-EE-2022.03.16/CMakeLists.txt	2022-09-14 15:54:47.874043178 +0200
+@@ -134,8 +134,11 @@
+ 
+ if(NOT meshoptimizer_POPULATED)
+   if(COMMAND FetchContent_Populate)
+-    FetchContent_Populate(meshoptimizer)
+   endif()
++  set(MESHOPTIMIZER_BASE_PATH "${EXTERNALS_DIR}")
++  set(meshoptimizer_SOURCE_DIR "${MESHOPTIMIZER_BASE_PATH}/meshoptimizer")
++  set(meshoptimizer_BINARY_DIR "${PROJECT_BINARY_DIR}/externals/meshoptimizer")
++  message("add_subdirectory(${meshoptimizer_SOURCE_DIR} ${meshoptimizer_BINARY_DIR} EXCLUDE_FROM_ALL)")
+   add_subdirectory(${meshoptimizer_SOURCE_DIR} ${meshoptimizer_BINARY_DIR} EXCLUDE_FROM_ALL)
+ endif()
+ 

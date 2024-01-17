@@ -1,0 +1,28 @@
+--- build.xml	2010-11-25 13:48:45.000000000 +0100
++++ build.xml-gil	2014-11-03 19:10:50.375388995 +0100
+@@ -716,7 +716,7 @@
+ 
+   </target>
+ 
+-
++  <taskdef resource="aQute/bnd/ant/taskdef.properties"/>
+ 
+   <target name="extra166yjar"
+           depends="extra166ycompile"
+@@ -724,10 +728,12 @@
+ 
+     <mkdir dir="${build.extra166ylib.dir}"/>
+ 
+-    <jar destfile="${extra166yproduct.jar}" index="true">
+-      <fileset dir="${build.extra166y.dir}"/>
+-    </jar>
+-
++    <bnd
++         classpath="${build.extra166y.dir}"
++         failok="false"
++         exceptions="false"
++         files="extra166y.bnd"
++         output="${extra166yproduct.jar}"/>
+   </target>
+ 
+ 

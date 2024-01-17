@@ -1,0 +1,79 @@
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_authorize_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_authorize_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_authorize_endpoint.py
+@@ -13,7 +13,8 @@ import uuid
+ 
+ from django.contrib.auth.models import AnonymousUser
+ from django.core.management import call_command
+-from mock import mock, patch
++from unittest import mock
++from unittest.mock import patch
+ 
+ try:
+     from django.urls import reverse
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_end_session_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_end_session_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_end_session_endpoint.py
+@@ -5,7 +5,7 @@ try:
+ except ImportError:
+     from django.core.urlresolvers import reverse
+ 
+-import mock
++from unittest import mock
+ from django.test import TestCase
+ 
+ from oidc_provider import settings
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_introspection_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_introspection_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_introspection_endpoint.py
+@@ -1,7 +1,7 @@
+ import random
+ import time
+ 
+-from mock import patch
++from unittest.mock import patch
+ 
+ try:
+     from urllib.parse import urlencode
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_middleware.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_middleware.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_middleware.py
+@@ -4,7 +4,7 @@ except ImportError:
+     from django.urls import path
+ from django.test import TestCase, override_settings
+ from django.views.generic import View
+-from mock import mock
++from unittest import mock
+ 
+ 
+ class StubbedViews:
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_token_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_token_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_token_endpoint.py
+@@ -21,7 +21,7 @@ from django.views.decorators.http import
+ from jwkest.jwk import KEYS
+ from jwkest.jws import JWS
+ from jwkest.jwt import JWT
+-from mock import patch
++from unittest.mock import patch
+ 
+ from oidc_provider.lib.endpoints.introspection import INTROSPECTION_SCOPE
+ from oidc_provider.lib.utils.oauth2 import protected_resource_view
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_utils.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_utils.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_utils.py
+@@ -5,7 +5,7 @@ from hashlib import sha224
+ from django.http import HttpRequest
+ from django.test import TestCase, override_settings
+ from django.utils import timezone
+-from mock import mock
++from unittest import mock
+ 
+ from oidc_provider.lib.utils.common import get_browser_state_or_default, get_issuer
+ from oidc_provider.lib.utils.token import create_id_token, create_token

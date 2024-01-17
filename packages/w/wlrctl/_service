@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://git.sr.ht/~brocellous/wlrctl</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="revision">v0.2.2</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
+

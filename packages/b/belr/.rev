@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48de60048acf61750664bd2ae2dfd7e7</srcmd5>
+    <version>0.1.2</version>
+    <time>1496534508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>500870</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1db236320ab379bf463c1a801e5af5df</srcmd5>
+    <version>0.1.2</version>
+    <time>1499067398</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507669</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a88c6121f27cf368b0cb0d0f435711c</srcmd5>
+    <version>0.1.3</version>
+    <time>1504102890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>511975</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c6a1288bef673ef99b7176ca5c0d255b</srcmd5>
+    <version>0.1.3</version>
+    <time>1551883659</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file with spec-cleaner</comment>
+    <requestid>681694</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b600537d2c4217f504aecf74b5f0306b</srcmd5>
+    <version>0.1.3</version>
+    <time>1573044867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739946</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>067c5cda14bd79d1a2e546d25ee118b1</srcmd5>
+    <version>0.1.3</version>
+    <time>1574104268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749210</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0ba64d42fba5e6ee012bfcf53ab49e1</srcmd5>
+    <version>4.3.1</version>
+    <time>1591742414</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3.1.</comment>
+    <requestid>796706</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f1f4065b5331a4eb647711aca132bfa</srcmd5>
+    <version>4.4.0</version>
+    <time>1596456913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0.</comment>
+    <requestid>823436</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b4f47525e620ec442d8ed6db59437ff2</srcmd5>
+    <version>4.5.3</version>
+    <time>1619031587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886882</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a2e44157fbffddee9f63d2e97314ff77</srcmd5>
+    <version>4.5.20</version>
+    <time>1626887186</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>907342</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e7d92efdd9c896023347548a4aeb255c</srcmd5>
+    <version>5.0.36</version>
+    <time>1635366073</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927658</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>338c4eda678146387cf5f96a30f6ecfc</srcmd5>
+    <version>5.0.49</version>
+    <time>1637108010</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931477</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1e7567749f50f476f22cce49e50de02f</srcmd5>
+    <version>5.0.53</version>
+    <time>1638131411</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934339</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3effafc7c400d7f38488623d47602c22</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * no changes
+- fix license tag
+</comment>
+    <requestid>950583</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>ac4620ea65ba53c4ff09722b26bce60d</srcmd5>
+    <version>5.0.67</version>
+    <time>1647458488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962149</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5fcda8f5efc325268c0c0310e24fd1a0</srcmd5>
+    <version>5.1.12</version>
+    <time>1651669862</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>974794</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5f07c574d26ae7fb795641094c180b45</srcmd5>
+    <version>5.1.32</version>
+    <time>1655396402</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982687</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>355ef9ea7f3f14ea9f22d613c949a807</srcmd5>
+    <version>5.1.72</version>
+    <time>1670514730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041334</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3802aa32b96ceb3daa3a3b4051feec2f</srcmd5>
+    <version>5.2.9</version>
+    <time>1673973374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * Fix syntax error in Github issue template
+  * Added Github yml issue template
+  * Parse integers as long long
+</comment>
+    <requestid>1059000</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>730b40d31ec0cf519098b41b07c4877e</srcmd5>
+    <version>5.2.51</version>
+    <time>1681665184</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.51:
+  * Fix bug resulting in empty matches not being considered as
+    valid when enclosed within a selector.
+  * Fix build using flexisip flags</comment>
+    <requestid>1079759</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4aad94c069f2d0648ba09b4a5f0d86c8</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235826</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog)
+- Add set_current_version.patch.
+</comment>
+    <requestid>1106264</requestid>
+  </revision>
+</revisionlist>

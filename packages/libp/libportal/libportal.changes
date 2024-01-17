@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Wed Nov 22 00:17:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace copypasted summaries by something more concrete
+
+-------------------------------------------------------------------
+Wed Nov 15 06:43:09 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Rename package name from libportal-1 to libportal1, this is
+  necessary to conform to the shared library policy:
+  https://en.opensuse.org/openSUSE:Shared_library_packaging_policy#Package_naming
+
+-------------------------------------------------------------------
+Sun Sep 10 08:53:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7.1:
+  + Restore ability to call g_object_new (XDP_TYPE_PORTAL, ...).
+
+-------------------------------------------------------------------
+Wed Sep  6 21:00:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7:
+  + Add support for the new SetStatus() method of the Background
+    portal.
+  + Add support for the new ConnectToEIS() method of the Remote
+    Desktop portal.
+  + Improve unit and integration tests.
+  + Documentation improvements.
+  + CI improvements.
+
+-------------------------------------------------------------------
+Mon Mar 21 19:31:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.6:
+  + New portal support: Dynamic launcher.
+  + Add API for checking for flatpak/snap sandbox.
+  + Fix a bug where the callback setup by libportal for a
+    GCancellable was not properly canceled in case a portal method
+    call was not successful, which can lead to a double free seg
+    fault.
+  + libportal-qt:
+    - Add convenient functions to better deal with GVariants.
+    - Use a global instance of XdpPortal object.
+    - Make filechooserFilterToGVariant() public.
+  + camera: Use correct variant for is_camera_present().
+  + portal-test-gtk3: Fix incorrect paths used in tests.
+  + Documentation improvements.
+  + CI improvements.
+- Add pkgconfig(Qt5Test) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Tue Jan 11 16:47:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Split devel subpackage into 4, libportal-devel,
+  libportal-gt3-devel, libportal-gtk4-devel and
+  libportal-qt5-devel, minimize dependencies pulled in for packages
+  depending on the various devel packages.
+
+-------------------------------------------------------------------
+Fri Jan  7 23:16:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5:
+  + Relicence to LGPL 3.0
+  + Fix a refcounting error in xdp_parent_free
+  + location: Fix location-updated signature
+  + remote:
+    - Add cursor mode
+    - Support virtual screens
+    - Support persistent sessions
+  + Rename qt backend to qt5
+  + Install separate libraries: libportal-gtk3, libportal-gtk4,
+    libportal-qt5
+  + Add gobject-introspection support
+  + Add vala support
+  + Add a GTK4 portal test app, using gjs
+  + Build documentation using gi-docgen
+- Change license from LGPL-2.1-or-later to LGPL-3.0-or-later
+  following upstream.
+- Add c_compiler, c++_compiler, pkgconfig(gi-docgen),
+  pkgconfig(gobject-introspection-1.0), pkgconfig(gtk+-3.0),
+  pkgconfig(gtk4), pkgconfig(vapigen), pkgconfig(Qt5Core),
+  pkgconfig(Qt5Gui), pkgconfig(Qt5Widgets) and
+  pkgconfig(Qt5X11Extras) BuildRequires: New dependencies.
+- Drop gtk-doc BuildRequires, no longer needed, nor used.
+- Replace post(un) handling with ldconfig_scriptlets macro.
+- Bump sover to 1 following upstream changes, drop libportal0
+  subpackage as it is no longer built, add new subpackages:
+  libportal-1, libportal-gtk3, libportal-gtk4, libportal-qt5,
+  typelib-1_0-Xdp-1_0, typelib-1_0-XdpGtk3-1_0 and
+  typelib-1_0-XdpGtk4-1_0.
+
+-------------------------------------------------------------------
+Fri May 14 22:34:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4:
+  + Make GTK4 support work with GTK 4.0
+  + Qt5 support
+  + OpenURI: Support write access
+  + Build fixes
+  + Add more tests
+  + Require GLib 2.58
+
+-------------------------------------------------------------------
+Sat Dec 21 00:09:15 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Inital build for openSUSE, version 0.3.
+

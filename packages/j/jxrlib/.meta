@@ -1,0 +1,5 @@
+<package name="jxrlib" project="openSUSE:Factory">
+  <title>Open source implementation of jpegxr</title>
+  <description>This is an open source implementation of the jpegxr image format standard.</description>
+  <devel project="graphics" package="jxrlib"/>
+</package>

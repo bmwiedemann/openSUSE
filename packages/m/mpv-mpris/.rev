@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63e629aee7326763fb126633ee358518</srcmd5>
+    <version>0.5</version>
+    <time>1589892373</time>
+    <user>dimstar_suse</user>
+    <comment>This package contains a plugin for mpv which allows control of the player using the MPRIS D-Bus interface, which enables control with multimedia keys in desktop environments such as GNOME and KDE as well as through tools like playerctl.</comment>
+    <requestid>806784</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5509374c70c8259e80ae95980cdce7e4</srcmd5>
+    <version>0.6</version>
+    <time>1637794467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>933396</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd395df05310ecce030d57e8913123c9</srcmd5>
+    <version>0.8.1</version>
+    <time>1655582765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1
+  * Fix Unknown Artist for YouTube videos
+    #gh/hoyon/mpv-mpris#76
+  * Emit signal for fullscreen event
+    #gh/hoyon/mpv-mpris#78
+
+- Update to 0.7.1
+  * Add test suite
+  * Emit Stopped Signal on exit.
+    #gh/hoyon/mpv-mpris#61
+    #gh/hoyon/mpv-mpris#22
+  * Set xesam:artist to channel name for YouTube videos.
+    #gh/hoyon/mpv-mpris#50</comment>
+    <requestid>983511</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6b3a39d03bbf5975539f7870da0cdea</srcmd5>
+    <version>0.9</version>
+    <time>1664553486</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.9
+  * expose musicbrainz metadata if available
+    gh#hoyon/mpv-mpris#79
+  * Fix test failure with glib 2.73.3
+    gh#hoyon/mpv-mpris#80</comment>
+    <requestid>1007097</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee2549ea117a03690fb4a6e73fcd7b8f</srcmd5>
+    <version>1.0</version>
+    <time>1680636363</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0
+  * rename album fields to match MusicBrainz internal names
+    gh#hoyon/mpv-mpris#81
+  * Fix string leaks in property change handler
+    gh#hoyon/mpv-mpris#84
+  * Makefile: Allow to append CFLAGS / LDFLAGS from environment.
+    gh#hoyon/mpv-mpris#87
+  * Do not use the default GMainContext
+    gh#hoyon/mpv-mpris#88</comment>
+    <requestid>1077054</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>259c11c84e73fe6018204c78df223615</srcmd5>
+    <version>1.1</version>
+    <time>1695209213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111981</requestid>
+  </revision>
+</revisionlist>

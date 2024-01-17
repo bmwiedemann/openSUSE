@@ -1,0 +1,15 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="filename">carat</param>
+		<param name="scm">git</param>
+		<param name="url">https://github.com/lbfm-rwth/carat</param>
+		<param name="revision">master</param>
+		<param name="parent-tag">v2.1b1</param>
+		<param name="versionformat">2.1b1+g@TAG_OFFSET@</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

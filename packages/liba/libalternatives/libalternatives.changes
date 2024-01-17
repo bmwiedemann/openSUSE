@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Tue Apr 25 10:21:11 UTC 2023 - bogdan.lezhepekov@suse.com
+
+- Update to version v1.2+30.a5431e9: (bsc#1191692)
+  * Change license to less restrictive Apache 2.0
+  * doc: fixing a few typos
+  * Adds option to display target executable only
+  * Makefiles and cmake: rework for reproducible build
+  * Improve Makefile
+  * libalts_exec_default: fix memory leak on error condition
+  * libalts_write_binary_configured_priority_to_file: fix memory leak
+  * saveConfigData(): fix file descriptor leak in while loop error case
+  * loadConfigData(): use goto exit label to prevent file descriptor leaks
+  * libalts_load_available_binaries: use goto err: label to fix leaks
+  * loadAlternativeForBinary: goto-assisted error handling to avoid leaks
+  * checkGroupConsistencies(): explicitly ignore unused `flags`
+  * lib: refactor error handling of findAltConfig()
+  * utils: fix possible memory leaks on error conditions
+  * docs: fix some typos and grammar
+  * Update README.md
+  * lib: generally open[at] with O_CLOEXEC
+  * Fix logic in options parser
+  * Add basic Makefile for buidling without cmake
+  * Added description for options=KeepArgv0
+  * cmake: Express the dependency on CUnit correctly for building tests
+  * cmake: Build and install CMake and PkgConfig files
+  * cmake: Fix setup of shared linker flags
+  * config.h: Fix the version to match the current latest tag
+
+-------------------------------------------------------------------
+Mon Nov 14 10:26:50 UTC 2022 - dmueller@suse.com
+
+- switch to a manual service rather than a buildtime tar service
+  which introduces a bootstrap cycle between python and tar_scm
+
+-------------------------------------------------------------------
+Tue Sep 14 09:12:40 UTC 2021 - adam.majer@suse.de
+
+- Update to version v1.2+3.b848aad:
+  * tests: fix array overrun in unit tests
+
+-------------------------------------------------------------------
+Tue Sep 14 08:35:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for the summary; fix grammar in description.
+
+-------------------------------------------------------------------
+Mon Sep 13 21:29:01 UTC 2021 - adam.majer@suse.de
+
+- Update to version v1.2:
+  * Add config option=KeepArgv0 to keep original argument during
+    exec() call
+
+-------------------------------------------------------------------
+Mon Jun 21 22:00:23 UTC 2021 - adam.majer@suse.de
+
+- Update to version v1.1:
+  * docs: Add broken manpage
+  * tests: unit tests configs
+  * tests: fix memory leak during tests
+  * list_binaries: initialize pointer that is later used in free
+  * libalts_exec_default() sets errno on not found
+
+-------------------------------------------------------------------
+Wed Jun 09 16:50:09 UTC 2021 - adam.majer@suse.de
+
+- Version v1.0.0:
+  * Prefix symbols with libalts_ to avoid symbol clashes
+  * Add symbol visibility and versioning
+  * Decamelize public symbols and rename
+

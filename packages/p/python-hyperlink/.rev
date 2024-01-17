@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec149e7a15d05ff6187b910ea19cc932</srcmd5>
+    <version>17.2.1</version>
+    <time>1499880909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>508466</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68ef23895d204aed290014a01e27f1d7</srcmd5>
+    <version>17.2.1</version>
+    <time>1545866791</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659433</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8599c6f385fafc33269b19b792cebf0</srcmd5>
+    <version>19.0.0</version>
+    <time>1560861768</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing runtime dependency on idna
+
+- version update to 19.0.0
+  * When passed to `str()` URLs now stringify to usable URL
+    strings. (See #49)
+  * Switched off of Python's built-in IDNA facilities to using the
+    [idna](https://pypi.python.org/pypi/idna) package. Not only is it
+    much more modern, it's also much more strict and correct in its
+    output. (See #19 and #56)
+  * Added new `DecodedURL` type with almost-identical API to the normal
+    `URL`, except that it automatically handles reserved characters in
+    argument values passed to its methods. (See #6, #11, #44)
+  * Added top-level `parse()` convenience function that now represents
+    the main entrypoint to hyperlink.
+  * Accept dictionaries as ‘query=’ arguments, in addition to
+    sequences of tuples (see #50)
+  * `URL.child()` will no longer fail when child gets no segments (#42 and #43)
+  * `URL.normalize()` now supports encoding stray/unmatched `%` characters
+    in character-encoded fields (userinfo, path, query string, fragment)
+    (see #61, #62)</comment>
+    <requestid>704698</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b574ba93b1e886e85dedd6ece425611e</srcmd5>
+    <version>20.0.1</version>
+    <time>1603645735</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.0.1:
+  * CPython 3.7 and 3.8 and PyPy3 added to test matrix
+  * Hyperlink now has type hints and they are now exported per
+  [PEP 561](https://www.python.org/dev/peps/pep-0561/).
+  * Several bugs related to hidden state were fixed, making it so that all data
+  on a `URL` object (including `rooted` and `uses_netloc`) is reflected by and
+  consistent with its textual representation.
+  This does mean that sometimes these constructor arguments are ignored, if it
+  would create invalid or unparseable URL text.</comment>
+    <requestid>838268</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b93eadc043fb8c57654933e636f11f9</srcmd5>
+    <version>21.0.0</version>
+    <time>1615905739</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 21.0.0:
+  * Update plus sign (+) handling to work with/like HTML form encoding (POST)
+    by default, fixes #129, and associated roundtripping (#146).
+  * Package IDNA tables.
+  * Long overdue dependency bumps</comment>
+    <requestid>878749</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>081f6d97babc76e8c10f830cf16b5e52</srcmd5>
+    <version>21.0.0</version>
+    <time>1682193631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081891</requestid>
+  </revision>
+</revisionlist>

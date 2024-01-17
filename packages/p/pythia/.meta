@@ -1,0 +1,5 @@
+<package name="pythia" project="openSUSE:Factory">
+  <title>Pythia 8</title>
+  <description>Pythia can be used to generate high-energy-physics ‘events’, i.e. sets of outgoing particles produced in the interactions between two incoming particles. The objective is to provide as accurate as possible a representation of event properties in a wide range of reactions, within and beyond the Standard Model, with emphasis on those where strong interactions play a role, directly or indirectly, and therefore multihadronic final states are produced. The physics is then not understood well enough to give an exact description; instead the program has to be based on a combination of analytical results and various QCD-based models. Extensive information is provided on all program elements: subroutines and functions, switches and parameters, and particle and process data. This should allow the user to tailor the generation task to the topics of interest.</description>
+  <devel project="science" package="pythia"/>
+</package>

@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ada4f11795f49024bd62c21c2233ef77</srcmd5>
+    <version>2.1.4</version>
+    <time>1533412405</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627267</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff36be7e2a912aa2250fade6a95f5017</srcmd5>
+    <version>2.1.4</version>
+    <time>1540448283</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642890</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5fce7c222b629980fa559cc07e73c583</srcmd5>
+    <version>2.1.4</version>
+    <time>1560971493</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710637</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0920159579c456cc35506f58b12eb09</srcmd5>
+    <version>2.1.5</version>
+    <time>1567092126</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>726814</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4f24d031b845bdb000813d1d55686384</srcmd5>
+    <version>2.1.5</version>
+    <time>1577451384</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759483</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49fb3517621991fbd01396f50519bd24</srcmd5>
+    <version>2.1.6</version>
+    <time>1592579836</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815157</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>04ef8bcc430fa6c8f9e28404782b16a1</srcmd5>
+    <version>2.1.6</version>
+    <time>1598643405</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829396</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>644934cc02e0e230f944c787ce96ea13</srcmd5>
+    <version>2.1.6</version>
+    <time>1608633911</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857526</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>dcf5b425d1a2ef31b3524111befc11ac</srcmd5>
+    <version>2.1.6</version>
+    <time>1631221654</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>917490</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>53d894c1aaf1b994b6f1f6f9744f076b</srcmd5>
+    <version>2.1.6</version>
+    <time>1639931672</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>933328</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>76b4de49e16b7ce16310720b771cc661</srcmd5>
+    <version>2.1.6</version>
+    <time>1644617371</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953516</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>dc03a3f2c0daa02c2dc1cb553e2bfae1</srcmd5>
+    <version>2.1.6</version>
+    <time>1644965850</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>954690</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d89dfa29fdf8543ac73bc18ae4ba2f6d</srcmd5>
+    <version>2.1.7</version>
+    <time>1680636162</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076012</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a4d6bd57899f16279160ab9c80ccc9fe</srcmd5>
+    <version>2.1.7</version>
+    <time>1697061356</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1116849</requestid>
+  </revision>
+</revisionlist>

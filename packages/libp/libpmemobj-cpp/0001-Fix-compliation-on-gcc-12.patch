@@ -1,0 +1,90 @@
+Generated: git diff f49772ac^..f49772ac
+ include/libpmemobj++/experimental/radix_tree.hpp | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+commit 59f4271fd01d77f3fc1d6805b8cca9ddf8f34054 (origin/stable-1.11)
+Merge: 86472126 8eb1a2f6
+Author: Łukasz Stolarczuk <lukasz.stolarczuk@intel.com>
+Date:   Wed Jan 26 16:01:25 2022 +0100
+
+    Merge pull request #1235 from igchor/fix_gcc12_compilation
+    
+    Fix compliation on gcc 12
+
+commit 67ba2be4fa4ce0643b02b3bf679ad683272ce87b (origin/stable-1.12)
+Merge: 5401d486 59f4271f
+Author: Łukasz Stolarczuk <lukasz.stolarczuk@intel.com>
+Date:   Thu Jan 27 19:03:05 2022 +0100
+
+    Merge pull request #1236 from pmem/stable-1.11
+    
+    Merge stable-1.11 into stable-1.12
+
+commit 679e5f47fd3bf5682e68b210c94fe20af958dce6
+Merge: e472cdf6 67ba2be4
+Author: Łukasz Stolarczuk <lukasz.stolarczuk@intel.com>
+Date:   Fri Jan 28 11:38:26 2022 +0100
+
+    Merge branch 'stable-1.12' into 'stable-1.13'
+
+commit f49772ac04303aee3637e01f8bf7728029fd8f06 (origin/stable-1.13)
+Merge: e472cdf6 679e5f47
+Author: Łukasz Stolarczuk <lukasz.stolarczuk@intel.com>
+Date:   Fri Jan 28 13:49:38 2022 +0100
+
+    Merge pull request #1240 from lukaszstolarczuk/merge-stable-1.12-into-stable-1.13
+    
+    Merge stable-1.12 into stable-1.13
+
+diff --git a/include/libpmemobj++/experimental/radix_tree.hpp b/include/libpmemobj++/experimental/radix_tree.hpp
+index 8f9efe29..1bb5235d 100644
+--- a/include/libpmemobj++/experimental/radix_tree.hpp
++++ b/include/libpmemobj++/experimental/radix_tree.hpp
+@@ -1,5 +1,5 @@
+ // SPDX-License-Identifier: BSD-3-Clause
+-/* Copyright 2020-2021, Intel Corporation */
++/* Copyright 2020-2022, Intel Corporation */
+ 
+ /**
+  * @file
+@@ -583,13 +583,12 @@ struct radix_tree<Key, Value, BytesView, MtMode>::node {
+ 	end() const;
+ 
+ 	template <bool Direction = direction::Forward, typename Ptr>
+-	auto find_child(const Ptr &n) const -> decltype(begin<Direction>());
++	iterator<Direction> find_child(const Ptr &n) const;
+ 
+ 	template <bool Direction = direction::Forward,
+ 		  typename Enable = typename std::enable_if<
+ 			  Direction == direction::Forward>::type>
+-	auto make_iterator(const atomic_pointer_type *ptr) const
+-		-> decltype(begin<Direction>());
++	iterator<Direction> make_iterator(const atomic_pointer_type *ptr) const;
+ 
+ 	uint8_t padding[256 - sizeof(parent) - sizeof(leaf) - sizeof(child) -
+ 			sizeof(byte) - sizeof(bit)];
+@@ -3003,9 +3002,9 @@ radix_tree<Key, Value, BytesView, MtMode>::node::end() const
+ 
+ template <typename Key, typename Value, typename BytesView, bool MtMode>
+ template <bool Direction, typename Ptr>
+-auto
++typename radix_tree<Key, Value, BytesView,
++		    MtMode>::node::template iterator<Direction>
+ radix_tree<Key, Value, BytesView, MtMode>::node::find_child(const Ptr &n) const
+-	-> decltype(begin<Direction>())
+ {
+ 	auto it = begin<Direction>();
+ 	while (it != end<Direction>()) {
+@@ -3018,9 +3017,10 @@ radix_tree<Key, Value, BytesView, MtMode>::node::find_child(const Ptr &n) const
+ 
+ template <typename Key, typename Value, typename BytesView, bool MtMode>
+ template <bool Direction, typename Enable>
+-auto
++typename radix_tree<Key, Value, BytesView,
++		    MtMode>::node::template iterator<Direction>
+ radix_tree<Key, Value, BytesView, MtMode>::node::make_iterator(
+-	const atomic_pointer_type *ptr) const -> decltype(begin<Direction>())
++	const atomic_pointer_type *ptr) const
+ {
+ 	return forward_iterator(ptr, this);
+ }

@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Oct 18 04:34:38 UTC 2017 - coolo@suse.com
+
+- add left-brace.patch to fix build with perl 5.26
+
+-------------------------------------------------------------------
+Wed Jun  5 18:41:42 UTC 2013 - coolo@suse.com
+
+- updated to 0.16
+    Add configure_requires accessor
+    Fake a version for inc::Module::Install
+
+-------------------------------------------------------------------
+Mon Feb 13 10:52:05 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Apr 28 10:53:54 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.15
+    * created by cpanspec 1.78.04
+

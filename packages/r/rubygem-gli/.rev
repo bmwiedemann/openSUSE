@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d8591f0d815a34c33663297b0e0df319</srcmd5>
+    <version>2.11.0</version>
+    <time>1421874812</time>
+    <user>coolo</user>
+    <comment>rubygem to provide commandline parsing class Gli</comment>
+    <requestid>280562</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>15e7ef38c72a287a2b6ac3b8273a764f</srcmd5>
+    <version>2.13.1</version>
+    <time>1431980888</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.13.1</comment>
+    <requestid>307662</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b06814a12f2253d7f9573c5e504103b</srcmd5>
+    <version>2.21.0</version>
+    <time>1658243975</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>990019</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>557ecb24b12555d7847bc98e95b7a594</srcmd5>
+    <version>2.21.1</version>
+    <time>1700078857</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126264</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e4acd69b0b4a0784534b82f1b2f88ef</srcmd5>
+    <version>3.12.0+git2.50eaf75</version>
+    <time>1691332172</time>
+    <user>dimstar_suse</user>
+    <comment>
+
+Popular video game compositor, also allows spoofing a virtual screen for compatibility with poorly made Windows games
+</comment>
+    <requestid>1102383</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc89f0b7e38aa0ad178f86517ad7ccd2</srcmd5>
+    <version>3.12.1+git1.6fb83bf</version>
+    <time>1692188262</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104088</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a524b908bbe2ed8defda84f9e6fe18c</srcmd5>
+    <version>3.12.3+git1.77d9432</version>
+    <time>1692483103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1104698</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed9a6804eff6564f759c7e8665f2af2b</srcmd5>
+    <version>3.12.5+git0.a8471d8</version>
+    <time>1693685247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108465</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a6a2a6b8b74848c678765f8fcdd9fb7f</srcmd5>
+    <version>3.12.5+git0.a8471d8</version>
+    <time>1694808333</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111511</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e71aa78fa1ba3f5ff8098283a60a720d</srcmd5>
+    <version>3.12.7+git0.d1eb70b</version>
+    <time>1696964395</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116469</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f3af1c77145d40b26de26a5d20b496b9</srcmd5>
+    <version>3.13.3</version>
+    <time>1700250570</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1127176</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b02736e0c98684c402d270faf6a1bd32</srcmd5>
+    <version>3.13.16</version>
+    <time>1701792183</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130851</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c6e1f1343c9d97d71a40cc7cdc2893c8</srcmd5>
+    <version>3.13.19</version>
+    <time>1703527515</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1134739</requestid>
+  </revision>
+</revisionlist>

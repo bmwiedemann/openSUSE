@@ -1,0 +1,19 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="url">https://github.com/M0ses/kanku.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="extract">dist/kanku.spec</param>
+    <param name="extract">dist/debian.changelog</param>
+    <param name="extract">dist/debian.compat</param>
+    <param name="extract">dist/debian.control</param>
+    <param name="extract">dist/debian.dsc</param>
+    <param name="extract">dist/debian.rules</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

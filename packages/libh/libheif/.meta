@@ -1,0 +1,5 @@
+<package name="libheif" project="openSUSE:Factory">
+  <title>ISO/IEC 23008-12:2017 HEIF file format decoder and encoder. </title>
+  <description>libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder. </description>
+  <devel project="multimedia:libs" package="libheif"/>
+</package>

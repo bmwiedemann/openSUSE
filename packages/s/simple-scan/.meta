@@ -1,0 +1,11 @@
+<package name="simple-scan" project="openSUSE:Factory">
+  <title>Simple Scanning Utility</title>
+  <description>Simple Scan is an easy-to-use application, designed to let users connect
+their scanner and quickly have the image/document in an appropriate
+format.
+
+Simple Scan is basically a frontend for SANE - which is the same backend
+as XSANE uses. This means that all existing scanners will work and the
+interface is well tested.</description>
+  <devel project="GNOME:Apps" package="simple-scan"/>
+</package>

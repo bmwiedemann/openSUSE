@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6121044412f37e101b98ea1b1179c2cf</srcmd5>
+    <version>0.5.11</version>
+    <time>1465847762</time>
+    <user>dimstar_suse</user>
+    <comment>NB! Requires https://build.opensuse.org/request/show/398294</comment>
+    <requestid>401248</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9c0790ea056ee7f09f0027e1a2af8968</srcmd5>
+    <version>0.5.11</version>
+    <time>1497274500</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502909</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1623b5d5d560f6c95d5ac4683ecc5a1a</srcmd5>
+    <version>0.5.11</version>
+    <time>1503926171</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518701</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>143385e08750ed98019e63ef9702b2bb</srcmd5>
+    <version>0.6.1</version>
+    <time>1598341115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829003</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>94f63c3eded9fdb8b6b6de943703fc76</srcmd5>
+    <version>0.6.1</version>
+    <time>1674048200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059346</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>805a55ec170e1f97337dae34c8bb09d8</srcmd5>
+    <version>0.6.2</version>
+    <time>1678814236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071416</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="PackageKit-branding-openSUSE" project="openSUSE:Factory">
+  <title>Simple software installation management software -- openSUSE default configuration</title>
+  <description>PackageKit is a system designed to make installing and updating
+software on your computer easier.  The primary design goal is to unify
+all the software graphical tools used in different distributions, and
+use some of the latest technology like PolicyKit to make the process
+suck less.
+
+This package provides the openSUSE default configuration for
+PackageKit.</description>
+  <devel project="GNOME:Factory" package="PackageKit-branding-openSUSE"/>
+</package>

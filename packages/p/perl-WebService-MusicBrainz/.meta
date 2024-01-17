@@ -1,0 +1,9 @@
+<package name="perl-WebService-MusicBrainz" project="openSUSE:Factory">
+  <title>Web service API to MusicBrainz database</title>
+  <description>This module will act as a factory using static methods to return specific
+web service objects;
+
+</description>
+  <devel project="devel:languages:perl" package="perl-WebService-MusicBrainz"/>
+  <url>http://search.cpan.org/dist/WebService-MusicBrainz</url>
+</package>

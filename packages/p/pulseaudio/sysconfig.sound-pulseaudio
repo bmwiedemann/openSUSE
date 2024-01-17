@@ -1,0 +1,21 @@
+
+## Path:	Hardware/Soundcard/PulseAudio
+## Description:	PulseAudio configuration
+## Type:	list(yes,no,custom)
+#
+# Enable or disable PulseAudio system. Can be set to "custom" to not have
+# scripts automatically change sound-related configuration for PulseAudio.
+#
+PULSEAUDIO_ENABLE="yes"
+
+## Path:	Hardware/Soundcard/PulseAudio/SystemWide
+## Description:	System Wide PulseAudio
+## Type:	list(yes,no)
+#
+# Allows you to configure that you have system wide PulseAudio daemon. Such is
+# setup is not recommended. To make it work, you would need
+# pulseaudio-systemwide package and enable pulseaudio systemd service. If you
+# are not sure whether you want this, you don't. So unless you know what you
+# are doing, keep this set to "no".
+#
+PULSEAUDIO_SYSTEM="no"

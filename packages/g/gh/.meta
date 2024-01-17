@@ -1,0 +1,6 @@
+<package name="gh" project="openSUSE:Factory">
+  <title>GitHub CLI</title>
+  <description>GitHub's official command line tool.</description>
+  <devel project="devel:tools:scm" package="gh"/>
+  <url>https://cli.github.com/</url>
+</package>

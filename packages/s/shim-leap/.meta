@@ -1,0 +1,5 @@
+<package name="shim-leap" project="openSUSE:Factory">
+  <title>shim binary from openSUSE:Leap</title>
+  <description></description>
+  <devel project="devel:openSUSE:Factory" package="shim-leap"/>
+</package>

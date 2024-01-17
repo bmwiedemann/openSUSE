@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Mon Mar  6 15:17:46 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- libkcapi was actually signed by the wrong key (bsc#1207892)
+
+-------------------------------------------------------------------
+Tue Apr 26 12:45:21 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 1.4.0
+  * fix: ensure that LTO is supported (by Simo Sorce)
+  * fix: add LTO regression testing (by Ondrej Mosnacek)
+  * enhancement: add sm3sum, sm3hmac tools, add APIs kcapi_md_sm3, kcapi_md_hmac_sm3
+  * enhancement: add SM4 convenience functions
+  * fix: support AEAD encryption of arbitrary size with kcapi-enc
+- removed libkcapi-fix-lto.patch (upstream)
+
+-------------------------------------------------------------------
+Tue Apr 26 12:44:40 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- use https url
+
+-------------------------------------------------------------------
+Tue Jul 27 08:03:48 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.1
+  * fix: fix -Wconversion warnings (by Ondrej Mosnacek)
+  * fix: fix bad data types in _kcapi_common_send_meta (by Ondrej Mosnacek)
+  * fix: Version symbols to maintain ABI compatibility (by Simo Sorce)
+  * fix: disable io_getevents on systems that do not support it (by Khem Raj)
+  * fix: remove prctl PR_SET_DUMPABLE to allow library to be debugged - as the
+    library does not store any sensitive data in data structures it owns, such
+    security precautions may not be necessary considering the benefit of
+    allowing regular debugging
+  * fix: ensure that sendmsg is always used as fallback when vmsplice cannot be
+    used
+  * enhancement: add kcapi_set_maxsplicesize and kcapi_get_maxsplicesize
+  * enhancement: the variable types are changed from int32_t to ssize_t and
+    from uint32_t to size_t to match common POSIX and Linux APIs
+- Added libkcapi-fix-lto.patch
+
+-------------------------------------------------------------------
+Mon Aug 31 13:30:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.0:
+ * enhancement: kcapi-hasher: add madvise and 64 bit support by Brandur Simonsen
+ * fix: fix clang warnding in KDF implementation by Khem Raj
+ * fix: fix inverted logic in kcapi-main test logic reported by Ondrej Mosnáček
+ * fix: return error when iteration count is zero for PBKDF as reported by
+   Guido Vranken
+ * enhancement: add function kcapi_cipher_stream_update_last to indicate the
+   last block of a symmetric cipher stream operation
+ * disable XTS multithreaded tests as it triggers a race discussed in
+   https://github.com/smuellerDD/libkcapi/issues/92. The conclusion is
+   the following: xts(aes) doesn't support chaining requests like for other
+   ciphers such as CBC (at least as implemented in the kernel Crypto API).
+   That can be seen in `crypto/testmgr.h` - the ciphers that are expected to
+   return IVs usable for chaining have the `.iv_out` entries filled in in their
+   test vectors (and those that don't support it do not). One can see that only
+   CTR and CBC test vectors have them, not XTS.
+   Looking again at how XTS is defined, it seems one could implement
+   transparent chaining by simply decrypting the final tweak using the tweak
+   key and return it as the output IV... but I believe this has never been
+   mandated nor implemented in the Crypto API (likely because of the overhead
+   of the final tweak decryption, which would be pointless if you're not going
+   to use the output IV - and there is currently no way to signal to the driver
+   that you are going to need it).
+ * disable AIO parallel tests due to undefined behavior
+
+-------------------------------------------------------------------
+Wed Jan  8 07:23:22 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.1.5:
+  - Fix invocation of ansi_cprng in FIPS mode during testing
+  - Fix testing on kernels >= 5.0
+  - Add virtualization test for kernel 5.1
+  - Fix the limit between vmsplice() and sendmsg() by Christophe Leroy
+  - Fix remove code duplication by Ondrej MosnÃ¡Äek
+  - Fix potential memleak in speed-test
+- updated to 1.1.4:
+  - Fix: use sendmsg when processing more than 1<<16 bytes input data which improves performance on some architectures
+- updated to 1.1.3:
+  - Fix: default location of FIPS 140-2 HMAC control file is .<orig file>.hmac (was accidentally moved to <orig file>.hmac with 1.1.0)
+- updated to 1.1.2:
+  - Fix: Bug fixes for GCC 8.1.0 regarding string length checks by Krzysztof Kozlowski
+  - Enhancement: ensure that tests execute on architectures other than X86 by Ondrej MosnÃ¡Äek
+  - Fix: Bug fix to initialize FDs at the correct time in kcapi-kernel-if.c by Ondrej MosnÃ¡Äek
+  - Test fix: Support test execution outside build environment by Ondrej MosnÃ¡Äek
+- updated to 1.1.1:
+  - Fix: Bug fixes for kcapi_hasher by Ondrej MosnÃ¡Äek
+- updated to 1.1.0:
+  - API Enhancement: Addition of kcapi_handle_reinit
+  - Fix: simplify code by removing the internal *_fd functions from kcapi-kernel-if.c
+  - Test enhancement: add IIV speed testing
+  - Fix: add a loop around the read system call to always obtain all generated data
+  - Fix: use host compiler for compiling docproc (reported by Christophe LEROY, fixed by BjÃ¶rn Esser)
+  - Fix: make error handling of hashing applications consistent with coreutils applications (reported by Christophe LEROY)
+  - Fix: support for zero length files (patched by Ondrej MosnÃ¡Äek)
+  - Fix: support for zero message hashes on kernels <= 4.9 (patched by Ondrej MosnÃ¡Äek)
+  - Fix: Add Travis CI test system provided by Ondrej MosnÃ¡Äek
+  - Fix: Add several fixes to kcapi-hasher by Ondrej MosnÃ¡Äek
+  - Fix: Add additional tests for kcapi-hasher by Ondrej MosnÃ¡Äek
+  - Fix: Apply unpadding only to last block of data by Ondrej MosnÃ¡Äek
+  - Fix: Fix resource leaks in error code paths suggested by Ondrej MosnÃ¡Äek
+  - Enhancement: achieve hmaccalc CLI equivalence by Ondrej MosnÃ¡Äek
+- updated to 1.0.3:
+  - Fix: support STDIN and --tag of sha*sum applications
+  - Enhancement: Add small enhancements to support integration with distros -- reported by BjÃ¶rn Esser
+- updated to 1.0.2:
+  - Fix: hasher-test.sh on 32-bit systems
+  - Fix: AIO return code handling on large number of requests -- reported by Jonathan Cameron
+  - Enhancement: disable coredumps of library
+  - Fix: remove unchecked -fstack-protector-strong from Makefile -- reported by Mathieu Malaterre
+  - Fix: document that kcapi_cipher_stream_op must be called in a loop to collect all data in a multhreaded environment.
+  - Test Fix: Update symmetric multithreaded stream test to invoke kcapi_cipher_stream_op in a loop to collect all data.
+  - Fix: Initialize the cipher handle on stack with zeros as the library expects a zero-initialized cipher handle. This fixes a possible segfault where free() is called on a non-initialized memory location.
+  - Fix: port algif_kpp and algif_akcipher to 4.15-rc3
+- updated to 1.0.1:
+  - Fix: constify AEAD cipher input data
+  - Fix: use GCC byte swapping acceleration if present
+  - Fix: KDF counter handling on little endian systems when generating more than 255 blocks
+  - Use LD_PRELOAD for execution of test cases to force using of the freshly compiled binaries
+  - Fix: return code handling of _kcapi_common_vmsplice_chunk_fd as reported by Christophe Leroy
+  - Fix: return code handling in _kcapi_md_update
+  - Fix: kcapi-hasher now supports files larger than 2GB
+  - Fix: kcapi-dgst now supports files larger than 2GB
+  - Fix: use stack protector
+  - Fix: rename header guards to remove leading underscore as pointed out by Markus Elfring
+  - Test Fix: Allow compiing the test code without asymmetric and KPP support
+- updated to 1.0.0:
+  - Fix: Small compile fixes for new checks of GCC 7
+  - API Change: Rename all LOG_* enums to KCAPI_LOG_* to prevent namespace poisoning
+  - Fix: soname and file name of library now compiles with conventions (thanks to Marcus Meissner)
+  - Fix: kcapi-rng.c: unify FD/syscall read code and fix __NR_getrandom resolution
+  - Enhancement: add kcapi-enc application to access symmetric encryption on command line
+  - Fix: consolidate duplicate code in kcapi-hasher
+  - Enhancement: add kcapi-dgst application to access hashes on command line
+  - Enhancement: add kcapi-rng man page
+  - Enhancement: add kcapi-rng --hex command line option
+  - Fix: enable full symmetric AIO support
+  - Fix: consolidate all test code into test/ and invoke all tests with test-invocation.sh
+  - Fix: fix memleaks in error code paths as reported by clang
+  - Fix: reduce memory footprint by rearranging data structures
+  - Fix: kcapi-hasher is now fully FIPS 140-2 compliant as it now includes the integrity test for libkcapi.so
+  - Enhancement: Add speed tests for MV-CESA accelerated ciphers and hash algorithms (thanks to Bastian Stender)
+  - Test Enhancement: add kcapi-enc-test-large.c test testing edge conditions of AF_ALG
+  - Test Enhancement: add virttest.sh - use of test system based on eudyptula-boot to test on linux-4.3.6, linux-4.4.86, linux-4.5, linux-4.7, linux-4.10, linux-4.12
+  - Test Enhancement: add kcapi-fuzz-test.sh to support fuzzing the AF_ALG interfaces
+  - Enhancement: add RPM SPEC file (tested with Fedora 26)
+  - API Change: replace --disable-lib-asym with --enable-lib-asym as the algif_akcipher.c kernel interface is not likely to be added to the kernel anytime soon
+  - API Enhancement: add KPP API which is not compiled by default, use --enable-lib-kpp (the algif_kpp.c kernel interface is not likely to be added to the Linux kernel any time soon)
+  - Test Enhancement: Add KPP tests
+  - Enhancement: Re-enable AIO support for symmetric and AEAD ciphers down to Linux kernels 4.1 and 4.7, respectively. This is due to integrating a fix against a kernel crash when using AIO.
+  - Fix: simply KDF code base
+  - API Enhancement: add message digest convenience functions kcapi_md_*sha*
+  - API Enhancement: add cipher convenience functions kcapi_cipher_*_aes_*
+  - API Enhancement: add rng convenience function kcapi_rng_get_bytes
+  - API Change: remove kcapi_aead_getdata, use kcapi_aead_getdata_input and kcapi_aead_getdata_output instead
+  - API Change: remove kcapi_aead_outbuflen, use kcapi_aead_outbuflen_enc and kcapi_aead_outbuflen_dec instead
+- updated to 0.14.0:
+  - AIO: fix tracking of completed IOCBs
+  - speed-test: fix AEAD handling
+  - speed-test: fix time calculation
+  - compiler now warns a user of deprecated API calls
+  - AIO: handle kernel errors for algif_skcipher gracefully
+  - AIO: using multiple IOCB if algif_aead interface supports it
+  - ASYM: add PKCS1 tests
+  - AIO: add ASYM AIO support
+  - AIO: fix AEAD AIO fallback
+  - AIO: add AIO fallback testing
+  - replace enforcement of symmetric cipher limits with a log message only (the underlying kernel implementations should catch any errors)
+  - add fuzzing tests
+  - use autotools build system as provided by Georges Savoundararadj with additional considerations from Marcin Nowakowski (thanks a lot)
+  - ALG_MAX_PAGES restriction is gone with current AF_ALG interface
+  - add HKDF (RFC5869)
+  - add apps/kcapi-rng
+  - add support for multiple accepts where the caller maintains the opfd
+  - fix memleak in error case in PBKDF
+  - add multithreaded symmetric cipher tests
+  - enable full AIO support for kernels 4.13 and higher (fallback AIO implementation using synchronous support for earlier kernels) -- this is due to the broken AIO support for earlier kernels
+  - Add tests for the AAD copy operation to be supported for kernel 4.13
+- dropped libkcapi-use-external-fipshmac.patch (done differently in upstream)
+- dropped reproduciblesort.patch (done differently upstream)
+- dropped reproducibledate.patch: merged upstream
+- libkcapi.keyring imported
+
+-------------------------------------------------------------------
+Thu Dec  5 10:10:41 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use %make_build and respect %optflags.
+
+-------------------------------------------------------------------
+Fri Sep 27 16:40:49 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove docbook-utils BuildRequires, xmlto is sufficient
+- Spec file cleanup, use license macro, drop defattr, drop BuildRoot
+
+-------------------------------------------------------------------
+Wed Jul 12 14:51:26 UTC 2017 - meissner@suse.com
+
+- Change the signing to use openssl sha256/sha512 directly, to
+  avoid fipscheck / hmaccalc.
+
+-------------------------------------------------------------------
+Sat Jul  8 14:04:41 UTC 2017 - bwiedemann@suse.com
+
+- Add reproduciblesort.patch to always link .o files in the same order and
+- Add reproducibledate.patch to not add current time to man-pages to fix build-compare
+
+-------------------------------------------------------------------
+Thu Jun 29 08:13:54 UTC 2017 - meissner@suse.com
+
+- libkcapi-use-external-fipshmac.patch: use external fipshmac,
+  our chroots / vm builds do not necessarily have the right kernel.
+
+-------------------------------------------------------------------
+Wed Jun 28 08:03:30 UTC 2017 - jengelh@inai.de
+
+- Compact descriptions a bit
+- Remove libkcapi provide/requires
+- Use %_libdir throughout and avoid /lib
+
+-------------------------------------------------------------------
+Thu Dec 22 14:03:43 UTC 2016 - abergmann@suse.com
+
+- Initial release 0.13.0.
+
+  A library and tools to access the kernel crypto api.
+
+  FATE#323554 bsc#1045948

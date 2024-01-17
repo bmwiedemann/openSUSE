@@ -1,0 +1,11 @@
+<package name="btar" project="openSUSE:Factory">
+  <title>Featureful tar-Compatible Archiver and Compressor</title>
+  <description>btar is a tar-compatible archiver which allows arbitrary compression and
+ciphering, redundancy, differential backup, indexed extraction, multicore
+compression, input and output serialisation, and tolerance to partial archive
+errors.
+
+</description>
+  <devel project="Archiving:Backup" package="btar"/>
+  <url>http://freecode.com/projects/btar</url>
+</package>

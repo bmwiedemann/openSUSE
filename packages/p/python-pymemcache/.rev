@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90fd82cc5e08567af45805fdcd20ee55</srcmd5>
+    <version>1.2.9</version>
+    <time>1511817466</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545729</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6814e1dc16a26b6a96c3da049eb9fbe</srcmd5>
+    <version>2.1.1</version>
+    <time>1551469989</time>
+    <user>coolo</user>
+    <comment>- update to 2.1.0:
+  * Check reStructuredText along with flake8
+  * Hotfix broken path
+  * fix result
+  * Update changelog
+  * Fix syntax errors
+  * Use byte strings after serializing with serde
+  * correct spelling mistake
+  * Remove deprecated Python version.
+  * Add tests for serde module
+  * Kill python 2.6
+  * Add optional support for unicode keys
+  * Update README to mention tox
+  * Fix support newbytes from future
+  * Final touches for 1.3.7
+  * Make tuple once, instead of on every call
+  * Use only the highest, premium quality picklers available at runtime.
+  * Enforce version for sphinx
+  * Don't Raise Generic Exception (#164)
+  * DocString: `gets` returns values, not keys
+  * Always send command keys in their original order
+  * Bump version to 1.4.3
+  * Bump version to 1.4.2
+  * Bump version to 1.4.1
+  * Bump version to 1.4.0
+  * Import Classes, Function into package level
+  * new Patch version for minor change
+  * trevor sucks
+  * Remove docs from being run when you're running tests
+  * Add integration environment to tox</comment>
+    <requestid>679883</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1c4f53faca5ca1f5ae722d211763cd56</srcmd5>
+    <version>2.1.1</version>
+    <time>1552986192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686261</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>699f7a2fe1e0f9836a414ec70902b4a4</srcmd5>
+    <version>2.2.2</version>
+    <time>1568191004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.2:
+  * Fix long_description string in Python packaging.
+  * Fix flags when setting multiple differently-typed values at once.
+  * Use setup.cfg metadata instead setup.py config to generate package.
+  * Add default_noreply parameter to HashClient.
+  * Add encoding parameter to Client constructors (defaults to ascii).
+  * Add flags parameter to write operation methods.
+  * Handle unicode key values in MockMemcacheClient correctly.
+  * Improve ASCII encoding failure exception.
+  * Fix setup.py dependency on six already being installed.</comment>
+    <requestid>729846</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>881df9732cc1343efe3599a63b6e5bf9</srcmd5>
+    <version>3.0.0</version>
+    <time>1584745178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786856</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e18f2c826677859ac315e378e5456512</srcmd5>
+    <version>3.0.1</version>
+    <time>1585262074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788526</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>93bed62b8de64e4ac02500908be82713</srcmd5>
+    <version>3.0.1</version>
+    <time>1587659685</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python 2</comment>
+    <requestid>796468</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fd409fdd8e4912b2f0171dd621fd8366</srcmd5>
+    <version>3.1.0</version>
+    <time>1589315582</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * Add TLS support for TCP sockets.
+  * Fix corner case when dead hashed server comes back alive.</comment>
+    <requestid>802871</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0724ffccc09ca7c80da7dbccf8c2cc36</srcmd5>
+    <version>3.2.0</version>
+    <time>1592245737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * ``PooledClient`` and ``HashClient`` now support custom ``Client`` classes</comment>
+    <requestid>814553</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>081134cfeecf3239c2d7c25248af3668</srcmd5>
+    <version>3.3.0</version>
+    <time>1602596729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.0:
+  * ``HashClient`` can now be imported from the top-level ``pymemcache`` package
+    (e.g. ``pymemcache.HashClient``).
+  * ``HashClient.get_many()`` now longer stores ``False`` for missing keys from
+    unavailable clients. Instead, the result won't contain the key at all.
+  * Added missing ``HashClient.close()`` and ``HashClient.quit()``.</comment>
+    <requestid>841415</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a5189924fa2ab15843a4ed4729607df6</srcmd5>
+    <version>3.3.0</version>
+    <time>1622664723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896756</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>72004ceabfb7bc39f5e794773a6ea75e</srcmd5>
+    <version>3.4.4</version>
+    <time>1624136663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900866</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4514922ac077442276af5fb3faf6e70a</srcmd5>
+    <version>3.5.0</version>
+    <time>1634754210</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * Sockets are now closed on ``MemcacheUnexpectedCloseError``.
+  * Added support for TCP keepalive for client sockets on Linux platforms.
+  * Added retrying mechanisms by wrapping clients.
+- drop merged_pr_327.patch (upstream)</comment>
+    <requestid>925750</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d475d32b6c66ff192f4cf7403b6e96b4</srcmd5>
+    <version>3.5.2</version>
+    <time>1649370507</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.5.2
+  * Handle blank ``STAT`` values.
+  * ``Client.get`` returns the default when using ``ignore_exc`` and if memcached
+    is unavailable
+  * Added ``noreply`` support to ``HashClient.flush_all``.
+- add python-pymemcache-no-mock.patch, do not require python-mock for build</comment>
+    <requestid>967531</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9c565ae2a1abedc48261f68b76ad3a66</srcmd5>
+    <version>4.0.0</version>
+    <time>1670954109</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable broken tests in i586.
+- Fix launch of memcached for tests
+- Remove python-pymemcache-no-mock.patch
+- More specific python_sitelib in %files
+- Remove python_module macro definition
+- Update to 4.0.0:
+  * Drop python support for 2.7, 3.4 and 3.5 by @jogo in #321
+  * Use default for get ignore_exc by @jogo in #351
+  * Return default from hash client by @Pankrat in #352
+  * Return default from hash client when using positional argument by @Pankrat
+    in #354
+  * Support noreply for hash flush_all by @jogo in #361
+  * Drop support for Python 3.6 by @jparise in #363
+  * Add official support for Python 3.10 by @jparise in #365
+  * Handle a blank stat value by @liquidpele in #388
+  * Small buffer pass optimization as discussed in #395. by @martinnj in #402
+  * Expand Client with a method for sending arbitrary commands. by @martinnj in
+    #395
+  * add pluggable compression serde by @sontek in #407
+  * Start to add type hints by @jogo in #415
+  * Add py.typed file by @jogo in #421
+  * Fix key_prefix issue with stats and cache_memlimit by @jogo in #433</comment>
+    <requestid>1042435</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ec07beeec973b160c013f005b7850f01</srcmd5>
+    <version>4.0.0</version>
+    <time>1671128735</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on python-memcached.
+- Clean up python 2 gubbins.</comment>
+    <requestid>1043051</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d3972f9dd0fa4045574e5426151ee0ed</srcmd5>
+    <version>4.0.0</version>
+    <time>1682095677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081651</requestid>
+  </revision>
+</revisionlist>

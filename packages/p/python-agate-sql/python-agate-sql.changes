@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Sat Dec  2 17:21:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Use Fast Executemany Mode
+  * Add Python 3.12 support.
+  * Drop support for Python 3.6 (2021-12-23), 3.7 (2023-06-27).
+  * Allow SQLAlchemy 2. Disallow SQLAlchemy < 1.4.
+
+-------------------------------------------------------------------
+Tue May  9 20:54:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- flip to the lowercase compat provides
+
+-------------------------------------------------------------------
+Fri Feb 10 10:37:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.9:
+  * Disallow SQLAlchemy 2.
+
+-------------------------------------------------------------------
+Sat Jan 15 16:26:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.8:
+  * Fix tests for Linux packages.
+  * Add wheels distribution.
+- drop fix_test_fixture_33.patch: obsolete
+
+-------------------------------------------------------------------
+Tue Jul 13 08:47:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_test_fixture_33.patch to fix testing fixture
+  (gh#wireservice/agate-sql#33).
+
+-------------------------------------------------------------------
+Thu Jul  1 12:13:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Some test_to_sql_create_statement_with_schema test again
+  (gh#wireservice/agate-sql#33).
+
+-------------------------------------------------------------------
+Fri Mar  5 09:57:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.5.6:
+  - Fix test that fails in specific environments.
+
+-------------------------------------------------------------------
+Sun Feb 21 20:46:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch off the failing test_to_sql_create_statement_with_schema
+  test (gh#wireservice/agate-sql#33, bsc#1181270).
+
+-------------------------------------------------------------------
+Tue Nov 10 13:45:33 UTC 2020 - Marketa Calabkova <mmachova@suse.com>
+
+- update to 0.5.5
+  * Set type to DATETIME for datetime (MS SQL).
+  * Drop support for Python 2.7 (EOL 2020-01-01), 3.4 (2019-03-18), 3.5 (2020-09-13).
+
+-------------------------------------------------------------------
+Thu Apr 16 18:27:27 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Switch from using nosetest runner to pytest
+
+-------------------------------------------------------------------
+Wed Apr 17 11:44:43 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.5.4
+  * Add ``min_col_len`` and ``col_len_multiplier`` options to
+    :meth:`.Table.to_sql` to control the length of text columns.
+  * agate-sql is now tested against Python 3.7.
+  * Drop support for Python 3.3 (end-of-life was September 29, 2017).
+  * Add support for CrateDB.
+  * Set type to ``BIT`` for boolean (MS SQL).
+  * Eliminate SQLite warning about Decimal numbers.
+- added patches
+  we do not have crate dialect
+  + python-agate-sql-no-crate.patch
+
+-------------------------------------------------------------------
+Wed May  9 18:54:36 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.5.3
+  * Add chunk_size option to :meth:`.Table.to_sql` to write rows in batches.
+  * Add unique_constraint option to :meth:`.Table.to_sql` to include in a UNIQUE constraint.
+  * Specify precision and scale for DECIMAL (MS SQL, MySQL, Oracle).
+  * Set length of VARCHAR to 1 even if maximum length is 0 (MySQL).
+  * Set type to TEXT if maximum length is greater than 21,844 (MySQL).
+- Use license tag
+
+-------------------------------------------------------------------
+Fri Oct 20 16:12:44 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

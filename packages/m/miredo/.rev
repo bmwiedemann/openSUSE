@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4df109ef30df8dda47b68e581cc1e6af</srcmd5>
+    <version>1.2.6</version>
+    <time>1544726897</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain miredo in Factory</comment>
+    <requestid>656126</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c401c770c5cf538c26c7a9de3149032c</srcmd5>
+    <version>1.2.6</version>
+    <time>1591286104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811253</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a82b0d66790ba8f8e317bf2daf8a9eb1</srcmd5>
+    <version>1.2.6</version>
+    <time>1592398165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>815247</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d6065eb68c8e2af638226c6a8d4f9acf</srcmd5>
+    <version>1.2.6</version>
+    <time>1634417233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925615</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ac869a119e670daddd65bdb1affe970a</srcmd5>
+    <version>1.2.6</version>
+    <time>1638560134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935308</requestid>
+  </revision>
+</revisionlist>

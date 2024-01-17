@@ -1,0 +1,33 @@
+diff -ruN dbench-3.04.orig/fileio.c dbench-3.04/fileio.c
+--- dbench-3.04.orig/fileio.c	2004-12-13 03:26:32.000000000 +0100
++++ dbench-3.04/fileio.c	2005-11-16 14:10:54.000000000 +0100
+@@ -295,7 +295,7 @@
+ 	buf = calloc(size, 1);
+ 
+ 	if (pwrite(ftable[i].fd, buf, size, offset) != ret_size) {
+-		printf("write failed on handle %d\n", handle);
++		printf("write failed on handle %d (%s)\n", handle, strerror(errno));
+ 		exit(1);
+ 	}
+ 
+@@ -315,7 +315,7 @@
+ 	buf = malloc(size);
+ 
+ 	if (pread(ftable[i].fd, buf, size, offset) != ret_size) {
+-		printf("read failed on handle %d\n", handle);
++		printf("read failed on handle %d (%s)\n", handle, strerror(errno));
+ 	}
+ 
+ 	free(buf);
+diff -ruN dbench-3.04.orig/io.c dbench-3.04/io.c
+--- dbench-3.04.orig/io.c	2003-10-16 03:58:48.000000000 +0200
++++ dbench-3.04/io.c	2005-11-16 14:10:54.000000000 +0100
+@@ -114,7 +114,7 @@
+ 	}
+ 	lseek(ftable[i].fd, offset, SEEK_SET);
+ 	if (write(ftable[i].fd, buf, size) != size) {
+-		printf("write failed on handle %d\n", handle);
++		printf("write failed on handle %d (%s)\n", handle, strerror(errno));
+ 	}
+ }
+ 

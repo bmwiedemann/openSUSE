@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Sep 11 08:44:10 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: Do not create timestamps with bnd tools
+
+-------------------------------------------------------------------
+Wed Mar 23 16:44:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Some classes were built with higher bytecode level
+
+-------------------------------------------------------------------
+Mon Mar 21 04:49:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source level 8
+
+-------------------------------------------------------------------
+Tue Nov 12 17:18:46 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of extra166y 1.7.0

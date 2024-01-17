@@ -1,0 +1,35 @@
+--- configure.in
++++ configure.in
+@@ -1,9 +1,11 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_PREREQ(2.13)
+-AC_INIT(idep.h)
++AC_PREREQ(2.57)
++AC_INIT(idep, 0.5)
++AC_CONFIG_SRCDIR(idep.h)
++AC_CONFIG_FILES(Makefile)
+ 
+-AM_INIT_AUTOMAKE(idep, 0.4)
++AM_INIT_AUTOMAKE
+ AM_CONFIG_HEADER(config.h:config.in)
+ 
+ AC_CANONICAL_HOST
+@@ -15,8 +17,6 @@
+ AC_PROG_CC
+ AC_PROG_CPP
+ 
+-AM_PROG_LIBTOOL
+-
+ AC_PROG_CXX
+ AC_PROG_CXXCPP
+ AC_PROG_INSTALL
+@@ -28,7 +28,4 @@
+ 
+ AC_HEADER_STDC
+ 
+-AC_OUTPUT( \
+-	Makefile \
+-)
+-
++AC_OUTPUT

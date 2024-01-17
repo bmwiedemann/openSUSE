@@ -1,0 +1,712 @@
+#!/bin/bash
+#
+# system
+#
+
+VERSION="0.1"
+USER_CONFIG_FILE="$HOME/.config/conky/conky.conf"
+DEFAULT_RSS_URL="https://www.novell.com/newsfeeds/rss/patches/security_notifications-daily.xml"
+SYSTEM_LOG="| journalctl -q | tail -n 5"
+USERS_LOG="| who"
+
+ALIGNMENTS="|top_left|top_right|top_middle|bottom_left|bottom_right|bottom_middle|middle_left|middle_middle|middle_right,tl|tr|tm|bl|br|bm|ml|mm|mr|"
+
+ip=ip
+iwconfig=/usr/sbin/iwconfig
+ss=/usr/sbin/ss
+
+# log
+function log()
+{
+  verb=$1
+  msg="$2"
+
+  if [ $verb -le ${config[verbosity]} ]; then
+    echo "$msg" >&2
+  fi
+}
+
+# bail out
+function die()
+{
+  msg="$1"
+  log 0 "conkyconf: $msg"
+  log 2 "$0 unsuccessfully finished"
+  exit 1
+}
+
+# writing string to file
+function sys_write_file()
+{
+  file=$1
+  content=$2
+
+  dir=$(dirname $file)
+  if [ ! -d "$dir" ]; then
+    log 1 "creating $dir"
+    mkdir -p $dir || die "could not create $dir"
+  fi
+
+  log 1 "writing $file"
+
+  echo "$content" > "$file" || die "could not write $file"
+  return
+}
+
+# list of all network interfaces
+function sys_all_network_interfaces()
+{
+  interfaces=$($ip -br link show | sed 's:\s\+.*::' | grep -v 'tun\|lo' | tr '\n' ' ')
+  log 1 "detected interfaces: $interfaces"
+  echo $interfaces
+}
+
+# default interface
+function sys_default_network_interface()
+{
+  interface=$($ip route | grep default | sed 's:.*dev \(\S\+\) .*:\1:')
+  log 1 "detected default interface: $interface"
+  echo $interface
+}
+
+# wireless or wired network iterface?
+function sys_network_interface_type()
+{
+  interface=$1
+  type=$($iwconfig $1 2>&1 | grep -q 'no wireless' && echo "wired" || echo "wireless")
+  log 1 "network interface $interface is $type"
+  echo $type
+}
+
+# attached sdX drives
+function sys_drives()
+{
+  drives=$(find /dev -maxdepth 1 -type b -name "sd[a-z]" -exec basename "{}" ";" | sort)
+  log 1 "detected drives: $drives"
+  echo $drives
+}
+
+# processors
+function sys_processors()
+{
+  CPUS=$(getconf _NPROCESSORS_ONLN)
+  CPUS=${CPUS:=1}
+  cpus=$(seq 1 $CPUS | tr '\n' ' ')
+  log 1 "assuming numbers of CPUs: $cpus"
+  echo $cpus
+}
+
+# opened ports
+function sys_opened_ports()
+{
+  ports=$($ss -nlt | awk '{print $4}' | grep ':::\|\*:' | sed 's/:::\|\*://' | sort -u)
+  log 1 "opened ports: $ports"
+  echo $ports
+}
+
+#
+# global config
+#
+
+function conky_config()
+{
+  cat << EOS
+conky.config = {
+        background = true,
+        update_interval = 1.5,
+        cpu_avg_samples = 2,
+        net_avg_samples = 2,
+        out_to_console = false,
+        override_utf8_locale = true,
+        double_buffer = true,
+        no_buffers = true,
+        text_buffer_size = 32768,
+        imlib_cache_size = 0,
+        own_window = true,
+        own_window_type = 'desktop',
+        own_window_argb_visual = true,
+        own_window_argb_value = 120,
+        own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+        border_inner_margin = 20,
+        border_outer_margin = 0,
+        alignment = '${config[alignment]}',
+        gap_x = ${config[gap_x]},
+        gap_y = ${config[gap_y]},
+        draw_shades = true,
+        draw_outline = false,
+        draw_borders = false,
+        draw_graph_borders = false,
+        use_xft = true,
+        font = 'monospace:size=9',
+        xftalpha = 0.8,
+        uppercase = false,
+        default_color = '#FFFFFF',
+        own_window_colour = '#000000',
+        maximum_width = 375
+};
+
+EOS
+}
+
+#
+# contents of the window
+#
+
+# horizontal rule
+function text_hr()
+{
+  echo "        \${goto 20}\${hr}"
+}
+
+# hostname, kernel, date and uptime
+function text_preamble()
+{
+  cat << EOS
+        \${goto 20}\${color #DD3A21}\${font monospace:bold:size=20}\${nodename}\${font}\${color}\${goto 250}\${font FontAwesome}\${font}\${voffset -2} \${time %d/%m/%y}
+        \${goto 20}\${color #DD3A21}\${kernel}\${color}\${goto 250}\${font FontAwesome}\${font}\${voffset -2} \${time %H:%M}
+        \${goto 250}\${font FontAwesome}\${font}\${voffset -2} \${uptime}
+EOS
+}
+
+# show one network interface info
+function text_network_interface
+{
+  if_name=$1
+  case $(sys_network_interface_type $if_name) in
+    "wired")    icon=  text="" ;;
+    "wireless") icon=; text="\${exec eval \$(/usr/sbin/iwconfig $if_name | grep 'Link Quality' | sed 's:.*Quality=\([0-9]\+\)/\([0-9]\+\).*:echo \$((\1*100/\2))%:')}" ;;
+  esac
+  cat << EOS
+        \${goto 20}\${font FontAwesome}$icon\${font}\${voffset -2} $if_name \${addrs $if_name} $text
+        \${goto 20}\${upspeedgraph $if_name 30,178 06E9F8 2104FA}\${goto 202}\${downspeedgraph $if_name 30,175 FFFF00 DD3A21}
+        \${goto 20}\${font FontAwesome}\${font}\${voffset -2} \${upspeed $if_name}\${font FontAwesome}\${goto 202}\${font}\${voffset -2} \${downspeed $if_name}
+EOS
+}
+
+# memory info
+function text_memory
+{
+  cat << EOS
+        \${goto 20}\${font FontAwesome}\${font}\${voffset -2} \${mem}/\${memmax} (\${memperc}%) | Swap: \${swapperc}%
+        \${goto 20}\${memgraph 30,355 AAF5D0 00B35B}
+EOS
+}
+
+# attached drive info
+function text_drive
+{
+  name=$1  
+
+
+  cat << EOS
+        \${goto 20}\${font FontAwesome}\${font}\${voffset -2} $name 
+        \${goto 20}\${diskiograph_read $name 30,178 06E9F8 2104FA}\${goto 202}\${diskiograph_write $name 30,175 FFFF00 DD3A21} 
+        \${goto 20}\${font FontAwesome}\${goto 20}\${font}\${voffset -2} \${diskio_read $name}\${font FontAwesome}\${voffset -2}\${goto 202}\${font} \${diskio_write $name}
+EOS
+}
+
+# processor info
+function text_processor
+{
+  name=$1
+  cat << EOS
+        \${goto 20}CPU$name: \${goto 90}\${cpu cpu$name}%\${goto 140}\${cpubar cpu$name 7,70}\${goto 230}\${freq_g $name} GHz
+EOS
+}
+
+# process table
+function text_processes
+{  
+  echo  "        \${color #FFFF00}\${goto 20}Name \${goto 200}Pid\${goto 255}Cpu%\${goto 310}Mem%\${color}"
+  for i in $(seq 1 5); do
+    echo "        \${goto 20}\${top name $i} \${goto 180}\${top pid $i}\${goto 235}\${top cpu $i}\${goto 290}\${top mem $i}"
+  done
+}
+
+# rss feed
+function text_rss
+{
+  url=$1
+  cat << EOS
+        \${goto 20}\${font FontAwesome}\${font}\${voffset -2} \${color #FFFF00}\${scroll 50 2 \${rss $url 10 item_titles 5}}\${color}
+EOS
+}
+
+# port monitor
+function text_portmon()
+{
+  port_range=$1
+  
+  echo -n "        \${goto 20}"
+  if [[ $port_range =~ "-" ]]; then
+    echo -n "\${font FontAwesome}\${font}\${voffset -2} Port range $port_range"
+    port_range="$(tr '-' ' ')"
+  else
+    echo -n "\${font FontAwesome}\${font}\${voffset -2} Port $port_range"
+    port_range="$port_range $port_range"
+    echo -n ", service \${tcp_portmon $port_range lservice 0}"
+  fi
+  echo " (\${tcp_portmon $port_range count} connections)"
+
+  for i in $(seq 0 4); do
+    echo -n "        \${goto 20}\${font monospace:size=8}"
+    echo -n "\${if_match \"\${tcp_portmon $port_range rip $i}\" != \"\"}"
+    echo -n "\${tcp_portmon $port_range rip $i}:"
+    echo -n "\${tcp_portmon $port_range rport $i} "
+    echo -n "\${tcp_portmon $port_range rhost $i} "
+    echo -n "\${if_match \"\${tcp_portmon $port_range rport $i}\" != \"\${tcp_portmon $port_range rservice $i}\"}"
+    echo -n "\${tcp_portmon $port_range rservice $i} "
+    echo -n "\${endif}"
+    echo -n "\${else}"
+    echo -n "-"
+    echo -n "\${endif}"
+    echo "\${font}"
+ done
+
+}
+
+# text when no port are defined
+function text_portmon_no_ports()
+{
+  echo "        \${goto 20}Port monitor: no ports defined."
+}
+
+# logfile (including program outputs)
+function text_log
+{
+  logfile=$1
+  font_size=${2:-8}
+
+  echo -n "        \${goto 20}\${font monospace:size=$font_size}"
+  if [[ "$logfile" =~ ^[[:space:]]*\| ]]; then
+     logfile=$(echo $logfile | sed 's:^\s*|\s*::')
+     log 1 "will read log from [$logfile] program"
+    echo -n \${texeci 10 $logfile}
+  else
+    log 1 "will read log from [$logfile] file"
+    echo -n \${tail $logfile 5}
+  fi
+  echo \${font}
+}
+
+function conky_text()
+{
+  echo
+  echo "conky.text = [["
+  content_index=0
+  while [ -n "${contents[$content_index]}" ]; do
+    case "${contents[$content_index]}" in
+      preamble)
+        text_preamble
+        ;;
+      hrule)
+        text_hr
+        ;;
+      networkif*)
+        for nif in ${contents_arg[$content_index]}; do
+          text_network_interface $nif
+        done
+        ;;
+      memory)
+        text_memory
+        ;;
+      drives)
+        for d in ${contents_arg[$content_index]}; do
+          text_drive $d
+        done
+        ;;
+      processors)
+        for p in ${contents_arg[$content_index]}; do
+          text_processor $p
+        done
+        ;;
+      processes)
+        text_processes
+        ;;
+      rss)
+        text_rss ${contents_arg[$content_index]}
+        ;;
+      portmon)
+        if [ -n "${contents_arg[$content_index]}" ]; then
+          for range in ${contents_arg[$content_index]}; do
+            text_portmon $range
+          done
+        else
+          text_portmon_no_ports
+        fi
+        ;;
+      log*)
+        fontsize=$(echo ${contents[$content_index]} | sed 's/.*://')
+        text_log "${contents_arg[$content_index]}" $fontsize
+    esac
+    content_index=$((content_index+1))
+  done
+  echo "]];"
+}
+
+# string is integer
+function arg_is_numeric()
+{
+  [[ "$1" =~ ^[0-9]+$ ]] && return 0 || return 1
+}
+
+# string is option
+function arg_is_option()
+{
+  arg=$1
+  [ ${arg:0:1} == '-' ] && return 0 || return 1
+}
+
+function arg_is_alignment()
+{
+  [[ "$ALIGNMENTS" =~ "|$1|" ]] && return 0 || return 1
+}
+
+# end of argument list
+function arg_is_end()
+{
+  [ -z "$1" ] && return 0 || return 1
+}
+
+# split list argument, delimiters: [:,;]
+function arg_split_list()
+{
+  echo $1 | tr ':,;' ' '
+}
+
+# help on this script usage
+function conkyconf_usage()
+{
+  cat << EOS
+$(echo ${0##*/} | tr [a-z] [A-Z]), version $VERSION
+
+ conky configuration example generator
+
+ USAGE  
+
+     conkyconf --par1 [arg11 [arg12]] --par2 [arg21 [arg22]] ...
+
+ There are object parameters (as --memory, --networkif, --rule) and 
+ non-object parameters (as --verbosity, --file). Object parameters
+ will add corresponding objects to conky configuration in that
+ order. Objects can be repeated for different arguments by 
+ repeating it on command line.
+
+ More conky instantions can be launched, but then different configuration
+ files has to be used (see -f|--file option).
+
+ Configuration is written to
+
+ $USER_CONFIG_FILE
+
+ which has a precedence before system wide configuration file.
+
+ PARAMETERS
+
+     -h|--help                  this help
+     -v|--verbosity [verb]      debug output of the script, 0 (just errors)
+                                1 or 2
+     -f|--file <conffile>       write the configuration to this file
+     -g|--geometry [a [x [y]]]  geometry of conky window, parameters:
+                                * a -- alignment top_left (tl), bottom_middle 
+                                       (bm), middle_left (ml), middle_middle 
+                                       (mm), etc.
+                                * x -- gap between window and attached 
+                                       vertical border
+                                * y -- gap between window and attached 
+                                       horizontal border
+
+
+     -r|--rule                  add horizontal rule
+     -p|--preamble              host, kernel, time and uptime info
+     -n|--networkif [ifcs]      network interface(s) info; arguments:
+                                * 'all'    -- all interfaces are monitored
+                                * <no arg> -- default interface is chosen
+                                * <list>   -- comma, colon or semicolon
+                                          separated list of interfaces
+     -m|--memory                memory info
+     -d|--drives [drvs]         sdaX drives info; arguments:
+                                * 'all'    -- all drives are monitored
+                                * <no arg> -- the same as 'all'
+                                * <list>   -- comma, colon or semicolon
+                                          separated list of drives
+     -c|--cpu                   add all CPUs info
+     -e|--processes             show process table
+     -s|--rss [url]             add a rss feed; if no url is given,
+                                SUSE security rss feed is chosen
+     -t|--portmon [ports]       display port monitor; arguments:
+                                * <no arg> -- display opened ports
+                                * <list>   -- comma, colon or semicolon
+                                              separated list of ports
+     -l|--log [log [fs]]       show tail of a log; arguments:
+                               log:
+                                * | <program> -- show output of the 
+                                                 program
+                                * <file>      -- show last 5 lines of 
+                                                 the log
+                                * <noarg>     -- $SYSTEM_LOG
+                               fs: font size of the output
+
+
+      -u|--default             choose default profile; objects can be added
+                               or prepended
+
+ NOTE
+
+ Everytime some of monitored objects are changed, for example new port is 
+ opened, usb stick is plugged in or connection is changed from wireless to 
+ wired (and just default interface is monitored), then conkyconf has to be
+ rerun. conky then rereads the configuration automatically.
+
+ EXAMPLES
+
+   conkyconf --default
+
+      Uses built in preset.
+
+   conkyconf --preamble -r --networkif -r --drives -r --cpu
+
+      Shows preamble, default network interface, all attached
+      drives and cpu information, in that order.
+
+   conkyconf --preamble -r --drives sda:sdb -r --networkif em1 \\
+             -r --cpu -r --log '|who' 8  -r --log
+      
+      Displays peramble, network drives sda and sdb, interface em1 and
+      cpu information and also output of who command in font size 8
+      and system log in default font size for logs.
+EOS
+}
+
+
+
+declare -A contents
+declare -A contents_arg
+declare -A config
+
+config[verbosity]=0
+config[file]="$USER_CONFIG_FILE"
+config[alignment]="bottom_right"
+config[gap_x]="70"
+config[gap_y]="70"
+
+if [ -z "$1" ]; then
+  set -- "--help"
+fi
+
+content_index=0
+while [ -n "$1" ]; do
+  arg_is_option "$1" || die "option starting with '-' or '--' expected ($1)"
+
+  case "$1" in
+    -h|--help)
+      conkyconf_usage
+      exit 0
+      ;;
+    -v|--verbosity)
+      shift
+      if ! arg_is_end "$1" && arg_is_numeric "$1"; then 
+        config[verbosity]="$1"
+        shift; 
+      else
+        config[verbosity]=2
+      fi
+      log 1 "verbosity set to ${config[verbosity]}"
+      ;;
+    -p|--preamble)
+      shift
+      log 2 'adding preamble'
+      contents[$content_index]="preamble"
+      content_index=$((content_index+1))
+      ;;
+    -r|--hrule)
+      shift
+      log 2 'adding horizontal rule'
+      contents[$content_index]="hrule"
+      content_index=$((content_index+1))
+      ;;
+    -n|--networkif)
+      shift
+      if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+        if [ $1 == "all" ]; then
+          devices="$(sys_all_network_interfaces)"
+        else
+          devices="$(arg_split_list $1)"
+        fi
+        shift
+      else
+        devices="$(sys_default_network_interface)"
+      fi
+      log 2 "adding network interface monitor: $devices"
+      contents[$content_index]="networkif"
+      contents_arg[$content_index]="$devices"
+      content_index=$((content_index+1))
+      ;;
+    -m|--memory)
+      shift
+      log 2 'adding memory info'
+      contents[$content_index]="memory"
+      content_index=$((content_index+1))
+      ;;
+    -d|--drives)
+      shift
+      # -d and -d all the same effect
+      if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+        if [ "$1" == "all" ]; then
+          drives="$(sys_drives)"
+        else
+          drives="$(arg_split_list $1)"
+        fi
+        shift
+      else
+        drives="$(sys_drives)"
+      fi
+      log 2 "adding hard drives: $drives"
+      contents[$content_index]="drives"
+      contents_arg[$content_index]="$drives"
+      content_index=$((content_index+1))
+      ;;
+    -c|--cpu)
+      shift
+      processors="$(sys_processors)"
+      log 2 "adding cpu units: $processors"
+      contents[$content_index]="processors"
+      contents_arg[$content_index]="$processors"
+      content_index=$((content_index+1))
+      ;;
+    -e|--processes)
+      shift
+      log 2 "adding process table"
+      contents[$content_index]="processes"
+      content_index=$((content_index+1))
+      ;;
+    -s|--rss)
+      shift
+      if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+        url="$1"
+      else
+        url="$DEFAULT_RSS_URL"
+      fi
+      log 2 "adding rss feed: $url"
+      contents[$content_index]="rss"
+      contents_arg[$content_index]="$url"
+      content_index=$((content_index+1))
+      ;;
+    -t|--portmon)
+      shift
+      if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+        port_ranges="$(arg_split_list $1)"
+        shift
+      else
+        port_ranges="$(sys_opened_ports)"
+      fi
+      log 2 "adding port monitor for port ranges: $port_ranges"
+      contents[$content_index]="portmon"
+      contents_arg[$content_index]="$port_ranges"
+      content_index=$((content_index+1))
+      ;;
+    -l|--log)
+      shift
+      if ! arg_is_end "$1" && ! arg_is_option "$1" && ! arg_is_numeric "$1"; then
+        log="$1"
+        shift
+      else
+        log="$SYSTEM_LOG"
+      fi
+      if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+        if arg_is_numeric "$1"; then
+          font_size="$1"
+          shift
+        else
+          die "numeric argument (font size of the log) expected"
+        fi
+      else
+        font_size=6
+      fi
+      log 2 "adding logging: $log"
+      contents[$content_index]="log:$font_size"
+      contents_arg[$content_index]="$log"
+      content_index=$((content_index+1))
+      ;;
+    -u|--default)
+      shift
+      contents[0]="preamble"
+      contents[1]="hrule"
+      contents[2]="networkif"
+      contents_arg[2]="$(sys_default_network_interface)"
+      contents[3]="hrule"
+      contents[4]="drives"
+      contents_arg[4]="$(sys_drives)"
+      contents[5]="hrule"
+      contents[6]="processors"
+      contents_arg[6]="$(sys_processors)"
+      contents[7]="hrule"
+      contents[8]="processes"
+      contents[9]="hrule"
+      contents[10]="portmon"
+      contents_arg[10]="$(sys_opened_ports)"
+      contents[11]="hrule"
+      contents[12]="log:8"
+      contents_arg[12]="$USERS_LOG"
+      contents[13]="hrule"
+      contents[14]="log:6"
+      contents_arg[14]="$SYSTEM_LOG"
+      contents[15]="hrule"
+      contents[16]="rss"
+      contents_arg[16]="$DEFAULT_RSS_URL"
+      content_index=17
+      ;;
+    -f|--file)
+      shift
+      if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+        config[file]="$1"
+        shift
+      else
+        die "-f|--file requires an argument"
+      fi
+      ;;
+    -g|--geometry)
+      shift
+      if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+        if ! arg_is_alignment "$1"; then
+          die "first argument of -g|--geometry has to be one of $ALIGNMENTS"
+        fi
+        config[alignment]="$1"
+        shift
+        if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+          if ! arg_is_numeric "$1"; then
+            die "second argument of -g|--geometry has to be a number"
+          fi
+          config[gap_x]="$1"
+          shift
+          if ! arg_is_end "$1" && ! arg_is_option "$1"; then
+            if ! arg_is_numeric "$1"; then
+              die "third argument of -g|--geometry has to be a number"
+            fi
+            config[gap_y]="$1"
+            shift
+          fi
+        fi
+      else
+        die "-g|--geometry requires an argument"
+      fi
+      ;;
+    *)
+      die "unsupported option ($1)"
+      shift
+      ;;
+  esac
+done
+
+log 2 "arguments parsed"
+
+log 1 "geometry: ${config[alignment]}, ${config[gap_x]}, ${config[gap_y]}"
+
+log 2 "creating configuration"
+conky_configuration="$(conky_config)$(conky_text)"
+
+log 2 "wrinting configuration"
+sys_write_file ${config[file]} "$conky_configuration"
+
+log 2 "$0 successfully finished"
+

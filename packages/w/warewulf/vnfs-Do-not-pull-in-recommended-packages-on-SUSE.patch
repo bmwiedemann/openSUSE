@@ -1,0 +1,80 @@
+From: Egbert Eich <eich@suse.com>
+Date: Fri Oct 15 23:14:50 2021 +0200
+Subject: vnfs: Do not pull in recommended packages on SUSE
+Patch-mainline: Not yet
+Git-commit: b68ccd15c87aef87c2880ad9224110b13149e0a8
+References: 
+
+With recommended packages too many undesired packages will be pulled in.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ vnfs/libexec/wwmkchroot/include-suse             | 4 ++--
+ vnfs/libexec/wwmkchroot/opensuse-15.3.tmpl       | 3 ++-
+ vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl | 3 ++-
+ vnfs/libexec/wwmkchroot/sle-15.tmpl              | 3 ++-
+ 4 files changed, 8 insertions(+), 5 deletions(-)
+diff --git a/vnfs/libexec/wwmkchroot/include-suse b/vnfs/libexec/wwmkchroot/include-suse
+index af7dd36..e6cad4c 100644
+--- a/vnfs/libexec/wwmkchroot/include-suse
++++ b/vnfs/libexec/wwmkchroot/include-suse
+@@ -26,7 +26,7 @@ set_overlay() {
+         echo "ERROR: This must be a SuSE compatible chroot!"
+         return 1
+     fi
+-    PKGR_CMD="$ZYP_CMD install --auto-agree-with-licenses $PKGLIST"
++    PKGR_CMD="$ZYP_CMD install --no-recommends --auto-agree-with-licenses $PKGLIST"
+     return 0
+ }
+ 
+@@ -84,7 +84,7 @@ prechroot() {
+         done
+     fi
+ 
+-    PKGR_CMD="$ZYP_CMD install --auto-agree-with-licenses $PKGLIST"
++    PKGR_CMD="$ZYP_CMD install --no-recommends --auto-agree-with-licenses $PKGLIST"
+ 
+     return 0
+ }
+diff --git a/vnfs/libexec/wwmkchroot/opensuse-15.3.tmpl b/vnfs/libexec/wwmkchroot/opensuse-15.3.tmpl
+index 4f8c96f..9eb6871 100644
+--- a/vnfs/libexec/wwmkchroot/opensuse-15.3.tmpl
++++ b/vnfs/libexec/wwmkchroot/opensuse-15.3.tmpl
+@@ -13,7 +13,8 @@ PKGLIST="systemd-sysvinit aaa_base bash dracut distribution-release coreutils \
+     e2fsprogs ethtool filesystem findutils gawk grep iproute2 iputils \
+     mingetty net-tools nfs-kernel-server pam rpcbind procps psmisc shadow \
+     rsync sed rsyslog tcpd timezone util-linux tar less gzip kmod-compat \
+-    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget zypper"
++    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget
++    zypper netcfg ncurses-utils"
+ 
+ 
+ 
+diff --git a/vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl b/vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl
+index 6f973a2..e5ce50e 100644
+--- a/vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl
++++ b/vnfs/libexec/wwmkchroot/opensuse-tumbleweed.tmpl
+@@ -12,7 +12,8 @@ PKGLIST="systemd-sysvinit aaa_base bash dracut openSUSE-release coreutils \
+     e2fsprogs ethtool filesystem findutils gawk grep iproute2 iputils \
+     mingetty net-tools nfs-kernel-server pam rpcbind procps psmisc shadow \
+     rsync sed rsyslog tcpd timezone util-linux tar less gzip kmod-compat \
+-    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget zypper"
++    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget
++    zypper netcfg ncurses-utils glibc-locale-base"
+ 
+ 
+ 
+diff --git a/vnfs/libexec/wwmkchroot/sle-15.tmpl b/vnfs/libexec/wwmkchroot/sle-15.tmpl
+index fe46b99..34f5c86 100644
+--- a/vnfs/libexec/wwmkchroot/sle-15.tmpl
++++ b/vnfs/libexec/wwmkchroot/sle-15.tmpl
+@@ -10,7 +10,8 @@ PKGLIST="systemd-sysvinit aaa_base bash dracut distribution-release coreutils \
+     e2fsprogs ethtool filesystem findutils gawk grep iproute2 iputils \
+     mingetty net-tools nfs-kernel-server pam rpcbind procps psmisc shadow \
+     rsync sed rsyslog tcpd timezone util-linux tar less gzip kmod-compat \
+-    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget zypper"
++    udev openssh dhcp-client pciutils vim strace cron cpupower cpio wget
++    zypper netcfg ncurses-utils"
+ 
+ 
+ 

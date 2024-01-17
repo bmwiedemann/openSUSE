@@ -1,0 +1,346 @@
+-------------------------------------------------------------------
+Thu Dec 14 09:15:32 UTC 2023 - Petr Gajdos <pgajdos@suse.com>
+
+- update to 1.7.6:
+  * Fixes for sphinx build
+  * refactor: remove \`importlib-metadata\` fallback
+  * Fix crash on pyproject.toml without bandit config
+  * Add official support of Python 3.12
+  * Use mirror repository for black pre-commit hook
+  * fix(plugins/B507): also detect class instances
+  * Fix for ReadtheDocs build
+  * Bump actions/checkout from 3 to 4
+  * Fix dependabot to update github actions
+  * Support ignoring blacklists by name
+  * Update blacklist call documentation
+  * Avoid gitpyhon CVE-2022-24439
+  * django\_rawsql\_used: support keyword arguments used in
+    \`RawSQL\`
+  * Simplify \`wrap\_file\_object\`
+  * Update asserts.py documentation
+  * Remove support for Python 3.7 due to end-of-life
+  * Make pre-commit run Bandit hook using a single process
+  * Switch from open collective to PSF
+  * Replace pbr in favor of importlib
+  * Add a copy button to all code snippets in docs
+  * Add \`random.Random\` to B311 checks
+  * Update pre-commit hooks
+  * Update versions of used GitHub Actions
+  * Skip unnecessary \`pip install\` commands in the
+    pythonpackage.yml workflow
+  * Switch to tox 4
+  * Adds check for crypt module usage as weak hash
+  * language and linting updates
+  * xmlrpclib replaced with xmlrpc in Python3
+  * Improper detection of non-requests module
+  * Remove checks for Python2 urllib
+  * Render Python 3.10 in drop down correctly
+  * Update bug report to include version 1.7.5
+
+-------------------------------------------------------------------
+Mon Jul 24 20:22:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.5:
+  * Added a bit more \`project\_urls\`
+  * Check for github action updates monthly
+  * Improve handling nosec for multi-line strings
+  * Improve detecting SQL injections in f-strings
+  * Correct build status badge in README
+  * Fix breaking build due to new tox
+  * DOC: Add explanation on how to use pre-commit with config
+    file
+  * Add official Python 3.11 support
+  * remove py2 exec example in docs
+  * Typo fix
+  * [docs] Mention \`exclude\_dirs\` option available in TOML and
+    YAML
+  * Fix AttributeError on detect of tuple assign condition
+  * Fix json and yaml formatters to respect num lines
+  * Fixup some invalid pickle testing
+  * Pass correct number of arguments to match the \`%s\`
+    placeholders.
+  * Remove python 2 reference in docs
+  * Fix filename of B202 in docs
+  * weak\_cryptographic\_key assumes positional arg
+  * Check for deprecated TLS 1.1
+  * Adding tarfile.extractall() plugin with examples
+  * Fix issue #453 jinja2 template select\_autoescape when using
+    jinja2.select\_autoescape
+  * Fix a false positive condition yaml\_load
+  * Add case for global exec
+  * Docs for request without timeout has dead link
+  * Blacklist pandas read\_pickle and add functional test for it
+  * Enhancement Proposal: Plugin "assert\_used" config-skip
+    snippet
+  * Add end\_col\_offset if available
+  * Fix reading the number argument from config file
+  * add jsonpickle deserialization blacklist
+  * Add some missing curve types
+  * Remove invalid checking on hashlib
+  * Avoid redundant message if debug on
+  * Update version of dependency-review-action
+  * Add releases link in "Version control integration"
+  * Add another bad example of yaml load
+  * Specify semver range for Python 3.11
+  * Make small fixes in docs
+  * Test plugin listing incorrectly pointing b612 to plugin ref
+    of b1022
+  * Close the <b> tag in HTML formatter
+  * Add dependency review action
+  * Update action versions in Actions workflows (#890)
+  * Add Discord link to README
+  * Add myself to sponsor list
+  * Test against Python 3.11
+  * Corrected documentation on configuration
+  * Remove redundant pip line
+  * Removal of ghugo
+  * Adding logging.config.listen() plugin with examples
+  * Add a Discord link to the docs
+  * Add request for feedback via 👍
+  * Remove redundant word Bandit in titles of sections
+  * Add license and contributing links to docs
+  * Fix for build breaks in format job
+  * add check for "requests" calls without timeout
+  * Fix up B109 and B111 removed plugins docs
+  * Replace \`toml\` with \`tomli\`
+  * Make use of rich for the progress bar
+  * Add doc for hashlib plugin
+  * Add the httpx module check for verify
+  * Indiciate hash type in message
+  * Remove blacklist call check for os.tempnam
+  * Removal of blacklist call B309 httpsconnection
+  * Add classifier to indicate Py3 only
+  * Fix line range using Python 3.8 end\_lineno
+  * Group location line with code output
+  * Use a constant for weak hashes
+  * Bad link to screen shot
+  * Add an example screen shot of Bandit to README
+
+-------------------------------------------------------------------
+Thu Oct 27 11:16:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-six dependency
+- Use autosetup instead of setup + patch
+- More specific sitelib package in %files
+
+-------------------------------------------------------------------
+Wed Mar 16 06:50:41 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.7.4
+  1.7.4
+  -----
+  * Add 1.7.4 in issue template (#846)
+  * core/config: Fix ConfigError missing argument if toml is missing (#845)
+  * Add version 1.7.3 to dropdown (#833)
+  * Fix traceback in hashlib\_insecure\_functions (#834)
+  1.7.3
+  -----
+  * Build of artifact fails if raw directive used (#831)
+  * Center the bandit logo in readme (#823)
+  * Target Python >= 3.7 in pre-commit hooks (#830)
+  * Inaccurate message in hashlib check (#827)
+  * Improve performance of linerange (#629)
+  * Use CWE link in HTML formatter (#825)
+  * Use versioned links to docs (#819)
+  * Fix root doc for readthedocs (#818)
+  * Fix up some warnings and errors in docs (#817)
+  * Test on operating systems we can support (#804)
+  * Cannot seek stdin on pipe (#496)
+  * Respect color environment variables if set (#813)
+  * Show usage with no arguments (#814)
+  * Cleanup the README
+  * Fix references to the default branch name (#810)
+  * Better hashlib check for Python 3.9 (#805)
+  * Check for hardcoded passwords in class attributes (#766)
+  *  Add new plugin to check use of pyghmi (#803)
+  * Remove redundant Python 3.6 code (#802)
+  * Check value of usedforsecurity for hashlib (#798)
+  * Change up how CWE is formatted (#788)
+  * Suport disabling individual tests
+  * Add functional test of snmp\_security\_check (#791)
+  * Avoid printing metrics as float point numbers (#794)
+  * Fix up warnings in output of tox (#793)
+  * Removal of the CWEMAP dict (#789)
+  * Including CWE information (#613)
+  * Add Getting Started chapter (migrate from README) (#773)
+  * Delete releasenotes directory (more openstack leftovers) (#786)
+  * Update publish-to-pypi.yml (#785)
+  * Use released version of gh-action-pypi-publish (#784)
+  * Delete release-drafter.yml (#781)
+  * Update issue template with latest versions (#783)
+  * Rely on toml conditionally
+
+-------------------------------------------------------------------
+Sun Feb  6 10:04:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * Correctly define extras in \`setup.cfg\` (#755)
+  * Remove leftover openstack code (#778)
+  * Added snmp\_security check plugin for various SNMP checks (#403)
+  * Fix README.rst (#365)
+  * Fixup typo (#769)
+  * Drop end-of-life Python 3.6 (#777)
+  * Drop end-of-life Python 3.5 (#746)
+  * Start using auto-formatters (#754)
+  * Create FUNDING.yml (#774)
+  * test\_help\_arg: remove assert on 'optional arguments' (#752)
+  * Fix broken reported URL link for B107 (#751)
+
+-------------------------------------------------------------------
+Sat Jan 15 16:40:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * fix reading initial values from .bandit
+  * Always use a Loader in yaml.load
+  * PEP-518 support: configure bandit via pyproject.toml
+  * document that random.choices() isn't secure either
+  * Fix syntax errors in bug report
+  * Update bug\_report.yaml
+  * Fix syntax error in bug report
+  * Use new issue template format
+  * Update README.rst
+  * Mock part of python 3.x
+  * Add license to package installation metadata
+  * #694 Bandit fails when using importlib with named arguments
+  * Add string options for severity and confidence
+  * Add support for Python 3.9
+  * Create config.yml
+  * Add default labels to issues
+  * Replace http with https URLs
+  * More cleanup of license headers
+  * Updates to address docstring code scan issues, add flake8 configuration
+  * Small syntax and formatting cleanup
+  * More complete removal of Python2 code
+  * Show column offset on all formatters
+  * Add the column offset to the issue model
+  * Clearer message for subprocess module use
+  * Specify language\_version in .pre-commit-hooks.yaml
+  * Specify output\_file encoding as utf-8
+  
+-------------------------------------------------------------------
+Wed Oct 27 12:05:40 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+- added sources
+  + _multibuild
+
+-------------------------------------------------------------------
+Tue Mar  9 06:13:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.0:
+  * Remove blacklist call to input() (#662) @ericwb
+  * Remove universal support on the wheel (#655) @ericwb
+  * Give some tips on how to resolve B101 in the doc (#616) @xuhdev
+  * Don't show progress information on --quiet (#641) @fniessink
+  * Add skip configuration to assert_used (#633) @wilbertom
+  * Drop Python2 build, test, and install (#615) @ericwb
+  * [FIX] blacklist: fix typo in import_ftplib (#601) @Yenthe666
+  * Resolve 'NoneType' object has no attribute 'id'Traceback in
+    django_mark_safe (#598) @ehooo
+  * Fix typo for activating venv (#590) @bavedarnow
+  * Bump pyyaml (#588) @dosisod
+  * Fix colorama not being disabled after being used (#586) @adambenali
+  * Cleanup some typos in recent contributor guide (#585) @ericwb
+  * [DOC] Support python3 venv creation (#583) @look4regev
+  * Add sha1 to the list of insecure hashes (#561) @ericwb
+  * Fix docs for B610,B611,B703 (#555) @amacfie
+  * Add a section explaining "nosec" (#554) @exhuma
+  * Add official support of Python 3.8 (#547) @ericwb
+  * Ignore common directories by default (#544) @ericwb
+  * Add shelve to the pickle blacklists (#542) @auscompgeek
+  * Remove obsolete "sudo" keyword. (#538) @jugmac00
+  * Update test requirements to latest versions (#535) @ericwb
+  * Fix readme file on Extending Bandit on list things (#534) @Aurel10
+  * fix the documentation file README.rst (#533) @Aurel10
+  * Cleanup comments after #510 (#532) @florczakraf
+  * Use SPDX license identifier instead of bulky headers (#530) @ericwb
+  * fix B603 docstring (#524) @graingert
+  * Add type checking to name node of hashlib_new (#516) @teeann
+  * --exit-zero option (#510) @maciejstromich
+  * Fix 3.8 errors (#509) @tylerwince
+  * Add several ini options for .bandit file (#508) @vuolter
+  * get_url returns different urls calling twice (bug #506) (#507) @ehooo
+  * Replace setattr (#493) @tylerwince 
+- Refresh remove-non-test-deps.patch
+
+-------------------------------------------------------------------
+Sat Feb 13 10:21:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- cli tool, don't build with multiple python versions 
+
+-------------------------------------------------------------------
+Thu Jun  4 16:15:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- drop oslosphinx dependency
+
+-------------------------------------------------------------------
+Thu Nov 14 15:05:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip out python2 build as the dependencies are unresolvable
+
+-------------------------------------------------------------------
+Wed Jul 24 10:13:14 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.6.2
+  * add test for regression and fix directory exclusion without wildcards (#489)
+  * add namespaces for parent attributes (#492)
+  * Performance fix (#502)
+
+-------------------------------------------------------------------
+Thu May 16 17:29:13 UTC 2019 - Bryan Stephenson <bstephenson@suse.com>
+
+- Update to version 1.6.0
+  * Add namespaces for parent attributes
+
+-------------------------------------------------------------------
+Fri Mar  8 02:46:11 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing dependency on stestr >= 1.0.0
+
+-------------------------------------------------------------------
+Mon Feb 11 08:10:09 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add remove-non-test-deps.patch to remove build dependencies not needed
+  to build, including hacking which requires an unavailable version of flake8
+- Activate tests
+- Use %license
+- Remove unnecessary devel build dependency
+- Update to v1.5.1
+  * Fixed crash on dynamic import traversal
+  * New plugin to check for ignoring host keys
+  * Adding test case for traversal crash
+- from 1.5.0
+  * Add Python 3.7 support
+  * Add experimental Python 3.8-dev to test with
+  * Remove the unused integration tests (#285) @ericwb
+  * Show support for Python 3.6 (#288) @ericwb
+  * Remove integration test playbooks (#290) @ericwb
+  * Django sql injection (#292) @ehooo
+  * Add detection for Django XSS (#295) @ehooo
+  * Fast fix for yaml import (#303) @ehooo
+  * Add missing B413 import_pycrypto in README (#308) @ericwb
+  * Add PyCryptodome to import blacklists (#307) @warthog9
+  * Django sql injection (#292) @ehooo
+  * Add detection for Django XSS (#295) @ehooo
+  * Add missing documentation link for B703 (#314) @ericwb
+  * Improve shell (#298) @ehooo
+  * Remove openstack specific utils.exec checks (#328) @ericwb
+  * add os.tempnam() / os.tmpnam() to blacklist (#330) @chair6
+  * Add subprocess.run to B602 (#334) @ericwb
+  * Repair some broken see also links in the doc (#336) @ericwb
+  * Use html.escape() instead of cgi.escape() (#339) @ericwb
+  * Re-enable functional tests as part of CI (#348) @ericwb
+  * Add more_info URL to XML output (#354) @stannum-l
+  * Report dill usage (#347) @calve
+  * Add emojis to issue types (#358) @ericwb
+  * Add more_info URL to text output (#359) @stannum-l
+  * Add more_info URL to screen formatter (#360) @stannum-l
+  * Add support to run bandit as python -m bandit (#363) @rtfpessoa
+  * Add more_info URL to csv formatter (#361) @stannum-l
+  * Add external documentation references (#368) @evqna
+  * Change ver 1.4.1 references to 1.5.0 (#370) @ericwb
+
+-------------------------------------------------------------------
+Thu Nov 16 17:44:23 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version for v1.4.0

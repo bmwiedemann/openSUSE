@@ -1,0 +1,13 @@
+<package name="x11vnc" project="openSUSE:Factory">
+  <title>Export running X11 session via VNC</title>
+  <description>VNC is a set of programs using the RFB (Remote Frame Buffer) protocol.
+They are designed to &quot;export&quot; a frame buffer via the network. It is in
+wide use for administration.
+
+X.org has a virtual Xvnc server which you can start as an own screen
+(e.g. :1) and connect to with a VNC client (e.g. vncviewer from
+tightvnc). This package contains the x11vnc binary that allows you to
+export a screen of a running non-virtual X11 server. x11vnc has been
+split off LibVNCServer on 2007-07-16.</description>
+  <devel project="X11:RemoteDesktop" package="x11vnc"/>
+</package>

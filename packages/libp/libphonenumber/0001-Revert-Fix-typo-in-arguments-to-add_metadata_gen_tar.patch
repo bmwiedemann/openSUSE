@@ -1,0 +1,27 @@
+From f5684c3a2c220fde377c277dbe7784afbc0013cb Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Wed, 14 Jun 2023 09:35:29 +0200
+Subject: [PATCH] Revert "Fix typo in arguments to add_metadata_gen_target()
+ (#2874)"
+
+This reverts commit 0ecc3d9af734d96d5b01cdf52f0ecdf848a33d68.
+---
+ cpp/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cpp/CMakeLists.txt b/cpp/CMakeLists.txt
+index bc331aa..5b7d2b2 100644
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -394,7 +394,7 @@ add_metadata_gen_target (
+   ${TEST_METADATA_TARGET}
+   "${RESOURCES_DIR}/PhoneNumberMetadataForTesting.xml"
+   "test_metadata"
+-  "test_metadata"
++  "metadata"
+ )
+ list (APPEND TESTING_LIBRARY_SOURCES "src/phonenumbers/test_metadata.cc")
+ 
+-- 
+2.41.0
+

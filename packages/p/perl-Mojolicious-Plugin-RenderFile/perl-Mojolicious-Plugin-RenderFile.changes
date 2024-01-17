@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Fri Oct 12 08:43:42 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- only rename pod file when it is installed
+
+-------------------------------------------------------------------
+Wed May 30 08:32:12 UTC 2018 - marius.kittler@suse.com
+
+- Rename README.pod to README-RenderFile.pod to prevent file conflict
+  with perl-Mojolicious-Plugin-NYTProf
+
+-------------------------------------------------------------------
+Mon Sep 25 05:44:08 UTC 2017 - coolo@suse.com
+
+- updated to 0.12
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-RenderFile/Changes
+
+  
+  0.12 
+          Fix warning about content_type and format incompatiblity
+
+-------------------------------------------------------------------
+Fri Apr 14 06:05:27 UTC 2017 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-RenderFile/Changes
+
+  
+  0.11
+          Add "content_type" option
+
+-------------------------------------------------------------------
+Sat Dec 26 09:57:47 UTC 2015 - coolo@suse.com
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-RenderFile/Changes
+
+  
+  0.10
+          Do not include unicode in distro
+
+-------------------------------------------------------------------
+Tue Apr 14 19:53:11 UTC 2015 - coolo@suse.com
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-RenderFile/Changes
+
+  0.09
+          Not loose previously setted headers
+- obsolete wide-character-in-print.patch
+
+-------------------------------------------------------------------
+Tue Feb 24 09:11:44 UTC 2015 - ncutler@suse.com
+
+- updated to 0.08
+     File cleanup support
+- re-generated spec file
+- re-checked license
+- Add wide-character-in-print.patch: to address "Wide character in
+  print" error in t/multibyte_filename.t.
+
+-------------------------------------------------------------------
+Wed Mar 19 05:56:44 UTC 2014 - coolo@suse.com
+
+- updated to 0.07
+     Added license
+     Fixed utf8 filename issue
+
+-------------------------------------------------------------------
+Tue Mar 18 14:39:39 UTC 2014 - coolo@suse.com
+
+- initial package 0.06
+    * created by cpanspec 1.78.07
+

@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Mon Mar 27 11:27:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5: 
+  * Make the client demo to be more realistic, including handling the input
+    method server quits 
+
+-------------------------------------------------------------------
+Tue Nov 22 11:29:56 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.4
+  * Fix reading client messages when Xlib sends messages too fast.
+    Also avoid to infinitely increase the property name when sending
+    new messages but use a longer loop to avoid issues of X property
+    atom re-usage like Xlib
+
+-------------------------------------------------------------------
+Thu Apr 22 05:18:37 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.3
+  * Add utf8 encoding support in server, also fix
+    encoding negotiation.
+
+-------------------------------------------------------------------
+Sat Jan 30 08:53:29 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.2
+  * Deprecated xcb_xim_check_trigger_key and introduce
+    xcb_xim_check_trigger_on_key / xcb_xim_check_trigger_off_key.
+
+-------------------------------------------------------------------
+Sun Dec  6 05:05:06 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.1
+
+-------------------------------------------------------------------
+Sun Nov  8 03:26:09 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.0
+
+-------------------------------------------------------------------
+Wed Sep  2 14:21:28 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update to 0.1.0+git20200807.d6609a7
+
+-------------------------------------------------------------------
+Wed Mar  4 04:02:12 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- update to 0.1.0+git20191111.bb2f10c
+
+-------------------------------------------------------------------
+Sat Aug 25 05:25:16 UTC 2018 - i@marguerite.su
+
+- initial package 

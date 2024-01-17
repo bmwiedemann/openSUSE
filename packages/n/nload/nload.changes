@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Thu Jul 14 07:26:58 UTC 2016 - adam.majer@suse.de
+
+- use standard SPDX license names in spec License field
+- GNU_address_update.diff:
+  * update GNU foundation address in COPYING to current
+
+-------------------------------------------------------------------
+Thu Jun 30 10:39:07 UTC 2016 - adam.majer@suse.de
+
+- replace nload-ncurses.patch with form_h_paths.diff:
+  There is no need to hardcoded these paths when we can detect them
+  propertly and send patch upstream.
+- simplify spec file
+
+-------------------------------------------------------------------
+Sun Feb 12 16:53:18 UTC 2012 - pascal.bleser@opensuse.org
+
+- update to 0.7.4:
+
+-------------------------------------------------------------------
+Sun Jun 12 20:47:38 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.7.3:
+  * fix calculation of traffic and data units (fixes Debian bug #586943)
+  * fix memory leak in BSD network device detection
+  * workaround for faulty newwin() in ncurses 5.8
+  * correctly escape minus signs in man page
+
+-------------------------------------------------------------------
+Tue Apr 28 00:00:00 UTC 2009 - cgoncalves@opensuse.org
+
+- initial release (version 0.7.2)
+

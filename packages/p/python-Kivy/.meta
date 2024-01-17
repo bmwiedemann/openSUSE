@@ -1,0 +1,8 @@
+<package name="python-Kivy" project="openSUSE:Factory">
+  <title>Hardware-accelerated multitouch application library</title>
+  <description>Kivy is an open source software library for rapid development of applications that make use of innovative user interfaces, such as multi-touch apps.
+
+</description>
+  <devel project="devel:languages:python" package="python-Kivy"/>
+  <url>https://kivy.org</url>
+</package>

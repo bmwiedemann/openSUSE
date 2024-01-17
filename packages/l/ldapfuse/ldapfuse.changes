@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Sep 23 15:38:18 UTC 2014 - jengelh@inai.de
+
+- Drop gpg-offline build-time requirement; this is now handled by
+  the local source validator
+
+-------------------------------------------------------------------
+Wed Nov 28 18:27:53 CET 2012 - sbrabec@suse.cz
+
+- Verify GPG signature
+
+-------------------------------------------------------------------
+Sun Dec  4 21:50:22 UTC 2011 - jengelh@medozas.de
+
+- Update to new upstream release 1.0
+* Initial upstream tarball release
+* ldapfuse: correct wrong error type in cache lookup failure path
+
+-------------------------------------------------------------------
+Wed Aug 31 14:43:02 UTC 2011 - jengelh@medozas.de
+
+- Explicitly include lber in compilation and linking to avoid
+  running into missing symbols
+
+-------------------------------------------------------------------
+Tue Aug 16 06:55:20 UTC 2011 - jengelh@medozas.de
+
+- Initial package
+

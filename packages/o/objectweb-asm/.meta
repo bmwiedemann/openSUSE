@@ -1,0 +1,13 @@
+<package name="objectweb-asm" project="openSUSE:Factory">
+  <title>A code manipulation tool to implement adaptable systems</title>
+  <description>ASM is a Java bytecode manipulation framework.
+
+It can be used to dynamically generate stub classes or other proxy
+classes, directly in binary form, or to dynamically modify classes at
+load time, i.e., just before they are loaded into the Java Virtual
+Machine.
+
+ASM offers similar functionalities as BCEL or SERP, but is much
+smaller.</description>
+  <devel project="Java:packages" package="objectweb-asm"/>
+</package>

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu Aug  2 18:52:30 UTC 2018 - lars@linux-schulserver.de
+
+- update to 0.40
+  + improve --extra-opts error handling (#18)
+  + fix handling named arguments (#17)
+  + Allow negation of command line arguments using '--no'-prefix (#13)
+  + Fix plugin-name processing in ALRM handler. (#12)
+  + Fixed regex in plugin_exit() that handles hyphen for LONGOUTPUT (#11)
+  + Support LONGTEXT output in plugin_exit (#10)
+  + convert empty perfdata values to 'U' (daku3649 #5)
+  + fix output when there is only long plugin output (pdugas)
+- remove the former provides/obsoletes, as the monitoring plugin 
+  can be installed in parallel
+
+-------------------------------------------------------------------
+Fri Oct  6 10:35:13 UTC 2017 - lars@linux-schulserver.de
+
+- provide and obsolete the old (Sub-)Module(s):
+  + perl(Nagios::Plugin::Config)
+  + perl(Nagios::Plugin::ExitResult)
+  + perl(Nagios::Plugin::Functions)
+  + perl(Nagios::Plugin::Getopt)
+  + perl(Nagios::Plugin::Performance)
+  + perl(Nagios::Plugin::Range)
+  + perl(Nagios::Plugin::Threshold) 
+
+-------------------------------------------------------------------
+Mon Jan 18 08:28:04 UTC 2016 - lars@linux-schulserver.de
+
+- initial package 0.39
+

@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Fri Nov  4 10:06:29 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Tue Jan 11 21:01:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python-rpm-macros dependency 
+
+-------------------------------------------------------------------
+Fri Feb 12 23:52:18 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- NEP 29: python36-numpy and -scipy are no longer available in TW
+  skip python36 build
+
+-------------------------------------------------------------------
+Wed Jan 20 05:33:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch from python3_only to python_alternative for genfire script
+
+-------------------------------------------------------------------
+Sat May 23 02:18:34 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix python Requires tag. 
+
+-------------------------------------------------------------------
+Fri May 15 23:51:39 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Cleanup spec file. Fix dependencies. 
+
+-------------------------------------------------------------------
+Fri May 15 01:49:59 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix build for python 2. 
+
+-------------------------------------------------------------------
+Mon Apr 13 15:27:17 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 

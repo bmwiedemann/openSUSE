@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>561796cf3ce2a44e483e63ee0c93f724</srcmd5>
+    <version>2.10.8</version>
+    <time>1674810967</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for openMS and openMVG</comment>
+    <requestid>1061447</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eb85e5561ce01cc50b523a325a4f1f72</srcmd5>
+    <version>2.10.11</version>
+    <time>1704281320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136009</requestid>
+  </revision>
+</revisionlist>

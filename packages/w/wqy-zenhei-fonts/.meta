@@ -1,0 +1,39 @@
+<package name="wqy-zenhei-fonts" project="openSUSE:Factory">
+  <title>ttf-wqy-zenhei</title>
+  <description>The WenQuanYi Zen Hei is the first open-source Chinese font 
+for Hei Ti, a sans-serif font style that are widely used for
+general purpose text formatting, and on-screen 
+display of Chinese characters (such as in Windows Vista and Mac OS).
+Simple and elegant font outlines and slightly emboldened strokes 
+makes the glyphs presenting higher contrast and therefore easy 
+to read. The unique style of this font also provide a simple
+interface for adding grid-fitting information for further 
+fine-tuning of the on-screen performance.
+
+WenQuanYi Zen Hei contains arguably the largest number of Chinese
+Hanzi glyphs of all known open-source outline Chinese fonts: it has 
+20194 Hanzi glyphs covering 97% of the Unicode CJK Unified 
+Ideographics [4]. This font provides full coverage to the required 
+code points for zh_cn, zh_sg, zh_tw, zh_hk and zh_mo locales. The 
+total vector glyphs in this font is over 35000 including Latin characters,
+Japanese kanas, hanguls and symbols from many other languages.
+
+Highly regarded WenQuanYi Bitmap Song fonts were embedded into this 
+font for those who prefer shaper look of the text rendering, The 
+embedded bitmap glyphs cover font sizes at 9pt, 10pt, 11pt 
+and 12pt. 
+
+The primary purpose of developing this font is to provide CJK
+(Chinese-Japanese-Korean) users a visually pleasing, standard 
+compliant, platform independent and compact solution for displaying 
+and printing Chinese on their computers.
+
+We wish you enjoying the font, and joining us to continuously 
+improve this font for better performance and wider applications.
+
+文泉驿正黑体-第一個開放原始碼的中文黑體字，
+適用於簡體及繁體中文使用
+內嵌文泉驿点阵字型
+</description>
+  <devel project="M17N:fonts" package="wqy-zenhei-fonts"/>
+</package>

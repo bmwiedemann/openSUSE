@@ -1,0 +1,5 @@
+<package name="inotify-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems" package="inotify-tools"/>
+</package>

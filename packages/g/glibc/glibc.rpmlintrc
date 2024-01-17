@@ -1,0 +1,16 @@
+# glibc-profile is a devel package
+addFilter("glibc-profile.* devel-file-in-non-devel-package.*/usr/lib.*/lib.*_p\.a")
+# glibc is not a devel package
+addFilter("glibc\..* non-devel-file-in-devel-package")
+# getent deliberately uses gethostbyname
+addFilter("binary-or-shlib-calls-gethostbyname /usr/bin/getent")
+# We do need to keep the symtab (see comments in glibc.spec), so this is intented:
+addFilter("unstripped-binary-or-object")
+# ld.so is special:
+addFilter("shared-library-without-dependency-information /usr/lib.*/ld.*\.so")
+# the cross..-devel packages contain everything, in non-std paths, so no
+# ldconfig is wanted or needed (for sle-15 based trees), and we accept
+# the *.so symlinks, and deliver (target) binaries
+addFilter("cross.*library-without-ldconfig-post.*")
+addFilter("cross.*non-devel-file-in-devel-package.*")
+addFilter("cross.*arch-independent-package-contains-binary-or-object.*")

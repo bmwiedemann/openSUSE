@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d35572144584e5e02fe9fbe3eec1d8e0</srcmd5>
+    <version>1.20</version>
+    <time>1579346318</time>
+    <user>dimstar_suse</user>
+    <comment>Tidied up, now submitting again</comment>
+    <requestid>765434</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>101aebc1b7df40ea037313be73dafdc0</srcmd5>
+    <version>1.21</version>
+    <time>1594706428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820686</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>98ce95144fd4742d0226708c8689eb78</srcmd5>
+    <version>1.21b</version>
+    <time>1595271796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21b:
+  * Moved configuration and command-line management to
+    use conf2struct. Changes are:
+    - command line option &lt;-F|--config&gt; no longer defaults to
+	  /etc/sslh.cfg, so you have to specify it explicitly.
+	- command line option &lt;-v|--verbose&gt; takes a mandatory
+	  integer parameter
+  * Changed exit code for illegal command line parameter
+	from 1 to 6 (for testing purposes)</comment>
+    <requestid>821821</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3c478c1aaa597ba5fbaa4f14bd415a9</srcmd5>
+    <version>1.21c</version>
+    <time>1596204012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21c:
+  * Removed support for 'ssl' and fix a related segfault bug.</comment>
+    <requestid>823701</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4705819013e795e046be43443b3560e5</srcmd5>
+    <version>1.21c</version>
+    <time>1620840706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887009</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6fc0093f526c644ebebc9f282193bff5</srcmd5>
+    <version>1.22b</version>
+    <time>1629917898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22b:
+  * do not timeout TCP connections (fix #300) 
+  * remove obsolete usage string and added lost version option
+  * be more defensive when allocating and extending gap
+
+- Update to 1.22:
+  * sslh-select now supports UDP protocols.
+    Probes specified in the `protocols`
+    configuration entry are tried on incoming packets,
+    TCP or UDP, and forwarded based on the input
+    protocol (an incoming TCP connection will be
+    forwarded as TCP, and same with UDP).
+    This has been tested with DNS as shown in udp.cfg:
+    incoming packets that contain my domain name are
+    assumed to be a DNS request and forwarded
+    accordingly. Note this could cause problems if
+    combined with incoming TLS with SNI.  UDP clients
+    and servers need to agree on the IPv4/IPv6 they use:
+    use the same protocol on all sides! Often, this
+    means explicitely using 'ip4-localhost'.
+    UDP sender-receiver pairs (connections, so to speak)
+    are kept for 60s, which can be changed with
+    `udp_timeout` in the configuration.
+ * Added probes for UDP protocols QUICK and Teamspeak.
+ * Added probes for syslog protocol.
+ * sslh-select refactored to change linear searches
+   through connections to linear searches through
+   fd_set.
+ * Fixed a libconfig call to support libconfig 1.7.3.
+ * Added symbol to support libconfig 1.4.9, still in</comment>
+    <requestid>914168</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>99b37161257ea4cb702e7d2b2ea0de9d</srcmd5>
+    <version>1.22c</version>
+    <time>1630936685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22c:
+  * Fix invalid size (#302)
+  * Test aborted connections (#285)</comment>
+    <requestid>916996</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>95789f5186e646d5d4b5e6b65668bd64</srcmd5>
+    <version>1.22c</version>
+    <time>1652389100</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976089</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2cc06f51d7fd9225e2e990bf76d1516b</srcmd5>
+    <version>2.0.1</version>
+    <time>1705099543</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.1:
+  * New semver-compatible version number
+  * New sslh-ev: this is functionaly equivalent to sslh-select
+    (mono-process, only forks for specified protocols), but based
+    on libev, which should make it scalable to large numbers
+    of connections.
+  * New log system: instead of –verbose with arbitrary levels,
+    there are now several message classes. Each message class
+    can be set to go to stderr, syslog, or both. Classes are
+    documented in example.cfg.
+  * UDP connections are now managed in a hash to avoid linear
+    searches. The downside is that the number of UDP connections
+    is a hard limit, configurable with the ‘udp_max_connections’,
+    which defaults to 1024. Timeouts are managed with lists.
+  * inetd merges stderr output to what is sent to the client,
+    which is a security issue as it might give information to an
+    attacker. When inetd is activated, stderr is forcibly closed.
+  * New protocol-level option resolve_on_forward, requests that
+    target names are resolved at each connection instead of at
+    startup. Useful for dynamic DNS situations.</comment>
+    <requestid>1138229</requestid>
+  </revision>
+</revisionlist>

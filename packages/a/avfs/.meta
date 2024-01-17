@@ -1,0 +1,6 @@
+<package name="avfs" project="openSUSE:Factory">
+  <title>AVFS - A Virtual File System</title>
+  <description>AVFS is a system, which enables all programs to look inside archived or compressed files, or access remote files without recompiling the programs or changing the kernel. 
+</description>
+  <devel project="Archiving" package="avfs"/>
+</package>

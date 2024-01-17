@@ -1,0 +1,36 @@
+--- Makefile
++++ Makefile
+@@ -1,17 +1,18 @@
+ CC=gcc
+ CFLAGS=-m486 -O
+-LIBS=-L /usr/X11R5/lib -static -lXm -lXt -lX11 -lm -lSM -lICE
++LIBS=-L$(XLIBDIR) -lXm -lXt -lX11 -lm -lSM -lICE -lXpm -lXext -lXp
+ INSTALLBIN=$(DESTDIR)/usr/X11R6/bin
+-INSTALLMAN=$(DESTDIR)/usr/man/man1
++INSTALLMAN=$(DESTDIR)/usr/share/man/man1
+ 
+ xmoontool: xmoontool.c color.pix moon_icon
+ 	$(CC) ${CFLAGS} -o xmoontool xmoontool.c ${LIBS}
+-	strip xmoontool
+ 
+ clean:
+ 	rm -f xmoontool *.o
+ 
+ install: xmoontool xmoontool.1
++	install -o root -m 755 -d ${INSTALLBIN}
++	install -o root -m 755 -d ${INSTALLMAN}
+ 	cp xmoontool ${INSTALLBIN}
+ 	chmod 755 ${INSTALLBIN}/xmoontool
+ 	cp xmoontool.1 ${INSTALLMAN}
+--- xmoontool.c
++++ xmoontool.c
+@@ -375,8 +375,8 @@
+        XVisualInfo tmpl, *ret;
+        int n;
+ 
+-       tmpl.depth = 8;
+        tmpl.screen = DefaultScreen(XtDisplay(toplevel));
++       tmpl.depth = DefaultDepth(XtDisplay(toplevel), tmpl.screen);
+        ret = XGetVisualInfo(XtDisplay(toplevel), VisualDepthMask, &tmpl, &n);
+        if (n == 0) {
+ 	  tmpl.depth = 1;

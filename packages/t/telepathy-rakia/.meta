@@ -1,0 +1,5 @@
+<package name="telepathy-rakia" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="telepathy-rakia"/>
+</package>

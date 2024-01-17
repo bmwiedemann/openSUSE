@@ -1,0 +1,8 @@
+<package name="ladspa" project="openSUSE:Factory">
+  <title>The Linux Audio Developer's Simple Plug-In API</title>
+  <description>The Linux Audio Developer's Simple Plug-in API (LADSPA) provides the
+ability to write simple plug-in audio processors in C/C++ and link them
+dynamically.  The package contains the LADSPA SDK, the CMT plug-in
+libraries (including Freeverb), and the swh plug-ins.</description>
+  <devel project="multimedia:libs" package="ladspa"/>
+</package>

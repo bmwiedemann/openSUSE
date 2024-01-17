@@ -1,0 +1,51 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Fix calculation of raw 888 pixel data length in Tight encoding
+References: bsc#1169732
+Upstream: merged
+Git-commit: e3c7982e56183a1f8b1f65cae3ee7b080c48e17d
+
+When raw pixel data is sent and pixels are encoded as three 8-bit
+true colour values aligned on byte boundaries, the Tight encoding
+always uses three bytes per pixel.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ VncTunnel.cpp |    4 +++-
+ rfb.h         |   13 +++++++++++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+--- a/VncTunnel.cpp
++++ b/VncTunnel.cpp
+@@ -623,7 +623,9 @@ void VncTunnel::processFramebufferUpdate
+                     } else {
+                         bpp = 8;
+                     }
+-                }
++                } else if (m_pixelFormat.is888()) {
++		    bpp = 24;
++		}
+ 
+                 std::size_t dataSize = (rectangle.width * bpp + 7) / 8 * rectangle.height;
+                 if (dataSize < TightMinSizeToCompress) {
+--- a/rfb.h
++++ b/rfb.h
+@@ -147,6 +147,19 @@ struct PixelFormat {
+         // Validating only things that could hurt vncmanager. If there are some other wrong values, underlying VNC server should complain.
+         return bitsPerPixel == 8 || bitsPerPixel == 16 || bitsPerPixel == 24 || bitsPerPixel == 32;
+     }
++
++    bool is888() const {
++	return
++	    trueColourFlag &&
++	    bitsPerPixel == 32 &&
++	    depth == 24 &&
++	    redMax == 255 &&
++	    greenMax == 255 &&
++	    blueMax == 255 &&
++	    (redShift & 0x07) == 0 &&
++	    (greenShift & 0x07) == 0 &&
++	    (blueShift & 0x07) == 0;
++    }
+ };
+ 
+ struct ServerInitMessage {

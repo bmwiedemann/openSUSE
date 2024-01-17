@@ -1,0 +1,584 @@
+-------------------------------------------------------------------
+Fri Jun 23 14:44:58 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.9.14
+  ## Overall changes: 
+    * Added more documentation (build system integration, repeater setup) and a legal FAQ.
+    * Added [contribution guidelines](CONTRIBUTING.md).
+    * Ported the TravisCI continous integration machinery to GitHub workflows.
+  ## LibVNCServer/LibVNCClient:
+    * Added [qemu extended key event].
+    * Fixed several potential multiplication overflows.
+  ## LibVNCClient:
+    * Fixes of several memory leaks and buffer overflows.
+    * Added UltraVNC's MSLogonII authentication scheme.
+    * Fixed TLS interoperability with GnuTLS servers.
+    * Fixed detection of newer UltraVNC and TightVNC servers.
+    * Added support for [SetDesktopSize].
+    * Added SSH tunneling example using libssh2.
+    * Added some extensions to VeNCrypt in order to be compatible with a wider range of servers.
+  ## LibVNCServer:
+    * Fixes to the multi-threaded server implementation which should be a lot more sound now.
+    * Fixed TightVNC-filetransfer file upload for 64-bit systems.
+    * Fixes of crashes in the zlib compression.
+    * Added support for [UTF8 clipboard data].
+    * Fixed visual artifacts in framebuffer on ARM platforms.
+    * Fixed several WebSockets bugs.
+    * Fixed the UltraVNC-style repeater example.
+    * Added support for larger framebuffers (two 4k screens possible now).
+    * Added support for timeouts for outbound connections (to repeaters for instance).
+    * Fixed out-of-bounds memory access in Tight encoding.
+- modified patches
+  % 0001-libvncserver-Add-API-to-add-custom-I-O-entry-points.patch (refreshed)
+  % 0002-libvncserver-Add-channel-security-handlers.patch (refreshed)
+- deleted patches
+  - 0001-libvncserver-don-t-NULL-out-internal-of-the-default-.patch (upstreamed)
+  - 0003-libvncserver-auth-don-t-keep-security-handlers-from-.patch (upstreamed)
+  - 0004-zlib-Clear-buffer-pointers-on-cleanup-444.patch (upstreamed)
+  - LibVNCServer-CVE-2020-29260.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Sep  8 08:26:25 UTC 2022 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2020-29260 [bsc#1203106], memory leakage via rfbClientCleanup()
+  + LibVNCServer-CVE-2020-29260.patch
+
+-------------------------------------------------------------------
+Fri Sep 17 07:14:46 UTC 2021 - pgajdos@suse.com
+
+- purposedly adding just this changelog entry
+- previous version updates fixed also:
+  * CVE-2020-14398 [bsc#1173880] -- improperly closed TCP connection causes an infinite loop in libvncclient/sockets.c
+  * CVE-2017-18922 [bsc#1173477] -- preauth buffer overwrite
+  * CVE-2018-20748 [bsc#1123823] -- libvnc contains multiple heap out-of-bounds writes
+  * CVE-2020-25708 [bsc#1178682] -- libvncserver/rfbserver.c has a divide by zero which could result in DoS
+  * CVE-2018-21247 [bsc#1173874] -- uninitialized memory contents are vulnerable to Information leak
+  * CVE-2018-20750 [bsc#1123832] -- heap out-of-bounds write vulnerability in libvncserver/rfbserver.c
+  * CVE-2020-14397 [bsc#1173700] -- NULL pointer dereference in libvncserver/rfbregion.c
+  * CVE-2019-20839 [bsc#1173875] -- buffer overflow in ConnectClientToUnixSock()
+  * CVE-2020-14401 [bsc#1173694] -- potential integer overflows in libvncserver/scale.c
+  * CVE-2020-14400 [bsc#1173691] -- Byte-aligned data is accessed through uint16_t pointers in libvncserver/translate.c.
+  * CVE-2019-20840 [bsc#1173876] -- unaligned accesses in hybiReadAndDecode can lead to denial of service
+  * CVE-2020-14399 [bsc#1173743] -- Byte-aligned data is accessed through uint32_t pointers in libvncclient/rfbproto.c.
+  * CVE-2020-14402 [bsc#1173701] -- out-of-bounds access via encodings.
+  * CVE-2020-14403 [bsc#1173701]
+  * CVE-2020-14404 [bsc#1173701]
+
+-------------------------------------------------------------------
+Fri Jan  8 15:07:43 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Add many patches needed for GNOME Remote desktop (already in
+  Fedora):
+  * TLS security type enablement patches gh#LibVNC/libvncserver!234 
+    - 0001-libvncserver-Add-API-to-add-custom-I-O-entry-points.patch
+    - 0002-libvncserver-Add-channel-security-handlers.patch
+    - 0003-libvncserver-auth-don-t-keep-security-handlers-from-.patch
+  * Fix crash on all runs after the first gh#LibVNC/libvncserver!444 rh#1882718
+    - 0004-zlib-Clear-buffer-pointers-on-cleanup-444.patch
+  * Fix another crasher glgo#GNOME/gnome-remote-desktop#45 rh#1882718
+    - 0001-libvncserver-don-t-NULL-out-internal-of-the-default-.patch
+
+-------------------------------------------------------------------
+Tue Jun 30 06:48:57 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.9.13 [bsc#1173477]
+  ## Overall changes:
+    * Small tweaks to the CMake build system.
+    * The macOS server example was overhauled and is now the most feature-complete sample
+          application of the project, ready for real-world use.
+    * Lots of documentation updates and markdownifying.
+    * The TravisCI continuous integration now also build-checks cross-compilation from
+          Linux to Windows.
+    * Setup a [Gitter community chat](https://gitter.im/LibVNC/libvncserver) for the project.
+  ## LibVNCServer/LibVNCClient:
+    * Both LibVNCServer and LibVNCClient now support an additional platform, namely
+          Microsoft Windows. Building is supported with Visual Studio as well as MingGW.
+    * The separate crypto routines used by LibVNCClient and LibVNCServer were refactored
+          into an implementation common to both libraries.
+    * Several security issues got fixed.
+    * The bundled noVNC client is now at version 1.1.0 and included via a git submodule.
+  ## LibVNCClient:
+    * Added connect timeout as well as read timeout support thanks to Tobias Junghans.
+    * Both TLS backends now do proper locking of network operations when multi-threaded
+      thanks to Gaurav Ujjwal.
+    * Fixed regression in Tight/Raw decoding introduced in 0.9.12 thanks to DRC.
+    * Fixed encrypted connections to AnonTLS servers when using the OpenSSL back-end.
+          Made possible by the profound research done by Gaurav Ujjwal.
+  ## LibVNCServer:
+    * Added a hooking function (`clientFramebufferUpdateRequestHook`) to deliver
+          rfbFramebufferUpdateRequest messages from clients to the frame producer
+          thanks to Jae Hyun Yoo.
+    * Added SetDesktopSize/ExtendedDesktopSize support thanks to Floris Bos.
+    * Added multi-threading support for MS Windows.
+    * Fixed VNC repeater/proxy functionality that was broken in 0.9.12.
+    * Fixed unstable WebSockets connections thanks to Sebastian Kranz.
+- deleted patches
+  - LibVNCServer-CVE-2019-15681.patch (upstreamed)
+  - LibVNCServer-CVE-2019-15690.patch (upstreamed)
+  - LibVNCServer-CVE-2019-20788.patch (upstreamed)
+  - avoid-pthread_join-if-backgroundLoop-is-FALSE.patch (upstreamed)
+  - cmake-libdir.patch (upstreamed)
+  - fix-crash-on-shutdown.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon May  4 13:48:26 UTC 2020 - pgajdos@suse.com
+
+- deleted patches
+  - LibVNCServer-CVE-2018-20749.patch (mistakenly added, it is
+    already part of 0.9.12)
+
+-------------------------------------------------------------------
+Mon Apr 27 09:20:21 UTC 2020 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2019-15690 [bsc#1160471], heap buffer overflow
+  + LibVNCServer-CVE-2019-15690.patch
+  fix CVE-2019-20788 [bsc#1170441], integer overflow and heap-based buffer overflow via a large height or width value
+  + LibVNCServer-CVE-2019-20788.patch
+
+-------------------------------------------------------------------
+Fri Jan 10 08:24:05 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add patches to fix crash on shutdown:
+  * avoid-pthread_join-if-backgroundLoop-is-FALSE.patch
+  * fix-crash-on-shutdown.patch
+
+-------------------------------------------------------------------
+Mon Nov  4 11:29:21 UTC 2019 - pgajdos@suse.com
+
+- turn the test suite on
+
+-------------------------------------------------------------------
+Mon Nov  4 10:26:34 UTC 2019 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2019-15681 [bsc#1155419]
+  + LibVNCServer-CVE-2019-15681.patch
+
+-------------------------------------------------------------------
+Wed Feb 20 15:56:14 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Add BuildRequire libgnutls-devel: Remmina needs it for VNC
+  connections (boo#1123805)
+
+-------------------------------------------------------------------
+Mon Feb 11 09:16:53 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- use upstream commit, amend cmake-libdir.patch
+
+-------------------------------------------------------------------
+Mon Feb 11 09:13:18 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- fix cmake build, add cmake-libdir.patch (upstream issue #281)
+
+-------------------------------------------------------------------
+Tue Feb  5 09:59:42 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- update to version 0.9.12
+   - Overall changes:
+     * CMake now is the default build system, Autotools were removed.
+     * In addition to TravisCI, all commits are now build-tested by AppVeyorCI.
+   - LibVNCServer/LibVNCClient:
+     * Numerous build fixes for Visual Studio compilers to the extent that
+       one can now _build_ the project with these. The needed changes for
+       successfully _running_ stuff will be implemented in 0.9.13.
+     * Fixed building for Android and added build instructions.
+     * Removed the unused PolarSSL wrapper.
+     * Updated the bundled noVNC to latest release 1.0.0.
+     * Allowed to use global LZO library instead of miniLZO.
+   - LibVNCClient:
+     * Support for OpenSSL 1.1.x.
+     * Support for overriding the default rectangle decode handlers (with
+       hardware-accelerated ones for instance) thanks to Balazs Ludmany.
+     * vnc2mpg updated.
+     * Added support for X509 server certificate verification as part of the
+       handshake process thanks to Simon Waterman.
+     * Added a TRLE decoder thanks to Wiki Wang.
+     * Included Tight decoding optimizations from TurboVNC thanks to DRC.
+     * Ported the SDL viewer from SDL 1.2 to SDL 2.0.
+     * Numerous security fixes.
+     * Added support for custom auth handlers in order to support additional
+       security types.
+   - LibVNCServer:
+     * Websockets rework to remove obsolete code thanks to Andreas Weigel.
+     * Ensured compatibility with gtk-vnc 0.7.0+ thanks to Michał Kępień.
+     * The built-in webserver now sends correct MIME type for Javascript.
+     * Numerous memory management issues fixed.
+     * Made the TightVNC-style file transfer more stable.
+- removed patches 
+    - LibVNCServer-CVE-2018-20021.patch (upstreamed)
+    - LibVNCServer-CVE-2018-20023.patch (upstreamed)
+    - libvncserver-0.9.10-ossl.patch (not upstreamed)
+    - LibVNCServer-CVE-2018-15127.patch (upstreamed)
+    - LibVNCServer-CVE-2018-6307.patch (upstreamed)
+    - LibVNCServer-CVE-2018-20019.patch (upstreamed)
+    - LibVNCServer-CVE-2018-7225.patch (upstreamed)
+    - LibVNCServer-CVE-2018-20022.patch (upstreamed)
+    - libvncserver-0.9.1-multilib.patch (cmake now)
+    - LibVNCServer-CVE-2018-15126.patch (upstreamed)
+    - LibVNCServer-CVE-2018-20020.patch (upstreamed)
+    - LibVNCServer-CVE-2018-20024.patch (upstreamed)
+- removed by upstream
+  - libvncserver-config
+- security update
+  * CVE-2018-20749 [bsc#1123828]
+    + LibVNCServer-CVE-2018-20749.patch
+
+-------------------------------------------------------------------
+Fri Jan 11 14:10:36 UTC 2019 - adam.majer@suse.de
+
+- Fix devel package dependencies
+
+-------------------------------------------------------------------
+Thu Jan  3 16:33:06 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- security update
+  * CVE-2018-15126 [bsc#1120114]
+    + LibVNCServer-CVE-2018-15126.patch
+  * CVE-2018-6307 [bsc#1120115]
+    + LibVNCServer-CVE-2018-6307.patch
+  * CVE-2018-20020 [bsc#1120116]
+    + LibVNCServer-CVE-2018-20020.patch
+  * CVE-2018-15127 [bsc#1120117]
+    + LibVNCServer-CVE-2018-15127.patch
+  * CVE-2018-20019 [bsc#1120118]
+    + LibVNCServer-CVE-2018-20019.patch
+  * CVE-2018-20023 [bsc#1120119]
+    + LibVNCServer-CVE-2018-20023.patch
+  * CVE-2018-20022 [bsc#1120120]
+    + LibVNCServer-CVE-2018-20022.patch
+  * CVE-2018-20024 [bsc#1120121]
+    + LibVNCServer-CVE-2018-20024.patch
+  * CVE-2018-20021 [bsc#1120122]
+    + LibVNCServer-CVE-2018-20021.patch
+
+-------------------------------------------------------------------
+Thu Jan  3 15:11:20 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 0.9.11
+    Overall changes:
+        LibVNCServer/LibVNCClient development now uses continous intregration,
+        provided by TravisCI.
+    LibVNCClient:
+        Now initializes libgcrypt before use if the application did not do it.
+        Fixes a crash when connection to Mac hosts
+        (#45).
+        Various fixes that result in more stable handling of malicious or broken
+        servers.
+        Removed broken and unmaintained H264 decoding.
+        Some documentation fixes.
+        Added hooks to WriteToTLS() for optional protection by mutex.
+    LibVNCServer:
+        Stability fixes for the WebSocket implementation.
+        Replaced SHA1 implementation with the one from RFC 6234.
+        The built-in HTTP server does not allow directory traversals anymore.
+        The built-in HTTP now sends correct MIME types for CSS and SVG.
+        Added support for systemd socket activation.
+        Made it possible to get autoPort behavior with either ipv4 or ipv6
+        disabled.
+        Fixed starting of an onHold-client in threaded mode.
+- dropped patches:
+  - libvncserver-0.9.10-use-namespaced-rfbMax-macro.patch (upstreamed)
+  - libvncserver-byteswap.patch (stop maintaining not upstreamed patch)
+- modified patches:
+  % libvncserver-0.9.10-ossl.patch (refreshed)
+
+-------------------------------------------------------------------
+Tue Mar 20 07:42:09 UTC 2018 - pgajdos@suse.com
+
+- security update
+  * CVE-2018-7225 [bsc#1081493]
+    + LibVNCServer-CVE-2018-7225.patch
+
+-------------------------------------------------------------------
+Tue May 24 17:25:53 UTC 2016 - antoine.belvire@laposte.net
+
+- Fix build errors of applications using stl_algobase.h and
+  libvncserver's rfbproto.h, e.g. krfb (issue #102)
+  * Add libvncserver-0.9.10-use-namespaced-rfbMax-macro.patch
+
+-------------------------------------------------------------------
+Sun Feb  8 04:24:43 UTC 2015 - crrodriguez@opensuse.org
+
+- Remove xorg-x11-devel from buildRequires, X libraries 
+  are not directly used/linked
+
+-------------------------------------------------------------------
+Sun Feb  8 03:54:55 UTC 2015 - crrodriguez@opensuse.org
+
+- libvncserver-0.9.10-ossl.patch: Update, do not 
+  RAND_load_file("/dev/urandom", 1024) if the the PRNG is already
+  seeded. (It always is on linux)
+
+-------------------------------------------------------------------
+Sat Dec 13 13:50:35 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 0.9.10
+  + Moved the whole project from sourceforge to https://libvnc.github.io/.
+  + Cleaned out the autotools build system which now uses autoreconf.
+  + Updated noVNC HTML5 client to latest version.
+  + Split out x11vnc sources into separate repository at
+    https://github.com/LibVNC/x11vnc
+  + Split out vncterm sources into separate repository at
+    https://github.com/LibVNC/vncterm
+  + Split out VisualNaCro sources into separate repository at
+    https://github.com/LibVNC/VisualNaCro
+  + Merged Debian patches.
+  + Fixed some security-related buffer overflow cases.
+  + Added compatibility headers to make LibVNCServer/LibVNCClient
+    build on native Windows 8.
+  + Update LZO to version 2.07, fixing CVE-2014-4607.
+  + Merged patches from KDE/krfb.
+  + Can now do IPv6 without IPv4.
+  + Fixed a use-after-free issue in scale.c.
+- Update Url and download source to new project home
+- Remove LibVNCServer-0.9.9-no_x11vnc.patch; upstream splited it
+  out of main tarball
+- Rebase libvncserver-ossl.patch to upstream changes
+  > libvncserver-0.9.10-ossl.patch
+- Remove linuxvnc subpackage; like x11vnc, it has been splited out
+  but is depreciated and unmaintained. 
+
+-------------------------------------------------------------------
+Fri Oct  3 19:51:18 UTC 2014 - olaf@aepfle.de
+
+- Obsolete old LibVNCServer.rpm in libvncclient0 package. The old
+  version included binaries, devel and runtime libs. But nothing
+  removes the old package, which leads to file conflicts during
+  upgrade if linuxvnc.rpm is not on the install media (bnc#893343)
+
+-------------------------------------------------------------------
+Tue Jul  1 13:35:34 UTC 2014 - coolo@suse.com
+
+- remove old .bz2 file
+
+-------------------------------------------------------------------
+Mon Mar 18 09:36:38 UTC 2013 - mmeister@suse.com
+
+- Add Url to Source section in spec file
+
+-------------------------------------------------------------------
+Sat Jan 12 14:01:28 UTC 2013 - jengelh@inai.de
+
+- Follow shared library packaging guidelines
+- Avoid self-obsolete tag
+- Put libvncserver-config into -devel where it should belong
+- Provide pkgconfig() RPM symbols
+
+-------------------------------------------------------------------
+Tue Jan  1 19:35:08 UTC 2013 - crrodriguez@opensuse.org
+
+- Switch SSL backend to openssl, we all agree that OpenSSL
+  has it faults, but it is heavily optimized in all platforms
+  not only x86 and performance matters in interactive,latency
+  sensitive tasks like VNC.
+
+- libvncserver-ossl.patch Ensures openssl use less memory
+  and avoid abi breaks on openSSL updates.
+
+-------------------------------------------------------------------
+Sun Dec 30 22:02:37 UTC 2012 - crrodriguez@opensuse.org
+
+- libvncserver-byteswap.patch : USe OS byteswapping macros 
+  which are optimized for the target arch.
+
+- BuildRequire libpng-Devel
+
+-------------------------------------------------------------------
+Tue Oct 16 12:02:12 UTC 2012 - mvyskocil@suse.com
+
+- delete not used LibVNCServer-0.9.9-system_minilzo.patch
+- document patches
+- rename redef-keysym to redef-keysym.patch
+
+-------------------------------------------------------------------
+Wed Sep 26 21:08:14 UTC 2012 - p.drouand@gmail.com
+
+- Update to 0.9.9 version:
+ - Overall changes:
+     * Added noVNC HTML5 VNC viewer (http://kanaka.github.com/noVNC/) connect possibility
+       to our http server. Pure JavaScript, no Java plugin required anymore! (But a
+       recent browser...)
+     * Added a GTK+ VNC viewer example.
+
+   - LibVNCServer/LibVNCClient:
+     * Added support to build for Google Android.
+     * Complete IPv6 support in both LibVNCServer and LibVNCClient.
+
+   - LibVNCServer:
+     * Split two event-loop related functions out of the rfbProcessEvents() mechanism.
+       This is required to be able to do proper event loop integration with Qt. Idea was
+       taken from Vino's libvncserver fork.
+     * Added TightPNG (http://wiki.qemu.org/VNC_Tight_PNG) encoding support. Like the
+       original Tight encoding, this still uses JPEG, but ZLIB encoded rects are encoded
+       with PNG here.
+     * Added suport for serving VNC sessions through WebSockets
+       (http://en.wikipedia.org/wiki/WebSocket), a web technology providing for multiplexing
+       bi-directional, full-duplex communications channels over a single TCP connection.
+     * Support connections from the Mac OS X built-in VNC client to LibVNCServer
+       instances running with no password.
+     * Replaced the Tight encoder with a TurboVNC one which is tremendously faster in most
+       cases, especially with high-color video or 3D workloads.
+       (http://www.virtualgl.org/pmwiki/uploads/About/tighttoturbo.pdf)
+
+   - LibVNCClient:
+     * Added support to only listen for reverse connections on a specific IP address.
+     * Support for using OpenSSL instead of GnuTLS. This could come in handy on embedded
+       devices where only this TLS implementation is available.
+     * Added support to connect to UltraVNC Single Click servers.
+- remove upstreamed LibVNCServer-LINUX.diff
+- remove upstreamed LibVNCServer-0.9.8_git201104301110-overflow.patch
+- remove upstreamed LibVNCServer-system-lzo.patch
+- rename and refresh dont-build-x11vnc to LibVNCServer-0.9.9-no_x11vnc.patch
+- add, but not enable LibVNCServer-0.9.9-system_minilzo.patch
+- add libvncserver-0.9.1-multilib.patch
+
+-------------------------------------------------------------------
+Mon Aug 27 11:29:44 UTC 2012 - idonmez@suse.com
+
+- Devel package needs a dependency on gnutls-devel 
+
+-------------------------------------------------------------------
+Sat Aug 18 09:53:29 UTC 2012 - gber@opensuse.org
+
+- enable support for gnutls
+
+-------------------------------------------------------------------
+Wed Nov 30 14:30:22 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Sep 17 09:39:03 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri May  6 21:00:48 UTC 2011 - crrodriguez@opensuse.org
+
+- Update to version 0.9.8 latest.
+  * Changes too long to list here, see NEWS 
+- Use system lzo library
+
+-------------------------------------------------------------------
+Fri Oct  8 14:03:58 UTC 2010 - coolo@novell.com
+
+- add baselibs.conf to build 32bit libs for DirectFB-32bit to use
+
+-------------------------------------------------------------------
+Tue Apr 21 22:28:00 CEST 2009 - garloff@suse.de
+
+- Update to LibVNCserver-0.9.7: 
+  * add (server-side) ZYWRLE support
+  * fixes (update after resizing, endianess, width != scanline)
+  * improve timeouts, port fallback, and connection time of the SSL
+    Java viewers
+
+-------------------------------------------------------------------
+Fri Mar  6 05:32:52 CET 2009 - crrodriguez@suse.de
+
+- remove static libraries and "la" files 
+
+-------------------------------------------------------------------
+Mon Oct 27 15:36:23 CET 2008 - garloff@suse.de
+
+- fix-warn.diff: Avoid pointer > 0 comparison (bnc 435610)
+
+-------------------------------------------------------------------
+Mon Feb 25 07:27:32 CET 2008 - crrodriguez@suse.de
+
+- fix library-without-ldconfig-post* errors
+- devel package requires zlib-devel   
+
+-------------------------------------------------------------------
+Thu Oct 11 15:46:54 CEST 2007 - sbrabec@suse.cz
+
+- Use binding specific avahi package.
+
+-------------------------------------------------------------------
+Tue Jul 17 01:16:12 CEST 2007 - garloff@suse.de
+
+- Split LibVNCServer into itself, -devel and x11vnc.
+- Update to LibVNCserver-0.9.1.
+- Drop patches that have been integrated upstream.
+
+-------------------------------------------------------------------
+Wed Apr 11 10:40:20 CEST 2007 - stbinner@suse.de
+
+- fix misplaced guards in rfb.h
+
+-------------------------------------------------------------------
+Thu Mar 15 17:14:53 MDT 2007 - ccoffing@novell.com
+
+- Fix incorrect usage of condition variables, which was causing
+  a crash during heavy updates. (#246100)
+
+-------------------------------------------------------------------
+Fri Jul 28 19:14:22 CEST 2006 - garloff@suse.de
+
+- Update to version 0.8.2:
+  * Support for VNC protocol version 3.8.  
+  * Many UltraVNC encodings and features added: FileTransfer, 
+    SetSingleWindow, ServerInput, TextChat, UltraZip, etc.
+  * Support for PalmVNC and UltraVNC style 1/n server-side scaling.
+  * Improved Statistics reporting.
+  * KeyboardLedState encoding.
+  * LibVNCClient and x11vnc enhancements.
+  * Many bugs and leaks fixed.
+  * CVE-2006-2450 fix is already included, drop patch.
+- Use -allinput in x11vnc_ssh script.
+
+-------------------------------------------------------------------
+Mon Jun 19 12:59:00 CEST 2006 - garloff@suse.de
+
+- Update to version 0.8.
+- Enable -fstack-protector for auth relevant files.
+- Fix some compiler warnings.
+- Disallow NoneAuth if password is set (#184418, CVE-2006-2450).
+
+-------------------------------------------------------------------
+Fri Feb 24 22:51:21 CET 2006 - garloff@suse.de
+
+- Optimize event loop in LibVNCserver (from intel for Xen). 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:33:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 30 20:45:29 CET 2005 - garloff@suse.de
+
+- Don't enable -threads by default; it's performance is nice, but
+  the stability is not that great.
+- Include x11vnc_ssh in distribution.
+
+-------------------------------------------------------------------
+Thu Dec 22 18:55:29 CET 2005 - garloff@suse.de
+
+- Workaround for -thread mode: Wait for a client being fully 
+  authenticated before sending data.
+
+-------------------------------------------------------------------
+Wed Dec 21 15:27:36 CET 2005 - garloff@suse.de
+
+- Update to LibVNCServer-0.7.99 
+- Fix compiler detected bugs (uninitialized var, buffer overflow).
+- Package documentation.
+
+-------------------------------------------------------------------
+Tue Dec 20 11:52:22 CET 2005 - ro@suse.de
+
+- do not try to detect LINUX by presence of /dev/vcsa1 
+
+-------------------------------------------------------------------
+Sun Aug 21 03:27:19 CEST 2005 - garloff@suse.de
+
+- Initial creation of package LibVNCServer-0.7.1. 
+
+-------------------------------------------------------------------

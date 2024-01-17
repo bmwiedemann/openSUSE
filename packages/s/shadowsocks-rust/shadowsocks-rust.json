@@ -1,0 +1,10 @@
+{
+    "server": "my_server_ip",
+    "server_port": 8388,
+    "password": "mypassword",
+    "method": "aes-256-gcm",
+    // ONLY FOR `sslocal`
+    // Delete these lines if you are running `ssserver` or `ssmanager`
+    "local_address": "127.0.0.1",
+    "local_port": 1080
+}

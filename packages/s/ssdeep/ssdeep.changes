@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Mon Nov 13 23:44:37 UTC 2017 - astieger@suse.com
+
+- ssdeep 2.14.1:
+  * Optimizations to the fuzzy hashing engine
+  * Fixed issue when certain memory allocation is failed
+
+-------------------------------------------------------------------
+Tue Apr 28 09:52:09 UTC 2015 - astieger@suse.com
+
+- ssdeep 2.13:
+  * Added fuzzy_set_total_input_length function to the API.
+  * Added support for files up to 192GB.
+  * Added support for arbitrary length input from the standard input.
+  * Fixed issue when comparing hashes from relatively simple files.
+  * Fixed portability issues.
+
+-------------------------------------------------------------------
+Fri Oct 24 18:39:41 UTC 2014 - andreas.stieger@gmx.de
+
+- ssdeep 2.12:
+  - Fixed issue when comparing identical hashes but with different
+    block sizes.
+- Fixes licence problem in edit_dist.c [boo#901394]
+  Package licence is GPL-2.0 and GPL-2.0+:
+
+-------------------------------------------------------------------
+Thu Oct 16 22:24:48 UTC 2014 - andreas.stieger@gmx.de
+
+- ssdeep 2.11.1
+  * Made libfuzzy compile as a shared library again.
+- includes changes from 2.11:
+  * Added fuzzy_clone function to the API.
+  * Fixed edge case on signature generaion. Behavior now matches v2.9 again.
+- includes changes from 2.10:
+  * Fuzzy Hashing engine re-written to be thread safe.
+  * Fixed bug on comparing signatures with the same block size.
+  * Fixed crash on comparing short signatures.
+  * Fixed memory leak
+- includes changes from 2.9:
+  * Added warning message for when some data on stdin is not hashed.
+  * Can now hash up to 512MB of data on stdin.
+  * Added clustering mode to group together matching files
+  * Fixed incorrect match scores for hashes with long filenames.
+- includes changes from 2.8:
+  * Converted to C++
+  * Fixed support for large files on some platforms.
+  * Fixed errors in handling command line argument processing.
+- remove ssdeep-dynamic.patch, not required
+- remove autoreconf call
+- License is GPL-2.0+, but please review [boo#901394]
+
+-------------------------------------------------------------------
+Fri Aug 17 20:44:27 UTC 2012 - dimstar@opensuse.org
+
+- Add ssdeep-dynamic.patch: Link ssdeep dynamically to libfuzzy.
+  As a side-effect, we can actually now also use configure
+  --disable-static.
+- Add libtool BuildRequires and call autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Thu Aug  9 19:21:11 UTC 2012 - aj@suse.de
+
+- Run through spec-cleaner, remove obsolete comments.
+
+-------------------------------------------------------------------
+Sat Feb 11 22:55:05 UTC 2012 - Greg.Freemyer@gmail.com
+
+- initial submission
+
+Recursive computing and matching of Context Triggered Piecewise
+Hashing (aka Fuzzy Hashing). Supports Windows, *nix, BSD, OS X, etc. 
+

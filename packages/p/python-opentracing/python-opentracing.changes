@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Jul 10 12:13:31 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Feb 27 03:01:54 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_159.patch for testing under Python 3.11
+- Add BR python-six needed for Leap 13.4 tests
+
+-------------------------------------------------------------------
+Thu Mar 24 11:07:38 UTC 2022 - pgajdos@suse.com
+
+- do not use python-mock for build
+- added patches
+  fix https://github.com/opentracing/opentracing-python/issues/156
+  + python-opentracing-no-mock.patch
+
+-------------------------------------------------------------------
+Tue Dec 14 12:43:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Allow tornado 6
+
+-------------------------------------------------------------------
+Tue Dec 22 04:50:06 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.4.0
+
+-------------------------------------------------------------------
+Mon Mar  9 08:52:17 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.3.0

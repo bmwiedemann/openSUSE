@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Mar  9 18:41:03 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Restore Retrieve-required-flags-from-Libnest2D-target.patch,
+  which is not upstream, and rebase.
+  This fixes building for Leap 15.3 and 15.4.
+
+-------------------------------------------------------------------
+Wed Mar  9 08:47:24 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 4.12.0 (no changelog provided)
+- Drop upstream patch: Retrieve-required-flags-from-Libnest2D-target.patch
+- Rebase pynest2d-PyQt5.sip.patch (partially upstreamed)
+
+-------------------------------------------------------------------
+Sat Feb 26 14:22:54 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Use BuildRequires python3-qt5-sip for Leap 15.4
+
+-------------------------------------------------------------------
+Sun Nov 22 18:58:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Require the PyQt5.sip module (see sr#849990 for libArcus and
+  the discussion in gh#Ultimaker/libSavitar#26)  
+
+-------------------------------------------------------------------
+Sat Nov 21 00:38:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on python3-sip < 5, as libSavitar build is incompatible
+  with SIP 5 and upstream currently has no intention to update,
+  see gh#Ultimaker/libSavitar#26.
+
+-------------------------------------------------------------------
+Tue Nov 10 18:42:57 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to final 4.8.0, no code changes
+
+-------------------------------------------------------------------
+Sun Oct 25 06:22:04 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version 4.8~beta
+- Add pynest2d-PyQt5.sip.patch
+- Add Retrieve-required-flags-from-Libnest2D-target.patch

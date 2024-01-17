@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Mon Aug  5 21:45:10 UTC 2019 - Karol Babioch <kbabioch@suse.com>
+
+- Version 4.10
+  - Replace tabs with spaces
+  - More shllcheck cleanup work
+  - Remove unused DEBUG variable
+  - Fixed an innocuous whitespace bug in TLSFLAG variable creation
+  - Set the default TLS version to 1.1 (can be overridden with -v)
+  - Switched openssl CLI options to use an array. The reasons why
+    are documented here: http://mywiki.wooledge.org/BashFAQ/050
+- Refreshed fix-shebang.patch
+- Refreshed changes file
+- Applied spec-cleaner
+
+-------------------------------------------------------------------
+Tue Feb 12 09:48:52 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Refreshed fix-shebang.patch
+- Version 4.9
+  - Add a signal handler to call the cleanup funtion if the script doesn't
+    exit() cleanly -- Timothe Litt
+- Version 4.8
+  - More mail client fixes
+- Version 4.7
+  - Revert SENDER to ""
+  - More shellcheck cleanup
+- Version 4.6
+  - Fixed programming logic error
+- Version 4.5
+  - Re-work mailx support for FreeBSD
+  - More shellcheck fixes
+- Version 4.4
+  - Use command -v instead of which utility to satisfy shellcheck.
+  - Fix unquoted MAIL and MAILMODE variables in help output
+  - More shellcheck fixes
+- Version 4.3
+  - Fixed a typo in the program version
+- Version 4.2
+  - Change CERTDAYS to CERTDIFF in the e-mail subject. 
+- Version 4.1
+  - Fix usage output
+- Version 4.0
+  - Updated the script syntax to align with UNIX shell programming
+  - Check for DNS resolution failures
+  - First round of updates to make shellcheck happy
+  - Rework the logic to call mailx. 
+  - Print the version with the "-V" option.
+  - Define the version in the PROGRAMVERSION variable
+
+-------------------------------------------------------------------
+Fri Jan 25 14:30:49 UTC 2019 - lars@linux-schulserver.de
+
+- build require xz to make sure the sources can be unpacked
+- re-introduce buildroot and defattr definitions, as the package
+  otherwise fails on SLE-11 and other distributions
+- license macro is only known on newer (open)SUSE distributions
+
+-------------------------------------------------------------------
+Sat Jan 12 13:55:39 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Fri Jan 11 09:08:07 UTC 2019 - Karol Babioch <kbabioch@suse.de>
+
+- Make services localonly
+
+-------------------------------------------------------------------
+Mon Nov 12 12:14:23 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Added Provides/Obsoletes for monitoring-plugins-ssl-cert-check
+
+-------------------------------------------------------------------
+Mon Nov 12 08:40:12 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Require bash
+- Fix shebang line to /bin/bash
+
+-------------------------------------------------------------------
+Tue Nov  6 10:16:51 UTC 2018 - Karol Babioch <kbabioch@suse.com>
+
+- Initial packaging of version 3.31

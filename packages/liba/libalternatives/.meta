@@ -1,0 +1,5 @@
+<package name="libalternatives" project="openSUSE:Factory">
+  <title>libalternative</title>
+  <description>Manages preferred program execution that relies on config files and not symlink management</description>
+  <devel project="system:packagemanager" package="libalternatives"/>
+</package>

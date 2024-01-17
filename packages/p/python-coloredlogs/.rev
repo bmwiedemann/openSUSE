@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e46b79a05f7f983af51dfc1aa7324a6</srcmd5>
+    <version>7.3</version>
+    <time>1526371637</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-spyder-terminal</comment>
+    <requestid>603733</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>42894c185e963338cbfd7f1a46306cea</srcmd5>
+    <version>10.0</version>
+    <time>1534940406</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 10.0:
+  * Many upstream changes to enumerate, see CHANGELOG.rst
+- Enable testsuite</comment>
+    <requestid>630723</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ab4f6396e909722101f8d6d7fe50c517</srcmd5>
+    <version>10.0</version>
+    <time>1544726491</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653980</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5d3bb202211f2346b492891ad924387b</srcmd5>
+    <version>10.0</version>
+    <time>1551024883</time>
+    <user>coolo</user>
+    <comment>- Disable one flaky test</comment>
+    <requestid>676164</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>334071770b044ac3e755a0ec4068197c</srcmd5>
+    <version>10.0</version>
+    <time>1556916474</time>
+    <user>dimstar_suse</user>
+    <comment>- Add test_cli_conversion_test.patch, because we don't have versionless
+  coloredlogs in time of %check. (forwarded request 700393 from mcepl)</comment>
+    <requestid>700395</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f6e73c622d207e62f267ea92002efa8</srcmd5>
+    <version>11.0</version>
+    <time>1581801925</time>
+    <user>dimstar_suse</user>
+    <comment>- Should go into Factory only with sr#774497.
+- Update to 11.0:
+  - This is a maintenance release that drops Python 2.6 support,
+    adds Python 3.7 support and merges quite a few minor pull
+    requests. The major version number was bumped because of the
+    compatibility changes.
+    Complete list of (really small) changes is on
+    https://github.com/xolox/python-coloredlogs/blob/master/CHANGELOG.rst#release-11-0-2020-02-14
+  - Update test_cli_conversion_test.patch</comment>
+    <requestid>774498</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fa7788ffb883d7aa5ad19a48aa618172</srcmd5>
+    <version>14.0</version>
+    <time>1585761606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790586</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9ecd42a1534b764281e135c67ad3ea22</srcmd5>
+    <version>14.0</version>
+    <time>1596565322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824186</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b955d570277b3a9a75ec614566f500f8</srcmd5>
+    <version>15.0.1</version>
+    <time>1637108074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931858</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>37cc5281d476ef1d41a444d54ffdefcc</srcmd5>
+    <version>15.0.1</version>
+    <time>1640808657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942996</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>8591cca9cf524eb6bcc71c68b4b25933</srcmd5>
+    <version>15.0.1</version>
+    <time>1646948722</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960709</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>8ed9f8cb0cb32ba09ab908d1c715f6b2</srcmd5>
+    <version>15.0.1</version>
+    <time>1682095696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081966</requestid>
+  </revision>
+</revisionlist>

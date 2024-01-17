@@ -1,0 +1,5 @@
+<package name="kiten" project="openSUSE:Factory">
+  <title>Japanese Reference/Study Tool</title>
+  <description>Kiten is a tool to learn Japanese.</description>
+  <devel project="KDE:Applications" package="kiten"/>
+</package>

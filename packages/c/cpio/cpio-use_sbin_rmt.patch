@@ -1,0 +1,22 @@
+Index: lib/rtapelib.c
+===================================================================
+--- lib/rtapelib.c.orig
++++ lib/rtapelib.c
+@@ -17,7 +17,7 @@
+    along with this program; if not, write to the Free Software Foundation,
+    Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
+ 
+-/* The man page rmt(8) for /etc/rmt documents the remote mag tape protocol
++/* The man page rmt(8) for /sbin/rmt documents the remote mag tape protocol
+    which rdump and rrestore use.  Unfortunately, the man page is *WRONG*.
+    The author of the routines I'm including originally wrote his code just
+    based on the man page, and it didn't work, so he went to the rdump source
+@@ -267,7 +267,7 @@ get_status_off (int handle)
+ 
+ #if WITH_REXEC
+ 
+-/* Execute /etc/rmt as user USER on remote system HOST using rexec.
++/* Execute /sbin/rmt as user USER on remote system HOST using rexec.
+    Return a file descriptor of a bidirectional socket for stdin and
+    stdout.  If USER is zero, use the current username.
+ 

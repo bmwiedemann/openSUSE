@@ -1,0 +1,5 @@
+<package name="wf-recorder" project="openSUSE:Factory">
+  <title>utility program for screen recording of wlroots-based compositors</title>
+  <description></description>
+  <devel project="X11:Wayland" package="wf-recorder"/>
+</package>

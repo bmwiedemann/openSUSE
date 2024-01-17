@@ -1,0 +1,167 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc354fc44c951a06f875152bebc279b9</srcmd5>
+    <version>2.1.0</version>
+    <time>1576676813</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging effort.</comment>
+    <requestid>757718</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>df0a914bbd1a9000145cf7be415334d3</srcmd5>
+    <version>2.1.0</version>
+    <time>1576927875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758307</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e28720ace4e907ad82e26fbc8a776eef</srcmd5>
+    <version>2.1.0</version>
+    <time>1584350392</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix generating with new dephell</comment>
+    <requestid>785247</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>808925e48f62504b0f6b0e4e4a26656d</srcmd5>
+    <version>2.1.0</version>
+    <time>1585261923</time>
+    <user>dimstar_suse</user>
+    <comment>- Add macro %dephell_genspec to generate setup.py</comment>
+    <requestid>787818</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0abf65251a12487ea2c74eccabe86ad7</srcmd5>
+    <version>3.0.0</version>
+    <time>1603821635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844213</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dec1d4b671453ae291b60b4ac7a75a34</srcmd5>
+    <version>3.2.0</version>
+    <time>1618775060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885474</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d6ead8680d5d54b0562a8135982d1f6</srcmd5>
+    <version>3.4.0</version>
+    <time>1635167821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925548</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7e3443c7068bc92865b60873c1f13b91</srcmd5>
+    <version>3.6.0</version>
+    <time>1641764991</time>
+    <user>dimstar_suse</user>
+    <comment>- Back to bootstrap without pip (forwarded request 945128 from bnavigator)</comment>
+    <requestid>945129</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f7f17fe7b1d6e40cfb410c103191d269</srcmd5>
+    <version>3.7.1</version>
+    <time>1648479611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.1
+  * Support for external data files such as man pages or Jupyter
+    extension support files (PR #510).
+  * Project names are now lowercase in wheel filenames and
+    .dist-info folder names, in line with the specifications (PR
+    #498).
+  * Improved support for bootstrapping a Python environment, e.g.
+    for downstream packagers (PR #511). flit_core.wheel is usable
+    with python -m to create wheels before the build tool is
+    available, and flit_core sdists also include a script to
+    install itself from a wheel before installer is available.
+  * Use newer importlib APIs, fixing some deprecation warnings (PR
+    #499).
+  * Fix building packages which need execution to get the version
+    number, and have a relative import in __init__.py (PR #531).
+- Update bootstrapping process
+</comment>
+    <requestid>964842</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0a7fa4af0cb0e4ec4212910f790f8c99</srcmd5>
+    <version>3.7.1</version>
+    <time>1659941104</time>
+    <user>dimstar_suse</user>
+    <comment>- Use prjconf provided primary_python if available
+- Split primary flavor in multibuild for possible inclusion into
+  Ring0
+- Remove devendoring of tomli, so that we can put this in Ring0
+</comment>
+    <requestid>992386</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>04a1e4aca7ddee6b91ef243161b6db43</srcmd5>
+    <version>3.7.1</version>
+    <time>1665754804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009919</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>322ba609a197b30d117827eedba502c7</srcmd5>
+    <version>3.8.0</version>
+    <time>1667994957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034459</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>599c36e92fecc18546e54f06b452638c</srcmd5>
+    <version>3.8.0</version>
+    <time>1674997800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061579</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fd0b9600326537402130147d875d645b</srcmd5>
+    <version>3.8.0</version>
+    <time>1676389346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064431</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>b028004e329b3c5c1fd6d75681cb2382</srcmd5>
+    <version>3.8.0</version>
+    <time>1682282594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081921</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>14084f59ed6b0a490c8413cf658d243a</srcmd5>
+    <version>3.9.0</version>
+    <time>1694200523</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.9.0:
+  * New options :option:`flit build --use-vcs` and :option:`flit
+    build --no-use-vcs` to enable &amp; disable including all
+    committed files in the sdist. For now --use-vcs is the
+    default, but this is likely to change in a
+    future version, to bring flit build in line with standard
+    build frontends like python -m build
+  * Sdist file names, and the name of the top-level folder in an
+    sdist, are now normalised, in accordance with PEP 625
+  * A statically defined version number can now be parsed from
+    files called version.py, _version.py or __version__.py inside
+    a packge, as well as from __init__.py, so executing code is
+    required in fewer cases
+  * Fix setting the flag for regular files in zip metadata
+  * The timestamp embedded in the gzip wrapper for sdists now
+    defaults to a fixed date, so building an sdist twice on the
+    same machine should produce identical results, even without
+    any special steps.</comment>
+    <requestid>1109507</requestid>
+  </revision>
+</revisionlist>

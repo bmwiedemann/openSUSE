@@ -1,0 +1,36 @@
+From 289d6b16a436fd51c807cea7ba3f05863dae039a Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 22 Sep 2023 23:16:04 +0200
+Subject: [PATCH 171/173] metadata.json.in: GNOME 45 support
+
+This implies that support for all previous GNOME versions  is dropped.
+(https://gjs.guide/extensions/upgrading/gnome-shell-45.html#shell-version)
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ data/metadata.json.in | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 162a7cf..ddbd0a5 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -10,14 +10,7 @@
+     "gettext-domain": "hamster-shell-extension",
+     "settings-schema": "org.gnome.shell.extensions.project-hamster",
+     "shell-version": [
+-        "3.34",
+-        "3.36",
+-        "3.38",
+-        "40",
+-        "41",
+-        "42",
+-        "43",
+-        "44"
++        "45"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.42.0
+

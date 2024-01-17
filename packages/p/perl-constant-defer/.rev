@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe3f31521c809049af9d782d33c56136</srcmd5>
+    <version>5</version>
+    <time>1402947001</time>
+    <user>coolo</user>
+    <comment>needed for slic3r</comment>
+    <requestid>237515</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>fe3f31521c809049af9d782d33c56136</srcmd5>
+    <version>5</version>
+    <time>1409302587</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a99586f064ec51b4ea5c7b3d251905c8</srcmd5>
+    <version>6</version>
+    <time>1429810923</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298787</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a2113c1577f732f4a3f8d50642a377d4</srcmd5>
+    <version>6</version>
+    <time>1429948406</time>
+    <user>coolo</user>
+    <comment>- add the license to cpanspec.yml</comment>
+    <requestid>298845</requestid>
+  </revision>
+</revisionlist>

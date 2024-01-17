@@ -1,0 +1,57 @@
+From 210cdcac0d41a340475400b852fb1cb43182c349 Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Thu, 1 Sep 2022 15:34:00 +0200
+Subject: [PATCH] tools/kvm_stat: fix attack vector with user controlled FUSE
+ mounts
+
+The first field in /proc/mounts can be influenced by unprivileged users
+through the widespread `fusermount` setuid-root program. Example:
+
+```
+user$ mkdir ~/mydebugfs
+user$ export _FUSE_COMMFD=0
+user$ fusermount ~/mydebugfs -ononempty,fsname=debugfs
+user$ grep debugfs /proc/mounts
+debugfs /home/user/mydebugfs fuse rw,nosuid,nodev,relatime,user_id=1000,group_id=100 0 0
+```
+
+If there is no debugfs already mounted in the system then this can be
+used by unprivileged users to trick kvm_stat into using a user
+controlled file system location for obtaining KVM statistics.
+
+To exploit this also a race condition has to be won, since the code
+checks for the existence of the 'kvm' subdirectory of the resulting
+path. This doesn't work on a FUSE mount, because the root user is not
+allowed to access non-root FUSE mounts for security reasons. If an
+attacker manages to unmount the FUSE mount in time again then kvm_stat
+would be using the resulting path, though.
+
+The impact if winning the race condition is mostly a denial-of-service
+or damaged information integrity. The files in debugfs are only opened
+for reading. So the attacker can cause very large data to be read in by
+kvm_stat or fake data to be processed by kvm_stat. I don't see any
+viable way to turn this into a privilege escalation.
+
+The fix is simply to use the file system type field instead. Whitespace
+in the mount path is escaped in /proc/mounts thus no further safety
+measures in the parsing should be necessary to make this correct.
+---
+ tools/kvm/kvm_stat/kvm_stat | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 9c366b3a676d..88a73999aa58 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1756,7 +1756,7 @@ def assign_globals():
+ 
+     debugfs = ''
+     for line in open('/proc/mounts'):
+-        if line.split(' ')[0] == 'debugfs':
++        if line.split(' ')[2] == 'debugfs':
+             debugfs = line.split(' ')[1]
+             break
+     if debugfs == '':
+-- 
+2.35.1
+

@@ -1,0 +1,34 @@
+Name:                SafeSemaphore
+Version:             0.10.1
+x-revision: 1
+Synopsis:            Much safer replacement for QSemN, QSem, and SampleVar
+Description:         This provides a much safer semaphore than the QSem, QSemN, SampleVar in base.
+                     Those base modules are not exception safe and can be broken by killThread.
+                     See <https://github.com/ChrisKuklewicz/SafeSemaphore> for more details.
+Homepage:            https://github.com/ChrisKuklewicz/SafeSemaphore
+License:             BSD3
+License-file:        LICENSE
+Author:              Chris Kuklewicz <haskell@list.mightyreason.com>
+Maintainer:          Chris Kuklewicz <haskell@list.mightyreason.com>
+Category:            Concurrency
+Build-type:          Simple
+Cabal-version:       >=1.8
+
+Library
+  Hs-Source-Dirs: src
+  ghc-options:  -Wall -O2 -funbox-strict-fields
+  Exposed-modules: Control.Concurrent.MSem
+                   Control.Concurrent.MSemN
+                   Control.Concurrent.MSemN2
+                   Control.Concurrent.MSampleVar
+                   Control.Concurrent.FairRWLock
+                   Control.Concurrent.SSem
+                   Control.Concurrent.STM.SSem
+  Other-modules:   Control.Concurrent.STM.SSemInternals
+  Build-depends:  base >=4.4 && <5, containers, stm
+
+Test-Suite TestSafeSemaphore
+  type:          exitcode-stdio-1.0
+  main-is:       tests/TestKillSem.hs
+  build-depends: base < 5, SafeSemaphore, HUnit
+

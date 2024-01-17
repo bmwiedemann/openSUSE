@@ -1,0 +1,6 @@
+<package name="python-pytzdata" project="openSUSE:Factory">
+  <title>The Olson timezone database for Python</title>
+  <description>This one links to /usr/share/zoneinfo.
+only needed for the module pytzdata</description>
+  <devel project="devel:languages:python" package="python-pytzdata"/>
+</package>

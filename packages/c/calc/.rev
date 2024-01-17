@@ -1,0 +1,583 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>950e563f739e3bf84d85b6ceeb41ea7f</srcmd5>
+    <version>2.12.4.3</version>
+    <time>1346913853</time>
+    <user>coolo</user>
+    <comment>New package - calc is command line tool for doing arithmetic.  It has been around for years and is fairly stable.</comment>
+    <requestid>132579</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ded74f587848649cd3605612d314949c</srcmd5>
+    <version>2.12.4.3</version>
+    <time>1356702959</time>
+    <user>namtrac</user>
+    <comment>- build with -DHAVE_NO_FPOS. Don't use fgetpos() and fsetpos() but 
+  use fseek() and ftell() instead. The code that generates 
+  fposval.h is completely broken. It tries to detect the size of 
+  fpos_t but fails on ppc. (forwarded request 146469 from k0da)</comment>
+    <requestid>146495</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ded74f587848649cd3605612d314949c</srcmd5>
+    <version>2.12.4.3</version>
+    <time>1359108729</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3320e288e48b8b637e665f5d80174c75</srcmd5>
+    <version>2.12.4.8</version>
+    <time>1369640566</time>
+    <user>coolo</user>
+    <comment>Update to 2.12.4.8 (forwarded request 176458 from gregfreemyer)</comment>
+    <requestid>176459</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3320e288e48b8b637e665f5d80174c75</srcmd5>
+    <version>2.12.4.8</version>
+    <time>1379662082</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>239c1a73424549f51f1a30db4f92c5ad</srcmd5>
+    <version>2.12.4.13</version>
+    <time>1380738569</time>
+    <user>scarabeus_factory</user>
+    <comment>update to v2.12.4.13.  Cleanup specfile.  No major bug fixes / enhancements.</comment>
+    <requestid>201903</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>239c1a73424549f51f1a30db4f92c5ad</srcmd5>
+    <version>2.12.4.13</version>
+    <time>1409300611</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>adc54043c86126684e0693949c9e5a76</srcmd5>
+    <version>2.12.5.0</version>
+    <time>1419809414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266409</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>44d20899b8f7c5bbc49b4f9a02e2535a</srcmd5>
+    <version>2.12.5.0</version>
+    <time>1438615329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320049</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a8500f7beebdc93d6ca5600ef8ff5c41</srcmd5>
+    <version>2.12.5.3</version>
+    <time>1455701185</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.15.5 - cleanup spec file - get rid or rpmlint complaints</comment>
+    <requestid>359546</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>671ce882decacd93cfac0e9ec7134df8</srcmd5>
+    <version>2.12.5.4</version>
+    <time>1463652913</time>
+    <user>dimstar_suse</user>
+    <comment>Trivial update to keep tarball 100% in sync with upstream.</comment>
+    <requestid>396527</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>de28980fc9dda7ffb942661f906d825a</srcmd5>
+    <version>2.12.6.1</version>
+    <time>1501572304</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512977</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3ee3b44eed9e18b26588b64a33c72352</srcmd5>
+    <version>2.12.6.1</version>
+    <time>1502366705</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514226</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>78d49e53ad59fb5cd642e4537741223b</srcmd5>
+    <version>2.12.6.4</version>
+    <time>1516444047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.12.6.4
+   + Fixed a man page warning about ./myfile
+   + Improved gen_v1(h,n) in lucas.cal for cases where h is not a multiple of 3. 
+   + Optimized the search for v(1) when h is a multiple of 3.
+- update to 2.12.6.3
+   + Improved gen_v1(h,n) in lucas.cal to use an even faster search method
+   + Improved checking in lucas.cal
+   + Fixed an C code indenting issue in zfunc.c
+</comment>
+    <requestid>567517</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fa664e30d45c30c38bf89dea93a4d6f3</srcmd5>
+    <version>2.12.6.7</version>
+    <time>1523447802</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594242</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ab8c458987cc11f3d912054a4dfb7b32</srcmd5>
+    <version>2.12.6.8</version>
+    <time>1539251718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640828</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1161d6eae8430ed3773f57ee2c91197a</srcmd5>
+    <version>2.12.6.9</version>
+    <time>1539869964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642800</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d6abf47fa82918a528505ed9fd1f85c0</srcmd5>
+    <version>2.12.7.0</version>
+    <time>1541511532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646389</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>aa9ff884962eb5243de2361d7104bb6a</srcmd5>
+    <version>2.12.7.2</version>
+    <time>1543591938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652603</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cdee4d6cc03c6963ddda211558462196</srcmd5>
+    <version>2.12.7.6</version>
+    <time>1612901803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870320</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>67a545f73dd9c09297d8d8d0d05718a4</srcmd5>
+    <version>2.12.8.1</version>
+    <time>1613511645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872832</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f2fd65fafc95b905591f968f064699ea</srcmd5>
+    <version>2.12.8.2</version>
+    <time>1614001272</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.12.8.2:
+  * Calc can now correctly compile without CUSTOM being defined</comment>
+    <requestid>874289</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>122bb28220833d2e5f54428e02cc2c6a</srcmd5>
+    <version>2.12.9.0</version>
+    <time>1615552422</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.12.19.0:
+  * Added notes to help/unexpected about:
+    display() will limit the number of digits printed after decimal point
+    %d will format after the decimal point for non-integer numeric values
+    %x will format as fractions for non-integer numeric values
+    fprintf(fd, &quot;%d\n&quot;, huge_value) may need fflush(fd) to finish
+  * Fixed Makefile dependencies for the args.h rule.
+  * Fixed Makefile cases where echo with -n is used.  On some systems,
+    /bin/sh does not use -n, so we must call /bin/echo -n instead
+    via the ${ECHON} Makefile variable.
+  * Add missing standard tools to sub-Makefiles to make them
+    easier to invoke directly.
+  * Sort lists of standard tool Makefile variables and remove duplicates.
+  * Declare the SHELL at the top of Makefiles.
+  * Fixed the depend rule in the custom Makefile.
+  * Improved the messages produced by the depend in the Makefiles.
+  * Changed the UNUSED define in have_unused.h to be a macro with
+    a parameter.  Changed all use of UNUSED in *.c to be UNUSED(x).
+  * Removed need for HAVE_UNUSED in building the have_unused.h file.
+  * CCBAN is given to ${CC} in order to control if banned.h is in effect.
+  * The banned.h attempts to ban the use of certain dangerous functions
+    that, if improperly used, could compromise the computational integrity
+    if calculations.
+  * In the case of calc, we are motivated in part by the desire for calc
+    to correctly calculate: even during extremely long calculations.
+  * If UNBAN is NOT defined, then calling certain functions
+    will result in a call to a non-existent function (link error).</comment>
+    <requestid>878494</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d4d3be9773c9d13f92e9f30c11f827d2</srcmd5>
+    <version>2.13.0.0</version>
+    <time>1617910321</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.13.0.0:
+  * Fixed typo (missing quotes) in the env rule.
+  * Fixed intendation problem in CHANGES.
+  * Combined 2.12.9.1 changes into the 2.12.8.2 to 2.12.9.0
+    range, and thus renamed the range to 2.12.8.2 to 2.12.9.1.
+  * Fixed issues related to building Makefile.simple.
+  * Fixed how the Makefile variable MANPATH is set for macOS.
+  * Added a bunch of information to the near bottom of HOWTO.INSTALL
+    on calc Makefiles.  This information discusses the various
+    Makefiles found in the calc source.
+  * Added comments in various calc Makefiles about their origin.
+    In particular, for Makefiles that are constructed such as
+    Makefile.simple, custom/Makefile and custom/Makefile.simple
+    there are comments about how they were made.
+  * For all calc Makefiles, including those in sub-directories,
+    near the top there is now a line of the form:
+    # SRC: ... some message about the origin ...
+  * Fixed how the calc(1) man page is installed under macOS.
+  * Fixed how calc man page in ${CATDIR} is formed.
+  * Fixed how Makefile.simple is formed.
+  * Fixed the #! calc script argument processing.  The initial #!
+    line must end in a -f.  For example, if calc is in /usr/local/bin/calc,
+    then the following would be the first line of a calc script:
+  * It is common that -q be usde with a calc script, so assuming the
+    same /usr/local/bin/calc path
+  * Use of -s in the #! first line of a calc script is not needed
+    since -f implies -f.
+  * The argv() will now return values more typical of C's main().
+    Before it returned one less than the number of arguments.  Now,
+    for example, when calc is given 2 args, argv() will return 3.</comment>
+    <requestid>883534</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2f4cc2fcfc852f7544ef4cdd731f0cfb</srcmd5>
+    <version>2.13.0.1</version>
+    <time>1621034655</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.0.1:
+  * Replaced /usr/local with the use of ${PREFIX} in calc Makefiles.
+    The ${PREFIX} is not the same as ${T}.  The ${T} specifies
+    a top level directory under which calc installs things.
+    While usually ${T} is empty, it can be specific path
+    as if calc where &quot;chrooted&quot; during an install.
+    The ${PREFIX} value, during install, is a path between
+    the top level ${T} install directory and the object
+    such as an include file.
+  * Corrected a few more typos in Makefile comments.
+    - Added Makefile.local, a file with a single comment.  The main
+     Makefile includes Makefile.local just before the first all rule.
+     One may override any Makefile setting by modifying Makefile.local.
+     For example, Makefile.local could force BLD_TYPE:
+     HAVE_STRING_H:= YES
+     HAVE_TIMES_H:= YES
+     SED:= /usr/local/bin/nsed
+    - Added ${LOC_MKF} to specify the make of the file that is
+      included just before the all file.  So one could place
+      the above override lines into a different file and call
+      make changing the ${LOC_MKF} value.  For example:
+    - make LOC_MKF=Makefile.private clobber all chk
+    - Updated HOWTO.INSTALL to mention Makefile.local.</comment>
+    <requestid>893058</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>df4ee496a8f0a9cf6471f415696c70bd</srcmd5>
+    <version>2.14.0.0</version>
+    <time>1631042498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.0.0:
+  * The :-separated default CALCRC value has been reversed.
+    The default CALCRC was:
+    ${CALC_SHAREDIR}/startup:~/.calcrc:./.calcinit
+    The default CALCRC is now:
+    ./.calcinit:~/.calcrc:${CALC_SHAREDIR}/startup
+    See &quot;help environment&quot; for details.
+  * Added engineering mode as per a GitHub pull request:
+    ; config(&quot;mode&quot;,&quot;eng&quot;),
+    ; 10^41
+    	100e39
+    or for example:
+    ; base(1000),
+    ; 2^23209-1
+  	~402.87411577898877818187e6984
+    For more information see: help base
+  * Added regression test code for engineering mode.  Improved and
+    expanded regression test code related to the base() and base2()
+    builtin functions.
+  * Fixed a critical bug in the above mentioned pull request where
+    a call to base2(1000) would make calc unstable and likely to
+    dump core.</comment>
+    <requestid>917248</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>daef9c4b836da74c34f6548dc53bec21</srcmd5>
+    <version>2.14.0.2</version>
+    <time>1631221653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.0.2:
+  * The clean and clobber makefile rules no longer list custom/Makefile
+    as a dependency.
+  * Unfortunately due to the complex dependency issues between
+    Makefile, Makefile.ship and custom/Makefile, parallel GNU make
+    is NOT recommended.
+  * Fixed a few typos in CHANGES.
+  * As a side note: We stayed v2.13.x was kept for only a short time.
+    The move to 2.14.x was motivated by non-compatible changes due to
+    the default order of CALCRC, plus some new builtin functions.
+  * More changes are likely, so we might see another v2.14.0.x release
+    before things are declared &quot;recommended stable&quot;.
+  * Not that we wan to discourage people from trying v2.14.0, you should
+    try it.  We just want things to become stable and well field tested
+    before we reach the &quot;recommended stable&quot; release state.</comment>
+    <requestid>917672</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5d1c9516bb999783402fd49bf4061b16</srcmd5>
+    <version>2.14.0.3</version>
+    <time>1634141177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925094</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>86da984948320d2315b62ed9f9c130a3</srcmd5>
+    <version>2.14.0.6</version>
+    <time>1635956785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.0.6:
+  * Fixed typo in cal/statistics.cal
+  * Fixed an old Windoz pun in README.WINDOWS
+  * Fixed a really obscure bug in the internal initconstants()
+    function of const.c that has been sitting for over 31 years!
+  * Fixed issues identied by the default CodeUL GitHub security code scan:
+    + Wrong type of arguments to printf in have_fpos_pos.c
+    + Multiplication result converted to larger type in zfunc.c</comment>
+    <requestid>928961</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f1ccb66987a2ea01cf27aadab6070a8c</srcmd5>
+    <version>2.14.0.14</version>
+    <time>1642112451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.0.14:
+  * Fixed typo in Makefile.local comment.
+- Remove calc-rpmlintrc: lib doesnt call exit() anymore
+
+- Update to 2.14.0.13:
+  * Minor tweak to seed() builtin. Updated help/srand and help/srandom.
+  * Moved Makefile.ship into Makefile.
+  * Removed custom/Makefile.head and custom/Makefile.tail.
+  * The &quot;README.*&quot; files and &quot;HOWTO.INSTALL&quot; file have been updated.
+  * By default, compiler warnings have been turned up.
+  * The readline, history and ncurses libraries are now default.
+  * We have renamed &quot;stable&quot; as &quot;production&quot;.
+  * We have renamed &quot;unstable&quot; as &quot;tested&quot;.
+  * Fixed bug impacting how have_ustat.h was formed.
+
+- Update to 2.14.0.12:
+  * Drop support for SunOS, IRIX and MINGW32_NT-5.0 targets.
+  * Drop support for CLOCK_SGI_CYCLE.  Drop testing for __MSDOS__.
+  * Minor improvement of various help files.  Made format of help
+    files more consistent.
+  * Corrected a few comments in zrandom.c, including a case where
+    the comment referred to 1007 when it should have used 2^32.
+  * Improved seed() generation.  Improved some comments in seed.c.
+    Added have_environ.c to build have_environ.h in order to
+    determine if: extern char **environ;  /* user environment */
+    is an valid external symbol.
+  * Fixed documentation that referred to the old additive 55
+    generator.  We have been using the subtractive 100 in place
+    of the additive 55 generator for a while now.
+  * Fixed depend rule for custom/Makefile.</comment>
+    <requestid>946083</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1cb468ee225f032f4c3f51cf2085d71f</srcmd5>
+    <version>2.14.1.0</version>
+    <time>1649793037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1.0:
+  * Fixed alignment of show item section of help command.
+  * Bug fix: While 0^0 == 1, now for y &gt; 0, 0^y == 0.
+  * Adjusted cal/test8900.cal to reflect this bug fix.
+  * Added tests to cal/regress.cal to help verify bug fix is fixed.</comment>
+    <requestid>969339</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>693c0e57128ab60f5da75221099d2ad5</srcmd5>
+    <version>2.14.1.2</version>
+    <time>1669911691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1.2:
+  * Restored use of the #define FPOS_POS_LEN symbol.  This refers to
+    the length of the __pos element (if the __pos element exists),
+    the fpos_t type (if that type exists).
+  * Changed SWAP_HALF_IN_FILEPOS(dest, src) mato to use FILEPOS_LEN Little
+    Endian when FILEPOS is a simple scalar type (i.e., HAVE_FILEPOS_SCALAR
+    is defined).
+  * Changed #define HAVE_FPOS to HAVE_FGETSETPOS.
+  * Corrected comment in have_fpos_pos.h.  The HAVE_FPOS_POS symbol was
+    NOT related to fgetpos &amp; fsetpos but rather if we we have an __pos
+    element in FILEPOS.
+  * Changed #define HAVE_NO_FPOS to HAVE_NO_FGETSETPOS.
+  * Improved comments in have_fpos_pos.h to show why and how
+    HAVE_FPOS_POS, FPOS_POS_BITS, and FPOS_POS_LEN were defined or undefed.
+  * Changed showfiles builtin to print sizes cast to (long int) with
+    the &quot;%ld&quot; printf format to avoid implementations that do not support
+    the &quot;%lld&quot; printf format specifier.
+  * Renamed have_fpos.h to have_fgetsetpos.h.  Renamed CALC_HAVE_FPOS_H
+    to CALC_HAVE_FGETSETPOS_H.  The make install and the olduninstall
+    rules remove the any old have_fpos.h that was previously installed.
+  * Added swap_HALFs(dest, src, len) function to byteswap.c.
+  * Calc can now handle Big Engian file position sizes that are a
+    multiple of BASEB bits in length.  Before handle Big Engian file
+    positions could only be 32 and 64 bits in length.  This will allow,
+    for example, a Big Engian file position size of 128 (assuming that
+    128/BASEB is is an integer).
+  * Temporary workaround for musl libc systems such as gentoo Linux that
+    allows them to compile calc and successfully run the regression test.
+- Update to 2.14.1.1:
+  * Added a few remarks on calc version numbers to version.c.
+  * Fixed how several headers are built.  On a number of systems, the source
+    file failed to compile incorrectly.  This caused problems for systems in
+    which header.h.def was not correct.
+</comment>
+    <requestid>1039276</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>eba2daf653249922b6558cf7094435e1</srcmd5>
+    <version>2.14.1.3</version>
+    <time>1676562952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1.3:
+  * Fixed missing &lt;string.h include in have_fpos_pos.c.
+  * Change calc version from 2.14.1.2 to 2.14.2.3 as part of a test to
+    build calc RPMs on a reference RHEL8.7 platform (formerly a RHEL7.9
+    platform).</comment>
+    <requestid>1065983</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7eb7035d185c8af16e8d95f82cbc602d</srcmd5>
+    <version>2.14.1.5</version>
+    <time>1678814246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071443</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0f1e50c968bf398b281fc0ce1c7e65f8</srcmd5>
+    <version>2.14.1.6</version>
+    <time>1685632787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1.6:
+  * Fixed version numbers in two cases in CHANGES that referred
+    to the 2.14.2.x instead of 2.14.1.x.
+  * Rename MINGW Makefile variable (a holdover from MINGW32_NT-5.0)
+    to OSNAME.
+  * Fixed FUNCPTR typedef in hist.c to fix deprecated compiler warnings.
+  * Fixed when USE_READLINE, READLINE_LIB, READLINE_EXTRAS, and
+    READLINE_INCLUDE are set to empty (disable use of the GNU-readline
+    facility).
+  * Fix cases of spaces before tabs in Makefile and Makefile.simple.
+  * Fixed obsolete references to the atoz() in LIBRARY to use the
+    correct internal function name of str2z().
+  * Fixed obsolete references to the atoq() in LIBRARY to use the
+    correct internal function name of str2q().
+  * Document in help/unexpected that * operator has has a higher
+    precedence than &lt;&lt; in calc, which differs from C.</comment>
+    <requestid>1090155</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3158a5f1842c51fd70f38f818c251867</srcmd5>
+    <version>2.14.2.0</version>
+    <time>1690370630</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100578</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bcc7edef933595b7761eb9feb16395ed</srcmd5>
+    <version>2.14.2.1</version>
+    <time>1690469567</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.14.2.1:
+  * Added cal/fnv_tool.cal, a calc resource file defining:
+    find_fnv_prime(bits)
+    deprecated_fnv0(bits,fnv_prime,string)
+    fnv_offset_basis(bits,fnv_prime)
+    fnv1a_style_hash(bits,fnv_prime,prev_hash,string)
+  * Fixed sorted order of cal/README.</comment>
+    <requestid>1100981</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7eb31e10ce8369f0f449c70ce3797b15</srcmd5>
+    <version>2.14.2.2</version>
+    <time>1690809912</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.14.2.2:
+  * Removed references to obsolete Email addresses.
+  * macOS Darwin defaults LCC to &quot;cc&quot;.</comment>
+    <requestid>1101458</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0f4b62dd6af3a39a58f338a8c1297f73</srcmd5>
+    <version>2.14.3.0</version>
+    <time>1691076632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.3.0:
+  * The Darwin specific ${DARWIN_ARCH}, thay by default was unset,
+    is now the ${ARCH_CFLAGS} Makefile variable.  Comments about
+    various &quot;-arch name&quot; have been moved to the ${ARCH_CFLAGS} area.
+  * Improved the output of the calcinfo rule by adding echos
+    of various uname values as well as some top Makefile variables.
+  * Fixed the BUGS file with respect to using `make debug`.
+  * Added a final ls of `debug.out` for `make debug`.</comment>
+    <requestid>1102112</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>dc90d6fc6f0782d562c3ee66eb149c63</srcmd5>
+    <version>2.14.3.4</version>
+    <time>1692110413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.3.4:
+  * Fix typo in the make debug Makefile rule.
+  * Fix install of statically linked calc under macOS 
+  * Update comments in Makefile.local about using -fsanitize
+  * Add Makefile.local comments for macOS reduce dependency chains 
+  * Fix calc when CUSTOM is undefined, remove PASSDOWN values 
+  * Fix use of -dead_strip_dylibs for macOS linker</comment>
+    <requestid>1103979</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1db98b73970373bc715e2da3d4f6fad6</srcmd5>
+    <version>2.15.0.1</version>
+    <time>1696529116</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.15.0.1:
+  * The tarball for calc version 2.15.0.0 was missing version.h.
+    The version.h is now listed as part of the calc distribution.
+    See gh/lcn2/calc#112
+
+- Update to 2.15.0.0:
+  * Added the several new trigonometric functions
+  * Added log2(x [,eps]) builtin function
+  * The sign element in a ZVALUE is now of type SIGN, which is either
+    SB32 when MAJOR_VER &lt; 3, or a bool otherwise
+  * Added new logn(x, n [,eps]) builtin to compute logarithms to base n.
+- Add calc-2.15.0.0-versionh.patch to fix build
+  See gh/lcn2/calc#112
+
+- Update to 2.14.3.5:
+  * Under macOS, to reduce dependency chains, we remove functions
+    and data that are unreachable by the entry point or exported
+    symbols.  In particular, the macOS linker is used with both
+    &quot;-dead_strip&quot; and &quot;-dead_strip_dylibs&quot;.
+  * The libcalc shared library is now linked with libcustcalc.</comment>
+    <requestid>1115823</requestid>
+  </revision>
+</revisionlist>

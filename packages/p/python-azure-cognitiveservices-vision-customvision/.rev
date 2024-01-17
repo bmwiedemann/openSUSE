@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e6a26a0f3a0f1dfd0ef2b192c0dda8f</srcmd5>
+    <version>0.1.0</version>
+    <time>1526220248</time>
+    <user>dimstar_suse</user>
+    <comment>azure</comment>
+    <requestid>602792</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f01912cac90923359647387964662623</srcmd5>
+    <version>0.3.0</version>
+    <time>1537971188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637935</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e984288ceaf07845c687bc990669f10</srcmd5>
+    <version>0.4.0</version>
+    <time>1557833477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694259 from glaubitz)</comment>
+    <requestid>694380</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7353d4cb3c69dce308e25932b8f85d42</srcmd5>
+    <version>0.4.0</version>
+    <time>1570710514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735152 from glaubitz)</comment>
+    <requestid>735674</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f7adfb6a43d7bcefd5b40ebe81a54e3a</srcmd5>
+    <version>1.0.0</version>
+    <time>1580205320</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package (forwarded request 767721 from glaubitz)</comment>
+    <requestid>767784</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b349fd16787c268c36bbe261000a3896</srcmd5>
+    <version>3.0.0</version>
+    <time>1601652270</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833083 from glaubitz)</comment>
+    <requestid>833106</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8bc0cf3d7fe83eac5307b7bafc6745c</srcmd5>
+    <version>3.1.0</version>
+    <time>1606649162</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 850423 from glaubitz)</comment>
+    <requestid>850511</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>87b59399177782f880efe8f02146fa2d</srcmd5>
+    <version>3.1.0</version>
+    <time>1607548482</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853854</requestid>
+  </revision>
+</revisionlist>

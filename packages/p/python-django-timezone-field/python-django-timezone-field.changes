@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Tue Dec  5 17:43:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Add support for django 5.0
+  * Add support for python 3.12
+  * Fix issue with Factory timezone on some BSD systems (#114)
+  * Use correct default backend when running with django 3.X (#109)
+  * BREAKING: pytz removed from dependencies. If you use this package
+    with use_pytz=True, you'll need to install pytz yourself.
+  * Drop support for django 2.2
+  * Drop support for python 3.7
+
+-------------------------------------------------------------------
+Sun Jun 25 17:52:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1:
+  - Add django as a dependency of this package, with correct version constraints
+  - Add support for django 4.1, 4.2
+  - Add support for python 3.11
+
+-------------------------------------------------------------------
+Tue Oct 11 08:03:59 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v5.0
+  * Add support for zoneinfo objects
+  * Add support for django 4.0
+  * Remove timezone_field.utils.add_gmt_offset_to_choices,
+    display_GMT_offset kwarg (use choices_display instead)
+  * Drop support for django 3.0, 3.1
+  * Drop support for python 3.5, 3.6
+- from v4.2.3
+  * Fix sdist installs
+  * Officially support python 3.10
+- from v4.2.1
+  * Reinstate TimeZoneField.default_choices (#76)
+- from v4.2
+  * Officially support django 3.2, python 3.9
+  * Fix bug with field deconstruction
+  * Housekeeping: use poetry, github actions, pytest
+
+-------------------------------------------------------------------
+Mon May 10 00:25:27 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to to 4.1.2
+  * Avoid NonExistentTimeError during DST transition (#70)
+  * Don't import rest_framework from package root (#67)
+  * Add Django REST Framework serializer field
+  * Add new choices_display kwarg with supported values WITH_GMT_OFFSET and STANDARD
+  * Deprecate display_GMT_offset kwarg
+
+-------------------------------------------------------------------
+Wed Nov 18 05:08:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+
+-------------------------------------------------------------------
+Tue May 26 09:52:02 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Define skip_python2 because not compatible to python 2.7.
+- Run spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jan 17 09:01:51 UTC 2020 - ecsos@opensuse.org
+
+- Update to 4.0
+  No changelog from upstream.
+
+-------------------------------------------------------------------
+Wed Mar  6 11:20:46 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Updated to 3.0
+  No changelog provided
+
+-------------------------------------------------------------------
+Wed Feb  7 14:35:21 UTC 2018 - daniel.molkentin@suse.com
+
+- Initial checkin

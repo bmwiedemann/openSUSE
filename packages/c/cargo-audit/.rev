@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2e22045f1b669ddd9fe43eda78d6e0bf</srcmd5>
+    <version>0.14.0~git0.08c9f3e</version>
+    <time>1617131831</time>
+    <user>RBrownSUSE</user>
+    <comment>New package cargo_audit</comment>
+    <requestid>879549</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5e9b14c5cf2303678d3f7726b77f3ca</srcmd5>
+    <version>0.14.1~git0.e46dce8</version>
+    <time>1622759614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897045</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d85c2644731e6b74e521184bf5e6ab73</srcmd5>
+    <version>0.15.0~git0.16c8aa4</version>
+    <time>1625675419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904295</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9509b3f918af6578ec1dfc8b099f8ba3</srcmd5>
+    <version>0.15.2~git0.fe0b327</version>
+    <time>1633542592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923371</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8b1161d88d3a4bda6d060d6407b63de9</srcmd5>
+    <version>0.16.0~git0.625c965</version>
+    <time>1638560132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>935313</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fcbe611c66df507e1c72f6608573afd0</srcmd5>
+    <version>0.16.0~git0.625c965</version>
+    <time>1646349434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958542</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a0edd712de7121134d1e37be6d3eb5ec</srcmd5>
+    <version>0.16.0~git0.625c965</version>
+    <time>1647367479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961763</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d091ef9552f18c0c405efe22184f37f3</srcmd5>
+    <version>0.16.0~git0.625c965</version>
+    <time>1647806121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>963116</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>e6541b938b8a5fabff8fe1bfe35b15a2</srcmd5>
+    <version>0.16.0~git0.625c965</version>
+    <time>1650466620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970926</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>59f4c267c318003a9de50c12099202ba</srcmd5>
+    <version>0.17.0~git0.5214457</version>
+    <time>1653503685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979093</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ceb6fec8170f9a977162ccb933eb8f66</srcmd5>
+    <version>0.17.0~git0.5214457</version>
+    <time>1664908666</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007769</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2c0643c28c02a0bcddfbf4811bb87c4f</srcmd5>
+    <version>0.17.2~git0.bccf8a5</version>
+    <time>1665504185</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009636</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6e563b51aec5777b21f92b08d19eb5a1</srcmd5>
+    <version>0.17.3~git0.fdb9752</version>
+    <time>1667389633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032759</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>79043efca0548aa5cc74c12f7772bdb4</srcmd5>
+    <version>0.17.4~git0.0b05e18</version>
+    <time>1668086345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034648</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>16039e7a9749e4aa82012a5ed9e85f97</srcmd5>
+    <version>0.17.5~git0.dc8ec71</version>
+    <time>1679933793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074530</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ebf455c9c4024a59634fade6c80acb93</srcmd5>
+    <version>0.18.3~git0.3544515</version>
+    <time>1698438508</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120659</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c771731567c1df8efc0649793d9430cb</srcmd5>
+    <version>0.18.3~git0.3544515</version>
+    <time>1704380341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136673</requestid>
+  </revision>
+</revisionlist>

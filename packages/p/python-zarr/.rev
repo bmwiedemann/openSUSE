@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2573d666ca24701689724f61f3ddabf1</srcmd5>
+    <version>2.6.1</version>
+    <time>1609405162</time>
+    <user>dimstar_suse</user>
+    <comment>used by dask</comment>
+    <requestid>859299</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>af6fbdaa4e0a3b5f43d573263927fb5e</srcmd5>
+    <version>2.6.1</version>
+    <time>1613774623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873414</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d40d0eeb830e29195912d415741495d</srcmd5>
+    <version>2.8.3</version>
+    <time>1626986592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906771</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7ba8536dd970ca7704cd45f82922e2f8</srcmd5>
+    <version>2.9.3</version>
+    <time>1630182535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.3:
+  - Mark the fact that some tests that require fsspec, without
+    compromising the code coverage score. By Ben Williams; #823.
+  - Only inspect alternate node type if desired isn’t
+    present. By Trevor Manz; #696.
+  - Correct conda-forge deployment of Zarr by fixing some Zarr
+    tests. By Ben Williams; #821.
+- Add skip-825-TestFSStore-test_create.patch
+  (gh#zarr-developers/zarr-python#825).
+- Update to version 2.9.0
+  * This release of Zarr Python is the first release of Zarr to not
+    support Python 3.6.
+  * Update ABSStore for compatibility with newer azure.storage.
+    blob.
+  * Pathlib support.
+  * Fix dimension_separator support.
+  * Extract ABSStore to zarr._storage.absstore.
+  * TST: add missing assert in test_hexdigest.
+- Add zarr-pr802-fsspec-2021-07.patch
+  * gh#zarr-developers/zarr-python#802
+  * gh#zarr-developers/zarr-python#812
+</comment>
+    <requestid>914748</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a62792923a91e57ad34c7e038a79f57</srcmd5>
+    <version>2.9.5</version>
+    <time>1630525036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.5:
+  - Fix FSStore.listdir behavior for nested directories (replaces
+    now unnecessary skip-825-TestFSStore-test_create.patch).
+  - Fix structured arrays that contain objects (which replaces
+    zarr-pr802-fsspec-2021-07.patch).
+</comment>
+    <requestid>915459</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ceb66a38001cac23fd6856a611443b99</srcmd5>
+    <version>2.12.0</version>
+    <time>1663002505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002709</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b7f72ff1917fc83d694dc25f3f705381</srcmd5>
+    <version>2.13.3</version>
+    <time>1676389642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065616</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8cc10d8f0842f22a5a795977337b080e</srcmd5>
+    <version>2.13.3</version>
+    <time>1690469588</time>
+    <user>anag+factory</user>
+    <comment>- set python311 context for SLE15</comment>
+    <requestid>1101037</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>14aaa2770cedc12ac857af5b57955456</srcmd5>
+    <version>2.16.0</version>
+    <time>1690987779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101762</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f45268c83633c30b1a06888a3ab76b15</srcmd5>
+    <version>2.16.1</version>
+    <time>1703800956</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.16.1:
+  * Require ``setuptools_scm`` version ``1.5.4``\+
+  * Add ``docs`` requirements to ``pyproject.toml``
+  * Fixed caching issue in ``LRUStoreCache``.
+
+  * More maintenance changes, special thanks to Outreachy participants
+  * Improve Zarr V3 support, adding partial store read/write and
+  * N5 nows supports Blosc. Remove warnings emitted when using N5Store
+  * Implement more extensive fallback of getitem/setitem for
+- required by dask</comment>
+    <requestid>1135342</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e63c9ed87f4b46e26cfc8fc275047f15</srcmd5>
+    <version>1.7</version>
+    <time>1507755418</time>
+    <user>dimstar_suse</user>
+    <comment>Required by a bunch of python-sphinxcontrib packages.</comment>
+    <requestid>531775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3b4a866d8b2b5b8a41e3904898ae6d31</srcmd5>
+    <version>1.7</version>
+    <time>1545648366</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659752</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>668677d5165ab52f1d5d7065dce0a688</srcmd5>
+    <version>1.8.1</version>
+    <time>1554115092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689881</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>908c8192f5860420fb117f4b2719f482</srcmd5>
+    <version>1.9.1</version>
+    <time>1560862454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709953</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2c8a790fccbef65fd7cecc6eb3835611</srcmd5>
+    <version>1.10</version>
+    <time>1569233877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10:
+ *  Similar to the change in version 1.9 which normalized conversions to named
+    colors</comment>
+    <requestid>731241</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9532ca6bb59b65ff4e8360c152057034</srcmd5>
+    <version>1.11.1</version>
+    <time>1587324963</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.1:
+  * Python 2 has reached the end of its support cycle from the Python
+    core team; accordingly, Python 2 support is dropped. Supported
+    Python versions are now 3.5, 3.6, 3.7, and 3.8.</comment>
+    <requestid>783014</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65d1bc4f4a20d51e49a00dfd8430e24b</srcmd5>
+    <version>1.12</version>
+    <time>1664797473</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12:
+  * CI only fixes, no bug fixes or new features</comment>
+    <requestid>1007458</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6384a1a1f6689f86228d8333fe2085fa</srcmd5>
+    <version>1.12</version>
+    <time>1682193491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081727</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f32e426c01a61d134af7227e3cf0d93a</srcmd5>
+    <version>1.13</version>
+    <time>1683212971</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13:
+  * Supported Python versions are now 3.7, 3.8, 3.9, 3.10, and
+    3.11.  The codebase was significantly reorganized and modernized.
+    Public API is unchanged. Imports should continue to be directly
+    from the top-level ``webcolors`` module; attempting to import
+    from submodules is not supported.
+  * Now packaging declaratively via ``pyproject.toml`` with `PEP
+    517</comment>
+    <requestid>1084230</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d25bc4b4b8b80a009695338e568674c4</srcmd5>
+    <version>1.13</version>
+    <time>1694701496</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1110959</requestid>
+  </revision>
+</revisionlist>

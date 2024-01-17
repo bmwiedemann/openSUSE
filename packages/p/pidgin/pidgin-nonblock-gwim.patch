@@ -1,0 +1,90 @@
+Index: pidgin-2.7.6/libpurple/protocols/novell/nmconn.c
+===================================================================
+--- pidgin-2.7.6.orig/libpurple/protocols/novell/nmconn.c
++++ pidgin-2.7.6/libpurple/protocols/novell/nmconn.c
+@@ -191,6 +191,12 @@ void nm_release_conn(NMConn *conn)
+ 			g_free(conn->ssl_conn);
+ 			conn->ssl_conn = NULL;
+ 		}
++
++		if (conn->io) {
++			purple_io_destroy (conn->io);
++			conn->io = NULL;
++		}
++
+ 		g_free(conn->addr);
+ 		conn->addr = NULL;
+ 		g_free(conn);
+@@ -203,11 +209,23 @@ nm_tcp_write(NMConn * conn, const void *
+ 	if (conn == NULL || buff == NULL)
+ 		return -1;
+ 
+-	if (!conn->use_ssl)
+-		return (write(conn->fd, buff, len));
+-	else if (conn->ssl_conn && conn->ssl_conn->write)
+-		return (conn->ssl_conn->write(conn->ssl_conn->data, buff, len));
+-	else
++	if (!conn->use_ssl) {
++		if (!conn->io || purple_io_get_fd (conn->io) != conn->fd) {
++			if (conn->io)
++				purple_io_destroy (conn->io);
++			conn->io = purple_io_new (conn->fd);
++		}
++
++		return purple_io_write_bytes (conn->io, buff, len);
++	} else if (conn->ssl_conn && conn->ssl_conn->data && conn->ssl_conn->write) {
++		if (!conn->io || purple_io_get_ssl_connection (conn->io) != conn->ssl_conn->data) {
++			if (conn->io)
++				purple_io_destroy (conn->io);
++			conn->io = purple_io_new_ssl (conn->ssl_conn->data);
++		}
++
++		return purple_io_write_bytes (conn->io, buff, len);
++	} else
+ 		return -1;
+ }
+ 
+Index: pidgin-2.7.6/libpurple/protocols/novell/nmconn.h
+===================================================================
+--- pidgin-2.7.6.orig/libpurple/protocols/novell/nmconn.h
++++ pidgin-2.7.6/libpurple/protocols/novell/nmconn.h
+@@ -24,6 +24,7 @@
+ typedef struct _NMConn NMConn;
+ typedef struct _NMSSLConn NMSSLConn;
+ 
++#include "purple-io.h"
+ #include "nmfield.h"
+ #include "nmuser.h"
+ 
+@@ -42,6 +43,9 @@ struct _NMConn
+ 	/* The file descriptor of the socket for the connection. */
+ 	int fd;
+ 
++	/* The buffering I/O wrapper. */
++	PurpleIO *io;
++
+ 	/* The transaction counter. */
+ 	int trans_id;
+ 
+Index: pidgin-2.7.6/libpurple/protocols/novell/novell.c
+===================================================================
+--- pidgin-2.7.6.orig/libpurple/protocols/novell/novell.c
++++ pidgin-2.7.6/libpurple/protocols/novell/novell.c
+@@ -2223,17 +2223,12 @@ static void
+ novell_close(PurpleConnection * gc)
+ {
+ 	NMUser *user;
+-	NMConn *conn;
+ 
+ 	if (gc == NULL)
+ 		return;
+ 
+ 	user = gc->proto_data;
+ 	if (user) {
+-		conn = user->conn;
+-		if (conn && conn->ssl_conn) {
+-			purple_ssl_close(user->conn->ssl_conn->data);
+-		}
+ 		nm_deinitialize_user(user);
+ 	}
+ 	gc->proto_data = NULL;

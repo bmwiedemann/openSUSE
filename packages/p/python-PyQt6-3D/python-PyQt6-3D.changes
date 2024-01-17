@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Mon Oct 30 14:29:23 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.6.0
+  * This adds support for Qt v6.6.
+
+-------------------------------------------------------------------
+Mon Apr 24 20:15:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.0
+  * Added support for Qt v6.5.
+
+-------------------------------------------------------------------
+Tue Mar 28 09:19:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Disable ix86 build: qt6-3d has disabled it temporarily
+
+-------------------------------------------------------------------
+Wed Mar 15 16:01:14 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not require python 3.7 when 3.6 is good enough, which allows
+  to build the package for Leap
+
+-------------------------------------------------------------------
+Mon Oct  3 17:26:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.4.0
+  *  Added support for Qt v6.4.
+
+-------------------------------------------------------------------
+Wed Apr 13 08:14:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.0
+  * Added support for Qt v6.3.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sun Oct  3 13:40:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.2.0
+  * Added support for Qt v6.2.
+
+-------------------------------------------------------------------
+Thu Aug 19 09:29:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't write mtime-based init pyc file during import test
+  (boo#1047218)
+
+-------------------------------------------------------------------
+Tue Jun 15 13:09:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.1.1
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Thu May 13 18:28:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.1.0
+  * Added support for Qt v6.1.
+  * Added the examples.
+
+-------------------------------------------------------------------
+Thu Mar 11 19:52:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.0.3
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Thu Feb 25 11:22:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v6.0.2
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sat Feb 20 16:50:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for v6.0.1 based on python-qt3d-qt5 

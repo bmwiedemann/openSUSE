@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6768b38979d66cf6051c1c0ed87e16d5</srcmd5>
+    <version>0+git134</version>
+    <time>1597658762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827101</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a9d3c9707ff0c36d8448204453437b2</srcmd5>
+    <version>0+git134</version>
+    <time>1598726056</time>
+    <user>dimstar_suse</user>
+    <comment>- Add meson_build call.</comment>
+    <requestid>829651</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>086b61b6cdb8841bc0020390dec74146</srcmd5>
+    <version>0.2</version>
+    <time>1646241636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.2</comment>
+    <requestid>958403</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1dfeb58c6f5ac0a5b4fbfac14f453952</srcmd5>
+    <version>0.3</version>
+    <time>1654595120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.3</comment>
+    <requestid>981094</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eb58a08633e1583187b8455233dfed9d</srcmd5>
+    <version>0.4.1</version>
+    <time>1671455284</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.4.1</comment>
+    <requestid>1043674</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d38a7046c62253970a69383a1740418c</srcmd5>
+    <version>0.5</version>
+    <time>1681213877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.5</comment>
+    <requestid>1078350</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>406efcb547de976c4c9714e3209fcbb1</srcmd5>
+    <version>0.99.1</version>
+    <time>1684426956</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.99.1</comment>
+    <requestid>1087814</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9beb59f988220e2a11c0253e0b712447</srcmd5>
+    <version>0.99.2</version>
+    <time>1685393279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.99.2</comment>
+    <requestid>1089572</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>14e68a2770c0bd2e02a881be31e899bc</srcmd5>
+    <version>1.0.0</version>
+    <time>1686506059</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.0</comment>
+    <requestid>1091447</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a3486fa3915507013c8a977e8b5530ca</srcmd5>
+    <version>1.0.901</version>
+    <time>1694019347</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.0.901 (1.1.0~rc1)
+  * ei_device_get_region_at() and its libeis equivalent was added
+    as a helper to obtain a device's region at a given point.
+  * ei_region_get_mapping_id() returns the mapping id previously
+    set by the EIS implementation via
+    eis_region_set_mapping_id(). This mapping id can be used to
+    identify external resources that have a relationship with
+    this region.
+    This is a protocol addition and bumps the ei_device protocol
+    to version 2.
+</comment>
+    <requestid>1108996</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9608ab3de7461eb2582a17f9a4f25acc</srcmd5>
+    <version>1.1.0</version>
+    <time>1694113938</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.1</comment>
+    <requestid>1109460</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d92c15188f2dcbbfd2603a37273a52da</srcmd5>
+    <version>1.2.0</version>
+    <time>1701972545</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.2</comment>
+    <requestid>1131283</requestid>
+  </revision>
+</revisionlist>

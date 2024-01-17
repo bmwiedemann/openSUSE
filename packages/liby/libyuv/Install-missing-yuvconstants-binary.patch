@@ -1,0 +1,20 @@
+From: Boyuan Yang <byang@debian.org>
+Date: Tue, 18 Oct 2022 16:09:09 -0400
+Subject: CMakeLists.txt: Install missing yuvconstants binary
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f9a7d74..346b729 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -97,6 +97,7 @@ endif()
+ 
+ # install the conversion tool, .so, and all the header files
+ INSTALL ( PROGRAMS ${CMAKE_BINARY_DIR}/yuvconvert			DESTINATION bin )
++INSTALL ( PROGRAMS ${CMAKE_BINARY_DIR}/yuvconstants			DESTINATION bin )
+ INSTALL ( TARGETS ${ly_lib_shared} LIBRARY				DESTINATION lib RUNTIME DESTINATION bin )
+ INSTALL ( DIRECTORY ${PROJECT_SOURCE_DIR}/include/		DESTINATION include )
+ 

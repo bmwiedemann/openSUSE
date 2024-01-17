@@ -1,0 +1,361 @@
+-------------------------------------------------------------------
+Tue Dec  5 07:07:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.1:
+  * Fixed timerState tracking and waking up of screen on the
+    screen shield
+
+-------------------------------------------------------------------
+Mon Aug 28 09:48:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.0:
+  * Marked extension as compatible with GNOME Shell 45 with no
+    backwards compatibility
+  * Fixed alignment of the indicator menu
+  * Changed the default view in the app to Timer
+- Drop 0001-Mark-extension-as-compatible-with-GNOME-Shell-45.patch
+
+-------------------------------------------------------------------
+Wed Aug 23 11:07:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0001-Mark-extension-as-compatible-with-GNOME-Shell-45.patch:
+  mark extension as compatible with GNOME 45
+  (gh#gnome-pomodoro/gnome-pomodoro#667)
+
+-------------------------------------------------------------------
+Wed Aug 23 10:24:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Bump the dependency on gnome-shell to allow gnome-shell 45.
+
+-------------------------------------------------------------------
+Fri Mar 31 15:34:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.1:
+  * Fixed invalid appdata file
+
+-------------------------------------------------------------------
+Wed Mar 29 10:51:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Validate appdata during check. (We already had the needed
+  dependency in place).
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
+Mon Mar 27 06:52:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+
+- Update to 0.23.0:
+  * Marked extension as compatible with GNOME Shell 44
+  * Added skip button
+  * Lock-screen widget
+  * Fixed annoucement notification getting dismiss
+- Drop e67bf9d0d0ea3604654145aa7e40d239d3d8109d.patch
+- Update Source to new home.
+
+-------------------------------------------------------------------
+Thu Mar 23 10:50:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Correct the dependency on gnome-shell to allow gnome-shell 44.
+
+-------------------------------------------------------------------
+Wed Mar  1 11:29:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add e67bf9d0d0ea3604654145aa7e40d239d3d8109d.patch: Mark
+  extension as compatible with GNOME Shell 44
+
+-------------------------------------------------------------------
+Mon Feb  6 07:12:18 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.1:
+  * Close screen overlay by hitting Esc key - a failsafe method
+  * Don't open screen overlay while a video call app is fullscreen
+  * Fixed screen overlays timer label getting ellipsized
+  * Fixed screen overlay being over screensaver animation
+  * Add --reset commandline option
+
+-------------------------------------------------------------------
+Mon Oct  3 15:17:37 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.0:
+  * Marked extension as compatible with GNOME Shell 43
+  * Fixed blur effect in GNOME Shell 42 and later
+  * Fixed GNOME detection on Ubuntu
+  * Fixed break overlay geting stuck at 0:01 on GNOME 3.38, 40 and
+    41
+  * Improved indicator rendering on HiDPI screens
+  * Updated translations.
+- Drop 6f14b9ce.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Sep 21 18:27:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 6f14b9ce.patch: Mark as compatible with GNOME 43.
+
+-------------------------------------------------------------------
+Mon May  2 07:56:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.1:
+  * Fixed break overlay geting stuck at 0:01 on GNOME 42
+
+-------------------------------------------------------------------
+Mon Apr  4 10:27:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.0:
+  * Support for GNOME Shell 42
+  * Fixed app hanging at startup
+  * Added Croatian translation
+  * Added json-glib and cairo as dependencies
+- Remove upstreamed patches: c008099ff.patch, d46371e4d.patch
+
+-------------------------------------------------------------------
+Fri Mar 25 09:41:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Supper GNOME 42 (boo#1197506):
+  + Add c008099ff.patch: Mark extension as compatible with
+    gnome-shell 42.
+  + Add d46371e4d.patch: Fix GNOME extension error reporting.
+- Adjust gnome-shell dependency to support GNOME 42 (< 43).
+
+-------------------------------------------------------------------
+Thu Sep 30 07:46:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Set maximum gnome-shell version to 42, now that it supports 41.
+
+-------------------------------------------------------------------
+Sun Sep 26 21:05:24 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.0:
+  * Support for GNOME Shell 41
+
+-------------------------------------------------------------------
+Mon Sep 20 14:02:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.2:
+  * Fix dialog animation braking ScreenShield
+  * Cleanup deprecated code
+  * Fix blur effect artifacts
+  * Dont wake up the screen after screensaver
+  * Fix possible recursion during blinking animation
+  * Workaround choppy blur effect animation in gnome-shell 3.38
+  * Fix indicator opacity after lock screen
+
+-------------------------------------------------------------------
+Tue Apr 13 12:41:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.19.1:
+  * Lower the cpu usage of the animation when on pause
+
+-------------------------------------------------------------------
+Wed Apr  7 07:11:44 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.19.0:
+  * Support for GNOME Shell 40
+  * Added support for meson
+  * Changed blur effect during break
+  * Updated translation
+
+-------------------------------------------------------------------
+Thu Oct  8 14:51:57 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- get actually ready for gnome-shell 3.38
+
+-------------------------------------------------------------------
+Mon Oct  5 07:42:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  * Support for GNOME Shell 3.38
+  * Removed ayatana-appindicator3 support
+  * Added Norwegian translation
+  * Added Finnish translation
+  * Updated Indonesian translation
+  * Updated Chinese translation
+  * Updated Russian translation
+  * Updated French translation
+
+-------------------------------------------------------------------
+Mon Jun 15 13:35:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(ayatana-appindicator3-0.1) BuildRequires:
+  ayatana-appindicator has ben failing to build for a while and is
+  dying.
+
+-------------------------------------------------------------------
+Wed Apr 22 11:52:17 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
+
+- Fix gnome shell version requirements since upstream supports
+  single gnome-shell version only.
+- Clean gnome-pomodoro.spec with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:35:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Support for GNOME Shell 3.36
+  * Updated Catalan translation (thanks @antoniofsm)
+
+-------------------------------------------------------------------
+Thu Jan 30 11:10:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Mon Oct  7 05:29:01 UTC 2019 - mvetter@suse.com
+
+- Update to 0.16.0:
+  * Support for GNOME Shell 3.34
+  * Added esperanto translation (thanks @SeZuo)
+  * Moved app-menu to main window
+
+-------------------------------------------------------------------
+Mon Apr  8 08:33:03 UTC 2019 - mvetter@suse.com
+
+- Update to version 0.15.1:
+  + Minor code cleanups to support ES6 syntax
+  + Support for GNOME Shell 3.32
+  + Fix for build with vala 0.44.1
+  + Updated German translation
+  + Fix for handle error recreating existing folder
+  + Minor code cleanups
+
+-------------------------------------------------------------------
+Mon Dec  3 11:43:24 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 0.14.0:
+  + Support for GNOME Shell 3.28 and 3.30.
+  + Stats.
+  + Background blur under the dialog during breaks.
+  + Updated translations.
+- Replace pkgconfig(appindicator3-0.1) with
+  pkgconfig(ayatana-appindicator3-0.1) BuildRequires following
+  upstream changes.
+- Add pkgconfig(gom-1.0) and pkgconfig(sqlite3) BuildRequires: New
+  dependencies.
+- Run spec-cleaner, modernize spec.
+
+-------------------------------------------------------------------
+Tue Dec  5 20:21:31 UTC 2017 - dimstar@opensuse.org
+
+- Require appstream-glib >= 0.7.3: This version changed the default
+  location for the appdata file from /usr/share/appdata to
+  /usr/share/mimeinfo. Since this package needs to be bootstrapped
+  we need to know what we end up with.
+
+-------------------------------------------------------------------
+Tue Nov 21 10:08:26 UTC 2017 - mvetter@suse.com
+
+- Update to 0.13.4:
+  + Add and update various translations.
+  + Fix hiding notifications during pomodoro.
+  + Update sound file in canberra cache.
+  + Log timer entries in database.
+  + Simple blur effect for the notification dialog.
+  + Display screen notification timer only on primary monitor.
+  + Display notifications despite timer being paused.
+  + gnome: Use Shell D-Bus instead of gsettings.
+  + Wait for plugins capabilities during startup.
+  + Various bugfixes.
+
+-------------------------------------------------------------------
+Fri Sep 15 08:25:38 UTC 2017 - mvetter@suse.com
+
+- Update to 0.13.3:
+  + Fix hiding notifications during pomodoro.
+  + Update sound file in canberra cache.
+  + Simplify Utils.Patch class.
+  + Update and add translations.
+  + Mark as compatible with GNOME 3.26.
+- Remove fedora conditions
+- Remove not needed macros like %icon_theme_cache_postun
+
+-------------------------------------------------------------------
+Fri Mar 17 20:23:47 UTC 2017 - mvetter@suse.com
+
+- Update to 0.13.1
+  + Support for GNOME Shell 3.24.
+  + Bug fixes.
+- Drop intltool in favor of newer gettext.
+- Remove libgnome-desktop-3.0 dependency (happened in 0.13.0).
+- Add BuildRequires appstream-glib for AppStream support.
+- Add BuildRequires libappindicator to provide indicator on
+  other desktops than GNOME.
+
+-------------------------------------------------------------------
+Mon Sep  5 12:58:54 UTC 2016 - zaitor@opensuse.org
+
+- Add global Requires exclude for the now private typelib(Meta)
+  from mutter.
+
+-------------------------------------------------------------------
+Mon Jun 20 09:08:27 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.12.1:
+  + Fix for build error.
+- Add gnome-pomodoro-rpmlintrc: lib is only used by pomodoro.
+- BuildRequire pkgconfig(gio-2.0) instead of
+  pkgconfig(dbus-glib-1): Migrated from libdubs-glib to GDBus.
+- Drop BuildRequires/Recommends for:
+  + telepathy-glib: Drop integration with Telepathy.
+  + google-droid-sans-fonts: Don't use Droid Sans for timer digits,
+    instead use default system font.
+- Added BuildRequires:
+  + gsettings-desktop-schemas: to provide fallback for other
+    desktops.
+  + pkgconfig(libpeas): added a plugin engine based on libpeas.
+- Drop passing of prefix to autogen as it gets done in there
+  automatically.
+- Linker flags changed due to issues:
+  gh#codito/gnome-pomodoro#159 and gh#codito/gnome-pomodoro#195.
+
+-------------------------------------------------------------------
+Mon Jun 13 10:13:12 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.12.0:
+  + Support for more desktops.
+  + Ability to pause the timer.
+  + Ability add plugins.
+  + Code refactoring.
+  + Bug fixes.
+  + Dropped Telepathy and Skype integration.
+  + Dropped support for GNOME Shell 3.14 and older.
+
+-------------------------------------------------------------------
+Wed May 18 09:56:03 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.11.3:
+  + Ignore small mouse movements in screen notification.
+  + Fixed indicator not updating.
+  + Cleaned up some compilation warnings.
+
+-------------------------------------------------------------------
+Mon Apr  4 13:54:29 UTC 2016 - mvetter@suse.com
+
+- Update to version 0.11.2:
+  + Add GNOME 3.20 support.
+
+-------------------------------------------------------------------
+Fri Nov 13 09:54:10 UTC 2015 - mvetter@suse.com
+
+- Update to version 0.11.1:
+  + Add GNOME 3.18 support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 14 07:48:02 UTC 2015 - mvetter@suse.com
+
+- Correct glib2 macros
+
+-------------------------------------------------------------------
+Mon Jul 13 14:49:44 UTC 2015 - mvetter@suse.com
+
+- Using macros in post/postun
+- Splitting in lang package
+- Use proper configure
+
+-------------------------------------------------------------------
+Thu Jul  2 14:37:40 UTC 2015 - mvetter@suse.com
+
+- Remove deb file
+- Clean up spec file
+- Correct name of spec file and add changes file
+- Package got created originally by Kamil Prusko (kamilprusko)
+

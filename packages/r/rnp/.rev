@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5604941ce237383f26f60798ab0f6552</srcmd5>
+    <version>0.14.0</version>
+    <time>1617131115</time>
+    <user>RBrownSUSE</user>
+    <comment>An OpenPGP implementation</comment>
+    <requestid>874184</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54649011e221566db99bd65945a8f45d</srcmd5>
+    <version>0.15.1</version>
+    <time>1624999391</time>
+    <user>dimstar_suse</user>
+    <comment>rnp 0.15.1 CVE-2021-33589 boo#1187759</comment>
+    <requestid>902886</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a165b6edf6ef1dcd11e3c63a0ff1ca18</srcmd5>
+    <version>0.15.2</version>
+    <time>1628584047</time>
+    <user>RBrownSUSE</user>
+    <comment>rnp 0.15.2</comment>
+    <requestid>911107</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e2aa21d979da2697caafe46383ca39ca</srcmd5>
+    <version>0.15.2</version>
+    <time>1642273508</time>
+    <user>dimstar_suse</user>
+    <comment>- disable tests
+</comment>
+    <requestid>946592</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b1e33bd40d790a2b9339c84e58071165</srcmd5>
+    <version>0.16.0</version>
+    <time>1644874564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954113</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ced31efc827b1ed257d8af1021324045</srcmd5>
+    <version>0.16.0</version>
+    <time>1653244078</time>
+    <user>dimstar_suse</user>
+    <comment>- add upstream signing key and verify source signature
+</comment>
+    <requestid>978503</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0952146d890f948b745eb0013c27dcfa</srcmd5>
+    <version>0.16.2</version>
+    <time>1664210878</time>
+    <user>dimstar_suse</user>
+    <comment>rnp 0.16.2</comment>
+    <requestid>1005953</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1b9ee11eb12d1d572f912f8b04d4381d</srcmd5>
+    <version>0.16.3</version>
+    <time>1686665366</time>
+    <user>dimstar_suse</user>
+    <comment>- rnp 0.16.3:
+  * CVE-2023-29479: Fix issue with possible hang on malformed
+    inputs (boo#1212253)
+  * CVE-2023-29480: Fix issue where in some cases, secret keys
+    remain unlocked after use (boo#1212254)
+</comment>
+    <requestid>1092656</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aaeb775e9590b42ba492d14af74ebd50</srcmd5>
+    <version>0.17.0</version>
+    <time>1686752965</time>
+    <user>dimstar_suse</user>
+    <comment>rnp 0.17.0</comment>
+    <requestid>1092907</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1a82878217b8fe8aaa2b1fc1c81f3abf</srcmd5>
+    <version>0.17.0</version>
+    <time>1686927211</time>
+    <user>dimstar_suse</user>
+    <comment>- build with system sexp library, for boo#1212259
+Needs SR#1093175</comment>
+    <requestid>1093176</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>cd0d7a644604cd9bba3102d5c4157a2c</srcmd5>
+    <version>0.17.0</version>
+    <time>1687469164</time>
+    <user>dimstar_suse</user>
+    <comment>- fix s390x tests - add rnp-v0.17.0-tests.patch
+</comment>
+    <requestid>1094487</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>014e8106c598e52ce914032f07129955</srcmd5>
+    <version>0.17.0</version>
+    <time>1687900593</time>
+    <user>dimstar_suse</user>
+    <comment>- build with system sexpp library (renamed)
+</comment>
+    <requestid>1095488</requestid>
+  </revision>
+</revisionlist>

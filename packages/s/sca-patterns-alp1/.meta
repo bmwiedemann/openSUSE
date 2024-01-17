@@ -1,0 +1,5 @@
+<package name="sca-patterns-alp1" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Patterns for ALP1</title>
+  <description>Supportconfig Analysis (SCA) appliance patterns to identify known issues relating to all versions of ALP 1</description>
+  <devel project="isv:SUSE:SupportTools:Factory" package="sca-patterns-alp1"/>
+</package>

@@ -1,0 +1,12 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter(".* shared-lib-calls-exit")
+
+#dapl is unique: differently named packages contain the same
+#shared library but one compiled with tracing enabled.
+addFilter(".* shlib-policy-name-error")
+
+# As this is a plugin for libibverbs, there is no reason
+# to name it according to policy
+addFilter(".* shlib-policy-missing-suffix")

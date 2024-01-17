@@ -1,0 +1,128 @@
+#!/bin/sh
+#
+# xcompmgr-autostart - activate or deactivate autostart of xcompmgr
+#
+# Copyright (c) 2010 <guido+opensuse.org@berhoerster.name>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# TORTIOUS ACTION, ARISING OUT OF
+# PERFORMANCE OF THIS SOFTWARE.
+
+PATH=/bin:/usr/bin
+export PATH
+
+error_msg () {
+    printf "error: %s\n" "$@" >&2
+}
+
+usage () {
+    printf "usage: xcompmgr-autostart [on|off]\n" >&2
+}
+
+has_xcompmgr_entry () {
+    [ -r "${autostart_file}" ] || return 1
+    grep "^X-Generated-By=xcompmgr-autostart$" "${autostart_file}" \
+        >/dev/null 2>&1 || return 2
+    grep "^Hidden=true$" "${autostart_file}" >/dev/null 2>&1 && return 1
+    return 0
+}
+
+add_xcompmgr_entry () {
+    has_xcompmgr_entry
+    ret=$?
+    if [ $ret -eq 0 ]; then
+        return 0
+    elif [ $ret -eq 2 ]; then
+        error_msg "custom xcompmgr entry autostart found, aborting"
+        return 1
+    fi
+
+    if [ ! -d "${xdg_autostart_dir}" ]; then
+        if ! mkdir "${xdg_autostart_dir}"; then
+            error_msg "could not create \"${xdg_autostart_dir}\""
+            return 1
+        fi
+    fi
+    cat >"${autostart_file}" <<EOF
+[Desktop Entry]
+Type=Application
+Name=xcompmgr
+GenericName=Composite Manager
+TryExec=xcompmgr
+Exec=xcompmgr -c -C
+Hidden=false
+X-Generated-By=xcompmgr-autostart
+
+EOF
+    ret=$?
+    if [ $ret -ne 0 ]; then
+        error_msg "could not create xcompmgr autostart entry"
+        return 1
+    fi
+    printf "xcompmgr-autostart is on\n"
+    return 0
+}
+
+remove_xcompmgr_entry () {
+    has_xcompmgr_entry
+    retval=$?
+    if [ $retval -eq 1 ]; then
+        return 0
+    elif [ $retval -eq 2 ]; then
+        error_msg "custom xcompmgr autostart entry found, aborting"
+        return 1
+    fi
+
+    ed -- "${autostart_file}" >/dev/null 2>&1 <<EOF
+,s/Hidden=false/Hidden=true/
+w
+q
+EOF
+    ret=$?
+    if [ $ret -ne 0 ]; then
+        error_msg "could not remove xcompmgr autostart entry"
+        return 1
+    fi
+    printf "xcompmgr-autostart is off\n"
+    return 0
+}
+
+xdg_autostart_dir="${XDG_CONFIG_HOME:+${XDG_CONFIG_HOME}/autostart}"
+xdg_autostart_dir="${xdg_autostart_dir:=${HOME}/.config/autostart}"
+autostart_file="${xdg_autostart_dir}/xcompmgr.desktop"
+
+if [ $# -eq 0 ]; then
+    has_xcompmgr_entry
+    retval=$?
+    if [ $retval -eq 0 ]; then
+        printf "xcompmgr-autostart is on\n"
+    elif [ $retval -eq 1 ]; then
+        printf "xcompmgr-autostart is off\n"
+    elif [ $retval -eq 2 ]; then
+        printf "custom xcompmgr autostart entry found\n"
+    fi
+    exit 0
+elif [ $# -eq 1 ]; then
+    case "$1" in
+        on)     add_xcompmgr_entry
+                exit $?
+                ;;
+        off)    remove_xcompmgr_entry
+                exit $?
+                ;;
+        *)      usage
+                exit 1
+                ;;
+    esac
+else
+    usage
+    exit 2
+fi

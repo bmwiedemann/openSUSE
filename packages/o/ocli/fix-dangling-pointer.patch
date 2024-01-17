@@ -1,0 +1,20 @@
+--- ocli-0.9.0.orig/owntracks-cli-publisher.c	2022-09-24 10:36:17.717664852 +0200
++++ ocli-0.9.0/owntracks-cli-publisher.c	2022-09-24 10:14:17.035192128 +0200
+@@ -311,7 +311,7 @@
+ 
+ 	p = NULL;
+ 	while ((p = (char**)utarray_next(parms, p))) {
+-		char *key = basename(*p), *val = NULL;
++		char *key = basename(*p), *val = NULL, buf[1025];
+ 		FILE *fp;
+ 		bool is_exec = false;
+ 
+@@ -333,7 +333,7 @@
+ 			perror(*p);
+ 			continue;
+ 		} else {
+-			char buf[1025], *bp;
++			char *bp;
+ 			if (fgets(buf, sizeof(buf), fp) != NULL) {
+ 				if ((bp = strchr(buf, '\r')) != NULL)
+ 					*bp = 0;

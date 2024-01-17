@@ -1,0 +1,15 @@
+<package name="yaffshiv" project="openSUSE:Factory">
+  <title>A YAFFS file system parser and extractor</title>
+  <description>A YAFFS file system parser and extractor writte in pure python.
+
+Features:
+ - List and/or extract regular files, folders, symlinks, hard
+   links, and special device files
+ - Automatic detection and/or brute force of YAFFS build parameters
+   (page size, spare size, endianess, etc)
+ - Support for both big and little endian YAFFS file systems
+
+</description>
+  <devel project="devel:tools" package="yaffshiv"/>
+  <url>https://github.com/devttys0/yaffshiv</url>
+</package>

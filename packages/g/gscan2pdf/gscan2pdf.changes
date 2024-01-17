@@ -1,0 +1,1157 @@
+-------------------------------------------------------------------
+Sat Jan 21 10:23:46 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.13.2:
+  * Filter out temporary filenames from tool warnings.
+    Closes Debian bug #1026205: Unpaper errors for every scanned page
+  * Don't forget to destroy file chooser when creating multiple images.
+    Closes bug #409 (V2.13.0: Save Dialog Box cannot be closed anymore)
+  * Catch missing dependencies in pdftk.
+  * Catch invalid dates rather than crashing.
+    Closes bug #407 (2.12.8-1.fc36 crashes (exits) when entering an invalid date)
+  * Update to Hungarian translation
+  * Update to French translation
+
+-------------------------------------------------------------------
+Sat Dec 17 19:43:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * scanner database update
+- add keyring for source validation
+
+-------------------------------------------------------------------
+Sun Oct 16 14:53:41 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 2.13.0:
+  * Edit/Select/Invert menu item to invert selected pages,
+    (deb#1008717).
+
+-------------------------------------------------------------------
+Mon Jul 11 16:03:35 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 2.17.8:
+  * Fixed right-click pop-up behaviour with Wayland.
+
+-------------------------------------------------------------------
+Sun May 29 15:34:02 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.7:
+  * Fixed bug restoring user-defined tool on scan dialog.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Thu Apr 28 01:32:02 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.6: 
+  * Fixed crash saving document with date before 1970,
+    (deb#1008724).
+  * Translation updates.
+
+-------------------------------------------------------------------
+Mon Feb 21 15:05:47 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.5
+  * Fixed "Wide character in print" warnings in log file.
+  * Fixed parsing version from sane-backends v1.1.1.
+    Closes bug #399 (Parsing scanimage version is broken for 
+    sane-backends-1.1.1)
+  * Update to Russian translation
+  * Update to Italian translation
+  * Update to Ukrainian translation
+  * Update to German translation
+  * Update to Slovak translation
+
+-------------------------------------------------------------------
+Sun Nov 21 01:50:04 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.4:
+  * Fixed writing text layer to DjVu where tesseract used text type
+    "header".
+  * Dropped support for ocropus.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Sun Sep 19 14:18:58 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.3:
+  * Fixed pan/pan & select mismatch in defaults for toolbar icon
+    and image control. Now both default to pan & select tool.
+  * Remember selected image control tool between sessions.
+  * Ensure that all intermediate TIFFs are written with only one
+    strip to avoid triggering bug in PDF::Builder creating corrupt
+    PDF.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Thu Jul 15 10:11:26 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.12.2:
+  * add support for opencl-enabled tesseract.
+    (gscan2pdf needs help parsing output from
+    opencl-enabled tesseract).
+  * Fixed page numbering when reordering pages.
+    (Inconsistent handling of page numbers
+    when reordering PDF pages)
+  * Update to Hungarian translation
+  * Update to Spanish translation 
+  * Update to Ukrainian translation 
+
+-------------------------------------------------------------------
+Sat May  8 02:08:51 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add dependency for perl module Locale::Language. (bsc#1185787)
+
+-------------------------------------------------------------------
+Mon May  3 13:10:15 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.1
+  * Remove 'use lib' line with local, user-based path, closes bug
+    #384.
+  * Move postprocessing options to separate tab, (deb#987211).
+  * Refactor "Threshold before OCR" options into one line,
+    (deb#987212).
+  * Translation updates.
+- Changes from version 2.12.0:
+  * Enabled subject and keywords in filename template.
+  * Switch from Perlmagick to imagemagick for threshold steps of OCR
+    to improve performance.
+  * + annotation layer for DjVu and PDF.
+  * POD and manpage improvements, (deb#987059).
+  * Translation updates.
+
+-------------------------------------------------------------------
+Thu Apr  1 00:18:38 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.11.2:
+  * Recognise that the smfp backend returns "Device busy" if the
+    scanner is turned off and display the relevant dialog, closes
+    #378 (gscan2pdf claims scanner is "busy" when not connected).
+  * Translation updates.
+- Changes from version 2.11.1:
+  * Fix bug importing a DjVu or TIFF with depth > 1 and saving it
+    as PDF with G3/4.
+  * Remove zip and packbits PDF compression options. Rename
+    PNG->Flate, closes bug #366 (Rename PDF compression options).
+  * Don't write blank metadata fields, closes bug #375.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Tue Jan 19 19:35:30 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.11.0
+  * Run started callback before error callback
+  * + option to navigate through OCR output by position
+  * Fix hang trying to process page that has been deleted.
+  * Quit with fatal error if module versions do not match executable version.
+    Closes #370 (gscan2pdf opens to white screen).
+  * Take undo/redo snapshot when adding or correcting OCR text
+  * Don't lose OCR output when running user-defined tool
+  * Only update list of user-defined tools on pressing apply in preferences.
+  * + vertically split screen view for image and OCR output.
+  * Correct use of dpi option in v4.0.0-beta.1 tesseract call (i.e. Bionic).
+  * Check that the core font cannot encode the glyphs before using TTF.
+  * + option to put OCR output to the right of the image, rather than behind it.
+  * Additionally make source "Normal" a synonym for "flatbed". Closes #371
+    (Improve option for auto-select #Pages upon switching ADF/Normal)
+  * Fix bug estimating height of non-greyscale variable height scans.
+  * Update to Hungarian translation (thanks to csola)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+- Changes from 2.10.2
+  * Catch errors running default launcher
+  * Check both stderr and stdout for libtiff-tools version
+    Closes Debian bug 977532 (gscan2pdf: save option not available)
+  * Rename drag tool -> pan tool
+  * Update to German translation (thanks to Matthias Sprau)
+  * Update to Turkish translation (thanks to Buckethead)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+- Changes from 2.10.1
+  * Switch from Perlmagick to imagemagick for threshold tool to improve
+    performance. Closes Debian bug 968918 (Threshold function is extremely slow)
+  * + missing crop icon
+  * + View/Edit OCR toggle
+  * Don't zoom in/out if plus/minus pressed whilst editing OCR
+  * Allow cut/copy/paste whilst editing OCR
+  * Fixed bug manually adding OCR that overlaps with existing words
+  * + button to duplicate OCR text
+  * Fixed bug adding OCR text '0'
+  * Fixed bug processing deleted page
+  * Don't sort OCR confidence list if not changed
+  * Fixed bug decoding 3-octal UTF-8 characters in DjVu text layer
+  * Update to Hungarian translation (thanks to csola)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+
+-------------------------------------------------------------------
+Wed Jan  6 13:42:51 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Insert needed Requires:perl(Gtk3::ImageView).
+- Move djvulibre, tiff and pdftk from Reccommends to Requires, 
+  because missing of these package will rise up a warning at startup.
+
+-------------------------------------------------------------------
+Mon Jan  4 18:01:31 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Change requires: from perl(PDF::API2) to perl(PDF::Builder).
+  The change was introduced in 2.10.0.
+
+-------------------------------------------------------------------
+Tue Oct 27 16:16:24 UTC 2020 - Sauerlandlinux@gmx.de
+
+- Add Recommends on pdftk for PDF encryption
+
+-------------------------------------------------------------------
+Sat Aug  8 18:49:33 UTC 2020 - malcolmlewis@opensuse.org
+
+- Add requies on typelib(GdkPixdata) for SLE 15+, Leap 15.2 and
+  greater.
+
+-------------------------------------------------------------------
+Mon Jul 13 13:43:13 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to version 2.8.1
+  * Pass resolution to tesseract to avoid messages like
+    "Warning! Invalid resolution 0 dpi. Using 70 instead"
+  * Cope better if data model becomes corrupted
+  * + restart option to 'device not found' mini-wizard & if tmp
+    directory changed.
+  * When saving a session file, note that pages have been saved to avoid
+    'Some pages have not been saved. Do you really want to quit?' message.
+  * Improvements to the Crashed sessions dialog to make it more
+    intuitive.
+  * Update position of OCR text when cropping
+  * Create PS level 3 instead of 1.
+  * Fix check for unpaper version. Closes #285 (Scan fails if unpaper is
+    not installed but selected in post processing)
+  * Fix check for tesseract version. Remove support for tesseract < 3.04.00.
+  * Update to Hungarian translation (thanks to csola)
+  * Update to Brazilian Portuguese translation (thanks to Arthur Rodrigues)
+  * Update to German translation (thanks to Matthias Sprau)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+
+- Update to version 2.8.0 (11.06.2020):
+  * Interpolate colours according to OCR confidence in HSV space.
+  * Limit zoom to 100 to avoid errors like:
+    "drawing failure for widget 'GtkBox': error occurred in libfreetype"
+  * Also update text position and rectangle when updating bounding box.
+  * + button to add to text layer
+  * + preference to disable device list cache
+  * + mini-wizard if device not found
+  * Fix save as PS. Closes Debian bug #962151
+   (Failure to save: unitialized value $SETTINGS{"ps_backend"})
+ * Update to Hungarian translation (thanks to csola)
+ * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+
+- Update to version 2.7.0 (08.05.2020):
+  * Cache device list to speed up first display of scan dialog.
+  * Fix bug updating switch widgets in scan options.
+  * Fixed bug importing file with non-ASCII characters in filename
+    from file browser.
+  * Use daylight savings time from document date when setting timezone.
+  * Use UTF8 in logs, fixing "wide character in print" warnings.
+  * Fix UTF8 encoding when importing metadata from PDF or DjVu.
+  * When editing OCR text, display bounding box on image and allow it
+    to be adjusted.
+  * + buttons to navigate between OCR text boxes, sorted by confidence
+    level.
+  * Zoom to text when editing OCR
+  * Fix error running File/Compress temporary files.
+  * Use only xdg-email for creating email. Closes feature request #112
+    (Use gsettings and xdg-email instead of gconftool for sending e-mails)
+  * Use GTK functionality instead of xdg-open for launching file viewer.
+  * Update to French translation (thanks to Jean-Marc)
+
+- Update to version 2.6.7 (08.04.2020):
+  * Fix bug causing stretched images after cropping.
+  * Don't allow errors without page numbers to hang GUI.
+  * Fixed bug importing multipage DjVu.
+  * Fixed bug reloading options after setting manual paper size.
+
+- Update to version 2.6.6 (06.04.2020):
+  * Support importing PDF with different resolutions in x and y
+    directions.
+  * Fix bug applying paper after option set SANE_INFO_INEXACT
+    Closes bugs #346 (gscan2pdf paper size selection inoperative) and
+    #348 (paper size selection has no effect for US Letter / US Legal)
+  * Update to Bulgarian translation (thanks to Berov)
+  * Update to Turkish translation (thanks to Utku BERBEROĞLU)
+
+- Update to version 2.6.5 (06.03.2020):
+  * Fixed bug when editing page number causing page to deselect and
+    thumbnails to scroll to top of list
+  * Use a scrolled window in the multiple message dialog to prevent it
+    from growing too large.
+  * Use the "Don't show these messages again" checkbox to switch the
+    checkboxes for the individual messages. Set the button inconsistent
+    if the states are not all the same.
+  * Fix warning message about pdftk (again) by making sure that
+    user-defined tmp directory is available in time.
+  * Improve responsiveness with OCR output (again). Closes bug #192
+    (Sometimes after saving a PDF, the page selection UI becomes
+    sluggish/unresponsive)
+  * Select # pages = all when switching from reverse->facing.
+    Closes bug #344 (# Pages in Scan Document dialog reverts to # from All)
+  * Show "waiting" cursor for longer to prevent scans from being started
+    before all options applied.
+  * Respect 'Use timezone from locale' option when setting file system
+    timestamp
+  * Update to Hungarian translation (thanks to csola)
+  * Update to German translation (thanks to Martin Butter)
+  * Update to Spanish translation (thanks to rodroes)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+
+-------------------------------------------------------------------
+Mon Mar  2 09:27:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Remove recommends on lang subpkg, it is now handled by supplements
+
+-------------------------------------------------------------------
+Sun Mar  1 14:08:47 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 2.6.4:
+  + Limit the number of pages to scan when switching between
+    scanning facing and reverse pages.
+  + Fix scan dialog if no devices found (again).
+  + Improve responsiveness with OCR output.
+  + Add 'Ignore duplex capabilities of scanner' preferences option.
+  + Add running post-save hook on filenames with UTF-8, closes
+    bug (gscan2pdf#341), wrong character encoding at post-save
+    hook.
+  + Add frequent layout/output-pages mismatch in unpaper dialog.
+  + Don't allow dialog offering to switch from Facing to Reverse
+    after scanning double-sided pages to block scanner thread.
+  + Translation updates.
+- Changes from version 2.6.3:
+  + Fallback to core PDF font if requested font cannot be loaded,
+    closes bug (gscan2pdf#336), saving to PDF never ends if empty
+    font is selected.
+  + Detect GraphicsMagick in ImageMagick compatibility mode.
+  + Set program name to RDN ID to allow Gnome to add gscan2pdf as
+    a favorite.
+  + Fix importing metadata from PDFs when timezone has format like
+    GMT-14.
+  + Translation updates.
+- Changes from version 2.6.2:
+  + Fix importing UTF-8 in DjVu text layer.
+  + Fix crash importing metadata.
+  + Add compatibility with combination of scanimage frontend and
+    SANE 1.0.28, closes bug (gscan2pdf#335), tests fail with
+    sane-backends 1.0.28.
+  + Translation updates.
+- Changes from version 2.6.1:
+  + Fix crash importing metadata.
+- Changes from version 2.6.0:
+  + Fix crash closing multiple message dialog via x-icon, closes
+    bugs (gscan2pdf#333), segmentation fault when closing Messages
+    window and (gscan2pdf#334), closing Scan Document dialog using
+    close button causes gscan2pdf to exit.
+  + Add --import-all option.
+  + Add new rotate 180° icon.
+  + Import metadata when opening PDF or DjVu files.
+  + Increment/decrement date on save dialog with +/- keys.
+  + Fixed reload-recursion bug triggered by unusual environment
+   (reprotest).
+  + Translation updates.
+- Changes from version 2.5.7:
+  + Recognise "Document Table" as flatbed for imagescan backend.
+  + Use option name as label for those options with no title.
+  + Extended edit profile functionality in scan dialog to frontend
+    options.
+  + Close device when switching frontends so as not to block SANE
+    for the new frontend.
+  + Allow tool processes to immediately continue working on
+    subsequent pages despite errors on previous ones.
+  + Fix infinite loop scanning reverse pages.
+  + Translation updates.
+- Changes from version 2.5.6:
+  + Prevent Negate from changing the alpha channel.
+  + Avoid image corruption with colour images when applying
+    WhiteThreshold after BlackThreshold.
+  + Extended edit profile functionality in scan dialog to current
+    scan options, when no profile selected, closes bug
+    (gscan2pdf#328), blue cast to all colour scans.
+  + Don't try to compress log file if it wasn't created.
+  + Don't blacklist empty device name.
+  + Improve layout of multiple message dialog, closes bug
+    (gscan2pdf#329), a scanner error (ADF jammed) caused GScan2PDF
+    to display an insane dialog box.
+  + Don't use tiff2pdf to create temporary PDF to check for pdftk,
+    closes bug (gscan2pdf#330), cannot save, pdftk failure to
+    access /tmp.
+  + Fix --import option, closes bug (deb#934107), importing with
+    --import=file.pdf does not import anything.
+  + Fix updating extended page numbering on scan dialog after
+    changing document.
+  + Fix printing, closes bug (gscan2pdf#331), print error openSUSE
+    Leap 15.1.
+  + Set "wait" cursor while scan options are being loaded and
+    "progress" cursor while scanning.
+  + Use gtk-3 cursors for ImageView widget.
+  + Ghost scan button while scan options are being loaded and
+    scanning.
+  + Fix bug storing responses from multiple message window when no
+    responses had been stored before.
+  + Translation updates.
+- Changes from version 2.5.5:
+  + Fix occasional error messages when clearing all pages.
+  + Only set paper to Manual if not applying profile.
+  + Update OCR view switching between pages with and without OCR
+    output.
+  + xz compress log file if xz available.
+  + Fix bug applying paper after profile set SANE_INFO_INEXACT.
+  + When saving current settings as new profile, actually set the
+    profile.
+  + If a device throws an error when opening it, add it to a
+    session blacklist.
+  + Option tolerance to cover buggy backends that return inexact
+    options without setting SANE_INFO_INEXACT.
+  + Translation updates.
+- Changes from version 2.5.4:
+  + Fix bug applying paper whilst setting profile.
+  + Fix canvas usage in scan dialog.
+  + Allow tabs to be scrolled to reduce width of scan dialog,
+    closes bug (gscan2pdf#242), scan Document window cannot be
+    narrowed horizontally.
+  + Restore split screen view for image and OCR output.
+  + Translation updates.
+- Changes from version 2.5.3:
+  + Split up messages from gimp and unpaper to allow them to be
+    ignored more easily, closes bug (gscan2pdf#321), error messages
+    when returning from editing a scanned document using gimp.
+  + Trap invalid dates in metadata, closes bug (gscan2pdf#323),
+    crash when saving with invalid date.
+  + Use GTK's FontChooserDialog for selecting font for OCR output
+    in PDF.
+  + Moved font discovery to program start to accelerate display of
+    save dialog.
+  + Removed owner password, as it does not encrypt.
+  + Don't reset to defaults if no scan options set, closes bug
+    (gscan2pdf#324), Changing scan resolution from the default 100
+    ppi to 200 ppi creates invalid syntax for sane parameters.
+  + Translation updates.
+- Changes from version 2.5.2:
+  + Allow translations for message types in multiple message
+    window.
+  + Improve progress message whilst analysing pages.
+  + Don't reapply scan options after reload if setting returned
+    SANE_INFO_INEXACT.
+  + Decode UTF-8 in font names for PDFs in save dialog.
+  + Wait for processes to finish to prevent zombies, closes Debian
+    bug (deb#926634), delays opening dialogs, possibly related to
+    defunct fc-list process.
+  + Fix warning message about pdftk (again), closes bug
+    (gscan2pdf#320), error message on startup: pdftk can't use
+    /tmp.
+  + Rename dpi->ppi (again) and us->μs.
+  + Translation updates.
+- Changes from version 2.5.1:
+  + Fix warning message about pdftk.
+  + Translation updates.
+- Changes from version 2.5.0:
+  + Really optionally change the djvu access and modification times
+    to the metadata date.
+  + Optionally encrypt PDFs.
+  + Fix race condition when cancelling job, closes bug
+   (gscan2pdf#317) cancel tests randomly hang.
+  + Fix bug causing Edit/Select/Blank only to work on second
+    attempt.
+  + Fix bug where toolbar crop always operates on first page
+  + Translation updates.
+- Changes from version 2.4.0:
+  + Offer to switch from Facing to Reverse after scanning
+    double-sided pages, closes feature request, (gscan2pdf#100).
+  + Edit profile functionality to scan dialog.
+  + Reset scan options to defaults before applying profile.
+  + Split screen view for image and OCR output, closes feature
+    request, (gscan2pdf#57) Ability to view OCR output and Image
+    at same time.
+  + Switched to GIMP-like controls - LMB for selecting and MMB for
+    panning.
+  + Crop to toolbar and RMB menus.
+  + Fix saving as TIFF G3/4 if image not depth 1.
+  + Translation updates.
+- Changes from version 2.3.0:
+  + Optionally also include time information in metadata of PDF
+    or DjVU.
+  + Closes feature request, (gscan2pdf#102) (always sets the time
+    to 0 UTC) (again).
+  + Reduced "bouncing" effect when dragging OCR output
+  + Fix update of image viewer/OCR output after deleting a page.
+  + Support different resolutions in x and y directions.
+  + Closes feature request, (gscan2pdf#101).
+  + Make post-scan PNG conversion optional.
+  + Remember size of multiple message window.
+  + Translation updates.
+
+-------------------------------------------------------------------
+Mon Jan  7 15:36:27 UTC 2019 - malcolmlewis@opensuse.org
+
+- Update to version 2.2.2:
+  + Improved the error message when ImageMagick exceeds its
+    resources, (gscan2pdf#303).
+  + Allow foreground colour of text of OCR output to be themed.
+  + Correct some more vbox() calls left over from gtk+-2,
+    (deb#916011).
+  + Use output image from user-defined tool even if it throws an
+    error.
+  + Don't reapply buttons after reloading options,
+    (gscan2pdf#315).
+  + Translation updates.
+- Changes from version 2.2.1:
+  + Clear OCR output canvas when switching pages.
+  + Ignore trailing whitespace in error messages when filtering
+    them.
+  + Lock initial view of OCR output to image when switching pages.
+  + Fix centering of OCR output when zooming with mouse wheel.
+  + Translation updates.
+- Changes from version 2.2.0:
+  + Check validity of device blacklist regex when applying
+    preferences.
+  + Modify preference "Force new scan job between pages" to only
+    take effect when scanning from flatbed, (gscan2pdf#309).
+  + Fixed crash switching frontend option in Edit/Preferences
+    between libimage-sane-perl and scanimage.
+  + Fixed visibility of scan widgets when switching from
+    libimage-sane-perl to scanimage.
+  + Collect all warning and error messages in one dialog,
+    (gscan2pdf#309, gscan2pdf#300).
+  + Be more tolerant of errors whilst fetching options,
+    (gscan2pdf#313).
+  + Use default text if the title of a group of scan options is
+    empty.
+  + Lock panning of image and OCR output views.
+  + Translation updates.
+- Changes from version 2.1.7:
+  + Report PerlMagick errors to user.
+  + Add note about checking policy.xml in case of ImageMagick
+    Exception 445.
+  + Add %De for filename extension to default filenames
+    directives.
+  + On selecting flatbed, force single-sided unless
+    allow-batch-flatbed is enabled.
+  + Fixed saving PDFs with non-ASCII characters in the path and no
+    extension, (gscan2pdf#312).
+  + Update page range before calling process (e.g. OCR, crop,
+    etc).
+  + Translation Updates.
+- Changes from version 2.1.6:
+  + Fixed starting processes from tools menu, (gscan2pdf#308).
+  + Fixed opening UDT and unpaper dialog windows.
+- Changes from version 2.1.5:
+  + Pass page data to thread just in time to process it, rather
+    than when the process is defined. Previously, if the
+    pplication was still busy, say with tesseract whilst the user
+    tried to save, then the resulting document would be missing
+    the pages updated by tesseract, (gscan2pdf#247).
+  + Translation Updates.
+- Changes from version 2.1.4:
+  + Fix email functionality broken in v2.1.3, (lp#1784168).
+- Changes from version 2.13:
+  + Only run test if session file can be deserialised,
+    (gscan2pdf#293).
+  + Optionally also include timezone and time information in
+    metadata of PDF or DjVU, (gscan2pdf#102).
+  + Don't unnecessarily use tiffcp on single-page TIFFs.
+  + Translation Updates.
+- Changes from version 2.1.2:
+  + Fix bug causing config JSON file to be saved with numeric
+    locale and therefore potentially corrupt.
+- Changes from version 2.1.1:
+  + Fix saving profile bug caused by deprecated Gtk2 API.
+  + Readd support for dragging files from file managers.
+  + Translation Updates.
+- Changes from version 2.1.0:
+  + Support import of password-protected PDFs, (deb#894764).
+  + Update cursor depending on edge of selection, and allow
+    selection to be modified by dragging the edge or corner.
+  + Translation Updates.
+- Changes from version 2.0.3:
+  + Always update image viewer if page selection changes,
+    (deb#893026).
+  + Fixed manually typing date in metadata dialog, (deb#893024).
+  + If image is zoomed to fit viewer, update zoom when the size of
+    the viewer changes.
+  + Update cursor depending on selected tool and position.
+  + Build corrupt session file by hand rather than storing binary
+    file that is not universally compatible, (gscan2pdf#293).
+  + Convert all scans to PNG to allow tesseract to extract
+    resolution.
+  + Ignore invalid options in profile.
+  + Ignore options in profile that are already within tolerance,
+    (gscan2pdf#294).
+  + Translation Updates.
+- Changes from version 2.0.2:
+  + Clear view if no page selected.
+  + Change boolean scan options to use switch instead of checkbox
+    widget.
+  + Fixed manually typing date in metadata dialog, (deb#893024).
+  + Take colours for image viewer from theme, (deb#893025).
+  + Support Glib::Object::Introspection < 0.043.
+- Changes from version 2.0.1:
+  + Fixed editing OCR output.
+  + Fixed displaying image after undoing.
+  + Fixed displaying image after deleting page.
+  + Fixed text in progress bars.
+  + Fixed warning message clearing all pages if no scanner
+    detected.
+- Changes from version 2.0.0:
+  + Switch from gtk+-2 to gtk+-3, requiring the reimplementation
+    of GtkImageview in pure Perl, as C library not compatible with
+    gtk+-3 (deb#884030).
+  + Fixed ghosting if flatbed only source option but not set,
+    (gscan2pdf#290).
+  + Fixed setting preferences if frontend not set to
+    libsane-image-perl and no scanner available, (gscan2pdf#291).
+- Update package requires.
+
+-------------------------------------------------------------------
+Thu Feb 22 23:13:30 UTC 2018 - malcolmlewis@opensuse.org
+
+- Update to version 1.8.11:
+  *Preference "Force new scan job between pages".
+  * Support applying profiles resulting in multiple reloads, to
+    prevent profile dropdown from being cleared after setting
+    profile.
+  * Fix scan profile stays blank, (sf#276).
+  * Translation updates.
+- Add additional requires for perl(Exception::Class).
+- Add source asc file.
+
+-------------------------------------------------------------------
+Tue Dec  5 00:06:11 UTC 2017 - malcolmlewis@opensuse.org
+
+
+Update to version 1.8.10:
+  * Support for scan options without ranges, e.g. booleans, in
+    tolerance check introduced in version 1.8.9.
+Changes from version 1.8.9:
+  * Rename preference "Open scan dialog at program start"
+    -> "Open scanner at program start".
+  * Fix killing processes on cancel.
+  * Hide extended page numbering checkbox and source document
+    frame unless scanner is not capable of duplex and ADF is
+    selected. Therefore, for duplex-capable scanners, this is
+    never shown. For duplex-incapable scanners, this is shown if
+    the ADF is selected, but otherwise hidden.
+  * Support for the new API in ImageMagick 7 for unsharp mask.
+  * For single-sided documents, hide rotate facing/reverse/both
+    side dropdown.
+  * Missing documentation for Edit/Properties.
+  * Don't reapply scan settings if value is within tolerance,
+    (sf#287 Reload recursion limit (5050) exceeded).
+  * Fix crash reading corrupt config file, (sf#288).
+  * Translation updates.
+- Changes from version 1.8.8:
+  * Filter out 1 and 2 digit integers from tool warnings. Show
+    original message, not filtered message, (sf#281 Error
+    processing with Tesserarct: Detected 99 Diacritics).
+  * Add option to profile only after successfully applying it.
+  * Fix default value for unpaper script direction.
+  * Fix race condition updating widgets before they can be created
+    after cycling device handle.
+  * Fix 16-bit PNM parsing.
+  * Fix Perl warning about redundant argument in sprintf.
+  * Translation updates.
+- Changes from version 1.8.7:
+  * Units to scan and edit paper dialogues.
+  * Unsupported libsane-perl offered as Frontend choice
+  * Fixed support for Poppler (pdftops) as postscript backend.
+  * Reload recursion limit in Edit/Preferences, set reload
+    recursion limit as triangular number of number of scan
+    options, (sf#275 reload recursion limit).
+  * Fixed crash with scanimage frontend due to empty cache.
+  * Ghost save button, rather than hiding save dialogue if all
+    pages removed, (sf#253 Save dialoque does not stay open).
+  * Fixed bug causing profile dropdown to be cleared after setting
+    profile.
+  * Filter out integers from tool warnings, analogous to the hex
+    warnings from unpaper.
+  * Fixed visibility of options in save dialogue (again).
+  * Right mouse click in thumbnail panel makes the page range, for
+    example in save dialogue: default to "selected".
+  * Take filename of PDF to email from default filename settings
+    (and therefore from metadata). If this produces a blank
+    filename, use "document.pdf".
+  * Fixed bug requiring scan dialog to be requested twice after
+    changing frontend.
+  * Translation updates.
+- Clean up spec file for submission to Factory
+- Drop rpmlintrc.
+
+-------------------------------------------------------------------
+Tue Aug 22 17:51:40 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.6:
+  + Fixed visibility of options for DjVu, JPEG, & TIFF in save
+    dialogue.
+  + Reload recursion limit in Edit/Preferences. Break of out reload
+    recursion loop if maximum number of reloads is exceeded.
+  + Reapply only those current scan settings that were reset by the
+    reload
+  + Fixed unpaper detection for v0.3.
+
+-------------------------------------------------------------------
+Sat Aug 19 15:33:04 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.5:
+  + Add support for Poppler (pdftops) as postscript backend.
+  + Drop support for libsane-perl.
+  + Reapply current scan settings for those scanners that reset
+    them when forcing a reload.
+  + Eliminate unnecessary strings from gscan2pdf.pot to prevent
+    unnecessary work and confusion on the part of the translators.
+  + Add A3 to default paper sizes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 29 11:24:53 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.4:
+  + Cope with Tesseract 3.0.5 writing Page 1 instead of Page 0.
+  + Assume pixels/inch if the image doesn't know better.
+  + Fix paragraph formatting in save as text output.
+  + In preparation for future removal of libsane-perl frontend,
+    change default frontend libsane-perl -> libimage-sane-perl, and
+    similarly switch selected frontend on upgrade from older
+    version. Assuming no major problems occur, support for
+    libsane-perl will be removed in the next release.
+  + Fixed bug writing postscript file.
+  + Add support for ghostscript backend due to apparent bug in
+    tiff2ps.
+  + Round scan options with ranges to valid values before applying.
+  + Fixed bug updating list of option-dependent values.
+- Add perl(Image::Sane) Requires: Now available in openSUSE, and
+  gscan2pdf is ported to use it.
+
+-------------------------------------------------------------------
+Sat Jul  1 17:05:09 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.8.3:
+  + Fix rescan for devices not working properly.
+  + Fixed bug writing multipage hOCR files.
+  + Fixed bug switching between Tesseract and Cuneiform.
+- Changes from versions 1.8.2:
+  + Don't ignore warnings from unpaper.
+  + Fix OCR being ghosted when Tesseract is installed.
+  + Support for scanimage v1.0.27.
+- Changes from version 1.8.1:
+  + Consistently ghost OCR and unpaper tools if the appropriate
+    executables are not available.
+  + Fixed display of tesseract error messages.
+  + Make RTL test work for other versions of ImageMagick.
+  + Improve support for button-type scan options.
+  + icons/gscan2pdf-papyrus.svg for use with Papyrus-like themes.
+  + ppm & pbm extensions to open file chooser.
+  + Fixed multipage scanning for Samsung CLX-4190.
+  + Change metadata filename codes to use strftime.
+  + Many improvements to the display of OCR output.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Apr 25 15:06:02 UTC 2017 - malcolmlewis@opensuse.org
+
+- Updated to version 1.8.0:
+  + "Writing system" option in "Clean Up" (unpaper) dialogue,
+    affecting the order in which the pages are imported when scans
+    are split. Closes feature request #94 add "Deskew", "Descreen",
+    "Split image" to "Save" dialog.
+  + Support for Tesseract 3.05 (sf#243 tesseract 3.05 OCR Engine not
+    recognized).
+  + Support for unpaper --no-mask-center option.
+  + Contrast + brightness tool.
+  + Option to convert filename whitespace to underscores.
+  + Fix crash caused by undefined profiles in .gscan2pdf. Closes
+    support request #19 Will not run past crashed session.
+  + Move config file to use $XDG_CONFIG_HOME or $HOME/.config
+    directory.
+  + Various cosmetic improvements.
+  + Translation updates.
+
+-------------------------------------------------------------------
+Mon Feb 20 19:56:34 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.7.2:
+  + Suppress errors from CLI frontends caused by rounding.
+  + Reload default scan settings after rescanning for devices.
+- Add missing runtime perl(Date::Calc) Requires.
+
+-------------------------------------------------------------------
+Wed Jan 25 14:19:16 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.7.1 (boo#1021886):
+  + Fixed bug setting preferences.
+  + Fixed bug saving when no post-save hooks defined.
+  + Fixed bug attaching PDF to email.
+
+-------------------------------------------------------------------
+Thu Jan 19 22:01:37 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.7.0:
+  + post-save hook: post-save arbitrary command capability.
+  + Option in Edit/Preferences to force # pages = all if ADF if
+    selected.
+  + --import command-line option, command line options for Gnome
+    integration  (lp#312839).
+  + Fixed bug preventing append/prepend PDF in combination with set
+    timestamp.
+  + Catch error setting timestamp for dates prior to 1970.
+  + Correctly scale boundary boxes when importing text layer of PDF
+  + Test and documentation fixes.
+  + Fix saving TIFF with compression (introduced in 1.6.0).
+  + Updated translations.
+- Changes from version 1.6.0:
+  + Catch errors importing text layer of DjVu.
+  + Support for dragging files from Nautilus (or Konqueror, or
+    anything that delivers URIs) (lp#515854).
+  + Support for brackets in imported djvu hidden layer.
+  + Store document date as offset (reverted code introduced in
+    v1.3.9) (deb#842239).
+  + Support ampersand (&) in filenames whilst saving images.
+  + Refactor most system() calls to use IPC::Open3 to eliminate
+    need to escape special characters from shell.
+  + Eliminate warnings when reloading scan options with option
+    groups.
+  + Option to change the pdf and djvu access and modification times
+    to the metadata date.
+  + Sort config file and ensure only currently used settings are
+    stored.
+
+-------------------------------------------------------------------
+Mon Nov 28 16:03:14 CET 2016 - fcrozat@suse.com
+
+- Update to version 1.5.5:
+  + Work around bug in imagemagick causing the image depth not to
+    be respected (sf#231).
+  + Fix deleting pages by selecting thumbnails and hitting delete
+    key.
+  + Fixed drag-and-drop operations broken in v1.5.2 (sf#232).
+- Changes from version 1.5.4:
+  + Fixed cycle SANE handle error when using frontend other than
+    libsane-perl.
+  + Fixed bug preventing # pages = all by default, even with ADF
+    (deb#840534).
+- Changes from version 1.5.3:
+  + Added scroll bars to all tabs on scan dialog (sf#228).
+  + Fixed bug copy-pasting pages where subsequent operations on new
+    pages are carried out on old pages.
+  + Changed default compression for lineart PDFs to PNG.
+  + Fixed cycle SANE handle option to reset options after
+    reloading.
+  + Fixed Perl warnings if backend offers no "source" scan option.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 16 14:25:14 CEST 2016 - fcrozat@suse.com
+
+- Update to version 1.5.2:
+  + Fixed bug prepending or appending to a PDF with a space in the
+    path.
+  + Refactored code handling geometry options to reduce complexity
+    and duplication.
+  + Removed metadata variables %h, %i, %s, adding %H, %I, %S
+    (sf#226 Formatting timestamp for filename template broken).
+  + Encode document date in ASCII to workaround a bug in PDF::API2
+    where UTF-8 encoding caused garbage in the metadata (sf#224
+    CreationDate and ModDate fields are missing).
+  + If the output from user-defined tool is pnm, there is no way to
+    tell the resolution, so assume that it is the same as the input
+    (sf#227 Page size corruption in 1.5.1).
+  + Support hand-scanner option in test backend (sf#223 "Auto
+    length detection" option does not work with ScanSnap IX500).
+  + Filter out double memory address from unpaper warning
+    (deb#833521 unpaper AVStream codec deprecation warning).
+
+-------------------------------------------------------------------
+Thu Aug  4 13:05:01 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.5.1:
+  + Fix "Can't use string ("gimp %i") as an ARRAY ref".
+  + Store and apply backend (scanner-specific) and gscan2pdf
+    settings separately.
+  + Those frontend settings stored in profiles need not be stored
+    in general settings.
+  + When paper in use, hide other geometry widgets.
+  + When saving profile, if name already exists, add warning and
+    don't duplicate the combobox text.
+
+-------------------------------------------------------------------
+Sat Jun 11 18:16:06 UTC 2016 - gankov@opensuse.org
+
+- Update to version 1.5.0:
+  + Also import text layer when importing PDF or DjVu.
+  + Option in Edit/Preference to allow/forbid batch scanning from a
+    flatbed
+  + Store date as string to avoid time zone problems. Closes Debian
+    bug #823626 (Date in file name off by one day when saving)
+  + Show warning when importing a PDF if number of images is not
+    equal to number of pages.
+  + Option not to close save dialog.
+    Closes feature request #91 (Keep save dialoque open)
+  + Update to Occitan (post 1500) translation (thanks to Cédric
+    VALMARY)
+
+-------------------------------------------------------------------
+Wed Apr 20 12:24:17 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.4.0:
+  + Fixed double file overwrite confirmation.
+  + Update paper size combobox after setting profile.
+  + Integrate user-defined tools into scan post-process dialog
+    window for user-defined tools.
+  + Fixed extended page numbering toggle.
+  + Fixed restoring crashed session.
+  + Fixed paper sizes after switching device. (Options for A4, US
+    Legal, and US Letter have disappeared in the Geometry options
+    for Scansnap IX500 in 1.3.9).
+  + Correct hiding/showing of widgets when saving JPEG.
+  + Save session after an action rather than before so as not to
+    lose the last action in the event of a crash.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Mar 12 18:04:52 UTC 2016 - fcrozat@suse.com
+
+- Update to version 1.3.9:
+  + Fixed warning from Perl 5.10.1 about use of uninitialized value
+    in subroutine entry in Gscan2pdf/Dialog/Scan/CLI.pm.
+  + Store absolute date instead of offset.
+  + If get_message_area() not available (because gtk+ is too old),
+    use get_content_area() or vbox().
+  + Differentiate between readonly file and directory in error
+    messages.
+  + Fixed bug opening session file.
+  + A deleted profile stays deleted across sessions.
+  + Fixed multiple reload callback, affecting setting profiles.
+  + If a profile affects geometry settings, update paper size
+    widget appropriately.
+- Changes from version 1.3.8:
+  + Fixed bug saving TIFF, introduced in v1.3.6.
+  + Fixed bug running tesseract from OCR dialog, introduced in
+    v1.3.7.
+  + Fixed bug saving, retrieving and applying profiles
+  + Updated translations.
+- Changes from version 1.3.7:
+  + Fixed check that pages have been saved.
+  + Fixed scan->rotate->unpaper->OCR chaining (again).
+  + Filter out memory address from unpaper warning.
+  + Ensure that process numbering is properly reinitialised when
+    queue is empty.
+  + Fixed error importing PDF with more than 999 pages. However,
+    this exposed the problem that each page is held as an open
+    temporary file and that the system can run out of file handles
+    somewhere after 1000.
+
+-------------------------------------------------------------------
+Sun Jan 10 13:16:25 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.3.6:
+  + Use simplified tesseract call for tesseract >= 3.02.02.
+  + Add completion for author, title, subject & keyword metadata.
+  + Store the list of pages to be saved on hitting the save button,
+    not waiting to choose the filename (deb#648627).
+  + Fixed progress text when importing files with multiple pages.
+  + Some scanners activate paper-width and paper-height only for
+    the ADF, and thus send "invalid argument" when setting the
+    paper size for the flatbed. Trap this by also testing whether
+    these options are active when setting the paper size.
+  + When scanning "all" pages, but only a finite number are
+    possible, report this in the progress bar.
+  + Update list of available paper sizes after every option reload,
+    as different sources (e.g. flatbed, ADF) support different
+    geometries.
+  + Update list of rpm dependencies in .spec files.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec  1 10:36:16 UTC 2015 - tuukka.pasanen@ilmi.fi
+
+- Updated to version 1.3.5
+  + Add prepend and append to PDF save options.
+  + Use new threading philosophy for scanning thread.
+  + Fix bug applying profiles with duplicated or invalid options.
+  + Selecting single-sided pages also selects facing page (sf#206)
+  + Fixed scan->unpaper->OCR chaining.
+  + Changed defaults so that unpaper does not run by default after
+    scanning.
+  + Enabled hours, minutes and seconds in filename template.
+  + Updated translations.
+- Add perl(Filesys::Df) and perl(Data::UUID) Requires: New runtime
+  requirements.
+- Add tesseract-ocr Recommends.
+
+-------------------------------------------------------------------
+Tue Aug 11 12:20:14 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.3.4:
+  + Fix startup crash due to incorrect MessageDialog type and
+    buttons.
+- Changes from version 1.3.3:
+  + Suppress warnings when passed boolean as empty string
+    (lp#844582).
+  + Moved config file format to JSON. JSON::PP is a core module, so
+    this does not create a new dependency + option not to show
+    dialog messages.
+  + Trap errors from unpaper, rotate, crop, threshold, negate,
+    unsharp processing tools (sf#198).
+  + Removed dependency on liblinux-distribution-perl as not
+    available on FreeBSD.
+  + Also support gconftool-2 when checking for email client
+    (sf#200).
+  + Fixed program hang importing an empty file at the same time as
+    other files.
+  + Rewrite threading system to simplify it and remove many race
+    conditions.
+  + Fixed bug setting threshold-before-ocr check box.
+  + Updated translations.
+- Changes from version 1.3.2:
+  + Fixed program hang displaying save dialog.
+- Changes from version 1.3.1:
+  + Fixed bug saving PDF after thresholding.
+  + Warn if less free space in session directory than limit set in
+    preferences.
+  + Fix defaults for unpaper and output-pages<->layout
+    misalignment.
+  + Where available in the OCR output, use the full
+    page/column/para/line/word hiearchy in the djvu text layer
+    (sf#191).
+  + Remove corrupt element from session after importing (sf#195).
+  + Updated translations.
+- Changes from version 1.3.0:
+  + Avoid leading & trailing spaces in filename expanded from
+    template (sf#172, sf#169, deb#774099).
+  + Various GUI improvements (deb#774093).
+  + Improvements to the display of OCR output (deb#774094).
+  + More improvements to date metadata widget (deb#774103).
+  + More improvements metadata for DjVu (deb#774097).
+  + Refactored logging of OCR dependencies (deb#710428).
+  + Catch many filesystem errors.
+  + Return in one of the entry widgets in the the save dialog hits
+    the save button.
+
+-------------------------------------------------------------------
+Thu Jan  1 18:26:01 UTC 2015 - gankov@opensuse.org
+
+- Update to version 1.2.7:
+  + Use date from entry rather than calendar widget (sf#183).
+  + Use icons for 'email as PDF' and the hand tool (lp#1197264).
+  + Threshold as part of OCR process.
+  + Fix bug saving encoded characters in hOCR.
+  + Fix bug saving defaults that are not part of a profile.
+  + Add scrollbars to the 'Page Options' tab to make the scan
+    button visible on screens that are shorter than the scan
+    dialog (sf#188).
+  + Fix crash on start if tesseract is not installed.
+  + Fix button display in Tools > Unsharp Mask (deb#769823).
+  + Updated translations.
+- Change package to be noarch.
+- Add fdupes BuildRequires and call the macros.
+
+-------------------------------------------------------------------
+Sun Sep 28 10:49:59 UTC 2014 - gankov@opensuse.org
+
+- Update to version 1.2.6:
+  + Fix support for tesseract 3.02, broken by commit ae76b3cf.
+  + Changed 'save text' to extract plain text from hOCR output
+    and 'save hOCR', to save hOCR output, where available.
+  + Fixed logic of automatic selection of blank or dark pages.
+  + If an error occurs whilst opening a device, remove it from the
+    device list and try the next, rather than giving up straight
+    away.
+  + Added text entry for date on save dialogs. Closes
+    feature-requests #81 (option to manualy keyin date (or at least
+    year).
+  + Added device blacklist.
+  + Fixed add paper button. Closes bug #178 (unable to add
+    geometries).
+  + Increase maximum page number to 9999. Feature request 82
+    (Scanning documents that are 1000 pages or more).
+
+-------------------------------------------------------------------
+Sun Jun  1 16:03:32 UTC 2014 - fcrozat@suse.com
+
+- Update to version 1.2.5:
+  + Fix today button on date dialog saving PDF
+    Closes bug #171 "Today" button in calendar jumps to 
+    February 1th, 1970
+  + Fix resolution when processing non-standard sized images with
+    unpaper
+  + Speed up downsample option by using imagemagick sample instead
+    of resize
+  + Remove unnecessary decode_utf8() call causing
+  'Cannot decode string with wide characters' error in Perl 5.18.
+  + Add support for tesseract 3.03.
+    Closes bug #173 "v1.2.4 doesn't display any output"
+  + Fix bug writing images with quotes in filename
+    Closes bug #174 "Fail to save file when target folder has
+    quote in filename"
+  + Fix setting options which don't cause a reload.
+  + Closes bug #168 (Resolution Errors on Multiple Scanners)
+  + Closes bug #170 (Format A2 in PDF properties despite having 
+    chosen A4 while scanning)
+  + Closes Debian bug #742233 (wrong resolution)
+  + Closes LP: #1304484 (resolution incorrect, saved pdf far too
+    large)
+- Changes from version 1.2.4:
+  + Tie PageRange widgets together: Closes bug #165 i
+  "all or selected? a surprise that can bite like snake" again
+  + Fix parsing the units of the resolution of imported images.
+  + Fix infinite loop scanning page 1 when 5+ exist.
+  + Parse negative progress percentages from scanimage.
+  + Fix scan dialog if no devices found.
+- Package appdata informations.
+
+-------------------------------------------------------------------
+Sat Mar 22 15:43:17 UTC 2014 - gankov@opensuse.org
+
+- Update to version 1.2.3:
+  + Deal with crashed sessions with no session file.
+  + Fixed bug setting TMPDIR in preferences.
+  + Added menu item 'Open crashed session'.
+  + Don't process empty lists of pages.
+    Closes bug #165 "all or selected? a surprise that can bite like
+    snake".
+- Changes from version 1.2.2:
+  + Fixed paper editor widget.
+  + Fixed position of paper size widget.
+  + Hide geometry widgets at startup if paper selected.
+- Changes from version 1.2.1:
+  + Fixed opening saved sessions.
+  + Fixed storing resolution of scanned images.
+    Closes Debian bug #734854 (gscan2pdf wrong resolution).
+- Changes from version 1.2.0:
+  + Don't lose extension if user-defined tool converts pnm to pbm,
+    ppm or pgm (lp#889549 again).
+    (gscan2pdf gimp integration creates page size error)
+  + Allow thread to import different number of pages than
+    requested (lp#1163739: Import of pdf no longer working).
+  + Take the resolution directly from the scanner when scanning
+    rather than assuming that the system value is up-to-date.
+    Closes bug 134 (reduces PDF to half size of scan).
+  + Fixed UTF8 handling with gocr.
+  + Fixed import of multipage TIFFs (lp#1181019: importing existing
+    multipage tif file loads only the first one).
+  + Actually change the device when the device combobox is changed.
+    (deb#729589: Can not scan using a Canon LiDE 210 with version
+    1.1.3-1).
+  + Show/hide options in CLI frontends via Edit/Preferences.
+  + Fix Thunderbird detection from XFCE (deb#701581: Thunderbird
+    detection (for send email) does not work reliably on XFCE).
+  + Fixed bug opening a session file from multiple sessions
+  + option in Edit/Preferences to automatically open the scan
+    dialog in the background on program start. Closes debian bug
+    #717479 (Background-scanning for devices and options).
+  + Updated translations.
+- Add perl(List::MoreUtils) requires.
+
+------------------------------------------------------------------- 
+Thu Oct 10 08:25:31 UTC 2013 - dimstar@opensuse.org
+
+- Fix dependencies, as identigied in bnc#844227:
+  + Add perl(Readonly) Requires.
+  + Replace perl(Gtk::ImageView) Requires with
+    perl(Gtk2::ImageView).
+
+-------------------------------------------------------------------
+Wed Apr 17 18:20:48 UTC 2013 - dimstar@opensuse.org
+
+- Initial package, version 1.1.3.
+

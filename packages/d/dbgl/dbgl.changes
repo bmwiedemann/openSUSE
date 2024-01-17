@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Wed Jul 15 18:53:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.92
+  * Added a first implementation of 'directory scanning for known
+    games'. Currently, all files/games from the D-Fend Reloaded
+    'Auto setup templates' are recognized.
+  * DBGL can now query MobyGames meta-data using a local database
+    from 'Metropolis Launcher', very quickly. Note that cover-art
+    and screenshots are still being fetched from www.mobygames.com,
+    though.
+  * Added support for the DOSBox SVN OpenGL shader patch from
+    ny00123 & jmarsh.
+  * You may now browse through the various captured images using
+    the left and right arrow keys, or the buttons below the image.
+  * Various fixes related to MobyGames querying, especially in
+    relation to (.gif) image data.
+  * Fixed "Start profile manually with a specific DOSBox version"
+    creating an incomplete .conf file.
+  * Fixed possible issues when using symbolic links on Linux.
+  * Also fixed a rare file path mangling issue.
+  * A few usability improvements, refactored more parts of the
+    GUI code, updated translations.
+  * Updated all libraries, most importantly HSQLDB (from 1.8.1 to
+    2.5.0).
+
+-------------------------------------------------------------------
+Sun Jun 28 18:26:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.91

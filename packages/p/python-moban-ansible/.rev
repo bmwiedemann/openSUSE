@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f6ed9fd169aaff3cc59abb01d52f5cc</srcmd5>
+    <version>0.0.2</version>
+    <time>1601044486</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>836547</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bb6785437a209a1dfe6232208a7e33c8</srcmd5>
+    <version>0.0.2</version>
+    <time>1660924591</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-mock.patch:
+  * Use unittest.mock, rather than mock.</comment>
+    <requestid>998100</requestid>
+  </revision>
+</revisionlist>

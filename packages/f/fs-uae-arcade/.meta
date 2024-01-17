@@ -1,0 +1,8 @@
+<package name="fs-uae-arcade" project="openSUSE:Factory">
+  <title>Fullscreen game browser for FS-UAE</title>
+  <description>FS-UAE Arcade is a fullscreen Amiga game browser for FS-UAE.
+
+</description>
+  <devel project="Emulators" package="fs-uae-arcade"/>
+  <url>http://fs-uae.net/</url>
+</package>

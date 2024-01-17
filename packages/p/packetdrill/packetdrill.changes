@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Tue Jun 13 14:28:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0+git.20230521:
+  * net-test: packetdrill: add README.md details about IP addresses for test traffic
+  * net-test: packetdrill: update README.md to add docs for local and remote mode
+  * net-test: packetdrill: DEBUGP() for looking up non-TCP sockets in wire tests
+  * net-test: packetdrill: fix crash with --debug in run_syscall_accept()
+  * net-test: packetdrill: add debugging for live_local_ip_string
+  * net-test: packetdrill: invoke set_default_config() before parse_script_and_set_config()
+  * net-test: packetdrill: have wire_client send live_local_ip_string to wire_server
+  * net-test: packetdrill: default wire client to using real IP of client and server machines
+  * net-test: packetdrill: make --wire_server_at or --wire_server_ip imply --wire_client
+  * net-test: packetdrill: introduce --wire_server_at as a synonym for --wire_server_ip
+- Drop no longer needed patches:
+  * net-test-packetdrill-allow-any-size-for-TCP_INFO-and.patch
+  * net-test-packetdrill-define-Linux-capability-symbols.patch
+  * net-test-packetdrill-fix-error-msg-in-loose-segment-.patch
+  * net-test-packetdrill-loose-segmentation-checks-non-s.patch 
+
+-------------------------------------------------------------------
+Thu Jul 11 17:15:33 UTC 2019 - Michal Kubeček <mkubecek@suse.cz>
+
+- suppress "address of packed member" gcc9 warning (fix Factory
+  build)
+- add useful post-2.0 upstream commits:
+  net-test-packetdrill-allow-any-size-for-TCP_INFO-and.patch
+  net-test-packetdrill-define-Linux-capability-symbols.patch
+  net-test-packetdrill-loose-segmentation-checks-non-s.patch
+  net-test-packetdrill-fix-error-msg-in-loose-segment-.patch
+- no longer need to define CAP_BLOCK_SUSPEND for SLE11 build
+
+-------------------------------------------------------------------
+Wed Apr 25 11:26:23 UTC 2018 - mkubecek@suse.cz
+
+- make-build-more-consistent-with-openSUSE-packaging.patch:
+  tweak the makefiles to be consistent with openSUSE policies
+
+-------------------------------------------------------------------
+Wed Apr 25 07:57:22 UTC 2018 - mkubecek@suse.cz
+
+- initial import of 2.0 sources
+
+-------------------------------------------------------------------

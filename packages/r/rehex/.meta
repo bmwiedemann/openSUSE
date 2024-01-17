@@ -1,0 +1,6 @@
+<package name="rehex" project="openSUSE:Factory">
+  <title>rehex</title>
+  <description>Reverse Engineers' Hex Editor</description>
+  <devel project="editors" package="rehex"/>
+  <url>https://github.com/solemnwarning/rehex</url>
+</package>

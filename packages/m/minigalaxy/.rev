@@ -1,0 +1,269 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75dd43b19983960bb3aba400495e0458</srcmd5>
+    <version>0.9.1</version>
+    <time>1578322936</time>
+    <user>dimstar_suse</user>
+    <comment>Better like this?</comment>
+    <requestid>759905</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3fe7188b741db82c94a190a90f7349d4</srcmd5>
+    <version>0.9.2</version>
+    <time>1578950542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2:
+  Features:
+  * Added a button to installed games which allow you to:
+    + Uninstall a game.
+    + Open the directory in which the game is installed.
+  * Added translation support. The following additional
+    languages are now supported: Dutch, Taiwanese Mandarin
+  * Added offline mode.
+  * The system's Dosbox and Scummvm installations are now
+    preferred over the ones bundled with games.
+  * Improved game detection to check in all directories
+    in the installation path.
+  * Added the option to keep game installers.
+  * Added the option to disable staying logged in.
+  * The preferences menu now uses a file picker for setting
+    the installation path
+  * Startup time has been reduced.
+  * Games which aren't installed are now grayed out.
+  Bug fixes:
+  * Fixed FTL not being able to start.
+  * Fixed issue with thumbnails sometimes not fully loading.
+  * Fixed potential crash after logging in the first time.
+  * Fixed close button on about window not working.</comment>
+    <requestid>763948</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5af9aa616feb6b7333b5786d2e052c26</srcmd5>
+    <version>0.9.3</version>
+    <time>1583949209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3:
+  * Added the following translations:
+    - German (thanks to BlindJerobine)
+    - Turkish (thanks to fuzunspm)
+    - Brazilian Portuguese (thanks to EsdrasTarsis)
+    - Norwegian BokmÃ¥l (thanks to kimmalmo)
+    - Polish (thanks to ArturWroblewski)
+    - French (thanks to thomansb22)
+  * Added option to cancel downloads.
+  * Changed the way games are downloaded to a queue instead of
+    trying to download everything at once.
+  * Added support option to game specific menus which open the
+    GOG support page (thanks to BlindJerobine).
+  * Ask for confirmation before uninstalling (thanks to Odelpasso).
+  * Added option to display FPS in games (thanks to Odelpasso).
+  * Downloads can now be resumed after having been cancelled before.
+  * Installers are now verified before installing.
+  * The active download is now resumed when restarting Minigalaxy.
+  * Fixed issue with games not downloading.</comment>
+    <requestid>783682</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>17ae091fa4781704dc89e3e3a946d3fb</srcmd5>
+    <version>0.9.4</version>
+    <time>1587467559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.4:
+  * Added Russian and Nynorsk translation
+  * Updated existing translations
+  * Added support for installing Windows games.
+  * Added store page link to game menus.
+  * Fixed game directories being created without any spaces in the name.
+  * Fixed thumbnails not being downloaded for already installed games.
+  * Fixed symlinks to libraries not being created correctly upon installation.
+  * Made preparations for a Flathub package.
+  * Added all contributors and translators to the about window.</comment>
+    <requestid>795905</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2bc421eadc4344523ee10ec43280e727</srcmd5>
+    <version>1.0.0</version>
+    <time>1606828918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Games can now be updated
+  * DLC can now be installed and updated
+  * The installed filter now also shows games which are downloading
+  * Fix crash on some systems where /usr/bin is linked to /bin
+  * Create new config file if old one is unreadable
+  * Fix some Windows games not installing because of the directory name used
+  * Fix some Windows games like Witcher 3 not launching because of the working directory not being set
+  * Clean up installation files for cancelled downloads
+  * Fix crash on flaky internet connection
+  * Use 755 permissions for all directories created by Minigalaxy
+  * Remove cached files when cancelling a download
+  * Installed games should no longer be shown twice
+  * Add and update translations</comment>
+    <requestid>851779</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f325f78ee1f17c76f92a2f14677fd6c1</srcmd5>
+    <version>1.0.1</version>
+    <time>1610123873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Open maximized if the window was maximized when last closed
+  * Kept installers are now stored in ~/.cache/minigalaxy/download
+  * Fix about window displaying wrong version number
+  * Fix show store page button not showing anymore
+  * Fix the download manager crashing when an installer has been damaged
+    during downloading
+  * Fix games showing an update is available while the latest version is
+    installed
+  * Fix loading the library taking a long time when many games are installed
+  * Fix Gex not launching
+  * Add the following translations:
+    - Swedish
+  * Update the following translations:
+    - Polish
+    - Russian</comment>
+    <requestid>861565</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a077231fb88547b1aa29e020ff162575</srcmd5>
+    <version>1.0.2</version>
+    <time>1610736402</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * Fix updates sometimes not working
+  * Fix some games always showing an update is available
+  * Fix DLC not downloading
+  * Fix DLC update option not showing up
+  * Fix show store page button not showing anymore
+  * Fix missing thumbnails not being downloaded for already installed games
+  * Fix the login screen crashing in some cases
+  * Use the system's icon theme for icons used</comment>
+    <requestid>863253</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>70f24bab902bf637e8b7e2ed62744ed8</srcmd5>
+    <version>1.1.0</version>
+    <time>1637228046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Improve integrity check after downloading
+  * Show an error showing Windows games cannot be enabled
+  * Add properties menu for games where game specific actions can be made like setting launch options and opening the store page
+  * Add a disk space check before downloading
+  * Use a different color for the play button for installed games
+  * Put installed games at the top of the list
+  * Store saved installers in ~/GOG Games/installer by default again
+  * Remember if the user had the installed filter enabled
+  * Extract Windows games in the background if Innoextract is available
+  * Extract Windows games in the background
+  * Fix installing DLC for Windows games
+  * Fix an error showing if the user has no games
+  * Add option to hide games
+  * Ask user if they are sure when logging out
+  * Add a dark theme
+  * Run post install script after installation. This fixes Full Throttle Remastered
+  * Fix games being shown twice
+  * Fix crash when GOG is down
+  * Make the language configurable</comment>
+    <requestid>931993</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7ed1c22dedd14b94f80b86f08f67d06d</srcmd5>
+    <version>1.2.1</version>
+    <time>1663764205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * Fix downloads failing when content length is not returned by the server
+  * Allow different types of downloads to happen at the same time
+  * Fix metadata file having releases in wrong order
+
+- Update to 1.2.0:
+  * Split game information and properties into different windows
+  * Add list view
+  * Allow DLC to be queued up for downloading
+  * Fix changing library to a directory with special characters in the name
+  * Fix signing in with Facebook
+  * Always use cached DLC icons and thumbnails
+  * Cache information covers
+  * Fix installers not being cleaned up like expected
+  * Fix error when opening game properties window when wine is not installed
+  * Fix freeze for games generating a lot of output
+  * Fix extracting rar based games with innoextract
+  * Allow setting wine executable per game
+  * Add GameMode support
+  * Add MangoHud support
+  * Add option to use Winetricks
+  * Fix updates not always being detected directly after opening Minigalaxy
+  * Fix desktop files generated not always being able to launch
+  * Show percentage when hovering over download progress bar
+  * Add option to disable update check per game
+  * Add forum, GOG Database and PCGamingWiki URLs to game information
+  * List genre as unknown in game information when none is found
+  * Fix changing installation path causing crashes in rare cases
+  * Fall back to English when locale cannot be determined
+  * Add gettext to build dependencies</comment>
+    <requestid>1005171</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5efd92610391aeebd8ae179ebf231ad3</srcmd5>
+    <version>1.2.2</version>
+    <time>1664302568</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.2.2:
+  * Fix progress bar not showing up for downloads
+  * Fix downloads not being cancellable
+  * Fix incompatibility with python 3.6
+  * Fix connection error texts
+  * Show DLC titles in English
+  * Fix version not being updated during a release
+  * Update Norwegian Bokmål translation
+  * Update Czech translation</comment>
+    <requestid>1006462</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>983a2cfe26d6795801e7e3b0a30fdd35</srcmd5>
+    <version>1.2.3</version>
+    <time>1691762176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.3:
+  * Fix short freeze on startup
+  * Fix game information not showing in list view
+  * Hide A Plague Tale Digital Goodies Pack
+  * Remove round corners from top of the &quot;play&quot; button
+  * Move the Gametile menu button alongside the Play button
+  * Update Spanish translation
+  * Capitalize first letter of the &quot;play/download/...&quot; button
+  * Update Traditional Chinese translation
+  * Added additional tooltips to buttons, labels, menu items and radio buttons
+  * Hide CDPR Goodie Pack Content
+  * Add notifications on successful download and installation of games
+  * Add category filtering dialog for game library
+  * Parallelize api.can_connect function with threads, futures
+  * Fix available disk space being checked in parent directory
+  * Create new config if reading it fails</comment>
+    <requestid>1103469</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>31ca81968730244f652064d5b45ff8a6</srcmd5>
+    <version>1.2.5</version>
+    <time>1691845602</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.5:
+  * Fix short freeze on startup
+  * Fix game information not showing in list view
+  * Hide A Plague Tale Digital Goodies Pack
+  * Remove round corners from top of the &quot;play&quot; button
+  * Move the Gametile menu button alongside the Play button
+  * Update Spanish translation
+  * Capitalize first letter of the &quot;play/download/...&quot; button
+  * Update Traditional Chinese translation
+  * Added additional tooltips to buttons, labels, menu items and radio buttons
+  * Hide CDPR Goodie Pack Content
+  * Add notifications on successful download and installation of games
+  * Add category filtering dialog for game library
+  * Parallelize api.can_connect function with threads, futures
+  * Fix available disk space being checked in parent directory
+  * Create new config if reading it fails</comment>
+    <requestid>1103505</requestid>
+  </revision>
+</revisionlist>

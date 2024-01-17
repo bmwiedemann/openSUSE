@@ -1,0 +1,16 @@
+<services>
+
+   <service name="tar_scm" mode="localonly">
+     <param name="url">git://github.com/chazomaticus/asteroid.git</param>
+     <param name="scm">git</param>
+     <param name="version">1.2.1+git-64869df</param>
+     <param name="changesgenerate">enable</param>
+   </service>
+
+   <service name="recompress" mode="localonly">
+     <param name="file">*.tar</param>
+     <param name="compression">bz2</param>
+   </service>
+   <service name="set_version" mode="localonly"/>
+
+</services>

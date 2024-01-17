@@ -1,0 +1,6 @@
+<package name="python-graphql-core" project="openSUSE:Factory">
+  <title></title>
+  <description>GraphQL implementation for Python, a port of GraphQL.js,
+the JavaScript reference implementation for GraphQL.</description>
+  <devel project="devel:languages:python" package="python-graphql-core"/>
+</package>

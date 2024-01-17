@@ -1,0 +1,7 @@
+<package name="jack-rack" project="openSUSE:Factory">
+  <title>LADSPA Effects Rack for JACK</title>
+  <description>JACK Rack is a stereo LADSPA effects rack for the JACK audio API.  You
+can insert LADSPA effects through JACK Rack. It uses GTK+ 2 for the
+GUI.</description>
+  <devel project="multimedia:apps" package="jack-rack"/>
+</package>

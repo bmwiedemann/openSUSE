@@ -1,0 +1,273 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71b1fbeca6487135a7662be4d5fbe7a2</srcmd5>
+    <version>2.8.0</version>
+    <time>1453416102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>346493</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>632c380f34668014ad41e5aa95bf40f0</srcmd5>
+    <version>2.8.1</version>
+    <time>1458120900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>369546</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7f2cddea9214a7a884e8fc613087cc7</srcmd5>
+    <version>3.0.0</version>
+    <time>1461855400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>391503</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6596dc1cc11c340bc9d213d573ab7d82</srcmd5>
+    <version>3.0.1</version>
+    <time>1463498106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>395015</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8853e50fcdf8c1cf6e7f21e204051883</srcmd5>
+    <version>3.0.2</version>
+    <time>1464014395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>397320</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2ac6df59dc7e8452619c85a485c4e8fe</srcmd5>
+    <version>3.2.0</version>
+    <time>1479229264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>440218</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aaf59084455fed5d04b5147819c1cf1f</srcmd5>
+    <version>3.2.1</version>
+    <time>1480342015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>441863</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ce6f576a7f175948c630a6a99f8754b8</srcmd5>
+    <version>3.2.4</version>
+    <time>1484041320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>446507</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b16311050ee0dcd825fdd8d67489ee7f</srcmd5>
+    <version>3.4.1</version>
+    <time>1495883874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>498023</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d19b49d26feb355a7530a050c824015b</srcmd5>
+    <version>3.4.2</version>
+    <time>1498202288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>505532</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31ab451070bb42a609470774f0f32b73</srcmd5>
+    <version>3.6.2</version>
+    <time>1510660614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541121</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a83f9ab6b0294ae8aea9dddb15996074</srcmd5>
+    <version>3.8.0</version>
+    <time>1524742628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599305</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc3170ba93f471a9c935c8cc3de809ed</srcmd5>
+    <version>3.8.1</version>
+    <time>1526023065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606146</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d8118d3e9a9ee5be044ab3722d620f6d</srcmd5>
+    <version>4.0.1</version>
+    <time>1563259268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715317</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2a869b10ee68dd121708ae767e0b98d6</srcmd5>
+    <version>4.2.0</version>
+    <time>1563790861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717336</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0bb2593b423d5c0631ba42fac3cb7f7d</srcmd5>
+    <version>4.4.1</version>
+    <time>1584447045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785762</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2fd9305ba90d961ae4abe16cb91a4a95</srcmd5>
+    <version>4.6.1</version>
+    <time>1591863093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813345</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c0dffee883247ecdf6d4e2e3c2bb340c</srcmd5>
+    <version>4.6.4</version>
+    <time>1600346853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834948</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>64da1a733ef90656e6db7eca01dfe95b</srcmd5>
+    <version>4.8.1</version>
+    <time>1607877021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.8.1.
+  * gnome-bg.c: don't decrement hour by 1 when parsing xml 
+    backgrounds
+- Updates for version 4.8.0
+  * cdesktop-enums.h: Don't allow area or window screenshots while 
+    cinnamon is in a grab state
+  * debian: Bump debhelper compat level to 12
+  * small improves to debian/copyright
+  * gnome-rr-config.c: Remove some unused variables
+  * Default terminal: Change exec-arg from '-x' to '--' 
+</comment>
+    <requestid>855392</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>fd2b527fd4673b178f7b4fdc21d8a7b0</srcmd5>
+    <version>4.8.1</version>
+    <time>1608550482</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>857007</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0db3106a1ed1ee6292ea75c85a8b9d86</srcmd5>
+    <version>5.0.0</version>
+    <time>1622839402</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>897284</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>17f2e0bee9d6891962b54428e82535cc</srcmd5>
+    <version>5.4.2</version>
+    <time>1668970028</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1036855</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b1a3691519f7dd4dfb21e7bbfa58f3d3</srcmd5>
+    <version>5.6.0</version>
+    <time>1670337338</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove (fix_return_value_void.patch) as it's no longer needed.
+- Update to 5.6.0.
+  * Fix some introspection problems.
+  * Use github instead of circleci.
+  * Keybindings: Add a default keybinding for 'switch-panels-backward'.
+  * gvc-channel-map.c: Fix return with a value in a void function.
+  * gnome-wall-clock.c: Fix a gi scanner warning.
+  * fix a null pointer deref scan-build found.
+  * Add a setting for notification duration.
+</comment>
+    <requestid>1040649</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>79ccded9bfa9f8be302bec46930ee119</srcmd5>
+    <version>5.6.0</version>
+    <time>1670954137</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1042684</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2d265a130aba914a7030a563f12dcc2a</srcmd5>
+    <version>5.6.1</version>
+    <time>1674936441</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.1:
+  * Add a settings key for the gtk-enable-primary-paste GtkSetting.
+  * touchpad: Enable tap-to-click by default.</comment>
+    <requestid>1061776</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e04861240c02e6b3b9c2f27cadedbd34</srcmd5>
+    <version>5.6.2</version>
+    <time>1681666554</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.6.2:
+  * gnome-desktop-thumbnail.c: Use g_get_user_cache_dir() for
+    thumbnail permission checks.
+  * gnome-desktop-thumbnailer.c: Only attempt to thumbnail
+    internally if gdk-pixbuf actually supports the mime_type.</comment>
+    <requestid>1079768</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>483cf6fd0ce88326226b5e4188d51bda</srcmd5>
+    <version>5.8.0</version>
+    <time>1685830364</time>
+    <user>dimstar_suse</user>
+    <comment>- updaet to 5.8.0:
+  * Add high-contrast key.
+  * gnome-desktop-thumbnailer.c: Only attempt to thumbnail
+    internally if gdk-pixbuf actually supports the mime_type.
+  * org.cinnamon.desktop.keybindings: Add entries for warping the
+    pointer between monitors.
+  * Remove color-scheme additions (added in d880133b38da46b22).
+  * Update cvc symbols.</comment>
+    <requestid>1090572</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b8e744adfd00e1b105b68658185c0cb9</srcmd5>
+    <version>6.0.0</version>
+    <time>1701632919</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.0.0:
+  * gschemas: Change a comment
+  * Fix meson.build deprecations up to 0.56.0
+  * cdesktop-enums: Expand CDesktopStylusButtonAction to include
+    'disabled'.
+  * Add gnome-systemd
+  * Add gnome-idle-monitor
+  * a11y: Add 'always-show-text-caret' xsetting
+  * Adding an option for notification screen selection
+  * notifications schema: Add fullscreen-notifications boolean
+
+  * gnome-bg.c: don't decrement hour by 1 when parsing xml
+  * cdesktop-enums.h: Don't allow area or window screenshots while
+  * Default terminal: Change exec-arg from '-x' to '--'
+  * gnome-rr.c: Only use nearest filtering for &quot;pixel-exact&quot;
+- Updated to version 2.0.2</comment>
+    <requestid>1128875</requestid>
+  </revision>
+</revisionlist>

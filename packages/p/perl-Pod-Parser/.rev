@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f4ed6e4158cc924e2af0f533e50b173</srcmd5>
+    <version>1.63</version>
+    <time>1604412935</time>
+    <user>dimstar_suse</user>
+    <comment>New dependency,used to be part of perl before 5.32</comment>
+    <requestid>845375</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53ae242b2d8ea29ddea5ece2b70182bb</srcmd5>
+    <version>1.65</version>
+    <time>1654258595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980471</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ebd31ccd3d05a8892247bf6a98f0df8</srcmd5>
+    <version>1.66</version>
+    <time>1683212953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084423</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,28 @@
+From: cunix@mail.de
+Date: 2023-09-21 12:00:00
+Subject: regex in linker detection for template builds fails sometimes to recognize correct ld version
+References: https://github.com/godotengine/godot/issues/82078
+
+distro added stuff to "ld --version" output prevents correct
+version detection.
+regex adjusted to improve detection of linker to include
+pck embadding code in template builds.
+
+---
+
+diff -r -U 5 a/platform/x11/detect.py b/platform/x11/detect.py
+--- a/platform/x11/detect.py
++++ b/platform/x11/detect.py
+@@ -406,11 +406,11 @@
+         import re
+ 
+         linker_version_str = subprocess.check_output(
+             [env.subst(env["LINK"]), "-Wl,--version"] + env.subst(env["LINKFLAGS"])
+         ).decode("utf-8")
+-        gnu_ld_version = re.search("^GNU ld [^$]*(\d+\.\d+)$", linker_version_str, re.MULTILINE)
++        gnu_ld_version = re.search("^GNU ld \(GNU Binutils.*\) (\d+\.\d+)", linker_version_str, re.MULTILINE)
+         if not gnu_ld_version:
+             print(
+                 "Warning: Creating template binaries enabled for PCK embedding is currently only supported with GNU ld, not gold or LLD."
+             )
+         else:

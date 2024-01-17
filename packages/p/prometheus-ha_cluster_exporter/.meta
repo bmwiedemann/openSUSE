@@ -1,0 +1,5 @@
+<package name="prometheus-ha_cluster_exporter" project="openSUSE:Factory">
+  <title>prometheus-ha_cluster_exporter</title>
+  <description>prometheus-ha_cluster_exporter ha clusters</description>
+  <devel project="server:monitoring" package="prometheus-ha_cluster_exporter"/>
+</package>

@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Jan 29 12:23:12 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add BUILD and WORKSPACE files for Bazel builds.
+
+-------------------------------------------------------------------
+Mon Jan 20 10:57:06 UTC 2020 - Navin Kukreja <navin.kukreja@suse.com>
+
+- List rpmlintrc in spec file 
+
+-------------------------------------------------------------------
+Thu Jan  9 14:53:04 UTC 2020 - Navin Kukreja <navin.kukreja@suse.com>
+
+- Initial release 0.2.2 

@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96aaf04a3ba9151ce84ba8577ca9f6f1</srcmd5>
+    <version>0.4.3</version>
+    <time>1485939042</time>
+    <user>dimstar_suse</user>
+    <comment>- Include in SLE 12 (fate#322171, bsc#1014478)</comment>
+    <requestid>445812</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13446dc8d51262c03488cb351f3af3c6</srcmd5>
+    <version>0.4.5</version>
+    <time>1500456046</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509676</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e1bd8efc3ace1852070dad8cedb435e</srcmd5>
+    <version>0.5.0</version>
+    <time>1518596855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571406</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8d973523ffbc11ed7eaf24fbe60e6574</srcmd5>
+    <version>1.0.2</version>
+    <time>1537971143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637915</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d37dd8add1bc9bfd8cd157471c1b246</srcmd5>
+    <version>1.2.1</version>
+    <time>1555691836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694235 from glaubitz)</comment>
+    <requestid>694364</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5b1ec666bb7d6d7766c98d9dcf80ea11</srcmd5>
+    <version>1.2.2</version>
+    <time>1572883418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735126 from glaubitz)</comment>
+    <requestid>735649</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e05a9af71ca98ebbc3f713384130d9a3</srcmd5>
+    <version>1.2.4</version>
+    <time>1593200684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816813</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>86dd5dc20c1cfcea41ee198bd1332545</srcmd5>
+    <version>1.2.5</version>
+    <time>1606649157</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.5
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update HISTORY.txt from github releases page (forwarded request 850420 from glaubitz)</comment>
+    <requestid>850507</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e4c94e1bcdb9b9853cf953045c6ba49c</srcmd5>
+    <version>1.2.5</version>
+    <time>1607548394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853821</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>906b3d0723e0ca1fda2473768c7e0352</srcmd5>
+    <version>1.2.6</version>
+    <time>1617279429</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882009</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>047d072946826b9b6429f2e186ec94bf</srcmd5>
+    <version>1.2.7</version>
+    <time>1620653962</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.7
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package (forwarded request 891991 from glaubitz)</comment>
+    <requestid>892032</requestid>
+  </revision>
+</revisionlist>

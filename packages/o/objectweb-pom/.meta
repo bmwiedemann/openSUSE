@@ -1,0 +1,9 @@
+<package name="objectweb-pom" project="openSUSE:Factory">
+  <title>Objectweb POM</title>
+  <description>This package provides Objectweb parent POM used by different
+Objectweb packages.
+
+</description>
+  <devel project="Java:packages" package="objectweb-pom"/>
+  <url>http://gitorious.ow2.org/ow2/pom/</url>
+</package>

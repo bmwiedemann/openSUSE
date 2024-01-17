@@ -1,0 +1,252 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>012aac1894070f2749bf55c1d4b8b7cc</srcmd5>
+    <version>1.2.5033</version>
+    <time>1579346257</time>
+    <user>dimstar_suse</user>
+    <comment>resurrection of the RStudio IDE</comment>
+    <requestid>764076</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f6168d8dec9717f8704586b924f369d9</srcmd5>
+    <version>1.2.5033</version>
+    <time>1579557238</time>
+    <user>dimstar_suse</user>
+    <comment>- Set RStudio versions properly via `ENV` variables
+- Fix shebangs on Leap 15
+- Lower ram and disk in `_constraints` to match requirements
+- Add patch to skip the installation of the bundled `mathjax` and `pandoc` as we `rm -rf` them again</comment>
+    <requestid>765713</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9e81e04a990dbf1baa3720947f2fcb47</srcmd5>
+    <version>1.2.5033</version>
+    <time>1580152737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767798</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>18b65a9496ed1c627307d78504a7afaf</srcmd5>
+    <version>1.2.5033</version>
+    <time>1580300186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767977</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f4a8b4ca4ed8bbc7d2ca33e55186dffd</srcmd5>
+    <version>1.2.5033</version>
+    <time>1580511319</time>
+    <user>dimstar_suse</user>
+    <comment>- Add systemd &amp; pam &amp; user for rstudio-server
+</comment>
+    <requestid>769041</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>65e4dd80ea1e2b4c620d509c6b813877</srcmd5>
+    <version>1.2.5033</version>
+    <time>1581694842</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>774290</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>d7063b7c6267aac247f4e8e498337355</srcmd5>
+    <version>1.2.5033</version>
+    <time>1583948933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783402</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>757b980099327f790d53277db5d0751f</srcmd5>
+    <version>1.2.5042</version>
+    <time>1591879897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799122</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5225a618d6821a8fbb2c824aa5e312d8</srcmd5>
+    <version>1.3.959</version>
+    <time>1596035985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815461</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ccc62ad85743ae689751047be40d8cd8</srcmd5>
+    <version>1.3.959</version>
+    <time>1596277936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823781</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>45722e15b9653295add9c0eee189f706</srcmd5>
+    <version>1.3.1056</version>
+    <time>1597064298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824998</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>13696d8a2b89a214d758e135f47dc88e</srcmd5>
+    <version>1.3.1073</version>
+    <time>1598726301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829915</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>eb6f20a5719637b2aa60fed0be88bdc5</srcmd5>
+    <version>1.3.1073</version>
+    <time>1599054968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831471</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>18ed1329c9f001f7074095548777e80a</srcmd5>
+    <version>1.3.1073</version>
+    <time>1600701503</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow to build on Leap 15.2
+- Add use-system-hunspell.patch to make compatible with newer versions of hunspell, replace bundled version by system library.
+- Add fix-libclang-usage.patch to make compatible with newer versions, unbundle clang-c headers and use system headers instead. Also make sure we find the library and the required builtin headers.
+- Most users won't need pandoc and mathjax, and since they have quite some dependencies of their own, we only recommend them.
+- Remove bundled zlib files that we don't need.
+- Put executables specific to -desktop and -server into the subpackages to reduce the number of dependencies if only one of them is needed. (Most notably users installing the server variant won't need Qt libraries.)
+</comment>
+    <requestid>835196</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1ce8ce6b246833f00782178eb5043290</srcmd5>
+    <version>1.4.1103</version>
+    <time>1617131656</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release 1.4.1103
+Renamed / rebased patches:
+* 0005-Use-system-hunspell.patch
+* 0004-Add-additional-includes-for-aarch64.patch
+* 0006-Fix-libclang-usage.patch
+* 0007-use-system-node.patch
+
+New upstream release 1.3.1093
+Rebase patches:
+* 0001-Unbundle-mathjax-and-pandoc.patch
+* 0002-Don-t-install-pandoc-and-mathjax.patch
+* 0003-Fix-rstudio-exec-path.patch
+* 0004-add-support-for-boost-1.73.patch
+* 0005-Add-additional-includes-for-aarch64.patch
+* 0006-Use-system-hunspell.patch
+* 0007-Fix-libclang-usage.patch
+* 0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch</comment>
+    <requestid>877961</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8e0e1e41781af17636323c3c8f500879</srcmd5>
+    <version>1.4.1106</version>
+    <time>1617910322</time>
+    <user>RBrownSUSE</user>
+    <comment>New upstream release v1.4.1106</comment>
+    <requestid>883540</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0e256daba28439f1490cb37e307b473e</srcmd5>
+    <version>1.4.1717</version>
+    <time>1629917878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914001</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>781084f4f9ca446c1997d73b95695603</srcmd5>
+    <version>1.4.1717</version>
+    <time>1630697179</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>916738</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f463ebc9d029b4de2012d3e1ba138743</srcmd5>
+    <version>1.4.1717</version>
+    <time>1635167840</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0009-Fix-catch-build.patch to fix build with glibc 2.34. (forwarded request 927121 from aaronpuchert)</comment>
+    <requestid>927136</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>6cdb12bea84531bb8bca8868de966619</srcmd5>
+    <version>1.4.1717</version>
+    <time>1649876777</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with jdk 11 to fix build failure (forwarded request 969878 from Andreas_Schwab)</comment>
+    <requestid>969884</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1485754ef763dca674c3d7d3d35a5c66</srcmd5>
+    <version>1.4.1743</version>
+    <time>1653244045</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release v1.4.1743.
+- Add 0010-Fix-R-build.patch from upstream to fix build with newer
+  R-core-devel: it just declares the Rf_countContexts locally. (forwarded request 978435 from aaronpuchert)</comment>
+    <requestid>978438</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>354dc2ef8adc8d9a0a10e115b3e0d5fa</srcmd5>
+    <version>2022.02.2+485</version>
+    <time>1653417081</time>
+    <user>dimstar_suse</user>
+    <comment>Undo unnecessary changes before submit to Factory. (Initially the file wasn't there because I didn't enable the desktop build for aarch64.) (forwarded request 978896 from aaronpuchert)</comment>
+    <requestid>978950</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9a94b1f06f14eb50a452eded1d42083f</srcmd5>
+    <version>2022.12.0+353</version>
+    <time>1678125300</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 2022.12.0+353.
+- Add missing-include.patch to fix build by adding include.
+- Add unbundle-fmt.patch to use the system version of fmt.
+- Drop boost_patches.diff that landed upstream.
+- Use the correct soname for libclang. (forwarded request 1069421 from aaronpuchert)</comment>
+    <requestid>1069470</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>adac6c3fa20f6b206d1bf2f72f8dedac</srcmd5>
+    <version>2023.03.0+386</version>
+    <time>1680455926</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 2023.03.0+386.
+- Replace 0007-use-system-node.patch by remove-panmirror.patch.
+  Building panmirror seems to have gotten more complicated, and I
+  can't figure out how to make it work. So let's remove it for now.
+- Remove obsolete patches:
+  * 0009-Fix-false-quarto-warning.patch
+  * missing-include.patch
+- Make 0006-Fix-libclang-usage.patch work with Clang 16. (forwarded request 1076732 from aaronpuchert)</comment>
+    <requestid>1076735</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4f3a476d3d8bbceba77d4b072fcdf337</srcmd5>
+    <version>2023.06.0+421</version>
+    <time>1687379998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094313</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7abc11fcd5ee0347887e04a38325b57d</srcmd5>
+    <version>2023.09.1+494</version>
+    <time>1701727293</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release 2023.09.1+494.
+- Rebase patches:
+  * 0002-Don-t-install-pandoc-and-mathjax.patch
+  * remove-panmirror.patch (forwarded request 1130496 from aaronpuchert)</comment>
+    <requestid>1130699</requestid>
+  </revision>
+</revisionlist>

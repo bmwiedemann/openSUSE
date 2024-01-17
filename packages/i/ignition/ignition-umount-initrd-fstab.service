@@ -1,0 +1,12 @@
+[Unit]
+Description=Unmount initrd fstab entries for Ignition
+DefaultDependencies=false
+Before=ignition-complete.target
+After=ignition-files.service
+# Make sure not to unmount the real sysroot-*.mount units
+Before=initrd-parse-etc.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -e -c 'if [ -f /sysroot/etc/systemd/system-preset/20-ignition.preset ]; then while read line; do systemctl --root=/sysroot $line; done < /sysroot/etc/systemd/system-preset/20-ignition.preset; fi'
+ExecStart=/bin/sh -e -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ && $1 !~ /^#/ {print "if findmnt /sysroot" $2 " >/dev/null; then umount -R /sysroot" $2 "; fi;" }'"'"' /sysroot/etc/fstab)'

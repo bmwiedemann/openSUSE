@@ -1,0 +1,5 @@
+<package name="python-oic" project="openSUSE:Factory">
+  <title>python-oic</title>
+  <description>A complete OpenID Connect implementation in Python</description>
+  <devel project="devel:languages:python" package="python-oic"/>
+</package>

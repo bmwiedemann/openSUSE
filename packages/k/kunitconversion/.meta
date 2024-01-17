@@ -1,0 +1,5 @@
+<package name="kunitconversion" project="openSUSE:Factory">
+  <title>kunitconversion</title>
+  <description>KUnitConversion</description>
+  <devel project="KDE:Frameworks5" package="kunitconversion"/>
+</package>

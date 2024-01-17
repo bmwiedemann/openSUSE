@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=pgAdmin 4
+Exec=/usr/bin/pgadmin4-desktop
+Icon=pgadmin4
+Type=Application
+Categories=Development;Database;GUIDesigner;
+MimeType=text/html
+Comment=Management tool for PostgreSQL
+Keywords=database;db;sql;query;administration;development;

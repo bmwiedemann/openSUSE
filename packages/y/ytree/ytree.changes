@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sun Dec 17 10:06:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.06:
+  * Fixed compile error in input.c (UTF_8 only)
+
+-------------------------------------------------------------------
+Wed Aug 23 07:14:17 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.0.5:
+  * Uses regcomp instead of deprecated re_comp/re_exec (linux)
+  * Debug file sort issue for very large file sizes
+  * Reduced compiler warnings
+
+- run spec-clean
+
+-------------------------------------------------------------------
+Sun Nov  7 11:04:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.0.4:
+  * Avoid security warning for mvprintw in input.c
+
+-------------------------------------------------------------------
+Sun Feb 28 20:22:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * cleanup + added LDFLAG "-ltinfo"
+
+-------------------------------------------------------------------
+Fri Jun 26 18:48:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile cleanup
+- Build with CFLAGS
+- Use Proper RPM Group
+
+-------------------------------------------------------------------
+Mon Nov 21 00:00:00 UTC 2016 - Marcus Furlong <furlongm@gmail.com>
+
+- Initial OBS Release
+

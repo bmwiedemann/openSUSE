@@ -1,0 +1,5 @@
+<package name="yast2-kdump" project="openSUSE:Factory">
+  <title>Configuration of kdump</title>
+  <description>Configuration of kdump</description>
+  <devel project="YaST:Head" package="yast2-kdump"/>
+</package>

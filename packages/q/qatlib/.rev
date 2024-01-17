@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eda03e11bb9e945b2d9baa9a2dcd75f1</srcmd5>
+    <version>20.10.20201116T163433.0257eb1</version>
+    <time>1612272326</time>
+    <user>dimstar_suse</user>
+    <comment>Implements SLE-13937</comment>
+    <requestid>868422</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>07692f2c68752008d918686c05bf16d3</srcmd5>
+    <version>20.10.20201116T163433.0257eb1</version>
+    <time>1612901771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870220</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f1cbc3c7811a5d4921cfc0cee06afbb2</srcmd5>
+    <version>21.05.0</version>
+    <time>1626788350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907097</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>167b36ef3cbb86c3586e79b5ae9bc30c</srcmd5>
+    <version>21.08.0</version>
+    <time>1633542602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>923508</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>04553619ae9c95610e6d3466f2b9f52a</srcmd5>
+    <version>21.08.0</version>
+    <time>1635877139</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>928687</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a89e33aa91b20bfbdb5638b408c71998</srcmd5>
+    <version>22.07.2</version>
+    <time>1670333066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040559</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3538ea374e5e02ef92c6525756053ca2</srcmd5>
+    <version>22.07.2</version>
+    <time>1685477004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089848</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3cc37bd1c4c9b98e2723c6f7f42f38b8</srcmd5>
+    <version>23.11.0</version>
+    <time>1704380313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136544</requestid>
+  </revision>
+</revisionlist>

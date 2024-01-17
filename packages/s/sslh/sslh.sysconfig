@@ -1,0 +1,74 @@
+## Path:        Network/Remote access/SSLH
+## Description: SSLH server settings
+## Type:        integer
+## Default:     2
+## ServiceRestart: sslh
+#
+# Timeout before a connection is considered to be SSH. 
+# Default is 2s.
+#
+TIMEOUT=2
+
+## Type:        string
+## Default:     "0.0.0.0:443"
+#
+# Interface and port on which to listen, e.g. foobar:443, where foobar 
+# is the name of an interface (typically the IP address on which the 
+# Internet connection ends up).
+#
+# Defaults to 0.0.0.0:443 (listen to port 443 on all available interfaces).
+#
+LISTENING_ADDRESS="0.0.0.0:443"
+
+## Type:       string
+## Default:    "localhost:443"
+# 
+# Interface and port on which to forward SSL connection, 
+# typically localhost:443.
+#
+# Defaults to localhost:443 (this assumes you would configure your 
+# httpd process to listen to port 443).
+#
+# Note that you can set sslh to listen on ext_ip:443 and httpd to 
+# listen on localhost:443: this allows clients inside your network 
+# to just connect directly to httpd.
+#
+TARGET_ADDRESS_FOR_SSL="localhost:443"
+
+## Type:       string
+## Default:    "localhost:22"
+#
+# Interface and port on which to forward SSH connection, 
+# defaults to localhost:22.
+#
+TARGET_ADDRESS_FOR_SSH="localhost:22"
+
+## Type:       string
+## Default:    "localhost:1194"
+#
+# Interface and port on which to forward openVPN connection,
+# defaults to localhost:1194.
+#
+TARGET_ADDRESS_FOR_OPENVPN="localhost:1194"
+
+## Type:       yesno
+## Default:    no
+#
+# Increase verboseness.
+#
+BE_VERBOSE="no"
+
+## Type:      string
+## Default:   "sslh"
+#
+# Requires to run under the specified username.
+#
+USERNAME="sslh"
+
+## Type:      string
+## Default:   ""
+#
+# Other options to pass to the sslh daemon during startup.
+# Please read "man 8 sslh" for details.
+#
+SSLH_OPTS=""

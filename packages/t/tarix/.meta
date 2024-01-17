@@ -1,0 +1,11 @@
+<package name="tarix" project="openSUSE:Factory">
+  <title>Simple Indexer for GNU and POSIX Tar Files</title>
+  <description>tarix is a simple indexer for GNU and POSIX tar files. The indexes allow fast
+extraction of files in the archive, especially on seekable tape devices. The
+index format is simple enough to be used from a rescue disk with only mt,
+dd, and tar (though grep and sed would be very useful there).
+
+</description>
+  <devel project="Archiving" package="tarix"/>
+  <url>https://github.com/fastcat/tarix</url>
+</package>

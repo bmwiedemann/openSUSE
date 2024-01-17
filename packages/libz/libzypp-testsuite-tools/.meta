@@ -1,0 +1,5 @@
+<package name="libzypp-testsuite-tools" project="openSUSE:Factory">
+  <title>Package, Patch, Pattern, and Product Management - testsuite-tools</title>
+  <description>Package, Patch, Pattern, and Product Management - testsuite-tools</description>
+  <devel project="zypp:Head" package="libzypp-testsuite-tools"/>
+</package>

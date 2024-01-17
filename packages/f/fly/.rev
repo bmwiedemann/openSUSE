@@ -1,0 +1,136 @@
+<revisionlist>
+  <revision rev="1" vrev="591">
+    <srcmd5>53f179740e1e5b0d87c6178123e01622</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1168902759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="773">
+    <srcmd5>53f179740e1e5b0d87c6178123e01622</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1168902759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="774">
+    <srcmd5>f0fc8749957c4cf6aa45ca182a5bf3d0</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1245259985</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="776">
+    <srcmd5>f0fc8749957c4cf6aa45ca182a5bf3d0</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1245259985</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="777">
+    <srcmd5>c7506fad656416a0c3c1eb1c581fcbcf</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1268923550</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="779">
+    <srcmd5>c7506fad656416a0c3c1eb1c581fcbcf</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="780">
+    <srcmd5>c7506fad656416a0c3c1eb1c581fcbcf</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="783">
+    <srcmd5>c7506fad656416a0c3c1eb1c581fcbcf</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="784">
+    <srcmd5>416f06eca9cd5ec21a11e7f4ac564442</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1316503806</time>
+    <user>lrupp</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83533 from jengelh)</comment>
+    <requestid>83641</requestid>
+  </revision>
+  <revision rev="10" vrev="785">
+    <srcmd5>3958fe94b99ffbef27128a567f64450b</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1317909724</time>
+    <user>lrupp</user>
+    <comment>- cross-build fix: use %__cc macro (forwarded request 86690 from uli_suse)</comment>
+    <requestid>86699</requestid>
+  </revision>
+  <revision rev="11" vrev="787">
+    <srcmd5>3958fe94b99ffbef27128a567f64450b</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1319181881</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="788">
+    <srcmd5>3801e8834ca4da5da82a42a1df198f83</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1338476667</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-Permissive
+SPDX format (or next best alternative from the spreadsheet linked at license.opensuse.org) (forwarded request 122825 from babelworx)</comment>
+    <requestid>122828</requestid>
+  </revision>
+  <revision rev="13" vrev="790">
+    <srcmd5>3801e8834ca4da5da82a42a1df198f83</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1340183334</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="792">
+    <srcmd5>3801e8834ca4da5da82a42a1df198f83</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1359108884</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="794">
+    <srcmd5>3801e8834ca4da5da82a42a1df198f83</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1379662352</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="796">
+    <srcmd5>3801e8834ca4da5da82a42a1df198f83</srcmd5>
+    <version>2.0.0_PNG</version>
+    <time>1409300888</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>43aa7544655740c94963846d1f4b24aa</srcmd5>
+    <version>2.0.1</version>
+    <time>1521052818</time>
+    <user>dimstar_suse</user>
+    <comment>- switch download to mirror site so that &quot;localrun downloadfiles&quot;
+  can work
+- remove buildrequires on freetype2-devel, libjpeg-devel
+  libpng-devel, xorg-x11, xorg-x11-devel, only gd library
+  is ever used.
+- Update to 2.0.1
+  * Fly tested for compatibility with gd version 2.0.35.
+  * Makefile updated for correct/new reference to freetype library.
+  * Has been tested on Linux/x86.
+- Drop fly-2.0.0-libs.patch (freetype lib reference fixed upstream)
+- Lint spec file
+- Fix a few warnings:
+  * Incorrect file endings
+  * Drop duplicate example from source
+  * Drop gif examples as gifs are not supported
+</comment>
+    <requestid>586464</requestid>
+  </revision>
+</revisionlist>

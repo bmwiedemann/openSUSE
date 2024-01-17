@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Feb  7 17:14:23 UTC 2018 - coolo@suse.com
+
+- updated to 0.117
+   see /usr/share/doc/packages/perl-Ref-Util-XS/Changes
+
+  0.117     2018-01-31 12:47:11+01:00 Europe/Amsterdam
+  
+          * Allow the custom OPs to be deparsed with B::Deparse.
+            (Graham @haarg Knop)
+          * Optimize the shared object size by moving common call checker
+            logic into a function. (James Raspass)
+
+-------------------------------------------------------------------
+Mon May 29 05:06:20 UTC 2017 - coolo@suse.com
+
+- initial package 0.116
+ * created by cpanspec 1.78.08

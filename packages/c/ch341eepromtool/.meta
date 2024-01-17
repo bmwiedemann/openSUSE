@@ -1,0 +1,6 @@
+<package name="ch341eepromtool" project="openSUSE:Factory">
+  <title>I2C Serial EEPROM Programming Tool for the WCH CH341A</title>
+  <description>An I2C serial EEPROM programming tool for cheap Winchiphead CH341 IC based programmers.</description>
+  <devel project="electronics" package="ch341eepromtool"/>
+  <url>https://sourceforge.net/projects/ch341eepromtool/</url>
+</package>

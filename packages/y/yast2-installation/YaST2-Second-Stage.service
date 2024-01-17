@@ -1,0 +1,37 @@
+[Unit]
+Description=YaST2 Second Stage
+After=apparmor.service local-fs.target plymouth-start.service
+# Run after kernels are purged to prevent a zypper lock (bsc#1196431)
+After=purge-kernels.service
+Conflicts=plymouth-start.service
+# Prevent getty auto-generation (bsc#1196614, bsc#1196594, bsc#1199746)
+Before=getty@tty1.service getty@tty2.service getty@tty3.service getty@tty4.service getty@tty5.service getty@tty6.service
+Before=serial-getty@ttyS0.service serial-getty@ttyS1.service serial-getty@ttyS2.service
+Before=serial-getty@hvc0.service serial-getty@ttyAMA0.service serial-getty@ttysclp0.service
+Before=serial-getty@sclp_line0.service
+# Prevent too early user login (bsc#1196594)
+Before=display-manager.service
+ConditionPathExists=/var/lib/YaST2/runme_at_boot
+
+[Service]
+Type=oneshot
+# PX_MODULE_PATH=""  ==>
+# Do not load libproxy modules (config_kde4 module crashes because of Qt4/Qt5
+# clash), empty path causes that the installed modules are not found. Sysconfig
+# and envvar extensions are still loaded, /etc/sysconfig/proxy values are still
+# used correctly (see bnc#866692 and bnc#866692 for details).
+Environment=TERM=linux PX_MODULE_PATH=""
+# Block non-privileged user login (bsc#1195059)
+ExecStartPre=-/usr/bin/plymouth quit
+ExecStart=/usr/lib/YaST2/startup/YaST2.Second-Stage
+RemainAfterExit=yes
+TimeoutSec=0
+# Initialize tty1 in order to remove old YaST output and to show the cursor
+# again (bnc#1018037)
+ExecStartPost=/bin/sh -c '/usr/bin/printf "\033c" > /dev/tty1'
+ExecStartPost=/usr/bin/rm -f /var/lib/YaST2/runme_at_boot
+ExecStartPost=/usr/bin/systemctl restart systemd-vconsole-setup.service
+StandardInput=tty
+
+[Install]
+WantedBy=default.target

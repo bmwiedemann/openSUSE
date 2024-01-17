@@ -1,0 +1,32 @@
+From b55196f9da7de4a5bad23bf0051a2d6c6ee7f04d Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 14 Feb 2023 09:14:43 +0000
+Subject: [PATCH] build: support libewf V3
+References: https://github.com/sleuthkit/sleuthkit/pull/2810
+
+---
+ tsk/img/ewf.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/tsk/img/ewf.cpp b/tsk/img/ewf.cpp
+index 1dc8c81da..3ae381e6b 100755
+--- a/tsk/img/ewf.cpp
++++ b/tsk/img/ewf.cpp
+@@ -67,8 +67,14 @@ ewf_image_read(TSK_IMG_INFO * img_info, TSK_OFF_T offset, char *buf,
+ 
+     tsk_take_lock(&(ewf_info->read_lock));
+ #if defined( HAVE_LIBEWF_V2_API )
++#if LIBEWF_VERSION >= 20160319
++    /* V3 API */
++    cnt = libewf_handle_read_buffer_at_offset(ewf_info->handle,
++        buf, len, offset, &ewf_error);
++#else
+     cnt = libewf_handle_read_random(ewf_info->handle,
+         buf, len, offset, &ewf_error);
++#endif
+     if (cnt < 0) {
+         char *errmsg = NULL;
+         tsk_error_reset();
+-- 
+2.39.1
+

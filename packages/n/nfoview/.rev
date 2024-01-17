@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f6011c7a492f00ee5234a60da5d4bab</srcmd5>
+    <version>1.21</version>
+    <time>1488322233</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>458854</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac6ae3502b9b9745c51ef43e836b1583</srcmd5>
+    <version>1.23</version>
+    <time>1510578419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541203</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>88baa2e407ce92b4ff79b8515f174095</srcmd5>
+    <version>1.24</version>
+    <time>1538374652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638711</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5400b736cc488cc7fc08ae92223f04d4</srcmd5>
+    <version>1.26</version>
+    <time>1548452670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668312</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc814489db4925fda99b8f8c0eb12988</srcmd5>
+    <version>1.27</version>
+    <time>1584447017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785698</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0dde2c9c7bd1de64a76f28a66e85c2dc</srcmd5>
+    <version>1.27.1</version>
+    <time>1587839268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.1:
+  * Fix CSS error with the abnormal weight of the Unscii font
+- Drop nfoview-fix-css-font-abnormal-weight.patch</comment>
+    <requestid>796689</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>29d69f635bc245a8da08c4b8ede24226</srcmd5>
+    <version>1.28</version>
+    <time>1588324395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799147</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ba39064eedeeaf6287e07cb4c4acecc5</srcmd5>
+    <version>1.28.1</version>
+    <time>1649713736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>968368</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0e6faf10409e907c28adec254006dd93</srcmd5>
+    <version>1.29</version>
+    <time>1666978283</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.29:
+  * Fix font name quoting in Gtk CSS
+  * Update translations (forwarded request 1031566 from CJ)</comment>
+    <requestid>1031828</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8845ac9e473d57295d9e7e4d52c883ef</srcmd5>
+    <version>1.99</version>
+    <time>1701023897</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128912</requestid>
+  </revision>
+</revisionlist>

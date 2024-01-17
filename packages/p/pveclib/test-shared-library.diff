@@ -1,0 +1,35 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e6e567f..fa79d97 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -228,7 +228,7 @@ pveclib_test_SOURCES = \
+ 	testsuite/vec_perf_i128.h
+ 
+ pveclib_test_CFLAGS = $(AM_CPPFLAGS) $(PVECLIB_DEFAULT_CFLAGS) $(AM_CFLAGS)
+-pveclib_test_LDADD = .libs/libpvecstatic.a .libs/libvecdummy.a
++pveclib_test_LDADD = libpvec.la libvecdummy.la
+ 	
+ TESTS += vec_dummy
+ 
+diff --git a/src/Makefile.in b/src/Makefile.in
+index f57ccc3..e4c7335 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -202,7 +202,7 @@ am_pveclib_test_OBJECTS =  \
+ 	testsuite/pveclib_test-arith128_test_char.$(OBJEXT) \
+ 	testsuite/pveclib_test-arith128_test_bcd.$(OBJEXT)
+ pveclib_test_OBJECTS = $(am_pveclib_test_OBJECTS)
+-pveclib_test_DEPENDENCIES = .libs/libpvecstatic.a .libs/libvecdummy.a
++pveclib_test_DEPENDENCIES = libpvec.la libvecdummy.la
+ pveclib_test_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(pveclib_test_CFLAGS) \
+ 	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+@@ -764,7 +764,7 @@ pveclib_test_SOURCES = \
+ 	testsuite/vec_perf_i128.h
+ 
+ pveclib_test_CFLAGS = $(AM_CPPFLAGS) $(PVECLIB_DEFAULT_CFLAGS) $(AM_CFLAGS)
+-pveclib_test_LDADD = .libs/libpvecstatic.a .libs/libvecdummy.a
++pveclib_test_LDADD = libpvec.la libvecdummy.la
+ 
+ #Dummy main to force generation of vec_dummy_* codes
+ vec_dummy_SOURCES = testsuite/vec_dummy_main.c 

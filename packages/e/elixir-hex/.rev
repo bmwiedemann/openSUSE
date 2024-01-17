@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b914f16deaf0a48c92b48df285d1ea0e</srcmd5>
+    <version>0.18.2</version>
+    <time>1548062886</time>
+    <user>dimstar_suse</user>
+    <comment>New dependency for rabbitmq-server update SR 656762</comment>
+    <requestid>656779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c6d1ffd266e79ebb21ddd921b287355</srcmd5>
+    <version>0.20.5</version>
+    <time>1608729726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858308</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e22a030dc8638f0d2932379316aee49</srcmd5>
+    <version>1.0.1</version>
+    <time>1652188359</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>976027</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>31332e091e51ae57592c58620a5c080f</srcmd5>
+    <version>2.0.6</version>
+    <time>1690987776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101754</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d9f5c85cee19306e60e1db07d6c2972b</srcmd5>
+    <version>2.0.6</version>
+    <time>1702936547</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133760</requestid>
+  </revision>
+</revisionlist>

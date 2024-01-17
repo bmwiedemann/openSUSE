@@ -1,0 +1,209 @@
+From d2c091cd2ac233cf9cb056bd696e8aa8b3b88ebc Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 27 Apr 2023 14:41:03 +1000
+Subject: [PATCH] Use build rather than pep517 for building
+
+pep517 has been renamed to pyproject-hooks, and as a consequence all of
+the deprecated functionality has been removed. build now provides the
+functionality required, and since we are only interested in the
+metadata, we can leverage a helper function for that. I've also removed
+all of the subprocess machinery for calling the wrapping function, since
+it appears to not be as noisy as pep517.
+---
+ pythonforandroid/pythonpackage.py | 89 ++++---------------------------
+ setup.py                          |  4 +-
+ tests/test_pythonpackage.py       |  2 +-
+ tests/test_pythonpackage_basic.py | 13 ++---
+ 4 files changed, 18 insertions(+), 90 deletions(-)
+
+diff --git a/pythonforandroid/pythonpackage.py b/pythonforandroid/pythonpackage.py
+index 3b03a513f5..1275ff8501 100644
+--- a/pythonforandroid/pythonpackage.py
++++ b/pythonforandroid/pythonpackage.py
+@@ -40,7 +40,6 @@
+ import sys
+ import tarfile
+ import tempfile
+-import textwrap
+ import time
+ import zipfile
+ from io import open  # needed for python 2
+@@ -48,8 +47,7 @@
+ from urllib.parse import urlparse
+ 
+ import toml
+-from pep517.envbuild import BuildEnvironment
+-from pep517.wrappers import Pep517HookCaller
++import build.util
+ 
+ 
+ def transform_dep_for_pip(dependency):
+@@ -113,40 +111,7 @@ def extract_metainfo_files_from_package(
+             )
+             package = os.path.join(temp_folder, "package")
+ 
+-        # Because PEP517 can be noisy and contextlib.redirect_* fails to
+-        # contain it, we will run the actual analysis in a separate process:
+-        try:
+-            subprocess.check_output([
+-                sys.executable,
+-                "-c",
+-                "import importlib\n"
+-                "import json\n"
+-                "import os\n"
+-                "import sys\n"
+-                "sys.path = [os.path.dirname(sys.argv[3])] + sys.path\n"
+-                "m = importlib.import_module(\n"
+-                "    os.path.basename(sys.argv[3]).partition('.')[0]\n"
+-                ")\n"
+-                "m._extract_metainfo_files_from_package_unsafe("
+-                "    sys.argv[1],"
+-                "    sys.argv[2],"
+-                ")",
+-                package, output_folder, os.path.abspath(__file__)],
+-                stderr=subprocess.STDOUT,  # make sure stderr is muted.
+-                cwd=os.path.join(os.path.dirname(__file__), "..")
+-            )
+-        except subprocess.CalledProcessError as e:
+-            output = e.output.decode("utf-8", "replace")
+-            if debug:
+-                print("Got error obtaining meta info.")
+-                print("Detail output:")
+-                print(output)
+-                print("End of Detail output.")
+-            raise ValueError(
+-                "failed to obtain meta info - "
+-                "is '{}' a valid package? "
+-                "Detailed output:\n{}".format(package, output)
+-                )
++        _extract_metainfo_files_from_package_unsafe(package, output_folder)
+     finally:
+         shutil.rmtree(temp_folder)
+ 
+@@ -461,51 +426,17 @@ def _extract_metainfo_files_from_package_unsafe(
+         clean_up_path = True
+ 
+     try:
+-        build_requires = []
+         metadata_path = None
+ 
+         if path_type != "wheel":
+-            # We need to process this first to get the metadata.
+-
+-            # Ensure pyproject.toml is available (pep517 expects it)
+-            if not os.path.exists(os.path.join(path, "pyproject.toml")):
+-                with open(os.path.join(path, "pyproject.toml"), "w") as f:
+-                    f.write(textwrap.dedent(u"""\
+-                    [build-system]
+-                    requires = ["setuptools", "wheel"]
+-                    build-backend = "setuptools.build_meta"
+-                    """))
+-
+-            # Copy the pyproject.toml:
+-            shutil.copyfile(
+-                os.path.join(path, 'pyproject.toml'),
+-                os.path.join(output_path, 'pyproject.toml')
+-            )
+-
+-            # Get build backend and requirements from pyproject.toml:
+-            with open(os.path.join(path, 'pyproject.toml')) as f:
+-                build_sys = toml.load(f)['build-system']
+-                backend = build_sys["build-backend"]
+-                build_requires.extend(build_sys["requires"])
+-
+-            # Get a virtualenv with build requirements and get all metadata:
+-            env = BuildEnvironment()
+-            metadata = None
+-            with env:
+-                hooks = Pep517HookCaller(path, backend)
+-                env.pip_install(
+-                    [transform_dep_for_pip(req) for req in build_requires]
+-                )
+-                reqs = hooks.get_requires_for_build_wheel({})
+-                env.pip_install([transform_dep_for_pip(req) for req in reqs])
+-                try:
+-                    metadata = hooks.prepare_metadata_for_build_wheel(path)
+-                except Exception:  # sadly, pep517 has no good error here
+-                    pass
+-            if metadata is not None:
+-                metadata_path = os.path.join(
+-                    path, metadata, "METADATA"
+-                )
++            # Use a build helper function to fetch the metadata directly
++            metadata = build.util.project_wheel_metadata(path, isolated=False)
++            # And write it to a file
++            metadata_path = os.path.join(output_path, "built_metadata")
++            with open(metadata_path, 'w') as f:
++                for key in metadata.keys():
++                    for value in metadata.get_all(key):
++                        f.write("{}: {}\n".format(key, value))
+         else:
+             # This is a wheel, so metadata should be in *.dist-info folder:
+             metadata_path = os.path.join(
+diff --git a/setup.py b/setup.py
+index 57bddc2593..c0539b48c0 100644
+--- a/setup.py
++++ b/setup.py
+@@ -22,9 +22,9 @@
+ install_reqs = [
+     'appdirs', 'colorama>=0.3.3', 'jinja2',
+     'sh>=1.10, <2.0; sys_platform!="nt"',
+-    'pep517', 'toml', 'packaging',
++    'build', 'toml', 'packaging',
+ ]
+-# (pep517 and toml are used by pythonpackage.py)
++# (build and toml are used by pythonpackage.py)
+ 
+ 
+ # By specifying every file manually, package_data will be able to
+diff --git a/tests/test_pythonpackage.py b/tests/test_pythonpackage.py
+index 2f88cf2aa4..21412e9258 100644
+--- a/tests/test_pythonpackage.py
++++ b/tests/test_pythonpackage.py
+@@ -42,7 +42,7 @@ def test_get_package_dependencies():
+         if "MarkupSafe" in dep
+     ]
+     # Check setuptools not being in non-recursive deps:
+-    # (It will be in recursive ones due to p4a's pep517 dependency)
++    # (It will be in recursive ones due to p4a's build dependency)
+     assert "setuptools" not in deps_nonrecursive
+     # Check setuptools is present in non-recursive deps,
+     # if we also add build requirements:
+diff --git a/tests/test_pythonpackage_basic.py b/tests/test_pythonpackage_basic.py
+index b05344b56b..e98a5f99b0 100644
+--- a/tests/test_pythonpackage_basic.py
++++ b/tests/test_pythonpackage_basic.py
+@@ -236,7 +236,7 @@ def run__get_system_python_executable(self, pybin):
+             pybin,
+             "-c",
+             "import importlib\n"
+-            "import json\n"
++            "import build.util\n"
+             "import os\n"
+             "import sys\n"
+             "sys.path = [os.path.dirname(sys.argv[1])] + sys.path\n"
+@@ -273,8 +273,8 @@ def test_systemwide_python(self):
+             # Some deps may not be installed, so we just avoid to raise
+             # an exception here, as a missing dep should not make the test
+             # fail.
+-            if "pep517" in str(e.args):
+-                # System python probably doesn't have pep517 available!
++            if "build" in str(e.args):
++                # System python probably doesn't have build available!
+                 pass
+             elif "toml" in str(e.args):
+                 # System python probably doesn't have toml available!
+@@ -304,11 +304,8 @@ def test_venv(self):
+             ])
+             subprocess.check_output([
+                 os.path.join(test_dir, "venv", "bin", "pip"),
+-                "install", "-U", "pep517"
+-            ])
+-            subprocess.check_output([
+-                os.path.join(test_dir, "venv", "bin", "pip"),
+-                "install", "-U", "toml"
++                "install", "-U", "build", "toml", "sh<2.0", "colorama",
++                "appdirs", "jinja2", "packaging"
+             ])
+             sys_python_path = self.run__get_system_python_executable(
+                 os.path.join(test_dir, "venv", "bin", "python")

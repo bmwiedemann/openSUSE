@@ -1,0 +1,886 @@
+-------------------------------------------------------------------
+Sun Jan 07 13:36:53 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.74.0:
+  * chore(deps): update Syft to v0.100.0 (#1649)
+  * fix: distro FP data not applied correctly (#1603)
+  * chore(deps): bump anchore/sbom-action from 0.15.1 to 0.15.2
+    (#1647)
+  * chore(deps): update bootstrap tools to latest versions (#1644)
+  * docs: fix logging configuration in README (#1646)
+
+-------------------------------------------------------------------
+Thu Dec 21 19:04:26 UTC 2023 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.73.5:
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from 0.7.2
+    to 0.8.0 (#1633)
+  * chore(deps): bump golang.org/x/crypto from 0.16.0 to 0.17.0
+    (#1641)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.8
+    to 1.7.11 (#1642)
+  * chore(deps): bump actions/upload-artifact from 3.1.3 to 4.0.0
+    (#1638)
+  * chore(deps): bump sigstore/cosign-installer from 3.2.0 to 3.3.0
+    (#1632)
+  * chore(deps): bump github.com/charmbracelet/bubbletea (#1635)
+  * chore(deps): bump github.com/google/uuid from 1.4.0 to 1.5.0
+    (#1636)
+  * chore(deps): bump actions/setup-go from 4.1.0 to 5.0.0 (#1630)
+  * chore(deps): bump anchore/sbom-action from 0.15.0 to 0.15.1
+    (#1626)
+  * chore: pin action to correct sha (#1598)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1625)
+
+-------------------------------------------------------------------
+Thu Nov 30 16:24:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.4:
+  * chore: bump to syft v0.98.0 in quality gate tests (#1623)
+  * chore: update syft; go mod tidy (#1621)
+  * chore(deps): bump github.com/spf13/afero from 1.10.0 to 1.11.0
+    (#1618)
+  * chore: explicitly test maven suffixes (#1617)
+  * chore(deps): bump anchore/sbom-action from 0.14.3 to 0.15.0
+    (#1611)
+
+-------------------------------------------------------------------
+Mon Nov 20 05:38:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.3:
+  * chore(deps): update Syft to v0.97.1 (#1610)
+
+-------------------------------------------------------------------
+Fri Nov 17 05:48:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.2:
+  * chore(deps): update Syft to v0.97.0 (#1608)
+  * chore: bump vulnerability match label dataset (#1606)
+  * fix: golang version parsing (#1599)
+  * chore(deps): update bootstrap tools to latest versions (#1595)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.11
+    to 0.4.12 (#1597)
+
+-------------------------------------------------------------------
+Thu Nov 09 15:04:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.1:
+  * chore(deps): update Syft to v0.96.0 (#1596)
+  * fix: match against debian unstable (#1593)
+  * perf: avoid allocations with `(*regexp.Regexp).MatchString`
+    (#1592)
+  * chore(deps): bump sigstore/cosign-installer from 3.1.2 to 3.2.0
+    (#1590)
+
+-------------------------------------------------------------------
+Wed Nov 08 05:53:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.73.0:
+  * chore(deps): update Syft to v0.95.0 (#1591)
+  * chore: account for syft package metadata changes (#1423)
+  * fix: bump fangs to enable setting golang CPE config using env
+    var (#1585)
+  * chore(deps): update bootstrap tools to latest versions (#1588)
+  * chore(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0
+    (#1586)
+  * chore: bootstrap action cleanup (#1587)
+  * chore(deps): update bootstrap tools to latest versions (#1584)
+  * Incorporate format API changes from syft (#1582)
+  * chore(deps): bump github.com/docker/docker (#1579)
+  * feat(config): added reason field (#1532)
+  * chore(deps): bump github.com/glebarez/sqlite from 1.9.0 to
+    1.10.0 (#1583)
+  * Colorize severity in table output (#1284)
+  * feat: add custom maven comparator (#1571)
+  * chore: fix path to quality tests (#1578)
+  * capture quality gate state on failures (#1576)
+  * chore(deps): bump github.com/google/uuid from 1.3.1 to 1.4.0
+    (#1575)
+  * chore(deps): update bootstrap tools to latest versions (#1574)
+  * chore(deps): bump google.golang.org/grpc from 1.56.0 to 1.56.3
+    (#1573)
+  * docs: add cbl-mariner to supported distro (#1569)
+  * chore(deps): bump ossf/scorecard-action from 2.3.0 to 2.3.1
+    (#1570)
+  * chore(deps): update bootstrap tools to latest versions (#1567)
+
+-------------------------------------------------------------------
+Fri Nov  3 09:14:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.21
+
+-------------------------------------------------------------------
+Sat Oct 21 18:17:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.72.0:
+  * chore(deps): update Syft to v0.94.0 (#1566)
+  * Incorporate Syft java detection improvements (#1555)
+  * add exception for go stdlib search by CPE (#1565)
+  * chore(deps): bump actions/checkout from 4.1.0 to 4.1.1 (#1564)
+  * Add --ignore-states flag for ignoring findings with specific
+    fix states (#1473)
+  * feat: update go-sarif library to use latest release (#1563)
+  * bump clio to get stderr reporting fix (#1561)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.2
+    to 1.4.3 (#1558)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.9.0
+    to 0.9.1 (#1557)
+  * Add checksum signing (#1535)
+
+-------------------------------------------------------------------
+Fri Oct 13 05:01:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.71.0:
+  * chore(deps): bump golang.org/x/net from 0.16.0 to 0.17.0
+    (#1554)
+  * feat: disable CPE-based matching for GHSA ecosystems by default
+    (#1412)
+  * chore(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+    (#1552)
+
+-------------------------------------------------------------------
+Wed Oct 11 04:28:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.70.0:
+  * chore(deps): update Syft to v0.93.0 (#1550)
+  * chore(deps): bump gorm.io/gorm from 1.25.4 to 1.25.5 (#1547)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.8.0
+    to 0.9.0 (#1548)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.2 to
+    1.7.3 (#1549)
+  * chore(deps): bump ossf/scorecard-action from 2.2.0 to 2.3.0
+    (#1544)
+  * fix: empty descriptor name and version (#1542)
+  * chore: removes unnecessary conditional (#1539)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.10
+    to 0.4.11 (#1533)
+
+-------------------------------------------------------------------
+Sat Oct 07 05:34:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.69.1:
+  * chore(deps): update Syft to v0.92.0 (#1527)
+  * chore(deps): update bootstrap tools to latest versions (#1524)
+  * chore: add OpenSSF Best Practices badge (#1523)
+  * bump labels to latest (#1525)
+  * chore(deps): bump actions/checkout from 4.0.0 to 4.1.0 (#1519)
+  * chore(deps): update bootstrap tools to latest versions (#1520)
+  * chore: explicitly test go pseudoversion (#1522)
+  * chore: remove outdated comment about fuzzy matching python
+    versions (#1521)
+  * chore: bump stereoscope to fix data race in UI (#1517)
+  * fix: correctly guess tool comparison (#1516)
+  * chore(deps): update bootstrap tools to latest versions (#1515)
+  * chore(deps): bump github.com/spf13/afero from 1.9.5 to 1.10.0
+    (#1514)
+  * fix: use PEP440 for Python package version comparison (#1510)
+
+-------------------------------------------------------------------
+Sat Oct 07 05:30:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.69.0:
+  * chore(deps): bump tibdex/github-app-token from 2.0.0 to 2.1.0
+    (#1506)
+  * Upgrade syft to v0.91.0 (#1508)
+  * Update chronicle to v0.8.0 (#1507)
+  * fix: terminal clobbering when commands return errors (#1505)
+  * Fix typo in flag (#1501)
+  * chore(deps): bump actions/cache from 3.2.6 to 3.3.2 (#1499)
+  * chore(deps): remove dependency on sqlite fork; bump
+    gorm.io/gorm from 1.23.10 to 1.25.4 (#1448)
+  * chore: pin cache versions (#1495)
+  * chore(deps): bump actions/checkout from 3 to 4 (#1475)
+
+-------------------------------------------------------------------
+Sat Oct 07 05:27:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.68.1:
+  * fix: version output including supported db schema (#1494)
+  * chore: pin actions; pin images; add top level action
+    permissions (#1493)
+
+-------------------------------------------------------------------
+Sat Oct 07 05:23:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.68.0:
+  * feat: introduce exit code failure option for db update check
+    (#1463)
+  * Ignore/add match results based on OpenVEX documents (#1397)
+  * chore(deps): bump docker/login-action from 2 to 3 (#1488)
+  * chore: Fix race conditions around stager, enable detector
+    (#1489)
+  * chore(deps): update Syft to v0.90.0 (#1486)
+  * chore(deps): bump tibdex/github-app-token from 1.8.2 to 2.0.0
+    (#1485)
+  * chore: update CLI to CLIO (#1437)
+
+-------------------------------------------------------------------
+Sat Oct 07 05:16:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.67.0:
+  * feat: grype explain prototype (#1367)
+  * chore: Update go declaration to have point version (#1484)
+  * chore: update grype to use Go v1.21 (#1480)
+  * chore(deps): bump actions/upload-artifact from 3.1.2 to 3.1.3
+    (#1481)
+  * chore(deps): bump tibdex/github-app-token from 1.8.0 to 1.8.2
+    (#1474)
+  * chore(deps): bump golang.org/x/term from 0.11.0 to 0.12.0
+    (#1476)
+  * chore(deps): bump github.com/docker/docker (#1478)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.8 to
+    0.4.10 (#1477)
+  * chore: bump quality gate to use syft v0.89.0 (#1479)
+
+-------------------------------------------------------------------
+Tue Sep 05 14:42:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.66.0:
+  * chore(deps): update Syft to v0.89.0 (#1472)
+  * Add registry certificate verification support (#1232)
+  * fix: set correct default to exclude overlapping binaries
+    (#1452)
+  * fix: portage version comparison (#1468)
+  * chore: pin the vulnerability DB used in quality gate testing
+    (#1470)
+  * chore(deps): update Syft to v0.88.0 (#1466)
+  * chore: update quill version (#1465)
+  * docs: fix some typos on main README (#1455)
+  * note supported versions of grype (#1458)
+  * bump vml labels (#1462)
+  * chore(deps): bump github.com/google/uuid from 1.3.0 to 1.3.1
+    (#1453)
+  * chore(deps): update bootstrap tools to latest versions (#1450)
+  * fill out new version notice (#1445)
+  * feat: filter out packages owned by OS packages (#1387)
+  * fix: Only remove packages by binary overlap (#1444)
+  * chore: bump to syft v0.87.1 in quality gate (#1442)
+
+-------------------------------------------------------------------
+Tue Sep 05 14:28:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.65.2:
+  * chore(deps): update Syft to v0.87.1 (#1432)
+  * chore: Init submodule if missing (#1439)
+  * chore: exclude yardstick store from filename rules (#1440)
+  * chore: use latest yardstick (#1438)
+  * fix: update semver regular expression constraint to allow for
+    1.20rc1 cases no '-' (#1434)
+  * chore(deps): update bootstrap tools to latest versions (#1424)
+  * chore(deps): bump actions/setup-go from 4.0.1 to 4.1.0 (#1421)
+  * docs(example-templates): add a simple JUnit XML template
+    (#1422)
+  * chore(deps): bump golang.org/x/term from 0.10.0 to 0.11.0
+    (#1420)
+  * chore: use syft v0.86.1 in the quality gate tests (#1418)
+
+-------------------------------------------------------------------
+Sun Aug 06 07:56:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.65.1:
+  * fix: some hang conditions (#1414)
+  * chore(deps): update bootstrap tools to latest versions (#1413)
+
+-------------------------------------------------------------------
+Tue Aug 01 10:17:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.65.0:
+  * chore(deps): update Syft to v0.86.1 (#1410)
+  * chore(deps): bump github.com/docker/docker (#1402)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.1 to
+    1.7.2 (#1406)
+  * chore: bump quality gate label dataset (#1404)
+  * feat: implement secondary sorting for default json output
+    (#1403)
+  * feat: update table sort to be name, version, type, severity,
+    vulnerability (#1400)
+  * chore: in quality tests, only colorize quality output if in a
+    tty (#1398)
+  * chore(deps): bump github.com/gookit/color from 1.5.3 to 1.5.4
+    (#1396)
+
+-------------------------------------------------------------------
+Thu Jul 20 13:54:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.64.2:
+  * fix: vulnerabilities should be printed when `--fail-on` fails
+    (#1395)
+  * chore: bump yardstick to address PyYAML cython compatibility
+    issues (#1394)
+  * Refactor integ test to table test (#1390)
+
+-------------------------------------------------------------------
+Tue Jul 18 04:49:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.64.1:
+  * Pass correct output file (#1391)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.7 to
+    0.4.8 (#1389)
+  * Port UI to bubbletea (#1385)
+
+-------------------------------------------------------------------
+Fri Jul 14 05:26:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.64.0:
+  * chore(deps): update Syft to v0.85.0 (#1383)
+  * feat(outputs): allow to set multiple outputs (#648) (#1346)
+  * Remove Docker section from DEVELOPING.md (#1384)
+  * chore(deps): update bootstrap tools to latest versions (#1381)
+  * chore(deps): bump github.com/docker/docker (#1382)
+  * Port to new syft source API (#1376)
+  * chore(deps): bump golang.org/x/term from 0.9.0 to 0.10.0
+    (#1375)
+  * chore: bump quality gate labels and images (#1374)
+  * chore(deps): update bootstrap tools to latest versions (#1368)
+
+-------------------------------------------------------------------
+Fri Jun 30 18:26:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.63.1:
+  * Add a simple CSV format template to the templates/ directory
+    and tweak docs (#1366)
+  * chore(deps): update Syft to v0.84.1 (#1372)
+  * fix: Add more log4j-adjacent package ignore rules (#1358)
+  * chore: bump the quality gate labels (#1369)
+  * add oss community board auto-add workflow (#1364)
+  * fix: totals for vulnerability matches (#1359)
+  * chore(deps): bump ossf/scorecard-action from 2.1.3 to 2.2.0
+    (#1363)
+  * chore(deps): bump anchore/sbom-action from 0.14.2 to 0.14.3
+    (#1357)
+
+-------------------------------------------------------------------
+Thu Jun 22 05:08:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.63.0:
+  * Configure chronicle to pre-1.0 mode (#1356)
+  * chore(deps): update Syft to v0.84.0 (#1354)
+  * chore(deps): update bootstrap tools to latest versions (#1353)
+  * chore(deps): update Syft to v0.83.1 (#1352)
+  * chore(deps): bump golang.org/x/term from 0.8.0 to 0.9.0 (#1350)
+  * chore(deps): bump peter-evans/create-pull-request from 5.0.1 to
+    5.0.2 (#1351)
+  * chore(deps): bump github/codeql-action from 2.3.6 to 2.13.4
+    (#1344)
+  * chore: Update the contributing guide (#1347)
+  * feat: add community template folder and new table template
+    (#1343)
+  * chore: log unsupported package qualifier as debug (#1340)
+  * feat: add package info to search by for all match details
+    (#1339)
+
+-------------------------------------------------------------------
+Mon Jun 12 19:46:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.62.3:
+  * chore(deps): update bootstrap tools to latest versions (#1334)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.2 to
+    1.9.3 (#1336)
+  * chore(deps): bump github/codeql-action from 2.3.5 to 2.3.6
+    (#1331)
+  * Hide suppressed vulnerabilities when --show-suppressed is not
+    given (#1322)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.3 to
+    1.8.4 (#1324)
+  * chore(deps): bump github.com/spf13/viper from 1.15.0 to 1.16.0
+    (#1323)
+
+-------------------------------------------------------------------
+Sat May 27 10:48:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.62.2:
+  * feat: add source and type to CVSS information (#1317)
+  * chore(deps): bump github.com/docker/docker (#1320)
+  * chore(deps): bump github/codeql-action from 2.3.3 to 2.3.5
+    (#1321)
+
+-------------------------------------------------------------------
+Wed May 24 14:04:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.62.1:
+  * chore: update gomod with latest syft (#1313)
+  * chore(deps): bump github.com/docker/docker (#1311)
+
+-------------------------------------------------------------------
+Tue May 23 07:32:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.62.0:
+  * bump syft to pre-release of v0.81.0 (#1310)
+  * add main bin ignore (#1305)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.3 (#1309)
+  * chore(deps): bump github.com/docker/docker (#1304)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.0 to
+    1.9.2 (#1307)
+  * chore(deps): bump github.com/cloudflare/circl from 1.1.0 to
+    1.3.3 (#1289)
+  * chore(deps): bump github.com/docker/distribution (#1290)
+  * chore(deps): bump actions/setup-go from 4.0.0 to 4.0.1 (#1298)
+  * chore: update deprecated io/ioutil calls (#1296)
+  * feat: package qualifier for platform CPE (#1291)
+  * Fix reading syft json from stdin by redirect (#1299)
+  * should only use hermetic functions in templates (#1288)
+  * chore(deps): update bootstrap tools to latest versions (#1285)
+  * feat: add non-hermetic sprig functions (#1243) (#1273)
+  * fix: typo in logger prefix (#1283)
+  * chore(deps): bump github.com/docker/docker (#1280)
+  * chore(deps): bump anchore/sbom-action from 0.14.1 to 0.14.2
+    (#1281)
+  * chore(deps): update Syft to v0.80.0 (#1276)
+  * chore(deps): update bootstrap tools to latest versions (#1277)
+  * docs: add config flag to configuration section (#1271) (#1274)
+  * chore(deps): bump github/codeql-action from 2.3.2 to 2.3.3
+    (#1272)
+  * chore(deps): bump golang.org/x/term from 0.7.0 to 0.8.0 (#1268)
+  * chore(deps): update bootstrap tools to latest versions (#1270)
+  * Add support for Syft IDs in JSON output (#1266)
+  * docs: add "cyclonedx-json" to output formats (#1252)
+  * chore(deps): bump github.com/docker/docker (#1257)
+  * chore(deps): bump github/codeql-action from 2.3.1 to 2.3.2
+    (#1261)
+  * chore(deps): bump peter-evans/create-pull-request from 5.0.0 to
+    5.0.1 (#1263)
+  * Install skopeo during bootstrap (#1260)
+  * chore(deps): bump github/codeql-action from 2.3.0 to 2.3.1
+    (#1258)
+  * chore(deps): bump github/codeql-action from 2.2.12 to 2.3.0
+    (#1256)
+  * chore: update quality gate labels and add keycloak (#1255)
+  * fix: false positive for purl provider for RPM without epoch
+    (#1237)
+
+-------------------------------------------------------------------
+Sat Apr 22 14:34:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.61.1:
+  * chore: bump syft to latest version v0.79.0 (#1250)
+  * feat: add timestamp to json output (#1170) (#1249)
+  * chore(deps): update Syft to v0.78.0 (#1242)
+  * chore(deps): bump github.com/docker/docker (#1241)
+  * chore(deps): update bootstrap tools to latest versions (#1239)
+  * chore(deps): bump github/codeql-action from 2.2.11 to 2.2.12
+    (#1233)
+  * chore(deps): update bootstrap tools to latest versions (#1238)
+  * add format make target (#1231)
+  * chore(deps): bump 8398a7/action-slack from 3.15.0 to 3.15.1
+    (#1223)
+  * chore(deps): bump github.com/docker/docker (#1218)
+  * chore(deps): bump github/codeql-action from 2.2.9 to 2.2.11
+    (#1225)
+  * chore(deps): update bootstrap tools to latest versions (#1227)
+  * chore(deps): bump peter-evans/create-pull-request from 4.2.4 to
+    5.0.0 (#1219)
+  * chore(deps): bump golang.org/x/term from 0.6.0 to 0.7.0 (#1217)
+  * chore(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+    (#1216)
+
+-------------------------------------------------------------------
+Wed Apr 05 04:10:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.61.0:
+  * chore(deps): bump github.com/CycloneDX/cyclonedx-go from
+    0.7.1-0.20221222100750-41a1ac565cce to 0.7.1 (#1213)
+  * feat: add default-image-source-config option (#1215)
+  * chore(deps): bump google.golang.org/protobuf from 1.29.0 to
+    1.29.1 (#1212)
+  * chore(deps): bump anchore/sbom-action from 0.13.4 to 0.14.1
+    (#1214)
+  * chore(deps): bump github.com/anchore/syft from 0.75.0 to 0.76.0
+    (#1207)
+  * chore: update syft update (#1211)
+  * chore: update deprecated set-output calls (#1210)
+  * chore(deps): bump ossf/scorecard-action from 2.1.2 to 2.1.3
+    (#1205)
+  * chore: update quality gate dataset (#1206)
+  * chore(deps): bump github.com/docker/docker (#1201)
+
+-------------------------------------------------------------------
+Wed Mar 29 05:15:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.60.0:
+  * Implement support for Chainguard Linux (#1198)
+  * chore(deps): update bootstrap tools to latest versions (#1194)
+  * chore(deps): bump github/codeql-action from 2.2.8 to 2.2.9
+    (#1197)
+  * chore(deps): bump github.com/gookit/color from 1.5.2 to 1.5.3
+    (#1192)
+  * chore(deps): bump github/codeql-action from 2.2.7 to 2.2.8
+    (#1193)
+  * chore(deps): update bootstrap tools to latest versions (#1191)
+  * chore: tweak some workflow text (#1190)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.0 to
+    1.7.1 (#1181)
+  * chore(deps): bump peter-evans/create-pull-request from 4.2.3 to
+    4.2.4 (#1184)
+  * chore(deps): bump anchore/sbom-action from 0.13.3 to 0.13.4
+    (#1189)
+  * chore: Update grype bootstrap tools to latest versions. (#1187)
+  * fix: by-cpe pivot by vuln metadata rather than vulnerability
+    record (#1188)
+  * Update grype bootstrap tools to latest versions. (#1173)
+  * chore(deps): bump actions/setup-go from 3.5.0 to 4.0.0 (#1182)
+  * chore(deps): bump github/codeql-action from 2.2.5 to 2.2.7
+    (#1183)
+  * feat: disable CPE-based matching by default for javascript
+    (#1180)
+  * Update Syft to v0.75.0 (#1177)
+  * chore: bump vuln match quality dataset (#1174)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.1
+    to 1.4.2 (#1166)
+
+-------------------------------------------------------------------
+Thu Mar 09 15:31:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.59.1:
+  * Update grype bootstrap tools to latest versions. (#1163)
+  * Update Syft to v0.74.1 (#1168)
+  * fix: correct APK CPE version comparison logic (#1165)
+
+-------------------------------------------------------------------
+Sat Mar 04 08:34:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.59.0:
+  * Grype Release Pipeline Update (#1147)
+  * Add the total types of vulnerabilities in Grype output (#946)
+  * chore(deps): bump gorm.io/gorm from 1.23.5 to 1.23.10 (#1157)
+  * chore: bump quality gate labels and syft version (#1156)
+
+-------------------------------------------------------------------
+Fri Mar 03 05:41:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.58.0:
+  * chore: Update Syft to v0.74.0 (#1151)
+  * fix(distro): Disable support for Arch Linux (#1152)
+  * chore: update progress monitor handling (#1149)
+  * Update Syft to v0.73.0 (#1140)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.1 to
+    1.8.2 (#1144)
+  * chore(deps): bump github/codeql-action from 2.2.4 to 2.2.5
+    (#1145)
+  * Update grype bootstrap tools to latest versions. (#1137)
+  * chore(deps): bump github.com/spf13/afero from 1.9.3 to 1.9.4
+    (#1141)
+  * chore(deps): bump actions/cache from 3.2.5 to 3.2.6 (#1143)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.6.2
+    to 1.7.0 (#1134)
+
+-------------------------------------------------------------------
+Fri Feb 17 10:07:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.57.1:
+  * Update Syft to v0.72.0 (#1136)
+
+-------------------------------------------------------------------
+Thu Feb 16 17:32:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.57.0:
+  * chore: bump quality gate (#1133)
+  * fix: ignore some false-positives for ruby gems (#1132)
+  * chore(deps): bump github/codeql-action from 2.2.3 to 2.2.4 (#1131)
+  * fix: exclude OS packages from CPE target filtering (#1130)
+  * chore(deps): bump actions/cache from 3.2.4 to 3.2.5 (#1129)
+  * chore(deps): bump github.com/docker/docker (#1128)
+  * Update Syft to v0.71.0 (#1126)
+  * chore(deps): bump github/codeql-action from 2.2.1 to 2.2.3 (#1125)
+  * Update grype bootstrap tools to latest versions. (#1124)
+  * chore(deps): bump golang.org/x/term from 0.4.0 to 0.5.0 (#1123)
+  * Update grype bootstrap tools to latest versions. (#1122)
+  * Update grype bootstrap tools to latest versions. (#1116)
+  * Update Syft to v0.70.0 (#1117)
+  * chore(deps): bump github.com/docker/docker (#1114)
+  * Update grype bootstrap tools to latest versions. (#1112)
+  * Update Syft to v0.69.1 (#1111)
+  * chore: prune cosign dependency for grype builds (#1100)
+  * Update grype bootstrap tools to latest versions. (#1108)
+  * Update Syft to v0.69.0 (#1109)
+  * chore(deps): bump actions/cache from 3.2.3 to 3.2.4 (#1107)
+  * chore: add new images to quality gate (#1106)
+  * chore: bump yardstick for better quality gate filtering (#1101)
+  * chore(deps): bump actions/cache from 3.0.11 to 3.2.3 (#1096)
+  * chore(deps): bump github/codeql-action from 2.1.39 to 2.2.1 (#1097)
+  * chore(deps): bump anchore/sbom-action from 0.13.2 to 0.13.3 (#1098)
+  * chore(deps): bump tibdex/github-app-token from 1.7.0 to 1.8.0 (#1099)
+  * bump yardstick to 2d30ea7429d0a59020e0176bba1b3b6b8b01b08a (#1095)
+  * chore(deps): bump actions/checkout from 3.1.0 to 3.3.0 (#1090)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.6.1 to 1.6.2 (#1087)
+  * chore(deps): bump 8398a7/action-slack from 3.14.0 to 3.15.0 (#1088)
+  * chore(deps): bump peter-evans/create-pull-request from 4.2.0 to 4.2.3 (#1089)
+  * chore(deps): bump actions/setup-go from 3.3.1 to 3.5.0 (#1091)
+  * chore(deps): bump github/codeql-action from 2.1.31 to 2.1.39 (#1092)
+
+-------------------------------------------------------------------
+Fri Jan 27 06:09:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.56.0:
+  * Update Syft to v0.68.1 (#1086)
+  * chore: update grype quality gate (#1085)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.4.4 to 1.5.1 (#1081)
+  * chore(deps): bump actions/setup-python from 4.3.0 to 4.5.0 (#1075)
+  * chore(deps): bump anchore/sbom-action from 0.13.1 to 0.13.2 (#1076)
+  * chore(deps): bump actions/upload-artifact from 3.1.1 to 3.1.2 (#1077)
+  * chore(deps): bump actions/download-artifact from 3.0.1 to 3.0.2 (#1074)
+  * chore(deps): bump ossf/scorecard-action from 2.0.6 to 2.1.2 (#1078)
+  * chore(deps): bump github.com/pkg/profile from 1.6.0 to 1.7.0 (#1079)
+  * chore(deps): bump github.com/gabriel-vasile/mimetype from 1.4.0 to 1.4.1 (#1080)
+  * chore(deps): bump github.com/Masterminds/sprig/v3 from 3.2.2 to 3.2.3 (#1083)
+  * chore: align makefile and bootstrap tools scripts more with syft (#1073)
+  * chore: enable dependabot on gomod and GitHub actions (#1072)
+  * Update grype bootstrap tools to latest versions. (#1070)
+  * fix: always include severity in cyclonedx output (#1067)
+  * Update Syft to v0.68.0 (#1064)
+  * Add protobuf FPs to default ignore list (#1062)
+  * chore: update Syft to v0.66.2 (#1060)
+  * Update grype bootstrap tools to latest versions. (#1055)
+  * feat: allow grype db diff to specify local db directories (#1058)
+  * chore: claim artifacthub package ownership from developer-guy (#661)
+  * chore: add github token to quality tests (#1056)
+  * chore: update yardstick to diagnose intermittent failures (#1054)
+  * Update grype bootstrap tools to latest versions. (#1048)
+
+-------------------------------------------------------------------
+Thu Jan 05 14:00:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.55.0:
+  * fix: sort vulnerability results (#1052)
+  * Adding internal/file/hasher test cases (#1049)
+  * fix: orient by cve merging (#1046)
+  * Update Syft to v0.64.0 (#1047)
+  * fix: update removing results based on ownership-by-file-overlap (#1045)
+  * feat: swap custom cyclone-dx model for cyclone-dx library (#1038)
+  * chore: add GitLab Community Edition image to quality gate (#1035)
+
+-------------------------------------------------------------------
+Fri Dec 16 12:39:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.54.0:
+  * Update Syft to v0.63.0 (#1037)
+  * fix: Exclude binary packages that have overlap by file ownership relationship (#1024)
+  * docs: update quality gate docs (#1032)
+  * Optionally orient results by CVE (#1020)
+  * chore: bump yardstick to latest commit (#1027)
+  * Update Syft to v0.62.3 (#1026)
+  * chore: change CVE example to official sample (#1028)
+  * fix: Table format sorting (#1023)
+  * fix: update architecture release for to ppc64le (#1021)
+  * Update grype bootstrap tools to latest versions. (#1017)
+  * Update Syft to v0.62.2 (#1018)
+  * chore: update quality gate with latest label data (#1016)
+  * chore: update digest for test fixture dockerfile (#1015)
+  * test: remove presenter tests reliance on docker from unit suite (#1013)
+  * fix: swapped base container images (#1011)
+  * chore: update default packages to read (#1007)
+
+-------------------------------------------------------------------
+Tue Nov 22 07:29:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.53.1:
+  * Update Syft to v0.62.1 (#1006)
+  * Update grype bootstrap tools to latest versions. (#1004)
+  * scoped: token release for content write on image assets (#1002)
+
+-------------------------------------------------------------------
+Sat Nov 19 12:05:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.53.0:
+  * chore: bump syft version v0.62.0 (#1000)
+  * feat: vulnerability namespacing support for rolling distros (#997)
+  * chore: bump quality gate images and label data (#995)
+  * feat: add strong distro type for wolfi (#996)
+  * chore: pin dependencies (#994)
+  * chore: code-ql top level read check (#993)
+  * Add SECURITY.md (#989)
+  * chore: update codeql to pinned v2 with correct write permissions
+  * Update token permissions to be read-only (#988)
+  * Enable the Scorecard Github Action and badge (#929)
+
+-------------------------------------------------------------------
+Tue Nov 15 15:42:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.52.0:
+  * chore: update syft to v0.60.3 (#978)
+  * feat: consider well-known false-positive generating CPE target SW components in match filtering logic (#961)
+  * chore: grype quality pipeline latest label updates and images (#976)
+  * Implemented new CLI flag: --show-suppressed (#966)
+  * fix: update case for alpine:edge correct vuln feed (#965)
+  * PURL input results in incorrect artifact in JSON output (#968)
+  * Update grype bootstrap tools to latest versions. (#956)
+
+-------------------------------------------------------------------
+Tue Oct 18 05:12:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.51.0:
+  * implement v5 db schema to support improved matching between rpm appstream modules (#944)
+  * Update Syft to v0.59.0 (#957)
+  * expand quality gate image set to include rpm appstreams-related images (#952)
+  * Update grype bootstrap tools to latest versions. (#947)
+  * chore: add more quality gate images (#950)
+  * Add in-depth quality gate checks (#949)
+  * Update Syft to v0.58.0 (#941)
+  * Update grype bootstrap tools to latest versions. (#945)
+  * Update grype bootstrap tools to latest versions. (#935)
+  * Update Syft to v0.57.0 (#930)
+
+-------------------------------------------------------------------
+Wed Sep 21 08:31:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.50.2:
+  * Update Syft to v0.57.0 (#930)
+  * Correct falsely copied app-name 'syft' in example (#922)
+  * Bump github.com/sigstore/cosign from 1.11.1 to 1.12.0 (#927)
+  * Update grype bootstrap tools to latest versions. (#925)
+
+-------------------------------------------------------------------
+Wed Sep 14 05:40:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.50.1:
+  * Update Syft to v0.56.0 (#919)
+
+-------------------------------------------------------------------
+Tue Sep 13 12:42:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.50.0:
+  * Add support for scanning RPM files (#917)
+  * remove arch typo - add debug/reg s390x (#915)
+  * grype release message update (#914)
+  * feat: extract use cpes in matching logic to be configurable (#911)
+  * docs: add Singularity to "features" in README (#912)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:39:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.49.0:
+  * docs: improve Singularity image source docs (#910)
+  * Add Singularity image source (#908)
+  * Update grype bootstrap tools to latest versions. (#907)
+  * Update Syft to v0.55.0 (#906)
+  * Update grype bootstrap tools to latest versions. (#905)
+  * Update grype bootstrap tools to latest versions. (#903)
+  * Update grype bootstrap tools to latest versions. (#896)
+  * Add blurbs about building and running from source (#893)
+  * Fix docker build typo (#891)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:36:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.48.0:
+  * disable CPE match filtering based on target software component for java packages (#889)
+  * Update grype bootstrap tools to latest versions. (#886)
+  * fix getting latest gosimports version (#885)
+  * workflow to create automated PRs to update bootstrap tools (#883)
+  * Add s390x build support (#720)
+  * fix: only show distro warning if distro packages exist (#875)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:33:41 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.47.0:
+  * Update Syft to v0.54.0 (#881)
+  * Update README.md (#871)
+  * Update README.md (#868)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:30:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.46.0:
+  * test: rm mustConst since unused (#860)
+  * Update Syft to v0.53.4 (#856)
+  * feat: enrich db check cmd feedback (#853)
+  * update syft version location for Makefile (#865)
+
+-------------------------------------------------------------------
+Wed Sep 07 05:28:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.45.0:
+  * remove env variable dependencies and keychain from signing script (#864)
+  * macos-latest for signing (#863)
+  * move docker release into separate release workflow (#862)
+  * revert to old docker action (#861)
+  * additional readOptions added  per 855 (#857)
+  * Ensure database access is readonly (#854)
+  * push older version for mac runner stability (#852)
+  * bump bouncer to v0.4.0 (#851)
+  * feat: simple input case to request vulnerability data via purl (#795)
+  * update golanci-lint, goreleaser, cosign (#850)
+  * fix: db diff default has flipped base/target url (#845)
+
+-------------------------------------------------------------------
+Tue Jul 26 11:28:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.44.0:
+  * add env variables and keychain for GHCR publish (#843)
+  * update grype to use syft v0.52.0 (#838)
+  * add debug distroless image to published images (#835)
+  * add new line for help block (#834)
+  * add Gentoo matching support (#813)
+  * feat: add filtering support using target software field in cpe (#810)
+
+-------------------------------------------------------------------
+Tue Jul 19 08:19:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.43.0:
+  * Add new matcher files for golang => remove main module FP matches (#829)
+  * Fix a cyclonedxvex typo and fix the schema document from (#830)
+  * feat: add --only-notfixed flag (#828)
+  * add DBCloser. Clients can aviod db connection leak if vulnerability db is loaded many times (#825)
+
+-------------------------------------------------------------------
+Sat Jul 16 19:00:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.0:
+  * bump syft version to v0.51.0 (#822)
+  * feat: implement `grype db diff` command (#812)
+  * fix typo in log message (#819)
+
+-------------------------------------------------------------------
+Wed Jul 06 18:11:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.41.0:
+  * update syft to v0.50.0 (#818)
+  * Finalize v4 Grype schema (#803)
+  * docs: update to include rust (#814)
+  * feat: add diffing 2 databases to v3 store functionality (#789)
+  * fix: add support for partybus ui on `grype db update` cmd (#806)
+  * Added Docker example to Readme (#769)
+  * fix: add vex json & xml to listed formats (#802)
+  * docs: update php listing to be more clear that the `.json` file isn't indexed (#808)
+
+-------------------------------------------------------------------
+Mon Jun 27 13:20:36 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.1:
+  * update syft => v0.49.0 (#804)
+  * remove oss meetup message (#799)
+  * fix: add fixed versions to cyclonedxjson output (#763)
+  * docs: update to include php (#793)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:33:50 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.0:
+  * update grype to latest syft patch v0.48.1 (#790)
+  * fix: add golang to documentation (#788)
+  * fix: accept templates with custom functions (#786)
+  * add db staleness check (#785)
+  * feat: add compose workflow for local dev (#783)
+  * ignore gemfile rich version for semVer comparison (#776)
+  * Support namespace and language as additional criteria for ignoring vulnerability matches (#780)
+
+-------------------------------------------------------------------
+Wed Jun 22 08:19:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.39.0:
+  * update syft version to v0.47.0 (#781)
+  * use anchore fork of glebarez/sqlite (#778)
+  * template: Check sanity for template file (#674)
+  * Add announcement for Anchore OSS Meetup (#775)
+  * Bump github.com/hashicorp/go-getter from 1.5.11 to 1.6.1 (#770)
+  * publish release to reduce user friction (#766)
+  * Update Syft to v0.46.3 (#761)
+  * Add reference to logrus logging levels (#758)
+  * README: add MacPorts install info (#759)
+
+-------------------------------------------------------------------
+Mon Jun  6 19:46:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package grype at version 0.38.0: A vulnerability scanner for container images and filesystems

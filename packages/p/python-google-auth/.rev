@@ -1,0 +1,461 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e51f9bbd414812cf91a0b07f29b1c94</srcmd5>
+    <version>1.2.1</version>
+    <time>1520588806</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for python-kubernetes</comment>
+    <requestid>584491</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0eeb22057b74db75924636ddd00939b9</srcmd5>
+    <version>1.4.1</version>
+    <time>1525960109</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to not check for oauth appengine which we disable in
+  openSUSE:
+  * oauth-no-appengine.patch
+
+- Fix fdupes call and run tests
+
+- New upstream release (bsc#1088358)
+  + Version 1.4.1
+    - Added a check for the cryptography version before attempting to use it.
+  + From version 1.4.0
+    - Added `cryptography`-based RSA signer and verifier.
+    - Added `google.oauth2.service_account.IDTokenCredentials`.
+    - Improved documentation around ID Tokens
+  + From version 1.3.0
+    - Added ``google.oauth2.credentials.Credentials.from_authorized_user_file``.
+    - Dropped direct pyasn1 dependency in favor of letting ``pyasn1-modules``
+      specify the right version.
+    - ``default()`` now checks for the project ID environment var before
+      warning about missing project ID.
+    - Fixed the docstrings for ``has_scopes()`` and ``with_scopes()``.
+    - Fixed example in docstring for ``ReadOnlyScoped``.
+    - Made ``transport.requests`` use timeouts and retries
+      to improve reliability.</comment>
+    <requestid>605288</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>47c90b8b1928dd77d8c719f630bdeb3f</srcmd5>
+    <version>1.4.2</version>
+    <time>1527934124</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.2:
+  - Raise a helpful exception when trying to refresh credentials without
+    a refresh token. (#262)
+  - Fix links to README and CONTRIBUTING in docs/index.rst. (#260)
+  - Fix a typo in credentials.py. (#256)
+  - Use pytest instead of py.test per upstream recommendation,
+    #dropthedot. (#255)
+  - Fix typo on exemple of jwt usage (#245)
+- Drop Flask from Requires. It is only needed for testing</comment>
+    <requestid>612907</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae7369732e872640673c4a473a928628</srcmd5>
+    <version>1.5.1</version>
+    <time>1536876076</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 1.5.1:
+  - Fix check for error text on Python 3.7. (#278)
+  - Use new Auth URIs. (#281)
+  - Add code-of-conduct document. (#270)
+  - Fix some typos in test_urllib3.py (#268)
+  - Warn when using user credentials from the Cloud SDK (#266)
+  - Add compute engine-based IDTokenCredentials (#236)
+  - Corrected some typos (#265)</comment>
+    <requestid>635375</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>28eedb89bf2e3f78075b8af79db57391</srcmd5>
+    <version>1.5.1</version>
+    <time>1545224026</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659397</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3cd94f299e9843f03494cba836bcfa17</srcmd5>
+    <version>1.6.3</version>
+    <time>1553888130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.3:
+  * follow rfc 7515 : strip padding from JWS segments #324 (#324)
+  * Add retry to _metadata.ping() (#323)
+  * Announce deprecation of Python 2.7 (#311)
+  * Link all the PRs in CHANGELOG (#307)
+  * Automatically refresh impersonated credentials (#304)
+  * Add google.auth.impersonated_credentials (#299)
+  * Enable static type checking with pytype (#298)
+  * Make classifiers in setup.py an array. (#280)
+- Drop oauth-no-appengine.patch should not be needed</comment>
+    <requestid>685333</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d26782d1f8060d0e765337fd25f39ea3</srcmd5>
+    <version>1.6.3</version>
+    <time>1564484641</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with pytest5:
+  * pytest5.patch</comment>
+    <requestid>717466</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3054a04d31ac2ac658e76d56f51182d4</srcmd5>
+    <version>1.14.1</version>
+    <time>1588323981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.1:
+  * Many bugixes all around
+- Remove no longer needed patch:
+  * pytest5.patch
+- Update the dependencies to match up setup.py and what upstream
+  really requires</comment>
+    <requestid>798566</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0232b217a9d07ae1bd9b130ca8cc6663</srcmd5>
+    <version>1.15.0</version>
+    <time>1591379922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>808798</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4146e6a8df0cbadc75d84ae955941c21</srcmd5>
+    <version>1.17.2</version>
+    <time>1592758320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815724</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>928a0d59f38da4a154a295dc6f8a54f6</srcmd5>
+    <version>1.17.2</version>
+    <time>1593546894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817774</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ddddbde713742617e40db50e0c8c7db5</srcmd5>
+    <version>1.21.1</version>
+    <time>1600179332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833484</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cc91e85ae0c09d30686a7c1e1e611efc</srcmd5>
+    <version>1.21.2</version>
+    <time>1601043697</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.2:
+  * migrate signBlob to iamcredentials.googleapis.com</comment>
+    <requestid>836319</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>184ac97f9b6db4cdccc81f04beff5aba</srcmd5>
+    <version>1.24.0</version>
+    <time>1610123590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860750</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4c9cc0783cf621da8ec455e494d4685b</srcmd5>
+    <version>2.0.1</version>
+    <time>1629917759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913349</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>82e4dc76d7b94fbfe4cf8a5b22a3150e</srcmd5>
+    <version>2.5.0</version>
+    <time>1643486255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949687</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d90712d524701202fbdc230ee23bf62d</srcmd5>
+    <version>2.6.3</version>
+    <time>1649715232</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve %files to be more restrictive.
+- Update to 2.6.3
+  Bug Fixes
+  * change requests lib import place (#1010)
+  * clean up HTTP session and pool during tear down phase (#1007)
+  * pin click version and update sys test creds (#1008)
+- from version 2.6.2
+  Bug Fixes
+  * Rename aws imdsv2 url field and update token lifetime (#982)
+  Miscellaneous Chores
+  * let release-please finish the release (#991)
+- from version 2.6.1
+  Bug Fixes
+  * Add AWS session token to metadata requests (#958)
+- from version 2.6.0
+  Features
+  * ADC can load an impersonated service account credentials. (#962)
+  Bug Fixes
+  * revert &quot;feat: add api key support (#826)
+</comment>
+    <requestid>968048</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>1c04675b24228f02a0d2aeb03b1a1be1</srcmd5>
+    <version>2.6.3</version>
+    <time>1650232183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>970265</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bd37e4361b2a2f399839bf21324db456</srcmd5>
+    <version>2.6.6</version>
+    <time>1654506608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980908</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e1d6ac85378a708491eadc4bf3ce2761</srcmd5>
+    <version>2.7.0</version>
+    <time>1654776564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981276</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>db8c8903e2a68d2a1274323d1a996aaa</srcmd5>
+    <version>2.11.0</version>
+    <time>1662740571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001931</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bc398c2b20a44c30ccdde6ad56d48cae</srcmd5>
+    <version>2.12.0</version>
+    <time>1665844497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010915</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c1c819ff4c827818fd7ab5d0db67a93e</srcmd5>
+    <version>2.14.0</version>
+    <time>1667994974</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file, make rpmlint happy.
+- Update to 2.14.0
+  * Add token_info_url to external account credentials (#1168)
+  * Read Quota Project from Environment Variable (#1163)
+  * Adding more properties to external_account_authorized_user (#1169)
+- from version 2.13.0
+  * Adds new external account authorized user credentials (#1160)
+  * Implement pluggable auth interactive mode (#1131)
+  * Introduce the functionality to override token_uri in credentials (#1159)
+  * Adding one more pattern to relax the regex check for sts and
+    impersonation url endpoints (#1158)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+</comment>
+    <requestid>1034434</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f5aa0294ac0fb517c78a8f564f346660</srcmd5>
+    <version>2.14.1</version>
+    <time>1668702212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036286</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c657974e57db188d38e6baba263525ae</srcmd5>
+    <version>2.15.0</version>
+    <time>1670058198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039574</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>2c09daf39918fe7b0dd97d74b1184265</srcmd5>
+    <version>2.15.0</version>
+    <time>1677351257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067210</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>90eb57987868befd933615aca0def5c0</srcmd5>
+    <version>2.16.1</version>
+    <time>1677966136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069120</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>b99173900dddcf80056a5db8107e4041</srcmd5>
+    <version>2.16.1</version>
+    <time>1679068940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072128</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>7cff8c686b49fc41151ba3f98a2690ae</srcmd5>
+    <version>2.16.1</version>
+    <time>1682193642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081905</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>43693facca3d52b89fdd116f63218863</srcmd5>
+    <version>2.17.3</version>
+    <time>1684490110</time>
+    <user>dimstar_suse</user>
+    <comment>- Add urllib3-2.patch to support newer urllib3 -- gh#googleapis/google-auth-library-python#1290
+- Remove no-python3.patch
+- Update to 2.17.3:
+  * Add useEmailAzp claim for id token iam flow (#1270) (7a9c6f2)
+- 2.17.2:
+  * Do not create new JWT credentials if they make the same claims as
+    the existing. (#1267) (eebb7b6)
+- 2.17.1:
+  * Print out reauth plugin error and raise if challenge output is
+    None (#1265) (08d22fe)
+- 2.17.0:
+  * Experimental service account iam endpoint flow for id token
+    (#1258) (8ff0de5)
+  * Python: Remove aws url validation (#1254) (20a966b)
+- 2.16.3:
+  * Read both applicationId and relyingPartyId. (#1246) (e125dfe)
+- 2.16.2:
+  * Call gcloud config get project to get project for user cred
+    (#1243) (c078a13)
+  * Do not use hardcoded string 'python', when you mean
+    sys.executable. (#1233) (91ac8e6)
+  * Don't retry if error or error_description is not string (#1241)
+    (e2d263a)
+  * Improve ADC related errors and warnings (#1237) (2dfa213)
+</comment>
+    <requestid>1085995</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>1da3b8523d8f62a687845844ae9ca5b4</srcmd5>
+    <version>2.17.3</version>
+    <time>1685476923</time>
+    <user>dimstar_suse</user>
+    <comment>- drop urllib3-2.patch and limit to urllib3 &lt; 2.x as that
+  matches the requires and avoids coinstallability isuses</comment>
+    <requestid>1089287</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f9d9d43c4d5c974e7fa19c6c7744e75c</srcmd5>
+    <version>2.21.0</version>
+    <time>1688052465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095589</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fb33daa0425abf7abb3dfe9b706a8a53</srcmd5>
+    <version>2.22.0</version>
+    <time>1692188189</time>
+    <user>anag+factory</user>
+    <comment>- unpin urllib3 to resolve conflict with python-kubernetes 
+
+- Fix not installable error
+
+- Update to 2.22.0
+  * Adding meta header for trust boundary (#1334)
+  * Introduce compatibility with native namespace packages (#1205)
+  * Deprecate UserAccessTokenCredentials (#1344)
+- Update file list in %files section
+
+- Require python-urllib3 &lt; 2.0 if python-urllib3: urllib3 seems not
+  strictly required, but when it's there, we need it to be older
+  than version 2.0.</comment>
+    <requestid>1103816</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>980f078a6df37bea9c4e790a26509c9f</srcmd5>
+    <version>2.23.2</version>
+    <time>1696451442</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115071</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4b57a0f37e1eec7109726f8d3a2fdbed</srcmd5>
+    <version>2.23.4</version>
+    <time>1701023793</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128592</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>404d7473294d5804d0f738ffbbd063f5</srcmd5>
+    <version>2.25.1</version>
+    <time>1702158543</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.25.1:
+  * Fix vm universe_domain bug (#1433) (8683520)
+  * Add custom tls signer for ECP Provider. (39eb287)
+  * Add custom tls signer for ECP Provider. (#1402) (39eb287)
+  * Add with_universe_domain (#1408) (505910c)
+  * Fixes issue where Python37DeprecationWarning cannot be
+    filtered (#1428) (f22f767)
+  * Remove broken link in Python37DeprecationWarning (#1430)
+  * Add support for Python 3.12 (#1421) (307916c)
+  * Add universe domain support for VM cred (#1409) (7ab0fce)
+  * Modify the token refresh window (#1419) (c6af1d6)
+  * Add missing before request to async oauth2 credentials.
+    (#1420) (8eaa878)
+  * Auto create self signed jwt cred (#1418) (6c610a5)
+  * Migrate datetime.utcnow for python 3.12 (#1413) (e4d9c27)
+  * Update user cred doc (#1414) (3f426bc)
+
+  * Less restrictive content-type header check for google authentication
+ * Add get_bq_config_path() to _cloud_sdk.py
+- unpin urllib3 to resolve conflict with python-kubernetes
+  * migrate signBlob to iamcredentials.googleapis.com
+  * encrypted mtls private key support
+  * signBytes for impersonated credentials
+  * catch exceptions.RefreshError</comment>
+    <requestid>1131735</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cc9ab0552eda341cb29b9489756dd67d</srcmd5>
+    <version>2.25.2</version>
+    <time>1702844939</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.25.2:
+  * Fix user cred universe domain issue (#1436)</comment>
+    <requestid>1133637</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>03309adde4b2852acad7c521ca21b22e</srcmd5>
+    <version>2.26.1</version>
+    <time>1704491995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136770</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ac8ee2259cc025086a8bbd6750a21192</srcmd5>
+    <version>2.26.2</version>
+    <time>1705099482</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138146</requestid>
+  </revision>
+</revisionlist>

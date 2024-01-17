@@ -1,0 +1,28 @@
+Index: ibmswtpm2-1682/src/makefile
+===================================================================
+--- ibmswtpm2-1682.orig/src/makefile
++++ ibmswtpm2-1682/src/makefile
+@@ -40,11 +40,11 @@
+ 
+ CC = /usr/bin/gcc
+ 
+-CCFLAGS = -Wall  			\
++CCFLAGS += -fno-strict-aliasing -fno-aggressive-loop-optimizations -Wno-unused-result \
+ 	-Wmissing-declarations -Wmissing-prototypes -Wnested-externs \
+-	-Werror -Wsign-compare \
++	-Werror -Wsign-compare -Wno-unused-value -Wno-aggressive-loop-optimizations \
+ 	-Wno-deprecated-declarations	\
+-	 -c -ggdb -O0 			\
++	 -c -ggdb 			\
+ 	-DTPM_POSIX			\
+ 	-D_POSIX_			\
+ 	-DTPM_NUVOTON
+@@ -55,7 +55,7 @@ CCFLAGS = -Wall  			\
+ #	--coverage			\
+ #	-fprofile-arcs -ftest-coverage
+ 
+-LNFLAGS = -ggdb 			\
++LNFLAGS += -ggdb 			\
+ 	-lcrypto			\
+ 	-lpthread			\
+ 	-lrt				\

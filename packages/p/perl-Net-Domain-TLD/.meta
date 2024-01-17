@@ -1,0 +1,13 @@
+<package name="perl-Net-Domain-TLD" project="openSUSE:Factory">
+  <title>Perl module to work with TLD names</title>
+  <description>The purpose of this module is to provide user with current list of
+available top level domain names including new ICANN additions and ccTLDs
+Currently TLD definitions have been acquired from the following sources:
+http://www.icann.org/tlds/
+http://www.dnso.org/constituency/gtld/gtld.html
+http://www.iana.org/cctld/cctld-whois.htm
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Net-Domain-TLD"/>
+  <url>http://search.cpan.org/dist/Net-Domain-TLD</url>
+</package>

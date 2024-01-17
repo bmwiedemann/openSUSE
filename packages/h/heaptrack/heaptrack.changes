@@ -1,0 +1,124 @@
+-------------------------------------------------------------------
+Wed Oct  4 07:50:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.0
+  https://www.kdab.com/heaptrack-v1-5-0-released/
+  * Elfutils is now used for symbolizing backtraces
+  * Various QOL improvements to the chart
+  * Various bug fixes and better platform support
+- Drop patches, merged upstream:
+  * 0001-Fix-build-with-gcc-13-by-including-cstdint.patch
+  * 0001-Add-missing-include.patch
+  * 0001-Return-early-when-__libc_dlopen_mode-is-detected.patch
+
+-------------------------------------------------------------------
+Thu Feb 23 10:21:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Try another way to ignore the GLIBC_PRIVATE requirement
+
+-------------------------------------------------------------------
+Wed Feb 22 10:57:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Return-early-when-__libc_dlopen_mode-is-detected.patch
+- Define _filter_GLIBC_PRIVATE to fix installation on Leap
+
+-------------------------------------------------------------------
+Tue Feb  7 23:22:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add GCC 13 and boost 1.81 compatibility patches:
+  * 0001-Fix-build-with-gcc-13-by-including-cstdint.patch
+  * 0001-Add-missing-include.patch
+
+-------------------------------------------------------------------
+Sun Nov 27 08:15:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.4.0
+  * Pass client exit code in heaptrack.sh
+  * Leverage non-deprecated mallinfo2
+  * Add support for the mimalloc allocator
+  * Explicitly encode which hooks are required and which are
+    optional
+  * Make mi_* symbols truly optional by usig weak symbols for them
+  * Prevent malloc from disappearing in inlining example
+  * handle calling heaptrack_stop() without debuginfo
+  * Ensure we don't try to overwrite invalid tables
+  * Make elf_symbol_table a view of const Elf::Sym
+  * Ensure we don't read outside the string table for symbol names
+  * Silence -Wuse-after-free for realloc call
+
+-------------------------------------------------------------------
+Sun Dec 19 15:09:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.3.0:
+  * New features:
+    + Allocations can be filtered by time ranges
+    + Support for suppression files, including the
+      __lsan_default_suppressions API
+  * Fixed bugs:
+    + Fails to build on CentOS 7.0 (kde#441125)
+    + Crash when filtering on a time range (kde#441132)
+    + Heaptrack produces impossible/incorrect stack traces (kde#439897)
+    + ERROR: failed to lock heaptrack output file (kde#408547)
+    + Attaching to running process generates empty file (kde#394520)
+    + heaptrack launch script help text shows wrong option name for --output-file (kde#439307)
+    + Can the output file take hostname into account? (kde#435195)
+    + Heaptrack GUI crash when opening a zst file (kde#427970)
+  * More details on https://invent.kde.org/sdk/heaptrack/-/releases/v1.3.0
+- Use %autosetup
+
+-------------------------------------------------------------------
+Sun Jan 17 08:39:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add quotes to text comparison to fix build with rpm 4.16.
+
+-------------------------------------------------------------------
+Sat Sep  5 16:11:52 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 1.2.0, a bugfix release.
+- Removed Fix-compile-on-32bit.patch as it was added upstream. 
+
+-------------------------------------------------------------------
+Mon Aug 31 15:38:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the plugins installation directory.
+
+-------------------------------------------------------------------
+Wed Jan 29 10:59:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable zstd support
+
+-------------------------------------------------------------------
+Wed May 23 15:06:59 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-compile-on-32bit.patch to make it build on 32bit
+  (kde#394330)
+- Don't install office-chart-area icon from breeze to hicolor
+  anymore, heaptrack comes with its own application icon now
+- Mark license files as %license instead of %doc
+- Install README.md as well, it contains instructions on how to use
+  it
+
+-------------------------------------------------------------------
+Wed May 23 13:40:54 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to version 1.1.0:
+  * Stability and performance improvements
+  * When extended debug information is available, stack traces now include inlined frames.
+  * Split debug information in separate files is now supported.
+  * Compressed debug information is properly handled.
+  * The embedded flamegraph view is now searchable.
+  * More details available on https://www.kdab.com/heaptrack-v1-1-0-release/
+- Remove patches, now upstream:
+  * fix-build.patch
+
+-------------------------------------------------------------------
+Sat Sep  2 15:03:19 UTC 2017 - wbauer@tmo.at
+
+- Add fix-build.patch to fix build with glibc 2.26 in Factory
+  (kde#383889)
+
+-------------------------------------------------------------------
+Wed Apr 19 18:22:16 UTC 2017 - fabian@ritter-vogt.de
+
+- Initial commit

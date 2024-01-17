@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sun May 17 08:19:59 UTC 2015 - coolo@suse.com
+
+- updated to 2.24
+   see /usr/share/doc/packages/perl-Mason/Changes
+
+  2.24  May 16, 2015
+  
+  * Fixes
+    - Patch for 5.21.6 closure deprecation - RT #100507 (Dave Mitchell)
+
+-------------------------------------------------------------------
+Mon Apr 13 19:04:52 UTC 2015 - coolo@suse.com
+
+- updated to 2.23
+   see /usr/share/doc/packages/perl-Mason/Changes
+
+  2.23  Feb 7, 2015
+  
+  * Fixes
+    - Detect empty <% %> tags (A Kobame)
+    - Eliminate unescaped left brace in regex, deprecated in perl 5.21.x - RT 101637 - SREZIC
+
+-------------------------------------------------------------------
+Mon Aug 11 13:47:42 UTC 2014 - ncutler@suse.com
+
+- initial submission of upstream version 2.22 to devel:languages:perl
+- checked license
+- took over maintainership
+

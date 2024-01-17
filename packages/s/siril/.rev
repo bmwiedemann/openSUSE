@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a507b83fecb055f0f722e9ea37442bba</srcmd5>
+    <version>0.99.4</version>
+    <time>1601919400</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>839104</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb3af6398f58709baa9721a265549aca</srcmd5>
+    <version>0.99.6</version>
+    <time>1602155623</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>840090</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5813888a2b07076b16112aeb2372f164</srcmd5>
+    <version>0.99.8.1</version>
+    <time>1617131132</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>873346</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>15331a2a01c944b02a06375240a1e619</srcmd5>
+    <version>0.99.8.1</version>
+    <time>1621355248</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix glib 2.68 compilation error
+- Add fix_glib_2_68_error.patch (forwarded request 891210 from polslinux)</comment>
+    <requestid>894072</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>63bbd0190715925b144bf8d803447b51</srcmd5>
+    <version>0.99.10</version>
+    <time>1624462710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>901442</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc7eab595004bcad9cbf517924f7b1c6</srcmd5>
+    <version>0.99.10.1</version>
+    <time>1626887205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907502</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0192906df54fccd5ba16363ca18099c5</srcmd5>
+    <version>0.99.10.1</version>
+    <time>1636663075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930747</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>cac58510890843497738a2f23e86611e</srcmd5>
+    <version>0.99.10.1</version>
+    <time>1636729168</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix incorrect/missing licenses
+- Run spec-cleaner
+</comment>
+    <requestid>931025</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>935bfd31de6d039d844d08303737d419</srcmd5>
+    <version>1.0.0~rc1</version>
+    <time>1638388041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>934912</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d6b13ce62559cafd06cb3c0f14ae12c</srcmd5>
+    <version>1.0.0~rc2</version>
+    <time>1639616447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0~rc2:
+  * Fixes many crashes
+  * Minor improvements in plot feature
+</comment>
+    <requestid>940688</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ed1d44a2b4c88e77c0b8b07941da541d</srcmd5>
+    <version>1.0.0</version>
+    <time>1646848091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960491</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>888257da2fb544d55f958d1b66efd031</srcmd5>
+    <version>1.0.1</version>
+    <time>1650996938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>972938</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c2c94917e7ba02c6b34cbcf94d276c8d</srcmd5>
+    <version>1.0.2</version>
+    <time>1653417077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>978752</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>781f4e15a03016d8ef1127c81c06d00a</srcmd5>
+    <version>1.0.3</version>
+    <time>1657191426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>987163</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7f49e188957e1b3446e608f3e8fa8181</srcmd5>
+    <version>1.0.4</version>
+    <time>1662639793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001762</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d1c0e720e75a3767d3d576676303f615</srcmd5>
+    <version>1.0.5</version>
+    <time>1664467962</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006633</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f36157114543ee75a4c0005381b45b85</srcmd5>
+    <version>1.0.6</version>
+    <time>1667995032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034535</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4e776117cc7e39b925cfa6b7a6d3add8</srcmd5>
+    <version>1.0.6</version>
+    <time>1687550028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094905</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>202af0c18997e4e18c16a40d77a46a16</srcmd5>
+    <version>1.2.0</version>
+    <time>1696529108</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115801</requestid>
+  </revision>
+</revisionlist>

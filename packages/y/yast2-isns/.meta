@@ -1,0 +1,5 @@
+<package name="yast2-isns" project="openSUSE:Factory">
+  <title>Configuration of isns</title>
+  <description>-</description>
+  <devel project="YaST:Head" package="yast2-isns"/>
+</package>

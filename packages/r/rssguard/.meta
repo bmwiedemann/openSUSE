@@ -1,0 +1,8 @@
+<package name="rssguard" project="openSUSE:Factory">
+  <title>RSS/ATOM/RDF feed reader</title>
+  <description>RSS Guard is a simple (yet powerful) feed reader.
+It supports RSS, ATOM and RDF.
+
+</description>
+  <devel project="X11:Utilities" package="rssguard"/>
+</package>

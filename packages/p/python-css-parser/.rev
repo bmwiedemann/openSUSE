@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3bf75a51d46de36d0543beab001ac4bc</srcmd5>
+    <version>1.0.4</version>
+    <time>1548064028</time>
+    <user>dimstar_suse</user>
+    <comment>Supersede</comment>
+    <requestid>663322</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>22dcd33fff539af5f8f766e18947d252</srcmd5>
+    <version>1.0.4</version>
+    <time>1560536674</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>707620</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d0dfa8c58d795ba74f7f8512c4b8aabc</srcmd5>
+    <version>1.0.6</version>
+    <time>1605644784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848970</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f47631797378a542479d3f8cb0d05cd0</srcmd5>
+    <version>1.0.7</version>
+    <time>1643228818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7:
+  - Fix incorrect license information in one file from a
+    copy/paste
+  - Use the badge from GA
+  - test: relax assertRaisesMsg to match longer strings
+  - Add a two level import from above test
+  - Add python 3.10 to the CI matrix
+  - version 1.0.7
+- Add relax_error_msg_check.patch replacing non-standard assert
+  methods with the standard ones (gh#ebook-utils/css-parser#12).
+</comment>
+    <requestid>949148</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a34f9a73dbe4de9c0d696227cb07953</srcmd5>
+    <version>1.0.8</version>
+    <time>1664820499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.8:
+  * Replace removed assertEquals with assertEqual
+  * Upgrade other unittest asserts for clearer error messages
+  * tests: adjust exception string checks for python 3.11 
+  * tests: fix warning about \( and \o being invalid sequences
+  * Fix serialization of unknown rules containing comments
+- drop relax_error_msg_check.patch (upstream)</comment>
+    <requestid>1007715</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bc9d2421e65bf0f0e1a6e9371fb3042c</srcmd5>
+    <version>1.0.9</version>
+    <time>1683559445</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.9:
+  * replace deprecated use of cgi.parse_header 
+  * drop python 3.6 support</comment>
+    <requestid>1085335</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df5e483ee06cdfb0555abeb9a5f50c4c</srcmd5>
+    <version>1.0.10</version>
+    <time>1699910280</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.10:
+  * Fix selector specificity calculation for pseudo-classes
+
+  * replace deprecated use of cgi.parse_header
+  * tests: adjust exception string checks for python 3.11</comment>
+    <requestid>1124874</requestid>
+  </revision>
+</revisionlist>

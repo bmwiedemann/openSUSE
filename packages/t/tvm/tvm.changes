@@ -1,0 +1,294 @@
+-------------------------------------------------------------------
+Tue Oct 10 11:35:45 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not package %{$python_sitearch}/tvm/{src,include,3rdparty}
+
+-------------------------------------------------------------------
+Tue Oct 10 09:37:11 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- Update to 0.13.0: 
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.12.0
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.13.0
+- Removed tvm-do-not-force-synr-version.patch
+- Added: CYTHON-Make-cython-compatible-with-3.0-15469.patch
+
+-------------------------------------------------------------------
+Mon Mar 13 16:14:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase disk size requirements
+
+-------------------------------------------------------------------
+Mon Mar 13 13:26:53 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable all python versions again (remaining issues are corner cases)
+- tvmc shebang should be default python, not highest available version
+
+-------------------------------------------------------------------
+Tue Mar  7 07:46:44 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to match current needs
+- Update to 0.11.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.11.0
+- Refresh patches :
+  * tvm-do-not-force-synr-version.patch
+  * tvm-disable-vulkan-test-check.patch
+- Disable tests until fixed
+
+-------------------------------------------------------------------
+Tue Dec 20 07:51:31 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.10.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.10.0
+
+-------------------------------------------------------------------
+Tue Nov 22 08:38:47 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Build against llvm14 for Leap 15.5 since llvm15 is the default llvm
+  version in Leap 15.5 which tvm is not supported yet
+
+-------------------------------------------------------------------
+Fri Oct 14 08:57:24 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build against llvm14 for Tumbleweed since llvm15 is not
+  supported yet
+
+-------------------------------------------------------------------
+Wed Aug 31 13:13:10 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.9.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.9.0
+- Drop upstream patch:
+  * tvm-fix-relay-test.patch
+
+-------------------------------------------------------------------
+Tue Jun 28 11:39:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires python38-* for tvmc on Tumbleweed since the default
+  python (3.10) is not compatible yet, so no python3-* available
+
+-------------------------------------------------------------------
+Wed Apr  6 08:03:50 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix boo#1197347:
+  * tvm-do-not-force-synr-version.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 16:27:13 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip test_meta_schedule_local_runner_time_out and
+  test_meta_schedule_local_runner_exception tests on Leap/SLE
+  since they require python 3.7+
+
+-------------------------------------------------------------------
+Wed Mar  2 13:35:32 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add deps on python3-tvm and python3-setuptools for tvmc - boo#1196646
+
+-------------------------------------------------------------------
+Tue Mar  1 15:45:11 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add 'Requires: python-cloudpickle' - boo#1195952#c1
+
+-------------------------------------------------------------------
+Sun Feb 27 06:52:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.8
+  * PaddlePaddle frontend
+  * TVMScript: round-trippable python-based syntax for TIR
+  * TorchScript integration
+  * TensorIR scheduling language
+  * TensorRT and CUTLASS integration via BYOC
+  * Int4 TensorCore support in AutoTVM
+  * MicroTVM Project API and Zephyr, Arduino support
+  * AOT executor
+  * Robust Windows support
+  * Affine analysis infra: iter-affine-map
+  * Improved Vulkan backend
+  * CUDA graph support in TVM runtime
+- Hopefully fixes boo#1195952
+- Drop Patches merged upstream:
+  * tvm-fix-catch.patch -- gh#apache/tvm#7319
+  * tvm-fix-llvm12.patch -- gh#apache/tvm#6717, gh#apache/tvm#6738
+- Add patches
+  * tvm-fix-relay-test.patch -- gh#apache/tvm#10402
+  * tvm-disable-vulkan-test-check.patch
+- Skip Python 3.9+ -- gh#apache/tvm#8577
+
+-------------------------------------------------------------------
+Mon Nov  8 19:08:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim future plans/marketing from description.
+
+-------------------------------------------------------------------
+Tue Oct 19 11:53:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build fails with LLVM 13, so still use LLVM 12 on Tumbleweed
+
+-------------------------------------------------------------------
+Fri Apr 30 09:08:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patches to fix build on Tumbleweed with llvm12:
+  * tvm-fix-llvm12.patch
+
+-------------------------------------------------------------------
+Tue Feb 16 08:19:41 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- NEP 29: Last minorversion bump deprecated Python 3.6
+  https://numpy.org/neps/nep-0029-deprecation_policy.html
+
+-------------------------------------------------------------------
+Wed Jan 27 14:16:13 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Recommends onnx and PIL for tvmc
+
+-------------------------------------------------------------------
+Tue Jan 26 13:31:03 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix upstream tarball
+
+-------------------------------------------------------------------
+Tue Jan 26 08:12:02 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO as it breaks runtime, see: https://github.com/apache/tvm/issues/6832
+- Disable python tests as it does not find Vulkan/openCL
+
+-------------------------------------------------------------------
+Thu Jan 21 11:14:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix a warning with gcc10:
+  * tvm-fix-catch.patch
+
+-------------------------------------------------------------------
+Wed Jan 20 16:22:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add Arm Compute Library support
+
+-------------------------------------------------------------------
+Wed Oct 28 07:10:12 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.7.0: https://github.com/apache/incubator-tvm/blob/main/NEWS.md
+  v0.7 brings many major features. The community works together
+  to refactor the internal code base to bring an unified IR code
+  structure with a unified IRModule, type system and pass
+  infrastructure. We have also bought many exciting new features,
+  some highlights include:
+  * Initial automatic scheduling support
+  * Initial command line driver interface
+  * WebGPU and webassembly support
+  * Better first class rust support in the codebase
+  * Intial Hexagon support
+  * Bring your own codegen (BYOC) support
+  The community also continues to bring high quality improvements
+  to the existing modules including, but not limited to: 
+  better frontend coverage, performance, quantization, uTVM 
+  and dynamic shape support.
+- Rebase pacth:
+  * tvm-fix-openblas.patch
+- Drop patch:
+  * lib-finder-python-cmake.patch
+
+-------------------------------------------------------------------
+Fri Oct  2 12:16:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable onednn (formerly mkl-dnn) for aarch64 and ppc64le as well
+- Add support to:
+  * Antlr4
+  * openBLAS
+- Add patch to fix build with openblas enabled:
+  * tvm-fix-openblas.patch
+
+-------------------------------------------------------------------
+Fri Oct  2 09:01:09 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 4GB min disk space
+- Use limit_build macro for all arches
+- Exclude more tests for ppc64 & ppc64le
+
+-------------------------------------------------------------------
+Wed Sep  9 07:24:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix typo
+
+-------------------------------------------------------------------
+Tue Sep  8 15:46:48 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Exclude %arm %{ix86} as tests fail
+
+-------------------------------------------------------------------
+Tue Sep  8 13:59:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Skip tests requiring opencl
+- Skip test requiring a specific arch
+
+-------------------------------------------------------------------
+Tue Sep  8 08:21:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Split cmake folder to not override it with python builds
+- Fix detection of this folder in the python modules:
+  * lib-finder-python-cmake.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 07:04:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add provides/obsoletes on TVM
+
+-------------------------------------------------------------------
+Mon Sep  7 10:40:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build fails on Tumbleweed with llvm10, so use llvm9 - boo#1176220
+
+-------------------------------------------------------------------
+Mon Sep  7 09:40:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Expand properly the fdupes call
+- Fix headers install
+- Fix python pkg names
+- Fix python requires
+
+-------------------------------------------------------------------
+Thu Sep  3 16:26:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package nnvm and topi python packages
+
+-------------------------------------------------------------------
+Thu Sep  3 09:33:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- mkl-dnn is not available on %{ix86}, so do not enable it there
+
+-------------------------------------------------------------------
+Thu Sep  3 08:31:49 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make use of python Macros: %python_subpackages and %python_files
+
+-------------------------------------------------------------------
+Wed Sep  2 16:37:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable Python binding
+
+-------------------------------------------------------------------
+Wed Sep  2 13:39:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable UnitTests (only when LLVM is enabled as it is a requirement)
+
+-------------------------------------------------------------------
+Tue Sep  1 19:01:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build
+
+-------------------------------------------------------------------
+Thu Jul 30 07:22:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Dep is dlpack-devel, not dlpack
+
+-------------------------------------------------------------------
+Wed Jul 29 13:58:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable mkldnn on non-x86
+- Add dep to dlpack
+- Update to 0.6.1
+
+-------------------------------------------------------------------
+Mon Jun  1 07:46:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by mxnet

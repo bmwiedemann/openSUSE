@@ -1,0 +1,139 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f83ec2af227431b17410afbef080c788</srcmd5>
+    <version>20200915.1</version>
+    <time>1600180111</time>
+    <user>dimstar_suse</user>
+    <comment>branding</comment>
+    <requestid>834314</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4f8b7f57a1ff1ca7cccf6b4a010c40a8</srcmd5>
+    <version>20200915.1</version>
+    <time>1600278017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834859</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3edc470601a55acf284a46cb2a4bd106</srcmd5>
+    <version>20200915.1</version>
+    <time>1600801907</time>
+    <user>dimstar_suse</user>
+    <comment>- Prepare for SLE 15 SP3 , presume Leap 15.3 being the same
+- Removed unnecessary parts from sed expressions
+</comment>
+    <requestid>835893</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>319e1753a87e8afe802a92922afa4440</srcmd5>
+    <version>20200915.1</version>
+    <time>1601296121</time>
+    <user>dimstar_suse</user>
+    <comment>- Extra prep for SLE 15 SP3
+</comment>
+    <requestid>837910</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>33a069886065bcd40d2a93798c91c767</srcmd5>
+    <version>20201004.2</version>
+    <time>1601919555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20201004.2:
+  * Add upstream branding settings
+  * Change archive structure
+- Add upstream branding package
+</comment>
+    <requestid>839422</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a3e6bac922c50e49c9a0663ddd0a92d7</srcmd5>
+    <version>20201017.1</version>
+    <time>1603202782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20201017.1:
+  * Change the priority from 10 to 21
+- Update to version 20201008.1:
+ * Add upstream gtk theme settings
+</comment>
+    <requestid>842498</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a3386401e3403e7e60a44e625deb67eb</srcmd5>
+    <version>20201128.1</version>
+    <time>1607548954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854330</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>322ffd6f2d981ac392431ba04910752d</srcmd5>
+    <version>20210428.0+0</version>
+    <time>1619653126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210428.0+0:
+  * Update for Budgie 10.5.3
+</comment>
+    <requestid>889096</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1832b1585755c59566e1de4e4576c97</srcmd5>
+    <version>20211016.1</version>
+    <time>1634417254</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>925715</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cea87e92e8765f994a812bdadbe9dc32</srcmd5>
+    <version>20220107.1</version>
+    <time>1641680619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220107.1:
+  * add default cursor definition
+</comment>
+    <requestid>944793</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0cc0ec85d107c9542c306f30177403d7</srcmd5>
+    <version>20220316.1</version>
+    <time>1649093175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220316.1:
+  * fix inclusion of screensaver files in meson.build
+- Require systemd-icon-branding for LOGO in Budgie Control Center
+- Update to version 20220114.1:
+  * fix screensaver background being incorrect
+</comment>
+    <requestid>963076</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>171ac2978414fb9e4fd8a363bd7998f1</srcmd5>
+    <version>20220627.1</version>
+    <time>1656422486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220627.1:
+  * make upstream what it should be
+  * use Papirus icon theme everywhere
+</comment>
+    <requestid>985345</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>08d700d988da98d2e41ea2c1156d62bf</srcmd5>
+    <version>20220709.1</version>
+    <time>1657379084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988031</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0482169685b718d92dc8460e54bd7342</srcmd5>
+    <version>20220829.3</version>
+    <time>1661863796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20220829.3:
+  * fix Gnome Terminal color issues
+</comment>
+    <requestid>1000104</requestid>
+  </revision>
+</revisionlist>

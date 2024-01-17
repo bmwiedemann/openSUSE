@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sat Jan 21 06:06:57 UTC 2017 - coolo@suse.com
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-MooX-Types-MooseLike-Numeric/Changes
+
+  1.03 - 2017-01-20
+       - Add Moo to Build requirements (wpmoore/mendoza)
+       - Improve POD (meAmidos)
+       - Simplify type constraint tests by making use of subtype (meAmidos)
+
+-------------------------------------------------------------------
+Mon Nov 25 07:39:36 UTC 2013 - coolo@suse.com
+
+- updated to 1.02
+  - Correct Makefile NAME
+
+-------------------------------------------------------------------
+Sun Aug  4 15:34:44 UTC 2013 - coolo@suse.com
+
+- initial package 1.01
+    * created by cpanspec 1.78.07
+

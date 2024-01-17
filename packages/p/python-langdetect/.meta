@@ -1,0 +1,5 @@
+<package name="python-langdetect" project="openSUSE:Factory">
+  <title>python-langdetect</title>
+  <description>Language detection library ported from Google's language-detection</description>
+  <devel project="devel:languages:python" package="python-langdetect"/>
+</package>

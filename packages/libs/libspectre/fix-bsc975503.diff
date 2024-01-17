@@ -1,0 +1,13 @@
+Index: libspectre-0.2.9/libspectre/spectre-document.c
+===================================================================
+--- libspectre-0.2.9.orig/libspectre/spectre-document.c
++++ libspectre-0.2.9/libspectre/spectre-document.c
+@@ -72,7 +72,7 @@ document_load (SpectreDocument *document
+ 		return;
+ 	}
+ 	
+-	document->doc = psscan (file, filename, SCANSTYLE_NORMAL);
++	document->doc = psscan (file, filename, SCANSTYLE_IGNORE_EOF);
+ 	if (!document->doc) {
+ 		document->status = SPECTRE_STATUS_LOAD_ERROR;
+ 		return;

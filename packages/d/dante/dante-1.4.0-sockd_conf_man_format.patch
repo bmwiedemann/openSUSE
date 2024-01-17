@@ -1,0 +1,37 @@
+Index: doc/sockd.conf.5
+===================================================================
+--- doc/sockd.conf.5.orig
++++ doc/sockd.conf.5
+@@ -710,11 +710,9 @@ Requires the redirect module.
+ The syntax of the redirect statement is
+ as follows:
+ 
+-.D1
+ \fBredirect\fP from: \fBADDRESS\fP
+ 
+-\".D1
+-\"\fBredirect\fP to: \fBADDRESS\fP
++\fBredirect\fP to: \fBADDRESS\fP
+ 
+ See the redirect manual for detailed information.
+ 
+@@ -798,10 +796,8 @@ Requires the redirect module.
+ The syntax of the redirect statement is
+ as follows:
+ 
+-.D1
+ \fBredirect\fP from: \fBADDRESS\fP
+ 
+-.D1
+ \fBredirect\fP to: \fBADDRESS\fP
+ 
+ The semantics of \fBfrom\fP and \fBto\fP vary according to
+@@ -1092,7 +1088,7 @@ For inferno Nettverk A/S:
+ .SH SEE ALSO
+ sockd(8), socks.conf(5), hosts_access(5)
+ 
+-.PP
++.TP
+ Information about new releases and other related issues can be found
+ on the \fBDante\fP WWW home page: http://www.inet.no/dante/
+ 

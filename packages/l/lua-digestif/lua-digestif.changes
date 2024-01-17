@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sun Feb  5 06:02:03 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use update-alternatives with some magic.
+
+-------------------------------------------------------------------
+Sat Jan 21 08:38:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove lua 5.1. Unsupported.
+
+-------------------------------------------------------------------
+Sat Jan 21 08:27:35 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix data_dir paths to successfully run digestif.
+
+-------------------------------------------------------------------
+Wed Dec 28 06:37:48 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for lua-digestif 0.5.1.

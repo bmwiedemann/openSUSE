@@ -1,0 +1,5 @@
+<package name="stardict-dic-enru-engcom" project="openSUSE:Factory">
+  <title>English-Russian dictionary of computer terms</title>
+  <description>The open English-Russian dictionary of computer terms with more than 2000 articles in StarDict format. It is not an academic dictionary.</description>
+  <devel project="Education" package="stardict-dic-enru-engcom"/>
+</package>

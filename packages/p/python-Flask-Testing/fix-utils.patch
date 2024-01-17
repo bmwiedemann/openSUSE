@@ -1,0 +1,13 @@
+Index: Flask-Testing-0.8.1/flask_testing/utils.py
+===================================================================
+--- Flask-Testing-0.8.1.orig/flask_testing/utils.py
++++ Flask-Testing-0.8.1/flask_testing/utils.py
+@@ -88,7 +88,7 @@ def _make_test_response(response_class):
+     return TestResponse
+ 
+ 
+-def _empty_render(template, context, app):
++def _empty_render(app, template, context):
+     """
+     Used to monkey patch the render_template flask method when
+     the render_templates property is set to False in the TestCase

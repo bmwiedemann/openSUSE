@@ -1,0 +1,5 @@
+<package name="lua-luacheck" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:lua" package="lua-luacheck"/>
+</package>

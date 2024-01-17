@@ -1,0 +1,13 @@
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -24,6 +24,8 @@ if LAUNCHD
+ SUBDIRS += launchd
+ endif
+ 
++XINITDIR = /etc/X11/xinit
++
+ bin_PROGRAMS = xinit
+ bin_SCRIPTS = startx
+ 

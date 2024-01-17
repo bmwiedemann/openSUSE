@@ -1,0 +1,32 @@
+<package name="perl-Sub-Exporter-ForMethods" project="openSUSE:Factory">
+  <title>helper routines for using Sub::Exporter to build methods</title>
+  <description>The synopsis section, above, looks almost indistinguishable from any other
+use of Sub::Exporter, apart from the use of 'method_installer'. It is
+nearly indistinguishable in behavior, too. The only change is that
+subroutines exported from Method::Builder into named slots in
+Vehicle::Autobot will be wrapped in a subroutine called
+'Vehicle::Autobot::transform'. This will insert a named frame into stack
+traces to aid in debugging.
+
+More importantly (for the author, anyway), they will not be removed by
+namespace::autoclean. This makes the following code work:
+
+  package MyLibrary;
+
+  use Math::Trig qw(tan);         # uses Exporter.pm
+  use String::Truncate qw(trunc); # uses Sub::Exporter's defaults
+
+  use Sub::Exporter::ForMethods qw(method_installer);
+  use Mixin::Linewise { installer =&gt; method_installer }, qw(read_file);
+
+  use namespace::autoclean;
+
+  ...
+
+  1;
+
+After MyLibrary is compiled, 'namespace::autoclean' will remove 'tan' and
+'trunc' as foreign contaminants, but will leave 'read_file' in place. It
+will also remove 'method_installer', an added win.</description>
+  <devel project="devel:languages:perl" package="perl-Sub-Exporter-ForMethods"/>
+</package>

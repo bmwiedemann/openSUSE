@@ -1,0 +1,8 @@
+<package name="retro-gtk" project="openSUSE:Factory">
+  <title>Toolkit to write Gtk+ 3 based libretro frontends</title>
+  <description>Retro-gtk is a toolkit to write GTK+ 3 based Libretro frontends.
+
+</description>
+  <devel project="GNOME:Factory" package="retro-gtk"/>
+  <url>https://git.gnome.org/browse/retro-gtk</url>
+</package>

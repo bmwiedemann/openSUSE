@@ -1,0 +1,94 @@
+Index: libscompat/issetugid.c
+===================================================================
+--- libscompat/issetugid.c.orig
++++ libscompat/issetugid.c
+@@ -4,6 +4,7 @@
+ #include "autoconf.h"
+ #endif /* HAVE_CONFIG_H */
+ 
++#include <sys/auxv.h>
+ #include "osdep.h"
+ 
+ /*
+@@ -49,20 +50,12 @@
+  *
+  */
+ 
+-#if HAVE_LIBC_ENABLE_SECURE
+-extern int __libc_enable_secure;
+-#endif /* HAVE_LIBC_ENABLE_SECURE */
+ 
+ int
+ issetugid(void)
+ {
+-#if HAVE_LIBC_ENABLE_SECURE
+-   if (!__libc_enable_secure)
+-      return 0;
+-#elif HAVE_LIBC_ENABLE_SECURE_DISABLED
+-   if (getuid() == geteuid() && getgid() == getegid())
+-      return 0;
+-#endif /* HAVE_LIBC_ENABLE_SECURE_DISABLED */
+-
+-   return 1; /* don't know, better safe than sorry. */
++   unsigned long secure = getauxval(AT_SECURE);
++   if (secure != 0)
++       return 1;
++   return 0;
+ }
+Index: libscompat.m4
+===================================================================
+--- libscompat.m4.orig
++++ libscompat.m4
+@@ -266,35 +266,6 @@ if test x"${ac_cv_func_bzero}" = xno; th
+     AC_DEFINE(bzero(b, len), memset((b), 0, (len)), [bzero replacement])
+ fi
+ 
+-m4_ifdef([dantebuild], [
+-#causes problems with packaging, allow test to be turned off
+-AC_ARG_WITH(glibc-secure,
+-[  --without-glibc-secure  disable libc_enable_secure check @<:@default=detect@:>@],
+-[GLIBCSEC=$withval])
+-
+-if test "${GLIBCSEC}" != no; then
+-    AC_MSG_CHECKING([for __libc_enable_secure])
+-    AC_TRY_RUN([
+-extern int __libc_enable_secure;
+-
+-int main()
+-{
+-    if (__libc_enable_secure == 0)
+-	return 0;
+-
+-	return 1;
+-}],[AC_MSG_RESULT([yes])
+-    AC_DEFINE(HAVE_LIBC_ENABLE_SECURE, 1, [Linux version of issetugid()])],
+-   [AC_MSG_RESULT([no])],
+-   [dnl assume no when cross-compiling
+-    AC_MSG_RESULT([assuming no])])
+-fi
+-],
+-[AC_DEFINE(HAVE_LIBC_ENABLE_SECURE, 0, [not used])])
+-if test x"$GLIBCSEC" = xno; then
+-   AC_DEFINE(HAVE_LIBC_ENABLE_SECURE_DISABLED, 1, [glibc variable disable])
+-fi
+-
+ AC_MSG_CHECKING([for FIONREAD socket support])
+ AC_TRY_RUN([
+ #include <sys/types.h>
+Index: include/autoconf.h.in
+===================================================================
+--- include/autoconf.h.in.orig
++++ include/autoconf.h.in
+@@ -701,12 +701,6 @@
+ /* Define to 1 if you have the `crypt' library (-lcrypt). */
+ #undef HAVE_LIBCRYPT
+ 
+-/* Linux version of issetugid() */
+-#undef HAVE_LIBC_ENABLE_SECURE
+-
+-/* glibc variable disable */
+-#undef HAVE_LIBC_ENABLE_SECURE_DISABLED
+-
+ /* Define to 1 if you have the `des' library (-ldes). */
+ #undef HAVE_LIBDES
+ 

@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Wed Dec 13 08:53:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0:
+  * This release supersedes v2.1.0 and brings a new feature and
+    some small code improvements:
+    + Add support for OpenSSL (#52), by @mchalain
+    + Fix base32 encoding and decoding of bytes array (#54)
+    + make is_string_valid_b32 public
+    + improve code readability
+
+-------------------------------------------------------------------
+Wed Dec  6 07:30:58 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use correct library 'libcriterion-devel'.
+
+-------------------------------------------------------------------
+Tue Nov 28 13:32:56 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.0:
+  * Fix base32 encoding and decoding of bytes array (#54)
+  * Add support for OpenSSL (#52), by @mchalain
+
+-------------------------------------------------------------------
+Thu Nov  9 09:18:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Improved CMakeLists
+  * Drop link_options, leave it up to every distro
+
+-------------------------------------------------------------------
+Tue May  2 13:41:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.1:
+  * If execution runs fine, set err_code to NO_ERROR in get_totp_at,
+    get_steam_totp_at and otp_to_int.
+- Revert AVX2 change.
+
+-------------------------------------------------------------------
+Wed Mar  8 15:46:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Build AVX2 enabled hwcaps library for x86_64-v3
+
+-------------------------------------------------------------------
+Wed Feb  1 09:37:48 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Drop libbaseencode dep, since it's no longer necessary and obsolete it
+- Fix changelog typo
+
+-------------------------------------------------------------------
+Tue Jan 31 23:25:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * In particular, libbaseencode has been merged with libcotp, so now users
+    can call base32 functions by just including `cotp.h`
+  BREAKING CHANGES:
+  * `totp_verify` has been removed
+  * `hotp_verify` has been removed
+  * `base64_encode` has been removed
+  * `base64_decode` has been removed
+  ADDED:
+  * new API `otp_to_int`
+  * `base32` encoding and decoding functions from libbaseencode
+  * new tests for libcotp
+  CHANGES:
+  * the soversion is now set only from the `$major` version (e.g. `2`), and
+    not from `$major$minor` (e.g. `12`) like it used to be.
+
+-------------------------------------------------------------------
+Sun Jan  8 14:45:11 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.8:
+  * this release fixes a regression brought by v1.2.7.
+
+-------------------------------------------------------------------
+Thu Jan  5 08:38:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.7:
+  * check return value for gcrypt functions
+
+-------------------------------------------------------------------
+Thu May 19 11:42:24 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.6:
+  * fix pkg-config file generation (#32)
+
+-------------------------------------------------------------------
+Wed Dec 29 08:44:18 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v1.2.4:
+  * small fixes from PVS scan
+  * tests: do no require installation to run tests
+
+-------------------------------------------------------------------
+Mon Apr 20 17:13:49 UTC 2020 - Markos Chandras <markos@chandras.me>
+
+- Disable debug package on Fedora (https://en.opensuse.org/Fedora_packaging)
+
+-------------------------------------------------------------------
+Tue Mar 17 08:50:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- run spec cleaner
+
+-------------------------------------------------------------------
+Tue Mar 12 13:01:09 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v1.2.2
+  * add c++ support
+
+-------------------------------------------------------------------
+Sun Oct 21 08:19:32 UTC 2018 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix soname
+
+-------------------------------------------------------------------
+Sun Oct 21 08:12:22 UTC 2018 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update libcotp to v1.2.1
+
+-------------------------------------------------------------------
+Sat Aug 25 08:50:12 UTC 2018 - info@paolostivanin.com
+
+- First release on OBS

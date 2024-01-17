@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Wed Oct  4 14:05:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update base16-bytestring to version 1.0.2.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:05:53 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Nov  1 08:26:56 UTC 2021 - psimons@suse.com
+
+- Update base16-bytestring to version 1.0.2.0.
+  # 1.0.2.0
+
+  * Support sized primitive types in GHC 9.2 ([#16](https://github.com/haskell/base16-bytestring/pull/16) - thanks Bodigrim!)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Dec  9 11:28:16 UTC 2020 - psimons@suse.com
+
+- Update base16-bytestring to version 1.0.1.0.
+  # 1.0.1.0
+
+  * Backwards-compatible support for `bytestring ^>= 0.11` ([#15](https://github.com/haskell/base16-bytestring/pull/15))
+
+  # 1.0.0.0
+
+  * Merged omnibus PR doing a variety of things in ([#10](https://github.com/haskell/base16-bytestring/pull/10)):
+    - Improves performance by 3-4x for encode, 4-5x for decode.
+    - The `decode` signature returning the tuple and actually returns an error message with offset. The signature will now be `ByteString -> Either String ByteString`.
+    - Actually tests using the test vectors defined in the RFC, and uses property tests to ensure invariants hold.
+    - Adds lenient decoders to the API
+    - Adds `-XTrustworthy` annotations to the relevant exposed modules
+    - Rewrites the haddocks to be more up to date and fancy-styled.
+    - Adds benchmarks to the `.cabal` file so they can be run at toplevel, and make them better.
+    - Bumps the Cabal version to 1.12
+
+  Because of the breadth of this change, we are calling this a new epoch for the `base16-bytestring` library. Hence, the version `1.0.0.0`.
+
+-------------------------------------------------------------------
+Tue Sep 22 09:33:51 UTC 2020 - psimons@suse.com
+
+- Update base16-bytestring to version 0.1.1.7 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Tue Aug 18 10:44:06 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Sun Jun 21 02:00:47 UTC 2020 - psimons@suse.com
+
+- Update base16-bytestring to version 0.1.1.7.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:13:47 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:16 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:12 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:15 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Wed May 16 13:06:52 UTC 2018 - psimons@suse.com
+
+- Prefer the new %license attribute over %doc.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:30:37 UTC 2016 - psimons@suse.com
+
+- Update to version 0.1.1.6 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Fri Oct 30 14:52:25 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit

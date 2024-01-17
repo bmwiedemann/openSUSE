@@ -1,0 +1,13 @@
+Index: glfw-2.7.6/compile.sh
+===================================================================
+--- glfw-2.7.6.orig/compile.sh
++++ glfw-2.7.6/compile.sh
+@@ -88,7 +88,7 @@ echo -n "Checking what kind of system th
+ case "x`uname 2> /dev/null`" in
+ xLinux)
+   GLFW_LIB_CFLAGS="$GLFW_LIB_CFLAGS -D_GLFW_USE_LINUX_JOYSTICKS"
+-  SOFLAGS="-shared -Wl,-soname,libglfw.so"
++  SOFLAGS="-shared -Wl,-soname,libglfw.so.2"
+   echo "Linux" 1>&6
+   ;;
+ xDarwin)

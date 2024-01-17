@@ -1,0 +1,7 @@
+<package name="loudmouth" project="openSUSE:Factory">
+  <title>Jabber Client Library Written in C</title>
+  <description>Loudmouth is a lightweight and easy-to-use C library for programming
+with the Jabber protocol. It is designed to be easy to get started with
+and yet extensible to let you do anything the Jabber protocol allows.</description>
+  <devel project="KDE:Extra" package="loudmouth"/>
+</package>

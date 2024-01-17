@@ -1,0 +1,48 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2012-02-09 03:48:24.650731239 +0100
+
+cunit uses ncurses, therefore, link with ncurses. Otherwise building
+this can fail if e.g. -Wl,--no-undefined is used.
+
+And for -lncurses to trickle down into libcunit.la, libcunit.la must
+use the .la files as objects, not the .lo files.
+
+---
+ CUnit/Sources/Curses/Makefile.am |    1 +
+ CUnit/Sources/Makefile.am        |   15 +++++----------
+ 2 files changed, 6 insertions(+), 10 deletions(-)
+
+Index: cunit/CUnit/Sources/Curses/Makefile.am
+===================================================================
+--- cunit.orig/CUnit/Sources/Curses/Makefile.am
++++ cunit/CUnit/Sources/Curses/Makefile.am
+@@ -3,3 +3,4 @@
+ noinst_LTLIBRARIES = libcunitcurses.la
+ libcunitcurses_la_SOURCES = \
+ 	Curses.c
++libcunitcurses_la_LIBADD = -lncurses
+Index: cunit/CUnit/Sources/Makefile.am
+===================================================================
+--- cunit.orig/CUnit/Sources/Makefile.am
++++ cunit/CUnit/Sources/Makefile.am
+@@ -1,15 +1,10 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-BASIC_OBJECTS_SHARED = Basic/Basic.lo
+-AUTOMATED_OBJECTS_SHARED = Automated/Automated.lo
+-CONSOLE_OBJECTS_SHARED = Console/Console.lo
+-CURSES_OBJECTS_SHARED = Curses/Curses.lo
+-FRAMEWORK_OBJECTS_SHARED = \
+-	Framework/CUError.lo \
+-	Framework/MyMem.lo \
+-	Framework/TestDB.lo \
+-	Framework/TestRun.lo \
+-	Framework/Util.lo
++BASIC_OBJECTS_SHARED = Basic/libcunitbasic.la
++AUTOMATED_OBJECTS_SHARED = Automated/libcunitautomated.la
++CONSOLE_OBJECTS_SHARED = Console/libcunitconsole.la
++CURSES_OBJECTS_SHARED = Curses/libcunitcurses.la
++FRAMEWORK_OBJECTS_SHARED = Framework/libcunitfmk.la
+ 
+ FRAMEWORK_OBJECT_FILES_SHARED = $(FRAMEWORK_OBJECTS_SHARED)
+ FRAMEWORK_COMPILE_DIRS = Framework

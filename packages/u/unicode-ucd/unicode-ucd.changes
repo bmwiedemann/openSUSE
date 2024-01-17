@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Mon Oct  2 07:55:17 UTC 2023 - pgajdos@suse.com
+
+- version update to 15.1.0
+  * upstream changelog:
+    https://www.unicode.org/versions/Unicode15.1.0/
+
+-------------------------------------------------------------------
+Tue Dec  6 13:17:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 15.0.0:
+  * Unicode 15.0 adds 4,489 characters, for a total of 149,186 characters. These
+    additions include 2 new scripts, for a total of 161 scripts, along with 20 new
+    emoji characters, and 4,193 CJK (Chinese, Japanese, and Korean) ideographs.
+  See https://www.unicode.org/versions/Unicode15.0.0/
+
+-------------------------------------------------------------------
+Tue May 17 09:39:16 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 14.0.0
+  * Unicode 14.0 adds 838 characters, for a total of 144,697 characters
+  * These additions include 5 new scripts, for a total of 159 scripts
+  * As well as 37 new emoji characters.
+  * Full news: http://www.unicode.org/versions/Unicode14.0.0/
+
+-------------------------------------------------------------------
+Mon Jun 28 16:32:58 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update version to 13.0.0. Upstream did not provide changelog.
+- Use https for download.
+
+-------------------------------------------------------------------
+Thu Mar 12 12:45:40 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 12.0.0. Upstream did not provide changelog. 
+
+-------------------------------------------------------------------
+Tue Nov 13 03:31:13 UTC 2018 - Cliff Zhao <qzhao@suse.com>
+
+- Drop copyright.html, add COPYING: Move copyright.html to a TXT 
+  file, to meet openSUSE packages law requirement. 
+
+-------------------------------------------------------------------
+Wed Feb 28 16:40:38 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Feb 26 11:38:25 UTC 2018 - dimstar@opensuse.org
+
+- Use SPDX3.0 license tags and package COPYING as %license.
+
+-------------------------------------------------------------------
+Wed Jun 21 13:57:57 UTC 2017 - dimstar@opensuse.org
+
+- Update to Unicode 10.0.0.
+
+-------------------------------------------------------------------
+Wed Sep 21 18:46:36 UTC 2016 - zaitor@opensuse.org
+
+- Initial packaging for openSUSE, version 9.0.0.
+

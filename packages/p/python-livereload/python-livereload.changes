@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Thu Jul  6 11:51:12 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Mar 13 12:30:12 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/lepture/python-livereload/commit/5165fedf96b161bf146fa31893c2e99b78570977
+  + python-livereload-no-python2.patch
+
+-------------------------------------------------------------------
+Mon Feb 27 10:45:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use fdupes -s, it hurts.
+
+-------------------------------------------------------------------
+Mon Nov  8 11:38:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add six dependency for tests 
+
+-------------------------------------------------------------------
+Fri Sep 17 06:34:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pytest (and not nose) for the testsuite, actually running it. 
+
+-------------------------------------------------------------------
+Wed May 19 18:08:10 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to version 2.6.3
+
+-------------------------------------------------------------------
+Tue Jul  3 17:59:32 UTC 2018 - ecsos@opensuse.org
+
+- initial version 2.5.2

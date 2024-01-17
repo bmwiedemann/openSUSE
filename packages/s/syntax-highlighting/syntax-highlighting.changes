@@ -1,0 +1,1442 @@
+-------------------------------------------------------------------
+Sat Jan 13 11:22:16 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.114.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.114.0
+- No code change since 5.113.0
+
+-------------------------------------------------------------------
+Tue Dec  5 11:18:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.113.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.113.0
+- No code change since 5.112.0
+
+-------------------------------------------------------------------
+Mon Nov  6 09:14:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.112.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.112.0
+- No code change since 5.111.0
+
+-------------------------------------------------------------------
+Mon Oct  9 20:21:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.111.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.111.0
+- Changes since 5.110.0:
+  * Set mode for more config file endings (kde#475078)
+  * Highlight MapCSS numeric and string condition values
+  * textproto syntax: Support multipart strings.
+  * textproto syntax: Add test case for octal escape sequences.
+  * textproto syntax: Support some types of comments.
+  * textproto syntax: Allow empty strings.
+  * textproto syntax: Allow commas between fields.
+  * Add TextProto syntax (protocol buffer Text Format Language).
+
+-------------------------------------------------------------------
+Wed Sep  6 12:24:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- No code change since 5.109.0
+
+-------------------------------------------------------------------
+Tue Aug  8 17:43:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * Hare language syntax highlighting
+  * Add explicit moc includes to sources for moc-covered headers
+
+-------------------------------------------------------------------
+Mon Jul  3 07:02:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Remove qt6 CI builds
+  * ensure all .json files are valid
+  * Highlight QML pragma keyword
+
+-------------------------------------------------------------------
+Mon Jun  5 07:44:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- No code change since 5.106.0
+
+-------------------------------------------------------------------
+Sat May  6 14:01:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.106.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.106.0
+- Changes since 5.105.0:
+  * Backport theme changes to kf5
+  * backport master hl file updates
+  * Add mimetype for markdown
+
+-------------------------------------------------------------------
+Sat Apr  1 17:01:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.105.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.105.0
+- Changes since 5.104.0:
+  * Highlight the QML "required" keyword, added in Qt 5.15
+
+-------------------------------------------------------------------
+Mon Mar  6 09:08:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.104.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.104.0
+- No code change since 5.103.0
+
+-------------------------------------------------------------------
+Wed Feb  8 09:13:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.103.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.103.0
+- Changes since 5.102.0:
+  * Log: fix slow search regex ; add Critical section ; some improvement in Log File (advanced) (kde#464424)
+  * Cobol: add extensions ; add exec sql block ; picture clause more permissive
+  * Cobol: replace tab with 2 spaces
+  * Add Zig language
+  * Add Cabal syntax
+  * Add Log File syntax
+  * avoid copies of Theme and QString in functions that manipulate themes
+  * FormatPrivate now contains a definition name rather than a reference to a definition
+  * add noexcept
+  * Theme::m_data is now always initialized with a valid pointer
+  * optimize ThemeData::textStyleOverride
+  * Replace DefinitionRef in StateData with a definition id
+  * Add COBOL syntax
+  * Indexer: suggest more minimal=1 or other rule for RegExpr with lookhaed=1 and .*
+  * Indexer: check xml validity
+  * feat: Add new syntax for `Earthfile`
+
+-------------------------------------------------------------------
+Thu Jan 12 08:19:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.102.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.102.0
+- Changes since 5.101.0:
+  * Resolve conflict on .ex file extension
+  * Markdown: remove dynamic rules that are not needed
+  * Julia: merge hundreds of rules into a single regex ; fix adjoint operator ; includes ##Comments
+  * avoid temporary constructions of Definition in AbstractHighlighter::highlightLine
+  * GCode: numbers are optional with parameters (kde#462969)
+  * cmake: Use ECMQmlModule for qtquick plugin
+  * update version and references
+  * Add MapCSS highlighting
+  * Update test files for Nim codeblock in markdown
+  * Add testcase to markdown file for Nim code blocks
+  * Markdown: Use nim highlighting in nim blocks
+  * Add testcase for "\"
+  * Nim: Small syntax fixes
+  * Add new keywords: `get` and `set`
+
+-------------------------------------------------------------------
+Tue Dec  6 20:11:14 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.101.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.101.0
+- Changes since 5.100.0:
+  * TOML: add number prefix, inf, nan and more datetime format ; fix multi-strings closing (kde#462178)
+  * Python: add pyi extension (python interface)
+  * Javascript: remove previousDibling keyword (probably a typo for previousSibling)
+  * Add GPS Exchange Format (GPX) type
+  * CSS family: add properties, functions and fr unit ; remove FPWD and old proposed properties
+  * install a index.katesyntax when QRC_SYNTAX is OFF
+  * Make the Rust language mode use the cstyle indenter
+  * C23: missing wN length modifiers with d and i in printf_like
+  * CMake: remove duplicate <list> and <context>
+  * CMake: optimize by adding DetectIdentifier and DetectSpaces (~20% faster)
+  * CMake: replace some <WordDetect> with <keyword>
+  * CMake: more IncludeRules
+  * CMake: remove unused rule and moves the substitution end rule to first
+  * Add syntax definition for CSV and TSV
+  * JSON: small optimization on number regex
+  * Go: improved support for literal numbers, add unicode escape characters and new predefined type (kde#459291)
+  * dynamic RegExpr has its own type (~2.2% faster)
+  * XML: replace a dynamic StringDetect with DetectIdentifier contextually equivalent
+  * XML: character < in an ENTITY is highlighted as an error
+  * Fix generating index.katesyntax when QRC_SYNTAX is off
+
+-------------------------------------------------------------------
+Tue Nov  8 08:35:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Too many changes since 5.99.0, only listing bugfixes:
+  * Jira: fix Bold and Stroked Out highlight at start of line (kde#431268)
+  * CMake: fix nested parentheses highlinthing (kde#461151)
+  * CMake: add Control Flow style for if, else, while, etc (kde#460596)
+  * Alerts: add NO-BREAK SPACE (nbsp) as keyword deliminator (kde#459972)
+  * Bash/Zsh: fix group command with coproc statement (kde#460301)
+
+-------------------------------------------------------------------
+Sat Oct  1 15:56:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Add Qt 6 Windows CI
+  * Bash,Zsh: add Dollar Prefix style for simple variable
+  * Zsh: disable spellcheck
+  * Zsh: fix Parameter Expansion style for )) in $((...)) and add missing parameter expansion flags
+  * Bash: fix Parameter Expansion style for )) in $((...))
+  * prefer Oklab to CIELAB for perceptual color difference in ansi256 mode
+  * PostgreSQL: Remove # as line comment
+  * .gitlab-ci.yml: enable static builds
+  * Improve ASN.1 highlighting
+  * Ruby: add keywords used for refinements to the mixin methods list
+  * Python: add := operator, built-in functions and special methods
+  * Crystal Syntax Highlighting Definition: // operator, macros, keywords
+  * debianchangelog.xml: Set default filename
+  * bash.xml: The other (more correct) form of multiline comments
+
+-------------------------------------------------------------------
+Tue Sep  6 07:17:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.98.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.98.0
+- Changes since 5.97.0:
+  * cmake.xml: Add `CMAKE_FILES_DIRECTORY` as undocumented
+  * Use C-style indenting for GLSL
+  * bash.xml: Enable multiline comments and RST documentation
+  * bash.xml: Reformat for better looking
+  * VHDL: fix some highlighting and folding errors
+  * Python: when strings are not closed, mark only the following line as error
+  * Change singleLineComments to be AfterWhiteSpace for c-like langs (kde#438744, kde#456819)
+  * Add FreeBSD Qt6 CI support
+  * Indexer: ignore attribute with lookAhead in suggestRuleMerger() and check attribute only used with lookAhead or IncludeRules
+  * detect .gcode files as G-Code (kde#457753)
+  * Asciidoc: fix section block continuation that should not be highlighted
+  * Asciidoc: optimize rendering time by about 35%
+  * Asciidoc: fix title highlighting when not starting at level 0 (kde#452238)
+  * Bash/Zsh: add -o and -a logical operators with [ ... ]
+  * G-Code: fix number pattern, Mnnn as M-word or M-word (user), add String and... (kde#457754)
+  * Fortran: Interpret percent sign as operator
+  * RPM Spec: fix #20: support of ${expand:...}, ${lua:...}, lua section and some...
+  * VHDL: (#21) fix instantiating component in architecture
+  * CartoCSS: fix the last statement in curly braces when it does not terminate with a semicolon
+  * C: support of C23 and synchronization with cpp.xml
+  * C++: bump version number
+  * C++: Symbol style for LineContinue in String and # in Define
+  * C++: various optimizations and minor improvements
+  * C++: add assume attribute
+  * C++: add z/Z number suffix
+  * C++: add extensions for printf (C23): wN, wfN, H, D, and DD length modifiers, b format
+  * C++: add elifdef/elifndef ; add Char/String Literal Prefix style ; check extra hexadecimal char in String8
+  * Optimize AbstractHighlighter
+  * Resolve regexp rules lazily
+
+-------------------------------------------------------------------
+Sun Aug  7 22:27:49 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.97.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.97.0
+- Too many changes since 5.96.0, only listing bugfixes:
+  * add basic support of aspx and ashx (kde#437220)
+  * R: add := operator (kde#450484)
+
+-------------------------------------------------------------------
+Sun Jul  3 11:56:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.96.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.96.0
+- Changes since 5.95.0:
+  * Handle case when heredoc closing identifier is indented with space or tabulation (kde#353162)
+  * cmake.xml: Updates for CMake 3.24
+  * Add OrderWithRequires and RemovePathPostfixes keywords to RPM Spec
+  * Adjust repo's own includes
+
+-------------------------------------------------------------------
+Fri Jun 10 14:12:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.95.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.95.0
+- Changes since 5.94.0:
+  * avoid spell checking in diffs
+  * Avoid unprefixed CamelCase headers generated directly in build dir (kde#453759)
+  * Bash: fix comments in double braces (kde#450878)
+  * systemd unit: update to systemd v251
+  * debchangelog: add Kinetic Kudu
+
+-------------------------------------------------------------------
+Tue May 10 08:18:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.94.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.94.0
+- Changes since 5.93.0:
+  * Simplify header install locations
+  * inc version
+  * tests shall always pass
+  * cmake.xml: Updates for CMake 3.23
+  * try windows CI
+  * Fix haxe rawstring escaping
+
+-------------------------------------------------------------------
+Sun Apr  3 10:47:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.93.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.93.0
+- Changes since 5.92.0:
+  * Go syntax - "go" -> ControlFlow
+  * Autotest for Go
+  * Go syntax - Separate ControlFlow from Keywords
+  * Bash/Zsh: fix expression closing parenthesis in regex (kde#450478)
+
+-------------------------------------------------------------------
+Mon Mar  7 09:27:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.92.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.92.0
+- Changes since 5.91.0:
+  * increment bash version number
+  * Bash: fix parameter expansion replacement with path without extended glob
+  * Lua: fix function highlighting with local function (#17)
+  * Add Android Qt6 CI
+  * Propagate Qt major version to external project build of the host tools
+  * increment versions
+  * Bash/Zsh: fix keyword ! in ! cmd
+
+-------------------------------------------------------------------
+Sun Feb  6 10:17:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.91.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.91.0
+- Changes since 5.90.0:
+  * fix unit test refs
+  * Python: fix line continuation starting with a string
+  * CSS: add some values and functions
+  * CSS: fix nested function call (kde#444506)
+  * Zsh: fix line-break and pattern in double bracket condition
+  * Bash: fix line-break in double bracket condition (kde#448126)
+  * Bash: fix parameter expansion replacement with extended glob
+  * update test refs
+  * [R] Add a test for this syntax
+  * [R] Add support for new pipe from R 4.1
+  * update test refs
+  * Bump version number
+  * Repair syntax
+  * Update Stan highlighting
+  * Add CI qt6 support
+
+-------------------------------------------------------------------
+Mon Jan  3 12:48:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.90.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.90.0
+- Changes since 5.89.0:
+  * systemd unit: update to systemd v250
+  * separate dynamic StringDetect rule to avoid copies in StringDetect::doMath()
+  * prefer to construct the rule directly in the vector rather than a move
+  * automatically replace StringDetect to DetectChar, Detect2Chars or AnyChar when possible
+  * use std::weak_ptr::owner_before instead of weak_ptr::expired() and weak_ptr::lock() for better performance
+  * use non-deprecated function
+  * Update test file for OrgMode
+  * link and macro replacement marker
+  * very basic support for [[link]] and [[link][desc]]
+  * support implicit link in normal text
+  * Change the build system to enable building with Qt6
+  * SQL and SQL (PostgreSQL): nested comments support (kde#442449)
+  * GnuPlot: fix a lot of issue (kde#442181)
+  * PHP: add readonly, never and some functions/classes/constants of php-8.1
+  * Bash and Zsh: support of ${!2} (kde#440360)
+  * Bash: more unixcommands (GNU coreutils and some others) (kde#439211)
+  * Fix compilation error on Qt6
+  * Fix language specification comments
+  * Rename MIME type text/x-objcpp-src => text/x-objc++src
+  * Add Homuncuius.theme
+  * remove rawhtml, not needed
+  * Add grammar for RETRO Forth
+
+-------------------------------------------------------------------
+Sat Dec  4 22:57:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.89.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.89.0
+- Changes since 5.88.0:
+  * markdown.xml: Fix highlighting of headers (include last char) (kde#444422)
+  * Update orgmode.xml
+  * use the same way as emacs to highlight priority cookie
+  * update test files
+  * support verbatim since it seems used more often than inline code
+  * support single line comment, babel call, priority cookie
+  * Update context.xml version
+  * Update ConTeXt test references
+  * Corrected syntax for ConTeXt TABLE commands (kde#445820)
+  * ConTeXt: Verbatim highlighting allows for nesting (kde#445818)
+  * Added ConTeXt test references
+  * Added ConTeXt test file
+  * Update context.xml version number
+  * Added highlighting for ConTeXt "\m" command
+  * Fixed current math command highlighting.
+  * misc: Add `Pipfile` to create Python venv for generators
+  * cmake.xml: Updates for CMake 3.22
+  * fix: Add `Loader` parameter in call to `yaml.load()`
+  * update test for inline code
+  * support inline code and another type of number list
+  * update test files for newly added syntax
+  * support block and number list
+  * add test files
+  * add orgmode.xml
+  * add racket.xml
+
+-------------------------------------------------------------------
+Sun Nov  7 09:13:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Strip 'Source' URL for faster submissions
+
+-------------------------------------------------------------------
+Sun Nov  7 09:08:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.88.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.88.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sat Oct 30 07:55:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add the optional QtQuick dependency. (boo#1192170)
+
+-------------------------------------------------------------------
+Sun Oct  3 20:34:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.87.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.87.0
+- Changes since 5.86.0:
+  * Add Gitlab CI configuration
+  * Add basic QML API docs
+  * yara - add new 4.x keywords
+  * Tests result
+  * Fix operators and included more blocks on test
+  * Change license to MIT
+  * Included test reference
+  * Removed items that are generating errors for now
+  * initial work on terraform syntax highlight
+  * Port AbstractHighlighter::highlightLine to QStringView
+
+-------------------------------------------------------------------
+Wed Sep 15 08:24:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Too many changes since 5.85.0, only listing bugfixes:
+  * markdown.xml: End nested sub-headers fold regions when parent header is closed (kde#441278)
+  * Python: Add "yield from" keyword (kde#441540)
+  * isocpp.xml: Highlight raw string delimeters (kde#440038)
+
+-------------------------------------------------------------------
+Fri Aug  6 12:13:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Too many changes since 5.84.0, only listing bugfixes:
+  * Python: Fix r"\\" and derivatives (kde#440412)
+  * Python: Fix single quote bytes literals (b"") (kde#440089)
+
+-------------------------------------------------------------------
+Sun Jul  4 07:46:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Too many changes to list here.
+- Only install the license files once
+
+-------------------------------------------------------------------
+Sat Jun  5 11:59:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.83.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.83.0
+- Changes since 5.82.0:
+  * Rust syntax - Autotest for separate ControlFlow + remove "try" from ControlFlow
+  * Rust syntax - Separate ControlFlow from Keywords
+  * Bump required CMake version to 3.16
+  * We can use qt_ macro so it will help to compile against qt5/qt6
+  * Fix perl qw< > highlighting and extend test
+  * Update GAS syntax to highlight reg/instrs/jmp instrs
+
+-------------------------------------------------------------------
+Sat May  1 16:41:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.82.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.82.0
+- Changes since 5.81.0:
+  * debchangelog: add Impish Indri
+  * remove text/plain from Godot
+  * systemd unit: merge some RegExpr rules
+  * systemd unit: increase version number
+  * systemd unit: update to systemd v248
+  * add support for Godot's gd-scripts
+  * Update Readme
+  * Bash/Zsh: (#5) fix SubShell context that starts as an arithmetic
+    evaluation ; add regions for all SubShell
+  * Doxygen: fix Word style when the word is at the end of line
+
+-------------------------------------------------------------------
+Mon Apr  5 07:13:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Mar  7 09:27:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.80.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.80.0
+- Too many changes since 5.79.0, only listing bugfixes:
+  * PHP: fix string, number and folding region ; refactor styles (kde#429651)
+
+-------------------------------------------------------------------
+Tue Feb 16 11:14:57 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.79.1
+  * Breeze Light: restore original black color for Control Flow
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.79.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.79.0
+- Too many changes since 5.78.0, only listing bugfixes:
+  * Bash, Zsh: fix cmd;; in a case (kde#430668)
+  * email.xml: Detect nested comments and escaped characters (kde#425345)
+  * Bash: fix } in ${!xy*} and more Parameter Expansion
+
+-------------------------------------------------------------------
+Wed Jan  6 10:48:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.78.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.78.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Mon Dec  7 17:14:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.77.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.77.0
+- Too many changes since 5.76.0, only listing bugfixes:
+  * Latex: some math environments can be nested (kde#428947)
+
+-------------------------------------------------------------------
+Sat Nov  7 21:35:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.76.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.76.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Mon Oct  5 08:23:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Too many changes since 5.74.0, only listing bugfixes:
+  * Fix doxygen latex formulas (kde#426466)
+
+-------------------------------------------------------------------
+Sun Sep  6 12:50:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.74.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.74.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Aug  2 07:14:02 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.73.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.73.0
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sun Jul  5 07:55:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.72.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.72.0
+- Changes since 5.71.0:
+  * CMake: Updates for CMake 3.18
+  * Add Snort/Suricata language highlighting
+  * Add YARA language
+  * fix compiler warning
+  * remove deprecated binary json in favor of cbor
+  * JavaScript/TypeScript: highlight tags in templates
+
+-------------------------------------------------------------------
+Sun Jun  7 08:07:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.71.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.71.0
+- Changes since 5.70.0:
+  * Update Raku extensions in Markdown blocks
+  * Raku: fix fenced code blocks in Markdown
+  * Add a simpler example
+  * Add collaboration guide in README
+  * Assign "Identifier" attribute to opening double quote instead of "Comment" (kde#421445)
+  * Bash: fix comments after escapes (kde#418876)
+  * LaTeX: fix folding in \end{...} and in regions markers BEGIN-END (kde#419125)
+
+-------------------------------------------------------------------
+Sun May  3 09:40:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.70.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.70.0
+- Changes since 5.69.0:
+  * debchangelog: add Groovy Gorilla
+  * fix unit test refs
+  * Updated test file for Logtalk syntax highlighting
+  * Update Logtalk language syntax support
+  * TypeScript: add the "awaited" type operator
+
+-------------------------------------------------------------------
+Sun Apr  5 19:46:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.69.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.69.0
+- Too many changes since 5.68.0, only listing bugfixes:
+  * LaTeX: fix math parentheses in optional labels (kde#418979)
+  * optimize dynamic regex matching (kde#418778)
+
+-------------------------------------------------------------------
+Sun Mar  8 09:18:08 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.68.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.68.0.php
+- Too many changes since 5.67.0, only listing bugfixes:
+  * Makefile highlight: fix variable names in "else" conditionals (kde#417379)
+  * Makefile highlight: add substitutions (kde#416685)
+
+-------------------------------------------------------------------
+Sun Feb  2 18:07:21 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Sun Feb  2 14:33:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.67.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.67.0.php
+- Changes since 5.66.0:
+  * Updates nasm.xml with the latest instructions
+  * Perl: Add 'say' to keyword list
+  * Make it compile against last qt5.15 without deprecated methods
+  * cmake: Fix `CMAKE_POLICY_*_CMP<N>` regex and add
+    special args to `get_cmake_property`
+  * Add GraphQL highlighting definition
+
+-------------------------------------------------------------------
+Sun Jan  5 09:02:30 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.66.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.66.0.php
+- Changes since 5.65.0:
+  * LaTeX: fix brackets in some commands (kde#415384)
+  * TypeScript: add "bigint" primitive type
+  * Python: improve numbers, add octals, binaries and "breakpoint" keyword (kde#414996)
+  * fix linking with static qt
+  * SELinux: add "glblub" keyword and update permissions list
+  * Several enhancements to gitolite syntax definition.
+
+-------------------------------------------------------------------
+Sun Dec  8 11:19:00 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.65.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.65.0.php
+- Changes since 5.64.0:
+  * Updates from CMake 3.16 final release
+  * reStructuredText: Fix inline literals highlighting preceding characters
+  * rst: Add support for standalone hyperlinks
+  * JavaScript: move keywords from TypeScript and other improvements
+  * JavaScript/TypeScript React: rename syntax definitions
+  * LaTeX: fix backslash delimiter in some keywords (kde#413493)
+
+-------------------------------------------------------------------
+Sun Nov  3 15:47:24 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.64.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.64.0.php
+- Changes since 5.63.0:
+  * VHDL: all keywords are insensitive (kde#413409)
+  * Add string escape characters to PowerShell syntax.
+  * Modelines: fix end of comment
+  * Meson: more built-in functions and add built-in member functions
+  * debchangelog: add Focal Fossa
+  * Updates from CMake 3.16
+  * use the new ECM provided clang-format target
+  * Meson: Add a comment section for comment/uncomment with Kate
+  * TypeScript: update grammar and fixes
+
+-------------------------------------------------------------------
+Sun Oct  6 13:27:10 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.63.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.63.0.php
+- Too many changes since 5.62.0, only listing bugfixes:
+  * Fix skipOffset with dynamic RegExpr (kde#399388)
+  * support .inl extension for C++, not used by other xml files at the moment (kde#411921)
+  * support *.rej for diff highlighting (kde#411857)
+
+-------------------------------------------------------------------
+Sat Sep  7 20:37:21 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.62.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.62.0.php
+- Changes since 5.61.0:
+  * Improve API documentation for Definition::setKeywordList()
+  * C & ISO C++: add digraphs (folding & preprocessor) (kde#411508)
+  * Markdown, TypeScript & Logcat: some fixes
+  * Format class: add functions to know if XML files set style attributes
+  * update matlab test refs
+  * combine test.m stuff into existing highlight.m
+  * Support for native Matlab strings
+  * Gettext: Add "Translated String" style and spellChecking attribute (kde#392612)
+  * reST: handle some more corner cases, add an actual test file
+  * Set the OpenSCAD indenter to C-style instead of none.
+  * Possiblity to change Definition data after loading
+  * Highlighting indexer: check kateversion
+  * Markdown: multiple improvements and fixes (kde#390309)
+  * JSP: support of <script> and <style> ; use IncludeRule ##Java
+  * LESS: import CSS keywords, new highlighting and some improvements
+  * JavaScript: remove unnecessary "Conditional Expression" context
+  * New syntax: SASS. Some fixes for CSS and SCSS (kde#149313)
+  * Use CMake find_dependency in CMake config file instead of find_package
+  * SCSS: fix interpolation (#{...}) and add the Interpolation color
+  * fix additionalDeliminator attribute (kde#399348)
+  * C++: contracts are not in C++20
+  * Gettext: fix "previous untranslated string" and other improvements/fixes
+  * Jam: Fix local with variable without initilisation and highlight SubRule
+  * Remove unused includes
+  * implicit fallthough if there is fallthoughContext
+  * restore right file paths
+  * Add common GLSL file extensions (.vs, .gs, .fs)
+  * Latex: several fixes (math mode, nested verbatim, ...) (kde#320303)
+  * Lua: fix color of end with several levels of condition and function nesting
+  * Highlighting indexer: all warnings are fatal
+  * Include KDE* cmake macros first
+
+-------------------------------------------------------------------
+Wed Aug  7 17:52:01 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.61.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.61.0.php
+- Changes since 5.60.0:
+  * Rust: add missing keywords and minor improvements 
+  * TypeScript: fix keywords in conditional expressions 
+  * Fix generator and test paths of CMake 
+  * Add support for additional QML keywords not part of JavaScript 
+  * Update cmake highlighting
+
+-------------------------------------------------------------------
+Fri Jul 19 11:49:56 UTC 2019 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Don't lower minimum Qt version anymore, it requires 5.11 now
+
+-------------------------------------------------------------------
+Sun Jul 14 06:41:41 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.60.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.60.0.php
+- Changes since 5.59.0:
+  * Fortran: relicense to MIT
+  * Improve the Fortran fixed format syntax highlighting
+  * fix file path
+  * Fortran: implement free & fixed formats
+  * Fix CMake COMMAND nested paren highlighting
+  * Fix and expand GDB unit test
+  * Add more keywords and also support rr in gdb highlighter
+  * Detect comment lines early in GDB highlighter
+  * AppArmor: update syntax
+  * Julia: update syntax and add constants keywords (kde#403901)
+  * Fix build failure due to reference to non-existing itemData attribute
+  * Install in new logging directory when we use kf5 5.59.0
+  * CMake: Highlight the standard CMake environment variables
+  * Add syntax definition for ninja build
+  * CMake: Support for 3.15 features
+  * Jam: various improvements and fixes
+  * Lua: update for Lua54 and end of function as Keyword rather than Control
+  * C++: update for C++20
+  * debchangelog: add Eoan Ermine
+
+-------------------------------------------------------------------
+Sun Jun 09 07:35:14 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.59.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.59.0.php
+- Changes since 5.58.0:
+  * YAML: only comments after spaces and other improvements/fixes (kde#407060)
+  * Markdown: use includeAttrib in code blocks
+  * fix highlighting of '\0' in C mode
+  * Tcsh: fix operators and keywords
+  * Add syntax definition for the Common Intermediate Language
+  * SyntaxHighlighter: Fix foreground color for text without special highlighting (kde#406821, kde#406816)
+  * examples: move codeeditor also in own subdir
+  * Add example app for printing highlighted text to pdf
+  * Markdown: Use color with higher contrast for lists (kde#405824)
+  * Remove .conf extension from "INI Files" hl, to determine the highlighter using MIME type (kde#400290)
+  * Perl: fix the // operator (kde#407327)
+  * fix casing of UInt* types in Julia hl (kde#407611)
+
+-------------------------------------------------------------------
+Wed May 15 18:16:19 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.58.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.58.0.php
+- Changes since 5.57.0:
+  * Use override as for other virtual method in this module
+  * Add syntax highlighting for fish shell
+  * AppArmor: don't highlight variable assignments and alias rules within profiles
+
+-------------------------------------------------------------------
+Sun Apr 14 20:21:45 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.57.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.57.0.php
+- Changes since 5.56.0:
+  * Add syntax definition for Elm language to syntax-highlighting
+  * AppArmor & SELinux: remove one indentation in XML files
+  * Doxygen: don't use black color in tags
+  * Allow line end context switches in empty lines (kde#405903)
+  * Fix endRegion folding in rules with beginRegion+endRegion (use length=0) (kde#405585)
+  * Add extensions to groovy highlighting (kde#403072)
+  * Add Smali syntax highlighting file
+  * Add "." as weakDeliminator in Octave syntax file and update tests
+  * Remove deprecated method
+  * Logcat: fix dsError color with underline="0"
+  * fix highlighter crash for broken hl file
+
+-------------------------------------------------------------------
+Sun Mar 10 20:15:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.56.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.56.0.php
+- Changes since 5.55.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Fri Feb 15 09:25:42 UTC 2019 - alarrosa@suse.com
+
+- Downgrade the Qt version requirement to build with 5.9
+
+-------------------------------------------------------------------
+Sun Feb 10 22:03:26 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.55.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.55.0.php
+- Changes since 5.54.0:
+  * Fix end of folding region in rules with lookAhead=true
+  * AsciiDoc: Fix highlighting of include directive
+  * Add AsciiDoc support
+  * Fixed Bug Which Caused Infinite Loop While Highlighting Kconfig Files
+  * check for endless context switches
+  * Ruby: fix RegExp after ": " and fix/improve detection of HEREDOC (kde#361875, kde#358273)
+  * delete copy constructor and assignment operator of some internal classes
+  * Haskell: Make = a special symbol
+
+-------------------------------------------------------------------
+Mon Jan 14 06:08:56 UTC 2019 - lbeltrame@kde.org
+
+- Update to 5.54.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.54.0.php
+- Changes since 5.53.0:
+  * Update php syntax support
+  * WML: fix embedded Lua code & use new default styles
+  * highlight token strings and delimited strings
+  * fixups for `extern` and `pragma`
+  * Highlight CUDA .cu and .cuh files as C++
+  * TypeScript & TS/JS React: improve types detection, fix float-points & other improvements/fixes
+  * Haskell: Highlight empty comments after 'import'
+  * WML: fix infinite loop in contexts switch & only highlight tags with valid names (kde#402720)
+  * BrightScript: Add workaround for QtCreator 'endsub' highlighting
+  * improve highlighting of complex numbers (kde#402002)
+  * BrightScript: Remove unused keyword list 'end'
+  * increment file version
+  * add attributes `shared` and `__gshared`
+  * stay in context Linkage2/Pragma2 until closing paren
+  * BrightScript: Add function/sub folding
+
+-------------------------------------------------------------------
+Sun Dec 09 19:43:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.53.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.53.0.php
+- Changes since 5.52.0:
+  * fix unit tests
+  * BrightScript: Allow sub to be unnamed
+  * Add highlighting file for Wayland Debug Traces
+  * Add syntax highlighting for TypeScript & TypeScript React
+  * Rust & Yacc/Bison: improve comments
+  * Prolog & Lua: fix shebang
+  * Fix language load after including keywords from this language in another file
+  * Add BrightScript syntax
+  * debchangelog: add Disco Dingo
+
+-------------------------------------------------------------------
+Sun Nov 11 19:48:09 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.52.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.52.0.php
+- Changes since 5.51.0:
+  * z/OS CLIST file syntax highlighting
+  * Creating new syntax highlighting file for Job Control Language (JCL)
+  * remove open mode from too new Qt version
+  * inc version + fixup required kate version to current framework version
+  * keyword rule: Spport for keywords inclusion from another language/file
+  * add test file + remove no longer existing instructions reference from xml
+  * Improve R documentation highlighting
+  * No spell checking for Metamath except in comments
+  * CMake: Add XCode related variables and properties introduced in 3.13
+  * CMake: Introduce new features of upcoming 3.13 release
+  * Use new syntax
+
+-------------------------------------------------------------------
+Tue Oct 16 08:02:54 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct 15 11:50:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.51.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.51.0.php
+- Changes since 5.50.0:
+  * i18n: fix extraction of theme names
+  * Fortran: Highlight alerts in comments (kde#349014)
+  * avoid that the main context can be #poped
+  * Endless state transition guard
+  * YAML: add literal & folded block styles (kde#398314)
+  * Logcat & SELinux: improvements for the new Solarized schemes
+  * AppArmor: fix crashes in open rules (in KF5.50) and improvements for the new Solarized schemes
+  * Update git ignore stuff
+  * Use reference in for loop for type with non-trivial copy constructor
+  * Avoid potential detach on range-loops with non-const Qt containers
+  * Include KDEFrameworkCompilerSettings using NO_POLICY_SCOPE
+  * Fix: Email highlighting for unclosed parenthesis in Subject header (kde#398717)
+  * Perl: fix brackets, variables, string references and others (kde#364866, kde#348765, kde#355300, kde#391577)
+  * Bash: fix parameter & brace expansion (kde#387915)
+  * Unit test: Check all shipped themes for completeness
+  * Add Solarized Light and Dark themes
+  * fix some ebn issues
+
+-------------------------------------------------------------------
+Thu Sep 13 21:58:47 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.50.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.50.0.php
+- Changes since 5.49.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sun Aug 19 09:19:39 UTC 2018 - christophe@krop.fr
+
+- Update to 5.49.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.49.0.php
+- Changes since 5.48.0:
+  * CoffeeScript: fix templates in embedded JavaScript code & add escapes
+  * Exclude this in Definition::includedDefinitions()
+  * Fix compiler warning -Wimplicit-fallthrough
+  * Use in-class member initialization where possible
+  * add functions to access keywords
+  * Add Definition::::formats()
+  * Add QVector<Definition> Definition::includedDefinitions() const
+  * Add Theme::TextStyle Format::textStyle() const;
+  * CSS: fix test reference of the previous commit
+  * C++: fix standard floating-point literals
+  * CSS: update syntax and fix some errors
+  * C++: update for c++20 and fix some syntax errors
+  * CoffeeScript & JavaScript: fix member objects. Add .ts extension in JS (kde#394365,kde#366797)
+  * Lua: fix multi-line string (kde#395515)
+  * RPM Spec: add MIME type
+  * Python: fix escapes in quoted-comments (kde#386685)
+  * haskell.xml: don't highlight Prelude data constructors differently from others
+  * haskell.xml: remove types from "prelude function" section
+  * haskell.xml: highlight promoted data constructors
+  * haskell.xml: add keywords family, forall, pattern
+  * Honor BUILD_TESTING
+
+-------------------------------------------------------------------
+Mon Jul 16 04:37:52 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.48.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.48.0.php
+- Changes since 5.47.0:
+  * Fixes for Java comments
+  * Highlight Gradle files with Groovy syntax too
+  * CMake: Fix highlighting after strings with a single `@` symbol
+  * CoffeeScript: add extension .cson
+  * Improve CMake syntax
+  * Rust: Add keywords & bytes, fix identifiers, and other improvements/fixes
+  * Awk: fix regex in a function and update syntax for gawk
+  * Pony: fix single quote escape and a possible infinite loop with #
+  * Update CMake syntax for the upcoming release 3.12.
+
+-------------------------------------------------------------------
+Tue Jun 12 21:26:10 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.47.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.47.0.php
+- Changes since 5.46.0:
+  * Perl6: Add support for extensions .pl6, .p6, or .pm6 (kde#392468)
+  * Add unit test for C++ Octal number misdetection
+  * DoxygenLua: fix closing comment blocks (kde#394184)
+  * add pgf to the latex-ish file formats (same format as tikz)
+  * Use override
+  * Add postgresql keywords
+  * Highlighting for OpenSCAD
+  * debchangelog: add Cosmic Cuttlefish
+  * cmake: Fix DetectChar warning about escaped backslash #2
+  * cmake: Fix DetectChar warning about escaped backslash
+  * Pony: fix identifier and keyword
+  * Lua: updated for Lua5.3
+
+-------------------------------------------------------------------
+Sun May 13 21:03:13 UTC 2018 - lbeltrame@kde.org
+
+- Update to 5.46.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.46.0.php
+- Changes since 5.45.0:
+  * Update project URL
+  * 'Headline' is a comment, so base it on dsComment.
+  * Add missing Q_DECL_OVERRIDE, warning--
+  * Add highlighting for GDB command listings and gdbinit files
+  * Add syntax highlighting for Logcat
+
+-------------------------------------------------------------------
+Sat Apr 14 13:19:09 CEST 2018 - lbeltrame@kde.org
+
+- Update to 5.45.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.45.0.php
+- Changes since 5.44.0:
+  * Fix CMake highlighting tests
+  * Make it possible to fully build the project when crosscompiling
+  * Redesign CMake syntax generator
+  * Optimize highlighting Bash, Cisco, Clipper, Coffee, Gap, Haml, Haskell
+  * Remove not necessary QtCore and co
+  * Add syntax highlighting for MIB files
+
+-------------------------------------------------------------------
+Mon Mar 12 23:29:43 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.44.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.44.0.php
+- Changes since 5.43.0:
+  * Basic support for PHP and Python fenced code blocks in Markdown
+  * Support case-insensitive WordDetect
+  * Scheme highlighting: Remove hard-coded colors
+  * Add syntax highlighting for SELinux CIL Policies & File Contexts
+  * Adding ctp file extension to the PHP syntax highlighting
+  * Yacc/Bison: Fix the $ symbol and update syntax for Bison
+  * awk.xml: add gawk extension keywords (kde#389590)
+  * Add APKBUILD to be highlighted as a Bash file
+  * Revert "Add APKBUILD to be highlighted as a Bash file"
+  * Add APKBUILD to be highlighted as a Bash file
+
+-------------------------------------------------------------------
+Mon Feb 12 23:42:13 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.43.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.43.0.php
+- Changes since 5.42.0:
+  * Fix C# var regex
+  * Support for underscores in numeric literals (Python 3.6) (kde#385422)
+  * AppArmor: Fix style
+  * Highlight Khronos Collada and glTF files
+  * Fix ini highlighting of values containing ; or # characters
+  * AppArmor: new keywords, improvements & fixes
+
+-------------------------------------------------------------------
+Tue Jan 16 22:50:24 CET 2018 - lbeltrame@kde.org
+
+- Update to 5.42.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.42.0.php
+- Changes since 5.41.0:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sun Dec 17 09:43:50 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.41.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.41.0.php
+- Changes since 5.40.0:
+  * Add PKGUILD to bash syntax
+  * JavaScript: include standard mime types
+  * debchangelog: add Bionic Beaver
+  * Update SQL (Oracle) syntax file (kde#386221)
+  * SQL: move detecting comments before operators
+  * crk.xml: added <?xml> header line
+
+-------------------------------------------------------------------
+Mon Nov 13 07:01:18 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.40.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.40.0.php
+- Changes since 5.39.0:
+  * Makefile: fix regexpr matching in "CXXFLAGS+"
+
+-------------------------------------------------------------------
+Mon Oct 23 06:41:48 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.39.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.39.0.php
+- Changes since 5.38.0:
+  * Fix non-existing itemDatas
+  * Fix invalid itemData references of 57 highlighting files
+  * Add support for custom search paths for application-specific syntax and theme definitions
+  * remove extra executable bits
+  * AppArmor: fix DBus rules
+  * Highlighting indexer: factor out checks for smaller while loop
+  * ContextChecker: support '!' context switchting and fallthroughContext
+  * Highlighting indexer: check existence of referenced context names
+  * remove extra executable bits
+  * Relicense qmake highlighting to MIT license
+  * Let qmake highlighting win over Prolog for .pro files (kde#383349)
+  * Support clojure's "@" macro with brackets
+  * Add syntax highlighting for AppArmor Profiles.
+  * Highlighting indexer: Catch invalid a-Z/A-z ranges in regexps
+  * Fixing incorrectly capitalized ranges in regexps
+  * add missing reference files for tests, looks ok, I think
+  * Added Intel HEX file support for the Syntax highlighting database
+  * Disable spell checking for strings in Sieve scripts
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:19 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.38.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.38.0.php
+- Changes since 5.37.0:
+  * Add syntax definition for Adblock Plus filter lists
+  * Rewrite the Sieve syntax definition
+  * Add highlighting for QDoc configuration files
+  * Add highlight definition for Tiger
+  * Escape hyphen in rest.xml regular expressions (kde#383632)
+  * fix: plaintext is highlighted as powershell
+  * indexer: Use qWarning for every error message
+  * Add syntax highlighting for Metamath
+  * Lesscss highlighting: Add generated reference as unit test
+  * Rebased Less syntax highlighting on SCSS one (kde#369277)
+  * Add Pony highlighting
+  * Rewrite the email syntax definition
+
+-------------------------------------------------------------------
+Sat Aug 12 09:23:45 UTC 2017 - christophe@krop.fr
+
+- Update to 5.37.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.37.0.php
+- Changes since 5.36.0 :
+  * Allow to build KSyntaxHighlighter without Qt5Gui
+  * Add cross-compilation support for the highlighting indexer
+  * Themes: Remove all unused metadata (license, author, read-only)
+  * Theme: Remove license and author fields
+  * Theme: Derive read-only flag from file on disk
+  * Add syntax highlighting for YANG data modeling language
+  * PHP: Add PHP 7 keywords (kde#356383)
+  * PHP: Clean up PHP 5 information
+  * fix gnuplot, make leading/trailing spaces fatal
+  * fix 'else if' detection, we need to switch context, add extra rule
+  * indexer checks for leading/trailing whitespaces in XML highlighting
+  * Doxygen: Add Doxyfile highlighting
+  * add missing standard types to C highlighting and update to C11 (kde#367798)
+  * Q_PI D => Q_PID
+  * PHP: Improve highlighting of variables in curly braces in double quotes (kde#382527)
+  * Add PowerShell highlighting
+  * Haskell: Add file extension .hs-boot (bootstrap module) (kde#354629)
+  * Fix replaceCaptures() to work with more than 9 captures
+  * Ruby: Use WordDetect instead of StringDetect for full word matching
+  * Fix incorrect highlighting for BEGIN and END in words such as "EXTENDED" (kde#350709)
+  * PHP: Remove mime_content_type() from list of deprecated functions (kde#371973)
+  * XML: Add XBEL extension/mimetype to xml highlighting (kde#374573)
+  * Bash: Fix incorrect highlighting for command options (kde#375245)
+  * Perl: Fix heredoc highlighting with leading spaces in the delimiter (kde#379298)
+  * Update SQL (Oracle) syntax file (kde#368755)
+  * C++: Fix '-' is not a part of UDL String (kde#380408)
+  * C++: printf format specifies: add 'n' and 'p', remove 'P' (kde#380409)
+  * C++: Fix char value have the color of the strings (kde#380489)
+  * VHDL: Fix highlighting error when using brackets and attributes (kde#368897)
+  * zsh highlighting: Fix math expression in a substring expression (kde#380229)
+  * JavaScript Highlighting: Add support for E4X xml extension (kde#373713)
+  * Remove "*.conf" extension rule
+  * Pug/Jade syntax
+
+
+-------------------------------------------------------------------
+Wed Jul 12 07:14:05 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.36.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.36.0.php
+- Changes since 5.35.0:
+  * Highlight .julius files as JavsScript.
+  * Haskell: Add all language pragmas as keywords.
+  * add unit test for isocpp
+  * CMake: Fix CMP0058 warning when using Ninja
+  * Don't assume 'diff' is in PATH for other tests
+  * testhighlighter: Don't assume 'diff' is in PATH
+  * Makefile: increase version number
+  * CMake: OR/AND not highlighted after expr in () (kde#360656)
+  * Makefile: Remove invalid keyword entries in makefile.xml
+  * indexer: Improve error reporting
+  * Add since tags.
+  * HTML syntax file version update
+  * Angular modifiers in HTML attributes added
+  * [FEATURE] Option to build & install QCH file with the public API dox
+  * Update test reference data following the changes of the previous commit
+  * Bug 376979 - angle brackets in doxygen comments break syntax highlighting
+
+-------------------------------------------------------------------
+Sun Jun 11 09:27:44 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.35.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.35.0.php
+- Changes since 5.34.0:
+  * Haskell: highlight "julius" quasiquoter using Normal##Javascript rules.
+  * Haskell: enable hamlet highlighting for "shamlet" quasiquoter too.
+
+-------------------------------------------------------------------
+Mon May 15 13:53:11 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.34.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.34.0.php
+- Changes since 5.33.0:
+  * Add Arduino extension
+  * debchangelog: add Ubuntu Artful
+  * Adapt test reference data to changes in the input data
+  * LaTeX: Fix Incorrect termination of \iffalse comments (kde#378487)
+
+-------------------------------------------------------------------
+Sat Apr 15 10:12:00 CEST 2017 - lbeltrame@kde.org
+
+- Update to 5.33.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.33.0.php
+- Changes since 5.32.0:
+  * Upgrade ECM and KF5 version requirements for 5.33.0 release.
+  * TOML: Fix highlighting of string escape sequences
+  * Update Clojure syntax highlighting
+  * few updates to OCaml syntax
+  * Hightlight *.sbt files as scala code
+  * Also use the QML highlighter for .qmltypes files
+  * Add unit test for Apache configuration highlighting
+  * Upgrade KF5 version to 5.33.0.
+
+-------------------------------------------------------------------
+Sun Mar 19 14:51:19 CET 2017 - lbeltrame@kde.org
+
+- Update to 5.32.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/kde-frameworks-5.32.0.php
+- Changes since 5.31.0:
+  * Commit translations from l10n-kf5
+  * Upgrade ECM and KF5 version requirements for 5.32.0 release.
+  * Fix autotest
+  * Add more keyword. Disable spellchecking for keywords
+  * Fix typo
+  * Add more keyword
+  * Add *.RHTML file extension to Ruby on Rails highlighting
+  * Update SCSS and CSS syntax highlight
+  * less highlighting: Fix single line comments starting new regions
+  * Upgrade KF5 version to 5.32.0.
+  * LaTeX highlighting: fix alignat environment
+
+-------------------------------------------------------------------
+Thu Feb  9 10:20:51 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.31.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.31.0.php
+
+-------------------------------------------------------------------
+Mon Jan  9 00:00:52 UTC 2017 - hrvoje.senjan@gmail.com
+
+- Update to 5.30.0
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.30.0.php
+
+-------------------------------------------------------------------
+Sun Dec  4 01:54:25 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.29.0
+  * Normalize XML license attribute values
+  * Sync syntax definitions from ktexteditor
+  * Fix folding region merging
+  * For more details please see:
+    https://www.kde.org/announcements/kde-frameworks-5.29.0.php
+
+-------------------------------------------------------------------
+Wed Nov 30 11:57:10 UTC 2016 - lbeltrame@kde.org
+
+- Adjust licenses as pointed out by legal review
+
+-------------------------------------------------------------------
+Mon Sep 19 18:50:45 UTC 2016 - lbeltrame@kde.org
+
+- Initial version of the package.
+

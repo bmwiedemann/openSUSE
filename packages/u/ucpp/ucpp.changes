@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Sun Jul 29 11:59:44 UTC 2018 - jengelh@inai.de
+
+- Compact description and ensure neutrality.
+
+-------------------------------------------------------------------
+Wed Jun  6 08:22:17 UTC 2018 - tchvatal@suse.com
+
+- Version update to 1.3.5:
+  * Few cppcheck fixes
+  * Move to gitlab
+  * Few manpage tweaks
+
+-------------------------------------------------------------------
+Fri Nov  1 08:58:09 UTC 2013 - tchvatal@suse.com
+
+- Drop clean phase and use verbose build.
+
+-------------------------------------------------------------------
+Sat Apr 20 11:37:41 UTC 2013 - tchvatal@suse.com
+
+- Add http url path.
+
+-------------------------------------------------------------------
+Wed Dec 19 07:46:28 UTC 2012 - tchvatal@suse.com
+
+- Version bump to 1.3.4
+  * this version moves all the options from header to conf switches
+  * add possibility to use the headers in c++ apps
+  * silences warnings
+  * remove weird exit so buildservice does not complain
+
+-------------------------------------------------------------------
+Thu Nov 22 12:35:37 UTC 2012 - tchvatal@suse.com
+
+- Depend on xz for unpacking.
+
+-------------------------------------------------------------------
+Wed Nov 21 16:32:22 UTC 2012 - tchvatal@suse.com
+
+- Initial commit, required by libreoffice-4.0
+

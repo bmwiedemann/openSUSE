@@ -1,0 +1,158 @@
+diff --git a/Makefile.am b/Makefile.am
+index 9ad698b..da1837a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2,7 +2,7 @@ ACLOCAL_AMFLAGS = -I m4
+ 
+ SUBDIRS = \
+ 	src \
+-	misc
++	examples
+ 
+ desktopdir = $(datadir)/applications
+ desktop_DATA = x11vnc.desktop
+diff --git a/README b/README
+index d240c75..0db06b5 100644
+--- a/README
++++ b/README
+@@ -943,14 +943,14 @@ make
+      * Improved support for non-X11 touchscreen devices (e.g. handheld or
+        cell phone) via Linux uinput input injection. Additional tuning
+        parameters are added. TSLIB touchscreen calibration is supported.
+-       Tested on Qtmoko Neo Freerunner. A tool, misc/uinput.pl, is
++       Tested on Qtmoko Neo Freerunner. A tool, examples/uinput.pl, is
+        provided to diagnose uinput behavior on new devices. The env.
+        vars. X11VNC_UINPUT_BUS and X11VNC_UINPUT_VERSION are available if
+        leaving them unset does not work.
+      * The Linux uinput non-X11 input injection can now be bypassed:
+        events can be directly written to the /dev/input/event devices
+        specified by the user (direct_abs=..., etc.) A -pipeinput input
+-       injection helper script, misc/qt_tslib_inject.pl is provided as a
++       injection helper script, examples/qt_tslib_inject.pl is provided as a
+        tweakable non-builtin direct input injection method.
+      * The list of new uinput parameters for the above two features is:
+        pressure, tslib_cal, touch_always, dragskip, btn_touch;
+@@ -1064,7 +1064,7 @@ make
+        x11vnc to use the -xrandr screen size change trapping code.
+      * New remote control query options: pointer_x, pointer_y,
+        pointer_same, pointer_root, and pointer_mask. A demo script using
+-       them misc/panner.pl is provided.
++       them examples/panner.pl is provided.
+      * The -sslScripts option prints out the SSL certificate management
+        scripts.
+ 
+@@ -6520,7 +6520,7 @@ EndSection
+    down the delays, e.g. "-wait 5" and "-defer 5" (or even a smaller
+    setting) to poll and pump things out more quickly.
+ 
+-   See the instructions in "x11vnc/misc/turbovnc/README" for how to build
++   See the instructions in "x11vnc/examples/turbovnc/README" for how to build
+    x11vnc with TurboVNC support. You will also need to download the
+    TurboJPEG software.
+ 
+@@ -7781,7 +7781,7 @@ minal #2)
+ 
+    Note the -pipeinput helper program could actually control the raw
+    framebuffer. In the libvncserver CVS a simple example program
+-   x11vnc/misc/slide.pl is provided that demonstrates a simple jpeg
++   x11vnc/examples/slide.pl is provided that demonstrates a simple jpeg
+    "slideshow" application. Also the builtin "-pipeinput VID" mode does
+    this for webcams and TV capture devices (/dev/video0.)
+ 
+@@ -7791,7 +7791,7 @@ minal #2)
+ 
+    Another example provided in libvncserver CVS is a script to inject
+    keystrokes into the Linux console (e.g. the virtual consoles:
+-   /dev/tty1, /dev/tty2, etc) in x11vnc/misc/vcinject.pl. It is based on
++   /dev/tty1, /dev/tty2, etc) in x11vnc/examples/vcinject.pl. It is based on
+    the vncterm/LinuxVNC.c program also in the libvncserver CVS. So to
+    view and interact with VT #2 (assuming it is the active VT) one can
+    run something like:
+@@ -8128,7 +8128,7 @@ minal #2)
+    writing the touchscreen events directly to /dev/input/event1 then
+    input can be injected into the system. There is no x11vnc builtin mode
+    for this yet (until we understand it better), but there is a working
+-   script provided in x11vnc/misc/qt_tslib_inject.pl. So one could use it
++   script provided in x11vnc/examples/qt_tslib_inject.pl. So one could use it
+    this way for example:
+   x11vnc ... -rawfb console -pipeinput path/to/qt_tslib_inject.pl -env INJECT_O
+ PTIONS=clickonly,cal=/etc/pointercal
+@@ -8137,7 +8137,7 @@ PTIONS=clickonly,cal=/etc/pointercal
+    options mean (e.g. /etc/pointercal contains TSLIB's calibration
+    parameters and are necessary to achieve accurate pointing.)
+ 
+-   The x11vnc/misc/qt_tslib_inject.pl script can potentially be modified
++   The x11vnc/examples/qt_tslib_inject.pl script can potentially be modified
+    to handle other devices where the uinput method fails. It could also
+    be modified to create 'hot keys', etc.
+ 
+@@ -9185,7 +9185,7 @@ or:
+    For inetd.conf, an example is:
+   5900 stream tcp6 nowait root /usr/sbin/tcpd /usr/local/bin/x11vnc_wrapper.sh
+ 
+-   We also provide a transitional tool in "x11vnc/misc/inet6to4" that
++   We also provide a transitional tool in "x11vnc/examples/inet6to4" that
+    acts as a relay for any IPv4 application to allow connections over
+    IPv6. For example:
+   inet6to4 5900 localhost:5900
+diff --git a/configure.ac b/configure.ac
+index b17beff..1f54a45 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -524,7 +524,7 @@ AM_CONDITIONAL(HAVE_RPM, test "$RPMSOURCEDIR" != "NOT-FOUND")
+ AM_CONDITIONAL(WITH_X11VNC,  test "$build_x11vnc" = "yes")
+ AC_SUBST(RPMSOURCEDIR)
+ 
+-AC_CONFIG_FILES([Makefile src/Makefile misc/Makefile misc/turbovnc/Makefile])
++AC_CONFIG_FILES([Makefile src/Makefile examples/Makefile examples/turbovnc/Makefile])
+ 
+ AC_OUTPUT
+ 
+diff --git a/misc/turbovnc/README b/misc/turbovnc/README
+index 328929c..7f95263 100644
+--- a/misc/turbovnc/README
++++ b/misc/turbovnc/README
+@@ -45,7 +45,7 @@ QUICK-START:
+ 
+ For those in a hurry:
+ 
+-  cd x11vnc-x.y.z/x11vnc/misc/turbovnc
++  cd x11vnc-x.y.z/x11vnc/examples/turbovnc
+   ./apply_turbovnc
+   cd ../../..
+   env LDFLAGS='-L/DIR -Xlinker --rpath=/DIR' ./configure
+@@ -58,7 +58,7 @@ PATCHING AND BUILDING:
+ ----------------------
+ 
+ After unpacking your x11vnc-x.y.z.tar.gz tarball cd to the
+-x11vnc-x.y.z/x11vnc/misc/turbovnc (where this README file is) and from
++x11vnc-x.y.z/x11vnc/examples/turbovnc (where this README file is) and from
+ that directory run:
+ 
+ 	./apply_turbovnc
+diff --git a/src/help.c b/src/help.c
+index 56e559f..5e63ad7 100644
+--- a/src/help.c
++++ b/src/help.c
+@@ -1621,7 +1621,7 @@ void print_help(int mode) {
+ "                       Xdummy:\n"
+ "\n"
+ "                       The Xdummy wrapper is part of the x11vnc source code\n"
+-"                       (x11vnc/misc/Xdummy)  It should be available in PATH\n"
++"                       (x11vnc/examples/Xdummy)  It should be available in PATH\n"
+ "                       and have run \"Xdummy -install\" once to create the\n"
+ "                       shared library.  Xdummy only works on Linux.  As of\n"
+ "                       12/2009 it no longer needs to be run as root, and the\n"
+diff --git a/x11vnc.1 b/x11vnc.1
+index 730f341..a23b1fd 100644
+--- a/x11vnc.1
++++ b/x11vnc.1
+@@ -1788,7 +1788,7 @@ By default FINDCREATEDISPLAY will try Xvfb and then
+ Xdummy:
+ .IP
+ The Xdummy wrapper is part of the x11vnc source code
+-(x11vnc/misc/Xdummy)  It should be available in PATH
++(x11vnc/examples/Xdummy)  It should be available in PATH
+ and have run "Xdummy \fB-install"\fR once to create the
+ shared library.  Xdummy only works on Linux.  As of
+ 12/2009 it no longer needs to be run as root, and the

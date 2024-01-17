@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>822748d5f8f03e2cff30fa88789da19c</srcmd5>
+    <version>1.7.0~git20220608.47a96e1</version>
+    <time>1655821934</time>
+    <user>dimstar_suse</user>
+    <comment>OpenBoard is in the Education project for quite some time now. Recently it could not be built for TW, because it still depended on QWebKit, which is obsolete and no longer available in TW.
+
+There are efforts on the way in the upstream project to move to QWebEngine, and I'm also the main contributor for this transition. It will however take some time until the upstream project releases a new version. In the meantime I compiled an OpenBoard version based on the current git development branch plus a set of pending PRs and I'm maintaining this version in the Education project.
+
+I want to make OpenBoard available again in TW (and later also Leap) and therefore submit this package to Factory.</comment>
+    <requestid>983997</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c50de6dfb5cc06552fe955a2efed2a8</srcmd5>
+    <version>1.7.0~git20220608.47a96e1</version>
+    <time>1656145450</time>
+    <user>dimstar_suse</user>
+    <comment>- fix several issues
+  - add 0008-install-fonts.patch
+  - add 0637-fix-pdf-background-export.patch
+  - add 0641-fix-font-handling.patch
+</comment>
+    <requestid>984870</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20ce177cbe69105949abb64d8c293641</srcmd5>
+    <version>1.7.0~git20220914.47a96e1</version>
+    <time>1663694610</time>
+    <user>dimstar_suse</user>
+    <comment>- fix file list in spec file
+  - do not include /usr/share/mime/packages directory owned by
+    filesystem
+- update to version 1.7.0~git20220914.47a96e1
+- feat: user configurable shortcuts
+  * add 0460-shortcut-configuration.patch
+- fix: boxing in single screen mode
+  * update 0633-improve-displaymanager.patch
+- fix: PDF background export
+  * update 0637-fix-pdf-background-export.patch
+- fix: font handling
+  * update 0641-fix-font-handling.patch
+- fix: PDF export scaling
+  * add 0649-fix-pdf-export-scaling.patch
+- refactor: Linux build and installation
+  * add 0651-chore-reorganize-linux-build.patch
+  * replaces 0001-Rewrite-libs.pri.patch
+  * replaces 0002-Install-to-correct-directories-on-linux.patch
+  * replaces 0003-podcast.pri-port-to-pkgconfig.patch
+  * replaces 0004-Use-QStandardPaths-to-locate-resources.patch
+  * replaces 0005-Add-svg-icon.patch
+  * replaces 0006-pro-Remove-UB_THIRDPARTY_INTERACTIVE.patch
+  * replaces 0007-Linux-Only-use-onboard-by-default-if-it-s-installed.patch
+  * replaces 0008-install-fonts.patch
+  * add mimespec for .ubz files
+  * also improve handling of onboard on-screen keyboard
+- refactor: clean spec file
+</comment>
+    <requestid>1004929</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c15cfaec2e799286a57b5eb2f9f2049a</srcmd5>
+    <version>1.7.0~git20221129.9de37af</version>
+    <time>1669816779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038947</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e07e047d11c5bddfa6ece45a6ab7b42e</srcmd5>
+    <version>1.7.0~git20221129.9de37af</version>
+    <time>1674665080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060940</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0f2ba49b3831aafc2e7cfaba4dbfd4eb</srcmd5>
+    <version>1.7.0~git20230614.2ff8f29</version>
+    <time>1687207828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093671</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9e32f38d996cb0b0197eedc2aee57ed3</srcmd5>
+    <version>1.7.0</version>
+    <time>1702158831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132217</requestid>
+  </revision>
+</revisionlist>

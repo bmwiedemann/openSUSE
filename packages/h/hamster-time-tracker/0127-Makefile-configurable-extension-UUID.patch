@@ -1,0 +1,92 @@
+From dd5fa6015b6aca38fcfe2b4a3dd8618d7dacaa15 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 27 Apr 2020 12:52:58 +0200
+Subject: [PATCH 127/130] Makefile: configurable extension UUID
+
+We seem to have issues with the contact@projecthamster.org UUID.
+GNOME shell 3.36 looks it up on extensions.gnome.org, finds
+it to be "blacklisted", disables and deletes (!) it.
+move data/metadata.json to data/metadata.json.in
+
+So, make it possible to choose another UUID during build.
+Simply run:
+
+     make UUID=my-nice-uuid@some.domain
+
+This requires to create metadata.json from metadata.json.in.
+---
+ Makefile                                 | 17 +++++++++++++----
+ data/{metadata.json => metadata.json.in} |  2 +-
+ 2 files changed, 14 insertions(+), 5 deletions(-)
+ rename data/{metadata.json => metadata.json.in} (93%)
+
+diff --git a/Makefile b/Makefile
+index c8af827..0e31de5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,6 +6,8 @@ SPHINX_TEST_SPHINX_BUILDDIR = _test_build
+ BUILDDIR = build
+ # Directory to save a 'ready to deploy extension' archive
+ DISTDIR = dist
++# Extension "UUID" to use, default: contact@projecthamster.org
++UUID := contact@projecthamster.org
+ 
+ # Script to lauch a browser in order to open passed path.
+ define BROWSER_PYSCRIPT
+@@ -40,9 +42,12 @@ help:
+ 	@echo "						(Requires JSHint)."
+ 	@echo "   test-docs			to run automated tests on the documentation."
+ 
+-clean: clean-build clean-docs clean-test-docs
++clean: clean-build clean-docs clean-test-docs clean-data
+ 	rm -f dist/*
+ 
++clean-data:
++	rm -f data/metadata.json
++
+ clean-build:
+ 	rm -fr build
+ 
+@@ -55,9 +60,13 @@ clean-test-docs:
+ $(BUILDDIR):
+ 	mkdir -p $@
+ 
+-collect:	$(BUILDDIR)
++data/metadata.json:	data/metadata.json.in
++	sed 's/@UUID@/"$(UUID)"/' $< >$@
++
++collect:	$(BUILDDIR) data/metadata.json
+ 	cp -R extension/* $(BUILDDIR)
+ 	cp -R data/* $(BUILDDIR)
++	rm -f $(BUILDDIR)/metadata.json.in
+ 
+ compile: collect
+ 	glib-compile-schemas $(BUILDDIR)/schemas
+@@ -76,8 +85,8 @@ dist: compile
+ # We need to do this like this as 'zip' always uses the cwd as archive root.
+ # And for the extension to work extension.js etc. need to be at the root.
+ 	mkdir -p $(DISTDIR);
+-	cd $(BUILDDIR); zip -rq ../dist/contact@projecthamster.org.zip ./* || true
+-	cd $(BUILDDIR); tar -czf ../dist/contact@projecthamster.org.tar.gz *
++	cd $(BUILDDIR); zip -rq ../dist/$(UUID).zip ./* || true
++	cd $(BUILDDIR); tar -czf ../dist/$(UUID).tar.gz *
+ 	@ls -l dist
+ 
+ docs:
+diff --git a/data/metadata.json b/data/metadata.json.in
+similarity index 93%
+rename from data/metadata.json
+rename to data/metadata.json.in
+index 8150290..6818eea 100644
+--- a/data/metadata.json
++++ b/data/metadata.json.in
+@@ -14,5 +14,5 @@
+         "3.34"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+-    "uuid": "contact@projecthamster.org"
++    "uuid": @UUID@,
+ }
+-- 
+2.26.1
+

@@ -1,0 +1,25 @@
+--- binaryornot-0.4.4/tests/test_check.py	2017-08-03 17:51:33.000000000 +0200
++++ binaryornot-0.4.4/tests/test_check.py	2018-02-28 11:44:58.436858172 +0100
+@@ -20,9 +20,6 @@
+ from contextlib import contextmanager
+ from tempfile import mkstemp
+ 
+-from hypothesis import given
+-from hypothesis.strategies import binary
+-
+ from binaryornot.check import is_binary
+ 
+ 
+@@ -215,12 +212,5 @@
+         os.unlink(f)
+ 
+ 
+-class TestDetectionProperties(unittest.TestCase):
+-    @given(binary(average_size=512))
+-    def test_never_crashes(self, data):
+-        with bytes_in_file(data) as f:
+-            is_binary(f)
+-
+-
+ if __name__ == '__main__':
+     unittest.main()

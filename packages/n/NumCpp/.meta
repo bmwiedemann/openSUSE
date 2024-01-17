@@ -1,0 +1,8 @@
+<package name="NumCpp" project="openSUSE:Factory">
+  <title>C++ implementation of the Python Numpy library</title>
+  <description>NumCpp is a templatized header-only C++ implementation of the Python NumPy library.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="NumCpp"/>
+  <url>https://github.com/dpilger26/NumCpp</url>
+</package>

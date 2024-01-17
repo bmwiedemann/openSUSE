@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Tue Jan 11 20:52:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add python macro dependency 
+
+-------------------------------------------------------------------
+Tue Aug 31 18:03:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- skip python36: apiron on TW does not support Python 3.6 anymore
+- remove apiron version pinning from Python sitelib metadata
+  (upstream uses apiron==6.0.0)
+
+-------------------------------------------------------------------
+Thu Jul 22 19:46:12 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.7.1 
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Tue Jan 19 04:37:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use python_sitelib, rather than python3_sitelib when installing files. 
+
+-------------------------------------------------------------------
+Tue Sep  1 05:08:46 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.0:
+  * No upstream changelog 
+- Update {Build,}Requires for apiron.
+
+-------------------------------------------------------------------
+Mon Oct 21 10:19:24 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- rename to python-beren 
+  version 0.6.2
+
+-------------------------------------------------------------------
+Mon Aug 26 19:19:47 UTC 2019 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.5.6
+  initial build on OBS

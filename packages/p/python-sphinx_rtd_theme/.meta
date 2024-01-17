@@ -1,0 +1,5 @@
+<package name="python-sphinx_rtd_theme" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-sphinx_rtd_theme"/>
+</package>

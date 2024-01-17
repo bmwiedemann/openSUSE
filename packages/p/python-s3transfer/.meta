@@ -1,0 +1,5 @@
+<package name="python-s3transfer" project="openSUSE:Factory">
+  <title>AWS S3 Transfer Manager</title>
+  <description>Transfer Manager in Python for AWS S3 service.</description>
+  <devel project="devel:languages:python:aws" package="python-s3transfer"/>
+</package>

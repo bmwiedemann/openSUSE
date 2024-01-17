@@ -1,0 +1,5 @@
+<package name="readline6" project="openSUSE:Factory">
+  <title>Compatibilty package</title>
+  <description></description>
+  <devel project="Base:System" package="readline6"/>
+</package>

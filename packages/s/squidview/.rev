@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8b3169cc60132caa5bfc34cc0073080</srcmd5>
+    <version>0.79</version>
+    <time>1312447404</time>
+    <user>saschpe</user>
+    <comment>new package : squidview is a nice interactive tool to have if you use squid, placed in group Productivity/Networking/Web/Proxy and developped in server:proxy</comment>
+    <requestid>76344</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>389092d4ee33a367cad47193be07d94c</srcmd5>
+    <version>0.79</version>
+    <time>1312447414</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76344
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>389092d4ee33a367cad47193be07d94c</srcmd5>
+    <version>0.79</version>
+    <time>1319182487</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8435629a3c394939bae0262fbeac516f</srcmd5>
+    <version>0.79</version>
+    <time>1323085544</time>
+    <user>coolo</user>
+    <comment>-ltinfo patch</comment>
+    <requestid>95026</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>0d1d57f60dbaaa98d338494be18c5b3a</srcmd5>
+    <version>0.79</version>
+    <time>1329400897</time>
+    <user>coolo</user>
+    <comment>Modified service source_validator
+Patch licence to follow spdx</comment>
+    <requestid>105219</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>0d1d57f60dbaaa98d338494be18c5b3a</srcmd5>
+    <version>0.79</version>
+    <time>1340184236</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>0d1d57f60dbaaa98d338494be18c5b3a</srcmd5>
+    <version>0.79</version>
+    <time>1359110433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>0d1d57f60dbaaa98d338494be18c5b3a</srcmd5>
+    <version>0.79</version>
+    <time>1379664726</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d7c5bcef6549c3226e88b73636b84151</srcmd5>
+    <version>0.80</version>
+    <time>1392448035</time>
+    <user>coolo</user>
+    <comment>upgrade last upstream version 0.8</comment>
+    <requestid>222250</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>d7c5bcef6549c3226e88b73636b84151</srcmd5>
+    <version>0.80</version>
+    <time>1409303408</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>11c24bf25c4e27b0cce05be8dbdde166</srcmd5>
+    <version>0.80</version>
+    <time>1412533877</time>
+    <user>coolo</user>
+    <comment>New patch fixing build issue with Factory.</comment>
+    <requestid>253681</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f679212ea8a07bc76c68fe5384d37c6</srcmd5>
+    <version>0.81</version>
+    <time>1420429389</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>267152</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c98c5dace5ebd9f42aba35c2384a36fc</srcmd5>
+    <version>0.86</version>
+    <time>1505334779</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523003</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,186 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15555ae6473568a83829558775695531</srcmd5>
+    <version>0.3.9.2</version>
+    <time>1544726926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.9.2:
+  * Update changelog &amp; authors
+  * Fix splint test error (#359)
+  * Clarify the usage of callback fields inside oneof sections in the docs
+  * cmake: Include CMAKE_INSTALL_LIBDIR in CMAKE_INSTALL_CMAKEDIR
+  * cmake: Allow to build a shared library
+  * Made some changes for Error Output.
+  * Update README.md
+  * Further test fail fix for Windows
+- Initial release
+</comment>
+    <requestid>657118</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>293a5effe613e07f738efc32e2253614</srcmd5>
+    <version>0.3.9.2</version>
+    <time>1547540199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664676</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4eb35276c6f6b434d523356c5cf9ac89</srcmd5>
+    <version>0.3.9.4</version>
+    <time>1576598084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.9.4:
+  * Publishing nanopb-0.3.9.4
+  * Update changelog
+  * Add test for PB_ENCODE_ARRAYS_UNPACKED
+  * Fix &quot;unused variable&quot; warning when using PB_ENCODE_ARRAYS_UNPACKED
+  * Fix undefined behavior with bool fields (#434)
+  * Make fuzztest detect invalid bool values (#434)
+  * .gitignore: don't ignore generator-bin files (#419)
+  * Don't call stream callback with count=0 (#421)
+  * network_server example: Detect count=0 in read_callback() (#421)
+  * Add scons package to travis rules, for build automation
+  * Introduce new compile time flag: PB_ENCODE_ARRAYS_UNPACKED
+  * Add migration note about enum min/max
+  * Use min/max enum value for min/max
+  * Publishing nanopb-0.3.9.3
+  * Fix generator error with mangle_names option (#380)
+  * Add testcase for #380
+  * Fix incorrect PB_STATIC_ASSERT for bytes inside oneof (#363)
+  * Add testcase for #363
+  * Generator: Allow comma separated options in plugin mode (#343)
+  * Fix encoding of fixed size arrays inside proto3 submessages (#376)
+  * Add regression test for issue #376 (forwarded request 757557 from mrostecki)</comment>
+    <requestid>757558</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e02d2d4a0d9dfd23a89c716c5942f1c</srcmd5>
+    <version>0.4.0</version>
+    <time>1580990983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770509</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>758030838d42a2582bc5b4a7eead311f</srcmd5>
+    <version>0.4.1</version>
+    <time>1583763782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1:
+  * Fix for CVE-2020-5235 - porential exploitable out of memory
+    condition.
+  * Fixes for AVR builds and tests. (forwarded request 782945 from mrostecki)</comment>
+    <requestid>782946</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e9b58dda5f50e3277c128a58ddf18afc</srcmd5>
+    <version>0.4.2</version>
+    <time>1601488518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838741</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cfe78518cbbfb7c030f41733b9e8ac44</srcmd5>
+    <version>0.4.5</version>
+    <time>1618694708</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886295</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4b68fd5219dcfbb1433617563cf7d404</srcmd5>
+    <version>0.4.5</version>
+    <time>1633959079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924224</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eb19a328ea26f8dbd6d02df374185e4c</srcmd5>
+    <version>0.4.6</version>
+    <time>1663002510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002746</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c288c4a5b4db7ddcca5a40e10040b243</srcmd5>
+    <version>0.4.7</version>
+    <time>1674997863</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.7:
+  * Fix comments generation for submessages
+  * Fix handling of spaces in arguments passed through protoc
+  * Fix problems with multiple files and mangle_names option
+  * Fix generator error when using M_STRIP_PACKAGE without package name
+  * Fix compilation error with fixed size array and FT_POINTER
+  * Fix wrong format in Python Poetry project file
+  * Fix unnecessary generator message when using --quiet
+  * Fix enum_to_string with C++
+ Fix /* */ inside .proto file comment
+  * Workaround python-protobuf version issues
+  * Safeguard substraction in pb_read() with custom streams
+  * Always include pb_release() as function, instead of macro.
+ Allow using = instead of : with generator option -s
+  * Allow specifying include format without special characters
+  * Allow including headers from inside of extern C
+  * Add option NANOPB_PB2_TEMP_DIR to store nanopb_pb2.py in a temporary dir
+  * Add compile-time error message for when PB_FIELD_32BIT is needed
+  * Add --c-style command line option for naming style
+  * Add --protoc-opt to nanopb_generator.py
+  * Add ENUMTYPE convenience macros
+  * Add Bazel build rules
+
+- Add 'PB_ENABLE_MALLOC=1' so that we can build Criterion.</comment>
+    <requestid>1061804</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fa03e40312919c62394a4df5656fe240</srcmd5>
+    <version>0.4.6</version>
+    <time>1675792135</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert back to 0.4.6 since 0.4.7 breaks nanopb_generator.py thus breaking
+  some packages (e.g. Criterion: https://github.com/nanopb/nanopb/issues/845)</comment>
+    <requestid>1063469</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a5112272833f56b437ef1b940b6e5796</srcmd5>
+    <version>0.4.8</version>
+    <time>1700250618</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.4.8: 
+  * Fix name mangling with dependent proto files (#892, #899)
+  * Fix initializer macros for custom callback datatype (#806)
+  * Use UTF-8 encoding for generated files irrespective of locale (#868)
+  * Add integer size overrides for fixed width types (#897)
+  * Add ability to specify size of generated enums (#867)
+  * Provide define for largest message in file (#893)
+  * Automatically break circular dependencies (#881)
+  * Use static_assert keyword on MSVC in C89 mode (#843)
+  * Fix comments generation for submessages (#788)
+  * Fix handling of spaces in arguments passed through protoc (#810)
+  * Fix problems with multiple files and mangle_names option (#783, #820)
+  * Fix generator error when using M_STRIP_PACKAGE without package name (#795)
+  * Fix compilation error with fixed size array and FT_POINTER (#630)
+  * Fix wrong format in Python Poetry project file (#811)
+  * Fix unnecessary generator message when using --quiet (#831)
+  * Fix enum_to_string with C++ (#838)
+  * Fix /* */ inside .proto file comment
+  * Workaround python-protobuf version issues (#787)
+  * Safeguard substraction in pb_read() with custom streams (#697)
+  * Always include pb_release() as function, instead of macro. (#802)
+  * Allow using = instead of : with generator option -s
+  * Allow specifying include format without special characters (#810)
+  * Allow including headers from inside of extern C (#814)
+  * Add option NANOPB_PB2_TEMP_DIR to store nanopb_pb2.py in a temporary dir (#601)
+  * Add compile-time error message for when PB_FIELD_32BIT is needed (#680, #827)
+  * Add --c-style command line option for naming style (#199, #533, #791)
+  * Add --protoc-opt to nanopb_generator.py (#628)
+  * Add ENUMTYPE convenience macros (#803)
+  * Generator: keep order of messages when possible
+</comment>
+    <requestid>1127246</requestid>
+  </revision>
+</revisionlist>

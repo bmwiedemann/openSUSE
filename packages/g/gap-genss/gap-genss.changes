@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Fri Nov 18 23:59:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.8
+  * Add variants of Random methods which optionally accept a
+    random source stabilizers in groups-with-memory
+  * Fix a bug that cold lead to an unexpected error when computing
+
+-------------------------------------------------------------------
+Wed Nov 14 22:29:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.6.5
+  * Use RecNames instead of the obsolete RecFields
+
+-------------------------------------------------------------------
+Sun Jun 19 11:11:42 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.6.4
+* Unspecified maintenance release
+
+-------------------------------------------------------------------
+Fri Mar 11 22:26:30 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.6.3
+* Fix a bug in SetwiseStabilizer
+
+-------------------------------------------------------------------
+Sun Feb 22 10:32:48 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.6.2
+* Internal metadata (maintainer, addresses) change only.
+
+-------------------------------------------------------------------
+Wed Jun 18 17:25:46 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.6.1
+* Change IsTuple to IsDirectProductElement.
+* Fix bug where stabilizers did not have the right parent group
+* Fix bug when dealing with diagonal matrix groups
+* Fix bug which sometimes lead to an endless loop in Stab()
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split genss (version 1.5) off the gap RPM package

@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Nov 16 09:43:14 UTC 2015 - coolo@suse.com
+
+- updated to 1.125
+   see /usr/share/doc/packages/perl-Convert-BinHex/Changes
+
+  1.125 2015-11-15
+  	- Made the Test:: modules TEST_REQUIRES (ticket 108523, TODDR)
+  
+  1.124 2015-08-19
+  	- Changed debinhex to UTF-8
+  	- Made the Test:: modules optional (ticket 101974, mishikal at yahoo.com)
+  	- Fixed a manual typo (ticket 88874, gregoa at debian.org)
+
+-------------------------------------------------------------------
+Wed Apr  2 12:35:35 UTC 2014 - coolo@suse.com
+
+- regenerate with cpanspec to fix build
+
+-------------------------------------------------------------------
+Mon Oct 14 17:57:53 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.123:
+  + Fixed pod error in debinhex and added pod tests
+  + Added unit tests for OO and CRC code
+  + Moved to Dist::Zilla's OurPkgVersion for keeping $VERSIONs in sync
+
+-------------------------------------------------------------------
+Fri Nov 18 11:10:28 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Aug 30 19:03:11 UTC 2011 - andrea.turrini@gmail.com
+
+- standardized "Authors:" format in description of 
+  perl-Convert-BinHex.spec
+
+-------------------------------------------------------------------
+Sun Aug 14 13:51:32 UTC 2011 - andrea.turrini@gmail.com
+
+- fixed typos in perl-Convert-BinHex.spec 
+
+-------------------------------------------------------------------
+Wed Apr  6 14:54:19 UTC 2011 - vcizek@novell.com
+
+- corrected license to GPL+ or Artistic (same as Perl) 
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:01 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Aug 10 17:45:21 CEST 2009 - anicka@suse.cz
+
+- removed dependency on perl-Exporter, not needed
+
+-------------------------------------------------------------------
+Thu Aug  6 17:54:28 CEST 2009 - lars@linux-schulserver.de
+
+- initial version 1.119
+

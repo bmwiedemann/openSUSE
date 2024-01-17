@@ -1,0 +1,287 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>81d8f8dd4b6d21f9e3f295c65aeeb4e7</srcmd5>
+    <version>0.0.19</version>
+    <time>1352358335</time>
+    <user>coolo</user>
+    <comment>New package submission: libvisio - Library for parsing the MS Visio file format structure, libvisio can be used by calligra</comment>
+    <requestid>140022</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>132830a8929ae2c304cd79618a1b22dc</srcmd5>
+    <version>0.0.20</version>
+    <time>1352716392</time>
+    <user>coolo</user>
+    <comment>Upgrade to version 0.0.20</comment>
+    <requestid>140784</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b86804132fb242d97c239db79b0619e</srcmd5>
+    <version>0.0.21</version>
+    <time>1353598706</time>
+    <user>coolo</user>
+    <comment>- Disable werror explicitely. Usefull for devel but not for pkg.
+
+- Bump version to 0.0.21</comment>
+    <requestid>142266</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6673e8f22d00e6801ce22ff394649c93</srcmd5>
+    <version>0.0.22</version>
+    <time>1354274729</time>
+    <user>coolo</user>
+    <comment>- Bump version to 0.0.22 (forwarded request 143533 from fstrba)</comment>
+    <requestid>143534</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>933e2639d23b68331540733c5d4decec</srcmd5>
+    <version>0.0.23</version>
+    <time>1354712300</time>
+    <user>namtrac</user>
+    <comment>Forgot to bump the version in the spec (forwarded request 143842 from fstrba)</comment>
+    <requestid>143843</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>933e2639d23b68331540733c5d4decec</srcmd5>
+    <version>0.0.23</version>
+    <time>1359109371</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>efb36781c6c4dc3163130239fd6021cf</srcmd5>
+    <version>0.0.25</version>
+    <time>1362031921</time>
+    <user>coolo</user>
+    <comment>- Bump version to 0.0.25
+  * don't throw from parser to the outer world
+  * fix line height conversion with fixed line-height
+  * fix incorrect colour conversion in documents without cached hex value
+  * convert page names
+  * miscellaneous coverty fixes</comment>
+    <requestid>156557</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f053e24215f65f557b85a2a0adc7564c</srcmd5>
+    <version>0.0.26</version>
+    <time>1366633870</time>
+    <user>coolo</user>
+    <comment>- Bump version to 0.0.26
+  * Fix missing WMFs in some Visio files
+  * Use ICU for text encoding conversions
+  * Honour the &quot;HideText&quot; property
+  * Don't truncate end of the text
+  * vsd2raw/vss2raw:
+    - add possibility to detect groups that are not properly finished
+	- indent raw output for easier detection of problems
+- Add dependency on libicu-devel (forwarded request 172813 from fstrba)</comment>
+    <requestid>172820</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9f24fd0ac6ef735eaffaf3a19f70811d</srcmd5>
+    <version>0.0.26</version>
+    <time>1366709587</time>
+    <user>coolo</user>
+    <comment>  * vsd2raw/vss2raw -add possibility to detect groups that are not
+    properly finished and indent raw output for easier detection of
+    problems (forwarded request 172861 from fstrba)</comment>
+    <requestid>172862</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>131474e1c2a585dbd81a4c041d13fd32</srcmd5>
+    <version>0.0.28</version>
+    <time>1370447123</time>
+    <user>coolo</user>
+    <comment>- Bump version to 0.0.28
+  * Miscellaneous crash fixes revealed by fuzzer run.
+  * Miscellaneous coverity fixes.
+  * New layout of source code with public headers in inc/libvisio
+    directory. (forwarded request 177715 from fstrba)</comment>
+    <requestid>177716</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0565dcad24b0ed1cc359fcd095d599c5</srcmd5>
+    <version>0.0.29</version>
+    <time>1372839872</time>
+    <user>coolo</user>
+    <comment>- Bump version to 0.0.29
+  * Avoid NAN in NURBS code - fixes some freehand curves
+  * Fix generation of doxygen documentation
+  * Fix several parser errors due to padding zeros after chunks (forwarded request 181770 from fstrba)</comment>
+    <requestid>181771</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>743b0db8f3c9688d32c4f63cf116fe7d</srcmd5>
+    <version>0.0.30</version>
+    <time>1373491496</time>
+    <user>coolo</user>
+    <comment>- Bump version to 0.0.30
+  * Fix building with older boosts
+  * Considerable performance improvement due to diminished
+    memory consumption.
+  * Implemented B-Spline conversion for xml-based formats
+  * For NURBS and B-Splines where it is possible, lossless
+    conversion to bezier segments.
+  * Coverity fixes. (forwarded request 182752 from fstrba)</comment>
+    <requestid>182753</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4015a0e6b1a7081ff0c20902b8d9c3ad</srcmd5>
+    <version>0.0.30</version>
+    <time>1374932867</time>
+    <user>coolo</user>
+    <comment>- Performance regression fix
+  * Add patch to unconditionally use WPX_SEEK_END
+  * Depend on libwpd-devel &gt;= 0.9.5 that has WPX_SEEK_END (forwarded request 184376 from fstrba)</comment>
+    <requestid>184379</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>4015a0e6b1a7081ff0c20902b8d9c3ad</srcmd5>
+    <version>0.0.30</version>
+    <time>1379663125</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>9bdf8080a5f5988be424c945d09e10bd</srcmd5>
+    <version>0.0.30</version>
+    <time>1383574328</time>
+    <user>coolo</user>
+    <comment>Remove conditionals and use verbose build</comment>
+    <requestid>205507</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>ea3215cec6dfbc5de6ae5770d9d1cc48</srcmd5>
+    <version>0.0.30</version>
+    <time>1390214549</time>
+    <user>coolo</user>
+    <comment>- build with -fvisibility-inlines-hidden (forwarded request 214339 from elvigia)</comment>
+    <requestid>214341</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>e9e9ef045906ce2b80e1c713344fdc7a</srcmd5>
+    <version>0.0.30</version>
+    <time>1391077846</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner and noarch the documentation.</comment>
+    <requestid>215146</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7967349869ca265dd312386661c1c89d</srcmd5>
+    <version>0.1.0</version>
+    <time>1406479626</time>
+    <user>coolo</user>
+    <comment>- Added patch: libvisio-0.1.0-pkgconfig.patch
+  * Remove the Requires.private which breaks SLE11 builds
+
+- Upgrade to upstream version 0.1.0
+  * ABI change
+- Remove unneeded patches:
+  * libvisio-0.0.30-iterator_range.patch
+  * libvisio-0.0.30-wpx_seek_end.patch
+- Change in dependencies:
+  * Remove dependency on libwpg-devel and libwpd-devel
+  * Add dependency on librevenge-devel
+- License change
+  * Released under MPL-2.0 only</comment>
+    <requestid>242316</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>7967349869ca265dd312386661c1c89d</srcmd5>
+    <version>0.1.0</version>
+    <time>1409301754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bcc1142392e7cb94cd3960fb95803788</srcmd5>
+    <version>0.1.1</version>
+    <time>1420754741</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump 0.1.1:
+  * Various bugfixes around
+- Remove obsol patch:
+  * libvisio-0.1.0-pkgconfig.patch
+- Enable testsuite</comment>
+    <requestid>280050</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ce3e27c59e4fe86d640fde73c8ca4dc2</srcmd5>
+    <version>0.1.3</version>
+    <time>1440871367</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.1.3:
+  * Fix build on old compilers
+- Add patch from upstream git to build with new libxml2:
+  * 0001-fix-test.patch
+
+- Version bump to 0.1.2:
+  - Fix several build problems with different compilers.
+  - Import more metadata properties.
+  - Fix theme color import (tdf#92270).
+  - Fix a bunch of crashes and hangs when reading broken documents, found
+    with the help of american-fuzzy-lop.
+  - Fix several memory leaks.
+  - Ignore errors when parsing metadata. This makes some documents readable
+    again.
+  - Fix handling of character background (tdf#92271).</comment>
+    <requestid>327656</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f10a0e73b747825551b4d53e8ed0273f</srcmd5>
+    <version>0.1.3</version>
+    <time>1448400033</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343811</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ccfe236d15ae7039058255e6a8f9c34e</srcmd5>
+    <version>0.1.4</version>
+    <time>1451177915</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 0.1.4</comment>
+    <requestid>350645</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>427ea1c5d8edf00fd9b73aac32f4f8b6</srcmd5>
+    <version>0.1.5</version>
+    <time>1451895671</time>
+    <user>dimstar_suse</user>
+    <comment>Add manpages and remove some rpmlint warnings</comment>
+    <requestid>351293</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f613ef03fe88e947b5474dd9856d6741</srcmd5>
+    <version>0.1.5</version>
+    <time>1487461387</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453966</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0a6b67ce96f24389a909ef9f9ba03b4e</srcmd5>
+    <version>0.1.6</version>
+    <time>1510837112</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>541787</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b93fe3d83ac1eb6ff153f148e5966b0f</srcmd5>
+    <version>0.1.7</version>
+    <time>1566911977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.7:
+  - Fix a few memory leaks found by oss-fuzz.
+  - Fix date and time conversion to string. (tdf#98291)
+  - Fix number conversion to string. (tdf#76829)
+  - Fix unit conversion. (tdf#126292)
+  - Handle more arrow styles. (tdf#126402)
+  - Fix some issues found by Coverity.
+  - Disable expanding entities by XML parser as a vulnerability
+    prevention measure. Applications writing VSDX/VDX documents do not use
+    entities, so there is no difference in behavior.</comment>
+    <requestid>724357</requestid>
+  </revision>
+</revisionlist>

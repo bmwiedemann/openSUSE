@@ -1,0 +1,16 @@
+---
+ pytest_django/plugin.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -502,7 +502,8 @@ def _dj_autoclear_mailbox() -> None:
+ 
+     from django.core import mail
+ 
+-    del mail.outbox[:]
++    if hasattr(mail, "outbox"):
++        del mail.outbox[:]
+ 
+ 
+ @pytest.fixture(scope="function")

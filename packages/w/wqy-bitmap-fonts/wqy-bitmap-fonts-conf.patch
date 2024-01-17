@@ -1,0 +1,186 @@
+Index: wqy-bitmapfont/85-wqy-bitmapsong.conf
+===================================================================
+--- wqy-bitmapfont.orig/85-wqy-bitmapsong.conf
++++ wqy-bitmapfont/85-wqy-bitmapsong.conf
+@@ -25,10 +25,90 @@
+     <match target="pattern">
+         <test qual="any" compare="eq" name="lang">
+                 <string>en</string>
++        </test> 
++        <test compare="more_eq" name="pixelsize">
++                <double>11</double>
++        </test>
++        <test compare="less_eq" name="pixelsize">
++                <double>16</double>
++        </test>
++        <test compare="not_eq" name="family">
++		<string>monospace</string>
++	</test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++    </match>
++    <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>en-us</string>
++        </test> 
++        <test compare="more_eq" name="pixelsize">
++                <double>11</double>
++        </test>
++        <test compare="less_eq" name="pixelsize">
++                <double>16</double>
++        </test>
++        <test compare="not_eq" name="family">
++		<string>monospace</string>
++	</test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++    </match>
++    <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>zh-cn</string>
++        </test> 
++        <test compare="more_eq" name="pixelsize">
++                <double>11</double>
++        </test>
++        <test compare="less_eq" name="pixelsize">
++                <double>16</double>
++        </test>
++        <test compare="not_eq" name="family">
++		<string>monospace</string>
++	</test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++    </match>
++    <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>zh-tw</string>
++        </test> 
++        <test compare="more_eq" name="pixelsize">
++                <double>11</double>
++        </test>
++        <test compare="less_eq" name="pixelsize">
++                <double>16</double>
++        </test>
++        <test compare="not_eq" name="family">
++		<string>monospace</string>
++	</test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++    </match>
++    <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>zh-hk</string>
++        </test> 
++        <test compare="more_eq" name="pixelsize">
++                <double>11</double>
++        </test>
++        <test compare="less_eq" name="pixelsize">
++                <double>16</double>
++        </test>
++        <test compare="not_eq" name="family">
++		<string>monospace</string>
++	</test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++    </match>
++    <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>zh-sg</string>
+         </test> 
+         <test compare="more_eq" name="pixelsize">
+@@ -47,10 +127,90 @@
+     <match target="pattern">
+         <test qual="any" compare="eq" name="lang">
+                 <string>en</string>
++        </test>
++        <test compare="more_eq" name="size">
++                <double>8</double>
++        </test>
++        <test compare="less_eq" name="size">
++                <double>12</double>
++        </test>
++        <test compare="not_eq" name="family">
++                <string>monospace</string>
++        </test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++   </match>
++    <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>en-us</string>
++        </test>
++        <test compare="more_eq" name="size">
++                <double>8</double>
++        </test>
++        <test compare="less_eq" name="size">
++                <double>12</double>
++        </test>
++        <test compare="not_eq" name="family">
++                <string>monospace</string>
++        </test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++   </match>
++   <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>zh-cn</string>
++        </test>
++        <test compare="more_eq" name="size">
++                <double>8</double>
++        </test>
++        <test compare="less_eq" name="size">
++                <double>12</double>
++        </test>
++        <test compare="not_eq" name="family">
++                <string>monospace</string>
++        </test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++   </match>
++   <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>zh-tw</string>
++        </test>
++        <test compare="more_eq" name="size">
++                <double>8</double>
++        </test>
++        <test compare="less_eq" name="size">
++                <double>12</double>
++        </test>
++        <test compare="not_eq" name="family">
++                <string>monospace</string>
++        </test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++   </match>
++   <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>zh-hk</string>
++        </test>
++        <test compare="more_eq" name="size">
++                <double>8</double>
++        </test>
++        <test compare="less_eq" name="size">
++                <double>12</double>
++        </test>
++        <test compare="not_eq" name="family">
++                <string>monospace</string>
++        </test>
++        <edit name="family" mode="prepend_first">
++                <string>WenQuanYi Bitmap Song</string>
++        </edit>
++   </match>
++   <match target="pattern">
++        <test qual="any" compare="eq" name="lang">
+                 <string>zh-sg</string>
+         </test>
+         <test compare="more_eq" name="size">

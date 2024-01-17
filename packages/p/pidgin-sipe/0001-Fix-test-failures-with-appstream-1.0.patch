@@ -1,0 +1,40 @@
+From 2466171b73f25baf4ec3b1a34c6be2a90b2869d3 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 22 Nov 2023 12:35:23 +0100
+Subject: [PATCH] Fix test failures with appstream 1.0
+
+appstreamcli no longer accepts '--nonet'. Use '--no-net'
+---
+ src/purple/Makefile.am | 2 +-
+ src/purple/Makefile.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/purple/Makefile.am b/src/purple/Makefile.am
+index 608a897..2ba6d5c 100644
+--- a/src/purple/Makefile.am
++++ b/src/purple/Makefile.am
+@@ -160,7 +160,7 @@ check: validate-metainfo
+ 
+ .PHONY: validate-metainfo
+ validate-metainfo: $(pidginmetainfofile_DATA)
+-	appstreamcli validate --pedantic --nonet $< || \
++	appstreamcli validate --pedantic --no-net $< || \
+ 	appstreamcli validate --pedantic         $< || \
+ 	appstream-validate                       $<
+ endif
+diff --git a/src/purple/Makefile.in b/src/purple/Makefile.in
+index af847c4..648950c 100644
+--- a/src/purple/Makefile.in
++++ b/src/purple/Makefile.in
+@@ -1630,7 +1630,7 @@ install-exec-local:
+ 
+ @SIPE_WITH_APPSTREAM_TRUE@.PHONY: validate-metainfo
+ @SIPE_WITH_APPSTREAM_TRUE@validate-metainfo: $(pidginmetainfofile_DATA)
+-@SIPE_WITH_APPSTREAM_TRUE@	appstreamcli validate --pedantic --nonet $< || \
++@SIPE_WITH_APPSTREAM_TRUE@	appstreamcli validate --pedantic --no-net $< || \
+ @SIPE_WITH_APPSTREAM_TRUE@	appstreamcli validate --pedantic         $< || \
+ @SIPE_WITH_APPSTREAM_TRUE@	appstream-validate                       $<
+ 
+-- 
+2.42.1
+

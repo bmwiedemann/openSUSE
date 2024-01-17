@@ -1,0 +1,41 @@
+From 6a8306178dabf3d650e2ad794d8b0a316e7ccb50 Mon Sep 17 00:00:00 2001
+From: Matthias Klumpp <matthias@tenstral.net>
+Date: Sat, 25 Nov 2023 02:42:10 +0100
+Subject: [PATCH] validator: Demote developer-name-tag-deprecated to info
+ severity for now
+
+Resolves: #560
+---
+ src/as-validator-issue-tag.h | 2 +-
+ src/as-validator.c           | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/as-validator-issue-tag.h b/src/as-validator-issue-tag.h
+index 48f0bec..3c40c01 100644
+--- a/src/as-validator-issue-tag.h
++++ b/src/as-validator-issue-tag.h
+@@ -566,7 +566,7 @@ AsValidatorIssueTag as_validator_issue_tag_list[] =  {
+ 	},
+ 
+ 	{ "developer-name-tag-deprecated",
+-	  AS_ISSUE_SEVERITY_WARNING,
++	  AS_ISSUE_SEVERITY_INFO,
+ 	  /* TRANSLATORS: Please do not translate AppStream tag and property names (in backticks). */
+ 	  N_("The toplevel `developer_name` element is deprecated. Please use the `name` element in a "
+ 	     "`developer` block instead."),
+diff --git a/src/as-validator.c b/src/as-validator.c
+index 1c3bc8f..dadb51e 100644
+--- a/src/as-validator.c
++++ b/src/as-validator.c
+@@ -645,6 +645,8 @@ as_validator_add_override (AsValidator *validator,
+ 		"tag-empty",
+ 		/* allow GNOME to validate metadata using its new versioning scheme (until a better solution is found) */
+ 		"releases-not-in-order",
++		/* allowed for a while, as part of the deprecation phase */
++		"developer-name-tag-deprecated",
+ 		NULL
+ 	};
+ 
+-- 
+2.43.0
+

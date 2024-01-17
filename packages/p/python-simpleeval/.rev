@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9c90f45c6d24168e09ec4548e8b4323c</srcmd5>
+    <version>0.8.2</version>
+    <time>1468482207</time>
+    <user>dimstar_suse</user>
+    <comment>Python simpleeval - required package - preparation for submission of GNU Health to Factory</comment>
+    <requestid>405350</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ef3539263cb22828fd44721891cce255</srcmd5>
+    <version>0.8.2</version>
+    <time>1494938765</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494940</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cf2c612166081b3e1a41aefaa35183a</srcmd5>
+    <version>0.9.8</version>
+    <time>1556622229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697758</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>737cad82fd2304d0e59748893f52a35f</srcmd5>
+    <version>0.9.10</version>
+    <time>1583840030</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783300</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fee478eb468f2a892d35e98215970244</srcmd5>
+    <version>0.9.12</version>
+    <time>1645629976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957070</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d6aacd9f82fc778b6619d99ef9b9ff85</srcmd5>
+    <version>0.9.13</version>
+    <time>1704281037</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.13:
+  * Better handling of empty strings passed as input.
+  * Fix the shift safe number issue from 0.9.12
+  * More minor pylint / etc fixes / cleanups (general code
+    quality)
+  * separate `.parse` from #115
+  * Allow setting up completely empty `{}` operators / functions
+  * Add extra bit-ops from #87</comment>
+    <requestid>1135607</requestid>
+  </revision>
+</revisionlist>

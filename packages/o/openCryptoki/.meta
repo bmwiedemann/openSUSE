@@ -1,0 +1,8 @@
+<package name="openCryptoki" project="openSUSE:Factory">
+  <title>An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware</title>
+  <description>The PKCS#11 version 2.11 API implemented for the IBM cryptographic
+cards. This package includes support for the IBM 4758 cryptographic
+coprocessor (with the PKCS#11 firmware loaded) and the IBM eServer
+Cryptographic Accelerator (FC 4960 on pSeries).</description>
+  <devel project="security" package="openCryptoki"/>
+</package>

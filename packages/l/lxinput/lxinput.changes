@@ -1,0 +1,106 @@
+-------------------------------------------------------------------
+Sun Dec 25 13:07:05 UTC 2016 - trcs@gmx.com
+
+- new upstream version 0.3.5
+  * Fix: apply left handed mouse setting in autostart file
+  * Fix GtkBuilder UI file for GTK+ 3, add mouse icon to mouse tab
+  * Add MATE to NotShowIn in desktop entries
+  * Translation updates
+- Removed patch now in upstream code:
+  * lxinput-0.3.4-Apply-left-handed-mouse-setting-in-autostart-file.patch
+
+-------------------------------------------------------------------
+Tue May  5 21:28:58 UTC 2015 - trcs@gmx.com
+
+- added lxinput-0.3.4-Apply-left-handed-mouse-setting-in-autostart-file.patch
+
+-------------------------------------------------------------------
+Mon Oct 20 17:16:25 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.3.4
+  * Fix invalid keyboard settings save - it read into wrong 
+    variable
+  * Add compilation notes into README file
+  * Update Copyright notice in the source file
+  * Translation updates
+
+-------------------------------------------------------------------
+Tue Sep 16 17:33:28 UTC 2014 - trcs@gmx.com
+
+- new upstream version 0.3.3
+  * Add missing lxinput.desktop.in into distro tarball, it breaks 
+    'make check'
+  * Fix incorrect autostart file: should be NoDisplay=true, not 
+    Hidden=true
+  * Add AC_CONFIG_MACRO_DIR to configure.ac and ACLOCAL_AMFLAGS to
+    Makefile.am
+  * Use macro AM_MAINTAINER_MODE correct way - with ([enable])
+  * Run xset via shell (may not work otherwise)
+  * Replace obsolete variable INCLUDES with AM_CPPFLAGS
+  * Save settings into ~/.config/autostart/LXInput-autostart as 
+    well
+  * Eliminate compilation warnings
+  * Add --enable-debug option to configure script
+  * Remove call from libtoolize from autogen.sh, it's not library
+  * Remove unused xml-purge subprogram
+  * Make mouse threshold able to set values such as 2
+  * Use correct parameters for AC_INIT and AM_INIT_AUTOMAKE macros
+  * Rename configure.in into configure.ac
+  * Fix autogen.sh for daily build
+  * Fix autogen.sh with recent automake version
+  * Fix typo in desktop file
+  * Fix categories for consistency and the upcoming LXDE Control
+    Center; use NotShowIn instead of OnlyShowIn
+- Translation updates
+- spec file cleanup
+- split lang package
+
+-------------------------------------------------------------------
+Tue May 29 14:12:46 UTC 2012 - andrea@opensuse.org
+
+- new upstream version 0.3.2
+  * translations updates
+  * bugfix release 
+
+-------------------------------------------------------------------
+Fri Jul 29 22:23:20 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.3.1
+  * translations updates
+  * gtk3 support
+  * --enable-man is default 
+
+-------------------------------------------------------------------
+Mon Mar 14 18:49:11 UTC 2011 - gber@opensuse.org
+
+- call %desktop_database_post/un
+
+-------------------------------------------------------------------
+Sun Aug  8 00:43:16 UTC 2010 - andrea@opensuse.org
+
+- New upstream version 0.3.0
+
+-------------------------------------------------------------------
+Mon Jun  7 14:13:23 UTC 2010 - andrea@opensuse.org
+
+- changed RPM Group to System/GUI/LXDE
+
+-------------------------------------------------------------------
+Tue Apr  6 08:53:16 UTC 2010 - andrea@opensuse.org
+
+- removed unsopported locales
+
+-------------------------------------------------------------------
+Wed Dec 16 18:06:26 UTC 2009 - andrea@opensuse.org
+
+- spec clean up for factory
+
+-------------------------------------------------------------------
+Wed Jul 08 18:06:26 UTC 2009 - andrea@opensuse.org
+
+- New Upstream version 0.1.1
+
+-------------------------------------------------------------------
+Fri May 22 18:06:26 UTC 2009 - andrea@opensuse.org
+
+- new package

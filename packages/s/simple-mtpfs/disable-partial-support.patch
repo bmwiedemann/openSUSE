@@ -1,0 +1,13 @@
+Index: simple-mtpfs-0.4.0/src/simple-mtpfs-fuse.cpp
+===================================================================
+--- simple-mtpfs-0.4.0.orig/src/simple-mtpfs-fuse.cpp
++++ simple-mtpfs-0.4.0/src/simple-mtpfs-fuse.cpp
+@@ -799,6 +799,8 @@ int SMTPFileSystem::ftruncate(const char
+ 
+ bool SMTPFileSystem::hasPartialObjectSupport()
+ {
++    return 0;
++
+     MTPDevice::Capabilities caps = m_device.getCapabilities();
+     return (caps.canGetPartialObject() && caps.canSendPartialObject());
+ }

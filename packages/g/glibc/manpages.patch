@@ -1,0 +1,21 @@
+Index: manpages/locale.alias.5
+===================================================================
+--- manpages/locale.alias.5.orig
++++ manpages/locale.alias.5
+@@ -18,7 +18,7 @@
+ .SH "NAME"
+ locale.alias \- Locale name alias data base
+ .SH "DESCRIPTION"
+-The locale.alias database file (/etc/locale.alias) is used by the
++The locale.alias database file (/usr/share/locale/locale.alias) is used by the
+ .B locale
+ command and the 
+ .B X Window System
+@@ -40,6 +40,6 @@ name, or simpler versions of the POSIX l
+ Lines beginning with Hash ("#") are treated as comments and ignored.
+ 
+ .SH "SEE ALSO"
+-locale(1), localedef(1), locale-gen(8),  locale.gen(5) 
++locale(1), localedef(1)
+ .SH "AUTHOR"
+ Alastair McKinstry <mckinstry@computer.org>

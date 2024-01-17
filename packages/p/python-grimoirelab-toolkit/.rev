@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>438a17b99889c90adea1f830abcf7ef1</srcmd5>
+    <version>0.3.4</version>
+    <time>1687469168</time>
+    <user>dimstar_suse</user>
+    <comment>Intial release of 0.3.4</comment>
+    <requestid>1094498</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>54dc3de95a29d90b84ae0c092e734ba8</srcmd5>
+    <version>0.4.0</version>
+    <time>1702673318</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1133215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6876d11d6011b18bdda8ba29567cd112</srcmd5>
+    <version>0.4.1</version>
+    <time>1704281096</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.1:
+  * Update Poetry's package dependencies</comment>
+    <requestid>1135684</requestid>
+  </revision>
+</revisionlist>

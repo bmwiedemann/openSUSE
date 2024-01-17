@@ -1,0 +1,7 @@
+<package name="ding" project="openSUSE:Factory">
+  <title>An X Window System Dictionary Tool</title>
+  <description>Ding is a smart X Window System English-to-German dictionary.  It works
+with a local database file. For full functionality, agrep should be
+installed.</description>
+  <devel project="X11:Utilities" package="ding"/>
+</package>

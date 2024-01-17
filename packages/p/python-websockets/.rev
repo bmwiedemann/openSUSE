@@ -1,0 +1,467 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e116bf725a442ad71f65f63628ef0f32</srcmd5>
+    <version>3.4</version>
+    <time>1505139513</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-websockets</comment>
+    <requestid>522412</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>36160bc7566e354589d06cc78eb9aa84</srcmd5>
+    <version>3.4</version>
+    <time>1507571216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532613</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e568aece2fb7de08b75c4f5009610570</srcmd5>
+    <version>5.0.1</version>
+    <time>1530191610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619374</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b9e0003c77c3f1396914622e46728a1c</srcmd5>
+    <version>6.0</version>
+    <time>1535705263</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 6.0:
+  * compatibility with python 3.6</comment>
+    <requestid>632256</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f3b1d5aeaf40bd62b4aae99d0b0d4b16</srcmd5>
+    <version>6.0</version>
+    <time>1538502447</time>
+    <user>dimstar_suse</user>
+    <comment>- Call the tests the same way as upstream to avoid import cycles
+
+- Do make sure to error out on test failure.</comment>
+    <requestid>639323</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>efa71223de300a970c3594e740a4c23b</srcmd5>
+    <version>7.0</version>
+    <time>1558515488</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0:
+  * Various fixes
+  * Repository layout changes</comment>
+    <requestid>694783</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>03ba418fdbcbf230478884630e92134f</srcmd5>
+    <version>8.0.1</version>
+    <time>1563808765</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.1:
+  * Version 8.0 drops compatibility with Python 3.4 and 3.5.
+  * Various fixes</comment>
+    <requestid>717556</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c7b71a1108a3d23428a9303a81502711</srcmd5>
+    <version>8.0.2</version>
+    <time>1565721927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.2:
+  * Restored the ability to pass a socket with the sock parameter of :func:`~server.serve`.
+  * Removed an incorrect assertion when a connection drops.</comment>
+    <requestid>723124</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4bc1a8e51810498a42adae272fa404bd</srcmd5>
+    <version>8.0.2</version>
+    <time>1571210334</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python38-support.patch from upstream that fixes build failures
+  against Python 3.8.</comment>
+    <requestid>738721</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0e7b801522b9918e0037d7589c596c4d</srcmd5>
+    <version>8.1</version>
+    <time>1581087262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770600</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3f937046685a01218cccdff941473b9c</srcmd5>
+    <version>8.1</version>
+    <time>1606828977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851871</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c568e68305c9c213f7ab2cb665323059</srcmd5>
+    <version>9.1</version>
+    <time>1623012058</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1:
+   **Version 9.1 fixes a security issue introduced in version 8.0.**
+  * Restored compatibility of ``python -m websockets`` with Python &lt; 3.9.
+  * Restored compatibility with mypy.
+  * Fixed issues with the packaging of the 9.0 release.
+      * :class:`~datastructures.Headers` and
+	:exc:`~datastructures.MultipleValuesError` were moved from
+	``websockets.http`` to :mod:`websockets.datastructures`. If you're using
+	them, you should adjust the import path.
+      * The ``client``, ``server``, ``protocol``, and ``auth`` modules were
+	moved from the ``websockets`` package to ``websockets.legacy``
+	sub-package, as part of an upcoming refactoring. Despite the name,
+	they're still fully supported. The refactoring should be a transparent
+	upgrade for most uses when it's available. The legacy implementation
+	will be preserved according to the `backwards-compatibility policy`_.
+      * The ``framing``, ``handshake``, ``headers``, ``http``, and ``uri``
+	modules in the ``websockets`` package are deprecated. These modules
+	provided low-level APIs for reuse by other WebSocket implementations,
+	but that never happened. Keeping these APIs public makes it more
+	difficult to improve websockets for no actual benefit.
+  * Added compatibility with Python 3.9.
+  * Added support for IRIs in addition to URIs.
+  * Added close codes 1012, 1013, and 1014.
+  * Raised an error when passing a :class:`dict` to</comment>
+    <requestid>897837</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>edc0d93cfe1fd321920a252ab08ec1c2</srcmd5>
+    <version>9.1</version>
+    <time>1628751686</time>
+    <user>RBrownSUSE</user>
+    <comment>- Increase WEBSOCKETS_TESTS_TIMEOUT_FACTOR to 10 to make
+  test_keepalive_ping_with_no_ping_timeout pass again.
+- Remove skip-test_keepalive_ping_with_no_ping_timeout.patch, of course.
+- Use %pyunittest macro instead of doing it on our own.
+- Add skip-test_keepalive_ping_with_no_ping_timeout.patch for
+  gh#aaugustin/websockets#1026.
+</comment>
+    <requestid>911402</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b4c999bf2d71d8571b5a745c04a153d4</srcmd5>
+    <version>10.0</version>
+    <time>1635539671</time>
+    <user>dimstar_suse</user>
+    <comment>NEEDS https://build.opensuse.org/request/show/928040 TO BE REVOKED FIRST.
+
+- Update to 10.0:
+  - Backwards-incompatible changes
+    - websockets 10.0 requires Python ≥ 3.7.
+    - The ``loop`` parameter is deprecated from all APIs.
+      The ``loop`` parameter is also removed
+      from `~server.WebSocketServer`. This should be transparent.
+    - `~client.connect` times out after 10 seconds by default.
+      You can adjust the timeout with the ``open_timeout`` parameter. Set it to
+      `None` to disable the timeout entirely.
+    - The ``legacy_recv`` option is deprecated.
+    - The signature of `~exceptions.ConnectionClosed` changed.
+      If you raise `~exceptions.ConnectionClosed` or a subclass, rather
+      than catch them when websockets raises them, you must change your code.
+    - A ``msg`` parameter was added to `~exceptions.InvalidURI`.
+      If you raise `~exceptions.InvalidURI`, rather than catch it when
+      websockets raises it, you must change your code.
+  - New features
+    - websockets 10.0 introduces a Sans-I/O API for easier
+      integration in third-party libraries.
+    - Added compatibility with Python 3.10.
+    - Added `~websockets.broadcast` to send a message to many
+      clients.
+    - Added support for reconnecting automatically by using
+      `~client.connect` as an asynchronous iterator.
+    - Added ``open_timeout`` to :func:`~client.connect`.
+    - Documented how to integrate with Django.
+    - Documented how to deploy websockets in production, with
+      several options.
+    - Documented how to authenticate connections.
+    - Documented how to broadcast messages to many connections.
+  - Improvements
+    - Improved logging.
+    - Optimized default compression settings to reduce memory
+      usage.
+    - Optimized processing of client-to-server messages when the
+      C extension isn't available.
+    - Supported relative redirects in `~client.connect`.
+    - Handled TCP connection drops during the opening handshake.
+    - Made it easier to customize authentication with
+      `~auth.BasicAuthWebSocketServerProtocol.check_credentials`.
+    - Provided additional information in
+      `~exceptions.ConnectionClosed` exceptions.
+    - Clarified several exceptions or log messages.
+    - Restructured documentation.
+    - Improved API documentation.
+    - Extended FAQ.
+  - Bug fixes
+    - Avoided a crash when receiving a ping while the connection
+      is closing.
+- The test suite is temporarily suspended as it is completely
+  broken (gh#aaugustin/websockets#1081).
+</comment>
+    <requestid>928132</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>badbf7079e2a170b729d5ab734c91d40</srcmd5>
+    <version>10.0</version>
+    <time>1635628438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.0:
+  - Backwards-incompatible changes
+    - websockets 10.0 requires Python ≥ 3.7.
+    - The ``loop`` parameter is deprecated from all APIs.
+      The ``loop`` parameter is also removed
+      from `~server.WebSocketServer`. This should be transparent.
+    - `~client.connect` times out after 10 seconds by default.
+      You can adjust the timeout with the ``open_timeout`` parameter. Set it to
+      `None` to disable the timeout entirely.
+    - The ``legacy_recv`` option is deprecated.
+    - The signature of `~exceptions.ConnectionClosed` changed.
+      If you raise `~exceptions.ConnectionClosed` or a subclass, rather
+      than catch them when websockets raises them, you must change your code.
+    - A ``msg`` parameter was added to `~exceptions.InvalidURI`.
+      If you raise `~exceptions.InvalidURI`, rather than catch it when
+      websockets raises it, you must change your code.
+  - New features
+    - websockets 10.0 introduces a Sans-I/O API for easier
+      integration in third-party libraries.
+    - Added compatibility with Python 3.10.
+    - Added `~websockets.broadcast` to send a message to many
+      clients.
+    - Added support for reconnecting automatically by using
+      `~client.connect` as an asynchronous iterator.
+    - Added ``open_timeout`` to :func:`~client.connect`.
+    - Documented how to integrate with Django.
+    - Documented how to deploy websockets in production, with
+      several options.
+    - Documented how to authenticate connections.
+    - Documented how to broadcast messages to many connections.
+  - Improvements
+    - Improved logging.
+    - Optimized default compression settings to reduce memory
+      usage.
+    - Optimized processing of client-to-server messages when the
+      C extension isn't available.
+    - Supported relative redirects in `~client.connect`.
+    - Handled TCP connection drops during the opening handshake.
+    - Made it easier to customize authentication with
+      `~auth.BasicAuthWebSocketServerProtocol.check_credentials`.
+    - Provided additional information in
+      `~exceptions.ConnectionClosed` exceptions.
+    - Clarified several exceptions or log messages.
+    - Restructured documentation.
+    - Improved API documentation.
+    - Extended FAQ.
+  - Bug fixes
+    - Avoided a crash when receiving a ping while the connection
+      is closing.
+- The test suite is temporarily broken on Python 3.9.7
+  (gh#aaugustin/websockets#1051).
+- Increase WEBSOCKETS_TESTS_TIMEOUT_FACTOR to 10 to make
+  test_keepalive_ping_with_no_ping_timeout pass again.
+- Remove skip-test_keepalive_ping_with_no_ping_timeout.patch, of course.
+- Use %pyunittest macro instead of doing it on our own.
+- Add skip-test_keepalive_ping_with_no_ping_timeout.patch for
+  gh#aaugustin/websockets#1026.
+- update to 9.1:
+   **Version 9.1 fixes a security issue introduced in version 8.0.**
+  * Restored compatibility of ``python -m websockets`` with Python &lt; 3.9.
+  * Restored compatibility with mypy.
+  * Fixed issues with the packaging of the 9.0 release.
+      * :class:`~datastructures.Headers` and
+	:exc:`~datastructures.MultipleValuesError` were moved from
+	``websockets.http`` to :mod:`websockets.datastructures`. If you're using
+	them, you should adjust the import path.
+      * The ``client``, ``server``, ``protocol``, and ``auth`` modules were
+	moved from the ``websockets`` package to ``websockets.legacy``
+	sub-package, as part of an upcoming refactoring. Despite the name,
+	they're still fully supported. The refactoring should be a transparent
+	upgrade for most uses when it's available. The legacy implementation
+	will be preserved according to the `backwards-compatibility policy`_.
+      * The ``framing``, ``handshake``, ``headers``, ``http``, and ``uri``
+	modules in the ``websockets`` package are deprecated. These modules
+	provided low-level APIs for reuse by other WebSocket implementations,
+	but that never happened. Keeping these APIs public makes it more
+	difficult to improve websockets for no actual benefit.
+  * Added compatibility with Python 3.9.
+  * Added support for IRIs in addition to URIs.
+  * Added close codes 1012, 1013, and 1014.
+  * Raised an error when passing a :class:`dict` to
+- Remove Suggest python-asyncio, which is in Python 3 stdlib
+- update to 8.1
+  * Added compatibility with Python 3.8.
+- drop upstreamed patch python38-support.patch
+- Add python38-support.patch from upstream that fixes build failures
+  against Python 3.8.
+- Update to 8.0.2:
+  * Restored the ability to pass a socket with the sock parameter of :func:`~server.serve`.
+  * Removed an incorrect assertion when a connection drops.
+- Update to 8.0.1:
+  * Version 8.0 drops compatibility with Python 3.4 and 3.5.
+  * Various fixes
+- Update to 7.0:
+  * Various fixes
+  * Repository layout changes
+- Call the tests the same way as upstream to avoid import cycles
+- Do make sure to error out on test failure.
+- Version update to 6.0:
+  * compatibility with python 3.6
+- Update to version 5.0.1
+  * CVE-2018-1000518: Defend against zip bombs (boo#1099269).
+- Add WEBSOCKETS_TESTS_TIMEOUT_FACTOR=5, otherwise tests in several
+  projects fail
+- initial version
+</comment>
+    <requestid>928264</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>3949433be414f74864a1e7d815706ad1</srcmd5>
+    <version>10.0</version>
+    <time>1635788142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>928437</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>713bdb916a9b07d094ab5d957dca71e0</srcmd5>
+    <version>10.1</version>
+    <time>1644435487</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.1:
+  * Made the second parameter of connection handlers optional. It will be
+    deprecated in the next major release. The request path is available in
+    the :attr:`~legacy.protocol.WebSocketCommonProtocol.path` attribute of
+    the first argument.
+    If you implemented the connection handler of a server as::
+        async def handler(request, path):
+            ...
+  
+    You should replace it by::
+  
+        async def handler(request):
+            path = request.path  # if handler() uses the path argument
+            ...
+  * Added ``python -m websockets --version``.
+  * Reverted optimization of default compression settings for clients, mainly to
+    avoid triggering bugs in poorly implemented servers like `AWS API Gateway`_.
+  * Mirrored the entire :class:`~asyncio.Server` API
+    in :class:`~server.WebSocketServer`.
+  * Improved performance for large messages on ARM processors.
+  * Documented how to auto-reload on code changes in development.
+  * Avoided half-closing TCP connections that are already closed.</comment>
+    <requestid>951678</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>aa5956a7be90fa96ef0099e3250bb77a</srcmd5>
+    <version>10.3</version>
+    <time>1664112883</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.3:
+  * Reduced noise in logs when :mod:`ssl` or :mod:`zlib` raise exceptions.
+  * Made compression negotiation more lax for compatibility with Firefox.
+  * Improved FAQ and quick start guide.
+  * Fixed backwards-incompatibility in 10.1 for connection handlers created with
+  * Avoided leaking open sockets when :func:`~client.connect` is canceled.</comment>
+    <requestid>1005792</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8690721a7681c332db3ac573bb13ef64</srcmd5>
+    <version>10.4</version>
+    <time>1668271219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035269</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>97b8360392eed874a3af327ccd63af06</srcmd5>
+    <version>10.4</version>
+    <time>1682193489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081725</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9ac63dadc2b9690354cbf3fa04925fd2</srcmd5>
+    <version>11.0.3</version>
+    <time>1684490118</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.0.3:
+  * Fixed the :mod:`threading` implementation of servers on
+    Windows.
+
+- update to 11.0.2:
+  * Fixed a deadlock in the :mod:`threading` implementation when
+    closing a connection without reading all messages.
+  * Restored the C extension in the source distribution.
+  * Backwards-incompatible changes
+  * The Sans-I/O implementation was moved.
+  * The ``connection`` module was renamed to ``protocol``.
+  * The ``connection.Connection``, ``server.ServerConnection``,
+    and ``client.ClientConnection`` classes were renamed to
+    ``protocol.Protocol``, ``server.ServerProtocol``, and 
+    ``client.ClientProtocol``.
+  * If you instantiate :class:`~server.ServerProtocol` or
+    :class:`~client.ClientProtocol` directly, make sure you are
+    using keyword arguments.
+  * Closing a connection without an empty close frame is OK.
+  * .. admonition:: websockets 10.0 introduces a implementation
+    on top of :mod:`threading`.
+  * It may be more convenient if you don't need to manage many
+    connections and you're more comfortable with :mod:`threading`
+    than :mod:`asyncio`.
+  * It is particularly suited to client applications that
+    establish only one connection. It may be used for servers
+    handling few connections.
+  * See :func:`~sync.client.connect` and
+    :func:`~sync.server.serve` for details.
+  * Added ``open_timeout`` to :func:`~server.serve`.</comment>
+    <requestid>1087125</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>3a8b566dc294d69f1db3d6b7ec0faa4e</srcmd5>
+    <version>11.0.3</version>
+    <time>1685124863</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests with pytest
+- Disable flaky test gh#python-websockets/websockets#1322
+</comment>
+    <requestid>1088821</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>f08d23634cfac538fa0df5cb6ecc8d61</srcmd5>
+    <version>11.0.3</version>
+    <time>1694113975</time>
+    <user>anag+factory</user>
+    <comment>- Include in SLE-15 (bsc#1199282, jsc#PM-3243, jsc#SLE-24629)</comment>
+    <requestid>1109360</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>6bedb0919a12b5e9fbd4a66fbec7247b</srcmd5>
+    <version>11.0.3</version>
+    <time>1695412036</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112605</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e664f6f28bd9199bffc79e5fa54a19c4</srcmd5>
+    <version>12.0</version>
+    <time>1701972545</time>
+    <user>anag+factory</user>
+    <comment>- update to 12.0:
+  * websockets 12.0 requires Python ≥ 3.8.
+  * Made convenience imports from ``websockets`` compatible with
+    static code analysis tools such as auto-completion in an IDE
+    or type checking with mypy_.
+  * Accepted a plain :class:`int` where an
+    :class:`~http.HTTPStatus` is expected.
+  * Added :class:`~frames.CloseCode`.
+- drop py312-shutdown.patch (upstream)
+
+    ``protocol.Protocol``, ``server.ServerProtocol``, and
+- Update to 10.4</comment>
+    <requestid>1131292</requestid>
+  </revision>
+</revisionlist>

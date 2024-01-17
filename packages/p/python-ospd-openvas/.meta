@@ -1,0 +1,8 @@
+<package name="python-ospd-openvas" project="openSUSE:Factory">
+  <title>An OSP server implementation</title>
+  <description>An OSP server implementation to allow GVM to remotely control OpenVAS.
+
+</description>
+  <devel project="devel:languages:python" package="python-ospd-openvas"/>
+  <url>https://github.com/greenbone/ospd-openvas</url>
+</package>

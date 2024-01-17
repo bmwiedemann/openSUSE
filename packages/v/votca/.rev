@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8885c32a149528131b598e49ab26eb20</srcmd5>
+    <version>2022~rc2</version>
+    <time>1640030770</time>
+    <user>dimstar_suse</user>
+    <comment>Merge votca-* into one package for more features and better testing.
+
+</comment>
+    <requestid>941551</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>64bac0247ecf0fb417094f4b5b4b0fdb</srcmd5>
+    <version>2022</version>
+    <time>1642371487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946727</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a320f6072b35450bb143c4b318b0a930</srcmd5>
+    <version>2022</version>
+    <time>1659106095</time>
+    <user>RBrownFactory</user>
+    <comment>- only use python3-epressomd for testing on x86_64
+</comment>
+    <requestid>991629</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b9e1e36dee8e520755f6c7f3c64204d8</srcmd5>
+    <version>2022</version>
+    <time>1670514719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041289</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00e48a49df12135dc2df5a2662367b80</srcmd5>
+    <version>2022.1</version>
+    <time>1671722585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1044186</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>809b4dbaa65f2b679aacbbe188dd016e</srcmd5>
+    <version>2022.1</version>
+    <time>1671977696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045217</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c73b42fd5daaaaa17bcdd4c5fef78e94</srcmd5>
+    <version>2022.1</version>
+    <time>1672754787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046509</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>366a7d9218b30b0d502161771cefa92f</srcmd5>
+    <version>2022.1</version>
+    <time>1699994565</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125777</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b90163c435c819240185a4b93bfad13b</srcmd5>
+    <version>2023</version>
+    <time>1700162914</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126770</requestid>
+  </revision>
+</revisionlist>

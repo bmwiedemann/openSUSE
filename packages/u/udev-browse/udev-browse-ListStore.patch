@@ -1,0 +1,22 @@
+Index: udev-browse-0.3/udev-browse.vala
+===================================================================
+--- udev-browse-0.3.orig/udev-browse.vala
++++ udev-browse-0.3/udev-browse.vala
+@@ -58,7 +58,7 @@ public class MainWindow : Window {
+         private TreeView property_view;
+ 
+         private TreeStore device_model;
+-        private ListStore property_model;
++        private Gtk.ListStore property_model;
+ 
+         private RightLabel name_label;
+         private RightLabel subsystem_label;
+@@ -98,7 +98,7 @@ public class MainWindow : Window {
+                 client.uevent.connect(uevent);
+ 
+                 device_model = new TreeStore(3, typeof(string), typeof(string), typeof(string));
+-                property_model = new ListStore(2, typeof(string), typeof(string));
++                property_model = new Gtk.ListStore(2, typeof(string), typeof(string));
+ 
+                 device_view = new TreeView.with_model(device_model);
+                 property_view = new TreeView.with_model(property_model);

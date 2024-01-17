@@ -1,0 +1,6 @@
+<package name="perl-HTML-Format" project="openSUSE:Factory">
+  <title>Perl Modules to Format HTML into Plain Text, PostScript, or RTF</title>
+  <description>This is a collection of modules that format HTML as plain text,
+PostScript, or RTF.</description>
+  <devel project="devel:languages:perl" package="perl-HTML-Format"/>
+</package>

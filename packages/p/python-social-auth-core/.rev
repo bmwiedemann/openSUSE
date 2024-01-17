@@ -1,0 +1,425 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2cfe10d145ba539183538e6a96b0d96</srcmd5>
+    <version>1.7.0</version>
+    <time>1532774571</time>
+    <user>dimstar_suse</user>
+    <comment>Add to factory</comment>
+    <requestid>625579</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10113d77d50649bf0e6d2b822b17c088</srcmd5>
+    <version>1.7.0</version>
+    <time>1533292612</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner
+- Run the tests with %python_expand rather than %python_exec
+
+- Ensure neutrality of description. Address punctuation issues.</comment>
+    <requestid>626909</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d61afd0d124780cc1b61c3c46f31e319</srcmd5>
+    <version>2.0.0</version>
+    <time>1544189640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655556</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a15a6fa756e7b536746f5707f1c056d7</srcmd5>
+    <version>3.1.0</version>
+    <time>1554276477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Universe Ticketing backend
+  * Auth0.com authentication backend
+  * Update Bungie backend dropping any Django reference
+  * Enable and fix JWT related tests
+  * Remove PyPy support from Tox
+  * Drop support for Python 3.4 in Tox
+  * Allow to override JWT decode options in Open ID Connect base backend
+  * Pass access token via Authorization header to Google user data url
+  * Updated user_data method in AzureADOAuth2 to return access_token if id_token is not present in response
+  * Updated Azure B2C to extract first email from list if it's a list
+  * Replace deprecated Google+ API usage with https://www.googleapis.com/oauth2/v3/userinfo
+  * Updated Azure Tenant to fix Nonetype error
+  * Updated comment denoting incorrect setting name
+  * Yandex: do not fail when no email is present
+  * Mediawiki: do not fail when no email is present
+  * Mediawiki: enhance get_user_details to return more details</comment>
+    <requestid>690607</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9b57fcfac7802d01032da825ac8fe3ed</srcmd5>
+    <version>3.1.0</version>
+    <time>1554372412</time>
+    <user>dimstar_suse</user>
+    <comment>- Lower down PyJWT dependency the higher is not really needed</comment>
+    <requestid>690899</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f49f03c3eebb900e289315d902cf4eeb</srcmd5>
+    <version>3.1.0</version>
+    <time>1557141696</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove build dependency on unittest2, as this was also a missing
+  runtime dependency on both Python 2 and 3 as the tests are
+  distributed in the runtime package, and are used by the test suite
+  of other packages.
+  * Add patch remove-unittest2.patch
+- Suggest python3-saml dependency for both Python 2 &amp; 3, and
+  activate the SAML tests, adding missing saml_config.json for tests.
+  Not recommended due to dependency chain including libxmlsec,
+  which at the moment is unsupported v1.2.20
+- Add README.md to %doc</comment>
+    <requestid>693141</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3cd3500030edd867e7e8e6283ec2fab8</srcmd5>
+    <version>3.2.0</version>
+    <time>1559581073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Cognito backend
+  * OpenStack (openstackid and openstackid-dev) backends
+  * Many fixes to all existing Backends to match up upstream projects</comment>
+    <requestid>707119</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fbd5cc4107aae30405e1221b517f06e0</srcmd5>
+    <version>3.3.0</version>
+    <time>1585342911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789079</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>27fc9fcd1c5347bd51cd70db740f4496</srcmd5>
+    <version>3.3.3</version>
+    <time>1587162671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.3:
+  * Reverted PR #388 due to dependency license incompatibility
+  * Updated package upload method to use twine
+  * Updated list of default user protected fields to include admin flags and password</comment>
+    <requestid>794808</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ef90a245e5361c1f5cf215fce2121da7</srcmd5>
+    <version>3.3.3</version>
+    <time>1587659921</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796519</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>12db9385c0a1f1ded55825176c114b04</srcmd5>
+    <version>3.3.3</version>
+    <time>1597675281</time>
+    <user>dimstar_suse</user>
+    <comment>- Add resolve_depreciations.patch to clean deprecation warnings
+  (gh#python-social-auth/social-core#500)</comment>
+    <requestid>827286</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>78502aa453b0fefc2aec87521139384f</srcmd5>
+    <version>3.4.0</version>
+    <time>1610050922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>859318</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>10a0179a144caf2cd7fde03ab4ccb9fe</srcmd5>
+    <version>4.1.0</version>
+    <time>1615905927</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879222</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>e8bb8ea0a26582e4fae84770898cd83d</srcmd5>
+    <version>4.1.0</version>
+    <time>1646241758</time>
+    <user>dimstar_suse</user>
+    <comment>- Add URL
+</comment>
+    <requestid>958501</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>def0b06214a5a03230c196c191ed06fc</srcmd5>
+    <version>4.2.0</version>
+    <time>1646251919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.0:
+  - Add fields that populate on create but not update
+    SOCIAL_AUTH_IMMUTABLE_USER_FIELDS
+  - Add Gitea oauth2 backend
+  - Add Twitch OpenId backend
+  - Add CI Logon backend
+  - Add support for Python 3.10
+  - Fixed Slack user identity API call with Bearer headers
+  - Fixed microsoft-graph login error
+  - Fixed Twitch OAuth2 backend
+  - Fixed Facebook API version
+  - Fixed Okta authentication URLs
+  - Fixed Globus JWT signature algorithm
+  - Fixed kid key rotation for OpenID Connect
+  - Fixed e-mail fetching from Azure
+  - Fixed vkontakte API version
+  - Restricted lxml to 4.6.x to avoid problems in SAML
+- Add URL
+- Update to 4.1.0
+  * Dropped Python 2 support from testing stack
+  * Discourse backend
+  * Osso backend
+  * Use strategies as interface to fetch backends
+  * PayPal backend
+  * Fence OIDC-based backend
+- Drop merged resolve_depreciations.patch, remove-unittest2.patch
+  and saml_config.json
+- Update to 3.4.0:
+  - Added
+    - Zoom backend
+  - Changed
+    - Directly use access_token in Azure Tenant backend
+    - Support Apple JWT audience
+    - Update partial session cleanup to remove old token from session
+      too
+    - Fetch user email in Okta integration
+    - Improve Python 3.9 compatibility
+    - Send proxies in request
+    - Improve error handling in Apple backend
+- Add resolve_depreciations.patch to clean deprecation warnings
+  (gh#python-social-auth/social-core#500)
+- Fix build without python2
+- Update to 3.3.3:
+  * Reverted PR #388 due to dependency license incompatibility
+  * Updated package upload method to use twine
+  * Updated list of default user protected fields to include admin flags and password
+- version update to 3.3.0
+  ### Added
+  - Okta backend
+  - Support for SAML Single Logout
+  - SimpleLogin backend
+  - SurveyMonkey backend
+  - HubSpot backend
+  - MRG backend
+  - Sign in with Apple backend
+  - Allow ignoring of default protected user fields with option `SOCIAL_AUTH_NO_DEFAULT_PROTECTED_USER_FIELDS`
+  - Support for users field names mapping
+  - Added GithubAppAuth backend
+  ### Changed
+  - Add refresh token to Strava backend, change username and remove email
+  - Update test runner to PyTest
+  - Add python 3.7 CI target
+  - Send User-Agent header on Untappd backend
+  - Updated Naver API support from XML to JSON format
+  - Use `unidecode` to cleanup usernames from unicode characters
+  - Update Twitch API support from v3 to v5
+  - Properly setup `pytest` version for Python2 and Python3
+  - Fix some spelling mistakes in docstrings
+  - Fix old fields from FIELDS_STORED_IN_SESSION persisting in session
+  - Github: pass access token in a header instead of in a query parameter.
+  - Update Kakao API support from v1 to v2
+  - Update Twitch API support to v5
+  - Updated Patreon API support from v1 to v2 per issue #307
+  - Fix `user_details` in user pipeline to allow model attributes to be updated
+  - Updated Atlassian API urls
+- Update to 3.2.0:
+  * Cognito backend
+  * OpenStack (openstackid and openstackid-dev) backends
+  * Many fixes to all existing Backends to match up upstream projects
+- Remove build dependency on unittest2, as this was also a missing
+  runtime dependency on both Python 2 and 3 as the tests are
+  distributed in the runtime package, and are used by the test suite
+  of other packages.
+  * Add patch remove-unittest2.patch
+- Suggest python3-saml dependency for both Python 2 &amp; 3, and
+  activate the SAML tests, adding missing saml_config.json for tests.
+  Not recommended due to dependency chain including libxmlsec,
+  which at the moment is unsupported v1.2.20
+- Add README.md to %doc
+- Lower down PyJWT dependency the higher is not really needed
+- Update to 3.1.0:
+  * Universe Ticketing backend
+  * Auth0.com authentication backend
+  * Update Bungie backend dropping any Django reference
+  * Enable and fix JWT related tests
+  * Remove PyPy support from Tox
+  * Drop support for Python 3.4 in Tox
+  * Allow to override JWT decode options in Open ID Connect base backend
+  * Pass access token via Authorization header to Google user data url
+  * Updated user_data method in AzureADOAuth2 to return access_token if id_token is not present in response
+  * Updated Azure B2C to extract first email from list if it's a list
+  * Replace deprecated Google+ API usage with https://www.googleapis.com/oauth2/v3/userinfo
+  * Updated Azure Tenant to fix Nonetype error
+  * Updated comment denoting incorrect setting name
+  * Yandex: do not fail when no email is present
+  * Mediawiki: do not fail when no email is present
+  * Mediawiki: enhance get_user_details to return more details
+- Update to version 2.0.0
+  + Added Telegram authentication backend
+  + Added Keycloak backend with premilinary OAuth2 support
+  + Added Globus OpenId Connect backend
+  + Added Discord OAuth2 backend
+  + Added SciStarter OAuth2 backend
+  + Added Flat OAuth2 backend
+  + Added ELIXIR OpenId Connect backend
+  + Added Atlassian OAuth2 backend
+  + GitHub backend now uses state parameter instead of redirect_state
+  + Correct setting name on AzureAD Tenant backend
+  + Introduce access token expired threshold of 5 seconds by default
+  + Delete partial token from session if still present
+  + Use userPrincipalName to set username and email accordingly
+  + Send authorization headers to Kakao OAuth2, properly fill user details
+  + LINE API update to v2.1
+  + Use unitest2 with Python 3
+  + Update Slack backend to use computed usename on teams setups
+  + Enforce unicode_literals on Slack backend
+  + Update ORCID backend to support Member API
+  + Updated Pixelpin backend to use the new OpenId Connect service
+  + Update sanitize_redirect to invalidate redirects like ///evil.com
+  + Update Coinbase API endpoint
+  + Dropped Python 3.3 support
+  + Updated Weixin backend to use urlencode from six
+  + Updated Google+ backend to properly process requests with id_token
+  + Updated OpenId connect dependencies
+- Require python3 3.4.0 or newer to build and run
+ 
+- Format with spec-cleaner
+- Run the tests with %python_expand rather than %python_exec
+- Ensure neutrality of description. Address punctuation issues.
+- Move license in spec.
+- Drop devel module dependency.
+- Remove conditionals from buildRequirements.
+- update to version 1.7.0
+  + Update EvenOnline token expiration key
+  + Update OpenStreetMap URL to https
+  + Fix LinkedIn backend to send the oauth_token as Authorization header
+  + Fixed extra_data update to use the alias as key too
+  + Make signed_request optional in Facebook App OAuth2 backend
+  + Support string and lists on SAML permanent id value
+  + Correct sending params sending on GET access-token retrieval case
+  + Ensure b2c policy name check
+  + Use extras_requrie to specify python specific version dependencies
+  + Added support for AzureAD B2C OAuth2
+  + Added LinkedIn Mobile OAuth2 backend
+- spec file changes
+  + do not include README.md in files list because it does not
+    contain any relevant information
+- update to version 1.6.0
+  + Fix coinbase backend to use api v2
+  + Default REDIRECT_STATE to False in FacebookOAuth2 backend
+  + Add revoke token url for Coinbase OAuth2 backend
+  + Fix LinkedIn backend to send oauth_token as request header
+  + Make partial step decorator handle arguments
+  + Added support for ChatWork OAuth2 backend
+- spec file changes
+  + put explicit py2 and py3 buildrequires into ifpython codeblocks
+- improve spec file summary and description
+- update to version 1.5.0
+  + Fix using the entire SAML2 nameid string
+  + Prevent timing attacks against state token
+  + Updated GitLab API version to v4
+  + Enforce UTC when calculating access token expiration time
+  + Cleanup user attributes update from social details
+  + Send authorization header on Reddit auth
+  + Added support for tenant for Azure AD backend
+  + Added JWT validation for Azure AD backend
+  + Added support for Bungie.net OAuth2 backend
+  + Added support for Eventbrite OAuth2 backend
+  + Added support for OpenShift OAuth2 backend
+  + Added support for Microsoft Graph OAuth2 backend
+- spec file changes
+  + use python_expand for nosetests
+  + add CHANGELOG.md to docs
+  + update project url
+- fix requirements for python-openid
+- convert into single spec
+- update to version 1.4.0
+  + Fix path in import BaseOAuth2 for Monzo
+  + Fix auth header formatting problem for Fitbit OAuth2
+  + Raise AuthForbidden when provider returns 401.
+  + Update Facebook API to version 2.9
+  + Speed up authorization process for VKAppOAuth2
+  + Apply same sanitization as on connect to disconnect.
+  + Disable redirect_state usage on Disqus backend
+  + Added Udata OAuth2 backend
+  + Added ORCID backend
+  + Added feature to get all extra data from backend through
+    GET_ALL_EXTRA_DATA boolean flag.
+  + Added Patreon provider
+- update to version 1.3.0
+  + Use extra_data method when refreshing an access_token, ensure that
+    auth-time is updated then
+  + Added 500px OAuth1 backend
+  + Added Monzo OAuth2 backend
+  + Added get_access_token method that will refresh if expired
+  + Updated email validation to pass the partial pipeline token if
+    given.
+  + Prefer passed parameters in authenticate method
+  + Properly discard already used verification codes
+  + Save SAML attributes in extra_data
+  + Note id_token in GooglePlusAuth's AuthMissingParameter
+</comment>
+    <requestid>958504</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7a71d23d67aef3fb289eaf6385d07d5d</srcmd5>
+    <version>4.2.0</version>
+    <time>1650467030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971120</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55bb5316675c07e27cc88bad4cb28e6a</srcmd5>
+    <version>4.3.0</version>
+    <time>1655246020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>982613</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6a0b6bae986c7cfb67f8f9c1c4ef03c9</srcmd5>
+    <version>4.4.0</version>
+    <time>1679182226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072683</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d8fd353e0144ce517d7444f10fb69f75</srcmd5>
+    <version>4.4.1</version>
+    <time>1681590766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079497</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dd450fbaa37ca4112ab40398e708b75b</srcmd5>
+    <version>4.4.2</version>
+    <time>1682433780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082742</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>388a134fe186edd601fc32d71932c610</srcmd5>
+    <version>4.5.0</version>
+    <time>1699994546</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125779</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9239e32128f89c38171d6d7a20ade944</srcmd5>
+    <version>4.5.1</version>
+    <time>1701462414</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130256</requestid>
+  </revision>
+</revisionlist>

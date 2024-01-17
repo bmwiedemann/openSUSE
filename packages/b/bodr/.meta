@@ -1,0 +1,8 @@
+<package name="bodr" project="openSUSE:Factory">
+  <title>Blue Obelisk Data Repository</title>
+  <description>Common repository of chemical and physical facts that aim
+to increase interoperability between chemistry programs.
+  </description>
+  <devel project="science" package="bodr"/>
+  <url>http://www.blueobelisk.org </url>
+</package>

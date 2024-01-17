@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Nov 30 13:24:29 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon May  8 20:43:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- poetry-core is enough to build the package
+
+-------------------------------------------------------------------
+Fri Sep 30 02:12:39 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Initial release for 0.3.0
+

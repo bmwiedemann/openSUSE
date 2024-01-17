@@ -1,0 +1,213 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:28:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Mon Jan  2 15:34:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.4:
+  * Fixed a type annotations regression introduced in v6.0.2 under Python
+    versions <3.10. It was caused by importing certain types only available
+    in newer versions. (:issue:`798`)
+
+-------------------------------------------------------------------
+Wed Dec  7 19:54:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 6.0.3: 
+  * Features
+    Declared the official support for Python 3.11 — by @mlegner. (#872)
+
+-------------------------------------------------------------------
+Thu Feb 24 08:14:48 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to 6.0.2:
+  - Use ``METH_FASTCALL`` where it makes sense.
+    ``MultiDict.add()`` is 2.2 times faster now, ``CIMultiDict.add()`` is 1.5 times faster.
+    The same boost is applied to ``get*()``, ``setdefault()``, and ``pop*()`` methods. (:issue:`681`)
+  - Fixed type annotations for keys of multidict mapping classes. (:issue:`644`)
+  - Support Multidict[int] for pure-python version.
+    ``__class_getitem__`` is already provided by C Extension, making it work with the pure-extension too. (:issue:`678`)
+  - Dropped Python 3.6 support (:issue:`680`)
+
+-------------------------------------------------------------------
+Sun Dec 20 09:35:53 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  - Support ``GenericAliases`` (``MultiDict[str]``) for Python 3.9+
+  `#553 <https://github.com/aio-libs/multidict/issues/553>`_
+
+-------------------------------------------------------------------
+Sat Nov 21 10:47:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v5.0.2
+  * No runtime changes
+
+-------------------------------------------------------------------
+Thu Sep 17 11:34:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.7.6:
+  * Fixed an issue with some versions of the ``wheel`` dist
+    failing because of being unable to detect the license file.
+
+-------------------------------------------------------------------
+Fri Mar 13 08:40:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes call
+
+-------------------------------------------------------------------
+Mon Mar  9 16:35:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.7.5:
+  * various fixes for python 3.8 support
+
+-------------------------------------------------------------------
+Wed May 29 12:28:22 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.5.2
+  * Multidict views ported from Cython to C extension
+  4.4.*
+  * Restore Python 3.4 support
+  * Rewrite C implementation to use C pair list.
+  * Fix update order when both arg and kwargs are used.
+
+-------------------------------------------------------------------
+Thu Mar  7 11:26:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix fdupes macro expansion
+
+-------------------------------------------------------------------
+Mon Sep  3 17:09:12 UTC 2018 - Hans-Peter Jansen <hpj@urpla.net>
+
+- don't depend on a certain python devel package, avoids:
+    nothing provides python2-devel >= 3.4.1
+  such a version will never exist!
+
+-------------------------------------------------------------------
+Wed Aug 29 10:48:21 UTC 2018 - tchvatal@suse.com
+
+- Update to 4.3.1:
+  * No obvious changelog
+
+-------------------------------------------------------------------
+Tue Apr 17 08:09:34 UTC 2018 - tchvatal@suse.com
+
+- Enable testsuite
+
+-------------------------------------------------------------------
+Tue Apr 17 01:52:51 UTC 2018 - arun@gmx.de
+
+- update to version 4.2.0:
+  * Publish py.typed flag for type hinting analyzers (mypy etc).
+
+-------------------------------------------------------------------
+Sat Feb 10 17:43:52 UTC 2018 - arun@gmx.de
+
+- update to version 4.1.0:
+  * Fix key casing in Pure Python implementation of CIMultiDict (PR
+    #202)
+
+-------------------------------------------------------------------
+Wed Jan 17 03:54:21 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+  * CHANGES.rst -> docs/changes.rst
+
+- update to version 4.0.0:
+  * Accept multiple keys in MultiDict.update() and
+    CIMultiDict.update() (PR #199)
+
+-------------------------------------------------------------------
+Fri Nov  3 15:55:20 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * don't package .c files
+
+- update to version 3.3.2:
+  * Fix tarball (again)
+
+- changes from version 3.3.1:
+  * Include .c files in tarball (#181)
+
+-------------------------------------------------------------------
+Thu Nov  2 03:07:12 UTC 2017 - arun@gmx.de
+
+- update to version 3.3.0:
+  * Introduce abstract base classes (#102)
+  * Publish OSX binary wheels (#153)
+
+-------------------------------------------------------------------
+Tue Sep 19 17:44:52 UTC 2017 - sean.marlow@suse.com
+
+- Update to version 3.2.0:
+  + Fix pickling
+  + Fix equality check when other contains more keys
+  + Fix CIMultiDict copy
+- Pre-compiled shared libraries have been removed from sdist.
+
+-------------------------------------------------------------------
+Wed Jul 19 14:41:55 UTC 2017 - sean.marlow@suse.com
+
+- Use package from PyPi via py2pack instead of Github.
+  The packages are not the same.
+- Remove compiled shared libraries from package prior to build.
+
+-------------------------------------------------------------------
+Thu Jul 13 22:28:39 UTC 2017 - sean.marlow@suse.com
+
+- Update to version 3.1.1:
+  - Fix #105: Remove memory leak in istr implementation
+- Update to version 3.1.0:
+  - Fix #99: raise RuntimeError on dict iterations if the dict was changed
+  - Update __init__.pyi signatures
+- Update to version 3.0.0:
+  - Refactor internal data structures: main dict operations are about 100% faster now.
+  - Preserve order on multidict updates #68 Updates are md[key] = 
+    val and md.update(…) calls. Now the last entry is replaced with
+    new key/value pair, all previous occurrences are removed. If
+    key is not present in dictionary the pair is added to the end
+  - Force keys to str instances #88
+  - Implement .popall(key[, default]) #84
+  - .pop() removes only first occurence, .popone() added #92
+  - Implement dict’s version #86
+  - Proxies are not pickable anymore #77
+- Update to version 2.1.7:
+  - Fix import warning on Python 3.6 #79
+- Update to version 2.1.6:
+  - Rebuild the library for fixning missing __spec__ attribute #79
+- Update to version 2.1.5:
+  - Build Python 3.6 binary wheels
+
+-------------------------------------------------------------------
+Thu Jul 13 21:19:20 UTC 2017 - sean.marlow@suse.com
+
+- Move to single spec python3 only. 
+
+-------------------------------------------------------------------
+Sat Feb 18 15:09:11 UTC 2017 - jengelh@inai.de
+
+- Description update
+
+-------------------------------------------------------------------
+Mon Jan  9 05:20:13 UTC 2017 - arun@gmx.de
+
+- specfile:
+  * update copyright year
+
+- update to version 2.1.4:
+  * Remove LICENSE filename extension @ MANIFEST.in file #31
+
+- changes from version 2.1.3 :
+  * Add a fastpath for multidict extending by multidict
+
+-------------------------------------------------------------------
+Sun Sep 25 16:48:26 UTC 2016 - arun@gmx.de
+
+- initial version
+

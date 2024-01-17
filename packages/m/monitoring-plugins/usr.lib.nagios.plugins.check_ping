@@ -1,0 +1,14 @@
+#include <tunables/global>
+/usr/lib/nagios/plugins/check_ping {
+    #include <abstractions/base>
+    #include <abstractions/nameservice>
+
+    capability net_raw,
+    capability setuid,
+    network inet raw,
+    network inet6 raw,
+    /{usr/,}bin/ping rix,
+    /{usr/,}bin/ping6 rix,
+
+    /etc/monitoring-plugins/* r,
+}

@@ -1,0 +1,10 @@
+Index: OpenIPMI-2.0.25/swig/python/openipmigui.py
+===================================================================
+--- OpenIPMI-2.0.25.orig/swig/python/openipmigui.py	2018-06-20 15:53:54.000000000 +0200
++++ OpenIPMI-2.0.25/swig/python/openipmigui.py	2018-09-07 15:55:13.970977102 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ # openipmigui.py
+ #

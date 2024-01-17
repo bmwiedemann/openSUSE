@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1aa15574453cd49354cae4975015469</srcmd5>
+    <version>2.3.1</version>
+    <time>1630265646</time>
+    <user>dimstar_suse</user>
+    <comment>this package was still missing in Factory</comment>
+    <requestid>914872</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1104069621bc36a4e19dae4277a166bf</srcmd5>
+    <version>2.4.0</version>
+    <time>1631391873</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>918465</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc5031e57bbcdcb7e9014b2fef80ee8e</srcmd5>
+    <version>2.4.1</version>
+    <time>1638310563</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.1:
+ - Build musllinux wheels.
+</comment>
+    <requestid>934671</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f8746489072cbd1867aeffd1fb89fdd7</srcmd5>
+    <version>2.4.1</version>
+    <time>1639515711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940419</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a8aa471cbb7b1abe921c8489af619f14</srcmd5>
+    <version>2.5.0</version>
+    <time>1640108452</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>941878</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>55b9d81d066bc622406345955d1c0c04</srcmd5>
+    <version>2.6.0</version>
+    <time>1641932405</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.6.0:
+  * Drop Python 3.6 support.
+
+- update to version 2.5.0:
+  * Add ``time_machine.escape_hatch``, which provides functions to bypass
+    time-machine.
+    Thanks to Matt Pegler for the feature request in `Issue #206
+    &lt;https://github.com/adamchainz/time-machine/issues/206&gt;`__.</comment>
+    <requestid>945538</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fb0475777ae0dc664bb6269f8f8d5634</srcmd5>
+    <version>2.6.0</version>
+    <time>1642548920</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>947186</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93c7a0fd6fd3961723ff42025438a3c2</srcmd5>
+    <version>2.8.1</version>
+    <time>1661432965</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>999188</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7e9eb9df9fbfdd66e53fae5fbf02076f</srcmd5>
+    <version>2.8.2</version>
+    <time>1667901270</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034314</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>02550b6d4e8ebbb2f90f462d97bec5c3</srcmd5>
+    <version>2.8.2</version>
+    <time>1681387833</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078765</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>92984154dae6b22be8a296ef22eba67d</srcmd5>
+    <version>2.9.0</version>
+    <time>1685294610</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.0:
+  * Explicitly error when attempting to install on PyPy.</comment>
+    <requestid>1089344</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>515ff19fd096366d76e8fd20b20af427</srcmd5>
+    <version>2.9.0</version>
+    <time>1685743581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089987</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8540c84985e04deb12b0da58d074df37</srcmd5>
+    <version>2.9.0</version>
+    <time>1686576258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092187</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8d58c780bb54195c747b44f45ab91db2</srcmd5>
+    <version>2.13.0</version>
+    <time>1699615732</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1124365 from ecsos
+
+- Update to 2.13.0
+    - Add support for datetime.timedelta to time_machine.travel().
+    - Fix documentation about using local time for naive date(time) strings.
+    - Add shift() method to the time_machine pytest fixture.
+    - Mock time.monotonic() and time.monotonic_ns(). 
+      They return the values of time.time() and time.time_ns()
+      respectively, rather than real monotonic clocks.
+  - Changes from 2.12.0
+    - Include wheels for Python 3.12.
+  - Changes from 2.11.0
+    - Drop Python 3.7 support.
+  - Changes from 2.10.0
+    - Support Python 3.12.</comment>
+    <requestid>1124381</requestid>
+  </revision>
+</revisionlist>

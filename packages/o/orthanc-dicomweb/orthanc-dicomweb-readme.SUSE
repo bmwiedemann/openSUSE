@@ -1,0 +1,16 @@
+README: Orthanc for openSUSE
+============================
+
+Orthanc is a RESTful DICOM server for healthcare and medical research.
+
+This package provides the DICOMWeb plugin for Orthanc.
+
+Once Orthanc is installed, you must add a section in the Orthanc configuration file that specifies the details of the Web Viewer. 
+
+You may use /usr/share/doc/packages/orthanc/dicomweb.json as template and copy it to /etc/orthanc.
+You need to restart the Orthanc-Server to enable the configuration.
+
+Check out http://book.orthanc-server.com/plugins/dicomweb.html for additional information!
+
+Have fun
+Axel Braun <DocB@openSUSE.org> Tue Aug 13 08:06:42 UTC 2019 

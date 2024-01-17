@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>565c379be79695b9e757904f28679f6e</srcmd5>
+    <version>4.1</version>
+    <time>1521193216</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-jaraco.packaging, required by python3-jaraco.itertools</comment>
+    <requestid>583891</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>11f2d3b36c253c1162642c98b0c53706</srcmd5>
+    <version>6.1</version>
+    <time>1551468351</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679740</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2b32fe590cc9b1531f3ad5e39dfe4356</srcmd5>
+    <version>6.1</version>
+    <time>1572883935</time>
+    <user>dimstar_suse</user>
+    <comment>- Run SPEC file through spec-cleaner -i.</comment>
+    <requestid>744006</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2fd350a8e44116d9cb4455da24a4f9a0</srcmd5>
+    <version>8.1.0</version>
+    <time>1587325181</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I</comment>
+    <requestid>784211</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>297488eca6d61258d6b006010124e4a0</srcmd5>
+    <version>8.1.0</version>
+    <time>1637535098</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931518</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f068d9eaf4e61089d7982c563eb12bde</srcmd5>
+    <version>9.0.0</version>
+    <time>1661962111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000125</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f23f2a4374a79bea881c1618168116a4</srcmd5>
+    <version>9.1.1</version>
+    <time>1667315438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v9.1.1
+  * Change requirement to build[virtualenv] as workaround for pypa/build#266.
+- Update to v9.1.0
+  * Prefer build to pep517 for loading package metadata.
+</comment>
+    <requestid>1032671</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d8d06d1045bddada70d551a9766fc1ef</srcmd5>
+    <version>9.1.2</version>
+    <time>1673021089</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1.2:
+  * #6: Added minimal test to ``sphinx.packaging``.</comment>
+    <requestid>1056000</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2b7b1097bdb2ff636182788a767059df</srcmd5>
+    <version>9.1.2</version>
+    <time>1682193612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081872</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3659e7efdd5a8ca77a591db32f729c7b</srcmd5>
+    <version>9.2.0</version>
+    <time>1684490114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086860</requestid>
+  </revision>
+</revisionlist>

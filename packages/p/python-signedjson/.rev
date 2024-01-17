@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42996c5ed94e449e8c7c79840f4862d1</srcmd5>
+    <version>1.0.0</version>
+    <time>1501840748</time>
+    <user>maxlin_factory</user>
+    <comment>Add LICENSE and README.rst</comment>
+    <requestid>510146</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0176d582226b27d7a0cbf1fe740309e4</srcmd5>
+    <version>1.0.0</version>
+    <time>1545648399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660069</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0ab7cc208833474487ada87c2f5cfe68</srcmd5>
+    <version>1.1.0</version>
+    <time>1581087214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770563</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32c1884a7590ab2f2bde034fdb941b67</srcmd5>
+    <version>1.1.1</version>
+    <time>1587071150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1
+  * Fix incorrect typing annotation for `decode_signing_key_base64`.
+  * Reinstate `decode_verify_key_base64` function which was erroneously removed in 1.1.0. 
+- Add no-importlib-on-py38.patch to fix build on Python 3.8</comment>
+    <requestid>794597</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b8a9761881b9c0ebe1f466a2d8a55b76</srcmd5>
+    <version>1.1.1</version>
+    <time>1597668020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827212</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>250846232522e348fba72f6f1433da46</srcmd5>
+    <version>1.1.4</version>
+    <time>1654776628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981337</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8e0763aa31901838e7b4aac2d517bb14</srcmd5>
+    <version>1.1.4</version>
+    <time>1677598451</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1068209</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c191e2a8a6f99ae93b202eefe87d117e</srcmd5>
+    <version>1.1.4</version>
+    <time>1686576366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092355</requestid>
+  </revision>
+</revisionlist>

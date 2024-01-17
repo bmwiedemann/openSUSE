@@ -1,0 +1,8 @@
+<package name="php-memcache" project="openSUSE:Factory">
+  <title>PHP Memcache client Extension</title>
+  <description>Memcached is a caching daemon designed especially for dynamic web applications to decrease database load by
+storing objects in memory. This extension allows you to work with memcached through handy OO and procedural interfaces.
+The extension allows use to store sessions in memcached via memcache.</description>
+  <devel project="server:php:extensions" package="php-memcache"/>
+  <url>https://pecl.php.net/package/memcache</url>
+</package>

@@ -1,0 +1,17 @@
+# HG changeset patch
+# Parent  fa7b175db269546b9408d1af03d9c04dddbc4d9b
+# use system stock icon for XTerm
+
+Index: xterm-385/xterm.desktop
+===================================================================
+--- xterm-385.orig/xterm.desktop
++++ xterm-385/xterm.desktop
+@@ -38,7 +38,7 @@ Exec=xterm
+ Terminal=false
+ Type=Application
+ Encoding=UTF-8
+-Icon=xterm-color_48x48
++Icon=terminal
+ Categories=System;TerminalEmulator;
+ Keywords=shell;prompt;command;commandline;cmd;
+ StartupWMClass=XTerm

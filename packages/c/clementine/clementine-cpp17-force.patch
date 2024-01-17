@@ -1,0 +1,23 @@
+diff -ruN Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/ext/libclementine-remote/CMakeLists.txt Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.cpp14-fix/ext/libclementine-remote/CMakeLists.txt
+--- Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/ext/libclementine-remote/CMakeLists.txt	2022-05-18 09:23:11.000000000 -0400
++++ Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.cpp14-fix/ext/libclementine-remote/CMakeLists.txt	2023-07-09 21:34:28.025580920 -0400
+@@ -1,6 +1,6 @@
+ include_directories(${PROTOBUF_INCLUDE_DIRS})
+
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++17")
+
+ set(MESSAGES
+   remotecontrolmessages.proto
+diff -ruN Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/ext/libclementine-tagreader/CMakeLists.txt Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.cpp14-fix/ext/libclementine-tagreader/CMakeLists.txt
+--- Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/ext/libclementine-tagreader/CMakeLists.txt  2022-05-18 09:23:11.000000000 -0400
++++ Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.cpp14-fix/ext/libclementine-tagreader/CMakeLists.txt  2023-07-09 21:34:39.538010129 -0400
+@@ -3,7 +3,7 @@
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ include_directories(${CMAKE_SOURCE_DIR}/ext/libclementine-common)
+
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++0x")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++17")
+
+ set(MESSAGES
+   tagreadermessages.proto

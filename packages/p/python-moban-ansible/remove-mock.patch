@@ -1,0 +1,13 @@
+Index: moban-ansible-0.0.2/tests/utils.py
+===================================================================
+--- moban-ansible-0.0.2.orig/tests/utils.py
++++ moban-ansible-0.0.2/tests/utils.py
+@@ -2,7 +2,7 @@ import os
+ import sys
+ from textwrap import dedent
+ 
+-from mock import patch
++from unittest.mock import patch
+ import unittest
+ 
+ from moban.main import main

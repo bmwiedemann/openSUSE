@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>083fc294e6ecd6c979b77894315e3bae</srcmd5>
+    <version>1.4.9</version>
+    <time>1559727595</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>707414</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ec0b09048d9eb5641680f06e612effcc</srcmd5>
+    <version>1.4.15</version>
+    <time>1610977151</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1180994, CVE-2020-26217, bsc#1180146, CVE-2020-26258 and bsc#1180145, CVE-2020-26259</comment>
+    <requestid>864027</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c94d3c50d7bb4ef33d4e1bdc0a00da8</srcmd5>
+    <version>1.4.16</version>
+    <time>1618610494</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1184796, CVE-2021-21351 and bsc#1184797, CVE-2021-21349</comment>
+    <requestid>885696</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>232c891a1d7bd6394c7ee690641256a0</srcmd5>
+    <version>1.4.16</version>
+    <time>1619552086</time>
+    <user>dimstar_suse</user>
+    <comment>changelog fixes</comment>
+    <requestid>888519</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78a233699425dbcaa938d109d9d88c7e</srcmd5>
+    <version>1.4.17</version>
+    <time>1622536762</time>
+    <user>dimstar_suse</user>
+    <comment>security fix</comment>
+    <requestid>896295</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0b19f2f17296395c72b3a0bc8f3fe118</srcmd5>
+    <version>1.4.17</version>
+    <time>1622839472</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changelog with sle</comment>
+    <requestid>897529</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f1ad2ec53f80e9e24568fd7d60e430e3</srcmd5>
+    <version>1.4.18</version>
+    <time>1632849399</time>
+    <user>dimstar_suse</user>
+    <comment>Misc security fixes</comment>
+    <requestid>921981</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c673c869558627fdc995228092c6dc46</srcmd5>
+    <version>1.4.19</version>
+    <time>1644007764</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2021-43859, bsc#1195458</comment>
+    <requestid>951552</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>af73569129c5f0d131ec10f08ed07518</srcmd5>
+    <version>1.4.19</version>
+    <time>1647618176</time>
+    <user>dimstar_suse</user>
+    <comment>standalone jaxb-api and activation-api</comment>
+    <requestid>962741</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>aea7020fd03dae74d8ad8d2d50fb4b93</srcmd5>
+    <version>1.4.19</version>
+    <time>1648665365</time>
+    <user>dimstar_suse</user>
+    <comment>Standalone JavaEE inconditionally</comment>
+    <requestid>965945</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>82a56c20f557229c859b3512b5f54fd2</srcmd5>
+    <version>1.4.19</version>
+    <time>1653417225</time>
+    <user>dimstar_suse</user>
+    <comment>sync changes with sle</comment>
+    <requestid>978887</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f17a869db31221de9fc87b3474c11a45</srcmd5>
+    <version>1.4.20</version>
+    <time>1679069110</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1206729 and bsc#1203520</comment>
+    <requestid>1072631</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>27be180704f46a008eb362a09544e13d</srcmd5>
+    <version>1.4.20</version>
+    <time>1693235602</time>
+    <user>anag+factory</user>
+    <comment>make dependency on bea-stax optional</comment>
+    <requestid>1105910</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>23d3729bd3e3d3b183145402b578c0db</srcmd5>
+    <version>1.4.20</version>
+    <time>1694344273</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1110007</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>92483db2fd728a387af3e1079ee346d6</srcmd5>
+    <version>1.4.20</version>
+    <time>1698333230</time>
+    <user>anag+factory</user>
+    <comment>Fix build with jdk 21</comment>
+    <requestid>1120368</requestid>
+  </revision>
+</revisionlist>

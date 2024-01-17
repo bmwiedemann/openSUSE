@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Oct 12 03:38:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.3.1 
+  * changed start year to support conversion from 1391 to 1000
+
+-------------------------------------------------------------------
+Wed Aug 12 14:40:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Clean up packages
+
+-------------------------------------------------------------------
+Mon Apr 27 10:06:05 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- initial package 0.2.1

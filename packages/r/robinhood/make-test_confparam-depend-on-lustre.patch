@@ -1,0 +1,29 @@
+From 8458a500acf2c91550c75a842fa629870e329ac0 Mon Sep 17 00:00:00 2001
+From: Christian Goll <Christian.Goll@gmail.com>
+Date: Wed, 21 Oct 2020 11:49:56 +0200
+Subject: [PATCH] make test_confparam depend on lustre
+
+Change-Id: If8e1524b3bfcb692b6be2e6dd604072139d99019
+---
+ src/tests/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/tests/Makefile.am b/src/tests/Makefile.am
+index 4602d785..1b7b62ee 100644
+--- a/src/tests/Makefile.am
++++ b/src/tests/Makefile.am
+@@ -7,9 +7,9 @@ AM_LDFLAGS= -lpthread
+ #EXTRA_DIST = my-project.supp
+ 
+ check_PROGRAMS=test_uidgidcache test_params \
+-    test_confparam test_parse
++    test_parse
+ if LUSTRE
+-check_PROGRAMS+=create_nostripe test_forcestripe
++check_PROGRAMS+=create_nostripe test_forcestripe test_confparam 
+ endif
+ TESTS=test_parsing.sh test_uidgidcache test_params test_confparam
+ 
+-- 
+2.26.2
+

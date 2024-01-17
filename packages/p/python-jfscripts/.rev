@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5622442f0d3a3806b98f493c7f54986</srcmd5>
+    <version>0.5.0</version>
+    <time>1584964291</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>787365</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>37c9e5e798594baa7401929ae859d2e8</srcmd5>
+    <version>0.5.0</version>
+    <time>1613677260</time>
+    <user>dimstar_suse</user>
+    <comment>- Use python_alternative for all shipped scripts instead of python3_only.</comment>
+    <requestid>867616</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8edc207afcb7ae0abe9838369efe8bf6</srcmd5>
+    <version>1.1.0</version>
+    <time>1664553478</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007082</requestid>
+  </revision>
+</revisionlist>

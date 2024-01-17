@@ -1,0 +1,5 @@
+<package name="libdbusmenu-qt5" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Qt5" package="libdbusmenu-qt5"/>
+</package>

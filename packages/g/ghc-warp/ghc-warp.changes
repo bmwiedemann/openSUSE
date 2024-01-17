@@ -1,0 +1,197 @@
+-------------------------------------------------------------------
+Fri Nov 24 02:53:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.31.
+  ## 3.3.31
+
+  * Supporting http2 v5.0.
+
+-------------------------------------------------------------------
+Tue Oct 25 15:42:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.30.
+  ## 3.3.30
+
+  * Length of `ResponseBuilder` responses will now also be passed to the logger.
+     [#946](https://github.com/yesodweb/wai/pull/946)
+  * Using `If-(None-)Match` headers simultaneously with `If-(Un)Modified-Since` headers now
+    follow the RFC 9110 standard. So `If-(Un)Modified-Since` headers will be correctly ignored
+    if their respective `-Match` counterpart is also present in the request headers.
+     [#945](https://github.com/yesodweb/wai/pull/945)
+  * Fixed adding superfluous `Server` header when using HTTP/2.0 if response already has it.
+     [#943](https://github.com/yesodweb/wai/pull/943)
+
+  ## 3.3.29
+
+  * Preparing coming "http2" v4.2.0.
+
+  ## 3.3.28
+
+  * Fix for the "-x509" flag
+     [#935](https://github.com/yesodweb/wai/pull/935)
+
+  ## 3.3.27
+
+  * Fixing busy loop due to eMFILE
+    [#933](https://github.com/yesodweb/wai/pull/933)
+
+  ## 3.3.26
+
+  * Using crypton instead of cryptonite.
+    [#931](https://github.com/yesodweb/wai/pull/931)
+
+-------------------------------------------------------------------
+Wed Oct 25 02:02:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.25 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:09:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Thu Mar 16 02:30:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.25.
+  ## 3.3.25
+
+  * Catching up the signature change of openFd in the unix package v2.8.
+    [#926](https://github.com/yesodweb/wai/pull/926)
+
+-------------------------------------------------------------------
+Wed Feb  8 05:29:16 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.24.
+  ## 3.3.24
+
+  * Switching the version of the "recv" package from 0.0.x to 0.1.x.
+
+-------------------------------------------------------------------
+Thu Jan 26 01:27:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.23 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Sep 28 00:40:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.23.
+  ## 3.3.23
+
+  * Add `setAccept` for hooking the socket `accept` call.
+    [#912](https://github.com/yesodweb/wai/pull/912)
+  * Removed some package dependencies from test suite
+    [#902](https://github.com/yesodweb/wai/pull/902)
+  * Factored out `Network.Wai.Handler.Warp.Recv` to its own package `recv`.
+    [#899](https://github.com/yesodweb/wai/pull/899)
+
+-------------------------------------------------------------------
+Tue Aug  9 01:16:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.22.
+  ## 3.3.22
+
+  * Creating a bigger buffer when the current one is too small to fit the Builder
+    [#895](https://github.com/yesodweb/wai/pull/895)
+  * Using InvalidRequest instead of HTTP2Error
+    [#890](https://github.com/yesodweb/wai/pull/890)
+
+-------------------------------------------------------------------
+Mon May 30 01:06:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.21.
+  ## 3.3.21
+
+  * Support GHC 9.4 [#889](https://github.com/yesodweb/wai/pull/889)
+
+-------------------------------------------------------------------
+Mon Mar  7 22:47:21 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.20.
+  ## 3.3.20
+
+  * Adding "x509" flag.
+    [#871](https://github.com/yesodweb/wai/pull/871)
+
+-------------------------------------------------------------------
+Wed Feb  2 04:02:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.19.
+  ## 3.3.19
+
+  * Allowing the eMFILE exception in acceptNewConnection.
+    [#831](https://github.com/yesodweb/wai/pull/831)
+
+-------------------------------------------------------------------
+Sat Nov 20 17:29:16 UTC 2021 - psimons@suse.com
+
+- Update warp to version 3.3.18.
+  ## 3.3.18
+
+  * Tidy up HashMap and MultiMap [#864](https://github.com/yesodweb/wai/pull/864)
+  * Support GHC 9.2 [#863](https://github.com/yesodweb/wai/pull/863)
+
+-------------------------------------------------------------------
+Tue Jun 22 07:40:53 UTC 2021 - psimons@suse.com
+
+- Update warp to version 3.3.17.
+  ## 3.3.17
+
+  * Modify exception handling to swallow async exceptions in forked thread [#850](https://github.com/yesodweb/wai/issues/850)
+  * Switch default forking function to not install the global exception handler (minor optimization) [#851](https://github.com/yesodweb/wai/pull/851)
+
+-------------------------------------------------------------------
+Wed May 26 08:45:34 UTC 2021 - psimons@suse.com
+
+- Update warp to version 3.3.16.
+  # ChangeLog for warp
+
+  ## 3.3.16
+
+  * Move exception handling over to `unliftio` for better async exception support [#845](https://github.com/yesodweb/wai/issues/845)
+
+-------------------------------------------------------------------
+Fri Apr 16 11:05:38 UTC 2021 - psimons@suse.com
+
+- Update warp to version 3.3.15.
+  ## 3.3.15
+
+  * Using http2 v3.
+
+-------------------------------------------------------------------
+Thu Feb  4 10:33:08 UTC 2021 - psimons@suse.com
+
+- Update warp to version 3.3.14.
+  ## 3.3.14
+
+  * Drop support for GHC < 8.2.
+  * Fix header length calculation for `settingsMaxTotalHeaderLength`
+    [#838](https://github.com/yesodweb/wai/pull/838)
+  * UTF-8 encoding in `exceptionResponseForDebug`.
+    [#836](https://github.com/yesodweb/wai/pull/836)
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:46:37 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Fri Jun 26 02:00:23 UTC 2020 - psimons@suse.com
+
+- Update warp to version 3.3.13.
+  ## 3.3.13
+
+  * pReadMaker is exported from the Internal module.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:15 UTC 2020 - psimons@suse.com
+
+- Add warp at version 3.3.12.
+

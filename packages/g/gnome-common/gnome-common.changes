@@ -1,0 +1,318 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:27:43 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon May  2 20:42:05 UTC 2016 - mgorse@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Tue Sep 22 06:43:07 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Bugs fixed: bgo#747920, bgo#748394, bgo#729406, bgo#729407,
+    bgo#741891, bgo#741558, bgo#729931, bgo#735416.
+- Drop pgnome-doc-utils-devel BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Wed Nov  5 12:53:08 UTC 2014 - dimstar@opensuse.org
+
+- Add autoconf-archive Requires: the files ax_check_enable_debug.m4
+  and ax_code_coverage.m4 are now shipped by ac-archive and from
+  a GNOME perspective, those two files are mandatory to be present
+  for a bootstrap.
+- Remove ax_check_enable_debug.m4 and ax_code_coverage.m4 from
+  gnome-common installation.
+
+-------------------------------------------------------------------
+Mon Sep 22 14:24:22 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + macros2:
+    - Update links to macros in the autoconf-archive.
+    - Add support for APPSTREAM_XML macro (bgo#736497).
+    - Deprecate various obsolete macros.
+  + build: Remove a non-existent file from EXTRA_DIST (bgo#735418).
+  + compiler-flags: allow suppressing warnings.
+  + code-coverage: Support lcov 1.11.
+  + doc: Move doc/usage.txt to README and update.
+  + make program_VERSION a local variable.
+
+-------------------------------------------------------------------
+Mon Mar 24 13:06:28 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Read the dirlist file unconditionally.
+  + compiler-flags: Replace deprecated AC_HELP_STRING with
+    AS_HELP_STRING.
+  + gnome-autogen.sh: Check for appdata-xml.m4 with APPDATA_XML.
+  + Bugs fixed: bgo#726208, bgo#726892.
+
+-------------------------------------------------------------------
+Sat Nov 23 21:53:35 UTC 2013 - dimstar@opensuse.org
+
+- Replace gnome-doc-utils Requires with gnome-doc-utils-devel:
+  gnome-autogen.sh wants gnome-doc-prepare to be present, which is
+  in gnome-doc-utils-devel.
+
+-------------------------------------------------------------------
+Mon Sep 23 14:58:22 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + compiler-flags:
+    - Add a #serial line (bgo#707475).
+    - Add an optional second argument for custom warnings
+      (bgo#707475).
+  + Run intltool before autoreconf so intltool.m4 is picked up by
+    aclocal (bgo#705365).
+  + gnome-autogen.sh:
+    - run glib-gettexize if using GLib gettext.
+    - Check only for autoreconf; autoconf, automake, libtool,
+      gettext are already checked by autoreconf.
+    - Do not use sed to get the AC_CONFIG_MACRO_DIR directory.
+    - Create m4 directory if it doesnt exits.
+    - Add support for automake 1.14.
+  + Add support for lcov 1.10.
+  + Other bugs fixed: bgo#699943
+
+-------------------------------------------------------------------
+Tue Jan 15 09:30:00 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + code coverage:
+    - Quiet lcov and add extra ignore patterns
+    - Relicense to LGPL-2.1+
+  + Add more warnings to the default GNOME_COMPILE_WARNINGS
+  + Add support for automake 1.13.
+  + Finally and completely specify GPL-2.0+ as the license for
+    gnome-common (as a collection of GPL-2.0+ and LGPL-2.1+ files).
+    NOTE: the .spec file already used the previous assumption of
+    GPL-2.0+ being the right license.
+
+-------------------------------------------------------------------
+Tue Oct 16 07:12:40 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Add missing semicolons to omf_timestamp rule (bgo#685388).
+
+-------------------------------------------------------------------
+Sun Sep  9 19:23:57 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.5.91:
+  + Add code coverage support (bgo#606720).
+
+-------------------------------------------------------------------
+Wed Aug  8 17:58:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Add support for automake 1.12.
+  + Fix bashishms (bgo#588020).
+  + Do not call automake with --force (bgo#612329).
+  + Fix srcdir!=builddir for scrollmaker (bgo#315320, bgo#409060).
+  + Check for glibtoolize in gnome-autogen.sh.
+  + Trace AC_CONFIG_SUBDIRS with autoconf.
+- Drop gnome-common-am112.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed May 30 13:53:12 UTC 2012 - jengelh@inai.de
+
+- Parallel build with %_smp_mflags
+- Add gnome-common-am112.patch: Add support for automake 1.12.
+
+-------------------------------------------------------------------
+Mon Mar 26 15:20:19 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0.1:
+  + No changes.
+- Changes from version 3.4.0:
+  + Update following move to deprecation attributes for libraries.
+
+-------------------------------------------------------------------
+Thu Dec 22 09:39:23 UTC 2011 - vuntz@opensuse.org
+
+- Own %{_datadir}/aclocal to fix build without automake/autoconf.
+
+-------------------------------------------------------------------
+Fri Sep  9 12:07:25 UTC 2011 - vuntz@opensuse.org
+
+- Add yelp-tools Requires: it provides yelp.m4, which is checked
+  for since 3.1.0.
+
+-------------------------------------------------------------------
+Wed Aug 17 14:39:41 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.0:
+  + gnome-autogen.sh:
+    - Don't print terminal codes if stdin isn't a tty
+    - Check for yelp.m4 with YELP_HELP_INIT
+
+-------------------------------------------------------------------
+Tue May  3 00:47:13 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 2.34.0:
+  + Use dirname, instead of basename for finding srcdir.
+  + Remove gnome1 cruft.
+  + Mark GNOME_COMMON_INIT as deprecated.
+
+-------------------------------------------------------------------
+Sun Feb 13 17:30:14 CET 2011 - vuntz@opensuse.org
+
+- Remove 2.x references in summaries and descriptions.
+
+-------------------------------------------------------------------
+Tue Sep 22 13:41:20 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Support for automake 1.11
+  + use AM_SILENT_RULES
+- Drop gnome-common-automake-1.11.patch, upstream included.
+
+-------------------------------------------------------------------
+Fri Jun 26 10:30:50 CEST 2009 - dominique-obs@leuenberger.net
+
+- Add patch gnome-common-automake-1.11.patch to be compatible
+  to automake 1.11
+
+-------------------------------------------------------------------
+Fri Mar 20 02:08:19 CET 2009 - vuntz@novell.com
+
+- Update to version 2.26.0:
+  + Add more flags to DISABLE_DEPRECATED.
+- Remove AutoReqProv: it's default now.
+
+-------------------------------------------------------------------
+Sun Jan 25 05:13:56 CET 2009 - vuntz@novell.com
+
+- Add various Requires to make gnome-common work out of the box.
+  Fix bnc#463104.
+
+-------------------------------------------------------------------
+Tue Sep 23 16:24:22 EST 2008 - mboman@suse.de
+
+- Update to version 2.24.0:
+  + Cosmetic version bump
+
+-------------------------------------------------------------------
+Tue Jan 29 15:56:35 CET 2008 - rodrigo@suse.de
+
+- Update to version 2.20.0 
+
+-------------------------------------------------------------------
+Wed Aug  1 23:28:20 CEST 2007 - maw@suse.de
+
+- Update to version 2.18.0
+- Bugs (bugzilla.gnome.org) fixed: #377185, #360693, #377175,
+  #323868, #343441, #321860, #319496, and #305641.
+- Works with automake 1.10, so drop gnome-autogen.diff.
+
+-------------------------------------------------------------------
+Wed Dec 13 15:31:33 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Sat Oct 21 14:47:58 CEST 2006 - schwab@suse.de
+
+- Work around bogus version check.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:13 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Sep 20 12:09:06 CEST 2005 - rodrigo@suse.de
+
+- Update to version 2.12.0.
+
+-------------------------------------------------------------------
+Thu Aug  4 15:53:28 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.11.0.
+
+-------------------------------------------------------------------
+Mon Nov 22 15:07:41 CET 2004 - sbrabec@suse.cz
+
+- Fixed gnome-autogen.sh for multi-component GNOME2_PATH.
+  http://bugzilla.gnome.org/show_bug.cgi?id=159062
+
+-------------------------------------------------------------------
+Thu Nov 18 15:57:02 CET 2004 - gekker@suse.de
+
+- Update to version 2.8.0 
+
+-------------------------------------------------------------------
+Tue Aug 24 01:57:22 CEST 2004 - ro@suse.de
+
+- support automake 1.9 as well
+
+-------------------------------------------------------------------
+Wed Aug  4 21:13:09 CEST 2004 - dobey@suse.de
+
+- Add support for automake 1.8
+
+-------------------------------------------------------------------
+Mon Feb 23 11:53:13 CET 2004 - sbrabec@suse.cz
+
+- Set owner to root, not bin.
+
+-------------------------------------------------------------------
+Thu Nov  6 16:39:56 CET 2003 - schwab@suse.de
+
+- Fix directory permissions.
+
+-------------------------------------------------------------------
+Wed Oct 08 16:15:10 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Mon Jul 14 17:06:25 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Thu Jun 12 15:55:25 CEST 2003 - sbrabec@suse.cz
+
+- Fixed directory packaging.
+- Package marked as noarch.
+
+-------------------------------------------------------------------
+Mon Sep  9 14:57:15 CEST 2002 - kukuk@suse.de
+
+- Remove all the not needed packages from neededforbuild
+
+-------------------------------------------------------------------
+Fri Jun 14 12:24:10 CEST 2002 - ro@suse.de
+
+- move last change to glib2 package 
+
+-------------------------------------------------------------------
+Fri Jun 14 01:43:00 CEST 2002 - ro@suse.de
+
+- add gnome2.{sh,csh} to have /opt/gnome2/bin first in PATH
+  on 7.3 and older distros 
+
+-------------------------------------------------------------------
+Tue Apr 23 12:09:45 CEST 2002 - ro@suse.de
+
+- fix gnome1 macros for current autoconf (LIBOBJ usage) 
+
+-------------------------------------------------------------------
+Tue Mar  5 14:27:18 CET 2002 - hhetter@suse.de
+
+- shrink down #neededforbuild 
+
+-------------------------------------------------------------------
+Thu Jan 17 09:30:20 CET 2002 - hhetter@suse.de
+
+- prefix to /opt/gnome2 
+
+-------------------------------------------------------------------
+Tue Jan  8 12:08:38 CET 2002 - hhetter@suse.de
+
+- intial SuSE package for GNOME 2.0 platform 
+

@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Thu Oct  1 14:15:19 CEST 2015 - tiwai@suse.de
+
+- Revived from the old GNU unifont package for compatibility
+  (e.g. grub2 is still referring to this).
+

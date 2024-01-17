@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/tesseract-ocr/tessdata_fast.git</param>
+    <param name="scm">git</param>
+    <param name="revision">6572757</param>
+    <param name="filename">tessdata_fast</param>
+    <param name="versionprefix">4.1.0+git</param>
+    <param name="versionformat">%cd.%h</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

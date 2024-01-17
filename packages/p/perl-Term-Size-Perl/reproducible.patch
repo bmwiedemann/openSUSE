@@ -1,0 +1,30 @@
+https://github.com/aferreira/cpan-Term-Size-Perl/pull/1.patch
+
+From a96031f8ed287e0bb31e2e9a29ffcfbe50b2e187 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Thu, 4 Feb 2021 07:25:08 +0100
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+See https://reproducible-builds.org/ for why this matters.
+---
+ inc/Probe.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/inc/Probe.pm b/inc/Probe.pm
+index 86728bc..5463535 100644
+--- a/inc/Probe.pm
++++ b/inc/Probe.pm
+@@ -105,7 +105,7 @@ my $PARAMS_TEMPLATE = <<PARAMS;
+ 
+ package Term::Size::Perl::Params; 
+ 
+-# created @{[scalar localtime]}
++# created @{[scalar localtime($ENV{SOURCE_DATE_EPOCH} or time)]}
+ 
+ use vars qw(\$VERSION);
+ \$VERSION = '@{[MM->parse_version('Perl.pm')]}';

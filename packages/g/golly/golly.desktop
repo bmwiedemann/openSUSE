@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Golly
+GenericName=Golly cellular automata simulator
+# Run with the X11 backend until wxWidgets is built with EGL support
+Exec=env GDK_BACKEND=x11 golly
+Icon=golly
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Game;LogicGame;

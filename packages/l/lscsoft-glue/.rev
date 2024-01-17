@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a65ab69be9b2841e0cfaf420783aa32</srcmd5>
+    <version>2.0.0</version>
+    <time>1594894650</time>
+    <user>dimstar_suse</user>
+    <comment>A collection of utilities for running data analysis pipelines for online and offline analysis as well as accessing various grid utilities. Used by Gravitational Wave collaborations LIGO and VIRGO.</comment>
+    <requestid>821115</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2aedb443e5fbe282554fdeaf853083a4</srcmd5>
+    <version>2.1.0</version>
+    <time>1604510797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0;
+- Run tests as part of %check section (64-bit and python3 only); entails additional BuildRequires: python-ligo-segments, python-matplotlib, and python-numpy.
+- Add python-numpy and python-ligo-segments to Requires as they  are needed for any meaningful usage of the module.
+</comment>
+    <requestid>845779</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bedc3cc4abb03148058201e9ee76e10e</srcmd5>
+    <version>2.1.0</version>
+    <time>1611262456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864176</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9ce78b5da55b39112eb7dc8529de6699</srcmd5>
+    <version>2.1.0</version>
+    <time>1613427571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872366</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>cbda94d14ed09bc4368e88da87d944c4</srcmd5>
+    <version>2.1.0</version>
+    <time>1642371495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946764</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>68df366eab080e9e73334c13ee0024f3</srcmd5>
+    <version>3.0.1</version>
+    <time>1663438255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.1:
+- Drop patches incorporated upstream
+- Use pytest to run tests; drop a network dependent test.
+- Add BuildRequires: python-pyRXP for test flavor; needed for one
+  of the new tests.
+- Split out new package, lscsoft-glue-data, with data files
+  needed by all lscsoft-glue binaries; required by all
+  python-lscsoft-glue flavors.
+- Redefine ligocommands macro to refer to updated binaries
+  installed.
+</comment>
+    <requestid>1004357</requestid>
+  </revision>
+</revisionlist>

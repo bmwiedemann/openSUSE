@@ -1,0 +1,9 @@
+<package name="orcania" project="openSUSE:Factory">
+  <title>MISC function Library</title>
+  <description>Different functions for different purposes but that can be shared
+between other projects.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="orcania"/>
+  <url>https://github.com/babelouest/orcania</url>
+</package>

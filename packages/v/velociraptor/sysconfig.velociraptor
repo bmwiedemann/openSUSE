@@ -1,0 +1,9 @@
+## Path:        Security/Monitoring
+## Description: Velociraptor server settings
+## Type:        string                                                          
+## Default:     ""
+## ServiceRestart: velociraptor
+#
+# Options for velociraptor
+#
+VELOCIRAPTOR_OPTS=""

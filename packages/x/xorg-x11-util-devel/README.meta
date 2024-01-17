@@ -1,0 +1,5 @@
+This package is a metapackage, created for compatibility.
+
+Please use instead the following packages:
+
+  gccmakedep imake lndir makedepend xorg-cf-files xorg-sgml-doctools

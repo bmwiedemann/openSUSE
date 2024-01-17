@@ -1,0 +1,32 @@
+Index: libfixmath-master/CMakeLists.txt
+===================================================================
+--- libfixmath-master.orig/CMakeLists.txt
++++ libfixmath-master/CMakeLists.txt
+@@ -17,11 +17,11 @@ file(GLOB fixsingen-srcs fixsingen/*.c)
+ file(GLOB fixtest-srcs fixtest/*.c fixtest/*.h)
+ 
+ add_executable(fixtest ${fixtest-srcs})
+-target_link_libraries(fixtest PRIVATE libfixmath m)
++target_link_libraries(fixtest PRIVATE fixmath m)
+ target_include_directories(fixtest PRIVATE ${CMAKE_SOURCE_DIR})
+ 
+ add_executable(fixsingen ${fixsingen-srcs})
+-target_link_libraries(fixsingen PRIVATE libfixmath m)
++target_link_libraries(fixsingen PRIVATE fixmath m)
+ target_include_directories(fixsingen PRIVATE ${CMAKE_SOURCE_DIR})
+ 
+ 
+Index: libfixmath-master/libfixmath/libfixmath.cmake
+===================================================================
+--- libfixmath-master.orig/libfixmath/libfixmath.cmake
++++ libfixmath-master/libfixmath/libfixmath.cmake
+@@ -1,6 +1,6 @@
+ file(GLOB libfixmath-srcs libfixmath/*.c)
+ 
+-add_library(libfixmath STATIC ${libfixmath-srcs})
++add_library(fixmath SHARED ${libfixmath-srcs})
+ 
+-target_include_directories(libfixmath INTERFACE
++target_include_directories(fixmath INTERFACE
+   ${CMAKE_CURRENT_SOURCE_DIR})
+\ No newline at end of file

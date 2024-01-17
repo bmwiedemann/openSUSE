@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e9cc29ecb447e708ecc43682447a2f5</srcmd5>
+    <version>1.0</version>
+    <time>1323085389</time>
+    <user>coolo</user>
+    <comment>New package: CharLS - A JPEG-LS library, CharLS can be used by the dcmtk package in Factory</comment>
+    <requestid>95223</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7a13c38c2472c9d5dbde12b5c859a789</srcmd5>
+    <version>1.0</version>
+    <time>1328890302</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause</comment>
+    <requestid>102936</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>7a13c38c2472c9d5dbde12b5c859a789</srcmd5>
+    <version>1.0</version>
+    <time>1340183148</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>fca379c0906b62f64616d1031430bb88</srcmd5>
+    <version>1.0</version>
+    <time>1353506802</time>
+    <user>coolo</user>
+    <comment>Fix the SLES build (%make_install is not expanded) (forwarded request 142113 from cgiboudeaux)</comment>
+    <requestid>142120</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>fca379c0906b62f64616d1031430bb88</srcmd5>
+    <version>1.0</version>
+    <time>1359108613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>fca379c0906b62f64616d1031430bb88</srcmd5>
+    <version>1.0</version>
+    <time>1379661903</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>fca379c0906b62f64616d1031430bb88</srcmd5>
+    <version>1.0</version>
+    <time>1409300424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ee7b21a6a486bb245dc9c9f6a0a7ccf9</srcmd5>
+    <version>2.0.0</version>
+    <time>1499415482</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508661</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>45fd76e767504badbe4f5fea4738df92</srcmd5>
+    <version>2.0.0</version>
+    <time>1499754495</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509310</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c8ee2c20354f8e27e3271e503ef3c2df</srcmd5>
+    <version>2.0.0</version>
+    <time>1500670230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511701</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c88d77cc61986b80d9e2e9a463e4212b</srcmd5>
+    <version>2.1.0</version>
+    <time>1603821518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0. 
+  * Added
+    * Two new C++ classes (jpegls_encoder \ jpegls_decoder) have 
+      been added to make it much easier to use CharLS from C++
+    * A new C API (charls_xxx functions) was added to provide a 
+      more stable ABI for future updates. The old API calls are 
+      internally forwarded to the new API.
+    * CharLS can now read and write JPEG-LS standard SPIFF headers
+    * Support has been added to detect the unsupported JPEG-LS 
+      extension (ISO/IEC 14495-2) SOF_57 marker and IDs in LSE 
+      marker
+    * Support has been added to encode\decode 4 component images 
+      in all interleave modes
+  * Deprecated
+    * The legacy 1.x\2.0 C API has been marked as deprecated. This 
+      legacy API will be maintained until the next major upgrade.
+    * Future 2.x updates will start to mark the legacy types and 
+      functions with the C++ [[deprecated]] attribute.
+  * Changed
+    * charls_error has been replaced by a C++11 compatible 
+      jpegls_errc error code enum design
+    * The included C and C++ sample have been updated to use the 
+      new C\C++ API
+    * Improved the validation of the JPEG-LS stream during 
+      decoding
+    * The referenced NuGet packages of the .NET wrapper assembly 
+      are updated to their latest versions
+  * Removed
+    * Support to write JFIF headers during encoding has been 
+      removed. JFIF headers were already skipped when present</comment>
+    <requestid>833922</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6f4e4af8d5b865bc851251f8634b0ca9</srcmd5>
+    <version>2.2.0</version>
+    <time>1614684955</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876079</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9c52fa04e27869bb9197c8222364ca08</srcmd5>
+    <version>2.3.2</version>
+    <time>1643926603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950834</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2295df3a3d387fca7793afaa04fa8093</srcmd5>
+    <version>2.3.4</version>
+    <time>1648665353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965779</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a4b116ca020cc729162441bb18a6451f</srcmd5>
+    <version>2.4.1</version>
+    <time>1673108379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056703</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f2f167ec3ea41e91468972e00532cb19</srcmd5>
+    <version>2.4.2</version>
+    <time>1689786620</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099340</requestid>
+  </revision>
+</revisionlist>

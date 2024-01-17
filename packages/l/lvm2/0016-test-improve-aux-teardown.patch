@@ -1,0 +1,53 @@
+From fbbf796dd89007fe57a3c7043f27aed2fbf0775c Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Wed, 13 Sep 2023 00:39:33 +0200
+Subject: [PATCH 16/24] test: improve aux teardown
+
+Handle the case of device teardown where the first pass
+could have only a single, but opened device, for removal.
+In such case we want to at least once go through
+the udev_wait and retry removal again.
+
+TODO: maybe a sleep .1  might be usable as well with udev_wait
+---
+ test/lib/aux.sh | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/test/lib/aux.sh b/test/lib/aux.sh
+index 3f66e9290..4474dc72c 100644
+--- a/test/lib/aux.sh
++++ b/test/lib/aux.sh
+@@ -239,8 +239,8 @@ prepare_lvmpolld() {
+ 	echo $! > LOCAL_LVMPOLLD
+ 	for i in {200..0} ; do
+ 		test -e "$TESTDIR/lvmpolld.socket" && break
+-		echo -n .;
+-		sleep .1;
++		echo -n .
++		sleep .1
+ 	done # wait for the socket
+ 	test "$i" -gt 0 || die "Startup of lvmpolld is too slow."
+ 	echo ok
+@@ -395,10 +395,10 @@ teardown_devs_prefixed() {
+ 	# 2nd. loop is trying --force removal which can possibly 'unstuck' some bloked operations
+ 	for i in 0 1; do
+ 		test "$i" = 1 && test "$stray" = 0 && break  # no stray device removal
++		local progress=1
+ 
+ 		while :; do
+ 			local sortby="name"
+-			local progress=0
+ 
+ 			# HACK: sort also by minors - so we try to close 'possibly later' created device first
+ 			test "$i" = 0 || sortby="-minor"
+@@ -426,6 +426,7 @@ teardown_devs_prefixed() {
+ 
+ 			udev_wait
+ 			wait
++			progress=0
+ 		done # looping till there are some removed devices
+ 	done
+ }
+-- 
+2.35.3
+

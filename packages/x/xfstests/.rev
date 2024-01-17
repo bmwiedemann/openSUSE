@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f58ac1f1750d95c48e5f535a37a1e79</srcmd5>
+    <version>1.1.1+git.20210228</version>
+    <time>1617131474</time>
+    <user>RBrownSUSE</user>
+    <comment>New package, filesystem testsuite. Fixed installation path.</comment>
+    <requestid>876796</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b661aeefed0783ba5ceebd51bbf77002</srcmd5>
+    <version>1.1.1+git.20211203</version>
+    <time>1638831619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936061</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>57feecefd27b03b0fb9d6572cb4efa90</srcmd5>
+    <version>1.1.1+git.20220820</version>
+    <time>1662405729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1+git.20220820: (forwarded request 1001251 from dsterba)</comment>
+    <requestid>1001253</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>df15894998aaf3b24d9e44a5bd5359e5</srcmd5>
+    <version>1.1.1+git.20230528</version>
+    <time>1688398909</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096181</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ab6b9b350b2f4c2987d3928ce1bba3da</srcmd5>
+    <version>1.1.1+git.20230923</version>
+    <time>1698170971</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.1+git.20230923: (forwarded request 1119965 from dsterba)</comment>
+    <requestid>1119966</requestid>
+  </revision>
+</revisionlist>

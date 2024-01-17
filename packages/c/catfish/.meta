@@ -1,0 +1,8 @@
+<package name="catfish" project="openSUSE:Factory">
+  <title>Versatile File Searching Tool</title>
+  <description>
+Catfish is a GTK+ search utility written in python. It's search is powered
+by find and locate, with search suggestions provided by zeitgeist.
+  </description>
+  <devel project="X11:xfce" package="catfish"/>
+</package>

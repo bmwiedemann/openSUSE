@@ -1,0 +1,5 @@
+<package name="mpv-mpris" project="openSUSE:Factory">
+  <title>MPRIS plugin for mpv</title>
+  <description>This package contains a plugin for mpv which allows control of the player using the MPRIS D-Bus interface, which enables control with multimedia keys in desktop environments such as GNOME and KDE as well as through tools like playerctl.</description>
+  <devel project="multimedia:apps" package="mpv-mpris"/>
+</package>

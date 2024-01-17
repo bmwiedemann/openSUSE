@@ -1,0 +1,8 @@
+# RPM macros for packages Paths declared by NetworkManager
+#
+###
+#
+###
+
+# To be consumed by NetworkManager-[VPN] modules
+%_vpnservicedir %(pkg-config --define-variable prefix='%{_prefix}' --variable vpnservicedir libnm)

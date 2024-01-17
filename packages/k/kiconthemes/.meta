@@ -1,0 +1,5 @@
+<package name="kiconthemes" project="openSUSE:Factory">
+  <title>kiconthemes</title>
+  <description>KIconThemes</description>
+  <devel project="KDE:Frameworks5" package="kiconthemes"/>
+</package>

@@ -1,0 +1,20 @@
+--- src/aaslnkbd.c
++++ src/aaslnkbd.c
+@@ -90,7 +90,7 @@
+     /*non-gpm way */
+     if (!wait) {
+ #ifdef GPM_MOUSEDRIVER
+-	if (gpm_fd == -1) {
++	if (gpm_fd <= -1) {
+ #endif
+ 	    if (!SLang_input_pending(0))
+ 		return AA_NONE;
+@@ -109,7 +109,7 @@
+ #endif
+     }
+ #ifdef GPM_MOUSEDRIVER
+-    if (gpm_fd != -1) {
++    if (gpm_fd > -1) {
+ 	GPM_DRAWPOINTER(&ev);
+ 	while (!flag) {
+ 	    FD_ZERO(&readfds);

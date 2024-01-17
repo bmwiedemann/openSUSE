@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Sat May 13 13:37:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 1.0.
+  Version 1.0
+  -----------
+
+  * On Windows, drop support for legacy Windows requiring emulation.
+  * On Windows, the package no longer depends (directly or indirectly) on the
+    `Win32`, `array`,`containers`, `deepseq`, `filepath`, `ghc-boot-th`, `mintty`,
+    `pretty` or `template-haskell` packages.
+  * `hSupportsANSI` no longer assumes that the given handle is writeable.
+  * `hSupportsANSIWithoutEmulation` is deprecated.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:05:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Mon Mar 20 20:33:56 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 0.11.5.
+  Version 0.11.5
+  --------------
+
+  * Module `System.Console.ANSI.Types` spun out to new dependency package
+    `ansi-terminal-types-0.11.5`.
+  * Drop support for GHC versions before GHC 7.10.1 (released March 2015).
+  * Improvements to Haddock documentation.
+
+-------------------------------------------------------------------
+Mon Nov 21 23:22:40 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 0.11.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/ansi-terminal-0.11.4/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Apr 28 23:10:27 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 0.11.3.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/ansi-terminal-0.11.3/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Nov 23 21:11:35 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update ansi-terminal to version 0.11.1.
+  Version 0.11.1
+  --------------
+
+  * On Windows, fix compatability with the Windows I/O Manager (WinIO) introduced
+    in GHC 9.0.1, by incorporating changes made in package `Win32-2.13.2.0` in
+    that regard.
+  * Improvements to Haddock documentation.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:43:57 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Aug 11 02:00:29 UTC 2020 - psimons@suse.com
+
+- Update ansi-terminal to version 0.11.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/ansi-terminal-0.11/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue Jun 16 11:13:42 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Thu Feb 27 14:17:50 UTC 2020 - psimons@suse.com
+
+- Update ansi-terminal to version 0.10.3.
+  Version 0.10.3
+  --------------
+  * Add `getCursorPosition` as a synonym of `getCursorPosition0` and deprecate the
+    latter.
+
+-------------------------------------------------------------------
+Thu Nov 21 03:01:38 UTC 2019 - psimons@suse.com
+
+- Update ansi-terminal to version 0.10.2.
+  Version 0.10.2
+  --------------
+
+  * `hGetTerminalSize` now assumes a terminal is no bigger than 9,999 by 9,999
+    (previously, no bigger than 999 by 999).
+  * On Windows, fix a bug where emulated cursor movement functions differed from
+    Windows 10 (movement bounded by the current viewport).
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:11 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sun Oct  6 02:03:01 UTC 2019 - psimons@suse.com
+
+- Update ansi-terminal to version 0.10.1.
+  Version 0.10.1
+  --------------
+
+  * Add `hGetCursorPosition` and `hGetTerminalSize`.
+  * On Unix-like operating systems, fix a bug where `getReportedCursorPosition`
+    could block indefinitely if no information was forthcoming on the console
+    input stream.
+  * Improvements to Haddock documentation.
+
+-------------------------------------------------------------------
+Fri Sep  6 06:39:58 UTC 2019 - psimons@suse.com
+
+- Update ansi-terminal to version 0.10.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/ansi-terminal-0.10/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon May 13 02:02:17 UTC 2019 - psimons@suse.com
+
+- Update ansi-terminal to version 0.9.1.
+  Version 0.9.1
+  -------------
+
+  * Flag modules with GHC's 'Safe Haskell' language extensions (from GHC 7.2.1).
+  * Improvements and corrections to Haddock documentation.
+
+-------------------------------------------------------------------
+Sun Jan 27 03:01:38 UTC 2019 - psimons@suse.com
+
+- Update ansi-terminal to version 0.9.
+  Version 0.9
+  -----------
+
+  * Add support for 256-color palettes with new `SetPaletteColor` constructor of
+    `SGR` type, and `xterm6LevelRGB`, `xterm24LevelGray` and `xtermSystem`.
+  * Remove deprecated `getCursorPosition`. (Use `getCursorPosition0` instead.)
+  * Add `hSupportsANSIColor`.
+  * Add `getTerminalSize`.
+  * Improvements to Haddock documentation.
+
+-------------------------------------------------------------------
+Mon Oct 29 09:03:23 UTC 2018 - psimons@suse.com
+
+- Update ansi-terminal to version 0.8.2.
+  Version 0.8.2
+  -------------
+
+  * Add `getCursorPosition0` and deprecate `getCursorPosition`. Any position
+    provided by the latter is 1-based. Any position provided by the former is
+    0-based, consistent with `setCursorColumn` and `setCursorPosition`.
+  * Improvements to Haddock documentation in respect of 0-based and 1-based
+    cursor positions.
+
+-------------------------------------------------------------------
+Thu Oct  4 09:42:57 UTC 2018 - psimons@suse.com
+
+- Update ansi-terminal to version 0.8.1.
+  * Add `hSupportsANSIWithoutEmulation`. On Windows 10, if the handle is identifed
+    as connected to a native terminal ('Command Prompt' or 'PowerShell'), the
+    processing of 'ANSI' control characters will be enabled.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:12 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update ansi-terminal to version 0.8.0.4.
+  * On Windows, `hSupportsANSI` now recognises if the handle is connected to a
+    'mintty' terminal.
+  * On Windows, try to enable ANSI on ConHost terminals even if a TERM environment
+    variable exits (such as with the Hyper 2 terminal)
+  * Minor improvements to Haddock documentation
+  * Improve README and Haddock documentation
+  * On Windows, fix compatability with earlier GHC versions
+  * Drop support for GHC versions before 6.12.1 (released December 2009)
+  * On Windows, if the standard output channel is valid but not a ConHost
+    terminal, assume it is ANSI-enabled rather than failing
+  * On Windows, output the improved error message to the standard error channel
+    rather than the standard output channel
+  * Make the fields of `SGR` strict
+  * Make compatible with GHC 8.2.2
+  * Improve the error message on Windows when not ANSI-capable or ConHost
+  * Recognise Appveyor build environment as ANSI-enabled
+    `getReportedCursorPosition`: don't let the cursor reporting code be echo'd
+  * Allow saving, restoring, and querying the current cursor position
+  * Fix a couple of issues with the Reset emulation on Windows
+  * Add 24-bit RGB color support
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Thu Jun  8 11:08:24 UTC 2017 - psimons@suse.com
+
+- Update to version 0.6.3.1.
+
+-------------------------------------------------------------------
+Wed May 31 14:01:06 UTC 2017 - psimons@suse.com
+
+- Update to version 0.6.3.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:31:22 UTC 2016 - psimons@suse.com
+
+- Update to version 0.6.2.3 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Sep 13 12:23:07 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.6.2.3
+* Add an example to the haddocks
+
+-------------------------------------------------------------------
+Sun Aug 23 17:26:19 UTC 2015 - mimi.vx@gmail.com
+
+- update to 0.6.2.2
+* Fix a GHC 7.10 warning
+
+-------------------------------------------------------------------
+Thu May 14 11:33:49 UTC 2015 - mimi.vx@gmail.com
+
+- regenerated spec with  cabal-rpm
+
+-------------------------------------------------------------------
+Sat Nov 22 07:31:06 UTC 2014 - mimi.vx@gmail.com
+
+- add group to devele section
+
+-------------------------------------------------------------------
+Sun Nov 16 22:00:10 UTC 2014 - mimi.vx@gmail.com
+
+- initial commit

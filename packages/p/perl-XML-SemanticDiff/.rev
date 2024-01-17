@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>617f8558e0034a82f3ace47afaffc6ac</srcmd5>
+    <version>1.0000</version>
+    <time>1324831187</time>
+    <user>coolo</user>
+    <comment>new perl module</comment>
+    <requestid>97987</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>617f8558e0034a82f3ace47afaffc6ac</srcmd5>
+    <version>1.0000</version>
+    <time>1340183955</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>617f8558e0034a82f3ace47afaffc6ac</srcmd5>
+    <version>1.0000</version>
+    <time>1359109854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>617f8558e0034a82f3ace47afaffc6ac</srcmd5>
+    <version>1.0000</version>
+    <time>1379663924</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8333280d27ac1037c595bff74ecd65a6</srcmd5>
+    <version>1.0002</version>
+    <time>1381064187</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202263</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71249dc37bb3436dafa1818b94691856</srcmd5>
+    <version>1.0004</version>
+    <time>1393247708</time>
+    <user>coolo</user>
+    <comment>- updated to 1.0004
+    - Update the contact info for Shlomi Fish from the old one.
+    - Add separate LICENSE file (CPANTS).
+    - Add inc/Test/Run/Builder.pm .</comment>
+    <requestid>223611</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>71249dc37bb3436dafa1818b94691856</srcmd5>
+    <version>1.0004</version>
+    <time>1409302575</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b6c80d5e3e99112c152845cb52521aa</srcmd5>
+    <version>1.0005</version>
+    <time>1490707244</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>460875</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1ad2ea73216a4be4103adc03bceac03</srcmd5>
+    <version>1.0006</version>
+    <time>1507065463</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530068</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a0650d69cbec923046525f51cae267ed</srcmd5>
+    <version>1.0007</version>
+    <time>1535705001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631332</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6746b2aff53492ce9b44630b8454235e</srcmd5>
+    <version>2.08</version>
+    <time>1168903799</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b01f03c14dd7e88588a14fe6a60fb94f</srcmd5>
+    <version>2.10</version>
+    <time>1184579498</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1a47eca2a6dfb00d654d6f6efbc33d2</srcmd5>
+    <version>2.11</version>
+    <time>1207460080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>17e885b27735c4f032c17f9c51a55bc3</srcmd5>
+    <version>2.11</version>
+    <time>1214260486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="36">
+    <srcmd5>e52f8492e493840b8783a9ed2e67ac79</srcmd5>
+    <version>2.11</version>
+    <time>1245337176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="38">
+    <srcmd5>e52f8492e493840b8783a9ed2e67ac79</srcmd5>
+    <version>2.11</version>
+    <time>1245337176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="39">
+    <srcmd5>93250f11673fcd3d9352610dfd15ea6f</srcmd5>
+    <version>2.11</version>
+    <time>1263302285</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-MethodMaker based on submit request 29283 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="40">
+    <srcmd5>62f84d942cd36e6dbad43dda45c8c639</srcmd5>
+    <version>2.11</version>
+    <time>1268925387</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>011ffe9e159e66683e614ccf39af6e61</srcmd5>
+    <version>2.15</version>
+    <time>1270486040</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-MethodMaker based on submit request 36924 from user computersalat
+</comment>
+    <requestid>36924</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>011ffe9e159e66683e614ccf39af6e61</srcmd5>
+    <version>2.15</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>011ffe9e159e66683e614ccf39af6e61</srcmd5>
+    <version>2.15</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a062a79f242c75c64a08ee0e39270ce9</srcmd5>
+    <version>2.16</version>
+    <time>1279564654</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Class-MethodMaker based on submit request 43303 from user computersalat
+</comment>
+    <requestid>43303</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ef55198484c02cea8cf655020c7595a0</srcmd5>
+    <version>2.16</version>
+    <time>1292243082</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55702 from user coolo
+</comment>
+    <requestid>55702</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>8e4e90279337becf0fcc4def0d649521</srcmd5>
+    <version>2.16</version>
+    <time>1292243086</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55702
+</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>8e4e90279337becf0fcc4def0d649521</srcmd5>
+    <version>2.16</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b6365f78b5223f5d8a263fce4b3c836c</srcmd5>
+    <version>2.17</version>
+    <time>1301573178</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65620 from user coolo
+</comment>
+    <requestid>65620</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>05dce7673fc30089949fc85d45c2aa4a</srcmd5>
+    <version>2.17</version>
+    <time>1301573190</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65620
+</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>808a1cd3d98b318c6a9c42e895070eff</srcmd5>
+    <version>2.18</version>
+    <time>1303381050</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 68022 from user coolo
+</comment>
+    <requestid>68022</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>08b47b902ff4eb773c78764ea55c7543</srcmd5>
+    <version>2.18</version>
+    <time>1303381074</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68022
+</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>08b47b902ff4eb773c78764ea55c7543</srcmd5>
+    <version>2.18</version>
+    <time>1319182248</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>6cf7f8550cb13f3c52077148fb63c174</srcmd5>
+    <version>2.18</version>
+    <time>1323193124</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>6cf7f8550cb13f3c52077148fb63c174</srcmd5>
+    <version>2.18</version>
+    <time>1340183809</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="9">
+    <srcmd5>6cf7f8550cb13f3c52077148fb63c174</srcmd5>
+    <version>2.18</version>
+    <time>1359109618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>6cf7f8550cb13f3c52077148fb63c174</srcmd5>
+    <version>2.18</version>
+    <time>1379663586</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f348674f24c5f2c415b91547b0633d91</srcmd5>
+    <version>2.20</version>
+    <time>1392111819</time>
+    <user>coolo</user>
+    <comment>- updated to 2.20
+     - drop t/v1*.t unit tests due to license issue
+       https://github.com/renormalist/class-methodmaker/issues/2
+
+- updated to 2.19
+      - Fix 5.19 incompatibility - RT#88934 (Zefram)
+      - small distro polishing</comment>
+    <requestid>221502</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>f348674f24c5f2c415b91547b0633d91</srcmd5>
+    <version>2.20</version>
+    <time>1409302203</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4cee03590d4d87403292c5c5f7e12b7e</srcmd5>
+    <version>2.24</version>
+    <time>1429107737</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295886</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>3cb2f22f89164b26398b7d078c0a4d9a</srcmd5>
+    <version>2.24</version>
+    <time>1500275558</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510432</requestid>
+  </revision>
+</revisionlist>

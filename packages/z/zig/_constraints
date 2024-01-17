@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+  arm, and ppc64 architectures won't build for now since llvm-config
+  in opensuse has no build target for those architectures.
+  These are just placeholders for now just in case.
+-->
+<constraints>
+  <hardware>
+    <jobs>6</jobs>
+    <physicalmemory>
+      <size unit="G">16</size>
+    </physicalmemory>
+    <disk>
+      <size unit="G">35</size>
+    </disk>
+  </hardware>
+  <overwrite>
+    <!-- 
+      We have disabled debuginfo on 32 bit architecture because they simply can no address enough memory to link llvm libraries with it.
+      Without debuginfo the disk and memory requirements are much lower.
+    -->
+    <conditions>
+      <arch>ppc</arch>
+      <arch>s390</arch>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">30</size>
+      </disk>
+      <physicalmemory>
+        <size unit="G">64</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+  <!--
+    Same as above but build workers for this arch can only support lower physical memory.
+  -->
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">30</size>
+      </disk>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>i586</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">30</size>
+      </disk>
+      <physicalmemory>
+        <size unit="G">32</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>

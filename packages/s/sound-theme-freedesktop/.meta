@@ -1,0 +1,6 @@
+<package name="sound-theme-freedesktop" project="openSUSE:Factory">
+  <title>freedesktop.org sound theme</title>
+  <description>The default freedesktop.org sound theme following the XDG theming
+specification.	(http://0pointer.de/public/sound-theme-spec.html).</description>
+  <devel project="GNOME:Factory" package="sound-theme-freedesktop"/>
+</package>

@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Tue Oct 10 02:42:31 UTC 2023 - ming li <mli@suse.com>
+
+- Update to version 2.7.1:
+  * Fix build with GCC 13
+- The fix-missing-include.patch was removed from the package. 
+
+-------------------------------------------------------------------
+Fri May 26 12:15:41 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.0:
+  * Adjusted app to better handle very small screens
+  * Dropped dependency on X11
+  * Support new executable_regexp and sha1 profile attributes
+
+-------------------------------------------------------------------
+Tue Mar 28 09:26:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-missing-include.patch: Add missing include exposed by
+  gcc13.
+
+-------------------------------------------------------------------
+Wed Mar 15 15:37:10 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6.0:
+  * No changelog provided
+
+-------------------------------------------------------------------
+Tue Dec  6 13:34:52 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.1:
+  * No changelog provided
+
+-------------------------------------------------------------------
+Mon Mar 28 08:24:37 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.0:
+  * No changelog provided
+
+-------------------------------------------------------------------
+Tue Apr 13 20:44:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.4.1
+  * No source changes
+- Fixed dependencies
+  * GTK+ 0.24+ is required for ComboBoxExtra
+  * libXML++ is also supported in version 5 (used in Factory)
+
+-------------------------------------------------------------------
+Wed Nov  4 08:57:19 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4:
+  * Renamed application from br.com.jeanhertel.adriconf to
+    org.freedesktop.adriconf.
+  * Handle string and float options.
+  * Add Polish translations. @baryluk
+  * Make various cosmetic fixes.
+- Changes for older versions in 2.* series:
+  * Rename application to org.freedesktop.adriconf
+  * Make sure themes don't add shadows to button.
+  * Add tooltips to add profile screen.
+  * Fix Spin Button fields, so that increment/decrement fields are
+    correctly visible.
+  * Improve Switch buttons with more visible colors.
+  * Small fix fox incorrect shadows with default GTK+ theme.
+  * User Interface is dark by default
+  * Completely removed dialogs and replaced them with screens,
+    giving a more natural navigation.
+  * Profiles are now saved independently giving the user more
+    control on what to save.
+  * Mesa-defined profiles are not shown anymore, avoiding previous
+    confusion on what the user added and what is defined by mesa
+    itself.
+  * Better validate when the user adds a new profile.
+  * Bug-fix: When switching the GPU on PRIME settings now we keep
+    the same application selected.
+
+-------------------------------------------------------------------
+Sat May  9 08:10:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7:
+  * Add IT translation. @albanobattistella
+  * Fix incorrect handling of system wide options when multiple
+    drivers are defined. @jlhertel
+  * Add option to change default config directories. @jlhertel
+  * Add code of conduct. @jlhertel
+
+-------------------------------------------------------------------
+Fri Feb 14 11:53:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial changelog entry for version 1.6.1
+  * Package based on one by Sergey Kondakov (X0F)

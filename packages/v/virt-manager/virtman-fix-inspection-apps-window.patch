@@ -1,0 +1,13 @@
+References: bsc#1213790
+
+--- virt-manager-4.1.0/ui/details.ui.orig	2023-07-31 10:58:34.089070956 -0600
++++ virt-manager-4.1.0/ui/details.ui	2023-07-31 10:59:05.625072305 -0600
+@@ -808,7 +808,7 @@
+                                 </child>
+                               </object>
+                               <packing>
+-                                <property name="expand">False</property>
++                                <property name="expand">True</property>
+                                 <property name="fill">True</property>
+                                 <property name="position">0</property>
+                               </packing>

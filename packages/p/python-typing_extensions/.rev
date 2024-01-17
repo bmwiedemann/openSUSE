@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29d7de4230b721cf5081472f1f9aacca</srcmd5>
+    <version>3.6.6</version>
+    <time>1544189669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655601</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47d8272f06ffccebe5c0472d2ba6a65a</srcmd5>
+    <version>3.7.2</version>
+    <time>1551455277</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the old tarball
+
+- Replace test_modules.tar.gz with python-testsuite
+- Remove fix_tests.patch which is half fixing test_modules.tar.gz,
+  and the other half is replaced with a less brittle sed.
+- Remove unnecessary build dependencies
+- Update to 3.7.2
+  * Pass *args and **kwargs to superclass in Generic.__new__
+  * Fix for issue #524
+  * Fix typing_extensions to support PEP 560
+  * Add annotations to NamedTuple children __new__ constructors
+  * Add missing 'NoReturn' to __all__ in typing.py
+  * Backport Generic.__new__ fix
+  * Fix IO.closed to be property
+  * Add Final to typing_extensions
+  * Fix instance/subclass checks of functions against runtime protocols
+  * Add Literal[...] types to typing_extensions</comment>
+    <requestid>680053</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2436657a0d39924c585b21c61e586ed5</srcmd5>
+    <version>3.7.2</version>
+    <time>1551687785</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase the patch to the current git state
+
+- Add support for Python &lt;3.5, using upstream commit as
+  test-sys-executable.patch to fix the tests, replacing custom sed.
+- Remove unnecessary buid dependency on pytest and pytest-xdist</comment>
+    <requestid>680892</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c67a9f8721b59b7953d807e019f7e759</srcmd5>
+    <version>3.7.4</version>
+    <time>1564576063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717379</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c89f99533b4d0c8e2ad871501ae11610</srcmd5>
+    <version>3.7.4.1</version>
+    <time>1574414428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746074</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ff1a181a528e70ef879f2d8f72076254</srcmd5>
+    <version>3.7.4.1</version>
+    <time>1585264870</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2 available</comment>
+    <requestid>784168</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>64ee3793a7e797b686e57bf75cc0eb09</srcmd5>
+    <version>3.7.4.2</version>
+    <time>1586247976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791701</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dfe9b29d6f62213560ec94dbd08f8526</srcmd5>
+    <version>3.7.4.3</version>
+    <time>1603961289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.7.4.3:
+  * enables PEP 613 Typealias to typing_extensions
+  * Fix tests for Python 3.9</comment>
+    <requestid>841925</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>45b164a9ea3f20279dd85a2451e0f64b</srcmd5>
+    <version>3.7.4.3</version>
+    <time>1605216775</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>847634</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>9110e7991d651855239dd29302c574e6</srcmd5>
+    <version>3.7.4.3</version>
+    <time>1609344665</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>858834</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>0d122fb22cf23d49ad68eafce0baccb6</srcmd5>
+    <version>3.7.4.3</version>
+    <time>1610736178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862675</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>26a67b6a67d517204d4c14f60c51f33f</srcmd5>
+    <version>3.10.0.0</version>
+    <time>1626466358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905852</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6567f57733075d9dcc1ac213ca8de206</srcmd5>
+    <version>3.10.0.2</version>
+    <time>1636986383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.0.2:
+  * Docs improvements
+  * Fixes crash  and _GenericAlias import
+  * Support most use cases for PEP 612 with Generic</comment>
+    <requestid>931292</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>831b00278ca6c8aea233cf45a058db67</srcmd5>
+    <version>4.2.0</version>
+    <time>1650657186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971082</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>316bcd434f94171540586d6dbf84740b</srcmd5>
+    <version>4.3.0</version>
+    <time>1662541532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001419</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>45257d574226ec68cbc8b4edfe49f82d</srcmd5>
+    <version>4.4.0</version>
+    <time>1666871607</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean specfile from old cruft.
+- Requires Python 3.7+
+- Fix testsuite: Must test as module; don't need multibuild.
+- Update Summary and Description
+- Update to version 4.4.0
+  * Add `typing_extensions.Any` a backport of python 3.11's Any class which is
+    subclassable at runtime. (backport from python/cpython#31841, by Shantanu
+    and Jelle Zijlstra). Patch by James Hilton-Balfe (@Gobot1234).
+  * Add initial support for TypeVarLike `default` parameter, PEP 696.
+    Patch by Marc Mueller (@cdce8p).
+  * Runtime support for PEP 698, adding `typing_extensions.override`. Patch by
+    Jelle Zijlstra.
+  * Add the `infer_variance` parameter to `TypeVar`, as specified in PEP 695.
+    Patch by Jelle Zijlstra.
+</comment>
+    <requestid>1031001</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>6aed9e495cc90ebbb61333c9eeba3c68</srcmd5>
+    <version>4.4.0</version>
+    <time>1669129759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036993</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ed3255f0c2454007b76a9960e3776943</srcmd5>
+    <version>4.5.0</version>
+    <time>1677351295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067476</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>664b94059b57d5ccc6dab69e327e70e9</srcmd5>
+    <version>4.5.0</version>
+    <time>1682193553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081799</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>af2d3f9e6c01f72ee4498cc388c39de6</srcmd5>
+    <version>4.7.1</version>
+    <time>1692110344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103731</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8c024ccceecdfd7868f2f3596dc039c2</srcmd5>
+    <version>4.8.0</version>
+    <time>1697836582</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.8.0:
+  - Add typing_extensions.Doc, as proposed by PEP 727
+  - Drop support for Python 3.7 (including PyPy-3.7)
+  - Fix bug where get_original_bases() would return incorrect
+    results when called on a concrete subclass of a generic class
+  - Fix bug where ParamSpec(default=...) would raise a TypeError
+    on Python versions &lt;3.11
+</comment>
+    <requestid>1118944</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea7e245de3ebe3a65a08d1034890fc8b</srcmd5>
+    <version>4.9.0</version>
+    <time>1704829707</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.9.0:
+  * This feature release adds `typing_extensions.ReadOnly`, as
+    specified by PEP 705, and makes various other improvements,
+    especially to `@typing_extensions.deprecated()`.
+  * Add support for PEP 705, adding `typing_extensions.ReadOnly`.
+  * All parameters on `NewType.__call__` are now positional-only.
+    This means that the signature of
+    `typing_extensions.NewType.__call__` now exactly matches the
+  * signature of `typing.NewType.__call__`.
+  * Fix bug with using `@deprecated` on a mixin class.
+  * Exclude `__match_args__` from `Protocol` members.
+  * When creating a `typing_extensions.NamedTuple` class, ensure
+    `__set_name__` is called on all objects that define
+    `__set_name__` and exist in the values of the `NamedTuple`
+    class's class dictionary.
+
+  * Support most use cases for PEP 612 with Generic
+- add transitional typing-extensions provides
+  * Fix tests for Python 3.9</comment>
+    <requestid>1135644</requestid>
+  </revision>
+</revisionlist>

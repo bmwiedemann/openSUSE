@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2803cd02436c0f9bd0d5004964339072</srcmd5>
+    <version>1.0.1</version>
+    <time>1533045482</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain  in Factory</comment>
+    <requestid>625700</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0cc16e45fe6611fb1ae8259e8c629c4d</srcmd5>
+    <version>1.0.1</version>
+    <time>1603203552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842809</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bbc6640c232544b4dc9bb3aff560532f</srcmd5>
+    <version>1.0.2</version>
+    <time>1622536610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * Remove Python 2 support.
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>895441</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>41a31172e1b8ed4a0194fb61e0c346e2</srcmd5>
+    <version>1.0.3</version>
+    <time>1704281085</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * Relicensed to LGPL</comment>
+    <requestid>1135653</requestid>
+  </revision>
+</revisionlist>

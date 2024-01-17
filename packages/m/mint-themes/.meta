@@ -1,0 +1,5 @@
+<package name="mint-themes" project="openSUSE:Factory">
+  <title>Mint Themes</title>
+  <description>A collection of Mint GTK+ themes.</description>
+  <devel project="X11:Cinnamon:Factory" package="mint-themes"/>
+</package>

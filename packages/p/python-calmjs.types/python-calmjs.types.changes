@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Jun 26 05:57:56 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Fri Jan 24 10:16:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.0.1
+  * Package metadata update - LICENSE file now included in source distribution.
+
+-------------------------------------------------------------------
+Mon Jan  6 15:14:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not package tests
+
+-------------------------------------------------------------------
+Mon Jan  6 14:46:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Initial commit, needed by python-calmjs
+

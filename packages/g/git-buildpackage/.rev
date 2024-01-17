@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a850ac7fca7b1d9834fe02fa17821d3</srcmd5>
+    <version>0.9.23</version>
+    <time>1668271258</time>
+    <user>dimstar_suse</user>
+    <comment>New requirement for obs-service-tar_scm.
+SEE ALSO
+https://github.com/openSUSE/obs-service-tar_scm/pull/391</comment>
+    <requestid>1035236</requestid>
+  </revision>
+</revisionlist>

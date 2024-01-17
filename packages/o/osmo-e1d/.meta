@@ -1,0 +1,5 @@
+<package name="osmo-e1d" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="osmo-e1d"/>
+</package>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a0e61ffb40d92e604907820dee26cda</srcmd5>
+    <version>3.0.0</version>
+    <time>1557084087</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>700411</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f56dbb2c04d0fe8646a665720555883</srcmd5>
+    <version>3.0.0</version>
+    <time>1574783946</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750586</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6860a3585a0cafc79fe8fa34fa8c2b21</srcmd5>
+    <version>3.0.0</version>
+    <time>1647974447</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963949</requestid>
+  </revision>
+</revisionlist>

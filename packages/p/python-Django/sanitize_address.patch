@@ -1,0 +1,40 @@
+From da2f8e8257d1bea4215381684ca4abfcee333c43 Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Mon, 17 Jul 2023 11:03:36 +0200
+Subject: [PATCH] Refs #34118 -- Improved sanitize_address() error message for
+ tuple with empty strings.
+
+---
+ django/core/mail/message.py | 2 ++
+ tests/mail/tests.py         | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/django/core/mail/message.py b/django/core/mail/message.py
+index f3fe6186c7f5..4f8c93e9e55e 100644
+--- a/django/core/mail/message.py
++++ b/django/core/mail/message.py
+@@ -97,6 +97,8 @@ def sanitize_address(addr, encoding):
+             domain = token.domain or ""
+     else:
+         nm, address = addr
++        if "@" not in address:
++            raise ValueError(f'Invalid address "{address}"')
+         localpart, domain = address.rsplit("@", 1)
+ 
+     address_parts = nm + localpart + domain
+diff --git a/tests/mail/tests.py b/tests/mail/tests.py
+index 54a136c1a98b..848ee32e9f80 100644
+--- a/tests/mail/tests.py
++++ b/tests/mail/tests.py
+@@ -1084,9 +1084,10 @@ def test_sanitize_address_invalid(self):
+             "@",
+             "to@",
+             "@example.com",
++            ("", ""),
+         ):
+             with self.subTest(email_address=email_address):
+-                with self.assertRaises(ValueError):
++                with self.assertRaisesMessage(ValueError, "Invalid address"):
+                     sanitize_address(email_address, encoding="utf-8")
+ 
+     def test_sanitize_address_header_injection(self):

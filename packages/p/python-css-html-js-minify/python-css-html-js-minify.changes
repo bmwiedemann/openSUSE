@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Thu Sep 10 12:42:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Initial packaging (v2.5.5.git.1523718195.8f72452)
+  * PyPI tarball does not contain licenses and the last tag on upstream
+    is 1.2.0 (from 2015), so it needs _service

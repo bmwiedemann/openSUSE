@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sat Feb 13 10:12:05 UTC 2016 - coolo@suse.com
+
+- updated to 0.04
+   see /usr/share/doc/packages/perl-Lingua-Stem-Ru/Changes
+
+  0.04 2016-02-12 NEILB
+      - Dropped use of 'use vars'
+      - Updated the Win32 installation instructions
+      - Added github repo to doc, along with an AUTHOR section,
+        and updated SEE ALSO.
+      - All the above changes submitted by ZORAN++
+
+-------------------------------------------------------------------
+Sun Feb  7 10:12:24 UTC 2016 - coolo@suse.com
+
+- updated to 0.03
+   see /usr/share/doc/packages/perl-Lingua-Stem-Ru/Changes
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:25 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Jul 15 10:16:37 UTC 2010 - chris@computersalat.de
+
+- initial package 0.01
+  * created by cpanspec 1.78
+

@@ -1,0 +1,9 @@
+<package name="minicom" project="openSUSE:Factory">
+  <title>A Terminal Program</title>
+  <description>A terminal program similar to Telix(tm) (a program for calling other
+computers via modem) under MS-DOS.
+
+If you want to access your modem with minicom, you have to be a member
+of the uucp group.</description>
+  <devel project="Base:System" package="minicom"/>
+</package>

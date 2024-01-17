@@ -1,0 +1,301 @@
+-------------------------------------------------------------------
+Wed Jan 10 17:40:08 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable failing tests with openssl 3.2
+
+-------------------------------------------------------------------
+Wed Jan  3 07:56:40 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to increase tests timeouts in s390x where tests take
+  a bit longer to run:
+  * increase-tests-timeouts.patch
+
+-------------------------------------------------------------------
+Fri Dec 29 18:07:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.0:
+  * Cheroot now accepts a ``reuse_port`` parameter on the
+    ``HTTPServer`` object.
+  * Subclasses overriding ``prepare_socket`` will no longer
+    work and will need to adapt to the new interface.
+- drop python-cheroot-no-six.patch (upstream)
+
+-------------------------------------------------------------------
+Sat Jun 10 09:22:04 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed May 10 06:32:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove obsolete requirement on setuptools_scm_git_archive
+
+-------------------------------------------------------------------
+Tue Mar 21 10:34:26 UTC 2023 - pgajdos@suse.com
+
+- do not require python-six
+- added patches
+  fix https://github.com/cherrypy/cheroot/commit/f3170d40a699219345abb5813395ff39319fec86
+  + python-cheroot-no-six.patch
+
+-------------------------------------------------------------------
+Mon Jan  2 18:19:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 9.0.0
+  * #252 via #339 and #510: Cheroot now requires Python 3.6 or
+    later. Python 3.5 and Python 2.7 are still supported by the
+    maint/8.x branch and stabilizing bugfixes will be accepted to
+    that branch -- by @jaraco
+  * Set worker thread names as str by @jarus in #503
+  * Added types for _compat.py by @kasium in #491
+  * Configured stubtest hook for stub testing by @kasium in #415
+  * Started running Python commands in tox in isolated and strict
+    mode by @webknjaz in #562
+
+-------------------------------------------------------------------
+Wed Nov 16 08:58:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Disable broken tests https://github.com/cherrypy/cheroot/issues/511
+
+-------------------------------------------------------------------
+Wed May 11 16:26:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add no-relative-imports.patch to work around seriously broken
+  system of imports.
+
+-------------------------------------------------------------------
+Sat Apr  2 11:22:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip a test causing errors in pytest 7 -- gh#cherrypy/cheroot#502
+
+-------------------------------------------------------------------
+Sat Jan 22 17:17:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- The work around needs to ignore the testfile from the sitelib
+
+-------------------------------------------------------------------
+Sat Jan 22 12:25:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Work around xdist related conftest import error
+
+-------------------------------------------------------------------
+Fri Jan 21 16:53:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 8.6.0:
+  -  #384 via PR #385, PR #406: Exposed type stubs with
+    annotations for public API
+  - PR #401 (related to the PR #352 effort): Started reusing the
+    the expriration_interval setting in the low-level
+        select.select() invocation,
+    effectively reducing the system load under the Windows OS
+    when idle, that is noticeable on low-end hardware systems
+- Removed upstreamed patches
+  - cheroot-pr370-py310-threaddeprecations.patch
+  - cheroot-pr371-py310-threaddeprecations.patch
+  - cheroot-c0b1b167-py310-threaddeprecations.patch
+- Add no-pypytools.patch removing the dependency on pypytools as
+  we don't have PyPy in openSUSE at all.
+
+-------------------------------------------------------------------
+Sun Dec 19 21:13:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add patches fixing test suite failures due to Python 3.10
+  deprecations:
+  * cheroot-pr370-py310-threaddeprecations.patch
+  * cheroot-pr371-py310-threaddeprecations.patch
+  * cheroot-c0b1b167-py310-threaddeprecations.patch
+- Skip threadexceptions plugin for Pytest 6.2
+
+-------------------------------------------------------------------
+Tue Oct  5 13:46:46 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added BuildRequires:  alts
+
+-------------------------------------------------------------------
+Thu Sep 30 08:50:54 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives.
+
+-------------------------------------------------------------------
+Mon Mar 29 17:49:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update BuildRequirements for testing:
+  * only remove coverage options from pytest.ini
+  * don't skip tests which had failed 2 years ago
+    (gh#cherrypy/cheroot#200) -- except for two subtests still
+    failing on some platforms presumably because of OBS specific
+    network setups
+  * skip the one test requiring python-jaraco.context in Factory
+    staging so that we do not need that package in Ring1.
+
+-------------------------------------------------------------------
+Fri Mar 19 05:46:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.5.2:
+  * :issue:`358` via :pr:`359`: Fixed a regression from
+    :pr:`199` that made the worker threads exit on invalid
+    connection attempts and could make the whole server
+    unresponsive once there was no workers left.
+    *- by :user:`cameronbrunner`.
+  * :cp-issue:`1873` via :pr:`340`: Resurrected an
+    unintentionally removed feature of interrupting a server
+    main thread by externally assigning an exception to the
+    :py:meth:`HTTPServer.interrupt <cheroot.server.\
+    HTTPServer.interrupt>` property *- by :user:`liamstask`.
+  * :pr:`350`: Fixed the incarnation of an earlier regression
+    of not resetting the serving state
+    on :py:data:``SIGINT`` originally fixed by :pr:`322` and
+    :pr:`331` but reintroduced by the changes in :pr:`311`
+    *- by :user:`liamstask`.
+  * :issue:`305` via :pr:`311`: In
+    :py:class:`~cheroot.connections.ConnectionManager`,
+    process connections as they become active rather than
+    waiting for a ``tick`` event, addressing performance
+    degradation introduced in v8.1.0 *- by :user:`liamstask`.
+  * :issue:`341` via :pr:`342`: Suppress legitimate OS errors
+    expected on shutdown *- by :user:`webknjaz`.
+  * :issue:`317` via :pr:`337`: Fixed a regression in
+    8.4.5 where the connections dictionary would change
+    size during iteration, leading to a :py:exc:`RuntimeError`
+    raised in the logs *- by :user:`liamstask`.
+  * :issue:`328` via :pr:`322` and :pr:`331`: Fixed a
+    regression introduced in the earlier refactoring in v8.4.4
+    via :pr:`309` that caused the :py:meth:`~cheroot.server.\
+    HTTPServer.serve` method to skip setting
+    ``serving=False`` on :py:data:``SIGINT`` and
+    :py:data:``SIGTERM`` *- by :user:`marc1n` and
+    :user:`cristicbz`.
+  * :issue:`312` via :pr:`313`: Fixed a regression introduced
+    in the earlier refactoring in v8.4.4 via :pr:`309` that
+    caused the connection manager to modify the selector map
+    while looping over it *- by :user:`liamstask`.
+  * :issue:`312` via :pr:`316`: Added a regression test for
+    the error handling in :py:meth:`~cheroot.connections.\
+    ConnectionManager.get_conn` to ensure more stability
+    *- by :user:`cyraxjoe`.
+  * :issue:`304` via :pr:`309`: Refactored :py:class:`~\
+    cheroot.connections.ConnectionManager` to use :py:meth:`~\
+    selectors.BaseSelector.get_map` and reorganized the
+    readable connection tracking *- by :user:`liamstask`.
+  * :issue:`304` via :pr:`309`: Fixed the server shutdown
+    sequence to avoid race condition resulting in accepting
+    new connections while it is being terminated
+    *- by :user:`liamstask`.
+  * :pr:`282`: Fixed a race condition happening when an HTTP
+    client attempts to reuse a persistent HTTP connection after
+    it's been discarded on the server in :py:class:`~cheroot.\
+    server.HTTPRequest` but no TCP FIN packet has been received
+    yet over the wire *- by :user:`meaksh`.
+  * Fixed a significant performance regression introduced in
+    v8.1.0 (:issue:`305` via :pr:`308`) * by :user:`mar10`.
+  * Fixed TLS socket related unclosed resource warnings
+    (:pr:`291` and :pr:`298`).
+  * Made terminating keep-alive connections more graceful
+    (:issue:`263` via :pr:`277`).
+- Dropped patches 0001-Avoid-race-condition-on-persistent-HTTP-connections.patch
+  and python383.patch, they are included upstream.
+
+-------------------------------------------------------------------
+Mon May 25 10:59:14 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Tue May 19 10:35:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix build with python 3.8.3:
+  * python383.patch
+
+-------------------------------------------------------------------
+Thu May  7 09:33:29 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Avoid possible race condition on persistent HTTP connections (bsc#1169604)
+
+- Added:
+  * 0001-Avoid-race-condition-on-persistent-HTTP-connections.patch
+
+-------------------------------------------------------------------
+Mon Mar 16 10:23:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Sat Mar  7 14:09:21 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 8.3.0:
+  * cherrypy/cherrypy#910 via #243: Provide TLS-related
+    details via WSGI environment interface.
+  * #248: Fix parsing of the --bind CLI option
+    for abstract UNIX sockets.
+
+-------------------------------------------------------------------
+Wed Oct 23 13:38:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 8.2.1
+  * Deprecated use of negative timeouts as alias for infinite timeouts in ThreadPool.stop.
+  * For OPTION requests, bypass URI as path if it does not appear absolute.
+  * Workers are now request-based, addressing the long-standing issue with keep-alive connections
+  * Remove custom setup.cfg parser handling, allowing the project (including sdist)
+    to build/run on setuptools 41.4. Now building cheroot requires setuptools 30.3 or later
+    (for declarative config support) and preferably 34.4 or later (as indicated in pyproject.toml).
+
+-------------------------------------------------------------------
+Fri Oct  4 11:09:50 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 7.0.0
+  * Refactored “open URL” behavior in webtest to rely on retry_call.
+  * backports.functools_lru_cache is only required on Python 3.2 and earlier.
+  * Fix race condition in threadpool shrink code.
+
+-------------------------------------------------------------------
+Fri Sep 13 04:50:22 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 6.5.8:
+  - Fix socket.SO_PEERCRED constant fallback value under PowerPC.
+  - Fix race condition when toggling stats counting in the middle
+    of request processing.
+  - Improve post Python 3.9 compatibility checks.
+  - Fix support of abstract namespace sockets
+  - Fix HTTP parser to return 400 on invalid major-only HTTP version
+    in Request-Line.
+- Drop cheroot_fix_so_peercred_ppc.patch . Applied upstream.
+
+-------------------------------------------------------------------
+Thu Sep  5 09:09:44 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add cheroot_fix_so_peercred_ppc.patch
+  to solve python 2.7 tests failures for PowerPC, boo#1147151
+
+-------------------------------------------------------------------
+Mon Sep  2 18:49:49 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Drop dependency on backports.functools_lru_cache for the python3 subpackage
+  This fixes bsc#1149124
+
+-------------------------------------------------------------------
+Sun Jun  2 21:15:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Tue May 14 11:57:52 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.5.5 bsc#1142582:
+  - Sockets now collect statistics (bytes read and written) on
+    Python 3 same as Python 2.
+  - Ignore OpenSSL's 1.1+ Error 0 under any Python while wrapping
+    a socket.
+- Switch off failing tests to avoid gh#cherrypy/cheroot#200
+
+-------------------------------------------------------------------
+Tue Mar  5 12:26:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 6.5.4:
+  * too many changes to enumerate see CHANGES.rst
+- Make sure to execute testsuite
+
+-------------------------------------------------------------------
+Fri Mar 31 13:39:53 UTC 2017 - jmatejek@suse.com
+
+- initial commit

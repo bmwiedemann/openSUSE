@@ -1,0 +1,5 @@
+<package name="sapstartsrv-resource-agents" project="openSUSE:Factory">
+  <title>Resource agents to control SAP instances using sapstartsrv </title>
+  <description>Resource agents to control SAP instances using sapstartsrv </description>
+  <devel project="devel:sap:cluster-agents" package="sapstartsrv-resource-agents"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-sambacc" project="openSUSE:Factory">
+  <title>Samba Container Configurator</title>
+  <description>A library and CLI tools for managing Samba servers in containers.</description>
+  <devel project="network:samba:CONTAINERS" package="python-sambacc"/>
+</package>

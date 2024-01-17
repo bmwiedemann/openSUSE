@@ -1,0 +1,24 @@
+From: Anna Maresova <anicka@suse.cz>
+Date: Wed Mar 25 18:17:28 CET 2020
+Subject: parted: print maximum number of partitions for yast
+Patch-mainline: no, custom SUSE patch
+
+Index: parted-3.3/parted/parted.c
+===================================================================
+--- parted-3.3.orig/parted/parted.c
++++ parted-3.3/parted/parted.c
+@@ -1125,10 +1125,13 @@ _print_disk_info (const PedDevice *dev,
+                                         break;
+ 
+             }
+-            printf ("%s:%s:%s:%lld:%lld:%s:%s:%s;\n",
++            printf ("%s:%s:%s:%lld:%lld:%s:%s:%s",
+                     escaped_path, end, transport[dev->type],
+                     dev->sector_size, dev->phys_sector_size,
+                     pt_name, escaped_model, disk_flags);
++	    if (getenv("PARTED_PRINT_NUMBER_OF_PARTITION_SLOTS"))
++		     printf(":%lld", diskp && diskp->type->ops->get_max_primary_partition_count ? diskp->type->ops->get_max_primary_partition_count(diskp) : 0);
++	    printf(";\n");
+             free (escaped_path);
+             free (escaped_model);
+         } else if (opt_output_mode == JSON) {

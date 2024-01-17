@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Tue Oct  3 07:48:12 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.1
+  * translation update 
+
+-------------------------------------------------------------------
+Sun Aug 20 06:34:14 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * update unikey data to make it encode with ascii
+- drop backport-allow-uoh.diff
+- drop backport-commit-on-switchingIM.diff
+- drop backport-rebuild-surrounding-state.diff
+
+-------------------------------------------------------------------
+Mon May 22 11:49:02 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.13
+  * add all size of icon for unikey
+  * allow to modify commited words
+
+-------------------------------------------------------------------
+Sun Nov 20 09:13:13 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- Update to 5.0.12
+  * remove backports
+
+-------------------------------------------------------------------
+Mon Nov 14 02:24:33 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- Remove: fix-enter.diff, fix-uou.diff
+- Backport fix:
+  * Add backport-commit-on-switchingIM.diff
+  * Add backport-rebuild-surrounding-state.diff
+  * Add backport-allow-uoh.diff
+
+-------------------------------------------------------------------
+Sat Nov  5 01:02:57 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- Backport fix for github issues #23 and #24, add fix-enter.diff and
+  fix-uou.diff
+
+-------------------------------------------------------------------
+Tue Jul  5 11:29:24 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.11
+- Rename unikey.so to libunikey.so
+- Add new file libfcitx5-unikey-keymap-editor.so
+
+-------------------------------------------------------------------
+Wed Mar 16 11:48:19 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.9
+  * translation update
+
+-------------------------------------------------------------------
+Thu Feb 10 12:18:18 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.8 
+
+-------------------------------------------------------------------
+Wed Dec  8 01:55:39 UTC 2021 - Tranter Madi <trmdi@yandex.com>
+
+- update version 5.0.7
+
+-------------------------------------------------------------------
+Fri Nov 12 04:15:32 UTC 2021 - Tranter Madi <trmdi@yandex.com>
+
+- update version 5.0.6
+
+-------------------------------------------------------------------
+Wed May  5 08:18:33 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.4
+  * add addon version
+
+-------------------------------------------------------------------
+Tue Mar 16 07:44:48 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+
+-------------------------------------------------------------------
+Sun Dec  6 05:51:30 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+
+-------------------------------------------------------------------
+Tue Nov 10 07:25:19 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.0
+
+-------------------------------------------------------------------
+Fri Sep  4 05:18:21 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- initial package

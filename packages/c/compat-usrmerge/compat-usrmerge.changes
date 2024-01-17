@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Thu Oct  7 11:57:22 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Fix logic for detecting conflicts with directories (boo#1191111)
+
+-------------------------------------------------------------------
+Fri Aug 27 08:39:30 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- exit file triggers early if alread usrmerged
+
+-------------------------------------------------------------------
+Fri Aug 27 06:35:26 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- statically link xmv to avoid glibc 2.34 dependency
+  (__libc_start_main@GLIBC_2.34)
+- turn on filetriggers in main package. Needed for single transaction upgrades
+  (boo#1189788)
+
+-------------------------------------------------------------------
+Tue Jun 15 15:27:41 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- another fix for split /usr to avoid running out of space (boo#1186781)
+- unsafe fallback also for ENOSYS on renameat2 as seen on WSL
+
+-------------------------------------------------------------------
+Tue Jun  8 12:03:52 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- early exit in case of overlayfs (boo#1187027)
+
+-------------------------------------------------------------------
+Tue Jun  8 07:37:33 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Avoid dependency on mountpoint from util-linux
+- Also check for availability of find
+
+-------------------------------------------------------------------
+Mon Jun  7 09:02:56 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
+
+- fix conversion with split /usr (boo#1186781)
+
+-------------------------------------------------------------------
+Wed Jun  2 15:29:15 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
+
+- exit early if one of the affected directories has mountpoint
+  beneath it
+
+-------------------------------------------------------------------
+Tue Jun  1 23:27:08 UTC 2021 - Niklas Haas <obs@haasn.xyz>
+
+- add fallback for filesystems without renameat2 (boo#1186637)
+
+-------------------------------------------------------------------
+Thu Mar 25 09:50:48 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- catch boolean deps
+
+-------------------------------------------------------------------
+Thu Mar 18 12:24:15 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- cp can't handle copying a dir over non-directories. So move those
+  away in advance. Happened with /lib/udev existing as link on older
+  distros
+
+-------------------------------------------------------------------
+Mon Mar 15 17:41:10 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- update file lists based on current factory data
+
+-------------------------------------------------------------------
+Thu Feb 25 10:22:09 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- initial package

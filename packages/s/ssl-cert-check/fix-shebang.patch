@@ -1,0 +1,14 @@
+---
+ ssl-cert-check |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: ssl-cert-check-4.9git.1549917512.89cd021/ssl-cert-check
+===================================================================
+--- ssl-cert-check-4.9git.1549917512.89cd021.orig/ssl-cert-check
++++ ssl-cert-check-4.9git.1549917512.89cd021/ssl-cert-check
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/bash
+ PROGRAMVERSION=4.11
+ #
+ # Program: SSL Certificate Check <ssl-cert-check>

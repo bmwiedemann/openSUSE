@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e12f8594ed5bfa9e95e523a9745ccab2</srcmd5>
+    <version>2.0.1</version>
+    <time>1499292057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506937</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>26692fed0dc0ef03324eac640d69b506</srcmd5>
+    <version>2.1.2</version>
+    <time>1586973428</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.2:
+  * Bugfix: Fix crash when compiled with hardened compiler flags
+    (specifically -D_GLIBCXX_ASSERTIONS)
+- Changes for version 2.1.1:
+  * Bugfix: Fix build with libunac support enabled
+- Changes for version 2.1.0:
+  * New option `--page-range` to limit search to a set of pages
+  * New option `--file/-f` to read patterns from a file
+  * New option `--regexp/-e` to specify multiple patterns
+    (combined with OR).
+  * New options `--files-with-matches/-l` and
+    `--files-without-match/-L` to only list filenames of files
+    that contain or don't contain matches.
+  * Major manpage restructuring. It's now divided into subsections
+    like the GNU grep's manpage.
+  * Bugfix: Actually stop searching after first match with `-q`</comment>
+    <requestid>794205</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>418a257584d21f31d1ef3a8a156377e0</srcmd5>
+    <version>2.1.2</version>
+    <time>1614948439</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876677</requestid>
+  </revision>
+</revisionlist>

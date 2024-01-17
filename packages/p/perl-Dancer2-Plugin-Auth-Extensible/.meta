@@ -1,0 +1,5 @@
+<package name="perl-Dancer2-Plugin-Auth-Extensible" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Dancer2-Plugin-Auth-Extensible"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="libndp" project="openSUSE:Factory">
+  <title>libndp</title>
+  <description></description>
+  <devel project="network" package="libndp"/>
+</package>

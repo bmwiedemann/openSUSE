@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>615935fe61794a578f30dfadde10aee8</srcmd5>
+    <version>1.1.6</version>
+    <time>1554458514</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>690915</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1eac7ec08716b45e344e354d2cddc4de</srcmd5>
+    <version>1.1.6</version>
+    <time>1554833942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692557</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>37be391d3c70b6acafcc437d32ddba4a</srcmd5>
+    <version>1.1.6</version>
+    <time>1574945428</time>
+    <user>dimstar_suse</user>
+    <comment>Split in two multibuild flavours</comment>
+    <requestid>751510</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7aafb082194ed1593fe08e403a51a009</srcmd5>
+    <version>1.1.6</version>
+    <time>1575373254</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with jdk11</comment>
+    <requestid>752802</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>634312a5c6c91050820eaae404f973a3</srcmd5>
+    <version>1.1.6</version>
+    <time>1647806168</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source/target levels 8</comment>
+    <requestid>963289</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d3f842cf80f7bb0a0b0f2b7d9dbd2362</srcmd5>
+    <version>1.4.1</version>
+    <time>1697061339</time>
+    <user>anag+factory</user>
+    <comment>1.4.1 + remove *-scala subpackage not needed by anybody</comment>
+    <requestid>1116885</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1d601b3e20b564a22db21868ffbc4d3d</srcmd5>
+    <version>1.4.1</version>
+    <time>1697390838</time>
+    <user>anag+factory</user>
+    <comment>Bring back the scala subpackage built against the new scala</comment>
+    <requestid>1117747</requestid>
+  </revision>
+</revisionlist>

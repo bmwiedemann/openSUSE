@@ -1,0 +1,268 @@
+-------------------------------------------------------------------
+Sat Feb 27 09:17:42 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.0.40:
+  * A number of small updates across several fonts.
+    For details see:
+    https://github.com/alerque/libertinus/releases/tag/v7.040
+
+-------------------------------------------------------------------
+Sun Jan 10 10:02:01 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+i
+- Update to 7.0.31
+  * Correct distribution release filenames
+
+-------------------------------------------------------------------
+Sat Jan  9 20:50:27 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.030:
+  * Overhaul dot placement on all Latin capitals with dot-above
+  * Align dot-below on ṃ U+1E43 below middle stroke of m
+  * Remove bogus glyphs encoded as subscripts from Display and
+    Serif Semibold
+  * Drop inappropriate kerning classes from ₘ U+2098 and ₙ U+2099
+  * Zero out kerns between super/subscript glyphs
+  * Add glyph for U+0453 to Cyrillic Italic styles
+  * Enable support for Macedonian localized Italics
+  * Expand range of available angle bracket sizes in Math family
+  * Add alternative slanted integrals to Math family (as feature
+    +ss08)
+- Use tar.xz archive
+
+-------------------------------------------------------------------
+Wed Oct 14 16:38:40 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.020:
+  * Fix name tables broken in 7.010 that associate styles in the
+    Serif family
+  * Correct position of middle dot on ŀ U+0140 in Mono and Keyboard
+    families
+  * Adjust height of middle dot in Ŀ U+013F in the Display family
+  * Un-slant ‖ U+2016 and ‗ U+2017 in Mono family
+  * Un-slant, center, and fix widths of dash related characters in
+    Mono family
+
+-------------------------------------------------------------------
+Fri Oct  9 06:32:27 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.010:
+  * Build WOFF2 static font files suitable for use as self-hosted
+    webfonts (these are not packaged here)
+  * Add ‘𝄆’ [U+1D106] and ‘𝄇’ [U+1D107] MUSICAL SYMBOL REPEAT SIGN
+    glyphs
+  * Add ‘꞉’ [U+A789] MODIFIER LETTER COLON glyph
+  * Fix weight of period (and derivatives such as colon) in Serif
+    Semibold
+  * Fix side bearings for +dlig ‘tz’
+  * Fix vertical alignment of dots in colon to not shift between
+    weights
+  * Fix kerning of ‘f\’ and substitute an alternate ‘f’ glyph used
+    in ‘f)’
+  * Cleanup encoding used in source files and build rules for easier
+    maintenance
+  * Update font meta data fields, documentation for downloads, and
+    build process
+
+-------------------------------------------------------------------
+Sun Aug 23 20:29:55 UTC 2020 - Benedikt Fein <benedikt.fein@gmail.com>
+
+- Update to 7.000
+  * Adopt maintenance of project and update foundry, docs, URLs, etc. (alerque)
+  * Change version scheme to be OpenFV compatible with 3 digit minor version.
+  * Use Fontship to build all fonts and generate release packages.
+  * Filter out generated font artifacts from source repository.
+
+-------------------------------------------------------------------
+Sun Jun 28 19:06:37 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 6.12:
+  * Increase right side bearing of math italic R’s (#304).
+  * Add glyph variants for floor and ceiling, to make their sizing
+    consistent with other delimiters.
+  * Remove kerning and other glyph positioning features, combining
+    marks and other non-keycap glyphs from Libertinus Keyboard font.
+  * Fix size and shape of U+2639, U+263A and U+263B (frowning &
+    smiling faces).
+  * Add “smcp”/“c2sc” variants for letters with macron (#303).
+  * Make U+2223-2226 the same height as bar (#324).
+  * Drop “sinf” feature, it just duplicates “subs” feature.
+  * Improve sizing and spacing of math over accents.
+ *  Building the fonts no longer use FontForge.
+
+-------------------------------------------------------------------
+Sun Mar  8 20:34:52 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 6.11:
+  * Added turned capital F (U+2132) to Libertinus Serif Regular.
+  * Fix advance width for Serbian alternate U+0431 in Libertinus
+    Serif Semibold.
+  * Unify Cyrillic small letter ef (U+0444) shape in Libertinus
+    Serif SemiBold fonts.
+  * Add U+1D35, U+1D51, U+1D4B, U+1DA4, U+1DB6, U+2132,
+    U+A71C-A71D, and U+A78A-A78C to Libertinus Serif fonts.
+  * Add U+2982 and U+2A3E to Libertinus Math.
+  * Various cleanups to Libertinus Mono font, removing erroneous
+    glyphs and unsuitable features.
+  * Improve the metrics of math italic v, w, and y.
+  * Work around a bug in old versions of FreeType when rendering
+    Linertinus Sans Italic m.
+  * Fix alignment of multiplication sign in Libertinus Serif and
+    Mono Regular fonts.
+  * Make sizing of vertical and double vertical bar consistent
+    with other math delimiters.
+  * Improve spacing above and below fraction rule.
+  * Various fixes to combining marks placement.
+
+-------------------------------------------------------------------
+Thu Jul 18 22:00:17 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 6.10:
+  * Improve math italic j and i spacing
+    (https://github.com/alif-type/libertinus/issues/273).
+  * OpenType layout tables are now compiled with FontTools's feaLib
+    instead of FontForge's own OpenType layout support.
+  * Various internal cleanups.
+  * Drop "case", "frac", "tnum" and "pnum" features from the
+    Libertinus Mono font, they either were broken or not appropriate
+    for a monospace font.
+
+-------------------------------------------------------------------
+Mon Jun  3 19:45:55 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 6.9:
+  * Many mathematical operator in Libertinus Math were scaled up
+    and redesigned for better use in math mode.
+  * Libertinus Math now has fraktur alphabets (copied from STIX
+    Two Math font) and sans serif italic Greek (slanted from the
+    upright version).
+  * Overline mark (U+0305) no longer make i and j dotless.
+  * Overline mark should be placed higher than glyph ascenders.
+  * Fonts are now autohinted with Adobe’s psautohint instead of
+    FontForge’s autohinter.
+  * Libertinus Keyboard had the German keys Bild misspelled as
+    Build in both glyph name and ligature string.
+  * Several changes to glyph names for consistency and accuracy.
+  * Several minor reorganization to the OpenType features.
+- Update URL
+- Run through spec-cleaner
+
+-------------------------------------------------------------------
+Sun Apr  7 21:16:16 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 6.8:
+  * Fix missing “math” OpenType script from Libertinus Math.
+  * Add \QED symbol to Libertinus Math, also add Add ⦇ (U+2987) and ⦈ (U+2988).
+  * Fix misencoded glyphs in Libertinus Serif Semibold Italic.
+  * Make digits fitted in Libertinus Serif Initials font, and drop incomplete
+    Greek, Cyrillic and Hebrew support.
+  * Add U+AB52 and U+A793 to Libertinus Serif Regular.
+- Update to 6.7
+  * Add Cyrillic to Libertinus Serif Bold Italic.
+  * Many character additions to Libertinus Math.
+  * Set “is extended shape” flag to relevant Libertinus Math glyphs to fix script
+    position on large symbols in Microsoft Word.
+  * Improve \coloneq and \eqcolon by increasing the space between the colon and
+    the equal sign.
+  * Make upright \partial and \mbfpartial look upright, and make \mbfpartial
+    really bold.
+  * Make the vertical bars in Libertinus Math match the height of the other
+    delimiters.
+  * Use smaller value for SubscriptBaselineDropMin, the subscripts applied to sub
+    formulas were positioned too low.
+  * Fix the side bearings for italic mathematical glyphs in Libertinus Math,
+    making them symmetrical (20 units) and rework kerning tables according to
+    text font kerning.
+  * Fix vertical variants of math symbols.
+  * Add more ligatures to Libertinus Serif, and add missing ligatures to other
+    Libertinus Serif fonts for parity with the regular style.
+  * Move Th ligature to Discretionary Ligatures (“dlig”).
+  * Discretionary Ligatures can also be enable using ZWJ control character.
+  * Drop “fina” feature for Greek sigma, this feature is for Arabic-like scripts.
+  * Move short f substitutions to the more appropriate “calt” feature instead of
+    “ccmp”.
+  * Drop “nalt” feature as all glyphs it substitutes to are encoded Unicode
+    haracters that can be accessed directly.
+  * Rename font files to match the PostScript name of each font.
+  * Make Libertinus Serif Semibold work on legacy applications that support only
+    4 styles per family.
+  * Fix disordered BlueValues causing warnings with Ghostscript.
+  * Make the PUA symbols that were in Libertinus Keyboard accessed as ligatures.
+  * Align the bottom of the colon with the period.
+  * Kern alternate W glyph similar to regular one.
+  * Harmonize the design of italic figures.
+  * Extend caps lining figures to (almost) all Serif faces and both proportional
+    and tabular spacing.
+  * Fix Libertinus Serif Italic ђ, it looked like an т.
+  * Make few marks that combine two glyphs higher, so that they don’t bump into
+    glyph ascenders.
+  * Lower Libertinus Mono asterisk and make it bigger.
+  * Make combining low line and over line contiguous.
+  * Make OpenType features more consistent across fonts.
+- Update Url.
+
+-------------------------------------------------------------------
+Mon Apr 30 20:34:10 UTC 2018 - cornelis@solcon.nl
+
+- Update to 6.6:
+  * Align MATH AxisHeight with minus and similar operators.
+  * Align single and double arrows to minus and equal signs.
+  * Fix Celsius, Fahrenheit and Ohm signs to take the style of their fonts.
+  * Fix Ohm sign side bearings.
+  * Fix Service Mark and Trade Mark in sans fonts to take their style.
+  * Unify the default for of Eng glyph across fonts, and add and alternate shape
+    for Sami language.
+  * Fix Cyrillic small letter ef in display font to match the regular serif font.
+  * Dropped some more unused PUA slots.
+  * The copyleft symbol now used the proposed Unicode 11 code point.
+
+-------------------------------------------------------------------
+Mon Mar 26 09:59:55 UTC 2018 - cornelis@solcon.nl
+
+- Update to 6.5:
+  A number of small improvements and bugfixes. for details see
+  https://github.com/khaledhosny/libertinus/releases
+
+-------------------------------------------------------------------
+Fri May 19 20:13:21 UTC 2017 - cornelis@solcon.nl
+
+- Update to 6.4:
+  * Fix broken extensibles of the left square bracket in the math font
+
+-------------------------------------------------------------------
+Mon May 15 11:28:33 UTC 2017 - cornelis@solcon.nl
+
+- Update to release 6.3:
+  * Add U+231C-231Fi and U+2A7D-2A7E to the math font.
+  * Add script math alphabet based on that of XITS Math font.
+  * Add monospaced math alphabet based on that of cmtt10 font with modified
+    METAFONT parameters to better fit with Libertinus glyphs.
+  * Improve math top accent positions.
+  * Fix spacing of math italic i and j.
+  * Increase the gap between \sum and its limits.
+  * Improved math braces and brackets based on STIX Two Math font.
+  * Disable optical variants of math alphanumerics that were based on the text
+    sup/superscript glyphs as they don’t look good besides being incomplete and
+    inconsistent.
+  * Remove duplicate glyphs that caused broken GPOS generation.
+  * Drop optical bounds (‘opbd’, ‘rtbd’ and ‘lfbd’) features as they were
+    incomplete and virtually unsupported.
+  * Fix text mark placement below O and o.
+  * Fix oldstyle numbers feature in Libertinus Serif Semibold that had wrong
+    glyph mapping for 6, 7, 8 and 9.
+  * Use swash Q when followed by v.
+  * Various consistency fixes to font names and vertical metrics.
+  * Fix placement of the half ring in U+1E9A.
+  * Fix several Libertinus Serif Bold italic alternate glyphs that were not bold.
+  * Fix Libertinus Serif Italic U+2098-2099 (subscript m and n) that looked like
+    superscript circled + and -.
+
+-------------------------------------------------------------------
+Sat Apr 29 09:21:40 UTC 2017 - cornelis@solcon.nl
+
+- Update to latest git
+
+-------------------------------------------------------------------
+Sat Sep  3 20:27:32 UTC 2016 - cornelis@solcon.nl
+
+- Initial package
+

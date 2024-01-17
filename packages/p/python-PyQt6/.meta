@@ -1,0 +1,7 @@
+<package name="python-PyQt6" project="openSUSE:Factory">
+  <title>Python bindings for Qt6</title>
+  <description>PyQt is a set of Python bindings for the Qt framework.
+
+</description>
+  <devel project="KDE:Qt:PyQt" package="python-PyQt6"/>
+</package>

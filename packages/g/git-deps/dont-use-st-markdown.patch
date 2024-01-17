@@ -1,0 +1,68 @@
+--- a/setup.py
++++ b/setup.py
+@@ -8,21 +8,50 @@
+     http://pyscaffold.readthedocs.org/
+ """
+ 
++import os
+ import sys
+ from setuptools import setup
+ 
++def read(fname):
++    with open(os.path.join(os.path.dirname(__file__), fname)) as inf:
++        return "\n" + inf.read().replace("\r\n", "\n")
+ 
+ def setup_package():
+     needs_sphinx = {'build_sphinx', 'upload_docs'}.intersection(sys.argv)
+     sphinx = ['sphinx'] if needs_sphinx else []
+     setup(
++        name = "git-deps",
++        description = "automatically detect dependencies between git commits",
++        author = "Adam Spiers",
++        author_email = "git@adamspiers.org",
++        license = "GPL-2+",
++        url = "https://github.com/aspiers/git-deps",
++        long_description = read("README.md"),
++        classifiers = [
++            "Development Status :: 4 - Beta",
++            "Environment :: Console",
++            "Environment :: Web Environment",
++            "Framework :: Flask",
++            "Intended Audience :: Developers",
++            "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
++            "Natural Language :: English",
++            "Operating System :: OS Independent",
++            "Programming Language :: Python",
++            "Topic :: Software Development :: Version Control",
++            "Topic :: Utilities"
++        ],
++        scripts = ["bin/git-fixup"],
++        packages = ["git_deps", "git_deps/listener"],
++        # data_files = "share/git_deps = share/gitfile-handler.desktop",
+         setup_requires=[
+             'six',
+-            'pyscaffold>=2.5.10,<2.6a0',
+-            'setuptools-markdown',
+         ] + sphinx,
+-        long_description_markdown_filename='README.md',
+-        use_pyscaffold=True
++        entry_points = {
++            "console_scripts" : [
++                "git-deps = git_deps.cli:run",
++                "gitfile-handler = git_deps.handler:run"
++            ]
++        }
+     )
+ 
+ 
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -45,7 +45,7 @@ if on_rtd:
+ # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 'sphinx.ext.todo',
+               'sphinx.ext.autosummary', 'sphinx.ext.viewcode', 'sphinx.ext.coverage',
+-              'sphinx.ext.doctest', 'sphinx.ext.ifconfig', 'sphinx.ext.pngmath',
++              'sphinx.ext.doctest', 'sphinx.ext.ifconfig', 'sphinx.ext.imgmath',
+               'sphinx.ext.napoleon']
+ 
+ # Add any paths that contain templates here, relative to this directory.

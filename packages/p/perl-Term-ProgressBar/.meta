@@ -1,0 +1,9 @@
+<package name="perl-Term-ProgressBar" project="openSUSE:Factory">
+  <title>Perl Module that provides a Progress Meter on a standard Terminal</title>
+  <description>Term::ProgressBar provides a simple progress bar on the terminal, to let the user know that something is happening, roughly how much stuff has been done, and maybe an estimate at how long remains.
+
+A typical use sets up the progress bar with a number of items to do, and then calls update to update the bar whenever an item is processed.
+</description>
+  <devel project="devel:languages:perl" package="perl-Term-ProgressBar"/>
+  <url>http://search.cpan.org/~fluffy/Term-ProgressBar-%{version}/</url>
+</package>

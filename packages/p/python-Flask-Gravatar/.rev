@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1083b40fd7c302bd34b140f730f4236</srcmd5>
+    <version>0.5.0</version>
+    <time>1540819239</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-Flask-Gravatar, which is a requirement for pgadmin4</comment>
+    <requestid>644185</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>945f1fb65d1b101bf053eb1be57c10a3</srcmd5>
+    <version>0.5.0</version>
+    <time>1551216087</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove replace-pytest-pep8-with-pytest-codestyle.patch
+- Remove not needed test dependencies:
+  * update patch fix-requirements.patch</comment>
+    <requestid>679225</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c83bebeee96c29cb8afd743087d19294</srcmd5>
+    <version>0.5.0</version>
+    <time>1634141183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925051</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1c004830ddeaba9c68e9072c1b7e5d51</srcmd5>
+    <version>0.5.0</version>
+    <time>1639931000</time>
+    <user>dimstar_suse</user>
+    <comment>- do not require pytest-runner for build, not required</comment>
+    <requestid>941484</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c8ca35b8137728fc5e5fe410865389da</srcmd5>
+    <version>0.5.0</version>
+    <time>1701902828</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131001</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b830be0d7d80b97f88e699d490bf6b9b</srcmd5>
+    <version>0.3.6.2</version>
+    <time>1487149515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>454712</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aec62acf7868522043c871b0a79c76de</srcmd5>
+    <version>0.4.5</version>
+    <time>1543224309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650590</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fc30b4b7330dd395f4df329bdc355006</srcmd5>
+    <version>0.4.6.1</version>
+    <time>1546246016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661960</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4a0dca3e9a4f4aa3116fa61f609d5b9d</srcmd5>
+    <version>0.4.7</version>
+    <time>1562925588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.7
+  * Added option to send gyroscope data to Citra and Cemu (Cemuhook support)
+  * Fixes in 0.4.7:
+  * Not minimizing to tray on start
+  * Issues when using stick simultaneously with lpad
+  * Crash in controller registration dialog if udev device has special symbols in name (thanks @Verequies)
+  * Trackball friction resets when set to zero
+</comment>
+    <requestid>714459</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe7f47b3012c48649ac21765add2583e</srcmd5>
+    <version>0.4.7.20200531</version>
+    <time>1591101644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810614</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9772b403f91ffb78da35439a0dd3f699</srcmd5>
+    <version>0.4.7.20200707</version>
+    <time>1594228536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819262</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b0086af9375639c3aaa7aa60e3e1c1c4</srcmd5>
+    <version>0.4.8.1.20201002</version>
+    <time>1603545514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843762</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e131d62b9033bdef079d3f194d59b494</srcmd5>
+    <version>0.4.8.2.20210225</version>
+    <time>1614685000</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876184</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9b028cc796da32bd1e2fe2b92a5756e</srcmd5>
+    <version>0.4.8.4</version>
+    <time>1619653127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889101</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae2aaf88746e5fcbaffe81d9c8cc0437</srcmd5>
+    <version>0.4.8.5</version>
+    <time>1626557801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906745</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1fd95f7d4ca74d6f5122d4a71ec2d3e3</srcmd5>
+    <version>0.4.8.6</version>
+    <time>1631470175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918499</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c8ba795c71613200b5785182f0775972</srcmd5>
+    <version>0.4.8.7</version>
+    <time>1651960457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975474</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ab34b0ef89b0a28502308e4cc5e32b6b</srcmd5>
+    <version>0.4.8.8</version>
+    <time>1665420441</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1009161</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>085fd107494db500daf63cec62490c90</srcmd5>
+    <version>0.4.8.11</version>
+    <time>1685212718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089295</requestid>
+  </revision>
+</revisionlist>

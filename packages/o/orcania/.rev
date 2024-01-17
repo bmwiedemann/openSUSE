@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5258979caed1a72da292ac5f9d1cc1ec</srcmd5>
+    <version>1.2.4</version>
+    <time>1535122935</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain orcania in Factory</comment>
+    <requestid>628427</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57beaf405020497976442cce31cac459</srcmd5>
+    <version>1.2.4</version>
+    <time>1535367532</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631407</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7901cfdbc8c620004068ec2bdd62913</srcmd5>
+    <version>1.2.9</version>
+    <time>1546946839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662384</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03ff4e6ab27f4f05b358b322b8c61196</srcmd5>
+    <version>2.0.0</version>
+    <time>1562591504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713852</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0d8835a65061c07a6bb09fb013f13fec</srcmd5>
+    <version>2.0.1</version>
+    <time>1563914153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717660</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b20b5618674d1e767438af27b21f4870</srcmd5>
+    <version>2.1.0</version>
+    <time>1579463860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765578</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5a4e1f420d523ab40ba0a7cdbb0f3269</srcmd5>
+    <version>2.1.1</version>
+    <time>1593904700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818525</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>23b456f506a3000b23db47a39019243f</srcmd5>
+    <version>2.2.0</version>
+    <time>1617131395</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876393</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a08ee0b8554461724ef6cf0cf99cec2c</srcmd5>
+    <version>2.2.1</version>
+    <time>1623268320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897971</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1c8e0277409e6709dd753ca2f78d76d2</srcmd5>
+    <version>2.2.2</version>
+    <time>1647282944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961650</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a346ea182f5cb67bf8977a57efe86901</srcmd5>
+    <version>2.3.0</version>
+    <time>1653907439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979714</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3337c4a7a5a190898e37af9bf15df2d4</srcmd5>
+    <version>2.3.1</version>
+    <time>1666011500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012009</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>741064da7e73d768d3e4d83aed1599be</srcmd5>
+    <version>2.3.2</version>
+    <time>1673559909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057944</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f167d55e76c73a730b3bbb5304d32cf3</srcmd5>
+    <version>2.3.3</version>
+    <time>1695327245</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112556</requestid>
+  </revision>
+</revisionlist>

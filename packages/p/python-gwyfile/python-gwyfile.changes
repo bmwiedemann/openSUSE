@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Feb 19 08:37:09 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Skip python36 because python-numpy does not support it.
+
+-------------------------------------------------------------------
+Sun Aug 16 09:31:20 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 

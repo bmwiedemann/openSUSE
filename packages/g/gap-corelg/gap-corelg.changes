@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Apr 25 19:49:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.56
+   * corrected two names of real forms in the IdRealForm
+     functionality
+   * new version of RealWeyl (for the connected component of the
+     real forms of complex adjoint)
+   * made CarrierAlgsForNilpOrbsInZ(m)Grading
+   * IdRealForms now also for direct sums of simple real forms
+   * added NameRealForm, MaximalReductiveSubalgebras
+
+-------------------------------------------------------------------
+Sun Feb 22 10:31:11 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.20
+* No upstream changelog was provided
+
+-------------------------------------------------------------------
+Fri Apr 18 10:14:52 UTC 2014 - jengelh@inai.de
+
+- Initial package (version 1.02) for build.opensuse.org

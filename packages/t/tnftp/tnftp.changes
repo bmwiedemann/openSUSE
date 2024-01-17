@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Sat May 13 18:52:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20230507
+  * Add timeout for SSL connection setup, defaulting to 60
+    seconds.
+  * Consistently use poll(2) instead of select(2).
+  * Check EAGAIN as well as EINTR.
+  * Simplify includes.
+- Update to version 20230409
+  * Add option sslnoverify to control validation of SSL
+    certificates.
+  * Add netrc processing to fetch-mode (URL on command line)
+    to enable options and autologin via netrc.
+  * Fix SSL cleanup in some error paths.
+  * Support SSL certificate validation by default.
+    FTPSSLNOVERIFY=1 in the environment to disable validation.
+  * Handle relative URLs.
+  * Improve ftp(1) markup.
+  * Fix -? in a more portable manner.
+
+-------------------------------------------------------------------
+Fri May 20 12:30:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20210827
+  * Validate address in server's PASV and LPSV responses. Previously
+    a hostile server could cause ftp to open a data connection elsewhere.
+  * Avoid intermittent crashes by fixing signal handler restoration.
+  * Fix intermittent failures in -q QUITTIME by not using restartable
+    signals.
+  * Set SO_KEEPALIVE on control connection to attempt to avoid timeouts.
+  * Display usage to stdout with -?.
+- Update to version 20200705:
+  * Avoid crashes by exiting if lostpeer due to a signal
+  * Issue PWD commands to the server only when we actually need the
+    results, not speculatively, just in case we might.
+  * Use "anonymous" instead of the local username for anonymous
+    ftp. Avoids unnecesary information leak.
+  * Use the first name we requested the http/https URL for, not any
+    name we ended up with after random redirects.
+  * Support using CONNECT for https:// via proxy.
+  * Improve SSL error reporting, and IPv6 endpoint reporting.
+  * Use the system glob() if required extensions are supported.
+- Drop upstream fixed tnftp-20100108-am_and_libedit.patch
+- Drop upstream fixed tnftp-verify_hostname.patch
+
+-------------------------------------------------------------------
+Tue May 26 13:49:20 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- tnftp ssl client should validate hostnames and certificates,
+  so for example tnftp -d https://revoked.badssl.com/example
+  fails to connect. (tnftp-verify_hostname.patch), There are
+  at least two reports about this misbehaviour online but it has
+  never been fixed. Patch targets openSSL 1.1.x and later
+  so specify requirement in spec file.
+
+-------------------------------------------------------------------
+Mon Aug  8 21:21:36 UTC 2016 - asterios.dramis@gmail.com
+
+- Update to version 20151004:
+  * Implement '-x xferbufsize' to set xferbuf size.
+  * Add Server Name Indication (SNI) support for https.
+  * Increase buffer limit used for response handling.
+- Removed post/pre requirement coreutils (not needed).
+- Fixes for update-alternatives usage.
+
+-------------------------------------------------------------------
+Tue Apr  7 01:08:33 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 20141104
+  * Portability fixes
+- Changes from version 20141031
+  * Ignore special character behaviour in filenames not provided
+	by the user.
+  * Fixes CVE-2014-8517.
+  * Fix timeout on HTTP fetches.
+- Remove tnftp-cve-2014-8517.patch; fixed on upstream release
+
+-------------------------------------------------------------------
+Thu Oct 30 13:18:42 UTC 2014 - tchvatal@suse.com
+
+- Apply fix for bnc#903011 CVE-2014-8517
+  * tnftp-cve-2014-8517.patch
+- Version bump to 20130505:
+  * various triv fixes
+  * more ssl support
+  * refresh tnftp-20100108-am_and_libedit.patch
+- Cleanup with spec-cleaner
+- Use update-alternatives properly
+- Do not verify the sig in spec, just let OBS do it
+
+-------------------------------------------------------------------
+Mon Apr 29 08:21:42 UTC 2013 - mvyskocil@suse.com
+
+- verify tarball using gpg-offline
+- remove obsoleted PreReq and reformat spec
+
+-------------------------------------------------------------------
+Wed Apr 11 22:40:33 UTC 2012 - andreas.stieger@gmx.de
+
+- fix openSUSE builds
+- add autoconf, automake, libtool build requirements
+- remove INSTALL file from package
+
+-------------------------------------------------------------------
+Mon Aug  1 21:06:10 UTC 2011 - crrodriguez@opensuse.org
+
+- There is no need to check for ncurses, not directly used 
+  by this package but by libedit for which we use the system version.
+
+-------------------------------------------------------------------
+Sun Jul 31 19:33:57 UTC 2011 - crrodriguez@opensuse.org
+
+- First package version, this is the segue from lukemftp 
+

@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Mon Sep 25 06:39:53 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.29
+ * FIX: Add error output when pyproject.toml is malformed
+ * FIX: Add name to setup.py to work around a github dependency graph bug.
+ * ENH: Add basic type information throughout project.
+ * ENH: Detect pyproject.toml as project root (to support PDM).
+ * MNT: Overwrite version file instead of delete/unlink.
+ * MNT: Use https for the unlicense url.
+
+-------------------------------------------------------------------
+Fri May 26 20:12:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.28
+  * FIX: handle unset versionfile_build in build_ext by @mgorny in
+    #347
+  * ENH: support built-in tomllib for Python 3.11+ by @mgorny in
+    #348
+- Release 0.27
+  * FIX: Always bootstrap in setup.py to avoid incompatibility with
+    old versioneer by @mgorny (#344)
+  * FIX: Mixup between _egg_info and _sdist by @DimitriPapadopoulos
+    (#342)
+  * STY: Merge endswith checks by @DimitriPapadopoulos (#337)
+  * STY: Useless inheritance from object by @DimitriPapadopoulos
+    (#336)
+- Provide [toml] extra as subpackage
+
+-------------------------------------------------------------------
+Mon May 22 08:54:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Tue Oct 11 16:50:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.24 
+  * MNT: Relicense to Unlicense by @effigies in #317
+  * ENH: in verbose mode do not hide stderr of git rev-parse by @yarikoptic in #318
+  * DOC: clarify upgrading to 0.23 doesn't require special actions by @sappelhoff in #321
+  * ENH: Prepare for py2exe dropping distutils support by @effigies in #319
+  * ENH: Allow versioneer to be used as a module in PEP-518 mode by @effigies in #294
+
+-------------------------------------------------------------------
+Sat Aug 28 10:09:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make testing more verbose
+
+-------------------------------------------------------------------
+Thu Aug 26 09:23:44 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.20
+  Release 0.20 (13-Jul-2020)
+  *  Respect versionfile_source in __init__.py snippet (#241)
+  *  Add pep440-branch and pep440-post-branch styles (#164)
+  *  Stop testing deprecated easy_install, support left in for now (#237)
+  *  Use versionfile_build instead of versionfile_source where needed (#242)
+  *  Improve handling of refname edge cases (#229)
+  *  Clarify installation in docs (#235)
+  *  Play nicely with custom build_exts (#232)
+  Release 0.19 (10-Nov-2020)
+  *  Drop support for Python < 3.6, test up to Python 3.9
+  *  Strip GPG signature information from date (#222)
+  *  Add bdist_ext cmdclass, to support native code extensions (#171)
+  *  Canonicalize pep440-pre style (#163)
+  *  Take arguments to get_cmdclass
+- test the package a bit at least
+
+-------------------------------------------------------------------
+Tue Dec  4 12:55:48 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Jun  6 20:44:55 UTC 2018 - jengelh@inai.de
+
+- Ensure neutrality/accuracy of description
+
+-------------------------------------------------------------------
+Mon Feb 19 17:44:38 UTC 2018 - arun@gmx.de
+
+- initial version

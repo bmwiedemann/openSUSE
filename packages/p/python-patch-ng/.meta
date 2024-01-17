@@ -1,0 +1,8 @@
+<package name="python-patch-ng" project="openSUSE:Factory">
+  <title>Library to parse and apply unified diffs</title>
+  <description>Patch-ng is a Python library to parse and apply unified diffs.
+
+</description>
+  <devel project="devel:languages:python" package="python-patch-ng"/>
+  <url>https://github.com/conan-io/python-patch</url>
+</package>

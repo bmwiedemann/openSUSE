@@ -1,0 +1,214 @@
+-------------------------------------------------------------------
+Mon Oct 30 16:17:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not force Java 11 to build on i586
+
+-------------------------------------------------------------------
+Thu Oct 12 15:51:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.4.53.v20231009
+  * Fixes of 9.4.53.v20231009
+    + CVE-2023-44487, bsc#1216169
+    + CVE-2023-36478, bsc#1216162
+    + #10679 - backport HTTP/2 rate control from Jetty 10.0.x
+    + #10573 - backport hpack improvements from Jetty 10.0.x
+    + #10546 - backport jetty-http Huffman encoders/decoders from
+      Jetty 10.0.x
+  * Fixes of 9.4.52.v20230823
+    + #10352 - Jetty accepts "+" prefixed value in Content-Length
+      (CVE-2023-40167, bsc#1215417)
+    + #10337 - SizeLimitHandler does not enforce 0 responseLimit
+    + #10169 - make sure that a ServiceLoader is retrieved before
+      iterating 
+    + #10066 - Allow SAXParserFactory or SAXParser to be configured
+      in Jetty's XmlParser class - Allows for GHSA-58qw-p7qm-5rvh
+      workaround
+    + #9887 - Deprecate CGI Servlet (CVE-2023-36479, bsc#1215415)
+    + #9716 - Deprecate PushSessionCacheFilter
+    + #9660 - OpenId Revoked authentication allows one request
+      (CVE-2023-41900, bsc#1215416)
+    + #9476 - onCompleteFailure called multiple times
+
+-------------------------------------------------------------------
+Sat Sep  9 14:24:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Sun May 21 05:09:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 9.4.51.v20230217
+  * Fixes of 9.4.49.v20220914:
+    + #8578 - getRequestURL can append "null" if getRequestURI is
+      unspecified in an authority-form request-target
+    + #8493 - Review HTTP client feature setRemoveIdleDestinations
+  * Fixes of 9.4.50.v20221201:
+    + #8774 - Added SizeLimitHandler
+    + #8678 - Jetty client is not responding to GO_AWAY packet
+      received from (Jetty) Server and continue to send traffic on
+      same connection
+  * Fixes of 9.4.51.v20230217:
+    + #9352 - Update / Fix CookieCutter
+    + #9345 - Backport Multipart Fix for CVE-2023-26048, bsc#1210620
+    + #9352 - Backport Cookie Parsing Fix for CVE-2023-26049,
+      bsc#1210621
+
+-------------------------------------------------------------------
+Thu May  4 11:24:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with java 11 on ix86 in order to avoid random
+  build failures
+
+-------------------------------------------------------------------
+Fri Jul  8 15:15:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.4.48.v20220622
+  * Fixes
+    + #8184 - All suffix globs except first fail to match if path
+      has "." character in prefix section
+    + #8145 - RegexPathSpec backport of optional group name/info
+      lookup if regex fails
+    + #8088 - Add option to configure exitVm on ShutdownMonitor from
+      System properties
+    + #8067 - Wall time usage in DoSFilter RateTracker results in
+      false positive alert
+    + #8014 - Review HttpRequest URI construction (Resolves
+      CVE-2022-2047, bsc#1201317)
+    + #7976 - Add TRANSFER_ENCODING violation for MultiPart RFC7578
+      parser
+    + #7947 - Improved PathSpec handling for servletName & pathInfo
+    + #7935 - Review HTTP/2 error handling (Resolves CVE-2022-2048,
+      bsc#1201316)
+    + #7918 - PathMappings.asPathSpec does not allow root
+      ServletPathSpec
+    + #7863 - Default servlet drops first accept-encoding header if
+      there is more than one.
+    + #7858 - GZipHandler does not play nice with other handlers in
+      HandlerCollection
+    + #7837 - Fix StatisticsHandler in the case a Handler throws
+      exception
+    + #7809 - Jetty 9.4.x 7801 duplicate set session cookies
+    + #7748 - Allow overriding of url-pattern mapping in
+      ServletContextHandler to allow for regex or uri-template
+      matching
+
+-------------------------------------------------------------------
+Tue Mar 29 14:13:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.4.46.v20220328
+  * Changes
+    + Option --write-module-graph produces wrong .dot file
+    + ArrayTrie getBest fails to match the empty string entry in
+      certain cases
+    + Interrupt flag is not always cleared in between requests
+    + Gzip compression not working for multipart/form-data when
+      added to the allowed list using addIncludedMimeTypes.
+    + Miconfigured headerCacheSize in can result in
+      IllegalArgumentException
+    + HttpServletResponse.encodeURL not working for URLs starting
+      with ../
+
+-------------------------------------------------------------------
+Tue Mar 22 15:49:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+- Fix javadoc generation on JDK >= 13
+
+-------------------------------------------------------------------
+Tue Oct 19 07:13:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Make importing of package sun.misc optional since not all jdk
+  versions export it
+
+-------------------------------------------------------------------
+Mon Jul 19 10:13:02 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Splitting the jetty-unixsocket artifact into a separate spec file
+  in order to avoid extra dependencies for the jetty-minimal
+  package.
+
+-------------------------------------------------------------------
+Mon Jul 19 06:58:23 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 9.4.43.v20210629
+  * Fix: bsc#1188438, CVE-2021-34429
+  * Changes:
+    + Improve alias checking in PathResource
+    + java.nio.ReadOnlyBufferException
+    + Deprecate support for UTF16 encoding in URIs
+    + Update to spifly 1.3.3
+    + Update to asm 9.1
+
+-------------------------------------------------------------------
+Mon Jun 28 12:45:55 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Package modules: ant, cdi, deploy, fcgi, http-spi, quickstart,
+  rewrite, start, unixsocket
+
+-------------------------------------------------------------------
+Wed Jun  9 14:07:47 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 9.4.42.v20210604
+  * Fix: bsc#1187117, CVE-2021-28169
+
+-------------------------------------------------------------------
+Fri May 14 17:01:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 9.4.40.v20210413
+  * Fix: bsc#1184367, CVE-2021-28165 - jetty server high CPU when
+    client send data length > 17408
+  * Fix: bsc#1184368, CVE-2021-28164 - Normalize ambiguous URIs
+  * Fix: bsc#1184366, CVE-2021-28163 - Exclude webapps directory
+    from deployment scan
+
+-------------------------------------------------------------------
+Fri Mar 12 11:11:07 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 9.4.38.v20210224
+  * Fixes bsc#1182898, CVE-2020-27223
+
+-------------------------------------------------------------------
+Mon Dec  7 18:12:50 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 9.4.35.v20201120
+  * Fixes bsc#1179727, CVE-2020-27218
+
+-------------------------------------------------------------------
+Thu Nov 19 13:05:09 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 9.4.30.v20200611
+
+-------------------------------------------------------------------
+Thu Apr  2 09:25:19 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 9.4.27.v20200227
+
+-------------------------------------------------------------------
+Thu Nov 28 09:02:29 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * jetty-annotations-asm6.patch
+    + not needed when building against ASM7
+
+-------------------------------------------------------------------
+Fri Nov  8 06:52:36 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.9.22.v20191022
+  * new jetty-openid amd jetty-util-ajax sub-packages
+- Modified patch:
+  * jetty-annotations-asm6.patch
+    + adapt to changed context
+	+ build against asm6 instead of asm7 that we don't have
+- Fix some rpmlint warnings and errors
+
+-------------------------------------------------------------------
+Tue Nov  5 15:39:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of a minimal version of jetty 9.4.19.v20190610
+  * This version is light on dependencies

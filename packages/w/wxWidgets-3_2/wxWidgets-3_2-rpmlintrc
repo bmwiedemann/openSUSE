@@ -1,0 +1,4 @@
+# Project name just starts with lowercase.
+addFilter("summary-not-capitalized")
+# rpmlint does not detect dates matching SOURCE_DATE_EPOCH
+addFilter("wxWidgets-3_2-doc-html.noarch:.*file-contains-date-and-time /usr/share/doc/packages/wxWidgets-3_2-doc-html/.*.html")

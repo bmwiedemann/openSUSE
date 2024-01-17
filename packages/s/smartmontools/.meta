@@ -1,0 +1,15 @@
+<package name="smartmontools" project="openSUSE:Factory">
+  <title>Monitor for S.M.A.R.T. Disks and Devices</title>
+  <description>SMARTmontools controls and monitors storage devices using the
+Self-Monitoring, Analysis, and Reporting Technology System (S.M.A.R.T.)
+built into ATA, SATA and SCSI Hard Drives. This is used to check the
+hard drive reliability and to predict drive failures. The suite
+contains two utilities. The first, smartctl, is a command line utility
+designed to perform simple S.M.A.R.T. tasks. The second, smartd, is a
+daemon that periodically monitors the smart status and reports errors
+to syslog. The package is compatible with the ATA/ATAPI-3 to -7
+specification. The package is intended to incorporate as much &quot;vendor
+specific&quot; and &quot;reserved&quot; information as possible about disk drives. The
+commands man smartctl and man smartd will provide more information.</description>
+  <devel project="Base:System" package="smartmontools"/>
+</package>

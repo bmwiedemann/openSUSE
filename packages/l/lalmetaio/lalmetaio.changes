@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Tue May 23 07:51:24 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.1:
+  * No release notes.
+- Update shlib package name in keeping with upstream so version
+  update to 11.
+
+-------------------------------------------------------------------
+Sun Feb 12 04:50:01 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-py BuildRequires to fix tests that fail due to "No
+  module named 'py._path'" errors.
+
+-------------------------------------------------------------------
+Fri Aug 19 12:22:25 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.0:
+  * No release notes.
+- Update so version to match upstream.
+- Update source URL.
+
+-------------------------------------------------------------------
+Sun Jan  2 23:23:51 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.0:
+  * No release notes.
+- Drop python2 support in keeping with upstream.
+
+-------------------------------------------------------------------
+Fri Feb 26 23:06:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to 2.0.2:
+  * No release notes.
+
+-------------------------------------------------------------------
+Fri Feb 12 16:13:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  * no changelog
+- Skip python36 build in TW, because python36-numpy and co. are
+  no more.
+- Drop reproducible.patch fixed upstream
+
+-------------------------------------------------------------------
+Thu Jan 21 23:40:56 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix dependency for tests and test runs for multi-versioned
+  python.
+
+-------------------------------------------------------------------
+Mon Jan 18 14:57:39 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave bindings, since octave >= 6 isn't supported.
+
+-------------------------------------------------------------------
+Thu Nov 19 09:20:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable builds for 32-bit archs where lal is not supported.
+
+-------------------------------------------------------------------
+Fri Nov  6 14:59:22 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Build without octave bindings on Leap 15.x, requires SWIG 4.0
+
+-------------------------------------------------------------------
+Thu Oct 29 04:25:07 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override build date (boo#1047218)
+
+-------------------------------------------------------------------
+Sat Aug 15 11:43:03 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Implement tests as part of %check section; BuildRequires:
+  python3-pytest needed for python tests.
+
+-------------------------------------------------------------------
+Tue Jul  7 00:20:21 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.1:
+  * No release notes.
+- Drop lalmetaio-build-octave44-with-swig3.patch: fixed upstream;
+  also drop autoreconf command before configure and BuildRequires:
+  libtool all required for this patch.
+- Re-enable octave bindings: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 30 09:43:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave support as compilation error with current swig.
+
+-------------------------------------------------------------------
+Wed Apr 22 18:28:44 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- BuildRequires: python-xml only for openSUSE <= 15.2 since
+  python2 is disabled for newer openSUSE.
+
+-------------------------------------------------------------------
+Sun Feb  2 23:33:58 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.6.0:
+  * O3b release.
+- Rebase lalmetaio-build-octave44-with-swig3.patch for updated
+  version. 
+
+-------------------------------------------------------------------
+Mon Sep 30 16:10:56 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build both python2 and python3 packages.
+
+-------------------------------------------------------------------
+Mon Jul 22 14:05:27 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.1:
+  * O3 release
+- Changes from version 1.5.0:
+  * ER14 release.
+- Rebase lalmetaio-build-octave44-with-swig3.patch to conform to
+  upstream's reworking for swig and octave version tests.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:32:35 UTC 2019 - badshah400@gmail.com
+
+- Switch builds to python2; add python-xml to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:48:46 UTC 2019 - badshah400@gmail.com
+
+- Add octave-cli to Requires for octave-%{name}.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:41:50 UTC 2019 - badshah400@gmail.com
+
+- Update Requires for -devel pkg and python modules.
+
+-------------------------------------------------------------------
+Sun Jan 27 19:11:46 UTC 2019 - badshah400@gmail.com
+
+- Add lalmetaio-build-octave44-with-swig3.patch: allow building
+  octave bindings with swig 3.0.x rather than requiring swig 4.x.
+
+-------------------------------------------------------------------
+Sun Jan 27 18:00:12 UTC 2019 - badshah400@gmail.com
+
+- Initial package

@@ -1,0 +1,97 @@
+--- jogl-v2.3.2/make/build-jogl.xml	2019-11-28 07:31:39.631611065 +0100
++++ jogl-v2.3.2/make/build-jogl.xml	2019-11-28 07:32:16.359814714 +0100
+@@ -1376,13 +1376,19 @@
+       <property name="linker.cfg.id.os"                    value="linker.cfg.linux.jogl.x11" />
+     </target>
+ 
++    <target name="c.configure.linux.s390x" if="isLinuxs390x">
++      <echo message="Linux.S390x" />
++      <property name="compiler.cfg.id"                     value="compiler.cfg.linux" />
++      <property name="linker.cfg.id.os"                    value="linker.cfg.linux.jogl.x11" />
++    </target>
++
+     <target name="c.configure.linux.sparc" if="isLinuxSparc">
+       <echo message="Linux.SPARC" />
+       <property name="compiler.cfg.id"                     value="compiler.cfg.linux" />
+       <property name="linker.cfg.id.os"                    value="linker.cfg.linux.jogl.x11" />
+     </target>
+ 
+-    <target name="c.configure.linux" depends="c.configure.linux.armv6,c.configure.linux.aarch64,c.configure.linux.x86,c.configure.linux.amd64,c.configure.linux.ia64,c.configure.linux.hppa,c.configure.linux.mips,c.configure.linux.mipsel,c.configure.linux.ppc,c.configure.linux.ppc64,c.configure.linux.ppc64le,c.configure.linux.s390,c.configure.linux.sparc,c.configure.x11" if="isLinux" />
++    <target name="c.configure.linux" depends="c.configure.linux.armv6,c.configure.linux.aarch64,c.configure.linux.x86,c.configure.linux.amd64,c.configure.linux.ia64,c.configure.linux.hppa,c.configure.linux.mips,c.configure.linux.mipsel,c.configure.linux.ppc,c.configure.linux.ppc64,c.configure.linux.ppc64le,c.configure.linux.s390,c.configure.linux.s390x,c.configure.linux.sparc,c.configure.x11" if="isLinux" />
+ 
+     <target name="c.configure.android" if="isAndroid">
+       <echo message="Android" />
+--- jogl-v2.3.2/make/build-nativewindow.xml	2019-11-28 07:31:39.631611065 +0100
++++ jogl-v2.3.2/make/build-nativewindow.xml	2019-11-28 07:32:16.359814714 +0100
+@@ -558,13 +558,19 @@
+       <property name="linker.cfg.id.oswin"                  value="linker.cfg.linux.nativewindow.x11" />
+     </target>
+ 
++    <target name="c.configure.linux.s390x" if="isLinuxs390x">
++      <echo message="Linux.S390x" />
++      <property name="compiler.cfg.id"                      value="compiler.cfg.linux" />
++      <property name="linker.cfg.id.oswin"                  value="linker.cfg.linux.nativewindow.x11" />
++    </target>
++
+     <target name="c.configure.linux.sparc" if="isLinuxSparc">
+       <echo message="Linux.SPARC" />
+       <property name="compiler.cfg.id"                      value="compiler.cfg.linux" />
+       <property name="linker.cfg.id.oswin"                  value="linker.cfg.linux.nativewindow.x11" />
+     </target>
+ 
+-    <target name="c.configure.linux" depends="c.configure.linux.armv6,c.configure.linux.aarch64,c.configure.linux.x86,c.configure.linux.amd64,c.configure.linux.ia64,c.configure.linux.hppa,c.configure.linux.mips,c.configure.linux.mipsel,c.configure.linux.ppc,c.configure.linux.ppc64,c.configure.linux.ppc64le,c.configure.linux.s390,c.configure.linux.sparc,c.configure.x11" if="isLinux" />
++    <target name="c.configure.linux" depends="c.configure.linux.armv6,c.configure.linux.aarch64,c.configure.linux.x86,c.configure.linux.amd64,c.configure.linux.ia64,c.configure.linux.hppa,c.configure.linux.mips,c.configure.linux.mipsel,c.configure.linux.ppc,c.configure.linux.ppc64,c.configure.linux.ppc64le,c.configure.linux.s390,c.configure.linux.s390x,c.configure.linux.sparc,c.configure.x11" if="isLinux" />
+ 
+     <target name="c.configure.android" if="isAndroid">
+       <echo message="Android" />
+--- jogl-v2.3.2/make/build-newt.xml	2019-11-28 07:31:39.635611088 +0100
++++ jogl-v2.3.2/make/build-newt.xml	2019-11-28 07:32:16.363814736 +0100
+@@ -533,6 +533,16 @@
+       <echo message="linker.cfg.id.oswin ${linker.cfg.id.oswin}" />
+     </target>
+ 
++    <target name="c.configure.linux.s390x" if="isLinuxs390x">
++      <echo message="Linux.S390x" />
++      <property name="compiler.cfg.id"                      value="compiler.cfg.linux" />
++      <condition property="linker.cfg.id.oswin"             value="linker.cfg.linux.newt.x11"
++                                                            else="linker.cfg.linux">
++          <isset property="isX11" />
++      </condition>
++      <echo message="linker.cfg.id.oswin ${linker.cfg.id.oswin}" />
++    </target>
++
+     <target name="c.configure.linux.sparc" if="isLinuxSparc">
+       <echo message="Linux.sparc" />
+       <property name="compiler.cfg.id"                      value="compiler.cfg.linux" />
+@@ -549,7 +559,7 @@
+       <property name="linker.cfg.id.oswin"                  value="linker.cfg.linux.newt.x11" />
+     </target>
+ 
+-    <target name="c.configure.linux" depends="c.configure.linux.x86,c.configure.linux.amd64,c.configure.linux.armv6,c.configure.linux.aarch64,c.configure.linux.hppa,c.configure.linux.mips,c.configure.linux.mipsel,c.configure.linux.ppc,c.configure.linux.ppc64,c.configure.linux.ppc64le,c.configure.linux.s390,c.configure.linux.sparc,c.configure.linux.ia64,c.configure.x11" if="isLinux"/>
++    <target name="c.configure.linux" depends="c.configure.linux.x86,c.configure.linux.amd64,c.configure.linux.armv6,c.configure.linux.aarch64,c.configure.linux.hppa,c.configure.linux.mips,c.configure.linux.mipsel,c.configure.linux.ppc,c.configure.linux.ppc64,c.configure.linux.ppc64le,c.configure.linux.s390,c.configure.linux.s390x,c.configure.linux.sparc,c.configure.linux.ia64,c.configure.x11" if="isLinux"/>
+ 
+     <target name="c.configure.android" if="isAndroid">
+       <echo message="Android" />
+--- jogl-v2.3.2/make/build-oculusvr.xml	2019-11-28 07:31:14.135469694 +0100
++++ jogl-v2.3.2/make/build-oculusvr.xml	2019-11-28 07:32:16.363814736 +0100
+@@ -346,13 +346,19 @@
+       <property name="linker.cfg.id.os"                    value="linker.cfg.linux" />
+     </target>
+ 
++    <target name="c.configure.linux.s390" if="isLinuxs390x">
++      <echo message="Linux.S390x" />
++      <property name="compiler.cfg.id"                     value="compiler.cfg.linux" />
++      <property name="linker.cfg.id.os"                    value="linker.cfg.linux" />
++    </target>
++
+     <target name="c.configure.linux.sparc" if="isLinuxSparc">
+       <echo message="Linux.SPARC" />
+       <property name="compiler.cfg.id"                     value="compiler.cfg.linux" />
+       <property name="linker.cfg.id.os"                    value="linker.cfg.linux" />
+     </target>
+ 
+-    <target name="c.configure.linux" depends="c.configure.linux.armv6,c.configure.linux.x86,c.configure.linux.amd64,c.configure.linux.ia64,c.configure.linux.hppa,c.configure.linux.mips,c.configure.linux.mipsel,c.configure.linux.ppc,c.configure.linux.ppc64,c.configure.linux.s390,c.configure.linux.sparc,c.configure.x11" if="isLinux" />
++    <target name="c.configure.linux" depends="c.configure.linux.armv6,c.configure.linux.x86,c.configure.linux.amd64,c.configure.linux.ia64,c.configure.linux.hppa,c.configure.linux.mips,c.configure.linux.mipsel,c.configure.linux.ppc,c.configure.linux.ppc64,c.configure.linux.s390,c.configure.linux.s390x,c.configure.linux.sparc,c.configure.x11" if="isLinux" />
+ 
+     <target name="c.configure.android" if="isAndroid">
+       <echo message="Android" />

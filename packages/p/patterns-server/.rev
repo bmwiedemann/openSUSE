@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48f0d6266079305852d2485e57591b6d</srcmd5>
+    <version>20170319</version>
+    <time>1494087835</time>
+    <user>dimstar_suse</user>
+    <comment>Provide/obsolete patterns-openSUSE-* names</comment>
+    <requestid>492735</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5cebd4cebfb749c06f5506c2835f9b85</srcmd5>
+    <version>20170319</version>
+    <time>1494938747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494909</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>760f071b9b4e6ab66894a9282773f785</srcmd5>
+    <version>20170319</version>
+    <time>1496392414</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit spell fix after cleaning up the mess done by the spec formater</comment>
+    <requestid>500407</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a0f190505a193af0dcdb24eebcd19842</srcmd5>
+    <version>20170319</version>
+    <time>1518706814</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend php7 variants by the lamp pattern (boo#1081072).</comment>
+    <requestid>576921</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df0439d348252372970b5502d5a257ca</srcmd5>
+    <version>20180718</version>
+    <time>1538672511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639838</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cf668920231ab96404c607cc55561949</srcmd5>
+    <version>20180718</version>
+    <time>1544727000</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust icons to state of yast2-theme package</comment>
+    <requestid>657790</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17bb65f8f91988e8678bc34dfc61fa50</srcmd5>
+    <version>20200312</version>
+    <time>1585085727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787594</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5f0e20a121675fdff2e3fcd39091f2ac</srcmd5>
+    <version>20200325</version>
+    <time>1588105905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798577</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>23c8632830a104574d71146ab813206c</srcmd5>
+    <version>20200325</version>
+    <time>1607801268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854568</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d9bb27847e6edcf0d5530eb6f0dc4b17</srcmd5>
+    <version>20210330</version>
+    <time>1618061152</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882473</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1324e3472e11f32a8837c72124f381d7</srcmd5>
+    <version>20210330</version>
+    <time>1631528832</time>
+    <user>dimstar_suse</user>
+    <comment>- Make wireshark recommended, not required.</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>db9563095e7eed808a8b1efbc2b9ed14</srcmd5>
+    <version>20210330</version>
+    <time>1669910299</time>
+    <user>dimstar_suse</user>
+    <comment>- recommend apache2-mod_php8 instead of apache2-mod_php7</comment>
+    <requestid>1039129</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0d9f312d50687fe5a8afb12e932da04b</srcmd5>
+    <version>20210330</version>
+    <time>1676302705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1065506</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>1ca18ee7e33bb80be49a96b3cec00082</srcmd5>
+    <version>20210330</version>
+    <time>1683801086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085931</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>2bb0202bf6ef182de41c98a9355b9a45</srcmd5>
+    <version>20210330</version>
+    <time>1702587760</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1132906</requestid>
+  </revision>
+</revisionlist>

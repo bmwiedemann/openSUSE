@@ -1,0 +1,6 @@
+<package name="gjs" project="openSUSE:Factory">
+  <title>JavaScript bindings based on gobject-introspection and Mozilla</title>
+  <description>This module contains JavaScript bindings based on gobject-introspection and the
+Mozilla SpiderMonkey JavaScript engine.</description>
+  <devel project="GNOME:Factory" package="gjs"/>
+</package>

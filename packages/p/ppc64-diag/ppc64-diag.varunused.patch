@@ -1,0 +1,58 @@
+Index: ppc64-diag-2.7.4/rtas_errd/files.c
+===================================================================
+--- ppc64-diag-2.7.4.orig/rtas_errd/files.c
++++ ppc64-diag-2.7.4/rtas_errd/files.c
+@@ -176,7 +176,7 @@ setup_rtas_event_scenario(void)
+ {
+ 	struct stat	sbuf;
+ 	char	*tmp;
+-	int	fd, len;
++	int	fd, __attribute__((unused)) len;
+ 	int	i;
+ 
+ 	if (scenario_file == NULL)
+Index: ppc64-diag-2.7.4/rtas_errd/epow.c
+===================================================================
+--- ppc64-diag-2.7.4.orig/rtas_errd/epow.c
++++ ppc64-diag-2.7.4/rtas_errd/epow.c
+@@ -62,7 +62,7 @@ static int time_remaining = 0;
+ void
+ epow_timer_handler(int sig, siginfo_t siginfo, void *context)
+ {
+-	int rc, state;
++	int __attribute__((unused)) rc, state;
+ 	struct itimerval tv;
+ 
+ 	if (time_remaining <= 0) {
+@@ -162,7 +162,7 @@ parse_epow(struct event *event)
+ 	struct rtas_epow_scn *epow;
+ 	struct itimerval tv;
+ 	char	*event_type;
+-	int	rc, state;
++	int	__attribute__((unused)) rc, state;
+ 
+ 	/*
+ 	 * Check the sensor state;  this will be used to ensure
+@@ -397,7 +397,7 @@ check_epow(struct event *event)
+ {
+ 	pid_t	child;
+ 	char	*childargs[2];
+-	int	current_status;
++	int	__attribute__((unused)) current_status;
+ 
+ 	/*
+ 	 * Dissect the EPOW extended error information;
+Index: ppc64-diag-2.7.4/diags/7031_D24_T24.c
+===================================================================
+--- ppc64-diag-2.7.4.orig/diags/7031_D24_T24.c
++++ ppc64-diag-2.7.4/diags/7031_D24_T24.c
+@@ -370,7 +370,8 @@ int
+ diag_7031_D24_T24(int fd, struct dev_vpd *vpd)
+ {
+ 	struct pearl_diag_page2 dp;
+-	int failure = 0, rc, encl_id;
++	int failure = 0, encl_id;
++    __attribute__((unused)) int rc;
+ 	int buf_len = sizeof(dp);
+ 	int ps1, ps2, fan1, fan2, fan3, rpt, vpd_card;
+ 

@@ -1,0 +1,39 @@
+Index: yudit-2.9.2/swindow/sx11/SXInputMethod.cpp
+===================================================================
+--- yudit-2.9.2.orig/swindow/sx11/SXInputMethod.cpp
++++ yudit-2.9.2/swindow/sx11/SXInputMethod.cpp
+@@ -805,9 +805,9 @@ SXInputMethod::createIC (const SString&
+   SString zlocale = slocale;
+   if (zlocale.size() == 0) zlocale = "C";
+   zlocale.append ((char)0);
+-  if (!setlocale (LC_ALL, zlocale.array()))
++  if (!setlocale (LC_CTYPE, zlocale.array()))
+   {
+-    setlocale (LC_ALL, "C");
++    setlocale (LC_CTYPE, "C");
+     fprintf (stderr, "Locale %s is not supported by C library.\n", 
+         zlocale.array());
+   }
+@@ -929,10 +929,10 @@ SXInputMethod::createIC (const SString&
+     icEncoding = "";
+     localeOK = false;
+ #ifdef HAVE_LOCALE
+-    setlocale (LC_ALL, "C");
+-    if (!setlocale (LC_ALL, "C"))
++    setlocale (LC_CTYPE, "C");
++    if (!setlocale (LC_CTYPE, "C"))
+     {
+-      setlocale (LC_ALL, "C");
++      setlocale (LC_CTYPE, "C");
+       fprintf (stderr, "Locale C is not supported by C library.\n"); 
+     }
+     else if (!XSupportsLocale()) 
+@@ -942,7 +942,7 @@ SXInputMethod::createIC (const SString&
+     else
+     {
+       localeOK = true;
+-      //fprintf (stderr, "set locale %s.\n", zlocale.array());
++      //fprintf (stderr, "set locale %s.\n", "C");
+     }
+ #endif
+     isAscii = true;

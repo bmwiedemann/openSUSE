@@ -1,0 +1,95 @@
+diff --git a/gui.c b/gui.c
+index b4280df..0d7a24b 100755
+--- a/gui.c
++++ b/gui.c
+@@ -3333,7 +3333,7 @@ void gui_loadskinsettings( void )
+     {
+       #ifdef __SDL_WRAPPER__
+ #ifdef PREFIX
+-	strcpy( prpfontname, PREFIX "/share/hivelytracker/ttf/");
++	strcpy( prpfontname, PREFIX "/share/fonts/texlive-dejavu/");
+ #else
+         strcpy( prpfontname, skindir ); // // // Set path to skin directory
+         strcat( prpfontname, "/" );     // // //
+@@ -3345,9 +3345,9 @@ void gui_loadskinsettings( void )
+         {
+             strcpy( prpfontname,
+ #ifdef PREFIX
+-	                         PREFIX "/share/hivelytracker/"
++	                         PREFIX "/share/fonts/texlive-dejavu/"
+ #endif
+-                                 "ttf/DejaVuSans.ttf" );
++                                 "DejaVuSans.ttf" );
+         }
+       #endif
+       continue;
+@@ -3357,7 +3357,7 @@ void gui_loadskinsettings( void )
+     {
+       #ifdef __SDL_WRAPPER__
+ #ifdef PREFIX
+-	strcpy( fixfontname, PREFIX "/share/hivelytracker/ttf/");
++	strcpy( fixfontname, PREFIX "/share/fonts/texlive-dejavu/");
+ #else
+         strcpy( fixfontname, skindir ); // // //
+         strcat( fixfontname, "/" );     // // //
+@@ -3368,9 +3368,9 @@ void gui_loadskinsettings( void )
+         {
+             strcpy( fixfontname,
+ #ifdef PREFIX
+-	                         PREFIX "/share/hivelytracker/"
++	                         PREFIX "/share/fonts/texlive-dejavu/"
+ #endif
+-                                 "ttf/DejaVuSansMono.ttf" );
++                                 "DejaVuSansMono.ttf" );
+         }
+       #endif
+       continue;
+@@ -3380,7 +3380,7 @@ void gui_loadskinsettings( void )
+     {
+       #ifdef __SDL_WRAPPER__
+ #ifdef PREFIX
+-	strcpy( sfxfontname, PREFIX "/share/hivelytracker/ttf/");
++	strcpy( sfxfontname, PREFIX "/share/fonts/texlive-dejavu/");
+ #else
+         strcpy( sfxfontname, skindir ); // // //
+         strcat( sfxfontname, "/" );     // // //
+@@ -3391,9 +3391,9 @@ void gui_loadskinsettings( void )
+         {
+             strcpy( sfxfontname,
+ #ifdef PREFIX
+-	                         PREFIX "/share/hivelytracker/"
++	                         PREFIX "/share/fonts/texlive-dejavu/"
+ #endif
+-                                 "ttf/DejaVuSansMono.ttf" );
++                                 "DejaVuSansMono.ttf" );
+         }
+       #endif
+       continue;
+@@ -3980,21 +3980,21 @@ BOOL gui_init( void )
+   strcpy( fixfontname,
+ #ifdef PREFIX
+                        PREFIX
+-                       "/share/hivelytracker/"
++                       "/share/fonts/texlive-dejavu/"
+ #endif
+-                       "ttf/DejaVuSansMono.ttf" );
++                       "DejaVuSansMono.ttf" );
+   strcpy( sfxfontname,
+ #ifdef PREFIX
+                        PREFIX
+-                       "/share/hivelytracker/"
++                       "/share/fonts/texlive-dejavu/"
+ #endif
+-                       "ttf/DejaVuSansMono.ttf" );
++                       "DejaVuSansMono.ttf" );
+   strcpy( prpfontname,
+ #ifdef PREFIX
+                        PREFIX
+-                       "/share/hivelytracker/"
++                       "/share/fonts/texlive-dejavu/"
+ #endif
+-                       "ttf/DejaVuSans.ttf" );
++                       "DejaVuSans.ttf" );
+ #endif  
+ #endif  
+ 

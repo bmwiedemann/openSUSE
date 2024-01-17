@@ -1,0 +1,79 @@
+commit 207c9daa881a62bdade6e4c59d59c669e8c39de2
+Author: trixirt <trix@redhat.com>
+Date:   Fri Mar 3 10:01:18 2023 -0800
+
+    Gcc 13 (#2858)
+    
+    * include cstdint
+    
+    On fedora rawhide with gcc 13, there is this error
+    
+    In file included from tmp/opae-sdk/libraries/c++utils/cmd_handler.cpp:26:
+    opae-sdk/libraries/c++utils/cmd_handler.h:62:27: error: ‘uint16_t’ has not been declared
+       62 |                           uint16_t arg_count,
+          |                           ^~~~~~~~
+    opae-sdk/libraries/c++utils/cmd_handler.h:133:45: error: ‘uint16_t’ was not declared in this scope
+      133 |     typedef std::map<std::string, std::pair<uint16_t, std::string>> cmd_help_map_t;
+          |                                             ^~~~~~~~
+    opae-sdk/libraries/c++utils/cmd_handler.h:33:1: note: ‘uint16_t’ is defined in header ‘<cstdint>’; did you forget to ‘#include <cstdint>’?
+       32 | #include <fstream>
+      +++ |+#include <cstdint>
+    
+    So include cstdint.
+    
+    Signed-off-by: Tom Rix <trix@redhat.com>
+    
+    * silence warning on may uninitialized variable first_sw_desc
+    
+    On fedora rawhide with gcc 13, there is this error
+    opae-sdk/binaries/fpgabist/dma/fpga_dma.cpp: In function ‘void* dispatcherWorker(void*)’:
+    opae-sdk/binaries/fpgabist/dma/fpga_dma.cpp:507:48: error: ‘first_sw_desc’ may be used uninitialized [-Werror=maybe-uninitialized]
+      507 |                                 first_sw_desc->hw_descp->hw_desc->owned_by_hw = 1;
+          |                                 ~~~~~~~~~~~~~~~^~~~~~~~
+    opae-sdk/binaries/fpgabist/dma/fpga_dma.cpp:440:27: note: ‘first_sw_desc’ was declared here
+      440 |         msgdma_sw_desc_t *first_sw_desc;
+          |                           ^~~~~~~~~~~~~
+    
+    Simplify the flow so the compiler does not get confused.
+    
+    Signed-off-by: Tom Rix <trix@redhat.com>
+    
+    * Update cmd_handler.h
+    
+    ---------
+    
+    Signed-off-by: Tom Rix <trix@redhat.com>
+    Co-authored-by: Tim Whisonant <tim.whisonant@intel.com>
+
+diff --git tools/extra/c++utils/cmd_handler.h tools/extra/c++utils/cmd_handler.h
+index 7e7e166adbca..e616095e383a 100644
+--- tools/extra/c++utils/cmd_handler.h
++++ tools/extra/c++utils/cmd_handler.h
+@@ -1,4 +1,4 @@
+-// Copyright(c) 2017, Intel Corporation
++// Copyright(c) 2017-2023, Intel Corporation
+ //
+ // Redistribution  and  use  in source  and  binary  forms,  with  or  without
+ // modification, are permitted provided that the following conditions are met:
+@@ -30,6 +30,7 @@
+ #include <string>
+ #include <iostream>
+ #include <fstream>
++#include <cstdint>
+ 
+ namespace intel
+ {
+diff --git tools/extra/fpgabist/dma/fpga_dma.cpp tools/extra/fpgabist/dma/fpga_dma.cpp
+index c337efea1884..40b388a1c57b 100644
+--- tools/extra/fpgabist/dma/fpga_dma.cpp
++++ tools/extra/fpgabist/dma/fpga_dma.cpp
+@@ -475,8 +475,7 @@ static void *dispatcherWorker(void* dma_handle) {
+ 
+ 			// make a note of the first block descriptor
+ 			// mark it valid only after packing rest of the block
+-			if (desc_count == 1)
+-				first_sw_desc = sw_desc[desc_count];
++			first_sw_desc = sw_desc[1];
+ 			is_owned_by_hw = (desc_count == 1)  ? false:true;
+ 
+ 			// refer prefetcher spec

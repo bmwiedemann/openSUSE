@@ -1,0 +1,32 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2023-03-07 18:53:31.749775858 +0100
+
+"-lgumbo" is present in the .pro file because libmupdf is a static archive -
+with no record of dependencies like an .so file.
+
+When MuPDF is built with bundled gumbo however, gumbo is included in mupdf.a,
+therefore sioyek need not link to it.
+
+Without a mupdf.pc file, it's programmatically not possible for sioyek to
+do the right thing.
+
+Because gumbo is removed from openSUSE and mupdf is built with bundled gumbo,
+we statically remove -lgumbo from the makefile.
+
+---
+ pdf_viewer_build_config.pro |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: sioyek-2.0.0/pdf_viewer_build_config.pro
+===================================================================
+--- sioyek-2.0.0.orig/pdf_viewer_build_config.pro
++++ sioyek-2.0.0/pdf_viewer_build_config.pro
+@@ -82,7 +82,7 @@ unix:!mac {
+     } else {
+         DEFINES += NON_PORTABLE
+         DEFINES += LINUX_STANDARD_PATHS
+-        LIBS += -ldl -lmupdf -lmupdf-third -lgumbo -lharfbuzz -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjp2 -lz
++        LIBS += -ldl -lmupdf -lmupdf-third -lharfbuzz -lfreetype -ljbig2dec -ljpeg -lmujs -lopenjp2 -lz
+     }
+ 
+     isEmpty(PREFIX){

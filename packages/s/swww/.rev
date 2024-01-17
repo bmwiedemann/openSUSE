@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a76011f8b3286bedea3b75cccded9ab</srcmd5>
+    <version>0.4.3+git14</version>
+    <time>1665504132</time>
+    <user>RBrownFactory</user>
+    <comment>I want to maintain swww to openSUSE:Factory</comment>
+    <requestid>1009196</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4987883df9ee09f8d6f477e83a427aa</srcmd5>
+    <version>0.4.3+git14</version>
+    <time>1666089913</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1029583</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7566eef7dfeeb0b330d496ea7c589964</srcmd5>
+    <version>0.6.0+git18</version>
+    <time>1675177742</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1062080</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2ef898526848ea0c1bea66982b8234c2</srcmd5>
+    <version>0.7.0</version>
+    <time>1675792165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1063529</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c74068a8238c9227a6c9899374bb9067</srcmd5>
+    <version>0.7.2</version>
+    <time>1679182213</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix specfile.
+- Fix installation of swww-daemon.
+- Update to version 0.7.2:
+  * prepare 0.7.2 release
+  * update dependencies
+  * man-pages (#84)
+  * Sync animations (#82)
+  * update changelog
+  * ignore integration_tests by default
+  * cache the images to reload them on startup (#80)
+  * prepare 0.7.1 release
+  * update dependencies
+  * cargo clippy and style
+  * update CHANGELOG.md
+  * fix integration_tests calling incorrect daemon bin
+  * add ability to use screen cords instead of percentages in `--transition-pos` (#71)
+  * typo: pipw -&gt; pipe
+  * fix reading image from stdin (don't cannonicalize)
+  * document `--no_resize` and `--fill_color` args
+  * fix `swww` query not returning correct image
+  * change the version in Cargo.toml
+</comment>
+    <requestid>1072775</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ecd739f6b4ab492da4a84b7504bcf763</srcmd5>
+    <version>0.7.3</version>
+    <time>1684162470</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1087131</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b1d9eb7a98aad803340ebe47963a93c</srcmd5>
+    <version>0.8.1</version>
+    <time>1690987797</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101874</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7a0916e8421d45ce236d4ed7980c3582</srcmd5>
+    <version>0.8.1</version>
+    <time>1692611096</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104902</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+diff -r -U 5 a/man/meson.build b/man/meson.build
+--- a/man/meson.build	2020-06-19
++++ b/man/meson.build	2020-06-29
+@@ -6,7 +6,7 @@
+ 
+ install_man([
+   'desktop-file-validate.1',
+   'desktop-file-install.1',
+   'update-desktop-database.1',
+-  desktop_file_edit_man,
+ ])
++meson.add_install_script('install_man.py')

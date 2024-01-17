@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf56867a143e324f859ed8b17b9cde12</srcmd5>
+    <version>1.4</version>
+    <time>1565267010</time>
+    <user>dimstar_suse</user>
+    <comment>SLE package to create pristine system image for cloning now available for
+oS:Factory.</comment>
+    <requestid>721523</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3bcbed67bab9871262942b389ac5eb20</srcmd5>
+    <version>1.5</version>
+    <time>1571210318</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>738667</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4b6836e511befb544e25bfecc95e827</srcmd5>
+    <version>1.6</version>
+    <time>1597744825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827375</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>31e01aefb17e0e7c9a02919cd609a21b</srcmd5>
+    <version>1.11</version>
+    <time>1680722926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1077560</requestid>
+  </revision>
+</revisionlist>

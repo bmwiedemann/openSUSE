@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Fri Dec 15 08:45:01 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.7:
+  * Fixed infinite loop on certain invalid fontfeatures values.
+
+-------------------------------------------------------------------
+Fri Jul 14 15:44:24 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.6:
+  * Updated bundled nanosvg.
+
+-------------------------------------------------------------------
+Wed Sep 21 04:27:46 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.5:
+  * SVG fonts now ignore user transformations instead of failing with
+    "unimplemented feature".
+  * Updated glyph advance width calculation for Harfbuzz 5.2 changes.
+    The new calculation is incompatible with Harfbuzz 5.1 and earlier, so
+    required version of Harfbuzz has been increased to 5.2.
+
+-------------------------------------------------------------------
+Tue Sep  6 16:48:06 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.4:
+  * Fixed crash when failing to load an SVG glyph with multiple sub-glyphs.
+
+-------------------------------------------------------------------
+Mon Aug 22 18:19:13 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.3:
+  * Fixed bitmap font glyph advance width calculation when the user has
+    enabled 10-scale-bitmap-fonts.conf in fontconfig.
+- Fix libfcft package missing license file, and remove redundant copy of
+  doc files and license in $datadir/doc/fcft/
+
+-------------------------------------------------------------------
+Thu May 19 17:25:04 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.2:
+  * Fixed SVG glyphs failing with “bad argument” if LCD subpixel rendering is
+    enabled.
+
+-------------------------------------------------------------------
+Sun May  1 20:11:17 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.1:
+  * Added OT-SVG support using a bundled nanosvg as backend.
+    FCFT_CAPABILITY_SVG has been added to fcft_capabilities to detect this.
+  * Fixed fcft_font::name, and fcft_glyph::font_name not being set correctly
+    for font collections (e.g. *.ttc files).
+  * Fixed assertion inside HarfBuzz with fcft_rasterize_grapheme_ut32
+    when rasterizing a glyph fails.
+- Set all options and features explicitly instead of relying on auto-detection
+  to ensure build fails if dependencies change.
+
+-------------------------------------------------------------------
+Wed Feb 16 09:19:13 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Leap 15.4 uses python3.6 so the python3-dataclasses is
+  BuildRequired. Also, gcc-11 is enforced in Leap since gcc7 which
+  is used by default is too old
+
+-------------------------------------------------------------------
+Sat Feb  5 22:26:44 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.0.1:
+  * Added fcft_font.name member for the name of the primary font.
+  * Added fcft_glyph.font_name member for the name of the font that the glyph
+    was loaded from.
+  * Added fcft_init and fcft_fini to initialize and deinitialize the library,
+    which must now be called explicitly. Also, fcft_log_init has been removed,
+    and logging is now initialized by fcft_init.
+  * All wchar_t usage has been replaced with uint32_t. Also,
+    fcft_{glyph,grapheme,text_run}_rasterize have been renamed to
+    fcft_rasterize_{char,grapheme,text_run}_utf32 to emphasize this.
+  * fcft_rasterize_grapheme_utf32 no longer accepts layout tags, unlike
+    its predecessor fcft_grapheme_rasterize. They should be
+    set using fontfeature when calling fcft_from_name.
+  * Removed fcft_size_adjust.
+  * Removed fcft_font.space_advance member.
+  * Fixed bug in fcft_rasterize_text_run_utf32 due to uninitialized variable.
+
+-------------------------------------------------------------------
+Wed Dec  8 19:43:55 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.5.1:
+  * fcft_set_scaling_filter now applies to color bitmap fonts only,
+    ie emoji fonts.
+  * Fixed incorrect value of FCFT_SCALING_FILTER_CUBIC constant.
+  * Fixed pixman errors and program freezes when scaling bitmap fonts to
+    very small sizes.
+
+-------------------------------------------------------------------
+Sat Nov 13 12:28:21 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.5.0:
+  * Added fcft_set_emoji_presentation that can be used to override
+    emojis' default presentation style.
+  * Changed fcft_*_rasterize so that emoji's default presentation is now
+    accounted for when searching for a font containing the emoji codepoint,
+    codepoints whose default presentation is "text" will no longer consider
+    emoji fonts, and codepoints whose default presentation is "emoji" will
+    no longer consider non-emoji fonts.
+  * Improved handling of RTL scripts in fcft_text_run_rasterize
+
+-------------------------------------------------------------------
+Tue Oct 26 05:34:54 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.6:
+  * Updated UnicodeData to 14.0
+  * Fixed fcft_glyph.wc to be the Unicode codepoint instead of font index.
+  * Fixed assertion in glyph_cache_resize when rasterizing a large amount of
+    code points.
+  * Fixed bad performance of grapheme cache when rasterizing
+    many grapheme clusters.
+
+-------------------------------------------------------------------
+Sat Aug 14 16:40:38 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.5:
+  * Fixed fcft_text_run_rasterize not checking if codepoint is in
+    the font’s charset before attempting shaping.
+  * Fixed crash when destroying a font with a grapheme cache entry
+    representing a failed grapheme glyph.
+
+-------------------------------------------------------------------
+Thu Jul 22 09:20:29 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.4:
+  * Fixed rendering of bitmap fonts with Freetype >= 2.11
+
+-------------------------------------------------------------------
+Sun Jul 18 16:55:32 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.3: 
+  * Fixed bitmap/aliased font glyphs being mirrored on
+    big-endian architectures.
+  * Fixed color font glyphs having wrong colors on big-endian architectures.
+  * Fixed crash when destroying a font that failed to load
+    (typically happens when there are no fonts available at all).
+
+-------------------------------------------------------------------
+Thu Jul  8 02:17:09 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.2:
+  * Fixed rare crash when one thread was doing a glyph cache lookup,
+    while another was resizing the cache.
+
+-------------------------------------------------------------------
+Thu Jul  1 19:24:23 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.1:
+  * Log messages are now printed to stderr instead of stdout.
+  * fcft_grapheme_rasterize() now sets a minimum grapheme column count of 2
+    when the cluster ends with an Emoji variant selector (codepoint 0xFE0F).
+  * Fixed compilation error when fallback definition for FCFT_EXPORT was used
+    in meson.build.
+
+-------------------------------------------------------------------
+Fri Jun 11 09:26:10 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.0

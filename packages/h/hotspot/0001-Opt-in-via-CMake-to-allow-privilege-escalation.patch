@@ -1,0 +1,149 @@
+From 9f279095a8f66be1d830a504a2768b87d26dfb52 Mon Sep 17 00:00:00 2001
+From: Milian Wolff <milian.wolff@kdab.com>
+Date: Mon, 13 Mar 2023 17:22:05 +0100
+Subject: [PATCH] Opt-in via CMake to allow privilege escalation
+
+Matthias Gerstner from Suse found a TOCTOU security vulnerability
+in our privilege escalation code. If abused, the temporary escalation
+would remain permanent and opens the door for attackers to wreak
+havoc. As this is an optional feature, let's disable it by default
+until I find the time to resolve this differently.
+
+See CVE-2023-28144 for more information, the gist is, to quote
+Matthias:
+
+> The script contains the following logic during early startup:
+>
+>     if [ ! -z "$1" ]; then
+>         olduser=$(stat -c '%u' "$1")
+>         chown "$(whoami)" "$1"
+>         echo "rewriting to $1"
+>         # redirect output to file, to enable parsing of output even when
+>         # the graphical sudo helper like kdesudo isn't forwarding the text properly
+>         $0 2>&1 | tee -a "$1"
+>         chown "$olduser" "$1"
+>         exit
+>     fi
+>
+> The two `chown` invocations on the temporary file result in a temporary change
+> of the ownership of the temporary file to root, which is originally owned by
+> the unprivileged user. So it changes ownership of the provided path first to
+> `root`, then reexecutes itself, then changes ownership back to the original
+> user.
+>
+> This offers the following attack vectors:
+>
+> - giving ownership of an arbitrary file to root
+> - giving ownership of an arbitrary file to the unprivileged user
+
+Thanks a lot for Matthias and Suse for detecting this issue and
+bringing it to my attention.
+---
+ CMakeLists.txt         |  2 ++
+ hotspot-config.h.cmake |  2 ++
+ src/perfrecord.cpp     |  7 ++++++-
+ src/perfrecord.h       |  1 +
+ src/recordpage.cpp     | 11 +++++++----
+ 5 files changed, 18 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4eb5c9f..608c68d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,6 +26,8 @@ endif()
+ set(CMAKE_CXX_STANDARD 14)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
++option(ALLOW_PRIVILEGE_ESCALATION "allow temporary privilege escalation" OFF)
++
+ # Enable the test harness
+ enable_testing()
+ 
+diff --git a/hotspot-config.h.cmake b/hotspot-config.h.cmake
+index d529f22..a9b664c 100644
+--- a/hotspot-config.h.cmake
++++ b/hotspot-config.h.cmake
+@@ -28,3 +28,5 @@
+ #cmakedefine01 KGraphViewerPart_FOUND
+ 
+ #cmakedefine01 KF5SyntaxHighlighting_FOUND
++
++#cmakedefine01 ALLOW_PRIVILEGE_ESCALATION
+diff --git a/src/perfrecord.cpp b/src/perfrecord.cpp
+index d721045..c02a30a 100644
+--- a/src/perfrecord.cpp
++++ b/src/perfrecord.cpp
+@@ -109,7 +109,7 @@ static bool privsAlreadyElevated()
+ void PerfRecord::startRecording(bool elevatePrivileges, const QStringList& perfOptions, const QString& outputPath,
+                                 const QStringList& recordOptions, const QString& workingDirectory)
+ {
+-    if (elevatePrivileges && geteuid() != 0 && !privsAlreadyElevated()) {
++    if (canElevatePrivileges() && elevatePrivileges && geteuid() != 0 && !privsAlreadyElevated()) {
+         // elevate privileges temporarily as root
+         // use kauth/kdesudo to start the elevate_perf_privileges.sh script
+         // then parse its output and once we get the "waiting..." line the privileges got elevated
+@@ -495,6 +495,11 @@ bool PerfRecord::canCompress()
+     return Zstd_FOUND && perfBuildOptions().contains("zstd: [ on  ]");
+ }
+ 
++bool PerfRecord::canElevatePrivileges()
++{
++    return ALLOW_PRIVILEGE_ESCALATION && (!sudoUtil().isEmpty() || KF5Auth_FOUND);
++}
++
+ bool PerfRecord::isPerfInstalled()
+ {
+     return !QStandardPaths::findExecutable(QStringLiteral("perf")).isEmpty();
+diff --git a/src/perfrecord.h b/src/perfrecord.h
+index 9a8e3f8..b9a580e 100644
+--- a/src/perfrecord.h
++++ b/src/perfrecord.h
+@@ -39,6 +39,7 @@ public:
+     static bool canSwitchEvents();
+     static bool canUseAio();
+     static bool canCompress();
++    static bool canElevatePrivileges();
+ 
+     static QStringList offCpuProfilingOptions();
+ 
+diff --git a/src/recordpage.cpp b/src/recordpage.cpp
+index c8838ec..149559c 100644
+--- a/src/recordpage.cpp
++++ b/src/recordpage.cpp
+@@ -371,7 +371,7 @@ RecordPage::RecordPage(QWidget* parent)
+     if (m_perfRecord->currentUsername() == QLatin1String("root")) {
+         ui->elevatePrivilegesCheckBox->setChecked(true);
+         ui->elevatePrivilegesCheckBox->setEnabled(false);
+-    } else if (m_perfRecord->sudoUtil().isEmpty() && !KF5Auth_FOUND) {
++    } else if (!PerfRecord::canElevatePrivileges()) {
+         ui->elevatePrivilegesCheckBox->setChecked(false);
+         ui->elevatePrivilegesCheckBox->setEnabled(false);
+         ui->elevatePrivilegesCheckBox->setText(
+@@ -383,7 +383,8 @@ RecordPage::RecordPage(QWidget* parent)
+     restoreCombobox(config(), QStringLiteral("applications"), ui->applicationName->comboBox());
+     restoreCombobox(config(), QStringLiteral("eventType"), ui->eventTypeBox, {ui->eventTypeBox->currentText()});
+     restoreCombobox(config(), QStringLiteral("customOptions"), ui->perfParams);
+-    ui->elevatePrivilegesCheckBox->setChecked(config().readEntry(QStringLiteral("elevatePrivileges"), false));
++    ui->elevatePrivilegesCheckBox->setChecked(PerfRecord::canElevatePrivileges()
++                                              && config().readEntry(QStringLiteral("elevatePrivileges"), false));
+     ui->offCpuCheckBox->setChecked(config().readEntry(QStringLiteral("offCpuProfiling"), false));
+     ui->sampleCpuCheckBox->setChecked(config().readEntry(QStringLiteral("sampleCpu"), true));
+     ui->mmapPagesSpinBox->setValue(config().readEntry(QStringLiteral("mmapPages"), 0));
+@@ -754,10 +755,12 @@ void RecordPage::updateRecordType()
+ 
+     m_perfOutput->setInputVisible(recordType == LaunchApplication);
+     m_perfOutput->clear();
+-    ui->elevatePrivilegesCheckBox->setEnabled(recordType != ProfileSystem);
++    ui->elevatePrivilegesCheckBox->setEnabled(PerfRecord::canElevatePrivileges() && recordType != ProfileSystem);
+     ui->sampleCpuCheckBox->setEnabled(recordType != ProfileSystem && PerfRecord::canSampleCpu());
+     if (recordType == ProfileSystem) {
+-        ui->elevatePrivilegesCheckBox->setChecked(true);
++        if (PerfRecord::canElevatePrivileges()) {
++            ui->elevatePrivilegesCheckBox->setChecked(true);
++        }
+         ui->sampleCpuCheckBox->setChecked(true && PerfRecord::canSampleCpu());
+     }
+ 
+-- 
+2.39.2
+

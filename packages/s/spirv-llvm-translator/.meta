@@ -1,0 +1,9 @@
+<package name="spirv-llvm-translator" project="openSUSE:Factory">
+  <title>LLVM/SPIR-V Bi-Directional Translator library</title>
+  <description>The LLVM/SPIR-V Bi-Directional Translator, a library and tool for translation
+between LLVM IR and SPIR-V.
+
+</description>
+  <devel project="X11:XOrg" package="spirv-llvm-translator"/>
+  <url>https://github.com/KhronosGroup/SPIRV-LLVM-Translator</url>
+</package>

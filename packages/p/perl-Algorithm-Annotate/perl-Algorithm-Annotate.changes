@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Nov 11 08:55:07 UTC 2011 - coolo@suse.com
+
+- recreate with cpanspec 1.78.05
+
+-------------------------------------------------------------------
+Wed Dec  1 13:30:33 UTC 2010 - coolo@novell.com
+
+- recreate with cpanspec 1.78.03
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:20 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 16 22:27:23 CET 2005 - schwab@suse.de
+
+- Don't remove BuildRoot in %install.
+
+-------------------------------------------------------------------
+Mon Feb 14 15:33:20 CET 2005 - lmuelle@suse.de
+
+- Initial SuSE package. 

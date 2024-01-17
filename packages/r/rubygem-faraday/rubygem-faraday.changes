@@ -1,0 +1,735 @@
+-------------------------------------------------------------------
+Thu Nov  2 15:47:19 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 2.7.11:
+
+## What's Changed
+* Refer to correct branch [ci skip] by @olleolleolle in https://github.com/lostisland/faraday/pull/1516
+* 📄 New docs 🎉  by @iMacTia in https://github.com/lostisland/faraday/pull/1517
+* Fix capitalization for Elasticsearch by @picandocodigo in https://github.com/lostisland/faraday/pull/1520
+* Fix 404 link in UPGRADING documentation by @shanempope in https://github.com/lostisland/faraday/pull/1521
+* Fix included middleware links by @edwardloveall in https://github.com/lostisland/faraday/pull/1522
+* Fix a test failure using Ruby 3.3.0dev by @koic in https://github.com/lostisland/faraday/pull/1523
+* Format code with less indent by @olleolleolle in https://github.com/lostisland/faraday/pull/1524
+* Add `base64` to runtime dependency by @koic in https://github.com/lostisland/faraday/pull/1525
+* Add option for omitting request data from Faraday exceptions by @ClaytonPassmore in https://github.com/lostisland/faraday/pull/1526
+
+## New Contributors
+* @picandocodigo made their first contribution in https://github.com/lostisland/faraday/pull/1520
+* @shanempope made their first contribution in https://github.com/lostisland/faraday/pull/1521
+* @edwardloveall made their first contribution in https://github.com/lostisland/faraday/pull/1522
+* @koic made their first contribution in https://github.com/lostisland/faraday/pull/1523
+* @ClaytonPassmore made their first contribution in https://github.com/lostisland/faraday/pull/1526
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.10...v2.7.11
+
+2.7.10:
+
+## What's Changed
+* Fix some logging inefficiencies by @semaperepelitsa in https://github.com/lostisland/faraday/pull/1515
+
+## New Contributors
+* @semaperepelitsa made their first contribution in https://github.com/lostisland/faraday/pull/1515
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.9...v2.7.10
+
+2.7.9:
+
+## What's Changed
+* Raise Error: Add Faraday::RequestTimeoutError by @tisba in https://github.com/lostisland/faraday/pull/1513
+* Include `env[:headers]` in `Stubs::NotFound` by @yykamei in https://github.com/lostisland/faraday/pull/1514
+
+## New Contributors
+* @tisba made their first contribution in https://github.com/lostisland/faraday/pull/1513
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.8...v2.7.9
+
+2.7.8:
+
+## What's Changed
+* Failing test: Logging headers & errors fails when ConnectionFailed is raised by @eikes in https://github.com/lostisland/faraday/pull/1512
+
+## New Contributors
+* @eikes made their first contribution in https://github.com/lostisland/faraday/pull/1512
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.7...v2.7.8
+
+2.7.7:
+
+## What's Changed
+* Fix implementation of Faraday::Error helpers. by @iMacTia in https://github.com/lostisland/faraday/pull/1510
+
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.6...v2.7.7
+
+2.7.6:
+
+## What's Changed
+* Fix "method redefined" warnings introduced in Faraday 2.7.5 by @mattbrictson in https://github.com/lostisland/faraday/pull/1506
+
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.5...v2.7.6
+
+2.7.5:
+
+## What's Changed
+* Subclass Options structs using a block by @bdewater in https://github.com/lostisland/faraday/pull/1489
+* Remove direct struct subclassing by @bdewater in https://github.com/lostisland/faraday/pull/1491
+* Fix incorrect use of logger middleware in docs by @mattbrictson in https://github.com/lostisland/faraday/pull/1497
+* Always assume the existence of `URI::Generic#find_proxy` by @yykamei in https://github.com/lostisland/faraday/pull/1502
+* Encode `false` to `"false"` in `Faraday::Request::Json` by @yykamei in https://github.com/lostisland/faraday/pull/1504
+* ProxyOptions should treat empty string as nil by @exoego in https://github.com/lostisland/faraday/pull/1493
+
+## New Contributors
+* @mattbrictson made their first contribution in https://github.com/lostisland/faraday/pull/1497
+* @exoego made their first contribution in https://github.com/lostisland/faraday/pull/1493
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.4...v2.7.5
+
+2.7.4:
+
+## What's Changed
+* Fix support for custom URI parsers by @iMacTia in https://github.com/lostisland/faraday/pull/1485
+
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.3...v2.7.4
+
+2.7.3:
+
+## What's Changed
+
+Fixes:
+* Fix Style/ZeroLengthPredicate by @olleolleolle in https://github.com/lostisland/faraday/pull/1480
+* Connection#build_exclusive_url: replace simple syntax by @hyuraku in https://github.com/lostisland/faraday/pull/1481
+* Add URL to to_hash in Faraday::Response (#1474) by @aaronstillwell in https://github.com/lostisland/faraday/pull/1475
+
+Misc:
+* Clarify diff between connection settings `timeout` and `open_timeout`  by @Yu-Chieh-Henry-Yang in https://github.com/lostisland/faraday/pull/1470
+* Adds Ruby 3.2 to the CI matrix. by @petergoldstein in https://github.com/lostisland/faraday/pull/1471
+* Fix typo in Adapters documentation by @henrialb in https://github.com/lostisland/faraday/pull/1473
+* docs: Update to 2023 by @frederikspang in https://github.com/lostisland/faraday/pull/1477
+* Update connection.rb documentation to use PUT in an example  by @wlads in https://github.com/lostisland/faraday/pull/1482
+
+## New Contributors
+* @Yu-Chieh-Henry-Yang made their first contribution in https://github.com/lostisland/faraday/pull/1470
+* @henrialb made their first contribution in https://github.com/lostisland/faraday/pull/1473
+* @frederikspang made their first contribution in https://github.com/lostisland/faraday/pull/1477
+* @aaronstillwell made their first contribution in https://github.com/lostisland/faraday/pull/1475
+* @wlads made their first contribution in https://github.com/lostisland/faraday/pull/1482
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.2...v2.7.3
+
+2.7.2:
+
+## What's Changed
+* Replace actions/setup-ruby with ruby/setup-ruby by @kyoshidajp in https://github.com/lostisland/faraday/pull/1466
+* Enforce timeouts in Faraday's test adapter by @dpep in https://github.com/lostisland/faraday/pull/1465
+* Rename Faraday::Logger::Formatter#error to #exception by @iMacTia in https://github.com/lostisland/faraday/pull/1468
+
+## ATTENTION
+Rename Faraday::Logger::Formatter#error ([#1468](https://github.com/lostisland/faraday/pull/1468)) is potentially a breaking change IF you've created a custom `Faraday::Logging::Formatter` implementing the new `error` method introduced in v2.7.0.
+
+We've decided to rollout this change in a fix version anyway because the name of the method was potentially causing infinite loop issues, and because the feature was very recently released.
+
+This should not be impacting you otherwise and you can safely upgrade.
+
+## New Contributors
+* @kyoshidajp made their first contribution in https://github.com/lostisland/faraday/pull/1466
+* @dpep made their first contribution in https://github.com/lostisland/faraday/pull/1465
+
+**Full Changelog**: https://github.com/lostisland/faraday/compare/v2.7.1...v2.7.2
+
+
+
+-------------------------------------------------------------------
+Wed Dec  7 11:20:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.7.1
+ see installed CHANGELOG.md
+
+
+-------------------------------------------------------------------
+Mon Oct 10 13:04:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.6.0
+ see installed CHANGELOG.md
+
+
+-------------------------------------------------------------------
+Fri Aug 26 16:17:08 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.5.2
+
+  see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Aug  4 13:09:44 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.4.0
+  see installed CHANGELOG.md
+
+
+-------------------------------------------------------------------
+Mon Jun 13 16:57:35 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.3.0
+
+  # Features
+
+  * Add indices when arrays are encoded by @daedric in #1399
+
+  # Fixes
+
+  * Allow application/x-www-form-url_encoded POST requests to use file objects as the request body by @catlee in #1415
+
+  # Misc
+
+  * CHANGELOG: add 2.2.0 section by @olleolleolle in #1394
+  * docs: UPGRADE Note #dependency removed in 2.0 by @olleolleolle in #1398
+  * docs: Add one more require to the quickstart to make this whole thing work immediately by @joshuabremerdexcom in #1401
+  * Update custom middleware documentation by @AlexWayfer in #1404
+  * Doc: Added raise_error middleware configuration by @nicosvirjt in #1412
+  * docs: Correct default default_adapter value by @kuahyeow in #1414
+  * CI: Update GitHub Action "checkout" to v3 by @olleolleolle in #1416
+
+-------------------------------------------------------------------
+Mon Feb 21 11:31:14 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.0
+ see installed CHANGELOG.md
+
+  ## The changelog has moved!
+  
+  This file is not being updated anymore. Instead, please check the [Releases](https://github.com/lostisland/faraday/releases) page.
+  
+  ## [2.1.0](https://github.com/lostisland/faraday/compare/v2.0.1...v2.1.0) (2022-01-15)
+  
+  * Fix test adapter thread safety by @iMacTia in [#1380](https://github.com/lostisland/faraday/pull/1380)
+  * Add default adapter options by @hirasawayuki in [#1382](https://github.com/lostisland/faraday/pull/1382)
+  * CI: Add Ruby 3.1 to matrix by @petergoldstein in [#1374](https://github.com/lostisland/faraday/pull/1374)
+  * docs: fix regex pattern in logger.md examples by @hirasawayuki in [#1378](https://github.com/lostisland/faraday/pull/1378)
+  
+  ## [2.0.1](https://github.com/lostisland/faraday/compare/v2.0.0...v2.0.1) (2022-01-05)
+  
+  * Re-add `faraday-net_http` as default adapter by @iMacTia in [#1366](https://github.com/lostisland/faraday/pull/1366)
+  * Updated sample format in UPGRADING.md by @vimutter in [#1361](https://github.com/lostisland/faraday/pull/1361)
+  * docs: Make UPGRADING examples more copyable by @olleolleolle in [#1363](https://github.com/lostisland/faraday/pull/1363)
+  
+  ## [2.0.0](https://github.com/lostisland/faraday/compare/v1.8.0...v2.0.0) (2022-01-04)
+  
+  The next major release is here, and it comes almost 2 years after the release of v1.0!
+  
+  This release changes the way you use Faraday and embraces a new paradigm of Faraday as an ecosystem, rather than a library.
+  
+  What does that mean? It means that Faraday is less of a bundled tool and more of a framework for the community to build on top of.
+  
+  As a result, all adapters and some middleware have moved out and are now shipped as standalone gems 🙌!
+  
+  But this doesn't mean that upgrading from Faraday 1.x to Faraday 2.0 should be hard, in fact we've listed everything you need to do in the [UPGRADING.md](https://github.com/lostisland/faraday/blob/main/UPGRADING.md) doc.
+  
+  Moreover, we've setup a new [awesome-faraday](https://github.com/lostisland/awesome-faraday) repository that will showcase a curated list of adapters and middleware 😎.
+  
+  This release was the result of the efforts of the core team and all the contributors, new and old, that have helped achieve this milestone 👏.
+  
+  ## What's Changed
+  
+  * Autoloading, dependency loading and middleware registry cleanup by @iMacTia in [#1301](https://github.com/lostisland/faraday/pull/1301)
+  * Move JSON middleware (request and response) from faraday_middleware by @iMacTia in [#1300](https://github.com/lostisland/faraday/pull/1300)
+  * Remove deprecated `Faraday::Request#method` by @olleolleolle in [#1303](https://github.com/lostisland/faraday/pull/1303)
+  * Remove deprecated `Faraday::UploadIO` by @iMacTia in [#1307](https://github.com/lostisland/faraday/pull/1307)
+  * [1.x] Deprecate Authorization helpers in `Faraday::Connection` by @iMacTia in [#1306](https://github.com/lostisland/faraday/pull/1306)
+  * Drop deprecated auth helpers from Connection and refactor auth middleware by @iMacTia in [#1308](https://github.com/lostisland/faraday/pull/1308)
+  * Add Faraday 1.x examples in authentication.md docs by @iMacTia in [#1320](https://github.com/lostisland/faraday/pull/1320)
+  * Fix passing a URL with embedded basic auth by @iMacTia in [#1324](https://github.com/lostisland/faraday/pull/1324)
+  * Register JSON middleware by @mollerhoj in [#1331](https://github.com/lostisland/faraday/pull/1331)
+  * Retry middleware should handle string exception class name consistently by @jrochkind in [#1334](https://github.com/lostisland/faraday/pull/1334)
+  * Improve request info in exceptions raised by RaiseError Middleware by @willianzocolau in [#1335](https://github.com/lostisland/faraday/pull/1335)
+  * Remove net-http adapter and update docs by @iMacTia in [#1336](https://github.com/lostisland/faraday/pull/1336)
+  * Explain plan for faraday_middleware in UPGRADING.md by @iMacTia in [#1339](https://github.com/lostisland/faraday/pull/1339)
+  * Scripts folder cleanup by @iMacTia in [#1340](https://github.com/lostisland/faraday/pull/1340)
+  * Replace `Hash#merge` with `Utils#deep_merge` for connection options by @xkwd in [#1343](https://github.com/lostisland/faraday/pull/1343)
+  * Callable authorizers by @sled in [#1345](https://github.com/lostisland/faraday/pull/1345)
+  * Default value for exc error by @DariuszMusielak in [#1351](https://github.com/lostisland/faraday/pull/1351)
+  * Don't call `retry_block` unless a retry is going to happen by @jrochkind in [#1350](https://github.com/lostisland/faraday/pull/1350)
+  * Improve documentation for v2 by @iMacTia in [#1353](https://github.com/lostisland/faraday/pull/1353)
+  * Remove default `default_adapter` (yes, you read that right) by @iMacTia in [#1354](https://github.com/lostisland/faraday/pull/1354)
+  * Remove retry middleware by @iMacTia in [#1356](https://github.com/lostisland/faraday/pull/1356)
+  * Remove multipart middleware and all its documentation and tests by @iMacTia in [#1357](https://github.com/lostisland/faraday/pull/1357)
+  
+  ## [1.9.3](https://github.com/lostisland/faraday/compare/v1.9.2...v1.9.3) (2022-01-06)
+  
+  * Re-add support for Ruby 2.4+ by @iMacTia in [#1371](https://github.com/lostisland/faraday/pull/1371)
+  
+  ## [1.9.2](https://github.com/lostisland/faraday/compare/v1.9.1...v1.9.2) (2022-01-06)
+  
+  * Add alias with legacy name to gemified middleware by @iMacTia in [#1372](https://github.com/lostisland/faraday/pull/1372)
+  
+  ## [1.9.1](https://github.com/lostisland/faraday/compare/v1.9.0...v1.9.1) (2022-01-06)
+  
+  * Update adapter dependencies in Gemspec by @iMacTia in [#1370](https://github.com/lostisland/faraday/pull/1370)
+  
+  ## [1.9.0](https://github.com/lostisland/faraday/compare/v1.8.0...v1.9.0) (2022-01-06)
+  
+  * Use external multipart and retry middleware by @iMacTia in [#1367](https://github.com/lostisland/faraday/pull/1367)
+  
+
+-------------------------------------------------------------------
+Tue Jan 25 06:53:06 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.1.0
+ see installed CHANGELOG.md
+
+  ## [1.8.0](https://github.com/lostisland/faraday/releases/tag/v1.8.0) (2021-09-18)
+  
+  ### Features
+  
+  * Backport authorization procs (#1322, @jarl-dk)
+  
+  ## [v1.7.0](https://github.com/lostisland/faraday/releases/tag/v1.7.0) (2021-08-09)
+  
+  ### Features
+  
+  * Add strict_mode to Test::Stubs (#1298, @yykamei)
+  
+  ## [v1.6.0](https://github.com/lostisland/faraday/releases/tag/v1.6.0) (2021-08-01)
+  
+  ### Misc
+  
+  * Use external Rack adapter (#1296, @iMacTia)
+  
+  ## [v1.5.1](https://github.com/lostisland/faraday/releases/tag/v1.5.1) (2021-07-11)
+  
+  ### Fixes
+  
+  * Fix JRuby incompatibility after moving out EM adapters (#1294, @ahorek)
+  
+  ### Documentation
+  
+  * Update YARD to follow RackBuilder (#1292, @kachick)
+  
+  ## [v1.5.0](https://github.com/lostisland/faraday/releases/tag/v1.5.0) (2021-07-04)
+  
+  ### Misc
+  
+  * Use external httpclient adapter (#1289, @iMacTia)
+  * Use external patron adapter (#1290, @iMacTia)
+  
+  ## [v1.4.3](https://github.com/lostisland/faraday/releases/tag/v1.4.3) (2021-06-24)
+  
+  ### Fixes
+  
+  * Silence warning (#1286, @gurgeous)
+  * Always dup url_prefix in Connection#build_exclusive_url (#1288, @alexeyds)
+  
+  ## [v1.4.2](https://github.com/lostisland/faraday/releases/tag/v1.4.2) (2021-05-22)
+  
+  ### Fixes
+  * Add proxy setting when url_prefix is changed (#1276, @ci)
+  * Default proxy scheme to http:// if necessary, fixes #1282 (#1283, @gurgeous)
+  
+  ### Documentation
+  * Improve introduction page (#1273, @gurgeous)
+  * Docs: add more middleware examples (#1277, @gurgeous)
+  
+  ### Misc
+  * Use external `em_http` and `em_synchrony` adapters (#1274, @iMacTia)
+  
+  ## [v1.4.1](https://github.com/lostisland/faraday/releases/tag/v1.4.1) (2021-04-18)
+  
+  ### Fixes
+  
+  * Fix dependencies from external adapter gems (#1269, @iMacTia)
+  
+  ## [v1.4.0](https://github.com/lostisland/faraday/releases/tag/v1.4.0) (2021-04-16)
+  
+  ### Highlights
+  
+  With this release, we continue the work of gradually moving out adapters into their own gems 🎉 
+  Thanks to @MikeRogers0 for helping the Faraday team in progressing with this quest 👏
+  
+  And thanks to @olleolleolle efforts, Faraday is becoming more inclusive than ever 🤗
+  Faraday's `master` branch has been renamed into `main`, we have an official policy on inclusive language and even a rubocop plugin to check for non-inclusive words ❤️!
+  Checkout the "Misc" section below for more details 🙌 !
+  
+  ### Fixes
+  
+  * Fix NoMethodError undefined method 'coverage' (#1255, @Maroo-b)
+  
+  ### Documentation
+  
+  * Some docs on EventMachine adapters. (#1232, @damau)
+  * CONTRIBUTING: Fix grammar and layout (#1261, @olleolleolle)
+  
+  ### Misc
+  
+  * Replacing Net::HTTP::Persistent with faraday-net_http_persistent (#1250, @MikeRogers0)
+  * CI: Configure the regenerated Coveralls token (#1256, @olleolleolle)
+  * Replace Excon adapter with Faraday::Excon gem, and fix autoloading issue with Faraday::NetHttpPersistent (#1257, @iMacTia)
+  * Drop CodeClimate (#1259, @olleolleolle)
+  * CI: Rename default branch to main (#1263, @olleolleolle)
+  * Drop RDoc support file .document (#1264, @olleolleolle, @iMacTia)
+  * CONTRIBUTING: add a policy on inclusive language (#1262, @olleolleolle)
+  * Add rubocop-inclusivity (#1267, @olleolleolle, @iMacTia)
+  
+  ## [v1.3.1](https://github.com/lostisland/faraday/releases/tag/v1.3.1) (2021-04-16)
+  
+  ### Fixes
+  
+  * Escape colon in path segment (#1237, @yarafan)
+  * Handle IPv6 address String on Faraday::Connection#proxy_from_env (#1252, @cosmo0920)
+  
+  ### Documentation
+  
+  * Fix broken Rubydoc.info links (#1236, @nickcampbell18)
+  * Add httpx to list of external adapters (#1246, @HoneyryderChuck)
+  
+  ### Misc
+  
+  * Refactor CI to remove duplicated line (#1230, @tricknotes)
+  * Gemspec: Pick a good ruby2_keywords release (#1241, @olleolleolle)
+  
+
+-------------------------------------------------------------------
+Sat Oct  9 09:09:26 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.0
+
+  * Backport authorization procs (#1322, @jarl-dk)
+
+-------------------------------------------------------------------
+Wed Aug 25 05:07:54 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.7.0
+
+  ## [v1.7.0](https://github.com/lostisland/faraday/releases/tag/v1.7.0) (2021-08-09)
+
+  ### Features
+
+  * Add strict_mode to Test::Stubs (#1298, @yykamei)
+
+  ## [v1.6.0](https://github.com/lostisland/faraday/releases/tag/v1.6.0) (2021-08-01)
+
+  ### Misc
+
+  * Use external Rack adapter (#1296, @iMacTia)
+
+-------------------------------------------------------------------
+Sun Jul 11 11:37:50 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.5.1
+
+  # Fixes
+
+  * Fix JRuby incompatibility after moving out EM adapters (#1294, @ahorek)
+
+  # Documentation
+
+  * Update YARD to follow RackBuilder (#1292, @kachick)
+
+-------------------------------------------------------------------
+Sat Jul 10 13:57:41 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.5.0
+
+  # Misc
+
+  * Use external httpclient adapter (#1289, @iMacTia)
+  * Use external patron adapter (#1290, @iMacTia)
+
+-------------------------------------------------------------------
+Thu Jun 24 17:20:52 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.3
+ see installed CHANGELOG.md
+
+  ## [v1.3.0](https://github.com/lostisland/faraday/releases/tag/v1.3.0) (2020-12-31)
+  
+  ### Highlights
+  Faraday v1.3.0 is the first release to officially support Ruby 3.0 in the CI pipeline 🎉 🍾! 
+  
+  This is also the first release with a previously "included" adapter (Net::HTTP) being isolated into a [separate gem](https://github.com/lostisland/faraday-net_http) 🎊!
+  The new adapter is added to Faraday as a dependency for now, so that means full backwards-compatibility, but just to be safe be careful when upgrading!
+  
+  This is a huge step towards are Faraday v2.0 objective of pushing adapters and middleware into separate gems.
+  Many thanks to the Faraday Team, @JanDintel and everyone who attended the [ROSS Conf remote event](https://www.rossconf.io/event/remote/)
+  
+  ### Features
+  
+  * Improves consistency with Faraday::Error and Faraday::RaiseError (#1229, @qsona, @iMacTia)
+  
+  ### Fixes
+  
+  * Don't assign to global ::Timer (#1227, @bpo)
+  
+  ### Documentation
+  
+  * CHANGELOG: add releases after 1.0 (#1225, @olleolleolle)
+  * Improves retry middleware documentation. (#1228, @iMacTia)
+  
+  ### Misc
+  
+  * Move out Net::HTTP adapter (#1222, @JanDintel, @iMacTia)
+  * Adds Ruby 3.0 to CI Matrix (#1226, @iMacTia)
+  
+  
+
+-------------------------------------------------------------------
+Wed Jan 20 12:36:19 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.3.0
+ see installed CHANGELOG.md
+
+  ## [v1.2.0](https://github.com/lostisland/faraday/releases/tag/v1.2.0) (2020-12-23)
+  
+  ### Features
+  
+  * Introduces `on_request` and `on_complete` methods in `Faraday::Middleware`. (#1194, @iMacTia)
+  
+  ### Fixes
+  
+  * Require 'date' to avoid retry exception (#1206, @rustygeldmacher)
+  * Fix rdebug recursion issue (#1205, @native-api)
+  * Update call to `em_http_ssl_patch` (#1202, @kylekeesling)
+  * `EmHttp` adapter: drop superfluous loaded? check (#1213, @olleolleolle)
+  * Avoid 1 use of keyword hackery (#1211, @grosser)
+  * Fix #1219 `Net::HTTP` still uses env proxy (#1221, @iMacTia)
+  
+  ### Documentation
+  
+  * Add comment in gemspec to explain exposure of `examples` and `spec` folders. (#1192, @iMacTia)
+  * Adapters, how to create them (#1193, @olleolleolle)
+  * Update documentation on using the logger (#1196, @tijmenb)
+  * Adjust the retry documentation and spec to align with implementation (#1198, @nbeyer)
+  
+  ### Misc
+  
+  * Test against ruby head (#1208, @grosser)
+  
+  ## [v1.1.0](https://github.com/lostisland/faraday/releases/tag/v1.1.0) (2020-10-17)
+  
+  ### Features
+  
+  * Makes parameters sorting configurable (#1162 @wishdev)
+  * Introduces `flat_encode` option for multipart adapter. (#1163 @iMacTia)
+  * Include request info in exceptions raised by RaiseError Middleware (#1181 @SandroDamilano)
+  
+  ### Fixes
+  
+  * Avoid `last arg as keyword param` warning when building user middleware on Ruby 2.7 (#1153 @dgholz)
+  * Limits net-http-persistent version to < 4.0 (#1156 @iMacTia)
+  * Update `typhoeus` to new stable version (`1.4`) (#1159 @AlexWayfer)
+  * Properly fix test failure with Rack 2.1+. (#1171 @voxik)
+  
+  ### Documentation
+  
+  * Improves documentation on how to contribute to the site by using Docker. (#1175 @iMacTia)
+  * Remove retry_change_requests from documentation (#1185 @stim371)
+  
+  ### Misc
+  
+  * Link from GitHub Actions badge to CI workflow (#1141 @olleolleolle)
+  * Return tests of `Test` adapter (#1147 @AlexWayfer)
+  * Add 1.0 release to wording in CONTRIBUTING (#1155 @olleolleolle)
+  * Fix linting bumping Rubocop to 0.90.0 (#1182 @iMacTia)
+  * Drop `git ls-files` in gemspec (#1183 @utkarsh2102)
+  * Upgrade CI to ruby/setup-ruby (#1187 @gogainda)
+  
+  ## [v1.0.1](https://github.com/lostisland/faraday/releases/tag/v1.0.1) (2020-03-29)
+  
+  ### Fixes
+  
+  * Use Net::HTTP#start(&block) to ensure closed TCP connections (#1117)
+  * Fully qualify constants to be checked (#1122)
+  * Allows `parse` method to be private/protected in response middleware (#1123)
+  * Encode Spaces in Query Strings as '%20' Instead of '+' (#1125)
+  * Limits rack to v2.0.x (#1127)
+  * Adapter Registry reads also use mutex (#1136) 
+  
+  ### Documentation
+  
+  * Retry middleware documentation fix (#1109)
+  * Docs(retry): precise usage of retry-after (#1111)
+  * README: Link the logo to the website (#1112)
+  * Website: add search bar (#1116)
+  * Fix request/response mix-up in docs text (#1132)
+  
+
+-------------------------------------------------------------------
+Thu May  7 20:41:45 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.0.1
+ see installed CHANGELOG.md
+
+-------------------------------------------------------------------
+Mon Feb 10 14:32:36 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.0.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Dec  8 16:20:56 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 0.15.4
+  no changelog found
+
+-------------------------------------------------------------------
+Wed May 23 16:04:31 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.15.2
+  no changelog found
+
+-------------------------------------------------------------------
+Wed May 16 07:59:41 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.15.1
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Apr 20 08:05:59 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 0.15.0
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Feb  8 06:01:18 UTC 2018 - coolo@suse.com
+
+- updated to version 0.14.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sun Sep  3 09:01:16 UTC 2017 - coolo@suse.com
+
+- updated to version 0.13.1
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Aug  3 19:12:53 UTC 2017 - coolo@suse.com
+
+- updated to version 0.12.2
+  no changelog found
+
+-------------------------------------------------------------------
+Tue May 23 09:52:09 UTC 2017 - coolo@suse.com
+
+- updated to version 0.12.1
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Apr 13 04:30:06 UTC 2017 - coolo@suse.com
+
+- updated to version 0.12.0.1
+  no changelog found
+
+-------------------------------------------------------------------
+Sun Apr  2 04:31:49 UTC 2017 - coolo@suse.com
+
+- updated to version 0.12.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Jan 14 05:31:15 UTC 2017 - coolo@suse.com
+
+- updated to version 0.11.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Dec 31 05:33:17 UTC 2016 - coolo@suse.com
+
+- updated to version 0.10.1
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Nov 12 05:33:33 UTC 2016 - coolo@suse.com
+
+- updated to version 0.10.0
+  no changelog found
+
+-------------------------------------------------------------------
+Wed Oct  7 04:29:45 UTC 2015 - coolo@suse.com
+
+- updated to version 0.9.2
+ CHANGELOG.md removed upstream
+
+-------------------------------------------------------------------
+Mon Feb  9 12:30:34 UTC 2015 - coolo@suse.com
+
+- updated to version 0.9.1
+ * Refactor Net:HTTP adapter so that with_net_http_connection can be overridden to allow pooled connections. (@Ben-M)
+ * Add configurable methods that bypass `retry_if` in the Retry request middleware.  (@mike-bourgeous)
+
+-------------------------------------------------------------------
+Thu Oct 23 09:40:00 UTC 2014 - tboerger@suse.com
+
+- Updated last pieces for new macros
+
+-------------------------------------------------------------------
+Sun Oct 12 10:56:10 UTC 2014 - adrian@suse.de
+
+- adapt to new rubygem packaging style
+
+-------------------------------------------------------------------
+Mon Jan 20 09:29:44 UTC 2014 - coolo@suse.com
+
+- updated to version 0.9.0
+ * Add HTTPClient adapter (@hakanensari)
+ * Improve Retry handler (@mislav)
+ * Remove autoloading by default (@technoweenie)
+ * Improve internal docs (@technoweenie, @mislav)
+ * Respect user/password in http proxy string (@mislav)
+ * Adapter options are structs.  Reinforces consistent options across adapters
+   (@technoweenie)
+ * Stop stripping trailing / off base URLs in a Faraday::Connection. (@technoweenie)
+ * Add a configurable URI parser. (@technoweenie)
+ * Remove need to manually autoload when using the authorization header helpers on `Faraday::Connection`. (@technoweenie)
+ * `Faraday::Adapter::Test` respects the `Faraday::RequestOptions#params_encoder` option. (@technoweenie)
+
+-------------------------------------------------------------------
+Sun Jul 28 15:14:55 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.8, no changelog
+
+-------------------------------------------------------------------
+Mon Mar 25 09:18:54 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.7
+
+-------------------------------------------------------------------
+Sun Mar  3 19:31:49 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.6
+
+-------------------------------------------------------------------
+Tue Feb  5 15:53:24 UTC 2013 - coolo@suse.com
+
+- updated to version 0.8.5
+
+-------------------------------------------------------------------
+Mon Aug 27 19:56:28 UTC 2012 - coolo@suse.com
+
+- updated to version 0.8.4
+
+-------------------------------------------------------------------
+Wed Dec 21 16:53:43 UTC 2011 - jmassaguerpla@suse.com
+
+- Updated BuildRequires to rack-1_1 as there are multiple versions of this gem 
+
+-------------------------------------------------------------------
+Fri Oct  7 12:50:00 UTC 2011 - fcastelli@suse.com
+
+- Update to v0.7.5
+
+-------------------------------------------------------------------
+Wed Jul 27 14:37:56 UTC 2011 - fcastelli@novell.com
+
+- Fix building
+
+-------------------------------------------------------------------
+Tue Apr 26 10:41:49 UTC 2011 - aduffeck@novell.com
+
+- Update to v0.6.1
+
+-------------------------------------------------------------------
+Mon Jan 10 10:33:30 UTC 2011 - aduffeck@novell.com
+
+- initial version
+

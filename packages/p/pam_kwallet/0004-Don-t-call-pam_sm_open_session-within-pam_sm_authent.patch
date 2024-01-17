@@ -1,0 +1,62 @@
+From 574d9a78e0b4dc3fe898a109a27bf650e9a80cc3 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 13 Mar 2023 10:38:36 +0100
+Subject: [PATCH 4/4] Don't call pam_sm_open_session within pam_sm_authenticate
+
+It doesn't make sense to open a session before performing authentication.
+Don't work around application (or configuration) bugs here.
+---
+ pam_kwallet.c | 22 +++-------------------
+ 1 file changed, 3 insertions(+), 19 deletions(-)
+
+diff --git a/pam_kwallet.c b/pam_kwallet.c
+index 49be6c0..841e766 100644
+--- a/pam_kwallet.c
++++ b/pam_kwallet.c
+@@ -314,14 +314,6 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, cons
+         return PAM_IGNORE;
+     }
+ 
+-    //if sm_open_session has already been called (but we did not have password), call it now
+-    const char *session_bit;
+-    result = pam_get_data(pamh, "sm_open_session", (const void **)&session_bit);
+-    if (result == PAM_SUCCESS) {
+-        pam_syslog(pamh, LOG_ERR, "%s: open_session was called before us, calling it now", logPrefix);
+-        return pam_sm_open_session(pamh, flags, argc, argv);
+-    }
+-
+     //TODO unlock kwallet that is already executed
+     return PAM_IGNORE;
+ }
+@@ -550,17 +542,9 @@ PAM_EXTERN int pam_sm_open_session(pam_handle_t *pamh, int flags, int argc, cons
+         return PAM_IGNORE;
+     }
+ 
+-    int result;
+-    result = pam_set_data(pamh, "sm_open_session", "1", NULL);
+-    if (result != PAM_SUCCESS) {
+-        pam_syslog(pamh, LOG_ERR, "%s: Impossible to store sm_open_session: %s",
+-                   logPrefix, pam_strerror(pamh, result));
+-        return PAM_IGNORE;
+-    }
+-
+-     //Fetch the user, needed to get user information
++    //Fetch the user, needed to get user information
+     const char *username;
+-    result = pam_get_user(pamh, &username, NULL);
++    int result = pam_get_user(pamh, &username, NULL);
+     if (result != PAM_SUCCESS) {
+         pam_syslog(pamh, LOG_ERR, "%s: Couldn't get username %s",
+                    logPrefix, pam_strerror(pamh, result));
+@@ -584,7 +568,7 @@ PAM_EXTERN int pam_sm_open_session(pam_handle_t *pamh, int flags, int argc, cons
+ 
+     if (result != PAM_SUCCESS) {
+         pam_syslog(pamh, LOG_INFO, "%s: open_session called without %s", logPrefix, kwalletPamDataKey);
+-        return PAM_SUCCESS;//We will wait for pam_sm_authenticate
++        return PAM_IGNORE;
+     }
+ 
+     char *key = malloc(KWALLET_PAM_KEYSIZE);
+-- 
+2.39.2
+

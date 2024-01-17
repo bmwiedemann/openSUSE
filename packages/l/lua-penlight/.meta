@@ -1,0 +1,5 @@
+<package name="lua-penlight" project="openSUSE:Factory">
+  <title>set of generally useful pure Lua modules</title>
+  <description>A set of pure Lua libraries focusing on input data handling (such as reading configuration files), functional programming (such as map, reduce, placeholder expressions,etc), and OS path management. Much of the functionality is inspired by the Python standard libraries.</description>
+  <devel project="devel:languages:lua" package="lua-penlight"/>
+</package>

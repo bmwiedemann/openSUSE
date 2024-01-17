@@ -1,0 +1,11 @@
+<package name="axel" project="openSUSE:Factory">
+  <title>Lightweight Download Accelerator</title>
+  <description>Axel tries to accelerate HTTP/FTP downloading process by using multiple
+connections for one file. It can use multiple mirrors for a download. Axel has
+no dependencies and is lightweight, so it might be useful as a wget clone on
+byte-critical systems.
+
+</description>
+  <devel project="network:utilities" package="axel"/>
+  <url>http://axel.alioth.debian.org/</url>
+</package>

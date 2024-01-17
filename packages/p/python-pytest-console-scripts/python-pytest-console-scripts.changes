@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Wed Jul 19 13:34:19 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap.
+
+-------------------------------------------------------------------
+Thu Jun  1 10:15:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Dropped support for Python 3.7
+  * Fix loading scripts with non-UTF-8 encodings.
+  * Print output when a subprocess runner with `check=True` fails
+    was missing.
+  * Added type-hinting for all types,
+    `pytest_console_scripts.ScriptRunner`
+    can now be used to hint the `script_runner` fixture.
+  * Added support for the `shell` and `check` keywords for in-
+    process mode.
+  * Passing command arguments in `*args` is now deprecated and
+    will raise warnings.
+  * Dropped support for Python 3.6
+  * Install-time dependencies have been fixed.
+
+-------------------------------------------------------------------
+Mon Mar 21 01:22:50 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.3.1:
+  * Remove use of mock.
+- Drop patch remove-mock.patch, included upstream. 
+
+-------------------------------------------------------------------
+Fri Mar 18 04:14:59 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.3:
+  * Add a note on manual result printing to README - #50
+  * Bump Python version to 3.6 - fix #51 
+- Add patch remove-mock.patch:
+  * Remove use of mock.
+
+-------------------------------------------------------------------
+Fri Dec 17 13:50:46 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
+Wed Dec  8 08:33:48 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.2.1
+  * no upstream changelog
+- deleted patches
+  - virtualenv-20.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Dec  8 07:33:48 UTC 2021 - pgajdos@suse.com
+
+- do not require pytest-runner for build, it is not needed
+
+-------------------------------------------------------------------
+Fri May 15 08:53:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not pull in pytest twice
+
+-------------------------------------------------------------------
+Mon Apr  6 08:19:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with python-virtualenv >= 20:
+  * virtualenv-20.patch
+
+-------------------------------------------------------------------
+Fri Nov 15 10:41:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.0:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Wed Sep 25 09:04:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update the pytest requirement to > 4 as per setup.py
+
+-------------------------------------------------------------------
+Fri Sep 13 13:22:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.1.10:
+  * Print out return code, stdout and stderr output
+
+-------------------------------------------------------------------
+Thu Aug 22 08:31:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Use spec-cleaner
+- Update to 0.1.9:
+  * Fixes for newer pytest releases
+
+-------------------------------------------------------------------
+Mon Oct  1 12:07:44 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.1.6
+- Added pytest-console-scripts-0.1.6_test_virtualenv.patch
+
+-------------------------------------------------------------------
+Fri Jun 15 09:11:13 UTC 2018 - Andreas Schneider <asn@cryptomilk.org>
+
+- Initial package

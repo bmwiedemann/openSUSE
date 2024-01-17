@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Sun Jan  8 09:51:13 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.35.1
+  * Include test and example notebook in sdist #228 (@blink1073)
+- Move to PEP517 hatchling build
+
+-------------------------------------------------------------------
+Wed Aug  3 21:13:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.34.2
+  * Fix error: '_make_figures' undefined near line 1, column 1 #212
+
+-------------------------------------------------------------------
+Sat Mar 26 20:55:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update packaging: install the kernel
+- Re-enable tests
+
+-------------------------------------------------------------------
+Sun Feb 27 01:02:36 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 0.34.1:
+  * Bugs fixed
+    + Improve handling of default inline toolkit #209 (@blink1073)
+
+- changes from version 0.34.0:
+  * Enhancements made
+    + Use octave executable and qt backend by default #204
+      (@blink1073)
+  * Maintenance and upkeep improvements
+    + Fail if kernel test fails #203 (@blink1073)
+    + Use published jupyter_kernel_test #202 (@blink1073)
+
+- changes from version 0.33.1:
+  * Maintenance and upkeep improvements
+    + Prep for jupyter releaser usage #200 (@blink1073)
+    + Upgrade to jupyter packaging and github actions #199
+      (@blink1073)
+
+-------------------------------------------------------------------
+Tue Oct  5 20:20:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable tests: jupyter_kernel_test is broken and did not see any
+  maintenance recently.
+  * gh#Calysto/octave_kernel#198
+  * gh#jupyter/jupyter_kernel_test#55
+
+-------------------------------------------------------------------
+Tue Jun  9 08:38:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.32.0:
+  * Fixes for octave5
+  * Fixes for new jupyterlab
+- Remove fix_octave5.patch
+
+-------------------------------------------------------------------
+Wed Nov 13 14:44:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- jupyter_client renamed to jupyter-client
+
+-------------------------------------------------------------------
+Sun Aug 11 03:27:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Switch from wheel to sdist.
+- Add fix_octave5.patch
+  Fix tests to work with octave 5 
+  From: gh#Calysto/octave_kernel#160
+
+-------------------------------------------------------------------
+Wed Jun 12 19:58:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.31.0
+  * Use new line_handler
+
+-------------------------------------------------------------------
+Thu May 30 14:59:18 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix conflicts.
+
+-------------------------------------------------------------------
+Wed May 29 20:21:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to match upstream name change.
+- Update to 0.30.3
+  * Update configurability handling
+  * Allow inline backend to be specified using plot magic 
+  * Don't give a stack trace on exit
+  * clean up plot handling and add config
+  * Add support for default plot backend 
+  * use improved interrupt handling in metakernel
+  * clean up executable handling logic
+  * Better default setup for engine
+  * Adds conda install texinfo for the inline documentation text
+  * use jupyter rather than ipython
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match jupyter package naming guidelines.
+
+-------------------------------------------------------------------
+Thu Aug  2 17:16:18 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.28.4
+  * Include license file in wheels
+
+-------------------------------------------------------------------
+Thu Apr 19 14:35:45 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.28.3
+  * Bugfix release
+- Switch to using wheels for more reliable installation
+
+-------------------------------------------------------------------
+Wed Apr  4 21:24:34 UTC 2018 - sebix+novell.com@sebix.at
+
+- Package needed kernel.json file.
+
+-------------------------------------------------------------------
+Mon Mar 19 19:46:15 UTC 2018 - sebix+novell.com@sebix.at
+
+- Use %license macro for license.
+- update to version 0.28.0:
+ * Automatically install the kernel when installing the python package. #104
+- do not use removed option --display-name anymore for jupyter kernel installation
+
+-------------------------------------------------------------------
+Wed Sep 20 16:10:55 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 0.27.0
+- Only install kernel for python3
+
+-------------------------------------------------------------------
+Wed Jul 12 16:23:32 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

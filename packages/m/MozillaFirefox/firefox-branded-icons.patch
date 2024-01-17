@@ -1,0 +1,36 @@
+# HG changeset patch
+# Parent e0751ad74e835e80041a61ea00c2a63bf6fbe2de
+# Parent  fe7e6fdd75484993420740244f21b5b41d6e0fa1
+
+Index: firefox-115.0/browser/branding/branding-common.mozbuild
+===================================================================
+--- firefox-115.0.orig/browser/branding/branding-common.mozbuild
++++ firefox-115.0/browser/branding/branding-common.mozbuild
+@@ -30,6 +30,9 @@ def FirefoxBranding():
+         FINAL_TARGET_FILES.chrome.icons.default += [
+             'default128.png',
+             'default16.png',
++            'default22.png',
++            'default24.png',
++            'default256.png',
+             'default32.png',
+             'default48.png',
+             'default64.png',
+Index: firefox-115.0/browser/installer/package-manifest.in
+===================================================================
+--- firefox-115.0.orig/browser/installer/package-manifest.in
++++ firefox-115.0/browser/installer/package-manifest.in
+@@ -227,10 +227,13 @@
+ @RESPATH@/chrome/toolkit.manifest
+ #ifdef MOZ_GTK
+ @RESPATH@/browser/chrome/icons/default/default16.png
++@RESPATH@/browser/chrome/icons/default/default22.png
++@RESPATH@/browser/chrome/icons/default/default24.png
+ @RESPATH@/browser/chrome/icons/default/default32.png
+ @RESPATH@/browser/chrome/icons/default/default48.png
+ @RESPATH@/browser/chrome/icons/default/default64.png
+ @RESPATH@/browser/chrome/icons/default/default128.png
++@RESPATH@/browser/chrome/icons/default/default256.png
+ #endif
+ @RESPATH@/browser/features/*
+ 

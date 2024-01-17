@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Nov  1 14:05:14 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update foldl to version 1.4.15 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jul  1 16:48:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update foldl to version 1.4.15.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:48 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Wed Mar 22 02:40:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Add foldl at version 1.4.14 revision 2.
+

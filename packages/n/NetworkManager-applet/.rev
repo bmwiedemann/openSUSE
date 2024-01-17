@@ -1,0 +1,467 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2ea9d1f977036fa428269c1093f071a</srcmd5>
+    <version>1.4.2</version>
+    <time>1478168036</time>
+    <user>dimstar_suse</user>
+    <comment>Rename of NetworkManager-gnome (and versionbump).
+</comment>
+    <requestid>437821</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>04b9ec54879a6fc250e10fcb9b9cf5e1</srcmd5>
+    <version>1.4.2</version>
+    <time>1478779792</time>
+    <user>dimstar_suse</user>
+    <comment>Requested tweak (forwarded request 438856 from Zaitor)</comment>
+    <requestid>439125</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eec54ea3251d584f322247315a3cf0e1</srcmd5>
+    <version>1.4.2</version>
+    <time>1485510234</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451999</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c27b65e66333f8525705059bacc11445</srcmd5>
+    <version>1.4.4</version>
+    <time>1486045710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453998</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61796c782f93aa25e84bb0cef3afb5dd</srcmd5>
+    <version>1.4.6</version>
+    <time>1490220094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478737</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>021df3ed47e4dafa72d22439cb9c594b</srcmd5>
+    <version>1.4.6</version>
+    <time>1496225654</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498560</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>559a5f4fd6067a7200f7a8e714815215</srcmd5>
+    <version>1.8.2</version>
+    <time>1498840810</time>
+    <user>dimstar_suse</user>
+    <comment>New stable, so lets move it to GF at least (forwarded request 506017 from Zaitor)</comment>
+    <requestid>506738</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ee7634ea905db09da5672737c36f1a9e</srcmd5>
+    <version>1.8.4</version>
+    <time>1506340612</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528432</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>aaf472899fa9348904694b3789acc5c1</srcmd5>
+    <version>1.8.4</version>
+    <time>1506955767</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530117</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>374789222f4d5e1e12fa37bdb15a3664</srcmd5>
+    <version>1.8.6</version>
+    <time>1512055834</time>
+    <user>dimstar_suse</user>
+    <comment>- Migrate build system to meson:
+  + Add meson and gtk-doc BuildRequires.
+  + Replace configure/make/make_install logic with
+    meson/meson_build/meson_install.
+- Disable glib_schema, icon_theme and desktop_database post/postun
+  scriptlets for suse_version &amp;gt;= 1330: handled by file triggers.
+- Add
+  0001-build-meson-fix-typo-in-generation-of-libnm-gtk.pc.patch:
+  Fix typo in generation of libnm-gtk.pc (bgo#790056).
+
+- Update to version 1.8.6:
+  + Added an option to build with Meson build system.
+  + Fixed a possible crash after editing Wi-Fi connections.
+  + Updated translations. (forwarded request 539851 from dimstar)</comment>
+    <requestid>544200</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5c3d00a29e985df5b9bff9fbbebacea2</srcmd5>
+    <version>1.8.6</version>
+    <time>1513851975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558328</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>17ddd96a5e2f30cf257db4ca2ac9ca27</srcmd5>
+    <version>1.8.6</version>
+    <time>1514840913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560180</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>41e1722bbb7e5475e1272d28fc7abc63</srcmd5>
+    <version>1.8.10</version>
+    <time>1515260772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561237</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>58237f765add5184ffd890111ebfee93</srcmd5>
+    <version>1.8.10</version>
+    <time>1516091395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564000</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>0d7b210ab1f836a255174876625d506e</srcmd5>
+    <version>1.8.10</version>
+    <time>1520502603</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581396 from dimstar)</comment>
+    <requestid>582886</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>2a582eff5cdc5980d82f81b9e6d0d5c4</srcmd5>
+    <version>1.8.10</version>
+    <time>1522060752</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589279 from dimstar)</comment>
+    <requestid>589969</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>b426ecee687e3d8a6ecd1dd6cc9f815f</srcmd5>
+    <version>1.8.10</version>
+    <time>1522935066</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592875</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5a9b51d17387f111cfee0031f2003efb</srcmd5>
+    <version>1.8.12</version>
+    <time>1528895771</time>
+    <user>maxlin_factory</user>
+    <comment> (forwarded request 613069 from dimstar)</comment>
+    <requestid>614528</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f8e812f506a8f14f1f77999dcedeb83c</srcmd5>
+    <version>1.8.12</version>
+    <time>1529322507</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617330</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2b2cb4e92f78c5fda61536e89f78ddc6</srcmd5>
+    <version>1.8.14</version>
+    <time>1530087492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618981</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>04b3a72b193a6355acf8dfd21563bd64</srcmd5>
+    <version>1.8.16</version>
+    <time>1533887067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.16:
+  + Fix various issues that causes GtkApplication to quit at the
+    wrong time.
+  + Read the Mobile Providers database from a build-time determined
+    location.
+  + Modernize Gtk+ 3.0 use in preparations for Gtk+ 4.0.
+  + Updated translations.
+- Add pkgconfig(mobile-broadband-provider-info) BuildRequires: New
+  dependency. (forwarded request 627944 from iznogood)</comment>
+    <requestid>628102</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5a35483c8aeb6711894f26dfa443d1b8</srcmd5>
+    <version>1.8.18</version>
+    <time>1537436362</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634613</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>3b149cc1fdedd407796e791963dab1f8</srcmd5>
+    <version>1.8.18</version>
+    <time>1542122710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647254</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>093b22a73ff2ad3dcd459749046cc6d3</srcmd5>
+    <version>1.8.20</version>
+    <time>1549916111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672888</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5bc59c34dda1094a44bd6325e82dcac3</srcmd5>
+    <version>1.8.22</version>
+    <time>1560458029</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel</comment>
+    <requestid>707902</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>be227db6393ac0a5c87240d667407eba</srcmd5>
+    <version>1.8.22</version>
+    <time>1561405539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710602</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a4f39a0a797687c218fd55f6e0efe916</srcmd5>
+    <version>1.8.24</version>
+    <time>1571310268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736724</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>02300b6360c361910c0836246cfe8da8</srcmd5>
+    <version>1.8.25+20</version>
+    <time>1576062328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754986</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5e09c8c05aa66ebf459c94e43c4cc8f6</srcmd5>
+    <version>1.8.25+20</version>
+    <time>1580204802</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767084 from dimstar)</comment>
+    <requestid>767323</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>abbeedd7e44282deff6fc77897bf3840</srcmd5>
+    <version>1.16.0</version>
+    <time>1583948630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16.0:
+  + Turned libnma into an external dependency and move to
+    &quot;https://gitlab.gnome.org/GNOME/libnma&quot;. To build,
+    libnma-1.8.28 or newer is required.
+  + The libnm-gtk, the deprecated libnm-glib compatibility library
+    was removed. Everybody should be using libnma by now.
+  + Improve applet icons for hidpi.
+  + Fix transparent dialog borders.
+  + Updated translations.
+- Drop nma-data sub-package. (forwarded request 782917 from iznogood)</comment>
+    <requestid>782944</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>ff6546d976301a40bdb5b3bdccc23917</srcmd5>
+    <version>1.16.0</version>
+    <time>1588185735</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove is_opensuse macro in spec file to reduce differences
+  between Leap and SLE(jsc#SLE-11797). (forwarded request 796198 from JonathanKang)</comment>
+    <requestid>798331</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>29fd68d8d18e80d40db559be2c657b6c</srcmd5>
+    <version>1.16.0</version>
+    <time>1589403311</time>
+    <user>dimstar_suse</user>
+    <comment>- Make NetworkManager-connection-editor require
+  mobile-broadband-provider-info so that it can function properly
+  (bsc#1169878). (forwarded request 801082 from JonathanKang)</comment>
+    <requestid>802674</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>09700ec695f9f86d87b84942df8dbb38</srcmd5>
+    <version>1.18.0</version>
+    <time>1593458079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817297</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>340c970756637b29378d510cfda68786</srcmd5>
+    <version>1.20.0</version>
+    <time>1618223703</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880912 from dimstar)</comment>
+    <requestid>881085</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>af9c13cbb0fc44932406df0c7e84d0e6</srcmd5>
+    <version>1.22.0</version>
+    <time>1621531465</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 893926 from dimstar)</comment>
+    <requestid>893953</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>bae736ca50b9d6be1de7be2c3c55efe0</srcmd5>
+    <version>1.22.0</version>
+    <time>1628584065</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909690 from yfjiang)</comment>
+    <requestid>909740</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>10db6061e29a7d5e55f1caa7a06b7f3c</srcmd5>
+    <version>1.22.0</version>
+    <time>1629101141</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911558</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>55b30c60f9ae2e75c05feb9543f3eb34</srcmd5>
+    <version>1.24.0</version>
+    <time>1629917780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0:
+  + If Polkit permissions allow it, create system connections
+    (instead of user-restricted ones) when clicking on a Wi-Fi
+    network in the applet.
+  + Fix display of blurry applet icon.
+  + Use the &quot;port&quot; word for dependend devices and profiles in the
+    editor.
+  + Support storing and retrieving WireGuard preshared-key
+    into/from a keyring.
+  + Update translations. (forwarded request 912688 from iznogood)</comment>
+    <requestid>913694</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>1b539d59e65741aca99ba0e321cb7cd6</srcmd5>
+    <version>1.24.0</version>
+    <time>1636218930</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 929168 from iznogood)</comment>
+    <requestid>929602</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>566c97c32b46f9897e9cf7a0aab53941</srcmd5>
+    <version>1.24.0</version>
+    <time>1644007745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>951410</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c26fc65e877f2c2aee96c7f47a71d714</srcmd5>
+    <version>1.26.0</version>
+    <time>1648063079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964106</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>02157d1099e809cb455bfd0f54601b3d</srcmd5>
+    <version>1.28.0</version>
+    <time>1654776719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981448</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>50e71e890bd5d2e50dc56e9a63059b24</srcmd5>
+    <version>1.30.0</version>
+    <time>1667995034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034540</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>b5753e4c4b71b3e6227e399cd6640bef</srcmd5>
+    <version>1.28.0</version>
+    <time>1668015918</time>
+    <user>dimstar_suse</user>
+    <comment>File conflict with libnma - needs to be updated in coordination</comment>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>b6ca7575ae40dc7dda928c0841ee28d6</srcmd5>
+    <version>1.30.0</version>
+    <time>1668173788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035114</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8650e67b1345cf0dbf715c174194cbf2</srcmd5>
+    <version>1.32.0</version>
+    <time>1681746117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079950</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6f81ac5bf5d50d682315279bebd48e4a</srcmd5>
+    <version>1.34.0</version>
+    <time>1696964435</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.34.0:
+  + Fix crash when importing WireGuard connections.
+  + Fix ineffective &quot;Don't show message again&quot; button in
+    notifications.
+  + Drop build dependency on gudev.
+  + Add setting to suppress broadband unlock prompt.
+  + Replace occurrences of &quot;master&quot;, &quot;slave&quot; and &quot;blacklist&quot;.
+  + Updated translations.
+- Drop long disabled polkit-devel BuildRequires, patch it was
+  needed for is dropped.
+- Drop pkgconfig(gudev-1.0) BuildRequires: No longer needed
+  following upstream changes.
+- Rebase feature-app-indicator-desktop-file.patch with quilt.
+- Pass sysconfdir=%{_distconfdir} to meson setup, move to UsrEtc.
+- Pass b_lto=true to meson setup, use link time optimization.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Move translations to NetworkManager-connection-editor-lang,
+  replace the NetworkManager-connection-editor Recommends with a
+  hard Requires. Also add Obsoletes and Provides to ease updates.
+  The reason for moving the translations are as follows: One can
+  install NetworkManager-connection-editor without needing
+  NetworkManager-applet, so in order to make the translations for
+  NetworkManager-connection-editor installable without pulling the
+  dependencies of NetworkManager-applet. (forwarded request 1115690 from iznogood)</comment>
+    <requestid>1116594</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>1c6270d0edde42732e68bbc129121c39</srcmd5>
+    <version>1.34.0</version>
+    <time>1698001304</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119284</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>647bab12d968e26a40ea838398556504</srcmd5>
+    <version>1.34.0</version>
+    <time>1701206405</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129581</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>bf76c5609f1bd0c18461ce882ab1d4d4</srcmd5>
+    <version>1.34.0</version>
+    <time>1701902904</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131254</requestid>
+  </revision>
+</revisionlist>

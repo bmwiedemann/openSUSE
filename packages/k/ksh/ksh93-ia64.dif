@@ -1,0 +1,40 @@
+--- src/cmd/ksh93/features/math.sh
++++ src/cmd/ksh93/features/math.sh	2012-01-20 14:23:38.000000000 +0000
+@@ -130,6 +130,18 @@ echo "#include <math.h>"
+ case $_hdr_ieeefp in
+ 1)	echo "#include <ieeefp.h>" ;;
+ esac
++cat <<!
++#if defined(__ia64__) && defined(signbit)
++# if defined __GNUC__ && __GNUC__ >= 4
++#  define __signbitl(f)		__builtin_signbitl(f)
++# else
++#  include <ast_float.h>
++#  if _lib_copysignl
++#   define __signbitl(f)	(int)(copysignl(1.0,(f))<0.0)
++#  endif
++# endif
++#endif
++!
+ echo
+ 
+ : generate the intercept functions and table entries
+--- src/lib/libast/sfio/sfcvt.c
++++ src/lib/libast/sfio/sfcvt.c	2013-02-01 17:13:48.305452072 +0000
+@@ -54,6 +54,16 @@ static char		*Zero = "0";
+ #endif
+ #endif
+ 
++#if defined(__ia64__) && defined(signbit)
++# if defined __GNUC__ && __GNUC__ >= 4
++#  define __signbitl(f)			__builtin_signbitl(f)
++# else
++#  if _lib_copysignl
++#    define __signbitl(f)	(int)(copysignl(1.0,(f))<0.0)
++#  endif
++# endif
++#endif
++
+ #if !_lib_signbit
+ #if !_ast_fltmax_double
+ static int neg0ld(Sfdouble_t f)

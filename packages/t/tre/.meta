@@ -1,0 +1,7 @@
+<package name="tre" project="openSUSE:Factory">
+  <title>POSIX compatible regexp library with approximate matching</title>
+  <description>TRE is a lightweight, robust, and efficient POSIX compatible regexp
+matching library with some exciting features such as approximate
+matching.</description>
+  <devel project="devel:libraries:c_c++" package="tre"/>
+</package>

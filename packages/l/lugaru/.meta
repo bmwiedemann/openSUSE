@@ -1,0 +1,6 @@
+<package name="lugaru" project="openSUSE:Factory">
+  <title>Lugaru HD</title>
+  <description>Third person ninja rabbit fighting game</description>
+  <devel project="games" package="lugaru"/>
+  <url>https://osslugaru.gitlab.io/</url>
+</package>

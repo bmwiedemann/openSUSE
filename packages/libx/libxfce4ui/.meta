@@ -1,0 +1,6 @@
+<package name="libxfce4ui" project="openSUSE:Factory">
+  <title>Widgets Library for the Xfce Desktop Environment</title>
+  <description>The libxfce4ui library provides a number of widgets commonly used by Xfce
+applications.</description>
+  <devel project="X11:xfce" package="libxfce4ui"/>
+</package>

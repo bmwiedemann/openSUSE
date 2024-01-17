@@ -1,0 +1,16 @@
+<package name="perl-CGI-Application" project="openSUSE:Factory">
+  <title>Framework for building reusable web-applications</title>
+  <description>CGI::Application is intended to make it easier to create sophisticated,
+reusable web-based applications.
+
+This module implements a methodology which, if followed, will make your
+web software easier to design, easier to document, easier to write, and
+easier to evolve.
+
+CGI::Application builds on standard, non-proprietary technologies and
+techniques, such as the Common Gateway Interface and Lincoln D. Stein's
+excellent CGI.pm module. CGI::Application judiciously avoids employing
+technologies and techniques which would bind a developer to any one set
+of tools, operating system or web server.</description>
+  <devel project="devel:languages:perl" package="perl-CGI-Application"/>
+</package>

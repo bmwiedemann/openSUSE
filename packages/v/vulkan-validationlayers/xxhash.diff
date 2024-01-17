@@ -1,0 +1,33 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-08-29 10:10:12.022296526 +0200
+
+Avoid the installation of a custom xxhash.h header. Since vk_*.h header files
+still include xxhash.h (and now would source the system xxhash instead of the
+bundled one), it makes sense to build ValidationLayers itself with the system
+xxhash as well, so that the ABI matches.
+
+---
+ layers/CMakeLists.txt |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+Index: Vulkan-ValidationLayers-vulkan-sdk-1.3.268.0/layers/CMakeLists.txt
+===================================================================
+--- Vulkan-ValidationLayers-vulkan-sdk-1.3.268.0.orig/layers/CMakeLists.txt
++++ Vulkan-ValidationLayers-vulkan-sdk-1.3.268.0/layers/CMakeLists.txt
+@@ -28,8 +28,6 @@ target_sources(VkLayer_utils PRIVATE
+     error_message/error_location.cpp
+     error_message/error_location.h
+     error_message/record_object.h
+-    external/xxhash.h
+-    external/xxhash.cpp
+     ${API_TYPE}/generated/error_location_helper.cpp
+     ${API_TYPE}/generated/error_location_helper.h
+     ${API_TYPE}/generated/pnext_chain_extraction.cpp
+@@ -76,6 +74,7 @@ target_link_libraries(VkLayer_utils PUBL
+     Vulkan::LayerSettings
+     Vulkan::UtilityHeaders
+     ${CMAKE_DL_LIBS}
++    -lxxhash
+ )
+ target_include_directories(VkLayer_utils SYSTEM PRIVATE external)
+ target_include_directories(VkLayer_utils PUBLIC . ${API_TYPE})

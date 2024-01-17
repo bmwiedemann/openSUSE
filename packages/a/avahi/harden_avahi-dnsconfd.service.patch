@@ -1,0 +1,24 @@
+Index: avahi-0.8/avahi-dnsconfd/avahi-dnsconfd.service.in
+===================================================================
+--- avahi-0.8.orig/avahi-dnsconfd/avahi-dnsconfd.service.in
++++ avahi-0.8/avahi-dnsconfd/avahi-dnsconfd.service.in
+@@ -21,6 +21,19 @@ Requires=avahi-daemon.socket avahi-daemo
+ After=avahi-daemon.socket
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=simple
+ ExecStart=@sbindir@/avahi-dnsconfd -s
+ 

@@ -1,0 +1,58 @@
+.\" Process this file with
+.\" groff -man -Tascii syslog.8
+.\"
+.TH SYSLOG 8 "May 2008" "syslog" "System Logging"
+.SH NAME
+syslog - the system logging service
+.SH DESCRIPTION
+There are different syslog daemon implementations
+supported as the system's syslog service, currently:
+.BR syslogd ,
+.BR rsyslogd ,
+.BR syslog-ng .
+
+It depends on the software selection during the installation
+which daemon is installed as default.
+
+Each syslog-daemon provides an own service file, that is:
+.BR syslogd.service ,
+.BR rsyslogd.service ,
+.BR syslog-ng.service .
+
+Only one syslog-daemon can be installed, it activates itself as the syslog
+service by creating the
+.BR syslog.service
+alias, a common name to start/stop, query status and reload the daemon while
+log rotation.
+
+The
+.BR /etc/sysconfig/syslog
+file contains several variables allowing to specify additional
+settings, such as start parameters for the daemon or additional
+chroot log sockets.
+The \fIyast2 sysconfig\fR module provides a comfortable way to
+change these settings.
+
+Starting with openSUSE-12.3, the
+.BR SYSLOG_DAEMON
+variable, which was used to select the daemon before, has been
+removed. Also the
+.BR SYSLOG_REQUIRES_NETWORK
+has been removed and each daemon declares in its service file
+whether the network will be started before syslog or not.
+
+.SH BUGS
+Please report bugs at <http://bugs.opensuse.org>
+.SH AUTHOR
+.nf
+Juergen Weigert <jw@suse.com>
+Dr. Werner Fink <werner@suse.com>
+Marius Tomaschewski <mt@suse.com>
+.SH "SEE ALSO"
+.BR sysklogd (8)
+.BR syslogd (8)
+.BR syslog.conf (5)
+.BR syslog-ng (8)
+.BR syslog-ng.conf (5)
+.BR rsyslogd (8)
+.BR rsyslog.conf (5)

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b18d6082ba829871f3acfe71f0d551db</srcmd5>
+    <version>1.3.0</version>
+    <time>1637228001</time>
+    <user>dimstar_suse</user>
+    <comment>A minimalist fan control program which is useful on a wide range of laptops, not just Thinkpads.</comment>
+    <requestid>932025</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fba633c8cc2c784c35f3488174427ace</srcmd5>
+    <version>1.3.0</version>
+    <time>1640808646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942927</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6efa7cbb1218bd4d3d0da4ccc0e1a67e</srcmd5>
+    <version>1.3.0</version>
+    <time>1641321471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943708</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>855a0a10a38bf93906fb0df7aca2036d</srcmd5>
+    <version>1.3.1</version>
+    <time>1645629970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>957010</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9ffad16cdd83b5cdc901d5858afc411c</srcmd5>
+    <version>1.3.1</version>
+    <time>1646767921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960156</requestid>
+  </revision>
+</revisionlist>

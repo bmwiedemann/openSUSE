@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb4e5b3b03ea6aac7fe47d500112cdd1</srcmd5>
+    <version>1.0</version>
+    <time>1489345126</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Factory submission of prun-ohpc.</comment>
+    <requestid>457529</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f8d346549b5c941a37183695cba9a7fa</srcmd5>
+    <version>1.0</version>
+    <time>1493020214</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489840</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>79efde70c3971b0b101403a8401da42e</srcmd5>
+    <version>1.0</version>
+    <time>1502893103</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix group. (forwarded request 516884 from eeich)</comment>
+    <requestid>516885</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0f8086012f1ae8c608775c4d3dae3080</srcmd5>
+    <version>1.2</version>
+    <time>1568191006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.
+- Refresh patch
+  * prun-Add-user-config.patch
+- License change, from BSD-3-Clause to Apache-2.0.
+- Use %license</comment>
+    <requestid>729851</requestid>
+  </revision>
+</revisionlist>

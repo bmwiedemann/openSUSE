@@ -1,0 +1,47 @@
+From: John Jolly <john.jolly@gmail.com>
+Date: Wed Sep 12 13:02:35 2018 -0600
+Subject: common: Allow bash completion directory to be configurable (#139)
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: eb474443a99453ff227918a3ee4276af93ac898b
+References: 
+
+The default bash completion directory used for installation is
+configured to be found in the sysconfdir. For some distributions the
+bash completion directory is found within the datadir. This fix allows
+the bash completion directory to be configured at build time.
+
+Signed-off-by: John L. Jolly <jjolly@suse.com>---
+ common/configure.ac                      | 7 +++++++
+ common/etc/bash_completion.d/Makefile.am | 2 +-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+diff --git a/common/configure.ac b/common/configure.ac
+index 99bd86e..f2dfcad 100644
+--- a/common/configure.ac
++++ b/common/configure.ac
+@@ -22,6 +22,13 @@ fi
+ AC_MSG_RESULT($PERL_VENDORLIB)
+ AC_SUBST(PERL_VENDORLIB)
+ 
++AC_ARG_WITH([bashcompletionconfdir],
++    [AS_HELP_STRING([--with-bashcompletionconfdir], [Directory for bash completion configuration files (default is SYSCONFDIR/bash_completion.d)])],
++    [bashcompletionconfdir=$withval],
++    [bashcompletionconfdir='${sysconfdir}/bash_completion.d']
++)
++AC_SUBST([bashcompletionconfdir])
++
+ dnl# Compatibility for RHEL5
+ if test "x${datarootdir}" = "x"; then
+     datarootdir="$datadir"
+diff --git a/common/etc/bash_completion.d/Makefile.am b/common/etc/bash_completion.d/Makefile.am
+index 6a6f93c..313117d 100644
+--- a/common/etc/bash_completion.d/Makefile.am
++++ b/common/etc/bash_completion.d/Makefile.am
+@@ -1,6 +1,6 @@
+ dist_confDATA_INSTALL = ${INSTALL} -m 644
+ 
+-confdir = $(sysconfdir)/bash_completion.d/
++confdir = @bashcompletionconfdir@
+ 
+ dist_conf_DATA = warewulf_completion
+ 

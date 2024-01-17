@@ -1,0 +1,295 @@
+-------------------------------------------------------------------
+Sat Oct  7 23:40:03 UTC 2017 - jengelh@inai.de
+
+- Avoid double shipping of documentation. Rectify RPM group
+  and update summaries.
+- %_mandir is implicitly tagged %doc already.
+
+-------------------------------------------------------------------
+Thu Oct  5 14:20:58 UTC 2017 - fcrozat@suse.com
+
+- Do not try to build gtk-doc, use the one from the tarball (drop
+  BuildRequires gtk-doc).
+- Remove unneeded BuildRequires automake / autoconf.
+
+-------------------------------------------------------------------
+Mon Nov 10 17:13:14 UTC 2014 - fcrozat@suse.com
+
+- Update to version 1.26:
+ * Switch all API endpoints and image URLs to https protocol 
+   (http for Flickr API is deprecated since 2014-04-30).
+ * Fixed utility documentation: args consistency for 
+   PER-PAGE / PAGE.
+ * Added new extras: url_q, url_n and url_c for new image sizes.
+ * Configuration and build improvements for newer automake and 
+   autoconf. Add new internal convienience libraries libmtwist and
+   libgetopt.
+ * Added build-time utility mangen to generate manpage and extras.
+ * Generate and accept the new staticflickr.com domain for image
+   URIs as well as the existing static.flickr.com.
+ * Multiple error path allocation fixes, several memory leak 
+   fixes and a few overflows found via Coverity.
+
+-------------------------------------------------------------------
+Mon Apr 28 06:22:01 UTC 2014 - fcrozat@suse.com
+
+- Update for version 1.25:
+ - more OAuth fixes, including uploading fully working
+ - Multiple internal OAuth changes to simplify code. 
+- Remove flickcurl-wrong-memset.patch, merged upstream
+
+-------------------------------------------------------------------
+Sun Dec  9 14:40:11 UTC 2012 - p.drouand@gmail.com
+
+- Update to 1.23 version:
+  * Full support using Flickr via OAuth 1.0 and converting
+    from the legacy Flickr authentication to OAuth. It supports both
+    authentication flows but Flickr has deprecated the legacy
+    authentication, so it might stop working at any time.
+  * Added an API call to upgrade from the Flickr legacy authentication to
+    OAuth 1.0. This revokes and deletes the legacy 'auth_token' and returns
+    an OAuth Access Token and Access Token Secret pair which need to be
+    saved.
+- New build dependencies: glib2 and gobject2.0
+- Remove useless rpaths on the package
+- Include really documentation into the two non-devel package to avoid break links
+- Disable and remove statics libraries
+
+-------------------------------------------------------------------
+Tue Dec 27 15:06:49 UTC 2011 - idonmez@suse.com
+
+- Fix wrong size parameter in memset call 
+
+-------------------------------------------------------------------
+Fri Dec 23 12:05:10 UTC 2011 - andreas.stieger@gmx.de
+
+- move non-documentation files from -doc to -devel to fix
+  Factory build error with files packaged twice
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Sat Aug  6 16:18:56 UTC 2011 - crrodriguez@opensuse.org
+
+- Fix build with newer curl Fix build with newer curl 
+
+-------------------------------------------------------------------
+Mon Mar 28 15:59:07 UTC 2011 - pascal.bleser@opensuse.org
+
+- split out documentation into -doc subpackage, symlinked
+
+- update to 1.21:
+  * a memory leak when building photo list results was fixed
+  * flickcurl_photos_setPerms() was fixed to allow false boolean permissions
+  * flickcurl_photosets_getPhotos_params() was fixed to just work
+  * the flickcurl(1) utility now handles Raptor V1, V2, or none
+
+-------------------------------------------------------------------
+Thu Nov 18 10:59:34 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.20:
+  * fixes support for several major API calls that return standard photo
+    responses (SPR), such as searching for photos, getting recent photos,
+    listing photosets, and several others
+
+-------------------------------------------------------------------
+Sun Jul 25 06:48:47 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.19:
+  * support was added for the new photosets APIs:
+    + flickr.photosets.removePhotos
+    + flickr.photosets.reorderPhotos
+    + flickr.photosets.setPrimaryPhoto
+  * support was added for photo notes when getting photo information
+  * the flickcurl utility was updated to support all of the new APIs
+
+-------------------------------------------------------------------
+Tue Apr 27 06:04:46 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.18:
+  * adds support for the (rest of the) Galleries API
+  * adds a new People API call
+  * adds new functions for controlling curl handle options
+  * the flickcurl(1) utility was updated to support all of the new APIs
+
+-------------------------------------------------------------------
+Fri Mar  5 22:19:41 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.17:
+  * support for the new stats API, the people API, the "photos of"
+    people API, and the gallery API have been added
+  * the flickcurl utility has been updated to support all of the
+    new APIs
+
+-------------------------------------------------------------------
+Thu Jan 14 08:49:47 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.16:
+  * the flickcurl utility configuration file generation was fixed
+    to use a key=value format as documented
+  * flickcurl now accepts files with spaces around the "="
+  * the authentication documentation was updated to add a picture
+    showing the result of fetching the mobile authentication URLs
+
+-------------------------------------------------------------------
+Sun Jan  3 21:16:15 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.15:
+  * documentation updates
+  * the flickcurl_search_params struct gained an in_gallery boolean
+    field to restrict searches to photos in a gallery
+  * the flickcurl utility photos.search commands gained
+    geographical context, taking an integer argument for inside/
+    outside, an is-commons boolean flag, and an is-gallery boolean
+    flag
+  * a few minor bugs and typographical errors were fixed
+
+-------------------------------------------------------------------
+Tue Sep 22 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.14:
+  * adds a tutorial for using the search API along with a simple example program
+  * adds support for search parameters (geo_context and is_commons) and new
+    extras path_alias, url_m, url_o, url_s, url_sq, and url_t
+  * fixes a few minor bugs and typos
+
+-------------------------------------------------------------------
+Sun Aug  2 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.13:
+  * two new utility functions were added to
+    + get photo IDs from "farm" image URLs
+    + to get the current webservice delay time
+  * requests were fixed to be dynamically allocated rather than use a fixed
+    buffer
+  * a resource leak bug for the HTTP user agent was fixed
+
+-------------------------------------------------------------------
+Sun Jul  5 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.12:
+  * support for the two new collections API calls and four other new general
+    API calls were added
+  * functions were added for generating flic.kr short URIs for photos
+  * a bug with resetting curl during sequences of mixed read and write API
+    calls was fixed
+  * the flickcurl(1) utility was updated to support the new API calls
+  * several other minor improvements and fixes were made
+
+-------------------------------------------------------------------
+Wed May 27 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.11
+
+-------------------------------------------------------------------
+Sat May  2 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.10:
+  * uploading images and replacing images was made to work again
+  * functions were added to set the service URIs for the image upload and image
+    replacing Web services
+  * fixes were made to allow compiling and using the library from C++
+
+-------------------------------------------------------------------
+Sun Apr  5 00:00:00 CEST 2009 - pascal.bleser@opensuse.org
+
+- update to 1.9:
+  * the Pandas API was added to get interesting photos from pandas
+  * groups members get list method was added
+  * some other minor bugfixes and improvements were made
+- changes from 1.8:
+  * the Places API was updated for 6 new API calls, including shape history
+  * the Photos Geo API was updated for 5 new API calls for setting/getting
+    locations
+  * the Commons API was added with new support for 1 API call to get a list of
+    institutions
+  * some other minor fixes and improvements were also made
+
+-------------------------------------------------------------------
+Mon Dec  1 00:00:00 CET 2008 - guru@unixtech.be
+
+- update to 1.7:
+  * support for the new Machine Tags API was added, handling machine tag
+    namespaces, predicates, and values
+  * support for the updated Places API calls was added with access to ESRI
+    shape data and URLs
+  * support for the (not announced) flickr.tags.getClusterPhotos was added
+  * some other minor fixes and improvements were made
+
+-------------------------------------------------------------------
+Fri Sep  5 00:00:00 CEST 2008 - guru@unixtech.be
+
+- added missing ldconfig post/postun scriptlets
+- update to 1.6:
+  * neighborhood place support was added
+  * a new Photos List class was added to handle the standard result format
+  * photos list results can now take a feed format parameter to return XML
+    feed results
+  * flickcurl_places_forUser support was added
+  * the flickcurl utility was updated to help with authentication
+  * many other minor fixes and improvements were made
+
+-------------------------------------------------------------------
+Mon Aug 18 00:00:00 CEST 2008 - guru@unixtech.be
+
+- update to 1.5:
+  * support for the Tag Clusters API
+  * new photo search API parameters contacts: has_geo, lat, lon, radius, and
+    radius_units fields was added
+
+-------------------------------------------------------------------
+Thu Jun 26 00:00:00 CEST 2008 - guru@unixtech.be
+
+- new upstream version:
+  * support for Flickr video in requests and responses was added
+  * the recent API additions for getting content type, getting safety type,
+    and getting geo perms were added to the library
+  * a new RDF triples serializer class was added for turning photo metadata
+    into RDF which uses new namespaces under machinetags.org/ns
+
+-------------------------------------------------------------------
+Sat Mar  8 00:00:00 CET 2008 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Tue Jan 29 00:00:00 CET 2008 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sun Jan 13 00:00:00 CET 2008 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Wed Dec 26 00:00:00 CET 2007 - guru@unixtech.be
+
+- rebuild against raptor 1.4.16
+
+-------------------------------------------------------------------
+Sat Dec 22 00:00:00 CET 2007 - guru@unixtech.be
+
+- added AUTHORS and fdupes support
+- made shared library policy compliant
+- moved to Packman
+
+-------------------------------------------------------------------
+Sun Aug 12 00:00:00 CEST 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Sat Aug  4 00:00:00 CEST 2007 - guru@unixtech.be
+
+- new upstream version
+
+-------------------------------------------------------------------
+Tue Apr 17 00:00:00 CEST 2007 - guru@unixtech.be
+
+- new package
+

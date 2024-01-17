@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e885350b55a3ed79f7ac3181a2ab954b</srcmd5>
+    <version>0.62.0</version>
+    <time>1406005077</time>
+    <user>coolo</user>
+    <comment>This is a dependency of python-astroid, which is already in openSUSE:Factory.  The python3 version of this package, python3-logilab-common, is also already in openSUSE:Factory.</comment>
+    <requestid>241468</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>e885350b55a3ed79f7ac3181a2ab954b</srcmd5>
+    <version>0.62.0</version>
+    <time>1409302911</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>337032d47cc7db33a7072f4c17a8c18b</srcmd5>
+    <version>0.63.2</version>
+    <time>1424288208</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286635</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6efc0d3487359c8ddc64cc90d0ab329f</srcmd5>
+    <version>1.0.2</version>
+    <time>1443585033</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>328671</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>af872599e0bbced0ef26de33641def90</srcmd5>
+    <version>1.4.1</version>
+    <time>1504617379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520559</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>625f24b0f756a805096bcb238eb173f2</srcmd5>
+    <version>1.4.1</version>
+    <time>1545647962</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659480</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>120daf14f647508c8b284ad10fcb6fa4</srcmd5>
+    <version>1.8.0</version>
+    <time>1609111706</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>858758</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a2e24f65cb9d2631b13c8d068f12c1b</srcmd5>
+    <version>1.8.1</version>
+    <time>1615213151</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.1:
+  * feature: add tox helpers to make pipy and debian releases
+  * fix: use TypedDict if python version &gt; 3.8 only, otherwise use a Dict
+         (TypedDict were imported from typing_extension 3.7.4, which is not
+         available on debian buste</comment>
+    <requestid>877590</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2d2b9f12b21cdbdfd4c2f275de0781e2</srcmd5>
+    <version>1.8.3</version>
+    <time>1644880255</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.3:
+  * Add header_message in ConfigurationMixIn.generate_config 
+  * configuration: better error message
+  * rql repo has been moved
+  * add test on python3.8</comment>
+    <requestid>954394</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c23b445669381944b6ca81772d8edd68</srcmd5>
+    <version>1.9.7</version>
+    <time>1664553471</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007070</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>51a53d79b17b476439997047922b7b3d</srcmd5>
+    <version>1.9.8</version>
+    <time>1673108377</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.8:
+  * No upstream changelog available</comment>
+    <requestid>1056715</requestid>
+  </revision>
+</revisionlist>

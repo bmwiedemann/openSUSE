@@ -1,0 +1,8 @@
+# In multibuild spec file names are expected to be different from source package names
+addFilter(".*-hpc.*: E: invalid-spec-name")
+# 'hidden' file names are standard for environment modules
+addFilter(".*: W: hidden-file-or-dir /usr/share/lmod/.*/.version.*")
+# Not a macro but the file magic for environment module files
+addFilter(".*: W: macro-in-comment %Module1")
+# Not a doc but an example package
+addFilter(".*-examples.noarch: W: package-with-huge-docs .*")

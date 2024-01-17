@@ -1,0 +1,29 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Aug 13 22:25:04 2018 +0200
+Subject: wwinit: Check if service is enabled before enabling it
+Patch-mainline: Upstream
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: 0fe765f6825281a9dcae7d21419efcf4ff91028d
+References: 
+
+This avoids ugly error messages.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ common/etc/functions | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+diff --git a/common/etc/functions b/common/etc/functions
+index eef7962..2370e2a 100644
+--- a/common/etc/functions
++++ b/common/etc/functions
+@@ -239,7 +239,8 @@ wwservice_activate() {
+             fi
+             if systemctl list-unit-files --type=service,socket | egrep -q "^$SERVICE"; then
+                 wwprint "Activating Systemd unit: $1\n"
+-                if wwrun /bin/systemctl -q enable $SERVICE; then
++                if systemctl is-enabled --quiet $SERVICE ||
++			wwrun /bin/systemctl -q enable $SERVICE; then
+                     if wwrun /bin/systemctl -q restart $SERVICE; then
+                         return 0
+                     fi

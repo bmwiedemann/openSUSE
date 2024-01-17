@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>227898d2d18a6e9771422ab04fe2ef26</srcmd5>
+    <version>0.1.0.1</version>
+    <time>1629917842</time>
+    <user>dimstar_suse</user>
+    <comment>new haskell package</comment>
+    <requestid>912739</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf6b91232a85dbd94716c764634c9c77</srcmd5>
+    <version>0.2.0</version>
+    <time>1639931692</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934294</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f11f7d8209d595d2d17736bed89b2d92</srcmd5>
+    <version>0.3.0</version>
+    <time>1644617393</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>953552</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>191275a996b9e7ce4a630f71be6964ad</srcmd5>
+    <version>0.3.1</version>
+    <time>1665668656</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1009716</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>83963747cbb41eb1bf0f750f037ab596</srcmd5>
+    <version>0.4.0.1</version>
+    <time>1674043851</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1059122</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>79a0039a1c20f67c706e12428e2eacf2</srcmd5>
+    <version>0.4.0.1</version>
+    <time>1674665043</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1060820</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>2706af6558bdfa677d797298aec64342</srcmd5>
+    <version>0.4.0.1</version>
+    <time>1680636256</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1076097</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ff9482ad670c43980a475d5a79dd1c8f</srcmd5>
+    <version>0.4.0.1</version>
+    <time>1701792233</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1130926</requestid>
+  </revision>
+</revisionlist>

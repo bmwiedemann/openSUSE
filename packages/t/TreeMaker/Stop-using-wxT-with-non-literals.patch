@@ -1,0 +1,33 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sat, 8 Apr 2023 23:49:34 +0200
+Subject: [PATCH 05/20] Stop using wxT with non-literals
+
+This simply doesn't compile anymore.
+---
+ Source/tmwxGUI/tmwxCommon/tmwxApp.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp b/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
+index 088d524..4a01e37 100644
+--- a/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
++++ b/Source/tmwxGUI/tmwxCommon/tmwxApp.cpp
+@@ -261,7 +261,7 @@ bool tmwxApp::OnInit(void)
+   else {
+     char *p = getenv ("TREEMAKER_PREFIX");
+     if (p)
+-      prefix = wxT (p);
++      prefix = p;
+     else
+       prefix = wxT (INSTALL_PREFIX);
+   }
+@@ -275,8 +275,8 @@ bool tmwxApp::OnInit(void)
+ 
+ #ifdef __LINUX__
+   /* Load icons. Silently ignore failures (SetIcon will also silently fail) */
+-  mConfig.mDocIcon.LoadFile (wxT (mDataDir + "/Icon_doc_48.png"));
+-  mConfig.mAppIcon.LoadFile (wxT (mDataDir + "/Icon_app_48.png"));
++  mConfig.mDocIcon.LoadFile (mDataDir + "/Icon_doc_48.png");
++  mConfig.mAppIcon.LoadFile (mDataDir + "/Icon_app_48.png");
+ #endif // __LINUX__
+   
+ #ifdef TM_USE_LOGFRAME

@@ -1,0 +1,833 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4e68ec0ee9a2667325072048d16a607</srcmd5>
+    <version>0.93</version>
+    <time>1248970073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e71175f9c258a7988975c8cd58dc8897</srcmd5>
+    <version>0.94</version>
+    <time>1250199233</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 17723 from user kay_sievers
+</comment>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>56fe51bd577c81bca5a020d422440996</srcmd5>
+    <version>0.94</version>
+    <time>1251483174</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 18721 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>56fe51bd577c81bca5a020d422440996</srcmd5>
+    <version>0.94</version>
+    <time>1251483174</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 18721 from user vuntz
+</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>324cdd78b382625cebf8edffb3bcb75f</srcmd5>
+    <version>0.95</version>
+    <time>1262877906</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 28218 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d523623d66a86fc8272cb8d29b3c48c</srcmd5>
+    <version>0.96</version>
+    <time>1264067058</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 29938 from user dirkmueller
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b14f26dd6f7953bb5d32355443e35237</srcmd5>
+    <version>0.96</version>
+    <time>1268925736</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>8feb6cbd2dd24e869c044ac23fc03b8c</srcmd5>
+    <version>0.96</version>
+    <time>1271374272</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 37929 from user kay_sievers
+</comment>
+    <requestid>37929</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>8feb6cbd2dd24e869c044ac23fc03b8c</srcmd5>
+    <version>0.96</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>8feb6cbd2dd24e869c044ac23fc03b8c</srcmd5>
+    <version>0.96</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>2cbc3f0e1aa52ac760ed9d451cc11cb1</srcmd5>
+    <version>0.96</version>
+    <time>1279649617</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 43457 from user coolo
+</comment>
+    <requestid>43457</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1fcc5665364ee2e18909b0aaa8618b0f</srcmd5>
+    <version>0.98</version>
+    <time>1282921207</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 46290 from user vuntz
+</comment>
+    <requestid>46290</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d49c05811a1317f8765aae413f020214</srcmd5>
+    <version>0.99</version>
+    <time>1284750024</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/polkit based on submit request 48261 from user vuntz
+</comment>
+    <requestid>48261</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a68248d33fbb6a6e24a1d9d3ac23eb92</srcmd5>
+    <version>0.99</version>
+    <time>1289829826</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52824 from user psmt
+</comment>
+    <requestid>52824</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>f61b562f1e30480e5e1782c681bd026b</srcmd5>
+    <version>0.99</version>
+    <time>1289829834</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52824
+</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>f61b562f1e30480e5e1782c681bd026b</srcmd5>
+    <version>0.99</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>52b058280ce55f1de5eca906e515a69c</srcmd5>
+    <version>0.101</version>
+    <time>1302892195</time>
+    <user>darix</user>
+    <comment>Accepted submit request 67541 from user coolo
+</comment>
+    <requestid>67541</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>6e3bd739411ad3927e2e362ee330ac02</srcmd5>
+    <version>0.101</version>
+    <time>1303895790</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 68441 from user babelworx
+</comment>
+    <requestid>68441</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>8aa51ee563f0c7b9188db73b990df87f</srcmd5>
+    <version>0.101</version>
+    <time>1303895803</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68441
+</comment>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>18504190f5429cd8b6ff324f77467c7a</srcmd5>
+    <version>0.101</version>
+    <time>1304924485</time>
+    <user>saschpe</user>
+    <comment>Use %set_permissions instead of deprecated %run_permissions (forwarded request 69720 from vuntz)</comment>
+    <requestid>69817</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>8dc5edf53ed0f3106dcec909b51e3995</srcmd5>
+    <version>0.101</version>
+    <time>1304924494</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69817
+</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>98f2743d974cae9e283996757a91d8e5</srcmd5>
+    <version>0.101</version>
+    <time>1313394577</time>
+    <user>saschpe</user>
+    <comment>BuildIgnore ruby to solve a build cycle on Factory... probably worthy to verify with coolo/aj if this is correct place to break it (forwarded request 78451 from dimstar)</comment>
+    <requestid>78687</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>81be786f06f36d6217e1e508d3e2785d</srcmd5>
+    <version>0.101</version>
+    <time>1313394585</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78687
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cab9e56d941c81b4af70f557a83c6c36</srcmd5>
+    <version>0.102</version>
+    <time>1315234539</time>
+    <user>lrupp</user>
+    <comment>Update to 0.102</comment>
+    <requestid>80716</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>cab9e56d941c81b4af70f557a83c6c36</srcmd5>
+    <version>0.102</version>
+    <time>1319182362</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>85519b6c6c39ff7a8af55758f2bc15bf</srcmd5>
+    <version>0.102</version>
+    <time>1320488556</time>
+    <user>coolo</user>
+    <comment>- pick some patches from git to add support for
+  org.freedesktop.policykit.imply, disable debug spam and allow
+  unprivileged users to query authorizations (bnc#698250)</comment>
+    <requestid>90117</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>379afac52328a20ab136bdef31f27bf4</srcmd5>
+    <version>0.102</version>
+    <time>1323193942</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2890088dac38257caefe7dcbc2d652a3</srcmd5>
+    <version>0.104</version>
+    <time>1325846793</time>
+    <user>coolo</user>
+    <comment>- A quick test reveals that the systemd backend does not 
+  integrate very well with packages yet, revert. (forwarded request 98812 from elvigia)</comment>
+    <requestid>98814</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>ec83c7210acef07148448a3028fb268e</srcmd5>
+    <version>0.104</version>
+    <time>1326292664</time>
+    <user>coolo</user>
+    <comment>Split typelib file out (forwarded request 99423 from vuntz)</comment>
+    <requestid>99432</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1dcf2164a7be325c9c9289e615fb7d12</srcmd5>
+    <version>0.104</version>
+    <time>1329319056</time>
+    <user>coolo</user>
+    <comment>fixed bnc#743145 - added -fpie/-pie flags to compilation and linking of polkit-agent-helper and pkexec (forwarded request 103053 from dlovasko)</comment>
+    <requestid>103644</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>adfd43bdb73b88cbcd3da5a913cbeb80</srcmd5>
+    <version>0.104</version>
+    <time>1330151473</time>
+    <user>coolo</user>
+    <comment>Rework -fpie/-pie fix to an upstreamable version (forwarded request 106799 from vuntz)</comment>
+    <requestid>106806</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>5c623474fdc339a5f5ad4f0b7e031553</srcmd5>
+    <version>0.104</version>
+    <time>1340138620</time>
+    <user>coolo</user>
+    <comment>Package forgotten directories (forwarded request 124879 from vuntz)</comment>
+    <requestid>124894</requestid>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>5c623474fdc339a5f5ad4f0b7e031553</srcmd5>
+    <version>0.104</version>
+    <time>1340184009</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>b493c1dc8227663dcde58d2db1def159</srcmd5>
+    <version>0.104</version>
+    <time>1345973625</time>
+    <user>namtrac</user>
+    <comment>- also use -z now for binary hardening (forwarded request 131367 from msmeissn)</comment>
+    <requestid>131375</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>26a9cea1a007c14278cc6e923ef9aa90</srcmd5>
+    <version>0.107</version>
+    <time>1348576106</time>
+    <user>coolo</user>
+    <comment>Update to 0.107 (forwarded request 134698 from vuntz)</comment>
+    <requestid>135325</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>5ef4d075cdac75ba8b40454ac3e0fb1e</srcmd5>
+    <version>0.107</version>
+    <time>1348669617</time>
+    <user>coolo</user>
+    <comment>- Use %{_localstatedir}/lib/polkit for $HOME of polkit user,
+  instead of %{_libexecdir}/polkit-1. The directory is manually
+  created in %install. (forwarded request 135837 from vuntz)</comment>
+    <requestid>135930</requestid>
+  </revision>
+  <revision rev="37" vrev="9">
+    <srcmd5>c7095a888fd48e6d70aefc5cc796bb81</srcmd5>
+    <version>0.104</version>
+    <time>1348729608</time>
+    <user>coolo</user>
+    <comment>revert to 104 to save ConsoleKit</comment>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>0fb45caa146733d47bab4b222a3c2be9</srcmd5>
+    <version>0.107</version>
+    <time>1352798298</time>
+    <user>coolo</user>
+    <comment>Add pwdutils to prereq for groupadd and useradd (forwarded request 140704 from a_jaeger)</comment>
+    <requestid>140766</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>317ba0fbb2a47adf72790e90a481f670</srcmd5>
+    <version>0.108</version>
+    <time>1353226303</time>
+    <user>namtrac</user>
+    <comment>Update to 0.108 (forwarded request 141508 from dimstar)</comment>
+    <requestid>141526</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>23bb61449c4206723028d6e05ed69c2f</srcmd5>
+    <version>0.108</version>
+    <time>1355478022</time>
+    <user>coolo</user>
+    <comment>- Add polkit-libmozjs.patch: dlopen libmozjs185.so.1.0 instead of
+  libmozjs185.so, which is packaged in the -devel package
+  (bnc#793562) (forwarded request 144912 from dimstar)</comment>
+    <requestid>144939</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>384916a8539263916a94c65ded60264c</srcmd5>
+    <version>0.108</version>
+    <time>1357822299</time>
+    <user>coolo</user>
+    <comment>- Only mark the following files as %config, not %config(noreplace):
+  + %{_sysconfdir}/dbus-1/system.d/org.freedesktop.PolicyKit1.conf
+  + %{_sysconfdir}/pam.d/polkit-1
+  + %{_sysconfdir}/polkit-1/rules.d/50-default.rules
+  PolicyKit's own config files should only be changed for good reason
+  and we want to prefer openSUSE's defaults (you still get an .rpmsafe
+  file) (forwarded request 147754 from saschpe)</comment>
+    <requestid>147764</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>dbdf6ce41cd2e73fcc81555a307ef87f</srcmd5>
+    <version>0.110</version>
+    <time>1358413030</time>
+    <user>coolo</user>
+    <comment>Update to 0.110: minor update, that includes our patches + a small fix for XAUTHORITY that is nice to have</comment>
+    <requestid>148545</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>dbdf6ce41cd2e73fcc81555a307ef87f</srcmd5>
+    <version>0.110</version>
+    <time>1359109937</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>654d44836a916da948f39a44b502f7a6</srcmd5>
+    <version>0.110</version>
+    <time>1361277570</time>
+    <user>coolo</user>
+    <comment>- Recommend libmozjs185-1_0 which is dlopen'ed and required for JS
+  rules (forwarded request 155760 from gberh)</comment>
+    <requestid>155774</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>5e641880cbb7dbf14595e7913a1fc38b</srcmd5>
+    <version>0.110</version>
+    <time>1365928626</time>
+    <user>coolo</user>
+    <comment>Fix for automake 1.13 (forwarded request 163620 from sumski)</comment>
+    <requestid>163647</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a45ec2bdadb2e7a71ca0fa80bc781eca</srcmd5>
+    <version>0.111</version>
+    <time>1371562252</time>
+    <user>coolo</user>
+    <comment>Update to 0.111 (forwarded request 179019 from sumski)</comment>
+    <requestid>179065</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>5b86b76feb643e0ab11eea2e4687255c</srcmd5>
+    <version>0.111</version>
+    <time>1373260314</time>
+    <user>coolo</user>
+    <comment>Use mozjs-17.0 on openSUSE 13.1 - and do no longer recommend mozjs.. it's auto-detected required (forwarded request 182299 from dimstar)</comment>
+    <requestid>182300</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>5b86b76feb643e0ab11eea2e4687255c</srcmd5>
+    <version>0.111</version>
+    <time>1379664044</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ae1b621fc5e00c69918ad51978e29395</srcmd5>
+    <version>0.112</version>
+    <time>1379926301</time>
+    <user>coolo</user>
+    <comment>Update to 0.112
+Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
+    <requestid>199678</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>861e72c8054a4b18033ef046137d1c3a</srcmd5>
+    <version>0.112</version>
+    <time>1380297451</time>
+    <user>coolo</user>
+    <comment>- Fixed URL in spec file (forwarded request 201040 from thomas-schraitle)</comment>
+    <requestid>201047</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>861e72c8054a4b18033ef046137d1c3a</srcmd5>
+    <version>0.112</version>
+    <time>1409302722</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>e42e61763832f460bb2414f901983101</srcmd5>
+    <version>0.112</version>
+    <time>1420318932</time>
+    <user>dimstar_suse</user>
+    <comment>- Added gpg signature and keyring with David Zeuthen and Miloslav Trmac
+  ids. (forwarded request 266855 from msmeissn)</comment>
+    <requestid>266856</requestid>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>e5431b1f7b04cc70382f9fdeea6c4f58</srcmd5>
+    <version>0.112</version>
+    <time>1421787253</time>
+    <user>dimstar_suse</user>
+    <comment>- Try to fix kded leaking due to powerdevil exposing this issue in
+  polkit: (bsc#912889)
+  * polkit-no-kded-leak.patch</comment>
+    <requestid>281005</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>589145da3c0146c2f4dc15f2e7657028</srcmd5>
+    <version>0.113</version>
+    <time>1442392562</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330266</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>e12f2567b64687060e82a24fd83701b5</srcmd5>
+    <version>0.113</version>
+    <time>1449689610</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-revert-session-magic.patch: revert a session detection change
+  that could lead to sessions not being detected as active due to 
+  a systemd bug. bsc#954139</comment>
+    <requestid>346801</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>ef7942ac935811a145fa57d19b817729</srcmd5>
+    <version>0.113</version>
+    <time>1465750268</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pkgconfig() instead of requiring systemd package names directly.
+
+- systemd.pc is shipped by systemd main package (bsc#983167) (forwarded request 400659 from fbui)</comment>
+    <requestid>400666</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>e2e6deca6434107696d27a0ae86f1044</srcmd5>
+    <version>0.113</version>
+    <time>1497786574</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gettext as fallback to get potential distro translations for
+  polkit actions. Similar mechnism as used for desktop file
+  translations. That way it's possible to use weblate to add
+  additional translations that are not provided by upstream
+  (polkit-gettext.patch). (forwarded request 503447 from lnussel)</comment>
+    <requestid>503611</requestid>
+  </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>db3797ca3f4c1843674803fe07816ab2</srcmd5>
+    <version>0.113</version>
+    <time>1504520261</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519773</requestid>
+  </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>eec67f22cf63a236eb4e63f451e6c45b</srcmd5>
+    <version>0.113</version>
+    <time>1520414921</time>
+    <user>dimstar_suse</user>
+    <comment>cleaned (forwarded request 581346 from dimstar)</comment>
+    <requestid>581491</requestid>
+  </revision>
+  <revision rev="60" vrev="7">
+    <srcmd5>dda8726105ff30645306a9fd72540f25</srcmd5>
+    <version>0.113</version>
+    <time>1520852584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585102</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>269a70b266ff21099671ce7c70e37e04</srcmd5>
+    <version>0.114</version>
+    <time>1524741959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.114:
+  + Port to mozjs 52, the latest version of the firefox JavaScript
+    engine.
+  + Add gettext support for policy files.
+  + Fixes for various memory leaks.
+  + Updated translations.
+- Update keyring with Ray Strode &amp;lt;halfline@gmail.com&amp;gt; public key.
+- Drop with_systemd define and all conditionals and
+  polkit-no-systemd.patch and ConsoleKit BuildRequires, we only
+  support systemd now.
+- Drop upstream fixed polkit-itstools.patch.
+- Rebase pkexec.patch with quilt.
+- Add gcc-c++ and pkgconfig(mozjs-52) BuildRequires: New
+  dependencies.
+- Drop conditional pkgconfig(mozjs-17.0) and pkgconfig(mozjs185):
+  no longer supported.
+- Drop autoconf and automake BuildRequires: They are implicit via
+  libtool BuildRequires.
+- Replace glib2-devel and gobject-introspection-devel with their
+  pkgconfig counterparts: pkgconfig(gio-unix-2.0),
+  pkgconfig(gmodule-2.0) and pkgconfig(gobject-introspection-1.0).
+- Add polkit-jsauthority-pass-format-string.patch: jsauthority:
+  pass &quot;%s&quot; format string to remaining report function, patch from
+  upstream git, adding missed commit (bgo#105865).
+- Drop polkit-revert-session-magic.patch: Upstream systemd bug is
+  since a long time fixed (gh#systemd#58) (boo#954139). (forwarded request 595009 from iznogood)</comment>
+    <requestid>595145</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>9e6da5e2f8526fddac6bf5ba54a2af76</srcmd5>
+    <version>0.115</version>
+    <time>1531946102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.115:
+  - Fix CVE-2018-1116: Trusting client-supplied UID (bsc#1099031)
+  - jsauthority: pass &quot;%s&quot; format string to remaining report function
+    (obsoletes polkit-jsauthority-pass-format-string.patch)</comment>
+    <requestid>622066</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>0b768f87d22ffff1c22abd8e29f21524</srcmd5>
+    <version>0.115</version>
+    <time>1535440918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630680</requestid>
+  </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>e30e7c179890171cfcf588639e2bbba2</srcmd5>
+    <version>0.115</version>
+    <time>1545866497</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-CVE-2018-19788.patch: Fixed handling of UIDs over MAX_UINT
+  (bsc#1118277 CVE-2018-19788) (forwarded request 660356 from msmeissn)</comment>
+    <requestid>660357</requestid>
+  </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>a165ffdca2d4e0ba61a1236783914648</srcmd5>
+    <version>0.115</version>
+    <time>1556914008</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1130588: Require shadow instead of old pwdutils
+- User proper Requires(pre)/Requires(post) for permissions and
+  shadow (forwarded request 698177 from jubalh)</comment>
+    <requestid>698215</requestid>
+  </revision>
+  <revision rev="66" vrev="5">
+    <srcmd5>d373fe992a50b0113deef8e091ec1ebf</srcmd5>
+    <version>0.115</version>
+    <time>1558426906</time>
+    <user>dimstar_suse</user>
+    <comment>Do not forcibly require systemd</comment>
+    <requestid>702612</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>9d406dec13e48dc5715c3af64eb8fb2f</srcmd5>
+    <version>0.116</version>
+    <time>1561194196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709799</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>3267cd3af4a2c50d07ec124657b6fc8a</srcmd5>
+    <version>0.116</version>
+    <time>1570701154</time>
+    <user>dimstar_suse</user>
+    <comment>- polkit-keyinit.patch: add pam_keyinit to the polkit configuration (bsc#1144053) (forwarded request 736147 from msmeissn)</comment>
+    <requestid>736148</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>acab9b9bf549d8161c2d45eac9469fae</srcmd5>
+    <version>0.116</version>
+    <time>1576061918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754301</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ab862b45b59d630f0494ebdcdb342995</srcmd5>
+    <version>0.117</version>
+    <time>1596456758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823734</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>f8645ed26b92ebd2943bb1ae32bf2063</srcmd5>
+    <version>0.118</version>
+    <time>1603959743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844237</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>95177ca98a073dd5888a5f47e76f6ee7</srcmd5>
+    <version>0.118</version>
+    <time>1609344714</time>
+    <user>dimstar_suse</user>
+    <comment>- also set libprivdir during build, otherwhise systemd and D-Bus service files
+  contain the wrong path and we'll get runtime errors. (forwarded request 859146 from mgerstner)</comment>
+    <requestid>859155</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>bccac7968a47e85ac170c1b8529be0f2</srcmd5>
+    <version>0.118</version>
+    <time>1609407081</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1180474</comment>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>751b3e70415d763ab0e643f57c6b42e7</srcmd5>
+    <version>0.118</version>
+    <time>1610123530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860124</requestid>
+  </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>f564a8cd972138ec7195652219f7ef9b</srcmd5>
+    <version>0.118</version>
+    <time>1616008406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879208</requestid>
+  </revision>
+  <revision rev="76" vrev="6">
+    <srcmd5>7a57afb462f20146c5ff3b1aa89698cc</srcmd5>
+    <version>0.118</version>
+    <time>1623521139</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix verifyscript: the path to the binary was wrongly defined as
+  %{_libexecdir}/lib.
+
+- CVE-2021-3560: fixed a local privilege escalation using polkit_system_bus_name_get_creds_sync()
+ (bsc#1186497)
+  CVE-2021-3560.patch</comment>
+    <requestid>899432</requestid>
+  </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>34af918529d30997b381314f2c501cd1</srcmd5>
+    <version>0.118</version>
+    <time>1626887147</time>
+    <user>dimstar_suse</user>
+    <comment>- Change to using systemd-sysusers
+- Remove unneeded shadow dependency, no longer required due to
+  systemd-sysusers
+- Fix 50-default.rules file-parent-ownership-mismatch warning
+- Remove --with-pic, no effect with --disable-static
+
+- Move /etc/polkit-1/rules.d/50-default.rules to
+  /usr/share/polkit-1/rules.d/50-default.rules. The first location
+  is only for admin changes.</comment>
+    <requestid>907023</requestid>
+  </revision>
+  <revision rev="78" vrev="8">
+    <srcmd5>69c3f77d10a073248ff0b82f19f99c10</srcmd5>
+    <version>0.118</version>
+    <time>1635167828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926578</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>ef628d497fd157547924f52539fd1806</srcmd5>
+    <version>0.120</version>
+    <time>1639266953</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.120:
+  * transition from Intltool to gettext
+  * several tarball, meson and pipeline fixups
+  * Portuguese translation
+  * Romanian translation
+  * meson build system added
+  * CVE-2021-3560 mitigation
+  * properties in text listener
+  * typos fixups
+  * Update Hungarian translation
+- drop CVE-2021-3560.patch  (upstream) (forwarded request 936022 from dirkmueller)</comment>
+    <requestid>936198</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>c1e092a48f7d64c8946efb03499ae03c</srcmd5>
+    <version>0.120</version>
+    <time>1643321785</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from mozjs to duktape:
+  * Add duktape-support.patch
+
+Provides the same features as with mozjs, but is *much* smaller both during
+build and runtime. Before, installing polkit needed 62.0 MiB, with this it's
+just 16.3 MiB. (Tested in an opensuse/tumbleweed container).
+
+I didn't encounter any errors while playing around with it in a Live CD. (forwarded request 949263 from favogt)</comment>
+    <requestid>949264</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>ddfacd1ec3fc9b10382d069275b36edb</srcmd5>
+    <version>0.120</version>
+    <time>1645629948</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed denial of service via file descriptor leak (bsc#1195542 CVE-2021-4115)
+  0001-CVE-2021-4115-GHSL-2021-077-fix.patch</comment>
+    <requestid>956662</requestid>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>b2668928e8d0a3ee8942b41138b90d9d</srcmd5>
+    <version>0.120</version>
+    <time>1659301222</time>
+    <user>favogt_factory</user>
+    <comment>- split out pkexec into seperate package to make system hardening
+  easier (to avoid installing it jsc#PED-132 jsc#PED-148). (forwarded request 989830 from msmeissn)</comment>
+    <requestid>989831</requestid>
+  </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>5bd41e9508237dd57e922e9417b444b9</srcmd5>
+    <version>0.120</version>
+    <time>1659612178</time>
+    <user>dimstar_suse</user>
+    <comment>- add split-provides for polkit:/usr/bin/pkexec. (bsc#1202070) (forwarded request 992574 from msmeissn)</comment>
+    <requestid>992575</requestid>
+  </revision>
+  <revision rev="84" vrev="6">
+    <srcmd5>7cc1583aa287cf4e2f0c63b1e2ef218c</srcmd5>
+    <version>0.120</version>
+    <time>1660051560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993702</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>6bd8e72472595e4a634f56c894e313cb</srcmd5>
+    <version>121</version>
+    <time>1660834131</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 121 stable release. (forwarded request 997456 from luc14n0)</comment>
+    <requestid>997525</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>7dc6deea1fad5cab61fc2a1040ca20c8</srcmd5>
+    <version>121</version>
+    <time>1663327933</time>
+    <user>dimstar_suse</user>
+    <comment>next try
+
+- obsolete libpolkit0 also from baselibs.</comment>
+    <requestid>1003905</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>948f0a0aa74472729a8e3e3f6d1ec461</srcmd5>
+    <version>121</version>
+    <time>1668086373</time>
+    <user>dimstar_suse</user>
+    <comment>- read actions also from /etc/polkit-1/actions (jsc#PED-1405)
+  added polkit-actions-in-etc.patch</comment>
+    <requestid>1034882</requestid>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>1f6c5d67fe39fedb65de61b4427c4b1c</srcmd5>
+    <version>121</version>
+    <time>1680290109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075521</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>1cb7c6557e4317f34d9fbe275164decc</srcmd5>
+    <version>123</version>
+    <time>1701792141</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 123:
+  + Highlights:
+    - better safety with deeper restriction of the configuration
+      files
+    - better safety with restricting the daemon's owner under
+      systemd
+    - better safety with the systemd unit sandboxing
+    - less thread races during upload of the configuration
+- Changes from version 122:
+  + Highlights:
+    - new Georgian translation
+    - port to mozjs-102
+    - daemon-less build (support for e.g. flatpak deps)
+    - re-enable of (API) documentation build
+- See more detailed changes in the included NEWS.md file.
+- Change URL and Source to new home, and drop polkit.keyring and
+  tar.gz.sign tarball signature, no longer available.
+- Drop polkit-fix-pam-prefix.patch: Fixed upstream.
+- Add /usr/bin/dbus-daemon BuildRequires, needed for tests. Replace
+  the dbus-1 with /usr/bin/dbus-daemon Requires.
+
+- change /usr/share/polkit-1/rules.d to 555,root:root. /usr content
+  isn't secret anyway so this avoids non-root owned files in /usr
+  (boo#1215482)
+- update 50-default.rules to allow adding more admin rules
+  (jsc#PED-260, drop polkit-no-wheel-group.patch)</comment>
+    <requestid>1127651</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>eac9c5c82961ffdb7a4831591a539313</srcmd5>
+    <version>123</version>
+    <time>1702405904</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 'dbus-service' as Requires instead of /usr/bin/dbus-daemon
+  This allow to use other dbus implementations such as dbus-broker with this
+  package again. (bsc#1217863) (forwarded request 1132569 from tobijk)</comment>
+    <requestid>1132614</requestid>
+  </revision>
+</revisionlist>

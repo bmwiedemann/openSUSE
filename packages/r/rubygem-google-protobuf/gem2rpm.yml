@@ -1,0 +1,77 @@
+---
+# ## used by gem2rpm
+# :summary: this is a custom summary
+# ## used by gem2rpm
+# :description: |-
+#   this is a custom description
+#
+#   it can be multiline
+# ## used by gem2rpm
+# :license: MIT or Ruby
+# ## used by gem2rpm and gem_packages
+# :version_suffix: -x_y
+# ## used by gem2rpm and gem_packages
+# :disable_docs: true
+# ## used by gem2rpm
+# :disable_automatic_rdoc_dep: true
+# ## used by gem2rpm
+#   BuildRequires: foobar
+#   Requires: foobar
+# ## used by gem2rpm
+# :patches:
+#   foo.patch: -p1
+#   bar.patch:
+# ## used by gem2rpm
+# :sources:
+# - foo.desktop
+# - bar.desktop
+# :gem_install_args: '....'
+# ## used by gem2rpm
+# :pre_install: |-
+#   %if 0%{?use_system_libev}
+#   export USE_VENDORED_LIBEV="no"
+#   %endif
+# ## used by gem2rpm
+:post_install: |-
+  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.google.time' \) -delete
+  # upstream did a chmod 0777 on everything
+  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '*.c' -o -name '*.h' -o -name '*.rb' -o -name 'LICENSE' \) -print0 | xargs -r0 chmod -x
+  # add the executable bit back to all scripts
+  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'well_known_types.rb' -o -name 'descriptor_dsl.rb' -o -name 'extconf.rb' \) -print0 | xargs -r0 chmod +x
+# ## used by gem2rpm
+# :testsuite_command: |-
+#   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)
+# ## used by gem2rpm
+# :filelist: |-
+#   /usr/bin/gem2rpm-opensuse
+# ## used by gem2rpm
+# :scripts:
+#   :post: |-
+#     /bin/echo foo
+# ## used by gem_packages
+# :main:
+#   :preamble: |-
+#     Requires: util-linux
+#     Recommends: pwgen
+#   :filelist: |-
+#     /usr/bin/gem2rpm-opensuse
+# ## used by gem_packages
+# :custom:
+#   apache:
+#     :preamble: |-
+#       Requires: .....
+#     :filelist: |-
+#       /etc/apache2/conf.d/passenger.conf
+#     :summary: Custom summary is optional
+#     :description: |-
+#       Custom description is optional
+#
+#       bar
+#     :post: |-
+#       /bin/echo foo
+#
+:patches:
+  do-not-wrap.patch: -p1
+  0001-ruby-return-0-from-shared_convert.c-shared_message.c.patch: -p2
+:sources:
+  - rubygem-google-protobuf-rpmlintrc

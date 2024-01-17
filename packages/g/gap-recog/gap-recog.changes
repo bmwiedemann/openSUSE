@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Sat Nov 19 01:01:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.2
+  * Merge recogbase into recog
+  * Remove tons of unused code & files
+  * Fix many bugs in the recognition code leading to errors or
+    incorrect recognitions
+  * Replace involution finder for SL_2 in even characteristic
+    (faster & less buggy)
+  * Add Randomize methods for non-compressed vectors to support
+    fields with more than 256 elements
+  * Rename `order` to `OrderFunc` to avoid clashes with existing
+    code
+
+-------------------------------------------------------------------
+Wed Jun  8 14:35:39 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.2.5
+* No changelog provided
+
+-------------------------------------------------------------------
+Sat Mar 12 19:41:01 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.2.4
+* Fix bugs with handling of scalars in projective matrix groups
+* Fix misdetection of SL(2,q), odd q
+* Fix bug leading to "Error: Group() called with empty list of
+  generators"
+* Fix endless loop when recognizing GL(2,q) with q <= 32
+* Detect if DoHintedLowIndex runs into an infinite loop
+
+-------------------------------------------------------------------
+Fri Dec 12 12:54:24 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.2.3
+* Changes to package metadata only
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split recog (version 1.2) off the gap RPM package

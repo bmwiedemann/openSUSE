@@ -1,0 +1,27 @@
+From 9983c451e366c72f73de46901ccc12663be72743 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jes=C3=BAs=20Soto?= <jesus.soto@canonical.com>
+Date: Mon, 19 Sep 2022 11:15:14 +0200
+Subject: [PATCH 157/161] Add Gnome Shell 43 compatibility
+
+(cherry picked from commit 2919d4f4ca59722bb23c5bbce3fe8e3b12dcef2b)
+---
+ data/metadata.json.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 61f6731..78eef73 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -15,7 +15,8 @@
+         "3.38",
+         "40",
+         "41",
+-	"42"
++        "42",
++        "43"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+-- 
+2.41.0
+

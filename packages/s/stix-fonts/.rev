@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f171f2d1a7d7bdf058f3b0823d1353e</srcmd5>
+    <version>1.0.0</version>
+    <time>1277826775</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/stix-fonts based on submit request 42180 from user pgajdos
+</comment>
+    <requestid>42180</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f171f2d1a7d7bdf058f3b0823d1353e</srcmd5>
+    <version>1.0.0</version>
+    <time>1278667400</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1f171f2d1a7d7bdf058f3b0823d1353e</srcmd5>
+    <version>1.0.0</version>
+    <time>1278678636</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>1f171f2d1a7d7bdf058f3b0823d1353e</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>1f171f2d1a7d7bdf058f3b0823d1353e</srcmd5>
+    <version>1.0.0</version>
+    <time>1319182491</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9ead9cdca8c7369f79a4c64b9c9f59ba</srcmd5>
+    <version>1.1.0</version>
+    <time>1331900767</time>
+    <user>coolo</user>
+    <comment>license update: OFL-1.1
+STIX is licensed under the OFL-1.1 (forwarded request 108872 from babelworx)</comment>
+    <requestid>108873</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1bdd69381a5652306547dfc68fc8d63f</srcmd5>
+    <version>1.1.0</version>
+    <time>1338017356</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122186</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>1bdd69381a5652306547dfc68fc8d63f</srcmd5>
+    <version>1.1.0</version>
+    <time>1340184241</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>d7ffa39834f1da6f3513c218b82ef8ba</srcmd5>
+    <version>1.1.0</version>
+    <time>1347619155</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133986</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>4d01af0513028c3e82bb52b6a6ef0969</srcmd5>
+    <version>1.1.0</version>
+    <time>1350364747</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>138212</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>4d01af0513028c3e82bb52b6a6ef0969</srcmd5>
+    <version>1.1.0</version>
+    <time>1359110443</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>4d01af0513028c3e82bb52b6a6ef0969</srcmd5>
+    <version>1.1.0</version>
+    <time>1379664737</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>4d01af0513028c3e82bb52b6a6ef0969</srcmd5>
+    <version>1.1.0</version>
+    <time>1409303419</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6edba3bbce94ba3b247a18c2fc9f65ad</srcmd5>
+    <version>1.1</version>
+    <time>1520588200</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-holoviews, which is already in openSUSE:Factory.</comment>
+    <requestid>581991</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>24e640d690309471adefc12128de9ae8</srcmd5>
+    <version>1.1</version>
+    <time>1544726693</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654063</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0167a1761b021a98bf81e940c7b99c38</srcmd5>
+    <version>2.1.0</version>
+    <time>1560338004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708389</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5e64214fae92f3501b0cf980d1c6a9b</srcmd5>
+    <version>2.1.0.post1</version>
+    <time>1568379662</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 2.1.0.post1:
+  * no changelog given</comment>
+    <requestid>730392</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dc36490cbe2f938743bd8e6e71d56478</srcmd5>
+    <version>2.2.0</version>
+    <time>1595271534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Expose FT_Outline_Decompose() as Outline.decompose()
+  * examples/glyph-vector-decompose.py: Use larger size, and with
+    FT_LOAD_NO_BITMAP, to avoid loading embedded bitmaps
+  * Glyph.get_cbox: unbreak
+  * Improve variable font support with examples
+  * Update embedded FreeType and HarfBuzz in wheels to latest versions.
+  * Drop Python 2 support and 32 bit wheels. 
+- Update URL to use zip
+- Update BuildRequires
+- Drop bcond test now that upstream no longer supports Python 2</comment>
+    <requestid>820819</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9af68ed922ef19ebfece6486458c605</srcmd5>
+    <version>2.3.0</version>
+    <time>1664468004</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006742</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c083ec099650a3eab3ae983bc052b782</srcmd5>
+    <version>2.4.0</version>
+    <time>1702071107</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.4.0:
+  * Update bundled dependencies (HarfBuzz 7.2.0 and FreeType
+    2.13.0)
+  * Use leftside bearings to layout bitmaps by @HinTak to fix
+    #161
+  * Correct copyright and description in examples/hello-vf.py
+  * Fix `FT_Glyph_Get_CBox()`/`FT_Outline_Get_CBox()` return type
+    treatment by @HinTak to fix #160
+
+- update to 2.3.0
+  * Drop Python 2 support and 32 bit wheels.
+  * FT_Face can now be instantiated with a file path or a byte
+  * Fix bug where outline and bitmap could be off by one grid unit</comment>
+    <requestid>1131690</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8336443775d4053290e3ad65c701d2d4</srcmd5>
+    <version>2.4.0</version>
+    <time>1704387556</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1136881</requestid>
+  </revision>
+</revisionlist>

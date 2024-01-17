@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2dfcfb9a5618b0a43f9693cfc00996a</srcmd5>
+    <version>1.13.0</version>
+    <time>1609959447</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-google-cloud-translate 3.0.0+</comment>
+    <requestid>860777</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cd81bfa064e4967e1ffcb22ca3ac9063</srcmd5>
+    <version>1.18.1</version>
+    <time>1616271982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880254</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2b4e47f4bc48691edd5a4a5788315c86</srcmd5>
+    <version>1.19.0</version>
+    <time>1631310089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917951</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8c9a93c2439f4dbc5fdba675309f2064</srcmd5>
+    <version>1.19.0</version>
+    <time>1636663074</time>
+    <user>dimstar_suse</user>
+    <comment>- Add multibuild to defeat a build loop.</comment>
+    <requestid>930808</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4420ad93f6554b2b583b92b462ca2353</srcmd5>
+    <version>1.19.9</version>
+    <time>1643666249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950247</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>07b2db8ae2aef68bb2305fb1dc0b999b</srcmd5>
+    <version>1.20.3</version>
+    <time>1651272390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973991</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>41d7e511c31aef077ffcd4e3ea344709</srcmd5>
+    <version>1.22.1</version>
+    <time>1662740898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1002311</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>734aabb699aa318047e4bb8864e7db89</srcmd5>
+    <version>1.22.2</version>
+    <time>1677878915</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1069136</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0f790bfc9b8d25d25eefe43c330c78b5</srcmd5>
+    <version>1.22.3</version>
+    <time>1699478351</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124262</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d641eba75306a3844a09b1e06d21fc70</srcmd5>
+    <version>1.23.0</version>
+    <time>1704281281</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.23.0:
+  * Add additional parameters to `to_json()` and `to_dict()`
+    methods (#384)
+  * Add support for proto.__version__ (#393)
+  * Add support for python 3.12 (#400)
+  * Add documentation on how to query the current oneof in a
+    given message (#408)
+  * Add example for __protobuf__ module level attribute (#409)
+
+- Add multibuild to defeat a build loop.
+    (gh#googleapis/proto-plus-python#512)</comment>
+    <requestid>1136319</requestid>
+  </revision>
+</revisionlist>

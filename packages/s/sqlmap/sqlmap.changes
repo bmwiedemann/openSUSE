@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Fri Jan  5 14:32:01 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.8:
+  * H2 queries to get data use wrong order for LIMIT and OFFSET (#5580)
+  * Cleaning some mess with limitQuery
+  * fix issue #5571, #5229, #5581, #5585
+  * update documentation and copyright year
+
+-------------------------------------------------------------------
+Fri Dec  1 15:04:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.12:
+  * Fixes #5567, #5566, #5574, #5576
+
+-------------------------------------------------------------------
+Sat Nov 25 16:49:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.11:
+  * Fixes: #5539, #5549, #5560, #5565
+
+-------------------------------------------------------------------
+Tue Oct 10 08:41:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.7.10:
+  * Fixes: #5536, #5502, #5521
+
+-------------------------------------------------------------------
+Thu Sep 14 12:48:25 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.7.9:
+  * Removing support for lol FORKZ
+  * Fixes #5476
+  * Fixes #5481
+  * Fixes #5479
+  * Fixes #5477
+  * Potential fix for #5485
+  * Patch for #5485
+  * Fixes #5493
+  * Fixes #5492
+  * Fixes #5483
+  * Add SQLite AND boolean-based blind payload (#5501)
+  * Fixes #5510
+  * Implements option --union-values (#5508)
+
+-------------------------------------------------------------------
+Wed Jul 19 19:24:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.7:
+  * Fixes #5428
+  * Fixes #5431
+  * Fixes #5434
+  * Fixes #5444
+  * Fixes #5445
+  * Implements #5452
+
+-------------------------------------------------------------------
+Fri Jun 16 10:01:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.7.6:
+  * Bugfixes: #5428, #5409, #5381, #5358
+
+-------------------------------------------------------------------
+Mon Feb 13 09:28:29 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.7.2:
+  * Implements tamper script if2case
+  * Bugfixes
+
+-------------------------------------------------------------------
+Tue Dec  6 12:05:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.12:
+  * Better handling of CookieJar Runtime Exception
+  * Fixes #5216
+  * Fixes #5220
+  * Fixes #5233
+  * Fixes #5232
+  * Fixes #5240
+  * Fixes #5242
+  * Fixes #5252
+
+-------------------------------------------------------------------
+Sun Dec  4 13:58:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.11:
+  * Fixes #5190
+  * Fixes #5191
+  * Fixes #5192
+  * Implement --csrf-data
+  * Fix --cookie-del
+  * Fixes #5216
+
+-------------------------------------------------------------------
+Mon Oct 10 08:15:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.10:
+  * Fixes #5187
+  * Fixes #5182
+  * Fixes #5170
+  * Fixes #5165
+  * Fixes #5162
+  * Fixes #5154
+  * Fixes #5152
+  * Fixes #5147
+
+-------------------------------------------------------------------
+Wed Aug  3 22:05:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.7:
+  * https://github.com/sqlmapproject/sqlmap/compare/1.5.7...1.6.7
+
+-------------------------------------------------------------------
+Tue Aug 31 05:16:54 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update fix_shebang.patch to switch Python scripts to calling
+  /usr/bin/python3.
+- Add Requires on python3 for full interpreter.
+
+-------------------------------------------------------------------
+Thu Jul 15 07:21:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.7:
+  * Fixed #4728 (https://github.com/sqlmapproject/sqlmap/issues/4728)
+  * Fixed #4664 (https://github.com/sqlmapproject/sqlmap/issues/4664)
+  * Fixed #4625 (https://github.com/sqlmapproject/sqlmap/issues/4625)
+  * Speedup of caching for char encoding (non-Unicode chars in page)
+  * Fixing HTTP chunking for Python2.6
+
+-------------------------------------------------------------------
+Thu Jul  1 15:38:57 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- First import from upstream

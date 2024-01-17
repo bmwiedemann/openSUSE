@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f81b53df6229da8aa4ecb6d1d6455ff</srcmd5>
+    <version>1.6.1</version>
+    <time>1551284913</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain reveng in Factory</comment>
+    <requestid>677195</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>10dbff3475384d971a175d1e9ccf59f8</srcmd5>
+    <version>1.6.2</version>
+    <time>1551883894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682081</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6eaf7e0900ab0179ecea21031244159d</srcmd5>
+    <version>1.6.3</version>
+    <time>1556817577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699829</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92bb5fbcf6f17c1cf95ef708f3164446</srcmd5>
+    <version>2.0.0</version>
+    <time>1557264057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701415</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>15954616c8a95d3ea940ef77164038de</srcmd5>
+    <version>2.0.2</version>
+    <time>1573045009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745174</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>75631b8854fd8b5b6de558ae4685e28e</srcmd5>
+    <version>2.0.3</version>
+    <time>1574164792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749477</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eafbb4a31940570e9a90885b9525a499</srcmd5>
+    <version>2.1.0</version>
+    <time>1576014213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755497</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7e7c58e30f902e05dd20354f02366128</srcmd5>
+    <version>2.1.1</version>
+    <time>1597658855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827124</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>43ea0fa78e14d5d4d68eecd9face8e40</srcmd5>
+    <version>2.1.2</version>
+    <time>1640808660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943033</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>af3b4fcbb9af6d616a9775acbae5f313</srcmd5>
+    <version>3.0.0</version>
+    <time>1641203391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943478</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>728956e238b94de185c96fd9b780d740</srcmd5>
+    <version>3.0.1</version>
+    <time>1642029746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945761</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eeef1598037042b563332a1579ad20c3</srcmd5>
+    <version>3.0.3</version>
+    <time>1652114642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975700</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>129aede279eecfc85a63822e5f94f56c</srcmd5>
+    <version>3.0.5</version>
+    <time>1662541553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001459</requestid>
+  </revision>
+</revisionlist>

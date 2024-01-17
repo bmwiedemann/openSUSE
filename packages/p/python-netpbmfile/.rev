@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d7ed1eb77ec74caa4acc020e844c143</srcmd5>
+    <version>2020.1.1</version>
+    <time>1597403463</time>
+    <user>dimstar_suse</user>
+    <comment>file parsers</comment>
+    <requestid>825350</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8b36ba1b6b876beebc042134fafad9d</srcmd5>
+    <version>2020.10.18</version>
+    <time>1606649404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>851330</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5854e2e39922af36ff43aab6ad66ec8b</srcmd5>
+    <version>2020.10.18</version>
+    <time>1613774740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873737</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ff852d601696d3e15bfdf3dc667a3e65</srcmd5>
+    <version>2023.8.30</version>
+    <time>1703024215</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134043</requestid>
+  </revision>
+</revisionlist>

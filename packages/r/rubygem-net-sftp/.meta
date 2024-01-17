@@ -1,0 +1,10 @@
+<package name="rubygem-net-sftp" project="openSUSE:Factory">
+  <title>Title of New Package</title>
+  <description>
+LONG DESCRIPTION 
+GOES 
+HERE
+  </description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-net-sftp"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

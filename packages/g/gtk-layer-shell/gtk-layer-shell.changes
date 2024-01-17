@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Fri Jan  5 07:49:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.2:
+  * Compat: bump supported GTK to v3.24.39
+  * Compat: NOTE: GTK v3.24.40 may break previous version and work
+    with this one, but we won't know for sure until it's released
+
+-------------------------------------------------------------------
+Thu Apr 13 07:17:03 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  * Meson: mark wayland-scanner as a build-time dependency
+  * Docs: deploy docs to GitHub Pages
+  * Compat: bump supported GTK to v3.24.37
+
+-------------------------------------------------------------------
+Mon Oct 24 10:34:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * Vala: support generating vapi files
+  * Fix: memory leak, #128
+  * Compat: stop warning when GTK version is not explicitly supported
+  * Compat: bump supported GTK to 3.24.34
+
+-------------------------------------------------------------------
+Fri Jan 28 08:39:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Meson: allow disabling building with gobject-introspection
+  * Compat: bump supported GTK to v3.24.31
+
+-------------------------------------------------------------------
+Wed Mar  3 09:18:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Layer Shell: support protocol version 4
+  * API: support on-demand keyboard interactivity on protocol version 4
+  * API: deprecate gtk_layer_set_keyboard_interactivity() in favor of
+    gtk_layer_set_keyboard_mode()
+  * API: add gtk_layer_get_protocol_version()
+  * Compat bump supported GTK to v3.24.26
+
+-------------------------------------------------------------------
+Sun Dec 13 10:12:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.2:
+  * Fix: normalize keyboard interactivity boolean to TRUE or FALSE
+  * Fix: Set layer windows to mapped (removes warning on tooltip
+    creation and fixes subsurfaces created as a GTK_WINDOW_POPUP
+    window, fixes #38)
+  * Examples: Rename gtk-layer-example -> simple-example-c
+  * Examples: merge simple-example-c and gtk-layer-demo into
+    examples directory
+  * Examples: add Vala example (not built with rest of project,
+    does not add dependency)
+  * Examples: add Python example
+  * Meson: change GTK dependency gtk+-wayland-3.0 -> gtk+-3.0
+  * Meson: drop .types file in docs
+  * Tests: change "test client" terminology to "integration test"
+  * Tests: colored output
+  * Tests: check that all tests are added to meson
+  * Compat: bump supported GTK to v3.24.24
+
+-------------------------------------------------------------------
+Mon Nov  2 06:52:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  * Tests: fix integration test timeout on GTK v3.24.23 (#91)
+
+-------------------------------------------------------------------
+Thu Oct 29 07:51:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * API: add getters for all properties (fixes #56)
+  * API: add gtk_layer_is_supported() (fixes #83)
+  * API: add gtk_layer_is_layer_window(window)
+  * Docs: add Since: annotations for functions added since the
+    initial release (fixes #82)
+  * Fix: accept non-1 true boolean values
+  * Tests: fix license test for release tarball (fixes #73)
+  * Tests: test popup with grab (the most likely thing to break
+    on an incompatible GTK version) (fixes #68)
+
+-------------------------------------------------------------------
+Thu Oct 22 08:32:00 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Demo: show GTK Layer Shell version
+  * Demo: fix initially set auto-exclusive zone and fixed size
+    properties (fixes #64)
+  * API: expose GTK Layer Shell version
+  * API: expose the underlying layer shell surface (fixes #41)
+  * Tests: add mock server
+  * Tests: add integration tests (fixes #60)
+  * Diagnostics: remove "transient_for != window transient_for" warning
+  * Diagnostics: improve warning when GTK version may not work by
+    linking to a compatibility table (fixes #66)
+  * Compat: bump supported GTK to v3.24.23
+
+-------------------------------------------------------------------
+Tue Aug 18 13:05:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add GPL3 to Licenses
+
+-------------------------------------------------------------------
+Thu Aug 13 07:38:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * Demo: Display GTK version
+  * Demo: Add option for disabling gtk-layer-shell for testing
+  * Fix intermittent crash relating to popovers (#51)
+  * Clarify that our license is LGPL version 3 or any later version
+  * Use system XDG Shell protocol when available
+  * Allow accessing the underlying layer shell surface
+    (EDIT: this change was accidentally omitted from the release)
+  * Bump explicitly supported GTK version to 3.24.22
+
+-------------------------------------------------------------------
+Wed Jul 29 05:54:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * Relicense to LGPL v3
+  * Fix long standing issue with popup grabs
+  * Fix potential compatibility issues between GTK versions with
+    gtk-priv headers
+  * Add GitHub Actions CI (just building and license check for now)
+  * Add script to check that are files are licensed correctly
+  * Use layer_surface->set_layer instead of remapping (when available)
+
+-------------------------------------------------------------------
+Wed Apr 29 08:32:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- BuildRequire gobject introspection devel files correctly
+
+-------------------------------------------------------------------
+Fri Jan  3 08:33:19 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add typelib subpackage typelib-1_0-GtkLayerShell-0_1
+- Rename gtk-layer-shell0 to libgtk-layer-shell0
+
+-------------------------------------------------------------------
+Sat Dec 28 12:39:40 UTC 2019 - Michael Vetter <mvetter@suse.com>
+
+- Initial package gtk-layer-shell 0.1.0 for openSUSE

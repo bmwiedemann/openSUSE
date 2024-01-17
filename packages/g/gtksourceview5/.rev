@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e966b3c0caec0568f418920f1dc1ed2</srcmd5>
+    <version>5.2.0</version>
+    <time>1632939534</time>
+    <user>dimstar_suse</user>
+    <comment>Version 5 parallel install</comment>
+    <requestid>921985</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>adea41e64e0171bcb7d25dbad9987f97</srcmd5>
+    <version>5.4.0</version>
+    <time>1648062997</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963616</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e1f4ff9aeec6773cb38bb146f620f8d2</srcmd5>
+    <version>5.4.1</version>
+    <time>1650996903</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 972166 from dimstar)</comment>
+    <requestid>972484</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b15ca17a4b6be4914e048b3b9e8bb1fb</srcmd5>
+    <version>5.4.2</version>
+    <time>1655824506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4.2:
+  + Updated languages: c.lang, perl.lang.
+  + Updated style-schemes: Adwaita-dark, solarized-light,
+    solarized-dark.
+  + Gutter renderers are now provided a prelight quark for lines
+    when the pointer is over the gutter.
+  + Hover assistants now avoid synthesized motion which is used
+    much more often in GTK 4 when dealing with crossing-events.
+  + Hover assistants will now dismiss themselves when the cursor
+    moves.
+  + GtkSourceMap has reduced how often it needs to do allocation by
+    ignoring spurious notify::upper and value-changed signals from
+    GtkTextView's vertical GtkAdjustment.
+  + The testsuite has gained some correctness improvements.
+  + The Vim emulation's register implementation is now shared
+    between buffers as it would be expected in Vim.
+  + Snippets have gained some robustness improvements including the
+    ability to simplify results from the snippet parser, more
+    defensive behavior, and being lazier when possible.
+  + Tabbing through focus-positions in snippets will now
+    immediately jump to the new position if scrolling is required
+    instead of animating as it results in better placement of
+    tooltip assistants.
+  + Assistants including completion, hover, and interactive
+    tooltips now reduce how often they request presentation and
+    position calculation from GDK and ultimately display servers
+    such as Wayland.
+  + Completion windows now take the size of the gutter into account
+    when calculating their position relative to the parent
+    GtkWindow so that the typed-text column remains aligned with
+    typed text in the source view.
+  + Completion has gained robustness improvements to do less work
+    when possible and avoid spinning the frame-clock which could
+    happen in certain scenarios.
+  + Updated translations. (forwarded request 983489 from iznogood)</comment>
+    <requestid>983863</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c6a9458af59442ae9f880c31029c462e</srcmd5>
+    <version>5.6.0</version>
+    <time>1663764048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004815</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e959507fc6c25eab847d364f15f967c0</srcmd5>
+    <version>5.6.1</version>
+    <time>1663935287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005352</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d89030ef1e3c590e256aa4754540dd2</srcmd5>
+    <version>5.6.2</version>
+    <time>1673724675</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1057755 from iznogood)</comment>
+    <requestid>1058169</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2efd4aa1be00951b87dd035637699a04</srcmd5>
+    <version>5.8.0</version>
+    <time>1679667429</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1072731 from iznogood)</comment>
+    <requestid>1073180</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2772e0ad4ec23b7b9a00c495ef6b3f9d</srcmd5>
+    <version>5.10.0</version>
+    <time>1695208951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111892</requestid>
+  </revision>
+</revisionlist>

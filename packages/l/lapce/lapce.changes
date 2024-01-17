@@ -1,0 +1,893 @@
+-------------------------------------------------------------------
+Sun Jan  7 03:55:54 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Respect lock and revert cargo update
+
+-------------------------------------------------------------------
+Sat Dec 30 00:00:07 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
+
+- Update to version 0.3.1:
+  * add ruby tree sitter queries
+  * fix editor scroll
+  * bump floem
+  * bump floem and use floem::Clipboard
+  * feat: implement `Format Document` command
+  * fix: save without formatting now calls save
+  * create_dir_all when saving
+  * Reworked cursor rendering, fixing several bugs
+  * Fix invalid unicode filenames not being displayed
+  * Fix non_canonical_partial_ord_impl clippy lints
+  * Add explicit static lifetime to consts
+  * move cursor blink timer to window
+  * update the language in the status bar
+  * bump floem
+  * Add UI inspector command
+  * Bump Floem
+  * run.toml on remote fix
+  * Auto-surround config
+  * fix language name used in status bar
+  * Don't mark nonexistent files as read only
+  * fix FocusText view
+  * bump floem
+  * display visual line and visual block mode
+  * bump floem
+  * bump floem
+  * fix version matching on lapce-proxy
+  * don't panic if log file can't be created
+  * update screenshot
+
+-------------------------------------------------------------------
+Tue Nov 21 23:27:47 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.3.0:
+  Features/Changes
+  * Rewrite with Floem UI
+  * Reimplement completion lens
+  * Show Lapce as an option when doing "Open With..." on Linux
+  * Implement multi-line vim-motion yank and delete (3dd, 2yy, etc.)
+  * Implement search and replace
+  * Implement debug adapter protocol
+  Bug Fixes
+  * Inform language servers that Lapce supports LSP diagnostics
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Thu Jun  8 23:28:19 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert back to non-updated dependencies. Some issues with crate
+  versions.
+
+-------------------------------------------------------------------
+Wed Jun 07 14:46:16 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.8:
+  * Feature: Add basic Vim marks feature (#2403)
+  * docs: add install instructions for nixpkgs (#2401)
+  * Revert "fix: proxy version comparison" (#2395)
+  * fix: proxy version comparison (#2206)
+  * fix: canonicalize path (#2367)
+  * fix: limit lower bound of blink interval (#2391)
+  * feat: make metainfo comptime (#2374)
+  * fix: set TERM for flatpak
+  * Add instructions for installing on Gentoo (#1672)
+  * Fixed copy remote file url (#2077)
+  * Enable XML syntax highlighting for csproj files (#2297)
+  * ci: copy cargo config from release workflow (#2338)
+  * Add placeholder text to filter input in settings (#2337)
+  * ci: fix WiX install + use Cargo sparse protocol (#2334)
+  * docs: fix changelog (#2332)
+  * feat: filter settings (#2289)
+  * command: implemented RevealActiveFileInFileTree (#2282)
+  * Fix several issue with bracket highlights (#2248)
+  * fix: search result folding incorrectly (#2272)
+  * Add option to open files at specific line/column (#1964)
+  * fix: store lapce data next to lapce for portable install (#1888)
+  * fix: typo in tab.rs (#2253)
+
+- Update vendored dependencies to address bnc#1212005
+
+-------------------------------------------------------------------
+Fri Apr 14 14:00:47 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies
+
+-------------------------------------------------------------------
+Fri Mar 17 06:41:13 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.7:
+  * Remove duplicate binding for Shift-Delete (#2246)
+  * remove duplicate command 'GotoLocation' (#2240)
+  * docs: add git branch filter input in changelog (#2239)
+  * Fix attempting to canonicalize a path when saving a new file (#2225)
+  * Add StartupWMClass to desktop entry (#2228)
+  * feat: double-click for new file on home page (#2223)
+  * feat: highlight all occurrences of the selected text (#2222)
+  * Fix new clippy warnings (#2224)
+  * open source file from diff (#2141)
+  * feat: allow folding file content in global search results (#2217)
+  * revert back to old way of set_locale_enviroment (#2209)
+  * fix: use AND comparison instead of bitwise (#2192)
+
+-------------------------------------------------------------------
+Wed Mar 01 10:21:38 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.6:
+  * Make auto_closing_matching_pairs dependent on BufferContent (#2188)
+  * Extended double-click options (#2127)
+  * chore(deps): bump once_cell from 1.15.0 to 1.17.1 (#2173)
+  * fix: build WSL backend only for Windows (#2166)
+  * return stdout stderr
+  * update psp-types
+  * fix cannot open file when diff already opened (#2125)
+  * Use abs_diff (#2123)
+  * Added Lapce App Icon (#2128)
+  * fix: dont overwrite symlink (#2131)
+  * ci: run workflow in PR to test changes (#2132)
+  * chore(deps): bump git2 from 0.14.4 to 0.16.1 (#2050)
+  * fix: rewrite script + fix version comparison (#2117)
+  * Add settings to configure the scroll speed (#2120)
+  * make wasi initilization async (#2114)
+  * feat: configurable diff context lines (#2094)
+  * Properly instantiate the WASM blob and let it live inside the thread (#2090)
+  * If format-on-save is not enabled, save immediately (#2088)
+  * feat: diff view navbar (#2084)
+  * Enable plugins to act as LSP themselves (#2087)
+  * fix: branches filter not updating (#2080)
+  * feat: add Ctrl+{a,e,k} keybinds on macOS (#2074)
+  * fix: remove regex, parse remote as URL (#2075)
+  * fix: find repository if it's not in current workspace path (#2069)
+  * fix: set language environment in proper way (#2070)
+  * feat: add command and keybinds to delete line (#2071)
+  * Add an option to disable moving the focus area when you type (#2062)
+  * Don't spawn a thread for every config watcher notifications (#2034)
+  * fix: remove ssh timeout option on windows (#2072)
+  * fix: missing newline (#2073)
+  * fix(clippy): apply new lints (#2063)
+  * Actually logs LogMessage request from plugins (#2061)
+  * Fix select current line not working (#2046)
+  * Some fixes to global search with files outside of workspaces (#2048)
+  * Use bounded channel of 1 when responding to plugin rpc requests (#2055)
+  * send user HOME dir from proxy to editor (#2056)
+- Use zstd compression for tarballs.
+
+-------------------------------------------------------------------
+Mon Jan 23 05:01:48 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.5+git87:
+  * Add 'Rename Symbol' option on right-click (#2045)
+  * Bump Rust version to 1.65 (#2008)
+  * fix permissions; close #2037 (#2038)
+  * Small optimization when parsing settings (#2035)
+  * Implement basic double click delay (#2033)
+  * Fix cursor movement on selections with arrow up/down keys (#2036)
+  * feat: increase diff extend lines (#1979)
+  * always return response even when the job was cancelled (#2032)
+  * Limit global search to 1 worker thread (#2020)
+  * fix: ToggleHistory command (#2022)
+  * Only be notified of content changes in file (#2023)
+  * refactor: assume empty diff if history unavailable (#2017)
+  * refactor: use `Option::filter` (#2016)
+  * Fix some visual issues in local find box (#2010)
+  * fix: align width and tab separator correctly + refactor (#2006)
+  * Propagate error in read_line (#2005)
+  * fix: pass volt dir to load_volt (#1996)
+  * feat: ToggleHistory command (#2004)
+  * Implement rendering of images in markdown views (#1991)
+  * Fix: handle last char in document (#1997) (#1998)
+  * Add some documentation and tests (#2000)
+  * Add serde feature req to indexmap dep (#1992)
+  * cargo: migrate to workspace.dependencies (#1940)
+  * feat: add fg/bg modal status theme keys (#1988)
+  * fix: add terminal title fallback (#1986)
+  * ci: fetch only locked dependencies (#1965)
+  * Implement file duplication (#1972)
+  * Change cursor up/down behavior for the first/last line (#1971)
+  * Implement completion lens (#1968)
+  * fix: trigger hover when renaming (#1954)
+  * feat(lang): Add sticky headers and code lens for PHP (#1960)
+  * Always mention Lapce in the window title (#1963)
+  * fix: redundant context menus in input box (#1953)
+  * feat: add branches filter (#1944)
+  * Add more info to .desktop file (#1946)
+  * no need for base64 (#1943)
+  * Add docs; style-changes; remove unused commands (#1941)
+  * Implement dropdown widget; Use dropdown widget for settings (#1938)
+  * Register buffer when saving-as a new file (#1939)
+  * panel collapse at bottom improvement
+  * add empty panel hint
+  * panel collapse style change
+  * update changelog
+  * PanelSection is now collapsible (#1574)
+  * typo: LocalBufferKind::PluginSeach (#1925)
+  * Move from `String` to `VoltID` and add some tests (#1879)
+  * chore(deps): bump uuid from 0.8.2 to 1.2.2 (#1906)
+  * Optimization of `lapce_ui::terminal::TerminalPanel::event` (#1863)
+  * Highlight git/VCS modified files in explorer, palette, and buffer tabs (#1856)
+  * Simplifying `lapce_ui::settings::ThemeSection::new` (#1917)
+  * Improve `get_file_node[_mut]` efficiency (#1902)
+  * Fix cursor movement on selections with arrow keys (#1911)
+  * Minor: get rid of unneeded nesting in phantom text code (#1912)
+  * Remove clonning the vector itself (#1919)
+  * remove macos hotkey (#1921)
+  * Add borders to SourceControlBranches (#1916)
+  * Require indexmap/serde to fix running lapce-rpc's tests (#1901)
+  * Sort files that start with numbers more naturally (#1899)
+  * Stop previous CI runs if an update has been pushed (#1900)
+  * fix: use lapce-xi-rope instead of xi-rope (#1898)
+  * Draft: Add paragraph_forward and paragraph_backward commands (#1549)
+  * chore(deps): bump regex from 1.6.0 to 1.7.0 (#1784)
+  * fix: add gitattributes for scripts (#1894)
+  * Implement Bracketed Paste in Lapce Terminal (#1876)
+  * Add items to MacOS menu bar (#1880)
+  * Fix bug in `lapce_proxy::plugin::wasi::start_volt` (#1881)
+  * Update CONTRIBUTING.md (#1887)
+  * Avoid extra `String` in `Display for LapceWorkspace` (#1875)
+  * Rewrite some parts of `LapceSettingsPanel::update_plugins` (#1829)
+  * Remove vec allocation in `SettingsItemInfo::name` (#1870)
+
+-------------------------------------------------------------------
+Wed Dec 28 03:19:52 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.5+git17:
+  * Update julia queries, fix indent guide (#1862)
+  * Remove a lot small vector allocation for `lapce_core::syntax::find_tag` (#1841)
+  * Rewriting the `Snippet` methods (#1818)
+  * Remove a lot small vector allocation in `find_matching_pair` (#1839)
+  * Implement mouse keybinds (#1835)
+  * Remove unnecessary vector allocation in `LapceTerminalPanelHeaderContent::update` (#1836)
+  * Remove unnecessary Arc<String> indirection in `Document.ime_text` (#1822)
+  * Remove unnecessary vector allocation in `TerminalPanel::update` (#1834)
+  * Don't use the active editor's view id for opening file diff (#1838)
+  * fix: add option to change remote svg icon colour (#1820)
+  * fix: hide language/text details on non-editor tabs (#1776)
+  * Plugin settings shown on right click (#1831)
+  * Add Clojure language support (#1830)
+  * minor fixes to scope and bracket highlight (#1824)
+  * Revert "fix(clippy): clippy::manual_clamp" (#1817)
+  * Apply clippy recommendations (#1815)
+  * updated csharp syntax properties (#1814)
+  * bump version
+  * Add sticky header theming option (#1794)
+  * Use more standardized java indentation (#1808)
+  * Code action change (#1807)
+  * Fix some LSP bugs causing code actions to not show up correctly (#1805)
+  * Fix "Open Keyboard Shortcuts" enum. (#1803)
+  * Updated link to Ropes: An Alternative to Strings (#1800)
+  * highlight scope lines (#1791)
+  * Update entries in file & edit menu (#1788)
+  * add file menu (#1786)
+  * format keybinding name on settings to Capital case. (#1778)
+  * configure dir walker builder instead of default (#1780)
+  * switch terminal tabs (#1777)
+  * terminal tab text color fix
+  * added ctrl+y redo keymap (#1773)
+  * vertical scroll for horizontal only taks effect when there's no horizontal scroll
+  * add terminal tab (#1770)
+  * Add error dialog for invalid syntax highlighting schemes (#1772)
+  * fix: update tree-sitter-bash (#1771)
+  * added cmake support (#1767)
+  * Revert "(band-aid) fix opening some file types crashing lapce (#1764)" (#1768)
+  * (band-aid) fix opening some file types crashing lapce (#1764)
+  * Update C tree-sitter (#1759)
+  * update dlang treesitter (#1758)
+  * Add vim motions cw, ce, cc, S, and QOL modal bind gf (#1760)
+  * Limit search response size (#1753)
+  * ssh user is optional
+  * ssh remote supports port (#1756)
+  * fix recent workspace crash (#1755)
+  * put recent workspaces to db (#1752)
+  * don't send completion request again before response is back (#1746)
+  * Add syntax highlighting for glsl. (#1741)
+  * Fix enclosing parentheses crash (#1745)
+  * ci: use edge branch for alpinelinux (#1743)
+  * fix plugin can't upgrade issue (#1737)
+  * prevent volt loading on files and hidden file/folders (#1724)
+  * Add protobuf language support (#1713)
+  * esc cancel snippet
+  * command palette keymap paint implementation change
+  * signature position change (#1736)
+  * docs: update changelog
+  * Add save without formatting; Allow toggling of formatting for autosave (#1722)
+  * Display the keybinding of a command within the palette (#1723)
+  * lsp response fix
+  * feat: more theme keys (#1726)
+  * Impl displaying signature from LSP (#1720)
+  * bump version
+  * update changelog
+  * add support for plugin request (#1715)
+  * update changelog
+  * Fix visual bug in search panel (#1708)
+  * Use IndexMap to avoid changing search result order (#1709)
+  * add zstd support for plugin (#1711)
+  * Fix autosave trying to save scratch files
+  * chore(deps): bump tree-sitter-md from `e375ba9` to `272e080`
+  * fix: remove useless language tests (#1707)
+  * theme settings fix (#1706)
+  * fix: sort languages
+  * fix: update lockfile
+  * add codelens and sticky headers for Dart (#1690)
+  * add prisma support (#1700)
+  * added queries for svelte (#1702)
+  * bump version
+  * load volts event to tab
+  * ci: fix importing codesign certs (#1673)
+  * render installed plugin icons (#1670)
+  * feat: add status.foreground theme key (#1655)
+  * fix: add schemas, sort base colours, fix light theme (#1667)
+  * remember panels when open folder (#1669)
+  * ci: remove deprecated features (#1630)
+  * feat: use respective icons for extension/settings tabs (#1663)
+  * fix: drop stdin/stdout to not pollute terminal (#1662)
+  * fix: use correct python identation (#1666)
+  * fix: hide terminal window when launching lapce (#1658)
+  * feat: fork by default when started from terminal (#1646)
+  * don't clear icon when search plugin
+  * paint plugin icons (#1653)
+  * Fix: new windows would never be created after closing all (#1651)
+  * add plugin search (#1645)
+  * Implement "Reveal in File Tree" (#1644)
+  * bump to 0.2.2
+  * update changelog
+  * using plugin registry (#1643)
+  * add sticky headers to julia (#1636)
+  * fix(clippy): needless borrow (#1641)
+  * clippy fix (#1640)
+  * fix: update xi_rope import name (#1635)
+  * rustfmt
+  * update lapce-rpc cargo.toml
+  * xi-rope switch to crates.io
+  * safeguard char_at_offset
+  * Fix kts files not being recognized
+  * add config for brackets higlihghting
+  * Highlight matching brackets (#1421)
+  * chore(deps): bump zip from 0.6.2 to 0.6.3 (#1600)
+  * feat: added show hover keyboard shortcut (#1620)
+  * some style tweaks
+  * feat: add tab in/active, add primary button colours (#1619)
+  * fix: stackoverflow on sorting large number of PaletteItems (#1617)
+  * fix(editor): diagnosis cause cursor x calculate error (#1615)
+  * Add syntax highlighting for erlang. (#1609)
+  * add icon to volt meta
+  * Detect the .Containerfile file extension as a Dockerfile (#1603)
+  * fix: use proper colour for symbols (#1613)
+  * bump druid
+  * add icon size
+  * theme key name fix
+  * Plugin tab now accepts keyboard inputs (#1601)
+  * chore(deps): bump smallvec from 1.9.0 to 1.10.0 (#1582)
+  * chore(deps): bump tree-sitter-swift from 0.3.3 to 0.3.4 (#1584)
+  * Add ability to open file/file diff from source control context menu (#1590)
+  * feat: add goto definition var link (#1589)
+  * linux release github action
+  * add g++ in ubuntu
+  * chore(deps): bump serde_json from 1.0.85 to 1.0.87 (#1585)
+  * chore(deps): bump codecov/codecov-action from 2 to 3 (#1579)
+  * load panel infomartion for workspaces with no open folder
+  * Basic Tab Context Menu for #736 (#1570)
+  * show no readme if plugin doesn't have one
+  * ci: remove unmaintained action (#1580)
+  * fix: update rust-cache action (#1578)
+  * Update building-from-source.md
+  * fix: bump required rust-version (#1577)
+  * fix: remove .devcontainer (#1576)
+  * Fix overflow crash when editor is sluggish (#1575)
+  * Add ability to copy active editor remote file url to clipboard (#1560)
+  * Add ability to discard file changes from context menu in source control (#1510)
+  * fix: correct svg icons (#1569)
+  * icon size
+  * fix: rename drag/drop colour, use it for panels (#1568)
+  * icon svg refactor (#1567)
+  * multiple fixes (#1566)
+  * Several fixes to the About modal (#1565)
+  * Clear commands every time we paint which will insert the link rects (#1564)
+  * decide color theme is light or dark
+  * fix: correct icons used (#1561)
+  * about style change
+  * Icon themes (#1459)
+  * feat(tree-sitter): Add XML support (#1554)
+  * fix tree sitter edit once more (#1556)
+  * feat: add option to open plugin directory (#1548)
+  * key binding fix
+  * Add support for empty setting items (#1547)
+  * hover size improvement
+  * order palette items according to last execute time (#1541)
+  * Update CHANGELOG.md
+  * feat(tree-sitter): add sql language (#1472)
+  * github: add github issues config (#1538)
+  * Update release.yml
+
+-------------------------------------------------------------------
+Wed Nov 30 10:07:18 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO which has been enabled in previous commit, since it
+  fails to build due to OOM error (seen on aarch64)
+
+-------------------------------------------------------------------
+Mon Nov 21 04:13:23 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.4:
+  * Add prisma syntax and highlighting
+  * Improved svelte treesitter queries
+  * Add codelens and sticky headers for Dart
+  * Add zstd support for plugin
+  * Add support for requests from plugins
+
+-------------------------------------------------------------------
+Mon Nov 14 04:02:34 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.3:
+  * Add status foreground theme key, use author colour for plugin version
+  * Fork the process when started from terminal
+  * Paint plugin icons
+  * Added "Reveal in File Tree" action to the editor tabs context menu
+  * Add plugin search
+
+-------------------------------------------------------------------
+Sun Nov  6 01:56:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.2:
+  * Features/Changes:
+    - #1643: Use https://plugins.lapce.dev/ as the plugin registry
+    - #1620: Added "Show Hover" keybinding that will trigger the hover at the cursor location
+    - #1619:
+        * Add active/inactive tab colours
+        * Add primary button colour
+        * Replace custom drawn checkboxes with icons in source control
+        * Add hover effect in source control panel
+        * Add colour preview in settings
+    - #1617: Fixed a stack overflow that would crash lapce when attempting to sort a large number of PaletteItems
+    - #1609: Add syntax highlighting for erlang
+    - #1590: Added ability to open file and file diff from source control context menu
+    - #1570: Added a basic tab context menu with common close actions
+    - #1560: Added ability to copy active editor remote file path to clipboard
+    - #1510: Added support to discard changes to a file
+    - #1459: Implement icon theme system
+        * This is a breaking change for colour themes!
+        * Colour themes should now use [color-theme] table format in theme TOML
+        * volt.toml now use color-themes and icon-themes keys. themes key is not used anymore.
+    - #1554: Added XML language support
+    - #1472: Added SQL language support
+    - #1531: Improved Ctrl+Left command on spaces at the beginning of a line
+    - #1491: Added Vim shift+c to delete remainder of line
+    - #1508: Show in progress when Lapce is self updating
+    - #1475: Add editor setting: "Cursor Surrounding Lines" which sets minimum number of lines above and below cursor
+    - #1525: Add editor indent guide
+    - #1521: Show unique paths to disambiguate same file names
+    - #1452: Wrap selected text with brackets/quotes
+    - #1421: Add matching bracket highlighting
+    - #1541: Order palette items according to last execute time
+  * Bug Fixes
+    - #1566|#1568: Use separate colour for drag and drop background
+    - #1459: Fix opening currently used logfile
+    - #1505: Fix proxy download for hosts with curl without -Z flag
+    - #1483: Fix showing the close icon for the first tab when opening multiple tab
+    - #1477: Now use esc to close searchbar regarless of the current focus
+    - #1507: Fixed a crash when scratch buffer is closed
+    - #1547: Fix infinite cycle in workspace symbol search
+    - #1628: Fix kts files not being recognized
+- Readded lapce-proxy.
+- Simplify _service file.
+
+-------------------------------------------------------------------
+Tue Nov  1 14:30:46 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove lapce-proxy binary as suggested by a lapce developer.
+- Fix icon install.
+
+-------------------------------------------------------------------
+Tue Oct 25 21:46:53 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Change to rust tier 1 arches. Fails on ix86 archs.
+
+-------------------------------------------------------------------
+Sat Oct 15 22:03:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.1+git22:
+  * add tests
+  * Wrap selected text with brackets/quotes (#1452)
+  * Add support for empty setting items (#1517)
+  * editor tab dedup files update
+  * Show unique paths to disambiguate same file names (Re: #557) (#1521)
+  * ci: bump checkout action (#1523)
+  * previous word for modal and non-modal
+  * Improve Ctrl+Left-Arrow Keys behavior (#1531)
+  * add indent guide (#1525)
+  * fix error lens (#1524)
+  * fix whitespace on end of line (#1509)
+  * update CHANGELOG
+  * show update in progress (#1508)
+  * scratch buffer fix (#1507)
+  * update changelog
+  * feature: add shift+C delete remainder of line (#1491)
+  * fix(search): use esc to close search regardless of current mode (#1477)
+  * UI: Fix issue where 1st tab shows the close icon... (#1483)
+  * Feat: Add setting Cursor Surrounding Lines (#1474) (#1475)
+  * Added .fleet/ to .gitignore (#1498)
+  * fix: remove -Z (#1505)
+  * Split up SettingItem code (#1484)
+  * Update Changelog.md with 0.2.1 changes (#1486)
+  * update docs
+  * update docs
+  * Style Crash fix (#1482)
+  * Load shell environment when launching from GUI (#1461)
+  * Add atomic soft tabs feature (#1419)
+  * Trim whitespace from search results (#1453)
+  * feat: add command to un/install lapce from/to PATH (#1471)
+  * fix(view): autosave periodically resetting scroll (#1476)
+
+-------------------------------------------------------------------
+Sat Oct 15 01:00:58 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Increase both memory and storage to 16G to avoid exhaustion of memory/storage
+  when compiling.
+
+-------------------------------------------------------------------
+Sat Oct 15 00:27:13 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix installation for desktop app related info and files.
+
+-------------------------------------------------------------------
+Tue Oct 11 21:04:33 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.0+git327:
+  * fix(view): autosave periodically resetting scroll
+  * feat: add command to un/install lapce from/to PATH
+  * Trim whitespace of search results
+  * Add atomic soft tabs feature
+  * Load shell environment when launching from GUI
+  * Style Crash Fix
+
+-------------------------------------------------------------------
+Tue Oct 11 13:43:30 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add more memory to avoid memory exhaustion in the _constraints file.
+
+-------------------------------------------------------------------
+Tue Oct 11 12:38:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.0+git321:
+  * global search box style change
+  * Plugin settings load fix (#1473)
+  * feat(search): add case sensitive search ui button (#1441)
+  * fix: canonicalize paths (#1469)
+  * Delete scratch_docs when deleting scratch documents (#1465)
+  * Create PULL_REQUEST_TEMPLATE.md
+  * Plugin Settings (#1449)
+  * Refactor mouse_up handling into a function to keep the code consistent (#1464)
+  * Rewritten a loop-based variable to the more idiomatic iterator-based implementation (#1463)
+  * feat: allow custom codesign identity (#1457)
+
+-------------------------------------------------------------------
+Tue Oct  4 04:59:38 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update cargo vendored dependencies.
+- Enable all arches.
+
+-------------------------------------------------------------------
+Sun Sep  4 07:21:53 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.0:
+  * Features/Changes
+    - Implemented error lens.
+    - Add Fedora spec for packaging
+    - Add LSP stderr output to log
+    - Truncate plugin description with ellipsis when it is too long
+    - Add goto type definition support. (Where you can jump to the definition of the type a variable is of)
+    - Add alpine dev-container
+    - Add next/previous tab commands and keybindings. (Note that this is moving left/right in the tabs, not to the last used tab)
+    - Make undo more granular
+    - Fix alpha-depth issue in painting
+    - Display documentation of completion items. 
+    - Add config option for cursor blink interval
+    - Use new highlighter query for Julia
+    - Title update
+    - Full screen fix. Changes Lapce icon to work better on common color schemes.
+    - Separate plugin panel into two parts, installed and uninstalled.
+    - Custom title bar on Linux and palette bar
+    - Preserve unsaved files when closing, which are restored when opening Lapce again
+    - Add the ability to enable, disable, and remove plugins
+    - Don't paint tiny tab drags
+    - Add command to toggle inlay hints
+    - Add daily nightly build
+    - Don't show autocomplete after whitespace keys
+    - Make completion/palette allow page-up/down keys
+    - Add setting to control palette preview editor's width
+    - Don't show autocomplete after backspacing over whitespace
+    - Add the ability to resize editor/terminal/various splits. 
+  * Bug Fixes
+    - Give the plugin panel a scroll bar
+    - Check LSP capabilities before sending commands. Fixes most of Julia LSP support.
+    - Properly check if a line is after the end of the document in line styles
+    - Use FS module
+    - Fix crashing on semantic tokens going past last line
+    - Fix goto ref on single references
+    - Reload explorer on file change, just in case our watching code didn't activate.
+    - (LSP) Specify the workspace folder of the root uri if available.
+    - Set the current directory when starting the LSP
+    - Read files lossily, in case they are not UTF8.
+    - Use UTF16 encoding for communicating with LSPs. This should fix a bunch of bugs with unicode causing RA or the editor to crash.
+    - Fix keybinds on Mac with Command+Shift
+    - Fix MacOS Option Key
+    - Properly open editors when applying text edits via code actions to editors which aren't focused or open.
+    - Prevent crash on save with multiple windows
+    - Fix calculation of mouse down position in the problem panel
+    - Follow system OS paths better
+    - Proxy rewrite! This should make lock-ups not happen, and be easier to add onto.
+    - Find box result count should use the current buffer
+    - Pass uname as multiple args to fix WSL
+    - Align settings button size to window controls
+    - Don't fail on missing primary monitor
+    - Various other bug fixes
+  
+
+-------------------------------------------------------------------
+Sat Aug  6 10:55:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.1.3+git145:
+  * feat: error lens
+  * remove parameter color from default settings
+  * fix plugin panel scroll bar
+  * fix plugin panel scroll bar
+  * update document diagnostic position
+
+-------------------------------------------------------------------
+Sat Aug  6 03:59:03 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- remove lapce.desktop
+- remove lapce.sh
+- update specfile
+
+-------------------------------------------------------------------
+Fri Jul 15 14:19:28 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.1.3:
+  * bump version
+  * fix: don't panic on empty active_tab
+  * change release title to be tag name
+  * fix: set window minimal size
+  * Add tree-sitter Julia support
+  * only set lanaguge when executed
+  * make status line items clickable
+  * move the place to get semantic tokens
+
+-------------------------------------------------------------------
+Fri Jun 17 12:27:37 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.1.2~0:
+  * bump version
+  * vertical scroll for horizontal scroll on editor tab header
+  * clean up
+  * clean up
+  * clean up
+  * clean up
+  * clean up
+  * clean up
+  * code cleanup
+  * code clean up
+  * store cursor position for undo/redo
+  * minimum rust version
+  * fix buffer update size
+  * fix editor height
+  * ctrl+right change to word_end_forward
+  * fix text overlapping
+  * add config for scroll beyond last line
+  * Fix new line ident bug
+  * add cut/copy/paste to context menu
+  * watch plugin themes
+  * load plugin themes
+  * Fix typo
+  * plugin download themes
+  * add extra elixir file extensions for syntax highlighting
+  * install local theme
+  * watch theme folder
+  * local theme lower string
+  * metadata if exits
+  * case insenstive of theme name
+  * bump git2 version
+  * bump regex version
+  * set syntax on scratch buffer
+  * export theme
+  * put theme colors together
+  * theme settings from kind
+  * color case
+  * settings reset to default
+  * reset settings
+  * reset button
+  * update setting change
+  * fix event
+  * add settings value kind
+  * rename buffer content value to settingsvalue
+  * add idle timer to editor view
+  * theme setting layout change
+  * use raw data
+  * hashmap change
+  * change the way to load theme
+  * add theme config
+  * fix: typo
+  * fix: format code
+  * switch ureq to reqwest for system proxy support
+  * feat: change `lapce warn` color
+  * feat: change `lapce warn` color
+  * feat: add `plugin load failed` message
+  * feat: add `plugin load failed` message
+  * Fix `Language` in toml files
+  * Update minimum cargo version
+  * added whitespace after comma
+  * Indicate minimum toolchain version preventing #572
+  * first pass of new documentation
+  * formatting error fix
+  * wgpu -> opengl readme
+  * Reviewed and tidied changes
+  * Refreshed readme and contributing files
+  * fix: don't overwrite permissions
+  * bump parley
+  * Fix formatting. Grrr.
+  * Restore comment in get_name_for_new_file.
+  * Only allocate one new string.
+  * Give names to several toggle commands
+  * cursor blink
+  * Change name of new scratch docs to 'Untitled-N'
+  * fix jump in the same file
+  * Run rustfmt.
+  * Today I learn about the funky (..) discard syntax.
+  * Implement 'new N' names for scratch buffers.
+  * style change
+  * default to no drop shadow
+  * header text change
+  * drop shadow width
+  * settings and key bindings
+  * focus on settings when open
+  * clippy fix
+  * settings event fix
+  * editor tab minum width
+  * editor tab header improvement
+  * setttings in editor tab
+  * generate new editor id when copy editor
+  * remove cancelcodeactions
+  * remove code action widget
+  * config menu position change
+  * code actions menu position
+  * code action to use context menu
+  * cancel completion and hover fix
+  * fix toggle modal in palette
+  * some more settings
+  * add config to change header height
+  * santilize modifiers
+  * Show diagnostics on hover
+  * bump parley to fix font issue
+  * linux build on ubuntu 18.04 to have a lower glibc version target
+  * more settings
+  * terminal config
+  * bump druid
+  * window icon
+  * tab for completion
+  * add some mac key maps
+  * Remove some deps
+  * Update README.md
+  * Add Fedora build deps
+
+-------------------------------------------------------------------
+Tue May 24 07:21:21 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.1.1~0:
+  * fix modifiers
+  * relase v0.1.1
+  * windows dark mode
+  * fix ci
+  * reset editor view to normal when it's not a hisotry
+  * bump druid
+  * apt-get update
+  * change the place of anim frame request paint
+  * update dependencies
+  * update dependencies
+  * clippy fix
+  * remove glutin
+  * num lock modifier fix
+  * request paint when request anim frame
+  * bump druid
+  * use mouse event count for double/tripple click
+  * use mouse event count for double click
+  * macos title double click fix
+  * Change Appstream metadata license to MIT
+  * bump druid
+  * bump druid
+  * consolidate window desc creation
+  * add Linux AppStream metadata
+  * add Linux .desktop file
+  * file watcher fix
+  * fix editor focus issue
+  * clippy fix
+  * ensure cusror visible when editor got focus
+  * cancel mouse hover timer when right click
+  * change to os menu
+  * file dialog change to druid-shell
+  * use druid shell with opengl
+  * fix code format
+  * refactor the tests for readability
+  * Avoid cloning syntax highlight result
+  * Only allocate once when toggling comments
+  * Special-case non-modifier ansi sequences
+  * Doc: do not specify a transitional package
+  * fix code format
+  * address PR review feedbacks
+  * fix code format
+  * address PR review feedbacks
+  * Removed the last min window size constraint
+  * Pre-parse svgs
+  * Only hash svg names once
+  * Deduplicate
+  * Don't allocate while accessing svgs
+  * add meta+backspace for macOS
+  * key binding mode text fix
+  * Restrict visibility and remove unused code
+  * Remove unused type
+  * Remove unused outline module
+  * Remove unused module
+  * Use static str in LapceIcon
+  * Remove most of the dead code
+  * bump lapce-rpc version
+  * support count in move by words commands in the vi-mode
+  * implement top_of_window and bottom_of_window
+  * Removed min window size
+
+-------------------------------------------------------------------
+Tue May 24 07:12:44 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.1.0~0:
+  * wix version bump
+  * wix fix
+  * bump version
+  * Fix scroll bar scroll
+  * bump druid
+  * problem panel dispaly fix
+  * Clip the command name cells
+  * release lto folder
+  * Clean up split
+
+-------------------------------------------------------------------
+Tue May 24 05:01:48 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Tue May 24 04:30:21 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.1.0~0:
+  * wix version bump
+  * wix fix
+  * bump version
+  * Fix scroll bar scroll
+  * bump druid
+  * problem panel dispaly fix
+  * Clip the command name cells
+  * release lto folder
+  * Clean up split
+
+-------------------------------------------------------------------
+Tue May 17 15:46:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.1.0~0:
+  * wix version bump
+  * wix fix
+  * bump version
+  * Fix scroll bar scroll
+  * bump druid
+  * problem panel dispaly fix
+  * Clip the command name cells
+  * release lto folder
+  * Clean up split
+
+-------------------------------------------------------------------
+Wed May  4 14:06:02 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- add lapce.sh. workaround for running inside Wayland.
+
+-------------------------------------------------------------------
+Wed May  4 13:52:18 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for lapce (0.0.12)
+

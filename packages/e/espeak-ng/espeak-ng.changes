@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Sun Apr 24 17:25:17 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+- added fix-configure-1171.patch to fix configure step
+- remove no longer needed patches:
+  - espeak-ng-1.49.2-fix_no_return_nonvoid-in-configure.patch
+  - espeak-ng-1.50-fix_gcc10_no_common.patch
+  - espeak-ng-1.50-fix_gcc10_no_common_2.patch
+- update to version 1.51:
+ -  Add support for speechPlayer.
+ -  Add more tests to check the various parts of espeak-ng.
+ -  Various changes to clean up the codebase (Juho Hiltunen)
+ -  Remove support for l_length_mods language option
+ -  Restructure "option brackets" language option to "brackets" and "bracketsAnnounced"
+ -  Restructure "stressLength" and "stressAdd" language option
+ -  New Language option: "lowercaseSentence" for ending a sentence if a period is followed by a lower case letter
+ -  Add voice variants
+ -  Rename zh to cmn (Mandarin)
+ -  Rename zhy to yue (Cantonese)
+ -  cmn (Mandarin) now assumes all latin characters all English text
+    Use cmn-latn-pinyin for interpreting latin characters as pinyin
+ -  Update list of voice varants for Android application
+ -  Add Chromium extension (guest271314)
+ -  Replace `ieee80.c` by a free software implementation (Ulrich Müller)
+ - bug fixes:
+ -  Fix reading malformed SSML (Christopher Brannon)
+ -  Fix memory allocation (Christopher Brannon)
+ -  Fix building and phoneme compilation (John Bowler)
+ -  Fix build scripts for Android (Peter Vágner, Minas Tirith Citizen)
+ - documentation:
+ - Add documentation about voice and language options.
+ - Add documentation about dictionary flags.
+ - updated languages:
+ -  ar (Arabic) -- king-dahmanus
+ -  ba (Bashkir) -- boracasli98, Valdis Vitolins, Juho Hiltunen
+ -  cmn (Mandarin) -- Silas S. Brown, Rongcui Dong, Icenowy Zheng, Juho Hiltunen
+ -  de (German) -- Karl Eick, Henry Krumb
+ -  el (Modern Greek) -- Reece Dunn (support for variant Greek letter forms)
+ -  en (English) -- Steven Presser, Ben Talagan
+ -  eo (Esperanto) -- AlsoScratch
+ -  eu (Basque) -- agonzalezd
+ -  fa (Farsi/Persian) -- Shadyar Khodayari
+ -  ga (Gaelic (Irish)) Chen, Chien-ting
+ -  grc (Ancient Greek) -- Reece Dunn (support for variant Greek letter forms)
+ -  hak (Hakka Chinese) -- Juho Hiltunen
+ -  haw (Hawaiian) -- Juho Hiltunen
+ -  ka (Georgian) -- Juho Hiltunen
+ -  kok (Konkani) -- Juho Hiltunen
+ -  nb (Norwegian Bokmål) -- Juho Hiltunen
+ -  nci (Classical Nahuatl) -- Juho Hiltunen
+ -  hy (Armenian) -- tigransimonyan
+ -  ia (Interlingua) -- nesrad
+ -  it (Italian) -- Christian Leo
+ -  ja (Japanese) -- fukuen, Juho Hiltunen
+ -  jbo (Lojban) -- Juho Hiltunen, xunsku
+ -  lv (Latvian) -- Valdis Vitolins
+ -  mi (Māori) -- boracasli98
+ -  py (Pyash) -- Andrii Logan Zvorygin
+ -  shn (Shan Tay Yai) -- ronaldaug
+ -  tr (Turkish) -- boracasli98, SeanTolstoyevski
+ -  ur (Urdu) -- Ejaz Shah
+ -  uz (Uzbek) -- boracasli98, Valdis Vitolins, Andiv06
+ -  yue (Cantonese) -- Andiv06
+ - new languages:
+ -  be (Belarusian) -- Sergei B
+ -  chr (Cherokee) -- Michael Conrad
+ -  cv (Chuvash) -- boracasli98, Valdis Vitolins
+ -  en-us-nyc (English, New York City) -- Richard Calvi
+ -  haw (Hawaiian) -- Valdis Vitolins
+ -  he (Hebrew) -- boracasli98, Valdis Vitolins
+ -  io (Ido) -- José Miguel López, Valdis Vitolins
+ -  lb (Luxembourgish) -- Marco Barnig, Valdis Vitolins
+ -  ltg (Latgalian) -- Valdis Vitolins
+ -  nog (Nogai) -- boracasli98, Valdis Vitolins
+ -  piqd (Klingon) -- Valdis Vitolins
+ -  qu (Quechua) -- Valdis Vitolins
+ -  qdb (Lang Belta) -- Da Def, Valdis Vitolins
+ -  qya (Quenya) -- Lucas Werkmeister
+ -  sjn (Sindarin) -- Lucas Werkmeister
+ -  smj (Lule Saami) -- Katri Hiovain, Sebastien Le Maguer
+ -  th (Thai) -- Valdis Vitolins
+ -  tk (Turkmen) -- boracasli98, Valdis Vitolins
+ -  ug (Uyghur) -- boracasli98, Valdis Vitolins
+ -  uk (Ukrainian) -- Valdis Vitolins
+
+-------------------------------------------------------------------
+Thu Jan  9 21:35:09 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added espeak-ng-1.50-fix_gcc10_no_common.patch and
+  espeak-ng-1.50-fix_gcc10_no_common_2.patch (fix boo#1160389)
+
+-------------------------------------------------------------------
+Fri Nov 29 19:21:47 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.50
+  * Add a `--disable-rpath` option to prevent libtool hardcoding
+    rpaths in the executable.
+  * Renamed the `hy-arevmda` language to `hyw`, following the
+    2018-03-30 change to the BCP 47 language subtag registry
+    making the newly registered `hyw` language code the preferred
+    value for `hy-arevmda`. This change keeps support for
+    detecting the `hy-arevela` and `hy-arevmda` language tags.
+  * Support any length replacement rule strings for the source
+    part of the rule (replacing from the 'source' string to the
+    'target' string).
+  * Add more tests to check the various parts of espeak-ng.
+  * Various changes to clean up the codebase.
+  * Fix various compiler warnings (`-Winitialized`,
+    `-Wmissing-prototypes`, `-Wreturn-type`, and `-Wunused`).
+  security:
+  * Fix several crashes in the emoji support.
+  * Fix several static analysis issues detected by Coverity Scan.
+  * Fix several static analysis issues detected by Microsoft
+    Visual C++ `/analyze`.
+  * `oss-fuzz` support for the SSML logic.
+  * Fix running `make check` with `-fsanitize=address` (LLVM
+    AddressSanitizer).
+  documentation:
+  * document the Kirshenbaum phoneme transcription scheme (used
+    as the basis of espeak phonemes).
+  * document the X-SAMPA phoneme transcription scheme.
+  * document the Conlang X-SAMPA phoneme transcription scheme.
+  emoji:
+  * Update the emoji to Unicode 11.0.
+  * Update the emoji translations to CLDR 33.1.
+  * gd (Scottish Gaelic)
+  * sd (Sindhi)
+  * yue (Chinese (Cantonese))
+  new languages:
+  * ba (Bashkir) -- tc-dl, Valdis Vitolins
+  * hak (Hakka Chinese) -- Chen Chien-ting
+  * ht (Haitian Creole) -- Valdis Vitolins
+  * kk (Kazakh) -- boracasli14, Valdis Vitolins
+  * py (Pyash) -- Logan Streondj
+  * quc (K'iche') -- Valdis Vitolins
+  * ru-lv (Russian Latvia) -- Valdis Vitolins
+  * shn (Shan Tay Yai) -- ronaldaug
+  * uz (Uzbek) -- Valdis Vitolins
+  updated languages:
+  * af (Afrikaans) -- Christo de Klerk
+  * ar (Arabic) -- Valdis Vitolins, Mark Readdie, Hesham Assabahi
+  * cmn (Chinese Mandarin) -- materia-cccp
+  * de (German) -- Reece Dunn, Karl Eick
+  * en (English) -- Reece Dunn
+  * fa (Farsi/Persian) -- Shadyar Khodayari
+  * fi (Finnish) -- Juho Hiltunen
+  * fr (French) -- Shallowmallow, Karl Eick, maiido, Reece Dunn
+  * ku (Kurdish) -- rojanu
+  * it (Italian) -- chrislm
+  * lv (Latvian) -- Valdis Vitolins
+  * my (Myanmar/Burmese) -- Min Maung
+  * ru (Russian) -- Valdis Vitolins, Reece Dunn
+  * sd (Sindhi) -- Ejaz Shah
+  * ur (Urdu) -- Ejaz Shah
+  * vi (Vietnamese) -- Anh Hoang Nguyen
+
+- Dropped espeak-ng-1.49.2-fix_no_return_nonvoid.patch (no longer
+  necessary)
+
+-------------------------------------------------------------------
+Fri Jul 12 11:33:11 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add espeak-ng-1.49.2-fix_no_return_nonvoid-in-configure.patch
+  in order to fix missing return type in a function.
+
+-------------------------------------------------------------------
+Mon Mar  5 12:40:38 UTC 2018 - aloisio@gmx.com
+
+- Added link to match libespeak filename in the compat-devel
+  package
+
+-------------------------------------------------------------------
+Mon Feb 26 10:33:41 UTC 2018 - aloisio@gmx.com
+
+- Added missing runtime dependency
+
+-------------------------------------------------------------------
+Wed Feb 21 13:54:26 UTC 2018 - aloisio@gmx.com
+
+- Added pcaudiolib build requirement
+
+-------------------------------------------------------------------
+Sat Feb 10 15:55:46 UTC 2018 - aloisio@gmx.com
+
+- Use a versioned datadir
+
+-------------------------------------------------------------------
+Fri Feb  9 18:50:37 UTC 2018 - aloisio@gmx.com
+
+- Split library into separate package
+
+-------------------------------------------------------------------
+Tue Jan 16 11:43:14 UTC 2018 - aloisio@gmx.com
+
+- Added Conflicts lines
+
+-------------------------------------------------------------------
+Tue Nov 28 14:54:31 UTC 2017 - aloisio@gmx.com
+
+- Initial package (1.49.2)

@@ -1,0 +1,24 @@
+From 5bdc7a90a37470b8e2e1bee192e3f2d1079fc1dd Mon Sep 17 00:00:00 2001
+From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+Date: Wed, 17 Jun 2020 17:59:59 +0200
+Subject: [PATCH] Add debugger as desktop menu category
+
+---
+ qrenderdoc/share/renderdoc.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qrenderdoc/share/renderdoc.desktop b/qrenderdoc/share/renderdoc.desktop
+index 35e528fb4..0f590d7f2 100644
+--- a/qrenderdoc/share/renderdoc.desktop
++++ b/qrenderdoc/share/renderdoc.desktop
+@@ -8,6 +8,6 @@ Icon=application-x-renderdoc-capture
+ Terminal=false
+ Type=Application
+ X-MultipleArgs=false
+-Categories=Development;
++Categories=Development;Debugger;
+ StartupNotify=true
+ MimeType=application/x-renderdoc-capture;
+-- 
+2.26.2
+

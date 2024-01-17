@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Sat Jan 15 03:20:57 UTC 2022 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 0.12.2:
+  * Fix bash auto completion (#298)
+  * Don't crash when private IP netmask is 255.255.255.255 (#297)
+
+-------------------------------------------------------------------
+Thu Jan  6 02:09:52 UTC 2022 - Orville Q. Song <orville@anislet.dev>
+
+- Update license
+
+-------------------------------------------------------------------
+Thu Jan 06 01:57:00 UTC 2022 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 0.12.1:
+  * Use k0s config create/validate instead of the deprecated subcommands (#294)
+
+-------------------------------------------------------------------
+Fri Dec 24 01:02:44 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Update to version 0.12.0:
+  * Avoid nil panics because of uninitialized host env map
+  * Fix nil panic when config has no spec.k0s (#291)
+  * Fix OS detection override for missing or incomplete os-release file (#290)
+  * Release pipeline optimization
+  * Drop unnecessary step in release pipeline
+  * Release pipeline finetuning
+  * Release workflow finetuning 2
+  * Release workflow finetuning
+  * Makefile fix 2
+  * Makefile fix
+  * Switch config validator library (#276)
+  * Update upgrade smoke-test (#282)
+  * Improve smoke test CI workflow (#283)
+  * Ignore k0s reset error exit for k0s <= 1.22.3+k0s.0 (#284)
+  * Fix makefile k0sctl rule (#281)
+  * Fix chown quotes in URL uploads with owner (#280)
+  * Use sudo for URL downloads (#279)
+  * Update README.md
+  * Add shell auto-completions (#274)
+  * Some makefile improvements (#275)
+  * Fix static binary builds for linux (#273)
+  * Document homebrew and chocolatey installation (#271)
+  * Check if a k0sctl upgrade is available (#269)
+  * Move config pkg to pkg/apis/k0sctl.k0sproject.io/v1beta1 (#268)
+  * Fix release.yml
+  * Move release asset sha256 sums into release description (#266)
+  * Autopopulate k0s config apiVersion and kind fields (#267)
+  * Fix single role issues (#264)
+  * Add single node role (#261)
+  * Perform environment variable substition in config YAML (#258)
+  * Allow spec.hosts.files to have url sources, set owner, fix dir recursion (#231)
+  * Add README TOC (#259)
+
+-------------------------------------------------------------------
+Mon Dec 06 11:29:37 UTC 2021 - orville@anislet.dev
+
+- Update to version 0.11.4:
+  * Overwrite instead of delete the token-file after joining a cluster (#257)
+  * Update README.md
+  * Add Support for FlatcarContainerLinux (#221)
+  * Constant production analytics write key (#252)
+  * Allow overriding API address in kubeconfig subcommand (#249)
+  * Fix 32bit arm build upload
+  * Accept string or numeric spec.host.files.perm (#248)
+  * Fix double unquoting of install flags during host fact gathering phase (#246)
+  * Add 32bit ARM to linux build targetsa (#247)
+  * Run PR tests only once (#242)
+
+-------------------------------------------------------------------
+Sun Dec 05 12:30:08 UTC 2021 - orville@anislet.dev
+
+- Update to version 0.11.4:
+  * Overwrite instead of delete the token-file after joining a cluster (#257)
+  * Update README.md
+  * Add Support for FlatcarContainerLinux (#221)
+  * Constant production analytics write key (#252)
+  * Allow overriding API address in kubeconfig subcommand (#249)
+  * Fix 32bit arm build upload
+  * Accept string or numeric spec.host.files.perm (#248)
+  * Fix double unquoting of install flags during host fact gathering phase (#246)
+  * Add 32bit ARM to linux build targetsa (#247)
+  * Run PR tests only once (#242)
+
+-------------------------------------------------------------------
+Sun Dec  5 12:23:57 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Init k0sctl Package.
+
+k0sctl is a bootstrapping and management tool for k0s clusters.
+
+Current Release: v0.11.4
+Commit Hash: 3b2e58b0915c92a972995d3d5d738e81a00fce96

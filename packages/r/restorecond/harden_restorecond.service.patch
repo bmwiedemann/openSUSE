@@ -1,0 +1,20 @@
+Index: restorecond-3.2/restorecond.service
+===================================================================
+--- restorecond-3.2.orig/restorecond.service
++++ restorecond-3.2/restorecond.service
+@@ -5,6 +5,15 @@ ConditionPathExists=/etc/selinux/restore
+ ConditionSecurity=selinux
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=forking
+ ExecStart=/usr/sbin/restorecond
+ PIDFile=/run/restorecond.pid

@@ -1,0 +1,9 @@
+<package name="scons" project="openSUSE:Factory">
+  <title>Replacement for Make</title>
+  <description>SCons is a make replacement that provides a range of enhanced features,
+such as automated dependency generation and built-in compilation cache
+support. SCons rule sets are Python scripts, which means that SCons
+provides itself as well as the features. SCons allows you to use the
+full power of Python to control compilation.</description>
+  <devel project="devel:tools:building" package="scons"/>
+</package>

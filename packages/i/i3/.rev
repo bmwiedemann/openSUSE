@@ -1,0 +1,452 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f028916a5195b17921696169d444c836</srcmd5>
+    <version>4.1</version>
+    <time>1322488147</time>
+    <user>coolo</user>
+    <comment>submit to Factory after fixing i3-devel Requires dependancy</comment>
+    <requestid>93836</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53396f1f6e889aae39c5099d625f74c1</srcmd5>
+    <version>4.2</version>
+    <time>1336472842</time>
+    <user>coolo</user>
+    <comment>-version update to 4.2
+- added desktop file to use i3 inside gnome
+- added icon from homepage logo
+
+check the submit request of perl-AnyEvent-I3 (forwarded request 116015 from seilerphilipp)</comment>
+    <requestid>116506</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>53396f1f6e889aae39c5099d625f74c1</srcmd5>
+    <version>4.2</version>
+    <time>1340183445</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>572f8a04b76f9096e8e3bdd58db62505</srcmd5>
+    <version>4.3</version>
+    <time>1350629172</time>
+    <user>coolo</user>
+    <comment>Only builds for openSUSE12.2 and Factory because of missing dependencies for 12.1 and 11.4.
+Please decide if this lasts to accept the sr. (forwarded request 138719 from seilerphilipp)</comment>
+    <requestid>138739</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fd5b9fa2ce7780f20ab77934620faca5</srcmd5>
+    <version>4.4</version>
+    <time>1356703301</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146295</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>fd5b9fa2ce7780f20ab77934620faca5</srcmd5>
+    <version>4.4</version>
+    <time>1359109059</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>949edf54d1824ceca1d6291b7f371fee</srcmd5>
+    <version>4.5</version>
+    <time>1363255171</time>
+    <user>coolo</user>
+    <comment>updated to latest version v4.5 changelog in *.changes file (forwarded request 158809 from seilerphilipp)</comment>
+    <requestid>158814</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b5b9e04d5fc196e8676c73b3ccfb9bb</srcmd5>
+    <version>4.5.1</version>
+    <time>1366087476</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>170921</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>48315169d4f4f60455a79038c6bec0a7</srcmd5>
+    <version>4.6</version>
+    <time>1377248781</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195925</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>48315169d4f4f60455a79038c6bec0a7</srcmd5>
+    <version>4.6</version>
+    <time>1379662632</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d76d656d7a56abab31fd62e292ed5f18</srcmd5>
+    <version>4.7.2</version>
+    <time>1392447898</time>
+    <user>coolo</user>
+    <comment>updated to the latest version. The new version seems to need xcb-util-cursor from X11:XOrg. Not sure how to handle this for 12.2-13.1. I added a sr request for it to be added to Factory (sr215334). (forwarded request 215336 from apersaud)</comment>
+    <requestid>222253</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>36eea491074a53bebfea6e5f18cb6511</srcmd5>
+    <version>4.8</version>
+    <time>1406284049</time>
+    <user>coolo</user>
+    <comment>once again</comment>
+    <requestid>242227</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>36eea491074a53bebfea6e5f18cb6511</srcmd5>
+    <version>4.8</version>
+    <time>1409301189</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6ca63e01c9eaf3b0b724228590d7579a</srcmd5>
+    <version>4.9</version>
+    <time>1426064305</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290053</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>649843d8e3701212502a93775c2630e9</srcmd5>
+    <version>4.9.1</version>
+    <time>1427274050</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292472</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e01062ba1a9122abb18e3e8935068479</srcmd5>
+    <version>4.10.1</version>
+    <time>1429107869</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>296140</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0bd03824fc59b3fff863d25d1828e4b7</srcmd5>
+    <version>4.10.2</version>
+    <time>1429948393</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>298762</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d4af2a97cc41751fb170d477e8eb9dfe</srcmd5>
+    <version>4.10.4</version>
+    <time>1442474482</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>331081</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8d76dc3f2d47d9b55d416bb3ef21132e</srcmd5>
+    <version>4.11</version>
+    <time>1444636925</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>337128</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a9a73996de2a593a43941b9a3cbb757d</srcmd5>
+    <version>4.12</version>
+    <time>1457533054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>368040</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>3898735bfda739ffd970362bf2b6a981</srcmd5>
+    <version>4.12</version>
+    <time>1459002305</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Recommends i3status to fix bnc#971897</comment>
+    <requestid>376512</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>4c353d4646cb0e7b5a85eb1b483d4d4f</srcmd5>
+    <version>4.12</version>
+    <time>1466326231</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403047</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>81e969e4499585a4184a8c0bca886ad5</srcmd5>
+    <version>4.12</version>
+    <time>1466814110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>403756</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>14c806de57673766ec732a9ff322a7ad</srcmd5>
+    <version>4.12</version>
+    <time>1470934428</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &quot;provides windowmanager&quot; to fix bnc@992972</comment>
+    <requestid>418662</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d3f9ea7ec3dcb43eb6b9dd44f2aeea68</srcmd5>
+    <version>4.13</version>
+    <time>1484041701</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448845</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9a469e450edeb495457d6f2df9cdae4e</srcmd5>
+    <version>4.13</version>
+    <time>1487260853</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>456540</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7e40f3dea4e4ae7116e2e284a6788528</srcmd5>
+    <version>4.14</version>
+    <time>1505238798</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.14
+- Remove U_configure_ac.patch (was accepted upstream)
+* Aside from many bug and documentation fixes, the “swap” command is a notable
+	addition of this release. As is almost tradition at this point, keybinding
+	handling has seen some fixes as well. A noticeable change for users with such
+	monitors is i3’s support for RandR 1.5, which transparently supports the TILE
+	property of first-gen 4K monitors and current 5K or 8K monitors.
+    
+</comment>
+    <requestid>521155</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1a7a752acde199e76dd3a60da343a2ed</srcmd5>
+    <version>4.14.1</version>
+    <time>1507755685</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.14.1
+  • include AnyEvent-I3 in dist tarballs
+  • append_layout: validate JSON before loading
+  • move: fix erratic behavior with single container child jumping outputs
+  • ipc: rename COMMAND to RUN_COMMAND for consistency</comment>
+    <requestid>532138</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a98f730ddaf95a0e65568ad13b2e8d25</srcmd5>
+    <version>4.14.1</version>
+    <time>1507897162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533657</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>707da21f0c07efbc3ef8fda1ef7cdf59</srcmd5>
+    <version>4.15</version>
+    <time>1521716624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589142</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>73b84fb9c41e1cb17831f364cff0f506</srcmd5>
+    <version>4.15</version>
+    <time>1523875942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596835</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a09bb96ce6dbaa7e3c6fca9fcf284532</srcmd5>
+    <version>4.16</version>
+    <time>1541667018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646899</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b41fd13aec9b650893128e3ae8e40457</srcmd5>
+    <version>4.16.1</version>
+    <time>1556817537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699734</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d49af1babc09089bc92233df8559a28e</srcmd5>
+    <version>4.17</version>
+    <time>1565695083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722168</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>89f05c221160b2246a0b8ee2c43476be</srcmd5>
+    <version>4.17.1</version>
+    <time>1572180044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742966</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>928ab78c47d2b1ae1c68df6586e49fb0</srcmd5>
+    <version>4.18.1</version>
+    <time>1589660880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806022</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>77f21efe7252b01d259a656e30bb9183</srcmd5>
+    <version>4.18.1</version>
+    <time>1595577525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822186</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>24812320dadf15b54dacf3e3cb73f790</srcmd5>
+    <version>4.18.2</version>
+    <time>1598725982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829615</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d6801ab847c80a196b27d4164355eff6</srcmd5>
+    <version>4.18.3</version>
+    <time>1603979535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844827</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1f8270a0285ff6ec80f58354be6b2378</srcmd5>
+    <version>4.19</version>
+    <time>1605644668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848766</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>948835c19589901bca77bbbb20abae03</srcmd5>
+    <version>4.19.1</version>
+    <time>1613942095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874158</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>448fca2cd559ec80c96bcc2e909a198c</srcmd5>
+    <version>4.19.2</version>
+    <time>1619552102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888630</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>2ea1b0684b6becae32542b4bf306889f</srcmd5>
+    <version>4.20.1</version>
+    <time>1639267049</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 4.20.1
+  * i3bar: fix crash with multiple monitors
+  * xmlto: fix broken .TH line by extending title length
+  * i3-msg: fix --raw short form (-r) in manpage
+  * libi3: add missing sys/stat.h header
+  * use getcwd(NULL, 0) instead of GNU extension get_current_dir_name()
+- includes 4.20:
+  * You can now use an “include” directive in your i3 config:
+    https://i3wm.org/docs/userguide.html#include
+  * You can now enable showing window icons in window titlebars:
+    https://i3wm.org/docs/userguide.html#title_window_icon
+</comment>
+    <requestid>939498</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b4f1759ebef40c1ea8f2e1998e37265e</srcmd5>
+    <version>4.21</version>
+    <time>1664639024</time>
+    <user>RBrownFactory</user>
+    <comment>- Updated to version 4.21:
+  * feat: drag tiling windows with the mouse
+  * CHANGES
+  * Allow dragging tiling windows with the mouse
+  * Add client.focused_tab_title color option
+  * Add support for multiple output names in the focus command,
+  * allowing users to cycle focus between e.g. VGA1 and LVDS1 but not DVI0.
+  * Add a toggle option to the title_window_icon command
+  * i3 switched from the obsolete PCRE 8.x regular expression matching
+    library to the current PCRE2 10.x version.
+  * BUG FIXES:
+  * docs/ipc: document all window_type values
+  * docs/userguide: clarify the difference between the \u201cworkspace N\u201d and
+    \u201cworkspace number N\u201d commands
+  * i3bar: fix default font not being applied to bars if defined after bar block
+  * i3-dmenu-desktop: add backslashes for the exec command,
+    which fixes opening some .desktop files (e.g. electrum)
+  * i3-sensible-pager: sanitize LESS environment variable to remove -E or -F
+  * testsuite: catch i3 crashes instead of hanging on crash
+  * Fix logging on machines with 256 GB of RAM
+  * Do not replace existing IPC socket on start, to prevent clobbering
+    the IPC socket when running i3 within i3 (e.g. in Xepyhr, for development)
+  * Refuse to start without a valid IPC socket
+  * Fix focus when moving container between outputs with mouse warp and
+    focus_follows_mouse
+  * Fix endless loop with transient_for windows
+  * Fix wrong \u201cfailed\u201d IPC reply on move workspace to output
+  * Fix WM registration selection (from WM_S_S&lt;screen&gt; to WM_S&lt;screen&gt;)
+  * avoid graphics artifacts when changing the layout tree by
+    initializing surfaces to all black
+  * update parent split con titles when child container swaps position with
+    another child container
+  * Fix segfault if command in bindsym is empty
+  * Fix segfault with explicit mode &quot;default&quot; key bindings
+  * Fix crash if config contains nested variables.
+  * strip trailing whitespace in bar output names
+  * Fix crash with long commands
+  * Fix changing borders by restoring BS_NORMAL _MOTIF_WM_HINTS correctly
+</comment>
+    <requestid>1007357</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9e940679c9167333196e47aa0cf22480</srcmd5>
+    <version>4.21.1</version>
+    <time>1671023574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042909</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1634217241beab8d12ad1cba0913e85c</srcmd5>
+    <version>4.22</version>
+    <time>1673209533</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.22:
+  * merge of the i3-gaps fork
+  * i3bar: bar { padding } config directive now implemented (supports bar { height } from i3-gaps)
+  * i3-dmenu-desktop: allow more than one --entry-type with the --show-duplicates flag
+  * You can now enable gaps using the gaps config directive and/or command
+  * colors now support an optional alpha value at the end (#rrggbbaa)
+  * the hide_edge_borders option now supports the smart_no_gaps keyword
+  * Support nonprimary keyword for outputs
+  * add &quot;mode&quot; field in binding event
+  * gaps: workspace gaps assignments are no longer order-dependent
+  * Fix compliance to _MOTIF_WM_HINTS spec when all decorations are set
+  * The floating_from and tiling_from criteria now also work in commands
+</comment>
+    <requestid>1056826</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>62fe02dfa8073731f7d88d0a0ec8f89c</srcmd5>
+    <version>4.23</version>
+    <time>1698700228</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121038</requestid>
+  </revision>
+</revisionlist>

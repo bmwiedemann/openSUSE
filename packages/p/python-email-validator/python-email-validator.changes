@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Thu Nov 16 10:02:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Python 3.8+ is now required (support for Python 3.7 was
+    dropped).
+  * The old `email` field on the returned `ValidatedEmail`
+    object, which in the previous version was superseded by
+    `normalized`, will now raise a deprecation warning if used.
+    See https://stackoverflow.com/q/879173 for strategies to
+    suppress the DeprecationWarning.
+  * A `__version__` module attribute is added.
+  * The email address argument to validate_email is now marked as
+    positional-only to better reflect the documented usage using
+    the new Python 3.8 feature.
+
+-------------------------------------------------------------------
+Thu May 25 08:23:47 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add dont-require-resolv-tests.patch to make tests run without an
+  existing /etc/resolv.conf file
+- Update to 2.0.0:
+  This is a major update to the library, but since email address specs
+  haven't changed there should be no significant changes to which
+  email addresses are considered valid or invalid with default
+  options. There are new options for accepting unusual email addresses
+  that were previously always rejected, some changes to how DNS errors
+  are handled, many changes in error message text, and major internal
+  improvements including the addition of type annotations. Python 3.7+
+  is now required. Details follow:
+
+  * Python 2.x and 3.x versions through 3.6, and dnspython 1.x, are no
+    longer supported. Python 3.7+ with dnspython 2.x are now required.
+  * The dnspython package is no longer required if DNS checks are not
+    used, although it will install automatically.
+  * NoNameservers and NXDOMAIN DNS errors are now handled differently:
+    NoNameservers no longer fails validation, and NXDOMAIN now skips
+    checking for an A/AAAA fallback and goes straight to failing
+    validation.
+  * Some syntax error messages have changed because they are now
+    checked explicitly rather than as a part of other checks.
+  * The quoted-string local part syntax (e.g. multiple @-signs,
+    spaces, etc. if surrounded by quotes) and domain-literal addresses
+    (e.g. @[192.XXX...] or @[IPv6:...]) are now parsed but not
+    considered valid by default. Better error messages are now given
+    for these addresses since it can be confusing for a technically
+    valid address to be rejected, and new allow_quoted_local and
+    allow_domain_literal options are added to allow these addresses if
+    you really need them.
+  * Some other error messages have changed to not repeat the email
+    address in the error message.
+  * The email field on the returned ValidatedEmail object has been
+    renamed to normalized to be clearer about its importance, but
+    access via .email is also still supported.
+  * Some mailbox names like postmaster are now normalized to lowercase
+    per RFC 2142.
+  * The library has been reorganized internally into smaller modules.
+  * The tests have been reorganized and expanded. Deliverability tests
+    now mostly use captured DNS responses so they can be run off-line.
+  * The main tool now reads options to validate_email from environment
+    variables.
+  * Type annotations have been added to the exported methods and the
+    ValidatedEmail class and some internal methods.
+  * The old dict-like pattern for the return value of validate_email
+    is deprecated.
+
+  Versions 2.0.0.post1 and 2.0.0.post2 corrected some packaging
+  issues. 2.0.0.post2 also added a check for an invalid combination of
+  arguments.
+
+-------------------------------------------------------------------
+Thu May 25 07:18:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Sat Jan 28 13:39:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.1:
+  * The new SPF 'v=spf1 -all' (reject-all) deliverability check is removed
+    in most cases. It now is performed only for domains that do not have MX
+    records but do have an A/AAAA fallback record.
+
+-------------------------------------------------------------------
+Tue Oct  4 08:06:34 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.3.0:
+  * Deliverability checks now check for 'v=spf1 -all' SPF records as a way to reject more bad domains.
+  * Special use domain names now raise EmailSyntaxError instead of EmailUndeliverableError since they are performed even if check_deliverability is off.
+  * New module-level attributes are added to override the default values of the keyword arguments and the special-use domains list.
+  * The keyword arguments of the public methods are now marked as keyword-only.
+  * pyIsEmail's test cases are added to the tests.
+  * Recommend that check_deliverability be set to False for validation on login pages.
+  * Added an undocumented globally_deliverable option.
+
+-------------------------------------------------------------------
+Thu Sep  8 07:24:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.1:
+  * Rejecting domains with NULL MX records (when deliverability checks are
+    turned on).
+  * Rejecting unsafe unicode characters. (Some of these checks you should be
+    doing on all of your user inputs already!)
+  * Rejecting most special-use reserved domain names. A new test_environment
+    option is added for using @*.test domains.
+  * example and example.com/net/org are removed from the special-use domains
+    list.
+  * SPECIAL_USE_DOMAIN_NAMES is now a documented part of the API (and it is a
+    list instead of a tuple)
+  * New module-level attributes ALLOW_SMTPUTF8, CHECK_DELIVERABILITY,
+    TEST_ENVIRONMENT, and DEFAULT_TIMEOUT can be used to change the default
+    values of the keyword arguments.
+- Add patch ignore-urllib3-pyopenssl-warning.patch:
+  * Ignore warning as error from requests-toolbelt via dnspython. 
+
+-------------------------------------------------------------------
+Tue Apr 19 17:42:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix the name of the package (it should be email-validator, not
+  email_validator).
+
+-------------------------------------------------------------------
+Mon Aug 16 09:14:16 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 1.1.3:
+  * Add possibility to cache dns lookups (#58)
+  * Add py39 and setup_py to setup_cfg (#57)
+- Changes from 1.1.2:
+  * Refactor: Main refactored, tests added for main (#52)
+  * Simplify email equality check into return statement (#51)
+  * Dedupe length reason logic and declare magic numbers as
+    constants (#50)
+  * Fix: ValidatedEmail is not JSON serializable (#49)
+  * Use dnspython's resolve method when available (#46)
+  * Package name should have a dash not an underscore
+  * Mention Punycode normalization, re-do fields as a table
+- Drop fix-tests-strings.patch which is not needed.
+- Move skipped tests to spec file, drop skip-tests-using-network.patch.
+
+-------------------------------------------------------------------
+Thu Sep 17 11:02:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+-  update to 1.1.1:
+   * Fix exception on DNS timeout
+   * Mention Punycode in the README
+   * Flake8 fixes
+
+-------------------------------------------------------------------
+Tue May 26 06:34:06 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon May 11 07:38:24 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build python2 version
+- Add patch to fix error messages being compared in tests to match
+  error messages in Leap/SLE:
+  * fix-tests-strings.patch
+
+-------------------------------------------------------------------
+Thu May  7 12:03:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- version update to 1.1.0
+  * no upstream changelog
+
+- version update to 1.0.5
+  * no upstream changelog
+
+- Use pytest
+- Add patch to skip tests that try to check MX records of domains:
+  * skip-tests-using-network.patch
+
+-------------------------------------------------------------------
+Tue May  7 10:28:10 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.0.4
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Thu Mar 14 15:48:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.3:
+  * metadata fixes
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:37 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Sep  6 16:48:08 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

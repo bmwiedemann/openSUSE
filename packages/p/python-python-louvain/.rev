@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfb809780d6a31146bb3416d29acffbf</srcmd5>
+    <version>0.11</version>
+    <time>1545223792</time>
+    <user>dimstar_suse</user>
+    <comment>Louvain algorithm for community detection</comment>
+    <requestid>652730</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>286b428094e12400318fce2b09b18f82</srcmd5>
+    <version>0.13</version>
+    <time>1548335035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13
+  * Improve readme about library usage
+  * Make cluster be 0,1...,n_clusters in the special case of no links
+  * Include tests in sdists
+  * Include license and documentation in sdists
+</comment>
+    <requestid>662902</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bfaf8a2089d572361bd1b7a9b2698a90</srcmd5>
+    <version>0.13</version>
+    <time>1578437524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761219</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d9ac651b51705861455b2792d311c94e</srcmd5>
+    <version>0.13</version>
+    <time>1589993274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807671</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e12dfb8bc652367e42cbe36371b9b9a</srcmd5>
+    <version>0.14</version>
+    <time>1594894505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820913</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>11026d6b7828bf017a8d79fa5b58d015</srcmd5>
+    <version>0.15</version>
+    <time>1619298529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15:
+  * Stop relabelling stable partitions, tests on power, doc fixes
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887921</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb4b25016f18dc06c35c3d6da4bbc327</srcmd5>
+    <version>0.16</version>
+    <time>1665754975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16:
+  * Fix #86. When computing the change in modularity after alternating the
+    block membership of a node, the resolution parameter was multiplied to the
+    wrong term.
+    As a result, the current code fails to correctly implement the Louvain
+    algorithm, except for the special case when the resolution parameter is set
+    to one.
+- Add fix-test-karate.patch to fix tests with networkx&lt;=2.7
+  gh#taynaud/python-louvain#95
+</comment>
+    <requestid>1010639</requestid>
+  </revision>
+</revisionlist>

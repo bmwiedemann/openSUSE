@@ -1,0 +1,614 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c03d702df1045ebe23259fb3a921ca1</srcmd5>
+    <version>1.7.31</version>
+    <time>1624999377</time>
+    <user>dimstar_suse</user>
+    <comment>matrix client.
+please use same ADI as https://build.opensuse.org/request/show/902766</comment>
+    <requestid>902768</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6fc2b80f4f26396e8cd6dbf6f33de656</srcmd5>
+    <version>1.7.33</version>
+    <time>1629360056</time>
+    <user>RBrownSUSE</user>
+    <comment>- Version 1.7.33
+  * Translation update
+  * New Labs feature: feature_report_to_moderators
+  * Dependency updates
+  * Add libera.chat to default room directory
+</comment>
+    <requestid>912844</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>404305fdefa3a43e59332b5885660db0</srcmd5>
+    <version>1.8.4</version>
+    <time>1631646858</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.4
+  * Fix a security issue with message key sharing
+
+Please use same ADI as https://build.opensuse.org/request/show/918731
+</comment>
+    <requestid>918732</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d7f1db8bdda5fa944377c6c8b8dd8a9</srcmd5>
+    <version>1.9.2</version>
+    <time>1634587186</time>
+    <user>dimstar_suse</user>
+    <comment>Please use same ADI as https://build.opensuse.org/request/show/925983
+
+- Version 1.9.2
+  * UI fixes
+  * Upgrade to matrix-js-sdk#14.0.1
+</comment>
+    <requestid>925984</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97b6c6600ef2db8f94175094a2f85284</srcmd5>
+    <version>1.9.6</version>
+    <time>1639169562</time>
+    <user>dimstar_suse</user>
+    <comment>PLEASE USE SAME ADI AS https://build.opensuse.org/request/show/939080
+
+- Version 1.9.6
+  * UI fixes and improvements
+  * implement more meta-spaces
+  * Fix possible infinite loop on widget start 
+</comment>
+    <requestid>939081</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b89e80cc2b4ecff410bcbccb2f155c0b</srcmd5>
+    <version>1.9.7</version>
+    <time>1639424722</time>
+    <user>dimstar_suse</user>
+    <comment>PLEASE USE SAME ADI AS https://build.opensuse.org/request/show/940304
+- Version 1.9.7
+  * Security fix: buffer overflow in libolm and matrix-js-sdk
+    https://matrix.org/blog/2021/12/13/disclosure-buffer-overflow-in-libolm-and-matrix-js-sdk
+</comment>
+    <requestid>940305</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7a717ad5c4a69965c71ea4c81b27d5f7</srcmd5>
+    <version>1.9.8</version>
+    <time>1640876140</time>
+    <user>dimstar_suse</user>
+    <comment>PLEASE USE SAME ADI AS https://build.opensuse.org/request/show/943183
+- Version 1.9.8
+  * Mostly small bugfixes and minor improvements
+  * Fix WebGL
+  * See https://github.com/vector-im/element-desktop/releases/tag/v1.9.8
+</comment>
+    <requestid>943184</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>271c8589ec11a455df0ef91d75c36dce</srcmd5>
+    <version>1.9.8</version>
+    <time>1641680607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944746</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b8b3a0ba8af0e921da3ae1acc9f6077</srcmd5>
+    <version>1.9.9</version>
+    <time>1643666248</time>
+    <user>dimstar_suse</user>
+    <comment>PLEASE USE SAME ADI AS https://build.opensuse.org/request/show/950243
+- Version 1.9.9
+  * Hardening for CVE-2022-23597
+</comment>
+    <requestid>950244</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84c7ffa74286ef40b417dac0d5f7b460</srcmd5>
+    <version>1.10.4</version>
+    <time>1647532929</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.10.4
+  * Improved build process: Perform actual build in OBS
+</comment>
+    <requestid>962471</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7086023bc79bcd0fe51e71475b0b656c</srcmd5>
+    <version>1.10.4</version>
+    <time>1647618154</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on other architectures (boo#1197278)
+</comment>
+    <requestid>962673</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d81e4cad7c88bc855ce445b337f0ba66</srcmd5>
+    <version>1.10.4</version>
+    <time>1647889949</time>
+    <user>dimstar_suse</user>
+    <comment>- Use right build dir for aarch64 (boo#1197278)
+</comment>
+    <requestid>963653</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>956406c412cdc88fa481cf5e08827795</srcmd5>
+    <version>1.10.4</version>
+    <time>1649274732</time>
+    <user>dimstar_suse</user>
+    <comment>- Sync ExcludeArch with nodejs-electron.</comment>
+    <requestid>967334</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9ca518752011e3a733751350a05e86f2</srcmd5>
+    <version>1.10.9</version>
+    <time>1649876768</time>
+    <user>dimstar_suse</user>
+    <comment>1.10.9</comment>
+    <requestid>969838</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ea8a6e2377a4f5ccab64fa4c09cc3808</srcmd5>
+    <version>1.10.12</version>
+    <time>1653313924</time>
+    <user>dimstar_suse</user>
+    <comment>Version 1.10.12</comment>
+    <requestid>978652</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c2fa8c06b53f8d39804530a30c9b7c11</srcmd5>
+    <version>1.10.13</version>
+    <time>1654595121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>981092</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>aa7711e150bbafbcb344e01754f2c563</srcmd5>
+    <version>1.10.15</version>
+    <time>1655396421</time>
+    <user>dimstar_suse</user>
+    <comment>Version 1.10.15</comment>
+    <requestid>982731</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e53880b00254082716671b3b7ab43a0e</srcmd5>
+    <version>1.11.0</version>
+    <time>1657888011</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>989167</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ed11ac85dd99d3db2921b40e02d4e422</srcmd5>
+    <version>1.11.2</version>
+    <time>1660235525</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>994353</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0434317207d80915e3403af34360e620</srcmd5>
+    <version>1.11.4</version>
+    <time>1662063131</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.4
+- Fixes for CVE-2022-36059 and CVE-2022-36060</comment>
+    <requestid>1000623</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>91a9d8d44a80e15b222d05eda8adc91e</srcmd5>
+    <version>1.11.5</version>
+    <time>1663935333</time>
+    <user>dimstar_suse</user>
+    <comment>Version update</comment>
+    <requestid>1005574</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>51ceeda2a2825860665f495e72eee1ba</srcmd5>
+    <version>1.11.8</version>
+    <time>1664553439</time>
+    <user>RBrownFactory</user>
+    <comment>- Version 1.11.8
+## 🐛 Bug Fixes
+ * Bump IDB crypto store version ([\#2705](https://github.com/matrix-org/matrix-js-sdk/pull/2705)).
+
+- Version 1.11.7
+## 🔒 Security
+* Fix for [CVE-2022-39249](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=CVE%2D2022%2D39249)
+* Fix for [CVE-2022-39250](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=CVE%2D2022%2D39250)
+* Fix for [CVE-2022-39251](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=CVE%2D2022%2D39251)
+* Fix for [CVE-2022-39236](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=CVE%2D2022%2D39236)
+
+- Version 1.11.6
+## ✨ Features
+ * Element Call video rooms ([\#9267](https://github.com/matrix-org/matrix-react-sdk/pull/9267)).
+ * Device manager - rename session ([\#9282](https://github.com/matrix-org/matrix-react-sdk/pull/9282)).
+ * Allow widgets to read related events ([\#9210](https://github.com/matrix-org/matrix-react-sdk/pull/9210)). Contributed by @dhenneke.
+ * Device manager - logout of other session ([\#9280](https://github.com/matrix-org/matrix-react-sdk/pull/9280)).
+ * Device manager - logout current session ([\#9275](https://github.com/matrix-org/matrix-react-sdk/pull/9275)).
+ * Device manager - verify other devices ([\#9274](https://github.com/matrix-org/matrix-react-sdk/pull/9274)).
+ * Allow integration managers to remove users ([\#9211](https://github.com/matrix-org/matrix-react-sdk/pull/9211)).
+ * Device manager - add verify current session button ([\#9252](https://github.com/matrix-org/matrix-react-sdk/pull/9252)).
+ * Add NotifPanel dot back. ([\#9242](https://github.com/matrix-org/matrix-react-sdk/pull/9242)). Fixes vector-im/element-web#17641.
+ * Implement MSC3575: Sliding Sync ([\#8328](https://github.com/matrix-org/matrix-react-sdk/pull/8328)).
+ * Add the clipboard read permission for widgets ([\#9250](https://github.com/matrix-org/matrix-react-sdk/pull/9250)). Contributed by @stefanmuhle.
+## 🐛 Bug Fixes
+ * Make autocomplete pop-up wider in thread view ([\#9289](https://github.com/matrix-org/matrix-react-sdk/pull/9289)).
+ * Fix soft crash around inviting invalid MXIDs in start DM on first message flow ([\#9281](https://github.com/matrix-org/matrix-react-sdk/pull/9281)). Fixes matrix-org/element-web-rageshakes#15060 and matrix-org/element-web-rageshakes#15140.
+ * Fix in-reply-to previews not disappearing when swapping rooms ([\#9278](https://github.com/matrix-org/matrix-react-sdk/pull/9278)).
+ * Fix invalid instanceof operand window.OffscreenCanvas ([\#9276](https://github.com/matrix-org/matrix-react-sdk/pull/9276)). Fixes vector-im/element-web#23275.
+ * Fix memory leak caused by unremoved listener ([\#9273](https://github.com/matrix-org/matrix-react-sdk/pull/9273)).</comment>
+    <requestid>1007179</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d17b1fcac7d52a8bd4321771ed2bda31</srcmd5>
+    <version>1.11.8</version>
+    <time>1665184985</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008298</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ea5e102910be036a073b580e4b93eef7</srcmd5>
+    <version>1.11.10</version>
+    <time>1666257078</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1029949</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0b845c40c4e5ee1728832c03b67dc38e</srcmd5>
+    <version>1.11.13</version>
+    <time>1667499244</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1032933</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ced971263880ca3c81b8f98c80a7596a</srcmd5>
+    <version>1.11.15</version>
+    <time>1670058211</time>
+    <user>dimstar_suse</user>
+    <comment>Version 1.11.15</comment>
+    <requestid>1039583</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ed38322380ef04ae25e50335191beb2b</srcmd5>
+    <version>1.11.17</version>
+    <time>1671889904</time>
+    <user>dimstar_suse</user>
+    <comment>Version 1.11.17</comment>
+    <requestid>1044715</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f2fa5867b7caf581f1d9e690ba54e289</srcmd5>
+    <version>1.11.20</version>
+    <time>1674324649</time>
+    <user>dimstar_suse</user>
+    <comment>version 1.11.20</comment>
+    <requestid>1060026</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f43787f4bb9b210082e3a843a01b33a4</srcmd5>
+    <version>1.11.20</version>
+    <time>1675792120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063434</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b073ba0b0a4632102604037817a0c9e2</srcmd5>
+    <version>1.11.22</version>
+    <time>1676036158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064224</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>680a15a2dacc0c60099d1da2767655ac</srcmd5>
+    <version>1.11.23</version>
+    <time>1676464808</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.23
+## ✨ Features
+ * Description of QR code sign in labs feature ([\#23513](https://github.com/vector-im/element-web/pull/23513)). Contributed by @hughns.
+ * Add option to find own location in map views ([\#10083](https://github.com/matrix-org/matrix-react-sdk/pull/10083)).
+ * Render poll end events in timeline ([\#10027](https://github.com/matrix-org/matrix-react-sdk/pull/10027)). Contributed by @kerryarchibald.
+ * Indicate unread messages in tab title ([\#10096](https://github.com/matrix-org/matrix-react-sdk/pull/10096)). Contributed by @tnt7864.
+ * Open message in editing mode when keyboard up is pressed (RTE) ([\#10079](https://github.com/matrix-org/matrix-react-sdk/pull/10079)). Contributed by @florianduros.
+ * Hide superseded rooms from the room list using dynamic room predecessors ([\#10068](https://github.com/matrix-org/matrix-react-sdk/pull/10068)). Contributed by @andybalaam.
+ * Support MSC3946 in RoomListStore ([\#10054](https://github.com/matrix-org/matrix-react-sdk/pull/10054)). Fixes vector-im/element-web#24325. Contributed by @andybalaam.
+ * Auto focus security key field ([\#10048](https://github.com/matrix-org/matrix-react-sdk/pull/10048)).
+ * use Poll model with relations API in poll rendering ([\#9877](https://github.com/matrix-org/matrix-react-sdk/pull/9877)). Contributed by @kerryarchibald.
+ * Support MSC3946 in the RoomCreate tile ([\#10041](https://github.com/matrix-org/matrix-react-sdk/pull/10041)). Fixes vector-im/element-web#24323. Contributed by @andybalaam.
+ * Update labs flag description for RTE ([\#10058](https://github.com/matrix-org/matrix-react-sdk/pull/10058)). Contributed by @florianduros.
+ * Change ul list style to disc when editing message ([\#10043](https://github.com/matrix-org/matrix-react-sdk/pull/10043)). Contributed by @alunturner.
+ * Improved click detection within PiP windows ([\#10040](https://github.com/matrix-org/matrix-react-sdk/pull/10040)). Fixes vector-im/element-web#24371.
+ * Add RTE keyboard navigation in editing ([\#9980](https://github.com/matrix-org/matrix-react-sdk/pull/9980)). Fixes vector-im/element-web#23621. Contributed by @florianduros.
+ * Paragraph integration for rich text editor ([\#10008](https://github.com/matrix-org/matrix-react-sdk/pull/10008)). Contributed by @alunturner.
+ * Add  indentation increasing/decreasing to RTE ([\#10034](https://github.com/matrix-org/matrix-react-sdk/pull/10034)). Contributed by @florianduros.
+ * Add ignore user confirmation dialog ([\#6116](https://github.com/matrix-org/matrix-react-sdk/pull/6116)). Fixes vector-im/element-web#14746.
+ * Use monospace font for room, message IDs in View Source modal ([\#9956](https://github.com/matrix-org/matrix-react-sdk/pull/9956)). Fixes vector-im/element-web#21937. Contributed by @paragpoddar.
+ * Implement MSC3946 for AdvancedRoomSettingsTab ([\#9995](https://github.com/matrix-org/matrix-react-sdk/pull/9995)). Fixes vector-im/element-web#24322. Contributed by @andybalaam.
+ * Implementation of MSC3824 to make the client OIDC-aware ([\#8681](https://github.com/matrix-org/matrix-react-sdk/pull/8681)). Contributed by @hughns.
+ * Improves a11y for avatar uploads ([\#9985](https://github.com/matrix-org/matrix-react-sdk/pull/9985)). Contributed by @GoodGuyMarco.
+ * Add support for [token authenticated registration](https ([\#7275](https://github.com/matrix-org/matrix-react-sdk/pull/7275)). Fixes vector-im/element-web#18931. Contributed by @govynnus.
+## 🐛 Bug Fixes
+ * Update to Electron 22.2.0 - fix tray icons in Linux ([\#530](https://github.com/vector-im/element-desktop/pull/530)). Fixes vector-im/element-web#23993.
+ * Jitsi requests 'requires_client' capability if auth token is provided ([\#24294](https://github.com/vector-im/element-web/pull/24294)). Contributed by @maheichyk.
+ * Remove duplicate white space characters from translation keys ([\#10152](https://github.com/matrix-org/matrix-react-sdk/pull/10152)). Contributed by @luixxiul.
+ * Fix the caption of new sessions manager on Labs settings page for localization ([\#10143](https://github.com/matrix-org/matrix-react-sdk/pull/10143)). Contributed by @luixxiul.
+ * Prevent start another DM with a user if one already exists ([\#10127](https://github.com/matrix-org/matrix-react-sdk/pull/10127)). Fixes vector-im/element-web#23138.</comment>
+    <requestid>1065752</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c8454cbfc91ce1794fdaa8264c2fab88</srcmd5>
+    <version>1.11.26</version>
+    <time>1680125224</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.26
+## 🐛 Bug Fixes
+ * Changes for matrix-js-sdk v24.0.0
+ * Changes for matrix-react-sdk v3.69.0
+
+- Version 1.11.25
+## ✨ Features
+ * Remove experimental PWA support for Firefox and Safari ([\#24630](https://github.com/vector-im/element-web/pull/24630)).
+ * Only allow to start a DM with one email if encryption by default is enabled ([\#10253](https://github.com/matrix-org/matrix-react-sdk/pull/10253)). Fixes vector-im/element-web#23133.
+ * DM rooms are now encrypted if encryption by default is enabled and only inviting a single email address. Any action in the result DM room will be blocked until the other has joined. ([\#10229](https://github.com/matrix-org/matrix-react-sdk/pull/10229)).
+ * Reduce bottom margin of ReplyChain on compact modern layout ([\#8972](https://github.com/matrix-org/matrix-react-sdk/pull/8972)). Fixes vector-im/element-web#22748. Contributed by @luixxiul.
+ * Support for v2 of MSC3903 ([\#10165](https://github.com/matrix-org/matrix-react-sdk/pull/10165)). Contributed by @hughns.
+ * When starting a DM, existing rooms with pending third-party invites will be reused. ([\#10256](https://github.com/matrix-org/matrix-react-sdk/pull/10256)). Fixes vector-im/element-web#23139.
+ * Polls push rules: synchronise poll rules with message rules ([\#10263](https://github.com/matrix-org/matrix-react-sdk/pull/10263)). Contributed by @kerryarchibald.
+ * New verification request toast button labels ([\#10259](https://github.com/matrix-org/matrix-react-sdk/pull/10259)).
+ * Remove padding around integration manager iframe ([\#10148](https://github.com/matrix-org/matrix-react-sdk/pull/10148)).
+ * Fix block code styling in rich text editor ([\#10246](https://github.com/matrix-org/matrix-react-sdk/pull/10246)). Contributed by @alunturner.
+ * Poll history: fetch more poll history ([\#10235](https://github.com/matrix-org/matrix-react-sdk/pull/10235)). Contributed by @kerryarchibald.
+ * Sort short/exact emoji matches before longer incomplete matches ([\#10212](https://github.com/matrix-org/matrix-react-sdk/pull/10212)). Fixes vector-im/element-web#23210. Contributed by @grimhilt.
+ * Poll history: detail screen ([\#10172](https://github.com/matrix-org/matrix-react-sdk/pull/10172)). Contributed by @kerryarchibald.
+ * Provide a more detailed error message than &quot;No known servers&quot; ([\#6048](https://github.com/matrix-org/matrix-react-sdk/pull/6048)). Fixes vector-im/element-web#13247. Contributed by @aaronraimist.
+ * Say when a call was answered from a different device ([\#10224](https://github.com/matrix-org/matrix-react-sdk/pull/10224)).
+ * Widget permissions customizations using module api ([\#10121](https://github.com/matrix-org/matrix-react-sdk/pull/10121)). Contributed by @maheichyk.
+ * Fix copy button icon overlapping with copyable text ([\#10227](https://github.com/matrix-org/matrix-react-sdk/pull/10227)). Contributed by @Adesh-Pandey.
+ * Support joining non-peekable rooms via the module API ([\#10154](https://github.com/matrix-org/matrix-react-sdk/pull/10154)). Contributed by @maheichyk.
+ * The &quot;new login&quot; toast does now display the same device information as in the settings. &quot;No&quot; does now open the device settings. &quot;Yes, it was me&quot; dismisses the toast. ([\#10200](https://github.com/matrix-org/matrix-react-sdk/pull/10200)).
+ * Do not prompt for a password when doing a „reset all“ after login ([\#10208](https://github.com/matrix-org/matrix-react-sdk/pull/10208)).
+## 🐛 Bug Fixes
+ * Fix macOS notarisation using keychain credentials ([\#557](https://github.com/vector-im/element-desktop/pull/557)).
+ * Let electron-builder correctly set StartupWMClass ([\#526](https://github.com/vector-im/element-desktop/pull/526)). Fixes vector-im/element-web#13780.</comment>
+    <requestid>1075029</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dbb8a3cf2b633cfd23b5bedeed586279</srcmd5>
+    <version>1.11.29</version>
+    <time>1681481518</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.29
+## ✨ Features
+ * Ship linux tarball with static sqlcipher ([\#597](https://github.com/vector-im/element-desktop/pull/597)). Fixes vector-im/element-web#18486.
+ * Show recent room breadcrumbs on touchbar ([\#183](https://github.com/vector-im/element-desktop/pull/183)). Fixes vector-im/element-web#15998.
+ * Clear electron data when logging out ([\#578](https://github.com/vector-im/element-desktop/pull/578)).
+ * Send Electron crashpad reports to Sentry from Nightly ([\#579](https://github.com/vector-im/element-desktop/pull/579)). Fixes vector-im/element-web#18263.
+ * Recommend element-io-archive-keyring from our Debian package ([\#566](https://github.com/vector-im/element-desktop/pull/566)).
+ * Allow desktop app to expose recent rooms in UI integrations ([\#16940](https://github.com/vector-im/element-web/pull/16940)).
+ * Add API params to mute audio and/or video in Jitsi calls by default ([\#24820](https://github.com/vector-im/element-web/pull/24820)). Contributed by @dhenneke.
+ * Style mentions as pills in rich text editor ([\#10448](https://github.com/matrix-org/matrix-react-sdk/pull/10448)). Contributed by @alunturner.
+ * Show room create icon if &quot;UIComponent.roomCreation&quot; is enabled ([\#10364](https://github.com/matrix-org/matrix-react-sdk/pull/10364)). Contributed by @maheichyk.
+ * Mentions as links rte ([\#10463](https://github.com/matrix-org/matrix-react-sdk/pull/10463)). Contributed by @alunturner.
+ * Better error handling in jump to date ([\#10405](https://github.com/matrix-org/matrix-react-sdk/pull/10405)). Contributed by @MadLittleMods.
+ * Show &quot;Invite&quot; menu option if &quot;UIComponent.sendInvites&quot; is enabled. ([\#10363](https://github.com/matrix-org/matrix-react-sdk/pull/10363)). Contributed by @maheichyk.
+ * Added `UserProfilesStore`, `LruCache` and user permalink profile caching ([\#10425](https://github.com/matrix-org/matrix-react-sdk/pull/10425)). Fixes vector-im/element-web#10559.
+ * Mentions as links rte ([\#10422](https://github.com/matrix-org/matrix-react-sdk/pull/10422)). Contributed by @alunturner.
+ * Implement MSC3952: intentional mentions ([\#9983](https://github.com/matrix-org/matrix-react-sdk/pull/9983)).
+ * Implement MSC3973: Search users in the user directory with the Widget API ([\#10269](https://github.com/matrix-org/matrix-react-sdk/pull/10269)). Contributed by @dhenneke.
+ * Permalinks to message are now displayed as pills ([\#10392](https://github.com/matrix-org/matrix-react-sdk/pull/10392)). Fixes vector-im/element-web#24751 and vector-im/element-web#24706.
+ * Show search,dial,explore in filterContainer if &quot;UIComponent.filterContainer&quot; is enabled ([\#10381](https://github.com/matrix-org/matrix-react-sdk/pull/10381)). Contributed by @maheichyk.
+ * Increase space panel collapse clickable area ([\#6084](https://github.com/matrix-org/matrix-react-sdk/pull/6084)). Fixes vector-im/element-web#17379. Contributed by @jaiwanth-v.
+ * Add fallback for replies to Polls ([\#10380](https://github.com/matrix-org/matrix-react-sdk/pull/10380)). Fixes vector-im/element-web#24197. Contributed by @kerryarchibald.
+ * Permalinks to rooms and users are now pillified ([\#10388](https://github.com/matrix-org/matrix-react-sdk/pull/10388)). Fixes vector-im/element-web#24825.
+ * Poll history -  access poll history from room settings ([\#10356](https://github.com/matrix-org/matrix-react-sdk/pull/10356)). Contributed by @kerryarchibald.
+ * Add API params to mute audio and/or video in Jitsi calls by default ([\#10376](https://github.com/matrix-org/matrix-react-sdk/pull/10376)). Contributed by @dhenneke.
+ * Notifications: inline error message on notifications saving error ([\#10288](https://github.com/matrix-org/matrix-react-sdk/pull/10288)). Contributed by @kerryarchibald.
+ * Support dynamic room predecessor in SpaceProvider ([\#10348](https://github.com/matrix-org/matrix-react-sdk/pull/10348)). Contributed by @andybalaam.
+ * Support dynamic room predecessors for RoomProvider ([\#10346](https://github.com/matrix-org/matrix-react-sdk/pull/10346)). Contributed by @andybalaam.
+ * Support dynamic room predecessors in OwnBeaconStore ([\#10339](https://github.com/matrix-org/matrix-react-sdk/pull/10339)). Contributed by @andybalaam.
+ * Support dynamic room predecessors in ForwardDialog ([\#10344](https://github.com/matrix-org/matrix-react-sdk/pull/10344)). Contributed by @andybalaam.</comment>
+    <requestid>1079443</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>be39d42aee3597b4b11a0659c9c7323f</srcmd5>
+    <version>1.11.30</version>
+    <time>1682433778</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.30
+## 🔒 Security
+ * Fixes for [CVE-2023-30609](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=CVE-2023-30609) / GHSA-xv83-x443-7rmw
+## ✨ Features
+ * Pick sensible default option for phone country dropdown ([\#10627](https://github.com/matrix-org/matrix-react-sdk/pull/10627)). Fixes vector-im/element-web#3528.
+ * Relate field validation tooltip via aria-describedby ([\#10522](https://github.com/matrix-org/matrix-react-sdk/pull/10522)). Fixes vector-im/element-web#24963.
+ * Handle more completion types in rte autocomplete ([\#10560](https://github.com/matrix-org/matrix-react-sdk/pull/10560)). Contributed by @alunturner.
+ * Show a tile for an unloaded predecessor room if it has via_servers ([\#10483](https://github.com/matrix-org/matrix-react-sdk/pull/10483)). Contributed by @andybalaam.
+ * Exclude message timestamps from aria live region ([\#10584](https://github.com/matrix-org/matrix-react-sdk/pull/10584)). Fixes vector-im/element-web#5696.
+ * Make composer format bar an aria toolbar ([\#10583](https://github.com/matrix-org/matrix-react-sdk/pull/10583)). Fixes vector-im/element-web#11283.
+ * Improve accessibility of font slider ([\#10473](https://github.com/matrix-org/matrix-react-sdk/pull/10473)). Fixes vector-im/element-web#20168 and vector-im/element-web#24962.
+ * fix file size display from kB to KB ([\#10561](https://github.com/matrix-org/matrix-react-sdk/pull/10561)). Fixes vector-im/element-web#24866. Contributed by @NSV1991.
+ * Handle /me in rte ([\#10558](https://github.com/matrix-org/matrix-react-sdk/pull/10558)). Contributed by @alunturner.
+ * bind html with switch for manage extension setting option ([\#10553](https://github.com/matrix-org/matrix-react-sdk/pull/10553)). Contributed by @NSV1991.
+ * Handle command completions in RTE ([\#10521](https://github.com/matrix-org/matrix-react-sdk/pull/10521)). Contributed by @alunturner.
+ * Add room and user avatars to rte ([\#10497](https://github.com/matrix-org/matrix-react-sdk/pull/10497)). Contributed by @alunturner.
+ * Support for MSC3882 revision 1 ([\#10443](https://github.com/matrix-org/matrix-react-sdk/pull/10443)). Contributed by @hughns.
+ * Check profiles before starting a DM ([\#10472](https://github.com/matrix-org/matrix-react-sdk/pull/10472)). Fixes vector-im/element-web#24830.
+ * Quick settings: Change the copy / labels on the options ([\#10427](https://github.com/matrix-org/matrix-react-sdk/pull/10427)). Fixes vector-im/element-web#24522. Contributed by @justjanne.
+ * Update rte autocomplete styling ([\#10503](https://github.com/matrix-org/matrix-react-sdk/pull/10503)). Contributed by @alunturner.
+## 🐛 Bug Fixes
+ * Workaround Squirrel.Mac wedging app restart after failed update check ([\#629](https://github.com/vector-im/element-desktop/pull/629)).
+ * Fix error about webContents on log out ([\#627](https://github.com/vector-im/element-desktop/pull/627)).
+ * Fix error when breadcrumb image fails to load ([\#609](https://github.com/vector-im/element-desktop/pull/609)).
+ * Fix create subspace dialog not working ([\#10652](https://github.com/matrix-org/matrix-react-sdk/pull/10652)). Fixes vector-im/element-web#24882
+ * Fix multiple accessibility defects identified by AXE ([\#10606](https://github.com/matrix-org/matrix-react-sdk/pull/10606)).
+ * Fix view source from edit history dialog always showing latest event ([\#10626](https://github.com/matrix-org/matrix-react-sdk/pull/10626)). Fixes vector-im/element-web#21859.
+ * #21451 Fix WebGL disabled error message ([\#10589](https://github.com/matrix-org/matrix-react-sdk/pull/10589)). Contributed by @rashmitpankhania.
+ * Properly translate errors in `AddThreepid.ts` so they show up translated to the user but not in our logs ([\#10432](https://github.com/matrix-org/matrix-react-sdk/pull/10432)). Contributed by @MadLittleMods.
+ * Fix overflow on auth pages ([\#10605](https://github.com/matrix-org/matrix-react-sdk/pull/10605)). Fixes vector-im/element-web#19548.</comment>
+    <requestid>1082749</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>78843cf2386adbb8211c16b3cd32985e</srcmd5>
+    <version>1.11.32</version>
+    <time>1686172070</time>
+    <user>dimstar_suse</user>
+    <comment>version 1.11.32</comment>
+    <requestid>1091243</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>9a58abd7e4aa960ea5d26d3a1f5b1bb4</srcmd5>
+    <version>1.11.32</version>
+    <time>1686927343</time>
+    <user>dimstar_suse</user>
+    <comment>Build with native modules</comment>
+    <requestid>1093467</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>dc5e99ac988dcffe01211cb252e44a97</srcmd5>
+    <version>1.11.32</version>
+    <time>1687550010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094867</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0dfafbad63058f0aa941c699810664ee</srcmd5>
+    <version>1.11.34</version>
+    <time>1688476934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096602</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c6cec4d42bc53d97ffe0a5778c3d4820</srcmd5>
+    <version>1.11.36</version>
+    <time>1689710952</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.36
+## 🔒 Security
+ * Fixes for [CVE-2023-37259](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=CVE-2023-37259) / [GHSA-c9vx-2g7w-rp65](https://github.com/matrix-org/matrix-react-sdk/security/advisories/GHSA-c9vx-2g7w-rp65)
+## 🦖 Deprecations
+ * Deprecate customisations in favour of Module API ([\#25736](https://github.com/vector-im/element-web/pull/25736)). Fixes vector-im/element-web#25733.
+## ✨ Features
+ * OIDC: store initial screen in session storage  ([\#25688](https://github.com/vector-im/element-web/pull/25688)). Fixes vector-im/element-web#25656. Contributed by @kerryarchibald.
+ * Allow default_server_config as a fallback config ([\#25682](https://github.com/vector-im/element-web/pull/25682)). Contributed by @ShadowRZ.
+ * OIDC: remove auth params from url after login attempt ([\#25664](https://github.com/vector-im/element-web/pull/25664)). Contributed by @kerryarchibald.
+ * feat(faq): remove keyboard shortcuts button ([\#9342](https://github.com/matrix-org/matrix-react-sdk/pull/9342)). Fixes vector-im/element-web#22625. Contributed by @gefgu.
+ * GYU: Update banner ([\#11211](https://github.com/matrix-org/matrix-react-sdk/pull/11211)). Fixes vector-im/element-web#25530. Contributed by @justjanne.
+ * Linkify mxc:// URLs as links to your media repo ([\#11213](https://github.com/matrix-org/matrix-react-sdk/pull/11213)). Fixes vector-im/element-web#6942.
+ * OIDC: Log in ([\#11199](https://github.com/matrix-org/matrix-react-sdk/pull/11199)). Fixes vector-im/element-web#25657. Contributed by @kerryarchibald.
+ * Handle all permitted url schemes in linkify ([\#11215](https://github.com/matrix-org/matrix-react-sdk/pull/11215)). Fixes vector-im/element-web#4457 and vector-im/element-web#8720.
+ * Autoapprove Element Call oidc requests ([\#11209](https://github.com/matrix-org/matrix-react-sdk/pull/11209)). Contributed by @toger5.
+ * Allow creating knock rooms ([\#11182](https://github.com/matrix-org/matrix-react-sdk/pull/11182)). Contributed by @charlynguyen.
+ * Expose and pre-populate thread ID in devtools dialog ([\#10953](https://github.com/matrix-org/matrix-react-sdk/pull/10953)).
+ * Hide URL preview if it will be empty ([\#9029](https://github.com/matrix-org/matrix-react-sdk/pull/9029)).
+ * Change wording from avatar to profile picture ([\#7015](https://github.com/matrix-org/matrix-react-sdk/pull/7015)). Fixes vector-im/element-meta#1331. Contributed by @aaronraimist.
+ * Quick and dirty devtool to explore state history ([\#11197](https://github.com/matrix-org/matrix-react-sdk/pull/11197)).
+ * Consider more user inputs when calculating zxcvbn score ([\#11180](https://github.com/matrix-org/matrix-react-sdk/pull/11180)).
+ * GYU: Account Notification Settings ([\#11008](https://github.com/matrix-org/matrix-react-sdk/pull/11008)). Fixes vector-im/element-web#24567. Contributed by @justjanne.
+ * Compound Typography pass ([\#11103](https://github.com/matrix-org/matrix-react-sdk/pull/11103)). Fixes vector-im/element-web#25548.
+ * OIDC: navigate to authorization endpoint ([\#11096](https://github.com/matrix-org/matrix-react-sdk/pull/11096)). Fixes vector-im/element-web#25574. Contributed by @kerryarchibald.
+## 🐛 Bug Fixes
+ * Fix read receipt sending behaviour around thread roots ([\#3600](https://github.com/matrix-org/matrix-js-sdk/pull/3600)).
+ * Fix missing metaspace notification badges ([\#11269](https://github.com/matrix-org/matrix-react-sdk/pull/11269)). Fixes vector-im/element-web#25679.
+ * Make checkboxes less rounded ([\#11224](https://github.com/matrix-org/matrix-react-sdk/pull/11224)). Contributed by @andybalaam.
+ * GYU: Fix issues with audible keywords without activated mentions ([\#11218](https://github.com/matrix-org/matrix-react-sdk/pull/11218)). Contributed by @justjanne.
+ * PosthogAnalytics unwatch settings on logout ([\#11207](https://github.com/matrix-org/matrix-react-sdk/pull/11207)). Fixes vector-im/element-web#25703.</comment>
+    <requestid>1099308</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ec4f6c9cac45fc3b47fc804a38bfef04</srcmd5>
+    <version>1.11.38</version>
+    <time>1691594788</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.38
+</comment>
+    <requestid>1103125</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>31ebcc38198fb7941bf6265763aef7f0</srcmd5>
+    <version>1.11.43</version>
+    <time>1695758497</time>
+    <user>anag+factory</user>
+    <comment>1.11.43</comment>
+    <requestid>1113496</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>523f5ebc946a8804b29001a6490fd863</srcmd5>
+    <version>1.11.47</version>
+    <time>1698952951</time>
+    <user>anag+factory</user>
+    <comment>1.11.47</comment>
+    <requestid>1122577</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0ed502ca3c080d900a8d95582af0c39f</srcmd5>
+    <version>1.11.48</version>
+    <time>1699478282</time>
+    <user>anag+factory</user>
+    <comment>1.11.48</comment>
+    <requestid>1124105</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9ad53479bc339a41d206a4b6c27cd37a</srcmd5>
+    <version>1.11.49</version>
+    <time>1700598703</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1127723</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>535a8d0f4b78d0615c347bf47d6c4263</srcmd5>
+    <version>1.11.50</version>
+    <time>1700865232</time>
+    <user>anag+factory</user>
+    <comment>Version 1.11.50</comment>
+    <requestid>1128211</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f7d59a51230deafeb5461d7f81f0d86a</srcmd5>
+    <version>1.11.51</version>
+    <time>1701902937</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.11.51
+  
+  ## 🦖 Deprecations
+  * Remove Quote from MessageContextMenu as it is unsupported by WYSIWYG (https://github.com/matrix-org/matrix-react-sdk/pull/11914). Contributed by @t3chguy.
+  ## ✨ Features
+  * Always allow call.member events on new rooms (https://github.com/matrix-org/matrix-react-sdk/pull/11948). Contributed by @toger5.
+  * Right panel: view third party invite info without clearing history (https://github.com/matrix-org/matrix-react-sdk/pull/11934). Contributed by @kerryarchibald.
+  * Allow switching to system emoji font (https://github.com/matrix-org/matrix-react-sdk/pull/11925). Contributed by @t3chguy.
+  * Update open in other tab message (https://github.com/matrix-org/matrix-react-sdk/pull/11916). Contributed by @weeman1337.
+  * Add menu for legacy and element call in 1:1 rooms (https://github.com/matrix-org/matrix-react-sdk/pull/11910). Contributed by @toger5.
+  * Add ringing for matrixRTC (https://github.com/matrix-org/matrix-react-sdk/pull/11870). Contributed by @toger5.
+  ## 🐛 Bug Fixes
+  * Keep device language when it has been previosuly set, after a successful delegated authentication flow that clears localStorage (https://github.com/matrix-org/matrix-react-sdk/pull/11902). Contributed by @mgcm.
+  * Fix misunderstanding of functional members (https://github.com/matrix-org/matrix-react-sdk/pull/11918). Contributed by @toger5.
+  * Fix: Video Room Chat Header Button Removed (https://github.com/matrix-org/matrix-react-sdk/pull/11911). Contributed by @kerryarchibald.
+  * Fix &quot;not attempting encryption&quot; warning (https://github.com/matrix-org/matrix-react-sdk/pull/11899). Contributed by @richvdh.</comment>
+    <requestid>1131322</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4a566cd4b7a3103a280aa65db222cc5a</srcmd5>
+    <version>1.11.52</version>
+    <time>1703102504</time>
+    <user>anag+factory</user>
+    <comment>1.11.52</comment>
+    <requestid>1134095</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a8cfe8d7a9be95d86f38284eb5f6913f</srcmd5>
+    <version>1.11.53</version>
+    <time>1705003551</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1138153</requestid>
+  </revision>
+</revisionlist>

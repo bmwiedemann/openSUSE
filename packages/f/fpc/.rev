@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>758b1bebb15d73bc8cbbb70aaf529d73</srcmd5>
+    <version>3.0.0</version>
+    <time>1476350856</time>
+    <user>dimstar_suse</user>
+    <comment>removed setBadness (seemed useless anyways)</comment>
+    <requestid>420693</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>963e5515351436240e42c8d40e3ec3c5</srcmd5>
+    <version>3.0.4</version>
+    <time>1516222540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558235</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d5d8eb9d25e019269bdcb71943277fe4</srcmd5>
+    <version>3.0.4</version>
+    <time>1526463793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607722</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b21be035cf5423ff51cac3f95f39a40b</srcmd5>
+    <version>3.0.4</version>
+    <time>1537018785</time>
+    <user>maxlin_factory</user>
+    <comment>- Move patches and sources out of %ifarch conditions
+- Remove 'fpcsrc/packages/nvapi/nvapi.pas' due to license problems
+- Add patch to fix aarch64 build:
+  * fpc-fix_aarch64.patch
+- Add aarch64 support
+</comment>
+    <requestid>635531</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b2eaa0b5defd3ca3d0daf44c728688af</srcmd5>
+    <version>3.0.4</version>
+    <time>1552902133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685594</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>80d334a1c473894c1f45cd6748a0d29a</srcmd5>
+    <version>3.0.4</version>
+    <time>1567423264</time>
+    <user>dimstar_suse</user>
+    <comment>- Use _multibuild for building the doc subpackage. This removes e.g.
+  TeXLive, python and X11 from the dependency chain of the main package.
+- Remove noarch for doc subpackage as we need to use %ifarch
+- Use separate subpackages for documentation and examples, and make
+  both noarch.
+- Make PDF documentation build reproducible
+- Use tex(foo) style BuildRequires, only request what is really needed.
+- Install COPYING* in licensedir
+- Drop gpm and ncurses runtime requires (not used by the compiler,
+  but only for some of the examples).
+- Remove defattr and BuildRoot from spec file.</comment>
+    <requestid>726979</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b6d1048b7b1f6138d95f3de9fa104c3</srcmd5>
+    <version>3.2.0</version>
+    <time>1598167117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827537</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f3e8db4b022cf7b071e29ba87fbd9851</srcmd5>
+    <version>3.2.0</version>
+    <time>1601044021</time>
+    <user>dimstar_suse</user>
+    <comment>- add aarch64-fpc-compilation-fix.patch: pass vfp flags to 
+  gas
+- Handle fpu initialization (bsc#1122855):
+  * add aarch64-fpu-initialization.patch: initialize fpu properly
+  * aarch64: disable bootstrap mode
+- Backport r46209 - &quot;@PLT is needed for calls to link it properly
+  with pic code&quot; [bsc#1176706]:
+  * fpc-si_c-x86_64-plt.patch
+</comment>
+    <requestid>837228</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ba2adf8659107e51355bd8ac496f3ecc</srcmd5>
+    <version>3.2.0</version>
+    <time>1601743951</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build on ppc64le:
+  * fpc-fix-library-paths-on-ppc64.patch
+</comment>
+    <requestid>838276</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>b03b383ecb0678072a5baa36de66221f</srcmd5>
+    <version>3.2.0</version>
+    <time>1619729143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889201</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>693d686cf0d8bb57112b142f4c61fb8d</srcmd5>
+    <version>3.2.2</version>
+    <time>1632939555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.2
+  * See https://wiki.freepascal.org/User_Changes_3.2.2 for
+    the changelog
+- Drop aarch64-fpc-compilation-fix.patch and
+  aarch64-fpu-initialization.patch (merged upstream)
+- Drop fpc-fix-library-paths-on-aarch64.patch (no longer
+  required)
+- Refresh fpc-fix-library-paths-on-ppc64.patch
+- Add fpc-3.2.0-glibc-2.34.patch (courtesy of Fedora)
+- Add source URLS
+- Add _constraints
+</comment>
+    <requestid>922199</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>127bc1832d9c8608a4a570c87532065f</srcmd5>
+    <version>3.2.2</version>
+    <time>1646671618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959822</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>03c68029ae3a8759b56945529841f28a</srcmd5>
+    <version>3.2.2</version>
+    <time>1651272329</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build of doc with latest LaTex on Tumbleweed:
+  * hyperref-2022.patch - boo#1199007
+- Corrected fppkg configuration - boo#1197651
+</comment>
+    <requestid>973889</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+<package name="libshumate" project="openSUSE:Factory">
+  <title>C library providing a GtkWidget to display maps</title>
+  <description>libshumate is a C library providing a GtkWidget to display maps.
+It supports numerous free map sources such as OpenStreetMap,
+OpenCycleMap, OpenAerialMap and Maps for free.
+
+libshumate is named after Jessamine Shumate, an American artist,
+historian, and cartographer (Wikipedia). libshumate is forked from,
+and tries to follow similar principles in the API as libchamplain.
+
+</description>
+  <devel project="GNOME:Factory" package="libshumate"/>
+  <url>https://wiki.gnome.org/Projects/libshumate</url>
+</package>

@@ -1,0 +1,182 @@
+-------------------------------------------------------------------
+Mon Nov 28 17:57:31 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.6
+  * Add smcroutectl batch support.
+  * Fix removing group config.
+
+-------------------------------------------------------------------
+Sun Nov 21 08:48:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.5
+  Fixes
+  * Parse error in /etc/smcroute.conf. SMCRoute fails to start on
+    interfaces with mrdisc disabled, when built with mrdisc
+    support and -N passed on command line.
+- Update to version 2.5.4
+  Fixes
+  * Avoid trying to delete inactive VIFs. Fixing an annoying bogus
+    error: "Failed deleting VIF for iface lo: Resource temporarily
+    unavailable".
+  * Too small string buffer for IPv6 address causing garbled output
+    in periodic expiry callback.
+  * Fix too small buffer for IPv6 address in mroute display
+    functions.
+
+-------------------------------------------------------------------
+Wed Nov 17 10:19:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_smcroute.service.patch
+
+-------------------------------------------------------------------
+Thu Sep 23 20:32:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.3
+  Changes
+  * New tests to verify add/del of IPv4/IPv6 routes in kernel MFC.
+  Fixes
+  * Fix #166: build warning with gcc 10.2.1: "comparison is always
+    true due to limited range of data type".
+  * Fix build warning with --disable-mrdisc configure option.
+  * Fix #167: cannot remove routes added with smcroutectl add,
+    only affects add/del at runtime with smcroutectl, not .conf
+    reload.
+
+-------------------------------------------------------------------
+Fri Aug 27 16:26:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.2
+  Changes
+  * Allow installing routes with no outbound interfaces.
+  * Reinitialize VIFs on reload in case of new interfaces.
+  * Handle cases when interfaces change ifindex, i.e. they've first
+    been * removed and then re-added with the same name.
+  Fixes
+  * Fix VIF leak when deleting interfaces with MRDISC enabled.
+  * Fix handling when an (S,G) moves to another IIF. This fixes
+    issues where the SMCRoute kernel cache was out of sync with
+    the kernel MFC.
+  * Fix handling of lost/disabled interfaces at reload. This fixes
+    a couple of issues where routes were not updated properly at
+    runtime.
+  * Update interface flags on reload, this fixes issues when
+    SMCRoute failed to detect interfaces that had their MULTICAST
+    flag set or cleared at runtime.
+  * Skip setsockopt() for IPC sockets. This fixes warnings in
+    syslog about failing to disable MULTICAST_LOOP and
+    MULTICAST_ALL.
+
+-------------------------------------------------------------------
+Sun Aug 22 08:42:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.1
+  Changes
+  * Add .sha256 checksum to dist files, useful for packagers
+  Fixes
+  * systemd Notify integration, restore NotifyAccess=main
+  * ftbfs on older compilers, e.g. gcc 4.8.3, use -std=gnu99
+  * Fix Documentation refs in systemd unit file, new man pages
+
+-------------------------------------------------------------------
+Fri Aug 20 13:59:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  * Fully automated test suite with 15 tests covering many use
+    cases.
+  * Support for /etc/smcroute.d/*.conf .
+  * Support for applying changes to .conf files without disturbing
+    established flows -- i.e., seamless addition or removal of
+    outbound interfaces in existing rules, or add/remove routes,
+    without ever affecting other routes.
+  * Support for route replacement/update smcroutectl.
+  * Full (*,G) wildcard route matching, for IPv4 and IPv6.
+  * Variant wildcard route matching with source and group range
+    matching. This may of course waste a lot of resources, so
+    handle with care:
+    + (*,G/LEN), issue #135 (IPv4), and issue #162 (IPv6)
+    + (S/LEN,G), issue #81
+    + (S/LEN,G/LEN)
+  * Full SSM/ASM group join support, for both IPv4 and IPv6.
+    Including joining group ranges from both smcroutectl and
+    .conf .
+  * New command line option, -F file.conf to verify file syntax.
+  * The -I NAME command line option has changed to -i NAME,
+    compat support for the previous option remains.
+  * The mrdisc flag to the phyint directive is now what solely
+    controls the functionality per interface. Previously a
+    mechanism to enable/disable the functionality (if enabled) if
+    active routes were in place. However, this did not cover (*,G)
+    routes so that has been removed to simplify and guarantee full
+    function.
+  * Output format from smcroutectl has been extensively changed.
+    E.g, new /LEN support means wider columns, but heading have
+    also changed.
+  Fixes
+  * Fix #120: failed ASM/SSM IGMP join if interface has no address
+  * Fix #130: dynamic IPv6 routes are not flushed (like IPv4 (*,G))
+  * Fix #149: (*,G) cache timeout callback stops, or never starts
+  * Fix #151: same log entries
+  * Fix #156: smcruotectl show does not show IPv6 routes
+  * Fix stochastic timer behavior, e.g. mrdisc announcements
+    experienced interference with the (*,G) cache timer
+
+-------------------------------------------------------------------
+Tue Feb 12 09:18:48 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.4
+  Changes
+  * Allow same outbound interface as inbound for routes, only warn user
+  * systemd unit file hardening, recommended by Debian
+  Fixes
+  * IGMP header checksum missing from mrdisc frames
+  * Unblock *all* matching, and currently blocked, (S,G) to a
+    newly installed (*,G) route, only the first know was unblocked
+  * Timer nanosecond bug causing loss of address refresh on DHCP
+    interfaces.  Interface monitoring feature introduced in v2.4.3
+  * Calling init script with `stop` does not stop `smcrouted`
+  * ifindex in UNIX/POSIX is an interger, not unsigned short
+
+-------------------------------------------------------------------
+Wed Nov 14 13:02:17 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove ip_route.h for the license clash
+
+-------------------------------------------------------------------
+Sat Nov 10 17:51:15 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.4.3
+  Changes
+  * Add strlcat() replacement from OpenBSD, use instead of strcat()
+  * smcrouted should never log to system console, proposed by Westermo
+  Fixes
+  * smcrouted fails to join multicast groups on interfaces that do not
+    yet have an IP address when smcrouted starts up, or when it receives
+    SIGHUP, e.g. DHCP client interfaces. This patch release adds a timer
+    refresh of interface addresses that retries multicast group joins
+    until an address is set. This is similar to issue #55, but does not
+    handle interfaces that do not exist yet.
+  * Make sure Linux alias interfaces (baseif:num) are registered as
+    baseif. Westermo found that use of alias interfaces cause multiple
+    VIFs to be registered for the same base interface causing multicast
+    routes to use the wrong inbound or outbound VIF. Alias interfaces
+    use the same underlying physical interface so only one VIF needed.
+  * Fix display of route counters and column alignment
+  * Simplify utimensat() replacement, AT_SYMLINK_NOFOLLOW unused
+
+-------------------------------------------------------------------
+Mon Sep 10 20:09:44 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.4.2
+  Changes
+  * Add wrapper script smcroute for use with old style startup scripts
+  * Add symlinks to man pages for smcrouted.8 and smcroutectl.8
+  * Update SysV init script, daemon now called smcrouted
+  Fixes
+  * Fix #96: A .conf line may be missing final newline, this is fine
+  * Spellcheck smcroute.conf example
+
+-------------------------------------------------------------------
+Mon Jun 18 12:56:38 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 2.4.1

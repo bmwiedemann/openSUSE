@@ -1,0 +1,639 @@
+-------------------------------------------------------------------
+Mon Jan  8 12:00:30 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
+
+- Align the fallback XDG config dirs with SUSE spec in-case it
+  can't read it from the environment
+
+-------------------------------------------------------------------
+Fri Oct 27 03:50:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.268.0
+  * Add VK_LOADER_LAYERS_ALLOW environment variable.
+  * Add Debug extension support to test layer
+
+-------------------------------------------------------------------
+Tue Aug 22 09:04:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.261.0
+  * Warn when ICD Manifest version differs from
+    vkEnumerateInstanceVersion
+  * Enable VK_KHR_maintenance_5 support
+
+-------------------------------------------------------------------
+Tue May 30 21:36:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.250.0
+  * No changes over 1.3.247 [SDK-250 is a branch of regular-243
+    with some cherry-picks bringing it to roughly regular-247;
+    there is little relation to regular-250]
+
+-------------------------------------------------------------------
+Wed Apr 19 20:09:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.3.247
+  * Make correct layer be used when duplicates are present
+  * Fix ordering regression for VK_INSTANCE_LAYERS
+
+-------------------------------------------------------------------
+Wed Mar 29 14:05:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.243.0
+  * Log when VK_LAYER_PATH is ignored
+  * Implement VK_LUNARG_direct_driver_loading
+
+-------------------------------------------------------------------
+Sun Jan 29 12:38:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.239.0
+  * layers: update documentation to make it clear the
+    VK_LAYER_PATH supports both explicit directories and files
+  * layers: modify TestLayerDetails so either files or
+    directories can be set on VK_LAYER_PATH env var
+
+-------------------------------------------------------------------
+Thu Dec 15 13:55:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.236.0
+  * Fix cases where OOM was handled wrong
+  * Null check vk_icdGetPhysicalDeviceProcAddr
+
+-------------------------------------------------------------------
+Mon Oct 24 19:14:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.231.0
+  * Don't pass portability bit to ICDs that dont expect it.
+  * Allow implicit layers for all API versions.
+
+-------------------------------------------------------------------
+Mon Aug 22 22:40:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.224.0 (09afdf642)
+  * Enable layer interception of unknown functions
+
+-------------------------------------------------------------------
+Mon Aug 15 20:38:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to branch snapshot SDK-1.3.224 (7fb19a4c8):
+  * Add issues to the apiext:VK_KHR_dynamic_rendering proposal document
+    discussing render area granularity (public issue 1899).
+  * Clarify external synchronization requirements for
+    ename:VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT and
+    ename:VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT
+    elink:VkDescriptorBindingFlagBits and flink:vkUpdateDescriptorSets
+    (public issue 1713).
+  * Add Vulkan 1.0 valid usage statement for *Subgroup* memory scope to
+    <<spirvenv-module-validation-standalone, Standalone SPIR-V Validation>>
+    (public merge request 1900).
+  * Move "`Hit Kind`" valid usage statement from standalone to runtime
+    SPIR-V validation statements (public merge request 1903).
+  * Use correct feature in
+    ename:VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_ROBUST_BUFFER_ACCESS_2_EXT
+    description (public pull request 1892).
+  * GitHub CI: Regenerate and build-test Rust Vulkan bindings (Ash crate)
+    (public pull request 1894).
+  * Add dependency of apiext:VK_EXT_blend_operation_advanced on
+    apiext:VK_KHR_get_physical_device_properties2. (public merge request
+    1887).
+  * Update xrefs to features so the feature name is used as the link text,
+    and marked up consistently. Added a section to the style guide on markup
+    of feature xrefs (public issue 1889).
+    elink:VK_COLOR_SPACE_PASS_THROUGH_EXT for a linear or non-gamma transfer
+    function color space (public merge request 1729).
+  * Fix clamp expression for d_{lo} in the
+    <<textures-level-of-detail-operation, Level-of-Detail Operation>>
+    section (partial fix for public issue 1836).
+  * Update <<spirvenv-module-validation-standalone, Standalone SPIR-V
+    Validation>> to add explicit valid usage statements for code:Uniform
+    objects being read only, and for code:Block decorations (public merge
+    request 1879).
+  * Add an issue to apiext:VK_KHR_fragment_shader_barycentric for
+    interactions with MSAA (public merge request 1881).
+  * Fix XML tagging of slink:VkShaderModuleCreateInfo and add an explicit
+    valid usage statement so this structure can be validated both as an
+    explicit parameter, and as part of the pname:pNext chain of
+    slink:VkPipelineShaderStageCreateInfo (public issue 1883, but a broader
+    fix in the validation scripts for this case will eventually be
+    required).
+  * Update pipeline image to move push constants outside of descriptor sets
+    (public issue 1867).
+  * Correct code:StencilRefLessFrontEXT to code:DepthLess in the early depth
+    test portion of the <<fragops, Fragment Operations>> chapter (public
+    pull request 1876).
+  * Add new driver id ename:VK_DRIVER_ID_MESA_DOZEN (public pull request
+    1877).
+  * Relax slink:VkRenderPassCreateInfo valid usage statements 02517 and
+    02518 to allow ename:VK_SUBPASS_EXTERNAL (public pull request 1878).
+  * Add apiext:VK_KHR_maintenance4 relaxed interface valid usage statement
+    to the <<spirvenv-module-validation-runtime, Runtime SPIR-V Validation>>
+    section (public pull request 1860).
+  * Fix field name in slink:VkRenderingAttachmentInfo valid usage statement
+    (public pull request 1861).
+  * Fix typo in slink:VkFramebufferCreateInfo valid usage statements 04533 /
+    04544 (public pull request 1873).
+  * Remove duplicate valid usage statement 06060 (public pull request 1874).
+  * Rework <<fxvertex-input-address-calculation, Vertex Input Address
+    Calculation>> section (public pull request 1869).
+  * Split Github CI script into individual jobs to decrease run time (public
+    pull request 1870).
+  * Clarify meaning of "`private data slot`" for apiext:VK_EXT_private_data
+  * Minor markup fix in the <<spirvenv-module-validation-standalone>>
+    section (public merge request 1864). 
+
+-------------------------------------------------------------------
+Wed Jun 15 12:30:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.216
+  * Revert 32bit linux unknown ext chain change
+  * Correctly check for NULL in loader_get_dispatch
+  * Revert "Implement unknown function intercept in layers"
+  * Fix a NULL inst crashing during loader_icd_scan
+  * Fix crashes from OOM in vkDestroyInstance
+
+-------------------------------------------------------------------
+Mon Apr 18 23:09:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.211.0
+  * Add "additive" environment variables: VK_ADD_DRIVER_FILES
+    and VK_ADD_LAYER_PATH.
+
+-------------------------------------------------------------------
+Tue Feb 15 10:45:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.204.0
+  * loader: Add Vulkan 1.3 symbols defs to appropriate files
+  * loader: Add core 1.3 function to gpa_helper
+  * loader: Add manual trampolines for 1.3
+
+-------------------------------------------------------------------
+Sat Nov 20 03:07:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.198.0
+  * Fix loader not knowing about extensions enabled in layers
+  * Only return pre-instance functions when instance is NULL
+  * Fix vkGetInstanceProcAddr not handling null instance
+  * loader: Add aarch64 unknown ext chain implementation
+
+-------------------------------------------------------------------
+Sun Sep  5 11:06:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.189.0
+  * loader: Dont return OOM on function load failure
+  * Deallocate the extension lists when deleting an item from
+    layer list
+  * Add layer and implementation-specific logging
+  * Allow "icd" as well as "implem" for VK_LOADER_DEBUG
+  * Fix Vulkan CTS testcase bug:
+    "create_instance_device_intentional_alloc_fail"
+  * loader: Fix accidental error propagation
+
+-------------------------------------------------------------------
+Mon Jul  5 23:59:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.182.0
+  * loader: Prevent crash from VK_KHR_display
+  * loader: Silence erroneous implicit layer warning
+
+-------------------------------------------------------------------
+Wed May  5 07:25:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.176.0
+  * QNX platform support
+
+-------------------------------------------------------------------
+Sun Feb 28 16:55:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.170.0
+  * No user-visible changes
+
+-------------------------------------------------------------------
+Wed Feb 10 14:03:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.169
+  * loader: Do not return OOM when layer count is 0
+
+-------------------------------------------------------------------
+Wed Jan 27 21:56:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.166
+  * No user-visible changes
+
+-------------------------------------------------------------------
+Tue Dec 29 12:32:48 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.165:
+  * loader: Properly check for elevated permissions 
+  * loader: Remove SEEK_END usage
+  * Rename LIB_SUFFIX to VULKAN_LIB_SUFFIX 
+  * build: Update known-good files for 1.2.165 header 
+
+-------------------------------------------------------------------
+Mon Dec 14 20:25:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.162 (sdk)
+  * Add GGP WSI platform support to Vulkan-Loader
+
+-------------------------------------------------------------------
+Wed Nov 25 16:33:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.161
+  * Fix some issues when EnumerateAdapterPhysicalDevices is
+    available.
+  * loader: Override layer load when custom allocator used.
+  * Add support for VK_FUCHSIA_imagepipe_surface.
+
+-------------------------------------------------------------------
+Thu Oct 29 15:12:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.154.1
+  * Fix some issues when EnumerateAdapterPhysicalDevices is available
+
+-------------------------------------------------------------------
+Mon Sep 28 22:02:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.154
+  * Revert loader error characteristics to 1.2.152
+- Drop 0001-Revert-loader-Return-error-if-layer-loading-failed.patch
+  (merged)
+
+-------------------------------------------------------------------
+Wed Sep 23 19:46:21 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add patch which reverts a commit breaking Steam Play / Proton:
+  * 0001-Revert-loader-Return-error-if-layer-loading-failed.patch
+  Related issues:
+  * https://github.com/ValveSoftware/steam-for-linux/issues/7368
+  * https://github.com/KhronosGroup/Vulkan-Loader/issues/472
+
+-------------------------------------------------------------------
+Thu Sep 10 07:47:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.2.153:
+  * loader: Return error if layer loading failed 
+  * loader: Make device extensions return same count 
+  * docs: Add info on VkConfig and override layer 
+ 
+-------------------------------------------------------------------
+Thu Sep 10 07:39:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.152
+  * No user-visible changes
+
+-------------------------------------------------------------------
+Wed Aug 19 07:30:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.151
+  * Fixed crash in device enumeration
+
+-------------------------------------------------------------------
+Sun Aug  9 10:08:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.148
+  * No user-visible changes reported
+
+-------------------------------------------------------------------
+Sun Jun 28 17:11:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to release 1.2.145
+  * scripts: Use named params for generator options
+  * loader: Fix crash in vkGetDeviceQueue2
+  * loader: Use MoltenVK in app bundle if found
+  * build: include system headers last
+
+-------------------------------------------------------------------
+Sun Jun  7 16:15:33 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- added vulkan-devel-xxBIT (bsc#1172301)
+
+-------------------------------------------------------------------
+Thu May 28 13:31:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.141
+  * loader: Preload ICDs to speed up common path
+
+-------------------------------------------------------------------
+Mon Apr 13 09:57:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.137
+  * Allow vkGetInstanceProcAddr to resolve itself with no instance.
+  * loader: Strip out empty search paths.
+
+-------------------------------------------------------------------
+Wed Apr  1 13:53:57 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to release 1.2.135
+  * Updated `CMakeLists.txt` and `common_codegen.py` to allow access to beta
+    types and commands when including `vulkan.h`. Generated new loader
+    header files.
+
+-------------------------------------------------------------------
+Tue Feb 18 16:05:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to release 1.2.133
+  * Avoid clang warning about parentheses
+  * secure_getenv change logging WARN to INFO
+  * don't unconditionally add std-val meta layer
+  * Fix buffer size updates in registry search
+  * Add core 1.2 functions to gpa_helper
+  * add null check to loaderValidateLayers
+  * Warn when loader_secure_getenv() fails
+  * Regenerate files for debug utils changes
+  * Fix debug utils terminators being skipped
+
+-------------------------------------------------------------------
+Mon Feb  3 12:37:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to release 1.2.132
+  * Improve 1.2 promoted extension fix
+  * Fix handling of promoted device extensions
+
+-------------------------------------------------------------------
+Sun Jan 19 12:03:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.131
+  * Support for Vulkan 1.2
+
+-------------------------------------------------------------------
+Mon Dec 23 11:21:33 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use new macros (autosetup and cmake_build)
+
+-------------------------------------------------------------------
+Thu Dec 12 19:30:43 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.130
+  * Support for vkGetPhysicalDeviceToolPropertiesEXT and other
+    new extensions (cf. vulkan-docs).
+
+-------------------------------------------------------------------
+Thu Nov  7 07:50:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.127
+  * Build system changes only
+
+-------------------------------------------------------------------
+Sat Oct 26 11:42:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.126
+  * Build system changes only
+
+-------------------------------------------------------------------
+Wed Oct 16 20:56:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.124
+  * loader: Add support for metal surfaces
+  * loader: Use dxgi1_2 header instead of 1_6
+  * loader: Dynamically load DXGI
+  * layers: allow concurrent layer device creation
+
+-------------------------------------------------------------------
+Sun Sep 22 21:59:40 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to the new upstream release 1.1.123
+  * loader: Match ICDs against DXGI adapters
+
+-------------------------------------------------------------------
+Wed Aug 21 08:51:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.120
+  * loader: Make instance version report patch version
+
+-------------------------------------------------------------------
+Sun Aug 18 16:08:57 UTC 2019 - Aaron Stern <ukbeast89@ptotonmail.com>
+
+- Update to new upstream release 1.1.119
+  * Additionally, ran `generate_source.py`.
+
+-------------------------------------------------------------------
+Fri Jun 28 07:32:05 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.112
+  * loader: Fix bug in searching for missing extension
+
+-------------------------------------------------------------------
+Tue Jun  4 10:16:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.108
+  * loader: VK_EXT_headless_surface additions
+  * layers: add layer callbacks for device creation
+
+-------------------------------------------------------------------
+Sun Mar 24 14:02:28 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Use build dependency python-xml to fix Leap 42.3 builds
+
+-------------------------------------------------------------------
+Sat Mar 16 18:35:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.102
+  * Build changes only, no user-visible points.
+
+-------------------------------------------------------------------
+Mon Feb 18 23:28:58 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.100
+  * No changes, just a version bump to be in line
+    with vulkan-headers.
+
+-------------------------------------------------------------------
+Thu Jan 24 10:31:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.97.0
+  * loader: Fix memory not being zeroed after allocate
+  * loader: Remove duplicate scanned json files
+
+-------------------------------------------------------------------
+Mon Jan  7 22:10:42 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.96
+  * Documentation updates
+
+-------------------------------------------------------------------
+Fri Dec 14 23:25:51 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.95
+  * docs: Use "ICD" instead of "layer" in ICD info
+
+-------------------------------------------------------------------
+Sun Dec  2 15:19:57 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.1.94
+  * loader: Fix unwrapped loader instance being used
+  * loader: Fix double free when enabling override
+
+-------------------------------------------------------------------
+Fri Nov 23 16:20:17 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Add back baselibs.conf that was in vulkan(.spec)
+
+-------------------------------------------------------------------
+Mon Nov 12 15:14:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Split vulkan SRPM -> vulkan-loader SRPM following a
+  repository split upstream.
+- Update to new snapshot 1.1.91
+
+-------------------------------------------------------------------
+Sat Aug 25 17:16:08 UTC 2018 - jengelh@inai.de
+
+- Update to new snapshot 1.1.73
+  * layers: Removed obsolete (and duplicate) VUIDs
+  * layers: Make unique_objects ID map global
+  * layers: Add VUIDs for VK_KHR_incremental_present
+  * layers: Add canonical/unique ID to pipeline layout
+  * layers: Add support for StorageBuffer storage class
+  * loader: Add new core 1.1 entry points
+  * loader: Update loader for Vulkan 1.1
+  * vulkaninfo: Add core 1.1 extensions
+
+-------------------------------------------------------------------
+Fri Mar  9 20:19:15 UTC 2018 - crrodriguez@opensuse.org
+
+- Skip building tests that are neither packaged nor ran.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:49:50 UTC 2018 - crrodriguez@opensuse.org
+
+- vulkan-devel has missing dependencies, this causes further
+  confusion down the dependency chain, fix it by adding
+  the required X and wayland components
+
+-------------------------------------------------------------------
+Wed Mar  7 23:59:37 UTC 2018 - jengelh@inai.de
+
+- Update to new snapshot 1.1.70
+  * Support for Vulkan 1.1 (Subgroup operations)
+
+-------------------------------------------------------------------
+Wed Feb  7 23:19:20 UTC 2018 - jengelh@inai.de
+
+- Update to new snapshot 1.0.68
+  * layers: add image layout validation to vkCmdBlitImage()
+  * layers: Add VK_EXT_validation_cache implementation for shaders
+  * layers: Add layer metadata for EXT_validation_cache extension
+  * layers: Add descriptor limit checks to vkCreatePipelineLayout()
+  * layers: Create instance & device extension lists
+- Add no-git.diff
+
+-------------------------------------------------------------------
+Wed Jan 10 14:18:49 UTC 2018 - jengelh@inai.de
+
+- Drop ImageMagick build-time requirement
+
+-------------------------------------------------------------------
+Thu Nov 16 11:49:28 UTC 2017 - jengelh@inai.de
+
+- Update to new snapshot 1.0.65
+  * The VK_EXT_global_priority extension extends the concept of
+    device-scope queue priorities to now be a system-wide scope.
+    The global/system-wide priority level takes priority over the
+    per-process queue priorities.
+  * New extension VK_KHR_bind_memory2: This extension allows
+    vkBindBufferMemory and vkBindImageMemory to support multiple
+    bindings to be performed at once while also being more
+    extensible.
+  * New extension VK_KHR_image_format_list: Provides a list of
+    all formats that can be used with a Vulkan image when it is
+    created.
+  * New extension VK_KHR_maintenance2: Adds in various changes
+    that were left out of Vulkan previously. These maintenance
+    updates allow implementations to express clipping behavior of
+    points, creating images with usage flags that may not be
+    supported for the base image's format, creating uncompressed
+    image views of compressed images, two new image layouts for
+    depth stencil images, and other minor changes.
+  * New extension VK_KHR_sampler_ycbcr_conversion: Support to
+    perform specified color space conversions during texture
+    sampling operations.
+- Drop 0001-cmake-GH1444-add-wayland-include-dir-to-cmake.patch
+  (included upstream)
+
+-------------------------------------------------------------------
+Sat Aug 12 07:32:07 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.57.0
+  * loader: Do not enumerate extensions from disabled implicit
+    layers
+  * layers:Handle ALL_*_BIT pipe stage barrier validation
+  * LVL: Add validation check for CreateImageView
+  * loader: Remove executable stack from libvulkan.so
+  * layers: Fix mismatched new[] / delete
+  * layers: Add new PV ranged enum validation function
+  * layers: Don't do bogus transitions in invalidateCommandBuffers
+
+
+-------------------------------------------------------------------
+Mon Aug  7 17:11:42 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.54
+  * Fix a few potential overruns
+  * Configurable fallback search paths
+  * Validate device features: imageCubeArray, dualSrcBlend,
+    multiDrawIndirect, depthClamp, depthBounds, alphaToOne,
+    samplerAnisotropy.
+  * Add compressed texture query utils
+  * Add feature checks for textureCompressionETC2,
+    textureCompressionASTC_LDR, textureCompressionBC,
+    sparseBinding device, sparseResidencyBuffer,
+    sparseResidencyAliased, depthBiasClamp.
+  * Remove deprecated KHX extension from OT/PV
+  * Support CapabilityGeometryShaderPassThroughNV and
+    CapabilitySampleMaskOverrideCoverage.
+  * Support the viewport_array2, shader_subgroup_ballot and
+    shader_subgroup_vote ext shader caps.
+  * Change size of X8_D24_UNORM_PACK32 and D32_SFLOAT_S8_UINT
+- Add 0001-cmake-GH1444-add-wayland-include-dir-to-cmake.patch
+
+-------------------------------------------------------------------
+Mon Feb 20 15:06:23 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.41
+  * layers: Move image struct into cv_types header
+  * layers: Move CreateImage validation into core_val
+  * layers: Move DestroyImage code into buffer module
+  * layers: Move CreateRenderPass format check to PV
+  * layers: Rename misleading renderpass structure var
+  * layers:Move gfx pipe check to create time
+  * layers: Move image validation support to buffer_val
+  * layers: Add enable for NV_GLSL_SHADER extension
+- Add baselibs.conf [needed by libgtk-4-0]
+
+-------------------------------------------------------------------
+Mon Jan 30 19:48:33 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.0.39.1
+  * layers: Add tracking for VK_KHR_display extension in PV
+  * layers: Add null checks to RetireWorkOnQueue
+  * vulkaninfo: fix segfault when DISPLAY is not set
+  * layers: Complete support for VK_KHR_Display ext
+
+-------------------------------------------------------------------
+Mon Oct 31 22:42:42 UTC 2016 - jengelh@inai.de
+
+- Update to 1.0.32.g28
+* vkjson: Rename VkJsonAllProperties to VkJsonDevice
+* loader: Fix json output of escape chars
+* loader: Fix segfault in vulkaninfo
+* Add vulkan C++ header
+- Remove 0001-layers-Install-to-CMAKE_INSTALL_LIBDIR.patch,
+  0001-loader-Add-install-rule.patch,
+  0001-vkjson-don-t-clobber-cflags-or-you-ll-lose-fPIC.patch
+  (upstreamed).
+
+-------------------------------------------------------------------
+Mon Jun 13 12:27:45 UTC 2016 - jengelh@inai.de
+
+- Update to new snapshot 1.0.3.g5493
+* Added helpers: getSwapchainNode(), getSwapchainFromImage(),
+  getImageNode(), getImageViewData(), getSamplerNode(),
+  getBufferViewInfo(), getBufferNode().
+- Resolve build failure stemming from new glslang version
+- Add 0001-layers-Install-to-CMAKE_INSTALL_LIBDIR.patch,
+  0001-loader-Add-install-rule.patch,
+  0001-vkjson-don-t-clobber-cflags-or-you-ll-lose-fPIC.patch.
+  These were in a prior tarball made from a Fedora git,
+  but we since switched to the upstream git.
+
+-------------------------------------------------------------------
+Wed Feb 17 16:22:36 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 1.0.3.g19) for build.opensuse.org

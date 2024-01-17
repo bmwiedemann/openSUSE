@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed May 23 06:50:54 UTC 2012 - cfarrell@suse.com
+
+- license update: Artistic-1.0 or GPL-1.0+
+  SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:23 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:32:30 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Nov 28 11:38:04 UTC 2010 - coolo@novell.com
+
+- remove .packlist file
+
+-------------------------------------------------------------------
+Tue Oct 19 15:36:40 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Thu Mar 19 12:00:27 CET 2009 - lrupp@suse.de
+
+- initial version 0.1
+

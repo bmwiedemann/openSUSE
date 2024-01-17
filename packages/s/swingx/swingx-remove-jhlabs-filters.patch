@@ -1,0 +1,20 @@
+--- swingx-project-1.6.5-1/swingx-core/src/test/java/org/jdesktop/swingx/JXLabelVisualCheck.java.orig	2011-03-17 19:14:56.000000000 +0000
++++ swingx-project-1.6.5-1/swingx-core/src/test/java/org/jdesktop/swingx/JXLabelVisualCheck.java	2013-07-30 14:50:55.057313241 +0100
+@@ -41,7 +41,7 @@
+ import org.jdesktop.swingx.painter.MattePainter;
+ import org.jdesktop.swingx.painter.ShapePainter;
+ 
+-import com.jhlabs.image.BlurFilter;
++//import com.jhlabs.image.BlurFilter;
+ 
+ /**
+  * Base test class for JXLabel related code and issues.
+@@ -70,7 +70,7 @@
+         JXLabel label = new JXLabel("that's the real text");
+         label.setFont(new Font("SansSerif", Font.BOLD, 80));
+         AbstractPainter<?> fg = new MattePainter(Color.RED);
+-        fg.setFilters(new BlurFilter());
++        //fg.setFilters(new BlurFilter());
+         label.setForegroundPainter(fg);
+         JXFrame frame = wrapInFrame(label, "fancy filter");
+         show(frame,400, 400);

@@ -1,0 +1,12 @@
+Index: ppplay-0.1.3+git20190918/src/ppg/label.h
+===================================================================
+--- ppplay-0.1.3+git20190918.orig/src/ppg/label.h
++++ ppplay-0.1.3+git20190918/src/ppg/label.h
+@@ -22,6 +22,7 @@
+ #include "widget.h"
+ 
+ #include <vector>
++#include <string>
+ 
+ /**
+  * @ingroup Ppg

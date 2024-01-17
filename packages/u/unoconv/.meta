@@ -1,0 +1,16 @@
+<package name="unoconv" project="openSUSE:Factory">
+  <title>Tool to convert between any document format supported by OpenOffice</title>
+  <description>unoconv converts between any document format that OpenOffice understands.
+It uses OpenOffice's UNO bindings for non-interactive conversion of
+documents.
+
+Supported document formats include: Open Document Text (.odt),
+Open Document Draw (.odd), Open Document Presentation (.odp),
+Open Document calc (.odc), MS Word (.doc), MS PowerPoint (.pps/.ppt),
+MS Excel (.xls), MS Office Open/OOXML (.xml),
+Portable Document Format (.pdf), DocBook (.xml), LaTeX (.ltx),
+HTML, XHTML, RTF, Docbook (.xml), GIF, PNG, JPG, SVG, BMP, EPS
+and many more...</description>
+  <devel project="Publishing" package="unoconv"/>
+  <url>http://dag.wieers.com/home-made/unoconv/</url>
+</package>

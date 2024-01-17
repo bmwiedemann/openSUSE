@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Mon Jan  8 13:14:52 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.9.2:
+  - add get_credential()
+  - Use functools.lru_cache when functools.cache is not available by @bo5o in #11
+  - Bump cryptography to 41.0.2
+  - v0.8.0: migrate to Poetry & add configurable binary
+
+-------------------------------------------------------------------
+Mon Sep 26 07:46:30 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Rename files appropriately.
+
+-------------------------------------------------------------------
+Tue Sep 20 17:09:11 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for keyring_pass 0.7.1

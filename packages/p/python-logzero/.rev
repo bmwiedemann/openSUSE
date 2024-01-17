@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a2a91284f9ce8a96f6461c2367617be</srcmd5>
+    <version>1.3.0</version>
+    <time>1500670205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>511606</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>29a7eb1f7b44cf081d542349fb3546af</srcmd5>
+    <version>1.3.0</version>
+    <time>1502892670</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>513579</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ebc9f409ca36f1edba414e972f2200db</srcmd5>
+    <version>1.3.1</version>
+    <time>1514842252</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>560880</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a5d78e13f9372826202e9d369fa70dae</srcmd5>
+    <version>1.4.0</version>
+    <time>1520778335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>585153</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c069ca3168ebd69b3fd7a346530683de</srcmd5>
+    <version>1.4.0</version>
+    <time>1545647967</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659483</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15ca6f64a40bf27d2c62e582655d6fa9</srcmd5>
+    <version>1.5.0</version>
+    <time>1554749595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * logzero.syslog(..) (PR 83)</comment>
+    <requestid>691800</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3ca5a5b8bb1189048eb3fff5406a55fb</srcmd5>
+    <version>1.6.2</version>
+    <time>1604779310</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846546</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9a4e73532350367f9ffb1db2b01607fc</srcmd5>
+    <version>1.6.3</version>
+    <time>1607548368</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853807</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>70f258ffce5cb392c8a8f2ee9f092746</srcmd5>
+    <version>1.6.3</version>
+    <time>1612108340</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>868024</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1795f6bdd7c506ed7ff5f31ce209fd7e</srcmd5>
+    <version>1.7.0</version>
+    <time>1616599016</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>881046</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2f1c9b59752fa102c8373635b1d7eac6</srcmd5>
+    <version>1.7.0</version>
+    <time>1638997771</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936510</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>491c2661f44a07397a4bb5e0b0e79943</srcmd5>
+    <version>1.7.0</version>
+    <time>1640108439</time>
+    <user>dimstar_suse</user>
+    <comment>- Actually remove pytest-runner BuildRequires</comment>
+    <requestid>941744</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="zpaqfranz" project="openSUSE:Factory">
+  <title>A journaling, incremental, deduplicating archiver</title>
+  <description>Swiss army knife for backup and disaster recovery, like 7z or RAR on steroids,with deduplicated &quot;snapshots&quot; (versions). Conceptually similar to Mac time machine, but much more efficiently.
+
+</description>
+  <devel project="Archiving" package="zpaqfranz"/>
+  <url>https://github.com/fcorbelli/zpaqfranz</url>
+</package>

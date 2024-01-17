@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Dec 17 14:36:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make tests verbose
+
+-------------------------------------------------------------------
+Thu Dec 16 11:10:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Drop python36 build for good: FontTools dropped support
+
+-------------------------------------------------------------------
+Sun Apr 18 13:00:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix missing runtime requirements and test requirement for ufo 
+  subpackage
+- reinstate python36 build, just as in FontTools.
+
+-------------------------------------------------------------------
+Sat Feb 13 17:07:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (FontTools requires scipy) 
+
+-------------------------------------------------------------------
+Tue May 26 08:00:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove not needed deps for testing
+
+-------------------------------------------------------------------
+Wed May 20 09:47:28 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-mutatorMath

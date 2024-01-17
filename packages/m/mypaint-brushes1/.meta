@@ -1,0 +1,5 @@
+<package name="mypaint-brushes1" project="openSUSE:Factory">
+  <title>mypaint-brushes</title>
+  <description>Brushes to be used with the MyPaint library (old interface version 1.0)</description>
+  <devel project="graphics" package="mypaint-brushes1"/>
+</package>

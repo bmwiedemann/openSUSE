@@ -1,0 +1,5 @@
+<package name="libqt5-qtwebsockets" project="openSUSE:Factory">
+  <title>libqt5-qtwebsockets</title>
+  <description></description>
+  <devel project="KDE:Qt:5.15" package="libqt5-qtwebsockets"/>
+</package>

@@ -1,0 +1,83 @@
+From 03bfd892ee6a6454d92b10d1afd1f86fa0910fba Mon Sep 17 00:00:00 2001
+From: David Mair <dmair@suse.com>
+Date: Fri, 7 Feb 2020 13:39:12 -0700
+Subject: [PATCH] opendev() in input_v4l.c functional execution is not
+ implemented as described by the output messages it can display. One result
+ is that it reads the configuration width and height settings and prepares
+ them as the video source settings. But, it makes two unrelated attempts to
+ set the video device source channel and if the second one succeeds it reads
+ the current device grab window settings into the same structure it used to
+ load the configuration, overwriting and losing the configuration. It then
+ sets the grab window using the value it just got from the same device, i.e.
+ redundant set device grab window to current grab window. It has the effect
+ that if:
+ 
+ * Another video application is used before running camsource
+  - for the device camsource will use
+  - Uses frame resolution different from that in the camsource configuration
+ * Then the other application exited
+ * camsource started
+ 
+ The frame resolution used by camsource will be that set by the other
+ application and not that in the camsource configuration.
+ 
+ When reading what can be output to the console from the second set channel
+ it says the "set grab window failed: Trying _again_ without the
+ fps option" and performs a "set grab window" operation as the supposed
+ "again" of a set video channel operation (when a full set video channel was
+ already performed earlier in the code anyway).
+ 
+ I modified the logic to operate as the messaging describes:
+ 
+ * Perform a "get grab window" before loading the configuration
+ * Load the configuration over the get grab window result
+ * Perform a "set grab window" with the fps option
+ * If that "set grab window" fails:
+  - Perform a "set grab window" _again_ but without the fps
+  
+ This matches the behavior described in the messaging and camsource no
+ longer loses the settings loaded from configuration.
+
+---
+ src/input_v4l.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/src/input_v4l.c b/src/input_v4l.c
+index efbd7b3..f247d9b 100644
+--- a/src/input_v4l.c
++++ b/src/input_v4l.c
+@@ -145,7 +145,9 @@ closenerr:
+ 			printf("ioctl \"set input channel\" failed, continuing anyway: %s\n", strerror(errno));
+ 	}
+ 
+-	memset(&vidwin, 0, sizeof(vidwin));
++	ret = v4l1_ioctl(newcamdev.fd, VIDIOCGWIN, &vidwin);
++	if (ret != 0)
++		memset(&vidwin, 0, sizeof(vidwin));
+ 
+ 	newcamdev.autobrightness = autobrightness;
+ 
+@@ -158,7 +160,7 @@ closenerr:
+ 
+ 	vidwin.flags |= (fps & 0x3f) << 16;
+ 
+-        ret = v4l1_ioctl(newcamdev.fd, VIDIOCSCHAN, &vidchan);
++	ret = v4l1_ioctl(newcamdev.fd, VIDIOCSWIN, &vidwin);
+ 	if (ret != 0)
+ 	{
+ 		printf("ioctl \"set grab window\" failed: %s\n", strerror(errno));
+@@ -180,11 +182,6 @@ closenerr:
+ 			printf("we will continue anyway and hope that everything goes ok.\n");
+ 		}
+ 	}
+-	else {
+-                ret = v4l1_ioctl(newcamdev.fd, VIDIOCGWIN, &vidwin);
+-		if (!ret)
+-                        v4l1_ioctl(newcamdev.fd, VIDIOCSWIN, &vidwin);
+-	}
+ 
+         ret = v4l1_ioctl(newcamdev.fd, VIDIOCGPICT, &newcamdev.vidpic);
+ 	if (ret != 0)
+-- 
+2.25.0
+

@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0df89580c13f0a1e5fae5a0f9dac6fb2</srcmd5>
+    <version>1</version>
+    <time>1578069272</time>
+    <user>dimstar_suse</user>
+    <comment>new dependency after ghc-8.8.1</comment>
+    <requestid>760269</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc3e0cc3c766776c86ef25957653bfb8</srcmd5>
+    <version>1</version>
+    <time>1580299944</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>766984</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e9e451bfffde52434c0dedbe8369a276</srcmd5>
+    <version>1</version>
+    <time>1591381112</time>
+    <user>dimstar_suse</user>
+    <comment>- add constraints for memory on riscv64</comment>
+    <requestid>811493</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc71e4ee92194a753feff2d5e6d29f3f</srcmd5>
+    <version>1.1</version>
+    <time>1600179617</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>833303</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8550fcf78d3f26402e537b3c7019acf3</srcmd5>
+    <version>1.1</version>
+    <time>1608633407</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857262</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d4c550812e7bbd914ad65941a41086f</srcmd5>
+    <version>1.3</version>
+    <time>1680635929</time>
+    <user>dimstar_suse</user>
+    <comment>update for ghc-9.4.4</comment>
+    <requestid>1075791</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d9a6f4d8ad6afab9513c73326aab6ef2</srcmd5>
+    <version>1.3</version>
+    <time>1687469159</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094477</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>910e346538e6ce44d9f993d98341107b</srcmd5>
+    <version>1.3</version>
+    <time>1691674398</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103157</requestid>
+  </revision>
+</revisionlist>

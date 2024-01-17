@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5e77a4d21379087d15960e58120a563</srcmd5>
+    <version>84.87</version>
+    <time>1619107411</time>
+    <user>dimstar_suse</user>
+    <comment>new package for usrmerge</comment>
+    <requestid>881293</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4e5370c85f62404edcfd37d1039bc8e7</srcmd5>
+    <version>84.87</version>
+    <time>1623363461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898435</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9dfe05b194676085658840994608e6f5</srcmd5>
+    <version>84.87</version>
+    <time>1624210663</time>
+    <user>dimstar_suse</user>
+    <comment>- unsafe fallback also for ENOSYS on renameat2 as seen on WSL (forwarded request 900395 from lnussel)</comment>
+    <requestid>900396</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f95358dbece6ca8ff365921956e22e50</srcmd5>
+    <version>84.87</version>
+    <time>1631391848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914526</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>db3ea9074a430717229ef191e990fb4f</srcmd5>
+    <version>84.87</version>
+    <time>1634587092</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix logic for detecting conflicts with directories (boo#1191111)
+- exit file triggers early if alread usrmerged (forwarded request 923734 from lnussel)</comment>
+    <requestid>923737</requestid>
+  </revision>
+</revisionlist>

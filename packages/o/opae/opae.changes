@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Wed Mar 29 08:32:24 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add Gcc-13-2858.patch for GCC13 support
+
+-------------------------------------------------------------------
+Thu Jun 23 10:43:36 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add opae-disable-FORTIFY_SOURCE.patch to only use the FORTIFY_SOURCE from the RPM flags
+  and avoid any conflicts. Fixes a build issue with Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Sep 10 08:45:59 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add opae-fix-support-with-newer-spdlog.patch to fix compilation
+  with spdlog >= 1.9.0
+
+-------------------------------------------------------------------
+Fri Jul  9 06:24:28 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update opae-missing-shebang.patch to correctly call all scripts with
+  Python 3.
+
+-------------------------------------------------------------------
+Fri Jun  4 09:10:41 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add patches to fix compilation with GCC11
+  - opae-libs-fix-macro-indentation.patch
+  - opae-libs-xfpga-fix-strnlen-argument.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 09:40:19 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 2.0.0-1
+  - See RELEASE_NOTES for a complete list of changes
+- Add opae-support-OBS-build.patch to fix compilation using system
+  packages (cli11, pybind11) instead of git clones
+- Refresh opae-missing-shebang.patch against latest sources
+- Update opae-fix-linking-issue.patch to fix pybind11 link LTO issues
+
+-------------------------------------------------------------------
+Fri Apr 17 07:56:40 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.4.1-1
+  - See RELEASE_NOTES for a complete list of changes
+- Drop patches fixed upstream:
+  - opae-add-missing-lpthread.patch
+  - opae-fix-python-packaging.patch
+  - opae-fix-support-for-hwloc-2.patch
+- Refresh opae-missing-shebang.patch against latest source
+- Add opae-fix-linking-issue.patch to fix linking issues
+
+-------------------------------------------------------------------
+Fri Sep  6 08:21:29 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.3.2-1
+  - See RELEASE_NOTES for a complete list of changes
+- Drop patches fixed upstream:
+  - opae-fix-gcc-warning-on-exception.patch
+- Refresh patch against new sources:
+  - opae-missing-shebang.patch
+  - opae-add-missing-lpthread.patch
+  - opae-fix-python-packaging.patch 
+- Add patch to fix compilation against hwloc >= 2.0
+  - opae-fix-support-for-hwloc-2.patch
+
+-------------------------------------------------------------------
+Wed May 15 06:33:16 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.3.0-2
+  - See RELEASE_NOTES for a complete list of changes
+- Drop patches fixed upstream:
+  - opae-fix-cmake-paths.patch
+- Refresh patch against new sources:
+  - opae-missing-shebang.patch
+  - opae-add-missing-lpthread.patch
+- Add new patches
+  - opae-fix-gcc-warning-on-exception.patch to workaround a GCC8 error
+    on exception handling
+  - opae-fix-python-packaging.patch to fix the bad usage of string in
+    python ByteIO.write
+
+-------------------------------------------------------------------
+Tue Jul  3 13:10:59 CEST 2018 - ndas@suse.de
+
+- opae goes with FPGA driver API.(FATE#325137).
+- replace %doc with %license
+
+-------------------------------------------------------------------
+Thu Feb 22 08:26:44 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update opae-missing-shebang.patch to use /usr/bin/python3
+  instead of /usr/bin/python (bsc#1082133).
+
+-------------------------------------------------------------------
+Fri Jan 19 10:03:15 UTC 2018 - nmoreychaisemartin@suse.com
+
+- Update to opae 0.13.0
+  * No release notes available
+- Refresh opae-fix-cmake-paths.patch and opae-missing-shebang.patch
+  to the lastest sources
+
+-------------------------------------------------------------------
+Wed Sep  6 08:08:55 UTC 2017 - nmoreychaisemartin@suse.com
+
+- Initial packaging of version 0.9.0 (FATE#323188)
+- Add opae-fix-cmake-paths.patch, opae-add-missing-lpthread.patch and
+  opae-missing-shebang.patch to fix upstream packaging issues
+- Split libraries into their own package: libopae-c0

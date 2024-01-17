@@ -1,0 +1,482 @@
+-------------------------------------------------------------------
+Wed Jan  3 17:04:33 UTC 2024 - Marina Latini <marina.latini@suse.com>
+
+- Specify a Group tag for Leap and SUSE Linux Enterprise 
+
+-------------------------------------------------------------------
+Wed Jan  3 16:13:53 UTC 2024 - Marina Latini <marina.latini@suse.com>
+
+- Disable Perl install test as that requires network for
+  CPAN initialisation also on SUSE Linux Enterprise. 
+
+-------------------------------------------------------------------
+Wed Dec 13 12:28:25 UTC 2023 - Matthias Bach <marix@marix.org> - 3.6.0
+
+- Update to version 3.6.0
+  * Features
+    + Check minimum_pre_commit_version first when parsing configs.
+  * Fixes
+    + Fix deprecation warnings for importlib.resources.
+    + Fix deprecation warnings for rmtree.
+
+-------------------------------------------------------------------
+Mon Nov 27 20:27:50 UTC 2023 - Matthias Bach <marix@marix.org> - 3.5.0
+
+- For Leap, build this on modern Python as 3.6 is no longer supported.
+- On Leap, use Lua 5.3 as luarocks is not packaged for Lua 5.4.
+- On Leap, disable Perl install test as that requires network for
+  CPAN initialisation.
+
+-------------------------------------------------------------------
+Wed Nov  1 10:32:51 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org> - 3.5.0
+
+- update to version 3.5.0
+  * Features
+    + Improve performance of check-hooks-apply and check-useless-excludes.
+  * Fixes
+    + Use time.monotonic() for more accurate hook timing.
+  * Migrating
+    + Require npm 6.x+ for language: node hooks.
+- notable changes since 2.21.0
+  * Remove pre-commit-validate-config and pre-commit-validate-manifest,
+    use pre-commit validate-config and pre-commit validate-manifest
+    instead.
+  * See CHANGELOG.md
+- spec file changes
+  * Remove python-re-assert and python-toml from the runtime requirements
+  * Remove python-toml from the build requirements
+  * Update required python-virtualenv version to 20.10.0
+  * Rename excluded test est_local_golang_additional_dependencies to
+    test_local_golang_additional_deps
+  * Exclude new tests that require internet access
+    + test_run_example_executable
+    + test_run_dep
+    + test_perl_additional_dependencies
+    + test_lua_additional_dependencies
+  * Exclude new tests that have unfulfillable dependencies
+    + test_swift_language
+  * Add LICENSE and CHANGELOG.md to the files list
+
+-------------------------------------------------------------------
+Mon Jan  2 20:10:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21.0:
+  * Require new-enough virtualenv to prevent 3.10 breakage
+  * Respect aliases with `SKIP` for environment install.
+  * Allow `pre-commit run --files` against unmerged paths.
+  * Also apply regex warnings to `repo: local` hooks.
+  * `rust` is now a "first class" language -- supporting `language_version`
+  * `r` now uses more-reliable binary installation.
+  * `GIT_ALLOW_PROTOCOL` is now passed through for git operations.
+  * `GIT_ASKPASS` is now passed through for git operations.
+  * Remove `toml` dependency by using `cargo add` directly.
+  * Support `dotnet` hooks which have dotted prefixes.
+  * ### Fixes
+  * Properly adjust `--commit-msg-filename` if run from a sub directory.
+  * Simplify `--intent-to-add` detection by using `git diff`.
+  * Fix `R.exe` selection on windows.
+  * Skip default `nuget` source when installing `dotnet` packages.
+
+-------------------------------------------------------------------
+Mon Nov 28 07:01:26 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix "/usr/bin/env bash" shebang in hook-tmpl file
+- Remove python_module macro definition
+- Allow file protocol always for git submodule to fix tests
+
+-------------------------------------------------------------------
+Mon Jul 11 13:58:51 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.20.0:
+  * Features
+    + Expose source and object-name (positional args) of
+      prepare-commit-msg hook as PRE_COMMIT_COMIT_MSG_SOURCE and
+      PRE_COMMIT_COMMIT_OBJECT_NAME.
+        #2407 PR by @M-Whitaker.
+        #2406 issue by @M-Whitaker.
+  * Fixes
+    + Fix language: ruby installs when --user-install is set in gemrc.
+        #2394 PR by @narpfel.
+        #2393 issue by @narpfel.
+    + Adjust pty setup for solaris.
+        #2390 PR by @gaige.
+        #2389 issue by @gaige.
+    + Remove unused --config option from gc, sample-config,
+      validate-config, validate-manifest sub-commands.
+        #2429 PR by @asottile.
+
+-------------------------------------------------------------------
+Tue May 31 02:56:01 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.19.0:
+  * Features
+    + Allow multiple outputs from language: dotnet hooks.
+    + Add more information to healthy() failure.
+    + Upgrade ruby-build.
+    + Add pre-commit validate-config / pre-commit validate-manifest
+      and deprecate pre-commit-validate-config and
+      pre-commit-validate-manifest.
+  * Fixes
+    + Fix pre-push when pushed ref contains spaces.
+  * Updating
+    + Change pre-commit-validate-config / pre-commit-validate-manifest
+      to pre-commit validate-config / pre-commit validate-manifest.
+
+-------------------------------------------------------------------
+Thu Apr  7 11:39:58 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.18.1
+  2.18.1 - 2022-04-02
+  ===================
+  ### Fixes
+  - Fix regression for `repo: local` hooks running `python<3.7`
+      - #2324 PR by @asottile.
+  2.18.0 - 2022-04-02
+  ===================
+  ### Features
+  - Keep `GIT_HTTP_PROXY_AUTHMETHOD` in git environ.
+      - #2272 PR by @VincentBerthier.
+      - #2271 issue by @VincentBerthier.
+  - Support both `cs` and `coursier` executables for coursier hooks.
+      - #2293 PR by @Holzhaus.
+  - Include more information in errors for `language_version` /
+    `additional_dependencies` for languages which do not support them.
+      -  #2315 PR by @asottile.
+  - Have autoupdate preferentially pick tags which look like versions when
+    there are multiple equivalent tags.
+      - #2312 PR by @mblayman.
+      - #2311 issue by @mblayman.
+  - Upgrade `ruby-build`.
+      - #2319 PR by @jalessio.
+  - Add top level `default_install_hook_types` which will be installed when
+    `--hook-types` is not specified in `pre-commit install`.
+      - #2322 PR by @asottile.
+  ### Fixes
+  - Fix typo in help message for `--from-ref` and `--to-ref`.
+      - #2266 PR by @leetrout.
+  - Prioritize binary builds for R dependencies.
+      - #2277 PR by @lorenzwalthert.
+  - Fix handling of git worktrees.
+      - #2252 PR by @daschuer.
+  - Fix handling of `$R_HOME` for R hooks.
+      - #2301 PR by @jeff-m-sullivan.
+      - #2300 issue by @jeff-m-sullivan.
+  - Fix a rare race condition in change stashing.
+      - #2323 PR by @asottile.
+      - #2287 issue by @ian-h-chamberlain.
+  ### Updating
+  - Remove python3.6 support.  Note that pre-commit still supports running hooks
+    written in older versions, but pre-commit itself requires python 3.7+.
+      - #2215 PR by @asottile.
+  - pre-commit has migrated from the `master` branch to `main`.
+      - #2302 PR by @asottile.
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Sat Mar 26 19:25:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  - add warnings for regexes containing `[\\/]`.
+  - upgrade supported ruby versions.
+  - allow `language: conda` to use `mamba` or `micromamba` via
+    `PRE_COMMIT_USE_MAMBA=1` or `PRE_COMMIT_USE_MICROMAMBA=1` respectively.
+  - display `git --version` in error report.
+  - add `language: lua` as a supported language.
+  - temporarily add `setuptools` to the zipapp.
+  - use `go install` instead of `go get` for go 1.18+ support.
+  - fix `language: r` with a local renv and `RENV_PROJECT` set.
+  - forbid overriding `entry` in `language: meta` hooks which breaks them.
+  - always use `#!/bin/sh` on windows for hook script.
+
+-------------------------------------------------------------------
+Tue Jan 11 01:29:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.16.0:
+  * add warning for regexes containing [\/] or [/\\].
+  * move hook template back to bash resolving shebang-portability issues.
+  * add support for fail_fast at the individual hook level.
+  * allow passthrough of GIT_CONFIG_KEY_*, GIT_CONFIG_VALUE_*, and GIT_CONFIG_COUNT.
+  * fix temporary file stashing with for submodule.recurse=1.
+  * ban broken importlib-resources versions.
+  * replace exit(...) with raise SystemExit(...) for portability.
+  * add support for hooks written in dart.
+  * add support for post-rewrite hooks.
+  * fix check-useless-excludes with exclude matching broken symlink.
+  * eliminate duplicate mutable sha warning messages for pre-commit autoupdate.
+  * fix force-push of disparate histories using git>=2.28.
+  * fix check-useless-excludes and check-hooks-apply matching non-root .pre-commit-config.yaml.
+  * pre-commit-ci/issues#84 issue by @billsioros.
+  * During pre-push hooks, expose local branch as PRE_COMMIT_LOCAL_BRANCH.
+  * Improve container id detection for docker-beside-docker with custom hostname.
+  * Read legacy hooks in an encoding-agnostic way.
+  * Fix execution of docker hooks for docker-in-docker.
+  * Attempt to mount from host with docker-in-docker.
+  * Enable repo: local for r hooks.
+  * Avoid warnings with mismatched renv versions.
+  * Fix race condition when stashing files in multiple parallel invocations
+  * pre-commit/mirrors-prettier#7 issue by @DeltaXWizard.
+  * Fix permissions of root folder in ruby archives.
+  * Fix r hooks when hook repo is a package
+  * Add support for post-merge hook.
+  * Add r as a supported hook language.
+  * Fix installation of local golang repositories for go 1.16.
+  * Fix language: golang repositories containing recursive submodules
+  * Allow ci as a top-level map for configuration for https://pre-commit.ci
+  * Add warning for mutable rev in configuration
+  * Add warning for /* in top-level files / exclude regexes
+  * Expose PRE_COMMIT_REMOTE_BRANCH environment variable during pre-push hooks
+  * Produce error message for language / language_version for non-installable languages
+  * Fix execution in worktrees in subdirectories of bare repositories
+  * Fix cleanup code on docker volumes for go
+  * Fix default value for types_or so symlink and directory can be matched
+  * Improve error message for "hook goes missing"
+  * Add warning for /* in files / exclude regexes
+  * Add types_or which allows matching multiple disparate types in a hook
+  * Improve cleanup for language: dotnet
+  * Fix conflict with external rbenv and language_version: default
+  * Improve performance of git status / git diff commands by ignoring submodules
+  * Allow default language_version of system when the homedir is /
+  * Update sample-config versions
+  * Add --negate option to language: pygrep hooks
+  * Add zipapp support
+  * #1616 PR by @asottile.
+  * Exit with distinct codes: 1 (user error), 3 (unexpected error), 130 (^C)
+  * Improve healthy() check for language: node + language_version: system hooks when the system executable goes missing.
+  * pre-commit/action#45 issue by @KOliver94.
+  * Fix excess whitespace in error log traceback
+  * Fix language: ruby hooks when --format-executable is present in a gemrc
+  * Move cygwin / win32 mismatch error earlier to catch msys2 mismatches
+  * Remove -p workaround for old virtualenv
+  * Fix language: node installations to not symlink outside of the environment
+  * pre-commit-ci/issues#2 issue by @DanielJSottile.
+  * Don't identify shim executables as valid system for defaulting language_version for language: node / language: ruby
+
+-------------------------------------------------------------------
+Tue Feb 16 11:29:34 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Fix build for multiple python flavors 
+
+-------------------------------------------------------------------
+Sat Aug 29 05:38:23 UTC 2020 - Arun Persaud <arun@gmx.de
+
+- update to version 2.7.1:
+  * Fixes
+    + Improve performance of docker hooks by removing slow ps call
+        #1572 PR by @rkm.
+        #1569 issue by @asottile.
+    + Fix un-healthy() invalidation followed by install being reported
+      as un-healthy().
+        #1576 PR by @asottile.
+        #1575 issue by @jab.
+    + Fix rare file race condition on windows with os.replace()
+        #1577 PR by @asottile.
+
+- changes from version 2.7.0:
+  * Features
+    + Produce error message if an environment is immediately unhealthy
+        #1535 PR by @asottile.
+    + Add --no-allow-missing-config option to init-templatedir
+        #1539 PR by @singergr.
+    + Add warning for old list-style configuration
+        #1544 PR by @asottile.
+    + Allow pre-commit to succeed on a readonly store.
+        #1570 PR by @asottile.
+        #1536 issue by @asottile.
+  * Fixes
+    + Fix error messaging when the store directory is readonly
+        #1546 PR by @asottile.
+        #1536 issue by @asottile.
+    + Improve diff performance with many hooks
+        #1566 PR by @jhenkens.
+        #1564 issue by @jhenkens.
+
+-------------------------------------------------------------------
+Sun Jul 19 03:46:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Ignore one test failure to fix builds
+- Set LANG to fix openSUSE 15.1 builds
+
+-------------------------------------------------------------------
+Fri Jul  3 03:05:43 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update version requirement for virtualenv
+
+- update to version 2.6.0:
+  * Fixes
+    + Fix node hooks when NPM_CONFIG_USERCONFIG is set
+        #1521 PR by @asottile.
+        #1516 issue by @rkm.
+  * Features
+    + Skip rbenv / ruby-download if system ruby is available
+        #1509 PR by @asottile.
+    + Partial support for ruby on windows (if system ruby is
+      installed)
+        #1509 PR by @asottile.
+        #201 issue by @asottile.
+
+-------------------------------------------------------------------
+Sun Jun 28 18:48:43 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.5.1:
+  * Fixes
+    + Prevent infinite recursion of post-checkout on clone
+        #1497 PR by @asottile.
+        #1496 issue by @admorgan.
+
+- changes from version 2.5.0:
+  * Features
+    + Expose a PRE_COMMIT=1 environment variable when running hooks
+        #1467 PR by @tech-chad.
+        #1426 issue by @lorenzwalthert.
+  * Fixes
+    + Fix UnicodeDecodeError on windows when using the py launcher to
+      detect executables with non-ascii characters in the path
+        #1474 PR by @asottile.
+        #1472 issue by DrFobos.
+    + Fix DeprecationWarning on python3.9 for random.shuffle method
+        #1480 PR by @asottile.
+        #1479 issue by @isidentical.
+    + Normalize slashes earlier such that global files / exclude use
+      forward slashes on windows as well.
+        #1494 PR by @asottile.
+        #1476 issue by @harrybiddle.
+
+-------------------------------------------------------------------
+Sat May 23 19:57:34 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.4.0:
+  * Features
+    + Add support for post-commit hooks
+        #1415 PR by @ModischFabrications.
+        #1411 issue by @ModischFabrications.
+    + Silence pip version warning in python installation error
+        #1412 PR by @asottile.
+    + Improve python healthy() when upgrading operating systems.
+        #1431 PR by @asottile.
+        #1427 issue by @ahonnecke.
+    + language: python_venv is now an alias to language: python (and
+      will be removed in a future version).
+        #1431 PR by @asottile.
+    + Speed up python healthy() check.
+        #1431 PR by @asottile.
+    + pre-commit autoupdate now tries to maintain quoting style of
+      rev.
+        #1435 PR by @marcjay.
+        #1434 issue by @marcjay.
+  * Fixes
+    + Fix installation of go modules in repo: local.
+        #1428 PR by @scop.
+    + Fix committing with unstaged files and a failing post-checkout
+      hook.
+        #1422 PR by @domodwyer.
+        #1418 issue by @domodwyer.
+    + Fix installation of node hooks with system node installed on
+      freebsd.
+        #1443 PR by @asottile.
+        #1440 issue by @jockej.
+    + Fix ruby hooks when GEM_PATH is set globally.
+        #1442 PR by @tdeo.
+    + Improve error message when pre-commit autoupdate / pre-commit
+      migrate-config are run but the pre-commit configuration is not
+      valid yaml.
+        #1448 PR by @asottile.
+        #1447 issue by @rpdelaney.
+
+-------------------------------------------------------------------
+Sat May  2 21:01:03 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * be more specific in %files section
+
+- update to version 2.3.0:
+  * Features
+    + Calculate character width using `east_asian_width` - #1378 PR by
+      @sophgn.
+    + Use `language_version: system` by default for `node` hooks if
+      `node` / `npm` are globally installed.  - #1388 PR by @asottile.
+  * Fixes
+    + No longer use a hard-coded user id for docker hooks on windows -
+      #1371 PR by @killuazhu.
+    + Fix colors on windows during `git commit` - #1381 issue by
+      @Cielquan.  - #1382 PR by @asottile.
+    + Produce readable error message for incorrect argument count to
+      `hook-impl` - #1394 issue by @pip9ball.  - #1395 PR by
+      @asottile.
+    + Fix installations which involve an upgrade of `pip` on windows -
+      #1398 issue by @xiaohuazi123.  - #1399 PR by @asottile.
+    + Preserve line endings in `pre-commit autoupdate` - #1402 PR by
+      @utek.
+
+-------------------------------------------------------------------
+Wed Mar 18 11:26:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 2.2.0
+  * Add conda as a new language. 
+  * Remove python2 / python3.5 support. Note that pre-commit still 
+    supports running hooks written in python2, but pre-commit itself 
+    requires python 3.6+.
+  * Removed pcre language, use pygrep instead. 
+  * Don't filter GIT_SSL_NO_VERIFY from environment when cloning.
+  * Replace aspy.yaml with sort_keys=False. 
+  * Add support for perl. 
+  * Fix python healthy() check when python executable goes missing. 
+  * Many more fixes and improvements, see upstream changelog
+
+-------------------------------------------------------------------
+Fri Nov  1 14:44:33 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.20.0:
+    Allow building newer versions of ruby.
+    Fix rare race condition with multiple concurrent first-time runs.
+    Allow --hook-type to be specified multiple times.
+        example: pre-commit install --hook-type pre-commit
+            --hook-type pre-push
+    Include more version information in crash logs.
+    Hook colors are now passed through on platforms which support pty.
+    pre-commit now uses importlib.metadata directly when running
+        in python 3.8
+    Remove some extra newlines from error messages.
+    When a hook is not executable it now reports not executable
+        instead of not found.
+    Fix interleaving of stdout / stderr in hooks.
+    Fix python environment healthy() check when current working
+        directory contains modules which shadow standard library
+        names.
+    Regexes handling both backslashes and forward slashes for
+        directory separators now only need to handle forward
+        slashes.
+    Fix node_modules plugin installation on windows
+    Make default python lookup more deterministic to avoid
+        redundant installs
+    Fix installation of rust hooks with new cargo
+    Use the current running executable if it matches the
+        requested language_version
+    Print the stage when a hook is not found
+    pre-commit autoupdate now supports non-master default branches
+    Add pre-commit init-templatedir which makes it easier to
+        automatically enable pre-commit in cloned repositories.
+    pre-commit's color can be controlled using
+        PRE_COMMIT_COLOR={auto,always,never}
+    pre-commit's color can now be disabled using TERM=dumb
+    pre-commit now supports docker based hooks on windows
+    Fix shallow clone
+    Fix autoupdate version flip flop when using shallow cloning
+    Fix autoupdate when the current revision is invalid
+    Replace development instructions with tox --devenv ...
+    Produce better output on ^C
+    Warn on unknown keys at the top level and repo level
+    Fix handling of ^C in wrapper script in python 3.x
+    Fix rmtree for non-writable directories
+    Pass --color option to git diff in --show-diff-on-failure
+    Fix test when pre-commit is installed globally
+    Add support for prepare-commit-msg hook
+    Whitespace fixup
+    Fix cloning non-branch tag while in the fallback slow-clone
+        strategy.
+- Just switch of tests for now.
+
+-------------------------------------------------------------------
+Thu Apr  4 01:11:49 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.15.1

@@ -1,0 +1,15 @@
+diff --git dat/common/dat_strerror.c dat/common/dat_strerror.c
+index 915dfb0..5f26383 100644
+--- dat/common/dat_strerror.c
++++ dat/common/dat_strerror.c
+@@ -37,6 +37,10 @@
+  * $Id: dat_strerror.c,v 1.10 2005/03/24 05:58:28 jlentini Exp $
+  **********************************************************************/
+ 
++#ifdef __GNUC__
++#include <stddef.h> /* to get NULL defined */
++#endif
++
+ #ifdef __KDAPL__
+ #include <dat2/kdat.h>
+ #else /*__UDAPL__*/

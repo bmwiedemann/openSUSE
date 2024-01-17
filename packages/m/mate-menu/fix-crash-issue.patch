@@ -1,0 +1,12 @@
+diff -Nur mate-menu-20.04.3/lib/mate-menu.py mate-menu-20.04.3-new/lib/mate-menu.py
+--- mate-menu-20.04.3/lib/mate-menu.py	2020-04-05 07:10:31.000000000 +0800
++++ mate-menu-20.04.3-new/lib/mate-menu.py	2021-08-15 17:25:13.623972927 +0800
+@@ -531,7 +531,7 @@
+         self.do_load_icon(self.icon)
+         self.systemlabel = Gtk.Label(label= "%s " % self.buttonText )
+         try:
+-            process = subprocess.Popen(['lsb_release', '-d'], stdout=subprocess.PIPE, text=True)
++            process = subprocess.Popen(['lsb_release', '-d'], stdout=subprocess.PIPE, universal_newlines=True)
+             out, err = process.communicate()
+             tooltip = str(out).replace('Description:', '').strip()
+             self.systemlabel.set_tooltip_text(tooltip)

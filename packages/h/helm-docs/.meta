@@ -1,0 +1,6 @@
+<package name="helm-docs" project="openSUSE:Factory">
+  <title>helm-docs</title>
+  <description>A tool for automatically generating markdown documentation for helm charts</description>
+  <devel project="devel:kubic" package="helm-docs"/>
+  <url>https://github.com/norwoodj/helm-docs</url>
+</package>

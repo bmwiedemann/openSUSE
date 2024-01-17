@@ -1,0 +1,6 @@
+<package name="sioyek" project="openSUSE:Factory">
+  <title>Sioyek</title>
+  <description>Sioyek is a PDF viewer designed for reading research papers and technical books.</description>
+  <devel project="Publishing" package="sioyek"/>
+  <url>https://github.com/ahrm/sioyek</url>
+</package>

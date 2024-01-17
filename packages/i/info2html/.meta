@@ -1,0 +1,9 @@
+<package name="info2html" project="openSUSE:Factory">
+  <title>Program to Convert Info Pages into HTML Pages</title>
+  <description>This package contains the CGI script 'info2html' that creates HTML pages
+from info documents on demand, to be sent over the HTTP protocol.
+
+Follow references to nodes in info documents to view the corresponding info
+files in HTML.</description>
+  <devel project="Publishing" package="info2html"/>
+</package>

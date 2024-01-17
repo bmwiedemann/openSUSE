@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e318de6fca90a38d6fb8fa98755dbd71</srcmd5>
+    <version>1.6.1</version>
+    <time>1535705273</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632294</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>18b6c7fa42d3c7810e53acc55dadb78e</srcmd5>
+    <version>1.6.1</version>
+    <time>1536876091</time>
+    <user>maxlin_factory</user>
+    <comment>- Add 776d086553bd04630cb1d9e2f429c7bf05b1ca23.patch fixing tests
+  on 32bit archs. See https://github.com/gmr/pamqp/issues/11
+</comment>
+    <requestid>635408</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b8361bdd7050227ea89913cf52f65d4</srcmd5>
+    <version>2.0.0</version>
+    <time>1537787566</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.0.0:
+  * Small bugfixes only, support for py3.4+ and 2.7+ only
+- Drop upstream merged patch:
+  * 776d086553bd04630cb1d9e2f429c7bf05b1ca23.patch</comment>
+    <requestid>637004</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6f8e79df3b26f2cee2dcb0788d8dc4ac</srcmd5>
+    <version>2.1.0</version>
+    <time>1553888587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689759</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1f8427e085f203d5084fb92f182d4e1d</srcmd5>
+    <version>2.3.0</version>
+    <time>1556622313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698176</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>cf2891ac397514d290ce3bf3584426e4</srcmd5>
+    <version>2.3.0</version>
+    <time>1587659707</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796484</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>24096b55d24cbe32ac880d28b6434e88</srcmd5>
+    <version>2.3.0</version>
+    <time>1591742985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812810</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9c095b1a4a3db906282b62db66ec6754</srcmd5>
+    <version>3.0.1</version>
+    <time>1614108149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874639</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d1d308f7caeb84f49b617056a8c70ee1</srcmd5>
+    <version>3.2.0</version>
+    <time>1665034923</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008146</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e81c0053ca03c38240c1e97818ca5e1f</srcmd5>
+    <version>3.2.1</version>
+    <time>1667067392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032040</requestid>
+  </revision>
+</revisionlist>

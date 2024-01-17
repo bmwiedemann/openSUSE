@@ -1,0 +1,28 @@
+From a4398c8bf271f90338f95e1230373dde977d9cff Mon Sep 17 00:00:00 2001
+From: Jami Kettunen <jami.kettunen@protonmail.com>
+Date: Wed, 28 Dec 2022 17:29:20 +0200
+Subject: [PATCH] Makefile: allow $(CFLAGS), $(LDFLAGS) override
+
+The caller might have specified CFLAGS or LDFLAGS. Let's respect those.
+Additionally drop LDFLAGS var definition as it is empty.
+---
+ Makefile | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 036691c..bd6c1cd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,10 +3,9 @@ proj-major := 1
+ proj-minor := 0
+ proj-version := $(proj-major).$(proj-minor)
+ 
+-CFLAGS := -Wall -g
+-LDFLAGS :=
++CFLAGS += -Wall -g
++prefix = /usr/local
+ 
+-prefix := /usr/local
+ bindir := $(prefix)/bin
+ libdir := $(prefix)/lib
+ includedir := $(prefix)/include

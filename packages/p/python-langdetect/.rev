@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>715a35585701a2157bda7d7544e74983</srcmd5>
+    <version>1.0.7</version>
+    <time>1576062883</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>755750</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>63ac7f797e93362be1f1e858d4ce7e62</srcmd5>
+    <version>1.0.8</version>
+    <time>1586973385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794156</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90a7d8a50e755beb6bbe4ed92c4f6399</srcmd5>
+    <version>1.0.9</version>
+    <time>1622536537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895336</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ad072ccb0a57c21cb20789b40f3d4030</srcmd5>
+    <version>1.0.9</version>
+    <time>1682368243</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1082222 from mcepl
+
+- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1082228</requestid>
+  </revision>
+</revisionlist>

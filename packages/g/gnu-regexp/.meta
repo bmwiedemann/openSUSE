@@ -1,0 +1,9 @@
+<package name="gnu-regexp" project="openSUSE:Factory">
+  <title>Java NFA regular expression engine</title>
+  <description>The gnu-regexp package is a pure-Java implementation of a traditional
+(non-POSIX) NFA regular expression engine. Its syntax can emulate many
+popular development tools, including awk, sed, emacs, perl and grep.
+For a relatively complete list of supported and non-supported syntax,
+refer to the syntax and usage notes.</description>
+  <devel project="Java:packages" package="gnu-regexp"/>
+</package>

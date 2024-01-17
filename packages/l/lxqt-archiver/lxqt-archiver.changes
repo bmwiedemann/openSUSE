@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Sun Nov  5 21:52:44 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.9.0:
+  * Ported away from deprecated time format.
+  * Added appropriate fallback icons to toolbar and menu 
+
+-------------------------------------------------------------------
+Sat Apr 15 19:34:14 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.3.0:
+  * Updated translations and dependencies and bumped the version
+
+-------------------------------------------------------------------
+Sat Nov  5 20:58:00 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 0.7.0:
+  * Removed the redundant function `n_fields()` from `glib-utils`.
+  * Silenced some compilation warnings.
+
+-------------------------------------------------------------------
+Thu Apr 28 20:14:45 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * Allow changing of the view icon size and remember it.
+  * Allow sorting by any column (but only sort by the first column at startup).
+  * Forget the password (if any) on reloading the archive.
+
+-------------------------------------------------------------------
+Mon Nov  8 09:36:17 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * Show password prompt for archives with encrypted lists.
+  * Fixed listing RAR archive contents with encrypted file list.
+
+-------------------------------------------------------------------
+Fri Apr 16 07:00:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Disk images can be opened and extracted.
+  * Window settings are remembered.
+  * The directory view is made horizontally scrollable.
+
+-------------------------------------------------------------------
+Wed Nov  4 13:33:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * Avoid memory leak in "java-utils.c".
+  * Fixed comparison of integer expressions of different signedness.
+  * Removed "g_ptr_array_free_full" from "glib-utils.c" and used
+    GLib's "g_ptr_array_free" instead.
+  * Use bsdtar to handle RPM packages.
+
+-------------------------------------------------------------------
+Mon Jun 29 07:17:31 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Revert BuildRequires hicolor-icon-theme for icon dirs
+
+-------------------------------------------------------------------
+Wed Jun 24 10:28:15 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Use libexecdir macro to fix errors in Factory
+- BuildRequires hicolor-icon-theme for icon dirs
+
+-------------------------------------------------------------------
+Mon May 18 07:18:43 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed Recommends lxqt-archiver-lang due to auto supplements
+
+-------------------------------------------------------------------
+Sun May 17 07:08:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.0:
+  * Added an icon for the app.
+  * Prevent the contents of an extracted archive from being mixed
+    with other files if overwriting isn't chosen.
+  * Added expand and collapse actions.
+  * Fixed build with GCC 10.
+  * Required json-glib as a dependency.
+- Remove lxqt-archiver.desktop:
+  use upstream desktop file. It has its own icon now.
+  See https://github.com/lxqt/lxqt-archiver/issues/157
+
+-------------------------------------------------------------------
+Fri May 15 15:18:09 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixed sources and added keyring
+
+-------------------------------------------------------------------
+Sat Apr 25 10:36:39 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Removed lxqt-archiver-execdir.patch: contained in upstream
+- Update to version 0.1.1
+  * Removed the unused qtdbus dependency.
+  * Used 'LIBEXECDIR' instead of 'LIBDIR' for internal executables.
+  * Fixed handling of RPM archives.
+
+-------------------------------------------------------------------
+Wed Apr 22 14:27:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add lxqt-archiver-execdir.patch: install in helper programs
+  in libexecdir not libdir
+
+-------------------------------------------------------------------
+Wed Apr 22 08:42:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Create package 0.1.0 for openSUSE

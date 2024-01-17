@@ -1,0 +1,12 @@
+--- pommed-1.38/pommed/Makefile	2011-03-19 12:29:10.000000000 +0100
++++ pommed-1.38-pci/pommed/Makefile	2011-05-07 13:36:21.449008670 +0200
+@@ -55,8 +55,7 @@
+ 	CFLAGS += $(LIBPCI_CFLAGS)
+ 	LDLIBS += $(LIBPCI_LIBS)
+ else
+-	LIB_OBJS += /usr/lib/libpci.a
+-	LDLIBS += -lz
++	LDLIBS += -lpci -ldbus-1 -lz
+ endif
+ 
+ LDLIBS += $(LIB_OBJS)

@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87b52926b2e46471ed5684008e53d420</srcmd5>
+    <version>1.13</version>
+    <time>1427983438</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory, added COPYING after legal</comment>
+    <requestid>293887</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4adf9b78a11ca6c67e1244f17f8b6b49</srcmd5>
+    <version>1.13</version>
+    <time>1429108061</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup: --with-pic is useless because no static libs are built.
+  Remove stray leading newline in description.</comment>
+    <requestid>296744</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a24f75defee6dad125e515e5936836ee</srcmd5>
+    <version>1.13</version>
+    <time>1498840960</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507072</requestid>
+  </revision>
+</revisionlist>

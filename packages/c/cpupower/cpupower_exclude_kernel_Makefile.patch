@@ -1,0 +1,19 @@
+Index: cpupower-5.5/Makefile
+===================================================================
+--- cpupower-5.5.orig/Makefile	2019-11-28 14:28:51.545762057 +0100
++++ cpupower-5.5/Makefile	2019-11-28 14:29:55.089765481 +0100
+@@ -94,14 +94,7 @@ RANLIB = $(CROSS)ranlib
+ HOSTCC = gcc
+ MKDIR = mkdir
+ 
+-# 64bit library detection
+-include ../../scripts/Makefile.arch
+-
+-ifeq ($(IS_64_BIT), 1)
+ libdir ?=	/usr/lib64
+-else
+-libdir ?=	/usr/lib
+-endif
+ 
+ # Now we set up the build system
+ #

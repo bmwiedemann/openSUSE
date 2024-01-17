@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57dbcd3cf6152dbb2a59960d7f237763</srcmd5>
+    <version>1.0.4</version>
+    <time>1527934069</time>
+    <user>dimstar_suse</user>
+    <comment>Python bindings for the Brotli compression library</comment>
+    <requestid>612086</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ac16759962d38a51b67d8de85af5986</srcmd5>
+    <version>1.0.7</version>
+    <time>1551455285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.7:
+  * aarch64 speedups
+  * minor fixes
+  * java 8-&gt;9 compatibility</comment>
+    <requestid>680056</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af9108518ff8f56dc4c7699b83d60623</srcmd5>
+    <version>1.0.9</version>
+    <time>1611668678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.9:
+  * Fix integer overflow when input chunk is longer than
+    2GiB [boo#1175825]
+  * `brotli -v` now reports raw / compressed size
+  * decoder: minor speed / memory usage improvements
+  * encoder: fix rare access to uninitialized data in ring-buffer</comment>
+    <requestid>866129</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d30ee4cebc6318b990ff148693e400c0</srcmd5>
+    <version>1.0.9</version>
+    <time>1682193781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082049</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3d26fc5697cde2f244230e2fefcdece2</srcmd5>
+    <version>1.1.0</version>
+    <time>1694545341</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * added CLI --dictionary option
+  * decoder: faster decoding
+  * encoder: faster encoding
+  * encoder: smaller stack frames
+
+- update to 1.0.9 (CVE-2020-8927, bsc##1175825):
+    2GiB</comment>
+    <requestid>1110375</requestid>
+  </revision>
+</revisionlist>

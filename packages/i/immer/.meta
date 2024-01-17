@@ -1,0 +1,10 @@
+<package name="immer" project="openSUSE:Factory">
+  <title>Persistent and immutable data structures written in C++</title>
+  <description>immer is a library of persistent and immutable data structures written in C++.
+These enable whole new kinds of architectures for interactive and concurrent
+programs.
+
+</description>
+  <devel project="KDE:Extra" package="immer"/>
+  <url>https://sinusoid.es/immer/</url>
+</package>

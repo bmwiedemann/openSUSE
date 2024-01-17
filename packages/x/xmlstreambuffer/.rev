@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be270b8455a6f49c30dd763be3b48701</srcmd5>
+    <version>1.5.4</version>
+    <time>1584643979</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>782967</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7e34104980dea7df7e009b4222c7aacc</srcmd5>
+    <version>1.5.4</version>
+    <time>1648063096</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964137</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>358b1bcdc61c7fb6f00bccf1cff5d230</srcmd5>
+    <version>1.5.4</version>
+    <time>1662148585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000812</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9e55409b54d48c069f876d527bb02a56</srcmd5>
+    <version>1.5.4</version>
+    <time>1694630642</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110612</requestid>
+  </revision>
+</revisionlist>

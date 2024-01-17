@@ -1,0 +1,8 @@
+<package name="golly" project="openSUSE:Factory">
+  <title>Tool for exploring Game of Life and other automata</title>
+  <description>A sophisticated tool for exploring Conway's Game of Life and many other cellular automata.
+
+</description>
+  <devel project="Education" package="golly"/>
+  <url>https://golly.sourceforge.net/</url>
+</package>

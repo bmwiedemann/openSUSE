@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Feb  2 10:39:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix update-alternatives
+
+-------------------------------------------------------------------
+Mon Jan 16 20:59:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  https://github.com/universal-ctags/ctags/releases/tag/v6.0.0
+- drop 0001-Use-pandoc-instead-of-rst2pdf.patch (obsolete)
+
+-------------------------------------------------------------------
+Mon Aug 26 12:53:42 UTC 2019 - Simon Schricker <s.schricker@mailbox.org>
+
+- Update to version 0+git~c77db554:
+  * add .ada file extion
+  * add support for C++17 inline variables
+  * implement --excmd=combine locator option
+  * implement --_pretend-<NEWLANG>=<OLDLANG> option
+  * add .ldi file extension
+  * replace ant xml parser
+  * add new parser for Elixir language
+  * add new parser for TypeScript
+  * add new parser for Inko
+  * add new Moose subparser
+  * add new parser for NSIS
+  * add PACKCC compiler
+  * various bug and typo fixes
+- Add obs service for easier packaging
+- Use upstream tarball name as source name
+- Add update-alternatives handling for ctags
+- Create repoinfo.h so the resulting binary shows the git commit
+  sha as version, since upstream has no releases.
+
+-------------------------------------------------------------------
+Tue Nov 20 16:05:41 UTC 2018 - sschricker@suse.de
+
+- Initial package, build from git commit befcb88 
+  * add patch 0001-Use-pandoc-instead-of-rst2pdf.patch
+    Since rst2pdf is not available in Factory, which is required to build the
+    man pages

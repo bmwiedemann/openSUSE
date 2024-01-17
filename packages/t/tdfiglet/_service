@@ -1,0 +1,15 @@
+<services>
+    <service name="obs_scm" mode="disabled">
+      <!--param name="filename">tdfiglet</param-->
+      <param name="url">https://github.com/tat3r/tdfiglet</param>
+      <param name="scm">git</param>
+      <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+      <param name="changesgenerate">enable</param>
+    </service>
+    <service name="tar" mode="buildtime"/>
+    <service mode="buildtime" name="recompress">
+      <param name="file">*.tar</param>
+      <param name="compression">gz</param>
+    </service>
+    <service name="set_version" mode="disabled"/>
+</services>

@@ -1,0 +1,11 @@
+<package name="perl-MooseX-StrictConstructor" project="openSUSE:Factory">
+  <title>Make your object constructors blow up on unknown attributes</title>
+  <description>Simply loading this module makes your constructors &quot;strict&quot;. If your
+constructor is called with an attribute init argument that your class does not
+declare, then it calls &quot;Carp::confess()&quot;. This is a great way to catch small
+typos.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-StrictConstructor"/>
+  <url>http://search.cpan.org/dist/MooseX-StrictConstructor/</url>
+</package>

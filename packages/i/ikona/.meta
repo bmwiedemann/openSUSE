@@ -1,0 +1,8 @@
+<package name="ikona" project="openSUSE:Factory">
+  <title>Icon Preview designed for Plasma</title>
+  <description>A utility to preview icons as they are being made.
+
+</description>
+  <devel project="KDE:Extra" package="ikona"/>
+  <url>https://github.com/Appadeia/ikona</url>
+</package>

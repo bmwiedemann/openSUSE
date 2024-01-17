@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Mar 27 16:50:06 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Provide and conflict kiwi_post_run (boo#1130510)
+- Clean spec file a bit 
+
+-------------------------------------------------------------------
+Tue Feb 14 08:48:09 UTC 2017 - cbosdonnat@suse.com
+
+- Update to v0.3
+  * Compute the virtual size and replace __VIRTUAL_SIZE__
+  * Switch from index.part.in to $IMG_NAME.virtbuilder.template
+  * Documentation improvements
+
+-------------------------------------------------------------------
+Mon Dec 21 10:53:07 UTC 2015 - cbosdonnat@suse.com
+
+- Updated to v0.2
+  * Handle multiple kiwi files in one package
+  * Don't run the hook if no index.part.in file is present in the
+    package
+  * set -x to ease debugging
+
+-------------------------------------------------------------------
+Mon Apr 13 13:30:53 UTC 2015 - cbosdonnat@suse.com
+
+- First version of the hook
+

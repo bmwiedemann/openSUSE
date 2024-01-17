@@ -1,0 +1,5 @@
+<package name="sof-firmware" project="openSUSE:Factory">
+  <title>Sound Open Firmware</title>
+  <description></description>
+  <devel project="multimedia:libs" package="sof-firmware"/>
+</package>

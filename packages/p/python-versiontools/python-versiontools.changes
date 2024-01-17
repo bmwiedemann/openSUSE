@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:55:49 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 24 13:56:58 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Oct 24 11:16:42 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Mon Jan 14 16:24:42 UTC 2013 - p.drouand@gmail.com
+
+- Initial python3 support
+
+-------------------------------------------------------------------
+Tue Mar 13 20:45:18 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 1.9.1:
+  * Just bump version to final, sorry
+- Version 1.9
+  * Reorganize and update documentation.
+  * Add a new way of using versiontools that does not require using
+    setup_requires. This way is based on bundling a small helper module to
+    help you bootstrap your project when installed from source.
+  * Add versiontools.Version.from_expression() that creates a Version object
+    from a python import expression (and an optional variable identifer)
+  * Move and rename private function versiontools.handle_version to
+    versiontools.setuptools_hooks:version().
+  * Move and rename private function versiontools.get_exception_message to
+    versiontools._get_exception_message().
+  * Remove private function versiontools.isstring.
+
+-------------------------------------------------------------------
+Wed Feb  1 13:24:11 UTC 2012 - saschpe@suse.de
+
+- Simplified macro usage
+
+-------------------------------------------------------------------
+Tue Jan 24 21:37:26 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 1.8.3:
+  * Fix incorrectly specified line in git support. Previosuly a KeyError
+    may bleed to the outside calling code, depending on python version. 
+  * Fix incorrectly specified line in bzr support. Previously a non-bzr
+    directory could be associated as a malformed bzr branch.
+
+-------------------------------------------------------------------
+Thu Jan 12 01:53:00 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 1.8.2:
+ * Improve git support by adding code paths compatible with python-git 0.1.6
+   (which is easier to get on Debian)
+ * Change git support to default to short commit id. If you want to access the
+   long commit id you need to access it directly as GitIntegration.commit_id
+- Version 1.8.1
+ * Improve performance when working with checkouts. The use of branch.nick has
+   been replaced with branch._get_nick(local=True). This avoids network
+   operations and is much more responsive.
+
+-------------------------------------------------------------------
+Wed Sep 21 18:24:32 UTC 2011 - saschpe@suse.de
+
+- Update to 1.8:
+  * Fixed all pep8 issues (prettier syntax)
+  * Fixed an issue with using __import__ on Python 2.4.
+  * Fixed an issue with using :versiontools:path.to.symbol with nested modules
+  * Fixed an issue with using exceptions on Python 3.x
+  * Added test that demostrated that exception handling works on all Python versions.
+  * Unified error handling across version control plugins.
+  * General documentation improvements, installation, usage, code refrerence,
+    and writing additional plug-ins.
+  * Added a *backwards incompatible* constraint on serial to be greater than
+    zero on alpha, beta and release candidates as required by :pep:`386`.
+- Fixed non-executable scripts rpmlint warning
+
+-------------------------------------------------------------------
+Thu Sep  8 01:49:15 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.7:
+  * Add support for Mercurial repositories
+  * Fix a bug in exception handling that affected 1.6
+
+-------------------------------------------------------------------
+Tue Aug 23 00:43:54 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.6:
+  * Add support for python2.4 and python2.5 thanks to Janis Leidel (thanks!).
+  * Add tox (http://codespeak.net/~hpk/tox/) configuration file for easier
+    testing.
+- Aditional changes from 1.5:
+  * Added Git support, contributed by Jannis Leidel (thanks!). To use it you need
+    GitPython >= 0.3.2.RC1.
+- Aditional changes from 1.4:
+  * Work harder to figure out the source tree a __version__ object comes from.
+    This is possible with a new function
+    :meth:`versiontools.Version.from_tuple_and_hint`.
+  * Allow people to omit the version identifier in setup.py (defaulting to
+    ``__version__``) 
+- Aditional changes from 1.3.2:
+  * Change version string produced by :meth:`versiontools.Version.__str__` and
+    `versiontools.format_version` to be more useful when vcs integration is not
+    available and the release is not final.
+- Aditional changes from 1.3.1:
+  * To make `setup.py test` work in third party components we cannot use
+    versiontools in our own setup.
+- Aditional changes from 1.3:
+  * Add integration with setuptools (or more accurately, distribute) so that you
+    no longer have to try-import versiontools. This means that you may finally
+    install your packages with pip and everything will work correctly.
+  * Prevent an unexplained crash when following the backtrace in
+    ``Version._find_source_tree()``.
+- Aditional changes from 1.2:
+  * Change how vcs objects are constructed. With this change they are only
+    constructed lazily when needed.  This speeds up common operations, delays the
+    time any additional modules are imported (if any) and retains backwards comp
+    ability.
+  * Updated documentation on installation instructions to point to the new PPA
+  * Updated recommended usage guide so that installed programs do not depend on
+    versiontools. This allows you to use versiontools in setup.py and still
+    benefit from the smart version formatting and keep your deployment
+    lightweight.
+  * Added basic unit tests
+  * Fixed most PEP8 issues
+
+-------------------------------------------------------------------
+Sat Apr 16 05:38:37 UTC 2011 - jfunk@funktronics.ca
+
+- Initial release
+
+

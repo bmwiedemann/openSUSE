@@ -1,0 +1,320 @@
+-------------------------------------------------------------------
+Mon Dec 11 13:43:22 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Remove use of %with_thermalmonitor where not necessary
+- Check for %is_opensuse instead of %suse_version
+- Remove wrong %config from a data file
+- Package the ThermalMonitor license file
+
+-------------------------------------------------------------------
+Thu Nov 30 08:16:46 CET 2023 - aschnell@suse.com
+
+- build ThermalMonitor only if qcustomplot is available
+
+-------------------------------------------------------------------
+Mon Sep 25 13:52:53 UTC 2023 - trenn@suse.de
+
+- jsc#PED-5716 Enable support for Thermal Controls on platform
+- Move of dbus config files from /etc to /usr/share
+- Fix wrongly written library name
+A fix_qcustomplot_name.patch
+- Make use of _service (git scm) service file:
+A    _service
+A    _servicedata
+A    thermal_daemon-2.5.4.0.git+63b290f.obscpio
+A    thermal_daemon.obsinfo
+- Update to version 2.5.4.0.git+63b290f:
+  * Release 2.5.4
+  * Change the sorting order when min_max_valid
+  * Process case when target matches after init
+  * Remove memset for pid_param_t to 0
+  * Remove check for new_passive < critical
+  * domain_name not set and used in thd_cdev_rapl
+  * build warning, ret is assigned for sysfs write
+  * Remove duplicate type_type == HOT comparison
+
+-------------------------------------------------------------------
+Wed Jul 12 13:48:25 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.5.3:
+  * Support for Meteor Lake 
+
+-------------------------------------------------------------------
+Sun Apr 16 17:45:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.2:
+  * Support Alder Lake N
+  * Support ITMT version 2, which is used in some Raptor Lake
+    systems
+
+-------------------------------------------------------------------
+Fri Nov 18 11:38:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.5.1:
+  + Always match motion = 0.
+  + Add RaptorLake S CPU models.
+  + Manual: thermal-conf.xml - clean up lintian warnings and .IP
+    formatting.
+
+-------------------------------------------------------------------
+Tue Oct  4 08:12:40 UTC 2022 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Remove --disable-active-power from the service file and sysconfig (boo#1203991)
+
+-------------------------------------------------------------------
+Thu Jul 21 08:10:23 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 2.5:
+  * Support of new thermal table for Alder Lake
+  * Add Raptor Lake in the list
+
+-------------------------------------------------------------------
+Tue Mar 29 07:27:03 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 2.4.9:
+  * Fix performance issues for Dell Latitude 5421
+  * Fix performance issues for Dell Latitude 7320/7420
+    (Depend on kernel patch "thermal: int340x: Update OS policy capability handshake")
+  * Adaptive improvements from Benzea
+  * Thermal Monitor fixes and cosmetic updates
+  * Documentation updates from Colin King
+  * Static analysis fixes from Benzea
+    (includes power-profiles-daemon integration and
+     removal of deprecated UPower API use)
+  * Fix test for compressed data vaults
+- Update to 2.4.8
+  * Fix Ideapad thermal shutdown issue #328
+- Update to 2.4.7:
+  * Fix AC/DC power limit issue in some HP TigerLake systems
+  * Regression fix for RAPL MSR usage in xml config file
+  * Added Japer Lake and Alder Lake CPU models
+  * Debug scripts for log collection to upload
+- Drop patches, now upstream:
+  * fix-man-thermald_8.patch
+- Don't build with -Werror
+
+-------------------------------------------------------------------
+Thu Jul 15 07:31:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.6:
+  * Support for Rocket Lake and Commet Lake CPU model
+  * Tiger Lake DPTF tables support
+  * CPU stuck at low frequency on two models (issue 280)
+  * Changes related to PID and exit codes
+  * Minor change for Dell XPS 13 with Tiger Lake.
+  * Issue with Dell Latitude 7400. 
+  * Allow --ingore-cpuid-check to use with --adaptive option
+  * Address low performance with Dell Latitude 5420 with the latest BIOS
+  * Fix for Ubuntu bug 1930422
+- Rebase fix-man-thermald_8.patch
+- Rebase fix-systemd-service.patch
+- Drop fix-32bit-build.patch
+
+-------------------------------------------------------------------
+Wed Oct 21 09:43:37 UTC 2020 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to "Release 2.3"
+  * Merged changes from mjg59 for adaptive
+  * Requires Linux kernel version 5.8 or later
+  * By default tries --adaptive and fallback to old style
+  * Atleast some level of success to use adaptive option on:
+    (not expected to be on par with Windows DPTF)
+    Dell XPS 13 9360
+    Dell XPS 13 9370
+    Dell XPS 13 9380
+    Dell XPS 13 7390 2-in-1
+    Dell Insperion_7386
+    HP Spectre x360 Convertible 15-ch0xx
+    HP ZBook 15 G5
+    Lenovo Thinkpad T480
+  * thermald will not run on Lenovo platforms with lap mode sysfs entry
+
+- Update to "Release 2.2"
+  * Ignore PPCC power limits when max and min power is same
+  * Regression in cpufreq cooling device causing min state to get stuck
+
+- Update to "Release 2.1"
+  * Workaround for invalid PPCC power limits
+  * Reduce polling for power when PPCC is not present
+
+- Update to "Release 2.0"
+  * Tiger Lake support
+  * PL1 limit setting from PPCC as is
+  * Optimize multi step, multi zone control
+  * Add new tag for product identification "product_sku"
+
+- Align build procedure with upstream recommendations
+
+- Fix build on 32bit platforms
+  Added patch fix-32bit-build.patch
+
+-------------------------------------------------------------------
+Tue Aug 18 15:32:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix invalid usage of %{_libexecdir} for systemd owned paths below
+  %{_prefix}/lib.
+
+-------------------------------------------------------------------
+Wed Jan  1 16:12:40 UTC 2020 - munix9@googlemail.com
+
+- Update to "Release 1.9.1"
+  * Remove default CPU temperature compensation for auto generated
+    configuration from dptfxtract
+  * Minor Android build warnings
+
+- Update to "Release 1.9"
+  * The major change in this version is the active power limits
+    adjustment. This will be useful to improve performance on some
+    newer platform. But this will will lead to increase in CPU and
+    other temperatures. Hence this is important to run dptfxtract
+    version 1.4.1 tool to get performance sensitive thermal limits
+    (https://github.com/intel/dptfxtract/commits/v1.4.1).
+    If the default configuration picked up by thermald is not
+    optimal, user can select other less aggressive configuration.
+    Refer to the README here
+    https://github.com/intel/dptfxtract/blob/master/README.txt
+
+    This power limit adjustment depends on some kernel changes
+    released with kernel version v5.3-rc1. For older kernel
+    release run thermald with --workaround-enabled
+    But this will depend on /dev/mem access, which means that
+    platforms with secure boot must update to newer kernels.
+
+  * TCC offset limits
+    As reported in some forums that some platforms have issue with
+    high TCC offset settings. Under some special condition this
+    offset is adjusted. But currently needs msr module loaded to
+    get MSR access from user space. I have submitted a patch to
+    have this exported via sysfs for v5.4+ kernel.
+
+  * To disable all the above performance optimization, use
+    --disable-active-power. Since Linux Thermal Daemon
+    implementation doesn't have capability to match Intel® Dynamic
+    Platform and Thermal Framework (DPTF) implementation on other
+    Operating systems, this option is very important if the user
+    is experiencing thermal issues. If there is some
+    OEM/manufactures have issue with this implementation, please
+    get back to me for blacklist of platforms.
+
+  * Added support for Ice Lake platform
+
+  * ThermalMonitor
+    Cleaned up the plots, so that only active sensors and trips
+    gets plotted.
+
+- removed fix_long_int_i586_issue.patch and
+  fix_missing_include.patch (solved upstream)
+- added fix-man-thermald_8.patch and fix-systemd-service.patch
+- added "power" system group
+- added fillup-templates/sysconfig.thermald
+- added thermal-monitor package
+
+-------------------------------------------------------------------
+Fri Nov  2 17:28:31 UTC 2018 - trenn@suse.de
+
+- Fix build for Leap 42.3 (include missing header file)
+A fix_missing_include.patch
+- Fix build for i586
+A fix_long_int_i586_issue.patch
+- Remove thermal-conf.xml as done mainline and add it to the docs
+  directory. This is an example only.
+
+-------------------------------------------------------------------
+Mon Oct  1 08:13:40 UTC 2018 - egotthold@suse.com
+
+- Update to "Release 1.8"
+  * Support of KBL-G with discrete GPU
+  * Fast removal of any cooling action which was applied once
+    temperature is normal
+  * Android support
+  * Add Hot trip point, which when reached just calls "suspend"
+  * Adding new tag "DependsOn" which enable/disable trip based on some other trip
+  * Polling interval can be configured via thermal xml config
+  * Per trip PID control
+  * Simplify RAPL cooling device
+
+- Update to "Release 1.7.2"
+  * Workwround for platform with invalid thermal table
+  * Error printing for RAPL constraint sysfs read on failure
+  * thermal-conf.xml.auto  can be read from /etc/thermald, which allows user to
+    modify generated thermal-conf.xml from /var/run/thermald and copy to
+    /etc/termald
+
+-------------------------------------------------------------------
+Wed Dec 13 14:55:43 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.7.1:
+  * Removed dptfxtract binary as there is an issue in packaging
+    this with GPL source for distributions
+- Changes for version 1.7.0:
+  * Add GeminiLake
+  * Add dptfxtract tool, which converts DPTF tables to thermald
+    tables using best effort
+  * Changes to accommodate dptfxtract tool conversions
+  * Better facility to configure fan controls
+  * PID control optimization
+  * Fix powerlimit write errors because of bad FW settings of power
+    limits
+  * More restrictive compile options and warnings as errors
+  * Improve logging
+  * Android build fixes
+
+-------------------------------------------------------------------
+Mon Mar 27 14:00:09 UTC 2017 - fvogt@suse.com
+
+- Use the correct file for installation as module list (boo#1028596)
+- Update to version 1.6:
+  * Add Kabylake and missing Broadwell CPU model
+  * Removed deprecated modules
+  * Added passive trip between critical and max, to allow fan to take control first
+  * Fixed clash when multiple zones and trips controlling same cdev
+
+-------------------------------------------------------------------
+Wed Jan 11 08:18:17 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.5.4:
+  * Use Processor thermal device in lieu of CPU zone when present
+  * Haswell/Skylake PCH sensor
+  * Fix regression in LCD/Backlight path
+- Packaging cleanup:
+  - Run spec-cleaner
+  - Use pretty name for downloaded archive
+  - Drop not needed service
+  - Remove fedora conditionals
+
+-------------------------------------------------------------------
+Tue Mar 29 11:17:35 UTC 2016 - dvaleev@suse.com
+
+- Set exclusivearch to intel architectures 
+
+-------------------------------------------------------------------
+Tue Mar  8 13:26:49 UTC 2016 - fvogt@suse.com
+
+- Disable installation of upstart file
+
+-------------------------------------------------------------------
+Mon Mar  7 09:53:57 UTC 2016 - fvogt@suse.com
+
+- Remove implicit %configure parameters
+
+-------------------------------------------------------------------
+Mon Mar  7 08:17:11 UTC 2016 - fvogt@suse.com
+
+- Change URL from GitHub to the official page
+
+-------------------------------------------------------------------
+Sun Mar  6 21:31:00 CET 2016 - bosim@opensuse.org
+
+- Upgraded to upstream version 1.5.3
+
+-------------------------------------------------------------------
+Fri Nov  6 10:27:55 UTC 2015 - fvogt@suse.com
+
+- Disable _service and run manually
+
+-------------------------------------------------------------------
+Tue Nov  3 10:19:29 UTC 2015 - fvogt@suse.com
+
+- Initial commit
+- Branch from home:assmannst, fix various small issues
+

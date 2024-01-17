@@ -1,0 +1,1263 @@
+-------------------------------------------------------------------
+Tue Nov 28 16:20:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.49
+  * Bug Fixes:
+    + Fix regression in retries 
+    + Fix recursive path remove in SFTP storage driver
+
+  * Improvements:
+    + Remove support for PostgreSQL 9.3
+
+  * Documentation Features:
+    + Document maintainer options
+    + Update point-in-time recovery documentation for PostgreSQL >= 13
+
+  * Test Suite Improvements
+
+-------------------------------------------------------------------
+Thu Sep 28 07:31:44 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.48
+  * Bug Fixes:
+    + Fix issue restoring block incremental without a block list. 
+    + [doc] Fix configuration reference example for the tls-server-address option.
+    + [doc] Fix command reference example for the filter option.
+
+  * Features:
+    + Add --repo-storage-tag option to create object tags. 
+    + Add known hosts checking for SFTP storage driver. 
+    + Support for dual stack connections. 
+    + Add backup size completed/total to info command JSON output. 
+
+  * Improvements:
+    + Multi-stanza check command.
+    + Retry reads of pg_control until checksum is valid. 
+    + Optimize WAL segment check after successful backup. 
+    + Improve GCS multi-part performance. 
+    + Allow archive-get command to run when stanza is stopped.
+    + Accept leading tilde in paths for SFTP public/private keys.
+    + Reload GCS credentials before renewing authentication token. 
+
+  * Test Suite Improvements
+
+- refreshed patches; release.xml has been splitted into individual files
+
+-------------------------------------------------------------------
+Mon Aug  7 06:11:25 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.47
+  * Bug Fixes:
+    + Preserve block incremental info in manifest during delta backup
+    + Fix block incremental file names in verify command
+    + Fix spurious automatic delta backup on backup from standby
+    + Skip recovery.signal for PostgreSQL >= 12 when recovery type=none
+    + Fix unique label generation for diff/incr backup
+    + Fix time-based archive expiration when no backups are expired
+  * Improvements:
+    + Improve performance of SFTP storage driver
+    + Add timezone offset to info command date/time output
+    + Centralize error handling for unsupported features
+  * Documentation Improvements:
+    + Clarify preference to install from packages in the user guide
+
+-------------------------------------------------------------------
+Sun May 28 19:30:47 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.46
+  * Features:
+    + Block incremental backup. (Reviewed by John Morris, Stephen Frost, Stefan Fercot.)
+    + SFTP support for repository storage. (Contributed by Reid Thompson. Reviewed by Stephen Frost, David Steele.)
+    + PostgreSQL 16 support. (Reviewed by Stefan Fercot.)
+  * Improvements:
+    + Allow page header checks to be skipped. (Reviewed by David Christensen. Suggested by David Christensen.)
+    + Avoid chown() on recovery files during restore. (Reviewed by Stefan Fercot, Marcelo Henrique Neppel. Suggested by Marcelo Henrique Neppel.)
+    + Add error retry detail for HTTP retries.
+  * Documentation Improvements:
+    + Add warning about using recovery type=none. (Reviewed by Stefan Fercot.)
+    + Add note about running stanza-create on already-created repositories.
+
+-------------------------------------------------------------------
+Mon Mar 27 07:13:19 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.45
+  + Bug Fix: Skip writing recovery.signal by default for restores of offline backups. 
+  + Features: Block incremental backup (BETA)
+  + Improvements: Keep only one all-default group index.
+  + Documentation improvements
+
+-------------------------------------------------------------------
+Mon Feb  6 07:53:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.44
+  + Remove support for PostgreSQL 9.0/9.1/9.2. 
+  + Restore errors when no backup matches the current version of PostgreSQL. 
+  + Add compress-level range checking for each compress-type. 
+  + Documentation improvements
+
+-------------------------------------------------------------------
+Tue Dec  6 16:32:27 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.43
+  + Bug Fixes:
+    - Fix missing reference in diff/incr backup. 
+  + Improvements:
+    - Add hint when an option is specified without an index. 
+
+- update to version 2.42
+  + Bug Fixes:
+    - Fix memory leak in file bundle backup/restore. 
+    - Fix protocol error on short read of remote file.
+  + Improvements:
+    - Do not store references for zero-length files when bundling. 
+    - Use more generic descriptions for pg_start_backup()/pg_stop_backup(). 
+
+-------------------------------------------------------------------
+Tue Sep 20 18:33:00 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 2.41
+  + Bug Fixes:
+    - Fix incorrect time expiration being used for non-default
+      repositories. (Reviewed by Stefan Fercot. Reported by Adam
+      Brusselback.)
+    - Fix issue when listing directories recursively with a filter.
+      (Reviewed by Stephen Frost. Reported by Efremov Egor.)
+  + Features:
+    - Backup key/value annotations. (Contributed by Stefan Fercot.
+      Reviewed by David Steele. Suggested by Adam Berlin.)
+  + Improvements:
+    - Support --set in JSON output for info command. (Contributed
+      by Stefan Fercot. Reviewed by David Steele. Suggested by
+      Anton Kurochkin.)
+    - Update archive.info timestamps after a successful backup.
+      (Reviewed by Stefan Fercot. Suggested by Alex Richman.)
+    - Move standby timeline check after checkpoint. (Reviewed by
+      Stefan Fercot, Keith Fiske. Suggested by Keith Fiske.)
+    - Improve warning message on backup resume. (Suggested by
+      Cynthia Shang.)
+  + Additional Notes
+    - Documentation Improvements:
+    - Add absolute path for kill in pgbackrest.service. (Suggested
+      by Don Seiler.)
+- changes from 2.40 OpenSSL 3 Support
+  + Improvements:
+    - OpenSSL 3 support. (Reviewed by Stephen Frost.)
+    - Create snapshot when listing contents of a path. (Reviewed by
+      John Morris, Stephen Frost.)
+    - Force target-timeline=current when restore type=immediate.
+      (Reviewed by Stephen Frost.)
+    - Truncate files during delta restore when they are larger than
+      expected. (Reviewed by Stephen Frost.)
+    - Disable incremental manifest save when resume=n. (Contributed
+      by Reid Thompson. Reviewed by David Steele.)
+    - Set backup percent complete to zero before copy start.
+      (Contributed by Reid Thompson. Reviewed by David Steele.)
+    - Use S3 IsTruncated flag to determine list continuation.
+      (Reviewed by John Morris, Soulou. Suggested by Christian
+      Montagne.)
+  + Documentation Bug Fixes:
+    - Skip internal options in the configuration reference.
+      (Reported by Francisco Miguel Biete.)
+  + Documentation Improvements:
+    - Add link to PostgreSQL configuration in repository host
+      section. (Reviewed by Stefan Fercot. Suggested by Julien
+      Cigar.)
+  + Test Suite Improvements:
+    - Add experimental Meson build. (Reviewed by Eli Schwartz, Sam
+      Bassaly.)
+    - Allow any path to be passed to the --test-path option.
+      (Contributed by Andrey Sokolov. Reviewed by David Steele.)
+    - Fix compile error when DEBUG_EXEC_TIME is defined without
+      DEBUG. (Contributed by Andrey Sokolov. Reviewed by David
+      Steele.)
+- refreshed patches to apply cleanly again:
+  - libpq-fe.h_localisation.patch
+  - use-run-pgbackrest.patch
+
+-------------------------------------------------------------------
+Mon Jun 27 12:45:15 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.39
+  + Bug Fixes:
+    - Fix error thrown from FINALLY() causing an infinite loop.
+    - Error on all lock failures except another process holding the lock.
+  + Features:
+    - Backup file bundling for improved small file support.
+    - Verify command to validate the contents of a repository.
+    - PostgreSQL 15 support.
+    - Show backup percent complete in info output.
+    - Auto-select backup for restore command --type=lsn.
+    - Suppress existing WAL warning when archive-mode-check is disabled.
+    - Add AWS IMDSv2 support.
+  + Improvements:
+    - Allow repo-hardlink option to be changed after full backup.
+    - Increase precision of percent complete logging for backup and restore.
+    - Improve path validation for repo-* commands.
+    - Improve stop command to honor stanza option.
+    - Improve error message for invalid repo-azure-key. 
+    - Add hint to check the log on archive-get/archive-push async error.
+    - Add ClockError for unexpected clock skew and timezone changes.
+    - Strip extensions from history manifest before showing in error message.
+    - Add user:group to lock permission error.
+  + Documentation Bug Fixes:
+    - Fix incorrect reference to stanza-update in the user guide.
+    - Fix example for repo-gcs-key-type option in configuration reference. 
+    - Fix tls-server-auth example and add clarifications.
+  + Documentation Improvements:
+    - Simplify messaging around supported versions in the documentation.
+    - Add option type descriptions.
+    - Add FAQ about backup types and restore speed.
+    - Document required base branch for pull requests.
+- update copyright year
+
+-------------------------------------------------------------------
+Mon Apr 18 13:47:07 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 2.38
+  IMPORTANT NOTE: Repository size reported by the info command is
+  now entirely based on what pgBackRest has written to storage.
+  Previously, in certain cases, pgBackRest could detect if
+  additional compression was being applied by the storage but this
+  is no longer supported.
+
+  - Bug Fixes:
+    - Retry errors in S3 batch file delete. (Reviewed by Reid
+      Thompson. Reported by Alex Richman.)
+    - Allow case-insensitive matching of HTTP connection header
+      values. (Reviewed by Reid Thompson. Reported by Rémi Vidier.)
+  - Features:
+    - Add support for AWS S3 server-side encryption using KMS.
+      (Contributed by Christoph Berg. Reviewed by David Steele,
+      Tharindu Amila.)
+    - Add archive-missing-retry option. (Reviewed by Stefan
+      Fercot.)
+    - Add backup type filter to info command. (Contributed by
+      Stefan Fercot. Reviewed by David Steele.)
+  - Improvements:
+    - Retry on page validation failure during backup. (Reviewed by
+      Stephen Frost, David Christensen.)
+    - Handle TLS servers that do not close connections gracefully.
+      (Reviewed by Rémi Vidier, David Christensen, Stephen Frost.)
+    - Add backup LSNs to info command output. (Contributed by
+      Stefan Fercot. Reviewed by David Steele.)
+    - Automatically strip trailing slashes for repo-ls paths.
+      (Contributed by David Christensen. Reviewed by David Steele.)
+    - Do not retry fatal errors. (Reviewed by Reid Thompson.)
+    - Remove support for PostgreSQL 8.3/8.4. (Reviewed by Reid
+      Thompson, Stefan Fercot.)
+    - Remove logic that tried to determine additional file system
+      compression. (Reviewed by Reid Thompson, Stefan Fercot.)
+  - Documentation Bug Fixes:
+    - Move repo options in TLS documentation to the global section.
+      (Reported by Anton Kurochkin.)
+    - Remove unused backup-standby option from stanza commands.
+      (Reported by Stefan Fercot.)
+    - Fix typos in help and release notes. (Fixed by Daniel
+      Gustafsson. Reviewed by David Steele.)
+  - Documentation Improvements:
+    - Add aliveness check to systemd service configuration.
+      (Suggested by Yogesh Sharma.)
+    - Add FAQ explaining WAL archive suffix. (Contributed by Stefan
+      Fercot. Reviewed by David Steele.)
+    - Note that replications slots are not restored. (Contributed
+      by Reid Thompson. Reviewed by David Steele, Stefan Fercot.
+      Suggested by Christophe Courtois.)
+
+-------------------------------------------------------------------
+Mon Mar  7 21:41:10 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Move lock file default to /run/pgbackrest and make sure it gets
+  created with user and group postgres
+  - Add use-run-pgbackrest.patch
+  - Add README.SUSE 
+- Track series file to make quilt setup easier
+- refresh libpq-fe.h_localisation.patch
+
+-------------------------------------------------------------------
+Fri Feb 18 18:01:39 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- make sure all unit files have unix line endings
+
+-------------------------------------------------------------------
+Fri Feb 18 17:48:11 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- add systemd services:
+  - diff/full/incremental backup
+  - pgbackrest services for the TLS server
+  - add pgbackrest.target to restart/stop all sub services
+- add Requires(pre) for postgresql-server to make sure the
+  postgresql user is available for file permissions
+- change permissions of the config file from 0644 to 0640 as the
+  file can contain passwords and encryption keys.
+- modernize the spec file
+
+-------------------------------------------------------------------
+Tue Jan 25 13:27:08 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable zstd support
+
+-------------------------------------------------------------------
+Tue Jan 25 10:49:49 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 2.37
+  IMPORTANT NOTE: If the restore command is unable to find a backup
+  that matches a specified time target then an error will be
+  thrown, whereas before a warning was logged.
+
+  IMPORTANT NOTE: The default TLS server port has not yet been
+  approved by IANA and is subject to change once the approval
+  process is complete.
+
+  - Bug Fixes:
+    - Fix restore delta link mapping when path/file already exists.
+      (Reviewed by Reid Thompson. Reported by Younes Alhroub.)
+    - Fix socket leak on connection retries. (Reviewed by Reid
+      Thompson. Reported by James Coleman.)
+  - Features:
+    - Add TLS server. (Reviewed by Stephen Frost, Reid Thompson,
+      Andrew L'Ecuyer.)
+    - Add --cmd option. (Contributed by Reid Thompson. Reviewed by
+      Stefan Fercot, David Steele. Suggested by Virgile CREVON.)
+  - Improvements:
+    - Check archive immediately after backup start. (Reviewed by
+      Reid Thompson, David Christensen.)
+    - Add timeline and checkpoint checks to backup. (Reviewed by
+      Stefan Fercot, Reid Thompson.)
+    - Check that clusters are alive and correctly configured during
+      a backup. (Reviewed by Stefan Fercot.)
+    - Error when restore is unable to find a backup to match the
+      time target. (Reviewed by Reid Thompson, Douglas J Hunley.
+      Suggested by Douglas J Hunley.)
+    - Parse protocol/port in S3/Azure endpoints. (Contributed by
+      Reid Thompson. Reviewed by David Steele.)
+    - Add warning when checkpoint_timeout exceeds db-timeout.
+      (Contributed by Stefan Fercot. Reviewed by David Steele.)
+    - Add verb to HTTP error output. (Contributed by Christoph
+      Berg. Reviewed by David Steele.)
+    - Allow y/n arguments for boolean command-line options.
+      (Contributed by Reid Thompson. Reviewed by David Steele.)
+    - Make backup size logging exactly match info command output.
+      (Contributed by Reid Thompson. Reviewed by David Steele.
+      Suggested by Mahomed Hussein.)
+  - Documentation Improvements:
+    - Display size option default and allowed values with
+      appropriate units. (Reviewed by Reid Thompson.)
+    - Fix typos and improve documentation for the
+      tablespace-map-all option. (Reviewed by Reid Thompson.
+      Suggested by Reid Thompson.)
+    - Remove obsolete statement about future multi-repository
+      support. (Suggested by David Christensen.)
+
+-------------------------------------------------------------------
+Sat Dec  4 16:36:19 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.36
+  + Bug Fixes:
+    - Allow "global" as a stanza prefix.
+    - Fix segfault on invalid GCS key file.
+  + Improvements:
+    - Allow link-map option to create new links.
+    - Increase max index allowed for pg/repo options to 256.
+    - Add WebIdentity authentication for AWS S3.
+    - Report backup file validation errors in backup.info.
+    - Add recovery start time to online backup restore log.
+    - Report original error and retries on local job failure.
+    - Rename page checksum error to error list in info text output.
+    - Add hints to standby replay timeout message.
+- update to version 2.35 Binary protocol
+  ** IMPORTANT NOTE **: The log level for copied files in the 
+  backup/restore commands has been changed to detail. This makes 
+  the info log level less noisy but if these messages are required 
+  then set the log level for the backup/restore commands to detail.
+  + Bug Fixes:
+    - Detect errors in S3 multi-part upload finalize.
+    - Fix detection of circular symlinks.
+    - Only pass selected repo options to the remote.
+  + Improvements:
+    - Binary protocol.
+    - Automatically create data directory on restore.
+    - Allow restore --type=lsn.
+    - Change level of backup/restore copied file logging to detail.
+    - Loop while waiting for checkpoint LSN to reach replay LSN.
+    - Log backup file total and restore size/file total.
+  + Documentation Bug Fixes:
+    - Fix incorrect host names in user guide.
+  + Documentation Improvements:
+    - Update contributing documentation and add pull request template.
+    - Rearrange backup documentation in user guide.
+    - Clarify restore --type behavior in command reference. 
+    - Fix documentation and comment typos.
+  + Test Suite Improvements:
+    - Add check for test path inside repo path.
+    - Add CodeQL static code analysis.
+    - Update tests to use standard patterns.
+- packaging:
+  + Added new build requirement libyaml-devel
+
+-------------------------------------------------------------------
+Tue Jul 27 15:07:25 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- update to version 2.34 with Postgresql-14 support
+  + Bug Fixes:
+    - Fix issues with leftover spool files from a prior restore.
+    - Fix issue when checking links for large numbers of tablespaces.
+    - Free no longer needed remotes so they do not timeout during restore.
+    - Fix help when a valid option is invalid for the specified command.
+  + Features:
+    - Add PostgreSQL 14 support.
+    - Add automatic GCS authentication for GCE instances.
+    - Add repo-retention-history option to expire backup history.
+    - Add db-exclude option.
+  + Improvements:
+    - Change archive expiration logging from detail to info level.
+    - Remove stanza archive spool path on restore.
+    - Do not write files atomically or sync paths during backup copy.
+  + Documentation Improvements:
+    - Update contributing documentation.
+    - Clarify that repo-s3-role is not an ARN.
+
+-------------------------------------------------------------------
+Thu Apr 29 09:33:00 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.33 with Multi-Repository and GCS Support
+  + Bug Fixes:
+    - Fix option warnings breaking async archive-get/archive-push.
+    - Fix memory leak in backup during archive copy.
+    - Fix stack overflow in cipher passphrase generation.
+    - Fix repo-ls / on S3 repositories.
+  + Features:
+    - Multiple repository support.
+    - GCS support for repository storage.
+    - Add archive-header-check option.
+  + Improvements:
+    - Include recreated system databases during selective restore.
+    - Exclude content-length from S3 signed headers.
+    - Consolidate less commonly used repository storage options.
+    - Allow custom config-path default with ./configure --with-configdir.
+    - Log archive copy during backup.
+  + Documentation Improvements:
+    - Update reference to include links to user guide examples.
+    - Update selective restore documentation with caveats.
+    - Add compress-type clarification to archive-copy documentation.
+    - Add compress-level defaults per compress-type value.
+    - Add note about required NFS settings being the same as PostgreSQL.
+
+-------------------------------------------------------------------
+Thu Feb 25 10:25:04 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.32
+  + Bug Fixes:
+    - Fix resume after partial delete of backup by prior resume.
+  + Features:
+    - Add repo-ls command.
+    - Add repo-get command.
+    - Add archive-mode-check option. 
+  + Improvements:
+    - Improve archive-get performance.
+  + Documentation Improvements:
+    - Improve expire command documentation.
+- Packaging: spec-cleaner minimal (copyright year, pkgconfig order) 
+
+-------------------------------------------------------------------
+Sat Dec 26 11:54:52 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.31
+  + Bug Fixes:
+    - Allow [, #, and space as the first character in database names.
+    - Create standby.signal only on PostgreSQL 12 when restore type 
+      is standby.
+  + Features:
+    - Expire history files.
+    - Report page checksum errors in info command text output.
+    - Add repo-azure-endpoint option.
+    - Add pg-database option.
+  + Improvements:
+    - Improve info command output when a stanza is specified but 
+      missing.
+    - Improve performance of large file lists in backup/restore 
+      commands.
+    - Add retries to PostgreSQL sleep when starting a backup.
+  + Documentation Improvements:
+    Replace RHEL/CentOS 6 documentation with RHEL/CentOS 8.
+
+-------------------------------------------------------------------
+Tue Oct 13 12:30:00 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.30
+  + Bug Fixes:
+    - Error with hints when backup user cannot read pg_settings.
+  + Features:
+    - PostgreSQL 13 support.
+  + Improvements:
+    - Improve PostgreSQL version identification.
+    - Improve working directory error message.
+    - Add hint about starting the stanza when WAL segment not found.
+    - Add hint for protocol version mismatch.
+  + Documentation Improvements:
+    Add note that pgBackRest versions must match when running remotely.
+    Move info command text to the reference and link to user guide.
+    Update yum repository path for CentOS/RHEL user guide.
+- Packaging
+  + Remove non needed perl_requires
+  + Allow build on i586 as source are now 100% C
+
+-------------------------------------------------------------------
+Thu Sep 10 09:35:27 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.29 - Auto S3 Credentials on AWS
+  + Bug Fixes:
+    - Suppress errors when closing local/remote processes. Since the
+      command has completed it is counterproductive to throw an 
+      error but still warn to indicate that something unusual happened.
+    - Fix issue with = character in file or database names.
+  + Features:
+    - Automatically retrieve temporary S3 credentials on AWS instances.
+    - Add archive-mode option to disable archiving on restore.
+  + Improvements:
+    - PostgreSQL 13 beta3 support. Changes to the control/catalog/WAL
+      versions in subsequent betas may break compatibility but 
+      pgBackRest will be updated with each release to keep pace.
+    - Asynchronous list/remove for S3/Azure storage.
+    - Improve memory usage of unlogged relation detection in 
+      manifest build.
+    - Proactively close file descriptors after forking async process.
+    - Delay backup remote connection close until after archive check.
+    - Improve detailed error output.
+    - Improve TLS error reporting.
+  + Additional Notes
+    - Documentation Bug Fixes:
+      Add none to compress-type option reference and fix example.
+      Add missing azure type in repo-type option reference.
+      Fix typo in repo-cipher-type option reference. 
+    - Documentation Improvements:
+      Clarify that expire must be run regularly when expire-auto
+      is disabled.
+
+-------------------------------------------------------------------
+Wed Aug 19 07:46:40 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.28 - Azure Repository Storage
+  + Bug Fixes:
+    - Fix restore --force acting like --force --delta. This caused 
+      restore to replace files based on timestamp and size rather 
+      than overwriting, which meant some files that should have been
+      updated were left unchanged. Normal restore and restore 
+      --delta were not affected by this issue.
+  + Features:
+    - Azure support for repository storage.
+    - Add expire-auto option. This allows automatic expiration 
+      after a successful backup to be disabled.
+  + Improvements:
+    - Asynchronous S3 multipart upload.
+    - Automatic retry for backup, restore, archive-get, and archive-push.
+    - Disable query parallelism in PostgreSQL sessions used for backup control.
+    - PostgreSQL 13 beta2 support. Changes to the control/catalog/WAL 
+      versions in subsequent betas may break compatibility but 
+      pgBackRest will be updated with each release to keep pace.
+    - Improve handling of invalid HTTP response status.
+    - Improve error when pg1-path option missing for archive-get command.
+    - Add hint when checksum delta is enabled after a timeline switch.
+    - Use PostgreSQL instead of postmaster where appropriate.
+  + Documentation Bug Fixes:
+    - Fix incorrect example for repo-retention-full-type option.
+    - Remove internal commands from HTML and man command references.
+  + Documentation Improvements:
+    - Update PostgreSQL versions used to build user guides. Also add 
+      version ranges to indicate that a user guide is accurate for a 
+      range of PostgreSQL versions even if it was built for a 
+      specific version.
+    - Update FAQ for expiring a specific backup set.
+    - Update FAQ to clarify default PITR behavior.
+
+-------------------------------------------------------------------
+Sat May 30 13:46:41 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.27 Expiration Improvements Compression Drivers
+  + Bug Fixes:
+    - Fix issue checking if file links are contained in path links.
+    - Allow pg-path1 to be optional for synchronous archive-push.
+    - The expire command now checks if a stop file is present.
+    - Handle missing reason phrase in HTTP response.
+    - Increase buffer size for lz4 compression flush.
+    - Ignore pg-host* and repo-host* options for the remote command.
+    - Fix possibly missing pg1-* options for the remote command.
+  + Features:
+    - Time-based retention for full backups. 
+      The --repo-retention-full-type option allows retention of full 
+      backups based on a time period, specified in days.
+    - Ad hoc backup expiration. Allow the user to remove a specified
+      backup regardless of retention settings.
+    - Zstandard compression support. Note that setting compress-type=zst
+      will make new backups and archive incompatible (unrestorable)
+      with prior versions of pgBackRest.
+    - bzip2 compression support. Note that setting compress-type=bz2
+      will make new backups and archive incompatible (unrestorable) 
+      with prior versions of pgBackRest.
+    - Add backup/expire running status to the info command.
+  + Improvements:
+    - Expire WAL archive only when repo-retention-archive threshold 
+      is met. WAL prior to the first full backup was previously 
+      expired after the first full backup. Now it is preserved 
+      according to retention settings.
+    - Add local MD5 implementation so S3 works when FIPS is enabled.
+    - PostgreSQL 13 beta1 support. Changes to the control/catalog/WAL
+      versions in subsequent betas may break compatibility but 
+      pgBackRest will be updated with each release to keep pace.
+    - Reduce buffer-size default to 1MiB.
+    - Throw user-friendly error if expire is not run on repository host.
+- Packaging : add bz2 buildrequire 
+
+-------------------------------------------------------------------
+Fri May  1 16:13:03 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to version 2.26 : Non-blocking TLS
+  + Bug Fix : Remove empty subexpression from manifest regular 
+    expression. MacOS was not happy about this though other
+    platforms seemed to work fine.
+  + Improvements:
+    - N on-blocking TLS implementation.
+    - Only limit backup copy size for WAL-logged files. The prior
+      behavior could possibly lead to postgresql.conf or 
+      postgresql.auto.conf being truncated in the backup.
+    - TCP keep-alive options are configurable.
+    - Add io-timeout option.
+- update to version 2.25 : LZ4 Compression Support
+  + Features:
+    - Add lz4 compression support. Note that setting 
+      compress-type=lz4 will make new backups and archive incompatible
+      (unrestorable) with prior versions of pgBackRest.
+    - Add --dry-run option to the expire command. Use dry-run to see
+      which backups/archive would be removed by the expire command 
+      without actually removing anything.
+  + Improvements:
+    - Improve performance of remote manifest build.
+    - Fix detection of keepalive options on Linux.
+    - Add configure host detection to set standards flags correctly.
+    - Remove compress/compress-level options from commands where unused.
+    - Limit backup file copy size to size reported at backup start. 
+      If a file grows during the backup it will be reconstructed by 
+      WAL replay during recovery so there is no need to copy the 
+      additional data.
+- Packaging:
+  + Add new requirement lz4
+  + Redo patch libpq-fe.h_localisation.patch to include configure
+
+-------------------------------------------------------------------
+Tue Mar 24 14:34:27 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to 2.24 version : Bugfix
+  + Bug Fixes:
+    - Prevent defunct processes in asynchronous archive commands.
+    - Error when archive-get/archive-push/restore are not run on a
+      PostgreSQL host.
+    - Read HTTP content to eof when size/encoding not specified.
+    - Fix resume when the resumable backup was created by Perl. In
+      this case the resumable backup should be ignored, but the C
+      code was not able to load the partial manifest written by Perl
+      since the format differs slightly.
+      Add validations to catch this case and continue gracefully.
+  + Features:
+    - Auto-select backup set on restore when time target is specified.
+      Auto-selection is performed only when --set is not specified.
+      If a backup set for the given target time cannot not be found,
+      the latest (default) backup set will be used.
+  + Improvements:
+    - Skip pg_internal.init temp file during backup.
+    - Add more validations to the manifest on backup.
+  + Documentation Improvements:
+    - Prevent lock-bot from adding comments to locked issues.
+- Packaging
+  + use %autopatch
+  + use a normalized name for source %name-%version.tar.gz
+  + spec cleaning
+  + Refresh patch libpq-fe.h_localisation.patch
+  + Delete merged upstream_wrongly_bring_back_pg_config.patch
+
+-------------------------------------------------------------------
+Mon Jan 27 20:27:02 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to 2.23 : Bugfix
+  + Bug Fixes:
+    - Fix missing files corrupting the manifest. If a file was
+    removed by PostgreSQL during the backup (or was missing from
+    the standby) then the next file might not be copied and updated
+    in the manifest. If this happened then the backup would error
+    when restored.
+  + Improvements:
+    - Use pkg-config instead of xml2-config for libxml2 build options.
+    - Validate checksums are set in the manifest on backup/restore.
+- Introduce upstream_wrongly_bring_back_pg_config.patch to fix
+  upstream code (using pg_config in client code)
+  Upstream issue #920
+
+-------------------------------------------------------------------
+Thu Jan 23 14:26:33 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to 2.22 : Bugfix
+  + Fix error in timeline conversion. The timeline is required to
+  verify WAL segments in the archive after a backup. The conversion
+  was performed base 10 instead of 16, which led to errors when the
+  timeline was ≥ 0xA.
+- update to 2.21 : C Migration Complete
+  + Bug Fixes
+    - Fix options being ignored by asynchronous commands. The
+    asynchronous archive-get/archive-push processes were not
+    loading options configured in command configuration sections,
+    e.g. [global:archive-get].
+    - Fix handling of \ in filenames. \ was not being properly
+    escaped when calculating the manifest checksum which prevented
+    the manifest from loading. Since instances of \ in cluster
+    filenames should be rare to nonexistent this does not seem
+    likely to be a serious problem in the field.
+  + Features:
+    - pgBackRest is now pure C.
+    - Add pg-user option. Specifies the database user name when
+    connecting to PostgreSQL. If not specified pgBackRest will
+    connect with the local OS user or PGUSER, which was the previous
+    behavior.
+    - Allow path-style URIs in S3 driver.
+  + Improvements:
+    - The backup command is implemented entirely in C.
+- update to 2.20 : Bug fixes
+  + Fix archive-push/archive-get when PGDATA is symlinked. These
+  commands tried to use cwd() as PGDATA but this would disagree
+  with the path configured in pgBackRest if PGDATA was symlinked.
+  If cwd() does not match the pgBackRest path then chdir() to the
+  path and make sure the next cwd() matches the result from the
+  first call.
+  + Fix reference list when backup.info is reconstructed in expire
+  command. Since the backup command is still using the Perl version
+  of reconstruct this issue will not express unless 1) there is a
+  backup missing from backup.info and 2) the expire command is run
+  directly instead of running after backup as usual. This unlikely
+  combination of events means this is probably not a problem in the
+  field.
+  + Fix segfault on unexpected EOF in gzip decompression.
+- Update and cleanup spec
+  + Remove all uneeded Perl related part
+  + Update copyright
+
+-------------------------------------------------------------------
+Wed Dec  4 13:47:03 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to 2.19 : C Migrations and Bug Fixes
+  + Bug Fixes:
+    - Fix remote timeout in delta restore. When performing a delta
+   restore on a largely unchanged cluster the remote could timeout
+   if no files were fetched from the repository within
+   protocol-timeout. Add keep-alives to prevent remote timeout.
+    - Fix handling of repeated HTTP headers. When HTTP headers are
+    repeated they should be considered equivalent to a single
+    comma-separated header rather than generating an error, which
+    was the prior behavior.
+  + Improvements:
+    - JSON output from the info command is no longer pretty-printed.
+    Monitoring systems can more easily ingest the JSON without linefeeds.
+    External tools such as jq can be used to pretty-print if desired.
+    - The check command is implemented entirely in C.
+  + Documentation Improvements:
+    - Document how to contribute to pgBackRest.
+    - Document maximum version for auto-stop option.
+  + Test Suite Improvements:
+    - Fix container test path being used when --vm=none.
+    - Fix mismatched timezone in expect test.
+    - Don't autogenerate embedded libc code by default.
+- Cleanup spec (license and pkgconfig)
+
+-------------------------------------------------------------------
+Sun Oct  6 14:09:55 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.18 version PostgreSQL 12 Support
+  + Features:
+    - PostgreSQL 12 support.
+    - Add info command set option for detailed text output.
+    - Add standby restore type. This automatically adds
+      standby_mode=on to recovery.conf for PostgreSQL < 12
+      and creates standby.signal for PostgreSQL ≥ 12, creating a
+      common interface between PostgreSQL versions.
+  + Improvements:
+    - The restore command is implemented entirely in C.
+  + Documentation Improvements:
+    - Document the relationship between db-timeout and protocol-timeout.
+    - Add documentation clarifications regarding standby repositories.
+    - Add FAQ for time-based Point-in-Time Recovery.
+- Update to 2.17 version C Migrations and Bug Fixes
+  + Bug fixes:
+    - Improve slow manifest build for very large quantities of
+      tables/segments.
+    - Fix exclusions for special files.
+  + Improvements:
+    - The stanza-create/update/delete commands are implemented entirely in C.
+    - The start/stop commands are implemented entirely in C.
+    - Create log directories/files with 0750/0640 mode.
+  + Documentation Bug Fixes:
+    - Fix yum.p.o package being installed when custom package specified.
+  + Documentation Improvements:
+    - Build pgBackRest as an unprivileged user.
+
+-------------------------------------------------------------------
+Sat Aug 24 16:31:39 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.16 release C Migrations and Bug Fixes
+  + Bug Fixes:
+    - Retry S3 RequestTimeTooSkewed errors instead of immediately
+    terminating.
+    - Fix incorrect handling of transfer-encoding response to HEAD
+      request.
+    - Fix scoping violations exposed by optimizations in gcc 9.
+  + Features:
+    - Add repo-s3-port option for setting a non-standard S3
+      service port.
+  + Improvements:
+    - The local command for backup is implemented entirely in C.
+    - The check command is implemented partly in C.
+- Packaging adding new libpq-fe dependency
+- Added patch libpq-fe.h_localisation.patch
+
+-------------------------------------------------------------------
+Thu Jul 11 12:09:42 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.15.1 release
+  + Bug Fixes:
+    Fix archive retention expiring too aggressively.
+  + Improvements:
+    The expire command is implemented entirely in C.
+    The local command for restore is implemented entirely in C.
+    Remove hard-coded PostgreSQL user so $PGUSER works.
+    Honor configure --prefix option.
+    Rename repo-s3-verify-ssl option to repo-s3-verify-tls.
+    The new name is preferred because pgBackRest does not support
+    any SSL protocol versions (they are all considered to be insecure).
+    The old name will continue to be accepted.
+- Packaging:
+  + export %optflag as CFLAG
+  + fix make install with new supported prefix
+
+-------------------------------------------------------------------
+Thu Jun  6 05:59:01 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Emergency rollback, 2.14 segv
+
+-------------------------------------------------------------------
+Wed Jun  5 15:24:17 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.14 release
+  + Bug Fixes:
+    Fix segfault when process-max > 8 for archive-push/archive-get.
+  + Improvements:
+    Bypass database checks when stanza-delete issued with force.
+    Add configure script for improved multi-platform support.
+  + Documentation Features:
+    Add user guides for CentOS/RHEL 6/7.
+- 2.13 release
+  + Bug Fixes:
+    Fix zero-length reads causing problems for IO filters that
+    did not expect them.
+    Fix reliability of error reporting from local/remote processes.
+    Fix Posix/CIFS error messages reporting the wrong filename on
+    write/sync/close.
+- 2.12 release
+  + IMPORTANT NOTE: The new TLS/SSL implementation forbids dots in
+   S3 bucket names per RFC-2818. This security fix is required for
+   compliant hostname verification.
+  + Bug Fixes:
+    Fix issues when a path option is / terminated.
+    Fix issues when log-level-file=off is set for the archive-get
+    command.
+    Fix C code to recognize host:port option format like Perl does.
+    Fix issues with remote/local command logging options.
+   + Improvements:
+    The archive-push command is implemented entirely in C.
+    Increase process-max limit to 999.
+    Improve error message when an S3 bucket name contains dots.
+   + Documentation Improvements:
+    Clarify that S3-compatible object stores are supported.
+- Packaging: add autoconf upstream is now using configure.
+
+-------------------------------------------------------------------
+Mon Mar 11 09:10:56 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.11 release
+  + C Implementation of Archive Get
+  + Bug Fixes:
+    - Fix possible truncated WAL segments when an error occurs
+      mid-write.
+    - Fix info command missing WAL min/max when stanza specified.
+    - Fix non-compliant JSON for options passed from C to Perl.
+  + Improvements:
+    - The archive-get command is implemented entirely in C.
+    - Enable socket keep-alive on older Perl versions.
+    - Error when parameters are passed to a command that does not
+      accept parameters.
+    - Add hints when unable to find a WAL segment in the archive.
+    - Improve error when hostname cannot be found in a
+      certificate.
+    - Add additional options to backup.manifest for debugging
+      purposes.
+  + Documentation Improvements:
+    - Update default documentation version to PostgreSQL 10.
+- Packaging:
+  + Remove merge upstream patch (2cd204f.patch)
+  + Fix install destination to %{_bindir}
+
+-------------------------------------------------------------------
+Wed Feb 20 08:15:24 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Include upstream patch 2cd204f.patch to fix issue#677
+
+-------------------------------------------------------------------
+Sun Feb 17 10:02:49 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.10 version bug fixes
+  + Add unimplemented S3 driver method required for archive-get.
+  + Fix check for improperly configured pg-path.
+- Packaging:
+  + Fix trailing space in changes (jengelh)
+  + Use a factual description (jengelh)
+
+-------------------------------------------------------------------
+Fri Feb  8 20:02:00 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.09 version bug fixes and improvements
+  + Fix issue with multiple async status files causing a hard error.
+  + info command is implemented entirely in C.
+  + Simplify info command text message when no stanzas are present
+    by replacing the repository path with "the repository".
+  + Add _DARWIN_C_SOURCE flag to Makefile for MacOS builds.
+  + Update address lookup in C TLS client to use modern methods.
+  + Include Posix-compliant header for strcasecmp() and fd_set.
+- Packaging: remove comments/remark fixed and merged issue #659
+
+-------------------------------------------------------------------
+Sat Jan 26 10:00:00 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.08 version : bug fixes and improvement
+  See more information https://pgbackrest.org/release.html
+- Add libxml2-devel as buildrequires
+- Add a comment about gethostbyname() upstream issue #659
+- Update spec (date and order)
+
+-------------------------------------------------------------------
+Sat Dec  1 08:58:07 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Re-add all needed Perl (upstream issue #629): not all the code
+  is ported to C
+
+-------------------------------------------------------------------
+Tue Nov 20 13:36:49 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.07 version : bug fixes and improvement
+  See more information https://pgbackrest.org/release.html
+
+-------------------------------------------------------------------
+Sat Oct 27 20:12:17 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Bug fix and improvement 2.06 version
+  See more information https://pgbackrest.org/release.html
+- Packaging : Remove Requires perl, it not more used
+
+-------------------------------------------------------------------
+Wed Oct  3 08:07:18 UTC 2018 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Bug fix and improvement 2.05 version
+  See more information https://pgbackrest.org/release.html
+
+-------------------------------------------------------------------
+Sat Jul 14 16:25:46 UTC 2018 - bruno@ioda-net.ch
+
+- Fix packaging : Avoid segv backtrace
+  + Don't package and distribute perl or LibC
+  They are already in final binary.
+  Ref https://github.com/pgbackrest/pgbackrest/issues/558
+  + As a result : tests are no more usable, (only vagrant runs)
+  use a simple call of the binary (pgbackrest version) to exclude
+  futur backtrace
+  + Clean spec: licence and remove macro for file
+
+-------------------------------------------------------------------
+Wed Jul 11 07:49:49 UTC 2018 - bruno@ioda-net.ch
+
+- Critical bug fix release 2.04 (Backup Resume)
+  + IMPORTANT NOTE: This release fixes a critical bug in the backup
+    resume feature. All resumed backups prior to this release should
+    be considered inconsistent.
+    See more information https://pgbackrest.org/release.html
+  + Bug Fixes:
+    - Fix critical bug in resume that resulted in inconsistent
+    backups. A regression in v0.82 removed the timestamp comparison
+    when deciding which files from the aborted backup to keep on
+    resume.
+    - Fix error in selective restore when only one user database
+    exists in the cluster.
+    - Fix non-compliant ISO-8601 timestamp format in S3 authorization
+    headers. AWS and some gateways were tolerant of space rather than
+    zero-padded hours while others were not.
+  + Features:
+    - PostgreSQL 11 Beta 2 support.
+  + Improvements:
+    - Improve the HTTP client to set content-length to 0 when not
+    specified by the server. S3 (and gateways) always set
+    content-length or transfer-encoding but HTTP 1.1 does not require
+    it and proxies (e.g. HAProxy) may not include either.
+    - Set search_path = 'pg_catalog' on PostgreSQL connections
+  + Documentation Improvements:
+    - Create a new section to describe building pgBackRest and
+    build on a separate host.
+    - Add sample S3 policy to restrict bucket privileges.
+- Packaging :
+  + Explicitly requires all perl deps
+  + Define make_build for 42.3 compilation
+
+-------------------------------------------------------------------
+Mon May 28 08:21:30 UTC 2018 - bruno@ioda-net.ch
+
+- Urgent fix : add perl as BuildRequires and Requires to force
+  presence of libperl.so : Otherwise pgbackrest binary can't find
+  it
+- Spec : use %make_build macros
+
+-------------------------------------------------------------------
+Wed May 23 09:55:27 UTC 2018 - bruno@ioda-net.ch
+
+- Update release 2.03 version
+  + Bug Fixes:
+    - Fix potential buffer overrun in error message handling.
+    - Fix archive write lock being taken for the synchronous
+      archive-get command.
+  + Improvements:
+    - Embed exported C functions and Perl modules directly into
+      the pgBackRest executable.
+    - Use time_t instead of __time_t for better portability.
+    - Print total runtime in milliseconds at command end.
+
+-------------------------------------------------------------------
+Thu May 10 10:12:23 UTC 2018 - bruno@ioda-net.ch
+
+- Update to bugfix & improvement 2.02 version
+  Parallel Asynchronous Archive Get and Configuration Includes
+  Released May 6, 2018
+  + Bug Fixes:
+    - Fix directory syncs running recursively when only the
+      specified directory should be synced.
+    - Fix archive-copy throwing "path not found" error for incr/diff
+      backups.
+    - Fix failure in manifest build when two or more files in PGDATA
+      are linked to the same directory.
+    - Fix delta restore failing when a linked file is missing.
+    - Fix rendering of key/value and list options in help.
+  + Features:
+    - Add asynchronous, parallel archive-get. This feature maintains
+      a queue of WAL segments to help reduce latency when PostgreSQL
+      requests a WAL segment with restore_command.
+    - Add support for additional pgBackRest configuration files in the
+      directory specified by the --config-include-path option.
+      Add --config-path option for overriding the default base path
+      of the --config and --config-include-path option.
+    - Add repo-s3-token option to allow temporary credentials tokens
+      to be configured. pgBackRest currently has no way to request new
+      credentials so the entire command (e.g. backup, restore) must
+      complete before the credentials expire.
+  + Improvements:
+    - Update the archive-push-queue-max, manifest-save-threshold,
+      and buffer-size options to accept values in KB, MB, GB, TB, PB
+      where the multiplier is a power of 1024.
+    - Make backup/restore path sync more efficient. Scanning the
+      entire directory can be very expensive if there are a lot of
+      small tables. The backup manifest contains the path list so use
+      it to perform syncs instead of scanning the backup/restore path
+    - Show command parameters as well as command options in initial
+      info log message.
+    - Rename archive-queue-max option to archive-push-queue-max to
+      avoid confusion with the new archive-get-queue-max option.
+      The old option name will continue to be accepted.
+  + Documentation Bug Fixes:
+    - Update docs with 32-bit support and caveats.
+      32-bit support was added in v1.26.
+  + Documentation Improvements:
+    - Add monitoring examples using PostgreSQL and jq.
+    - Add example of command section usage to archiving configuration.
+    - Remove documentation info --output=json as experimental.
+    - Update out-of-date description for the spool-path option.
+  + Test Suite Features:
+    - Use lcov for C unit test coverage reporting. Switch from
+      Devel::Cover because it would not report on branch coverage
+      for reports converted from gcov. Incomplete branch coverage
+      for a module now generates an error. Coverage of unit tests
+      is not displayed in the report unless they are incomplete for
+      either statement or branch coverage.
+- Changes of previous 2.01 version from March 6th 2018
+  + Bug Fixes:
+   - Fix --target-action and --recovery-option options being reported
+     as invalid when restoring with --type=immediate.
+   - Immediately error when a secure option (e.g. repo1-s3-key) is
+     passed on the command line. Since pgBackRest would not pass
+     secure options on to sub-processes an obscure error was thrown.
+     The new error is much clearer and provides hints about how to fix
+     the problem. Update command documentation to omit secure options
+     that cannot be specified on the command-line.
+   - Fix issue passing --no-config to embedded Perl.
+   - Fix issue where specifying log-level-stderr > warn would cause a
+     local/remote process to error on exit due to output found on
+     stderr when none was expected. The max value for a local/remote
+     process is now error.
+   - Fix manifest test in the check command when tablespaces are
+     present.
+  + Improvements:
+   - Error when multiple arguments are set in the config file for an
+     option that does not accept multiple arguments.
+   - Remove extraneous sudo commands from src/Makefile.
+  + Documentation Improvements:
+   - Show index in examples for indexed options, i.e. repo-*, pg-*.
+   - Simplify table of contents on command page by only listing
+     commands.
+   - Remove references to the C library being optional.
+  + Test Suite Features:
+   - Add CentOS/RHEL package builds.
+   - Use clang for static code analysis. Nothing found initially
+     except for some functions that should have been marked
+     __noreturn__.
+
+-------------------------------------------------------------------
+Fri Mar  9 15:16:24 UTC 2018 - bruno@ioda-net.ch
+
+- Packaging :
+  + modernize spec with spec-cleaner -m
+  + remove pgbackrest-release-1.00_datadir.patch pgbackrest is now
+    written in C
+  + Build C binary and lib C
+  + Adjust new parameter name in pgbackrest-conf.patch
+- Update to new 2.0 version
+  + Features:
+    The archive-push command is now partially coded in C which
+    allows the PostgreSQL archive_command to run significantly
+    faster when processing status messages from the asynchronous
+    archive process. (Reviewed by Cynthia Shang.)
+  + Improvements:
+    - Improve check command to verify that the backup manifest can be
+    built. (Contributed by Cynthia Shang.)
+    - Improve performance of HTTPS client. Buffering now takes the
+    pending bytes on the socket into account (when present) rather
+    than relying entirely on select(). In some instances the final
+    bytes would not be flushed until the connection was closed.
+    - Improve S3 delete performance. The constant S3_BATCH_MAX had
+    been replaced with a hard-coded value of 2, probably during
+    testing.
+    - Allow any non-command-line option to be reset to default on
+    the command-line. This allows options in pgbackrest.conf to be
+    reset to default which reduces the need to write new config
+    files for specific needs.
+    - The C library is now required. This eliminates conditional
+    loading and eases development of new library features.
+    - The pgbackrest executable is now a C binary instead of Perl.
+    This allows certain time-critical commands (like async
+    archive-push) to run more quickly.
+    - Rename db-* options to pg-* and backup-* options to repo-* to
+    improve consistency. repo-* options are now indexed although
+    currently only one is allowed.
+    ** This imply you need to revisit your pgbackrest.conf **
+- Packaging :
+  + Use make install (now fixed upstream) for bin
+
+-------------------------------------------------------------------
+Sun Feb  4 17:14:16 UTC 2018 - bruno@ioda-net.ch
+
+- Upgrade to 1.28 bugfix version
+  + Bug Fixes:
+    - Fixed inability to restore a single database contained in a
+    tablespace using --db-include. (Fixed by Cynthia Shang.)
+    - Ensure latest db-id is selected on when matching archive.info
+    to backup.info. This provides correct matching in the event
+    there are system-id and db-version duplicates
+    (e.g. after reverting a pg_upgrade).
+    (Fixed by Cynthia Shang. Reported by Adam K. Sumner.)
+    - Fixed overly chatty error message when reporting an invalid
+    command. (Reported by Jason O'Donnell.)
+  + Features:
+    Add stanza-delete command to cleanup unused stanzas.
+    (Contributed by Cynthia Shang. Suggested by Magnus Hagander.)
+  + Improvements:
+    Improve stanza-create command so that it does not error when
+    the stanza already exists. (Contributed by Cynthia Shang.)
+
+-------------------------------------------------------------------
+Thu Feb  1 13:20:00 UTC 2018 - bruno@ioda-net.ch
+
+- Packaging :
+  + Fix wrong requirement of previous version, now use correct
+    %perl_requires, add openssl-devel for crytpo on libc
+  + Add pgbackrest-conf.patch : a minimal working configuration file
+  + Build pgbackrest-libc allowing crypto and checksum
+  + Added %check section
+  + Rework install and file section (copy of pgdg packaging and use
+    of correct %perl macros
+  + Disable build on i586 pgBackRest need perl with 64bit integer
+    support. see upstream issue
+    https://github.com/pgbackrest/pgbackrest/issues/478
+  + use %_localstatedir/lib as %_sharedstatedir is broken on Leap
+    42.x and some SLE12
+
+-------------------------------------------------------------------
+Fri Jan 26 15:19:05 UTC 2018 - joop.boonen@opensuse.org
+
+- update to 1.27
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.27
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.26
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.25
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.24
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.23
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.22
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.21
+  - Added missing requirement
+
+-------------------------------------------------------------------
+Thu Aug  3 17:42:43 UTC 2017 - mrueckert@suse.de
+
+- update to 1.20
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.20
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.19
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.18
+
+-------------------------------------------------------------------
+Tue Mar 21 11:04:04 UTC 2017 - bruno@ioda-net.ch
+
+- update to 1.17
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.17
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.16
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.15
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.14
+
+-------------------------------------------------------------------
+Fri Feb 10 00:39:58 UTC 2017 - mrueckert@suse.de
+
+- update to 1.13
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.13
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.12
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.11
+
+-------------------------------------------------------------------
+Thu Nov 10 11:09:58 UTC 2016 - mrueckert@suse.de
+
+- update to 1.10
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.10
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.09
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.08
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.07
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.06
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.05
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.04
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.03
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.02
+  https://github.com/pgbackrest/pgbackrest/releases/tag/release%2F1.01
+
+-------------------------------------------------------------------
+Wed May  4 02:46:09 UTC 2016 - mrueckert@suse.de
+
+- added pgbackrest-release-1.00_datadir.patch:
+  perl libraries installed in the normal search path we dont need
+  this anymore.
+
+-------------------------------------------------------------------
+Wed May  4 02:26:45 UTC 2016 - mrueckert@suse.de
+
+- update to 1.00
+

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd4120ce896fccd50ede1f5853d2bdcf</srcmd5>
+    <version>11.1.0.0</version>
+    <time>1633038226</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial packaging of v11.1.0.0 (jsc#SLE-19364)</comment>
+    <requestid>922335</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a1c27920bffeeab06acc6f4dea417261</srcmd5>
+    <version>11.3.0.0</version>
+    <time>1664553451</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007037</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>45e4d22444b25dd859bdcf73b552ab4d</srcmd5>
+    <version>11.3.0.0</version>
+    <time>1675357745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062637</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4eefc1493f701fd262f2baa05b657534</srcmd5>
+    <version>11.5.0.0</version>
+    <time>1690370649</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100648</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a4ef7bd93183372a7a703a2c7bf1b606</srcmd5>
+    <version>11.5.1.0</version>
+    <time>1696529041</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115675</requestid>
+  </revision>
+</revisionlist>

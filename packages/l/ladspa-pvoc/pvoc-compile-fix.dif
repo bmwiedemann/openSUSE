@@ -1,0 +1,11 @@
+--- stretch.cc-dist	2004-08-18 17:03:44.741401895 +0200
++++ stretch.cc	2004-08-18 17:04:04.614086660 +0200
+@@ -269,7 +269,7 @@ class Stretch
+ void
+ version()
+ {
+-	fprintf (stderr, "stretch " VERSION "\n");
++	fprintf (stderr, "stretch %s\n", VERSION);
+ 	fprintf (stderr, "Copyright (C) 1981-2004 Regents of the University of California,\n");
+ 	fprintf (stderr, "              2001-2 Richard Dobson, 2004 Tim Goetze\n");
+ }

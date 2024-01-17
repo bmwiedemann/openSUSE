@@ -1,0 +1,8 @@
+[Unit]
+Description=This service automatically renews any certbot certificates found
+
+[Service]
+EnvironmentFile=/etc/sysconfig/certbot
+Type=oneshot
+ExecStart=/usr/bin/certbot renew $PRE_HOOK $POST_HOOK $RENEW_HOOK $CERTBOT_ARGS
+

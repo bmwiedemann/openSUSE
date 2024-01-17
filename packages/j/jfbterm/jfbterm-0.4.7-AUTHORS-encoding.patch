@@ -1,0 +1,49 @@
+diff -Nur jfbterm-0.4.7/AUTHORS jfbterm-0.4.7-new/AUTHORS
+--- jfbterm-0.4.7/AUTHORS	2003-08-30 01:44:00.000000000 +0800
++++ jfbterm-0.4.7-new/AUTHORS	2012-03-25 20:14:09.664984559 +0800
+@@ -5,27 +5,27 @@
+  NOKUBI Takatsugu <knok@debian.org>
+ 
+ ---------------------------------------------------------------------------
+-jfbterm/me $B$O!"(B
++jfbterm/me は、
+ 
+-$B$"$^$N(B <amano@uv.rism.tohoku.ac.jp> $B$5$s!"(B
+-$BBg9>(B <toe@ppc.linux.or.jp> $B$5$s!"(B
+-$B$d$^$5$-(B $B$7$s$8(B <yamasaki@sainet.or.jp> $B$5$s!"(B
+-$BD9Ln(B <nagano@matu.cc.kyushu-u.ac.jp> $B$5$s!"(B
+-$BH,ED(B <hattas@penguin.sakyo.kyoto.jp> $B$5$s!"(B
+-$B1-;t(B <ukai@debian.or.jp>$B$5$s!"(B
+-$B5H0f(B <kazutomo@turbolinux.com> $B$5$s!"(B
+-$BBgCS(B <daichi1@gol.com> $B$5$s!"(B
+-BABA <syub@gol.com> $B$5$s!"(B
+-
+-$B??Fi$5$s$O$8$a(B kon2 $B$N3+H/$K$+$+$o$C$?J}!9!"(B
+-GNU $B$N3F<o%D!<%kN`$N3+H/$K$+$+$o$C$?J}!9!"(B
+-Linux $B$N3+H/$K$+$+$o$C$?J}!9!"(B
++あまの <amano@uv.rism.tohoku.ac.jp> さん、
++大江 <toe@ppc.linux.or.jp> さん、
++やまさき しんじ <yamasaki@sainet.or.jp> さん、
++長野 <nagano@matu.cc.kyushu-u.ac.jp> さん、
++八田 <hattas@penguin.sakyo.kyoto.jp> さん、
++鵜飼 <ukai@debian.or.jp>さん、
++吉井 <kazutomo@turbolinux.com> さん、
++大池 <daichi1@gol.com> さん、
++BABA <syub@gol.com> さん、
+ 
+-$B$[$+!"B?$/$NJ}!9$N=u$1$K$h$j!"(B
++真鍋さんはじめ kon2 の開発にかかわった方々、
++GNU の各種ツール類の開発にかかわった方々、
++Linux の開発にかかわった方々、
+ 
+-Noritoshi Masuichi <nmasu@ma3.justnet.ne.jp>$B$,:n@.$7$^$7$?!#(B
+-							 ($B=gITF1(B)
++ほか、多くの方々の助けにより、
++
++Noritoshi Masuichi <nmasu@ma3.justnet.ne.jp>が作成しました。
++							 (順不同)
+ ---------------------------------------------------------------------------
+- * $B5-:\1L$l$,$"$l$P$4O"Mm$/$@$5$$!#$?$s$J$k1L$l$G$9!"B>0U$O$"$j$^$;$s!#(B
++ * 記載洩れがあればご連絡ください。たんなる洩れです、他意はありません。
+ 						Noritoshi Masuichi
+ ---------------------------------------------------------------------------

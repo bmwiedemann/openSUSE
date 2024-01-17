@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69e5f0f955a0449d6e7f5d8918ae20c1</srcmd5>
+    <version>0.3.2</version>
+    <time>1380609177</time>
+    <user>coolo</user>
+    <comment>New Package needed for Nexus / OpenStack Neutron integration (also needed for 13.1)</comment>
+    <requestid>201089</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>69e5f0f955a0449d6e7f5d8918ae20c1</srcmd5>
+    <version>0.3.2</version>
+    <time>1409302922</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>bca2970088ae521e6b0924e61ff62a00</srcmd5>
+    <version>0.3.2</version>
+    <time>1441173239</time>
+    <user>coolo</user>
+    <comment>- Unify spec file. Use fedora compatible files macros</comment>
+    <requestid>328093</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a340d54037ed8aee90ad1d6f2dc86466</srcmd5>
+    <version>0.4.7</version>
+    <time>1454921277</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to version from pypi
+  This is the version used by OpenStack networking-cisco
+- update to 0.4.7:
+  * Add support for netconf 1.1
+  * Fix multiple RPC error handling
+  * Add support for cancel-commit and persist param
+  * Add more examples
+  * Add Huawei device support
+  * Add cli command support for hpcomware v7 devices
+  * Add H3C support, Support H3C CLI,Action,Get_bulk,Save,Rollback,etc.
+  * Add alcatel lucent support
+  * Rewrite multiple error handling
+  * Add coveralls support, with shield in README.md
+  * Set severity level to higher when multiple
+  * Simplify logging and multi-error reporting
+  * Keep stacktrace of errors
+  * Check for known hosts on hostkey_verify only
+  * Add check for device sending back null error_text
+  * Fix RPC.raise_mode
+  * Specifying hostkey_verify=False should not load_known_hosts
+  * Check the correct field on rpc-error element
+  * Nexus exec_command operation
+  * Allow specifying multiple cmd elements in Cisco Nexus
+  * Update rpc for nested rpc-errors
+  * Prevent race condition in threading
+  * Prevent hanging in session close
+  * Support for paramiko ProxyCommand via ~/.ssh/config parsing
+  * Add Juniper-specific commit operations
+  * Add Huawei devices support
+  * Tests/Travis support</comment>
+    <requestid>357896</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>caae7d04b99c8adb95c0df8746ae47af</srcmd5>
+    <version>0.5.2</version>
+    <time>1473241642</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424777</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ba743830e3fc73ca62e3fc9a01e89a7d</srcmd5>
+    <version>0.5.3</version>
+    <time>1503927074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514958</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8b603915681d0703869ea31898869e81</srcmd5>
+    <version>0.5.4</version>
+    <time>1537964579</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Update to 0.5.4
+  * Python 3.6 support</comment>
+    <requestid>634905</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8c86413a6b782efc21591e48d4f97b58</srcmd5>
+    <version>0.6.3</version>
+    <time>1553084541</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version v0.6.3
+  * Housekeeping &amp; Cleaning
+  * Log sent and received messages at level INFO. Fixes #167
+  * - move known_hosts_lookup (the host entry in known_hosts, with optional port number appended)
+  * First draft of versioning with versioneer (#269)
+  * revert to raising SSHError
+  * fix: add missing placeholder in exception string
+  * Updates to re-enable Python 3.7 (#249)
+  * Updates for 0.5.4 and 0.6.0
+  * SSH Host key checking (#280)
+  * check for transform_reply type (#270)
+  * Change superclass call style to keep tests happy
+  * SSH Host key checking
+  * Fix homepage link registered with PyPi (#274)
+  * more tests
+  * invoke self.parse() to ensure errors, if any, have been detetcted before check in ok() (#286)
+  * Avoid spurious SessionCloseError when intentionally closing session. (#268)
+  * Minor edits
+  * Revert &quot;Fixes to unit tests to account for use of selectors&quot;
+  * Close the channel when closing SSH session
+  * Revert &quot;fixes to tests for python2.7&quot;
+  * add Huawei device support through YANG (#1) (#242)
+  * Revert &quot;use selectors instead of select; improve performance of base 1.0 or 1.1 selection&quot;
+  * instructions for running unit tests locally
+  * updated README.md in preparation for 0.6.1 release
+  * netconf:base:1.1 parsing improvements (#267)
+  * Add session as extra context to session-related logs
+  * Include host in log message as well, as session-id is not globally unique
+  * fix: comments &amp; whitespace tidy
+  * removed Manager class metaclass and modified operation lookup to __getattr__ (#200)</comment>
+    <requestid>686886</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6a10e50fbd5201a8b6689e0ab9bcebf2</srcmd5>
+    <version>0.6.4</version>
+    <time>1557916529</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v0.6.4:
+  * Use os.path.expanduser() on paths read from ssh_config.
+  * Proxycommand can be a list. Identityfile already performs ~ expansion in
+  * Enhance Alcatel-Lucent -support
+- add sphinx-use-imgmath-extension.patch</comment>
+    <requestid>703087</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>88d75edb91950acc16de2ff910345818</srcmd5>
+    <version>0.6.6</version>
+    <time>1575727767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754829</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2cf14d1824d93cf746908d726498753e</srcmd5>
+    <version>0.6.7</version>
+    <time>1582112489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.7
+  * Bugfix release</comment>
+    <requestid>776246</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06fad5711aad196b600e1088a1f2e953</srcmd5>
+    <version>0.6.9</version>
+    <time>1597064721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825318</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c4712d912b2de2b6288ff5af0978f7b5</srcmd5>
+    <version>0.6.9</version>
+    <time>1612108331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867995</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5661aa9f20b25c8069c8deab066240ab</srcmd5>
+    <version>0.6.12</version>
+    <time>1623098633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897968</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>239cf618c3016baa1288ac1e20de2ab5</srcmd5>
+    <version>0.6.12</version>
+    <time>1633644355</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on nose.</comment>
+    <requestid>923605</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>88d1488da20c3d533e1a2f5b4da2accc</srcmd5>
+    <version>0.6.12</version>
+    <time>1642112484</time>
+    <user>dimstar_suse</user>
+    <comment>- python-selectors2 is only required for python &lt;= 3.4
+</comment>
+    <requestid>946139</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>08d5bbe3e7f08e9dc441ee07a9051796</srcmd5>
+    <version>0.6.12</version>
+    <time>1642198423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946492</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>d3a13c1e56cb9f6d791543136f499d15</srcmd5>
+    <version>0.6.12</version>
+    <time>1648159110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>964660</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c15c34827965d6162115f9fc3d0c91d8</srcmd5>
+    <version>0.6.13</version>
+    <time>1655665892</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.13:
+  * Remove extraneous capability in default device
+  * Refactor deprecated unittest aliases for Python 3.11 compatibility
+  * Added support for environment variable
+  * Migrate from Travis to GitHub Actions
+  * Update Build Pill
+  * add netconf base namespace to edit-config config element if it is missing</comment>
+    <requestid>983726</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>52eb737a8e15ca762d1954c356747b46</srcmd5>
+    <version>0.6.15</version>
+    <time>1702071129</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.15:
+  * reading correct user known_hosts files
+  * fix coveralls reporting
+  * Agent key selection
+  * Update session.py - Parameterize timeout for _post_connect
+  * update comment in _parse11
+  * Fix missing timeout in ssh post_connect
+  * Migrate from nose to pytest
+  * Based on v0 6 13 fix for deprecation warnings threading
+    thread
+  * Introduce support for TLS
+  * remove - version of setting and replace with _ version
+  * permissive UTF-8 parsing for NC11 delimiter
+  * introduce python3.12 for ci
+  * Add commit comment capability support for SROS devices in
+    ncclient
+
+- Remove unneeded BuildRequires on nose.
+- Convert to singlespec</comment>
+    <requestid>1131734</requestid>
+  </revision>
+</revisionlist>

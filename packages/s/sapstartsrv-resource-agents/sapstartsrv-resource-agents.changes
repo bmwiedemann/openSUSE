@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Mon Dec 11 12:08:44 UTC 2023 - abriel@suse.com
+
+- Version bump to 0.9.4
+  * fix error in exception handling of sapstartsrv status function
+    (bsc#1217276)
+
+-------------------------------------------------------------------
+Fri Aug  4 17:41:44 UTC 2023 - abriel@suse.com
+
+- Version bump to 0.9.3
+  * adapt fix for monitor/probe operation to detect a running
+    sapstartsrv process to run with python3-psutil version 5.2.2
+    or higher
+    (bsc#1210790)
+
+-------------------------------------------------------------------
+Wed May 24 16:41:49 UTC 2023 - abriel@suse.com
+
+- Version bump to 0.9.2
+  * prevent systemd service race between sapping and sappong during
+    system boot
+    (bsc#1207138)
+  * fix a problem of monitor/probe operation to detect a running
+    sapstartsrv process
+    (bsc#1210790)
+
+- add python3-psutil as package requirement and as build
+  requirement in case of testing
+  needed for bsc#1210790
+  (jsc#PED-4418, jsc#PED-4499)
+
+-------------------------------------------------------------------
+Wed Sep 14 09:37:25 UTC 2022 - abriel@suse.com
+
+- Version bump to 0.9.1
+- man page updates based on customer feedback on conferences
+- remove 'BuildRequire python3-mock' as this is no longer needed
+  for the tests
+
+-------------------------------------------------------------------
+Fri Feb 25 11:18:02 UTC 2022 - abriel@suse.com
+
+- Add systemd support for the resource agent to interact with the
+  new SAP unit files for sapstartsrv.
+  As the new version of the SAP Startup Framework will use systemd
+  unit files to control the sapstartsrv process instead of the
+  previous used SysV init script, we need to adapt the handling of
+  sapstartsrv inside the resource agents to support both ways.
+  (bsc#1189529)
+- prevent false posivite with pgrep in function '_get_status' 
+ (bsc#1193568)
+
+-------------------------------------------------------------------
+Thu Apr 22 13:05:47 UTC 2021 - abriel@suse.com
+
+- remove deprecated option "syslog" from the sapping.service and
+  sappong.service files.
+  (bsc#1185152)
+
+-------------------------------------------------------------------
+Wed Mar 31 09:43:09 UTC 2021 - abriel@suse.com
+
+- prevent sapping.service from running a second time after a
+  corosync start/restart
+  (bsc#1183969)
+
+-------------------------------------------------------------------
+Fri Mar  5 08:54:12 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Fix the spec file to follow properly the SLE submission policies 
+
+-------------------------------------------------------------------
+Fri Dec  4 15:22:52 UTC 2020 - Fabian Herschel <fabian.herschel@suse.com>
+
+- Add sapservices-move script 
+
+-------------------------------------------------------------------
+Wed Sep 16 09:33:32 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Simplified Cluster FS architecture for S/4HANA and NetWeaver
+  It controls the instance specific sapstartsrv process which
+  provides the API to start, stop and check a SAP instance.
+  (jsc#ECO-3341, jsc#SLE-16935, jsc#SLE-17440)
+- Include python version to the resource agent 

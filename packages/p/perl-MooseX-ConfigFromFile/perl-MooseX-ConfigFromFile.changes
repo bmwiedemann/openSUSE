@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Wed Aug 19 09:17:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-MooseX-ConfigFromFile/Changes
+
+  0.14      2015-08-16 03:11:52Z
+            - update some distribution tooling
+
+-------------------------------------------------------------------
+Mon Dec  9 11:18:00 UTC 2013 - coolo@suse.com
+
+- updated to 0.13
+ - re-release to fix compile test
+
+-------------------------------------------------------------------
+Fri Oct  4 09:15:12 UTC 2013 - coolo@suse.com
+
+- updated to 0.12
+        - warnings tests bypassed during installation
+        - repository migrated from shadowcat to the github moose organization
+
+-------------------------------------------------------------------
+Thu Aug  1 13:21:01 UTC 2013 - coolo@suse.com
+
+- updated to 0.11
+           - bump prereq version for MooseX::Types::Path::Tiny to ensure a
+             broken version is not installed
+ 
+ 0.10      2013-02-12 13:17:44 PST-0800 (Karen Etheridge)
+           - allow clean composition into a role, without requiring an -exclude
+ 
+ 0.09      2013-02-11 09:35:50 PST-0800 (Karen Etheridge)
+           - removed prereqs which are only used for optional tests
+ 
+ 0.08      2013-02-09 16:24:27 PST-0800 (Karen Etheridge)
+           - allow configfiles called "0"
+           - configfile value now passed through to new()
+           - new _get_default_configfile method added, which consumers can
+             override to provide a default value without having to redefine the
+             attribute itself (via RT#79746) -- PLEASE READ THE DOCUMENTATION
+             if you override the configfile attribute!
+ 
+ 0.07      2013-02-04 (Karen Etheridge)
+           - fixed tests to not load optional dependencies
+ 
+ 0.06      2013-02-03 (Karen Etheridge)
+           - the configfile attribute is now a Path::Tiny, not a Path::Class
+             (coercions from strings are still supported, and now also from any
+             other type that has a string coercion).
+ 
+ 0.05      2013-02-03 (Karen Etheridge)
+           - documentation corrected to demostrate how to properly override the
+             configfile method to provide a default from the consuming class,
+             without having to redefine the attribute itself
+           - if MooseX::Getopt is installed, the configfile attribute has the
+             Getopt trait applied
+ 
+ 0.04      2011-12-17
+           - Call the configfile attribute default sub if it is a sub, not just
+             a string, just like MooseX::Getopt does (RT#73325, Karen Etheridge)
+
+-------------------------------------------------------------------
+Sun Dec 25 18:09:37 UTC 2011 - coolo@suse.com
+
+- update to 0.03
+    - The test suite now uses Test::Fatal instead of Test::Exception (Karen
+      Etheridge).
+    - Fix bug reported by Strayph in #moose with inheritance RT#63624 (perigrin)
+    - Add repository metadata
+    - Fix RT#57023, RT#49369.
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:47 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:36 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Wed Oct 13 10:02:02 UTC 2010 - coolo@novell.com
+
+- buildignore require of -Types-Path-Class to avoid build cycle
+
+-------------------------------------------------------------------
+Mon Jun 14 19:45:13 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.02)
+

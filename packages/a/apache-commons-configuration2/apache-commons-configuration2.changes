@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Sat Sep 23 17:19:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.9
+  * New features:
+    + Implement Iterable in ImmutableNode.
+    + Add PropertiesConfigurationLayout.getBlankLinesBefore() and
+      deprecate getBlancLinesBefore().
+    + Add PropertiesConfigurationLayout.setBlankLinesBefore() and
+      deprecate setBlancLinesBefore().
+    + Add PropertiesConfigurationLayout.PropertyLayoutData
+      .getBlankLines() and deprecate getBlancLines().
+    + Add PropertiesConfigurationLayout.PropertyLayoutData
+      .setBlankLines() and deprecate setBlancLines().
+    + CONFIGURATION-789: Add ImmutableConfiguration.getEnum()
+      methods.
+    + CONFIGURATION-789: Add ImmutableConfiguration.getDuration()
+      methods.
+  * Fixed bugs:
+    + CONFIGURATION-753: Make interpolation of collections and
+      arrays in ConfigurationInterpolator consistent with behavior
+      of DefaultConversionHandler. Add ConfigurationInterpolator
+      .setStringConverter to allow customized string conversion
+      behavior.
+    + CONFIGURATION-795: Computation of blank lines after header
+      comment.
+    + CONFIGURATION-801: Remove redundant initializer.
+    + CONFIGURATION-802: Use final.
+    + CONFIGURATION-803: Java 8 lambda improvements and more.
+    + CONFIGURATION-804: Redundant local variable.
+    + CONFIGURATION-805: Use try with resource.
+    + CONFIGURATION-805: [Javadoc] Specify that typed getList
+      returns null for missing key.
+    + Mention EnvironmentConfiguration in the list of
+      configuration sources.
+    + CONFIGURATION-808: DefaultListDelimiterHandler.escapeList
+      working only for List<String>.
+    + Use final.
+    + Replace test asserts by simpler but equivalent calls.
+    + CONFIGURATION-764: Single Variable Interpolation.
+    + Implement proper concurrency in ConstantLookup.
+    + CONFIGURATION-813: Support new namespace jakarta.mail.*
+      used by javamail 2.0+ (first release October 2020).
+    + CONFIGURATION-799: CombinedConfiguration#getKeys() can
+      throw NoSuchElementException.
+    + CONFIGURATION-822: Fix ambiguity on the section determining.
+    + Use Java style array decelerations.
+    + Add ImmutableNode.stream().
+    + Avoid NullPointerException in org.apache.commons
+      .configuration2.web.AppletConfiguration.getKeysInternal().
+    + Fix JDBC prepared statements leak in org.apache.commons
+      .configuration2.DatabaseConfiguration
+      .clearPropertyDirect(String).
+  * Changes:
+    + Unclosed file handle when reading config from JAR file URL.
+      Add and use FileBasedBuilderProperties
+      .setURL(URL, URLConnectionOptions).
+    + Make default interpolation prefix lookups configurable via
+      system property. Remove dns, url, and script lookups from
+      defaults (bsc#1201279, CVE-2022-33980). If these lookups are
+      required for use in AbstractConfiguration subclasses, they
+      must be enabled via system property.
+      See ConfigurationInterpolator .getDefaultPrefixLookups() for
+      details.
+- Generate ANT build system from maven as to avoid build cycles
+  with maven-doxia-sitetools
+
+-------------------------------------------------------------------
+Mon Mar  7 11:41:18 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of commons-configuration2 2.7

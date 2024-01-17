@@ -1,0 +1,320 @@
+-------------------------------------------------------------------
+Thu Nov  2 23:00:02 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update version 0.10.4
+  * Bug fixes:
+    * Content bugs:
+      * Typo fixes.
+      * Added passenger counts to the descriptions of various Core
+        jobs.
+      * Various fixes to the new Coalition campaign intros.
+      * Corrected the offer conditions of, and various other
+        improvements to, "Small Pirate gambling".
+      * Ensure that relevant Quarg governments are friendly to the
+        Kor Mereti after their transformation.
+      * Use fleets of the "Quarg (Kor Efreti)" government in ruined
+        Korath space, and NPCs with the "Quarg (Hai)" governmment
+        in the "Wanderers: Sestor: Quarg Help 2" and "Wanderers:
+        Sestor: Farpoint Attack 2" missions.
+      * Cleaned up the descriptions of various spaceport missions.
+      * Removed some duplicated text from "Remnant: Celebration 1".
+      * Correctly refer to commodity categories in some FW war jobs
+      * Make the "Quarg (Hai)" government hostile to the "Kor
+        Sestor" government so the Quarg ships will properly aid in
+        the defense of Farpoint.
+      * Correctly display the payment for Heliarch Jump Drive
+        delivery jobs.
+    * Engine bugs:
+      * Correctly set the application icon on Linux.
+      * Fix scrolling up with the keyboard from the top of a short
+        list in the load panel causing all the items to snap to the
+        bottom.
+      * Fix blurriness when dragging to scroll panes in shop panels
+      * The "select nearest asteroid" command will no longer select
+        asteroids beyond asteroid scan range.
+      * The "infiltrating" and "clearance" mission tags will now
+        work together correctly.
+      * Collision masks will now be generated for ships in save
+        files using sprite scales that do not appear in the game
+        data.
+  * Game content:
+    * Mission changes:
+      * Changed the government of NPC ships in "FW Katya 2B" from
+        "Pirate" to "Bounty Hunter" to better match the lore.
+    * Graphics:
+      * Swapped a duplicated station landing image for a unique one
+    * Other:
+      * Tweaked some wording in "FW Pirates: Attack 1".
+      * Tweaked some wording in "FW Diplomacy 1C".
+      * Removed an extraneous item from the "to offer" conditions
+        of "The Book of Skadenga".
+  * Game mechanics:
+    * New mechanics:
+      * Outfits can be given the "unique" attribute which will
+        cause the player to be warned when they are about to be
+        lost.
+    * Mechanics changes:
+      * Ships are no longer allowed to be outfitted with negative
+        "shield generation" or "hull repair rate" values.
+      * Cooling and active cooling will be disabled when a ship is
+        overheated. This reverts a change made in the previous
+        release.
+  * User interface:
+    * The "extended jump effects" setting is now off by default
+      and has an additional intermediate level of motion blur.
+    * Added tooltips for all controls and settings.
+    * Added a key to bring up the help dialog for the current panel
+      on demand.
+    * The main save file for a pilot will always be listed above
+      all the snapshots in the load panel.
+  * CI/CD and development environment:
+    * Fix release names when using the release workflow.
+    * Stop building 32-bit binaries for releases.
+- Drop 8235.patch: upstream fixed
+
+-------------------------------------------------------------------
+Sat Apr 15 13:46:06 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.9.16.1:
+  Breaking changes:
+  * Revert the changes to the accompany objective on mission npcs
+    made in the last release.
+- Changes in 0.9.16.0:
+  Breaking changes:
+  * The accompany objective on mission npcs no longer implicitly
+    sets the save objective. Plugin missions that had "accompany"
+    but not "save" should be changed to include "save" if the
+    intention of the mission is that the npcs live.
+  Bug fixes:
+  * Typo fixes.
+  * The Firestorm Battery outfit now has a proper plural name.
+  * The Mule's description has been updated to reflect its new
+    category.
+  * Corrected the name of the passenger in "FW Pug 4."
+  * Added a firing sound to the Ka'het Annihilator Turret, as it
+    was missing one.
+  * Fixed an incorrect planet text replacement in "FW Refinery 1."
+  * Prevented a Wanderer job from offering with an impossible
+    deadline.
+  * Replaced some small numbers that were written as digits with
+    words.
+  * Shortened Greenview's planet description to fit the UI.
+  * The Archon missions will now refresh once on old saves so that
+    the new missions are used.
+  * The Syndicate ships that attack New Tibet in the FW campaign
+    will now be properly hostile to your mission escorts.
+  * Hard set the npc name in a Scar's Legion mission description to
+    point to the correct npc to kill.
+  * Fixed a Remnant rescue job that had an npc location that should
+    not have been allowed.
+  * Cleaned up the audio on some sound files that had audible
+    clicking.
+  * Remnant cargo that Korath ships in the Ember Waste carry is now
+    more fitting to the lore of their situation.
+  * Fixed the object sprites and scaling in the Ssil Vida event.
+  * The jump range of systems affected by the Ssil Vida activation
+    are now reset when Ssil Vida is deactivated in order to avoid
+    a bug in pathfinding. This change will be reverted in the future
+    once the pathfinding is improved.
+  * Changed a Remnant bounty mission that had an unconstrained npc
+    with a jump drive to spawn one without a jump drive as to stop
+    the ship from escaping the Ember Waste.
+  * Added a fallback mission for people who were in the middle of
+    a section of the FW campaign that was changed.
+  * The load panel now only lists .txt files from the save folder
+    instead of listing every file there.
+  * Traveling between systems no longer assumes that hyperdrives
+    are always cheaper to use than jump drives.
+  * Fixed an error where attempting to launch with a fighter as
+    your flagship under certain circumstances could cause you
+    to launch with no ship at all.
+  * Mission npcs that become disabled by corrosion damage will
+    now properly have the disable objective set.
+  * Disallowed planet labels from jumping around at different
+    zoom levels for a better viewing experience.
+  * Fixed a longstanding bug where npcs could get stuck thinking
+    they need fuel after traveling through a wormhole.
+  * Fixed a bug where fighters would sometimes fail to reparent to
+    a carrier that had space for them when recalled.
+  Game content:
+  * The last mission to give jump drives to the Unfettered is now
+    a repeating job instead of a spaceport mission.
+  * Added H2H weapons to some Hai ships and increased the base
+    crew stats of the Unfettered.
+  * Slightly reworked the atomic and ion flare effects.
+  * Recategorized the Hai Centipede as a space liner.
+  * Changed the landscape images of Mainsail and Inmost Blue to
+    better fit their planet descriptions.
+  * Recategorized the Saryd Traveler as a utility ship.
+  User interface:
+  * Clicking on a planet card on the left side of the map now
+    selects that planet as a destination on your travel plan.
+  Under the hood:
+  * Fixed a link in the README to point to the proper location.
+  * Made a few small code improvements that were found by
+    various compilers and linters.
+  * Added new PR labels to the contributing guidelines file.
+  * Improved the printing of game data when using the command
+    line options.
+  * Added checks and warnings to overlapping derived condition
+    provider ranges.
+  * Added the std:: prefix to two calls to std::move.
+- Run spec-cleaner
+- Rebase fix-data-path.patch and rename to 
+  endless-sky-fix-data-path.patch
+- Add BuildRequires libuuid-devel and pkgconfig
+- Drop endless-sky-rpmlintrc, was needed for openSUSE 13.1
+- Fix scons rpmlint warning
+- Use CXXFLAGS Wno-error=dangling-reference not for openSUSE Leap,
+  it is unknown for openSUSE Leap
+
+-------------------------------------------------------------------
+Wed Apr 12 10:16:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 8235.patch: upstream PR 8235 to fix build using GCC 13.
+
+-------------------------------------------------------------------
+Fri Dec  3 15:47:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Drop upstream fixed patches:
+  * string-include.patch
+  * 0001-build-fix-compilation-on-gcc11.patch
+- Rebase fix-data-path.patch
+
+-------------------------------------------------------------------
+Thu Oct 28 08:37:50 UTC 2021 - Sebastien CHAVAUX <seb95.scou@gmail.com>
+
+- Update to 0.9.14:
+  * Numerous typo fixes
+  * Fixes to how several missions are offered to the player
+  * Better suggestions of possibly incomplete conditions in some missions
+    "visit" dialogues
+  * Differentiation between two Remnant engines' reversing capabilities
+  * Certain Navy shipyards now stock the Dropship
+  * Ships that have no specified "drag" attribute default to 100,
+    rather than causing crashes
+  * Weaponry that alters the ship's status conditions (e.g. ionization)
+    now respects the required minimum value of 0
+  * The "interrupt fast-forward" preference defaults to off
+
+-------------------------------------------------------------------
+Mon May 31 17:03:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 build fix:
+  * 0001-build-fix-compilation-on-gcc11.patch
+
+-------------------------------------------------------------------
+Tue Aug 11 06:55:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add string-include.patch to fix build
+
+-------------------------------------------------------------------
+Sat May 23 22:24:53 UTC 2020 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to 0.9.12:
+  * Bug fixes, including a bug that caused the game to crash on
+    startup due to unsupported VSync settings.
+  * Buying & selling items at maximum depreciation now accounts for
+    the 7-day grace period.
+  * Missions will no longer complete if a required passenger isn’t
+    landed with you.
+  * Several new star images have been added, as well as additional
+    jobs for players with many bunks.
+  * Tweaks to the balance of solar panels and some Coalition
+    outfits, and to the fleets found in Hai space.
+- Update to 0.9.11:
+  * Rebalancing of human medium warships and transports.
+  * Additions:
+  * A new region, the Graveyard, can be found near the Ember Waste.
+  * New Remnant ships, outfits, and missions.
+  * A new Wanderer transport.
+  * The ability to modify the systems wherein a government scans
+    ships for contraband, and the displayed government name.
+  * Enabling secondary weapons to consume more than one unit of
+    ammunition per shot.
+  * Support for interpolation and character replacement in hails.
+  * Support for algebraic condition expressions of arbitrary
+    length.
+  * Support for disabling specific spaceport news items.
+- Fix empty post/postun rpmlint warnings.
+
+-------------------------------------------------------------------
+Thu Jan 30 14:16:34 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Respect %optflags, fix debuginfo generation.
+
+-------------------------------------------------------------------
+Sun Oct 06 20:00:00 MDT 2019 - buckyballreaction@gmail.com
+
+- Update to 0.9.10
+  * Fixed a bug where cargo was loaded onto ships with 0 cargo space.
+  * Fixed a crash when mission NPCs have no system defined.
+  * Avoiding a situation where the player could get stuck in Remnant space.
+  * Depreciation now happens slower and includes a "grace period."
+  * Improved the AI logic for when escorts stop to refuel.
+
+-------------------------------------------------------------------
+Mon Dec 17 17:35:20 UTC 2018 - sparschauer@suse.de
+
+- Prevent that the game blocks the main menu buttons due to broken
+  symlinks in the data directory caused by brp-25-symlink not handling
+  spaces in paths properly (boo#1119628, boo#1119674)
+  * Let fdupes create hardlinks instead of symlinks as a workaround
+
+-------------------------------------------------------------------
+Sat Jul 15 14:01:56 UTC 2017 - mailaender@opensuse.org
+
+- Update to 0.9.6
+  * Fixed a depreciation bug causing random prices for outfits on some systems.
+  * Eliminated "death benefits." Depreciation is now the main way that plundering is balanced.
+  * Depreciation happens about 3 times slower than it did in 0.9.5.
+  * Coalition jobs now "repeat" instead of only being offered once.
+  * Fixed a bug where "surveillance" ships scan the player's ship over and over.
+  * Added images for all the Coalition and Heliarch outfits.
+
+-------------------------------------------------------------------
+Sat Nov 19 17:08:57 UTC 2016 - mailaender@opensuse.org
+
+- update to 0.9.4
+  * Vara Ke'sok no longer starts out as an Unfettered planet.
+  * Fixed a hang that occurred when maximizing the window.
+  * Systems created by game events are now properly connected to the map.
+  * The info panel can now handle ships with many more outfits or weapons.
+- drop appdata.patch (applied upstream)
+
+-------------------------------------------------------------------
+Sat Aug 27 14:27:54 UTC 2016 - mailaender@opensuse.org
+
+- add license, copyright information and changelog
+- add an appdata.xml file
+
+-------------------------------------------------------------------
+Sun Aug 14 11:33:56 UTC 2016 - mimi.vx@gmail.com
+
+- update to 0.9.2
+- see changelog file to list of changes
+
+-------------------------------------------------------------------
+Wed Dec  9 13:27:32 UTC 2015 - rpm@fthiessen.de
+
+- Update to 0.8.8:
+  * Fixed various bugs with how the game determines which ship is
+    your "flagship."
+  * The "Uninhabited" government on Ruin will no longer fine the
+    player for illegal outfits.
+  * Fixed a crash that could happen while taking off if missions
+    failed due to lack of space.
+  * For detailed changes see changelog in tar-ball.
+
+-------------------------------------------------------------------
+Sat Nov 21 14:47:06 UTC 2015 - mailaender@opensuse.org
+
+- update to 0.8.7
+- use scons to install the game
+- Added fix-data-path.patch to fix installation path of data.
+
+-------------------------------------------------------------------
+Sat Oct 31 06:51:27 UTC 2015 - mailaender@opensuse.org
+
+- initial packaging
+

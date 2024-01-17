@@ -1,0 +1,9 @@
+<package name="monitoring-plugins-nwc_health" project="openSUSE:Factory">
+  <title>This plugin checks the health of network components and interfaces</title>
+  <description>This plugin checks the hardware health and various interface metrics of
+network components like switches and routers.
+
+</description>
+  <devel project="server:monitoring" package="monitoring-plugins-nwc_health"/>
+  <url>https://labs.consol.de/nagios/check_nwc_health/</url>
+</package>

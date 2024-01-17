@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Tue Nov  7 19:39:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Fix compatibility with ``Flask 3.0`` -- the consequence is
+    that the deprecated and incompatible ``request_ctx`` has been
+    removed.
+  * Fix bug in ``:meth:pytest_flask.fixtures.live_server``
+  * where ``SESSION_COOKIE_DOMAIN`` was set to false due to
+  * ``original_server_name`` defaulting to "localhost".
+  * The new default is "localhost.localdomain".
+  * Drop support for python 3.6 and 3.5
+
+-------------------------------------------------------------------
+Sun May 14 09:45:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Remove deprecated ``:meth:live_server.url``
+  * fixture ``request_ctx is now deprecated``
+    and will be removed in the future
+  * ``JSONReponse.json`` removed in favour of
+    ``Werkzeug.wrappers.Response.json``
+  * Speedup live server start time. Use `socket` instead of
+    server pulling to  check server availability and add new
+    ``--live-server-wait`` option to set the live server wait
+    timeout.
+
+-------------------------------------------------------------------
+Mon Mar 16 08:31:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.0:
+  * live_server is now session-scoped by default.
+  * pytest 5.2 or later is now required.
+  * Python 2.7 and 3.4 are no longer supported.
+
+-------------------------------------------------------------------
+Thu Feb 20 07:18:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.15.1:
+  * Fix ImportError with Werkzeug 1.0.0rc1 (#105).
+
+-------------------------------------------------------------------
+Fri Jul 19 15:06:08 UTC 2019 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v0.15.0 (2019-07-19)
+  + Initial release.

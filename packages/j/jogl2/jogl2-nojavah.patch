@@ -1,0 +1,141 @@
+diff -urEbwB jogl-v2.3.2/make/build-jogl.xml jogl-v2.3.2.new/make/build-jogl.xml
+--- jogl-v2.3.2/make/build-jogl.xml	2018-01-10 07:46:34.839761351 +0100
++++ jogl-v2.3.2.new/make/build-jogl.xml	2018-01-10 09:27:59.566965673 +0100
+@@ -1072,7 +1072,7 @@
+       -->
+     <target name="java.compile.firstpass" depends="java.generate,java.generate.cg">
+         <!-- Perform the first pass Java compile. -->
+-        <javac destdir="${classes}"
++        <javac destdir="${classes}" nativeheaderdir="${src.generated.c.libav}"
+                includes="com/jogamp/opengl/fixedfunc/** com/jogamp/opengl/GLDrawableFactory.java com/jogamp/opengl/GLDrawable.java com/jogamp/opengl/GLContext.java com/jogamp/opengl/GL.java com/jogamp/opengl/GL2ES1.java com/jogamp/opengl/GLES1.java com/jogamp/opengl/GL2ES2.java com/jogamp/opengl/GLES2.java com/jogamp/opengl/GL2ES3.java com/jogamp/opengl/GL2GL3.java com/jogamp/opengl/GL2.java com/jogamp/opengl/GL3ES3.java com/jogamp/opengl/GL3.java com/jogamp/opengl/GL3bc.java com/jogamp/opengl/GL4ES3.java com/jogamp/opengl/GLES3.java com/jogamp/opengl/GL4.java com/jogamp/opengl/GL4bc.java"
+                fork="yes"
+                includeAntRuntime="false"
+@@ -1108,7 +1108,7 @@
+ 
+     <target name="java.compile.secondpass.javase">
+         <!-- Perform the second pass Java compile; everything except portion of fixed function emulation depending on generated code. -->
+-        <javac destdir="${classes}"
++        <javac destdir="${classes}" nativeheaderdir="${src.generated.c.libav}"
+                excludes="com/jogamp/opengl/util/glsl/fixedfunc/FixedFuncUtil.java,${java.excludes.all},${java.part.android},${java.part.openal}"
+                fork="yes"
+                includeAntRuntime="false"
+@@ -1681,9 +1681,9 @@
+     </macrodef>  
+ 
+     <target name="c.build.jogl.prepare">
+-      <javah destdir="${build.jogl}/gensrc/native/jogl" classpath="${javah.classpath}" class="jogamp.opengl.GLDebugMessageHandler, jogamp.opengl.GLContextImpl" />
+-      <javah destdir="${src.generated.c.libav}" classpath="${javah.classpath}" class="jogamp.opengl.util.av.impl.FFMPEGStaticNatives,jogamp.opengl.util.av.impl.FFMPEGv08Natives,jogamp.opengl.util.av.impl.FFMPEGv09Natives,jogamp.opengl.util.av.impl.FFMPEGv10Natives,jogamp.opengl.util.av.impl.FFMPEGv11Natives" />
+-      <javah destdir="${src.generated.c.openmax}" classpath="${javah.classpath}" class="jogamp.opengl.util.av.impl.OMXGLMediaPlayer" />
++      <!-- <javah destdir="${build.jogl}/gensrc/native/jogl" classpath="${javah.classpath}" class="jogamp.opengl.GLDebugMessageHandler, jogamp.opengl.GLContextImpl" /> -->
++      <!-- <javah destdir="${src.generated.c.libav}" classpath="${javah.classpath}" class="jogamp.opengl.util.av.impl.FFMPEGStaticNatives,jogamp.opengl.util.av.impl.FFMPEGv08Natives,jogamp.opengl.util.av.impl.FFMPEGv09Natives,jogamp.opengl.util.av.impl.FFMPEGv10Natives,jogamp.opengl.util.av.impl.FFMPEGv11Natives" /> -->
++      <!-- <javah destdir="${src.generated.c.openmax}" classpath="${javah.classpath}" class="jogamp.opengl.util.av.impl.OMXGLMediaPlayer" /> -->
+       <!-- Generate the waveout Mixer header -->
+       <!-- FIXME: this is temporary until we move this to another workspace -->
+       <!--javah destdir="${build.jogl}/gensrc/native/jogl" classpath="${javah.classpath}" class="com.jogamp.audio.windows.waveout.Mixer" /-->
+diff -urEbwB jogl-v2.3.2/make/build-nativewindow.xml jogl-v2.3.2.new/make/build-nativewindow.xml
+--- jogl-v2.3.2/make/build-nativewindow.xml	2018-01-10 07:46:34.843761351 +0100
++++ jogl-v2.3.2.new/make/build-nativewindow.xml	2018-01-10 07:53:53.622667874 +0100
+@@ -312,7 +312,7 @@
+       -->
+     <target name="java.compile.javase" depends="java.generate">
+         <!-- Perform the second pass Java compile; everything. -->
+-        <javac destdir="${classes}"
++        <javac destdir="${classes}" nativeheaderdir="${src.generated.c}/X11"
+                excludes="${java.excludes.all}"
+                fork="yes"
+                includeAntRuntime="false"
+@@ -775,7 +775,7 @@
+     </target>
+ 
+     <target name="c.build.nativewindow.windowlib.x11" if="isX11">
+-      <javah destdir="${src.generated.c}/X11" classpath="${javah.classpath}" class="jogamp.nativewindow.x11.X11Lib, jogamp.nativewindow.x11.X11Util" />
++      <!-- <javah destdir="${src.generated.c}/X11" classpath="${javah.classpath}" class="jogamp.nativewindow.x11.X11Lib, jogamp.nativewindow.x11.X11Util" /> -->
+ 
+       <c.build c.compiler.src.files="c.src.files.x11"
+                output.lib.name="nativewindow_x11"
+@@ -784,7 +784,7 @@
+     </target>
+ 
+     <target name="c.build.nativewindow.windowlib.windows" if="isWindows">
+-      <javah destdir="${src.generated.c}/Windows" classpath="${javah.classpath}" class="jogamp.nativewindow.windows.GDI, jogamp.nativewindow.windows.GDIUtil" />
++      <!-- <javah destdir="${src.generated.c}/Windows" classpath="${javah.classpath}" class="jogamp.nativewindow.windows.GDI, jogamp.nativewindow.windows.GDIUtil" /> -->
+ 
+       <c.build c.compiler.src.files="c.src.files.windows"
+                output.lib.name="nativewindow_win32"
+@@ -793,7 +793,7 @@
+     </target>
+ 
+     <target name="c.build.nativewindow.windowlib.macosx" if="isOSX">
+-      <javah destdir="${src.generated.c}/MacOSX" classpath="${javah.classpath}" class="jogamp.nativewindow.macosx.OSXUtil, jogamp.nativewindow.jawt.macosx.MacOSXJAWTWindow" />
++      <!-- <javah destdir="${src.generated.c}/MacOSX" classpath="${javah.classpath}" class="jogamp.nativewindow.macosx.OSXUtil, jogamp.nativewindow.jawt.macosx.MacOSXJAWTWindow" /> -->
+ 
+       <c.build c.compiler.src.files="c.src.files.macosx"
+                output.lib.name="nativewindow_macosx"
+diff -urEbwB jogl-v2.3.2/make/build-newt.xml jogl-v2.3.2.new/make/build-newt.xml
+--- jogl-v2.3.2/make/build-newt.xml	2018-01-10 07:46:34.843761351 +0100
++++ jogl-v2.3.2.new/make/build-newt.xml	2018-01-10 09:41:33.084463345 +0100
+@@ -232,7 +232,7 @@
+        - Compile the original and generated source.
+       -->
+     <target name="java.compile.javase">
+-        <javac destdir="${classes}"
++        <javac destdir="${classes}" nativeheaderdir="${src.generated.c}/X11"
+                excludes="${java.excludes.all} ${java.part.driver.android}"
+                fork="yes"
+                includeAntRuntime="false"
+@@ -248,7 +248,7 @@
+     </target>
+ 
+     <target name="java.compile.android" if="android-jars.available">
+-        <javac destdir="${classes}"
++        <javac destdir="${classes}" nativeheaderdir="${src.generated.c}/Android"
+                excludes="${java.excludes.all}"
+                fork="yes"
+                includeAntRuntime="false"
+@@ -745,7 +745,7 @@
+     </macrodef>
+ 
+     <target name="c.build.newt.prepare">
+-      <javah destdir="${src.generated.c}/KD"          classpath="${javah.classpath}" class="jogamp.newt.driver.kd.WindowDriver" />
++      <!-- <javah destdir="${src.generated.c}/KD"          classpath="${javah.classpath}" class="jogamp.newt.driver.kd.WindowDriver" />
+ 
+       <javah destdir="${src.generated.c}/IntelGDL"    classpath="${javah.classpath}" class="jogamp.newt.driver.intel.gdl.DisplayDriver, jogamp.newt.driver.intel.gdl.ScreenDriver, jogamp.newt.driver.intel.gdl.WindowDriver" />
+ 
+@@ -754,11 +754,11 @@
+ 
+       <javah destdir="${src.generated.c}/Windows"     classpath="${javah.classpath}" class="jogamp.newt.driver.windows.WindowDriver, jogamp.newt.driver.windows.ScreenDriver, jogamp.newt.driver.windows.DisplayDriver" />
+       <javah destdir="${src.generated.c}/MacOSX"      classpath="${javah.classpath}" class="jogamp.newt.driver.macosx.WindowDriver, jogamp.newt.driver.macosx.ScreenDriver, jogamp.newt.driver.macosx.DisplayDriver" />
+-      <javah destdir="${src.generated.c}/X11"         classpath="${javah.classpath}" class="jogamp.newt.driver.x11.WindowDriver, jogamp.newt.driver.x11.ScreenDriver, jogamp.newt.driver.x11.RandR11, jogamp.newt.driver.x11.RandR13, jogamp.newt.driver.x11.DisplayDriver" />
++      <javah destdir="${src.generated.c}/X11"         classpath="${javah.classpath}" class="jogamp.newt.driver.x11.WindowDriver, jogamp.newt.driver.x11.ScreenDriver, jogamp.newt.driver.x11.RandR11, jogamp.newt.driver.x11.RandR13, jogamp.newt.driver.x11.DisplayDriver" /> -->
+     </target>
+ 
+     <target name="c.build.newt.prepare.android" if="isAndroid">
+-      <javah destdir="${src.generated.c}/Android"     classpath="${javah.classpath}:${android.jar}" class="jogamp.newt.driver.android.WindowDriver" />
++      <!-- <javah destdir="${src.generated.c}/Android"     classpath="${javah.classpath}:${android.jar}" class="jogamp.newt.driver.android.WindowDriver" /> -->
+     </target>
+ 
+     <target name="c.build.newt.windowlib" unless="setup.nonatives">
+diff -urEbwB jogl-v2.3.2/src/jogl/classes/jogamp/opengl/GLDebugMessageHandler.java jogl-v2.3.2.new/src/jogl/classes/jogamp/opengl/GLDebugMessageHandler.java
+--- jogl-v2.3.2/src/jogl/classes/jogamp/opengl/GLDebugMessageHandler.java	2018-01-10 07:46:34.911761351 +0100
++++ jogl-v2.3.2.new/src/jogl/classes/jogamp/opengl/GLDebugMessageHandler.java	2018-01-10 09:13:50.959782864 +0100
+@@ -27,6 +27,7 @@
+  */
+ package jogamp.opengl;
+ 
++import java.lang.annotation.Native;
+ import java.security.AccessController;
+ import java.security.PrivilegedAction;
+ import java.util.ArrayList;
+@@ -61,9 +62,9 @@
+ public class GLDebugMessageHandler {
+     private static final boolean DEBUG = Debug.debug("GLDebugMessageHandler");
+ 
+-    private static final int EXT_KHR = 1;
+-    private static final int EXT_ARB = 2;
+-    private static final int EXT_AMD = 3;
++    @Native private static final int EXT_KHR = 1;
++    @Native private static final int EXT_ARB = 2;
++    @Native private static final int EXT_AMD = 3;
+ 
+     static {
+         if ( !initIDs0() ) {

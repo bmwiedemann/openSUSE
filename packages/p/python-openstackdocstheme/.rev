@@ -1,0 +1,373 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b44a036fe7ebedf34864eee74e091bc</srcmd5>
+    <version>1.3.0</version>
+    <time>1473103169</time>
+    <user>dimstar_suse</user>
+    <comment>Needed as BuildRequires for clients</comment>
+    <requestid>412833</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18b4a59f51ae802f2241d2719bbf056a</srcmd5>
+    <version>1.5.0</version>
+    <time>1475242259</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.5.0
+  * API References dropdown menu
+  * Allow automatic toc to be disabled
+
+- update to version 1.4.0
+  * Use HTTPS for external deps
+  * Increase indent level of doc top contents
+  * Create empty folder for custom font files
+  * Change summit video URL
+  * Actually include custom JS files
+  * Broken Link
+  * Allow the bug title to be customisable
+  * Fix text font-family of admonitions.
+  * Update the Administrator Guide link
+  * Add appropriate order list styles
+  * Make ``something`` more highlighted
+  * Allow for inclusion of custom JS files
+  * Release note for new sidebar feature
+  * Clarify uses for this theme
+  * Update Release Notes
+  * Updated from global requirements
+  * Set side bar content to be configurable
+  * Adds release notes items for next release
+  * Allow cssfiles added by sphinx extensions</comment>
+    <requestid>426106</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d93de7d46d01589fa783621e092c02c4</srcmd5>
+    <version>1.6.1</version>
+    <time>1487680844</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.6.1:
+  - Add trove classifiers for Python
+  - Allow to build docs without git command
+  - Update test API Ref
+  - Add Constraints support
+  - Fix tox setup
+  - Includes checklist when filing a bug for osmanuals
+  - Show team and repo badges on README
+  - Enable release notes translation
+  - Install required packages
+  - Fix typo: remove redundant 'the'
+  - Updated from global requirements
+  - Removed minimized files
+  - Update requirements
+  - [www] update page header links
+
+- Update _service</comment>
+    <requestid>456075</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b1711d7746a334dbff06045ffade882e</srcmd5>
+    <version>1.16.1</version>
+    <time>1503927139</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-Break-cycle-dependency-with-reno.patch
+
+- update to version 1.16.1
+  - Fix sorting of git versions
+  - Standardise header styling
+  - PDF support for sample document with font
+  - Enable some off-by-default checks
+  - Cleanup conf.py
+  - automate some of the extension setup
+  - Update 2 documentation URLs according to doc migration
+  - CSS: Add margin-left to &lt;dd&gt;
+  - Fix Added / Changed / Deprecated notices
+  - README: Update configuration of openstackdocstheme
+  - Add note in README about Python 3 changes
+  - Require bug_project setting
+  - Update hacking to current version
+  - Add alignment styling for figures and images
+  - Change name of checkbuild testenv to buildpdf for clarity
+  - Fix search.html page script errors
+  - Fix missing role_id
+  - Allow using openstackdocstheme without git installed
+  - Updates &quot;Contents&quot; to &quot;Project home page&quot; to better match existing
+  - Update css markups for newer Sphinx
+  - Do not display title string of page local TOC
+  - Fix links in drop-down menu under Join; add https
+  - move the localtoc for the page into the sidebar
+  - remove smooth scrolling
+  - Add spaces in demo for deprecation notices
+  - Declare parallel reading safe
+  - add a comment to all output HTML pages showing the input file</comment>
+    <requestid>515731</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>15244d859710ffdd33048769cc0bd2f1</srcmd5>
+    <version>1.17.0</version>
+    <time>1511817398</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.17.0
+  - Documents how to set conf.py for PDF generation
+  - Remove navigation.html
+  - Fix link to openstackdays
+  - Update links in README
+  - Update the configuration of generating a PDF document
+  - Break cycle dependency with reno
+  - Cleanup setup.cfg
+  - Sync language list with openstack-manuals repo
+  - Add support for sphinx sidebar role
+  - [www] Fix link to COA
+  - Bring back local search
+  - Break cycle dependency with os-api-ref
+  - Remove stray characters from demo
+  - Link to latest version
+  - Updated from global requirements
+  - show release series names not version tags
+- drop 0001-Break-cycle-dependency-with-reno.patch,
+  0001-Break-cycle-dependency-with-os-api-ref.patch: upstream</comment>
+    <requestid>545337</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1f883a8a12d16756fbc961972fbfe6e6</srcmd5>
+    <version>1.18.1</version>
+    <time>1519747034</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.18.1
+  - Attempt to guess valid Git URLs
+  - trivial: Remove use of 'Application.{warn,info}'
+  - Remove -U from pip install
+  - Adds -p option in mkdir for buildpdf tox env
+  - Fix giturl parsing
+  - No red with double backticks markup
+  - Remove setting of version/release from releasenotes
+  - Revert &quot;Fix the incorrect git source url&quot;
+  - Add zuulv3 native job
+  - Adds Turkish landing page to sidebartoc_menu
+  - bindep: Add dependencies for PDFs on Fedora
+  - gitignore: Ignore more files
+  - Avoid tox_install.sh for constraints support
+  - Do not print the release if empty
+  - Fix the incorrect git source url
+  - Updated from global requirements
+  - Replace the http links with the right ones in docs
+- Switch to stable/queens spec template
+- Add 0001-Fix-typo-in-logger.warning-call.patch</comment>
+    <requestid>579517</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>efbae8b3aebbf9b1dbb00d40b479ff8d</srcmd5>
+    <version>1.22.0</version>
+    <time>1536327501</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633087</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6e6ed57dd0035058b56f2720a46c5cd</srcmd5>
+    <version>1.29.2</version>
+    <time>1555053218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.29.2
+  - Add options for sphinx-build -W in docstheme-build-translated.sh
+  - Catch OSError when trying to get the last_update from git
+  - Change openstack-dev to openstack-discuss
+  - Add starlingxdocs theme support
+  - Translations: Handle directories
+  - ensure repository_name is always set
+  - Do not show badge for master only repos
+  - import zuul job settings from project-config
+  - Fix the incorrect storyboard url
+  - Fix use_storyboard
+  - Silence! A sequel
+  - Readd get_openstack_logo_path
+  - Fix regressions introduced in 1.25.0
+  - Fix project-navigator link
+  - Import tools for building translated documents
+  - Exit trap cleanup in docstheme-build-translated.sh
+  - Make root title customizable
+  - Use sphinx-build everywhere
+  - Move bootstrap modifications to 'combined.css'
+  - Import build-openstack-api-ref
+  - log details of html context
+  - pass useStoryboard to logABug
+  - Add an option to disable global TOC section
+  - Make a bare-bones starlingxdocs theme
+  - use git modification timestamps as last-updated time for each page
+  - Fix typo
+  - switch documentation job to new PTI
+  - Remove example of deprecated app.info
+  - The theme is openstackdocs</comment>
+    <requestid>692846</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>de0e9ea95058b8b99c705c9eff6eef76</srcmd5>
+    <version>1.31.1</version>
+    <time>1572883499</time>
+    <user>dimstar_suse</user>
+    <comment>- added 0001-Catch-any-exception-when-trying-to-call-git.patch
+- update to version 1.31.1
+  - js: Remove dead or unused JS
+  - Fix version dropdown
+  - Make 'docstheme-build-pdf' executable
+  - Add missing fonts for pdf build in Sphinx 2.0
+  - Update for OpenDev change
+  - Remove a heap of dead CSS rules
+  - css: Use https links (StarlingX)
+  - css: Don't use bold text in titles (StarlingX)
+  - css: General cleanup
+  - Add missing 'role=&quot;main&quot;' attribute
+  - Update api-ref location
+  - Allow to override build date with SOURCE_DATE_EPOCH
+  - OpenDev Migration Patch
+  - Prevent InvocationError on non-existent files
+  - Add 'docstheme-build-pdf' script
+  - Add reno for recent CSS cleanups
+  - Add table styling
+  - css: Use ellipsis for long titles in sidebar (StarlingX)
+  - Update API sidebar
+  - css: Add symlinks for openstack logos
+  - Note External Link Helper is not compatible with project only master brach
+  - Removed 'combined.css' for 'starlingxdocs' theme
+  - css: Move bootstrap modifications to 'combined.css' (StarlingX)
+  - setup.cfg: Remove remanents of 'build_sphinx' usage
+  - js: Fix some comments
+  - Reference OpenStack logo in openstackdocstheme</comment>
+    <requestid>736643</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c23de094579ca4bbb96e3798f5fc3401</srcmd5>
+    <version>1.31.1</version>
+    <time>1587325158</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only client</comment>
+    <requestid>784195</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>32616aae7b6719e850f143ba95de19dc</srcmd5>
+    <version>1.31.2</version>
+    <time>1590649506</time>
+    <user>maxlin_factory</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803580</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bf4f0c27bffaa9ef2be99b1c67908461</srcmd5>
+    <version>2.2.5</version>
+    <time>1603369205</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841198</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>909429cc4959c2ed6b026dd9821a8d48</srcmd5>
+    <version>2.2.7</version>
+    <time>1620239973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889984</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2053ce39ac12ba77279b8587e8c9ae1c</srcmd5>
+    <version>2.2.7</version>
+    <time>1628751672</time>
+    <user>RBrownSUSE</user>
+    <comment>- add 0001-sphinx-4.0-Fix-sphinx.ext.extlinks.make_link_role-ca.patch:
+  compat with sphinx 4.x</comment>
+    <requestid>911095</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0596a4872bee59d7ef292657af53d634</srcmd5>
+    <version>2.3.1</version>
+    <time>1639685961</time>
+    <user>dimstar_suse</user>
+    <comment>- removed 0001-sphinx-4.0-Fix-sphinx.ext.extlinks.make_link_role-ca.patch
+- update to version 2.3.1
+  - Inherit from base &quot;basic&quot; template
+  - Change to OFTC
+  - Page header fix with Sphinx4
+  - trivial: Fix indentation
+  - setup.cfg: Replace dashes with underscores
+  - sphinx 4.0: Fix sphinx.ext.extlinks.make_link_role call
+  - Use TOX_CONSTRAINTS_FILE
+  - tox: Toggle 'usedevelop'
+  - sphinx 4.0: Handle HTML 5 changes
+  - Move flake8 as a pre-commit local target.</comment>
+    <requestid>940196</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a97a3d5e16deedb0137421bffe8b7a4e</srcmd5>
+    <version>2.4.0</version>
+    <time>1652389058</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.0
+  - Fix OpenStack project &quot;Search&quot; pages
+  - Updated Nav Menu</comment>
+    <requestid>976051</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>1ac351ae96da50ec0a6fb52f99405578</srcmd5>
+    <version>2.4.0</version>
+    <time>1652717251</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build against python 3.10</comment>
+    <requestid>977088</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>362023456800f6556f2d9c8506e778f1</srcmd5>
+    <version>2.4.0</version>
+    <time>1657809200</time>
+    <user>dimstar_suse</user>
+    <comment>- update check section to not run setup.py test anymore</comment>
+    <requestid>988926</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>590381a3bdbea574969ad152535b629b</srcmd5>
+    <version>3.0.0</version>
+    <time>1664797468</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix broken link for Marketplace in header</comment>
+    <requestid>1007442</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a555d0c39b023c21bad822e592747a80</srcmd5>
+    <version>3.0.1</version>
+    <time>1673021090</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.1
+  - Update included page footers to use current URLs</comment>
+    <requestid>1056002</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>901fcb8182b79c5d6d1e8deab210770b</srcmd5>
+    <version>3.1.0</version>
+    <time>1679520525</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.1.0
+  - Only hide top-level duplicated title</comment>
+    <requestid>1073025</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a5ae40be86942024287f0710f34509df</srcmd5>
+    <version>3.1.1</version>
+    <time>1690469444</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.1.1
+  - Remove errant character
+  - Replace ampersand with HTML characters
+  - Remove nested 'li'
+  - Remove invalid attributes
+  - Remove 'type' attribute of &lt;script&gt; element</comment>
+    <requestid>1099139</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>dc77ba295617ae2623a2e36f53e20fb5</srcmd5>
+    <version>3.2.0</version>
+    <time>1704660049</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.0
+  - Fix stylesheet setting in theme.conf files
+  - Sphinx 7.2.0 updates
+  - Stop including Sphinx' standard JS files in script_footer.html</comment>
+    <requestid>1137424</requestid>
+  </revision>
+</revisionlist>

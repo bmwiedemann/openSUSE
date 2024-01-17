@@ -1,0 +1,41 @@
+Index: sphinxcontrib-documentedlist-0.6/setup.py
+===================================================================
+--- sphinxcontrib-documentedlist-0.6.orig/setup.py
++++ sphinxcontrib-documentedlist-0.6/setup.py
+@@ -7,7 +7,7 @@ import os
+ def read(fname):
+     return open(os.path.join(os.path.dirname(__file__), fname)).read()
+ 
+-requires = ['Sphinx>=0.6', 'six']
++requires = ['Sphinx>=0.6']
+ 
+ setup(
+     name='sphinxcontrib-documentedlist',
+Index: sphinxcontrib-documentedlist-0.6/sphinxcontrib/documentedlist.py
+===================================================================
+--- sphinxcontrib-documentedlist-0.6.orig/sphinxcontrib/documentedlist.py
++++ sphinxcontrib-documentedlist-0.6/sphinxcontrib/documentedlist.py
+@@ -6,7 +6,6 @@
+ # sphinxcontrib's LICENSE file for the full text.
+ 
+ import shlex
+-from six import text_type
+ from docutils import nodes
+ from docutils.parsers.rst import directives
+ from docutils.parsers.rst.directives.tables import Table
+@@ -102,7 +101,7 @@ class DocumentedListDirective(Table):
+                     entry = nodes.entry(morecols=morecols)
+                 else:
+                     entry = nodes.entry()
+-                para = nodes.paragraph(text=text_type(cell))
++                para = nodes.paragraph(text=str(cell))
+                 entry += para
+                 trow += entry
+             if self.descend and sub_table_data:
+Index: sphinxcontrib-documentedlist-0.6/sphinxcontrib_documentedlist.egg-info/requires.txt
+===================================================================
+--- sphinxcontrib-documentedlist-0.6.orig/sphinxcontrib_documentedlist.egg-info/requires.txt
++++ sphinxcontrib-documentedlist-0.6/sphinxcontrib_documentedlist.egg-info/requires.txt
+@@ -1,2 +1 @@
+ Sphinx>=0.6
+-six

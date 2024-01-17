@@ -1,0 +1,11 @@
+# See bug bnc#541379
+--- lib/readline/bind.c
++++ lib/readline/bind.c	2011-03-04 15:00:17.332426313 +0000
+@@ -1485,6 +1485,7 @@ static const struct {
+ #if defined (VISIBLE_STATS)
+   { "visible-stats",		&rl_visible_stats,		0 },
+ #endif /* VISIBLE_STATS */
++  { "meta-mode",		&_rl_enable_meta,		0 },
+   { (char *)NULL, (int *)NULL, 0 }
+ };
+ 

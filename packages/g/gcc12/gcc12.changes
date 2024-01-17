@@ -1,0 +1,329 @@
+-------------------------------------------------------------------
+Thu Aug 17 06:37:28 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Add gcc12-aarch64-bsc1214052.patch to fix -fstack-protector issues
+  with variable length stack allocations on aarch64.
+  Fixes CVE-2023-4039.  [bsc#1214052]
+
+-------------------------------------------------------------------
+Mon May  8 12:58:20 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 12.3 release, 0c61aa720e62f1baf0bfd178e283, git1204
+  * includes regression bug fixes
+- Add gcc12-testsuite-fixes.patch to pick testsuite related fixes
+  from the branch after the release.
+
+-------------------------------------------------------------------
+Wed Mar 29 14:27:43 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Speed up builds with --enable-link-serialization.
+
+-------------------------------------------------------------------
+Tue Jan 24 11:03:08 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 193f7e62815b4089dfaed4c2bd3, git749
+
+-------------------------------------------------------------------
+Tue Dec 27 10:43:05 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Don't rely on %usrmerged, set it based on standard %suse_version
+
+-------------------------------------------------------------------
+Thu Dec 22 11:45:17 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, e4b5fec75aa8d0d01f6e042ec28, git696
+  * remove gcc12-fifo-jobserver-support.patch which is now
+    included upstream
+
+-------------------------------------------------------------------
+Wed Nov 23 15:21:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid trailing backslashes at the end of post install scripts
+
+-------------------------------------------------------------------
+Thu Oct 20 08:20:31 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 0aaef83351473e8f4eb774f8f99, git537
+
+-------------------------------------------------------------------
+Thu Oct 13 09:59:52 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update embedded newlib to version 4.2.0
+  * includes newlib-4.1.0-aligned_alloc.patch
+
+-------------------------------------------------------------------
+Mon Sep 26 11:06:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add gcc12-riscv-inline-atomics.patch,
+  gcc12-riscv-pthread.patch: handle subword size inline atomics
+  (needed by several openSUSE packages)
+
+-------------------------------------------------------------------
+Wed Aug 31 12:38:20 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Prune invalid-license rpmlint warnings, the SLE12 codestream
+  doesn't get fixed but FF applies there, too.  [bsc#1185337]
+
+-------------------------------------------------------------------
+Tue Aug 30 10:09:37 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, e927d1cf141f221c5a32574bde0, git416 
+  * includes GCC 12.2 release
+  * includes recent fixes backported from trunk
+
+-------------------------------------------------------------------
+Mon Aug 29 07:48:00 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc12-fifo-jobserver-support.patch that adds support
+  for FIFO jobserver for make.
+
+-------------------------------------------------------------------
+Sun Aug 21 09:31:35 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Allow cross-pru-gcc12-bootstrap for armv7l architecture.
+  PRU architecture is used for real-time MCUs embedded into TI
+  armv7l and aarch64 SoCs. We need to have cross-pru-gcc12 for
+  armv7l in order to build both host applications and PRU firmware
+  during the same build.
+
+-------------------------------------------------------------------
+Fri Aug 12 11:06:04 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 6b7d570a5001bb79e34c0d1626a, git372
+  * includes release candidate for GCC 12.2
+
+-------------------------------------------------------------------
+Mon Aug  8 18:31:18 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Remove workaround for obs-service-format_spec_file.
+
+-------------------------------------------------------------------
+Tue Jul 26 06:46:45 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add Provides of libstdc++6-pp-gccN to libstdc++6-pp.  [bsc#1201848]
+
+-------------------------------------------------------------------
+Thu Jul 21 13:43:06 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 4f15d2234608e82159d030dadb1, git287
+  * includes build fixes when building against glibc 2.33.
+
+-------------------------------------------------------------------
+Wed Jun 29 13:54:45 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 7811663964aa7e31c3939b859bb, git215
+  * includes libgomp mold linker detection fix
+  * includes nvptx offload compiler build fix
+  * includes s390x tsan executable stack fix
+
+-------------------------------------------------------------------
+Tue May 17 07:03:41 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 325d82b08696da17fb26bd2e1b6b, git78
+
+-------------------------------------------------------------------
+Tue May 10 11:23:12 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable PRU architecture for AM335x platforms
+
+-------------------------------------------------------------------
+Fri May  6 07:11:46 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 12.1 release, 1ea978e3066ac565a1ec28a96a4d61, git27
+
+-------------------------------------------------------------------
+Fri Apr 29 17:05:16 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Bump to 621650f64fb6679c457c33abf27c925f28bddc62, git9
+  * GCC 12.1 release candidate
+
+-------------------------------------------------------------------
+Thu Apr 28 06:43:08 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Bump to f27848a5dc4d3b16cd4112bddcb59e0916eba623, git192706.
+- Switch ppc64le to the IEEE long double ABI by default in Factory.
+- Separate ppc64le from ppc/ppc64 specific configury.
+- Add _multibuild to gather all .spec files and reduce the number
+  of .changes files to one, autogenerated by change_spec.
+- Drop %ringdisabled handling.
+- Ada bootstrap now requires at least GCC 5, use GCC 7 on SLES 12
+  instead of GCC 4.8.
+
+-------------------------------------------------------------------
+Wed Apr 27 05:56:00 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Drop no longer necessary gcc12-d-workaround.patch
+
+-------------------------------------------------------------------
+Tue Apr 19 18:07:47 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to b85abacd902813daec5e44b97f275eb88caaf715, git192607.
+
+-------------------------------------------------------------------
+Wed Apr  6 09:09:57 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- On SLE15 and later, use make -Oline to synchronize configure output by
+  lines
+
+-------------------------------------------------------------------
+Wed Apr  6 07:22:15 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 86242eb1bd03eba82d8e22b01b16925d43bcc539, git192423.
+  Fixes aarch64 bootstrap issue (PR105144).
+
+-------------------------------------------------------------------
+Fri Apr  1 09:52:40 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Add provides/conflicts to glibc crosses since only one GCC version
+  for the same target can be installed at the same time.
+- Add provides/conflicts to libgccjit
+
+-------------------------------------------------------------------
+Mon Mar 28 09:23:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 9f37d31324f89d0b7b2abac988a976d121ae29c6, git192251.
+
+-------------------------------------------------------------------
+Wed Mar 23 19:21:40 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to e8cd3edc0fc6c02a732dcecf519c22d835e5f422, git192197.
+
+-------------------------------------------------------------------
+Thu Mar 17 08:25:45 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to c43cb355f25dd22133d15819bd6ec03d3d3939fd, git192094.
+
+-------------------------------------------------------------------
+Tue Mar 15 14:50:14 UTC 2022 - Michael Matz <matz@suse.com>
+
+- Add a proper barebones cross compiler for hppa
+  (named cross-hppa-gcc12-bootstrap).  Doesn't yet drop or
+  rename the icecream variant cross-hppa-gcc12, not does this
+  add a proper glibc-using cross compiler for hppa.
+
+-------------------------------------------------------------------
+Mon Mar  7 22:43:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop armv5tel, merge arm and armv6hl
+- use --with-cpu rather than specifying --with-arch/--with-tune 
+
+-------------------------------------------------------------------
+Mon Mar  7 11:00:49 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 40c1d4a07e5798c01e4364336c9617550744861d, git191925.
+
+-------------------------------------------------------------------
+Wed Mar  2 14:19:45 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Drop unconditional -gccN suffix from libstdc++6-pp packages and
+  instead use the same suffix as for the matching libstdc++6
+  package it supplements to ease future updates.  Add Obsoletes
+  to pre-existing libstdc++6-pp-gcc{9,10,11} packages to allow
+  updates to happen.  [bsc#1196107]
+
+-------------------------------------------------------------------
+Tue Mar  1 19:34:43 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use proper patch for SLE 15.x.
+
+-------------------------------------------------------------------
+Tue Mar  1 19:07:10 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 4a1c20df82c9e14478d79fbe1ae9690a36285ac1, git191847.
+
+-------------------------------------------------------------------
+Tue Mar  1 15:54:51 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add gcc12-d-workaround.patch that fixes issue with gcc11 compiler.
+
+-------------------------------------------------------------------
+Tue Mar  1 15:49:57 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 673a10aee1aafe0c99bfadc29a7458339bdddb3a, git191845.
+
+-------------------------------------------------------------------
+Mon Feb 28 09:40:45 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 37b583b9d7719f663656ce65ac822c11471fb540, git191817.
+-  Bump sover of libgo library. 
+
+-------------------------------------------------------------------
+Fri Feb 11 08:35:30 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, 165947fecf4d78c7effb0f1ee15e694 (git191602)
+- Add gcc12-PIE, similar to gcc-PIE but affecting gcc12 [bsc#1195628]
+
+-------------------------------------------------------------------
+Wed Feb  9 15:11:40 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Put libstdc++6-pp Requires on the shared library and drop
+  to Recoomends.
+
+-------------------------------------------------------------------
+Tue Feb  8 19:05:40 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 943d631abdd7be623cbf2b870d3d0cfef89f5f26, git191519.
+
+-------------------------------------------------------------------
+Mon Jan 24 12:34:42 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to trunk head, 978abe918f8c8deed28e92297d3c0cc (git191254)
+- Fix filenames in the following patches:
+  gcc11-amdgcn-disable-hot-cold-partitioning.patch,
+  gcc41-ppc32-retaddr.patch.
+
+-------------------------------------------------------------------
+Wed Jan 19 13:25:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 0bd247bbbe4cf396173f09eeec37e116e98f8471.
+- Fix filename in gcc10-amdgcn-llvm-as.patch.
+
+-------------------------------------------------------------------
+Wed Jan 19 07:52:54 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Remove sys/rseq.h from include-fixed
+
+-------------------------------------------------------------------
+Tue Jan 18 19:53:41 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Bump to 3c4a54adb2164315d18fd8980c0fc37eb3d22252.
+- Rebase patches after .cc renaming.
+
+-------------------------------------------------------------------
+Thu Jan 13 08:27:07 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- New package, inherits from gcc11
+  * Enable LSAN and TSAN for s390x target.
+  * Require gcc-d as dependency for proper bootstrap.
+  * Use gcc11-amdgcn-disable-hot-cold-partitioning.patch only conditionally
+    on older SUSE products.
+	* Add --enable-offload-defaulted to configure options.
+  * Include a couple of new header files.
+  * Do not require llvm11 for cross compilers (assembler was fixed
+    in latest LLVM releases), use llvm11 only on SLE 15.
+  * Remove unnecessary gcc10-foffload-default.patch patch.
+- Take patches inherited from GCC 11.
+  * gcc-add-defaultsspec.diff, add the ability to provide a specs
+    file that is read by default
+  * tls-no-direct.diff, avoid direct %fs references on x86 to not
+    slow down Xen
+  * gcc43-no-unwind-tables.diff, do not produce unwind tables for
+    CRT files
+  * gcc41-ppc32-retaddr.patch, fix expansion of __builtin_return_addr
+    for ppc, just a testcase
+  * gcc44-textdomain.patch, make translation files version specific
+    and adjust textdomain to find them
+  * gcc44-rename-info-files.patch, fix cross-references in info files
+    when renaming them to be version specific
+  * gcc48-libstdc++-api-reference.patch, fix link in the installed
+    libstdc++ html documentation
+  * gcc48-remove-mpfr-2.4.0-requirement.patch, make GCC work with
+    earlier mpfr versions on old products
+  * gcc5-no-return-gcc43-workaround.patch, make build work with
+    host gcc 4.3
+  * gcc7-remove-Wexpansion-to-defined-from-Wextra.patch, removes
+    new warning from -Wextra
+  * gcc7-avoid-fixinc-error.diff
+  * gcc9-reproducible-builds-buildid-for-checksum.patch
+  * gcc9-reproducible-builds.patch
+  * gcc10-amdgcn-llvm-as.patch

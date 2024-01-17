@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Jan  1 07:57:10 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 42:
+  See https://ngspice.sourceforge.io/news.html for details.
+
+-------------------------------------------------------------------
+Wed Apr  5 12:54:33 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial version of separate source package, split from ngspice
+  binary package. Corrected License.
+

@@ -1,0 +1,38 @@
+From: Egbert Eich <eich@suse.com>
+Date: Tue Nov 27 08:12:54 2018 +0100
+Subject: vnfs: SUSE - copy repo files to correct location
+Patch-mainline: Not yet
+Git-repo: https://github.com/warewulf/warewulf3
+Git-commit: d02fb91ab0acb0e3384241f5705f96521259b1e5
+References: 
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ vnfs/libexec/wwmkchroot/include-suse | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+diff --git a/vnfs/libexec/wwmkchroot/include-suse b/vnfs/libexec/wwmkchroot/include-suse
+index 83ae343..06a8c83 100644
+--- a/vnfs/libexec/wwmkchroot/include-suse
++++ b/vnfs/libexec/wwmkchroot/include-suse
+@@ -47,14 +47,13 @@ prechroot() {
+     rm -f $CHROOTDIR/dev/zero && mknod -m 666 $CHROOTDIR/dev/zero c 1 5
+ 
+     cp -rap /etc/zypp/zypper.conf $CHROOTDIR/etc
++    # Use repos of installed system
+     if [[ -z "$ZYP_MIRROR" && -z "$INSTALL_ISO" ]]; then
+-        cp -rap /etc/zypp/repos.d $CHROOTDIR/etc
+-        [ -d /etc/zypp/services.d ] && cp -rap /etc/zypp/services.d $CHROOTDIR/etc
+-        [ -d /etc/zypp/credentials.d ] && cp -rap /etc/zypp/credentials.d $CHROOTDIR/etc
+-    fi
+-    sed -i -e "s/\$releasever/$VERSION/g" `find $CHROOTDIR/etc/zypp* -type f`
+-
+-    if [ -n "$INSTALL_ISO" ]; then
++        cp -rap /etc/zypp/repos.d $CHROOTDIR/etc/zypp
++        [ -d /etc/zypp/services.d ] && cp -rap /etc/zypp/services.d $CHROOTDIR/etc/zypp
++        [ -d /etc/zypp/credentials.d ] && cp -rap /etc/zypp/credentials.d $CHROOTDIR/etc/zypp
++    elif [ -n "$INSTALL_ISO" ]; then
++        # Use ISO
+         for i in `ls -d $MEDIA_MOUNTPATH.*`; do
+             if [ -z "$INSTALLDIRS" ]; then
+                 if [ -d $i/repodata ]; then

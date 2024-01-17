@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a110186c7e70feb236e1fe961e1b233</srcmd5>
+    <version>2.3</version>
+    <time>1553611523</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>688517</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2cb2fd7b5798d857a68f0e9a6b6c0a48</srcmd5>
+    <version>2.4</version>
+    <time>1587659283</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795100 from iznogood)</comment>
+    <requestid>795245</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b786d49121d661571b8d7945e3632e8b</srcmd5>
+    <version>2.4</version>
+    <time>1588856733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800102</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eac17d60efa2b7858a1ba8e680d907f6</srcmd5>
+    <version>2.5</version>
+    <time>1599343152</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 830037 from iznogood)</comment>
+    <requestid>831452</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a61430658821eb0e78d68ee249b0ecce</srcmd5>
+    <version>2.5</version>
+    <time>1635023626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 926700 from jsegitz)</comment>
+    <requestid>926901</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5a965afaf342efcb3afe9ec69e05b7da</srcmd5>
+    <version>3.0</version>
+    <time>1663763970</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002683 from dimstar)</comment>
+    <requestid>1003210</requestid>
+  </revision>
+</revisionlist>

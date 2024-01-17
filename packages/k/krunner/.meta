@@ -1,0 +1,5 @@
+<package name="krunner" project="openSUSE:Factory">
+  <title>krunner</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="krunner"/>
+</package>

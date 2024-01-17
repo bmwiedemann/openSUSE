@@ -1,0 +1,5 @@
+<package name="fuse-exfat" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems" package="fuse-exfat"/>
+</package>

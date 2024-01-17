@@ -1,0 +1,1126 @@
+From 6afabe217af95995d595de493cf9bc5120f85ca7 Mon Sep 17 00:00:00 2001
+From: Andrey Golovizin <ag@sologoc.com>
+Date: Tue, 19 Jan 2021 18:37:54 +0100
+Subject: [PATCH] Drop six
+
+---
+ docs/source/api/parsing.rst              |   2 -
+ docs/source/api/styles.rst               |   2 -
+ pybtex/backends/__init__.py              |   4 +-
+ pybtex/bibtex/builtins.py                |   4 +-
+ pybtex/bibtex/interpreter.py             |   7 +-
+ pybtex/bibtex/utils.py                   |   3 +-
+ pybtex/charwidths/make_charwidths.py     |   6 +-
+ pybtex/cmdline.py                        |   4 +-
+ pybtex/database/__init__.py              |  17 ++-
+ pybtex/database/input/__init__.py        |   5 +-
+ pybtex/database/input/bibtex.py          |   4 +-
+ pybtex/database/input/bibyaml.py         |   3 +-
+ pybtex/database/output/bibtexml.py       |   4 +-
+ pybtex/errors.py                         |   3 +-
+ pybtex/exceptions.py                     |   8 +-
+ pybtex/richtext.py                       |  47 ++++-----
+ pybtex/style/labels/alpha.py             |   3 +-
+ pybtex/style/labels/number.py            |   3 +-
+ pybtex/style/template.py                 |  30 +++---
+ pybtex/utils.py                          |   2 +-
+ requirements.txt                         |   4 +-
+ setup.py                                 |   2 +-
+ tests/bibtex_parser_test.py              |   9 +-
+ tests/bst_parser_test/bst_parser_test.py |   2 +-
+ tests/database_test/database_test.py     |   5 +-
+ tests/richtext_test.py                   | 129 +++++++++++------------
+ 26 files changed, 139 insertions(+), 173 deletions(-)
+
+Index: pybtex-0.24.0/docs/source/api/parsing.rst
+===================================================================
+--- pybtex-0.24.0.orig/docs/source/api/parsing.rst
++++ pybtex-0.24.0/docs/source/api/parsing.rst
+@@ -7,8 +7,6 @@ Reading and writing bibliography data
+ 
+     from __future__ import unicode_literals, print_function
+ 
+-    import six
+-
+     from pybtex.database import BibliographyData, Entry, Person, parse_string
+ 
+ 
+Index: pybtex-0.24.0/docs/source/api/styles.rst
+===================================================================
+--- pybtex-0.24.0.orig/docs/source/api/styles.rst
++++ pybtex-0.24.0/docs/source/api/styles.rst
+@@ -7,8 +7,6 @@ Designing styles
+ 
+     from __future__ import unicode_literals, print_function
+ 
+-    import six
+-
+     from pybtex.richtext import Text, String, Tag, HRef, Protected, Symbol, nbsp, textutils
+ 
+ 
+Index: pybtex-0.24.0/pybtex/backends/__init__.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/backends/__init__.py
++++ pybtex-0.24.0/pybtex/backends/__init__.py
+@@ -20,8 +20,6 @@ from __future__ import unicode_literals
+ # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+-import six
+-
+ import pybtex.io
+ from pybtex.plugin import Plugin
+ 
+@@ -42,7 +40,7 @@ class BaseBackend(Plugin):
+     tags[u'tt']          : typewrite text, not semantic
+     """
+ 
+-    RenderType = six.string_types  #: the result of render and render_sequence
++    RenderType = str  #: the result of render and render_sequence
+     default_suffix = None  #: the default suffix for an output file
+ 
+     def __init__(self, encoding=None):
+Index: pybtex-0.24.0/pybtex/bibtex/builtins.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/bibtex/builtins.py
++++ pybtex-0.24.0/pybtex/bibtex/builtins.py
+@@ -27,8 +27,6 @@ from __future__ import print_function, u
+ 
+ from functools import update_wrapper
+ 
+-import six
+-
+ import pybtex.io
+ from pybtex.bibtex import utils
+ from pybtex.bibtex.exceptions import BibTeXError
+@@ -208,7 +206,7 @@ def if_(i):
+ def int_to_chr(i):
+     n = i.pop()
+     try:
+-        char = six.unichr(n)
++        char = chr(n)
+     except ValueError:
+         raise BibTeXError('%i passed to int.to.chr$', n)
+     i.push(char)
+Index: pybtex-0.24.0/pybtex/bibtex/interpreter.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/bibtex/interpreter.py
++++ pybtex-0.24.0/pybtex/bibtex/interpreter.py
+@@ -23,7 +23,6 @@ from __future__ import print_function, u
+ 
+ from collections import defaultdict
+ 
+-import six
+ from pybtex.bibtex.builtins import builtins, print_warning
+ from pybtex.bibtex.exceptions import BibTeXError
+ from pybtex.bibtex.utils import wrap
+@@ -87,7 +86,7 @@ class EntryInteger(Integer, EntryVariabl
+ 
+ 
+ class String(Variable):
+-    value_type = six.string_types
++    value_type = str
+     default = ''
+ 
+ 
+@@ -134,7 +133,7 @@ class Crossref(Field):
+ 
+ 
+ class Identifier(Variable):
+-    value_type = six.string_types
++    value_type = str
+     def execute(self, interpreter):
+         try:
+             f = interpreter.vars[self.value()]
+@@ -144,7 +143,7 @@ class Identifier(Variable):
+ 
+ 
+ class QuotedVar(Variable):
+-    value_type = six.string_types
++    value_type = str
+     def execute(self, interpreter):
+         try:
+             var = interpreter.vars[self.value()]
+Index: pybtex-0.24.0/pybtex/bibtex/utils.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/bibtex/utils.py
++++ pybtex-0.24.0/pybtex/bibtex/utils.py
+@@ -23,7 +23,6 @@ from __future__ import absolute_import,
+ 
+ import re
+ 
+-import six
+ from pybtex.bibtex.exceptions import BibTeXError
+ from pybtex.py3compat import fix_unicode_literals_in_doctest
+ from pybtex.utils import pairwise
+@@ -147,7 +146,7 @@ class BibTeXString(object):
+         return ''.join(self.traverse(open=lambda string: '{', close=lambda string: '}'))
+ 
+     def inner_string(self):
+-        return ''.join(six.text_type(child) for child in self.contents)
++        return ''.join(str(child) for child in self.contents)
+ 
+ 
+ def change_case(string, mode):
+Index: pybtex-0.24.0/pybtex/charwidths/make_charwidths.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/charwidths/make_charwidths.py
++++ pybtex-0.24.0/pybtex/charwidths/make_charwidths.py
+@@ -28,8 +28,6 @@ Make a table of character widths to use
+ 
+ from __future__ import print_function, unicode_literals
+ 
+-import six
+-
+ 
+ def make_table(font_filename, output):
+     import sys
+@@ -77,9 +75,9 @@ def iter_charwidths(font_face):
+     charcode, gindex = font_face.get_first_char()
+     while gindex:
+         font_face.load_glyph(gindex, FT_LOAD_NO_SCALE)
+-        yield six.unichr(charcode), font_face.glyph.metrics.horiAdvance
++        yield unichr(charcode), font_face.glyph.metrics.horiAdvance
+         charcode, gindex = font_face.get_next_char(charcode, gindex)
+-        
++
+ 
+ bibtex_widths = {
+     ' ': 278,
+Index: pybtex-0.24.0/pybtex/cmdline.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/cmdline.py
++++ pybtex-0.24.0/pybtex/cmdline.py
+@@ -26,8 +26,6 @@ from __future__ import unicode_literals
+ import optparse
+ import sys
+ 
+-import six
+-
+ from pybtex import __version__, errors
+ from pybtex.plugin import enumerate_plugin_names, find_plugin
+ from pybtex.textutils import add_period
+@@ -218,7 +216,7 @@ class CommandLine(object):
+ 
+         try:
+             # all legacy options are ASCII-only
+-            unicode_arg = arg if isinstance(arg, six.text_type) else arg.decode('ASCII')
++            unicode_arg = arg if isinstance(arg, str) else arg.decode('ASCII')
+         except UnicodeDecodeError:
+             return arg
+ 
+Index: pybtex-0.24.0/pybtex/database/__init__.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/database/__init__.py
++++ pybtex-0.24.0/pybtex/database/__init__.py
+@@ -29,7 +29,6 @@ try:
+ except ImportError:
+     from collections import Mapping
+ 
+-import six
+ import textwrap
+ 
+ from pybtex.exceptions import PybtexError
+@@ -341,7 +340,7 @@ class BibliographyData(object):
+ 
+         .. versionadded:: 0.19
+         """
+-        if isinstance(file, six.string_types):
++        if isinstance(file, str):
+             filename = file
+         else:
+             filename = getattr(file, 'name', None)
+@@ -476,7 +475,7 @@ class Entry(object):
+ 
+     def _find_person_field(self, role):
+         persons = self.persons[role]
+-        return ' and '.join(six.text_type(person) for person in persons)
++        return ' and '.join(str(person) for person in persons)
+ 
+     def _find_crossref_field(self, name, bib_data):
+         if bib_data is None or 'crossref' not in self.fields:
+@@ -655,9 +654,9 @@ class Person(object):
+         [u'Dixit']
+         >>> print(p.lineage_names)
+         []
+-        >>> print(six.text_type(p))
++        >>> print(str(p))
+         Dixit, Avinash K.
+-        >>> p == Person(six.text_type(p))
++        >>> p == Person(str(p))
+         True
+         >>> p = Person('Dixit, Jr, Avinash K. ')
+         >>> print(p.first_names)
+@@ -670,9 +669,9 @@ class Person(object):
+         [u'Dixit']
+         >>> print(p.lineage_names)
+         [u'Jr']
+-        >>> print(six.text_type(p))
++        >>> print(str(p))
+         Dixit, Jr, Avinash K.
+-        >>> p == Person(six.text_type(p))
++        >>> p == Person(str(p))
+         True
+ 
+         >>> p = Person('abc')
+@@ -788,7 +787,7 @@ class Person(object):
+         return ', '.join(part for part in (von_last, jr, first) if part)
+ 
+     def __repr__(self):
+-        return 'Person({0})'.format(repr(six.text_type(self)))
++        return 'Person({0})'.format(repr(str(self)))
+ 
+     def get_part_as_text(self, type):
+         names = getattr(self, type + '_names')
+@@ -919,7 +918,7 @@ def parse_file(file, bib_format=None, **
+     .. versionadded:: 0.19
+     """
+ 
+-    if isinstance(file, six.string_types):
++    if isinstance(file, str):
+         filename = file
+     else:
+         filename = getattr(file, 'name', None)
+Index: pybtex-0.24.0/pybtex/database/input/__init__.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/database/input/__init__.py
++++ pybtex-0.24.0/pybtex/database/input/__init__.py
+@@ -29,7 +29,6 @@ import pybtex.io
+ from pybtex.plugin import Plugin
+ from pybtex.database import BibliographyData
+ from pybtex.exceptions import PybtexError
+-import six
+ 
+ 
+ class BaseParser(Plugin):
+@@ -53,7 +52,7 @@ class BaseParser(Plugin):
+             try:
+                 self.parse_stream(f)
+             except UnicodeDecodeError as e:
+-                raise PybtexError(six.text_type(e), filename=self.filename)
++                raise PybtexError(str(e), filename=self.filename)
+         return self.data
+ 
+     def parse_files(self, base_filenames, file_suffix=None):
+@@ -71,7 +70,7 @@ class BaseParser(Plugin):
+             return self.parse_bytes(value.encode(self.encoding))
+ 
+     def parse_bytes(self, value):
+-        if isinstance(value, six.text_type):
++        if isinstance(value, str):
+             msg = 'bytes expected. Use {0}.parse_bytes() to parse unicode strings'.format(type(self).__name__)
+             raise ValueError(msg)
+         if self.unicode_io:
+Index: pybtex-0.24.0/pybtex/database/input/bibtex.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/database/input/bibtex.py
++++ pybtex-0.24.0/pybtex/database/input/bibtex.py
+@@ -54,7 +54,7 @@ True
+ >>> rief97b = bib_data.entries['rief97b']
+ >>> authors = rief97b.persons['author']
+ >>> for author in authors:
+-...     print(six.text_type(author))
++...     print(str(author))
+ Rief, Matthias
+ Gautel, Mathias
+ Oesterhelt, Filipp
+@@ -73,8 +73,6 @@ from __future__ import unicode_literals
+ import re
+ from string import ascii_letters, digits
+ 
+-import six
+-
+ from pybtex import textutils
+ from pybtex.bibtex.utils import split_name_list
+ from pybtex.database import Entry, Person, BibliographyDataError
+Index: pybtex-0.24.0/pybtex/database/input/bibyaml.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/database/input/bibyaml.py
++++ pybtex-0.24.0/pybtex/database/input/bibyaml.py
+@@ -23,7 +23,6 @@ from __future__ import absolute_import,
+ 
+ from collections import OrderedDict
+ 
+-import six
+ import yaml
+ from pybtex.database import Entry, Person
+ from pybtex.database.input import BaseParser
+@@ -97,5 +96,5 @@ class Parser(BaseParser):
+             elif key_lower == 'type':
+                 pass
+             else:
+-                bib_entry.fields[key] = six.text_type(value)
++                bib_entry.fields[key] = str(value)
+         return bib_entry
+Index: pybtex-0.24.0/pybtex/database/output/bibtexml.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/database/output/bibtexml.py
++++ pybtex-0.24.0/pybtex/database/output/bibtexml.py
+@@ -25,8 +25,6 @@ import io
+ from xml.sax.saxutils import XMLGenerator
+ from xml.sax.xmlreader import AttributesImpl
+ 
+-import six
+-
+ from pybtex.database.output import BaseWriter
+ 
+ 
+@@ -95,7 +93,7 @@ class Writer(BaseWriter):
+         >>> from pybtex.database import BibliographyData
+         >>> data = BibliographyData()
+         >>> unicode_xml = Writer().to_string(data)
+-        >>> isinstance(unicode_xml, six.text_type)
++        >>> isinstance(unicode_xml, str)
+         True
+         >>> print(unicode_xml)
+         <bibtex:file xmlns:bibtex="http://bibtexml.sf.net/">
+Index: pybtex-0.24.0/pybtex/errors.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/errors.py
++++ pybtex-0.24.0/pybtex/errors.py
+@@ -24,7 +24,6 @@ from __future__ import absolute_import,
+ from contextlib import contextmanager
+ 
+ import pybtex.io
+-import six
+ 
+ strict = True
+ error_code = 0
+@@ -53,7 +52,7 @@ def format_error(exception, prefix='ERRO
+     context = exception.get_context()
+     if context:
+         lines += (context.splitlines())
+-    lines.append(u'{0}{1}'.format(prefix, six.text_type(exception)))
++    lines.append(u'{0}{1}'.format(prefix, str(exception)))
+     filename = exception.get_filename()
+     if filename:
+         lines = (
+Index: pybtex-0.24.0/pybtex/exceptions.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/exceptions.py
++++ pybtex-0.24.0/pybtex/exceptions.py
+@@ -23,8 +23,6 @@ from __future__ import absolute_import,
+ 
+ import sys
+ 
+-import six
+-
+ 
+ class PybtexError(Exception):
+     def __init__(self, message, filename=None):
+@@ -37,14 +35,14 @@ class PybtexError(Exception):
+ 
+     def get_filename(self):
+         """Return filename, if relevant."""
+-        if self.filename is None or isinstance(self.filename, six.text_type):
++        if self.filename is None or isinstance(self.filename, str):
+             return self.filename
+         else:
+             from .io import _decode_filename
+             return _decode_filename(self.filename, errors='replace')
+ 
+     def __eq__(self, other):
+-        return six.text_type(self) == six.text_type(other)
++        return str(self) == str(other)
+ 
+     def __hash__(self):
+-        return hash(six.text_type(self))
++        return hash(str(self))
+Index: pybtex-0.24.0/pybtex/richtext.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/richtext.py
++++ pybtex-0.24.0/pybtex/richtext.py
+@@ -26,35 +26,35 @@ Usage:
+ >>> t = Text('this ', 'is a ', Tag('em', 'very'), Text(' rich', ' text'))
+ >>> print(t.render_as('latex'))
+ this is a \emph{very} rich text
+->>> print(six.text_type(t))
++>>> print(str(t))
+ this is a very rich text
+ >>> t = t.capitalize().add_period()
+ >>> print(t.render_as('latex'))
+ This is a \emph{very} rich text.
+->>> print(six.text_type(t))
++>>> print(str(t))
+ This is a very rich text.
+ >>> print(Symbol('ndash').render_as('latex'))
+ --
+ >>> t = Text('Some ', Tag('em', Text('nested ', Tag('tt', 'Text', Text(' objects')))), '.')
+ >>> print(t.render_as('latex'))
+ Some \emph{nested \texttt{Text objects}}.
+->>> print(six.text_type(t))
++>>> print(str(t))
+ Some nested Text objects.
+ >>> t = t.upper()
+ >>> print(t.render_as('latex'))
+ SOME \emph{NESTED \texttt{TEXT OBJECTS}}.
+->>> print(six.text_type(t))
++>>> print(str(t))
+ SOME NESTED TEXT OBJECTS.
+ 
+ >>> t = Text(', ').join(['one', 'two', Tag('em', 'three')])
+ >>> print(t.render_as('latex'))
+ one, two, \emph{three}
+->>> print(six.text_type(t))
++>>> print(str(t))
+ one, two, three
+ >>> t = Text(Symbol('nbsp')).join(['one', 'two', Tag('em', 'three')])
+ >>> print(t.render_as('latex'))
+ one~two~\emph{three}
+->>> print(six.text_type(t))
++>>> print(str(t))
+ one<nbsp>two<nbsp>three
+ """
+ from __future__ import absolute_import, unicode_literals
+@@ -63,7 +63,6 @@ import itertools
+ import warnings
+ from abc import ABCMeta, abstractmethod
+ 
+-import six
+ from pybtex import textutils
+ from pybtex.utils import collect_iterable, deprecated
+ from pybtex import py3compat
+@@ -86,7 +85,7 @@ def str_repr(string):
+ 
+ 
+ def ensure_text(value):
+-    if isinstance(value, six.string_types):
++    if isinstance(value, str):
+         return String(value)
+     elif isinstance(value, BaseText):
+         return value
+@@ -152,9 +151,9 @@ class BaseText(object):
+         """Join a list using this text (like string.join)
+ 
+         >>> letters = ['a', 'b', 'c']
+-        >>> print(six.text_type(String('-').join(letters)))
++        >>> print(str(String('-').join(letters)))
+         a-b-c
+-        >>> print(six.text_type(String('-').join(iter(letters))))
++        >>> print(str(String('-').join(iter(letters))))
+         a-b-c
+         """
+ 
+@@ -202,11 +201,11 @@ class BaseText(object):
+         Add a period to the end of text, if the last character is not ".", "!" or "?".
+ 
+         >>> text = Text("That's all, folks")
+-        >>> print(six.text_type(text.add_period()))
++        >>> print(str(text.add_period()))
+         That's all, folks.
+ 
+         >>> text = Text("That's all, folks!")
+-        >>> print(six.text_type(text.add_period()))
++        >>> print(str(text.add_period()))
+         That's all, folks!
+ 
+         """
+@@ -343,7 +342,7 @@ class BaseMultipartText(BaseText):
+         self.length = sum(len(part) for part in self.parts)
+ 
+     def __str__(self):
+-        return ''.join(six.text_type(part) for part in self.parts)
++        return ''.join(str(part) for part in self.parts)
+ 
+     def __eq__(self, other):
+         """
+@@ -390,7 +389,7 @@ class BaseMultipartText(BaseText):
+         False
+ 
+         """
+-        if not isinstance(item, six.string_types):
++        if not isinstance(item, str):
+             raise TypeError(item)
+         return not item or any(part.__contains__(item) for part in self.parts)
+ 
+@@ -405,7 +404,7 @@ class BaseMultipartText(BaseText):
+         Text(Tag('em', '!'))
+         """
+ 
+-        if isinstance(key, six.integer_types):
++        if isinstance(key, int):
+             start = key
+             end = None
+         elif isinstance(key, slice):
+@@ -628,7 +627,7 @@ class BaseMultipartText(BaseText):
+ 
+     @deprecated('0.19', 'use __unicode__() instead')
+     def plaintext(self):
+-        return six.text_type(self)
++        return str(self)
+ 
+     @deprecated('0.19')
+     def enumerate(self):
+@@ -709,7 +708,7 @@ class String(BaseText):
+         All arguments must be plain unicode strings.
+         Arguments are concatenated together.
+ 
+-        >>> print(six.text_type(String('November', ', ', 'December', '.')))
++        >>> print(str(String('November', ', ', 'December', '.')))
+         November, December.
+         """
+ 
+@@ -719,7 +718,7 @@ class String(BaseText):
+         return str_repr(self.value)
+ 
+     def __str__(self):
+-        return six.text_type(self.value)
++        return str(self.value)
+ 
+     def __eq__(self, other):
+         """
+@@ -748,7 +747,7 @@ class String(BaseText):
+         if sep is None:
+             from .textutils import whitespace_re
+             parts = whitespace_re.split(self.value)
+-        elif isinstance(sep, six.string_types):
++        elif isinstance(sep, str):
+             parts = self.value.split(sep)
+         else:
+             try:
+@@ -789,7 +788,7 @@ class String(BaseText):
+ 
+     @property
+     def parts(self):
+-        return [six.text_type(self)]
++        return [str(self)]
+ 
+     def _typeinfo(self):
+         return String, ()
+@@ -847,10 +846,10 @@ class Tag(BaseMultipartText):
+         return name
+ 
+     def __init__(self, name, *args):
+-        if not isinstance(name, (six.string_types, Text)):
++        if not isinstance(name, (str, Text)):
+             raise ValueError(
+                 "name must be str or Text (got %s)" % name.__class__.__name__)
+-        self.name = self.__check_name(six.text_type(name))
++        self.name = self.__check_name(str(name))
+         self.info = self.name,
+         super(Tag, self).__init__(*args)
+ 
+@@ -886,10 +885,10 @@ class HRef(BaseMultipartText):
+     """
+ 
+     def __init__(self, url, *args):
+-        if not isinstance(url, (six.string_types, BaseText)):
++        if not isinstance(url, (str, BaseText)):
+             raise ValueError(
+                 "url must be str or Text (got %s)" % url.__class__.__name__)
+-        self.url = six.text_type(url)
++        self.url = str(url)
+         self.info = self.url,
+         super(HRef, self).__init__(*args)
+ 
+Index: pybtex-0.24.0/pybtex/style/labels/alpha.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/style/labels/alpha.py
++++ pybtex-0.24.0/pybtex/style/labels/alpha.py
+@@ -28,7 +28,6 @@ import re
+ import sys
+ import unicodedata
+ 
+-import six
+ from pybtex.style.labels import BaseLabelStyle
+ from pybtex.textutils import abbreviate
+ 
+@@ -160,7 +159,7 @@ class LabelStyle(BaseLabelStyle):
+             while namesleft:
+                 person = persons[nameptr - 1]
+                 if nameptr == numnames:
+-                    if six.text_type(person) == "others":
++                    if str(person) == "others":
+                         result += "+"
+                     else:
+                         result += _strip_nonalnum(_abbr(
+Index: pybtex-0.24.0/pybtex/style/labels/number.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/style/labels/number.py
++++ pybtex-0.24.0/pybtex/style/labels/number.py
+@@ -1,6 +1,5 @@
+ from __future__ import absolute_import, unicode_literals
+ 
+-import six
+ from pybtex.style.labels import BaseLabelStyle
+ 
+ 
+@@ -32,4 +31,4 @@ class LabelStyle(BaseLabelStyle):
+ 
+     def format_labels(self, sorted_entries):
+         for number, entry in enumerate(sorted_entries):
+-            yield six.text_type(number + 1)
++            yield str(number + 1)
+Index: pybtex-0.24.0/pybtex/style/template.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/style/template.py
++++ pybtex-0.24.0/pybtex/style/template.py
+@@ -36,16 +36,14 @@ Inspired by Brevé -- http://breve.twist
+ >>> book_format = sentence(capfirst=True, sep=', ') [
+ ...     field('title'), field('year'), optional [field('sdf')]
+ ... ]
+->>> print(six.text_type(book_format.format_data({'entry': e})))
++>>> print(str(book_format.format_data({'entry': e})))
+ The Book, 2000.
+->>> print(six.text_type(words ['one', 'two', words ['three', 'four']].format_data(e)))
++>>> print(str(words ['one', 'two', words ['three', 'four']].format_data(e)))
+ one two three four
+ """
+ 
+ from __future__ import unicode_literals
+ 
+-import  six
+-
+ from pybtex import richtext
+ from pybtex.exceptions import PybtexError
+ from pybtex.py3compat import fix_unicode_literals_in_doctest
+@@ -159,13 +157,13 @@ def node(f):
+ @node
+ def join(children, data, sep='', sep2=None, last_sep=None):
+     """Join text fragments together.
+-    >>> print(six.text_type(join.format()))
++    >>> print(str(join.format()))
+     <BLANKLINE>
+-    >>> print(six.text_type(join ['a', 'b', 'c', 'd', 'e'].format()))
++    >>> print(str(join ['a', 'b', 'c', 'd', 'e'].format()))
+     abcde
+-    >>> print(six.text_type(join(sep=', ', sep2=' and ', last_sep=', and ') ['Tom', 'Jerry'].format()))
++    >>> print(str(join(sep=', ', sep2=' and ', last_sep=', and ') ['Tom', 'Jerry'].format()))
+     Tom and Jerry
+-    >>> print(six.text_type(join(sep=', ', sep2=' and ', last_sep=', and ') ['Billy', 'Willy', 'Dilly'].format()))
++    >>> print(str(join(sep=', ', sep2=' and ', last_sep=', and ') ['Billy', 'Willy', 'Dilly'].format()))
+     Billy, Willy, and Dilly
+     """
+ 
+@@ -194,15 +192,15 @@ def together(children, data, last_tie=Fa
+     """
+     Try to keep words together, like BibTeX does.
+ 
+-    >>> print(six.text_type(together ['very', 'long', 'road'].format()))
++    >>> print(str(together ['very', 'long', 'road'].format()))
+     very long road
+-    >>> print(six.text_type(together(last_tie=True) ['very', 'long', 'road'].format()))
++    >>> print(str(together(last_tie=True) ['very', 'long', 'road'].format()))
+     very long<nbsp>road
+-    >>> print(six.text_type(together ['a', 'very', 'long', 'road'].format()))
++    >>> print(str(together ['a', 'very', 'long', 'road'].format()))
+     a<nbsp>very long road
+-    >>> print(six.text_type(together ['chapter', '8'].format()))
++    >>> print(str(together ['chapter', '8'].format()))
+     chapter<nbsp>8
+-    >>> print(six.text_type(together ['chapter', '666'].format()))
++    >>> print(str(together ['chapter', '666'].format()))
+     chapter 666
+     """
+     from pybtex.textutils import tie_or_space
+@@ -226,11 +224,11 @@ def together(children, data, last_tie=Fa
+ def sentence(children, data, capfirst=False, capitalize=False, add_period=True, sep=', '):
+     """Join text fragments, capitalyze the first letter, add a period to the end.
+ 
+-    >>> print(six.text_type(sentence.format()))
++    >>> print(str(sentence.format()))
+     <BLANKLINE>
+-    >>> print(six.text_type(sentence(capitalize=True, sep=' ') ['mary', 'had', 'a', 'little', 'lamb'].format()))
++    >>> print(str(sentence(capitalize=True, sep=' ') ['mary', 'had', 'a', 'little', 'lamb'].format()))
+     Mary had a little lamb.
+-    >>> print(six.text_type(sentence(capitalize=False, add_period=False) ['uno', 'dos', 'tres'].format()))
++    >>> print(str(sentence(capitalize=False, add_period=False) ['uno', 'dos', 'tres'].format()))
+     uno, dos, tres
+     """
+ 
+Index: pybtex-0.24.0/pybtex/utils.py
+===================================================================
+--- pybtex-0.24.0.orig/pybtex/utils.py
++++ pybtex-0.24.0/pybtex/utils.py
+@@ -32,7 +32,7 @@ try:
+ except ImportError:
+     from collections import MutableMapping, MutableSet, Sequence
+ 
+-from six.moves import zip_longest
++from itertools import zip_longest
+ 
+ from .py3compat import fix_unicode_literals_in_doctest
+ 
+Index: pybtex-0.24.0/setup.py
+===================================================================
+--- pybtex-0.24.0.orig/setup.py
++++ pybtex-0.24.0/setup.py
+@@ -56,7 +56,7 @@ class Sdist(sdist):
+ ROOT = os.path.abspath(os.path.dirname(__file__))
+ README = open(os.path.join(ROOT, 'README')).read()
+ 
+-install_requires = ['PyYAML>=3.01', 'latexcodec>=1.0.4', 'six']
++install_requires = ['PyYAML>=3.01', 'latexcodec>=1.0.4']
+ extras_require = {
+     'test': ['pytest'],
+ }
+Index: pybtex-0.24.0/tests/bibtex_parser_test.py
+===================================================================
+--- pybtex-0.24.0.orig/tests/bibtex_parser_test.py
++++ pybtex-0.24.0/tests/bibtex_parser_test.py
+@@ -33,8 +33,7 @@ from __future__ import absolute_import,
+ 
+ from unittest import TestCase
+ 
+-import six
+-from six.moves import zip_longest
++from itertools import zip_longest
+ 
+ from pybtex.database import BibliographyData, Entry, Person
+ from pybtex.database.input.bibtex import Parser
+@@ -68,9 +67,9 @@ class ParserTest(object):
+         correct_result = self.correct_result
+         assert result == correct_result
+         for error, correct_error in zip_longest(parser.errors, self.errors):
+-            actual_error = six.text_type(error)
++            actual_error = str(error)
+             assert actual_error == correct_error
+-    
++
+ 
+ class EmptyDataTest(ParserTest, TestCase):
+     input_string = u''
+@@ -541,4 +540,4 @@ class DuplicatePersonFieldTest(ParserTes
+     )
+     errors = [
+         'entry with key Me2009 has a duplicate AUTHoR field',
+-    ]
+\ No newline at end of file
++    ]
+Index: pybtex-0.24.0/tests/bst_parser_test/bst_parser_test.py
+===================================================================
+--- pybtex-0.24.0.orig/tests/bst_parser_test/bst_parser_test.py
++++ pybtex-0.24.0/tests/bst_parser_test/bst_parser_test.py
+@@ -23,7 +23,7 @@
+ from __future__ import unicode_literals
+ 
+ import pytest
+-from six.moves import zip_longest
++from itertools import zip_longest
+ 
+ from pybtex.bibtex import bst
+ from ..utils import get_data
+Index: pybtex-0.24.0/tests/database_test/database_test.py
+===================================================================
+--- pybtex-0.24.0.orig/tests/database_test/database_test.py
++++ pybtex-0.24.0/tests/database_test/database_test.py
+@@ -27,7 +27,6 @@ from abc import ABCMeta, abstractmethod
+ from copy import deepcopy
+ from io import BytesIO, TextIOWrapper
+ 
+-import six
+ import pytest
+ from pybtex.database import parse_bytes, parse_string, BibliographyData, Entry
+ from pybtex.plugin import find_plugin
+@@ -84,7 +83,7 @@ class PybtexStreamIO(PybtexDatabaseIO):
+ class PybtexStringIO(PybtexDatabaseIO):
+     def serialize(self, bib_data):
+         result = bib_data.to_string(self.bib_format)
+-        assert isinstance(result, six.text_type)
++        assert isinstance(result, str)
+         return result
+ 
+     def deserialize(self, string):
+@@ -105,7 +104,7 @@ class PybtexEntryStringIO(PybtexDatabase
+ 
+     def serialize(self, bib_data):  # Entry.to_string
+         result = bib_data.to_string(self.bib_format)
+-        assert isinstance(result, six.text_type)
++        assert isinstance(result, str)
+         return result
+ 
+     def deserialize(self, string):  # Entry.from_string
+Index: pybtex-0.24.0/tests/richtext_test.py
+===================================================================
+--- pybtex-0.24.0.orig/tests/richtext_test.py
++++ pybtex-0.24.0/tests/richtext_test.py
+@@ -29,7 +29,6 @@ from abc import ABCMeta, abstractmethod
+ from unittest import TestCase
+ 
+ import pytest
+-import six
+ 
+ from pybtex import textutils
+ from pybtex.richtext import HRef, Protected, String, Symbol, Tag, Text, nbsp
+@@ -117,13 +116,13 @@ class TextTestMixin(object):
+ 
+ class TestText(TextTestMixin, TestCase):
+     def test__init__(self):
+-        assert six.text_type(Text('a', '', 'c')) == 'ac'
+-        assert six.text_type(Text('a', Text(), 'c')) == 'ac'
++        assert str(Text('a', '', 'c')) == 'ac'
++        assert str(Text('a', Text(), 'c')) == 'ac'
+ 
+         text = Text(Text(), Text('mary ', 'had ', 'a little lamb'))
+-        assert six.text_type(text) == 'mary had a little lamb'
++        assert str(text) == 'mary had a little lamb'
+ 
+-        text = six.text_type(Text('a', Text('b', 'c'), Tag('em', 'x'), Symbol('nbsp'), 'd'))
++        text = str(Text('a', Text('b', 'c'), Tag('em', 'x'), Symbol('nbsp'), 'd'))
+         assert text == 'abcx<nbsp>d'
+ 
+         with pytest.raises(ValueError):
+@@ -151,8 +150,8 @@ class TestText(TextTestMixin, TestCase):
+         assert len(Text('Never', ' ', Tag('em', HRef('/', 'Knows'), ' '), 'Best')) == len('Never Knows Best')
+ 
+     def test__str__(self):
+-        assert six.text_type(Text()) == ''
+-        assert six.text_type(Text(u'Чудаки украшают мир')) == u'Чудаки украшают мир'
++        assert str(Text()) == ''
++        assert str(Text(u'Чудаки украшают мир')) == u'Чудаки украшают мир'
+ 
+     def test__contains__(self):
+         text = Text('mary ', 'had ', 'a little lamb')
+@@ -165,17 +164,17 @@ class TestText(TextTestMixin, TestCase):
+ 
+     def test_capfirst(self):
+         text = Text('dear ', 'Alice')
+-        assert six.text_type(text.capfirst()) == 'Dear Alice'
++        assert str(text.capfirst()) == 'Dear Alice'
+ 
+     def test_capitalize(self):
+         text = Text('mary ', 'had ', 'a Little Lamb')
+-        assert six.text_type(text.capitalize()) == 'Mary had a little lamb'
++        assert str(text.capitalize()) == 'Mary had a little lamb'
+ 
+     def test__add__(self):
+         t = Text('a')
+-        assert six.text_type(t + 'b') == 'ab'
+-        assert six.text_type(t + t) == 'aa'
+-        assert six.text_type(t) == 'a'
++        assert str(t + 'b') == 'ab'
++        assert str(t + t) == 'aa'
++        assert str(t) == 'a'
+ 
+     def test__getitem__(self):
+         t = Text('123', Text('456', Text('78'), '9'), '0')
+@@ -239,11 +238,11 @@ class TestText(TextTestMixin, TestCase):
+ 
+     def test_upper(self):
+         text = Text('mary ', 'had ', 'a little lamb')
+-        assert six.text_type(text.upper()) == 'MARY HAD A LITTLE LAMB'
++        assert str(text.upper()) == 'MARY HAD A LITTLE LAMB'
+ 
+     def test_lower(self):
+         text = Text('mary ', 'had ', 'a little lamb')
+-        assert six.text_type(text.lower()) == 'mary had a little lamb'
++        assert str(text.lower()) == 'mary had a little lamb'
+ 
+     def test_startswith(self):
+         assert not Text().startswith('.')
+@@ -282,10 +281,10 @@ class TestText(TextTestMixin, TestCase):
+         assert not Text('ab', Tag('em', '12'), 'ef').isalpha()
+ 
+     def test_join(self):
+-        assert six.text_type(Text(' ').join(['a', Text('b c')])) == 'a b c'
+-        assert six.text_type(Text(nbsp).join(['a', 'b', 'c'])) == 'a<nbsp>b<nbsp>c'
+-        assert six.text_type(nbsp.join(['a', 'b', 'c'])) == 'a<nbsp>b<nbsp>c'
+-        assert six.text_type(String('-').join(['a', 'b', 'c'])) == 'a-b-c'
++        assert str(Text(' ').join(['a', Text('b c')])) == 'a b c'
++        assert str(Text(nbsp).join(['a', 'b', 'c'])) == 'a<nbsp>b<nbsp>c'
++        assert str(nbsp.join(['a', 'b', 'c'])) == 'a<nbsp>b<nbsp>c'
++        assert str(String('-').join(['a', 'b', 'c'])) == 'a-b-c'
+         result = Tag('em', ' and ').join(['a', 'b', 'c']).render_as('html')
+         assert result == 'a<em> and </em>b<em> and </em>c'
+         result = HRef('/', ' and ').join(['a', 'b', 'c']).render_as('html')
+@@ -308,10 +307,10 @@ class TestText(TextTestMixin, TestCase):
+         assert Text().endswith(('.', '!', '?')) == False
+         assert textutils.is_terminated(Text()) == False
+ 
+-        assert six.text_type(Text().add_period()) == ''
++        assert str(Text().add_period()) == ''
+ 
+         text = Text("That's all, folks")
+-        assert six.text_type(text.add_period()) == "That's all, folks."
++        assert str(text.add_period()) == "That's all, folks."
+ 
+     def test_render_as(self):
+         string = Text(u'Detektivbyrån & friends')
+@@ -341,7 +340,7 @@ class TestString(TextTestMixin, TestCase
+ 
+     def test__str__(self):
+         val = u'Detektivbyrån'
+-        assert six.text_type(String(val)) == val
++        assert str(String(val)) == val
+ 
+     def test__contains__(self):
+         assert '' in String()
+@@ -358,10 +357,10 @@ class TestString(TextTestMixin, TestCase
+         assert String('Python') + String(' 3') != 'Python 3'
+         assert String('Python') + String(' 3') == Text('Python 3')
+         assert String('A').lower() == String('a')
+-        assert six.text_type(String('Python') + String(' ') + String('3')) == 'Python 3'
+-        assert six.text_type(String('Python') + Text(' ') + String('3')) == 'Python 3'
+-        assert six.text_type(String('Python') + ' ' + '3') == 'Python 3'
+-        assert six.text_type(String('Python').append(' 3')) == 'Python 3'
++        assert str(String('Python') + String(' ') + String('3')) == 'Python 3'
++        assert str(String('Python') + Text(' ') + String('3')) == 'Python 3'
++        assert str(String('Python') + ' ' + '3') == 'Python 3'
++        assert str(String('Python').append(' 3')) == 'Python 3'
+ 
+     def test_startswith(self):
+         assert not String().startswith('n')
+@@ -418,27 +417,27 @@ class TestString(TextTestMixin, TestCase
+         assert String(', ').join(['tomatoes', 'cucumbers', 'lemons']) == Text('tomatoes, cucumbers, lemons')
+ 
+     def test_capfirst(self):
+-        assert six.text_type(String('').capitalize()) == ''
+-        assert six.text_type(String('november december').capitalize()) == 'November december'
+-        assert six.text_type(String('November December').capitalize()) == 'November december'
+-        assert six.text_type(String('NOVEMBER DECEMBER').capitalize()) == 'November december'
++        assert str(String('').capitalize()) == ''
++        assert str(String('november december').capitalize()) == 'November december'
++        assert str(String('November December').capitalize()) == 'November december'
++        assert str(String('NOVEMBER DECEMBER').capitalize()) == 'November december'
+ 
+     def test_capitalize(self):
+-        assert six.text_type(String('').capfirst()) == ''
+-        assert six.text_type(String('november').capfirst()) == 'November'
+-        assert six.text_type(String('November').capfirst()) == 'November'
+-        assert six.text_type(String('november december').capfirst()) == 'November december'
+-        assert six.text_type(String('November December').capfirst()) == 'November December'
+-        assert six.text_type(String('NOVEMBER DECEMBER').capfirst()) == 'NOVEMBER DECEMBER'
++        assert str(String('').capfirst()) == ''
++        assert str(String('november').capfirst()) == 'November'
++        assert str(String('November').capfirst()) == 'November'
++        assert str(String('november december').capfirst()) == 'November december'
++        assert str(String('November December').capfirst()) == 'November December'
++        assert str(String('NOVEMBER DECEMBER').capfirst()) == 'NOVEMBER DECEMBER'
+ 
+     def test_add_period(self):
+-        assert six.text_type(String('').add_period()) == ''
+-        assert six.text_type(String('').add_period('!')) == ''
+-        assert six.text_type(String('').add_period().add_period()) == ''
+-        assert six.text_type(String('').add_period().add_period('!')) == ''
+-        assert six.text_type(String('').add_period('!').add_period()) == ''
+-        six.text_type(String('November').add_period()) == 'November.'
+-        result = six.text_type(String('November').add_period().add_period())
++        assert str(String('').add_period()) == ''
++        assert str(String('').add_period('!')) == ''
++        assert str(String('').add_period().add_period()) == ''
++        assert str(String('').add_period().add_period('!')) == ''
++        assert str(String('').add_period('!').add_period()) == ''
++        str(String('November').add_period()) == 'November.'
++        result = str(String('November').add_period().add_period())
+         assert result == 'November.'
+ 
+     def test_render_as(self):
+@@ -450,12 +449,12 @@ class TestString(TextTestMixin, TestCase
+ class TestTag(TextTestMixin, TestCase):
+     def test__init__(self):
+         empty = Tag('em')
+-        assert six.text_type(empty) == ''
++        assert str(empty) == ''
+ 
+         text = Text('This ', Tag('em', 'is'), ' good')
+-        assert 'This is' in six.text_type(text)
+-        assert six.text_type(text).startswith('This is')
+-        assert six.text_type(text).endswith('is good')
++        assert 'This is' in str(text)
++        assert str(text).startswith('This is')
++        assert str(text).endswith('is good')
+ 
+     def test__eq__(self):
+         assert Tag('em', '') != ''
+@@ -474,11 +473,11 @@ class TestTag(TextTestMixin, TestCase):
+ 
+     def test__str__(self):
+         empty = Tag('em')
+-        assert six.text_type(empty.lower()) == ''
+-        assert six.text_type(empty.capitalize()) == ''
+-        assert six.text_type(empty.add_period()) == ''
++        assert str(empty.lower()) == ''
++        assert str(empty.capitalize()) == ''
++        assert str(empty.add_period()) == ''
+ 
+-        assert six.text_type(Tag('strong', u'ねここねこ')) == u'ねここねこ'
++        assert str(Tag('strong', u'ねここねこ')) == u'ねここねこ'
+ 
+     def test__contains__(self):
+         tag = Tag('em', Text(), Text('mary ', 'had ', 'a little lamb'))
+@@ -705,10 +704,10 @@ class TestHRef(TextTestMixin, TestCase):
+ 
+     def test__str__(self):
+         empty = HRef('/')
+-        assert six.text_type(empty) == ''
++        assert str(empty) == ''
+ 
+         text = Text('This ', HRef('/', 'is'), ' good')
+-        six.text_type(text) == 'This is good'
++        str(text) == 'This is good'
+ 
+     def test__eq__(self):
+         assert HRef('/', '') != ''
+@@ -986,14 +985,14 @@ class TestHRef(TextTestMixin, TestCase):
+ 
+ class TestProtected(TextTestMixin, TestCase):
+     def test__init__(self):
+-        assert six.text_type(Protected('a', '', 'c')) == 'ac'
+-        assert six.text_type(Protected('a', Text(), 'c')) == 'ac'
++        assert str(Protected('a', '', 'c')) == 'ac'
++        assert str(Protected('a', Text(), 'c')) == 'ac'
+ 
+         text = Protected(Protected(), Protected('mary ', 'had ', 'a little lamb'))
+         assert text == Protected(Protected('mary had a little lamb'))
+-        assert six.text_type(text) == 'mary had a little lamb'
++        assert str(text) == 'mary had a little lamb'
+ 
+-        text = six.text_type(Protected('a', Protected('b', 'c'), Tag('em', 'x'), Symbol('nbsp'), 'd'))
++        text = str(Protected('a', Protected('b', 'c'), Tag('em', 'x'), Symbol('nbsp'), 'd'))
+         assert text == 'abcx<nbsp>d'
+ 
+         with pytest.raises(ValueError):
+@@ -1021,8 +1020,8 @@ class TestProtected(TextTestMixin, TestC
+         assert len(Protected('Never', ' ', Tag('em', HRef('/', 'Knows'), ' '), 'Best')) == len('Never Knows Best')
+ 
+     def test__str__(self):
+-        assert six.text_type(Protected()) == ''
+-        assert six.text_type(Protected(u'Чудаки украшают мир')) == u'Чудаки украшают мир'
++        assert str(Protected()) == ''
++        assert str(Protected(u'Чудаки украшают мир')) == u'Чудаки украшают мир'
+ 
+     def test__contains__(self):
+         text = Protected('mary ', 'had ', 'a little lamb')
+@@ -1035,11 +1034,11 @@ class TestProtected(TextTestMixin, TestC
+ 
+     def test_capfirst(self):
+         text = Protected('mary ', 'had ', 'a Little Lamb')
+-        assert six.text_type(text.capitalize()) == 'mary had a Little Lamb'
++        assert str(text.capitalize()) == 'mary had a Little Lamb'
+ 
+     def test_capitalize(self):
+         text = Protected('mary ', 'had ', 'a little lamb')
+-        assert six.text_type(text.capitalize()) == 'mary had a little lamb'
++        assert str(text.capitalize()) == 'mary had a little lamb'
+ 
+     def test__add__(self):
+         t = Protected('a')
+@@ -1105,15 +1104,15 @@ class TestProtected(TextTestMixin, TestC
+ 
+     def test_upper(self):
+         text = Protected('Mary ', 'had ', 'a little lamb')
+-        assert six.text_type(text.upper()) == 'Mary had a little lamb'
++        assert str(text.upper()) == 'Mary had a little lamb'
+         text = Protected('mary ', 'had ', 'a little lamb')
+-        assert six.text_type(text.upper()) == 'mary had a little lamb'
++        assert str(text.upper()) == 'mary had a little lamb'
+ 
+     def test_lower(self):
+         text = Protected('Mary ', 'had ', 'a little lamb')
+-        assert six.text_type(text.lower()) == 'Mary had a little lamb'
++        assert str(text.lower()) == 'Mary had a little lamb'
+         text = Protected('MARY ', 'HAD ', 'A LITTLE LAMB')
+-        assert six.text_type(text.lower()) == 'MARY HAD A LITTLE LAMB'
++        assert str(text.lower()) == 'MARY HAD A LITTLE LAMB'
+ 
+     def test_startswith(self):
+         assert not Protected().startswith('.')
+@@ -1198,7 +1197,7 @@ class TestSymbol(TextTestMixin, TestCase
+         assert Text(nbsp, nbsp) == Text(Symbol('nbsp'), Symbol('nbsp'))
+ 
+     def test__str__(self):
+-        assert six.text_type(nbsp) == '<nbsp>'
++        assert str(nbsp) == '<nbsp>'
+ 
+     def test__len__(self):
+         assert len(nbsp) == 1

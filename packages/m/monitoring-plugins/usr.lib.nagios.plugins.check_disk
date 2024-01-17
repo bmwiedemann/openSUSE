@@ -1,0 +1,9 @@
+#include <tunables/global>
+/usr/lib/nagios/plugins/check_disk {
+   #include <abstractions/base>
+   #include <abstractions/consoles>
+   #include <abstractions/nameservice>
+   /etc/mtab                        r,
+   @{PROC}/[0-9]*/mounts            r,
+   /usr/lib/nagios/plugins/check_disk rm,
+}

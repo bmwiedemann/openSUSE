@@ -1,0 +1,74 @@
+--- rt.equinox.p2/features/org.eclipse.equinox.p2.core.feature/pom.xml.bak	2012-07-25 17:45:43.000000000 +0200
++++ rt.equinox.p2/features/org.eclipse.equinox.p2.core.feature/pom.xml	2012-07-31 07:41:13.103636303 +0200
+@@ -40,6 +40,25 @@
+               <excludes>
+                 <plugin id="org.sat4j.core"/>
+                 <plugin id="org.sat4j.pb"/>
++                <plugin id="org.apache.commons.codec" />
++		 <plugin id="org.apache.commons.httpclient" />
++		 <plugin id="org.apache.httpcomponents.httpclient" />
++		 <plugin id="org.apache.httpcomponents.httpcore" />
++		 <plugin id="org.apache.commons.logging" />
++		 <plugin id="org.eclipse.ecf"/>
++		 <plugin id="org.eclipse.ecf.filetransfer"/>
++		 <plugin id="org.eclipse.ecf.identity"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.httpclient"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.httpclient.ssl"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.httpclient4"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.httpclient4.ssl"/>
++		 <plugin id="org.eclipse.ecf.provider.filetransfer.ssl"/>
++		 <plugin id="org.eclipse.ecf.ssl"/>
++		 <plugin id="org.eclipse.equinox.security.macosx"/>
++		 <plugin id="org.eclipse.equinox.security.win32.x86"/>
++		 <plugin id="org.eclipse.equinox.security.win32.x86_64"/>
++                <plugin id="org.tukaani.xz" />
+               </excludes>
+             </configuration>
+           </execution>
+--- eclipse.platform.ui/features/org.eclipse.e4.rcp/pom.xml.orig	2014-05-26 18:37:25.406426611 +0300
++++ eclipse.platform.ui/features/org.eclipse.e4.rcp/pom.xml	2014-05-26 18:37:47.327449374 +0300
+@@ -42,6 +42,24 @@
+                 <plugin id="org.eclipse.equinox.launcher.gtk.linux.ppc64le"/>
+                 <plugin id="org.eclipse.equinox.launcher.gtk.linux.x86_64"/>
+                 <plugin id="org.eclipse.equinox.launcher.win32.win32.x86_64"/>
++                <plugin id="org.eclipse.equinox.launcher.gtk.linux.arm" />
++                <plugin id="org.eclipse.equinox.launcher.gtk.linux.aarch64" />
++                <plugin id="org.eclipse.equinox.launcher.gtk.linux.s390x" />
++                <plugin id="org.eclipse.equinox.launcher.gtk.linux.ppc64" />
++                <plugin id="org.eclipse.equinox.launcher.gtk.linux.x86" />
++                <plugin id="org.eclipse.e4.ui.workbench.renderers.swt.cocoa" />
++                <plugin id="org.apache.commons.jxpath" />
++                <plugin id="org.apache.felix.gogo.command" />
++                <plugin id="org.apache.batik.css" />
++                <plugin id="org.apache.batik.i18n" />
++                <plugin id="org.w3c.css.sac" />
++                <plugin id="org.apache.batik.util" />
++                <plugin id="org.apache.xmlgraphics" />
++                <plugin id="org.w3c.dom.svg" />
++                <plugin id="javax.inject" />
++                <plugin id="com.ibm.icu"/>
++                <plugin id="org.apache.felix.gogo.runtime" />
++                <plugin id="org.apache.felix.gogo.shell" />
+               </excludes>
+             </configuration>
+           </execution>
+--- eclipse.platform.releng/features/org.eclipse.sdk/feature.xml.orig	2019-06-17 13:00:29.410091487 +0100
++++ eclipse.platform.releng/features/org.eclipse.sdk/feature.xml	2019-06-17 13:00:36.270076080 +0100
+@@ -51,16 +51,6 @@
+          id="org.eclipse.help.source"
+          version="0.0.0"/>
+ 
+-   <requires>
+-      <import feature="org.eclipse.emf.common.source" version="2.7.0" match="compatible"/>
+-      <import feature="org.eclipse.emf.ecore.source" version="2.7.0" match="compatible"/>
+-      <import feature="org.eclipse.ecf.core.feature.source" version="1.4.0" match="compatible"/>
+-      <import feature="org.eclipse.ecf.core.ssl.feature.source" version="1.1.0" match="compatible"/>
+-      <import feature="org.eclipse.ecf.filetransfer.feature.source" version="3.13.7" match="compatible"/>
+-      <import feature="org.eclipse.ecf.filetransfer.httpclient45.feature.source" version="1.0.0" match="compatible"/>
+-      <import feature="org.eclipse.ecf.filetransfer.ssl.feature.source" version="1.1.0" match="compatible"/>
+-   </requires>
+-
+    <plugin
+          id="org.eclipse.sdk"
+          download-size="0"

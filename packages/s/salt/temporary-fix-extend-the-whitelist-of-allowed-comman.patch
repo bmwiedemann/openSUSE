@@ -1,0 +1,34 @@
+From 2575e64ee21f774a1efb6960972e9d476a8d5927 Mon Sep 17 00:00:00 2001
+From: Bo Maryniuk <bo@suse.de>
+Date: Thu, 24 Jan 2019 18:12:35 +0100
+Subject: [PATCH] temporary fix: extend the whitelist of allowed commands
+
+---
+ salt/auth/__init__.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/salt/auth/__init__.py b/salt/auth/__init__.py
+index b87e2aff0d..331baab211 100644
+--- a/salt/auth/__init__.py
++++ b/salt/auth/__init__.py
+@@ -12,6 +12,7 @@ so that any external authentication system can be used inside of Salt
+ # 5. Cache auth token with relative data opts['token_dir']
+ # 6. Interface to verify tokens
+ 
++
+ import getpass
+ import logging
+ import random
+@@ -42,6 +43,8 @@ AUTH_INTERNAL_KEYWORDS = frozenset(
+         "gather_job_timeout",
+         "kwarg",
+         "match",
++        "id_",
++        "force",
+         "metadata",
+         "print_event",
+         "raw",
+-- 
+2.39.2
+
+

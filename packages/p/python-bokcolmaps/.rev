@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5aaf7f55285eceeca225def328e656c1</srcmd5>
+    <version>1.0.0</version>
+    <time>1576014126</time>
+    <user>dimstar_suse</user>
+    <comment>Colourmap plots based on the Bokeh visualisation library</comment>
+    <requestid>755341</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e6dc8dcd1282f6959125b0b53059cfcb</srcmd5>
+    <version>1.1.0</version>
+    <time>1580724760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768777</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>59388301101f092f8b37136d7f48bda9</srcmd5>
+    <version>1.4.0</version>
+    <time>1594293628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819675</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>011dd04a1801bee63cb5cf3931af15fc</srcmd5>
+    <version>2.0.1</version>
+    <time>1605124112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847906</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b7bb4c0b84564b9672695a0169b67d1c</srcmd5>
+    <version>2.0.1</version>
+    <time>1617723015</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882793</requestid>
+  </revision>
+</revisionlist>

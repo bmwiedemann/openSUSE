@@ -1,0 +1,5 @@
+<package name="neovim-gtk" project="openSUSE:Factory">
+  <title>GTK UI for Neovim</title>
+  <description>GTK UI for Neovim written in Rust using gtk-rs bindings. With ligatures support.</description>
+  <devel project="editors" package="neovim-gtk"/>
+</package>

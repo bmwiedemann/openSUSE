@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Wed Oct  4 09:51:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.4:
+  * python 3.12 support
+
+-------------------------------------------------------------------
+Sat Jun 10 10:01:58 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Oct 12 02:39:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.17.3
+  * Update classifiers for Python 3.11
+
+-------------------------------------------------------------------
+Mon May  2 21:21:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.17.2
+  * Remove deprecated U prefix, fixes Python 3.9
+  * Explicitly mark python 3.10 as supported
+
+-------------------------------------------------------------------
+Mon May 17 07:12:19 UTC 2021 - pgajdos@suse.com
+
+- use %pytest macro
+
+-------------------------------------------------------------------
+Fri Apr 17 11:15:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.17
+  * Explicitly mark Python 3.8 as supported in wheel metadata.
+  * Migrate from Bitbucket to GitHub
+  * Run black on the entire repository
+
+-------------------------------------------------------------------
+Thu Nov  7 16:15:07 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Run through spec-cleaner
+
+-------------------------------------------------------------------
+Tue Dec  4 12:45:31 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 16 19:05:40 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.16.1
+  * Explicitly mark Python 3.7 as supported in wheel metadata.
+- Update to version 0.16
+  * Add LICENSE file
+
+-------------------------------------------------------------------
+Thu May 24 17:26:43 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.15
+  * ObjectGraph.get_edges, ObjectGraph.getEdgeData and ObjectGraph.updateEdgeData accept None as the node to get and treat this as an alias for self (as other methods already did).
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Thu Oct 19 00:54:53 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d86152d23ba8bd213235f0e110107811</srcmd5>
+    <version>1.0.0</version>
+    <time>1561557906</time>
+    <user>dimstar_suse</user>
+    <comment>- remove mozilla-nss-certs
+- Fix registry path
+- Fix description
+- Fix labels
+- Fix image name
+- Initial container
+</comment>
+    <requestid>712104</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>45221471b79b41becce7688b3884a1c1</srcmd5>
+    <version>1.0.0</version>
+    <time>1589046507</time>
+    <user>dimstar_suse</user>
+    <comment>- ca-certificates needs real findutils</comment>
+    <requestid>798938</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>16fb1075ab634c68f5baaedc576853cf</srcmd5>
+    <version>1.0.0</version>
+    <time>1591380525</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove &quot;--&quot; from the package list to separate pkgs from
+  arguments: kiwi does this implicit now. (forwarded request 811747 from dimstar)</comment>
+    <requestid>811758</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>75efbd4adccfc20b12d4eea58948510a</srcmd5>
+    <version>1.0.0</version>
+    <time>1628108918</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add busybox-findutils</comment>
+    <requestid>909765</requestid>
+  </revision>
+</revisionlist>

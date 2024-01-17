@@ -1,0 +1,19 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2012-05-11 08:34:41 +0200
+Subject: postprocess-unix.sh: use correct path
+
+---
+ scripts/postprocess-unix.sh |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/scripts/postprocess-unix.sh
++++ b/scripts/postprocess-unix.sh
+@@ -3,7 +3,7 @@
+ THISDIR="`pwd`"
+ LCDIR="${THISDIR}/librecad"
+ PIDIR="${THISDIR}/plugins"
+-RESOURCEDIR="${THISDIR}/unix/resources"
++RESOURCEDIR=$BUILDDIR
+ APPDATADIR="${THISDIR}/unix/appdata"
+ TSDIRLC="${LCDIR}/ts"
+ TSDIRPI="${PIDIR}/ts"

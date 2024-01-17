@@ -1,0 +1,5 @@
+<package name="python-PubChemPy" project="openSUSE:Factory">
+  <title>python-pubchempy</title>
+  <description>PubChemPy provides a way to interact with PubChem in Python. It allows chemical searches by name, substructure and similarity, chemical standardization, conversion between chemical file formats, depiction and retrieval of chemical properties.</description>
+  <devel project="devel:languages:python" package="python-PubChemPy"/>
+</package>

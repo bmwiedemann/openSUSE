@@ -1,0 +1,3 @@
+addFilter(".*W:.*macro-in-comment.*%{version}.*")
+addFilter(".*W:.*binary-or-shlib-calls-gethostbyname.*/usr/sbin/syslogd.*")
+

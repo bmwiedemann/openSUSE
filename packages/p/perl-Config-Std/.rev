@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>002825c2161c5c03f8adbb730a85f385</srcmd5>
+    <version>0.900</version>
+    <time>1324483224</time>
+    <user>coolo</user>
+    <comment>new perl module</comment>
+    <requestid>97091</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>002825c2161c5c03f8adbb730a85f385</srcmd5>
+    <version>0.900</version>
+    <time>1340183815</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>002825c2161c5c03f8adbb730a85f385</srcmd5>
+    <version>0.900</version>
+    <time>1359109626</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>56ae879408ed97f96abfd3a22ba6acd0</srcmd5>
+    <version>0.900</version>
+    <time>1372136366</time>
+    <user>coolo</user>
+    <comment>- disable test suite because the tests are broken with perl 5.18,
+  not the code itself (as far as I can say)</comment>
+    <requestid>180399</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>56ae879408ed97f96abfd3a22ba6acd0</srcmd5>
+    <version>0.900</version>
+    <time>1379663598</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cc68dab36af750fa82531d8056c1e24</srcmd5>
+    <version>0.901</version>
+    <time>1381063995</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202231</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8cc68dab36af750fa82531d8056c1e24</srcmd5>
+    <version>0.901</version>
+    <time>1409302217</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b78b543df4b8ca651338353beb336602</srcmd5>
+    <version>0.903</version>
+    <time>1507571145</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.903
+   see /usr/share/doc/packages/perl-Config-Std/Changes
+  0.903 Fri Oct 6, 2017
+     -  general Kwallitee cleanup
+     -  warnings cleanup
+     -  limitations noted re sequential tests only and repeated re-reading.
+  
+  0.902 Thu Oct 5, 2017
+      - Fix test for RT 114342  (Literal '{' in RE fatal in 5.25+)</comment>
+    <requestid>532530</requestid>
+  </revision>
+</revisionlist>

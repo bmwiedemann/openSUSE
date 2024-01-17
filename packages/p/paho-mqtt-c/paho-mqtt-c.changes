@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sat Nov 25 22:26:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.13:
+  * Service release. Issues fixed:
+    https://github.com/eclipse/paho.mqtt.c/milestone/20?closed=1
+
+-------------------------------------------------------------------
+Wed Jan  4 09:48:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.12:
+  * service release
+  * https://github.com/eclipse/paho.mqtt.c/milestone/19?closed=1
+
+-------------------------------------------------------------------
+Wed Apr 20 18:31:05 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.3.10
+  * Use poll system call instead of select to monitor sockets
+  * Bug fixes
+  * https://github.com/eclipse/paho.mqtt.c/milestone/17?closed=1
+
+-------------------------------------------------------------------
+Mon Jul 19 10:41:20 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.3.9:
+  * Fix old security issue
+  * Bug fixes
+  * https://github.com/eclipse/paho.mqtt.c/milestone/16?closed=1
+- Remove cmake-libdir.patch as it as been upstreamed
+
+-------------------------------------------------------------------
+Mon May 17 22:39:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.3.8
+  * Added Proxy support
+  * Fixed token not increased when using QOS0
+  * Fixed base64 encoding for basic auth proxy
+  * Fixed OpenSSL Crash during MQTTClient_destroy
+  * Fixed Crash while loading persisted messages
+  * Fixed multiple MQTT client crashes
+
+-------------------------------------------------------------------
+Mon Aug 17 19:40:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.3.5:
+  * Focus on persistence
+  * Fixes
+  * Bugfixes
+  * https://github.com/eclipse/paho.mqtt.c/milestone/8?closed=1
+  * https://github.com/eclipse/paho.mqtt.c/milestone/7?closed=1
+  * https://github.com/eclipse/paho.mqtt.c/milestone/6?closed=1
+- add cmake-libdir.patch to fix cmake module installation on x86_64
+
+-------------------------------------------------------------------
+Thu Mar 19 13:42:02 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- re-download upstream tarball
+
+-------------------------------------------------------------------
+Tue Mar 17 13:38:16 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
+
+- add BSD-3-Clause (EDL) license
+- run spec-cleaner and remove Group tag
+- use %fdupes macro for replacing duplicates in doc by soft links
+- rename package to paho-mqtt-c and subpackage to libpaho-mqtt
+
+-------------------------------------------------------------------
+Fri Jan 17 18:46:05 UTC 2020 - Ann Davis <andavis@suse.com>
+
+- Re-build for Package Hub. 
+
+-------------------------------------------------------------------
+Fri Aug 23 07:02:47 UTC 2019 - Vladislav Zverev <vladspbru@yandex.ru>
+
+- initial packaging v1.3.1 for open build service [jsc#ECO-1126]
+

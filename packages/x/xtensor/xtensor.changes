@@ -1,0 +1,127 @@
+-------------------------------------------------------------------
+Fri Jan  5 09:38:18 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Fix i586 build:
+  0001-Use-L-suffix-for-long-double-constants.patch
+  0002-Use-1-4-step-for-testing-arange.patch
+
+-------------------------------------------------------------------
+Thu Jan  4 15:05:50 UTC 2024 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.24.7
+  - Adjust version of required xsimd in README
+  - Add CI through github actions
+  - Added unwrap
+  - Removed repeated work from ci-extra build
+  - Removed bad macro definitions
+  - Fixing some iterator issues
+  - Fixed static analysis build
+  - Support external linkage for “recurser_run”
+  - Add possibility to use std::stable_sort with xt::argsort
+
+- Changes for 0.24.6:
+  - Improving documentation xstrides
+  - Parallel and more aggressive strided assigner
+  - Removing duplicates from documentation
+  - Adding aliases xt::xtensor_pointer and xt::xarray_pointer
+  - Fix and refactor partition
+  - Fix and update pre-commit
+
+- Changes for 0.24.5:
+  - Add space before pragma diagnostic
+  - Update xtl requirement in cmake
+  - Fix a bug where .fill doesn’t work for a xcontainer that is
+    non-contiguous
+
+-------------------------------------------------------------------
+Wed Feb 15 12:11:05 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- xtensor-devel is useless without xtl-devel
+
+-------------------------------------------------------------------
+Tue Jan 31 17:55:09 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.24.4
+  - Align qualifiers using clang-format
+  - Add xt::quantile
+  - Add swapaxes and moveaxis
+  - Enforce { ... }
+  - Manual style fixes
+  - Do not step further than last element in xreducer_stepper aggregation
+  - Upgraded to xsimd 10.0.0
+  - Explicitly declare test_xtensor_core_lib as STATIC
+  - fix npy_file move assignment
+  - Install as arch-independent
+  - Change extended tests test header
+  - argmax crashes when compiled using Visual Studio compiler with O1/O2 optimizations
+  - Fix xindexed_view::to_end
+  - Change xindex_view reference type to handle const data
+  - Fix TBB target in CMake exported interface
+  - Document missing xsort functions
+  - Specialize get_strides_type for xbuffer_adaptor
+  - find external packages (threads) after defining project
+- Drop 0001-Explicitly-declare-test_xtensor_core_lib-as-STATIC.patch: upstreamed
+
+-------------------------------------------------------------------
+Tue Oct 18 18:41:16 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.24.3
+  - Rename and fix storage iterator #2534
+  - rename storage_rbegin, storage_rend, ... to linear_rbegin, ... #2535
+  - Enabling reference value types for xfunction. #2532
+  - fixing linear iterator docs. #2538
+  - Minor improvements for Windows (MSVC, ClangCl) support #2531
+  - changing static layout in xtsrided_view temporary_type to container's layout #2553
+  - Upgraded to xsimd 9.0.1 #2573
+- Enable unit tests:
+  - Add 0001-Explicitly-declare-test_xtensor_core_lib-as-STATIC.patch: fix build
+
+-------------------------------------------------------------------
+Sun Jul 17 19:24:34 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.24.2
+  - Fixed the documentation of adapt functions #2496 #2496
+  - Updated C++20 option for visual studio builds C++2a no longer a valid std
+    option #2497 #2497
+  - Simplifying argmin and argmax where possible #2499 #2499
+  - Removed unused code #2502 #2502
+  - Fixed build error in MSVC 2019 by decaying decltype to base type #2506
+    #2506
+  - Added xt::convolve #2507 #2507
+  - Adding reset_data to xbuffer_adaptor and reset_buffer to adaptor to replace
+    the pointer without any reallocation #2521 #2521
+  - Workaround for EDG C++ frontend bug #2528 #2528
+  - Adding cast to deal with xtensor-python's signedness of shape #2510 #2510
+  - Adding missing rank to xtensor_adaptor #2520 #2520
+  - Fixing compiler warning #2522 #2522
+- Version 0.24.1
+  - Define tbb threshold #2455 #2455
+  - Export link interface to tbb #2456 #2456
+  - as_trivial_default_constructor has been removed from libstdc++ since
+    version 7. #2459 #2459
+  - Added missing headers in CMake #2462 #2462
+  - Workaround for CMake implementations that do not use C and CXX languages
+    #2467 #2467
+  - Fix erroneous less_equal usage in is_sorted calls #2471 #2471
+  - Adding xt::missing to operator() #2488 #2488
+  - Silence unused variable warning GCC #2494 #2494
+  - Adding xt::missing functionality to .periodic(...), .at(...), and
+    .in_bounds(...) #2493 #2493
+  - Fixing internal types #2492 #2492
+  - Adding size assertion .flat(i) + adding a few tests on size assertions
+    #2388 #2388
+  - Adding free function xt::strides #2489 #2489
+
+-------------------------------------------------------------------
+Sat Jan 29 20:17:45 UTC 2022 - Daniel Weatherill <plasteredparrot@gmail.com>
+
+- import sources from upstream version 0.24.0 (xtl > 0.7 now available in Tumbleweed repos
+
+- enable c++17 option as all openSUSE standard compilers have supported it for a while now
+
+-------------------------------------------------------------------
+Thu Mar 25 00:22:22 UTC 2021 - Daniel Weatherill <plasteredparrot@gmail.com>
+
+- import sources from upstream version 0.21.10 (last version that supports
+   available xtl version 0.6.18)
+

@@ -1,0 +1,13 @@
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="url">https://github.com/Matty9191/ssl-cert-check.git</param>
+    <param name="scm">git</param>
+    <param name="versionprefix">4.11git</param>
+  </service>
+  <service mode="localonly" name="tar" />
+  <service mode="localonly" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="localonly" name="set_version" />
+</services>

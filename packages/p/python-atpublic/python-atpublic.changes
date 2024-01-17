@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Fri Jan  5 17:15:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- remove obsolete pdm-pep517 dependency
+
+-------------------------------------------------------------------
+Thu Dec  7 20:11:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0:
+  * Drop Python 3.7 support (GL#16)
+  * Remove ``public.install()`` which was used to inject the
+    ``public`` and ``private`` functions into the ``builtins``
+    namespace.  This isn't very helpful and could be actively
+    harmful.  Explicit is better than implicit. (GL#14)
+  * The functional form of ``public()`` now returns the argument
+    *values* in the order they are given.  This allows you to
+    explicitly bind those values to names in the global namespace.
+  * Switch from ``flake8`` and ``isort`` to ``ruff`` for code
+    quality. (GL#32)
+  * Switch to ``pdm-backend`` (GL#15)
+  * More GitLab CI integration improvements.
+
+-------------------------------------------------------------------
+Tue Jun 13 11:22:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- tag for sle15 new python stack
+
+-------------------------------------------------------------------
+Fri Mar 24 11:28:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove typing_extensions requirement not needed for python version > 3.8
+
+-------------------------------------------------------------------
+Sun Dec  4 20:31:51 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to v3.1.1
+  * Improvements to the GitLab CI integration.
+
+- version 3.1 (2022-08-27)
+  * Fix a typo in pyproject.toml file.
+  * Exclude certain local cache files from the sdist/wheel.
+  * Add support for Python 3.11.
+  * Updates for pdm and dependencies.
+
+- version 3.0.1 (2022-01-10)
+  * Fix a typo in the README.rst.
+
+- version 3.0 (2022-01-10)
+  * Use modern package management by adopting pdm and pyproject.toml, and dropping setup.py and setup.cfg.
+  * Build the docs with Python 3.8.
+  * Update to version 3.0 of Sybil.
+  * Adopt the Furo documentation theme.
+  * Use importlib.metadata.version() as a better way to get the package version number for the documentation.
+  * Drop Python 3.6 support.
+  * Update Windows GitLab runner to include Python 3.10.
+  * Update copyright years.
+  * The master branch is renamed to main. (GL#11)
+
+-------------------------------------------------------------------
+Tue Jan 11 20:25:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix sybil usage in conftest based on sybil version.
+  * https://gitlab.com/warsaw/public/-/merge_requests/16
+
+-------------------------------------------------------------------
+Fri May 21 08:42:52 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.3
+  2.3 (2021-04-13)
+  ================
+  * Do type hinting the right way. (GL#10)
+
+  2.2 (2021-04-13)
+  ================
+  * ``public()`` and ``private()`` can't be correctly type annotated, so the
+    type hints on these two functions have been removed.  The ``ModuleAware``
+    was also removed.  (GL#10)
+  * Added a ``py.typed`` file to satisfy type checkers.  (GL#9)
+  * Fixed a documentation cross-reference bug.
+
+-------------------------------------------------------------------
+Mon Nov 30 07:48:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.1.1
+  * Clean up some typing problems
+  * Reorganized docs and tests out of the code directory
+  * Fix the Windows CI tests
+
+- from v2.0
+  * Drop Python 3.4 and 3.5; add Python 3.8 and 3.9.
+  * The C implementation is removed
+  * Added an ``@private`` decorator
+  * Build and test on Windows in addition to Linux
+  * Fix the doctests so that they actually run and pass!
+  * Add type annotations and API reference documentation
+  * Internal improvements and modernizations
+
+-------------------------------------------------------------------
+Fri May 10 03:49:45 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0

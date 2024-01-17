@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>066538fd1ad38aa8ec34c64f75607b0f</srcmd5>
+    <version>4.4.0</version>
+    <time>1527605246</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-enable</comment>
+    <requestid>605797</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a77737805ba02d48961fc4ae0d6afce</srcmd5>
+    <version>4.5.0</version>
+    <time>1574242151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749771</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>46b9e5f8ea322941f90687130881aaba</srcmd5>
+    <version>4.5.0</version>
+    <time>1644273483</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest to run the testsuite, not nose.</comment>
+    <requestid>952035</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>30d18c1f9e154a0d28813d46de1cdaf9</srcmd5>
+    <version>5.1.0</version>
+    <time>1651605580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974758</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c8aeb9a78df9af703d96c3807d8cc4b</srcmd5>
+    <version>5.2.0</version>
+    <time>1677794685</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-311.patch, to support python3.11 gh#enthought/apptools#328
+- Remove python310.patch, not needed anymore
+- Update to version 5.2.0
+  * Replace some uses of on_trait_change and depends_on with observe.
+  * (#285, #289)
+  * Use importlib.resources in preference to importlib_resources
+  * on new enough Python versions. (#284)
+  * Replace eval with ast.literal_eval in apptools.preferences.
+  * (#299)
+  * Use context managers to handle locks in apptools.preferences. (#306)
+  * Fix test failures due to collections.abc changes in Python 3.10. (#313)
+  * Remove a redundant elif branch in preference_binding. (#298)
+</comment>
+    <requestid>1068996</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8618871c9f2643f0470c8eb5a6feb4af</srcmd5>
+    <version>5.2.1</version>
+    <time>1705353463</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.1:
+  * Fix StatePickler for Python 3.11.
+  * Add encoding as an attribute for LogFileHandler
+    initialization
+- drop python-311.patch (upstream)
+
+- Use pytest to run the testsuite, not nose.</comment>
+    <requestid>1138697</requestid>
+  </revision>
+</revisionlist>

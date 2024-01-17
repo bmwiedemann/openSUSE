@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c403b2f9c9ca83aa43b1a23807466d3b</srcmd5>
+    <version>1.06</version>
+    <time>1396009021</time>
+    <user>coolo</user>
+    <comment>The Cache::Cache cache interface, it's new requirement of openqa</comment>
+    <requestid>227855</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c403b2f9c9ca83aa43b1a23807466d3b</srcmd5>
+    <version>1.06</version>
+    <time>1409302184</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02f3306b5d19b6e99144c74c52dbbdaf</srcmd5>
+    <version>1.07</version>
+    <time>1411461746</time>
+    <user>coolo</user>
+    <comment>- update to version 1.07
+  * fix a bug where we checked @$ instead of $@ after eval</comment>
+    <requestid>250149</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37d5250c99e5d46aeed9f14613727fae</srcmd5>
+    <version>1.08</version>
+    <time>1429346443</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.08
+   see /usr/share/doc/packages/perl-Cache-Cache/CHANGES
+  1.08 2015-01-22
+   - try to avoid some race conditions (thanks, Petr Písař)
+   - typo fixes (thanks, David Steinbrunner)</comment>
+    <requestid>297617</requestid>
+  </revision>
+</revisionlist>

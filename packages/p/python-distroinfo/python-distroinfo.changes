@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue Mar 14 22:38:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2:
+  * Add twine\_python parameter to upload-pypi
+  * Use python3 in build-python-release
+  * Add new filtering option and tests
+  * Add new unit tests and fixes others
+
+-------------------------------------------------------------------
+Thu Dec  9 08:49:52 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.5.1
+  0.5.1
+  -----
+  * Cleanup tox.ini, make pytest-runner req optional
+  0.5.0
+  -----
+  * Add new method: find\_element
+  * Improve messages for MissingRequiredItem exception
+  * Fix git URLs for review.rdoproject.org
+  0.4.0
+  -----
+  * Add function to compare attributes between commits
+  * Fix integration tests
+  * Update project contact
+  * Fix CI jobs
+
+-------------------------------------------------------------------
+Thu May 28 03:28:14 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.3.2:
+  * Change README to rst
+  * Switching Fedora runc nodeset to pod
+  * Fix tags\_diff output with python3
+  * Import ABC from collections.abc instead of collections
+  * Add license header and fix integration test 
+
+-------------------------------------------------------------------
+Thu Mar 21 09:54:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Mar  5 03:24:43 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.3.0

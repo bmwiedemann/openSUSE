@@ -1,0 +1,16 @@
+<package name="eblook" project="openSUSE:Factory">
+  <title>Command Line Tool for Searching Electronic Dictionaries</title>
+  <description>eblook is a command line tool that uses the EB library. It provides
+easy access to many electronic dictionaries published on CD-ROM.
+
+It is recommended that you install the Emacs interface lookup.el, too.
+Although it is possible to use eblook from the command line, using it
+with Emacs or XEmacs and lookup.el is much easier and offers many extra
+features.
+
+You can get lookup.el from http://lookup.sourceforge.net/.
+
+lookup.el is already included as a package in recent versions of
+XEmacs.</description>
+  <devel project="M17N" package="eblook"/>
+</package>

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a157ddd548ad1fa35a8c4c17db0d25b3</srcmd5>
+    <version>1.0.2</version>
+    <time>1560862031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708144</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>36c0401b54b24daac5427941b724b8e6</srcmd5>
+    <version>1.0.3</version>
+    <time>1583702503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * #6685: htmlhelp builder should generate HTML4 docs instead of HTML5</comment>
+    <requestid>780398</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cc7a6935ee2d4503f99fb1b9f46c3d3e</srcmd5>
+    <version>2.0.0</version>
+    <time>1623767807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Drop python-3.5 support
+  * Remove deprecated method: ``HTMLHelpBuilder.open_file()``
+  * #6685: htmlhelp builder should generate HTML4 docs instead of HTML5
+</comment>
+    <requestid>899358</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>08eb9a2c336a73b9bfbb9410045a9323</srcmd5>
+    <version>2.0.0</version>
+    <time>1654004823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979903</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8688ba5c696c88cb5bb73ad9d517a501</srcmd5>
+    <version>2.0.1</version>
+    <time>1678283467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Drop support for Python 3.7 and lower
+  * Fix deprecation warnings from Sphinx 6.1
+- drop sphinx5.patch (upstream)</comment>
+    <requestid>1069747</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>de012e56df2777b27e06f913e32f9a66</srcmd5>
+    <version>2.0.1</version>
+    <time>1682193510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081749</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36a230db57ea2427baf2679cdd22d32b</srcmd5>
+    <version>2.0.4</version>
+    <time>1693860742</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Update to 2.0.4
+  * Drop support for Python 3.8
+  * Raise minimum required Sphinx version to 5.0
+  * Fix tests for Sphinx 7.1 and below
+</comment>
+    <requestid>1107997</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c407635f586cf1eac7ea64b6bbb15133</srcmd5>
+    <version>2.0.5</version>
+    <time>1705353067</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.5:
+  * Remove Sphinx as a required dependency, as circular
+    dependencies may cause failure with package managers that
+    expect a directed acyclic graph (DAG) of dependencies.</comment>
+    <requestid>1138559</requestid>
+  </revision>
+</revisionlist>

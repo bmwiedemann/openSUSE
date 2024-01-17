@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6fe4ca01b40bc98d5a12cc988ad2dd60</srcmd5>
+    <version>1.0.1</version>
+    <time>1521904597</time>
+    <user>dimstar_suse</user>
+    <comment>needed for python-matplotlib sr#585408</comment>
+    <requestid>590636</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ce310e1eaea75fc98673e7672574e3a1</srcmd5>
+    <version>1.0.1</version>
+    <time>1522317470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592125</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a2c753f5cf1f14e004eb189bbb5064db</srcmd5>
+    <version>1.1.0</version>
+    <time>1564302009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * prevent attempting a dual optimize on a dummy row PR #56 closes #15
+  * add dump and dumps methods to inspect the internal state of the solver PR #56
+  * test on Python 3.7 PR #51
+  * improvemnts to setup.py and tests PR #46 #50</comment>
+    <requestid>718128</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d67e45462e0944163d6cb40fc3ae691c</srcmd5>
+    <version>1.2.0</version>
+    <time>1587580868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794516</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d871a67ca7f2153bcc54b59f6b1ed535</srcmd5>
+    <version>1.3.1</version>
+    <time>1608729547</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.1:
+  - allow to avoid linking against VC2014_1 on windows PR #97
+  - do not mark move constructor / assignment operator of expression as noexcept PR #97
+    This is to circumvent a suspected bug in the GCC compiler in the manylinux1
+    image.
+  - add c++ benchmarks and run them on CIs PR #91
+  - modernize the c++ code by using more c++11 features PR #90
+  - introduce move semantic in some c++ constructors to improve performances PR #89
+  - add support for Python 3.9 PR #88</comment>
+    <requestid>857111</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>98b41cf5ee448d3fc08204f546d2b53d</srcmd5>
+    <version>1.3.2</version>
+    <time>1641555892</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.2:
+  - Add support for Python 3.10, drop official support Python 3.6
+  - Remove direct accesses to ob_type in C-API use Py_TYPE instead</comment>
+    <requestid>943952</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5747465965573b82f235282eb9de5340</srcmd5>
+    <version>1.4.1</version>
+    <time>1648916380</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965628</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>37ab75164a854ed17f7357ec61d0c2a8</srcmd5>
+    <version>1.4.4</version>
+    <time>1659941097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.4:
+  - fix timing in shared data release procedure PR #149
+  - revert use of nullpointer introduced in #142 
+    Its use is not necessary anymore in 3.11.0-beta.4 and used to cause issues on
+    some platforms (see #144 ) PR #145
+
+- Update to 1.4.3
+  * add support for Python 3.11 PR #142
+  * do not install tests PR #143
+  * fix packaging for latest setuptools PR #140
+- Release 1.4.2
+  * fix an issue with setuptools configuration PR #134</comment>
+    <requestid>990875</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ceed699bb06bf19fc9b485bae1abacc5</srcmd5>
+    <version>1.4.4</version>
+    <time>1682193451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081477</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>261b957c25cb5ca0a950cc209126693b</srcmd5>
+    <version>1.4.5</version>
+    <time>1701206333</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.4.5:
+  * implement exceptions in Python
+  * add missing signature of Constraint.violated for Python
+    wrapper
+  * add support for Python 3.12
+
+  - revert use of nullpointer introduced in #142</comment>
+    <requestid>1129229</requestid>
+  </revision>
+</revisionlist>

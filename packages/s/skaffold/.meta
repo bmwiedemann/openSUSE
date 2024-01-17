@@ -1,0 +1,6 @@
+<package name="skaffold" project="openSUSE:Factory">
+  <title>skaffold</title>
+  <description>Easy and Repeatable Kubernetes Development</description>
+  <devel project="devel:kubic" package="skaffold"/>
+  <url>https://github.com/GoogleContainerTools/skaffold</url>
+</package>

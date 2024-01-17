@@ -1,0 +1,27 @@
+{
+    /**
+     * Configuration to use PostgreSQL instead of the default SQLite
+     * back-end of Orthanc. You will have to install the
+     * "orthanc-postgresql" package to take advantage of this feature.
+     **/
+    "PostgreSQL" : {
+	// Enable the use of PostgreSQL to store the Orthanc index?
+	"EnableIndex" : true,
+
+	// Enable the use of PostgreSQL to store the DICOM files?
+	"EnableStorage" : false,
+
+	// Option 1: Specify explicit authentication parameters
+	"Host" : "localhost",
+	"Port" : 5432,
+	"Database" : "orthanc",
+	"Username" : "orthanc_user",
+	"Password" : "my_password",
+
+	// Option 2: Authenticate using PostgreSQL connection URI
+	// "ConnectionUri" : "postgresql://orthanc_user:my_password@localhost:5432/orthanc",
+
+	// Optional: Disable the locking of the PostgreSQL database
+	"Lock" : false
+    }
+}

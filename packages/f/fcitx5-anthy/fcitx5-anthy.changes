@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Tue Oct  3 07:39:31 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.1
+  * fix prediction not showing candidate 
+
+-------------------------------------------------------------------
+Sun Aug 20 06:14:45 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * bug fix on input mode and now input mode correctly
+    follows global shared state option
+
+-------------------------------------------------------------------
+Mon May 22 11:39:12 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.14
+  * Add all size of icon for anthy
+  * replace uint with unsigned int
+  * Fix custom kana/nicola table loading
+
+-------------------------------------------------------------------
+Sun Nov 20 10:24:27 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.13
+  * Update translation
+
+-------------------------------------------------------------------
+Tue Jul  5 11:29:27 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.12
+  * Update default conversion rule to accept using "ci" "kwa" etc just
+    like mozc
+
+-------------------------------------------------------------------
+Sun Mar 13 07:14:38 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.10
+  * Add Down and some keypad to some actions by default
+
+-------------------------------------------------------------------
+Sat Feb 12 15:12:13 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.9
+  * Small fix in the paging logic. Now it's possible to always
+    go to the next page regardless of current cursor position.
+
+-------------------------------------------------------------------
+Wed Dec 15 11:46:29 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.8
+  * Fix UI not update when click candidate 
+
+-------------------------------------------------------------------
+Wed May  5 07:52:17 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.5
+  * Fix NICOLA problems
+- changes in version 5.0.4
+  * Implement sub mode label
+
+-------------------------------------------------------------------
+Tue Mar 16 05:55:38 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.3
+
+-------------------------------------------------------------------
+Sun Jan 31 04:06:29 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.2
+  * Make label in UI more meaningful
+
+-------------------------------------------------------------------
+Sun Dec  6 05:36:33 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.1
+
+-------------------------------------------------------------------
+Tue Nov 10 05:03:15 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.0
+
+-------------------------------------------------------------------
+Fri Sep  4 04:55:35 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- initial package

@@ -1,0 +1,293 @@
+Index: conu-1.0.0/conu.egg-info/requires.txt
+===================================================================
+--- conu-1.0.0.orig/conu.egg-info/requires.txt
++++ conu-1.0.0/conu.egg-info/requires.txt
+@@ -1,5 +1,4 @@
+ requests
+-six
+ docker
+ kubernetes==8.0.0
+ pytest
+Index: conu-1.0.0/conu/apidefs/container.py
+===================================================================
+--- conu-1.0.0.orig/conu/apidefs/container.py
++++ conu-1.0.0/conu/apidefs/container.py
+@@ -13,7 +13,7 @@ from conu.apidefs.image import Image
+ from conu.utils.http_client import HttpClient, get_url
+ 
+ import requests
+-from six.moves.urllib.parse import urlunsplit
++from urllib.parse import urlunsplit
+ from contextlib import contextmanager
+ 
+ 
+Index: conu-1.0.0/conu/backend/buildah/image.py
+===================================================================
+--- conu-1.0.0.orig/conu/backend/buildah/image.py
++++ conu-1.0.0/conu/backend/buildah/image.py
+@@ -15,8 +15,6 @@ import logging
+ import os
+ import subprocess
+ 
+-import six
+-
+ from conu.apidefs.backend import get_backend_tmpdir
+ from conu.apidefs.image import Image
+ from conu.apidefs.metadata import ImageMetadata
+@@ -75,7 +73,7 @@ class BuildahImage(Image):
+         :param pull_policy: enum, strategy to apply for pulling the image
+         """
+         super(BuildahImage, self).__init__(repository, tag=tag)
+-        if not isinstance(tag, (six.string_types, None.__class__)):
++        if not isinstance(tag, (str, None.__class__)):
+             raise ConuException("'tag' is not a string type")
+         if not isinstance(pull_policy, BuildahImagePullPolicy):
+             raise ConuException("'pull_policy' is not an instance of BuildahImagePullPolicy")
+Index: conu-1.0.0/conu/backend/docker/image.py
+===================================================================
+--- conu-1.0.0.orig/conu/backend/docker/image.py
++++ conu-1.0.0/conu/backend/docker/image.py
+@@ -16,8 +16,6 @@ import subprocess
+ import enum
+ from tempfile import mkdtemp
+ 
+-import six
+-
+ from kubernetes.client.rest import ApiException
+ 
+ from conu.apidefs.metadata import ImageMetadata
+@@ -110,7 +108,7 @@ class DockerImage(Image):
+         :param pull_policy: enum, strategy to apply for pulling the image
+         """
+         super(DockerImage, self).__init__(repository, tag=tag)
+-        if not isinstance(tag, (six.string_types, None.__class__)):
++        if not isinstance(tag, (str, None.__class__)):
+             raise ConuException("'tag' is not a string type")
+         if not isinstance(pull_policy, DockerImagePullPolicy):
+             raise ConuException("'pull_policy' is not an instance of DockerImagePullPolicy")
+Index: conu-1.0.0/conu/backend/podman/image.py
+===================================================================
+--- conu-1.0.0.orig/conu/backend/podman/image.py
++++ conu-1.0.0/conu/backend/podman/image.py
+@@ -15,8 +15,6 @@ import logging
+ import os
+ import subprocess
+ 
+-import six
+-
+ from conu.apidefs.backend import get_backend_tmpdir
+ from conu.apidefs.image import Image
+ from conu.apidefs.metadata import ImageMetadata
+@@ -61,7 +59,7 @@ class PodmanImage(Image):
+         :param pull_policy: enum, strategy to apply for pulling the image
+         """
+         super(PodmanImage, self).__init__(repository, tag=tag)
+-        if not isinstance(tag, (six.string_types, None.__class__)):
++        if not isinstance(tag, (str, None.__class__)):
+             raise ConuException("'tag' is not a string type")
+         if not isinstance(pull_policy, PodmanImagePullPolicy):
+             raise ConuException("'pull_policy' is not an instance of PodmanImagePullPolicy")
+Index: conu-1.0.0/conu/utils/filesystem.py
+===================================================================
+--- conu-1.0.0.orig/conu/utils/filesystem.py
++++ conu-1.0.0/conu/utils/filesystem.py
+@@ -14,9 +14,6 @@ import pwd
+ from conu.exceptions import ConuException
+ from conu.utils import run_cmd, is_selinux_disabled, setfacl_command_exists, chcon_command_exists
+ 
+-import six
+-
+-
+ logger = logging.getLogger(__name__)
+ 
+ 
+@@ -85,14 +82,14 @@ class Directory(object):
+         self.facl_rules = facl_rules
+ 
+         # os.chown wants int
+-        if isinstance(user_owner, six.string_types):
++        if isinstance(user_owner, str):
+             try:
+                 self.owner = pwd.getpwnam(user_owner)[2]
+             except KeyError as ex:
+                 raise ConuException("User %r not found, error message: %r" % (user_owner, ex))
+         else:
+             self.owner = user_owner
+-        if isinstance(group_owner, six.string_types):
++        if isinstance(group_owner, str):
+             try:
+                 self.group = pwd.getpwnam(group_owner)[3]
+             except KeyError as ex:
+@@ -246,7 +243,7 @@ class Volume(object):
+         :param volume: tuple in one one of the following forms: target | source,target | source,target,mode
+         :return: instance of Volume
+         """
+-        if isinstance(volume, six.string_types):
++        if isinstance(volume, str):
+             return Volume(target=volume)
+         elif len(volume) == 2:
+             return Volume(source=volume[0],
+Index: conu-1.0.0/conu/utils/http_client.py
+===================================================================
+--- conu-1.0.0.orig/conu/utils/http_client.py
++++ conu-1.0.0/conu/utils/http_client.py
+@@ -4,7 +4,7 @@
+ # SPDX-License-Identifier: MIT
+ #
+ from requests import Session
+-from six.moves.urllib.parse import urlunsplit
++from urllib.parse import urlunsplit
+ 
+ 
+ def get_url(path, host, port, method="http"):
+Index: conu-1.0.0/requirements.txt
+===================================================================
+--- conu-1.0.0.orig/requirements.txt
++++ conu-1.0.0/requirements.txt
+@@ -1,5 +1,4 @@
+ requests
+-six
+ docker
+ kubernetes==8.0.0
+ pytest
+Index: conu-1.0.0/tests/integration/test_buildah.py
+===================================================================
+--- conu-1.0.0.orig/tests/integration/test_buildah.py
++++ conu-1.0.0/tests/integration/test_buildah.py
+@@ -3,7 +3,6 @@ from __future__ import print_function, u
+ import subprocess
+ 
+ import pytest
+-from six import string_types
+ 
+ from conu import ConuException, random_str
+ from conu.fixtures import buildah_backend
+@@ -31,7 +30,7 @@ def test_buildah_image(buildah_backend):
+     assert "registry.fedoraproject.org/fedora-minimal:33" == str(image)
+     assert "BuildahImage(repository=%s, tag=%s)" % (FEDORA_MINIMAL_REPOSITORY,
+                                                     FEDORA_MINIMAL_REPOSITORY_TAG) == repr(image)
+-    assert isinstance(image.get_id(), string_types)
++    assert isinstance(image.get_id(), str)
+     new_image = image.tag_image(tag="test")
+     assert new_image.is_present()
+     new_image.rmi(via_name=True)
+@@ -55,7 +54,7 @@ def test_buildah_container(buildah_backe
+         assert "Config" in c.inspect()
+         assert c.get_id() == str(c)
+         assert repr(c)
+-        assert isinstance(c.get_id(), string_types)
++        assert isinstance(c.get_id(), str)
+     finally:
+         c.delete(force=True)
+ 
+Index: conu-1.0.0/tests/integration/test_docker.py
+===================================================================
+--- conu-1.0.0.orig/tests/integration/test_docker.py
++++ conu-1.0.0/tests/integration/test_docker.py
+@@ -30,7 +30,6 @@ from conu import \
+     Directory
+ 
+ from conu.backend.docker.skopeo import SkopeoTransport
+-from six import string_types
+ 
+ 
+ @pytest.mark.parametrize("reference,result", [
+@@ -129,7 +128,7 @@ def test_image():
+         assert "registry.fedoraproject.org/fedora-minimal:33" == str(image)
+         assert "DockerImage(repository=%s, tag=%s)" % (FEDORA_MINIMAL_REPOSITORY,
+                                                        FEDORA_MINIMAL_REPOSITORY_TAG) == repr(image)
+-        assert isinstance(image.get_id(), string_types)
++        assert isinstance(image.get_id(), str)
+         new_image = image.tag_image(tag="test")
+         new_image.rmi(via_name=True)
+ 
+@@ -155,7 +154,7 @@ def test_container():
+             assert "Config" in c.inspect()
+             assert c.get_id() == str(c)
+             assert repr(c)
+-            assert isinstance(c.get_id(), string_types)
++            assert isinstance(c.get_id(), str)
+         finally:
+             c.delete(force=True)
+ 
+@@ -618,6 +617,6 @@ def test_run_via_api():
+             assert "Config" in c.inspect()
+             assert c.get_id() == str(c)
+             assert repr(c)
+-            assert isinstance(c.get_id(), string_types)
++            assert isinstance(c.get_id(), str)
+         finally:
+             c.delete(force=True)
+Index: conu-1.0.0/tests/integration/test_filesystem.py
+===================================================================
+--- conu-1.0.0.orig/tests/integration/test_filesystem.py
++++ conu-1.0.0/tests/integration/test_filesystem.py
+@@ -6,7 +6,6 @@
+ import os
+ 
+ import pytest
+-import six
+ 
+ from conu.backend.docker.backend import DockerBackend
+ from conu.backend.docker.container import ConuException
+@@ -53,12 +52,8 @@ def test_container_copy_from(docker_cont
+             assert fd.read() == FEDORA_RELEASE
+ 
+         tmpdir.mkdir("etc")
+-        if six.PY2:
+-            with pytest.raises(OSError):
+-                fs.copy_from("/etc", str(tmpdir))
+-        else:
+-            with pytest.raises(FileExistsError):
+-                fs.copy_from("/etc", str(tmpdir))
++        with pytest.raises(FileExistsError):
++            fs.copy_from("/etc", str(tmpdir))
+ 
+ 
+ def test_container_get_file(docker_container):
+@@ -119,12 +114,8 @@ def test_image_copy_from(docker_image, t
+             assert fd.read() == FEDORA_RELEASE
+ 
+         tmpdir.mkdir("etc")
+-        if six.PY2:
+-            with pytest.raises(OSError):
+-                fs.copy_from("/etc", str(tmpdir))
+-        else:
+-            with pytest.raises(FileExistsError):
+-                fs.copy_from("/etc", str(tmpdir))
++        with pytest.raises(FileExistsError):
++            fs.copy_from("/etc", str(tmpdir))
+ 
+ 
+ def test_image_get_file(docker_image):
+Index: conu-1.0.0/tests/integration/test_podman.py
+===================================================================
+--- conu-1.0.0.orig/tests/integration/test_podman.py
++++ conu-1.0.0/tests/integration/test_podman.py
+@@ -15,8 +15,6 @@ from conu.apidefs.metadata import Contai
+ from conu.exceptions import ConuException
+ from conu import Directory
+ 
+-from six import string_types
+-
+ import pytest
+ 
+ 
+@@ -55,7 +53,7 @@ def test_podman_image(podman_backend):
+     assert "registry.fedoraproject.org/fedora-minimal:33" == str(image)
+     assert "PodmanImage(repository=%s, tag=%s)" % (FEDORA_MINIMAL_REPOSITORY,
+                                                    FEDORA_MINIMAL_REPOSITORY_TAG) == repr(image)
+-    assert isinstance(image.get_id(), string_types)
++    assert isinstance(image.get_id(), str)
+     new_image = image.tag_image(tag="test")
+     assert new_image.is_present()
+     new_image.rmi(via_name=True)
+@@ -82,7 +80,7 @@ def test_container(podman_backend, podma
+         assert "Config" in c.inspect()
+         assert c.get_id() == str(c)
+         assert repr(c)
+-        assert isinstance(c.get_id(), string_types)
++        assert isinstance(c.get_id(), str)
+     finally:
+         c.delete(force=True)
+ 

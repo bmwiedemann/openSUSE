@@ -1,0 +1,32 @@
+From 05c5920e69ae80e39c340b00400ae78b33515e85 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 31 Dec 2021 17:22:22 +0100
+Subject: [PATCH] Fix installation.
+
+[    6s] + make install DESTDIR=/home/abuild/rpmbuild/BUILDROOT/hsetroot-1.0.4-0.x86_64
+[    6s] install -st /home/abuild/rpmbuild/BUILDROOT/hsetroot-1.0.4-0.x86_64/usr/bin/ hsetroot
+[    6s] install: failed to access '/home/abuild/rpmbuild/BUILDROOT/hsetroot-1.0.4-0.x86_64/usr/bin/': No such file or directory
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index d485357..9b682a3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -35,8 +35,8 @@ hsetroot: hsetroot.o
+ hsr-outputs: hsr-outputs.o
+ 
+ install: hsetroot hsr-outputs
+-	install -st $(DESTDIR)$(PREFIX)/bin/ hsetroot
+-	install -st $(DESTDIR)$(PREFIX)/bin/ hsr-outputs
++	install -Dst $(DESTDIR)$(PREFIX)/bin/ hsetroot
++	install -Dst $(DESTDIR)$(PREFIX)/bin/ hsr-outputs
+ 
+ clean:
+ 	rm -f *.o hsetroot hsr-outputs
+-- 
+2.33.1
+

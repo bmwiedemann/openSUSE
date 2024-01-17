@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a8074b165892163946f59dfc2d1a179</srcmd5>
+    <version>1.9.73</version>
+    <time>1497944471</time>
+    <user>dimstar_suse</user>
+    <comment>replaces python-cups and python3-cups. This is a singlespec package and follows python package naming guidelines.</comment>
+    <requestid>504830</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>57d9adc9f076812c31d57670d3289c39</srcmd5>
+    <version>1.9.74</version>
+    <time>1558036794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702986</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7fb2a66cf32b13da36cba5585e0d5776</srcmd5>
+    <version>1.9.74</version>
+    <time>1567420796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726856</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>cb85e08bf56e299a4f77b9506c0b9795</srcmd5>
+    <version>1.9.74</version>
+    <time>1594807939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820723</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>269332bd38ca84c0df4529a935176e20</srcmd5>
+    <version>1.9.74</version>
+    <time>1606428617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849838</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ab6b578b2c1f263205d8c9a440ea31b</srcmd5>
+    <version>2.0.1</version>
+    <time>1614692564</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.0.1:
+  * pypi required .tar.gz
+  * cups.require couldn't handle version bigger than 1
+  * dropped macros for older CUPS &lt; 2.0.0
+  * dropped Python 2 support and its related macros
+  * update license headers
+  * thread did not hold GIL when called Py_XDECREF() from destroy_TLS(), causing SIGSEGV(Fedora bug #1816107)
+  * fixed several compiler warnings
+  * fix silent error on Connection.printFiles() (patch by Wilbert Berendsen)</comment>
+    <requestid>874580</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>212cf409b09afca4335ce394e1c2e04d</srcmd5>
+    <version>2.0.1</version>
+    <time>1645221756</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaner</comment>
+    <requestid>955503</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c5bf0bb31fd423380cbbe1350ddcfeac</srcmd5>
+    <version>2.0.1</version>
+    <time>1692188188</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1103947</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>3224a111201cbdf778914167171dc6a3</srcmd5>
+    <version>2.0.1</version>
+    <time>1704491980</time>
+    <user>dimstar_suse</user>
+    <comment>- require setuptools
+
+- build as wheel
+- spec-cleaner
+  been packaged any more after the switch from python-cups to
+- Initial package (1.9.40)</comment>
+    <requestid>1136459</requestid>
+  </revision>
+</revisionlist>

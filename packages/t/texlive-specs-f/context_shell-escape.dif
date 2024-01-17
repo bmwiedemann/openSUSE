@@ -1,0 +1,24 @@
+---
+ texmf-dist/scripts/context/lua/mtxrun.lua |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- texmf-dist/scripts/context/lua/mtxrun.lua
++++ texmf-dist/scripts/context/lua/mtxrun.lua	2023-05-04 21:45:19.000000000 +0000
+@@ -25855,7 +25855,7 @@ local function secondaryflags(arguments)
+  end
+  return concat(flags," ")
+ end
+-local template=[[--ini %primaryflags% --lua=%luafile% %texfile% %secondaryflags% %redirect%]]
++local template=[[--ini %primaryflags% --socket --shell-escape --lua=%luafile% %texfile% %secondaryflags% %redirect%]]
+ local checkers={
+  primaryflags="verbose",
+  secondaryflags="verbose",
+@@ -25990,7 +25990,7 @@ function environment.make_format(formatn
+  report_format()
+  lfs.chdir(startupdir)
+ end
+-local template=[[%primaryflags% --fmt=%fmtfile% --lua=%luafile% %texfile% %secondaryflags%]]
++local template=[[%primaryflags% --socket --shell-escape --fmt=%fmtfile% --lua=%luafile% %texfile% %secondaryflags%]]
+ local checkers={
+  primaryflags="verbose",
+  secondaryflags="verbose",

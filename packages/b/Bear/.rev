@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f79518b60ae63b942ffb696c4fad8b8c</srcmd5>
+    <version>2.3.13</version>
+    <time>1537882942</time>
+    <user>dimstar_suse</user>
+    <comment>new package, usefull</comment>
+    <requestid>637563</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ceb2bbc22fea60d99fd22c7605d0deeb</srcmd5>
+    <version>2.3.13</version>
+    <time>1543224366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651037</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c4f19893f081f058814879141d6fa8b7</srcmd5>
+    <version>2.4.2</version>
+    <time>1569588870</time>
+    <user>dimstar_suse</user>
+    <comment>- Small package modernization
+
+- Fix sed call to fixup bear's shebang
+
+- Packaging changes:
+  - Drop unnecessary BuildRequires libconfig-devel and pkgconfig
+  - Drop Bear-rpmlintrc: it contains a no longer required filter
+  - Run the testsuite in %check
+  - Add bash completion files
+  - Use python3 as the interpreter for /usr/bin/bear
+- Update to 2.4.2
+  Features:
+  - Support output field in the output. (#254, @bofeng17)
+  - Support Fortran compiler (#201, #241, #253, @rubyzhou2014, @chunhualiao)
+  - Support filter options (#261, #252, @liugang)
+  Bugfixes:
+  - Fix Cpack problem to create RPM. (#191, @antmak, @reverendhomer)
+- Update to 2.4.1
+  - Minor bug fixes.
+- Update to 2.4.0
+  - Improve reliability by replacing flaky character conversion code in critical
+    execution path.</comment>
+    <requestid>733664</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5dc624e5993ec8317127058acfa17b92</srcmd5>
+    <version>2.4.2</version>
+    <time>1573044581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739254</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d1d547b15b7d4437972d6eb0ccef2391</srcmd5>
+    <version>3.0.15</version>
+    <time>1632251596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920612</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>966cc03e81d65301b1207208351e8a43</srcmd5>
+    <version>3.0.18</version>
+    <time>1643666246</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.18
+  * Fix compile errors with g++ 11.02 (#434, @shrkamat)
+  * Added CMAKE_EXE_LINKER_FLAGS to external projects. (#437, @XaverKlemenschits)
+  * Fixed Libtool test failure. (#435, @gyakovlev)</comment>
+    <requestid>950230</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1bfaf2a68af4a636b8f7be33f617a9f</srcmd5>
+    <version>3.0.20</version>
+    <time>1666089920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029602</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>18d032aff0a41f0da3915c216966e93a</srcmd5>
+    <version>3.1.2</version>
+    <time>1686752960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092887</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d4d43be8d25bde79ba2a98a204e093ef</srcmd5>
+    <version>3.1.3</version>
+    <time>1702936616</time>
+    <user>anag+factory</user>
+    <comment>- Disable tests as they timeout in OBS
+
+- Update to version 3.1.3
+  * citnames: include filter works with trailing separator
+  * dependency: fmt to work with all recent versions
+  * cmake: Avoid warning about DOWNLOAD_EXTRACT_TIMESTAMP ( #531, @Spongman )
+  * language: Add missing include for std::find ( #530, @thesamesam )</comment>
+    <requestid>1133862</requestid>
+  </revision>
+</revisionlist>

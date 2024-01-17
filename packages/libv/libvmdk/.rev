@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d631c0ba4b6593f821787b196dbae22d</srcmd5>
+    <version>0~20140803</version>
+    <time>1409118380</time>
+    <user>coolo</user>
+    <comment>New package - removed extraneous license identified in previous decline.</comment>
+    <requestid>246377</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d631c0ba4b6593f821787b196dbae22d</srcmd5>
+    <version>0~20140803</version>
+    <time>1409301755</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13e626cd73dc2705776aa3bf0c4760ec</srcmd5>
+    <version>0~20150105</version>
+    <time>1422626669</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282294</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ff70b0334fe7467efbeeb475c595164</srcmd5>
+    <version>0~20160119</version>
+    <time>1468999055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408591</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc41c063ee668f0363c2ce23e2b98576</srcmd5>
+    <version>0~20170226</version>
+    <time>1507197460</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530592</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3dd5b47f46d0a878b8f4c6c65a9f58da</srcmd5>
+    <version>0~20170226</version>
+    <time>1509722607</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535315</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>72586dedd37c83e9478c15ca9426934b</srcmd5>
+    <version>0~20181227</version>
+    <time>1560337700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695356</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c38ccbe8b173144eb40f23a972856d5d</srcmd5>
+    <version>0~20181227</version>
+    <time>1588324339</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799064</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>667cd79998831b9a2d63f8d182114d50</srcmd5>
+    <version>0~20200926</version>
+    <time>1608918650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858543</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd523afd57d52ae9df44cf2b1831608f</srcmd5>
+    <version>20210418</version>
+    <time>1623363505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898772</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7e15478c644036f10f48179e87d52f7f</srcmd5>
+    <version>20210807</version>
+    <time>1637970681</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20210807</comment>
+    <requestid>933971</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>78be3337d60539820e3b3c43ea67ac4a</srcmd5>
+    <version>20210807</version>
+    <time>1643062219</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable multipython builds. (This reenables Python2 on Leap 15.)</comment>
+    <requestid>948441</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>a2f579835356adcae3c53a5eb9c77746</srcmd5>
+    <version>20210807</version>
+    <time>1660051744</time>
+    <user>dimstar_suse</user>
+    <comment>- Add forced symvers</comment>
+    <requestid>994029</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cc594f68ca6b0eeb982a8123073233a4</srcmd5>
+    <version>20221124</version>
+    <time>1669378300</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221124</comment>
+    <requestid>1037869</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>eea3a91106d15e7a261c01fd0df0625b</srcmd5>
+    <version>20221124</version>
+    <time>1669630010</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038496</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e488a195198d482f53dd1a06e697ac44</srcmd5>
+    <version>20221124</version>
+    <time>1672851130</time>
+    <user>dimstar_suse</user>
+    <comment>add missing libbfio-devel</comment>
+    <requestid>1046608</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>c8d124d43b4337493b074187efe4a4e5</srcmd5>
+    <version>20221124</version>
+    <time>1691594742</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103027</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d92102e7705c59f3d14cf9063ac9aeb0</srcmd5>
+    <version>20231123</version>
+    <time>1700865225</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 20231123</comment>
+    <requestid>1128307</requestid>
+  </revision>
+</revisionlist>

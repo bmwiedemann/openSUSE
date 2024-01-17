@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebadbfe0c261b90b6afbcfca61780fe9</srcmd5>
+    <version>50</version>
+    <time>1488322214</time>
+    <user>dimstar_suse</user>
+    <comment>new policies</comment>
+    <requestid>458773</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a06b8b97869bddb9dede3f3bd830ca29</srcmd5>
+    <version>50</version>
+    <time>1603959767</time>
+    <user>dimstar_suse</user>
+    <comment>Refresh spec file with cpanspec to fix build with perl 5.32
+</comment>
+    <requestid>844656</requestid>
+  </revision>
+</revisionlist>

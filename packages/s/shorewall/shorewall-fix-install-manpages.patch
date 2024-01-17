@@ -1,0 +1,18 @@
+diff -rup a/install.sh b/install.sh
+--- a/install.sh	2020-09-25 00:02:15.000000000 +0200
++++ b/install.sh	2022-09-01 14:15:05.029452644 +0200
+@@ -1183,10 +1183,10 @@ if [ ${PRODUCT} = shorewall6 ]; then
+ 	shorewall-accounting.5  shorewall-ipsets.5   shorewall-providers.5     shorewall-tcclasses.5     \
+ 	shorewall-actions.5     shorewall-maclist.5                            shorewall-tcdevices.5     \
+ 	                        shorewall-mangle.5   shorewall-proxyndp.5      shorewall-tcfilters.5     \
+-	shorewall-blacklist.5   shorewall-masq.5     shorewall-routes.5        shorewall-tcinterfaces.5  \
+-	shorewall-blrules.5     shorewall-modules.5  shorewall-routestopped.5  shorewall-tcpri.5         \
+-	shorewall-conntrack.5   shorewall-nat.5      shorewall-rtrules.5       shorewall-tcrules.5       \
+-                                shorewall-nesting.5  shorewall-rules.5         shorewall-tos.5           \
++	shorewall-routes.5      shorewall-tcinterfaces.5                                                 \
++	shorewall-blrules.5     shorewall-modules.5  shorewall-tcpri.5                                   \
++	shorewall-conntrack.5   shorewall-nat.5      shorewall-rtrules.5                                 \
++                            shorewall-nesting.5  shorewall-rules.5                                   \
+ 	shorewall-exclusion.5   shorewall-netmap.5   shorewall-secmarks.5      shorewall-tunnels.5       \
+ 	shorewall-hosts.5       shorewall-params.5   shorewall-snat.5          shorewall-vardir.5        \
+ 	shorewall-interfaces.5  shorewall-policy.5   shorewall-stoppedrules.5  shorewall-zones.5

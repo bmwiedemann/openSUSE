@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>065c4fc770beb24b8a7b02203d99b724</srcmd5>
+    <version>0.1.2</version>
+    <time>1506594871</time>
+    <user>dimstar_suse</user>
+    <comment>gpg-offline removed</comment>
+    <requestid>528766</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c60e6502d90b2c91479c29fccb3fe646</srcmd5>
+    <version>0.1.4</version>
+    <time>1522503463</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.1.4:
+ * Don't allow mixing options with positional arguments.</comment>
+    <requestid>592740</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f34fa96de049309f93ba86493001800</srcmd5>
+    <version>0.2</version>
+    <time>1552902127</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2
+  * Capture stdin by default when stdio is not a tty.
+    (This should make the -c option redundant for most practical purposes.)
+  * Error out when target program fails regardless of memory limit.
+  * Print the help message (-h) on stdout, not stderr.
+  * Print signal names (e.g. “SIGABRT”) instead of numbers with descriptions
+    (e.g. “signal 6 (Aborted)”).
+  * Close unneeded file descriptors.
+  * Unlink the temporary file as early as possible.
+  * Improve the build system:
+    + Set default PREFIX and DESTDIR.
+    + Add “test-installed” target.
+    + Add checks against BSD make.
+      (Only GNU make is supported.)
+</comment>
+    <requestid>685587</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e8244c3135c5f0c52ce699b67e925749</srcmd5>
+    <version>3.2.2</version>
+    <time>1602598625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840060</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d80695d98e0cb809f5e96bf41469d3c6</srcmd5>
+    <version>5.0.1</version>
+    <time>1665504188</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 5.0.1:
+  * New SKIP status
+  * Criticality has been removed
+  * Native IF/ELSE syntax
+  * Basic IF syntax
+  * Support for nested control structures
+  * Libdoc enhancements
+  * HTML output enhancements
+  * Fix running keywords in `start/end_suite` listener method
+  * Fix skipping tests in suite teardown if suite setup has been failed or skipped
+  * Avoid argument conversion if given argument has one of the accepted types
+  * Fix using using `Union` containing generics as type hint
+  * Regression using `TypedDict` as type hint
+  * Continue-on-failure mode can be controlled using tags
+  * Python 3.10 support
+  * Catching exceptions with `EXCEPT` 
+- Remove pointless BuildRequires on python</comment>
+    <requestid>1009641</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05ae0fe90fadd463254096738dada265</srcmd5>
+    <version>6.0</version>
+    <time>1667217869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032438</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6aacd367875f6267c3471108c8254e7f</srcmd5>
+    <version>6.0.1</version>
+    <time>1670588288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041749</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3215b2d2c80988fcdf9754287e7c6749</srcmd5>
+    <version>6.1.1</version>
+    <time>1702845107</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.1:
+  * https://github.com/robotframework/robotframework/blob/master/doc/releasenotes/rf-6.1.rst
+
+- Update to version 6.0.1
+- Update to 6.0.0
+  * Catching exceptions with `EXCEPT`
+- switch to pypi tarball
+    * Using keywords accepting embedded arguments when library is imported multiple times using the WITH</comment>
+    <requestid>1133553</requestid>
+  </revision>
+</revisionlist>

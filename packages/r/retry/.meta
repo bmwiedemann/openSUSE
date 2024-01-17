@@ -1,0 +1,5 @@
+<package name="retry" project="openSUSE:Factory">
+  <title>A simply retry tool in plain POSIX sh.</title>
+  <description>https://github.com/okurz/retry</description>
+  <devel project="Base:System" package="retry"/>
+</package>

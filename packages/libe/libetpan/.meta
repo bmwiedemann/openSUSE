@@ -1,0 +1,8 @@
+<package name="libetpan" project="openSUSE:Factory">
+  <title>Mail Handling Library</title>
+  <description>libEtPan is a mail purpose library. It will be used for low-level mail
+handling : network protocols (IMAP/NNTP/POP3/SMTP over TCP/IP and
+SSL/TCP/IP, already implemented), local storage (mbox/MH/maildir),
+message / MIME parse</description>
+  <devel project="server:mail" package="libetpan"/>
+</package>

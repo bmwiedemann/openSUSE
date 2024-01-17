@@ -1,0 +1,5 @@
+<package name="python-system_hotkey" project="openSUSE:Factory">
+  <title>python-system_hotkey</title>
+  <description>Multi platform system wide hotkeys for python 3.</description>
+  <devel project="devel:languages:python" package="python-system_hotkey"/>
+</package>

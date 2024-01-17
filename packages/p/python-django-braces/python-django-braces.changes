@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Wed Apr 20 10:27:32 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- do not require mock
+
+-------------------------------------------------------------------
+Thu Feb  3 04:14:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.15.0:
+  * Updates and fixes from #265
+  * Typo fixes from #269 and #262
+  * Dropped explicit support for Python versions before 3.7 and non-LTS
+    versions of Django
+- Dropped patch remove-py2-add-django3.patch:
+  * Included
+- Added patch modernize-braces.patch:
+  * Add support for modern versions of Django
+
+-------------------------------------------------------------------
+Fri Mar 19 09:30:32 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream remove-py2-add-django3.patch to make the package
+  compatible with Django 3.1 and testhack.patch to run tests
+  on Django 3.1 (upstream sleeps)
+
+-------------------------------------------------------------------
+Tue Jan  7 09:38:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.14.0:
+  * Tox now only tests recent Pythons and Djangos
+  * Include necessary files to build docs in source tarball. Closes #250
+  * Fixes deprecated imports, adds `six` as requirement
+  * force text to prevent Python 2 unicode fun
+- Remove merged patch dj21.patch
+
+-------------------------------------------------------------------
+Sun Mar 10 11:12:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Remove the url path for patch/source1 they differ and hopefully
+  will be fixed in the future
+
+-------------------------------------------------------------------
+Sun Mar 10 09:23:47 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite, adding form.html missing from sdist
+- Add dj21.patch for Django 2.1 support
+
+-------------------------------------------------------------------
+Sun Feb 17 01:52:54 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.13.0

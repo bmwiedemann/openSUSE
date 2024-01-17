@@ -1,0 +1,6 @@
+<package name="xdg-desktop-portal-hyprland" project="openSUSE:Factory">
+  <title>XDPH</title>
+  <description>xdg-desktop-portal backend for Hyprland. A fork of xdg-desktop-portal-wlr but with added features and support e.g. window screensharing.</description>
+  <devel project="X11:Wayland" package="xdg-desktop-portal-hyprland"/>
+  <url>https://github.com/hyprwm/xdg-desktop-portal-hyprland/</url>
+</package>

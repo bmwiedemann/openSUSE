@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Wed Mar 29 10:40:35 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add pmemkv-fix-gcc13-support.patch for GCC13 support
+
+-------------------------------------------------------------------
+Tue Dec  6 11:17:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  - New features:
+  * Introduce (optional) caching layer in radix engine. It can be enabled
+    via config parameters
+  * Add new config's flag - 'create_if_missing' to address the missing
+    functionality.
+  * If set, pmemkv tries to open the pool and creates it if missing.
+    It's mutually exclusive with 'create_or_error_if_exists' flag
+  - Bug fixes:
+  * Return correct status for wrong parameters in pmemkv_config_from_json
+  * Fix iterator::key() implementation to return the whole key, not only
+    the part up to the first null-terminator
+  * Return correct status from memkind-based engines on open failure
+
+-------------------------------------------------------------------
+Mon Feb 22 10:10:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on aarch64
+
+-------------------------------------------------------------------
+Mon Oct 26 16:06:51 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Update to version 1.3
+  * Introduces a new experimental engine - radix (single-threaded
+    sorted map, backed by libpmemobj-cpp's radix_tree container).
+  * config setters with type safety for common config fields
+  * stree engine optimization (single-threaded sorted map with 
+    custom comparator support)
+  * fixed operator== in stree engine
+  * fixed missing checks in move assignment operators
+  * operator<< for pmem::kv::status
+
+
+-------------------------------------------------------------------
+Thu Oct 15 11:07:02 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Replaced pkgconfig Buildreqiures with direct Package dependencies,
+  to fix build issues for SLES
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jul 22 08:58:01 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Initial packaging of v1.2 (jsc#SLE-13926)

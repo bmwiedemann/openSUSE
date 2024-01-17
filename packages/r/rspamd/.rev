@@ -1,0 +1,234 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16d42c718c2553e41fc3c5ec8b1307c2</srcmd5>
+    <version>2.5</version>
+    <time>1600346430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825922</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21de3b018016c18aeaf838f061cbe612</srcmd5>
+    <version>2.6</version>
+    <time>1605011973</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842178</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d87fb3e6b865a133e9c308e5b7c5db7f</srcmd5>
+    <version>2.7</version>
+    <time>1610304231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861808</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>85d26b4b31b2adce11fde5ead1d3ac36</srcmd5>
+    <version>2.7</version>
+    <time>1613774733</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i586 build</comment>
+    <requestid>873722</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f7148df799aef012476fd9c51949c91a</srcmd5>
+    <version>2.7</version>
+    <time>1614948561</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876970</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>3d51dfb2b826a27dd484758fbc9a0165</srcmd5>
+    <version>2.7</version>
+    <time>1623268389</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>898834</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6e58186cb24fadab16d6f4dc984b894</srcmd5>
+    <version>3.1</version>
+    <time>1636577229</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>930680</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>952079ba027833d1239b8ae90c01aa02</srcmd5>
+    <version>3.2</version>
+    <time>1648479654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965270</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>971e939fa2ed5bbe0ac24fd9a88c69bf</srcmd5>
+    <version>3.2</version>
+    <time>1649093208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966814</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c5bd36c764d558b7f42b61ae7a343318</srcmd5>
+    <version>3.3</version>
+    <time>1665504221</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1009799</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>feed521f59770f2745e99f6b5be8d5b2</srcmd5>
+    <version>3.4</version>
+    <time>1667995059</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034625</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ee3fd14601e80aec697ce8d8ae4bd081</srcmd5>
+    <version>3.4</version>
+    <time>1668609847</time>
+    <user>dimstar_suse</user>
+    <comment>- Move cleanup code to %pre because otherwise it doesnt trigger
+  early enough
+
+- Upgrade to 3.4 again 
+  - Fix metadata_exporter with many recipients by @yo000 in #4294
+  - [Fix] Fix favicon.ico Content-Type header by @moisseev in #4302
+  - [Minor] Fix copy-paste error by @moisseev in #4305
+  - Add basic auth to metadata_exporter http pusher by @yo000 in
+    #4300
+  - [Enhancement] Add composite rule against AFF involving
+    freemailers by @twesterhever in #4304
+  - Penalize bounce spam by @frederikbosch in #4308
+- Added 068714f9f5a96fbd94560211cec75775ee023d02.patch:
+  Official patch for the unaligned memory issue described in
+  https://github.com/rspamd/rspamd/issues/4329
+- Add cleanup code to the %postun scriptlet to remove bad files,
+  created by earlier/unpatched 3.4 versions, during package upgrade
+
+- Downgrade to 3.3 until https://github.com/rspamd/rspamd/issues/4329
+  is solved.</comment>
+    <requestid>1036202</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6c8d94a873daaa0dc502a2b7a272ed62</srcmd5>
+    <version>3.4</version>
+    <time>1675265997</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1062440</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cbd1b092a28c4c5f4b62220581216fa2</srcmd5>
+    <version>3.5</version>
+    <time>1679766951</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1074269</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3b1e97c834684044f264824b59f4a861</srcmd5>
+    <version>3.6</version>
+    <time>1691762162</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103409</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4089d67e461161fbeda432ade8c6f0e1</srcmd5>
+    <version>3.7.1</version>
+    <time>1697390878</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117826</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4835106d8197f79e26662c63b2b30a15</srcmd5>
+    <version>3.7.3</version>
+    <time>1698438499</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.7.3
+  - [Fix] Emergency fix for the hyperscan path error
+
+- Update to 3.7.2
+  - [Minor] Make compiling with backward-cpp optional by
+    @a16bitsysop in #4639
+  - [Rules] Blank spam detection by @fatalbanana in #4644
+  - [Minor] Treat *.cue attachments as harmful by @twesterhever in
+    #4642
+  - Dzjaivnt patch 1 by @dzjaivnt in #4640
+  - [WebUI] Add control to invert action filter by @moisseev in
+    #4645
+  - [Fix] DMARC reporting: fix reporting for subdomains by
+    @fatalbanana in #4587
+  - [Test] Banish luacheck from functional tests by @fatalbanana in
+    #4648
+  - [Minor] RSPAMD_SHAREDIR is called SHAREDIR in configuration by
+    @fatalbanana in #4649
+  - [WebUI] Fix history table vanishing by @moisseev in #4661
+  - Tighten rspamd's attachment policy by @twesterhever in #4656
+  - [Minor] rbl: support use of different matchers for return codes
+    by @fatalbanana in #4657
+
+- Update to 3.7.1</comment>
+    <requestid>1120748</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>99b6d46585ac68fc2ec6a377baec9b26</srcmd5>
+    <version>3.7.4</version>
+    <time>1700078924</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.7.4
+  - [Enhancement] Add composite rule for suspicious URLs in
+    suspicious messages
+  - [Fix] Another try to fix setproctitle
+  - [Fix] Do not cleanup hyperscan files unless new ones are loaded
+  - [Fix] Fix various issues with canonicalisation of the paths
+  - [Fix] Properly set config field when creating tasks from Lua
+  - [Fix] Set loaded variable explicitly
+  - [Fix] known_senders: fix config handling
+  - [Fix] rbl: fix exclude_local
+  - [Minor] Add missing include for gcc 14
+  - [Minor] Add rule for messages missing both X-Mailer and
+    User-Agent header
+  - [Minor] Bundle fasttext as linux distributives are just useless
+  - [Minor] Enable fasttext on RPM based linux
+  - [Minor] Forgot it in one more place
+  - [Minor] Improve FREEMAIL_AFF capture rates
+  - [Minor] Limit fasttext to amd64 only
+  - [Minor] Properly search for fasttext include
+  - [Minor] Treat *.zpaq attachments as archives and harmful
+  - [Minor] force_actions: set a group for symbols
+  - [WebUI] Update map editor</comment>
+    <requestid>1126462</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>7b12682ef5d0196cd0ec494cd1abf8df</srcmd5>
+    <version>3.7.4</version>
+    <time>1700675727</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128152</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>9e92498e0dfc9d79e1abae80d73b1058</srcmd5>
+    <version>3.7.4</version>
+    <time>1702071199</time>
+    <user>anag+factory</user>
+    <comment>fix_stack_smash.patch: upstream rework of logging doesn't allocate
+  enough memory for an array (bsc#1216830)</comment>
+    <requestid>1132069</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>53eaf167fbc2d6e12b1ed39dcd99c67f</srcmd5>
+    <version>3.7.5</version>
+    <time>1703281376</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1134658</requestid>
+  </revision>
+</revisionlist>

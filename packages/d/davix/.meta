@@ -1,0 +1,16 @@
+<package name="davix" project="openSUSE:Factory">
+  <title>Simple file management over HTTP-based protocols</title>
+  <description>Davix aims to make file management over HTTP-based protocols simple,
+focusing on high-performance remote I/O and data management of
+large collections of files. Currently, there is support for the
+WebDav, Amazon S3, Microsoft Azure, and HTTP protocols.
+
+It provides a C++ library offering an HTTP API, a remote I/O API, and
+a POSIX compatibility layer. It also provides several utilities for
+file transfer, large collections of files management and large files
+management.
+
+</description>
+  <devel project="network" package="davix"/>
+  <url>https://dmc.web.cern.ch/projects/davix/home</url>
+</package>

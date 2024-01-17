@@ -1,0 +1,25 @@
+From 892ba342672e3c176544e4076c602d95e7e8c937 Mon Sep 17 00:00:00 2001
+From: David C Wang <davwang4@cisco.com>
+Date: Sun, 11 Sep 2016 21:31:06 -0700
+Subject: [PATCH] Fixed deprecation warning
+
+Unescaped left brace in regex is deprecated, passed through in regex;
+  marked by <-- HERE in m/^(stash\@{ <-- HERE \d+}: )WIP( on .*:
+  [\da-f]+)\.\.\..*$/ at /tmp/gits line 1128.
+---
+ gits | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gits b/gits
+index 2cfd49b..d9f7ec1 100755
+--- a/gits
++++ b/gits
+@@ -1125,7 +1125,7 @@ sub releasecheck($@)
+       push(@stashed, $repo);
+       $unclean = 1;
+       # strip out previous commit from WIP stashes (messages are misleading)
+-      $stashes =~ s/^(stash\@{\d+}: )WIP( on .*: [\da-f]+)\.\.\..*$/${1}Work-in-Progress${2}/mg;
++      $stashes =~ s/^(stash\@\{\d+}: )WIP( on .*: [\da-f]+)\.\.\..*$/${1}Work-in-Progress${2}/mg;
+       $msg .= $stashes;
+     }
+ 

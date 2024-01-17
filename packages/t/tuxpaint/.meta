@@ -1,0 +1,20 @@
+<package name="tuxpaint" project="openSUSE:Factory">
+  <title>tuxpaint</title>
+  <description>Tux Paint&quot; is a drawing program for young children. It has a simple
+interface and fixed canvas size, and provides access to previous images
+using a thumbnail browser (it provides no access to the underlying
+filesystem).
+
+Unlike popular drawing programs such as &quot;The GIMP,&quot; it has a very
+limited toolset. However, it provides a much simpler interface, and has
+entertaining, child-oriented additions such as sound effects.
+
+
+
+Authors:
+--------
+    Bill Kendrick &lt;bill@newbreedsoftware.com&gt;
+</description>
+  <devel project="Education" package="tuxpaint"/>
+  <url>http://www.tuxpaint.org</url>
+</package>

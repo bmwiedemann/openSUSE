@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c45b1dc893a09afe38e728b9a1fd99a</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1637794472</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of Azure SDK</comment>
+    <requestid>933449</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72eec65c8672a67c274a5e6a21b1f4c2</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1655821985</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1
+- Update Requires from setup.py (forwarded request 983625 from glaubitz)</comment>
+    <requestid>984162</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9ab330f8ea77da2a11bfbda2e45705f</srcmd5>
+    <version>2.0.0</version>
+    <time>1679416904</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 1073137 from glaubitz)</comment>
+    <requestid>1073144</requestid>
+  </revision>
+</revisionlist>

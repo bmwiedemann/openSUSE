@@ -1,0 +1,5 @@
+<package name="php8-nginx-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic:containers" package="php8-nginx-image"/>
+</package>

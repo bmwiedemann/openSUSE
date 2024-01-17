@@ -1,0 +1,1110 @@
+-------------------------------------------------------------------
+Fri Dec  8 11:39:47 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.83.4
+  * Update CloudFormation specs to `149.0.0` (#2951)
+  * Add `KeyID` as a target for `TargetKeyId` (#2953)
+- from version 0.83.3
+  * Update CloudFormation specs to include `python3.12` (#2947)
+- from version 0.83.2
+  * Update CloudFormation specs to `148.0.0` (#2942)
+  * Add in `LoadBalancerArn` to `LoadBalancerV2Arn` (#2936)
+- from version 0.83.1
+  * Update CloudFormation specs to `146.0.0` (#2921)
+  * Update (E3036) and (E3035) to allow more FNs (#2928)
+  * Update (I3037) to have exceptions `Command` (#2927)
+- from version 0.83.0
+  * Add rule (E3045) to validate `AccessControl`s are
+    specified when using `AccessControl` (#2906)
+  * Add rule (W3045) to alert on usage of legacy
+    capability `AccessControl` (#2906)
+  * Update CloudFormation specs to `145.0.0` (#2909)
+- from version 0.82.2
+  * Update (I2530) validates its using Java runtimes greater than 8 (#2916)
+- from version 0.82.1
+  * Update (E2530) and (I2530) to make sure `Runtime`
+    is a string before using `startswith` (#2912)
+- from version 0.82.0
+  * Add rule (W2530) to warn when `SnapStart`
+    isn't configured correctly (#2905)
+  * Add rule (I2530) to warn when `SnapStart`
+    isn't configured on newer Java runtimes (#2905)
+  * Add rule (E2530) to error when `SnapStart` is
+    configured on an unsupported runtime (#2905)
+  * Update CloudFormation specs to `144.0.0` (#2898)
+- from version 0.81.0
+  * Update CloudFormation specs to `143.0.0` (#2893)
+  * Update language transformation to pass through empty objects (#2899)
+  * Update rule (E1017) to allow `Fn::Select` to allow `Fn::Select` (#2900)
+  * Update rule (E2532) to support `ToleratedFailurePercentage`
+    and `ItemBatcher` to `Map` (#2901)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Fri Oct  6 07:05:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.80.4
+  * Update CloudFormation specs to `142.0.0` (#2889)
+  * Update rule (E2520) to allow for empty lists (#2891)
+- from version 0.80.3
+  * Update CloudFormation specs to `141.0.0` (#2879)
+  * Update rule (E2532) to include `CausePath` and `ErrorPath`
+    key types to `Fail` state (#2884)
+  * Update rule (E2520) to better match exclusive properties (#2886)
+- from version 0.80.2
+  * Revert change #2878 (#2882)
+- from version 0.80.1
+  * Update CloudFormation specs to `140.0.0` (#2870)
+  * Add `OriginAccessControlId` to `OnlyOne` (#2878)
+  * Allow `jsonschema` to be from v3.0.0 to v5 (#2838)
+- from version 0.79.11
+  * Update (E3031) so all regex checks are run (#2873)
+  * Update (E2520) to better skip properties we don't care about (#2875)
+- from version 0.79.10
+  * Update CloudFormation specs to `139.0.0` (#2865)
+  * Force regex to be at least 2022 for typing parameter (#2867)
+
+-------------------------------------------------------------------
+Thu Sep  7 13:22:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.79.9:
+  * Update CloudFormation specs to `138.0.0` (pull #2857)
+  * Fix `AWS::LanguageExtensions` to have regex escape for string
+    replacement (pull #2862)
+
+-------------------------------------------------------------------
+Sun Sep  3 07:27:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.79.8
+  * Update CloudFormation specs to `136.0.0` (#2848)
+  * Added `ItemReader` key to StateMachine `Map` state (#2850)
+  * Update rule (E2503) to allow network load balancers to use
+    security groups (#2850)
+- from version 0.79.7
+  * Add region `il-central-1` (#2836)
+  * Update CloudFormation specs to `135.0.0` (#2837)
+  * Allow for `RetainExceptOnCreate` for `DeletionPolicy` (#2834)
+  * Fix language extension transform to resolve
+    foreach refs in Sub parameters (#2846)
+  * Fix language extension transform to allow `Fn::FindInMap`
+    to return arrays (#2845)
+- from version 0.79.6
+  * Fix `AWS::Glue::Job.Name` to use string min/max instead
+    of number min/max (#2831)
+- from version 0.79.5
+  * Update schema to spec conversions to include include a default
+    string minimum value of 0 if not specified (#2824)
+  * Update CloudFormation specs to `132.0.0` (#2824)
+  * Fix `AWS::LanguageExtensions` to not empty out a hardcoded
+    string `Fn::FindInmap` that cannot be resolved (#2827)
+- from version 0.79.4
+  * Fix `AWS::LanguageExtensions` to not fully resolve `Fn::FindInMap`
+    unless in `Fn::ForEach` collection (#2822)
+  * Update `convert_dict` to include `Mark` instead of tuple for default value (#2821)
+- from version 0.79.3
+  * Fix `Conditions` logic to not crash on a condition that isn't found (#2814)
+  * Update rule (E1011) to better handle `Fn::FindInMap` with `AWS::LanguageExtensions` (#2814)
+  * Update rule (W2001) to better handle `Ref` with `AWS::LanguageExtensions` (#2814)
+- from version 0.79.2
+  * Add rule (E1032) to validate ForEach with transform (#2809)
+  * Fix `AWS::LanguageExtensions` regex for sub removal to handle pseudo parameters (#2812)
+- from version 0.79.1
+  * Add support for `Fn::ForEach` when using `AWS::LanguageExtensions` (#2801)
+- from version 0.78.2
+  * Add `test` function to test conditions given a scenario (#2801)
+  * Update CloudFormation specs to `131.0.0` (#2795)
+  * Updated `DocumentDBEngineVersion` `AllowedValues` (#2800)
+- from version 0.78.1
+  * Update rule (E1018) to flag splitting dynamic references (#2786)
+  * New rule (W2533) to validate lambda zip deployment configuration (#2682)
+  * Supporting intrinsic function in `DeletionPolicy` and `UpdateReplacePolicy` (#2784)
+  * Update CloudFormation specs to `130.0.0` (#2783)
+  * Pin `jsonschema` to be under `4.18` (#2792)
+  * Fix using `include_experimental` in metadata (#2785)
+  * Fix rule (E1024) to better handle conditions (#2780)
+- from version 0.77.10
+  * Update CloudFormation specs to `127.0.0` (#2763)
+- from version 0.77.9
+  * Fix an issue with SSM patching (#2765)
+- from version 0.77.8
+  * Update CloudFormation specs to `126.0.0` (#2753)
+- from version 0.77.7
+  * Fix usage of comments and new lines in custom rules(#2757)
+- from version 0.77.6
+  * Update CloudFormation specs to `124.0.0` (#2736)
+  * Add `AWS::KMS::Key` to stateful resource list (#2751)
+  * Update (E3012) documentation changes for more clarity (#2747)
+- from version 0.77.5
+  * Update CloudFormation specs to `121.0.0` (#2723)
+- from version 0.77.4
+  * Update CloudFormation specs to `120.0.0` (#2714)
+  * Fix Conditions logic when checking a condition against a region. Now
+    return True and False when the condition has no basis on region (#2721)
+  * Rebuild conditions inside the Template class when doing a Transform (#2721)
+- from version 0.77.3
+  * Update CloudFormation specs to `119.2.0` (#2703)
+  * GetAtt can return objects along with FindInMap (#2709)
+- from version 0.77.2
+  * Add custom operators for regex, gt, lt (#2694)
+  * Update CloudFormation specs to `119.1.0` (#2698)
+- from version 0.77.1
+  * Update CloudFormation specs to `119.1.0` (#2678)
+  * Update allowed values for `AWS::RDS::DBInstance.PerformanceInsightsRetentionPeriod` (#2696)
+  * Update rule (E3001) to evaluate if a resource with a condition is affected by the region (#2691)
+- from version 0.77.0
+  * Convert from `re` to `regex` (#2643)
+  * Implement `IS DEFINED` in custom rules (#2656)
+  * Update CloudFormation specs to `119.0.0` (#2660)
+  * Patch `AWS::S3::Bucket.InventoryConfiguration.OptionalFields` to include `ChecksumAlgorithm` (#2666)
+  * Patch `AWS::Cognito::UserPool.UserPollTags` to be a map of strings (#2671)
+  * Update SAM translation to substitute for a sub in `CodeUri` (#2661)
+  * Update language extensions to validate if a ref is iterable before assuming it is (#2665)
+  * Update rule (E3001) to consider a resource level condition when evaluating if the resource type exists (#2668)
+  * Update rule (E3012) to validate if a map is actually a map (#2669)
+- from version 0.76.2
+  * Update CloudFormation specs to `118.1.0` (#2644)
+- from version 0.76.1
+  * Fix an issue with Conditions when a `Fn::Equals` has a string
+    that isn't in a Parameters `AllowedValues` (#2649)
+- from version 0.76.0
+  * Convert conditions to SymPy (#2624)
+  * Include tests in sdist (#2630)
+  * Update CloudFormation specs to `117.0.0` (#2642)
+  * Fix SAM templates treated as normal by api (#2646)
+- from version 0.75.1
+  * Update CloudFormation specs to `116.0.0` (#2620)
+  * Add string length for `AWS::WAFRegional::RegexPatternSet.RegexPatternStrings`
+    and `AWS::WAFv2::RegexPatternSet.RegularExpressionList` (#2637, (#2639)
+- from version 0.75.0
+  * Read the default region from Env Vars (#2618)
+  * Update rule (W2030) and (E3008) to read `ValueTypes` from `us-east-1` when `CACHED` (#2635)
+- from version 0.74.3
+  * Update rule (W2031), (E3031), (E3030), (E3034), and E3033) to
+    read `ValueTypes` from `us-east-1` when `CACHED` (#2628)
+- from version 0.74.2
+  * Update CloudFormation specs to `115.0.0` (#2616)
+  * Fix custom rule inequality comparison (#2614)
+  * Restructure the decode module (#2607)
+- from version 0.74.1
+  * Update CloudFormation specs to `114.0.0` (#2601)
+  * Remove `AWS::Logs::LogGroup.RetentionInDays` `AllowedValues` (#2604)
+- from version 0.74.0
+  * Add rule (E3044) to validate the scheduling strategy for Fargate services (#2559)
+  * Update CloudFormation specs to `113.0.0` (#2591)
+  * Updated condition logic to limit the number of conditions that are processed (#2598)
+- from version 0.73.2
+  * Update CloudFormation specs to `112.0.0` (#2580)
+  * Updated rule (E2532) by adding `ItemProcessor` to `Map` (#2577)
+  * Relax `networkx` dependency (#2584)
+  * Validate sub string checks are strings before running regex in graph and template (#2589)
+  * Update SAM transform pre-work to include `DefinitionBody`
+    when `DisableExecuteApiEndpoint` is specified (#2590)
+- from version 0.73.1
+  * Patch back in `TargetRole` for `AWS::RDS::DBProxyEndpoint` (#2581)
+- from version 0.73.0
+  * Update CloudFormation specs to `111.0.0` (#2572)
+  * Add region `ap-southeast-4` (#2568)
+  * Remove `AWS::RDS::DBCluster` `MasterUsername`
+    and `MasterUserPassword` from Inclusive (#2571)
+  * Update SAM Translator version based on the SAM CLI requirement (#2570)
+- Skip some more failing test
+  * test_bad_config
+  * test_override_parameters
+  * test_positional_template_parameters
+  * test_template_config
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Sat Jan 28 13:41:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.72.10:
+  * Update CloudFormation specs to `108.0.0` (pull #2557)
+  * Add `AWS::Organizations::Account` to `StatefulResources` (pull #2560)
+  * Update rule I3100 regex family string matching (pull #2558)
+  * Update CloudFormation specs to `107.0.0` (pull #2546)
+  * Support `Fn::FindInMap` enhancements when template is declared with
+    `AWS::LanguageExtensions` (pull #2512)
+  * Update CloudFormation specs to `106.0.0` (pull #2546)
+  * Update rule E1030 to include `Fn::FindInMap` when using `Fn::Length`
+  * Update rule E3002 to allow a `Fn::GetAtt` for an object (pull #2548)
+  * Update rule E2532 to include current task properties (pull #2549)
+
+-------------------------------------------------------------------
+Wed Jan  4 16:15:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.72.6:
+  * Update CloudFormation specs to `105.0.0` (pull #2530)
+  * Use a clean copy of the `cli_value` each time when merging config to
+    avoid leaking config from one template to another (pull #2536)
+  * Update rule W1001 to support `Fn::Sub` (pull #2525)
+  * Update CloudFormation specs to `102.0.0` (pull #2523)
+  * Update `Template` function `get_valid_getatts` to better return None
+    when a property type doesn't exist (pull #2527)
+  * Update rule E2015 to support the `AllowedValues` and `AllowedPattern`
+    attributes for `CommaDelimitedList` parameters (pull #2521)
+  * Update CloudFormation specs to `101.0.0` (pull #2517)
+  * Update `get_valid_getatts` to account for changes in the CloudFormation
+    spec (pull #2520)
+  * Don't validate rule I3042 when using SAM (pull #2513)
+
+-------------------------------------------------------------------
+Wed Dec  7 10:33:01 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.72.2
+  * Update CloudFormation specs to `100.0.0` (pull #2493)
+  * Update rule (#E1011) to merge key validation into one method (pull #2502)
+- from version 0.72.1
+  * Add `ap-south-2` region (pull #2503)
+  * Rebuild the graph after doing the transform (pull #2502)
+- from version 0.72.0
+  * Add more info into the graph including outputs and parameters (pull #2452)
+  * Update CloudFormation specs to `99.0.0` (pull #2486)
+  * Add `eu-south-2` region (pull #2490)
+  * Make sure regex patterns with `\w` are validating against ASCII (pull #2487)
+
+-------------------------------------------------------------------
+Wed Nov 16 13:08:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.71.1
+  * Add support for region eu-central-2 (pull #2478)
+  * Update CloudFormation specs to 97.0.0 (pull #2475)
+- Clean specfile from old python directives: requires Python >= 3.7
+- Clean %check section: alternatives provided by python-rpm-macros
+- Drop skip-tests-require-network.patch
+
+-------------------------------------------------------------------
+Mon Nov 14 16:40:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.71.0:
+  * Reduce storage on disk by reducing regional specs to only have differences
+    from us-east-1 spec (pull #2457)
+  * Update CloudFormation specs to 96.0.0 (pull #2461)
+  * Fix an issue with junit/pretty formatter/core process to get all rules even
+    on parse failure (pull #2462)
+  * Fix an issue when use stdin to pass a template and cfn-lint with parameters
+    giving E0000 (pull #2470)
+- Release v0.70.1
+  * Add support for Python 3.11 (pull #2463)
+  * Fix an issue with --list-rules failing (pull #2466)
+- Release v0.70.0
+  * Add rule W8003 to check if Fn::Equals will always be true or false (pull
+    #2426)
+  * Allow you to configure how exit codes work (pull #2436)
+  * Update CloudFormation specs to 95.0.0 (pull #2440)
+  * Remove check for string size of Lambda::Function.Code.Zipfile (pull #2447)
+  * Update rule E3012 to validate bad functions (pull #2441)
+  * Update rule E3016 to make checks less restrictive (pull #2453)
+- Release v0.69.1
+  * Updated string max value to Lambda::Function.Code.Zipfile to 4MB (pull
+    #2444)
+- Release v0.69.0
+  * Update decode of yaml/json to report on all duplicates (pull #2428)
+  * Patch in db.serverless into AWS::RDS::DBInstance.DBInstanceClass (pull
+    #2430)
+  * Added string max value to Lambda::Function.Code.Zipfile (pull #2431)
+  * Don't replace location for resource AWS::Serverless::Application in SAM
+    transform when its a string (pull #2425)
+- Release v0.68.1
+  * Patch in db.serverless into AWS::RDS::DBInstance.DBInstanceClass (pull
+    #2424)
+  * Update CloudFormation specs to 94.0.0 (pull #2420)
+- Release v0.68.0
+  * Ability to override location of the finding (pull #2410)
+  * Patch in DBClusterResourceId for as an Attribute of AWS::RDS::DBCluster
+    (pull #2407)
+  * Update CloudFormation specs to 93.0.0 (pull #2409)
+  * Update AllowedPatternRegex for AWS::CloudWatch::Alarm.MetricDataQuery.Id
+    (pull #2414
+  * Add GetAtt to AWS::KMS::ReplicaKey.Arn for KmsKey.Arn (pull #2417)
+- Release v0.67.0
+  * Support child rules allowing rules to add another rule in their match
+    responses (pull #2393)
+  * Update CloudFormation specs to 92.0.0 (pull #2399)
+- Release v0.66.1
+  * Update CloudFormation specs to 91.0.0 (pull #2392)
+  * Update E8003, E1018, E1019 to allow Fn::ToJsonString inside Equals, Split,
+    and Sub (pull #2397)
+  * Update I3013 to allow https and s3 (pull #2394)
+- Release v0.66.0
+  * Update E3002 to provide a suggestion if the wrong value is close to a
+    correct value (pull #2387)
+  * Update CloudFormation specs to 90.0.0 (pull #2376)
+  * Add in allowed values for oracle cdb engine types to
+    AWS::RDS::DBInstance.Engine (pull #2381)
+  * Add in allowd value PredictiveScaling to
+    AWS::AutoScaling::ScalingPolicy.PolicyType (pull #2378)
+  * Update W3002 to validate values aren't already S3 paths (pull #2382)
+  * Update I3013 to not regex check if a function (pull #2386)
+
+-------------------------------------------------------------------
+Tue Sep 20 12:05:31 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.65.1
+  * Update CloudFormation specs to `89.0.0` (#2366)
+  * Add support for `custom` RDS `Engine` types on resource
+    type `AWS::RDS::DBInstance` (#2370)
+  * Remove extra spacing in specs reducing overall size (#2371)
+  * Update `AllowedValues` for `RetentionInDays` on resource
+    type `AWS::Logs::LogGroup` (#2372)
+- from version 0.65.0
+  * Add `--force` option on `--update-specs` so cache isn't used (#2334)
+  * Add support for Python 3.10 (#2365)
+  * Update CloudFormation specs to `88.0.0` (#2361)
+  * Add in `mypy` testing and do a bunch of cleanup based on the results (#2328)
+  * Update rule I1022 to not suggest `Fn::Sub` on complext `Fn::Join`s (#2364)
+- from version 0.64.1
+  * Make `me-central-1` `ExtendedSpecs` a module (#2359)
+- from version 0.64.0
+  * Update `jsonschema` to be able to use version 3.0 and 4.0 (#2336)
+  * Remove support for python 3.6 and add python 3.9 (#2347)
+  * Update CloudFormation specs to `87.0.0` (#2353)
+  * Add support for region `me-central-1` (#2351)
+  * Disable the SAM validation checks when transforming a template (#2350)
+- from version 0.63.2
+  * Patch in attributes for `AWS::RDS::DBCluster` (#2344)
+- from version 0.63.1
+  * Update CloudFormation specs to `86.0.0` (#2335)
+- from version 0.63.0
+  * support for AWS::LanguageExtensions transform features including
+    DeletionPolicy,  UpdateReplacePolicy, Fn::Length and Fn::ToJsonString
+    docs (#2339)
+  * Add rule E1030 to validate Fn::Length is configured correctly (#2339)
+  * Add rule E1031 to validate Fn::Length is configured correctly (#2339)
+- from version 0.62.0
+  * Create new API to allow for easier integration of using cfn-lint as a
+    library docs (#2285)
+  * Update CloudFormation specs to `85.0.0` (#2324)
+  * Update Lambda deprecation dates (#2327)
+  * Fix an issue with `RulesCollection` in which configurations would carry
+    over between templates (#2331)
+  * Add used rules into `RulesCollection` so we can print all the used rules
+    in JUnit and Pretty formatting (#2330)
+  * Update error message on E3002 (#2059)
+  * Update error description on E1020 (#2329)
+- from version 0.61.5
+  * Update CloudFormation specs to `83.0.0` (#2316)
+  * Update rule I3100 have proper path to resource (#2309)
+  * Update rule E2503 by removing `AllowedValues` for
+    `AWS::ElasticLoadBalancingV2::LoadBalancer.LoadBalancerAttribute` (#2184)
+  * Update rule E3002 to include `<CommaDelimitedList` in SSM parameters (#2320)
+  * Update rule I3013 to not flag on Aurora instances (#2317)
+- from version 0.61.4
+  * Update CloudFormation specs to `81.1.0` (#2308)
+- from version 0.61.3
+  * Update CloudFormation specs to `81.0.0` (#2306)
+  * Add `AWS::EC2::KeyPair` as a `Ref` for the value type `KeyPair` (#2305)
+- from version 0.61.2
+  * Update CloudFormation specs to `78.1.0` (#2292)
+  * Add `utf-8` encoding to all `open` calls (#2298)
+- from version 0.61.1
+  * Update CloudFormation specs to `76.0.0` (#2282)
+  * Suppress `PendingDeprecationWarning` for `pydot` in
+    the `pygraphviz` package (#2289)
+  * Update descriptiosn on rule E1021, E1015, E1016, E1020, and E1017 (#2284)
+  * Update rule E3033 to ignore dynamic references for string length (#2281)
+- from version 0.61.0
+  * New rule I3100 to validate new generation instance types are used (#2267)
+  * Update CloudFormation specs to `73.1.0` (#2275)
+  * Add `AWS::OpenSearchService::Domain.AccessPolicies` to IAM rules (#2269)
+  * Reduce the calculated scenarios used when conditions match and one condition
+    has many variants (#2277)
+  * Update SARIF output to point to the general "Rules" documentation when a
+    rule doesn't specify a `source_url` (#2276)
+- Refresh patches for new version
+  * skip-tests-require-network.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
+Thu May 26 12:28:47 UTC 2022 - pgajdos@suse.com
+
+- version update to 0.60.1
+  * Update CloudFormation specs to 72.0.0 (pull #2272)
+  * Don't allow regex expressions that result in a warning (pull #2272)
+  * Move null checks from the parsing engine into rules (pull #2242)
+  * Add rule E4002 to validate metadata config (pull #2242)
+  * Update rule E2001 to error on null values (pull #2242)
+  * Update rule E3012 to validate for null values in properties (pull #2242)
+  * Update CloudFormation specs to 69.0.0 (pull #2261)
+  * Update CloudFormation specs to 66.1.0 (pull #2255)
+  * Lambda runtime deprecation updates (python3.6) (pull #2252)
+  * Update rule E3002 to consider a list as valid JSON (pull #2253)
+  * Update aws-sam-translator to 1.45.0 (pull #2245)
+  * Remove dependency on six (pull #2204)
+  * New rule E3504 to validate resources with AWS::Backup::BackupPlan.
+    The property DeleteAfterDays cannot be less than 90 days from
+    MoveToColdStorageAfterDays (pull #2230)
+  * Update CloudFormation specs to 66.0.0 (pull #2245)
+  * Update CloudFormation specs to 61.0.0 (pull #2232)
+  * Update SAM Transform pre work to add ImageUri when using Image as PackageType in AWS::Serverless::Function (pull #2236)
+  * Update CloudFormation specs to 59.0.0 (pull #2225)
+  * Remove allowed values for AWS::Config::ConfigurationRecorder.ResourceTypes (pull #2231)
+  * Wrap creating a YAML map with try/except and create lint error on failure (pull #2226)
+  * Update CloudFormation specs to 58.0.0 (pull #2217)
+  * W2506: Avoid false positives when using a Ref against a resource (pull #2210)
+  * E3502: Blank out functions in JSON size check to prevent false positives (pull #2222)
+  * Update CloudFormation specs to 56.0.0 (pull #2207)
+  * Update rule E3020 to validate that TTL isn't added for Alias records (pull #2195)
+  * Remove imports to pathlib2 with deprecation of Python 2.7, 3.4, and 3.5 (pull #2205)
+  * Improvements to json parsing code (pull #2199)
+  * Update CloudFormation specs to 54.0.0 (pull #2202)
+  * Fix an issue checking values of false in custom rules (pull #2208)
+  * EOL of Python 2.7, 3.4, and 3.5 support (pull #2195)
+  * Update CloudFormation specs to 53.0.0 (pull #2196)
+  * Fix an issue with rule E2001 to allow string parameter constraints for all AWS specific types (pull #2193)
+  * Update CloudFormation specs to 52.0.0 (pull #2188)
+  * Add region ap-southeast-3 (pull #2192)
+  * Update aws-sam-translator to 1.42.0 (pull #2183)
+  * Update CloudFormation specs to 50.0.0 (pull #2180)
+  * Update CloudFormation specs to 49.0.0 (pull #2178)
+  * Expand StatefulResources to include AWS::OpenSearchService::Domain (pull #2179)
+  * Add AWS::EKS::Cluster.ClusterSecurityGroupId to GetAtt list of AWS::EC2::SecurityGroup.NameOrGroupId (pull #2177)
+  * Update CloudFormation specs to 48.0.0 (pull #2170)
+  * Add AWS::OpenSearchService::Domain to be in the list for EnableVersionUpgrade (pull #2174)
+  * Update aws-sam-translator to 1.40.0 (pull #2165)
+  * Update CloudFormation specs to 47.0.0 (pull #2164)
+  * Switching logging level for samtranslator to CRITICAL (pull #2168)
+  * Adds support for outputting results in SARIF (pull #2126)
+  * Update CloudFormation specs to 46.0.0 (pull #2158)
+
+-------------------------------------------------------------------
+Mon Dec  6 21:34:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.54.4:
+  * Update CloudFormation specs to `45.0.0`
+  * Add `AWS::DynamoDB::GlobalTable` to `AWS::Lambda::EventSourceMapping.EventSourceArn`
+  * Expand stateful resource types to include `AWS::SecretsManager::Secret`
+  * Add exceptions to rule [E3031]
+  * Update `aws-sam-translator` to `1.39.0`
+  * Update `Serverless/ManagedPolicies.json` and create automation to keep it up to date
+  * Update default configuration on rule [E3012]
+  * Add rule [E3043]
+  * Add `AWS::KMS::ReplicaKey` as a `Ref`/`GetAtt` for `AWS::KMS::Alias.TargetKeyId`
+  * `AWS::ElasticLoadBalancingV2::LoadBalancer.LoadBalancerAttribute` `AllowedValues` expansion
+  * Fix rule message string formatting for [E3013]
+
+-------------------------------------------------------------------
+Tue Aug 17 00:38:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 0.53.0:
+  + Features
+    * Update aws-sam-translator to 1.38.0 (pull #2082)
+    * Signal the end of life for Python 3.5 (pull #2052)
+    * Allow configuration of top level sections in rule E1001
+      (pull #2090)
+  + CloudFormation Specifications
+    * Update resource specs to 39.8.0 (pull #2087)
+    * Add StringMax to AWS::SNS::Topic.TopicName,
+      AWS::IAM::Role.Name, AWS::SNS::Topic.TopicName,
+      AWS::Lambda::Function properties Handler, Description,
+      FunctionName, and AWS::Lambda::LayerVersion properties
+      LayerName (pull #2089)
+  + Fixes
+    * Update RetentionPeriodHours for AWS::Kinesis::Stream to 8760
+      (pull #2071)
+    * Expand expanding likely_stateful_resource_types to include
+      AWS::DynamoDB::GlobalTable (pull #2079)
+- Changes from 0.52.0:
+  + Features
+    * End support for Python 3.4 (pull #2048)
+    * New rule I3013 to validate retention period settings on
+      applicable resources (pull #2054)
+  + CloudFormation Specifications
+    * Update resource specs to `39.3.0` (pull #2047)
+  + Fixes
+    * Update `ManagedPolicies.json` to include
+      `AWSLambda_FullAccess` and `AWSLambda_ReadOnlyAccess`
+      (pull #2062)
+    * Fix a warning in setuptools with `description-file` needed to
+      be `description_file` (pull #2051)
+    * Update the `schema.json` for `.cfnlintrc` files to have the
+      correct format for `custom_rules` (pull #2055)
+    * Update rule E1029 to `not` look at `TemplatyBody` since it
+      can be a nested template (pull #2057)
+    * Update rule E3012 to think of a list as json (pull #2067)
+- Changes from 0.51.0:
+  + Features
+    * A new sub class to make working with `Fn::Sub` easier
+      (pull #2003)
+  + CloudFormation Specifications
+    * Update resource specs to `39.1.0` (pull #2044)
+  + Fixes
+    * Fix an issue with `networkx` package nesting in the graph
+      function (pull #2035)
+    * Update rule E1029 to only alert when the value found is a
+      parameter or a resource (pull #2031)
+- Drop command to remove source files containing online tests.
+- Rename original tarball filename in Source field.
+- Add skip-tests-require-network.patch to skip tests that requires
+  network:
+  * test_update_resource_specs_python_2
+  * test_update_resource_specs_python_3
+
+-------------------------------------------------------------------
+Thu Jun 10 09:46:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.50.0:
+  * Update rule E2507 to validate resource configuration in an IAM policy
+  * Update aws-sam-translator to 1.36.0
+  * Update resource specs to 37.1.0
+  * Update Lambda EOL for dotnetcore2.1
+  * UPdate Lambda EOL for nodejs10.x and ruby2.5
+  * Fix an issue with rule E7003 when a Fn::Transform was in a mapping
+  * Fix an issue when finding duplicate keys where the 2nd error wasn't to the key
+
+-------------------------------------------------------------------
+Mon Mar 29 04:24:53 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Disable two test modules test_update_resource_specs* that require
+  internet.
+- Remove skip_python36 no longer needed
+- update to v0.48.1
+  * See https://github.com/aws-cloudformation/cfn-python-lint/blob/master/CHANGELOG.md#v0481
+    for changes since 0.44.5
+
+-------------------------------------------------------------------
+Mon Feb  1 17:47:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.44.5:
+  - Update resource specs to `25.0.0`
+  - Add support for `AWS::SSO::PermissionSet` `InlinePolicy`
+  - Update resource specs to `24.0.0`
+  -  Update `AWS::DataBrew::Recipe.Action` `Parameters` `Type` to `Map`
+  - Fix an issue when we parse a json string in [E2507] and used the parsed
+    json to append to the location
+  - Update spec files as of 2021.01.08
+  - Update `AWS::Lambda::Function.MemorySize` to new service limits
+  - Replace `ContentUri` to a s3 path when doing a SAM transform
+  - Add `RouteSelectionExpression` to exludes on rule
+  - Remove newlines from parseable format messages
+
+-------------------------------------------------------------------
+Sat Jan  2 12:59:15 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.44.2
+  CloudFormation Specifications
+  * Expand Allowed Values for AWS::AmazonMQ::Broker.EngineVersion
+    (pull ##1841)
+  * Update spec files as of 2012.12.30 (pull #1831)
+  * Update AWS::Lambda::EventSourceMapping.EventSourceArn to allow
+    StreamARN and ConsumerARN (pull #1850)
+  Fixes
+  * Reinitialize E3022 on every template (pull #1848)
+  * Update rule E3008 to allow for lists in getatt allowed values
+    (pull #1850)
+- Changes in 0.44.1
+  Fixes
+  * Reinitialize the limits in rule E3021 (pull #1834)
+  * Add registry_schemas to be supported in the .cfnlintrc (pull
+    #1836)
+- Changes in 0.44.0
+  Features
+  * Cache all rules to speed up reloading rules when scanning
+    multiple templates (pull #1789)
+  CloudFormation Specifications
+  * Update FSx Storage Capacity to a minimum of 32 (pull ##1827)
+  * Update spec files as of 2012.12.14 (pull #1821)
+  Fixes
+  * Loosen version requirements for python package six (pull #1825)
+- Changes in 0.43.0
+  Features
+  * Add support to validate private types from the CloudFormation
+    Registry (pull #1732)
+  CloudFormation Specifications
+  * Update allowed values for AWS::DocDB::DBCluster.EngineVersion
+    (pull #1810)
+  * Updated specs as of 2020.12.3 (pull #1804)
+  Fixes
+  * Fix an issue with RegexDict to return the longest matched value
+    (pull #1815)
+  * Fix rule E3008 to not fail when using
+    AWS::ServiceCatalog::CloudFormationProvisionedProduct Outputs
+    (pull #1809)
+  * Loosen version constraints on importlib_resources (pull #1808)
+- Changes in 0.42.0
+  Features
+  * Add support for modules (pull #1800 and pull #1801)
+  * Colored Output and Pretty Formatting (pull #1742)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 21.0.0 (pull #1799)
+  Fixes
+  * Patch AWS::EC2::CarrierGateway for Tags (pull #1790)
+  * Make sure types are strings before assuming they are (pull
+    #1791)
+  * Add all for certain availability zone items (pull #1798)
+- Changes in 0.41.0
+  Features
+  * Remove rules W2509, E2004, E2505, E2510 and move logic to rules
+    E3030, E3031, and E3008 (pull #1750)
+  * Remove rule E2530 and move logic to W2030 and E3030 (pull
+    #1749)
+  * Remove rule E3028 and move logic to E3018 (pull #1769)
+  * Remove rule E3029 and move logic to E3018 (pull #1770)
+  * Remove rule E3024 and move logic to E3018 (pull #1771)
+  * Update rule E3002 to error when a singular function is used
+    when a list is needed (pull #1773)
+  * Update dates for Python 2.7 Lambda runtime support (pull #1777)
+  * Update rule E2503 to include more attributes for application
+    load balancers and protocols (pull #1783 and pull #1784)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 20.3.0 (pull #1781)
+  * Expand Allowed Values for AWS::AmazonMQ::Broker EngineVersion
+    (pull #1778)
+  Fixes
+  * Update rule E2529 to allow for two subscriptions per log group
+    (pull #1767)
+  * Allow SAM translation for AutoPublishAlias in Globals (pull
+    #1768)
+  * Allow numbers and booleans when doing a Fn::Sub parameter (pull
+    #1774)
+- Changes in 0.40.0
+  Features
+  * Add rule E3017 to validate when properties are required based
+    on a value of another property (pull #1746)
+  * Add rule E3018 to validate when properties are unwanted based
+    on the value of another property (pull #1759)
+  * Remove rule E3040 and replace with rule E3031 (pull #1754)
+  * Remove rule E3023 and replace with rule E3017 (pull #1758)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 20.0.0 (pull #1760)
+  * Add allowed values for AWS::Lambda::EventSourceMapping (pull
+    #1748)
+- Changes in 0.39.0
+  Features
+  * Allow ignoring of E0000 and E0001 (pull #1580)
+  * Update rule E3005 to include resource based conditions (pull
+    #1738)
+  * Update template limits to new standards (pull #1747)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 19.0.0 (pull #1751)
+  * Add ap-northeast-2d to the list of approved Availibility Zones
+    (pull #1739)
+  * Add AllowedValues to
+    AWS::CloudFormation::StackSet.PermissionModel from botocore
+    (pull #1741)
+- Changes in 0.38.0
+  Features
+  * Expand likely_stateful_resource_types for explicit
+    UpdateReplacePolicy/DeletionPolicy rule I3011 to include
+    AWS::SQS::Queue (pull #1736)
+  CloudFormation Specifications
+  * Update CloudFormation specs to 18.7.0 (pull #1734)
+  Fixes
+  * Fix an issue with rule E3003 to handle Ref: AWS::Novalue (pull
+    #1720)
+
+-------------------------------------------------------------------
+Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Only build Python3 flavors for distributions 15 and greater
+
+-------------------------------------------------------------------
+Fri Oct  9 07:23:49 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.37.1
+  * Update CloudFormation specs to 18.6.0
+  * Add `AllowedValues` for `AWS::DMS::Endpoint.EngineName`
+  * Fix an issue with rule E2521 and E2520 to handle `Ref: AWS::Novalue`
+- from version 0.37.0
+  * Update CloudFormation specs to 18.5.0
+  * Get `AllowedValues` from Botocore during `--update-specs`
+  * Add string length requirements for `AWS::Config::ConfigRule.Description`
+  * Patch `AWS::StepFunctions::Activity` to include `Name` and remove `Arn`
+  * Fix an issue with rule `E3002` to better handle when conditions
+    are used at the root level of a list
+  * Update core node libraries to remove `Ref: AWS::NoValue` from returned properties
+- from version 0.36.1
+  * Update CloudFormation specs to 18.4.0
+  * Add `ap-northeast-3` to `scripts/update_specs_services_from_ssm.py`
+- from version 0.36.0
+  * Update rule E2541 to validate that input artifacts are output artifacts from
+    a previous action and that output artifact names are unique in the pipeline
+  * New rule E3007 to validate parameter and resource names are unique
+  * Update CloudFormation specs to 18.3.0
+  * Expand `AllowedValues` for `AWS::AmazonMQ::Broker.EngineVersion` and `AWS::Glue::Trigger.Condition.State`
+  * Expand `templated_exceptions` property types that require package command for rule E3002 and W3002
+  * Pin pyrsistent to `0.16.0` with Python versions less than `3.5`
+  * Fix an issue with SSM Spec patching that resulted in resource `PropertyTypes`
+    not being added to the spec patches
+  * Update directives to use the resource name key as the start
+
+-------------------------------------------------------------------
+Tue Sep  8 09:54:16 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.35.1
+  * Update CloudFormation specs to 18.1.0
+  * Expand `AllowedValues` for `AWS::CloudFront::Distribution.MinimumProtocolVersion`,
+    `AWS::Config::ConfigurationRecorder.ResourceTypes`, and `AWS::Glue::Connection.
+    ConnectionInput.ConnectionType`
+  * Add localzone `us-west-2-lax-1b`
+  * Update rule E2503 to include `routing.http.desync_mitigation_mode`
+  * Update excludes for rule E1029 to include `ResponseMappingTemplate`
+  * Update rule E1019 and E1010 to handle resource attributes of type `Map
+- from version 0.35.0
+  * Update CloudFormation specs to 17.0.0
+  * Fix ElasticMapReduce and ManagedBlockchain InstanceType patching
+  * Include a regex pattern to check MetricValue is either a number or starts with `$`
+  * Add more types to `AWS::ApplicationAutoScaling::ScalingPolicy.
+    PredefinedMetricSpecification.PredefinedMetricType`
+  * Add more values to `AWS::Lambda::Function.Runtime`
+  * Add more values to `AWS::Budgets::Budget.BudgetType`
+  * Update rule E3031 to convert int or float to string before doing an allowed pattern
+    match on it
+  * Add exceptions to rule E1029
+  * Update rule E8003 to look for string based parameters
+- from version 0.34.1
+  * Update CloudFormation specs to 16.3.0
+  * Update rule E3001 to catch when Resource `Type` is not a string
+  * Update rule E1029 to handle `${}` in Step Function State Machines and Definition Substitutions
+  * Update rule W4002 to only look at `Ref` and `Sub`
+- from version 0.34.0
+  * Add rule W4002 that checks if `Metadata` references a `NoEcho` parameter
+  * Update CloudFormation specs to 16.1.0
+  * Remove `AWS::EC2::LaunchTemplate.BlockDeviceMapping` from `OnlyOne`
+  * Add more `AllowedValues` to `AWS::Glue::Trigger.Predicate.Logical`
+  * Add more `AllowedValues` to `AWS::ApplicationAutoScaling::ScalingPolicy.PredefinedMetric
+    Specification.PredefinedMetricType`
+  * Add more `AllowedValues` to `AWS::S3::Bucket.TopicConfiguration.Event`
+  * Add more `AllowedValues` to `AWS::EC2::CapacityReservation.InstancePlatform`
+  * Fix an issue for applying `AllowedValues` to `AWS::RDS::DBInstance MonitoringInterval`
+    and `PerformanceInsightsRetentionPeriod`
+  * Fix an issue for applying `Maximum` and `Minimum` to `AWS::ElasticLoadBalancingV2::
+    ListenerRule.Priority`
+  * Update rule E3503 to not fail on if ValidationDomain or DomainName aren't present
+
+-------------------------------------------------------------------
+Fri Jul  3 15:05:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.33.2
+  * few new rules and specification update
+
+-------------------------------------------------------------------
+Mon May  4 07:38:02 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.30.1:
+  * Fix many various issues and support new regions
+- Drop merged patches:
+  * cl_drop-compatible-releases-operator.patch
+  * cl_fix-config-expand-paths-test.patch
+  * cl_fix-lambda-runtimes-EOL-dates.patch
+
+-------------------------------------------------------------------
+Mon May  4 07:33:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+- Fix cfn-lint subpackage by moving it back to the python*-cfn-lint
+  it is setuptools entrypoint, no reason to split it out
+  * use update-alternatives to switch between binaries
+
+-------------------------------------------------------------------
+Thu Sep  5 11:17:31 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add upstream patch to fix EOL dates for lambda runtimes
+  + cl_fix-lambda-runtimes-EOL-dates.patch
+- Add upstream patch to fix test_config_expand_paths test
+  + cl_fix-config-expand-paths-test.patch
+- Add python to BuildRequires for suse_version < 1500
+
+-------------------------------------------------------------------
+Thu Jun 13 08:08:24 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix license string and test execution
+
+-------------------------------------------------------------------
+Wed Jun  5 20:47:21 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to python-cfn-lint.  This package has a python API, which
+  is required by python-moto.
+- Update to version 0.21.4
+  + Features
+    * Include more resource types in W3037
+  + CloudFormation Specifications
+    * Add Resource Type `AWS::CDK::Metadata`
+  + Fixes
+    * Uncap requests dependency in setup.py
+    * Check Join functions have lists in the correct sections
+    * Pass a parameter value for AutoPublishAlias when doing a Transform
+    * Show usage examples when displaying the help
+- Update to version 0.21.3
+  + Fixes
+    * Support dumping strings for datetime objects when doing a Transform
+- Update to version 0.21.2
+  + CloudFormation Specifications
+    * Update CloudFormation specs to 3.3.0
+    * Update instance types from pricing API as of 2019.05.23
+- Update to version 0.21.1
+  + Features
+    * Add `Info` logging capability and set the default logging to `NotSet`
+  + Fixes
+    * Only do rule logging (start/stop/time) when the rule is going to be called
+    * Update rule E1019 to allow `Fn::Transform` inside a `Fn::Sub`
+    * Update rule W2001 to not break when `Fn::Transform` inside a `Fn::Sub`
+    * Update rule E2503 to allow conditions to be used and to not default to `network` load balancer when an object is used for the Load Balancer type
+- Update to version 0.21.0
+  + Features
+    * New rule E3038 to check if a Serverless resource includes the appropriate Transform
+    * New rule E2531 to validate a Lambda's runtime against the deprecated dates
+    * New rule W2531 to validate a Lambda's runtime against the EOL dates
+    * Update rule E2541 to include updates to Code Pipeline capabilities
+    * Update rule E2503 to include checking of values for load balancer attributes
+  + CloudFormation Specifications
+    * Update CloudFormation specs to 3.2.0
+    * Update instance types from pricing API as of 2019.05.20
+  + Fixes
+    * Include setuptools in setup.py requires
+- Update to version 0.20.3
+  + CloudFormation Specifications
+    * Update instance types from pricing API as of 2019.05.16
+  + Fixes
+    * Update E7001 to allow float/doubles for mapping values
+    * Update W1020 to check pre-transformed Fn::Sub(s) to determine if a Sub is needed
+    * Pin requests to be below or equal to 2.21.0 to prevent issues with botocore
+- Update to version 0.20.2
+  + Features
+    * Add support for List<String> Parameter types
+  + CloudFormation Specifications
+    * Add allowed values for AWS::EC2 EIP, FlowLog, CustomerGateway, DHCPOptions, EC2Fleet
+    * Create new property type for Security Group IDs or Names
+    * Add new Lambda runtime environment for NodeJs 10.x
+    * Move AWS::ServiceDiscovery::Service Health checks from Only One to Exclusive
+    * Update Glue Crawler Role to take an ARN or a name
+    * Remove PrimitiveType from MaintenanceWindowTarget Targets
+    * Add Min/Max values for Load Balancer Ports to be between 1-65535
+  + Fixes
+    * Include License file in the pypi package to help with downstream projects
+    * Filter out dynamic references from rule E3031 and E3030
+    * Convert Python linting and Code Coverage from Python 3.6 to 3.7
+- Update to version 0.20.1
+  + Fixes
+    * Update rule E8003 to support more functions inside a Fn::Equals
+- Update to version 0.20.0
+  + Features
+    * Allow a rule's exception to be defined in a resource's metadata
+    * Add rule configuration capabilities
+    * Update rule E3012 to allow for non strict property checking
+    * Add rule E8003 to test Fn::Equals structure and syntax
+    * Add rule E8004 to test Fn::And structure and syntax
+    * Add rule E8005 to test Fn::Not structure and syntax
+    * Add rule E8006 to test Fn::Or structure and syntax
+    * Include Path to error in the JSON output
+    * Update documentation to describe how to install cfn-lint from brew
+  + CloudFormation Specifications
+    * Update CloudFormation specs to version 3.0.0
+    * Add new region ap-east-1
+    * Add list min/max and string min/max for CloudWatch Alarm Actions
+    * Add allowed values for EC2::LaunchTemplate
+    * Add allowed values for EC2::Host
+    * Update allowed values for Amazon MQ to include 5.15.9
+    * Add AWS::Greengrass::ResourceDefinition to GreenGrass supported regions
+    * Add AWS::EC2::VPCEndpointService to all regions
+    * Update AWS::ECS::TaskDefinition ExecutionRoleArn to be a IAM Role ARN
+    * Patch spec files for SSM MaintenanceWindow to look for Target and not Targets
+    * Update ManagedPolicyArns list size to be 20 which is the hard limit.  10 is the soft limit.
+  + Fixes
+    * Fix rule E3033 to check the string size when the string is inside a list
+    * Fix an issue in which AWS::NotificationARNs was not a list
+    * Add AWS::EC2::Volume to rule W3010
+    * Fix an issue with W2001 where SAM translate would remove the Ref to a parameter causing this error to falsely trigger
+    * Fix rule W3010 to not error when the availability zone is 'all'
+- Update to version 0.19.1
+  + Fixes
+    * Fix core Condition processing to support direct Condition in another Condition
+    * Fix the W2030 to check numbers against string allowed values
+- Update to version 0.19.0
+  + Features
+    * Add NS and PTR Route53 record checking to rule E3020
+    * New rule E3050 to check if a Ref to IAM Role has a Role path of '/'
+    * New rule E3037 to look for duplicates in a list that doesn't support duplicates
+    * New rule I3037 to look for duplicates in a list when duplicates are allowed
+  + CloudFormation Specifications
+    * Add Min/Max values to AWS::ElasticLoadBalancingV2::TargetGroup HealthCheckTimeoutSeconds
+    * Add Max JSON size to AWS::IAM::ManagedPolicy PolicyDocument
+    * Add allowed values for AWS::EC2 SpotFleet, TransitGateway, NetworkAcl
+      NetworkInterface, PlacementGroup, and Volume
+    * Add Min/max values to AWS::Budgets::Budget.Notification Threshold
+    * Update RDS Instance types by database engine and license definitions using the pricing API
+    * Update AWS::CodeBuild::Project ServiceRole to support Role Name or ARN
+    * Update AWS::ECS::Service Role to support Role Name or ARN
+  + Fixes
+    * Update E3025 to support the new structure of data in the RDS instance type json
+    * Update E2540 to remove all nested conditions from the object
+    * Update E3030 to not do strict type checking
+    * Update E3020 to support conditions nested in the record sets
+    * Update E3008 to better handle CloudFormation sub stacks with different GetAtt formats
+- Update to version 0.18.1
+  + CloudFormation Specifications
+    * Update CloudFormation Specs to 2.30.0
+    * Fix IAM Regex Path to support more character types
+    * Update AWS::Batch::ComputeEnvironment.ComputeResources InstanceRole to reference an
+      InstanceProfile or GetAtt the InstanceProfile Arn
+    * Allow VPC IDs to Ref a Parameter of type String
+  + Fixes
+    * Fix E3502 to check the size of the property instead of the parent object
+- Update to version 0.18.0
+  + Features
+    * New rule E3032 to check the size of lists
+    * New rule E3502 to check JSON Object Size using definitions in the spec file
+    * New rule E3033 to test the minimum and maximum length of a string
+    * New rule E3034 to validate the min and max of a number
+    * Remove Ebs Iops check from E2504 and use rule E3034 instead
+    * Remove rule E2509 and use rule E3033 instead
+    * Remove rule E2508 as it replaced by E3032 and E3502
+    * Update rule E2503 to check that there are at least two 2 Subnets or SubnetMappings for ALBs
+    * SAM requirement upped to minimal version of 1.10.0
+  + CloudFormation Specifications
+    * Extend specs to include:
+      > `ListMin` and `ListMax` for the minimum and maximum size of a list
+      > `JsonMax` to check the max size of a JSON Object
+      > `StringMin` and `StringMax` to check the minimum and maximum length of a String
+      > `NumberMin` and `NumberMax` to check the minimum and maximum value of a Number, Float, Long
+    * Update State and ExecutionRoleArn to be required on AWS::DLM::LifecyclePolicy
+    * Add AllowedValues for PerformanceInsightsRetentionPeriod for AWS::RDS::Instance
+    * Add AllowedValues for the AWS::GuardDuty Resources
+    * Add AllowedValues for AWS::EC2 VPC and VPN Resources
+    * Switch IAM Instance Profiles for certain resources to the type that only takes the name
+    * Add regex pattern for IAM Instance Profile when a name (not Arn) is used
+    * Add regex pattern for IAM Paths
+    * Add Regex pattern for IAM Role Arn
+    * Update OnlyOne spec to require require at least one of Subnets or SubnetMappings with ELB v2
+  + Fixes
+    * Fix serverless transform to use DefinitionBody when Auth is in the API definition
+    * Fix rule W2030 to not error when checking SSM or List Parameters
+- Update to version 0.17.1
+  + Features
+    * Update rule E2503 to make sure NLBs don't have a Security Group configured
+  + CloudFormation Specifications
+    * Add all the allowed values of the `AWS::Glue` Resources
+    * Update OnlyOne check for `AWS::CloudWatch::Alarm` to only `MetricName` or `Metrics`
+    * Update Exclusive check for `AWS::CloudWatch::Alarm` for properties mixed with `Metrics` and `Statistic`
+    * Update CloudFormation specs to 2.29.0
+    * Fix type with MariaDB in the AllowedValues
+    * Update pricing information for data available on 2018.3.29
+  + Fixes
+    * Fix rule E1029 to not look for a sub is needed when looking for iot strings in policies
+    * Fix rule E2541 to allow for ActionId Versions of length 1-9 and meets regex `[0-9A-Za-z_-]+`
+    * Fix rule E2532 to allow for `Parameters` inside a `Pass` action
+    * Fix an issue when getting the location of an error in which numbers are causing an attribute error
+- Update to version 0.17.0
+  + Features
+    * Add new rule E3026 to validate Redis cluster settings including AutomaticFailoverEnabled and NumCacheClusters.  Status: Released
+    * Add new rule W3037 to validate IAM resource policies.  Status: Experimental
+    * Add new parameter `-e/--include-experimental` to allow for new rules in that aren't ready to be fully released
+  + CloudFormation Specifications
+    * Update Spec files to 2.28.0
+    * Add all the allowed values of the AWS::Redshift::* Resources
+    * Add all the allowed values of the AWS::Neptune::* Resources
+    * Patch spec to make AWS::CloudFront::Distribution.LambdaFunctionAssociation.LambdaFunctionARN required
+    * Patch spec to make AWS::DynamoDB::Table AttributeDefinitions required
+  + Fixes
+    * Remove extra blank lines when there is no errors in the output
+    * Add exception to rule E1029 to have exceptions for EMR CloudWatchAlarmDefinition
+    * Update rule E1029 to allow for literals in a Sub
+    * Remove sub checks from rule E3031 as it won't match in all cases of an allowed pattern regex check
+    * Correct typos for errors in rule W1001
+    * Switch from parsing a template as Yaml to Json when finding an escape character
+    * Fix an issue with SAM related to transforming templates with Serverless Application and Lambda Layers
+    * Fix an issue with rule E2541 when non strings were used for Stage Names
+- Update to version 0.16.0
+  + Features
+    * Add rule E3031 to look for regex patterns based on the patched spec file
+    * Remove regex checks from rule E2509
+    * Add parameter `ignore-templates` to allow the ignoring of templates when doing bulk linting
+  + CloudFormation Specifications
+    * Update Spec files to 2.26.0
+    * Add all the allowed values of the AWS::DirectoryService::* Resources
+    * Add all the allowed values of the AWS::DynamoDB::* Resources
+    * Added AWS::Route53Resolver resources to the Spec Patches of ap-southeast-2
+    * Patch the spec file with regex patterns
+    * Add all the allowed values of the AWS::DocDb::* Resources
+  + Fixes
+    * Update rule E2504 to have '20000' as the max value
+    * Update rule E1016 to not allow ImportValue inside of Conditions
+    * Update rule E2508 to check conditions when providing limit checks on managed policies
+    * Convert unicode to strings when in Py 3.4/3.5 and updating specs
+    * Convert from `awslabs` to `aws-cloudformation` organization
+    * Remove suppression of logging that was removed from samtranslator >1.7.0 and incompatibility with
+      samtranslator 1.10.0
+- Update to version 0.15.0
+  + Features
+    * Add scaffolding for arbitrary Match attributes, adding attributes for Type checks
+    * Add rule E3024 to validate that ProvisionedThroughput is not specified with BillingMode PAY_PER_REQUEST
+  + CloudFormation Specifications
+    * Update Spec files to 2.24.0
+    * Update OnlyOne spec to have BlockDeviceMapping to include NoDevice with Ebs and VirtualName
+    * Add all the allowed values of the AWS::CloudFront::* Resources
+    * Add all the allowed values of the AWS::DAX::* Resources
+  + Fixes
+    * Update config parsing to use the builtin Yaml decoder
+    * Add condition support for Inclusive E2521, Exclusive E2520, and AtLeastOne E2522 rules
+    * Update rule E1029 to better check Resource strings inside IAM Policies
+    * Improve the line/column information of a Match with array support
+- Update to version 0.14.1
+  + CloudFormation Specifications
+    * Update CloudFormation Specs to version 2.23.0
+    * Add allowed values for AWS::Config::* resources
+    * Add allowed values for AWS::ServiceDiscovery::* resources
+    * Fix allowed values for Apache MQ
+  + Fixes
+    * Update rule E3008 to not error when using a list from a custom resource
+    * Support simple types in the CloudFormation spec
+    * Add tests for the formatters
+- Update to version 0.14.0
+  + Features
+    * Add rule E3035 to check the values of DeletionPolicy
+    * Add rule E3036 to check the values of UpdateReplacePolicy
+    * Add rule E2014 to check that there are no REFs in the Parameter section
+    * Update rule E2503 to support TLS on NLBs
+  + CloudFormation Specifications
+    * Update CloudFormation spec to version 2.22.0
+    * Add allowed values for AWS::Cognito::* resources
+  + Fixes
+    * Update rule E3002 to allow GetAtts to Custom Resources under a Condition
+- Update to version 0.13.2
+  + Features
+    * Introducing the cfn-lint logo!
+    * Update SAM dependency version
+  + Fixes
+    * Fix CloudWatchAlarmComparisonOperator allowed values.
+    * Fix typo resoruce_type_spec in several files
+    * Better support for nested And, Or, and Not when processing Conditions
+- Update to version 0.13.1
+  + CloudFormation Specifications
+    * Add allowed values for AWS::CloudTrail::Trail resources
+    * Patch spec to have AWS::CodePipeline::CustomActionType Version included
+  + Fixes
+    * Fix conditions logic to use AllowedValues when REFing a Parameter that has AllowedValues specified
+- Update to version 0.13.0
+  + Features
+    * New rule W1011 to check if a FindInMap is using the correct map name and keys
+    * New rule W1001 to check if a Ref/GetAtt to a resource that exists when Conditions are used
+    * Removed logic in E1011 and moved it to W1011 for validating keys
+    * Add property relationships for AWS::ApplicationAutoScaling::ScalingPolicy into Inclusive, Exclusive, and AtLeastOne
+    * Update rule E2505 to check the netmask bit
+    * Include the ability to update the CloudFormation Specs using the Pricing API
+  + CloudFormation Specifications
+    * Update to version 2.21.0
+    * Add allowed values for AWS::Budgets::Budget
+    * Add allowed values for AWS::CertificateManager resources
+    * Add allowed values for AWS::CodePipeline resources
+    * Add allowed values for AWS::CodeCommit resources
+    * Add allowed values for EC2 InstanceTypes from pricing API
+    * Add allowed values for RedShift InstanceTypes from pricing API
+    * Add allowed values for MQ InstanceTypes from pricing API
+    * Add allowed values for RDS InstanceTypes from pricing API
+  + Fixes
+    * Fixed README indentation issue with .pre-commit-config.yaml
+    * Fixed rule E2541 to allow for multiple inputs/outputs in a CodeBuild task
+    * Fixed rule E3020 to allow for a period or no period at the end of a ACM registration record
+    * Update rule E3001 to support UpdateReplacePolicy
+    * Fix a cli issue where `--template` wouldn't be used when a .cfnlintrc was in the same folder
+    * Update rule E3002 and E1024 to support packaging of AWS::Lambda::LayerVersion content
+- Rebase cl_drop-compatible-releases-operator.patch
+
+-------------------------------------------------------------------
+Mon Jan 21 13:15:53 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 0.12.1
+- Add patch to drop compatible releases operator from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + cl_drop-compatible-releases-operator.patch
+

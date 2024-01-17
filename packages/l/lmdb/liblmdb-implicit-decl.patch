@@ -1,0 +1,10 @@
+--- a/libraries/liblmdb.orig/lmmgr.c
++++ b/libraries/liblmdb/lmmgr.c
+@@ -3,6 +3,7 @@ lmmgr.c : Add, remove or manage the maxr
+ */
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include "lmdb.h"
+ 
+ static int report_error(int rc) 

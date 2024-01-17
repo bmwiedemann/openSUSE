@@ -1,0 +1,88 @@
+#!/bin/bash
+# usage: x11vnc_ssh <host>:<xdisplay>
+#  e.g.: x11vnc_ssh snoopy.peanuts.com:0
+
+if [ -z "$1" ]; then
+	echo "Usage: x11vnc_ssh [user@]host[:display] [serveropts [clientopts]]"
+	echo " x11vnc_ssh does export a real(!) X11 display via VNC tunneled"
+	echo " through ssh to your desktop and connects a vncviewer to it"
+	echo " It assumes you have stored a password on the server side in"
+	echo " ~/.vnc/passwd. (You can do that with x11vnc -storepasswd.)"
+	exit 1
+fi	
+
+host=$1
+disp=${host##*:}
+host=${host%:*}
+if [ "$host" = "$1" ]; then disp=0; fi
+
+# You can add -threads here if it works stable enough for you
+cmd="x11vnc -display :$disp -localhost -allinput -rfbauth ~/.vnc/passwd $2"
+
+# Set options for a performant connection:
+# detect tightvnc, tigervnc and allows VNCOPTS variable for user input
+if [ -n "$VNCOPTS" ]; then
+  opts=$VNCOPTS
+else
+  if [ -n "$(vncviewer -h 2>&1|grep tigervnc)" ]; then
+    opts="-compresslevel=6 -qualitylevel=6 -autoselect=1"
+  elif [ -n "$(vncviewer -h 2>&1|grep tightvnc)" ]; then
+    opts="-quality 8 -compresslevel 6 -encodings \"copyrect tight zlib corre rre raw\""
+  fi
+fi
+
+port=4
+
+port_is_free ()
+{
+	while read state rq sq local remote; do
+		if [ ${local##*:} = $1 ]; then return 1; fi
+	done < <(LANG=POSIX /usr/sbin/ss -tan)
+	return 0
+}
+
+find_free_port ()
+{
+	for port in `seq 4 31`; do
+		if port_is_free $((port+5900)); then return; fi
+	done
+	echo "ERROR: No free port 5904 -- 5931 found"
+	exit 1
+}	
+
+find_server_port ()
+{
+ssh $host "
+port_is_free ()
+{
+        while read state rq sq local remote; do
+                if [ \${local##*:} = \$1 ]; then return 1; fi
+        done < <(LANG=POSIX /usr/sbin/ss -tan)
+        return 0
+}
+
+find_free_port ()
+{
+        for port in \`seq 5900 5931\`; do
+                if port_is_free \$port; then echo \$port; return; fi
+        done
+        echo 'ERROR: No free port 5900 -- 5931 found'
+        exit 1
+}
+find_free_port
+"
+}
+
+find_free_port
+sport=`find_server_port`
+
+echo "ssh -f -L $((port+5900)):localhost:$sport $host \"$cmd -rfbport $sport\""
+ssh -f -L $((port+5900)):localhost:$sport $host "$cmd -rfbport $sport"
+
+for i in 1 2 3
+do
+	sleep 2
+	echo "vncviewer $opts :$port $3"
+	if vncviewer $opts :$port $3; then break; fi
+done
+

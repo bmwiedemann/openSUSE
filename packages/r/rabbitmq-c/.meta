@@ -1,0 +1,5 @@
+<package name="rabbitmq-c" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:messaging:amqp" package="rabbitmq-c"/>
+</package>

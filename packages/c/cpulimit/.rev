@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3d2c6b436f119e58f1c5ac524cdad05</srcmd5>
+    <version>2.2</version>
+    <time>1420754502</time>
+    <user>dimstar_suse</user>
+    <comment>Submitting new upstream version 2.2 instead of older 1.9</comment>
+    <requestid>267259</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>21ffd791bce968a42a1e1e3d6335a26f</srcmd5>
+    <version>2.5</version>
+    <time>1519041812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577907</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be65c64affa4fcdd263d4b3fdda642b2</srcmd5>
+    <version>2.6</version>
+    <time>1598983825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830988</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f098e4065da44a14add7375a55fb15f3</srcmd5>
+    <version>2.7</version>
+    <time>1640278422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942150</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>871e91a1f4cf78c769e33c9a2b6e2303</srcmd5>
+    <version>2.8</version>
+    <time>1673209541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056836</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>340e4453e35926c4c2afb30ccec8ced5</srcmd5>
+    <version>2.9</version>
+    <time>1683037172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083988</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0dac5e0c70f0ba20690ccb1b945054a6</srcmd5>
+    <version>3.0</version>
+    <time>1684162465</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0:
+  * Fix an important bug in LimitCPU when the program is
+    monitoring both a program and its child processes via the &quot;-m&quot;
+    flag. In the past, it was possible LimitCPU would fail to spawn
+    new instances to monitor child processes if LimitCPU was not in
+    the user's default path. In other words, if we were launched
+    from /usr/local/bin and this directory was not in the default
+    path, then child processes might not be monitored. And the
+    failure would happen silently.
+  * Now LimitCPU will try to do a better job of launching new
+    monitors for child processes and it will print a warning
+    about any errors when run in verbose mode.
+</comment>
+    <requestid>1087118</requestid>
+  </revision>
+</revisionlist>

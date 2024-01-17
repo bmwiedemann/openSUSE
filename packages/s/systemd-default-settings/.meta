@@ -1,0 +1,5 @@
+<package name="systemd-default-settings" project="openSUSE:Factory">
+  <title>The systemd settings overriden for SUSE distributions</title>
+  <description></description>
+  <devel project="Base:System" package="systemd-default-settings"/>
+</package>

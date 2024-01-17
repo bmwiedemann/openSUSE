@@ -1,0 +1,12 @@
+<package name="python-rebulk" project="openSUSE:Factory">
+  <title>Define bulk search patterns to perform advanced string matching</title>
+  <description>ReBulk is a python library that performs advanced searches in
+strings that would be hard to implement using re module or
+String methods only.
+
+It includes some features like Patterns, Match, Rule that
+allow developers to build a custom and complex string
+matcher using a readable and extendable API.
+</description>
+  <devel project="devel:languages:python" package="python-rebulk"/>
+</package>

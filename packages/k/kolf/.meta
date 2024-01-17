@@ -1,0 +1,5 @@
+<package name="kolf" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kolf"/>
+</package>

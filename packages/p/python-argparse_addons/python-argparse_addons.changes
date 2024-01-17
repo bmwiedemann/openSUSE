@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri May 12 12:32:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-argparse_addons, required by python-bincopy
+  (which is required for pynitrokey)

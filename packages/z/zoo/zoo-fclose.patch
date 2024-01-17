@@ -1,0 +1,13 @@
+Index: bilf.c
+===================================================================
+--- bilf.c.orig
++++ bilf.c
+@@ -99,7 +99,7 @@ char *outname, *inname;
+    while ((count = fread (buffer, 1, sizeof (buffer), infile)) > 0)
+       count = fwrite (buffer, 1, count, outfile);
+ 
+-   close (infile); close (outfile);
++   fclose (infile); fclose (outfile);
+    if (count == -1)
+       return (-1);
+    else

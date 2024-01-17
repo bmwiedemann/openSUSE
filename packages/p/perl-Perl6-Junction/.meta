@@ -1,0 +1,18 @@
+<package name="perl-Perl6-Junction" project="openSUSE:Factory">
+  <title>Perl6 style Junction operators in Perl5.</title>
+  <description>This is a lightweight module which provides 'Junction' operators, the most
+commonly used being 'any' and 'all'.
+
+Inspired by the Perl6 design docs, the
+http://dev.perl.org/perl6/doc/design/exe/E06.html manpage.
+
+Provides a limited subset of the functionality of the
+Quantum::Superpositions manpage, see the /&quot;SEE ALSO&quot; manpage for comment.
+
+Notice in the the /SYNOPSIS manpage above, that if you want to match
+against a regular expression, you must use '==' or '!='. *Not* '=~' or
+'!~'. You must also use a regex object, such as 'qr/\d/', not a plain regex
+such as '/\d/'.</description>
+  <devel project="devel:languages:perl" package="perl-Perl6-Junction"/>
+  <url>http://search.cpan.org/perldoc?Perl6::Junction</url>
+</package>

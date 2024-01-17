@@ -1,0 +1,33 @@
+From d792fa2d1ab54971db2a85f0363b7bce80e68b9c Mon Sep 17 00:00:00 2001
+From: Antoine Belvire <antoine.belvire@opensuse.org>
+Date: Mon, 16 Apr 2018 12:57:22 +0200
+Subject: [PATCH] Fix compilation issue when using Makefile
+
+The compilation output depends on the order of the TXT2C_LUA files.
+For example if tools.lua is listed before base.lua, this leads to
+incomplete compilation.
+
+This commit hardcodes the order of lua files in Makefile like it's
+done in make_unix.sh.
+
+Fixes #116.
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index d804874..4f8acf9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,7 +18,7 @@ CFLAGS += $(LUA_CFLAGS)
+ # objects
+ TARGETS = bam
+ BAM_OBJ = $(patsubst %.c,%.o,$(wildcard src/*.c))
+-TXT2C_LUA = $(wildcard src/*.lua)
++TXT2C_LUA = src/base.lua src/tools.lua src/driver_gcc.lua src/driver_clang.lua src/driver_cl.lua src/driver_solstudio.lua src/driver_xlc.lua
+ 
+ 
+ # make rules
+-- 
+2.16.3
+

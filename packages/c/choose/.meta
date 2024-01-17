@@ -1,0 +1,6 @@
+<package name="choose" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="choose"/>
+  <url>https://github.com/theryangeary/choose</url>
+</package>

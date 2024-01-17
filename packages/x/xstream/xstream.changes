@@ -1,0 +1,248 @@
+-------------------------------------------------------------------
+Wed Oct 25 19:20:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source/target 8 with java 18+
+
+-------------------------------------------------------------------
+Sat Sep  9 15:02:20 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Fri Aug 25 13:08:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Make dependency on bea-stax optional and disable it by default
+
+-------------------------------------------------------------------
+Fri Mar 17 13:04:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.20
+  * Security fixes
+    + This maintenance release addresses the security
+      vulnerabilities CVE-2022-40151 (bsc#1203520) and
+      CVE-2022-41966 (bsc#1206729), causing a Denial of Service by
+      raising a stack overflow. It also provides new converters for
+      Optional and Atomic types.
+  * Major changes
+    + #308: Add converter for AtomicBoolean, AtomicInteger,
+      AtomicLong, and AtomicReference of package
+      java.util.concurrent.atomic.
+    + #293: Add converter for Optional, OptionalDouble, OptionalInt,
+      and OptionalLong of package java.util.
+  * Minor changes
+    + #287: Close stream opened from provided URL.
+    + #284: Fix disabling check against hash code attack with
+      XStream.setCollectionUpdateLimit(0).
+  * Stream compatibility
+    + The atomic types with new converters of package
+      java.util.concurrent.atomic, that have been written with
+      previous versions of XStream, can still be deserialized.
+    + The Optional types with new converters of package java.util,
+      that have been written with previous versions of XStream,
+      can still be deserialized.
+    + The WildcardTypePermission allows by default no longer
+      anonymous class types.
+  * API changes
+    + Added c.t.x.converters.extended.AtomicBooleanConverter.
+    + Added c.t.x.converters.extended.AtomicIntegerConverter.
+    + Added c.t.x.converters.extended.AtomicLongConverter.
+    + Added c.t.x.converters.extended.AtomicReferenceConverter.
+    + Added c.t.x.converters.extended.OptionalConverter.
+    + Added c.t.x.converters.extended.OptionalDoubleConverter.
+    + Added c.t.x.converters.extended.OptionalIntConverter.
+    + Added c.t.x.converters.extended.OptionalLongConverter.
+    + Added c.t.x.security.WildcardTypePermission
+      .WildcardTypePermission(boolean,String[]).
+
+-------------------------------------------------------------------
+Wed Mar 30 09:20:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against the standalone JavaEE modules unconditionally
+
+-------------------------------------------------------------------
+Fri Mar 18 14:55:20 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build against standalone activation-api and jaxb-api on systems
+  where the JavaEE modules are not part of JDK
+
+-------------------------------------------------------------------
+Fri Feb  4 10:43:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.19
+  * Security fixes
+    + This maintenance release addresses the security vulnerability
+      CVE-2021-43859, bsc#1195458, when unmarshalling highly
+      recursive collections or maps causing a Denial of Service.
+  * API changes
+    + Added c.t.x.XStream.COLLECTION_UPDATE_LIMIT and
+      c.t.x.XStream.COLLECTION_UPDATE_SECONDS.
+    + Added c.t.x.XStream.setCollectionUpdateLimit(int).
+    + Added c.t.x.core.SecurityUtils.
+    + Added c.t.x.security.AbstractSecurityException and
+      c.t.x.security.InputManipulationException.
+    + c.t.x.security.InputManipulationException derives now from
+      c.t.x.security.AbstractSecurityException.
+
+-------------------------------------------------------------------
+Tue Sep 28 05:49:16 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.18
+  * Security fixes
+    + This maintenance release addresses following security
+      vulnerabilities, when unmarshalling with an XStream instance
+      using the default blacklist of an uninitialized security
+      framework. XStream is therefore now using a whitelist by
+      default. (CVE-2021-39139, CVE-2021-39140, CVE-2021-39141,
+      CVE-2021-39144, CVE-2021-39145, CVE-2021-39146,
+      CVE-2021-39147, CVE-2021-39148, CVE-2021-39149,
+      CVE-2021-39150, CVE-2021-39151, CVE-2021-39152,
+      CVE-2021-39153, CVE-2021-39154, bsc#1189798)
+  * Minor changes
+    + Support serializable types with non-serializable parent with
+      PureJavaReflectionConverter.
+  * Stream compatibility
+    + Starting with version 1.14.12 nine years ago, XStream contains
+      a Security Framework to implement a black- or whitelist for
+      the allowed types at deserialization time. Until version
+      1.4.17, XStream kept a default blacklist in order to deny all
+      types of the Java runtime, which are used for all kinds of
+      security attacks, in order to guarantee optimal runtime
+      compatibility for existing users. However, this approach has
+      failed. The last months have shown, that the Java runtime
+      alone contains dozens of types that can be used for an attack,
+      not even looking at the 3rd party libraries on a classpath.
+      The new version of XStream uses therefore now by default a
+      whitelist, which is recommended since nine years. It also has
+      been complaining on the console for a long time about an
+      uninitialized security framework the first time it was run.
+      Anyone who has followed the advice and initialized the
+      security framework for their own scenario can easily update
+      to the new version without any problem. Everyone else will
+      have to do a proper initialization now, otherwise the new
+      version will fail with certainty at deserialization time.
+- Modified patch:
+  * Revert-MXParser-changes.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Mon May 31 07:59:25 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.17
+  * Security fix:
+    * bsc#1186651, CVE-2021-29505: potential code execution when
+      unmarshalling with XStream instances using an uninitialized
+      security framework
+
+-------------------------------------------------------------------
+Thu Apr 15 14:31:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.16
+  * Security fixes:
+    + bsc#1184796, CVE-2021-21351: remote attacker to load and
+      execute arbitrary code
+    + bsc#1184797, CVE-2021-21349: SSRF can lead to a remote
+      attacker to request data from internal resources
+    + bsc#1184380, CVE-2021-21350: arbitrary code execution
+    + bsc#1184374, CVE-2021-21348: remote attacker could cause
+      denial of service by consuming maximum CPU time
+    + bsc#1184378, CVE-2021-21347: remote attacker to load and
+      execute arbitrary code from a remote host
+    + bsc#1184375, CVE-2021-21344: remote attacker could load and
+      execute arbitrary code from a remote host
+    + bsc#1184379, CVE-2021-21342: server-side forgery
+    + bsc#1184377, CVE-2021-21341: remote attacker could cause a
+      denial of service by allocating 100% CPU time
+    + bsc#1184373, CVE-2021-21346: remote attacker could load and
+      execute arbitrary code
+    + bsc#1184372, CVE-2021-21345: remote attacker with sufficient
+      rights could execute commands
+    + bsc#1184376, CVE-2021-21343: replace or inject objects, that
+      result in the deletion of files on the local host
+- Add patch:
+  * Revert-MXParser-changes.patch
+    + revert changes that would force us to add new dependency
+
+-------------------------------------------------------------------
+Tue Mar  9 16:16:01 UTC 2021 - Johannes Renner <jrenner@suse.com>
+
+- Upgrade to 1.4.15
+  * fixes bsc#1180146, CVE-2020-26258 and bsc#1180145,
+    CVE-2020-26259
+- Upgrade to 1.4.14
+  * fixes bsc#1180994, CVE-2020-26217
+- Update xstream to 1.4.15~susemanager
+  Removed:
+  * xstream_1_4_10-jdk11.patch
+  * xstream_1_4_10-buildsh-sle12.patch
+  * build.sh
+
+-------------------------------------------------------------------
+Tue Mar  5 15:43:30 UTC 2019 - Frantisek Kobzik <fkobzik@suse.com>
+
+- Update xstream to 1.4.10
+  Added:
+  * xstream_1_4_10-jdk11.patch
+  * xstream_1_4_10-buildsh-sle12.patch
+  * xstream-XSTREAM_1_4_10.tar.gz
+  Removed:
+  * 0001-Prevent-deserialization-of-void.patch
+  * xstream-XSTREAM_1_4_9.tar.gz
+  * xstream-XSTREAM_1_4_9-jdk11.patch
+
+- Major changes:
+- New XStream artifact with -java7 appended as version suffix for a library explicitly without the Java 8 stuff (lambda expression support, converters for java.time.* package).
+- Fix PrimitiveTypePermission to reject type void to prevent CVE-2017-7957 with an initialized security framework.
+- Improve performance by minimizing call stack of mapper chain.
+- XSTR-774: Add converters for types of java.time, java.time.chrono, and java.time.temporal packages (converters for LocalDate, LocalDateTime, LocalTime, OffsetDateTime, and ZonedDateTime by Matej Cimbora).
+- JavaBeanConverter does not respect ignored unknown elements.
+- Add XStream.setupDefaultSecurity to initialize security framework with defaults of XStream 1.5.x.
+- Emit error warning if security framework has not been initialized and the XStream instance is vulnerable to known exploits.
+
+-------------------------------------------------------------------
+Tue Feb  5 17:29:18 UTC 2019 - michele.bologna@suse.com
+
+- Feat: modify patch to be compatible with JDK 11 building
+  Added:
+  * xstream-XSTREAM_1_4_9-jdk11.patch
+  Removed:
+  * xstream-XSTREAM_1_4_9-jdk9.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 15:27:00 UTC 2018 - moio@suse.com
+
+- fixes for SLE 15 compatibility
+
+-------------------------------------------------------------------
+Fri Dec  1 13:22:06 UTC 2017 - mc@suse.com
+
+- fix possible Denial of Service when unmarshalling void.
+  (CVE-2017-7957, bsc#1070731)
+  Added:
+  * 0001-Prevent-deserialization-of-void.patch
+
+-------------------------------------------------------------------
+Tue Nov  7 14:04:11 UTC 2017 - jgonzalez@suse.com
+
+- Fix build for JDK9
+- Disable javadoc generation (broken for SLE15 and Tumbleweed)
+- Add:
+  * xstream-XSTREAM_1_4_9-jdk9.patch
+- Changed:
+  * build.sh
+
+-------------------------------------------------------------------
+Tue Apr  5 21:17:09 UTC 2016 - moio@suse.com
+
+- Require building on Java 8, otherwise the LambdaMapper class is skipped
+(issue 30)
+
+-------------------------------------------------------------------
+Tue Mar 29 12:50:05 UTC 2016 - moio@suse.com
+
+- Upgrade to version 1.4.9, which fixes CVE-2016-3674 (bsc#972950)
+
+-------------------------------------------------------------------
+Tue Nov 10 07:25:59 UTC 2015 - moio@suse.com
+
+- Initial version
+

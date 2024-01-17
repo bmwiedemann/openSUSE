@@ -1,0 +1,347 @@
+#
+# spec file for package mdadm
+#
+# Copyright (c) 2024 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
+
+Name:           mdadm
+Version:        4.2
+Release:        0
+BuildRequires:  binutils-devel
+BuildRequires:  groff
+BuildRequires:  pkgconfig
+BuildRequires:  sgmltool
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(udev)
+PreReq:         %fillup_prereq
+PreReq:         coreutils
+URL:            http://www.kernel.org/pub/linux/utils/raid/mdadm/
+Summary:        Utility for configuring "MD" software RAID devices
+License:        GPL-2.0-only
+Group:          System/Base
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         https://www.kernel.org/pub/linux/utils/raid/mdadm/%{name}-%{version}.tar.xz
+Source1:        Software-RAID.HOWTO.tar.bz2
+Source2:        sysconfig.mdadm
+Patch1:         0001-Unify-error-message.patch
+Patch2:         0002-mdadm-Fix-double-free.patch
+Patch3:         0003-Grow_reshape-Add-r0-grow-size-error-message-and-upda.patch
+Patch4:         0004-udev-adapt-rules-to-systemd-v247.patch
+Patch5:         0005-Replace-error-prone-signal-with-sigaction.patch
+Patch6:         0006-mdadm-Respect-config-file-location-in-man.patch
+Patch7:         0007-mdadm-Update-ReadMe.patch
+Patch8:         0008-mdadm-Update-config-man-regarding-default-files-and-.patch
+Patch9:         0009-mdadm-Update-config-manual.patch
+Patch10:        0010-Create-Build-use-default_layout.patch
+Patch11:        0011-mdadm-add-map_num_s.patch
+Patch12:        0012-mdmon-Stop-parsing-duplicate-options.patch
+Patch13:        0013-Grow-block-n-on-external-volumes.patch
+Patch14:        0014-Incremental-Fix-possible-memory-and-resource-leaks.patch
+Patch15:        0015-Mdmonitor-Fix-segfault.patch
+Patch16:        0016-Mdmonitor-Improve-logging-method.patch
+Patch17:        0017-Fix-possible-NULL-ptr-dereferences-and-memory-leaks.patch
+Patch18:        0018-imsm-Remove-possibility-for-get_imsm_dev-to-return-N.patch
+Patch19:        0019-Revert-mdadm-fix-coredump-of-mdadm-monitor-r.patch
+Patch20:        0020-util-replace-ioctl-use-with-function.patch
+Patch21:        0021-mdadm-super1-restore-commit-45a87c2f31335-to-fix-clu.patch
+Patch22:        0022-imsm-introduce-get_disk_slot_in_dev.patch
+Patch23:        0023-imsm-use-same-slot-across-container.patch
+Patch24:        0024-imsm-block-changing-slots-during-creation.patch
+Patch25:        0025-mdadm-block-update-ppl-for-non-raid456-levels.patch
+Patch26:        0026-mdadm-Fix-array-size-mismatch-after-grow.patch
+Patch27:        0027-mdadm-Remove-dead-code-in-imsm_fix_size_mismatch.patch
+Patch28:        0028-Monitor-use-devname-as-char-array-instead-of-pointer.patch
+Patch29:        0029-Monitor-use-snprintf-to-fill-device-name.patch
+Patch30:        0030-Makefile-Don-t-build-static-build-with-everything-an.patch
+Patch31:        0031-DDF-Cleanup-validate_geometry_ddf_container.patch
+Patch32:        0032-DDF-Fix-NULL-pointer-dereference-in-validate_geometr.patch
+Patch33:        0033-mdadm-Grow-Fix-use-after-close-bug-by-closing-after-.patch
+Patch34:        0034-monitor-Avoid-segfault-when-calling-NULL-get_bad_blo.patch
+Patch35:        0035-mdadm-Fix-mdadm-r-remove-option-regression.patch
+Patch36:        0036-mdadm-Fix-optional-write-behind-parameter.patch
+Patch37:        0037-mdadm-Replace-obsolete-usleep-with-nanosleep.patch
+Patch38:        0038-mdadm-remove-symlink-option.patch
+Patch39:        0039-mdadm-move-data_offset-to-struct-shape.patch
+Patch40:        0040-mdadm-Don-t-open-md-device-for-CREATE-and-ASSEMBLE.patch
+Patch41:        0041-Grow-Split-Grow_reshape-into-helper-function.patch
+Patch42:        0042-Assemble-check-if-device-is-container-before-schedul.patch
+Patch43:        0043-super1-report-truncated-device.patch
+Patch44:        0044-mdadm-Correct-typos-punctuation-and-grammar-in-man.patch
+Patch46:        0046-Monitor-Fix-statelist-memory-leaks.patch
+Patch47:        0047-mdadm-added-support-for-Intel-Alderlake-RST-on-VMD-p.patch
+Patch48:        0048-mdadm-Add-Documentation-entries-to-systemd-services.patch
+Patch49:        0049-ReadMe-fix-command-line-help.patch
+Patch50:        0050-mdadm-replace-container-level-checking-with-inline.patch
+Patch51:        0051-Mdmonitor-Omit-non-md-devices.patch
+Patch52:        0052-mdmon-fix-segfault.patch
+Patch53:        0053-util-remove-obsolete-code-from-get_md_name.patch
+Patch54:        0054-mdmon-don-t-test-both-all-and-container_name.patch
+Patch55:        0055-mdmon-change-systemd-unit-file-to-use-foreground.patch
+Patch56:        0056-mdmon-Remove-need-for-KillMode-none.patch
+Patch57:        0057-mdmon-Improve-switchroot-interactions.patch
+Patch58:        0058-mdopen-always-try-create_named_array.patch
+Patch59:        0059-Improvements-for-IMSM_NO_PLATFORM-testing.patch
+Patch60:        0060-Grow-fix-possible-memory-leak.patch
+Patch61:        0061-Grow-fix-can-t-change-bitmap-type-from-none-to-clustered.patch
+Patch62:        0062-Manage-Block-unsafe-member-failing.patch
+Patch63:        0063-Mdmonitor-Split-alert-into-separate-functions.patch
+Patch64:        0064-Monitor-block-if-monitor-modes-are-combined.patch
+Patch65:        0065-Update-mdadm-Monitor-manual.patch
+Patch66:        0066-mdadm-create-ident_init.patch
+Patch67:        0067-mdadm-Add-option-validation-for-update-subarray.patch
+Patch68:        0068-Fix-update-subarray-on-active-volume.patch
+Patch69:        0069-Add-code-specific-update-options-to-enum.patch
+Patch70:        0070-super-ddf-Remove-update_super_ddf.patch
+Patch71:        0071-super0-refactor-the-code-for-enum.patch
+Patch72:        0072-super1-refactor-the-code-for-enum.patch
+Patch73:        0073-super-intel-refactor-the-code-for-enum.patch
+Patch74:        0074-Change-update-to-enum-in-update_super-and-update_sub.patch
+Patch75:        0075-Manage-Incremental-code-refactor-string-to-enum.patch
+Patch76:        0076-Change-char-to-enum-in-context-update-refactor-code.patch
+Patch77:        0077-mdadm-udev-Don-t-handle-change-event-on-raw-devices.patch
+Patch78:        0078-Manage-do-not-check-array-state-when-drive-is-remove.patch
+Patch79:        0079-incremental-manage-do-not-verify-if-remove-is-safe.patch
+Patch80:        0080-super-intel-make-freesize-not-required-for-chunk-siz.patch
+Patch81:        0081-manage-move-comment-with-function-description.patch
+Patch82:        0082-Fix-NULL-dereference-in-super_by_fd.patch
+Patch83:        0083-Mdmonitor-Make-alert_info-global.patch
+Patch84:        0084-Mdmonitor-Pass-events-to-alert-using-enums-instead-o.patch
+Patch85:        0085-Mdmonitor-Add-helper-functions.patch
+Patch86:        0086-Add-helpers-to-determine-whether-directories-or-file.patch
+Patch87:        0087-Mdmonitor-Refactor-write_autorebuild_pid.patch
+Patch88:        0088-Mdmonitor-Refactor-check_one_sharer-for-better-error.patch
+Patch89:        0089-util.c-reorder-code-lines-in-parse_layout_faulty.patch
+Patch90:        0090-util.c-fix-memleak-in-parse_layout_faulty.patch
+Patch91:        0091-Detail.c-fix-memleak-in-Detail.patch
+Patch92:        0092-isuper-intel.c-fix-double-free-in-load_imsm_mpb.patch
+Patch93:        0093-super-intel.c-fix-memleak-in-find_disk_attached_hba.patch
+Patch94:        0094-super-ddf.c-fix-memleak-in-get_vd_num_of_subarray.patch
+Patch95:        0095-Create-goto-abort_locked-instead-of-return-1-in-erro.patch
+Patch96:        0096-Create-remove-safe_mode_delay-local-variable.patch
+Patch97:        0097-Create-Factor-out-add_disks-helpers.patch
+Patch98:        0098-mdadm-Introduce-pr_info.patch
+Patch99:        0099-mdadm-Add-write-zeros-option-for-Create.patch
+Patch100:       0100-manpage-Add-write-zeroes-option-to-manpage.patch
+Patch101:       0101-Define-alignof-using-_Alignof-when-using-C11-or-newe.patch
+Patch102:       0102-Use-existence-of-etc-initrd-release-to-detect-initrd.patch
+Patch103:       0103-Create-Fix-checking-for-container-in-update_metadata.patch
+Patch1001:      1001-display-timeout-status.patch
+Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
+Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
+Patch1004:      1004-call-mdadm_env.sh-from-usr-libexec-mdadm.patch
+Patch1005:      1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
+%define _udevdir %(pkg-config --variable=udevdir udev)
+%define _systemdshutdowndir %{_unitdir}/../system-shutdown
+
+%description
+mdadm is a program that can be used to control Linux md devices.
+
+%prep
+%setup -q -a1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
+%patch33 -p1
+%patch34 -p1
+%patch35 -p1
+%patch36 -p1
+%patch37 -p1
+%patch38 -p1
+%patch39 -p1
+%patch40 -p1
+%patch41 -p1
+%patch42 -p1
+%patch43 -p1
+%patch44 -p1
+%patch46 -p1
+%patch47 -p1
+%patch48 -p1
+%patch49 -p1
+%patch50 -p1
+%patch51 -p1
+%patch52 -p1
+%patch53 -p1
+%patch54 -p1
+%patch55 -p1
+%patch56 -p1
+%patch57 -p1
+%patch58 -p1
+%patch59 -p1
+%patch60 -p1
+%patch61 -p1
+%patch62 -p1
+%patch63 -p1
+%patch64 -p1
+%patch65 -p1
+%patch66 -p1
+%patch67 -p1
+%patch68 -p1
+%patch69 -p1
+%patch70 -p1
+%patch71 -p1
+%patch72 -p1
+%patch73 -p1
+%patch74 -p1
+%patch75 -p1
+%patch76 -p1
+%patch77 -p1
+%patch78 -p1
+%patch79 -p1
+%patch80 -p1
+%patch81 -p1
+%patch82 -p1
+%patch83 -p1
+%patch84 -p1
+%patch85 -p1
+%patch86 -p1
+%patch87 -p1
+%patch88 -p1
+%patch89 -p1
+%patch90 -p1
+%patch91 -p1
+%patch92 -p1
+%patch93 -p1
+%patch94 -p1
+%patch95 -p1
+%patch96 -p1
+%patch97 -p1
+%patch98 -p1
+%patch99 -p1
+%patch100 -p1
+%patch101 -p1
+%patch102 -p1
+%patch103 -p1
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
+%patch1005 -p1
+
+%build
+make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" EXTRAVERSION="%{release}" SUSE=yes BINDIR=%{_sbindir}
+cd Software-RAID.HOWTO
+sgml2html Software-RAID.HOWTO.sgml
+sgml2txt Software-RAID.HOWTO.sgml
+
+%install
+%make_install install-systemd install-udev SYSTEMD_DIR=%{_unitdir} UDEVDIR=%{_udevdir} SUSE=yes BINDIR=%{_sbindir}
+rm -rf %{buildroot}/lib/udev
+install -d %{buildroot}%{_fillupdir}
+install -d %{buildroot}/usr/share/mdadm
+install -m 755 misc/mdcheck %{buildroot}/usr/share/mdadm/mdcheck
+install -m 644 %{S:2} %{buildroot}%{_fillupdir}/
+install -d %{buildroot}%{_systemdshutdowndir}
+install -d %{buildroot}%{_sbindir}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
+%if 0%{?suse_version} < 1550
+	mkdir -p %{buildroot}/sbin
+	ln -s %{_sbindir}/mdadm %{buildroot}/sbin/mdadm
+	ln -s %{_sbindir}/mdmon %{buildroot}/sbin/mdmon
+%endif
+
+%define services mdmonitor.service mdcheck_start.service mdcheck_continue.service mdmonitor-oneshot.service
+
+%pre
+%service_add_pre %services
+
+%post
+%service_add_post %services
+%{?regenerate_initrd_post}
+%fillup_only
+
+%preun
+%service_del_preun %services
+
+%postun
+%service_del_postun %services
+%{?regenerate_initrd_post}
+
+%posttrans
+%{?regenerate_initrd_posttrans}
+
+%files
+%defattr(-,root,root)
+%license COPYING
+%doc ChangeLog README.initramfs TODO mdadm.conf-example mkinitramfs
+%doc Software-RAID.HOWTO/Software-RAID.HOWTO*{.txt,.html}
+%doc %{_mandir}/man?/*
+%{_sbindir}/*
+%if 0%{?suse_version} < 1550
+/sbin/mdadm
+/sbin/mdmon
+%endif
+%dir /usr/share/mdadm
+/usr/share/mdadm/*
+%{_fillupdir}/sysconfig.mdadm
+%{_udevdir}/rules.d/01-md-raid-creating.rules
+%{_udevdir}/rules.d/63-md-raid-arrays.rules
+%{_udevdir}/rules.d/64-md-raid-assembly.rules
+%{_udevdir}/rules.d/69-md-clustered-confirm-device.rules
+# %%{_systemdshutdowndir}/ is not owned by all versions of systemd-mini.
+# But we really do not want to pull in a full systemd, so we rather just own
+# that directory by ourselves too. After all, this is allowed.
+%dir %{_systemdshutdowndir}
+%{_systemdshutdowndir}/mdadm.shutdown
+%{_unitdir}/mdmon@.service
+%{_unitdir}/mdmonitor.service
+%{_unitdir}/mdadm-last-resort@.timer
+%{_unitdir}/mdadm-last-resort@.service
+%{_unitdir}/mdadm-grow-continue@.service
+%{_unitdir}/mdcheck_continue.service
+%{_unitdir}/mdcheck_continue.timer
+%{_unitdir}/mdcheck_start.service
+%{_unitdir}/mdcheck_start.timer
+%{_unitdir}/mdmonitor-oneshot.service
+%{_unitdir}/mdmonitor-oneshot.timer
+%dir %{_prefix}/libexec/
+%dir %{_prefix}/libexec/mdadm
+%{_prefix}/libexec/mdadm/mdadm_env.sh
+
+%changelog

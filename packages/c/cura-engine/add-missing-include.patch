@@ -1,0 +1,12 @@
+Index: CuraEngine-4.13.1/src/utils/math.h
+===================================================================
+--- CuraEngine-4.13.1.orig/src/utils/math.h
++++ CuraEngine-4.13.1/src/utils/math.h
+@@ -4,6 +4,7 @@
+ #ifndef UTILS_MATH_H
+ #define UTILS_MATH_H
+ 
++#include <cstdint>
+ #include <cmath>
+ 
+ 

@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b25ddaed207c1982b3724a913dcff3a5</srcmd5>
+    <version>1.0.4</version>
+    <time>1600801289</time>
+    <user>dimstar_suse</user>
+    <comment>New package. Removed static libraries. Now using %version</comment>
+    <requestid>829840</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3f2bf98f5cd6172e209f158793b14f41</srcmd5>
+    <version>1.0.4</version>
+    <time>1608112897</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-build-with-newer-toolchain.diff: patch a file from the test
+  suite so that it builds with newer versions of the toolchain (no user
+  visible effects).
+</comment>
+    <requestid>856094</requestid>
+  </revision>
+</revisionlist>

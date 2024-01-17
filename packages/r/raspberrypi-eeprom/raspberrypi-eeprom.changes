@@ -1,0 +1,149 @@
+-------------------------------------------------------------------
+Thu Nov 23 10:12:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2023.10.30:
+  * Fix SDIO / WiFi clock-setup for BOOT_ORDER=0xf14
+  * Fix SD power-on-reset
+  * Firmware support for improved watchdog driver
+  * Update DHCP Option97 to be R,P,i,5 on Pi5
+- Updates from skipped v2023.10.18:
+  * Add support for HAT gpiomap for improved HAT compatibility.
+  * Add I2C probe for DSI display auto detect
+  * Automatically set dtparam=nvme if booted from nvme
+  * Fix network boot reset issue where only the first attempt works.
+  * Adding pciex4_reset=0 to config.txt will leave RP1 PCIe enabled
+    when ARM stage is started.
+  * Prevent HDMI diagnostics being displayed immediately when
+    waking after HALT.
+  * Update board-name - "Raspberry Pi 5"
+- Refresh patches:
+  * add-suse-config.patch
+  * rpi-eeprom-update-Use-tr-instead-of-strings.patch
+
+-------------------------------------------------------------------
+Sun Jan 29 14:42:22 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Refresh patch rpi-eeprom-update-Use-tr-instead-of-strings.patch
+  Replace the third source for "strings" as well
+
+-------------------------------------------------------------------
+Sun Jan 22 20:32:45 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Packaging changes:
+  * Compress archive to tar.xz to save space (~43M -> ~3.4M)
+  * Refresh rpi-eeprom-update-Use-tr-instead-of-strings.patch
+- 2023-01-11-vl805-000138c0:
+- Interesting changes since the last release:-
+  * Update VL805 to 138C0 - fix for handling of split transactions
+    raspberrypi/linux#5262
+  * Fix HID error handling with network install #458
+- 2022-11-25-vl805-000138a1:
+- Interesting changes since the last release:-
+  * Add [tryboot] conditional statement to autoboot.txt + tryboot_a_b mode
+  * Support custom OTP mac addresses
+  * Increase TFTP_MAX_BLOCK_SIZE
+  * Stop NVMe cleanly
+  * Fixes for NETCONSOLE parsing and initialisation.
+  * Long filename support for start_file / fixup_file.
+  * Secure boot and display debug info on the diagnostics screen.
+- 2022-04-26-vl805-000138a1:
+- Interesting changes since the last default release:
+  * Implement network install
+  * Add support for BOOT_ORDER_HTTP
+  * Enable the boot partition number to be specified as an EEPROM config
+    property.
+
+-------------------------------------------------------------------
+Tue Mar  8 12:28:21 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- 2022-01-25-vl805-000138a1:
+- Interesting changes since the last default release:
+  * Support and bug fixes for all Compute Module variants.
+  * NVMe interoperability fixes
+  * FAT/GPT fixes and file-system performance improvements.
+  * Added secure-boot support for industrial applications
+  * Added ramdisk / boot.img - for RPIBOOT and secure-boot.
+- Package rpi-eeprom-digest
+- Refresh patch:
+  * dont-use-env.patch
+
+-------------------------------------------------------------------
+Wed Jun 30 12:19:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use upstream version schema (year.month.day) instead of arbitrary 0.0
+- Update to version 2021.04.29
+  * Add support for NVMe to the bootloader with a new NVMe boot mode
+  * Add support for [cm4] and [pi400] config conditionals filters.
+  * TFTP - reply to duplicate ACKS
+  * Skip rendering of HDMI diagnostics display for the first 8 seconds
+    unless an error occurs.
+  * Add support for the BCM2711 XHCI controller - BOOT_ORDER 0x5
+  * XHCI protocol layer fixes for non-VLI controllers
+  * Avoid USB MSD timeout of there is only one device
+  * Fix recovery.bin error handler so that the LED error pattern
+    is still displayed even if HDMI or SDRAM fail.
+  * Fix GPIO expander reset issue on some Pi4B 1.1 to 1.3 boards
+  * Fix regression for GPIO expander reset change which caused PMIC
+     reset to get card out of 1V8 mode to be missed.
+  * Timeout USB MSD commands and move to the next boot mode if a device
+    stops responding.
+  * Add support for booting from the BCM2711 XHCI controller which is
+    the USB-C socket on Pi 4B / Pi 400 and the type A sockets on Compute
+    Module 4 IO board.
+  * Validate SDRAM in recovery mode.
+- Fixes bsc#1194950.
+
+-------------------------------------------------------------------
+Fri Feb 19 10:07:06 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Add 'pciutils' as a requirement. 'rpi-eeprom-update' uses lspci.
+  (bsc#1182437)
+- Update to version 0.0~2020.09.03.65~gb9c255d: Simplifies code by removing
+  legacy functions.
+- Add patch: "rpi-eeprom-update-Use-tr-instead-of-strings.patch" to avoid the
+  dependency with binutils. (bsc#1182437)
+
+-------------------------------------------------------------------
+Thu Feb  4 14:17:12 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Fix 'Supplements:' in spec file, as per
+  https://doc.opensuse.org/projects/libzypp/HEAD/zypp-modalias.html commas are
+  special charactes that should be replaced with '%2C'
+
+-------------------------------------------------------------------
+Thu Jan 28 16:05:58 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Remove VL805 firmware version from package version as it prevents it from
+  incresing monotonically.
+
+-------------------------------------------------------------------
+Thu Jan 28 13:55:46 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Prefix version with 0.0~
+
+-------------------------------------------------------------------
+Wed Jan 27 12:22:39 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Define _firmwaredir when relevant
+
+-------------------------------------------------------------------
+Tue Jan 26 12:31:38 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to b9c255d:
+ * rpi-eeprom-config: Properly decode sysfs binary files
+
+-------------------------------------------------------------------
+Mon Jan 25 18:29:06 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce _service file.
+
+-------------------------------------------------------------------
+Mon Jan 25 12:55:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Ditch unnecessarily split package.
+
+-------------------------------------------------------------------
+Fri Jan 22 14:15:38 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- First commit
+- Introduce patches: 'add-suse-config.patch' and 'don't-use-env.patch'.

@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>af2dfecba341f928affa00678530735d</srcmd5>
+    <version>0.68</version>
+    <time>1546946645</time>
+    <user>dimstar_suse</user>
+    <comment>Useful desktop wiki</comment>
+    <requestid>658930</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d00a402f816de53c81f5ac2906669bf4</srcmd5>
+    <version>0.69</version>
+    <time>1551276494</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679552</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>994e7f604c5245870e6c5c880e96064d</srcmd5>
+    <version>0.69</version>
+    <time>1551687809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681064</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7058c1934a25c57f024219d11a9a3781</srcmd5>
+    <version>0.72.0</version>
+    <time>1569079792</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>732031</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e69323063c9da8844c1f6b21e2515049</srcmd5>
+    <version>0.72.1</version>
+    <time>1587071214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794605</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08f3548efe68225964adbc5191751c31</srcmd5>
+    <version>0.73.1</version>
+    <time>1599343384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832075</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c5772d909af4c899e7a040c77d729520</srcmd5>
+    <version>0.73.2</version>
+    <time>1603283918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842817</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c6de0766ecfd800fb7b77faa04da0c11</srcmd5>
+    <version>0.73.4</version>
+    <time>1619031605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887035</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>471342c9c0e7ad75b4e6e65ef51de3fd</srcmd5>
+    <version>0.73.5</version>
+    <time>1619653099</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888978</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c3fbb40f47a07aa774bdb1ec4b40ce28</srcmd5>
+    <version>0.74.2</version>
+    <time>1634417252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925706</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a30c4bb4f7ce845c4a3db915cdabe5e5</srcmd5>
+    <version>0.74.2</version>
+    <time>1636388696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930190</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c6b209088ce1ab6275e498a8b28f9528</srcmd5>
+    <version>0.74.3</version>
+    <time>1639424672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940164</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e446be5e95e36db41b643889b486c4d4</srcmd5>
+    <version>0.75.1</version>
+    <time>1667995107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.75.1:
+  * Fix bug with relative path notebook icon
+  * Fix bug with icons in notebookdialog
+  * Fix bug with loading sub-notebooks via &quot;notebook.zim&quot;
+  * Fix bug with &quot;--list&quot; commandline
+  * Fix issue opening unicode attachements on win32
+  * Fix saving preferences for edit bar
+  * Fix link visibility in TableEditor
+  * Use flatpak locale directory in flatpak
+  * Upgrade Python version requirement to &gt;= 3.6
+  * Complete porting all modules to `zim.newfs` and deprecate `zim.fs`
+  * Refactor APIs to deal with tokens instead of `etree` interface
+  * Add framework for imagegenerators with inline data
+  * Refactored ther user interface of the tasklist plugin
+  * Make tasklist window persistent
+  * Let tasklist window also show closed tasks
+  * Let tasks inherit all modifiers from list heading
+  * Let &quot;Go to Today&quot; use anchor id for current day
+  * Update LinkMap with new options
+  * Refactor preference for custom window decoration &amp; toolbar plugin
+  * Enables distinct shortcuts for en and em dashes in symbol list
+  * Add unicode 8757 (&quot;because&quot;) in symbol list
+  * Move Selected Text: add preference for short links &amp; save bounds
+  * Extend ToC pane context menu
+  * Score editor: add check for convert-ly
+  * Source View plugin: Don't show hidden languages
+  * Export code blocks in markdown as fenced blocks
+  * Fix loading GIF images
+  * Fix to let the &quot;insert link&quot; dialog allow anchors
+  * Allow sidepane focus key to be configured
+  * Added action to collapse and expand in PageIndex
+  * Add action for &quot;move text&quot; to allow keybinding
+  * Support closing an open 'find bar' by pressing ESC in the page view widget
+  * Allow cancelling ImageGeneratorDialog using Escape key
+  * Version control: fix fossil
+  * Fix KDE drag-n-drop bug
+  * Fix export with formatting in heading
+  * Minimal support for &quot;Terminal&quot; option in desktop files
+  * Add preference for not prompting on new folder
+</comment>
+    <requestid>1034817</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9b90f40b298b20528125fb12878f7c7d</srcmd5>
+    <version>0.75.1</version>
+    <time>1674059596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059410</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>84008e522a0d022aef67646f8b410cf3</srcmd5>
+    <version>0.75.2</version>
+    <time>1689083813</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1097975</requestid>
+  </revision>
+</revisionlist>

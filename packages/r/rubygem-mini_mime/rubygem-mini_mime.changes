@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Fri Nov  3 07:42:08 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
+
+- 08-08-2023
+  - Version 1.1.5
+  - Update mime types from upstream
+
+08-08-2023
+  - Version 1.1.4
+  - Version 1.1.3 had issues on Windows which does not support pread, added a polyfill
+
+04-08-2023
+  - Version 1.1.3
+  - Added fork safety by migrating from seek+read to pread
+
+
+-------------------------------------------------------------------
+Sat Dec 25 10:00:59 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.1.2
+
+  * update mime types from upstream
+
+-------------------------------------------------------------------
+Wed Aug 25 05:15:27 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.1.1
+
+  * update mime types from upstream
+
+-------------------------------------------------------------------
+Tue Apr 20 13:45:08 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.1.0
+
+  05-04-2021
+    - Version 1.1.0
+    - MiniMime.lookup_by_extension is now case insensitive
+
+  26-03-2021
+    - Version 1.0.3
+    - Update mime types from upstream
+
+-------------------------------------------------------------------
+Mon Jul 15 07:20:52 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.0.2
+
+  * Update mime types from upstream
+
+-------------------------------------------------------------------
+Tue Aug 14 06:50:58 UTC 2018 - mschnitzer@suse.com
+
+- updated to version 1.0.1
+
+  * Update mime types from upstream
+  * Add lookup_by_extension to the public API
+
+-------------------------------------------------------------------
+Fri Nov 17 09:53:35 UTC 2017 - mschnitzer@suse.com
+
+- updated to version 1.0.0
+
+  Other than the version number, no difference from 0.1.4 
+
+-------------------------------------------------------------------
+Mon Aug 28 05:27:03 UTC 2017 - coolo@suse.com
+
+- updated to version 0.1.4
+ see installed CHANGELOG
+
+  11-08-2017
+    - Version 0.1.4
+    - Return preferred extension when looking up by content type
+
+-------------------------------------------------------------------
+Fri Jun 16 22:51:11 UTC 2017 - mrueckert@suse.de
+
+- initial package

@@ -1,0 +1,20 @@
+[Unit]
+SourcePath=/usr/lib/virtualbox/vboxautostart-service.sh
+Description=
+Before=runlevel2.target runlevel3.target runlevel4.target runlevel5.target shutdown.target 
+After=vboxdrv.service 
+Conflicts=shutdown.target 
+
+[Service]
+Type=forking
+Restart=no
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+GuessMainPID=no
+RemainAfterExit=yes
+ExecStart=/usr/lib/virtualbox/vboxautostart-service.sh start
+ExecStop=/usr/lib/virtualbox/vboxautostart-service.sh stop
+
+[Install]
+WantedBy=multi-user.target

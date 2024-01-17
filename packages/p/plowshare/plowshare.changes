@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Tue Jun 11 18:28:13 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to override build date (boo#1047218)
+
+-------------------------------------------------------------------
+Mon Aug 28 13:10:13 UTC 2017 - mpluskal@suse.com
+
+- Update to version 2.1.7:
+  * [plowdown] support --run-before/--run-after with spaces (#74)
+  * [plowdown] add --min-rate switch (#91)
+  * [core] user plowshare.conf can be a symbolic link (#95)
+
+-------------------------------------------------------------------
+Mon Jul 24 09:19:52 UTC 2017 - tchvatal@suse.com
+
+- Switch to perl from recode for conversions wrt fate#323644
+
+-------------------------------------------------------------------
+Thu Nov 24 09:35:32 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.1.6:
+  * API function delete_filter_line: eat lines until regexp is met.
+    Bump PLOWSHARE_API_VERSION to 6.
+  * [core] Handle CONT signal (wait time will be updated on ^Z)
+  * [core] Introduce PLOWSHARE_CURL and PLOWSHARE_JS environment
+    variables to override default curl and js commands.
+
+-------------------------------------------------------------------
+Thu Aug 18 14:18:42 UTC 2016 - mpluskal@suse.com
+
+- Update to version 2.1.5:
+  * Various documentation and help improvements
+  * [plowlist] Add -t/--timeout command-line switch (useful for
+  * mirroring/multiupload hosters)
+  * API function delete_last_line: add second optional argument 
+    (number of lines).
+  * Bump PLOWSHARE_API_VERSION to 5.
+  * [core] Consider $XDG_CONFIG_HOME (default is ~/.config)
+- Changes for version 2.1.4:
+  * [plowup] allow local/remote filename having , or ; characters.
+    This is a workaround to curl limitation. (#37)
+  * New API for modules: sha1_file(). Bump PLOWSHARE_API_VERSION
+    to 4.
+  * [plowup] Add %T --printf token to get (current) time (#45)
+  * [core] update imgur API to 3 (#42)
+
+-------------------------------------------------------------------
+Thu Mar 31 18:58:08 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.1.3
+  * [core] update reCAPTCHA behavior (PR #36)
+  * [plowup] Add --run-before switch
+  * New internal error code (for modules): $ERR_EXPIRED_SESSION. 
+    Bump PLOWSHARE_API_VERSION to 3.
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Tue Sep  1 07:26:24 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.1.2
+  * [core] Minor fixes. More cygwin/bsd friendly.
+- Merge bash completion to main package
+
+-------------------------------------------------------------------
+Thu May  7 08:23:02 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.1.1
+  * [plowmod] Fixes with git (requires git v1.8.5+)
+  * [plowmod] Add --status command-line switch
+- Changes for 2.1.0)
+  * Documentation refactor. Add plowshare.conf.sample file.
+  * Support user modules ~/.config/plowshare/modules.d/* scheme
+  * [plowmod] Add tool to ease modules repositories management
+- Changes for 2.0.1
+  * bash completion (plowdown, plowup): add missing --cache support
+  * Enhance documentation concerning split of modules and core
+- Changes for 2.0.0
+  * First version shipped without any module. Only core here.
+    Module sources have been committed in a new GIT repository.
+
+-------------------------------------------------------------------
+Sun Nov  9 11:06:01 UTC 2014 - mpluskal@suse.com
+
+-  Switch to github source due to unreliability of downloads from google (sr#260344)
+
+-------------------------------------------------------------------
+Sat Nov  8 14:09:46 UTC 2014 - mpluskal@suse.com
+
+- Reapackaged home:Warhammer40k:stuff
+

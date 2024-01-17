@@ -1,0 +1,45 @@
+From bdda7f12190654c0cc9663912473476eafcf64ef Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 27 Sep 2023 10:58:14 +0200
+Subject: [PATCH 173/173] Replace "global.log" by "console.log"
+
+"global" isn't generally available any more.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ extension/extension.js | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/extension/extension.js b/extension/extension.js
+index 7873763..05e75cb 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -187,7 +187,7 @@ export default class Controller extends Extension {
+         this.shouldEnable = false;
+         Main.wm.removeKeybinding("show-hamster-dropdown");
+ 
+-        global.log('Shutting down hamster-shell-extension.');
++        console.log('Shutting down hamster-shell-extension.');
+         this._removeWidget(this.placement);
+         Main.panel.menuManager.removeMenu(this.panelWidget.menu);
+         this.panelWidget.destroy();
+@@ -209,7 +209,6 @@ export default class Controller extends Extension {
+             this.reportIfError(_("Failed to get activities"), err);
+             this.runningActivitiesQuery = false;
+             this.activities = response;
+-            // global.log('ACTIVITIES HAMSTER: ', this.activities);
+         }.bind(this));
+     }
+ 
+@@ -220,7 +219,7 @@ export default class Controller extends Extension {
+     reportIfError(msg, error) {
+         if (error) {
+             // Use toString, error can be a string, exception, etc.
+-            global.log("error: Hamster: " + msg + ": " + error.toString());
++            console.log("error: Hamster: " + msg + ": " + error.toString());
+             // Prefix msg to details (second argument), since the
+             // details are word-wrapped and the title is not.
+             Main.notify("Hamster: " + msg, msg + "\n" + error.toString());
+-- 
+2.42.0
+

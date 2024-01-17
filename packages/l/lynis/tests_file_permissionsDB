@@ -1,0 +1,77 @@
+#!/bin/sh
+
+#################################################################################
+#
+# Author: Thomas Biege <thomas@suse.de>
+#
+# Lynis comes with ABSOLUTELY NO WARRANTY. This is free software, and you are
+# welcome to redistribute it under the terms of the GNU General Public License.
+# See LICENSE file for usage of this software.
+#
+#################################################################################
+#
+#  File permissions from db file
+#
+#################################################################################
+#
+# TODO:
+# - owner can have ':' and '.' as delimiter, '.' will cause an error -> fix it!
+# - octal perms starting with 0 are valid but will cause an error -> fix it!
+#
+################################################################################
+#
+    InsertSection "File systems"
+#
+#################################################################################
+#
+    # Test        : FILE-7525
+    # Description : Perform file permissions check
+    Register --test-no FILE-7525 --weight L --network NO --description "Perform file permissions check from DB"
+    if [ ${SKIPTEST} -eq 0 ]; then
+	DB="${DBDIR}/fileperms.db"
+        Display --indent 2 --text "- Starting file permissions check from DB..."
+        logtext "Test: Checking file permissions from DB"
+        logtext "Using database ${DB}."
+
+	HPMAX=0
+	HPBAD=0
+	for LINE in $(cat $DB)
+	do
+		HPMAX=$(($HPMAX + 1))
+		FN=$(echo $LINE | cut -d: -f2)
+		PM=$(echo $LINE | cut -d: -f3)
+		UN=$(echo $LINE | cut -d: -f4)
+		GN=$(echo $LINE | cut -d: -f5)
+		OS=$(echo $LINE | cut -d: -f6)
+		if [ -z $OS ]; then
+			logtext "Warning: line format invalid: '$LINE'"
+		fi
+
+		logtext "Checking $FN"
+
+		STR="$PM:$UN:$GN"
+		STAT=$(stat --printf="%a:%U:%G" $FN 2>/dev/null)
+		if [ -z $STAT ]; then
+			#Display --indent 4 --text "${FN}" --result "NOT FOUND" --color WHITE
+			continue;
+		fi
+		if [ "$STR" != "$STAT" ]; then
+			HPBAD=$((HPBAD + 1))
+			Display --indent 4 --text "${FN}" --result WARNING --color RED
+		else
+			Display --indent 4 --text "${FN}" --result OK --color GREEN
+		fi
+	done
+
+	HP=$(expr $HPMAX - $HPBAD)
+# 	echo "AddHP $HP $HPMAX"
+	AddHP $HP $HPMAX
+    fi
+#
+#################################################################################
+#
+
+wait_for_keypress
+
+#
+#================================================================================

@@ -1,0 +1,94 @@
+--- util.c.orig	2008-01-08 00:09:32.000000000 +0100
++++ util.c	2008-01-08 00:09:49.000000000 +0100
+@@ -735,7 +735,7 @@
+ 
+ struct WinAction *getRC()
+ {
+-	char fname[2][1024]={"","/etc/X11/imwheel/imwheelrc"}, line[1024], *p, *q, winid[1024];
++	char fname[2][1024]={"","/etc/imwheelrc"}, line[1024], *p, *q, winid[1024];
+ 	int fi,i;
+ 	struct WinAction *newwa=NULL;
+ 	FILE *f=NULL;
+--- imwheel.1.orig	2008-01-08 00:08:14.000000000 +0100
++++ imwheel.1	2008-01-08 00:08:34.000000000 +0100
+@@ -329,9 +329,9 @@
+ .fi
+ .RE
+ .SH "IMWHEELRC"
+-IMWheel uses, optionally, two configuration files.  One called /etc/X11/imwheel/imwheelrc,
++IMWheel uses, optionally, two configuration files.  One called /etc/imwheelrc,
+ which is used for everybody.  The other is $HOME/.imwheelrc, used only for one
+-user.  One is supplied and should have been installed automatically in /etc/X11/imwheel/
++user.  One is supplied and should have been installed automatically in /etc
+ if not also in the installing users $HOME as well.  All whitespace is ignored
+ in the files except for within the window names' double quotes.
+ .LP
+@@ -671,7 +671,7 @@
+ $HOME/.imwheelrc
+ 	The users configuration file.
+ 
+-/etc/X11/imwheel/imwheelrc
++/etc/imwheelrc
+ 	The global location for the configuration
+ 	file, it is always loaded.  Overided by
+ 	the users configuration file.
+--- imwheel.1.html.orig	2008-01-08 00:06:50.000000000 +0100
++++ imwheel.1.html	2008-01-08 00:07:27.000000000 +0100
+@@ -385,7 +385,7 @@
+ <A NAME="lbAI">&nbsp;</A>
+ <H2>IMWHEELRC</H2>
+ 
+-IMWheel uses, optionally, two configuration files.  One called /etc/X11/imwheelrc,
++IMWheel uses, optionally, two configuration files.  One called /etc/imwheelrc,
+ which is used for everybody.  The other is $HOME/.imwheelrc, used only for one
+ user.  One is supplied and should have been installed automatically in /etc
+ if not also in the installing users $HOME as well.  All whitespace is ignored
+@@ -809,7 +809,7 @@
+ $HOME/.imwheelrc
+         The users configuration file.
+ 
+-/etc/X11/imwheelrc
++/etc/imwheelrc
+         The global location for the configuration
+         file, it is always loaded.  Overided by
+         the users configuration file.
+--- README.orig	2008-01-08 00:06:01.000000000 +0100
++++ README	2008-01-08 00:06:45.000000000 +0100
+@@ -224,7 +224,7 @@
+ [ OVERVIEW ]
+ 
+ The configuration of specific clients is taken care of in the file called 
+-"$HOME/.imwheelrc" or "/etc/X11/imwheelrc".
++"$HOME/.imwheelrc" or "/etc/imwheelrc".
+ 
+ All arguments in the file are separated by commas.
+ 
+@@ -346,7 +346,7 @@
+ 
+ [ DELAYS ]
+ 
+-Two delays are configurable in the "/etc/X11/imwheelrc" and/or the
++Two delays are configurable in the "/etc/imwheelrc" and/or the
+ "$HOME/.imwheelrc" files.  The first delay is the delay between repetitions.
+ The second delay is the delay between key down and key up events.  If you make
+ the delay too long expect the likelyness of the sticky keys bug to occur (see
+@@ -358,7 +358,7 @@
+ 
+ See the included imwheelrc file for a few examples of configured windows.  This 
+ file is a good start and may be copied into the users home directory as 
+-".imwheelrc" and/or into /etc/X11/imwheelrc for a default setup for all users.  
++".imwheelrc" and/or into /etc/imwheelrc for a default setup for all users.  
+ Then modify your individual copy or the /etc copy to add more windows.
+ 
+ [ CONFIGURATION HELPER ]
+--- ./Makefile.am.orig	2004-08-29 14:36:26.000000000 +0400
++++ ./Makefile.am	2011-12-09 23:40:15.165537581 +0400
+@@ -22,7 +22,7 @@
+ 		find $(distdir) -name CVS -exec rm -rvf '{}' ';' ; \
+ 	done
+ 
+-ETCDIR=/etc/X11/imwheel
++ETCDIR=/etc
+ 
+ install-exec-hook:
+ if SUID

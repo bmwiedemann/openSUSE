@@ -1,0 +1,21 @@
+Index: humanhash3-0.0.6/README.rst
+===================================================================
+--- humanhash3-0.0.6.orig/README.rst
++++ humanhash3-0.0.6/README.rst
+@@ -37,14 +37,14 @@ Example
+ Caveats
+ -------
+ 
+-Don’t store the humanhash output, as its statistical uniqueness is only
++Don't store the humanhash output, as its statistical uniqueness is only
+ around 1 in 4.3 billion. Its intended use is as a human-readable (and,
+ most importantly, **memorable**) representation of a longer digest,
+ unique enough for display in a user interface, where a user may need to
+ remember or verbally communicate the identity of a hash, without having
+ to remember a 40-character hexadecimal sequence. Nevertheless, you
+ should keep original digests around, then pass them through
+-``humanize()`` only as you’re displaying them.
++``humanize()`` only as you're displaying them.
+ 
+ How It Works
+ ------------

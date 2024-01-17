@@ -1,0 +1,5 @@
+<package name="guile-ssh" project="openSUSE:Factory">
+  <title>guile-ssh</title>
+  <description>Guile-SSH is a library that provides access to the SSH protocol for GNU Guile programs.</description>
+  <devel project="devel:languages:misc" package="guile-ssh"/>
+</package>

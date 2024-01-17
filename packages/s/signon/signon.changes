@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Thu Aug 10 15:24:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.61
+  * Port away from QHash::unite
+  * Don't emit QObject::destroyed() within Identity::destroy()
+  * Build: remove unnecessary qmake options
+  * Don't use -fno-rtti
+  * Run test script with Busybox compatible mktemp
+  * Fix typos in logs
+  * Tests: add missing parameter to mkdir command
+  * Fix deprecation warning
+  * signond: register the adaptors in SignonDaemonAdaptor
+  * signond: get appId of peer in SignonIdentityAdapter
+  * signond: add Error class
+  * signond: add ErrorAdaptor class
+  * signond: use ErrorAdaptor in SignonSessionCore
+  * signond: reduce usage of D-Bus in SignonIdentity class
+  * signond: introduce PeerContext class
+  * signond: reduce D-Bus usage in SignonAuthSession
+  * signond: register the adaptors, not the object itself
+  * signond: destroy adapter when Identity gets unregistered
+  * Fix Unicode $HOME dir
+- Drop patch, merged upstream:
+  * 0001-Don-t-use-fno-rtti.patch
+- Drop the unneeded baselibs.conf
+
+-------------------------------------------------------------------
+Thu Jun 18 08:12:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash (boo#1172904):
+  * 0001-Don-t-use-fno-rtti.patch
+
+-------------------------------------------------------------------
+Tue Nov 19 13:12:19 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 8.60. No changelog available (boo#1157142)
+
+-------------------------------------------------------------------
+Wed Jul 31 08:43:48 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Fri Nov  3 09:50:32 UTC 2017 - buschmann23@opensuse.org
+
+- spec file
+  * fix source url
+
+-------------------------------------------------------------------
+Fri Nov  3 00:59:18 UTC 2017 - buschmann23@opensuse.org
+
+- update to version 8.59
+  + lib: add more defines for SignOnUi password dialog
+  + signond: inform SignOnUI when a session finishes
+  + RemotePluginProcess: don't use a thread for cancel
+  + Signond: fix a couple of textual issues
+  + signond: get rid of loadedPluginMethods() method
+  + plugins: don't use custom proxy implementation on Qt 5.5 and later
+  + signond: don't store duplicate data in SignonAuthSession
+  + signond: add configure option to enable backup
+  + signond: move backup implementation into separate class
+  + Remove Qt4 support
+  + Lib: hide debug output by default
+- update to version 8.58
+  + lib: add a couple of error codes for SignOn UI
+  + lib: reset the DBus proxy when registration failed
+  + signond: on identity update, don't reset missing fields
+  + signond: don't bypass the ACL if the identity has no owner
+  + signond: pass client AppId to SignOnUi
+  + signond: pass the client PID to SignOnUI
+- updated patches
+  + 0001_Multilib.patch
+- removed patches now included upstream
+  + fix-incomplete-type.patch
+
+-------------------------------------------------------------------
+Thu Jan 28 13:58:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Add baselibs.conf to generate the -32bit packages
+
+-------------------------------------------------------------------
+Tue Sep  8 19:15:53 UTC 2015 - alarrosa@suse.com
+
+- Fix an "incomplete type" compilation error (fix-incomplete-type.patch)
+
+-------------------------------------------------------------------
+Thu Oct 30 23:03:50 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add signon package
+

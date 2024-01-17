@@ -1,0 +1,24 @@
+You can run Jamulus as a client, as well as a headless public or private server.
+
+There are two service files for starting in headless mode.
+Additional two service files for switching recording and for start new recording.
+
+Launching a headless public server
+==================================
+
+  1. Change the settings in /etc/sysconfig/jamulus
+
+  2. Then start the server with:
+
+      systemctl start jamulus-public.service
+
+      or
+
+      systemctl start jamulus-private.service
+
+For a private server, you must enable port forwarding in your router
+and open UDP port: 22124 in your firewall.
+
+Connecting to your private server
+=================================
+To connect locally to your private server, you must use localhost as the server in the GUI.

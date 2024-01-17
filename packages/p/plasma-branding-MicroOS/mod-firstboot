@@ -1,0 +1,56 @@
+#!/bin/sh
+dbusRef=`kdialog --title "MicroOS Desktop Firstboot" --geometry 600x400 --progressbar "MicroOS Desktop Firstboot" 7`
+qdbus-qt5 $dbusRef setLabelText "Waiting for Internet connection"
+until /usr/bin/ping -q -c 1 flathub.org; do sleep 1; done
+qdbus-qt5 $dbusRef Set "" value 1
+
+qdbus-qt5 $dbusRef setLabelText "Adding Flathub Repository"
+/usr/bin/flatpak remote-add --user --if-not-exists flathub /usr/share/microos-desktop/flathub.flatpakrepo
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Adding Flathub Repo Failed"
+        exit 1
+fi
+qdbus-qt5 $dbusRef Set "" value 2
+
+qdbus-qt5 $dbusRef setLabelText "Installing Firefox"
+/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Firefox Failed"
+        exit 1
+fi
+qdbus-qt5 $dbusRef Set "" value 3
+
+qdbus-qt5 $dbusRef setLabelText "Installing Calculator"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.kcalc
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Installing Calculator Failed"
+        exit 1
+fi
+qdbus-qt5 $dbusRef Set "" value 4
+
+qdbus-qt5 $dbusRef setLabelText "Installing Ark"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.ark
+if [ "$?" != 0 ] ; then
+	kdialog --error \
+          "Installing Ark Failed"
+	exit 1
+fi
+qdbus-qt5 $dbusRef Set "" value 5
+
+qdbus-qt5 $dbusRef setLabelText "Setting Default Browser"
+kwriteconfig5 --file ~/.config/kdeglobals --group General --key BrowserApplication org.mozilla.firefox.desktop
+qdbus-qt5 $dbusRef Set "" value 6
+
+qdbus-qt5 $dbusRef setLabelText "Cleaning up"
+rm ~/.config/autostart/mod-firstboot.desktop
+qdbus-qt5 $dbusRef Set "" value 7
+
+if [ "$?" != 0 ] ; then
+        kdialog --error \
+          "Firstboot Configuration Error"
+fi
+kwriteconfig5 --file ~/.config/kdeglobals --group General --key BrowserApplication org.mozilla.firefox.desktop
+qdbus-qt5 $dbusRef close

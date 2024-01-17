@@ -1,0 +1,7 @@
+<package name="delaguardo-inconsolata_lgc-fonts" project="openSUSE:Factory">
+  <title>Inconsolata font with Cyrillic characters</title>
+  <description>Inconsolata LGC is a modified version of Inconsolata with added the Cyrillic
+alphabet which directly descends from Inconsolata Hellenic supporting modern
+Greek.</description>
+  <devel project="M17N:fonts" package="delaguardo-inconsolata_lgc-fonts"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="gnome-epub-thumbnailer" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Apps" package="gnome-epub-thumbnailer"/>
+</package>

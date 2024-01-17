@@ -1,0 +1,189 @@
+-------------------------------------------------------------------
+Mon Dec 18 13:26:24 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Disable tests as they timeout in OBS
+
+-------------------------------------------------------------------
+Sat Dec  2 06:57:04 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Update to version 3.1.3
+  * citnames: include filter works with trailing separator
+  * dependency: fmt to work with all recent versions
+  * cmake: Avoid warning about DOWNLOAD_EXTRACT_TIMESTAMP ( #531, @Spongman )
+  * language: Add missing include for std::find ( #530, @thesamesam )
+
+-------------------------------------------------------------------
+Tue Jun 13 12:30:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 3.1.2:
+  * fix incorrect parsing arguments with same prefixes (#519, @MashaK5)
+  * Avoid implicit function declarations in tests, for C99
+    compatibility (#521, @fweimer-rh)
+- From skipped 3.1.1:
+  * intercept: file open with O_TRUNC to avoid corrupt output if
+    the file is already exists. (#511 , @asierllano)
+  * intercept: file writing needs to loop on content until it gets
+    empty (#512 , @asierllano)
+  * citnames: output writing is an atomic operation (#513 , @asierllano)
+  * documentation: run pandoc against man page sources
+- From skipped 3.1.0:
+  * Bear internal running processes are no longer released as
+    executable.
+    This was requested to avoid collision with the interception-tool package.
+    (Special thanks to @samu698 for the patches.)
+  * missing preprocessor guard for confstr (#475 @mahmood601)
+  * documentation fixes
+- From skipped 3.0.21:
+  * Fix libexec.so linking problem (#477, @neverpanic )
+  * Fix various CMake flag problems (#480, #484, @leleliu008 , @adfernandes )
+  * Fix repology link in README file (#482, @dmitris )
+  * Process execution close stdin file descriptor in wrapper.
+
+-------------------------------------------------------------------
+Mon Oct 17 13:00:02 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 3.0.20:
+  * Set errno to zero after libexec's on_load (#470, @Absolucy)
+  * Add C compiler argument for dependencies (#462, @arturo-salinas)
+  * Update dependency versions.
+  * Fix build failure with fmt-9.0.0 (#471)
+
+  * Temp workaround note for old 2.4 release (#440 @ZuseZ4)
+  * Build: local dependencies get first in the search path (#453 @ton)
+  * Fix cannot execute binary file (#439 @marxin)
+
+-------------------------------------------------------------------
+Wed Jan 19 09:17:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 3.0.18
+  * Fix compile errors with g++ 11.02 (#434, @shrkamat)
+  * Added CMAKE_EXE_LINKER_FLAGS to external projects. (#437, @XaverKlemenschits)
+  * Fixed Libtool test failure. (#435, @gyakovlev)
+
+-------------------------------------------------------------------
+Tue Sep 21 07:11:56 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 3.0.15
+- Removed fix-python3-tests.patch (replaced with a sed call)
+- Removed fix-libexec-tests.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon May 24 10:43:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed build / test requirement for lit
+
+-------------------------------------------------------------------
+Fri May 14 08:41:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.11
+  * Rewrite Bear in C++
+  * Bear is decomposed into an intercept and a semantic analysis
+    processes. It also supports compiler wrappers for intercepting
+    compiler calls in environments where the dynamic linker trick is
+    not working.
+  * Support CUDA compilations
+  * Add '--remove-flags' argument
+  * fix performance bug.
+  * ccache compiler wrapper no longer in the output
+  * 'citnames' execution time linear to the input size.
+  * 'intercept' performance tuning to allocate less object during
+    event processing.
+  * Interception execution reporter ('er') got merged with the
+    compiler wrapper ('wrapper').
+  * 'bear' and 'citnames' are expose less flags, but using a
+    configuration file.
+  * Bear cleans up 'intercept' command output after using it.
+- Add fix-libexec-tests.patch and fix-python3-tests.patch
+
+-------------------------------------------------------------------
+Thu Oct 17 12:10:56 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Fri Sep 27 11:09:06 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Small package modernization
+
+-------------------------------------------------------------------
+Fri Sep 27 11:04:35 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Fix sed call to fixup bear's shebang
+
+-------------------------------------------------------------------
+Fri Sep 20 21:40:12 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Packaging changes:
+  - Drop unnecessary BuildRequires libconfig-devel and pkgconfig
+  - Drop Bear-rpmlintrc: it contains a no longer required filter
+  - Run the testsuite in %check
+  - Add bash completion files
+  - Use python3 as the interpreter for /usr/bin/bear
+
+- Update to 2.4.2
+  Features:
+  - Support output field in the output. (#254, @bofeng17)
+  - Support Fortran compiler (#201, #241, #253, @rubyzhou2014, @chunhualiao)
+  - Support filter options (#261, #252, @liugang)
+
+  Bugfixes:
+  - Fix Cpack problem to create RPM. (#191, @antmak, @reverendhomer)
+
+- Update to 2.4.1
+  - Minor bug fixes.
+
+- Update to 2.4.0
+  - Improve reliability by replacing flaky character conversion code in critical
+    execution path.
+
+-------------------------------------------------------------------
+Sat Nov 17 13:09:29 UTC 2018 - Adam Mizerski <adam@mizerski.pl>
+
+- fix libear path
+
+-------------------------------------------------------------------
+Sat Sep 22 17:15:07 UTC 2018 - Martin Liška <mliska@suse.cz>
+
+- Update to 2.3.12.
+
+-------------------------------------------------------------------
+Sat Feb 25 13:23:13 UTC 2017 - adam@mizerski.pl
+
+- Update to 2.2.1
+  - Fix spelling mistakes in man page (@sebastinas, #128)
+  - Fix support multiple compilers (@handrake0724, #136)
+  - Finish writing output when the build was interupted by user.
+  - Travis-CI runs build against OSX machines
+- Changes for 2.2.0
+  - Fix spelling mistakes in README file (@sebastinas, #116)
+  - Fix shell escaping to work with arguments which has space (@timangus, #124)
+- Changes for 2.1.5
+  - Stop filtering out `-m` options (@joshtriplett, #115)
+  - Updated man page bugs section (#114)
+- Changes for 2.1.4
+  - Make paths to sources and include files absolute. (@svenpanne, #111)
+  - Extend known issues section of documentation (#112, #108, #105, #102)
+
+-------------------------------------------------------------------
+Sat Jan 16 09:56:03 UTC 2016 - mpluskal@suse.com
+
+- Update to 2.1.3
+  * warnings are not filtered from output
+  * support universal binaries (32 and 64) on x86 OS X
+- Changes for 2.1.2
+  * Fix escaping quotes for shell too.
+- Changes for 2.1.1
+  * Fix iterator next method usage
+
+-------------------------------------------------------------------
+Wed Aug 26 13:51:56 UTC 2015 - mpluskal@suse.com
+
+- Update to 2.1.0
+- Use cmake macros
+- Use url for source
+
+-------------------------------------------------------------------
+Tue Feb 11 15:55:58 UTC 2014 - cbosdonnat@suse.com
+
+- Created package for Bear 1.4
+

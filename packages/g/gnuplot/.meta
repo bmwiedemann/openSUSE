@@ -1,0 +1,8 @@
+<package name="gnuplot" project="openSUSE:Factory">
+  <title>GNUplot a Function Plotting Utility</title>
+  <description>GNUplot is a command line driven interactive function plotting utility.
+ GNUplot supports many different types of terminals, plotters, and
+printers (including many color devices and pseudodevices like LaTeX)
+and can easily be extended to include new devices.</description>
+  <devel project="Publishing" package="gnuplot"/>
+</package>

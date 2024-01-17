@@ -1,0 +1,11 @@
+diff --git a/misc/xca.desktop b/misc/xca.desktop
+index 2cdd7a9..89bc823 100644
+--- a/misc/xca.desktop
++++ b/misc/xca.desktop
+@@ -13,5 +13,5 @@ Comment[pt_BR]=Interface gráfica para gerenciar e emitir Certificados X.509
+ Exec=xca %F
+ Icon=xca
+ Terminal=false
+-Categories=Application;Utility;Qt;
++Categories=Utility;DesktopUtility;
+ MimeType=application/x-xca-database;application/x-xca-template;application/x-x509-ca-cert;application/pkcs10;application/x-pkcs7-certificates;application/x-pkcs12;

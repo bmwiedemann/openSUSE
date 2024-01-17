@@ -1,0 +1,5 @@
+<package name="hyprpaper" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Wayland" package="hyprpaper"/>
+</package>

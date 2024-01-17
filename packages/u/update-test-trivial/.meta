@@ -1,0 +1,9 @@
+<package name="update-test-trivial" project="openSUSE:Factory">
+  <title>Package for testing the update stack during product development.</title>
+  <description>Package for testing the update stack during product development.
+
+We will provide a &quot;always&quot; working update for this package so that the
+update stack could be easily tested.
+</description>
+  <devel project="devel:openSUSE:Factory" package="update-test-trivial"/>
+</package>

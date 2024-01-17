@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62ced2792a9b7229afe9918d982e1937</srcmd5>
+    <version>1.0</version>
+    <time>1560970507</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>693668</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>11ebd8ad67f0dec44ed7e3664c1ea72b</srcmd5>
+    <version>1.0</version>
+    <time>1607548922</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1179637</comment>
+    <requestid>854213</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8a6a5478dfa75984c5a5139ea172b8c6</srcmd5>
+    <version>1.0</version>
+    <time>1648159059</time>
+    <user>dimstar_suse</user>
+    <comment>Build with source and target levels 8</comment>
+    <requestid>964397</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Fri Dec 29 16:18:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.1:
+  * Fixed date format to accept only two digit months and days
+
+-------------------------------------------------------------------
+Mon Nov 27 18:48:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * Added `use_formats` parameter to allow disable automatic assertions
+
+-------------------------------------------------------------------
+Tue Sep 26 19:04:36 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 2.18.0
+  * Improved error message for required props - only missing are reported
+  * Fixed support of boolean schema in if-then-else application
+
+-------------------------------------------------------------------
+Mon May 29 14:28:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.1:
+  * Fixed tests in sdist
+  * Added support for Decimals
+  * Added tests in sdist
+
+-------------------------------------------------------------------
+Fri May 12 10:18:43 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Mon Mar  6 21:23:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.3:
+  * Fix variable name resolving with references
+
+-------------------------------------------------------------------
+Thu Oct  6 14:32:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.2:
+  * Use temporary dir in tests for compiled code
+  * Add comments to Python versions in Github workflow
+  * Add conditional test that uses $ref
+  * Add conditional tests just to make sure the baseline works
+  * Recursively expand all $ref strings in schemas
+  * Add test case capturing the desired behaviour
+  * Expand $ref when assiging the definition field in JsonSchemaValueExce
+  * Add an assertion before removing 'data' from variable name
+
+-------------------------------------------------------------------
+Mon Jul 18 13:11:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Cleanup the SPEC file.
+
+-------------------------------------------------------------------
+Sat Jul 16 15:33:14 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright
+
+- update to version 2.15.3:
+  * Fix swapping handlers
+  * Fix tests
+  * Readable regexps in generated code
+
+- changes from version 2.15.2:
+  * Fix nested oneOf and anyOf
+  * Fix if-else block in anyOf block
+  * Fix uniqueItems including lists or dicts
+  * Add option to pass custom formats in generated code
+
+- changes from version 2.15.1:
+  * Fix parsing date-time with +hhmm format
+  * Fix generating code with custom regular expressions
+
+- changes from version 2.15.0:
+  * Fix additional property equal to empty object is the same as True
+  * Fix const with "
+  * Add const to error message
+  * Add JsonSchemaValueException (replacement for JsonSchemaException)
+    + JsonSchemaException is base exception
+    + JsonSchemaDefinitionException no longer inherits from
+      JsonSchemaValueException
+  * New option `use_default` to have option turn off default feature
+    (`True` by default to be compatible)
+
+- changes from version 2.14.5:
+  * Fix missing dependencies
+  * Fix schema cache
+
+-------------------------------------------------------------------
+Fri Jun 12 04:52:10 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.14.4

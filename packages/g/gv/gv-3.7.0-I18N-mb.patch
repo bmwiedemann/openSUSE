@@ -1,0 +1,427 @@
+--- src/Makefile.am
++++ src/Makefile.am	2010-06-08 12:09:08.542924989 +0000
+@@ -291,3 +291,14 @@ install-data-local:
+ 	$(MKDIR_P) "$(DESTDIR)$(pkgdatadir)/safe-gs-workdir"
+ 	chmod 755 "$(DESTDIR)$(pkgdatadir)/safe-gs-workdir"
+ 
++install-nls:
++	@for LNG in ja_JP.UTF-8 ko_KR.UTF-8; do \
++	test -f gv_nls_$$LNG.dat || continue; \
++		cat $(srcdir)/GV.ad		>  $(srcdir)/GV_$$LNG.ad; \
++		cat $(srcdir)/gv_nls_$$LNG.dat	>> $(srcdir)/GV_$$LNG.ad; \
++		test -d $(DESTDIR)$(datadir)/X11/$$LNG/app-defaults || \
++			$(mkdir_p) $(DESTDIR)$(datadir)/X11/$$LNG/app-defaults; \
++		$(INSTALL) $(INSTALLFLAGS) \
++			$(srcdir)/GV_$$LNG.ad $(DESTDIR)$(datadir)/X11/$$LNG/app-defaults/GV; \
++	done
++
+--- src/gv_nls_ja_JP.UTF-8.dat
++++ src/gv_nls_ja_JP.UTF-8.dat	2008-03-27 15:17:51.000000000 +0000
+@@ -0,0 +1,202 @@
++!
++!** Copyright (C) 1995, 1996, 1997 Johannes Plass
++! 
++! This program is free software; you can redistribute it and/or modify
++! it under the terms of the GNU General Public License as published by
++! the Free Software Foundation; either version 2 of the License, or
++! (at your option) any later version.
++! 
++! This program is distributed in the hope that it will be useful,
++! but WITHOUT ANY WARRANTY; without even the implied warranty of
++! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++! GNU General Public License for more details.
++!
++! You should have received a copy of the GNU General Public License
++! along with this program; if not, write to the Free Software
++! Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++! 
++! Author:   Johannes Plass (plass@thep.physik.uni-mainz.de)
++!           Department of Physics
++!           Johannes Gutenberg-University
++!           Mainz, Germany
++!
++!
++!  gv_ja_JP.eucJP.ad
++!  Japanese NLS label for gv by
++!  1998 Yasuyuki Furukawa (yasu@on.cs.keio.ac.jp)
++!
++
++
++!##### Zoom Popup
++
++GV*zoomPopup.title:			GV - 拡大画面
++
++!##### Info Popup
++
++GV*infoPopup.title:			GhostScriptメッセージ
++
++!##### Dialog Popup
++
++GV*dialogPopup.title:			ダイアログ
++
++!##### Note Popup
++
++GV*notePopup.title:			メッセージ
++
++!##### Confirm Popup
++
++GV*confirmPopup.title:			確認
++
++!##### OptionsSetup Popup
++
++GV*optionfsPopup.title:			ファイル選択オプション
++
++!##### OptionsGS Popup
++
++GV*optiongsPopup.title:			Ghostscriptオプション
++
++!##### OptionsGV Popup
++
++GV*optiongvPopup.title:			GVオプション
++
++!##### OptionsSetup Popup
++
++GV*optionsetupPopup.title:		セットアップオプション
++
++!##### FileSet Popup
++
++GV*fileSelPopup.title:			ファイルを開く
++
++!################################################
++!##### Labels
++!################################################
++
++GV*cancel.Label:			キャンセル
++GV*dismiss.Label:			閉じる
++GV*apply.label:				適用
++GV*copyright.Label:			著作権
++GV*quit.Label:				終了
++GV*fileButton.Label:			ファイル
++GV*open.Label:				開く ...
++GV*reopen.Label:			再オープン
++GV*update.Label:			更新
++GV*printAllPages.Label:			文章印刷 ...
++GV*printMarkedPages.Label:		マークしたページの印刷...
++GV*saveAllPages.Label:			文章保存 ...
++GV*saveMarkedPages.Label:		マークしたページの保存...
++GV*stateButton.Label:			環境設定
++GV*stop.Label:				割り込み停止
++GV*dsc.Label:				文書構造によるスペクト調整
++GV*eof.Label:				EOFコメントを無視
++GV*antialias.Label:			アンチエイリアス
++GV*watchFile.Label:			自動ファイル更新
++GV*showTitle.Label:			タイトル表示
++GV*pixmap.Label:			Backing Pixmap
++GV*size.Label:				自動サイズ変更
++GV*watch.Label:				自動ファイル更新
++GV*optionsgv.Label:			GVオプション...
++GV*optionsfs.Label:			ファイル選択オプション...
++GV*optionsgs.Label:			Ghostscriptオプション...
++GV*optionssetup.Label:			セットアップオプション...
++GV*pageButton.Label:			ページ
++GV*next.Label:				次へ
++GV*show.Label:				再表示
++GV*prev.Label:				前へ
++GV*center.Label:			中央
++GV*pageButton*current.Label:		現在のページをマーク/解除
++GV*pageButton*even.Label:		偶数ページをマーク/解除
++GV*pageButton*odd.Label:		奇数ページをマーク/解除
++GV*pageButton*unmark.Label:		全マーク解除
++GV*processButton.Label:			\ 実行
++GV*mark.Label:				マーク
++GV*prevPage.Label:			<<
++GV*nextPage.Label:			>>
++GV*unmark.Label:			マーク解除
++GV*automatic.Label:			自動
++GV*portrait.Label:			ポートレート
++GV*landscape.Label:			ランドスケープ
++GV*upsidedown.Label:			上下反転
++GV*seascape.Label:			逆ランドスケープ
++GV*swap.Label:				ランドスケープ変換
++GV*toggleCurrent.label:			現在のページマーク/解除
++GV*toggleEven.label:			偶数ページマーク/解除
++GV*toggleOdd.label:			奇数ページマーク/解除
++GV*unmarkAll.label:			全マーク解除
++GV*printAll.label:			全印刷
++GV*printMarked.label:			マーク部分印刷
++GV*saveAll.label:			全保存
++GV*saveMarked.label:			マーク部分保存
++GV*openFile.label:			開く
++GV*redisplay.label:			再表示
++GV*updateFile.label:			ファイル更新
++GV*checkFile.label:			ファイルチェック
++
++GV*filters.label:			フィルタ:
++GV*dirs.label:				ディレクトリ
++GV*button1.label:			キャンセル
++GV*button2.label:			ファイルを開く
++GV*rescan.label:			ディレクトリ再読込
++GV*screenSizeLabel.label:		画面サイズ[mm]
++
++GV*versionPopup*versionDone*label:	閉じる
++GV*dialogPopup*cancel.label:		キャンセル
++GV*notePopup*done.label:		了解
++
++GV*confirmPopup*cancel.label:		キャンセル
++GV*confirmPopup*done.label:		終了
++GV*save.label:				保存
++
++GV*optiongvPopup*mediaLabel.label:	\ 用紙サイズ \ 
++GV*optiongvPopup*fmediaLabel.label:	判別不明時の用紙サイズ
++GV*optiongvPopup*orientLabel.label:	\ 用紙の向き \ 
++GV*optiongvPopup*forientLabel.label:	判別不明時の用紙向き
++GV*optiongvPopup*magLabel.label:	拡大縮小
++GV*optiongvPopup*antialias.label:	アンチエイリアス
++GV*optiongvPopup*respectDSC.label:	DSCを有効
++GV*optiongvPopup*eof.label:		EOFを無視
++GV*optiongvPopup*autoResize.label:	可変サイズ
++GV*optiongvPopup*swapLandscape.label:	ランドスケープ変換
++GV*optiongvPopup*scalesLabel.label:	\   スケール  \ 
++
++GV*miscmenuLabel.label:			その他メニューエントリ
++GV*magmenuLabel.label:			拡大メニューエントリ
++GV*mediasLabel.label:			メディアの大きさ
++GV*confirmLabel.label:			終了時の確認
++GV*misc.label:				その他
++GV*scrolling.label:			スクロール反転
++GV*eyeGuide.label:			スクロールガイド
++GV*confirmPrint.label:			印刷時の確認
++GV*uncompressLabel.label:		圧縮展開
++GV*autoCenter.label:			自動的に中央へ
++GV*printCommandLabel.label:		印刷コマンド
++GV*scratchDirLabel.label:		スクラッチディレクトリ
++GV*saveDirLabel.label:			保存ディレクトリ
++GV*scalesLabel.label:			スケール
++GV*scaleBaseLabel.label:		スケールベース
++
++GV*safer.label:				より安全に
++GV*quiet.label:				終了
++GV*defaults.label:			システム標準値
++GV*scanLabel.label:			PDF読み込み
++GV*convLabel.label:			PDF変換
++GV*gsLabel.label:			Postscriptエンジン
++GV*x11devLabel.label:			デバイス
++GV*x11alphadevLabel.label:		アンチエイリアスデバイス
++GV*argumentsLabel.label:		引数
++
++GV*filtersLabel.label:			ファイル選択フィルタ
++GV*dirsLabel.label:			ファイル選択ディレクトリ
++GV*filterLabel.label:			標準フィルタ
++
++GV*miscMenu.update.label:		ファイル更新
++GV*miscMenu.redisplay.label:		再表示
++GV*miscMenu.stop.label:			割り込み停止
++GV*miscMenu.toggle_current.label:	現在のページマーク/解除
++GV*miscMenu.toggle_odd.label:		奇数ページマーク/解除
++GV*miscMenu.toggle_even.label:		偶数ページマーク/解除
++GV*miscMenu.unmark.label:		全マーク解除
++GV*miscMenu.print_all.label:		全印刷
++GV*miscMenu.print_marked.label:		マーク部分印刷
++GV*miscMenu.save_all.label:		全保存
++GV*miscMenu.save_marked.label:		マーク部分保存
++
+--- src/gv_nls_ko_KR.UTF-8.dat
++++ src/gv_nls_ko_KR.UTF-8.dat	2008-03-27 15:41:29.000000000 +0000
+@@ -0,0 +1,202 @@
++!
++!** Copyright (C) 1995, 1996, 1997 Johannes Plass
++! 
++! This program is free software; you can redistribute it and/or modify
++! it under the terms of the GNU General Public License as published by
++! the Free Software Foundation; either version 2 of the License, or
++! (at your option) any later version.
++! 
++! This program is distributed in the hope that it will be useful,
++! but WITHOUT ANY WARRANTY; without even the implied warranty of
++! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++! GNU General Public License for more details.
++!
++! You should have received a copy of the GNU General Public License
++! along with this program; if not, write to the Free Software
++! Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++! 
++! Author:   Johannes Plass (plass@thep.physik.uni-mainz.de)
++!           Department of Physics
++!           Johannes Gutenberg-University
++!           Mainz, Germany
++!
++!
++!  gv_euc-kr.ad
++!  Korean NLS label for gv by
++!  1999 Sang-Jin Hwang, (hsjlinux@netian.com)
++!
++
++
++!##### Zoom Popup
++
++GV*zoomPopup.title:			GV - 확대
++
++!##### Info Popup
++
++GV*infoPopup.title:			고스트 스크립트 메시지
++
++!##### Dialog Popup
++
++GV*dialogPopup.title:			다이알로그
++
++!##### Note Popup
++
++GV*notePopup.title:			메시지
++
++!##### Confirm Popup
++
++GV*confirmPopup.title:			확인
++
++!##### OptionsSetup Popup
++
++GV*optionfsPopup.title:			파일 선택 옵션
++
++!##### OptionsGS Popup
++
++GV*optiongsPopup.title:			고스트 스크립트 옵션
++
++!##### OptionsGV Popup
++
++GV*optiongvPopup.title:			GV 옵션
++
++!##### OptionsSetup Popup
++
++GV*optionsetupPopup.title:		설정 옵션
++
++!##### FileSet Popup
++
++GV*fileSelPopup.title:			파일 열기
++
++!################################################
++!##### Labels
++!################################################
++
++GV*cancel.Label:			취소
++GV*dismiss.Label:			닫기
++GV*apply.label:				적용
++GV*copyright.Label:			저작권
++GV*quit.Label:				종료
++GV*fileButton.Label:			파일
++GV*open.Label:				열기 ...
++GV*reopen.Label:			재열기
++GV*update.Label:			경신
++GV*printAllPages.Label:			문서 인쇄 ...
++GV*printMarkedPages.Label:		마크한 페이지 인쇄 ...
++GV*saveAllPages.Label:			문서 저장 ...
++GV*saveMarkedPages.Label:		마크한 페이지 저장 ...
++GV*stateButton.Label:			환경 설정
++GV*stop.Label:				중지
++GV*dsc.Label:				문서 구조화
++GV*eof.Label:				EOF 주석 무시
++GV*antialias.Label:			매끄러운 화면 처리
++GV*watchFile.Label:			자동 파일경신
++GV*showTitle.Label:			타이틀 표시
++GV*pixmap.Label:			Backing Pixmap
++GV*size.Label:				자동 크기 조절
++GV*watch.Label:				자동 파일경신
++GV*optionsgv.Label:			GV 옵션 ...
++GV*optionsfs.Label:			파일 선택 옵션 ...
++GV*optionsgs.Label:			고스트 스크립트 옵션 ...
++GV*optionssetup.Label:			설정 옵션 ...
++GV*pageButton.Label:			페이지
++GV*next.Label:				다음
++GV*show.Label:				화면 재시작
++GV*prev.Label:				이전
++GV*center.Label:			중간
++GV*pageButton*current.Label:		현재페이지 마크/해제
++GV*pageButton*even.Label:		짝수페이지 마크/해제
++GV*pageButton*odd.Label:		홀수페이지 마크/해제
++GV*pageButton*unmark.Label:		전 마크 해제
++GV*processButton.Label:			\ 진행중
++GV*mark.Label:				마크
++GV*prevPage.Label:			<<
++GV*nextPage.Label:			>>
++GV*unmark.Label:			표시 안함
++GV*automatic.Label:			자동
++GV*portrait.Label:			Portrait
++GV*landscape.Label:			Landscape
++GV*upsidedown.Label:			상하 반전
++GV*seascape.Label:			Seascape
++GV*swap.Label:				Landscape변환
++GV*toggleCurrent.label:			현재페이지 마크/해제
++GV*toggleEven.label:			짝수페이지 마크/해제
++GV*toggleOdd.label:			홀수페이지 마크/해제
++GV*unmarkAll.label:			모두 표시 안함
++GV*printAll.label:			모두 인쇄
++GV*printMarked.label:			마크부분 인쇄
++GV*saveAll.label:			모두 저장
++GV*saveMarked.label:			표시 저장
++GV*openFile.label:			열기
++GV*redisplay.label:			화면 재시작
++GV*updateFile.label:			파일경신
++GV*checkFile.label:			파일 확인
++
++GV*filters.label:			필터
++GV*dirs.label:				디렉토리
++GV*button1.label:			취소
++GV*button2.label:			파일 열기
++GV*rescan.label:			디렉토리 검색
++GV*screenSizeLabel.label:		회면 사이즈mm]
++
++GV*versionPopup*versionDone*label:	취소
++GV*dialogPopup*cancel.label:		취소
++GV*notePopup*done.label:		예
++
++GV*confirmPopup*cancel.label:		취소
++GV*confirmPopup*done.label:		종료
++GV*save.label:				저장
++
++GV*optiongvPopup*mediaLabel.label:	\ 용지 사이즈 \ 
++GV*optiongvPopup*fmediaLabel.label:	불판명시의 용지 사이즈
++GV*optiongvPopup*orientLabel.label:	\ 원 상태 \ 
++GV*optiongvPopup*forientLabel.label:	윈 상태로 복귀
++GV*optiongvPopup*magLabel.label:	확대축소
++GV*optiongvPopup*antialias.label:	다듬기
++GV*optiongvPopup*respectDSC.label:	DSC를 유효
++GV*optiongvPopup*eof.label:		EOF를 무시
++GV*optiongvPopup*autoResize.label:	가변 사이즈
++GV*optiongvPopup*swapLandscape.label:	Landscape변환
++GV*optiongvPopup*scalesLabel.label:	\   스케일 \ 
++
++GV*miscmenuLabel.label:			기타 메뉴
++GV*magmenuLabel.label:			확대 메뉴 목록
++GV*mediasLabel.label:			미디어 크기
++GV*confirmLabel.label:			확인 종료
++GV*misc.label:				기타
++GV*scrolling.label:			스크롤 반전
++GV*eyeGuide.label:			스크롤 가이드
++GV*confirmPrint.label:			인쇄시 확인
++GV*uncompressLabel.label:		압축 전개
++GV*autoCenter.label:			자동적으로 중앙으로
++GV*printCommandLabel.label:		인쇄 명령어
++GV*scratchDirLabel.label:		스크레치 디렉토리
++GV*saveDirLabel.label:			디렉토리 저장
++GV*scalesLabel.label:			스케일
++GV*scaleBaseLabel.label:		기본 스케일
++
++GV*safer.label:				보다 안전하게
++GV*quiet.label:				종료
++GV*defaults.label:			시스템 표준값
++GV*scanLabel.label:			PDF 검색
++GV*convLabel.label:			PDF 변환
++GV*gsLabel.label:			Postscript인터럽트
++GV*x11devLabel.label:			디바이스
++GV*x11alphadevLabel.label:		디바이스 조정
++GV*argumentsLabel.label:		인수
++
++GV*filtersLabel.label:			파일 선택 필터
++GV*dirsLabel.label:			파일 선택 디렉토리
++GV*filterLabel.label:			기본 필터
++
++GV*miscMenu.update.label:		파일경신
++GV*miscMenu.redisplay.label:		화면 재조정
++GV*miscMenu.stop.label:			인터럽트 중지
++GV*miscMenu.toggle_current.label:	현재페이지 마크/해제
++GV*miscMenu.toggle_odd.label:		홀수페이지 마크/해제
++GV*miscMenu.toggle_even.label:		짝수페이지 마크/해제
++GV*miscMenu.unmark.label:		모두 표시 안함
++GV*miscMenu.print_all.label:		모두 인쇄
++GV*miscMenu.print_marked.label:		마크 부분 인쇄
++GV*miscMenu.save_all.label:		모두 저장
++GV*miscMenu.save_marked.label:		표시 저장
++

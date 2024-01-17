@@ -1,0 +1,11 @@
+<package name="perl-Mo" project="openSUSE:Factory">
+  <title>Micro Objects: Mo is less</title>
+  <description>Use Mo. Mo is less. Much less.
+Moose is huge. Moose led to Mouse led to Moo led to Mo. M is nothing. Mo is
+more. Not much.
+When Moo is more than you need, drop an 'o' and get some Mo.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Mo"/>
+  <url>http://search.cpan.org/dist/Mo</url>
+</package>

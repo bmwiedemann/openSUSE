@@ -1,0 +1,42 @@
+README for perl-macros
+
+Author: Christian Wittmer <chris@computersalat.de>
+
+
+%perl_gen_filelist generates an rpmlint happy filelist of your installed files
+
+In most cases you only need to check the %doc part
+sometimes there is a "Changes" or "ChangeLog",....
+
+Requirements for %perl_gen_filelist
+You have to define following parts inside your spec file
+
+Example:
+
+BuildRequires:  perl-macros
+
+%install
+%perl_make_install
+%perl_process_packlist
+%perl_gen_filelist
+
+%files -f %{name}.files
+%defattr(-,root,root)
+%doc Changes README
+
+
+And here an Example of the generated filelist:
+
+%dir /usr/lib/perl5/vendor_perl/5.8.8/Algorithm
+/usr/lib/perl5/vendor_perl/5.8.8/Algorithm/DiffOld.pm
+/usr/lib/perl5/vendor_perl/5.8.8/Algorithm/diff.pl
+/usr/lib/perl5/vendor_perl/5.8.8/Algorithm/Diff.pm
+/usr/lib/perl5/vendor_perl/5.8.8/Algorithm/diffnew.pl
+/usr/lib/perl5/vendor_perl/5.8.8/Algorithm/cdiff.pl
+/usr/lib/perl5/vendor_perl/5.8.8/Algorithm/htmldiff.pl
+%dir /usr/lib/perl5/vendor_perl/5.8.8/x86_64-linux-thread-multi/auto/Algorithm
+%dir /usr/lib/perl5/vendor_perl/5.8.8/x86_64-linux-thread-multi/auto/Algorithm/Diff
+/usr/lib/perl5/vendor_perl/5.8.8/x86_64-linux-thread-multi/auto/Algorithm/Diff/.packlist
+/usr/share/man/man?/*
+/var/adm/perl-modules/perl-Algorithm-Diff
+

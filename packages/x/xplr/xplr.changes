@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Sat Dec  2 10:39:19 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Disable updates. Seems crates are not happy with updating
+- Revendor dependencies
+
+-------------------------------------------------------------------
+Fri Nov 24 03:58:36 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update vendored dependencies.
+- Remove cargo_config. cargo_config file is now part of vendored tarball.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Thu Aug 10 06:58:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+- Always update vendored deps in _service.
+- Add signature xplr-0.21.3.tar.gz.asc
+
+-------------------------------------------------------------------
+Thu Aug 10 06:51:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.21.3:
+  * Fixed "Illegal format character q" error seen on non GNU (including macOS and BSD) systems
+  * Fixed a UI issue causing lower priority styles being fully ignored
+  * Press f1 to see the global help menu from any mode, without leaving the mode.
+  * Current mode help menu will be displayed on top of the global help menu.
+  * Added hook: on_selection_change.
+  * Documentation improvements.
+  
+-------------------------------------------------------------------
+Fri Jun  2 09:30:47 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable update of vendored deps
+
+-------------------------------------------------------------------
+Thu Jun  1 02:43:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.21.2:
+  * Added CustomLayout, a new custom panel type to allow nesting other layouts inside a static or dynamic 
+    layout. This will allow switching between different layouts dynamically, without having to switch modes.
+  * $LS_COLORS will have lesser priority than xplr.config.node_types.*.style.
+  * Now, there's no default color set in xplr.config.node_types.*.style, so xplr will default to $LS_COLORS.
+  * xplr -m now uses jf to render and pass messages. This allows for a more flexible template syntax.
+  * xplr will now ask before delete.
+  * For copy, move or symlink operations, xplr will ask what to do if a file with the same name exists.
+  * CLI help menu improvements
+  * Several fixes and improvements in documentation
+
+-------------------------------------------------------------------
+Mon May 15 21:16:32 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.21.1:
+  * SelectAll and ToggleSelectAll (i.e. ctrl-a) in a new directory 
+    will extend, instead of replace, the existing selected paths.
+  * Fixed a UI bug causing random characters to turn bold.
+
+-------------------------------------------------------------------
+Mon Feb 20 01:31:56 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+- Use zstd compression for vendored deps.
+
+-------------------------------------------------------------------
+Fri Jan 13 11:12:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.20.2:
+  * Updated UI to be more light theme and NO_COLOR friendly.
+  * Fixed creating files inside multiple subdirectories (e.g.
+    foo/bar/test.txt) (thanks to @soryeigeton for reporting and help
+    debugging).
+  * Added new hooks (contribution by @emsquid).
+  * on_mode_switch
+  * on_layout_switch
+
+-------------------------------------------------------------------
+Sat Dec 17 19:31:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to v0.20.1:
+  * xplr shell will default to $SHELL, using bash as a fallback. oh-my-zsh
+    users please add TRAPEXIT() { echoti rmkx; } in your .zshrc (see #499
+    for more info).
+  * (experiment) xplr will now display full-screen help menu in intermediate
+    modes. Set xplr.config.modes.builtin[mode].layout = nil to disable. e.g.
+    xplr.config.modes.builtin.create.layout = nil
+  * Added new utility functions to work with json and yaml data.
+  * xplr.util.from_json()
+  * xplr.util.to_json()
+  * xplr.util.from_yaml()
+  * xplr.util.to_yaml()
+  * Added new utility function xplr.util.version() to get the currently
+    running binary version (semantic versioning fields).
+  * Fixed displaying multispace characters (Japanese, Chinese...), thanks to
+    @Elvyria for contributing to tui-input.
+  * Fixed a bug causing the creation of a new directory
+  * Minor UI updates.
+
+-------------------------------------------------------------------
+Sat Nov 12 23:20:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Verify signatures from public keyring by adding author's public pgp key.
+
+-------------------------------------------------------------------
+Wed Nov  9 09:10:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add default configuration in /etc/xplr/
+
+-------------------------------------------------------------------
+Thu Nov  3 08:32:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove marketing blether from descriptions.
+
+-------------------------------------------------------------------
+Wed Nov  2 09:02:52 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.20.0:
+  * BREAKING: xplr shell (:!) will default to null (\0) delimited pipes, as
+	opposed to newline (\n) delimited ones (i.e. will use Call0 instead of
+	Call).
+  * Use new messages for safer file path handling (\0 delimited):
+    - Call0
+    - CallSilently0
+    - BashExec0
+    - BashExecSilently0
+  * Use new sub-commands for safer message passing:
+    - -m FORMAT [ARGUMENT]... / --pipe-msg-in FORMAT [ARGUMENT]...
+    - -M FORMAT [ARGUMENT]... / --print-msg-in FORMAT [ARGUMENT]...
+    - Where FORMAT is a YAML string that may contain %s, %q and %%
+    - placeholders and ARGUMENT is the value per placeholder. See init.lua
+  * Use --vroot to isolate navigation of an xplr session inside a specific
+	directory. Interaction still requires passing full path, and shell,
+	lua functions etc still can access paths outside vroot.
+  * Use the following messages to switch vroot at runtime, or the use key
+	bindings available in the new builtin mode "vroot" (mapped to : v).
+    - SetVroot
+    - UnsetVroot
+    - ToggleVroot
+    - ResetVroot
+  * Use $XPLR_INITIAL_PWD and Lua equivalent to implement workspace like
+	features without using virtual root. Use keys gi to go to the initial
+	working directory from anywhere.
+  * Use the convenient xplr.util utility functions in your Lua function calls.
+	See xplr.util API docs.
+  * Improved CLI errors.
+  * Finished documentation.
+  * UI updates to handle newlines in path.
+
+-------------------------------------------------------------------
+Fri Oct 28 23:20:47 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+- Add _service file for OBS cargo vendor and cargo audit.
+
+-------------------------------------------------------------------
+Thu Oct 27 14:53:26 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for xplr 0.19.4

@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7fe39aef7cb2416fecdce7222c6f0e8a</srcmd5>
+    <version>3.9.8</version>
+    <time>1530567121</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain mrouted in Factory</comment>
+    <requestid>619764</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>be7dce843dc6b9ce69045de94ce6af4f</srcmd5>
+    <version>4.0</version>
+    <time>1593904403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816040</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3357f9c23a59af9a4d0b21151790e961</srcmd5>
+    <version>4.1</version>
+    <time>1602155598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840005</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5dd915779a4b08d87ae8604fa2f77962</srcmd5>
+    <version>4.2</version>
+    <time>1610123836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861471</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7cdfc1ec9a7ccd7406188ac8d3e59c10</srcmd5>
+    <version>4.3</version>
+    <time>1632522936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921327</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0b3568172ede9cdbd39dcc63367ba520</srcmd5>
+    <version>4.3</version>
+    <time>1633644392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924090</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3fbe0d4cdee520fcea583c4c5c39917</srcmd5>
+    <version>4.4</version>
+    <time>1637228019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931968</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa5a692b0f37fe59b4af6d0c353c82ac</srcmd5>
+    <version>4.5</version>
+    <time>1693383582</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107096</requestid>
+  </revision>
+</revisionlist>

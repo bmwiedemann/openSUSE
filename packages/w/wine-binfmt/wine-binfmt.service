@@ -1,0 +1,14 @@
+[Unit]
+Description=Wine binfmt support
+After=syslog.target network.target
+Requires=systemd-binfmt.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=-/bin/sh -c "if test -L /etc/binfmt.d/wine.conf; then rm /etc/binfmt.d/wine.conf; fi; /usr/bin/systemctl restart systemd-binfmt.service; test -f /proc/sys/fs/binfmt_misc/DOSWin"
+ExecStop=-/bin/sh -c "ln -fs /dev/null /etc/binfmt.d/wine.conf; /usr/bin/systemctl restart systemd-binfmt.service; ! test -f /proc/sys/fs/binfmt_misc/DOSWin"
+ExecReload=/usr/bin/systemctl restart systemd-binfmt.service
+
+[Install]
+WantedBy=multi-user.target

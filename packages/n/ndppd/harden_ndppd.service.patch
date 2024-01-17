@@ -1,0 +1,22 @@
+Index: ndppd-0.2.5.43/ndppd.service
+===================================================================
+--- ndppd-0.2.5.43.orig/ndppd.service
++++ ndppd-0.2.5.43/ndppd.service
+@@ -3,6 +3,17 @@ Description=NDP Proxy Daemon
+ After=network.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=/usr/sbin/ndppd -d -p /var/run/ndppd/ndppd.pid
+ Type=forking
+ PIDFile=/var/run/ndppd/ndppd.pid

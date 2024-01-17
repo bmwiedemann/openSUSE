@@ -1,0 +1,14 @@
+Index: Makefile.conf.in
+===================================================================
+--- Makefile.conf.in.orig
++++ Makefile.conf.in
+@@ -23,8 +23,7 @@ CPPFLAGS = -I$(TOPDIR) @CPPFLAGS@ -Wall
+ INSTALL = @INSTALL@
+ YUDIT_DATA = @YUDIT_DATA@
+ INSTALL = $(TOPDIR)/bin/install-sh -c
+-# Strip binary
+-INSTALL_PROGRAM = $(TOPDIR)/bin/install-sh -c -s
++INSTALL_PROGRAM = $(TOPDIR)/bin/install-sh -c
+ INSTALL_DATA = $(TOPDIR)/bin/install-sh -c -m 644
+ 
+ X_CFLAGS = @X_CFLAGS@

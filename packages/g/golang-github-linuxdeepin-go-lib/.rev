@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a442182cd8d708af974fe6841fcf82ed</srcmd5>
+    <version>5.7.0</version>
+    <time>1618498647</time>
+    <user>dimstar_suse</user>
+    <comment>Ready to bring Deepin Desktop to openSUSE offical</comment>
+    <requestid>884784</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>04a348f17714337c17f73883509576e0</srcmd5>
+    <version>5.7.0</version>
+    <time>1621721175</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep golang version on 1.15 on Tumbleweed, the project does not support 
+  golang 1.16+ (forwarded request 894948 from hillwood)</comment>
+    <requestid>894963</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55ce4ff64fc85174b7de680dd80a6edb</srcmd5>
+    <version>5.7.10</version>
+    <time>1629101356</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.7.10
+  * Fix proxy environment variable
+  * Add mock support
+  * Fix DBus test
+  * Update test modules (forwarded request 910694 from hillwood)</comment>
+    <requestid>910911</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2e2cab82610861fa6d7518cb1b3dac91</srcmd5>
+    <version>5.7.35</version>
+    <time>1643666211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.7.35
+  * Fix bugs
+
+- Fix build on Leap 15.4+ 
+
+- Update version to 5.7.15
+  * Add SyncWriteFile
+  * Add BindTextdomainCodeset
+  * Fix Mock</comment>
+    <requestid>950177</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e43814d0a6b8bbc0b8cdf2a4d8760e3d</srcmd5>
+    <version>5.8.4</version>
+    <time>1646671589</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>959478</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a6fb5b8e57573980dc2b45dcd5e78eee</srcmd5>
+    <version>6.0.0</version>
+    <time>1650657246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971806</requestid>
+  </revision>
+</revisionlist>

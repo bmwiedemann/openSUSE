@@ -1,0 +1,5 @@
+<package name="python-http-ece" project="openSUSE:Factory">
+  <title></title>
+  <description>Encrypted Content Encoding for HTTP</description>
+  <devel project="devel:languages:python" package="python-http-ece"/>
+</package>

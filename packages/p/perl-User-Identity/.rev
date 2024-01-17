@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4cd71a52baf12d115c1eb1ca140fabbb</srcmd5>
+    <version>1.00</version>
+    <time>1607197007</time>
+    <user>dimstar_suse</user>
+    <comment>required by upcoming release of kanku</comment>
+    <requestid>851272</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>07717af6cbf6db5c62ec25370b818bc2</srcmd5>
+    <version>1.01</version>
+    <time>1644965863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955049</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4cd38976da0ee3017e34082797666406</srcmd5>
+    <version>1.02</version>
+    <time>1683637330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084420</requestid>
+  </revision>
+</revisionlist>

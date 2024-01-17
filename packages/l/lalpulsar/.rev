@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9741ec6069a419b1b2f5fcb3a14e8d41</srcmd5>
+    <version>2.0.0</version>
+    <time>1604510731</time>
+    <user>dimstar_suse</user>
+    <comment>The LSC Algorithm Pulsar Library for gravitational wave data analysis.</comment>
+    <requestid>845400</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c90ac14bf9e79f6b85a10cdfe8d350e3</srcmd5>
+    <version>3.0.0</version>
+    <time>1613463550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872140</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad6fe302bbe01997876d90df0fe66ed8</srcmd5>
+    <version>3.0.1</version>
+    <time>1619031546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876075</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fdffdeb0aa6387c93e696ea2223a94af</srcmd5>
+    <version>3.0.1</version>
+    <time>1624887228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902798</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c89f232918a29ca5a4053165c8db0f2a</srcmd5>
+    <version>3.1.1</version>
+    <time>1642455237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945457</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>58d4ce1a3346c033613215a19245bc5c</srcmd5>
+    <version>5.0.0</version>
+    <time>1661346670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>998930</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>21a689126b91a6dc72d0972bde6ee4df</srcmd5>
+    <version>5.0.0</version>
+    <time>1676990162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066763</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6d028d0d86df5562b38f16c68fd7177</srcmd5>
+    <version>6.0.1</version>
+    <time>1685141449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089163</requestid>
+  </revision>
+</revisionlist>

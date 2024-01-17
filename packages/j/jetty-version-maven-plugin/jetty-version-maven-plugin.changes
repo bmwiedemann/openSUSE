@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Sep 25 09:39:20 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on maven2
+
+-------------------------------------------------------------------
+Thu May  5 10:02:29 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Generate javadoc with source=8
+
+-------------------------------------------------------------------
+Wed Nov  6 10:37:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of jetty-version-maven-plugin 1.0.10

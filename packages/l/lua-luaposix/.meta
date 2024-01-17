@@ -1,0 +1,7 @@
+<package name="lua-luaposix" project="openSUSE:Factory">
+  <title>POSIX library for Lua</title>
+  <description>This is a POSIX library for Lua which provides access to many POSIX features to Lua programs.
+  </description>
+  <devel project="devel:languages:lua" package="lua-luaposix"/>
+  <url>https://github.com/luaposix/luaposix</url>
+</package>

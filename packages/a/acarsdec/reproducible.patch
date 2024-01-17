@@ -1,0 +1,20 @@
+Date: 2022-07-19
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+
+Do not let build results depend on the build machine CPU.
+
+https://bugzilla.suse.com/show_bug.cgi?id=1100677
+
+Index: acarsdec-acarsdec-3.6/CMakeLists.txt
+===================================================================
+--- acarsdec-acarsdec-3.6.orig/CMakeLists.txt
++++ acarsdec-acarsdec-3.6/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required (VERSION 3.2)
+ project (acarsdec C)
+ 
+-add_compile_options(-Ofast -march=native)
++add_compile_options(-Ofast)
+ 
+ add_executable(acarsdec acars.c  acarsdec.c  cJSON.c  label.c  msk.c  output.c netout.c fileout.c )
+ 

@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>75c0bd789426067b229ac1bdb8c31ca1</srcmd5>
+    <version>2.6.3</version>
+    <time>1627389124</time>
+    <user>dimstar_suse</user>
+    <comment>needed by python-pelican</comment>
+    <requestid>908427</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>89d146cf0fe4d876ab8e9b4f4a35ba34</srcmd5>
+    <version>2.6.3</version>
+    <time>1631913958</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pytest (and not nose) for the testsuite, actually running it.</comment>
+    <requestid>919656</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1733bfd4cfac59cf6b2bb25553dc6422</srcmd5>
+    <version>2.6.3</version>
+    <time>1636388689</time>
+    <user>dimstar_suse</user>
+    <comment>- add six dependency for tests</comment>
+    <requestid>930157</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>04fa322d92ae9546ab78b345d660d2d2</srcmd5>
+    <version>2.6.3</version>
+    <time>1677498965</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use fdupes -s, it hurts.
+</comment>
+    <requestid>1067947</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8883bdc21fea88063d4d7d721d59e215</srcmd5>
+    <version>2.6.3</version>
+    <time>1678814272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071791</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>bf3c15d8d9bf1f86485ec0b1bdc3290b</srcmd5>
+    <version>2.6.3</version>
+    <time>1689000050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097948</requestid>
+  </revision>
+</revisionlist>

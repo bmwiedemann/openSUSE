@@ -1,0 +1,89 @@
+#!/usr/bin/ruby
+# vim: set sw=2 sts=2 et tw=80 :
+require 'bundler'
+require 'optparse'
+require 'optparse/time'
+require 'logger'
+
+class BundlerDumpRpmDeps
+  def initialize
+    @requires_text = "BuildRequires:  "
+    parse_options
+    process_bundler
+  end
+
+  def process_bundler
+    #
+    # TODO: have a commaldine option to specify those.
+    # e.g. in mastodon you also want to skip the no_docker and heroku group
+    #
+    bad_groups = [:test, :development]
+    bd=Bundler::Dsl.evaluate('Gemfile', 'Gemfile.lock', {})
+    bd.dependencies.each do |dep|
+      next if (dep.groups - bad_groups).empty?
+      # this skips local deps
+      next if dep.source and not(dep.source.path.nil?)
+      dep.requirement.requirements.each do |req|
+        req_str = rpmify(dep.name, *req)
+        puts "#{@requires_text}%{rubygem #{dep.name}#{req_str}}"
+      end
+    end
+  end
+
+  def parse_options
+    opt_parser = OptionParser.new do |opts|
+      opts.banner = "Usage: bundlerdumpdeps [options]"
+
+      opts.separator ""
+      opts.separator "Specific options:"
+
+      opts.on('-b', "Buildtime Requires (default)") do
+        @requires_text = "BuildRequires:  "
+      end
+
+      opts.on('-r', "Runtime Requires") do |args|
+        @requires_text = "Requires:       "
+      end
+    end
+    opt_parser.parse!(ARGV)
+  end
+
+  def expand_pessimistic(version)
+    splitted = version.to_s.split('.')
+    sub_version = nil
+    if splitted.length > 1
+      end_index = splitted.length-1
+      end_index = 3 if end_index > 3
+      sub_version = splitted.slice(0,end_index).join('.')
+    else
+      sub_version = splitted[0]
+    end
+    ":#{sub_version} >= #{version}"
+  end
+
+  # (python3-prometheus_client >= 0.4.0 with python3-prometheus_client < 0.9.0)
+  def rpmify(dep_name, op, version)
+    case op
+      when '~>'
+        return expand_pessimistic(version)
+      when '>='
+        if version != Gem::Version.new(0)
+          return " #{op} #{version}"
+        end
+      when '!='
+        return " > #{version}"
+      when '='
+        return " #{op} #{version}"
+      when '<'
+        return " #{op} #{version}"
+      when '<='
+        return " =< #{version}"
+      else
+        STDERR.puts "Unknown operator '#{op}' called with version '#{version}'"
+        exit 1
+    end
+  end
+
+end
+
+BundlerDumpRpmDeps.new

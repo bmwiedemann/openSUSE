@@ -1,0 +1,252 @@
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@
++pkgdatadir = $(datadir)/@PACKAGE@
+ localedir = $(prefix)/share/locale
+ 
+ bin_PROGRAMS = csmash
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig
++++ Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@
++pkgdatadir = $(datadir)/@PACKAGE@
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: Parts/Bcut/Makefile.am
+===================================================================
+--- Parts/Bcut/Makefile.am.orig
++++ Parts/Bcut/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Bcut
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Bcut
+ 
+ pkgdata_src = Bcut-Lankle.affine Bcut-Lankle01.dat \
+ 		Bcut-Larm.affine Bcut-Larm01.dat \
+Index: Parts/Bcut/Makefile.in
+===================================================================
+--- Parts/Bcut/Makefile.in.orig
++++ Parts/Bcut/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Bcut
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Bcut
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: Parts/Bnormal/Makefile.am
+===================================================================
+--- Parts/Bnormal/Makefile.am.orig
++++ Parts/Bnormal/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Bnormal
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Bnormal
+ 
+ pkgdata_src = Bnormal-Lankle.affine Bnormal-Lankle01.dat \
+ 		Bnormal-Larm.affine Bnormal-Larm01.dat \
+Index: Parts/Bnormal/Makefile.in
+===================================================================
+--- Parts/Bnormal/Makefile.in.orig
++++ Parts/Bnormal/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Bnormal
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Bnormal
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: Parts/Bpeck/Makefile.am
+===================================================================
+--- Parts/Bpeck/Makefile.am.orig
++++ Parts/Bpeck/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Bpeck
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Bpeck
+ 
+ pkgdata_src = Bpeck-Larm.affine Bpeck-Larm01.dat \
+ 		Bpeck-Lelbow.affine Bpeck-Lelbow01.dat \
+Index: Parts/Bpeck/Makefile.in
+===================================================================
+--- Parts/Bpeck/Makefile.in.orig
++++ Parts/Bpeck/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Bpeck
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Bpeck
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: Parts/Fcut/Makefile.am
+===================================================================
+--- Parts/Fcut/Makefile.am.orig
++++ Parts/Fcut/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fcut
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fcut
+ 
+ pkgdata_src = Fcut-Lankle.affine Fcut-Lankle01.dat \
+ 		Fcut-Larm.affine Fcut-Larm01.dat \
+Index: Parts/Fcut/Makefile.in
+===================================================================
+--- Parts/Fcut/Makefile.in.orig
++++ Parts/Fcut/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fcut
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fcut
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: Parts/Fdrive/Makefile.am
+===================================================================
+--- Parts/Fdrive/Makefile.am.orig
++++ Parts/Fdrive/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fdrive
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fdrive
+ 
+ pkgdata_src = Fdrive-Lankle.affine Fdrive-Lankle01.dat \
+ 		Fdrive-Larm.affine Fdrive-Larm01.dat \
+Index: Parts/Fdrive/Makefile.in
+===================================================================
+--- Parts/Fdrive/Makefile.in.orig
++++ Parts/Fdrive/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fdrive
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fdrive
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: Parts/Fnormal/Makefile.am
+===================================================================
+--- Parts/Fnormal/Makefile.am.orig
++++ Parts/Fnormal/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fnormal
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fnormal
+ 
+ pkgdata_src = Fnormal-Lankle.affine Fnormal-Lankle01.dat \
+ 		Fnormal-Larm.affine Fnormal-Larm01.dat \
+Index: Parts/Fnormal/Makefile.in
+===================================================================
+--- Parts/Fnormal/Makefile.in.orig
++++ Parts/Fnormal/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fnormal
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fnormal
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: Parts/Fpeck/Makefile.am
+===================================================================
+--- Parts/Fpeck/Makefile.am.orig
++++ Parts/Fpeck/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fpeck
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fpeck
+ 
+ pkgdata_src = Fpeck-Lankle.affine Fpeck-Lankle01.dat \
+ 		Fpeck-Larm.affine Fpeck-Larm01.dat \
+Index: Parts/Fpeck/Makefile.in
+===================================================================
+--- Parts/Fpeck/Makefile.in.orig
++++ Parts/Fpeck/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fpeck
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fpeck
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: Parts/Fsmash/Makefile.am
+===================================================================
+--- Parts/Fsmash/Makefile.am.orig
++++ Parts/Fsmash/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fsmash
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fsmash
+ 
+ pkgdata_src = Fsmash-Larm.affine Fsmash-Larm01.dat \
+ 		Fsmash-Lelbow.affine Fsmash-Lelbow01.dat \
+Index: Parts/Fsmash/Makefile.in
+===================================================================
+--- Parts/Fsmash/Makefile.in.orig
++++ Parts/Fsmash/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/Parts/Fsmash
++pkgdatadir = $(datadir)/@PACKAGE@/Parts/Fsmash
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: images/Makefile.am
+===================================================================
+--- images/Makefile.am.orig
++++ images/Makefile.am
+@@ -1,4 +1,4 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/images
++pkgdatadir = $(datadir)/@PACKAGE@/images
+ 
+ pkgdata_ppm = Bad.ppm Keyboard.ppm Nice.ppm Title.ppm \
+ 		eight.ppm five.ppm four.ppm nine.ppm one.ppm seven.ppm \
+Index: images/Makefile.in
+===================================================================
+--- images/Makefile.in.orig
++++ images/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/images
++pkgdatadir = $(datadir)/@PACKAGE@/images
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@
+Index: wav/Makefile.am
+===================================================================
+--- wav/Makefile.am.orig
++++ wav/Makefile.am
+@@ -1,3 +1,3 @@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/wav
++pkgdatadir = $(datadir)/@PACKAGE@/wav
+ pkgdata_DATA = $(wildcard *.wav)
+ EXTRA_DIST = $(pkgdata_DATA)
+Index: wav/Makefile.in
+===================================================================
+--- wav/Makefile.in.orig
++++ wav/Makefile.in
+@@ -35,7 +35,7 @@ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+ host_triplet = @host@
+-pkgdatadir = $(datadir)/games/@PACKAGE@/wav
++pkgdatadir = $(datadir)/@PACKAGE@/wav
+ ACLOCAL = @ACLOCAL@
+ AMDEP_FALSE = @AMDEP_FALSE@
+ AMDEP_TRUE = @AMDEP_TRUE@

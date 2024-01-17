@@ -1,0 +1,12 @@
+Index: libdmtx-0.7.4/dmtx.c
+===================================================================
+--- libdmtx-0.7.4.orig/dmtx.c	2011-06-02 09:09:36.000000000 +0200
++++ libdmtx-0.7.4/dmtx.c	2011-07-25 11:41:05.773533246 +0200
+@@ -11,6 +11,7 @@
+  * \brief Main libdmtx source file
+  */
+ 
++#define _BSD_SOURCE
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/types.h>

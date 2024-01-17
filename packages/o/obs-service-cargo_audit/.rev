@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b67b0b43572d4868752f604cf5714561</srcmd5>
+    <version>0.1.0~git0.660f61c</version>
+    <time>1617131847</time>
+    <user>RBrownSUSE</user>
+    <comment>New package obs-service-cargo_audit (depends on 879549 and 879550)</comment>
+    <requestid>879551</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47f6c22e81c562846cce81d1dafc3302</srcmd5>
+    <version>0.1.2~git0.e25df37</version>
+    <time>1621531504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894456</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65445822840b2e2b2419af73745c4be8</srcmd5>
+    <version>0.1.3~git0.4f7c8fc</version>
+    <time>1622759613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897042</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba1f01445c6cd248a3fcbd68db5ee56f</srcmd5>
+    <version>0.1.4~git0.a3c7623</version>
+    <time>1623268369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898570</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d390f1d31ce2dda9cf3c11673994d40a</srcmd5>
+    <version>0.1.5~git0.01fea16</version>
+    <time>1625516571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904002</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>908c2c339d753d743d2e0d87d031bb50</srcmd5>
+    <version>0.1.6~git0.d8133c2</version>
+    <time>1626986604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907609</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7bf9dd66d5b07ba98d4e0bb63f58ae81</srcmd5>
+    <version>0.1.7~0</version>
+    <time>1644965839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>954432</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7d10068d0fd62ccc6ab549b3026b9d19</srcmd5>
+    <version>0.1.8~0</version>
+    <time>1647031276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>960958</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ba8e5c6cab6fcfbfcc48f0afd64d68d6</srcmd5>
+    <version>0.1.8~0</version>
+    <time>1648665351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965790</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>742d396b9498be2effb4fad5bf9d3af4</srcmd5>
+    <version>0.1.8~1</version>
+    <time>1649274703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967172</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>667908aabc6e649f906c341b752c98bf</srcmd5>
+    <version>0.1.8~1</version>
+    <time>1657114924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986933</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ac6d49610f4b3b999a44c26a030e2f5d</srcmd5>
+    <version>0.1.8~6</version>
+    <time>1686074165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090995</requestid>
+  </revision>
+</revisionlist>

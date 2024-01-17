@@ -1,0 +1,11 @@
+--- enrich-1.2.7/setup.py	2022-01-28 17:29:54.476189319 +0100
++++ enrich-1.2.7/setup1.py	2022-01-28 17:29:45.739753919 +0100
+@@ -12,6 +12,6 @@
+ 
+ if __name__ == "__main__":
+     setuptools.setup(
+-        use_scm_version={"local_scheme": "no-local-version"},
+-        setup_requires=["setuptools_scm[toml]>=3.5.0"],
++        name='enrich',
++        version='__VERSION__',
+     )

@@ -1,0 +1,1 @@
+command[check_ntp_time]=/usr/lib/nagios/plugins/check_ntp_time -H pool.ntp.org  -w 1 -c 2

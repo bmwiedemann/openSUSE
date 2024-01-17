@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Fri Jan 13 07:00:14 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.9.1:
+  * Add support for tqdm progress display (gh#miketeo/pysmb#205).
+  * Fix bug where timeout parameter was not passed to
+    socket.createConnection() (gh#miketeo/pysmb#202).
+- BuildRequires: python-tqdm for tests.
+
+-------------------------------------------------------------------
+Wed Jun 22 00:41:45 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.8:
+  * Fix issue with listPath based on recommendation.
+  * Fix embedded MD4 algorithm.
+  * Add SMB UTF-16 surrogate exception workaround policy. 
+- Drop fix-smbconnection-tests.patch: incorporated upstream.
+- Delete a test file that has incorrect imports and is not needed.
+
+-------------------------------------------------------------------
+Fri Feb  4 00:24:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix testing on older Leap versions.
+
+-------------------------------------------------------------------
+Wed Feb  2 05:55:01 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.7:
+  * Fix compatibility issues on file retrievals with Likewise servers (#177)
+  * Improve SMBConnection's connect() method to remove the need to provide
+    sock_family parameter for IPv6 addresses in Python 3.x (#180) 
+- Add patch fix-smbconnection-tests.patch:
+  * Use correct nose 2 decorators
+
+-------------------------------------------------------------------
+Sat Jan 16 16:43:33 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix test suite call 
+
+-------------------------------------------------------------------
+Sat Dec 12 02:02:13 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.6:
+  * Fix bug in SMB1 store file implmentation which generates
+    SMB_COM_WRITE_ANDX packets larger than the allowed max buffer
+    size (gh#miketeo/pysmb#175).
+
+-------------------------------------------------------------------
+Sun Oct 25 07:57:42 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.5:
+  * Fix bug in filename encoding which leads to failure for file
+    retrieval and upload operations (gh#miketeo/pysmb#170,
+    gh#miketeo/pysmb#171).
+  * Improve resetFileAttributes() method in SMBConnection class to
+    allow the new attribute to be specified in the reset operation
+    (gh#miketeo/pysmb#172).
+- Use pytest to run tests (only those that don't require a network
+  connection); BuildRequires:
+  python-pytest, python-nose, and for python2 only python-twisted.
+
+-------------------------------------------------------------------
+Wed Oct 14 10:53:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.4:
+  * Remove dependency on pycrypto as it is no longer under active
+    maintenance and use own implementation of RC4 cipher instead
+    (gh#miketeo/pysmb#167).
+- Changes from version 1.2.3:
+  * Fix bug in session key generation during session negotiation
+    (gh#miketeo/pysmb#166).
+  * Fix bug in SMB message signing which leads to operation
+    failures with Samba services.
+
+-------------------------------------------------------------------
+Sun Sep  6 09:48:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.2:
+  * Improve SMB URL handlers to support specifying server's
+    machine name and IP address (gh#miketeo/pysmb#162).
+  * Improvements to documentation on SMB URLs
+    (gh#miketeo/pysmb#160).
+
+-------------------------------------------------------------------
+Sat Aug  1 16:07:04 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.1:
+  * Fix bug in deleteFiles() method which can fail for certain
+    search patterns.
+- Changes from version 1.2.0:
+  * Add new parameter, delete_matching_folders, to deleteFiles()
+    method to support deletion of child folders that match the
+    search pattern.
+
+-------------------------------------------------------------------
+Thu May  7 01:34:47 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Remove python-flavour dependent recompilation commands; they
+  are no longer needed for openSUSE >= 1550.
+
+-------------------------------------------------------------------
+Thu Nov  8 17:18:11 UTC 2018 - alarrosa@suse.com
+
+- Remove unneeded python devel package
+- Add %license tag
+
+-------------------------------------------------------------------
+Wed Sep 12 13:24:02 UTC 2018 - badshah400@gmail.com
+
+- Fix mtime difference between object files and sources by
+  recompiling after source file modification post python_install
+  stage; oddly fdupes needs to be run twice for this to correctly
+  work: once before compilation and once after.
+
+-------------------------------------------------------------------
+Wed Aug 22 16:17:29 UTC 2018 - badshah400@gmail.com
+
+- Initial package.

@@ -1,0 +1,150 @@
+---
+ nls/Makefile.in |   48 ++++++++++++++++++++++++------------------------
+ sh.c            |    9 ++++++---
+ 2 files changed, 30 insertions(+), 27 deletions(-)
+
+--- nls/Makefile.in
++++ nls/Makefile.in	2022-01-11 15:20:37.731596998 +0000
+@@ -18,96 +18,96 @@ CATGEN=		${srcdir}/catgen
+ 
+ all: ${CATALOGS}
+ 
+-INSTALLED+=${localedir}/C/LC_MESSAGES/tcsh.cat
+-${localedir}/C/LC_MESSAGES/tcsh.cat:	C.cat
++INSTALLED+=${localedir}/C/LC_MESSAGES/tcsh
++${localedir}/C/LC_MESSAGES/tcsh:	C.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ C.cat: ${srcdir}/C/charset ${srcdir}/C/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/et/LC_MESSAGES/tcsh.cat
+-${localedir}/et/LC_MESSAGES/tcsh.cat:	et.cat
++INSTALLED+=${localedir}/et/LC_MESSAGES/tcsh
++${localedir}/et/LC_MESSAGES/tcsh:	et.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ et.cat: ${srcdir}/et/charset ${srcdir}/et/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/fi/LC_MESSAGES/tcsh.cat
+-${localedir}/fi/LC_MESSAGES/tcsh.cat:	finnish.cat
++INSTALLED+=${localedir}/fi/LC_MESSAGES/tcsh
++${localedir}/fi/LC_MESSAGES/tcsh:	finnish.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ finnish.cat: ${srcdir}/finnish/charset ${srcdir}/finnish/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/fr/LC_MESSAGES/tcsh.cat
+-${localedir}/fr/LC_MESSAGES/tcsh.cat:	french.cat
++INSTALLED+=${localedir}/fr/LC_MESSAGES/tcsh
++${localedir}/fr/LC_MESSAGES/tcsh:	french.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ french.cat: ${srcdir}/french/charset ${srcdir}/french/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/de/LC_MESSAGES/tcsh.cat
+-${localedir}/de/LC_MESSAGES/tcsh.cat:	german.cat
++INSTALLED+=${localedir}/de/LC_MESSAGES/tcsh
++${localedir}/de/LC_MESSAGES/tcsh:	german.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ german.cat: ${srcdir}/german/charset ${srcdir}/german/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/gr/LC_MESSAGES/tcsh.cat
+-${localedir}/gr/LC_MESSAGES/tcsh.cat:	greek.cat
++INSTALLED+=${localedir}/el_GR/LC_MESSAGES/tcsh
++${localedir}/el_GR/LC_MESSAGES/tcsh:	greek.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ greek.cat: ${srcdir}/greek/charset ${srcdir}/greek/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/it/LC_MESSAGES/tcsh.cat
+-${localedir}/it/LC_MESSAGES/tcsh.cat:	italian.cat
++INSTALLED+=${localedir}/it/LC_MESSAGES/tcsh
++${localedir}/it/LC_MESSAGES/tcsh:	italian.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ italian.cat: ${srcdir}/italian/charset ${srcdir}/italian/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/ja/LC_MESSAGES/tcsh.cat
+-${localedir}/ja/LC_MESSAGES/tcsh.cat:	ja.cat
++INSTALLED+=${localedir}/ja/LC_MESSAGES/tcsh
++${localedir}/ja/LC_MESSAGES/tcsh:	ja.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ ja.cat: ${srcdir}/ja/charset ${srcdir}/ja/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/pl/LC_MESSAGES/tcsh.cat
+-${localedir}/pl/LC_MESSAGES/tcsh.cat:	pl.cat
++INSTALLED+=${localedir}/pl/LC_MESSAGES/tcsh
++${localedir}/pl/LC_MESSAGES/tcsh:	pl.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ pl.cat: ${srcdir}/pl/charset ${srcdir}/pl/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/ru/LC_MESSAGES/tcsh.cat
+-${localedir}/ru/LC_MESSAGES/tcsh.cat:	russian.cat
++INSTALLED+=${localedir}/ru_RU/LC_MESSAGES/tcsh
++${localedir}/ru_RU/LC_MESSAGES/tcsh:	russian.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ russian.cat: ${srcdir}/russian/charset ${srcdir}/russian/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/es/LC_MESSAGES/tcsh.cat
+-${localedir}/es/LC_MESSAGES/tcsh.cat:	spanish.cat
++INSTALLED+=${localedir}/es/LC_MESSAGES/tcsh
++${localedir}/es/LC_MESSAGES/tcsh:	spanish.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+ spanish.cat: ${srcdir}/spanish/charset ${srcdir}/spanish/*set[0-9]*
+ 	@${CATGEN} $(GENCAT) $@ $^ $>
+ 
+-INSTALLED+=${localedir}/ru_UA/LC_MESSAGES/tcsh.cat
+-${localedir}/ru_UA/LC_MESSAGES/tcsh.cat:	ukrainian.cat
++INSTALLED+=${localedir}/ru_UA.koi8u/LC_MESSAGES/tcsh
++${localedir}/ru_UA.koi8u/LC_MESSAGES/tcsh:	ukrainian.cat
+ 	$(MKDIR_P) $(@D)
+ 	$(INSTALL_DATA) $> $^ $@
+ 
+--- sh.c
++++ sh.c	2022-01-11 15:13:07.548063798 +0000
+@@ -166,8 +166,8 @@ static	void		  st_restore	(void *);
+ static void
+ add_localedir_to_nlspath(const char *path)
+ {
+-    static const char msgs_LOC[] = "/%L/LC_MESSAGES/%N.cat";
+-    static const char msgs_lang[] = "/%l/LC_MESSAGES/%N.cat";
++    static const char msgs_LOC[] = "/%L/LC_MESSAGES/%N";
++    static const char msgs_lang[] = "/%l/LC_MESSAGES/%N";
+     char *old;
+     char *new, *new_p;
+     size_t len;
+@@ -179,7 +179,7 @@ add_localedir_to_nlspath(const char *pat
+     if (path == NULL)
+         return;
+ 
+-    (void) xsnprintf(trypath, sizeof(trypath), "%s/C/LC_MESSAGES/tcsh.cat",
++    (void) xsnprintf(trypath, sizeof(trypath), "%s/C/LC_MESSAGES/tcsh",
+ 	path);
+     if (stat(trypath, &st) == -1)
+ 	return;

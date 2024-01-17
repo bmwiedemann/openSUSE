@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c58e97d82be16d13ed9d19eb1cb81db</srcmd5>
+    <version>5.6.0</version>
+    <time>1600180201</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>834530</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1e7a7fd183848f566580f8f7f634df3c</srcmd5>
+    <version>5.15.0</version>
+    <time>1621269935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>893766</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3a4b5211258cfc3a096df3918ec14c5e</srcmd5>
+    <version>5.15.0</version>
+    <time>1641555988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944599</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ce939e4af1fc68156d746d823be2c78</srcmd5>
+    <version>5.40.1</version>
+    <time>1678125316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1069501</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>35d92e2545c73f390826d700e901990a</srcmd5>
+    <version>6.1.1</version>
+    <time>1701632956</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.1.1:
+  * Fix ``TransactionManagementError`` when using the database
+    handler with a custom database with for ``AccessAttempt`` or
+    ``AccessFailureLog``.
+  * Set ``AXES_SENSITIVE_PARAMETERS`` default value to
+    ``[&quot;username&quot;, &quot;ip_address&quot;]`` in addition to the
+    ``AXES_PASSWORD_FORM_FIELD`` configuration flag.
+  * Improve documentation on GDPR and privacy notes and
+    configuration flags.
+  * Add Indonesion translation.
+  * Remove unused methods from AxesStandaloneBackend.
+  * Add username to admin fieldsets.
+  * Add Django system checks for validating callable import path
+    settings.
+  * Improve documentation.
+  * Improve repository issue and PR templates.
+  * Fine-tune CI pipelines and RTD build requirements.
+  * Version 6 is a breaking release. Please see the documentation
+    for upgrade instructions.
+  * Deprecate Python 3.7 support.
+  * Deprecate ``is_admin_site`` API call with misleading naming.
+  * Add ``AXES_LOCKOUT_PARAMETERS`` configuration flag that will
+    supersede ``AXES_ONLY_USER_FAILURES``,
+    ``AXES_LOCK_OUT_BY_COMBINATION_USER_AND_IP``,
+    ``AXES_LOCK_OUT_BY_USER_OR_IP``, and ``AXES_USE_USER_AGENT``
+    configurations. Add deprecation warnings for old flags. See
+    project documentation on RTD for update instructions.
+  * Improve translations.
+  * Use Django ``cache.incr`` API for atomic cached failure
+    counting</comment>
+    <requestid>1130520</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>424a49ca74c3b42ff119a834d9f75760</srcmd5>
+    <version>6.2.0</version>
+    <time>1703800872</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.2.0:
+  * Update documentation.
+  * Add new management command ``axes_reset_ip_username``.
+  * Add French translations.
+  * Avoid running data migration on incorrect databases.</comment>
+    <requestid>1135244</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00b36c8b2ec1c7daa8e1a111a261a3ef</srcmd5>
+    <version>6.3.0</version>
+    <time>1705353461</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.3.0:
+  * Add async support to middleware. [Taikono-Himazin]</comment>
+    <requestid>1138693</requestid>
+  </revision>
+</revisionlist>

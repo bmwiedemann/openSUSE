@@ -1,0 +1,109 @@
+-------------------------------------------------------------------
+Tue Dec  5 08:50:28 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.6 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Sep  4 18:01:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.6 revision 1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Tue Jun  6 17:55:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.5 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Mar 30 17:09:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Mar 14 07:36:02 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.5 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jan 16 11:44:38 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.5.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Sat Sep  3 15:05:10 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jun  6 09:43:46 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.4.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Mar 14 13:03:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.3 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sun Dec  5 21:47:52 UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 1.6.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Sep 27 13:52:50 UTC 2021 - psimons@suse.com
+
+- Update hledger-interest to version 1.6.3.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Tue Aug 17 08:49:48 UTC 2021 - psimons@suse.com
+
+- Update hledger-interest to version 1.6.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Fri Mar 12 20:37:23 UTC 2021 - psimons@suse.com
+
+- Update hledger-interest to version 1.6.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Dec  8 09:22:52 UTC 2020 - psimons@suse.com
+
+- Update hledger-interest to version 1.6.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Sep  4 02:01:38 UTC 2020 - psimons@suse.com
+
+- Update hledger-interest to version 1.6.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Wed Aug 19 07:42:01 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:51 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:20 UTC 2020 - psimons@suse.com
+
+- Add hledger-interest at version 1.5.5.
+

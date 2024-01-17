@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c3ebb462139f13fbaa221ffd64ef0c1</srcmd5>
+    <version>0.06</version>
+    <time>1396009036</time>
+    <user>coolo</user>
+    <comment>new dependency of openqa</comment>
+    <requestid>227816</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>09d2dd7e4392c428e17daf78b5398d04</srcmd5>
+    <version>0.07</version>
+    <time>1396452316</time>
+    <user>coolo</user>
+    <comment>update to 0.07 and the author confirmed the license is Artistic 2.0 (forwarded request 228542 from mlin7442)</comment>
+    <requestid>228543</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4cfdd4e529955ea053f717ca44c281ad</srcmd5>
+    <version>0.09</version>
+    <time>1398435102</time>
+    <user>coolo</user>
+    <comment>update to version 0.09 (forwarded request 230925 from mlin7442)</comment>
+    <requestid>230926</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4cfdd4e529955ea053f717ca44c281ad</srcmd5>
+    <version>0.09</version>
+    <time>1409302389</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0e4cea7793dd54a58313760fc05e75d9</srcmd5>
+    <version>0.11</version>
+    <time>1430165314</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303919</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>33b57f220a053474c81d8c331252198a</srcmd5>
+    <version>0.12</version>
+    <time>1447766566</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344469</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>927b25b688ff848d54fb757a25ace9c6</srcmd5>
+    <version>0.13</version>
+    <time>1460482422</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385077</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3a91109d772e4cb0dc47af0c6cc2bca0</srcmd5>
+    <version>0.14</version>
+    <time>1472646713</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423953</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>896b186d4d8b37f155bcfc0696c269f1</srcmd5>
+    <version>0.15</version>
+    <time>1473798294</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427103</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec09bdd2a928a12686221fe27b20e10f</srcmd5>
+    <version>0.18</version>
+    <time>1537787639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637207</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>178870385b4920bfdf5545320ef92f22</srcmd5>
+    <version>0.19</version>
+    <time>1539589199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19, fix build
+  - Fix tests for Mojolicious &gt; 8.01 compatibility.
+</comment>
+    <requestid>641405</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4e471e0757d3dd13ab98c5fce298c16d</srcmd5>
+    <version>0.20</version>
+    <time>1543528811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652376</requestid>
+  </revision>
+</revisionlist>

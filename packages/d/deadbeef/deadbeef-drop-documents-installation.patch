@@ -1,0 +1,15 @@
+Index: deadbeef-1.9.2/Makefile.am
+===================================================================
+--- deadbeef-1.9.2.orig/Makefile.am
++++ deadbeef-1.9.2/Makefile.am
+@@ -69,8 +69,8 @@ deadbeef_CFLAGS = $(DEPS_CFLAGS) $(DISPA
+ 
+ docsdir = $(docdir)
+ 
+-docs_DATA = README help.txt about.txt translators.txt ChangeLog\
+-	COPYING.GPLv2 COPYING.LGPLv2.1
++#docs_DATA = README help.txt about.txt translators.txt ChangeLog\
++#	COPYING.GPLv2 COPYING.LGPLv2.1
+ 
+ desktopdir = $(datadir)/applications
+ desktop_DATA = deadbeef.desktop

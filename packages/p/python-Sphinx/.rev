@@ -1,0 +1,1234 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12677dc40eede124c2f1b1f65d3ec9f5</srcmd5>
+    <version>1.0.7</version>
+    <time>1309776263</time>
+    <user>azouhr</user>
+    <comment>Please add, is to obsolete 'python-sphinx'.</comment>
+    <requestid>75199</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1e9630bb39538135fdb54024e6b9bc95</srcmd5>
+    <version>1.0.7</version>
+    <time>1309776276</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 75199
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a89a323cdb3b32cca3ab557ee0032295</srcmd5>
+    <version>1.0.7</version>
+    <time>1310471078</time>
+    <user>darix</user>
+    <comment>- add python-distribute to Requires, it is needed to run sphinx-build (forwarded request 76091 from Nijel)</comment>
+    <requestid>76093</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8387b3735016f22ebddf34f702ffd4dc</srcmd5>
+    <version>1.0.7</version>
+    <time>1310471095</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76093
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9415547c81d6d15f57b1dc3f87884d57</srcmd5>
+    <version>1.0.7</version>
+    <time>1314890837</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>80406</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>794500987992bedb8ae9eca4c61739f1</srcmd5>
+    <version>1.0.7</version>
+    <time>1314890846</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 80406
+</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>46fc4e3ef7b77e3d92d53fde961d0103</srcmd5>
+    <version>1.0.7</version>
+    <time>1317024804</time>
+    <user>saschpe</user>
+    <comment>- Require python-docutils instead of docutils
+- Change license to BSD-2-Clause (SPDX style, according to LICENSE)</comment>
+    <requestid>84427</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>46fc4e3ef7b77e3d92d53fde961d0103</srcmd5>
+    <version>1.0.7</version>
+    <time>1319182381</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>be0b8c03b85c6dbaf9fb8fe54d7f84a7</srcmd5>
+    <version>1.1.2</version>
+    <time>1322216004</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>93073</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3d16e88959a0203c6b66b56a9c0594c9</srcmd5>
+    <version>1.1.2</version>
+    <time>1323194268</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>28d36690264761f5689516aef1d0f9eb</srcmd5>
+    <version>1.1.3</version>
+    <time>1338284662</time>
+    <user>coolo</user>
+    <comment>python3 package added (forwarded request 122103 from HighwayStar)</comment>
+    <requestid>122240</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>28d36690264761f5689516aef1d0f9eb</srcmd5>
+    <version>1.1.3</version>
+    <time>1340184033</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>4aa75e10cc615a1fffea6e7721061000</srcmd5>
+    <version>1.1.3</version>
+    <time>1352796195</time>
+    <user>coolo</user>
+    <comment>- Remove obsolete SUSE version checks
+- Don't package locale files twice
+
+- Remove obsolete SUSE version checks
+- Don't package locale files twice</comment>
+    <requestid>140931</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>33ffd1363a41fc630d47c43e73ce8c09</srcmd5>
+    <version>1.1.3</version>
+    <time>1353271105</time>
+    <user>namtrac</user>
+    <comment>- Revert last &quot;locale&quot; change, it was a false positive</comment>
+    <requestid>141793</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>9ef6b7b2146a6408537a79303515c16e</srcmd5>
+    <version>1.1.3</version>
+    <time>1354109686</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>143338</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>9ef6b7b2146a6408537a79303515c16e</srcmd5>
+    <version>1.1.3</version>
+    <time>1359109987</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>b9a52b8cba0094556584ee993c6e6ba9</srcmd5>
+    <version>1.1.3</version>
+    <time>1368451705</time>
+    <user>coolo</user>
+    <comment>- fix building under openSUSE 12.1, 12.2: 
+ BuildRequires: python3-2to3 should be explicitly stated (forwarded request 174681 from HighwayStar)</comment>
+    <requestid>174795</requestid>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>00c9045d738d87060b539966fc37daed</srcmd5>
+    <version>1.1.3</version>
+    <time>1368713930</time>
+    <user>coolo</user>
+    <comment>- Fix update-alternatives and support upgrade from previous versions
+
+- Fix update-alternatives and support upgrade from previous versions</comment>
+    <requestid>175857</requestid>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>f5a2d72789507607959fe45a80350a3c</srcmd5>
+    <version>1.1.3</version>
+    <time>1371651818</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179712</requestid>
+  </revision>
+  <revision rev="20" vrev="12">
+    <srcmd5>41211fbd2ee12020e57c4a9a2ed977e4</srcmd5>
+    <version>1.1.3</version>
+    <time>1373566416</time>
+    <user>coolo</user>
+    <comment>- add sphinx-docutils-0.10.patch:
+  * add support for docutils 0.10 (forwarded request 182659 from dirkmueller)</comment>
+    <requestid>182841</requestid>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>41211fbd2ee12020e57c4a9a2ed977e4</srcmd5>
+    <version>1.1.3</version>
+    <time>1379664118</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>2dbf8ca58eb49712bb528d96e3dff503</srcmd5>
+    <version>1.1.3</version>
+    <time>1380297759</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200744</requestid>
+  </revision>
+  <revision rev="23" vrev="16">
+    <srcmd5>a8c7ece7cad8ff8351bd880c44c9de51</srcmd5>
+    <version>1.1.3</version>
+    <time>1382693570</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204663</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7b39210caf8c77f9bfad8f2a218f6fb0</srcmd5>
+    <version>1.2b3</version>
+    <time>1383810230</time>
+    <user>coolo</user>
+    <comment>- Updateo version 1.2b3:
+  + The Sphinx error log files will now include a list of the loaded extensions
+    for help in debugging.
+  + PR#154: Remove &quot;sphinx&quot; prefix from LaTeX class name except 'sphinxmanual'
+    and 'sphinxhowto'. Now you can use your custom document class without
+    'sphinx' prefix. Thanks to Erik B.
+  + #1265: Fix i18n: crash when translating a section name that is pointed to from
+    a named target.
+  + A wrong condition broke the search feature on first page that is usually
+    index.rst.  This issue was introduced in 1.2b1.
+  + #703: When Sphinx can't decode filenames with non-ASCII characters, Sphinx now
+    catches UnicodeError and will continue if possible instead of raising the
+    exception.
+- Changes from version 1.2b2 and prior:
+  + See CHANGES file
+- Own /etc/alternatives/sphinx-* by ghosting (update-alternatives)
+- Dropped sphinx-docutils-0.10.patch (merged upstream)
+  
+
+  * PR#40: Fix safe_repr function to decode bytestrings with non-ASCII
+  * PR#37: Allow configuring sphinx-apidoc via SPHINX_APIDOC_OPTIONS.
+  * #864: Fix crash with some settings of :confval:modindex_common_prefix.
+  * #862: Fix handling of -D and -A options on Python 3.
+  * #831: Provide --project flag in setup_command as advertised.
+  * #873: Fix assertion errors with empty only directives.
+  * #805: Make the Sphinx.add_index_to_domain method work correctly.
+  * #599: Import PIL as from PIL import Image.
+  * #571: Implement ~ cross-reference prefix for the C domain.
+  * Fix traceback with only directives preceded by targets.
+  * Fix JavaScript domain links to objects with $ in their name.</comment>
+    <requestid>205956</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f1831e497ccac234803b9e96b2ecce9f</srcmd5>
+    <version>1.2b3</version>
+    <time>1384415012</time>
+    <user>coolo</user>
+    <comment>- Add sphinx-setup_command_unicode.patch: Backport of 
+  https://bitbucket.org/birkenfeld/sphinx/pull-request/193/</comment>
+    <requestid>206770</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>b01f36eb264c7569604297ceb906b2cc</srcmd5>
+    <version>1.2b3</version>
+    <time>1384768558</time>
+    <user>scarabeus_factory</user>
+    <comment>- Fix %preun update-alternatives, used wrong master
+
+- Only ghost /etc/alternatives on 12.3 or newer</comment>
+    <requestid>207422</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>08044b4c896afba21788df54420a8559</srcmd5>
+    <version>1.2.2</version>
+    <time>1394566393</time>
+    <user>coolo</user>
+    <comment>- Update to 1.2.2:
+  - PR#211: When checking for existence of the html_logo file, check the full
+    relative path and not the basename.
+  - PR#212: Fix traceback with autodoc and __init__ methods without docstring.
+  - PR#213: Fix a missing import in the setup command.
+  - #1357: Option names documented by option are now again allowed to not start
+    with a dash or slash, and referencing them will work correctly.
+  - #1358: Fix handling of image paths outside of the source directory when
+    using the “wildcard” style reference.
+  - #1374: Fix for autosummary generating overly-long summaries if first line
+    doesn’t end with a period.
+  - #1383: Fix Python 2.5 compatibility of sphinx-apidoc.
+  - #1391: Actually prevent using “pngmath” and “mathjax” extensions at the
+    same time in sphinx-quickstart.
+  - #1386: Fix bug preventing more than one theme being added by the entry
+    point mechanism.
+  - #1370: Ignore “toctree” nodes in text writer, instead of raising.
+  - #1364: Fix ‘make gettext’ fails when the ‘.. todolist::’ directive is
+    present.
+  - #1367: Fix a change of PR#96 that break
+    sphinx.util.docfields.Field.make_field interface/behavior for item argument
+    usage.
+
+- Update to version 1.2.1
+  + See CHANGES
+- Fix update-alternatives usage
+- Removed sphinx-setup_command_unicode.patch (upstream)</comment>
+    <requestid>225034</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>08044b4c896afba21788df54420a8559</srcmd5>
+    <version>1.2.2</version>
+    <time>1409302806</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b0cb68c8c870eb9b58ad2a70010e34cb</srcmd5>
+    <version>1.2.3</version>
+    <time>1410361326</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248217</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f61a0525bdf6380b41099d9a0e5fd64b</srcmd5>
+    <version>1.3.1</version>
+    <time>1437223138</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314396</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>fa853e47b150d91692ea0799efb6792e</srcmd5>
+    <version>1.3.1</version>
+    <time>1438899687</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319415</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>914d63434d0dfdaa68b53168dc02f3ba</srcmd5>
+    <version>1.3.1</version>
+    <time>1442638457</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331499</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dcf7861bdbd0653b6a2efc9ce529ab56</srcmd5>
+    <version>1.3.3</version>
+    <time>1450695803</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349372</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>32a7c86a78dea7fb03c10ccce213016e</srcmd5>
+    <version>1.3.4</version>
+    <time>1453280036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353433</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a51f7cd745ef1ac0c2e021f363d201d0</srcmd5>
+    <version>1.3.5</version>
+    <time>1454149863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355805</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>4b793ce41133283c518cf577ad89c9f5</srcmd5>
+    <version>1.3.5</version>
+    <time>1456127808</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359917</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>50f8b83627c0acec6f9ad509f9512353</srcmd5>
+    <version>1.3.6</version>
+    <time>1457353563</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>364970</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8ed4e29f5eccab73da58d46dc7919922</srcmd5>
+    <version>1.5.2</version>
+    <time>1489175894</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458460</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>885ba0e39588f9f6ea49f71e690e7dfb</srcmd5>
+    <version>1.5.2</version>
+    <time>1494937794</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493489</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>39624f7c6ea3d5f3a6ba8a2fd5f2a939</srcmd5>
+    <version>1.6.3</version>
+    <time>1502011677</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512791</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c480a00911f6e5d77258572082e44fa3</srcmd5>
+    <version>1.6.3</version>
+    <time>1503999549</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518573</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>ea2f55d55e44c9668246d7482b77c6c8</srcmd5>
+    <version>1.6.3</version>
+    <time>1504814965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520218</requestid>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>b25faca3e7a2973e39793ff588e6a8f9</srcmd5>
+    <version>1.6.3</version>
+    <time>1506523952</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527168</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2af9dfeaee60257a60cfefbcde8776f7</srcmd5>
+    <version>1.6.4</version>
+    <time>1507391245</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530448</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9601bd04bfb412b476f8d2692f5043fe</srcmd5>
+    <version>1.6.5</version>
+    <time>1509530922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537523</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>850fe1fa3e326917551bca8d70215e5b</srcmd5>
+    <version>1.7.1</version>
+    <time>1519746977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580046</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>3948cfbafc447f8b56d90fe81fd3a5cc</srcmd5>
+    <version>1.7.1</version>
+    <time>1519902208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580665</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>d6f2e639581ce2eb7d8e90924b4b197d</srcmd5>
+    <version>1.6.5</version>
+    <time>1520502937</time>
+    <user>dimstar_suse</user>
+    <comment>- go back to a working sphinx version for now (1.6.5)
+  * newer versions are not able to build openstack clients</comment>
+    <requestid>583367</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>2a86ecf600b03cc9b282de2e26e97c21</srcmd5>
+    <version>1.6.5</version>
+    <time>1520852884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>584287</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>522308c8a90f9109b145ba24df566385</srcmd5>
+    <version>1.7.4</version>
+    <time>1527933014</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.4
+- ver long list of changes - please check www.sphinx-doc.org for details
+ 
+
+- update to 1.7.4
+- very long list of changes - please see http://www.sphinx-doc.org/en/master/changes.html#release-1-7-4-released-apr-25-2018</comment>
+    <requestid>612216</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a5e73599a3535f9e16898eb99be6571d</srcmd5>
+    <version>1.7.6</version>
+    <time>1532160558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624272</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>47bbb92e576925787a2a60e52bd436bd</srcmd5>
+    <version>1.7.6</version>
+    <time>1544816942</time>
+    <user>dimstar_suse</user>
+    <comment>Submit the fixed rev to TW, since the maintainer seems to be sleeping/afk; not blocking staging longer than needed</comment>
+    <requestid>657880</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f65d94bfc09abaa671904c986e9c6762</srcmd5>
+    <version>1.8.5</version>
+    <time>1553888295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689141</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>3246be0ebf40bc3f83dafc3516b3bca3</srcmd5>
+    <version>1.8.5</version>
+    <time>1555053248</time>
+    <user>dimstar_suse</user>
+    <comment>- don't provide sphinx from test subpackage, it is for testing
+
+- fix tests to include latex/extmath tests</comment>
+    <requestid>693013</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>89d68d699578aaf19ca068dfc8a4cbf2</srcmd5>
+    <version>2.1.1</version>
+    <time>1560862157</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * #6442: LaTeX: admonitions of note type can get separated from immediately preceding section title by pagebreak
+  * #6448: autodoc: crashed when autodocumenting classes with __slots__ = None
+  * #6452: autosummary: crashed when generating document of properties
+
+- Update to 2.1:
+  * Many major updates in the package
+  * Supports only python 3.5+
+- Remove obsolete conditionals wrt 3.5+ only support</comment>
+    <requestid>709241</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e5501f7fc9f3f885dc9501116c119871</srcmd5>
+    <version>2.1.2</version>
+    <time>1562590796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.2:
+  * #6497: custom lexers fails highlighting when syntax error
+  * #6478, #6488: info field lists are incorrectly recognized</comment>
+    <requestid>713076</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>d54f1a19327bdcc15db0d1577750cd6c</srcmd5>
+    <version>2.1.2</version>
+    <time>1565876568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721979</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>07e1eff75b4bef08d84285441d90d2d2</srcmd5>
+    <version>2.2.0</version>
+    <time>1569233236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 2.2.0:
+  * apidoc: template files are renamed to ``.rst_t``
+  * html: Field lists will be styled by grid layout
+  * #5124: graphviz: ``:graphviz_dot:`` option is renamed to ``:layout:``
+  * #1464: html: emit a warning if :confval:`html_static_path` and
+    :confval:`html_extra_path` directories are inside output directory
+  * #6514: html: Add a label to search input for accessability purposes
+  * #5602: apidoc: Add ``--templatedir`` option
+  * #6475: Add ``override`` argument to ``app.add_autodocumenter()``
+  * #6310: imgmath: let :confval:`imgmath_use_preview` work also with the SVG
+    format for images rendering inline math
+  * #6533: LaTeX: refactor visit_enumerated_list() to use ``\sphinxsetlistlabels``
+  * #6628: quickstart: Use ``https://docs.python.org/3/`` for default setting of
+    :confval:`intersphinx_mapping`
+  * #6419: sphinx-build: give reasons why rebuilded</comment>
+    <requestid>730123</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>9f923e8866033f81c3ad64fd7801ca0c</srcmd5>
+    <version>2.2.1</version>
+    <time>1572884026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1:
+  * #6641: LaTeX: Undefined control sequence \sphinxmaketitle
+  * #6710: LaTeX not well configured for Greek language as main language</comment>
+    <requestid>744660</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c03dfc89e626fa5ef3664a2e62ba0129</srcmd5>
+    <version>2.2.2</version>
+    <time>1576062675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755170</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>6ac18a4a9490e0fc40d58362f0551702</srcmd5>
+    <version>2.3.1</version>
+    <time>1577630900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759289</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>cc2d35161de265bd0979802304909877</srcmd5>
+    <version>2.4.3</version>
+    <time>1583007576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779133</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>90ef8a9d7a1238b139c9570b076c07cb</srcmd5>
+    <version>2.4.4</version>
+    <time>1583948565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782793</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>f1625611cff1f5e06503ea05789b092a</srcmd5>
+    <version>2.3.1</version>
+    <time>1586466868</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert to 2.3.1 due to severely increased memory usage when building
+  kernel documentation. bsc#1166965</comment>
+    <requestid>791929</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>db3631b77eda6205fa4454d7d8894f11</srcmd5>
+    <version>3.0.4</version>
+    <time>1592758107</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.4:
+  * Bugs fixed
+    + #7567: autodoc: parametrized types are shown twice for generic
+       types
+    + #7637: autodoc: system defined TypeVars are shown in Python 3.9
+    + #7611: md5 fails when OpenSSL FIPS is enabled
+    + #7626: release package does not contain &quot;CODE_OF_CONDUCT&quot;
+
+- Add python3.inv as a specific Source.
+- update to version 3.0.3
+  * Features added
+    * C, parse array declarators with static, qualifiers, and VLA specification.
+  * Bugs fixed
+    * #7516: autodoc: crashes if target object raises an error on accessing
+      its attributes
+- update to version 3.0.2
+  * Features added
+    * C, parse attributes and add :confval:`c_id_attributes`
+      and :confval:`c_paren_attributes` to support user-defined attributes.
+  * Bugs fixed
+    * #7461: py domain: fails with IndexError for empty tuple in type annotation
+    * #7510: py domain: keyword-only arguments are documented as having a default of
+      None
+    * #7418: std domain: :rst:role:`term` role could not match case-insensitively
+    * #7461: autodoc: empty tuple in type annotation is not shown correctly
+    * #7479: autodoc: Sphinx builds has been slower since 3.0.0 on mocking
+    * C++, fix spacing issue in east-const declarations.
+    * #7414: LaTeX: Xindy language options were incorrect
+    * sphinx crashes with ImportError on python3.5.1
+- update to 3.0.1</comment>
+    <requestid>811095</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>82e6c6f128fda1fe331c009589ce6760</srcmd5>
+    <version>3.1.2</version>
+    <time>1595772849</time>
+    <user>dimstar_suse</user>
+    <comment>- In the new multiversion world, python*.inv is in python3.8
+  directory not python3.
+
+- update to version 3.1.2:
+  * Incompatible changes
+    + #7650: autodoc: the signature of base function will be shown for
+       decorated functions, not a signature of decorator
+  * Bugs fixed
+    + #7844: autodoc: Failed to detect module when relative module
+       name given
+    + #7856: autodoc: AttributeError is raised when non-class object
+       is given to the autoclass directive
+    + #7850: autodoc: KeyError is raised for invalid mark up when
+       autodoc_typehints is 'description'
+    + #7812: autodoc: crashed if the target name matches to both an
+       attribute and module that are same name
+    + #7650: autodoc: function signature becomes &quot;(*args, **kwargs)&quot;
+       if the function is decorated by generic decorator
+    + #7812: autosummary: generates broken stub files if the target
+       code contains an attribute and module that are same name
+    + #7806: viewcode: Failed to resolve viewcode references on 3rd
+       party builders
+    + #7838: html theme: List items have extra vertical space
+    + #7878: html theme: Undesired interaction between &quot;overflow&quot; and
+       &quot;float&quot;
+- changes from version 3.1.1:
+  * Incompatible changes
+    + #7808: napoleon: a type for attribute are represented as typed
+       field
+  * Features added</comment>
+    <requestid>821465</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>93642b54f61c60d4dfe7e60477f93842</srcmd5>
+    <version>3.2.1</version>
+    <time>1599210014</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830124</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>eea3bd18c91532907f553da22c2d6802</srcmd5>
+    <version>3.2.1</version>
+    <time>1603961177</time>
+    <user>dimstar_suse</user>
+    <comment>- add sphinx-pygments-compat.patch (fix tests with newer pygments)</comment>
+    <requestid>838296</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>00a483ee73baaa22ba5f354d05910e18</srcmd5>
+    <version>3.2.1</version>
+    <time>1604702601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846078</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>72419f1d5c58c1a1b9c97fe468bea07a</srcmd5>
+    <version>3.3.1</version>
+    <time>1607801318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853306</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>104a322b41d26b0604d3e924ce5294ee</srcmd5>
+    <version>3.4.3</version>
+    <time>1612988986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862822</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e17eb0e36dfd160823d337f886ab0be6</srcmd5>
+    <version>3.5.2</version>
+    <time>1617034887</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880708</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>a2773b4b4ea64fe3e777e3c912784f6b</srcmd5>
+    <version>3.5.3</version>
+    <time>1617908524</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 3.5.3:
+  * #8959: using UNIX path separator in image directive confuses Sphinx on Windows</comment>
+    <requestid>883114</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>dfcf04aacc5c21c36c389fd6dfa42aaf</srcmd5>
+    <version>3.5.4</version>
+    <time>1618859142</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.4:
+  * #9071: Restrict docutils to 0.16
+  * #9078: autodoc: Async staticmethods and classmethods are considered as non
+    async coroutine-functions with Python3.10
+  * #8870, #9001, #9051: html theme: The style are not applied with docutils-0.17</comment>
+    <requestid>885911</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>f312140130b4f8437e5b92bb277cabee</srcmd5>
+    <version>4.0.2</version>
+    <time>1624462684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>898130</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>9d1b3ca64de69b2159519c5dcc8606db</srcmd5>
+    <version>4.1.0</version>
+    <time>1626466355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905850</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>e5b1524a99928bcff1be88c2e034a8f9</srcmd5>
+    <version>4.1.1</version>
+    <time>1626887133</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.1:
+  * sphinxcontrib-htmlhelp-2.0.0 or above
+  * sphinxcontrib-serializinghtml-1.1.5 or above
+  * html: HTML logo or Favicon specified as file not being found on output</comment>
+    <requestid>906826</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>008540fc906e68df8a9f9f3e0c4fd819</srcmd5>
+    <version>4.1.2</version>
+    <time>1628751658</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>910701</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>39210c04f7a4fc1b145857c3d300d23e</srcmd5>
+    <version>4.2.0</version>
+    <time>1632173511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918913</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>c5f25eae4d5f2fac07158eb3db07e1dc</srcmd5>
+    <version>4.2.0</version>
+    <time>1636729154</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Provides and Obsoletes ... we cannot use python_module there
+</comment>
+    <requestid>930743</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>9c94337d2217b34214d8ae051b0d1230</srcmd5>
+    <version>4.3.0</version>
+    <time>1636986368</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931166</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>db0d6b8002862e39ca5b33ee785f82f6</srcmd5>
+    <version>4.3.1</version>
+    <time>1639075513</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3.1:
+  * Features added
+    + #9864: mathjax: Support chnaging the loading method of MathJax
+       to &quot;defer&quot; via :confval:`mathjax_options`
+  * Bugs fixed
+    + #9838: autodoc: AttributeError is raised on building document
+       for functions decorated by functools.lru_cache
+    + #9879: autodoc: AttributeError is raised on building document
+       for an object having invalid __doc__ atribute
+    + #9844: autodoc: Failed to process a function wrapped with
+       functools.partial if :confval:`autodoc_preserve_defaults`
+       enabled
+    + #9872: html: Class namespace collision between autodoc
+       signatures and docutils-0.17
+    + #9868: imgmath: Crashed if the dvisvgm command failed to convert
+       equation
+    + #9864: mathjax: Failed to render equations via MathJax v2.  The
+       loading method of MathJax is back to &quot;async&quot; method again</comment>
+    <requestid>935962</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>157b0548777455fbf6a0aa002867cf19</srcmd5>
+    <version>4.3.2</version>
+    <time>1641386356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943565</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>3af09ed00dc5a894ba5e5d009b908e3d</srcmd5>
+    <version>4.4.0</version>
+    <time>1642951538</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix missing install_requires dependencies.
+- I know it looks cool to have URLs for all Source files, but these are
+  files in VCS and they are inherently very unstable, so it breaks our
+  checks.
+- Update to version 4.4.0:
+  * #10007: Use ``importlib_metadata`` for python-3.9 or older
+  * #10007: Drop ``setuptools``
+  * #9075: autodoc: Add a config variable :confval:`autodoc_typehints_format`
+    to suppress the leading module names of typehints of function signatures (ex.
+    ``io.StringIO`` -&gt; ``StringIO``)
+  * #9831: Autosummary now documents only the members specified in a module's
+    ``__all__`` attribute if :confval:`autosummary_ignore_module_all` is set to
+    ``False``. The default behaviour is unchanged. Autogen also now supports
+    this behavior with the ``--respect-module-all`` switch.
+  * #9555: autosummary: Improve error messages on failure to load target object
+  * #9800: extlinks: Emit warning if a hardcoded link is replaceable
+    by an extlink, suggesting a replacement.
+  * #9961: html: Support nested &lt;kbd&gt; HTML elements in other HTML builders
+  * #10013: html: Allow to change the loading method of JS via ``loading_method``
+    parameter for :meth:`Sphinx.add_js_file()`
+  * #9551: html search: &quot;Hide Search Matches&quot; link removes &quot;highlight&quot; parameter
+    from URL
+  * #9815: html theme: Wrap sidebar components in div to allow customizing their
+    layout via CSS
+  * #9827: i18n: Sort items in glossary by translated terms
+  * #9899: py domain: Allows to specify cross-reference specifier (``.`` and
+    ``~``) as ``:type:`` option
+  * #9894: linkcheck: add option ``linkcheck_exclude_documents`` to disable link
+    checking in matched documents.
+  * #9793: sphinx-build: Allow to use the parallel build feature in macOS on macOS
+    and Python3.8+
+  * #10055: sphinx-build: Create directories when ``-w`` option given
+  * #9993: std domain: Allow to refer an inline target (ex. ``_`target name```)
+    via :rst:role:`ref` role
+  * #9981: std domain: Strip value part of the option directive from general index
+  * #9391: texinfo: improve variable in ``samp`` role
+  * #9578: texinfo: Add :confval:`texinfo_cross_references` to disable cross
+    references for readability with standalone readers
+  * #9822 (and #9062), add new Intersphinx role :rst:role:`external` for explict
+    lookup in the external projects, without resolving to the local project.
+  * #9866: autodoc: doccomment for the imported class was ignored
+  * #9883: autodoc: doccomment for the alias to mocked object was ignored
+  * #9908: autodoc: debug message is shown on building document using NewTypes
+    with Python 3.10
+  * #9968: autodoc: instance variables are not shown if __init__ method has
+    position-only-arguments
+  * #9194: autodoc: types under the &quot;typing&quot; module are not hyperlinked
+  * #10009: autodoc: Crashes if target object raises an error on getting docstring
+  * #10058: autosummary: Imported members are not shown when
+    ``autodoc_class_signature = 'separated'``
+  * #9947: i18n: topic directive having a bullet list can't be translatable
+  * #9878: mathjax: MathJax configuration is placed after loading MathJax itself
+  * #9932: napoleon: empty &quot;returns&quot; section is generated even if no description
+  * #9857: Generated RFC links use outdated base url
+  * #9909: HTML, prevent line-wrapping in literal text.
+  * #10061: html theme: Configuration values added by themes are not be able to
+    override from conf.py
+  * #10073: imgconverter: Unnecessary availablity check is called for &quot;data&quot; URIs
+  * #9925: LaTeX: prohibit also with ``'xelatex'`` line splitting at dashes of
+    inline and parsed literals
+  * #9944: LaTeX: extra vertical whitespace for some nested declarations
+  * #9940: LaTeX: Multi-function declaration in Python domain has cramped
+    vertical spacing in latexpdf output
+  * #10015: py domain: types under the &quot;typing&quot; module are not hyperlinked defined
+    at info-field-list
+  * #9390: texinfo: Do not emit labels inside footnotes
+  * #9413: xml: Invalid XML was generated when cross referencing python objects
+  * #9979: Error level messages were displayed as warning messages
+  * #10057: Failed to scan documents if the project is placed onto the root
+    directory
+  * #9636: code-block: ``:dedent:`` without argument did strip newlines
+- Add new intersphinx mapping file: readthedocs.inv.
+- Fix %fdupes.
+- Remove python-Sphinx-rpmlintrc as it is not used any more.
+</comment>
+    <requestid>947727</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>9a6bd562f043cc85d365f7fe69eaeb10</srcmd5>
+    <version>4.4.0</version>
+    <time>1643486253</time>
+    <user>dimstar_suse</user>
+    <comment>- SPEC cleanup
+</comment>
+    <requestid>949672</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>d1f2fb13c34a31a26fedee1990cd2e3d</srcmd5>
+    <version>4.5.0</version>
+    <time>1648739907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965429</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>6d57afa3e03aacfa0a737d6aa938fcc1</srcmd5>
+    <version>5.0.2</version>
+    <time>1655972595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>983571</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>e8b6b2a03b9ed2aff80c26d72f4b050a</srcmd5>
+    <version>5.1.0</version>
+    <time>1658857327</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991065</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>27bfa494b321fb2bdf10048dc8a1a090</srcmd5>
+    <version>5.1.1</version>
+    <time>1659382094</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>991380</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>ee5dd270d5be5a63b1503fb21bc15b58</srcmd5>
+    <version>5.2.3</version>
+    <time>1665668381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007684</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>715e20d4f10777f91e6c4f8fedecda1a</srcmd5>
+    <version>5.3.0</version>
+    <time>1666978107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012006</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>86450335698c619e712b73afd15ceadf</srcmd5>
+    <version>6.1.3</version>
+    <time>1673801871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1057676</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>1c340c060eb9ad7a413d8d2222496f19</srcmd5>
+    <version>6.1.3</version>
+    <time>1675094996</time>
+    <user>dimstar_suse</user>
+    <comment>- add alabaster-0713-compat.patch to fix testsuite failure with
+  newer alabaster theme.</comment>
+    <requestid>1061917</requestid>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>99f3b7233c590673487666e5744ae733</srcmd5>
+    <version>6.1.3</version>
+    <time>1682193752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082023</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>f8c7cdb378efd4bfdbe314250be722c7</srcmd5>
+    <version>6.2.0</version>
+    <time>1682434445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082492</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>877650270e21c72758f68b4094c19440</srcmd5>
+    <version>6.2.1</version>
+    <time>1682691742</time>
+    <user>dimstar_suse</user>
+    <comment>- For PSP packages don't include documentation at all. The
+  building of Sphinx documentation is so complicated, that it is
+  not possible to include it in the main package.
+
+- Update to version 6.2.1
+  * #11355: Revert the default type of :confval:`nitpick_ignore` and
+    :confval:`nitpick_ignore_regex` to ``list``.</comment>
+    <requestid>1083126</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>24c39a4cbb4c32c88d33dc6abf884dd6</srcmd5>
+    <version>7.0.0</version>
+    <time>1683212983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083965</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>370787aa9e3d2d3ef02681fecd28ce42</srcmd5>
+    <version>7.0.1</version>
+    <time>1684162440</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.1:
+  * Support `Docutils 0.20`_.
+  * #11418: Clean up remaining references to
+    ``sphinx.setup_command``
+    following the removal of support for setuptools.</comment>
+    <requestid>1087108</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>163d37cdc1f6d3c349274c5b8e5178d5</srcmd5>
+    <version>7.2.4</version>
+    <time>1693860748</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.2.4
+  * Require sphinxcontrib-serializinghtml 1.1.9.
+  * Fix regression in autodoc.Documenter.parse_name().
+  * Fix regression in JSON serialisation.
+  * autodoc: Support positional-only parameters in classmethod methods 
+    when autodoc_preserve_defaults is True.
+  * Restore support string methods on path objects. This is deprecated 
+    and will be removed in Sphinx 8. Use os.fspath() to convert Path 
+    objects to strings, or Path’s methods to work with path objects.
+  * Fix a regression in the MoveModuleTargets transform.
+  * linkcheck: Resolve hanging tests for timezones west of London and 
+    incorrect conversion from UTC to offsets from the UNIX epoch.
+- update to 7.2.2
+  * Drop Python 3.8 support.
+  * Require Pygments 2.14 or later.
+  * Deprecate sphinx.util.md5 and sphinx.util.sha1. Use hashlib instead.
+  * Deprecate sphinx.testing.path. Use os.path or pathlib instead.
+  * Support os.PathLike types and pathlib.Path objects in many more places.
+  * Add the :no-typesetting: option to suppress textual output and only 
+    create a linkable anchor.
+  * Allow running Sphinx with python -m sphinx build
+  * graphviz: Fix relative links from within the graph.
+  * pytest: Fail tests on “XPASS”, Set PYTHONWARNINGS=error, set strict config
+  * Restored the the str interface of the asset classes (_CascadingStyleSheet 
+    and _JavaScript), which several extensions relied upon. This will be 
+    removed in Sphinx 9.
+  * Many more changes (even deprecations), see upstream changelog
+- update to 7.1.2:
+  * #11542: linkcheck: Properly respect :confval:`linkcheck_anchors`
+    and do not spuriously report failures to validate anchors.
+- Update to 7.1.1:
+  * #11514: Fix ``SOURCE_DATE_EPOCH`` in multi-line copyright footer.
+    Patch by Bénédikt Tran.
+- Update to 7.1.0:
+  * Releases are no longer signed, given the `change in PyPI policy`_.
+  * #11412: Emit warnings on using a deprecated Python-specific index entry type
+    (namely, ``module``, ``keyword``, ``operator``, ``object``, ``exception``,
+    ``statement``, and ``builtin``) in the :rst:dir:`index` directive, and
+    set the removal version to Sphinx 9. Patch by Adam Turner.
+  * #11415: Add a checksum to JavaScript and CSS asset URIs included within
+    generated HTML, using the CRC32 algorithm.
+  * :meth:`~sphinx.application.Sphinx.require_sphinx` now allows the version
+    requirement to be specified as ``(major, minor)``.
+  * #11011: Allow configuring a line-length limit for object signatures, via
+    :confval:`maximum_signature_line_length` and the domain-specific variants.
+    If the length of the signature (in characters) is greater than the configured
+    limit, each parameter in the signature will be split to its own logical line.
+    This behaviour may also be controlled by options on object description
+    directives, for example :rst:dir:`py:function:single-line-parameter-list`.
+    Patch by Thomas Louf, Adam Turner, and Jean-François B.
+  * #10983: Support for multiline copyright statements in the footer block.
+    Patch by Stefanie Molin
+  * ``sphinx.util.display.status_iterator`` now clears the current line
+    with ANSI control codes, rather than overprinting with space characters.
+  * #11431: linkcheck: Treat SSL failures as broken links.
+    Patch by Bénédikt Tran
+  * #11157: Keep the ``translated`` attribute on translated nodes.
+  * #11451: Improve the traceback displayed when using :option:`sphinx-build -T`
+    in parallel builds. Patch by Bénédikt Tran
+  * #11324: linkcheck: Use session-basd HTTP requests.
+  * #11438: Add support for the :rst:dir:`py:class` and :rst:dir:`py:function`
+    directives for PEP 695 (generic classes and functions declarations) and
+    PEP 696 (default type parameters).  Multi-line support (#11011) is enabled
+    for type parameters list and can be locally controlled on object description
+    directives, e.g., :rst:dir:`py:function:single-line-type-parameter-list`.
+    Patch by Bénédikt Tran.
+  * #11484: linkcheck: Allow HTML anchors to be ignored on a per-URL basis
+    via :confval:`linkcheck_anchors_ignore_for_url` while
+    still checking the validity of the page itself.
+    Patch by Bénédikt Tran
+  * #1246: Add translation progress statistics and inspection support,
+    via a new substitution (``|translation progress|``) and a new
+    configuration variable (:confval:`translation_progress_classes`).
+    These enable determining the percentage of translated elements within
+    a document, and the remaining translated and untranslated elements.
+  * Restored the ``footnote-reference`` class that has been removed in
+    the latest (unreleased) version of Docutils.
+  * #11486: Use :rfc:`8081` font file MIME types in the EPUB builder.
+    Using the correct MIME type will prevent warnings from ``epubcheck``
+    and will generate a valid EPUB.
+  * #11435: Use microsecond-resolution timestamps for outdated file detection
+    in ``BuildEnvironment.get_outdated_files``.
+  * #11437: Top-level headings starting with a reStructuredText role
+    now render properly when :confval:`rst_prolog` is set.
+    Previously, a file starting with the below would have
+    improperly rendered due to where the prologue text
+    was inserted into the document.
+    Patch by Bénédikt Tran.
+  * #11337: Fix a ``MemoryError`` in ``sphinx.ext.intersphinx`` when using ``None``
+    or ``typing.*`` as inline type references. Patch by Bénédikt Tran (picnixz)
+  * #11345: Always delete ``docutils.conf`` in test directories when running
+    ``SphinxTestApp.cleanup()``.
+</comment>
+    <requestid>1108105</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>f4366ae36aa4bfc07831c8afd2d273d9</srcmd5>
+    <version>7.2.5</version>
+    <time>1694344171</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.2.5:
+  * #11645: Fix a regression preventing autodoc from importing
+    modules within packages that make use of
+    ``if typing.TYPE_CHECKING:`` to guard circular imports
+    needed by type checkers.
+  * #11634: Fixed inheritance diagram relative link resolution
+    for sibling files in a subdirectory.
+  * #11659: Allow ``?config=...`` in :confval:`mathjax_path`.
+  * #11654: autodoc: Fail with a more descriptive error message
+    when an object claims to be an instance of ``type``,
+    but is not a class.
+  * 11620: Cease emitting :event:`source-read` events for files
+    read via the :dudir:`include` directive.
+  * 11620: Add a new :event:`include-read` for observing and
+    transforming the content of included files via the :dudir:`include`
+    directive.
+  * #11627: Restore support for copyright lines of the form
+    ``YYYY`` when ``SOURCE_DATE_EPOCH`` is set.</comment>
+    <requestid>1109692</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>cc5032a282d7ece6d19eaf08e3ab6789</srcmd5>
+    <version>7.2.6</version>
+    <time>1694971722</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.2.6:
+  * #11679: Add the :envvar:`!SPHINX_AUTODOC_RELOAD_MODULES`
+    environment variable, which if set reloads modules when
+    using autodoc with ``TYPE_CHECKING = True``.
+  * #11679: Use :py:func:`importlib.reload` to reload modules in
+    autodoc.
+
+  * autodoc: Support positional-only parameters in classmethod methods
+  * Restore support string methods on path objects. This is deprecated
+    and will be removed in Sphinx 8. Use os.fspath() to convert Path
+  * linkcheck: Resolve hanging tests for timezones west of London and
+  * Add the :no-typesetting: option to suppress textual output and only
+  * Restored the the str interface of the asset classes (_CascadingStyleSheet
+    and _JavaScript), which several extensions relied upon. This will be
+    variables/structure members
+  * html: HTML logo or Favicon specified as file not being found on output
+  * #8959: using UNIX path separator in image directive confuses Sphinx on Windows
+    bracketed, not braced (and is anyhow not needed)
+- Add sphinx-pr8520-fix-AliasNode-copy.patch to fix failing
+- add sphinx-pygments-compat.patch (fix tests with newer pygments)
+    module has submodules
+- Recommends only on SUSE
+- Move sphinxcontrib namespace into seperate package to avoid
+- Split latex-related stuff into its own subpackage so we can
+- Be explicit about six version requirements
+      anymore. If you want to keep italic style, adapt your stylesheet.
+      figure numbers instead # symbol.
+      unused_docs have been removed.
+      font. Custom writers will have to be adapted to handle this node.
+      lineno-match option. Thanks to Jeppe Pihl.</comment>
+    <requestid>1111065</requestid>
+  </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>024f4e3016825bcfe64c660ed96fd531</srcmd5>
+    <version>7.2.6</version>
+    <time>1701972535</time>
+    <user>anag+factory</user>
+    <comment>- avoid xdist - not used by upstream and unstable (and not
+  improving the build time by more than 25%)
+
+- remove setuptools requires</comment>
+    <requestid>1131205</requestid>
+  </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>591164584013f41053b95ad3c9a0206f</srcmd5>
+    <version>7.2.6</version>
+    <time>1703198249</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch fix-autodoc-tests-python-3117.patch to make it
+  work with python 3.11.7 gh#sphinx-doc/sphinx#11793
+</comment>
+    <requestid>1134224</requestid>
+  </revision>
+</revisionlist>

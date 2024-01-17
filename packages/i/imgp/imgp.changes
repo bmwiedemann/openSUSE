@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Wed Sep 27 06:55:33 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.9
+  * Support converting P mode PNGs
+  *  Fix AttributeError: module 'PIL.Image' has no attribute 'Resampling'
+  * Fix ANTIALIAS is deprecated and will be removed in Pillow 10
+  * Add Python 3.11 support
+  * Remove support for Python 3.7 (EOL)
+
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec  2 07:08:39 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.8
+  * option `-M` to specify minimum resolution of images to
+    process
+  * option `-H` (process hidden files) replaces `-d`
+  * option `-d` (debug mode) replaces `-z`
+  * option `-N` and `--nearest` (nearest neighbour for PNG)
+    replace `--nn`
+  * option `-P` (save JPEG as progressive) replaces `--pr`
+
+-------------------------------------------------------------------
+Sun Aug 16 13:40:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.7
+  - Code lint fixes
+  - Package uploaded to PyPI
+
+-------------------------------------------------------------------
+Sat Oct 20 18:28:28 UTC 2018 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.6
+  * Support for progressive JPEG
+  * Some bug fixes and documentation update
+
+-------------------------------------------------------------------
+Tue Feb 20 07:50:48 UTC 2018 - aloisio@gmx.com
+
+- Update to version 2.5
+  * New option --nn to use nearest neighbour interpolation for PNG
+    files
+  * Identify Multi Picture Object (MPO) files
+
+-------------------------------------------------------------------
+Thu Oct 12 14:28:22 CEST 2017 - sbrabec@suse.com
+
+- Change Converters -> Convertors in RPM group, as all other
+  packages use this spelling.
+
+-------------------------------------------------------------------
+Wed Aug 30 18:00:09 UTC 2017 - aloisio@gmx.com
+
+- Initial package (2.4.1)

@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>04c67bd69be6573ea2daec8ba875fc1b</srcmd5>
+    <version>0.2.1</version>
+    <time>1283165643</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gtkhotkey based on submit request 46256 from user vuntz
+</comment>
+    <requestid>46256</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>04c67bd69be6573ea2daec8ba875fc1b</srcmd5>
+    <version>0.2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="6">
+    <srcmd5>04c67bd69be6573ea2daec8ba875fc1b</srcmd5>
+    <version>0.2.1</version>
+    <time>1319181954</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>84aca272a97d0f3afe5e1431d774a27b</srcmd5>
+    <version>0.2.1</version>
+    <time>1325787188</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>98929</requestid>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>817205dfd4dd3f81fb50b2c8361ac14a</srcmd5>
+    <version>0.2.1</version>
+    <time>1329317842</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104350 from coolo)</comment>
+    <requestid>104658</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>817205dfd4dd3f81fb50b2c8361ac14a</srcmd5>
+    <version>0.2.1</version>
+    <time>1340183423</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="12">
+    <srcmd5>817205dfd4dd3f81fb50b2c8361ac14a</srcmd5>
+    <version>0.2.1</version>
+    <time>1359109023</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="14">
+    <srcmd5>817205dfd4dd3f81fb50b2c8361ac14a</srcmd5>
+    <version>0.2.1</version>
+    <time>1379662584</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>817205dfd4dd3f81fb50b2c8361ac14a</srcmd5>
+    <version>0.2.1</version>
+    <time>1409301130</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,74 @@
+--- src/bgl2txt.cpp.orig
++++ src/bgl2txt.cpp
+@@ -1,3 +1,4 @@
++#include <cstdio>
+ #include <cstring>
+ #include "libbgl2txt.h"
+ 
+--- src/KangXi.cpp.orig
++++ src/KangXi.cpp
+@@ -57,7 +57,7 @@ void parse_line(const char *line)
+ 	gchar utf8[7];
+ 	gint n = g_unichar_to_utf8(uc, utf8);
+ 	utf8[n] = '\0';
+-	char *p;
++	const char *p;
+ 	p = strchr(line, '\t');
+ 	if (!p) {
+ 		g_print("Error: %s\n", line);
+--- src/Unihan.cpp.orig
++++ src/Unihan.cpp
+@@ -58,7 +58,7 @@ void parse_line(const char *line)
+ 	const char *han = line+2;
+ 
+ 	char *p;
+-	p = strchr(han, '\t');
++	p = (char*)strchr(han, '\t');
+ 	if (!p) {
+ 		g_print("Error: %s\n", line);
+ 		return;
+@@ -67,7 +67,7 @@ void parse_line(const char *line)
+ 	p++;
+ 	const char *key = p;
+ 
+-	p = strchr(key, '\t');
++	p = (char*)strchr(key, '\t');
+ 	if (!p) {
+ 		g_print("Error: %s\n", line);
+ 		return;
+--- configure.in.orig
++++ configure.in
+@@ -7,11 +7,12 @@ AC_CONFIG_SRCDIR([src/stardict-editor.cp
+ AM_INIT_AUTOMAKE([dist-bzip2])
+ AC_CONFIG_HEADER([config.h])
+ 
+-AM_PROG_LIBTOOL
+-
+ # Checks for programs.
+-AC_PROG_CC
++AC_PROG_CC_STDC
++AC_USE_SYSTEM_EXTENSIONS
++AC_SYS_LARGEFILE
+ AC_PROG_CXX
++AM_PROG_LIBTOOL
+ 
+ # Checks for libraries.
+ 
+@@ -27,16 +28,10 @@ PKG_CHECK_MODULES(STARDICT, $DEP_MODULES
+ 
+ STARDICT_CFLAGS="-Wall $STARDICT_CFLAGS"
+ 
+-LFS_CFLAGS=`getconf LFS_CFLAGS`
+-LFS_LDFLAGS=`getconf LFS_LDFLAGS`
+-LFS_LIBS=`getconf LFS_LIBS`
+-AC_SUBST(LFS_CFLAGS)
+-AC_SUBST(LFS_LDFLAGS)
+-AC_SUBST(LFS_LIBS)
+-
+ dnl For src/dsl2dict.c
+ PKG_CHECK_MODULES(DSL2DICT, libpcre)
+ 
++AC_SEARCH_LIBS(gzclose, z)
+ 
+ AC_OUTPUT([
+ Makefile

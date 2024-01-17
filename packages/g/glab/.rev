@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9aeba79c10cca6bf715d56fb9772d054</srcmd5>
+    <version>1.21.1</version>
+    <time>1638997733</time>
+    <user>dimstar_suse</user>
+    <comment>GLab is an open source GitLab CLI tool bringing GitLab to your terminal.</comment>
+    <requestid>936147</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9907772aff30cf055c8e3024a04e81fc</srcmd5>
+    <version>1.21.1</version>
+    <time>1641321472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>943711</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7112c1d388bd43b775ce73c736f52b17</srcmd5>
+    <version>1.22.0</version>
+    <time>1641932394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945471</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>42d4f9bc316a93394d0ee64a52a8ae9a</srcmd5>
+    <version>1.25.3</version>
+    <time>1676225677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1064493</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>81bf4c79ad57774f032530b91c147533</srcmd5>
+    <version>1.26.0</version>
+    <time>1679416989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1073339</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>170631384117691818a18147a2740ed4</srcmd5>
+    <version>1.27.1</version>
+    <time>1681213884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1078363</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9e3750d40696f479336a81fd2ea963bc</srcmd5>
+    <version>1.28.0</version>
+    <time>1681470841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1079362</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6bece1f7c85e7ead063e3b151c6db430</srcmd5>
+    <version>1.28.1</version>
+    <time>1682368283</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082363</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>80bb9d326d584243c04f67cc38216b6f</srcmd5>
+    <version>1.28.1</version>
+    <time>1682522674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082815</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5b4338055b1cabc8d779113489886397</srcmd5>
+    <version>1.29.0</version>
+    <time>1683295142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1084943</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ed006d7772b9c7ed0dad747e08bdb8d6</srcmd5>
+    <version>1.29.1</version>
+    <time>1683631424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085661</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>100444308c3c6396f4f978c2d97fa93f</srcmd5>
+    <version>1.29.2</version>
+    <time>1683801233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086172</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0a8423cb55b12a7c480fa764a14659cb</srcmd5>
+    <version>1.29.4</version>
+    <time>1684074723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1087085</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f326641e56d195cc1449ba385d4724fb</srcmd5>
+    <version>1.30.0</version>
+    <time>1684754078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088280</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c8be4d4c2e8b18eaaabe29204604ef22</srcmd5>
+    <version>1.31.0</version>
+    <time>1688052495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095743</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>515166f09ea6001a8c1ee998523b78e0</srcmd5>
+    <version>1.32.0</version>
+    <time>1692795472</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105216</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>516907c848e18e05dd96f2f785dbc9b1</srcmd5>
+    <version>1.33.0</version>
+    <time>1695327775</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112729</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a29b6e86711e7ebecaa5c3de37c91d7d</srcmd5>
+    <version>1.34.0</version>
+    <time>1698333277</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120470</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>846610310a4048a975968f8fd66b214e</srcmd5>
+    <version>1.35.0</version>
+    <time>1699478313</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1124166</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>35bf54e4fb7532c272033b43bcbb96d5</srcmd5>
+    <version>1.35.0</version>
+    <time>1699994552</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1125788</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>568a7cb1615eb564a83f17554dd16ca0</srcmd5>
+    <version>1.36.0</version>
+    <time>1702673367</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133260</requestid>
+  </revision>
+</revisionlist>

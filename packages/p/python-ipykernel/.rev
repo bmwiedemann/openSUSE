@@ -1,0 +1,523 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1674dfb41717c11f7af0ed8e0b18e63a</srcmd5>
+    <version>5.1.1</version>
+    <time>1558516385</time>
+    <user>dimstar_suse</user>
+    <comment>This version fixes the conflicts in the previous version.
+
+- Update to 5.1.1
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.</comment>
+    <requestid>703529</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3db553a63199681b22d34e164300e5d6</srcmd5>
+    <version>5.1.2</version>
+    <time>1565962019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722081</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>31746a9785cb68257346659ec7504e18</srcmd5>
+    <version>5.1.3</version>
+    <time>1574414627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747913</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dba4d394ccf3474629c686ea69103b53</srcmd5>
+    <version>5.1.4</version>
+    <time>1580373511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768074</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>12216faff24fba32e606813090af5db4</srcmd5>
+    <version>5.1.4</version>
+    <time>1585264801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783838</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0fec50363ee1293994eb66143b0c567d</srcmd5>
+    <version>5.2.0</version>
+    <time>1586112627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790414</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4730e48dd07e4472cd5483089f9f8611</srcmd5>
+    <version>5.2.1</version>
+    <time>1587838256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795887</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c2e0e72bda98f70c92453c34f52a1c04</srcmd5>
+    <version>5.3.0</version>
+    <time>1591879070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810547</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5be28cf869b8fea79ea6d9f8bcefa2d7</srcmd5>
+    <version>5.3.2</version>
+    <time>1594807872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820512</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8c1932a9ff60b76c9dcf37549e0c1f66</srcmd5>
+    <version>5.3.4</version>
+    <time>1596277842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822785</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b5ffc01ea1f191540dfa5a2519ec2e4c</srcmd5>
+    <version>5.4.2</version>
+    <time>1608112818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856012</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1a548808e32e5b3e89be6056982480cf</srcmd5>
+    <version>5.4.2</version>
+    <time>1612466611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>869202</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3127e277e83e257cf61162706de0ea51</srcmd5>
+    <version>5.4.3</version>
+    <time>1613511267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872448</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e801d0c90d7213a85b2761602d51514e</srcmd5>
+    <version>5.5.5</version>
+    <time>1625225189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>902823</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c6c043ead97aa844e0a4e69ab3e8b1f0</srcmd5>
+    <version>6.0.3</version>
+    <time>1629101310</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910272</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7da7c67abdaa05ea1b2c3b40523e0023</srcmd5>
+    <version>6.3.1</version>
+    <time>1631391860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917665</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2f3d320244652fa551e597a924548f6a</srcmd5>
+    <version>6.4.1</version>
+    <time>1632685701</time>
+    <user>dimstar_suse</user>
+    <comment>- Deduplicate files in _jupyter_kernel_dir.
+
+- Revert and clarify some specfile changes:
+  * fix kernelspec install for primary flavor
+  * BuildRequires debugpy is sufficiently declared once
+
+- specfile:
+  * require debugpy for build
+- update to version 6.4.1:
+  * Merged PRs
+    + debugpy is now a build requirement #773 (@minrk)
+- changes from version 6.4.0:
+  * Enhancements made
+    + Make json_clean a no-op for jupyter-client &gt;= 7 #708
+      (@martinRenou)
+  * Bugs fixed
+    + Do not assume kernels have loops #766 (@Carreau)
+    + Fix undefined variable #765 (@martinRenou)
+  * Maintenance and upkeep improvements
+    + Make ipykernel work without debugpy #767 (@frenzymadness)
+    + Stop using deprecated recv_multipart when using in-process
+      socket. #762 (@Carreau)
+    + Update some warnings with instructions and version number. #761
+      (@Carreau)</comment>
+    <requestid>921010</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1fc6a0e9c2f613579e4a34353365ecdd</srcmd5>
+    <version>6.4.2</version>
+    <time>1640459787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.4.2
+  * Enabled rich rendering of variables in the debugger #787
+    (@JohanMabille)
+  * Remove setting of the eventloop function in the InProcessKernel
+    #781 (@rayosborn)
+  * Add python version classifiers #783 (@emuccino)</comment>
+    <requestid>941537</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b1672f7d3e1eab493003486f44e2d1cb</srcmd5>
+    <version>6.7.0</version>
+    <time>1642455228</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup specfile
+- Update dependency declarations
+- Update to 6.7.0:
+  - PR: do_one_iteration is a coroutine
+  - Clean python 2 artifacts. Fix
+  - Fix title position in changelog
+  - Set debugOptions for breakpoints in python standard library
+    source
+  - Send omit_sections to IPython to choose which sections of
+    documentation you do not want
+  - Added missing exceptionPaths field to debugInfo reply
+  - Test jupyter_kernel_test as downstream
+  - Remove nose dependency
+  - Add explicit encoding to open calls in debugger
+  - Fix the temp file name created by the debugger
+  - Enforce labels on PRs
+  - Unpin IPython, and remove some dependencies on it.
+  - Fix rich variables inspection
+  - Do not call setQuitOnLastWindowClosed() on a QCoreApplication
+  - Drop ipython_genutils requirement
+</comment>
+    <requestid>946634</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>83f15d3e2c4e81d6f3a47d4fb7c9aebb</srcmd5>
+    <version>6.9.0</version>
+    <time>1644617228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953119</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1edf29f7953b8482b857376c8268bfe4</srcmd5>
+    <version>6.9.1</version>
+    <time>1645461946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955752</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cd0ee306c4bb28379cce9cdb40ca1a93</srcmd5>
+    <version>6.9.2</version>
+    <time>1647806110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>962924</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ea1d56d8883c23ede92449d8bd1b21d2</srcmd5>
+    <version>6.15.0</version>
+    <time>1656053100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update requirements and test suite setup
+
+- specfile:
+  * update requirements
+  * switch to pyproject.toml build
+- update to version 6.15.0:
+  * Bugs fixed
+    + Fix compatibility with tornado 6.2 beta #956 (@minrk)
+  * Maintenance and upkeep improvements
+    + Back to top-level tornado IOLoop #958 (@minrk)
+    + Explicitly require pyzmq &gt;= 17 #957 (@minrk)
+    + [pre-commit.ci] pre-commit autoupdate #954 (@pre-commit-ci)
+- changes from version 6.14.0:
+  * Enhancements made
+    + Add cpu_count to the usage_reply #952 (@echarles)
+  * Bugs fixed
+    + use pss memory info type if available for the resource usage
+      reply #948 (@echarles)
+    + Ensure psutil for the process is accurate #937 (@echarles)
+  * Maintenance and upkeep improvements
+    + Fix sphinx 5.0 support #951 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #950 (@pre-commit-ci)
+- changes from version 6.13.1:
+  * Bugs fixed
+    + Fix richInspectVariables #943 (@davidbrochart)
+    + Force debugger metadata in built wheel #941 (@blink1073)
+  * Maintenance and upkeep improvements
+    + [pre-commit.ci] pre-commit autoupdate #945 (@pre-commit-ci)
+    + Clean up typings #939 (@blink1073)
+    + [pre-commit.ci] pre-commit autoupdate #938 (@pre-commit-ci) (forwarded request 984608 from bnavigator)</comment>
+    <requestid>984609</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>9d77f54c92e002e10d5cda1651895fa3</srcmd5>
+    <version>6.15.0</version>
+    <time>1657378745</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-hatchling-14.patch:
+  * Support hatchling &gt;= 1.4</comment>
+    <requestid>987883</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9be8251af4448ab6154d18583f8b637b</srcmd5>
+    <version>6.15.1</version>
+    <time>1657809201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988928</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e3257d11d4803b22e81f1ab5fb434ff8</srcmd5>
+    <version>6.15.2</version>
+    <time>1662926235</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.15.2:
+  * Bugs fixed
+    + _abort_queues is no longer async #942 (@rhelmot)
+</comment>
+    <requestid>1002371</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e3e4471a4ca8465bc05f0618ee6380ed</srcmd5>
+    <version>6.15.3</version>
+    <time>1663275456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003368</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1453fcacb224c8f8a9a273dbd410f5fd</srcmd5>
+    <version>6.16.0</version>
+    <time>1664638944</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006526</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ffe7ed352b477c1e35436677777babc2</srcmd5>
+    <version>6.16.1</version>
+    <time>1666535585</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.16.1:
+  * Bugs fixed
+    + PR: Destroy tk app to avoid memory leak #1008 (@impact27)
+  * Maintenance and upkeep improvements
+    + Maintenance cleanup #1006 (@blink1073)
+    + Ignore warnings in prereleases test #1002 (@blink1073)
+</comment>
+    <requestid>1030494</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cc4763e4a6805ddb757a200aa182c238</srcmd5>
+    <version>6.16.2</version>
+    <time>1666871544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.16.2
+  * Fix failing test and update matrix #1010 (@blink1073)
+- Disable debugger tests
+</comment>
+    <requestid>1031304</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>dd0d0f7626cd6c4daf476e88b37cee90</srcmd5>
+    <version>6.17.0</version>
+    <time>1667825482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033840</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4087a42aa9bd53ee942f6776053292bb</srcmd5>
+    <version>6.19.4</version>
+    <time>1672221251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.19.4
+  * Don't pass None kernels to logging configurable in Comm #1061
+    (@bollwyvl)
+- Release  6.19.3
+  * format dates as ISO8601 #1057 (@GRcharles)
+  * Fix comms and add qtconsole downstream test #1056 (@blink1073)
+  * Fix lint #1058 (@blink1073)
+  * Fix comms and add qtconsole downstream test #1056 (@blink1073)
+- Release  6.19.2
+  * Fix error in %edit magic #1053 (@ccordoba12)
+- Release  6.19.1
+  * fix: too many arguments dropped when passing to base comm
+    constructor #1051 (@maartenbreddels)
+- Release 6.19.0
+  * Fix: there can be only one comm_manager #1049
+    (@maartenbreddels)
+  * Adopt ruff and address lint #1046 (@blink1073)
+- Release 6.18.3
+  * Fix Comm interface for downstream users #1042
+    (@maartenbreddels)
+- Release 6.18.2
+  * Configurables needs to be configurable #1037 (@Carreau)
+- Release 6.18.1
+  * fix: use comm package in backwards compatible way #1028
+    (@maartenbreddels)
+  * Add more testing and deprecate the Gtk event loops #1036
+    (@blink1073)
+  * More coverage improvements #1035 (@blink1073)
+  * Add more tests #1034 (@blink1073)
+  * Add more kernel tests #1032 (@blink1073)</comment>
+    <requestid>1045315</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a3b877ed3f162400e886c676a4dd1211</srcmd5>
+    <version>6.20.1</version>
+    <time>1673801880</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.20.1
+  * Don't raise error when trying to create another Qt app for Qt
+    eventloop #1071 (@ccordoba12)
+  * Fix types and sync lint deps #1070 (@blink1073)
+- Release 6.20.0
+  * ENH: add %gui support for Qt6 #1054 (@shaperilio) (forwarded request 1058371 from bnavigator)</comment>
+    <requestid>1058372</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7bedfb2fabe8f0e80841e3befb3e9b19</srcmd5>
+    <version>6.20.2</version>
+    <time>1674585716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.20.2
+  * Fix Exception in OutStream.close() #1076 (@ilyasher)
+</comment>
+    <requestid>1060266</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e640cdd3690c2a06ff4746f7907f4f38</srcmd5>
+    <version>6.21.1</version>
+    <time>1675689317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.21.1
+  * Restore nest-asyncio for tk loop #1086 (@blink1073)
+- Release 6.21.0
+  * Expose session start file in file. #1078 (@Carreau)
+  * Add copy_to_globals debug request handling #1055 (@brichet)
+</comment>
+    <requestid>1063284</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>be5212d8255e705e64e099834b0325c1</srcmd5>
+    <version>6.22.0</version>
+    <time>1680636449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.22.0
+  * Deprecate Comm class + Fix incompatibility with ipywidgets
+    #1097 (@martinRenou)
+
+- Update to 6.21.3
+  * Fix interrupt reply #1101 (@garlandz-db)
+- Release 6.21.2
+  * Un-expose __file__ and expose __session__ instead. #1095
+    (@Carreau)
+  * Remove test_enter_eventloop #1084 (@davidbrochart)</comment>
+    <requestid>1077234</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0e2eab362997b9f57adf9b91f4052288</srcmd5>
+    <version>6.23.1</version>
+    <time>1685830352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.23.1
+  * Avoid echoing onto a captured FD #1111 (@minrk)
+- Release 6.23.0
+  * Support control&lt;&gt;iopub messages to e.g. unblock comm_msg from
+    command execution #1114 (@tkrabel-db)
+  * Add outstream hook similar to display publisher #1110
+    (@maartenbreddels) (forwarded request 1090501 from bnavigator)</comment>
+    <requestid>1090502</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a90acc8630fb79c01f0ecd6d6c502a40</srcmd5>
+    <version>6.23.3</version>
+    <time>1688476923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096638</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>138605b982b31855bcfe5d4adc294af1</srcmd5>
+    <version>6.25.0</version>
+    <time>1691414936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102582</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fa2c21cbeb0e62fdc4adae5d63a6d52c</srcmd5>
+    <version>6.25.1</version>
+    <time>1691502909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102796</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>28c3883979491601d680ecd03cb171c1</srcmd5>
+    <version>6.25.1</version>
+    <time>1692795518</time>
+    <user>anag+factory</user>
+    <comment>- Fix spec-cleaner: The stupid sle15 python reset macro needs to
+  be before python_module calls</comment>
+    <requestid>1105430</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a93432d0554569f8e7166f04437cff38</srcmd5>
+    <version>6.25.2</version>
+    <time>1695664963</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.25.2
+  * Make iostream shutdown more robust #1143 (@blink1073)
+  * Don't call QApplication.setQuitOnLastWindowClosed(False). #1142
+    (@anntzer)
+  * Avoid starting IOPub background thread after it's been stopped
+    #1137 (@minrk)
+</comment>
+    <requestid>1113234</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>469366a0fd2646c0f2f401586c2ae259</srcmd5>
+    <version>6.27.0</version>
+    <time>1701121377</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.27.0
+  * Extend argument handling of do_execute with cell metadata #1169
+    (@jjvraw)
+- Release 6.26.0
+  * Maintenance and upkeep improvements
+</comment>
+    <requestid>1128957</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>06d44b32a548a11038875a06babd37f8</srcmd5>
+    <version>6.27.1</version>
+    <time>1703198314</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.27.1:
+  * Fix edit magic payload type #1171 (@blink1073)
+
+  * Support hatchling &gt;= 1.4
+- Skip pickle tests to get rid of ipyparallel dependency which we
+- Update to version 6.0.3
+    queue&quot;
+  * Add github actions, bail on asyncio patch for tornado 6.1.</comment>
+    <requestid>1134337</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+--- API.xs	2010-12-18 18:34:52.806782768 +0200
++++ API.xs	2010-12-18 18:35:53.625657655 +0200
+@@ -673,7 +673,7 @@
+ bail:
+     ldap_set_option(ld, LDAP_OPT_RESULT_CODE, &ret);
+ #else
+-    ret = ldap_parse_entrychange_control(ld, ctrls, chgtypep, prevdnp
++    ret = ldap_parse_entrychange_control(ld, ctrls, chgtypep, prevdnp,
+                                          chgnumpresentp, chgnump);
+ #endif
+ 

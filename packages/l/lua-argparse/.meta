@@ -1,0 +1,7 @@
+<package name="lua-argparse" project="openSUSE:Factory">
+  <title>A feature-rich command-line argument parser</title>
+  <description>Argparse is a feature-rich command line parser for Lua inspired by argparse for Python.
+
+Argparse supports positional arguments, options, flags, optional arguments, subcommands and more. Argparse automatically generates usage, help, and error messages, and can generate shell completion scripts.</description>
+  <devel project="devel:languages:lua" package="lua-argparse"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="perl-Data-Structure-Util" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Data-Structure-Util"/>
+</package>

@@ -1,0 +1,8 @@
+<package name="libliftoff" project="openSUSE:Factory">
+  <title>KMS plane library</title>
+  <description>libliftoff offers using KMS planes from userspace. Users create
+&quot;virtual planes&quot; called layers, set KMS properties on them, and
+libliftoff will pick hardware planes for these layers if possible.</description>
+  <devel project="X11:Wayland" package="libliftoff"/>
+  <url>https://gitlab.freedesktop.org/emersion/libliftoff</url>
+</package>

@@ -1,0 +1,17 @@
+<package name="perl-File-Slurp" project="openSUSE:Factory">
+  <title>Simple and Efficient Reading/Writing of Complete Files</title>
+  <description>This module provides subs that allow you to read or write entire files with
+one simple call. They are designed to be simple to use, have flexible ways
+to pass in or get the file contents and to be very efficient. There is also
+a sub to read in all the files in a directory other than '.' and '..'
+
+These slurp/spew subs work for files, pipes and sockets, stdio,
+pseudo-files, and the DATA handle. Read more about why slurping files is a
+good thing in the file 'slurp_article.pod' in the extras/ directory.
+
+If you are interested in how fast these calls work, check out the
+slurp_bench.pl program in the extras/ directory. It compares many different
+forms of slurping. You can select the I/O direction, context and file
+sizes. Use the --help option to see how to run it.</description>
+  <devel project="devel:languages:perl" package="perl-File-Slurp"/>
+</package>

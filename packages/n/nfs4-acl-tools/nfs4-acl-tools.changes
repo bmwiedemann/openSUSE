@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Tue Apr 26 02:24:27 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- Disable CHOWN/CHGRP call in install_sh as we build code
+  as non-root
+
+-------------------------------------------------------------------
+Thu May 20 13:21:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.3.7
+  * Remove OWNER_AT, GROUP_AT, EVERYONE_AT flags, but it is still
+    possible to set these bits using the "O", "G", and "E" in the
+    flag field on the commandline. 
+  * Add new option -c/--omit-header to not display comment header.
+  * Skip comment field while reading ACE(s). Fixes an issue where
+    nfs4_setfacl failed to handle comments while reading ACE(s)
+    from nfs4_getfacl output.
+  * Improved readability: add empty line after each acl
+  * nfs4_getfacl: return 1 for unknown option and won't use '-?' anymore
+  * nfs4_setfacl: Add file name to error output.
+
+-------------------------------------------------------------------
+Thu Nov 28 03:36:22 UTC 2019 - Neil Brown <nfbrown@suse.com>
+
+- nfs4-acl-tools-0.3.5.tar.gz - new upstream release
+- Refresh nfs-acl-tools-xattr.patch
+- Delete allow-spaces-in-principal-names.patch - included upstream
+  Includes fix for bug 967251 : setting inheritable ACLs with -R
+  Includes other fixes including an fd leak, man page typos and
+  proper handling of DENY ACEs.
+  (bsc#96725, boo#1157915)
+
+-------------------------------------------------------------------
+Thu May 29 04:59:29 UTC 2014 - crrodriguez@opensuse.org
+
+- nfs-acl-tools-xattr.patch For over 10 years the *xattr*
+  functions have been in glibc instead of libattr, use them instead.
+
+-------------------------------------------------------------------
+Mon Mar 24 23:44:01 UTC 2014 - nfbrown@suse.com
+
+- allow-spaces-in-principal-names.patch
+  upstream patch to allow spaces in principal names.
+  (bnc#772896)
+
+-------------------------------------------------------------------
+Sun Jun 16 14:05:31 UTC 2013 - coolo@suse.com
+
+- aclocal 1.13 doesn't have a --acdir option
+
+-------------------------------------------------------------------
+Wed Mar  6 10:58:23 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause
+  GPL matches are for e.g. Makefile. Consolidate to BSD (as per Fedora)
+
+-------------------------------------------------------------------
+Wed Mar  6 06:12:53 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Aug 24 11:53:10 CEST 2011 - dmueller@suse.de
+
+- remove strip to generate debuginfo
+- remove generic INSTALL file
+
+-------------------------------------------------------------------
+Wed Aug 17 06:12:10 UTC 2011 - nfbrown@novell.com
+
+- Initial check-in of nfs4-acl-tools: FATE:312654
+

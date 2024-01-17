@@ -1,0 +1,6 @@
+<package name="ladspa-super-60" project="openSUSE:Factory">
+  <title>LADSPA super-60 plugin</title>
+  <description></description>
+  <devel project="multimedia:libs" package="ladspa-super-60"/>
+  <url>http://quitte.de/dsp/</url>
+</package>

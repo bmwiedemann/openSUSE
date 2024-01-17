@@ -1,0 +1,5 @@
+<package name="python-hl7apy" project="openSUSE:Factory">
+  <title>A lightweight Python library to parse, create and handle HL7 v2.x messages</title>
+  <description></description>
+  <devel project="Application:ERP:GNUHealth:Factory" package="python-hl7apy"/>
+</package>

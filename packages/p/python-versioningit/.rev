@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fc596517d29f9768f9940f7adb272d5</srcmd5>
+    <version>1.1.1</version>
+    <time>1654378014</time>
+    <user>dimstar_suse</user>
+    <comment>New package -- dependency of new version of existing Factory package streamlink.</comment>
+    <requestid>980689</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5de011dea93e1f25bbc9381f1bbe99a7</srcmd5>
+    <version>2.0.0</version>
+    <time>1658857429</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to v2.0.0
+  + Breaking API changes, see CHANGELOG.md
+</comment>
+    <requestid>990824</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ea3659f3ae538100c675bbef1e156e85</srcmd5>
+    <version>2.0.1</version>
+    <time>1665591875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009891</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>649e2f2b90b45c176e4369133491089a</srcmd5>
+    <version>2.1.0</version>
+    <time>1668086593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0 
+  * Drop support for Python 3.6
+  * Support Python 3.11
+  * Use tomllib on Python 3.11
+</comment>
+    <requestid>1034977</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e7710e6f6e6158c1cc31c2323d78a07</srcmd5>
+    <version>2.2.0</version>
+    <time>1676389640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0
+  * The custom setuptools command classes can now be imported directly from the versioningit.cmdclass module as an alternative to calling get_cmdclasses()
+</comment>
+    <requestid>1065548</requestid>
+  </revision>
+</revisionlist>

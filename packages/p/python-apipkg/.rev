@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8a0ec49931370d339fd3b2ba388c7506</srcmd5>
+    <version>1.2</version>
+    <time>1458333585</time>
+    <user>dimstar_suse</user>
+    <comment>python-execnet dependency</comment>
+    <requestid>367833</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4435760fa1d66b25b3f8a7c28cb4e638</srcmd5>
+    <version>1.4</version>
+    <time>1459002583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>379944</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6ad883b32e087305c61b4591a86f30b2</srcmd5>
+    <version>1.4</version>
+    <time>1494088169</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491607</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e657f63e77ddf2d96ba8eb7d7f5d8538</srcmd5>
+    <version>1.5</version>
+    <time>1533732337</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5
+- fixed dependencies
+  * switch to setuptools_scm
+  * avoid dict iteration (fixes issue on python3)
+  * preserve __package__ - ths gets us better pep 302 compliance (forwarded request 627535 from mimi_vx)</comment>
+    <requestid>627536</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>da2d72b38352d1b37803c73a80a66094</srcmd5>
+    <version>1.5</version>
+    <time>1551024249</time>
+    <user>coolo</user>
+    <comment>- Add patch to fix build with pytest newer than 4:
+  * pytest4.patch</comment>
+    <requestid>674125</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>416d8025e023b629031713ab008c7195</srcmd5>
+    <version>1.5</version>
+    <time>1564484477</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh pytest4.patch for pytest5</comment>
+    <requestid>716841</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>952aecb1426a7709e06530baaba4da47</srcmd5>
+    <version>1.5</version>
+    <time>1607801354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854121</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>050216389e00eaf4a79a290c2b9f84c2</srcmd5>
+    <version>2.1.0</version>
+    <time>1634754222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925858</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6dbfcdebf51f71349cca5fc99e39648</srcmd5>
+    <version>3.0.1</version>
+    <time>1669910318</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate the _version.py file in %prep to remove completely hatch-vcs from
+  pyproject to make it build and run tests correctly
+- Remove python-hatch-vcs dependency
+- Remove python-py dependency
+- Remove python_module macro definition
+- Update to 3.0.1:
+  * restore tox.ini to support tox --current-env based packaging
+- 3.0.0
+  * add support for python 3.11 and drop dead pythons (thanks hukgo)
+  * migrate to hatch
+  * split up __init__.py
+  * add some type annotations
+- 2.1.1
+  * drop the python 3.4 support marker, 2.1.0 broke it
+    2.1.0 will be yanked after release
+</comment>
+    <requestid>1039166</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f7c1476a833b07c937917bf3aa6edcef</srcmd5>
+    <version>3.0.1</version>
+    <time>1677584893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067948</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>f637cba4f35124366d946e3577d7b231</srcmd5>
+    <version>3.0.1</version>
+    <time>1682434424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1082448</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a74c4104b12021506fb4a8a63512092</srcmd5>
+    <version>3.0.2</version>
+    <time>1697061220</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * Fix import path to make it vendoring-friendly
+  * remove py reference from tests
+- switch to gh tarball to get tests again
+
+- refresh pytest4.patch for pytest5
+- Converted to single-spec</comment>
+    <requestid>1116439</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,218 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3cb664d87c8c6486077288a998a53f7</srcmd5>
+    <version>5.0.0</version>
+    <time>1582899571</time>
+    <user>dimstar_suse</user>
+    <comment>- New azure-sdk component</comment>
+    <requestid>768425</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e805418230a041068f3e5f2e8ea0f33f</srcmd5>
+    <version>5.0.1</version>
+    <time>1585761240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790567</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>21ed9a675f5ce8ff647d5e6658d4a716</srcmd5>
+    <version>5.1.0</version>
+    <time>1588971860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801167</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee24ca81e5fa6dd0b07c4c7f29081c29</srcmd5>
+    <version>5.2.0</version>
+    <time>1602155535</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 839787 from glaubitz)</comment>
+    <requestid>839849</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cf092f1fe2422a7dd03622344c7fde48</srcmd5>
+    <version>5.2.0</version>
+    <time>1607548532</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853870</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66cf66aa3edaf66e107f8dd1102c56ed</srcmd5>
+    <version>5.3.1</version>
+    <time>1618235342</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 881856 from glaubitz)</comment>
+    <requestid>881920</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>78fde7db40a05a57aa3f5c197f73869e</srcmd5>
+    <version>5.4.0</version>
+    <time>1620400500</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 890718 from glaubitz)</comment>
+    <requestid>890737</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0f697dc4b622bb290042082e1922a0ab</srcmd5>
+    <version>5.5.0</version>
+    <time>1623767836</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 898302 from glaubitz)</comment>
+    <requestid>898368</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1ffad9790511ac336f7b8b1630d66b68</srcmd5>
+    <version>5.6.0</version>
+    <time>1629471464</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 5.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 907685 from glaubitz)</comment>
+    <requestid>907733</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>23f6a748389219c4ceca87f1eba14aa0</srcmd5>
+    <version>5.6.1</version>
+    <time>1633959062</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.6.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 923713 from glaubitz)</comment>
+    <requestid>923739</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0631a79ddda8071cc4e7d8c387be662b</srcmd5>
+    <version>5.7.0</version>
+    <time>1642112466</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 946061 from glaubitz)</comment>
+    <requestid>946120</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>947f861a95ca885cc84c8e2be58793f3</srcmd5>
+    <version>5.9.0</version>
+    <time>1652389193</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py</comment>
+    <requestid>976379</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>133e8cfd6751e99917304d3a64da5864</srcmd5>
+    <version>5.10.0</version>
+    <time>1654782104</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 981507 from glaubitz)</comment>
+    <requestid>981509</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>85f9ada97905bce563799b2797ea68d0</srcmd5>
+    <version>5.10.1</version>
+    <time>1661593803</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.10.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 998804 from glaubitz)</comment>
+    <requestid>998808</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fc04f56e5d793d57c23cb65d7d40f9ad</srcmd5>
+    <version>5.11.0</version>
+    <time>1674232789</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.11.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1059906 from glaubitz)</comment>
+    <requestid>1059959</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cb1531e5a2ff3ef0e11aefbf20743c52</srcmd5>
+    <version>5.11.1</version>
+    <time>1674737944</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.11.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1061160 from glaubitz)</comment>
+    <requestid>1061164</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c21481280394f897ca4f86a1ab613521</srcmd5>
+    <version>5.11.2</version>
+    <time>1679520696</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.11.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1073722 from glaubitz)</comment>
+    <requestid>1073777</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0b87f5ca6f630e8d2164625f1331abf6</srcmd5>
+    <version>5.11.3</version>
+    <time>1689261559</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 5.11.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1098498 from glaubitz)</comment>
+    <requestid>1098513</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9a358cc6472bc77a023c5c82e864e4f7</srcmd5>
+    <version>5.11.4</version>
+    <time>1692045366</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.11.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1103843 from glaubitz)</comment>
+    <requestid>1103877</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dfa6097dc02ea15b10f397d3d3dee9f1</srcmd5>
+    <version>5.11.5</version>
+    <time>1700078920</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 5.11.5
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1125833 from glaubitz)</comment>
+    <requestid>1126455</requestid>
+  </revision>
+</revisionlist>

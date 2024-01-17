@@ -1,0 +1,200 @@
+commit 3754afe7cf7cc3693a9c9ff795e9bd97175ca639
+Author: Stefan Raspl <raspl@de.ibm.com>
+Date:   Thu Apr 2 10:57:04 2020 +0200
+
+    tools/kvm_stat: Add command line switch '-L' to log to file
+    
+    To integrate with logrotate, we have a signal handler that will re-open
+    the logfile.
+    Assuming we have a systemd unit file with
+         ExecStart=kvm_stat -dtc -s 10 -L /var/log/kvm_stat.csv
+         ExecReload=/bin/kill -HUP $MAINPID
+    and a logrotate config featuring
+         postrotate
+            /bin/systemctl reload kvm_stat.service
+         endscript
+    Then the overall flow will look like this:
+    (1) systemd starts kvm_stat, logging to A.
+    (2) At some point, logrotate runs, moving A to B.
+        kvm_stat continues to write to B at this point.
+    (3) After rotating, logrotate restarts the kvm_stat unit via systemctl.
+    (4) The kvm_stat unit sends a SIGHUP to kvm_stat, finally making it
+        switch over to writing to A again.
+    Note that in order to keep the structure of the cvs output in tact, we
+    make sure to, in contrast to the standard log format, only write the
+    header once at the beginning of a file. This implies that the header is
+    suppressed when appending to an existing file. Unlike with the standard
+    format, where we append to an existing file by starting out with a
+    header.
+    
+    Signed-off-by: Stefan Raspl <raspl@de.ibm.com>
+    Message-Id: <20200402085705.61155-3-raspl@linux.ibm.com>
+    Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index d6cced4e1ef4..d199a3694be8 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -32,6 +32,7 @@ import resource
+ import struct
+ import re
+ import subprocess
++import signal
+ from collections import defaultdict, namedtuple
+ from functools import reduce
+ from datetime import datetime
+@@ -228,6 +229,8 @@ IOCTL_NUMBERS = {
+     'RESET':       0x00002403,
+ }
+ 
++signal_received = False
++
+ ENCODING = locale.getpreferredencoding(False)
+ TRACE_FILTER = re.compile(r'^[^\(]*$')
+ 
+@@ -1523,26 +1526,64 @@ class CSVFormat(object):
+ 
+ def log(stats, opts, frmt, keys):
+     """Prints statistics as reiterating key block, multiple value blocks."""
++    global signal_received
+     line = 0
+     banner_repeat = 20
+-    banner_printed = False
+-
++    f = None
++
++    def do_banner(opts):
++        nonlocal f
++        if opts.log_to_file:
++            if not f:
++                try:
++                     f = open(opts.log_to_file, 'a')
++                except (IOError, OSError):
++                    sys.exit("Error: Could not open file: %s" %
++                             opts.log_to_file)
++                if isinstance(frmt, CSVFormat) and f.tell() != 0:
++                    return
++        print(frmt.get_banner(), file=f or sys.stdout)
++
++    def do_statline(opts, values):
++        statline = datetime.now().strftime("%Y-%m-%d %H:%M:%S") + \
++                   frmt.get_statline(keys, values)
++        print(statline, file=f or sys.stdout)
++
++    do_banner(opts)
++    banner_printed = True
+     while True:
+         try:
+             time.sleep(opts.set_delay)
+-            if line % banner_repeat == 0 and not banner_printed:
+-                print(frmt.get_banner())
++            if signal_received:
++                banner_printed = True
++                line = 0
++                f.close()
++                do_banner(opts)
++                signal_received = False
++            if (line % banner_repeat == 0 and not banner_printed and
++                not (opts.log_to_file and isinstance(frmt, CSVFormat))):
++                do_banner(opts)
+                 banner_printed = True
+             values = stats.get()
+             if (not opts.skip_zero_records or
+                 any(values[k].delta != 0 for k in keys)):
+-                print(datetime.now().strftime("%Y-%m-%d %H:%M:%S") +
+-                      frmt.get_statline(keys, values))
++                do_statline(opts, values)
+                 line += 1
+                 banner_printed = False
+         except KeyboardInterrupt:
+             break
+ 
++    if opts.log_to_file:
++        f.close()
++
++
++def handle_signal(sig, frame):
++    global signal_received
++
++    signal_received = True
++
++    return
++
+ 
+ def is_delay_valid(delay):
+     """Verify delay is in valid value range."""
+@@ -1615,7 +1656,7 @@ Press any other key to refresh statistics immediately.
+     argparser.add_argument('-c', '--csv',
+                            action='store_true',
+                            default=False,
+-                           help='log in csv format - requires option -l/--log',
++                           help='log in csv format - requires option -l/-L',
+                            )
+     argparser.add_argument('-d', '--debugfs',
+                            action='store_true',
+@@ -1643,6 +1684,11 @@ Press any other key to refresh statistics immediately.
+                            default=False,
+                            help='run in logging mode (like vmstat)',
+                            )
++    argparser.add_argument('-L', '--log-to-file',
++                           type=str,
++                           metavar='FILE',
++                           help="like '--log', but logging to a file"
++                           )
+     argparser.add_argument('-p', '--pid',
+                            type=int,
+                            default=0,
+@@ -1666,10 +1712,10 @@ Press any other key to refresh statistics immediately.
+                            help='omit records with all zeros in logging mode',
+                            )
+     options = argparser.parse_args()
+-    if options.csv and not options.log:
++    if options.csv and not (options.log or options.log_to_file):
+         sys.exit('Error: Option -c/--csv requires -l/--log')
+-    if options.skip_zero_records and not options.log:
+-        sys.exit('Error: Option -z/--skip-zero-records requires -l/--log')
++    if options.skip_zero_records and not (options.log or options.log_to_file):
++        sys.exit('Error: Option -z/--skip-zero-records requires -l/-L')
+     try:
+         # verify that we were passed a valid regex up front
+         re.compile(options.fields)
+@@ -1749,7 +1795,9 @@ def main():
+         sys.stdout.write('  ' + '\n  '.join(sorted(set(event_list))) + '\n')
+         sys.exit(0)
+ 
+-    if options.log:
++    if options.log or options.log_to_file:
++        if options.log_to_file:
++            signal.signal(signal.SIGHUP, handle_signal)
+         keys = sorted(stats.get().keys())
+         if options.csv:
+             frmt = CSVFormat(keys)
+diff --git a/tools/kvm/kvm_stat/kvm_stat.txt b/tools/kvm/kvm_stat/kvm_stat.txt
+index 24296dccc00a..feaf46451e83 100644
+--- a/tools/kvm/kvm_stat/kvm_stat.txt
++++ b/tools/kvm/kvm_stat/kvm_stat.txt
+@@ -65,8 +65,10 @@ OPTIONS
+ 	run in batch mode for one second
+ 
+ -c::
+---csv=<file>::
+-        log in csv format - requires option -l/--log
++--csv::
++        log in csv format. Requires option -l/--log or -L/--log-to-file.
++        When used with option -L/--log-to-file, the header is only ever
++        written to start of file to preserve the format.
+ 
+ -d::
+ --debugfs::
+@@ -92,6 +94,11 @@ OPTIONS
+ --log::
+         run in logging mode (like vmstat)
+ 
++
++-L<file>::
++--log-to-file=<file>::
++        like -l/--log, but logging to a file. Appends to existing files.
++
+ -p<pid>::
+ --pid=<pid>::
+ 	limit statistics to one virtual machine (pid)

@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Tue Feb 21 23:24:21 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Fix runtime requirements for adplugdb
+
+-------------------------------------------------------------------
+Mon Feb 13 14:56:35 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile overhaul
+- Upstream moved to github: adjust URL, source
+- Update to version 2.3.3
+  * New RAD player by devinacker
+  * Many bug fixes by Alexander Miller
+    + CVE-2019-14690 - buffer overflow in .bmf
+    + CVE-2019-14691 - buffer overflow in .dtm
+    + CVE-2019-14692 - buffer overflow in .mkj
+    + CVE-2019-14732 - buffer overflow in .a2m
+    + CVE-2019-14733 - buffer overflow in .rad
+    + CVE-2019-14734 - buffer overflow in .mtk
+    + CVE-2019-15151 - double free and OOB reads in .u6m
+    + OOB reads in .xad
+    + OOB reads in .rix
+- Update to versoin 2.3.2
+  * Mostly bug fixes.
+- Update to versoin 2.3.1
+  * Minor fixes to the build system for performance and
+    compatibility.
+  * Fix for Linux on more esoteric arches.
+- Update to versoin 2.3.0
+  * It's been over seven years since the last release, and a lot
+    of work has been going on in that time. There are new file
+    formats and many bug fixes.
+
+-------------------------------------------------------------------
+Sun Oct 14 00:00:00 UTC 2018 - Markus Rex <msrex@msrex.de>
+
+- remove debug-package definition for non-suse distros
+
+-------------------------------------------------------------------
+Wed Jul  9 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be>
+
+- added missing Requires in -devel subpackage
+
+-------------------------------------------------------------------
+Mon Jul  7 00:00:00 UTC 2008 - Pascal Bleser <guru@unixtech.be>
+
+- new package
+

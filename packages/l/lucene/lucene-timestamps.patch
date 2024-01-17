@@ -1,0 +1,57 @@
+--- lucene-8.11.2/analysis/common/src/tools/java/org/apache/lucene/analysis/standard/GenerateJflexTLDMacros.java	2022-06-13 18:25:09.000000000 +0200
++++ lucene-8.11.2/analysis/common/src/tools/java/org/apache/lucene/analysis/standard/GenerateJflexTLDMacros.java	2023-09-18 13:40:32.178161872 +0200
+@@ -207,7 +207,7 @@
+         writer.write(NL);
+       }
+       writer.write("// generated on ");
+-      writer.write(dateFormat.format(new Date()));
++      writer.write(dateFormat.format(System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date()));
+       writer.write(NL);
+       writer.write("// by ");
+       writer.write(this.getClass().getName());
+--- lucene-8.11.2/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DocMaker.java	2022-06-13 18:25:10.000000000 +0200
++++ lucene-8.11.2/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/DocMaker.java	2023-09-18 13:38:53.074193935 +0200
+@@ -272,7 +272,7 @@
+ 
+     if (date == null) {
+       // just set to right now
+-      date = new Date();
++      date = System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date();
+     }
+ 
+     Field dateField = ds.getNumericField(DATE_MSEC_FIELD, Long.class);
+--- lucene-8.11.2/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/LongToEnglishContentSource.java	2022-06-13 18:25:10.000000000 +0200
++++ lucene-8.11.2/benchmark/src/java/org/apache/lucene/benchmark/byTask/feeds/LongToEnglishContentSource.java	2023-09-18 13:39:15.331003116 +0200
+@@ -54,7 +54,7 @@
+     docData.setBody(rnbf.format(curCounter));
+     docData.setName("doc_" + String.valueOf(curCounter));
+     docData.setTitle("title_" + String.valueOf(curCounter));
+-    docData.setDate(new Date());
++    docData.setDate(System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date());
+     return docData;
+   }
+ 
+--- lucene-8.11.2/core/src/java/org/apache/lucene/index/IndexWriter.java	2022-06-13 18:25:10.000000000 +0200
++++ lucene-8.11.2/core/src/java/org/apache/lucene/index/IndexWriter.java	2023-09-18 13:41:45.318630172 +0200
+@@ -4593,7 +4593,7 @@
+     diagnostics.put("java.runtime.version", System.getProperty("java.runtime.version", "undefined"));
+     // Hotspot version, e.g. 2.8 for J9:
+     diagnostics.put("java.vm.version", System.getProperty("java.vm.version", "undefined"));
+-    diagnostics.put("timestamp", Long.toString(new Date().getTime()));
++    diagnostics.put("timestamp", Long.toString((System.getenv("SOURCE_DATE_EPOCH") != null ? new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))) : new Date()).getTime()));
+     if (details != null) {
+       diagnostics.putAll(details);
+     }
+--- lucene-8.11.2/core/src/java/org/apache/lucene/util/StringHelper.java	2022-06-13 18:25:10.000000000 +0200
++++ lucene-8.11.2/core/src/java/org/apache/lucene/util/StringHelper.java	2023-09-18 17:34:58.751336732 +0200
+@@ -214,6 +214,10 @@
+     
+     String prop = System.getProperty("tests.seed");
+ 
++    if (prop == null) {
++      prop = System.getenv("SOURCE_DATE_EPOCH");
++    }
++
+     // State for xorshift128:
+     long x0;
+     long x1;

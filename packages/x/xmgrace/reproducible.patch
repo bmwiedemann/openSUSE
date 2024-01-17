@@ -1,0 +1,38 @@
+PATCH-FIX-UPSTREAM -- ToDo
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Thu May 4 13:15:15 2017 +0200
+Allow to override the build date
+
+using the SOURCE_DATE_EPOCH env var
+to make package builds reproducible.
+
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+also use gmtime instead of localtime to not be dependent on locale
+
+Index: grace-5.1.25/src/buildinfo.c
+===================================================================
+--- grace-5.1.25.orig/src/buildinfo.c
++++ grace-5.1.25/src/buildinfo.c
+@@ -52,6 +52,7 @@ static void VersionInfo(FILE *outfile)
+     struct utsname u_info;
+     time_t time_info;
+     char *ctime_string;
++    char *source_date_epoch;
+ 
+     fprintf(outfile, "#define BI_VERSION_ID %d\n",
+             MAJOR_REV*10000 + MINOR_REV*100 + PATCHLEVEL);
+@@ -104,8 +105,9 @@ static void VersionInfo(FILE *outfile)
+     fprintf(outfile, "#define BI_SYSTEM \"%s %s %s %s\"\n",
+         u_info.sysname, u_info.version, u_info.release, u_info.machine);
+ 
+-    time_info = time(NULL);
+-    ctime_string = ctime(&time_info);
++    if ((source_date_epoch = getenv("SOURCE_DATE_EPOCH")) == NULL || (time_info = (time_t)strtol(source_date_epoch, NULL, 10)) <= 0)
++        time_info = time(NULL);
++    ctime_string = asctime(gmtime(&time_info));
+     if (ctime_string[strlen(ctime_string) - 1] == '\n') {
+         ctime_string[strlen(ctime_string) - 1] = '\0';
+     }

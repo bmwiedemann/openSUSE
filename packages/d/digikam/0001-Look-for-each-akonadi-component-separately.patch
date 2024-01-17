@@ -1,0 +1,32 @@
+From 969e9b89dce08fc1e5a1b8991f17d57b1abf5450 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sat, 26 Aug 2023 12:14:25 +0200
+Subject: [PATCH] Look for each akonadi component separately
+
+---
+ core/cmake/rules/RulesKDEFramework.cmake | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/core/cmake/rules/RulesKDEFramework.cmake b/core/cmake/rules/RulesKDEFramework.cmake
+index 6100334..8a18288 100644
+--- a/core/cmake/rules/RulesKDEFramework.cmake
++++ b/core/cmake/rules/RulesKDEFramework.cmake
+@@ -37,12 +37,9 @@ endif()
+ 
+ if(ENABLE_AKONADICONTACTSUPPORT)
+ 
+-    find_package(KF5 ${AKONADI_MIN_VERSION} QUIET
+-                                            OPTIONAL_COMPONENTS
+-                                            Akonadi
+-                                            AkonadiContact      # For KDE Mail Contacts support.
+-                                            Contacts            # API for contacts/address book data.
+-    )
++    find_package(KF5Akonadi ${AKONADI_MIN_VERSION} REQUIRED)
++    find_package(KF5AkonadiContact ${AKONADI_MIN_VERSION} REQUIRED) # For KDE Mail Contacts support.
++    find_package(KF5Contacts ${AKONADI_MIN_VERSION} REQUIRED) # API for contacts/address book data.
+ 
+ endif()
+ 
+-- 
+2.41.0
+

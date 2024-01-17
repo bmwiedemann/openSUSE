@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Tue Jul 25 05:38:04 UTC 2017 - coolo@suse.com
+
+- updated to 0.87
+   see /usr/share/doc/packages/perl-IO-All/Changes
+
+  0.87 Tue Jul 18 14:05:40 PDT 2017
+   - Fix io($dir)->all when files have unicode in names (GH#95)
+   - Stop trampling $!
+   - Add cmp overload to fix some windows problems (GH#74)
+
+-------------------------------------------------------------------
+Tue Apr 14 19:40:21 UTC 2015 - coolo@suse.com
+
+- updated to 0.86
+   see /usr/share/doc/packages/perl-IO-All/Changes
+
+  0.86 Thu Jan  1 18:44:25 PST 2015
+   - Revamp docs
+  
+  0.85 Mon Dec 15 08:34:09 CST 2014
+   - Fix copy tests on Windows
+  
+  0.84 Sun Dec 14 02:06:37 CST 2014
+   - Pass separator along when tie'ing (Fixes GH#52, Arthur Axel 'fREW'
+     Schmidt)
+   - Add ->copy method (Arthur Axel 'fREW' Schmidt)
+   - Prefix private methods with underscores (Arthur Axel 'fREW' Schmidt)
+  
+  0.83 Sat Dec 13 01:00:16 CST 2014
+   - Allow passing an argument to ->relative (Arthur Axel 'fREW' Schmidt)
+  
+  0.82 Thu Nov 13 15:10:32 CST 2014
+   - Use bsd_glob for ::Dir->glob (Arthur Axel 'fREW' Schmidt)
+  
+  0.81 Wed Nov  5 18:18:25 PST 2014
+   - Fixed a doc formatting bug.
+  
+  0.80 Tue Nov  4 11:13:18 PST 2014
+   - Make the Role Call list link to their doc sections.
+
+-------------------------------------------------------------------
+Mon Sep 15 12:52:36 UTC 2014 - coolo@suse.com
+
+- updated to 0.79
+  - Doc enhancement. PR/51. @nheinric++
+ 
+ 0.78 Thu Aug 28 11:56:36 PDT 2014
+  - Release to steal indexing back from Alt::IO::All::new.
+ 
+ 0.77 Tue Aug 26 12:37:29 PDT 2014
+  - Add new overloads from PR/49 @ginzel++
+ 
+ 0.76 Tue Aug 19 16:21:05 PDT 2014
+  - Relplace tabs with spaces
+ 
+ 0.75 Sat Aug 16 16:41:13 PDT 2014
+  - Change testdir to t
+ 
+ 0.74 Sat Aug 16 16:03:33 PDT 2014
+  - Fix strict/warnings
+ 
+ 0.73 Sat Aug 16 15:35:55 PDT 2014
+  - Remove 'use 5.x.x' from code
+ 
+ 0.72 Sat Aug 16 11:19:00 PDT 2014
+  - Meta 0.0.2
+ 
+ 0.71 Sat Aug 16 03:45:11 PDT 2014
+  - Eliminate spurious trailing whitespace
+ 
+ 0.70 Sat Aug 16 02:08:08 PDT 2014
+  - Eliminate File::Basename from test/
+ 
+ 0.69 Fri Aug 15 15:55:18 PDT 2014
+  - Add t/000-compile-modules.t
+  - CPAN Day 2014 - 21 Release Salute!
+ 
+ 0.68 Sun Aug 10 08:56:08 PDT 2014
+  - PR/47. Doc fixes. @ginzel++
+ 
+ 0.67 Sat Aug  2 11:58:01 PDT 2014
+  - Fix Copyright years.
+ 
+ 0.66 Wed Jul 16 23:39:38 PDT 2014
+  - Move doc to Swim
+  - Fix Meta and add Contributing file
+ 
+ 0.65 Sat Jun 14 12:48:31 PDT 2014
+  - Support recommended modules again
+ 
+ 0.64 Sat Jun 14 12:33:21 PDT 2014
+  - New badge syntax
+  - Changed the ABSTRACT
+ 
+ 0.63 Sun Jun  8 12:45:43 PDT 2014
+  - Add coveralls badge
+  - Finish porting pod to kwim
+ 
+ 0.62 Sat Jun  7 13:36:32 PDT 2014
+  - Convert release to Zilla::Dist
+  - Start converting doc to Kwim
+ 
+ 0.61
+  - Fix GH#44 (Thanks Shlomi Fish!)
+
+-------------------------------------------------------------------
+Sat Mar 22 19:05:19 UTC 2014 - coolo@suse.com
+
+- updated to 0.60
+ - Fix IO Layer situation (Thanks Mithaldu!)
+
+-------------------------------------------------------------------
+Mon Mar 10 07:10:05 UTC 2014 - coolo@suse.com
+
+- updated to 0.59
+ - Fix possible infinite loop in t/accept.t (Thanks C. Wallace for complaining)
+   (closes #42)
+ - Fix yet another utf8 validation issue (Thanks Mithaldu for complaining)
+   (closes #38)
+ - Fix warnings running t/tie.t on windows (Thanks Mithaldu for complaining)
+   (closes #37)
+ - Fix canonpath on MSWin32
+ - Fix marking files as both binary and utf8 (Thanks Mithaldu!) (closes GH#36)
+ - Fix printing to a tie'd object, closes GH#26 (thanks Graham Knop for helping)
+ - Fix tests if $^X ne 'perl', closes GH#35 (thanks Hugemeir for the report)
+ - Return realpath for canonpath when possible (closes GH#34)
+ - Fix regression related to chaining dirs caused by making '' not become '/'
+ - correctly check exists for ::File, ::Dir, and ::Link
+ - RT#61627/GH#29 and Fix RT#82633/GH#32, thanks Graham Knop for helping
+ - Some doc cleanup around the SYNOPSIS (Thanks Mithaldu)
+
+-------------------------------------------------------------------
+Tue Jun  4 14:47:20 UTC 2013 - coolo@suse.com
+
+- updated to 0.46
+ - Added an example for ->assert and fixed the \E warnings on 5.16, courtesy shlomi fish
+
+-------------------------------------------------------------------
+Wed Dec 21 11:39:26 UTC 2011 - coolo@suse.com
+
+- update to 0.44
+  - Switch from testing $^V to $^] in DESTROY since $^V comparisons leak pre-5.14 (mst)
+  - Fix directory scalar deref for mst++
+  - Doc work and tests by Shlomi Fish
+  - Use Module::Package
+  - Fix RT#41819
+
+-------------------------------------------------------------------
+Wed Dec  1 06:55:38 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:15 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Aug 29 19:14:10 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.41)
+

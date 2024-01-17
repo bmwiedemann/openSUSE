@@ -1,0 +1,26 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 9 Apr 2023 00:43:07 +0200
+Subject: [PATCH 09/20] Inline private wxDocChildFrameAny::OnActivate
+
+Pretty unclear, but for now let's just inline the function. This should
+at least not change behavior.
+---
+ Source/tmwxGUI/tmwxDocView/tmwxDesignFrame.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Source/tmwxGUI/tmwxDocView/tmwxDesignFrame.cpp b/Source/tmwxGUI/tmwxDocView/tmwxDesignFrame.cpp
+index 3775745..0a54a5c 100644
+--- a/Source/tmwxGUI/tmwxDocView/tmwxDesignFrame.cpp
++++ b/Source/tmwxGUI/tmwxDocView/tmwxDesignFrame.cpp
+@@ -61,7 +61,10 @@ also need to update our floating windows with the currently-active palette.
+ *****/
+ void tmwxDesignFrame::OnActivate(wxActivateEvent& event)
+ {
+-  tmwxDocChildFrame::OnActivate(event); // let base class finish handling the event.
++  BaseClass::OnActivate(event); // let base class finish handling the event.
++
++  if (m_childView)
++      m_childView->Activate(event.GetActive());
+ 
+   if (event.GetActive()) {
+     // Make sure the application now knows we're the top window in order to

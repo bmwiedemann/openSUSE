@@ -1,0 +1,6 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("graphviz-tcl.* devel-file-in-non-devel-package")
+addFilter("lib.* obsolete-not-provided libgraphviz6")
+addFilter("liblab_gamut.* shared-library-without-dependency-information")

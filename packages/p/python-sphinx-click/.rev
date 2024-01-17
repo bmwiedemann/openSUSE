@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff3549486ecf46861372ee017244347f</srcmd5>
+    <version>3.1.0</version>
+    <time>1649876765</time>
+    <user>dimstar_suse</user>
+    <comment>required for cookiecutter https://build.opensuse.org/request/show/969173</comment>
+    <requestid>969831</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e480fe28f9b9c05571c8ac578ff9c6f7</srcmd5>
+    <version>4.3.0</version>
+    <time>1667306526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032478</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df6f769e9b248d19091aa94eb663f288</srcmd5>
+    <version>4.4.0</version>
+    <time>1670430891</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.0:
+  * Add release note for Python 3.11 support
+  * actions: Test Python 3.11
+  * Points to alternative to complement Click-based CLI documentation
+  * Add Sphinx extension classifier
+  * Add pull request template
+  * Trivial setup.py, setup.cfg changes
+  * Render option defaults as literals
+  * Change target Python version used for black
+  * actions: Update to latest versions of actions
+  * Use deep clone for GitHub actions
+  * docs: Add more examples
+  * tests: Add more application tests
+  * Add our first &quot;extension&quot; test
+  * Switch to pytest for testing
+  * Run mypy as part of CI job</comment>
+    <requestid>1040735</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3d36b0b72a448f147cc733613d4ef43d</srcmd5>
+    <version>4.4.0</version>
+    <time>1683916625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1086533</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5fe6033b4ea510a2469357806c6548d1</srcmd5>
+    <version>5.0.1</version>
+    <time>1695209504</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112497</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3058a205d541725c4ee7c7c160ac6b3</srcmd5>
+    <version>5.1.0</version>
+    <time>1700675695</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.0:
+  * tox: Remove py37 entries
+  * Add support for mocking modules
+  * docs: Fix indentation
+  * setup: Add Sphinx classifier</comment>
+    <requestid>1128046</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/systemd-ask-password "Enter SSL pass phrase for $1 ($2): "

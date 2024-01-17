@@ -1,0 +1,78 @@
+From 5f125524f490b4542ce5d5fa4a45b5fe60a9b449 Mon Sep 17 00:00:00 2001
+From: Christian Goll <cgoll@suse.com>
+Date: Tue, 27 Nov 2018 08:18:08 +0100
+Subject: [PATCH] vnfs: SUSE - Make sure no repos are left over when adding a
+ list of repositories
+
+---
+ vnfs/libexec/wwmkchroot/include-suse | 39 ++++++++++++++++------------
+ 1 file changed, 23 insertions(+), 16 deletions(-)
+
+diff --git a/vnfs/libexec/wwmkchroot/include-suse b/vnfs/libexec/wwmkchroot/include-suse
+index 1b556f5..af7dd36 100644
+--- a/vnfs/libexec/wwmkchroot/include-suse
++++ b/vnfs/libexec/wwmkchroot/include-suse
+@@ -54,37 +54,44 @@ prechroot() {
+         [ -d /etc/zypp/credentials.d ] && cp -rap /etc/zypp/credentials.d $CHROOTDIR/etc/zypp
+     elif [ -n "$INSTALL_ISO" ]; then
+         # Use ISO
+-        for i in `ls -d $MEDIA_MOUNTPATH.*`; do
++        for mountpath in `ls -d $MEDIA_MOUNTPATH.*`; do
+             if [ -z "$INSTALLDIRS" ]; then
+-                if [ -d $i/repodata ]; then
++                if [ -d ${mountpath}/repodata ]; then
+                     # RHEL 6.x
+-                    INSTALLDIRS="file://$i"
+-                elif [ -d $i/Server/repodata ]; then
++                    INSTALLDIRS="file://${mountpath}"
++                elif [ -d ${mountpath}/Server/repodata ]; then
+                     # RHEL 5.x
+-                    INSTALLDIRS="file://$i/Server"
++                    INSTALLDIRS="file://${mountpath}/Server"
+                 fi
+             else
+-                INSTALLDIRS="$INSTALLDIRS,file://$i"
++                INSTALLDIRS="$INSTALLDIRS,file://${mountpath}"
+             fi
+         done
+-
+         ZYP_MIRROR=$INSTALLDIRS
+     fi
+ 
+-    declare -i cnt=0
+-    $ZYP_CMD rr --all
+-    for i in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
+-        $ZYP_CMD ar $i repo-$((cnt++))
+-    done
+-    
++    if [ -n "${ZYP_MIRROR}" ]; then
++        declare -i i=0 cnt
++        cnt=$($ZYP_CMD lr | grep '|' | wc -l)
++        while [ $i -lt $cnt ]; do
++            $ZYP_CMD rr $i
++            let i++
++        done
++
++        cnt=0
++        for repourl in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
++            $ZYP_CMD ar $repourl repo-$((cnt++))
++        done
++    fi
++
+     PKGR_CMD="$ZYP_CMD install --auto-agree-with-licenses $PKGLIST"
+-    
++
+     return 0
+ }
+ 
+ postchroot() {
+-    for i in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
+-        $ZYP_CMD rr $i
++    for mirror in `echo $ZYP_MIRROR | sed -e 's/,/ /'`; do
++        $ZYP_CMD rr $mirror
+     done
+     touch $CHROOTDIR/fastboot
+     return 0
+-- 
+2.25.0
+

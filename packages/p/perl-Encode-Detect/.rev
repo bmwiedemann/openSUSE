@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea28d8bb5ee114b7ca41c832a5bacebe</srcmd5>
+    <version>1.01</version>
+    <time>1270758127</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Encode-Detect based on submit request 37152 from user computersalat
+</comment>
+    <requestid>37152</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ea28d8bb5ee114b7ca41c832a5bacebe</srcmd5>
+    <version>1.01</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ea28d8bb5ee114b7ca41c832a5bacebe</srcmd5>
+    <version>1.01</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c52fe1be037105500d692320f2b2ae15</srcmd5>
+    <version>1.01</version>
+    <time>1291582139</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54524 from user coolo
+</comment>
+    <requestid>54524</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b9f8da9537143bb14fb6a67a57496ac5</srcmd5>
+    <version>1.01</version>
+    <time>1291582143</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54524
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>b9f8da9537143bb14fb6a67a57496ac5</srcmd5>
+    <version>1.01</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>b9f8da9537143bb14fb6a67a57496ac5</srcmd5>
+    <version>1.01</version>
+    <time>1319182263</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>bb06f46045d50b8dd035a46e143cc45f</srcmd5>
+    <version>1.01</version>
+    <time>1321875573</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92275</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>40d415974248e15c5d478a35be74c426</srcmd5>
+    <version>1.01</version>
+    <time>1323193251</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>40d415974248e15c5d478a35be74c426</srcmd5>
+    <version>1.01</version>
+    <time>1340183834</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>40d415974248e15c5d478a35be74c426</srcmd5>
+    <version>1.01</version>
+    <time>1359109655</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>1d52469a50d65bc3b7aa88e7763bb952</srcmd5>
+    <version>1.01</version>
+    <time>1364898981</time>
+    <user>coolo</user>
+    <comment>fails to build on openSUSE &amp;gt;= 12.2, because perl-macros is deprecated there. Change documented. (forwarded request 161441 from rusjako)</comment>
+    <requestid>161450</requestid>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>1d52469a50d65bc3b7aa88e7763bb952</srcmd5>
+    <version>1.01</version>
+    <time>1379663658</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>1d52469a50d65bc3b7aa88e7763bb952</srcmd5>
+    <version>1.01</version>
+    <time>1409302269</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

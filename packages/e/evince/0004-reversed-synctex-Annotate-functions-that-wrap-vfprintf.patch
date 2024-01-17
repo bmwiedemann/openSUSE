@@ -1,0 +1,12 @@
+--- b/cut-n-paste/synctex/synctex_parser_utils.c
++++ a/cut-n-paste/synctex/synctex_parser_utils.c
+@@ -87,8 +87,7 @@
+ #   include <syslog.h>
+ #endif
+ 
++int _synctex_log(int level, const char * prompt, const char * reason,va_list arg);
+-int _synctex_error(const char * reason, ...) __attribute__((__format__ (__printf__, 1, 2)));
+-int _synctex_log(int level, const char * prompt, const char * reason, va_list arg) __attribute__((__format__ (__printf__, 3, 0)));
+ 
+ int _synctex_log(int level, const char * prompt, const char * reason,va_list arg) {
+ 	int result;

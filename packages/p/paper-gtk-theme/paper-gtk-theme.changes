@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Nov 23 14:47:09 UTC 2016 - sor.alexei@meowr.ru
+
+- Divide paper-gtk-theme to metatheme-paper-common, and
+  gtk{2,3}-metatheme-paper.
+- Don't require gtk2-engines, instead recommend
+  gtk2-theming-engine-adwaita.
+- Spec cleanup.
+
+-------------------------------------------------------------------
+Sun Jun  5 22:25:15 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging of version 2.1.0

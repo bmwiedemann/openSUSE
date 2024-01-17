@@ -1,0 +1,5 @@
+<package name="spack" project="openSUSE:Factory">
+  <title>Package manager for HPC systems</title>
+  <description>Spack is a configurable Python-based HPC package manager, automating the installation and fine-tuning of simulations and libraries. It operates on a wide variety of HPC platforms and enables users to build many code configurations. Software installed by Spack runs correctly regardless of environment, and file management is streamlined. Spack can install many variants of the same build using different compilers, options, and MPI implementations.</description>
+  <devel project="network:cluster" package="spack"/>
+</package>

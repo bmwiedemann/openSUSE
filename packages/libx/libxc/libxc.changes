@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Thu Jun 22 08:14:13 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.2.2:
+  * Dimension of v4rhosigma2lapl, v4rhosigma2tau, v4rhosigmatau2,
+    v4sigma3tau arrays was wrong
+  * CMake employed ENABLE_XHOST=ON by default, resulting in
+    binaries specific to the host processor
+
+-------------------------------------------------------------------
+Mon May 29 19:36:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * CMake does not link standard math library in shared xc
+    library
+  * Taylor expansions used in GGA_C_REVTCA, GGA_K_VT84F,
+    MGGA_X_FT98 were not of sufficient to guarantee accuracy of
+    all derivatives
+  * Replaced hard cutoff in MGGA_X_MBRXC_BG with a Taylor
+    expansion
+  * StandardMathLibraryC.cmake reusing variable names
+  * Memory allocation in xc-regression
+  * MGGA_C_REVSCAN was implemented incorrectly
+  * Missing comma in MGGA_XC_B97M_V
+  * GGA_X_HERMAN was incorrect: the functional is really a meta-
+    GGA but its form was unclear and it seems numerically
+    unstable
+
+-------------------------------------------------------------------
+Wed Dec 14 20:03:52 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Move xc-info binary to devel package and make devel pkg conflict
+  with older libxc5 to work around SLPP guideline violation from
+  older shared lib versions.
+
+-------------------------------------------------------------------
+Fri Dec  9 05:47:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.0:
+  * Changes to the internal handling of derivatives
+  * Improvements in array access, resulting in significant
+    speedups on GPUs.
+  * Bug fix: LDA_C_KARASIEV and LDA_C_KARASIEV_MOD were
+    implemented incorrectly.
+  * Added:
+    - GGA functionals: XC_B97_3C, X_PBE_GAUSSIAN, C_PBE_GAUSSIAN,
+      X_PBE_MOD, X_NCAPR
+    - HYB_GGA functionals: XC_B3P86_NWCHEM
+    - MGGA functionals: C_TPSS_GAUSSIAN, C_CC, C_CCALDA, X_VCML,
+      XC_VCML_RVV10
+    - HYB_MGGA functionals: XC_BR3P86
+    - functions to extract BibTeX reference keys from functionals
+- Specfile clean up.
+- Bump so version.
+- Drop unnecessary autotools BuildRequires (automake, autoconf,
+  libtool).
+- Update source URL.
+
+-------------------------------------------------------------------
+Tue Jan  1 10:19:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim time-sensitive wording from description.
+
+-------------------------------------------------------------------
+Sun Dec 30 17:53:58 UTC 2018 - Christoph Junghans <junghans@votca.org>
+
+- Update to 4.2.3
+  * timeout when generating the xc_func.h file with CMake.
+- Major spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jun 17 07:21:21 UTC 2018 - rwarmbier@uj.ac.za
+
+- Update to 4.2.1
+    * Many changes (see http://www.tddft.org/programs/libxc/changes/) , f.e.:
+        * License from LGPL to the Mozilla Public License 2 (MPL2).
+	* CPP for Fortran sources macro, so that cpp -C -freestanding is used instead of cpp -ansi. 
+
+-------------------------------------------------------------------
+Wed Mar 14 17:36:43 UTC 2018 - robert.warmbier@wits.ac.za
+
+- Update to 4.0.4
+    * Fixed:
+    	* Incorrect XC_CORRELATION flag in the XC_LDA_K_ZLP, XC_LDA_X_RAE, and XC_GGA_XC_HLE16 functionals.
+	* Incorrect XC_EXCHANGE flag in the XC_GGA_C_SG4, XC_GGA_C_PBE_MOL, and XC_GGA_C_TM_PBE functionals.
+	* Incorrect XC_EXCHANGE_CORRELATION flag in the XC_MGGA_C_SCAN_RVV10 functional.
+	* Incorrect XC_FAMILY_MGGA family in the HYB_MGGA_XC_B0KCIS functional. 
+
+-------------------------------------------------------------------
+Wed Nov 22 07:23:57 UTC 2017 - robert.warmbier@wits.ac.za
+
+- Update to 4.0.3
+    * Fixed: Generation of libxc_docs.txt file.
+    * Added: Missing C to Fortran interface for xc_f90_nlc_coef. 
+
+-------------------------------------------------------------------
+Wed Nov  8 09:29:16 UTC 2017 - robert.warmbier@wits.ac.za
+
+- Update to 4.0.2
+    * See https://gitlab.com/libxc/libxc/wikis/Libxc-changes for details
+    * There are a few incompatible changes, be careful 
+
+-------------------------------------------------------------------
+Tue Nov  7 15:44:41 UTC 2017 - robert.warmbier@wits.ac.za
+
+- Update to 3.0.0
+    * See https://gitlab.com/libxc/libxc/wikis/Libxc-changes for details
+    * Added
+	* Micro version number to version function and version header file. 
+	* Version_string function, which returns the version number in the following format: major.minor.micro
+	*Fortran 2003 interface using the iso_c_bindings module. 
+    
+-------------------------------------------------------------------
+Thu Jul 21 08:02:24 UTC 2016 - robert.warmbier@wits.ac.za
+
+- Update to 2.2.3
+    *  Fixed bugs in the following functionals:
+        *  GGA: X_N12, C_N12, C_N12_SX, all the X_HJS_*, X_VMT84_GE
+        *  HYB_GGA: X_N12_SX, all the XC_HJS_*, XC_O3LYP, XC_X3LYP
+        *  GGA (second order derivatives only): X_B88, X_OPTB88_VDW, X_MB88, K_LLP, K_FR_B88, K_THAKKAR 
+    * Fixed build with gcc 6.  
+
+-------------------------------------------------------------------
+Tue Nov 24 13:07:36 UTC 2015 - robert.warmbier@wits.ac.za
+
+- First submit using 2.2.2 
+
+ 

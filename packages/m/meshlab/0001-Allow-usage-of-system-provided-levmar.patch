@@ -1,0 +1,159 @@
+From d011885857365284874a14a9cb14a454eb72b157 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 22 Jan 2023 07:07:41 +0100
+Subject: [PATCH] Allow usage of system provided levmar
+
+---
+ src/external/levmar.cmake                     | 22 ++++++++++++++++++-
+ .../edit_mutualcorrs/levmarmethods.h          |  2 +-
+ src/meshlabplugins/edit_mutualcorrs/solver.h  |  2 +-
+ .../param_collapse.h                          |  2 +-
+ .../parametrizator.h                          |  1 -
+ .../filter_mutualglobal/levmarmethods.h       |  2 +-
+ .../filter_mutualglobal/solver.h              |  2 +-
+ .../filter_mutualinfo/levmarmethods.h         |  2 +-
+ src/meshlabplugins/filter_mutualinfo/solver.h |  2 +-
+ 9 files changed, 28 insertions(+), 9 deletions(-)
+
+diff --git a/src/external/levmar.cmake b/src/external/levmar.cmake
+index 63ed77e..50e066a 100644
+--- a/src/external/levmar.cmake
++++ b/src/external/levmar.cmake
+@@ -3,10 +3,30 @@
+ # SPDX-License-Identifier: BSL-1.0
+ 
+ option(ALLOW_BUNDLED_LEVMAR "Allow use of bundled levmar source" ON)
++option(ALLOW_SYSTEM_LEVMAR "Allow use of system-provided levmar" ON)
+ 
+ set(LEVMAR_DIR ${CMAKE_CURRENT_LIST_DIR}/levmar-2.3)
+ 
+-if(ALLOW_BUNDLED_LEVMAR AND EXISTS "${LEVMAR_DIR}/lm.h")
++if (ALLOW_SYSTEM_LEVMAR)
++	find_library(LEVMAR_LIBRARY NAMES levmar)
++	find_path(LEVMAR_INCLUDE_DIR NAMES levmar.h PATH_SUFFIXES levmar)
++
++	if (LEVMAR_LIBRARY AND LEVMAR_INCLUDE_DIR)
++	        message(STATUS "Found levmar: ${LEVMAR_LIBRARY} ${LEVMAR_INCLUDE_DIR}")
++		add_library(levmar::levmar UNKNOWN IMPORTED)
++		set_target_properties(levmar::levmar PROPERTIES
++			INTERFACE_INCLUDE_DIRECTORIES "${LEVMAR_INCLUDE_DIR}")
++		set_property(TARGET levmar::levmar APPEND PROPERTY
++			IMPORTED_LOCATION "${LEVMAR_LIBRARY}")
++	endif()
++endif()
++
++if (TARGET levmar::levmar)
++	message(STATUS "- levmar - using system-provided library")
++	add_library(external-levmar INTERFACE)
++	target_link_libraries(external-levmar INTERFACE levmar::levmar)
++
++elseif(ALLOW_BUNDLED_LEVMAR AND EXISTS "${LEVMAR_DIR}/lm.h")
+ 	message(STATUS "- levmar - using bundled source")
+ 	add_library(
+ 		external-levmar STATIC
+diff --git a/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h b/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h
+index 7801493..c1a15c8 100644
+--- a/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h
++++ b/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h
+@@ -12,7 +12,7 @@ sufficient to get a calibrated shot.<br>
+ 
+ #include <list>
+ 
+-#include "lm.h"
++#include <levmar.h>
+ 
+ 
+ struct LevmarCorrelation {
+diff --git a/src/meshlabplugins/edit_mutualcorrs/solver.h b/src/meshlabplugins/edit_mutualcorrs/solver.h
+index 7ee965a..7d93079 100644
+--- a/src/meshlabplugins/edit_mutualcorrs/solver.h
++++ b/src/meshlabplugins/edit_mutualcorrs/solver.h
+@@ -5,7 +5,7 @@
+ #include "alignset.h"
+ 
+ #include "parameters.h"
+-#include "lm.h"
++#include <levmar.h>
+ 
+ #include <iostream>
+ #include <fstream>
+diff --git a/src/meshlabplugins/filter_isoparametrization/param_collapse.h b/src/meshlabplugins/filter_isoparametrization/param_collapse.h
+index 98060e9..363b2ff 100644
+--- a/src/meshlabplugins/filter_isoparametrization/param_collapse.h
++++ b/src/meshlabplugins/filter_isoparametrization/param_collapse.h
+@@ -14,7 +14,7 @@
+ 
+ #include <local_parametrization.h>
+ #include <mesh_operators.h>
+-#include <lm.h>
++#include <levmar.h>
+ #include <uv_grid.h>
+ 
+ #include "opt_patch.h"
+diff --git a/src/meshlabplugins/filter_isoparametrization/parametrizator.h b/src/meshlabplugins/filter_isoparametrization/parametrizator.h
+index 74b03db..c548a31 100644
+--- a/src/meshlabplugins/filter_isoparametrization/parametrizator.h
++++ b/src/meshlabplugins/filter_isoparametrization/parametrizator.h
+@@ -32,7 +32,6 @@
+ #include <vcg/space/color4.h>
+ #include <dual_coord_optimization.h>
+ #include <float.h>
+-#include <lm.h>
+ #ifndef _MESHLAB
+ #include <wrap/io_trimesh/export_ply.h>
+ #endif
+diff --git a/src/meshlabplugins/filter_mutualglobal/levmarmethods.h b/src/meshlabplugins/filter_mutualglobal/levmarmethods.h
+index decb063..a35d185 100644
+--- a/src/meshlabplugins/filter_mutualglobal/levmarmethods.h
++++ b/src/meshlabplugins/filter_mutualglobal/levmarmethods.h
+@@ -12,7 +12,7 @@ sufficient to get a calibrated shot.<br>
+ 
+ #include <list>
+ 
+-#include "lm.h"
++#include <levmar.h>
+ 
+ 
+ struct LevmarCorrelation {
+diff --git a/src/meshlabplugins/filter_mutualglobal/solver.h b/src/meshlabplugins/filter_mutualglobal/solver.h
+index c7008ec..9e2e497 100644
+--- a/src/meshlabplugins/filter_mutualglobal/solver.h
++++ b/src/meshlabplugins/filter_mutualglobal/solver.h
+@@ -5,7 +5,7 @@
+ #include "alignset.h"
+ 
+ #include "parameters.h"
+-#include "lm.h"
++#include <levmar.h>
+ 
+ #include <iostream>
+ #include <fstream>
+diff --git a/src/meshlabplugins/filter_mutualinfo/levmarmethods.h b/src/meshlabplugins/filter_mutualinfo/levmarmethods.h
+index decb063..a35d185 100644
+--- a/src/meshlabplugins/filter_mutualinfo/levmarmethods.h
++++ b/src/meshlabplugins/filter_mutualinfo/levmarmethods.h
+@@ -12,7 +12,7 @@ sufficient to get a calibrated shot.<br>
+ 
+ #include <list>
+ 
+-#include "lm.h"
++#include <levmar.h>
+ 
+ 
+ struct LevmarCorrelation {
+diff --git a/src/meshlabplugins/filter_mutualinfo/solver.h b/src/meshlabplugins/filter_mutualinfo/solver.h
+index c7008ec..9e2e497 100644
+--- a/src/meshlabplugins/filter_mutualinfo/solver.h
++++ b/src/meshlabplugins/filter_mutualinfo/solver.h
+@@ -5,7 +5,7 @@
+ #include "alignset.h"
+ 
+ #include "parameters.h"
+-#include "lm.h"
++#include <levmar.h>
+ 
+ #include <iostream>
+ #include <fstream>
+-- 
+2.39.0
+

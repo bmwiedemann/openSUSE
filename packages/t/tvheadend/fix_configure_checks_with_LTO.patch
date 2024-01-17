@@ -1,0 +1,80 @@
+From 77ef695f0e76a5f989febfccdc19972ec438fa37 Mon Sep 17 00:00:00 2001
+From: StefanBruens <stefan.bruens@rwth-aachen.de>
+Date: Wed, 9 Oct 2019 01:52:50 +0200
+Subject: [PATCH] Avoid configure checks being optimized away with LTO
+
+In case the checks are compiled with CFLAGS including "-O1 -flto" (or any
+other optimization level), a "test()" function not referenced by by main
+will be optimized away and discarded prior to the final linking step, and
+there will be no undefined symbols, thus the checks always succeeds.
+
+This at least affects the "strlcpy"/"strlcat" checks, but may affects other
+checks as well.
+---
+ configure | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/configure b/configure
+index e5f6f593b6..e76760479a 100755
+--- a/configure
++++ b/configure
+@@ -177,27 +177,31 @@ else
+ fi
+ 
+ check_cc_snippet strlcat '#include <string.h>
+-int test(int argc, char **argv) {
++#define TEST test
++int test() {
+   char dst[10];
+   strlcat("test", dst, sizeof(dst));
+   return 0;
+ }'
+ 
+ check_cc_snippet strlcpy '#include <string.h>
+-int test(int argc, char **argv) {
++#define TEST test
++int test() {
+   char dst[10];
+   strlcpy("test", dst, sizeof(dst));
+   return 0;
+ }'
+ 
+ check_cc_snippet fdatasync '#include <unistd.h>
+-int test(int argc, char **argv) {
++#define TEST test
++int test() {
+   fdatasync(0);
+   return 0;
+ }'
+ 
+ check_cc_snippet getloadavg '#include <stdlib.h>
+-void test() { getloadavg(NULL,0); }'
++#define TEST test
++int test() { return getloadavg(NULL,0); }'
+ 
+ check_cc_snippet atomic32 '#include <stdint.h>
+ int test(int *ptr){
+@@ -222,6 +226,7 @@ return __sync_fetch_and_add(ptr, (void *)1);
+ }'
+ 
+ check_cc_snippet bitops64 '#include <stdint.h>
++#define TEST test
+ int test(void){
+   int l = sizeof(long);
+   return l == 8 ? 0 : 1;
+@@ -312,6 +317,7 @@ int test(void)
+ # note that iconv routines are mandatory
+ check_cc_snippet libiconv '
+ #include <iconv.h>
++#define TEST test
+ int test(void)
+ {
+   iconv_t ic = iconv_open("ASCII", "ASCII");
+@@ -327,6 +333,7 @@ fi
+ 
+ check_cc_snippet ifnames '
+ #include <net/if.h>
++#define TEST test
+ int test(void)
+ {
+   struct if_nameindex *ifnames = if_nameindex();

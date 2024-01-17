@@ -1,0 +1,15 @@
+---
+ pidgin/gtksound.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/pidgin/gtksound.c
++++ b/pidgin/gtksound.c
+@@ -314,7 +314,7 @@ pidgin_sound_init(void)
+ 	purple_prefs_add_bool(PIDGIN_PREFS_ROOT "/sound/conv_focus", TRUE);
+ 	purple_prefs_add_bool(PIDGIN_PREFS_ROOT "/sound/mute", FALSE);
+ 	purple_prefs_add_path(PIDGIN_PREFS_ROOT "/sound/command", "");
+-	purple_prefs_add_string(PIDGIN_PREFS_ROOT "/sound/method", "automatic");
++	purple_prefs_add_string(PIDGIN_PREFS_ROOT "/sound/method", "alsa");
+ 	purple_prefs_add_int(PIDGIN_PREFS_ROOT "/sound/volume", 50);
+ 
+ #ifdef USE_GSTREAMER

@@ -1,0 +1,5 @@
+<package name="python-edk2toolext" project="openSUSE:Factory">
+  <title>Tianocore Edk2 PyTool Extensions </title>
+  <description>This is a Tianocore maintained project consisting of command line and other python tools and extensions for building and maintaining an Edk2 based UEFI firmware code tree.</description>
+  <devel project="devel:tools" package="python-edk2toolext"/>
+</package>

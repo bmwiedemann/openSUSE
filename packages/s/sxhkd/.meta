@@ -1,0 +1,5 @@
+<package name="sxhkd" project="openSUSE:Factory">
+  <title>sxhkd</title>
+  <description>Simple X hotkey daemon</description>
+  <devel project="X11:Utilities" package="sxhkd"/>
+</package>

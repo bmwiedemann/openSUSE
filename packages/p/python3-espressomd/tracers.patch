@@ -1,0 +1,13 @@
+diff --git a/src/core/virtual_sites/lb_inertialess_tracers.cpp b/src/core/virtual_sites/lb_inertialess_tracers.cpp
+index 5aae5af66c..b87b2d4232 100644
+--- a/src/core/virtual_sites/lb_inertialess_tracers.cpp
++++ b/src/core/virtual_sites/lb_inertialess_tracers.cpp
+@@ -92,7 +92,7 @@ void IBM_UpdateParticlePositions(ParticleRange const &particles,
+   // Euler integrator
+   for (auto &p : particles) {
+     if (p.is_virtual()) {
+-      for (int axis = 0; axis < 2; axis++) {
++      for (int axis = 0; axis < 3; axis++) {
+ #ifdef EXTERNAL_FORCES
+         if (not p.is_fixed_along(axis))
+ #endif

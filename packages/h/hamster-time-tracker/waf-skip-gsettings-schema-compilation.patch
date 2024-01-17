@@ -1,0 +1,45 @@
+From d60ae5a815cbd0c7cb313d7a2b2960b852d3cfb0 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 11 Feb 2020 17:28:05 +0100
+Subject: [PATCH] waf: skip gsettings schema compilation
+
+---
+ waflib/Tools/glib2.py | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/waflib/Tools/glib2.py b/waflib/Tools/glib2.py
+index 949fe37..2aca61e 100644
+--- a/waflib/Tools/glib2.py
++++ b/waflib/Tools/glib2.py
+@@ -301,20 +301,6 @@ def process_settings(self):
+ 		schema_task.set_outputs (target_node)
+ 		schema_task.env.GLIB_VALIDATE_SCHEMA_OUTPUT = target_node.abspath()
+ 
+-	# 3. schemas install task
+-	def compile_schemas_callback(bld):
+-		if not bld.is_install:
+-			return
+-		compile_schemas = Utils.to_list(bld.env.GLIB_COMPILE_SCHEMAS)
+-		destdir = Options.options.destdir
+-		paths = bld._compile_schemas_registered
+-		if destdir:
+-			paths = (os.path.join(destdir, path.lstrip(os.sep)) for path in paths)
+-		for path in paths:
+-			Logs.pprint('YELLOW', 'Updating GSettings schema cache %r' % path)
+-			if self.bld.exec_command(compile_schemas + [path]):
+-				Logs.warn('Could not update GSettings schema cache %r' % path)
+-
+ 	if self.bld.is_install:
+ 		schemadir = self.env.GSETTINGSSCHEMADIR
+ 		if not schemadir:
+@@ -325,7 +311,6 @@ def process_settings(self):
+ 			registered_schemas = getattr(self.bld, '_compile_schemas_registered', None)
+ 			if not registered_schemas:
+ 				registered_schemas = self.bld._compile_schemas_registered = set()
+-				self.bld.add_post_fun(compile_schemas_callback)
+ 			registered_schemas.add(schemadir)
+ 
+ class glib_validate_schema(Task.Task):
+-- 
+2.25.1
+

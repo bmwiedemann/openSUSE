@@ -1,0 +1,13 @@
+Index: data/arandr.desktop
+===================================================================
+--- data/arandr.desktop.orig
++++ data/arandr.desktop
+@@ -2,7 +2,7 @@
+ Name=ARandR
+ GenericName=Screen Settings
+ GenericName[de]=Bildschirmeinstellungen
+-Icon=display
++Icon=video-display
+ Exec=arandr
+ Terminal=false
+ Type=Application

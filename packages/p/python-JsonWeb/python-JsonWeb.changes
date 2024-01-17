@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Apr 10 12:14:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-311.patch to support python 3.11
+
+-------------------------------------------------------------------
+Tue Jun  9 11:14:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- replace nose with pytest
+
+-------------------------------------------------------------------
+Thu Nov  7 14:51:29 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Run through spec-cleaner
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:41 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Aug 24 13:42:06 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Wed Oct 28 17:34:29 UTC 2015 - mimi.vx@gmail.com
+
+- initial commit 
+
+

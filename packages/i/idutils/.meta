@@ -1,0 +1,10 @@
+<package name="idutils" project="openSUSE:Factory">
+  <title>Language-Independent Identifier Database Tool</title>
+  <description>Mkid is a simple, fast, high-capacity, and language-independent
+identifier database tool.  Actually, the term identifier is too
+limiting--mkid stores tokens, be they program identifiers of any form,
+literal numbers, or ordinary words.  Database queries can be issued
+from the command line or from within Emacs, serving as an augmented
+tags facility.</description>
+  <devel project="devel:tools" package="idutils"/>
+</package>

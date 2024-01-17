@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Dec 21 14:09:52 UTC 2011 - cfarrell@suse.com
+
+- license update: SUSE-Permissive
+  WTFYL is not on the SPDX list of licenses, nor is it likely to be
+  included. Use SUSE-Permissive in such cases
+
+-------------------------------------------------------------------
+Tue Dec 20 19:15:22 UTC 2011 - coolo@suse.com
+
+- initial package 1.112071
+    * created by cpanspec 1.78.06
+

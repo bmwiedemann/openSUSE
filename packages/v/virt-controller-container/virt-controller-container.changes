@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Oct 23 12:26:12 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add license header
+
+-------------------------------------------------------------------
+Thu Aug  4 07:25:07 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
+Wed Dec  8 15:08:26 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build only on aarch64 and x86_64
+
+-------------------------------------------------------------------
+Fri Jun  4 12:20:50 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Include the registry in org.opensuse.reference
+
+-------------------------------------------------------------------
+Wed Apr 28 11:44:17 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Tag the image with <version>-<release>
+
+-------------------------------------------------------------------
+Sun Apr 18 07:51:49 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Run zypper clean after installation
+
+-------------------------------------------------------------------
+Wed Mar 17 07:02:24 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add placeholder vars to be replaced during build
+- Fix mixed tabs and spaces
+
+-------------------------------------------------------------------
+Tue Nov 17 23:00:12 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- use ARG for defining base image
+
+-------------------------------------------------------------------
+Tue Sep 15 03:14:13 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Adjust Dockerfile to conform to "Building Official Container
+  Images" documentation
+
+-------------------------------------------------------------------
+Mon Jun 22 20:13:51 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial container for virt-controller

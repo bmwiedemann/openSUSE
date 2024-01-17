@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Sun Jan  1 03:18:20 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.235
+   see /usr/share/doc/packages/perl-String-Formatter/Changes
+
+  1.235     2022-12-31 16:49:41-05:00 America/New_York
+          - update metadata
+
+-------------------------------------------------------------------
+Sun Aug 29 03:07:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.234
+   see /usr/share/doc/packages/perl-String-Formatter/Changes
+
+  1.234     2021-08-28 17:28:18-04:00 America/New_York
+          - move bench.pl from dist root so it won't get installed to @INC
+          - fix some problems with doc layout
+
+-------------------------------------------------------------------
+Mon Nov 25 07:38:07 UTC 2013 - coolo@suse.com
+
+- updated to 0.102084
+    - typo fixes
+    - update repo and bugtracker links
+
+-------------------------------------------------------------------
+Mon Jan  9 14:17:38 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0
+  Look at Formatter.pm - the licence makes no reference to an ^or later^
+  version
+
+-------------------------------------------------------------------
+Mon Aug 29 13:12:31 UTC 2011 - chris@computersalat.de
+
+- fix deps
+  * ExtUtils::MakeMaker >= 6.31
+  * Test::More >= 0.88
+- fix build for CentOS, RHEL, SLE_10, SLE_11
+
+-------------------------------------------------------------------
+Mon Jan 17 20:53:26 UTC 2011 - coolo@novell.com
+
+- initial package 0.102082
+  * created by cpanspec 1.78.03
+

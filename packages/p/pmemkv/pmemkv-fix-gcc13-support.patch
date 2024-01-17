@@ -1,0 +1,20 @@
+commit b435b622cb48449e493824c4ce7151d4e608f3cb
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Mar 29 10:45:18 2023 +0200
+
+    pmemkv: fix gcc13 support
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git src/libpmemkv.hpp src/libpmemkv.hpp
+index 544e66db9925..e7c51e571a8e 100644
+--- src/libpmemkv.hpp
++++ src/libpmemkv.hpp
+@@ -13,6 +13,7 @@
+ #include <stdexcept>
+ #include <string>
+ #include <utility>
++#include <cstdint>
+ 
+ #include "libpmemkv.h"
+ #include <libpmemobj/pool_base.h>

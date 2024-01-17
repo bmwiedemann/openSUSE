@@ -1,0 +1,5 @@
+<package name="kaccounts-providers" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Applications" package="kaccounts-providers"/>
+</package>

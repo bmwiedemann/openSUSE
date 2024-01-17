@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9a1db2f4b027001a6d81096a1b42bd8</srcmd5>
+    <version>0.1</version>
+    <time>1434383324</time>
+    <user>dimstar_suse</user>
+    <comment>Please make sure that systemd is in *before* this package!</comment>
+    <requestid>311802</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>60c6920e04ded71ab8d621a8559a7d56</srcmd5>
+    <version>0.1</version>
+    <time>1447696306</time>
+    <user>dimstar_suse</user>
+    <comment>- Move udev-generate-persistent-rule.sh from systemd.</comment>
+    <requestid>344378</requestid>
+  </revision>
+</revisionlist>

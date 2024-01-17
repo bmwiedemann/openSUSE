@@ -1,0 +1,9 @@
+<package name="lime" project="openSUSE:Factory">
+  <title>Instant Message End-to-End Encryption Library</title>
+  <description>LIME is an encryption library for one-to-one and group instant messaging, allowing users to exchange messages privately and asynchronously. It supports multiple devices per user and multiple users per device.
+
+LIME offers two major security benefits to instant messaging users:
+  * End-to-end encryption, which means that only you and your contact (and not even the server) can decrypt the content that you shared.
+  * Perfect forward secrecy, which ensures that encrypted messages cannot be decrypted by a third party, even if a key is compromised in the future.</description>
+  <devel project="network:telephony" package="lime"/>
+</package>

@@ -1,0 +1,5 @@
+# This is a source package and /usr/src is a correct path to install files.
+addFilter("zipkin-api-source.* suse-filelist-forbidden-fhs23")
+# Bazel scripts do not need shebangs
+addFilter("zipkin-api-source.* script-without-shebang")
+

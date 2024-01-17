@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>513c4020d48e8eb262024c73e56b53e6</srcmd5>
+    <version>1.0.0</version>
+    <time>1465596049</time>
+    <user>dimstar_suse</user>
+    <comment>Submit vncmanager package.
+Session manager for VNC. It listens on VNC port and spawns Xvnc processes for incoming clients.
+(fate#319319)</comment>
+    <requestid>395052</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c89037b495cd25c8dbf390312aa3eae</srcmd5>
+    <version>1.0.1</version>
+    <time>1467205291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1
+  * Fix build with gcc 6, fix licence link in README. (bnc#985002)
+- Add dependency on xorg-x11-Xvnc. (bnc#984461)
+- Add n_use_with_vnc_key_wrapper.patch
+  * Use with-vnc-key.sh wrapper to generate VNC key and certificate
+    on first use. (bnc#982349)</comment>
+    <requestid>402734</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2389007b74a3fe5dafc8b986425a3e50</srcmd5>
+    <version>1.0.1</version>
+    <time>1488479342</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460045</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16cb552e3c670cf60199550a8253d653</srcmd5>
+    <version>1.0.2</version>
+    <time>1495469388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2
+  * Fix crash when client disconnects during of TLS negotiation
+  * Add geometry parameter (bnc#1038851)</comment>
+    <requestid>497298</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>db81b2f27d0f4f84cf882b8ae48a4bde</srcmd5>
+    <version>1.0.2</version>
+    <time>1502562494</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516143</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>64f43737bf0564688e96a57f5884ffd5</srcmd5>
+    <version>1.0.2</version>
+    <time>1518719496</time>
+    <user>dimstar_suse</user>
+    <comment>- U_ControllerConnection-Split-iostream-into-istream-and.patch
+  * Do not try to seek on unix socket. (bnc#1076730)</comment>
+    <requestid>577032</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>41a4373f788f63102d382eb206b6fbb0</srcmd5>
+    <version>1.0.2</version>
+    <time>1533627800</time>
+    <user>dimstar_suse</user>
+    <comment>- n_vncmanager-add-target-to-service.patch
+  * Declare the service as part of xvnc.target so it can be used as
+    dependency for xvnc-novnc.service. (bnc#1103552)</comment>
+    <requestid>627669</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>6ba6764c7c450c871b78df42ba57c980</srcmd5>
+    <version>1.0.2</version>
+    <time>1578234090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760839</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>058b34b3cdf940ffc94d49f2c59505de</srcmd5>
+    <version>1.0.2</version>
+    <time>1590506387</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807979</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>8f201325c1a4faef353872d0cd1baeed</srcmd5>
+    <version>1.0.2</version>
+    <time>1594119535</time>
+    <user>maxlin_factory</user>
+    <comment>- added n_UsrEtc.patch (boo#1173047)
+  * no longer install vncmanager.conf sample as config file
+  * added description of how to make use of vncmanager.conf sample
+    to README.md
+- added README.md as %doc (boo#1173047)</comment>
+    <requestid>819018</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>01915cd2b0b8a5705b194e8552a71b0e</srcmd5>
+    <version>1.0.2</version>
+    <time>1594309470</time>
+    <user>dimstar_suse</user>
+    <comment>- n_use_port_5901.patch
+  * changed port number also in code, which sets the default, not
+    only in config file (boo#1173047)</comment>
+    <requestid>819750</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>aec3d8b8d2b73f32467c4a6015f3d8c4</srcmd5>
+    <version>1.0.2</version>
+    <time>1599088716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831454</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>a70e22c4c56048c6ef31ec7ca05b59b5</srcmd5>
+    <version>1.0.2</version>
+    <time>1644440653</time>
+    <user>dimstar_suse</user>
+    <comment>- u_Fix-Tight-Encoding-not-processing-pixel-format-prope.patch
+  * Consider different pixel format depths on Tight Encoding.
+    TightPixel was considering only pixels defined with 3 bytes.
+    (bsc#1189247)
+
+- added pkgconfig BuildRequires for zlib and bzip2 in order to fix
+  build against Tumbleweed/factory</comment>
+    <requestid>953006</requestid>
+  </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>48c0d1d613f15be7e4cca48d60cef710</srcmd5>
+    <version>1.0.2</version>
+    <time>1680455924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076736</requestid>
+  </revision>
+</revisionlist>

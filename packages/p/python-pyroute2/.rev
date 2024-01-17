@@ -1,0 +1,370 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4268b1367d146e71adec25c6b8c23fe</srcmd5>
+    <version>0.4.5</version>
+    <time>1473798223</time>
+    <user>dimstar_suse</user>
+    <comment>New python package that some scripts in bcc-examples need it</comment>
+    <requestid>417934</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b1795f405ccdd757a0c41639c928ad2</srcmd5>
+    <version>0.4.11</version>
+    <time>1481153442</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442655</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ed3a68474a522940d94cb7349c728286</srcmd5>
+    <version>0.4.12</version>
+    <time>1485383137</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>451008</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2c4819324a9683943ecfbef39e6ae64d</srcmd5>
+    <version>0.4.15</version>
+    <time>1498741571</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>505039</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>11f68ce67d32180cdd1cc9af2d65461f</srcmd5>
+    <version>0.4.17</version>
+    <time>1499677679</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509081</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>53662922ac5cc343518032a9b639f5fc</srcmd5>
+    <version>0.4.19</version>
+    <time>1503926169</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.19:
+  * ipdb: global methods `review()`, `drop()`, `dump()`, `load()`
+  * ipdb: support VLAN protocol (802.1q, 802.1ad)
+  * ipdb: initial support for IPv6 rules
+  * ipdb: #388 -- normalize IPv6 addresses
+  * ipdb: #391 -- support both IPv4 and IPv6 default routes
+  * ipdb: #394 -- correctly work with route priorities
+  * netns: non-destructive `netns.create()` (forwarded request 518680 from tbechtold)</comment>
+    <requestid>518681</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ace30929db1d9de4eccd0e9b2cc193fd</srcmd5>
+    <version>0.4.21</version>
+    <time>1505920347</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.21:
+    * ipdb: #416 -- workaround for the vrf_table issue
+    * ipdb: #392 -- fix MPLS route key reference
+    * ipdb: #408 -- fix IPv6 routes in tables &gt;= 256
+    * ipdb: use tos as a route key</comment>
+    <requestid>527311</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e4ce44af9b62eaff3f83039669c046fd</srcmd5>
+    <version>0.5.3</version>
+    <time>1543224002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648763</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>22bd7e372f34df6f8a335f4ab2bac8c0</srcmd5>
+    <version>0.5.3</version>
+    <time>1544189952</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655926</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7a6bbf1a4b3a062ccb6a6763dbb8a46c</srcmd5>
+    <version>0.5.4</version>
+    <time>1551784963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.4:
+  * iproute: basic SR-IOV support, virtual functions setup
+  * ipdb: shutdown logging fixed
+  * ipset: fix regression
+  * netns: pushns() / popns() / dropns() calls</comment>
+    <requestid>681315</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a88102fe427bf13004bdba9fb0983363</srcmd5>
+    <version>0.5.5</version>
+    <time>1557141896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694214</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>980fe1fe04aa232a4828e8ba801f9bbc</srcmd5>
+    <version>0.5.6</version>
+    <time>1560338133</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>708957</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ca610dcfa4d17f07c72d2b90135f6ad</srcmd5>
+    <version>0.5.7</version>
+    <time>1581456213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772462</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eba078828e4ca40b2d86860fb668151a</srcmd5>
+    <version>0.5.9</version>
+    <time>1583226941</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.9:
+  * ethtool: fix module setup
+  * ethtool: initial support &lt;https://github.com/svinota/pyroute2/pull/675&gt;
+  * tc: multimatch support &lt;https://github.com/svinota/pyroute2/pull/674&gt;
+  * tc: meta support &lt;https://github.com/svinota/pyroute2/pull/671&gt;
+  * tc: cake: add stats_app decoder &lt;https://github.com/svinota/pyroute2/pull/662&gt;
+  * conntrack: filter &lt;https://github.com/svinota/pyroute2/pull/660&gt;
+  * ndb.objects.interface: reload after setns
+  * ndb.objects.route: create() dst syntax
+  * ndb.objects.route: 'default' syntax
+  * wireguard: basic testing</comment>
+    <requestid>780415</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4bab4f2e7f0edb374d65d59857229877</srcmd5>
+    <version>0.5.10</version>
+    <time>1584350316</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.10:
+  * general: don't use pkg_resources &lt;https://github.com/svinota/pyroute2/issues/677&gt;
+  * iproute: fix Windows support
+  * netlink: provide the target field
+  * ndb: use the target field from the netlink header
+  * ndb: multiple SQL fixes, transactions fixed with the PostgreSQL backend
+  * ndb: multiple object cache fixes &lt;https://github.com/svinota/pyroute2/issues/683&gt;
+  * ndb.schema: drop DB triggers
+  * ndb.objects: fix object management within a netns &lt;https://github.com/svinota/pyroute2/issues/628&gt;
+  * ndb.objects.route: support route metrics
+  * ndb.objects.route: fix default route syntax</comment>
+    <requestid>785076</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>827088e0bfb006d8aab97ea16c556b48</srcmd5>
+    <version>0.5.10</version>
+    <time>1585176360</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.10 bsc#1161898:</comment>
+    <requestid>788086</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7ef9c101e8de156e7f1ab0d6645ce23c</srcmd5>
+    <version>0.5.11</version>
+    <time>1588186310</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.11:
+  * ndb.report: filters and transformations
+  * ndb.objects.route: support basic MPLS routes management
+  * ndb.objects.route: support MPLS lwtunnel routes
+  * ndb.schema: reschedule events</comment>
+    <requestid>798856</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8ae51eba9f9b64706a714d65c880b738</srcmd5>
+    <version>0.5.11</version>
+    <time>1590506305</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807680</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>37b386427c4d3532f77483826fca5435</srcmd5>
+    <version>0.5.12</version>
+    <time>1591742756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.12:
+  * rtnl: implement team config pass &lt;https://github.com/svinota/pyroute2/issues/699&gt;
+  * ndb.auth: example auth modules for RADIUS and OpenStack / Keystone
+  * cli: syntax fixes</comment>
+    <requestid>810907</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>c52af02783fbbe4efcc924a3a1fda9b9</srcmd5>
+    <version>0.5.12</version>
+    <time>1593728123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818349</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>90556192cfa5b4b54515e1dccb2d9373</srcmd5>
+    <version>0.5.13</version>
+    <time>1596652038</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.13:
+  * netns: allow to pass custom libc reference &lt;https://github.com/svinota/pyroute2/issues/702&gt;
+  * generic: att L2TP support &lt;https://github.com/svinota/pyroute2/pull/709&gt;
+  * iproute: link_lookup() optimization &lt;https://github.com/svinota/pyroute2/issues/712&gt;
+  * ndb: basic cluster support</comment>
+    <requestid>824351</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dd6caca5138a17d4b963a9066330a09f</srcmd5>
+    <version>0.5.14</version>
+    <time>1600278086</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.14:
+  * iproute: ip neigh get &lt;https://github.com/svinota/pyroute2/pull/723&gt;
+  * iproute: link_lookup fix &lt;https://github.com/svinota/pyroute2/pull/725&gt;
+  * nftables: missing hooks &lt;https://github.com/svinota/pyroute2/pull/732&gt;
+  * netns: fix &lt;https://github.com/svinota/pyroute2/pull/733&gt;</comment>
+    <requestid>834879</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>81754d0de903b75cf894aab3c335a4aa</srcmd5>
+    <version>0.5.18</version>
+    <time>1619822807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889497</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1239429a76c2a0fed5f537d37d255317</srcmd5>
+    <version>0.6.9</version>
+    <time>1652993381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.9:
+  * wireguard peer fix for both IPv4 and IPv6: 
+  * netns: avoid extra libc reloads: 
+  * wireguard: IPv6 fixes: 
+  * ndb: support arbitrary IPRoute-compatible source classes
+  * ndb: tolerate source failures
+  * ndb: chaotic tests
+  * general: kernel version parser: 
+  * package: static version file: 
+  * iproute: support custom link kind classes: 
+  * ndb: reload of tunnels in the down state 
+  * ndb: improved reliability in the state sync, affected multihop and encap routes
+  * ndb: improved neighbours management
+  * tuntap: support loongarch 
+  * ndb: fix routes cleanup 
+  * ndb: support `in` for sources, interfaces and addresses
+  * ndb: support changing tunnel (gre, ipip, ...) attributes
+  * netlink: support NLM_F_DUMP_INTR 
+
+- update to 0.6.5:
+  * ndb: fix `in` for sources
+  * core: provide entry_points aliases for legacy code
+  * packaging: fix missing exports
+  * ndb: memory leak fix
+  * packaging: fix internal modules import
+  * netlink: DEFAULT_RCVBUF size increased
+  * rtnl: fix COLLECT_METADATA for geneve devices
+  * ndb: route spec fixes
+  * packaging: force virtual packages to require same versions
+  * core: relocate RemoteIPRoute</comment>
+    <requestid>978081</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0fe59f2cb323815eb7de06ec877e197a</srcmd5>
+    <version>0.6.13</version>
+    <time>1657191418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.13:
+  * requests: IPv6 routes default priority
+  * requests: fix wrong family on empty IP targets
+  * ndb: fix NetlinkError escalation routine on apply
+
+- update to 0.6.12:
+  * ndb: allow dict as keys in __contains__
+  * ndb: fixed count() on nested views
+  * ndb: fix IPv6 addr removal: #926
+  * ifinfmsg: fixed IFLA_IPTUN_FLAGS: #924
+  * tc: fix tcm_info setting: #928
+- update to 0.6.11:
+  * ipdb: fix requests compatibility: #920
+  * ipdb: added deprecation warning
+- update to 0.6.10:
+  * ndb: fix DB reload on incomplete requests in the IPRoute API fallbacks: #890
+  * ndb: basic ipvlan support
+  * ndb: support ndb.schema.backup(&quot;filename&quot;) fro SQLite3 backend
+  * ndb: transactions, CheckProcess, PingAddress, see test_ndb/test_transaction.py and docs
+  * ndb: make snapshots only for commit() calls, no automatic snapshots for apply()
+  * netlink: filter out all the subsequent messages starting from the first error: #892
+  * protocols: fix arp module export
+  * iproute: deprecate positional arguments to IPRoute.rule()
+  * iproute, ndb: use pyroute2.requests to filter and transform API call arguments
+  * conntrack: fix exports: #900
+  * nftables: multiple fixes: #902
+  * tc: fix em_ipset crash: #905
+  * tests: integrated pre-commit, github actions and more
+  * tests: support basic OpenBSD tests
+  * pyroute2-cli: parser fixes</comment>
+    <requestid>987188</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>99a39e43695f01556284516b487f5d2a</srcmd5>
+    <version>0.7.3</version>
+    <time>1664639051</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.7.3:
+  * nlsocket: CompileContext support
+  * nlsocket: support for per request parsers (see IPRoute.get_default_routes())
+  * generic: added support for dumping policies &lt;#981&gt;
+  * ndb: changed API for reports
+  * conntrack: fix TCP states &lt;#991&gt;
+  * ipmock: new component (IPMock) for mock tests
+  * thermal: update
+  * ci: nlm_generator = True -- force using generators in the CI
+  * iproute: fix neighbours dump &lt;#962&gt;
+  * iproute: fix rule add &lt;#964&gt;
+  * setup: fix build-backend &lt;#961&gt;
+  * packaging: back to single package layout &lt;#935&gt;
+  * packaging: static version &lt;#939&gt;
+  * ci: use nox, finish migration from nose
+  * netlink: universal nlmsg.get()</comment>
+    <requestid>1007453</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>996383d10b895417bd60de5b9a490bdd</srcmd5>
+    <version>0.7.10</version>
+    <time>1702673311</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.10:
+  * ss2: fix classful flow data
+  * ci: add Python versions 3.8 and 3.12, update platform
+    versions
+  * l2tp: fix get_tunnel/get_session
+  * ndb: compat fix
+  * ndb: recordset pipes
+  * netns: RISCV64 fix
+  * netns: loongarch support
+  * ethtool: statistics support
+  * ethtool: dynamic ioctl gstrings
+  * NetNS: set_netnsid fix
+  * iproute: nsid allocation
+  * iproute: dump mpls routes
+  * rtnl: CAN support
+  * minimal: fix for embedded envs
+  * diag: support CGROUP_ID
+  * iwutil: get/set interface (by ifindex) type
+  * tc: 'duplicate' parameter fix
+  * ss2: more fixes
+  * ss2: user context patch
+  * ndb: basic altname support
+  * nl80211: decoder improvements
+  * setup: static loader
+  * iproute: support altname in link_lookup()
+  * ethtool: fd leaks
+  * nlsocket: fix marshal reference
+  * rtnl: SRv6 updates
+  * connector: basic implementation
+  * nftables: sets draft</comment>
+    <requestid>1133205</requestid>
+  </revision>
+</revisionlist>

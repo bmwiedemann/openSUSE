@@ -1,0 +1,14 @@
+<package name="python-pamqp" project="openSUSE:Factory">
+  <title>Python pamqp</title>
+  <description>pamqp is a pure-python AMQP 0-9-1 frame encoder and decoder.
+
+pamqp is not a end-user client library for talking to RabbitMQ but
+rather is used by client libraries for marshaling and unmarshaling
+AMQP frames.
+
+AMQP class/method command class mappings can be found in the
+pamqp.specification module while actual frame encoding and
+encoding should be run through the pamqp.frame module.
+</description>
+  <devel project="devel:languages:python" package="python-pamqp"/>
+</package>

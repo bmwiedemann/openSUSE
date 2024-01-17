@@ -1,0 +1,5 @@
+<package name="sblim-sfcc" project="openSUSE:Factory">
+  <title>Small Footprint CIM Client Library</title>
+  <description>Small Footprint CIM Client Library (sfcc) Runtime Libraries</description>
+  <devel project="systemsmanagement:wbem" package="sblim-sfcc"/>
+</package>

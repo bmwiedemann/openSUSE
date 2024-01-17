@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e38506a18929382bd46a2f2d7773e5c</srcmd5>
+    <version>2.4.0</version>
+    <time>1527933759</time>
+    <user>dimstar_suse</user>
+    <comment>A python svg graph plotting library</comment>
+    <requestid>612059</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b8e82ce1a93b5154da9a72e0af35470</srcmd5>
+    <version>2.4.0</version>
+    <time>1545648114</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659587</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>abd2459056bfa5c857e222b176e0d956</srcmd5>
+    <version>2.4.0</version>
+    <time>1553888257</time>
+    <user>dimstar_suse</user>
+    <comment>- Make CairoSVG only python3 dependency and simply not provide
+  the png conversion feature on python2</comment>
+    <requestid>688618</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>84eb0a9718f95d8c9c7b91116032aab3</srcmd5>
+    <version>2.4.0</version>
+    <time>1564484601</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with python 3.8:
+  * python38.patch
+- Restrict pytest to &lt; 3.0 as the testing code does not work
+  upstream on anything else</comment>
+    <requestid>717082</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d3821f746e0cda5b963d3ac2810761b1</srcmd5>
+    <version>2.4.0</version>
+    <time>1574414423</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch pytest4.patch to make the test suite compatible with
+  pytest4+ (yes, THIS is the only change necessary!).
+  gh#Kozea/pygal#340</comment>
+    <requestid>746026</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>591a9dad81a019095d14cea1103f8307</srcmd5>
+    <version>2.4.0</version>
+    <time>1599209994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830076</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>e871ccf8ba596ee1b012ed8fb21899b8</srcmd5>
+    <version>2.4.0</version>
+    <time>1614692541</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874538</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d3cede9a0b5c2660bc6686979852a10</srcmd5>
+    <version>3.0.0</version>
+    <time>1639340819</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary patches: pytest4.patch, pytest6.patch, and
+  python38.patch.
+- version update to 3.0.0
+  * no upstream changelog found
+</comment>
+    <requestid>937745</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ee8b3351d64bf8960247da8b167a3518</srcmd5>
+    <version>3.0.0</version>
+    <time>1675458278</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 2.x (no longer supported) and enable CairoSVG
+  for all python flavors not just the main one</comment>
+    <requestid>1062554</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>9a4603e51d74a50d55df9252171a99ea</srcmd5>
+    <version>3.0.0</version>
+    <time>1682193544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081786</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>057ee0c2cafb96fc0434d675de308377</srcmd5>
+    <version>3.0.4</version>
+    <time>1702673166</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.4:
+  * Missing declaration of importlib_metadata dependency in setup.py
+  * Failure with tox due to missing README.md
+  * Misused entry_points causing failure with Python 3.12
+  * Prevent installing with Python versions &lt; 3.8
+  * Replace unmaintained pytest-flake8 with plain flake8
+  * Remove Iterable import deprecation warning
+  * Remove invalid escape sequence warnings in tests
+  * Fix test failures due to removed pytest attribute
+  * Fix linting errors with latest isort and flake8
+- use packaged COPYING
+
+  for all python flavors not just the main one</comment>
+    <requestid>1133201</requestid>
+  </revision>
+</revisionlist>

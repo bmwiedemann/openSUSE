@@ -1,0 +1,15 @@
+[Unit]
+Description=Exports squid metrics in Prometheus format
+Documentation=https://github.com/boynux/squid-exporter
+
+[Service]
+Restart=always
+User=prometheus
+EnvironmentFile=-/etc/sysconfig/prometheus-squid_exporter
+ExecStart=/usr/bin/prometheus-squid_exporter $ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

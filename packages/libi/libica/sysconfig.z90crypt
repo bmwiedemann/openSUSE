@@ -1,0 +1,10 @@
+## Path:	Kernel/z90Crypt
+## Description:	Set domain parameter for z90crypt
+## Type:	integer(-1:15)
+## Default:	-1
+#
+# This variable selects the crypto domain to be used,
+# required if an LPAR owns several crypto domains.
+# The value of -1 is used for autodetect.
+#
+Z90CRYPT_DOMAIN=-1

@@ -1,0 +1,826 @@
+Index: VirtualBox-7.0.12/src/VBox/HostDrivers/linux/Makefile
+===================================================================
+--- VirtualBox-7.0.12.orig/src/VBox/HostDrivers/linux/Makefile
++++ VirtualBox-7.0.12/src/VBox/HostDrivers/linux/Makefile
+@@ -43,11 +43,8 @@ obj-m = vboxdrv/
+ obj-m += vboxnetflt/
+  endif
+  ifneq ($(wildcard $(CURDIR)/vboxnetadp/Makefile),)
+-obj-m += vboxnetadp/
+- endif
+- ifneq ($(wildcard $(CURDIR)/vboxpci/Makefile),)
+-obj-m += vboxpci/
+- endif
++ obj-m += vboxnetadp/
++endif
+ 
+ else # ! KERNELRELEASE
+ 
+@@ -62,12 +59,14 @@ SUDO :=
+ endif
+ 
+ KBUILD_VERBOSE ?=
++PWD ?= $(shell pwd)
++
+ .PHONY: all install clean check unload load \
+-    vboxdrv vboxnetflt vboxnetadp vboxpci \
+-    install-vboxdrv install-vboxnetflt install-vboxnetadp install-vboxpci \
+-    clean-vboxdrv clean-vboxnetflt clean-vboxnetadp clean-vboxpci
++    vboxdrv vboxnetflt vboxnetadp \
++    install-vboxdrv install-vboxnetflt install-vboxnetadp \
++    clean-vboxdrv clean-vboxnetflt clean-vboxnetadp
+ 
+-all: vboxdrv vboxnetflt vboxnetadp vboxpci
++all: vboxdrv vboxnetflt vboxnetadp
+ 
+ # We want to build on Linux 2.6.18 and later kernels.
+ KERN_VER ?= $(shell uname -r)
+@@ -81,56 +80,38 @@ vboxdrv:
+ 
+ vboxnetflt: vboxdrv
+ 	+@if [ -d vboxnetflt ]; then \
+-	    if [ -f vboxdrv/Module.symvers ]; then \
+-	        cp vboxdrv/Module.symvers vboxnetflt; \
+-	    fi; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxdrv/Module.symvers; \
+ 	    echo "=== Building 'vboxnetflt' module ==="; \
+-	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxnetflt/Module.symvers) -C vboxnetflt || exit 1; \
++	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxdrv/Module.symvers) -C vboxnetflt || exit 1; \
+ 	    cp vboxnetflt/vboxnetflt.ko .; \
+ 	    echo; \
+ 	fi
+ 
+ vboxnetadp: vboxdrv
+ 	+@if [ -d vboxnetadp ]; then \
+-	    if [ -f vboxdrv/Module.symvers ]; then \
+-	        cp vboxdrv/Module.symvers vboxnetadp; \
+-	    fi; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxdrv/Module.symvers; \
+ 	    echo "=== Building 'vboxnetadp' module ==="; \
+-	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxnetadp/Module.symvers) -C vboxnetadp || exit 1; \
++	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxdrv/Module.symvers) -C vboxnetadp || exit 1; \
+ 	    cp vboxnetadp/vboxnetadp.ko .; \
+ 	    echo; \
+ 	fi
+ 
+-vboxpci: vboxdrv
+-	+@if [ -d vboxpci ]; then \
+-	    if [ -f vboxdrv/Module.symvers ]; then \
+-	        cp vboxdrv/Module.symvers vboxpci; \
+-	    fi; \
+-	    echo "=== Building 'vboxpci' module ==="; \
+-	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxpci/Module.symvers) -C vboxpci || exit 1; \
+-	    cp vboxpci/vboxpci.ko .; \
+-	    echo; \
+-	fi
+-
+ install-vboxdrv:
+ 	+@$(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxdrv install
+ 
+ install-vboxnetflt:
+ 	+@if [ -d vboxnetflt ]; then \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxdrv/Module.symvers; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetflt install; \
+ 	fi
+ 
+ install-vboxnetadp:
+ 	+@if [ -d vboxnetadp ]; then \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxdrv/Module.symvers; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxnetadp install; \
+ 	fi
+ 
+-install-vboxpci:
+-	+@if [ -d vboxpci ]; then \
+-	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxpci install; \
+-	fi
+-
+-install: install-vboxdrv install-vboxnetflt install-vboxnetadp install-vboxpci
++install: install-vboxdrv install-vboxnetflt install-vboxnetadp
+ 
+ # Look for wrapper modules, sorting them so vmmr0 is first.
+ VBOX_WRAPPER_DIRS := $(notdir $(wildcard $(CURDIR)/vbox_*))
+@@ -140,6 +121,9 @@ VBOX_WRAPPER_DIRS := $(filter vbox_vmmr0
+   define wrapper_template
+ $(wrapper): $(subst $(wrapper),,vbox_vmmr0)
+ 	+$$(MAKE) KBUILD_VERBOSE=$$(KBUILD_VERBOSE) -C $(wrapper)/
++vboxnetflt:
++vboxnetadp:
++install:
+ 
+ load-$(wrapper): $(subst load-$(wrapper),,load-vbox_vmmr0)
+ 	@if ! grep -q "^$(wrapper) " /proc/modules; then \
+@@ -217,19 +201,13 @@ clean-vboxnetadp:
+ 	fi
+ 	rm -rf vboxnetadp.ko
+ 
+-clean-vboxpci:
+-	+@if [ -d vboxpci ]; then \
+-	    $(MAKE) -C vboxpci clean; \
+-	fi
+-	rm -f vboxpci.ko
+-
+-clean: clean-vboxdrv clean-vboxnetflt clean-vboxnetadp clean-vboxpci
++clean: clean-vboxdrv clean-vboxnetflt clean-vboxnetadp
+ 
+ check:
+ 	+@$(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxdrv check
+ 
+ unload:
+-	@for module in vboxpci vboxnetadp vboxnetflt vboxdrv; do \
++	@for module in vboxnetadp vboxnetflt vboxdrv; do \
+ 		if grep "^$$module " /proc/modules >/dev/null; then \
+ 			echo "Removing previously installed $$module module"; \
+ 			$(SUDO) /sbin/rmmod $$module; \
+@@ -237,7 +215,7 @@ unload:
+ 	done
+ 
+ load: unload
+-	@for module in vboxdrv vboxnetflt vboxnetadp vboxpci; do \
++	@for module in vboxdrv vboxnetflt vboxnetadp; do \
+ 		if test -f $$module.ko; then \
+ 			echo "Installing $$module module"; \
+ 			$(SUDO) /sbin/insmod $$module.ko; \
+Index: VirtualBox-7.0.12/src/VBox/Additions/linux/Makefile
+===================================================================
+--- VirtualBox-7.0.12.orig/src/VBox/Additions/linux/Makefile
++++ VirtualBox-7.0.12/src/VBox/Additions/linux/Makefile
+@@ -34,6 +34,7 @@ obj-m = vboxguest/ vboxsf/ vboxvideo/
+ else # ! KERNELRELEASE
+ 
+ KBUILD_VERBOSE =
++PWD ?= $(shell pwd)
+  ifeq ($(KBUILD_VERBOSE),)
+ VBOX_QUIET    := @
+ VBOX_QUIET_SH := @
+@@ -59,6 +60,7 @@ vboxsf: vboxguest
+ 	    if [ -f vboxguest/Module.symvers ]; then \
+ 	        cp vboxguest/Module.symvers vboxsf; \
+ 	    fi; \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxvideo/Module.symvers; \
+ 	    echo "=== Building 'vboxsf' module ==="; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) KBUILD_EXTRA_SYMBOLS=$(abspath vboxsf/Module.symvers) -C vboxsf || exit 1; \
+ 	    if [ -f vboxsf/vboxsf.ko ]; then \
+@@ -71,6 +73,9 @@ vboxsf: vboxguest
+ 
+ vboxvideo:
+ 	+ $(VBOX_QUIET_SH)if [ -d vboxvideo ]; then \
++	    if [ -f vboxguest/Module.symvers ]; then \
++	        cp vboxguest/Module.symvers vboxvideo; \
++	    fi; \
+ 	    echo "=== Building 'vboxvideo' module ==="; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxvideo || exit 1; \
+ 	    if [ -f vboxvideo/vboxvideo.ko ]; then \
+@@ -86,11 +91,13 @@ install-vboxguest:
+ 
+ install-vboxsf:
+ 	+ $(VBOX_QUIET_SH)if [ -d vboxsf ]; then \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxsf/Module.symvers; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxsf install; \
+ 	fi
+ 
+ install-vboxvideo:
+ 	+ $(VBOX_QUIET_SH)if [ -d vboxvideo ]; then \
++	    export KBUILD_EXTRA_SYMBOLS=${PWD}/vboxvideo/Module.symvers; \
+ 	    $(MAKE) KBUILD_VERBOSE=$(KBUILD_VERBOSE) -C vboxvideo install; \
+ 	fi
+ 
+Index: VirtualBox-7.0.12/include/iprt/x86.h
+===================================================================
+--- VirtualBox-7.0.12.orig/include/iprt/x86.h
++++ VirtualBox-7.0.12/include/iprt/x86.h
+@@ -895,37 +895,59 @@ typedef const X86CPUIDFEATEDX *PCX86CPUI
+  *          reserved flags.
+  * @{ */
+ /** Bit 0 - PE - Protection Enabled */
++#ifndef X86_CR0_PE
+ #define X86_CR0_PE                          RT_BIT_32(0)
++#endif
+ #define X86_CR0_PROTECTION_ENABLE           RT_BIT_32(0)
+ /** Bit 1 - MP - Monitor Coprocessor */
++#ifndef X86_CR0_MP
+ #define X86_CR0_MP                          RT_BIT_32(1)
++#endif
+ #define X86_CR0_MONITOR_COPROCESSOR         RT_BIT_32(1)
+ /** Bit 2 - EM - Emulation. */
++#ifndef X86_CR0_EM
+ #define X86_CR0_EM                          RT_BIT_32(2)
++#endif
+ #define X86_CR0_EMULATE_FPU                 RT_BIT_32(2)
+ /** Bit 3 - TS - Task Switch. */
++#ifndef X86_CR0_TS
+ #define X86_CR0_TS                          RT_BIT_32(3)
++#endif
+ #define X86_CR0_TASK_SWITCH                 RT_BIT_32(3)
+ /** Bit 4 - ET - Extension flag. (386, 'hardcoded' to 1 on 486+) */
++#ifndef X86_CR0_ET
+ #define X86_CR0_ET                          RT_BIT_32(4)
++#endif
+ #define X86_CR0_EXTENSION_TYPE              RT_BIT_32(4)
+ /** Bit 5 - NE - Numeric error (486+). */
++#ifndef X86_CR0_NE
+ #define X86_CR0_NE                          RT_BIT_32(5)
++#endif
+ #define X86_CR0_NUMERIC_ERROR               RT_BIT_32(5)
+ /** Bit 16 - WP - Write Protect (486+). */
++#ifndef X86_CR0_WP
+ #define X86_CR0_WP                          RT_BIT_32(16)
++#endif
+ #define X86_CR0_WRITE_PROTECT               RT_BIT_32(16)
+ /** Bit 18 - AM - Alignment Mask (486+). */
++#ifndef X86_CR0_AM
+ #define X86_CR0_AM                          RT_BIT_32(18)
++#endif
+ #define X86_CR0_ALIGMENT_MASK               RT_BIT_32(18)
+ /** Bit 29 - NW - Not Write-though (486+). */
++#ifndef X86_CR0_NW
+ #define X86_CR0_NW                          RT_BIT_32(29)
++#endif
+ #define X86_CR0_NOT_WRITE_THROUGH           RT_BIT_32(29)
+ /** Bit 30 - WP - Cache Disable (486+). */
++#ifndef X86_CR0_CD
+ #define X86_CR0_CD                          RT_BIT_32(30)
++#endif
+ #define X86_CR0_CACHE_DISABLE               RT_BIT_32(30)
+ /** Bit 31 - PG - Paging. */
++#ifndef X86_CR0_PG
+ #define X86_CR0_PG                          RT_BIT_32(31)
++#endif
+ #define X86_CR0_PAGING                      RT_BIT_32(31)
+ #define X86_CR0_BIT_PG                      31 /**< Bit number of X86_CR0_PG */
+ /** @} */
+@@ -934,9 +956,13 @@ typedef const X86CPUIDFEATEDX *PCX86CPUI
+ /** @name CR3
+  * @{ */
+ /** Bit 3 - PWT - Page-level Writes Transparent. */
++#ifndef X86_CR3_PWT
+ #define X86_CR3_PWT                         RT_BIT_32(3)
++#endif
+ /** Bit 4 - PCD - Page-level Cache Disable. */
++#ifndef X86_CR3_PCD
+ #define X86_CR3_PCD                         RT_BIT_32(4)
++#endif
+ /** Bits 12-31 - - Page directory page number. */
+ #define X86_CR3_PAGE_MASK                   (0xfffff000)
+ /** Bits  5-31 - - PAE Page directory page number. */
+@@ -955,46 +981,84 @@ typedef const X86CPUIDFEATEDX *PCX86CPUI
+ /** @name CR4
+  * @{ */
+ /** Bit 0 - VME - Virtual-8086 Mode Extensions. */
++#ifndef X86_CR4_VME
+ #define X86_CR4_VME                         RT_BIT_32(0)
++#endif
+ /** Bit 1 - PVI - Protected-Mode Virtual Interrupts. */
++#ifndef X86_CR4_PVI
+ #define X86_CR4_PVI                         RT_BIT_32(1)
++#endif
+ /** Bit 2 - TSD - Time Stamp Disable. */
++#ifndef X86_CR4_TSD
+ #define X86_CR4_TSD                         RT_BIT_32(2)
++#endif
+ /** Bit 3 - DE - Debugging Extensions. */
++#ifndef X86_CR4_DE
+ #define X86_CR4_DE                          RT_BIT_32(3)
++#endif
+ /** Bit 4 - PSE - Page Size Extension. */
++#ifndef X86_CR4_PSE
+ #define X86_CR4_PSE                         RT_BIT_32(4)
++#endif
+ /** Bit 5 - PAE - Physical Address Extension. */
++#ifndef X86_CR4_PAE
+ #define X86_CR4_PAE                         RT_BIT_32(5)
++#endif
+ /** Bit 6 - MCE - Machine-Check Enable. */
++#ifndef X86_CR4_MCE
+ #define X86_CR4_MCE                         RT_BIT_32(6)
++#endif
+ /** Bit 7 - PGE - Page Global Enable. */
++#ifndef X86_CR4_PGE
+ #define X86_CR4_PGE                         RT_BIT_32(7)
++#endif
+ /** Bit 8 - PCE - Performance-Monitoring Counter Enable. */
++#ifndef X86_CR4_PCE
+ #define X86_CR4_PCE                         RT_BIT_32(8)
++#endif
+ /** Bit 9 - OSFXSR - Operating System Support for FXSAVE and FXRSTORE instructions. */
++#ifndef X86_CR4_OSFXSR
+ #define X86_CR4_OSFXSR                      RT_BIT_32(9)
++#endif
+ /** Bit 10 - OSXMMEEXCPT - Operating System Support for Unmasked SIMD Floating-Point Exceptions. */
+ #define X86_CR4_OSXMMEEXCPT                 RT_BIT_32(10)
+ /** Bit 11 - UMIP - User-Mode Instruction Prevention. */
++#ifndef X86_CR4_UMIP
+ #define X86_CR4_UMIP                        RT_BIT_32(11)
++#endif
+ /** Bit 13 - VMXE - VMX mode is enabled. */
++#ifndef X86_CR4_VMXE
+ #define X86_CR4_VMXE                        RT_BIT_32(13)
++#endif
+ /** Bit 14 - SMXE - Safer Mode Extensions Enabled. */
++#ifndef X86_CR4_SMXE
+ #define X86_CR4_SMXE                        RT_BIT_32(14)
++#endif
+ /** Bit 16 - FSGSBASE - Read/write FSGSBASE instructions Enable. */
++#ifndef X86_CR4_FSGSBASE
+ #define X86_CR4_FSGSBASE                    RT_BIT_32(16)
++#endif
+ /** Bit 17 - PCIDE - Process-Context Identifiers Enabled. */
++#ifndef X86_CR4_PCIDE
+ #define X86_CR4_PCIDE                       RT_BIT_32(17)
++#endif
+ /** Bit 18 - OSXSAVE - Operating System Support for XSAVE and processor
+  * extended states. */
++#ifndef X86_CR4_OSXSAVE
+ #define X86_CR4_OSXSAVE                     RT_BIT_32(18)
++#endif
+ /** Bit 20 - SMEP - Supervisor-mode Execution Prevention enabled. */
++#ifndef X86_CR4_SMEP
+ #define X86_CR4_SMEP                        RT_BIT_32(20)
++#endif
+ /** Bit 21 - SMAP - Supervisor-mode Access Prevention enabled. */
++#ifndef X86_CR4_SMAP
+ #define X86_CR4_SMAP                        RT_BIT_32(21)
++#endif
+ /** Bit 22 - PKE - Protection Key Enable. */
++#ifndef X86_CR4_PKE
+ #define X86_CR4_PKE                         RT_BIT_32(22)
++#endif
+ /** Bit 23 - CET - Control-flow Enhancement Technology enabled. */
+ #define X86_CR4_CET                         RT_BIT_32(23)
+ /** @} */
+@@ -1225,12 +1289,16 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ /** Machine check type register (P5). */
+ #define MSR_P5_MC_TYPE                      UINT32_C(0x00000001)
+ /** Time Stamp Counter. */
++#ifndef MSR_IA32_TSC
+ #define MSR_IA32_TSC                        0x10
++#endif
+ #define MSR_IA32_CESR                       UINT32_C(0x00000011)
+ #define MSR_IA32_CTR0                       UINT32_C(0x00000012)
+ #define MSR_IA32_CTR1                       UINT32_C(0x00000013)
+ 
++#ifndef MSR_IA32_PLATFORM_ID
+ #define MSR_IA32_PLATFORM_ID                0x17
++#endif
+ 
+ #ifndef MSR_IA32_APICBASE /* qemu cpu.h kludge */
+ # define MSR_IA32_APICBASE                  0x1b
+@@ -1256,7 +1324,9 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_CORE_THREAD_COUNT               0x35
+ 
+ /** CPU Feature control. */
++#ifndef MSR_IA32_FEATURE_CONTROL
+ #define MSR_IA32_FEATURE_CONTROL                      0x3A
++#endif
+ /** Feature control - Lock MSR from writes (R/W0). */
+ #define MSR_IA32_FEATURE_CONTROL_LOCK                 RT_BIT_64(0)
+ /** Feature control - Enable VMX inside SMX operation (R/WL). */
+@@ -1281,11 +1351,15 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_IA32_FEATURE_CONTROL_LMCE                 RT_BIT_64(20)
+ 
+ /** Per-processor TSC adjust MSR. */
++#ifndef MSR_IA32_TSC_ADJUST
+ #define MSR_IA32_TSC_ADJUST                 0x3B
++#endif
+ 
+ /** Spectre control register.
+  * Logical processor scope. Reset value 0, unaffected by SIPI & INIT. */
++#ifndef  MSR_IA32_SPEC_CTRL
+ #define MSR_IA32_SPEC_CTRL                  0x48
++#endif
+ /** IBRS - Indirect branch restricted speculation. */
+ #define MSR_IA32_SPEC_CTRL_F_IBRS           RT_BIT_32(0)
+ /** STIBP - Single thread indirect branch predictors. */
+@@ -1295,7 +1369,9 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ 
+ /** Prediction command register.
+  * Write only, logical processor scope, no state since write only. */
++#ifndef MSR_IA32_PRED_CMD
+ #define MSR_IA32_PRED_CMD                   0x49
++#endif
+ /** IBPB - Indirect branch prediction barrie when written as 1. */
+ #define MSR_IA32_PRED_CMD_F_IBPB            RT_BIT_32(0)
+ 
+@@ -1306,7 +1382,9 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_IA32_BIOS_SIGN_ID               0x8B
+ 
+ /** SMM monitor control. */
++#ifndef MSR_IA32_SMM_MONITOR_CTL
+ #define MSR_IA32_SMM_MONITOR_CTL            0x9B
++#endif
+ /** SMM control - Valid. */
+ #define MSR_IA32_SMM_MONITOR_VALID                  RT_BIT_64(0)
+ /** SMM control - VMXOFF unblocks SMI. */
+@@ -1315,10 +1393,14 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_IA32_SMM_MONITOR_MSGEG_PHYSADDR(a)      (((a) >> 12) & UINT64_C(0xfffff))
+ 
+ /** SMBASE - Base address of SMRANGE image (Read-only, SMM only). */
++#ifndef MSR_IA32_SMBASE
+ #define MSR_IA32_SMBASE                     0x9E
++#endif
+ 
+ /** General performance counter no. 0. */
++#ifndef MSR_IA32_PMC0
+ #define MSR_IA32_PMC0                       0xC1
++#endif
+ /** General performance counter no. 1. */
+ #define MSR_IA32_PMC1                       0xC2
+ /** General performance counter no. 2. */
+@@ -1341,18 +1423,26 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_IA32_FSB_CLOCK_STS              0xCD
+ 
+ /** C-State configuration control. Intel specific: Nehalem, Sandy Bridge. */
++#ifndef MSR_PKG_CST_CONFIG_CONTROL
+ #define MSR_PKG_CST_CONFIG_CONTROL          UINT32_C(0x000000e2)
++#endif
+ 
+ /** C0 Maximum Frequency Clock Count */
++#ifndef MSR_IA32_MPERF
+ #define MSR_IA32_MPERF                      0xE7
++#endif
+ /** C0 Actual Frequency Clock Count */
++#ifndef MSR_IA32_APERF
+ #define MSR_IA32_APERF                      0xE8
++#endif
+ 
+ /** MTRR Capabilities. */
+ #define MSR_IA32_MTRR_CAP                   0xFE
+ 
+ /** Architecture capabilities (bugfixes). */
++#ifndef MSR_IA32_ARCH_CAPABILITIES
+ #define MSR_IA32_ARCH_CAPABILITIES          UINT32_C(0x10a)
++#endif
+ /** CPU is no subject to meltdown problems. */
+ #define MSR_IA32_ARCH_CAP_F_RDCL_NO         RT_BIT_32(0)
+ /** CPU has better IBRS and you can leave it on all the time. */
+@@ -1366,7 +1456,9 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_IA32_ARCH_CAP_F_MDS_NO          RT_BIT_32(4)
+ 
+ /** Flush command register. */
++#ifndef MSR_IA32_FLUSH_CMD
+ #define MSR_IA32_FLUSH_CMD                  UINT32_C(0x10b)
++#endif
+ /** Flush the level 1 data cache when this bit is written. */
+ #define MSR_IA32_FLUSH_CMD_F_L1D            RT_BIT_32(0)
+ 
+@@ -1387,14 +1479,20 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #endif
+ 
+ /** Machine Check Global Capabilities Register. */
++#ifndef MSR_IA32_MCG_CAP
+ #define MSR_IA32_MCG_CAP                    0x179
++#endif
+ /** Machine Check Global Status Register. */
++#ifndef MSR_IA32_MCG_STATUS
+ #define MSR_IA32_MCG_STATUS                 0x17A
++#endif
+ /** Machine Check Global Control Register. */
+ #define MSR_IA32_MCG_CTRL                   0x17B
+ 
+ /** Page Attribute Table. */
++#ifndef MSR_IA32_CR_PAT
+ #define MSR_IA32_CR_PAT                     0x277
++#endif
+ /** Default PAT MSR value on processor powerup / reset (see Intel spec. 11.12.4
+  *  "Programming the PAT", AMD spec. 7.8.2 "PAT Indexing") */
+ #define MSR_IA32_CR_PAT_INIT_VAL            UINT64_C(0x0007040600070406)
+@@ -1413,36 +1511,58 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_FLEX_RATIO                      0x194
+ /** Performance state value and starting with Intel core more.
+  * Apple uses the >=core features to determine TSC granularity on older CPUs. */
++#ifndef MSR_IA32_PERF_STATUS
+ #define MSR_IA32_PERF_STATUS                0x198
++#endif
++#ifndef MSR_IA32_PERF_CTL
+ #define MSR_IA32_PERF_CTL                   0x199
++#endif
++#ifndef MSR_IA32_THERM_STATUS
+ #define MSR_IA32_THERM_STATUS               0x19c
++#endif
+ 
+ /** Offcore response event select registers. */
++#ifndef MSR_OFFCORE_RSP_0
+ #define MSR_OFFCORE_RSP_0                   0x1a6
++#endif
++#ifndef MSR_OFFCORE_RSP_1
+ #define MSR_OFFCORE_RSP_1                   0x1a7
++#endif
+ 
+ /** Enable misc. processor features (R/W). */
++#ifndef MSR_IA32_MISC_ENABLE
+ #define MSR_IA32_MISC_ENABLE                   0x1A0
++#endif
+ /** Enable fast-strings feature (for REP MOVS and REP STORS). */
+ #define MSR_IA32_MISC_ENABLE_FAST_STRINGS      RT_BIT_64(0)
+ /** Automatic Thermal Control Circuit Enable (R/W). */
++#ifndef MSR_IA32_MISC_ENABLE_TCC
+ #define MSR_IA32_MISC_ENABLE_TCC               RT_BIT_64(3)
++#endif
+ /** Performance Monitoring Available (R). */
+ #define MSR_IA32_MISC_ENABLE_PERF_MON          RT_BIT_64(7)
+ /** Branch Trace Storage Unavailable (R/O). */
++#ifndef MSR_IA32_MISC_ENABLE_BTS_UNAVAIL
+ #define MSR_IA32_MISC_ENABLE_BTS_UNAVAIL       RT_BIT_64(11)
++#endif
+ /** Precise Event Based Sampling (PEBS) Unavailable (R/O). */
++#ifndef MSR_IA32_MISC_ENABLE_PEBS_UNAVAIL
+ #define MSR_IA32_MISC_ENABLE_PEBS_UNAVAIL      RT_BIT_64(12)
++#endif
+ /** Enhanced Intel SpeedStep Technology Enable (R/W). */
+ #define MSR_IA32_MISC_ENABLE_SST_ENABLE        RT_BIT_64(16)
+ /** If MONITOR/MWAIT is supported (R/W). */
+ #define MSR_IA32_MISC_ENABLE_MONITOR           RT_BIT_64(18)
+ /** Limit CPUID Maxval to 3 leafs (R/W). */
++#ifndef MSR_IA32_MISC_ENABLE_LIMIT_CPUID
+ #define MSR_IA32_MISC_ENABLE_LIMIT_CPUID       RT_BIT_64(22)
++#endif
+ /** When set to 1, xTPR messages are disabled (R/W). */
+ #define MSR_IA32_MISC_ENABLE_XTPR_MSG_DISABLE  RT_BIT_64(23)
+ /** When set to 1, the Execute Disable Bit feature (XD Bit) is disabled (R/W). */
++#ifndef MSR_IA32_MISC_ENABLE_XD_DISABLE
+ #define MSR_IA32_MISC_ENABLE_XD_DISABLE        RT_BIT_64(34)
++#endif
+ 
+ /** Trace/Profile Resource Control (R/W) */
+ #define MSR_IA32_DEBUGCTL                   UINT32_C(0x000001d9)
+@@ -1623,7 +1743,9 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ /** @} */
+ 
+ /** Intel TSX (Transactional Synchronization Extensions) control MSR. */
++#ifndef MSR_IA32_TSX_CTRL
+ #define MSR_IA32_TSX_CTRL                   0x122
++#endif
+ 
+ /** Variable range MTRRs.
+  * @{ */
+@@ -1673,93 +1795,171 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_IA32_PERF_GLOBAL_OVF_CTRL       0x390
+ 
+ /** Precise Event Based sampling (Intel only). */
++#ifndef MSR_IA32_PEBS_ENABLE
+ #define MSR_IA32_PEBS_ENABLE                0x3F1
++#endif
+ 
++#ifndef MSR_DRAM_POWER_LIMIT
+ #define MSR_IA32_MC0_CTL                    0x400
++#endif
++#ifndef MSR_IA32_MC0_STATUS
+ #define MSR_IA32_MC0_STATUS                 0x401
++#endif
+ 
+ /** Basic VMX information. */
++#ifndef MSR_IA32_VMX_BASIC
+ #define MSR_IA32_VMX_BASIC                  0x480
++#endif
+ /** Allowed settings for pin-based VM execution controls. */
++#ifndef MSR_IA32_VMX_PINBASED_CTLS
+ #define MSR_IA32_VMX_PINBASED_CTLS          0x481
++#endif
+ /** Allowed settings for proc-based VM execution controls. */
++#ifndef MSR_IA32_VMX_PROCBASED_CTLS
+ #define MSR_IA32_VMX_PROCBASED_CTLS         0x482
++#endif
+ /** Allowed settings for the VM-exit controls. */
++#ifndef MSR_IA32_VMX_EXIT_CTLS
+ #define MSR_IA32_VMX_EXIT_CTLS              0x483
++#endif
+ /** Allowed settings for the VM-entry controls. */
++#ifndef MSR_IA32_VMX_ENTRY_CTLS
+ #define MSR_IA32_VMX_ENTRY_CTLS             0x484
++#endif
+ /** Misc VMX info. */
++#ifndef MSR_IA32_VMX_MISC
+ #define MSR_IA32_VMX_MISC                   0x485
++#endif
+ /** Fixed cleared bits in CR0. */
++#ifndef MSR_IA32_VMX_CR0_FIXED0
+ #define MSR_IA32_VMX_CR0_FIXED0             0x486
++#endif
+ /** Fixed set bits in CR0. */
++#ifndef MSR_IA32_VMX_CR0_FIXED1
+ #define MSR_IA32_VMX_CR0_FIXED1             0x487
++#endif
+ /** Fixed cleared bits in CR4. */
++#ifndef MSR_IA32_VMX_CR4_FIXED0
+ #define MSR_IA32_VMX_CR4_FIXED0             0x488
++#endif
+ /** Fixed set bits in CR4. */
++#ifndef MSR_IA32_VMX_CR4_FIXED1
+ #define MSR_IA32_VMX_CR4_FIXED1             0x489
++#endif
+ /** Information for enumerating fields in the VMCS. */
++#ifndef MSR_IA32_VMX_VMCS_ENUM
+ #define MSR_IA32_VMX_VMCS_ENUM              0x48A
++#endif
+ /** Allowed settings for secondary processor-based VM-execution controls. */
++#ifndef MSR_IA32_VMX_PROCBASED_CTLS2
+ #define MSR_IA32_VMX_PROCBASED_CTLS2        0x48B
++#endif
+ /** EPT capabilities. */
++#ifndef MSR_IA32_VMX_EPT_VPID_CAP
+ #define MSR_IA32_VMX_EPT_VPID_CAP           0x48C
++#endif
+ /** Allowed settings of all pin-based VM execution controls. */
++#ifndef MSR_IA32_VMX_TRUE_PINBASED_CTLS
+ #define MSR_IA32_VMX_TRUE_PINBASED_CTLS     0x48D
++#endif
+ /** Allowed settings of all proc-based VM execution controls. */
++#ifndef MSR_IA32_VMX_TRUE_PROCBASED_CTLS
+ #define MSR_IA32_VMX_TRUE_PROCBASED_CTLS    0x48E
++#endif
+ /** Allowed settings of all VMX exit controls. */
++#ifndef MSR_IA32_VMX_TRUE_EXIT_CTLS
+ #define MSR_IA32_VMX_TRUE_EXIT_CTLS         0x48F
++#endif
+ /** Allowed settings of all VMX entry controls. */
++#ifndef MSR_IA32_VMX_TRUE_ENTRY_CTLS
+ #define MSR_IA32_VMX_TRUE_ENTRY_CTLS        0x490
++#endif
+ /** Allowed settings for the VM-function controls. */
++#ifndef MSR_IA32_VMX_VMFUNC
+ #define MSR_IA32_VMX_VMFUNC                 0x491
+ /** Tertiary processor-based VM execution controls. */
+ #define MSR_IA32_VMX_PROCBASED_CTLS3        0x492
+ /** Secondary VM-exit controls. */
+ #define MSR_IA32_VMX_EXIT_CTLS2             0x493
++#endif
+ 
+ /** Intel PT - Enable and control for trace packet generation. */
++#ifndef MSR_IA32_RTIT_CTL
+ #define MSR_IA32_RTIT_CTL                   0x570
++#endif
+ 
+ /** DS Save Area (R/W). */
++#ifndef MSR_IA32_DS_AREA
+ #define MSR_IA32_DS_AREA                    0x600
++#endif
+ /** Running Average Power Limit (RAPL) power units. */
++#ifndef MSR_RAPL_POWER_UNIT
+ #define MSR_RAPL_POWER_UNIT                 0x606
++#endif
+ /** Package C3 Interrupt Response Limit. */
++#ifndef MSR_PKGC3_IRTL
+ #define MSR_PKGC3_IRTL                      0x60a
++#endif
+ /** Package C6/C7S Interrupt Response Limit 1. */
+ #define MSR_PKGC_IRTL1                      0x60b
+ /** Package C6/C7S Interrupt Response Limit 2. */
+ #define MSR_PKGC_IRTL2                      0x60c
+ /** Package C2 Residency Counter. */
++#ifndef MSR_PKG_C2_RESIDENCY
+ #define MSR_PKG_C2_RESIDENCY                0x60d
++#endif
+ /** PKG RAPL Power Limit Control. */
++#ifndef MSR_PKG_POWER_LIMIT
+ #define MSR_PKG_POWER_LIMIT                 0x610
++#endif
+ /** PKG Energy Status. */
++#ifndef MSR_PKG_ENERGY_STATUS
+ #define MSR_PKG_ENERGY_STATUS               0x611
++#endif
+ /** PKG Perf Status. */
++#ifndef MSR_PKG_PERF_STATUS
+ #define MSR_PKG_PERF_STATUS                 0x613
++#endif
+ /** PKG RAPL Parameters. */
++#ifndef MSR_PKG_POWER_INFO
+ #define MSR_PKG_POWER_INFO                  0x614
++#endif
+ /** DRAM RAPL Power Limit Control. */
++#ifndef MSR_DRAM_POWER_LIMIT
+ #define MSR_DRAM_POWER_LIMIT                0x618
++#endif
+ /** DRAM Energy Status. */
++#ifndef MSR_DRAM_ENERGY_STATUS
+ #define MSR_DRAM_ENERGY_STATUS              0x619
++#endif
+ /** DRAM Performance Throttling Status. */
++#ifndef MSR_DRAM_PERF_STATUS
+ #define MSR_DRAM_PERF_STATUS                0x61b
++#endif
+ /** DRAM RAPL Parameters. */
++#ifndef MSR_DRAM_POWER_INFO
+ #define MSR_DRAM_POWER_INFO                 0x61c
++#endif
+ /** Package C10 Residency Counter. */
++#ifndef MSR_PKG_C10_RESIDENCY
+ #define MSR_PKG_C10_RESIDENCY               0x632
++#endif
+ /** PP0 Energy Status. */
++#ifndef MSR_PP0_ENERGY_STATUS
+ #define MSR_PP0_ENERGY_STATUS               0x639
++#endif
+ /** PP1 Energy Status. */
++#ifndef MSR_PP1_ENERGY_STATUS
+ #define MSR_PP1_ENERGY_STATUS               0x641
++#endif
+ /** Turbo Activation Ratio. */
++#ifndef MSR_TURBO_ACTIVATION_RATIO
+ #define MSR_TURBO_ACTIVATION_RATIO          0x64c
++#endif
+ /** Core Performance Limit Reasons. */
++#ifndef MSR_CORE_PERF_LIMIT_REASONS
+ #define MSR_CORE_PERF_LIMIT_REASONS         0x64f
++#endif
+ 
+ /** X2APIC MSR range start. */
+ #define MSR_IA32_X2APIC_START               0x800
+@@ -1894,23 +2094,47 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ /** The mask which give the SYSCALL EIP. */
+ #define  MSR_K6_STAR_SYSCALL_EIP_MASK       UINT32_C(0xffffffff)
+ /** K6 WHCR - Write Handling Control Register. */
++#ifndef MSR_K6_WHCR
+ #define MSR_K6_WHCR                         UINT32_C(0xc0000082)
++#endif
+ /** K6 UWCCR - UC/WC Cacheability Control Register. */
++#ifndef MSR_K6_UWCCR
+ #define MSR_K6_UWCCR                        UINT32_C(0xc0000085)
++#endif
+ /** K6 PSOR - Processor State Observability Register. */
++#ifndef MSR_K6_PSOR
+ #define MSR_K6_PSOR                         UINT32_C(0xc0000087)
++#endif
+ /** K6 PFIR - Page Flush/Invalidate Register. */
++#ifndef MSR_K6_PFIR
+ #define MSR_K6_PFIR                         UINT32_C(0xc0000088)
++#endif
+ 
+ /** Performance counter MSRs. (AMD only) */
++#ifndef MSR_K7_EVNTSEL0
+ #define MSR_K7_EVNTSEL0                     UINT32_C(0xc0010000)
++#endif
++#ifndef MSR_K7_EVNTSEL1
+ #define MSR_K7_EVNTSEL1                     UINT32_C(0xc0010001)
++#endif
++#ifndef MSR_K7_EVNTSEL2
+ #define MSR_K7_EVNTSEL2                     UINT32_C(0xc0010002)
++#endif
++#ifndef MSR_K7_EVNTSEL3
+ #define MSR_K7_EVNTSEL3                     UINT32_C(0xc0010003)
++#endif
++#ifndef MSR_K7_PERFCTR0
+ #define MSR_K7_PERFCTR0                     UINT32_C(0xc0010004)
++#endif
++#ifndef MSR_K7_PERFCTR1
+ #define MSR_K7_PERFCTR1                     UINT32_C(0xc0010005)
++#endif
++#ifndef MSR_K7_PERFCTR2
+ #define MSR_K7_PERFCTR2                     UINT32_C(0xc0010006)
++#endif
++#ifndef MSR_K7_PERFCTR3
+ #define MSR_K7_PERFCTR3                     UINT32_C(0xc0010007)
++#endif
+ 
+ /** K8 LSTAR - Long mode SYSCALL target (RIP). */
+ #define MSR_K8_LSTAR                        UINT32_C(0xc0000082)
+@@ -1926,14 +2150,20 @@ AssertCompile(X86_DR7_ANY_RW_IO(UINT32_C
+ #define MSR_K8_KERNEL_GS_BASE               UINT32_C(0xc0000102)
+ /** K8 TSC_AUX - Used with RDTSCP. */
+ #define MSR_K8_TSC_AUX                      UINT32_C(0xc0000103)
++#ifndef MSR_K8_SYSCFG
+ #define MSR_K8_SYSCFG                       UINT32_C(0xc0010010)
++#endif
+ #define MSR_K8_HWCR                         UINT32_C(0xc0010015)
+ #define MSR_K8_IORRBASE0                    UINT32_C(0xc0010016)
+ #define MSR_K8_IORRMASK0                    UINT32_C(0xc0010017)
+ #define MSR_K8_IORRBASE1                    UINT32_C(0xc0010018)
+ #define MSR_K8_IORRMASK1                    UINT32_C(0xc0010019)
++#ifndef MSR_K8_TOP_MEM1
+ #define MSR_K8_TOP_MEM1                     UINT32_C(0xc001001a)
++#endif
++#ifndef MSR_K8_TOP_MEM2
+ #define MSR_K8_TOP_MEM2                     UINT32_C(0xc001001d)
++#endif
+ 
+ /** SMM MSRs. */
+ #define MSR_K7_SMBASE                       UINT32_C(0xc0010111)
+Index: VirtualBox-7.0.12/include/VBox/vmm/hm_vmx.h
+===================================================================
+--- VirtualBox-7.0.12.orig/include/VBox/vmm/hm_vmx.h
++++ VirtualBox-7.0.12/include/VBox/vmm/hm_vmx.h
+@@ -1633,7 +1633,9 @@ AssertCompileSize(VMXABORT, 4);
+ /** VMCS (and related regions) memory type - Uncacheable. */
+ #define VMX_BASIC_MEM_TYPE_UC                                   0
+ /** VMCS (and related regions) memory type - Write back. */
++#ifndef VMX_BASIC_MEM_TYPE_WB
+ #define VMX_BASIC_MEM_TYPE_WB                                   6
++#endif
+ /** Width of physical addresses used for VMCS and associated memory regions
+  *  (1=32-bit, 0=processor's physical address width). */
+ #define VMX_BASIC_PHYSADDR_WIDTH_32BIT                          RT_BIT_64(48)
+Index: VirtualBox-7.0.12/src/VBox/Additions/linux/drm/vbox_drv.h
+===================================================================
+--- VirtualBox-7.0.12.orig/src/VBox/Additions/linux/drm/vbox_drv.h
++++ VirtualBox-7.0.12/src/VBox/Additions/linux/drm/vbox_drv.h
+@@ -87,6 +87,12 @@
+ #else
+ # define RTLNX_RHEL_MAX(a_iMajor, a_iMinor) (0)
+ #endif
++
++#if defined(CONFIG_SUSE_VERSION)
++# if CONFIG_SUSE_VERSION == 15 && CONFIG_SUSE_PATCHLEVEL == 1
++#  define OPENSUSE_151
++# endif
++#endif
+ #if defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 12 && CONFIG_SUSE_PATCHLEVEL >= 4
+ # define SUSE_SLE12
+ #endif

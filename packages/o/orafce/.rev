@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b86383829e54efeac7c147cf5e57d05</srcmd5>
+    <version>4.1.1+git0.519b5b5</version>
+    <time>1676149026</time>
+    <user>dimstar_suse</user>
+    <comment>I would like to maintain Orafce in Factory and to use server:database:postgresql/orafce as the devel/feeder project</comment>
+    <requestid>1064312</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10ba659781ad112f3c5dc3ffe676970d</srcmd5>
+    <version>4.1.1+git0.519b5b5</version>
+    <time>1676196371</time>
+    <user>dimstar_suse</user>
+    <comment>RelEng emergecny fix: validate changes file</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>455b43ac9daf91587e1f81a8bc8a716b</srcmd5>
+    <version>4.2.1+git0.82ab40c</version>
+    <time>1678814245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1071441</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>57300ed5fffb8e9045cc2c5afe29415f</srcmd5>
+    <version>4.2.4+git0.2499240</version>
+    <time>1680536745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076778</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b0dc290ec2a0e191261119101e93c25</srcmd5>
+    <version>4.2.6+git0.86d7f4c</version>
+    <time>1682959898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083867</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4bb12b2e1dccf39d0f2a20a0efd1bb8f</srcmd5>
+    <version>4.3.0+git0.fac8b9c</version>
+    <time>1685981216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090776</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01a1c7f4af5540835fd33afe3fe263f0</srcmd5>
+    <version>4.4.0+git0.eb5513d</version>
+    <time>1689000008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097879</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>72c29043e4c92e3a3508c60802f68c68</srcmd5>
+    <version>4.5.0+git8.b3ad258</version>
+    <time>1691414963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102645</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9eaa27c4b59eef3641a3e7aab7875960</srcmd5>
+    <version>4.6.0+git0.6020b1e</version>
+    <time>1694200579</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109734</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>17a2cbfd8fe0e5c9d5e21e603fdc4a25</srcmd5>
+    <version>4.6.1+git0.8785767</version>
+    <time>1695665028</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113379</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6484c2bc07c1abc74c75bddd1f358546</srcmd5>
+    <version>4.7.0+git1.fca4108</version>
+    <time>1697231720</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117596</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5fc76a7c05bad54914c7cfc3fcf7aaae</srcmd5>
+    <version>4.9.0+git0.18d82db</version>
+    <time>1704281364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1136070</requestid>
+  </revision>
+</revisionlist>

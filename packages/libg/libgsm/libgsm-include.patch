@@ -1,0 +1,15 @@
+Index: src/toast.c
+===================================================================
+--- src/toast.c.orig
++++ src/toast.c
+@@ -8,6 +8,10 @@
+ 
+ #include	"toast.h"
+ 
++#include	<stdio.h>
++#include	<getopt.h>
++#include	<sys/stat.h>
++
+ /*  toast -- lossy sound compression using the gsm library.
+  */
+ 

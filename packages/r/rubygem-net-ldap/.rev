@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2fb282704ea5b8e6cc630ff9a463c6e7</srcmd5>
+    <version>0.11</version>
+    <time>1515623515</time>
+    <user>dimstar_suse</user>
+    <comment>dependencies for kubic</comment>
+    <requestid>555966</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>64d851a36728f31231208f90bb217b6d</srcmd5>
+    <version>0.16.1</version>
+    <time>1520253938</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>582558</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>733f4816c3b4c052bba38773fe66adc3</srcmd5>
+    <version>0.16.2</version>
+    <time>1583613550</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773825</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb43a4ea265140d67a8290f14894ab1b</srcmd5>
+    <version>0.16.3</version>
+    <time>1601919134</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838057</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>554558f2aaa3f9a7b86ee39922d19858</srcmd5>
+    <version>0.17.0</version>
+    <time>1609532015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859492</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>60904880fbd6a17b354ad20dee513752</srcmd5>
+    <version>0.17.1</version>
+    <time>1660051604</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>993501</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1d459db0201a529848d1acee09615b8</srcmd5>
+    <version>0.18.0</version>
+    <time>1700078884</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126393</requestid>
+  </revision>
+</revisionlist>

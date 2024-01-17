@@ -1,0 +1,305 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>748b1f7c9f7d1542ae8acdec41da2183</srcmd5>
+    <version>1.30.0</version>
+    <time>1598642390</time>
+    <user>dimstar_suse</user>
+    <comment>gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere</comment>
+    <requestid>825367</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0914c2b5d851cacb87e3613838492e3b</srcmd5>
+    <version>1.30.0</version>
+    <time>1598726644</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830354</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a769274864327d2768943f836955fa2</srcmd5>
+    <version>1.31.0</version>
+    <time>1600278129</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.31.0
+  * no upstream changelog available</comment>
+    <requestid>834877</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4fa768bf4d8b91ed5c681ca3f0b8212c</srcmd5>
+    <version>1.33.1</version>
+    <time>1603821568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844101</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c11f1a6bbf961f97168cc58bb6890685</srcmd5>
+    <version>1.33.2</version>
+    <time>1604779365</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>846823</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>39ca5950a7e86a6929430f97a5e64c40</srcmd5>
+    <version>1.34.0</version>
+    <time>1607349701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853541</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>236a0561a12ab732e9445f7d1fd739e5</srcmd5>
+    <version>1.34.1</version>
+    <time>1610965707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863628</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6681b787c7753b5aa4e2993b8f9c1d25</srcmd5>
+    <version>1.35.0</version>
+    <time>1614373172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875186</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>582c2d23bf2cfad774352f288696175e</srcmd5>
+    <version>1.36.1</version>
+    <time>1614948533</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>876918</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8aec4ea424984cc08970d3898d3e68b0</srcmd5>
+    <version>1.37.1</version>
+    <time>1620653945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891871</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0eefee5b0a3bef60c75887a10d918c7f</srcmd5>
+    <version>1.38.0</version>
+    <time>1622536623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895544</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>58fef8adc326cef76c5aa94085470cdb</srcmd5>
+    <version>1.38.1</version>
+    <time>1625516567</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903978</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bb1636c6d10a8aa0028baaa19edf0408</srcmd5>
+    <version>1.39.0</version>
+    <time>1628351832</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910596</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6c010c28bada652ecdf552ddb27ca467</srcmd5>
+    <version>1.41.0</version>
+    <time>1634943108</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.41.0
+</comment>
+    <requestid>927019</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>03b141ca665e8693ee9713a8e9b32baf</srcmd5>
+    <version>1.41.1</version>
+    <time>1635956747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>928863</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b5e6420034fe68fd9bb976d0b1daa980</srcmd5>
+    <version>1.43.0</version>
+    <time>1644531126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>953036</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f97f3a88cf1fa0ee8d8328765e76e154</srcmd5>
+    <version>1.44.0</version>
+    <time>1645461990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>956158</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b75b86878e6c8a96e39673c451f9bfc3</srcmd5>
+    <version>1.45.0</version>
+    <time>1651501549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>974314</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d166fbccf52b629d29be3b06a2416cd9</srcmd5>
+    <version>1.46.0</version>
+    <time>1652114659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975744</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fc261ec2ffd340c4396eca835b3ac2bf</srcmd5>
+    <version>1.46.3</version>
+    <time>1654378045</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.46.3:
+  * backport: xds: use federation env var to guard new-style resource name parsing
+  * This release contains refinements, improvements, and bug fixes.</comment>
+    <requestid>980774</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f563758d82b32f80338bd5c951a31304</srcmd5>
+    <version>1.48.0</version>
+    <time>1662405730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1001240</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>97037b59e542e978ec1f4d817776f764</srcmd5>
+    <version>1.49.1</version>
+    <time>1666011470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011269</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>82787696e0bffcbc7ded8f913d1aecf2</srcmd5>
+    <version>1.50.0</version>
+    <time>1667389619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032733</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ce3c7041ba678bf9c03d271c792091a9</srcmd5>
+    <version>1.51.1</version>
+    <time>1670332996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1040384</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3f7f733f309cc267330411fc43d70181</srcmd5>
+    <version>1.54.0</version>
+    <time>1682691859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1083480</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e2016c15a4c479c2b4c21360522be901</srcmd5>
+    <version>1.55.0</version>
+    <time>1686506147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092075</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f2fddbed1abbbffada247780c688523b</srcmd5>
+    <version>1.56.0</version>
+    <time>1688399002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096364</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>bdefe7f358357bb2d13c2267ac84360b</srcmd5>
+    <version>1.56.0</version>
+    <time>1688476976</time>
+    <user>dimstar_suse</user>
+    <comment>- Upstream only supports python &gt;= 3.7, so adjust BuildRequires
+  accordingly.
+- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1096752</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ce442d9ebde64e7854aa2ffcda647eb0</srcmd5>
+    <version>1.56.2</version>
+    <time>1691332215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.56.2:
+- Switch build to pip/wheel.
+- Use system abseil with '-std=c++17' to prevent undefined symbol
+  eg. with python-grpcio-tools (_ZN3re23RE213GlobalReplaceEPNSt7__
+  cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS0_N4absl12lts_
+  2023012511string_viewE)
+- Remove python-grpcio-disable-boring-ssl.patch, use
+  'export GRPC_BUILD_WITH_BORING_SSL_ASM=false' instead.
+</comment>
+    <requestid>1102575</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>03b4ba11711bae8f56af158ae5d885f4</srcmd5>
+    <version>1.57.0</version>
+    <time>1693860794</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108791</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0de4d741c4b0a1c9f1f248cff6b47c75</srcmd5>
+    <version>1.58.0</version>
+    <time>1695209434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112352</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>064ab8d37a6e4399d2cb93f6b49896e5</srcmd5>
+    <version>1.58.0</version>
+    <time>1695853564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1113862</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0c68ed9ac08d94be90f85e462dd534dc</srcmd5>
+    <version>1.59.0</version>
+    <time>1696529049</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115700</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1dd0b710193420df432dd9eb238847c8</srcmd5>
+    <version>1.59.2</version>
+    <time>1698780374</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121402</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>edf967c72092bceb61982824f519a517</srcmd5>
+    <version>1.59.2</version>
+    <time>1701121467</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129158</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7e72968d5cf0b3ca292ebac580ee839e</srcmd5>
+    <version>1.60.0</version>
+    <time>1702845165</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133625</requestid>
+  </revision>
+</revisionlist>

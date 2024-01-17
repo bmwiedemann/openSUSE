@@ -1,0 +1,220 @@
+-------------------------------------------------------------------
+Tue Jun 13 09:04:09 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Jan 19 10:24:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.3.0
+  * Add ignore-self-only-init option by @thejcannon in #560
+- Release 6.2.3
+  * Fix decorator parsing for async functions by @cdce8p in #577
+  * fix: do not pass file names with pre-commit by @yajo in #610
+- Release 6.2.2
+  * Fix false positive of google convention missing args
+    descriptions by @stinovlas in #619
+- Release 6.2.1
+  * Add https protocol on websites at the README.rst by @realFranco
+    in #611
+  * Use tomllib/tomli for reading .toml configs by @mgorny in #608
+- Release 6.2.0
+  * Exempt properties from D401 by @TomFryers in #546
+  * Add support for Python 3.10 by @hugovk in #554
+  * Add D419: Add and switch to "Docstring is empty" error code by
+    @thejcannon in #559
+  * Allow for hanging indent when documenting args in Google style
+    by @rmorshea in #564
+  * Fix match option to only consider basename when given a path
+    argument by @oczkoisse in #550
+- Drop integration-tests-invocation.patch
+
+-------------------------------------------------------------------
+Thu Jul 14 16:30:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Remove old pathlib extra package build requirement. It is
+  included in the stdlib since Python 3.4
+
+-------------------------------------------------------------------
+Tue Apr 12 21:25:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Tests require the extra dependency toml which is not pulled in
+  automatically by pytest anymore
+
+-------------------------------------------------------------------
+Thu Apr  7 10:40:03 UTC 2022 - pgajdos@suse.com
+
+- python-mock is not required for build
+
+-------------------------------------------------------------------
+Sat Mar 26 18:56:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update 6.1.1:
+  * Split ``--source`` by lines instead of by characters (#536).
+  * Enable full toml configuration and pyproject.toml (#534).
+  * Support for Python 3.5 has been dropped (#510).
+  * Add flag to disable `# noqa` comment processing in API (#485).
+  * Methods, Functions and Nested functions that have a docstring now throw D418 (#511).
+  * Methods decorated with @overload no longer reported as D102 (#511).
+  * Functions and nested functions decorated with @overload no longer reported as D103 (#511).
+  * Treat "package" as an imperative verb for D401 (#356).
+  * Fix the parsing of decorated one line functions (#499).
+  * Methods, Functions and Nested functions that have a docstring now throw D418 (#511).
+  * Methods decorated with @overload no longer reported as D102.
+  * Functions and nested functions decorated with @overload no longer reported as D103.
+
+-------------------------------------------------------------------
+Sat Oct 10 18:42:12 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.1.1:
+  * Bug Fixes
+    + Fix IndexError crash on one-line backslashed docstrings (#506).
+
+- changes from version 5.1.0 :
+  * New Features
+    + Skip function arguments prefixed with _ in D417 check (#440).
+  * Bug Fixes
+    + Update convention support documentation (#386, #393)
+    + Detect inner asynchronous functions for D202 (#467)
+    + Fix indentation error while parsing class methods (#441).
+    + Fix a bug in parsing Google-style argument description. The bug
+      caused some argument names to go unreported in D417 (#448).
+    + Fixed an issue where skipping errors on module level docstring
+      via #noqa failed when there where more prior comments (#446).
+    + Support backslash-continued descriptions in docstrings (#472).
+    + Correctly detect publicity of modules inside directories (#470,
+      #494).
+
+-------------------------------------------------------------------
+Wed May 20 07:26:23 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Sun Feb  9 17:08:50 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * updated line numbers for patch
+  * be more specific in %files section
+
+- update to version 5.0.2:
+  * Bug Fixes
+    + Fix DeprecationWarning / SyntaxError "invalid escape sequence"
+      with Python 3.6+ (#445).
+
+- changes from version 5.0.1 :
+  * Bug Fixes
+    + Fixed an issue where AttributeError was raised when parsing the
+      parameter section of a class docstring (#434, #436).
+
+- changes from version 5.0.0 :
+  * Major Updates
+    + Support for Python 3.4 has been dropped (#402).
+  * New Features
+    + Extend support for detecting missing arguments in Google style
+      docstrings to method calls (#384).
+    + Extend support for detecting missing argument description in
+      Numpy style docstrings (#407).
+    + Added support for Python 3.8 (#423).
+    + Allow skipping errors on module level docstring via #noqa
+      (#427).
+    + Whitespace is ignored with set options split across multiple
+      lines (#221).
+  * Bug Fixes
+    + Remove D413 from the google convention (#430).
+    + Remove D413 from the pep257 convention (#404).
+    + Replace semicolon with colon in D416 messages. (#409)
+    + D301 (Use r""" if any backslashes in a docstring) does not
+      trigger on backslashes for line continuation or unicode literals
+      \u... and \N... anymore. These are considered intended elements
+      of the docstring and thus should not be escaped by using a raw
+      docstring (#365).
+    + Fix decorator parsing (#411).
+    + Google-style sections no longer cause false errors when used
+      with Numpy-style sections (#388, #424).
+    + D202: Allow a blank line after function docstring when followed
+      by declaration of an inner function or class (#395, #426).
+    + Fix D401 and D404 checks not working for docstrings containing
+      only one word and ending with non-alpha character (#421)
+
+-------------------------------------------------------------------
+Sun Sep 15 07:26:46 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Update integration-tests-invocation.patch to match PR submitted
+  upstream, including an additional use of sys.executable in tests,
+  and move disabling of problematic fixture to the .spec
+- Update to v4.0.1
+  * D401: Fixed a false positive where one stem had multiple
+    imperative forms, e.g., init and initialize / initiate
+  * Fix parser hanging when there's a comment directly after ``__all__``
+  * Fixed RST error in table which resulted in the online
+    documentation missing the violation code table
+  * Fixed IndentationError when parsing function arguments
+- from v4.0.0
+  * Support for Python 2.x and PyPy has been dropped
+  * Added initial support for Google convention
+  * Added pre-commit hook (#346)
+  * Fix parsing tuple syntax ``__all__`` (#355, #352).
+
+-------------------------------------------------------------------
+Tue Mar  5 09:59:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix the changelog whitespace mess
+
+-------------------------------------------------------------------
+Mon Mar  3 15:20:38 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix %check to run the tests from GitHub tarball, and use
+  integration-tests-invocation.patch to invoke pycodestyle using
+  sys.executable, and do not install and uninstall pip during tests.
+- Fix line endings and remove hashbangs
+- Update to v3.0.0
+  + Major Updates
+    * Support for Python 3.3 has been dropped
+    * Added support for Python 3.7
+  + New features
+    * Violations are now reported on the line where the docstring starts, not
+      the line of the def/class it corresponds to
+    * Updated description of pep257 and numpy conventions
+    * __all__ parsing is now done on a best-effort basis - if __all__ can't
+      be statically determined, it will be ignored
+  + Bug Fixes
+    * Fixed a false-positive recognition of section names causing D405 to be
+      reported
+    * Fixed a bug where functions that don't end with a newline will sometimes
+      raise an exception
+- Set six minimum version to v1.10.0
+
+-------------------------------------------------------------------
+Fri Mar  1 11:13:40 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- don't run tests, if they're disabled from build conditional
+
+-------------------------------------------------------------------
+Tue Dec  4 12:52:06 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jun  7 16:09:18 UTC 2018 - toddrme2178@gmail.com
+
+- Add missing dependency.
+- Attempt to import as a basic test.
+
+-------------------------------------------------------------------
+Wed May  9 23:48:17 UTC 2018 - toddrme2178@gmail.com
+
+- Use license tag
+
+-------------------------------------------------------------------
+Wed Oct 18 10:47:05 UTC 2017 - alarrosa@suse.com
+
+- Update to version 2.1.1
+- singlespec version 
+
+-------------------------------------------------------------------
+Thu Jul  7 15:50:50 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

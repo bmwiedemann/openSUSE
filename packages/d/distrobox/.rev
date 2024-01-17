@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c00523d5842e0c54f228b9651c1bc3b2</srcmd5>
+    <version>1.2.13</version>
+    <time>1647282937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>961647</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ae23e69dbd461783629db57496f8bc9</srcmd5>
+    <version>1.2.14</version>
+    <time>1648570563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest version 1.2.14 (see: https://github.com/89luca89/distrobox/releases/tag/1.2.14)
+- Switch from `install -p` to `install --prefix`
+</comment>
+    <requestid>965603</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>02228b647f2a7dcd8e5957bb4689016a</srcmd5>
+    <version>1.2.15</version>
+    <time>1652872406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>977837</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ad65f392026780ede1ed005bec37fd7</srcmd5>
+    <version>1.3.0</version>
+    <time>1654004840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979897</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee6ce79112ce4f2f1640fb5bb3102789</srcmd5>
+    <version>1.3.1</version>
+    <time>1655972640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984378</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>61f6a3744ef8f2118f127101288920a3</srcmd5>
+    <version>1.3.1</version>
+    <time>1659106044</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix a (potential) problem with man and manpages
+  * Patch added:
+    0002-distrobox-handle-situations-with-weird-manpages-setu.patch
+- Default to distrobox-enter when only typing distrobox
+  * Patch added:
+    0003-distrobox-if-no-command-is-specified-default-to-ente.patch
+- Reordered the patchqueue:
+  * Patch removed:
+    0002-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+  * Patch added:
+    0004-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+- enable non-interactive mode by default
+- Fix a but with automatic cretion of rootful containers
+  * Patch added:
+    0001-enter-fix-automatic-container-creation-when-r-is-use.patch
+- Rework the /usr/etc config file patch (better changelog)
+  * Patch removed:
+    0001-Read-config-in-usr-etc-too.patch
+  * Patch added:
+    0002-opensuse-check-for-the-config-file-in-usr-etc-too.patch
+- Switched to %autosetup in the spec file
+</comment>
+    <requestid>991609</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>acb898cbf3067f2a2ee76dd16275cac1</srcmd5>
+    <version>1.4.0</version>
+    <time>1663275533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003684</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>94db3cf99c6e9fee1c735c9e51341fae</srcmd5>
+    <version>1.4.1</version>
+    <time>1664553448</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007027</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7fd6937844a421c301ec8ae04a980353</srcmd5>
+    <version>1.4.1</version>
+    <time>1668711162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036497</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>488ac5e888dded39c13e295fc03b3aa5</srcmd5>
+    <version>1.4.2.1</version>
+    <time>1672315783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045713</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>fc338373d9969fd51bf2ea814c201272</srcmd5>
+    <version>1.4.2.1</version>
+    <time>1674737859</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1060993</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8f0ba908d0c59a42d453d8a4e8ef3d25</srcmd5>
+    <version>1.4.2.1</version>
+    <time>1677075704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067110</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0e87b7b9077c1ab6f5ddfeb7bac452b6</srcmd5>
+    <version>1.5.0</version>
+    <time>1687379935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094116</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ce04cc11fa4bf608e0d7e9efe0703d24</srcmd5>
+    <version>1.5.0.2</version>
+    <time>1689000016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097899</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1c6a5d481b627c8a06c97cbe9c2c8c30</srcmd5>
+    <version>1.6.0.1</version>
+    <time>1701378269</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130006</requestid>
+  </revision>
+</revisionlist>

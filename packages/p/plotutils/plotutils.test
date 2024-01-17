@@ -1,0 +1,25 @@
+                        Testform für plotutils
+                        ======================
+
+Datum:      Mon May 22 14:18:34 CEST 2006
+Version:    2.5
+Maintainer: werner@suse.de
+
+Voraussetzungen:
+================
+
+Folgende Pakete müssen installiert werden:
+
+  gcc/gpp
+
+Aufruf(e):
+========
+
+siehe `info plotutils'
+
+Ergebnis(se):
+===========
+
+Plotausgaben in verschiedenen Formaten.
+
+

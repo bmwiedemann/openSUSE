@@ -1,0 +1,6 @@
+<package name="aerc" project="openSUSE:Factory">
+  <title>aerc</title>
+  <description>aerc is an email client that runs in your terminal. It's highly  efficient and extensible, perfect for the discerning hacker.</description>
+  <devel project="server:mail" package="aerc"/>
+  <url>https://aerc-mail.org</url>
+</package>

@@ -1,0 +1,10 @@
+<package name="regexp" project="openSUSE:Factory">
+  <title>Simple regular expressions API</title>
+  <description>Regexp is a 100% Pure Java Regular Expression package that was
+graciously donated to the Apache Software Foundation by Jonathan Locke.
+He originally wrote this software back in 1996 and it has stood up
+quite well to the test of time. It includes complete Javadoc
+documentation as well as a simple Applet for visual debugging and
+testing suite for compatibility.</description>
+  <devel project="Java:packages" package="regexp"/>
+</package>

@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Mon Oct 23 12:24:27 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add license header
+
+-------------------------------------------------------------------
+Thu Jun 15 16:58:55 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install qemu-img explicitly instead of qemu-tools
+
+-------------------------------------------------------------------
+Thu Oct 13 14:52:40 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Create an unprivileged user to run as non-root
+- Align the installed packages with the upstream
+
+-------------------------------------------------------------------
+Thu Aug  4 07:48:37 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use standard LABEL directive to add mandatory labels
+
+-------------------------------------------------------------------
+Wed Dec  8 15:07:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build only on aarch64 and x86_64
+
+-------------------------------------------------------------------
+Fri Jun  4 12:20:50 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Include the registry in org.opensuse.reference
+
+-------------------------------------------------------------------
+Wed Apr 28 16:35:25 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Tag the image with <version>-<release>
+
+-------------------------------------------------------------------
+Sun Apr 25 09:45:47 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Run zypper clean after installation
+
+-------------------------------------------------------------------
+Tue Mar 16 16:24:37 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add placeholder vars to be replaced during build
+- Use KUBEVIRTFROM to set the base image
+
+-------------------------------------------------------------------
+Fri Mar 12 09:58:55 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Rename virt-cdi-uploadserver to cdi-uploadserver
+
+-------------------------------------------------------------------
+Sun Oct 25 23:03:09 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial container for CDI upload server

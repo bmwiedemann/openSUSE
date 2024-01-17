@@ -1,0 +1,782 @@
+-------------------------------------------------------------------
+Tue Dec 19 16:37:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.4:
+  * [XrdHttp] Fix segfault with macaroons (gh#xrootd/xrootd#2114).
+  * [XrdPss] Fix segfault if pss.origin uses https protocol with
+    no port (gh#xrootd/xrootd#2140).
+  * [CMake] Fix include path in XRootDConfig.cmake
+    (gh#xrootd/xrootd#2142).
+  * [Headers] Fix header dependencies and missing
+    includes/declarations (gh#xrootd/xrootd#2119).
+  * [Server] Initialize pidFN to pidpath base directory if an
+    error occurs.
+  * [XrdCl] Don't try to enable TCP_CORK in GNU/Hurd
+    (gh#xrootd/xrootd#2115).
+  * [XrdCl] Reapply fix for null-characters in error output
+    (gh#xrootd/xrootd#2138, gh#xrootd/xrootd#1501).
+  * [XrdEc] Fix alignment issues on SPARC (gh#xrootd/xrootd#2131).
+  * [XrdHttp,XrdNet] Adapt Scitag min and max value to change in
+    spec (gh#xrootd/xrootd#2139).
+  * [XrdSciTokens] Initialize SecEntity.addrInfo to avoid SEGV
+    (gh#xrootd/xrootd#2128).
+  * [XrdTls] Switch from using a cert file to a cert chain file
+    (gh#xrootd/xrootd#2126).
+  * [CMake] Install CMake config file into lib/lib64 rather than
+    share (gh#xrootd/xrootd#2116).
+  * [Tests] Convert tests to GoogleTest and run without containers
+    (gh#xrootd/xrootd#2055, GSoC 2023).
+  * [Tests] Other fixes and improvements to tests
+    (gh#xrootd/xrootd#2115, gh#xrootd/xrootd#2129,
+    gh#xrootd/xrootd#2130, gh#xrootd/xrootd#2137,
+    gh#xrootd/xrootd#2141).
+- Use source tarballs from Github as the previously used website
+  can be hit or miss sometimes.
+
+-------------------------------------------------------------------
+Sun Nov 12 09:40:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.3:
+  * Export project version in CMake config (issue #2094)
+  * Find only XRootD matching XRootDConfig.cmake installation path
+  * Do not use PEP517 by default, not supported on CentOS 7
+  * Call tzset() early to ensure thread-safety of localtime_r()
+    and mktime() (issue #2107)
+  * Correct maximum exp/act value in XrdNetPMark::getEA
+  * Create environment file within adminpath (issue #2106)
+  * Fix incorrect patch for authfile parsing (issue #2088)
+  * Skip server checksum query test on unsupported filesystems
+  * Return an error if xrdfs rm fails to delete any file
+  * Try to load blacklist even if some entries are invalid
+  * Wait for pipeline including XrdCl::AppendFile() to finish
+  * Fix parsing of chunked PUT lengths (#2102, #2103)
+
+-------------------------------------------------------------------
+Sun Sep 17 12:57:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.2:
+  * [XrdHttp] Fix chunked PUT creating empty files
+    (gh#xrootd/xrootd#2058)
+  * [CMake] Update Findlibuuid.cmake to use correct include paths
+  * [Python] Fix inclusion of markdown README file in
+    documentation (gh#xrootd/xrootd#2057)
+  * [Server] Align code with actual documentation for auth idspec
+    (gh#xrootd/xrootd#2061)
+  * [XrdCl] Fix flag check for append in XrdClZipArchive
+  * [XrdCl] Fix promotion of root:// URLs to use TLS encryption
+    (gh#xrootd/xrootd#2078)
+  * [XrdHttp] Correct chunked response for GET with a byte range
+    (gh#xrootd/xrootd#2076)
+  * [XrdHttp] Refactor read issuing during GET and fix read vector
+    too long (gh#xrootd/xrootd#1976)
+  * [XrdSciTokens] Fix logic error in user mapping
+    (gh#xrootd/xrootd#2056)
+  * [XrdSciTokens] Update maximum header size and line length in
+    INI files (gh#xrootd/xrootd#2074)
+  * [XrdSecgsi] Fix crash of xrdgsitest when proxy is not already
+    set
+  * [XrdSecztn] Fix template for default ZTN token location
+    (gh#xrootd/xrootd#2080)
+  * [XrdTls] Change the thread-id returned to openssl 1.0 to
+    improve performance (gh#xrootd/xrootd#2084)
+  * [XrdTls] Insert CRLs containing critical extensions at the end
+    of the bundle (gh#xrootd/xrootd#2065)
+  * [CMake] Always compile XrdOssCsi (compiled only with GCC
+    before)
+  * [CMake] Hide build output for isa-l to not confuse CTest
+  * [CMake] Run tests in parallel and fail build when tests fail
+  * [Python] Allow build customization via environment variable
+    (gh#xrootd/xrootd#2062)
+  * [Python] Check for Development.Module with CMake 3.18 and
+    above
+  * [Server] Add initialiser in one of the XrdScheduler
+    constructors (gh#xrootd/xrootd#2081)
+  * [Server] Default ffdest as per current pmark specification
+  * [Server] Export readv comma separated limits via
+    XRD_READV_LIMITS envar
+  * [Server] Implement Linux epoll maxfd limit
+    (gh#xrootd/xrootd#2063)
+  * [XrdClHttp] Add pgWrite support to the HTTP client plugin
+  * [XrdHttp] Refactor request statemachine for HTTP GET requests
+    (gh#xrootd/xrootd#2072)
+  * [XrdTls] Refactor CASet and CRLSet to open the output file
+    only once before the processing
+
+
+-------------------------------------------------------------------
+Sat Jul 22 21:11:22 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Only build python bindings without private copies of the client
+  library. This also removes the ambiguity for the client libraries
+  for the automatic dependency generation.
+- Only use build dependency on doxygen/graphviz for the main
+  package.
+- Remove unused swig build dependency.
+- Various spec file cleanups
+- Fix installation of API docs
+
+-------------------------------------------------------------------
+Thu Jul 20 12:37:56 UTC 2023 - pgajdos@suse.com
+
+- version update to 5.6.1
+  * Version 5.6.1
+    Minor bug fixes
+    [CMake] Fix Findlibuuid.cmake to use kernel provided uuid on macOS
+    [XrdCl] Avoid race in postmaster QueryTransport
+    [XrdCl] Add missing argument in call to debug log message.
+      This fixes sporadic crashes seen in FTS when debug logging is enabled.
+    [XrdCrypto] Avoid race in GetCryptoFactory
+    Miscellaneous
+    [CMake] Make sure Python is required in PyPI build
+    [CMake] Set RPATH that works for binaries and libraries on macOS
+    [CMake,Python] Handle RPATH for Python bindings on macOS
+    [Python] Use PEP517 by default when building Python bindings
+  * Version 5.6.0
+    New Features
+    [CMake] Modernization of build system, now requires CMake 3.16
+    [Client] Add xrdfs cache subcommand to allow for cache evictions
+    [Misc] Add support for building with musl libc (issue #1645)
+    [Python] Modernization of build system, better support for creating binary wheels,
+                 properly propagating CXXFLAGS (issues #1768, #1807, #1833, #1844, #2001, #2002)
+    [Python] Better handling of unicode strings in the API (issue #2011)
+    [Server] Add gsi option to display DN when it differs from entity name
+    [Server] Allow generic prepare plug-in to handle large responses (issue #2023)
+    [Server] Allow specfication of minimum and maximum creation mode (issue #649)
+    [Server] Make maxfd be configurable (default is 256k) (issue #2010)
+    [Server] Include token information in the monitoring stream (phase 1).
+    [Xcache] Implement a file evict function
+    [Xcache,XrdCl] Increase default number of parallel event loops to 10 (#2047)
+    [XrdCl] xrdcp: number of parallel copy jobs increased from 4 to 128
+    [XrdHttp] Allow XRootD to return trailers indicating failure (#1912)
+    [XrdHttp] Denote Accept-Ranges in HEAD response (issue #1889)
+    [XrdHttp] Report cache object age for caching proxy mode (#1919)
+    [XrdPss] Allow origin to be a directory of a locally mounted file system
+    [XrdSciTokens] Implement ability to have the token username as a separate claim (#1978)
+    [XrdSecgsi] Use SHA-256 for signatures, and message digest algorithm (issues #1992, #2030)
+    [XrdSecztn] Allow option '-tokenlib none' to disable token validation (issue #1895)
+    [XrdSecztn] Allow to point to a token file using CGI '?xrd.ztn=tokenfile' (#1926)
+    Major bug fixes
+    [XrdHttp] Fix SEGV in case request has object for opaque data but no content (#2007)
+    [XrdSecgsi] Fix memory leaks in GSI authentication (issue #2021)
+    Minor bug fixes
+    [Server] Use correct value for testing vector size
+    [XrdCl] Fix off by one error in failure recovery check in parallel operation (issue #2040)
+    [XrdCl] Fix potential stream timeout when a new request is sent to an idle stream (issue #2042)
+    [XrdCl] Do not enforce TLS when --notlsok option is used in combination with root:// URL.
+                This allows falling back to e.g. Kerberos authentication on a server with ZTN plugin
+                enabled if the client has no certificates, hence not able to use TLS (issue #2020)
+    [XrdEc] Fix compilation issues and underlinking on macOS
+    [XrdHttp] Fix error returned when a client provides too many range requests (issue #2003)
+    [XrdHttp] Fix regression where performance markers were missing during an HTTP TPC transfer (#2017)
+    [XrdHttp] Return 404 instead of 500 error code on GET request on non-existent file (issue #2018)
+    [XrdHttp] Return 405 instead of 500 error code on deletion of non-empty directory (issue #1896)
+    [XrdHttp] Update HTTP header handling for chunked encoding and status trailer (#2009)
+    [XrdTls] Make sure TLS context is marked invalid if not properly constructed (issue #2020)
+    [XrdTls] Fix build failure with latest glibc (#2012)
+    Miscellaneous
+    [Apps] Make xrdcrc32c consistent with xrdadler32 (issue #2045)
+    [CMake] Build option ENABLE_CRYPTO has been removed. OpenSSL is always required with XRootD 5 (issue #1827)
+    [CMake] New test.cmake script added to automate configure/build/test cycle
+    [CMake] Fix build with link-time optimizations on 32bit systems (issue #2032)
+    [docs] Update READMEs, contribution, installation, and testing documentation
+    [Misc] Fix warnings from Clang compiler (#1997)
+    [Misc] Add sandboxing settings to systemd service files (initially commented out) (issue #2033)
+    [Server] Also check for IPv6 ULA's to determine if an address is private
+    [Tests] New script xrd-docker added to automate running of dockerized tests (#1974)
+    [XProtocol] Add fallthrough statement for ENOTEMPTY errno code mapping
+    [XRootD]  Update code to no longer rely on using namespace std; (needed to support C++17)
+    [XrdCeph] Submodule merged back into main repository (#2008)
+    [XrdCeph] Minor build system updates and integration with main repository
+    [XrdCrypto] Switch to a fixed set of DH parameters compatible with older OpenSSL (issue #2014)
+- modified patches
+  % harden_cmsd@.service.patch (refreshed)
+  % harden_frm_purged@.service.patch (refreshed)
+  % harden_frm_xfrd@.service.patch (refreshed)
+  % harden_xrootd@.service.patch (refreshed)
+- removed patches
+  - xrootd-modernize-python-builds.patch (upstreamed)
+
+-------------------------------------------------------------------
+Thu Jun 15 16:44:16 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix some multibuild package name degeneracies.
+
+-------------------------------------------------------------------
+Fri Jun  9 17:26:19 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.5:
+  * [HTTP] Initialize SecEntity.addrInfo to avoid SEGV
+    (gh#xrootd/xrootd#1986).
+  * [Server] Allow XrdXrootdFile::Serialize() to be used to wait
+    more than once (gh#xrootd/xrootd#1995).
+  * [Server] Correct file handle returned when reusing it from
+    external table.
+  * [XrdCl] Fix client crash on early closed connection
+    (gh#xrootd/xrootd#1934).
+  * [Server] Use correct format to print size_t
+    (gh#xrootd/xrootd#1989).
+  * [XrdApps] Let XrdClProxyPlugin work with PgRead
+    (gh#xrootd/xrootd#1993).
+  * [XrdCl] Avoid possibility of Channel unregistering the wrong
+    task (gh#xrootd/xrootd#1883).
+  * [XrdCl] Fix ZipArchive issuing VectorWrite which is too large
+    during CloseArchive (gh#xrootd/xrootd#2004).
+  * [XrdSys] Avoid memory leak when overwriting the default
+    message for EBADE.
+  * [CMake] Adjust build rules to not depend on scitokenscpp to
+    build libXrdSecztn.
+  * [Server,XrdPosix,XrdSecgsi] Fix compile warnings with Clang
+    compiler.
+  * [XrdPosix] Fix build with Clang and _FORTIFY_SOURCE enabled
+    (gh#xrootd/xrootd#1975).
+- Fix python builds:
+  * Add xrootd-modernize-python-builds.patch: patch from
+    gh#xrootd/xrootd#2025 rebased for current version.
+  * Use _multibuild to split out python builds into own flavour
+    separate from main package builds.
+  * Manually create a VERSION file so that dist-infos can decipher
+    the right version and does not use 5.6-rc-foo; this should no
+    longer be required when packaging tagged version 5.6.
+  * Manually specify xrootd includedirs when building python pkgs
+    since cmake as invoked by python build tools does not
+    automatically inherit them, leading to missing header
+    complaints.
+  * Pass -Wno-error=odr to linker flags to avoid build failures on
+    32bit archs (gh#xrootd/xrootd#2032).
+
+-------------------------------------------------------------------
+Wed Apr  5 14:50:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.5.4:
+  + **[SSI]** Avoid file system+SSI feature interference that caused problems
+  + **[Server]** Fix dropped connections when link is reused (issue 1928)
+  + **[Server]** Limit max number of sockets in poller (issue 1962)
+  + **[Tests]** Fix intermittent failure of SocketTest
+  + **[XrdApps]** Fix crashes and deadlocks in xrdreplay tool (issue 1937)
+  + **[XrdCl]** Remove interference between sessions in the client (issue 1942)
+  + **[XrdCrypto]** Allow ASN1 GeneralizedTime in certificates (issue 1969)
+  + **[XrdCrypto]** Fix handling of daylight savings time (issues 985, 1955)
+  + **[XrdHttp]** Avoid sending empty headers in the HTTP response
+  + **[XrdHttp]** Clear digest header between requests (issue 1956)
+  + **[XrdHttp]** Fix for HTTP requests with open-ended byte range
+  + **[XrdHttp]** Fix handling of SSL shutdown during cleanup (issue 1967)
+  + **[XrdHttp]** Fix parsing of configuration with weighted checksums (issue 1944)
+  + **[XrdHttp]** Only call ERR_print_errors() if an error occurred
+  + **[XrdPfc]** Fix HTTP request failures with direct read mode enabled
+  + **[XrdTls]** Fix intermittent clients disconnections on login (issue 1952)
+- Drop xrootd-drop-python-distutils.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Jan 15 18:20:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add xrootd-drop-python-distutils.patch: Drop distutils usage in
+  favour of setuptools; upstream commit d5732ef
+  [gh#xrootd/xrootd#1843]. This fixes build failures on Factory.
+
+-------------------------------------------------------------------
+Mon Oct 31 10:28:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.1:
+  * [XrdFfs] Fix a bug in xrootdfs (gh#xrootd/xrootd#1777).
+  * [Server] Avoid SEGV when client tries to access file after
+    deferred closed.
+  * [XrdHttp] The server certificate is renewed by the Refresh
+    thread of the XrdTlsContext object.
+  * [XrdHttp] Fix a segv happening when a client sends a first
+    line starting with a space.
+  * [XrdTls] Shutdown the socket if a SSL error happens when
+    trying to accept a connection.
+  * [Apps] Avoid SEGV when asking for help.
+  * [XrdCl] copy job: fix memory leak (buffers not queued on
+    error).
+  * [Server] Add O_RDWR open flag when creating file to avoid fs
+    issue.
+  * [Server] Properly handle opaque info for fsctl operations.
+  * [XrdHttp] Allow VO names with spaces and other quoted chars.
+  * [XrdCl] LocalFileHandler: fail gracefuly on overloaded
+    machines.
+  * [XrdCl] Introduce new error code for handling local errors.
+  * [XrdCl] local file handler: obtain error code with aio_error.
+  * [XrdCl] xrdfs ls: sanitize ls entry.
+  * [CMake] Add ENABLE_ switch for scitokens and
+    macaroons(gh#xrootd/xrootd#1728).
+  * [XrdTls] Start the CRLRefresh thread in XrdTlsContext
+    constructor.
+  * [XrdTls] Changed the bit set for the activation of the Refresh
+    thread.
+  * [XrdTls] The CRL refresh thread logic only starts when there
+    is a need for it.
+  * [XrdTls] Free current context when a new context is generated.
+  * [XrdHttpTpc] Pass src size to OFS via oss.asize.
+
+-------------------------------------------------------------------
+Thu Sep 29 13:26:53 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- rpmlintrc: Filter out missing-call-to-setgroups-before-setuid
+  warnings which are false positives (see
+  https://github.com/xrootd/xrootd/issues/1783).
+
+-------------------------------------------------------------------
+Tue Sep 20 16:39:20 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.0:
+  * Long list of changes, see
+    https://github.com/xrootd/xrootd/blob/v5.5.0/docs/ReleaseNotes.txt
+- Update patches to apply cleanly:
+  * harden_cmsd@.service.patch
+  * harden_frm_purged@.service.patch
+  * harden_frm_xfrd@.service.patch
+  * harden_xrootd@.service.patch
+- Adapt to changes in installed files list for python3.
+- Build python bindings for all supported python versions (python3
+  only).
+- Add BuildRequires: python-pip needed to install standard
+  python egg-info (avoiding installing .pth files).
+- Install /run/%{name} as ghost dir.
+- Drop unused filter from rpmlintrc.
+- Rename logrotate file to xrootd-server to conform with rpmlint
+  suggestion.
+- Add BuildRequires: sysuser-tools and use its macros to set up
+  xrootd user and group in compliance with
+  <https://en.opensuse.org/openSUSE:Packaging_guidelines#Users_and_Groups>.
+- Add %{name}-user.conf as source as required for above.
+- Drop conditionals for openSUSE < 1500 (sle_version < 150000).
+- Minor specfile cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Sat Mar 26 22:52:26 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.12.9:
+  * No Linux related changes, just version sync.
+
+-------------------------------------------------------------------
+Mon Jan 10 12:39:14 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_cmsd@.service.patch
+  * harden_frm_purged@.service.patch
+  * harden_frm_xfrd@.service.patch
+  * harden_xrootd@.service.patch
+
+-------------------------------------------------------------------
+Fri Jul  2 00:31:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.12.8:
+  * [XrdTpc] Buffer starting at the right offset.
+  * [XrdHttp] Store a new header in the headers map before
+    mangling it, fixes gh#xrootd/xrootd#1399.
+  * [XrdHttp] Fix chunked transfer with 100-continue.
+- Drop xrootd-build-with-glibc2.33.patch: integrated upstream.
+
+-------------------------------------------------------------------
+Mon Feb 22 21:49:32 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.12.7:
+  * [XrdHttp] Fix empty PUT.
+  * [XrdTpc] Do not call Write() on flush.
+  * [XrdTpc] Avoid using invalid object in multi-stream.
+  * [XrdTpc] Always check and fail on error.
+  * [XrdTpc] Catch all negative return values not just SFS_ERROR.
+  * [XrdTpc] Fix the return value of `Stream::Write`
+  * [XrdTpc] Always populate error buffer with messages.
+  * [XrdTpc] Factor out recursive writes.
+  * [XrdTpc] Do not allow partial buffer writes.
+  * [XrdTpc] Adjust buffer size based on number of streams.
+- Add xrootd-build-with-glibc2.33.patch: Fix build with glibc
+  2.33; patch taken from upstream commit [gh#xrootd/xrootd#1315].
+
+-------------------------------------------------------------------
+Thu May 28 21:02:06 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.12.1:
+  * [XrdXrootdVoms] Fix run-time lib dependencies.
+  * [xrdcp] Don't create unwanted dir if --recursive option was
+    used and the source is a file.
+- Changes from version 4.12.0:
+  * New Features:
+    - [Server] User redirector to find directory to be listed (R5
+      backport).
+    - [XrdCl] More effective error recovery policy when the source
+      is a metalink.
+    - [xrdcp] Implement bandwidth limiting (--xrate option).
+    - [xrdcp] Implement ability to continue interrupted transfer
+      (--continue).
+    - [xrdcp/Python] Add an option (--zip-mtln-cksum) to use the
+      checksum from a metalink with files extracted from ZIP
+      archives.
+    - [xrdcp/Python] Automatically infer checksum type if asked
+      to.
+    - [xrdcp/Python] Add an option (--rm-bad-cksum) to
+      automatically remove destination file if the checksum check
+      failed.
+  * Bug fixes:
+    - [Server] Correct sequencing of an async close to prevent a
+      SEGV.
+    - [Server] Add missing initializer to avoid TPC SEGV on busy
+      systems.
+    - [Server] Initialize the XrdAccEntityInfo structure.
+    - [XrdHttp] Fix MKCOL response when we have an EEXIST.
+    - [XrdHttp] Periodically reload verify cert store.
+    - [XrdHttp] Disable session cache.
+    - [XrdCl] Don't set on-connection handler for local files.
+    - [XrdCl] Don't set the stream error window for auth errors.
+    - [XrdCl] Fix race condition resulting in dangling pointer to
+      SidMgr.
+    - [XrdCl] Make Channel operations thread-safe in respect to
+      ForceDisconnect.
+  * [CMake] Repleace XRootD find module with config module.
+  * [RPM/CMake] Don't build XrdCns.
+  * [Packaging] Add xrootd-voms and xrootd-voms-devel packages
+    equivalent.
+  * [Packaging] Add additional private headers for vomsxrd to the
+    vomsxrd packages.
+  * [Python] Support PyPy.
+- Only package the COPYING.LGPL file and drop all extraneous
+  COPYING* files; the LICENSE file makes it clear that the
+  software is licensed under LGPL-3.0-or-later.
+
+-------------------------------------------------------------------
+Fri Apr  3 01:40:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.11.3:
+  * [Server] Avoid SEGV when skipping over large if/else/fi
+    blocks.
+  * [XrdHttp] Fix curl speed limit to be really around 10KB/s.
+  * [xrootdfs] Make sure xrootdfs_create() checks return code of
+    xrootdfs_do_create().
+  * [XrdHttp] Change the default ssl cipher.
+  * [XrdHttp] Enable elliptic-curve support for OpenSSL 1.0.2+.
+  * [XrdHttp] Use Mozilla cipher list only with OpenSSL 1.0.2+.
+  * [XrdCl] When xrdcp reports an error refine the message so it
+    is clear whether the erros comes from the source or
+    destination.
+  * [XrdCl] Make sure on error local redirect is not retried
+    infinitely.
+  * [XrdXrootdConfig] Fixed wrong segsz parameter.
+  * [XrdHttp] Give a chance to map the issuer name in the case of
+    a proxy certificate (needed to accommodate systems that do
+    user mapping, e.g. eos)
+  * [XrdHttp] Fix the logic for determining SecEntity.name.
+  * [XrdHttp] Don't overwrite SecEntity.name after the gridmap
+    phase.
+  * [xrootdfs] Make sure xrootdfs_create() does check the return
+    code of xrootdfs_do_create().
+  * [XrdSecgsi] In the case of delegation, give client a chance to
+    use XrdSecGSISRVNAMES to limit where it is being redirected
+    to.
+  * [Python] Make rpath relative to the module.
+  * [Debian] Proper Debian pkg naming.
+  * [XrdCl] Use glibc semaphores for rhel>=7.
+  * [Server] Export pointers to Acc, Ofs, and Sfs plugin into the
+    XrdEnv.
+  * [XrdMacaroons] Use env ptrs to get authorize obj.
+- Changes from versions 4.11.0 through 4.11.2:
+  * See
+    https://github.com/xrootd/xrootd/blob/v4.11.3/docs/ReleaseNotes.txt.
+- Remove a spurious 'exit 0' line from %pre scriptlet.
+- Recommend logrotate for xrootd-server as it installs a file in
+  /etc/logrotate.d/.
+- Use ninja for building:
+  * Add BuildRequires: ninja.
+  * Use %cmake_build instead of make.
+  * Define __builder to ninja so cmake uses ninja instead of make
+    for building.
+
+-------------------------------------------------------------------
+Mon Aug 19 12:10:46 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.10.0:
+  * New Features
+    - [POSIX] Add methods to the cache mngt objecT to get status
+      of a cached file.
+    - [Server] Add xrd.network dyndns option for dynamic DNS
+      handling.
+    - [Server] Properly handle dynamic DNS environments.
+    - [Server] Add evict option to the prepare request.
+    - [Server] Allow better handling for proxy caching clusters.
+    - [Server] Allow configurable posc sync level.
+    - [Server] Implement framework for a kXR_prepare plug-in.
+    - [XrdCl] Implement streaming dirls, closes #225
+    - [XrdCl] Retry policy changes: see details in #950.
+    - [XrdCl] Add switch/flag to enforce zip archive listing.
+    - [XrdCl] Preserve tried/triedrc cgi info on redirect for
+      kXR_locate request, #closes #944
+    - [XrdCl] Implement prepare evict and expose in xrdfs.
+    - [XrdCl] Expose prepare abort and query prepare.
+    - [XrdCl] Add tpc.scgi if delegation is being used.
+    - [Python] Expose chunked dirlist API in Python.
+    - [Python] Support globbing.
+    - [XrdClHttp] Add XrdClHttp submodule.
+    - [XCache] Implement write-queue number of blocks / threads
+      config options. (#963)
+    - [CMake] Add switch for XrdCl builds only.
+  * Major bug fixes:
+    - [XrdCl] Allow to cancel classical copy jobs.
+    - [XrdCl] Fix race condition in error recovery.
+    - [XrdCl] Prevent race condition between Request T/O and
+      socket read.
+    - [XCache] Check for errors during XrdOssFile::FSync - do not
+      write cinfo file if it fails.
+    - [XCache] Deny write access to a file in initial Prepare()
+      call, fixes #663
+    - [XCache] Review and correct error handling in POSIX and
+      XCache, implement XCache::Unlink()
+    - [XrdTpc] Always query dual stack for HTTP TPC.
+    - [XrdTpc] Do not include authz header in the filename.
+    - [XrdTpc] Add curl handle cleanup on redirections or errors.
+    - [XrdHttp] Include provided opaque information in the
+      redirection.
+    - [XrdHttp] Fix digest names returned to clients.
+    - [XrdHttp] Fix opaque info handling on redirections.
+    - [XrdMacaroon] Fix macaroon authorization config.
+    - [XrdSecgsi] Make proxy cache path aware.
+    - [XrdSecgsi] XrdSecProtocolgsi::Encrypt - set IV correctly
+      and report correct size.
+  * Minor bug fixes and miscellaneous changes: see
+    https://github.com/xrootd/xrootd/blob/master/docs/ReleaseNotes.txt
+- Use github URL for source tarball.
+- Replace xrootd-devel by xroots-libs-devel for
+  xrootd-server-devel's Requires; xrootd-devel does not exist.
+
+-------------------------------------------------------------------
+Thu Jan 17 19:02:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable ceph since linking to it fails.
+
+-------------------------------------------------------------------
+Wed Dec 19 10:49:19 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim long repeated descriptions in subpackages.
+- Trim future aims. Run fdupes over all of the usr subvolume.
+
+-------------------------------------------------------------------
+Wed Dec  5 16:29:57 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 4.8.5
+- Remove upstream-included xrootd-gcc6-fix.patch
+- Remove unneeded xrootd-gcc8-fix.patch
+- Merge cl and cl-devel subpackages into client and client-devel
+  subpackages, respectively, to match upstream
+- Split client and server libraries into subpackages to simplify
+  dependencies, simplify installation, and better match upstream.
+- Switch to cmake-based install
+- Switch from sysv-init to systemd.
+- Build and package python3 bindings
+- Build and package ceph storage backend
+- Build and package documentation
+
+-------------------------------------------------------------------
+Sun Jul  1 08:16:43 UTC 2018 - bugs@vdm-design.de
+
+- Add patch xrootd-gcc8-fix.patch to fix build with gcc8
+
+-------------------------------------------------------------------
+Wed Mar  7 18:58:32 UTC 2018 - bugs@vdm-design.de
+
+- Fix build for factory, rpc/types.h is gone from glibc-devel,
+  use the one from tirpc-devel instead
+
+-------------------------------------------------------------------
+Fri Dec 22 18:51:02 UTC 2017 - bugs@vdm-design.de
+
+- Disable crypto for Leap 15 and Tumbleweed to make it build again
+  newer openssl versions are not supported by version < 4
+
+-------------------------------------------------------------------
+Thu Nov 23 13:54:23 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Sun Jun 19 11:57:32 UTC 2016 - bugs@vdm-design.de
+
+- Fix compilation with GCC6 in Tumbleweed, by applying patch
+  xrootd-gcc6-fix.patch
+  Patch taken from https://sft.its.cern.ch/jira/browse/ROOT-8184
+  Fix is included in upstream version 4.3.0. We do not update to
+  this version, as other packages that use xrootd do not compile
+  against versions >= 4.0
+- Fixes bnc#985167
+
+-------------------------------------------------------------------
+Wed Jun 25 13:40:42 UTC 2014 - bugs@vdm-design.de
+
+- Remove %ghost entry in /var/run to fix rpmlint error
+
+-------------------------------------------------------------------
+Sun Jan 26 08:25:01 UTC 2014 - bugs@vdm-design.de
+
+- Update to version 3.3.6
+   * Prevent SEGV when error occurs during stat (issue #70)
+   * Prevent SEGV in redirect monitoring (issue #61)
+   * Set reasonable linux thread limit and warn it we cannot do so.
+   * Support for C++11 (narrowing fixes, unique_ptr vs. auto_ptr)
+   * Support for CMake 2.8.12 (interface link libraries)
+   * Fix minor Coverity issues in XrdCl
+   * Fix a rarely occuring segfault when forking XrdCl under heavy load
+   * Fix various issues related to group name retrieval (issues #51, #52, #53)
+   * Make XrdSys/XrdSysIOEvents.hh private - could not have been used anyways
+   * Add a sysconfig template to preload custom allocators in order to fix
+     memory issues on RHEL6
+   * Allow up to 63 characters for a site name
+
+-------------------------------------------------------------------
+Mon Oct 14 08:08:24 UTC 2013 - bugs@vdm-design.de
+
+- Update to version 3.3.4
+   * Serialize sss authentication client initialization to prevent race
+     conditions
+   * Actually cancel the JobManager threads while stopping it - this affected
+     client side fork handling (new client)
+   * Restore original meaning of -adler and -md5 to xrdcp (issue #44)
+   * Append CGI info when retrying at a server that handshaked but never
+     respnded to the request (xrdcp)
+   * Do socket accepts asynchronously to prevent DNS resolution from blocking
+     accepts (issue #33)
+   * Warn about incomplete dirlist responses (xrdfs)
+   * Cast the utilization statistics to uint16_t before printing to
+     print actual numbers instead of letters corresponding to ASCII codes
+     (xrdfs)
+   * When calling File::Stat use file handle instead of path
+   * Improve handling of malformed kXR_readv responses (new client)
+   * Explain parameters of xrdcopy --tpc (documentation, issue #46)
+
+-------------------------------------------------------------------
+Thu Sep  5 18:59:10 CEST 2013 - mls@suse.de
+
+- add libperl_requires, as we link against libperl and thus
+  need a specific version of perl
+
+-------------------------------------------------------------------
+Sat Apr 27 11:32:39 UTC 2013 - bugs@vdm-design.de
+
+- Update to version 3.3.2
+    * Fix the opaque information setting in xrdcp using -OD (issue #1)
+    * Fix compilation on Solaris 11 (issue #7)
+    * Fix issues with semaphore locking during thread cancelation on MaxOSX (issue #10)
+    * Solve locking problems in the built-in poller (issue #4)
+    * Solve performance issues in the new client. Note: this actually changes some low level public interfaces, so the soname of libXrdCl.so has been bumped to libXrdCl.so.1. The xrootd.org RPMs also provide the old libXrdCl.so.0 in order to preserve the binary compatibility with the clients linked against it.
+
+-------------------------------------------------------------------
+Thu Mar 07 16:21:00 UTC 2013 - bugs@vdm-design.de
+
+- update to version 3.3.1
+   * Correct XrdClient ABI incompatibility issue introduced in 3.3.0
+   * Install additional private headers
+
+-------------------------------------------------------------------
+Mon Mar  4 09:50:32 UTC 2013 - cfarrell@suse.com
+
+- license update: LGPL-3.0+
+  See the LICENSE file (prior to September 2012 BSD - now, license is
+  LGPL-3.0+)
+
+-------------------------------------------------------------------
+Sat Feb 23 10:10:00 UTC 2013 - bugs@vdm-design.de
+
+- update to version 3.3.0
+  * Changelog: http://xrootd.cern.ch/cgi-bin/cgit.cgi/xrootd/tree/docs/ReleaseNotes.txt?id=v3.3.0
+
+-------------------------------------------------------------------
+Thu Dec 13 11:39:00 UTC 2012 - bugs@vdm-design.de
+
+- update to version 3.2.7
+  * For OpenSSL versions prior to 1, make the 'default' and 'old' hash
+    algorithm result the same. This fixes Savannah bug #98997.
+  * Do not rebuild the full chain when the CRL is invalidated; also, make
+    sure that the invalid CRL object in only deleted when no longer in use.
+    Fixes bug #99074.
+  * Allow for null fields in the cgi string.
+  * Add missing return statement to avoid SEGV during write error recovery
+    under certain circumstances. Fixes bug #99002.
+
+-------------------------------------------------------------------
+Fri Nov  9 10:32:22 UTC 2012 - bugs@vdm-design.de
+
+- update to version 3.2.6
+   * GSI authentication: fix possible race condition while re-loading CA
+     certificates; fix also related memory leaks.
+   * GSI authentication: make sure the CA cache is not initialized twice (e.g.
+     server and client inside there), and that the cache entry pointers are
+     always initialized.
+   * Crypto OpenSSL modules: use more appropriate way to read the RSA complete key,
+     solving various issues for RH6 and derivations, included SL(C)6.
+   * Make sure redirect opaque information is passed along for all filename
+     based requests. This is required for DPM and EOS N2N services to work
+     in all cases (most importantly, stat).
+   * Make sure buffer ends with null byte before read suspension. This only
+     occurs on very heavily loaded connections.
+   * Fix the fast response queue so that it doesn't run out of response
+     slots causing a big performance penalty. This is a high priority fix.
+   * Properly detect external process failure and report correct error status
+     to a client.  This also fixes bug report #91141.
+   * [XRootDPosix] Make sure to use a supplied cache even when no cache
+     directives given.
+   * Make sure to return a usable path string via XrdOucCacheIO::Path().
+   * Actually support 4 different redirect destinations.
+   * Transparent support for new name hashing algorithm adopted in openssl
+     1.0.0x (GSI authentication protocol)
+   * Verbosity levels revised for GSI and PWD authentication protocols.
+   * Notification of initialization option for GSI and PWD authentication
+     protocols.
+   * Do not repudiate file existence on an "cancelled" error during open.
+     this patch addresses overloaded dCache pool nodes.
+
+-------------------------------------------------------------------
+Mon Oct  8 08:10:22 UTC 2012 - bugs@vdm-design.de
+
+- fix licence
+- update to version 3.2.5
+   * Make realoading gridmapfile atomic (protect from segfault)
+   * Propagate to clients proper range of errors during read/write operations
+   * Fix segfault when handling writes to files that have not been opened
+
+-------------------------------------------------------------------
+Tue Sep 11 08:44:21 UTC 2012 - bugs@vdm-design.de
+
+- Update to version 3.2.4
+  * Work around a dead-lock in the client fork handlers.
+
+-------------------------------------------------------------------
+Wed Sep  5 10:47:30 UTC 2012 - bugs@vdm-design.de
+
+- Update to version 3.2.3
+   * Make sure read statistics are updated for sendfile() and mmap I/O.
+   * Make sure refresh thread is dead before deleting deleting the keytab to
+     avoid SEGV's.
+   * Add missing include for compiling with gcc-4.7 (from Sebastien Binet).
+     This patch is required for successful compilation.
+   * Avoid segfaults when limiting number of redirections caused by failed
+     authorization.
+   * Avoid deadlock in the client fork handlers.
+   * Correct monitor initialization test to start monitor under all configs.
+   * Fix a memory leak in the client handshake algorithm.
+   * Fuse: Use default TTL values for data server connection and load
+     balance server connection.
+
+-------------------------------------------------------------------
+Wed Jun 20 08:47:19 UTC 2012 - bugs@vdm-design.de
+
+- update to version 3.2.2
+   * Correct test whether or not to initialize redirect monitoring. The old
+     code never initialized it this disabling redirect monitoring.
+   * Backport frm notification fix that stalled stage-in requests from commit
+     69e38cfd6b8bb024dd34f8eb28a666fbf97f346b
+   * Prevent SEGV when xrd.monitor rbuff value not specified
+   * Prevent xrdcp hangs when doing exterme copy from server to server.
+   * In case of 'limited proxy' look for VOMS attributes also in the parent
+     proxy.
+   * Correct log processing for sites that use the root directory as the
+     stomping ground for newly created files.
+
+-------------------------------------------------------------------
+Wed Jun 13 14:52:53 UTC 2012 - bugs@vdm-design.de
+
+- update to upstream version 3.2.1
+
+-------------------------------------------------------------------
+Mon Feb 20 20:14:15 UTC 2012 - bugs@vdm-design.de
+
+- Add spec file based on the one distributed with the sources
+

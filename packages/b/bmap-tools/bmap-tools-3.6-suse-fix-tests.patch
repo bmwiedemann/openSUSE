@@ -1,0 +1,59 @@
+Index: bmap-tools-3.6/tests/test_bmap_helpers.py
+===================================================================
+--- bmap-tools-3.6.orig/tests/test_bmap_helpers.py
++++ bmap-tools-3.6/tests/test_bmap_helpers.py
+@@ -21,8 +21,9 @@ This test verifies 'BmapHelpers' module
+ import os
+ import sys
+ import tempfile
+-from mock import patch, mock
+-from backports import tempfile as btempfile
++from unittest import mock
++from unittest.mock import patch
++import tempfile as btempfile
+ from bmaptools import BmapHelpers
+ 
+ 
+Index: bmap-tools-3.6/tests/test_CLI.py
+===================================================================
+--- bmap-tools-3.6.orig/tests/test_CLI.py
++++ bmap-tools-3.6/tests/test_CLI.py
+@@ -24,30 +24,30 @@ import tests.helpers
+ 
+ class TestCLI(unittest.TestCase):
+     def test_valid_signature(self):
+-        completed_process = subprocess.run ([ './bmaptool', 'copy', '--bmap',
++        completed_process = subprocess.run ([ 'bmaptool', 'copy', '--bmap',
+ 	    'tests/test-data/test.image.bmap.v2.0', '--bmap-sig',
+-	    'tests/test-data/test.image.bmap.v2.0.valid-sig',
++	    'tests/test-data/signatures/test.image.bmap.v2.0.valid-sig',
+ 	    'tests/test-data/test.image.gz', self.tmpfile ], check=False)
+         self.assertEqual(completed_process.returncode, 0)
+ 
+     def test_unknown_signer(self):
+-        completed_process = subprocess.run ([ './bmaptool', 'copy', '--bmap',
++        completed_process = subprocess.run ([ 'bmaptool', 'copy', '--bmap',
+         'tests/test-data/test.image.bmap.v2.0', '--bmap-sig',
+-        'tests/test-data/test.image.bmap.v2.0.sig-by-wrong-key',
++        'tests/test-data/signatures/test.image.bmap.v2.0.sig-by-wrong-key',
+         'tests/test-data/test.image.gz', self.tmpfile ], check=False)
+         self.assertEqual(completed_process.returncode, 1)
+     
+     def test_wrong_signature(self):
+-        completed_process = subprocess.run ([ './bmaptool', 'copy', '--bmap',
++        completed_process = subprocess.run ([ 'bmaptool', 'copy', '--bmap',
+         'tests/test-data/test.image.bmap.v1.4', '--bmap-sig',
+-        'tests/test-data/test.image.bmap.v2.0.valid-sig',
++        'tests/test-data/signatures/test.image.bmap.v2.0.valid-sig',
+         'tests/test-data/test.image.gz', self.tmpfile ], check=False)
+         self.assertEqual(completed_process.returncode, 1)
+ 
+     def test_wrong_signature_uknown_signer(self):
+-        completed_process = subprocess.run ([ './bmaptool', 'copy', '--bmap',
++        completed_process = subprocess.run ([ 'bmaptool', 'copy', '--bmap',
+         'tests/test-data/test.image.bmap.v1.4', '--bmap-sig',
+-        'tests/test-data/test.image.bmap.v2.0.sig-by-wrong-key',
++        'tests/test-data/signatures/test.image.bmap.v2.0.sig-by-wrong-key',
+         'tests/test-data/test.image.gz', self.tmpfile ], check=False)
+         self.assertEqual(completed_process.returncode, 1)
+ 

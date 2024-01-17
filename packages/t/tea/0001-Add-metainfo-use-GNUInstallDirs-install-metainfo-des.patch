@@ -1,0 +1,88 @@
+From 32e05bb203811cb00d91af8f025b9087e5e2fdd9 Mon Sep 17 00:00:00 2001
+From: Ferdinand Thiessen <rpm@fthiessen.de>
+Date: Tue, 18 May 2021 18:50:04 +0200
+Subject: [PATCH] Add metainfo, use GNUInstallDirs, install metainfo + desktop
+
+diff -Nur tea-qt-60.7.0/CMakeLists.txt new/CMakeLists.txt
+--- tea-qt-60.7.0/CMakeLists.txt	2022-01-06 17:49:40.000000000 +0100
++++ new/CMakeLists.txt	2022-04-14 14:14:40.942663971 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.0.2)
+ set (QT_MIN_VERSION "5.4.0")
+ 
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+@@ -120,6 +120,11 @@
+     ./desktop/tea.desktop
+ )
+ 
++set(tea_METAINFO
++    ./desktop/metainfo.xml
++)
++
++set(TEA_FQN "org.semiletov.tea")
+ 
+ #add_custom_target(dist
+ #COMMAND git archive --prefix=${PROJECT}-${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}/ master | bzip2 >${PROJECT}-${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.tar.bz2
+@@ -244,11 +249,15 @@
+ endif()
+ 
+ 
+-install (TARGETS tea DESTINATION bin)
+-install (FILES ${tea_ICONSVG} DESTINATION share/icons/hicolor/scalable/apps)
+-install (FILES ${tea_ICONPNG32} DESTINATION share/icons/hicolor/32x32/apps)
+-install (FILES ${tea_ICONPNG48} DESTINATION share/icons/hicolor/48x48/apps)
+-install (FILES ${tea_ICONPNG64} DESTINATION share/icons/hicolor/64x64/apps)
+-install (FILES ${tea_ICONPNG128} DESTINATION share/icons/hicolor/128x128/apps)
+-
+-install (FILES ${tea_DESKTOP} DESTINATION share/applications)
++include (GNUInstallDirs)
++ 
++install (TARGETS tea DESTINATION ${CMAKE_INSTALL_BINDIR})
++install (FILES ${tea_ICONSVG}    DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps)
++install (FILES ${tea_ICONPNG32}  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/32x32/apps)
++install (FILES ${tea_ICONPNG48}  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/48x48/apps)
++install (FILES ${tea_ICONPNG64}  DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/64x64/apps)
++install (FILES ${tea_ICONPNG128} DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/128x128/apps)
++ 
++install (FILES ${tea_DESKTOP}  RENAME ${TEA_FQN}.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
++install (FILES ${tea_METAINFO} RENAME ${TEA_FQN}.metainfo.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
++ 
+diff -Nur tea-qt-60.7.0/desktop/metainfo.xml new/desktop/metainfo.xml
+--- tea-qt-60.7.0/desktop/metainfo.xml	1970-01-01 01:00:00.000000000 +0100
++++ new/desktop/metainfo.xml	2022-04-14 14:13:26.846301732 +0200
+@@ -0,0 +1,24 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- Copyright 2016 Sorokin Alexei <sor.alexei@meowr.ru> -->
++<component type="desktop">
++  <id>org.semiletov.tea</id>
++  <metadata_license>CC0-1.0</metadata_license>
++  <project_license>GPL-3.0-or-later</project_license>
++  <name>TEA</name>
++  <summary>Powerful text editor in Qt</summary>
++  <description>
++    <p>
++      TEA is a Qt-based text editor for UNIX-like systems. With an
++      ultimate small size TEA provides you hundreds of functions.
++    </p>
++  </description>
++
++  <launchable type="desktop-id">org.semiletov.tea.desktop</launchable>
++
++  <url type="homepage">http://semiletov.org/tea</url>
++  <developer_name>Peter Semiletov</developer_name>
++
++  <provides>
++    <binary>tea</binary>
++  </provides>
++</component>
+diff -Nur tea-qt-60.7.0/desktop/tea.desktop new/desktop/tea.desktop
+--- tea-qt-60.7.0/desktop/tea.desktop	2022-01-06 17:49:40.000000000 +0100
++++ new/desktop/tea.desktop	2022-04-14 14:15:18.266846440 +0200
+@@ -13,3 +13,6 @@
+ Keywords[de]=Texteditor;Text;Editor;
+ Comment=Text editor with hundreds of functions
+ Comment[de]=Texteditor mit hunderten Funktionen
++Comment[eo]=Funkcia tekstoredaktilo per Qt
++Comment[ru]=Функциональный текстовый редактор на Qt
++Comment[uk]=Функціональний текстовий редактор на Qt

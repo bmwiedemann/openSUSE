@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ea73d421c54558571af005d6dfb15a9</srcmd5>
+    <version>2.2.1</version>
+    <time>1503925919</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain libwebsockets in Factory</comment>
+    <requestid>517797</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>776dddb8389ac567539a0202a0d388b5</srcmd5>
+    <version>2.3.0</version>
+    <time>1507570846</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530409</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>678d99476a0141d394c980112e9a0eb3</srcmd5>
+    <version>2.3.0</version>
+    <time>1508198008</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534173</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4f39181cd4fb3388e0295d787fbe280</srcmd5>
+    <version>2.4.0</version>
+    <time>1509105631</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535493</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>071fe638e56cd5ed2c2025855a6aa3b9</srcmd5>
+    <version>3.0.0</version>
+    <time>1526041688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605301</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d62ee92286060b409073c36663ea88ff</srcmd5>
+    <version>3.2.1</version>
+    <time>1577972482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760258</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8fc3c1d3332c775c8ccd5a6c8f71cc8</srcmd5>
+    <version>4.0.1</version>
+    <time>1584643691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785279</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>578ca85e2fa399961ac691544cb51e4a</srcmd5>
+    <version>4.0.20</version>
+    <time>1598274626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828657</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>36a2ece6ff799afea693143ef42db893</srcmd5>
+    <version>4.0.20</version>
+    <time>1605959021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849819</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3dacdb1367d3965634b505f627cb432d</srcmd5>
+    <version>4.1.6</version>
+    <time>1608221111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856481</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b4cac224d55dfd4601e3bddc95ace6f4</srcmd5>
+    <version>4.2.0</version>
+    <time>1619298557</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888181</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>31013115c420020aa869303afde44808</srcmd5>
+    <version>4.3.0</version>
+    <time>1634068172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>924751</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2bc5cc5cb8d241c061eb2c898c13ebac</srcmd5>
+    <version>4.3.1</version>
+    <time>1643486381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949870</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>96add8e843d32506fba42128b1733e01</srcmd5>
+    <version>4.3.2</version>
+    <time>1658243976</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990018</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>77b477f14194b09fe8da5cb87367e41d</srcmd5>
+    <version>4.3.2</version>
+    <time>1676911518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066653</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>ae5e4ab4cfb674b78bb5689d8b563417</srcmd5>
+    <version>4.3.2</version>
+    <time>1685476996</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch fix-gcc13-build.patch:
+  Fix -Werror=enum-int-mismatch in lws_tls_server_abort_connection()</comment>
+    <requestid>1089824</requestid>
+  </revision>
+</revisionlist>

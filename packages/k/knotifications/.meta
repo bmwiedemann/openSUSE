@@ -1,0 +1,5 @@
+<package name="knotifications" project="openSUSE:Factory">
+  <title>knotifications</title>
+  <description>KNotifications</description>
+  <devel project="KDE:Frameworks5" package="knotifications"/>
+</package>

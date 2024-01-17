@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90bbedc40e64e9ffca931a380d9a6d94</srcmd5>
+    <version>0.9.36</version>
+    <time>1520415533</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-PyAutoGUI, required by mycroft-core</comment>
+    <requestid>583649</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c14e5d1d7ac38dddd41093a32fd4f204</srcmd5>
+    <version>0.9.36</version>
+    <time>1548334955</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659279</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>247bbacd37daaace3bdac6eba70a00ac</srcmd5>
+    <version>0.9.36</version>
+    <time>1573223091</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746315</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4bd5ed3aa4773987ab4505c3fdba06a3</srcmd5>
+    <version>0.9.53</version>
+    <time>1664210907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1006030</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5b3d35d776c16fdf4dc815c69e852b72</srcmd5>
+    <version>0.9.54</version>
+    <time>1703800917</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.54:
+  * package metadata and testsuite fixes
+
+   -- Fixed Windows XP problem with the DPI scaling API call.</comment>
+    <requestid>1135311</requestid>
+  </revision>
+</revisionlist>

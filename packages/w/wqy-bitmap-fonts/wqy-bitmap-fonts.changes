@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Sat Apr 29 16:45:33 UTC 2017 - bwiedemann@suse.com
+
+- call gzip -n to make build fully reproducible
+
+-------------------------------------------------------------------
+Mon Apr  8 12:41:09 UTC 2013 - i@marguerite.su
+
+- fix bnc#813988: fontconfig error: invalid attribute 'equal'.
+- fix a few warnings.
+
+-------------------------------------------------------------------
+Thu Mar 21 14:23:43 UTC 2013 - pgajdos@suse.com
+
+- fix invalid attribute in conf.patch
+
+-------------------------------------------------------------------
+Tue Oct 16 11:31:38 UTC 2012 - pgajdos@suse.com
+
+- silented "Having multiple values in <test> isn't supported and may 
+  not works as expected"
+  * conf.patch
+
+-------------------------------------------------------------------
+Mon Oct  8 13:09:36 UTC 2012 - pgajdos@suse.com
+
+- use %files_fontsconf_availdir and %files_fontsconf_file macros
+
+-------------------------------------------------------------------
+Wed Oct  3 12:02:47 UTC 2012 - pgajdos@suse.com
+
+- use %install_fontsconf macro which calls %link_avail_to_system_fontsconf
+  itself
+
+-------------------------------------------------------------------
+Tue Oct  2 13:18:07 UTC 2012 - pgajdos@suse.com
+
+- install avail configuration into /usr/share/%{name}/conf.avail
+  and use %link_avail_to_system_fontsconf macro for linking it into
+  /etc/fonts/conf.d (fontconfig 2.10 doesn't use /etc/fonts/conf.avail)
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+- removed build dependencies: bdfresize, xorg-x11
+
+-------------------------------------------------------------------
+Thu May 17 09:10:36 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 29 15:20:52 UTC 2012 - pgajdos@suse.com
+
+- GPL-2.0-with-font-exception license
+
+-------------------------------------------------------------------
+Thu Dec 22 18:14:50 CET 2011 - tiwai@suse.de
+
+- Renamed wqy-bitmapfont -> wqy-bitmap-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Wed Nov 10 09:58:26 UTC 2010 - lnussel@suse.de
+
+- compress *.pcf
+
+-------------------------------------------------------------------
+Fri Apr  9 11:50:25 CEST 2010 - tiwai@suse.de
+
+- remove unnecessary buildrequires for too old distros
+- fix filelist, minor clean-ups of spec file
+
+-------------------------------------------------------------------
+Thu Apr  8 18:32:41 CEST 2010 - tiwai@suse.de
+
+- remove unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Thu Feb 11 07:33:25 UTC 2010 - mxwu@novell.com
+
+- Initial import.
+

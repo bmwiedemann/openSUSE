@@ -1,0 +1,42 @@
+# RPM macros for packages installing icons or a whole icon theme
+#
+###
+#
+# When a package installs icons (or a whole icon theme), it should use
+# both macros:
+#
+#  - %icon_theme_cache_post in %post
+#  - %icon_theme_cache_postun in %postun
+#
+# Additionally, if a package installs a whole icon theme, it should use
+# this macro:
+#
+#  - %icon_theme_cache_create_ghost in %install
+#
+# This macro takes the name of an icon theme as argument. The
+# icon-theme.cache created this way should be added with %ghost in the
+# file list.
+#
+# Note that %icon_theme_cache_post and %icon_theme_cache_postun can
+# optionally take the name of the icon theme where icons are installed.
+# This is useful for packages containing a whole icon theme. If no
+# argument is passed, the hicolor icon theme is assumed (which is where
+# applications usually install their icons).
+#
+###
+
+%icon_theme_cache_create_ghost()                                                                   \
+if test "x%1" == "x%%1"; then                                                                      \
+  echo "Missing argument in call to %%icon_theme_cache_create_ghost."                              \
+  false                                                                                            \
+fi                                                                                                 \
+mkdir -p "%{buildroot}%{_datadir}/icons/%1"                                                        \
+touch "%{buildroot}%{_datadir}/icons/%1/icon-theme.cache"
+
+# The macro is a compatibility place holder to not break .spec files. It has been migrated to be a file trigger
+%icon_theme_cache_post()                                                                           \
+%nil
+
+# The macro is a compatibility place holder to not break .spec files. It has been migrated to be a file trigger
+%icon_theme_cache_postun()                                                                         \
+%nil

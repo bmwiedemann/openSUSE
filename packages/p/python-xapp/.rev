@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>440f29a085caedabae6a096bd19ddf5c</srcmd5>
+    <version>1.0.0</version>
+    <time>1494345804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493444</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f3fb00a0804256d730b5bf3e22e37ae3</srcmd5>
+    <version>1.0.1</version>
+    <time>1497362989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>503276</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>424aa85691fb9f9fa0c76a675012df16</srcmd5>
+    <version>1.2.0</version>
+    <time>1524742618</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599212</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a536ec62d0572f50b48c5eeeaf9ccfd5</srcmd5>
+    <version>1.6.0</version>
+    <time>1563455960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713821</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6250eb564e74e3106792a0217a2dde5c</srcmd5>
+    <version>1.8.1</version>
+    <time>1581277736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772326</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>884e2e9311aaed164fd47aa508a400dd</srcmd5>
+    <version>2.0.1</version>
+    <time>1601296187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838209</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e25df7ac274f5b394db3ac977c5a121</srcmd5>
+    <version>2.0.2</version>
+    <time>1607877006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.2.
+  * Allow adding separators to the combo box widget
+</comment>
+    <requestid>855382</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>24042b4368f6a146916c5501608ad91c</srcmd5>
+    <version>2.2.0</version>
+    <time>1624387494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.0.
+  * SettingsWidgets.py: Restrict Range increments to the 'step' amount.
+  * Font chooser widget: add option to specify the level of font selection.
+
+Don't change permission, leave it at 644.</comment>
+    <requestid>898049</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cb8e652b046805c247d8b54e3d14de42</srcmd5>
+    <version>2.2.1</version>
+    <time>1641203405</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>943504</requestid>
+  </revision>
+</revisionlist>

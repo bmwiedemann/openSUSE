@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50eddf2e236dfef720b1833b86927246</srcmd5>
+    <version>3.62.0</version>
+    <time>1698700293</time>
+    <user>anag+factory</user>
+    <comment>New package trufflehog 3.62.0 is a CLI tool to find exposed secrets in source, container images and cloud resources.</comment>
+    <requestid>1121276</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4d924a251f9642bdaecc26d65076b53f</srcmd5>
+    <version>3.63.1</version>
+    <time>1701378014</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.63.1: (forwarded request 1129708 from jfkw)</comment>
+    <requestid>1129709</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f64608feb0c2a8a463567c831d39ebe</srcmd5>
+    <version>3.63.2</version>
+    <time>1701972699</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.63.2:
+  * update regex (#2184)
+  * Deprecate some detectors (#2186)
+  * allow targets for the source manager (#2182)
+  * use https for verification endpoints (#2185)
+  * remove unnecessary Git cmd check (#2175)
+  * [feat] - Remove go-git dependency (#2174)
+  * Skip trying to determine MIME type for directories (#2178)
+  * fixing how to rotate URL (#2183)
+  * Use forked sevenzip (#2180)
+  * [thog-1548] add auto redaction for verification errors (#2106)
+  * fix(deps): update module github.com/google/go-github/v42 to v57 (#2172)
+  * chore(deps): update google-github-actions/auth action to v2 (#2171)
+  * skip files we can't scan (#2170)
+  * fix(deps): update module google.golang.org/api to v0.152.0 (#2169)
+  * [chore] - remove deprecated types (#2168)
+  * fix(deps): update module golang.org/x/oauth2 to v0.15.0 (#2167)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.48.12 (#2166)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.94.0 (#2165)
+  * fix(deps): update module github.com/trufflesecurity/disk-buffer-reader to v0.2.1 (#2163)
+  * Ignore images and binaries (#2162)
+  * [chore] - Increase pagination limit (#2154)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.17.0 (#2160)
+  * update forager types (#2159)
+  * fix(deps): update module github.com/go-logr/zapr to v1.3.0 (#2158)
+  * fix(deps): update module github.com/fatih/color to v1.16.0 (#2155)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.7.0 (#2153)
+  * fix(deps): update module github.com/aws/aws-sdk-go to v1.48.11 (#2152)
+  * fix(deps): update module github.com/alecthomas/kingpin/v2 to v2.4.0 (#2151)
+  * fix(deps): update module cloud.google.com/go/storage to v1.35.1 (#2150) (forwarded request 1131604 from ph03nix)</comment>
+    <requestid>1131651</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>900d976abd2ce59466578cea5d548841</srcmd5>
+    <version>3.63.3</version>
+    <time>1702673291</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.63.3:
+  * Bump github.com/docker/docker (#2213)
+  * Update metabase verification to check for a valid JSON response (#2210)
+  * [chore] Remove unnecessary string conversion in tefter detector (#2209)
+  * fix and refactor browserstack detector (#2208)
+  * Fix azurestorage detector (#2207)
+  * [chore] Remove omitempty tags on JobProgressMetrics and UnitMetrics (#2204)
+  * Add disk buffer tempfile cleanup (#2130)
+  * Use bad json in slackwebhooks (#2193)
+  * [bug] - close file after reading (#2203)
+  * chore: propagate log context to handlers (#2191)
+  * feat(privatekey): run checks concurrently (#2139)
+  * [fixup] - skip files in the archive handler (#2195)
+  * move logic to main Chunks method (#2194)
+  * add metrics for gitlab (#2190)
+  * [chore] - Refactor common code into a separate function (#2179)
+  * Remove java archives from ignored extensions (#2188)
+  * [chore] - Compile regex once (#2176) (forwarded request 1133151 from ph03nix)</comment>
+    <requestid>1133178</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dd2ea13421a6d459bd4dddd53e77e4f6</srcmd5>
+    <version>3.63.5</version>
+    <time>1703102518</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.63.5:
+  * move cleanup to run (#2245)
+  * Adds basic if/else check if pid slice is empty (#2244)
+  * fix(deps): update module golang.org/x/crypto to v0.17.0 [security] (#2243)
+  * add secretID to chunk (#2242) (forwarded request 1133955 from ph03nix)</comment>
+    <requestid>1134105</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4c139ac44278a142d3e72e1fb20a8746</srcmd5>
+    <version>3.63.7</version>
+    <time>1703527494</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.63.7:
+  * Use directory iterator instead of walkdir (#2260)
+  * Add handlerOpts back (#2258)
+  * Skip all binaries (#2256)
+  * Add skip archive support (#2257) (forwarded request 1134935 from ph03nix)</comment>
+    <requestid>1135012</requestid>
+  </revision>
+</revisionlist>

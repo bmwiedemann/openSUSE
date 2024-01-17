@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Mar 13 16:43:11 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Test-CChecker/Changes
+
+  0.10      2019-03-10 20:57:17 -0400
+    - Archiving github repository, you can file bugs with Alien-Build.
+      at https://github.com/Perl5-Alien/Alien-Build
+      although support will likely be limited to helping you upgrade to
+      Test::Alien
+    - Switch to EUMM
+
+-------------------------------------------------------------------
+Thu May  5 10:14:10 UTC 2016 - coolo@suse.com
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-Test-CChecker/Changes
+
+  0.08      2016-04-25 17:24:46 -0400
+    - Officially deprecating in favor of Test::Alien
+
+-------------------------------------------------------------------
+Fri Mar 11 21:36:10 UTC 2016 - coolo@suse.com
+
+- initial package 0.07
+ * created by cpanspec 1.78.08
+

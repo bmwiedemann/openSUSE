@@ -1,0 +1,39 @@
+--- elftoaout-2.3/elftoaout.c.jj	Sat Jun  3 22:20:12 2000
++++ elftoaout-2.3/elftoaout.c	Mon Apr 22 11:29:01 2002
+@@ -20,12 +20,7 @@
+  */
+ #include <stdio.h>
+ #include <stdlib.h>
+-#ifdef linux
+-#include <linux/elf.h>
+-#define ELFDATA2MSB   2
+-#else
+-#include <sys/elf.h>
+-#endif
++#include <elf.h>
+ 
+ #define swab16(x)  (((x)<<8&0xFF00)|((x)>>8&0x00FF))
+ #define swab32(x)  (((x)<<24&0xFF000000)|((x)<<8&0x00FF0000)|((x)>>24&0x000000FF)|((x)>>8&0x0000FF00))
+@@ -37,14 +32,14 @@
+ #define	CMAGIC	    0x01030108
+ 
+ typedef struct {
+-	unsigned long	a_magic;	/* magic number */
+-	unsigned long	a_text;		/* size of text segment */
+-	unsigned long	a_data;		/* size of initialized data */
+-	unsigned long	a_bss;		/* size of uninitialized data */
+-	unsigned long	a_syms;		/* size of symbol table || checksum */
+-	unsigned long	a_entry;	/* entry point */
+-	unsigned long	a_trsize;	/* size of text relocation */
+-	unsigned long	a_drsize;	/* size of data relocation */
++	unsigned int	a_magic;	/* magic number */
++	unsigned int	a_text;		/* size of text segment */
++	unsigned int	a_data;		/* size of initialized data */
++	unsigned int	a_bss;		/* size of uninitialized data */
++	unsigned int	a_syms;		/* size of symbol table || checksum */
++	unsigned int	a_entry;	/* entry point */
++	unsigned int	a_trsize;	/* size of text relocation */
++	unsigned int	a_drsize;	/* size of data relocation */
+ } Exec;
+ 
+ 

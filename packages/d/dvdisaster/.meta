@@ -1,0 +1,5 @@
+<package name="dvdisaster" project="openSUSE:Factory">
+  <title>A tool to create error correction data for optical media</title>
+  <description>DVDISASTER  provides  a  margin  of safety against data loss on optical media caused by scratches or aging media. It creates  error  correction  data  which  is  used to recover unreadable sectors if the disc becomes damaged at a later time.</description>
+  <devel project="multimedia:apps" package="dvdisaster"/>
+</package>

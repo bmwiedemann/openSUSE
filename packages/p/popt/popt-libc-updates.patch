@@ -1,0 +1,87 @@
+Index: popt-1.19/configure.ac
+===================================================================
+--- popt-1.19.orig/configure.ac
++++ popt-1.19/configure.ac
+@@ -9,7 +9,6 @@ AC_CONFIG_MACRO_DIR([m4])
+ AM_INIT_AUTOMAKE([1.10 foreign -Wall])
+ 
+ m4_version_prereq([2.70], [], [AC_PROG_CC_STDC])
+-AC_PROG_CC
+ AC_USE_SYSTEM_EXTENSIONS
+ AM_PROG_AR
+ 
+Index: popt-1.19/src/system.h
+===================================================================
+--- popt-1.19.orig/src/system.h
++++ popt-1.19/src/system.h
+@@ -2,9 +2,7 @@
+  * @file
+  */
+ 
+-#ifdef HAVE_CONFIG_H
+ #include "config.h"
+-#endif
+ 
+ #include <ctype.h>
+ 
+@@ -57,6 +55,8 @@ static inline char * stpcpy (char *dest,
+ #define getenv(_s)	secure_getenv(_s)
+ #elif defined(HAVE___SECURE_GETENV)
+ #define	getenv(_s)	__secure_getenv(_s)
++#else
++#error neither secure_getenv nor __secure_getenv is available
+ #endif
+ 
+ #if !defined(__GNUC__) && !defined(__attribute__)
+Index: popt-1.19/src/popt.c
+===================================================================
+--- popt-1.19.orig/src/popt.c
++++ popt-1.19/src/popt.c
+@@ -181,7 +181,7 @@ poptContext poptGetContext(const char *
+     con->execAbsolute = 1;
+     con->arg_strip = NULL;
+ 
+-    if (getenv("POSIXLY_CORRECT") || getenv("POSIX_ME_HARDER"))
++    if (secure_getenv("POSIXLY_CORRECT") || secure_getenv("POSIX_ME_HARDER"))
+ 	con->flags |= POPT_CONTEXT_POSIXMEHARDER;
+ 
+     if (name)
+@@ -418,7 +418,7 @@ const char * findProgramPath(const char
+     if (strchr(argv0, '/'))
+ 	return xstrdup(argv0);
+ 
+-    if ((path = getenv("PATH")) == NULL || (path = xstrdup(path)) == NULL)
++    if ((path = secure_getenv("PATH")) == NULL || (path = xstrdup(path)) == NULL)
+ 	return NULL;
+ 
+     /* The return buffer in t is big enough for any path. */
+@@ -1633,6 +1633,7 @@ const char * poptBadOption(poptContext c
+ 
+ const char * poptStrerror(const int error)
+ {
++    char errbuf[1024];
+     switch (error) {
+       case POPT_ERROR_NOARG:
+ 	return POPT_("missing argument");
+@@ -1657,7 +1658,7 @@ const char * poptStrerror(const int erro
+       case POPT_ERROR_BADCONFIG:
+ 	return POPT_("config file failed sanity test");
+       case POPT_ERROR_ERRNO:
+-	return strerror(errno);
++	return strerror_r(errno, errbuf, sizeof errbuf);
+       default:
+ 	return POPT_("unknown error");
+     }
+Index: popt-1.19/src/poptconfig.c
+===================================================================
+--- popt-1.19.orig/src/poptconfig.c
++++ popt-1.19/src/poptconfig.c
+@@ -467,7 +467,7 @@ int poptReadDefaultConfig(poptContext co
+     if (rc) goto exit;
+ #endif
+ 
+-    if ((home = getenv("HOME"))) {
++    if ((home = secure_getenv("HOME"))) {
+ 	char * fn = malloc(strlen(home) + 20);
+ 	if (fn != NULL) {
+ 	    (void) stpcpy(stpcpy(fn, home), "/.popt");

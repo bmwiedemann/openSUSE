@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5427698065ff89af5daea8ae1fcdbf50</srcmd5>
+    <version>1.8.0</version>
+    <time>1604926650</time>
+    <user>dimstar_suse</user>
+    <comment>This is a small program that can change folder colours and themes. This would be a useful tool for anybody that use papirus-icon-theme.</comment>
+    <requestid>846391</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85eb3e59cc3e9df959aac48ae2f93b80</srcmd5>
+    <version>1.9.0</version>
+    <time>1630093420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914453</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd9ec8481e73fa2f3e45d4085e121030</srcmd5>
+    <version>1.11.0</version>
+    <time>1643720577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>950394</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>751ba9fa1c6d97736f9eeb8d63650720</srcmd5>
+    <version>1.12.0</version>
+    <time>1648841778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966414</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>98f10750a6ed7c0e573efeeffbf72ed9</srcmd5>
+    <version>1.12.1</version>
+    <time>1676562942</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.1:
+  * Added Adwaita color</comment>
+    <requestid>1065958</requestid>
+  </revision>
+</revisionlist>

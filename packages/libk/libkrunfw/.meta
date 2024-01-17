@@ -1,0 +1,5 @@
+<package name="libkrunfw" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="libkrunfw"/>
+</package>

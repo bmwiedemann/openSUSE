@@ -1,0 +1,22 @@
+commit 9e6d6cc8c0c9be3da120e7de4fb9d794e97fa66f
+Author: Dominique Leuenberger <dimstar@opensuse.org>
+Date:   Thu Aug 11 11:48:51 2022 +0200
+
+    threads: include time.h
+    
+    Otherwise we fail with
+    [   23s] /home/abuild/rpmbuild/BUILD/noson-2.8.6/noson/src/private/os/threads/timeout.h:58:5: error: 'clock_gettime' was not declared in this scope
+    on most recent gcc 12 branch
+
+Index: noson-2.10.2/noson/src/private/os/threads/timeout.h
+===================================================================
+--- noson-2.10.2.orig/noson/src/private/os/threads/timeout.h
++++ noson-2.10.2/noson/src/private/os/threads/timeout.h
+@@ -27,6 +27,7 @@
+ #elif !defined(__WINDOWS__)
+ #include <time.h>
+ #endif
++#include <time.h>
+ 
+ #ifdef NSROOT
+ namespace NSROOT {

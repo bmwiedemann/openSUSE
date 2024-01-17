@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>93d668ef6b841819d1c5148e1fc4ad48</srcmd5>
+    <version>MACRO</version>
+    <time>1477904053</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package submission to Factory. Announced on opensuse-factory ml on 10/4/16 and received no comments or objections. Needed for next qemu package check-in. Also includes Conflicts fix which caused previous SR to fail, and softens runtime Requires: kernel... to Recommends: kernel... as suggested by Jan E.</comment>
+    <requestid>435819</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d6c1c1f15bc205d1122952e67d747edf</srcmd5>
+    <version>MACRO</version>
+    <time>1478871258</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>439075</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d600d9528c92ea29fb40c442a4d888e7</srcmd5>
+    <version>MACRO</version>
+    <time>1512734455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555014</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ecd34433c09d6f6de1cb3463122edffb</srcmd5>
+    <version>MACRO</version>
+    <time>1532774713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625781</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>29d7e1bc60a54362eb0b16679ede506c</srcmd5>
+    <version>MACRO</version>
+    <time>1542012184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647688</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b00254e64993c01def56c49a8570a302</srcmd5>
+    <version>MACRO</version>
+    <time>1543828198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653117</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b2a24ed01c7f4c5cfc0df2b43cb66813</srcmd5>
+    <version>MACRO</version>
+    <time>1552599788</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3 tweak to be compatible with v5.0 kernel source
+  (bsc#1116822)
+  + 0050-tools-kvm_stat-switch-python-reference-again.patch
+</comment>
+    <requestid>685114</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>fdf839a27d55e1fe60e71043ca9060f3</srcmd5>
+    <version>MACRO</version>
+    <time>1565179227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721317</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>1ab276193376a190e95e920baf94e2fd</srcmd5>
+    <version>MACRO</version>
+    <time>1568379748</time>
+    <user>lnussel_factory</user>
+    <comment>- Detect SLE15-SP2 / Leap 15.2 and patch accordingly
+</comment>
+    <requestid>730468</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>fc504dc8b3f93957178dbc55338f19c3</srcmd5>
+    <version>MACRO</version>
+    <time>1569394105</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix our patching for Leap 15.1 (boo#1140899)
+</comment>
+    <requestid>732970</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>ef615d4d1abcd629037e9a39c87b4b5e</srcmd5>
+    <version>MACRO</version>
+    <time>1583960619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784061</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>03e9fbd045d16229fc485fbb8c73cac8</srcmd5>
+    <version>MACRO</version>
+    <time>1605450371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>848402</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>84f5cec76364ee23a89b63ddd6131fcf</srcmd5>
+    <version>MACRO</version>
+    <time>1607197013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853172</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>848709cd9013c6505be75895cbfabce1</srcmd5>
+    <version>MACRO</version>
+    <time>1608835134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858376</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>0a1c8960ee3b24fc7e8acebf262a1900</srcmd5>
+    <version>MACRO</version>
+    <time>1610123974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861757</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>0bd91f7749d993e42cd1a8f7919a93c1</srcmd5>
+    <version>MACRO</version>
+    <time>1611865349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867342</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>fb1987611fc41665bf9a2df6e2fbc024</srcmd5>
+    <version>MACRO</version>
+    <time>1612011404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867817</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>c93791c4a36469c361d254a98f112579</srcmd5>
+    <version>MACRO</version>
+    <time>1627151948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908083</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>de755c123eb1137ba19868fc331b1f1e</srcmd5>
+    <version>MACRO</version>
+    <time>1655821989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984176</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>1b835d7212af30f1feb2d19b35bd2b1c</srcmd5>
+    <version>MACRO</version>
+    <time>1662148614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1000889</requestid>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>cf80c3ff09969155f3ba343ae8181158</srcmd5>
+    <version>MACRO</version>
+    <time>1666978326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031978</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>04600b9df837a9e6f8e50d4e3fd92484</srcmd5>
+    <version>MACRO</version>
+    <time>1672482185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1045846</requestid>
+  </revision>
+</revisionlist>

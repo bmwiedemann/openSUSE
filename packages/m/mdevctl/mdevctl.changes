@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun Dec 11 18:19:52 UTC 2022 - dmueller@suse.com
+
+- Update to version 1.2.0:
+  * Port CLI to clap v3
+  * start: provide useful hint for parent with wrong case
+  * tests: Add ability to test error messages
+  * tests: extract function for checking pass/fail expectations
+  * MDev::create() does not need to be public
+  * Fix new clippy warning
+
+-------------------------------------------------------------------
+Mon Mar 14 19:32:53 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: BuildRequires python3-docutils instead of all python
+  flavors of the docutils module
+
+-------------------------------------------------------------------
+Fri Mar 11 17:23:03 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Add /etc/mdevctl.d/scripts.d directory to %files
+
+-------------------------------------------------------------------
+Thu Mar 10 11:26:24 UTC 2022 - ptesarik@suse.com
+
+- Update to version v1.1.0 (jsc#SLE-18449):
+  * use imported std::env for CARGO_PKG_VERSION in build.rs directly
+  * fix build.rs to allow specify exact path or name of the rst2man
+  *  Don't call unnecessary to_string()
+  * Report a useful error when /etc/mdevctl.d doesn't exist
+  * Handle FS permissions problems for defined devices
+  * Fix needless borrow warning from clippy
+  * tests: read stdin in callout test scripts
+  * Report root error when a callout can't be executed
+  * Don't emit warning for files in /etc/mdevctl.d/scripts.d
+  * env: add function to get base scripts directory
+
+-------------------------------------------------------------------
+Thu Jul 08 17:38:58 UTC 2021 - jfehlig@suse.com
+
+- Update to version 0.81:
+  * Automatic version commit for tag 0.81
+  * Fix define from jsonfile
+
+-------------------------------------------------------------------
+Tue Dec 08 23:31:30 UTC 2020 - jfehlig@suse.com
+
+- Update to version 0.78:
+  * Automatic version commit for tag 0.78
+  * use standard bash path
+  * avoid other tags spilling into the .spec changelog
+  * mdevctl: fix cleanup on error when creating and removing mdev
+  * version support
+  * Fix attributes getting applied via start-parent-mdevs
+  * mdevctl: fix cleanup on error when writing to attribute
+  * Remove never used 'available' option
+  * Fix attribute validation
+  jsc#SLE-15861, bsc#1179770
+
+-------------------------------------------------------------------
+Wed Jul  1 20:06:28 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial packaging of mdevctl utility

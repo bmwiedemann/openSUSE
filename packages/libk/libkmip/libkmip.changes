@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Jun 23 11:04:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs; use new macros.
+- Wrap and trim description.
+
+-------------------------------------------------------------------
+Wed Jun 23 09:23:21 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- add a libkmip package, with KMIP key management library and tools.
+  (jsc#SLE-18267)

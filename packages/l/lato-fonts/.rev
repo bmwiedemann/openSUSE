@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>510b25a66693133ddcd19468f68eeee1</srcmd5>
+    <version>2.0</version>
+    <time>1478780312</time>
+    <user>dimstar_suse</user>
+    <comment>Submit lato-fonts package (2.0). It replaces google-lato-fonts (1.x).</comment>
+    <requestid>438837</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9807c538dd2fa8c21592abdb7c8b737a</srcmd5>
+    <version>2.015</version>
+    <time>1652188348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976016</requestid>
+  </revision>
+</revisionlist>

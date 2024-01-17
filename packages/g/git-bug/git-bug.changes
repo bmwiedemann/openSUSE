@@ -1,0 +1,315 @@
+-------------------------------------------------------------------
+Sun Nov 20 18:46:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8.0:
+  - More than 800 commits and a long long time after, git-bug
+    v0.8.0 is now available.
+  - Once again, this release represent a push towards making
+    git-bug generally useful and correct. The two main
+    improvements are a new Entity framework and write-capable
+    WebUI.
+  - Breaking changes(openSUSE package is much closer to this
+    release)
+    - changes in the data model makes it a requirement to use the
+      migration tool to to update any previous repo.
+    - remove the legacy identities that were directly embedded in
+      bugs
+  - Core
+    - introduce a reusable entity package capable of handling
+      all the complex operations of an Entity (bug, board,
+      config ...): operations, DAG manipulation, conflict merge,
+      signature, integrity ... to greatly simplify writing and
+      maintaining an entity. Documentation 1, Documentation 2
+    - introduce CombinedId, a new kind of identifier for an
+      item within an Entity (for example a comment in a bug),
+      that hold two partial identifiers interleaved for fast
+      addressing. Documentation
+    - introduce the concept of resolvers, so that entities can
+      link to another
+    - use go-git to manipulate the git repository, instead of
+      executing the local git binary
+    - add support for signing the git commit with the author's
+      signature, and verifying
+    - add support for git config includes by @mindriot101
+    - rework of the Repository layer for modularity, simplicity
+      and testing, allowing more easily to plug an alternative
+      storage
+    - support for full text search in bug comments
+    - support application namespace in the repository so that
+      other app can use the entity package as a framework by
+      @smoyer64
+  - Commands
+    - auto-completion of bug identifier, bridge names,
+      credentials, labels, remote, identity and flags tada by
+      @krobelus
+    - complete refactoring to avoid global variables and be more
+      conductive to testing
+    - new command comment edit to edit a bug's comment
+    - new command rm to remove a bug by @vincetiu8
+    - ls and show learned different output format with
+      --format=<format>, with format being one of default, plain,
+      json, compact and org-mode by @vincetiu8 and @karlicoss
+    - allow user create without interactive prompt by
+      @cvhariharan
+  - Query language
+    - support filtering on bugs having no labels
+    - support filtering on metadata by @vmiklos
+  - Bug
+    - complete rework using the new entity framework
+  - Cache
+    - introduce a LRU to have a limit of entities loaded in
+      memory and effectively cap the memory usage of long running
+      processes by @vincetiu8
+    - proper locking for concurrent access by @vincetiu8
+  - Bridges
+    - core: support for remote bug tracker rate limiting by
+      @rng-dynamics
+    - core: support to indicate that the configuration wizard is
+      executed non-interactively and should have all the required
+      parameters set by @GlancingMind
+    - Github: revamped client and iterator with proper rate
+      limiting handling by @rng-dynamics
+    - Github: revamped credentials creation following Github
+      removing the previous API by @rng-dynamics
+    - Github: support new token format by @ellsclytn
+    - Github: extended tests by @rng-dynamics
+    - Github: fix push then pull creating duplicates by
+      @rng-dynamics
+    - Gitlab: revamped client to use the much better event API to
+      replace the note API that was hard to use and caused a lot
+      of problems and headaches by @5nord
+    - Gitlab: fix access token settings by @remram44
+    - Gitlab: cleanup titles on import by @vincetiu8
+    - Gitlab: support new token format by @gaelj
+    - Jira: fix incorrect client creation reusing the same
+      credential
+  - API
+    - new HTTP handler to access files stored in git
+    - new HTTP handler to upload a file to git
+  - GraphQL
+    - strong typing for identifiers
+    - prepare for external authentication
+    - introduce addCommentAndClose and addCommentAndReopen
+      mutations, to comment and change a bug state in a single
+      atomic operation by @GlancingMind
+    - introduce editComment mutation to edit comments
+  - TermUI
+    - fix a crash when trying to open a bug when there are none
+      by @vojta001
+    - properly trim spaces in titles by @wavexx
+    - make the help visually easier to parse
+    - denser bug list view by @wavexx
+    - fixed readability on bright terminal by @zdenek-crha
+  - WebUI
+    - now report GraphQL errors in the console when --log-errors
+      is used
+    - large refactoring to bring good practice and simplify
+      future work by @sandhose
+    - add support for read-only mode by @lukegb and
+      @claudioantonio
+    - support for creating bugs by @claudioantonio
+    - support for closing and reopening bugs by @claudioantonio
+    - allow to specify the host address when launching with
+      --host=<host> for easier hosting, in particular in
+      container by @GlancingMind
+    - allow specifying the initial query with --query by @vmiklos
+    - dark mode by @GlancingMind
+    - show count of comment on each bug in the list by
+      @GlancingMind
+    - improved navigation by @GlancingMind
+    - comment edition and show edit history by @GlancingMind
+    - bug list filtering by @GlancingMind
+    - add user profile by @GlancingMind
+    - show placeholder for empty comment preview by @GlancingMind
+
+-------------------------------------------------------------------
+Thu Nov 03 14:02:35 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 0.7.2+git.1666446996.55a2e8e:
+  * doc: fix incorrect indentation
+
+-------------------------------------------------------------------
+Mon Oct 17 19:10:27 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix Supplements tag for bash-completion subpackage.
+
+-------------------------------------------------------------------
+Mon Oct 17 06:44:01 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 0.7.2+git.1665512451.0eef939:
+  * makefile: better PHONY
+  * webui: put react-scripts and typescript as dev-dependency
+  * webui: update most of dependencies
+  * build(deps): bump github.com/99designs/gqlgen from 0.17.17 to 0.17.20
+  * fix: process unused (but assigned) error
+  * fix(884): scan PRs for insecure practices
+  * feat(530) make label commands consistent
+  * test(863): fix test for full id instead of "human"
+  * refactor(git-bug-863): merge ls-id into ls
+  * build(deps): bump github.com/praetorian-inc/gokart from 0.4.0 to 0.5.1
+  * build(deps): bump github.com/99designs/gqlgen from 0.17.13 to 0.17.17
+  * fix: correct name for one of the security phonies
+  * feat: run security checks during Go workflow
+  * feat: add recipes for security analysis
+  * fix: hide tools versioning behind build tags
+  * feat: add security tools
+  * feat: version tools using Go module system
+  * generalized interface for an Entity
+  * dag: test op serialisation with the unmarshaller, to allow resolving entities
+  * fix(850): normalize Windows line endings -> *nix (golden files)
+  * fix(850): normalize Windows line endings -> *nix
+  * fix(850): merge in CombinedId from 664
+  * webui: add a flag to log handling errors
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.72.0 to 0.73.1
+  * webui: adapt to CombinedId
+  * bug: have a type for combined ids, fix https://github.com/MichaelMure/git-bug/issues/653
+  * build(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.68.0 to 0.72.0
+  * move bug.Status in entities/common for reuse
+  * fix(850): remove obsolete test logging
+  * tests(850): add tests for comment ls, add and edit
+  * move {bug,identity} to /entities, move input to /commands
+  * remove file that shouldn't be there
+  * core: generalized resolvers to resolve any entity time when unmarshalling an operation
+  * fix(836): revert to older test harness
+  * feat(836): updates default ls formatter for TSV output
+  * docs(847): add compact to docs and bash for ls command's format flag
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.14 to 0.0.16
+  * build(deps): bump github.com/stretchr/testify from 1.7.2 to 1.8.0
+  * build: go 1.18 minimum
+  * bug: fix an issue where Id would be used, then changed due to metadata
+  * entity/dag: proper base operation for simplified implementation
+  * doc: more tiny fixes
+  * doc: more tiny fixes
+  * doc: tiny tweaks
+  * test(809): do not export function that returns GoGit filesystem
+  * test(809): remove reliance on repo's filesystem
+  * test: use testing.TB as common interface
+  * test(809): remove remaining calls to InitGoRepo in tests
+  * refactor(809): eliminate need to defer CleanupTestRepos()
+  * test(778): simplify and guarantee backend cleanup
+  * refactor(778): test only command implementations
+  * chore(808): rearrange imports to git-bug convention
+  * test(808): document getCWD() and clean-up arguments
+  * test(808): skip root help test that uses a golden file
+  * build(deps): bump github.com/stretchr/testify from 1.7.1 to 1.7.2
+  * fix(808): remove duplication stderr/stdout set-up
+  * test(808): make build tag compatible with Go 1.16
+  * test(808): do not run golden file tests on Windows
+  * fix(808): simplify handling of Windows line terminations
+  * chore(808): merge in LocalStorage namespace configuration
+  * fix(808): replace Windows line terminators
+  * github: fix data race when closing event channel
+  * graphql: fix two invalid mutex lock leading to data races
+  * fix(778): remove extra mutex lock when resolving bug prefix
+  * cache: ensure that the default repo has a non-empty name to make js/apollo happy
+  * doc: more discoverable docs
+  * misc: move all completions in a dedicated folder
+  * refactor: simplify creation of temp dir - after 1.15
+  * fix: remove only t.Parallel()
+  * gogit: close index before deleting it on disk
+  * test: clean up temp dir and repo correctly
+  * test(778): execute rm bug in testEnv (hangs)
+  * test(778): execute add user in testEnv and return userID
+  * test(778): clear output after user creation
+  * test(778): verify user create results in an identity and cache
+  * test(778): verify root command returns main help text
+  * test(778): allow alternate CWD via context
+  * test(778): capture stderr and stdout during tests
+  * test: add verification that localStorage.Root() resolves to the correct absolute filepath
+  * refactor: use namespace instead of application of applicationName
+  * chore: clean-up commented code
+  * feat: make local storage configurable
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.64.0 to 0.68.0
+  * model: Multiple, minor readability and language improvements
+  * model: Removes now outdated statement about ops and root
+  * model: Highlight some words with special meaning
+  * model: Links to a section further down
+  * model: Moves example description after the example
+  * model: Adds link explaining nounce (wikipedia)
+  * model: strict Markdown requires empty lines before (and after) lists
+  * completion: lots of small ironing
+  * ls: fix incorrect query parsing with quotes escaped by the shell
+  * misc: fix bash completion with "git bug"
+  * completion: use the correct GenBashCompletionV2 instead of the legacy function
+  * Add command-specific argument completions
+  * a few fixes
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.59.0 to 0.64.0
+  * Allow new gitlab PAT format
+  * entity/dag: add an extensive example
+  * doc: add missing file
+  * update doc
+  * build(deps): bump github.com/stretchr/testify from 1.7.0 to 1.7.1
+  * bug: don't serialize multiple time the author, only once in OperationPack
+  * jira: fix incorrect client creation reusing the same credential
+  * update cobra to v1.4.0
+  * Bump github.com/99designs/gqlgen from 0.16.0 to 0.17.1
+  * build: require go 1.16
+  * build(deps): bump github.com/99designs/keyring from 1.2.0 to 1.2.1
+  * Bump github.com/vektah/gqlparser/v2 from 2.4.0 to 2.4.1
+  * entity: allow to resolve identities when numashalling operations
+  * Fix a bunch of comments and documentations
+  * build(deps): bump github.com/xanzy/go-gitlab from 0.57.0 to 0.59.0
+  * Bump github.com/xanzy/go-gitlab from 0.55.1 to 0.57.0 (#757)
+  * webui: fix dark theme colors
+  * webui: fix compile
+  * CI: update nodejs
+  * Bump github.com/vektah/gqlparser/v2 from 2.2.0 to 2.4.0
+  * webui: replace GraphQL linter
+  * webui: upgrade Material UI
+  * webui: upgrade react-router
+  * webui: replace React imports
+  * webui: upgrade most dependencies
+  * webui: upgrade graphql-codegen dependencies
+  * Bump github.com/xanzy/go-gitlab from 0.54.3 to 0.55.1
+  * update gocui
+  * update keyring and migrate to github.com/ProtonMail/go-crypto
+  * update gqlgen
+  * Bump follow-redirects from 1.13.0 to 1.14.7 in /webui (#735)
+  * Bump github.com/xanzy/go-gitlab from 0.54.1 to 0.54.3 (#734)
+  * Bump github.com/spf13/cobra from 1.2.1 to 1.3.0 (#731)
+  * Bump ws from 5.2.2 to 5.2.3 in /webui (#728)
+  * Bump tmpl from 1.0.4 to 1.0.5 in /webui (#711)
+  * Bump path-parse from 1.0.6 to 1.0.7 in /webui (#701)
+  * Bump url-parse from 1.5.1 to 1.5.3 in /webui (#714)
+  * Bump github.com/xanzy/go-gitlab from 0.50.4 to 0.54.1 (#732)
+  * gitlab: re-enable previously broken test
+  * gitlab: order events on the fly
+  * Fix: github import, some issue titles cause error
+  * Fix: github bridge: push then pull without duplication
+  * Update URL of GitLab access token settings
+  * Fix GitLab showing https:/../personal_access_token
+  * Add scoop installation for Windows
+  * Bump github.com/fatih/color from 1.12.0 to 1.13.0
+  * Command ls: Add compact format
+  * Add some documentation comments
+  * gitlab: Add new iterator with state change events
+
+-------------------------------------------------------------------
+Mon Nov 29 00:38:50 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.7.2+git.1632416688.1eaf3ec0:
+  * Bump github.com/mattn/go-isatty from 0.0.13 to 0.0.14 (#709)
+  * Tests for the github bridge (#706)
+  * feature: Github bridge mutation rate limit (#694)
+  * Add Linter Step (#698)
+  * Bump golang.org/x/text from 0.3.6 to 0.3.7 (#702)
+  * Bump github.com/xanzy/go-gitlab from 0.50.1 to 0.50.4 (#707)
+  * Bump github.com/spf13/cobra from 1.1.3 to 1.2.1 (#695)
+  * Bump github.com/go-git/go-git/v5 from 5.4.1 to 5.4.2 (#689)
+  * Bump github.com/xanzy/go-gitlab from 0.50.0 to 0.50.1 (#693)
+  * Bump dns-packet from 1.3.1 to 1.3.4 in /webui
+
+-------------------------------------------------------------------
+Sat Nov 27 17:46:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.7.2:
+  - fixes a security issue (CVE-2021-28955) where arbitrary
+    malicious code could be executed if someone commit a git
+    executable inside the repository (reproducible only on
+    Windows).
+
+-------------------------------------------------------------------
+Fri Jan 22 09:52:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging of 0.7.1

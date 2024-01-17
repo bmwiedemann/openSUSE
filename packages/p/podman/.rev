@@ -1,0 +1,1059 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de25dfca46428113704925a9f3512cae</srcmd5>
+    <version>0+git375</version>
+    <time>1519041631</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requirement on libcontainers-common, which now provides the
+  /etc/containers/policy.json config.
+- Use golang-packaging macros.
+- Set version to +git%{rev_list} scheme as there's no official release yet.
+- Spec file cleanups via spec-cleaner.
+- Add requirement on libcontainers-{common,image,storage}, which provide
+  configuration files, manpages and debugging tools useful and required by
+  podman.
+- Fix typo to provide the correct package.
+- Replace tabs with spaces.
+- Fix libostree-devel %if condition for TW, Leap 15+ and SLES 15+.
+- Use `%fdupes %buildroot/%_prefix` since `fdupes %buildroot` is not allowed
+  because you cannot make hardlinks between certain partitions.
+- Add podman package: podman is a simple client only tool to help with
+  debugging issues when daemons such as CRI runtime and the kubelet are not
+  responding or failing.
+</comment>
+    <requestid>575782</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad2539422c08cc9af803daf5456cc102</srcmd5>
+    <version>0.2.1</version>
+    <time>1519396184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579092</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3066de63953e92d2013ec42ac8e905b9</srcmd5>
+    <version>0.3.1</version>
+    <time>1520253947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582566</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>811aabfdfbf7f61ec9fc63beac3dfc91</srcmd5>
+    <version>0.3.3</version>
+    <time>1521716546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588480</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>59b37bbdc783e07bfe3fa7ad262b8b6f</srcmd5>
+    <version>0.3.4</version>
+    <time>1522226013</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>591635</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>98f2702016aac203ff259756e8829d4a</srcmd5>
+    <version>0.4.1</version>
+    <time>1523448207</time>
+    <user>maxlin_factory</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>595494</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5c8d65f562d9063b61fb07a38625b6d6</srcmd5>
+    <version>0.4.2</version>
+    <time>1524144608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597434</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>792601137e628679c409d07ca0989dea</srcmd5>
+    <version>0.4.3</version>
+    <time>1524576799</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600001</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>01af2d5026d2774714f904fc8d459079</srcmd5>
+    <version>0.4.4</version>
+    <time>1525426252</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>603699</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a9784d28e7f2f9900f6f7b2479c22e26</srcmd5>
+    <version>0.5.1</version>
+    <time>1525779463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604803</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>275a556132a3632481c797f73f72c6b5</srcmd5>
+    <version>0.5.2</version>
+    <time>1526372119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606964</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bbf8f2223fb2930f19ece4e9e620311c</srcmd5>
+    <version>0.5.3</version>
+    <time>1527001372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611223</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5e09bd28e78a023c321ffa30ae367325</srcmd5>
+    <version>0.5.4</version>
+    <time>1528111376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613902</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e6edd92e64155b1f06eb651ac4f62403</srcmd5>
+    <version>0.6.1</version>
+    <time>1528492662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614831</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>98bbe414c636199e90133e2c7c5692c4</srcmd5>
+    <version>0.6.2</version>
+    <time>1528897190</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616057</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4590d67af3891927bf9e7184945887ce</srcmd5>
+    <version>0.6.3</version>
+    <time>1529501231</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617463</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6033280cb83b6e5e36ebbe1364a45d3a</srcmd5>
+    <version>0.6.4</version>
+    <time>1530087670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618922</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2973af79429e48c5970758b5d2603fd6</srcmd5>
+    <version>0.6.5</version>
+    <time>1530567206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620167</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>abd54a77944b2995c9305097b31f1d4d</srcmd5>
+    <version>0.7.1</version>
+    <time>1531135862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621674</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>32fc406a0d5e5d1191075c3adb1e64fd</srcmd5>
+    <version>0.7.3</version>
+    <time>1532681744</time>
+    <user>dimstar_suse</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>624697</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5922717fb1e5bca1c7f7f3f936abc291</srcmd5>
+    <version>0.7.4</version>
+    <time>1533045734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626429</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8a210056af7a6ac0803e04f4cfe292a2</srcmd5>
+    <version>0.8.1</version>
+    <time>1533627839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627731</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>033c635ac0f5a064a553b98ebcee5caa</srcmd5>
+    <version>0.8.4</version>
+    <time>1535441079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631794</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1dac6e21d4254501e3db49d834d18f70</srcmd5>
+    <version>0.8.5</version>
+    <time>1536094610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632844</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>04b6a9e6b3c749b38efee7c145585c65</srcmd5>
+    <version>0.9.3.1</version>
+    <time>1539013440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639414</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6ddcdce72dda1d83bd7ed345d994df39</srcmd5>
+    <version>0.10.1</version>
+    <time>1539589170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641401</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0d5bfb1a0d36934c4b13cdd75ea95763</srcmd5>
+    <version>0.10.1.1</version>
+    <time>1539869462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642542</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>484bc74789962bef81c93efa2bdc01af</srcmd5>
+    <version>0.10.1.1</version>
+    <time>1540988132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645460</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>81d0015d9e76503847c92041d57d776d</srcmd5>
+    <version>0.11.1</version>
+    <time>1541865705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647520</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>052da2fc76304438f05933730686df0c</srcmd5>
+    <version>0.11.1</version>
+    <time>1542124991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648673</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7d38c1b2b8d8dc82bc28271dd01e38e3</srcmd5>
+    <version>0.11.1.1</version>
+    <time>1542580298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649526</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d79ed45dd95a17478d004ee7104d128a</srcmd5>
+    <version>0.11.1.1</version>
+    <time>1544189990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655979</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>7878d0404d3baf84c6e16aa8ef3bae5a</srcmd5>
+    <version>0.11.1.1</version>
+    <time>1546946819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662066</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>85ebdb59c15ee31ca896345f599f113a</srcmd5>
+    <version>0.12.1.2</version>
+    <time>1547130061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663638</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3237ca8caa03a373e7ded7f2838d70e8</srcmd5>
+    <version>1.0.0</version>
+    <time>1547540248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665311</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>a6e1f187abe09d82d78ddf138be57973</srcmd5>
+    <version>1.0.0</version>
+    <time>1548064757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666726</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>02d14552a953235a4fe38ac3fa76bbf8</srcmd5>
+    <version>1.0.0</version>
+    <time>1549311047</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670287</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9e7330e0e17776561c3a603d49f7555d</srcmd5>
+    <version>1.0.1</version>
+    <time>1551023580</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677420</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>bc381433a26e214569d0c19cd12c151d</srcmd5>
+    <version>1.1.2</version>
+    <time>1552042851</time>
+    <user>dimstar_suse</user>
+    <comment>- podman-cni-config: remove artificial conflicts with kubelet (forwarded request 682742 from RBrownSUSE)</comment>
+    <requestid>682743</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>0035cf89dbef68c41bd4d372830413c0</srcmd5>
+    <version>1.1.2</version>
+    <time>1553699590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688763</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3e43385efe77f26dcf3c9ce774ad11bf</srcmd5>
+    <version>1.2.0</version>
+    <time>1554372153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690416</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e2d30508001d179d68e23befea213939</srcmd5>
+    <version>1.3.1</version>
+    <time>1558938926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704933</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e21e8c4b9e66b7e12da17f055b36e81e</srcmd5>
+    <version>1.4.0</version>
+    <time>1560337555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709108</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>67bf5880207f4f04ab546ba00b70a15d</srcmd5>
+    <version>1.4.2</version>
+    <time>1561882617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712138</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3055d50fa7a5fb1da633c75f963609ba</srcmd5>
+    <version>1.4.4</version>
+    <time>1564137472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718500</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0b09e52616462d0c5b8c49e14cd4bf9f</srcmd5>
+    <version>1.5.0</version>
+    <time>1566664887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723244</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f25d30e29f6e7d30291cbe611edbd24b</srcmd5>
+    <version>1.5.1</version>
+    <time>1567423137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726622</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>4094ab986e49b2abaf4b6647c0822f1f</srcmd5>
+    <version>1.5.1</version>
+    <time>1568190205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728730</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b62090f2c793d0f4fa7064b8eb159212</srcmd5>
+    <version>1.6.1</version>
+    <time>1571838421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734986</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>bb26f2af0527cb0fd0e759e8d0d0b41b</srcmd5>
+    <version>1.6.2</version>
+    <time>1573556073</time>
+    <user>dimstar_suse</user>
+    <comment>To get it past staging :)</comment>
+    <requestid>744490</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>dab1d35817b2077237c3a1a611ef9ee4</srcmd5>
+    <version>1.6.4</version>
+    <time>1576676613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756110</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>91e6de15c3887f867cd78c2a63035edb</srcmd5>
+    <version>1.7.0</version>
+    <time>1578950176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763947</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>af1897cf7e83495d1003eb53a6c2d18f</srcmd5>
+    <version>1.7.0</version>
+    <time>1580373129</time>
+    <user>dimstar_suse</user>
+    <comment>Add apparmor-abstractions as required runtime dependency</comment>
+    <requestid>766926</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>fe90e4933f79fbe3e1f3b2320a70d6fd</srcmd5>
+    <version>1.8.0</version>
+    <time>1581801814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772114</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>9120b64f200c664e6cfaf11c9cce7143</srcmd5>
+    <version>1.8.0</version>
+    <time>1582643004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777935</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>82361fff089451734a41ca9a448daed6</srcmd5>
+    <version>1.8.0</version>
+    <time>1583702635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781913</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>ad1ffb6963380a7649ca180a84c8e5ed</srcmd5>
+    <version>1.8.1</version>
+    <time>1584446760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784188</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>7381cb9b5cec603218fcd0a14bc4e63f</srcmd5>
+    <version>1.8.2</version>
+    <time>1584964168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786757</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>af8386e8436ddf1d62d2752e9667795a</srcmd5>
+    <version>1.8.2</version>
+    <time>1585342563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789007</requestid>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>26186c8f66fffdc2d35b69924b977c67</srcmd5>
+    <version>1.8.2</version>
+    <time>1586112779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791221</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>db825ba082815acd921257846a258cda</srcmd5>
+    <version>1.9.0</version>
+    <time>1587162506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794479</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>3905710c0c427c0a2822007ec2d6ab89</srcmd5>
+    <version>1.9.1</version>
+    <time>1588324045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798807</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>401214f0a0a1bc6a057b2a3a5230ab4e</srcmd5>
+    <version>1.9.3</version>
+    <time>1590649833</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808742</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>da2e181a965228aa1fa0cae053681c49</srcmd5>
+    <version>2.0.4</version>
+    <time>1596727782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824166</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>66f188cb5e0bce76d8bae99403e7d30c</srcmd5>
+    <version>2.0.4</version>
+    <time>1597390309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825972</requestid>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>3e7fb0b4f3e090ee5fa64c401ae6d66e</srcmd5>
+    <version>2.0.4</version>
+    <time>1597955274</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct invalid use of %{_libexecdir} to ensure files should be in /usr/lib</comment>
+    <requestid>827668</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>1ffbcf301317beaaab883492492d4070</srcmd5>
+    <version>2.0.5</version>
+    <time>1598642137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830230</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>203b7156f67083d88464f6219c07558d</srcmd5>
+    <version>2.0.6</version>
+    <time>1599343076</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831374</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>2666c0931a2ac9f278a5a1b3a5eb384f</srcmd5>
+    <version>2.0.6</version>
+    <time>1599770914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833026</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ca5e47980ba36a8b8bead8db6bd22a7c</srcmd5>
+    <version>2.1.1</version>
+    <time>1601651805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838911</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>42fae18302648e9682c83ddf033dd07d</srcmd5>
+    <version>2.1.1</version>
+    <time>1603959735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844112</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>b51f3e76812a9d8312610eecd630a37f</srcmd5>
+    <version>2.1.1</version>
+    <time>1604415574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845754</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>11a035e007ac107d21c185f8a81e0b40</srcmd5>
+    <version>2.2.0</version>
+    <time>1607196971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852647</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ab5873de1194805b5fef4aa38f7bfcd5</srcmd5>
+    <version>2.2.1</version>
+    <time>1610123604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>860983</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>2454c2fd91975b91df60a65c84ee5e54</srcmd5>
+    <version>3.0.1</version>
+    <time>1614684471</time>
+    <user>RBrownSUSE</user>
+    <comment> Drop obsolete varlink.patch 
+
+- Update to v3.0.1
+  * Changes
+    - Several frequently-occurring WARN level log messages have been downgraded to INFO or DEBUG to not clutter terminal output.
+Bugfixes
+    - Fixed a bug where the Created field of podman ps --format=json was formatted as a string instead of an Unix timestamp (integer) (#9315).
+    - Fixed a bug where failing lookups of individual layers during the podman images command would cause the whole command to fail without printing output.
+    - Fixed a bug where --cgroups=split did not function properly on cgroups v1 systems.
+    - Fixed a bug where mounting a volume over an directory in the container that existed, but was empty, could fail (#9393).
+    - Fixed a bug where mounting a volume over a directory in the container that existed could copy the entirety of the container's rootfs, instead of just the directory mounted over, into the volume (#9415).
+    - Fixed a bug where Podman would treat the --entrypoint=[&quot;&quot;] option to podman run and podman create as a literal empty string in the entrypoint, when instead it should have been ignored (#9377).
+    - Fixed a bug where Podman would set the HOME environment variable to &quot;&quot; when the container ran as a user without an assigned home directory (#9378).
+    - Fixed a bug where specifying a pod infra image that had no tags (by using its ID) would cause podman pod create to panic (#9374).
+    - Fixed a bug where the --runtime option was not properly handled by the podman build command (#9365).
+    - Fixed a bug where Podman would incorrectly print an error message related to the remote API when the remote API was not in use and starting Podman failed.
+    - Fixed a bug where Podman would change ownership of a container's working directory, even if it already existed (#9387).
+    - Fixed a bug where the podman generate systemd --new command would incorrectly escape %t when generating the path for the PID file (#9373).
+    - Fixed a bug where Podman could, when run inside a Podman container with the host's containers/storage directory mounted into the container, erroneously detect a reboot and reset container state if the temporary directory was not also mounted in (#9191).
+    - Fixed a bug where some options of the podman build command (including but not limited to --jobs) were nonfunctional (#9247).
+  * API
+    - Fixed a breaking change to the Libpod Wait API for Containers where the Conditions parameter changed type in Podman v3.0 (#9351).
+    - Fixed a bug where the Compat Create endpoint for Containers did not properly handle forwarded ports that did not specify a host port.
+    - Fixed a bug where the Libpod Wait endpoint for Containers could write duplicate headers after an error occurred.
+    - Fixed a bug where the Compat Create endpoint for Images would not pull images that already had a matching tag present locally, even if a more recent version was available at the registry (#9232).
+    - The Compat Create endpoint for Images has had its compatibility with Docker improved, allowing its use with the docker-java library.
+  * Misc
+    - Updated Buildah to v1.19.4
+    - Updated the containers/storage library to v1.24.6
+- Changes from v3.0.0</comment>
+    <requestid>874870</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>f7e27a4f70e81e52cabd9322ed03e244</srcmd5>
+    <version>3.0.1</version>
+    <time>1618061164</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883239</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>a2dedae7800ca9dc47c1240f8aff0ea3</srcmd5>
+    <version>3.1.0</version>
+    <time>1618498625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884637</requestid>
+  </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>df1200bfafa581994bc8830c41aced24</srcmd5>
+    <version>3.0.1</version>
+    <time>1618583493</time>
+    <user>dimstar_suse</user>
+    <comment>https://github.com/containers/buildah/issues/3153</comment>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>7e33f9fc1b2e37d666888ed1e277c6ca</srcmd5>
+    <version>3.1.1</version>
+    <time>1619107424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886673</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>9fa881115f20e089cb77264abfbf575b</srcmd5>
+    <version>3.1.2</version>
+    <time>1619652987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888022</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>51f00967b861618ffc020cd972727700</srcmd5>
+    <version>3.2.0</version>
+    <time>1623705032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>899503</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>95a1e45cb232788448889b2d267b5150</srcmd5>
+    <version>3.2.1</version>
+    <time>1624300490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900526</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>05a84b5e12cc5918705de1d313c44d43</srcmd5>
+    <version>3.2.2</version>
+    <time>1625225203</time>
+    <user>dimstar_suse</user>
+    <comment>Update podman to 3.2.2 and libraries and configurations up to date as of 2021-06-26 (forwarded request 902628 from iDesmI)</comment>
+    <requestid>902960</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>c001bb182b6804f05fd6cea32a0e6369</srcmd5>
+    <version>3.2.3</version>
+    <time>1627236548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907716</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>e2d5da9c2c3081a139598405e1fd53fa</srcmd5>
+    <version>3.3.1</version>
+    <time>1631221643</time>
+    <user>dimstar_suse</user>
+    <comment>- require runc &gt;= 1.0.1
+
+- Update to version 3.3.1:
+  * Bugfixes
+    - Fixed a bug where unit files created by podman generate systemd could 
+      not cleanup shut down containers when stopped by systemctl stop (#11304).
+    - Fixed a bug where podman machine commands would not properly locate 
+      the gvproxy binary in some circumstances.
+    - Fixed a bug where containers created as part of a pod using the 
+      --pod-id-file option would not join the pod's network namespace (#11303).
+    - Fixed a bug where Podman, when using the systemd cgroups driver, 
+      could sometimes leak dbus sessions.
+    - Fixed a bug where the until filter to podman logs and podman events 
+      was improperly handled, requiring input to be negated (#11158).
+    - Fixed a bug where rootless containers using CNI networking run on 
+      systems using systemd-resolved for DNS would fail to start if resolved 
+      symlinked /etc/resolv.conf to an absolute path (#11358).
+  * API
+    - A large number of potential file descriptor leaks from improperly closing 
+      client connections have been fixed.
+
+- Revert crun change due to crun having exclusive arch targets
+  that would drop podman support in PPC and IBM Z
+
+- Update to version 3.3.0:
+  * Fix network aliases with network id
+  * machine: compute sha256 as we read the image file
+  * machine: check for file exists instead of listing directory
+  * pkg/bindings/images.nTar(): slashify hdr.Name values
+  * Volumes: Only remove from DB if plugin removal succeeds</comment>
+    <requestid>917154</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>6bf13f8ff57091a38c6f2e54ac4ddd57</srcmd5>
+    <version>3.2.3</version>
+    <time>1631313754</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1189893</comment>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>e2e26ac0292b3bcaa98760b496780441</srcmd5>
+    <version>3.3.1</version>
+    <time>1632251548</time>
+    <user>dimstar_suse</user>
+    <comment>Stage with libcontainers-common</comment>
+    <requestid>919693</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>c8901e5c69dba5c98778b156dba123dd</srcmd5>
+    <version>3.4.1</version>
+    <time>1635167830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926669</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>b594eb23c45d5af79482006b95daeb26</srcmd5>
+    <version>3.4.2</version>
+    <time>1637372288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>931524</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>fcaf288065d049eda25a7efcaf19c903</srcmd5>
+    <version>3.4.4</version>
+    <time>1639266973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>939120</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>0f704ff414053735e8ac47bbc0613eaf</srcmd5>
+    <version>3.4.4</version>
+    <time>1642198363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945785</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>63679c0a241e9e862e7efe1a5640be8d</srcmd5>
+    <version>4.0.3</version>
+    <time>1649450721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>967493</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>e05e8ce3ef0c5f8367d27badc7ee9eba</srcmd5>
+    <version>4.0.3</version>
+    <time>1650657159</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>970716</requestid>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>0116f3e099b196e643cf4019e7d0277b</srcmd5>
+    <version>4.0.3</version>
+    <time>1653583433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979149</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>5a023f5a2bc36c7aec2267c555b8a836</srcmd5>
+    <version>4.1.1</version>
+    <time>1656053086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984429</requestid>
+  </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>9f000c076d0d03e3ef771e65c1b5c1d1</srcmd5>
+    <version>4.1.1</version>
+    <time>1657617124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>988296</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>9bdef049f3e3fa17de59b923d0169e00</srcmd5>
+    <version>4.2.0</version>
+    <time>1660662414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>995132</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>667868affdd5832e1b180f9b103f0459</srcmd5>
+    <version>4.2.0</version>
+    <time>1664468013</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006422</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>3e2b3168affae7b602dbbb980ea5ec56</srcmd5>
+    <version>4.2.1</version>
+    <time>1664638964</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006908</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>7c30acf291a8f6627cfd483b4505903e</srcmd5>
+    <version>4.2.1</version>
+    <time>1665591841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009351</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>4209a84f49e87288f62a9a110d26185f</srcmd5>
+    <version>4.3.1</version>
+    <time>1670514628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1041191</requestid>
+  </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>3e2b62572743fa59ae8dde927676ef6d</srcmd5>
+    <version>4.3.1</version>
+    <time>1674043704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058898</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>c8297809ff478aadccd80765a9e0d6c5</srcmd5>
+    <version>4.4.2</version>
+    <time>1678380301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1068441</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>2155db8d2641ed900cc5e380be10a022</srcmd5>
+    <version>4.4.3</version>
+    <time>1679766895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074092</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>ecc12ca5a5aba148a15615046909321d</srcmd5>
+    <version>4.4.4</version>
+    <time>1680125166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1075009</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>0c019bbc2bc60eaa30bb4dee101bdd17</srcmd5>
+    <version>4.5.0</version>
+    <time>1681996417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080136</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>f2dbaed388625d071834e93d9afaa0f3</srcmd5>
+    <version>4.5.1</version>
+    <time>1685632735</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.5.1 (forwarded request 1089562 from danishprakash)</comment>
+    <requestid>1089696</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>4c3dfa5a2d9187c4364ab203b8ca10f5</srcmd5>
+    <version>4.5.1</version>
+    <time>1688928045</time>
+    <user>dimstar_suse</user>
+    <comment>Don't unconditionally Obsolete podman-cni-config, ensure clean upgrade path (forwarded request 1095941 from danishprakash)</comment>
+    <requestid>1095943</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>350c57e7eca662df6566932eb8850510</srcmd5>
+    <version>4.6.0</version>
+    <time>1690277029</time>
+    <user>anag+factory</user>
+    <comment>Update to version 4.6.0 (forwarded request 1099907 from danishprakash)</comment>
+    <requestid>1100062</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>ae4b8761dc73f8d19bf391b1d9dfd4cc</srcmd5>
+    <version>4.6.0</version>
+    <time>1691154188</time>
+    <user>dimstar_suse</user>
+    <comment>Discard outdated README.SUSE.SLES (forwarded request 1102180 from danishprakash)</comment>
+    <requestid>1102183</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>a71d56824fbcc6b6951080d755fdc706</srcmd5>
+    <version>4.6.1</version>
+    <time>1691845558</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.6.1 (forwarded request 1103432 from danishprakash)</comment>
+    <requestid>1103462</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>7e6c0890e475034342c659978f23f248</srcmd5>
+    <version>4.6.1</version>
+    <time>1692379669</time>
+    <user>anag+factory</user>
+    <comment>Fix build error on SLE due to dangling files clause (forwarded request 1104103 from danishprakash)</comment>
+    <requestid>1104111</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>e841095ce78b3afc6f3b90091c4c750d</srcmd5>
+    <version>4.6.2</version>
+    <time>1693383531</time>
+    <user>anag+factory</user>
+    <comment>Update to version 4.6.2 (forwarded request 1107923 from danishprakash)</comment>
+    <requestid>1107957</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>b911d2fbc24111aceef97c5dc0454f97</srcmd5>
+    <version>4.7.0</version>
+    <time>1696188107</time>
+    <user>anag+factory</user>
+    <comment>Build against latest stable Go version (bsc#1215807) (forwarded request 1114211 from danishprakash)</comment>
+    <requestid>1114246</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>619df63761fa6774d189b920064f8afc</srcmd5>
+    <version>4.7.1</version>
+    <time>1696760179</time>
+    <user>anag+factory</user>
+    <comment>podman-docker: Provides docker to avoid conflicts (bsc#1215926)
+Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
+    <requestid>1115970</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>b2d7b1e8e31ae1928bf58483e2a4fcd5</srcmd5>
+    <version>4.7.1</version>
+    <time>1698700193</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119372</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>72791f32f35ba07e55a22f49f2b6eedd</srcmd5>
+    <version>4.7.2</version>
+    <time>1698952858</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121629</requestid>
+  </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>44ca7de57b640fdd799005fbeda20d4c</srcmd5>
+    <version>4.7.2</version>
+    <time>1700250497</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1126797</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>59e28f1a9c3401f5a4c783b6ac6af0b1</srcmd5>
+    <version>4.8.0</version>
+    <time>1701206252</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1129307</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>69bd988b1cf5cad255f72f5d09ade12f</srcmd5>
+    <version>4.8.1</version>
+    <time>1701972544</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1131279</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>3c46602f29314ba51ff01899d070230e</srcmd5>
+    <version>4.8.2</version>
+    <time>1702405910</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132597</requestid>
+  </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>4bf2ce85db322cdd3f4467c263ff3585</srcmd5>
+    <version>4.8.2</version>
+    <time>1703102439</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1133976</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>bd735c32d469ad6b6e90a317bb44a165</srcmd5>
+    <version>4.8.3</version>
+    <time>1704487280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137012</requestid>
+  </revision>
+</revisionlist>

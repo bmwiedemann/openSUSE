@@ -1,0 +1,5 @@
+<package name="gap-hecke" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science" package="gap-hecke"/>
+</package>

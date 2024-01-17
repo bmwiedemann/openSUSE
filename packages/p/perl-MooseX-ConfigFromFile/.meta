@@ -1,0 +1,21 @@
+<package name="perl-MooseX-ConfigFromFile" project="openSUSE:Factory">
+  <title>Abstract Moose Role for Setting Attributes from a Config File</title>
+  <description>This is an abstract role which provides an alternate constructor for creating
+objects using parameters passed in from a configuration file. The actual
+implementation of reading the configuration file is left to concrete subroles.
+
+It declares an attribute configfile and a class method new_with_config, and
+requires that concrete roles derived from it implement the class method
+get_config_from_file.
+
+Attributes specified directly as arguments to new_with_config supercede those
+in the configfile.
+
+MooseX::Getopt knows about this abstract role, and will use it if available to
+load attributes from the file specified by the commandline flag --configfile
+during its normal new_with_options.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-MooseX-ConfigFromFile"/>
+  <url>http://search.cpan.org/dist/MooseX-ConfigFromFile/</url>
+</package>

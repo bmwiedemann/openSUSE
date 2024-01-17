@@ -1,0 +1,160 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6ac75f474b60fdfb66e50409c56d3ce</srcmd5>
+    <version>0.5.4</version>
+    <time>1439969363</time>
+    <user>dimstar_suse</user>
+    <comment>Variety is a cross platform wallpaper changer. http://lists.opensuse.org/opensuse-factory/2015-07/msg00538.html
+
+- This version removes the auto source download that I didn't know existed
+- This version uses gobject-introspection </comment>
+    <requestid>323229</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0acfbf915c8f3aaf43635c8d31da0db</srcmd5>
+    <version>0.5.5</version>
+    <time>1452535891</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351756</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e6cedbb9a736bc2869a5305a1f80a44d</srcmd5>
+    <version>0.6.0</version>
+    <time>1457353621</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.6.0 feature release
++ run spec cleaner</comment>
+    <requestid>365448</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0b67037711304de4a4a7edf279d6394f</srcmd5>
+    <version>0.6.6</version>
+    <time>1506594840</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528513</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ba545a4b987b4fb50c29854f901ff543</srcmd5>
+    <version>0.6.6</version>
+    <time>1526022983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605951</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>61f31496e5cb7f06c5b45e4599c987f0</srcmd5>
+    <version>0.7.1</version>
+    <time>1543224703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1:
+  + Fix remaining bugs from the Python 3 port: errors when saving
+    favorite quotes and generating pencil_tile.png.
+- Changes from version 0.7.0:
+  + Fix possible download issues when upgrading from older Variety
+    versions and having safe mode enabled.
+  + GoodreadsSource: fix stray HTML tags being displayed in quote
+    authors.
+  + Translation updates.
+- Changes from version 0.7.0-beta1:
+  + Port to Python 3.
+  + Fix broken trash deletion on some systems by directly using
+    Gio libraries.
+  + Fix potential log file corruption when trying to start
+    multiple instances.
+  + Support for setting GNOME Screensaver / GDM background.
+  + Removed outdated functionality for publishing to Facebook.
+  + Updated URL for QuotationsPage plugin.
+  + Update default clipboard_hosts: add deviantart.net,
+    imageshack.com; remove (dead) ns223506.ovh.net.
+- Add missing README.md file.
+- Use file triggers for desktop icons now, no need for spec file
+  macros.
+- Add variety-fix-data-path.patch: Set user data path to
+  /usr/share/variety.
+- Fix source path.
+- Update to version 0.6.9:
+  * Removed broken &quot;SSL dependency&quot; installation code
+  * Fix trash deletion and replace gvfs-trash with 'gio trash'
+  * Skip metadata checks on non-image files
+  * Use subprocess.Popen to run xdg-open
+  * Removed more dead code related to VRTY.org, KDE 4
+  * Add get_wallpaper support for KDE Plasma 5, fix LXDE
+  * Move bug tracker links to GitHub
+</comment>
+    <requestid>651527</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>932de72fd31002320072d48b935e88a6</srcmd5>
+    <version>0.8.3</version>
+    <time>1583446701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781247</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>61558f4c65ade7fe02d6d40d7ae2ae42</srcmd5>
+    <version>0.8.3</version>
+    <time>1593458326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817755</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>09d2c2d0e5a7e893c2a4dc624fd6a004</srcmd5>
+    <version>0.8.5</version>
+    <time>1608112888</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>856309</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d3b715f21a898b84314ee91d7ad568aa</srcmd5>
+    <version>0.8.5</version>
+    <time>1632939543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922111</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c4032ef3d5ed5ab3f777cd1042a61acc</srcmd5>
+    <version>0.8.5</version>
+    <time>1641556020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944687</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c2157b23297ba1a578f8d9c3e9a551af</srcmd5>
+    <version>0.8.8</version>
+    <time>1656053165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984789</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f698d6b67c91ddd5fb9771f240eb0413</srcmd5>
+    <version>0.8.9</version>
+    <time>1666178275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029892</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6f6ce865071d738eeeed730a134450c7</srcmd5>
+    <version>0.8.10</version>
+    <time>1675458321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062664</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4a32cf7cfd555c23e5463f20596a0954</srcmd5>
+    <version>0.8.11</version>
+    <time>1698700254</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121120</requestid>
+  </revision>
+</revisionlist>

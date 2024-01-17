@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9970495b99b2a0663628b0696ef83ab</srcmd5>
+    <version>0.1.1652147647.9886d3d</version>
+    <time>1659106093</time>
+    <user>RBrownFactory</user>
+    <comment>Add wasi-libc for building rust1.62 with wasi support</comment>
+    <requestid>991620</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5612c1edacdb84334ff48f64008d128f</srcmd5>
+    <version>19</version>
+    <time>1680018528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074704</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dd6c76815fe0f13c9bdd44c72ded2a06</srcmd5>
+    <version>20</version>
+    <time>1695853467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1113559</requestid>
+  </revision>
+</revisionlist>

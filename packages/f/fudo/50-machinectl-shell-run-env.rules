@@ -1,0 +1,34 @@
+/* -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*- */
+
+/*
+ * Sample config that allows to run /usr/bin/env without arguments as root.
+ * Install e.g. as /etc/polkit-1/rules.d/50-machinectl-shell-run-env.rules
+ */
+
+polkit.addRule(function(action, subject) {
+    if (action.id != 'org.freedesktop.machine1.host-shell')
+	    return polkit.Result.NOT_HANDLED;
+
+    // check whether a user is in a specific group
+    if (!subject.isInGroup("users"))
+	    return polkit.Result.NOT_HANDLED;
+
+    // or alternatively match a specific user
+    user = subject.user;
+    if (user != 'geeko')
+	    return polkit.Result.NOT_HANDLED;
+
+    // just the path to the program that is run. Matching that might be
+    // dangerous as it allows arbitrary arguments then
+    // program = action.lookup('program');
+
+    // using the full command line is better
+    command_line = action.lookup('command_line');
+
+    polkit.log("running \"" + command_line + "\" as " + user);
+    if (command_line == '/usr/bin/env')
+	    return polkit.Result.YES;
+
+    return polkit.Result.NOT_HANDLED;
+});
+// vim: syntax=javascript sw=4 et

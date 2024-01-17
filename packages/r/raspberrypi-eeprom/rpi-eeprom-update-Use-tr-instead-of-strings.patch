@@ -1,0 +1,55 @@
+From 462564a95da99016969128dedc6b14ea66b12b17 Mon Sep 17 00:00:00 2001
+From: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Date: Thu, 18 Feb 2021 17:49:46 +0100
+Subject: [PATCH] rpi-eeprom-update: Use 'tr' instead of 'strings'
+
+The 'strings' utility is installed by binutils whereas 'tr' belongs with
+coreutils. Minimal systems will only contain the latter, due to binutils'
+size (20-50 MB). So, convert all uses of 'strings' to 'tr' so as to
+avoid the package dependency.
+
+The second  and third 'tr' usage converts non-ASCII characters into newlines
+so as to isolate the "BUILD_TIMESTAMP=1234567890" statement (similar to what
+'strings' does). There is no need for this in the first one: non-ASCII
+characters are simply discarded as DT aliases have a fixed one line
+format.
+
+[tobijk]: Add hunk for third string replacement
+
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Signed-off-by: Tobias Klausmann <tobias.klausmann@freenet.de>
+---
+ rpi-eeprom-update | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/rpi-eeprom-update b/rpi-eeprom-update
+index cb25316..431f24f 100755
+--- a/rpi-eeprom-update
++++ b/rpi-eeprom-update
+@@ -122,7 +122,7 @@ getBootloaderConfig() {
+    local blconfig_nvmem_path=""
+
+    if [ -f "${blconfig_alias}" ]; then
+-      local blconfig_ofnode_path="/sys/firmware/devicetree/base"$(strings "${blconfig_alias}")""
++      local blconfig_ofnode_path="/sys/firmware/devicetree/base"$(tr -cd [:print:] < "${blconfig_alias}")""
+       local blconfig_ofnode_link=$(find -L /sys/bus/nvmem -maxdepth 3 -samefile "${blconfig_ofnode_path}" 2>/dev/null)
+
+       if [ -e "${blconfig_ofnode_link}" ]; then
+@@ -189,7 +189,7 @@ applyRecoveryUpdate()
+    [ -n "${BOOTLOADER_UPDATE_IMAGE}" ] || [ -n "${VL805_UPDATE_IMAGE}" ] || die "No update images specified"
+
+    getBootloaderCurrentVersion
+-   BOOTLOADER_UPDATE_VERSION=$(strings "${BOOTLOADER_UPDATE_IMAGE}" | grep BUILD_TIMESTAMP | sed 's/.*=//g')
++   BOOTLOADER_UPDATE_VERSION=$(tr -c [:print:] "\n" < "${BOOTLOADER_UPDATE_IMAGE}" | sed '/^BUILD_TIMESTAMP=/s/.*=//p;d')
+    if [ "${BOOTLOADER_CURRENT_VERSION}" -gt "${BOOTLOADER_UPDATE_VERSION}" ]; then
+       echo "   WARNING: Installing an older bootloader version."
+       echo "            Update the rpi-eeprom package to fetch the latest bootloader images."
+@@ -358,7 +358,7 @@ getBootloaderUpdateVersion() {
+    match=".*/pieeprom-[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].bin"
+    latest="$(find "${FIRMWARE_IMAGE_DIR}/" -maxdepth 1 -type f -follow -size "${EEPROM_SIZE}c" -regex "${match}" | sort -r | head -n1)"
+    if [ -f "${latest}" ]; then
+-      BOOTLOADER_UPDATE_VERSION=$(strings "${latest}" | grep BUILD_TIMESTAMP | sed 's/.*=//g')
++      BOOTLOADER_UPDATE_VERSION=$(tr -c [:print:] "\n" < "${latest}" | sed '/^BUILD_TIMESTAMP=/s/.*=//p;d')
+       BOOTLOADER_UPDATE_IMAGE="${latest}"
+    fi
+ }

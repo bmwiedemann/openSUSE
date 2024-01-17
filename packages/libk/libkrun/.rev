@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>845c006dee57257057f4eda7527dd687</srcmd5>
+    <version>0.1.4</version>
+    <time>1614948350</time>
+    <user>RBrownSUSE</user>
+    <comment>New package. See https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/MO4PYYD3BEUJCUWGJQCQ2P7OW4LTG336/</comment>
+    <requestid>875760</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>846c909099dd49ccffea567951190abf</srcmd5>
+    <version>0.1.7</version>
+    <time>1616168587</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880001</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>bf4a74519fb2110888de44bc0c1ee6f4</srcmd5>
+    <version>0.1.7</version>
+    <time>1628675228</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911312</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>02e8994615b3623e8ae233eeda414783</srcmd5>
+    <version>0.1.8</version>
+    <time>1653690500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>979475</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8ce9d5fb1cc35527f14e008fade2417e</srcmd5>
+    <version>1.1.0</version>
+    <time>1655821945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984031</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eedbed7a6210c46d2a0e400a46a08d41</srcmd5>
+    <version>1.2.1</version>
+    <time>1655972659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>984446</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a0fc7160b8ce492a1b019bad7776636a</srcmd5>
+    <version>1.2.2</version>
+    <time>1659554216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992536</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f932ec4cad15527cbe5a1a98a15c17d0</srcmd5>
+    <version>1.4.4</version>
+    <time>1664468065</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006910</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0859dfd13fbc9586e3cab59a056deadd</srcmd5>
+    <version>1.4.8</version>
+    <time>1670259642</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.8:
+  * Bump version to v1.4.8
+  * macos: fix mapped volumes initialization
+  * Bump version to v1.4.6
+  * sev: fix a new clippy error
+  * fs: fix new clippy issue in descriptor_utils
+  * macos: init: register rosetta in binfmt_misc
+  * macos: map Rosetta directory if present
+  * macos: implement the ioctl Rosetta needs
+- add new-kvm-ioctl.patch
+
+- add proper split-provides 
+- add cargo_audit
+
+- Update to version 1.4.6:
+  * Bump version to v1.4.6
+  * fs/macos: Fix some clippy warnings
+  * hvf: write reg on sysreg trap
+  * Bump version to v1.4.5
+  * sev: Don't use a static initrd size
+  * sev: Update to the final KBS attestation protocol
+  * vsock: Fix signal logic in Muxer
+  * examples/Makefile: Remove launch-tee binary on make clean
+
+- Switch to a &quot;proper library&quot; packaging layout. Downstreams (namely,
+  crun) are now able to cope with this. So do it, and get rid of a lot
+  of RPM lint warnings and errors!
+- Make it easier to turn on/off building the SEV-enabled library
+* Patches dropped:
+  not-set-soname-as-it-is-plugin.patch</comment>
+    <requestid>1040286</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6f352b9d97f90f27a0d1291927c3f850</srcmd5>
+    <version>1.4.10</version>
+    <time>1674143069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059587</requestid>
+  </revision>
+</revisionlist>

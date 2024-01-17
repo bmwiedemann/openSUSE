@@ -1,0 +1,5 @@
+<package name="tmate" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="tmate"/>
+</package>

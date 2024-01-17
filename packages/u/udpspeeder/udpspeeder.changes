@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Mon Jun 26 20:23:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230206.0:
+  * Fix bug in https://github.com/wangyu-/UDPspeeder/issues/290.
+
+-------------------------------------------------------------------
+Sun Jan 17 21:40:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20210116.0
+  * Added a warning when you send huge packets to UDPspeeder and
+    packets are being truncated. (to fix the problem/confusion
+    mentioned in https://github.com/wangyu-/UDPspeeder/issues/259)
+
+-------------------------------------------------------------------
+Wed Aug 19 19:33:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20200818.0
+  * Fixed FATAL:kernel too old on x86 amd64 and possibly arm.
+
+-------------------------------------------------------------------
+Thu Jul 16 17:39:30 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20200714.0
+  * fix --key option (the longer form of -k) not working
+  * new options --out-addr --out-interface.
+
+-------------------------------------------------------------------
+Tue Mar 26 15:17:59 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Clarify license
+
+-------------------------------------------------------------------
+Fri Mar 15 09:09:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Grammar improvements.
+
+-------------------------------------------------------------------
+Mon Feb 25 20:29:43 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 20190121.0

@@ -1,0 +1,6 @@
+<package name="diffstat" project="openSUSE:Factory">
+  <title>Utility That Provides Statistics Based on the Output of diff</title>
+  <description>diffstat reads the output of the diff command and displays a histogram
+of the insertions, deletions, and modifications in each file.</description>
+  <devel project="devel:tools" package="diffstat"/>
+</package>

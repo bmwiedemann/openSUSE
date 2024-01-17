@@ -1,0 +1,5 @@
+<package name="seadrive-fuse" project="openSUSE:Factory">
+  <title></title>
+  <description>SeaDrive daemon with FUSE interface</description>
+  <devel project="Cloud:Seafile" package="seadrive-fuse"/>
+</package>

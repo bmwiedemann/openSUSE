@@ -1,0 +1,26 @@
+--- rc.serial.orig
++++ rc.serial
+@@ -26,12 +26,21 @@ DRIVER_NAME=serial
+ MODULE_REGEXP="serial\b"
+ 
+ ALLDEVS="/dev/ttyS?"
+-if /bin/ls /dev/ttyS?? >& /dev/null ; then
++if test -x /usr/bin/ls ; then
++        LS=/usr/bin/ls
++elif test -x /bin/ls ; then
++        LS=/bin/ls
++fi
++if $LS /dev/ttyS?? >& /dev/null ; then
+ 	ALLDEVS="$ALLDEVS /dev/ttyS??"
+ fi
+ 
+ SETSERIAL=""
+-if test -x /bin/setserial ; then
++if test -x /usr/bin/setserial ; then
++        SETSERIAL=/usr/bin/setserial
++elif test -x /usr/sbin/setserial ; then
++        SETSERIAL=/usr/sbin/setserial
++elif test -x /bin/setserial ; then
+ 	SETSERIAL=/bin/setserial
+ elif test -x /sbin/setserial ; then
+ 	SETSERIAL=/sbin/setserial

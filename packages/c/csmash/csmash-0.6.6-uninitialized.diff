@@ -1,0 +1,20 @@
+Index: Event.cpp
+===================================================================
+--- Event.cpp.orig
++++ Event.cpp
+@@ -16,6 +16,7 @@
+ // along with this program; if not, write to the Free Software
+ // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
++#include <sys/time.h>
+ #include "ttinc.h"
+ #include "Event.h"
+ #include "Control.h"
+@@ -140,6 +141,7 @@ Event::IdleFunc() {
+ #ifdef WIN32
+   ftime( &tb );
+ #else
++  ftime( &tb );
+   gettimeofday( &tv, &tz );
+   tb.time = tv.tv_sec;
+   tb.millitm = tv.tv_usec/1000;

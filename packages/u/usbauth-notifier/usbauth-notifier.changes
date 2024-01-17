@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue May  3 12:42:04 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.0.4
+  * Fix libexecdir expansion for usbauth-notifier.desktop
+
+-------------------------------------------------------------------
+Sun Dec 27 18:24:10 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.0.2:
+  * move usbauth-npriv from bindir to libexecdir
+  * move usbauth-notifier from libdir to libexecdir
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+- Create lang package
+
+-------------------------------------------------------------------
+Mon Feb  3 16:46:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: Allow
+  OBS to shortcut through -mini flavors.
+
+-------------------------------------------------------------------
+Mon Feb 26 05:23:04 UTC 2018 - stefan.koch10@gmail.com
+
+- fix formatting of notifications
+- fix group name in manpage/README
+- use XDG autostart instead of xinitrc.d
+
+-------------------------------------------------------------------
+Tue Feb 13 22:30:00 UTC 2018 - stefan.koch10@gmail.com
+
+- buildrequires usbauth not needed, we create both
+  groups here.
+- fix group creation within spec file
+
+-------------------------------------------------------------------
+Thu Oct 12 14:37:00 UTC 2017 - meissner@suse.com
+
+- susefied spec file. correct permission handling added.
+
+-------------------------------------------------------------------
+Thu Oct 12 06:58:07 UTC 2017 - meissner@suse.com
+
+- UI notifications for new USB devices to be authenticated
+

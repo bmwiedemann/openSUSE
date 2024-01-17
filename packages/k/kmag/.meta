@@ -1,0 +1,7 @@
+<package name="kmag" project="openSUSE:Factory">
+  <title>kdeaccessibility Base Package</title>
+  <description>This package suggests the packages which are built from the
+kdeaccessibility module.
+</description>
+  <devel project="KDE:Applications" package="kmag"/>
+</package>

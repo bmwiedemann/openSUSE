@@ -1,0 +1,13 @@
+diff -ur libgpod-0.8.3.orig/configure.ac libgpod-0.8.3/configure.ac
+--- libgpod-0.8.3.orig/configure.ac	2013-07-10 13:42:04.000000000 +0200
++++ libgpod-0.8.3/configure.ac	2021-01-20 00:43:45.314840646 +0100
+@@ -42,7 +42,7 @@
+ AC_CHECK_MEMBERS([struct tm.tm_gmtoff],,,[#include <time.h>])
+ dnl sqlite3 is needed for newer ipod models (nano5g), and libplist is needed 
+ dnl by libgpod sqlite code
+-PKG_CHECK_MODULES(LIBGPOD, glib-2.0 >= 2.16.0 gobject-2.0 sqlite3 libplist >= 1.0 gmodule-2.0)
++PKG_CHECK_MODULES(LIBGPOD, glib-2.0 >= 2.16.0 gobject-2.0 sqlite3 libplist-2.0 gmodule-2.0)
+ 
+ dnl ***************************************************
+ dnl The following functions are only available starting
+Only in libgpod-0.8.3: configure.ac~

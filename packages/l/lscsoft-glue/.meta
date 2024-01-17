@@ -1,0 +1,11 @@
+<package name="lscsoft-glue" project="openSUSE:Factory">
+  <title>Grid LSC User Environment</title>
+  <description>Glue is a collection of utilities for running data analysis pipelines
+for online and offline analysis as well as accessing various grid
+utilities.  It also provides the infrastructure for the segment
+database.
+
+</description>
+  <devel project="science" package="lscsoft-glue"/>
+  <url>http://software.ligo.org/lscsoft</url>
+</package>

@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f571cbb22cd0dfe546f534e9039e8a5a</srcmd5>
+    <version>1.21</version>
+    <time>1525121894</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>602518</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96e1c75a43b5cb32e85b6bcc7c021f74</srcmd5>
+    <version>1.29</version>
+    <time>1551216054</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.29
+  + Add Fedora GPG keys for Fedora 30 and 31
+  + Add Fedora GPG key for IoT Edition
+  + Add Red Hat Enterprise Linux 8 Beta GPG keys
+  + Add various vendor repository GPG keys
+</comment>
+    <requestid>679070</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7ed6ae8468aa5f5f5ee062bea3c7c4a</srcmd5>
+    <version>1.35</version>
+    <time>1575753124</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.35
+  + Add Fedora GPG keys for Fedora 32
+  + Add CentOS 8 and EPEL 8 GPG keys
+  + Add Amazon Linux 2 GPG key
+  + Add OpenMandriva GPG key
+  + Add various vendor repository GPG keys</comment>
+    <requestid>754965</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c382d5a554d747df42e0c295ea6dc5d</srcmd5>
+    <version>1.38</version>
+    <time>1590506347</time>
+    <user>maxlin_factory</user>
+    <comment>- Version 1.38
+  + Add Fedora GPG keys for Fedora 33
+  + Add symlinks for CentOS 8 GPG keys
+  + Add various vendor repository GPG keys</comment>
+    <requestid>807974</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>20d95604d48996867ef61172a53b6443</srcmd5>
+    <version>1.58</version>
+    <time>1634943094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>926948</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51247af0d9b0b59720afb440da1c4bb5</srcmd5>
+    <version>1.67</version>
+    <time>1648063122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.67
+  + Add EPEL9 key
+  + Add keys of RPM Fusion Fedora 37
+  + Add Navy Linux RPM GPG official key
+  + add new MySQL key
+  + add Fedora 37
+  + Add symlink for CentOS Stream 9 to main official key
+  + Add EuroLinux 9 key
+  + move Fedora Rawhide key to F37
+  + Add remi 2022 key
+  + Refresh all CentOS SIG keys (rh#2059424)</comment>
+    <requestid>964250</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>60bd5af3960a1fd1e1cefc61c754a90b</srcmd5>
+    <version>1.71</version>
+    <time>1653417203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.71
+  + Refresh AlmaLinux keys to add AlmaLinux 9 key
+  + Add RHEL9 keys
+  + Add RPM Fusion keys for Fedora 38
+  + Add RPM Fusion keys for EL 9</comment>
+    <requestid>978957</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c4473a9a4efc72834d05e6b36c7bc4e</srcmd5>
+    <version>1.79</version>
+    <time>1671023500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1042852</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>83ddbf219e698ac6c3f799bea7804549</srcmd5>
+    <version>1.88</version>
+    <time>1688398967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096361</requestid>
+  </revision>
+</revisionlist>

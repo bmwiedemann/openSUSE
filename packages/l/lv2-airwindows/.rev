@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c1a4044a06695b48749c7a3910ff8a2</srcmd5>
+    <version>18.0</version>
+    <time>1680722935</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of lv2-airwindows (version 18.0)</comment>
+    <requestid>1077525</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5c61d4cf17ccfd617bb3c1f55a412f6d</srcmd5>
+    <version>20.0</version>
+    <time>1690215979</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099958</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>44cc4cf98921ab07d1ac57baf368d827</srcmd5>
+    <version>22.0</version>
+    <time>1691076489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102031</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fb336fbd145e10181f422d2e3dff2784</srcmd5>
+    <version>24.0</version>
+    <time>1695209110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111671</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>771809dbf4676cf113c0412f38c0b64e</srcmd5>
+    <version>26.2</version>
+    <time>1701792270</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130968</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri May 11 04:38:25 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.5.
+  * Fixed segfault when passing NULL context to user API.
+
+-------------------------------------------------------------------
+Mon Mar 12 17:00:49 UTC 2012 - lazy.kent@opensuse.org
+
+- Update from git to 0.4+git20120304 (pre 0.5 version).
+  * Get track correction when update now playing.
+  * Version number bump due to API & ABI change.
+  * Improve support for lastfm error codes and messages.
+- Dropped "curl_include" patch (fixed upstream).
+
+-------------------------------------------------------------------
+Wed Feb  8 15:05:20 UTC 2012 - lazy.kent@opensuse.org
+
+- Moved COPYING to main library package.
+
+-------------------------------------------------------------------
+Thu Dec 15 08:09:51 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 0.4.
+- Patch not to use curl/types.h include.
+

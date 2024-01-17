@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Thu Oct  6 15:27:24 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make sure lz4 is referenced correctly from CMake and pkgconfig
+  * Add fix_lz4_linkage.patch
+  * Add 0001-Fix-LZ4_LDFLAGS-format-for-pkgconfig-file.patch
+- Add liblz4 devel dependency
+- Correct CMake config install patch
+
+-------------------------------------------------------------------
+Sun Sep 11 16:59:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make sure the static libflann_cpp is neither installed nor
+  added to the CMake EXPORT set. Add
+  0001-Cleanup-library-build-make-static-library-optional.patch
+
+-------------------------------------------------------------------
+Sat Aug 27 07:07:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.2
+  * Added out of bounds check
+  * Fixed CUDA crash - guarantee prealloc > 0
+- Delete 0001-src-cpp-fix-cmake-3.11-build.patch (obsolete/merged)
+
+-------------------------------------------------------------------
+Sat Aug 24 14:21:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions.
+
+-------------------------------------------------------------------
+Sun Jul 14 18:07:17 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove unused openmpi-devel BuildRequires (using it requires proper
+  build and runtime setup, which is not the case here).
+- Cleanup specfile:
+  * Removed BuildRoot tag, defattr
+  * Drop obsolete conditionals, SLE 12 is unresolvable, Leap 42.x EOL
+
+-------------------------------------------------------------------
+Mon Aug 27 10:00:44 UTC 2018 - opensuse@dstoecker.de
+
+- make proper openSUSE package
+
+-------------------------------------------------------------------
+Wed Jun  6 21:28:33 UTC 2018 - avvissu@yandex.by
+
+- Add 0001-src-cpp-fix-cmake-3.11-build.patch
+
+-------------------------------------------------------------------
+Tue Apr 10 14:23:55 UTC 2018 - avvissu@yandex.by
+
+- Drop python-numpy
+
+-------------------------------------------------------------------
+Fri Apr 14 21:11:42 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.9.1:
+  * see: /usr/share/doc/packages/flann/ChangeLog
+
+-------------------------------------------------------------------
+Fri Feb  5 20:46:41 UTC 2016 - avvissu@yandex.ru
+
+- Initial release

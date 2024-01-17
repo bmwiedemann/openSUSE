@@ -1,0 +1,64 @@
+From 9a7ed59efcf645256f8a07f4fb71bf0f838e3838 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Sat, 9 Jan 2021 01:21:08 +0100
+Subject: [PATCH] dcheck.py: fix crash in Qt4 version check
+
+On openSUSE, the "PyQt4" module may be available with no submodules.
+I.e. "import PyQt4" succeeds, wheras "from PyQt4 import QtCore" fails.
+We don't want to make hplip depend on python3-qt4, as all tools use Qt5.
+
+This leads to the following python backtrace in hp-doctor:
+
+Traceback (most recent call last):
+  File "/usr/bin/hp-doctor", line 297, in <module>
+    num_errors, num_warns = dep.validate(DEPENDENCY_RUN_AND_COMPILE_TIME, False)
+  File "/usr/share/hplip/check.py", line 368, in validate
+    self.core.dependencies[dep])
+  File "/usr/share/hplip/check.py", line 210, in __update_deps_info
+    installed_ver = self.core.version_func[deps_info[6]]()
+  File "/usr/share/hplip/installer/dcheck.py", line 304, in get_pyQt4_version
+    from PyQt4 import QtCore
+ImportError: cannot import name 'QtCore'
+
+Fix it.
+---
+ installer/dcheck.py | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/installer/dcheck.py b/installer/dcheck.py
+index d684c10..6215b4b 100644
+--- a/installer/dcheck.py
++++ b/installer/dcheck.py
+@@ -300,8 +300,12 @@ def get_pyQt4_version():
+     except ImportError:
+         ver='-'
+     else:
+-        from PyQt4 import QtCore
+-        ver = QtCore.PYQT_VERSION_STR
++        try:
++            from PyQt4 import QtCore
++        except ImportError:
++            pass
++        else:
++            ver = QtCore.PYQT_VERSION_STR
+     return ver
+ 
+ 
+@@ -314,8 +318,12 @@ def get_pyQt5_version():
+     except ImportError:
+         ver='-'
+     else:
+-        from PyQt5 import QtCore
+-        ver = QtCore.PYQT_VERSION_STR
++        try:
++            from PyQt5 import QtCore
++        except ImportError:
++            pass
++        else:
++            ver = QtCore.PYQT_VERSION_STR
+     return ver
+ 
+ def get_reportlab_version():
+-- 
+2.29.2
+

@@ -1,0 +1,5 @@
+<package name="python-mocket" project="openSUSE:Factory">
+  <title>python-mocket</title>
+  <description>Python socket mock framework</description>
+  <devel project="devel:languages:python" package="python-mocket"/>
+</package>

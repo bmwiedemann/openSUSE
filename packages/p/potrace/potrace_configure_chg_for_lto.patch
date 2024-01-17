@@ -1,0 +1,26 @@
+From: Michel Normand <normand@linux.vnet.ibm.com>
+Subject: potrace configure chg for lto
+Date: Fri, 16 Aug 2019 14:39:23 +0200
+
+potrace configure chg for lto
+
+For asm inline checking.
+
+Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
+---
+ configure.ac |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: potrace-1.15/configure.ac
+===================================================================
+--- potrace-1.15.orig/configure.ac
++++ potrace-1.15/configure.ac
+@@ -250,7 +250,7 @@ AC_CHECK_FUNC(strncasecmp, ,
+ dnl ----------------------------------------------------------------------
+ dnl Check whether we have i386 features
+ AC_MSG_CHECKING([for Intel 386])
+-AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[int x;
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[int x;
+   asm("bsf %1,%0\njnz 0f\nmovl $32,%0\n0:":"=r"(x):"r"(x));
+   return x; /* need this so that -O2 does not optimize the asm away */
+ ]])],[AC_MSG_RESULT(yes) 

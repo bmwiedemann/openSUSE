@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:09:53 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Dec 22 15:48:21 UTC 2011 - toms@suse.de
+
+- Renamed ttf-caslon -> caslon-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Thu Apr  8 18:28:23 CEST 2010 - tiwai@suse.de
+
+- remove unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Wed Aug 09 13:03:54 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts/truetype
+  (openSUSE 10.2 will use X11R7).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:48:44 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Dec 03 20:05:15 CET 2004 - mfabian@suse.de
+
+- use new macro "%run_suseconfig_fonts".
+
+-------------------------------------------------------------------
+Mon Sep 13 18:03:32 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45156: add "Provides: scalable-font-{el,he,ru,bg}".
+
+-------------------------------------------------------------------
+Fri Mar 19 16:39:01 CET 2004 - mfabian@suse.de
+
+- use %suseconfig_fonts_prereq
+
+-------------------------------------------------------------------
+Fri Feb 27 16:49:29 CET 2004 - mfabian@suse.de
+
+- run SuSEconfig.fonts and SuSEconfig.pango in %post and %postun
+
+-------------------------------------------------------------------
+Tue Dec  2 15:51:43 CET 2003 - mfabian@suse.de
+
+- update to latest version (20031202).
+- remove fonts.scale completely.
+
+-------------------------------------------------------------------
+Wed Nov 26 17:22:38 CET 2003 - mfabian@suse.de
+
+- don't build as root
+- remove unsupported ascii-0 encoding from fonts.scale
+- remove useless %post and %postun.
+
+-------------------------------------------------------------------
+Fri Jun 13 13:28:40 CEST 2003 - mfabian@suse.de
+
+- add %dir /usr/X11R6/lib/X11/fonts/truetype/ to file list
+
+-------------------------------------------------------------------
+Wed Sep 19 19:05:39 CEST 2001 - mfabian@suse.de
+
+- new package: ttf-caslon, version 20010222
+
+

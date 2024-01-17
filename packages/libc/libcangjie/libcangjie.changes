@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Sep 25 14:08:30 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Rename %soname to %sover to better reflect its use.
+- Fix RPM groups.
+- Just call configure, don't waste time with autogen.
+- Update libcangjie-data description.
+
+-------------------------------------------------------------------
+Thu Mar  9 05:11:21 UTC 2017 - wnereiz@eienteiland.org
+
+- Add requries for libcangjie-data and libcangjie-tools 
+- Add spec macros to take place of paths
+
+-------------------------------------------------------------------
+Wed Feb 15 07:30:31 UTC 2017 - wnereiz@eienteiland.org
+
+- Initialize the package

@@ -1,0 +1,35 @@
+From 223f11bab87c9f5915ef7146b26d0935c7ff18e3 Mon Sep 17 00:00:00 2001
+From: Egbert Eich <eich@suse.com>
+Date: Wed, 10 Nov 2021 16:30:14 +0100
+Subject: [PATCH] Fix Spinx configuration to avoid throwing errors
+
+- Ignore certain variables
+- Don't attempt downloading ntersphinx inventory
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ lib/spack/docs/conf.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/lib/spack/docs/conf.py b/lib/spack/docs/conf.py
+index 8ba6717147..521511db2f 100644
+--- a/lib/spack/docs/conf.py
++++ b/lib/spack/docs/conf.py
+@@ -133,7 +133,6 @@ def setup(sphinx):
+     "sphinx.ext.napoleon",
+     "sphinx.ext.todo",
+     "sphinx.ext.viewcode",
+-    "sphinx_design",
+     "sphinxcontrib.programoutput",
+ ]
+ 
+@@ -418,4 +417,4 @@ class SpackStyle(DefaultStyle):
+ # -- Extension configuration -------------------------------------------------
+ 
+ # sphinx.ext.intersphinx
+-intersphinx_mapping = {"python": ("https://docs.python.org/3", None)}
++intersphinx_mapping = {"python": ("https://docs.python.org/3",  "objects.inv")}
+-- 
+2.40.1
+

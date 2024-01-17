@@ -1,0 +1,9 @@
+<package name="qml-box2d" project="openSUSE:Factory">
+  <title>QML Box2D plugin</title>
+  <description>This plugin is meant to be installed to your Qt/imports directory, or shipped
+in a directory of which the parent is added as import path.
+
+The goal is to expose the functionality of Box2D as QML components, in order
+to make it easy to write physics based games in QML.</description>
+  <devel project="games" package="qml-box2d"/>
+</package>

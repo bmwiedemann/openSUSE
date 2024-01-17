@@ -1,0 +1,27 @@
+--- Makefile.in
++++ Makefile.in
+@@ -111,11 +111,11 @@
+ 
+ installthis:
+ 	-mkdir -p $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -m 555 -o bin -g bin thttpd $(DESTDIR)$(SBINDIR)
++	$(INSTALL) -m 555 thttpd $(DESTDIR)$(SBINDIR)
+ 
+ install-man:
+ 	-mkdir -p $(DESTDIR)$(MANDIR)/man8
+-	$(INSTALL) -m 444 -o bin -g bin thttpd.8 $(DESTDIR)$(MANDIR)/man8
++	$(INSTALL) -m 444 thttpd.8 $(DESTDIR)$(MANDIR)/man8
+ 
+ installsubdirs:
+ 	for i in $(SUBDIRS) ; do ( \
+--- extras/Makefile.in
++++ extras/Makefile.in
+@@ -69,7 +69,7 @@
+ install:	all
+ 	rm -f $(SBINDIR)/makeweb $(SBINDIR)/htpasswd $(SBINDIR)/syslogtocern
+ 	cp makeweb $(BINDIR)/makeweb
+-	chgrp $(WEBGROUP) $(BINDIR)/makeweb
++	-chgrp $(WEBGROUP) $(BINDIR)/makeweb
+ 	chmod 2755 $(BINDIR)/makeweb
+ 	cp htpasswd $(BINDIR)/htpasswd
+ 	cp syslogtocern $(SBINDIR)/syslogtocern

@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon May 24 12:53:47 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.8.3
+  * Remove fields that have been removed from Hetzner Server API
+- %check: user %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Mon May 25 10:59:17 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon May 27 19:31:07 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.2
+  * RobotWebInterface: Fix login by using CSRF token
+  * server: Fix fetching rescue system information
+  * Expose server power state and reset options
+  * Properly encode non-scalar values in API requests
+
+-------------------------------------------------------------------
+Mon Mar  4 13:32:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.8.1:
+  * Fix few pep8 issues
+  * Support ssh pubkeys in rescue
+
+-------------------------------------------------------------------
+Sat Jun 23 13:39:17 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 0.8.0

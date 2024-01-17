@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Dec  1 14:06:26 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 25 12:10:15 CET 2010 - kukuk@suse.de
+
+- Fix more perl buildrequires
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:27 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Tue Oct 12 21:50:37 UTC 2010 - kukuk@suse.de
+
+- Adjust for SLE11
+
+-------------------------------------------------------------------
+Tue Oct 12 21:03:00 UTC 2010 - kukuk@suse.de
+
+- Initial package
+

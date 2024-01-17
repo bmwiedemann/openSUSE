@@ -1,0 +1,11 @@
+--- a/argus/ArgusSource.c	2012-06-20 15:11:43.000000000 +0200
++++ b/argus/ArgusSource.c	2012-10-24 11:14:47.425282905 +0200
+@@ -48,7 +48,7 @@
+ #if defined(__APPLE_CC__) || defined(__APPLE__)
+ #define PCAP_DONT_INCLUDE_PCAP_BPF_H
+ #include <sys/ioctl.h>
+-#include <net/bpf.h>
++#include <pcap-bpf.h>
+ #endif
+ 
+ 

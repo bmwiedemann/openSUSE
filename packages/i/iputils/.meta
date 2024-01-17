@@ -1,0 +1,6 @@
+<package name="iputils" project="openSUSE:Factory">
+  <title>IPv4 and IPv6 Networking Utilities</title>
+  <description>This package contains some small network tools for IPv4 and IPv6 like
+rdisc, ping6, traceroute6, tracepath, and tracepath6.</description>
+  <devel project="network:utilities" package="iputils"/>
+</package>

@@ -1,0 +1,369 @@
+From 9de5eb6d221bf3438c75a756c9acffa01e2c51fb Mon Sep 17 00:00:00 2001
+From: fujiwarat <takao.fujiwara1@gmail.com>
+Date: Tue, 16 Feb 2021 07:45:51 +0900
+Subject: [PATCH] Migrate kasumi GUI to GTK3
+
+---
+ KasumiAddWindow.cxx  | 41 ++++++++++------------
+ KasumiAddWindow.hxx  |  1 -
+ KasumiMainWindow.cxx | 82 ++++++++++++++++++++++----------------------
+ cellrendererspin.c   | 16 +++++----
+ cellrendererspin.h   |  2 +-
+ main.cxx             | 15 ++++----
+ 6 files changed, 79 insertions(+), 78 deletions(-)
+
+diff --git a/KasumiAddWindow.cxx b/KasumiAddWindow.cxx
+index 9b42c12..49c6a05 100644
+--- a/KasumiAddWindow.cxx
++++ b/KasumiAddWindow.cxx
+@@ -59,9 +59,6 @@ KasumiAddWindow::KasumiAddWindow(KasumiDic *aDictionary,
+     g_signal_connect(G_OBJECT(window), "delete_event",
+ 		     G_CALLBACK(_call_back_add_window_delete_event), this);
+ 
+-    // tooltips for every widget
+-    Tooltips = gtk_tooltips_new();
+-
+     // creating vbox for text entries, spin button and so on.
+     GtkWidget *vbox = gtk_vbox_new(FALSE,0);
+     gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
+@@ -111,12 +108,12 @@ KasumiAddWindow::KasumiAddWindow(KasumiDic *aDictionary,
+     const int FREQ_DEFAULT = conf->getPropertyValueByInt("DefaultFrequency");
+     const int FREQ_LBOUND = conf->getPropertyValueByInt("MinFrequency");  
+     const int FREQ_UBOUND = conf->getPropertyValueByInt("MaxFrequency");
+-    GtkObject *adjustment = gtk_adjustment_new(FREQ_DEFAULT,
+-					       FREQ_LBOUND,
+-					       FREQ_UBOUND,
+-					       1,
+-					       FREQ_UBOUND / 100
+-					       ,0);
++    GtkAdjustment *adjustment = GTK_ADJUSTMENT (gtk_adjustment_new(FREQ_DEFAULT,
++						FREQ_LBOUND,
++						FREQ_UBOUND,
++						1,
++						FREQ_UBOUND / 100
++						,0));
+     FrequencySpin = gtk_spin_button_new(GTK_ADJUSTMENT(adjustment),1.0,0);
+     alignment = gtk_alignment_new(0, 0.5, 1.0, 1.0);
+     gtk_alignment_set_padding(GTK_ALIGNMENT(alignment), 0, 6, 6, 6);
+@@ -205,16 +202,14 @@ KasumiAddWindow::KasumiAddWindow(KasumiDic *aDictionary,
+ 	gtk_box_pack_start(GTK_BOX(hbutton_box),GTK_WIDGET(button),TRUE,TRUE,0);
+ 	g_signal_connect(G_OBJECT(button),"clicked",
+ 			 G_CALLBACK(_call_back_add_window_add),this);
+-	gtk_tooltips_set_tip(Tooltips, button,
+-			     _("Add entered word and quit registration."),
++	gtk_widget_set_tooltip_text(button,
+ 			     _("If all the necessary items are filled in, add entered word and quit registration."));
+ 
+ 	button = gtk_button_new_from_stock(GTK_STOCK_CLOSE);
+ 	gtk_box_pack_start(GTK_BOX(hbutton_box),GTK_WIDGET(button),TRUE,TRUE,0);
+ 	g_signal_connect(G_OBJECT(button),"clicked",
+ 			 G_CALLBACK(_call_back_add_window_quit),this);
+-	gtk_tooltips_set_tip(Tooltips, button,
+-			     _("Cancel registration and quit."),
++	gtk_widget_set_tooltip_text(button,
+ 			     _("Cancel registration and quit."));
+ 
+ 	gtk_window_set_keep_above(GTK_WINDOW(window), TRUE);
+@@ -227,24 +222,21 @@ KasumiAddWindow::KasumiAddWindow(KasumiDic *aDictionary,
+ 	gtk_box_pack_start(GTK_BOX(hbutton_box),GTK_WIDGET(button),TRUE,TRUE,0);
+ 	g_signal_connect(G_OBJECT(button),"clicked",
+ 			 G_CALLBACK(_call_back_add_window_add),this);
+-	gtk_tooltips_set_tip(Tooltips, button,
+-			     _("Add entered word"),
++	gtk_widget_set_tooltip_text(button,
+ 			     _("If all the necessary items are filled in, add entered word."));
+ 
+ 	button = gtk_button_new_from_stock(GTK_STOCK_EDIT);
+ 	gtk_box_pack_start(GTK_BOX(hbutton_box),GTK_WIDGET(button),TRUE,TRUE,0);
+ 	g_signal_connect(G_OBJECT(button),"clicked",
+ 			 G_CALLBACK(_call_back_manage_mode),this);
+-	gtk_tooltips_set_tip(Tooltips, button,
+-			     _("Manage mode"),
++	gtk_widget_set_tooltip_text(button,
+ 			     _("Make the shift to manage mode to modify and remove registered words."));
+ 
+ 	button = gtk_button_new_from_stock(GTK_STOCK_CLOSE);
+ 	gtk_box_pack_start(GTK_BOX(hbutton_box),GTK_WIDGET(button),TRUE,TRUE,0);
+ 	g_signal_connect(G_OBJECT(button),"clicked",
+ 			 G_CALLBACK(_call_back_add_window_quit),this);
+-	gtk_tooltips_set_tip(Tooltips, button,
+-			     _("Quit this application"),
++	gtk_widget_set_tooltip_text(button,
+ 			     _("Save dictionary and quit this application."));
+ 
+ 	// get selection at the time of launching
+@@ -443,16 +435,19 @@ void _call_back_manage_mode(GtkWidget *widget,
+ void _call_back_selection_data_received(GtkWidget *widget,
+                                         GtkSelectionData *selection_data,
+                                         gpointer data){
+-    if(selection_data->length < 0){
++    int emit_length = gtk_selection_data_get_length(selection_data);
++    GdkAtom emit_type = gtk_selection_data_get_data_type(selection_data);
++    const guchar *emit_data = gtk_selection_data_get_data(selection_data);
++    if(emit_length < 0){
+ 	// failed retrieving selection
+ 	// do nothing
+ 	return;
+     }
+ 
+-    string atom_name = string(gdk_atom_name(selection_data->type));
++    string atom_name = string(gdk_atom_name(emit_type));
+ 
+-    gchar *str;
+-    str = reinterpret_cast<gchar*>(selection_data->data);
++    const gchar *str;
++    str = reinterpret_cast<const gchar*>(emit_data);
+ 
+     if(atom_name == "UTF8_STRING"){
+ 	gtk_entry_set_text(GTK_ENTRY(widget), str);
+diff --git a/KasumiAddWindow.hxx b/KasumiAddWindow.hxx
+index 5101314..352326a 100644
+--- a/KasumiAddWindow.hxx
++++ b/KasumiAddWindow.hxx
+@@ -77,7 +77,6 @@ private:
+     GtkWidget *FrequencySpin;
+     GtkWidget *WordTypeCategoryCombo;
+     GtkWidget *WordTypeCombo;
+-    GtkTooltips *Tooltips;
+ 
+     GtkTreeIter defaultWordTypeCategoryIter;
+   
+diff --git a/KasumiMainWindow.cxx b/KasumiMainWindow.cxx
+index 4e86c7a..e8a8d56 100644
+--- a/KasumiMainWindow.cxx
++++ b/KasumiMainWindow.cxx
+@@ -150,22 +150,22 @@ void KasumiMainWindow::createWindow()
+   mSaveButton = gtk_button_new_from_stock ("gtk-save");
+   gtk_widget_show (mSaveButton);
+   gtk_box_pack_start (GTK_BOX (hbuttonbox1), mSaveButton, FALSE, TRUE, 0);
+-  GTK_WIDGET_SET_FLAGS (mSaveButton, GTK_CAN_DEFAULT);
++  gtk_widget_set_can_default (mSaveButton, TRUE);
+ 
+   mAddButton = gtk_button_new_from_stock ("gtk-add");
+   gtk_widget_show (mAddButton);
+   gtk_box_pack_start (GTK_BOX (hbuttonbox1), mAddButton, FALSE, TRUE, 0);
+-  GTK_WIDGET_SET_FLAGS (mAddButton, GTK_CAN_DEFAULT);
++  gtk_widget_set_can_default (mAddButton, TRUE);
+ 
+   mRemoveButton = gtk_button_new_from_stock ("gtk-delete");
+   gtk_widget_show (mRemoveButton);
+   gtk_box_pack_start (GTK_BOX (hbuttonbox1), mRemoveButton, FALSE, TRUE, 0);
+-  GTK_WIDGET_SET_FLAGS (mRemoveButton, GTK_CAN_DEFAULT);
++  gtk_widget_set_can_default (mRemoveButton, TRUE);
+ 
+   mQuitButton = gtk_button_new_from_stock ("gtk-close");
+   gtk_widget_show (mQuitButton);
+   gtk_box_pack_end (GTK_BOX (hbuttonbox1), mQuitButton, FALSE, TRUE, 0);
+-  GTK_WIDGET_SET_FLAGS (mQuitButton, GTK_CAN_DEFAULT);
++  gtk_widget_set_can_default (mQuitButton, TRUE);
+ }
+ 
+ void KasumiMainWindow::createWordList()
+@@ -474,7 +474,7 @@ void KasumiMainWindow::editedTextColumn(GtkCellRendererText *renderer,
+ 
+ 	// set cursor right or left
+ 	GtkTreeViewColumn *postCol = NULL;
+-	if(lastKeyVal == GDK_Tab)
++	if(lastKeyVal == GDK_KEY_Tab)
+ 	{
+ 	    if(lastKeyState & GDK_CONTROL_MASK)
+ 	    { // set cursor left
+@@ -887,42 +887,42 @@ guint getAccelKey(const string &key){
+ 
+   string shortkey = key.substr(i+1);
+ 
+-  if(shortkey == "A") return GDK_A;
+-  else if(shortkey == "B") return GDK_B;
+-  else if(shortkey == "C") return GDK_C;
+-  else if(shortkey == "D") return GDK_D;
+-  else if(shortkey == "E") return GDK_E;
+-  else if(shortkey == "F") return GDK_F;
+-  else if(shortkey == "G") return GDK_G;
+-  else if(shortkey == "H") return GDK_H;
+-  else if(shortkey == "I") return GDK_I;
+-  else if(shortkey == "J") return GDK_J;
+-  else if(shortkey == "K") return GDK_K;
+-  else if(shortkey == "L") return GDK_L;
+-  else if(shortkey == "M") return GDK_M;
+-  else if(shortkey == "N") return GDK_N;
+-  else if(shortkey == "O") return GDK_O;
+-  else if(shortkey == "P") return GDK_P;
+-  else if(shortkey == "Q") return GDK_Q;
+-  else if(shortkey == "R") return GDK_R;
+-  else if(shortkey == "S") return GDK_S;
+-  else if(shortkey == "T") return GDK_T;
+-  else if(shortkey == "U") return GDK_U;
+-  else if(shortkey == "V") return GDK_V;
+-  else if(shortkey == "W") return GDK_W;
+-  else if(shortkey == "X") return GDK_X;
+-  else if(shortkey == "Y") return GDK_Y;
+-  else if(shortkey == "Z") return GDK_Z;
+-  else if(shortkey == "0") return GDK_0;
+-  else if(shortkey == "1") return GDK_1;
+-  else if(shortkey == "2") return GDK_2;
+-  else if(shortkey == "3") return GDK_3;
+-  else if(shortkey == "4") return GDK_4;
+-  else if(shortkey == "5") return GDK_5;
+-  else if(shortkey == "6") return GDK_5;
+-  else if(shortkey == "7") return GDK_7;
+-  else if(shortkey == "8") return GDK_8;
+-  else if(shortkey == "9") return GDK_9;
++  if(shortkey == "A") return GDK_KEY_A;
++  else if(shortkey == "B") return GDK_KEY_B;
++  else if(shortkey == "C") return GDK_KEY_C;
++  else if(shortkey == "D") return GDK_KEY_D;
++  else if(shortkey == "E") return GDK_KEY_E;
++  else if(shortkey == "F") return GDK_KEY_F;
++  else if(shortkey == "G") return GDK_KEY_G;
++  else if(shortkey == "H") return GDK_KEY_H;
++  else if(shortkey == "I") return GDK_KEY_I;
++  else if(shortkey == "J") return GDK_KEY_J;
++  else if(shortkey == "K") return GDK_KEY_K;
++  else if(shortkey == "L") return GDK_KEY_L;
++  else if(shortkey == "M") return GDK_KEY_M;
++  else if(shortkey == "N") return GDK_KEY_N;
++  else if(shortkey == "O") return GDK_KEY_O;
++  else if(shortkey == "P") return GDK_KEY_P;
++  else if(shortkey == "Q") return GDK_KEY_Q;
++  else if(shortkey == "R") return GDK_KEY_R;
++  else if(shortkey == "S") return GDK_KEY_S;
++  else if(shortkey == "T") return GDK_KEY_T;
++  else if(shortkey == "U") return GDK_KEY_U;
++  else if(shortkey == "V") return GDK_KEY_V;
++  else if(shortkey == "W") return GDK_KEY_W;
++  else if(shortkey == "X") return GDK_KEY_X;
++  else if(shortkey == "Y") return GDK_KEY_Y;
++  else if(shortkey == "Z") return GDK_KEY_Z;
++  else if(shortkey == "0") return GDK_KEY_0;
++  else if(shortkey == "1") return GDK_KEY_1;
++  else if(shortkey == "2") return GDK_KEY_2;
++  else if(shortkey == "3") return GDK_KEY_3;
++  else if(shortkey == "4") return GDK_KEY_4;
++  else if(shortkey == "5") return GDK_KEY_5;
++  else if(shortkey == "6") return GDK_KEY_5;
++  else if(shortkey == "7") return GDK_KEY_7;
++  else if(shortkey == "8") return GDK_KEY_8;
++  else if(shortkey == "9") return GDK_KEY_9;
+   
+   cerr << "Invalid shortcut key option: " << key << endl;
+   exit(1);
+diff --git a/cellrendererspin.c b/cellrendererspin.c
+index 885d462..85d3bda 100644
+--- a/cellrendererspin.c
++++ b/cellrendererspin.c
+@@ -52,8 +52,6 @@
+  */
+ 
+ #include "cellrendererspin.h"
+-#include <gtk/gtkadjustment.h>
+-#include <gtk/gtkspinbutton.h>
+ #include <stdlib.h>
+ 
+ #define GUI_CELL_RENDERER_SPIN_PATH     "gui-cell-renderer-spin-path"
+@@ -239,6 +237,7 @@ gui_cell_renderer_spin_editing_done (GtkCellEditable *spinbutton,
+   const gchar         *path;
+   const gchar         *new_text;
+   GCRSpinInfo         *info;
++  gboolean canceled = FALSE;
+ 
+   info = g_object_get_data (G_OBJECT (data), GUI_CELL_RENDERER_SPIN_INFO);
+ 
+@@ -248,7 +247,8 @@ gui_cell_renderer_spin_editing_done (GtkCellEditable *spinbutton,
+                 info->focus_out_id = 0;
+         }
+ 
+-  if (GTK_ENTRY(spinbutton)->editing_canceled)
++  g_object_get (spinbutton, "editing-canceled", &canceled, NULL);
++  if (canceled)
+     return;
+ 
+   path = g_object_get_data (G_OBJECT (spinbutton), GUI_CELL_RENDERER_SPIN_PATH);
+@@ -317,19 +317,23 @@ gui_cell_renderer_spin_start_editing (GtkCellRenderer      *cell,
+   GtkWidget           *spinbutton;
+         GCRSpinInfo         *info;
+         gdouble              curval = 0.0;
++  gboolean editable = FALSE;
++  gchar* str = NULL;
+ 
+   celltext = GTK_CELL_RENDERER_TEXT(cell);
+         spincell = GUI_CELL_RENDERER_SPIN(cell);
+ 
+   /* If the cell isn't editable we return NULL. */
+-  if (celltext->editable == FALSE)
++  editable = GPOINTER_TO_INT(g_object_get_data (G_OBJECT (celltext), "editable"));
++  if (editable == FALSE)
+     return NULL;
+ 
+   spinbutton = g_object_new (GTK_TYPE_SPIN_BUTTON, "has_frame", FALSE, "numeric", TRUE, NULL);
+ 
+         /* dirty */
+-  if (celltext->text)
+-                curval = atof(celltext->text);
++  str = (gchar *)g_object_get_data (G_OBJECT (celltext), "text");
++  if (str)
++                curval = atof(str);
+ 
+         adj = GTK_ADJUSTMENT(gtk_adjustment_new(curval,
+                                                 spincell->lower,
+diff --git a/cellrendererspin.h b/cellrendererspin.h
+index c6b33d2..36a2740 100644
+--- a/cellrendererspin.h
++++ b/cellrendererspin.h
+@@ -27,7 +27,7 @@
+ #ifndef _cellrendererspin_h_included_
+ #define _cellrendererspin_h_included_
+ 
+-#include <gtk/gtkcellrenderertext.h>
++#include <gtk/gtk.h>
+ 
+ G_BEGIN_DECLS
+ 
+diff --git a/main.cxx b/main.cxx
+index c5c459e..8ed5edf 100644
+--- a/main.cxx
++++ b/main.cxx
+@@ -101,14 +101,15 @@ static void cb_selection_get(GtkWidget *widget,
+ {
+   gchar *text = NULL;
+   gint length = 0;
++  GdkAtom emit_selection = gtk_selection_data_get_selection(data);
+ 
+-  if (data->selection == atom0) {
++  if (emit_selection == atom0) {
+     text = "Kasumi Selection";
+     length = strlen(text);
+     gtk_selection_convert(window, atom1,
+ 			  GDK_SELECTION_TYPE_STRING,
+ 			  GDK_CURRENT_TIME);
+-  } else if (data->selection == atom1 && arg_text != NULL) {
++  } else if (emit_selection == atom1 && arg_text != NULL) {
+     text = arg_text;
+     arg_text = NULL;
+     length = strlen(text);
+@@ -116,7 +117,7 @@ static void cb_selection_get(GtkWidget *widget,
+ 
+   if (text != NULL) {
+     gtk_selection_data_set_text(data, text, length);
+-    if (data->selection == atom1)
++    if (emit_selection == atom1)
+       g_free(text);
+   }
+ }
+@@ -126,9 +127,11 @@ static void cb_selection_received(GtkWidget *widget,
+ 				  guint time,
+ 				  gpointer user_data)
+ {
+-  if (data->selection == atom0) {
+-    instance = MAX(data->length, 0);
+-  } else if (data->selection == atom1 && data->length > 0) {
++  GdkAtom emit_selection = gtk_selection_data_get_selection(data);
++  int emit_length = gtk_selection_data_get_length(data);
++  if (emit_selection == atom0) {
++    instance = MAX(emit_length, 0);
++  } else if (emit_selection == atom1 && emit_length > 0) {
+   }
+ }
+ 
+-- 
+2.28.0
+

@@ -1,0 +1,205 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acffdcb40af0ff9e78e69f5587f4e5ab</srcmd5>
+    <version>4.0.0</version>
+    <time>1443584964</time>
+    <user>coolo</user>
+    <comment>This is needed by the newest version of IPython, which is already in openSUSE:Factory</comment>
+    <requestid>322888</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>48546be66feb2e74aa1caec685be1c0f</srcmd5>
+    <version>4.3.2</version>
+    <time>1492169679</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483952</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>46919749d8986391966b2881a1daa1c7</srcmd5>
+    <version>4.3.2</version>
+    <time>1493455957</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487997</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f48050e08fb7ad44381fbd76b374b0bc</srcmd5>
+    <version>4.3.2</version>
+    <time>1499415386</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing python-six BuildRequires
+
+- Add missing python-six Requires</comment>
+    <requestid>508368</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0d8b40619bf3573cb11f3ad4bed2b4fd</srcmd5>
+    <version>4.3.3</version>
+    <time>1574414622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747883</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b44db4ef10a6f8815fbb95bac10b7072</srcmd5>
+    <version>4.3.3</version>
+    <time>1585264878</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784174</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0865aa5f01e48d92d161ff80370852f0</srcmd5>
+    <version>5.0.5</version>
+    <time>1610736245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862132</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>1687013b09b237826eff1f49781f859a</srcmd5>
+    <version>4.3.3</version>
+    <time>1610801736</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 4.x, compatible with python36; unblockrngs</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f05ac9880e7bdfb7853d71185e48de0c</srcmd5>
+    <version>5.1.1</version>
+    <time>1641555915</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>944210</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>064a9ea25c568c382992abd107cb7a02</srcmd5>
+    <version>5.2.2</version>
+    <time>1654595091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>980913</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b0d9f1030b684fe1f4d52dd97bf243f8</srcmd5>
+    <version>5.3.0</version>
+    <time>1656053117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.0
+  * Fix traitlet name in docstring by @fcollonval in #745
+  * Re-support multiple-alias key for ArgParseConfigLoader by
+    @azjps in #687
+- Drop traitlets-pr739-fixversion.patch
+</comment>
+    <requestid>984517</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1ee290f8ba80c5c0692caed0b9ce02f2</srcmd5>
+    <version>5.4.0</version>
+    <time>1663275455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003061</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3814bde48abfa8587e29fe4fe2253310</srcmd5>
+    <version>5.5.0</version>
+    <time>1666535584</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.5.0:
+  * Clean up application typing
+  * Update tests and docs to use non-deprecated functions
+  * Clean up version handling
+  * Prep for jupyter releaser
+  * Format the changelog
+</comment>
+    <requestid>1030492</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a61220a9cdc7e651f58330f2275a9d2a</srcmd5>
+    <version>5.8.0</version>
+    <time>1672221254</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.8.0
+  * Shell command-line tab-completion via argcomplete #811 (@azjps)
+  * Define trait.__doc__ = trait.help for better API Docs #816
+    (@minrk)
+  * Expose more attributes for typing #817 (@blink1073)
+  * Fix lint #814 (@blink1073)
+  * Additional Application examples and docs #811 (@azjps)
+- Release 5.7.1
+  * fix: some descriptors raise AttributeError #812
+    (@maartenbreddels)
+- Release 5.7.0
+  * Performance: decrease runtime overhead for constructing
+    HasTraits (up to 20x faster) #777 (@maartenbreddels)
+  * Minor fixes for Application.aliases #810 (@azjps)
+  * Adopt ruff and address lint #809 (@blink1073)</comment>
+    <requestid>1045326</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b5071f149b63a6de7b0034a02b3e10c3</srcmd5>
+    <version>5.8.1</version>
+    <time>1673973279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.8.1
+  * fix: mro_trait can be unbound when the class is not in mro #824
+    (@maartenbreddels)</comment>
+    <requestid>1058563</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>09e16037be2e55b426c0f395e7bd58d6</srcmd5>
+    <version>5.9.0</version>
+    <time>1675516269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.0
+  * Polishing argcomplete support #829 (@azjps)
+</comment>
+    <requestid>1063000</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>67442a61288c829748ee99315577334b</srcmd5>
+    <version>5.9.0</version>
+    <time>1683212948</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
+    <requestid>1084413</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7abda2a210cd71abd3ac0ab4624adce8</srcmd5>
+    <version>5.10.0</version>
+    <time>1695758442</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.10.0
+  * Added type hints to HasTraits.observe() and friends. #834
+    (@scholer)
+  * feat: trait typing #818 (@maartenbreddels)
+</comment>
+    <requestid>1113306</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>37b087a9261e614ec5240230a34abdab</srcmd5>
+    <version>5.11.2</version>
+    <time>1696760244</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.11.2
+- Multiple typing upgrades and fix releases since 5.10.0</comment>
+    <requestid>1116213</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b7172671c21d228f0342f3d7a89f074c</srcmd5>
+    <version>5.14.0</version>
+    <time>1704380221</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.14.0
+  * Add option to load traitlets values from environment. #856
+    (@Carreau)
+- Release 5.13.0
+  * Use passed-in info argument for TraitType.error() #884
+    (@kylebarron)
+- Release 5.12.0
+  * Pass **kwds in MetaHasDescriptors new and init #881
+    (@fleming79)</comment>
+    <requestid>1135504</requestid>
+  </revision>
+</revisionlist>

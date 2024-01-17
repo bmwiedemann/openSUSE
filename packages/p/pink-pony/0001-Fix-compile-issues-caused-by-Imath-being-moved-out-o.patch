@@ -1,0 +1,40 @@
+From 8427d76a998b8278bd6fd0a3e12fb49af7897be1 Mon Sep 17 00:00:00 2001
+From: Thomas Weber <weber.t@gmx.at>
+Date: Sat, 2 Oct 2021 13:49:12 +0200
+Subject: [PATCH] Fix compile issues caused by Imath being moved out of IlmBase
+
+---
+ SConstruct  | 2 +-
+ src/Line.cc | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/SConstruct b/SConstruct
+index 026efbf..7df6e03 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -9,7 +9,7 @@ env['CCFLAGS'] = ['-Wall', '-Wextra', '-Wno-reorder', '-Wno-unused-parameter'] +
+ env['LIBS'] = ['GLU', 'GL', 'protobuf', 'IL']
+ env['CPPPATH'] = ['#', '#/src', '#/external/tinyXML', '#/external/flextGL/', '/usr/include/OpenEXR']
+ 
+-env.ParseConfig("pkg-config IlmBase --cflags --libs")
++env.ParseConfig("pkg-config Imath --cflags --libs")
+ env.ParseConfig("pkg-config libglfw --cflags --libs")
+ env.ParseConfig("pkg-config ftgl --cflags --libs")
+ env.ParseConfig("pkg-config sigc++-2.0 --cflags --libs")
+diff --git a/src/Line.cc b/src/Line.cc
+index 10a8193..6a07f02 100644
+--- a/src/Line.cc
++++ b/src/Line.cc
+@@ -1,7 +1,7 @@
+ #include "Line.hh"
+-#include <ImathLimits.h>
++#include <limits>
+ 
+-#define EPSILON limits<double>::epsilon()
++#define EPSILON std::limits<double>::epsilon()
+ 
+ bool Line::intersects(const Line& seg)
+ {    
+-- 
+2.33.0
+

@@ -1,0 +1,9 @@
+<package name="gnome-kiosk" project="openSUSE:Factory">
+  <title>Mutter based compositor for kiosks</title>
+  <description>Kiosk provides a desktop enviroment suitable for fixed purpose, or single
+application deployments like wall displays and point-of-sale systems.
+
+</description>
+  <devel project="GNOME:Factory" package="gnome-kiosk"/>
+  <url>https://gitlab.gnome.org/GNOME/gnome-kiosk</url>
+</package>

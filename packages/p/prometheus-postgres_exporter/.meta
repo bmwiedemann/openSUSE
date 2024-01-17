@@ -1,0 +1,5 @@
+<package name="prometheus-postgres_exporter" project="openSUSE:Factory">
+  <title>Prometheus exporter for PostgreSQL</title>
+  <description></description>
+  <devel project="server:monitoring" package="prometheus-postgres_exporter"/>
+</package>

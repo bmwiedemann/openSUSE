@@ -1,0 +1,60 @@
+README.SUSE for monitoring-plugins-dhcp
+
+== check_dhcp and SuSEfirewall ==
+
+If you run the check_dhcp script on the server, please make sure your UDP ports
+67 and 68 on the _client_ are opened in the firewall. You also need to allow
+to receive broadcasts for this interface. Otherwise  the script will be unable
+to detect anything.
+
+Example:
+If your client uses the "external" interface for the check, the entries in
+/etc/sysconfig/SuSEfirewall2 should look like:
+
+FW_SERVICES_EXT_UDP="67 68"
+FW_ALLOW_FW_BROADCAST_EXT="67 68"
+
+== Special privileges ==
+
+To be "safe per default", SUSE doesn't install this plugin with the
+suid bit set. There are two recommended ways about overriding this on
+your system:
+
+=== Set the suid bit ===
+
+Copy the prepared permissions file from this directory to the right place 
+in your file system:
+
+~ # cp /usr/share/doc/packages/monitoring-plugins-common/example/permissions.d/monitoring-plugins \
+    /etc/permissions.d/monitoring-plugins
+
+...afterwards adapt the file /etc/permissions.d/monitoring-plugins to your needs
+(see comments in the file) and run:
+
+~ # SuSEconfig --module permissions
+
+or (on newer openSUSE distributions without SuSEconfig):
+~ # chkstat --system --set
+
+This will set the correct permissions (from now on also during an update).
+
+=== Alternative: Use sudo to grant the permission and modify your plugin config ===
+
+This way you just need an entry like:
+
+   nagios ALL = NOPASSWD: /usr/lib/nagios/plugins/check_dhcp
+
+in ''/etc/sudoers'' and an adapted command definition like the following:
+
+   define command{
+        command_name    check_dhcp
+        command_line    /usr/bin/sudo $USER1$/check_dhcp <other_options_here>
+   }
+
+== Apparmor profile ==
+
+Please check /etc/apparmor.d/usr.lib.nagios.plugins.check_dhcp if you are using
+the --extra-opts option. The Apparmor profile allows to open every file below
+the /etc/monitoring-plugins/ directory read only for this. All files in other
+directories are not allowed.
+

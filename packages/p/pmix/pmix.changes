@@ -1,0 +1,170 @@
+-------------------------------------------------------------------
+Tue Sep 12 14:04:10 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix a potential vulnerability where a `chown` may follow a
+  user-created link:
+  Fix-a-potential-vulnerability-which-allows-chown-on-user-created-links.patch
+  (CVE-2023-41915, bsc#1215190).
+
+-------------------------------------------------------------------
+Tue Mar 21 15:27:23 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Move the requirement for pmix-runtime-config to libpmix2 and make
+  it version-independent (bsc#1209473).
+- Install pmix-plugin-munge if munge is installed.
+- Use correct prerequisite name: pmix-plugin-munge not pmix-plugins-munge
+
+-------------------------------------------------------------------
+Mon Mar 20 13:44:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- The devel package must require the actual library libpmix2.
+
+-------------------------------------------------------------------
+Fri Mar 17 10:46:51 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- removed library plugin for slurm as a fix was applied there,
+   (bsc#1209260)
+
+-------------------------------------------------------------------
+Tue Mar 14 19:24:25 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Create library plugin for Slurm: it contains the libpmix.so
+  link which normally goes into the devel package - without
+  the headers (bsc#1209260).
+
+-------------------------------------------------------------------
+Mon Jul 11 14:57:37 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Separate out psec munge plugin to avoid dependency creep.
+
+-------------------------------------------------------------------
+Wed Jul  6 08:48:43 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Enable build on i686 and armv7
+- Move test files to %{_libexecdir}/pmix/tests to avoid conflicts
+  on 32 bits systems
+
+-------------------------------------------------------------------
+Sat Jul  2 10:48:30 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Provide Pmix tests in a test package to give users the
+  opportunity to test their setup. This is particularly
+  useful for Slurm.
+
+-------------------------------------------------------------------
+Thu Feb 18 08:24:53 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Remove BuildRequires: for pandoc:
+  Not needed and not available for SLE.
+
+-------------------------------------------------------------------
+Tue Feb 16 15:44:56 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to v3.2.3
+  * Fix thread conflict in event notification - PR #1967
+  * Finalize: set hostname in global to NULL to avoid segfault
+    in apps that call init/finalize multiple times - PR #2001
+  * Silence unnecessary error log message - PR #1669
+  * Fixed crash of dstore locks destructor - PR #1776
+  * Add option to bypass local-only fence optimization - PR #1825
+  * Increase timeout in test case - PR #1830
+  * Fix server/get for gds=hash - PR #1990
+  * Remove stale config command - PR #1933
+  * Modex size reductions - PR #1402/#1403/#1421/#1423
+  * Sync 3.2 branch with master - PR #1832
+        New attributes:
+            PMIX_HOSTNAME_ALIASES
+            PMIX_HOSTNAME_KEEP_FQDN
+            PMIX_GET_REFRESH_CACHE
+            PMIX_REQUIRED_KEY
+        Removed PMIX_VALUE_COMPRESSED_STRING_UNPACK macro from pmix_common.h
+        New frameworks
+            pcompress - Compression methods - PR #1139
+            psquash - Flexible integer packing - PR #1423
+        New components
+            preg/compress - regular expression methods - PR #1139
+        Modified string representations produced by PMIx_generate_regex
+        and PMIx_generate_ppn. - PR #1422
+       Fixed dmodex support and PMIx_Get behavior - Issue #1586
+       Removed --with-pmix-symbol-rename configure option - PR #1748
+  * Expose PMIX_REGEX constant per v3.2 standard - PR #1848
+  * Fix immediate flag behavior at the server - PR #1885
+  For futher details, check
+  - For Issues: https://github.com/openpmix/openpmix/issues/<ID>
+  - For PRs: https://github.com/openpmix/openpmix/pull/<ID>
+
+-------------------------------------------------------------------
+Fri Apr 10 11:00:28 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Mark header and config packages 'noarch' (boo#1170259).
+- Add a bit of QA: include a %check stage.
+
+-------------------------------------------------------------------
+Wed Apr  8 12:35:30 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Create separate plugins package. Since libpmix2 obtains its
+  functionality from these plugins, add a dependency.
+- Plugins depend on libmca_common_dstore - add an explicit
+  dependency to the package as there are other providers - like
+  openmpi3 (bsc#1167983).
+
+-------------------------------------------------------------------
+Wed Mar 25 08:26:24 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to version 3.1.5 (bsc#1167655)
+  * PR #1413/#1465: Remove unnecessary error log
+  * PR #1433: Return the correct status from PMIx_Publish
+  * PR #1445: Sync. with master to fix 'get' of data for unknown namespace
+  * Includes the following PRs from master
+  * PR #1382: dstore: fixed truncate key-names while restoring
+  * PR #1405: Fix xnspace dmodex and add verbose debug
+  * PR #1406: Resolve request for job-level data
+  * PR #1407/#1409/#1411: Fix dmodex across nspaces
+  * PR #1434/#1436: Cleanup handling of info arrays
+  * PR #1435: Cleanup example and remove debug
+  * PR #1437: Update blocking Allocation_request signature
+  * PR #1440: Fix 'get' of data for unknown namespace
+  * PR #1442: Fix fences with namespaces where no local processes are running
+  * PR #1472: Initialize nlocal and local in the tracker
+  * PR #1487: Sync. with master to fix info array and cross-version issues
+  * PR #1493/#1497/#1501/#1505/#1589: Info array and Cross-version fixes
+  * PR #1511/#1517/#1520/#1523/#1534/#1565: Fix pmix tests
+  * PR #1530: Improve handling of servers piror to v3.1.5
+  * PR #1531: Update transfer from hash to dstore
+  * PR #1538: Fix singleton initialization
+  * PR #1547: Add missing PMIx_IOF_deregister function
+  * PR #1554/#1591: Fix memory leak on namespace deregister
+  * PR #1561: Configury fix for reproducible builds (boo#1047218)
+  * PR #1579: Protect pthread setpshared calls
+  * PR #1587: Fix to gds/dstore configure logic
+  * PR #1610: Adjust hotel timeout to be in whole seconds
+  * PR #1613: dstore: Fix cache size calculation
+  * PR #1622: Fix multiple occurrences of unaligned access in pmix tests
+  * PR #1620: Re-address the collective tracker problem
+  * PR #1625: Fix library version triplet
+  * PR #1630: Fix support for PGI compiler pgcc18
+  * PR #1637: Realign behavior of PMIx_Get and PMIx_Get_nb
+  * PR #1640: Properly handle forwarded output when no handler registered
+
+-------------------------------------------------------------------
+Thu Feb 13 15:59:50 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix invalid RPM groups.
+
+-------------------------------------------------------------------
+Fri Jan 10 13:30:55 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- configuration can now also be provided with openmpi flavors 
+
+-------------------------------------------------------------------
+Mon Nov 25 14:57:45 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- using now correct openSUSE:Shared library packaging policy  
+- removed pmi,pmi-2 as they are already part of slurm and mpi libs
+- moved MCA-parameters to separate package
+- implementing jsc#SLE-10791
+
+-------------------------------------------------------------------
+Fri Oct 25 08:21:37 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- initial commit of version 3.1.4 

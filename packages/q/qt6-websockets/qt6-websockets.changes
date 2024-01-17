@@ -1,0 +1,139 @@
+-------------------------------------------------------------------
+Mon Nov 27 14:00:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.1:
+  * https://www.qt.io/blog/qt-6.6.1-released
+
+-------------------------------------------------------------------
+Tue Oct 10 09:40:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * https://www.qt.io/blog/qt-6.6-released
+
+-------------------------------------------------------------------
+Thu Sep 28 07:34:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.3
+  * https://www.qt.io/blog/qt-6.5.3-released
+
+-------------------------------------------------------------------
+Thu Jul 20 09:07:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.2
+  * https://www.qt.io/blog/qt-6.5.2-released-1
+
+-------------------------------------------------------------------
+Wed May 24 07:45:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.1
+  * https://www.qt.io/blog/qt-6.5.1-released
+
+-------------------------------------------------------------------
+Mon Apr  3 10:03:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.0
+  * https://www.qt.io/blog/qt-6.5-lts-released
+
+-------------------------------------------------------------------
+Thu Mar 16 10:00:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.3:
+  * https://www.qt.io/blog/qt-6.4.3-released
+
+-------------------------------------------------------------------
+Fri Jan  6 16:46:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.4.2:
+  * https://www.qt.io/blog/qt-6.4.2-released
+
+-------------------------------------------------------------------
+Tue Nov 15 11:53:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.1:
+  * https://www.qt.io/blog/qt-6.4.1-released
+
+-------------------------------------------------------------------
+Thu Sep 29 10:36:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0:
+  * https://www.qt.io/blog/qt-6.4-released
+
+-------------------------------------------------------------------
+Fri Sep 16 08:29:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0 RC
+
+-------------------------------------------------------------------
+Fri Sep  9 12:41:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.2:
+  * https://www.qt.io/blog/qt-6.3.2-released
+
+-------------------------------------------------------------------
+Fri Jun 17 15:15:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.1:
+  * https://www.qt.io/blog/qt-6.3.1-released
+
+-------------------------------------------------------------------
+Fri Apr  8 11:57:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0:
+  * https://www.qt.io/blog/qt-6.3-released
+
+-------------------------------------------------------------------
+Tue Mar 29 12:28:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.3.0-rc
+
+-------------------------------------------------------------------
+Mon Mar 21 08:46:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.4
+  * https://www.qt.io/blog/qt-6.2.4-released
+
+-------------------------------------------------------------------
+Mon Jan 31 08:55:05 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.3:
+  * https://www.qt.io/blog/qt-6.2.3-released
+
+-------------------------------------------------------------------
+Wed Dec  1 10:06:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.2
+  * https://www.qt.io/blog/qt-6.2.2-released
+- Make sure all dependencies are present when installing devel
+  packages. Qt >= 6.2.2 is much less permissive.
+
+-------------------------------------------------------------------
+Tue Oct 26 11:23:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.1
+  * https://www.qt.io/blog/qt-6.2.1-released
+
+-------------------------------------------------------------------
+Thu Sep 30 12:35:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0:
+  * https://www.qt.io/blog/qt-6.2-lts-released
+
+-------------------------------------------------------------------
+Sat Sep 25 07:18:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc2
+
+-------------------------------------------------------------------
+Thu Sep 16 14:08:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-rc
+
+-------------------------------------------------------------------
+Thu Sep  9 14:05:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0-beta4
+
+-------------------------------------------------------------------
+Sat Feb  1 20:32:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add qt6-websockets

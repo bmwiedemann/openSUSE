@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a442de5fb4da06e97b9ba246ad637119</srcmd5>
+    <version>0.03</version>
+    <time>1372145392</time>
+    <user>coolo</user>
+    <comment>needed for perl-Net-Whois-Raw</comment>
+    <requestid>180241</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a442de5fb4da06e97b9ba246ad637119</srcmd5>
+    <version>0.03</version>
+    <time>1379663825</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>a442de5fb4da06e97b9ba246ad637119</srcmd5>
+    <version>0.03</version>
+    <time>1409302463</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

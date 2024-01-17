@@ -1,0 +1,47 @@
+--- Criterion-2.4.2/meson.build.orig	2023-06-13 14:18:29.829743813 +0200
++++ Criterion-2.4.2/meson.build	2023-06-13 15:13:15.672365040 +0200
+@@ -138,10 +138,6 @@
+ 
+ cmake = import('cmake')
+ 
+-debugbreak = dependency('debugbreak')
+-
+-klib = dependency('klib')
+-
+ threads = dependency('threads')
+ 
+ nanomsg = dependency('nanomsg', required: get_option('wrap_mode') == 'nofallback')
+@@ -177,23 +173,8 @@
+ 	config.set('NN_REQREP_H', '<nanomsg/reqrep.h>')
+ endif
+ 
+-nanopb = dependency('nanopb', required: get_option('wrap_mode') == 'nofallback', method: 'cmake',
+-					modules: ['nanopb::protobuf-nanopb-static'])
++nanopb = dependency('nanopb', required: true, method: 'cmake', modules: ['nanopb::protobuf-nanopb'])
+ must_regenerate_pb = nanopb.found()
+-if (not nanopb.found()
+-	or get_option('wrap_mode') == 'forcefallback'
+-	or 'nanopb' in get_option('force_fallback_for'))
+-
+-	nanopb_opts = cmake.subproject_options()
+-	nanopb_opts.add_cmake_defines({
+-		'nanopb_BUILD_GENERATOR': false,
+-		'BUILD_SHARED_LIBS': false,
+-		'CMAKE_C_FLAGS': '-DPB_ENABLE_MALLOC=1 -DPB_NO_PACKED_STRUCTS=1',
+-		'CMAKE_POSITION_INDEPENDENT_CODE': true,
+-	})
+-	nanopb_proj = cmake.subproject('nanopb-cmake', options: nanopb_opts)
+-	nanopb = nanopb_proj.dependency('protobuf-nanopb-static')
+-endif
+ 
+ libgit2 = dependency('libgit2', required: get_option('wrap_mode') == 'nofallback')
+ if ((not libgit2.found() and get_option('diffs').enabled())
+@@ -244,8 +225,6 @@
+ endif
+ 
+ deps += [
+-	debugbreak,
+-	klib,
+ 	threads,
+ 	boxfort,
+ 	libffi,

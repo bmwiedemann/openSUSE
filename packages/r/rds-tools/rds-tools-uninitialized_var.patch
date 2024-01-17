@@ -1,0 +1,17 @@
+---
+ rds-stress.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: rds-stress.c
+===================================================================
+--- rds-stress.c.orig	2016-06-08 06:45:10.000000000 +0200
++++ rds-stress.c	2016-11-21 15:56:59.357279004 +0100
+@@ -1253,7 +1253,7 @@ static void rdma_build_cmsg_xfer(struct
+ 
+ static void build_cmsg_async_send(struct msghdr *msg, uint64_t user_token)
+ {
+-	struct rds_asend_args  args;
++	struct rds_asend_args  args = {0};
+ 
+ 	args.flags |= RDS_SEND_NOTIFY_ME;
+ 	args.user_token = user_token;

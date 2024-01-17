@@ -1,0 +1,5 @@
+<package name="wafw00f" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security" package="wafw00f"/>
+</package>

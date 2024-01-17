@@ -1,0 +1,5 @@
+<package name="menulibre" project="openSUSE:Factory">
+  <title>menulibre</title>
+  <description>An advanced menu editor that provides modern features. Suitable for lightweight desktop environments</description>
+  <devel project="X11:xfce" package="menulibre"/>
+</package>

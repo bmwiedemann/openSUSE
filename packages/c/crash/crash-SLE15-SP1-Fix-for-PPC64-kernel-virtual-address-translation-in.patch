@@ -1,0 +1,39 @@
+From 28fa7bd09013455b5ddc020dea4706278cda0d65 Mon Sep 17 00:00:00 2001
+From: Hari Bathini <hbathini@linux.ibm.com>
+Date: Wed, 20 Jun 2018 01:34:22 +0530
+Subject: book3s/ppc64: Increase the VA range
+Upstream: no, adapts the below upstream commit for SLE15 SP1
+Git-commit: 28fa7bd09013455b5ddc020dea4706278cda0d65
+
+Fix for PPC64 kernel virtual address translation in Linux 4.17 and
+later kernels with commit c2b4d8b7417a59b7f9a52d0d8402f5257cbbd398,
+titled "powerpc/mm/hash64: Increase the VA range", in which the
+maximum virtual address value has been increased to 4PB.  Without
+the patch, the translation/access of high vmalloc space addresses
+fails; for example, the "kmem -[sS]" option fails the translation
+of per-cpu kmem_cache_cpu addresses located in vmalloc space, with
+the error messages "kmem: invalid kernel virtual address: <address>
+type: kmem_cache_cpu.freelist" and "kmem: invalid kernel virtual
+address: <address>  type: kmem_cache_cpu.page", and the "vtop"
+command shows the addresses as "(not mapped)". (hbathini@linux.ibm.com)
+
+[note: apply on 4.12+ for SLE 15 SP1 - incompatible with SLE 15 SP0]
+
+---
+
+Index: crash-7.2.8/ppc64.c
+===================================================================
+--- crash-7.2.8.orig/ppc64.c
++++ crash-7.2.8/ppc64.c
+@@ -519,8 +519,9 @@ ppc64_init(int when)
+ 
+ 					if (THIS_KERNEL_VERSION >= LINUX(4,12,0)) {
+ 						ms->l2_index_size = PMD_INDEX_SIZE_L4_64K_4_12;
+-						if (THIS_KERNEL_VERSION >= LINUX(4,17,0))
+-							ms->l3_index_size = PUD_INDEX_SIZE_L4_64K_4_17;
++						if (THIS_KERNEL_VERSION >= LINUX(4,17,0) ||
++							is_SLE15SP1())
++								ms->l3_index_size = PUD_INDEX_SIZE_L4_64K_4_17;
+ 						else
+ 							ms->l3_index_size = PUD_INDEX_SIZE_L4_64K_4_12;
+ 						ms->l4_index_size = PGD_INDEX_SIZE_L4_64K_4_12;

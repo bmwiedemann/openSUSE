@@ -1,0 +1,42 @@
+Index: b/ecarack
+===================================================================
+--- a/ecarack
++++ b/ecarack
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # ecarack: use ecasound to run a saved JACK Rack configuration.
+ # This is rather simplistic: it only looks at plugin controls and the Enable
+ # buttons, so MIDI controls, wet/dry settings and the like will be ignored.
+@@ -22,18 +22,18 @@ import sys, os, gzip, xml.dom.minidom
+ 
+ def main(args):
+ 	if len(args) != 1 or args[0] == "--help":
+-		print >>sys.stderr, "Usage: ecarack RACK-FILE"
++		print("Usage: ecarack RACK-FILE", file=sys.stderr)
+ 		return 1
+ 
+ 	try:
+ 		f = gzip.open(args[0], "r")
+-	except IOError, e:
+-		print >>sys.stderr, "Failed to open %s: %s" % (args[0], e)
++	except IOError as e:
++		print("Failed to open %s: %s" % (args[0], e), file=sys.stderr)
+ 		return 1
+ 	try:
+ 		dom = xml.dom.minidom.parse(f)
+ 	except:
+-		print >>sys.stderr, "Failed to parse %s" % args[0]
++		print("Failed to parse %s" % args[0], file=sys.stderr)
+ 		return 1
+ 	f.close()
+ 
+@@ -54,7 +54,7 @@ def main(args):
+ 		            for n in get(plugin, "controlrow")]
+ 		cmd.append("-eli:" + id + "".join(["," + v for v in controls]))
+ 
+-	print >>sys.stderr, "ecarack: running " + " ".join(cmd)
++	print("ecarack: running " + " ".join(cmd), file=sys.stderr)
+ 	os.execvp(cmd[0], cmd)
+ 	return 1
+ 

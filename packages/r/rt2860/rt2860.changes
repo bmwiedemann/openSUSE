@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Dec 10 17:11:06 CET 2009 - meissner@suse.de
+
+- moved firmware to the right place bnc#554504
+
+-------------------------------------------------------------------
+Fri Nov  7 12:13:00 CET 2008 - meissner@suse.de
+
+- imported from opensuse buildservice, reviewed
+- added supplements: for the modaliases, so it gets installed.
+
+-------------------------------------------------------------------
+Tue Oct 21 22:07:08 CEST 2008 - claes.backstrom@fsfe.org
+
+- New upstream version 1.8.0.0
+- Add Release Notes document
+
+-------------------------------------------------------------------
+Sun Oct  5 16:33:08 CEST 2008 - claes.backstrom@fsfe.org
+
+- Changed name to rt2860-common
+
+-------------------------------------------------------------------
+Sat Oct  4 12:26:11 CEST 2008 - claes.backstrom@fsfe.org
+
+- Initial Package 
+

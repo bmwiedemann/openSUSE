@@ -1,0 +1,20 @@
+commit 8d1b60bf828ab842731b91af121fcf8a27854811
+Author: Olav Reinert <seroton10@gmail.com>
+Date:   Sun May 17 16:47:44 2020 +0200
+
+    Ensure PDF support (via CUPS)
+    
+    This is needed to ensure that suitable printers are discovered.
+
+diff --git a/airprint-generate.py b/airprint-generate.py
+index ed224ff..358d627 100644
+--- a/airprint-generate.py
++++ b/airprint-generate.py
+@@ -71,6 +71,7 @@ DOCUMENT_TYPES = {
+     'application/pdf': True,
+     'application/postscript': True,
+     'application/vnd.cups-postscript': True,
++    'application/vnd.cups-pdf': True,
+     'application/vnd.cups-raster': True,
+     'application/octet-stream': True,
+     'image/urf': True,

@@ -1,0 +1,122 @@
+Index: iniparse/ini.py
+===================================================================
+--- iniparse/ini.py.orig
++++ iniparse/ini.py
+@@ -240,8 +240,11 @@ class LineContainer(object):
+             if isinstance(d, list): self.extend(d)
+             else: self.add(d)
+ 
+-    def add(self, x):
+-        self.contents.append(x)
++    def add(self, x, index=None):
++        if index:
++            self.contents.insert(index, x)
++        else:
++            self.contents.append(x)
+ 
+     def extend(self, x):
+         for i in x: self.add(i)
+@@ -331,6 +334,7 @@ class INISection(config.ConfigNamespace)
+     _optionxformvalue = None
+     _optionxformsource = None
+     _compat_skip_empty_lines = set()
++    _commented_options = {}
+ 
+     def __init__(self, lineobj, defaults=None, optionxformvalue=None, optionxformsource=None):
+         self._lines = [lineobj]
+@@ -380,7 +384,10 @@ class INISection(config.ConfigNamespace)
+         if xkey not in self._options:
+             # create a dummy object - value may have multiple lines
+             obj = LineContainer(OptionLine(key, ''))
+-            self._lines[-1].add(obj)
++            index = None
++            if xkey in self._commented_options:
++                index = self._commented_options[xkey]
++            self._lines[-1].add(obj, index)
+             self._options[xkey] = obj
+         # the set_value() function in LineContainer
+         # automatically handles multi-line values
+@@ -556,6 +563,7 @@ class INIConfig(config.ConfigNamespace):
+         except AttributeError:
+             fname = '<???>'
+         line_count = 0
++        sectionlinecount = 0
+         exc = None
+         line = None
+ 
+@@ -574,6 +582,8 @@ class INIConfig(config.ConfigNamespace):
+                     raise MissingSectionHeaderError(fname, line_count, line)
+                 else:
+                     line_obj = make_comment(line)
++            if cur_section:
++                sectionlinecount += 1
+ 
+             if line_obj is None:
+                 if self._parse_exc:
+@@ -622,6 +632,7 @@ class INIConfig(config.ConfigNamespace):
+                 pending_empty_lines = False
+                 cur_section = LineContainer(line_obj)
+                 self._data.add(cur_section)
++                sectionlinecount = 1
+                 cur_option = None
+                 cur_option_name = None
+                 if cur_section.name == DEFAULTSECT:
+@@ -641,6 +652,13 @@ class INIConfig(config.ConfigNamespace):
+ 
+             if isinstance(line_obj, (CommentLine, EmptyLine)):
+                 pending_lines.append(line_obj)
++                if isinstance(line_obj, CommentLine) and cur_section_name and cur_section_name != 'DEFAULT':
++                    # check if there is a config line in the comment
++                    comment_lineobj = self._parse(line_obj.comment.strip())
++                    if isinstance(comment_lineobj, OptionLine):
++                        obj = LineContainer(comment_lineobj)
++                        self._sections[cur_section_name]._commented_options[obj.name] = sectionlinecount
++                        sectionlinecount += 1
+                 if isinstance(line_obj, EmptyLine):
+                     pending_empty_lines = True
+ 
+Index: tests/test_ini.py
+===================================================================
+--- tests/test_ini.py.orig
++++ tests/test_ini.py
+@@ -404,6 +404,40 @@ another = baz
+         ip.section.another = 'baz'
+         self.assertEqual(str(ip), self.s6)
+ 
++    s7 = (
++"""
++[section]
++# Hello
++# option1 = foo
++
++#option2=bazz
++#option3=spam
++bumble=bee
++"""
++)
++
++    s8 = (
++"""
++[section]
++# Hello
++# option1 = foo
++option1 = bar
++
++#option2=bazz
++option2 = bazz
++#option3=spam
++option3 = spam
++bumble=bee
++"""
++)
++
++    def test_insert_after_commented_option(self):
++        ip = ini.INIConfig(StringIO(self.s7))
++        ip.section.option1 = 'bar'
++        ip.section.option2 = 'bazz'
++        ip.section.option3 = 'spam'
++        self.assertEqual(str(ip), self.s8)
++
+ 
+ class Suite(unittest.TestSuite):
+     def __init__(self):

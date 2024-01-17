@@ -1,0 +1,6 @@
+<package name="python-pytest-ansible" project="openSUSE:Factory">
+  <title>Plugin for pytest to simplify calling ansible modules from tests or fixtures</title>
+  <description></description>
+  <devel project="systemsmanagement:ansible" package="python-pytest-ansible"/>
+  <url>https://github.com/ansible-community/pytest-ansible</url>
+</package>

@@ -1,0 +1,5 @@
+# 4] Other
+# Needed for "guix pack --relocatable", needed at runtime so no devel file
+# This file gots compiled by Guix with a compiler from Guix right before the
+# resulting "pack" gets build
+addFilter("E: devel-file-in-non-devel-package *")

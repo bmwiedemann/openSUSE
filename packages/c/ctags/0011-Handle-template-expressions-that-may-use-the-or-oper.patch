@@ -1,0 +1,62 @@
+From e304e5ffff9718d99ab5767c8399225b79204c1f Mon Sep 17 00:00:00 2001
+From: Daniel Garcia <danielgarcia@gmail.com>
+Date: Tue, 23 Feb 2016 17:16:58 -0800
+Subject: [PATCH 11/19] Handle template expressions that may use the << or >>
+ operators
+
+---
+ c.c | 34 ++++++++++++++++++++++++----------
+ 1 file changed, 24 insertions(+), 10 deletions(-)
+
+diff --git a/c.c b/c.c
+index 40db0e5..b975453 100644
+--- a/c.c
++++ b/c.c
+@@ -1392,20 +1392,34 @@ static void skipToMatch (const char *const pair)
+ 
+ 		if (c == begin)
+ 		{
+-			++matchLevel;
+-			if (braceFormatting  &&  getDirectiveNestLevel () != initialLevel)
+-			{
+-				skipToFormattedBraceMatch ();
+-				break;
++			// watch out for '<<' in template arguments
++			int x = cppGetc ();
++			if(c == '<' && x == '<') { 
++				// we've found a << - do nothing
++			} else {
++				cppUngetc (x);
++				++matchLevel;
++				if (braceFormatting  &&  getDirectiveNestLevel () != initialLevel)
++				{
++					skipToFormattedBraceMatch ();
++					break;
++				}
+ 			}
+ 		}
+ 		else if (c == end)
+ 		{
+-			--matchLevel;
+-			if (braceFormatting  &&  getDirectiveNestLevel () != initialLevel)
+-			{
+-				skipToFormattedBraceMatch ();
+-				break;
++			// watch out for '>>' in template arguments
++			int x = cppGetc ();
++			if(c == '>' && x == '>') { 
++				// we've found a >> in a template - skip it
++			} else {
++				cppUngetc (x);
++				--matchLevel;
++				if (braceFormatting  &&  getDirectiveNestLevel () != initialLevel)
++				{
++					skipToFormattedBraceMatch ();
++					break;
++				}
+ 			}
+ 		}
+ 	}
+-- 
+2.11.0
+

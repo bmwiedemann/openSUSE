@@ -1,0 +1,12 @@
+--- config/registrar.conf.ORIG	2023-08-24 09:34:59.228880762 +0200
++++ config/registrar.conf	2023-08-24 09:36:34.165570356 +0200
+@@ -5,7 +5,8 @@
+ version = 2.0
+ 
+ # The binding address and port for the registrar server
+-ip = "127.0.0.1"
++# ip = "127.0.0.1"
++ip = "0.0.0.0"
+ port = 8890
+ tls_port = 8891
+ 

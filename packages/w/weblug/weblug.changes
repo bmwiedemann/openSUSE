@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Fri Aug  4 08:24:46 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Packaging improvements:
+  * _service obs_scm enable changesgenerate
+  * BuildRequires: golang(API) >= 1.18 instead of pinned go1.18
+  * Reformat changelog entries per 'osc vc' template
+
+-------------------------------------------------------------------
+Tue Jun  6 09:44:24 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.4
+  * Add environment sanitation
+  * Document caveats when running as root
+  * Add possibility for dropping privileges
+  * Add openSUSE specific configuration file that runs as 'nobody' by default (fixes bsc#1211197)
+
+-------------------------------------------------------------------
+Thu Apr 27 11:52:06 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.3
+  * Add man page
+
+-------------------------------------------------------------------
+Thu Apr 27 08:26:32 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Fix the broken build for /etc/weblug.yml and the systemd unit
+
+-------------------------------------------------------------------
+Sat Apr 22 09:10:37 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 0.2
+  * Adds feature to define an IP allow and blocked list per webhook
+  * Adds systemd service unit
+
+-------------------------------------------------------------------
+Sun Mar  5 18:18:17 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+* Kickoff - Version 0.1 (first Beta) 

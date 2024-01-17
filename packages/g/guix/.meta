@@ -1,0 +1,5 @@
+<package name="guix" project="openSUSE:Factory">
+  <title></title>
+  <description>GNU package manager, written in Guile Scheme with ability to run on top of *SUSE distribution.</description>
+  <devel project="devel:languages:misc" package="guix"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="yast2-pam" project="openSUSE:Factory">
+  <title>YaST2 - PAM Agent</title>
+  <description>This agent is used by YaST2 to modify the PAM configuration files</description>
+  <devel project="YaST:Head" package="yast2-pam"/>
+</package>

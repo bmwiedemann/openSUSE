@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="126">
+    <srcmd5>13a78d96989519ef8610057699e2ce57</srcmd5>
+    <version>2.0.12</version>
+    <time>1168901498</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="289">
+    <srcmd5>13a78d96989519ef8610057699e2ce57</srcmd5>
+    <version>2.0.12</version>
+    <time>1168901498</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="290">
+    <srcmd5>4c7a3822dc94956963ed56d56febd5ae</srcmd5>
+    <version>2.0.12</version>
+    <time>1245258836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="292">
+    <srcmd5>4c7a3822dc94956963ed56d56febd5ae</srcmd5>
+    <version>2.0.12</version>
+    <time>1245258836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="293">
+    <srcmd5>48c53cec3e9d39b37d3172f2b27b3ef9</srcmd5>
+    <version>2.0.12</version>
+    <time>1268922930</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="295">
+    <srcmd5>48c53cec3e9d39b37d3172f2b27b3ef9</srcmd5>
+    <version>2.0.12</version>
+    <time>1278667337</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="296">
+    <srcmd5>48c53cec3e9d39b37d3172f2b27b3ef9</srcmd5>
+    <version>2.0.12</version>
+    <time>1278678564</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="299">
+    <srcmd5>48c53cec3e9d39b37d3172f2b27b3ef9</srcmd5>
+    <version>2.0.12</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="301">
+    <srcmd5>48c53cec3e9d39b37d3172f2b27b3ef9</srcmd5>
+    <version>2.0.12</version>
+    <time>1319181776</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="302">
+    <srcmd5>b5ef32d34465d78cb05f5c0da2085911</srcmd5>
+    <version>2.0.12</version>
+    <time>1329242371</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build</comment>
+    <requestid>103811</requestid>
+  </revision>
+  <revision rev="11" vrev="304">
+    <srcmd5>b5ef32d34465d78cb05f5c0da2085911</srcmd5>
+    <version>2.0.12</version>
+    <time>1340183182</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="306">
+    <srcmd5>b5ef32d34465d78cb05f5c0da2085911</srcmd5>
+    <version>2.0.12</version>
+    <time>1359108668</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="308">
+    <srcmd5>b5ef32d34465d78cb05f5c0da2085911</srcmd5>
+    <version>2.0.12</version>
+    <time>1379661991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="310">
+    <srcmd5>b5ef32d34465d78cb05f5c0da2085911</srcmd5>
+    <version>2.0.12</version>
+    <time>1409300516</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="311">
+    <srcmd5>014a3969a9cb29c0aae44f6c203b9ca2</srcmd5>
+    <version>2.0.12</version>
+    <time>1415636903</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260126</requestid>
+  </revision>
+  <revision rev="16" vrev="312">
+    <srcmd5>acca7dba4fab0ec6df46470424a04426</srcmd5>
+    <version>2.0.12</version>
+    <time>1591991109</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10
+- Modernise spec file with spec-cleaner
+- Honor optflags
+- Reduce duplicities using fdupes</comment>
+    <requestid>814146</requestid>
+  </revision>
+</revisionlist>

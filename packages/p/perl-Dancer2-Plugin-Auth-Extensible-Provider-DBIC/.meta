@@ -1,0 +1,6 @@
+<package name="perl-Dancer2-Plugin-Auth-Extensible-Provider-DBIC" project="openSUSE:Factory">
+  <title>Authenticate via the Dancer2::Plugin::DBIC plugin</title>
+  <description>This class is an authentication provider designed to authenticate users against a database, using Dancer2::Plugin::DBIC to access a database.</description>
+  <devel project="devel:languages:perl" package="perl-Dancer2-Plugin-Auth-Extensible-Provider-DBIC"/>
+  <url>https://metacpan.org/release/Dancer2-Plugin-Auth-Extensible-Provider-DBIC</url>
+</package>

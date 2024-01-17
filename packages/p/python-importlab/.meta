@@ -1,0 +1,5 @@
+<package name="python-importlab" project="openSUSE:Factory">
+  <title></title>
+  <description>A library to calculate python dependency graphs</description>
+  <devel project="devel:languages:python" package="python-importlab"/>
+</package>

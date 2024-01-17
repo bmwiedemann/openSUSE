@@ -1,0 +1,5 @@
+<package name="bootiso" project="openSUSE:Factory">
+  <title></title>
+  <description>A bash program to securely create a bootable USB device from one image file.</description>
+  <devel project="utilities" package="bootiso"/>
+</package>

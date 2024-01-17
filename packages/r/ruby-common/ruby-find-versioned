@@ -1,0 +1,7 @@
+#!/bin/bash
+shopt -s nullglob
+binary="ruby"
+if [ "x$1" != "x" ] ; then
+  binary="$1"
+fi
+ls -1 /usr/bin/$binary.{ruby,rbx,jruby}[0-9].[0-9] /usr/bin/$binary[0-9].[0-9]

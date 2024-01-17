@@ -1,0 +1,35 @@
+From 4f7c3fdd07aefcf7c0afe92baf30938736d29cef Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Mon, 18 Sep 2023 13:39:17 +0200
+Subject: [PATCH] Fix tests sample_privatector sample_privatedtor failing with
+ Python 3.11.5
+
+Remove special characters from the format string as they cause:
+ValueError PyUnicode_FromFormatV() expects an ASCII-encoded format string, got a non-ASCII byte: 0xc2
+
+Fixes: PYSIDE-2465
+Pick-to: 6.6 6.5 6.2 5.15
+Change-Id: I506efcb44168fdc979a1d16bf33d5d5d14525e2e
+---
+ sources/shiboken2/libshiboken/basewrapper.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sources/shiboken2/libshiboken/basewrapper.cpp b/sources/shiboken2/libshiboken/basewrapper.cpp
+index a0e4e5311..64424298d 100644
+--- a/sources/shiboken2/libshiboken/basewrapper.cpp
++++ b/sources/shiboken2/libshiboken/basewrapper.cpp
+@@ -601,9 +601,9 @@ PyObject *SbkQApp_tp_new(PyTypeObject *subtype, PyObject *, PyObject *)
+ PyObject *SbkDummyNew(PyTypeObject *type, PyObject *, PyObject *)
+ {
+     // PYSIDE-595: Give the same error as type_call does when tp_new is NULL.
++    const char regret[] = "¯\\_(ツ)_/¯";
+     PyErr_Format(PyExc_TypeError,
+-                 "cannot create '%.100s' instances ¯\\_(ツ)_/¯",
+-                 type->tp_name);
++                 "cannot create '%.100s' instances %s", type->tp_name, regret);
+     return nullptr;
+ }
+ 
+-- 
+2.42.0
+

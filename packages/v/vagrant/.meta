@@ -1,0 +1,5 @@
+<package name="vagrant" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:vagrant" package="vagrant"/>
+</package>

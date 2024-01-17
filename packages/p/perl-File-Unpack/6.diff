@@ -1,0 +1,22 @@
+diff --git a/Unpack.pm b/Unpack.pm
+index d5354ac..69ace96 100644
+--- a/Unpack.pm
++++ b/Unpack.pm
+@@ -2504,7 +2504,7 @@ sub mime
+     }
+ 
+   ## try to get at the second level mime type, for some well known linear compressors.
+-  while (length $uncomp_buf && $r[0] =~ m{^application/(x-)?([+\w]+)$})
++  while (length $uncomp_buf && $r[0] =~ m{^application/(x-)?([+\w]+)$} && !$in{recursion})
+     {
+       my $compname = $2;
+       my $next_uncomp_buf = '';
+@@ -2518,6 +2518,8 @@ sub mime
+       #########
+ 
+       my $m2 = $self->mime(buf => $uncomp_buf, file => $in{file}, uncomp => \$next_uncomp_buf, recursion => 1);
++      # protecting against http://www.maximumcompression.com/selfgz.gz
++      last if length($uncomp_buf) == length($next_uncomp_buf);
+       my ($a,$xminus,$b) = ($m2->[0] =~ m{^(.*)/(x-)?(.*)$});
+       if ($a eq 'application')
+         {

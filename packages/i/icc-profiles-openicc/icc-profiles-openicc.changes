@@ -1,0 +1,138 @@
+-------------------------------------------------------------------
+Sun Mar 25 12:00:00 UTC 2012 - ku.b@gmx.de
+
+- Update to 1.3.1
+  * add newly created ProPhoto-RGB.icc
+
+-------------------------------------------------------------------
+Fri Oct 28 07:59:36 UTC 2011 - coolo@suse.com
+
+- remove vendor tag, the vendor is defined by the project config
+
+-------------------------------------------------------------------
+Thu Sep 29 13:32:51 UTC 2011 - vuntz@opensuse.org
+
+- Remove Provides/Obsoletes for shared-color-profiles packages, as
+  discussed: we'll have all profiles in Factory.
+
+-------------------------------------------------------------------
+Wed Sep 21 19:00:01 UTC 2011 - ku.b@gmx.de
+- remove prefix
+
+-------------------------------------------------------------------
+Wed Sep 21 19:00:01 UTC 2011 - ku.b@gmx.de
+
+- rename .spec and .changes files
+- reorder Requires sections
+
+-------------------------------------------------------------------
+Wed Sep 21 19:00:01 UTC 2011 - ku.b@gmx.de
+- fix Require package name
+
+-------------------------------------------------------------------
+Thu Sep 15 19:00:01 UTC 2011 - ku.b@gmx.de
+- use %make_install
+- add spec file license
+
+-------------------------------------------------------------------
+Tue Sep 09 19:00:01 UTC 2011 - u.b@gmx.de
+- omit several unused spec sections
+
+-------------------------------------------------------------------
+Tue Sep 06 12:00:01 UTC 2011 - ku.b@gmx.de
+- buildrequire color-filesystem
+- remove icc-dirs
+
+-------------------------------------------------------------------
+Sun Aug 24 12:00:01 UTC 2011 - ku.b@gmx.de
+- buildrequire icc-dirs
+
+-------------------------------------------------------------------
+Sun Aug 21 12:00:01 UTC 2011 - ku.b@gmx.de
+- sync with fedora Obsoletes and Provides
+
+-------------------------------------------------------------------
+Sun Jul 10 12:00:01 UTC 2011 - ku.b@gmx.de
+- rename basic package to icc-profiles-openicc
+- use bzip2 package for RPM
+
+-------------------------------------------------------------------
+Sat Apr 09 12:00:01 UTC 2011 -  ku.b@gmx.de
+- omit PhotoGamutRGB until license is clear
+- add icc-profiles RPM to contain icc-profiles-mini + one Cmyk and Gray profile
+- set ICC profile ID
+
+
+-------------------------------------------------------------------
+Thu Jan 17 12:00:01 UTC 2011 - ku.b@gmx.de
+- remove printing profiles
+- add dependency to icc-profiles-basiccolor-printing2009
+
+
+-------------------------------------------------------------------
+Mon Dec 27 12:00:01 UTC 2010 - ku.b@gmx.de
+- split out a directory package from the mime types
+
+
+-------------------------------------------------------------------
+Fri Aug 28 12:00:01 UTC 2010 - ku.b@gmx.de
+- new package naming scheme for Oyranos independent installations
+
+
+-------------------------------------------------------------------
+Sat Jul 24 12:00:01 UTC 2010 - ku.b@gmx.de
+- switch from eciRGB_v2 to LStar-RGB.icc because of new licensing
+
+
+-------------------------------------------------------------------
+Sun May 16 12:00:01 UTC 2010 - ku.b@gmx.de
+- bump version for PCS profiles because of their change (size fix, git 404f5755)
+
+
+-------------------------------------------------------------------
+Wed Oct 22 12:00:01 UTC 2008 - ku.b@gmx.de
+- update to new profiles
+- add characterisation data
+- remove ECI print profiles
+
+
+-------------------------------------------------------------------
+Thu Feb 26 12:00:01 UTC 2008 - ku.b@gmx.de
+- v0.5
+- change some licenses to public domain
+- new eciRGBv2 profiles
+- remove LStar-RGB
+
+
+-------------------------------------------------------------------
+Sun Jul  9 12:00:01 UTC 2006 - ku.b@gmx.de
+- add compatibleWithAdobeRGB1998.icc from Graeme Gill
+- move oyranos-sRGB to oyranos-RGB for inclusion of above profile
+
+
+-------------------------------------------------------------------
+Wed Jul  5 12:00:01 UTC 2006 - ku.b@gmx.de
+- add Lab.icc and XYZ.icc symlinks => v0.4
+
+
+-------------------------------------------------------------------
+Sat Jun  4 12:00:01 UTC 2005 - ku.b@gmx.de
+- sorting URLs and Licenses
+
+
+-------------------------------------------------------------------
+Fri Jun 03 12:00:01 UTC 2005 - mrodcs@scribus.info
+- spec files tweaks
+- split the package into sub-packages to avoid future name space clashes
+
+
+-------------------------------------------------------------------
+Sat May 28 12:00:01 UTC 2005 - ku.b@gmx.de
+- packaging
+
+
+-------------------------------------------------------------------
+Tue Apr 21 12:00:01 UTC 2005 - ku.b@gmx.de
+- first release
+
+

@@ -1,0 +1,9 @@
+<package name="sqlcipher" project="openSUSE:Factory">
+  <title>SQLCipher</title>
+  <description>SQLCipher is an SQLite extension that provides transparent 256-bit AES
+encryption of database files. Pages are encrypted before being written to
+disk and are decrypted when read back. Due to the small footprint and great
+performance it’s ideal for protecting embedded application databases and is
+well suited for mobile development.</description>
+  <devel project="server:database" package="sqlcipher"/>
+</package>

@@ -1,0 +1,50 @@
+From c022c0a3318dd2d0471440ca73ff35ee75f69169 Mon Sep 17 00:00:00 2001
+From: Michael Simacek <msimacek@redhat.com>
+Date: Wed, 20 Sep 2017 17:51:37 +0300
+Subject: [PATCH 2/2] Use library name without arch
+
+---
+ .../java/net/rubygrapefruit/platform/internal/Platform.java | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/main/java/net/rubygrapefruit/platform/internal/Platform.java b/src/main/java/net/rubygrapefruit/platform/internal/Platform.java
+index 3cb3f63..7120a9f 100755
+--- a/src/main/java/net/rubygrapefruit/platform/internal/Platform.java
++++ b/src/main/java/net/rubygrapefruit/platform/internal/Platform.java
+@@ -40,11 +40,7 @@ public abstract class Platform {
+                         platform = new Window64Bit();
+                     }
+                 } else if (osName.contains("linux")) {
+-                    if (arch.equals("amd64") || arch.equals("x86_64")) {
+-                        platform = new Linux64Bit();
+-                    } else if (arch.equals("i386") || arch.equals("x86")) {
+-                        platform = new Linux32Bit();
+-                    }
++                    platform = new Linux();
+                 } else if (osName.contains("os x") || osName.contains("darwin")) {
+                     if (arch.equals("i386")) {
+                         platform = new MacOs32Bit();
+@@ -240,7 +236,7 @@ public abstract class Platform {
+         }
+     }
+ 
+-    private abstract static class Linux extends Unix {
++    private static class Linux extends Unix {
+         @Override
+         public <T extends NativeIntegration> T get(Class<T> type, NativeLibraryLoader nativeLibraryLoader) {
+             return super.get(type, nativeLibraryLoader);
+@@ -255,6 +251,11 @@ public abstract class Platform {
+         public boolean isLinux() {
+             return true;
+         }
++
++        @Override
++        public String getId() {
++            return "linux";
++        }
+     }
+ 
+     private static class Linux32Bit extends Linux {
+-- 
+2.13.5
+

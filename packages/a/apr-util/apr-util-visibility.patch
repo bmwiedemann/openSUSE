@@ -1,0 +1,37 @@
+--- apr-util-1.5.3.orig/include/apu.h.in
++++ apr-util-1.5.3/include/apu.h.in
+@@ -50,14 +50,14 @@
+  *
+  * @fn APU_DECLARE(rettype) apr_func(args);
+  */
+-#define APU_DECLARE(type)            type
++#define APU_DECLARE(type)            __attribute__ ((visibility ("default"))) type
+ /**
+  * The public APR-UTIL functions using variable arguments are declared with 
+  * APU_DECLARE_NONSTD(), as they must use the C language calling convention.
+  *
+  * @fn APU_DECLARE_NONSTD(rettype) apr_func(args, ...);
+  */
+-#define APU_DECLARE_NONSTD(type)     type
++#define APU_DECLARE_NONSTD(type)     __attribute__ ((visibility ("default"))) type
+ /**
+  * The public APR-UTIL variables are declared with APU_DECLARE_DATA.
+  * This assures the appropriate indirection is invoked at compile time.
+@@ -66,7 +66,7 @@
+  * @note APU_DECLARE_DATA extern type apr_variable; syntax is required for
+  * declarations within headers to properly import the variable.
+  */
+-#define APU_DECLARE_DATA
++#define APU_DECLARE_DATA            __attribute__ ((visibility ("default")))
+ #elif defined(APU_DECLARE_STATIC)
+ #define APU_DECLARE(type)            type __stdcall
+ #define APU_DECLARE_NONSTD(type)     type __cdecl
+@@ -91,7 +91,7 @@
+  * module APU_MODULE_DECLARE_DATA mod_tag
+  * @endcode
+  */
+-#define APU_MODULE_DECLARE_DATA
++#define APU_MODULE_DECLARE_DATA         __attribute__ ((visibility ("default")))
+ #else
+ #define APU_MODULE_DECLARE_DATA           __declspec(dllexport)
+ #endif

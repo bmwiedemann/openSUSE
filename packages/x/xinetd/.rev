@@ -1,0 +1,384 @@
+<revisionlist>
+  <revision rev="1" vrev="34">
+    <srcmd5>bafb10fe0bbafd7d17db59b44d1e6c9e</srcmd5>
+    <version>2.3.14</version>
+    <time>1166545090</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="44">
+    <srcmd5>ee94a52b5308927b0c1fa7f4101ee4fa</srcmd5>
+    <version>2.3.14</version>
+    <time>1176914323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="67">
+    <srcmd5>2ef3a855815de95a597a811301229729</srcmd5>
+    <version>2.3.14</version>
+    <time>1186693200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="68">
+    <srcmd5>79afd0863d156239f045eefaeb9897b8</srcmd5>
+    <version>2.3.14</version>
+    <time>1186732044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="78">
+    <srcmd5>c51ce037bba1c957fb9490bb0e327960</srcmd5>
+    <version>2.3.14</version>
+    <time>1191367035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="129">
+    <srcmd5>48562e564c6311ba760bdc103f931a20</srcmd5>
+    <version>2.3.14</version>
+    <time>1218967800</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="141">
+    <srcmd5>afa9fb7048a60d713d55077c2490872f</srcmd5>
+    <version>2.3.14</version>
+    <time>1245363978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="142">
+    <srcmd5>26ae7516fc8927f0dd79a740c4a5112d</srcmd5>
+    <version>2.3.14</version>
+    <time>1253562020</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/xinetd based on submit request 20598 from user mseben
+</comment>
+  </revision>
+  <revision rev="9" vrev="144">
+    <srcmd5>26ae7516fc8927f0dd79a740c4a5112d</srcmd5>
+    <version>2.3.14</version>
+    <time>1253562020</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/xinetd based on submit request 20598 from user mseben
+</comment>
+  </revision>
+  <revision rev="10" vrev="145">
+    <srcmd5>afc28b0914bdf2cb8c5ec3696250cd84</srcmd5>
+    <version>2.3.14</version>
+    <time>1263484494</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/xinetd based on submit request 29034 from user coolo
+</comment>
+  </revision>
+  <revision rev="11" vrev="146">
+    <srcmd5>0e4e7d5672f8e406472566184b71fcae</srcmd5>
+    <version>2.3.14</version>
+    <time>1264777519</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/xinetd based on submit request 30769 from user mseben
+</comment>
+  </revision>
+  <revision rev="12" vrev="147">
+    <srcmd5>a955e58ef27b85cc48ab42445ebe8eaa</srcmd5>
+    <version>2.3.14</version>
+    <time>1268926611</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="148">
+    <srcmd5>3ef9e3b63629254ff61e79114bef04d0</srcmd5>
+    <version>2.3.14</version>
+    <time>1271864600</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/xinetd based on submit request 38420 from user mseben
+</comment>
+    <requestid>38420</requestid>
+  </revision>
+  <revision rev="14" vrev="150">
+    <srcmd5>3ef9e3b63629254ff61e79114bef04d0</srcmd5>
+    <version>2.3.14</version>
+    <time>1278667396</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="151">
+    <srcmd5>3ef9e3b63629254ff61e79114bef04d0</srcmd5>
+    <version>2.3.14</version>
+    <time>1278678627</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="154">
+    <srcmd5>3ef9e3b63629254ff61e79114bef04d0</srcmd5>
+    <version>2.3.14</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="156">
+    <srcmd5>3ef9e3b63629254ff61e79114bef04d0</srcmd5>
+    <version>2.3.14</version>
+    <time>1319182599</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="157">
+    <srcmd5>ff5788aae6d99b7d14dcdc3077dba072</srcmd5>
+    <version>2.3.14</version>
+    <time>1321627690</time>
+    <user>coolo</user>
+    <comment>Add fix for bnc#726737. (forwarded request 91999 from leonardocf)</comment>
+    <requestid>92010</requestid>
+  </revision>
+  <revision rev="19" vrev="158">
+    <srcmd5>1dc9f246092bae94848a78bc10b3c2d9</srcmd5>
+    <version>2.3.14</version>
+    <time>1324831377</time>
+    <user>coolo</user>
+    <comment>add autoconf to buildrequires (forwarded request 97633 from coolo)</comment>
+    <requestid>97863</requestid>
+  </revision>
+  <revision rev="20" vrev="159">
+    <srcmd5>64a7895826174dda45e8b50ba952e422</srcmd5>
+    <version>2.3.14</version>
+    <time>1338477105</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-xinedt
+Use this license from license.opensuse.org until upstream SPDX accepts xinetd into the official list (forwarded request 122755 from babelworx)</comment>
+    <requestid>122793</requestid>
+  </revision>
+  <revision rev="21" vrev="161">
+    <srcmd5>64a7895826174dda45e8b50ba952e422</srcmd5>
+    <version>2.3.14</version>
+    <time>1340184366</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="162">
+    <srcmd5>1f281f09fe9ed517e5b114ff8a7ead5c</srcmd5>
+    <version>2.3.14</version>
+    <time>1351317427</time>
+    <user>coolo</user>
+    <comment> (forwarded request 139392 from coolo)</comment>
+    <requestid>139396</requestid>
+  </revision>
+  <revision rev="23" vrev="164">
+    <srcmd5>1f281f09fe9ed517e5b114ff8a7ead5c</srcmd5>
+    <version>2.3.14</version>
+    <time>1359110646</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="165">
+    <srcmd5>1e269a4b5c8b52bbd24b68f49fe106f3</srcmd5>
+    <version>2.3.14</version>
+    <time>1365175320</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162728 from namtrac)</comment>
+    <requestid>162782</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>918d9ee4f27b6be46c3a429cba323d8b</srcmd5>
+    <version>2.3.15</version>
+    <time>1366812888</time>
+    <user>coolo</user>
+    <comment>- update to 2.3.15
+ * If the address we're binding to is a multicast address, do the multicast join.
+ * Merge the Fedora patch to turn off libwrap processing on tcp rpc services.
+   Patch xinetd-2.3.12-tcp_rpc.patch.
+ * Merge the Fedora patch to add labeled networking.
+   Patch xinetd-2.3.14-label.patch r1.4.
+ * Merge the Fedora patch to fix getpeercon() for labeled networking in MLS environments.
+   Patch xinetd-2.3.14-contextconf.patch r1.1
+ * Merge the Fedora patch for int-&gt;ssize_t. Patch xinetd-2.3.14-ssize_t.patch r1.1
+ * Change compiler flags, -Wconversion generates excessive and unnecessary
+   warnings with gcc, particularly all cases of ntohs(uint16_t).
+   http://gcc.gnu.org/bugzilla/show_bug.cgi?id=6614 Additionally add -Wno-unused
+   to prevent unnecessary warnings regarding unused function parameters when the
+   function is a callback conforming to a standard interface.
+ * Merge patch from Thomas Swan regarding CVE-2012-0862
+- merged the SUSE xinetd.conf with the upstream one
+  this changes default target for logging - now the syslog is used
+  instead of /var/log/xinetd.log
+  * xinetd-config.patch
+- logrotate dependency has been dropped and config file is installed
+  in /usr/share/doc/packages/xinetd
+- drop rc.xinetd and add xinetd.service instead
+- add an entry to README.SUSE explaining the systemd socket activation</comment>
+    <requestid>173058</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>918d9ee4f27b6be46c3a429cba323d8b</srcmd5>
+    <version>2.3.15</version>
+    <time>1379665072</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>5ac2f62a0384d80e99f047727818a640</srcmd5>
+    <version>2.3.15</version>
+    <time>1395156095</time>
+    <user>coolo</user>
+    <comment>- Fixed bug number in the changelog
+- Also removed obsolete syslog.target from start order (bnc#866433)
+- Make sure that xinetd service becomes real after network is up (bnc#866433)</comment>
+    <requestid>226494</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>19088a999851c44b781ae4cf8b4d983b</srcmd5>
+    <version>2.3.15</version>
+    <time>1396709408</time>
+    <user>coolo</user>
+    <comment>- Add support for setting maximum number of open files (bnc#855685)
+  * added xinetd-2.3.14-file-limit.patch
+  * added xinetd-2.3.14-restore-nofile-limits.patch
+- fixes for security vulnerabilities
+  * CVE-2013-4342 (bnc#844230)
+    - xinetd ignores user and group directives for tcpmux services
+    - added xinetd-CVE-2013-4342.patch (forwarded request 228430 from vitezslav_cizek)</comment>
+    <requestid>228736</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>a8c7945582390738d4225099cd797d06</srcmd5>
+    <version>2.3.15</version>
+    <time>1403176776</time>
+    <user>coolo</user>
+    <comment>- Drop xinetd.conf not used in spec and we use upstream one anyway.
+
+- Revert the syslog target as it is obsolete.
+
+- Fix error in logs when disabling service and reloading; bnc#870904
+  * xinetd-deactivating-error.patch
+
+- Wait for the syslog target too.</comment>
+    <requestid>237324</requestid>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>a8c7945582390738d4225099cd797d06</srcmd5>
+    <version>2.3.15</version>
+    <time>1409303757</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>93cc788dfa24c3d21391f28d8f2225d8</srcmd5>
+    <version>2.3.15</version>
+    <time>1409761301</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247179</requestid>
+  </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>48a150636ca205e420ae3f99c89390c4</srcmd5>
+    <version>2.3.15</version>
+    <time>1441295925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update README.SUSE to put emphasis on systemd socket activation
+- Remove description of ipv6 support that is in xinetd since 2004+-
+- Clean-up the specfile a bit and update urls to something working
+  (github)
+- Change tarball to github one as the upstream site seems dead</comment>
+    <requestid>328103</requestid>
+  </revision>
+  <revision rev="33" vrev="11">
+    <srcmd5>64c0edbd56e13dbb4ebb8b44b9c67a5d</srcmd5>
+    <version>2.3.15</version>
+    <time>1467359671</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix bnc#972691 random bind fail:
+  * xinetd-2.3.14-retry-binds.patch</comment>
+    <requestid>402363</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>42a3cd37e4f8f1689d4cf5fa4a30488e</srcmd5>
+    <version>2.3.15.1+git20170421.98c06ca</version>
+    <time>1493819543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.15.1+git20170421.98c06ca:
+  * Call us 2.3.15.1 as per COPYING
+  * Fix typo in dirname for xinetd config files in etc
+  * Remove unused libwrap define and remove pedantic from cflags
+
+- Update to version 2.3.15+git20170421.8a895f9:
+  * Drop the include of misc.h that was removed
+  * Never enable howl it is completely deprecated/dead
+  * Kill mdns/howl combo as the protocol is deprecated; not present even on debian stable
+  * Update CHANGELOG a bit
+  * Do not include malloc.h but rather stdlib.h
+  * Make osx failures fatal and run make distcheck only on linux.
+  * Both are just int, no need for unsigned
+  * timep is used only when not using POLL
+  * Fix copy&amp;pasto in POLL code
+  * Howl was removed
+- Drop patches now merged in git:
+  * xinetd-2.3.14-strict-aliasing-fix.diff
+  * xinetd-2.3.14-nodeadlock-revisited.patch
+  * xinetd-CVE-2013-4342.patch
+  * xinetd-2.3.14-server_args-fix.diff
+  * xinetd-2.3.14-man.dif
+  * xinetd-2.3.14-ident-bind.patch
+  * xinetd-2.3.14-nodeadlock.diff
+  * xinetd-2.3.14-ipv6-ipv4-fallback.patch
+  * xinetd-2.3.14-file-limit.patch
+  * xinetd-2.3.14-honour_disable.patch
+  * xinetd-2.3.14-pie.patch
+  * xinetd-config.patch
+  * xinetd-deactivating-error.patch</comment>
+    <requestid>489759</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>03e93a15c86e273ab7fd0b3d84bd6c71</srcmd5>
+    <version>2.3.15.1+git20170504.58c3611</version>
+    <time>1494441250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.15.1+git20170504.58c3611:
+  * Warn when not using tirpc and fix some quoting in configure.ac
+  * Fixup poll.h related warnings
+  * Fix compat with ipv6 to ipv4 fallback wrt bsc#1037552</comment>
+    <requestid>492825</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>044afe9b1397e5adf1d78391e7f96e26</srcmd5>
+    <version>2.3.15.1</version>
+    <time>1495267698</time>
+    <user>dimstar_suse</user>
+    <comment>- Use # rename for the URL to keep sane name
+
+- Update to tagged release 2.3.15.1:
+  * Contains changes from bellow, just uses the tagged archive</comment>
+    <requestid>494815</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4d57a299c304eb88e0b3e55a61847821</srcmd5>
+    <version>2.3.15.3</version>
+    <time>1504814884</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 2.3.15.3:
+  * .2 skipped due to typo in configure.ac
+  * Various manpage fixes
+  * Fix for multiple log targets crashing xinetd bsc#1054532
+
+- Expose XINETD_BIND_DELAY as sysconfig variable (bnc#972691)
+- Add patch xinetd-service-sysconfig.patch</comment>
+    <requestid>519882</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c8f86d668017d0d7f80e1ea734cb340d</srcmd5>
+    <version>2.3.15.3</version>
+    <time>1512042002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545042</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>b2714d8e2a31a22091e6e8ec8882ce30</srcmd5>
+    <version>2.3.15.3</version>
+    <time>1518187505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573405</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0e0716665dd6eb872f0699c2b209a922</srcmd5>
+    <version>2.3.15.4</version>
+    <time>1533214855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.15.4:
+  * Small buildfixes from gentoo
+  * Various tiny tweaks from pullrequests</comment>
+    <requestid>627054</requestid>
+  </revision>
+</revisionlist>

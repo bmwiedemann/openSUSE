@@ -1,0 +1,33 @@
+
+#include <tunables/global>
+
+/usr/lib/nagios/plugins/check_ipmi_sensor1 {
+    #include <abstractions/base>
+    #include <abstractions/consoles>
+    #include <abstractions/authentication>
+
+    capability sys_resource,
+    capability setgid,
+    capability setuid,
+
+    /usr/lib/nagios/plugins/check_ipmi_sensor1 rm,
+    /usr/bin/sudo PUx,
+    /usr/sbin/sendmail rix,
+    /{,usr/}bin/ipmitool rix,
+    /{,usr/}bin/gawk rix,
+
+    /proc/filesystems r,
+    /etc/nsswitch.conf r,
+    /etc/passwd r,
+    /etc/group r,
+    /etc/default/nss r,
+    /etc/sudoers r,
+    /etc/environment r,
+
+    /var/run/nscd/** r,
+
+    /dev/ipmi0 rw,
+    /tmp/ipmi-sdr-cache-localhost rw,
+
+    @{PROC}/*/fd/ r,
+}

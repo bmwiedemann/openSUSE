@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2709e4a48c04e003d174a8534746563f</srcmd5>
+    <version>0.5.5</version>
+    <time>1619822832</time>
+    <user>dimstar_suse</user>
+    <comment>Required for opensurge</comment>
+    <requestid>889647</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bd58cb549eec474ad38b70d9f72c6db1</srcmd5>
+    <version>0.5.6</version>
+    <time>1663515148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004478</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>08e79e42996e39d311feb359e69ffa47</srcmd5>
+    <version>0.5.6.1</version>
+    <time>1671390246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1043645</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>319c92bad1af313c26cb8955ac4cf8a5</srcmd5>
+    <version>0.5.6.1</version>
+    <time>1674927855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061606</requestid>
+  </revision>
+</revisionlist>

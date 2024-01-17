@@ -1,0 +1,292 @@
+--- src/cmd/INIT/Mamfile
++++ src/cmd/INIT/Mamfile	2008-02-14 12:08:37.000000000 +0000
+@@ -5,7 +5,7 @@ setv AR ${mam_cc_AR} ${mam_cc_AR_ARFLAGS
+ setv ARFLAGS rc
+ setv AS as
+ setv ASFLAGS
+-setv CC cc
++setv CC gcc
+ setv mam_cc_FLAGS
+ setv CCFLAGS ${-debug-symbols?1?${mam_cc_DEBUG} -D_BLD_DEBUG?${mam_cc_OPTIMIZE}?}
+ setv CCLDFLAGS ${-strip-symbols?1?${mam_cc_LD_STRIP}??}
+@@ -27,7 +27,7 @@ setv NMAKE nmake
+ setv NMAKEFLAGS
+ setv PR pr
+ setv PRFLAGS
+-setv SHELL /bin/sh
++setv SHELL /bin/bash
+ setv SILENT
+ setv TAR tar
+ setv YACC yacc
+--- src/cmd/INIT/iffe.sh
++++ src/cmd/INIT/iffe.sh	2008-02-14 12:15:59.000000000 +0000
+@@ -1170,7 +1170,7 @@ case `(getopts '[-][123:xyz]' opt --xyz;
+ 		--*)	echo $command: $1: unknown option >&2
+ 			exit 2
+ 			;;
+-		-*)	REM=`echo X$1 | sed 's,X-,,'`
++		-*)	REM=`echo -$1 | sed 's,^--,,'`
+ 			;;
+ 		*)	break
+ 			;;
+--- src/cmd/INIT/mamake.c
++++ src/cmd/INIT/mamake.c	2008-02-14 12:08:37.000000000 +0000
+@@ -118,7 +118,7 @@ USAGE_LICENSE
+ #define set(b,o)	((b)->nxt=(b)->buf+(o))
+ #define use(b)		(*(b)->nxt=0,(b)->nxt=(b)->buf)
+ 
+-#define CHUNK		1024
++#define CHUNK		2048
+ #define KEY(a,b,c,d)	((((unsigned long)(a))<<15)|(((unsigned long)(b))<<10)|(((unsigned long)(c))<<5)|(((unsigned long)(d))))
+ #define NOW		((unsigned long)time((time_t*)0))
+ #define ROTATE(p,l,r,t)	((t)=(p)->l,(p)->l=(t)->r,(t)->r=(p),(p)=(t))
+@@ -338,14 +338,14 @@ report(int level, char* text, char* item
+  */
+ 
+ static void
+-dont(Rule_t* r, int code, int keepgoing)
++dont(Rule_t* r, int code, int keepgoing, int line)
+ {
+ 	identify(stderr);
+ 	if (!code)
+ 		fprintf(stderr, "don't know how to make %s\n", r->name);
+ 	else
+ 	{
+-		fprintf(stderr, "*** exit code %d making %s%s\n", code, r->name, state.ignore ? " ignored" : "");
++		fprintf(stderr, "*** exit code %d making %s%s at line %d\n", code, r->name, state.ignore ? " ignored" : "", line);
+ 		unlink(r->name);
+ 		if (state.ignore)
+ 			return;
+@@ -1259,7 +1259,7 @@ run(Rule_t* r, register char* s)
+ 	if (x)
+ 	{
+ 		if (c = execute(s))
+-			dont(r, c, state.keepgoing);
++			dont(r, c, state.keepgoing, __LINE__);
+ 		if (status((Buf_t*)0, 0, r->name, &st))
+ 		{
+ 			r->time = st.st_mtime;
+@@ -1633,7 +1633,7 @@ make(Rule_t* r)
+ 			}
+ 			r->flags |= RULE_made;
+ 			if (!(r->flags & (RULE_dontcare|RULE_error|RULE_exists|RULE_generated|RULE_implicit|RULE_virtual)))
+-				dont(r, 0, state.keepgoing);
++				dont(r, 0, state.keepgoing, __LINE__);
+ 			break;
+ 		case KEY('e','x','e','c'):
+ 			r->flags |= RULE_generated;
+@@ -1726,7 +1726,7 @@ verify(Dict_item_t* item, void* handle)
+ 	Rule_t*	r = (Rule_t*)item->value;
+ 
+ 	if ((r->flags & (RULE_active|RULE_error|RULE_made)) == RULE_active)
+-		dont(r, 0, 1);
++		dont(r, 0, 1, __LINE__);
+ 	return 0;
+ }
+ 
+--- src/cmd/ksh93/Mamfile
++++ src/cmd/ksh93/Mamfile	2012-02-10 14:30:31.000000000 +0000
+@@ -7,7 +7,7 @@ setv AR ${mam_cc_AR} ${mam_cc_AR_ARFLAGS
+ setv ARFLAGS rc
+ setv AS as
+ setv ASFLAGS
+-setv CC cc
++setv CC gcc
+ setv mam_cc_FLAGS
+ setv CCFLAGS ${-debug-symbols?1?${mam_cc_DEBUG} -D_BLD_DEBUG?${mam_cc_OPTIMIZE}?}
+ setv CCLDFLAGS ${-strip-symbols?1?${mam_cc_LD_STRIP}??}
+@@ -29,7 +29,7 @@ setv NMAKE nmake
+ setv NMAKEFLAGS
+ setv PR pr
+ setv PRFLAGS
+-setv SHELL /bin/sh
++setv SHELL /bin/bash
+ setv SILENT
+ setv TAR tar
+ setv YACC yacc
+@@ -1337,7 +1337,7 @@ prev +ljobs
+ prev +li
+ prev ${mam_libsocket}
+ prev ${mam_libsecdb}
+-exec - ${CC} ${CCLDFLAGS} ${mam_cc_FLAGS} ${CCFLAGS} ${LDFLAGS} ${mam_cc_L+-L.} ${mam_cc_L+-L${INSTALLROOT}/lib} -o ksh pmain.o ${mam_libshell} ${mam_libnsl} ${mam_libast}
++exec - ${CC} ${CCLDFLAGS} ${mam_cc_FLAGS} ${CCFLAGS} ${LDFLAGS} ${mam_cc_L+-L.} ${mam_cc_L+-L${INSTALLROOT}/lib} -o ksh pmain.o ${mam_libshell} ${mam_libnsl} ${mam_libcmd} ${mam_libast} ${mam_libm} ${mam_libast}
+ done ksh generated
+ make shcomp
+ make shcomp.o
+@@ -1361,7 +1361,7 @@ prev ${mam_libsocket}
+ prev ${mam_libsecdb}
+ setv CC.DLL -UCC.DLL
+ setv SH_DICT -DSH_DICT="\"libshell\""
+-exec - ${CC} ${CCLDFLAGS} ${mam_cc_FLAGS} ${CCFLAGS} ${LDFLAGS} ${mam_cc_L+-L.} ${mam_cc_L+-L${INSTALLROOT}/lib} -o shcomp shcomp.o ${mam_libshell} ${mam_libnsl} ${mam_libast}
++exec - ${CC} ${CCLDFLAGS} ${mam_cc_FLAGS} ${CCFLAGS} ${LDFLAGS} ${mam_cc_L+-L.} ${mam_cc_L+-L${INSTALLROOT}/lib} -o shcomp shcomp.o ${mam_libshell} ${mam_libnsl} ${mam_libcmd} ${mam_libast} ${mam_libm} ${mam_libast}
+ done shcomp generated
+ make suid_exec
+ make suid_exec.o
+@@ -1377,14 +1377,14 @@ meta suid_exec.o %.c>%.o sh/suid_exec.c
+ prev sh/suid_exec.c
+ setv CC.DLL -UCC.DLL
+ setv _BLD_shell -U_BLD_shell
+-exec - ${CC} ${mam_cc_FLAGS} ${CCFLAGS} -I. -Iinclude -I${PACKAGE_ast_INCLUDE} -DERROR_CONTEXT_T=Error_context_t -D_API_ast=20100309 -D_PACKAGE_ast -c sh/suid_exec.c
++exec - ${CC} ${mam_cc_FLAGS} ${CCFLAGS} -fPIE -I. -Iinclude -I${PACKAGE_ast_INCLUDE} -DERROR_CONTEXT_T=Error_context_t -D_API_ast=20100309 -D_PACKAGE_ast -c sh/suid_exec.c
+ done suid_exec.o generated
+ prev +ljobs
+ prev +li
+ prev ${mam_libsocket}
+ prev ${mam_libsecdb}
+ setv CC.DLL -UCC.DLL
+-exec - ${CC} ${CCLDFLAGS} ${mam_cc_FLAGS} ${CCFLAGS} ${LDFLAGS} ${mam_cc_L+-L.} ${mam_cc_L+-L${INSTALLROOT}/lib} -o suid_exec suid_exec.o ${mam_libast} ${mam_libnsl} ${mam_libast}
++exec - ${CC} ${CCLDFLAGS} ${mam_cc_FLAGS} ${CCFLAGS} ${LDFLAGS} ${mam_cc_L+-L.} ${mam_cc_L+-L${INSTALLROOT}/lib} -pie -o suid_exec suid_exec.o ${mam_libast} ${mam_libnsl} ${mam_libast}
+ done suid_exec generated
+ make shell
+ prev libshell.a archive
+--- src/lib/libast/Mamfile
++++ src/lib/libast/Mamfile	2013-02-05 15:08:23.757451837 +0000
+@@ -5,7 +5,7 @@ setv AR ${mam_cc_AR} ${mam_cc_AR_ARFLAGS
+ setv ARFLAGS rc
+ setv AS as
+ setv ASFLAGS
+-setv CC cc
++setv CC gcc
+ setv mam_cc_FLAGS ${mam_cc_DLL} -D_BLD_ast
+ setv CCFLAGS ${-debug-symbols?1?${mam_cc_DEBUG} -D_BLD_DEBUG?${mam_cc_OPTIMIZE}?}
+ setv CCLDFLAGS ${-strip-symbols?1?${mam_cc_LD_STRIP}??}
+@@ -27,7 +27,7 @@ setv NMAKE nmake
+ setv NMAKEFLAGS
+ setv PR pr
+ setv PRFLAGS
+-setv SHELL /bin/sh
++setv SHELL /bin/bash
+ setv SILENT
+ setv TAR tar
+ setv YACC yacc
+@@ -1003,7 +1003,7 @@ make lcgen
+ make port/lcgen.c
+ prev std/stdio.h implicit
+ done port/lcgen.c
+-exec - ${CC} -o lcgen port/lcgen.c
++exec - ${CC} ${mam_cc_FLAGS} ${CCFLAGS} -o lcgen port/lcgen.c
+ done lcgen generated
+ make port/lc.tab
+ done port/lc.tab
+@@ -7291,58 +7291,31 @@ exec - test '' = 'misc/magic.tab' || ${S
+ done ${INSTALLROOT}/lib/file/magic generated
+ prev comp/fmtmsg.h
+ prev ast_lib.h
+-exec - case ${mam_cc_HOSTTYPE} in
+-exec - win32.*)proto -p -s -l ${PACKAGEROOT}/lib/package/ast.lic '-o since=1985,author=gsf+dgk+kpv' comp/fmtmsg.h > 1.${COTEMP}.x
+-exec - if cmp 2>/dev/null -s ${INSTALLROOT}/include/ast/fmtmsg.h 1.${COTEMP}.x
+-exec - then rm -f 1.${COTEMP}.x
+-exec - else mv 1.${COTEMP}.x ${INSTALLROOT}/include/ast/fmtmsg.h
+-exec - fi
+-exec - ;;
+-exec - *) silent grep -l 'define[ 	][ 	]*_[hl][di][rb]_fmtmsg' ast_lib.h > /dev/null || {
++exec - silent grep -l 'define[ 	][ 	]*_[hl][di][rb]_fmtmsg' ast_lib.h > /dev/null || {
+ exec - proto -p -s -l ${PACKAGEROOT}/lib/package/ast.lic '-o since=1985,author=gsf+dgk+kpv' comp/fmtmsg.h > 1.${COTEMP}.x
+ exec - if cmp 2>/dev/null -s ${INSTALLROOT}/include/ast/fmtmsg.h 1.${COTEMP}.x
+ exec - then rm -f 1.${COTEMP}.x
+ exec - else mv 1.${COTEMP}.x ${INSTALLROOT}/include/ast/fmtmsg.h
+ exec - fi
+ exec - }
+-exec - ;;
+-exec - esac
+ prev comp/libgen.h
+ prev ast_lib.h
+-exec - case ${mam_cc_HOSTTYPE} in
+-exec - win32.*)proto -p -s -l ${PACKAGEROOT}/lib/package/ast.lic '-o since=1985,author=gsf+dgk+kpv' comp/libgen.h > 1.${COTEMP}.x
+-exec - if cmp 2>/dev/null -s ${INSTALLROOT}/include/ast/libgen.h 1.${COTEMP}.x
+-exec - then rm -f 1.${COTEMP}.x
+-exec - else mv 1.${COTEMP}.x ${INSTALLROOT}/include/ast/libgen.h
+-exec - fi
+-exec - ;;
+-exec - *) silent grep -l 'define[ 	][ 	]*_[hl][di][rb]_libgen' ast_lib.h > /dev/null || {
++exec - silent grep -l 'define[ 	][ 	]*_[hl][di][rb]_libgen' ast_lib.h > /dev/null || {
+ exec - proto -p -s -l ${PACKAGEROOT}/lib/package/ast.lic '-o since=1985,author=gsf+dgk+kpv' comp/libgen.h > 1.${COTEMP}.x
+ exec - if cmp 2>/dev/null -s ${INSTALLROOT}/include/ast/libgen.h 1.${COTEMP}.x
+ exec - then rm -f 1.${COTEMP}.x
+ exec - else mv 1.${COTEMP}.x ${INSTALLROOT}/include/ast/libgen.h
+ exec - fi
+ exec - }
+-exec - ;;
+-exec - esac
+ prev comp/syslog.h
+ prev ast_lib.h
+-exec - case ${mam_cc_HOSTTYPE} in
+-exec - win32.*)proto -p -s -l ${PACKAGEROOT}/lib/package/ast.lic '-o since=1985,author=gsf+dgk+kpv' comp/syslog.h > 1.${COTEMP}.x
+-exec - if cmp 2>/dev/null -s ${INSTALLROOT}/include/ast/syslog.h 1.${COTEMP}.x
+-exec - then rm -f 1.${COTEMP}.x
+-exec - else mv 1.${COTEMP}.x ${INSTALLROOT}/include/ast/syslog.h
+-exec - fi
+-exec - ;;
+-exec - *) silent grep -l 'define[ 	][ 	]*_[hl][di][rb]_syslog' ast_lib.h > /dev/null || {
++exec - silent grep -l 'define[ 	][ 	]*_[hl][di][rb]_syslog' ast_lib.h > /dev/null || {
+ exec - proto -p -s -l ${PACKAGEROOT}/lib/package/ast.lic '-o since=1985,author=gsf+dgk+kpv' comp/syslog.h > 1.${COTEMP}.x
+ exec - if cmp 2>/dev/null -s ${INSTALLROOT}/include/ast/syslog.h 1.${COTEMP}.x
+ exec - then rm -f 1.${COTEMP}.x
+ exec - else mv 1.${COTEMP}.x ${INSTALLROOT}/include/ast/syslog.h
+ exec - fi
+ exec - }
+-exec - ;;
+-exec - esac
+ done install virtual
+ make test
+ done test dontcare virtual
+--- src/lib/libcmd/Mamfile
++++ src/lib/libcmd/Mamfile	2013-02-05 15:13:53.797951789 +0000
+@@ -7,7 +7,7 @@ setv AR ${mam_cc_AR} ${mam_cc_AR_ARFLAGS
+ setv ARFLAGS rc
+ setv AS as
+ setv ASFLAGS
+-setv CC cc
++setv CC gcc
+ setv mam_cc_FLAGS ${mam_cc_DLL}
+ setv CCFLAGS ${-debug-symbols?1?${mam_cc_DEBUG} -D_BLD_DEBUG?${mam_cc_OPTIMIZE}?}
+ setv CCLDFLAGS ${-strip-symbols?1?${mam_cc_LD_STRIP}??}
+@@ -29,7 +29,7 @@ setv NMAKE nmake
+ setv NMAKEFLAGS
+ setv PR pr
+ setv PRFLAGS
+-setv SHELL /bin/sh
++setv SHELL /bin/bash
+ setv SILENT
+ setv TAR tar
+ setv YACC yacc
+--- src/lib/libdll/Mamfile
++++ src/lib/libdll/Mamfile	2008-02-14 12:08:37.000000000 +0000
+@@ -7,7 +7,7 @@ setv AR ${mam_cc_AR} ${mam_cc_AR_ARFLAGS
+ setv ARFLAGS rc
+ setv AS as
+ setv ASFLAGS
+-setv CC cc
++setv CC gcc
+ setv mam_cc_FLAGS ${mam_cc_DLL}
+ setv CCFLAGS ${-debug-symbols?1?${mam_cc_DEBUG} -D_BLD_DEBUG?${mam_cc_OPTIMIZE}?}
+ setv CCLDFLAGS ${-strip-symbols?1?${mam_cc_LD_STRIP}??}
+@@ -29,7 +29,7 @@ setv NMAKE nmake
+ setv NMAKEFLAGS
+ setv PR pr
+ setv PRFLAGS
+-setv SHELL /bin/sh
++setv SHELL /bin/bash
+ setv SILENT
+ setv TAR tar
+ setv YACC yacc
+--- src/lib/libpp/Mamfile
++++ src/lib/libpp/Mamfile	2012-01-24 18:31:22.000000000 +0000
+@@ -663,7 +663,7 @@ exec - .
+ exec - w
+ exec - q
+ exec - !
+-exec - ${CC} -o ${COTEMP}.exe 1.${COTEMP}.c
++exec - ${CC} ${mam_cc_FLAGS} ${CCFLAGS} -o ${COTEMP}.exe 1.${COTEMP}.c
+ exec - ./${COTEMP}.exe > pp.yacc
+ exec - rm -f 1.${COTEMP}.c ${COTEMP}.exe
+ done pp.yacc generated
+@@ -705,7 +705,7 @@ exec - .
+ exec - w
+ exec - q
+ exec - !
+-exec - ${CC} -o ${COTEMP}.exe 1.${COTEMP}.c
++exec - ${CC} ${mam_cc_FLAGS} ${CCFLAGS} -o ${COTEMP}.exe 1.${COTEMP}.c
+ exec - ./${COTEMP}.exe > ppkey.yacc
+ exec - rm -f 1.${COTEMP}.c ${COTEMP}.exe
+ done ppkey.yacc generated

@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Sep 20 16:34:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.19.6:
+ - Using a ssl context object to avoid deprecation warnings in py3
+- Update to version 1.19.5:
+ - Using certifi to find ssl cert for nontrivial python installations
+
+-------------------------------------------------------------------
+Wed Aug 31 18:53:16 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove obsolete patch remove-mock.patch
+- Update to version 1.19.4:
+ * fix JSONDecodeError missing for py2.7
+
+-------------------------------------------------------------------
+Mon Feb  7 22:25:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add remove-mock.patch to make mock just optional
+  (gh#python-twitter-tools/twitter#441).
+
+-------------------------------------------------------------------
+Sun Feb  6 16:19:26 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Initial package for version 1.19.3.

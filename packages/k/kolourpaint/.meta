@@ -1,0 +1,5 @@
+<package name="kolourpaint" project="openSUSE:Factory">
+  <title>Paint Program</title>
+  <description>Paint program for KDE</description>
+  <devel project="KDE:Applications" package="kolourpaint"/>
+</package>

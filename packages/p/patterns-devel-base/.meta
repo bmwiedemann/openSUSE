@@ -1,0 +1,9 @@
+<package name="patterns-devel-base" project="openSUSE:Factory">
+  <title> Patterns for Installation (Devel Base) </title>
+  <description>This is an internal package that is used to create the patterns as part
+of the installation source setup.  Installation of this package does
+not make sense. 
+
+This particular package contains all the base development patterns (and those other development patterns that don't fit well anywhere else).</description>
+  <devel project="system:install:head" package="patterns-devel-base"/>
+</package>

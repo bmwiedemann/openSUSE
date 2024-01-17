@@ -1,0 +1,338 @@
+-------------------------------------------------------------------
+Thu Oct 26 18:38:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Actually remove pep440 from test requirements
+
+-------------------------------------------------------------------
+Thu Oct 26 18:09:45 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add no-hatch-nodejs-version.patch to remove dependency on
+  hatch-nodejs-version
+- Add no-pep440.patch to remove unnecessary checking for the
+  validity of the package version number.
+
+-------------------------------------------------------------------
+Sat Aug  5 16:29:03 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.9.2:
+  * Bugs fixed
+    + Fix version handling #372 (@blink1073)
+  * Maintenance and upkeep improvements
+    + Fix encoding warnings #371 (@blink1073)
+    + Update link to notebook security #370 (@blink1073)
+  * Documentation improvements
+    + Update link to notebook security #370 (@blink1073)
+
+-------------------------------------------------------------------
+Wed Jul 19 20:43:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.9.1
+  * Fix deprecation warning when importing from jsonschema #368
+    (@eladkal)
+  * Unpin jsonschema
+
+-------------------------------------------------------------------
+Sun Jul  9 12:09:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Like many other packages, jsonschema 4.18 breaks nbformat.
+  * Pin to jsonschema < 4.18
+
+-------------------------------------------------------------------
+Sun Jun 11 20:10:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.9.0
+  * Support Python 3.12 #363 (@blink1073)
+
+-------------------------------------------------------------------
+Sun Apr 23 17:32:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.8.0
+  * Add strip_invalid_metadata argument to validator normalize
+    method #355 (@jonabc)
+  * Only add ellipsis to NotJSONError message if message is
+    truncated #344 (@rschroll)
+
+-------------------------------------------------------------------
+Sun Jan 15 20:39:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.7.3
+  * Undeprecate validate(nb, relax_add_props=True) #343 (@minrk)
+- Release 5.7.2
+  * Only require nbformat_minor for v4 #342 (@minrk)
+
+-------------------------------------------------------------------
+Mon Dec 26 22:15:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.7.1
+  * Expose more attributes for typing #337 (@blink1073)
+  * Use base setup dependency type #329 (@blink1073)
+  * Handle warning from jupyter client #322 (@blink1073)
+- Remove empty jupyter-nbformat package
+
+-------------------------------------------------------------------
+Sat Oct 22 03:43:12 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.7.0:
+  * Always use jsonschema to handle error reporting.
+  * Fix deprecation warning suggestion.
+
+-------------------------------------------------------------------
+Tue Sep 27 16:58:10 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.6.1:
+  * Fix handling of "__version__` on Python 3.7.
+
+-------------------------------------------------------------------
+Thu Sep 22 18:05:13 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * change to hatchling
+
+- update to version 5.6.0:
+  * Fix docs and type annotations for validator.normalize.
+  * Switch to hatch build backend.
+
+-------------------------------------------------------------------
+Tue Sep 13 15:43:42 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * changed to pyproject.toml build using flit-core
+  * require python-pep440 for tests
+
+- update to version 5.5.0:
+  * The biggest change in nbformat 5.5.0 is the deprecation of
+    arguments to validate() that try to fix notebooks errors during
+    validation.
+    validate() is a function that is core to the security model of
+    Jupyter, and is assumed in a number of places to not mutate it's
+    argument, or try to fix notebooks passed to it.
+    Auto fixing of notebook in validate can also hide subtle bugs, and
+    will therefore be updated in a near future to not take any of the
+    argument related to auto-fixing, and fail instead of silently
+    modifying its parameters on invalid notebooks.
+    nbformat now contain a normalize function that will return a
+    normalized copy of a notebook that is suitable for
+    validation. While offered as a convenience we discourage its use
+    and suggest library make sure to generate valid notebooks.
+  * Other changes
+    + nbformat is now built with flit, and uses pyproject.toml
+    + Documentation and Deprecations have been updated with version
+      number and stack levels.
+
+-------------------------------------------------------------------
+Wed Aug  3 21:00:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.0
+  * Fix import nbformat.current by @shadchin in #269
+  * Add mypy support by @blink1073 in #270
+  * Packaging updates
+
+-------------------------------------------------------------------
+Wed Mar 23 19:04:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update dependencies 
+
+-------------------------------------------------------------------
+Sat Mar 12 04:48:45 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 5.2.0:
+  * Add ability to capture validation errors
+  * Update supported python versions
+  * Ensure nbformat minor version is present when upgrading
+  * Only fix cell ID validation issues if asked
+  * Return the notebook when no conversion is needed
+  * Catch AttributeErrors stemming from ipython_genutils as
+    ValidationErrors on read
+  * Don't list pytest-cov as a test dependency
+  * Remove dependency on IPython genutils
+  * Include tests in sdist but not wheel
+
+-------------------------------------------------------------------
+Mon Nov 15 16:22:11 UTC 2021 - schubi <schubi@localhost>
+
+- Reenable libalternatives because gh#openSUSE/libalternatives#11
+  is solved.
+
+-------------------------------------------------------------------
+Thu Oct 28 19:12:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- revert the usage of libalternatives due to
+  gh#openSUSE/libalternatives#11
+
+-------------------------------------------------------------------
+Wed Sep  8 14:22:22 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Use libalternatives instead of update-alternatives. 
+
+-------------------------------------------------------------------
+Sat Apr 10 20:48:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.1.3
+  * Change id generation to be hash based to avoid problematic
+    word combinations
+  * Added tests for python 3.9
+  * Fixed setup.py build operations to include package data
+- Release 5.1.2
+  * Fixed missing file in manifest
+- Release 5.1.1
+  * Changes convert.upgrade to upgrade minor 4.x versions to 4.5
+- Release 5.1.0
+  * Implemented CellIds from JEP-62
+  * Fixed a regression introduced when using fastjsonschema,
+     which does not directly support to validate a "reference"/
+     "subschema"
+  * Removed unreachable/unneeded code
+  * Added CI workflow for package release on tag push
+- Release 5.0.8
+  * Add optional support for using `fastjsonschema` as the JSON
+    validation library. To enable fast validation, install
+    `fastjsonschema` and set the environment variable
+    `NBFORMAT_VALIDATOR` to the value `fastjsonschema`.
+- Use github archive for full testsuite
+
+-------------------------------------------------------------------
+Sun Jun 28 19:07:15 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.0.7:
+  * Fixed a bug where default values for validator.get_validator()
+    failed with an import error
+
+-------------------------------------------------------------------
+Sat May  2 20:16:36 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.0.6:
+  * nbformat.read() function has a better duck-type interface and will
+    raise more meaningful error messages if it can't parse a notebook
+    document.
+
+- changes from version 5.0.5:
+  * Allow notebook format 4.0 and 4.1 to have the arbitrary JSON
+    mimebundles from format 4.2 for pragmatic purposes.
+  * Support reading/writing path-like objects has been added to read
+    operations.
+
+-------------------------------------------------------------------
+Mon Feb 10 16:11:19 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.0.4
+  * Fixed issue causing python 2 to pick up 5.0.x releases.
+- Drop doc subpackage.  This was a leftover from when the tests
+  were run in another package and keeping up with the
+  rapidly-changing readthedocs download URLs is difficult.
+
+-------------------------------------------------------------------
+Wed Jan 15 15:18:24 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 5.0.3
+  * Removed debug print statements from project.
+- Update to 5.0.2
+  * Added schema validation files for older versions. This was breaking notebook generation.
+- Update to 5.0
+  * Starting with 5.0, ``nbformat`` is now Python 3 only (>= 3.5)
+  * Add execution timings in code cell metadata for v4 spec.
+    ``"metadata": { "execution": {...}}`` should be populated with kernel-specific
+    timing information.
+  * Documentation for how markup is used in notebooks added
+  * Link to json schema docs from format page added
+  * Documented the editable metadata flag
+  * Update description for collapsed field
+  * Documented nbformat versions 4.0-4.3 with accurate json schema specification files
+  * Clarified info about :ref:`name`'s meaning for cells
+  * Added a default execution_count of None for new_output_cell('execute_result')
+  * Added support for handling nbjson kwargs
+  * Wheels now correctly have a LICENSE file
+  * Travis builds now have a few more execution environments
+
+-------------------------------------------------------------------
+Sun Aug 11 01:46:53 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Merge everything into one spec file to simplify maintenance.
+
+-------------------------------------------------------------------
+Fri May 17 18:09:29 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Move executable to python package to avoid conflicts with old
+  naming scheme.  It should be moved back with the next release.
+
+-------------------------------------------------------------------
+Thu Apr 25 01:59:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Rename doc package to match jupyter package name.
+
+-------------------------------------------------------------------
+Tue Feb 13 19:47:23 UTC 2018 - toddrme2178@gmail.com
+
+- Update url
+
+-------------------------------------------------------------------
+Tue Sep 19 20:52:35 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.4.0
+  * Explicitly state that metadata fields can be ignored.
+  * Introduce official jupyter namespace inside metadata (``metadata.jupyter``).
+  * Introduce ``source_hidden`` and ``outputs_hidden`` as official front-end
+    metadata fields to indicate hiding source and outputs areas. **NB**: These
+    fields should not be used to hide elements in exported formats.
+  * Fix ending the redundant storage of signatures in the signature database. 
+  * :func:`nbformat.validate` can be set to not raise a ValidationError if
+    additional properties are included. 
+  * Fix for errors with connecting and backing up the signature database.
+  * Dict-like objects added to NotebookNode attributes are now transformed to be
+    NotebookNode objects; transformation also works for `.update()`.
+
+-------------------------------------------------------------------
+Wed Apr 26 19:44:12 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Fri Apr  7 19:13:59 UTC 2017 - toddrme2178@gmail.com
+
+- Clean up update-alternatives usage.
+
+-------------------------------------------------------------------
+Thu Mar 30 19:45:04 UTC 2017 - toddrme2178@gmail.com
+
+- Update to 4.3.0
+  * A new pluggable ``SignatureStore`` class allows specifying different ways to
+    record the signatures of trusted notebooks. The default is still an SQLite
+    database. See :ref:`pluggable_signature_store` for more information.
+  * :func:`nbformat.read` and :func:`nbformat.write` accept file paths as bytes
+    as well as unicode.
+  * Fix for calling :func:`nbformat.validate` on an empty dictionary.
+  * Fix for running the tests where the locale makes ASCII the default encoding.
+- Update to 4.2.0
+  * Update nbformat spec version to 4.2, allowing JSON outputs to have any JSONable type,  not just ``object``,
+    and mime-types of the form ``application/anything+json``.
+  * Define basics of ``authors`` in notebook metadata.
+    ``nb.metadata.authors`` shall be a list of objects with the property ``name``, a string of each author's full name.
+  * Update use of traitlets API to require traitlets 4.1.
+  * Support trusting notebooks on stdin with ``cat notebook | jupyter trust``
+- Update to 4.1.0
+  * Update nbformat spec version to 4.1, adding support for attachments on markdown and raw cells.
+  * Catch errors opening trust database, falling back on ``:memory:`` if the database cannot be opened.
+- Create doc subpackage
+
+-------------------------------------------------------------------
+Mon Oct 12 13:43:06 UTC 2015 - toddrme2178@gmail.com
+
+- update to version 4.0.1:
+  * setuptools entrypoint
+  * Add label to format docs for cross referencing
+  * ensure `--version` output has actual version
+  
+-------------------------------------------------------------------
+Mon Oct  5 10:01:17 UTC 2015 - toddrme2178@gmail.com
+
+- Build documentation
+
+-------------------------------------------------------------------
+Thu Aug 13 12:11:46 UTC 2015 - toddrme2178@gmail.com
+
+- Initial version
+

@@ -1,0 +1,30 @@
+--- spooles-2.2.orig/makeRPM	1970-01-01 01:00:00.000000000 +0100
++++ spooles-2.2/makeRPM	2010-02-12 21:01:41.000000000 +0100
+@@ -0,0 +1,27 @@
++# Makefile for Building .so and .a files
++
++# retrieve the relevant .o files:
++SRC_FILES=$(shell grep '$(OBJ).a(' */src/makefile | grep -v 'MPI/' | sed -e 's,.makefile.*).a(,/,' -e 's/).*//')
++
++# create the list of .o files for the dynamic linked library
++DSRC_FILES=$(SRC_FILES:.o=.lo)
++
++TARGETS=libspooles.so
++
++# rule for compiling c files for use with the dynamic library
++%.lo: %.c
++	$(PURIFY) $(CC) -c $(CFLAGS) $< -fPIC -DPIC -o $@
++
++libspooles.a: $(SRC_FILES)
++	ar rcs $@ $?
++
++libspooles.so: $(DSRC_FILES)
++	gcc -shared $? -Wl,-soname,libspooles.so.2.2 -o libspooles.so.2.2 -lm
++	ln -s libspooles.so.2.2 libspooles.so
++
++all: $(TARGETS)
++
++.PHONY: clean
++
++clean:
++	-rm -f $(TARGETS) $(SRC_FILES) $(DSRC_FILES)

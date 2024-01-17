@@ -1,0 +1,173 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1975f7e2ad0a674eb7aa4e030a844e03</srcmd5>
+    <version>0.2</version>
+    <time>1574859449</time>
+    <user>dimstar_suse</user>
+    <comment>liburing native async IO for the Linux kernel, in a fast and efficient manner, for both buffered and O_DIRECT.</comment>
+    <requestid>751263</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>932a6b1be203d4393a286bd09e2f5153</srcmd5>
+    <version>0.2</version>
+    <time>1575039532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751545</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>608e9d0ebd39a44b3e616fc2ac085325</srcmd5>
+    <version>0.2</version>
+    <time>1576189178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756024</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>281b3a2ffaf073b3a2f571f4a2ea8932</srcmd5>
+    <version>0.6</version>
+    <time>1605644560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>847547</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a85de488f2c47cfe5b47001d00cc3833</srcmd5>
+    <version>2.0</version>
+    <time>1615905754</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879082</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7c72150bb52ef54dc2780509d520cc27</srcmd5>
+    <version>2.1</version>
+    <time>1634587411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>925428</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3134e6f799eaf802c34d98213870b8ae</srcmd5>
+    <version>2.1</version>
+    <time>1639685934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>940703</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>3b175e2af8cbcc6d6d1659ae2244ddb1</srcmd5>
+    <version>2.1</version>
+    <time>1645221767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955726</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>87d5025ada72363519a001d1b276c028</srcmd5>
+    <version>2.1</version>
+    <time>1651424011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>973849</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>472055358254ce1c356566e72a02c7fd</srcmd5>
+    <version>2.2</version>
+    <time>1658857368</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>989441</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dcbd527822fb8094057a6200afc35512</srcmd5>
+    <version>2.2</version>
+    <time>1660728714</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>997498</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>67e6f7c9993306a7b376618d8531cb01</srcmd5>
+    <version>2.2</version>
+    <time>1664302387</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006001</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7e5d6b5b410e8f682439559e72fada15</srcmd5>
+    <version>2.3</version>
+    <time>1674495034</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-test-helpers-fix-socket-length-type.patch 
+  fixes tests on big endian
+
+- update to 2.3:
+  * Support non-libc build for aarch64.
+  * Add io_uring_{enter,enter2,register,setup} syscall functions.
+  * Add sync cancel interface, io_uring_register_sync_cancel().
+  * Fix return value of io_uring_submit_and_wait_timeout() to match the
+    man page.
+  * Improvements to the regression tests
+  * Add support and test case for passthrough IO
+  * Add recv and recvmsg multishot helpers and support
+  * Add documentation and support for IORING_SETUP_DEFER_TASKRUN
+  * Fix potential missing kernel entry with IORING_SETUP_IOPOLL
+  * Add support and documentation for zero-copy network transmit
+  * Various optimizations
+  * Many cleanups
+  * Many man page additions and updates
+- drop handle-eintr.patch, test-xattr-don-t-rely-on-NUL-termination.patch: upstream</comment>
+    <requestid>1060106</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>82dab56ae53eb5b441fe3f0a15d426f1</srcmd5>
+    <version>2.3</version>
+    <time>1677584866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067010</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>26196304db43cb0a430563487704435b</srcmd5>
+    <version>2.3</version>
+    <time>1682193402</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-test-file-verify.t-Don-t-run-over-mlock-limit-when-r.patch
+  fixes test with kernel &lt;= 5.16 (bsc#1209723)</comment>
+    <requestid>1080969</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>158bc52859d35393ba47276568aee972</srcmd5>
+    <version>2.4</version>
+    <time>1686752938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092731</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>cd527076c85ce1708a71c1ae0decb5ae</srcmd5>
+    <version>2.4</version>
+    <time>1694459979</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108274</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>b1116c3a043c4d3c340a2cbfa160c7c5</srcmd5>
+    <version>2.4</version>
+    <time>1694971732</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111506</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>c0b454074a6bd1aadd4fbb7e35ace8e3</srcmd5>
+    <version>2.4</version>
+    <time>1701972529</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130864</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74b8abfd1a2226c32b1452db5deb7301</srcmd5>
+    <version>4.6.0</version>
+    <time>1617279401</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880140</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dafe1a59b400605cf4c65708d1a25b6b</srcmd5>
+    <version>5.0.0</version>
+    <time>1621626602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>894733</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fd41a5395c69559f875a7758b7e43d4d</srcmd5>
+    <version>5.0.0</version>
+    <time>1623443438</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dracut modules for afterburn 
+</comment>
+    <requestid>899507</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e368cebe21f70eb61df711ed89a000a3</srcmd5>
+    <version>5.0.0</version>
+    <time>1626299916</time>
+    <user>dimstar_suse</user>
+    <comment>- Forward port fix-authorized-keys-location.patch
+- Add set-default-user.patch
+  + Set the default user to suse
+- Add fix-authorized-keys-location.patch
+  + Write the ssh keys to the standard location
+- Add no-network-args.patch
+  + Networks arguments on the kernel command line are set during image build
+    there is no need for another place for a hard coded list.
+- Create target dir for afterburn to write configuration file to</comment>
+    <requestid>906250</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>bb8c04ff77668ac21501b628f04fd21a</srcmd5>
+    <version>5.0.0</version>
+    <time>1636149507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>929456</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>9330a5fe2a3b90395fb99360fe9a52e7</srcmd5>
+    <version>5.0.0</version>
+    <time>1637108050</time>
+    <user>dimstar_suse</user>
+    <comment>- No reason to exclude armv7, since it builds properly (forwarded request 931731 from Guillaume_G)</comment>
+    <requestid>931741</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>d3f2f220d4ce780446995d2012a9235d</srcmd5>
+    <version>5.0.0</version>
+    <time>1642548930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947296</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8fc4b288d3fabf231c42f0a29633f6db</srcmd5>
+    <version>5.2.0</version>
+    <time>1642633938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947375</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a1e06abbb72044af5570bcc65e17964e</srcmd5>
+    <version>5.3.0</version>
+    <time>1654004837</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>979857</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b09d86b860c46b2499933cea72e98fc1</srcmd5>
+    <version>5.4.1</version>
+    <time>1682079431</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1080839 from malikirri
+
+- Update to version 5.4.1:
+  * cargo: Afterburn release 5.4.1</comment>
+    <requestid>1080942</requestid>
+  </revision>
+</revisionlist>

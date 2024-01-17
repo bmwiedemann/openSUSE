@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Mon Nov 27 15:45:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.1:
+  * Allow users to subclass FileLock with custom keyword
+    arguments
+  * Support reentrant locking on lock file path via optional
+    singleton instance
+  * change typing-extensions to be installed only with the
+    [typing] extra
+
+-------------------------------------------------------------------
+Fri Sep  8 04:26:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on typing-extensions if < 3.11
+
+-------------------------------------------------------------------
+Thu Sep  7 11:00:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.3:
+  * Fix import ordering
+  * Exclude dependabot and pre-commit ci from release notes
+  * Create parent directories if necessary
+
+-------------------------------------------------------------------
+Tue Jun 20 16:59:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.2:
+  * Restore 'if TYPE_CHECKING' syntax for FileLock definition
+
+-------------------------------------------------------------------
+Sun Jun 11 12:40:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.1:
+  * Add 3.12 support
+  * Fix test_bad_lock_file for other OSes
+
+-------------------------------------------------------------------
+Tue Apr 25 23:29:13 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.12.0
+  * Make the thread local behaviour something the caller can
+    enable/disable via a flag during the lock creation. on by default.
+  * Better error handling on Windows.
+- from v3.11.0
+  * Make the lock thread local.
+- from v3.10.7
+  * Use fchmod instead of chmod to work around bug in PyPy via Anaconda.
+- from v3.10.6
+  * Enhance the robustness of the try/catch block in _soft.py.
+- from v3.10.5
+  * Add explicit error check as certain UNIX filesystems do not support
+    flock.
+- from v3.10.4
+  * Update os.open to preserve mode= for certain edge cases.
+- from v3.10.3
+  * Fix permission issue
+- from v3.10.2
+  * Bug fix for using filelock with threaded programs causing undesired
+    file permissions
+- from v3.10.1
+  * Handle pickle for :class:`filelock.Timeout`
+- from v3.10.0
+  * Add support for explicit file modes for lockfiles
+
+-------------------------------------------------------------------
+Fri Apr 21 12:25:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:41:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Mar 14 22:23:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.1:
+  * use time.perf_counter instead of time.monotonic
+
+-------------------------------------------------------------------
+Wed Jan  4 12:59:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.0:
+  * move to hatchling build backend
+
+-------------------------------------------------------------------
+Wed Dec 14 08:34:14 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
+Tue Dec 13 15:23:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.8.2
+  * What's Changed
+    Bump pypa/gh-action-pypi-publish from 1.5.1 to 1.6.1 by @dependabot in #178
+    Update the license classifier to "Unlicense" by @jond01 in #180
+
+- Update to version 3.8.1
+  * What's Changed
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #166
+    link to flufl.lock by @dholth in #167
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #168
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #169
+    [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #170
+    fix BaseFileLock.timeout's getter/setter being obscured by itself by @dearfl in #172
+    Fix mypy fails understanding FileLock by @gaborbernat in #177
+
+-------------------------------------------------------------------
+Wed Oct 12 03:17:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.8.0
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #149
+  * Bump actions/upload-artifact from 2 to 3 by @dependabot in #154
+  * Bump actions/download-artifact from 2 to 3 by @dependabot in #152
+  * Bump pre-commit/action from 2.0.3 to 3.0.0 by @dependabot in #151
+  * Bump actions/checkout from 2 to 3 by @dependabot in #153
+  * Bump actions/setup-python from 2 to 4 by @dependabot in #150
+  * Add timeout unit to docstrings by @jnordberg in #148
+  * Unify badges style by @DeadNews in #155
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #156
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #157
+  * Check 3.11 support by @gaborbernat in #158
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #159
+  * Bump dependencies by @gaborbernat in #160
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #162
+
+-------------------------------------------------------------------
+Fri Jun  3 15:17:25 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.7.1
+  * Ownership moved from @benediktschmitt to the tox-dev organization
+    (new primary maintainer @gaborbernat)
+  * Raise when trying to acquire in R/O or missing folder
+  * Drop python 2.7, 3.5 and 3.6 support, add type hints
+  * Document asyncio support
+  * Accept path types (like pathlib.Path and pathlib.PurePath) in the
+    constructor for FileLock objects.
+  * Add correct spelling of poll interval parameter for acquire method
+  * Enable use as context decorator
+  * More changes, see upstream changelog
+- Use PyPI tarball, switch to wheel for build (testsuite expects it)
+
+-------------------------------------------------------------------
+Mon Oct 14 13:38:01 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.
+
+-------------------------------------------------------------------
+Fri Jun  7 13:19:04 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.0.12
+  * fixed python2 setup error
+  * fixed documentation
+  * other small fixes
+
+-------------------------------------------------------------------
+Tue Mar 12 15:13:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.10:
+  * No upstream changelog
+
+-------------------------------------------------------------------
+Wed Aug  1 14:43:23 UTC 2018 - tchvatal@suse.com
+
+- Switch to github tarball
+- Enable tests
+
+-------------------------------------------------------------------
+Tue May  8 12:44:24 UTC 2018 - buschmann23@opensuse.org
+
+- initial package

@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Sat Nov 19 00:57:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.34
+  * Added about 25 functions
+
+-------------------------------------------------------------------
+Mon Dec 25 15:36:46 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.27
+  * Added functions: IsPosetAlgebra IsNthSyzygy
+    PartialOrderOfPoset Poset PosetAlgebra PosetOfPosetAlgebra
+    RestrictionViaAlgebraHomomorphism TensorAlgebraInclusion
+    TrivialExtensionOfQuiverAlgebraLevel
+  * Removed functions: PositionsProperty (moved from QPA to GAP)
+
+-------------------------------------------------------------------
+Fri Sep  8 20:12:44 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 1.26
+  * Added new functions: AlmostSplitSequence,
+    AlmostSplitSequenceInPerpT, ElementInIndecProjective,
+    IsTriangularReduced, TensorProductOfModules.
+
+-------------------------------------------------------------------
+Mon Nov 21 16:15:26 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.25
+  * Added new functions: InjectiveEnvelope, InjectiveResolution,
+    LeftApproximationByAddTHat, ReadAlgebra, RejectOfModule,
+    RightApproximationByPerpT, SaveAlgebra
+
+-------------------------------------------------------------------
+Wed Jun  8 10:08:47 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.24
+* Delete the file banner.g, as this file now is absolete.
+
+-------------------------------------------------------------------
+Tue Dec  8 16:10:33 UTC 2015 - jengelh@inai.de
+
+- Initial package (version 1.23) for build.opensuse.org

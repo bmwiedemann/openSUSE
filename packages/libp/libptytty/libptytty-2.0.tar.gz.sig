@@ -1,0 +1,2 @@
+untrusted comment: verify with dist.schmorp.de.pub
+RWSUBDizLm/GKfo5aKyqgU1KAXnIXFQ1/PHzO1GwLHoRJUPLcrvPXNoFZVf0wuKN7B8FgpfLJsK8l34r9e/aGW5TrC7ahZ8hngw=

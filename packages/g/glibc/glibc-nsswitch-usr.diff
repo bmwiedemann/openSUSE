@@ -1,0 +1,13 @@
+Index: glibc-2.33/nss/nss_database.c
+===================================================================
+--- glibc-2.33.orig/nss/nss_database.c
++++ glibc-2.33/nss/nss_database.c
+@@ -303,6 +303,8 @@ nss_database_reload (struct nss_database
+ {
+   FILE *fp = fopen (_PATH_NSSWITCH_CONF, "rce");
+   if (fp == NULL)
++    fp = fopen ("/usr" _PATH_NSSWITCH_CONF, "rce");
++  if (fp == NULL)
+     switch (errno)
+       {
+       case EACCES:

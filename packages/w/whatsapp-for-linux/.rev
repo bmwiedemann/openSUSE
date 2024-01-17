@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c90f5e92fe36ca69d2efa5332b250696</srcmd5>
+    <version>1.4.7</version>
+    <time>1666257074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029974</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b5478501ee3be28576d29b5dfa404b56</srcmd5>
+    <version>1.5.0</version>
+    <time>1667209481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * Implemented enhancements:
+    + Ctrl+P to open preferences #237
+    + Localize WFL_FRIENDLY_NAME and WFL_DESCRIPTION for the desktop file #235
+    + Simplify Config &amp; Preferences (Breaks Backward Compatibility!) #229
+    + Localization #180
+    + Start minimised #136
+  * Fixed bugs:
+    + Preferences window is not attached to the main window #236
+    + Permission issues #226
+    + Slow responding even without hardware acceleration #225
+    + Keeps freezing/spinning the CPU #224
+    + WhatsApp For Linux starts but doesnt load, keeps in loading screen forever. #223
+    + No Display with Whatsapp business account #220
+    + Does not work with hardware acceleration + does not persist preferences #216
+    + Spell check does not work #215
+    + Flatpak version not running in Arch Linux #211
+    + No Internet Connection Pop-up #209
+    + Notification icon dissapears imediately #202
+    + Auto turn off notifications #194
+  * Merged pull requests:
+    + Use official ArchLinux logo image in README #241
+    + Update Italian translation #240
+    + Add Italian translation #234
+    + Added Dutch translation #233
+    + Implement localization support #232
+    + Implement start minimized option #231
+    + Use webkit2gtk-4.1 if webkit2gtk-4.0 is not found #228</comment>
+    <requestid>1032367</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2bfa42ddd450fa29fcf06215e5a7114a</srcmd5>
+    <version>1.5.1</version>
+    <time>1672093685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * Implemented enhancements:
+    + Introduce Prefer Dark Theme #256
+  * Fixed bugs:
+    + Mic not enabled #252
+    + Flatpak and Nvidia 520.65.01 driver compatibility #227
+  * Closed issues:
+    + High CPU usage when the focus is on the main window #115
+  * Merged pull requests:
+    + Updated Dutch translation #258
+    + Update Italian translation #257
+    + Add Mageia Linux to README.md #247
+    + Add Russian translation (ru.po + desktop.in) #246</comment>
+    <requestid>1045407</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e09c7ad091606152d433e3d33ef4d25c</srcmd5>
+    <version>1.5.2</version>
+    <time>1674495230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2:
+  * Implemented enhancements:
+    + Find Russian translation and icons here #260
+    + How can I remove it from the system? #248
+  * Fixed bugs:
+    + Unable to Paste Clipboard Images in Whatsapp for Linus #268
+    + Use different compression mode for deb package #267
+    + Dark theme not appearing for window border in Linux Mint
+      21 Vanessa, Flatpak. #262</comment>
+    <requestid>1060440</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6fa06c0aec905d1bb722595e889f5e1c</srcmd5>
+    <version>1.5.3</version>
+    <time>1675095018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.3:
+  * &quot;GLIBC_2.34 not found&quot; when trying to run the program #273</comment>
+    <requestid>1061902</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a26321cc0f75b890455bfe6d42487f4</srcmd5>
+    <version>1.6.0</version>
+    <time>1675792113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0:
+  * Implemented enhancements:
+    + Notification sound #173
+  * Fixed bugs:
+    + &quot;GLIBC_2.34 not found&quot; appeared when trying to run the program
+      .deb installed OK #273
+    + Snap version displays unreadable/misplaced fonts in KDE Plasma
+      running wayland #230</comment>
+    <requestid>1063453</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f4d19fa789482adda3ea3db5dc40130f</srcmd5>
+    <version>1.6.1</version>
+    <time>1677351337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1:
+  * Implemented enhancements:
+    + Implement Ctrl+/- and Ctrl+scroll Zoom In/Out shortcuts #276
+    + WhatsApp Web: Pass [ALT] key as [CMD] #280</comment>
+    <requestid>1067719</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>36aca60fd70f8b4ca14b11830e77c0ba</srcmd5>
+    <version>1.6.2</version>
+    <time>1680370361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Workaround for audio messages #91
+  * Add french #281</comment>
+    <requestid>1076622</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ec93fe093f3999ce9efe94f147a783b4</srcmd5>
+    <version>1.6.2</version>
+    <time>1680536767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1076830</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01acc7503da569d8aea2cc9c3b79f39f</srcmd5>
+    <version>1.6.3</version>
+    <time>1685393283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.3:
+  * Implemented enhancements:
+    + Add german translations
+    + Add czech translations (very incomplete)
+    + Add hungarian translations
+  * Fixed bugs:
+    + Exit shortly after starting #289
+    + Error message when opening Whatsapp app for Linux #282
+  * Merged pull requests:
+    + Update es.po #293
+    + Explicitly specify Canberra dependency #283</comment>
+    <requestid>1089573</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ceb7a979f69d01446dd28857a8ef4d7a</srcmd5>
+    <version>1.6.4</version>
+    <time>1691502945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.4:
+  Implemented enhancements:
+  * Open the app in-window if a tray process already exists #323
+  Fixed bugs:
+  * Preferences are not saved when the app is closed to tray #325
+  * Unintuitive behavior with both &quot;start in tray&quot; + &quot;close
+    to tray&quot; enabled, especially for GNOME #320
+  * WhatsApp Notification Sound Playing Continously #308
+  * Ubuntu 22.04.1 / Wayland / DEB Not saving settings #244
+  Closed issues:
+  * chrome extension #322
+  * App so slow on fedora linux #319</comment>
+    <requestid>1102903</requestid>
+  </revision>
+</revisionlist>

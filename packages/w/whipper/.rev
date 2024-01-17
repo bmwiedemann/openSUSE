@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0c01e764582bd84487d98a714059798</srcmd5>
+    <version>0.9.0</version>
+    <time>1576063487</time>
+    <user>dimstar_suse</user>
+    <comment>Reintroduce whipper</comment>
+    <requestid>755771</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31239eae9ed72cb3afe5ead34c39f6e0</srcmd5>
+    <version>0.9.0</version>
+    <time>1576505984</time>
+    <user>dimstar_suse</user>
+    <comment>- Run testsuite</comment>
+    <requestid>757193</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bb700736dbb1e9f90bc45007a66a9ec9</srcmd5>
+    <version>0.9.0</version>
+    <time>1606913881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>852140</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>267f2dd905846a054e153df93207b85e</srcmd5>
+    <version>0.9.0</version>
+    <time>1617279444</time>
+    <user>RBrownSUSE</user>
+    <comment>- Make it build again</comment>
+    <requestid>882123</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e32fe1efedff24e303eefcf98ea974b1</srcmd5>
+    <version>0.9.0</version>
+    <time>1620158466</time>
+    <user>dimstar_suse</user>
+    <comment>- Undo single-spec abomination: this is an application, not a
+  python module, and we thus do not need all python flavors pulled
+  in.
+- Add gobject-introspection BuildRequires: the code uses
+  gobject-inrtrospection to call out to libraries; by having this
+  Build dependency. rpm will add the nescessary requires to the
+  package in plus.
+
+- Make it build again
+
+- Make it build again</comment>
+    <requestid>890321</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30b3a8b6ff3f953846ef88a2498d43cd</srcmd5>
+    <version>0.10.0</version>
+    <time>1622536774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896375</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>519f57e693c306209ed6791edf471633</srcmd5>
+    <version>0.10.0</version>
+    <time>1628675230</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add upstream commit as patch e0942417a1c267781a8b676789730457dcb2e6fa.patch
+  * Use custom YAML subclass to be compatible with ruamel_yaml&gt;=0.17</comment>
+    <requestid>911189</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0815a0216d1c204a96b8b06ca8631056</srcmd5>
+    <version>0.10.0</version>
+    <time>1636319357</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>930008</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="libpsm2" project="openSUSE:Factory">
+  <title> Intel PSM Libraries </title>
+  <description>The PSM Messaging API, or PSM API, is Intel's low-level
+user-level communications interface for the Truescale
+family of products. PSM users are enabled with mechanisms
+necessary to implement higher level communications
+interfaces in parallel environments.</description>
+  <devel project="science:HPC" package="libpsm2"/>
+</package>

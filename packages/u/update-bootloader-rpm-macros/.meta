@@ -1,0 +1,5 @@
+<package name="update-bootloader-rpm-macros" project="openSUSE:Factory">
+  <title>update-bootloader rpm macros</title>
+  <description>This package provides rpm macros for bootloader update in rpm scripts</description>
+  <devel project="Base:System" package="update-bootloader-rpm-macros"/>
+</package>

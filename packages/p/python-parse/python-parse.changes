@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Sat Jan 13 20:40:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.0:
+  * Optimize _expand_named_fields
+  * Add functionality to parse datetimes according C standard
+    format codes.
+- update to 1.19.1:
+  * Add support for sign specifiers in number formats.
+  * Fix handling of unused alignment
+  * modern packaging
+  * universal wheel
+
+-------------------------------------------------------------------
+Wed Aug 25 09:34:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19.0
+  * Fix using digit field numbering and types
+  * match trailing newline (#124)
+  * readme: fix style (#126)
+  * Add Github Actions config (#129)
+  * Docs for slice change
+  * Support slice access to results (#128)
+- from version 1.18.0
+  * Add test for stateful int_convert
+  * Make int_convert stateless
+- from version 1.17.0
+  * Make left- and center-aligned search consume up to next space
+  * adding properties to access named fields and fixed fields (#115)
+  * Fix findall case_sensitive (#113)
+- from version 1.16.0
+  * release stuff
+  * fixing issue 110 by using functor instead of inner function (#111)
+  * add failing test for bug 110
+  * Add syntax highlighting to README (#105)
+
+-------------------------------------------------------------------
+Sun Mar 15 09:40:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- No need to fetch license anymore, it is in the tarball
+
+-------------------------------------------------------------------
+Wed Mar 11 15:18:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.15.0
+  * Several bugs with parsing hex, bin and oct numbers.
+  * Handle fortran formatted float number, Bug fix & test case.
+  * Handle comparison of FixedTzOffset with other types of object
+
+-------------------------------------------------------------------
+Wed Sep 11 08:31:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.12.1:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Thu Apr 25 11:47:55 UTC 2019 - pgajdos@suse.com
+
+- version update to 1.12.0
+  * Do not assume closing brace when an opening one is found
+- added sources
+  https://github.com/r1chardj0n3s/parse/issues/82
+  + LICENSE
+
+-------------------------------------------------------------------
+Thu Feb 14 10:29:49 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.11.1:
+  * Implement __contains__ for Result instances.
+  * Introduce a "letters" matcher, since "w" matches numbers also.
+  * Fix deprecation warnings around backslashes in regex strings
+    (thanks Mickaël Schoentgen). Also fix some documentation
+    formatting issues.
+  * We now honor precision and width specifiers when parsing
+    numbers and strings, allowing parsing of concatenated
+    elements of fixed width (thanks Julia Signell)
+  * Add LICENSE file at request of packagers. Correct handling of
+    AM/PM to follow most common interpretation. Correct parsing
+    of hexadecimal that looks like a binary prefix. Add ability
+    to parse case sensitively. Add parsing of numbers to Decimal
+    with "F" (thanks John Vandenberg)
+  * Add regex_group_count to with_pattern() decorator to support
+    user-defined types that contain brackets/parenthesis (thanks
+    Jens Engel)
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:11 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Jul 29 13:36:35 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu May 24 17:36:59 UTC 2018 - toddrme2178@gmail.com
+
+- Spec file cleanups
+
+-------------------------------------------------------------------
+Wed Oct 18 16:45:12 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Update to version 1.8.2
+  * No changelog
+
+-------------------------------------------------------------------
+Fri Jun  3 15:49:11 UTC 2016 - toddrme2178@gmail.com
+
+- Initial version
+

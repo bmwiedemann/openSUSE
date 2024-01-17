@@ -1,0 +1,11 @@
+<package name="gnu-unifont-fonts" project="openSUSE:Factory">
+  <title>GNU Unifont fonts</title>
+  <description>The GNU Unifont by Roman Czyborra.
+The Standard Unifont TTF.
+Glyphs above the Unicode Basic Multilingual Plane.
+Unicode ConScript Unicode Registry (CSUR) PUA Glyphs.
+
+</description>
+  <devel project="M17N:fonts" package="gnu-unifont-fonts"/>
+  <url>https://unifoundry.com/unifont.html</url>
+</package>

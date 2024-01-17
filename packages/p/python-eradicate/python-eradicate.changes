@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Mon Sep 18 19:58:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * This is the last release with Python2 support:
+  * True Windows support
+  * New console script
+
+-------------------------------------------------------------------
+Tue Jun 13 09:06:31 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Thu Aug 25 09:45:28 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.0
+  * New class-based API.
+- No further release notes
+
+-------------------------------------------------------------------
+Thu Feb 14 01:29:57 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Feb 11 23:10:51 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate tests
+- Update to v1.0
+- Fix %check
+- Remove unneeded build dependency on python-devel
+
+-------------------------------------------------------------------
+Fri Oct 20 16:14:51 UTC 2017 - toddrme2178@gmail.com
+
+- initial version for 0.2.1

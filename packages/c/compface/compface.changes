@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Wed Oct  8 12:45:25 UTC 2014 - tchvatal@suse.com
+
+- Grab patches from debian to actually work correctly
+  * added compface-1.5.2-destdir.diff
+  * added libcompface_1.5.2-5.diff.gz
+  * modified compface-1.5.2.diff
+- Create test to verify the thing works
+  * added compface-test.xbm
+- Use shared library
+- Cleanup the specfile
+
+-------------------------------------------------------------------
+Tue Mar 27 08:08:10 UTC 2012 - cfarrell@suse.com
+
+- license update: MIT
+  Use SPDX license
+
+-------------------------------------------------------------------
+Fri Dec  2 07:46:55 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Fri Dec 18 15:48:31 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Mon May 22 17:46:25 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:09 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Oct  5 09:49:40 CEST 2005 - schwab@suse.de
+
+- Update to compface 1.5.2.
+
+-------------------------------------------------------------------
+Mon Jan 10 15:34:06 CET 2005 - schwab@suse.de
+
+- Update to compface 1.5.
+
+-------------------------------------------------------------------
+Sat Sep 11 20:19:52 CEST 2004 - schwab@suse.de
+
+- Update to compface 1.4.
+
+-------------------------------------------------------------------
+Mon May 12 21:08:28 CEST 2003 - schwab@suse.de
+
+- Fix filelist.
+
+-------------------------------------------------------------------
+Wed Apr  2 16:50:57 CEST 2003 - schwab@suse.de
+
+- Remove useless %ifarch ix86.
+
+-------------------------------------------------------------------
+Wed Apr  2 10:04:31 CEST 2003 - sf@suse.de
+
+-  add -fPIC for #ifnarch ix86 
+
+-------------------------------------------------------------------
+Fri Nov 29 11:00:44 CET 2002 - schwab@suse.de
+
+- Fix use of errno.
+
+-------------------------------------------------------------------
+Thu Apr 18 10:17:54 CEST 2002 - schwab@suse.de
+
+- Properly use %{_libdir}.
+
+-------------------------------------------------------------------
+Tue Jan 29 21:08:16 CET 2002 - schwab@suse.de
+
+- Use %{_libdir}.
+
+-------------------------------------------------------------------
+Mon Nov 26 14:39:54 CET 2001 - mfabian@suse.de
+
+- add two small utilities 'xbm2face' and 'xbm2xface.pl' to
+  create an X-Face: header from an xbm file
+- bzip2 sources
+
+-------------------------------------------------------------------
+Fri Sep 29 18:05:29 CEST 2000 - schwab@suse.de
+
+- Initial version 1.3.
+

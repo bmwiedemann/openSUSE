@@ -1,0 +1,23 @@
+Index: cppreference-doc-20220730/commands/preprocess_cssless.py
+===================================================================
+--- cppreference-doc-20220730.orig/commands/preprocess_cssless.py
++++ cppreference-doc-20220730/commands/preprocess_cssless.py
+@@ -72,8 +72,16 @@ def preprocess_html_merge_css(root, src_
+ 
+     with warnings.catch_warnings():
+         warnings.simplefilter("ignore")
+-        premailer = Premailer(root, base_url=src_path,
+-                              disable_link_rewrites=True, remove_classes=True)
++        try:
++            # Premailer >= 3.9
++            premailer = Premailer(root, base_url=src_path,
++                                  disable_link_rewrites=True, remove_classes=True,
++                                  allow_loading_external_files=True)
++        except:
++            # Premailer < 3.9
++            premailer = Premailer(root, base_url=src_path,
++                                  disable_link_rewrites=True, remove_classes=True)
++
+         root = premailer.transform().getroot()
+ 
+     return output.getvalue()

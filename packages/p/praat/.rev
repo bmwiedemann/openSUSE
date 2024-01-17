@@ -1,0 +1,432 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>40721b2d30503a7d7f55f165cbb5aadd</srcmd5>
+    <version>6.0.28</version>
+    <time>1497362900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>493400</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb01ca095f08a1bfbaa6efdd3e251313</srcmd5>
+    <version>6.0.29</version>
+    <time>1498046279</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>505103</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b8e23877c075a88e4ddede616aa64e99</srcmd5>
+    <version>6.0.29</version>
+    <time>1498485283</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506037</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab635736041d6480db3eca6a8ea64e64</srcmd5>
+    <version>6.0.30</version>
+    <time>1500975610</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512181</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e47f44bbfd6bca236bbba905d08ac6ff</srcmd5>
+    <version>6.0.30</version>
+    <time>1501406852</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>513022</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>429433856bcad854cd115e44887504c4</srcmd5>
+    <version>6.0.31</version>
+    <time>1503393103</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518064</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad383df617190611e13268aa3d4c84bc</srcmd5>
+    <version>6.0.33</version>
+    <time>1506594898</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528885</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7706fc6cb3842e9d3ac5190c63633606</srcmd5>
+    <version>6.0.34</version>
+    <time>1507897096</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533335</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cb5e386cd7f3e8ef230513fbc65333cf</srcmd5>
+    <version>6.0.35</version>
+    <time>1508316723</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534336</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>210cb1dd9b64c8b3ba5a58cfbbb3508c</srcmd5>
+    <version>6.0.36</version>
+    <time>1510506225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540773</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4613422131a40066a0f572c0bd3afa97</srcmd5>
+    <version>6.0.37</version>
+    <time>1517932042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572393</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>52ad8361d2f04ed362a33577487d87ee</srcmd5>
+    <version>6.0.38</version>
+    <time>1522404563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592528</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ebfb21e0a673432a414a8091fea2ee18</srcmd5>
+    <version>6.0.40</version>
+    <time>1526463557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606619</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>340bfef0d49b64f654820ad4c1a675fb</srcmd5>
+    <version>6.0.41</version>
+    <time>1533732763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627807</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>170ef4d79f6a33f1a5105f24128a4c73</srcmd5>
+    <version>6.0.42</version>
+    <time>1534543498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629568</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>799871ea85961de0c3b56e494dec7f56</srcmd5>
+    <version>6.0.43</version>
+    <time>1537018576</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634505</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>800894c7b1f3e522aa0391fa4e1f998d</srcmd5>
+    <version>6.0.45</version>
+    <time>1546535230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662283</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e72653cdc7ab7bbe238787f3e24e2c06</srcmd5>
+    <version>6.0.46</version>
+    <time>1546695756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662757</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8adc0b1074269e8fed0e0981237cfae8</srcmd5>
+    <version>6.0.47</version>
+    <time>1549916714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673019</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c55c4b04eb7297acc7d8c15a7ecea50b</srcmd5>
+    <version>6.0.48</version>
+    <time>1550573993</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>676844</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2d9a56cad643f5ea8901a620d7f2b3f0</srcmd5>
+    <version>6.0.49</version>
+    <time>1551687805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680996</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>77f9074aa2cfd85ab9640c0a6fa1deb6</srcmd5>
+    <version>6.1</version>
+    <time>1563259251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715012</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3737edab2da8fcb1032ab353e0b48d2e</srcmd5>
+    <version>6.1.07</version>
+    <time>1575282686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752558</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ed4917c1ba4243a272c6b947273469b0</srcmd5>
+    <version>6.1.10</version>
+    <time>1585085776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787754</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b597a7c85ab6f9912ecc25fcbda4615f</srcmd5>
+    <version>6.1.22</version>
+    <time>1601044596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837356</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c819adb882f3b65e83d7483c86f83386</srcmd5>
+    <version>6.1.26</version>
+    <time>1602155632</time>
+    <user>dimstar_suse</user>
+    <comment>- Use icns-utils instead of heavy duty ImageMagick and install
+  multiple-size icons in the proper folders
+ - Update to version 6.1.26
+  * Removed a bug that caused Praat to crash when clicking Change
+    in the Inspect window. 
+  version 6.1.25
+  * Added FormantPath and FormantPathEditor.
+  * Removed a bug that caused Praat to crash when double-clicking
+    in the Sound window.
+  * Removed a bug that caused Praat to crash when raising the About
+    window twice.
+  * Removed a bug that caused Praat to crash when zooming in to a
+    region in the Sound window without samples, when a pitch curve
+    was visible.
+  * Removed a bug that caused Praat to crash when pasting 
+    in a region in the Sound window without samples. 
+  version 6.1.24
+  * Got rid of flashing during a running cursor or when making a
+    selection in the Sound window or the Picture window. 
+  version 6.1.23
+  * Corrected a bug that caused the buttons at the top of a manual
+    window to be overwritten with text when scrolling. 
+</comment>
+    <requestid>840114</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>fe3fb37ed9cc69b418331156f04d5e23</srcmd5>
+    <version>6.1.38</version>
+    <time>1611262676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.1.38
+  * Scripting: string vectors, empty$# (), readLinesFromFile$#
+    (), fileNames$# (), folderNames$# (), splitByWhitespace$# ().
+  * Sound files: open Ogg Vorbis files and Opus files.
+  version 6.1.37:
+  * TextGrid window: removed a bug that caused Praat to crash
+    when option-clicking or command-clicking a boundary when
+    another boundary was selected on a point tier.
+  * PowerCepstrogram: more precise intergration, so that the
+    cepstral peak prominence is now a continuous function of time.
+  * TextGrid: Get points (preceded): removed a bug that caused
+    Praat to crash under some edge conditions.
+  * Scripting: tryToWriteFile () and tryToAppendFile () should
+    not be available in manuals.
+  version 6.1.36:
+  * Scripting: tryToWriteFile (), tryToAppendFile (); formulas
+    can have a size of 1 million.
+  * Obscured scripts: error messages always disclosed.
+  * IPA chart: sacrifice laminality symbol for breathiness
+    symbol.
+  version 6.1.35:
+  * Scripting: sort#(), shuffle#(), to#(), from_to#(),
+    from_to_by#(), from_to_count#(), between_by#(),
+    between_count#().
+  version 6.1.34:
+  * SoundRecorder always a white background, instead of a
+    different background on each platform.
+  version 6.1.32:
+  * Made Text width... work correctly from batch.
+  * Reinstalled Tab shortcut in Sound window.
+  version 6.1.31:
+  * First GTK-3 version.
+  version 6.1.28:
+  * Pause forms: text fields can be multi-line.
+  * Removed a bug that caused Praat to crash when editing a
+    PitchTier.
+  * Script window: got rid of too many history entries after
+    dragging in the Picture window.
+  version 6.1.27:
+  * Demo window: make sure that the contents of the window
+    become visible more often without calling demoShow() or
+    demoWaitForInput().
+- Refreshed praat-use_system_libs.patch
+- Switched build to gtk3
+</comment>
+    <requestid>865499</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9773d88ae14f4d8b16de9f8507780938</srcmd5>
+    <version>6.1.41</version>
+    <time>1618387875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885007</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cb9f23b7794006df855767e6f3e7bf59</srcmd5>
+    <version>6.1.48</version>
+    <time>1622839421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897339</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ad028c7afcc945dc887c771e5c888846</srcmd5>
+    <version>6.3.02</version>
+    <time>1670058217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.3.01
+- Add praat-allow-system-flags.patch: allow system specified  compiler and linker flags to be incorporated into appropriate flags in the makefile; in particular this allows us to incorporate rpm optflags without using sed snippets.
+- Rebase praat-use_system_libs.patch to apply cleanly.
+- Clean up some trailing white-spaces in changelog entries.
+- Drop praat-gcc11.patch: incorporated upstream.</comment>
+    <requestid>1039635</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9db85da0311cb45d48205407ac2133af</srcmd5>
+    <version>6.3.03</version>
+    <time>1673209524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1056795</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7f22548631c4604836c8b1ed8b6335a0</srcmd5>
+    <version>6.3.08</version>
+    <time>1676911587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1066777</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>589337eea3c7f42bb491927131a5662b</srcmd5>
+    <version>6.3.09</version>
+    <time>1679069079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072513</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6bfc1964a849740ca9af318ca28948f4</srcmd5>
+    <version>6.3.10</version>
+    <time>1683728255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1085723</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>eb442485f80a91f6b6441a6e52532cc0</srcmd5>
+    <version>6.3.11</version>
+    <time>1690370657</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100667</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3441ac9ae3a35e3753c09c68f8a9c17d</srcmd5>
+    <version>6.3.12</version>
+    <time>1690654248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101318</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bcd3cc91aa26a7f2f39b4cf49d1b5977</srcmd5>
+    <version>6.3.13</version>
+    <time>1691594693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102900</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3f1118df6a5836d3869f710e612db9a9</srcmd5>
+    <version>6.3.16</version>
+    <time>1694113972</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109317</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2a8444154fec50a40ca13b9a7e569e80</srcmd5>
+    <version>6.3.17</version>
+    <time>1694808298</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111402</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>67d8a4f4b65b2d13837c108d45cfd24a</srcmd5>
+    <version>6.3.18</version>
+    <time>1697567061</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1118016</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ff6009fe461d95de9cf93a63db5e9f95</srcmd5>
+    <version>6.3.20</version>
+    <time>1698780349</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1121357</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2129e398f464eb655efaebd9ff219e43</srcmd5>
+    <version>6.4</version>
+    <time>1701632980</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130567</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>85b245057ceaee90c1eef9ee335bc54f</srcmd5>
+    <version>6.4.01</version>
+    <time>1702405938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1132623</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>4395a9e1087fd9ba455e7da5ccc0db7e</srcmd5>
+    <version>6.4.02</version>
+    <time>1704659966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1137268</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d5e20b3bc42321620af88d7459dfe78e</srcmd5>
+    <version>6.4.04</version>
+    <time>1705099628</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138376</requestid>
+  </revision>
+</revisionlist>

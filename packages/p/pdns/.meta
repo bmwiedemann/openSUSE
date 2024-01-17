@@ -1,0 +1,8 @@
+<package name="pdns" project="openSUSE:Factory">
+  <title>Modern, advanced and high performance authoritative-only nameserver</title>
+  <description>The PowerDNS Nameserver is a modern, advanced and high performance
+authoritative-only nameserver. It is written from scratch and conforms
+to all relevant DNS standards documents. Furthermore, PowerDNS
+interfaces with almost any database.</description>
+  <devel project="server:dns" package="pdns"/>
+</package>

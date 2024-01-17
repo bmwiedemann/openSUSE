@@ -1,0 +1,9 @@
+<package name="kphotoalbum" project="openSUSE:Factory">
+  <title>KPhotoAlbum</title>
+  <description>
+	A tool for administration of photo collections.
+	It can be used to tag photos.
+  </description>
+  <devel project="KDE:Extra" package="kphotoalbum"/>
+  <url>http://www.kphotoalbum.org/</url>
+</package>

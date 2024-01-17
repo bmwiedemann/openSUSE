@@ -1,0 +1,7 @@
+<package name="perl-Module-Info" project="openSUSE:Factory">
+  <title>Information about Perl modules</title>
+  <description>Module::Info gives you information about Perl modules *without actually
+loading the module*. It actually isn't specific to modules and should work
+on any perl code.</description>
+  <devel project="devel:languages:perl" package="perl-Module-Info"/>
+</package>

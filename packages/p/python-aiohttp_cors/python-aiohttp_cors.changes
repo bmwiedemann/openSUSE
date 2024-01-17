@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Apr 21 12:21:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:39:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Jan 24 16:49:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add 412.patch to support python 3.11 gh#aio-libs/aiohttp-cors#412
+
+-------------------------------------------------------------------
+Thu Aug 18 15:28:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile, remove coverage
+
+-------------------------------------------------------------------
+Wed Dec 15 08:04:25 UTC 2021 - pgajdos@suse.com
+
+- pytest-runner is not required for build
+
+-------------------------------------------------------------------
+Tue Jun  2 18:57:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Add URL tag
+- Package LICENSE and README
+- Rename specfiles and changes files to match the package name
+  * python-aiohttp-cors -> python-aiohttp_cors
+- Add patches to fix the unit tests:
+  * 0001-Fix-tests.patch
+  * 0001-215-fixing-exception-message-216.patch
+  * 278.patch (gh#278)
+
+-------------------------------------------------------------------
+Mon Apr  2 07:14:38 UTC 2018 - adrian@suse.de
+
+- update to version 0.7.0
+
+-------------------------------------------------------------------
+Sun Dec 31 09:16:55 UTC 2017 - adrian@suse.de
+
+- package version 0.6.0
+

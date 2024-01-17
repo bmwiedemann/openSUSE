@@ -1,0 +1,7 @@
+<package name="libmaia" project="openSUSE:Factory">
+  <title>XML-RPC library for Qt</title>
+  <description>libmaia is a XML-RPC library for Qt.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libmaia"/>
+</package>

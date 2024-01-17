@@ -1,0 +1,2 @@
+%__mingw64_cmake_provides	%{_rpmconfigdir}/mingw64-cmake.prov
+%__mingw64_cmake_path		^(%{_mingw64_libdir}/cmake|%{_mingw64_datadir})/.*/.*(Config\.cmake|-config\.cmake)$

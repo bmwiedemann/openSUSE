@@ -1,0 +1,10 @@
+<package name="qt6-sensors" project="openSUSE:Factory">
+  <title>Qt Sensors API to access sensor hardware</title>
+  <description>The Qt Sensors API provides access to sensor hardware via QML and C++
+interfaces. The Qt Sensors API also provides a motion gesture recognition API
+for devices.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-sensors"/>
+  <url>https://www.qt.io</url>
+</package>

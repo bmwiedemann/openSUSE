@@ -1,0 +1,9 @@
+<package name="superlu" project="openSUSE:Factory">
+  <title>SuperLU matrix solver</title>
+  <description>SuperLU is an algorithm that uses group theory to optimize LU
+decomposition of sparse matrices. It's the fastest direct solver for
+linear systems that the author is aware of.
+
+Docu can be found on http://www.netlib.org.</description>
+  <devel project="science" package="superlu"/>
+</package>

@@ -1,0 +1,633 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e9f5ce13025c82725551dc6f3a9cce18</srcmd5>
+    <version>6.6.2</version>
+    <time>1607714224</time>
+    <user>dimstar_suse</user>
+    <comment>fancy new package</comment>
+    <requestid>854869</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>03dcc3c17037f3941ff4607a2a0b4dce</srcmd5>
+    <version>6.6.2</version>
+    <time>1608031877</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only on supported architectures
+- Install example scripts as doc
+- Supress some warning
+- Install config and systemd service from arch linux
+- Switch to systemwide config json
+- Correct filename in OpenCL library loader with patch correct-opencl-file.patch
+- Add recommended package libOpenCL1 for OpenCL support</comment>
+    <requestid>855806</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>febe97682ccc4d7f87b30d276a095e95</srcmd5>
+    <version>6.7.0</version>
+    <time>1608729717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>858217</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29cb977142a87c23eee31d27261e1755</srcmd5>
+    <version>6.7.1</version>
+    <time>1610558413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862520</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d3ba16b4afac94e98c4920009d0a0751</srcmd5>
+    <version>6.7.2</version>
+    <time>1611262491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865101</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a88ae7ca03301995076bb42e0f57927a</srcmd5>
+    <version>6.8.0</version>
+    <time>1612272358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868565</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>943b9bcd7301fd65b807a52cde61b46c</srcmd5>
+    <version>6.8.1</version>
+    <time>1612781270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870194</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52e16cccd042728a279dc5a52253cc4b</srcmd5>
+    <version>6.8.2</version>
+    <time>1613774687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>873631</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea30c9845e224eaa80f4b89aa319fa5d</srcmd5>
+    <version>6.9.0</version>
+    <time>1614274194</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874965</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bca598dfc3f87362396611521b31f54e</srcmd5>
+    <version>6.10.0</version>
+    <time>1615363010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877811</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a43da3a6b4501a021f2be5940e8e0b7</srcmd5>
+    <version>6.11.2</version>
+    <time>1618387863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.11.2:
+  * v6.11.2
+  * Update CHANGELOG.md
+  * Update llhttp to v5.1.0
+  * #2207 Fixed regression in HTTP parser.
+  * v6.11.2-dev
+  * v6.11.1
+  * Update CHANGELOG.md
+  * Fixed broken &quot;coin&quot; setting functionality
+  * v6.11.0
+  * Update CHANGELOG.md
+  * #2234 Use const_cast.
+  * Fixed cn-heavy for GCC-8
+  * fix build error on gcc 9.3.0
+  * Update randomx.cmake
+  * Fixed compilation for ARM
+  * Don't use RandomX JIT if WITH_ASM=OFF
+  * remove useless v4_random_math_init if algo is not cn/r
+  * Add missing include
+  * setBlob should run after setAlgorithm
+  * Optimize cn-heavy in GCC builds
+  * Optimized cn-heavy
+  * Fixed use-after-free bug when exiting
+  * v6.11.0-dev
+  * Added command line options --dns-ipv6 and --dns-ttl.
+  * Added DNS config.
+  * New DNS implementation.
+  * Added DnsRecords class.
+  * Improved DnsRecord class.
+  * Fix `vld1q_u8_x4` compilation error with GCC 10.2</comment>
+    <requestid>884889</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f4032bd465f44eb7ba5820d766fe548</srcmd5>
+    <version>6.12.0</version>
+    <time>1619107446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.12.0:
+  * v6.12.0
+  * Update CHANGELOG.md
+  * RandomX: optimized IMUL_RCP instruction
+  * Update CHANGELOG.md
+  * Optimized cn/upx for Zen3
+  * Fix dvision by zero check in percent()
+  * Fixed rounding mode after running cn/upx
+  * v6.12.0-dev
+  * Optimized cn/upx2 for Ryzen CPUs
+  * Update CnHash.cpp
+  * Added support for Uplexa (cn/upx2 algorithm)
+  * Added support for --user command line option for the benchmark.
+  * Show total hashrate if compiled without OpenCL
+  * v6.11.3-dev</comment>
+    <requestid>887405</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cfa584b589ac94916dae42208c6fa7da</srcmd5>
+    <version>6.12.1</version>
+    <time>1619447968</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.12.1:
+  * v6.12.1
+  * Update CHANGELOG.md
+  * v6.12.1-dev
+  * Fixed Zen3 asm for cn/upx2</comment>
+    <requestid>888387</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d58f3e7fa75606a4b2eaf51110d48e42</srcmd5>
+    <version>6.12.2</version>
+    <time>1622536764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.12.2:
+  * v6.12.2
+  * Update CHANGELOG.md
+  * RandomX: fix broken light mode mining
+  * Add &quot;argon2/ninja&quot; algorithm alias.
+  * RandomX ARMv8: optimized dataset read
+  * RandomX: rewrote dataset read code
+  * RandomX: added BMI2 version for scratchpad prefetch
+  * Enabled IMUL_RCP optimization for light mode mining
+  * Regenerate OpenCL headers.
+  * Fix CL code for KawPow where it assumes everything is AMD
+  * Fixed broken light mode mining on x86
+  * Fixup MacOS CUDA backend default loader name
+  * Update openssl version to 1.1.1k
+  * ...and --cpu-affinity.
+  * #2351 Fixed help output for --cpu-priority option.
+  * Update sse2neon.h
+  * Fix AES detection on FreeBSD on ARM
+  * Update randomx_boost.sh
+  * Add  missing allow_writes=on to randomx_boost.sh
+  * #2280 Disable GPU backends in benchmark mode.
+  * Removed unnecessary system call.
+  * v6.12.2-dev
+  * support builtin msr</comment>
+    <requestid>896293</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6d6dc58408fcabc69343ad06cd0a8999</srcmd5>
+    <version>6.13.1</version>
+    <time>1625675438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.13.1:
+  * v6.13.1
+  * Update CHANGELOG.md
+  * v6.13.1-dev
+  * Fix: don't send miner signature during regular mining
+  * v6.13.0
+  * Update CHANGELOG.md
+  * v6.13.0-dev
+  * Correct handling of block submit responses for Dero
+  * Update signing algorithm
+  * Add token support for online benchmark.
+  * Added profiling
+  * Fixed GCC warnings
+  * Fix Wownero hardfork version
+  * Proxy miner signature support
+  * Proxy miner signature support (WIP)
+  * More sanity checks
+  * More error handling in DaemonClient::parseJob
+  * Fixed CalculateMerkleTreeHash
+  * BlockTemplate: miner tx and root hash updating
+  * Fix buffer size in generateMinerSignature
+  * Added support for solo mining with miner signatures (Wownero)
+  * Cleanup
+  * Fixed random32_unbiased
+  * Secret key derivation
+  * Added signature functions
+  * Cryptonote tools WIP
+  * v6.12.3-dev
+
+- Update to version 6.12.2:</comment>
+    <requestid>904545</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>aea73f6eef153719f19be9ed3b2b357b</srcmd5>
+    <version>6.14.1</version>
+    <time>1629917909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.14.1:
+  * v6.14.1
+  * Update CHANGELOG.md
+  * Fix algorithms order.
+  * Cleanup.
+  * Update CnHash.cpp
+  * Fixed Termux build
+  * Fix Job::getNumTransactions.
+  * Fix cn-pico name.
+  * Removed shortName.
+  * Removed duplicate strings.
+  * Fix typo.
+  * Implemented stable algorithm ids.
+  * Optimize CnHash storage.
+  * #2527 Fix narrowing conversion.
+  * namespace cleanup.
+  * v6.14.1-dev
+  * v6.14.0
+  * v6.14.0-dev
+  * Show the number of transactions in pool job
+  * #2492 Add missing --huge-pages-jit command line option.
+  * ZeroMQ support for solo mining
+  * #2476 Fixed crash in DMI memory reader.
+  * Updates from xmrig-proxy
+  * Sync with proxy.
+  * v6.13.2-dev
+- Drop disable-forced-donation.patch</comment>
+    <requestid>914210</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55981200670e2679aed70576170e73d9</srcmd5>
+    <version>6.15.0</version>
+    <time>1630617617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.15.0:
+  * v6.15.0
+  * Fixed class/struct inconsistency.
+  * Update CHANGELOG.md
+  * Fixed clang build.
+  * AstroBWT: add AVX2 Salsa20 implementation
+  * Added support for new CUDA plugin API.
+  * v6.15.0-dev
+  * #2555 Update deps.
+  * Increase RANDOMX_PROGRAM_MAX_SIZE
+  * Update hwloc for MSVC.
+  * Fixed Algorithm id
+  * Added Graft RandonX
+  * Update rapidjson.
+  * Cleanup ARM code.
+  * Fixed build on Linux.
+  * Code cleanup based on Clang-Tidy.
+  * Add missing files.
+  * Update BlockTemplate class.
+  * Add global wallet address parser for DaemonClient.
+  * Update Coin, BlobReader and WalletAddress.
+  * v6.14.2-dev</comment>
+    <requestid>915700</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7bd8d205a3f5e82fd9e576c111fd0aaf</srcmd5>
+    <version>6.15.1</version>
+    <time>1632522926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.15.1:
+  * v6.15.1
+  * Update CHANGELOG.md
+  * Added Windows taskbar icon colors
+  * Remove unnecessary string.
+  * Fix --threads generates &quot;*&quot; profile without &quot;kawpow&quot;:false to negate it.
+  * Fix compile warning when WITH_RANDOMX=OFF
+  * Fixed Windows 7 compatibility
+  * Fixup RandomX naming consistency
+  * v6.15.1-dev</comment>
+    <requestid>921224</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>98a172a4250f51ad5cc1d3d5f0e07d2d</srcmd5>
+    <version>6.15.2</version>
+    <time>1633542594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.15.2:
+  * v6.15.2
+  * Update CHANGELOG.md
+  * Added &quot;--versions&quot; alias.
+  * Removed uv_os_gethostname call for all OS.
+  * Fix: AstroBWT auto-config ignored max-threads-hint
+  * v6.15.2-dev</comment>
+    <requestid>923451</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7dbaed7b872acfc6b73f8356555456c9</srcmd5>
+    <version>6.15.3</version>
+    <time>1636663106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.15.3:
+  * v6.15.3
+  * Update CHANGELOG.md
+  * Fix various memory leaks
+  * Fix MSVC compilation error
+  * AstroBWT: fixed rare incorrect hashes
+  * AstroBWT even bigger speedup
+  * AstroBWT speedup
+  * Code cleanup.
+  * fix: expand validation of tx_extra for merge mining tag
+  * Cap max threads to 4096 with nVidia OpenCL
+  * Adjust API version logic
+  * Adjust definitions and replace literal 0x4038
+  * Revert amd_bitalign/amd_bfe polyfills
+  * Apply &quot;no-static-without-amd&quot; fixes
+  * Attempt repair of cn/r output-array access problem
+  * Second try at fixing cn/r atomic_inc() call
+  * Attempt fix for cn/r on Apple-AMD
+  * Add Ellesmere correctly (still just a Polaris alias)
+  * Add every Apple AMD GPU type
+  * Possibly fix problem with clGetProgramInfo crash
+  * Readjust OclDevice logic and add OCL_VENDOR_APPLE
+  * Fix #2583 compiling without kawpow (string ref is nonexistent then)
+  * v6.15.3-dev</comment>
+    <requestid>930878</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>986d1c934fcad445c24d94e6c4a61eb7</srcmd5>
+    <version>6.16.2</version>
+    <time>1638560142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.16.2:
+  * v6.16.2
+  * Update CHANGELOG.md
+  * #2771 Fixed environment variables support in EthStratumClient.
+  * Compilationn fixes
+  * GhostRider benchmark: added 20 more possible rounds
+  * Updated changelog and GhostRider readme
+  * Compiler fix
+  * Refactored Chrono::highResolutionMSecs()
+  * Explicitly use QueryPerformanceCounter() on Windows
+  * VAES crash fixes
+  * v6.16.2-dev
+  * v6.16.1
+  * Fixed Clang build.
+  * Check compiler support for VAES
+  * Disable VAES in 32-bit builds
+  * Fix compile for VAES support with GCC&lt;10
+  * v6.16.1-dev
+  * Added VAES support for Cryptonight variants
+  * More GhostRider fixes
+  * Slash and burn EOL whitespace everywhere
+  * GhostRider hotfixes
+  * v6.16.0
+  * Update CHANGELOG.md
+  * Added GhostRider release notes
+  * Add GhostRider support for AutoClient.
+  * Only initGhostRider() when job is in the family
+  * Benchmark support for GhostRider (offline only)
+  * v6.16.0-dev
+  * GhostRider: fixed invalid hashes on ARMv8</comment>
+    <requestid>935377</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea24686c0480004cc497e9bf47e5d507</srcmd5>
+    <version>6.16.3</version>
+    <time>1643228822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.16.3:
+  * v6.16.3
+  * Update CHANGELOG.md
+  * KawPow OpenCL: build next period only when it's not in cache
+  * KawPow OpenCL: use separate UV loop for building programs
+  * Update CHANGELOG.md
+  * Add missing DNS options to config example.
+  * Fixed GhostRider benchmark on single-core systems
+  * Fix for short responses from some Raptoreum pools
+  * Add support for client.reconnect method
+  * RandomX: don't restart mining threads when the seed changes
+  * GhostRidere: set correct priority for helper threads
+  * Update README.md
+  * Fixed cn-heavy in 32-bit builds
+  * Updated GhostRider documentation
+  * Fixed &quot;READY threads X/X&quot; display after algo switching
+  * v6.16.3-dev
+  * armv7 compilation fix</comment>
+    <requestid>949177</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>819a71424364503f1be16386a3cb05b3</srcmd5>
+    <version>6.16.4</version>
+    <time>1644435562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.16.4:
+  * v6.16.4
+  * Update CHANGELOG.md
+  * #2910 Fixed donation for GhostRider/RTM.
+  * Add MSVC/2022 to version.h
+  * Fixed unaligned memory accesses
+  * v6.16.4-dev
+  * Fixed armv7 compilation</comment>
+    <requestid>952718</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b2bcf9cb8eb6e54584ecbc4c76fccb7e</srcmd5>
+    <version>6.17.0</version>
+    <time>1649450779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.17.0:
+  * v6.17.0
+  * Disable donate for astrobwt/v2.
+  * Update CHANGELOG.md
+  * v6.17.0-dev
+  * Fixed compilation error
+  * Optimized keccak
+  * Fixed AstroBWT OpenCL config generation
+  * Dero HE (astrobwt/v2) OpenCL support
+  * Dero HE (astrobwt/v2) CUDA config generator
+  * Fixed out of bounds access in astrobwt/v2
+  * Update hwloc for MSVC builds.
+  * #2941 Update deps scripts.
+  * Added alternative algo names for Dero HE
+  * Show block/miniblock counters more often
+  * DaemonClient: fixed broken `coin` setting
+  * Dero HE fork support (astrobwt/v2 algorithm)
+  * Fixed displayed DMI memory information for empty slots.
+  * Fixed GhostRider with hwloc disabled
+  * v6.16.5-dev</comment>
+    <requestid>967848</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9b7e49f4ed11a9f7bd37376bb6df3898</srcmd5>
+    <version>6.18.0</version>
+    <time>1658162082</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 6.18.0:
+  * v6.18.0
+  * v6.18.0-dev
+  * Update hwloc for msvc.
+  * Update deps.
+  * Better fix for daemon solo mining with ZMQ
+  * Improved daemon ZMQ mining stability
+  * Fixed ZMQ debug log
+  * Monero v15 network upgrade support
+  * Fixed debug GhostRider build
+  * Removed deprecated AstroBWTv1 and v2
+  * Fixes for 32-bit ARM
+  * Fixed unaligned memory read in DMI
+  * Fixed being unable to resume from pause-on-battery
+  * Fixed --cpu-priority not working sometimes
+  * Removed old AstroBWT algorithm
+  * v6.17.1-dev
+
+- Update to version 6.17.0:
+  * Add armv7 to supported architectures</comment>
+    <requestid>989992</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f30e657041273cfae9a27cae0f48b437</srcmd5>
+    <version>6.18.1</version>
+    <time>1667389644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.18.1:
+  * v6.18.1
+  * Update CHANGELOG.md
+  * Added Zen4 to randomx_boost.sh
+  * RandomX: added MSR mod for Zen 4
+  * Update CHANGELOG.md
+  * Fix: protectRX flushed CPU cache only on MacOS/iOS
+  * Update m_size only if blob was set successfully
+  * Don't reset when pool sends the same job blob
+  * RandomX: optimized CFROUND elimination more
+  * RandomX: optimized CFROUND elimination
+  * RandomX: added Blake2 AVX2 version
+  * Fixed GCC 12 warnings
+  * Update README.md
+  * v6.18.1-dev
+  * Recognize armv7ve as valid ARMv7 target.</comment>
+    <requestid>1032798</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b6bf96c8e912c56cd638ec0b6f88faa8</srcmd5>
+    <version>6.19.0</version>
+    <time>1678125338</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.19.0:
+  * v6.19.0
+  * Update scripts/build.*.sh.
+  * v6.19.0-dev (new config options added).
+  * Update CHANGELOG.md
+  * Solo mining: added job timeout (default is 15 seconds)
+  * Update hwloc for MSVC builds to 2.9.0.
+  * Update CHANGELOG.md
+  * Update to latest sse2neon.h.
+  * Fixed broken RandomX light mode mining
+  * #3185 Fixed macOS DMI reader.
+  * Show IP address for failed connections
+  * DragonflyBSD compilation fixes
+  * Added ifdefs for DragonflyBSD
+  * Bump the minimum CMake version in other places too.
+  * Update cmake required version to 3.1
+  * Improved Zen 3 MSR mod
+  * MSVC build: enabled parallel compilation
+  * #2869
+  * Update to latest sse2neon.h from github:DLTcollab/sse2neon
+  * v6.18.2-dev</comment>
+    <requestid>1069540</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c56e9822f09c49e1cdc8f22e38cbff20</srcmd5>
+    <version>6.19.1</version>
+    <time>1679667694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.19.1:
+  * v6.19.1
+  * Update CHANGELOG.md
+  * Fix build with gcc 13
+  * Resolved deprecated methods warnings with OpenSSL 3.0.
+  * Fix: `--randomx-wrmsr=-1` worked only on Intel
+  * Fix for 32-bit clang 15
+  * Fixed DnsUvBackend storage cleanup.
+  * Revert changes to fix MSVC build.
+  * Cleanup.
+  * Fix warning.
+  * Partially resolved deprecated methods warnings in OpenSSL 3.0.
+  * v6.19.1-dev</comment>
+    <requestid>1074091</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8c7f8c16c41adaeb62f3a3e8f2792a04</srcmd5>
+    <version>6.19.2</version>
+    <time>1681825994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.19.2:
+  * v6.19.2
+  * Update CHANGELOG.md
+  * Sync with changes from proxy
+  * Improve .cmd files when run by shortcuts on another drive
+  * Code style cleanup.
+  * DaemonClient: new X-Hash-Difficulty HTTP header optimization
+  * Fixed parsing of TX_EXTRA_MERGE_MINING_TAG
+  * v6.19.2-dev</comment>
+    <requestid>1080067</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4ad6a3329d9be0e82e3aa19782bc9ea0</srcmd5>
+    <version>6.19.3</version>
+    <time>1686172061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.19.3:
+  * v6.19.3
+  * Update CHANGELOG.md
+  * Updated example scripts
+  * Fixed `jccErratum` list
+  * RandomX: fixed undefined behavior
+  * RandomX: optimized program generation
+  * Tweaked auto-tuning for Intel CPUs
+  * #3245 Improved algorithm negotiation for donation rounds by sending extra information about current mining job.
+  * v6.19.3-dev</comment>
+    <requestid>1091221</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>964473fbbe041aacfa46e801a7ff9f53</srcmd5>
+    <version>6.20.0</version>
+    <time>1689000022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.20.0:
+  * v6.20.0
+  * v6.20.0-dev
+  * Zephyr solo mining: fix for blocks with transactions
+  * Zephyr coin support
+  * KawPow: fixed data race when building programs
+  * Code cleanup.
+  * Disallow direct use of HwlocCpuInfo class.
+  * Code cleanup.
+  * Fixed compatibility with hwloc 1.11.
+  * Added new CMake options ARM_V8 and ARM_V7.
+  * Added new ARM CPU names.
+  * v6.19.4-dev
+  * Add API rebind polling
+  * fix(cuda): receive CUDA loader error on linux too.
+  * Add x86 to README</comment>
+    <requestid>1097894</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4ec27d042b09d5cf25d007eee396e3c1</srcmd5>
+    <version>6.21.0</version>
+    <time>1702936619</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.21.0:
+  * v6.21.0
+  * v6.21.0-dev
+  * Zephyr solo mining: handle multiple outputs
+  * Updated pricing record size for Zephyr solo mining
+  * Update sse2neon.h
+  * ARM64 JIT: don't use `x18` register
+  * Update cn_main_loop.asm
+  * Update cn_main_loop.asm
+  * Added SNI option for TLS connections
+  * Add &quot;built for OS/architecture/bits&quot; to &quot;ABOUT&quot;
+  * Fixed huge pages availability info on Linux.
+  * Make Platform::hasKeepalive() constexpr where always supported and code cleanup.
+  * Disable TCP keepalive before closing socket
+  * Enabled keepalive for Windows (&gt;= Vista)
+  * v6.20.1-dev</comment>
+    <requestid>1133864</requestid>
+  </revision>
+</revisionlist>

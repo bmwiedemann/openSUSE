@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Fri Dec 29 11:27:50 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Dec 27 16:44:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.15:
+  * Bump pyo3 from 0.19.2 to 0.20.0
+  * Improve README
+  * Improve documentation
+
+-------------------------------------------------------------------
+Mon Jun 12 09:52:49 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Initial packaging of v0.2.13, needed by Weblate

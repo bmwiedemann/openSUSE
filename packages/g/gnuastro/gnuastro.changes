@@ -1,0 +1,220 @@
+-------------------------------------------------------------------
+Sat Oct 21 15:09:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.21 (library 19.0.0): 
+  * New program 'astscript-pointing-simulate
+  * More flexibility in using configuration files
+  * can now write TIFF files
+  * Multiple new options and operators
+  * MakeNoise ('astmknoise'): feature removed, use mknoise-*
+    operatiors of Arithmetic
+  * Many bug fixes and improvements
+
+-------------------------------------------------------------------
+Sun Aug  6 14:49:38 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.20 (library 18.0.0)
+  * New program: astscript-zeropoint for calibrating the pixel
+    values in one image (finding its "zero point") based on a reference
+    catalog or (any number of) reference image(s)
+  * documentation updates
+  * A number of added options, operators and functions to multiple
+    commands, along with bug fixes
+
+-------------------------------------------------------------------
+Tue Oct 25 14:20:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.19 (library 17.0.0)
+  * Arithmetic: Added new type operators and physical constants
+  * ConvertType: It is now possible to draw vector graphics marks
+    from a catalog over the output PDF images. A number of options
+    have been added to ConvertType for doing this
+  * It is now possible to select the color of the border of images
+    produced in vector graphics outputs (EPS and PDF) with
+    '--bordercolor'.
+  * Additional parameters to the Fits operation
+  * Statistics: Linear and Polynomial least squares fitting are now
+    available, wrapping the corresponsing calls in the GNU
+    Scientific Library
+  * Table: It is now possible to customize the format of floating
+    point numbers in the plain-text outputs
+  * Warp: Can correct distortions (with any standard recognized by
+    WCSLIB) and simultaneously align the image to the coordinate
+    system. When no named linear operation (like '--rotate', '--scale'
+    or etc) is requested, Warp will go into this mode. A number of
+    customization options were added.
+  * Statistics: --refcol has been removed 
+  * Warp: --align: has been removed
+  * Warp: -c is now short for --center, not --centeroncorner
+  * A number of bug fixes, and documentation updates
+
+-------------------------------------------------------------------
+Wed Aug 10 16:54:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.18 (library 16.0.0)
+  * Arithmetic: New operators stitch, noblank, jy-to-counts,
+    Zeropoint, mag-to-jy, jy-to-mag, load-col-%-from-%-hdu-%,
+    random-from-hist-raw, random-from-hist
+  * New options to add metadata (standard FITS keywords) to output
+  * Updates to multiple existing operations and options
+  * Query: Short name for Gaia's DR3 dataset has been added for both
+    ESA's Gaia database and VizieR (astquery gaia, astquery vizier)
+  * A number of bug fixes
+
+-------------------------------------------------------------------
+Sun Mar 20 10:14:41 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.17 (library 15.0.0):
+  * New program astscript-fits-view: Given any number of FITS files
+    this script will either open SAO DS9 (for 2D images or 3D
+    cubes) or TOPCAT (for tables) to visualize their contents in a
+    graphic user interface (GUI).
+  * add a set of installed scripts to enable easy estimation and
+    subtraction of the extended PSF (astscript-psf-*)
+  * Coordinate-related columns in all programs now also accept
+    sexagesimal values, not just degrees
+  * Columns of FITS tables can now be read in parallel
+  * multiple new operations and options
+  * Some operations and options were renamed
+  * A number of bug fixes
+
+-------------------------------------------------------------------
+Mon Oct 11 19:58:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.16 (library 14.0.0):
+  * documentation updates
+  * Arithmetic: New operands
+    + box-around-ellipse: width and height of the box covering an ellipse
+    + au-to-pc: Convert Astronomical Units (AUs) to Parsecs (PCs)
+    + pc-to-au: Convert Parsecs (PCs) to Astronomical Units (AUs)
+    + ly-to-pc: Convert Light-years (LYs) to Parsecs (PCs)
+    + pc-to-ly: Convert Parsecs (PCs) to Light-years (LYs)
+    + ly-to-au: Convert Light-years (LYs) to Astronomical Units (AUs)
+    + au-to-ly: Convert Astronomical Units (AUs) to Light-years (LYs)
+  * CosmicCalculator: warn if the requested redshift is < 0.007
+  * MakeCatalog:
+    + --areaerror: spatial resolution of image specified by user, 
+      used in estimating the surface brightness error
+    + --sberror: error in measuring the surface brightness
+      (mag/arcsec^2)
+  * MakeProfiles: New type of profile showing the azimuthal angle
+    (in degrees, along the elliptical circumference of fixed radius)
+     of each pixel.
+  * Match: add support for printing rows that could notbe matched
+  * Statistics: add --quantofmean: the quantile of the mean of the
+    input dataset
+  * --stdintimeout: default value changed from 0.1 seconds to 1.5s
+  * MakeProfiles: The default output suffix  is now '_profiles.fits'
+  * many bug fixes
+- drop gnuastro-cfitsio-version-format-change.patch
+
+-------------------------------------------------------------------
+Wed Aug 18 02:39:19 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add gnuastro-cfitsio-version-format-change.patch -- accounts for
+  3 number version string for CFITSIO; patch taken from upstream
+  commit.
+
+-------------------------------------------------------------------
+Wed Jun  2 07:37:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.15 (library 13.0.0):
+  * New programs: astscript-ds9-region, astscript-radial-profile
+  * Recognized FITS files even without a FITS suffix
+  * --wcslinearmatrix: new option in all programs to select the
+    output WCS linear matrix format
+  * documentation updates
+  * New arithmetic operators
+  * --envseed: new option to get random number generator settings
+    for the new 'mknoise-sigma' and 'mknoise-poisson' operators
+    from the environment for reproducibility
+  * New and updated options to multiple operations
+  * Extended support for 3d datacubes
+  * The default end to a "night" is set to 11:00a.m
+  * Bug fixes
+  * now supports bash completion
+
+-------------------------------------------------------------------
+Sat Jan 30 07:55:39 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.14 (library 12.0.0):
+  * new program Query ('astquery') to query to external datasets
+    and retrieve the resulting datasets from the command-line.
+    The package now recommends curl for this purpose.
+  * Gnuastro programs will first attempt to write the array in RAM,
+    only when it fails will they use a memory-mapped file.
+    Directory changes from .gnuastro_mmap to gnuastro_mmap
+  * Various documentation updates, extensions and fixes
+- remove obsolete texinfo packaging macros
+
+-------------------------------------------------------------------
+Sat Sep 12 09:26:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.13 (library 11.0.0):
+  * more relaxed input format for plain-text tables
+  * New operations to fill blanks with minimum/maximum of nearest
+    neighbors
+  * Input can be forced to float by appending '.' or '.0'.
+  * New colormap 'sls-inverse' for inverse printing
+  * Many new operations to multiple operations, and bug fixes
+- includes changes from 0.12:
+  * no longer attempt to write memory-mapped files under .gnuastro
+    to avoid mixing configuration files with processing data
+  * Many new operations to multiple operations, and bug fixes
+
+-------------------------------------------------------------------
+Tue Nov 26 17:04:05 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.11 (library 9.0.0):
+  * documentation updates
+  * Updates and extensions to multiple operations
+- drop upstreamed patch
+  0001-Reference-wcslib-by-correct-name-in-gnuastro.pc-pkgc.patch
+
+-------------------------------------------------------------------
+Sun Nov 10 15:05:21 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix wrong automatic pkgconfig(wcs) requires, add
+  0001-Reference-wcslib-by-correct-name-in-gnuastro.pc-pkgc.patch
+- Drop ghostscript BuildRequires, only needed for running tests
+  (not done), the PDF exporter is built unconditionally. At runtime,
+  the exporter uses a "gs" executable in PATH, so add a Recommends.
+- Add bcond for running tests, keep it disabled by default.
+
+-------------------------------------------------------------------
+Sun Nov  3 16:02:38 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.10 (library 8.0.0):
+  * Report/warn when using arrays memory-mapped to non-volatile
+    storage. Users should use --minmapsize to allow use of available
+    RAM, --quietmmap' option to disable the messages
+  * Various additions and extensions to operators and tools
+  * crop now supports 3D datasets (data cubes)
+  * documentation updates and bug fixes
+- includes changes from 0.9:
+  * --checkconfig: print the names and values given to options as
+    they are parsed on the command-line or in various configuration
+    files
+  * Multithreaded operation for many operators 
+  * Add bash scripts for common higher-level usage
+
+-------------------------------------------------------------------
+Fri Dec 28 20:36:45 UTC 2018 - astieger@suse.com
+
+- update to 0.8:
+  * various improvements to input/output handling of all programs
+  * Various functional updates and fixes to multiple commands
+  * NoiseChisel: New outlier identification algorithm for quantile
+    thresholds
+
+-------------------------------------------------------------------
+Sun Aug 12 20:27:42 UTC 2018 - jengelh@inai.de
+
+- Use pkg-config instead of hardcoding the cfitsio path.
+- Wrap descriptions consistently.
+- Fix RPM group of shared library subpackage.
+
+-------------------------------------------------------------------
+Sat Aug 11 11:24:50 UTC 2018 - astieger@suse.com
+
+- initial package (0.7)

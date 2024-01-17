@@ -1,0 +1,5 @@
+<package name="libupnpp" project="openSUSE:Factory">
+  <title>C++ API over libnpupnp or libupnp</title>
+  <description>C++ API over libnpupnp or libupnp, used mainly for upmpdcli and upplay</description>
+  <devel project="multimedia:libs" package="libupnpp"/>
+</package>

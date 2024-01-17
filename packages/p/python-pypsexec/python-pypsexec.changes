@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Mon Dec 12 18:01:20 UTC 2022 - pgajdos@suse.com
+
+- six is not required
+
+-------------------------------------------------------------------
+Mon Oct 25 19:48:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.0
+  * Dropped Python 2.7 and 3.5, new minimum is 3.6
+  * Updated the PAExec executable to 1.29
+
+-------------------------------------------------------------------
+Mon Dec 14 14:09:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.2.0
+  * Breaking change where processes are run as the native
+    architecture bitness, e.g. 64-bit on 64-bit OS' and 32-bit on
+    32-bit OS'
+    This changes the old behaviour of always running as a 32-bit
+    process. Any application relying on running with 32-bit paths
+    will need to set wow64=True on run_executable() to restore the
+    older behaviour.
+  * Dropped support for Python 2.6 and Python 3.4.
+  * Updated the PAExec executable to 1.27.
+  * Handle non-ASCII characters when enumerating the services on
+    the remote host.
+
+-------------------------------------------------------------------
+Thu Sep  6 17:34:43 UTC 2018 - mardnh@gmx.de
+
+- Initial package, version 0.1.0

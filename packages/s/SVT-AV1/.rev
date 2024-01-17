@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb3f9e310078f675264f0930410ed5bf</srcmd5>
+    <version>0.8.7</version>
+    <time>1622536688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895968</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8f9906d528d0b8da293ee37cd0e34aee</srcmd5>
+    <version>0.9.0</version>
+    <time>1643321793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949293</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4787be5248d98f74a0ac606f653f0383</srcmd5>
+    <version>0.9.0</version>
+    <time>1645137593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>955341</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92d4599ad9b2f3bd84d63dac342ff871</srcmd5>
+    <version>1.0.0</version>
+    <time>1650735910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.0</comment>
+    <requestid>972255</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>836f54f7bff047b2e100a3465c15beb7</srcmd5>
+    <version>1.2.0</version>
+    <time>1659721810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.0</comment>
+    <requestid>992620</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a875d8370209ea783c23f06604849582</srcmd5>
+    <version>1.3.0</version>
+    <time>1666440721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.3.0:
+  * Encoder:
+    - Port SIMD optimizations from libDav1D making the conformant
+      path (Inv. Transform) faster
+    - Enabling smaller mini-GOP size configurations and tuning it
+      for the low delay mode
+    - Tuning the low-latency mode in random access targeting
+      latencies from 250ms to 1s
+    - Adding GOP-constrained Rate Control targeting low-latency
+      streaming applications
+    - Optimize mode decision features levels for depth
+      partitioning, RDOQ, MD stage0 pruning in-loop filtering
+      temporal filtering and TPL adding more granularity and
+      gaining further quality
+    - Preset tuning M0-M13 to smooth the spacing and utilize the
+      quality improvements towards better tradeoffs
+  * Build, Cleanup and Documentation:
+    - Update preset and API documentation
+    - Various functional bug fixes
+    - Remove the use of GLOB in cmake and use file names
+- Changes from release 1.2.1:
+  * Encoder: Fix a crash at the end of the encode that may occur
+    when an invalid metadata packet is sent with the EOS packet
+  * Build, Cleanup:
+    - y4m header pasring code cleanup
+    - API cleanup and enhancements adding string options for RC
+      mode
+    - Added option to build without app / dec / enc using the
+      build.sh / build.bat scripts (forwarded request 1030153 from iznogood)</comment>
+    <requestid>1030245</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>38e8cd62c61a3421716b07d7d8d5e0a2</srcmd5>
+    <version>1.4.0</version>
+    <time>1670430851</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * Adopted the 6L / 32-picture mini-GOP configuraion as default and
+    adjusted MD feature levels accordingly yielding higher compression
+    efficiency gains
+  * Update the TPL model to account for the larger mini-gop size
+  * Re-tune presets M0-M12 using the gained coding efficiency for improved
+    quality vs cycles tradeoffs
+  * Allow duplicate commandline parameters to be parsed and take into
+    consideration the latter to allow AWCY integration
+  * Build, Cleanup and Documentation
+  * Make include and lib paths friendly to abs and rel paths
+  * Update preset and API documentation
+  * Various functional bug fixes
+  * Remove manual prediction structure support (forwarded request 1040418 from dirkmueller)</comment>
+    <requestid>1040439</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>87266bb57a9f9f50deffa502ab057cfa</srcmd5>
+    <version>1.4.1</version>
+    <time>1672851060</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * Fix CRF with maxrate bug causing bitrate to be significantly limited for
+    CRF encodings
+  * Fix command line parsing forcing 1-pass in a 2-pass encoding mode when
+    the --keyint=`x`s format is used
+  * Fix decoder segfault due to assuming aligned buffers in the inverse
+    transform assembly (forwarded request 1046316 from dirkmueller)</comment>
+    <requestid>1046395</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8d76a86ed1984423276b57945fc997a6</srcmd5>
+    <version>1.4.1</version>
+    <time>1680290108</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable build on aarch64 (forwarded request 1075512 from Guillaume_G)</comment>
+    <requestid>1075515</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e6ad525b9504c38861dbd86a634e7556</srcmd5>
+    <version>1.6.0</version>
+    <time>1687900543</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable build on riscv64 (forwarded request 1095372 from Andreas_Schwab)</comment>
+    <requestid>1095374</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a491db8ae48170a68c8e95ed0061496f</srcmd5>
+    <version>1.7.0</version>
+    <time>1699183120</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.7.0</comment>
+    <requestid>1123160</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Wed Apr 12 12:55:45 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add explicit build dependency on libboost_atomic-devel: Fix build
+  with older boost version (Leap 15.5).
+
+-------------------------------------------------------------------
+Tue Jun  8 06:41:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Contrib headers should be installed, add lucene++-3.0.8-fix-missing-headers.patch
+
+-------------------------------------------------------------------
+Thu Jan 21 20:00:18 UTC 2021 - antoine.belvire@opensuse.org
+
+- Add CMake option to prevent installation of gtest files instead
+  of removing them by hand.
+- Remove obsolete build dependency on subversion.
+
+-------------------------------------------------------------------
+Sat Jan 16 16:43:36 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 3.0.8:
+  * No changelog provided.
+- Remove 0001-Fix-compilation-with-Boost-1.58.patch: Merged
+  upstream.
+- Add some patches from upstream, mainly build system fixes:
+  * lucene++-3.0.8-fix-contrib-soname.patch
+  * lucene++-3.0.8-fix-pc-libdir.patch
+  * lucene++-3.0.8-fix-cmake-issues.patch
+- Require CMake >= 3.5 to build.
+- Run test suite on build.
+- Add new cmake files to list of installed files.
+
+-------------------------------------------------------------------
+Sat Dec 26 18:09:24 UTC 2020 - antoine.belvire@opensuse.org
+
+- Add some build dependencies (used to be implicitly pulled):
+  * pkgconfig(bzip2)
+  * pkgconfig(zlib)
+- Remove obsolete conditionals.
+
+-------------------------------------------------------------------
+Wed Feb  1 14:51:41 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Tue May 19 20:35:16 UTC 2015 - astieger@suse.com
+
+- fix build with boost 1.58, adding upstream patch
+  0001-Fix-compilation-with-Boost-1.58.patch
+
+-------------------------------------------------------------------
+Fri Feb 27 09:31:43 UTC 2015 - astieger@suse.com
+
+- lucene++ 3.0.7:
+  * no upstream changelog
+  * remove patches now upstream:
+    lucene++-3.0.6-fix_installing_headers.patch
+    lucene++-3.0.6-multiarch.patch
+    lucene++-3.0.6-pc_files_fix.patch
+
+-------------------------------------------------------------------
+Sun Oct 19 19:34:10 UTC 2014 - andreas.stieger@gmx.de
+
+- fixes for .pc files in lucene++-3.0.6-pc_files_fix.patch
+- add upstream patch lucene++-3.0.6-multiarch.patch to work with
+  %cmake makro
+- fix build for openSUSE 12.3
+
+-------------------------------------------------------------------
+Sat Oct 18 09:55:11 UTC 2014 - andreas.stieger@gmx.de
+
+- lucene++ 3.0.6, a high-performance, full-featured text search
+  engine written in C++, 
+- upstream patches:
+  * lucene++-3.0.6-pc_files_fix.patch - fix pkgconfig files
+  * lucene++-3.0.6-fix_installing_headers.patch fix header install

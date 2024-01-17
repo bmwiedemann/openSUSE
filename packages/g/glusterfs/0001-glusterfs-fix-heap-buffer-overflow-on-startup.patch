@@ -1,0 +1,44 @@
+From 5d0533d0858194ed6d365f1080db7ab10d0e3d11 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 5 Jul 2023 18:15:22 +0900
+Subject: [PATCH] glusterfs: fix heap-buffer-overflow on startup
+References: https://github.com/gluster/glusterfs/issues/4192
+
+==4418==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x613000000190
+at pc 0x7f028cd2341c bp 0x7ffd9c5ba7e0 sp 0x7ffd9c5ba7d8
+WRITE of size 8 at 0x613000000190 thread T0
+    f0 in mem_get_pool_list ~/libglusterfs/src/mem-pool.c:786
+
+0x613000000190 is located 0 bytes after 336-byte region [0x613000000040,0x613000000190)
+allocated by thread T0 here:
+    f0 in malloc (/usr/lib64/libasan.so.8+0xdc04f) (BuildId: 44194dcf14c212b57346030492309d59d5379ae1)
+    f1 in __gf_default_malloc glusterfs/mem-pool.h:112
+    f2 in mem_get_pool_list ~/libglusterfs/src/mem-pool.c:778
+
+``NPOOLS-1`` is just wrong. ``per_thread_pool_list_t`` does not include one free
+``per_thread_pool_t``.
+
+Fixes: https://github.com/gluster/glusterfs/issues/4192
+Fixes: v11dev-211-g1cfff6e6ec ("Use flexible array members (#3411)")
+Signed-off-by: Jan Engelhardt <jengelh@inai.de>
+---
+ libglusterfs/src/mem-pool.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/libglusterfs/src/mem-pool.c b/libglusterfs/src/mem-pool.c
+index f053fdceae..e258758158 100644
+--- a/libglusterfs/src/mem-pool.c
++++ b/libglusterfs/src/mem-pool.c
+@@ -589,8 +589,7 @@ mem_pools_preinit(void)
+     }
+ 
+     pool_list_size = sizeof(per_thread_pool_list_t) +
+-                     sizeof(per_thread_pool_t) * (NPOOLS - 1);
+-
++                     sizeof(per_thread_pool_t) * NPOOLS;
+     init_done = GF_MEMPOOL_INIT_EARLY;
+ }
+ 
+-- 
+2.41.0
+

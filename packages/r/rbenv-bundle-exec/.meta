@@ -1,0 +1,5 @@
+<package name="rbenv-bundle-exec" project="openSUSE:Factory">
+  <title>rbenv-bundle-exec</title>
+  <description>This plugin makes rbenv &quot;bundle exec&quot; your ruby executables so you don't have to.</description>
+  <devel project="devel:languages:ruby:extensions" package="rbenv-bundle-exec"/>
+</package>

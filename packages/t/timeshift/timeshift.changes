@@ -1,0 +1,311 @@
+-------------------------------------------------------------------
+Mon Jan  1 23:21:47 UTC 2024 - malcolmlewis@opensuse.org
+
+- Updated to version 23.12.2:
+  * Fix RAID handling in device lookup,
+    (gh#linuxmint/timeshift#252).
+  * Check /proc/cmdline for the live-session check.
+- Changes from version 23.12.1:
+  * Docs/man/meson.build: Use -N for help2man to avoid texinfo
+    section, (gh#linuxmint/timeshift#217).
+  * Docs/development.md: Fix meson setup command,
+    (gh#linuxmint/timeshift#224).
+  * Translation updates.
+
+-------------------------------------------------------------------
+Mon Sep  4 09:35:50 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 23.07.1:
+  * build: allow installing default.json to sysconfdir (#208)
+  * treewide: use /usr/bin/env bash for shebang (#209)
+  * Update translations
+- Changes from 23.06.2:
+  * Fix the desktop file name + project license in appdata (#204)
+  * Update translations
+- Changes from 23.06.1:
+  * Update Device.vala
+  * Update URLs to HTTPS
+  * README.md: fix a typo
+  * Added extra constraints to BTRFS mode in Supported System Configurations (#103)
+  * src/Utility: fix deprecated Thread.create usage (#151)
+  * AsyncTask: Use a mutex to guard access to AsyncTask.status_line.
+  * Fix printf format warnings (#162)
+  * Don't use deprecated from_timeval_utc function
+  * Fix deprecated Thread.create usage
+  * Fix segmentation fault (#169)
+  * Added missing documentation regarding tags abbrevation which was difficult to find (#168)
+  * Console: add --version option (#175)
+  * Development documentation for easier accessibility (#170)
+  * Remove timeshift-uninstall binary (#176)
+  * Debian clean up (#180)
+  * Console: add --version option description to the help massages (#181)
+  * src/makefile: remove VTE_291_OLD and VTE_291 symbols (#183)
+  * Fix project's license (#189)
+  * Use help2man utility to create a man page. (#178)
+  * meson support (#173)
+  * Fix deprecated Gtk.Widget.margin_left and Gtk.Widget.margin_right properties
+  * Use get_hadjustment via casting TreeView to Gtk.Scrollable
+  * meson: add project's license definition
+  * Don't use the deprecated Gtk.TreeView.rules_hint feature (#201)
+  * docs: automatically generate timeshift-gtk manpage (#194)
+  * Use an unsafe cast (#200)
+  * l10n: Update POT
+
+-------------------------------------------------------------------
+Tue Jan 17 08:42:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.11.2:
+  * Main.vala: Turn the initial btrfs quota error into a message if we think we
+    know what the error is.
+
+-------------------------------------------------------------------
+Sat Dec  3 17:18:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.11.1:
+  * Update README.md to include build dependencies and instructions
+  * Changes man page to GROFF format (#73)
+  * Add github workflow.
+  * Clean up debian/control, appdata, build file.
+  * debian/control: Restore newline.
+  * #939, #937: Fix crash on ArchLinux and Ubuntu 22.10 Kinetic
+  * Don't show message when unmounting temporary mount points
+  * Remove some unused code and functions
+  * Use -Os for compilation instead of -O3
+  * Update timeshift-gtk.desktop
+  * Fix typo in timeshift-gtk.desktop
+  * Fix some file permissions.
+  * Delete the empty 'timeshift-wiki' folder
+  * Remove mention of installer in README; Remove config file for installer
+  * Remove config file for old GitHub pages site
+  * Remove empty NOTES file
+  * Remove BUILD_CONFIG
+  * Restore btrfs qgroups size & unshared size columns
+  * Main.vala: Don't continue to try to get btrfs quota info if it fails the
+    first time.
+
+-------------------------------------------------------------------
+Wed Sep 14 12:57:17 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix Source0 URL: valid URL is mandatory for source validation
+  checkers.
+
+-------------------------------------------------------------------
+Sun Sep 11 15:24:27 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 22.06.5:
+  * Translation updates.
+- Changes from version 22.06.4:
+  * Disable selection of the btrfs backend when there are no btrfs
+    filesystems found.
+- Changes from version 22.06.3:
+  * settings: Clear the initial snapshot size and file count when
+    all snapshots are deleted.
+  * rsync: Calculate required space before attempting to perform an
+    incremental snapshot, (gh#/linuxmint/timeshift#19).
+  * Translation updates.
+- Changes from version 22.06.2:
+  * Fix various typos in the source.
+  * Removes lines about paypal account.
+  * Remove donation window.
+  * About: Update info and use a Gtk.AboutDialog.
+  * Translation updates.
+- Changes from version 22.06.1:
+  * Fix unmount devices that were mounted by Timeshift before exit,
+    (gh#/linuxmint/timeshift#895, gh#/linuxmint/timeshift#809,
+    gh#/linuxmint/timeshift#689, gh#/linuxmint/timeshift#653 and
+    gh#/linuxmint/timeshift#10).
+  * Fix do not create or remove Qgroups when snapshots are created
+    or removed, (gh#/linuxmint/timeshift#865,
+    gh#/linuxmint/timeshift#839 and gh#/linuxmint/timeshift#680).
+  * Fix force C locale for Rsync, (gh#/linuxmint/timeshift#900 and
+    gh#/linuxmint/timeshift#891)
+  * Install app icon in /usr/share/pixmaps directory.
+  * Remove columns 'Size' and 'Unshared Size' for BTRFS snapshots.
+  * Rsync: Restore: Delete files using --delete-before instead of
+    --delete-after.
+  * Fix no text on Summary page under 'Warning' and 'Disclaimer'
+    heading, (gh#/linuxmint/timeshift#260).
+  * Rsync: Restore: Improve UI for the device selection page.
+  * Code cleanup: Remove unused functions and code.
+  * Update donation windo.
+  * Update translations.
+  * Fix a build failure.
+- Update URL abd sources as maintenance has now moved to LinuxMint.
+- Disable parallel building.
+
+-------------------------------------------------------------------
+Thu Nov 25 22:48:01 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 21.09.1:
+  * Fix build fails with xapp 2.0.0, update references to
+    GLib.Object, (gh#teejee2008/timeshift#676).
+  * Fix timeshift will only start in "Live USB Mode",
+    (gh#teejee2008/timeshift#425, gh#teejee2008/timeshift#753
+    and gh#teejee2008/timeshift#755).
+  * Fix not enough disk space, (gh#teejee2008/timeshift#589).
+  * Fix browse Files is starting Audacious, not file browser,
+    (gh#teejee2008/timeshift#186).
+  * Fix compiler warnings.
+  * Update README.
+  * Translation updates.
+- Changes from version 21.09:
+  * Translation updates.
+
+-------------------------------------------------------------------
+Wed May 12 21:53:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.11.1:
+  * Escape single quote in LUKS password when unlocking device
+  * Filters: Save filter order changes when clicking OK
+  * Filters: Save changes after Include/Exclude radio is toggled
+  * Filters: Save changes immediately after a pattern is added or edited
+  * Filters: Save changes before showing Summary
+  * Fix #497, #467: Fix missing hourly backups
+  * Move config file to /etc/timeshift/timeshift.json
+  * Move default config to /etc/timeshift/default.json
+  * AppStream: Install only under /usr/share/metainfo. Don't install under /usr/share/appdata/
+  * Option to unmark snapshots that are marked for deletion
+  * Launcher: No need to pass DISPLAY and AUTHORITY to pkexec
+  * Remove unused functions and code
+  * Update translations
+- drop timeshift-fix-timeshift-launcher.patch (upstream)
+
+-------------------------------------------------------------------
+Sun Mar 15 10:23:45 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to using explicit release tag in .service. Also clean up
+  the version handling in it, so we avoid the git refs there, as we
+  are using the proper released commit.
+- Update URL to new homepage, use make_build macro, run
+  spec-cleaner to bring spec up to current standards for openSUSE.
+
+-------------------------------------------------------------------
+Thu Mar 05 12:18:48 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 20.03+git20200305.cecd294:
+  * Change TEMP_DIR permissions and path; Cleanup on exit,
+    (boo#1165802).
+- Add timeshift-fix-timeshift-launcher.patch: Fix `pkexec env`
+  invocation in `timeshift-launcher`, (boo#1165804 and
+  (gh#teejee2008/timeshift#559).
+- Manually add log directories, set mode to 0750 and owned by
+  root, (boo#1165805).
+
+-------------------------------------------------------------------
+Sat Feb 29 15:33:01 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 19.08.1+git20200229.4447b0a:
+  * Update support message.
+  * Fix bind-mount issues (gh#teejee2008/timeshift#528,
+    gh#teejee2008/timeshift#535, gh#teejee2008/timeshift#536 and
+    gh#teejee2008/timeshift#555).
+  * Mount devices to /run/timeshift instead of /mnt.
+
+-------------------------------------------------------------------
+Sun Feb 23 15:35:06 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 19.08.1+git20200209.8e51d05:
+  * Add dependency: btrfs-tools | btrfs-progs.
+  * Minor changes and yypo fixed.
+  * Improve clarity of column headers.
+  * Translation updates.
+- Drop timeshift-fix-abstract-class.patch as this has been
+  upstreamed.
+- No longer recommend -lang: supplements are in use.
+
+-------------------------------------------------------------------
+Fri Oct 25 00:19:32 UTC 2019 - malcolmlewis@opensuse.org
+
+- Add timeshift-fix-abstract-class.patch: Fix build error because
+  creation method of abstract class cannot be public.
+
+-------------------------------------------------------------------
+Sun Aug 25 02:34:53 UTC 2019 - malcolmlewis@opensuse.org
+
+- Update to version 19.08.1:
+  + Fix build errors with vala 0.42.5; Remove --threads from
+    makefile, (gh#teejee2008/timeshift#375).
+  + Add support for custom date format; Add new page for Misc
+    settings, (gh#teejee2008/timeshift#443).
+  + Add OK button to Settings window.
+  + Improve the layout of Prev/Next/Finish navigation buttons.
+  + Fix incorrect date format for path string.
+  + Use the --sparse option with rsync.
+  + Exclude package manager cache for rsync snapshots,
+    (gh#teejee2008/timeshift#437).
+  + Add man page, (gh#teejee2008/timeshift#436).
+  + Fix an issue with check for admin access,
+    (gh#teejee2008/timeshift#386).
+  + Translation updates.
+
+-------------------------------------------------------------------
+Thu Jul  4 01:24:40 UTC 2019 - malcolmlewis@opensuse.org
+
+- Remove fix for The type name `AppExcludeEntry' could not be
+  found.
+
+-------------------------------------------------------------------
+Mon Feb  4 23:14:14 UTC 2019 - malcolmlewis@opensuse.org
+
+- Update to version 19.01:
+  + Exclude /snap by default
+  + Don't delete snapshots older than X interval if count < max,
+    (gh#teejee2008/timeshift#362).
+  + Snapshots with comments will not be auto-removed,
+    (gh#teejee2008/timeshift#211).
+  + Translation Updates.
+- Changes from version 18.9.1:
+  + Updated donation window.
+  + Display donation button in toolbar.
+- Changes from version 18.8:
+  + Fixed a typo, (gh#teejee2008/timeshift#196).
+  + Don't exclude /var/spool (gh#teejee2008/timeshift#191).
+  + Add makepot file.
+  + Launcher: Explicitly pass DISPLAY and XAUTHORITY to pkexec.
+  + Use -O3 optimization when compiling with gcc.
+  + Increased the width of Setup Wizard window,
+    (gh#teejee2008/timeshift#278).
+  + Fixed: Unencrypted partionless disk could not be used as
+    backup device.
+  + Added support for using F2FS and ZFS filesystems for RSYNC
+    backups.
+  + Added support for raid5 and dmraid.
+  + Translation updates.
+
+-------------------------------------------------------------------
+Thu Jul 19 00:49:47 UTC 2018 - malcolmlewis@opensuse.org
+
+- Update to version 18.6.1 at commit eb2115a (2018-06-24):
+  + Rsync: Read fstab to exclude devices mounted on non-standard
+    locations.
+  + UI: Hide snapshot type information behind an expander.
+  + UI: Added frame around messages; Use smaller bullet
+    characters.
+  + Wizard: Add "Users" page to Setup Wizard for selecting home
+    directory.
+  + Fixed build issue with newer version of libvte291.
+  + Fixed: Filters: 'Cancel' button when adding a folder does not
+    work.
+- Changes from version 18.6:
+  + Exclude /swapfile for rsync snapshots.
+  + Translation updates.
+- Changes from version 18.4:
+  + UI Improvements.
+  + Added option to keep BTRFS qgroups disabled.
+  + Added a fix for nested subvolume issue.
+  + Restore: Show an option to skip restore for @home sub volume.
+- Changes from version 18.1.1:
+  + Fixed an issue where home directory would get deleted while
+    restoring rsync snapshot. This happened in cases where the
+    user had created a snapshot excluding home directory, and
+    later restored the snapshot after including home directory in
+    Settings.
+    To avoid such scenarios, user-specified include filters
+    will be ignored for restore. Exclude list that was created
+    during snapshot creation will be used instead, along with any
+    additional exclude filters.
+
+-------------------------------------------------------------------
+Wed Dec  6 13:22:06 UTC 2017 - malcolmlewis@opensuse.org
+
+- Initial build at version 4a67dba (2017-11-29).

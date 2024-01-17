@@ -1,0 +1,13 @@
+--- obantoo-2.1.12/build.xml	2022-03-22 16:51:46.682619584 +0100
++++ obantoo-2.1.12/build.xml	2022-03-22 16:52:26.022865215 +0100
+@@ -19,9 +19,7 @@
+ 
+ 	<target name="compile" depends="init" description="Compilieren">
+ 		<mkdir dir="${classes.dir}" />
+-		<javac source="1.6"
+-			     classpathref="build.classpath"
+-			     target="1.6" 
++		<javac classpathref="build.classpath"
+ 			     debug="true" 
+ 			     debuglevel="lines,vars,source" 
+ 			     deprecation="true" 

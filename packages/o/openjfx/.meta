@@ -1,0 +1,10 @@
+<package name="openjfx" project="openSUSE:Factory">
+  <title>Rich client application platform for Java</title>
+  <description>JavaFX/OpenJFX is a set of graphics and media APIs that enables Java
+developers to design, create, test, debug, and deploy rich client
+applications that operate consistently across diverse platforms.
+
+</description>
+  <devel project="Java:packages" package="openjfx"/>
+  <url>https://openjdk.java.net/projects/openjfx/</url>
+</package>

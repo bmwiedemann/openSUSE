@@ -1,0 +1,405 @@
+-------------------------------------------------------------------
+Thu Sep 21 05:49:59 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.0:
+  * Fixed crash in background extraction samples removing (#1123)
+  * Fixed crash in binning with ushort images (4d4d4878)
+  * Fixed crash in findstar when a large saturated patch was close to border
+  * Fixed memory leaks in deconvolution code (3e122ad7)
+  * Fixed sorting in the rightmost columns in Dynamic PSF window (75586c04)
+  * Added logging typed command in stdout (06f67292)
+  * Improved path-checking and messages for astrometry.net local solver (Windows) (!524)
+  * Prevent crash using recomposition tool eyedroppers without images loaded (!526)
+  * Fixed HaOiii script failure if input image has odd dimensions (!533)
+  * Fixed errors in GNUplot process handling (!538)
+  * Fixed crash with seqextract_HaOIII command (!535)
+  * Fixed crash when trying to export csv from empty plot (#1150)
+  * Fixed deleting RA/Dec info when undoing an astrometry solve (#1119)
+  * Improved error detection and messages for astrometry (!516)
+  * Fixed sampling range specification for siril internal solver (!549)
+  * Fixed all command descriptions (!546)
+  * Fixed SER orientation after AVI conversion (#1120)
+  * Fixed rescaling float images upon loading when not in [0,1] range (#1155)
+  * Fixed initialization of guide image for clamping (#1114)
+  * Fixed disabling weighting in the GUI when widget is not visible (#1158)
+  * Fixed output_norm behavior for stacking to ignore border values (#1159)
+  * Fixed the check for the no space left condition in the conversion (#1108)
+  * Fixed DATE_OBS missing on seqapplyreg if interp was set to NONE (#1156)
+  * Fixed photometry issue with 8-bit .ser file (#1160)
+  * Fixed removing zero values in histogram calculations (#1164)
+  * Fixed pixel sizes after HaOIII extrcation (#1175)
+  * Fixed crash when passing only constants in pm expression (#1176)
+  * Fixed incorrect channel when adding star from selection in RGB vport (#1180)
+  * Allow to access to non-local disk (#1182)
+  * Allow the Star Recomposition UI to scroll when larger than the dialog (#1172)
+  * Fixed wrong Bayer interpretation after FITS-SER conversion (#1193)
+  * Fixed pixelmath argument parsing error (#1189)
+  * Fixed handling of special characters in sequence name during conversion
+  * Fixed crash in seqstarnet when processing single-file sequences (SER, FITSEQ)
+  * Fixed hang in seqstarnet when processing a single-file sequence with no star mask
+  * Fixed using default masters names in calibrate (GUI)
+  * Fixed invoking external programs in CLI mode (Windows only)
+  * Fixed stream setting for all versions of ffmpeg (mp4 export crash)
+  * Fixed crash when doing manual registration of sequence with variable image sizes (now disabled)
+  * Fixed UI and command issues in deconvolution code
+  * Fixed star recomposition issue where LIVETIME and STACKCNT could be doubled when processing
+    the starless and star mask parts of the same image
+  * Fixed “image copy error in previews” bug in asinh transformation
+  * Fixed reset of the viewports when reopening the RGB composition tool after opening a mono sequence
+  * Fixed star detection for undersampled mono images
+  * Fixed sequence cleaning with opened image and resetting the reference image
+  * Fixed photometry with 32bit images from PRISM
+  * Fixed incorrect behaviour when resetting right-hand stretch type in star recomposition tool
+  * Fixed sequence handling when images have different number of layers
+  * Fixed GNUplot terminals so they remain interactive and free resources when closed
+  * Fixed crash that could occur when parsing string keywords that contained forbidden characters
+  * Fixed calling external processes that left too many opened file descriptors
+  * Fixed Stop behavior for starnet and local astrometry.net
+  * Fixed crash when running merge_cfa in headless mode
+  * Fixed console logs output on Windows when messages contained widechars
+  * Fixed networking detection at build-time and made it and exiv2 optional
+  * Fixed bug in NetPBM file import
+  * Changed gnuplot initialization to keep plots open after stopping main process (and fixed leak)
+  * Changed image opening for all images not from Siril (ensures DATAMAX is correct)
+  * Improved parsing of localization data for wider imaging software compatibility
+  * Improved DATE-OBS control and log for solar system features
+  * Improved clipping model in luminance-based GHS stretches
+  * Improved Wayland support
+  * Reviewed and fixed coordinate conversion from WCS to display for annotations, nomad command, pcc
+  * Improved astrometry.net handling on Windows to support more recent cygwin builds
+  * Updated URLs to query online catalogs
+- Drop upstreamed 0001-Fix-compilation-with-Exiv-0.28.patch.
+- Add fix-exiv2.patch.
+
+-------------------------------------------------------------------
+Fri Jun 23 14:36:11 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add 0001-Fix-compilation-with-Exiv-0.28.patch
+
+-------------------------------------------------------------------
+Tue Oct 18 09:25:14 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.6:
+  * When an empty or malformed SER file was in the directory,
+    previewing it would crash siril.
+  * Saving an image as TIFF could crash siril.
+  * Extracting the polynomial background gradient could crash
+    siril when not enough samples were set.
+  * The iif command of Pixel Math had a problem.
+    Also, PixelMath mishandled some negative values.
+  * Cropping a sequence with images of different sizes
+    would crash if the selected area was not common to all
+    the frames of the sequence.
+  * Command seqstat could crash on large sequences when some
+    images were not selected.
+  * Siril could crash when a large star was close to border
+    during star detection.
+  * Asinh tool had bad behaviour with the black point for
+    monochrome and 32bits images.
+  * Searching for a sky object in SIMBAD containing a ‘+’ character
+    in its named failed.
+
+-------------------------------------------------------------------
+Fri Sep 23 07:08:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.5:
+  * Fix critical bug that causes a shift of 1 pixel in x and y after
+    a registration of images on which there was a meridian flip. 
+
+-------------------------------------------------------------------
+Wed Sep  7 08:03:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.4:
+  * Fix crash.
+  * Updates to the histogram transformation tool.
+
+-------------------------------------------------------------------
+Wed Jun 29 06:23:43 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.3:
+  * Added generalized hyperbolic transformation tool
+  * Fixed some bugs
+
+-------------------------------------------------------------------
+Mon May 23 15:56:29 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.0.2:
+  * Added new RBF interpolation method in the background extraction
+    tool
+  * Removed file name length limit in conversion
+  * Fixed crash in preprocess command if a quote was not closed in
+    -bias= option
+  * Fixed crash when star detection box was expanded past a border
+  * Fixed crash in plot when X axis data contained negative values
+  * Fixed numerous bugs in the background extraction tool
+  * Fixed bug in PixelMath where only one char parameter where
+    allowed
+  * Fixed bug in FITS partial reader
+
+-------------------------------------------------------------------
+Tue Apr 26 15:12:53 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use tarball from gitlab, to fix broken builds due to wrong
+  line endings in all files.
+
+-------------------------------------------------------------------
+Tue Apr 19 08:56:03 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.1:
+  * various bugs fixed
+  * pixel math improvements
+
+-------------------------------------------------------------------
+Wed Mar  9 12:01:08 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to 1.0.0:
+  * Added ASTRO-TIFF standard
+  * Fixed memory consumption for all sequence operations
+  * Fixed settings for sequence export as webm film with VP9 codec
+  * Removed use of lo/hi cursors and fixed normalization for export
+  * Fixed load and close commands for scripts in GUI
+  * Fixed Bayer pattern in SER after extraction
+  * Fixed registration crash for small images
+  * Improved main panel separator positioning and keeping it in memory
+  * Improved speed of FITSEQ detection when scanning sequences
+  * Reintroduced compatibility with OpenCV 4.2 with disabled features
+
+-------------------------------------------------------------------
+Wed Dec 15 10:00:24 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.0~rc2:
+  * Fixes many crashes
+  * Minor improvements in plot feature
+
+-------------------------------------------------------------------
+Mon Nov 22 08:32:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.0-rc1:
+  * This new version makes it possible to attempt an astrometric
+    resolution on only part of the image.
+    Still for wide field images (FOV > 5°), the astrometric
+    resolution is now done by default on the central part
+    of the image only.
+  * Keeping WCS information in geometric operations
+  * Keeping WCS information in Undo/Redo
+  * Better annotation
+  * Add of GAIA EDR3 catalogue
+  * Improve star detection in image registration
+  * For global registration, it is now possible to choose the number
+    of degrees of freedom of the transformation that sends the image
+    to be registered to the reference image. By default, the
+    transformation is a homography, which admits a certain number
+    of distortions between the 2 images.
+  * New tool: Evaluate sensor tilt
+  * New button for quick photometry
+  * Pixel Math : implementation of a first version
+  * Refactoring of command help
+- For more details, see https://siril.org/download/2021-11-20-siril-1.0.0-rc1
+
+-------------------------------------------------------------------
+Fri Nov 12 06:39:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix incorrect/missing licenses
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Nov 10 18:53:48 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use OpenCV 4 on TW again, instead of the old OpenCV 3.
+- Use system wcslib
+- Cleanup previous changes:
+  * cmake is just an extraneous build dependency
+  * deduplicate SVG icons and other files
+
+-------------------------------------------------------------------
+Wed Nov 10 16:47:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Move icon to correct place, fixes bsc#1192563
+
+-------------------------------------------------------------------
+Tue Jul  6 11:30:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.99.10.1:
+  * Fixed star detection with resolution < 1.0
+  * Fixed interpolation issue in global registration
+  * Fixed timestamp issue with glib < 2.66
+  * New MAD clipping algorithm
+
+-------------------------------------------------------------------
+Tue Jun 15 05:33:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.99.10:
+  * New alignment algo on 2 or 3 stars
+  * New pixel rejection algo: Generalized Extreme Studentized Deviate Test
+  * Added weighting of images according to noise
+  * Normalization refactoring
+  * Remove black borders of stacked image
+  * Possibility of processing with synthetic bias
+  * Extraction of the green channel 
+  * Update sampling after channel extraction and/or Drizzle
+  * Keep WCS info in stacked image 
+  * Added drag and drop to open an image, or a sequence
+  * Improve overall performance
+- Drop fix_glib_2_68_error.patch
+
+-------------------------------------------------------------------
+Fri May  7 07:26:48 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix glib 2.68 compilation error
+- Add fix_glib_2_68_error.patch
+
+-------------------------------------------------------------------
+Thu Feb 18 07:59:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.99.8.1:
+  * Fixed crash because of wcslib function
+  * New ability to remove sequence frames from the "Plot" tab
+  * New merge command
+  * New astrometry annotation ability
+  * New snapshot function
+  * New conversion internal algorithm, can convert any sequence to
+    any other sequence type too now
+  * Handle datetime in TIFF file
+  * Improved color saturation tool with a background factor
+    to adjust the strength
+  * Reduced memory used by global registration
+  * Improving films (AVI and others) support: notifying the user,
+    suggesting conversion, fixing parallel operations
+  * Fixed memory leak in minmax algorithms
+  * Fixed a bug in FITS from DSLR debayer when image height is odd
+  * Fixed out-of-memory conditions on global registration and
+    median or mean stacking
+  * Fixed SER stacking with 32 bits output
+  * Fixed bitrate value issue in mp4 export
+  * Fixed normalization issue with SER files
+
+-------------------------------------------------------------------
+Wed Sep 30 13:41:48 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Clean up specfile:
+  * Remove no longer required autoconf, automake and intltool build deps
+  * Remove irrelevant cmake build dep
+  * Remove duplicated libjpeg/exiv2 devel build deps
+  * Add comment for overriding meson_build directory
+  
+-------------------------------------------------------------------
+Wed Sep 30 06:52:13 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.99.6
+  * same changelog as 0.99.4. Just some bug fixes added.
+
+-------------------------------------------------------------------
+Mon Sep 21 06:49:37 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.99.4
+  * New UI with a single window
+  * New demosaicing algorithms, RCD is now the default one
+  * New algorithm to fix the AF square with XTRANS sensor
+  * New support for FITS decompression and compression with
+    Rice/Gzip and HCompress methods
+  * New support for quantization and HCompress scale factor settings
+    for FITS compression 
+  * New functions to extract Ha and Ha/OII from RGB images
+  * New linear match function
+  * New link command to create symbolic links
+  * New convert command to convert all files (and link FITS)
+  * New preference entries for FITS compression settings
+  * New native image format: 32-bit floating point image
+  * New native sequence format: FITS sequence in a single image
+  * New UI for sequence image list
+  * New zoom handing: ctrl+scroll (up and down) is the new way
+    to zoom in and out
+  * New preview in open dialog
+  * New language selector in preferences
+  * New image importer: HEIF format
+  * New stacking filtering criterion (weighted FWHM).
+    It can exclude more spurious images
+  * New RL deconvolution tool
+  * New keyword CTYPE3 for RGB FITS in order to be used by Aladin
+  * New binary siril-cli to start siril without X server
+  * New preference entries with darks/biases/flat libraries
+  * New preliminary Meson support (Florian Benedetti)
+  * New ROWORDER FITS keyword that should be used by
+    several programm now
+  * X(Y)BAYEROFF can now be configured in preferences
+  * Parallelizing conversion and some other functions
+  * CI file was totally rewritten (Florian Benedetti)
+  * Config file was moved to more standard path
+  * Optimization of several algorithms (Ingo Weyrich)
+  * Background extraction is now available for sequence
+  * Midtone Transfer Function is now available for sequence
+  * Fixed code for Big Endian machine (Flössie)
+  * Fixed bug in SER joining operation when Bayer information was lost
+  * Fixed a bug of inaccessible directories in MacOS Catalina
+  * Fixed crash on some OpenCV operation with monochrome images
+  * Fixed annoying error boxes about missing disk drives on Windows
+
+-------------------------------------------------------------------
+Thu Jun 18 07:04:56 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add -fcommon to allow building against GCC10 
+
+-------------------------------------------------------------------
+Mon Mar 23 00:03:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.9.12
+  http://free-astro.org/index.php?title=Siril:0.9.12
+- add debian files
+
+-------------------------------------------------------------------
+Sat Oct 19 23:23:44 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- add buildrequires for some missing features
+  - video support: libavformat libavutil >= 55.20 libavcodec
+    libswscale libswresample
+  - websupport: libcurl
+  - ffms2
+
+-------------------------------------------------------------------
+Sat Oct 19 23:01:21 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.9.11
+  http://free-astro.org/index.php?title=Siril:0.9.11
+
+-------------------------------------------------------------------
+Mon Mar 18 16:27:53 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- also package mime info file
+
+-------------------------------------------------------------------
+Mon Mar 18 16:22:09 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- install appdata and desktop file
+
+-------------------------------------------------------------------
+Mon Mar 18 14:47:20 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.9.10
+  http://free-astro.org/index.php?title=Siril:0.9.10
+
+-------------------------------------------------------------------
+Sun Jan 13 00:54:08 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.9.9
+  http://free-astro.org/index.php?title=Siril:0.9.9
+
+-------------------------------------------------------------------
+Fri Apr 13 21:02:46 UTC 2018 - mrueckert@suse.de
+
+- update to 0.9.8.3
+
+-------------------------------------------------------------------
+Fri Nov 10 16:48:01 UTC 2017 - mrueckert@suse.de
+
+- update to 0.9.7
+
+-------------------------------------------------------------------
+Mon Jan 23 17:14:31 UTC 2017 - mrueckert@suse.de
+
+- update to 0.9.5
+
+-------------------------------------------------------------------
+Mon May 25 00:27:13 UTC 2015 - stefan.bruens@rwth-aachen.de
+
+- initial OBS version
+

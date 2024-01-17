@@ -1,0 +1,7 @@
+<package name="colordiff" project="openSUSE:Factory">
+  <title>Colour-highlighted 'diff' output</title>
+  <description>The Perl script colordiff is a wrapper for 'diff' and produces the same
+output but with pretty 'syntax' highlighting. Colour schemes can be
+customized.</description>
+  <devel project="devel:tools" package="colordiff"/>
+</package>

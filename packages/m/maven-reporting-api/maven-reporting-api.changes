@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sun Sep 24 01:57:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.1.1
+  * Task:
+    + MSHARED-1118 - Restore binary compat for MavenReport
+      (partially revert MSHARED-1024)
+
+-------------------------------------------------------------------
+Sun Mar 20 20:11:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with source and target levels 8
+
+-------------------------------------------------------------------
+Fri Mar 11 06:57:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.1.0
+  * Improvements:
+    + [MSHARED-812] – Require Java 7
+    + [MSHARED-879] – make build Reproducible
+  * Task:
+    + [MSHARED-1024] – Replace deprecated code
+  * Dependency upgrade:
+    + [MSHARED-844] – Upgrade to Doxia 1.11.1
+  * needed for a new maven-javadoc-plugin
+
+-------------------------------------------------------------------
+Thu Mar 28 18:24:34 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of maven-reporting-api 3.0
+- Generate and customize ant build.xml file

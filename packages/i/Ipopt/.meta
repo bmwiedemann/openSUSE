@@ -1,0 +1,5 @@
+<package name="Ipopt" project="openSUSE:Factory">
+  <title>A software package for large-scale nonlinear optimization methods</title>
+  <description>Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software package for large-scale nonlinear optimization.</description>
+  <devel project="science" package="Ipopt"/>
+</package>

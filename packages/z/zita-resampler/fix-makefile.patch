@@ -1,0 +1,23 @@
+diff --git a/apps/Makefile b/apps/Makefile
+index 0b96a9e..2705170 100644
+--- a/apps/Makefile
++++ b/apps/Makefile
+@@ -25,7 +25,6 @@ MANDIR ?= /usr/share/man/man1
+ VERSION = 1.10.1
+ CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\"
+ CXXFLAGS += -O2  -ffast-math -Wall
+-CXXFLAGS += -march=native
+ 
+ 
+ all:	zresample zretune zresample.1.gz zretune.1.gz
+diff --git a/source/Makefile b/source/Makefile
+index 97d1ffa..1491488 100644
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -34,7 +34,6 @@ CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PT
+ CPPFLAGS += -DENABLE_SSE2
+ #CPPFLAGS += -DENABLE_NEON  
+ CXXFLAGS += -Wall -fPIC -O2 -ffast-math
+-CXXFLAGS += -march=native
+ LDFLAGS += 
+ LDLIBS +=

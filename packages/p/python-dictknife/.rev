@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18a105c03fe1433f8422300090e29acc</srcmd5>
+    <version>0.13.0</version>
+    <time>1597675276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827255</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3cc33088f04f42853ae5c99a0a3e32ec</srcmd5>
+    <version>0.13.0</version>
+    <time>1639424729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>940347</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>be504d73a6289fbee250ef10b9b37c5a</srcmd5>
+    <version>0.13.0</version>
+    <time>1643926603</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-310.patch:
+  * Support Python 3.10.</comment>
+    <requestid>950835</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>90a69a02f7a49e69a7b4be134bb6b957</srcmd5>
+    <version>0.13.0</version>
+    <time>1650060877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update optional runtime and buildtime requirements
+  * 0.13 replaced deprecated ouauth2client with newer oauthlib.
+  * 0.11 replaced toml with qtoml (unavailabe in TW)
+</comment>
+    <requestid>970292</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>164faac02658c9df13c6c8de3dfe4d24</srcmd5>
+    <version>0.14.0</version>
+    <time>1701632928</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.14.0:
+  * use tomlkit instead of qtoml
+  * use ruamel.yaml instead of pyyaml (for preserving comments)
+  * add `dictknife diff -o pair`</comment>
+    <requestid>1130485</requestid>
+  </revision>
+</revisionlist>

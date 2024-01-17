@@ -1,0 +1,8 @@
+<package name="gssntlmssp" project="openSUSE:Factory">
+  <title>GSSAPI NTLMSSP Mechanism</title>
+  <description>A GSSAPI Mechanism that implements NTLMSSP
+
+</description>
+  <devel project="network" package="gssntlmssp"/>
+  <url>https://pagure.io/gssntlmssp</url>
+</package>

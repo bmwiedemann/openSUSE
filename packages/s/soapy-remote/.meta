@@ -1,0 +1,9 @@
+<package name="soapy-remote" project="openSUSE:Factory">
+  <title>Use any Soapy SDR remotely</title>
+  <description>Soapy Remote - Remote device support for Soapy SDR.
+A Soapy module that supports remote devices within the Soapy API.
+
+</description>
+  <devel project="hardware:sdr" package="soapy-remote"/>
+  <url>https://github.com/pothosware/SoapyRemote/wiki</url>
+</package>

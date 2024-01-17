@@ -1,0 +1,234 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d37ee10cc259f6045b55d54d069648e8</srcmd5>
+    <version>0.1.5</version>
+    <time>1168903300</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="56">
+    <srcmd5>4ac794ca5f3d489d4e090673b925ae0a</srcmd5>
+    <version>0.1.5</version>
+    <time>1187911873</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6539662940a1e49eb7490ab6047819f8</srcmd5>
+    <version>0.1.6</version>
+    <time>1200608355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6539662940a1e49eb7490ab6047819f8</srcmd5>
+    <version>0.1.6</version>
+    <time>1200608355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6f860b658017ec299ac05c41ff320908</srcmd5>
+    <version>0.1.6</version>
+    <time>1245365865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6f860b658017ec299ac05c41ff320908</srcmd5>
+    <version>0.1.6</version>
+    <time>1245365865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>94bc62c0dacba56e1ff10b3aa298e627</srcmd5>
+    <version>0.1.6</version>
+    <time>1268924542</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>94bc62c0dacba56e1ff10b3aa298e627</srcmd5>
+    <version>0.1.6</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>94bc62c0dacba56e1ff10b3aa298e627</srcmd5>
+    <version>0.1.6</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>707d3aa08f7576f81b69db8cb611fc15</srcmd5>
+    <version>unknown</version>
+    <time>1284373491</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/libdvbpsi based on submit request 47697 from user coolo
+</comment>
+    <requestid>47697</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>707d3aa08f7576f81b69db8cb611fc15</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>eaa02689698c998c62bc05b918a720ea</srcmd5>
+    <version>0.1.7</version>
+    <time>1304584330</time>
+    <user>saschpe</user>
+    <comment>Added 32bit compatibility libraries. Removed self-obsoletes (fix for RPMLINT warning) (forwarded request 69471 from TheBlackCat)</comment>
+    <requestid>69615</requestid>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>051e34209c90d945abdf8c457fd3b8a1</srcmd5>
+    <version>0.1.7</version>
+    <time>1304584344</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69615
+</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aecd621169be33f78072475c78bfcb6a</srcmd5>
+    <version>0.2.0</version>
+    <time>1307712188</time>
+    <user>saschpe</user>
+    <comment>Update to 0.2.0... please forward to Factory (forwarded request 69793 from dimstar)</comment>
+    <requestid>69814</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>aecd621169be33f78072475c78bfcb6a</srcmd5>
+    <version>0.2.0</version>
+    <time>1319182085</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7f733769d20a9bc41ee1be4320b0f3e5</srcmd5>
+    <version>0.2.2</version>
+    <time>1320671940</time>
+    <user>coolo</user>
+    <comment>- use proper filenames in files section, to make the build fail if the SONAME changes
+- update to 0.2.2: revert regression introduced by &quot;ignore initial discontinuity&quot; commit
+- changes from 0.2.1: ignore initial discontinuity</comment>
+    <requestid>90081</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>16f9bb1bf6bd19732d7dd917e33514d4</srcmd5>
+    <version>0.2.2</version>
+    <time>1323192192</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>16f9bb1bf6bd19732d7dd917e33514d4</srcmd5>
+    <version>0.2.2</version>
+    <time>1340183577</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3bd6823be0b8469711e0a5b9316c9d92</srcmd5>
+    <version>1.0.0</version>
+    <time>1357127858</time>
+    <user>namtrac</user>
+    <comment>Fix a mistake on my previous submit (forwarded request 146656 from posophe)</comment>
+    <requestid>146684</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>42c828d7a395be6e07c8d3ac69d7aa17</srcmd5>
+    <version>0.2.2</version>
+    <time>1359038113</time>
+    <user>coolo</user>
+    <comment>Revert to version 0.2.2 - The actual consumer of this package is VLC (out of Factory tree), but version 1.0.0 introduces too many regressiosn / issues / API breakages... as nothing else in Factory relies on libdvbpsi, I propose to revert to the last working version (there was a large gap in version numbers, so don't be shocked by 1.0.0 vs 0.2.2)</comment>
+    <requestid>149565</requestid>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>42c828d7a395be6e07c8d3ac69d7aa17</srcmd5>
+    <version>0.2.2</version>
+    <time>1359109260</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a23b643c139139975e71206b5dd4eebd</srcmd5>
+    <version>1.1.0</version>
+    <time>1367932395</time>
+    <user>coolo</user>
+    <comment>Update - I need this update so I can submit libdvbpsi-0, which I need so factory script no longer deny vlc fixes (DOH)</comment>
+    <requestid>174690</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a23b643c139139975e71206b5dd4eebd</srcmd5>
+    <version>1.1.0</version>
+    <time>1379662931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>477e5498a9ceb8fa67c9885eeacb9866</srcmd5>
+    <version>1.1.2</version>
+    <time>1387798499</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.1.2 (forwarded request 211952 from Zaitor)</comment>
+    <requestid>212004</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>477e5498a9ceb8fa67c9885eeacb9866</srcmd5>
+    <version>1.1.2</version>
+    <time>1409301540</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e51cc9204f50dd87eed3f4679f78ff9b</srcmd5>
+    <version>1.2.0</version>
+    <time>1419249268</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266071</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>7b86718e50bdb392e83e25b700db2378</srcmd5>
+    <version>1.2.0</version>
+    <time>1431247611</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305792</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>87a87a24c798c6e7d794e71fd6a339e3</srcmd5>
+    <version>1.3.0</version>
+    <time>1433832579</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311183</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>500c2c92767251114567f4d530ec7e99</srcmd5>
+    <version>1.3.1</version>
+    <time>1487767835</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup a bit with spec-cleaner
+
+- Update to version 1.3.1:
+ + Fix bugs in table: EIT
+ + Fix test_dr
+- Removed libdvbpsi-gcc5-fixes.patch, fixed upstream.</comment>
+    <requestid>459195</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>df42003d2cf521a5b591183cbff6a30f</srcmd5>
+    <version>1.3.2</version>
+    <time>1519218598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578204</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ee808bde494092e157b5ecab139af899</srcmd5>
+    <version>1.3.3</version>
+    <time>1568804757</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730712</requestid>
+  </revision>
+</revisionlist>

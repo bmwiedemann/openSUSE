@@ -1,0 +1,24 @@
+../src/remote-viewer.c: In function ‘authenticate_cb’:
+../src/remote-viewer.c:350:9: error: ‘rest_proxy_auth_cancel’ is deprecated [-Werror=deprecated-declarations]
+  350 |         rest_proxy_auth_cancel(rstauth);
+      |         ^~~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/rest-1.0/rest/rest-proxy.h:28,
+                 from /usr/include/govirt-1.0/govirt/ovirt-proxy.h:25,
+                 from /usr/include/govirt-1.0/govirt/ovirt-options.h:22,
+                 from /usr/include/govirt-1.0/govirt/govirt.h:34,
+                 from ../src/remote-viewer.c:33:
+/usr/include/rest-1.0/rest/rest-proxy-auth.h:72:6: note: declared here
+   72 | void rest_proxy_auth_cancel (RestProxyAuth *auth);
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+
+--- virt-viewer-11.0/src/remote-viewer.c.orig	2022-10-05 16:44:04.225890908 -0600
++++ virt-viewer-11.0/src/remote-viewer.c	2022-10-05 16:46:09.009896475 -0600
+@@ -311,6 +311,7 @@ parse_ovirt_uri(const gchar *uri_str, ch
+     return TRUE;
+ }
+ 
++#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+ static gboolean
+ authenticate_cb(RestProxy *proxy, RestProxyAuth *rstauth,
+                 G_GNUC_UNUSED gboolean retrying, gpointer user_data)

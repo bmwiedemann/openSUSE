@@ -1,0 +1,21 @@
+better use glibc hwcap stuff instead of broken SIGILL traps.
+
+---
+ libvisual/lv_cpu.c |    4 ----
+ 1 file changed, 4 deletions(-)
+
+Index: libvisual-0.4.0/libvisual/lv_cpu.c
+===================================================================
+--- libvisual-0.4.0.orig/libvisual/lv_cpu.c
++++ libvisual-0.4.0/libvisual/lv_cpu.c
+@@ -441,10 +441,6 @@ void visual_cpu_initialize ()
+ #endif
+ #endif /* VISUAL_ARCH_X86 */
+ 
+-#if defined(VISUAL_ARCH_POWERPC)
+-	check_os_altivec_support ();
+-#endif /* VISUAL_ARCH_POWERPC */
+-
+ 	/* Synchronizing enabled flags with has flags */
+ 	__lv_cpu_caps.enabledTSC	= __lv_cpu_caps.hasTSC;
+ 	__lv_cpu_caps.enabledMMX	= __lv_cpu_caps.hasMMX;

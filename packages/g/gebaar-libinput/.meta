@@ -1,0 +1,5 @@
+<package name="gebaar-libinput" project="openSUSE:Factory">
+  <title>gebaar-libinput</title>
+  <description>A WM-independent daemon for gestures.</description>
+  <devel project="X11:Wayland" package="gebaar-libinput"/>
+</package>

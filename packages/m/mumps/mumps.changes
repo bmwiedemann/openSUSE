@@ -1,0 +1,315 @@
+-------------------------------------------------------------------
+Mon Oct 23 19:17:11 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Disable HPC flavors on i586
+
+-------------------------------------------------------------------
+Mon Oct 23 11:55:43 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete openmpi[123]
+- Prepare support for openmpi5
+
+-------------------------------------------------------------------
+Tue Sep  6 17:23:51 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add missing conflicts to old library package.
+- Cleanup obsolete parts from spec file.
+
+-------------------------------------------------------------------
+Sat Sep  3 22:07:56 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Correct name of library packages to match SONAME.
+
+-------------------------------------------------------------------
+Fri Mar 26 20:24:52 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix name of compat library package (bsc#1184057).
+- Remove a non-existent Recommends: in non-HPC package.
+
+-------------------------------------------------------------------
+Thu Feb 25 09:48:50 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to version 5.3.5, changes are
+  * Fixed 2x2 pivots bug from 5.3.4 release in MPI LDLT factorization
+  * Fixed ICNTL(8)=-2 option during analysis (code and documentation)
+  * Fixed a rare bug (segfault) related to dynamic storage management on numerically difficult matrices
+  * Fixed a rare deadlock in BLR for symmetric matrices
+  * Fixed an uninitialized variable (which could lead to incorrect -19 error)
+  * Minor fix in userguide (CNTL(1) vs. ICNTL(1) in ICNTL(36) description)
+  * Fixed a possible runtime issue during solve, related to "TO_PROCESS" array 
+  * Assume ilp64 MPI interface only applies to Fortran in c_example.c
+  * Note on gfortran-10 compilation added
+  * Avoid intent on pointers (F2003-only)
+  * More robust multithreading for matrix reformatting (arrowheads)
+  * Fixed ICNTL(31) interpretation in case of repeated analysis
+  * Fixed multiple mpif.h inclusion (distributed rhs, ifort+openmpi)
+  * Fixed computation of effectively used memory statistics
+  * Improved multithreaded performance of BLR backward solve
+  * Fixed return code in build_mumps_int_def.c + openmp compilation (pgi)
+  * Forbid a loop vectorization in [sdcz]sol_c.F (segfault with ifort) 
+  * New feature: distributed right-hand sides
+  * Improved time for arrowheads construction (single MPI case, mainly)
+  * C interface: ability to know if MUMPS_INT is 64-bit from include file
+  * Improved BLR performance when CNTL(1)=0.0 and ICNTL(36)=1
+  * Fixed INFO(34),INFO(35),INFO(37),INFO(38) on processes with rank > 0
+  * More portable MPI_IS_IN_PLACE feature in libseq
+  * Fixed determinant computation when Cholesky ScaLapack is used
+  * Information on advancement (flops done) on each MPI process
+  * Allow rhs_sparse and irhs_sparse to be unassociated if nz_rhs=0
+  * Fixed INFO(30) and INFO(31) computation on MPI processes with rank > 0
+  * OMP collapsed loops: avoid FIRSTPRIVATE on internal loop bound (for pgi)
+  * Fix for compilers not freeing local allocatable arrays (64-bit metis)
+  * Fixed RINFO(5-6) and RINFOG(15-16) metrics (entries=>bytes)
+  * C interface: A_ELT/SCHUR/RHS/REDRHS/RHS_loc/SOL_loc may exceed 2^31 entries
+  * Local Schur (ICNTL(19)=2 or 3) may now exceed 2^31 entries
+  * Fixed internal dynamic storage of blocks with more than 2^31 entries
+  * Fixed a bug in the parallel analysis that limited scalability 
+
+- removed Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch
+  * functionaltiy is included upstream
+
+-------------------------------------------------------------------
+Fri Feb  5 20:31:13 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Disable openmpi4 builds for SLE/Leap < 15.3.
+
+-------------------------------------------------------------------
+Thu Jan 28 17:52:27 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Change 'Requires:' to other HPC packages to %requires_eq to depend
+  on the exact version. This should take care of HPC packages ignoring
+  proper ABI versioning.
+
+-------------------------------------------------------------------
+Thu Jul 23 16:29:56 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc10 to HPC build (bsc#1174439). 
+  * Remove explicit build dependency for libgomp1.
+  * Add missing compiler versions to openblas and scalapack
+    build dependencies.
+- Add build support for openmpi4.
+
+-------------------------------------------------------------------
+Tue Jun 30 20:05:56 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- With gcc10, some fortran code started failing to build -
+  add compiler option -std=legacy to fix (bsc#1173549).
+
+-------------------------------------------------------------------
+Tue Jun  2 07:50:37 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Add macros to handle building of openmpi1 flavors for serial
+  builds as well (bsc#1172345).
+
+-------------------------------------------------------------------
+Tue Dec  3 12:06:39 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Set %mpi_ver for scotch-openmpi
+- Remove requires for libblacs from HPC builds which is not
+  required there.
+- Add openmpi3 non-HPC build flavor.
+- Remove libblacs as explicit dependency for HPC build. BLACS
+  is part of scalapack.
+
+-------------------------------------------------------------------
+Fri Nov 29 22:10:30 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add support for gcc7 builds for HPC.
+- Add support for gcc8 and gcc9 builds for HPC (jsc#SLE-7766 &
+  jsc#SLE-8604).
+
+-------------------------------------------------------------------
+Thu Nov 28 16:16:49 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Disable openmpi1 builds for SLE/Leap > 15.1.
+- Enable openmpi3 builds for Leap and SLE > 15.1 (jsc#SLE-7773).
+
+-------------------------------------------------------------------
+Mon Nov 25 21:52:36 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reflect renaming of openmpi packages to openmpi1 in Tumbleweed,
+  fixes unresolvable packages.
+
+-------------------------------------------------------------------
+Mon Sep  9 07:47:02 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update Source0, file is gz and not bzip2
+- Use -ffat-lto-objects to provide proper static library.
+
+-------------------------------------------------------------------
+Wed Aug 28 18:59:46 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 5.2.1 (jsc#SLE-9939)
+  * See ChangeLog file or at http://mumps.enseeiht.fr/index.php?page=dwnld
+- Refresh patch:
+  * Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch
+- Install the new binaries provided with the examples.
+
+-------------------------------------------------------------------
+Wed Jul 17 09:42:01 UTC 2019 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add BuildRequires libopenblas-gnu-hpc >=  0.3.6 for hpc to  avoid
+  to build when openblas library not available (ppc64)
+
+-------------------------------------------------------------------
+Wed Apr  3 14:24:22 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- added version flavor to scotch-openmpi[23] (bsc#1131426)
+
+-------------------------------------------------------------------
+Wed Feb 27 22:08:16 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Use -Wl,--whole-archive .. -Wl,--no-whole-archive instead of unpacking
+  static library to build a shared library.
+- Add dependency to gcc-gfortran to non-HPC build of devel package.
+
+-------------------------------------------------------------------
+Wed Feb 27 18:29:25 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch 
+  * Add missing dependency to serialize sub-builds.
+
+-------------------------------------------------------------------
+Mon Feb 25 05:37:27 UTC 2019 - Torben Mikael Hansen <torhans-build@sciomnis.com>
+
+- Changed requirements for openmpi (non-hpc) version
+  %%mpi-ver -> %%mpi-ext: openmpi1 flavors omit the version number.
+
+-------------------------------------------------------------------
+Fri Feb 22 07:15:33 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Add conflicts between scotch and non-scotch flavors of example
+  packages.
+
+-------------------------------------------------------------------
+Thu Feb 14 18:24:28 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Ship header files with devel package for each HPC build (bsc#1125551).
+
+-------------------------------------------------------------------
+Thu Feb 14 09:11:45 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update RPM groups.
+
+-------------------------------------------------------------------
+Thu Feb 14 00:37:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add explicit Requires: for matching libblacs2-* to non-HPC library package 
+
+-------------------------------------------------------------------
+Tue Feb 12 07:24:57 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Fix product groups.
+- Fix dependencies.
+- Consolidate use of openmpi1, openmpi2, openmpi3 for non-HPC builds.
+
+-------------------------------------------------------------------
+Mon Feb 11 16:26:11 UTC 2019 - Egbert Eich <eich@suse.com>
+
+- Fix License.
+
+-------------------------------------------------------------------
+Sat Feb  9 13:40:09 UTC 2019 - eich@suse.com
+
+- Simpify naming scheme.
+- Fix more dependencies.
+- Rename package: test -> examples.
+- Create HPC master package for doc and examples.
+- Fix shared library builds.
+- Build example binaries against shared libs for all builds.
+- Add Makefiles-Serialize-libseq-libplat-mommond_mod-for-parallel-builds.patch:
+  make sure builds are serialized for 'make -j <n>'
+- Version mumps, requires and buildrequires, remove unneeded buildrequires.
+- Only include requires for the respecive flavor (non-scotch, scotch).
+
+-------------------------------------------------------------------
+Fri Feb  8 12:03:01 UTC 2019 - eich@suse.com
+
+- Split off static packages & their link package (where applicable).
+- Fix dependencies for devel packages.
+
+-------------------------------------------------------------------
+Thu Feb  7 19:51:43 UTC 2019 - eich@suse.com
+
+- Update to version 5.1.2
+  See Changelog file or http://mumps.enseeiht.fr/index.php?page=dwnld
+- Convert to full multibuild support: builds with scotch support
+  are separate, now.
+- Add HPC support (FATE#324151).
+- Move links from the sequential libraries to the MPI library directory
+  to a separate package, make this package an optional Recommends:
+  of the non-HPC library packages.
+- Move documentation to separate package.
+- Disable non-HPC builds and some MPI flavors for SLE.
+
+-------------------------------------------------------------------
+Sun Jan 20 08:25:43 UTC 2019 - eich@suse.com
+
+- Fix dependencies: All scotch devel packages come without 'lib'
+  prefix, now.
+
+-------------------------------------------------------------------
+Tue Jan  8 22:53:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Refactor spec for _multibuild, currently non-HPC flavors only.
+- Setup MPI environment when building MPI flavors, fixes build on
+  Tumbleweed, Leap 15.x, SLE 15.
+
+-------------------------------------------------------------------
+Sat Nov 21 14:23:53 UTC 2015 - scorot@free.fr
+
+- fix build against recent scalapack which includes blacs library
+
+-------------------------------------------------------------------
+Wed May 22 20:20:13 UTC 2013 - scorot@free.fr
+
+- fix build for Factory and recent openmpi
+
+-------------------------------------------------------------------
+Wed Sep 19 21:08:02 UTC 2012 - scorot@free.fr
+
+- install missing headers for the sequential version
+
+-------------------------------------------------------------------
+Wed Sep 19 19:40:07 UTC 2012 - scorot@free.fr
+
+- fix broken requirements of mpi devel packages
+
+-------------------------------------------------------------------
+Tue Aug 21 17:40:15 UTC 2012 - scorot@free.fr
+
+- split devel packages with devel and scotch-devel
+- devel packages don't require scotch-devel anymore
+
+-------------------------------------------------------------------
+Mon Aug 20 23:09:48 UTC 2012 - scorot@free.fr
+
+- fix build with debuginfo enabled
+
+-------------------------------------------------------------------
+Mon Aug 20 21:08:35 UTC 2012 - scorot@free.fr
+
+- minor spec file changes
+
+-------------------------------------------------------------------
+Fri Aug  3 21:47:55 UTC 2012 - scorot@free.fr
+
+- remove atlas deps and link againt ref blas
+
+-------------------------------------------------------------------
+Sun May 13 14:11:40 UTC 2012 - scorot@free.fr
+
+- fix build on i586
+
+-------------------------------------------------------------------
+Sun May 13 11:33:35 UTC 2012 - scorot@free.fr
+
+- spec file cleanup and formating
+- remove mpich2 stuff
+
+-------------------------------------------------------------------
+Tue May  8 19:22:00 UTC 2012 - scorot@free.fr
+
+- specfile cleanup and update with scotch changes
+- link with ATLAS shared libs libsatlas.so
+- build parallel libs for openmpi and mvapich2

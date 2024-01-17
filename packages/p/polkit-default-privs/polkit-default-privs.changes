@@ -1,0 +1,1709 @@
+-------------------------------------------------------------------
+Wed Dec 13 15:11:09 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20231213.09963a4:
+  * profiles: add and adjust polkit actions for gamemode (bsc#1217915)
+
+-------------------------------------------------------------------
+Wed Nov 29 12:06:01 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20231129.269abcd:
+  * profiles: whitelist cinnamon-settings-daemon wacom-oled-helper (bsc#1217532)
+
+-------------------------------------------------------------------
+Fri Nov 03 14:29:31 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20231103.3b4a82f:
+  * profiles: fwupd: add host-security-attr actions (bsc#1216832)
+  * profiles: remove outdates sysprof2 actions
+  * profiles: drop obsolete udisks2 bcache and zram actions
+
+-------------------------------------------------------------------
+Fri Oct 06 09:48:30 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20231006.28f05f1:
+  * Whitelist policycoreutils-dbus actions (bsc#1213435)
+
+-------------------------------------------------------------------
+Wed Sep 20 12:26:03 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20230920.74aeded:
+  * udisks2: add additional NVME action (bsc#1214897)
+
+-------------------------------------------------------------------
+Tue Sep 12 08:13:05 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20230912.0978001:
+  * udisks2: add additional mount and NVME actions (bsc#1214897)
+
+-------------------------------------------------------------------
+Tue Aug 29 12:25:03 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20230829.1a9a761:
+  * deepin-api: provide backward compatibility whitelisting (bsc#1214101)
+
+-------------------------------------------------------------------
+Tue Jun 06 09:59:32 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20230606.5001571:
+  * Whitelist org.freedesktop.systemd1.bypass-dump-ratelimit (bsc#1211978)
+
+-------------------------------------------------------------------
+Fri Jun 02 10:37:11 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 1550+20230602.0c9c3c6:
+  * profiles: drop dead mousepad action
+
+-------------------------------------------------------------------
+Wed May 17 12:43:18 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 1550+20230517.ab68b2d:
+  * rename com.deepin.api to org.deepin.dde (bsc#1211376)
+
+-------------------------------------------------------------------
+Tue Mar 07 13:08:18 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20230307.7f42172:
+  * Whitelist kde-inotify-survey (bsc#1208689)
+
+-------------------------------------------------------------------
+Fri Mar 03 12:46:22 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 1550+20230303.7726e9f:
+  * tuned: incremental addition of new acquire_devices method (bsc#1208727)
+
+-------------------------------------------------------------------
+Wed Nov 02 10:15:16 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20221102.9f111fa:
+  * allow local logged in users to change NetworkManager configuration,
+    keyboard layout and locale settings without entering a password (in the
+    easy profile).
+
+-------------------------------------------------------------------
+Tue Oct 18 10:17:49 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20221018.7616c25:
+  * fwupd (bsc#1204026): add incremental {get,set}-bios-settings
+
+-------------------------------------------------------------------
+Mon Sep 19 10:41:14 UTC 2022 - matthias.gerstner@suse.com
+
+- adjust spec file to deal with /sbin -> /usr/sbin path change
+- Update to version 1550+20220919.3b55a1f:
+  * kdiskmark: adjust to new major version action renaming (bsc#1202725)
+  * Use /usr/sbin nowadays (boo#1191090)
+
+-------------------------------------------------------------------
+Tue Aug 02 08:10:20 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220727.3ce2e2f:
+  * iio-sensor-proxy (bsc#1201558): add claim-sensor action
+
+-------------------------------------------------------------------
+Wed Jun 08 14:34:58 UTC 2022 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20220608.097448e:
+  * Whitelist new systemd methods (bsc#1200098)
+
+-------------------------------------------------------------------
+Tue May 24 08:37:09 UTC 2022 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20220524.0345bd9:
+  * Add kinfocenter5 whitelisting (bsc#1199735).
+  * gconf: cleanup rules used by dropped gconf2 package
+
+-------------------------------------------------------------------
+Mon Apr 04 12:41:06 UTC 2022 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20220404.7b4bea2:
+  * Add whitelisting to restrictive profile as well
+  * Add budgie-control-center whitelisting (bsc#1195023)
+
+-------------------------------------------------------------------
+Fri Apr 01 09:50:52 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220401.41ccb1d:
+  * usbguard: relax read-only operations to yes
+
+-------------------------------------------------------------------
+Fri Mar 25 12:26:22 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220325.163dbdf:
+  * whitelisting: add usbguard actions (bsc#1196621)
+
+-------------------------------------------------------------------
+Thu Mar 24 10:10:39 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220324.7f46822:
+  * Fix generation of file /etc/polkit-1/rules.d/90-default-privs.rules
+
+-------------------------------------------------------------------
+Thu Mar 03 14:12:51 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220303.95a78fb:
+  * kpmcore: whitelist block device (re-)partioning helper (bsc#1178848)
+
+-------------------------------------------------------------------
+Fri Feb 25 09:34:55 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20220225.330e064:
+  * Whitelist Kcron (bsc#1193945)
+  * deepin-api: drop manage-locale action that is not package on openSUSE
+  * udisks2: remove manage-vdo action
+
+-------------------------------------------------------------------
+Tue Dec 14 16:46:59 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20211214.daf2765:
+  * fwupd: tighten the downgrade rules (bsc#1193310)
+
+-------------------------------------------------------------------
+Thu Dec 09 19:51:19 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20211209.8ce206c:
+  * fwupd: whitelist new, more granular permissions (bsc#1193310)
+
+-------------------------------------------------------------------
+Fri Nov 19 13:57:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change Requires: polkit to Requires(pre): we need to be sure
+  polkit is instaled first, as we could otherwise end up with wrong
+  permissions on /etc/polkit-1/rules.d.
+
+-------------------------------------------------------------------
+Fri Nov 19 09:43:34 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- remove traces of old polkit-whitelisting sub-package
+
+-------------------------------------------------------------------
+Fri Oct  8 09:28:28 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- drop backward compatibility symlink in /etc/polkit-default-privs.standard.
+  rpmlint 2.0 is now in Factory and the check there directly uses the profile
+  in /usr/etc/polkit-default-privs/profiles/standard.
+- drop polkit-whitelisting sub-package. This is now handled in rpmlint 2.0
+  internally.
+
+-------------------------------------------------------------------
+Fri Oct 08 09:22:37 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20211008.9751669:
+  * whitelist power-profiles-daemon actions (bsc#1189900)
+  * cleanup: remove polkit-rules-whitelist.json
+
+-------------------------------------------------------------------
+Wed Aug 18 13:07:31 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210818.b0c41fd:
+  * whitelist deepin-api service actions (bsc#1070943)
+
+-------------------------------------------------------------------
+Fri Aug 13 11:47:41 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210813.ce0df56:
+  * malcontent: loosen restrictive ReadOwn actions to prevent spurious auth requests (#56)
+
+-------------------------------------------------------------------
+Thu Jul 22 09:19:53 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210722.ae1891d:
+  * whitelist zypp-gui action (bsc#1188364)
+  * introduce sub-directories for profiles in both /etc and /usr/etc
+  * remove polkit-default-privs.d package specific directory
+  * Moving polkit-default-privs.easy, polkit-default-privs.local and polkit-default-privs.restrictive from /etc /to /usr/etc directory
+
+-------------------------------------------------------------------
+Thu Jul 15 11:22:23 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210715.b7d5b97:
+  * kdenetwork-filesharing: tighten the restrictive profile
+
+-------------------------------------------------------------------
+Wed Jul 14 09:39:48 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210714.9c51c0e:
+  * 50-default.rules: move to /usr (contents unchanged)
+  See also: https://build.opensuse.org/request/show/905083
+
+-------------------------------------------------------------------
+Thu Jul 08 11:49:36 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210708.6401347:
+  * fprint.device.enroll: keep restrictive profile in sync with upstream
+
+-------------------------------------------------------------------
+Thu Jul 08 11:42:03 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210708.c4d6bf4:
+  * kdenetwork-filesharing: align with upstream (#49)
+
+-------------------------------------------------------------------
+Thu Jul 08 09:47:18 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210701.3047fcb:
+  * ModemManager1.USSD: fix inconsistencies in standard and easy profiles
+  * powerdevil.discretegpuhelper.hasdualgpu: align with upstream settings
+  * cupspkhelper.mechanism.job-edit: align with upstream setting
+  * org.fedoraproject.FirewallD1.info: don't be more restrictive than the 'standard' profile
+  * remove org.selinux.* (policycoreutils) since they no longer exist in Factory
+  * remove cinnamon.controlcenter.datetime.configure: no longer packaged
+  * net.connman.vpn.secret: fix invalid label "auth_admin_keep_session"
+
+-------------------------------------------------------------------
+Tue Jun 15 09:31:54 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210615.e149f78:
+  * profiles: cinnamon-settings-daemon (bsc#1186845)
+
+-------------------------------------------------------------------
+Thu Jun 10 07:53:07 UTC 2021 - jsegitz@suse.com
+
+- Update to version 1550+20210610.25c9b98:
+  * Whitelist setroubleshoot (boo#1186344)
+
+-------------------------------------------------------------------
+Thu May 20 14:11:15 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210520.336dcea:
+  * whitelist incremental libvirt org.libvirt.api.node-device.delete (bsc#1186270)
+
+-------------------------------------------------------------------
+Mon May 17 14:32:51 UTC 2021 - paolo.perego@suse.com
+
+- Update to version 1550+20210517.56da22d:
+  * Add systemd homed (boo#1185285)
+
+-------------------------------------------------------------------
+Mon May 03 11:16:01 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210503.88baaca:
+  * whitelist deepin-system-monitor pkexec actions (bsc#1181886)
+
+-------------------------------------------------------------------
+Fri Apr 30 13:25:40 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210430.c408cda:
+  * systemd: add newly added inhibit-handle-reboot-key action (bsc#1185468)
+  * whitelist non-functional change in systemd-networkd rules (bsc#1185469)
+
+-------------------------------------------------------------------
+Thu Apr 29 10:30:05 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210429.a605b7d:
+  * tuned: whitelist incrementally added polkit action (bsc#1185418)
+
+-------------------------------------------------------------------
+Mon Apr 12 07:42:37 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210409.c29362e:
+  * profiles: add KDiskMark (bsc#1182521)
+  * profiles: add kdenetwork-filesharing (bsc#1175633) (#37)
+
+-------------------------------------------------------------------
+Mon Jan 11 13:02:14 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210111.f725c25:
+  * polkit-rules-whitelist: add brltty brlapi group rule (bsc#1180593)
+
+-------------------------------------------------------------------
+Tue Dec 08 13:02:59 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201208.135bf51:
+  * libvirt: allow the active session to create read-only connections (bsc#1179126)
+  * profiles: cleanup outdates keep_always entries
+
+-------------------------------------------------------------------
+Thu Nov 19 09:20:05 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201119.2c1dce4:
+  - cleanup of dead and inconsistent polkit actions:
+    * profiles: drop the now rather confusing comment from nwfilter-binding actions
+    * profiles: harmonize and normalize profile syntax and style
+    * profiles: harmonize spice-space.lowlevelusbaccess actions
+    * profiles: remove dead pantheon actions
+    * profiles: remove dead org.gnome.DejaDup.duplicity action
+    * profiles: drop dead com.redhat.tuned.gui.run action
+    * profiles: fix brltty action(s)
+    * profiles: remove dead netvisix action
+    * profiles: realmd.discover-realm action: fix restrictive any setting
+    * profiles: remove dead com.redhat.lvm2.* actions
+    * profiles: group together org.kde.powerdevil actions
+    * profiles: remove dead org.kde.powerdevil.backlighthelper actions
+    * profiles: fix FirewallD1.info action in standard profile
+    * profiles: remove dead org.kde.baloo action
+    * profiles: remove dead kwallet actions and fix kwallet5 restrictive setting
+    * profiles: selinux actions: make restrictive profile no weaker than upstream
+    * profiles: remove dead gufw pkexec action
+    * profiles: adjust mate actions better to upstream defaults
+    * profiles: remove dead org.libvirt.api.newfilter.bind-* actions
+    * profiles: clear dead nepomuk.filewatch.raiselimit action
+    * profiles: remove dead kcmlightdm actions
+    * profiles: adjust gnome.controlcenter actions better to upstream defaults
+    * profiles: remove dead org.kde.recorditnow helper
+    * profiles: remove dead de.berlios.smb4k.mounthelper actions
+    * profiles: adjust user-administration action better to upstream defaults
+    * profiles: cleanup urfkill actions
+    * profiles: adjust ModemManager1 actions better to upstream settings
+    * profiles: cleanup ModemManager actions
+    * profiles: sync hp.driveguard.* actions with upstream settings
+    * profiles: gnome settings, xfce backlight-helper actions: sanitize settings
+    * profiles: cleanup dead and sync existing org.gnome actions
+    * profiles: sync timedate1 actions in restrictive profile with standard profile
+    * profiles: remove dead sytemd1.bus-access action
+    * profiles: remove dead org.kde actions
+    * profiles: make org.kde settings no weaker than upstream settings
+    * profiles: remove leftover dead yast actions
+    * profiles: remove dead yast.modules.yapi actions
+    * profiles: remove dead yast.modules.ysr actions
+    * profiles: remove dead yast.modules actions
+    * profiles: remove dead yast.module-manager and yast.scr actions
+    * profiles: remove dead upower actions
+    * profiles: add missing udisks2 actions in restrictive profile
+    * profiles: remove dead udisks (1) actions
+    * profiles: remove dead policykit.lockdown action, harmonize .exec setting
+    * profiles: adjust RealtimeKit actions to upstream settings
+    * profiles: remove dead SuSEfirewall2 zone switcher action
+    * profiles: remove dead backupmanager action
+    * profiles: remove dead smpppd action
+    * profiles: remove dead consolekit actions
+    * profiles: polkit example action run-frobnicate: adjust to upstream settings
+    * profiles: remove dead org.gnome.policykit.examples.* actions
+    * profiles: remove unused pulseaudio realtime actions
+    * profiles: cleanup PackageKit actions
+    * profiles: cleanup gnome-settings-daemon actions
+    * profiles: cleanup network manager actions
+    * profiles: cleanup outdated PolicyKit actions
+
+-------------------------------------------------------------------
+Tue Nov 03 10:14:02 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201103.994a5ed:
+  * udisks2: rename of manage-led action to match upstream changes (bsc#1178321)
+
+-------------------------------------------------------------------
+Mon Nov 02 08:34:41 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201030.d1b5d8b:
+  * whitelisting of GNOME malcontent parental controls (bsc#1177974)
+  * restrictive profile: fix conflicting duplicate action org.kde.powerdevil.backlighthelper.setbrightness
+  * restrictive profile: fix conflicting duplicate action org.freedesktop.color-manager.delete-profile
+  * profiles: fix conflicting duplicate action org.kde.powerdevil.backlighthelper.brightness
+  * profiles: remove duplicate actions with same authentication settings
+  * tools: new script to cleanly remove duplicate actions
+
+-------------------------------------------------------------------
+Mon Oct 19 12:51:57 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201012.1df5a0d:
+  * whitelist new plasma5-disks smartmon helper (bsc#1176742)
+
+-------------------------------------------------------------------
+Thu Oct 01 13:00:06 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201001.cb7020b:
+  * Whitelist newly added powerdevil battery charge threshold actions (bsc#1176474)
+
+-------------------------------------------------------------------
+Thu Sep 10 07:56:32 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20200909.647e56f:
+  * whitelist org.freedesktop.network1.forcerenew (bsc#1176215)
+
+-------------------------------------------------------------------
+Wed Jul 15 07:48:57 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20200715.6ddc764:
+  * whitelist libvirt-dbus rule file (bsc#1173093)
+
+-------------------------------------------------------------------
+Tue Jun 30 15:47:59 UTC 2020 - jsegitz@suse.com
+
+- Update to version 1550+20200630.e9f182b:
+  * whitelist io.veyon.pkexec.veyon-configurator (bsc#1172318)
+
+-------------------------------------------------------------------
+Wed May 20 12:06:37 UTC 2020 - jsegitz@suse.de
+
+- Update to version 1550+20200520.d0dc67f:
+  * whitelist org.cockpit-project.cockpit.root-bridge (bsc#1169614)
+
+-------------------------------------------------------------------
+Mon Apr 20 08:00:39 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20200417.940923e:
+  * packagekit: allow system-sources-refresh w/o password entry (bsc#1169540)
+
+-------------------------------------------------------------------
+Wed Mar 25 15:18:23 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 1550+20200325.f1362c4:
+  * whitelist chvt action in logind (bsc#1167542)
+
+-------------------------------------------------------------------
+Tue Mar 10 13:37:13 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20200310.cdde967:
+  * profiles: whitelist new timeshift pkexec actions (bsc#1165436)
+  * polkit profile: remove trailing '###' lines
+
+-------------------------------------------------------------------
+Fri Feb 28 10:19:31 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Going back to old versioning scheme as only %suse_version doesn't
+  carry enough information. Keeping the git hash would be enough,
+  but with that we can't ensure that versions increase. So we keep
+  also the timestamp and prefix it with the current %suse_version
+
+-------------------------------------------------------------------
+Wed Feb 19 08:17:27 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Change the package version to match %suse_version. The current 
+  versioning was obviously based on this at one time. Dropping date
+  and git commit information since it's meaningless. 
+- Removed author information from the description
+- Removed conditional Requires: for libmozjs185-1_0 for old 
+  distributions
+
+-------------------------------------------------------------------
+Thu Feb 13 12:16:45 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20200213.f716f0a:
+  * Revert "whitelist lutris (bsc#1161650)"
+
+-------------------------------------------------------------------
+Thu Feb 06 10:34:11 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20200206.331ac1d:
+  * whitelist lutris (bsc#1161650)
+
+-------------------------------------------------------------------
+Tue Jan 21 14:24:51 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20200121.bfca858:
+  * systemd networkd incremental polkit rules (bsc#1161328)
+
+-------------------------------------------------------------------
+Thu Jan 16 14:44:04 UTC 2020 - jsegitz@suse.de
+
+- Update to version 13.2+20200116.0f7fd4b:
+  * Previous submission didn't contain all necessary files (bsc#1161091)
+
+-------------------------------------------------------------------
+Thu Jan 16 13:22:06 UTC 2020 - jsegitz@suse.de
+
+- Update to version 13.2+20200116.3c654b5:
+  * flatpak: Add additional entry to whitelist to reflect added
+    override-parental-controls entry (bsc#1161091)
+
+-------------------------------------------------------------------
+Thu Jan 16 12:47:09 UTC 2020 - malte.kraus@suse.com
+
+- Update to version 13.2+20200116.c29a8c3:
+  * whitelist new sysprof3 polkit rule org.gnome.sysprof3.profile
+    (bsc#1151418)
+
+-------------------------------------------------------------------
+Tue Dec 10 14:40:28 UTC 2019 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20191210.15c9882:
+  * polkit-rules-whitelist: adjust whitelist format to new rpmlint-checks logic
+
+-------------------------------------------------------------------
+Thu Nov 28 10:59:04 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 13.2+20191128.c2eb3f7:
+  * fix ModemManager1.Time whitelisting (bsc#1156961)
+
+-------------------------------------------------------------------
+Fri Nov 22 13:26:20 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 13.2+20191122.eb9cc80:
+  * whitelist org.freedesktop.ModemManager1.Modem.Time (bsc#1156961)
+
+-------------------------------------------------------------------
+Tue Nov 19 10:36:19 UTC 2019 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20191119.a36b458:
+  * kcm_sddm: incremental addition of new rules (bsc#1145182)
+
+-------------------------------------------------------------------
+Tue Oct 15 14:50:05 UTC 2019 - jsegitz@suse.de
+
+- Update to version 13.2+20191015.280c25b:
+  * gnome-initial-session: whitelist polkit rules in
+    20-gnome-initial-setup.rules (bsc#1125432)
+
+-------------------------------------------------------------------
+Mon Oct 14 11:34:25 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 13.2+20191014.aad0cdf:
+  * Networkd package actually ended up beeing called
+    "sytemd-network" (#11, boo#1153885)
+
+-------------------------------------------------------------------
+Thu Sep 19 07:57:54 UTC 2019 - jsegitz@suse.de
+
+- Update to version 13.2+20190919.a656be4:
+  * transition networkd rules to subpackage
+
+-------------------------------------------------------------------
+Thu Sep 05 16:09:07 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 13.2+20190905.0016c47:
+  * whitelist new systemd-resolved actions (bnc#1149216)
+
+-------------------------------------------------------------------
+Tue Aug 27 14:52:51 UTC 2019 - malte.kraus@suse.com
+
+- Update to version 13.2+20190827.0cc2a82:
+  * make new systemd rules more restrictive (boo#1146300,
+    boo#1145639)
+
+-------------------------------------------------------------------
+Fri Aug 23 11:39:36 UTC 2019 - lnussel@suse.de
+
+- Update to version 13.2+20190823.a5f89c3:
+  * systemd-networkd (boo#1146300)
+  * systemd-portabled (boo#1145639)
+
+-------------------------------------------------------------------
+Tue Aug 06 09:00:25 UTC 2019 - jsegitz@suse.de
+
+- Update to version 13.2+20190806.841a06b:
+  * libvirt polkit actions: Additional no:no:no action (bsc#1144077)
+
+-------------------------------------------------------------------
+Thu Aug 01 13:21:28 UTC 2019 - matthias.gerstner@suse.com
+
+- Update to version 13.2+20190801.f0c6234:
+  * calamares: whitelist pkexec run as root in X11 action
+  * mousepad: whitelisting of pkexec action (bsc#1143216)
+
+-------------------------------------------------------------------
+Thu Jul 11 13:25:53 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190711.953db4f:
+  * libvirt: add a couple of additional polkit actions (bsc#1140151)
+
+-------------------------------------------------------------------
+Thu Jul 04 09:30:10 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190704.dfb36ad:
+  * libvirt rules: fix whitelisting (bsc#1125314)
+
+-------------------------------------------------------------------
+Wed Jul 03 13:40:08 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190703.9a076dc:
+  * libvirt polkit actions: whitelisting of incremental no:no:no actions (bsc#1140151)
+  * backintime-qt: removal of old rule name (bsc#1133680)
+
+-------------------------------------------------------------------
+Mon May 27 07:55:48 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190527.64d9813:
+  * polkit-rules-whitelist.json: fix syntax error
+
+-------------------------------------------------------------------
+Thu May 23 09:14:11 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190523.efe368f:
+  * polkit profiles: whitelist lightdm-gtk-greeter-settings (bsc#1135695)
+
+-------------------------------------------------------------------
+Mon May 20 13:26:11 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190520.a67a2af:
+  * polkit rules: whitelist libvirt (bsc#1125314)
+  * rules for systemd org.freedesktop.login1.set-reboot* (bsc#1133843)
+
+-------------------------------------------------------------------
+Tue May 07 11:17:59 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190507.75c6d67:
+  * fwupd: add one more follow-up rules for bsc#1133082
+
+-------------------------------------------------------------------
+Fri May 03 12:55:41 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190503.00651e7:
+  * tuned: add new plugin doc actions (bsc#1131858)
+
+-------------------------------------------------------------------
+Thu May 02 13:35:27 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190502.37ad64c:
+  * fwupd: add incrementally added polkit actions (bsc#1133082)
+
+-------------------------------------------------------------------
+Tue Apr 30 10:18:46 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190430.a4836d6:
+  * backintime: add renamed gui pkexec action (bsc#1133680)
+  * backintime: add restrictive config, too
+
+-------------------------------------------------------------------
+Thu Apr 11 08:00:41 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190411.5775d58:
+  * gamemode: additional polkit action for gpuclockctl (bsc#1129967)
+  * NetworkManager: remove wrongly named wifi-scan rule (bsc#1128560)
+
+-------------------------------------------------------------------
+Fri Mar 15 14:14:08 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190315.3da47ba:
+  * rules.d whitelist: add systemd-network (bsc#1125438) and flatpak entries (bsc#984817)
+
+-------------------------------------------------------------------
+Fri Mar 15 11:19:58 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190315.b904805:
+  * polkit privs whitelisting: add renamed wifi-scan -> wifi.scan action (bsc#1128560)
+
+-------------------------------------------------------------------
+Wed Mar 06 12:17:53 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190306.b56445c:
+  * whitelisting: systemd org.freedesktop.hostname1.get-product-uuid
+
+-------------------------------------------------------------------
+Tue Feb 26 09:38:13 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190226.f884108:
+  * polkit-rules-whitelist: adjust format to better support follow-up audits
+    (bsc#1125314)
+
+-------------------------------------------------------------------
+Mon Feb 25 11:20:36 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190225.0ef150d:
+  * relax change-own-user-data action in the restrictive profile (bsc#1125110)
+
+-------------------------------------------------------------------
+Wed Feb 13 14:35:18 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190213.2f39f9b:
+  * add whitelisting file for files installed in polkit-1/rules.d * (bsc#1125314)
+  * the new whitelisting is packaged in a separate subpackage, because it is
+    not needed for normal operation, only during OBS build time for rpmlint to
+    find it.
+
+-------------------------------------------------------------------
+Thu Feb 07 11:25:34 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190207.4d86620:
+  * add manage-vdo privilege of udisks2 (bsc#1123747)
+  * further improve documentation in /etc/polkit-default-privs.local
+  * sort the output rules in /etc/polkit-1/rules.d/90-default-privs to
+    make the runs reproducible. (https://github.com/openSUSE/polkit-default-privs/issues/3)
+
+-------------------------------------------------------------------
+Wed Feb 06 13:15:43 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190207.9bb8655:
+  * man pages: extend documentation to better describe syntax and profiles
+  * install README.md as part of package documentation
+  * set_polkit_default_privs: add warning about unknown profiles
+  * introduce a new polkit-default-privs easy profile
+
+-------------------------------------------------------------------
+Wed Jan 30 17:33:46 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 13.2+20190130.b2262b2:
+  * Whitelist additional Flatpak action metadata-update (bsc#1123653)
+  * soften authentication requirements for flatpak's appstream-update (bsc#1122116)
+
+-------------------------------------------------------------------
+Mon Jan 28 16:02:33 UTC 2019 - opensuse-packaging@opensuse.org
+
+- whitelist newly introduced network manager wifi-scan action (bsc#1122262)
+
+-------------------------------------------------------------------
+Fri Jan 25 21:32:41 UTC 2019 - bjorn.lie@gmail.com
+
+- Be explicit in service file about master branch is the one in use
+  for tarball generation via revision parameter.
+
+-------------------------------------------------------------------
+Mon Jan 14 15:56:23 UTC 2019 - matthias.gerstner@suse.com
+
+- introduce service file for pulling new releases from git upstream instead of
+  using the old mkchanges script from the git repo (bsc#1121841). This changes
+  the version number of the package but nothing else.
+
+-------------------------------------------------------------------
+Thu Jan  3 16:32:25 UTC 2019 - matthias.gerstner@suse.com
+
+- luckybackup: initial whitelisting of polkit pkexec action (bsc#1120403)
+
+-------------------------------------------------------------------
+Fri Dec 21 17:26:37 UTC 2018 - matthias.gerstner@suse.com
+
+- boltd: initial whitelisting of polkit actions (bsc#1119975)
+
+-------------------------------------------------------------------
+Tue Dec 11 10:36:40 UTC 2018 - matthias.gerstner@suse.com
+
+- tuned: add new logging actions (bsc#1118117)
+
+-------------------------------------------------------------------
+Tue Nov 27 10:18:20 UTC 2018 - matthias.gerstner@suse.com
+
+- chkstat: adjust DO NOT EDIT banner in generated rules file (bsc#1099754)
+
+-------------------------------------------------------------------
+Thu Nov 15 17:23:00 UTC 2018 - matthias.gerstner@suse.com
+
+- spice-gtk: relax lowlevelusbaccess requirements (bsc#1083025). Users already
+  need to be in the kvm group to access the setuid binary anyways.
+
+-------------------------------------------------------------------
+Thu Nov 15 15:22:08 UTC 2018 - matthias.gerstner@suse.com
+
+- blueman: relax standard profile rules, drop unneeded bluez.config rule (bsc#1083066)
+
+-------------------------------------------------------------------
+Wed Sep  5 08:49:14 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: add renamed libvirt rules (bsc#1106813)
+
+-------------------------------------------------------------------
+Thu Aug  9 10:08:43 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: add meson install action (bsc#1103811)
+
+-------------------------------------------------------------------
+Wed Aug  8 07:51:41 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: fix syntax error in gamemode whitelisting (bsc#1104135)
+
+-------------------------------------------------------------------
+Mon Jul 30 16:08:16 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: whitelist gamemode pkexec action (bsc#1093979)
+
+-------------------------------------------------------------------
+Fri Jul 27 09:55:22 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: fix switchboard-plug* whitelisting. An error slipped
+  in that causes `set_polkit_default_privs` to print an error message.
+
+-------------------------------------------------------------------
+Fri Jul  6 15:58:13 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: whitelist incremental libvirt actions (bnc#1100328)
+- polkit-default-privs: group together the large blocks of libvirt rules
+
+-------------------------------------------------------------------
+Thu Jul  5 12:42:45 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: whitelist switchboard-plug-* (bsc#1088472)
+
+-------------------------------------------------------------------
+Fri Jun 22 13:29:11 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: add cinnamon-control-center datetime action (bnc#1090371)
+
+-------------------------------------------------------------------
+Thu Jun 21 13:31:23 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: add lightdm rules (bnc#1089436)
+
+-------------------------------------------------------------------
+Wed Jun 13 16:24:36 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: added liblxqt backlight action (bnc#1092192)
+
+-------------------------------------------------------------------
+Tue Jun 12 11:31:43 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: whitelisting new resolve1 action of systemd (bnc#1096907)
+- polkit-default-privs: harmonized systemd comments a bit
+
+-------------------------------------------------------------------
+Thu Jun  7 13:53:26 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: new action change-own-password for accountsservice (bnc#1088780)
+
+-------------------------------------------------------------------
+Tue Apr 24 13:28:09 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: whitelisting renamed kalarm polkit actions (bnc#1087714)
+
+-------------------------------------------------------------------
+Wed Apr 11 09:51:13 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: additional tuned rules (bnc#1088648)
+
+-------------------------------------------------------------------
+Wed Mar 28 15:43:31 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: some more amnesty whitelisting of untracked
+  privileges. Two more packages are affected:
+
+	- bleachbit (bsc#1087326)
+	- systemd, systemd-mini (bsc#1087328)
+
+-------------------------------------------------------------------
+Mon Mar 12 11:08:50 UTC 2018 - matthias.gerstner@suse.com
+
+- polkit-default-privs: mass amnesty whitelisting of untracked privileges. See
+  https://lists.opensuse.org/opensuse-factory/2018-02/msg01044.html for
+  rationale. This allows existing packages in Factory to continue building
+  after the tighter rpmlint-Factory checks become effective. Following
+  packages are affected:
+
+	- blueman (bsc#1083066)
+	- cinnamon settings-daemon (bnc#1083067)
+	- connman (bsc#1083069)
+	- flatpak (bsc#984817)
+	- fwupd (bsc#1083022)
+	- gsmartcontrol (bsc#1084693)
+	- gvfs (bsc#1073214)
+	- laptop-mode-tools (bsc#1084695)
+	- mate-system-monitor (bsc#1084701)
+	- nemo (bsc#1084702)
+	- nemo-extensions (bsc#1084703)
+	- PackageKit (bnc#993505)
+	- pantheon-files (bsc#1084704)
+	- scap-workbench (bsc#1084706)
+	- spice-gtk (bsc#1083025)
+	- sysprof (bsc#1083055)
+
+-------------------------------------------------------------------
+Wed Jan 31 14:40:44 UTC 2018 - krahmer@suse.com
+
+- polkit-default-privs: adding more NM actions (bsc#1077504)
+
+-------------------------------------------------------------------
+Wed Jan 17 13:47:31 UTC 2018 - krahmer@suse.com
+
+- polkit-default-privs: adding new udisks2 rules (bsc#1073216)
+
+-------------------------------------------------------------------
+Mon Dec 18 14:26:01 UTC 2017 - matthias.gerstner@suse.com
+
+- polkit-default-privs: added connectivity-check for NetworkManager (bnc#1072702)
+
+-------------------------------------------------------------------
+Wed Nov 29 09:29:13 UTC 2017 - krahmer@suse.com
+
+- polkit-default-privs: adding new sddm kcm actions (bsc#1065563)
+
+-------------------------------------------------------------------
+Fri Nov 24 09:35:28 UTC 2017 - matthias.gerstner@suse.com
+
+- Fixed usage of %_fillupdir macro, needs to be passed to `make install` such
+  that the file is installed into the right location.
+
+-------------------------------------------------------------------
+Thu Nov 23 13:40:08 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Oct 25 11:55:52 UTC 2017 - krahmer@suse.com
+
+- polkit-default-privs: adding flatpak (bsc#1064011)
+- polkit-default-privs: adding connman (bsc#1057697)
+
+-------------------------------------------------------------------
+Wed Oct 11 12:19:53 UTC 2017 - krahmer@suse.com
+
+- polkit-default-privs: adding deja-dup (bsc#1058935)
+
+-------------------------------------------------------------------
+Wed Sep  6 13:10:53 UTC 2017 - krahmer@suse.com
+
+- polkit-default-privs: adding fwupd (bsc#932807)
+
+-------------------------------------------------------------------
+Wed Aug 23 12:14:47 UTC 2017 - krahmer@suse.com
+
+- adding more flatpak rules (bsc#1012961)
+
+-------------------------------------------------------------------
+Fri Jul 21 11:49:31 UTC 2017 - matthias.gerstner@suse.com
+
+- Added new tuned method verify_profile_ignore_missing (bnc#1048961)
+
+-------------------------------------------------------------------
+Wed Jul 19 11:55:07 UTC 2017 - krahmer@suse.com
+
+- polkit-default-privs: adding new realmd action (bsc#1048025)
+
+-------------------------------------------------------------------
+Mon Jul  3 11:37:50 UTC 2017 - krahmer@suse.com
+
+- polkit-default-privs: adjusting brltty (bsc#967436)
+
+-------------------------------------------------------------------
+Tue Jun 20 10:59:02 UTC 2017 - krahmer@suse.com
+
+- relaxing action "org.opensuse.cupspkhelper.mechanism.job-edit" (bsc#827331)
+
+-------------------------------------------------------------------
+Fri Apr 28 11:45:36 UTC 2017 - matthias.gerstner@suse.com
+
+- added polkit rules for backintime (bnc#1007723, bnc#1032717)
+- relaxing powerdevil rules (bsc#1026038)
+
+-------------------------------------------------------------------
+Tue Apr 11 13:33:32 UTC 2017 - matthias.gerstner@suse.com
+
+- added polkit rules for renamed kcmwallet -> kcmwallet5 (bsc#1033296)
+
+-------------------------------------------------------------------
+Tue Apr 11 08:45:52 UTC 2017 - matthias.gerstner@suse.com
+
+- added polkit rules for tuned (bsc#1007279)
+
+-------------------------------------------------------------------
+Mon Feb  6 15:24:03 UTC 2017 - krahmer@suse.com
+
+- polkit-default-privs: adding blueman actions (bsc#987141)
+
+-------------------------------------------------------------------
+Mon Jan 30 09:11:50 UTC 2017 - krahmer@suse.com
+
+- adding kde powerdevil gpu helper (bsc#1019644)
+
+-------------------------------------------------------------------
+Tue Dec  6 09:09:23 UTC 2016 - krahmer@suse.com
+
+- adding org.freedesktop.login1.set-self-linger (bsc#1009468)
+
+-------------------------------------------------------------------
+Tue Oct 11 12:01:06 UTC 2016 - meissner@suse.com
+
+- add flatpak privileges, but currently auth_admin currently (bsc#984817)
+
+-------------------------------------------------------------------
+Mon Sep 12 14:04:47 UTC 2016 - krahmer@suse.com
+
+- polkit-default-privs: cleanups as per discussion with Ludwig
+- polkit-default-privs: adding rules for sysprof (bsc#996111) and networkmanager (bsc#996110)
+
+-------------------------------------------------------------------
+Mon Jun 13 09:55:09 UTC 2016 - krahmer@suse.com
+
+- polkit-default-privs: adding ModemManager (bsc#976945)
+
+-------------------------------------------------------------------
+Wed Apr 13 07:20:16 UTC 2016 - krahmer@suse.com
+
+- added brltty (bsc#967436)
+
+-------------------------------------------------------------------
+Mon Apr 11 14:22:46 UTC 2016 - meissner@suse.com
+
+- add importd privs as default tracked (bsc#964935)
+
+-------------------------------------------------------------------
+Tue Mar 22 11:49:10 UTC 2016 - krahmer@suse.com
+
+- polkit-default-privs: relaxing firewalld polkit rule for desktop (bsc#971580)
+
+-------------------------------------------------------------------
+Tue Jan  5 10:02:54 UTC 2016 - krahmer@suse.com
+
+- polkit-default-privs: adding libvirt action ids (bsc#959297)
+
+-------------------------------------------------------------------
+Tue Dec  1 09:55:50 UTC 2015 - krahmer@suse.com
+
+- polkit-default-privs: Adding new systemd actions (bsc#955626)
+- polkit-default-privs: create files with consistent permissions
+
+-------------------------------------------------------------------
+Mon Nov  9 12:45:25 UTC 2015 - krahmer@suse.com
+
+- polkit-default-privs: adding rules for cinnamon settings-daemon (bsc#951830)
+- polkit-default-privs: relaxing some ModemManager rules to avoid typing password after screenlock/hibernate (bsc#948728)
+
+-------------------------------------------------------------------
+Tue Jun 23 11:39:16 UTC 2015 - krahmer@suse.com
+
+- polkit-default-privs: PackageKit (bnc#929212)
+
+-------------------------------------------------------------------
+Mon Jun  8 08:53:57 UTC 2015 - krahmer@suse.com
+
+- polkit-default-privs: adding netvisix rules (bsc#930195)
+
+-------------------------------------------------------------------
+Fri May 22 09:42:37 UTC 2015 - meissner@suse.com
+
+- instead of auth-admin, disallow colord management for inactive and
+  other users, so they do not get root password popups bsc#918594
+
+-------------------------------------------------------------------
+Wed Apr 22 12:01:15 UTC 2015 - krahmer@suse.com
+
+- polkit-default-privs: adding gnome-control-center actions (bnc#927508)
+                        adding realmd actions (bnc#916767)
+
+-------------------------------------------------------------------
+Mon Apr 20 08:24:10 UTC 2015 - krahmer@suse.com
+
+- polkit-default-privs: rename of powerdevil action-names (bnc#927275)
+
+-------------------------------------------------------------------
+Wed Apr  8 14:29:19 UTC 2015 - krahmer@suse.com
+
+- polkit-default-privs: add urfkill (bnc#926288) polkit action
+
+-------------------------------------------------------------------
+Tue Apr  7 13:30:46 UTC 2015 - krahmer@suse.com
+
+- polkit-default-privs: added gnome-multi-writer actions (bnc#924062)
+
+-------------------------------------------------------------------
+Wed Feb 11 12:57:28 UTC 2015 - krahmer@suse.com
+
+- adding storaged rules (bnc#915770)
+
+-------------------------------------------------------------------
+Wed Jan 14 09:52:43 UTC 2015 - krahmer@suse.com
+
+- adding KDE5 powerdevil rules (bnc#912121)
+
+-------------------------------------------------------------------
+Wed Dec 10 15:26:21 UTC 2014 - krahmer@suse.com
+
+- added firewalld (bnc#907625) polkit actions
+
+-------------------------------------------------------------------
+Fri Nov 28 08:30:24 UTC 2014 - krahmer@suse.com
+
+- polkit-default-privs: adding _keep to ModemManager rules (bnc#900813)
+
+-------------------------------------------------------------------
+Fri Nov  7 10:11:36 UTC 2014 - meissner@suse.com
+
+- Add org.kde.kcontrol.kcmsddm.save (bsc#904313)
+
+-------------------------------------------------------------------
+Mon Nov  3 09:55:10 UTC 2014 - krahmer@suse.com
+
+- polkit-default-privs: relaxing pcsc rules (bsc#864178)
+
+-------------------------------------------------------------------
+Mon Sep 29 09:27:45 UTC 2014 - krahmer@suse.com
+
+- polkit-default-privs: Addings missing rules for restrictive mode (bnc#898001)
+
+-------------------------------------------------------------------
+Wed Aug  6 08:14:24 UTC 2014 - krahmer@suse.com
+
+- polkit-defaultprivs: relaxing rules for SLE12 create-profile in colord (bnc#887511)
+
+-------------------------------------------------------------------
+Tue Jul 15 08:33:13 UTC 2014 - krahmer@suse.com
+
+- relaxing fprintd rules (bnc#850807)
+
+-------------------------------------------------------------------
+Fri Jul 11 10:42:31 UTC 2014 - meissner@suse.com
+
+- replace SuSEconfig mentioning by correct script name (bnc#886809)
+
+-------------------------------------------------------------------
+Mon May 19 15:11:13 UTC 2014 - meissner@suse.com
+
+- tentatively allow new org.selinux helper interfaces in policycoreutils (bnc#878631)
+- polkit-default-privs: adding pcsc-lite rules (bnc#864178)
+
+-------------------------------------------------------------------
+Wed Apr 16 16:05:22 UTC 2014 - meissner@suse.com
+
+- change org.kde.fontinst.manage to auth_admin_keep (bnc#704805)
+
+-------------------------------------------------------------------
+Wed Apr 16 14:08:34 UTC 2014 - meissner@suse.com
+
+- adding org.kde.baloo.filewatch.raiselimit action (bnc#866131)
+
+-------------------------------------------------------------------
+Mon Mar 24 10:15:01 UTC 2014 - krahmer@suse.com
+
+- polkit-default-privs: relaxing
+  org.freedesktop.color-manager.create-device   and
+  org.freedesktop.color-manager.delete-device, its basically just a DB
+  operation and colord checks the owner of delete id is the same as
+  the creator (bnc#861076)
+
+-------------------------------------------------------------------
+Wed Mar 12 14:46:40 UTC 2014 - meissner@suse.com
+
+- backlight helpers: relaxing rules in restrictive mode,
+  otherwise we get popups requesting LED state changes
+  bnc#866806
+
+-------------------------------------------------------------------
+Wed Nov 20 14:27:27 UTC 2013 - krahmer@suse.com
+
+- Adding kwallet polkit rules (bnc#849739)
+
+-------------------------------------------------------------------
+Tue Nov 19 10:20:26 UTC 2013 - meissner@suse.com
+
+- new version is 13.2
+
+-------------------------------------------------------------------
+Tue Nov 19 10:19:10 UTC 2013 - krahmer@suse.com
+
+- adding policycoreutils rules (bnc#848550)
+
+-------------------------------------------------------------------
+Tue Oct 29 09:49:54 UTC 2013 - meissner@suse.com
+
+- git repo moved to https://github.com/openSUSE/polkit-default-privs
+
+-------------------------------------------------------------------
+Wed Oct 23 12:52:53 UTC 2013 - meissner@suse.com
+
+- disable system source refresh on inactive console to avoid annoying popups bnc#834165
+
+-------------------------------------------------------------------
+Wed Aug 28 13:58:55 UTC 2013 - meissner@suse.com
+
+- allow org.mate.power.backlight-helper on standard (bnc#831404)
+- track gufw
+- add org.mate.randr.install-system-wide auth_admin_keep (bnc#831404)
+- track mate-settings-daemons privileges (bnc#831404)
+
+-------------------------------------------------------------------
+Wed Jul 10 15:25:54 UTC 2013 - meissner@suse.com
+
+- added polkit-default-privs temporary permissions until audited bnc#827644
+
+-------------------------------------------------------------------
+Fri Jul  5 13:02:00 UTC 2013 - dimstar@opensuse.org
+
+- Only require libmozjs185-1_0 on openSUSE up to 12.3:
+  + On openSUSE 13.1, we use libmozjs-17_0
+  + Since polkit 0.111, the mozjs library parser is no longer
+    optional. For this reason, we also do not have to worry to
+    Require the correct library in this case anymore.
+
+-------------------------------------------------------------------
+Thu Jul  4 07:32:22 UTC 2013 - meissner@suse.com
+
+- added powerdevil privs (bnc#825256)
+
+-------------------------------------------------------------------
+Fri Jun 28 12:15:02 UTC 2013 - meissner@suse.com
+
+- Added gnome-settings-daemon new policy
+  org.gnome.settings-daemon.plugins.wacom.wacom-oled-helper (bnc#822405)
+
+-------------------------------------------------------------------
+Mon Jun 17 13:50:50 UTC 2013 - meissner@suse.com
+
+- track nepomuk rights (bnc#825262)
+
+-------------------------------------------------------------------
+Fri Jun 14 11:12:47 UTC 2013 - meissner@suse.com
+
+- gnome-system-monitor: track its permissions as they are found (bnc#822011)
+
+-------------------------------------------------------------------
+Tue Jun 11 12:26:07 UTC 2013 - meissner@suse.com
+
+- added lightdm-kde-greeter (bnc#794705)
+
+-------------------------------------------------------------------
+Tue Jun  4 09:41:54 UTC 2013 - meissner@suse.com
+
+- allow fprintd polkit privileges (bnc#792095)
+
+-------------------------------------------------------------------
+Mon Apr 15 16:20:35 UTC 2013 - meissner@suse.com
+
+- ModemManager 0.8 with org.freedesktop.ModemManager1 interface added (a bit more relaxed than the old interface) bnc#798273
+- 13.1 is next opensuse
+
+-------------------------------------------------------------------
+Wed Apr  3 16:05:11 UTC 2013 - meissner@suse.com
+
+- bump version for next openSUSE release.
+
+-------------------------------------------------------------------
+Wed Apr  3 14:55:45 UTC 2013 - meissner@suse.com
+
+- allow org.freedesktop.packagekit.trigger-offline-update and org.freedesktop.packagekit.clear-offline-update in standard same way as normal patch update (bnc#798885 bnc#812504)
+
+-------------------------------------------------------------------
+Wed Mar 27 15:36:49 UTC 2013 - meissner@suse.com
+
+- added new udisks2 privileges (bnc#809277)
+
+-------------------------------------------------------------------
+Fri Mar 22 14:12:25 UTC 2013 - meissner@suse.com
+
+- add org.opensuse.policykit.gparted auth_admin (bnc#810888)
+
+-------------------------------------------------------------------
+Sun Mar 10 19:32:48 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Default rules are moved to '90', so own them as '90' instead '50'
+
+-------------------------------------------------------------------
+Tue Mar  5 10:53:15 UTC 2013 - lnussel@suse.de
+
+- move default rules to '90', bnc#807097
+
+-------------------------------------------------------------------
+Wed Feb 27 12:54:05 UTC 2013 - lnussel@suse.de
+
+- add /etc/polkit-1/rules.d/50-default-privs.rules as ghost so it
+  gets associated with the package
+
+-------------------------------------------------------------------
+Wed Feb 27 10:34:24 UTC 2013 - lnussel@suse.de
+
+- require ibmozjs185-1_0 as polkit won't apply the policy without it
+  (bnc#804376)
+
+-------------------------------------------------------------------
+Tue Feb 26 16:37:28 UTC 2013 - lnussel@suse.de
+
+- set logind inhibit policies to upstream defaults (bnc#804376)
+- more elaborate --check-override option
+
+-------------------------------------------------------------------
+Mon Feb 25 15:36:41 UTC 2013 - lnussel@suse.de
+
+- add some debugging capabilities in generated code
+
+-------------------------------------------------------------------
+Sat Feb 23 07:17:06 UTC 2013 - coolo@suse.com
+
+- do not own the polkit directories (with different user, creating
+  conflict), but buildrequire polkit
+
+-------------------------------------------------------------------
+Thu Feb 21 15:52:52 UTC 2013 - lnussel@suse.de
+
+- fix restrictive privileges
+- generate javascript files for new polkit (bnc#804376)
+- implement check for overrides
+
+-------------------------------------------------------------------
+Tue Feb 19 16:14:48 UTC 2013 - meissner@suse.com
+
+- whitelist PackageKit / systemd offline update permissions, currently admin only
+- more systemd allows to make rpmlint happier bnc#783897
+
+-------------------------------------------------------------------
+Fri Nov  2 10:08:33 UTC 2012 - meissner@suse.com
+
+- new systemd privileges, mostly allowing applications to inhibit system actions (bnc#783897)
+
+-------------------------------------------------------------------
+Wed Oct 24 12:21:08 UTC 2012 - meissner@suse.com
+
+- added polkit default privs for GNOME control-center (bnc#779938)
+
+-------------------------------------------------------------------
+Tue Oct 23 10:30:51 UTC 2012 - meissner@suse.com
+
+- added new udisks2 policykit privileges at lowest setting bnc#779404
+
+-------------------------------------------------------------------
+Tue Oct 16 12:59:19 UTC 2012 - meissner@suse.com
+
+- 12.3 is next opensuse
+
+-------------------------------------------------------------------
+Tue Oct 16 12:57:27 UTC 2012 - meissner@suse.com
+
+- allow realtimekit at desktop permission (bnc#753849)
+- fixed typo
+
+-------------------------------------------------------------------
+Thu Jul 12 14:47:36 UTC 2012 - meissner@suse.com
+
+- allow logged in users to update the system via online updates. bnc#771189
+
+-------------------------------------------------------------------
+Thu Jul  5 15:07:04 UTC 2012 - meissner@suse.com
+
+- relax colord after auditing (bnc#698250)
+
+-------------------------------------------------------------------
+Tue Jun  5 12:47:55 UTC 2012 - lnussel@suse.de
+
+- fix script name in sysconfig file (bnc#765227)
+
+-------------------------------------------------------------------
+Tue May 15 11:55:28 UTC 2012 - lnussel@suse.de
+
+- add more udisks2 privileges (bnc#761872)
+
+-------------------------------------------------------------------
+Thu Mar 29 11:36:15 UTC 2012 - lnussel@suse.de
+
+- add org.kde.recorditnow.helper.watch (bnc#753908)
+- add org.gnome.settings-daemon.plugins.wacom.wacom-led-helper (bnc#750795)
+
+-------------------------------------------------------------------
+Wed Feb 29 13:54:02 UTC 2012 - lnussel@suse.de
+
+- add smb4k (bnc#749065)
+
+-------------------------------------------------------------------
+Wed Feb 29 13:48:31 UTC 2012 - lnussel@suse.de
+
+- add udisks2 (bnc#742751)
+
+-------------------------------------------------------------------
+Wed Jan 18 09:08:17 UTC 2012 - lnussel@suse.de
+
+- add org.freedesktop.packagekit.repair-system (bnc#742024)
+- fix FSF address
+- remove old obsoletes
+
+-------------------------------------------------------------------
+Thu Dec  1 12:39:26 UTC 2011 - lnussel@suse.de
+
+- add org.opensuse.yast.system.terminal.read
+
+-------------------------------------------------------------------
+Wed Nov 23 14:55:45 UTC 2011 - lnussel@suse.de
+
+- set version to 12.2
+- remove obsolete moblin privileges
+- allow org.freedesktop.ModemManager.Device.Control (bnc#732358)
+- allow setting the system's time zone (bnc#731812)
+
+-------------------------------------------------------------------
+Wed Nov 23 08:51:30 UTC 2011 - lnussel@suse.de
+
+- change NetworkManager policies (bnc#716291)
+
+-------------------------------------------------------------------
+Fri Oct 28 07:20:30 UTC 2011 - lnussel@suse.de
+
+- fix logind privileges to be consistend with consolekit (bnc#726969)
+
+-------------------------------------------------------------------
+Wed Oct 26 12:04:03 UTC 2011 - lnussel@suse.de
+
+- set org.freedesktop.accounts.change-own-user-data to yes (bnc#676638)
+
+-------------------------------------------------------------------
+Tue Aug 23 07:34:03 UTC 2011 - lnussel@suse.de
+
+- rename gnome backlight-helper privilege (bnc#712841)
+
+-------------------------------------------------------------------
+Fri Aug  5 12:09:35 UTC 2011 - lnussel@suse.de
+
+- add org.kde.kalarmrtcwake.settimer (bnc#707723)
+
+-------------------------------------------------------------------
+Thu Jul 28 13:12:49 UTC 2011 - lnussel@suse.de
+
+- set NetworkManager.settings.modify.{own,system} to auth_admin_keep
+  so it's less annoying (bnc#680140)
+- silence %post  (bnc#679336)
+
+-------------------------------------------------------------------
+Thu Jul 28 09:14:36 UTC 2011 - lnussel@suse.de
+
+- more sytemd/logind privileges (bnc#641924)
+
+-------------------------------------------------------------------
+Wed Jul 27 13:16:37 UTC 2011 - lnussel@suse.de
+
+- change inactive backlight helper privileges to 'no' (bnc#708639)
+- remove hal privileges
+
+-------------------------------------------------------------------
+Thu Jul 21 07:14:44 UTC 2011 - lnussel@suse.de
+
+- change version to 12.1 to show that the package is tied to the
+  distro
+- set org.freedesktop.accounts.user-administration to auth_admin_keep
+
+-------------------------------------------------------------------
+Thu Jul 14 09:15:31 UTC 2011 - lnussel@suse.de
+
+ - add more systemd privileges (bnc#705677)
+
+-------------------------------------------------------------------
+Thu Jul  7 12:12:37 UTC 2011 - lnussel@suse.de
+
+- set org.gnome.gconf.defaults.* to auth_admin_keep (bnc#703582)
+
+-------------------------------------------------------------------
+Thu Jun 16 15:31:03 UTC 2011 - lnussel@suse.de
+
+ - add colord (bnc#698250)
+
+-------------------------------------------------------------------
+Mon May 16 09:58:34 UTC 2011 - lnussel@suse.de
+
+- webyast shutdown privs (bnc#687807)
+
+-------------------------------------------------------------------
+Thu May  5 13:51:30 UTC 2011 - lnussel@suse.de
+
+- add org.freedesktop.ModemManager.USSD (bnc#691896)
+
+-------------------------------------------------------------------
+Thu May  5 07:19:34 UTC 2011 - lnussel@suse.de
+
+- more systemd stuff (bnc#641924)
+
+-------------------------------------------------------------------
+Mon May  2 14:12:02 UTC 2011 - lnussel@suse.de
+
+- add NetworkManager.settings.modify.hostname (bnc#680140)
+- add account services (bnc#676638)
+- add org.opensuse.cupspkhelper.mechanism.all-edit (bnc#691014)
+
+-------------------------------------------------------------------
+Thu Apr 28 09:42:02 UTC 2011 - lnussel@suse.de
+
+- new gnome-settings-daemon settings (bnc#690496)
+
+-------------------------------------------------------------------
+Tue Apr 26 11:35:28 UTC 2011 - lnussel@suse.de
+
+- add urfkill (bnc#688328)
+
+-------------------------------------------------------------------
+Wed Mar 16 13:22:01 UTC 2011 - lnussel@suse.de
+
+- add some new NetworkManager privileges (bnc#680140)
+
+-------------------------------------------------------------------
+Mon Mar  7 07:11:29 UTC 2011 - lnussel@suse.de
+
+- allow org.freedesktop.ModemManager.Device.Info for active user
+  (bnc#674022)
+
+-------------------------------------------------------------------
+Tue Feb 15 16:42:34 UTC 2011 - lnussel@suse.de
+
+- add kde backlight helper (bnc#672145)
+
+-------------------------------------------------------------------
+Tue Feb 15 15:12:39 UTC 2011 - lnussel@suse.de
+
+- add webyast network module (bnc#660981)
+
+-------------------------------------------------------------------
+Mon Feb 14 14:47:28 UTC 2011 - lnussel@suse.de
+
+- more webyast
+
+-------------------------------------------------------------------
+Tue Feb  8 14:42:54 UTC 2011 - lnussel@suse.de
+
+- add webyast-base-ws (bnc#660981)
+
+-------------------------------------------------------------------
+Tue Feb  8 09:54:40 UTC 2011 - lnussel@suse.de
+
+- don't set PolicyKit privileges if PolicyKit isn't installed (bnc#670155)
+
+-------------------------------------------------------------------
+Wed Jan 26 13:57:15 UTC 2011 - lnussel@suse.de
+
+- allow setting the backlight without authentication (bnc#650401)
+
+-------------------------------------------------------------------
+Fri Jan 21 12:09:48 UTC 2011 - lnussel@suse.de
+
+ - add xfce4-power-manager (bnc#665169)
+
+-------------------------------------------------------------------
+Wed Dec 15 08:28:30 UTC 2010 - lnussel@suse.de
+
+- add org.freedesktop.packagekit.upgrade-system (bnc#659384)
+
+-------------------------------------------------------------------
+Wed Nov 24 09:41:37 UTC 2010 - lnussel@suse.de
+
+- add policies that appeared in Factory
+
+-------------------------------------------------------------------
+Tue Oct 19 13:55:46 UTC 2010 - lnussel@suse.de
+
+- add policies that appeared in Factory
+
+-------------------------------------------------------------------
+Tue Sep 21 14:52:51 UTC 2010 - lnussel@suse.de
+
+ - use unix-group instead of unix-user for polkit-1 overrides (bnc#544579)
+
+-------------------------------------------------------------------
+Fri Aug  6 13:01:10 UTC 2010 - lnussel@suse.de
+
+- add org.kde.kcontrol.kcmkdm
+- change org.gnome.clockapplet.mechanism
+  -> org.gnome.settingsdaemon.datetimemechanism (bnc#629096)
+
+-------------------------------------------------------------------
+Thu Jun 17 14:50:45 UTC 2010 - lnussel@suse.de
+
+- change org.opensuse.cupspkhelper.mechanism.* to auth_admin_keep (bnc#614779)
+
+-------------------------------------------------------------------
+Tue Apr  6 08:43:04 UTC 2010 - lnussel@suse.de
+
+- add policies that appeared in Factory
+
+-------------------------------------------------------------------
+Thu Apr  1 13:29:57 UTC 2010 - lnussel@suse.de
+
+- add policies that appeared in Factory
+- remove PolicyKit requirement
+
+-------------------------------------------------------------------
+Fri Mar 26 08:21:57 UTC 2010 - lnussel@suse.de
+
+- add policies that appeared in Factory
+
+-------------------------------------------------------------------
+Thu Feb 25 15:56:39 UTC 2010 - lnussel@suse.de
+
+- add policies that appeared in Factory
+
+-------------------------------------------------------------------
+Thu Oct 22 13:30:50 UTC 2009 - lnussel@suse.de
+
+- allow users to set the drive spindown time (bnc#548858)
+
+-------------------------------------------------------------------
+Tue Oct  6 14:36:18 UTC 2009 - lnussel@suse.de
+
+- add YaST privileges from Factory
+- add org.freedesktop.devicekit.disks.drive-set-spindown which
+  appeared in Factory. Sounds potentially dangerous so auth_admin.
+
+-------------------------------------------------------------------
+Wed Sep 23 13:55:43 UTC 2009 - lnussel@suse.de
+
+- own directories in /var (bnc#541258)
+
+-------------------------------------------------------------------
+Fri Aug 28 12:40:05 UTC 2009 - lnussel@suse.de
+
+- polkit-1 support
+- add new policies from Factory
+
+-------------------------------------------------------------------
+Thu Jan 29 11:37:15 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Thu Dec 11 14:31:31 CET 2008 - lnussel@suse.de
+
+- PreReq on PolicyKit to avoid errors from %post
+
+-------------------------------------------------------------------
+Thu Dec 11 14:15:04 CET 2008 - lnussel@suse.de
+
+- add privileges silently indroduced by new hal:
+    org.freedesktop.hal.device-access.removable-block
+    org.freedesktop.hal.leds.brightness
+
+-------------------------------------------------------------------
+Tue Nov 25 08:57:59 CET 2008 - lnussel@suse.de
+
+- add missing cupspkhelper privileges
+
+-------------------------------------------------------------------
+Thu Nov 20 12:15:47 CET 2008 - lnussel@suse.de
+
+- com.google.code.backupmanager.schedule -> org.opensuse.backupmanager.schedule
+
+-------------------------------------------------------------------
+Tue Nov  4 17:05:44 CET 2008 - lnussel@suse.de
+
+- correct comment for POLKIT_DEFAULT_PRIVS (bnc#441300)
+
+-------------------------------------------------------------------
+Tue Oct 28 14:42:02 CET 2008 - lnussel@suse.de
+
+- add system-config-printer and a few more hal device access lines
+
+-------------------------------------------------------------------
+Mon Oct 27 09:49:25 CET 2008 - lnussel@suse.de
+
+- combine privilege settings from multiple files (bnc#439127)
+
+-------------------------------------------------------------------
+Fri Oct 24 13:27:47 CEST 2008 - lnussel@suse.de
+
+- fix some wrong privilege settings (bnc#435776)
+  * smpppd.connect, system-update and settimezone in restrictive
+  * settimezone in standard
+
+-------------------------------------------------------------------
+Mon Oct  6 22:40:18 CEST 2008 - dmueller@suse.de
+
+- obsolete resmgr and hal-resmgr for openSUSE 11.1 and newer
+
+-------------------------------------------------------------------
+Wed Sep 17 15:06:34 CEST 2008 - lnussel@suse.de
+
+- add manpages
+- do not use SuSEconfig
+
+-------------------------------------------------------------------
+Tue Sep 16 16:49:54 CEST 2008 - lnussel@suse.de
+
+- add COPYING file (bnc#425444)
+- add privilege for backup-manager
+
+-------------------------------------------------------------------
+Thu Sep 11 17:27:27 CEST 2008 - lnussel@suse.de
+
+- allow setting the sytem timezone and installing updates by default
+- add smpppd
+
+-------------------------------------------------------------------
+Thu Sep  4 11:15:17 CEST 2008 - lnussel@suse.de
+
+- rename to polkit-default-privs
+- add sysconfig files
+- default levels are "standard" and "restrictive"
+
+-------------------------------------------------------------------
+Tue Aug 19 14:04:46 CEST 2008 - lnussel@suse.de
+
+- add device access, consolekit, packagekit.set-proxy
+
+-------------------------------------------------------------------
+Fri Jun 20 14:30:48 CEST 2008 - lnussel@suse.de
+
+- add program to list permissions that are missing
+- add a few more programs that have permissions
+
+-------------------------------------------------------------------
+Wed Jun 18 12:15:15 CEST 2008 - lnussel@suse.de
+
+- fix easy permissions
+- print message when changing permissions
+- add libvirt
+
+-------------------------------------------------------------------
+Thu Jun 12 16:08:59 CEST 2008 - lnussel@suse.de
+
+- fix SuSEconfig.polkit-permissions 
+
+-------------------------------------------------------------------
+Thu Jun 12 15:53:23 CEST 2008 - lnussel@suse.de
+
+- initial package
+

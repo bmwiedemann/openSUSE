@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Thu Apr  7 09:15:39 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.0.15
+  2.0.15
+  ------
+  * Sort the trailing README link keys alphabetically
+  * Replace setup dash with underscore to fix warnings
+  * Sort listed Pipfile {dev-}packages alphabetically
+  * Bump importlib-metadata from 4.2.0 to 4.4.0
+  * Format livetests.py with base black version 21.5b2
+  * Bump black from 21.5b1 to 21.5b2
+  * Add 'six' to Pipfile dev-packages to fix livetests
+  * Remove earlier live-tested versions to reduce pull
+  * Bump importlib-metadata from 4.0.1 to 4.2.0
+  * Format travis and Pip files using typical IntelliJ
+  * Add the newly released v3.4.0 to livetests images
+  * Upgrade all maintained image versions in livetests
+  * Align black and importlib\_metadata python\_version
+  * Bump black from 21.5b0 to 21.5b1
+  * Bump black from 21.4b2 to 21.5b0
+  * Bump pytest from 6.2.3 to 6.2.4
+  * Bump black from 21.4b0 to 21.4b2
+  * Upgrade to GitHub-native Dependabot
+  * Bump pbr from 5.5.1 to 5.6.0
+  * Bump black from 20.8b1 to 21.4b0
+  * Bump importlib-metadata from 4.0.0 to 4.0.1
+  * Bump importlib-metadata from 3.10.1 to 4.0.0
+  * Bump importlib-metadata from 3.10.0 to 3.10.1
+  * Bump pytest from 6.2.2 to 6.2.3
+  * Update all maintained image versions in livetests
+  * Bump testcontainers from 3.3.0 to 3.4.0
+  * Bump importlib-metadata from 3.9.0 to 3.10.0
+  * Bump importlib-metadata from 3.7.3 to 3.9.0
+  * Bump pydocstyle from 5.1.1 to 6.0.0
+  * Bump importlib-metadata from 3.7.2 to 3.7.3
+  * Bump importlib-metadata from 3.7.0 to 3.7.2
+  * Bump testcontainers from 3.2.0 to 3.3.0
+  * Bump importlib-metadata from 3.4.0 to 3.7.0
+  * Update 2.16 image version in livetests
+  * Update all image versions under livetests to latest
+  * Bump pytest from 6.2.1 to 6.2.2
+  * Bump importlib-metadata from 3.3.0 to 3.4.0
+  * Update all image versions under livetests to latest
+  * Bump requests from 2.25.0 to 2.25.1
+  * Bump pytest from 6.2.0 to 6.2.1
+  * Bump testcontainers from 3.1.0 to 3.2.0
+  * Bump pytest from 6.1.2 to 6.2.0
+  * Bump mock from 4.0.2 to 4.0.3
+  * Bump importlib-metadata from 3.1.1 to 3.3.0
+  * Bump importlib-metadata from 3.1.0 to 3.1.1
+  * Set livetests to 3.3.0 after release(d)
+  * Set the 3.3.0-rc7 version in livetests
+  * Bump importlib-metadata from 3.0.0 to 3.1.0
+  * Bump importlib-metadata from 2.0.0 to 3.0.0
+  * Bump requests from 2.24.0 to 2.25.0
+  * Set the 3.3.0-rc5 version in livetests
+  * Set the 3.3.0-rc4 version in livetests
+  * Set the 2.16.23 version in livetests
+  * Bump pytest from 6.1.1 to 6.1.2
+  2.0.14
+  ------
+  * Set the 3.3.0-rc3 version in livetests
+  * Allow customization of HTTP adapter
+  * Set the 3.3.0-rc2 version in livetests
+  * Add 3.3.0-rc1 to the livetests versions under test
+  * Bump pbr from 5.5.0 to 5.5.1
+  * Bump pytest from 6.1.0 to 6.1.1
+  * Update livetests to use the latest Gerrit v3.0.13
+  * Bump pytest from 6.0.2 to 6.1.0
+  * Bump importlib-metadata from 1.7.0 to 2.0.0
+  * Bump pytest from 6.0.1 to 6.0.2
+  * Bump pbr from 5.4.5 to 5.5.0
+  * Bump testcontainers from 3.0.3 to 3.1.0
+  * livetests: Apply latest sole black formatting diff
+  * Bump black from 19.10b0 to 20.8b1
+  * Bump pydocstyle from 5.1.0 to 5.1.1
+  * Bump pydocstyle from 5.0.2 to 5.1.0
+  * Update livetests to use latest versions
+  * Bump pytest from 5.4.3 to 6.0.1
+  * Bump importlib-metadata from 1.6.1 to 1.7.0
+
+-------------------------------------------------------------------
+Fri Aug  7 15:04:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.0.13
+  * Return result from review() method
+  * Support explicit anonymous access
+  * Debug log when .netrc could not be parsed
+  * Remove unnecessary string concatenation
+
+-------------------------------------------------------------------
+Fri Mar 20 08:26:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 2.0.10
+  * Support explicit anonymous access
+  * Remove unnecessary string concatenation
+  * Explicitly install importlib_metadata for Python < 3.8.0
+  * Travis: Add build for Python 3.8
+
+-------------------------------------------------------------------
+Thu May 23 07:50:13 UTC 2019 - pgajdos@suse.com
+
+- version update to 2.0.9
+  * Run livetests against 2.15.11 and 2.16.6
+  * Don't attempt to parse empty response content
+  * Raise exception for error status before attempting to parse content
+  * Add debug log of response content type, status code and encoding
+  * Add a test for PUT request with a json file
+  * Bump pytest from 4.2.1 to 4.3.0
+
+-------------------------------------------------------------------
+Tue Oct 30 15:21:19 UTC 2018 - J. Daniel Schmidt <jdsn@suse.de>
+
+- Initial package created with py2pack
+- Version 2.0.7

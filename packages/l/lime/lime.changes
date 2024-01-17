@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Sun Oct  8 10:56:53 UTC 2023 - thod_@gmx.de
+
+- Fix dependencies for Fedora
+
+-------------------------------------------------------------------
+Mon Aug 28 07:48:50 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.98 (no changelog)
+
+-------------------------------------------------------------------
+Wed Jun 28 06:37:19 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.73 (no changelog)
+
+-------------------------------------------------------------------
+Fri Apr  7 09:10:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.2.49 (no changelog).
+- Add set_current_version.patch.
+
+-------------------------------------------------------------------
+Tue Mar 28 06:16:02 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add add-cstdint.patch.
+
+-------------------------------------------------------------------
+Wed Mar  8 07:14:31 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.2.30 (no changelog).
+
+-------------------------------------------------------------------
+Wed Jan 11 03:04:24 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.9
+
+- Update to version 5.2.9:
+  * no changes
+
+-------------------------------------------------------------------
+Wed Jan  4 11:26:06 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.6 (no changelog).
+
+-------------------------------------------------------------------
+Mon Oct 17 07:10:13 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.64 (no changelog).
+
+-------------------------------------------------------------------
+Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Remove RPATH to be able to build on Fedora
+
+-------------------------------------------------------------------
+Fri Jul  8 08:03:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.1.45:
+  * Update CMakeLists.txt in order to add lime to Flexisip
+
+-------------------------------------------------------------------
+Wed Jun  8 03:06:10 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.1.32
+
+- Update to version 5.1.32:
+  * Fix syntax error in Github issue template
+  * Improve trace
+- revert license tag change
+
+-------------------------------------------------------------------
+Thu Mar 24 10:18:42 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.71:
+  * no changelog
+
+-------------------------------------------------------------------
+Tue Mar  1 15:28:24 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.70:
+  * no changelog
+
+-------------------------------------------------------------------
+Tue Feb  1 20:46:07 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.67
+
+- Update to version 5.0.67:
+  * no changes
+- fix license tag
+
+-------------------------------------------------------------------
+Tue Jan 18 08:46:41 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.0.66:
+  * no changelog
+
+-------------------------------------------------------------------
+Sun Nov 21 01:41:37 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.53
+
+- Update to version 5.0.53:
+  * no changes
+
+-------------------------------------------------------------------
+Mon Nov  8 07:13:18 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.49
+
+- Update to 5.0.49:
+  * No changes
+
+-------------------------------------------------------------------
+Tue Nov  2 23:29:27 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Update to 5.0.46:
+  * No changes
+
+-------------------------------------------------------------------
+Tue Oct 19 23:32:23 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.36
+
+- Update to 5.0.36:
+  * No changes
+
+-------------------------------------------------------------------
+Fri Jul 30 07:39:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.3 (no changelog)
+
+-------------------------------------------------------------------
+Thu Jul 29 05:57:32 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.0 (no changelog)
+
+-------------------------------------------------------------------
+Sun Jul 4 2021 Giacomo Comes <gcomes.obs@gmail.com> - 4.5.20
+
+- Update to version 4.5.20:
+  * No changes
+- fix several RPMLINT warning
+
+-------------------------------------------------------------------
+Sun May 30 18:40:05 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.5.7:
+  * No changes.
+- Remove baselibs.conf.
+
+-------------------------------------------------------------------
+Thu Apr 15 21:55:29 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- update to 4.5.3:
+  * Ability to force an active session to stale
+  * use bctoolbox C++ API for RNG to improve error detections
+
+-------------------------------------------------------------------
+Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.4.0:
+  * Manage server resource limit error response.
+
+-------------------------------------------------------------------
+Wed Apr 22 16:24:17 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Initial package.

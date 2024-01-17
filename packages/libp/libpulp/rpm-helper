@@ -1,0 +1,84 @@
+#!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+USAGE="$0 <install|remove> <package> <version> <num_packages>"
+
+if test "$1" = "-h" -o "$1" = "--help"; then
+	echo "$USAGE"
+	exit 0
+fi
+if test "$#" -lt 2; then
+	echo "$USAGE" >&2
+	exit 1
+fi
+
+# ulp trigger have problems with bash expanding its arguments. Disable that
+# and let it expand the wildcard by itself.
+shopt -s nullglob
+
+check_livepatching_env()
+{
+	[ -z "$PACKAGE" ] && return 0
+
+  echo $PACKAGE
+
+	COMPONENT=${PACKAGE%-livepatches}
+	COMPONENT=${COMPONENT^^}
+	COMPONENT=${COMPONENT/-/_}
+	CONF_VAR_NAME="LIVEPATCH_$COMPONENT"
+	eval "$CONF_VAR_NAME"=auto
+
+	# Check if a sysconfig for livepatching exists. If yes, include the file.
+	if test -f "/etc/sysconfig/livepatching"; then
+		. /etc/sysconfig/livepatching || :
+	fi
+
+	return 0
+}
+
+do_install()
+{
+  if test -e /.buildenv; then
+    echo "Skipping userspace live patches in buildroot"
+    return 0
+  fi
+
+  check_livepatching_env || return 0
+
+  # Check if we are running a transactional update. If yes, set the root
+  # accordingly.
+  if [ "$TRANSACTIONAL_UPDATE" = "true" ] && [ "x$TRANSACTIONAL_UPDATE_ROOT" != "x" ]; then
+    ROOT="-R $TRANSACTIONAL_UPDATE_ROOT"
+  fi
+
+  ulp trigger $ROOT --recursive -r 100 --timeout 200 --revert-all=target \
+    "/usr/lib64/$PACKAGE/$VER/*.so"
+
+  echo "ulp trigger executed."
+}
+
+do_remove()
+{
+	: # reserved for future use
+}
+
+if test $# -ne 5; then
+	echo 'WARNING: Unexpected number of parameters. Are the live patch RPM scripts compatible with this rpm-helper?' >&2
+fi
+
+
+# Parse first argument (install or remove).
+cmd=$1
+PACKAGE=$2
+VER=$3
+TARGET_LIB=$4
+NUM_PACKAGES=${5-0}
+case "$cmd" in
+install|remove)
+	do_$cmd
+	exit
+	;;
+*)
+	echo "$USAGE" >&2
+	exit 1
+esac

@@ -1,0 +1,7 @@
+<package name="saweri-fonts" project="openSUSE:Factory">
+  <title>Buginese Unicode font</title>
+  <description>Saweri is a TrueType font that is meant to support the lontara alphabet which is also known as Buginese alphabet, a writing system that is used by the Bugis people for their writings. The font supports all lontara consonants as well as the vowel signs and punctuations. The unicode range for this font is from UTF-1A00 until UTF-1A1F which means it only supports the lontara alphabet.
+
+</description>
+  <devel project="M17N:fonts" package="saweri-fonts"/>
+</package>

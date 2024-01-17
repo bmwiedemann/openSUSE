@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b02ec53fd9a5e652d763cbfccd0aa8cd</srcmd5>
+    <version>0.02</version>
+    <time>1386070384</time>
+    <user>coolo</user>
+    <comment>needed for distzilla</comment>
+    <requestid>208568</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b02ec53fd9a5e652d763cbfccd0aa8cd</srcmd5>
+    <version>0.02</version>
+    <time>1409302504</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>521599a2702e40e62b7f325ea91d6e27</srcmd5>
+    <version>0.02</version>
+    <time>1507065589</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530787</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cdfe89f622bf404f33937bb6a05e29ae</srcmd5>
+    <version>0.03</version>
+    <time>1554115171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690163</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="emojione-color-font" project="openSUSE:Factory">
+  <title>EmojiOne Color SVGinOT Font</title>
+  <description>A color and B&amp;W emoji SVGinOT font built from EmojiOne artwork with support for ZWJ, skin tone diversity and country flags.
+
+The font works in all operating systems, but will currently only show color emoji in Firefox, Thunderbird and other Mozilla Gecko-based applications. This is not a limitation of the font, but of the operating systems and applications. Regular B&amp;W outline emoji are included for backwards/fallback compatibility.</description>
+  <devel project="M17N:fonts" package="emojione-color-font"/>
+</package>

@@ -1,0 +1,142 @@
+-------------------------------------------------------------------
+Tue Jun  5 20:47:40 UTC 2018 - egdfree@opensuse.org
+
+- update to 1.1.3
+  * add support for Qt 5.11
+  * tune icon don't show in roster
+  * add field to show stored player name
+
+-------------------------------------------------------------------
+Sun Dec 10 18:26:05 UTC 2017 - jengelh@inai.de
+
+- Rectify RPM group.
+
+-------------------------------------------------------------------
+Sun Dec 25 15:14:18 UTC 2016 - egdfree@opensuse.org
+
+- update source to 1.1.0
+  * port to Qt5
+
+-------------------------------------------------------------------
+Fri Apr 24 19:27:40 UTC 2015 - egdfree@opensuse.org
+
+- update source to 1.0.10
+  * support Vacuum-IM SDKv35
+
+-------------------------------------------------------------------
+Sun Oct 26 10:04:08 UTC 2014 - egdfree@opensuse.org
+
+- update to 1.0.9
+  * sync last changes in vacuum-im (required libvacuumutils33)
+
+-------------------------------------------------------------------
+Sun Aug 17 15:05:33 UTC 2014 - egdfree@opensuse.org
+
+- update source
+  * sync with last changes in vacuum-im
+
+-------------------------------------------------------------------
+Sun Sep 22 11:11:23 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.8
+  * fix label postion
+
+-------------------------------------------------------------------
+Sat Aug 31 16:55:35 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.7
+  * fix Segmentation fault
+  * replace some methods to const version
+
+-------------------------------------------------------------------
+Sat Jun  1 09:31:27 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.6
+  * send now playing info like action (/me ...)
+
+-------------------------------------------------------------------
+Sun Apr 28 13:36:12 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.5
+  * sync changes in IMessageEditWidget class from vacuum source
+
+-------------------------------------------------------------------
+Fri Mar 29 18:40:28 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.4
+  * sync changes in vacuum-sdk
+
+-------------------------------------------------------------------
+Sun Feb 17 08:50:55 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.3
+  * fixed show label in roster
+
+-------------------------------------------------------------------
+Sat Jan 26 15:53:51 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.2
+  * fixed memory leek
+  * Initialize send PEP after allow it in settings
+  * Get metadata from player after start plugin
+  * Rewrite MPRISv2 code
+
+-------------------------------------------------------------------
+Sat Jan  5 13:04:58 UTC 2013 - egdfree@opensuse.org
+
+- update to 1.0.1
+  * fixes on options ui
+  * sync changes in vacuum-sdk
+
+-------------------------------------------------------------------
+Mon Oct 29 13:35:51 UTC 2012 - egdfree@opensuse.org
+
+- update to 1.0.0
+  * big code refactoring (add perfomance and minimize memory usage)
+  * added NDR_TOOLTIP in notifications.
+
+-------------------------------------------------------------------
+Sat Oct 27 20:56:56 UTC 2012 - egdfree@opensuse.org
+
+- update to 0.9.9
+  * code refactoring (add perfomance)
+  * add command np
+
+-------------------------------------------------------------------
+Fri Oct 19 07:55:35 UTC 2012 - egdfree@opensuse.org
+
+- update to 0.9.8
+  * add settings to allow or deny send info about playing music
+
+-------------------------------------------------------------------
+Sun Sep 16 17:31:59 UTC 2012 - egdfree@opensuse.org
+
+- update to 0.9.7
+  * added support player manage command (like /play, /pause, /stop etc)
+  * support new CMake rules in Vacuum-SDK
+
+-------------------------------------------------------------------
+Sun Jun 10 09:23:01 UTC 2012 - egdfree@opensuse.org
+
+- fix
+  * crash after set fetchersNone 
+
+-------------------------------------------------------------------
+Tue May 22 14:09:58 UTC 2012 - egdfree@opensuse.org
+
+- update
+  * not send <length/> if track length not know
+  * delay 2 seconds before send tune
+
+-------------------------------------------------------------------
+Tue May  8 13:10:20 UTC 2012 - egdfree@opensuse.org
+
+- update to 0.9.4
+  * add options UI
+  * support mpris v1 and v2
+  * add fixes and stability patches
+
+-------------------------------------------------------------------
+Sat Mar 10 07:16:37 UTC 2012 - egdfree@opensuse.org
+
+- initial

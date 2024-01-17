@@ -1,0 +1,6 @@
+Granting users access for mouse configuration
+=============================================
+
+Access to the ratbagd deamon is limited to users in the group "games".
+Thus, any user wanting to use libratbag via an application that utilises
+the daemon, like ratbagctl or Piper, needs to be a member of this group.

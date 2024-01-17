@@ -1,0 +1,22 @@
+[Unit]
+Description=Tftp Server
+Wants=network.target
+After=network.target
+Requires=tftp.socket
+
+[Service]
+EnvironmentFile=/etc/sysconfig/tftp
+ExecStart=/usr/sbin/in.tftpd -u $TFTP_USER -s $TFTP_OPTIONS $TFTP_DIRECTORY
+StandardInput=socket
+PrivateDevices=yes
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 

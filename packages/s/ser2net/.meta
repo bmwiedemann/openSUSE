@@ -1,0 +1,9 @@
+<package name="ser2net" project="openSUSE:Factory">
+  <title>Serial port to network proxy</title>
+  <description>ser2net provides a way for a user to connect from a network connection to a   
+serial port. It provides all the serial port setup, a configuration file to   
+configure the ports, a control login for modifying port parameters,   
+monitoring ports, and controlling ports.</description>
+  <devel project="network:utilities" package="ser2net"/>
+  <url>http://ser2net.sourceforge.net/</url>
+</package>

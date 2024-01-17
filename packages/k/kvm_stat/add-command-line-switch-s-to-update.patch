@@ -1,0 +1,151 @@
+commit 3cbb394d9fb68dcd20415dce2c42b695475e9684
+Author: Stefan Raspl <raspl@de.ibm.com>
+Date:   Fri Mar 6 12:42:46 2020 +0100
+
+    tools/kvm_stat: add command line switch '-s' to set update interval
+    
+    This now controls both, the refresh rate of the interactive mode as well
+    as the logging mode. Which, as a consequence, means that the default of
+    logging mode is now 3s, too (use command line switch '-s' to adjust to
+    your liking).
+    
+    Signed-off-by: Stefan Raspl <raspl@linux.ibm.com>
+    Message-Id: <20200306114250.57585-4-raspl@linux.ibm.com>
+    Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 8f1874c7fd8e..f47d81a18ab1 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -974,15 +974,17 @@ DELAY_DEFAULT = 3.0
+ MAX_GUEST_NAME_LEN = 48
+ MAX_REGEX_LEN = 44
+ SORT_DEFAULT = 0
++MIN_DELAY = 0.1
++MAX_DELAY = 25.5
+ 
+ 
+ class Tui(object):
+     """Instruments curses to draw a nice text ui."""
+-    def __init__(self, stats):
++    def __init__(self, stats, opts):
+         self.stats = stats
+         self.screen = None
+         self._delay_initial = 0.25
+-        self._delay_regular = DELAY_DEFAULT
++        self._delay_regular = opts.set_delay
+         self._sorting = SORT_DEFAULT
+         self._display_guests = 0
+ 
+@@ -1282,7 +1284,8 @@ class Tui(object):
+                '   p     filter by guest name/PID',
+                '   q     quit',
+                '   r     reset stats',
+-               '   s     set update interval',
++               '   s     set delay between refreshs (value range: '
++               '%s-%s secs)' % (MIN_DELAY, MAX_DELAY),
+                '   x     toggle reporting of stats for individual child trace'
+                ' events',
+                'Any other key refreshes statistics immediately')
+@@ -1348,11 +1351,9 @@ class Tui(object):
+             try:
+                 if len(val) > 0:
+                     delay = float(val)
+-                    if delay < 0.1:
+-                        msg = '"' + str(val) + '": Value must be >=0.1'
+-                        continue
+-                    if delay > 25.5:
+-                        msg = '"' + str(val) + '": Value must be <=25.5'
++                    err = is_delay_valid(delay)
++                    if err is not None:
++                        msg = err
+                         continue
+                 else:
+                     delay = DELAY_DEFAULT
+@@ -1488,7 +1489,7 @@ def batch(stats):
+         pass
+ 
+ 
+-def log(stats):
++def log(stats, opts):
+     """Prints statistics as reiterating key block, multiple value blocks."""
+     keys = sorted(stats.get().keys())
+ 
+@@ -1506,7 +1507,7 @@ def log(stats):
+     banner_repeat = 20
+     while True:
+         try:
+-            time.sleep(1)
++            time.sleep(opts.set_delay)
+             if line % banner_repeat == 0:
+                 banner()
+             statline()
+@@ -1515,6 +1516,16 @@ def log(stats):
+             break
+ 
+ 
++def is_delay_valid(delay):
++    """Verify delay is in valid value range."""
++    msg = None
++    if delay < MIN_DELAY:
++        msg = '"' + str(delay) + '": Delay must be >=%s' % MIN_DELAY
++    if delay > MAX_DELAY:
++        msg = '"' + str(delay) + '": Delay must be <=%s' % MAX_DELAY
++    return msg
++
++
+ def get_options():
+     """Returns processed program arguments."""
+     description_text = """
+@@ -1604,6 +1615,13 @@ Press any other key to refresh statistics immediately.
+                            default=0,
+                            help='restrict statistics to pid',
+                            )
++    argparser.add_argument('-s', '--set-delay',
++                           type=float,
++                           default=DELAY_DEFAULT,
++                           metavar='DELAY',
++                           help='set delay between refreshs (value range: '
++                                '%s-%s secs)' % (MIN_DELAY, MAX_DELAY),
++                           )
+     argparser.add_argument('-t', '--tracepoints',
+                            action='store_true',
+                            default=False,
+@@ -1675,6 +1693,10 @@ def main():
+         sys.stderr.write('Did you use a (unsupported) tid instead of a pid?\n')
+         sys.exit('Specified pid does not exist.')
+ 
++    err = is_delay_valid(options.set_delay)
++    if err is not None:
++        sys.exit('Error: ' + err)
++
+     stats = Stats(options)
+ 
+     if options.fields == 'help':
+@@ -1686,9 +1708,9 @@ def main():
+         sys.exit(0)
+ 
+     if options.log:
+-        log(stats)
++        log(stats, options)
+     elif not options.once:
+-        with Tui(stats) as tui:
++        with Tui(stats, options) as tui:
+             tui.show_stats()
+     else:
+         batch(stats)
+diff --git a/tools/kvm/kvm_stat/kvm_stat.txt b/tools/kvm/kvm_stat/kvm_stat.txt
+index 8e0658e79eb7..20928057cc9e 100644
+--- a/tools/kvm/kvm_stat/kvm_stat.txt
++++ b/tools/kvm/kvm_stat/kvm_stat.txt
+@@ -92,6 +92,10 @@ OPTIONS
+ --pid=<pid>::
+ 	limit statistics to one virtual machine (pid)
+ 
++-s::
++--set-delay::
++        set delay between refreshs (value range: 0.1-25.5 secs)
++
+ -t::
+ --tracepoints::
+         retrieve statistics from tracepoints

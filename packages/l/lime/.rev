@@ -1,0 +1,217 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc23ea484523607a0ff2764ca755804d</srcmd5>
+    <version>4.3.1</version>
+    <time>1591742468</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>797648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6dbe895162c2e5bd8fef4827740608f</srcmd5>
+    <version>4.4.0</version>
+    <time>1596456886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0.</comment>
+    <requestid>823434</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67e8511e57107d08ec14d9097f4804b6</srcmd5>
+    <version>4.5.7</version>
+    <time>1623268384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.5.7.</comment>
+    <requestid>898808</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>887867f0d47bd33ca1800b97354844fe</srcmd5>
+    <version>5.0.0</version>
+    <time>1627587116</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0 (no changelog)
+- Update to version 4.5.20:
+  * No changes
+- fix several RPMLINT warning
+</comment>
+    <requestid>909075</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b1d06a1a534b9b9405f9f60e8250c74a</srcmd5>
+    <version>5.0.3</version>
+    <time>1627680123</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.3 (no changelog)
+</comment>
+    <requestid>909332</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f76ac7146f1e9ac9ac596d4434c976e5</srcmd5>
+    <version>5.0.36</version>
+    <time>1635366074</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>927660</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c19fe9a8f434382bdb946a269dfba694</srcmd5>
+    <version>5.0.49</version>
+    <time>1637108012</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>931479</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>283b76748db13e93290e1338b6798785</srcmd5>
+    <version>5.0.53</version>
+    <time>1638131412</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>934341</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2111f71b3268dd608a33294fe68b8365</srcmd5>
+    <version>5.0.66</version>
+    <time>1642548916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.66:
+  * no changelog
+</comment>
+    <requestid>947169</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cdb2ae41941783ab8873121d161fe9c5</srcmd5>
+    <version>5.0.67</version>
+    <time>1643838063</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.67:
+  * no changes
+- fix license tag
+</comment>
+    <requestid>950586</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>901b4531991cbc7552644e7325d46f13</srcmd5>
+    <version>5.0.70</version>
+    <time>1646158025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.70:
+  * no changelog
+</comment>
+    <requestid>958309</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b8aec664c781f8a30531ccb05b41bba2</srcmd5>
+    <version>5.0.71</version>
+    <time>1648739933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>966189</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>edb33e1f53eda6dc668b6b3d4d9eb66f</srcmd5>
+    <version>5.1.32</version>
+    <time>1655396404</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982689</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>48aeb0619d51d6479e5200588b509dd6</srcmd5>
+    <version>5.1.45</version>
+    <time>1657281797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.45:
+  * Update CMakeLists.txt in order to add lime to Flexisip
+</comment>
+    <requestid>987832</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b154fd5fa32f8eaff40ba10879ad7bd4</srcmd5>
+    <version>5.1.45</version>
+    <time>1660834137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>997466</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e83921d8d2697dbbac01aa9eb7cbfbc4</srcmd5>
+    <version>5.1.64</version>
+    <time>1666602801</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1030685</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7feae8a5aa26ca94b320481a8c6d2968</srcmd5>
+    <version>5.2.6</version>
+    <time>1672851208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.6 (no changelog).
+</comment>
+    <requestid>1055796</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>608c5f7687fb72ff3a81e203a0cfb768</srcmd5>
+    <version>5.2.9</version>
+    <time>1674043752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.9:
+  * no changes
+</comment>
+    <requestid>1059003</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5c281c2c21bde9b01c59e7a2c52de281</srcmd5>
+    <version>5.2.30</version>
+    <time>1678283623</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.30 (no changelog).
+</comment>
+    <requestid>1070098</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>34fbf7df2a1097bcf8f2f1528f32923d</srcmd5>
+    <version>5.2.30</version>
+    <time>1680018655</time>
+    <user>dimstar_suse</user>
+    <comment>- Add add-cstdint.patch.
+</comment>
+    <requestid>1074874</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eff03c0981329a32f58cb996afb0dd13</srcmd5>
+    <version>5.2.49</version>
+    <time>1680884238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.2.49 (no changelog).
+- Add set_current_version.patch.
+</comment>
+    <requestid>1077858</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e872d0b133519a744465072b3b39ca87</srcmd5>
+    <version>5.2.73</version>
+    <time>1688052505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.73 (no changelog)
+</comment>
+    <requestid>1095747</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c3688b24374bdd398b5ecbe0d92d0bad</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235820</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog)
+</comment>
+    <requestid>1106251</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>9cd66ab0cb3726b59d241fc98b2f40c2</srcmd5>
+    <version>5.2.98</version>
+    <time>1697390893</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1117871</requestid>
+  </revision>
+</revisionlist>

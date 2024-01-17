@@ -1,0 +1,8 @@
+<package name="asteroid" project="openSUSE:Factory">
+  <title>Modern version of the classic arcade Game</title>
+  <description>Asteroid (just one!) is a modern version of the arcade classic Asteroids,
+using OpenGL, GLUT, and optionally GTK and SDL_mixer.
+It features a variety of powerups, taunting aliens, 3D textured asteroids,
+face-melting sound effects, and infinite playability.</description>
+  <devel project="games" package="asteroid"/>
+</package>

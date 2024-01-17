@@ -1,0 +1,33 @@
+# HG changeset patch
+# User Wolfgang Rosenauer <wr@rosenauer.org>
+# Parent  fa8a5832a374ccd7af5db927b992b5d9f15273ef
+
+diff --git a/modules/fdlibm/src/math_private.h b/modules/fdlibm/src/math_private.h
+--- a/modules/fdlibm/src/math_private.h
++++ b/modules/fdlibm/src/math_private.h
+@@ -25,19 +25,24 @@
+ 
+ #include "fdlibm.h"
+ 
+ /*
+  * Emulate FreeBSD internal double types.
+  * Adapted from https://github.com/freebsd/freebsd-src/search?q=__double_t
+  */
+ 
++#ifdef __i386__
++typedef long double __double_t;
++typedef long double __float_t;
++#else
+ typedef double      __double_t;
++typedef float       __float_t;
++#endif
+ typedef __double_t  double_t;
+-typedef float       __float_t;
+ 
+ /*
+  * The original fdlibm code used statements like:
+  *	n0 = ((*(int*)&one)>>29)^1;		* index of high word *
+  *	ix0 = *(n0+(int*)&x);			* high word of x *
+  *	ix1 = *((1-n0)+(int*)&x);		* low word of x *
+  * to dig two 32 bit words out of the 64 bit IEEE floating point
+  * value.  That is non-ANSI, and, moreover, the gcc instruction

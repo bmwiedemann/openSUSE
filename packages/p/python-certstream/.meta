@@ -1,0 +1,10 @@
+<package name="python-certstream" project="openSUSE:Factory">
+  <title>CertStream is a library for receiving certificate transparency list updates</title>
+  <description>Certstream is a library to connect to the certstream network (certstream.calidog.io). 
+
+It supports automatic reconnection when networks issues occur, and should be stable for long-running jobs. 
+
+</description>
+  <devel project="devel:languages:python" package="python-certstream"/>
+  <url>https://github.com/CaliDog/certstream-python/</url>
+</package>

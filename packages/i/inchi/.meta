@@ -1,0 +1,6 @@
+<package name="inchi" project="openSUSE:Factory">
+  <title></title>
+  <description>The IUPAC International Chemical Identifier (InChI) is a non-proprietary identifier for chemical substances that can be used in printed and electronic data sources thus enabling easier linking of diverse data compilations. It was developed under IUPAC Project 2000-025-1-800 during the period 2000-2004. Details of the project and the history of its progress are available from the project web site.</description>
+  <devel project="science" package="inchi"/>
+  <url>https://www.inchi-trust.org</url>
+</package>

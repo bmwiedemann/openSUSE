@@ -1,0 +1,6 @@
+<package name="xmlrpc-c" project="openSUSE:Factory">
+  <title>XML-RPC for C and C++</title>
+  <description>A modular library implementing XML-based remote procedure calls</description>
+  <devel project="devel:libraries:c_c++" package="xmlrpc-c"/>
+  <url>http://xmlrpc-c.sourceforge.net/</url>
+</package>

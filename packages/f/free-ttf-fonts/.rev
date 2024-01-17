@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="174">
+    <srcmd5>20be012d9ce77d50e9362c0d42128940</srcmd5>
+    <version>1.0</version>
+    <time>1168902777</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="211">
+    <srcmd5>09ca093d1b413bc78ed63f6697262861</srcmd5>
+    <version>1.0</version>
+    <time>1175169505</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="340">
+    <srcmd5>09ca093d1b413bc78ed63f6697262861</srcmd5>
+    <version>1.0</version>
+    <time>1175169505</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="341">
+    <srcmd5>8caee6688c90a4fd9ce55cdcd368c6a6</srcmd5>
+    <version>1.0</version>
+    <time>1245260035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="343">
+    <srcmd5>8caee6688c90a4fd9ce55cdcd368c6a6</srcmd5>
+    <version>1.0</version>
+    <time>1245260035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="344">
+    <srcmd5>70b5fc08b97b116ecc2e143f61216f93</srcmd5>
+    <version>1.0</version>
+    <time>1268923577</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="345">
+    <srcmd5>ce6a1c4f63c8aa1fec33b6992c349611</srcmd5>
+    <version>1.0</version>
+    <time>1271369638</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/free-ttf-fonts based on submit request 37503 from user tiwai
+</comment>
+    <requestid>37503</requestid>
+  </revision>
+  <revision rev="8" vrev="347">
+    <srcmd5>ce6a1c4f63c8aa1fec33b6992c349611</srcmd5>
+    <version>1.0</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="348">
+    <srcmd5>ce6a1c4f63c8aa1fec33b6992c349611</srcmd5>
+    <version>1.0</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="351">
+    <srcmd5>ce6a1c4f63c8aa1fec33b6992c349611</srcmd5>
+    <version>1.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="352">
+    <srcmd5>99b2f8821488a8ae34e65abd77cf29e5</srcmd5>
+    <version>1.0</version>
+    <time>1316443986</time>
+    <user>lrupp</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83546 from jengelh)</comment>
+    <requestid>83550</requestid>
+  </revision>
+  <revision rev="12" vrev="354">
+    <srcmd5>99b2f8821488a8ae34e65abd77cf29e5</srcmd5>
+    <version>1.0</version>
+    <time>1319181883</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="355">
+    <srcmd5>63e91c06a777ffe54a7d57ef84ad3961</srcmd5>
+    <version>1.0</version>
+    <time>1323191413</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="356">
+    <srcmd5>b040a7de58ee5a90500a1b00bd4884b2</srcmd5>
+    <version>1.0</version>
+    <time>1338030013</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122127</requestid>
+  </revision>
+  <revision rev="15" vrev="358">
+    <srcmd5>b040a7de58ee5a90500a1b00bd4884b2</srcmd5>
+    <version>1.0</version>
+    <time>1340183336</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="359">
+    <srcmd5>11c934d8ba47479aa728cfc3165443fd</srcmd5>
+    <version>1.0</version>
+    <time>1347617816</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133931</requestid>
+  </revision>
+  <revision rev="17" vrev="361">
+    <srcmd5>11c934d8ba47479aa728cfc3165443fd</srcmd5>
+    <version>1.0</version>
+    <time>1359108888</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="362">
+    <srcmd5>4fdb428e8611d2a1f91e27d2f8e4a401</srcmd5>
+    <version>1.0</version>
+    <time>1362991763</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 157319 from coolo)</comment>
+    <requestid>157335</requestid>
+  </revision>
+  <revision rev="19" vrev="364">
+    <srcmd5>4fdb428e8611d2a1f91e27d2f8e4a401</srcmd5>
+    <version>1.0</version>
+    <time>1379662361</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="366">
+    <srcmd5>4fdb428e8611d2a1f91e27d2f8e4a401</srcmd5>
+    <version>1.0</version>
+    <time>1409300897</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

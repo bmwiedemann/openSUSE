@@ -1,0 +1,12 @@
+--- man/man1/man.man1
++++ man/man1/man.man1	2018-11-23 14:23:22.531297359 +0000
+@@ -93,6 +93,9 @@ numbers of the manual followed by the ty
+ .TS
+ tab (@);
+ l lx.
++0@T{
++Header files (usually found in \fI/usr/include\fR)
++T}
+ 1@T{
+ Executable programs or shell commands
+ T}

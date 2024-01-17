@@ -1,0 +1,5 @@
+<package name="python-xapp" project="openSUSE:Factory">
+  <title>Python XApp library</title>
+  <description>This package contains the Python version of the library.</description>
+  <devel project="X11:Cinnamon:Factory" package="python-xapp"/>
+</package>

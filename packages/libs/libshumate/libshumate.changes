@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Thu Nov  2 09:03:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.2:
+  + Fix using overlay map layers with different tile sizes than the
+    reference source.
+
+-------------------------------------------------------------------
+Sun Oct 22 00:42:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.1:
+  + Fix null reference map source, avoid critical log message when
+    setting a null map source with
+    shumate_viewport_set_reference_map_source().
+
+-------------------------------------------------------------------
+Sat Sep 16 13:59:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.0:
+  + Fix grey background on sprites
+  + Updated translations.
+- Switch compression to zst in both service and tarball produced.
+
+-------------------------------------------------------------------
+Wed Sep  6 01:31:05 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add with(out) "profiling" build switch and disable it, by
+  default, as profiling isn't meant for general use. Add nested
+  pkgconfig(sysprof-capture-4) BuildRequires under an if-with
+  expression and pass sysprof=(enabled|disabled) to meson,
+  depending on the profiling switch. This is meant for an eventual
+  need for Sysprof's profiling support.
+
+-------------------------------------------------------------------
+Mon Sep  4 09:40:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.rc:
+  + Bugfixes and optimizations in vector render.
+  + Add icon-color property for vector renderer.
+  + Disable g_asserts on release builds.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 18 18:49:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.beta:
+  + Vector rendering improvements.
+  + Updated translations.
+- Add pkgconfig(gperf) BuildRequires, a new introduced dependency.
+
+-------------------------------------------------------------------
+Wed Jul 19 09:15:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.5:
+  + Don't defer frame clock when widget is unrealized.
+
+-------------------------------------------------------------------
+Tue Jul 11 12:13:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.4:
+  + Throttle tile download during animations.
+
+-------------------------------------------------------------------
+Fri Dec  2 21:05:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.3:
+  + Fix memory leaks.
+  + Remove old tiles more aggresively, speeding up zoom animations.
+
+-------------------------------------------------------------------
+Sat Oct 22 11:29:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.2:
+  + Avoid flickering when panning the map.
+  + Fix warnings about min/max zoom levels for the viewport.
+  + Fix documentation comments.
+  + Fix cross-compilation for gi-docgen.
+
+-------------------------------------------------------------------
+Tue Oct 11 08:49:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing b_coverage=true to meson. We do not need the
+  coverage tracking, that is for upstream developers.
+
+-------------------------------------------------------------------
+Sun Sep 18 19:45:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.1:
+  + Release 1.0.1 to avoid Meson considering 1.0.0 < 1.0.0.beta.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 18 09:00:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.0:
+  + Fix build error with Clang.
+
+-------------------------------------------------------------------
+Tue Sep  6 08:20:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add libshumate Provides to shared library to make -lang package
+  installable.
+
+-------------------------------------------------------------------
+Thu Sep  1 06:07:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.0.beta:
+  + Finalized 1.0.0 API/ABI.
+  + Various code cleanups.
+  + Enabled localization support.
+  + Changed the URL template for map sources.
+- Add pkgconfig(json-glib-1.0) and pkgconfig(libprotobuf-c)
+  BuildRequires, new dependencies.
+- Pass vector_renderer=true, b_coverage=true and gtk_doc=true to
+  meson, follow what upstream uses for checkin build tests, without
+  the build fails....
+- Package translations in new lang sub-package.
+
+-------------------------------------------------------------------
+Fri Jan 14 16:26:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE, version 1.0.0.alpha.1

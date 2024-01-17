@@ -1,0 +1,8 @@
+<package name="python-hetzner" project="openSUSE:Factory">
+  <title>High level access to the Hetzner robot</title>
+  <description>A high-level Python API for accessing the Hetzner robot.
+
+</description>
+  <devel project="devel:languages:python" package="python-hetzner"/>
+  <url>https://github.com/aszlig/hetzner</url>
+</package>

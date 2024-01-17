@@ -1,0 +1,14 @@
+Index: fvwm-themes-0.7.0/bin/fvwm-themes-config.in
+===================================================================
+--- fvwm-themes-0.7.0.orig/bin/fvwm-themes-config.in
++++ fvwm-themes-0.7.0/bin/fvwm-themes-config.in
+@@ -7,7 +7,9 @@
+ use strict;
+ use Getopt::Long;
+ 
++my $DESTDIR= $ENV{'DESTDIR'} || '';
+ my $prefix = $ENV{'prefix'} || '@prefix@';
++$prefix = $DESTDIR . $prefix;
+ my $ROOT_PREFIX = $ENV{'ROOT_PREFIX'} || '@ROOT_PREFIX@';
+ $ROOT_PREFIX = $ENV{'DESTDIR'} if $ENV{'DESTDIR'};
+ my $bindir = "@bindir@";

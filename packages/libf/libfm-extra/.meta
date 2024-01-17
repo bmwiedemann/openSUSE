@@ -1,0 +1,7 @@
+<package name="libfm-extra" project="openSUSE:Factory">
+  <title>core pcmanfm2 library</title>
+  <description>A glib/gio-based lib used to develop file managers providing some file management utilities and related-widgets missing in gtk+/glib.
+owner</description>
+  <devel project="X11:lxde" package="libfm-extra"/>
+  <url>http://sourceforge.net/projects/pcmanfm/</url>
+</package>

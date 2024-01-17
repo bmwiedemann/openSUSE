@@ -1,0 +1,461 @@
+-------------------------------------------------------------------
+Sun Oct 29 08:13:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.11:
+  * Fix #652: use importlib to support Python >= 3.12
+  * Fix #424: Use only the primary monitor for thumbs window (#649)
+  * Improvement #609: filter Unsplash Plus images
+  * Improvement #604: download UHD images from Bing
+  * Feature #621: Add AVIF image format support
+  * Updated translations: Spanish (#607) and Brazilian Portuguese (#614)
+  * set_wallpaper: add support for i3-gnome (#595), Hyprland (#618), spectrwm (#626)
+  * set_wallpaper: only set Plasma wallpaper on desktops using an image background (#611)
+  * set_wallpaper: use dbus-send instead of qdbus for setting KDE wallpaper (#633)
+
+-------------------------------------------------------------------
+Sun Jan 29 11:29:30 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.10:
+  * Bugfix #577: Fix Unsplash downloads
+  * Bugfix #553: Keep the current quote when using Image->Next
+  * Bugfix #418: on AwesomeWM, apply the same image on all monitors
+    separately instead of stretching across them
+  * Feature #559: add support for handling Unsplash topic URLs
+  * Improvement #586: Use official API for EarthView
+- Rebase variety-fix-data-path.patch
+
+-------------------------------------------------------------------
+Sun Oct 16 21:59:39 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 0.8.9:
+  * Fix errors when there is no primary monitor configured,
+    (gh#varietywalls/variety#536 and gh#varietywalls/variety#537).
+- Rebase variety-fix-data-path.patch.
+
+-------------------------------------------------------------------
+Tue Jun 21 12:37:32 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Update to 0.8.8
+  * Feature #89: Added options to select fit size / wallpaper mode.
+    Added an image-dependent smart fit mode.
+  * Bugfix #519: Fix issues with autostart.
+  * Bugfix #534: Fix the fallback Wallhaven non-API downloading
+    mode used for some Wallhaven URLs.
+  * Bugfix #480: Improve image searching: Avoid deep/huge folders
+    causing Variety to ignore the other folders.
+- From Previous releases
+  * Added a global switch to turn Internet connectivity for Variety
+    off or on
+  * Wallhaven sources now use the Wallhaven API, not html parsing
+    (Thanks to @nlpsuge).
+  * Support for fetching NSFW images from Wallhaven
+    (Thanks to @nlpsuge).
+  * When adding Wallhaven sources, you can provide your own Wallhaven
+    API key. If provided, and the source URL is set to search for NSFW
+    images, Variety will obey.
+  * Auto-upgrade set_wallpaper/get_wallpaper scripts.
+  * Starting from this release, Variety will always automatically
+    upgrade
+  * the set_wallpaper/get_wallpaper scripts to make sure fixes to
+    those are picked up. Your old files have been preserved in the
+    ~/.config/variety/scripts folder.
+  * If you need to use custom scripts, please set their paths in the
+    set_wallpaper_script/get_wallpaper_script properties
+    in ~/.config/variety/variety.conf.
+  * New source: National Geographic's photo of the day
+    (thanks to @TheLastZombie)
+  * New source: ArtStation (thanks to @denis-gordeev)
+  * Add support for Gnome's Dark style
+  * Change default font for quotes and clock to Serif for greater
+    compatibility
+  * Translation updates and bugfixes
+
+-------------------------------------------------------------------
+Thu Jan  6 20:20:03 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add subtle missed python3-requests runtime requirement due to
+  python script not checking it at build-time, but declared in
+  requirements.txt.
+
+-------------------------------------------------------------------
+Sat Sep 25 02:06:54 UTC 2021 - malcolmlewis@opensuse.org
+
+- Add missing requires on python3-gobject-Gdk and python3-pycairo.
+
+-------------------------------------------------------------------
+Wed Dec 16 01:30:32 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 0.8.5:
+  * Fixes for Python 3.9 support.
+  * Cleanup of wallpaper folder now cleans all image types,
+    (gh#varietywalls/variety#388).
+  * Fix GH-363: We were almost never triggering purging downloads,
+    (gh#varietywalls/variety#363).
+  * Enable support for Qtile-venv, (gh#varietywalls/variety#386).
+  * Translation updates.
+- Changes from version 0.8.4:
+  * Properly verify TLS certificates when downloading images,
+    (GH-(gh#varietywalls/variety#326).
+  * Fix banning images when using Delete to Trash option,
+    (GH-(gh#varietywalls/variety#304).
+  * Preserve file extensions when copying wallpapers to another
+    folder, (gh#varietywalls/variety#240).
+  * Fix crash in indicator code when image origin is not available,
+    (gh#varietywalls/variety#287).
+  * Remove spurious "No such schema
+    “org.cinnamon.desktop.background” errors",
+    (gh#varietywalls/variety#329).
+  * Update Unsplash rate limit, (gh#varietywalls/variety#332).
+  * Better detection for AwesomeWM, (gh#varietywalls/variety#282).
+- Rebase variety-fix-data-path.patch.
+
+-------------------------------------------------------------------
+Mon Jun 29 07:44:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Exclude dependency to AyatanaAppIndicator3: this is no longer
+  maintained and building. The code is written in a way to work
+  with either Ayatana AppIndicator or the original version.
+  Previously, both were added as dependencies.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:31:46 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 0.8.3:
+  * Image sources are now plugins.
+  * Add support for sequential albums.
+  * Add support for multiple simultaneously running Variety
+    profiles (--profile command option).
+  * Add a Privacy Notice dialog.
+  * Add support for configurable Unsplash sources.
+  * Add two new sources (ChromeOS Wallpapers and Google Earth View
+    Wallpapers).
+  * Remove World Sunlight Map source.
+  * Added Urban Dictionary and UNIX fortune program as quote
+    sources.
+  * Download linked to wallpaper changing, not configured as a
+    separate interval.
+  * Add a dedicated --set/--set-wallpaper option.
+  * Make the thumbs display much faster.
+  * Fix bugs related to GTK threading usage.
+  * Mulitple bugfixes.
+  * Dev process: Use auformatting on all Python files (black,
+    isort).
+- Changes from version 0.7.2:
+  * Add support for Sway, bspwm.
+  * Enable AwesomeWM support by default.
+  * Fix crash on --help or --version if a Variety instance is
+    already running (gh#varietywalls/variety#148).
+  * Fix spurious "file not found" errors when checking for
+    animated GIFs (gh#varietywalls/variety#132).
+  * Translation updates.
+
+-------------------------------------------------------------------
+Fri Nov 23 18:57:21 UTC 2018 - malcolmlewis@opensuse.org
+
+- Update to version 0.7.1:
+  + Fix remaining bugs from the Python 3 port: errors when saving
+    favorite quotes and generating pencil_tile.png.
+- Changes from version 0.7.0:
+  + Fix possible download issues when upgrading from older Variety
+    versions and having safe mode enabled.
+  + GoodreadsSource: fix stray HTML tags being displayed in quote
+    authors.
+  + Translation updates.
+- Changes from version 0.7.0-beta1:
+  + Port to Python 3.
+  + Fix broken trash deletion on some systems by directly using
+    Gio libraries.
+  + Fix potential log file corruption when trying to start
+    multiple instances.
+  + Support for setting GNOME Screensaver / GDM background.
+  + Removed outdated functionality for publishing to Facebook.
+  + Updated URL for QuotationsPage plugin.
+  + Update default clipboard_hosts: add deviantart.net,
+    imageshack.com; remove (dead) ns223506.ovh.net.
+- Add missing README.md file.
+- Use file triggers for desktop icons now, no need for spec file
+  macros.
+- Add variety-fix-data-path.patch: Set user data path to
+  /usr/share/variety.
+
+-------------------------------------------------------------------
+Fri Nov 23 08:00:25 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix source path.
+
+-------------------------------------------------------------------
+Thu Nov 22 18:01:08 UTC 2018 - sean@suspend.net
+
+- Update to version 0.6.9:
+  * Removed broken "SSL dependency" installation code
+  * Fix trash deletion and replace gvfs-trash with 'gio trash'
+  * Skip metadata checks on non-image files
+  * Use subprocess.Popen to run xdg-open
+  * Removed more dead code related to VRTY.org, KDE 4
+  * Add get_wallpaper support for KDE Plasma 5, fix LXDE
+  * Move bug tracker links to GitHub
+
+-------------------------------------------------------------------
+Wed May  9 23:03:16 UTC 2018 - bjorn.lie@gmail.com
+
+- Replace python-pyexiv2 with python-gexiv2 Requires, this was
+  ported back in version 0.6.4.
+
+-------------------------------------------------------------------
+Sat Sep 23 21:30:47 UTC 2017 - malcolmlewis@opensuse.org
+
+- Update to version 0.6.6:
+  * [Security] Fixed multiple shell injection issues in the
+    "Delete to Trash", filter, and clock code.
+  * Add long-awaited wallpaper changing support on KDE Plasma 5.
+  * Fix crash when gi-appindicator isn't installed.
+  * Removed verbose console output by default, as this tends to
+   spam syslog and ~/.xsession-errors when launched via autostart,
+   (lp#1685003).
+  * Fixed Variety showing the wrong version in the About dialog.
+- Changes from version 0.6.5:
+  * Fix "Previous" wallpaper button on MATE 1.10 and later.
+  * Fix quote applying with Pillow >= 4.2.0.
+  * Remove Panoramio support, as that service no longer exists.
+  * Fix high CPU usage when mousing away from the thumbnail
+    selector.
+  * Add trinity-desktop support and AppStream metadata for GNOME
+    Software Center.
+- Changes from version 0.6.4:
+  * Remove automatic killswitch for old versions.
+- Changes from version 0.6.3:
+  * Add way to outdate old versions.
+- Changes from version 0.6.2:
+  * Safe mode added for filtering out NSFW images.
+  * Initial version of anonymous stats reporting.
+- Changes from version 0.6.1:
+  * Workaround for Wallhaven SSL issues.
+  * Removed code for no-longer supported Wallpapers.net source.
+- Drop variety-fix-varietyconfig-path.patch as this is upstreamed.
+- Drop variety-webkit3.0.patch as webkitgtk obsolete and Panoramio
+  support dropped upstream.
+- Add variety-appdata-path.patch: Set correct name/path for
+  appdata not metadata.
+
+-------------------------------------------------------------------
+Thu Mar  3 14:19:58 UTC 2016 - sflees@suse.de
+
+- Spec cleaner run
+
+-------------------------------------------------------------------
+Tue Mar  1 12:30:32 UTC 2016 - simon@simotek.net
+
+- Update to 0.6.0
+  * Support for variety slideshow (Separate package to come later)
+  * Using official Unsplash JSON API.
+  * support for i3, openbox, Awesome WM (Awesome requires manual
+    changes to set_wallpaper script)
+
+-------------------------------------------------------------------
+Sun Jan  3 11:22:03 UTC 2016 - simon@simotek.net
+
+- Update to 0.5.5
+Updated translation files
+Added some more default image sources
+Disable Latest source by default, put NSFW warning in description
+set_wallpaper: Fix support for KDE Plasma 5
+Fixed minor typo in Add Reddit dialog
+
+-------------------------------------------------------------------
+Fri Aug 14 06:44:34 UTC 2015 - simon@simotek.net
+
+- Use gnome-introspection to pick up typelib deps
+- Use slightly larger shelf icons (todo: get these to follow fdo standard)
+
+-------------------------------------------------------------------
+Fri Aug  7 05:38:43 UTC 2015 - simon@simotek.net
+
+- Update to 0.5.4
+Updated setup.py to not change icon paths in desktop file
+Remove requests dependency for UnsplashDownloader
+Remove requests dependency for UnsplashDownloader
+More localization-related fixes
+Fix UI of all dialogs to prevent labels from maximizing them horizontally
+Localization-related fixes. Updated translations.
+Minor update to changes and tips info
+Smart: updated report_file to heed needs_reupload response
+Bumping version number to 0.5.4
+Updated dependencies in debian/control to include python-requests
+Disable sorting of Images table by clicking in header
+UI cosmetics on non-Unity: Add some spacing between buttons next to Images table
+Fix UI of PreferencesVarietyDialog to prevent labels from maximizing it horizontally
+Use explicit python2 hashbangs in all scripts, as Ubuntu will be moving to Python 3 as default
+Removed some unnecessary junk files
+Unsplash: sanitize filenames of downloaded images, just in case some unexpected char pops up there in the future
+Added support for Unsplash.com
+Added Bing Photo of the Day image source
+Update tests to run on local modules, not global Variety modules
+Simplify Donate tab in Preferences
+Small change to bin/variety to facilitate local testing when Variety is installed in the classic Debian way
+Preparing to move Variety to a classic Debian-style package: Icons
+Fixed Facebook publishing: use publish_actions scope
+Fixes to LXQt support (thanks to Erik Nelson)
+Add out-of-the-box support for LXQt (Thanks to panfren)
+Better detection of images coming from MediaRSS feeds when sourceType is missing
+Out-of-the-box support for i3-wm
+
+-------------------------------------------------------------------
+Sun Feb 15 09:18:22 UTC 2015 - simon@simotek.net
+
+- Update to 0.5.3:
+  + Fix fetching of Wallhaven image SFW rating.
+  + Translation updates.
+- Dropped variety-drop-unity-schema.patch it is no longer needed.
+- Rebase variety-fix-varietyconfig-path.patch and
+  variety-webkit3.0.patch.
+- Minor spec file enhancements.
+
+-------------------------------------------------------------------
+Wed Feb  4 02:27:36 UTC 2015 - simon@simotek.net
+
+- Update to 0.5.2:
+  + 5.0 changelog, 5.1 - 5.2 just contain minor fixes for issues
+    added in 5.0.
+  + Wallhaven support (replaces wallbase.cc).
+  + Reddit subreddit support.
+  + Syncronisation of favorates between PC's.
+  + SSmart: updated again some texts.
+  + Removed some unnecessary delays in Timer calls.
+  + Trashing was slow due to smart-reporting: update queues and
+    wallpaper first, report and delete in an outer thread
+    afterwards.
+  + Added TestRedditDownloader
+  + Initial registration screen: Register link instructs user to
+    look for a new browser tab.
+  + Smart: updated some welcome screens texts
+  + Smart: try to load user in init to avoid exception related to
+    creating RecommendedDownloader.
+  + Updated variety.pot.
+  + Bumped version to 0.5.0.
+  + Merged variety-smart branch, preparing for 0.5.0 release.
+  + MediaRSS: use variety:author info when present.
+  + Merged in Simotek's Enlightenment related fix.
+  + Minor refactor: added VarietyWindow.register_downloaded_file.
+  + Show Next and Previous in main menu only in non-Unity DEs
+    (Unity supports indicator scroll, no need for them there).
+  + Make sure to delete metadata json when purging downloaded
+    folder.
+  + Unicode: Make _u and _str transparent for None
+  + Util.get_xdg_pictures_folder uses GLib.get_user_special_dir
+    (GLib.USER_DIRECTORY_PICTURES), not subprocess call to
+    xdg-user-dir.
+  + Merge in multi-screen Enlightenment-related changes from
+    Simotek.
+  + set_wallpaper: Do not call unity-greeter gsettings command, it
+    is causing issues on some machines.
+  + Use another server options URL, specific for the current
+    version.
+  + Merge changes to indicator.py from variety-smart.
+  + Merged in some changes from variety-smart.
+  + Merged in updates to Downloaders from the variety-smart branch.
+  + Next and previous options in main menu.
+  + Bumping the version number to 0.4.21.
+  + Added forgotten RedditDownloader.py.
+  + Added support for Reddit as an image source.
+  + Refactored out some duplicate code in AddXXXDialogs, added
+    AbstractAddByQueryDialog.
+  + Option to search image with Google Image Search.
+  + More structured throttling of do_set_wp and scroll handling.
+    Fix to ThumbsWindow when showing bad file
+  + Autostart desktop file: use bash || command to run Variety
+    wherever it is located. Create autostart entry on first run.
+    Update it on every version upgrade.
+  + Minor fix to the desktop file.
+  + Ensure Variety starts and works OK when there is no wallpaper
+    image.
+  + Fetch and save in EXIF SFW rating from Wallhaven.
+  + Update to Wallhaven search.
+  + Fixed some failing tests.
+  + Removed some outdated quotes-related tests.
+  + View at... option in right-click thumbnail menu as well.
+  + Updates related to Wallbase->Wallhaven change, not possible
+    anymore to add Wallbase sources.
+  + Wallbase -> Wallhaven update to default sources.
+  + Adding Wallhaven.cc support.
+  + Merging changes to reading/writing metadata from variety-smart.
+  + Bugfix: do not remove delete wallpaper file in
+    cleanup_old_wallpapers().
+  + Faceboook sharing: do not include link to full image, let
+    Facebook choose image itself.
+  + Bugfix: Make sure all dialogs require just one click on the X
+    button to close.
+  + Bugfix: Add image source dialogs required two clicks on the X
+    button to close.
+  + Use proper origin URL for Desktoppr images.
+  + Fix Unicode error related to non-ascii font names.
+
+-------------------------------------------------------------------
+Wed Jan  7 02:31:31 UTC 2015 - simon@simotek.net
+
+- Require typelib-1_0-AppIndicator3-0_1 to make the systray work
+  on desktop environments that only support the newer appindicator
+  dbus interface for systrays (enlightenment, kde5 and unity).
+
+-------------------------------------------------------------------
+Fri Nov 14 17:07:29 UTC 2014 - malcolmlewis@cableone.net
+
+- Add variety-drop-unity-schema.patch: Remove gsetting for unity
+  error on stdout. Note, for existing installs, still need to edit
+  ~/.config/variety/scripts/set_wallpaper [line 123].
+
+-------------------------------------------------------------------
+Tue Nov 11 05:38:06 UTC 2014 - malcolmlewis@cableone.net
+
+- Add variety-webkit3.0.patch: Specify in the code that we require
+  WebKit 3.0, not 'any' WebKit.
+
+-------------------------------------------------------------------
+Wed Aug 13 19:52:35 UTC 2014 - malcolmlewis@opensuse.org
+
+- Update to version 0.4.20:
+  + set_wallpaper: Do not call the XFCE-related code when
+    xfconf-query is not present.
+  + Unicode-related fixes (logging with -vvv was throwing
+    Unicode-related errors).
+- Changes from version 0.4.19:
+  + Fix to Facebook first run dialog.
+  + Separate Author entry in menu for images from Panoramio.
+  + Save author when dowloading from Panoramio.
+  + Panoramio support: added search box.
+  + Panoramio support, initial drop.
+  + Thumbs: show 100, not 200 images, reduces CPU spike period.
+  + Menu: merged Playback and Image submenus.
+  + Facebook sharing: Updated text of first time dialog.
+  + Facebook sharing updates, bugfix.
+  + Polishing updates to Facebook publishing. Easy way to include
+    quote with image.
+  + Facebook authentication uses variety:// redirects, not internal
+    Webkit windows.
+  + More explicit Unicode handling. Tackle unicode encode/decode
+    errors by working with unicode internally for filepaths,
+    options, etc.
+  + Minor update to indicator icon.
+  + Use 22px png for the indicator, not svg - works better in XFCE
+    and Gnome.
+  + Minor fix related to clipboard monitoring hosts.
+  + Removed preferences for Facebook and Rating menuitems, not
+    needed anymore.
+  + Added support for Enlightenment.
+  + Streamlining the menu, TODO: remove preferences for Facebook
+    and Rating menuitems.
+  + Menuitem and command option to show thumbsbar for manual
+    wallpaper selection.
+  + Fixing Wallpapers.net support.
+  + Update Flickr calls to use https (Flickr closed non-SSL API
+    access).
+  + Cinnamon: Fix for reverting scaling mode to Zoom on every WP
+    change.
+  + Updated translations.
+- Rebase variety-fix-varietyconfig-path.patch.
+
+-------------------------------------------------------------------
+Mon Jul 14 16:29:41 UTC 2014 - malcolmlewis@cableone.net
+
+- Initial build.
+- Add patch variety-fix-varietyconfig-path.patch: Set correct path
+  to /usr/share/variety.

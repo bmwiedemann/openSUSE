@@ -1,0 +1,260 @@
+-------------------------------------------------------------------
+Thu Oct  5 08:54:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.2:
+  * Add support for formatting of `ExceptionGroup` errors (#805).
+  * Fix possible `RuntimeError` when using
+    `multiprocessing.set_start_method()` after importing the
+    `logger` (#974).
+  * Fix formatting of possible `__notes__` attached to an
+    `Exception` (#980).
+- update to 0.7.1:
+  * Add a new `context` optional argument to `logger.add()`
+    specifying `multiprocessing` context (like `"spawn"` or
+    `"fork"`) to be used internally instead of the default one
+  * Add support for true colors on Windows using ANSI/VT console
+    when available (#934, thanks @tunaflsh).
+  * Fix possible deadlock when calling `logger.complete()` with
+    concurrent logging of an asynchronous sink (#906).
+  * Fix file possibly rotating too early or too late when re-
+    starting an application around midnight (#894).
+  * Fix inverted `""` and `""` color tags
+  * Fix possible untraceable errors raised when logging non-
+    unpicklable `Exception` instances while using `enqueue=True`
+  * Fix possible errors raised when logging non-picklable
+    `Exception` instances while using `enqueue=True` (#342,
+    thanks @ncoudene).
+  * Fix missing seconds and microseconds when formatting timezone
+    offset that requires such accuracy
+  * Raise `ValueError` if an attempt to use nanosecond precision
+    for time formatting is detected
+
+-------------------------------------------------------------------
+Fri May 12 13:31:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop optional mypy testing dependency
+
+-------------------------------------------------------------------
+Fri May  5 12:35:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.0:
+  * Update `InterceptHandler` recipe to make it compatible with
+    Python 3.11 (#654).
+  * Add a new `watch` optional argument to file sinks in order to
+    automatically re-create possibly deleted or changed file
+    (#471).
+  * Make `patch()` calls cumulative instead of overriding the
+    possibly existing patching function (#462).
+  * Make sinks added with `enqueue=True` and `catch=False` still
+    process logged messages in case of internal exception (#833).
+  * Avoid possible deadlocks caused by re-using the logger inside
+    a sink, a signal handler or a `__del__` method. Since the
+    logger is not re-entrant, such misuse will be detected and
+    will now generate a `RuntimeError` (#712, thanks
+    @jacksmith15).
+  * Fix file sink rotation using an aware `datetime.time` for
+    which the timezone was ignored (#697).
+  * Fix logs colorization not automatically enabled for Jupyter
+    Notebook and Google Colab (#494).
+  * Fix logs colorization not automatically enabled for Github
+    Actions and others CI platforms (#604).
+  * Fix `logger.complete()` possibly hanging forever when
+    `enqueue=True` and `catch=False` if internal thread killed
+    due to `Exception` raised by sink (#647).
+  * Fix incompatibility with `freezegun` library used to simulate
+    time (#600).
+  * Raise exception if `logger.catch()` is used to wrap a class
+    instead of a function to avoid unexpected behavior (#623).
+- drop python311.patch, loguru-fix-repr-tests.patch: upstream
+
+-------------------------------------------------------------------
+Fri Apr 21 12:28:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Sat Jan 28 16:10:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python311.patch to fix build with python 3.11
+
+-------------------------------------------------------------------
+Fri Aug  5 11:11:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.0
+  * Remove internal use of pickle.loads() considered as a security
+    vulnerability referenced as CVE-2022-0329 (#563).
+  * Modify coroutine sink to make it discard log messages when
+    loop=None and no event loop is running (due to internally using
+    asyncio.get_running_loop() in place of
+    asyncio.get_event_loop()).
+  * Remove the possibility to add a coroutine sink with
+    enqueue=True if loop=None and no event loop is running.
+  * Change default encoding of file sink to be utf8 instead of
+    locale.getpreferredencoding() (#339).
+  * Prevent non-ascii characters to be escaped while logging JSON
+    message with serialize=True (#575, thanks @ponponon).
+  * Fix flake8 errors and improve code readability (#353, thanks
+    @AndrewYakimets).
+- Drop merged patches:
+  * loguru-exception-formatting-py39.patch
+  * pytest-6.2-excepthooks.patch
+- Add loguru-fix-repr-tests.patch
+  * Fix "repr()" tests failing on Python 3.11 and Python 3.10.6
+  * https://github.com/Delgan/loguru/commit/4fe21f66
+
+-------------------------------------------------------------------
+Thu Dec  9 18:04:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip two formatting tests -- gh#Delgan/loguru#550
+
+-------------------------------------------------------------------
+Sun Apr 18 12:17:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add loguru-exception-formatting-py39.patch
+  https://github.com/Delgan/loguru/commit/19f518c5 for changed
+  exception formatting in Python 3.9
+
+-------------------------------------------------------------------
+Fri Feb 19 01:51:00 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pytest-6.2-excepthooks.patch for compatibility with pytest 6.2
+
+-------------------------------------------------------------------
+Mon Feb  8 22:31:43 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update t0 v0.5.3
+  * Fix child process possibly hanging at exit while combining
+    enqueue=True with third party library like uwsgi
+  * Fix possible exception during formatting of non-string messages
+- from v0.5.2
+  * Fix AttributeError within handlers using serialize=True when
+    calling logger.exception() outside of the context of an exception
+  * Fix error while logging an exception containing a non-picklable
+    value to a handler with enqueue=True
+  * Add support for async callable classes used as sinks
+- from v0.5.1
+  * Modify the way the extra dict is used by LogRecord in order to
+    prevent possible KeyError with standard logging handlers
+  * Add a new default optional argument to logger.catch(), it should
+    be the returned value by the decorated function in case an
+    error occurred
+  * Fix ValueError when using serialize=True in combination with
+    logger.catch() or logger.opt(record=True) due to circular
+    reference of the record dict
+- from v0.5.0
+  * Remove the possibility to modify the severity no of levels
+    once they have been added in order to prevent surprising
+    behavior
+  * Add better support for "structured logging" by automatically
+    adding **kwargs to the extra dict besides using these arguments
+    to format the message. This behavior can be disabled by setting
+    the new .opt(capture=False) parameter
+  * Add a new onerror optional argument to logger.catch(), it should
+    be a function which will be called when an exception occurs in
+    order to customize error handling
+  * Add a new exclude optional argument to logger.catch(), is should
+    be a type of exception to be purposefully ignored and propagated
+    to the caller without being logged
+  * Modify complete() to make it callable from non-asynchronous
+    functions, it can thus be used if enqueue=True to make sure
+    all messages have been processed
+  * Fix possible deadlocks on Linux when multiprocessing.Process()
+    collides with enqueue=True or threading
+  * Fix compression function not executable concurrently due to file
+    renaming (to resolve conflicts) being performed after and not
+    before it
+  * Fix the filter function listing files for retention being too
+    restrictive, it now matches files based on the pattern
+    "basename(.*).ext(.*)"
+  * Fix the impossibility to remove() a handler if an exception is
+    raised while the sink' stop() function is called
+  * Fix file sink left in an unstable state if an exception occurred
+    during retention or compression process
+  * Fix situation where changes made to record["message"] were
+    unexpectedly ignored when opt(colors=True), causing
+    "out-of-date" message to be logged due to implementation details
+  * Fix possible exception if a stream having an isatty() method
+    returning True but not being compatible with colorama is used
+    on Windows
+  * Fix exceptions occurring in coroutine sinks never retrieved and
+    hence causing warnings
+
+-------------------------------------------------------------------
+Thu Jan 21 10:44:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Add runtime requirement for contextvars and the correct BR for
+  Leap
+- Skip failing tests on 32-bit
+
+-------------------------------------------------------------------
+Thu Jan 21 06:00:45 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- BuildRequire python36-aiocontextvars if building under python 3.6
+
+-------------------------------------------------------------------
+Sun Feb 16 09:14:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.1
+  * Deprecate the ansi parameter of .opt() in favor of colors
+    which is a name more appropriate.
+  * Prevent unrelated files and directories to be incorrectly
+    collected thus causing errors during the retention process
+  * Strip color markups contained in record["message"] when
+    logging with .opt(ansi=True) instead of leaving them as is.
+  * Ignore color markups contained in *args and **kwargs when
+    logging with .opt(ansi=True), leave them as is instead of
+    trying to use them to colorize the message which could cause
+    undesirable errors.
+- Update to version 0.4.0
+  * Add support for coroutine functions used as sinks and add the
+    new logger.complete() asynchronous method to await them.
+  * Add a way to filter logs using one level per module in the
+    form of a dict passed to the filter argument.
+  * Add type hints to annotate the public methods using a .pyi
+    stub file.
+  * Add support for copy.deepcopy() of the logger allowing multiple
+    independent loggers with separate set of handlers.
+  * Add the possibility to convert datetime to UTC before
+    formatting (in logs and filenames) by adding "!UTC" at the end
+    of the time format specifier.
+  * Add the level name as the first argument of namedtuple returned
+    by the .level() method.
+  * Remove class objects from the list of supported sinks and
+    restrict usage of **kwargs in .add() to file sink only. User is
+    in charge of instantiating sink and wrapping additional keyword
+    arguments if needed, before passing it to the .add() method.
+  * Rename the logger.configure() keyword argument patch to patcher
+    so it better matches the signature of logger.patch().
+  * Fix AttributeError while using a file sink on some distributions
+    (like Alpine Linux) missing the os.getxattr and os.setxattr
+    functions.
+  * Fix values wrongly displayed for keyword arguments during
+    exception formatting with diagnose=True.
+  * Fix logging messages wrongly chopped off at the end while using
+    standard logging.Handler sinks with .opt(raw=True).
+  * Fix an error using a filter function "by name" while receiving
+    a log with record["name"] equals to None.
+  * Fix incorrect record displayed while handling errors
+    (if catch=True) occurring because of non-picklable objects
+    (if enqueue=True).
+  * Prevent hypothetical ImportError if a Python installation is
+    missing the built-in distutils module.
+  * Raise TypeError instead of ValueError when a logger method is
+    called with argument of invalid type.
+  * Raise ValueError if the built-in format() and filter() functions
+    are respectively used as format and filter arguments of the
+    add() method. This helps the user to understand the problem, as
+    such a mistake can quite easily occur.
+  * Remove inheritance of some record dict attributes to str (for
+    "level", "file", "thread" and "process").
+  * Give a name to the worker thread used when enqueue=True
+
+-------------------------------------------------------------------
+Fri Aug  2 02:37:29 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.3.2

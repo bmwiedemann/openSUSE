@@ -1,0 +1,16 @@
+<package name="t-prot" project="openSUSE:Factory">
+  <title>A Display Filter for RFC822 Messages</title>
+  <description>t-prot detects and, when demanded, hides annoying parts in rfc822
+messages: TOFU (see below), huge quoted blocks, signatures (especially
+when they are too long), excessive punctuation, blocks of empty lines,
+and trailing spaces and tabs. For use inside of MTAs or MDAs, it may
+exit with appropriate libc exit codes, so annoying messages may be
+bounced easily.
+
+TOFU is an abbreviation that mixes German and English words. It expands
+to &quot;text oben, full-quote unten&quot; that means &quot;text above - full quote
+below&quot; and describes the style of many users who let their mailer or
+newsreader quote everything of the previous message and just add some
+text at the top.</description>
+  <devel project="server:mail" package="t-prot"/>
+</package>

@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb69281e9473d0ab7073ace47b94da8a</srcmd5>
+    <version>0.10.5</version>
+    <time>1520778241</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package for version 0.10.5
+- add add-license.patch for license
+</comment>
+    <requestid>584618</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>137ce1b7ca9c0ce0ecae71fc7edde937</srcmd5>
+    <version>0.10.5</version>
+    <time>1543999559</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>654101</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7b59655586551d983a01f826a6bbdf18</srcmd5>
+    <version>0.10.5</version>
+    <time>1559837792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707167</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6cd2811dec0812905293769d79ab0b31</srcmd5>
+    <version>0.10.5</version>
+    <time>1590650247</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809387</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0223e4d0c0796c55389443ddd4f6c6b4</srcmd5>
+    <version>0.10.5+git119</version>
+    <time>1614948490</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>876827</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c54c7fd71a3959c07a50d275d09f7183</srcmd5>
+    <version>0.10.5+git119</version>
+    <time>1677584936</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-python-3.11.patch from upstream PR #65 to fix the build on Python 3.11.
+</comment>
+    <requestid>1068052</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b2df288602afc45c9a6a7cc4a98361a6</srcmd5>
+    <version>0.11.0</version>
+    <time>1678634699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.0:
+ - Add support for \w and \W 
+ - fix utf-8
+ - Fix: Import error sre_parse: sre_parse module was moved in py3.11
+- remove obsolete fix-setup-encoding.patch
+- remove obsolete fix-python-3.11.patch
+</comment>
+    <requestid>1070998</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+diff --git a/src/wl_iwad.cpp b/src/wl_iwad.cpp
+index 94d60b2..8ef4ca0 100644
+--- a/src/wl_iwad.cpp
++++ b/src/wl_iwad.cpp
+@@ -657,8 +657,7 @@ void SelectGame(TArray<FString> &wadfiles, const char* iwad, const char* datawad
+ 	while(split != 0);
+ 
+ #if !defined(__APPLE__) && !defined(_WIN32)
+-	LookForGameData(datawadRes, basefiles, "/usr/share/games/wolf3d");
+-	LookForGameData(datawadRes, basefiles, "/usr/local/share/games/wolf3d");
++	LookForGameData(datawadRes, basefiles, "/usr/share/wolf3d");
+ #endif
+ 
+ 	// Look for a steam install. (Basically from ZDoom)

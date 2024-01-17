@@ -1,0 +1,15 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/bazelbuild/rules_cc</param>
+    <param name="scm">git</param>
+    <param name="filename">bazel-rules-cc</param>
+    <param name="versionformat">%cd</param>
+    <param name="revision">b7fe9697c0c76ab2fd431a891dbb9a6a32ed7c3e</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="buildtime" name="set_version" />
+</services>

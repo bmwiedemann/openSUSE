@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Sat Feb 24 06:06:53 UTC 2018 - coolo@suse.com
+
+- updated to 1.001002
+   see /usr/share/doc/packages/perl-Class-C3-Componentised/Changes
+
+  1.001002 - 2018-02-23
+        - fixed author metadata
+        - added x_static_install and dynamic_config=0 to metadata
+        - added x_authority to metadata
+  
+  1.001_001 - 2018-02-15
+        - list test prerequisites as test prerequisites rather than runtime
+          prerequisites. (RT#100637)
+        - correctly list Test::More 0.96 as a test prerequisite (RT#77611)
+        - stop using Class::C3 in tests.  it is still listed as a prerequisite.
+          because some things expect it to be available once this module is
+          installed.
+        - convert packaging from using Module::Install to plain
+          ExtUtils::MakeMaker, with Distar for releasing.  This fixes issues when
+          the current directory is not in @INC (perl 5.26).  Fixes RT#121696,
+          RT#120826
+        - fixed typo in documentation. (RT#85355)
+        - fixed module abstracts.
+        - increase Class::Inspector prereq to 1.32 to fix ensure_class_found on
+          modules provided by @INC hooks, such as PAR. (RT#42845)
+
+-------------------------------------------------------------------
+Tue Oct  3 08:11:56 UTC 2017 - coolo@suse.com
+
+- patch the Makefile to build with perl 5.26
+
+-------------------------------------------------------------------
+Fri Jan 20 11:42:16 UTC 2012 - coolo@suse.com
+
+- update to 1.001000 
+   - Add Class::C3::Componentised::ApplyHooks features
+
+-------------------------------------------------------------------
+Thu Apr 21 05:26:07 UTC 2011 - coolo@opensuse.org
+
+- updated to 1.0009
+     - Stop importing Carp functions (and thus polluting the inheritor
+       namespaces)
+     - Make sure $_ is properly preserved even if the loaded module
+       is negligent enough to change it (RT#66661)
+     - Added missing copyright statement
+  
+       Fix inject_base regression introduced during optimizations in
+       1.0007
+  
+       Throw a readable exception when load_optional_class is given an
+       invalid class name
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:29 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Dec 10 23:03:54 UTC 2009 - chris@computersalat.de
+
+- update to version 1.0006
+  * Allow derived classes without component_base_class(), given all
+    arguments to load_components are absolute class names (+Classname)
+- cleanup spec
+  * added header
+  * sort tags
+  * fixed deps
+  * moved changelog to .changes
+- added perl-macros
+  * perl_gen_filelist
+
+-------------------------------------------------------------------
+Sun Oct 26 15:07:10 CET 2008 - gerrit.beine@gmx.de
+
+- first release 1.0003

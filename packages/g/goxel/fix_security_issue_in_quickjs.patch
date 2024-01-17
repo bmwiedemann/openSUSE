@@ -1,0 +1,38 @@
+From f3faec9541a4a363c02b882dee014670bb16227d Mon Sep 17 00:00:00 2001
+From: Guillaume Chereau <guillaume@noctua-software.com>
+Date: Wed, 23 Aug 2023 16:02:50 +0800
+Subject: [PATCH] Fix security issue in quickjs-libc.c
+
+See https://github.com/guillaumechereau/goxel/issues/319 for the
+details.  I am not really sure if this is a correct fix though.
+
+Might need to revert if it turns out this is not proper.
+---
+ ext_src/quickjs/quickjs-libc.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/ext_src/quickjs/quickjs-libc.c b/ext_src/quickjs/quickjs-libc.c
+index e180dd0c..659a419e 100644
+--- a/ext_src/quickjs/quickjs-libc.c
++++ b/ext_src/quickjs/quickjs-libc.c
+@@ -22,6 +22,7 @@
+  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  * THE SOFTWARE.
+  */
++#include <grp.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <stdarg.h>
+@@ -2975,6 +2976,12 @@ static JSValue js_os_exec(JSContext *ctx, JSValueConst this_val,
+                 _exit(127);
+         }
+         if (uid != -1) {
++            /*
++             * Added by Guillaume
++             * See: https://github.com/guillaumechereau/goxel/issues/319
++             */
++            setgroups(0, NULL);
++
+             if (setuid(uid) < 0)
+                 _exit(127);
+         }

@@ -1,0 +1,15 @@
+---
+ tlpkg/tlpostcode/xetex.pl |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- tlpkg/tlpostcode/xetex.pl
++++ tlpkg/tlpostcode/xetex.pl	2020-03-30 07:29:08.995431714 +0000
+@@ -98,7 +98,7 @@ sub do_install {
+ <fontconfig>
+ ';
+       for my $t (qw/opentype truetype type1/) {
+-        print FONTSCONF "  <dir>$texdir/texmf-dist/fonts/$t</dir>\n";
++        print FONTSCONF "  <dir>$texdir/fonts/$t</dir>\n";
+       }
+       print FONTSCONF "</fontconfig>\n";
+       close(FONTSCONF)

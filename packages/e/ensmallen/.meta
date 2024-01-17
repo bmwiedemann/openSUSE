@@ -1,0 +1,10 @@
+<package name="ensmallen" project="openSUSE:Factory">
+  <title>Efficient math optimization C++ library</title>
+  <description>ensmallen provides a simple set of abstractions for writing an objective 
+function to optimize. It also provides a large set of standard and 
+cutting-edge optimizers that can be used for virtually any mathematical 
+optimization task. These include full-batch gradient descent techniques, 
+small-batch techniques, gradient-free optimizers, 
+and constrained optimization.</description>
+  <devel project="devel:libraries:c_c++" package="ensmallen"/>
+</package>

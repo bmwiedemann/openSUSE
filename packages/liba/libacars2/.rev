@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5fe1f817ba1ca535a216bc5d2be17631</srcmd5>
+    <version>2.0.0</version>
+    <time>1585343003</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain libacars2 in Factory</comment>
+    <requestid>789139</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>90d00a162be5913b38f39ec68f56927c</srcmd5>
+    <version>2.0.0</version>
+    <time>1586368553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791984</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65dac47f6936cb6b71ff4ebe0bfe8d79</srcmd5>
+    <version>2.0.1</version>
+    <time>1598726626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830331</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2aa43b2c580e032f8acc9869e1ea94a3</srcmd5>
+    <version>2.1.0</version>
+    <time>1604779373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846834</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4cb7e3700669363ebff7d885df470b3f</srcmd5>
+    <version>2.1.1</version>
+    <time>1606252220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>850237</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dda6651dbe823a4efee358fec02807df</srcmd5>
+    <version>2.1.2</version>
+    <time>1607349651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853506</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>82c933be7a1363df150aa1558b3624f4</srcmd5>
+    <version>2.1.3</version>
+    <time>1615126784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>877440</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>007ad6174eb936bcad6b2426aa132f17</srcmd5>
+    <version>2.1.4</version>
+    <time>1685562893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089974</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4df1d8d5928f16875e3aa7f63d9ed6d5</srcmd5>
+    <version>2.2.0</version>
+    <time>1693235793</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106256</requestid>
+  </revision>
+</revisionlist>

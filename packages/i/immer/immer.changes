@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Oct 10 10:08:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8.1
+  * flex_vector is now nothrow move constructible and assignable
+  * gdb pretty printing functionality provided in extra
+  * Fixed wrong argument order in some overloads of operator< for box<T>
+  * Interoparibility with C++20 ranges improved
+  * Some CMake and dependencies improvements
+
+-------------------------------------------------------------------
+Fri Jul 28 08:16:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Init immer, a new build dependency for krita.

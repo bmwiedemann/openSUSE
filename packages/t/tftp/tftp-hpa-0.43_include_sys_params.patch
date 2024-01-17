@@ -1,0 +1,16 @@
+---
+ tftp/main.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: tftp-hpa-5.2/tftp/main.c
+===================================================================
+--- tftp-hpa-5.2.orig/tftp/main.c
++++ tftp-hpa-5.2/tftp/main.c
+@@ -39,6 +39,7 @@
+  * TFTP User Program -- Command Interface.
+  */
+ #include <sys/file.h>
++#include <sys/param.h>
+ #include <ctype.h>
+ #ifdef WITH_READLINE
+ #include <readline/readline.h>

@@ -1,0 +1,17 @@
+diff -urEbwB jEdit/build.xml jEdit.new/build.xml
+--- jEdit/build.xml	2018-04-09 01:59:23.000000000 +0200
++++ jEdit.new/build.xml	2019-11-10 12:38:31.319052737 +0100
+@@ -75,13 +75,6 @@
+ 				</not>
+ 			</condition>
+ 		</fail>
+-		<fail message="Java 1.8 is needed for jEdit to build, please install it and rerun (found Java version: '${ant.java.version}')">
+-			<condition>
+-				<not>
+-					<equals arg1="1.8" arg2="${ant.java.version}"/>
+-				</not>
+-			</condition>
+-		</fail>
+ 		<fail message="The ant-optional package is needed for jEdit to build, please install it and rerun">
+ 			<condition>
+ 				<not>

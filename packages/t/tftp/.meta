@@ -1,0 +1,7 @@
+<package name="tftp" project="openSUSE:Factory">
+  <title>Trivial File Transfer Protocol (TFTP)</title>
+  <description>The Trivial File Transfer Protocol (TFTP) is normally used only for
+booting diskless workstations and for getting or saving network
+component configuration files.</description>
+  <devel project="network" package="tftp"/>
+</package>

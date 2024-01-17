@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d3209c48d460046182deeb66fadcf88</srcmd5>
+    <version>2.2.6100</version>
+    <time>1512547113</time>
+    <user>dimstar_suse</user>
+    <comment>- Added libvlc5 as runtime requirement
+- Update to version 2.2.6100:
+  * Python bindings: fix regexp to handle deprecated APIs
+  * Rename gtkvlc.py to gtk2vlc.py (using old pygtk2 version)
+  * Gtk3 example
+  * python bindings generator: handle bitshifted chars in enums
+  * python-vlc: allow to specify lib and plugin path
+  * python bindings: update generator version number
+  * Python bindings: update generated bindings for 2.2 and dev. versions
+  * python bindings: configure logging module when running standalone
+  * python bindings: refactor, move template files to their own directory
+  * Generate an appropriate PyPI installer package for the generated module
+- Initial release of python-python-vlc 1.1.2 
+</comment>
+    <requestid>547920</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3a9bc7d92b5ea6ed1f45f835d001b6b6</srcmd5>
+    <version>3.0.101</version>
+    <time>1518697531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575850</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>96f215abaad36761dbfbfe9cb15676b9</srcmd5>
+    <version>3.0.102</version>
+    <time>1526022857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605459</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea72576036773de74f3d161dfd295cdb</srcmd5>
+    <version>3.0.4106</version>
+    <time>1545648401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660106</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>276e4c6a1a033572f26c344283d4a0dc</srcmd5>
+    <version>3.0.6109</version>
+    <time>1555691982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695921</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a13d9e918d2415a3d3c7a19781d13f66</srcmd5>
+    <version>3.0.7110</version>
+    <time>1564994517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720822</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0d73ed4d59ecf79e96f17d239574b0c6</srcmd5>
+    <version>3.0.9113</version>
+    <time>1588186425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798932</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6dfb424a39761497602965229909b1b6</srcmd5>
+    <version>3.0.11115</version>
+    <time>1595864405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822767</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d031a9a92a06c0dcce596f21a3dc93e</srcmd5>
+    <version>3.0.12117</version>
+    <time>1617910365</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883867</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>94d20076926b49bb61df3bc8df52155f</srcmd5>
+    <version>3.0.12118</version>
+    <time>1619031619</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.0.12118 (forwarded request 887212 from alois)</comment>
+    <requestid>887213</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0ac30447209113cd2098b0db4f9f209f</srcmd5>
+    <version>3.0.16120</version>
+    <time>1646150623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>958230</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>97fa9e712a087453912eaa133ba4f805</srcmd5>
+    <version>3.0.18121</version>
+    <time>1670162326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039902</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dede98eb0ba52e3bb914940641d129eb</srcmd5>
+    <version>3.0.18122</version>
+    <time>1681996471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1080401</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>99b36d27ff6c415a463f4bbe8bbf8616</srcmd5>
+    <version>3.0.20123</version>
+    <time>1699183161</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1123348</requestid>
+  </revision>
+</revisionlist>

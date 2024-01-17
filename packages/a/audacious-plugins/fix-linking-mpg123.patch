@@ -1,0 +1,20 @@
+diff -Nur audacious-plugins-4.1/src/mpg123/Makefile new/src/mpg123/Makefile
+--- audacious-plugins-4.1/src/mpg123/Makefile	2021-02-02 00:30:38.000000000 +0100
++++ new/src/mpg123/Makefile	2021-06-24 10:55:52.219980740 +0200
+@@ -10,5 +10,5 @@
+ LD = ${CXX}
+ 
+ CFLAGS += ${PLUGIN_CFLAGS}
+-CPPFLAGS += ${PLUGIN_CPPFLAGS} ${MPG123_CFLAGS} -I../..
++CPPFLAGS += ${PLUGIN_CPPFLAGS} ${MPG123_CFLAGS} -DMPG123_ENUM_API -I../..
+ LIBS += ${MPG123_LIBS} -laudtag -lm
+diff -Nur audacious-plugins-4.1/src/mpg123/meson.build new/src/mpg123/meson.build
+--- audacious-plugins-4.1/src/mpg123/meson.build	2021-02-02 00:30:38.000000000 +0100
++++ new/src/mpg123/meson.build	2021-06-24 10:55:27.491807545 +0200
+@@ -10,5 +10,6 @@
+     include_directories: [src_inc],
+     install: true,
+     install_dir: input_plugin_dir,
++    cpp_args: '-DMPG123_ENUM_API',
+   )
+ endif

@@ -1,0 +1,5 @@
+<package name="jlex" project="openSUSE:Factory">
+  <title>A Lexical Analyzer Generator for Java</title>
+  <description>JLex is a lexical analyzer generator for Java.</description>
+  <devel project="Java:packages" package="jlex"/>
+</package>

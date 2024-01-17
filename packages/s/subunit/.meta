@@ -1,0 +1,5 @@
+<package name="subunit" project="openSUSE:Factory">
+  <title>Subunit C bindings. See the python-subunit package for test processing functionality.</title>
+  <description>Subunit C bindings.  See the python-subunit package for test processing functionality.</description>
+  <devel project="devel:tools" package="subunit"/>
+</package>

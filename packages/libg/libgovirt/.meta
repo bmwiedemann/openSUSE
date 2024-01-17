@@ -1,0 +1,5 @@
+<package name="libgovirt" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="libgovirt"/>
+</package>

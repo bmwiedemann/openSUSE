@@ -1,0 +1,6 @@
+<package name="python-pyalsaaudio" project="openSUSE:Factory">
+  <title></title>
+  <description>This package contains wrappers for accessing the ALSA API from Python.
+It is fairly complete for PCM devices and Mixer access.</description>
+  <devel project="devel:languages:python" package="python-pyalsaaudio"/>
+</package>

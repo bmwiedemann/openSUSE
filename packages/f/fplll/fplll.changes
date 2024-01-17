@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Wed Oct 18 00:26:49 UTC 2023 - Ich <jengelh@inai.de>
+
+- Update to release 5.4.5
+  * Replace deprecated std::result_of by std::invoke_result
+
+-------------------------------------------------------------------
+Thu Jan  5 17:40:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.4
+  * Make Babai test more robust for PPC
+
+-------------------------------------------------------------------
+Tue Dec 20 21:30:52 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.3
+  * Add FP_NR::ceil function
+
+-------------------------------------------------------------------
+Fri Dec  9 18:42:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Limit build parallelism with limit_build macro to avoid
+  occasional build failure due to OOM.
+
+-------------------------------------------------------------------
+Wed May 25 10:45:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.2
+  * Exacteval fix
+  * Document the role of the `u` parameter in LLL_reduction
+
+-------------------------------------------------------------------
+Fri May 14 18:58:08 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.1
+  * Add -I flags to pkgconfig file
+  * GCC11 support
+
+-------------------------------------------------------------------
+Fri Dec  4 16:11:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.0
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Mon Jun 29 15:44:22 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.3
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Thu Jan  9 14:56:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.2
+  * Nobody has any intention of providing a changelog.
+
+-------------------------------------------------------------------
+Sat Dec 14 19:28:04 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.1
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Sun Nov 24 12:50:31 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.0
+  * No changelog was provided
+
+-------------------------------------------------------------------
+Sat Oct 20 11:46:28 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 5.2.1
+  * Unify randomness on 32-bit and 64-bit systems
+
+-------------------------------------------------------------------
+Mon Dec 25 19:08:54 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 5.2.0
+  * Bkz dump_gso in json
+  * Improve pruner
+  * BKZ with Z_NR<long>
+  * Z_NR<long> support
+  * Allow BOUNDED_LLL in Slide reduction and remove LLL from
+    postprocessing by Michael Walter
+  * Add Gram-matrix object
+
+-------------------------------------------------------------------
+Sat Sep  9 21:12:23 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 5.1.0
+  * CVP is not experimental any longer by implementing the
+    resetting feature.
+  * Pruner rewrite providing faster pruning, a new greedy pruning
+    strategy, support for multiple solutions and a simpler API.
+  * Support for external enumeration libraries paving the way for
+     multithreaded/MPI/GPU enumeration libraries.
+  * Gaussian Heuristic improved and renamed to
+    `adjust_radius_to_gh_bound`.
+  * Reduced calls to LLL during BKZ.
+  * Evaluator rewrite/refactoring now supporting different
+    evaluation strategies.
+- Rename SRPM from libfplll to fplll.
+  No binary packages are affected.
+
+-------------------------------------------------------------------
+Thu Oct 20 19:47:51 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 5.0.3
+* No changelog was provided
+
+-------------------------------------------------------------------
+Mon Feb  2 22:54:51 UTC 2015 - jengelh@inai.de
+
+- Add git repository metadata
+
+-------------------------------------------------------------------
+Tue Feb  4 18:33:02 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 4.0.4
+* compatibility for packages that still expect to build against
+  libfplll version 3.
+* Compilation fixes: updates of config.sub and config.guess, and
+  a better check that MPFR and GMP are installed.
+
+-------------------------------------------------------------------
+Fri May 17 23:04:55 UTC 2013 - jengelh@inai.de
+
+- Update to new upstream release 4.0.3
+* Fixed compiler issues for Cygwin and warnings 
+
+-------------------------------------------------------------------
+Thu Nov 29 18:34:31 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 4.0.1
+* Resolved compiler warnings about unused parameters
+
+-------------------------------------------------------------------
+Sat Aug 25 09:43:51 UTC 2012 - dmitry@roshchin.org
+
+- Update to version 4.0.0
+* BKZ reduction, available with `fplll -a bkz -b blocksize`
+
+-------------------------------------------------------------------
+Sun Feb 26 13:58:14 UTC 2012 - scorot@free.fr
+
+- fix build for SLE-11
+- add missing %post and %postun scriplets
+
+-------------------------------------------------------------------
+Sun Nov 20 07:51:46 UTC 2011 - werner.ho@gmx.de
+
+- new version 3.1.3
+
+-------------------------------------------------------------------
+Tue Sep 27 22:54:00 UTC 2011 - jengelh@medozas.de
+
+- Initial package (version 3.1.2) for build.opensuse.org

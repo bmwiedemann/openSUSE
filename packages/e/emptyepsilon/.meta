@@ -1,0 +1,5 @@
+<package name="emptyepsilon" project="openSUSE:Factory">
+  <title>emptyepsilon</title>
+  <description>Open source spaceship bridge simulator</description>
+  <devel project="games" package="emptyepsilon"/>
+</package>

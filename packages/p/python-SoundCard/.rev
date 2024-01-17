@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>552cc5bf55ddd51ed41b347b39def268</srcmd5>
+    <version>0.2.0</version>
+    <time>1541152418</time>
+    <user>dimstar_suse</user>
+    <comment>high-level cross-platform audio toolkit for Python</comment>
+    <requestid>645964</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>54ff6fb0ff3f9e569f356ba7f565db9d</srcmd5>
+    <version>0.2.0</version>
+    <time>1542281956</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647236</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8396ac60e08336afed3c5a46151d3342</srcmd5>
+    <version>0.2.2</version>
+    <time>1546946866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662730</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f85a1238e79584e5e26e7016fe91688f</srcmd5>
+    <version>0.3.0</version>
+    <time>1554189683</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to source release
+- Update to 0.3.0:
+  * Various docu updates
+  * Support python 3.5</comment>
+    <requestid>689375</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e2b5191eadba756a7dbd24c555a9721</srcmd5>
+    <version>0.3.3</version>
+    <time>1575382903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752995</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fddb76b67461a5fb6d70007d133c9641</srcmd5>
+    <version>0.4.0</version>
+    <time>1595339322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * fixes silent recordings on Windows
+  * get and set the pulseaudio program name on Linux
+  * fixes error with unicode soundcard names on Windows
+  * adds support for pyinstaller (v4)
+  * adds compatibility with Windows 7</comment>
+    <requestid>821996</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b39dc0fd9f72fb80521883d6a49669e0</srcmd5>
+    <version>0.4.0</version>
+    <time>1614948333</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>875346</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4809713647dbe1a2cc95d4af27dc4683</srcmd5>
+    <version>0.4.1</version>
+    <time>1630265639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914854</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aa3ea0b79b4a4efdcf326749ef8d4ec4</srcmd5>
+    <version>0.4.2</version>
+    <time>1661863743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999912</requestid>
+  </revision>
+</revisionlist>

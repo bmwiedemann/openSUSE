@@ -1,0 +1,12 @@
+Index: tasklib-2.4.3/tasklib/tests.py
+===================================================================
+--- tasklib-2.4.3.orig/tasklib/tests.py
++++ tasklib-2.4.3/tasklib/tests.py
+@@ -66,6 +66,7 @@ class TasklibTest(unittest.TestCase):
+ 
+ class TaskWarriorTest(TasklibTest):
+ 
++    @unittest.skipUnless(sys.platform.startswith("win"), "requires Windows")
+     def test_custom_command(self):
+         # ensure that a custom command which contains multiple parts
+         # is properly split up

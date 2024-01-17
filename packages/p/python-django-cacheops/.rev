@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22c86b70f867610a3e7d663d842639bc</srcmd5>
+    <version>5.0.1</version>
+    <time>1599598209</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>832908</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c79250ce9a7626cbc226fa12372119ae</srcmd5>
+    <version>5.1</version>
+    <time>1603979571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844841</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>524466d5d8936ff446cc398031f03410</srcmd5>
+    <version>6.0</version>
+    <time>1620767058</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v6.0
+  * support and test against Python 3.9 and Django 3.1/3.2
+  * added custom serializers support (thx to Arcady Usov)
+  * support callable extra in @cached_as() and friends
+  * made simple cache obey prefix
+  * skip JSONFields for purposes of invalidation
+  * configure skipped fields by internal types, classes still supported
+  * handle `DatabaseError` on transaction cleanup (Roman Gorbil)
+  * do not query old object if cacheops is disabled
+  * do not fetch deferred fields during invalidation, fixes #387
+  Backwards incompatible changes:
+  * callable `extra` param, including type, now behaves differently
+  * simple cache now uses prefix</comment>
+    <requestid>892240</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ccf85973684f83caedaf7a5a28184520</srcmd5>
+    <version>6.0</version>
+    <time>1641555981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944584</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ec9d2bb189a5ace3cd8dfd3e689cec11</srcmd5>
+    <version>6.0</version>
+    <time>1650467036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971133</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5811077fad23e03df280b8888056fe65</srcmd5>
+    <version>6.1</version>
+    <time>1661432942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999139</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c71d76db35cb0737adc14bbe1b1518f4</srcmd5>
+    <version>6.1</version>
+    <time>1669129863</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six dependency 
+- Remove python_module macro definition
+- More specific python_sitelib in %files</comment>
+    <requestid>1037287</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>644ac40e1dbc3074875204e3c59a16bf</srcmd5>
+    <version>7.0</version>
+    <time>1683559456</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0:
+  * support Django 4.2b and 5.0a
+  * added a new insideout mode made join invalidation more granular
+  * dropped Python 3.5, 3.6 and Django 2.1, 2.2, 3.0 and 3.1
+    support
+  * removed CACHEOPS_LRU
+  * support Python 3.11 and Django 4.1
+  * added command to clear stale cacheops keys (Bruno Alla)
+  * fixed `invalidate_m2o` for polymorphic models
+  * updated README: TOC, link to the post, some explanations</comment>
+    <requestid>1085346</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6d81b3d998d3b0d3e7eec074b49d4ea2</srcmd5>
+    <version>7.0.1</version>
+    <time>1683728290</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.1:
+  * made it work with Redis 6.x and older again
+  * handle abstract models better
+  * some docs improvements</comment>
+    <requestid>1085792</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>02218ee31d9a5661db9551506b3b226e</srcmd5>
+    <version>7.0.2</version>
+    <time>1699910280</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.2:
+  * fixed .aggregate()
+  * fixed big memory usage during migrations
+  * fixed INSIDEOUT in older redises
+  * better handle model families with abstracts in them
+  * allow funcy 2.0+</comment>
+    <requestid>1124878</requestid>
+  </revision>
+</revisionlist>

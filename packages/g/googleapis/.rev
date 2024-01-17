@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b855ea15e2349f33a8231b9d3f7b0852</srcmd5>
+    <version>20190109</version>
+    <time>1550048377</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial version 20190109
+</comment>
+    <requestid>666432</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ec2ca5e62e04765390f1cca2b702e867</srcmd5>
+    <version>20180523</version>
+    <time>1551025094</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677945</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>421cc26db6c430ff56df12639171fdb7</srcmd5>
+    <version>20180523</version>
+    <time>1571653724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741164</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c47084f3c745f314be88dd8364455abf</srcmd5>
+    <version>20190724</version>
+    <time>1573223290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746525</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,85 @@
+From e5f2d4a0133d598bc12b9d76292f6cf0c62448bf Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Mon, 12 Oct 2015 13:28:56 +0200
+Subject: [PATCH] Compatibility with Maven 3.0.3 and later
+
+---
+ .../Maven31ArtifactRepositoryAdapter.java     | 20 +++++++++++++++++++
+ .../Maven31ArtifactRepositoryAdapter.java     | 20 +++++++++++++++++++
+ 2 files changed, 40 insertions(+)
+
+diff --git a/src/main/java/org/apache/maven/shared/transfer/collection/internal/Maven31ArtifactRepositoryAdapter.java b/src/main/java/org/apache/maven/shared/transfer/collection/internal/Maven31ArtifactRepositoryAdapter.java
+index d53a452..9d93f31 100644
+--- a/src/main/java/org/apache/maven/shared/transfer/collection/internal/Maven31ArtifactRepositoryAdapter.java
++++ b/src/main/java/org/apache/maven/shared/transfer/collection/internal/Maven31ArtifactRepositoryAdapter.java
+@@ -19,6 +19,7 @@ package org.apache.maven.shared.transfer.collection.internal;
+  * under the License.
+  */
+ 
++import java.util.Collections;
+ import java.util.List;
+ 
+ import org.apache.maven.artifact.Artifact;
+@@ -262,4 +263,23 @@ class Maven31ArtifactRepositoryAdapter implements ArtifactRepository
+         }
+         return true;
+     }
++
++    private List<ArtifactRepository> mirroredRepositories = Collections.emptyList();
++
++    public List<ArtifactRepository> getMirroredRepositories()
++    {
++        return mirroredRepositories;
++    }
++
++    public void setMirroredRepositories( List<ArtifactRepository> mirroredRepositories )
++    {
++        if ( mirroredRepositories != null )
++        {
++            this.mirroredRepositories = mirroredRepositories;
++        }
++        else
++        {
++            this.mirroredRepositories = Collections.emptyList();
++        }
++    }
+ }
+diff --git a/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java b/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java
+index f450dfd..d5716bb 100644
+--- a/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java
++++ b/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java
+@@ -19,6 +19,7 @@ package org.apache.maven.shared.transfer.dependencies.collect.internal;
+  * under the License.
+  */
+ 
++import java.util.Collections;
+ import java.util.List;
+ 
+ import org.apache.maven.artifact.Artifact;
+@@ -263,4 +264,23 @@ class Maven31ArtifactRepositoryAdapter implements ArtifactRepository
+         }
+         return true;
+     }
++
++    private List<ArtifactRepository> mirroredRepositories = Collections.emptyList();
++
++    public List<ArtifactRepository> getMirroredRepositories()
++    {
++        return mirroredRepositories;
++    }
++
++    public void setMirroredRepositories( List<ArtifactRepository> mirroredRepositories )
++    {
++        if ( mirroredRepositories != null )
++        {
++            this.mirroredRepositories = mirroredRepositories;
++        }
++        else
++        {
++            this.mirroredRepositories = Collections.emptyList();
++        }
++    }
+ }
+-- 
+2.29.2
+

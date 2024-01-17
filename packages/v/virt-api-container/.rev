@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac49880a33aa2f8cc5d7fde838a3f580</srcmd5>
+    <version>unknown</version>
+    <time>1618387831</time>
+    <user>dimstar_suse</user>
+    <comment>Kubevirt virt-api container</comment>
+    <requestid>883557</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>55ae716ac8eafa594349350a72506fe0</srcmd5>
+    <version>unknown</version>
+    <time>1618610530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885991</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3af425d0d9ef63c45dd083f56e2e464d</srcmd5>
+    <version>unknown</version>
+    <time>1620239990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890452</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>479228d0daa51a43f3a9f3834b4b1f4b</srcmd5>
+    <version>unknown</version>
+    <time>1623705052</time>
+    <user>dimstar_suse</user>
+    <comment>- Include the registry in org.opensuse.reference</comment>
+    <requestid>898421</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>990883bfd270bffb67bc54a5ac819785</srcmd5>
+    <version>unknown</version>
+    <time>1642198414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>946479</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>631eaa0a99806f823fbd0a1066a773bb</srcmd5>
+    <version>unknown</version>
+    <time>1659721880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993192</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>63af1ab9b3f89d296e807902e3bbe22b</srcmd5>
+    <version>unknown</version>
+    <time>1698170908</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1119851</requestid>
+  </revision>
+</revisionlist>

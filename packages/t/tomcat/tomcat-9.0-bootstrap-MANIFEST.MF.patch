@@ -1,0 +1,11 @@
+Index: apache-tomcat-9.0.82-src/res/META-INF/bootstrap.jar.manifest
+===================================================================
+--- apache-tomcat-9.0.82-src.orig/res/META-INF/bootstrap.jar.manifest
++++ apache-tomcat-9.0.82-src/res/META-INF/bootstrap.jar.manifest
+@@ -1,6 +1,5 @@
+ Manifest-Version: 1.0
+ Main-Class: org.apache.catalina.startup.Bootstrap
+-Class-Path: commons-daemon.jar
+ Specification-Title: Apache Tomcat Bootstrap
+ Specification-Version: @VERSION_MAJOR_MINOR@
+ Specification-Vendor: Apache Software Foundation

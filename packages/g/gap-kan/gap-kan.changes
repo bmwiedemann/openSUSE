@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Sat Nov 19 21:48:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.34
+  * Fixed a problem in manual(2.2.1)
+
+-------------------------------------------------------------------
+Wed Nov 14 23:31:16 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.28
+  * (Partial)DoubleCosetRewritingSystem now takes two subgroups as
+    parameters 2,3, rather than their generating sets.
+  * NextWord now has max_number_of_attempts as third parameter and
+    now works for any rws; added operation NextWords
+  * Added attribute OrderedAlphabet for a rewriting system
+  * Added ReducedForm method for an fp-group and an element
+    added use of ReducedForm to the examples in the manual.
+
+-------------------------------------------------------------------
+Mon Nov 21 15:19:21 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.27
+  * Internal metadata update only
+
+-------------------------------------------------------------------
+Fri Mar 11 23:11:55 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 1.25
+* Changed output of WordAcceptorOfReducedRws from nfa to mfa
+  fixing problem with the language langT given on p.5 of the
+  manual which has been outstanding for many years; adjusted
+  test/example files and added to page 8 of the manual.
+* Attempted to correct new output error when printing accT.
+
+-------------------------------------------------------------------
+Sun Feb 22 10:50:48 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 1.11
+* Metadata update only (homepage URL)
+
+-------------------------------------------------------------------
+Thu Feb  6 22:16:04 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.07
+* fix test files to reflect new printing of monoids
+* rewrite of testall.g following Alex K's wedderga example 
+
+-------------------------------------------------------------------
+Fri May 10 13:47:02 UTC 2013 - jengelh@inai.de
+
+- Split kan (version 1.06) off the gap RPM package

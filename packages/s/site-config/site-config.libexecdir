@@ -1,0 +1,7 @@
+# If user did not specify libexecdir, set the correct target:
+# Nor FHS nor openSUSE allow prefix/libexec. Let's default to prefix/lib.
+
+if test "$libexecdir" = '${exec_prefix}/libexec' ; then
+	libexecdir='${exec_prefix}/lib'
+fi
+

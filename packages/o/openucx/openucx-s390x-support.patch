@@ -1,0 +1,435 @@
+commit 328a69d07b618e0aa83fe2351e8d7ca4fc1b2f00
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Mon Feb 13 17:04:14 2023 +0100
+
+    openucx s390x support
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git config/m4/ucm.m4 config/m4/ucm.m4
+index e5e66266d695..ef7e4ede93ce 100644
+--- config/m4/ucm.m4
++++ config/m4/ucm.m4
+@@ -80,9 +80,20 @@ AC_CHECK_DECLS([SYS_ipc],
+                [ipc_hooks_happy=no],
+                [#include <sys/syscall.h>])
+ 
++
++SAVE_CFLAGS=$CFLAGS
++CFLAGS="$CLAGS -Isrc/"
++bistro_arch_happy=yes
++AC_CHECK_DECLS([ucm_bistro_patch],
++               [],
++               [bistro_arch_happy=no],
++               [#include <ucm/bistro/bistro.h>])
++CFLAGS=$SAVE_CFLAGS
++
+ AS_IF([test "x$mmap_hooks_happy" = "xyes"],
+       AS_IF([test "x$ipc_hooks_happy" = "xyes" -o "x$shm_hooks_happy" = "xyes"],
+-            [bistro_hooks_happy=yes]))
++	       AS_IF([test "x$bistro_arch_happy" == "xyes"],
++                [bistro_hooks_happy=yes])))
+ 
+ AS_IF([test "x$bistro_hooks_happy" = "xyes"],
+       [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
+diff --git src/tools/info/sys_info.c src/tools/info/sys_info.c
+index e5aff871d491..2b7c54319f53 100644
+--- src/tools/info/sys_info.c
++++ src/tools/info/sys_info.c
+@@ -47,7 +47,8 @@ static const char* cpu_vendor_names[] = {
+     [UCS_CPU_VENDOR_GENERIC_ARM]      = "Generic ARM",
+     [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC",
+     [UCS_CPU_VENDOR_FUJITSU_ARM]      = "Fujitsu ARM",
+-    [UCS_CPU_VENDOR_ZHAOXIN]          = "Zhaoxin"
++    [UCS_CPU_VENDOR_ZHAOXIN]          = "Zhaoxin",
++    [UCS_CPU_VENDOR_GENERIC_IBM]      = "Generic IBM"
+ };
+ 
+ static double measure_memcpy_bandwidth(size_t size)
+diff --git src/ucm/Makefile.am src/ucm/Makefile.am
+index 48b82bf89cbe..582f83d1ea82 100644
+--- src/ucm/Makefile.am
++++ src/ucm/Makefile.am
+@@ -31,7 +31,8 @@ noinst_HEADERS = \
+ 	bistro/bistro.h \
+ 	bistro/bistro_x86_64.h \
+ 	bistro/bistro_aarch64.h \
+-	bistro/bistro_ppc64.h
++	bistro/bistro_ppc64.h \
++	bistro/bistro_s390x.h
+ 
+ libucm_la_SOURCES = \
+ 	event/event.c \
+diff --git src/ucm/bistro/bistro.h src/ucm/bistro/bistro.h
+index b622e3c14fbb..4acd9e9cdb83 100644
+--- src/ucm/bistro/bistro.h
++++ src/ucm/bistro/bistro.h
+@@ -20,6 +20,8 @@ typedef struct ucm_bistro_restore_point ucm_bistro_restore_point_t;
+ #  include "bistro_aarch64.h"
+ #elif defined(__x86_64__)
+ #  include "bistro_x86_64.h"
++#elif defined(__s390x__)
++#  include "bistro_s390x.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucm/bistro/bistro_s390x.h src/ucm/bistro/bistro_s390x.h
+new file mode 100644
+index 000000000000..c0f427f4984a
+--- /dev/null
++++ src/ucm/bistro/bistro_s390x.h
+@@ -0,0 +1,18 @@
++#ifndef UCM_BISTRO_BISTRO_S390X_H_
++#define UCM_BISTRO_BISTRO_S390X_H_
++
++#include <stdint.h>
++
++#include <ucs/type/status.h>
++#include <ucs/sys/compiler_def.h>
++
++#define UCM_BISTRO_PROLOGUE
++#define UCM_BISTRO_EPILOGUE
++
++static inline ucs_status_t ucm_bistro_patch(void *func_ptr, void *hook, const char *symbol,
++											void **orig_func_p,
++											ucm_bistro_restore_point_t **rp){
++	return UCS_ERR_UNSUPPORTED;
++}
++
++#endif
+diff --git src/ucs/Makefile.am src/ucs/Makefile.am
+index c7696d56f25d..c63b32bad844 100644
+--- src/ucs/Makefile.am
++++ src/ucs/Makefile.am
+@@ -22,6 +22,7 @@ libucs_la_LIBADD   = $(LIBM) $(top_builddir)/src/ucm/libucm.la $(BFD_LIBS)
+ nobase_dist_libucs_la_HEADERS = \
+ 	arch/aarch64/bitops.h \
+ 	arch/ppc64/bitops.h \
++	arch/s390x/bitops.h \
+ 	arch/x86_64/bitops.h \
+ 	arch/bitops.h \
+ 	algorithm/crc.h \
+@@ -82,12 +83,14 @@ nobase_dist_libucs_la_HEADERS = \
+ 	arch/aarch64/global_opts.h \
+ 	arch/generic/atomic.h \
+ 	arch/ppc64/global_opts.h \
++	arch/s390x/global_opts.h \
+ 	arch/global_opts.h
+ 
+ noinst_HEADERS = \
+ 	arch/aarch64/cpu.h \
+ 	arch/generic/cpu.h \
+ 	arch/ppc64/cpu.h \
++	arch/s390x/cpu.h \
+ 	arch/x86_64/cpu.h \
+ 	arch/cpu.h \
+ 	config/ucm_opts.h \
+@@ -138,6 +141,7 @@ libucs_la_SOURCES = \
+ 	algorithm/string_distance.c \
+ 	arch/aarch64/cpu.c \
+ 	arch/aarch64/global_opts.c \
++	arch/s390x/global_opts.c \
+ 	arch/ppc64/timebase.c \
+ 	arch/ppc64/global_opts.c \
+ 	arch/x86_64/cpu.c \
+diff --git src/ucs/arch/atomic.h src/ucs/arch/atomic.h
+index 52be711c1d0a..8f1d62a28dc9 100644
+--- src/ucs/arch/atomic.h
++++ src/ucs/arch/atomic.h
+@@ -15,6 +15,8 @@
+ #  include "generic/atomic.h"
+ #elif defined(__aarch64__)
+ #  include "generic/atomic.h"
++#elif defined(__s390x__)
++#  include "generic/atomic.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
+index e89a37d0b673..dd2b9d5b6bcb 100644
+--- src/ucs/arch/bitops.h
++++ src/ucs/arch/bitops.h
+@@ -20,6 +20,8 @@ BEGIN_C_DECLS
+ #  include "ppc64/bitops.h"
+ #elif defined(__aarch64__)
+ #  include "aarch64/bitops.h"
++#elif defined(__s390x__)
++#  include "s390x/bitops.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucs/arch/cpu.c src/ucs/arch/cpu.c
+index ece8f7fb82dd..b35b10ad090a 100644
+--- src/ucs/arch/cpu.c
++++ src/ucs/arch/cpu.c
+@@ -63,6 +63,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
+         .min = UCS_MEMUNITS_INF,
+         .max = UCS_MEMUNITS_INF
+     },
++    [UCS_CPU_VENDOR_GENERIC_IBM] = {
++        .min = UCS_MEMUNITS_INF,
++        .max = UCS_MEMUNITS_INF
++    },
+     [UCS_CPU_VENDOR_FUJITSU_ARM] = {
+         .min = UCS_MEMUNITS_INF,
+         .max = UCS_MEMUNITS_INF
+@@ -78,6 +82,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
+     [UCS_CPU_VENDOR_INTEL]       = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_AMD]         = UCS_CPU_EST_BCOPY_BW_AMD,
+     [UCS_CPU_VENDOR_GENERIC_ARM] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
++    [UCS_CPU_VENDOR_GENERIC_IBM] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_GENERIC_PPC] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_FUJITSU_ARM] = UCS_CPU_EST_BCOPY_BW_FUJITSU_ARM,
+     [UCS_CPU_VENDOR_ZHAOXIN]     = UCS_CPU_EST_BCOPY_BW_DEFAULT
+diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
+index eb557d385670..cfd297e24558 100644
+--- src/ucs/arch/cpu.h
++++ src/ucs/arch/cpu.h
+@@ -64,6 +64,7 @@ typedef enum ucs_cpu_vendor {
+     UCS_CPU_VENDOR_AMD,
+     UCS_CPU_VENDOR_GENERIC_ARM,
+     UCS_CPU_VENDOR_GENERIC_PPC,
++    UCS_CPU_VENDOR_GENERIC_IBM,
+     UCS_CPU_VENDOR_FUJITSU_ARM,
+     UCS_CPU_VENDOR_ZHAOXIN,
+     UCS_CPU_VENDOR_LAST
+@@ -99,6 +100,8 @@ typedef struct ucs_cpu_builtin_memcpy {
+ #  include "ppc64/cpu.h"
+ #elif defined(__aarch64__)
+ #  include "aarch64/cpu.h"
++#elif defined(__s390x__)
++#  include "s390x/cpu.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucs/arch/global_opts.h src/ucs/arch/global_opts.h
+index 75d086177a7f..96c670cb60d3 100644
+--- src/ucs/arch/global_opts.h
++++ src/ucs/arch/global_opts.h
+@@ -15,6 +15,8 @@
+ #  include "ppc64/global_opts.h"
+ #elif defined(__aarch64__)
+ #  include "aarch64/global_opts.h"
++#elif defined(__s390x__)
++#  include "s390x/global_opts.h"
+ #else
+ #  error "Unsupported architecture"
+ #endif
+diff --git src/ucs/arch/s390x/bitops.h src/ucs/arch/s390x/bitops.h
+new file mode 100644
+index 000000000000..ce48ff1ff451
+--- /dev/null
++++ src/ucs/arch/s390x/bitops.h
+@@ -0,0 +1,37 @@
++/**
++* Copyright (C) Mellanox Technologies Ltd. 2001-2015.  ALL RIGHTS RESERVED.
++*
++* See file LICENSE for terms.
++*/
++
++#ifndef UCS_S390X_BITOPS_H_
++#define UCS_S390X_BITOPS_H_
++
++#include <stdint.h>
++
++
++static inline unsigned __ucs_ilog2_u32(uint32_t n)
++{
++	if (!n)
++		return 0;
++	return 31 - __builtin_clz(n);
++}
++
++static inline unsigned __ucs_ilog2_u64(uint64_t n)
++{
++	if (!n)
++		return 0;
++	return 63 - __builtin_clz(n);
++}
++
++static UCS_F_ALWAYS_INLINE unsigned ucs_ffs32(uint32_t n)
++{
++    return __ucs_ilog2_u32(n & -n);
++}
++
++static inline unsigned ucs_ffs64(uint64_t n)
++{
++    return __ucs_ilog2_u64(n & -n);
++}
++
++#endif
+diff --git src/ucs/arch/s390x/cpu.h src/ucs/arch/s390x/cpu.h
+new file mode 100644
+index 000000000000..4f0a87006118
+--- /dev/null
++++ src/ucs/arch/s390x/cpu.h
+@@ -0,0 +1,84 @@
++/**
++* Copyright (C) Mellanox Technologies Ltd. 2001-2013.  ALL RIGHTS RESERVED.
++* Copyright (C) ARM Ltd. 2016-2017.  ALL RIGHTS RESERVED.
++*
++* See file LICENSE for terms.
++*/
++
++
++#ifndef UCS_S390X_CPU_H_
++#define UCS_S390X_CPU_H_
++
++#include <ucs/sys/compiler.h>
++#include <ucs/arch/generic/cpu.h>
++#include <stdint.h>
++#include <string.h>
++#include <ucs/type/status.h>
++
++
++#define UCS_ARCH_CACHE_LINE_SIZE 256
++
++BEGIN_C_DECLS
++
++/* Assume the worst - weak memory ordering */
++#define ucs_memory_bus_fence()        asm volatile (""::: "memory")
++#define ucs_memory_bus_store_fence()  ucs_memory_bus_fence()
++#define ucs_memory_bus_load_fence()   ucs_memory_bus_fence()
++#define ucs_memory_bus_wc_flush()     ucs_memory_bus_fence()
++#define ucs_memory_cpu_fence()        ucs_memory_bus_fence()
++#define ucs_memory_cpu_store_fence()  ucs_memory_bus_fence()
++#define ucs_memory_cpu_load_fence()   ucs_memory_bus_fence()
++#define ucs_memory_cpu_wc_fence()     ucs_memory_bus_fence()
++
++
++static inline uint64_t ucs_arch_read_hres_clock()
++{
++    unsigned long  clk;
++    asm volatile("stck %0" : "=Q" (clk) : : "cc");
++    return clk >> 2;
++}
++#define ucs_arch_get_clocks_per_sec ucs_arch_generic_get_clocks_per_sec
++
++
++static inline ucs_cpu_model_t ucs_arch_get_cpu_model()
++{
++    return UCS_CPU_MODEL_UNKNOWN;
++}
++
++static inline ucs_cpu_vendor_t ucs_arch_get_cpu_vendor()
++{
++    return UCS_CPU_VENDOR_GENERIC_IBM;
++}
++
++static inline int ucs_arch_get_cpu_flag()
++{
++    return UCS_CPU_FLAG_UNKNOWN;
++}
++
++double ucs_arch_get_clocks_per_sec();
++
++#define ucs_arch_wait_mem ucs_arch_generic_wait_mem
++
++static inline void ucs_cpu_init()
++{
++}
++
++static inline void *ucs_memcpy_relaxed(void *dst, const void *src, size_t len)
++{
++    return memcpy(dst, src, len);
++}
++
++static UCS_F_ALWAYS_INLINE void
++ucs_memcpy_nontemporal(void *dst, const void *src, size_t len)
++{
++    memcpy(dst, src, len);
++}
++
++static inline ucs_status_t ucs_arch_get_cache_size(size_t *cache_sizes)
++{
++    return UCS_ERR_UNSUPPORTED;
++}
++
++END_C_DECLS
++
++#endif
+diff --git src/ucs/arch/s390x/global_opts.c src/ucs/arch/s390x/global_opts.c
+new file mode 100644
+index 000000000000..4fa0c74034a7
+--- /dev/null
++++ src/ucs/arch/s390x/global_opts.c
+@@ -0,0 +1,24 @@
++/**
++* Copyright (C) Mellanox Technologies Ltd. 2019.  ALL RIGHTS RESERVED.
++*
++* See file LICENSE for terms.
++*/
++
++#if defined(__s390x__)
++
++#ifdef HAVE_CONFIG_H
++#  include "config.h"
++#endif
++
++#include <ucs/arch/global_opts.h>
++#include <ucs/config/parser.h>
++
++ucs_config_field_t ucs_arch_global_opts_table[] = {
++  {NULL}
++};
++
++void ucs_arch_print_memcpy_limits(ucs_arch_global_opts_t *config)
++{
++}
++
++#endif
+diff --git src/ucs/arch/s390x/global_opts.h src/ucs/arch/s390x/global_opts.h
+new file mode 100644
+index 000000000000..225e4e5e896a
+--- /dev/null
++++ src/ucs/arch/s390x/global_opts.h
+@@ -0,0 +1,25 @@
++/**
++* Copyright (C) Mellanox Technologies Ltd. 2019.  ALL RIGHTS RESERVED.
++*
++* See file LICENSE for terms.
++*/
++
++
++#ifndef UCS_PPC64_GLOBAL_OPTS_H_
++#define UCS_PPC64_GLOBAL_OPTS_H_
++
++#include <ucs/sys/compiler_def.h>
++
++BEGIN_C_DECLS
++
++#define UCS_ARCH_GLOBAL_OPTS_INITALIZER {}
++
++/* built-in memcpy config */
++typedef struct ucs_arch_global_opts {
++    char dummy;
++} ucs_arch_global_opts_t;
++
++END_C_DECLS
++
++#endif
++
+diff --git src/ucs/sys/sys.c src/ucs/sys/sys.c
+index 58e67835c4d0..308f03606d5b 100644
+--- src/ucs/sys/sys.c
++++ src/ucs/sys/sys.c
+@@ -1258,8 +1258,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
+     if (old_ptr == NULL) {
+         /* Note: Must pass the 0 offset as "long", otherwise it will be
+          * partially undefined when converted to syscall arguments */
++#if defined(__s390x__)
++		long int _args[6] = {
++			(long int) NULL,
++			(long int) new_length,
++			(long int) PROT_READ|PROT_WRITE,
++			(long int) MAP_PRIVATE|MAP_ANONYMOUS,
++			(long int) -1,
++			(long int) 0ul};
++        ptr = (void*)syscall(__NR_mmap, _args);
++#else
+         ptr = (void*)syscall(__NR_mmap, NULL, new_length, PROT_READ|PROT_WRITE,
+                              MAP_PRIVATE|MAP_ANONYMOUS, -1, 0ul);
++#endif
+         if (ptr == MAP_FAILED) {
+             ucs_log_fatal_error("mmap(NULL, %zu, READ|WRITE, PRIVATE|ANON) failed: %m",
+                                 new_length);

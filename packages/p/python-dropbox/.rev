@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5911ff12f496ec3555e993fca9adf33</srcmd5>
+    <version>9.3.0</version>
+    <time>1551113556</time>
+    <user>coolo</user>
+    <comment>- Initial spec for v9.3.0
+</comment>
+    <requestid>677946</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f4b95915650672bb935128d476b03068</srcmd5>
+    <version>9.4.0</version>
+    <time>1564155254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718835</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>78c10207764a459d80f1216ecc388042</srcmd5>
+    <version>9.5.0</version>
+    <time>1586248189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791659</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8e2e539522a152a0a238327243776e6f</srcmd5>
+    <version>10.2.0</version>
+    <time>1592468425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.2.0:
+  * Added comments to legalHoldPolicy struct
+  * Add more detailed comments to LegalHoldsListHeldRevisionResult
+  * Fix misc typos in comments
+  * Add optional EventTypeArg event_type to GetTeamEventsArg struct
+  * Add invalid_filters to GetTeamEventsError union
+  * Add deprecated tag to was_linked_apps_truncated, was_linked_devices_truncated, was_link_shared_folders_truncated parameters in JoinTeamDetails struct
+  * Added the EventTypeArg union
+  * Update comment for retain_team_shares arg of MembersRemoveArg
+  * Fix bug in constructor for OAuth object (expires_in -&gt; expiration)
+  * Remove oauth examples from code and redirect to examples folder
+  * Bug Fix to add timeout parameter to Refresh Token calls
+  * added a new route property is_cloud_doc_auth indicating whether the endpoint is a Dropbox cloud docs endpoint which takes cloud docs auth token.
+  * lock_file_batch, unlock_file_batch and get_file_lock_batch are no longer preview routes
+  * Update query description on SearchArg Struct, SearchV2Arg Struct
+  * Update move:2 and move_batch:2 route descirption
+  * Deleted deprecated routes legal_holds/export_policy and legal_holds/export_policy_job_status/check
+  * Added AccountState union
+  * Added AccountLockOrUnlockedType struct
+  * Added AccountLockOrUnlockedDetails struct
+  * Added MemberSendInvitePolicy union
+  * Added MemberSendInvitePolicyChangedType struct
+  * Added MemberSendInvitePolicyChangedDetails struct
+  * Added a new tag first_party_token_exchange to LoginMethod union
+  * Added new tags account_lock_or_unlocked_details and member_send_invite_policy_changed_details to EventDetails union
+  * Added new tags account_lock_or_unlocked and member_send_invite_policy_changed to EventType union
+  * Added a new field file_size to FileOrFolderLogInfo and FileLogInfo struct
+  * Added a new field file_count to FolderLogInfo struct
+  * Add NoExpirationLinkGenCreateReportDetails, NoExpirationLinkGenReportFailedDetails, NoPasswordLinkGenCreateReportDetails, NoPasswordLinkGenReportFailedDetails, NoPasswordLinkViewCreateReportDetails, NoPasswordLinkViewReportFailedDetails, OutdatedLinkViewCreateReportDetails, OutdatedLnkViewReportFailedDetails structs to the EventDetails union
+  * Add NoExpirationLinkGenCreateReportType, NoExpirationLinkGenReportFailedType, NoPasswordLinkGenCreateReportType, NoPasswordLinkGenReportFailedType, NoPasswordLinkViewCreateReportType, NoPasswordLinkViewReportFailedType, OutdatedLinkViewCreateReportType, OutdatedLinkViewReportFailedType structs to the EventType union
+  * Add get_content, get_metadata, rename, unlock, and lock routes
+  * Add corresponding args, results, and errors
+  * Update AddPropertiesArg description
+  * Add duplicate_property_groups to InvalidPropertyGroupError Union
+  * Update property_groups description on AddPropertiesError Union
+  * Update SharedLinkSettings example
+  * Update auth type string patterns
+  * Update host string patterns
+  * Update style string patterns
+  * Update select_admin_mode string patterns
+  * Add team_exceeded_legal_hold_quota to LegalHoldsPolicyCreateError union
+  * Change LegalHoldsListHeldRevisionsError and LegalHoldsPolicyReleaseError to extend LegalHoldsError
+  * Remove is_preview from route add, resend_verification_emails, and delete
+  * Add support for PKCE
+  * Add support for Short-Lived Tokens
+  * Add support for Scopes
+  * These features are all in beta, please contact Dropbox support if you are interested in these features
+  * Update Requirements.txt
+  * Add Github action to auto-publish to pypi
+  * DropboxOAuth2Flow consumer_secret parameter moved to end of constructor as it became optional with support of PKCE
+  * Assertions in constructors have been mapped to their BadInputException</comment>
+    <requestid>814805</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a1b6ae43d1ab9cf9ff80ae7558ab4b71</srcmd5>
+    <version>10.4.1</version>
+    <time>1600347179</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.4.1:
+  * Fix bug with client copy
+  * Fix bug with team client as_user and as_admin
+  * Fix Python 3 linter issue
+  * Update tox.ini to check python 3.7 and 3.8
+  * Update setup.py to support python 3.7 and 3.8
+  * Remove stone as submodule and add as dependency
+  * Update Spec
+  * Files Namespace
+  * Add internal_error to SearchError union.
+  * Add locked to LookupError union.
+  * Add cant_move_into_vault to RelocationError union.
+  * Add MoveIntoVaultError union.
+  * Add SearchMatchFieldOptions struct.
+  * Add optional match_field_options to SearchV2Arg struct.
+  * Doc/example changes.
+  * Sharing Namespace
+  * Add is_vault to SharePathError union.
+  * Add invalid_shared_folder to AddFolderMemberError union.
+  * Team Namespace
+  * Make members field of LegalHoldsPolicyUpdateArg struct optional.
+  * Add app_folder_removal_not_supported to RevokeLinkedAppError union.
+  * Doc/example changes.
+  * Add auto_approve to InviteMethod union.
+  * Add moved_from_another_team to InviteMethod union.
+  * Add moved_from_another_team to MemberStatus union.
+  * Add no_one to SharedLinkVisibility union.
+  * Add optional new_team to MemberChangeStatusDetails struct.
+  * Add optional previous_team to MemberChangeStatusDetails struct.
+  * Add external_sharing_create_report_details to EventDetails union.</comment>
+    <requestid>835107</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d900cd4536219861f34cad7003119323</srcmd5>
+    <version>10.4.1</version>
+    <time>1639075561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>938242</requestid>
+  </revision>
+</revisionlist>

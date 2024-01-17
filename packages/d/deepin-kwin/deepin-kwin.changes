@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Sun Jun  4 07:51:04 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.25.5
+  * Allow window cropping on screen update
+  * Set all windows 0 rounded corners by defaults
+  * Remove some default shortcuts
+  * Pick the best fillet
+  * Fix bugs
+
+-------------------------------------------------------------------
+Tue Apr 18 14:59:39 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.25.0
+  * Merge dde-kwin and deepin-kwin
+- Drop deepin-kwin-tabbox-chameleon-rename.patch, drop-nonexistent-translations.patch
+  and fix-library-links.patch
+- Add 0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
+
+-------------------------------------------------------------------
+Tue Jan 17 07:37:36 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update fix-library-links.patch, fix build on new dtk 
+
+-------------------------------------------------------------------
+Fri Oct 28 13:45:40 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.24
+  * Add split screen menu
+  * Add decoration property interface
+  * Add watermark feature and support super+s
+  * Fix bugs
+- Drop fix-build-on-5_25_3.patch
+
+-------------------------------------------------------------------
+Thu Sep  1 03:21:02 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.11
+  * Add the 'test-prj-running.sh' script
+  * Add API to capture window data
+  * Add API to record and shot screen
+  * Add func about maxi button long press
+  * Remove qt deps for windowtool
+- Drop fix-build-on-5_18_6.patch, no longer support old kwin
+- Add fix-build-on-5_25_3.patch instead of dde-kwin.5.4.26.patch
+
+-------------------------------------------------------------------
+
+Mon Jun 13 15:51:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop cmake(KWaylandServer) BuildRequires: not actually needed and
+  no longer existing.
+
+-------------------------------------------------------------------
+Fri Jun 10 13:42:34 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version 5.4.26
+  * update window raduis for effects
+  * Add splitmenu translate
+  * Add a dependency on 'kwin-wayland'
+  * Add func about maxi button long press
+  * Modify code based on code review results
+  * Fix bugs
+- Add dde-kwin.5.4.26.patch, fix build on kwin 5.24+
+- Add drop-nonexistent-translations.patch
+- No longer need kwayland-server (boo#1200318)
+- Drop deepin-kwin-crash.patch
+
+-------------------------------------------------------------------
+Sat Feb 26 14:27:40 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Fix Leap 15.4 build since Kwin has greater version than 5.21
+  in Leap 15.4
+  
+-------------------------------------------------------------------
+Fri Feb 25 03:28:40 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-build-on-5_18_6.patch for leap 
+
+-------------------------------------------------------------------
+Sun Feb 20 12:33:34 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version 5.4.19
+  * Frees heap memory when the program exits
+  * Disable multitasking
+  * disable effects by default
+  * Support DDE Wayland
+  * Support client activation from dde shell
+  * Fix bugs
+
+-------------------------------------------------------------------
+Tue Nov 30 01:42:15 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.12
+  * Split screen mode is always grayed out in the working area
+  * add split screen menu
+  * support lightWeight config for shadow
+  * optimize work thumbnail
+  * Fix bugs
+  * Workaround: builds are not performed under Kwin greater than 5.21
+
+-------------------------------------------------------------------
+Tue Nov  9 03:39:28 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.14
+  * Fix bugs
+  * Update translations
+
+-------------------------------------------------------------------
+Wed Sep 22 04:09:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-library-links.patch, fix build on Tumbleweed
+
+-------------------------------------------------------------------
+Tue Jun 15 04:07:03 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.9
+  * Fix bugs
+  * Support kwin 5.21+, drop support-kwin-5_21+.patch
+- Drop fix-crash-bug.patch, fixed by upstream
+
+-------------------------------------------------------------------
+Tue May  4 11:46:16 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.7
+  * Support kwin 5.19, drop support-kwin-5_19+.patch
+  * Add translation files
+  * update dde-kwin.postinst base on update DTK's /etc/os-version 
+  * Fix bugs
+- Drop deepin-kwin-unload-blur.patch, merged by upstream
+
+-------------------------------------------------------------------
+Sun Apr 11 08:20:28 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Support kwin 5.21+, add support-kwin-5_19+.patch and
+  support-kwin-5_21+.patch 
+
+-------------------------------------------------------------------
+Mon Mar  1 04:30:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.0.13
+  * fix: Avoid taskbar showing up when changing workspace in multitaskingview
+  * Revert "fix: Provides a default wallpaper for the second workspace."
+  * fix: mips platform second workspace background is white.
+  * Provides a default wallpaper for the second workspace.
+  * fix get sp1 default-uri method.
+  * fix: A color field flicker when right-click menu show up 
+    Adjust the order of image processing
+  * after system upgrading from SP1 to SP2, the old wallpaper will be kept.
+  * Provides a default wallpaper for the second workspace.
+  * remove dialog rule to avoid configuration by user
+  * fix: Blur multitasking background.
+- Add patches: deepin-kwin-crash.patch, deepin-kwin-tabbox-chameleon-rename.patch
+  and deepin-kwin-unload-blur.patch
+
+-------------------------------------------------------------------
+Sat Mar 21 09:29:56 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- remove some files which are in plasma5-defaults-openSUSE
+
+-------------------------------------------------------------------
+Fri Jul 19 07:14:08 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- update version to 0.1.0
+  * Allow configuration items to override the default theme
+  * Add the "deepin-chameleon" window decoration for kwin
+  * Support get the shoutcut default value
+  * Correct the path to find translation files
+  * Ignore the RuleBook::save function of kwin
+  * Execute dirname before setting the LD_PRELOAD environment
+  * Support KWin highlightWindows effect for PreviewWindow
+  * Overwrite the window menu
+  * Support for specifying the version of kwin on build
+  * Multitaskingview: add multitaskingview ts
+  * Automatically append the wallpaper's gsetting value item
+  * Clean LD_PRELOAD env
+  * Fix the window was closed incorrectly
+  * Fix the "Window to Desktop" shoutcuts is invalid
+  * Fix No warning when opening the multitasking view app in 2D window manager
+  * Fix do not print warning messages when the build and runtime versions are consistent
+  * keep window to viewable if it is minimized
+  * Disable theme cache of FrameSvg
+  * Install the "kdeglobals" file
+  * Fix the compositingEnabledChanged signal is sent only when the user actively sets it
+  * Fix the window default cursor of the gtk application does not follow the theme
+  * Disable window manager window menu
+  * Preview window give priority to use the dbus interface by kwin
+  * Support PresentWindows
+  * Support set cursor theme/size for kwin
+
+-------------------------------------------------------------------
+Wed May  8 14:23:55 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 0.0.5 

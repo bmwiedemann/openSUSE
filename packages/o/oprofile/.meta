@@ -1,0 +1,23 @@
+<package name="oprofile" project="openSUSE:Factory">
+  <title>System-Wide Profiler for Linux Systems</title>
+  <description>OProfile is a system-wide profiler for Linux systems, capable of
+profiling all running code at low overhead. OProfile is released under
+the GNU GPL.
+
+It consists of a kernel module and a daemon for collecting sample data,
+and several post-profiling tools for turning data into information.
+
+OProfile leverages the CPU hardware performance counters to enable
+profiling of a wide variety of interesting statistics, which can also
+be used for basic time-spent profiling. All code is profiled: hardware
+and software interrupt handlers, kernel modules, the kernel, shared
+libraries, and applications (the only exception being the oprofile
+interrupt handler itself).
+
+OProfile is currently in alpha status; however it has proven stable
+over a large number of differing configurations. As always, there is no
+warranty.
+
+This is the package containing the userspace tools.</description>
+  <devel project="devel:tools" package="oprofile"/>
+</package>

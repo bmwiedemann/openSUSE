@@ -1,0 +1,30 @@
+[Unit]
+Description=A Perl Client Used To Update Dynamic DNS
+After=network-online.target nss-lookup.target
+Wants=network-online.target nss-lookup.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+User=ddclient
+Group=ddclient
+Type=forking
+PIDFile=/run/ddclient/ddclient.pid
+EnvironmentFile=-/etc/sysconfig/ddclient
+ExecStartPre=/bin/touch /var/cache/ddclient/ddclient.cache
+ExecStart=/usr/sbin/ddclient $DDCLIENT_OPTIONS
+SupplementaryGroups=maildrop
+
+[Install]
+WantedBy=multi-user.target

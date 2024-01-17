@@ -1,0 +1,6 @@
+<multibuild>
+  <package>standard</package>
+  <package>testsuite</package>
+  <package>gnu-hpc</package>
+  <package>gnu-hpc-testsuite</package>
+</multibuild>

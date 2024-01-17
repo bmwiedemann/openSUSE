@@ -1,0 +1,2 @@
+# There is no need to split out a dummy devel package for the pc file.
+addFilter("devel-file-in-non-devel-package*");

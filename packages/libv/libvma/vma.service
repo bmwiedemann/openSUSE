@@ -1,0 +1,31 @@
+[Unit]
+Description=VMA Monitoring Daemon
+StopWhenUnneeded=no
+DefaultDependencies=no
+# Ensure required kernel modules are loaded before starting
+Wants=rdma-load-modules@rdma.service
+After=rdma-load-modules@rdma.service
+# After basic RDMA hw setup.
+After=rdma-hw.target
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=simple
+Restart=on-failure
+ExecStart=/usr/sbin/vmad
+
+[Install]
+WantedBy=multi-user.target
+

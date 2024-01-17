@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Fri Feb 17 12:31:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update path for SLE15
+
+-------------------------------------------------------------------
+Wed Sep  1 12:28:43 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
+Sat Jun  5 19:05:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add sphinx4.patch to enable build with Sphinx 4.x 
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Jun 29 16:53:49 UTC 2017 - tbechtold@suse.com
+
+- update to 0.3.5:
+  - Bring QueueListener implementation in line with the version in the stdlib.
+  - Fixed a bug in ColorizingStreamHandler relating to encoding.
+  - Return non-zero error code from "setup.py test" when a test fails.
+  - Make the dictConfig tests work with both Python 2.x and 3.x.
+- convert to singlespec
+- fix Source url
+- split -doc package
+- update Url
+
+-------------------------------------------------------------------
+Thu Jul 18 09:02:19 UTC 2013 - speilicke@suse.com
+
+- Initial version
+

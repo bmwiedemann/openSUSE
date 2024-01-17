@@ -1,0 +1,5 @@
+<package name="python-nox" project="openSUSE:Factory">
+  <title>python-nox</title>
+  <description>Flexible test automation</description>
+  <devel project="devel:languages:python" package="python-nox"/>
+</package>

@@ -1,0 +1,1560 @@
+-------------------------------------------------------------------
+Fri Dec 29 13:25:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.12+kde31, rebased upstream:
+  * QML: Fortify qmlExecuteDeferred some more
+  * QV4: Avoid memory corruption in Reflect.apply
+  * Blacklist 1 tests in tst_qquickanimations on macos
+  * doc: Add note to PinchHandler.translation property about macOS trackpad
+  * Revert "masm: Treat Android as generic Posix regarding mmap and friends"
+  * QML: Check for stack overflows when creating objects
+  * Fix wrong item-sizeHint-cache when StackLayout children were reordered
+  * Doc: Add missing QQuickWindow constructor
+  * Handle missing stops gracefully in Shape gradients
+  * Do not crash if madvise() fails on MADV_WILLNEED
+  * Blacklist 1 tests in tst_qquickbehaviors on macos
+  * Avoid double applyDelegateChange in QQIV::setDelegate
+  * QSGGeometry: add Q_DISABLE_COPY_MOVE
+  * Qml: Don't crash on bad grouped properties
+  * Fix TypeError in dynamicview1 example
+  * Fix broken Text rendering when noantialiased NativeRendering is used
+  * Trim file names before adding them to qml components and scripts
+  * masm: Treat Android as generic Posix regarding mmap and friends
+  * Bump version to 5.15.12
+  * Move StackLayout tests from qtquickcontrols.git (5.15)
+
+-------------------------------------------------------------------
+Fri Oct  6 06:38:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde30, rebased upstream:
+  * Flickable: prevent fixup() from being called while dragging
+  * Adjust baselineOffset correctly when fontSizeMode == HorizontalFit
+  * QQmlVMEMetaObjectEndpoint: ensure property cache before accessing it
+  * Text: Re-layout the text when a alignment is set and the height grows
+  * Blacklist 1 tests in tst_qquickflickable on macos
+  * Fix fractional scaling of text in Qt Quick
+  * qqmlprivate.h: make static constexpr members c++11 compliant
+  * V4: Account for the guard pages when allocating stack space
+  * Blacklist 1 tests in tst_QQuickLoader on ubuntu-20.04
+  * Flickable: let changing contentItem pos also affect the drag starting pos
+  * Blacklist 1 tests in tst_QParallelAnimationGroupJob on macos
+  * StackLayout: Do not set size of children to (-1, -1)
+  * V4: Mark InternalClass parents when running GC
+  * A11Y: Send Scrolling Events when Flickable moves
+  * doc: Add missing PointerHandler.CanTakeOverFromItems enum value
+  * Qml: Don't crash on nested group properties with aliases
+  * QV4::CompiledData: fix GCC 12 -Werror=uninitialized errors
+  * QQuickText/Edit: fix C++20 -Wdeprecated-enum-enum-conversion warnings
+  * Android: Fix crash on tap handler with a S-Pen
+  * masm: fix -Wdeprecated-enum-enum-conversion
+  * Add listing of the components and scripts that belongs to the qml module
+  * QML: Port QV4::CompiledData::RegExp to new special integer bitfield
+  * QML: Port QV4::CompiledData::JSClassMember to new special integer bitfield
+  * QML: Port QV4::CompiledData::Object to new special integer bitfield
+  * QML: Port icutils::Node to new special integer bitfield
+  * QML: Port QV4::CompiledData::Lookup to new special integer bitfield
+  * QML: Port QV4::CompiledData::Binding to new special integer bitfield
+  * QML: Port QV4::CompiledData::Property to new special integer bitfield
+  * QML: Port QV4::CompiledData::Alias to new special integer bitfield
+  * QML: Port QV4::CompiledData::ParameterType to new special integer bitfield
+  * QML: Port QV4::CompiledData::Location to new special integer bitfield
+  * Fix Qt build with Python being in path with spaces
+  * Quick test lib: Account for DPR when grabbing sub-image
+  * qqw: Invalidate and reinitialize the scenegraph correctly
+  * Fix rendernode example wrt stacking
+  * Stop using the same buffer for vertex and index data
+  * Fix race condition on QQmlEnginePrivate::qml_debugging_enabled
+  * qqmlimport.cpp: remove unused qreadwritelock.h
+  * QQmlDebug: reliably print the debugger warning
+  * QQmlListCompositor: suppress GCC 12 -Warray-bounds warnings
+  * Doc: QQuickTextInput: Mark all readonly properties as such
+  * MouseArea: don't override preventStealing on mouse release
+  * MultiPointTouchArea: remap touchpoint positions when filtering
+- Commits dropped by the rebase:
+  * Revert "Fix missing glyphs when using NativeRendering"
+  * Fix missing glyphs when using NativeRendering
+
+-------------------------------------------------------------------
+Thu Sep 28 12:04:50 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.10+kde31:
+  * QML: Make notify list thread safe
+  * QtQml: Clean up QQmlData ctor
+  * QRecyclePool: fix potential UB
+  * QQmlJs::MemoryPool: fix potential UB (pointer overflow)
+  * JIT: Add missing {STORE|LOAD}_ACC() to CreateCallContext
+- Drop patches, now upstream:
+  * 0001-JIT-Add-missing-STORE-LOAD-_ACC-to-CreateCallContext.patch
+
+-------------------------------------------------------------------
+Tue Jun 13 12:58:39 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde26, rebased upstream:
+  * Fix tst_QQuickText::fontSizeMode
+  * (manual) includemocs
+  * Text: don't fall back to full-width layout if availableWidth == 0
+  * MPTA: don't allow more than one touchpoint to react to mouse
+  * QML/JS: Reject yield expression not directly in generator functions
+  * Modify m_compareRegister bitfield
+  * Add a TU for QQmlDebugServer
+  * QmlModels: includemocs
+  * Add a TU for QQmlProfilerEventReceiver
+  * Quick: includemocs
+  * QSGRhiShaderEffectNode: remove unused m_rc member
+  * QQmlPreviewServiceFactoryPlugin: includemocs
+  * Qml: includemocs
+  * QuickTest: includemocs
+  * PinchArea: ignore ZoomNativeGesture and RotateNativeGesture if told to
+  * Docs: Document textInput.acceptableInput as read only
+  * QQmlTableModelColumn: remove unused field mIndex
+  * MouseArea: don't get stuck in doubleClick if handler caused ungrab
+  * Avoid -Wclass-memaccess warning
+  * QmlDebugPrivate: includemocs
+  * QmlModels: includemocs
+  * QQmlInspectorServiceFactoryPlugin: includemocs
+  * QQmlDebuggerServiceFactoryPlugin: includemocs
+  * QQmlProfilerServiceFactoryPlugin: includemocs
+  * QQmlNativeDebugServiceFactoryPlugin: includemocs
+  * QuickShapesPrivate: includemocs
+  * QtPacketProtocolPrivate: includemocs
+  * QDebugMessageServiceFactoryPlugin: includemocs
+  * QQuickProfilerAdapterFactoryPlugin: includemocs
+  * Build fixes for GCC 11
+  * doc: Fix inherited property docs in HoverHandler
+  * tst_qqmllistcompositor: fix -Wdeprecated-enum-enum-conversion
+  * Set depth mask correctly for clear
+  * Doc: Improve cursorPosition description in TextInput and TextEdit docs
+  * Fix blacklisting string for Ubuntu 20.04 in qquickmultipointtoucharea
+  * V4 ArrayIterator: Protect retrieved value from GC
+  * QML: Protect against EAGAIN when calling madvise on linux
+  * QQuickLoader: Check for QQmlEngine before using it
+
+-------------------------------------------------------------------
+Wed May 24 08:00:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.9+kde26:
+  * qml tool: Use QCommandLineParser::process() rather than parse()
+- Add patch to fix crash on aarch64 (boo#1211628, QTBUG-111935):
+  * 0001-JIT-Add-missing-STORE-LOAD-_ACC-to-CreateCallContext.patch
+
+-------------------------------------------------------------------
+Thu May 11 08:28:37 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.9+kde25:
+  * Accessibility: respect value in attached Accessible in controls
+  * Revert "QQuickItem: Fix effective visibility for items without parent"
+    (boo#1210980)
+
+-------------------------------------------------------------------
+Fri Apr 21 09:57:43 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde67, rebased upstream:
+  * QQuickItem: Fix effective visibility for items without parent
+  * Prevent crash when destroying asynchronous Loader
+  * Quick Animations: Fix crash
+  * qv4function: Fix crash due to reference being invalidated
+  * Models: Avoid crashes when deleting cache items
+  * QQuickState::when: handle QJSValue properties correctly
+  * QQmlImportDatabase: Make sure the newly added import path be first
+  * Revert "Fix missing glyphs when using NativeRendering"
+  * Fix missing glyphs when using NativeRendering
+  * Update the window cursor on mouse release
+  * Blacklist: test cases blacklisted in tst_QQuickListView:
+  * Blacklist: test cases blacklisted in tst_QQuickMultiPointTouchArea:
+  * Fix crash with NativeRendering on RHI
+  * A11Y: make QQuickText focusable for A11Y
+  * QQuickWindow: improve docs for activeFocusItem
+  * Doc: add example snippets for containmentMask
+  * Fix typo in qquickdroparea/BLACKLIST for Ubuntu-20.04
+  * QQmlAdaptorModel: Do not use reparenting for lifetime managemment
+  * Correctly handle QQuickState::when
+  * CMake: Fix handling of empty qrc files with qtquickcompiler
+  * CMake: Skip qtquickcompiler cmake test on macOS ARM
+  * Fix indices alignment problem
+  * Fix indentation in positioners example
+  * doc: Fix QQuickItem point/rect mapping methods signatures
+  * Instantiator: Do not load items when inactive
+  * Doc: Fix QtQuick::Loader::item type
+  * Doc: fix incorrect type name on focus page
+  * icutils::Node: GCC 11 -Werror=maybe-uninitialized w/-fsanitize=undefined
+  * tst_qquickimageprovider: fix some memleaks
+  * Fix incorrect behavior after displace transition
+  * Fix edge cases in arcTo
+  * Don't blacklist tst_QQuickFramebufferObject::everything on b2qt
+  * Use tree hash rather than commit hash in .tag file
+  * Adjust default max call depth for QNX
+  * Blacklist containsDrag_internal on Ubuntu 20.04
+  * QQmlLoggingCategory: Avoid unnecessary warnings from setters
+  * Blacklist flakey tst_QPauseAnimationJob::multipleSequentialGroups on macOS
+  * Assert that QQmlDelegateModel's count can't be less than zero
+  * qml{plugindump|importscanner}: Don't mix std::cerr and std::wcerr
+  * Treat unknown tablet device as stylus and create QTabletEvent
+  * GridView: Set content position when changing cell size
+  * QQuickItemViewTransitionAttached: Avoid dangling pointers
+  * Bound animatorjob value to the given range
+- Commits dropped by the rebase:
+  * Document that StyledText also supports &nbsp; and &quot;
+
+-------------------------------------------------------------------
+Thu Mar  2 11:49:15 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop the mechanism for supporting systems without SSE2. glibc removed
+  support for looking up libraries in sse2/ subdirectories and libQt5Qml5
+  without SSE2 crashes Plasma (boo#1208188):
+  * sse2_nojit.patch
+
+-------------------------------------------------------------------
+Mon Jan  9 09:19:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.8+kde22, rebased upstream:
+  * Qml: Don't crash when as-casting to type with errors
+  * Do not copy lookups
+  * deliverSinglePointEventUntilAccepted(): skip items that aren't shown
+  * V4 Lookup: Do not leak property caches
+  * Fix glitches in big AnimatedSprite animations
+  * HoverHandler: allow cursorShape binding before parentItem is set
+  * QtTest: use delay properly in mouseWheel()
+  * Set OpenGL state after invoking custom rendering
+  * Ensure that HoverHandler isn't hovered after HoverLeave to parent item
+  * Fix missing glyphs when changing distance field parameters
+  * Document that the vendorext property is deprecated
+  * tst_qqmlbinding: Avoid event loop flakyness on Ubuntu 20.04
+  * Unset the QQmlAnimationTimer pointer from unregistered jobs
+  * Reset the timer of all controlled animations upon timer destruction
+  * Don't create an animation timer when destroying the animation job
+  * Disable JIT for arm64 when doing macOS universal builds
+  * Blacklist and fix failing tests on ARM macOS
+  * qmake/vcxproj: Fix qmltypes files being displayed at project root
+  * Use resize instead of shrink when clearing upload pools
+  * Handle function as default arguments in toplevel functions
+  * Do not crash on self-assignment of QQmlProperty
+  * Do not resolve containing types of inline components too early
+  * sg: Drop internal pool allocs upon QQuickWindow::releaseResources
+  * Fix distorted subpixel text for non-RHI code path
+  * QQuickTextInput: fix cursor positioning for QInputMethodEvent
+- Commits dropped by the rebase:
+  * Fix Flickable with QTBUG-56075 patch applied
+- Update qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch with contents from
+  https://invent.kde.org/qt/qt/qtdeclarative/-/merge_requests/32
+
+-------------------------------------------------------------------
+Thu Dec 15 12:21:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde25:
+  * Make QaccessibleQuickWidget private API
+  * a11y: track item enabled state
+  * QQuickItem: avoid emitting signals during destruction
+  * Send ObjectShow event for visible components after initialized
+  * Implement accessibility for QQuickWidget
+  * Fix build after 95290f66b806a307b8da1f72f8fc2c69801933d0
+  * Don't convert QByteArray in `startDrag`
+
+-------------------------------------------------------------------
+Thu Nov  3 08:53:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde18, rebased upstream:
+  * Revert "Fix ListView.isCurrentItem when used with DelegateModel"
+  * Stop using QHash::unite() in storage model manual test
+  * SaveableUnitPointer::saveToDisk restores flags incorrectly at cleanup
+  * Document that clearComponentCache() does not clear existing objects
+  * Doc: Replace return `0` with nullptr
+  * Doc: Fix QtQuick::Keys::forwardTo generic list type
+  * Doc: QQmlContext: make it more readable
+  * Fix ListView.isCurrentItem when used with DelegateModel
+  * Fix documentation on JavaScript imports
+  * doc: Remove bogus PinchHandler.minimumTouchPoints prop; improve actual
+  * tst_grabImage: Fix the cases were visually comparing invisible items
+  * Reinitialize shader data structure when effect changes
+  * Doc: mention that clipping can affect performance and link to page
+  * Ensure init of m_current_projection_matrix in single-clipped-item scene
+  * Canvas: Add a means to override the DPR used via an environment variable
+  * Fix regression in ListView/Flickable event delivery
+  * qquicktextinput: Clear pre-edit text after input method reset
+- Rebase qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
+
+-------------------------------------------------------------------
+Mon Sep 26 10:33:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde20, rebased upstream:
+   * Reset currentChanges if currentChanges is active when refilling listView
+   * QmlPreview: Protect QQmlPreviewFileLoader::load with another mutex
+   * Use QDateTime to get offsets for emscripten (wasm)
+   * Doc: fix AnchorChanges typo
+   * Avoid crash for deep aliases
+   * doc: Improve the Input Handlers index page
+   * DropArea: Tell qdoc that DropArea indeed inherits Item
+   * QV4::Heap::GeneratorObject: remove unused member
+   * Sync shadereffect materialType cleanup between renderloops
+   * Avoid infinite loop in designer support
+   * Pass the focus reason through to the control on mouse press
+   * Update QQuickImage's DPR if re-loading the image didn't
+   * Doc: Document matrix4x4 transformation functions
+   * Add tests of matrix4x4 transformation functions
+   * Handle QScreen::physicalDotsPerInchChanged changes for the initial screen
+   * Don't let PointerHandler steal mouse grab from keepMouseGrab layer
+   * Emit grabChanged() from DragHandler and PinchHandler
+   * Resolve data race on QQmlPropertyCache's arguments object
+   * Resolve data race in QQmlPropertyData in a minimally invasive way
+   * Register the QML builtin sequence metatypes only once
+   * doc: Improve QQuickItem::containmentMask() docs
+   * When setting the line dash to be an empty array reset the style to Solid
+   * Fix QtQtuickImage docs: correct properties' signatures
+   * crash fix - avoid wrong gcc optimization
+   * Fix warnings
+   * doc: Use DragHandler rather than MouseArea in the externaldrag snippet
+   * Ensure model is in context if required properties are not used
+   * QQuickItem::forceActiveFocus(): actually force active focus
+   * a11y: make links have pressAction first
+   * Set a11y role for QQuickTextInput to EditableText
+
+-------------------------------------------------------------------
+Mon Jun 27 12:41:54 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.5+kde19, rebased upstream:
+  * Fix Flickable with QTBUG-56075 patch applied
+  * Fix Flickable wheel velocity calculation
+  * QSGOpenGLDistanceFieldGlyphCache: fix UB (ordering of pointers not from the same array)
+  * QSGOpenGLDistanceFieldGlyphCache: fix multiplication result truncation
+  * QQuickItem: Guard against cycles in nextPrevItemInTabFocusChain
+  * Make sure QQuickWidget and its offscreen window's screens are always in sync
+  * V4: Do not call dtor of an object we continue to use
+  * doc: Improve QQuickItem::ItemChangeData docs
+  * Remove tst_pixel
+  * docs: Clarify EventPoint properties
+  * Consistent naming for (to|from)Is(Defined|Sourced) in animations
+  * Map window coordinates to the same coordinate system as the QPointerEvent point
+  * Doc: Fix the Shapes table to reflect reality
+  * Doc: Clarify preconditions for using QML_ELEMENT et al
+  * Do full overlap checks within the alpha render list when rebuilding
+  * MASM: Put pageSize into an inline namespace
+  * TextEdit: update all glyphnodes on QTD::contentsChanged() signal
+  * qquicktableview: upon forceLayout(), check for visible rows/columns at the origin
+  * V4 Debugger: Collect locals also from block scopes
+  * Make PinchArea translate correctly inside a rotated parent
+  * Avoid stale QSGTexture pointer accesses
+  * V4 debugger: Properly count break points
+  * Fix build with GCC 11: include <limits>
+  * Document QQmlComponent::createWithInitialProperties() error handling
+  * QQmlComponentPrivate::setInitialProperty: improve error message
+  * Remove extra colon
+  * Fix warning and assert when removing items from groups
+  * Document that QML_SINGLETON only works with QObjects
+  * qqmlirbuilder: Fix treating parser warnings as errros
+  * Prevent infinite recursion in QQuickItemPrivate::itemToWindowTransform
+  * Avoid crash when accessing an empty QTextLine
+  * doc: fix up QQuickItem::contains() docs
+  * QQuickTextInput: update cursor rectangle after padding changed
+  * Assert that pointer is non-null
+  * qqmlapplicationengine: Handle errors during component creation
+  * Do not batch lines with > 1 width in alpha pass
+  * Don't crash when trying to invoke non-existing string converter
+  * Fix incorrect depth test state with QSGRenderNode::DepthAwareRendering
+  * Do not auto-clean components with live inline components
+  * QuickTest: Do not recurse forever on inline components in enumerateTestCases
+  * DelegateModelGroup: Fix bug where item could be removed from the model
+  * Remove unnecessary forward declaration
+  * QQuickTableView: always update content size when rebuilding small tables
+  * Do less work when there are no active ImageParticle particles
+  * Revert "Update commercial license headers"
+  * QQuickTableView: forceLayout() should work, even when no items are loaded
+  * Revert "Use unique_ptr to clarify ownership of QQuickDefaultClipNode objects"
+  * Ensure that the case of the path will match then QUrl for a UNC path
+  * Use unique_ptr to clarify ownership of QQuickDefaultClipNode objects
+  * MouseArea: fix containsMouse behavior during visibility changes
+  * QQuickTextControl: commit pre-edit after key press
+  * qv4generatorobject: Fix crash when creating new properties
+  * QQmlIncubator: handle clear inside setinitialState
+  * Fix release-only windows builds
+  * Fix lookup of existing inline components by name
+  * qquicktextinput: Fix validation for IM event
+  * docs: Fix documentation of the Locale numberOptions property
+  * QQmlPropertyPrivate::signalExpression: handle object being null
+  * qquicktextinput: Fix Undo history for IM event
+  * QQuickWindowIncubationController: Use QPointer to guard QSGRenderLoop reference
+  * qmlplugindump: Fix overload ambiguity
+  * QV4 Engine: Remove MSVC special casing
+  * QQuickTextEdit: ensure we update after changing padding
+  * QQuickItemParticle give() method kill particle
+  * QSequentialAnimationGroupJob: Protect against self-deletion
+  * Change QQuickShortcut::setSequences to bind to all sequences
+  * qquicktextinput: ensure we update IM when cursor changes position
+  * QQuickListView: Add autotest so that animated delegate does not crash
+  * QQmlIRLoader: Actually load RequiredPropertyExtraData
+  * Doc: Fix broken QDoc markup
+  * Update commercial license headers
+  * QQmlProperty: Guard QQmlContextData with QQmlGuardedContextData
+  * ListModel: Fix move handling in sync
+  * tst_EcmaScriptTests: Raise timeout
+  * QuickLayouts: fix crash when layout width depends on parent width
+  * export QAcccessibleQuickItem
+  * QAnimationGroupJob: Don't call virtual functions from dtor
+  * Fix QQuickShortcut::setContext so re-grab all shortcuts
+  * Revert "Set the stencil buffer zone" and "Add clipNext null pointer guard"
+  * Fix Text with ElideRight not being rendered when width goes from 0 to >0
+  * Cache static compilation units
+  * Regenerate Shape fill geometry when alpha changes to non-zero
+  * Remove QQmlCleanup from QQmlScriptData
+  * Add Lancelot tests for both types of clipping
+  * masm: Add error handling for failed mprotect()
+  * QQuickLoader: prevent clearing initial properties after active = true
+  * Correct #if-ery in QML locale's time-zone update test
+  * Doc: mention that Item's childrenRect property is local to the item
+- Commits dropped by the rebase:
+  * Add missing limits include to fix build with GCC 11
+- Drop 0001-Revert-Bump-version.patch, it's versioned correctly now
+- Rebase qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
+
+-------------------------------------------------------------------
+Wed Apr  6 06:50:15 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase the disk constraint to 6GB since the SLE build use
+  5.5GB already (boo#1197992)
+
+-------------------------------------------------------------------
+Fri Jan 21 08:13:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde43:
+  * QQmlJs::FixedPoolArray: fix UB (precondition violation) in allocate()
+  * Fix crash during model reset
+  * QQuickWindow: don't leak old screenChanged connections
+  * qqmldelegatemodel: Fix out of bounds cache removal
+  * QQuickItemAnimation: close potential memory leak
+
+-------------------------------------------------------------------
+Thu Oct 28 07:20:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde36:
+  * Do not revert properties of deleted objects
+  * Revert "Fix for possible crash in QSGDefaultLayer::grab"
+  * Fix distorted text with subpixel matrix translation
+  * Fix sweep step for tainted QObject JavaScript wrappers
+  * QQmlDelegateModel: Refresh the view when a column is added at 0
+  * QQuickLoader: Do not incubate if the source arrives after setActive(false)
+  * Include <limits> in Yarr.h to fix build with GCC 11
+
+-------------------------------------------------------------------
+Wed Jun 23 07:01:57 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde29:
+  * Remove unused QPointer<QQuickPointerMask>
+
+-------------------------------------------------------------------
+Mon Jun 21 20:37:30 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Switch to KDE's maintenance branch
+- Update to version 5.15.2+kde28:
+  * Support &apos; in styled text
+  * Document that StyledText also supports &nbsp; and &quot;
+  * Add missing limits include to fix build with GCC 11
+  * Give a warning when StyledText encounters a non supported entity
+  * doc: explain QQItem event delivery, handlers, setAcceptTouchEvents()
+  * JIT: When making memory writable, include the exception handler
+  * Fix IC properties in same file
+  * QML: Fix proxy iteration
+  * DesignerSupport: Don't skip already inspected objects
+  * Show a tableview even if the syncView has an empty model
+  * qqmlistmodel: Fix crash when modelCache is null
+  * Use load(qt_tool) for qmltime
+  * qv4qmlcontext: Fix bounded signal expressions when debugging
+  * qmltypes.prf: Take abi into account for *_metatypes.json file names
+  * Accessibility event is sent on item's geometry change
+  * Fix crash when calling hasOwnProperty() on proxy object
+  * QQuickTextInput: Store mask data in std::unique_ptr
+  * Fix QML property cache leaks of delegate items
+  * qmlfunctions.qdoc: Add clarification to QML_FOREIGN
+  * Doc: mention that INCLUDEPATH must be set in some cases
+  * QML Text doesn't reset lineCount when text is empty
+  * Avoid GHS linker to optimize away QML type registrations
+  * QQuickWindow: Check if QQuickItem was not deleted
+  * QQuickView docs: show correct usage of setInitialProperties
+  * Add changes file for Qt 5.15.2
+  * Revert "qquickloader: Free memory of loaded components after source change"
+  * Inline components: Fix custom parser support
+  * Bump version
+- Add patch to reset version to 5.15.2:
+  * 0001-Revert-Bump-version.patch
+- Drop patches, now upstream:
+  * 0001-Include-limits-to-fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
+Thu Apr 22 14:43:09 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with GCC 11 (boo#1185100):
+  * 0001-Include-limits-to-fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
+Fri Mar 12 12:06:44 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Work around implicit dependency of src/qml on qmltyperegistrar
+  which lead to an incomplete libQt5Qml5.so build for non-SSE2
+
+-------------------------------------------------------------------
+Sun Dec 27 12:18:28 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable qml-autoreqprov
+
+-------------------------------------------------------------------
+Fri Nov 20 12:08:48 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.2:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.15.2/?h=5.15.2
+- Refresh qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 10:50:47 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 4GB min disk space
+
+-------------------------------------------------------------------
+Thu Sep 10 07:57:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.15.1/?h=5.15.1
+- Drop patches, now upstream:
+  * fix-subpixel-positioned-text.patch
+  * qtdeclarative-switch-to-python3.patch
+
+-------------------------------------------------------------------
+Tue May 26 09:50:22 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.15.0:
+  * No changelog available
+  * Added qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch: fixes QTBUG-83890
+
+-------------------------------------------------------------------
+Wed May 20 16:14:29 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 5.15.0-rc2:
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed May  6 11:26:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-rc:
+  * New bugfix release
+  * For the changes between 5.14.2 and 5.15.0 please see:
+    http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.15.0/?h=5.15.0
+
+-------------------------------------------------------------------
+Tue May  5 11:16:16 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix kerning with certain labels (QTBUG-49646):
+  * fix-subpixel-positioned-text.patch
+
+-------------------------------------------------------------------
+Fri Apr 24 07:11:08 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta4:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Apr 14 06:47:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 24 12:13:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Feb 28 09:58:46 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Feb 19 10:16:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.15.0-alpha:
+  * New feature release
+  * For more details please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.15
+
+-------------------------------------------------------------------
+Mon Jan 27 13:14:12 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.1:
+  * New bugfix release
+  * For more details please see:
+    http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.14.1/?h=v5.14.1
+
+-------------------------------------------------------------------
+Thu Jan 23 09:45:26 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Only force-enable the QML JIT for 32-bit x86
+
+-------------------------------------------------------------------
+Mon Dec 16 09:53:10 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the license tags.
+
+-------------------------------------------------------------------
+Thu Dec 12 12:41:44 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0:
+  * New bugfix release
+  * For the changes between 5.13.2 and 5.14.0 please see:
+    https://code.qt.io/cgit/qt/qtdeclarative.git/tree/dist/changes-5.14.0?h=v5.14.0
+  * For the changes between 5.13.1 and 5.13.2 please see:
+    https://code.qt.io/cgit/qt/qtdeclarative.git/tree/dist/changes-5.13.2?h=v5.14.0
+
+-------------------------------------------------------------------
+Wed Dec  4 14:37:36 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-rc:
+  * New bugfix release
+  * No changelog available
+  * For more details please see:
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+
+-------------------------------------------------------------------
+Tue Nov 12 13:00:58 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Oct 24 13:22:31 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Oct 15 12:34:25 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Sep 30 13:30:01 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.14.0-alpha:
+  * New feature release
+  * No changelog available
+  * For more details about Qt 5.14 please see:
+    https://wiki.qt.io/New_Features_in_Qt_5.14
+- Refresh sse2_nojit.patch:
+  * Basically a rewrite, needed for the new config system
+
+-------------------------------------------------------------------
+Fri Sep  6 08:03:38 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.13.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.13.1/?h=v5.13.1
+
+-------------------------------------------------------------------
+Fri Aug 16 07:25:24 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- QtQuick.LocalStorage needs libQt5Sql5-sqlite
+
+-------------------------------------------------------------------
+Wed Jul  3 10:02:23 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Link from Qt bindir into %_bindir, not the other way around to fix
+  applicationDirPath called from Qt binaries
+- Add -qt5 suffix to all binaries in %_bindir
+
+-------------------------------------------------------------------
+Wed Jun 19 11:19:49 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0:
+  * New bugfix release
+  * No changelog available
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.13.0/?h=5.13
+
+-------------------------------------------------------------------
+Thu Jun  6 08:51:50 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove patches, upstream in 5.13:
+  * Dont-crash-when-accessing-invalid-properties.patch
+
+-------------------------------------------------------------------
+Tue Jun  4 14:50:38 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash (QTBUG-75203):
+  * Dont-crash-when-accessing-invalid-properties.patch
+
+-------------------------------------------------------------------
+Tue Jun  4 07:24:25 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-rc:
+  * New bugfix release
+  * No changelog available
+- Remove patches, now upstream:
+  * Dont-crash-when-accessing-invalid-properties.patch
+
+-------------------------------------------------------------------
+Mon Apr 29 09:16:17 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Apr 18 07:26:48 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.3:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.12.3/?h=v5.12.3
+
+-------------------------------------------------------------------
+Thu Mar 21 10:24:50 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.13.0-beta1:
+  * New feature release
+  * For more details about Qt 5.13 please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.13.0/?h=5.13
+- Refresh sse2_nojit.patch
+
+-------------------------------------------------------------------
+Thu Mar 14 08:48:03 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.2:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.12.2/?h=5.12.2
+
+-------------------------------------------------------------------
+Mon Feb  4 07:49:14 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Work around cmake issue by expanding make_jobs manually, ignoring
+  cmake breaks autoprovides
+
+-------------------------------------------------------------------
+Fri Feb  1 08:39:40 UTC 2019 - fabian@ritter-vogt.de
+
+- Update to 5.12.1:
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.12.1/?h=v5.12.1
+- cmake breaks %make_jobs - ignore it (boo#1091864)
+
+-------------------------------------------------------------------
+Thu Dec  6 13:35:28 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0:
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.12.0/?h=v5.12.0
+
+-------------------------------------------------------------------
+Mon Dec  3 08:16:24 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc2:
+  * New bugfix release
+  * Only important bugfixes
+- Changelog for Qt 5.12.0:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.12.0/?h=5.12.0
+
+-------------------------------------------------------------------
+Mon Nov 26 16:45:46 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove unneeded BuildReq on Xml modules (boo#1117316)
+
+-------------------------------------------------------------------
+Thu Nov 22 13:38:57 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-rc:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Nov  8 15:24:30 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta4:
+  * New bugfix release
+  * No changelog available
+- New Qt.labs.wavefrontmesh module
+
+-------------------------------------------------------------------
+Fri Oct 26 07:20:23 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta3:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Oct 17 08:22:33 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta2:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Fri Oct  5 18:57:01 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-beta1:
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Oct  2 07:33:22 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.12.0-alpha:
+  * New feature release
+  * For more details please see:
+  * http://wiki.qt.io/New_Features_in_Qt_5.12
+- Refresh patches:
+  * qtdeclarative-switch-to-python3.patch
+  * sse2_nojit.patch
+- Apply sse2_nojit.patch unconditionally
+- Use %license
+
+-------------------------------------------------------------------
+Fri Sep 21 07:58:52 UTC 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.2
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.11.2/?h=v5.11.2
+
+-------------------------------------------------------------------
+Tue Jun 19 10:49:55 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.11.1/?h=v5.11.1
+
+-------------------------------------------------------------------
+Tue May 22 15:18:09 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.11.0/?h=v5.11.0
+- Includes fix for various issues with the JS/QML Date object
+  (boo#1114570, QTBUG-72109, QTBUG-56787)
+
+-------------------------------------------------------------------
+Tue May  8 10:59:23 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-rc
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Apr 23 08:55:19 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta4
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Apr 11 09:13:40 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta3
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Wed Mar 28 09:17:11 CEST 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta2
+  * New bugfix release
+  * No changelog available
+
+-------------------------------------------------------------------
+Tue Mar 13 13:40:39 UTC 2018 - christophe@krop.fr
+
+- Fix the license tag.
+
+-------------------------------------------------------------------
+Thu Mar  1 09:54:49 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-beta1
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.11.0-beta1/?h=v5.11.0-beta1
+
+-------------------------------------------------------------------
+Tue Feb 20 14:28:03 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.11.0-alpha
+  * New feature release
+  * For more details please see:
+  * https://wiki.qt.io/New_Features_in_Qt_5.11
+- Remove patches, now upstream
+  * revert-delay-deletion-of-qsgtextures.patch
+
+-------------------------------------------------------------------
+Wed Feb 14 15:44:26 CET 2018 - fabian@ritter-vogt.de
+
+- Update to 5.10.1
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.10.1/?h=v5.10.1
+
+-------------------------------------------------------------------
+Fri Jan 26 12:45:00 UTC 2018 - alarrosa@suse.com
+
+- Update patch to also modify some python2-style prints to use python3-style
+  * qtdeclarative-switch-to-python3.patch
+
+-------------------------------------------------------------------
+Fri Jan 26 09:44:57 UTC 2018 - mlin@suse.com
+
+- Switch to use python3 at build time
+  * qtdeclarative-switch-to-python3.patch
+
+-------------------------------------------------------------------
+Fri Dec  8 23:11:26 UTC 2017 - christophe@krop.fr
+
+- Update the license tag (boo#967696)
+
+-------------------------------------------------------------------
+Thu Dec  7 12:18:07 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 final
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sun Dec  3 14:12:49 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 2
+  * New bugfix release
+
+-------------------------------------------------------------------
+Thu Nov 30 09:47:12 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10.0 RC 1
+  * New bugfix release
+
+-------------------------------------------------------------------
+Sat Nov 25 12:46:35 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.3
+  * New bugfix release
+  * For more details, see:
+    http://code.qt.io/cgit/qt/qtdeclarative.git/tree/dist/changes-5.9.3/?h=v5.9.3
+
+-------------------------------------------------------------------
+Wed Nov 15 11:41:44 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 4
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Thu Nov  2 07:22:21 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 3
+- Contains bugfixes
+
+-------------------------------------------------------------------
+Mon Oct 30 16:19:23 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 2
+- Contains bugfixes
+- Refresh revert-delay-deletion-of-qsgtextures.patch
+
+-------------------------------------------------------------------
+Mon Oct  9 16:17:22 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Beta 1
+- For more information visit:
+    https://blog.qt.io/blog/2017/10/09/qt-5-10-beta-released/
+- Remove patches, now upstream:
+  * implicit-type-import-in-modules.patch
+
+-------------------------------------------------------------------
+Sun Oct  8 13:57:42 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.2
+  * For more details please see:
+    https://blog.qt.io/blog/2017/10/06/qt-5-9-2-released/
+- Dropped patches, now upstream:
+  * rebuild-qqmldata-propertycache-if-deleted.patch
+  * support-non-integer-pixel-ratios-qquickwidget.patch
+
+-------------------------------------------------------------------
+Mon Sep 25 14:42:37 CEST 2017 - fabian@ritter-vogt.de
+
+- Update to 5.10 Alpha 1:
+  * Qt QML
+    + Added support for enum declarations in QML.
+    + Added support for retranslation.
+  * Qt Quick
+    + Added a shapes plugin, providing a Shape type under QtQuick.Shapes 1.0. This allows adding stroked and filled paths into Qt Quick scenes. Such
+    + Added the Qt.labs.handlers plugin, providing TapHandler, PinchHandler and DragHandler. These are the beginnings of the Pointer Handlers which 
+    + QQuickItem layers can now request to be backed by multisample framebuffers via the property layer.samples
+    + Added font.kerning and font.preferShaping properties for advanced control over the font shaping subsystem.
+    + Added advance property to Text to retrieve the typographical advance width.
+    + Added Image element support for direct loading of ETC1 and ETC2 compressed textures from .pkm files. (on platforms where ETC1/2 are supported)
+- For more information visit:
+    https://blog.qt.io/blog/2017/09/13/qt-5-10-alpha-released/
+- Remove patches, now upstream:
+  * support-non-integer-pixel-ratios-qquickwidget.patch
+  * rebuild-qqmldata-propertycache-if-deleted.patch
+- Add patch to fix implicit import of internal types inside modules:
+  * implicit-type-import-in-modules.patch
+
+-------------------------------------------------------------------
+Wed Aug  9 20:26:28 CEST 2017 - ro@suse.de
+
+- Don't special case sse2 libs on i586 for SLE-15, it supports
+  only SSE2 capable CPUs.
+
+-------------------------------------------------------------------
+Mon Jul 24 19:17:08 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to revert upstream commit introducing a massive memory
+  leak (QTBUG-62117):
+  * revert-delay-deletion-of-qsgtextures.patch
+
+-------------------------------------------------------------------
+Mon Jul 17 19:07:46 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to fix crash related to shared QQmlEngine instances
+  (QTBUG-61681, kde#381525):
+  * rebuild-qqmldata-propertycache-if-deleted.patch
+
+-------------------------------------------------------------------
+Sat Jul  1 08:13:07 UTC 2017 - lbeltrame@kde.org
+
+- Update to 5.9.1
+  * For more details please see:
+    http://blog.qt.io/blog/2017/06/30/qt-5-9-1-released/
+
+-------------------------------------------------------------------
+Fri Jun 23 11:46:39 UTC 2017 - lbeltrame@kde.org
+
+- Add upstream patch support-non-integer-pixel-ratios-qquickwidget.patch
+  * Add support for non-integer scaling to QQuickWidget (QTBUG-61502)
+
+-------------------------------------------------------------------
+Wed May 31 07:05:09 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 final
+
+-------------------------------------------------------------------
+Wed May 24 19:16:41 UTC 2017 - fabian@ritter-vogt.de
+
+- Update to 5.9.0 RC:
+  * For more details please see: 
+    http://lists.qt-project.org/pipermail/announce/2017-May/000115.html
+    and https://wiki.qt.io/New_Features_in_Qt_5.9
+- Refresh patches:
+  * sse2_nojit.patch
+
+-------------------------------------------------------------------
+Fri Apr 28 12:34:26 UTC 2017 - wbauer@tmo.at
+
+- Add back sse2_nojit.patch to support 32bit CPUs without SSE2
+  instructions (boo#1027691)
+
+-------------------------------------------------------------------
+Wed Dec 14 16:05:47 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.1
+  * For more details please see:
+    https://blog.qt.io/blog/2016/12/14/qt-5-7-1-released/
+    and https://www.qt.io/qt5-7/
+- Drop upstreamed/obsolete patches:
+  overflow.patch, qtdeclarative-opensource-src-5.6.0-qml_no-lifetime-dse.patch,
+  V4-Always-set-the-tag-when-boxing-a-pointer.patch,
+  Add-a-facility-to-version-type-information.patch,
+  V4-Free-up-2-address-bits-in-64bit-mode.patch,
+  masm-unaligned-stack-pointer.patch and
+  fix-crash-on-exit-when-using-default-property-aliases-with-layouts.patch
+
+-------------------------------------------------------------------
+Mon Oct 17 11:34:00 UTC 2016 - lbeltrame@kde.org
+
+- Add fix-crash-on-exit-when-using-default-property-aliases-with-layouts.patch:
+  fix Plasma screenlocker crash on unlock (boo#999548, QTBUG#51927)
+
+-------------------------------------------------------------------
+Tue Oct 11 08:28:26 UTC 2016 - schwab@suse.de
+
+- masm-unaligned-stack-pointer.patch: align stack on 16 byte boundaries in
+  the YarrJIT (bsc#1003880)
+
+-------------------------------------------------------------------
+Wed Sep 28 17:06:29 UTC 2016 - fabian@ritter-vogt.de
+
+- Add new version of V4-Free-up-2-address-bits-in-64bit-mode.patch
+  * Fix testcase failure (boo#989341, QTBUG#54822)
+- Only apply patch on AArch64 to avoid regressions where patch not
+  needed (it's experimental)
+
+-------------------------------------------------------------------
+Mon Sep 26 07:15:48 UTC 2016 - fvogt@suse.com
+
+- Add upstream patches for aarch64 with VA_BITS=48 (boo#989341, QTBUG#54822)
+  * V4-Always-set-the-tag-when-boxing-a-pointer.patch
+  * Add-a-facility-to-version-type-information.patch
+  * V4-Free-up-2-address-bits-in-64bit-mode.patchv4-set-tag.patch
+
+-------------------------------------------------------------------
+Sat Sep 24 18:39:01 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.7.0
+  * For more details please see:
+    https://www.qt.io/qt5-7/
+- Axe dead qml_only_release_types_if_they_arent_referenced_anymore.patch
+
+-------------------------------------------------------------------
+Tue Jun 21 09:41:43 UTC 2016 - lbeltrame@kde.org
+
+- Add qtdeclarative-opensource-src-5.6.0-qml_no-lifetime-dse.patch
+  * Fix crash with i586 and QML loaders (boo#985768)
+
+-------------------------------------------------------------------
+Thu Jun 16 15:39:26 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added qml_only_release_types_if_they_arent_referenced_anymore.patch
+
+-------------------------------------------------------------------
+Wed Jun  8 14:15:15 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.1
+  * For more details please see:
+    http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+- Drop upstreamed
+  Workaround-for-crashes-in-QtQml-code-relating-to-null-this-pointers.patch
+
+-------------------------------------------------------------------
+Thu May 26 15:49:35 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added Workaround-for-crashes-in-QtQml-code-relating-to-null-this-pointers.patch
+  to prevent issues with GCC 6
+
+-------------------------------------------------------------------
+Fri Mar 18 19:03:05 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Update to 5.6.0
+- Drop support for non-SSE2 machines
+- Drop sse2_nojit.patch
+- Drop upstreamed patches:
+  0001-scene-graph-fixed-memory-leak-in-qsgbatchrenderer-re.patch,
+  Refactor-FxViewItem-releasing-code.patch and
+  sanitize-visibleItems-list-after-model-insertions.patch
+- Add overflow.patch to resolve
+  "Statement might be overflowing a buffer" post-build-check error
+  * For more details please see:
+    http://blog.qt.io/blog/2016/03/16/qt-5-6-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.6
+
+-------------------------------------------------------------------
+Sat Feb 13 01:54:31 UTC 2016 - matz@suse.com
+
+- Add 0001-scene-graph-fixed-memory-leak-in-qsgbatchrenderer-re.patch
+  fixing a memory leak, QTBUG#48799.
+
+-------------------------------------------------------------------
+Mon Feb  1 17:00:44 UTC 2016 - hrvoje.senjan@gmail.com
+
+- Added sanitize-visibleItems-list-after-model-insertions.patch
+  and Refactor-FxViewItem-releasing-code.patch to help in resolving
+  kde#352055 and qtbug#48870
+
+-------------------------------------------------------------------
+Fri Oct 16 20:22:26 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.1 (boo#954149)
+  * For more details please see:
+    http://blog.qt.io/blog/2015/10/15/qt-5-5-1-released/
+
+-------------------------------------------------------------------
+Sun Aug 16 08:32:00 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.5.0
+  * For more details please see:
+    http://blog.qt.io/blog/2015/07/01/qt-5-5-released/
+    and https://wiki.qt.io/New_Features_in_Qt_5.5
+- Drop avoid-calling-potentially-pure-virtual-method.patch, merged
+  upstream
+
+-------------------------------------------------------------------
+Wed Jun  3 22:56:20 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.2
+  * Bugfix release, for more details please see:
+    http://blog.qt.io/blog/2015/06/02/qt-5-4-2-released/
+
+-------------------------------------------------------------------
+Mon Apr 27 18:14:35 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Add avoid-calling-potentially-pure-virtual-method.patch, QTBUG#45753
+
+-------------------------------------------------------------------
+Sat Apr 25 10:50:08 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Extend sse2_nojit.patch to warn users without SSE2 extension that
+  their processor is officially not supported.
+  Also pass -msse2 -mfpmath=sse flags when we are building with SSE2
+
+-------------------------------------------------------------------
+Thu Apr  9 17:30:27 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Adjust usage of latest %qmake5_install macro
+
+-------------------------------------------------------------------
+Tue Feb 24 16:10:14 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Update to 5.4.1
+  * For more details please see:
+    http://blog.qt.io/blog/2015/02/24/qt-5-4-1-released/
+- Add minimal requires on other Qt5 libs
+
+-------------------------------------------------------------------
+Wed Dec 10 11:00:06 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 Final
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/12/10/qt-5-4-released/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+
+-------------------------------------------------------------------
+Thu Nov 27 15:58:41 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.4 RC
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/11/27/qt-5-4-release-candidate-available/
+    and http://qt-project.org/wiki/New-Features-in-Qt-5.4
+- Drop patches merged upstream:
+  0005-Fix-crash-with-foreach-on-arguments-object.patch
+  0004-QML-parse-.js-files-as-JavaScript-not-QML.patch
+  0006-Move-syncTimer-measurment-to-the-correct-place.patch
+  0003-Fix-crashes-when-calling-Array.sort-with-imperfect-s.patch
+  0001-Fix-crash-with-cleanup-of-animators.patch
+  0002-Support-padding-in-images-stored-in-atlas-texture.patch
+
+-------------------------------------------------------------------
+Mon Sep 22 18:11:03 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Add sse2_nojit.patch: enable JIT and sse2 only on sse2 case
+- Build QtQML module twice on ix86, without and with sse2 (sse2
+  library is placed to %_libdir/sse2/ (bnc#897758)
+
+-------------------------------------------------------------------
+Tue Sep 16 11:27:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2 final
+  * No changes since previous snapshot
+  * Use official tars
+- Added patches from upstream 5.3 branch:
+  0001-Fix-crash-with-cleanup-of-animators.patch (QTBUG#37833),
+  0002-Support-padding-in-images-stored-in-atlas-texture.patch,
+  0003-Fix-crashes-when-calling-Array.sort-with-imperfect-s.patch
+  (QTBUG#39072),
+  0004-QML-parse-.js-files-as-JavaScript-not-QML.patch (QTBUG#40143),
+  0005-Fix-crash-with-foreach-on-arguments-object.patch (QTBUG#40844)
+  and 0006-Move-syncTimer-measurment-to-the-correct-place.patch
+  (QTBUG#40556)
+
+-------------------------------------------------------------------
+Thu Sep  4 20:37:34 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.2~git20140904 (rd8bc98b):
+  * Tip of the bugfix 5.3.2 branch
+  * Contains many bugfixes over 5.3.1 release:
+    * Doc: Added a link to the QML advanced tutorial
+    * Don't use d->instanceModel after free'ing it
+    * Fix crash with early QObject property access
+    * Fix typo in DelegateModelGroup documentation
+    * Protect some members in QQmlObjectCreator
+    * Initialize variable
+    * Don't abuse new to do a reinterpret_cast
+    * Protect incubation against its creator being deleted.
+    * Add 5.3.2 changelog for qtdeclarative
+    * Fix crash with recursively loading cached compilation units
+    * Fix typo in StateChangeScript documentation.
+    * Added the QtSQL dependency info. to the project file
+    * tst_dialogs: verify that rootObject is valid
+    * tst_dialogs: QTRY_ on the expression
+      (spyVisibilityChanged.count) not the variable.
+    * The cached objects can be deleted, so keep them in a QPointer
+    * Fix potential deadlook in threaded renderloop.
+    * Added a signal handler
+    * Fix typo in Context2D documentation.
+    * Disable threaded FBO canvas drawing when not supported.
+    * V4 JIT: fix JS stack frame size calculation.
+    * Correct strokeRect documentation.
+    * Silence harmless compiler warning.
+    * benchmarks: Skip compilation of (and mark with FIXME) a few
+      benchmarks that don't build.
+    * benchmarks/particles: fix projects to actually build
+    * Fix compilation of tst_compilation (:-P) benchmark.
+    * Avoid double deletion when deleting an incubating component.
+    * Invalidate the scenegraph properly in the rendercontrol
+    * Fix crash when loading invalid QML with behavior on
+      invalid group property
+    * Fix crash when animators are deleted just after being started
+    * Don't try to reload QQuick images when changing to
+      null screen
+    * Clarify Component.onCompleted/onDestruction docs
+    * Fix fbo creation and resize logic in QQuickWidget
+    * Fix Qt.include with cached compilation units and resources
+    * Synchronize PathView gesture grabbing with other items.
+    * Fix FBO recreated every time the QSG node is updated under
+      some conditions
+    * More QQuickCanvas cleanup handling.
+    * Make canvas cleanup work propertly...
+    * Use the current context to resolve extensions.
+    * qmlplugindumper: do not pop up a window if
+      an assert is triggered
+    * Fix assertion: ASSERT: "hasException" in file
+      jsruntime/qv4engine.cpp, line 933
+    * Fix QQmlDelegateModel getting out of sync
+    * QQuickWindow: add some links to resetOpenGLState
+    * Remove metaobject revisioning for QQuickScreenAttached
+    * Don't dereference null pointer.
+    * Flickable: Cancel interaction on interactive changes
+    * Don't try to draw shader effect sources with dims < 0.
+    * QQuickMouseArea: Mark override functions with Q_DECL_OVERRIDE
+    * Fix interaction of garbage collector with JS objects during
+      QML type instantiation
+    * Do not use mark() when marking ExecutionContexts
+    * Don't recreate header and footer unnecessarily
+    * Clear the visibleImgTags list when setting up the text layout
+    * Improve programmatic flicking of ListView (and Flickable).
+    * V4: work around a bug in libc++'s std::vector<bool>
+    * QQmlComponent::create(): visual items must have
+      a visual parent
+    * Clean up the textures when deleting the content
+    * Schedule layout changes to avoid refill() recursion.
+    * Add autotest for incorrect steal of flick.
+    * Do not crash AtlasTexture if image is null
+    * Fix Node object leak in QQuickTextEditPrivate
+    * shift and unshift fail for QQmlSequence types
+    * Check for window != 0 in QuickTestResult::grabImage().
+    * Doc: add documentation for the RSS News example
+    * Fix typo in documentation
+    * Binding Text width to implicitWidth can result in
+      incorrect layout
+    * Docs: fix "classname" indentation in the qmldir specs
+    * Fix role for generic Accessible items
+    * Calqlatr demo: Remove unused files
+    * Remove usage of external dependencies from the RSS News demo
+    * Fix crash on QQmlEngine destruction.
+    * Don't dereference null QQuickWindowPrivate.
+    * Add opt-out environment variable for @2x images
+    * Doc: correct link/compilation errors in Qt Declarative
+    * Fix crash in Flickable with pressDelay.
+    * Skip rssnews demo if xmlpatterns is not present
+    * Delete objects created by qmlplugindump
+    * Avoid double deletion of QQuickWindow
+    * Fix QQmlDelegateModel ignoring layoutChange in
+      certain situations
+    * Fix intermittent crash with older MinGW releases
+    * Doc: Add documentation for the Maroon in Trouble example
+    * Fix crash when deleting component in Component.onComplete
+      through loader
+    * Fix memory leak in QQmlComponent::createObject
+    * Update QtQuick import value to 2.3
+    * Set locked state while locking for grab.
+    * QQmlObjectCreator: Clear sharedState componentAttached
+      in destruction/clear
+    * Initialize velocity
+    * Improve RSS News Qt Quick Demo
+    * Fix QQmlComponent detailed description.
+    * Add a QQuickWidget - QQuickView comparison example
+    * Fix crash in QObjectWrapper
+- libqt5-fix-crash-with-early-QObject-property-access.patch,
+  merged upstream
+
+-------------------------------------------------------------------
+Fri Aug 29 09:49:55 UTC 2014 - mlin@suse.com
+
+- Added upstream patch libqt5-fix-crash-with-early-QObject-property-access.patch
+  * Fix crash with early QObject property access, QTBUG-40018
+
+-------------------------------------------------------------------
+Tue Aug  5 18:06:49 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Create tools subpackage
+
+-------------------------------------------------------------------
+Wed Jun 25 10:38:00 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.1
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/06/25/qt-5-3-1-released/
+- Added pkgconfig(Qt5Xml) BuildRequires
+
+-------------------------------------------------------------------
+Mon Jun  2 16:49:21 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Added baselibs.conf
+- Make private headers noarch
+
+-------------------------------------------------------------------
+Mon May 19 23:42:45 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 final
+  * Minor bugfixes over previous RC
+
+-------------------------------------------------------------------
+Thu May  8 18:04:58 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 RC
+  * For more details, please see
+  http://blog.qt.digia.com/blog/2014/05/08/qt-5-3-release-candidate-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.3
+
+-------------------------------------------------------------------
+Tue May  6 18:56:00 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Explicitly BuildRequire python-base
+
+-------------------------------------------------------------------
+Tue Mar 25 11:44:16 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.3.0 beta
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2014/03/25/qt-5-3-beta-released/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.3
+- Added libQt5Widgets-private-headers-devel BuildRequires: they are
+  now needed for building QQuickWidgets
+- Droped aarch64-support.patch, merged upstream
+
+-------------------------------------------------------------------
+Fri Mar 21 02:31:22 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Build, and add examples subpackage
+
+-------------------------------------------------------------------
+Mon Feb 10 10:35:16 UTC 2014 - mlin@suse.com
+
+- Add License files to %doc
+
+-------------------------------------------------------------------
+Wed Feb  5 17:07:24 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.1:
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2014/02/05/qt-5-2-1-released/
+- Remove libtool archives from packages
+- Added aarch64-support.patch from upstream (merged for 5.3)
+
+-------------------------------------------------------------------
+Mon Dec 16 23:19:32 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Make devel packages naming consistent:
+  use libqt5-$upstreammodulename-(devel, private-headers-devel)
+
+-------------------------------------------------------------------
+Thu Dec 12 14:34:54 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 5.2.0 final:
+  * For more details please see:
+    http://blog.qt.digia.com/blog/2013/12/12/qt-5-2-released-the-best-qt-yet/
+    http://qt-project.org/qt5/qt52
+    http://qt.digia.com/Product/Whats-New/Qt-52/
+
+-------------------------------------------------------------------
+Fri Nov 29 13:42:39 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 rc1
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2013/11/29/qt-5-2-release-candidate-1-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.2
+
+-------------------------------------------------------------------
+Wed Oct 23 17:11:55 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to 5.2 beta1
+  * New feature release, please see
+  http://blog.qt.digia.com/blog/2013/10/23/qt-5-2-beta-available/
+  and http://qt-project.org/wiki/New-Features-in-Qt-5.2
+
+-------------------------------------------------------------------
+Thu Aug 29 17:00:21 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 5.1.1:
+  * Bugfix release, please see
+  http://blog.qt.digia.com/blog/2013/08/28/qt-5-1-1-released/
+  http://qt.gitorious.org/qt/qtdeclarative/blobs/release/dist/changes-5.1.1
+  and http://qt-project.org/wiki/Qt511KnownIssues for known issues
+- Small spec cleanup
+
+-------------------------------------------------------------------
+Sat Aug  3 07:16:17 UTC 2013 - tittiatcoke@gmail.com
+
+- Rename packages according to Factory standards
+
+-------------------------------------------------------------------
+Sun Jul  7 07:23:51 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 release
+
+-------------------------------------------------------------------
+Tue Jun 18 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 RC 1
+
+-------------------------------------------------------------------
+Mon May 20 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 Beta 1
+
+-------------------------------------------------------------------
+Tue Apr  9 20:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.1 Alpha 1
+
+-------------------------------------------------------------------
+Wed Jan 30 19:00:00 UTC 2013 - stephan.binner@basyskom.com
+
+- update to Qt 5.0.1
+
+-------------------------------------------------------------------
+Wed Dec 19 20:40:40 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 release
+
+-------------------------------------------------------------------
+Thu Dec 13 10:50:52 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Release Candidate 2
+
+-------------------------------------------------------------------
+Thu Dec  6 19:54:17 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Release Candidate 1
+
+-------------------------------------------------------------------
+Thu Nov 15 12:14:39 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Beta 2
+
+-------------------------------------------------------------------
+Thu Aug 30 11:31:45 UTC 2012 - stephan.binner@basyskom.com
+
+- update to Qt 5.0 Beta 1 release
+
+-------------------------------------------------------------------
+Thu May 24 15:29:20 UTC 2012 - stephan.binner@basyskom.com
+
+- update to newer Alpha snapshot / Beta candidate
+
+-------------------------------------------------------------------
+Fri Apr 13 13:22:38 UTC 2012 - stephan.binner@basyskom.com
+
+- rework package splitting for Qt 5 modularization
+
+-------------------------------------------------------------------
+Thu Apr  5 09:56:15 UTC 2012 - dmueller@suse.com
+
+- Initial packaging (Qt 5.0 Alpha)
+

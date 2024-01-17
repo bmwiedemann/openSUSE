@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76fa4222d35143896445d8c5d665b749</srcmd5>
+    <version>0.13</version>
+    <time>1666978192</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/RW47B5UGCTWVEUMQASZAPGA7ULTVM4MI. Disabled stripping the binaries.</comment>
+    <requestid>1031534</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44be3b064cef18af772dcd4f0968303b</srcmd5>
+    <version>0.13</version>
+    <time>1668702269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update description with the good and bad characteristics.
+- Add FAQ document from the project wiki.</comment>
+    <requestid>1036265</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8d0b2d564f8c64d15b2489e7a8d32bab</srcmd5>
+    <version>0.14</version>
+    <time>1679766944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1074243</requestid>
+  </revision>
+</revisionlist>

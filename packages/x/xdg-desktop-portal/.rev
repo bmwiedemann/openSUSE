@@ -1,0 +1,401 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a66f499c75762f024dd91c3932c58ff8</srcmd5>
+    <version>0.3</version>
+    <time>1478688017</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>438691</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7fa2f40f34faad1caf472bf2eec2da9d</srcmd5>
+    <version>0.5</version>
+    <time>1485383465</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451991</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e19c94a3a36c3379e670f3d1c7665b7f</srcmd5>
+    <version>0.8</version>
+    <time>1498742120</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 506313 from Zaitor)</comment>
+    <requestid>506743</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eabf74616184e649f6ffb002bae9be7d</srcmd5>
+    <version>0.10</version>
+    <time>1520502759</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 583054 from dimstar)</comment>
+    <requestid>583070</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b46b0763439edebad387dd77635e1698</srcmd5>
+    <version>0.11</version>
+    <time>1530740984</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream rel (forwarded request 619134 from iznogood)</comment>
+    <requestid>619152</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ce651573d97b7853165d6a2988c8fc6d</srcmd5>
+    <version>1.0.3</version>
+    <time>1545866527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660477</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fb9de2d04e143c0ac191b201cf46af7c</srcmd5>
+    <version>1.2.0</version>
+    <time>1550049478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+  + notification:
+    - Use icon validator from flatpak.
+    - Don't leave temp files around.
+  + email: Validate options better.
+  + inhibit: Validate options better.
+  + file chooser: Add support for setting the current filter.
+  + Updated translations.
+- Changes from version 1.1.1:
+  + Validate icons in notifications.
+  + Respect lockdown settings.
+  + Write back permissions for notifications to indicate portal
+    use.
+  + Set st_nlink in the documents portal.
+  + Add infrastructure for validating options.
+  + Validate email addresses.
+  + Updated translations.
+- Changes from version 1.1.0:
+  + Add a location portal, this requires geoclue 2.5.2.
+  + Add a settings portal, for desktop-wide settings like XSettings
+    or kdeglobals.
+  + Allow locking down printing, save-to-disk and opening uris.
+  + Monitor application changes in the open uri portal.
+  + Add more tests.
+  + Fix a crash when xdg-desktop-portal-gtk times out (boo#1118121,
+    gh#flatpak/xdg-desktop-portal#236).
+- Add pkgconfig(fontconfig) and pkgconfig(flatpak) BuildRequires:
+  New dependencies.
+- Add pkgconfig(libgeoclue-2.0) BuildRequires and pass
+  enable-geoclue to configure, build new optional location portal.
+</comment>
+    <requestid>673297</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e10e9d99e78b441885f370d1537d80df</srcmd5>
+    <version>1.2.0</version>
+    <time>1555488362</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildIgnore xdg-desktop-portal: self-requires is not needed here
+  to build. Flatkpak has a (correct) dependency on
+  xdg-desktop-portal, but since we don't run flatpak during build,
+  but merely require its -devel package, we can break up this
+  chain. (forwarded request 692942 from dimstar)</comment>
+    <requestid>693289</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f2ef4f31db5e8304463360c3a864625a</srcmd5>
+    <version>1.4.2</version>
+    <time>1561195270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710130</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>43d10a9e021c7641619ff29e97957cbc</srcmd5>
+    <version>1.6.0</version>
+    <time>1577705665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759708</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>76d4e308c171e886e21890d5ad38801c</srcmd5>
+    <version>1.6.0</version>
+    <time>1580205203</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767232 from dimstar)</comment>
+    <requestid>767492</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8fb4cb51ae9473958727c8575e6a0f7f</srcmd5>
+    <version>1.6.0</version>
+    <time>1581087066</time>
+    <user>dimstar_suse</user>
+    <comment>- Set encoding before building to fix a build error in SLE. (forwarded request 769508 from alarrosa)</comment>
+    <requestid>769942</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>204528645ab456d9a773a3d36f7f2bf0</srcmd5>
+    <version>1.6.0</version>
+    <time>1585261854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784414</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>85b29f3e43de2a17f7b739d7cf4b1f2c</srcmd5>
+    <version>1.6.0</version>
+    <time>1586775007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792300</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>a0982ca07ac44a657dd336ba6a5dc70e</srcmd5>
+    <version>1.6.0</version>
+    <time>1594623937</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (forwarded request 819204 from gmbr3)</comment>
+    <requestid>819954</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>f88693566bfc651f8687b5d4ad32f210</srcmd5>
+    <version>1.6.0</version>
+    <time>1599209552</time>
+    <user>dimstar_suse</user>
+    <comment>- Require /usr/bin/fusermount: xdg-document-portal calls out to the
+  binary. Without it, files or dirs can be selected, but
+  whatever is done with or in them, will not have any effect
+  (boo#1175899).</comment>
+    <requestid>830851</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>39849c6920513942c00bc708f5882f5a</srcmd5>
+    <version>1.8.0</version>
+    <time>1610381440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861561</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2e3bb739d06fc3cf1363761a072d6049</srcmd5>
+    <version>1.8.0</version>
+    <time>1611068315</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure systemd rpm macros are called at install/uninstall times
+  for systemd user services.
+- Add BuildRequires on systemd-rpm-macros. (forwarded request 863082 from fcrozat)</comment>
+    <requestid>863168</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d6441735efd37c990f7106b8397bb7b3</srcmd5>
+    <version>1.8.1</version>
+    <time>1620653797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891267</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7f75291cca228de50577c7c81bf4d5da</srcmd5>
+    <version>1.10.0</version>
+    <time>1632522896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.0:
+  + Remap /run/flatpak/app, for Flatpak 1.11.x
+  + Remap /var/config and /var/data
+  + permission-store: Avoid a crash
+  + permissions-store: Add GetPermission
+  + screencast: Add 'virtual' source type
+  + openuri: Use real path for OpenDirectory
+  + location: Fix accuracy levels
+  + Add power profile monitor implementation
+  + Updated translations. (forwarded request 920369 from iznogood)</comment>
+    <requestid>920562</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e562ab9617db6cb184f9bba448ddb1c4</srcmd5>
+    <version>1.10.1</version>
+    <time>1634068133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.1:
+  + Revert a breaking change to the screencast and inhibit portal. (forwarded request 924250 from iznogood)</comment>
+    <requestid>924742</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c298423fb77bbe99b071a7638d9f583b</srcmd5>
+    <version>1.12.1</version>
+    <time>1642724719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>947474</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bab8ecdc3084ac7f3c6471f6e599b22e</srcmd5>
+    <version>1.12.1</version>
+    <time>1646767890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>959914</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>86f315fdfe747c47ffd8d337ced6981b</srcmd5>
+    <version>1.14.0</version>
+    <time>1647806079</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.0:
+  + Add a new &quot;dynamic launcher&quot; portal, which can install .desktop
+    files and accompanying icons after user confirmation.
+  + Rework handling of empty app IDs: In case an empty string app
+    ID is stored in the permission store, this permission is now
+    shared only by apps whose app ID couldn't be determined, rather
+    than all unsandboxed apps.
+  + Use libsystemd (when available) to try to determine the app ID
+    of unsandboxed processes. This is useful since some portals
+    otherwise can't be used by host apps.
+  + Make x-d-p start on session start, which is needed for the
+    dynamic launcher portal to handle rewriting launchers for apps
+    that have been renamed.
+  + Bring back the copy of Flatpak's icon-validator, which was
+    dropped many releases ago.
+  + Icon validation is now required for the notification and
+    dynamic launcher portals (previously it was only done if the
+    &quot;flatpak-validate-icon&quot; binary could be found).
+  + document-portal: Move to the libfuse3 API
+  + document-portal: Use renameat2 sys call
+  + document-portal: Use mutex to fix concurrency bug
+  + realtime: Fix error code paths
+  + realtime: Fix MakeThreadHighPriorityWithPID method
+  + screencast: Fix an error when restoring streams
+  + ci: Various improvements
+  + Documentation improvements
+  + Updated translations.
+- Replace BuildRequires: pkgconfig(fuse) with pkgconfig(fuse3)
+  since document-portal moved to use it.
+- Add BuildRequires: pkgconfig(libsystemd) and</comment>
+    <requestid>962652</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5277300ed5579352b828ebbf5436f45d</srcmd5>
+    <version>1.14.1</version>
+    <time>1648063019</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 42 - ready for impact</comment>
+    <requestid>963643</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>7a548d4c0b3bfafeec58170843454f37</srcmd5>
+    <version>1.14.1</version>
+    <time>1648739908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>965967</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9300bbe38169e5ab53f16f73e8ba3a55</srcmd5>
+    <version>1.14.2</version>
+    <time>1649014240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>966418</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c239c35a26462a4c31d0d53f148229a8</srcmd5>
+    <version>1.14.3</version>
+    <time>1650657190</time>
+    <user>dimstar_suse</user>
+    <comment>xdg-desktop-portal 1.14.2 (forwarded request 970457 from AndreasStieger)</comment>
+    <requestid>971095</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e9166f2b77e134fb6ec079758f8cece0</srcmd5>
+    <version>1.14.4</version>
+    <time>1652039546</time>
+    <user>dimstar_suse</user>
+    <comment>xdg-desktop-portal 1.14.4 (forwarded request 975248 from AndreasStieger)</comment>
+    <requestid>975334</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>38fc5171724cce2a7497f2227215f469</srcmd5>
+    <version>1.14.5</version>
+    <time>1658857377</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>990558</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0ed99473816991e4d93aec6928cbc3fc</srcmd5>
+    <version>1.14.6</version>
+    <time>1660144370</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 993114 from iznogood)</comment>
+    <requestid>993937</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f6e77ef2e27d9d237dc8a3287499cf21</srcmd5>
+    <version>1.15.0</version>
+    <time>1663763975</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002696 from dimstar)</comment>
+    <requestid>1003220</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b4c1f4786d6276c318f7b9a3a1ce221d</srcmd5>
+    <version>1.16.0</version>
+    <time>1671023452</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1042570 from iznogood)</comment>
+    <requestid>1042675</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f6421154c920873c088c2ee71d716fb8</srcmd5>
+    <version>1.16.0</version>
+    <time>1687722116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094962</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0159fd55e2d6e0d7301c9dc00521e750</srcmd5>
+    <version>1.18.0</version>
+    <time>1695208959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112199</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>e248537b739547029c0c2727dcb68bb1</srcmd5>
+    <version>1.18.0</version>
+    <time>1696528974</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115548</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a5388b3907556178a79c5c85ae3e8f42</srcmd5>
+    <version>1.18.1</version>
+    <time>1698604778</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1120814</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1b06cfd7c1519026dbdd653ea72731e4</srcmd5>
+    <version>1.18.2</version>
+    <time>1701206276</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1128382 from iznogood)</comment>
+    <requestid>1129047</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>24113d5de499315939cb7401084b7412</srcmd5>
+    <version>1.18.2</version>
+    <time>1701792118</time>
+    <user>anag+factory</user>
+    <comment>- Own the directory which packages will use for portals.conf
+  configuration files (forwarded request 1130463 from gmbr3)</comment>
+    <requestid>1130770</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>cc25327fffb67ca30441a75de7e67530</srcmd5>
+    <version>1.18.2</version>
+    <time>1705255277</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1138322</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>117be19e5f574717436d8e8d7c9ca97e</srcmd5>
+    <version>1.0.0</version>
+    <time>1681470851</time>
+    <user>dimstar_suse</user>
+    <comment>Add arianna to openSUSE:Factory</comment>
+    <requestid>1079419</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b83117702e21c706aba0cb56c5af1a61</srcmd5>
+    <version>1.0.0</version>
+    <time>1681746060</time>
+    <user>dimstar_suse</user>
+    <comment>- Add kirigami-addons to runtime dependencies</comment>
+    <requestid>1079784</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f0c2111e38ae75bb3cd50af7c40f5f00</srcmd5>
+    <version>1.0.1</version>
+    <time>1682282889</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.0.1</comment>
+    <requestid>1082284</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6bb3c69be33fd27a55e57811b6b269f</srcmd5>
+    <version>1.1.0</version>
+    <time>1686506166</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1.0</comment>
+    <requestid>1092278</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d1c3072383d75e94cb74c5c9f9c0b985</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482330</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.0</comment>
+    <requestid>1105849</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b28dd1b638d2925adaa83f160a5dae7</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808161</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111087</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c2ec077e18c55c7d2e85078ae05a2607</srcmd5>
+    <version>23.08.2</version>
+    <time>1697146923</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117210</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be9248cff7e5df691878384896199352</srcmd5>
+    <version>23.08.3</version>
+    <time>1699615846</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.3 (forwarded request 1124079 from krop)</comment>
+    <requestid>1124470</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5d79f13b77513fb6980fdc4b44fc1494</srcmd5>
+    <version>23.08.4</version>
+    <time>1702158682</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release gear 23.08.4 (forwarded request 1131017 from krop)</comment>
+    <requestid>1131763</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>b23511fb83a36836adfee185f9eb9be5</srcmd5>
+    <version>23.08.4</version>
+    <time>1702845065</time>
+    <user>anag+factory</user>
+    <comment>Require extra-cmake-modules at build time</comment>
+    <requestid>1133502</requestid>
+  </revision>
+</revisionlist>

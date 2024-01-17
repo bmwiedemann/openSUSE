@@ -1,0 +1,10 @@
+<package name="litetran" project="openSUSE:Factory">
+  <title>The powerful translator on Qt</title>
+  <description>LiteTran is a very simple GUI for text translation (like Google Translate).
+
+ * very simple user interface
+ * translate by text selection: just select text, press key combination (Ctrl+Shift+T by default) get translation result in popup. You don't need to open your web browser with everytime you want to translate something;
+ * text speech (up to 100 characters);
+ * 37 supported languages.</description>
+  <devel project="Education" package="litetran"/>
+</package>

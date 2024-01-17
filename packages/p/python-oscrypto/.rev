@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d34e476c603f364e5145ef22569432f6</srcmd5>
+    <version>0.19.1</version>
+    <time>1562247749</time>
+    <user>dimstar_suse</user>
+    <comment>Python crypto using OS libraries
+
+Source URL fix</comment>
+    <requestid>711932</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e344050872f6ce460367f94d070fdf3a</srcmd5>
+    <version>1.2.0</version>
+    <time>1582207064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777564</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a3a73b2521ac144282ead226e54f177</srcmd5>
+    <version>1.3.0</version>
+    <time>1665034951</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008239</requestid>
+  </revision>
+</revisionlist>

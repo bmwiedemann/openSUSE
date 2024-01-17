@@ -1,0 +1,73 @@
+From 6166db42a61d80a3d8202162c598d1476572f5a1 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 18 Aug 2021 18:38:18 +0200
+Subject: [PATCH] Export consistent hostname as XAUTHLOCALHOSTNAME
+
+To deal with hostname changes, FamilyWild is used for Xauthority, but for Xsm
+XAUTHLOCALHOSTNAME is also set (boo#1177835, downstream patch in xtrans).
+The hostname is read once on startup and then used consistently.
+---
+ src/helpers/wayland_wrapper/kwin_wrapper.cpp | 6 +++++-
+ src/xwayland/lib/xauthority.cpp                   | 3 +--
+ src/xwayland/lib/xauthority.h                     | 3 ++-
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+Index: kwin-5.17.80git.20220423T014453~b935bca22/src/helpers/wayland_wrapper/kwin_wrapper.cpp
+===================================================================
+--- kwin-5.17.80git.20220423T014453~b935bca22.orig/src/helpers/wayland_wrapper/kwin_wrapper.cpp	2022-04-23 03:44:53.000000000 +0200
++++ kwin-5.17.80git.20220423T014453~b935bca22/src/helpers/wayland_wrapper/kwin_wrapper.cpp	2022-04-23 08:53:36.971767895 +0200
+@@ -23,6 +23,7 @@
+ #include <QCoreApplication>
+ #include <QDBusConnection>
+ #include <QDebug>
++#include <QHostInfo>
+ #include <QProcess>
+ #include <QTemporaryFile>
+ 
+@@ -71,8 +72,11 @@
+         }
+         if (m_xwlSocket) {
+             if (!qEnvironmentVariableIsSet("KWIN_WAYLAND_NO_XAUTHORITY")) {
+-                if (!generateXauthorityFile(m_xwlSocket->display(), &m_xauthorityFile)) {
++                const QByteArray hostname = QHostInfo::localHostName().toUtf8();
++                if (!generateXauthorityFile(m_xwlSocket->display(), &m_xauthorityFile, hostname)) {
+                     qCWarning(KWIN_WRAPPER) << "Failed to create an Xauthority file";
++                } else {
++                    qputenv("XAUTHLOCALHOSTNAME", hostname);
+                 }
+             }
+         }
+Index: kwin-5.17.80git.20220423T014453~b935bca22/src/xwayland/lib/xauthority.cpp
+===================================================================
+--- kwin-5.17.80git.20220423T014453~b935bca22.orig/src/xwayland/lib/xauthority.cpp	2022-04-23 03:44:53.000000000 +0200
++++ kwin-5.17.80git.20220423T014453~b935bca22/src/xwayland/lib/xauthority.cpp	2022-04-23 08:53:36.971767895 +0200
+@@ -45,7 +45,7 @@
+     return cookie;
+ }
+ 
+-bool generateXauthorityFile(int display, QTemporaryFile *authorityFile)
++bool generateXauthorityFile(int display, QTemporaryFile *authorityFile, const QByteArray &hostname)
+ {
+     const QString runtimeDirectory = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
+ 
+@@ -54,7 +54,6 @@
+         return false;
+     }
+ 
+-    const QByteArray hostname = QHostInfo::localHostName().toUtf8();
+     const QByteArray displayName = QByteArray::number(display);
+     const QByteArray name = QByteArrayLiteral("MIT-MAGIC-COOKIE-1");
+     const QByteArray cookie = generateXauthorityCookie();
+Index: kwin-5.17.80git.20220423T014453~b935bca22/src/xwayland/lib/xauthority.h
+===================================================================
+--- kwin-5.17.80git.20220423T014453~b935bca22.orig/src/xwayland/lib/xauthority.h	2022-04-23 03:44:53.000000000 +0200
++++ kwin-5.17.80git.20220423T014453~b935bca22/src/xwayland/lib/xauthority.h	2022-04-23 08:53:36.975767931 +0200
+@@ -9,6 +9,7 @@
+ 
+ #pragma once
+ 
++class QByteArray;
+ class QTemporaryFile;
+ 
+-bool generateXauthorityFile(int display, QTemporaryFile *authorityFile);
++bool generateXauthorityFile(int display, QTemporaryFile *authorityFile, const QByteArray &hostname);

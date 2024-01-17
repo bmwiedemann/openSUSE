@@ -1,0 +1,6 @@
+<package name="octave-forge-mapping" project="openSUSE:Factory">
+  <title></title>
+  <description>Simple Mapping and GIS .shp file functions.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-mapping"/>
+</package>

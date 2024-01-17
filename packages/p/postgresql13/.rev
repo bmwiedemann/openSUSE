@@ -1,0 +1,339 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>484260073ec3d7fe5bfb59ed17a0a04e</srcmd5>
+    <version>13.0</version>
+    <time>1603545370</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging of PostgreSQL 13</comment>
+    <requestid>843221</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bff602c902efe2bb6b124b06cbf5a3c7</srcmd5>
+    <version>13.0</version>
+    <time>1604415581</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a DST problem in the test suite: postgresql-timetz.patch
+  https://postgr.es/m/16689-57701daa23b377bf@postgresql.org</comment>
+    <requestid>845768</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1188c06ed623e77455723285ddf5e1cb</srcmd5>
+    <version>13.1</version>
+    <time>1605450320</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 13.1:
+  * CVE-2020-25695, bsc#1178666: Block DECLARE CURSOR ... WITH HOLD
+    and firing of deferred triggers within index expressions and
+    materialized view queries.
+  * CVE-2020-25694, bsc#1178667:
+    a) Fix usage of complex connection-string parameters in pg_dump,
+    pg_restore, clusterdb, reindexdb, and vacuumdb.
+    b) When psql's \connect command re-uses connection parameters,
+    ensure that all non-overridden parameters from a previous
+    connection string are re-used.
+  * CVE-2020-25696, bsc#1178668: Prevent psql's \gset command from
+    modifying specially-treated variables.
+  * Fix recently-added timetz test case so it works when the USA
+    is not observing daylight savings time.
+    (obsoletes postgresql-timetz.patch)
+  * https://www.postgresql.org/about/news/2111/
+  * https://www.postgresql.org/docs/13/release-13-1.html</comment>
+    <requestid>848147</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>75ffed7a00e5ac34f6ee0e1121704a21</srcmd5>
+    <version>13.1</version>
+    <time>1607612200</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1178961: %ghost the symlinks to pg_config and ecpg.
+- boo#1179765: BuildRequire libpq5 and libecpg6 when not building
+  them to avoid dangling symlinks in the devel package.</comment>
+    <requestid>854082</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e3105fa7ff26715507e3f4bab5b502e5</srcmd5>
+    <version>13.1</version>
+    <time>1610123646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861016</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>47b9fb279d8bcf1d855de42769f711d8</srcmd5>
+    <version>13.2</version>
+    <time>1614107874</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+- Upgrade to version 13.2:
+  * https://www.postgresql.org/docs/13/release-13-2.html
+  * Updating stored views and reindexing might be needed after
+    applying this update.
+  * CVE-2021-3393, bsc#1182040: Fix information leakage in
+    constraint-violation error messages.
+  * CVE-2021-20229, bsc#1182039: Fix failure to check per-column
+    SELECT privileges in some join queries.
+  * Obsoletes postgresql-icu68.patch.</comment>
+    <requestid>873842</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>591da45fccda5c692ed574ff6ac1d43a</srcmd5>
+    <version>13.2</version>
+    <time>1615489677</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove leftover PreReq on chkconfig, we stopped using it long
+  time ago.</comment>
+    <requestid>878016</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e7f04e84ed2e94efc400de3bc6f48a20</srcmd5>
+    <version>13.2</version>
+    <time>1619107398</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now.</comment>
+    <requestid>885325</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b9e26e9733e5e10e3a70fc1a1ab52ff3</srcmd5>
+    <version>13.3</version>
+    <time>1621355200</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 13.3:
+  * https://www.postgresql.org/docs/13/release-13-3.html
+  * CVE-2021-32027, bsc#1185924:
+    Prevent integer overflows in array subscripting calculations.
+  * CVE-2021-32028, bsc#1185925: Fix mishandling of “junk”
+    columns in INSERT ... ON CONFLICT ... UPDATE target lists.
+  * CVE-2021-32029, bsc#1185926: Fix possibly-incorrect
+    computation of UPDATE ... RETURNING
+    &quot;pg_psql_temporary_savepoint&quot; does not exist”.
+- Don't use %_stop_on_removal, because it was meant to be private
+  and got removed from openSUSE. %_restart_on_update is also
+  private, but still supported and needed for now (bsc#1183168).
+
+  only be delivered on PackageHub for now (boo#1183118).</comment>
+    <requestid>893135</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c570a7388fbf926918de586a3141ab4c</srcmd5>
+    <version>13.3</version>
+    <time>1621626570</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1185952: llvm12 breaks PostgreSQL 11 and 12 on s390x.
+  Use llvm11 as a workaround.</comment>
+    <requestid>894524</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ca491ed17c1f2137e98c953b7bfd34d8</srcmd5>
+    <version>13.4</version>
+    <time>1631543058</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1185952: fix build with llvm12 on s390x.
+  0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch 
+- bsc#1179945: Re-enable icu for PostgreSQL 10.
+
+- Upgrade to version 13.4:
+  https://www.postgresql.org/docs/13/release-13-4.html
+  * CVE-2021-3677 (boo#1189748)
+    The planner could create an incorrect plan in cases where two
+    ProjectionPaths were stacked on top of each other. The only
+    known way to trigger that situation involves parallel sort
+    operations, but there may be other instances. The result would
+    be crashes or incorrect query results. Disclosure of server
+    memory contents is also possible.
+
+- bsc#1187751: Make the dependency of postgresqlXX-server-devel on
+  llvm and clang optional (postgresql-llvm-optional.patch).</comment>
+    <requestid>917542</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>818c7e799d6fd7376c1b078a6a7a29e5</srcmd5>
+    <version>13.4</version>
+    <time>1634068080</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop building the mini and lib packages as they are now coming
+  from postgresql14.
+- Let genlists skip non-existing binaries to avoid lots of version
+  conditionals in the file lists.
+- Remove postgresql-testsuite-int8.sql.patch, because its purpose
+  is unclear. This affects only the test subpackage.</comment>
+    <requestid>923701</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2f94bb5eaa196df49d074293ba83e53a</srcmd5>
+    <version>13.5</version>
+    <time>1636840089</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1192516: Upgrade to 13.5:
+  * Make the server reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23214).
+  * Make libpq reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23222).
+  * https://www.postgresql.org/docs/13/release-13-4.html</comment>
+    <requestid>930950</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>166b07a8c3b2f9d262b9a3ae5b30586a</srcmd5>
+    <version>13.5</version>
+    <time>1638831564</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a llvmjit-devel subpackage to pull in the right versions
+  of clang and llvm for building extensions. 
+- Fix some mistakes in the interdependencies between the
+  implementation packages and their noarch counterpart.
+- Update the BuildIgnore section.</comment>
+    <requestid>935205</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2e6f932ca860b7a92c2d13490647a921</srcmd5>
+    <version>13.6</version>
+    <time>1649949779</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1198166: Pin to llvm13 until the next patchlevel update.
+
+- bsc#1195680: Upgrade to 13.6:
+  * https://www.postgresql.org/docs/13/release-13-6.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround</comment>
+    <requestid>969862</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>421588912c19bfa53261ef3a8d78b564</srcmd5>
+    <version>13.7</version>
+    <time>1652561685</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 13.7:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within &quot;security restricted operation&quot; sandboxes.
+  * https://www.postgresql.org/docs/13/release-13-7.html</comment>
+    <requestid>977048</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ea972beab7c36f672714ab67828b67b1</srcmd5>
+    <version>13.8</version>
+    <time>1660662403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.8:
+  * bsc#1202368, CVE-2022-2625: Extension scripts replace objects
+    not belonging to the extension.
+  * https://www.postgresql.org/docs/release/13.8/</comment>
+    <requestid>995184</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>6ad1ea58e1b6c4920491041e272bc8ea</srcmd5>
+    <version>13.8</version>
+    <time>1664908646</time>
+    <user>RBrownFactory</user>
+    <comment>- Create mechanism to specify the latest supported LLVM version.
+  Automatically pin to that version if the distribution has a newer
+  unsupported default version.
+- Sync spec file with postgresql15.
+- Disable LLVM JIT on riscv64
+</comment>
+    <requestid>1006684</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>96d7a985ed9ff7fc38bf9f24cfd42d54</srcmd5>
+    <version>13.9</version>
+    <time>1668271240</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1205300: Update to 13.9:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/13/release-13-9.html
+- Sync spec file with postgresql15.</comment>
+    <requestid>1035217</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>18c5f8cdf789abcec8b96a487349e8d4</srcmd5>
+    <version>13.10</version>
+    <time>1676036033</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.10:
+  * CVE-2022-41862, bsc#1208102: memory leak in libpq
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/13/release-13-10.html
+- Bump latest_supported_llvm_ver to 15.</comment>
+    <requestid>1064056</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>f95b9d86be25a94ab8fd418f65cb9aec</srcmd5>
+    <version>13.10</version>
+    <time>1682079466</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1210303: Stop using the obsolete internal %_restart_on_update
+  macro and drop support for sysv init to simplify the scriptlets.
+
+- Include -mini in Name: to avoid conflicts in the source package
+  name and OBS internal dependency tracking.</comment>
+    <requestid>1081147</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e0660cb044840b0cdc94bdd1dedf4a08</srcmd5>
+    <version>13.11</version>
+    <time>1683916635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.11:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/13/release-13-11.html</comment>
+    <requestid>1086556</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2212309aaa6eb01433e948c9502bebe6</srcmd5>
+    <version>13.12</version>
+    <time>1691762144</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.12:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * https://www.postgresql.org/docs/13/release-13-12.html
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.</comment>
+    <requestid>1103351</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8ce813613a238fc6e56245cb2790d92d</srcmd5>
+    <version>13.12</version>
+    <time>1698249887</time>
+    <user>anag+factory</user>
+    <comment>- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.</comment>
+    <requestid>1120252</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>6f8507f746ba985fbfaef86991083104</srcmd5>
+    <version>13.12</version>
+    <time>1698780392</time>
+    <user>anag+factory</user>
+    <comment>Revert last change and make the devel package independend</comment>
+    <requestid>1121433</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3875830f1ec793d0eff15c021a635fd2</srcmd5>
+    <version>13.13</version>
+    <time>1699562174</time>
+    <user>anag+factory</user>
+    <comment>November 2023 Security Updates</comment>
+    <requestid>1124706</requestid>
+  </revision>
+</revisionlist>

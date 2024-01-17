@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5099c9d31877021c84a5537e6809be0f</srcmd5>
+    <version>0.6</version>
+    <time>1600179993</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package gtkgreet version 0.6</comment>
+    <requestid>833800</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f8d9426fb69f5a7c83c9390eb62fae1</srcmd5>
+    <version>0.7</version>
+    <time>1613855581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>874043</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>67f1a52585f988d0298589297ef81a81</srcmd5>
+    <version>0.7</version>
+    <time>1666795303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031358</requestid>
+  </revision>
+</revisionlist>

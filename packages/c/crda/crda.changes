@@ -1,0 +1,166 @@
+-------------------------------------------------------------------
+Fri Jun 23 10:57:35 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to crda 4.15
+- Remove patches now upstream
+  * crda-67f1e6ddbdfade357e234c9d58a30fe0a283fe60.patch
+  * crda-f4ef2531698fb9ba006e8b31a223b3269be8bc7c.patch
+- Port patch crda-python3.patch
+
+-------------------------------------------------------------------
+Tue Dec 27 10:29:57 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
+Tue Dec  1 14:56:43 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Correct upstream URL and upstream release URL 
+
+-------------------------------------------------------------------
+Mon Nov 30 13:40:28 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch crda-default.patch as well as template file crda.default
+  for /usr/etc/default/crda to support WLAN USB dongles as well as
+  mostly raspberry WLAN drivers not knowing about kernel builtin
+  support for WLAN regular country domains (boo#1179308)
+
+-------------------------------------------------------------------
+Tue Nov 17 13:43:31 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
+Mon Aug 17 17:34:41 CEST 2020 - ro@suse.de
+
+- update to 4.14 and update home URL to use the github project
+  - fix keys defined but not used error
+- add patch from upstream
+  crda-67f1e6ddbdfade357e234c9d58a30fe0a283fe60.patch
+  - add URLs to README
+- add patch from upstream
+  crda-f4ef2531698fb9ba006e8b31a223b3269be8bc7c.patch
+  - add legacy note to README
+  - ## CRDA is no longer needed as of kernel v4.15
+
+-------------------------------------------------------------------
+Thu Mar 12 11:34:19 CET 2020 - ro@suse.de
+
+- add patch crda-python3.patch to build using python3
+  it is actually only used for a small helper script splitting
+  pem files to individual keys 
+
+-------------------------------------------------------------------
+Sat Jun  3 09:30:42 UTC 2017 - meissner@suse.com
+
+- adjust Makefile patch to not include CFLAGS on linker line,
+  this indirectly enables PIE support.
+
+-------------------------------------------------------------------
+Wed May 25 09:27:14 UTC 2016 - martin.liska@suse.com
+
+- Add gcc6-fix-errors.patch to remove errors seen by GCC6.
+
+-------------------------------------------------------------------
+Sun Jun 28 10:57:08 UTC 2015 - seife+obs@b1-systems.com
+
+- update to version 3.18:
+  * user visible: add pubkey of new wireless-regdb maintainer to
+    make crda work at all with newer wireless-regdb
+  * synchronize code with latest kernel changes
+  * crda: add AUTO-BW rule flag support
+  * crda: parse/print CAC time
+  * code restructuring and bug fixes
+  *** License is now copyleft-next-0.3.0 ***
+- packaging:
+  * add V=1 to make calls for rpmlint happiness
+  * use %%optflags for compilation
+  * shared library libreg.so is now used by the tools
+
+-------------------------------------------------------------------
+Sun Nov 24 20:21:37 UTC 2013 - crrodriguez@opensuse.org
+
+- use libnl3 which is now supported 
+
+-------------------------------------------------------------------
+Sat Nov 23 05:17:29 UTC 2013 - crrodriguez@opensuse.org
+
+- update to 1.1.3 release (no changelog)
+- run %udev_rules_update in %post if defined
+- Correct _udevrulesdir definition for old distros
+
+-------------------------------------------------------------------
+Fri Mar 22 08:29:25 UTC 2013 - mmeister@suse.com
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
+Wed Oct 17 11:19:13 UTC 2012 - fcrozat@suse.com
+
+- Fix build with udev rules directory new location.
+
+-------------------------------------------------------------------
+Thu Sep 13 11:11:28 UTC 2012 - cfarrell@suse.com
+
+- license update: ISC
+  License is ISC, not BSD-3-Clause
+
+-------------------------------------------------------------------
+Sun Sep  9 18:28:40 UTC 2012 - p.drouand@gmail.com
+
+- update to 1.1.2 release
+
+-------------------------------------------------------------------
+Tue Feb 28 14:39:33 UTC 2012 - pcerny@suse.com
+
+- use correct filepath in udev rule
+
+-------------------------------------------------------------------
+Sat Feb  4 15:37:28 UTC 2012 - rschweikert@suse.com
+
+- put files in /usr tree (UsrMerge project)
+
+-------------------------------------------------------------------
+Sat Sep 17 23:59:07 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Sep 16 12:02:37 UTC 2011 - jengelh@medozas.de
+
+- Select libnl-1_1-devel
+
+-------------------------------------------------------------------
+Fri Mar  5 01:35:46 CET 2010 - ro@suse.de
+
+- update to 1.1.1 release 
+
+-------------------------------------------------------------------
+Sat Oct 10 16:04:31 UTC 2009 - crrodriguez@opensuse.org
+
+- update to git200910101747, fix build 
+
+-------------------------------------------------------------------
+Tue Jul 28 21:29:47 CEST 2009 - aj@suse.de
+
+- Update to crda 1.1.0:
+  * make openssl keys 64-bit safe
+
+-------------------------------------------------------------------
+Mon Mar  2 10:58:57 CET 2009 - hschaa@suse.de
+
+- Add "Supplements: kernel" and "Requires: wireless-regdb"
+
+-------------------------------------------------------------------
+Mon Feb  9 12:27:04 CET 2009 - hschaa@suse.de
+
+- Update to 1.0.1
+- Needed for fate#305301
+
+-------------------------------------------------------------------
+Sat Jan 24 13:00:00 CET 2007 - helmut.schaa@googlemail.com
+
+- Initial package
+ 

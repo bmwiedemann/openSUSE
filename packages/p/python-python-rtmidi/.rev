@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2acd067c7880691bbe8fef999debcb8</srcmd5>
+    <version>1.4.1</version>
+    <time>1592939181</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>816523</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>09235289f1a7a16c801616d170295ed2</srcmd5>
+    <version>1.4.2</version>
+    <time>1595272162</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix rpmlint warnings
+- Update to 1.4.2
+Enhancements:
+  * Added more helpful aliases for MIDI events/controllers
+    constants
+Examples:
+  * Added ccstore advanced example to show how to remember last
+    seen controller change values
+</comment>
+    <requestid>821968</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b7f32ba4aa8eba63d5acc9312542def3</srcmd5>
+    <version>1.4.5</version>
+    <time>1602596508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.5
+  * Fixed error when trying to import version number from
+    ``rtmidi.release`` when Python is running with ``-OO``
+    optimization enabled.</comment>
+    <requestid>841083</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>870a6caa4bf87ede191098be6a5096ca</srcmd5>
+    <version>1.4.6</version>
+    <time>1602857723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.6
+  * Declare/document Python 3.9 support
+  * Drop official support for Python 3.5</comment>
+    <requestid>842008</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c5a9add769255fb21718f9631658ced7</srcmd5>
+    <version>1.4.6</version>
+    <time>1611595435</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package build failure due to -doc package not being marked
+  with %python_files</comment>
+    <requestid>866327</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d69a25d332c099b25a9493d9132fef6</srcmd5>
+    <version>1.4.7</version>
+    <time>1612989044</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>870722</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>571f701a04c143462bb0ce161b89193c</srcmd5>
+    <version>1.4.9</version>
+    <time>1624551749</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.9
+Changes:
+  * Synced with upstream RtMidi_
+    (fixes gh#SpotlightKid/python-rtmidi#89).
+- Changes in 1.4.8:
+Fixes:
+  * Fixed command line parsing in ``midiclock.py`` example script.
+  * Fixed Windows builds on AppVeyor CI.
+Changes:
+  * Release GIL in ``MidiOut.send_message`` so that on backend APIs
+    where this operation is blocking (``WINDOWS_MM``), multiple
+    Python threads using this method on different ``MidiOut``
+    instances can run concurently.</comment>
+    <requestid>901576</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bce020f59eb3ade9a7b8e191733ecfbe</srcmd5>
+    <version>1.4.9</version>
+    <time>1676990195</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip python 3.11, not supported yet gh#SpotlightKid/python-rtmidi#115
+</comment>
+    <requestid>1066960</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>15481843f78e5cb3223ab0b2a60b929b</srcmd5>
+    <version>1.4.9</version>
+    <time>1688246290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096208</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cc71265435c7b19d1444e92391fc26e8</srcmd5>
+    <version>1.5.7</version>
+    <time>1699388777</time>
+    <user>anag+factory</user>
+    <comment>- Omit html docs due to hostile build system
+- Update to 1.5.7
+Fixes:
+  * Fixed linting errors in `send_all.py` example.
+    gh#SpotlightKid/python-rtmidi#184
+  * Fixed (no)gil/except declarations on MIDI in callback and
+    `MidiOut.sendMessage`.
+    The GIL is acquired in any case for MIDI in callback and C++
+    `sendMessage` call, since Cython needs to check for exceptions.
+    Also remove wrong statement about the GIL being released in
+    docstring for `send_message`.
+    gh#SpotlightKid/python-rtmidi#185
+  * Fixed errors and check for empty message correctly when passing
+    an iter- or generator instead of a sequence to
+    `MidiOut.send_message`.
+    gh#SpotlightKid/python-rtmidi#186
+    gh#SpotlightKid/python-rtmidi#188
+- 1.5.6
+Fixes:
+  * Fixed building with `meson-python` &gt;= 0.14.0.
+    gh#SpotlightKid/python-rtmidi#177
+- 1.5.5
+  * Bump minimum Python version to 3.8
+Fixes:
+  * Fixed Cython compilation errors and warnings.
+    gh#SpotlightKid/python-rtmidi#174
+- 1.5.4
+Changes:
+  * Added `send_all.py` script to examples.
+    gh#SpotlightKid/python-rtmidi#167</comment>
+    <requestid>1123698</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>038c4d6c029fac7914d5122a4c4cac78</srcmd5>
+    <version>1.5.8</version>
+    <time>1702327895</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.8
+  * Removed obsolete Python 2 compatibility code in the _rtmidi
+    module and references to Python 2 unicode type in its
+    docstrings.</comment>
+    <requestid>1132507</requestid>
+  </revision>
+</revisionlist>

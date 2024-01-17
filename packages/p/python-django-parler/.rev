@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eec20ac3046d5fbf012663fa0bf4b631</srcmd5>
+    <version>2.2</version>
+    <time>1636388690</time>
+    <user>dimstar_suse</user>
+    <comment>previously removed https://build.opensuse.org/request/show/900668</comment>
+    <requestid>930158</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>697a24a16ed0c6fce5f941d3fbb8f3af</srcmd5>
+    <version>2.3</version>
+    <time>1640521827</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942509</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d4b2a36724e34b96f85459264bf600bb</srcmd5>
+    <version>2.3</version>
+    <time>1641680601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>944648</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8a38c78a920db031c870761eb1d61020</srcmd5>
+    <version>2.3</version>
+    <time>1669715582</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Remove python-six dependency
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1038627</requestid>
+  </revision>
+</revisionlist>

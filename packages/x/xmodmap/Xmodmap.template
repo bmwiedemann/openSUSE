@@ -1,0 +1,40 @@
+!! ~/.Xmodmap
+!!
+!! Use this as a template for $HOME/.Xmodmap
+!!
+!! The leading `!' is the comment sign.
+!!
+!! Please note: the natural way to assign keys are their keycodes.
+!! The only problem is, that keycodes do depend on the architecture,
+!! therefore keysymbols are used herein.  This has the disadvantage
+!! that this file can only be called once with the program xmodmap.
+!! To get keycodes of the keys use the program xev.
+!! The system Xmodmap is /usr/X11R6/lib/X11/Xmodmap, have a look.
+
+!! First example: Swap control key with caps lock key just like on
+!! lk401 from DEC or type 4 from Sun Microsystems
+!remove Lock      = Caps_Lock
+!remove Control   = Control_L
+!keysym Caps_Lock = Control_L
+!keysym Control_L = Caps_Lock
+!add    Lock      = Caps_Lock
+!add    Control   = Control_L
+
+!! Second example: Make left Alt key to left Meta key
+!! Note that afterwards no key is assigned anymore to the symbol Alt_L.
+!clear  Mod1
+!keysym Alt_L = Meta_L
+!add    Mod1  = Meta_L
+
+!! Third example: Change right Control key to Compose key.
+!! To do Compose Character, press this key and afterwards two
+!! characters (e.g. `a' and `^' to get â).
+!remove  Control  = Control_R
+!keysym Control_R = Multi_key
+!add     Control  = Control_R
+
+!! Fourth example: Make Menu key on WIN95 keyboard doing Compose
+!keysym Menu = Multi_key
+
+!!
+!! End of ~/.Xmodmap

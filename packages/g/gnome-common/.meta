@@ -1,0 +1,5 @@
+<package name="gnome-common" project="openSUSE:Factory">
+  <title>Common Files to Build GNOME</title>
+  <description>Gnome-common includes files used by to build GNOME and GNOME applications.</description>
+  <devel project="GNOME:Factory" package="gnome-common"/>
+</package>

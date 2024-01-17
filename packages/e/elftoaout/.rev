@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a217ce0d359d45715de86f9642e51b57</srcmd5>
+    <version>2.3</version>
+    <time>1264638282</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/elftoaout based on submit request 30294 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1ed2be1d85a3d8fc08741f835878f52d</srcmd5>
+    <version>2.3</version>
+    <time>1268923443</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1ed2be1d85a3d8fc08741f835878f52d</srcmd5>
+    <version>2.3</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>1ed2be1d85a3d8fc08741f835878f52d</srcmd5>
+    <version>2.3</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>1ed2be1d85a3d8fc08741f835878f52d</srcmd5>
+    <version>2.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>1ed2be1d85a3d8fc08741f835878f52d</srcmd5>
+    <version>2.3</version>
+    <time>1319181863</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>5fde3450d862c050117b89657ef5035a</srcmd5>
+    <version>2.3</version>
+    <time>1323191281</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>5fde3450d862c050117b89657ef5035a</srcmd5>
+    <version>2.3</version>
+    <time>1340183301</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>5fde3450d862c050117b89657ef5035a</srcmd5>
+    <version>2.3</version>
+    <time>1359108844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>5fde3450d862c050117b89657ef5035a</srcmd5>
+    <version>2.3</version>
+    <time>1379662286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>5fde3450d862c050117b89657ef5035a</srcmd5>
+    <version>2.3</version>
+    <time>1409300820</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="rstudio" project="openSUSE:Factory">
+  <title>RStudio</title>
+  <description>Integrated Development Environment for GNU R</description>
+  <devel project="devel:languages:R:released" package="rstudio"/>
+  <url>https://www.rstudio.com</url>
+</package>

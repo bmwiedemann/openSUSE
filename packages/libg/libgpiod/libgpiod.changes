@@ -1,0 +1,307 @@
+-------------------------------------------------------------------
+Fri Oct 14 08:01:13 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use Catch2-2-devel on Tumbleweed since libgpiod is not ready
+  for Catch2 v3
+
+-------------------------------------------------------------------
+Wed Feb 16 18:27:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to v1.6.3:
+  * Bug fixes:
+    - fix uninitialized default_vals being passed to gpiod_LineBulk_request()
+      in Python bindings
+    - fix building C++ bindings with clang
+    - fix one of the line request test cases
+- Update to v1.6.2:
+  * Improvements:
+    - allow to build the library with pre linux v5.5 kernel headers
+- Update to v1.6.1:
+  * Bug fixes:
+    - fix incorrect object size of gpiod.LineBulk in Python bindings
+    - fix a crash in Line.request() when it's called without keyword arguments
+- Update to v1.6:
+  * New features:
+    - add a standardized '__version__' module attribute in Python bindings
+    - print the bias flags info (if set) in gpioinfo
+  * Improvements:
+    - remove unnecessary indirection in free_dirs() in iterator code
+    - put all ABI versions next to one another in configure.ac
+    - improve std namespace resolution in C++ bindings
+    - add more checks for non-standard functions in configure.ac
+    - various code size improvements
+    - enforce gnu89 C standard in makefiles
+    - many documentation improvements
+    - unduplicate signalfd() handling in tools
+    - fix a forward declaration for line_event in C++ bindings
+  * Bug fixes:
+    - relax is_gpiochip_cdev() for symbolic links
+    - make gpiod_line_get_value_bulk() work for bulks of lines requested for
+      events, not only those requested for values
+    - fix regex patterns for timestamps in gpiomon test cases
+    - remove leftover asserts from tests
+    - fix unit conversion in event timestamp calculation in C++ bindings
+    - fix reading subset of available events in core library
+- Use %autosetup
+- Mention soversions in %files
+- Fix build with tests disabled
+
+-------------------------------------------------------------------
+Fri Apr 17 13:54:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v1.5.1:
+  * Bug fixes:
+    - relax gpiod_chip_open() for symbolic links
+- Update to v1.5:
+  * New features:
+    - switched to using the GLib testing framework for core library tests and BATS
+      (Bash Automated Testing System) for command-line tools
+    - used Catch2 C++ testing framework to implement a proper test-suite for C++
+      bindings while also reusing the API provided by libgpiomockup
+    - used Python's unittest package to implement a proper test suite for Python
+      bindings and reused libgpiockup again
+    - provided line::update() and Line.update() routines for C++ and Python
+      bindings respectively allowing to update the line info from bindings as well
+    - added support for bias flags which are a new functionality first available in
+      linux v5.5; subsequently the library now requires v5.5 kernel headers to
+      build; the new flags are supported in the core library, C++ and Python
+      bindings as well as the command-line tools
+    - added support for the new SET_CONFIG ioctl(): this too is a new functionality
+      added in linux v5.5; both features have been implemented in the library by
+      Kent Gibson
+    - added routines for reading multiple line events at once to the core library,
+      C++ and Python bindings
+  * Improvements:
+    - constified function arguments where applicable in libgpiomockup
+    - fixed the name of the test exeucutable displayed at build time
+    - improved the function pointer casting in Python bindings to avoid warnings
+      emitted by GCC8
+    - switched to using the KERNEL_VERSION() macro in tests instead of handcoded
+      version parsing
+    - improved the setup ordering in tests (setup libgpiomockup before checking
+      the kernel version
+    - add 'extern "c"' to the libgpiomockup header to make it usable from C++
+    - add chip index validation to libgpiomockup functions
+    - check if the debugfs directory used by libgpiomockup is writable before
+      using it to set the pull of dummy lines
+    - add several new test cases
+    - improved Python example programs (made gpiomon's output similar to the
+      original tool, make gpioset wait for an ENTER pres by default)
+    - fixed the major:minor number comparison between the device and sysfs
+    - deprecated the gpiod_line_needs_update() function and removed the logic
+      behind it from the library
+    - shrank the Python bindings a bit by directly returning the value from
+      PyErr_SetFromErrno()
+    - dropped noexcept from methods which can throw in C++ bindings
+    - switched to initializing the bitset with integers instead of strings in C++
+      bindings
+    - allowed gpiod_line_set_value_bulk() to accept null pointers
+    - when building Python bindings: check for the existence of python-config
+    - improved the readability of help text messages for command-line tools
+    - reworked the .gitignore file: added libtool scripts generated during
+      cross-compilation and split the main .gitignore into several fine-grained
+      files
+    - fixed several misspellings
+    - other minor tweaks and improvements
+  * Bug fixes:
+    - fixed memory leaks in libgpiomockup
+    - fixed memory leaks in the testing framework
+    - fixed a segfault in error path in tests
+    - make gpioinfo show lines claimed by the kernel as used even if they have no
+      named consumer
+    - fixed the test cases validating the '--active-low' switch in gpiomon and
+      the GPIOHANDLE_REQUEST_ACTIVE_LOW flag in the core library after a fix
+      for incorrect behavior was merged in linux v5.2.7
+    - stopped failing at init-time of libgpiomockup if gpio-mockup is already
+      loaded
+    - added a missing throw keyword in error path in C++ bindings
+    - fixed a segfault in Python bindings when calling Line.request() without
+      the consumer argument
+
+-------------------------------------------------------------------
+Fri Apr 17 12:54:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v1.4.3:
+  * Bug fixes:
+    - relax gpiod_chip_open() for symbolic links
+
+-------------------------------------------------------------------
+Thu Mar 19 17:37:36 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
+
+- Rename the libgpiod package (which contains the command-line
+  tools) to libgpiod-utils.
+
+-------------------------------------------------------------------
+Tue Mar 10 13:48:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 1.4.2 (Bug fixes release):
+  * fix the major:minor number comparison between the device and sysfs
+  * drop noexcept from direction() and active_state() in C++ bindings
+  * fix a segfault when calling Line.request() in Python bindings
+
+-------------------------------------------------------------------
+Mon Feb  3 14:12:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel: allow
+  OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Thu Oct 31 09:41:10 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Rename python-libgpiod to python3-gpiod
+
+-------------------------------------------------------------------
+Wed Oct 30 07:44:00 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v1.4.1 (Bug fixes release):
+  * fix GCC8 warnings when building python bindings
+  * fix a bug in gpioinfo where lines used by the kernel without any consumer
+    string were reported as unused
+  * fix a bug in line::event_get_fd() in C++ bindings where the exception
+    wouldn't be throws in error cases due to a missing 'throw' keyword
+  * fix a couple bugs in the test-suite
+  * disable a failing assertion in the test-suite that stopped working after
+  linux v5.2.7
+
+-------------------------------------------------------------------
+Thu Jun 13 13:37:45 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Replace *_number with *_soversion
+
+-------------------------------------------------------------------
+Thu Jun 13 12:43:51 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build of tests (package gpiod-test and libgpiomockup) for Tumbleweed
+
+-------------------------------------------------------------------
+Thu Jun 13 10:49:43 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.4:
+  * New features:
+    - updated the testing framework to work with linux v5.1 in which the debugfs
+      interface of the GPIO testing module changed in a backward incompatible way
+    - factored out the code controlling the GPIO testing module into a separate
+      shared library that may be reused by future testing executables for different
+      language bindings
+    - removed the --enable-install-tests build option and the make check target as
+      they were redundant, subsequently tests are now installed as a normal program
+      whenever they're enabled with --enable-tests
+
+  * Improvements:
+    - removed unnecessary std::move calls from C++ bindings
+    - added the explicit keyword to bool() operators in C++ bindings
+
+  * Bug fixes:
+    - fix out of source build of man pages
+
+-------------------------------------------------------------------
+Fri Apr 12 07:16:19 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add conflicts with libgpiod1 to help upgrade
+
+-------------------------------------------------------------------
+Fri Apr  5 23:42:51 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- devel package now requires libgpiod and libgpiodcxx
+
+-------------------------------------------------------------------
+Fri Apr  5 14:47:31 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Move libgpiodcxx to its own package
+
+-------------------------------------------------------------------
+Wed Apr  3 19:30:52 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.3:
+  * New features:
+    - the gpio-tools now have automatically generated (using help2man) man pages
+      that are bundled with the release tarball
+    - support a singular 'default_val' argument in Line.request() in python
+      bindings
+    - the test executable can now be installed to the bindir along with the
+      gpio-tools and the testing framework will look for the binaries in standard
+      locations if it's not run from the top source directory
+    - gpiomon now supports line buffered output
+
+  * Improvements:
+    - tweaks to the C API documentation
+    - treewide unification of the naming of local variables
+    - extended helptest in gpioset (explanation of the way the character device
+      works aimed at reducing user confusion when a GPIO line reverts to its
+      default value after gpioset exits)
+    - the source directories have been rearranged and the src/ directory was
+      dropped, lib/ and tools/ now live in the top source directory
+    - minor coding style fixes in python bindings, ctxless functions and tools
+    - automatically generated documentation is now removed by 'make clean'
+    - all Makefiles now use top_builddir instead of relative paths
+    - code shrink in configure.ac
+    - add a brief section about API documentation to README
+    
+  * Bug fixes:
+    - fix a segfault causing bug in C++ bindings
+    - make bitset_cmp::operator() const as this is required by C++17
+    - ignore 'remove' events from udev in the testing framework
+    - don't segfault on num_lines = 0 in ctxless functions
+
+-------------------------------------------------------------------
+Mon Dec  3 09:11:04 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.2:
+  * New features:
+    - new contextless event monitor that should replace the previous event loop
+    which caused problems on hardware that doesn't allow to watch both rising
+    and falling edge events
+    - port gpiomon to the new event monitor
+    - deprecate event loop routines
+
+  * Improvements:
+    - many minor improvements and tweaks in the python module
+    - new test cases for python bindings
+    - add much more detailed documentation for python bindings
+    - coding style improvements in gpio-tools
+    - remove unicode characters from build scripts
+    - improve the help text messages in gpio-tools
+    - make gpiod_chip_open() and its variants verify that we're really trying to
+    open a character device associated with a GPIO chip
+
+  * Bug fixes:
+    - fix memory leaks in python bindings
+    - fix a memory corruption bug in python bindings
+    - fix the default_vals argument in line request implementation in python
+    bindings
+    - fix a compilation warning in python bindings
+    - fix gpiod_Chip_find_lines() for nonexistent lines (python bindings)
+    - add a missing include in C++ bindings examples
+    - correctly display the version string in gpio-tools
+
+-------------------------------------------------------------------
+Wed Sep  5 13:51:23 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add python binding
+
+-------------------------------------------------------------------
+Wed Sep  5 10:05:03 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.1.1:
+  * Bug fixes:
+    - fix memory leaks in python bindings
+    - fix a memory corruption bug in python bindings
+    - fix the default_vals argument in line request implementation in python
+      bindings
+    - fix a compilation warning in python bindings
+
+-------------------------------------------------------------------
+Sun Jul 29 11:12:10 UTC 2018 - jengelh@inai.de
+
+- Update RPM groups. Reorder sentences to put the library first,
+  and the old sysfs interface last.
+
+-------------------------------------------------------------------
+Thu Jun 14 13:02:12 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add C++ bindings
+
+-------------------------------------------------------------------
+Thu Jun 14 12:22:29 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Initial package version 1.1

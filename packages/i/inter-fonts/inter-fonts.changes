@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Wed Dec  6 03:43:57 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to 4.0:
+  * This is a grand new release, with over two years of work behind
+    it. A lot has changed since version 3.x. Thousands of glyphs
+    have been redesigned. Here are some highlights, compared to the
+    previous version:
+    = Six additional "Display" designs, assigned to an opsz
+      variable-font axis, exposed as a second family "Inter
+      Display" as static fonts.
+    = Several new OpenType features
+    = Humanist-style italics
+    = Many technical changes (UPM changed to 2048, refined metrics,
+      many improved features, etc)
+- Create the inter-variable-fonts subpackage
+- Remove the _service file
+
+-------------------------------------------------------------------
+Tue Sep 14 18:19:50 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to 3.19:
+  * Fixes a variable-font interpolation bug with Roman numeral
+    eight. #382
+  * Fixes spacing of the latin epsilon glyph thanks to @hcsch. #377
+  * Adds new glyph U+25AA "blackSmallSquare" including calt
+    mappings for case sensitivity. #373
+  * Removes U+20E3 "uni20E3" COMBINING ENCLOSING KEYCAP which
+    triggers a bug in chromium, causing certain emoji to not render
+    properly. #371
+  * Improvements to Roman numerals
+  * Adjusts vertical metrics metadata to that of v3.15 and older.
+    This should fix any vertical alignment issues that might have
+    occurred with v3.17. #361
+  * Fixes several issues with italics introduced by Glyphs 3 upgrade:
+    = Fixes an issue with backslash in Italic masters. #362
+    = Fixes issues with afii10026 and uni0376 in italic masters
+    = Fixes issue with italic q U+0071 by inlining the shape
+      instead of using components. #360
+  * Fixes issue with U+035E COMBINING DOUBLE MACRON and
+    U+20F0 COMBINING ASTERISK ABOVE in Thin Italic. #363
+  * Fixes positioning issue with U+0358 COMBINING DOT ABOVE RIGHT
+  * Improvements to U+20DC COMBINING FOUR DOTS ABOVE and
+    U+20DB COMBINING THREE DOTS ABOVE
+  * Improvements to U+204E LOW ASTERISK
+  * Improved positioning via mark anchors of combining glyphs
+    U+20F0, U+035E and U+035F. #363
+  * Changes glyph shape of Latin upper-case iota. #359
+  * Improved glyph composition via ccmp for enclosed glyphs like
+    U+0041,U+20DD. #335
+  * Fixes issues with appearance in Microsoft Word. #352
+    (note that #156 is still unresolved although we have made
+    some progress in v3.16 toward developing workarounds
+    for certain printers.)
+  * Fixes double grave interpolation issue. #317
+  * Fixes design issue with glyphs acutedblnosp, dblgravecmb,
+    uni02F6 and uni02F5. #339
+  * Fixes missing or incorrect mark anchors in several
+    turn* glyphs. #336
+  * Adds Baht currency glyph U+0E3F. #323
+  * Improvement to Latin iota (lower and upper case) glyphs. #340
+  * Improvement to some numerical fraction glyphs
+  * Adds a dummy DSIG table to address issues with
+    Microsoft Office 2003 and older
+  * Improvements when using Inter with certain older Microsoft
+    products by decomposing any nested components which some
+    of that software has issues with
+  * Addresses a major regression in v3.16 where several
+    italic glyphs got messed up due to a Glyphs 3 version upgrade
+    of the source file. This only affected users of v3.16
+    which was only released for about 12 hours before being
+    replaced with this release v3.17. #360
+- Additionally package README.md
+- Update description
+
+-------------------------------------------------------------------
+Sat Aug 22 23:26:54 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.15:
+  * Fixes an issue with the variable font, where some software would not 
+    list the various weights correctly. #308
+  * Fixes an issue with rendering on Windows with ClearType where some glyphs 
+    using advanced OpenType features (component transformations) would render 
+    incorrectly, with a slight vertical offset. #251
+  * Improvements to Elfdalian, improving the /yogonek and /eth glyphs #285
+  * Improvements to /eth U+00F0 glyph f7924a2#commitcomment-41610142
+- Change in 3.14:
+  * Fixes position of ring at bottom of /Aringbelow U+1E00. #266
+  * Fixes interpolation issues with /omegatitlocyrillic /omega and /pisymbolgreek. #272
+  * Fixes an issue with /dotmacroncomb.cn used by glyphs like /Adotmacron. #298
+  * Adds /bitcoin glyph U+20BF. #284
+  * Adds /insertionsymbol U+2380. #290
+  * Adds specialized glyphs /Aringogonek, /aringogonek, /Yogonek and /yogonek to 
+    fully support Elfdalian script. #285
+  * Adds U+EE01, a vertically-centered colon used by Android on the lock screen #212
+  * Improves kerning of /quotedblright,/quoteright and /period,/comma. #299
+  * Improves design of "Theta" U+03F4, U+0398 and "Fita" U+0472, U+0473. #263, #264
+  * Improves design of /yhook and use /ucyrillic in /Ukcyrillic /ukcyrillic. #273
+  * Improves design of /dzaltone and /dzcurl. #268
+  * Improves design of /percent, /perthousand and /pertenthousand glyphs. #237
+  * Improves variable-font metadata (STAT table). #265
+  * Improves (tunes) calt case substitutions, e.g. "x -X". #251
+  * Changes codepoint mapping of /q.sups from U+146B to private-area U+E163. #275
+
+-------------------------------------------------------------------
+Sat Apr 11 08:44:17 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.13:
+  * Improvements to Greek and Cyrillic glyphs #240
+  * New stylistic set ss04 which is almost identical to ss02 with 
+    the exception of no slashed zero #252
+  * Fixes interpolation issues with several diacritics in the light weights
+  * Removes codepoint mappings for some math-related enclosed glyphs 
+    that would be too large when using the circle-enclosed glyphs #250
+  * Various improvements and adjustments to glyph shapes, spacing and kerning
+  * Improves OpenType feature name metadata
+
+-------------------------------------------------------------------
+Fri Feb 21 01:06:18 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Initial release
+

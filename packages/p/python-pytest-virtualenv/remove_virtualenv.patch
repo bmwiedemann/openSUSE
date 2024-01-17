@@ -1,0 +1,65 @@
+---
+ pytest_virtualenv.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/pytest_virtualenv.py
++++ b/pytest_virtualenv.py
+@@ -15,13 +15,19 @@ from pytest_shutil.workspace import Work
+ from pytest_shutil import run, cmdline
+ from pytest_fixture_config import Config, yield_requires_config
+ 
++PY2 = sys.version_info[0] == 2
++
+ 
+ class FixtureConfig(Config):
+     __slots__ = ('virtualenv_executable')
+ 
++
+ # Default values for system resource locations - patch this to change defaults
+ # Can be a string or list of them
+-DEFAULT_VIRTUALENV_FIXTURE_EXECUTABLE = [sys.executable, '-m', 'virtualenv']
++if PY2:
++    DEFAULT_VIRTUALENV_FIXTURE_EXECUTABLE = [sys.executable, '-m', 'virtualenv']
++else:
++    DEFAULT_VIRTUALENV_FIXTURE_EXECUTABLE = [sys.executable, '-m', 'venv']
+ 
+ CONFIG = FixtureConfig(
+     virtualenv_executable=os.getenv('VIRTUALENV_FIXTURE_EXECUTABLE', DEFAULT_VIRTUALENV_FIXTURE_EXECUTABLE),
+@@ -78,7 +84,7 @@ class PackageEntry(object):
+ 
+     def match(self, package_type):
+         if package_type is self.ANY:
+-                return True
++            return True
+         elif package_type is self.REL:
+             if self.isrel:
+                 return True
+@@ -137,7 +143,8 @@ class VirtualEnv(Workspace):
+             cmd = [self.virtualenv_cmd]
+         else:
+             cmd = list(self.virtualenv_cmd)
+-        cmd.extend(['-p', python or cmdline.get_real_python_executable()])
++        if PY2:
++            cmd.extend(['-p', python or cmdline.get_real_python_executable()])
+         cmd.extend(self.args)
+         cmd.append(str(self.virtualenv))
+         self.run(cmd)
+--- a/tests/integration/test_tmpvirtualenv.py
++++ b/tests/integration/test_tmpvirtualenv.py
+@@ -5,6 +5,8 @@ import textwrap
+ 
+ import pytest_virtualenv as venv
+ 
++PY2 = sys.version_info[0] == 2
++
+ 
+ def check_member(name, ips):
+     return name in ips
+@@ -15,4 +17,5 @@ def test_installed_packages():
+         ips = v.installed_packages()
+         assert len(ips) > 0
+         check_member('pip', ips)
+-        check_member('virtualenv', ips)
+\ No newline at end of file
++        if PY2:
++            check_member('virtualenv', ips)

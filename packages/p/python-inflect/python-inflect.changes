@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Tue Nov  7 14:57:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.0:
+  * Refine type hint for ``singular_noun`` to indicate a literal
+    return type for ``False``. (#186)
+  * Removed methods renamed in 0.2.0.
+  * Project now supports Pydantic 2 while retaining support for
+    Pydantic 1. (#187)
+  * Added validation of user-defined words and amended the type
+    declarations to match, allowing for null values but not empty
+    strings. (#187)
+  * ``ordinal`` now handles float types correctly without first
+    coercing them to strings. (#178)
+  * Require Python 3.8 or later.
+
+-------------------------------------------------------------------
+Tue Nov  7 14:56:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.5:
+  * Pin to Pydantic 1 to avoid breaking in Pydantic 2.
+
+-------------------------------------------------------------------
+Wed May 10 06:42:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.4:
+  * Internal cleanup.
+  * A/an support now more correctly honors leading
+  * capitalized words and abbreviations.
+  * Improve support for ordinals for floats.
+  * Require pydantic 1.9.1 to avoid ``ValueError``.
+  * Minor tweaks and packaging refresh.
+  * ``compare`` methods now validate their inputs
+    and will raise a more meaningful exception if an
+    empty string or None is passed. This expectation is now
+    documented.
+  * Many public methods now perform validation on arguments.
+  * An empty string is no longer allowed for words or text.
+  * #15: Fixes to plural edge case handling.
+  * Packaging refresh and docs update.
+  * #153: Internal refactor to simplify and unify
+    ``_plnoun`` and ``_sinoun``.
+  * Fixed badges.
+  * Rewrite to satisfy type checkers.
+  * #147: Enhanced type annotations.
+  * Add a ``py.typed`` file so mypy recognizes type
+    annotations.
+  * Misc fixes in #128, #134, #135, #137, #138, #139, #140, #142,
+  * #143, #144.
+  * Require Python 3.7 or later.
+  * Add support for pluralizing open compound nouns.
+  * Modernized the codebase. Added a lot of type
+    annotations.
+  * Add support for uncountable nouns.
+  * Refreshed package metadata.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:26:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
+Thu Apr 13 22:42:04 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Make calling of %{sle15modernpython} optional.
+
+-------------------------------------------------------------------
+Tue Mar 15 08:04:50 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- use %python_expand for %fdupes
+
+-------------------------------------------------------------------
+Wed Jan 20 15:12:07 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update URL to https://github.com/jaraco/inflect
+- Update to v5.0.2
+  * Inflect withdraws from Jazzband organisation
+    in order to continue to participate in sustained maintenance
+    and enterprise support through Tidelift.
+    The project continues to honor the guidelines and principles
+    behind Jazzband and welcomes contributors openly
+- from v5.0.1
+  * Identical release validating release process
+- from v5.0.0
+  * Module no longer exposes a ``__version__`` attribute.
+    Instead to query the version installed, use
+    importlib.metadata or its backport
+- from v4.1.1
+  * Refreshed package metadata
+
+-------------------------------------------------------------------
+Tue Apr 14 11:03:28 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.1.0
+  * Certain operations now allow ignore arbitrary leading words.
+  * Require Python 3.6 or later.
+  * Drop support for Python 3.4.
+  * Project now builds on jaraco/skeleton for shared package management.
+
+-------------------------------------------------------------------
+Tue Jun 11 08:38:40 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 2.1.0
+  * Relicensed under the more permissive MIT License.
+  * fix inconsistencies with the inflect method
+  * Improved unicode handling.
+  * Fix capitalization issues in processes where more than one word
+    is involved.
+  * fix extraneous close parentheses.
+  * Dropped support for Python 3.3.
+  * Moved hosting to jazzband.
+
+-------------------------------------------------------------------
+Tue Jul  4 18:37:00 UTC 2017 - aloisio@gmx.com
+
+- Converted to singlespec
+- Enabled tests
+
+-------------------------------------------------------------------
+Tue Aug  2 13:24:18 UTC 2016 - sor.alexei@meowr.ru
+
+- Switch to Python2.
+
+-------------------------------------------------------------------
+Sun May  8 07:09:10 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+-------------------------------------------------------------------
+Sat Feb 14 21:14:47 UTC 2015 - arun@gmx.de
+
+- initial version

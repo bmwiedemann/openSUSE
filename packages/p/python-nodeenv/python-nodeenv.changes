@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Wed Dec 20 07:11:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Changes:
+  * #312
+  * #313
+  * #317
+  * #320
+  * #327
+  * #329
+  * #330
+- drop python-nodeenv-no-mock.patch (obsolete)
+
+-------------------------------------------------------------------
+Thu Nov 23 09:54:32 UTC 2023 - Matthias Bach <marix@marix.org>
+
+- Also build for modern Python on Leap.
+- Drop explicit definition of %python_module in the spec file.
+  This is nowadays defined on all distributions we build for.
+
+-------------------------------------------------------------------
+Tue Jul 19 11:46:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * improved m1 support
+  * drop python 3.4-3.6
+
+-------------------------------------------------------------------
+Thu Mar 24 11:47:05 UTC 2022 - pgajdos@suse.com
+
+- do not require pytest-mock for build
+- added patches
+  fix https://github.com/ekalinin/nodeenv/issues/302
+  + python-nodeenv-no-mock.patch
+
+-------------------------------------------------------------------
+Thu Jun 17 21:09:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * M1 support
+
+-------------------------------------------------------------------
+Wed Sep 16 11:25:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * ignore ssl option, MSYS2 support
+
+-------------------------------------------------------------------
+Sun Jun 14 09:34:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4.0:
+  *  a new way of the mirroring; some fixes
+
+-------------------------------------------------------------------
+Thu May 21 10:56:37 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Mon Mar 16 10:52:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.3.5
+
+-------------------------------------------------------------------
+Tue Oct 22 05:40:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+
+-------------------------------------------------------------------
+Tue Apr 04 13:15:06 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Python 3 with single spec
+- Update to v1.3.3
+
+-------------------------------------------------------------------
+Fri Jan 13 19:27:35 UTC 2017 - mardnh@gmx.de
+
+- initial package, version 1.0.0
+

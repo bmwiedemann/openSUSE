@@ -1,0 +1,10 @@
+<package name="arandr" project="openSUSE:Factory">
+  <title>Visual Front End for XRandR</title>
+  <description>ARandR is designed to provide a simple visual front end for XRandR. Relative
+monitor positions are shown graphically and can be changed in a drag-and-drop
+way.
+
+</description>
+  <devel project="X11:Utilities" package="arandr"/>
+  <url>http://christian.amsuess.com/tools/arandr/</url>
+</package>

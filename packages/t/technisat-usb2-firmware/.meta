@@ -1,0 +1,5 @@
+<package name="technisat-usb2-firmware" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="technisat-usb2-firmware"/>
+</package>

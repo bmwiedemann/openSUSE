@@ -1,0 +1,66 @@
+From 351036bcd843345973a34a810e363d280b046f8c Mon Sep 17 00:00:00 2001
+From: Georg Sauthoff <mail@gms.tf>
+Date: Sat, 14 Nov 2020 10:48:50 +0100
+Subject: [PATCH] Give some guidance through motd/prompt
+
+i.e. to make the nature/purpose of this special environment more
+obvious to unsuspecting/occasional users.
+
+Based on pull-request https://github.com/gsauthof/dracut-sshd/pull/36
+by Daniel Molkentin.
+
+fixes #36
+---
+ 46sshd/module-setup.sh |  3 +++
+ 46sshd/motd            | 10 ++++++++++
+ 46sshd/profile         |  7 +++++++
+ 3 files changed, 20 insertions(+)
+ create mode 100644 46sshd/motd
+ create mode 100644 46sshd/profile
+
+diff --git a/46sshd/module-setup.sh b/46sshd/module-setup.sh
+index c9caca6..b861818 100755
+--- a/46sshd/module-setup.sh
++++ b/46sshd/module-setup.sh
+@@ -89,6 +89,9 @@ install() {
+     mkdir -p -m 0755 "$initdir/var/log"
+     touch "$initdir/var/log/lastlog"
+ 
++    inst_simple "${moddir}/motd" /etc/motd
++    inst_simple "${moddir}/profile" /root/.profile
++
+     return 0
+ }
+ 
+diff --git a/46sshd/motd b/46sshd/motd
+new file mode 100644
+index 0000000..e8a4753
+--- /dev/null
++++ b/46sshd/motd
+@@ -0,0 +1,10 @@
++
++Welcome to the early boot SSH environment. You may type
++￼
++￼   systemd-tty-ask-password-agent
++￼
++(or press "arrow up") to unlock your disks.
++
++This shell will terminate automatically a few seconds after the
++unlocking process has succeeded and when the boot proceeds.  ￼
++
+diff --git a/46sshd/profile b/46sshd/profile
+new file mode 100644
+index 0000000..14d620b
+--- /dev/null
++++ b/46sshd/profile
+@@ -0,0 +1,7 @@
++if [ -n "$SSH_TTY" ]; then
++    export PS1='initramfs-ssh:${PWD}# '
++fi
++
++if [ -n "$TERM" ]; then
++    export TERM=vt220
++fi
+-- 
+2.29.2
+

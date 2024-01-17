@@ -1,0 +1,224 @@
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -7,9 +7,6 @@
+ AC_CONFIG_AUX_DIR(build)
+ AC_CONFIG_HEADER([config.h])
+ 
+-# Default install dir
+-AC_PREFIX_DEFAULT(/usr/local)
+-
+ # Include commands that automake needs
+ AM_INIT_AUTOMAKE
+ 
+@@ -73,32 +70,10 @@
+ 	fi
+ fi
+ 
+-# removed by ZETES
+-# AC_SUBST([PKG_PCSC_CONFIG_PATH],[$pcscdropdir/lib/pkgconfig])
+-# removed by ZETES
+-# AC_SUBST([PKG_PCSCLITE],[$pcscdropdir/lib/pkgconfig/libpcsclite.pc])
+-
+-# added by ZETES ...
+-PKG_PCSCLITE="libpcsclite"
+-# ... added by ZETES
+-
+ # Check if pkg-config exists
+-AC_CHECK_PROG([PKGCONFIG], [pkg-config], [yes])
+-if test "$PKGCONFIG" = "yes"; then
+-	if ! `pkg-config --print-errors --atleast-version=1.2.0 $PKG_PCSCLITE`
+-	then
+-		AC_MSG_ERROR([install pcsc-lite 1.2.0 or later])
+-	fi
+-fi
+-
+-# Check for libusb 0.1.12
+-PKG_LIBUSB="libusb"
+-if test "$PKGCONFIG" = "yes"; then
+-	if ! `pkg-config --print-errors --atleast-version=0.1.12 $PKG_LIBUSB`
+-	then
+-		AC_MSG_ERROR([install libusb 0.1.12 or later])
+-	fi
+-fi
++PKG_CHECK_MODULES([PCSCLITE], [libpcsclite >= 1.2.0])
++PKG_CHECK_MODULES([LIBUSB], [libusb >= 0.1.12],,
++	AC_MSG_ERROR([install libusb 0.1.12 or later]))
+ 
+ # --enable-usbdropdir=DIR
+ AC_ARG_ENABLE([usbdropdir],
+@@ -108,20 +83,8 @@
+ 			[usbdropdir=false])
+ 
+ if test "${usbdropdir}" = false ; then
+-	if test "$PKGCONFIG" = yes ; then
+-		usbdropdir=`pkg-config $PKG_PCSCLITE --variable=usbdropdir`
+-	else
+-		usbdropdir=""
+-	fi
+-	if test -z "$usbdropdir" ; then
+-		if test "$prefix" = NONE ; then
+-			usbdropdir="$ac_default_prefix/pcsc/drivers"
+-		else
+-			usbdropdir="$prefix/pcsc/drivers"
+-		fi
+-	fi
++		usbdropdir=`$PKG_CONFIG libpcsclite --variable=usbdropdir`
+ fi
+-
+ AC_SUBST(usbdropdir)
+ 
+ AC_MSG_RESULT([USB drop directory      : $usbdropdir])
+@@ -143,42 +106,11 @@
+ AC_PROG_CC
+ AC_PROG_LIBTOOL
+ 
+-# Checks for libraries.
+-# FIXME: Replace `main' with a function in `-lpcsclite':
+-#AC_CHECK_LIB([pcsclite], [main])
+-# FIXME: Replace `main' with a function in `-lpthread':
+-#AC_CHECK_LIB([pthread], [main])
+-
+ # Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS([fcntl.h limits.h malloc.h memory.h stdlib.h string.h sys/ioctl.h syslog.h unistd.h])
+ 
+-# Test if pcsclite-1.2.9betaX is installed
+-#if test -d $pcsclite_inc/PCSC; then
+-#	echo "PCSCLITE-1.2.9 or above is installed"
+-#	pcsclite_inc="$pcsclite_inc/PCSC"
+-#else
+-#	echo "PCSCLITE-1.2.0 is installed"
+-#fi
+-
+-# Setup the compiler and linker flag
+-OLD_CFLAGS=$CFLAGS
+-CFLAGS="$CFLAGS `pkg-config --cflags $PKG_PCSCLITE`"
+-CFLAGS="$CFLAGS `pkg-config --cflags $PKG_LIBUSB`"
+-
+-# Check for pcsclite header files
+-# removed by ZETES NO_PCSC_MSG="Please install PCSCLITE 1.2.0 or later before building the driver!!"
+-# removed by ZETES AC_CHECK_HEADER([pcsclite.h],,[AC_MSG_ERROR([$NO_PCSC_MSG])],[#include <pcsclite.h>])
+-
+-# removed by ZETES CFLAGS=$OLD_CFLAGS
+-
+-AC_SUBST(LIBPCSCLITE)
+-LIBPCSCLITE=`pkg-config --libs $PKG_PCSCLITE`
+-
+-AC_SUBST(LIBUSB)
+-LIBUSB=`pkg-config --libs $PKG_LIBUSB`
+-
+ # Select OS specific versions of source files.
+ AC_SUBST(BUNDLE_HOST)
+ AC_SUBST(DYN_LIB_EXT)
+@@ -218,6 +150,7 @@
+ AC_CONFIG_FILES([Makefile
+                  src/driver/Makefile
+                  src/controllib/Makefile
+-                 src/controllib/libacr38ucontrol.pc])
++                 src/controllib/libacr38ucontrol.pc
++                 src/driver/Info.plist])
+ 
+ AC_OUTPUT
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
++++ Makefile.am
+@@ -4,5 +4,7 @@
+ #
+ # Process this file with automake to produce a Makefile.in script.
+ 
+ # -- Top-level Makefile.am --
+ SUBDIRS = src/controllib src/driver
++
++DISTCHECK_CONFIGURE_FLAGS = --enable-usbdropdir=$$dc_install_base/pcsc/drivers
+Index: src/controllib/Makefile.am
+===================================================================
+--- src/controllib/Makefile.am.orig
++++ src/controllib/Makefile.am
+@@ -2,22 +2,19 @@
+ # Copyright (c) 1994 - 2005 Advanced Card Systems Ltd
+ # All rights reserved.
+ #
+ # Process this file with automake to produce a Makefile.in script.
+ 
+-ACR38_CONTROLLIB = libacr38ucontrol.$(DYN_LIB_EXT)
+-
+-AM_CPPFLAGS = -I../driver `pkg-config libpcsclite --cflags` 
++AM_CPPFLAGS = -I $(top_srcdir)/src/driver $(PCSCLITE_CFLAGS)
+ 
+ lib_LTLIBRARIES = libacr38ucontrol.la
+ include_HEADERS = ACS38DrvTools.h
+ noinst_HEADERS = ../driver/ACR38IOCtrl.h
+ 
+ SRC_CONTROLLIB = ACS38DrvTools.c		\
+ 				 ACS38DrvTools.h
+ 
+ libacr38ucontrol_la_SOURCES = $(SRC_CONTROLLIB)
+-libacr38ucontrol_la_CFLAGS = `pkg-config libpcsclite --cflags`
++libacr38ucontrol_la_CFLAGS = $(PCSCLITE_LIBS)
+ 
+-#pcdir= $(PKG_PCSC_CONFIG_PATH)
+-pcdir= @prefix@/lib/pkgconfig
+-pc_DATA = libacr38ucontrol.pc
++pkgconfigdir= $(libdir)/pkgconfig
++pkgconfig_DATA = libacr38ucontrol.pc
+Index: src/driver/Makefile.am
+===================================================================
+--- src/driver/Makefile.am.orig
++++ src/driver/Makefile.am
+@@ -5,15 +5,16 @@
+ # Process this file with automake to produce a Makefile.in script.
+ 
+ DRIVER_NAME = ACR38UDriver
+-DRIVER_LIB_NAME = lib$(DRIVER_NAME).$(DYN_LIB_EXT)
+ DRIVER_BUNDLE_DIR = $(DRIVER_NAME).bundle
+-DRIVER_INSTALL_HOME_DIR = pcsc/drivers/$(DRIVER_LIB_NAME).bundle/Contents/Linux
+ 
+-AM_CPPFLAGS = `pkg-config libpcsclite --cflags`
++driverdir=$(usbdropdir)/$(DRIVER_BUNDLE_DIR)/Contents/$(BUNDLE_HOST)
+ 
+-EXTRA_DIST = Info.plist
++AM_CPPFLAGS = $(PCSCLITE_CFLAGS) $(LIBUSB_CFLAGS)
+ 
+-lib_LTLIBRARIES = libACR38UDriver.la
++plistdir=$(usbdropdir)/$(DRIVER_BUNDLE_DIR)/Contents
++plist_DATA=Info.plist
++
++driver_LTLIBRARIES = ACR38UDriver.la
+ 
+ SRC_DRV = ACR38IOCtrl.h \
+ 	AdmHndlr.c \
+@@ -33,14 +34,6 @@
+ SRC_USB = usbserial_linux.c \
+ 	usbserial_linux.h
+ 
+-libACR38UDriver_la_SOURCES = $(SRC_DRV) $(SRC_USB)
+-libACR38UDriver_la_LIBADD = @LIBPCSCLITE@ @LIBUSB@ @COREFOUNDATION@ @IOKIT@
+-
+-install: libACR38UDriver.la
+-	$(mkinstalldirs) $(usbdropdir)/$(DRIVER_BUNDLE_DIR)/Contents/$(BUNDLE_HOST)/
+-	$(INSTALL) .libs/$(DRIVER_LIB_NAME) $(usbdropdir)/$(DRIVER_BUNDLE_DIR)/Contents/$(BUNDLE_HOST)/$(DRIVER_NAME)
+-	$(INSTALL) Info.plist $(usbdropdir)/$(DRIVER_BUNDLE_DIR)/Contents
+-#	chmod 755 $(usbdropdir)/$(DRIVER_BUNDLE_DIR)/Contents/$(BUNDLE_HOST)/$(DRIVER_LIB_NAME)
+-
+-uninstall:
+-	rm -rf $(usbdropdir)/$(DRIVER_BUNDLE_DIR)
++ACR38UDriver_la_SOURCES = $(SRC_DRV) $(SRC_USB)
++ACR38UDriver_la_LIBADD = $(PCSCLITE_LIBS) $(LIBUSB_LIBS) $(COREFOUNDATION) $(IOKIT)
++ACR38UDriver_la_LDFLAGS = -module -avoid-version
+Index: src/driver/Info.plist
+===================================================================
+--- src/driver/Info.plist.in.orig
++++ src/driver/Info.plist.in
+@@ -20,7 +20,7 @@
+ 	<string>0x00000001</string>
+ 
+ 	<key>CFBundleExecutable</key>
+-	<string>ACR38UDriver</string>
++	<string>ACR38UDriver.@DYN_LIB_EXT@</string>
+ 
+ 	<key>ifdManufacturerString</key>
+ 	<string>Advanced Card Systems Ltd.</string>

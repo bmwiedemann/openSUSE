@@ -1,0 +1,5 @@
+<package name="mpris-ctl" project="openSUSE:Factory">
+  <title>Basic mpris player control for linux command line</title>
+  <description>Is a minimalistic cli tool for controlling audio players exposing a MPRIS DBus interface, targeted at keyboard based WMs.</description>
+  <devel project="multimedia:apps" package="mpris-ctl"/>
+</package>

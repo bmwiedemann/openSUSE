@@ -1,0 +1,5 @@
+<package name="tut" project="openSUSE:Factory">
+  <title>TUI for Mastodon with vim inspired keys </title>
+  <description>A TUI for Mastodon with vim inspired keys. The program has most of the features you can find in the web client.</description>
+  <devel project="utilities" package="tut"/>
+</package>

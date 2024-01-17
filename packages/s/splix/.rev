@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="4">
+    <srcmd5>997bd3f7170ad4e782bd913b2069d4ec</srcmd5>
+    <version>2.0.0</version>
+    <time>1295958416</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59090 from user jsmeix
+</comment>
+    <requestid>59090</requestid>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>f61e3903d0d26ef77beaafd3397cf89f</srcmd5>
+    <version>2.0.0</version>
+    <time>1295958425</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59090
+</comment>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>f61e3903d0d26ef77beaafd3397cf89f</srcmd5>
+    <version>2.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="10">
+    <srcmd5>f61e3903d0d26ef77beaafd3397cf89f</srcmd5>
+    <version>2.0.0</version>
+    <time>1319182484</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="11">
+    <srcmd5>42860e55faf8977849c20672bf9716ba</srcmd5>
+    <version>2.0.0</version>
+    <time>1334641802</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113755</requestid>
+  </revision>
+  <revision rev="6" vrev="13">
+    <srcmd5>42860e55faf8977849c20672bf9716ba</srcmd5>
+    <version>2.0.0</version>
+    <time>1340184233</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="15">
+    <srcmd5>42860e55faf8977849c20672bf9716ba</srcmd5>
+    <version>2.0.0</version>
+    <time>1359110430</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="16">
+    <srcmd5>a27c9c228442de2d27c2dfbf07a443e8</srcmd5>
+    <version>2.0.0</version>
+    <time>1362732784</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157683</requestid>
+  </revision>
+  <revision rev="9" vrev="18">
+    <srcmd5>a27c9c228442de2d27c2dfbf07a443e8</srcmd5>
+    <version>2.0.0</version>
+    <time>1379664722</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="19">
+    <srcmd5>fe8a23c8980c8f914f5c1c994fbccab0</srcmd5>
+    <version>2.0.0</version>
+    <time>1394739853</time>
+    <user>coolo</user>
+    <comment>Provide the license source file COPYING in the binary RPM (forwarded request 225708 from jsmeix)</comment>
+    <requestid>225709</requestid>
+  </revision>
+  <revision rev="11" vrev="20">
+    <srcmd5>1091f75f32c5d5b132fab6a3ceb970e4</srcmd5>
+    <version>2.0.0</version>
+    <time>1403686145</time>
+    <user>coolo</user>
+    <comment>Make Splix working also for Ghostscript version &amp;gt;= 9.02 (bnc#803005). Require ghostscript because all Splix driver PPDs need it. (forwarded request 238503 from jsmeix)</comment>
+    <requestid>238504</requestid>
+  </revision>
+  <revision rev="12" vrev="22">
+    <srcmd5>1091f75f32c5d5b132fab6a3ceb970e4</srcmd5>
+    <version>2.0.0</version>
+    <time>1409303403</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="23">
+    <srcmd5>a507564e535c7353834790463b6a83a7</srcmd5>
+    <version>2.0.0</version>
+    <time>1409761363</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247071</requestid>
+  </revision>
+  <revision rev="14" vrev="24">
+    <srcmd5>395bc35051b86f15ae90cec11ca5aa24</srcmd5>
+    <version>2.0.0</version>
+    <time>1427313969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>293098</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>94264917d33ba5e9ed44c068ce5fb45d</srcmd5>
+    <version>2.0.0.315</version>
+    <time>1492714487</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487802</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ae9c591271ba78bb04624732579b6782</srcmd5>
+    <version>2.0.0.315</version>
+    <time>1493580256</time>
+    <user>dimstar_suse</user>
+    <comment>call gzip -n to make build fully reproducible (forwarded request 492126 from bmwiedemann)</comment>
+    <requestid>492139</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>ded7a416d419dc2c6fe19cd5271aecad</srcmd5>
+    <version>2.0.0.315</version>
+    <time>1602682737</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed &quot;BuildRequires: python-cups&quot; (python2 is dead) (change
+  effectively done by J. Meixner).</comment>
+    <requestid>841599</requestid>
+  </revision>
+</revisionlist>

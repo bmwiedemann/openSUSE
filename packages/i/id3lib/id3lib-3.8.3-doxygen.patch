@@ -1,0 +1,76 @@
+--- doc/Doxyfile.in.orig
++++ doc/Doxyfile.in
+@@ -263,18 +263,17 @@ WARN_FORMAT            = "$file:$line: $
+ 
+ INPUT                  = ../src \
+                          ../include/id3/field.h \
+-                         ../include/id3/frame.h \
+                          ../include/id3/globals.h \
++                         ../include/id3/helpers.h \
+                          ../include/id3/misc_support.h \
+                          ../include/id3/reader.h \
+                          ../include/id3/readers.h \
+                          ../include/id3/sized_types.h \
+                          ../include/id3/tag.h \
+-                         ../include/id3/tag.h \
++                         ../include/id3/utils.h \
+                          ../include/id3/writer.h \
+                          ../include/id3/writers.h
+ 
+-
+ # If the value of the INPUT tag contains directories, you can use the 
+ # FILE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp 
+ # and *.h) to filter out the source-files in the directories. If left 
+@@ -432,7 +431,7 @@ COMPACT_LATEX          = NO
+ # by the printer. Possible values are: a4, a4wide, letter, legal and 
+ # executive. If left blank a4wide will be used. 
+ 
+-PAPER_TYPE             = letter
++PAPER_TYPE             = a4
+ 
+ # The EXTRA_PACKAGES tag can be to specify one or more names of LaTeX 
+ # packages that should be included in the LaTeX output. 
+@@ -451,20 +450,20 @@ LATEX_HEADER           =
+ # contain links (just like the HTML output) instead of page references 
+ # This makes the output suitable for online browsing using a pdf viewer. 
+ 
+-PDF_HYPERLINKS         = NO
++PDF_HYPERLINKS         = YES
+ 
+ # If the USE_PDFLATEX tag is set to YES, pdflatex will be used instead of 
+ # plain latex in the generated Makefile. Set this option to YES to get a 
+ # higher quality PDF documentation. 
+ 
+-USE_PDFLATEX           = NO
++USE_PDFLATEX           = YES
+ 
+ # If the LATEX_BATCHMODE tag is set to YES, doxygen will add the \\batchmode. 
+ # command to the generated LaTeX files. This will instruct LaTeX to keep 
+ # running if errors occur, instead of asking the user for help. 
+ # This option is also used when generating formulas in HTML. 
+ 
+-LATEX_BATCHMODE        = NO
++LATEX_BATCHMODE        = YES
+ 
+ #---------------------------------------------------------------------------
+ # configuration options related to the RTF output
+@@ -720,4 +719,6 @@ BIN_ABSPATH            = /usr/local/bin/
+ # documentation generated for other projects. This allows doxysearch to search 
+ # the documentation for these projects as well. 
+ 
+-EXT_DOC_PATHS          = 
++EXT_DOC_PATHS          =
++
++HTML_TIMESTAMP         = NO
+--- doc/Makefile.am.orig
++++ doc/Makefile.am
+@@ -42,8 +42,7 @@ dox: Doxyfile
+ 
+ docs: dox index.html id3lib.css
+ 	-rm -rf $(docsdistdir).*
+-	cd $(srcdir)/@DOX_DIR_LATEX@ && \
+-	make pdf && \
++	test -d $(srcdir)/@DOX_DIR_LATEX@ && cd $(srcdir)/@DOX_DIR_LATEX@ && \
+ 	(cp *.pdf ../$(docsdistdir).pdf || true) && \
+ 	cp *.ps ../$(docsdistdir).ps && \
+ 	gzip -9 ../$(docsdistdir).ps

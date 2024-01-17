@@ -1,0 +1,16 @@
+[org.mate.background]
+## Default wallpaper
+picture-filename = '@@WALLPAPER_URI@@'
+picture-options = 'stretched'
+primary-color = '#258c06'
+secondary-color = '#258c06'
+
+[org.mate.interface]
+icon-theme='menta'
+gtk-theme='Numix'
+
+[org.mate.Marco.general]
+theme='Numix'
+
+[org.mate.panel.menubar]
+icon-name='mate-opensuse-light'

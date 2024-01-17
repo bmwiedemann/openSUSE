@@ -1,0 +1,11 @@
+<package name="dhewm3" project="openSUSE:Factory">
+  <title>DOOM 3 source port</title>
+  <description>dhewm3 is a DOOM 3 GPL source port.
+Unlike the original DOOM 3, dhewm3 uses:
+
+- SDL for low level OS support, OpenGL and input handling
+- OpenAL for audio output, all OS specific audio backends are gone
+- OpenAL EFX for EAX reverb effects
+- Better support for widescreen (and arbitrary display resolutions)</description>
+  <devel project="games" package="dhewm3"/>
+</package>

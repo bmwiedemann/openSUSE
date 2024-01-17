@@ -1,0 +1,45 @@
+Index: check_mailstat_plugin_v0.9.1/check_mailstat.pl
+===================================================================
+--- check_mailstat_plugin_v0.9.1.orig/check_mailstat.pl
++++ check_mailstat_plugin_v0.9.1/check_mailstat.pl
+@@ -49,7 +49,6 @@ my @warn;
+ my @critical;
+ 
+ my $stat_file = '/var/tmp/mailstat';
+-my $stat_old = $stat_file. ".old";
+ 
+ sub usage;
+ sub get_counter;
+@@ -73,6 +72,7 @@ $status = GetOptions(
+ 	"V|version"	=> \$opt_V,
+ 	"h|help"	=> \$opt_h, 
+ 	"w|warning=s"	=> \$opt_w,
++	"s|statfile=s"  => \$stat_file,
+ 	"c|critical=s"	=> \$opt_c,);
+ 		
+ if ($status == 0)
+@@ -92,6 +92,7 @@ if ($opt_h) {
+ 	exit $ERRORS{'OK'};
+ }
+ 
++my $stat_old = $stat_file. ".old";
+ my @stat_counter = get_counter();
+ $answer = stat_str(@stat_counter);
+ my $perfdata = sprintf "sent=%-6.2f received=%-6.2f bounced=%-6.2f rejected=%-6.2f virus=%-6.2f spam=%-6.2f", @stat_counter;
+@@ -145,7 +146,7 @@ exit $ERRORS{$state};
+ 
+ sub usage {
+ 	print "\nUsage:\n";
+-	print "$PROGNAME -w <WARN THRESHOLD> -c <CRITICAL THRESHOLD> \n";
++	print "$PROGNAME -w <WARN THRESHOLD> -c <CRITICAL THRESHOLD> -s $stat_file\n";
+ 	print "THRESHOLD: sent:received:bounced:rejected:virus:spam\n";
+ 	print "           if no threshold for a specific counter, set it to 0\n";
+ 	print "           measured by messages per minute\n";
+@@ -163,6 +164,7 @@ sub print_help {
+ 	print "\nOptions:\n";
+ 	print "  -w,--warning=THRESHOLD  Return WARN if exceed the thresolds\n";
+ 	print "  -c,--critical=THRESHOLD Retrun CRITICAL if exceed the thresholds\n";
++	print "  -s,--statfile=<file>    Full path to statistic file from mailgraph (default: /var/tmp/mailstat)\n";
+ 	print "  -V (--Version)          Plugin version\n";
+ 	print "  -v (--verbose)          Enable verbose output\n";
+ 	print "  -h (--help)             Usage help \n\n";

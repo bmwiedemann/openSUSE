@@ -1,0 +1,2 @@
+# Those PEM files are only examples:
+addFilter("pem-certificate /usr/share/doc/packages/keepalived/samples/.*.pem")

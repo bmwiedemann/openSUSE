@@ -1,0 +1,5 @@
+<package name="libassuan" project="openSUSE:Factory">
+  <title>IPC library used by GnuPG version 2</title>
+  <description>Libassuan is the IPC library used by gpg2 (GnuPG version 2)</description>
+  <devel project="Base:System" package="libassuan"/>
+</package>

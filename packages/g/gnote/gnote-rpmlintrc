@@ -1,0 +1,2 @@
+# Filter devel file in non devel package as splitting out a devel package is not needed, internal gnote use only.
+addFilter("gnote.* devel-file-in-non-devel-package")

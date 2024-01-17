@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc2c392c6f595ace39186781475dfd4d</srcmd5>
+    <version>0.15.1</version>
+    <time>1556022936</time>
+    <user>maxlin_factory</user>
+    <comment>- Activate test suite, using GitHub archive for the tests
+- Add missing runtime dependencies
+- Use fdupes and fix hashbangs
+- Add %license
+- Remove build dependency on devel
+- updated project URL
+- update to 0.15.1
+  (way too many changes to be listed here)
+- initial package of upstream release 0.12.0 (Python Singlespec)
+</comment>
+    <requestid>695466</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5344a817b644e32da55c7fd1ee10a15b</srcmd5>
+    <version>0.15.1</version>
+    <time>1556916439</time>
+    <user>dimstar_suse</user>
+    <comment>- Make it so the description has proper SVO sentences.</comment>
+    <requestid>700249</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fe009bd1ee26d268e6b63eb22b0abcbe</srcmd5>
+    <version>1.0.1</version>
+    <time>1564994192</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720152</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7cac0deaf5b5513e9a5c507fdf9b3cc3</srcmd5>
+    <version>1.2.0</version>
+    <time>1585262088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788573</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>258a966f015ff5674442b2c12ee0b34d</srcmd5>
+    <version>1.2.0</version>
+    <time>1612781234</time>
+    <user>dimstar_suse</user>
+    <comment>- use update-alternatives for multi-python3-flavor build</comment>
+    <requestid>868655</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b688c11718c0f308e41219b5fb0423c5</srcmd5>
+    <version>1.2.1</version>
+    <time>1620072477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889724</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>22b51b63607b5692d89566959e489688</srcmd5>
+    <version>1.3.0</version>
+    <time>1645629963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0:
+  * Drop python 3.5 support
+  * Support for dict in Client.parse_response formats
+  * Better error message for providers which return HTTP Error 405 on userinfo
+  * Add settings class to handle settings related to Client and Server
+- Add patch fix-scheme-message.patch</comment>
+    <requestid>956898</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6a029d359567d114c8ca9e9dd803d931</srcmd5>
+    <version>1.5.0</version>
+    <time>1675689344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch fix-scheme-message.patch with upstream change
+  gh#OpenIDC/pyoidc@6fa769a59b8b
+- Update to 1.5.0:
+  * Try to fix the generic response parsing and handling by @schlenk in #817
+  * Remove travis config by @schlenk in #819
+  * Remove Client.grant_from_state() by @schlenk in #820
+  * move beaker to an optional/extras requirement under 'examples' by @biyeun in #823
+  * Added support for python 3.11 by @tpazderka in #828
+  * Fixed RP-Initiated Logout To Accept id_token_hint by @infohash in #829
+  * fix for some provider return birthdate:null in userInfo by @pkking in #831
+  * Fix mypy errors with no_implicit_optional=True by @schlenk in #832
+  * Schedule daily CI run by @tpazderka in #833
+  * Simplified Http Request by @infohash in #836
+  * Fix tox config for v4 by @tpazderka in #837
+- Update to 1.4.0:
+  * Toolfix by @schlenk in #802
+  * docs: Fix a few typos by @timgates42 in #794
+  * Drop python 3.6 by @tpazderka in #810
+  * Moved from pyldap to python-ldap by @infohash in #814
+</comment>
+    <requestid>1063369</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34b975c1f16a8cf92ca6d4b0457c45eb</srcmd5>
+    <version>1.48.1</version>
+    <time>1654199642</time>
+    <user>dimstar_suse</user>
+    <comment>guestfs-tools is a new package split out from libguestfs with its own source tarball.</comment>
+    <requestid>979362</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2344da5d1960d4ed00e91539c0ee4131</srcmd5>
+    <version>1.48.2</version>
+    <time>1655048415</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>982048</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b79dd3ea1a3c468dbc0793190454804f</srcmd5>
+    <version>1.48.2</version>
+    <time>1656768868</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1201064 VUL-0: CVE-2022-2211: Libguestfs: Buffer overflow in get_keys leads to DOS</comment>
+    <requestid>986263</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8bc30ed090c1b7c3eb399a688651cb64</srcmd5>
+    <version>1.48.2</version>
+    <time>1666978208</time>
+    <user>dimstar_suse</user>
+    <comment>Sync with SLE15-SP5 changelog and spec file.</comment>
+    <requestid>1031588</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a6817ee98261c3fbb86f310c053b46b8</srcmd5>
+    <version>1.48.2</version>
+    <time>1672768170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1046570</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2a30b9234e9db7c8b6ad72296c12d0c4</srcmd5>
+    <version>1.48.3</version>
+    <time>1674927769</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.48.3</comment>
+    <requestid>1061414</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7da4e714e1ce94a7b9e2a7e0f41cc546</srcmd5>
+    <version>1.48.3</version>
+    <time>1675873201</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1063524</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dbe1c5356f8486bbb2bb58f3819d1fa7</srcmd5>
+    <version>1.50.0</version>
+    <time>1676401699</time>
+    <user>dimstar_suse</user>
+    <comment>Update to guestfs-tools version 1.50.0</comment>
+    <requestid>1065782</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ea1909da50a689faf29428a5e910109d</srcmd5>
+    <version>1.50.0</version>
+    <time>1679069115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1072668</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f7c90f2aa238ef76a6b02130a63eccf7</srcmd5>
+    <version>1.50.1</version>
+    <time>1683037122</time>
+    <user>dimstar_suse</user>
+    <comment>Update to guestfs-tools version 1.50.1 bug fix release.</comment>
+    <requestid>1083877</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>86acb9140f7e506c983932453bfc4a4c</srcmd5>
+    <version>1.51.5</version>
+    <time>1701462341</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1130122</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>655503ce45a8877baadad7c3298a6053</srcmd5>
+    <version>1.51.6</version>
+    <time>1702405926</time>
+    <user>dimstar_suse</user>
+    <comment>Update guestfs-tools to version 1.51.6</comment>
+    <requestid>1132566</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>17f47176d624530beb9b4a8aa9b08049</srcmd5>
+    <version>1.52.0</version>
+    <time>1704487401</time>
+    <user>dimstar_suse</user>
+    <comment>Update guestfs-tools to version 1.52.0</comment>
+    <requestid>1136943</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b4cdcb716120f84c28a3cd6c8dc352ab</srcmd5>
+    <version>1.52.0</version>
+    <time>1704754003</time>
+    <user>anag+factory</user>
+    <comment>Add Jira request number to changelog. No code change.</comment>
+    <requestid>1137602</requestid>
+  </revision>
+</revisionlist>

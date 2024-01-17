@@ -1,0 +1,5 @@
+<package name="rustup" project="openSUSE:Factory">
+  <title>rustup</title>
+  <description>Rustup allows installing a rust toolchain for developers</description>
+  <devel project="devel:languages:rust" package="rustup"/>
+</package>

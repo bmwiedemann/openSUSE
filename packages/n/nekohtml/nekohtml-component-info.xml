@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="">
+  <component id="nekohtml"
+             licenseType=""
+             version="@VERSION@"
+             tag="@TAG@"
+             description=""
+             
+             > 
+              
+    <artifact id="nekohtml.jar"/>
+
+
+    <export>
+      <include input="nekohtml.jar"/>
+
+    </export>
+  </component>
+</project>

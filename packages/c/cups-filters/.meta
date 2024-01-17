@@ -1,0 +1,9 @@
+<package name="cups-filters" project="openSUSE:Factory">
+  <title>OpenPrinting CUPS filters and backends</title>
+  <description>Contains backends, filters, and other software that was
+once part of the core CUPS distribution but is no longer maintained by
+Apple Inc. In addition it contains additional filters developed
+independently of Apple, especially filters for the PDF-centric printing
+workflow introduced by OpenPrinting.</description>
+  <devel project="Printing" package="cups-filters"/>
+</package>

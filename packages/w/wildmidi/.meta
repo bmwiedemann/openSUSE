@@ -1,0 +1,9 @@
+<package name="wildmidi" project="openSUSE:Factory">
+  <title>Softsynth midi player</title>
+  <description>WildMidi is a software midi player which has a core softsynth library that can
+be used with other applications.
+
+</description>
+  <devel project="multimedia:libs" package="wildmidi"/>
+  <url>https://www.mindwerks.net/projects/wildmidi</url>
+</package>

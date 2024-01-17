@@ -1,0 +1,9 @@
+<package name="firecracker" project="openSUSE:Factory">
+  <title>Virtual Machine Monitor for creating microVMs</title>
+  <description>Firecracker is a virtualization technology for creating and managing
+multi-tenant container and function-based services.
+
+</description>
+  <devel project="Virtualization" package="firecracker"/>
+  <url>https://firecracker-microvm.github.io/</url>
+</package>

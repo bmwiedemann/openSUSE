@@ -1,0 +1,16 @@
+Index: btar-1.1.1/rsync.c
+===================================================================
+--- btar-1.1.1.orig/rsync.c
++++ btar-1.1.1/rsync.c
+@@ -125,7 +125,11 @@ rsync_signature_new()
+     rs->buffers.avail_out = rs->allocated_output;
+     rs->buffers.avail_in = 0;
+     rs->buffers.eof_in = 0;
++    #ifdef RS_DEFAULT_STRONG_LEN
+     rs->job = rs_sig_begin(command_line.rsync_block_size, RS_DEFAULT_STRONG_LEN);
++    #else
++    rs->job = rs_sig_begin(command_line.rsync_block_size, 8, RS_MD4_SIG_MAGIC);
++    #endif
+     assert(rs->job != 0);
+ 
+     return rs;

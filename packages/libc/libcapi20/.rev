@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ba0febb85d5bc926599ece745978ea07</srcmd5>
+    <version>3.27</version>
+    <time>1583750484</time>
+    <user>dimstar_suse</user>
+    <comment>dependency of capi4hylafax, previously provided by i4l-base</comment>
+    <requestid>782721</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7e2027350473521075bee287442a2f50</srcmd5>
+    <version>3.27</version>
+    <time>1633644352</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf (previously provided through i4l-base,
+  which was deleted in Factory). [boo#1191039] (forwarded request 922342 from jengelh)</comment>
+    <requestid>923567</requestid>
+  </revision>
+</revisionlist>

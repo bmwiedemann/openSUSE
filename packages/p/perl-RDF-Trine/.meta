@@ -1,0 +1,5 @@
+<package name="perl-RDF-Trine" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-RDF-Trine"/>
+</package>

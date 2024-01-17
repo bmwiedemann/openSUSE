@@ -1,0 +1,39 @@
+document -C and -t options in manpage
+
+Signed-off-by: Ludwig Nussel <ludwig.nussel@suse.de>
+
+Index: hashalot-0.3/hashalot.1
+===================================================================
+--- hashalot-0.3/hashalot.1.orig
++++ hashalot-0.3/hashalot.1
+@@ -2,9 +2,9 @@
+ .SH NAME
+ hashalot \- read a passphrase and print a hash
+ .SH SYNOPSIS
+-.B  hashalot [ \-s SALT ] [ \-x ] [ \-n #BYTES ] HASHTYPE
++.B  hashalot [ \-t secs ] [ \-s SALT ] [ \-x ] [ \-n #BYTES ] [ \-C itercountk ] HASHTYPE
+ .br
+-.B  HASHTYPE [ \-s SALT ] [ \-x ] [ \-n #BYTES ]
++.B  HASHTYPE [ \-t secs ] [ \-s SALT ] [ \-x ] [ \-n #BYTES ] [ \-C itercountk ]
+ .SH DESCRIPTION
+ .PP
+ \fIhashalot\fP is a small tool that reads a passphrase from standard
+@@ -36,6 +36,18 @@ option can be used to limit (or increase
+ default is as appropriate for the specified hash algorithm: 20 bytes for
+ RIPEMD160, 32 bytes for SHA256, etc. The default for the "rmd160compat"
+ hash is 16 bytes, for compatibility with the old kerneli.org utilities.
++.PP
++The
++.B \-t
++option specifies a timeout for reading the passphrase from the terminal.
++.PP
++The
++.B \-C
++option specifies that the hashed password has to be encrypted
++itercountk thousand times using AES-256. Use for compatability with
++loop-AES.
++.PP
++The options \-t and \-C are currently SUSE specific
+ .SH AUTHOR
+ Ben Slusky <sluskyb@paranoiacs.org>
+ .PP

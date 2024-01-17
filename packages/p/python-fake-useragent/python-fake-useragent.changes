@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Sat Dec  2 14:16:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * python 3.12 support
+  * Introducing new `ua.getRandom`, `ua.getFirefox`,
+    `ua.getChrome`, `ua.getSafari`. And a generic method:
+    `ua.getBrowser(..)` (eg. `getBrowser('firefox')`)
+    These new properties above allows you to retrieve the whole
+    raw Python dictionary, instead of only the UA string.
+    These properties might return different key/values pairs in
+    the future! So `ua.random` is a more stable interface.
+  * Improved user-agent scraper (now also containing Safari
+    browser again)
+  * Updated browsers.json data file
+
+-------------------------------------------------------------------
+Tue Aug  8 10:59:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Still using the new dataset of course!
+  * Small improvements in the min_percentage check
+  * Update all Pip package dependencies
+  * Updated browser useragent data 🚀
+  * Allow filters on browser, OS and usage percentage 🚀
+  * Update the cache scraper to scape the new data source for
+    user-agent strings
+  * Adapted the code to work with the new JSON data format
+
+-------------------------------------------------------------------
+Wed Apr 19 09:46:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.3:
+  * Update deps
+
+-------------------------------------------------------------------
+Thu Feb  9 17:10:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * security update
+
+-------------------------------------------------------------------
+Mon Jan  2 16:00:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Remove white spaces from user agent strings, this is a patch release
+
+-------------------------------------------------------------------
+Tue Dec  6 03:26:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.1.0
+  * Add pkg_resource as fallback mechanism in trying to retrieve the local JSON data file
+
+-------------------------------------------------------------------
+Fri Nov 18 23:13:12 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.0.1
+  * Add importlib-metadata & importlib-resources as dependencies
+  * Check on specific Python version regarding the importlib resources
+    (python v3.10 or higher) in order to have files() working
+  * importlib_metadata should now also work on Python version before 3.8
+  * Remove obsolete MANIFEST.in file
+- from v1.0.0
+  * Make the JSON Lines data file part of the Python package,
+    data is retrieved locally
+  * Extend the myproject.toml file with package-data support
+  * Remove centralized caching server implementation
+  * Make real unit-tests which should run reliable, fast, independent
+    and without Internet connection
+- from v0.1.14
+  * Improve code quality standards using modern Python >=3.7 syntax
+  * Migrated to pyproject.toml build system format + syntax check
+  * Add additional classifiers to the toml file
+  * Improved tox.ini file
+  * Improved GitHub Actions job using pip cache
+  * And various small fixes
+
+-------------------------------------------------------------------
+Thu Nov  3 23:14:45 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate test suite
+- Update to v0.1.13
+  * Implement browsers argument, allowing you to override the browser
+    names you want to use
+  * Fix browser listing of Internet Explorer and Edge
+  * Don't depend on w3schools.com anymore
+  * Clean-up data (temp) file format
+  * Update fallback cache server URL / use JSON Lines as file format
+  * Move to GitHub Actions instead of Travis
+  * Using black Python formatter in favour of Flake
+- from v0.1.12
+  * Project moved to https://github.com/fake-useragent/fake-useragent
+
+-------------------------------------------------------------------
+Wed Sep 15 10:31:22 UTC 2021 - pgajdos@suse.com
+
+- %check: note tests are online, do not run them
+
+-------------------------------------------------------------------
+Thu Apr  4 00:40:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version for v0.1.11

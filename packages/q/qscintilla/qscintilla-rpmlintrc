@@ -1,0 +1,4 @@
+# the major version is only in the lib name but not the devel package name
+addFilter("no-dependency-on.*libqscintilla-qt")
+# the packages have to match: the lib needs the datafiles
+addFilter("shlib-fixed-dependency.*qscintilla2_qt")

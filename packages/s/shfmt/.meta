@@ -1,0 +1,6 @@
+<package name="shfmt" project="openSUSE:Factory">
+  <title>shfmt shell parser, formatter, and interpreter with bash support</title>
+  <description>shfmt is a shell parser, formatter, and interpreter with support for POSIX Shell, Bash, and mksh.</description>
+  <devel project="devel:languages:go" package="shfmt"/>
+  <url>https://github.com/mvdan/sh</url>
+</package>

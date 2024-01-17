@@ -1,0 +1,32 @@
+From 2754541aba279ef6715f1f3adcd9b8e4881fc830 Mon Sep 17 00:00:00 2001
+From: Frank Schreiner <schreiner@suse.de>
+Date: Thu, 10 Dec 2020 07:49:09 +0100
+Subject: [PATCH] enhance loadavg array from 2 to 3 doubles
+
+Fixes: https://rt.cpan.org/Public/Bug/Display.html?id=120617
+
+Without this patch on aarch64 the module crashes with the following message:
+
+perl -e 'use Sys::LoadAvg qw( loadavg );loadavg();'
+*** stack smashing detected ***: terminated
+Aborted (core dumped)
+---
+ LoadAvg.xs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/LoadAvg.xs b/LoadAvg.xs
+index 0cb1c40..2c4c48b 100644
+--- a/LoadAvg.xs
++++ b/LoadAvg.xs
+@@ -13,7 +13,7 @@ void
+ loadavg()
+   PROTOTYPE:
+   PREINIT:
+-    double loadavg[2];
++    double loadavg[3];
+     int retval; 
+     int i;
+   PPCODE:
+-- 
+2.29.2
+

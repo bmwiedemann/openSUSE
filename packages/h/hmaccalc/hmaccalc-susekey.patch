@@ -1,0 +1,16 @@
+Index: src/hmac.c
+===================================================================
+--- src/hmac.c.orig
++++ src/hmac.c
+@@ -555,9 +555,9 @@ main(int argc, char **argv)
+ 			    "(sha512/sha384/sha256/sha1)\n";
+ #endif
+ 
+-	/* Default settings: SHA-512, key = "FIPS-FTW-RHT2009". */
++	/* Default settings: SHA-512, key = "FIPS-FTW-SUSE2014". */
+ 	configdir = DEFAULT_CONFIG_DIR;
+-	Kopt = default_key = "FIPS-FTW-RHT2009";
++	Kopt = default_key = "FIPS-FTW-SUSE2014";
+ 	kopt = NULL;
+ 	copt = NULL;
+ 	ret = 0;

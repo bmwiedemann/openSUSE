@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b67609c3e37935878478bea9e0f951d1</srcmd5>
+    <version>0.7.0</version>
+    <time>1590506632</time>
+    <user>maxlin_factory</user>
+    <comment>Resurrect afer fixing</comment>
+    <requestid>808664</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2046b1829dff2da24d68c518a01f87eb</srcmd5>
+    <version>0.8.0</version>
+    <time>1601043653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836106</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fcfc928a2f5d0a1d2c0d8d2e67d54dae</srcmd5>
+    <version>0.9.0</version>
+    <time>1639340853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>936282</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d6c41acb9ef622f119729121ae32dccf</srcmd5>
+    <version>0.9.0</version>
+    <time>1661593698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>999386</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>268d87be00c7de598954253ea8f0f0a9</srcmd5>
+    <version>0.10.1</version>
+    <time>1674043719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1059145</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>23c6c79287b3138a122ec7a08934ddc1</srcmd5>
+    <version>0.10.1</version>
+    <time>1677351262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067316</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3bf770852858c91d859e8f42b21ff75e</srcmd5>
+    <version>0.10.2</version>
+    <time>1677584904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1067988</requestid>
+  </revision>
+</revisionlist>

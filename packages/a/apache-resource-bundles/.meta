@@ -1,0 +1,9 @@
+<package name="apache-resource-bundles" project="openSUSE:Factory">
+  <title>Apache Resource Bundles</title>
+  <description>An archive which contains templates for generating the necessary license files
+and notices for all Apache releases.
+
+</description>
+  <devel project="Java:packages" package="apache-resource-bundles"/>
+  <url>http://repo1.maven.org/maven2/org/apache/apache-resource-bundles/</url>
+</package>

@@ -1,0 +1,15 @@
+Index: common/argus_util.c
+===================================================================
+--- common/argus_util.c.orig
++++ common/argus_util.c
+@@ -20457,8 +20457,8 @@ ArgusLog (int priority, char *fmt, ...)
+             *tptr++ = buf[i];
+          }
+ 
+-         memset(buf, 0, MAXSTRLEN);
+-         strncpy(buf, tbuf, MAXSTRLEN);
++         memset(buf, 0, sizeof(buf));
++         strncpy(buf, tbuf, sizeof(buf));
+       }
+  
+       syslog (priority, "%s", buf);

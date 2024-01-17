@@ -1,0 +1,36 @@
+commit c2e2f86b2dac24ccf8e7ad175d143f99fc9045f3
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Sep 10 10:35:03 2021 +0200
+
+    opae: fix support with newer spdlog
+    
+    spdlog >= 1.9.0  replaced SPDLOG_LEVEL_NAMES from a string array to an object array
+    which breaks the call to CLI::IsMember
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git samples/dummy_afu/test_afu.h samples/dummy_afu/test_afu.h
+index 25287df15750..3d9f1cb53da3 100644
+--- samples/dummy_afu/test_afu.h
++++ samples/dummy_afu/test_afu.h
+@@ -131,6 +131,11 @@ private:
+ 
+ };
+ 
++#define LEGACY_SPDLOG_LEVEL_NAMES										\
++	{																	\
++        "trace", "debug", "info", "warning", "error", "critical", "off" \
++			}
++
+ class test_afu {
+ public:
+   typedef int (*command_fn)(test_afu *afu, CLI::App *app);
+@@ -160,7 +165,7 @@ public:
+                     "[<domain>:]<bus>:<device>.<function>");
+     app_.add_option("-l,--log-level", log_level_, "stdout logging level")->
+       default_val(log_level_)->
+-      check(CLI::IsMember(SPDLOG_LEVEL_NAMES));
++      check(CLI::IsMember(LEGACY_SPDLOG_LEVEL_NAMES));
+     app_.add_flag("-s,--shared", shared_, "open in shared mode, default is off");
+     app_.add_option("-t,--timeout", timeout_msec_, "test timeout (msec)")->default_val(timeout_msec_);
+   }

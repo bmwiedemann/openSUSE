@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>875461ea2cb3c6323f5fb9da7de727b0</srcmd5>
+    <version>5.7.0.35</version>
+    <time>1622664675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>895040</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9e92ab1ba459937ca112740130bd717</srcmd5>
+    <version>5.7.0.75</version>
+    <time>1629269724</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.7.0.75
+  * Fix order for English and Chinese
+  * Drop dman script
+  * Fix bugs
+- Drop support-Qt-5_15+.patch, merged by upstream (forwarded request 910672 from hillwood)</comment>
+    <requestid>910886</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ed82f54ad3e0e42c20a56ef4a2cb392a</srcmd5>
+    <version>5.8.4</version>
+    <time>1644273478</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Tumbleweed. (forwarded request 951995 from hillwood)</comment>
+    <requestid>951996</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc7bf3621f057991e448fb3a6256bcfd</srcmd5>
+    <version>5.8.5</version>
+    <time>1650657227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>971786</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1ced753c835b811851d2905868fec716</srcmd5>
+    <version>5.8.12</version>
+    <time>1662063020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.8.12
+  * Add event tracking feature
+  * Fix bugs 
+
+- Update version to 5.8.9
+  * Fix bugs</comment>
+    <requestid>1000252</requestid>
+  </revision>
+</revisionlist>

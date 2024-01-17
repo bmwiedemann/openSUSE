@@ -1,0 +1,9 @@
+<package name="perl-Sub-Install" project="openSUSE:Factory">
+  <title>Install subroutines into packages easily</title>
+  <description>This module makes it easy to install subroutines into packages without the
+unslightly mess of no strict or typeglobs lying about where just anyone
+can see them.
+
+  Author:	Ricardo Signes, &lt;rjbs@cpan.org&gt;</description>
+  <devel project="devel:languages:perl" package="perl-Sub-Install"/>
+</package>

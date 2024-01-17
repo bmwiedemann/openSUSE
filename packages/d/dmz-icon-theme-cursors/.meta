@@ -1,0 +1,5 @@
+<package name="dmz-icon-theme-cursors" project="openSUSE:Factory">
+  <title>DMZ Cursor Theme</title>
+  <description>This package contains the DMZ cursor theme for X.</description>
+  <devel project="X11:common:Factory" package="dmz-icon-theme-cursors"/>
+</package>

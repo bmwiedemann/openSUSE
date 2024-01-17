@@ -1,0 +1,230 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7bc73885d15c98e7eb79ee94f977e944</srcmd5>
+    <version>0.3.0~gitbcaa</version>
+    <time>1427313892</time>
+    <user>dimstar_suse</user>
+    <comment>Usefull tool</comment>
+    <requestid>292332</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>58936e9258f0b6586e2b9e4a26754909</srcmd5>
+    <version>0.3.0~gitbcaa</version>
+    <time>1435172683</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313398</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1e077a0abc7a3af0612b75e0f2da0a6e</srcmd5>
+    <version>0.3.0~gitbcaa</version>
+    <time>1439556372</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322293</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4fb443d47ba5a6158997b17c79568661</srcmd5>
+    <version>0.2.88</version>
+    <time>1459002282</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to 0.2.88 (as 0.3 branch seems to be currently abandoned)
+- Enable more filesystems
+- Remove ppc excludes as build now succeeds
+- Cleanup spec file
+- Drop upstreamed partclone-missing-includes.patch</comment>
+    <requestid>376233</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>11bcb87b52a1e63038144211d3357bec</srcmd5>
+    <version>0.2.89</version>
+    <time>1467705124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.89:
+  * small bugfixes</comment>
+    <requestid>406155</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3be59fd987ddfb588711cc2d561952cb</srcmd5>
+    <version>0.3.5a</version>
+    <time>1487768174</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.5a:
+  * Support for fuse
+  * Several bugfixes and internal changes</comment>
+    <requestid>459484</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d3c25c7970db5e878a473ee2d1c61ca9</srcmd5>
+    <version>0.3.5a</version>
+    <time>1490026191</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>480895</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ab1b4a6183c34659e93568ea7cbc0f14</srcmd5>
+    <version>0.3.11</version>
+    <time>1508434408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.11:
+  * update xfs</comment>
+    <requestid>535174</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>12b1beef7d50fcea0f1033cbe6fb3913</srcmd5>
+    <version>0.3.12</version>
+    <time>1545141443</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.12:
+  * Support compressed cloned images
+- Enable exfat support</comment>
+    <requestid>658172</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>95cb650d2309b125f4213b473260d185</srcmd5>
+    <version>0.3.12</version>
+    <time>1554977802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692926</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a4c72260127715d2f87776020d5ff1be</srcmd5>
+    <version>0.3.13</version>
+    <time>1569523314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.13&quot;
+  * Add support for apfs
+- Update download url</comment>
+    <requestid>733325</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>62e4cdf1561012d973c20fee0321108d</srcmd5>
+    <version>0.3.13</version>
+    <time>1591880062</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10</comment>
+    <requestid>813462</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b011b5b5b126bc09e67acaa985330a72</srcmd5>
+    <version>0.3.15</version>
+    <time>1597064384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825213</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5d484ad3097ee9f5c8b681af05fc10bd</srcmd5>
+    <version>0.3.17</version>
+    <time>1609344763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859234</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b0578a5fde52d3493dd910c5dfef468d</srcmd5>
+    <version>0.3.17</version>
+    <time>1615489828</time>
+    <user>dimstar_suse</user>
+    <comment>- Resolve build failure on Tumleweed</comment>
+    <requestid>878117</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9c8711d20186d655ef3f9a48828d84be</srcmd5>
+    <version>0.3.17</version>
+    <time>1616598727</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop dependency on libreiserfs</comment>
+    <requestid>880476</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>71a3aa9d098b5b9af8f2d430c5fdb166</srcmd5>
+    <version>0.3.18</version>
+    <time>1633038217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922300</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6e2296e3c055c20165b074172a9b8815</srcmd5>
+    <version>0.3.19</version>
+    <time>1648479663</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.19:
+  * Ignore free space check if compression is enabled. by @zboszor in #147
+  * fix: crash when backing up swap partition by @justforlxz in #148
+  * Update to btrfs-progs 5.4.1 by @boretom in #151
+  * Change C99 for loop init to C89 for compatibility by @robert-scheck in #152
+  * doc: document the image formats by @pfrouleau in #157
+  * doc: fix typo for logfile argument by @mjoerg in #162
+  * WIP: Add block_size and blocks_total in torrent.info to provide partition info by @tjjh89017 in #164
+  * Use EVP OpenSSL API by @zboszor in #165
+  * Fix using EVP OpenSSL API by @zboszor in #166
+  * Fix typo by @jwilk in #169
+  * Support HFS+ wrapper volumes by @vasi in #172
+  * Domain file doc by @jowagner in #175
+  * Docs typo &quot;normanly&quot; by @jowagner in #178
+  * How to contribute docs: readme by @jowagner in #179</comment>
+    <requestid>965323</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>10ebd5a6ff347898dd96f3b6934e9235</srcmd5>
+    <version>0.3.20</version>
+    <time>1651784824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>975103</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4326ccfef3da271b107eafddb723df05</srcmd5>
+    <version>0.3.22</version>
+    <time>1673888367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1058620</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a43102ea9701db8a652828b886e2b7ba</srcmd5>
+    <version>0.3.23</version>
+    <time>1675177786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1062184</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>35eda8f1f87a46e49dfaa355495b524b</srcmd5>
+    <version>0.3.25</version>
+    <time>1693860809</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108820</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>22eea11e72e00bdbf1b0bfa699643826</srcmd5>
+    <version>0.3.26</version>
+    <time>1696529022</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115573</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a9b93c1e8db75485cb14d2083c2eecba</srcmd5>
+    <version>0.3.27</version>
+    <time>1701023867</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.27:
+  * add read-direct-io and write-direct-io options for O_DIRECT
+    flag
+  * add date time to log file
+
+  * correction for item at offset 76
+  * report used blocks and free space based on bitmap
+  * Full Changelog:
+  * fix progress
+- update to 0.2.38
+- not all filesystems supported yet</comment>
+    <requestid>1128821</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="steinberg-bravura-fonts" project="openSUSE:Factory">
+  <title>steinberg-bravura-fonts</title>
+  <description>Bravura is the reference music font for the Standard Music Font Layout
+(SMuFL) specification, fully compliant with SMuFL 1.2.
+</description>
+  <devel project="M17N:fonts" package="steinberg-bravura-fonts"/>
+  <url>https://www.smufl.org/fonts</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="v2ray-core" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:proxy" package="v2ray-core"/>
+</package>

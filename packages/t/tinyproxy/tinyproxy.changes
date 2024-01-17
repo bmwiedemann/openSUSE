@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Thu Sep 21 01:54:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- The %pre scriptlet exercises shadow, so add a Requires for it.
+
+-------------------------------------------------------------------
+Wed Oct  5 18:21:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Ship COPYING file
+
+-------------------------------------------------------------------
+Tue Sep 20 08:55:30 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-prevent-junk-from-showing-up-in-error-page-in-invali.patch
+  [CVE-2022-40468] [boo#1203553]
+
+-------------------------------------------------------------------
+Mon Jun  6 16:38:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Move tinyproxy program to /usr/bin.
+
+-------------------------------------------------------------------
+Fri May 27 14:14:39 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.1
+  * New fnmatch based filtertype
+- Drop tinyproxy-conf.patch, no rationale for why those changes
+  are there [boo#1200028].
+
+-------------------------------------------------------------------
+Fri Apr 16 17:31:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11
+  * Support for multiple bind directives.
+
+-------------------------------------------------------------------
+Tue Aug 25 19:19:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not suppress errors from groupadd/useradd
+
+-------------------------------------------------------------------
+Thu Aug 20 13:36:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Configuration file has moved from /etc/tinyproxy.conf to
+    /etc/tinyproxy/tinyproxy.conf.
+  * Add support for basic HTTP authentication
+  * Add socks upstream support
+  * Log to stdout if no logfile is specified
+  * Activate reverse proxy by default
+  * Support bind with transparent mode
+  * Allow multiple listen statements in the configuration
+  * Fix CVE-2017-11747: Create PID file before dropping privileges.
+  * Fix CVE-2012-3505: algorithmic complexity DoS in hashmap
+  * Bugfixes
+  * BB#110: fix algorithmic complexity DoS in hashmap
+  * BB#106: fix CONNECT requests with IPv6 literal addresses as host
+  * BB#116: fix invalid free for GET requests to ipv6 literal address
+  * BB#115: Drop supplementary groups
+  * BB#109: Fix crash (infinite loop) when writing to log file fails
+  * BB#74: Create log and pid files after we drop privs
+  * BB#83: Use output of id instead of $USER
+   
+-------------------------------------------------------------------
+Tue Jan  6 10:12:12 UTC 2015 - jengelh@inai.de
+
+- Provide service file instead of script
+
+-------------------------------------------------------------------
+Mon Dec 29 20:34:48 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 1.8.4
+* Fix crash (infinite loop) when logfile writing fails
+* Allow listening on multiple families when no Listen is
+  provided in config.
+* Fix CONNECT requsts with IPv6 literal addresses as host.
+* Fix invalid free when connecting to ipv6 literal address
+* Limit the number of headers per request to prevent DoS
+- Remove 110-seeding.diff (merged upstream), 110-headerlimit.diff
+  (solved upstream)
+
+-------------------------------------------------------------------
+Fri Mar 14 11:18:41 UTC 2014 - boris@steki.net
+
+- Remove stray chunk headers that can cause /usr/bin/patch to fail
+
+-------------------------------------------------------------------
+Thu Jul  4 00:07:06 UTC 2013 - jengelh@inai.de
+
+- Add 110-seeding.diff, 110-headerlimit.diff to address
+  CVE-2012-3505 (bnc#776506)
+- Refresh tinyproxy-conf.patch to be in -p1 format rather than -p0
+
+-------------------------------------------------------------------
+Wed Feb 22 23:08:32 UTC 2012 - chris@computersalat.de
+
+- fix init script
+  * TINYPROXY_CFG=/etc/tinyproxy.conf
+  * create PID DIR
+- fix logrotate script
+  * compress, dateext .....
+- add user, group tinyproxy
+- add conf patch
+- add missing logdir
+- add missing rc_link
+- fix pre/post
+
+-------------------------------------------------------------------
+Fri Dec  2 10:15:30 UTC 2011 - chris@computersalat.de
+
+- spec-cleaner
+- fix build for suse_version 1110
+  * define missing _initdir macro
+
+-------------------------------------------------------------------
+Mon Sep 19 08:51:04 UTC 2011 - toganm@opensuse.org
+
+- Update to 1.8.3 version
+  changed source format to bz2  
+* Fix upstream proxy support
+* Fix FilterURLs with transparent proxy support
+* Fix bug in ACL netmask generation
+
+-------------------------------------------------------------------
+Fri Jul 29 12:04:39 UTC 2011 - toganm@opensuse.org
+
+- added /etc/init.d/tinyproxy
+- added tinyproxy logrotate 
+
+-------------------------------------------------------------------
+Mon Jul 18 12:44:15 UTC 2011 - jengelh@medozas.de
+
+- Initial package
+

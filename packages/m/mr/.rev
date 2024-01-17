@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed154c8d2074ae237ef53d92842718c0</srcmd5>
+    <version>1.20170129</version>
+    <time>1493971161</time>
+    <user>dimstar_suse</user>
+    <comment>New package mr</comment>
+    <requestid>491005</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a752265c70fb1558e6cdde86404de5c7</srcmd5>
+    <version>1.20170129</version>
+    <time>1494938715</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494791</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a764618106d4c61fbec2a005b9353f95</srcmd5>
+    <version>1.20180726</version>
+    <time>1602503925</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.20180726:
+  * Mitigate vulns caused by git code execution (CVE-2018-7032)
+  * Migrate from ack-grep to ack
+  * More reliable output supervision
+  * Improve the status output for CVS
+  * Improve the git-cvs extension
+  * Allow prepending commands to existing commands
+  * Allow for fallback to default commands
+  * Add support for caching command output
+  * Add shell extension to maintain a repo status cache
+  * Add graph, remote, upgrade extensions
+  * git registration improvements
+  * webcheckout: prefer https transport</comment>
+    <requestid>840904</requestid>
+  </revision>
+</revisionlist>

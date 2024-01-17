@@ -1,0 +1,160 @@
+From f47a3e0f0bcd04b425fe31b547b99c19f0a7d9f7 Mon Sep 17 00:00:00 2001
+From: Thomas Ries <tries@gmx.net>
+Date: Fri, 18 Feb 2022 07:40:32 +0100
+Subject: [PATCH] added configure option for reproducible builds (static values
+ in BUILDDATE and BUILDSTR)
+
+---
+ configure.ac    | 18 ++++++++++++++++++
+ src/Makefile.am | 14 +++++++++++---
+ 2 files changed, 29 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3193668..d43674e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -58,6 +58,7 @@ dnl	28-May-2017	tries	going for CentOS7 as development platform,
+ dnl				lots of cleanup needed for autoconf (2.69),
+ dnl				automake (1.13.4), libtool/libltdl (2.4.2)
+ dnl	25-Aug-2020	tries	releae 0.8.3
++dnl	17-Feb-2022	tries	add option for reproducible builds
+ dnl
+ dnl
+ 
+@@ -389,6 +390,23 @@ dnl    --with-custom-fwmodule
+       AC_MSG_RESULT($FWLIBS), AC_MSG_RESULT(no))
+ 
+ 
++dnl
++dnl add
++dnl    --enable-reproducible-build
++   reproducible_build="no"
++   AC_MSG_CHECKING(whether to enable a reproducible build)
++   AC_ARG_ENABLE(reproducible-build,
++      [  --enable-reproducible-build
++                          enable reproducible build (default is no)],
++      [  if test "x$enableval" = "xyes"; then
++           reproducible_build="yes"
++           AC_MSG_RESULT(yes)
++         else
++           AC_MSG_RESULT(no)
++         fi
++      ], [AC_MSG_RESULT(no)])
++   AM_CONDITIONAL(REPRODUCIBLE_BUILD, test "x$reproducible_build" = "xyes")
++
+ dnl
+ dnl Checks for header files.
+ dnl
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 7993d31..5ae307c 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,5 @@
+ #
+-#    Copyright (C) 2002-2017  Thomas Ries <tries@gmx.net>
++#    Copyright (C) 2002-2022  Thomas Ries <tries@gmx.net>
+ #
+ #    This file is part of Siproxd.
+ #    
+@@ -19,10 +19,18 @@
+ #
+ 
+ 
++if REPRODUCIBLE_BUILD
++BUILDDATE="\"unknown\""
++BUILDSTR="\"none\""
++else
++BUILDDATE="\"`date -u '+%Y-%m-%dT%H:%M:%S'`\""
++BUILDSTR="\"`cat .buildno`\""
++endif
++
+ AM_CFLAGS = -D_GNU_SOURCE $(LTDLDEF) \
+             -Werror-implicit-function-declaration \
+-            -DBUILDSTR="\"`cat .buildno`\"" \
+-            -DBUILDDATE="\"`date -u '+%Y-%m-%dT%H:%M:%S'`\""
++            -DBUILDSTR=$(BUILDSTR) \
++            -DBUILDDATE=$(BUILDDATE)
+ #&&&INCLUDES = $(LTDLINCL)
+ AM_CPPFLAGS = $(LTDLINCL)
+ 
+From 4750bea4ffedb4543a404dafc979c2b16b53e523 Mon Sep 17 00:00:00 2001
+From: Thomas Ries <tries@gmx.net>
+Date: Fri, 18 Feb 2022 13:42:41 +0100
+Subject: [PATCH] support for SOURCE_DATE_EPOCH (reproducible builds)
+
+---
+ ChangeLog       |  1 +
+ configure.ac    | 23 +++++++++++++++++------
+ src/Makefile.am | 15 ++++++++++-----
+ 3 files changed, 28 insertions(+), 11 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index d43674e..ae8f668 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -391,20 +391,31 @@ dnl    --with-custom-fwmodule
+ 
+ 
+ dnl
+-dnl add
+-dnl    --enable-reproducible-build
++dnl reproducible-build:
++dnl SOURCE_DATE_EPOCH defined, or --enable-reproducible-build given
++dnl
+    reproducible_build="no"
++   dnl check SOURCE_DATE_EPOCH
++   AC_MSG_CHECKING(whether we have SOURCE_DATE_EPOCH defined)
++   if test "x$SOURCE_DATE_EPOCH" != "x"; then
++     AC_SUBST(SOURCE_DATE_EPOCH, $SOURCE_DATE_EPOCH)
++     AC_MSG_RESULT(yes)
++   else
++     AC_MSG_RESULT(no)
++   fi
++   AM_CONDITIONAL(HAVE_SOURCE_DATE_EPOCH, test "x$SOURCE_DATE_EPOCH" != "x")
++
++   dnl check --enable-reproducible-build
+    AC_MSG_CHECKING(whether to enable a reproducible build)
+    AC_ARG_ENABLE(reproducible-build,
+       [  --enable-reproducible-build
+                           enable reproducible build (default is no)],
+       [  if test "x$enableval" = "xyes"; then
+            reproducible_build="yes"
+-           AC_MSG_RESULT(yes)
+-         else
+-           AC_MSG_RESULT(no)
+          fi
+-      ], [AC_MSG_RESULT(no)])
++      ]
++   )
++   AC_MSG_RESULT($reproducible_build)
+    AM_CONDITIONAL(REPRODUCIBLE_BUILD, test "x$reproducible_build" = "xyes")
+ 
+ dnl
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5ae307c..3edaa3c 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -18,13 +18,18 @@
+ #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA 
+ #
+ 
+-
++# some magic for reproducible builds
++if HAVE_SOURCE_DATE_EPOCH
++  BUILDDATE="\"`date -d @$(SOURCE_DATE_EPOCH) -u '+%Y-%m-%dT%H:%M:%S'`\""
++  BUILDSTR="\"none\""
++else
+ if REPRODUCIBLE_BUILD
+-BUILDDATE="\"unknown\""
+-BUILDSTR="\"none\""
++  BUILDDATE="\"unknown\""
++  BUILDSTR="\"none\""
+ else
+-BUILDDATE="\"`date -u '+%Y-%m-%dT%H:%M:%S'`\""
+-BUILDSTR="\"`cat .buildno`\""
++  BUILDDATE="\"`date -u '+%Y-%m-%dT%H:%M:%S'`\""
++  BUILDSTR="\"`cat .buildno`\""
++endif
+ endif
+ 
+ AM_CFLAGS = -D_GNU_SOURCE $(LTDLDEF) \

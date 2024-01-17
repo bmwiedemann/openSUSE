@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4399b076f9c8fb328886455126ee469e</srcmd5>
+    <version>1.0.2</version>
+    <time>1567423492</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>726866</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6d64093e43373490f5f01c4aa396f3c4</srcmd5>
+    <version>1.0.2</version>
+    <time>1622536788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>896450</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73fb5c06bdc8454726fd8903a24c1cf4</srcmd5>
+    <version>1.1.0</version>
+    <time>1667067459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032188</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bbae4bac66b3aea63472fe78b3216c26</srcmd5>
+    <version>1.1.0</version>
+    <time>1682095675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1081516</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8e1ac69015ba4f679dc938c5e7aa17e7</srcmd5>
+    <version>1.2.0</version>
+    <time>1702071119</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.0:
+  * switch to hatch
+  * drop python 2 support
+
+  * Drop Python 2</comment>
+    <requestid>1131721</requestid>
+  </revision>
+</revisionlist>

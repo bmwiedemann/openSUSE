@@ -1,0 +1,6 @@
+<package name="man" project="openSUSE:Factory">
+  <title>A Program for Displaying man Pages</title>
+  <description>A program for displaying man pages on the screen or sending them to a
+printer (using groff).</description>
+  <devel project="Base:System" package="man"/>
+</package>

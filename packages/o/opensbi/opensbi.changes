@@ -1,0 +1,163 @@
+-------------------------------------------------------------------
+Wed Dec 27 17:07:23 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.4
+  * Synopsys DesignWare APB GPIO driver
+  * Zicntr and Zihpm support
+  * Console print improvements
+  * Smepmp support
+  * Simple FDT based syscon regmap driver
+  * Syscon based reboot and poweroff driver
+  * Non-contiguous hpm counters
+  * Smcntrpmf support
+  * Full sparse hartid support
+  * IPI improvements
+  * RFENCE improvements
+  * Zkr support
+  * Andes custom PMU support
+
+-------------------------------------------------------------------
+Wed Jul 19 15:22:59 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.3.1
+  * ACLINT driver fix for disabled CPUs
+  * SBI PMU fix for out-of-bound access
+  * Designware GPIO driver
+
+-------------------------------------------------------------------
+Mon Jun 26 12:31:13 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.3
+  * Allow platform to influence cold boot HART selection
+  * Starfive JH7110 platform support
+  * Split RX and RW firmware regions
+  * Advertise nonretentive suspend for allwinner D1 platform
+  * Byteorder/endianness conversion macros
+  * SBI debug console extension (Experimental)
+  * Configure the PMA regions for RZ/Five platform
+  * SBI system suspend extension (Experimental)
+  * SBI PMU platform firmware events (Experimental)
+  * SBI CPPC extension (Experimental)
+  * Optimized remote TLB flushes
+  * Simple heap for boot time memory allocations
+  * Bring back no-map DT property for reserved memory nodes
+
+-------------------------------------------------------------------
+Sat Dec 24 15:29:37 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.2
+  * RISC-V AIA v1.0.0 support
+  * Cadence UART driver
+  * Platform specific PMU device operations
+  * Trap handling improvements for platforms with H-extension
+  * Semihosting support
+  * T-HEAD C9XX PMU and CLINT support
+  * FDT based drivers for Andes AE350 platform
+  * Andes AE350 platform improvements
+  * Allow enabling/disabling of SBI extensions via Kconfig
+  * Renesas SCIF serial driver
+  * Renesas RZ/Five platform support
+
+-------------------------------------------------------------------
+Sat Jun 25 07:03:24 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.1
+  * SBI PMU improvements
+  * RISC-V AIA v0.3.0 draft support
+  * Simple external interrupt handling framework
+  * Xilinx UART-Lite driver
+  * RISC-V privilege specification v1.12 support
+  * RISC-V Svpbmt extension support
+  * RISC-V Smstateen extension support
+  * RISC-V Sstc extension support
+  * RISC-V privilege specification version detection
+  * Platform callback to populate HART extensions
+  * Compile time C arrays support
+  * Probing FDT based drivers using compile time C arrays
+  * SBI HSM improvements
+  * Allwinner D1 platform support
+  * Trap redirection improvements related to [m|h]tinst CSR
+  * SBI v1.0 specification support
+
+-------------------------------------------------------------------
+Fri Dec 24 12:35:41 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.0
+  * SBI HSM suspend as defined by SBI v0.3 specification
+  * Position independent execution for firmware
+  * Ticket based spinlocks
+  * Simplified / reduced platform callbacks
+  * ACLINT MTIMER and MSWI support
+  * SBI PMU extension as defined by SBI v0.3 specification
+  * Simple FDT based GPIO driver framework
+  * Improved reset driver framework along with various reset drivers
+  * Generic timer delay loop APIs
+  * RISC-V Sscofpmf extension support
+  * Simple FDT based I2C driver framework along with SiFive I2C driver
+  * UART drivers for Gaisler and LiteX platforms
+
+-------------------------------------------------------------------
+Mon Aug  9 14:44:30 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Drop sifivefu540 flavor
+
+-------------------------------------------------------------------
+Mon Jan 18 16:07:27 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 0.9
+  * Optimized trap handler for both RV32 and RV64
+  * Domain support for system-level partitioning
+  * Device tree based domain configuration
+  * SBI v0.3 SRST extension
+  * More detailed boot-time prints
+
+-------------------------------------------------------------------
+Tue Jan 12 14:12:47 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Package generic fw_dynamic firmware
+
+-------------------------------------------------------------------
+Sat Jun 20 11:36:16 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 0.8
+  * Simple FDT timer driver framework
+  * Simple FDT ipi driver framework
+  * Simple FDT irqchip driver framework
+  * Simple FDT serial framework
+  * Generic FDT based platform support
+  * Nuclei UX600 platform support
+  * Detect HART CSRs at boot time
+  * Multi-PLIC support
+  * Multi-CLINT support
+  * Allow multiple builtin DTBs
+  * Hypervisor v0.6.1 specification support
+  * Shakti C-class platform support
+
+-------------------------------------------------------------------
+Thu Jun 18 08:50:59 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Drop qemu-riscv64smode flavor
+- Only install fw_dynamic firmware
+
+-------------------------------------------------------------------
+Mon Apr 20 13:30:20 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 0.7
+  * SBI v0.2 HSM extension
+  * Simple bitops library
+  * Simple bitmap library
+  * Simple hartmask library
+  * Sparse and discontinuous HART id support
+  * Memory reservation in DTB passed to next booting stage
+
+-------------------------------------------------------------------
+Mon Feb 24 12:53:11 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 0.6
+  * drop qemu/sifive_u platform
+- align.patch: removed
+
+-------------------------------------------------------------------
+Thu Oct 24 14:43:17 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Initial version 0.5

@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Feb 16 21:18:47 UTC 2015 - coolo@suse.com
+
+- regenerate spec file for inclusion in factory
+
+-------------------------------------------------------------------
+Wed Dec  1 10:22:17 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:12 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Jul 25 07:08:32 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.11)
+

@@ -1,0 +1,80 @@
+#!/usr/bin/perl
+# (C)2002 by IBM Corporation, published under terms of the GPL V2
+# Author: Holger Smolinski <smolinsk@de.ibm.com>
+# this file is a wrapper around tcpdump, which provides the capability
+# for debugging qeth and/or HiperSocket(TM) network interfaces under
+# Linux for S/390 and zSeries. tcpdump Syntax is preserved.
+# Bugs: When the input pipe ends the process is not stopped.
+
+use Getopt::Std;
+
+my $incmd,$outcmd;
+
+getopts ("adeflnNOpqRStuvxXc:C:F:i:m:r:s:T:w:E:",\%options);
+
+# Check which options to replace for the reader process 
+if ( defined($options{'r'}) ) {
+  $incmd = "cat $options{'r'}";
+  $filter_out = 1;
+} else {
+  $incmd = "tcpdump -l -w -";
+  $filter_out = 0;
+  if ( defined($options{'i'}) ) {
+    $incmd .= " -i ".$options{'i'};
+    delete $options{'i'}; # remove -i option from option list
+  }
+  foreach $key (@ARGV) {
+    $incmd .= " $key";
+  }
+}
+
+$outcmd = "tcpdump -r -";
+# Rebuild arglist for the writer process
+delete $options{'r'}; # remove -r option from option list
+foreach $key (keys %options) {
+  if ((index "adeflnNOpqRStuvxX",$key) >= 0 ) {
+    $outcmd .= " -$key";
+  } else {
+    $outcmd .= " -$key $options{$key}";
+  }
+  if ( $filter_out == 1 ) {
+    foreach $key (@ARGV) {
+      $outcmd .= " $key";
+    }
+  }
+} 
+
+open READER,"$incmd|" or die "Cannot spawn reader command $incmd";
+open WRITER,"|$outcmd" or die "Cannot spawn writer command $outcmd";
+
+sysread READER,$filehdr,24 or die "Cannot read file header";
+($magic,$version_major,$version_minor,$thiszone,$sigfigs,$snaplen,$linktype) = 
+  unpack("ISSIIII",$filehdr);
+$snaplen += 14;
+$filehdr = pack ("ISSIIII",($magic,$version_major,$version_minor,$thiszone,$sigfigs,$snaplen,$linktype));
+syswrite WRITER,$filehdr,24;
+
+$etherheaderip6 = pack ("IIIS",(0,0,0,0x8dd));
+$etherheaderip4 = pack ("IIIS",(0,0,0,0x800));
+
+while ( 1 ) {
+  $hdrd = 0;
+  do {$hdrd += sysread READER, $pkthdr, 16-$hdrd, $hdrd; } while ($hdrd < 16);
+  ($seconds,$usecs,$caplen,$len) = unpack ("IIII",$pkthdr);
+  $hdrd = 0;
+  do {$hdrd += sysread READER, $packet,$caplen-$hdrd, $hdrd; } while ($hdrd < $caplen);
+  $paktype = unpack("C",$packet);
+  if ( $paktype & 0xf0 == 0x60 ) {
+    $caplen += 14;
+    $len += 14;
+    $header = $etehrheaderip6;
+  } elsif ($paktype >= 0x45 && $paktype <= 0x4f ) {
+    $caplen += 14;
+    $len += 14;
+    $header = $etherheaderip4;
+  } else {
+    $header = "";
+  }	
+  $pkthdr = pack ("IIII",($seconds,$usecs,$caplen,$len));
+  syswrite WRITER,"$pkthdr$header$packet",16+$caplen;
+}

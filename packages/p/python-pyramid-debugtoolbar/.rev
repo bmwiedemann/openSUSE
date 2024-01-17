@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54ececad131087d422ead0034d702bf5</srcmd5>
+    <version>4.5</version>
+    <time>1572541988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730410</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5ce73111a840a1c0abe6e5109df76d5</srcmd5>
+    <version>4.5</version>
+    <time>1572617628</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>744578</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93946b0049371ca4efda31c023e3bcf7</srcmd5>
+    <version>4.6.1</version>
+    <time>1585342612</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 4.6.1
+  - Fix parser errors when injecting the toolbar into XHTML formatted pages.
+    See https://github.com/Pylons/pyramid_debugtoolbar/pull/360
+  - Show the full URL in the tooltip on the requests panel.
+    See https://github.com/Pylons/pyramid_debugtoolbar/pull/358
+  - Stop accessing ``request.unauthenticated_userid`` in preparation for
+    Pyramid 2.0 where it is deprecated.
+  - Catch a ``ValueError`` when JSON-serializing SQLA objects for display.
+    See https://github.com/Pylons/pyramid_debugtoolbar/pull/357</comment>
+    <requestid>789085</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7117c0ab3d11cbd4497efe0e83fdaee4</srcmd5>
+    <version>4.6.1</version>
+    <time>1587467329</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove py2 dependency as we build only py3 package</comment>
+    <requestid>795764</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c6ea3f191c40a0728e803f25879c78fa</srcmd5>
+    <version>4.10</version>
+    <time>1677591591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1068183</requestid>
+  </revision>
+</revisionlist>

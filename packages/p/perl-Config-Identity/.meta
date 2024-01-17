@@ -1,0 +1,6 @@
+<package name="perl-Config-Identity" project="openSUSE:Factory">
+  <title>Load (and optionally decrypt via GnuPG) user/pass identity information</title>
+  <description>Config::Identity is a tool for loading (and optionally decrypting via GnuPG) user/pass identity information. For GitHub API access, an identity is a 'login'/'token' pair. For PAUSE access, an identity is a 'user'/'password' pair.</description>
+  <devel project="devel:languages:perl" package="perl-Config-Identity"/>
+  <url>https://metacpan.org/release/Config-Identity</url>
+</package>

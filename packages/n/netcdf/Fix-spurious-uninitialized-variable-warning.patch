@@ -1,0 +1,143 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sat Jul 10 15:05:08 2021 +0200
+Subject: Fix spurious uninitialized variable warning
+Patch-mainline: Not yet
+Git-repo: https://github.com/Unidata/netcdf-c
+Git-commit: 7b4bb9bd0f882e658e4a3e512dda73e90e6c8a18
+References: 
+
+These variables are not really uninitialized when used, however gcc
+isn't able to determine this.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ libdispatch/nctime.c       |  6 +++---
+ libhdf5/hdf5internal.c     |  2 +-
+ libnczarr/zinternal.c      |  2 +-
+ libnczarr/zsync.c          |  4 ++--
+ ncgen3/getfill.c           | 10 +++++-----
+ ncgen3/load.c              | 10 +++++-----
+ nczarr_test/ncdumpchunks.c |  2 +-
+ oc2/ocdump.c               |  4 ++--
+ 8 files changed, 20 insertions(+), 20 deletions(-)
+Index: netcdf-c-4.9.2/libdispatch/nctime.c
+===================================================================
+--- netcdf-c-4.9.2.orig/libdispatch/nctime.c
++++ netcdf-c-4.9.2/libdispatch/nctime.c
+@@ -789,8 +789,8 @@ cdComp2Rel(cdCalenType timetype, cdCompT
+ 	CdTime humantime;
+ 	CdTimeType old_timetype;
+ 	cdUnitTime unit;
+-	double base_etm, etm, delta;
+-	long ndel, hoursInYear;
++	double base_etm, etm, delta = 0.; /* GCC */
++	long ndel = 0, hoursInYear;
+ 
+ 					     /* Parse the relunits */
+ 	if(cdParseRelunits(timetype, relunits, &unit, &base_comptime))
+@@ -982,7 +982,7 @@ cdRel2Comp(cdCalenType timetype, char* r
+ 	cdCompTime base_comptime;
+ 	cdUnitTime unit, baseunits;
+ 	double base_etm, result_etm;
+-	double delta;
++	double delta = 0.; /* GCC */
+ 	long idelta;
+ 
+ 					     /* Parse the relunits */
+Index: netcdf-c-4.9.2/libhdf5/hdf5internal.c
+===================================================================
+--- netcdf-c-4.9.2.orig/libhdf5/hdf5internal.c
++++ netcdf-c-4.9.2/libhdf5/hdf5internal.c
+@@ -882,7 +882,7 @@ nc4_hdf5_find_grp_var_att(int ncid, int
+     NC_FILE_INFO_T *my_h5;
+     NC_GRP_INFO_T *my_grp;
+     NC_VAR_INFO_T *my_var = NULL;
+-    NC_ATT_INFO_T *my_att;
++    NC_ATT_INFO_T *my_att = NULL; /* GCC */
+     char my_norm_name[NC_MAX_NAME + 1] = "";
+     NCindex *attlist = NULL;
+     int retval;
+Index: netcdf-c-4.9.2/libnczarr/zinternal.c
+===================================================================
+--- netcdf-c-4.9.2.orig/libnczarr/zinternal.c
++++ netcdf-c-4.9.2/libnczarr/zinternal.c
+@@ -571,7 +571,7 @@ ncz_find_grp_var_att(int ncid, int varid
+     NC_FILE_INFO_T *my_h5;
+     NC_GRP_INFO_T *my_grp;
+     NC_VAR_INFO_T *my_var = NULL;
+-    NC_ATT_INFO_T *my_att;
++    NC_ATT_INFO_T *my_att = NULL; /* GCC */
+     char my_norm_name[NC_MAX_NAME + 1] = "";
+     NCindex *attlist = NULL;
+     int retval;
+Index: netcdf-c-4.9.2/ncgen3/getfill.c
+===================================================================
+--- netcdf-c-4.9.2.orig/ncgen3/getfill.c
++++ netcdf-c-4.9.2/ncgen3/getfill.c
+@@ -51,11 +51,11 @@ nc_fill(
+      void *datp,		/* where to start filling */
+      union generic fill_val)	/* value to use */
+ {
+-    char *char_valp;		/* pointers used to accumulate data values */
+-    short *short_valp;
+-    int *long_valp;
+-    float *float_valp;
+-    double *double_valp;
++    char *char_valp = NULL;   /* GCC *//* pointers used to accumulate data values */
++    short *short_valp = NULL; /* GCC */
++    int *long_valp = NULL; /* GCC */
++    float *float_valp = NULL; /* GCC */
++    double *double_valp = NULL; /* GCC */
+ 
+     switch (type) {
+       case NC_CHAR:
+Index: netcdf-c-4.9.2/ncgen3/load.c
+===================================================================
+--- netcdf-c-4.9.2.orig/ncgen3/load.c
++++ netcdf-c-4.9.2/ncgen3/load.c
+@@ -504,11 +504,11 @@ load_netcdf(
+     int stat = NC_NOERR;
+     size_t start[NC_MAX_VAR_DIMS];
+     size_t count[NC_MAX_VAR_DIMS];
+-    char *charvalp;
+-    short *shortvalp;
+-    int *intvalp;
+-    float *floatvalp;
+-    double *doublevalp;
++    char *charvalp = NULL; /* GCC */
++    short *shortvalp = NULL; /* GCC */
++    int *intvalp = NULL; /* GCC */
++    float *floatvalp = NULL; /* GCC */
++    double *doublevalp = NULL; /* GCC */
+ 
+     /* load values into variable */
+ 
+Index: netcdf-c-4.9.2/nczarr_test/ncdumpchunks.c
+===================================================================
+--- netcdf-c-4.9.2.orig/nczarr_test/ncdumpchunks.c
++++ netcdf-c-4.9.2/nczarr_test/ncdumpchunks.c
+@@ -303,7 +303,7 @@ dump(Format* format)
+     char sindices[64];
+ #ifdef H5
+     int i;
+-    hid_t fileid, grpid, datasetid;
++    hid_t fileid = H5P_DEFAULT, grpid = H5P_DEFAULT, datasetid = H5P_DEFAULT; /* GCC */
+     hid_t dxpl_id = H5P_DEFAULT; /*data transfer property list */
+     unsigned int filter_mask = 0;
+     hsize_t hoffset[NC_MAX_VAR_DIMS];
+Index: netcdf-c-4.9.2/oc2/ocdump.c
+===================================================================
+--- netcdf-c-4.9.2.orig/oc2/ocdump.c
++++ netcdf-c-4.9.2/oc2/ocdump.c
+@@ -464,8 +464,8 @@ ocreadfile(FILE* file, off_t datastart,
+ void
+ ocdd(OCstate* state, OCnode* root, int xdrencoded, int level)
+ {
+-    char* mem;
+-    size_t len;
++    char* mem = NULL; /* GCC */
++    size_t len = 0; /* GCC */
+     if(root->tree->data.file != NULL) {
+         if(!ocreadfile(root->tree->data.file,
+                        root->tree->data.bod,

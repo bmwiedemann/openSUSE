@@ -1,0 +1,21 @@
+From 4ca1b1aa3831d886485f66c437681a4bf276f64b Mon Sep 17 00:00:00 2001
+From: Shaumyadeep Chaudhuri <shaumya@gmail.com>
+Date: Wed, 2 Aug 2023 20:37:12 +0200
+Subject: [PATCH] Update setup.py
+
+Exclude tests being grabbed by find_packages
+---
+ setup.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,7 @@ Proton VPN NetworkManager library for Li
+ setup(
+     name="protonvpn-nm-lib",
+     version=APP_VERSION,
+-    packages=find_packages(),
++    packages=find_packages(exclude=["tests", "tests.*"]),
+     description="Proton VPN NetworkManager Linux library",
+     author="Proton Technologies AG",
+     author_email="contact@protonvpn.com",

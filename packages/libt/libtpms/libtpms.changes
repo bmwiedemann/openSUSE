@@ -1,0 +1,194 @@
+-------------------------------------------------------------------
+Mon Mar  6 16:32:02 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 0.9.6:
+  * CVE-2023-1018: tpm2: Fixed out of bounds read in CryptParameterDecryption (bsc#1206023)
+  * CVE-2023-1017: tpm2: Fixed out of bounds write in CryptParameterDecryption (bsc#1206022)
+- 0001-tpm2-Check-size-of-buffer-before-accessing-it-CVE-20.patch: upstreamed
+
+-------------------------------------------------------------------
+Sat Dec  3 09:56:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.5:
+  * tpm2: Do not set RSA_FLAG_NO_BLINDING on RSA keys anymore
+  * tpm2: Fix a potential overflow expression (coverity)
+  * tpm2: Fix size check in CryptSecretDecrypt
+  * tpm: #undef printf in case it is #define'd (OSS-Fuzz)
+  * tpm2: Check return code of BN_div()
+  * tpm2: Initialize variables due to gcc complaint (s390x, false positive)
+  * tpm12: Initialize variables due to gcc complaint (s390x, false positive)
+  * build-sys: Fix configure script to support _FORTIFY_SOURCE=3
+
+-------------------------------------------------------------------
+Fri Nov 25 10:04:05 UTC 2022 - pgajdos@suse.com
+
+- fix build for ppc64le: use -Wl,--no-as-needed in check-local
+  [bsc#1204556]
+
+-------------------------------------------------------------------
+Sun Apr 10 12:43:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.3:
+  * build-sys: Add probing for -fstack-protector
+  * tpm2: Do not call EVP_PKEY_CTX_set0_rsa_oaep_label() for label of size
+  * (OSSL 3)
+  * tpm2: When writing state initialize s_ContextSlotMask if not set 
+
+-------------------------------------------------------------------
+Thu Dec  9 19:57:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.1
+  * Downgrade to previous versions is not possible, as the size of
+    the context gap has been adjusted to 0xffff from 0xff.
+  * Enabled Camellia symmetric key encryption algorithm
+  * tpm2: Update to TPM 2 spec rev 164
+  * tpm2: Added a cache for private exponent D and prime Q
+  * tpm2: bug fixes
+- Drop upstream fixed libtpms-CVE-2021-3746.patch
+- Fixed CVE-2021-3623 (bsc#1187767)
+- Used in SLE:
+  0001-tpm2-Reset-TPM2B-buffer-sizes-after-test-fails-for-v.patch
+  0002-tpm2-Add-maxSize-parameter-to-TPM2B_Marshal-for-sani.patch
+  0003-tpm2-Restore-original-value-if-unmarsalled-value-was.patch
+
+-------------------------------------------------------------------
+Tue Aug 31 16:36:31 UTC 2021 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2021-3746 [bsc#1189935], out-of-bounds access via specially crafted TPM 2 command packets
+  + libtpms-CVE-2021-3746.patch
+
+-------------------------------------------------------------------
+Sat Aug  7 15:00:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.8.4:
+  * Reset too large size indicators in TPM2B to avoid access
+    beyond buffer
+  * Restore original value in buffer if unmarshalled one was
+    illegal
+
+-------------------------------------------------------------------
+Mon Apr 19 07:18:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.8.2
+  * NOTE: Downgrade to 0.7.x or below is not possible.
+    Due to fixes in the TPM 2 prime number generation code in
+    rev155 it is not possible to downgrade from libtpms version
+    0.8.0 to some previous version. The seeds are now associated
+    with an age so that older seeds use the old TPM 2 prime number
+    generation code while newer seed use the newer code.
+  * tpm2: rev155: Add new RsaAdjustPrimeCandidate code but do
+    not use (bsc#1184939 CVE-2021-3505)
+  * tpm2: Activate SEED_COMPAT_LEVEL_RSA_PRIME_ADJUST_FIX
+    (bsc#1184939 CVE-2021-3505)
+  * Update to TPM 2 code release 159
+    - X509 support is enabled
+       + SM2 signing of ceritificates is NOT supported
+    - Authenticated timers are disabled
+  * Update to TPM 2 code relase 162
+    - ECC encryption / decryption is disabled
+  * Fix support for elliptic curve due to missing unmarshalling
+    code
+  * Runtime filter supported elliptic curves supported by OpenSSL
+  * Fix output buffer parameter and size for RSA decryption that
+    could cause stack corruption under certain circumstances
+  * Set the RSA PSS salt length to the digest length rather than
+    max
+  * Fixes to symmetric decryption related to input size check,
+    defer padding to the user [EVP_CIPHER_CTX_set_padding(ctx, 0)]
+    and to always use a temporary malloc'ed buffer for decryption
+  * Fixed the set of PCRs belonging to the TCB group. This affects
+    the pcrUpdateCounter in TPM2_Pcrread() responses, thus needs
+    latest swtpm for test cases to succeed there.
+
+-------------------------------------------------------------------
+Fri Mar 19 02:03:20 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.7
+  * CryptSym: fix AES output IV (bsc#1183729, CVE-2021-3446)
+  * tpm2: Fix public key context save due to ANY_OBJECT_Marshal usage
+  * tpm2: Address some Coverity issues (false positives)
+  * tpm1.2: Backported ASAN/UBSAN related fixes
+  * tpm2: Return properly sized array for b parameter for NIST P521
+    (HLK)
+  * tpm2: Addressed issues detected by UBSAN
+  * tpm2: Addressed issues detected by cppcheck (false positives)
+
+-------------------------------------------------------------------
+Mon Nov 23 03:31:28 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.4
+  * Addressed potential constant-time related issues in TPM 1.2 and
+    TPM 2 code
+    TPM 1.2: RSA decryption
+    TPM 2: EcSchnorr and EcSM2 signatures; Ecsda is handled by OpenSSL
+  * Fixed some compilation issues
+
+-------------------------------------------------------------------
+Thu Jul 23 05:01:12 UTC 2020 - Kai Liu <kai.liu@suse.com>
+
+- Update to version 0.7.3
+  * Fixed the set of PCRs belonging to the TCB group. This affects
+    the pcrUpdateCounter in TPM2_Pcrread() responses, thus needs
+    latest `swtpm` (master, stable branches) for test cases to
+    succeed there.
+
+- Changes since version 0.7.2
+  * Fix output buffer parameter and size for RSA decryption that
+    could cause stack corruption under certain circumstances
+  * Set the RSA PSS salt length to the digest length rathern than
+    max. possible
+  * Fixes to symmetric decrytion related to input size check, defer
+    padding to the user [EVP_CIPHER_CTX_set_padding(ctx, 0)] and to
+    always use a temporary malloc'ed buffer for decryption
+
+- Changes since version 0.7.1
+  * tpm2: Fix TDES key creation by adding missing un-/marshalling
+    functions
+  * tpm2: Fix a bug in CheckAuthSession
+  * compilation fixes for TPM 1.2 & TPM 2 and various architectures
+    and gcc versions
+  * Fix support for NIST curves P{192,224,521} and SM2 P256 and
+    BNP648 that would not work;
+  * Runtime filter elliptic curves (that OpenSSL does not support)
+    and do not advertise those curves as capabilities
+  * Removed unnecessary space in MANUFACTURER "IBM " -> "IBM"
+
+-------------------------------------------------------------------
+Thu Sep  5 08:21:34 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.0
+  * fixes for TPM2
+- Add gcc-c++ to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 28 09:25:27 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.0
+  * Introduce TPM2 support
+- Use %license tag for LICENSE
+
+-------------------------------------------------------------------
+Wed Jan 17 12:05:51 UTC 2018 - vcizek@suse.com
+
+- Update to version 0.6.0-dev1
+  * no upstream changelog
+  * fix build with openssl 1.1 (bsc#1074801)
+- fix rpm group
+
+-------------------------------------------------------------------
+Sat Mar 21 11:50:03 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.5.2
+  * No entry for this release
+- Update project home and download Urls
+- Add autoconf, automake and libtool build require; the tarball
+  comes from git and configure script has to be generated
+
+-------------------------------------------------------------------
+Tue Jan 14 14:51:14 UTC 2014 - meissner@suse.com
+
+- import 0.5.1
+  - software TPM driver library for hooking into QEMU
+

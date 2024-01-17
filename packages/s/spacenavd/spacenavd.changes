@@ -1,0 +1,269 @@
+-------------------------------------------------------------------
+Fri Dec 23 20:47:37 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 1.2
+  * Fixed incorrect button mappings for the SpaceMouse Pro. The button remapping
+    which was designed to fix this in v1.1 would end up becoming disabled due to
+    an incorrect assumption about reported number of buttons.
+  * Fixed incorrect number of stop bits for serial magellan spacemice. Some devices
+    tolerated that, while others did not work.
+  * Improved compatibility with some serial spaceballs. Relaxed the device matching
+    condition and allowed some time for the device to boot up before initializing it.
+  * Added hardcoded "reasonable" default values for number of axes and buttons in
+    the incomplete FreeBSD USB device handling code, to stop it from reporting 0 axes
+    and freaking clients out.  This is a stop-gap, eventually it needs to be
+    implemented correctly.
+
+-------------------------------------------------------------------
+Sun Sep 25 16:47:35 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Add example files to package
+
+-------------------------------------------------------------------
+Sun Sep 25 16:30:12 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 1.1
+  * fixed incorrect number of buttons reported on SpaceMouse Pro and SpaceMouse
+    Enterprise.
+  * fixed non-contiguous button numbers on SpaceMouse Pro and SpaceMouse Enterprise,
+    which could crash spnavcfg.
+  * linux evdev: detect button base offset, instead of hardcoding 256 (BN_MISC),
+    which fixes incorrect button numbers on the Magellan SpaceMouse USB.
+  * fixed crash when attempting to save configuration (save command received from
+    the client socket), and a configuration file does not already exist.
+  * linux hotplug: use delayed activation to avoid multiple hotplug triggers and
+    the resulting log spam.
+  * reduced logging on the "verbose" setting. Now accepting multiple -v arguments
+    for maximum verbosity.
+  * fixed compatibility with newer 3dconnexion SDK clients.
+  * fixed libm link omission, which broke the build on systems where isfinite is not
+    a macro to a compiler built-in (BSD libc).
+  * Added example configuration files with reasonable button mappings for the
+    SpacePilot and the SpaceMouse Enterprise under doc/.
+
+-------------------------------------------------------------------
+Tue Apr 26 10:34:54 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de> 1.0
+
+- Fix spacenavd path in service file
+
+-------------------------------------------------------------------
+Mon Apr 25 14:43:00 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de> 1.0
+
+- Readd spacenavd-fix-pidfile.patch
+
+-------------------------------------------------------------------
+Mon Apr 25 13:33:52 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de> 1.0
+
+- Update to version 1.0
+  * Implemented hugely improved spacenav protocol v1. It includes future
+     expandability provisions, and adds support for a wealth of new capabilities
+     for clients, including:
+     + device information queries (number of buttons and axes, device identification...).
+     + configuration management (allows configuration tools like spnavcfg to be
+       regular clients without special priviledges).
+     + new events, with event selection mechanism (device change, config change,
+       raw axis, raw button).
+  * Improved configuration file handling. Spacenavd now saves changes to the file,
+    and does so while retaining user changes, including comments and empty lines,
+    and modifying existing lines when possible.
+  * Added device level axis remapping (non-configurable), to normalize axis
+    assignments across all known devices, to avoid having to change the configuration
+    every time a different device is connected.
+  * Added initial USB device support on FreeBSD.
+  * Added the ability to bind buttons to actions like sensitivity changes or axis muting.
+  * Added XTEST support for keyboard event injection, which works much more reliably.
+    Falls back to XSendEvent if XTEST is unavailable.
+  * Fixed serial magellan spacemouse compatibility over USB-serial converters with the PL2303 UART.
+  * Added --cfgdir= build option, to change the configuration file directory.
+  * Fixed MacOS X build.
+  * Fixed LED staying on on startup if it was configured otherwise.
+  * Fixed inconsistent handling of the logging method selection arguments.
+  * Fixed spacenavd terminating with SIGPIPE when clients disconnected ungracefully.
+  * Build fixes and improvements.
+- Remove spacenavd-fix-pidfile.patch
+
+-------------------------------------------------------------------
+Wed Nov 17 10:49:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_spacenavd.service.patch
+  Modified:
+  * spacenavd.service
+
+-------------------------------------------------------------------
+Tue Mar 16 18:56:16 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 0.8
+  * Rewrote the serial spaceball code from scratch, to support both spaceball
+    and magellan spacemice.
+  * Fixed non-X11 build which was broken in the previous version.
+  * Print usage information when encountering an invalid argument, instead of
+    just printing "invalid argument".
+  * Minor build improvements.
+- Log stderr to default logger
+- Update list of supported devices in spec file
+
+-------------------------------------------------------------------
+Tue Mar 31 15:36:18 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Remove unnecessary  _service file
+
+-------------------------------------------------------------------
+Sun Mar 22 17:19:36 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Fix pidfile (/var/run -> /run)
+
+-------------------------------------------------------------------
+Sun Mar 22 12:30:44 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Bugfix release 0.7.1
+  * fixed build on gcc 10
+  * fixed configure script which failed to detect the version number correctly
+    in release 0.7, incorrectly trying to rely on git to do so.
+- remove support for pre-systemd openSUSE releases
+- remove patch spacenavd-add-blacklist-and-device-ids.patch
+- remove patch spacenavd-add-missing-usbid.patch
+- remove patch spacenavd-0.6+git3066072.patch
+- remove patch spacenavd-fix-pidfile.patch
+- Release 0.7
+  * implemented the ability to log to syslog.
+  * ignore joystick devices when searching for USB devices (linux).
+  * added code to attempt to wrestle devices from the X server.
+  * added the new 3Dconnexion vendor id to the device matching logic.
+  * made builds reproducible by linking in alphabetical order.
+  * added option led = auto, to turn the LED on only when a client connects (linux).
+  * implemented a blacklist of USB device ids that should be ignored.
+
+-------------------------------------------------------------------
+Sat Mar 16 11:30:05 UTC 2019 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Add two upstream patches for proper handling of device ids:
+  * spacenavd-add-blacklist-and-device-ids.patch
+  * spacenavd-add-missing-usbid.patch
+
+-------------------------------------------------------------------
+Sat Aug 25 21:52:43 UTC 2018 - herbert@graeber-clan.de
+
+- Add patch spacenavd-0.6+git3066072.patch with some bug fixes und support
+  for newer devices: 
+  * minor formatting fixes old and new, and usage of the LED_AUTO enumeration
+    in src/client.c
+  * LED state enumeration instead of magic numbers, since it's no longer
+    a simple boolean value.
+  * improve device information provided by daemon
+  * updated readme file
+  * replaced the svn $rev$ substitution with git describe falling back to
+    git rev-parse HEAD
+  * fixed axis detection, and added detection of the number of buttons for USB
+    devices on linux
+  * Applied Wiedemann's patch (sf#6) to link object files in alphabetical order
+  * Added missing include to dev_usb_darwin.c closing bug #10
+  * fixed a small bug in device detection which sometimes skipped a single
+    character during parsing
+  * added rule to match devices with the new 3Dconnexion vendor id (0x256f)
+  * Better example-spnavrc descriptions - remove some debugging printfs which
+    where commited accidentally previously
+  * moved axis remapping before checking deadzones
+  * trying to remove devices from Xinput
+  * added all the missing options to the example-spnavrc file
+  * possible fix for bug #9
+  * added code to skip joystick device files while parsing /proc/bus/input/devices
+- Drop reproducible.patch
+
+-------------------------------------------------------------------
+Sat Aug 25 20:38:40 UTC 2018 - herbert@graeber-clan.de
+
+- Add modalias supplements for all supported devices
+
+-------------------------------------------------------------------
+Sat Aug 25 19:30:10 UTC 2018 - herbert@graeber-clan.de
+
+- The repository moved to github
+- Rerelease of version 0.6
+  * added example config file
+  * fixed setup_init failing to detect the correct runlevel in some cases.
+  * fixed calculation of time periods in motion events.
+  * code refactoring to support multiple operating systems.
+  * added freebsd and macos x support for serial devices.
+  * fixed build when system headers don't define EV_SYN (linux).
+  * added dependency tracking in the makefile.
+  * added separate sensitivity control for each axis.
+  * added separate deadzone control for each axis.
+  * added option to avoid grabbing the device.
+  * fixed spurious error messages on SIGHUP.
+  * added auto-repeat non-zero events option (useful for serial devices).
+  * added button number remapping configuration option.
+  * added keyboard emulation option.
+  * abort if spacenavd is already running.
+  * heed DESTDIR env var in makefile install and uninstall targets.
+  * merged serial magellan protocol code.
+  * added systemd init file under contrib/.
+  * merged Ralf Morel's patch for multiple device support.
+  * improved XAUTHORITY handling.
+  * improved device selection with predicate callback and USB ids.
+  * added joystick support.
+  * fixed axis remapping for some HID devices.
+  * fixed race condition in X detection.
+  * applied Christian Ehrlicher's patches fixing a number of memory bugs.
+
+-------------------------------------------------------------------
+Wed Feb 14 19:06:12 UTC 2018 - crrodriguez@opensuse.org
+
+- Remove buildRequires on xorg-x11-devel 
+
+-------------------------------------------------------------------
+Sat May 27 05:26:02 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to sort input files to make build reproducible
+  (boo#1041090)
+
+-------------------------------------------------------------------
+Sun Oct 30 17:43:38 UTC 2016 - jengelh@inai.de
+
+- Rectify description, use source URL and avoid sysvinit calls
+  under systemd.
+
+-------------------------------------------------------------------
+Thu Oct 27 17:52:13 UTC 2016 - herbert@graeber-clan.de
+
+- Add a manpage taken from debian
+
+-------------------------------------------------------------------
+Thu Oct 27 11:50:40 UTC 2016 - dan.weatherill@cantab.net
+
+- add xdpyinfo package as explicit dependency, it is required for
+the spnavd_ctl script to work properly
+
+-------------------------------------------------------------------
+Mon Mar  2 20:45:40 UTC 2015 - herbert@graeber-clan.de
+
+- Update to version 0.6
+- Remove init file
+
+-------------------------------------------------------------------
+Sun Sep  8 13:59:19 UTC 2013 - herbert@graeber-clan.de
+
+- Change license into SPDX format
+- Add systemd support
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Mon Jan 24 19:49:46 UTC 2011 - herbert@graeber-clan.de
+
+- Update to version 0.5
+- Use separate changes file
+
+-------------------------------------------------------------------
+Sun Mar 22 00:00:00 UTC 2009 - herbert@graeber-clan.de
+
+- Added rcspacenavd link
+- Fixed xinitrc script
+
+-------------------------------------------------------------------
+Sat Mar 21 00:00:00 UTC 2009 - herbert@graeber-clan.de
+
+- Initial package
+- Add new init-script
+- Add commented configuration file
+- Add xinitrc script
+

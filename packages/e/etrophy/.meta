@@ -1,0 +1,5 @@
+<package name="etrophy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Enlightenment:Factory" package="etrophy"/>
+</package>

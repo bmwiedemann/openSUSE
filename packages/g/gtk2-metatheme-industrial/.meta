@@ -1,0 +1,6 @@
+<package name="gtk2-metatheme-industrial" project="openSUSE:Factory">
+  <title>Industrial Metatheme for GNOME</title>
+  <description>Metatheme for GNOME: Industrial strength WM theme for Metacity and
+Industrial icon theme for GNOME.</description>
+  <devel project="GNOME:Factory" package="gtk2-metatheme-industrial"/>
+</package>

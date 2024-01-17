@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue May  2 14:32:07 CEST 2017 - kukuk@suse.de
+
+- Require group "lp".
+
+-------------------------------------------------------------------
+Mon Oct  8 08:29:41 UTC 2012 - aj@suse.de
+
+- Create device node via tmpfiles.d since /lib/udev/devices is not 
+  supported with openSUSE 12.3.
+
+-------------------------------------------------------------------
+Mon May 14 18:28:30 UTC 2012 - jeffm@suse.com
+
+- Simplified the spec file.
+  - %files can create device nodes itself
+  - %doc README.SUSE works without having to install it specially
+  - no need to have a tarball with a single README in it.
+
+-------------------------------------------------------------------
+Fri May 11 00:00:00 UTC 2012 - silviumc@fastmail.fm
+
+- Added code to create lp0 up to lp3
+
+-------------------------------------------------------------------
+Mon Nov 14 14:53:17 UTC 2011 - seife+obs@b1-systems.com
+
+- change the license to BSD 2-Clause (approved by
+  Silviu Marin-Caea, see bnc#730104)
+
+-------------------------------------------------------------------
+Fri Nov 11 11:39:43 UTC 2011 - seife+obs@b1-systems.com
+
+- run spec-cleaner on the spec file, some small cosmetic changes
+- added %ghost for the device file, to make it appear in the file
+  list and removing the rpm uninstall it
+- split off changes file
+- add "Supplements: cups", let's hope this helps
+- add standard specfile license blurb on top
+
+-------------------------------------------------------------------
+Mon Oct 24 00:00:00 UTC 2011 - silviumc@fastmail.fm
+
+- First release
+

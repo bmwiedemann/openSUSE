@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/open-iscsi/targetcli-fb.git</param>
+              <param name="changesrevision">343eabcb65c11d34e0d8ac833a113f99d5c0fa37</param></service></servicedata>

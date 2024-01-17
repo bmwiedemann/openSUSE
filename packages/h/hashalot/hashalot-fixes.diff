@@ -1,0 +1,37 @@
+- print help text to stdout so it can be read via pager
+- use proper length in phash_rmd160()
+
+Signed-off-by: Ludwig Nussel <ludwig.nussel@suse.de>
+
+Index: hashalot-0.3/hashalot.c
+===================================================================
+--- hashalot-0.3/hashalot.c.orig
++++ hashalot-0.3/hashalot.c
+@@ -42,7 +42,7 @@ phash_rmd160(char dest[], size_t dest_le
+ 	tmp[PASSWDBUFFLEN - 1] = '\0';
+   
+ 	rmd160_hash_buffer(key, src, src_len);
+-	rmd160_hash_buffer(key + RMD160_HASH_SIZE, tmp, src_len + 1 /* dangerous! */);
++	rmd160_hash_buffer(key + RMD160_HASH_SIZE, tmp, strlen(tmp));
+ 
+ 	memcpy(dest, key, dest_len);
+ 
+@@ -95,7 +95,7 @@ show_usage(const char argv0[])
+ {
+ 	struct func_table_t *p = func_table;
+ 
+-	fprintf (stderr,
++	fprintf (stdout,
+ 		 "usage:\n"
+ 		 "    hashalot [ -x ] [ -s SALT ] [ -n _#bytes_ ] HASHTYPE\n"
+ 		 "  or\n"
+@@ -106,7 +106,8 @@ show_usage(const char argv0[])
+ 	for (; p->name; ++p)
+ 		fprintf (stderr, "%s ", p->name);
+ 
+-	fprintf (stderr, "\n");
++
++	fprintf (stdout, "\n");
+ 	
+ 	return 1;
+ }

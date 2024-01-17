@@ -1,0 +1,239 @@
+Index: Cal3D-0.120/cal3d/src/cal3d/loader.cpp
+===================================================================
+--- Cal3D-0.120.orig/cal3d/src/cal3d/loader.cpp
++++ Cal3D-0.120/cal3d/src/cal3d/loader.cpp
+@@ -1308,7 +1308,7 @@ CalCoreKeyframe* CalLoader::loadCoreKeyf
+   if(!dataSrc.ok())
+   {
+     dataSrc.setError();
+-    return false;
++    return NULL;
+   }
+ 
+   // allocate a new core keyframe instance
+@@ -1928,11 +1928,11 @@ CalCoreSubmesh *CalLoader::loadCoreSubme
+       CalCoreSubMorphTarget * morphTarget = new CalCoreSubMorphTarget();
+       if( !morphTarget ) {
+          dataSrc.setError();
+-         return false;
++         return NULL;
+       }
+       if( !morphTarget->reserve(vertexCount) ) {
+          dataSrc.setError();
+-         return false;
++         return NULL;
+       }
+ 
+       std::string morphName;
+@@ -1974,7 +1974,7 @@ CalCoreSubmesh *CalLoader::loadCoreSubme
+             }
+             if( ! dataSrc.ok() ) {
+                dataSrc.setError();
+-               return false;
++               return NULL;
+             }
+ 
+             morphTarget->setBlendVertex(blendVertI, Vertex);
+Index: Cal3D-0.120/cal3d/src/cal3d/xmlformat.cpp
+===================================================================
+--- Cal3D-0.120.orig/cal3d/src/cal3d/xmlformat.cpp
++++ Cal3D-0.120/cal3d/src/cal3d/xmlformat.cpp
+@@ -362,13 +362,13 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+      if(stricmp(firstChild->Attribute("MAGIC"),Cal::SKELETON_XMLFILE_EXTENSION)!=0)
+      {
+         CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+      }
+ 
+      if(atoi(firstChild->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+      {
+         CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+      }
+ 
+      skeleton = firstChild->NextSiblingElement();
+@@ -382,7 +382,7 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+   if(!skeleton || stricmp(skeleton->Value(),"SKELETON")!=0)
+   {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+   }
+ 
+   // allocate a new core skeleton instance
+@@ -408,7 +408,7 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(stricmp(bone->Value(),"BONE")!=0)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+ 
+     std::string strName=bone->Attribute("NAME");
+@@ -433,7 +433,7 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!translation || stricmp( translation->Value(),"TRANSLATION")!=0)
+     {
+       CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+     }
+ 
+     float tx, ty, tz;
+@@ -442,13 +442,13 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!node)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     cal3d::TiXmlText* translationdata = node->ToText();
+     if(!translationdata)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     str.clear();
+     str.str("");
+@@ -461,7 +461,7 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!rotation || stricmp(rotation->Value(),"ROTATION")!=0)
+     {
+       CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+     }
+ 
+     float rx, ry, rz, rw;
+@@ -470,13 +470,13 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!node)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     cal3d::TiXmlText* rotationdata = node->ToText();
+     if(!rotationdata)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     str.clear();
+     str.str("");
+@@ -490,7 +490,7 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!rotation || stricmp(translationBoneSpace->Value(),"LOCALTRANSLATION")!=0)
+     {
+       CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+     }
+ 
+     float txBoneSpace, tyBoneSpace, tzBoneSpace;
+@@ -499,13 +499,13 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!node)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     cal3d::TiXmlText* translationBoneSpacedata = node->ToText();
+     if(!translationBoneSpacedata)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     str.clear();
+     str.str("");
+@@ -518,7 +518,7 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!rotationBoneSpace || stricmp(rotationBoneSpace->Value(),"LOCALROTATION")!=0)
+     {
+       CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+     }
+ 
+     float rxBoneSpace, ryBoneSpace, rzBoneSpace, rwBoneSpace;
+@@ -527,13 +527,13 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!node)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     cal3d::TiXmlText* rotationBoneSpacedata = node->ToText();
+     if(!rotationBoneSpacedata)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     str.clear();
+     str.str("");
+@@ -546,7 +546,7 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!parent ||stricmp(parent->Value(),"PARENTID")!=0)
+     {
+       CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-      return false;
++      return NULL;
+     }
+ 
+ 
+@@ -556,13 +556,13 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+     if(!node)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     cal3d::TiXmlText* parentid = node->ToText();
+       if(!parentid)
+     {
+     CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+     }
+     parentId = atoi(parentid->Value());
+ 
+@@ -610,20 +610,20 @@ CalCoreSkeletonPtr CalLoader::loadXmlCor
+       if(stricmp(child->Value(),"CHILDID")!=0)
+       {
+         CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+       }
+ 
+       cal3d::TiXmlNode *node= child->FirstChild();
+       if(!node)
+       {
+         CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+       }
+       cal3d::TiXmlText* childid = node->ToText();
+       if(!childid)
+       {
+         CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return NULL;
+       }
+ 
+       int childId = atoi(childid->Value());
+@@ -1058,13 +1058,13 @@ CalCoreAnimatedMorph *CalLoader::loadXml
+      if(stricmp(firstChild->Attribute("MAGIC"),Cal::ANIMATEDMORPH_XMLFILE_EXTENSION)!=0)
+      {
+         CalError::setLastError(CalError::INVALID_FILE_FORMAT, __FILE__, __LINE__, strFilename);
+-        return false;
++        return 0;
+      }
+ 
+      if(atoi(firstChild->Attribute("VERSION")) < Cal::EARLIEST_COMPATIBLE_FILE_VERSION )
+      {
+         CalError::setLastError(CalError::INCOMPATIBLE_FILE_VERSION, __FILE__, __LINE__, strFilename);
+-        return false;
++        return 0;
+      }
+ 
+      animatedMorph = firstChild->NextSiblingElement();

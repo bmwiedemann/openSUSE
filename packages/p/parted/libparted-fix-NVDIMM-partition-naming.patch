@@ -1,0 +1,23 @@
+From: Sebastian Parschauer <sparschauer@suse.de>
+Date: Mon, 23 Oct 2017 17:47:47 +0200
+Subject: libparted: Fix NVDIMM partition naming
+References: bsc#1064446
+Patch-mainline: no, required to fix custom SUSE device naming
+
+Signed-off-by: Sebastian Parschauer <sparschauer@suse.de>
+---
+ libparted/arch/linux.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: parted-3.3/libparted/arch/linux.c
+===================================================================
+--- parted-3.3.orig/libparted/arch/linux.c
++++ parted-3.3/libparted/arch/linux.c
+@@ -2489,6 +2489,7 @@ _device_get_part_path (PedDevice const *
+                     dev->type == PED_DEVICE_CPQARRAY ||
+                     dev->type == PED_DEVICE_DAC960 ||
+                     dev->type == PED_DEVICE_NVME ||
++                    dev->type == PED_DEVICE_PMEM ||
+                     dev->type == PED_DEVICE_SDMMC)
+                         p = "p";
+                 else if (dev->type == PED_DEVICE_DM)

@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c572289a9db90329b0aba0881cf7821b</srcmd5>
+    <version>1.0+git20180227.44d5e8a</version>
+    <time>1519844556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580653</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e174cf14de891f173f9e586d7469344a</srcmd5>
+    <version>1.0+git20180227.44d5e8a</version>
+    <time>1519984232</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581939</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85e702fe0ad5b3d321946e873ebe25f8</srcmd5>
+    <version>1.0+git20180321.a5b34ab</version>
+    <time>1522225721</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable multiversion feature of libzypp at install time
+- Document, that this package should never be installed in a
+  running system, only during installation
+
+- Update to version 1.0+git20180321.a5b34ab:
+  * Disable purge-kernels.service, does not work with read-only
+    root filesystem 
+  * Enable man-db-create.service, man cannot create cache in %post
+  * Fix OBS URL</comment>
+    <requestid>589668</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>087e41d3e516451bcbf5307efd90b386</srcmd5>
+    <version>1.0+git20180416.825ad6c</version>
+    <time>1523875974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596943</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>835f1de2a4df289fcc7eaef044ea3d62</srcmd5>
+    <version>1.0+git20180418.4373cf9</version>
+    <time>1524238240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598544</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e7cd2bcd94198354fa039f144bf07bd</srcmd5>
+    <version>1.0+git20180606.046b099</version>
+    <time>1528492549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20180606.046b099:
+  * Fix missing shebang
+  * Make scripts executeable
+  * Enable create-dirs-from-rpmdb.service by default</comment>
+    <requestid>614472</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d33ddd1c86599effd83d7f9c3daab093</srcmd5>
+    <version>1.0+git20190206.586e9f1</version>
+    <time>1550048255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672164</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8226d3321b6a83c53d02b11f96138fc2</srcmd5>
+    <version>1.0+git20190607.11f8587</version>
+    <time>1567000927</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725624</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2a5fc3ba2a0b9ad18eaa8378de2afac6</srcmd5>
+    <version>1.0+git20191112.42add9e</version>
+    <time>1574103432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20191112.42add9e:
+  * Add RequiresMountsFor=/etc override for systemd-udevd.service</comment>
+    <requestid>747789</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5fc5db07df4770263dfce52568f62de0</srcmd5>
+    <version>1.0+git20191203.3f7cc07</version>
+    <time>1575727977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20191203.3f7cc07:
+  * Workaround /var being RO during systemd-journal-flush (boo#1156421)</comment>
+    <requestid>753160</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e45d16888143eecb1fc9e18339f0f860</srcmd5>
+    <version>1.0+git20200121.5ed8d15</version>
+    <time>1579872044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git20200121.5ed8d15:
+  * Always mount /root during initrd [boo#1161264]
+</comment>
+    <requestid>766129</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>41ae947de21ceb40feb5bdfe0343b1db</srcmd5>
+    <version>1.0+git20200121.5ed8d15</version>
+    <time>1595773006</time>
+    <user>dimstar_suse</user>
+    <comment>- Use file requires, add sed</comment>
+    <requestid>822078</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>494ede14635782d197f40b590263d51c</srcmd5>
+    <version>1.0+git20200730.1243fd0</version>
+    <time>1596456766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823736</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>846006b2960e9a288df15314e86c6ac5</srcmd5>
+    <version>1.0+git20200730.1243fd0</version>
+    <time>1599343081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831410</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>228321b36653f6cd7078c9185c059a5b</srcmd5>
+    <version>1.0+git20220801.cbb90bc</version>
+    <time>1659612175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>992538</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f670f7f4f53319a8871111353751e08e</srcmd5>
+    <version>1.0+git20220808.cd59f4f</version>
+    <time>1660051553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>993755</requestid>
+  </revision>
+</revisionlist>

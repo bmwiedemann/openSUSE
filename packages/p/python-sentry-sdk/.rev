@@ -1,0 +1,271 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccdb559e0d348d74071dfdf72204087f</srcmd5>
+    <version>0.10.2</version>
+    <time>1565694870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722821</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>529fb211ecce7b7babda3587b8cd0a8a</srcmd5>
+    <version>0.11.0</version>
+    <time>1566243542</time>
+    <user>dimstar_suse</user>
+    <comment>Newer source available from package origin. (host boomba-work)</comment>
+    <requestid>724196</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07724d149a3bb88afcb72e006e40efb5</srcmd5>
+    <version>0.11.1</version>
+    <time>1566464295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725152</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>01af7423da6753907c9dcbb82505a5fa</srcmd5>
+    <version>0.11.1</version>
+    <time>1566665354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725777</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4b7bff090365c15985da26722567ae7d</srcmd5>
+    <version>0.12.2</version>
+    <time>1570010326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734168</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e3706946f4b7b02e23af3e28aa0c03e9</srcmd5>
+    <version>0.12.3</version>
+    <time>1570104540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734673</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5cfa6a62fdd6eaad13e66496c3ee4152</srcmd5>
+    <version>0.13.0</version>
+    <time>1571751908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741616</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2f5f31888c33e98eb418857af01c957a</srcmd5>
+    <version>0.13.1</version>
+    <time>1572180040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742963</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dd8649f599ad2df8d4a3b1236d325d7e</srcmd5>
+    <version>0.13.2</version>
+    <time>1573339480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746765</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>77850fe48db4a20bf32e5c75922cc6b8</srcmd5>
+    <version>0.14.2</version>
+    <time>1584643797</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786241</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5baeacb69e1fa6b96d813e51dccd6ac6</srcmd5>
+    <version>0.14.3</version>
+    <time>1585262078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788550</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0bcc883b9a2eeab5efda4f3dce5f60f6</srcmd5>
+    <version>0.14.4</version>
+    <time>1592580276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815872</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>63f6a275b9e0d032e55c3b35dd56727f</srcmd5>
+    <version>0.19.5</version>
+    <time>1608918627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854664</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ff5bb7ea9244559fd82e392c90273d31</srcmd5>
+    <version>1.0.0</version>
+    <time>1615489840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878130</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9c191ccc77fe7017f280857af4148258</srcmd5>
+    <version>1.1.0</version>
+    <time>1620398744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891161</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4f93a7fe13b3f4e260f855b5b884a0c6</srcmd5>
+    <version>1.3.1</version>
+    <time>1630093443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914559</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3e47fcc5cc168cc56901a843c46fe2d4</srcmd5>
+    <version>1.4.1</version>
+    <time>1635366075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>927730</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>225706454d968346462dc8e545e290b4</srcmd5>
+    <version>1.5.0</version>
+    <time>1637372356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>932485</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1d8b47759f1a3d9b95fafc59463adf93</srcmd5>
+    <version>1.5.4</version>
+    <time>1643666222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>949979</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c4a9fcf3ce30bf066aee2c16f409f881</srcmd5>
+    <version>1.6.0</version>
+    <time>1656865619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>986447</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5546bdd58726991751a792d7851a6c00</srcmd5>
+    <version>1.10.1</version>
+    <time>1666602796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030656</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a79789762edffc3ebe56924185c65029</srcmd5>
+    <version>1.11.0</version>
+    <time>1668514729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035693</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2817f068db33c8edc48d2066ca5ddd42</srcmd5>
+    <version>1.15.0</version>
+    <time>1675792240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1063615</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3b72a5b441ad90db9ad28c289ed25cf9</srcmd5>
+    <version>1.24.0</version>
+    <time>1685393258</time>
+    <user>dimstar_suse</user>
+    <comment>- add mock.patch to use mock from stdlib 
+
+- Update to 1.24.0
+  - New: Celery Beat exclude tasks option (#2130)
+  - New: Add support for ExceptionGroups (#2025)
+  - Prefer importlib.metadata over pkg_resources if available (#2081)
+  - Work with a copy of request, vars in the event (#2125)
+  - Pinned version of dependency that broke the build (#2133)
+- Changes from 1.23.1
+  - Disable Django Cache spans by default. (#2120)
+- Changes from 1.23.0
+  - New: Add loguru integration (#1994)
+  - Do not truncate request body if request_bodies is &quot;always&quot; (#2092)
+  - Fixed Celery headers for Beat auto-instrumentation (#2102)
+  - Add db.operation to Redis and MongoDB spans (#2089)
+  - Make sure we're importing redis the library (#2106)
+  - Add include_source_context option (#2020)
+  - Import Markup from markupsafe (#2047)
+  - Fix __qualname__ missing attribute in asyncio integration (#2105)
+  - Remove relay extension from AWS Layer (#2068)
+  - Add a note about pip freeze to the bug template (#2103)
+- Changes from 1.22.2
+  - Fix: Django caching spans when using keyword arguments (#2086)
+  - Fix: Duration in Celery Beat tasks monitoring (#2087)
+  - Fix: Docstrings of SPANDATA (#2084) by @antonpirker
+- Changes from 1.22.1
+  - Fix: Handle a list of keys (not just a single key) in Django cache spans (#2082)
+- Changes from 1.22.0
+  - Add cache.hit and cache.item_size to Django (#2057)
+  - Use http.method instead of method (#2054)</comment>
+    <requestid>1089576</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f866d9724e7c9afce766221588cf59cb</srcmd5>
+    <version>1.24.0</version>
+    <time>1686576374</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092370</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7c717001593eda68644566df5102c923</srcmd5>
+    <version>1.28.1</version>
+    <time>1689786661</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099404</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a57dcc85cf972b98dbd93d7b7b7ef5fc</srcmd5>
+    <version>1.34.0</version>
+    <time>1698953002</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1122940</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>17d83bc8aae54e80f90308da3201db8a</srcmd5>
+    <version>1.36.0</version>
+    <time>1700675689</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1128032</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bec380854432876b142108338188bba4</srcmd5>
+    <version>1.38.0</version>
+    <time>1702673452</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1133476</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>bb3a166aa88ea1dc077ec31e5e23a07e</srcmd5>
+    <version>1.39.2</version>
+    <time>1704919994</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1137937</requestid>
+  </revision>
+</revisionlist>

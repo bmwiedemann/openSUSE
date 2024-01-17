@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/grailbio/bazel-compilation-database</param>
+              <param name="changesrevision">842648bfece8af38a403ba47dd06180f13d767b8</param></service></servicedata>

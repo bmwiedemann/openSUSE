@@ -1,0 +1,9 @@
+<package name="libservicelog" project="openSUSE:Factory">
+  <title>Servicelog Database and Library</title>
+  <description>The libservicelgo package contains a library to create and maintain a
+database for storing events related to system service.	This database
+allows for the logging of serviceable and informational events, and for
+the logging of service procedures that have been performed upon the
+system.</description>
+  <devel project="devel:libraries:c_c++" package="libservicelog"/>
+</package>

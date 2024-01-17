@@ -1,0 +1,5 @@
+Since shim needs a "stable" environment to reproduce the binary to match
+the signature from UEFI CA, it's difficult to maintain shim in Tumbleweed
+due to the nature of a rolling release distro. Instead of compiling shim
+for Tumbleweed, we directly import the binary the latest stable Leap
+release to maintain a stable and reproducible shim binary.

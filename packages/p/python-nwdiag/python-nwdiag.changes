@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Tue Jul 19 12:15:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Drop python3.6 support
+  * Use funcparserlib-1.0.0a0 or newer to support new python versions
+  * Allow to write multiline string via triple quotes (""" ... """)
+
+-------------------------------------------------------------------
+Thu May 21 10:56:43 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Fri Feb 28 22:58:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Drop python2 and python3.4 support
+  * Fix a bug
+    - #23: Crash in antialias mode
+
+-------------------------------------------------------------------
+Sun Nov 10 18:11:35 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Add python-setuptools to Requires
+  * pkg_resources is a runtime dependency
+
+-------------------------------------------------------------------
+Sun Jun  2 18:04:56 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary.
+
+-------------------------------------------------------------------
+Wed May 22 14:10:38 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 1.0.4)

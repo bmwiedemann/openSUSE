@@ -1,0 +1,117 @@
+-------------------------------------------------------------------
+Thu Oct 12 19:46:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.20.
+  concurrent-output (1.10.20) unstable; urgency=medium
+
+    * Allow text-2.1.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 12 Oct 2023 15:46:36 -0400
+
+-------------------------------------------------------------------
+Wed Aug 30 20:04:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.19.
+  concurrent-output (1.10.19) unstable; urgency=medium
+
+    * Support building for WASM.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 30 Aug 2023 16:03:03 -0400
+
+-------------------------------------------------------------------
+Mon May 15 20:34:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.18.
+  concurrent-output (1.10.18) unstable; urgency=medium
+
+    * Avoid some build warnings on Windows.
+    * Allow ansi-terminal-1.0
+
+   -- Joey Hess <id@joeyh.name>  Mon, 15 May 2023 16:32:50 -0400
+
+-------------------------------------------------------------------
+Thu Mar 30 17:06:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Updated spec file to conform with ghc-rpm-macros-2.5.2.
+
+-------------------------------------------------------------------
+Tue Jan 10 19:40:46 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.17.
+  concurrent-output (1.10.17) unstable; urgency=medium
+
+    * Fix ansi-terminal dependency to only include >= 0.6.2,
+      which is needed for hSupportsANSI.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 10 Jan 2023 15:40:11 -0400
+
+-------------------------------------------------------------------
+Fri May 20 23:32:14 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.16.
+  concurrent-output (1.10.16) unstable; urgency=medium
+
+    * Allow transformers-0.6
+      (Thanks, Janus Troelsen)
+
+   -- Joey Hess <id@joeyh.name>  Fri, 20 May 2022 19:31:56 -0400
+
+-------------------------------------------------------------------
+Fri Feb  4 19:33:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.15.
+  concurrent-output (1.10.15) unstable; urgency=medium
+
+    * Allow text-2.0
+
+   -- Joey Hess <id@joeyh.name>  Fri, 04 Feb 2022 15:32:58 -0400
+
+  concurrent-output (1.10.14) unstable; urgency=medium
+
+    * Allow ansi-terminal-0.11.1.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 24 Nov 2021 09:18:20 -0400
+
+  concurrent-output (1.10.13) unstable; urgency=medium
+
+    * outputConcurrent and errorConcurrent are now safe to call from a thread
+      that receives async exceptions.
+    * Fix compilation with GHC head.
+      (Thanks, Ellie Hermaszewska)
+
+   -- Joey Hess <id@joeyh.name>  Mon, 22 Nov 2021 11:19:21 -0400
+
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:44:23 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Thu Jun 11 02:00:51 UTC 2020 - psimons@suse.com
+
+- Update concurrent-output to version 1.10.12.
+  concurrent-output (1.10.12) unstable; urgency=medium
+
+    * Bugfix: createProcessConcurrent would sometimes send the process's
+      output to the console when it was supposed to be piped to a handle.
+      (1.7.5 introduced this bug)
+    * System.Console.Regions should be safe to use in a thread that
+      receives async exceptions; displayConsoleRegions and withConsoleRegion
+      have been made async exception safe.
+      (However, System.Console.Concurrent is not async exception safe.)
+    * Improve documentation about when withConcurrentOutput should be used.
+    * Remove some unused code.
+    * Allow building with older ansi-terminal versions, not only 0.9+.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 10 Jun 2020 17:22:39 -0400
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:17 UTC 2020 - psimons@suse.com
+
+- Add concurrent-output at version 1.10.11.
+

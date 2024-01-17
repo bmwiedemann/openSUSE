@@ -1,0 +1,6 @@
+<package name="perl-HTTP-CookieJar" project="openSUSE:Factory">
+  <title>Minimalist HTTP user agent cookie jar</title>
+  <description>This module implements a minimalist HTTP user agent cookie jar in conformance with at http://tools.ietf.org/html/rfc6265. Unlike the commonly used HTTP::Cookies module, this module does not require use of HTTP::Request and HTTP::Response objects. An LWP-compatible adapter is available as HTTP::CookieJar::LWP.</description>
+  <devel project="devel:languages:perl" package="perl-HTTP-CookieJar"/>
+  <url>https://metacpan.org/release/HTTP-CookieJar</url>
+</package>

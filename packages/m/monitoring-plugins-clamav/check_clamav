@@ -1,0 +1,190 @@
+#!/usr/bin/perl -w
+#
+# Copyright (c) 2005-2008 Darren Spruell <phatbuckett@gmail.com>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+#
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#
+################################################################################
+# This script is used to compare the version and signature level of the
+# currently running clamd daemon with the latest available versions listed in
+# the TXT record for current.cvd.clamav.net.
+#
+# In order to use this script, you might need to make the following adjustments:
+#  - Set the "use lib" path correctly (where utils.pm is located.)
+#  - Set the path to your clamd binary in $clamd_cmd.
+#
+# This plugin requires the Net::DNS Perl module.
+################################################################################
+
+# Plugin directory / home of utils.pm.
+use lib "/usr/local/libexec/nagios";
+use utils qw(%ERRORS &print_revision &support &usage);
+use Getopt::Long qw(:config no_ignore_case bundling);
+use File::Basename;
+use Net::DNS;
+
+use strict;
+
+# Path to installed clamd binary.
+my $clamd_cmd  = "/usr/local/sbin/clamd";
+
+# Leave the rest of this alone:
+my $prog_name  = basename $0;
+my $prog_ver   = "1.2";
+
+my $warn_val = 1;  # Default - override with -w arg
+my $crit_val = 2;  # Default - override with -c arg
+my $help_val = 0;  # Off unless -h arg
+my $verb_val = 0;  # Off unless -v arg
+my $vers_val = 0;  # Off unless -V arg
+
+my ($msg, $rev_word, $rr, $status, $status_print);
+
+# Gives us a way to print out verbose debug information to the screen when user
+# passes in a -v argument.
+# print_debug() should receive one parameter: a text string to print out.
+sub print_debug() {
+    my $message = shift;
+    if ($verb_val == 1) {
+        print "DEBUG: " . $message . "\n";
+    }
+}
+
+# Looks up and returns the current CVD version information from 
+# clamav.net.
+sub lookup_current() {
+    my $res = Net::DNS::Resolver->new;
+    my $query = $res->search("current.cvd.clamav.net", "TXT");
+    if ($query) {
+        foreach $rr (grep { $_->type eq 'TXT' } $query->answer) {
+            &print_debug("Net::DNS found result: (TXT) " . $rr->txtdata);
+            return $rr->txtdata;
+        }
+    } else {
+        warn "query failed: ", $res->errorstring, "\n";
+    }
+}
+
+# comp_sig_ver() should receive three parameters: remote signature database
+# version, local signature database version, and build date of local
+# signatures database.
+sub comp_sig_ver() {
+    my $sig_rem   = shift;
+    my $sig_local = shift;
+    my $sig_date  = shift;
+    my $diff = 0;
+    my $msg = "";
+
+    if ($sig_local != $sig_rem) {
+        $diff = $sig_rem - $sig_local;
+        $rev_word = ($diff == 1) ? "revision" : "revisions";
+        if ($diff >= $crit_val) {
+            &print_debug("Installed daily.cvd is behind clamav.net");
+            $status = $ERRORS{'CRITICAL'};  # Will exit with CRITICAL status
+            $status_print = "CRITICAL";
+        } elsif ($diff >= $warn_val) {
+            &print_debug("Installed daily.cvd is behind clamav.net");
+            $status = $ERRORS{'WARNING'};   # Will exit with WARNING status
+            $status_print = "WARNING";
+        } else {
+            &print_debug("Installed daily.cvd is behind clamav.net");
+            $status = $ERRORS{'OK'};  # Will exit with OK status
+            $status_print = "OK";
+	}
+        $msg  = "ClamAV " . $status_print . ": daily.cvd " . $sig_local .
+            " out of date by " . $diff . " " . $rev_word;
+    } else {
+        &print_debug("Installed daily.cvd matches latest from clamav.net");
+        $status = $ERRORS{'OK'};  # Will exit with OK status
+        $msg    = "ClamAV OK: daily.cvd " . $sig_local . " (" . $sig_date .
+            ") is up to date";
+    }
+    return $msg, $status;
+}
+
+# Show usage information
+sub show_help() {
+    print <<END;
+$prog_name Nagios plugin $prog_ver (c) 2005-2008 Darren Spruell <phatbuckett\@gmail.com>
+
+Perl Check ClamAV daily.cvd plugin for Nagios
+
+Usage: $prog_name [-w <warn>] [-c <crit>] [-V] [-v] [-h]
+
+-w, --warning=INTEGER
+   Number of revisions behind current daily.cvd to generate a warning state (Default: 1)
+-c, --critical=INTEGER
+   Number of revisions behind current daily.cvd to generate a critical state (Default: 2)
+-V, --version
+   Output version information for the plugin
+-v, --verbose
+   Enable verbose output
+-h, --help
+   Show this help
+END
+}
+
+GetOptions (
+    "w=i" => \$warn_val, "warning=i" => \$warn_val,
+    "c=i" => \$crit_val, "critical=i" => \$crit_val,
+    "h" => \$help_val, "help" => \$help_val,
+    "V" => \$vers_val, "version" => \$vers_val,
+    "v" => \$verb_val, "verbose" => \$verb_val,
+);
+ 
+if ($help_val != 0) {
+    &show_help;     
+    exit $ERRORS{'OK'};
+}
+
+if ($vers_val != 0) {
+    &print_revision($prog_name,$prog_ver);
+    exit $ERRORS{'OK'};
+}
+
+# Make sure the binary exists.
+if (-x $clamd_cmd) {
+    &print_debug("Found clamd at $clamd_cmd");
+} else {
+    &print_debug("Can't execute clamd at $clamd_cmd");
+    die("FATAL: Unable to execute $clamd_cmd");
+}
+
+&print_debug("Threshhold values: warning=$warn_val, critical=$crit_val");
+
+# Should return something like: ClamAV 0.87.1/1205/Wed Dec  7 07:00:48 2005
+chomp(my $clamd_ver = `$clamd_cmd -V`);
+
+# Should return something like: 0.87.1:34:1206:1134072033:1
+chomp(my $dnstxt_ver = &lookup_current());
+
+# Parse what we get from clamd -V and our DNS query
+my @clamdresults = split(/\//,$clamd_ver);
+my @txtresults   = split(/:/,$dnstxt_ver);
+
+# Get the currently running ClamAV sig level and cvd date out of this
+my $local_latest_daily   = $clamdresults[1];
+my $local_latest_date    = $clamdresults[2];
+
+&print_debug("Local daily.cvd dated $local_latest_date");
+&print_debug("Local daily.cvd version = $local_latest_daily");
+
+# Get the latest ClamAV daily signatures version out of this
+my $clamav_latest_daily   = $txtresults[2];
+&print_debug("Latest daily.cvd version = $clamav_latest_daily");
+
+my @prog_sig_res = &comp_sig_ver($clamav_latest_daily, $local_latest_daily,
+    $local_latest_date);
+
+print $prog_sig_res[0] . "\n";
+exit $prog_sig_res[1];

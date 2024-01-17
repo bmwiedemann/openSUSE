@@ -1,0 +1,7 @@
+<package name="libnscd" project="openSUSE:Factory">
+  <title>Library to Allow Applications to Communicate with nscd</title>
+  <description>This library provides an interface for applications to NSCD (Name
+Service Cache Daemon) and allows those applications, to flush the cache
+for special services, if they have the necessary permissions.</description>
+  <devel project="Base:System" package="libnscd"/>
+</package>

@@ -1,0 +1,277 @@
+-------------------------------------------------------------------
+Sun Jul 16 18:41:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * add `${BATS_TEST_TAGS[@]}` for querying the tags during a
+    test
+  * print tags on failing tests
+  * test for negative arguments to `--jobs`
+  * add tests for `--formatter cat`
+  * test coverage in CI
+  * Support for rush as alternative to GNU parallel
+  * add `bats_pipe` helper function for `run` that executes `\|`
+    as pipes
+  * publish docker images to ghcr.io (additionally to Dockerhub)
+  * clarify use cases of `--formatter cat`
+  * fix `run` with options overwriting the value of `i`
+  * fix `${BATS_TEST_NAMES[@]}` containing only `--tags` instead
+    of test name since Bats v1.8.0
+  * fix `run --keep-empty-lines` counting trailing ` ` as
+    (empty) new line
+  * fix short flag unpacker creating bogus command lines with
+    valued flags
+  * fix formatter becoming confused with retries
+  * fix `--gather-test-outputs-in` fails on tests with `/`
+  * fix overriding `date` breaks `--timing`
+
+-------------------------------------------------------------------
+Tue Feb 14 09:42:03 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Update to version 1.9.0:
+  * add installation instructions for Debian, Fedora, Gentoo, and OpenSUSE (#659)
+  * add `--line-reference-format` to switch file/line references in stack traces (#665)
+  * add `bats:focus` tag to run only focused tests (#679)
+  * add bats-support, bats-assert, bats-file and bats-detik to Dockerfile (#674)
+  * add `--help` text and `man` page content for `--filter-tags` (#679)
+  * explicitly check for GNU parallel (#691)
+  * wait for report-formatter to finish before ending `bats`' execution,
+    to fix empty files with `--report-fomatter junit` under Docker (#692)
+  * improved clarity of section about output in free code (#671)
+  * fixed typos (#673)
+  * clarify use cases of `run` (#366) 
+
+-------------------------------------------------------------------
+Tue Nov  8 09:29:03 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8.2:
+  * fix non zero return code on successful retried tests
+  * avoid kernel warning flood/hang with CTRL+C on Bash 5.2 RC
+  * Fix infinite wait with (invalid) -j<n> (without space) 
+  * using external formatters via --formatter <absolute path> (also works for --report-formatter)
+  * running only tests that failed in the last run via --filter-status failed
+  * variable BATS_TEST_RETRIES that specifies how often a test should be reattempted before it is considered failed
+  * BATS_TEST_TIMEOUT variable to force a timeout on test (including setup())
+  * test_tags=<tag list>/# bats file_tags=<tag list> and --filter-tags <tag list> for tagging tests 
+  * add documentation for bats_require_minimum_version, setup_suite, fix typos
+  * improve documentation about setup_suite
+  * allow --gather-test-outputs-in <directory> to work with existing, empty directories
+  * fix load in teardown marking failed tests as not run
+  * add /usr/lib/bats as default value for BATS_LIB_PATH
+  * fix unset variable in bats-formatter-junit when setup_file fails
+  * unify error behavior of teardown/teardown_file/teardown_suite functions: only fail via return code, not via ERREXIT
+  * only print setup_suite's stderr on errors
+
+-------------------------------------------------------------------
+Wed Jun 15 18:28:08 UTC 2022 - Olav Reinert <seroton10@gmail.com>
+
+- Update to version 1.7.0:
+  * Pretty formatter print filename when entering file (#561)
+  * BATS_TEST_NAME_PREFIX allows prefixing test names on stdout and in reports (#561)
+  * setup_suite and teardown_suite (#571, #585)
+  * out-of-band warning infrastructure, with following warnings:
+    * BW01: run command not found (exit code 127)  (#586)
+    * BW02: run uses flags without proper `bats_require_minimum_version` guard (#587)
+  * `bats_require_minimum_version` to guard code that would not run on older
+    versions (#587)
+  * unbound variable errors in formatters when using `SHELLOPTS=nounset` (`-u`) (#558)
+  * don't require `flock` *and* `shlock` for parallel mode test (#554)
+  * print name of failing test when using TAP13 with timing information (#559, #555)
+  * removed broken symlink, added regression test (#560)
+  * don't show empty lines as `#` with pretty formatter  (#561)
+  * prevent `teardown`, `teardown_file`, and `teardown_suite` from overriding bats'
+    exit code by setting `$status` (e.g. via calling `run`) (#581, #575)
+    * **CRITICAL**: this can return exit code 0 despite failed tests, thus preventing
+      your CI from reporting test failures! The regression happened in version 1.6.0.
+  * `run --keep-empty-lines` now reports 0 lines on empty `$output` (#583)
+
+-------------------------------------------------------------------
+Wed Jun  8 19:11:07 UTC 2022 - Olav Reinert <seroton10@gmail.com>
+
+- Update to version 1.6.1:
+  * prevent teardown, teardown_file, and teardown_suite from overriding bats'
+    exit code by setting $status (e.g. via calling run) (#581, #575)
+    - CRITICAL: this can return exit code 0 despite failed tests, thus
+      preventing your CI from reporting test failures! The regression happened
+      in version 1.6.0.
+  * corrected invalid documentation of run -N (had =N instead) (#579)
+    - CRITICAL: using the incorrect form can lead to silent errors. See issue
+      #578 for more details and how to find out if your tests are affected.
+
+-------------------------------------------------------------------
+Mon Apr 18 14:59:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.6.0
+  * Added: New flag --code-quote-style (and $BATS_CODE_QUOTE_STYLE)
+    to customize quotes around code blocks in error output
+  * Added: bats_load_library for loading libraries from the search
+    path $BATS_LIB_PATH
+  * Improved error trace for some broken cases
+  * Fixed leaking of local variables from debug trap
+  * Don't mark FD3 output from teardown_file as <failure> in junit
+    output
+  * Fix unbound variable error with Bash pre 4.4
+
+-------------------------------------------------------------------
+Sat Dec 11 16:16:42 UTC 2021 - Olav Reinert <seroton10@gmail.com>
+
+- boo#1193177: Fix build on Leap and SLE
+
+-------------------------------------------------------------------
+Wed Nov 24 23:53:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * new command line flags
+    * `--verbose-run`: Make `run` print `$output` by default
+    * `-x`, `--trace`: Print test commands as they are executed (like `set -x`)`
+    * `--show-output-of-passing-tests`: Print output of passing tests
+    * `--print-output-on-failure`: Automatically print the value of  `$output` on
+      failed tests
+    * `--gather-test-outputs-in <directory>`: Gather the output of failing **and**
+      passing tests as files in directory
+  * Experimental: add return code checks to `run` via `!`/`-<N>`
+  * `install.sh` and `uninstall.sh` take an optional second parameter for the lib
+    folder name to allow for multilib install, e.g. into lib64
+  * add `run` flag `--keep-empty-lines` to retain empty lines in `${lines[@]}`
+  * add `run` flag `--separate-stderr` which also fills `$stderr` and
+    `$stderr_lines`
+  * don't glob `run`'s `$output` when splitting into `${lines[@]}`
+  * remove empty line after test with pretty formatter on some terminals
+  * don't run setup_file/teardown_file on files without tests, e.g. due to
+    filtering
+  * print final line without newline on Bash 3.2 for midtest (ERREXIT) failures
+  * abort with error on missing flock/shlock when running in parallel mode
+  * improved `set -u` test and fixed some unset variable accesses
+  * shorten suite/file/test temporary folder paths to leave enough space even on
+    restricted systems
+  * added BATS_TEST_TMPDIR, BATS_FILE_TMPDIR, BATS_SUITE_TMPDIR
+  * added checks and improved documentation for `$BATS_TMPDIR`
+  * the docker container now uses [tini](https://github.com/krallin/tini) as the
+    container entrypoint to improve signal forwarding
+  * script to uninstall bats from a given prefix
+  * replace preprocessed file path (e.g. `/tmp/bats-run-22908-NP0f9h/bats.23102.src`)
+    with original filename in stdout/err (but not FD3!)
+  * print aborted command on SIGINT/CTRL+C
+  * print error message when BATS_RUN_TMPDIR could not be created
+
+-------------------------------------------------------------------
+Sun Apr 18 17:54:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.3.0
+  * Added custom test-file extension via BATS_FILE_EXTENSION when
+    searching for test files in a directory
+  * Added TAP13 formatter, including millisecond timing
+  * Recursive suite mode will follow symlinks now
+  * Split options for (file-) --report-formatter and (stdout)
+    --formatter
+    WARNING: This changes the meaning of --formatter junit.
+      stdout will now show unified xml instead of TAP. From now on,
+      please use --report-formatter junit to obtain the .xml report file!
+  * Removed --parallel-preserve-environment flag, as this is the default
+  * Preprocessed files are no longer removed if --no-tempdir-cleanup
+    is specified
+  * Fix internal failures due to unbound variables when test files
+    use set -u
+  * Fix internal failures due to changes to $PATH in test files
+  * Fix hangs on CTRL+C
+  * Make BATS_TEST_NUMBER count per file again
+  * Performance improvements
+  * Improved documentation
+- Dropped upstream merged
+  bsc1180135-0001-fix-dont-use-unbound-variables-in-setup-methods.patch
+
+-------------------------------------------------------------------
+Thu Dec 17 00:43:18 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Backport <https://github.com/bats-core/bats-core/pull/344>. bsc#1180135
+  + bsc1180135-0001-fix-dont-use-unbound-variables-in-setup-methods.patch
+
+-------------------------------------------------------------------
+Wed Nov 18 22:44:45 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- update to 1.2.1:
+  * added:
+    - JUnit output and extensible formatter rewrite (#246)
+    - load function now reads from absolute and relative paths, and $PATH (#282)
+    - Beginner-friendly examples in /docs/examples (#243)
+    - @peshay's bats-file fork contributed to bats-core/bats-file (#276)
+  * changed:
+    - Duplicate test names now error (previous behaviour was to issue a warning) (#286)
+    - Changed default formatter in Docker to pretty by adding ncurses to Dockerfile, override with --tap (#239)
+    - Replace "readlink -f" dependency with Bash solution (#217)
+
+-------------------------------------------------------------------
+Wed Nov 18 21:32:54 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- Install to /usr/libexec on Tumbleweed
+
+-------------------------------------------------------------------
+Fri Jul  3 01:08:46 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Require gnu_parallel so that 'bats --jobs' works out of the box and is tested
+  as part of the integration tests of the package.
+
+-------------------------------------------------------------------
+Wed May 20 12:04:49 UTC 2020 - Olav Reinert <seroton10@gmail.com>
+
+- update to 1.2.0:
+  * Added:
+    - docs/CHANGELOG.md and docs/releasing.md (#122)
+    - The -f, --filter flag to run only the tests matching a regular expression (#126)
+    - Optimize stack trace capture (#138)
+    - --jobs n flag to support parallel execution of tests with GNU parallel (#172)
+  * Changed:
+    - AppVeyor builds are now semver-compliant (#123)
+    - Add Bash 5 as test target (#181)
+    - Always use upper case signal names to avoid locale dependent err… (#215)
+    - Fix for tests reading from stdin (#227)
+    - Fix wrong line numbers of errors in bash < 4.4 (#229)
+    - Remove preprocessed source after test run (#232)
+
+-------------------------------------------------------------------
+Fri Oct 25 16:07:03 UTC 2019 - Olav Reinert <seroton10@gmail.com>
+
+- Reinstate prematurely removed Group tag
+
+-------------------------------------------------------------------
+Thu Oct 17 14:23:45 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Tue Jan 22 14:14:52 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.1.0
+- drop build-term.patch  package-json.patch
+- new upstream, see changes on https://github.com/bats-core/bats-core/releases
+
+
+-------------------------------------------------------------------
+Sat Feb 25 17:55:47 UTC 2017 - seroton10@gmail.com
+
+- Added build-term.patch: work-around for bnc#1026350
+
+-------------------------------------------------------------------
+Tue Feb 24 22:29:38 UTC 2015 - seroton10@gmail.com
+
+- Fix RPM group
+
+-------------------------------------------------------------------
+Sun Feb 22 18:17:03 UTC 2015 - seroton10@gmail.com
+
+- Spec file improvements:
+  * Run tests in %check section
+  * Correct project URL
+
+-------------------------------------------------------------------
+Wed Feb 18 21:31:33 UTC 2015 - seroton10@gmail.com
+
+- Spec file improvements:
+  * /usr/bin/tput is optional at runtime
+  * Reference to meaning of TAP-compliant
+  * Simplify launch of tests
+
+-------------------------------------------------------------------
+Mon Feb 16 12:50:34 UTC 2015 - seroton10@gmail.com
+
+- Initial version: bats 0.4.0
+

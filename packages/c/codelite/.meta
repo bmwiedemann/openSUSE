@@ -1,0 +1,5 @@
+<package name="codelite" project="openSUSE:Factory">
+  <title>Powerful open-source, cross platform IDE for the C/C++ programming languages</title>
+  <description>CodeLite is an open-source, cross platform IDE for the C/C++ programming languages.</description>
+  <devel project="devel:tools" package="codelite"/>
+</package>

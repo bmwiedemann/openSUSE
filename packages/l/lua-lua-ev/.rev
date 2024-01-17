@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d24b797e734085ca1ff481c867805c87</srcmd5>
+    <version>1.5</version>
+    <time>1586368480</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>790896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>757361028e5226251f065cc3a1cee454</srcmd5>
+    <version>1.5</version>
+    <time>1597220589</time>
+    <user>dimstar_suse</user>
+    <comment>- Currently tests fail, and they are temporarily ignored.
+
+- Add lua54.patch to make package building with Lua 5.4
+  (gh#brimworks/lua-ev#24).
+
+- Add lua54 as new build target</comment>
+    <requestid>825743</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ad010b40e33bad5b7b479b9adc090f83</srcmd5>
+    <version>1.5</version>
+    <time>1613427369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>871380</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a14f5174aac36ba76e815ce701d29237</srcmd5>
+    <version>1.5</version>
+    <time>1669289026</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037544 from michals
+
+- Fix unowned %{lua_incdir} directory.</comment>
+    <requestid>1037591</requestid>
+  </revision>
+</revisionlist>

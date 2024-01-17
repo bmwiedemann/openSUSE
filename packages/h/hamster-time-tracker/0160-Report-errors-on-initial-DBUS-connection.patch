@@ -1,0 +1,44 @@
+From c067f51edaf9e6a4caba12a93b60809b49a6edf1 Mon Sep 17 00:00:00 2001
+From: Matthijs Kooijman <matthijs@stdin.nl>
+Date: Sun, 30 Apr 2023 23:17:37 +0200
+Subject: [PATCH 160/161] Report errors on initial DBUS connection
+
+When either dbus proxy cannot be created (i.e. hamster is not running
+and cannot be autostarted), report that to the user.
+
+This only reports these errors, not other handling is changed (on error,
+the proxy objects passed will be undefined or null, so further
+initialization of the extension should already be skipped). Making error
+handling more robust (and e.g. recovering of hamster is started later)
+would be nice, but is too complex to handle now.
+
+(cherry picked from commit 22ba1e62b6b7ae481bfb1d703bab4feac895c9c4)
+---
+ extension/extension.js | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/extension/extension.js b/extension/extension.js
+index 3964c6d..97e421e 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -120,13 +120,15 @@ class Controller {
+     enable() {
+         this.shouldEnable = true;
+         new ApiProxy(Gio.DBus.session, 'org.gnome.Hamster', '/org/gnome/Hamster',
+-                     function(proxy) {
++                     function(proxy, err) {
++                         this.reportIfError(_("Connection to DBUS service failed"), err);
+ 			 this.apiProxy = proxy;
+ 			 this.deferred_enable();
+                      }.bind(this));
+         new WindowsProxy(Gio.DBus.session, "org.gnome.Hamster.WindowServer",
+ 			 "/org/gnome/Hamster/WindowServer",
+-			 function(proxy) {
++			 function(proxy, err) {
++                             this.reportIfError(_("Connection to DBUS window service failed"), err);
+ 			     this.windowsProxy = proxy;
+ 			     this.deferred_enable();
+ 			 }.bind(this));
+-- 
+2.41.0
+

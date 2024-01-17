@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# We need this wrapper instead of a plain symlink to be able to set
+# a different SELinux label on this
+exec -a rsyncd /usr/bin/rsync "$@"
+

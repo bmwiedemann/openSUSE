@@ -1,0 +1,60 @@
+-------------------------------------------------------------------
+Tue Apr 23 05:04:16 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2013
+   see /usr/share/doc/packages/perl-Canary-Stability/Changes
+
+  2013  Mon Apr 22 12:38:45 CEST 2019
+  	- carbon-dioxide levels hit 400ppm first time in recorded history.
+          - during AUTOMATED_TESTING, turn minimum version recommendations into
+            hard requirements to avoid false positives in unsupported perl
+            versions.
+          - added dummy testsuite.
+
+-------------------------------------------------------------------
+Thu Sep 29 05:08:02 UTC 2016 - coolo@suse.com
+
+- updated to 2012
+   see /usr/share/doc/packages/perl-Canary-Stability/Changes
+
+-------------------------------------------------------------------
+Wed Sep 28 05:06:28 UTC 2016 - coolo@suse.com
+
+- updated to 2012
+   see /usr/share/doc/packages/perl-Canary-Stability/Changes
+
+-------------------------------------------------------------------
+Tue Sep 27 05:07:34 UTC 2016 - coolo@suse.com
+
+- updated to 2012
+   see /usr/share/doc/packages/perl-Canary-Stability/Changes
+
+-------------------------------------------------------------------
+Mon Sep 26 05:06:26 UTC 2016 - coolo@suse.com
+
+- updated to 2012
+   see /usr/share/doc/packages/perl-Canary-Stability/Changes
+
+  2012  Sun Sep 25 01:45:56 CEST 2016
+  	- another year where the UNFCCC had to adjust their predictions
+            in the worse direction.
+  	- do not print the big intro blob in yellow.
+
+-------------------------------------------------------------------
+Mon Mar 14 09:35:33 UTC 2016 - coolo@suse.com
+
+- updated to 2011
+   see /usr/share/doc/packages/perl-Canary-Stability/Changes
+
+  2011  Sun Mar 13 04:41:48 CET 2016
+  	- the year the terrorists won and the free world sacrificed the free.
+          - added more explanatory blurb, based on ideas by Kent Fredric.
+  	- colour wasn't reset in time to catch further Makefile.PL
+            output in some cases.
+
+-------------------------------------------------------------------
+Sun Sep 20 15:49:31 UTC 2015 - coolo@suse.com
+
+- initial package 2006
+ * created by cpanspec 1.78.08
+

@@ -1,0 +1,6 @@
+<package name="flann" project="openSUSE:Factory">
+  <title>Fast Library for Approximate Nearest Neighbors</title>
+  <description>FLANN is a library for performing fast approximate nearest neighbor searches in high dimensional spaces. It contains a collection of algorithms found to work best for nearest neighbor search and a system for automatically choosing the best algorithm and optimum parameters depending on the data sets.</description>
+  <devel project="science" package="flann"/>
+  <url>http://www.cs.ubc.ca/research/flann</url>
+</package>

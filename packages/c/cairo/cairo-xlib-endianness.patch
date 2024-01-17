@@ -1,0 +1,17 @@
+Index: cairo-1.17.6/src/cairo-xlib-render-compositor.c
+===================================================================
+--- cairo-1.17.6.orig/src/cairo-xlib-render-compositor.c
++++ cairo-1.17.6/src/cairo-xlib-render-compositor.c
+@@ -1325,10 +1325,10 @@ _cairo_xlib_surface_add_glyph (cairo_xli
+ 	    }
+ 	    n = new;
+ 	    d = (uint32_t *) data;
+-	    do {
++	    while (c--) {
+ 		*n++ = bswap_32 (*d);
+ 		d++;
+-	    } while (--c);
++	    }
+ 	    data = (uint8_t *) new;
+ 	}
+ 	break;

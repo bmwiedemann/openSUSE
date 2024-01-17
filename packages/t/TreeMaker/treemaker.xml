@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="model/x-tmd5">
+    <comment xml:lang="en">TreeMaker 5 design</comment>
+    <glob pattern="*.tmd5"/>
+    <icon name="model-x-tmd5"/>
+  </mime-type>
+</mime-info>

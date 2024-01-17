@@ -1,0 +1,103 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>455883080addbe7a05413aab696571f5</srcmd5>
+    <version>3.0.0b3</version>
+    <time>1591991076</time>
+    <user>dimstar_suse</user>
+    <comment>django - graphene integration</comment>
+    <requestid>814131</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1925a8e70102e560ef66f6f778b54015</srcmd5>
+    <version>3.0.0b3</version>
+    <time>1599088677</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test execution</comment>
+    <requestid>831418</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>745ae2214f9831e552afcb0131dc349d</srcmd5>
+    <version>3.0.0b7</version>
+    <time>1611865748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867459</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0a589aed9cba1660101430d4aa830c1c</srcmd5>
+    <version>3.0.0b7</version>
+    <time>1640521831</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>942565</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>02d1021b9504eafca29711d59442e8d1</srcmd5>
+    <version>3.0.0b7</version>
+    <time>1641940955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>945560</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>bfe8c96e1102cc9a976b7d27a9291771</srcmd5>
+    <version>3.0.0b7</version>
+    <time>1652389252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>976587</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f9135502d346db243405baae103fbd15</srcmd5>
+    <version>3.0.0b8</version>
+    <time>1664112948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005858</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>040af3bb55250c09449495a9f4d02d5b</srcmd5>
+    <version>3.0.0</version>
+    <time>1674737919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1061085</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e76c14383d82b8efa3abb283051a5b60</srcmd5>
+    <version>3.2.0</version>
+    <time>1705353457</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.0:
+  * Add support for validation rules
+  * Provide setting to enable/disable converting choices to enums
+    globally
+- update to 3.1.6:
+  * Only release on pypi after tests pass
+  * fix: empty list is not an empty value for list filters even
+    when a custom filtering method is provided
+  * adding optional_field in Serializermutation to enfore some
+    fields to be optional
+  * Typo fixes
+  * Support displaying deprecated input fields in GraphiQL docs
+  * Fix graphiql explorer styles by sending missing param to
+    render_graphiql
+  * Add Python 3.12 to CI
+  * Remove Django 4.1 (EOL) and add Django 5.0 to CI
+- update to 3.1.5:
+  * fix: fk resolver permissions leak
+  * Support base class relations and reverse for proxy models
+  * exclude 'fans' from ReporterForm tests
+  * Update mutation.py to serialize Enum objects into input
+    values
+  * Remove Python 3.7 (EOL since EOL since 2023-06-27) from CI
+  * Prevent duplicate CI runs, also work with PRs from forks
+  * Use ruff in pre-commit
+  * fix: foreign key nullable and custom resolver
+  * Miscellaneous CI fixes
+- update to 3.1.3:
+  * Update the path to GraphQL Server Specification for Relay
+  * Add JSONField back to graphene_django.compat module for</comment>
+    <requestid>1138685</requestid>
+  </revision>
+</revisionlist>

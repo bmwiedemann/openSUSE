@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Mar 21 21:13:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests (gh#fedora-infra/kitchen#37).
+
+-------------------------------------------------------------------
+Tue Jan 19 06:35:00 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix bare words in spec, no longer supported
+
+-------------------------------------------------------------------
+Wed Sep  9 12:53:34 UTC 2020 - pgajdos@suse.com
+
+- do not depend on nose
+- added patches
+  fix https://github.com/fedora-infra/kitchen/pull/33
+  + python-kitchen-remove-nose.patch
+
+-------------------------------------------------------------------
+Wed Jul 24 08:32:38 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.2.6:
+  * various bugfixes
+
+-------------------------------------------------------------------
+Wed Feb  6 14:33:07 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Exclude test_internal_generate_combining_table to make test
+  suite passing
+
+-------------------------------------------------------------------
+Tue Dec  4 12:49:49 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Aug 29 12:42:20 UTC 2018 - tchvatal@suse.com
+
+- Attempt to fix some python 3.7 failures by exporting LANG
+
+-------------------------------------------------------------------
+Tue Feb  6 21:17:38 UTC 2018 - sebix+novell.com@sebix.at
+
+- specfile:
+ * fix check section to actually run the tests
+ * neutral description
+
+-------------------------------------------------------------------
+Tue Oct  3 13:13:50 UTC 2017 - mardnh@gmx.de
+
+- Initial package

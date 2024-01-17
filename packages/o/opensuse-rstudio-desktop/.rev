@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b32665b29888953e4b7a1a7742f60af</srcmd5>
+    <version>1.0.0</version>
+    <time>1583094453</time>
+    <user>dimstar_suse</user>
+    <comment>Container image for RStudio Desktop</comment>
+    <requestid>780280</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>284924d11547b6977de36cc72ca25c31</srcmd5>
+    <version>1.0.0</version>
+    <time>1583948902</time>
+    <user>dimstar_suse</user>
+    <comment>- Added missing LICENSE file
+- Fix container name
+</comment>
+    <requestid>783294</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6d6fd32fc6cd5081428c471499cb949a</srcmd5>
+    <version>1.0.0</version>
+    <time>1585342785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788954</requestid>
+  </revision>
+</revisionlist>

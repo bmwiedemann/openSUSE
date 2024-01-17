@@ -1,0 +1,13 @@
+Index: napalm-procurve-0.7.0/setup.py
+===================================================================
+--- napalm-procurve-0.7.0.orig/setup.py
++++ napalm-procurve-0.7.0/setup.py
+@@ -19,7 +19,7 @@ except ImportError:
+ __author__ = 'Andreas Thienemann <andreas@bawue.net>'
+ 
+ install_reqs = parse_requirements('requirements.txt', session=uuid.uuid1())
+-reqs = [str(ir.req) for ir in install_reqs]
++reqs = [str(ir.requirement) for ir in install_reqs]
+ 
+ setup(
+     name="napalm-procurve",

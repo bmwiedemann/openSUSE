@@ -1,0 +1,5 @@
+<package name="peek" project="openSUSE:Factory">
+  <title>Peek</title>
+  <description>Animated GIF Screen Recorder Tool</description>
+  <devel project="multimedia:apps" package="peek"/>
+</package>

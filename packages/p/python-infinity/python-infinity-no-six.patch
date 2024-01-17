@@ -1,0 +1,41 @@
+Index: infinity-1.5/test_infinity.py
+===================================================================
+--- infinity-1.5.orig/test_infinity.py
++++ infinity-1.5/test_infinity.py
+@@ -2,7 +2,6 @@ import operator
+ from datetime import datetime
+ 
+ import pytest
+-import six
+ 
+ from infinity import inf, Infinity
+ 
+@@ -59,7 +58,7 @@ class TestNegativeInfinity(InfinityTestC
+     value = -inf
+ 
+     def test_unicode_coercion(self):
+-        assert six.text_type(-inf) == '-inf'
++        assert str(-inf) == '-inf'
+ 
+     def test_repr(self):
+         assert repr(-inf) == '-inf'
+@@ -125,7 +124,7 @@ class TestNegativeInfinity(InfinityTestC
+ 
+ class TestInfinity(InfinityTestCase):
+     def test_unicode_coercion(self):
+-        assert six.text_type(inf) == 'inf'
++        assert str(inf) == 'inf'
+ 
+     def test_float_coercion(self):
+         assert float(inf) == float('inf')
+Index: infinity-1.5/infinity.egg-info/requires.txt
+===================================================================
+--- infinity-1.5.orig/infinity.egg-info/requires.txt
++++ infinity-1.5/infinity.egg-info/requires.txt
+@@ -2,6 +2,5 @@
+ [test]
+ pytest>=2.2.3
+ Pygments>=1.2
+-six>=1.4.1
+ flake8>=2.4.0
+ isort>=4.2.2

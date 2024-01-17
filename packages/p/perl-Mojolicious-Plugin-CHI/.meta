@@ -1,0 +1,5 @@
+<package name="perl-Mojolicious-Plugin-CHI" project="openSUSE:Factory">
+  <title>Use CHI caches in Mojolicious</title>
+  <description>Mojolicious::Plugin::CHI is a simple plugin to work with CHI caches within Mojolicious.</description>
+  <devel project="devel:languages:perl" package="perl-Mojolicious-Plugin-CHI"/>
+</package>

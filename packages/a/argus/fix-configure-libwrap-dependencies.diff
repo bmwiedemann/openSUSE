@@ -1,0 +1,13 @@
+--- argus-3.0.8.3/configure.old	2020-08-27 15:02:52.000000000 +0200
++++ argus-3.0.8.3/configure	2023-01-25 12:02:00.376669747 +0100
+@@ -8347,10 +8347,6 @@
+          if test -f lib/libwrap.a; then
+             rm -rf lib/libwrap.a
+          fi
+-         case "$target_os" in
+-         linux*)
+-            V_WRAPDEP="$V_WRAPDEP -lnsl";;
+-         esac
+       fi
+    fi
+ 

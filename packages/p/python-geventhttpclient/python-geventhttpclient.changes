@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Thu Dec  7 22:50:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.11:
+  * Support Python 3.12
+  * Disable unit tests for no ssl module + fixes for build
+
+-------------------------------------------------------------------
+Fri Aug 25 12:18:29 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Skip both tests in test_no_module_ssl.py, failing with new gevent
+
+-------------------------------------------------------------------
+Thu May  4 20:36:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.9:
+  * Add square brackets for Host header when using IPv6 address
+  * Enable ppc64le wheels
+
+-------------------------------------------------------------------
+Fri Nov  4 10:52:22 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.0.8
+  * lot of changes, see
+    https://github.com/geventhttpclient/geventhttpclient/releases
+- do not require python-six
+- deleted patches
+  - remove_mock.patch (upstreamed)
+
+-------------------------------------------------------------------
+Tue Feb 16 14:50:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.5
+  * Don't auto parse query string. Add params keyword argument.
+- don't try to set a nonexistend attribute for a test
+  gh#gwik/geventhttpclient#137
+
+-------------------------------------------------------------------
+Mon Dec 14 00:36:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix condition around BuildRequirement
+
+-------------------------------------------------------------------
+Sun Dec 13 20:26:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- We don't need to break Python 2.7
+
+-------------------------------------------------------------------
+Fri Dec 11 23:08:43 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_mock.patch to remove dependency on the external mock
+  package (gh#gwik/geventhttpclient#135).
+
+-------------------------------------------------------------------
+Sat Aug  1 05:08:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove gevent-mark-tests.patch and LICENSE-MIT that are
+  now incorporated upstream
+- Update to v1.4.4
+  * Add kwargs to exception objects representation
+- from v1.4.3
+  * Fix Unhandled UnicodeDecodeError exception if response with
+    status 400 and request contains binary payload
+- from v1.4.0
+  * httpparser: update http parser to 2.9.4
+
+-------------------------------------------------------------------
+Tue Jan 14 11:07:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- skip test test_cookielib_compatibility as it is borked upstream
+
+-------------------------------------------------------------------
+Fri Mar 22 10:03:15 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to skip online tests:
+  * gevent-mark-tests.patch
+
+-------------------------------------------------------------------
+Thu Mar 14 16:44:36 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce marketing wording in the description.
+
+-------------------------------------------------------------------
+Thu Mar 14 15:17:18 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.3.1:
+  * no upstream changelog
+- Switch to singlespec
+- Enable tests
+
+-------------------------------------------------------------------
+Tue Sep  8 08:46:46 UTC 2015 - tbechtold@suse.com
+
+- Initial packaging (version 1.1.0)

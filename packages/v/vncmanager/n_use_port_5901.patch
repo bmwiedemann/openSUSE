@@ -1,0 +1,29 @@
+Matches the default port used by tigervnc xinetd service.
+Index: vncmanager-1.0.2/vncmanager.conf
+===================================================================
+--- vncmanager-1.0.2.orig/vncmanager.conf
++++ vncmanager-1.0.2/vncmanager.conf
+@@ -6,8 +6,8 @@
+ 
+ # Port ot listen on.
+ # Default: 5900
+-#
+-# port = 5900
++
++port = 5901
+ 
+ # VNC security types.
+ # Comma separated list of allowed types. Order determines priority - VNC clients normally choose the first type they support.
+Index: vncmanager-1.0.2/Configuration.cpp
+===================================================================
+--- vncmanager-1.0.2.orig/Configuration.cpp
++++ vncmanager-1.0.2/Configuration.cpp
+@@ -78,7 +78,7 @@ bool Configuration::parse(int argc, char
+     po::options_description general("General");
+     general.add_options()
+         ("listen", po::value<std::vector<std::string>>()->multitoken(), "addresses to bind to")
+-        ("port",   po::value<std::string>()->default_value("5900"), "tcp port to listen on")
++        ("port",   po::value<std::string>()->default_value("5901"), "tcp port to listen on")
+ 
+         ("security", po::value<VeNCryptSubtypesList>()->default_value(defaultSecurity, defaultSecurityTxt), "list of VNC security types separated by commas, ordered by priority")
+ 

@@ -1,0 +1,5 @@
+<package name="iso_ent" project="openSUSE:Factory">
+  <title>Character Entity Sets for ISO 8879:1986</title>
+  <description>Character entity sets for ISO 8879:1986.</description>
+  <devel project="Publishing" package="iso_ent"/>
+</package>

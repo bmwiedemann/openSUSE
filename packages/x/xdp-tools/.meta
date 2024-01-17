@@ -1,0 +1,6 @@
+<package name="xdp-tools" project="openSUSE:Factory">
+  <title>xdp-tools</title>
+  <description>Utilities and example programs for use with eXpress Data Path (XDP), which provides a high performance and user-programmable network data path in the Linux kernel.</description>
+  <devel project="network" package="xdp-tools"/>
+  <url>https://github.com/xdp-project/xdp-tools</url>
+</package>

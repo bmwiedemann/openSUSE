@@ -1,0 +1,3 @@
+addFilter('suse-logrotate-user-writable-log-dir')
+addFilter('non-conffile-in-etc')
+addFilter('hidden-file-or-dir')

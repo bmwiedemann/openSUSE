@@ -1,0 +1,1745 @@
+-------------------------------------------------------------------
+Tue Dec  5 14:19:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.4/
+- Changes since 23.08.3:
+  * Adapt to renamed activities library repo
+
+-------------------------------------------------------------------
+Tue Nov  7 17:04:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.3/
+- Changes since 23.08.2:
+  * Reflect move of KActivities out of Frameworks to Plasma
+  * Update to reflect move of KUserFeedback to Frameworks
+  * Process correct model when applying service menu changes (kde#475547)
+  * snapcraft: initial import snapcraft files.
+
+-------------------------------------------------------------------
+Tue Oct 10 18:26:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- No code change since 23.08.1
+
+-------------------------------------------------------------------
+Tue Sep 12 11:55:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Copy Location: Make sure to export path with native separators
+
+-------------------------------------------------------------------
+Sun Aug 20 13:58:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Don't compute size for non-local urls (kde#472912)
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Add explicit moc includes to sources for moc-covered headers
+  * Use ellipsis everywhere instead of three dots
+  * Move focus from hiding selection mode bars to view (kde#469621)
+  * Fix Refresh tooltip text and add Refresh whatsThis text (kde#469263)
+  * Hide application/x-trash files following showHidenFiles
+  * Tabbar: duplicate tab when double clicking on it (kde#470388)
+  * Settings Add ViewModes > Content display
+  * Expand or collapse all selected folders on Key Right/Left
+  * KDirectoryContentsCounter: show intermediate dir size counting results, improve stopping, improve data caching
+  * Add a TODO KF6 to solve bug 464722
+  * Fix build without KF5Activities
+  * Disable Qt6 CI build in master, use kf6 branch for Qt6
+  * Fix test regression in DolphinMainWindowTest::testGoActions
+  * Revert "Adapt autotest to new expected "Space" key behaviour"
+  * Fix activating the Selection Mode with a keyboard shortcut (kde#465489)
+  * Add DolphinTabPage::inactiveViewContainer()
+  * Improve copying and moving items between panels
+  * FilterBar: improve keyboard behavior and tab ordering
+  * TerminalPanel: better check if terminal needs to change its currentWorkingDirectory when unmounting
+  * DolphinView: allow selectUrls to be considered for selection in more cases (kde#407161)
+  * Reuse existing proxy style (kde#468548)
+  * Make "don't run me with sudo/kdesu" message informative
+  * Add test for openFiles()
+  * Context menu: allow to show copy to/move to inactive split view (kde#356436)
+  * panels/information: Add option to not show information for hovered item (kde#364956)
+  * Prevent dragging on non-writable directories
+
+-------------------------------------------------------------------
+Tue Jul  4 10:19:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- No code change since 23.04.2
+
+-------------------------------------------------------------------
+Tue Jun  6 20:00:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Revert "Restrict attaching instances to those on the same activity or same virtual desktop" (kde#408919)
+
+-------------------------------------------------------------------
+Tue May  9 10:46:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.1/
+- Changes since 23.04.0:
+  * Fix build without KF5Activities
+  * Fix activating the Selection Mode with a keyboard shortcut (kde#465489)
+  * Restrict attaching instances to those on the same activity or same virtual desktop
+
+-------------------------------------------------------------------
+Wed May  3 13:42:07 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Have dolphin-part-lang supplement dolphin-part on pre-TW
+  (boo#1210984)
+
+-------------------------------------------------------------------
+Sat Apr 15 08:45:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.0/
+
+-------------------------------------------------------------------
+Fri Mar 31 16:41:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Fri Mar 17 20:42:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.03.80
+  * New feature release
+- Rebase patches:
+  * dolphin-go_up.diff
+  * 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+
+-------------------------------------------------------------------
+Tue Feb 28 09:45:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.3/
+
+-------------------------------------------------------------------
+Tue Jan 31 10:33:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.2/
+
+-------------------------------------------------------------------
+Tue Jan  3 10:19:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.1/
+
+-------------------------------------------------------------------
+Fri Dec  2 12:24:37 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 22.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.12.0/
+
+-------------------------------------------------------------------
+Sat Nov 26 16:44:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Nov 12 08:53:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.11.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Nov  1 11:19:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.3/
+
+-------------------------------------------------------------------
+Tue Oct 11 14:31:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.2/
+
+-------------------------------------------------------------------
+Tue Sep  6 15:18:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.1/
+
+-------------------------------------------------------------------
+Sun Aug 14 09:41:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.08.0/
+
+-------------------------------------------------------------------
+Fri Aug  5 12:10:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.90
+  * New feature release
+
+-------------------------------------------------------------------
+Sat Jul 16 08:27:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.07.80
+  * New feature release
+
+-------------------------------------------------------------------
+Tue Jul  5 17:02:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.3/
+
+-------------------------------------------------------------------
+Wed Jun  8 09:52:30 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.2/
+
+-------------------------------------------------------------------
+Tue May 10 16:29:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.1/
+
+-------------------------------------------------------------------
+Mon Apr 18 07:50:46 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/22.04.0/
+
+-------------------------------------------------------------------
+Fri Apr  8 18:17:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.90
+  * New feature release
+
+-------------------------------------------------------------------
+Wed Mar 23 08:13:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 22.03.80
+  * New feature release
+- Too many changes since 21.12.3, only listing bugfixes:
+  * KItemListHeaderWidget: don't crash if widget == nullptr (kde#449238)
+  * Display Apply button in KCMs (kde#448352)
+  * [CompactView] Remove animation on file rename (kde#449179)
+  * KStandardItemListWidget: handle RtL drawing properly (kde#449211)
+  * Fix zooming animation (kde#449179)
+  * Expose konsolepart shortcuts in Dolphin's shortcuts view (kde#428265)
+  * Full row highlight implementation (kde#181438)
+  * Properly display parent folders when filtering is active and items
+    are added or refreshed (kde#442275)
+  * Move "Default" option to the front in "Select Remote Charset" menu (kde#445148)
+
+-------------------------------------------------------------------
+Tue Mar  1 09:56:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.3/
+- Changes since 21.12.2.1:
+  * Fix rating pixmap alignment on high-dpi screens
+
+-------------------------------------------------------------------
+Sun Feb  6 21:01:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2.1
+  * Fix opening FTP files in their preferred app
+  * Use the CDN based endpoint rather than the legacy endpoint
+
+-------------------------------------------------------------------
+Tue Feb  1 13:02:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.2/
+- Changes since 21.12.1:
+  * Revert "[DetailsView] Improve zooming" (kde#447215)
+
+-------------------------------------------------------------------
+Tue Jan  4 10:25:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.1/
+- Changes since 21.12.0:
+  * Use QUrl::toDisplayString when presenting to the user
+
+-------------------------------------------------------------------
+Fri Dec  3 19:21:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.12.0/
+- Changes since 21.11.90:
+  * Use new "edit-copy-path" icon for "Copy Location" menu item
+  * [Status Bar] Don't mess with status bar visibility in extensions (kde#443132)
+
+-------------------------------------------------------------------
+Sat Nov 27 10:10:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.90
+  * New feature release
+- Changes since 21.11.80:
+  * Fix updating window and tab titles
+
+-------------------------------------------------------------------
+Sat Nov 13 17:54:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.11.80
+  * New feature release
+- Changes since 21.08.3:
+  * Port ViewModeSettings from macros to std::variant
+  * Remove duplicate include from .h/.cpp
+  * Add support for recentlyused: kio to view properties.
+  * Save size of config dialog in state config
+  * Utilize KXMLGUI API to store state config in separate file
+  * Install KCMs in dolphin/kcms namespace
+  * Fix typo: PascalCase in docs
+  * Change settings window title to "Configure" for consistency sake
+  * Rewrite filter algorithm to properly support filtering with expanded folders under Detail View mode. (kde#411878)
+  * Add kde-ci file
+  * Don't force icon for preferred search tool action if one is manually configured (kde#442815)
+  * Port to KTerminalLauncherJob (kde#441072)
+  * Tabs: ensure to have folder icons for remote folders
+  * [Split view] Reset splitter position on double click (kde#206525)
+  * Revert "Revert "Disable Hidden Files Last sort by default""
+  * Revert "Revert "Configurable Show hidden files and folders last toggle""
+  * Revert "Revert "Show hidden files and folders last""
+  * Use default icon size when resetting zoom level (kde#437349)
+  * DBus activation with filemanager iface
+  * Simplify KFileItemModel's sorting
+  * Avoid crash on start when help actions are restricted through the Kiosk system
+  * Remove unneeded KCM plugin keyword stuff
+  * Use KDirLister directly now that it emits a jobError() signal
+  * [DetailsView] Improve zooming
+  * [PlacesPanel] Remove horizontal scrollbar (kde#301758)
+  * Delete some items that were intended to be deleted. Avoid trying to delete items that don't exist
+  * Allow to have HiDpi previews (kde#401170)
+  * Don't exit immediately if DBus isn't running
+  * Avoid crashing on startup if DBus isn't running
+- Drop upstream patch:
+  * 0001-Port-to-KTerminalLauncherJob.patch
+
+-------------------------------------------------------------------
+Tue Nov  2 21:33:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.3/
+- No code change since 21.08.2
+
+-------------------------------------------------------------------
+Tue Oct  5 16:27:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.2/
+- Changes since 21.08.1:
+  * Fix closing a secondary viewContainer on startup settings change (kde#426221)
+  * Don't force icon for preferred search tool action if one is manually configured (kde#442815)
+  * Fixed a missing bracket.
+  * Make "Empties Trash to create free space" translatable.
+
+-------------------------------------------------------------------
+Thu Sep  2 10:27:40 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix the "Open in Terminal" functionality if kinit
+  is not running (kde#441072):
+  * 0001-Port-to-KTerminalLauncherJob.patch
+
+-------------------------------------------------------------------
+Wed Sep  1 12:37:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Filter the items that have changed
+  * FoldersPanel: Fix inline renaming (kde#441124)
+  * Fix selecting file always opening new instance (kde#440663)
+  * Avoid crash on start when help actions are restricted through the Kiosk system
+
+-------------------------------------------------------------------
+Fri Aug  6 09:34:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Revert "Show hidden files and folders last"
+  * Fix how --select treats files (kde#436584)
+  * Fix width issues when un-maximizing Dolphin (kde#430521)
+  * Revert "Don't session-restore invalid paths" (kde#439864)
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Add break; to KItemListRoleEditor::keyPressEvent cases
+  * [PlacesPanel] Remove horizontal scrollbar (kde#301758)
+  * Fix placeholder label text within an empty folder in Trash (kde#439952)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:04:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Ensure stable sort order when sorting by size (kde#433247)
+  * Use SmallMedium icon size in the Places panel as default (kde#437345)
+  * [src/settings/contextmenu/contextmenusettingspage] Fix Crash because of nullptr (kde#437539)
+  * Add action to places panel context menu trash entry to open trash settings (kde#367583)
+  * Fix primary view changing folder for the closing animation (kde#437080)
+  * DolphinContextMenu: Allow disabling "Open Terminal" action (kde#436323)
+  * Show hidden files and folders last (kde#241227)
+  * search: Add action to clear tag selection (kde#432719)
+  * InformationPanel: Allow to refresh the panel when its displayed content changes (kde#430095)
+  * When renaming files, move to next file using tab key or up/down (kde#334533)
+  * PlacesPanel: activating a place does not select its previously selected children (kde#421347)
+- Remove upstream patch:
+  * 0002-Revert-places-padding-backport-21.08.patch
+- Rebase 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch 
+- Only install the license files once
+
+-------------------------------------------------------------------
+Wed Jul  7 08:56:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- Changes since 21.04.2:
+  * Fix shift-action modifier in context menu (kde#425997)
+  * Fix X-DocPath entries
+
+-------------------------------------------------------------------
+Wed Jun 16 14:56:35 UTC 2021 - Tranter Madi <trmdi@yandex.com>
+
+- Backport patch to improve place icon sizes (kde#437345)
+  * 0002-Revert-places-padding-backport-21.08.patch
+
+-------------------------------------------------------------------
+Tue Jun  8 12:39:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.2
+- Changes since 21.04.1:
+  * Fix crash on Wayland when closing the mainwindow while another dialog is open
+  * [contextmenusettingspage] Fix Crash because of nullptr (kde#437539)
+  * search/facetswidget: Check for protocol before trying to fetch tags (kde#435586)
+
+-------------------------------------------------------------------
+Wed May 12 06:06:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/21.04.1
+- Changes since 21.04.0:
+  * fix padding in places view (kde#435731)
+
+-------------------------------------------------------------------
+Fri Apr 16 16:11:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * KFileItemModel: DetailsModeSettings::directorySizeCount forces m_sortDirsFirst
+  * appstream: fix homepage url
+  * Fix crash calling openDirectories() in various cases
+  * Don't re-open already-open URLs when using session-restore feature (kde#434911)
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes to list here.
+- Drop 0001-Update-cached-viewContainer-geometry-every-time-they.patch
+
+-------------------------------------------------------------------
+Thu Mar  4 06:09:31 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- No code change since 20.12.2
+
+-------------------------------------------------------------------
+Wed Feb  3 08:27:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- Changes since 20.12.1:
+  * don't crash when building without baloo (kde#431730)
+  * Show button to open knetattach inline with URL nav on remove:// view (kde#431626)
+  * fix folder size calculation on FUSE and network file systems (kde#430778)
+  * Change copy location shortcut in dolphin so as to not conflict with Konsole panel (kde#426461)
+- Drop upstream patch:
+  * 0001-Show-button-to-open-knetattach-inline-with-URL-nav-o.patch
+
+-------------------------------------------------------------------
+Mon Jan 25 22:14:27 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to properly show the network button in the
+  URL navigator (kde#431626):
+  - 0001-Show-button-to-open-knetattach-inline-with-URL-nav-o.patch
+- Refreshed patches:
+  - 0001-Update-cached-viewContainer-geometry-every-time-they.patch
+
+-------------------------------------------------------------------
+Tue Jan  5 12:24:43 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- Changes since 20.12.0:
+  * Fix vertical scroll with horizontal component not being recognized properly (kde#430532)
+  * DolphinContextMenu: drop wrong assert
+  * Fix crash when device with capacitybar is dragged (kde#430441)
+  * Use setShowOpenOrExecuteDialog(true) with OpenUrlJob
+  * Fix access url navigator while creating new tab in filename search view (kde#429628, kde#430434)
+  * Fix KIO warning when URL is empty
+  * servicemenuinstaller: Remove file if it already exists
+  * Fix PlacesItemModelTest, 2nd try
+- Dropped patches, now upstream:
+  * 0001-Fix-access-url-navigator-while-creating-new-tab-in-f.patch
+
+-------------------------------------------------------------------
+Tue Dec 22 21:59:29 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to fix crash on launch (kde#429628,
+  kde#430434):
+  * 0001-Fix-access-url-navigator-while-creating-new-tab-in-f.patch
+
+-------------------------------------------------------------------
+Thu Dec 10 19:14:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix appearance on the first start (kde#429447):
+  * 0001-Update-cached-viewContainer-geometry-every-time-they.patch
+
+-------------------------------------------------------------------
+Sat Dec  5 23:15:24 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- Changes since 20.11.90:
+  * Fix PlacesItemModelTest, 2nd try
+  * Re-allow to paste files via context menu (kde#429762)
+
+-------------------------------------------------------------------
+Fri Nov 27 15:15:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- Too many changes since 20.11.80, only listing bugfixes:
+  * Allow the openURLJob to run executables (kde#429603)
+  * Places panel: highlight place only when it is displayed (kde#156678)
+  * Select last visited folder when going up/back (kde#429097)
+  * Re-allow icons that are not theme icon (kde#429113)
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Thu Nov  5 22:45:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-11-apps-update
+- No code change since 20.08.2
+
+-------------------------------------------------------------------
+Fri Oct  9 05:42:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Don't warn when closing multiple tabs if restoring window state
+  * Fix untranslated spinbox suffix strings (kde#426286)
+  * Revert "Set a better defaultDropAction for dragging" (kde#425757, kde#426196)
+
+-------------------------------------------------------------------
+Tue Sep  1 20:49:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-09-apps-update
+- Changes since 20.08.0:
+  * Fix file preview for desktop files with absolute icon paths (kde#423326)
+  * Fix nullptr crash on Windows
+  * Fix 'show space' setting not being re-applied (kde#425542)
+  * Fix i18n
+
+-------------------------------------------------------------------
+Sun Aug  9 09:08:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-08-apps-update
+- Changes since 20.07.90:
+  * [search] Close tags menu after click when there
+    is only one tag (kde#424873)
+  * Remove MaximumSize entry from kdeglobals when setting
+    the preview file size limit to "No limit" (kde#424403)
+
+-------------------------------------------------------------------
+Sun Aug  2 07:58:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.90
+  * New feature release
+- Changes since 20.07.80:
+  * Fix "Show folders, tabs, and window state from last time" feature (kde#422300)
+  * Fix deprecated knsrc file location
+
+-------------------------------------------------------------------
+Sun Jul 19 10:03:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.07.80
+  * New feature release
+- Too many changes since 20.04.3, only listing bugfixes:
+  * Fix selection rect after porting from QFontMetrics::width() (kde#421973)
+  * [search] Do not update text input when it has focus (kde#423328)
+  * Places: Use Solid::Device::DisplayName for DisplayRole (kde#415281)
+  * Provide ability to configure size cut-off for local file previews (kde#331240)
+  * Status bar: Hide the space free bar when size is unknown (kde#420027)
+  * Prevents showing StatJob Progress info (kde#422121)
+  * Move search and filter bar close buttons to the right (kde#421372)
+  * Keep name readable on drag to matching background (kde#405266)
+  * [Details mode] Allow to fill the column size of directories with actual size (kde#190580)
+  * Information Panel: show early icons for folders (kde#420340)
+
+-------------------------------------------------------------------
+Thu Jul  9 20:08:34 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-07-apps-update
+- Changes since 20.04.2:
+  * Write correct value for "Open in application" script execution setting (kde#421294)
+  * Fix file preview for desktop files with absolute icon paths (kde#423326)
+  * Generalize Player protocol support
+
+-------------------------------------------------------------------
+Tue Jun  9 12:14:04 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-06-apps-update
+- Changes since 20.04.1:
+  * Show progress when duplicating items (kde#422335)
+  * use KSycoca for updating OpenPreferredSearchTool action
+  * Left-elide file/folders while keeping their extension visible (kde#404955)
+
+-------------------------------------------------------------------
+Fri May 15 15:40:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-05-apps-update
+- Changes since 20.04.0:
+  * Don't update preferred search action on window activation
+  * Don't use local URL for KMoreTool (kde#420911)
+  * Fixes Dolphin crash on "Defocus Terminal Panel" menu click if no Konsole is installed.
+  * Dolphin Service Installer: Run uninstall scripts, rename methods
+  * Dolphin Service Menu installer cleanup
+
+-------------------------------------------------------------------
+Thu Apr 23 12:21:53 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-04-apps-update
+- Changes since 20.03.90:
+  * Dolphin Service Installer: Run uninstall scripts, rename methods
+  * Dolphin Service Menu installer cleanup
+  * Sort services list alphabetically (kde#419938)
+  * Display readable titlebar text while using search and full paths in titlebar (kde#406624)
+  * Dolphin Services: Launch Deb/Rpm archives with QDesktopServices
+  * Fix crashing on starting and quitting (kde#419585)
+  * Use same logic for "no extension" case with Duplicate feature (kde#419070)
+
+-------------------------------------------------------------------
+Sun Apr  5 20:29:39 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.90
+  * New feature release
+- Changes since 20.03.80:
+  * Update dragCursor while dragging
+
+-------------------------------------------------------------------
+Sun Mar 22 09:16:34 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.03.80
+  * New feature release
+- Too many changes since 19.12.3, only listing bugfixes:
+  * Fixes multiple KVersionControlPlugin::fileName() calls on entering or updating directory. (kde#415698)
+  * Restore former position of "Create New" menu item in viewport context menu (kde#417640)
+  * Add natural sorting and case-insensitive sorting for all role-types (kde#406296)
+  * Fixes multiple VCS plugin calls on single directory update. (kde#415698)
+  * Use QDesktopServices to open urls not supported by dolphin (kde#372642)
+  * Use more conventional "Add to Places" text for that action (kde#416064)
+  * make link with LLVM (kde#410237)
+  * Allow dolphin to format DateTime at later stage than KBalooRolesProvider (kde#411173)
+- Dropped patches, now upstream:
+  * 0001-Restore-former-position-of-Create-New-menu-item-in-v.patch
+
+-------------------------------------------------------------------
+Thu Mar  5 20:35:42 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-03-apps-update
+- Changes since 19.12.2:
+  * Fix typo in comment
+  * Fix files not being highlighted if directory of file is already open (kde#417230)
+
+-------------------------------------------------------------------
+Wed Feb 26 19:08:08 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patch to move back the "Create New..." menu item
+  in its former position (kde#417640):
+  * 0001-Restore-former-position-of-Create-New-menu-item-in-v.patch
+- Refreshed patches:
+  * dolphin-go_up.diff
+
+-------------------------------------------------------------------
+Fri Feb  7 08:36:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace %make_jobs with %cmake_build.
+
+-------------------------------------------------------------------
+Wed Feb  5 06:28:44 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-02-apps-update
+- Changes since 19.12.1:
+  * Change drop indicator color (kde#415010)
+  * Hide tooltip instantly on filter change
+
+-------------------------------------------------------------------
+Tue Jan  7 09:59:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12.1
+- Changes since 19.12.0:
+  * Update Appstream for new release
+  * Improve scroll wheel speed by basing it on label height, not icon height (kde#386379)
+
+-------------------------------------------------------------------
+Tue Dec 10 06:38:08 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/releases/19.12
+- Changes since 19.11.90:
+  * Fix build with Qt 5.14 RC (kde#414492)
+  * Correct invalid homepage URL (kde#414901)
+  * Update Appstream for new release
+
+-------------------------------------------------------------------
+Sat Nov 30 09:11:29 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/19.12-rc
+- Changes since 19.11.80:
+  * fix(search): Fix baloo searchString parsing (kde#412952)
+  * Force dbus introspection on the Dolphin_1 object (kde#414402)
+  * Fix accessibility regression on the Dolphin Control button
+  * Fix dolphin homepage in the appstream metadata
+
+-------------------------------------------------------------------
+Sun Nov 24 13:29:01 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.11.80
+  * New feature release
+- Too many changes since 19.08.3, only listing bugfixes:
+  * [Status Bar] Remove file status Timer, add text update delay (kde#399267)
+  * When the selection is deselected, restart the keyboard search from the beginning (kde#411538)
+  * Expose full set of script execution options in settings window (kde#371837)
+  * Fix wrong window titles (kde#389135)
+  * Add "Add to Places" action to file menu (kde#390757)
+  * [dolphin] Add an action to toggle the searchbar (kde#344617)
+  * Make non-empty textual columns come first in sorting (kde#410538)
+  * Middle-elide file/folder labels so the extension is always visible (kde#404955)
+  * Correct "New Window" tooltip (kde#411215)
+  * Fix an issue with focus lost after closing terminal panel (kde#407979)
+  * Fix name grouping feature for cyrillic names (kde#406867)
+  * Fix an issue with a new tab focus (kde#407604)
+- Refreshed patches:
+  * 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+
+-------------------------------------------------------------------
+Thu Nov  7 23:12:34 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.3.php
+- No code change since 19.08.2
+
+-------------------------------------------------------------------
+Fri Oct 11 07:42:24 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.2.php
+- Changes since 19.08.1:
+  * Fix crash when lauching dolphin with a search scheme
+  * Update searchbox on URL changes (Fix D24369)
+  * Update searchbar parameters on URL change
+  * Bring back placesitemmodeltest
+  * Fix ascending/descending choosers getting unchecked when re-selecting the same sort order (kde#411223)
+
+-------------------------------------------------------------------
+Thu Sep  5 14:00:00 UTC 2019 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 19.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.1.php
+- Changes since 19.08.0:
+  * Fixing bugs in new folders in tabs feature
+  * Making sure that DBus objects are all created before the service
+  * Fix places text when the URL has a trailing slash
+  * Reset progress bar text when directory loading starts
+  * Fixing bug where split view opens with no URLs (kde#411193)
+
+-------------------------------------------------------------------
+Fri Aug  9 08:30:06 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 19.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08.0.php
+- Changes since 19.07.90:
+  * Fix build with cmake < 3.7
+  * Do not match daemonized dolphin instances: part 2
+
+-------------------------------------------------------------------
+Tue Aug 06 16:50:47 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-rc.php
+- Changes since 19.07.80:
+  * Fix dir change when show hidden terminal panel with running program in it
+  * servicemenuinstaller: Fix placeholders in i18n string
+
+-------------------------------------------------------------------
+Tue Jul 23 11:58:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.08-beta.php
+- Changes since 19.04.3:
+  * Too many changes to list here
+- Refreshed patches:
+  * 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+
+-------------------------------------------------------------------
+Sat Jul 13 07:26:32 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.3.php
+- Changes since 19.04.2:
+  * [Places Panel] Pass iconName to KFilePlaceEditDialog
+
+-------------------------------------------------------------------
+Fri Jun 07 12:51:51 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.2.php
+- Changes since 19.04.1:
+  * Elide tab titles left so key information at the end of the string doesn't get cut off (kde#406569)
+
+-------------------------------------------------------------------
+Fri May 10 05:37:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.1.php
+- Changes since 19.04.0:
+  * [PlacesItemModelTest] Ignore user tag places
+  * Try again to fix PlacesItemModelTest::testDefaultViewProperties()
+  * Fix dolphin cannot be added as favourite in GNOME (kde#407198)
+  * Fix missing update of file name label in information panel without preview
+  * Fix adding "Create New..." menu to toolbar (kde#405780)
+
+-------------------------------------------------------------------
+Sat Apr 20 06:51:52 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-19.04.0.php
+- Changes since 19.03.90:
+  * Don't show "Open With" menu items for empty directories
+  * [DolphinMainWindowTest] Fix testNewFileMenuEnabled
+
+-------------------------------------------------------------------
+Tue Apr 09 20:54:38 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-rc.php
+- Changes since 19.03.80:
+  * Move Safely Remove down in places context menu
+  * When hovering over a file on the not-focus view panel, the information panel gets updated
+  * [InformationPanel] Hide the video when the preview is disabled, avoid computing the preview when it is disabled
+  * Revert "Create a global launch shortcut (Meta+E)"
+  * [PhononWidget] Fix layout warning
+
+-------------------------------------------------------------------
+Wed Mar 27 06:40:55 UTC 2019 - lbeltrame@kde.org
+
+- Update to 19.03.80
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/announce-applications-19.04-beta.php
+- Changes since 18.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Sat Mar 09 08:03:11 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.3.php
+- Changes since 18.12.2:
+  * Fix crash during shutdown (kde#402784)
+  * Word-wrap KMessageWidget text
+  * [DolphinView] Use correct color group
+  * Sort preview plugins case-insensitively
+
+-------------------------------------------------------------------
+Sat Feb 09 08:24:50 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.2.php
+- Changes since 18.12.1:
+  * Fix member initialization
+  * [versioncontrolobserver] Update working directory on tab activation
+  * [versioncontrolobserver] Do not use static plugin objects
+
+-------------------------------------------------------------------
+Fri Jan 11 05:41:53 UTC 2019 - lbeltrame@kde.org
+
+- Update to 18.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.1.php
+- Changes since 18.12.0:
+  * fix display of image orientation
+  * Fix title update when changing active split view (kde#402641)
+  * Use https over http for homepage url
+  * Add failing test case for bug #402641
+  * Use correct icon for the "New Window" menu item
+
+-------------------------------------------------------------------
+Fri Dec 14 06:08:51 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.12.0
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12.0.php
+- Changes since 18.11.90:
+  * KItemListWidget: Use initStyleOption
+  * Fix selection when navigating back, with size sorting. (kde#352296)
+
+-------------------------------------------------------------------
+Mon Dec 03 20:55:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-rc.php
+- Changes since 18.11.80:
+  * Do not disconnect all StorageAccess signals when unmounting (kde#400992)
+  * Improve Ux for the places panel's hidden items (kde#400860)
+  * move kcrash link to dolphin app (which is the effective user)
+
+-------------------------------------------------------------------
+Tue Nov 20 06:21:52 UTC 2018 - Luca Beltrame <lbeltrame@kde.org>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 20 05:56:37 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.12-beta.php
+- Changes since 18.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 08 20:43:27 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.3.php
+- Changes since 18.08.2:
+  * Don't enable two-clicks renaming in single-click mode
+  * [KStandardItemListWidget] Pass icon state to overlay painter
+  * Update hidden state correctly (kde#399599)
+
+-------------------------------------------------------------------
+Thu Oct 11 20:06:44 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.2.php
+- Changes since 18.08.1:
+  * [PlacesItemModelTest] More index-related fixes
+  * [PlacesItemModel] Fix testSystemItems()
+  * [PlacesItemModelTest] Fix testHideItem()
+  * [PlacesItemModelTest] Fix testTearDownDevice()
+  * [PlacesItemModelTest] Fix testDeletePlace()
+  * [PlacesItemModelTest] Fix testGroups() test case
+  * Follow-up of commit 9760f9607d
+  * [PlacesItemModelTest] Check whether Desktop and Download folders exist
+  * Fix disabling of DolphinNewFileMenu
+  * Add test cases for enabled status of DolphinNewFileMenu
+  * Fix that dragging a file can trigger inline rename. (kde#398375)
+  * Don't assign twice the same key to the action New Tab (kde#398324)
+  * Do use QIcon::Selected for non-icon view
+  * [KStandardItemListWidget] Round to icon size before applying scaling
+  * Correctly save behaviourOnLaunch (kde#398022)
+  * Don't use QIcon::Selected state for selected icon (kde#398014)
+- Dropped patches, now upstream:
+  * Fix-that-dragging-a-file-can-trigger-inline-rename.patch
+  * Dont-assign-twice-the-same-key-to-the-action-New-Tab.patch
+
+-------------------------------------------------------------------
+Wed Oct  3 21:08:35 UTC 2018 - wbauer@tmo.at
+
+- Add Fix-that-dragging-a-file-can-trigger-inline-rename.patch to
+  prevent accidentally triggering inline rename by just dragging a
+  file (boo#1108797, kde#398375)
+
+-------------------------------------------------------------------
+Thu Sep 27 14:54:59 UTC 2018 - wbauer@tmo.at
+
+- Add Dont-assign-twice-the-same-key-to-the-action-New-Tab.patch to
+  avoid an "Ambiguous shortcuts" error on startup when running
+  dolphin on a different desktop than Plasma
+  (boo#1109372, kde#398324)
+
+-------------------------------------------------------------------
+Thu Sep 06 18:42:50 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.1.php
+- Changes since 18.08.0:
+  * Pretty-print "creationtime" role
+
+-------------------------------------------------------------------
+Thu Aug 16 22:00:50 UTC 2018 - christophe@krop.fr
+
+- Update to 18.08.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08.0.php
+- Changes since 18.07.80:
+  * Remove custom icon selection for trash
+  * Compare UDS entry times directly instead of going through KFileItem
+
+-------------------------------------------------------------------
+Thu Jul 26 13:00:27 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.07.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.08-beta.php
+- Changes since 18.04.3:
+  * Too many changes to list here
+- Refreshed patches:
+  * 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+
+-------------------------------------------------------------------
+Fri Jul 13 04:49:46 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.3.php
+- Changes since 18.04.2:
+  * Fix loop of FocusIn events
+  * [KBalooRolesProvider] Support properties of type QStringList (kde#395033)
+
+-------------------------------------------------------------------
+Fri Jun 08 05:06:34 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.2.php
+- Changes since 18.04.1:
+  * Fix crash in PlacesItem::setUrl() (kde#394507)
+  * Add missing i18n call (kde#394194)
+
+-------------------------------------------------------------------
+Fri May 11 05:17:42 UTC 2018 - lbeltrame@kde.org
+
+- Update to 18.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.1.php
+- Changes since 18.04.0:
+  * Don't filter out duplicated entries from places panel (kde#393528)
+  * Update window title after closing split view (kde#385111)
+  * Add failing test case for bug #385111
+  * Fix inconsistent preview spacing and icon wiggly-ness when toggling previews in Icon mode (kde#393306)
+
+-------------------------------------------------------------------
+Wed Apr 18 07:48:37 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04.0.php
+- Changes since 18.03.90:
+  * Fix untranslated places panel entries (kde#392822)
+
+-------------------------------------------------------------------
+Fri Apr 06 07:08:45 CEST 2018 - lbeltrame@kde.org
+
+- Update to 18.03.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-18.04-rc.php
+- Changes since 17.12.3:
+  * Too many changes to list here
+- Refresh patches:
+  * 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+  * dolphin-go_up.diff
+
+-------------------------------------------------------------------
+Thu Mar 08 23:51:01 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.3.php
+- Changes since 17.12.2:
+  * Fix resetting "View Modes" preferences to defaults
+
+-------------------------------------------------------------------
+Wed Feb 07 08:47:17 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.2.php
+- Changes since 17.12.1:
+  * Let the terminal panel dock to any part of the window (kde#362593)
+  * Folderspanel's context-menu option "Limit to Home Directory" is always visible
+  * folderspanel context-menu option "Limit to Home Directory" should be always visible
+
+-------------------------------------------------------------------
+Thu Jan 11 23:40:55 CET 2018 - lbeltrame@kde.org
+
+- Update to 17.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.1.php
+- Changes since 17.12.0:
+  * infopanel fully resizable
+  * Revive folderpanel when outside $HOME
+  * Ignore baloo urls created from new KIO model (kde#387888)
+
+-------------------------------------------------------------------
+Sat Dec 09 14:59:01 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.12.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12.0.php
+- Changes since 17.11.90:
+  * appdata: update doc URL, more https
+  * Use CMakePackageConfigHelpers instead of the ECM variant
+
+-------------------------------------------------------------------
+Sat Dec 02 10:12:35 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.90
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-rc.php
+- Changes since 17.11.80:
+  * Fix scrolling during inline renaming causes rename of wrong file (kde#378786)
+
+-------------------------------------------------------------------
+Mon Nov 20 06:58:52 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.11.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.12-beta.php
+- Changes since 17.08.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Nov 09 23:10:47 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.3.php
+- Changes since 17.08.2:
+  * None
+
+-------------------------------------------------------------------
+Tue Oct 17 00:31:12 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.2.php
+- Changes since 17.08.1:
+  * Fix build with Qt 5.10
+  * Keep renamed file(s) in view
+  * Make sure we always have Shift+Del as shortcut
+  * Qt 5 Porting: Q_WS_WIN -> Q_OS_WIN
+
+-------------------------------------------------------------------
+Thu Sep 07 07:01:17 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.08.1.php
+- Changes since 17.08.0:
+  * None
+
+-------------------------------------------------------------------
+Fri Aug 11 22:44:54 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.08.0
+  * New feature release
+  * https://www.kde.org/announcements/announce-applications-17.08.0.php
+- Changes since 17.04.3 :
+  * Fix loading of dolphinui.rc (kde#382848)
+  * Use https for knsrc providers
+  * Fix drop menu position with urlnavigator drops
+  * Bundle the XMLGUI files into qrc resources.
+  * Add role for file creation time.
+  * Fix knewstuff popup menu position on wayland
+  * Add missing emit keywords
+  * [Places Panel] Disallow editing devices
+  * Support "Deletion Time" role in Trash (kde#153492)
+  * Drop unnecessary method
+  * Introduce DolphinMainWindowTest
+  * Move non-exported code to a static library
+  * add few more Q_DECL_OVERRIDE
+  * Port tests from ecm_mark_as_test to ecm_add_test
+  * Fix kfileitemmodeltest
+  * Remove define to disable exports
+  * Fix some compiler warnings
+
+-------------------------------------------------------------------
+Sat Aug  5 18:16:40 UTC 2017 - christophe@krop.fr
+
+- Update to KDE Applications 17.07.90
+  * KDE Applications 17.07.90
+  * https://www.kde.org/announcements/announce-applications-17.08-rc.php
+
+
+-------------------------------------------------------------------
+Sat Jul 15 22:58:59 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.3.php
+- Changes since 17.04.2:
+  * Change in "Open in new tab" feature in Dolphin
+  * Ignore drops-onto-items from invalid places items (kde#373005)
+
+-------------------------------------------------------------------
+Wed Jul 12 07:08:49 UTC 2017 - fabian@ritter-vogt.de
+
+- Replace %lang_package with evaluated macro to be able to add proper
+  Provides/Obsoletes to avoid file conflicts during installation
+
+-------------------------------------------------------------------
+Fri Jul  7 11:12:50 UTC 2017 - wbauer@tmo.at
+
+- Rename -lang package to dolphin-part-lang and recommend it by the
+  dolphin-part package, the translations are used by the kpart too
+  * Avoid boo#1027925 in the context of boo#1047665
+
+-------------------------------------------------------------------
+Wed Jun 07 17:42:40 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.2.php
+- Changes since 17.04.1:
+  * Correct searchbox, split view transitions between tabs (kde#379135, kde#380032)
+
+-------------------------------------------------------------------
+Wed May 17 20:35:37 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.1.php
+- Changes since 17.04.0:
+  * Don't ignore tag clicks in the tooltips
+  * Sort the tag-values alphabetically in the "Tags" column (kde#377589)
+
+-------------------------------------------------------------------
+Sat Apr 22 12:02:11 UTC 2017 - fabian@ritter-vogt.de
+
+- Add patch to re-allow running dolphin as root:
+  * 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+
+-------------------------------------------------------------------
+Sun Apr 16 10:44:46 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.04.0
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04.0.php
+- Changes since 17.03.90:
+  * None
+
+-------------------------------------------------------------------
+Wed Apr 12 20:25:14 CEST 2017 - lbeltrame@kde.org
+
+- Update to 17.03.90
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-rc.php
+- Changes since 17.03.80:
+  * Update name of the delete action in the .rc files
+  * behavior change -> New Window opens with same URL
+
+-------------------------------------------------------------------
+Sat Mar 25 23:10:08 CET 2017 - lbeltrame@kde.org
+
+- Update to 17.03.80
+  * New feature release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-17.04-beta.php
+- Changes since 16.12.3:
+  * Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Mar  9 12:34:01 CET 2017 - lbeltrame@kde.org
+
+- Update to 16.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://www.kde.org/announcements/announce-applications-16.12.3.php
+- Changes since 16.12.2:
+  * None
+
+-------------------------------------------------------------------
+Thu Feb  9 06:41:10 UTC 2017 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.12.2
+   * KDE Applications 16.12.2
+   * https://www.kde.org/announcements/announce-applications-16.12.2.php
+
+
+-------------------------------------------------------------------
+Sat Jan 14 08:49:44 UTC 2017 - lbeltrame@kde.org
+
+- - Update to KDE Applications 16.12.1
+   * KDE Applications 16.12.1
+   * https://www.kde.org/announcements/announce-applications-16.12.1.php
+
+-------------------------------------------------------------------
+Tue Dec 13 19:29:45 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.12.0
+   * KDE Applications 16.12.0
+   * https://www.kde.org/announcements/announce-applications-16.12.0.php
+
+
+-------------------------------------------------------------------
+Sat Dec  3 16:00:00 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.90
+   * KDE Applications 16.12.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.12-rc.php
+
+
+-------------------------------------------------------------------
+Tue Nov 29 12:18:17 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.11.80
+   * KDE Applications 16.12.0 Beta
+   * https://www.kde.org/announcements/announce-applications-16.12-beta.php
+
+
+-------------------------------------------------------------------
+Wed Nov  9 06:09:26 UTC 2016 - lbeltrame@kde.org
+
+- Update to KDE Applications 16.08.3
+  * KDE Applications 16.08.3
+  * https://www.kde.org/announcements/announce-applications-16.08.3.php
+
+-------------------------------------------------------------------
+Sun Nov  6 14:07:13 UTC 2016 - wbauer@tmo.at
+
+- Recommend kio-extras5 instead of kio_mtp5, the latter doesn't
+  exist any more and is part of kio-extras5 now.
+
+-------------------------------------------------------------------
+Wed Oct 12 05:08:31 UTC 2016 - lbeltrame@kde.org
+
+- Drop properly-check-Shift-toggling.patch, upstreamed
+
+-------------------------------------------------------------------
+Tue Oct 11 20:46:04 UTC 2016 - lbeltrame@kde.org
+
+- KDE Applications 16.08.2
+- https://www.kde.org/announcements/announce-applications-16.08.2.php
+
+-------------------------------------------------------------------
+Wed Sep 21 17:03:38 UTC 2016 - wbauer@tmo.at
+
+- Add properly-check-Shift-toggling.patch to fix toggling the
+  "Move to Trash"/"Delete" actions in the context menu when
+  pressing Shift (kde#354301)
+
+-------------------------------------------------------------------
+Fri Sep  9 08:05:04 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.1
+   * KDE Applications 16.08.1
+   * https://www.kde.org/announcements/announce-applications-16.08.1.php
+
+
+-------------------------------------------------------------------
+Fri Aug 12 10:02:32 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.08.0
+   * KDE Applications 16.08.0
+   * https://www.kde.org/announcements/announce-applications-16.08.0.php
+
+
+-------------------------------------------------------------------
+Mon Aug  8 14:33:07 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.07.90
+   * KDE Applications 16.07.90 (16.08-RC)
+   * https://www.kde.org/announcements/announce-applications-16.08-rc.php
+
+
+-------------------------------------------------------------------
+Thu Jul  7 23:20:26 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.3
+   * KDE Applications 16.04.3
+   * https://www.kde.org/announcements/announce-applications-16.04.3.php
+
+
+-------------------------------------------------------------------
+Wed Jun 15 22:07:03 UTC 2016 - alarrosa@suse.com
+
+- Require baloo5-kioslaves so dolphin doesn't show an "Invalid
+  protocol" error when trying to find a file because the
+  baloosearch kioslave is not installed.
+
+-------------------------------------------------------------------
+Fri Jun 10 17:46:52 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.2
+   * KDE Applications 16.04.2
+   * https://www.kde.org/announcements/announce-applications-16.04.2.php
+
+
+-------------------------------------------------------------------
+Sat May  7 10:11:20 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.1
+   * KDE Applications 16.04.1
+   * https://www.kde.org/announcements/announce-applications-16.04.1.php
+
+- Drop upstreamed patch specify-fallback-icon.patch
+
+
+-------------------------------------------------------------------
+Tue Apr 26 14:32:54 UTC 2016 - wbauer@tmo.at
+
+- Added specify-fallback-icon.patch: fixes missing icons for
+  certain filetypes where the specified icon doesn't exist
+  (kde#358958, kde#361034)
+
+-------------------------------------------------------------------
+Sun Apr 17 05:50:36 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.04.0
+   * KDE Applications 16.04.0
+   * https://www.kde.org/announcements/announce-applications-16.04.0.php
+
+
+-------------------------------------------------------------------
+Mon Apr 11 06:31:12 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 16.03.90
+   * KDE Applications 16.04.0 RC
+   * https://www.kde.org/announcements/announce-applications-16.04-rc.php
+
+- Drop upstreamed patch Fix-wrong-path-URL-conversion.patch
+
+-------------------------------------------------------------------
+Fri Mar 25 16:37:37 UTC 2016 - wbauer@tmo.at
+
+- Added Fix-wrong-path-URL-conversion.patch: fixes display of
+  additional file metadata in dolphin's filelist for indexed files
+  (boo#970896)
+
+-------------------------------------------------------------------
+Sun Mar 13 15:34:13 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.3
+   * KDE Applications 15.12.3
+   * https://www.kde.org/announcements/announce-applications-15.12.3.php
+   * boo#970855
+
+
+-------------------------------------------------------------------
+Fri Feb 26 15:34:41 UTC 2016 - wbauer@tmo.at
+
+- Remove the --icon parameter (%i) from the command line in
+  dolphinsu.desktop, it isn't necessary and it makes dolphin crash
+  on exit due to a bug in Frameworks (boo#965514, kde#359758)
+
+-------------------------------------------------------------------
+Sat Feb 13 08:01:04 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.2
+   * KDE Applications 15.12.2
+   * https://www.kde.org/announcements/announce-applications-15.12.2.php
+   * boo#966605
+
+- Drop upstreamed patches:
+  * fix-check-for-session-close.patch
+  * Do-not-delete-sub-menus-of-the-control-menu-explicitly.patch
+
+-------------------------------------------------------------------
+Thu Jan 28 20:21:17 UTC 2016 - wbauer@tmo.at
+
+- Added fix-check-for-session-close.patch: don't ask for
+  confirmation on logout when storing the session
+  (boo#953014, kde#353548)
+
+-------------------------------------------------------------------
+Thu Jan 14 19:55:08 UTC 2016 - wbauer@tmo.at
+
+- Added Do-not-delete-sub-menus-of-the-control-menu-explicitly.patch:
+  fixes a possible crash when closing the "Control" menu (boo#952460,
+  kde#354558)
+
+-------------------------------------------------------------------
+Sat Jan  9 18:10:05 UTC 2016 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.1
+   * KDE Applications 15.12.1
+   * https://www.kde.org/announcements/announce-applications-15.12.1.php
+   * boo#961265
+
+
+-------------------------------------------------------------------
+Sun Dec 13 12:55:17 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.12.0
+   * KDE Applications 15.12.0
+   * https://www.kde.org/announcements/announce-applications-15.12.0.php
+   * boo#958887
+
+
+-------------------------------------------------------------------
+Sun Nov 29 11:00:17 UTC 2015 - tittiatcoke@gmail.com
+
+- Move the installed appdata file to the correct naming to
+  fix bnc#957041
+
+-------------------------------------------------------------------
+Tue Nov 10 19:53:17 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.3
+   * KDE Applications 15.08.3
+   * https://www.kde.org/announcements/announce-applications-15.08.3.php
+   * boo#954531
+
+- Drop upstreamed patch:
+  allow-home-directories-with-non-local-file-paths.patch
+
+-------------------------------------------------------------------
+Sun Oct 25 14:02:05 UTC 2015 - hrvoje.senjan@gmail.com
+
+- Added allow-home-directories-with-non-local-file-paths.patch
+  (boo#950883, kde#352743, kde#353550)
+
+-------------------------------------------------------------------
+Wed Oct 21 16:34:29 UTC 2015 - wbauer@tmo.at
+
+- Install dolphinsu.desktop as org.kde.dolphinsu.desktop to prevent
+  it being overridden by an old KDE4 entry in ~/.local/share/applications/
+
+-------------------------------------------------------------------
+Mon Oct 19 10:31:42 UTC 2015 - wbauer@tmo.at
+
+- Fix dolphinsu.desktop: the KF5 based dolphin doesn't support
+  "-caption" any more (boo#950907)
+
+-------------------------------------------------------------------
+Sun Oct 11 13:15:54 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.2
+   * KDE Applications 15.08.2
+   * https://www.kde.org/announcements/announce-applications-15.08.2.php
+
+
+-------------------------------------------------------------------
+Sun Sep 13 18:56:33 UTC 2015 - tittiatcoke@gmail.com
+
+- Update to KDE Applications 15.08.1
+   * KDE Applications 15.08.1
+   * https://www.kde.org/announcements/announce-applications-15.08.1.php
+
+
+-------------------------------------------------------------------
+Wed Aug 19 19:42:33 UTC 2015 - cgiboudeaux@gmx.com
+
+- Update to KDE Applications 15.08.0
+   * KDE Applications 15.08.0
+   * https://www.kde.org/announcements/announce-applications-15.08.0.php
+
